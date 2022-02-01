@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.modelvideo.q;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.t;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.modelvideo.aa;
+import com.tencent.mm.modelvideo.x;
+import com.tencent.mm.modelvideo.z;
 import com.tencent.mm.plugin.backup.bakoldlogic.a.a;
+import com.tencent.mm.plugin.backup.bakoldlogic.d.b;
 import com.tencent.mm.plugin.backup.bakoldlogic.d.c;
 import com.tencent.mm.plugin.backup.bakoldlogic.d.d;
-import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.gx;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.jd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.y;
 import java.io.StringWriter;
 import java.util.LinkedList;
 import java.util.Map;
@@ -25,36 +25,36 @@ import org.xmlpull.v1.XmlSerializer;
 public final class g
   implements j
 {
-  private static String a(gx paramgx, bi parambi)
+  private static String a(jd paramjd, cc paramcc)
   {
-    AppMethodBeat.i(17795);
-    s locals = d.Gt(parambi.field_imgPath);
-    if (locals == null)
+    AppMethodBeat.i(21852);
+    z localz = d.ahJ(paramcc.field_imgPath);
+    if (localz == null)
     {
-      AppMethodBeat.o(17795);
+      AppMethodBeat.o(21852);
       return null;
     }
-    if (parambi.getType() == 62) {}
+    if (paramcc.getType() == 62) {}
     for (int i = 62;; i = 43)
     {
-      paramgx.jKs = i;
-      if (!bo.isNullOrNil(parambi.field_content)) {
+      paramjd.vhJ = i;
+      if (!Util.isNullOrNil(paramcc.field_content)) {
         break;
       }
-      AppMethodBeat.o(17795);
+      AppMethodBeat.o(21852);
       return null;
     }
-    if (d.lA(parambi.field_talker)) {}
-    for (paramgx = locals.alM();; paramgx = paramgx.woP.xJE)
+    if (d.DQ(paramcc.field_talker)) {}
+    for (paramjd = localz.bOq();; paramjd = paramjd.YFE.abwM)
     {
-      parambi = new StringWriter();
+      paramcc = new StringWriter();
       try
       {
         XmlSerializer localXmlSerializer = XmlPullParserFactory.newInstance().newSerializer();
-        localXmlSerializer.setOutput(parambi);
+        localXmlSerializer.setOutput(paramcc);
         localXmlSerializer.startTag(null, "msg");
         localXmlSerializer.startTag(null, "videomsg");
-        Map localMap = br.F(locals.alP(), "msg");
+        Map localMap = XmlParser.parseXml(localz.bOu(), "msg", null);
         if (localMap != null)
         {
           localXmlSerializer.attribute(null, "aeskey", (String)localMap.get(".msg.videomsg.$aeskey"));
@@ -63,184 +63,184 @@ public final class g
           localXmlSerializer.attribute(null, "cdnthumburl", (String)localMap.get(".msg.videomsg.$cdnthumburl"));
           localXmlSerializer.attribute(null, "cdnthumblength", (String)localMap.get(".msg.videomsg.$cdnthumblength"));
         }
-        localXmlSerializer.attribute(null, "playlength", locals.fXx);
-        localXmlSerializer.attribute(null, "length", locals.fsd);
+        localXmlSerializer.attribute(null, "playlength", localz.omT);
+        localXmlSerializer.attribute(null, "length", localz.osy);
         localXmlSerializer.attribute(null, "type", String.valueOf(i));
-        if (!bo.isNullOrNil(paramgx)) {
-          localXmlSerializer.attribute(null, "fromusername", paramgx);
+        if (!Util.isNullOrNil(paramjd)) {
+          localXmlSerializer.attribute(null, "fromusername", paramjd);
         }
-        localXmlSerializer.attribute(null, "md5", locals.cHH);
+        localXmlSerializer.attribute(null, "md5", localz.ibd);
         localXmlSerializer.endTag(null, "videomsg");
         localXmlSerializer.endTag(null, "msg");
         localXmlSerializer.endDocument();
-        parambi.flush();
-        parambi.close();
-        paramgx = parambi.getBuffer().toString();
-        ab.d("MicroMsg.BakOldItemVideo", "parseContent xml:".concat(String.valueOf(paramgx)));
-        AppMethodBeat.o(17795);
-        return paramgx;
+        paramcc.flush();
+        paramcc.close();
+        paramjd = paramcc.getBuffer().toString();
+        Log.d("MicroMsg.BakOldItemVideo", "parseContent xml:".concat(String.valueOf(paramjd)));
+        AppMethodBeat.o(21852);
+        return paramjd;
       }
-      catch (Exception paramgx)
+      catch (Exception paramjd)
       {
-        ab.e("MicroMsg.BakOldItemVideo", "packetVoice xml error: " + paramgx.toString());
-        AppMethodBeat.o(17795);
+        Log.e("MicroMsg.BakOldItemVideo", "packetVoice xml error: " + paramjd.toString());
+        AppMethodBeat.o(21852);
       }
     }
     return null;
   }
   
-  public final int a(gx paramgx, bi parambi, LinkedList<u> paramLinkedList)
+  public final int a(jd paramjd, cc paramcc, String paramString, LinkedList<com.tencent.mm.plugin.backup.i.u> paramLinkedList)
   {
-    AppMethodBeat.i(17793);
-    com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs().alE();
-    String str = t.vf(parambi.field_imgPath);
-    Object localObject = d.Gt(parambi.field_imgPath);
+    AppMethodBeat.i(300724);
+    b.cXr().cXs().bOh();
+    paramString = aa.PX(paramcc.field_imgPath);
+    Object localObject = d.ahJ(paramcc.field_imgPath);
     int j;
-    if ((localObject == null) || (((s)localObject).status == 199))
+    if ((localObject == null) || (((z)localObject).status == 199))
     {
       j = 1;
-      localObject = new com.tencent.mm.vfs.b(str);
-      if ((j == 0) || (!((com.tencent.mm.vfs.b)localObject).exists())) {
-        break label329;
+      localObject = new com.tencent.mm.vfs.u(paramString);
+      if ((j == 0) || (!((com.tencent.mm.vfs.u)localObject).jKS())) {
+        break label332;
       }
     }
     label174:
-    label326:
     label329:
-    for (int k = (int)((com.tencent.mm.vfs.b)localObject).length();; k = 0)
+    label332:
+    for (int k = (int)((com.tencent.mm.vfs.u)localObject).length();; k = 0)
     {
       int m = 0;
-      com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs().alE();
-      localObject = t.vg(parambi.field_imgPath);
-      com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b((String)localObject);
-      if (localb.exists()) {
-        m = (int)localb.length();
+      b.cXr().cXs().bOh();
+      localObject = aa.PY(paramcc.field_imgPath);
+      com.tencent.mm.vfs.u localu = new com.tencent.mm.vfs.u((String)localObject);
+      if (localu.jKS()) {
+        m = (int)localu.length();
       }
       int i = 0;
       if (m != 0)
       {
-        if (parambi.getType() == 62) {
-          i = i.a(new i.a((String)localObject, paramgx, paramLinkedList, 13, "_thumb")) + 0;
+        if (paramcc.getType() == 62) {
+          i = i.a(new i.a((String)localObject, paramjd, paramLinkedList, 13, false, "_thumb", false)) + 0;
         }
       }
       else
       {
         if ((j == 0) || (k == 0)) {
-          break label326;
+          break label329;
         }
-        if (parambi.getType() != 62) {
-          break label267;
+        if (paramcc.getType() != 62) {
+          break label270;
         }
-        i = i.a(new i.a(str, paramgx, paramLinkedList, 12, false, null)) + i;
+        i = i.a(new i.a(paramString, paramjd, paramLinkedList, 12, false, false, null)) + i;
       }
       for (;;)
       {
-        parambi = a(paramgx, parambi);
-        if (parambi == null)
+        paramcc = a(paramjd, paramcc);
+        if (paramcc == null)
         {
-          AppMethodBeat.o(17793);
+          AppMethodBeat.o(300724);
           return i;
           j = 0;
           break;
-          i = i.a(new i.a((String)localObject, paramgx, paramLinkedList, 11, "_thumb")) + 0;
+          i = i.a(new i.a((String)localObject, paramjd, paramLinkedList, 11, false, "_thumb", false)) + 0;
           break label174;
-          i = i.a(new i.a(str, paramgx, paramLinkedList, 10, false, null)) + i;
+          i = i.a(new i.a(paramString, paramjd, paramLinkedList, 10, false, false, null)) + i;
           continue;
         }
-        paramgx.woR = new bwc().aoF(parambi);
-        j = parambi.length();
-        AppMethodBeat.o(17793);
+        paramjd.YFG = new etl().btH(paramcc);
+        j = paramcc.length();
+        AppMethodBeat.o(300724);
         return i + j;
       }
     }
   }
   
-  public final int a(String paramString, gx paramgx, bi parambi)
+  public final int a(String paramString, jd paramjd, cc paramcc)
   {
-    AppMethodBeat.i(17794);
-    paramString = new s();
-    paramString.cDt = paramgx.woP.xJE;
-    paramString.createTime = parambi.field_createTime;
-    paramString.cFn = paramgx.pIG;
-    Object localObject = paramgx.woR.xJE;
-    ab.d("MicroMsg.BakOldItemVideo", "parseVideoMsgXML content:".concat(String.valueOf(localObject)));
-    localObject = br.F((String)localObject, "msg");
+    AppMethodBeat.i(21851);
+    paramString = new z();
+    paramString.hVQ = paramjd.YFE.abwM;
+    paramString.createTime = paramcc.getCreateTime();
+    paramString.hTh = paramjd.Njv;
+    Object localObject = paramjd.YFG.abwM;
+    Log.d("MicroMsg.BakOldItemVideo", "parseVideoMsgXML content:".concat(String.valueOf(localObject)));
+    localObject = XmlParser.parseXml((String)localObject, "msg", null);
     if (localObject != null)
     {
       try
       {
-        paramString.fsd = a.bE((String)((Map)localObject).get(".msg.videomsg.$length"), 0);
-        paramString.fXx = a.bE((String)((Map)localObject).get(".msg.videomsg.$playlength"), 0);
-        paramString.fXq = ((String)((Map)localObject).get(".msg.videomsg.$fromusername"));
-        i = a.bE((String)((Map)localObject).get(".msg.videomsg.$type"), 0);
-        ab.d("MicroMsg.BakOldItemVideo", "video msg exportType :".concat(String.valueOf(i)));
+        paramString.osy = a.dr((String)((Map)localObject).get(".msg.videomsg.$length"), 0);
+        paramString.omT = a.dr((String)((Map)localObject).get(".msg.videomsg.$playlength"), 0);
+        paramString.paV = ((String)((Map)localObject).get(".msg.videomsg.$fromusername"));
+        i = a.dr((String)((Map)localObject).get(".msg.videomsg.$type"), 0);
+        Log.d("MicroMsg.BakOldItemVideo", "video msg exportType :".concat(String.valueOf(i)));
         if (i != 44) {
-          break label469;
+          break label471;
         }
         i = 1;
-        paramString.fXB = i;
+        paramString.pbf = i;
       }
       catch (Exception localException)
       {
         for (;;)
         {
           int i;
-          label190:
-          label215:
-          ab.e("MicroMsg.BakOldItemVideo", "parsing voice msg xml failed");
-          ab.printErrStackTrace("MicroMsg.BakOldItemVideo", localException, "", new Object[0]);
+          label191:
+          label216:
+          Log.e("MicroMsg.BakOldItemVideo", "parsing voice msg xml failed");
+          Log.printErrStackTrace("MicroMsg.BakOldItemVideo", localException, "", new Object[0]);
         }
       }
-      if ((!a.d(paramgx, 10)) && (!a.d(paramgx, 12))) {
-        break label538;
+      if ((!a.d(paramjd, 10)) && (!a.d(paramjd, 12))) {
+        break label540;
       }
       paramString.status = 199;
-      localObject = t.ve(paramString.alM());
-      parambi.kk((String)localObject);
+      localObject = aa.PW(paramString.bOs());
+      paramcc.BT((String)localObject);
       paramString.fileName = ((String)localObject);
-      if (parambi.getType() != 62) {
-        parambi.setType(43);
+      if (paramcc.getType() != 62) {
+        paramcc.setType(43);
       }
-      parambi.setContent(q.d(paramString.alM(), paramString.fXw, false));
-      paramString.fXy = ((int)d.l(parambi));
-      paramString.fXv = bo.aox();
-      paramString.fXz = 0;
-      ab.d("MicroMsg.BakOldItemVideo", "Insert fileName[" + paramString.getFileName() + "] size:" + paramString.fsd + " svrid:" + paramString.cFn + " timelen:" + paramString.fXx + " user:" + paramString.getUser() + " human:" + paramString.alM());
-      com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs().alE().b(paramString);
-      com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs().alE();
-      paramString = t.vg((String)localObject);
-      if (parambi.getType() != 62) {
-        break label547;
+      paramcc.setContent(x.a(paramString.bOq(), paramString.pbb, false));
+      paramString.pbc = ((int)d.B(paramcc));
+      paramString.pba = Util.nowSecond();
+      paramString.pbd = 0;
+      Log.d("MicroMsg.BakOldItemVideo", "Insert fileName[" + paramString.getFileName() + "] size:" + paramString.osy + " svrid:" + paramString.hTh + " timelen:" + paramString.omT + " user:" + paramString.bOs() + " human:" + paramString.bOq());
+      b.cXr().cXs().bOh().b(paramString);
+      b.cXr().cXs().bOh();
+      paramString = aa.PY((String)localObject);
+      if (paramcc.getType() != 62) {
+        break label549;
       }
-      a.b(paramgx, 13, paramString);
+      a.b(paramjd, 13, paramString);
     }
-    for (paramString = a.a(paramgx, 12);; paramString = a.a(paramgx, 10))
+    for (paramString = a.a(paramjd, 12);; paramString = a.a(paramjd, 10))
     {
       if (paramString != null)
       {
-        paramString = a.Gw(paramString);
-        com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs().alE();
-        e.C(paramString, t.vf((String)localObject));
+        paramString = a.ahN(paramString);
+        b.cXr().cXs().bOh();
+        y.O(paramString, aa.PX((String)localObject), false);
       }
-      AppMethodBeat.o(17794);
+      AppMethodBeat.o(21851);
       return 0;
-      label469:
+      label471:
       i = 0;
       break;
-      ab.e("MicroMsg.BakOldItemVideo", "videomsg paseXml failed:%s", new Object[] { paramgx.woR.xJE });
-      parambi.setContent(paramgx.woR.xJE);
-      break label190;
-      label538:
+      Log.e("MicroMsg.BakOldItemVideo", "videomsg paseXml failed:%s", new Object[] { paramjd.YFG.abwM });
+      paramcc.setContent(paramjd.YFG.abwM);
+      break label191;
+      label540:
       paramString.status = 111;
-      break label215;
-      label547:
-      a.b(paramgx, 11, paramString);
+      break label216;
+      label549:
+      a.b(paramjd, 11, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.b.g
  * JD-Core Version:    0.7.0.1
  */

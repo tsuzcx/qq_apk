@@ -1,19 +1,8 @@
 package android.support.v4.app;
 
-import android.app.Notification;
-
-class au
-  extends at
+public abstract interface au
 {
-  public Notification b(ar paramar)
-  {
-    br localbr = new br(paramar.mContext, paramar.fm, paramar.eC, paramar.eD, paramar.eI, paramar.eG, paramar.eJ, paramar.eE, paramar.eF, paramar.eH, paramar.eQ, paramar.eR, paramar.eS, paramar.eL, paramar.eM, paramar.eK, paramar.eO, paramar.eX, paramar.fn, paramar.ew, paramar.eT, paramar.eU, paramar.eV, paramar.fe, paramar.ff);
-    ao.a(localbr, paramar.eW);
-    if (paramar.eN != null) {
-      paramar.eN.a(localbr);
-    }
-    return as.a(paramar, localbr);
-  }
+  public abstract at a(at paramat);
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import bayf;
-import blqh;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
+import mqq.app.MobileQQ;
 
 class FavEmoSingleSend$1
   extends TimerTask
@@ -14,11 +14,11 @@ class FavEmoSingleSend$1
   public void run()
   {
     QLog.e("FavEmoSingleSend", 1, "doStep, upload not complete");
-    ((QQAppInterface)blqh.a()).a().a(FavEmoSingleSend.a(this.this$0));
+    ((ITransFileController)((BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getRuntimeService(ITransFileController.class)).stop(FavEmoSingleSend.a(this.this$0));
     this.this$0.a("failed", 0, 4, 0);
-    synchronized (FavEmoSingleSend.a(this.this$0))
+    synchronized (FavEmoSingleSend.b(this.this$0))
     {
-      FavEmoSingleSend.a(this.this$0).notify();
+      FavEmoSingleSend.b(this.this$0).notify();
       return;
     }
   }

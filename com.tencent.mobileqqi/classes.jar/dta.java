@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
 
 public class dta
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public dta(TroopTransferActivity paramTroopTransferActivity, QQCustomDialog paramQQCustomDialog) {}
+  public dta(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    try
+    {
+      if (this.a.a != null) {
+        this.a.a.notifyDataSetChanged();
+      }
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
 }
 

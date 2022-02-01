@@ -28,25 +28,26 @@ public abstract class FramedataImpl1
   
   public static FramedataImpl1 get(Opcode paramOpcode)
   {
-    if (paramOpcode == null) {
-      throw new IllegalArgumentException("Supplied opcode cannot be null");
-    }
-    switch (FramedataImpl1.1.$SwitchMap$org$java_websocket$enums$Opcode[paramOpcode.ordinal()])
+    if (paramOpcode != null)
     {
-    default: 
-      throw new IllegalArgumentException("Supplied opcode is invalid");
-    case 1: 
+      switch (FramedataImpl1.1.$SwitchMap$org$java_websocket$enums$Opcode[paramOpcode.ordinal()])
+      {
+      default: 
+        throw new IllegalArgumentException("Supplied opcode is invalid");
+      case 6: 
+        return new ContinuousFrame();
+      case 5: 
+        return new CloseFrame();
+      case 4: 
+        return new BinaryFrame();
+      case 3: 
+        return new TextFrame();
+      case 2: 
+        return new PongFrame();
+      }
       return new PingFrame();
-    case 2: 
-      return new PongFrame();
-    case 3: 
-      return new TextFrame();
-    case 4: 
-      return new BinaryFrame();
-    case 5: 
-      return new CloseFrame();
     }
-    return new ContinuousFrame();
+    throw new IllegalArgumentException("Supplied opcode cannot be null");
   }
   
   public void append(Framedata paramFramedata)
@@ -58,82 +59,68 @@ public abstract class FramedataImpl1
       localByteBuffer1.mark();
       this.unmaskedpayload.put(localByteBuffer1);
       localByteBuffer1.reset();
-      this.fin = paramFramedata.isFin();
-      return;
     }
-    localByteBuffer1.mark();
-    this.unmaskedpayload.position(this.unmaskedpayload.limit());
-    this.unmaskedpayload.limit(this.unmaskedpayload.capacity());
-    if (localByteBuffer1.remaining() > this.unmaskedpayload.remaining())
+    else
     {
-      ByteBuffer localByteBuffer2 = ByteBuffer.allocate(localByteBuffer1.remaining() + this.unmaskedpayload.capacity());
-      this.unmaskedpayload.flip();
-      localByteBuffer2.put(this.unmaskedpayload);
-      localByteBuffer2.put(localByteBuffer1);
-      this.unmaskedpayload = localByteBuffer2;
-    }
-    for (;;)
-    {
+      localByteBuffer1.mark();
+      ByteBuffer localByteBuffer2 = this.unmaskedpayload;
+      localByteBuffer2.position(localByteBuffer2.limit());
+      localByteBuffer2 = this.unmaskedpayload;
+      localByteBuffer2.limit(localByteBuffer2.capacity());
+      if (localByteBuffer1.remaining() > this.unmaskedpayload.remaining())
+      {
+        localByteBuffer2 = ByteBuffer.allocate(localByteBuffer1.remaining() + this.unmaskedpayload.capacity());
+        this.unmaskedpayload.flip();
+        localByteBuffer2.put(this.unmaskedpayload);
+        localByteBuffer2.put(localByteBuffer1);
+        this.unmaskedpayload = localByteBuffer2;
+      }
+      else
+      {
+        this.unmaskedpayload.put(localByteBuffer1);
+      }
       this.unmaskedpayload.rewind();
       localByteBuffer1.reset();
-      break;
-      this.unmaskedpayload.put(localByteBuffer1);
     }
+    this.fin = paramFramedata.isFin();
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return bool1;
-                    bool1 = bool3;
-                  } while (paramObject == null);
-                  bool1 = bool3;
-                } while (getClass() != paramObject.getClass());
-                paramObject = (FramedataImpl1)paramObject;
-                bool1 = bool3;
-              } while (this.fin != paramObject.fin);
-              bool1 = bool3;
-            } while (this.transferemasked != paramObject.transferemasked);
-            bool1 = bool3;
-          } while (this.rsv1 != paramObject.rsv1);
-          bool1 = bool3;
-        } while (this.rsv2 != paramObject.rsv2);
-        bool1 = bool3;
-      } while (this.rsv3 != paramObject.rsv3);
-      bool1 = bool3;
-    } while (this.optcode != paramObject.optcode);
-    if (this.unmaskedpayload != null) {
-      bool1 = this.unmaskedpayload.equals(paramObject.unmaskedpayload);
-    }
-    for (;;)
-    {
-      return bool1;
-      bool1 = bool2;
-      if (paramObject.unmaskedpayload != null) {
-        bool1 = false;
+      if (getClass() != paramObject.getClass()) {
+        return false;
       }
+      paramObject = (FramedataImpl1)paramObject;
+      if (this.fin != paramObject.fin) {
+        return false;
+      }
+      if (this.transferemasked != paramObject.transferemasked) {
+        return false;
+      }
+      if (this.rsv1 != paramObject.rsv1) {
+        return false;
+      }
+      if (this.rsv2 != paramObject.rsv2) {
+        return false;
+      }
+      if (this.rsv3 != paramObject.rsv3) {
+        return false;
+      }
+      if (this.optcode != paramObject.optcode) {
+        return false;
+      }
+      ByteBuffer localByteBuffer = this.unmaskedpayload;
+      if (localByteBuffer != null) {
+        return localByteBuffer.equals(paramObject.unmaskedpayload);
+      }
+      return paramObject.unmaskedpayload == null;
     }
+    return false;
   }
   
   public Opcode getOpcode()
@@ -153,61 +140,7 @@ public abstract class FramedataImpl1
   
   public int hashCode()
   {
-    int i1 = 1;
-    int i;
-    int i2;
-    int j;
-    label36:
-    int k;
-    label45:
-    int m;
-    label55:
-    int n;
-    if (this.fin)
-    {
-      i = 1;
-      i2 = this.optcode.hashCode();
-      if (this.unmaskedpayload == null) {
-        break label113;
-      }
-      j = this.unmaskedpayload.hashCode();
-      if (!this.transferemasked) {
-        break label118;
-      }
-      k = 1;
-      if (!this.rsv1) {
-        break label123;
-      }
-      m = 1;
-      if (!this.rsv2) {
-        break label129;
-      }
-      n = 1;
-      label65:
-      if (!this.rsv3) {
-        break label135;
-      }
-    }
-    for (;;)
-    {
-      return (n + (m + (k + (j + (i * 31 + i2) * 31) * 31) * 31) * 31) * 31 + i1;
-      i = 0;
-      break;
-      label113:
-      j = 0;
-      break label36;
-      label118:
-      k = 0;
-      break label45;
-      label123:
-      m = 0;
-      break label55;
-      label129:
-      n = 0;
-      break label65;
-      label135:
-      i1 = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:632)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean isFin()
@@ -264,16 +197,36 @@ public abstract class FramedataImpl1
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Framedata{ optcode:").append(getOpcode()).append(", fin:").append(isFin()).append(", rsv1:").append(isRSV1()).append(", rsv2:").append(isRSV2()).append(", rsv3:").append(isRSV3()).append(", payloadlength:[pos:").append(this.unmaskedpayload.position()).append(", len:").append(this.unmaskedpayload.remaining()).append("], payload:");
-    if (this.unmaskedpayload.remaining() > 1000) {}
-    for (String str = "(too big to display)";; str = new String(this.unmaskedpayload.array())) {
-      return str + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Framedata{ optcode:");
+    localStringBuilder.append(getOpcode());
+    localStringBuilder.append(", fin:");
+    localStringBuilder.append(isFin());
+    localStringBuilder.append(", rsv1:");
+    localStringBuilder.append(isRSV1());
+    localStringBuilder.append(", rsv2:");
+    localStringBuilder.append(isRSV2());
+    localStringBuilder.append(", rsv3:");
+    localStringBuilder.append(isRSV3());
+    localStringBuilder.append(", payloadlength:[pos:");
+    localStringBuilder.append(this.unmaskedpayload.position());
+    localStringBuilder.append(", len:");
+    localStringBuilder.append(this.unmaskedpayload.remaining());
+    localStringBuilder.append("], payload:");
+    String str;
+    if (this.unmaskedpayload.remaining() > 1000) {
+      str = "(too big to display)";
+    } else {
+      str = new String(this.unmaskedpayload.array());
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.framing.FramedataImpl1
  * JD-Core Version:    0.7.0.1
  */

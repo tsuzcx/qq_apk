@@ -1,82 +1,103 @@
 package com.tencent.mm.plugin.appbrand.widget.h;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.RectF;
-import android.text.style.ReplacementSpan;
+import android.app.Activity;
+import android.content.Context;
+import android.text.Spannable.Factory;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
+import com.tencent.mm.plugin.appbrand.ba.h;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.mm.ui.base.v;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/prompt/AppBrandPopupToast;", "Lcom/tencent/mm/ui/base/MMPopupWindow;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mIconImage", "Landroid/widget/ImageView;", "mMessageText", "Landroid/widget/TextView;", "getMMessageText", "()Landroid/widget/TextView;", "setIconDrawable", "drawable", "Landroid/graphics/drawable/Drawable;", "setMessage", "message", "", "show", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends ReplacementSpan
+  extends v
 {
-  private final int backgroundColor;
-  private final int paddingLeft;
-  private final int paddingRight;
-  private final int radius;
-  private final String text;
-  private final int textColor;
-  private final float textSize;
+  private final TextView uPD;
+  private final ImageView uPE;
   
-  public c(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public c(Context paramContext)
   {
-    AppMethodBeat.i(77509);
-    this.textSize = paramInt3;
-    this.text = paramString;
-    this.textColor = -1;
-    this.backgroundColor = paramInt4;
-    this.radius = paramInt5;
-    this.paddingLeft = paramInt1;
-    this.paddingRight = paramInt2;
-    AppMethodBeat.o(77509);
+    super(paramContext);
+    AppMethodBeat.i(51450);
+    Object localObject = new FrameLayout(paramContext);
+    View.inflate(paramContext, ba.g.app_brand_show_toast, (ViewGroup)localObject);
+    ah localah = ah.aiuX;
+    setContentView((View)localObject);
+    getContentView().findViewById(ba.f.progress).setVisibility(8);
+    localObject = getContentView().findViewById(ba.f.iv_icon);
+    s.s(localObject, "contentView.findViewById(R.id.iv_icon)");
+    this.uPE = ((ImageView)localObject);
+    localObject = getContentView().findViewById(ba.f.title);
+    s.s(localObject, "contentView.findViewById(R.id.title)");
+    this.uPD = ((TextView)localObject);
+    paramContext = com.tencent.mm.svg.a.a.i(paramContext.getResources(), ba.h.app_brand_show_toast_success);
+    this.uPE.setVisibility(0);
+    this.uPE.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.uPE.setImageDrawable(paramContext);
+    setFocusable(true);
+    getContentView().setFocusable(true);
+    this.uPD.setFocusable(true);
+    AppMethodBeat.o(51450);
   }
   
-  public final int b(Paint paramPaint)
+  public final c X(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(77510);
-    Paint localPaint = paramPaint;
-    if (paramPaint == null) {
-      localPaint = new Paint();
+    AppMethodBeat.i(51448);
+    int i;
+    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
+    {
+      i = 1;
+      if (i != 0) {
+        break label131;
+      }
+      this.uPD.setLineSpacing(0.0F, 1.0F);
+      this.uPD.setSpannableFactory((Spannable.Factory)new e(com.tencent.mm.cd.a.fromDPToPix(getContentView().getContext(), 18)));
+      this.uPD.setText(paramCharSequence, TextView.BufferType.SPANNABLE);
+      this.uPD.setVisibility(0);
+      i = com.tencent.mm.cd.a.fromDPToPix(getContentView().getContext(), 27);
+      getContentView().findViewById(ba.f.show_toast_view_container).setPadding(0, i, 0, 0);
+      this.uPD.setContentDescription(paramCharSequence);
     }
-    localPaint.setTextSize(this.textSize);
-    int i = (int)localPaint.measureText(this.text);
-    int j = this.paddingLeft;
-    int k = this.paddingRight;
-    int m = this.radius;
-    AppMethodBeat.o(77510);
-    return i + j + k + m * 2;
+    for (;;)
+    {
+      AppMethodBeat.o(51448);
+      return this;
+      i = 0;
+      break;
+      label131:
+      this.uPD.setVisibility(4);
+    }
   }
   
-  public final void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public final void show()
   {
-    AppMethodBeat.i(77512);
-    paramPaint.setTextSize(this.textSize);
-    paramPaint.setAntiAlias(true);
-    paramCharSequence = new RectF();
-    paramCharSequence.left = ((int)paramFloat + this.paddingLeft);
-    Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-    paramInt1 = Math.max(0, (paramInt5 - paramInt3 - localFontMetricsInt.descent + localFontMetricsInt.top) / 2 - this.radius);
-    paramCharSequence.top = (paramInt3 + paramInt1);
-    paramCharSequence.bottom = (paramInt5 - paramInt1);
-    paramCharSequence.right = (paramCharSequence.left + (int)paramPaint.measureText(this.text) + this.radius * 2);
-    paramPaint.setColor(this.backgroundColor);
-    paramCanvas.drawRoundRect(paramCharSequence, this.radius, this.radius, paramPaint);
-    paramPaint.setColor(this.textColor);
-    paramCanvas.drawText(this.text, paramCharSequence.left + this.radius, paramCharSequence.top + this.radius - localFontMetricsInt.top, paramPaint);
-    AppMethodBeat.o(77512);
-  }
-  
-  public final int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    AppMethodBeat.i(77511);
-    paramInt1 = b(paramPaint);
-    AppMethodBeat.o(77511);
-    return paramInt1;
+    AppMethodBeat.i(51449);
+    Activity localActivity = AndroidContextUtil.castActivityOrNull(getContentView().getContext());
+    if (localActivity != null)
+    {
+      super.showAtLocation(localActivity.findViewById(16908290), 17, 0, 0);
+      this.uPD.requestFocus();
+      MMHandlerThread.postToMainThreadDelayed((Runnable)new d(this), 1500L);
+    }
+    AppMethodBeat.o(51449);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.h.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class star_info
   extends JceStruct
 {
-  public int iStarLevel;
-  public int iStarStatus;
-  public byte isAnnualVip;
-  public byte isHighStarVip;
+  public int iStarLevel = 0;
+  public int iStarStatus = 0;
+  public byte isAnnualVip = 0;
+  public byte isHighStarVip = 0;
   
   public star_info() {}
   
@@ -40,7 +40,7 @@ public final class star_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.star_info
  * JD-Core Version:    0.7.0.1
  */

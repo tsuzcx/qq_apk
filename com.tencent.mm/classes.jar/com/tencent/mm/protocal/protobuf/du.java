@@ -1,122 +1,131 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class du
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String Id;
-  public String jKg;
-  public String ntp;
-  public String wpJ;
-  public String wpK;
-  public int wpL;
+  public String YFV;
+  public String YFW;
+  public dxm YFX;
+  public String url;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94507);
+    AppMethodBeat.i(258849);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Id != null) {
-        paramVarArgs.e(1, this.Id);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.url != null) {
+        paramVarArgs.g(1, this.url);
       }
-      if (this.jKg != null) {
-        paramVarArgs.e(2, this.jKg);
+      if (this.YFV != null) {
+        paramVarArgs.g(2, this.YFV);
       }
-      if (this.ntp != null) {
-        paramVarArgs.e(3, this.ntp);
+      if (this.YFW != null) {
+        paramVarArgs.g(3, this.YFW);
       }
-      if (this.wpJ != null) {
-        paramVarArgs.e(4, this.wpJ);
+      if (this.YFX != null)
+      {
+        paramVarArgs.qD(4, this.YFX.computeSize());
+        this.YFX.writeFields(paramVarArgs);
       }
-      if (this.wpK != null) {
-        paramVarArgs.e(5, this.wpK);
+      if (this.username != null) {
+        paramVarArgs.g(100, this.username);
       }
-      paramVarArgs.aO(6, this.wpL);
-      AppMethodBeat.o(94507);
+      AppMethodBeat.o(258849);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Id == null) {
-        break label502;
+      if (this.url == null) {
+        break label544;
       }
     }
-    label502:
-    for (int i = e.a.a.b.b.a.f(1, this.Id) + 0;; i = 0)
+    label544:
+    for (int i = i.a.a.b.b.a.h(1, this.url) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.jKg != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.jKg);
+      if (this.YFV != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.YFV);
       }
       i = paramInt;
-      if (this.ntp != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.ntp);
+      if (this.YFW != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YFW);
       }
       paramInt = i;
-      if (this.wpJ != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.wpJ);
+      if (this.YFX != null) {
+        paramInt = i + i.a.a.a.qC(4, this.YFX.computeSize());
       }
       i = paramInt;
-      if (this.wpK != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.wpK);
+      if (this.username != null) {
+        i = paramInt + i.a.a.b.b.a.h(100, this.username);
       }
-      paramInt = e.a.a.b.b.a.bl(6, this.wpL);
-      AppMethodBeat.o(94507);
-      return i + paramInt;
+      AppMethodBeat.o(258849);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(94507);
+        AppMethodBeat.o(258849);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         du localdu = (du)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(94507);
+          AppMethodBeat.o(258849);
           return -1;
         case 1: 
-          localdu.Id = locala.CLY.readString();
-          AppMethodBeat.o(94507);
+          localdu.url = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(258849);
           return 0;
         case 2: 
-          localdu.jKg = locala.CLY.readString();
-          AppMethodBeat.o(94507);
+          localdu.YFV = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(258849);
           return 0;
         case 3: 
-          localdu.ntp = locala.CLY.readString();
-          AppMethodBeat.o(94507);
+          localdu.YFW = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(258849);
           return 0;
         case 4: 
-          localdu.wpJ = locala.CLY.readString();
-          AppMethodBeat.o(94507);
-          return 0;
-        case 5: 
-          localdu.wpK = locala.CLY.readString();
-          AppMethodBeat.o(94507);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            dxm localdxm = new dxm();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localdxm.parseFrom((byte[])localObject);
+            }
+            localdu.YFX = localdxm;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(258849);
           return 0;
         }
-        localdu.wpL = locala.CLY.sl();
-        AppMethodBeat.o(94507);
+        localdu.username = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(258849);
         return 0;
       }
-      AppMethodBeat.o(94507);
+      AppMethodBeat.o(258849);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.du
  * JD-Core Version:    0.7.0.1
  */

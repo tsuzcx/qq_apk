@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class mobile_sub_getRecommend_rsp
   extends JceStruct
@@ -38,17 +39,19 @@ public final class mobile_sub_getRecommend_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.allnum, 0);
-    if (this.datalist != null) {
-      paramJceOutputStream.write(this.datalist, 1);
+    Object localObject = this.datalist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_getRecommend_rsp
  * JD-Core Version:    0.7.0.1
  */

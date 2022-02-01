@@ -7,22 +7,22 @@ import com.google.android.gms.common.n;
 
 public abstract class e<T>
 {
-  private final String LC;
-  private T LD;
+  private final String Nr;
+  private T Ns;
   
   protected e(String paramString)
   {
-    this.LC = paramString;
+    this.Nr = paramString;
   }
   
   protected abstract T d(IBinder paramIBinder);
   
-  protected final T q(Context paramContext)
+  protected final T r(Context paramContext)
   {
-    if (this.LD == null)
+    if (this.Ns == null)
     {
-      d.u(paramContext);
-      paramContext = n.o(paramContext);
+      d.D(paramContext);
+      paramContext = n.p(paramContext);
       if (paramContext == null) {
         throw new f("Could not get remote context.");
       }
@@ -30,8 +30,8 @@ public abstract class e<T>
     }
     try
     {
-      this.LD = d((IBinder)paramContext.loadClass(this.LC).newInstance());
-      return this.LD;
+      this.Ns = d((IBinder)paramContext.loadClass(this.Nr).newInstance());
+      return this.Ns;
     }
     catch (ClassNotFoundException paramContext)
     {

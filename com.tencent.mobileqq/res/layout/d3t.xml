@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="60.0dip" android:layout_height="80.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.immersive.views.QFSRoundProgressView android:id="@id/ph1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:circleBgColor="#73ffffff" app:circleFgColor="#ffffffff" app:circleRadius="13.0dip" app:circleWidth="3.0dip" app:textColor="#ffffffff" app:textSize="11.0sp" />
+    <ImageView android:id="@id/pf5" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/qcircle_skin_icon_general_close_secondary" android:scaleType="fitCenter" app:layout_constraintRight_toRightOf="fic" app:layout_constraintTop_toTopOf="fic" />
+</androidx.constraintlayout.widget.ConstraintLayout>

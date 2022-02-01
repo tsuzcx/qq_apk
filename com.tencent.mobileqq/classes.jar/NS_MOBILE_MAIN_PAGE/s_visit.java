@@ -49,8 +49,9 @@ public final class s_visit
     paramJceOutputStream.write(this.nvnum, 0);
     paramJceOutputStream.write(this.todaynum, 1);
     paramJceOutputStream.write(this.totalnum, 2);
-    if (this.datalist != null) {
-      paramJceOutputStream.write(this.datalist, 3);
+    ArrayList localArrayList = this.datalist;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
     paramJceOutputStream.write(this.lasttime, 4);
     paramJceOutputStream.write(this.visitornum, 5);
@@ -58,7 +59,7 @@ public final class s_visit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_visit
  * JD-Core Version:    0.7.0.1
  */

@@ -26,39 +26,33 @@ public class SimpleAccount
     if ((paramString != null) && (paramString.length() > 0))
     {
       SimpleAccount localSimpleAccount = new SimpleAccount();
-      String[] arrayOfString = paramString.split(",");
-      int j = arrayOfString.length;
+      paramString = paramString.split(",");
+      int j = paramString.length;
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        paramString = localSimpleAccount;
-        if (i >= j) {
-          return paramString;
-        }
-        paramString = arrayOfString[i];
-        if (paramString.length() > 0) {
-          paramString = paramString.split("=");
-        }
-        try
+        String[] arrayOfString = paramString[i];
+        if (arrayOfString.length() > 0)
         {
-          if (paramString.length == 2)
+          arrayOfString = arrayOfString.split("=");
+          try
           {
-            String str = new String(HexUtil.hexStr2Bytes(paramString[1]), "UTF-8");
-            localSimpleAccount.attributes.put(paramString[0], str);
+            if (arrayOfString.length == 2)
+            {
+              String str = new String(HexUtil.hexStr2Bytes(arrayOfString[1]), "UTF-8");
+              localSimpleAccount.attributes.put(arrayOfString[0], str);
+            }
           }
-          i += 1;
-        }
-        catch (UnsupportedEncodingException paramString)
-        {
-          for (;;)
+          catch (UnsupportedEncodingException localUnsupportedEncodingException)
           {
-            QLog.d("SimpleAccount", 1, paramString.toString(), paramString);
+            QLog.d("SimpleAccount", 1, localUnsupportedEncodingException.toString(), localUnsupportedEncodingException);
           }
         }
+        i += 1;
       }
+      return localSimpleAccount;
     }
-    paramString = null;
-    return paramString;
+    return null;
   }
   
   public boolean containsKey(String paramString)
@@ -109,10 +103,12 @@ public class SimpleAccount
   
   public void setAttribute(String paramString1, String paramString2)
   {
-    if (paramString1.indexOf(" ") > 0) {
-      throw new RuntimeException("key found space ");
+    if (paramString1.indexOf(" ") <= 0)
+    {
+      this.attributes.put(paramString1, paramString2);
+      return;
     }
-    this.attributes.put(paramString1, paramString2);
+    throw new RuntimeException("key found space ");
   }
   
   public void setLoginProcess(String paramString)
@@ -134,8 +130,14 @@ public class SimpleAccount
       {
         String str1 = (String)((Iterator)localObject2).next();
         String str2 = (String)this.attributes.get(str1);
-        if (str2 != null) {
-          ((StringBuffer)localObject1).append(str1 + "=" + HexUtil.bytes2HexStr(str2.getBytes("UTF-8")) + ",");
+        if (str2 != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str1);
+          localStringBuilder.append("=");
+          localStringBuilder.append(HexUtil.bytes2HexStr(str2.getBytes("UTF-8")));
+          localStringBuilder.append(",");
+          ((StringBuffer)localObject1).append(localStringBuilder.toString());
         }
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -159,14 +161,19 @@ public class SimpleAccount
     {
       String str1 = (String)localIterator.next();
       String str2 = (String)this.attributes.get(str1);
-      localStringBuffer.append(str1 + ":" + str2 + ",");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append(":");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(",");
+      localStringBuffer.append(localStringBuilder.toString());
     }
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.remote.SimpleAccount
  * JD-Core Version:    0.7.0.1
  */

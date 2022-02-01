@@ -15,5 +15,5 @@
             <ImageView android:layout_gravity="center" android:id="@id/chv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         </FrameLayout>
     </RelativeLayout>
-    <ImageView android:layout_gravity="right" android:id="@id/chy" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="7.5dip" android:src="@drawable/qzone_skin_font_sel" />
+    <ImageView android:layout_gravity="right" android:id="@id/chy" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="7.5dip" android:src="@drawable/qzone_skin_font_sel" android:contentDescription="@string/a34" />
 </FrameLayout>

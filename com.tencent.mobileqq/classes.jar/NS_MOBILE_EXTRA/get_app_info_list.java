@@ -40,7 +40,7 @@ public final class get_app_info_list
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.get_app_info_list
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,76 @@
 package com.tencent.mm.plugin.appbrand.n;
 
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.n.a.e.a;
-import com.tencent.mm.plugin.appbrand.n.d.a;
-import com.tencent.mm.plugin.appbrand.n.d.b;
-import com.tencent.mm.plugin.appbrand.n.d.c;
-import com.tencent.mm.plugin.appbrand.r;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.appbrand.v8.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class e
+public class e
 {
-  private static final Map<Integer, com.tencent.mm.plugin.appbrand.n.a.e> iuf;
+  private final a sTh;
+  private final AtomicInteger sTi;
+  final SparseArray<d> sTj;
   
   static
   {
-    AppMethodBeat.i(102184);
-    iuf = new HashMap();
-    AppMethodBeat.o(102184);
+    AppMethodBeat.i(144171);
+    if (!e.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      $assertionsDisabled = bool;
+      AppMethodBeat.o(144171);
+      return;
+    }
   }
   
-  protected static void a(e.a parama, r paramr)
+  public e(a parama)
   {
-    AppMethodBeat.i(102181);
-    a(new a(parama, paramr));
-    a(new c(parama, paramr));
-    a(new b(parama, paramr));
-    AppMethodBeat.o(102181);
+    AppMethodBeat.i(144168);
+    this.sTh = parama;
+    this.sTi = new AtomicInteger(1);
+    this.sTj = new SparseArray();
+    AppMethodBeat.o(144168);
   }
   
-  private static final void a(com.tencent.mm.plugin.appbrand.n.a.e parame)
+  public static int czl()
   {
-    AppMethodBeat.i(102183);
-    iuf.put(Integer.valueOf(parame.getType()), parame);
-    AppMethodBeat.o(102183);
+    return 1;
   }
   
-  public static com.tencent.mm.plugin.appbrand.n.a.e oZ(int paramInt)
+  public final g BK(int paramInt)
   {
-    AppMethodBeat.i(102182);
-    com.tencent.mm.plugin.appbrand.n.a.e locale = (com.tencent.mm.plugin.appbrand.n.a.e)iuf.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(102182);
-    return locale;
+    AppMethodBeat.i(144169);
+    synchronized (this.sTj)
+    {
+      g localg = (g)this.sTj.get(paramInt);
+      AppMethodBeat.o(144169);
+      return localg;
+    }
+  }
+  
+  public final g czj()
+  {
+    AppMethodBeat.i(144170);
+    int i = this.sTi.incrementAndGet();
+    f localf = new f(this.sTh.BP(i), i);
+    synchronized (this.sTj)
+    {
+      this.sTj.put(i, localf);
+      Log.i("MicroMsg.AppBrandJ2V8ContextMgr", "allocJsContext id:%d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(144170);
+      return localf;
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract m BP(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.n.e
  * JD-Core Version:    0.7.0.1
  */

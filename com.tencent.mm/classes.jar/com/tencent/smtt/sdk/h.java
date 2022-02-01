@@ -1,31 +1,27 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
+import android.database.sqlite.SQLiteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class h
-  extends Thread
+public class h
+  implements Thread.UncaughtExceptionHandler
 {
-  h(Context paramContext, String paramString, ValueCallback paramValueCallback) {}
-  
-  public final void run()
+  public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    AppMethodBeat.i(63986);
-    bz localbz = bz.a();
-    localbz.a(this.a, null);
-    boolean bool = false;
-    if (localbz.b()) {
-      bool = localbz.c().a(this.a, this.b);
+    AppMethodBeat.i(219415);
+    if ((paramThrowable instanceof SQLiteException))
+    {
+      AppMethodBeat.o(219415);
+      return;
     }
-    new Handler(Looper.getMainLooper()).post(new i(this, bool));
-    AppMethodBeat.o(63986);
+    paramThread = new RuntimeException(paramThrowable);
+    AppMethodBeat.o(219415);
+    throw paramThread;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.h
  * JD-Core Version:    0.7.0.1
  */

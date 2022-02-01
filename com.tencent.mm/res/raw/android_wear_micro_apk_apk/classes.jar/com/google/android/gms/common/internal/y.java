@@ -5,7 +5,7 @@ import java.util.Set;
 
 public final class y
 {
-  public final Set<Scope> GR;
+  public final Set<Scope> IG;
 }
 
 

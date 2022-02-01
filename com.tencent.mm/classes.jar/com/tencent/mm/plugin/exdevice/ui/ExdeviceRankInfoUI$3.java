@@ -8,16 +8,16 @@ final class ExdeviceRankInfoUI$3
 {
   ExdeviceRankInfoUI$3(ExdeviceRankInfoUI paramExdeviceRankInfoUI) {}
   
-  public final void bqW()
+  public final void dHa()
   {
-    AppMethodBeat.i(20136);
-    ExdeviceRankInfoUI.r(this.lPt);
-    AppMethodBeat.o(20136);
+    AppMethodBeat.i(24208);
+    ExdeviceRankInfoUI.r(this.yCI);
+    AppMethodBeat.o(24208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankInfoUI.3
  * JD-Core Version:    0.7.0.1
  */

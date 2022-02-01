@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.widget.ImageButton;
-import apyy;
 
 class SystemAndEmojiUniversalPanel$2
   implements Runnable
@@ -10,11 +9,11 @@ class SystemAndEmojiUniversalPanel$2
   
   public void run()
   {
-    SystemAndEmojiUniversalPanel.a(this.this$0).measure(0, 0);
-    SystemAndEmojiUniversalPanel.a(this.this$0).b(SystemAndEmojiUniversalPanel.a(this.this$0));
-    SystemAndEmojiUniversalPanel.a(this.this$0).a = SystemAndEmojiUniversalPanel.b(this.this$0);
-    SystemAndEmojiUniversalPanel.a(this.this$0).d = SystemAndEmojiUniversalPanel.c(this.this$0);
-    SystemAndEmojiUniversalPanel.a(this.this$0).setAdapter(SystemAndEmojiUniversalPanel.a(this.this$0));
+    SystemAndEmojiUniversalPanel.access$600(this.this$0).measure(0, 0);
+    SystemAndEmojiUniversalPanel.access$500(this.this$0).setLastItemAddPaddingBottom(SystemAndEmojiUniversalPanel.access$700(this.this$0));
+    SystemAndEmojiUniversalPanel.access$500(this.this$0).columnNum = SystemAndEmojiUniversalPanel.access$800(this.this$0);
+    SystemAndEmojiUniversalPanel.access$500(this.this$0).widthPixels = SystemAndEmojiUniversalPanel.access$900(this.this$0);
+    SystemAndEmojiUniversalPanel.access$200(this.this$0).setAdapter(SystemAndEmojiUniversalPanel.access$500(this.this$0));
   }
 }
 

@@ -1,131 +1,135 @@
 package com.tencent.mm.splash;
 
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import java.lang.reflect.Field;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
+import com.tencent.mm.hellhoundlib.b.c;
 import java.util.ArrayList;
-import java.util.Set;
 
 final class j
-  implements Handler.Callback
+  extends HellActivity
 {
-  public static int yvM = 100;
-  public static int yvN = 113;
-  public static int yvO = 114;
-  public static int yvP = 115;
-  public static int yvQ = 116;
-  public static int yvR = 121;
-  public static int yvS = 122;
-  public static int yvT = 126;
-  public static int yvU = 145;
-  private static boolean yvV = false;
-  private static Runnable yvW;
-  private static boolean yvY = false;
-  private Context mContext;
-  Handler.Callback phM;
-  private boolean yvX = false;
+  public String acBe;
+  private PendingIntent acBf;
   
-  public j(Context paramContext, Handler.Callback paramCallback)
+  j()
   {
-    this.mContext = paramContext;
-    this.phM = paramCallback;
+    this(null);
   }
   
-  public static void au(Runnable paramRunnable)
+  j(PendingIntent paramPendingIntent)
   {
-    yvV = true;
-    yvW = paramRunnable;
+    super();
+    this.acBf = paramPendingIntent;
   }
   
-  public static boolean dvI()
+  protected final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return yvY;
+    AppMethodBeat.i(40677);
+    if (paramInt1 == 100)
+    {
+      if (paramInt2 != -100)
+      {
+        onBackPressed();
+        AppMethodBeat.o(40677);
+      }
+    }
+    else
+    {
+      finish();
+      i.g("WxSplash.SplashHackActivity", "unknown request code.", new Object[0]);
+    }
+    AppMethodBeat.o(40677);
   }
   
-  public final boolean handleMessage(Message paramMessage)
+  public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(114884);
-    if (this.yvX)
+    AppMethodBeat.i(40672);
+    super.onCreate(paramBundle);
+    if (this.acBf != null)
     {
-      h.c("WxSplash.SplashHackHandlerCallback", "found a infinite call loop", new Object[0]);
-      AppMethodBeat.o(114884);
-      return true;
-    }
-    yvY = false;
-    h.c("WxSplash.SplashHackHandlerCallback", "before handleMessage %s, splash %s, pending early %s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(h.dvu()), Boolean.valueOf(h.dvv()) });
-    if ((yvV) && (paramMessage.what == 987654321))
-    {
-      if (yvW != null)
+      i.g("WxSplash.SplashHackActivity", "early redirection", new Object[0]);
+      try
       {
-        h.c("WxSplash.SplashHackHandlerCallback", "verify hack received.", new Object[0]);
-        yvW.run();
+        this.acBf.send();
+        finish();
+        AppMethodBeat.o(40672);
+        return;
       }
-      AppMethodBeat.o(114884);
-      return true;
-    }
-    Object localObject;
-    if ((h.dvu()) && (!h.dvv()))
-    {
-      h.c("WxSplash.SplashHackHandlerCallback", "handleMessage %s, splash %s", new Object[] { Integer.valueOf(paramMessage.what), Boolean.valueOf(h.dvu()) });
-      if ((paramMessage.what == yvN) || (paramMessage.what == yvO) || (paramMessage.what == yvP) || (paramMessage.what == yvQ) || (paramMessage.what == yvR) || (paramMessage.what == yvS) || (paramMessage.what == yvU))
+      catch (PendingIntent.CanceledException paramBundle)
       {
-        localObject = Message.obtain();
-        ((Message)localObject).copyFrom(paramMessage);
-        h.yvk.add(localObject);
-        if (h.yvp != null) {
-          h.yvp.BK();
-        }
-        AppMethodBeat.o(114884);
-        return true;
+        i.g("WxSplash.SplashHackActivity", "Failed to redirect", new Object[0]);
+        this.acBf = null;
       }
     }
-    if ((paramMessage.what == yvT) || ((Build.VERSION.SDK_INT == 28) && (paramMessage.what == 160)))
+    i.g("WxSplash.SplashHackActivity", "onCreate", new Object[0]);
+    setVisible(false);
+    paramBundle = new Intent(this, i.iVS());
+    paramBundle.putExtra("hashcode", hashCode());
+    startActivityForResult(paramBundle, 100);
+    overridePendingTransition(0, 0);
+    AppMethodBeat.o(40672);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(40676);
+    if (this.acBf != null)
     {
-      if (h.yvq.size() > 0) {
-        yvY = true;
-      }
-      h.c("WxSplash.SplashHackHandlerCallback", "received a RELAUNCH_ACTIVITY message, with %s splash activity", new Object[] { Integer.valueOf(h.yvq.size()) });
-      localObject = paramMessage.obj;
-      if (!d.iU(25)) {}
+      com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/splash/SplashHackActivity", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)locala.sb(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/splash/SplashHackActivity", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     }
-    try
-    {
-      if (l.ywh == null)
-      {
-        Field localField = Class.forName("android.app.ActivityThread$ActivityClientRecord").getDeclaredField("mPreserveWindow");
-        localField.setAccessible(true);
-        l.ywh = localField;
-      }
-      h.c("WxSplash.SplashHackHandlerCallback", "preserveWindow is %s, will set false", new Object[] { Boolean.valueOf(((Boolean)l.ywh.get(localObject)).booleanValue()) });
-      l.ywh.set(localObject, Boolean.FALSE);
+    i.g("WxSplash.SplashHackActivity", "onDestroy", new Object[0]);
+    i.acAD.remove(this);
+    setVisible(true);
+    i.acAD.remove(this);
+    super.onDestroy();
+    AppMethodBeat.o(40676);
+  }
+  
+  public final void onNewIntent(Intent paramIntent)
+  {
+    AppMethodBeat.i(40673);
+    i.g("WxSplash.SplashHackActivity", "onNewIntent.", new Object[0]);
+    if ((i.acAG != null) && (i.acAG.q(paramIntent))) {
+      finish();
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        boolean bool;
-        h.a(localException, "");
-      }
-      AppMethodBeat.o(114884);
-    }
-    if (this.phM != null)
-    {
-      this.yvX = true;
-      bool = this.phM.handleMessage(paramMessage);
-      this.yvX = false;
-      AppMethodBeat.o(114884);
-      return bool;
-    }
-    return false;
+    AppMethodBeat.o(40673);
+  }
+  
+  public final void onPause()
+  {
+    AppMethodBeat.i(40675);
+    i.g("WxSplash.SplashHackActivity", "onPause", new Object[0]);
+    super.onPause();
+    AppMethodBeat.o(40675);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(40674);
+    super.onResume();
+    i.g("WxSplash.SplashHackActivity", "onResume", new Object[0]);
+    AppMethodBeat.o(40674);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.j
  * JD-Core Version:    0.7.0.1
  */

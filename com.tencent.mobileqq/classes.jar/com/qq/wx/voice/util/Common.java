@@ -24,39 +24,43 @@ public class Common
   
   public static byte[] AES(byte[] paramArrayOfByte)
   {
-    int j = 0;
+    Object localObject;
+    int i;
+    int j;
+    try
+    {
+      localObject = new byte[16];
+      if (a == null) {
+        break label103;
+      }
+      i = a.length;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      Cipher localCipher;
+      paramArrayOfByte.printStackTrace();
+      return null;
+    }
+    if (j >= 16)
+    {
+      localObject = new SecretKeySpec((byte[])localObject, "AES");
+      localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+      localCipher.init(1, (java.security.Key)localObject, new IvParameterSpec(b));
+      return localCipher.doFinal(paramArrayOfByte);
+    }
+    if (j < i) {
+      localObject[j] = a[j];
+    }
     for (;;)
     {
-      try
-      {
-        Object localObject = new byte[16];
-        if (a != null)
-        {
-          i = a.length;
-          if (j >= 16)
-          {
-            localObject = new SecretKeySpec((byte[])localObject, "AES");
-            Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            localCipher.init(1, (java.security.Key)localObject, new IvParameterSpec(b));
-            return localCipher.doFinal(paramArrayOfByte);
-          }
-          if (j < i)
-          {
-            localObject[j] = a[j];
-            b[j] = 0;
-            j += 1;
-            continue;
-          }
-          localObject[j] = 123;
-          continue;
-        }
-        int i = 0;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return null;
-      }
+      b[j] = 0;
+      j += 1;
+      break;
+      label103:
+      i = 0;
+      j = 0;
+      break;
+      localObject[j] = 123;
     }
   }
   
@@ -77,16 +81,17 @@ public class Common
   public static int calculateVolumn(int paramInt)
   {
     double d = 64.0D;
-    if (paramInt < 30) {
+    if (paramInt < 30)
+    {
       d = 0.0D;
     }
-    for (;;)
+    else if (paramInt <= 16383)
     {
-      return (int)d;
-      if (paramInt <= 16383) {
-        d = 64.0D * ((paramInt - 30.0D) / 12737.0D);
-      }
+      d = paramInt;
+      Double.isNaN(d);
+      d = 64.0D * ((d - 30.0D) / 12737.0D);
     }
+    return (int)d;
   }
   
   public static int calculateVolumn(byte[] paramArrayOfByte, int paramInt)
@@ -127,7 +132,10 @@ public class Common
   {
     long l1 = System.currentTimeMillis();
     long l2 = new Random().nextLong();
-    return Hex.encode(Hex.generateMD5((paramString + String.valueOf(l1) + String.valueOf(l2)).getBytes()));
+    paramString = new StringBuilder(String.valueOf(paramString));
+    paramString.append(String.valueOf(l1));
+    paramString.append(String.valueOf(l2));
+    return Hex.encode(Hex.generateMD5(paramString.toString().getBytes()));
   }
   
   public static byte[] parseScreKey(String paramString)
@@ -142,62 +150,59 @@ public class Common
   
   public static void saveFile(byte[] paramArrayOfByte, String paramString)
   {
-    if (paramArrayOfByte == null) {}
-    for (;;)
-    {
+    if (paramArrayOfByte == null) {
       return;
-      String str = Environment.getExternalStorageDirectory().getPath() + "/wxvoicerecord/";
-      Object localObject = new File(str);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      localObject = new Date();
-      paramString = new File(str, new SimpleDateFormat("yyyyMMddHHmmss").format((Date)localObject) + "." + paramString);
-      if (!paramString.exists()) {}
+    }
+    Object localObject1 = new StringBuilder(String.valueOf(Environment.getExternalStorageDirectory().getPath()));
+    ((StringBuilder)localObject1).append("/wxvoicerecord/");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new File((String)localObject1);
+    if (!((File)localObject2).exists()) {
+      ((File)localObject2).mkdirs();
+    }
+    localObject2 = new Date();
+    localObject2 = new StringBuilder(String.valueOf(new SimpleDateFormat("yyyyMMddHHmmss").format((Date)localObject2)));
+    ((StringBuilder)localObject2).append(".");
+    ((StringBuilder)localObject2).append(paramString);
+    localObject1 = new File((String)localObject1, ((StringBuilder)localObject2).toString());
+    if (!((File)localObject1).exists()) {
       try
       {
-        paramString.createNewFile();
+        ((File)localObject1).createNewFile();
       }
-      catch (IOException localIOException)
+      catch (IOException paramString)
       {
-        try
-        {
-          for (;;)
-          {
-            paramString = new FileOutputStream(paramString);
-            if (paramString == null) {
-              break;
-            }
-            try
-            {
-              paramString.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-              paramString.close();
-              return;
-            }
-            catch (IOException paramArrayOfByte)
-            {
-              paramArrayOfByte.printStackTrace();
-              return;
-            }
-            localIOException = localIOException;
-            localIOException.printStackTrace();
-          }
-        }
-        catch (FileNotFoundException paramString)
-        {
-          for (;;)
-          {
-            paramString.printStackTrace();
-            paramString = null;
-          }
-        }
+        paramString.printStackTrace();
       }
+    }
+    paramString = null;
+    try
+    {
+      localObject1 = new FileOutputStream((File)localObject1);
+      paramString = (String)localObject1;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      localFileNotFoundException.printStackTrace();
+    }
+    if (paramString == null) {
+      return;
+    }
+    try
+    {
+      paramString.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      paramString.close();
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.util.Common
  * JD-Core Version:    0.7.0.1
  */

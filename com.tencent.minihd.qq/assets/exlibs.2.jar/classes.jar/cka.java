@@ -1,0 +1,41 @@
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.assistant.PubAccountAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import java.util.List;
+
+public class cka
+  implements Runnable
+{
+  public cka(PubAccountAssistantActivity paramPubAccountAssistantActivity, List paramList) {}
+  
+  public void run()
+  {
+    if (!this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity.b) {
+      PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity).setVisibility(0);
+    }
+    RecentAdapter localRecentAdapter;
+    if ((PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity).a() == -1) && (PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity) != null))
+    {
+      localRecentAdapter = PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity);
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity.b) {
+        break label103;
+      }
+    }
+    label103:
+    for (int i = 8;; i = 9)
+    {
+      localRecentAdapter.a(i);
+      PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity).b(this.jdField_a_of_type_JavaUtilList);
+      PubAccountAssistantActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity).notifyDataSetChanged();
+      this.jdField_a_of_type_ComTencentBizPubaccountAssistantPubAccountAssistantActivity.a();
+      return;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.minihd.qq\assets\exlibs.2.jar\classes.jar
+ * Qualified Name:     cka
+ * JD-Core Version:    0.7.0.1
+ */

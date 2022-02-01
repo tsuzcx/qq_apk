@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ofv" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/oft" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.qqmail.view.QMWebView android:id="@id/ofu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" />
+    <ProgressBar android:id="@id/ofs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/btw" android:maxHeight="3.0dip" android:progressDrawable="@drawable/s6" android:minHeight="3.0dip" style="?android:progressBarStyleHorizontal" />
+</RelativeLayout>

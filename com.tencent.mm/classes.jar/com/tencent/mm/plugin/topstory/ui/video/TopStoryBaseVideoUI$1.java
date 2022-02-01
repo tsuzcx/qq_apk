@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.topstory.ui.video;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class TopStoryBaseVideoUI$1
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class TopStoryBaseVideoUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(1717);
-    this.tiT.cJO();
-    AppMethodBeat.o(1717);
+    AppMethodBeat.i(126076);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.TMz.hOk();
+    a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(126076);
   }
 }
 

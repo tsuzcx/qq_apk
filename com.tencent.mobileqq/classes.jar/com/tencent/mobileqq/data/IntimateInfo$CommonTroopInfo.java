@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import apei;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -16,7 +15,7 @@ import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.OneGroupInfo;
 public class IntimateInfo$CommonTroopInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CommonTroopInfo> CREATOR = new apei();
+  public static final Parcelable.Creator<CommonTroopInfo> CREATOR = new IntimateInfo.CommonTroopInfo.1();
   public long recentMsgTime;
   public String troopCode;
   public String troopName;
@@ -38,41 +37,33 @@ public class IntimateInfo$CommonTroopInfo
       return null;
     }
     CommonTroopInfo localCommonTroopInfo = new CommonTroopInfo();
-    String str;
-    if (paramOneGroupInfo.uint64_group_uin.has())
-    {
-      str = String.valueOf(paramOneGroupInfo.uint64_group_uin.get());
-      localCommonTroopInfo.troopUin = str;
-      if (!paramOneGroupInfo.uint64_group_code.has()) {
-        break label130;
-      }
-      str = String.valueOf(paramOneGroupInfo.uint64_group_code.get());
-      label63:
-      localCommonTroopInfo.troopCode = str;
-      if (!paramOneGroupInfo.string_group_name.has()) {
-        break label136;
-      }
-      str = paramOneGroupInfo.string_group_name.get().toStringUtf8();
-      label90:
-      localCommonTroopInfo.troopName = str;
-      if (!paramOneGroupInfo.uint32_cmduin_last_msg_time.has()) {
-        break label142;
-      }
+    boolean bool = paramOneGroupInfo.uint64_group_uin.has();
+    String str2 = "";
+    if (bool) {
+      str1 = String.valueOf(paramOneGroupInfo.uint64_group_uin.get());
+    } else {
+      str1 = "";
     }
-    label130:
-    label136:
-    label142:
-    for (long l = paramOneGroupInfo.uint32_cmduin_last_msg_time.get();; l = 0L)
-    {
-      localCommonTroopInfo.recentMsgTime = l;
-      return localCommonTroopInfo;
-      str = "";
-      break;
-      str = "";
-      break label63;
-      str = "";
-      break label90;
+    localCommonTroopInfo.troopUin = str1;
+    if (paramOneGroupInfo.uint64_group_code.has()) {
+      str1 = String.valueOf(paramOneGroupInfo.uint64_group_code.get());
+    } else {
+      str1 = "";
     }
+    localCommonTroopInfo.troopCode = str1;
+    String str1 = str2;
+    if (paramOneGroupInfo.string_group_name.has()) {
+      str1 = paramOneGroupInfo.string_group_name.get().toStringUtf8();
+    }
+    localCommonTroopInfo.troopName = str1;
+    long l;
+    if (paramOneGroupInfo.uint32_cmduin_last_msg_time.has()) {
+      l = paramOneGroupInfo.uint32_cmduin_last_msg_time.get();
+    } else {
+      l = 0L;
+    }
+    localCommonTroopInfo.recentMsgTime = l;
+    return localCommonTroopInfo;
   }
   
   public static CommonTroopInfo copyFromJson(JSONObject paramJSONObject)
@@ -119,7 +110,20 @@ public class IntimateInfo$CommonTroopInfo
   
   public String toString()
   {
-    return "CommonTroopInfo{troopUin='" + this.troopUin + '\'' + ", troopCode='" + this.troopCode + '\'' + ", troopName='" + this.troopName + '\'' + ", recentMsgTime=" + this.recentMsgTime + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommonTroopInfo{troopUin='");
+    localStringBuilder.append(this.troopUin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", troopCode='");
+    localStringBuilder.append(this.troopCode);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", troopName='");
+    localStringBuilder.append(this.troopName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recentMsgTime=");
+    localStringBuilder.append(this.recentMsgTime);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

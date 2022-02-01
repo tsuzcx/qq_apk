@@ -13,16 +13,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import asva;
-import asvb;
-import asvd;
-import bhzg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.OverScroller;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -32,70 +29,180 @@ import java.util.Set;
 public class HotPicTab
   extends HorizontalListView
 {
-  private static final float jdField_b_of_type_Float;
-  private static int d;
-  private static final int e;
-  private static final int f;
-  private static final int g;
-  private static final int h;
-  private static final int i;
-  private float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
+  private static int k;
+  private static final int l;
+  private static final int m;
+  private static final int n;
+  private static final float o;
+  private static final int p;
+  private static final int q;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new asva(this);
-  asvb jdField_a_of_type_Asvb;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private int jdField_b_of_type_Int = -1;
-  Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private int c = -1;
+  HotPicTab.HotPicTabAdapter b;
+  Paint c = new Paint();
+  int d = -1;
+  private Context e;
+  private float f;
+  private int g = -1;
+  private int h = -1;
+  private Set<Integer> i = new HashSet();
+  private ArrayList<Integer> j = new ArrayList();
+  private Handler r = new HotPicTab.1(this);
   
   static
   {
     Resources localResources = BaseApplicationImpl.getContext().getResources();
-    d = localResources.getDisplayMetrics().widthPixels;
-    e = (int)(40.0F * localResources.getDisplayMetrics().density + 0.5F);
-    f = (int)(4.0F * localResources.getDisplayMetrics().density + 0.5F);
-    g = 14;
-    jdField_b_of_type_Float = localResources.getDisplayMetrics().density;
-    h = localResources.getColor(2131166911);
-    i = localResources.getColor(2131166903);
+    k = localResources.getDisplayMetrics().widthPixels;
+    l = (int)(localResources.getDisplayMetrics().density * 40.0F + 0.5F);
+    m = (int)(localResources.getDisplayMetrics().density * 4.0F + 0.5F);
+    n = 14;
+    o = localResources.getDisplayMetrics().density;
+    p = localResources.getColor(2131168138);
+    q = localResources.getColor(2131168139);
   }
   
   public HotPicTab(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(h);
-  }
-  
-  public int a()
-  {
-    return this.mCurrentlySelectedAdapterIndex;
+    this.e = paramContext;
+    this.a = new Paint();
+    this.a.setColor(p);
   }
   
   public int a(int paramInt)
   {
-    int j = this.mNextX + paramInt;
-    if (j < 0) {
+    int i1 = this.mNextX + paramInt;
+    if (i1 < 0) {
       return -1;
     }
-    if (j > this.mMaxX) {
+    if (i1 > this.mMaxX) {
       return 1;
     }
-    this.mScroller.a(this.mNextX, 0, paramInt, 0, 20);
+    this.mScroller.startScroll(this.mNextX, 0, paramInt, 0, 20);
     setCurrentScrollState(4098);
     requestLayout();
     return 0;
   }
   
-  public HotPicTagInfo a()
+  public void a()
   {
-    if (this.jdField_a_of_type_Asvb != null)
+    setAdapter(null);
+    this.j.clear();
+    setOnItemClickListener(null);
+    this.b = null;
+    this.i.clear();
+  }
+  
+  public void a(List<HotPicTagInfo> paramList, int paramInt)
+  {
+    boolean bool1 = false;
+    if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
+      i1 = 2131167913;
+    } else {
+      i1 = 2131168487;
+    }
+    setBackgroundResource(i1);
+    paramList = new ArrayList(paramList);
+    this.c.setTextSize(n * o + 0.5F);
+    Iterator localIterator = paramList.iterator();
+    int i1 = 0;
+    HotPicTagInfo localHotPicTagInfo;
+    while (localIterator.hasNext())
     {
-      Object localObject = this.jdField_a_of_type_Asvb.a;
+      localHotPicTagInfo = (HotPicTagInfo)localIterator.next();
+      int i2 = (int)((int)(this.c.measureText(localHotPicTagInfo.tagName) + 0.5F) + o * 26.0F);
+      this.j.add(Integer.valueOf(i2));
+      i1 += i2;
+    }
+    if (i1 < k)
+    {
+      boolean bool2 = true;
+      this.j.clear();
+      float f1 = k / i1;
+      localIterator = paramList.iterator();
+      for (;;)
+      {
+        bool1 = bool2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localHotPicTagInfo = (HotPicTagInfo)localIterator.next();
+        i1 = (int)((int)((int)(this.c.measureText(localHotPicTagInfo.tagName) + 0.5F) + o * 26.0F) * f1);
+        this.j.add(Integer.valueOf(i1));
+      }
+    }
+    this.b = new HotPicTab.HotPicTabAdapter(this, paramList, this.j, bool1);
+    this.d = paramInt;
+    setAdapter(this.b);
+  }
+  
+  protected void dispatchDraw(Canvas paramCanvas)
+  {
+    super.dispatchDraw(paramCanvas);
+    int i2 = k;
+    int i1 = this.h;
+    int i3 = this.mLeftViewAdapterIndex;
+    int i5 = 0;
+    if (i1 < i3) {
+      i1 = 0;
+    }
+    View localView;
+    do
+    {
+      do
+      {
+        i2 = 0;
+        break;
+        if (this.h > this.mRightViewAdapterIndex)
+        {
+          i3 = k;
+          i1 = i2;
+          i2 = i3;
+          break;
+        }
+        localView = getChild(this.h);
+        i1 = i2;
+      } while (localView == null);
+      i1 = i2;
+    } while (localView.getTag() == null);
+    Object localObject = (HotPicTab.ViewHolder)localView.getTag();
+    i2 = (int)(localView.getLeft() + ((HotPicTab.ViewHolder)localObject).a.getLeft() - o * 5.0F);
+    i1 = (int)(localView.getLeft() + ((HotPicTab.ViewHolder)localObject).a.getRight() + o * 5.0F);
+    int i4 = i1;
+    i3 = i2;
+    if (this.f > 0.0F)
+    {
+      localView = getSelectedView();
+      if ((localView != null) && (localView.getTag() != null))
+      {
+        localObject = ((HotPicTab.ViewHolder)localView.getTag()).a;
+        i4 = (int)(localView.getLeft() + ((TextView)localObject).getLeft() - o * 5.0F);
+        i3 = (int)(localView.getLeft() + ((TextView)localObject).getRight() + o * 5.0F);
+      }
+      else
+      {
+        i3 = 0;
+        i4 = i5;
+      }
+      float f1 = i2;
+      float f2 = this.f;
+      i2 = (int)(f1 + (i4 - i2) * f2);
+      i4 = (int)(i1 + f2 * (i3 - i1));
+      i3 = i2;
+    }
+    paramCanvas.drawRect(i3, getHeight() - m, i4, getHeight(), this.a);
+  }
+  
+  public int getCurrentSelected()
+  {
+    return this.mCurrentlySelectedAdapterIndex;
+  }
+  
+  public HotPicTagInfo getSelectedTag()
+  {
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      localObject = ((HotPicTab.HotPicTabAdapter)localObject).a;
       if (((List)localObject).size() > this.mCurrentlySelectedAdapterIndex)
       {
         localObject = (HotPicTagInfo)((List)localObject).get(this.mCurrentlySelectedAdapterIndex);
@@ -107,131 +214,20 @@ public class HotPicTab
     return null;
   }
   
-  public void a()
-  {
-    setAdapter(null);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    setOnItemClickListener(null);
-    this.jdField_a_of_type_Asvb = null;
-    this.jdField_a_of_type_JavaUtilSet.clear();
-  }
-  
-  public void a(List<HotPicTagInfo> paramList, int paramInt)
-  {
-    boolean bool1 = false;
-    if (ThemeUtil.isNowThemeIsNight(null, false, null)) {}
-    Iterator localIterator;
-    HotPicTagInfo localHotPicTagInfo;
-    for (int j = 2131165323;; j = 2131167208)
-    {
-      setBackgroundResource(j);
-      paramList = new ArrayList(paramList);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(g * jdField_b_of_type_Float + 0.5F);
-      localIterator = paramList.iterator();
-      int k;
-      for (j = 0; localIterator.hasNext(); j = k + j)
-      {
-        localHotPicTagInfo = (HotPicTagInfo)localIterator.next();
-        k = (int)((int)(this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localHotPicTagInfo.tagName) + 0.5F) + jdField_b_of_type_Float * 26.0F);
-        this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(k));
-      }
-    }
-    if (j < d)
-    {
-      boolean bool2 = true;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      float f1 = d / j;
-      localIterator = paramList.iterator();
-      for (;;)
-      {
-        bool1 = bool2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localHotPicTagInfo = (HotPicTagInfo)localIterator.next();
-        j = (int)((int)((int)(this.jdField_b_of_type_AndroidGraphicsPaint.measureText(localHotPicTagInfo.tagName) + 0.5F) + jdField_b_of_type_Float * 26.0F) * f1);
-        this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-      }
-    }
-    this.jdField_a_of_type_Asvb = new asvb(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
-    this.jdField_a_of_type_Int = paramInt;
-    setAdapter(this.jdField_a_of_type_Asvb);
-  }
-  
-  public void dispatchDraw(Canvas paramCanvas)
-  {
-    int m = 0;
-    super.dispatchDraw(paramCanvas);
-    int j = d;
-    int k;
-    if (this.c < this.mLeftViewAdapterIndex)
-    {
-      j = 0;
-      k = 0;
-    }
-    for (;;)
-    {
-      View localView;
-      Object localObject;
-      int n;
-      if (this.jdField_a_of_type_Float > 0.0F)
-      {
-        localView = getSelectedView();
-        if ((localView != null) && (localView.getTag() != null))
-        {
-          localObject = ((asvd)localView.getTag()).a;
-          n = (int)(localView.getLeft() + ((TextView)localObject).getLeft() - jdField_b_of_type_Float * 5.0F);
-          m = localView.getLeft();
-          m = (int)(((TextView)localObject).getRight() + m + jdField_b_of_type_Float * 5.0F);
-          label121:
-          float f1 = k;
-          float f2 = this.jdField_a_of_type_Float;
-          k = (int)((n - k) * f2 + f1);
-          f1 = j;
-          f2 = this.jdField_a_of_type_Float;
-          j = (int)(f1 + (m - j) * f2);
-        }
-      }
-      for (;;)
-      {
-        paramCanvas.drawRect(k, getHeight() - f, j, getHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        if (this.c > this.mRightViewAdapterIndex)
-        {
-          k = d;
-          break;
-        }
-        localView = getChild(this.c);
-        if ((localView == null) || (localView.getTag() == null)) {
-          break label314;
-        }
-        localObject = (asvd)localView.getTag();
-        k = (int)(localView.getLeft() + ((asvd)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
-        j = localView.getLeft();
-        j = (int)(((asvd)localObject).a.getRight() + j + jdField_b_of_type_Float * 5.0F);
-        break;
-        n = 0;
-        break label121;
-      }
-      label314:
-      k = 0;
-    }
-  }
-  
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (AppSetting.c) {
+    if (AppSetting.e) {
       return true;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, 50, paramInt8, paramBoolean);
   }
   
-  public void reset(boolean paramBoolean)
+  protected void reset(boolean paramBoolean)
   {
     if (paramBoolean)
     {
@@ -240,127 +236,130 @@ public class HotPicTab
     }
     initView(this.isFromRightToLeft);
     removeAllViewsInLayout();
-    if (this.jdField_a_of_type_Int != -1)
+    if (this.d != -1)
     {
-      int j = 0;
-      int k = 0;
-      while ((j < this.jdField_a_of_type_Int) && (j < this.jdField_a_of_type_JavaUtilArrayList.size()))
+      int i1 = 0;
+      int i2 = 0;
+      while ((i1 < this.d) && (i1 < this.j.size()))
       {
-        k += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(j)).intValue();
-        j += 1;
+        i2 += ((Integer)this.j.get(i1)).intValue();
+        i1 += 1;
       }
-      j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).intValue() * 1 / 2 + k;
-      k = d * 1 / 2;
-      if (j > k)
-      {
-        this.mCurrentX = (j - k);
-        this.mCurrentlySelectedAdapterIndex = this.jdField_a_of_type_Int;
-        this.c = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Float = 1.0F;
-        this.mDataChanged = true;
+      i1 = i2 + ((Integer)this.j.get(this.d)).intValue() * 1 / 2;
+      i2 = k * 1 / 2;
+      if (i1 > i2) {
+        this.mCurrentX = (i1 - i2);
+      } else {
+        this.mCurrentX = 0;
       }
+      i1 = this.d;
+      this.mCurrentlySelectedAdapterIndex = i1;
+      this.h = i1;
+      this.f = 1.0F;
+      this.mDataChanged = true;
     }
-    for (;;)
+    else
     {
-      requestLayout();
-      return;
-      this.mCurrentX = 0;
-      break;
       this.mCurrentlySelectedAdapterIndex = 0;
-      this.c = 0;
+      this.h = 0;
     }
+    requestLayout();
   }
   
   public void setSelection(int paramInt)
   {
-    if (this.mCurrentlySelectedAdapterIndex == paramInt) {}
-    int i1;
-    do
-    {
+    if (this.mCurrentlySelectedAdapterIndex == paramInt) {
       return;
-      super.setSelection(paramInt);
-      i1 = d;
-    } while ((this.mAdapter == null) || (paramInt >= this.mAdapter.getCount()) || (paramInt < 0));
-    int m = getFirstVisiblePosition();
-    int n = getLastVisiblePosition();
-    int j;
-    int k;
-    if ((paramInt > n) && (n != -1))
-    {
-      j = 0;
-      k = 0;
-      while (j <= paramInt)
-      {
-        k += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(j)).intValue();
-        j += 1;
-      }
-      paramInt = k - this.mNextX - i1;
-      if (paramInt == 0) {
-        break label324;
-      }
-      a(paramInt);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Float = 0.0F;
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      if (!Build.MODEL.equalsIgnoreCase("OPPO R7")) {
-        break label358;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    super.setSelection(paramInt);
+    int i5 = k;
+    if (this.mAdapter == null) {
       return;
-      if ((paramInt < m) && (m != -1))
+    }
+    if (paramInt < this.mAdapter.getCount())
+    {
+      if (paramInt < 0) {
+        return;
+      }
+      int i3 = getFirstVisiblePosition();
+      int i4 = getLastVisiblePosition();
+      int i1;
+      int i2;
+      if ((paramInt > i4) && (i4 != -1))
       {
-        j = 0;
-        k = 0;
-        while (j < paramInt)
+        i1 = 0;
+        i2 = 0;
+        while (i1 <= paramInt)
         {
-          k += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(j)).intValue();
-          j += 1;
+          i2 += ((Integer)this.j.get(i1)).intValue();
+          i1 += 1;
         }
-        paramInt = k - this.mNextX;
-        break;
+        paramInt = i2 - this.mNextX - i5;
       }
-      View localView;
-      int[] arrayOfInt;
-      if (paramInt == m)
+      else if ((paramInt < i3) && (i3 != -1))
       {
-        localView = getChildAt(0);
-        arrayOfInt = new int[2];
-        localView.getLocationOnScreen(arrayOfInt);
-        paramInt = arrayOfInt[0];
-        break;
-      }
-      if (paramInt == n)
-      {
-        localView = getChildAt(getChildCount() - 1);
-        arrayOfInt = new int[2];
-        localView.getLocationOnScreen(arrayOfInt);
-        j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue() - (i1 - arrayOfInt[0]);
-        paramInt = j;
-        if (j >= 0) {
-          break;
+        i1 = 0;
+        i2 = 0;
+        while (i1 < paramInt)
+        {
+          i2 += ((Integer)this.j.get(i1)).intValue();
+          i1 += 1;
         }
-        paramInt = 0;
-        break;
+        paramInt = i2 - this.mNextX;
       }
-      if ((DEBUG) && (QLog.isDevelopLevel())) {}
-      paramInt = 0;
-      break;
-      label324:
-      if ((m == -1) && (n == -1)) {
+      else
+      {
+        View localView;
+        int[] arrayOfInt;
+        if (paramInt == i3)
+        {
+          localView = getChildAt(0);
+          arrayOfInt = new int[2];
+          localView.getLocationOnScreen(arrayOfInt);
+          paramInt = arrayOfInt[0];
+        }
+        else
+        {
+          if (paramInt == i4)
+          {
+            localView = getChildAt(getChildCount() - 1);
+            arrayOfInt = new int[2];
+            localView.getLocationOnScreen(arrayOfInt);
+            i1 = ((Integer)this.j.get(paramInt)).intValue() - (i5 - arrayOfInt[0]);
+            paramInt = i1;
+            if (i1 >= 0) {
+              break label277;
+            }
+          }
+          else if (DEBUG)
+          {
+            QLog.isDevelopLevel();
+          }
+          paramInt = 0;
+        }
+      }
+      label277:
+      if (paramInt != 0) {
+        a(paramInt);
+      } else if ((i3 == -1) && (i4 == -1)) {
         ViewCompat.postOnAnimation(this, new HotPicTab.2(this));
       } else {
         requestLayout();
       }
+      this.f = 0.0F;
+      this.r.removeCallbacksAndMessages(null);
+      if (Build.MODEL.equalsIgnoreCase("OPPO R7"))
+      {
+        this.r.sendEmptyMessage(2);
+        return;
+      }
+      this.r.sendEmptyMessage(0);
     }
-    label358:
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicTab
  * JD-Core Version:    0.7.0.1
  */

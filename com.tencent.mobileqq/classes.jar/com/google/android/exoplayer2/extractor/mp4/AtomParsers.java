@@ -46,13 +46,14 @@ final class AtomParsers
     {
       paramParsableByteArray.setPosition(i);
       int j = paramParsableByteArray.readInt();
-      if (j > 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        Assertions.checkArgument(bool, "childAtomSize should be positive");
-        if (paramParsableByteArray.readInt() != Atom.TYPE_esds) {
-          break;
-        }
+      boolean bool;
+      if (j > 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      Assertions.checkArgument(bool, "childAtomSize should be positive");
+      if (paramParsableByteArray.readInt() == Atom.TYPE_esds) {
         return i;
       }
       i += j;
@@ -62,324 +63,267 @@ final class AtomParsers
   
   private static void parseAudioSampleEntry(ParsableByteArray paramParsableByteArray, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean, DrmInitData paramDrmInitData, AtomParsers.StsdData paramStsdData, int paramInt5)
   {
-    paramParsableByteArray.setPosition(paramInt2 + 8 + 8);
-    int j;
-    int k;
-    int i;
+    int m = paramInt2;
+    paramParsableByteArray.setPosition(m + 8 + 8);
     if (paramBoolean)
     {
-      j = paramParsableByteArray.readUnsignedShort();
-      paramParsableByteArray.skipBytes(6);
-      if ((j != 0) && (j != 1)) {
-        break label383;
-      }
       k = paramParsableByteArray.readUnsignedShort();
       paramParsableByteArray.skipBytes(6);
-      i = paramParsableByteArray.readUnsignedFixedPoint1616();
-      if (j != 1) {
-        break label893;
-      }
-      paramParsableByteArray.skipBytes(16);
-      j = k;
     }
-    for (;;)
+    else
     {
-      label73:
-      k = paramParsableByteArray.getPosition();
-      Object localObject1;
-      if (paramInt1 == Atom.TYPE_enca)
+      paramParsableByteArray.skipBytes(8);
+      k = 0;
+    }
+    int j;
+    int i;
+    if ((k != 0) && (k != 1))
+    {
+      if (k == 2)
       {
-        localObject1 = parseSampleEntryEncryptionData(paramParsableByteArray, paramInt2, paramInt3);
-        if (localObject1 != null)
-        {
-          paramInt1 = ((Integer)((Pair)localObject1).first).intValue();
-          if (paramDrmInitData == null)
-          {
-            paramDrmInitData = null;
-            label119:
-            paramStsdData.trackEncryptionBoxes[paramInt5] = ((TrackEncryptionBox)((Pair)localObject1).second);
-            label135:
-            paramParsableByteArray.setPosition(k);
-          }
+        paramParsableByteArray.skipBytes(16);
+        j = (int)Math.round(paramParsableByteArray.readDouble());
+        i = paramParsableByteArray.readUnsignedIntToInt();
+        paramParsableByteArray.skipBytes(20);
+      }
+    }
+    else
+    {
+      n = paramParsableByteArray.readUnsignedShort();
+      paramParsableByteArray.skipBytes(6);
+      i1 = paramParsableByteArray.readUnsignedFixedPoint1616();
+      j = i1;
+      i = n;
+      if (k == 1)
+      {
+        paramParsableByteArray.skipBytes(16);
+        i = n;
+        j = i1;
+      }
+    }
+    int n = paramParsableByteArray.getPosition();
+    int i1 = Atom.TYPE_enca;
+    Object localObject1 = paramDrmInitData;
+    int k = paramInt1;
+    if (paramInt1 == i1)
+    {
+      localObject2 = parseSampleEntryEncryptionData(paramParsableByteArray, m, paramInt3);
+      localObject1 = paramDrmInitData;
+      if (localObject2 != null)
+      {
+        paramInt1 = ((Integer)((Pair)localObject2).first).intValue();
+        if (paramDrmInitData == null) {
+          localObject1 = null;
+        } else {
+          localObject1 = paramDrmInitData.copyWithSchemeType(((TrackEncryptionBox)((Pair)localObject2).second).schemeType);
+        }
+        paramStsdData.trackEncryptionBoxes[paramInt5] = ((TrackEncryptionBox)((Pair)localObject2).second);
+      }
+      paramParsableByteArray.setPosition(n);
+      k = paramInt1;
+    }
+    Object localObject2 = localObject1;
+    paramInt1 = Atom.TYPE_ac_3;
+    String str1 = "audio/raw";
+    if (k == paramInt1) {
+      paramDrmInitData = "audio/ac3";
+    } else if (k == Atom.TYPE_ec_3) {
+      paramDrmInitData = "audio/eac3";
+    } else if (k == Atom.TYPE_dtsc) {
+      paramDrmInitData = "audio/vnd.dts";
+    } else if ((k != Atom.TYPE_dtsh) && (k != Atom.TYPE_dtsl))
+    {
+      if (k == Atom.TYPE_dtse) {
+        paramDrmInitData = "audio/vnd.dts.hd;profile=lbr";
+      } else if (k == Atom.TYPE_samr) {
+        paramDrmInitData = "audio/3gpp";
+      } else if (k == Atom.TYPE_sawb) {
+        paramDrmInitData = "audio/amr-wb";
+      } else if ((k != Atom.TYPE_lpcm) && (k != Atom.TYPE_sowt))
+      {
+        if (k == Atom.TYPE__mp3) {
+          paramDrmInitData = "audio/mpeg";
+        } else if (k == Atom.TYPE_alac) {
+          paramDrmInitData = "audio/alac";
+        } else {
+          paramDrmInitData = null;
         }
       }
-      for (DrmInitData localDrmInitData = paramDrmInitData;; localDrmInitData = paramDrmInitData)
+      else {
+        paramDrmInitData = "audio/raw";
+      }
+    }
+    else {
+      paramDrmInitData = "audio/vnd.dts.hd";
+    }
+    paramInt1 = n;
+    localObject1 = null;
+    k = j;
+    m = i;
+    while (paramInt1 - paramInt2 < paramInt3)
+    {
+      paramParsableByteArray.setPosition(paramInt1);
+      paramInt5 = paramParsableByteArray.readInt();
+      boolean bool;
+      if (paramInt5 > 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      Assertions.checkArgument(bool, "childAtomSize should be positive");
+      n = paramParsableByteArray.readInt();
+      if ((n != Atom.TYPE_esds) && ((!paramBoolean) || (n != Atom.TYPE_wave)))
       {
-        paramDrmInitData = null;
-        label159:
-        label173:
-        int m;
-        boolean bool;
-        label201:
-        int n;
-        label247:
-        Object localObject2;
-        if (paramInt1 == Atom.TYPE_ac_3)
+        if (n == Atom.TYPE_dac3) {
+          paramParsableByteArray.setPosition(paramInt1 + 8);
+        }
+        for (paramStsdData.format = Ac3Util.parseAc3AnnexFFormat(paramParsableByteArray, Integer.toString(paramInt4), paramString, (DrmInitData)localObject2);; paramStsdData.format = Ac3Util.parseEAc3AnnexFFormat(paramParsableByteArray, Integer.toString(paramInt4), paramString, (DrmInitData)localObject2))
         {
-          paramDrmInitData = "audio/ac3";
-          localObject1 = null;
-          paramInt1 = i;
-          i = j;
-          paramInt5 = k;
-          if (paramInt5 - paramInt2 >= paramInt3) {
-            break label801;
+          i = paramInt1;
+          paramInt1 = paramInt5;
+          paramInt5 = i;
+          break label693;
+          if (n != Atom.TYPE_dec3) {
+            break;
           }
-          paramParsableByteArray.setPosition(paramInt5);
-          m = paramParsableByteArray.readInt();
-          if (m <= 0) {
-            break label581;
-          }
-          bool = true;
-          Assertions.checkArgument(bool, "childAtomSize should be positive");
-          n = paramParsableByteArray.readInt();
-          if ((n != Atom.TYPE_esds) && ((!paramBoolean) || (n != Atom.TYPE_wave))) {
-            break label600;
-          }
-          if (n != Atom.TYPE_esds) {
-            break label587;
-          }
-          j = paramInt5;
-          if (j == -1) {
-            break label880;
-          }
-          paramDrmInitData = parseEsdsFromParent(paramParsableByteArray, j);
-          localObject2 = (String)paramDrmInitData.first;
+          paramParsableByteArray.setPosition(paramInt1 + 8);
+        }
+        if (n == Atom.TYPE_ddts)
+        {
+          paramStsdData.format = Format.createAudioSampleFormat(Integer.toString(paramInt4), paramDrmInitData, null, -1, -1, m, k, null, (DrmInitData)localObject2, 0, paramString);
+        }
+        else if (n == Atom.TYPE_alac)
+        {
+          localObject1 = new byte[paramInt5];
+          i = paramInt1;
+          paramParsableByteArray.setPosition(i);
+          paramParsableByteArray.readBytes((byte[])localObject1, 0, paramInt5);
+          paramInt1 = paramInt5;
+          paramInt5 = i;
+          break label693;
+        }
+        i = paramInt5;
+        paramInt5 = paramInt1;
+        paramInt1 = i;
+      }
+      for (;;)
+      {
+        label693:
+        break;
+        j = paramInt5;
+        i = paramInt1;
+        if (n == Atom.TYPE_esds) {
+          n = i;
+        } else {
+          n = findEsdsPosition(paramParsableByteArray, i, j);
+        }
+        paramInt1 = j;
+        paramInt5 = i;
+        if (n != -1)
+        {
+          paramDrmInitData = parseEsdsFromParent(paramParsableByteArray, n);
+          String str2 = (String)paramDrmInitData.first;
           byte[] arrayOfByte = (byte[])paramDrmInitData.second;
-          paramDrmInitData = (DrmInitData)localObject2;
+          paramInt1 = j;
+          paramInt5 = i;
+          paramDrmInitData = str2;
           localObject1 = arrayOfByte;
-          if ("audio/mp4a-latm".equals(localObject2))
+          if ("audio/mp4a-latm".equals(str2))
           {
             paramDrmInitData = CodecSpecificDataUtil.parseAacAudioSpecificConfig(arrayOfByte);
-            paramInt1 = ((Integer)paramDrmInitData.first).intValue();
-            i = ((Integer)paramDrmInitData.second).intValue();
+            k = ((Integer)paramDrmInitData.first).intValue();
+            m = ((Integer)paramDrmInitData.second).intValue();
             localObject1 = arrayOfByte;
-            paramDrmInitData = (DrmInitData)localObject2;
-          }
-        }
-        label581:
-        label587:
-        label600:
-        label865:
-        label866:
-        label871:
-        label880:
-        for (;;)
-        {
-          j = paramInt1;
-          k = i;
-          localObject2 = paramDrmInitData;
-          for (;;)
-          {
-            paramInt5 += m;
-            paramDrmInitData = (DrmInitData)localObject2;
-            i = k;
+            paramDrmInitData = str2;
+            paramInt5 = i;
             paramInt1 = j;
-            break label173;
-            paramParsableByteArray.skipBytes(8);
-            j = 0;
-            break;
-            label383:
-            if (j != 2) {
-              break label865;
-            }
-            paramParsableByteArray.skipBytes(16);
-            i = (int)Math.round(paramParsableByteArray.readDouble());
-            j = paramParsableByteArray.readUnsignedIntToInt();
-            paramParsableByteArray.skipBytes(20);
-            break label73;
-            paramDrmInitData = paramDrmInitData.copyWithSchemeType(((TrackEncryptionBox)((Pair)localObject1).second).schemeType);
-            break label119;
-            if (paramInt1 == Atom.TYPE_ec_3)
-            {
-              paramDrmInitData = "audio/eac3";
-              break label159;
-            }
-            if (paramInt1 == Atom.TYPE_dtsc)
-            {
-              paramDrmInitData = "audio/vnd.dts";
-              break label159;
-            }
-            if ((paramInt1 == Atom.TYPE_dtsh) || (paramInt1 == Atom.TYPE_dtsl))
-            {
-              paramDrmInitData = "audio/vnd.dts.hd";
-              break label159;
-            }
-            if (paramInt1 == Atom.TYPE_dtse)
-            {
-              paramDrmInitData = "audio/vnd.dts.hd;profile=lbr";
-              break label159;
-            }
-            if (paramInt1 == Atom.TYPE_samr)
-            {
-              paramDrmInitData = "audio/3gpp";
-              break label159;
-            }
-            if (paramInt1 == Atom.TYPE_sawb)
-            {
-              paramDrmInitData = "audio/amr-wb";
-              break label159;
-            }
-            if ((paramInt1 == Atom.TYPE_lpcm) || (paramInt1 == Atom.TYPE_sowt))
-            {
-              paramDrmInitData = "audio/raw";
-              break label159;
-            }
-            if (paramInt1 == Atom.TYPE__mp3)
-            {
-              paramDrmInitData = "audio/mpeg";
-              break label159;
-            }
-            if (paramInt1 != Atom.TYPE_alac) {
-              break label159;
-            }
-            paramDrmInitData = "audio/alac";
-            break label159;
-            bool = false;
-            break label201;
-            j = findEsdsPosition(paramParsableByteArray, paramInt5, m);
-            break label247;
-            if (n == Atom.TYPE_dac3)
-            {
-              paramParsableByteArray.setPosition(paramInt5 + 8);
-              paramStsdData.format = Ac3Util.parseAc3AnnexFFormat(paramParsableByteArray, Integer.toString(paramInt4), paramString, localDrmInitData);
-              localObject2 = paramDrmInitData;
-              k = i;
-              j = paramInt1;
-            }
-            else if (n == Atom.TYPE_dec3)
-            {
-              paramParsableByteArray.setPosition(paramInt5 + 8);
-              paramStsdData.format = Ac3Util.parseEAc3AnnexFFormat(paramParsableByteArray, Integer.toString(paramInt4), paramString, localDrmInitData);
-              localObject2 = paramDrmInitData;
-              k = i;
-              j = paramInt1;
-            }
-            else if (n == Atom.TYPE_ddts)
-            {
-              paramStsdData.format = Format.createAudioSampleFormat(Integer.toString(paramInt4), paramDrmInitData, null, -1, -1, i, paramInt1, null, localDrmInitData, 0, paramString);
-              localObject2 = paramDrmInitData;
-              k = i;
-              j = paramInt1;
-            }
-            else
-            {
-              localObject2 = paramDrmInitData;
-              k = i;
-              j = paramInt1;
-              if (n == Atom.TYPE_alac)
-              {
-                localObject1 = new byte[m];
-                paramParsableByteArray.setPosition(paramInt5);
-                paramParsableByteArray.readBytes((byte[])localObject1, 0, m);
-                localObject2 = paramDrmInitData;
-                k = i;
-                j = paramInt1;
-              }
-            }
-          }
-          if ((paramStsdData.format == null) && (paramDrmInitData != null))
-          {
-            if (!"audio/raw".equals(paramDrmInitData)) {
-              break label866;
-            }
-            paramInt2 = 2;
-            localObject2 = Integer.toString(paramInt4);
-            if (localObject1 != null) {
-              break label871;
-            }
-          }
-          for (paramParsableByteArray = null;; paramParsableByteArray = Collections.singletonList(localObject1))
-          {
-            paramStsdData.format = Format.createAudioSampleFormat((String)localObject2, paramDrmInitData, null, -1, -1, i, paramInt1, paramInt2, paramParsableByteArray, localDrmInitData, 0, paramString);
-            return;
-            paramInt2 = -1;
-            break;
           }
         }
-        label801:
-        break label135;
       }
-      label893:
-      j = k;
+      paramInt1 = paramInt5 + paramInt1;
+    }
+    paramInt1 = 2;
+    if ((paramStsdData.format == null) && (paramDrmInitData != null))
+    {
+      if (!str1.equals(paramDrmInitData)) {
+        paramInt1 = -1;
+      }
+      str1 = Integer.toString(paramInt4);
+      if (localObject1 == null) {
+        paramParsableByteArray = null;
+      } else {
+        paramParsableByteArray = Collections.singletonList(localObject1);
+      }
+      paramStsdData.format = Format.createAudioSampleFormat(str1, paramDrmInitData, null, -1, -1, m, k, paramInt1, paramParsableByteArray, (DrmInitData)localObject2, 0, paramString);
     }
   }
   
   static Pair<Integer, TrackEncryptionBox> parseCommonEncryptionSinfFromParent(ParsableByteArray paramParsableByteArray, int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
     int i = paramInt1 + 8;
-    Object localObject1 = null;
     Object localObject2 = null;
-    int k = 0;
-    int j = -1;
-    if (i - paramInt1 < paramInt2)
+    Object localObject1 = localObject2;
+    int k = -1;
+    int j = 0;
+    while (i - paramInt1 < paramInt2)
     {
       paramParsableByteArray.setPosition(i);
       int m = paramParsableByteArray.readInt();
       int n = paramParsableByteArray.readInt();
-      Object localObject3;
       Object localObject4;
+      Object localObject3;
       if (n == Atom.TYPE_frma)
       {
-        localObject3 = Integer.valueOf(paramParsableByteArray.readInt());
-        localObject4 = localObject2;
+        localObject4 = Integer.valueOf(paramParsableByteArray.readInt());
+        localObject3 = localObject2;
       }
-      for (;;)
+      else if (n == Atom.TYPE_schm)
       {
-        i += m;
-        localObject1 = localObject3;
-        localObject2 = localObject4;
-        break;
-        if (n == Atom.TYPE_schm)
+        paramParsableByteArray.skipBytes(4);
+        localObject3 = paramParsableByteArray.readString(4);
+        localObject4 = localObject1;
+      }
+      else
+      {
+        localObject3 = localObject2;
+        localObject4 = localObject1;
+        if (n == Atom.TYPE_schi)
         {
-          paramParsableByteArray.skipBytes(4);
-          localObject4 = paramParsableByteArray.readString(4);
-          localObject3 = localObject1;
-        }
-        else
-        {
-          localObject3 = localObject1;
-          localObject4 = localObject2;
-          if (n == Atom.TYPE_schi)
-          {
-            k = m;
-            j = i;
-            localObject3 = localObject1;
-            localObject4 = localObject2;
-          }
+          k = i;
+          j = m;
+          localObject4 = localObject1;
+          localObject3 = localObject2;
         }
       }
+      i += m;
+      localObject2 = localObject3;
+      localObject1 = localObject4;
     }
-    if (("cenc".equals(localObject2)) || ("cbc1".equals(localObject2)) || ("cens".equals(localObject2)) || ("cbcs".equals(localObject2)))
-    {
-      if (localObject1 != null)
-      {
-        bool1 = true;
-        Assertions.checkArgument(bool1, "frma atom is mandatory");
-        if (j == -1) {
-          break label259;
-        }
-        bool1 = true;
-        label211:
-        Assertions.checkArgument(bool1, "schi atom is mandatory");
-        paramParsableByteArray = parseSchiFromParent(paramParsableByteArray, j, k, localObject2);
-        if (paramParsableByteArray == null) {
-          break label265;
-        }
-      }
-      label259:
-      label265:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        Assertions.checkArgument(bool1, "tenc atom is mandatory");
-        return Pair.create(localObject1, paramParsableByteArray);
-        bool1 = false;
-        break;
-        bool1 = false;
-        break label211;
-      }
+    if ((!"cenc".equals(localObject2)) && (!"cbc1".equals(localObject2)) && (!"cens".equals(localObject2)) && (!"cbcs".equals(localObject2))) {
+      return null;
     }
-    return null;
+    boolean bool2 = true;
+    boolean bool1;
+    if (localObject1 != null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1, "frma atom is mandatory");
+    if (k != -1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1, "schi atom is mandatory");
+    paramParsableByteArray = parseSchiFromParent(paramParsableByteArray, k, j, localObject2);
+    if (paramParsableByteArray != null) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1, "tenc atom is mandatory");
+    return Pair.create(localObject1, paramParsableByteArray);
   }
   
   private static Pair<long[], long[]> parseEdts(Atom.ContainerAtom paramContainerAtom)
@@ -387,50 +331,48 @@ final class AtomParsers
     if (paramContainerAtom != null)
     {
       paramContainerAtom = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_elst);
-      if (paramContainerAtom != null) {}
-    }
-    else
-    {
-      return Pair.create(null, null);
-    }
-    paramContainerAtom = paramContainerAtom.data;
-    paramContainerAtom.setPosition(8);
-    int j = Atom.parseFullAtomVersion(paramContainerAtom.readInt());
-    int k = paramContainerAtom.readUnsignedIntToInt();
-    long[] arrayOfLong1 = new long[k];
-    long[] arrayOfLong2 = new long[k];
-    int i = 0;
-    while (i < k)
-    {
-      if (j == 1)
+      if (paramContainerAtom != null)
       {
-        l = paramContainerAtom.readUnsignedLongToLong();
-        arrayOfLong1[i] = l;
-        if (j != 1) {
-          break label125;
+        paramContainerAtom = paramContainerAtom.data;
+        paramContainerAtom.setPosition(8);
+        int j = Atom.parseFullAtomVersion(paramContainerAtom.readInt());
+        int k = paramContainerAtom.readUnsignedIntToInt();
+        long[] arrayOfLong1 = new long[k];
+        long[] arrayOfLong2 = new long[k];
+        int i = 0;
+        while (i < k)
+        {
+          long l;
+          if (j == 1) {
+            l = paramContainerAtom.readUnsignedLongToLong();
+          } else {
+            l = paramContainerAtom.readUnsignedInt();
+          }
+          arrayOfLong1[i] = l;
+          if (j == 1) {
+            l = paramContainerAtom.readLong();
+          } else {
+            l = paramContainerAtom.readInt();
+          }
+          arrayOfLong2[i] = l;
+          if (paramContainerAtom.readShort() == 1)
+          {
+            paramContainerAtom.skipBytes(2);
+            i += 1;
+          }
+          else
+          {
+            throw new IllegalArgumentException("Unsupported media rate.");
+          }
         }
+        return Pair.create(arrayOfLong1, arrayOfLong2);
       }
-      label125:
-      for (long l = paramContainerAtom.readLong();; l = paramContainerAtom.readInt())
-      {
-        arrayOfLong2[i] = l;
-        if (paramContainerAtom.readShort() == 1) {
-          break label135;
-        }
-        throw new IllegalArgumentException("Unsupported media rate.");
-        l = paramContainerAtom.readUnsignedInt();
-        break;
-      }
-      label135:
-      paramContainerAtom.skipBytes(2);
-      i += 1;
     }
-    return Pair.create(arrayOfLong1, arrayOfLong2);
+    return Pair.create(null, null);
   }
   
   private static Pair<String, byte[]> parseEsdsFromParent(ParsableByteArray paramParsableByteArray, int paramInt)
   {
-    Object localObject = null;
     paramParsableByteArray.setPosition(paramInt + 8 + 4);
     paramParsableByteArray.skipBytes(1);
     parseExpandableClassSize(paramParsableByteArray);
@@ -447,49 +389,69 @@ final class AtomParsers
     }
     paramParsableByteArray.skipBytes(1);
     parseExpandableClassSize(paramParsableByteArray);
-    switch (paramParsableByteArray.readUnsignedByte())
+    paramInt = paramParsableByteArray.readUnsignedByte();
+    String str = null;
+    if (paramInt != 32)
     {
-    default: 
-    case 96: 
-    case 97: 
-    case 32: 
-    case 33: 
-    case 35: 
-    case 107: 
-    case 64: 
-    case 102: 
-    case 103: 
-    case 104: 
-    case 165: 
-    case 166: 
-      for (;;)
+      if (paramInt != 33)
       {
-        paramParsableByteArray.skipBytes(12);
-        paramParsableByteArray.skipBytes(1);
-        paramInt = parseExpandableClassSize(paramParsableByteArray);
-        byte[] arrayOfByte = new byte[paramInt];
-        paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt);
-        return Pair.create(localObject, arrayOfByte);
-        localObject = "video/mpeg2";
-        continue;
-        localObject = "video/mp4v-es";
-        continue;
-        localObject = "video/avc";
-        continue;
-        localObject = "video/hevc";
-        continue;
-        return Pair.create("audio/mpeg", null);
-        localObject = "audio/mp4a-latm";
-        continue;
-        localObject = "audio/ac3";
-        continue;
-        localObject = "audio/eac3";
+        if (paramInt != 35)
+        {
+          if (paramInt != 64)
+          {
+            if (paramInt != 107) {
+              if ((paramInt != 96) && (paramInt != 97)) {
+                if (paramInt != 165) {
+                  if (paramInt == 166) {}
+                }
+              }
+            }
+            switch (paramInt)
+            {
+            default: 
+              switch (paramInt)
+              {
+              default: 
+                break;
+              case 170: 
+              case 171: 
+                return Pair.create("audio/vnd.dts.hd", null);
+              case 169: 
+              case 172: 
+                return Pair.create("audio/vnd.dts", null);
+                str = "audio/eac3";
+                break;
+                str = "audio/ac3";
+                break;
+                str = "video/mpeg2";
+                break;
+                return Pair.create("audio/mpeg", null);
+              }
+              break;
+            }
+          }
+          else
+          {
+            str = "audio/mp4a-latm";
+          }
+        }
+        else {
+          str = "video/hevc";
+        }
       }
-    case 169: 
-    case 172: 
-      return Pair.create("audio/vnd.dts", null);
+      else {
+        str = "video/avc";
+      }
     }
-    return Pair.create("audio/vnd.dts.hd", null);
+    else {
+      str = "video/mp4v-es";
+    }
+    paramParsableByteArray.skipBytes(12);
+    paramParsableByteArray.skipBytes(1);
+    paramInt = parseExpandableClassSize(paramParsableByteArray);
+    byte[] arrayOfByte = new byte[paramInt];
+    paramParsableByteArray.readBytes(arrayOfByte, 0, paramInt);
+    return Pair.create(str, arrayOfByte);
   }
   
   private static int parseExpandableClassSize(ParsableByteArray paramParsableByteArray)
@@ -511,13 +473,14 @@ final class AtomParsers
     if (i == TYPE_vide) {
       return 2;
     }
-    if ((i == TYPE_text) || (i == TYPE_sbtl) || (i == TYPE_subt) || (i == TYPE_clcp)) {
-      return 3;
+    if ((i != TYPE_text) && (i != TYPE_sbtl) && (i != TYPE_subt) && (i != TYPE_clcp))
+    {
+      if (i == TYPE_meta) {
+        return 4;
+      }
+      return -1;
     }
-    if (i == TYPE_meta) {
-      return 4;
-    }
-    return -1;
+    return 3;
   }
   
   private static Metadata parseIlst(ParsableByteArray paramParsableByteArray, int paramInt)
@@ -542,19 +505,25 @@ final class AtomParsers
     int j = 8;
     paramParsableByteArray.setPosition(8);
     int k = Atom.parseFullAtomVersion(paramParsableByteArray.readInt());
-    if (k == 0) {}
-    for (int i = 8;; i = 16)
-    {
-      paramParsableByteArray.skipBytes(i);
-      long l = paramParsableByteArray.readUnsignedInt();
-      i = j;
-      if (k == 0) {
-        i = 4;
-      }
-      paramParsableByteArray.skipBytes(i);
-      i = paramParsableByteArray.readUnsignedShort();
-      return Pair.create(Long.valueOf(l), "" + (char)((i >> 10 & 0x1F) + 96) + (char)((i >> 5 & 0x1F) + 96) + (char)((i & 0x1F) + 96));
+    if (k == 0) {
+      i = 8;
+    } else {
+      i = 16;
     }
+    paramParsableByteArray.skipBytes(i);
+    long l = paramParsableByteArray.readUnsignedInt();
+    int i = j;
+    if (k == 0) {
+      i = 4;
+    }
+    paramParsableByteArray.skipBytes(i);
+    i = paramParsableByteArray.readUnsignedShort();
+    paramParsableByteArray = new StringBuilder();
+    paramParsableByteArray.append("");
+    paramParsableByteArray.append((char)((i >> 10 & 0x1F) + 96));
+    paramParsableByteArray.append((char)((i >> 5 & 0x1F) + 96));
+    paramParsableByteArray.append((char)((i & 0x1F) + 96));
+    return Pair.create(Long.valueOf(l), paramParsableByteArray.toString());
   }
   
   private static Metadata parseMetaAtom(ParsableByteArray paramParsableByteArray, int paramInt)
@@ -578,13 +547,11 @@ final class AtomParsers
   {
     int i = 8;
     paramParsableByteArray.setPosition(8);
-    if (Atom.parseFullAtomVersion(paramParsableByteArray.readInt()) == 0) {}
-    for (;;)
-    {
-      paramParsableByteArray.skipBytes(i);
-      return paramParsableByteArray.readUnsignedInt();
+    if (Atom.parseFullAtomVersion(paramParsableByteArray.readInt()) != 0) {
       i = 16;
     }
+    paramParsableByteArray.skipBytes(i);
+    return paramParsableByteArray.readUnsignedInt();
   }
   
   private static float parsePaspFromParent(ParsableByteArray paramParsableByteArray, int paramInt)
@@ -617,18 +584,19 @@ final class AtomParsers
     {
       paramParsableByteArray.setPosition(i);
       int j = paramParsableByteArray.readInt();
-      if (j > 0) {}
-      for (boolean bool = true;; bool = false)
+      boolean bool;
+      if (j > 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      Assertions.checkArgument(bool, "childAtomSize should be positive");
+      if (paramParsableByteArray.readInt() == Atom.TYPE_sinf)
       {
-        Assertions.checkArgument(bool, "childAtomSize should be positive");
-        if (paramParsableByteArray.readInt() != Atom.TYPE_sinf) {
-          break;
-        }
         Pair localPair = parseCommonEncryptionSinfFromParent(paramParsableByteArray, i, j);
-        if (localPair == null) {
-          break;
+        if (localPair != null) {
+          return localPair;
         }
-        return localPair;
       }
       i += j;
     }
@@ -637,11 +605,13 @@ final class AtomParsers
   
   private static TrackEncryptionBox parseSchiFromParent(ParsableByteArray paramParsableByteArray, int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject2 = null;
-    boolean bool = true;
     int i = paramInt1 + 8;
-    while (i - paramInt1 < paramInt2)
+    for (;;)
     {
+      Object localObject2 = null;
+      if (i - paramInt1 >= paramInt2) {
+        break;
+      }
       paramParsableByteArray.setPosition(i);
       int j = paramParsableByteArray.readInt();
       if (paramParsableByteArray.readInt() == Atom.TYPE_tenc)
@@ -651,36 +621,36 @@ final class AtomParsers
         if (paramInt1 == 0)
         {
           paramParsableByteArray.skipBytes(1);
-          paramInt2 = 0;
           paramInt1 = 0;
-          if (paramParsableByteArray.readUnsignedByte() != 1) {
-            break label177;
-          }
+          paramInt2 = 0;
         }
-        for (;;)
+        else
         {
-          i = paramParsableByteArray.readUnsignedByte();
-          byte[] arrayOfByte = new byte[16];
-          paramParsableByteArray.readBytes(arrayOfByte, 0, arrayOfByte.length);
-          Object localObject1 = localObject2;
-          if (bool)
-          {
-            localObject1 = localObject2;
-            if (i == 0)
-            {
-              j = paramParsableByteArray.readUnsignedByte();
-              localObject1 = new byte[j];
-              paramParsableByteArray.readBytes((byte[])localObject1, 0, j);
-            }
-          }
-          return new TrackEncryptionBox(bool, paramString, i, arrayOfByte, paramInt1, paramInt2, (byte[])localObject1);
-          paramInt2 = paramParsableByteArray.readUnsignedByte();
-          paramInt1 = (paramInt2 & 0xF0) >> 4;
-          paramInt2 &= 0xF;
-          break;
-          label177:
+          paramInt1 = paramParsableByteArray.readUnsignedByte();
+          paramInt2 = paramInt1 & 0xF;
+          paramInt1 = (paramInt1 & 0xF0) >> 4;
+        }
+        boolean bool;
+        if (paramParsableByteArray.readUnsignedByte() == 1) {
+          bool = true;
+        } else {
           bool = false;
         }
+        i = paramParsableByteArray.readUnsignedByte();
+        byte[] arrayOfByte = new byte[16];
+        paramParsableByteArray.readBytes(arrayOfByte, 0, arrayOfByte.length);
+        Object localObject1 = localObject2;
+        if (bool)
+        {
+          localObject1 = localObject2;
+          if (i == 0)
+          {
+            j = paramParsableByteArray.readUnsignedByte();
+            localObject1 = new byte[j];
+            paramParsableByteArray.readBytes((byte[])localObject1, 0, j);
+          }
+        }
+        return new TrackEncryptionBox(bool, paramString, i, arrayOfByte, paramInt1, paramInt2, (byte[])localObject1);
       }
       i += j;
     }
@@ -690,438 +660,422 @@ final class AtomParsers
   public static TrackSampleTable parseStbl(Track paramTrack, Atom.ContainerAtom paramContainerAtom, GaplessInfoHolder paramGaplessInfoHolder)
   {
     Object localObject1 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stsz);
-    if (localObject1 != null) {}
-    int i11;
-    for (Object localObject2 = new AtomParsers.StszSampleSizeBox((Atom.LeafAtom)localObject1);; localObject2 = new AtomParsers.Stz2SampleSizeBox((Atom.LeafAtom)localObject1))
-    {
-      i11 = ((AtomParsers.SampleSizeBox)localObject2).getSampleCount();
-      if (i11 != 0) {
-        break;
-      }
-      return new TrackSampleTable(new long[0], new int[0], 0, new long[0], new int[0], -9223372036854775807L);
-      localObject1 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stz2);
-      if (localObject1 == null) {
-        throw new ParserException("Track has no sample table size information");
-      }
-    }
-    boolean bool = false;
-    Object localObject3 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stco);
-    localObject1 = localObject3;
-    if (localObject3 == null)
-    {
-      bool = true;
-      localObject1 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_co64);
-    }
-    Object localObject4 = ((Atom.LeafAtom)localObject1).data;
-    Object localObject5 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stsc).data;
-    ParsableByteArray localParsableByteArray = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stts).data;
-    localObject1 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stss);
-    label205:
-    AtomParsers.ChunkIterator localChunkIterator;
-    int i4;
-    int i6;
-    int n;
-    int k;
-    int i;
-    int m;
-    int j;
     if (localObject1 != null)
     {
-      localObject1 = ((Atom.LeafAtom)localObject1).data;
-      paramContainerAtom = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_ctts);
-      if (paramContainerAtom == null) {
-        break label468;
-      }
-      localObject3 = paramContainerAtom.data;
-      localChunkIterator = new AtomParsers.ChunkIterator((ParsableByteArray)localObject5, (ParsableByteArray)localObject4, bool);
-      localParsableByteArray.setPosition(12);
-      i4 = localParsableByteArray.readUnsignedIntToInt() - 1;
-      i6 = localParsableByteArray.readUnsignedIntToInt();
-      n = localParsableByteArray.readUnsignedIntToInt();
-      k = 0;
-      if (localObject3 != null)
-      {
-        ((ParsableByteArray)localObject3).setPosition(12);
-        k = ((ParsableByteArray)localObject3).readUnsignedIntToInt();
-      }
-      if (localObject1 == null) {
-        break label2106;
-      }
-      ((ParsableByteArray)localObject1).setPosition(12);
-      i = ((ParsableByteArray)localObject1).readUnsignedIntToInt();
-      if (i <= 0) {
-        break label474;
-      }
-      m = ((ParsableByteArray)localObject1).readUnsignedIntToInt() - 1;
-      paramContainerAtom = (Atom.ContainerAtom)localObject1;
-      j = i;
-      i = m;
+      localObject1 = new AtomParsers.StszSampleSizeBox((Atom.LeafAtom)localObject1);
     }
+    else
+    {
+      localObject1 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stz2);
+      if (localObject1 == null) {
+        break label2196;
+      }
+      localObject1 = new AtomParsers.Stz2SampleSizeBox((Atom.LeafAtom)localObject1);
+    }
+    int n = ((AtomParsers.SampleSizeBox)localObject1).getSampleCount();
+    if (n == 0) {
+      return new TrackSampleTable(new long[0], new int[0], 0, new long[0], new int[0], -9223372036854775807L);
+    }
+    Object localObject2 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stco);
+    boolean bool;
+    if (localObject2 == null)
+    {
+      localObject2 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_co64);
+      bool = true;
+    }
+    else
+    {
+      bool = false;
+    }
+    Object localObject3 = ((Atom.LeafAtom)localObject2).data;
+    Object localObject4 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stsc).data;
+    Object localObject6 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stts).data;
+    localObject2 = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_stss);
+    if (localObject2 != null) {
+      localObject2 = ((Atom.LeafAtom)localObject2).data;
+    } else {
+      localObject2 = null;
+    }
+    paramContainerAtom = paramContainerAtom.getLeafAtomOfType(Atom.TYPE_ctts);
+    if (paramContainerAtom != null) {
+      paramContainerAtom = paramContainerAtom.data;
+    } else {
+      paramContainerAtom = null;
+    }
+    Object localObject7 = new AtomParsers.ChunkIterator((ParsableByteArray)localObject4, (ParsableByteArray)localObject3, bool);
+    ((ParsableByteArray)localObject6).setPosition(12);
+    int i1 = ((ParsableByteArray)localObject6).readUnsignedIntToInt() - 1;
+    int i5 = ((ParsableByteArray)localObject6).readUnsignedIntToInt();
+    int i7 = ((ParsableByteArray)localObject6).readUnsignedIntToInt();
+    int i;
+    if (paramContainerAtom != null)
+    {
+      paramContainerAtom.setPosition(12);
+      i = paramContainerAtom.readUnsignedIntToInt();
+    }
+    else
+    {
+      i = 0;
+    }
+    int j = -1;
+    int k;
+    if (localObject2 != null)
+    {
+      ((ParsableByteArray)localObject2).setPosition(12);
+      k = ((ParsableByteArray)localObject2).readUnsignedIntToInt();
+      if (k > 0) {
+        j = ((ParsableByteArray)localObject2).readUnsignedIntToInt() - 1;
+      } else {
+        localObject2 = null;
+      }
+    }
+    else
+    {
+      k = 0;
+    }
+    int m;
+    if ((((AtomParsers.SampleSizeBox)localObject1).isFixedSampleSize()) && ("audio/raw".equals(paramTrack.format.sampleMimeType)) && (i1 == 0) && (i == 0) && (k == 0)) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    long l3 = 0L;
+    long[] arrayOfLong;
+    Object localObject5;
+    int i2;
+    int i3;
+    int i4;
+    long l1;
+    if (m == 0)
+    {
+      arrayOfLong = new long[n];
+      localObject5 = new int[n];
+      localObject3 = new long[n];
+      localObject4 = new int[n];
+      i2 = k;
+      k = i;
+      l2 = 0L;
+      i = i1;
+      int i8 = 0;
+      int i6 = 0;
+      i3 = 0;
+      i4 = 0;
+      m = 0;
+      l1 = l2;
+      i1 = j;
+      j = i8;
+      while (i6 < n)
+      {
+        i8 = i4;
+        i4 = i2;
+        while (i8 == 0)
+        {
+          Assertions.checkState(((AtomParsers.ChunkIterator)localObject7).moveNext());
+          l1 = ((AtomParsers.ChunkIterator)localObject7).offset;
+          i8 = ((AtomParsers.ChunkIterator)localObject7).numSamples;
+        }
+        int i10 = i3;
+        int i9 = k;
+        i2 = m;
+        if (paramContainerAtom != null)
+        {
+          while ((i3 == 0) && (k > 0))
+          {
+            i3 = paramContainerAtom.readUnsignedIntToInt();
+            m = paramContainerAtom.readInt();
+            k -= 1;
+          }
+          i10 = i3 - 1;
+          i2 = m;
+          i9 = k;
+        }
+        arrayOfLong[i6] = l1;
+        localObject5[i6] = ((AtomParsers.SampleSizeBox)localObject1).readNextSampleSize();
+        k = j;
+        if (localObject5[i6] > j) {
+          k = localObject5[i6];
+        }
+        localObject3[i6] = (i2 + l2);
+        if (localObject2 == null) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        localObject4[i6] = j;
+        if (i6 == i1)
+        {
+          localObject4[i6] = 1;
+          j = i4 - 1;
+          if (j > 0) {
+            i1 = ((ParsableByteArray)localObject2).readUnsignedIntToInt() - 1;
+          }
+        }
+        else
+        {
+          j = i4;
+        }
+        l2 += i7;
+        i5 -= 1;
+        if (i5 == 0)
+        {
+          m = i;
+          if (m > 0)
+          {
+            i5 = ((ParsableByteArray)localObject6).readUnsignedIntToInt();
+            i7 = ((ParsableByteArray)localObject6).readInt();
+            i = m - 1;
+          }
+        }
+        l1 += localObject5[i6];
+        i4 = i8 - 1;
+        i6 += 1;
+        i3 = j;
+        m = i2;
+        j = k;
+        i2 = i3;
+        i3 = i10;
+        k = i9;
+      }
+      l1 = l2 + m;
+      if (i3 == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      Assertions.checkArgument(bool);
+      while (k > 0)
+      {
+        if (paramContainerAtom.readUnsignedIntToInt() == 0) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        Assertions.checkArgument(bool);
+        paramContainerAtom.readInt();
+        k -= 1;
+      }
+      if ((i2 == 0) && (i5 == 0) && (i4 == 0) && (i == 0))
+      {
+        i = j;
+        localObject1 = arrayOfLong;
+        localObject2 = localObject5;
+        paramContainerAtom = (Atom.ContainerAtom)localObject4;
+        j = n;
+      }
+      else
+      {
+        paramContainerAtom = new StringBuilder();
+        paramContainerAtom.append("Inconsistent stbl box for track ");
+        paramContainerAtom.append(paramTrack.id);
+        paramContainerAtom.append(": remainingSynchronizationSamples ");
+        paramContainerAtom.append(i2);
+        paramContainerAtom.append(", remainingSamplesAtTimestampDelta ");
+        paramContainerAtom.append(i5);
+        paramContainerAtom.append(", remainingSamplesInChunk ");
+        paramContainerAtom.append(i4);
+        paramContainerAtom.append(", remainingTimestampDeltaChanges ");
+        paramContainerAtom.append(i);
+        Log.w("AtomParsers", paramContainerAtom.toString());
+        i = j;
+        localObject1 = arrayOfLong;
+        localObject2 = localObject5;
+        paramContainerAtom = (Atom.ContainerAtom)localObject4;
+        j = n;
+      }
+    }
+    else
+    {
+      j = n;
+      paramContainerAtom = new long[((AtomParsers.ChunkIterator)localObject7).length];
+      localObject2 = new int[((AtomParsers.ChunkIterator)localObject7).length];
+      while (((AtomParsers.ChunkIterator)localObject7).moveNext())
+      {
+        paramContainerAtom[localObject7.index] = ((AtomParsers.ChunkIterator)localObject7).offset;
+        localObject2[localObject7.index] = ((AtomParsers.ChunkIterator)localObject7).numSamples;
+      }
+      localObject4 = FixedSampleSizeRechunker.rechunk(((AtomParsers.SampleSizeBox)localObject1).readNextSampleSize(), paramContainerAtom, (int[])localObject2, i7);
+      localObject1 = ((FixedSampleSizeRechunker.Results)localObject4).offsets;
+      localObject2 = ((FixedSampleSizeRechunker.Results)localObject4).sizes;
+      i = ((FixedSampleSizeRechunker.Results)localObject4).maximumSize;
+      localObject3 = ((FixedSampleSizeRechunker.Results)localObject4).timestamps;
+      paramContainerAtom = ((FixedSampleSizeRechunker.Results)localObject4).flags;
+      l1 = ((FixedSampleSizeRechunker.Results)localObject4).duration;
+    }
+    localObject7 = paramTrack;
+    paramTrack = (Track)localObject2;
+    long l2 = Util.scaleLargeTimestamp(l1, 1000000L, ((Track)localObject7).timescale);
+    if ((((Track)localObject7).editListDurations != null) && (!paramGaplessInfoHolder.hasGaplessInfo()))
+    {
+      long l5;
+      long l4;
+      if ((((Track)localObject7).editListDurations.length == 1) && (((Track)localObject7).type == 1) && (localObject3.length >= 2))
+      {
+        l5 = localObject7.editListMediaTimes[0];
+        l4 = l5 + Util.scaleLargeTimestamp(localObject7.editListDurations[0], ((Track)localObject7).timescale, ((Track)localObject7).movieTimescale);
+        if ((localObject3[0] <= l5) && (l5 < localObject3[1]) && (localObject3[(localObject3.length - 1)] < l4) && (l4 <= l1))
+        {
+          l5 = Util.scaleLargeTimestamp(l5 - localObject3[0], ((Track)localObject7).format.sampleRate, ((Track)localObject7).timescale);
+          l4 = Util.scaleLargeTimestamp(l1 - l4, ((Track)localObject7).format.sampleRate, ((Track)localObject7).timescale);
+          if (((l5 != 0L) || (l4 != 0L)) && (l5 <= 2147483647L) && (l4 <= 2147483647L))
+          {
+            paramGaplessInfoHolder.encoderDelay = ((int)l5);
+            paramGaplessInfoHolder.encoderPadding = ((int)l4);
+            Util.scaleLargeTimestampsInPlace((long[])localObject3, 1000000L, ((Track)localObject7).timescale);
+            return new TrackSampleTable((long[])localObject1, paramTrack, i, (long[])localObject3, paramContainerAtom, l2);
+          }
+        }
+        else {}
+      }
+      paramGaplessInfoHolder = (GaplessInfoHolder)localObject1;
+      localObject4 = "AtomParsers";
+      if ((((Track)localObject7).editListDurations.length == 1) && (localObject7.editListDurations[0] == 0L))
+      {
+        l2 = localObject7.editListMediaTimes[0];
+        j = 0;
+        while (j < localObject3.length)
+        {
+          localObject3[j] = Util.scaleLargeTimestamp(localObject3[j] - l2, 1000000L, ((Track)localObject7).timescale);
+          j += 1;
+        }
+        return new TrackSampleTable(paramGaplessInfoHolder, paramTrack, i, (long[])localObject3, paramContainerAtom, Util.scaleLargeTimestamp(l1 - l2, 1000000L, ((Track)localObject7).timescale));
+      }
+      if (((Track)localObject7).type == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      n = 0;
+      k = 0;
+      m = 0;
+      i1 = 0;
+      l1 = l2;
+      while (n < ((Track)localObject7).editListDurations.length)
+      {
+        l2 = localObject7.editListMediaTimes[n];
+        if (l2 != -1L)
+        {
+          l4 = Util.scaleLargeTimestamp(localObject7.editListDurations[n], ((Track)localObject7).timescale, ((Track)localObject7).movieTimescale);
+          i4 = Util.binarySearchCeil((long[])localObject3, l2, true, true);
+          i3 = Util.binarySearchCeil((long[])localObject3, l2 + l4, bool, false);
+          i2 = m + (i3 - i4);
+          if (i1 != i4) {
+            m = 1;
+          } else {
+            m = 0;
+          }
+          k |= m;
+          i1 = i3;
+          m = i2;
+        }
+        n += 1;
+      }
+      if (m != j) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      i3 = j | k;
+      if (i3 != 0) {
+        localObject1 = new long[m];
+      } else {
+        localObject1 = paramGaplessInfoHolder;
+      }
+      if (i3 != 0) {
+        localObject5 = new int[m];
+      } else {
+        localObject5 = paramTrack;
+      }
+      if (i3 != 0) {
+        j = 0;
+      } else {
+        j = i;
+      }
+      if (i3 != 0) {
+        localObject2 = new int[m];
+      } else {
+        localObject2 = paramContainerAtom;
+      }
+      arrayOfLong = new long[m];
+      m = 0;
+      k = 0;
+      l2 = l3;
+      localObject6 = paramTrack;
+      paramTrack = (Track)localObject1;
+      while (m < ((Track)localObject7).editListDurations.length)
+      {
+        l3 = localObject7.editListMediaTimes[m];
+        l4 = localObject7.editListDurations[m];
+        if (l3 != -1L)
+        {
+          l5 = Util.scaleLargeTimestamp(l4, ((Track)localObject7).timescale, ((Track)localObject7).movieTimescale);
+          n = Util.binarySearchCeil((long[])localObject3, l3, true, true);
+          i2 = Util.binarySearchCeil((long[])localObject3, l5 + l3, bool, false);
+          if (i3 != 0)
+          {
+            i1 = i2 - n;
+            System.arraycopy(paramGaplessInfoHolder, n, paramTrack, k, i1);
+            System.arraycopy(localObject6, n, localObject5, k, i1);
+            System.arraycopy(paramContainerAtom, n, localObject2, k, i1);
+          }
+          i1 = j;
+          j = k;
+          k = i1;
+          i1 = i2;
+          while (n < i1)
+          {
+            arrayOfLong[j] = (Util.scaleLargeTimestamp(l2, 1000000L, ((Track)localObject7).movieTimescale) + Util.scaleLargeTimestamp(localObject3[n] - l3, 1000000L, ((Track)localObject7).timescale));
+            i2 = k;
+            if (i3 != 0)
+            {
+              i2 = k;
+              if (localObject5[j] > k) {
+                i2 = localObject6[n];
+              }
+            }
+            j += 1;
+            n += 1;
+            k = i2;
+          }
+          n = k;
+        }
+        else
+        {
+          n = j;
+          j = k;
+        }
+        l2 += l4;
+        m += 1;
+        k = j;
+        j = n;
+      }
+      l2 = Util.scaleLargeTimestamp(l2, 1000000L, ((Track)localObject7).timescale);
+      k = 0;
+      m = 0;
+      while ((k < localObject2.length) && (m == 0))
+      {
+        if ((localObject2[k] & 0x1) != 0) {
+          n = 1;
+        } else {
+          n = 0;
+        }
+        m |= n;
+        k += 1;
+      }
+      if (m == 0)
+      {
+        Log.w((String)localObject4, "Ignoring edit list: Edited sample sequence does not contain a sync sample.");
+        Util.scaleLargeTimestampsInPlace((long[])localObject3, 1000000L, ((Track)localObject7).timescale);
+        return new TrackSampleTable(paramGaplessInfoHolder, (int[])localObject6, i, (long[])localObject3, paramContainerAtom, l1);
+      }
+      return new TrackSampleTable(paramTrack, (int[])localObject5, j, arrayOfLong, (int[])localObject2, l2);
+    }
+    Util.scaleLargeTimestampsInPlace((long[])localObject3, 1000000L, ((Track)localObject7).timescale);
+    return new TrackSampleTable((long[])localObject1, paramTrack, i, (long[])localObject3, paramContainerAtom, l2);
+    label2196:
+    paramTrack = new ParserException("Track has no sample table size information");
     for (;;)
     {
-      label312:
-      if ((((AtomParsers.SampleSizeBox)localObject2).isFixedSampleSize()) && ("audio/raw".equals(paramTrack.format.sampleMimeType)) && (i4 == 0) && (k == 0) && (j == 0)) {}
-      int i1;
-      Object localObject6;
-      long l1;
-      int i3;
-      long l2;
-      int i5;
-      int i2;
-      for (m = 1;; m = 0)
-      {
-        i1 = 0;
-        if (m != 0) {
-          break label993;
-        }
-        localObject4 = new long[i11];
-        localObject1 = new int[i11];
-        localObject5 = new long[i11];
-        localObject6 = new int[i11];
-        l1 = 0L;
-        i3 = 0;
-        l2 = 0L;
-        i5 = 0;
-        i2 = 0;
-        m = j;
-        i7 = 0;
-        j = k;
-        k = n;
-        n = i1;
-        i1 = i7;
-        if (i5 >= i11) {
-          break label753;
-        }
-        while (i3 == 0)
-        {
-          Assertions.checkState(localChunkIterator.moveNext());
-          l1 = localChunkIterator.offset;
-          i3 = localChunkIterator.numSamples;
-        }
-        localObject1 = null;
-        break;
-        label468:
-        localObject3 = null;
-        break label205;
-        label474:
-        m = -1;
-        paramContainerAtom = null;
-        j = i;
-        i = m;
-        break label312;
-      }
-      int i9 = i1;
-      int i8 = j;
-      int i7 = i2;
-      if (localObject3 != null)
-      {
-        while ((i2 == 0) && (j > 0))
-        {
-          i2 = ((ParsableByteArray)localObject3).readUnsignedIntToInt();
-          i1 = ((ParsableByteArray)localObject3).readInt();
-          j -= 1;
-        }
-        i7 = i2 - 1;
-        i8 = j;
-        i9 = i1;
-      }
-      localObject4[i5] = l1;
-      localObject1[i5] = ((AtomParsers.SampleSizeBox)localObject2).readNextSampleSize();
-      int i10 = n;
-      if (localObject1[i5] > n) {
-        i10 = localObject1[i5];
-      }
-      localObject5[i5] = (i9 + l2);
-      if (paramContainerAtom == null)
-      {
-        j = 1;
-        label616:
-        localObject6[i5] = j;
-        if (i5 != i) {
-          break label2099;
-        }
-        localObject6[i5] = 1;
-        j = m - 1;
-        if (j <= 0) {
-          break label2096;
-        }
-        i = paramContainerAtom.readUnsignedIntToInt() - 1;
-      }
-      for (;;)
-      {
-        l2 += k;
-        m = i6 - 1;
-        if ((m == 0) && (i4 > 0))
-        {
-          m = localParsableByteArray.readUnsignedIntToInt();
-          k = localParsableByteArray.readInt();
-          i4 -= 1;
-        }
-        for (;;)
-        {
-          l1 += localObject1[i5];
-          i5 += 1;
-          i6 = m;
-          m = j;
-          i3 -= 1;
-          i1 = i9;
-          j = i8;
-          i2 = i7;
-          n = i10;
-          break;
-          j = 0;
-          break label616;
-          label753:
-          l1 = i1;
-          if (i2 == 0)
-          {
-            bool = true;
-            Assertions.checkArgument(bool);
-            label771:
-            if (j <= 0) {
-              break label819;
-            }
-            if (((ParsableByteArray)localObject3).readUnsignedIntToInt() != 0) {
-              break label813;
-            }
-          }
-          label813:
-          for (bool = true;; bool = false)
-          {
-            Assertions.checkArgument(bool);
-            ((ParsableByteArray)localObject3).readInt();
-            j -= 1;
-            break label771;
-            bool = false;
-            break;
-          }
-          label819:
-          if ((m != 0) || (i6 != 0) || (i3 != 0) || (i4 != 0)) {
-            Log.w("AtomParsers", "Inconsistent stbl box for track " + paramTrack.id + ": remainingSynchronizationSamples " + m + ", remainingSamplesAtTimestampDelta " + i6 + ", remainingSamplesInChunk " + i3 + ", remainingTimestampDeltaChanges " + i4);
-          }
-          l1 = l2 + l1;
-          paramContainerAtom = (Atom.ContainerAtom)localObject6;
-          localObject3 = localObject5;
-          k = n;
-          localObject2 = localObject4;
-          for (;;)
-          {
-            l2 = Util.scaleLargeTimestamp(l1, 1000000L, paramTrack.timescale);
-            if ((paramTrack.editListDurations != null) && (!paramGaplessInfoHolder.hasGaplessInfo())) {
-              break;
-            }
-            Util.scaleLargeTimestampsInPlace((long[])localObject3, 1000000L, paramTrack.timescale);
-            return new TrackSampleTable((long[])localObject2, (int[])localObject1, k, (long[])localObject3, paramContainerAtom, l2);
-            label993:
-            paramContainerAtom = new long[localChunkIterator.length];
-            localObject1 = new int[localChunkIterator.length];
-            while (localChunkIterator.moveNext())
-            {
-              paramContainerAtom[localChunkIterator.index] = localChunkIterator.offset;
-              localObject1[localChunkIterator.index] = localChunkIterator.numSamples;
-            }
-            localObject4 = FixedSampleSizeRechunker.rechunk(((AtomParsers.SampleSizeBox)localObject2).readNextSampleSize(), paramContainerAtom, (int[])localObject1, n);
-            localObject2 = ((FixedSampleSizeRechunker.Results)localObject4).offsets;
-            localObject1 = ((FixedSampleSizeRechunker.Results)localObject4).sizes;
-            k = ((FixedSampleSizeRechunker.Results)localObject4).maximumSize;
-            localObject3 = ((FixedSampleSizeRechunker.Results)localObject4).timestamps;
-            paramContainerAtom = ((FixedSampleSizeRechunker.Results)localObject4).flags;
-            l1 = ((FixedSampleSizeRechunker.Results)localObject4).duration;
-          }
-          long l4;
-          long l3;
-          if ((paramTrack.editListDurations.length == 1) && (paramTrack.type == 1) && (localObject3.length >= 2))
-          {
-            l4 = paramTrack.editListMediaTimes[0];
-            l3 = Util.scaleLargeTimestamp(paramTrack.editListDurations[0], paramTrack.timescale, paramTrack.movieTimescale) + l4;
-            if ((localObject3[0] <= l4) && (l4 < localObject3[1]) && (localObject3[(localObject3.length - 1)] < l3) && (l3 <= l1))
-            {
-              l4 = Util.scaleLargeTimestamp(l4 - localObject3[0], paramTrack.format.sampleRate, paramTrack.timescale);
-              l3 = Util.scaleLargeTimestamp(l1 - l3, paramTrack.format.sampleRate, paramTrack.timescale);
-              if (((l4 != 0L) || (l3 != 0L)) && (l4 <= 2147483647L) && (l3 <= 2147483647L))
-              {
-                paramGaplessInfoHolder.encoderDelay = ((int)l4);
-                paramGaplessInfoHolder.encoderPadding = ((int)l3);
-                Util.scaleLargeTimestampsInPlace((long[])localObject3, 1000000L, paramTrack.timescale);
-                return new TrackSampleTable((long[])localObject2, (int[])localObject1, k, (long[])localObject3, paramContainerAtom, l2);
-              }
-            }
-          }
-          if ((paramTrack.editListDurations.length == 1) && (paramTrack.editListDurations[0] == 0L))
-          {
-            l2 = paramTrack.editListMediaTimes[0];
-            i = 0;
-            while (i < localObject3.length)
-            {
-              localObject3[i] = Util.scaleLargeTimestamp(localObject3[i] - l2, 1000000L, paramTrack.timescale);
-              i += 1;
-            }
-            return new TrackSampleTable((long[])localObject2, (int[])localObject1, k, (long[])localObject3, paramContainerAtom, Util.scaleLargeTimestamp(l1 - l2, 1000000L, paramTrack.timescale));
-          }
-          if (paramTrack.type == 1)
-          {
-            bool = true;
-            n = 0;
-            j = 0;
-            m = 0;
-            i = 0;
-            label1446:
-            if (n >= paramTrack.editListDurations.length) {
-              break label1583;
-            }
-            l1 = paramTrack.editListMediaTimes[n];
-            if (l1 == -1L) {
-              break label2078;
-            }
-            l3 = Util.scaleLargeTimestamp(paramTrack.editListDurations[n], paramTrack.timescale, paramTrack.movieTimescale);
-            i3 = Util.binarySearchCeil((long[])localObject3, l1, true, true);
-            i1 = Util.binarySearchCeil((long[])localObject3, l3 + l1, bool, false);
-            i2 = i + (i1 - i3);
-            if (m == i3) {
-              break label1578;
-            }
-            i = 1;
-            label1538:
-            m = j | i;
-            i = i2;
-          }
-          for (j = i1;; j = i1)
-          {
-            n += 1;
-            i1 = j;
-            j = m;
-            m = i1;
-            break label1446;
-            bool = false;
-            break;
-            label1578:
-            i = 0;
-            break label1538;
-            label1583:
-            if (i != i11)
-            {
-              m = 1;
-              i2 = j | m;
-              if (i2 == 0) {
-                break label1892;
-              }
-              paramGaplessInfoHolder = new long[i];
-              label1608:
-              if (i2 == 0) {
-                break label1898;
-              }
-              localObject4 = new int[i];
-              label1618:
-              if (i2 == 0) {
-                break label1905;
-              }
-              j = 0;
-              label1626:
-              if (i2 == 0) {
-                break label1912;
-              }
-            }
-            label1892:
-            label1898:
-            label1905:
-            label1912:
-            for (localObject5 = new int[i];; localObject5 = paramContainerAtom)
-            {
-              localObject6 = new long[i];
-              l1 = 0L;
-              m = 0;
-              n = 0;
-              i = j;
-              j = n;
-              if (m >= paramTrack.editListDurations.length) {
-                break label1944;
-              }
-              l3 = paramTrack.editListMediaTimes[m];
-              l4 = paramTrack.editListDurations[m];
-              if (l3 == -1L) {
-                break label2075;
-              }
-              long l5 = Util.scaleLargeTimestamp(l4, paramTrack.timescale, paramTrack.movieTimescale);
-              n = Util.binarySearchCeil((long[])localObject3, l3, true, true);
-              i3 = Util.binarySearchCeil((long[])localObject3, l3 + l5, bool, false);
-              if (i2 != 0)
-              {
-                i1 = i3 - n;
-                System.arraycopy(localObject2, n, paramGaplessInfoHolder, j, i1);
-                System.arraycopy(localObject1, n, localObject4, j, i1);
-                System.arraycopy(paramContainerAtom, n, localObject5, j, i1);
-              }
-              i1 = i;
-              i = j;
-              for (j = i1; n < i3; j = i1)
-              {
-                l5 = Util.scaleLargeTimestamp(l1, 1000000L, paramTrack.movieTimescale);
-                localObject6[i] = (Util.scaleLargeTimestamp(localObject3[n] - l3, 1000000L, paramTrack.timescale) + l5);
-                i1 = j;
-                if (i2 != 0)
-                {
-                  i1 = j;
-                  if (localObject4[i] > j) {
-                    i1 = localObject1[n];
-                  }
-                }
-                n += 1;
-                i += 1;
-              }
-              m = 0;
-              break;
-              paramGaplessInfoHolder = (GaplessInfoHolder)localObject2;
-              break label1608;
-              localObject4 = localObject1;
-              break label1618;
-              j = k;
-              break label1626;
-            }
-            n = i;
-            i = j;
-            j = n;
-            label1944:
-            label2075:
-            for (;;)
-            {
-              l1 += l4;
-              m += 1;
-              break;
-              l1 = Util.scaleLargeTimestamp(l1, 1000000L, paramTrack.timescale);
-              m = 0;
-              j = 0;
-              if ((j < localObject5.length) && (m == 0))
-              {
-                if ((localObject5[j] & 0x1) != 0) {}
-                for (n = 1;; n = 0)
-                {
-                  m |= n;
-                  j += 1;
-                  break;
-                }
-              }
-              if (m == 0)
-              {
-                Log.w("AtomParsers", "Ignoring edit list: Edited sample sequence does not contain a sync sample.");
-                Util.scaleLargeTimestampsInPlace((long[])localObject3, 1000000L, paramTrack.timescale);
-                return new TrackSampleTable((long[])localObject2, (int[])localObject1, k, (long[])localObject3, paramContainerAtom, l2);
-              }
-              return new TrackSampleTable(paramGaplessInfoHolder, (int[])localObject4, i, (long[])localObject6, (int[])localObject5, l1);
-            }
-            label2078:
-            i1 = m;
-            m = j;
-          }
-        }
-        label2096:
-        continue;
-        label2099:
-        j = m;
-      }
-      label2106:
-      i = -1;
-      paramContainerAtom = (Atom.ContainerAtom)localObject1;
-      j = 0;
+      throw paramTrack;
     }
   }
   
@@ -1131,39 +1085,41 @@ final class AtomParsers
     int j = paramParsableByteArray.readInt();
     AtomParsers.StsdData localStsdData = new AtomParsers.StsdData(j);
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramParsableByteArray.getPosition();
       int m = paramParsableByteArray.readInt();
       boolean bool;
-      label53:
-      int n;
-      if (m > 0)
-      {
+      if (m > 0) {
         bool = true;
-        Assertions.checkArgument(bool, "childAtomSize should be positive");
-        n = paramParsableByteArray.readInt();
-        if ((n != Atom.TYPE_avc1) && (n != Atom.TYPE_avc3) && (n != Atom.TYPE_encv) && (n != Atom.TYPE_mp4v) && (n != Atom.TYPE_hvc1) && (n != Atom.TYPE_hev1) && (n != Atom.TYPE_s263) && (n != Atom.TYPE_vp08) && (n != Atom.TYPE_vp09)) {
-          break label180;
+      } else {
+        bool = false;
+      }
+      Assertions.checkArgument(bool, "childAtomSize should be positive");
+      int n = paramParsableByteArray.readInt();
+      if ((n != Atom.TYPE_avc1) && (n != Atom.TYPE_avc3) && (n != Atom.TYPE_encv) && (n != Atom.TYPE_mp4v) && (n != Atom.TYPE_hvc1) && (n != Atom.TYPE_hev1) && (n != Atom.TYPE_s263) && (n != Atom.TYPE_vp08) && (n != Atom.TYPE_vp09))
+      {
+        if ((n != Atom.TYPE_mp4a) && (n != Atom.TYPE_enca) && (n != Atom.TYPE_ac_3) && (n != Atom.TYPE_ec_3) && (n != Atom.TYPE_dtsc) && (n != Atom.TYPE_dtse) && (n != Atom.TYPE_dtsh) && (n != Atom.TYPE_dtsl) && (n != Atom.TYPE_samr) && (n != Atom.TYPE_sawb) && (n != Atom.TYPE_lpcm) && (n != Atom.TYPE_sowt) && (n != Atom.TYPE__mp3) && (n != Atom.TYPE_alac))
+        {
+          if ((n != Atom.TYPE_TTML) && (n != Atom.TYPE_tx3g) && (n != Atom.TYPE_wvtt) && (n != Atom.TYPE_stpp) && (n != Atom.TYPE_c608))
+          {
+            if (n == Atom.TYPE_camm) {
+              localStsdData.format = Format.createSampleFormat(Integer.toString(paramInt1), "application/x-camera-motion", null, -1, null);
+            }
+          }
+          else {
+            parseTextSampleEntry(paramParsableByteArray, n, k, m, paramInt1, paramString, localStsdData);
+          }
         }
+        else {
+          parseAudioSampleEntry(paramParsableByteArray, n, k, m, paramInt1, paramString, paramBoolean, paramDrmInitData, localStsdData, i);
+        }
+      }
+      else {
         parseVideoSampleEntry(paramParsableByteArray, n, k, m, paramInt1, paramInt2, paramDrmInitData, localStsdData, i);
       }
-      for (;;)
-      {
-        paramParsableByteArray.setPosition(k + m);
-        i += 1;
-        break;
-        bool = false;
-        break label53;
-        label180:
-        if ((n == Atom.TYPE_mp4a) || (n == Atom.TYPE_enca) || (n == Atom.TYPE_ac_3) || (n == Atom.TYPE_ec_3) || (n == Atom.TYPE_dtsc) || (n == Atom.TYPE_dtse) || (n == Atom.TYPE_dtsh) || (n == Atom.TYPE_dtsl) || (n == Atom.TYPE_samr) || (n == Atom.TYPE_sawb) || (n == Atom.TYPE_lpcm) || (n == Atom.TYPE_sowt) || (n == Atom.TYPE__mp3) || (n == Atom.TYPE_alac)) {
-          parseAudioSampleEntry(paramParsableByteArray, n, k, m, paramInt1, paramString, paramBoolean, paramDrmInitData, localStsdData, i);
-        } else if ((n == Atom.TYPE_TTML) || (n == Atom.TYPE_tx3g) || (n == Atom.TYPE_wvtt) || (n == Atom.TYPE_stpp) || (n == Atom.TYPE_c608)) {
-          parseTextSampleEntry(paramParsableByteArray, n, k, m, paramInt1, paramString, localStsdData);
-        } else if (n == Atom.TYPE_camm) {
-          localStsdData.format = Format.createSampleFormat(Integer.toString(paramInt1), "application/x-camera-motion", null, -1, null);
-        }
-      }
+      paramParsableByteArray.setPosition(k + m);
+      i += 1;
     }
     return localStsdData;
   }
@@ -1171,24 +1127,23 @@ final class AtomParsers
   private static void parseTextSampleEntry(ParsableByteArray paramParsableByteArray, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, AtomParsers.StsdData paramStsdData)
   {
     paramParsableByteArray.setPosition(paramInt2 + 8 + 8);
-    Object localObject1 = null;
+    paramInt2 = Atom.TYPE_TTML;
+    String str = "application/ttml+xml";
+    Object localObject = null;
     long l = 9223372036854775807L;
-    if (paramInt1 == Atom.TYPE_TTML) {
-      paramParsableByteArray = "application/ttml+xml";
+    if (paramInt1 == paramInt2) {
+      paramParsableByteArray = str;
     }
     for (;;)
     {
-      paramStsdData.format = Format.createTextSampleFormat(Integer.toString(paramInt4), paramParsableByteArray, null, -1, 0, paramString, -1, null, l, (List)localObject1);
-      return;
+      break;
       if (paramInt1 == Atom.TYPE_tx3g)
       {
-        localObject1 = "application/x-quicktime-tx3g";
         paramInt1 = paramInt3 - 8 - 8;
-        Object localObject2 = new byte[paramInt1];
-        paramParsableByteArray.readBytes((byte[])localObject2, 0, paramInt1);
-        localObject2 = Collections.singletonList(localObject2);
-        paramParsableByteArray = (ParsableByteArray)localObject1;
-        localObject1 = localObject2;
+        localObject = new byte[paramInt1];
+        paramParsableByteArray.readBytes((byte[])localObject, 0, paramInt1);
+        localObject = Collections.singletonList(localObject);
+        paramParsableByteArray = "application/x-quicktime-tx3g";
       }
       else if (paramInt1 == Atom.TYPE_wvtt)
       {
@@ -1196,97 +1151,111 @@ final class AtomParsers
       }
       else if (paramInt1 == Atom.TYPE_stpp)
       {
-        paramParsableByteArray = "application/ttml+xml";
         l = 0L;
+        paramParsableByteArray = str;
       }
       else
       {
         if (paramInt1 != Atom.TYPE_c608) {
-          break;
+          break label157;
         }
-        paramParsableByteArray = "application/x-mp4-cea-608";
         paramStsdData.requiredSampleTransformation = 1;
+        paramParsableByteArray = "application/x-mp4-cea-608";
       }
     }
-    throw new IllegalStateException();
+    paramStsdData.format = Format.createTextSampleFormat(Integer.toString(paramInt4), paramParsableByteArray, null, -1, 0, paramString, -1, null, l, (List)localObject);
+    return;
+    label157:
+    paramParsableByteArray = new IllegalStateException();
+    for (;;)
+    {
+      throw paramParsableByteArray;
+    }
   }
   
   private static AtomParsers.TkhdData parseTkhd(ParsableByteArray paramParsableByteArray)
   {
     int j = 8;
     paramParsableByteArray.setPosition(8);
-    int i1 = Atom.parseFullAtomVersion(paramParsableByteArray.readInt());
-    int i;
-    int n;
-    int m;
-    label62:
-    int k;
-    long l1;
-    if (i1 == 0)
-    {
+    int n = Atom.parseFullAtomVersion(paramParsableByteArray.readInt());
+    if (n == 0) {
       i = 8;
-      paramParsableByteArray.skipBytes(i);
-      n = paramParsableByteArray.readInt();
-      paramParsableByteArray.skipBytes(4);
-      m = 1;
-      int i2 = paramParsableByteArray.getPosition();
-      i = j;
-      if (i1 == 0) {
-        i = 4;
-      }
-      j = 0;
-      k = m;
-      if (j < i)
+    } else {
+      i = 16;
+    }
+    paramParsableByteArray.skipBytes(i);
+    int m = paramParsableByteArray.readInt();
+    paramParsableByteArray.skipBytes(4);
+    int i1 = paramParsableByteArray.getPosition();
+    int i = j;
+    if (n == 0) {
+      i = 4;
+    }
+    int k = 0;
+    j = 0;
+    while (j < i)
+    {
+      if (paramParsableByteArray.data[(i1 + j)] != -1)
       {
-        if (paramParsableByteArray.data[(i2 + j)] == -1) {
-          break label177;
-        }
-        k = 0;
+        j = 0;
+        break label99;
       }
-      if (k == 0) {
-        break label184;
-      }
+      j += 1;
+    }
+    j = 1;
+    label99:
+    long l2 = -9223372036854775807L;
+    long l1;
+    if (j != 0)
+    {
       paramParsableByteArray.skipBytes(i);
-      l1 = -9223372036854775807L;
-      paramParsableByteArray.skipBytes(16);
-      i = paramParsableByteArray.readInt();
-      j = paramParsableByteArray.readInt();
-      paramParsableByteArray.skipBytes(4);
-      k = paramParsableByteArray.readInt();
-      m = paramParsableByteArray.readInt();
-      if ((i != 0) || (j != 65536) || (k != -65536) || (m != 0)) {
-        break label223;
+      l1 = l2;
+    }
+    else
+    {
+      if (n == 0) {
+        l1 = paramParsableByteArray.readUnsignedInt();
+      } else {
+        l1 = paramParsableByteArray.readUnsignedLongToLong();
       }
+      if (l1 == 0L) {
+        l1 = l2;
+      }
+    }
+    paramParsableByteArray.skipBytes(16);
+    j = paramParsableByteArray.readInt();
+    n = paramParsableByteArray.readInt();
+    paramParsableByteArray.skipBytes(4);
+    i1 = paramParsableByteArray.readInt();
+    int i2 = paramParsableByteArray.readInt();
+    if ((j == 0) && (n == 65536) && (i1 == -65536) && (i2 == 0))
+    {
       i = 90;
     }
-    for (;;)
+    else if ((j == 0) && (n == -65536) && (i1 == 65536) && (i2 == 0))
     {
-      return new AtomParsers.TkhdData(n, l1, i);
-      i = 16;
-      break;
-      label177:
-      j += 1;
-      break label62;
-      label184:
-      if (i1 == 0) {}
-      for (long l2 = paramParsableByteArray.readUnsignedInt();; l2 = paramParsableByteArray.readUnsignedLongToLong())
+      i = 270;
+    }
+    else
+    {
+      i = k;
+      if (j == -65536)
       {
-        l1 = l2;
-        if (l2 != 0L) {
-          break;
+        i = k;
+        if (n == 0)
+        {
+          i = k;
+          if (i1 == 0)
+          {
+            i = k;
+            if (i2 == -65536) {
+              i = 180;
+            }
+          }
         }
-        l1 = -9223372036854775807L;
-        break;
-      }
-      label223:
-      if ((i == 0) && (j == -65536) && (k == 65536) && (m == 0)) {
-        i = 270;
-      } else if ((i == -65536) && (j == 0) && (k == 0) && (m == -65536)) {
-        i = 180;
-      } else {
-        i = 0;
       }
     }
+    return new AtomParsers.TkhdData(m, l1, i);
   }
   
   public static Track parseTrak(Atom.ContainerAtom paramContainerAtom, Atom.LeafAtom paramLeafAtom, long paramLong, DrmInitData paramDrmInitData, boolean paramBoolean1, boolean paramBoolean2)
@@ -1297,251 +1266,316 @@ final class AtomParsers
       return null;
     }
     AtomParsers.TkhdData localTkhdData = parseTkhd(paramContainerAtom.getLeafAtomOfType(Atom.TYPE_tkhd).data);
+    long l1 = -9223372036854775807L;
     if (paramLong == -9223372036854775807L) {
       paramLong = AtomParsers.TkhdData.access$000(localTkhdData);
     }
-    for (;;)
-    {
-      long l = parseMvhd(paramLeafAtom.data);
-      if (paramLong == -9223372036854775807L) {}
-      AtomParsers.StsdData localStsdData;
-      for (paramLong = -9223372036854775807L;; paramLong = Util.scaleLargeTimestamp(paramLong, 1000000L, l))
-      {
-        paramLeafAtom = ((Atom.ContainerAtom)localObject).getContainerAtomOfType(Atom.TYPE_minf).getContainerAtomOfType(Atom.TYPE_stbl);
-        localObject = parseMdhd(((Atom.ContainerAtom)localObject).getLeafAtomOfType(Atom.TYPE_mdhd).data);
-        localStsdData = parseStsd(paramLeafAtom.getLeafAtomOfType(Atom.TYPE_stsd).data, AtomParsers.TkhdData.access$100(localTkhdData), AtomParsers.TkhdData.access$200(localTkhdData), (String)((Pair)localObject).second, paramDrmInitData, paramBoolean2);
-        paramLeafAtom = null;
-        paramDrmInitData = null;
-        if (!paramBoolean1)
-        {
-          paramContainerAtom = parseEdts(paramContainerAtom.getContainerAtomOfType(Atom.TYPE_edts));
-          paramLeafAtom = (long[])paramContainerAtom.first;
-          paramDrmInitData = (long[])paramContainerAtom.second;
-        }
-        if (localStsdData.format != null) {
-          break;
-        }
-        return null;
-      }
-      return new Track(AtomParsers.TkhdData.access$100(localTkhdData), i, ((Long)((Pair)localObject).first).longValue(), l, paramLong, localStsdData.format, localStsdData.requiredSampleTransformation, localStsdData.trackEncryptionBoxes, localStsdData.nalUnitLengthFieldLength, paramLeafAtom, paramDrmInitData);
+    long l2 = parseMvhd(paramLeafAtom.data);
+    if (paramLong == -9223372036854775807L) {
+      paramLong = l1;
+    } else {
+      paramLong = Util.scaleLargeTimestamp(paramLong, 1000000L, l2);
     }
+    paramLeafAtom = ((Atom.ContainerAtom)localObject).getContainerAtomOfType(Atom.TYPE_minf).getContainerAtomOfType(Atom.TYPE_stbl);
+    localObject = parseMdhd(((Atom.ContainerAtom)localObject).getLeafAtomOfType(Atom.TYPE_mdhd).data);
+    paramDrmInitData = parseStsd(paramLeafAtom.getLeafAtomOfType(Atom.TYPE_stsd).data, AtomParsers.TkhdData.access$100(localTkhdData), AtomParsers.TkhdData.access$200(localTkhdData), (String)((Pair)localObject).second, paramDrmInitData, paramBoolean2);
+    if (!paramBoolean1)
+    {
+      paramLeafAtom = parseEdts(paramContainerAtom.getContainerAtomOfType(Atom.TYPE_edts));
+      paramContainerAtom = (long[])paramLeafAtom.first;
+      paramLeafAtom = (long[])paramLeafAtom.second;
+    }
+    else
+    {
+      paramContainerAtom = null;
+      paramLeafAtom = paramContainerAtom;
+    }
+    if (paramDrmInitData.format == null) {
+      return null;
+    }
+    return new Track(AtomParsers.TkhdData.access$100(localTkhdData), i, ((Long)((Pair)localObject).first).longValue(), l2, paramLong, paramDrmInitData.format, paramDrmInitData.requiredSampleTransformation, paramDrmInitData.trackEncryptionBoxes, paramDrmInitData.nalUnitLengthFieldLength, paramContainerAtom, paramLeafAtom);
   }
   
   public static Metadata parseUdta(Atom.LeafAtom paramLeafAtom, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
+    if (paramBoolean) {
       return null;
-      paramLeafAtom = paramLeafAtom.data;
-      paramLeafAtom.setPosition(8);
-      while (paramLeafAtom.bytesLeft() >= 8)
-      {
-        int i = paramLeafAtom.getPosition();
-        int j = paramLeafAtom.readInt();
-        if (paramLeafAtom.readInt() == Atom.TYPE_meta)
-        {
-          paramLeafAtom.setPosition(i);
-          return parseMetaAtom(paramLeafAtom, i + j);
-        }
-        paramLeafAtom.skipBytes(j - 8);
-      }
     }
+    paramLeafAtom = paramLeafAtom.data;
+    paramLeafAtom.setPosition(8);
+    while (paramLeafAtom.bytesLeft() >= 8)
+    {
+      int i = paramLeafAtom.getPosition();
+      int j = paramLeafAtom.readInt();
+      if (paramLeafAtom.readInt() == Atom.TYPE_meta)
+      {
+        paramLeafAtom.setPosition(i);
+        return parseMetaAtom(paramLeafAtom, i + j);
+      }
+      paramLeafAtom.skipBytes(j - 8);
+    }
+    return null;
   }
   
   private static void parseVideoSampleEntry(ParsableByteArray paramParsableByteArray, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, DrmInitData paramDrmInitData, AtomParsers.StsdData paramStsdData, int paramInt6)
   {
     paramParsableByteArray.setPosition(paramInt2 + 8 + 8);
     paramParsableByteArray.skipBytes(16);
-    int k = paramParsableByteArray.readUnsignedShort();
-    int m = paramParsableByteArray.readUnsignedShort();
-    float f = 1.0F;
+    int n = paramParsableByteArray.readUnsignedShort();
+    int i1 = paramParsableByteArray.readUnsignedShort();
     paramParsableByteArray.skipBytes(50);
     int j = paramParsableByteArray.getPosition();
+    int k = Atom.TYPE_encv;
+    DrmInitData localDrmInitData = null;
+    Object localObject2 = paramDrmInitData;
+    int i = paramInt1;
     Object localObject1;
-    label100:
-    int i;
-    DrmInitData localDrmInitData;
-    if (paramInt1 == Atom.TYPE_encv)
+    if (paramInt1 == k)
     {
-      localObject1 = parseSampleEntryEncryptionData(paramParsableByteArray, paramInt2, paramInt3);
-      if (localObject1 != null)
+      localObject2 = parseSampleEntryEncryptionData(paramParsableByteArray, paramInt2, paramInt3);
+      localObject1 = paramDrmInitData;
+      if (localObject2 != null)
       {
-        paramInt1 = ((Integer)((Pair)localObject1).first).intValue();
-        if (paramDrmInitData == null)
-        {
-          paramDrmInitData = null;
-          paramStsdData.trackEncryptionBoxes[paramInt6] = ((TrackEncryptionBox)((Pair)localObject1).second);
-          paramParsableByteArray.setPosition(j);
-          i = paramInt1;
-          localDrmInitData = paramDrmInitData;
+        paramInt1 = ((Integer)((Pair)localObject2).first).intValue();
+        if (paramDrmInitData == null) {
+          localObject1 = null;
+        } else {
+          localObject1 = paramDrmInitData.copyWithSchemeType(((TrackEncryptionBox)((Pair)localObject2).second).schemeType);
         }
+        paramStsdData.trackEncryptionBoxes[paramInt6] = ((TrackEncryptionBox)((Pair)localObject2).second);
       }
+      paramParsableByteArray.setPosition(j);
+      i = paramInt1;
+      localObject2 = localObject1;
     }
-    for (;;)
+    Object localObject4 = null;
+    Object localObject3 = localObject4;
+    paramInt1 = 0;
+    float f1 = 1.0F;
+    k = -1;
+    paramInt6 = j;
+    j = paramInt1;
+    while (paramInt6 - paramInt2 < paramInt3)
     {
-      localObject1 = null;
-      paramDrmInitData = null;
-      byte[] arrayOfByte = null;
-      paramInt6 = -1;
-      paramInt1 = 0;
-      int i1;
-      int n;
-      if (j - paramInt2 < paramInt3)
-      {
-        paramParsableByteArray.setPosition(j);
-        i1 = paramParsableByteArray.getPosition();
-        n = paramParsableByteArray.readInt();
-        if ((n != 0) || (paramParsableByteArray.getPosition() - paramInt2 != paramInt3)) {}
-      }
-      else
-      {
-        if (paramDrmInitData != null) {
-          break label647;
-        }
-        return;
-        paramDrmInitData = paramDrmInitData.copyWithSchemeType(((TrackEncryptionBox)((Pair)localObject1).second).schemeType);
+      paramParsableByteArray.setPosition(paramInt6);
+      paramInt1 = paramParsableByteArray.getPosition();
+      int i2 = paramParsableByteArray.readInt();
+      if ((i2 == 0) && (paramParsableByteArray.getPosition() - paramInt2 == paramInt3)) {
         break;
       }
       boolean bool;
-      label203:
-      int i2;
-      label232:
-      Object localObject2;
-      if (n > 0)
-      {
+      if (i2 > 0) {
         bool = true;
-        Assertions.checkArgument(bool, "childAtomSize should be positive");
-        i2 = paramParsableByteArray.readInt();
-        if (i2 != Atom.TYPE_avcC) {
-          break label307;
-        }
-        if (paramDrmInitData != null) {
-          break label301;
-        }
-        bool = true;
-        Assertions.checkState(bool);
-        paramDrmInitData = "video/avc";
-        paramParsableByteArray.setPosition(i1 + 8);
-        localObject2 = AvcConfig.parse(paramParsableByteArray);
-        localObject1 = ((AvcConfig)localObject2).initializationData;
-        paramStsdData.nalUnitLengthFieldLength = ((AvcConfig)localObject2).nalUnitLengthFieldLength;
-        if (paramInt1 == 0) {
-          f = ((AvcConfig)localObject2).pixelWidthAspectRatio;
-        }
+      } else {
+        bool = false;
       }
-      for (;;)
+      Assertions.checkArgument(bool, "childAtomSize should be positive");
+      int i3 = paramParsableByteArray.readInt();
+      int m;
+      float f2;
+      Object localObject5;
+      if (i3 == Atom.TYPE_avcC)
       {
-        j += n;
-        break;
-        bool = false;
-        break label203;
-        label301:
-        bool = false;
-        break label232;
-        label307:
-        if (i2 == Atom.TYPE_hvcC)
-        {
-          if (paramDrmInitData == null) {}
-          for (bool = true;; bool = false)
-          {
-            Assertions.checkState(bool);
-            paramDrmInitData = "video/hevc";
-            paramParsableByteArray.setPosition(i1 + 8);
-            localObject2 = HevcConfig.parse(paramParsableByteArray);
-            localObject1 = ((HevcConfig)localObject2).initializationData;
-            paramStsdData.nalUnitLengthFieldLength = ((HevcConfig)localObject2).nalUnitLengthFieldLength;
-            break;
-          }
+        if (localDrmInitData == null) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        if (i2 == Atom.TYPE_vpcC)
+        Assertions.checkState(bool);
+        paramParsableByteArray.setPosition(paramInt1 + 8);
+        paramDrmInitData = AvcConfig.parse(paramParsableByteArray);
+        localObject1 = paramDrmInitData.initializationData;
+        paramStsdData.nalUnitLengthFieldLength = paramDrmInitData.nalUnitLengthFieldLength;
+        if (j == 0) {
+          f1 = paramDrmInitData.pixelWidthAspectRatio;
+        }
+        paramDrmInitData = "video/avc";
+        m = j;
+        f2 = f1;
+        localObject5 = localObject3;
+        paramInt1 = k;
+      }
+      else if (i3 == Atom.TYPE_hvcC)
+      {
+        if (localDrmInitData == null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        Assertions.checkState(bool);
+        paramParsableByteArray.setPosition(paramInt1 + 8);
+        paramDrmInitData = HevcConfig.parse(paramParsableByteArray);
+        localObject1 = paramDrmInitData.initializationData;
+        paramStsdData.nalUnitLengthFieldLength = paramDrmInitData.nalUnitLengthFieldLength;
+        paramDrmInitData = "video/hevc";
+        m = j;
+        f2 = f1;
+        localObject5 = localObject3;
+        paramInt1 = k;
+      }
+      else if (i3 == Atom.TYPE_vpcC)
+      {
+        if (localDrmInitData == null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        Assertions.checkState(bool);
+        if (i == Atom.TYPE_vp08) {
+          paramDrmInitData = "video/x-vnd.on2.vp8";
+        } else {
+          paramDrmInitData = "video/x-vnd.on2.vp9";
+        }
+        m = j;
+        localObject1 = localObject4;
+        f2 = f1;
+        localObject5 = localObject3;
+        paramInt1 = k;
+      }
+      else if (i3 == Atom.TYPE_d263)
+      {
+        if (localDrmInitData == null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        Assertions.checkState(bool);
+        paramDrmInitData = "video/3gpp";
+        m = j;
+        localObject1 = localObject4;
+        f2 = f1;
+        localObject5 = localObject3;
+        paramInt1 = k;
+      }
+      else if (i3 == Atom.TYPE_esds)
+      {
+        if (localDrmInitData == null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        Assertions.checkState(bool);
+        localObject1 = parseEsdsFromParent(paramParsableByteArray, paramInt1);
+        paramDrmInitData = (String)((Pair)localObject1).first;
+        localObject1 = Collections.singletonList(((Pair)localObject1).second);
+        m = j;
+        f2 = f1;
+        localObject5 = localObject3;
+        paramInt1 = k;
+      }
+      else if (i3 == Atom.TYPE_pasp)
+      {
+        f2 = parsePaspFromParent(paramParsableByteArray, paramInt1);
+        m = 1;
+        paramDrmInitData = localDrmInitData;
+        localObject1 = localObject4;
+        localObject5 = localObject3;
+        paramInt1 = k;
+      }
+      else if (i3 == Atom.TYPE_sv3d)
+      {
+        localObject5 = parseProjFromParent(paramParsableByteArray, paramInt1, i2);
+        m = j;
+        paramDrmInitData = localDrmInitData;
+        localObject1 = localObject4;
+        f2 = f1;
+        paramInt1 = k;
+      }
+      else
+      {
+        m = j;
+        paramDrmInitData = localDrmInitData;
+        localObject1 = localObject4;
+        f2 = f1;
+        localObject5 = localObject3;
+        paramInt1 = k;
+        if (i3 == Atom.TYPE_st3d)
         {
-          if (paramDrmInitData == null)
+          i3 = paramParsableByteArray.readUnsignedByte();
+          paramParsableByteArray.skipBytes(3);
+          m = j;
+          paramDrmInitData = localDrmInitData;
+          localObject1 = localObject4;
+          f2 = f1;
+          localObject5 = localObject3;
+          paramInt1 = k;
+          if (i3 == 0)
           {
-            bool = true;
-            label390:
-            Assertions.checkState(bool);
-            if (i != Atom.TYPE_vp08) {
-              break label417;
+            paramInt1 = paramParsableByteArray.readUnsignedByte();
+            if (paramInt1 != 0)
+            {
+              if (paramInt1 != 1)
+              {
+                if (paramInt1 != 2)
+                {
+                  if (paramInt1 != 3)
+                  {
+                    m = j;
+                    paramDrmInitData = localDrmInitData;
+                    localObject1 = localObject4;
+                    f2 = f1;
+                    localObject5 = localObject3;
+                    paramInt1 = k;
+                  }
+                  else
+                  {
+                    paramInt1 = 3;
+                    m = j;
+                    paramDrmInitData = localDrmInitData;
+                    localObject1 = localObject4;
+                    f2 = f1;
+                    localObject5 = localObject3;
+                  }
+                }
+                else
+                {
+                  paramInt1 = 2;
+                  m = j;
+                  paramDrmInitData = localDrmInitData;
+                  localObject1 = localObject4;
+                  f2 = f1;
+                  localObject5 = localObject3;
+                }
+              }
+              else
+              {
+                paramInt1 = 1;
+                m = j;
+                paramDrmInitData = localDrmInitData;
+                localObject1 = localObject4;
+                f2 = f1;
+                localObject5 = localObject3;
+              }
+            }
+            else
+            {
+              paramInt1 = 0;
+              localObject5 = localObject3;
+              f2 = f1;
+              localObject1 = localObject4;
+              paramDrmInitData = localDrmInitData;
+              m = j;
             }
           }
-          label417:
-          for (paramDrmInitData = "video/x-vnd.on2.vp8";; paramDrmInitData = "video/x-vnd.on2.vp9")
-          {
-            break;
-            bool = false;
-            break label390;
-          }
-        }
-        if (i2 == Atom.TYPE_d263)
-        {
-          if (paramDrmInitData == null) {}
-          for (bool = true;; bool = false)
-          {
-            Assertions.checkState(bool);
-            paramDrmInitData = "video/3gpp";
-            break;
-          }
-        }
-        if (i2 == Atom.TYPE_esds)
-        {
-          if (paramDrmInitData == null) {}
-          for (bool = true;; bool = false)
-          {
-            Assertions.checkState(bool);
-            localObject1 = parseEsdsFromParent(paramParsableByteArray, i1);
-            paramDrmInitData = (String)((Pair)localObject1).first;
-            localObject1 = Collections.singletonList(((Pair)localObject1).second);
-            break;
-          }
-        }
-        if (i2 == Atom.TYPE_pasp)
-        {
-          f = parsePaspFromParent(paramParsableByteArray, i1);
-          paramInt1 = 1;
-        }
-        else if (i2 == Atom.TYPE_sv3d)
-        {
-          arrayOfByte = parseProjFromParent(paramParsableByteArray, i1, n);
-        }
-        else
-        {
-          if (i2 == Atom.TYPE_st3d)
-          {
-            i1 = paramParsableByteArray.readUnsignedByte();
-            paramParsableByteArray.skipBytes(3);
-            if (i1 != 0) {}
-          }
-          switch (paramParsableByteArray.readUnsignedByte())
-          {
-          default: 
-            break;
-          case 0: 
-            paramInt6 = 0;
-            break;
-          case 1: 
-            paramInt6 = 1;
-            break;
-          case 2: 
-            paramInt6 = 2;
-            break;
-          case 3: 
-            paramInt6 = 3;
-          }
         }
       }
-      label647:
-      paramStsdData.format = Format.createVideoSampleFormat(Integer.toString(paramInt4), paramDrmInitData, null, -1, -1, k, m, -1.0F, (List)localObject1, paramInt5, f, arrayOfByte, paramInt6, null, localDrmInitData);
-      return;
-      break label100;
+      paramInt6 += i2;
+      j = m;
       localDrmInitData = paramDrmInitData;
-      i = paramInt1;
+      localObject4 = localObject1;
+      f1 = f2;
+      localObject3 = localObject5;
+      k = paramInt1;
     }
+    if (localDrmInitData == null) {
+      return;
+    }
+    paramStsdData.format = Format.createVideoSampleFormat(Integer.toString(paramInt4), localDrmInitData, null, -1, -1, n, i1, -1.0F, localObject4, paramInt5, f1, localObject3, k, null, (DrmInitData)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.AtomParsers
  * JD-Core Version:    0.7.0.1
  */

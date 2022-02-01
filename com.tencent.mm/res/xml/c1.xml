@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory mm:key="settings_netstat_info" />
-    <Preference mm:title="@string/ec9" mm:key="settings_netstat_mobile" mm:layout="@layout/afi" />
-    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:srcType="g2" mm:key="settings_netstat_mobile_detail" mm:layout="@layout/afi" />
-    <PreferenceCategory />
-    <Preference mm:title="@string/ecc" mm:key="settings_netstat_wifi" mm:layout="@layout/afi" />
-    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:srcType="hj" mm:key="settings_netstat_wifi_detail" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/eg1" mm:key="settings_netstat_tip" mm:layout="@layout/ah2" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:title="@string/ir4" />
+    <CheckBoxPreference android:key="settings_find_me_by_weixin" android:title="@string/a4d" />
+    <CheckBoxPreference android:key="settings_find_me_by_mobile" android:title="@string/a0d" />
+    <CheckBoxPreference android:key="settings_find_me_by_QQ" android:title="@string/a26" />
+    <CheckBoxPreference android:key="settings_find_me_by_google" android:title="@string/zm" />
+    <Preference android:layout="@layout/bf6" android:title="@string/iyf" />
+    <PreferenceTitleCategory android:key="settings_friend_verify" android:title="@string/ir3" />
+    <CheckBoxPreference android:key="settings_add_me_by_chatroom" android:title="@string/iq3" />
+    <CheckBoxPreference android:key="settings_add_me_by_qrcode" android:title="@string/iq5" />
+    <CheckBoxPreference android:key="settings_add_me_by_namecard" android:title="@string/iq4" />
 </PreferenceScreen>

@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import alqj;
 import android.content.Context;
 import android.os.SystemClock;
-import awge;
-import awhp;
-import awhs;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.mobileqq.app.ContactSorter;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -16,25 +15,27 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import ndv;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigGroupInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.PublicAccountInfo;
 
 public class PublicAccountInfo
-  extends awge
+  extends Entity
 {
   public static final int SHOW_FLAG_INVISIBLE_BIT = 2048;
   public static final int SHOW_FLAG_NO = 2;
   public static final int SHOW_FLAG_YES = 1;
   public static final int SHOW_MSG_FLAG_TYPE = 5;
-  @awhp
-  public HashMap<String, Integer> Marks;
+  @notColumn
+  public HashMap<String, Integer> Marks = null;
   public int accountFlag;
   public long accountFlag2;
   public long certifiedGrade;
@@ -43,13 +44,13 @@ public class PublicAccountInfo
   public String displayNumber;
   public long eqqAccountFlag;
   public int extendType;
-  @awhp
-  public boolean isOffLine;
+  @notColumn
+  public boolean isOffLine = false;
   public boolean isRecvMsg;
   public boolean isRecvPush;
   public boolean isShieldMsg;
   public boolean isSyncLbs;
-  public long lastAIOReadTime;
+  public long lastAIOReadTime = 0L;
   public String logo;
   public int mComparePartInt;
   public String mCompareSpell;
@@ -58,80 +59,92 @@ public class PublicAccountInfo
   public int mShowMsgFlag;
   public int messageSettingFlag;
   public String name;
-  @awhp
-  public int orderForMark;
+  @notColumn
+  public int orderForMark = 0;
   public int showFlag;
   public String summary;
-  @awhs
+  @unique
   public long uin;
-  @awhp
+  @notColumn
   private String uinStr;
   
   private static void copyEqqLbsSwitch(mobileqq_mp.EqqAccountInfo paramEqqAccountInfo, PublicAccountInfo paramPublicAccountInfo)
   {
-    int i;
+    int j;
     if ((paramEqqAccountInfo.config_group_info.has()) && (!paramEqqAccountInfo.config_group_info.isEmpty()))
     {
       paramEqqAccountInfo = paramEqqAccountInfo.config_group_info.get().iterator();
-      i = 0;
-      if (paramEqqAccountInfo.hasNext())
+      int i = 0;
+      do
       {
-        Object localObject = (mobileqq_mp.ConfigGroupInfo)paramEqqAccountInfo.next();
-        if ((((mobileqq_mp.ConfigGroupInfo)localObject).config_info.has()) && (!((mobileqq_mp.ConfigGroupInfo)localObject).config_info.isEmpty()))
+        j = i;
+        if (!paramEqqAccountInfo.hasNext()) {
+          break;
+        }
+        Object localObject1 = (mobileqq_mp.ConfigGroupInfo)paramEqqAccountInfo.next();
+        j = i;
+        if (((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.has())
         {
-          localObject = ((mobileqq_mp.ConfigGroupInfo)localObject).config_info.get().iterator();
-          for (;;)
+          j = i;
+          if (!((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.isEmpty())
           {
-            if (((Iterator)localObject).hasNext())
+            Object localObject2 = ((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.get().iterator();
+            do
             {
-              mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)((Iterator)localObject).next();
-              if ((localConfigInfo.type.has()) && (localConfigInfo.type.get() == 2) && (localConfigInfo.state_id.has()) && (localConfigInfo.state_id.get() == 3))
+              j = i;
+              if (!((Iterator)localObject2).hasNext()) {
+                break;
+              }
+              localObject1 = (mobileqq_mp.ConfigInfo)((Iterator)localObject2).next();
+            } while ((!((mobileqq_mp.ConfigInfo)localObject1).type.has()) || (((mobileqq_mp.ConfigInfo)localObject1).type.get() != 2) || (!((mobileqq_mp.ConfigInfo)localObject1).state_id.has()) || (((mobileqq_mp.ConfigInfo)localObject1).state_id.get() != 3));
+            paramPublicAccountInfo.isSyncLbs = true;
+            if (((mobileqq_mp.ConfigInfo)localObject1).state.has())
+            {
+              i = ((mobileqq_mp.ConfigInfo)localObject1).state.get();
+              if (i != 0)
               {
-                paramPublicAccountInfo.isSyncLbs = true;
-                if (localConfigInfo.state.has()) {
-                  switch (localConfigInfo.state.get())
+                if (i != 1)
+                {
+                  if (i != 2)
                   {
-                  default: 
                     if (QLog.isColorLevel())
                     {
-                      QLog.e("PublicAccountInfo", 2, "Error Eqq lbs state value: " + localConfigInfo.state.get());
-                      i = 1;
-                      label244:
-                      if (i == 0) {}
+                      localObject2 = new StringBuilder();
+                      ((StringBuilder)localObject2).append("Error Eqq lbs state value: ");
+                      ((StringBuilder)localObject2).append(((mobileqq_mp.ConfigInfo)localObject1).state.get());
+                      QLog.e("PublicAccountInfo", 2, ((StringBuilder)localObject2).toString());
                     }
-                    break;
+                  }
+                  else
+                  {
+                    paramPublicAccountInfo.mIsSyncLbsSelected = true;
+                    paramPublicAccountInfo.mIsAgreeSyncLbs = false;
                   }
                 }
+                else
+                {
+                  paramPublicAccountInfo.mIsSyncLbsSelected = true;
+                  paramPublicAccountInfo.mIsAgreeSyncLbs = true;
+                }
+              }
+              else
+              {
+                paramPublicAccountInfo.mIsSyncLbsSelected = false;
+                paramPublicAccountInfo.mIsAgreeSyncLbs = false;
               }
             }
+            j = 1;
           }
         }
-      }
+        i = j;
+      } while (j == 0);
     }
-    for (;;)
+    else
     {
-      if (i == 0) {
-        paramPublicAccountInfo.isSyncLbs = false;
-      }
-      return;
-      paramPublicAccountInfo.mIsSyncLbsSelected = false;
-      paramPublicAccountInfo.mIsAgreeSyncLbs = false;
-      i = 1;
-      break label244;
-      paramPublicAccountInfo.mIsSyncLbsSelected = true;
-      paramPublicAccountInfo.mIsAgreeSyncLbs = true;
-      i = 1;
-      break label244;
-      paramPublicAccountInfo.mIsSyncLbsSelected = true;
-      paramPublicAccountInfo.mIsAgreeSyncLbs = false;
-      i = 1;
-      break label244;
-      break;
-      i = 1;
-      break label244;
-      break label244;
-      continue;
-      i = 0;
+      j = 0;
+    }
+    if (j == 0) {
+      paramPublicAccountInfo.isSyncLbs = false;
     }
   }
   
@@ -139,35 +152,35 @@ public class PublicAccountInfo
   {
     PublicAccountInfo localPublicAccountInfo = new PublicAccountInfo();
     localPublicAccountInfo.uin = 0L;
-    localPublicAccountInfo.name = paramContext.getString(2131689754);
-    localPublicAccountInfo.displayNumber = paramContext.getString(2131689754);
+    localPublicAccountInfo.name = paramContext.getString(2131886301);
+    localPublicAccountInfo.displayNumber = paramContext.getString(2131886301);
     localPublicAccountInfo.summary = "";
     localPublicAccountInfo.extendType = 1;
     return localPublicAccountInfo;
   }
   
-  public static PublicAccountInfo createPublicAccount(AccountDetail paramAccountDetail, long paramLong)
+  public static PublicAccountInfo createPublicAccount(IPublicAccountDetail paramIPublicAccountDetail, long paramLong)
   {
     PublicAccountInfo localPublicAccountInfo = new PublicAccountInfo();
-    localPublicAccountInfo.uinStr = paramAccountDetail.uin;
-    localPublicAccountInfo.uin = Long.parseLong(paramAccountDetail.uin);
-    localPublicAccountInfo.name = paramAccountDetail.name;
-    localPublicAccountInfo.displayNumber = paramAccountDetail.displayNumber;
-    localPublicAccountInfo.summary = paramAccountDetail.summary;
-    localPublicAccountInfo.isRecvMsg = paramAccountDetail.isRecvMsg;
-    localPublicAccountInfo.isRecvPush = paramAccountDetail.isRecvPush;
-    localPublicAccountInfo.certifiedGrade = paramAccountDetail.certifiedGrade;
-    localPublicAccountInfo.isSyncLbs = paramAccountDetail.isSyncLbs;
-    localPublicAccountInfo.mIsAgreeSyncLbs = paramAccountDetail.isAgreeSyncLbs;
-    localPublicAccountInfo.mShowMsgFlag = paramAccountDetail.mShowMsgFlag;
-    localPublicAccountInfo.showFlag = paramAccountDetail.showFlag;
-    localPublicAccountInfo.accountFlag = paramAccountDetail.accountFlag;
-    localPublicAccountInfo.accountFlag2 = paramAccountDetail.accountFlag2;
-    localPublicAccountInfo.isSyncLbs = paramAccountDetail.isSyncLbs;
-    localPublicAccountInfo.mIsAgreeSyncLbs = paramAccountDetail.isAgreeSyncLbs;
-    localPublicAccountInfo.mIsSyncLbsSelected = paramAccountDetail.isSyncLbsSelected;
+    localPublicAccountInfo.uinStr = paramIPublicAccountDetail.getUin();
+    localPublicAccountInfo.uin = Long.parseLong(paramIPublicAccountDetail.getUin());
+    localPublicAccountInfo.name = paramIPublicAccountDetail.getName();
+    localPublicAccountInfo.displayNumber = paramIPublicAccountDetail.getDisplayNumber();
+    localPublicAccountInfo.summary = paramIPublicAccountDetail.getSummary();
+    localPublicAccountInfo.isRecvMsg = paramIPublicAccountDetail.isRecvMsg();
+    localPublicAccountInfo.isRecvPush = paramIPublicAccountDetail.isRecvPush();
+    localPublicAccountInfo.certifiedGrade = paramIPublicAccountDetail.getCertifiedGrade();
+    localPublicAccountInfo.isSyncLbs = paramIPublicAccountDetail.isSyncLbs();
+    localPublicAccountInfo.mIsAgreeSyncLbs = paramIPublicAccountDetail.isAgreeSyncLbs();
+    localPublicAccountInfo.mShowMsgFlag = paramIPublicAccountDetail.getShowMsgFlag();
+    localPublicAccountInfo.showFlag = paramIPublicAccountDetail.getShowFlag();
+    localPublicAccountInfo.accountFlag = paramIPublicAccountDetail.getAccountFlag();
+    localPublicAccountInfo.accountFlag2 = paramIPublicAccountDetail.getAccountFlag2();
+    localPublicAccountInfo.isSyncLbs = paramIPublicAccountDetail.isSyncLbs();
+    localPublicAccountInfo.mIsAgreeSyncLbs = paramIPublicAccountDetail.isAgreeSyncLbs();
+    localPublicAccountInfo.mIsSyncLbsSelected = paramIPublicAccountDetail.isSyncLbsSelected();
     localPublicAccountInfo.dateTime = paramLong;
-    alqj.a(localPublicAccountInfo);
+    ContactSorter.a(localPublicAccountInfo);
     return localPublicAccountInfo;
   }
   
@@ -178,27 +191,26 @@ public class PublicAccountInfo
     try
     {
       localPublicAccountInfo.uin = Long.parseLong(paramEqqDetail.uin);
-      localPublicAccountInfo.name = paramEqqDetail.name;
-      localPublicAccountInfo.displayNumber = paramEqqDetail.displayNumber;
-      localPublicAccountInfo.summary = paramEqqDetail.summary;
-      localPublicAccountInfo.certifiedGrade = paramEqqDetail.certifiedGrade;
-      localPublicAccountInfo.dateTime = paramLong;
-      localPublicAccountInfo.showFlag = 1;
-      localPublicAccountInfo.extendType = 2;
-      localPublicAccountInfo.mShowMsgFlag = paramEqqDetail.mShowMsgFlag;
-      localPublicAccountInfo.isSyncLbs = paramEqqDetail.mIsSyncLbs;
-      localPublicAccountInfo.mIsAgreeSyncLbs = paramEqqDetail.mIsAgreeSyncLbs;
-      localPublicAccountInfo.mIsSyncLbsSelected = paramEqqDetail.mIsSyncLbsSelected;
-      localPublicAccountInfo.eqqAccountFlag = paramEqqDetail.eqqAccountFlag;
-      return localPublicAccountInfo;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localPublicAccountInfo.uin = 0L;
-      }
+      label30:
+      break label30;
     }
+    localPublicAccountInfo.uin = 0L;
+    localPublicAccountInfo.name = paramEqqDetail.name;
+    localPublicAccountInfo.displayNumber = paramEqqDetail.displayNumber;
+    localPublicAccountInfo.summary = paramEqqDetail.summary;
+    localPublicAccountInfo.certifiedGrade = paramEqqDetail.certifiedGrade;
+    localPublicAccountInfo.dateTime = paramLong;
+    localPublicAccountInfo.showFlag = 1;
+    localPublicAccountInfo.extendType = 2;
+    localPublicAccountInfo.mShowMsgFlag = paramEqqDetail.mShowMsgFlag;
+    localPublicAccountInfo.isSyncLbs = paramEqqDetail.mIsSyncLbs;
+    localPublicAccountInfo.mIsAgreeSyncLbs = paramEqqDetail.mIsAgreeSyncLbs;
+    localPublicAccountInfo.mIsSyncLbsSelected = paramEqqDetail.mIsSyncLbsSelected;
+    localPublicAccountInfo.eqqAccountFlag = paramEqqDetail.eqqAccountFlag;
+    return localPublicAccountInfo;
   }
   
   public static PublicAccountInfo createPublicAccountInfo(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, HashMap<String, Integer> paramHashMap, int paramInt2)
@@ -254,6 +266,7 @@ public class PublicAccountInfo
     Object localObject1;
     int i;
     Object localObject2;
+    int j;
     mobileqq_mp.ConfigInfo localConfigInfo;
     if (paramPublicAccountInfo.config_group_info.has())
     {
@@ -262,141 +275,142 @@ public class PublicAccountInfo
       {
         localObject1 = ((List)localObject1).iterator();
         i = 0;
-        if (((Iterator)localObject1).hasNext())
+        do
         {
-          localObject2 = (mobileqq_mp.ConfigGroupInfo)((Iterator)localObject1).next();
-          if (!((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.has()) {
-            break label905;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
           }
-          localObject2 = ((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.get().iterator();
-          for (;;)
+          localObject2 = (mobileqq_mp.ConfigGroupInfo)((Iterator)localObject1).next();
+          j = i;
+          if (((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.has())
           {
+            localObject2 = ((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.get().iterator();
+            do
+            {
+              j = i;
+              if (!((Iterator)localObject2).hasNext()) {
+                break;
+              }
+              localConfigInfo = (mobileqq_mp.ConfigInfo)((Iterator)localObject2).next();
+            } while (localConfigInfo.state_id.get() != 5);
+            if (localConfigInfo.state.get() == 1) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            localPublicAccountInfo.mShowMsgFlag = i;
+            j = 1;
+          }
+          i = j;
+        } while (j == 0);
+      }
+    }
+    localPublicAccountInfo.messageSettingFlag = -1;
+    if (paramPublicAccountInfo.config_group_info_new.has())
+    {
+      localObject1 = paramPublicAccountInfo.config_group_info_new.get();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        for (;;)
+        {
+          if (!((Iterator)localObject1).hasNext()) {
+            break label586;
+          }
+          localObject2 = (mobileqq_mp.ConfigGroupInfo)((Iterator)localObject1).next();
+          if (((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.has())
+          {
+            localObject2 = ((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.get().iterator();
             if (((Iterator)localObject2).hasNext())
             {
               localConfigInfo = (mobileqq_mp.ConfigInfo)((Iterator)localObject2).next();
-              if (localConfigInfo.state_id.get() == 5) {
-                if (localConfigInfo.state.get() == 1)
-                {
-                  i = 1;
-                  label382:
-                  localPublicAccountInfo.mShowMsgFlag = i;
-                  i = 1;
-                }
+              if (localConfigInfo.state_id.get() != 6) {
+                break;
               }
+              boolean bool;
+              if (localConfigInfo.state.get() == 3) {
+                bool = true;
+              } else {
+                bool = false;
+              }
+              localPublicAccountInfo.isShieldMsg = bool;
+              localPublicAccountInfo.messageSettingFlag = localConfigInfo.state.get();
             }
           }
         }
       }
     }
-    label905:
-    for (;;)
+    label586:
+    if (paramPublicAccountInfo.is_sync_lbs.has()) {
+      localPublicAccountInfo.mIsAgreeSyncLbs = paramPublicAccountInfo.is_sync_lbs.get();
+    }
+    localPublicAccountInfo.dateTime = paramLong;
+    if ((paramPublicAccountInfo.config_group_info_new.has()) && (!paramPublicAccountInfo.config_group_info_new.isEmpty()))
     {
-      if (i != 0)
+      paramPublicAccountInfo = paramPublicAccountInfo.config_group_info_new.get().iterator();
+      i = 0;
+      do
       {
-        localPublicAccountInfo.messageSettingFlag = -1;
-        if (!paramPublicAccountInfo.config_group_info_new.has()) {
-          break label578;
+        j = i;
+        if (!paramPublicAccountInfo.hasNext()) {
+          break;
         }
-        localObject1 = paramPublicAccountInfo.config_group_info_new.get();
-        if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-          break label578;
-        }
-        localObject1 = ((List)localObject1).iterator();
-        label443:
-        do
+        localObject1 = (mobileqq_mp.ConfigGroupInfo)paramPublicAccountInfo.next();
+        j = i;
+        if (((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.has())
         {
-          while (!((Iterator)localObject2).hasNext())
+          j = i;
+          if (!((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.isEmpty())
           {
+            localObject1 = ((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.get().iterator();
             do
             {
+              j = i;
               if (!((Iterator)localObject1).hasNext()) {
                 break;
               }
-              localObject2 = (mobileqq_mp.ConfigGroupInfo)((Iterator)localObject1).next();
-            } while (!((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.has());
-            localObject2 = ((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.get().iterator();
-          }
-          localConfigInfo = (mobileqq_mp.ConfigInfo)((Iterator)localObject2).next();
-        } while (localConfigInfo.state_id.get() != 6);
-        if (localConfigInfo.state.get() != 3) {
-          break label572;
-        }
-      }
-      label572:
-      for (boolean bool = true;; bool = false)
-      {
-        localPublicAccountInfo.isShieldMsg = bool;
-        localPublicAccountInfo.messageSettingFlag = localConfigInfo.state.get();
-        break label443;
-        i = 0;
-        break label382;
-        break;
-      }
-      label578:
-      if (paramPublicAccountInfo.is_sync_lbs.has()) {
-        localPublicAccountInfo.mIsAgreeSyncLbs = paramPublicAccountInfo.is_sync_lbs.get();
-      }
-      localPublicAccountInfo.dateTime = paramLong;
-      if ((paramPublicAccountInfo.config_group_info_new.has()) && (!paramPublicAccountInfo.config_group_info_new.isEmpty()))
-      {
-        paramPublicAccountInfo = paramPublicAccountInfo.config_group_info_new.get().iterator();
-        i = 0;
-        if (paramPublicAccountInfo.hasNext())
-        {
-          localObject1 = (mobileqq_mp.ConfigGroupInfo)paramPublicAccountInfo.next();
-          if ((((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.has()) && (!((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.isEmpty()))
-          {
-            localObject1 = ((mobileqq_mp.ConfigGroupInfo)localObject1).config_info.get().iterator();
-            for (;;)
+              localObject2 = (mobileqq_mp.ConfigInfo)((Iterator)localObject1).next();
+            } while ((!((mobileqq_mp.ConfigInfo)localObject2).type.has()) || (((mobileqq_mp.ConfigInfo)localObject2).type.get() != 2) || (!((mobileqq_mp.ConfigInfo)localObject2).state_id.has()) || (((mobileqq_mp.ConfigInfo)localObject2).state_id.get() != 3));
+            localPublicAccountInfo.isSyncLbs = true;
+            if (((mobileqq_mp.ConfigInfo)localObject2).state.has())
             {
-              if (((Iterator)localObject1).hasNext())
+              i = ((mobileqq_mp.ConfigInfo)localObject2).state.get();
+              if (i != 0)
               {
-                localObject2 = (mobileqq_mp.ConfigInfo)((Iterator)localObject1).next();
-                if ((((mobileqq_mp.ConfigInfo)localObject2).type.has()) && (((mobileqq_mp.ConfigInfo)localObject2).type.get() == 2) && (((mobileqq_mp.ConfigInfo)localObject2).state_id.has()) && (((mobileqq_mp.ConfigInfo)localObject2).state_id.get() == 3))
+                if (i != 1)
                 {
-                  localPublicAccountInfo.isSyncLbs = true;
-                  if (((mobileqq_mp.ConfigInfo)localObject2).state.has()) {
-                    switch (((mobileqq_mp.ConfigInfo)localObject2).state.get())
-                    {
-                    default: 
-                      i = 1;
-                      label818:
-                      if (i == 0) {}
-                      break;
-                    }
+                  if (i == 2)
+                  {
+                    localPublicAccountInfo.mIsSyncLbsSelected = true;
+                    localPublicAccountInfo.mIsAgreeSyncLbs = false;
                   }
                 }
+                else
+                {
+                  localPublicAccountInfo.mIsSyncLbsSelected = true;
+                  localPublicAccountInfo.mIsAgreeSyncLbs = true;
+                }
+              }
+              else
+              {
+                localPublicAccountInfo.mIsSyncLbsSelected = false;
+                localPublicAccountInfo.mIsAgreeSyncLbs = false;
               }
             }
+            j = 1;
           }
         }
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          localPublicAccountInfo.isSyncLbs = false;
-        }
-        return localPublicAccountInfo;
-        localPublicAccountInfo.mIsSyncLbsSelected = false;
-        localPublicAccountInfo.mIsAgreeSyncLbs = false;
-        i = 1;
-        break label818;
-        localPublicAccountInfo.mIsSyncLbsSelected = true;
-        localPublicAccountInfo.mIsAgreeSyncLbs = true;
-        i = 1;
-        break label818;
-        localPublicAccountInfo.mIsSyncLbsSelected = true;
-        localPublicAccountInfo.mIsAgreeSyncLbs = false;
-        i = 1;
-        break label818;
-        break;
-        i = 1;
-        break label818;
-        break label818;
-        continue;
-        i = 0;
-      }
+        i = j;
+      } while (j == 0);
     }
+    else
+    {
+      j = 0;
+    }
+    if (j == 0) {
+      localPublicAccountInfo.isSyncLbs = false;
+    }
+    return localPublicAccountInfo;
   }
   
   public static PublicAccountInfo createPublicAccountInfoCf8(oidb_cmd0xcf8.PublicAccountInfo paramPublicAccountInfo, long paramLong)
@@ -436,6 +450,7 @@ public class PublicAccountInfo
     Object localObject1;
     int i;
     Object localObject2;
+    int j;
     oidb_cmd0xcf8.ConfigInfo localConfigInfo;
     if (paramPublicAccountInfo.config_group_info.has())
     {
@@ -444,141 +459,142 @@ public class PublicAccountInfo
       {
         localObject1 = ((List)localObject1).iterator();
         i = 0;
-        if (((Iterator)localObject1).hasNext())
+        do
         {
-          localObject2 = (oidb_cmd0xcf8.ConfigGroupInfo)((Iterator)localObject1).next();
-          if (!((oidb_cmd0xcf8.ConfigGroupInfo)localObject2).config_info.has()) {
-            break label905;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
           }
-          localObject2 = ((oidb_cmd0xcf8.ConfigGroupInfo)localObject2).config_info.get().iterator();
-          for (;;)
+          localObject2 = (oidb_cmd0xcf8.ConfigGroupInfo)((Iterator)localObject1).next();
+          j = i;
+          if (((oidb_cmd0xcf8.ConfigGroupInfo)localObject2).config_info.has())
           {
+            localObject2 = ((oidb_cmd0xcf8.ConfigGroupInfo)localObject2).config_info.get().iterator();
+            do
+            {
+              j = i;
+              if (!((Iterator)localObject2).hasNext()) {
+                break;
+              }
+              localConfigInfo = (oidb_cmd0xcf8.ConfigInfo)((Iterator)localObject2).next();
+            } while (localConfigInfo.state_id.get() != 5);
+            if (localConfigInfo.state.get() == 1) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            localPublicAccountInfo.mShowMsgFlag = i;
+            j = 1;
+          }
+          i = j;
+        } while (j == 0);
+      }
+    }
+    localPublicAccountInfo.messageSettingFlag = -1;
+    if (paramPublicAccountInfo.config_group_info_new.has())
+    {
+      localObject1 = paramPublicAccountInfo.config_group_info_new.get();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        for (;;)
+        {
+          if (!((Iterator)localObject1).hasNext()) {
+            break label585;
+          }
+          localObject2 = (oidb_cmd0xcf8.ConfigGroupInfo)((Iterator)localObject1).next();
+          if (((oidb_cmd0xcf8.ConfigGroupInfo)localObject2).config_info.has())
+          {
+            localObject2 = ((oidb_cmd0xcf8.ConfigGroupInfo)localObject2).config_info.get().iterator();
             if (((Iterator)localObject2).hasNext())
             {
               localConfigInfo = (oidb_cmd0xcf8.ConfigInfo)((Iterator)localObject2).next();
-              if (localConfigInfo.state_id.get() == 5) {
-                if (localConfigInfo.state.get() == 1)
-                {
-                  i = 1;
-                  label381:
-                  localPublicAccountInfo.mShowMsgFlag = i;
-                  i = 1;
-                }
+              if (localConfigInfo.state_id.get() != 6) {
+                break;
               }
+              boolean bool;
+              if (localConfigInfo.state.get() == 3) {
+                bool = true;
+              } else {
+                bool = false;
+              }
+              localPublicAccountInfo.isShieldMsg = bool;
+              localPublicAccountInfo.messageSettingFlag = localConfigInfo.state.get();
             }
           }
         }
       }
     }
-    label905:
-    for (;;)
+    label585:
+    if (paramPublicAccountInfo.is_sync_lbs.has()) {
+      localPublicAccountInfo.mIsAgreeSyncLbs = paramPublicAccountInfo.is_sync_lbs.get();
+    }
+    localPublicAccountInfo.dateTime = paramLong;
+    if ((paramPublicAccountInfo.config_group_info_new.has()) && (!paramPublicAccountInfo.config_group_info_new.isEmpty()))
     {
-      if (i != 0)
+      paramPublicAccountInfo = paramPublicAccountInfo.config_group_info_new.get().iterator();
+      i = 0;
+      do
       {
-        localPublicAccountInfo.messageSettingFlag = -1;
-        if (!paramPublicAccountInfo.config_group_info_new.has()) {
-          break label577;
+        j = i;
+        if (!paramPublicAccountInfo.hasNext()) {
+          break;
         }
-        localObject1 = paramPublicAccountInfo.config_group_info_new.get();
-        if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-          break label577;
-        }
-        localObject1 = ((List)localObject1).iterator();
-        label442:
-        do
+        localObject1 = (oidb_cmd0xcf8.ConfigGroupInfo)paramPublicAccountInfo.next();
+        j = i;
+        if (((oidb_cmd0xcf8.ConfigGroupInfo)localObject1).config_info.has())
         {
-          while (!((Iterator)localObject2).hasNext())
+          j = i;
+          if (!((oidb_cmd0xcf8.ConfigGroupInfo)localObject1).config_info.isEmpty())
           {
+            localObject1 = ((oidb_cmd0xcf8.ConfigGroupInfo)localObject1).config_info.get().iterator();
             do
             {
+              j = i;
               if (!((Iterator)localObject1).hasNext()) {
                 break;
               }
-              localObject2 = (oidb_cmd0xcf8.ConfigGroupInfo)((Iterator)localObject1).next();
-            } while (!((oidb_cmd0xcf8.ConfigGroupInfo)localObject2).config_info.has());
-            localObject2 = ((oidb_cmd0xcf8.ConfigGroupInfo)localObject2).config_info.get().iterator();
-          }
-          localConfigInfo = (oidb_cmd0xcf8.ConfigInfo)((Iterator)localObject2).next();
-        } while (localConfigInfo.state_id.get() != 6);
-        if (localConfigInfo.state.get() != 3) {
-          break label571;
-        }
-      }
-      label571:
-      for (boolean bool = true;; bool = false)
-      {
-        localPublicAccountInfo.isShieldMsg = bool;
-        localPublicAccountInfo.messageSettingFlag = localConfigInfo.state.get();
-        break label442;
-        i = 0;
-        break label381;
-        break;
-      }
-      label577:
-      if (paramPublicAccountInfo.is_sync_lbs.has()) {
-        localPublicAccountInfo.mIsAgreeSyncLbs = paramPublicAccountInfo.is_sync_lbs.get();
-      }
-      localPublicAccountInfo.dateTime = paramLong;
-      if ((paramPublicAccountInfo.config_group_info_new.has()) && (!paramPublicAccountInfo.config_group_info_new.isEmpty()))
-      {
-        paramPublicAccountInfo = paramPublicAccountInfo.config_group_info_new.get().iterator();
-        i = 0;
-        if (paramPublicAccountInfo.hasNext())
-        {
-          localObject1 = (oidb_cmd0xcf8.ConfigGroupInfo)paramPublicAccountInfo.next();
-          if ((((oidb_cmd0xcf8.ConfigGroupInfo)localObject1).config_info.has()) && (!((oidb_cmd0xcf8.ConfigGroupInfo)localObject1).config_info.isEmpty()))
-          {
-            localObject1 = ((oidb_cmd0xcf8.ConfigGroupInfo)localObject1).config_info.get().iterator();
-            for (;;)
+              localObject2 = (oidb_cmd0xcf8.ConfigInfo)((Iterator)localObject1).next();
+            } while ((!((oidb_cmd0xcf8.ConfigInfo)localObject2).type.has()) || (((oidb_cmd0xcf8.ConfigInfo)localObject2).type.get() != 2) || (!((oidb_cmd0xcf8.ConfigInfo)localObject2).state_id.has()) || (((oidb_cmd0xcf8.ConfigInfo)localObject2).state_id.get() != 3));
+            localPublicAccountInfo.isSyncLbs = true;
+            if (((oidb_cmd0xcf8.ConfigInfo)localObject2).state.has())
             {
-              if (((Iterator)localObject1).hasNext())
+              i = ((oidb_cmd0xcf8.ConfigInfo)localObject2).state.get();
+              if (i != 0)
               {
-                localObject2 = (oidb_cmd0xcf8.ConfigInfo)((Iterator)localObject1).next();
-                if ((((oidb_cmd0xcf8.ConfigInfo)localObject2).type.has()) && (((oidb_cmd0xcf8.ConfigInfo)localObject2).type.get() == 2) && (((oidb_cmd0xcf8.ConfigInfo)localObject2).state_id.has()) && (((oidb_cmd0xcf8.ConfigInfo)localObject2).state_id.get() == 3))
+                if (i != 1)
                 {
-                  localPublicAccountInfo.isSyncLbs = true;
-                  if (((oidb_cmd0xcf8.ConfigInfo)localObject2).state.has()) {
-                    switch (((oidb_cmd0xcf8.ConfigInfo)localObject2).state.get())
-                    {
-                    default: 
-                      i = 1;
-                      label818:
-                      if (i == 0) {}
-                      break;
-                    }
+                  if (i == 2)
+                  {
+                    localPublicAccountInfo.mIsSyncLbsSelected = true;
+                    localPublicAccountInfo.mIsAgreeSyncLbs = false;
                   }
                 }
+                else
+                {
+                  localPublicAccountInfo.mIsSyncLbsSelected = true;
+                  localPublicAccountInfo.mIsAgreeSyncLbs = true;
+                }
+              }
+              else
+              {
+                localPublicAccountInfo.mIsSyncLbsSelected = false;
+                localPublicAccountInfo.mIsAgreeSyncLbs = false;
               }
             }
+            j = 1;
           }
         }
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          localPublicAccountInfo.isSyncLbs = false;
-        }
-        return localPublicAccountInfo;
-        localPublicAccountInfo.mIsSyncLbsSelected = false;
-        localPublicAccountInfo.mIsAgreeSyncLbs = false;
-        i = 1;
-        break label818;
-        localPublicAccountInfo.mIsSyncLbsSelected = true;
-        localPublicAccountInfo.mIsAgreeSyncLbs = true;
-        i = 1;
-        break label818;
-        localPublicAccountInfo.mIsSyncLbsSelected = true;
-        localPublicAccountInfo.mIsAgreeSyncLbs = false;
-        i = 1;
-        break label818;
-        break;
-        i = 1;
-        break label818;
-        break label818;
-        continue;
-        i = 0;
-      }
+        i = j;
+      } while (j == 0);
     }
+    else
+    {
+      j = 0;
+    }
+    if (j == 0) {
+      localPublicAccountInfo.isSyncLbs = false;
+    }
+    return localPublicAccountInfo;
   }
   
   public static PublicAccountInfo createPublicAccountInfoFromEqq(mobileqq_mp.EqqAccountInfo paramEqqAccountInfo, long paramLong)
@@ -606,97 +622,107 @@ public class PublicAccountInfo
       localPublicAccountInfo.eqqAccountFlag = paramEqqAccountInfo.account_flag.get();
     }
     localPublicAccountInfo.mShowMsgFlag = -1;
-    int i;
     if (paramEqqAccountInfo.config_group_info.has())
     {
       Object localObject1 = paramEqqAccountInfo.config_group_info.get();
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject1 = ((List)localObject1).iterator();
-        i = 0;
-        if (((Iterator)localObject1).hasNext())
+        int i = 0;
+        int j;
+        do
         {
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
           Object localObject2 = (mobileqq_mp.ConfigGroupInfo)((Iterator)localObject1).next();
-          if (!((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.has()) {
-            break label363;
-          }
-          localObject2 = ((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.get().iterator();
-          for (;;)
+          j = i;
+          if (((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.has())
           {
-            if (((Iterator)localObject2).hasNext())
+            localObject2 = ((mobileqq_mp.ConfigGroupInfo)localObject2).config_info.get().iterator();
+            mobileqq_mp.ConfigInfo localConfigInfo;
+            do
             {
-              mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)((Iterator)localObject2).next();
-              if (localConfigInfo.state_id.get() == 5) {
-                if (localConfigInfo.state.get() == 1)
-                {
-                  i = 1;
-                  label316:
-                  localPublicAccountInfo.mShowMsgFlag = i;
-                  i = 1;
-                }
+              j = i;
+              if (!((Iterator)localObject2).hasNext()) {
+                break;
               }
+              localConfigInfo = (mobileqq_mp.ConfigInfo)((Iterator)localObject2).next();
+            } while (localConfigInfo.state_id.get() != 5);
+            if (localConfigInfo.state.get() == 1) {
+              i = 1;
+            } else {
+              i = 0;
             }
+            localPublicAccountInfo.mShowMsgFlag = i;
+            j = 1;
           }
-        }
+          i = j;
+        } while (j == 0);
       }
     }
-    label363:
-    for (;;)
-    {
-      if (i != 0)
-      {
-        localPublicAccountInfo.dateTime = paramLong;
-        localPublicAccountInfo.showFlag = 1;
-        localPublicAccountInfo.extendType = 2;
-        copyEqqLbsSwitch(paramEqqAccountInfo, localPublicAccountInfo);
-        return localPublicAccountInfo;
-        i = 0;
-        break label316;
-      }
-      break;
-    }
+    localPublicAccountInfo.dateTime = paramLong;
+    localPublicAccountInfo.showFlag = 1;
+    localPublicAccountInfo.extendType = 2;
+    copyEqqLbsSwitch(paramEqqAccountInfo, localPublicAccountInfo);
+    return localPublicAccountInfo;
   }
   
   public static List<PublicAccountInfo> createPublicAccountInfoList(List<mobileqq_mp.PublicAccountInfo> paramList, long paramLong)
   {
-    ArrayList localArrayList = null;
     if (paramList != null)
     {
-      localArrayList = new ArrayList(paramList.size());
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localArrayList.add(createPublicAccountInfo((mobileqq_mp.PublicAccountInfo)paramList.next(), paramLong));
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      Iterator localIterator = paramList.iterator();
+      for (;;)
+      {
+        paramList = localArrayList;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localArrayList.add(createPublicAccountInfo((mobileqq_mp.PublicAccountInfo)localIterator.next(), paramLong));
       }
     }
-    return localArrayList;
+    paramList = null;
+    return paramList;
   }
   
   public static List<PublicAccountInfo> createPublicAccountInfoListCf8(List<oidb_cmd0xcf8.PublicAccountInfo> paramList, long paramLong)
   {
-    ArrayList localArrayList = null;
     if (paramList != null)
     {
-      localArrayList = new ArrayList(paramList.size());
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localArrayList.add(createPublicAccountInfoCf8((oidb_cmd0xcf8.PublicAccountInfo)paramList.next(), paramLong));
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      Iterator localIterator = paramList.iterator();
+      for (;;)
+      {
+        paramList = localArrayList;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localArrayList.add(createPublicAccountInfoCf8((oidb_cmd0xcf8.PublicAccountInfo)localIterator.next(), paramLong));
       }
     }
-    return localArrayList;
+    paramList = null;
+    return paramList;
   }
   
   public static List<PublicAccountInfo> createPublicAccountInfoListFromEqq(List<mobileqq_mp.EqqAccountInfo> paramList, long paramLong)
   {
-    ArrayList localArrayList = null;
     if (paramList != null)
     {
-      localArrayList = new ArrayList(paramList.size());
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localArrayList.add(createPublicAccountInfoFromEqq((mobileqq_mp.EqqAccountInfo)paramList.next(), paramLong));
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      Iterator localIterator = paramList.iterator();
+      for (;;)
+      {
+        paramList = localArrayList;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localArrayList.add(createPublicAccountInfoFromEqq((mobileqq_mp.EqqAccountInfo)localIterator.next(), paramLong));
       }
     }
-    return localArrayList;
+    paramList = null;
+    return paramList;
   }
   
   private boolean isHideInContacts()
@@ -719,20 +745,24 @@ public class PublicAccountInfo
   
   public boolean hasIvrAbility()
   {
-    if (2 == this.extendType)
+    int i = this.extendType;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (2 == i)
     {
-      if (ndv.a) {
-        break label31;
+      if (!CrmUtils.b)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("PublicAccountInfo", 4, "Don't support sharp");
+        }
+        return false;
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PublicAccountInfo", 4, "Don't support sharp");
+      bool1 = bool2;
+      if ((this.eqqAccountFlag & 0x400000) == 4194304L) {
+        bool1 = true;
       }
     }
-    label31:
-    while ((this.eqqAccountFlag & 0x400000) != 4194304L) {
-      return false;
-    }
-    return true;
+    return bool1;
   }
   
   public boolean isNeedShow()

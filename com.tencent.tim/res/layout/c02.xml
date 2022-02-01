@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/bg_texture" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="161.0dip" android:layout_height="74.0dip" android:layout_marginBottom="25.0dip">
+            <com.tencent.widget.ThemeImageView android:id="@id/j6i" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/h35" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <com.tencent.widget.ThemeImageView android:id="@id/j6h" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginLeft="7.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/h35" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+            <com.tencent.widget.ThemeImageView android:id="@id/j6e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/h36" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <TextView android:textSize="15.0dip" android:textColor="@color/skin_black" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/j6j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/htm" android:lineSpacingExtra="7.0dip" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/skin_gray2" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/j6k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/htl" />
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i7" android:weightSum="6.0" android:layout_centerHorizontal="true">
+            <Button android:id="@id/j6g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hta" android:layout_weight="4.0" style="@style/bd" />
+        </LinearLayout>
+        <View android:layout_width="wrap_content" android:layout_height="35.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/j6f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:textSize="15.0dip" android:textColor="@color/skin_blue" android:gravity="center|left" android:id="@id/j6_" android:background="@null" android:paddingRight="24.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/hs2" android:shadowColor="#44ffffff" android:shadowDy="1.0" android:shadowRadius="1.0" />
+        <TextView android:textColor="#ff2f4e62" android:id="@id/j5o" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="|" android:shadowColor="#44ffffff" android:shadowDy="1.0" android:shadowRadius="1.0" style="@style/op" />
+        <Button android:textSize="15.0dip" android:textColor="@color/skin_blue" android:gravity="center|right" android:id="@id/j69" android:background="@null" android:paddingLeft="24.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/hs1" android:shadowColor="#44ffffff" android:shadowDy="1.0" android:shadowRadius="1.0" />
+    </LinearLayout>
+</RelativeLayout>

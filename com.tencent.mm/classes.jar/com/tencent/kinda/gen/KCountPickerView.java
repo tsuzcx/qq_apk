@@ -7,6 +7,8 @@ public abstract interface KCountPickerView
   
   public abstract String getValue();
   
+  public abstract void setDefaultCount(int paramInt);
+  
   public abstract void setFocus(boolean paramBoolean);
   
   public abstract void setOnSelectCallback(KCountPickerViewOnSelectCallback paramKCountPickerViewOnSelectCallback);
@@ -15,7 +17,7 @@ public abstract interface KCountPickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.KCountPickerView
  * JD-Core Version:    0.7.0.1
  */

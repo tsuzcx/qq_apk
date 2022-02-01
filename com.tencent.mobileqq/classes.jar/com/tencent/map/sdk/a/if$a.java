@@ -23,17 +23,24 @@ final class if$a
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction() & 0xFF)
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (i != 0)
     {
-    default: 
-      return true;
-    case 0: 
-      this.c = true;
-      if.d(this.a).setIsLongpressEnabled(false);
-      this.b.set(paramMotionEvent.getX(), paramMotionEvent.getY());
-      if.a(this.a).f(f1, f2);
-      return true;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return true;
+        }
+        float f3 = this.b.x;
+        float f4 = this.b.y;
+        if ((Math.abs(f1 - f3) > 10.0F) || (Math.abs(f2 - f4) > 10.0F))
+        {
+          this.c = false;
+          if.a(this.a).g(f1, f2);
+        }
+        if.d(this.a).setIsLongpressEnabled(true);
+        return true;
+      }
       if (this.c) {
         if.a(this.a).a(f1, f2);
       }
@@ -42,14 +49,10 @@ final class if$a
       if.a(this.a).h(f1, f2);
       return true;
     }
-    float f3 = this.b.x;
-    float f4 = this.b.y;
-    if ((Math.abs(f1 - f3) > 10.0F) || (Math.abs(f2 - f4) > 10.0F))
-    {
-      this.c = false;
-      if.a(this.a).g(f1, f2);
-    }
-    if.d(this.a).setIsLongpressEnabled(true);
+    this.c = true;
+    if.d(this.a).setIsLongpressEnabled(false);
+    this.b.set(paramMotionEvent.getX(), paramMotionEvent.getY());
+    if.a(this.a).f(f1, f2);
     return true;
   }
   

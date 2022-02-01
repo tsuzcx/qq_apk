@@ -1,37 +1,40 @@
 package com.tencent.mobileqq.multicard.manager;
 
-import auot;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class TroopMemberRecommendHandler$1
+class TroopMemberRecommendHandler$1
   implements Runnable
 {
-  public TroopMemberRecommendHandler$1(auot paramauot, long paramLong, ArrayList paramArrayList) {}
+  TroopMemberRecommendHandler$1(TroopMemberRecommendHandler paramTroopMemberRecommendHandler, long paramLong, ArrayList paramArrayList) {}
   
   public void run()
   {
-    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    int i = localawgf.a(RecommendPerson.class.getSimpleName(), "troopUin=? ", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.Handler", 2, "handleGetTroopMemRecommendCards,delete count =" + i);
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    EntityManager localEntityManager = TroopMemberRecommendHandler.a(this.this$0).getEntityManagerFactory().createEntityManager();
+    int i = localEntityManager.delete(RecommendPerson.class.getSimpleName(), "troopUin=? ", new String[] { String.valueOf(this.a) });
+    if (QLog.isColorLevel())
     {
-      RecommendPerson localRecommendPerson = (RecommendPerson)localIterator.next();
-      this.this$0.a(localawgf, localRecommendPerson);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleGetTroopMemRecommendCards,delete count =");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("TroopMemberRecommend.Handler", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.b.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      RecommendPerson localRecommendPerson = (RecommendPerson)((Iterator)localObject).next();
+      this.this$0.a(localEntityManager, localRecommendPerson);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.manager.TroopMemberRecommendHandler.1
  * JD-Core Version:    0.7.0.1
  */

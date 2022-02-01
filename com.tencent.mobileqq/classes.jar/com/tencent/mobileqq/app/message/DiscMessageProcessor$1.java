@@ -1,63 +1,29 @@
 package com.tencent.mobileqq.app.message;
 
 import OnlinePushPack.MsgInfo;
-import amkq;
-import android.text.TextUtils;
 import android.util.Pair;
-import bdgc;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-public class DiscMessageProcessor$1
+class DiscMessageProcessor$1
   implements Runnable
 {
-  public DiscMessageProcessor$1(amkq paramamkq, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
+  DiscMessageProcessor$1(DiscMessageProcessor paramDiscMessageProcessor, long paramLong1, long paramLong2, Pair paramPair1, MsgInfo paramMsgInfo, long paramLong3, long paramLong4, byte paramByte, long paramLong5, Pair paramPair2, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(this.jdField_a_of_type_Long)))
+    long l1 = this.a;
+    long l2 = this.b;
+    if (l1 != l2)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(this.jdField_a_of_type_Long));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.DiscMsgPc.discuss", 2, "陌生人uin包括自己,移出");
-      }
+      DiscMessageProcessor.a(this.this$0, this.c, this.d, l2, this.e, this.f, this.g, this.h, this.i);
+      return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaUtilArrayList.size() * 8);
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        String str2 = (String)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i)).second;
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.DiscMsgPc.discuss", 2, "coptype 9 server showName empty");
-          }
-          str1 = bdgc.c(amkq.a(this.this$0), String.valueOf(this.b), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(i)));
-        }
-        if (i == 0) {
-          localStringBuilder.append(str1);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localStringBuilder.append("、" + str1);
-        }
-      }
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.DiscMsgPc.discuss", 2, "show yinsi tips" + localStringBuilder.toString());
-      }
-      amkq.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
-    }
+    DiscMessageProcessor.a(this.this$0, this.c, this.d, this.j, l2, String.valueOf(this.e), this.g, this.h, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DiscMessageProcessor.1
  * JD-Core Version:    0.7.0.1
  */

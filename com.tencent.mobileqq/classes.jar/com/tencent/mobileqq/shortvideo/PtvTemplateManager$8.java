@@ -1,48 +1,91 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azkt;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.mobileqq.transfile.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 class PtvTemplateManager$8
-  implements Runnable
+  implements INetEngineListener
 {
-  PtvTemplateManager$8(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, File paramFile) {}
-  
-  public void run()
+  public void onResp(NetResp paramNetResp)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PtvTemplateManager", 4, String.format("rebuildWebTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
-    }
-    List localList = this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaIoFile, null);
-    if (localList != null) {}
-    synchronized (this.this$0.jdField_c_of_type_JavaLangObject)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (this.this$0.jdField_c_of_type_Boolean) {
-        return;
-      }
-      this.this$0.b.clear();
-      this.this$0.b.addAll(localList);
-      this.this$0.d = true;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (azkt.c())) {
-        this.this$0.a(this.this$0.b);
-      }
-      PtvTemplateManager.a(this.this$0);
-      if (QLog.isDevelopLevel())
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResp url: ");
+      ((StringBuilder)localObject).append(this.a.resurl);
+      ((StringBuilder)localObject).append(" resultcode: ");
+      ((StringBuilder)localObject).append(paramNetResp.mHttpCode);
+      QLog.i("PtvTemplateManager", 2, ((StringBuilder)localObject).toString());
+    }
+    paramNetResp = this.a;
+    paramNetResp.usable = this.c.a(paramNetResp);
+    if (this.a.businessID == 1)
+    {
+      paramNetResp = this.c.C.iterator();
+      while (paramNetResp.hasNext())
       {
-        QLog.d("PtvTemplateManager", 4, String.format("rebuildWebTemplateInfos, [%s] finished", new Object[] { Integer.valueOf(hashCode()) }));
-        return;
+        localObject = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+        if (((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.a.id)) {
+          ((PtvTemplateManager.PtvTemplateInfo)localObject).usable = this.c.a((PtvTemplateManager.PtvTemplateInfo)localObject);
+        }
       }
+    }
+    paramNetResp = this.c.i.iterator();
+    while (paramNetResp.hasNext())
+    {
+      localObject = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+      if (((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.a.id)) {
+        ((PtvTemplateManager.PtvTemplateInfo)localObject).usable = this.c.a((PtvTemplateManager.PtvTemplateInfo)localObject);
+      }
+    }
+    paramNetResp = this.c.j.iterator();
+    while (paramNetResp.hasNext())
+    {
+      localObject = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+      if (((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.a.id)) {
+        ((PtvTemplateManager.PtvTemplateInfo)localObject).usable = this.c.a((PtvTemplateManager.PtvTemplateInfo)localObject);
+      }
+    }
+    if (this.a.usable) {
+      try
+      {
+        ZipUtils.unZipFile(new File(PtvTemplateManager.e, this.a.name), PtvTemplateManager.b);
+      }
+      catch (IOException paramNetResp)
+      {
+        paramNetResp.printStackTrace();
+      }
+    }
+    paramNetResp = this.b;
+    if (paramNetResp != null)
+    {
+      localObject = this.a;
+      paramNetResp.a((PtvTemplateManager.PtvTemplateInfo)localObject, ((PtvTemplateManager.PtvTemplateInfo)localObject).usable);
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    paramNetReq = this.b;
+    if (paramNetReq != null)
+    {
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = this.a;
+      localPtvTemplateInfo.totalLen = paramLong2;
+      paramNetReq.a(localPtvTemplateInfo, (int)(paramLong1 * 100L / paramLong2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.8
  * JD-Core Version:    0.7.0.1
  */

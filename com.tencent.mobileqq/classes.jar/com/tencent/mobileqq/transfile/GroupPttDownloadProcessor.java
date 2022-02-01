@@ -1,710 +1,724 @@
 package com.tencent.mobileqq.transfile;
 
-import awiq;
-import awir;
-import awxs;
-import awxt;
-import awyf;
-import azqs;
-import azri;
-import baam;
-import bara;
-import barh;
-import basl;
-import bass;
-import basu;
-import baub;
-import baue;
-import bauf;
-import bauh;
-import bave;
-import bavf;
-import bavt;
-import bawk;
-import baws;
-import bawy;
-import bayf;
-import bayk;
-import bayp;
-import bbax;
-import bbbb;
-import bbbm;
-import bbbs;
-import bbcd;
-import bdhb;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.pic.DownCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.ptt.api.IPttInfoCollector;
+import com.tencent.mobileqq.ptt.api.IPttOptimizeParams;
+import com.tencent.mobileqq.ptt.api.impl.PttInfoCollectorImpl;
+import com.tencent.mobileqq.ptt.temp.api.IPttTempApi;
+import com.tencent.mobileqq.pttlogic.api.IPTTPreDownloader;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.GroupPttDownReq;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.GroupPttDownResp;
+import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import mqq.manager.ProxyIpManager;
 import mqq.os.MqqHandler;
 
 public class GroupPttDownloadProcessor
-  extends bara
-  implements bauf, bauh, Runnable
+  extends BasePttDownloaderProcessor
+  implements NetFailedListener, Runnable
 {
-  protected baam a;
-  private bayp jdField_a_of_type_Bayp;
-  private MessageForPtt jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  long jdField_c_of_type_Long;
-  boolean jdField_c_of_type_Boolean = true;
-  private long jdField_d_of_type_Long;
-  private boolean jdField_d_of_type_Boolean;
-  private long jdField_e_of_type_Long;
-  String jdField_e_of_type_JavaLangString;
-  String f;
-  private String l;
+  public static final int DIRECT_DOWNLOAD_FAIL = 3;
+  public static final int DIRECT_DOWNLOAD_NO_IP = 2;
+  public static final int DIRECT_DOWNLOAD_NO_URL = 1;
+  public static final int DIRECT_DOWNLOAD_OUTOFTIME = 4;
+  String mDirectDownloadURL = null;
+  TransferRequest.PttDownExtraInfo mExtraInfo;
+  String mFullLocalPath;
+  long mGroupFileID;
+  String mGroupFileKeyStr;
+  boolean mIsGroup = true;
+  byte[] mMsgFileMd5;
+  private long mMsgRecTime;
+  private long mMsgTime;
+  MessageForPtt mPtt;
+  String mTempPath;
+  private boolean useUrlIp = false;
   
-  public GroupPttDownloadProcessor(bayf parambayf, bayk parambayk)
+  public GroupPttDownloadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
-    super(parambayf, parambayk);
-    this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(3)).getProxyIp(4);
-    this.jdField_a_of_type_Baam = ((baam)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(17));
+    super(paramBaseTransFileController, paramTransferRequest);
   }
   
-  private boolean a()
+  private boolean isFailedByOverDue()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_j_of_type_Int == -9527)
-    {
-      bool1 = bool2;
-      if (this.jdField_j_of_type_JavaLangString != null) {
-        if ((!this.jdField_j_of_type_JavaLangString.equals("T_203")) && (!this.jdField_j_of_type_JavaLangString.equals("H_400_-5103017")))
-        {
-          bool1 = bool2;
-          if (!this.jdField_j_of_type_JavaLangString.equals("H_400_-5103039")) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    return (this.mProcessorReport.errCode == -9527) && (this.mProcessorReport.errDesc != null) && ((this.mProcessorReport.errDesc.equals("T_203")) || (this.mProcessorReport.errDesc.equals("H_400_-5103017")) || (this.mProcessorReport.errDesc.equals("H_400_-5103039")));
   }
   
-  private void b(boolean paramBoolean)
+  private void reportDirectDownload(int paramInt)
   {
-    int i = 0;
+    String str = "DiscussPTTDirectUrl";
     for (;;)
     {
       try
       {
-        if (this.jdField_l_of_type_JavaLangString != null)
-        {
-          boolean bool = a();
-          if (bool)
-          {
-            if (i != 0)
-            {
-              if (!this.jdField_d_of_type_Boolean) {
-                continue;
-              }
-              basl.a().a().a(0);
-            }
-            this.jdField_l_of_type_JavaLangString = null;
-            if (!paramBoolean) {
-              break label139;
-            }
-            f(4);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("SPD", 4, "directDownloadIfCan error");
-            }
-            if (!bool) {
-              break label147;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fileSize = 2005L;
-            a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-            d();
-          }
+        if (this.mUiRequest.mUinType == 1) {
+          str = "GroupPTTDirectUrl";
         }
-        else
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("param_FailCode", String.valueOf(paramInt));
+        StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
+        if (paramInt == 0)
         {
+          bool = true;
+          localStatisticCollector.collectPerformance(null, str, bool, 0L, 0L, localHashMap, null);
           return;
         }
-        if (this.jdField_j_of_type_Int == 9366) {
-          continue;
+      }
+      catch (Throwable localThrowable)
+      {
+        return;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  private void requestUrlWhileDirectFailed(boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.mDirectDownloadURL != null)
+        {
+          i = 0;
+          boolean bool = isFailedByOverDue();
+          if (!bool) {
+            if (this.mProcessorReport.errCode != 9366) {
+              break label147;
+            }
+          }
+          if (i != 0) {
+            ((IPttTempApi)QRoute.api(IPttTempApi.class)).doOnPttSrvAddressError(this.useUrlIp, this.mDirectDownloadURL);
+          }
+          this.mDirectDownloadURL = null;
+          if (paramBoolean) {
+            reportDirectDownload(4);
+          } else {
+            reportDirectDownload(3);
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d("SPD", 4, "directDownloadIfCan error");
+          }
+          if (bool)
+          {
+            this.mPtt.fileSize = 2005L;
+            updateMessageDataBaseContent(this.mPtt);
+            onError();
+          }
+          else
+          {
+            sendGetUrlReq();
+          }
         }
-        i = 1;
-        continue;
-        basl.a().a(16, this.jdField_l_of_type_JavaLangString);
-        continue;
-        f(3);
+        return;
       }
       finally {}
-      label139:
-      continue;
       label147:
-      f();
+      int i = 1;
     }
   }
   
-  private void f(int paramInt)
+  public int checkParam()
   {
-    boolean bool = true;
-    String str = "DiscussPTTDirectUrl";
-    try
+    logRichMediaEvent("uiParam", this.mUiRequest.toString());
+    Object localObject1 = this.mUiRequest.mServerPath;
+    if ((localObject1 != null) && (!((String)localObject1).equals("")) && (!((String)localObject1).equals("null")) && (!FileUtils.isLocalPath((String)localObject1)) && (!((String)localObject1).startsWith("http://")))
     {
-      if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Int == 1) {
-        str = "GroupPTTDirectUrl";
-      }
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_FailCode", String.valueOf(paramInt));
-      azri localazri = azri.a(BaseApplication.getContext());
-      if (paramInt == 0) {}
-      for (;;)
+      this.mPtt = ((MessageForPtt)this.mUiRequest.mRec);
+      this.mExtraInfo = ((TransferRequest.PttDownExtraInfo)this.mUiRequest.mExtraObj);
+      this.mMsgTime = this.mPtt.msgTime;
+      this.mMsgRecTime = this.mPtt.msgRecTime;
+      int i = this.mPtt.voiceType;
+      if ((this.mUiRequest.mOutFilePath == null) || (!FileUtils.isLocalPath(this.mUiRequest.mLocalPath)))
       {
-        localazri.a(null, str, bool, 0L, 0L, localHashMap, null);
-        return;
+        if ((this.mPtt.fullLocalPath != null) && (!this.mPtt.fullLocalPath.equals(""))) {
+          this.mUiRequest.mOutFilePath = this.mPtt.fullLocalPath;
+        } else {
+          this.mUiRequest.mOutFilePath = getPttStorePath("group", (String)localObject1, i);
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(this.mUiRequest.mOutFilePath);
+        ((StringBuilder)localObject1).append("~tmp");
+        this.mTempPath = ((StringBuilder)localObject1).toString();
+      }
+      i = this.mUiRequest.mUinType;
+      boolean bool = true;
+      if (1 != i) {
         bool = false;
       }
-      return;
-    }
-    catch (Throwable localThrowable) {}
-  }
-  
-  public QQMessageFacade.Message a(MessageForPtt paramMessageForPtt)
-  {
-    paramMessageForPtt.serial();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bayk.jdField_a_of_type_Int);
-  }
-  
-  public void a(bave parambave, bavf parambavf)
-  {
-    if ((parambave == null) || (parambavf == null)) {}
-    do
-    {
-      do
+      this.mIsGroup = bool;
+      this.mMsgFileMd5 = getMd5InBytesOfGroup(this.mUiRequest.mMd5, this.mUiRequest.mServerPath);
+      this.mGroupFileID = this.mUiRequest.mGroupFileID;
+      this.mGroupFileKeyStr = this.mUiRequest.mGroupFileKeyStr;
+      if (this.mMsgFileMd5 == null)
       {
-        return;
-      } while (!(parambave instanceof baub));
-      parambave = (baub)parambave;
-      parambave.jdField_a_of_type_Long += parambavf.jdField_c_of_type_Long;
-    } while (0L != parambave.jdField_b_of_type_Long);
-    parambavf.jdField_c_of_type_Long = 0L;
-    parambavf = "bytes=" + parambave.jdField_a_of_type_Long + "-";
-    parambave.jdField_a_of_type_JavaUtilHashMap.put("Range", parambavf);
-  }
-  
-  public void a(bavf parambavf)
-  {
-    this.jdField_a_of_type_Bawi.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-    a(parambavf, false, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString);
-  }
-  
-  public void a(bbax parambbax, bbbm parambbbm)
-  {
-    this.jdField_a_of_type_Bbax = null;
-    if (parambbbm != null)
-    {
-      int i = 0;
-      while (i < parambbbm.jdField_a_of_type_JavaUtilList.size())
-      {
-        parambbax = (bbbs)parambbbm.jdField_a_of_type_JavaUtilList.get(i);
-        if (QLog.isColorLevel()) {
-          b("procUrl", parambbax.toString());
-        }
-        this.i = parambbax.jdField_d_of_type_Boolean;
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "GroupPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.i);
-        }
-        a(this.jdField_a_of_type_Barh, parambbax);
-        if (parambbax.jdField_c_of_type_Int == 0)
-        {
-          this.jdField_b_of_type_JavaLangString = parambbax.jdField_b_of_type_JavaLangString;
-          this.jdField_a_of_type_JavaLangString = parambbax.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_JavaUtilArrayList = a(parambbax.jdField_b_of_type_JavaUtilArrayList, parambbax.jdField_a_of_type_JavaUtilArrayList);
-          if (this.jdField_b_of_type_JavaLangString != null)
-          {
-            parambbax = new bawy();
-            parambbax.b = true;
-            parambbax.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-            this.jdField_a_of_type_JavaUtilArrayList.add(parambbax);
-          }
-          h();
-          i += 1;
-        }
-        else
-        {
-          d();
-        }
+        localObject1 = this.mProcessorReport;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("convert md5 error,md5:");
+        ((StringBuilder)localObject2).append(this.mUiRequest.mMd5);
+        ((StringBuilder)localObject2).append("  uuid:");
+        ((StringBuilder)localObject2).append(this.mUiRequest.mServerPath);
+        ((ProcessorReport)localObject1).setError(9302, getExpStackString(new Exception(((StringBuilder)localObject2).toString())), null, null);
+        onError();
+        return -1;
       }
+      return 0;
     }
+    Object localObject2 = this.mProcessorReport;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uuid illegal ");
+    localStringBuilder.append((String)localObject1);
+    ((ProcessorReport)localObject2).setError(9302, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
+    onError();
+    return -1;
   }
   
-  public void a(boolean paramBoolean)
+  protected void doReport(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (bawk.b(this.jdField_j_of_type_Int))) {
-      break label14;
-    }
-    label14:
-    while ((this.h) || ((paramBoolean) && ((this.m & 0x2) > 0)) || ((!paramBoolean) && ((this.m & 0x1) > 0))) {
+    if ((!paramBoolean) && (RichMediaStrategy.noReportByErrorCode(this.mProcessorReport.errCode))) {
       return;
     }
-    int j = this.m;
-    label59:
-    long l1;
-    boolean bool;
-    if (paramBoolean)
+    if ((!this.mProcessorReport.mIsOldDbRec) && ((!paramBoolean) || ((this.mProcessorReport.mReportedFlag & 0x2) <= 0)))
     {
-      i = 2;
-      this.m = (i | j);
-      l1 = (System.nanoTime() - this.k) / 1000000L;
-      localObject = this.jdField_d_of_type_Barh.a(1) + ";" + this.jdField_a_of_type_Barh.a(2) + ";" + this.jdField_b_of_type_Barh.a(3) + ";" + this.jdField_c_of_type_Barh.a(4);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_step", localObject);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_grpUin", this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_uuid", this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_quickHttp", String.valueOf(this.i));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_pttOpt", String.valueOf(awxt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_d_of_type_Boolean)));
+      int j = 1;
+      if ((!paramBoolean) && ((this.mProcessorReport.mReportedFlag & 0x1) > 0)) {
+        return;
+      }
+      Object localObject = this.mProcessorReport;
+      int k = this.mProcessorReport.mReportedFlag;
+      int i;
+      if (paramBoolean) {
+        i = 2;
+      } else {
+        i = 1;
+      }
+      ((ProcessorReport)localObject).mReportedFlag = (k | i);
+      long l1 = (System.nanoTime() - this.mProcessorReport.mStartTime) / 1000000L;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mProcessorReport.mStepDirectDown.getReportInfo(1));
+      ((StringBuilder)localObject).append(";");
+      ((StringBuilder)localObject).append(this.mProcessorReport.mStepUrl.getReportInfo(2));
+      ((StringBuilder)localObject).append(";");
+      ((StringBuilder)localObject).append(this.mProcessorReport.mStepTrans.getReportInfo(3));
+      ((StringBuilder)localObject).append(";");
+      ((StringBuilder)localObject).append(this.mProcessorReport.mStepMsg.getReportInfo(4));
+      localObject = ((StringBuilder)localObject).toString();
+      this.mProcessorReport.mReportInfo.put("param_step", localObject);
+      this.mProcessorReport.mReportInfo.put("param_grpUin", this.mUiRequest.mPeerUin);
+      this.mProcessorReport.mReportInfo.put("param_uuid", this.mUiRequest.mServerPath);
+      this.mProcessorReport.mReportInfo.put("param_quickHttp", String.valueOf(this.mProcessorReport.mSendByQuickHttp));
+      this.mProcessorReport.mReportInfo.put("param_pttOpt", String.valueOf(((IPttOptimizeParams)QRoute.api(IPttOptimizeParams.class)).getOptString(this.app, this.useUrlIp)));
+      HashMap localHashMap = this.mProcessorReport.mReportInfo;
+      if (this.mIsHttpsDownload) {
+        localObject = "1";
+      } else {
+        localObject = "0";
+      }
+      localHashMap.put("param_isHttps", localObject);
+      this.mProcessorReport.mReportInfo.put("param_trans_consume", String.valueOf(this.mProcessorReport.mStepTrans.getTimeConsume()));
       if (QLog.isDevelopLevel())
       {
-        localObject = new StringBuilder().append("GroupPttDownload success: ").append(paramBoolean).append(", cost: ").append(l1).append(" directDownloadIfCan: ");
-        if (this.jdField_l_of_type_JavaLangString == null) {
-          break label393;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("GroupPttDownload success: ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append(", cost: ");
+        ((StringBuilder)localObject).append(l1);
+        ((StringBuilder)localObject).append(" directDownloadIfCan: ");
+        boolean bool;
+        if (this.mDirectDownloadURL != null) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        bool = true;
-        label298:
-        QLog.d("SPD", 4, bool);
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("SPD", 4, ((StringBuilder)localObject).toString());
       }
-      if (!paramBoolean) {
-        break label399;
-      }
-      b(true, l1);
-      azri.a(BaseApplication.getContext()).a(null, b(), true, l1, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, "");
-    }
-    label393:
-    label399:
-    do
-    {
-      l();
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt == null) {
-        break;
-      }
-      awyf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramBoolean, this.jdField_j_of_type_Int, this.jdField_a_of_type_Bayp, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-      return;
-      i = 1;
-      break label59;
-      bool = false;
-      break label298;
-      if (this.jdField_j_of_type_Int != -9527) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_j_of_type_Int));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
-      if ((this.jdField_a_of_type_Bave instanceof baub))
+      if (paramBoolean)
       {
-        localObject = baws.a(((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
-        if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put("param_reqIp", ((bawy)localObject).jdField_a_of_type_JavaLangString);
+        this.mProcessorReport.mReportInfo.put("param_isSuccess", "1");
+        reportForIpv6(true, l1);
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), true, l1, this.mTotolLen, this.mProcessorReport.mReportInfo, "");
+      }
+      else
+      {
+        if (this.mProcessorReport.errCode != -9527) {
+          this.mProcessorReport.mReportInfo.remove("param_rspHeader");
+        }
+        this.mProcessorReport.mReportInfo.put("param_FailCode", String.valueOf(this.mProcessorReport.errCode));
+        this.mProcessorReport.mReportInfo.put("param_errorDesc", this.mProcessorReport.errDesc);
+        if ((this.mNetReq instanceof HttpNetReq))
+        {
+          localObject = TransFileUtil.getIpAndPortFromUrl(((HttpNetReq)this.mNetReq).mReqUrl);
+          if (localObject != null) {
+            this.mProcessorReport.mReportInfo.put("param_reqIp", ((ServerAddr)localObject).mIp);
+          }
+        }
+        this.mProcessorReport.mReportInfo.put("param_isSuccess", "0");
+        reportForIpv6(false, l1);
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), false, l1, 0L, this.mProcessorReport.mReportInfo, "");
+        if ((this.mProcessorReport.errCode == -9527) && (this.mProcessorReport.errDesc != null))
+        {
+          if (this.mProcessorReport.errDesc.equals("T_203")) {
+            i = j;
+          } else if (this.mProcessorReport.errDesc.equals("H_400_-5103017")) {
+            i = 16;
+          } else {
+            i = 0;
+          }
+          if (i != 0)
+          {
+            if (this.mMsgRecTime > this.mMsgTime)
+            {
+              if (this.mIsGroup) {
+                localObject = "actGroupPTTOutOfTime";
+              } else {
+                localObject = "actDiscussionPTTOutOfTime";
+              }
+              localHashMap = new HashMap();
+              long l2 = System.currentTimeMillis() / 1000L;
+              long l3 = this.mMsgRecTime;
+              long l4 = this.mMsgTime;
+              l1 = (l3 - l4) / 86400L;
+              l4 = (l2 - l4) / 86400L;
+              l2 = (l2 - l3) / 86400L;
+              localHashMap.put("MsgOff", String.valueOf(l1));
+              localHashMap.put("PttOff", String.valueOf(l2));
+              localHashMap.put("OutOfTimeReason", String.valueOf(i));
+              localHashMap.put("param_FailCode", String.valueOf(l4));
+              StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject, false, 0L, 0L, localHashMap, null);
+            }
+            if (this.mUiRequest.mExtraObj != null)
+            {
+              localObject = (TransferRequest.PttDownExtraInfo)this.mUiRequest.mExtraObj;
+              ReportController.b(this.app, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollectorImpl.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject).mFromType, ((TransferRequest.PttDownExtraInfo)localObject).mLayer), 0, "", "", "", "8.8.17");
+            }
+          }
         }
       }
-      b(false, l1);
-      azri.a(BaseApplication.getContext()).a(null, b(), false, l1, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
-    } while ((this.jdField_j_of_type_Int != -9527) || (this.jdField_j_of_type_JavaLangString == null));
-    int i = 0;
-    if (this.jdField_j_of_type_JavaLangString.equals("T_203"))
-    {
-      i = 1;
-      label563:
-      if (i == 0) {
-        break label811;
+      setReportFlag();
+      if (this.mPtt != null) {
+        ((IPTTPreDownloader)this.app.getRuntimeService(IPTTPreDownloader.class, "all")).onDownloadFinish(paramBoolean, this.mProcessorReport.errCode, this.mExtraInfo, this.mPtt);
       }
-      if (this.jdField_e_of_type_Long > this.jdField_d_of_type_Long) {
-        if (!this.jdField_c_of_type_Boolean) {
-          break label813;
-        }
-      }
-    }
-    label811:
-    label813:
-    for (Object localObject = "actGroupPTTOutOfTime";; localObject = "actDiscussionPTTOutOfTime")
-    {
-      HashMap localHashMap = new HashMap();
-      long l3 = System.currentTimeMillis() / 1000L;
-      l1 = (this.jdField_e_of_type_Long - this.jdField_d_of_type_Long) / 86400L;
-      long l2 = (l3 - this.jdField_d_of_type_Long) / 86400L;
-      l3 = (l3 - this.jdField_e_of_type_Long) / 86400L;
-      localHashMap.put("MsgOff", String.valueOf(l1));
-      localHashMap.put("PttOff", String.valueOf(l3));
-      localHashMap.put("OutOfTimeReason", String.valueOf(i));
-      localHashMap.put("param_FailCode", String.valueOf(l2));
-      azri.a(BaseApplication.getContext()).a(null, (String)localObject, false, 0L, 0L, localHashMap, null);
-      if (this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject == null) {
-        break;
-      }
-      localObject = (bayp)this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject;
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80059B3", "0X80059B3", bavt.a(((bayp)localObject).jdField_a_of_type_Int, ((bayp)localObject).jdField_b_of_type_Int), 0, "", "", "", "8.3.5");
-      break;
-      if (!this.jdField_j_of_type_JavaLangString.equals("H_400_-5103017")) {
-        break label563;
-      }
-      i = 16;
-      break label563;
-      break;
     }
   }
   
-  public void aP_()
+  protected String getReportTAG()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag == -1L) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag = 0L;
-    }
-    if (this.jdField_a_of_type_Bayp.jdField_a_of_type_Int == 6)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-      ((MessageForPtt)localObject).extFlag |= 1L;
-    }
-    super.aP_();
-    d(2001);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Int == 1) {}
-    for (int i = 3;; i = 2)
-    {
-      bavt.a((QQAppInterface)localObject, i, false, 2);
-      if (!this.jdField_a_of_type_Bayk.h.equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath = this.jdField_a_of_type_Bayk.h;
-        a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-      }
-      f();
-      return;
-    }
-  }
-  
-  public String b()
-  {
-    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Int == 1) {
+    if (this.mUiRequest.mUinType == 1) {
       return "actGrpPttDown";
     }
     return "actDisscusPttDown";
   }
   
-  void b(String paramString)
+  public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
   {
-    Object localObject = paramString;
+    this.mRichProtoReq = null;
+    if (paramRichProtoResp != null)
+    {
+      int i = 0;
+      while (i < paramRichProtoResp.resps.size())
+      {
+        paramRichProtoReq = (RichProto.RichProtoResp.GroupPttDownResp)paramRichProtoResp.resps.get(i);
+        if (QLog.isColorLevel()) {
+          logRichMediaEvent("procUrl", paramRichProtoReq.toString());
+        }
+        this.mProcessorReport.mSendByQuickHttp = paramRichProtoReq.isSendByQuickHttp;
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("GroupPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=");
+          ((StringBuilder)localObject).append(this.mProcessorReport.mSendByQuickHttp);
+          QLog.e("http_sideway", 2, ((StringBuilder)localObject).toString());
+        }
+        this.mProcessorReport.copyRespCommon(this.mProcessorReport.mStepUrl, paramRichProtoReq);
+        if (paramRichProtoReq.result == 0)
+        {
+          this.mDownDomain = paramRichProtoReq.domainV4V6;
+          this.mUrlPath = paramRichProtoReq.urlPath;
+          this.mIpList = selectIpList(paramRichProtoReq.mIpv6List, paramRichProtoReq.mIpList);
+          if (this.mDownDomain != null)
+          {
+            localObject = new ServerAddr();
+            ((ServerAddr)localObject).isDomain = true;
+            ((ServerAddr)localObject).mIp = this.mDownDomain;
+            this.mIpList.add(localObject);
+          }
+          recieveFile(paramRichProtoReq.mIsHttps);
+          i += 1;
+        }
+        else
+        {
+          onError();
+        }
+      }
+    }
+  }
+  
+  void onError()
+  {
+    super.onError();
+    if (this.mUiRequest.mDownCallBack != null)
+    {
+      DownCallBack.DownResult localDownResult = new DownCallBack.DownResult();
+      localDownResult.a = -1;
+      this.mUiRequest.mDownCallBack.a(localDownResult);
+      return;
+    }
+    sendMessageToUpdate(2005);
+  }
+  
+  public void onFailed(NetResp paramNetResp)
+  {
+    this.mRSMReporter.mFileSize = this.mRecvLen;
+    reportForServerMonitor(paramNetResp, false, "actRichMediaNetMonitor_pttDown", this.mUiRequest.mServerPath);
+  }
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    FileMsg.StepTransInfo localStepTransInfo;
+    if (this.mDirectDownloadURL != null)
+    {
+      localObject = this.mProcessorReport.mStepDirectDown;
+      localStepTransInfo = this.file.stepMsgDirecDown;
+      ThreadManager.getSubThreadHandler().removeCallbacks(this);
+    }
+    else
+    {
+      localObject = this.mProcessorReport.mStepTrans;
+      localStepTransInfo = this.file.stepTrans;
+    }
+    ProcessorReport localProcessorReport = this.mProcessorReport;
+    boolean bool;
+    if (paramNetResp.mResult == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localProcessorReport.copyStaticsInfoFromNetResp((StepInfo)localObject, paramNetResp, bool);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" result:");
+    if (paramNetResp.mResult == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StringBuilder)localObject).append(bool);
+    logRichMediaEvent("onHttpResp", ((StringBuilder)localObject).toString());
+    this.mTotolLen = paramNetResp.mTotalFileLen;
+    if (this.mNetReq != null) {
+      this.mNetReq.mCallback = null;
+    }
+    if (this.mTotolLen <= 0L) {
+      this.mTotolLen = (paramNetResp.mTotalBlockLen + paramNetResp.mReq.mStartDownOffset);
+    }
+    this.mRecvLen += paramNetResp.mWrittenBlockLen;
+    localStepTransInfo.respHeader = ((String)paramNetResp.mRespProperties.get("param_rspHeader"));
+    if (paramNetResp.mResult == 0)
+    {
+      onSuccess();
+      this.mRSMReporter.mFileSize = this.mRecvLen;
+      reportForServerMonitor(paramNetResp, true, "actRichMediaNetMonitor_pttDown", this.mUiRequest.mServerPath);
+      if (this.mDirectDownloadURL != null) {
+        reportDirectDownload(0);
+      }
+    }
+    else if (this.mDirectDownloadURL != null)
+    {
+      requestUrlWhileDirectFailed(false);
+    }
+    else
+    {
+      if ((paramNetResp.mErrCode == 9364) && (this.mNetworkChgRetryCount < 3))
+      {
+        logRichMediaEvent("[netChg]", "failed.but net change detect.so retry");
+        this.mNetReq = null;
+        this.mNetworkChgRetryCount += 1;
+        clearReprotInfo();
+        sendGetUrlReq();
+        return;
+      }
+      onError();
+    }
+    this.mNetReq = null;
+  }
+  
+  void onSuccess()
+  {
+    Object localObject = this.mPtt;
+    ((MessageForPtt)localObject).url = MessageForPtt.getMsgFilePath(((MessageForPtt)localObject).voiceType, this.mUiRequest.mOutFilePath);
+    this.mPtt.fileSize = this.mTotolLen;
+    this.mPtt.urlAtServer = this.mUiRequest.mServerPath;
+    super.onSuccess();
+    localObject = updateMessageDataBaseContent(this.mPtt);
+    if ((localObject != null) && (((Message)localObject).pttUrl != null) && (((Message)localObject).pttUrl.equals(this.mUiRequest.mServerPath))) {
+      ((Message)localObject).pttUrl = this.mUiRequest.mOutFilePath;
+    }
+    if (this.mUiRequest.mDownCallBack != null)
+    {
+      localObject = new DownCallBack.DownResult();
+      ((DownCallBack.DownResult)localObject).a = 0;
+      this.mUiRequest.mDownCallBack.a((DownCallBack.DownResult)localObject);
+      return;
+    }
+    sendMessageToUpdate(2003);
+  }
+  
+  void recieveFile(String paramString, boolean paramBoolean)
+  {
+    Object localObject1 = paramString;
     if (!paramString.contains("voice_codec="))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
-      localObject = paramString + "&voice_codec=" + ((MessageForPtt)localObject).voiceType;
+      localObject1 = this.mPtt;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append("&voice_codec=");
+      ((StringBuilder)localObject2).append(((MessageForPtt)localObject1).voiceType);
+      localObject1 = ((StringBuilder)localObject2).toString();
     }
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Baug = this;
-    localbaub.jdField_a_of_type_Bauh = this;
-    localbaub.jdField_a_of_type_JavaLangString = ((String)localObject);
-    localbaub.jdField_a_of_type_Int = 0;
-    localbaub.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
-    localbaub.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bayk.h;
-    localbaub.jdField_a_of_type_Bauf = this;
-    localbaub.jdField_d_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-    localbaub.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Bayk.jdField_a_of_type_Long);
-    localbaub.jdField_g_of_type_Int = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
-    localbaub.f = this.jdField_a_of_type_Bayk.jdField_b_of_type_Int;
-    localbaub.jdField_a_of_type_Long = 0L;
-    localbaub.k = true;
-    localbaub.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-    if (this.jdField_l_of_type_JavaLangString != null)
+    Object localObject2 = new HttpNetReq();
+    ((HttpNetReq)localObject2).mCallback = this;
+    ((HttpNetReq)localObject2).mFailedListener = this;
+    ((HttpNetReq)localObject2).mReqUrl = ((String)localObject1);
+    ((HttpNetReq)localObject2).mIsHttps = paramBoolean;
+    ((HttpNetReq)localObject2).mHostForHttpsVerify = this.mDownDomain;
+    ((HttpNetReq)localObject2).mHttpMethod = 0;
+    ((HttpNetReq)localObject2).mServerList = this.mIpList;
+    ((HttpNetReq)localObject2).mOutPath = this.mUiRequest.mOutFilePath;
+    ((HttpNetReq)localObject2).mSupportBreakResume = true;
+    ((HttpNetReq)localObject2).mTempPath = this.mTempPath;
+    ((HttpNetReq)localObject2).mMsgId = String.valueOf(this.mUiRequest.mUniseq);
+    ((HttpNetReq)localObject2).mBusiProtoType = this.mUiRequest.mUinType;
+    ((HttpNetReq)localObject2).mFileType = this.mUiRequest.mFileType;
+    ((HttpNetReq)localObject2).mStartDownOffset = 0L;
+    ((HttpNetReq)localObject2).mIsNetChgAsError = true;
+    ((HttpNetReq)localObject2).mReqProperties.put("Accept-Encoding", "identity");
+    if (this.mDirectDownloadURL != null)
     {
-      localbaub.jdField_c_of_type_Long = 60000L;
-      localbaub.jdField_c_of_type_Int = 0;
+      ((HttpNetReq)localObject2).mExcuteTimeLimit = 60000L;
+      ((HttpNetReq)localObject2).mContinuErrorLimit = 0;
     }
-    localbaub.l = true;
-    localbaub.jdField_d_of_type_Boolean = true;
-    localObject = null;
-    paramString = (String)localObject;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    ((HttpNetReq)localObject2).mCanPrintUrl = true;
+    ((HttpNetReq)localObject2).mUseCmwapConnectionTypeFromDpc = true;
+    localObject1 = null;
+    paramString = (String)localObject1;
+    if (this.mIpList != null)
     {
-      paramString = (String)localObject;
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        paramString = Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray());
+      paramString = (String)localObject1;
+      if (!this.mIpList.isEmpty()) {
+        paramString = Arrays.toString(this.mIpList.toArray());
       }
     }
-    b("httpDown", "directMsgUrlDown:" + this.jdField_a_of_type_Boolean + " ipList:" + paramString + " uuid:" + this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString + " FileID:" + this.jdField_a_of_type_Bayk.jdField_c_of_type_Long + " downOffset:" + localbaub.jdField_a_of_type_Long);
-    if (!f()) {
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("directMsgUrlDown:");
+    ((StringBuilder)localObject1).append(this.mDirectMsgUrlDown);
+    ((StringBuilder)localObject1).append(" ipList:");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" uuid:");
+    ((StringBuilder)localObject1).append(this.mUiRequest.mServerPath);
+    ((StringBuilder)localObject1).append(" FileID:");
+    ((StringBuilder)localObject1).append(this.mUiRequest.mGroupFileID);
+    ((StringBuilder)localObject1).append(" downOffset:");
+    ((StringBuilder)localObject1).append(((HttpNetReq)localObject2).mStartDownOffset);
+    logRichMediaEvent("httpDown", ((StringBuilder)localObject1).toString());
+    if (!canDoNextStep()) {
       return;
     }
-    this.jdField_a_of_type_Bave = localbaub;
-    n();
-    this.jdField_a_of_type_Baue.a(localbaub);
+    this.mNetReq = ((NetReq)localObject2);
+    setMtype();
+    this.mNetEngine.sendReq((NetReq)localObject2);
   }
   
-  public int c()
+  void recieveFile(boolean paramBoolean)
   {
-    int i = 0;
-    b("uiParam", this.jdField_a_of_type_Bayk.toString());
-    String str = this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (bdhb.c(str)) || (str.startsWith("http://")))
-    {
-      b(9302, a(new Exception("uuid illegal " + str)));
-      d();
-      i = -1;
-      return i;
+    this.mProcessorReport.mStepTrans.logStartTime();
+    this.mIsHttpsDownload = paramBoolean;
+    this.mRSMReporter.mIsHttps = paramBoolean;
+    if (paramBoolean) {
+      localObject2 = "https://";
+    } else {
+      localObject2 = "http://";
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = ((MessageForPtt)this.jdField_a_of_type_Bayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    this.jdField_a_of_type_Bayp = ((bayp)this.jdField_a_of_type_Bayk.jdField_a_of_type_JavaLangObject);
-    this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgTime;
-    this.jdField_e_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgRecTime;
-    int j = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType;
-    if ((this.jdField_a_of_type_Bayk.h == null) || (!bdhb.c(this.jdField_a_of_type_Bayk.i)))
+    Object localObject1 = null;
+    if (this.isDomainTest)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath.equals("")))
+      this.mDownDomain = "grouptalk.c2c.qq.com";
+      this.mIpList.clear();
+    }
+    if ((this.mIpList != null) && (this.mIpList.size() > 0))
+    {
+      localObject3 = (ServerAddr)this.mIpList.get(0);
+      if ((((ServerAddr)localObject3).isIpv6) && (!((ServerAddr)localObject3).mIp.startsWith("[")))
       {
-        this.jdField_a_of_type_Bayk.h = a("group", str, j);
-        label241:
-        this.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_Bayk.h + "~tmp");
-      }
-    }
-    else {
-      if (1 != this.jdField_a_of_type_Bayk.jdField_a_of_type_Int) {
-        break label422;
-      }
-    }
-    label422:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_c_of_type_Boolean = bool;
-      this.jdField_a_of_type_ArrayOfByte = a(this.jdField_a_of_type_Bayk.f, this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString);
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_Bayk.jdField_c_of_type_Long;
-      this.f = this.jdField_a_of_type_Bayk.jdField_g_of_type_JavaLangString;
-      if (this.jdField_a_of_type_ArrayOfByte != null) {
-        break;
-      }
-      b(9302, a(new Exception("convert md5 error,md5:" + this.jdField_a_of_type_Bayk.f + "  uuid:" + this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString)));
-      d();
-      return -1;
-      this.jdField_a_of_type_Bayk.h = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fullLocalPath;
-      break label241;
-    }
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Awiq != null)
-    {
-      awir localawir = new awir();
-      localawir.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_Bayk.jdField_a_of_type_Awiq.a(localawir);
-      return;
-    }
-    d(2005);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.url = MessageForPtt.getMsgFilePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, this.jdField_a_of_type_Bayk.h);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.fileSize = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.urlAtServer = this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString;
-    super.e();
-    Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if ((localObject != null) && (((QQMessageFacade.Message)localObject).pttUrl != null) && (((QQMessageFacade.Message)localObject).pttUrl.equals(this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString))) {
-      ((QQMessageFacade.Message)localObject).pttUrl = this.jdField_a_of_type_Bayk.h;
-    }
-    if (this.jdField_a_of_type_Bayk.jdField_a_of_type_Awiq != null)
-    {
-      localObject = new awir();
-      ((awir)localObject).jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Bayk.jdField_a_of_type_Awiq.a((awir)localObject);
-      return;
-    }
-    d(2003);
-  }
-  
-  void f()
-  {
-    d(2001);
-    g();
-  }
-  
-  void g()
-  {
-    this.jdField_a_of_type_Barh.a();
-    bbax localbbax = new bbax();
-    bbbb localbbbb = new bbbb();
-    localbbbb.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_b_of_type_JavaLangString;
-    localbbbb.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_c_of_type_JavaLangString;
-    localbbbb.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_Bayk.jdField_d_of_type_JavaLangString;
-    localbbbb.f = this.jdField_a_of_type_Bayk.jdField_a_of_type_Int;
-    localbbbb.jdField_a_of_type_Long = this.jdField_c_of_type_Long;
-    b("SendRequest", " SendRequest GrpFileKey:" + this.f);
-    localbbbb.jdField_a_of_type_JavaLangString = this.f;
-    localbbbb.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localbbbb.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType;
-    localbbbb.jdField_b_of_type_Int = this.jdField_a_of_type_Bayk.jdField_g_of_type_Int;
-    localbbax.jdField_a_of_type_Bbce = this;
-    localbbax.jdField_a_of_type_JavaLangString = "grp_ptt_dw";
-    localbbax.jdField_a_of_type_JavaUtilList.add(localbbbb);
-    localbbax.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
-    if (!e())
-    {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Barh);
-      d();
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        b("requestStart", localbbax.toString());
-      }
-    } while (!f());
-    this.jdField_a_of_type_Bbax = localbbax;
-    bbcd.a(localbbax);
-  }
-  
-  void h()
-  {
-    this.jdField_b_of_type_Barh.a();
-    Object localObject = null;
-    if (this.jdField_j_of_type_Boolean)
-    {
-      this.jdField_b_of_type_JavaLangString = "grouptalk.c2c.qq.com";
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    bawy localbawy;
-    String str;
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      localbawy = (bawy)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      if ((localbawy.jdField_a_of_type_Boolean) && (!localbawy.jdField_a_of_type_JavaLangString.startsWith("[")))
-      {
-        str = "[" + localbawy.jdField_a_of_type_JavaLangString + "]";
-        localObject = str;
-        if (localbawy.jdField_a_of_type_Int != 80) {
-          localObject = str + ":" + localbawy.jdField_a_of_type_Int;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-      }
-    }
-    for (;;)
-    {
-      basl.a().a().a((String)localObject, 0);
-      str = "http://" + (String)localObject;
-      b(str + this.jdField_a_of_type_JavaLangString);
-      return;
-      str = localbawy.jdField_a_of_type_JavaLangString;
-      break;
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        localObject = this.jdField_b_of_type_JavaLangString;
-      }
-    }
-  }
-  
-  public void n()
-  {
-    if ((this.jdField_a_of_type_Bave != null) && ((this.jdField_a_of_type_Bave instanceof baub)))
-    {
-      if (this.jdField_c_of_type_Boolean) {
-        ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttGd", ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
-      }
-    }
-    else {
-      return;
-    }
-    ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttDd", ((baub)this.jdField_a_of_type_Bave).jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onResp(bavf parambavf)
-  {
-    Object localObject;
-    basu localbasu;
-    boolean bool;
-    if (this.jdField_l_of_type_JavaLangString != null)
-    {
-      localObject = this.jdField_d_of_type_Barh;
-      localbasu = this.jdField_a_of_type_Bass.b;
-      ThreadManager.getSubThreadHandler().removeCallbacks(this);
-      if (parambavf.jdField_a_of_type_Int != 0) {
-        break label233;
-      }
-      bool = true;
-      label37:
-      a((barh)localObject, parambavf, bool);
-      localObject = new StringBuilder().append(" result:");
-      if (parambavf.jdField_a_of_type_Int != 0) {
-        break label238;
-      }
-      bool = true;
-      label67:
-      b("onHttpResp", bool);
-      this.jdField_a_of_type_Long = parambavf.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Bave != null) {
-        this.jdField_a_of_type_Bave.jdField_a_of_type_Baug = null;
-      }
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (parambavf.jdField_b_of_type_Long + parambavf.jdField_a_of_type_Bave.jdField_a_of_type_Long);
-      }
-      this.jdField_b_of_type_Long += parambavf.jdField_c_of_type_Long;
-      localbasu.jdField_d_of_type_JavaLangString = ((String)parambavf.jdField_a_of_type_JavaUtilHashMap.get("param_rspHeader"));
-      if (parambavf.jdField_a_of_type_Int != 0) {
-        break label243;
-      }
-      e();
-      this.jdField_a_of_type_Bawi.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-      a(parambavf, true, "actRichMediaNetMonitor_pttDown", this.jdField_a_of_type_Bayk.jdField_e_of_type_JavaLangString);
-      if (this.jdField_l_of_type_JavaLangString != null) {
-        f(0);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bave = null;
-      return;
-      localObject = this.jdField_b_of_type_Barh;
-      localbasu = this.jdField_a_of_type_Bass.a;
-      break;
-      label233:
-      bool = false;
-      break label37;
-      label238:
-      bool = false;
-      break label67;
-      label243:
-      if (this.jdField_l_of_type_JavaLangString != null)
-      {
-        b(false);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[");
+        ((StringBuilder)localObject1).append(((ServerAddr)localObject3).mIp);
+        ((StringBuilder)localObject1).append("]");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
       else
       {
-        if ((parambavf.jdField_b_of_type_Int == 9364) && (this.jdField_l_of_type_Int < 3))
-        {
-          b("[netChg]", "failed.but net change detect.so retry");
-          this.jdField_a_of_type_Bave = null;
-          this.jdField_l_of_type_Int += 1;
-          m();
-          f();
-          return;
-        }
-        d();
+        localObject1 = ((ServerAddr)localObject3).mIp;
       }
+      if (((ServerAddr)localObject3).port != 80)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(":");
+        localStringBuilder.append(((ServerAddr)localObject3).port);
+        localObject1 = localStringBuilder.toString();
+      }
+      this.mIpList.remove(0);
     }
+    else if (this.mDownDomain != null)
+    {
+      localObject1 = this.mDownDomain;
+    }
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append((String)localObject1);
+    localObject1 = ((StringBuilder)localObject3).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(this.mUrlPath);
+    recieveFile(((StringBuilder)localObject2).toString(), paramBoolean);
+  }
+  
+  protected void reportPttPV(int paramInt)
+  {
+    ((IPttInfoCollector)QRoute.api(IPttInfoCollector.class)).reportPTTPV(this.app, paramInt, false, 2);
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Bave != null)
+    if (this.mNetReq != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SPD", 2, "Direct download failed overtime = " + this.jdField_l_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Direct download failed overtime = ");
+        localStringBuilder.append(this.mDirectDownloadURL);
+        QLog.e("SPD", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Baue.b(this.jdField_a_of_type_Bave);
-      this.jdField_a_of_type_Bave = null;
+      this.mNetEngine.cancelReq(this.mNetReq);
+      this.mNetReq = null;
     }
-    b(true);
+    requestUrlWhileDirectFailed(true);
+  }
+  
+  void sendGetUrlReq()
+  {
+    sendMessageToUpdate(2001);
+    sendRequest_pb();
+  }
+  
+  void sendRequest_pb()
+  {
+    this.mProcessorReport.mStepUrl.logStartTime();
+    RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
+    RichProto.RichProtoReq.GroupPttDownReq localGroupPttDownReq = new RichProto.RichProtoReq.GroupPttDownReq();
+    localGroupPttDownReq.selfUin = this.mUiRequest.mSelfUin;
+    localGroupPttDownReq.peerUin = this.mUiRequest.mPeerUin;
+    localGroupPttDownReq.secondUin = this.mUiRequest.mSecondId;
+    localGroupPttDownReq.uinType = this.mUiRequest.mUinType;
+    localGroupPttDownReq.groupFileID = this.mGroupFileID;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" SendRequest GrpFileKey:");
+    localStringBuilder.append(this.mGroupFileKeyStr);
+    logRichMediaEvent("SendRequest", localStringBuilder.toString());
+    localGroupPttDownReq.groupFileKey = this.mGroupFileKeyStr;
+    localGroupPttDownReq.md5 = this.mMsgFileMd5;
+    localGroupPttDownReq.voiceType = this.mPtt.voiceType;
+    localGroupPttDownReq.downType = this.mUiRequest.mDownMode;
+    localRichProtoReq.callback = this;
+    localRichProtoReq.protoKey = "grp_ptt_dw";
+    localRichProtoReq.reqs.add(localGroupPttDownReq);
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
+    if (!isAppValid())
+    {
+      this.mProcessorReport.setError(9366, "illegal app", null, this.mProcessorReport.mStepUrl);
+      onError();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      logRichMediaEvent("requestStart", localRichProtoReq.toString());
+    }
+    if (!canDoNextStep()) {
+      return;
+    }
+    this.mRichProtoReq = localRichProtoReq;
+    RichProtoProc.procRichProtoReq(localRichProtoReq);
+  }
+  
+  protected void setMtype()
+  {
+    if ((this.mNetReq != null) && ((this.mNetReq instanceof HttpNetReq)))
+    {
+      if (this.mIsGroup)
+      {
+        ((HttpNetReq)this.mNetReq).mReqUrl = MsfSdkUtils.insertMtype("pttGd", ((HttpNetReq)this.mNetReq).mReqUrl);
+        return;
+      }
+      ((HttpNetReq)this.mNetReq).mReqUrl = MsfSdkUtils.insertMtype("pttDd", ((HttpNetReq)this.mNetReq).mReqUrl);
+    }
+  }
+  
+  public void start()
+  {
+    if (this.mPtt.extFlag == -1L) {
+      this.mPtt.extFlag = 0L;
+    }
+    if (this.mExtraInfo.mFromType == 6)
+    {
+      MessageForPtt localMessageForPtt = this.mPtt;
+      localMessageForPtt.extFlag |= 1L;
+    }
+    super.start();
+    sendMessageToUpdate(2001);
+    int i;
+    if (this.mUiRequest.mUinType == 1) {
+      i = 3;
+    } else {
+      i = 2;
+    }
+    reportPttPV(i);
+    if (!this.mUiRequest.mOutFilePath.equals(this.mPtt.fullLocalPath))
+    {
+      this.mPtt.fullLocalPath = this.mUiRequest.mOutFilePath;
+      updateMessageDataBaseContent(this.mPtt);
+    }
+    sendGetUrlReq();
+  }
+  
+  public Message updateMessageDataBaseContent(MessageForPtt paramMessageForPtt)
+  {
+    paramMessageForPtt.serial();
+    ((IPttTempApi)QRoute.api(IPttTempApi.class)).updateMsgContentByUniseq(this.app, this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, paramMessageForPtt.uniseq, paramMessageForPtt.msgData);
+    return ((IPttTempApi)QRoute.api(IPttTempApi.class)).getLastMessage(this.app, this.mUiRequest.mPeerUin, this.mUiRequest.mUinType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPttDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

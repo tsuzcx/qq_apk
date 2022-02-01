@@ -12,53 +12,55 @@ import com.tencent.shadow.dynamic.host.PpsController;
 public class QTProxyService
   extends PluginProcessService
 {
-  private long jdField_a_of_type_Long;
-  private PpsController jdField_a_of_type_ComTencentShadowDynamicHostPpsController;
+  private PpsController a;
+  private long b = 0L;
   
   public IBinder onBind(Intent paramIntent)
   {
     paramIntent = super.onBind(paramIntent);
-    this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController = wrapBinder(paramIntent);
+    this.a = wrapBinder(paramIntent);
     return paramIntent;
   }
   
   public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.b = SystemClock.elapsedRealtime();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     Process.killProcess(Process.myPid());
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController != null) {}
+    PpsController localPpsController = this.a;
+    if (localPpsController != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController.exit();
-      label24:
-      this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController = null;
+      localPpsController.exit();
+      label23:
+      this.a = null;
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      break label24;
+      break label23;
     }
   }
   
   public void onTaskRemoved(Intent paramIntent)
   {
     super.onTaskRemoved(paramIntent);
-    if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < 1000L)
+    if (SystemClock.elapsedRealtime() - this.b < 1000L)
     {
       QLog.i("QTProxyService", 2, "onTaskRemoved, SystemClock.elapsedRealtime() - mOnCreateTimeStamp < 1000");
       return;
     }
     QLog.i("QTProxyService", 2, "onTaskRemoved");
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController != null) {
+    paramIntent = this.a;
+    if (paramIntent != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController.exit();
+        paramIntent.exit();
         return;
       }
       catch (RemoteException paramIntent)
@@ -72,7 +74,7 @@ public class QTProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.proxyinner.plugin.loader.QTProxyService
  * JD-Core Version:    0.7.0.1
  */

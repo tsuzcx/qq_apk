@@ -1,7 +1,5 @@
 package com.google.android.gms.common;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -19,12 +17,14 @@ import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.s.b;
-import android.support.v4.app.s.c;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ProgressBar;
+import androidx.core.app.f.b;
+import androidx.core.app.f.d;
+import androidx.fragment.app.FragmentActivity;
+import com.google.android.gms.base.R.drawable;
+import com.google.android.gms.base.R.string;
 import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.android.gms.common.api.internal.GoogleApiManager;
@@ -59,11 +59,11 @@ public class GoogleApiAvailability
   
   static
   {
-    AppMethodBeat.i(60450);
+    AppMethodBeat.i(10942);
     mLock = new Object();
     zzas = new GoogleApiAvailability();
     GOOGLE_PLAY_SERVICES_VERSION_CODE = GoogleApiAvailabilityLight.GOOGLE_PLAY_SERVICES_VERSION_CODE;
-    AppMethodBeat.o(60450);
+    AppMethodBeat.o(10942);
   }
   
   public static GoogleApiAvailability getInstance()
@@ -74,10 +74,10 @@ public class GoogleApiAvailability
   static Dialog zza(Context paramContext, int paramInt, DialogRedirect paramDialogRedirect, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     AlertDialog.Builder localBuilder = null;
-    AppMethodBeat.i(60445);
+    AppMethodBeat.i(10937);
     if (paramInt == 0)
     {
-      AppMethodBeat.o(60445);
+      AppMethodBeat.o(10937);
       return null;
     }
     Object localObject = new TypedValue();
@@ -102,14 +102,13 @@ public class GoogleApiAvailability
       ((AlertDialog.Builder)localObject).setTitle(paramContext);
     }
     paramContext = ((AlertDialog.Builder)localObject).create();
-    AppMethodBeat.o(60445);
+    AppMethodBeat.o(10937);
     return paramContext;
   }
   
-  @TargetApi(26)
   private final String zza(Context paramContext, NotificationManager paramNotificationManager)
   {
-    AppMethodBeat.i(60448);
+    AppMethodBeat.i(10940);
     Preconditions.checkState(PlatformVersion.isAtLeastO());
     String str2 = zzb();
     String str1 = str2;
@@ -120,16 +119,16 @@ public class GoogleApiAvailability
       localNotificationChannel = paramNotificationManager.getNotificationChannel("com.google.android.gms.availability");
       paramContext = ConnectionErrorMessages.getDefaultNotificationChannelName(paramContext);
       if (localNotificationChannel != null) {
-        break label72;
+        break label74;
       }
       paramNotificationManager.createNotificationChannel(new NotificationChannel("com.google.android.gms.availability", paramContext, 4));
       str1 = str2;
     }
     for (;;)
     {
-      AppMethodBeat.o(60448);
+      AppMethodBeat.o(10940);
       return str1;
-      label72:
+      label74:
       str1 = str2;
       if (!paramContext.equals(localNotificationChannel.getName()))
       {
@@ -142,53 +141,52 @@ public class GoogleApiAvailability
   
   static void zza(Activity paramActivity, Dialog paramDialog, String paramString, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60446);
+    AppMethodBeat.i(10938);
     if ((paramActivity instanceof FragmentActivity))
     {
       paramActivity = ((FragmentActivity)paramActivity).getSupportFragmentManager();
       SupportErrorDialogFragment.newInstance(paramDialog, paramOnCancelListener).show(paramActivity, paramString);
-      AppMethodBeat.o(60446);
+      AppMethodBeat.o(10938);
       return;
     }
     paramActivity = paramActivity.getFragmentManager();
     ErrorDialogFragment.newInstance(paramDialog, paramOnCancelListener).show(paramActivity, paramString);
-    AppMethodBeat.o(60446);
+    AppMethodBeat.o(10938);
   }
   
-  @TargetApi(20)
   private final void zza(Context paramContext, int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
-    AppMethodBeat.i(60447);
+    AppMethodBeat.i(10939);
     if (paramInt == 18)
     {
       zza(paramContext);
-      AppMethodBeat.o(60447);
+      AppMethodBeat.o(10939);
       return;
     }
     if (paramPendingIntent == null)
     {
-      AppMethodBeat.o(60447);
+      AppMethodBeat.o(10939);
       return;
     }
-    String str = ConnectionErrorMessages.getErrorNotificationTitle(paramContext, paramInt);
-    Object localObject1 = ConnectionErrorMessages.getErrorNotificationMessage(paramContext, paramInt);
-    Object localObject2 = paramContext.getResources();
+    Object localObject = ConnectionErrorMessages.getErrorNotificationTitle(paramContext, paramInt);
+    String str = ConnectionErrorMessages.getErrorNotificationMessage(paramContext, paramInt);
+    Resources localResources = paramContext.getResources();
     NotificationManager localNotificationManager = (NotificationManager)paramContext.getSystemService("notification");
     if (DeviceProperties.isWearable(paramContext))
     {
       Preconditions.checkState(PlatformVersion.isAtLeastKitKatWatch());
-      localObject1 = new Notification.Builder(paramContext).setSmallIcon(paramContext.getApplicationInfo().icon).setPriority(2).setAutoCancel(true).setContentTitle(str).setStyle(new Notification.BigTextStyle().bigText((CharSequence)localObject1));
+      localObject = new Notification.Builder(paramContext).setSmallIcon(paramContext.getApplicationInfo().icon).setPriority(2).setAutoCancel(true).setContentTitle((CharSequence)localObject).setStyle(new Notification.BigTextStyle().bigText(str));
       if (DeviceProperties.isWearableWithoutPlayStore(paramContext))
       {
-        ((Notification.Builder)localObject1).addAction(2130838448, ((Resources)localObject2).getString(2131296301), paramPendingIntent);
+        ((Notification.Builder)localObject).addAction(R.drawable.common_full_open_on_phone, localResources.getString(R.string.common_open_on_phone), paramPendingIntent);
         if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
-          ((Notification.Builder)localObject1).setChannelId(zza(paramContext, localNotificationManager));
+          ((Notification.Builder)localObject).setChannelId(zza(paramContext, localNotificationManager));
         }
-        paramContext = ((Notification.Builder)localObject1).build();
+        paramContext = ((Notification.Builder)localObject).build();
         switch (paramInt)
         {
         default: 
-          label182:
+          label185:
           paramInt = 39789;
         }
       }
@@ -196,29 +194,25 @@ public class GoogleApiAvailability
     for (;;)
     {
       if (paramString != null) {
-        break label370;
+        break label363;
       }
       localNotificationManager.notify(paramInt, paramContext);
-      AppMethodBeat.o(60447);
+      AppMethodBeat.o(10939);
       return;
-      ((Notification.Builder)localObject1).setContentIntent(paramPendingIntent);
+      ((Notification.Builder)localObject).setContentIntent(paramPendingIntent);
       break;
-      localObject2 = new s.c(paramContext).Y(17301642).h(((Resources)localObject2).getString(2131296293)).g(System.currentTimeMillis()).z(true);
-      ((s.c)localObject2).ya = paramPendingIntent;
-      paramPendingIntent = ((s.c)localObject2).e(str).f((CharSequence)localObject1);
-      paramPendingIntent.yr = true;
-      paramPendingIntent = paramPendingIntent.a(new s.b().d((CharSequence)localObject1));
+      paramPendingIntent = new f.d(paramContext).eb(17301642).o(localResources.getString(R.string.common_google_play_services_notification_ticker)).bt(System.currentTimeMillis()).aC(true).a(paramPendingIntent).l((CharSequence)localObject).m(str).Dz().a(new f.b().k(str));
       if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
-        paramPendingIntent.mChannelId = zza(paramContext, localNotificationManager);
+        paramPendingIntent.ar(zza(paramContext, localNotificationManager));
       }
-      paramContext = paramPendingIntent.build();
-      break label182;
+      paramContext = paramPendingIntent.DA();
+      break label185;
       paramInt = 10436;
       GooglePlayServicesUtilLight.zzbt.set(false);
     }
-    label370:
+    label363:
     localNotificationManager.notify(paramString, paramInt, paramContext);
-    AppMethodBeat.o(60447);
+    AppMethodBeat.o(10939);
   }
   
   private final String zzb()
@@ -232,15 +226,15 @@ public class GoogleApiAvailability
   
   public Task<Void> checkApiAvailability(GoogleApi<?> paramGoogleApi, GoogleApi<?>... paramVarArgs)
   {
-    AppMethodBeat.i(60429);
+    AppMethodBeat.i(10921);
     paramGoogleApi = checkApiAvailabilityAndPackages(paramGoogleApi, paramVarArgs).continueWith(new zza(this));
-    AppMethodBeat.o(60429);
+    AppMethodBeat.o(10921);
     return paramGoogleApi;
   }
   
   public Task<Map<zzh<?>, String>> checkApiAvailabilityAndPackages(GoogleApi<?> paramGoogleApi, GoogleApi<?>... paramVarArgs)
   {
-    AppMethodBeat.i(60430);
+    AppMethodBeat.i(10922);
     Preconditions.checkNotNull(paramGoogleApi, "Requested API must not be null.");
     int j = paramVarArgs.length;
     int i = 0;
@@ -253,158 +247,158 @@ public class GoogleApiAvailability
     localArrayList.add(paramGoogleApi);
     localArrayList.addAll(Arrays.asList(paramVarArgs));
     paramGoogleApi = GoogleApiManager.zzbf().zza(localArrayList);
-    AppMethodBeat.o(60430);
+    AppMethodBeat.o(10922);
     return paramGoogleApi;
   }
   
   public int getApkVersion(Context paramContext)
   {
-    AppMethodBeat.i(60441);
+    AppMethodBeat.i(10933);
     int i = super.getApkVersion(paramContext);
-    AppMethodBeat.o(60441);
+    AppMethodBeat.o(10933);
     return i;
   }
   
   public int getClientVersion(Context paramContext)
   {
-    AppMethodBeat.i(60440);
+    AppMethodBeat.i(10932);
     int i = super.getClientVersion(paramContext);
-    AppMethodBeat.o(60440);
+    AppMethodBeat.o(10932);
     return i;
   }
   
   public Dialog getErrorDialog(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(60418);
+    AppMethodBeat.i(10910);
     paramActivity = getErrorDialog(paramActivity, paramInt1, paramInt2, null);
-    AppMethodBeat.o(60418);
+    AppMethodBeat.o(10910);
     return paramActivity;
   }
   
   public Dialog getErrorDialog(Activity paramActivity, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60419);
+    AppMethodBeat.i(10911);
     paramActivity = zza(paramActivity, paramInt1, DialogRedirect.getInstance(paramActivity, getErrorResolutionIntent(paramActivity, paramInt1, "d"), paramInt2), paramOnCancelListener);
-    AppMethodBeat.o(60419);
+    AppMethodBeat.o(10911);
     return paramActivity;
   }
   
   @Deprecated
   public Intent getErrorResolutionIntent(int paramInt)
   {
-    AppMethodBeat.i(60435);
+    AppMethodBeat.i(10927);
     Intent localIntent = super.getErrorResolutionIntent(paramInt);
-    AppMethodBeat.o(60435);
+    AppMethodBeat.o(10927);
     return localIntent;
   }
   
   public Intent getErrorResolutionIntent(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(60436);
+    AppMethodBeat.i(10928);
     paramContext = super.getErrorResolutionIntent(paramContext, paramInt, paramString);
-    AppMethodBeat.o(60436);
+    AppMethodBeat.o(10928);
     return paramContext;
   }
   
   public PendingIntent getErrorResolutionPendingIntent(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(60437);
+    AppMethodBeat.i(10929);
     paramContext = super.getErrorResolutionPendingIntent(paramContext, paramInt1, paramInt2);
-    AppMethodBeat.o(60437);
+    AppMethodBeat.o(10929);
     return paramContext;
   }
   
   public PendingIntent getErrorResolutionPendingIntent(Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(60439);
+    AppMethodBeat.i(10931);
     paramContext = super.getErrorResolutionPendingIntent(paramContext, paramInt1, paramInt2, paramString);
-    AppMethodBeat.o(60439);
+    AppMethodBeat.o(10931);
     return paramContext;
   }
   
   public PendingIntent getErrorResolutionPendingIntent(Context paramContext, ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60438);
+    AppMethodBeat.i(10930);
     if (paramConnectionResult.hasResolution())
     {
       paramContext = paramConnectionResult.getResolution();
-      AppMethodBeat.o(60438);
+      AppMethodBeat.o(10930);
       return paramContext;
     }
     paramContext = getErrorResolutionPendingIntent(paramContext, paramConnectionResult.getErrorCode(), 0);
-    AppMethodBeat.o(60438);
+    AppMethodBeat.o(10930);
     return paramContext;
   }
   
   public final String getErrorString(int paramInt)
   {
-    AppMethodBeat.i(60444);
+    AppMethodBeat.i(10936);
     String str = super.getErrorString(paramInt);
-    AppMethodBeat.o(60444);
+    AppMethodBeat.o(10936);
     return str;
   }
   
   public int isGooglePlayServicesAvailable(Context paramContext)
   {
-    AppMethodBeat.i(60432);
+    AppMethodBeat.i(10924);
     int i = super.isGooglePlayServicesAvailable(paramContext);
-    AppMethodBeat.o(60432);
+    AppMethodBeat.o(10924);
     return i;
   }
   
   public int isGooglePlayServicesAvailable(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(60433);
+    AppMethodBeat.i(10925);
     paramInt = super.isGooglePlayServicesAvailable(paramContext, paramInt);
-    AppMethodBeat.o(60433);
+    AppMethodBeat.o(10925);
     return paramInt;
   }
   
   public boolean isPlayServicesPossiblyUpdating(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(60442);
+    AppMethodBeat.i(10934);
     boolean bool = super.isPlayServicesPossiblyUpdating(paramContext, paramInt);
-    AppMethodBeat.o(60442);
+    AppMethodBeat.o(10934);
     return bool;
   }
   
   public boolean isPlayStorePossiblyUpdating(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(60443);
+    AppMethodBeat.i(10935);
     boolean bool = super.isPlayStorePossiblyUpdating(paramContext, paramInt);
-    AppMethodBeat.o(60443);
+    AppMethodBeat.o(10935);
     return bool;
   }
   
   public final boolean isUserResolvableError(int paramInt)
   {
-    AppMethodBeat.i(60434);
+    AppMethodBeat.i(10926);
     boolean bool = super.isUserResolvableError(paramInt);
-    AppMethodBeat.o(60434);
+    AppMethodBeat.o(10926);
     return bool;
   }
   
   public Task<Void> makeGooglePlayServicesAvailable(Activity paramActivity)
   {
-    AppMethodBeat.i(60417);
+    AppMethodBeat.i(10909);
     Preconditions.checkMainThread("makeGooglePlayServicesAvailable must be called from the main thread");
     int i = isGooglePlayServicesAvailable(paramActivity);
     if (i == 0)
     {
       paramActivity = Tasks.forResult(null);
-      AppMethodBeat.o(60417);
+      AppMethodBeat.o(10909);
       return paramActivity;
     }
     paramActivity = zzbt.zzd(paramActivity);
     paramActivity.zzb(new ConnectionResult(i, null), 0);
     paramActivity = paramActivity.getTask();
-    AppMethodBeat.o(60417);
+    AppMethodBeat.o(10909);
     return paramActivity;
   }
   
   public GooglePlayServicesUpdatedReceiver registerCallbackOnUpdate(Context paramContext, GooglePlayServicesUpdatedReceiver.Callback paramCallback)
   {
-    AppMethodBeat.i(60428);
+    AppMethodBeat.i(10920);
     IntentFilter localIntentFilter = new IntentFilter("android.intent.action.PACKAGE_ADDED");
     localIntentFilter.addDataScheme("package");
     GooglePlayServicesUpdatedReceiver localGooglePlayServicesUpdatedReceiver = new GooglePlayServicesUpdatedReceiver(paramCallback);
@@ -414,89 +408,88 @@ public class GoogleApiAvailability
     {
       paramCallback.zzv();
       localGooglePlayServicesUpdatedReceiver.unregister();
-      AppMethodBeat.o(60428);
+      AppMethodBeat.o(10920);
       return null;
     }
-    AppMethodBeat.o(60428);
+    AppMethodBeat.o(10920);
     return localGooglePlayServicesUpdatedReceiver;
   }
   
-  @TargetApi(26)
   public void setDefaultNotificationChannelId(Context arg1, String paramString)
   {
-    AppMethodBeat.i(60431);
+    AppMethodBeat.i(10923);
     if (PlatformVersion.isAtLeastO()) {
       Preconditions.checkNotNull(((NotificationManager)???.getSystemService("notification")).getNotificationChannel(paramString));
     }
     synchronized (mLock)
     {
       this.zzat = paramString;
-      AppMethodBeat.o(60431);
+      AppMethodBeat.o(10923);
       return;
     }
   }
   
   public boolean showErrorDialogFragment(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(60420);
+    AppMethodBeat.i(10912);
     boolean bool = showErrorDialogFragment(paramActivity, paramInt1, paramInt2, null);
-    AppMethodBeat.o(60420);
+    AppMethodBeat.o(10912);
     return bool;
   }
   
   public boolean showErrorDialogFragment(Activity paramActivity, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60422);
+    AppMethodBeat.i(10914);
     Dialog localDialog = getErrorDialog(paramActivity, paramInt1, paramInt2, paramOnCancelListener);
     if (localDialog == null)
     {
-      AppMethodBeat.o(60422);
+      AppMethodBeat.o(10914);
       return false;
     }
     zza(paramActivity, localDialog, "GooglePlayServicesErrorDialog", paramOnCancelListener);
-    AppMethodBeat.o(60422);
+    AppMethodBeat.o(10914);
     return true;
   }
   
   public boolean showErrorDialogFragment(Activity paramActivity, LifecycleFragment paramLifecycleFragment, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60421);
+    AppMethodBeat.i(10913);
     paramLifecycleFragment = zza(paramActivity, paramInt1, DialogRedirect.getInstance(paramLifecycleFragment, getErrorResolutionIntent(paramActivity, paramInt1, "d"), paramInt2), paramOnCancelListener);
     if (paramLifecycleFragment == null)
     {
-      AppMethodBeat.o(60421);
+      AppMethodBeat.o(10913);
       return false;
     }
     zza(paramActivity, paramLifecycleFragment, "GooglePlayServicesErrorDialog", paramOnCancelListener);
-    AppMethodBeat.o(60421);
+    AppMethodBeat.o(10913);
     return true;
   }
   
   public void showErrorNotification(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(60423);
+    AppMethodBeat.i(10915);
     showErrorNotification(paramContext, paramInt, null);
-    AppMethodBeat.o(60423);
+    AppMethodBeat.o(10915);
   }
   
   public void showErrorNotification(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(60424);
+    AppMethodBeat.i(10916);
     zza(paramContext, paramInt, paramString, getErrorResolutionPendingIntent(paramContext, paramInt, 0, "n"));
-    AppMethodBeat.o(60424);
+    AppMethodBeat.o(10916);
   }
   
   public void showErrorNotification(Context paramContext, ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60425);
+    AppMethodBeat.i(10917);
     PendingIntent localPendingIntent = getErrorResolutionPendingIntent(paramContext, paramConnectionResult);
     zza(paramContext, paramConnectionResult.getErrorCode(), null, localPendingIntent);
-    AppMethodBeat.o(60425);
+    AppMethodBeat.o(10917);
   }
   
   public Dialog showUpdatingDialog(Activity paramActivity, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60427);
+    AppMethodBeat.i(10919);
     Object localObject = new ProgressBar(paramActivity, null, 16842874);
     ((ProgressBar)localObject).setIndeterminate(true);
     ((ProgressBar)localObject).setVisibility(0);
@@ -506,32 +499,31 @@ public class GoogleApiAvailability
     localBuilder.setPositiveButton("", null);
     localObject = localBuilder.create();
     zza(paramActivity, (Dialog)localObject, "GooglePlayServicesUpdatingDialog", paramOnCancelListener);
-    AppMethodBeat.o(60427);
+    AppMethodBeat.o(10919);
     return localObject;
   }
   
   public boolean showWrappedErrorNotification(Context paramContext, ConnectionResult paramConnectionResult, int paramInt)
   {
-    AppMethodBeat.i(60426);
+    AppMethodBeat.i(10918);
     PendingIntent localPendingIntent = getErrorResolutionPendingIntent(paramContext, paramConnectionResult);
     if (localPendingIntent != null)
     {
       zza(paramContext, paramConnectionResult.getErrorCode(), null, GoogleApiActivity.zza(paramContext, localPendingIntent, paramInt));
-      AppMethodBeat.o(60426);
+      AppMethodBeat.o(10918);
       return true;
     }
-    AppMethodBeat.o(60426);
+    AppMethodBeat.o(10918);
     return false;
   }
   
   final void zza(Context paramContext)
   {
-    AppMethodBeat.i(60449);
+    AppMethodBeat.i(10941);
     new zza(paramContext).sendEmptyMessageDelayed(1, 120000L);
-    AppMethodBeat.o(60449);
+    AppMethodBeat.o(10941);
   }
   
-  @SuppressLint({"HandlerLeak"})
   final class zza
     extends Handler
   {
@@ -541,7 +533,7 @@ public class GoogleApiAvailability
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(60416);
+      AppMethodBeat.i(10908);
       int i;
       switch (paramMessage.what)
       {
@@ -551,18 +543,18 @@ public class GoogleApiAvailability
       }
       do
       {
-        AppMethodBeat.o(60416);
+        AppMethodBeat.o(10908);
         return;
         i = GoogleApiAvailability.this.isGooglePlayServicesAvailable(this.zzau);
       } while (!GoogleApiAvailability.this.isUserResolvableError(i));
       GoogleApiAvailability.this.showErrorNotification(this.zzau, i);
-      AppMethodBeat.o(60416);
+      AppMethodBeat.o(10908);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.GoogleApiAvailability
  * JD-Core Version:    0.7.0.1
  */

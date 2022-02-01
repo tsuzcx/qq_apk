@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="640.0px" android:layout_height="906.0px"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/a49" android:layout_width="640.0px" android:layout_height="90.0px" android:layout_alignParentTop="true" />
+    <View android:background="@drawable/a48" android:layout_width="640.0px" android:layout_height="818.0px" android:layout_alignParentBottom="true" />
+    <ImageView android:layout_width="640.0px" android:layout_height="86.0px" android:layout_marginTop="88.0px" android:src="@drawable/dz6" android:scaleType="fitXY" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/gh1" android:background="@color/um" android:padding="10.0px" android:layout_width="400.0px" android:layout_height="400.0px" android:layout_marginTop="218.0px" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/gh0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <ImageView android:background="@drawable/dz8" android:layout_width="90.0px" android:layout_height="90.0px" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="40.0px" android:textColor="@color/uj" android:ellipsize="end" android:id="@id/gh9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="208.0px" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="34.0px" android:textColor="@color/uj" android:id="@id/gh7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="146.0px" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="31.0px" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="34.0px" android:layout_height="34.0px" android:src="@drawable/dz9" android:scaleType="fitCenter" />
+        <TextView android:textSize="30.0px" android:textColor="@color/ug" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0px" android:text="@string/e7g" />
+    </LinearLayout>
+</RelativeLayout>

@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class s_campus_qz
   extends JceStruct
 {
-  public int is_campus_qz_bar;
-  public int num_feeds;
-  public int num_msg;
+  public int is_campus_qz_bar = 0;
+  public int num_feeds = 0;
+  public int num_msg = 0;
   
   public s_campus_qz() {}
   
@@ -36,7 +36,7 @@ public final class s_campus_qz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_campus_qz
  * JD-Core Version:    0.7.0.1
  */

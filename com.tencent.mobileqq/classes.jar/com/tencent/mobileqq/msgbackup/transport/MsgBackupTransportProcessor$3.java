@@ -1,47 +1,60 @@
 package com.tencent.mobileqq.msgbackup.transport;
 
-import augd;
-import augo;
-import aujh;
-import aujq;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class MsgBackupTransportProcessor$3
+class MsgBackupTransportProcessor$3
   implements Runnable
 {
-  public MsgBackupTransportProcessor$3(aujh paramaujh, String paramString) {}
+  MsgBackupTransportProcessor$3(MsgBackupTransportProcessor paramMsgBackupTransportProcessor, String paramString) {}
   
   public void run()
   {
-    augo.a().g();
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    aujh.a(this.this$0, localBaseApplication);
-    this.this$0.jdField_a_of_type_Int = 2;
-    this.this$0.jdField_a_of_type_Long = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.createSession(2, Long.parseLong(this.a), this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupNotifier);
-    if (this.this$0.a())
+    MsgBackupManager.a().j();
+    Object localObject = BaseApplication.getContext();
+    MsgBackupTransportProcessor.a(this.this$0, (Context)localObject);
+    this.this$0.c = 2;
+    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
+    localObject = this.this$0;
+    ((MsgBackupTransportProcessor)localObject).k = ((MsgBackupTransportProcessor)localObject).a.createSession(2, Long.parseLong(this.a), i, this.this$0.b);
+    if (this.this$0.j())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "confirmOnlinePush11b MBRROLE_SERVER session is invalidate panic error!");
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "confirmOnlinePush11b: backup session is invalidate panic error!");
       }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "createSession end, session = " + this.this$0.jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("confirmOnlinePush11b: backup createSession = ");
+      ((StringBuilder)localObject).append(this.this$0.k);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    this.this$0.c = new MsgBackupEndPoint();
-    this.this$0.d = new MsgBackupEndPoint();
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.start(this.this$0.jdField_a_of_type_Long, this.this$0.c, this.this$0.d);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "after start called with ret = " + i + ", ipv4 = " + aujq.a(this.this$0.c.ipv4) + ", udpport = " + this.this$0.c.port + ", tcpport = " + this.this$0.d.port);
+    i = this.this$0.a.start(this.this$0.k, this.this$0.g, this.this$0.h, this.this$0.i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("confirmOnlinePush11b: backup start ret = ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", ip = ");
+      ((StringBuilder)localObject).append(this.this$0.g[0]);
+      ((StringBuilder)localObject).append(", udpport = ");
+      ((StringBuilder)localObject).append(this.this$0.h);
+      ((StringBuilder)localObject).append(", tcpport = ");
+      ((StringBuilder)localObject).append(this.this$0.i);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    augd.a().a();
+    MsgBackupAuthProcessor.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor.3
  * JD-Core Version:    0.7.0.1
  */

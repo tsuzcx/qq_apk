@@ -1,116 +1,44 @@
 package com.tencent.mm.network;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.o;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
 
-public final class z
+public abstract interface z
 {
-  private static final byte[] ger;
-  public m ges;
+  public abstract void Rx(String paramString);
   
-  static
-  {
-    AppMethodBeat.i(58643);
-    ger = o.fT(7);
-    AppMethodBeat.o(58643);
-  }
+  public abstract void Ry(String paramString);
   
-  public final void onPush(int paramInt, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(58642);
-    StringBuilder localStringBuilder = new StringBuilder("onNotify, datalen=");
-    int i;
-    if (paramArrayOfByte == null)
-    {
-      i = 0;
-      ab.i("MicroMsg.MMNativeNetNotifyAdapter", i + " cmd= " + paramInt);
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(58642);
-      return;
-      i = paramArrayOfByte.length;
-      break;
-      ab.i("MicroMsg.MMNativeNetNotifyAdapter", "old notify");
-      this.ges.e(138, ger);
-      AppMethodBeat.o(58642);
-      return;
-      ab.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush new notify [%s]", new Object[] { bo.cd(paramArrayOfByte) });
-      this.ges.e(138, paramArrayOfByte);
-      AppMethodBeat.o(58642);
-      return;
-      ab.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do synccheck");
-      this.ges.e(39, null);
-      AppMethodBeat.o(58642);
-      return;
-      AppMethodBeat.o(58642);
-      return;
-      this.ges.e(174, paramArrayOfByte);
-      AppMethodBeat.o(58642);
-      return;
-      if (paramArrayOfByte.length > 0)
-      {
-        this.ges.e(10, paramArrayOfByte);
-        AppMethodBeat.o(58642);
-        return;
-        AppMethodBeat.o(58642);
-        return;
-        ab.i("MicroMsg.MMNativeNetNotifyAdapter", "MM_PKT_VOIP_REQ");
-        if (paramArrayOfByte.length > 0)
-        {
-          this.ges.e(120, paramArrayOfByte);
-          AppMethodBeat.o(58642);
-          return;
-          ab.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush MM_PKT_PUSH_DATA_REQ");
-          if (paramArrayOfByte.length > 0)
-          {
-            this.ges.e(268369921, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            this.ges.e(1000000205, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            this.ges.e(192, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            ab.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do oob do notify");
-            this.ges.e(268369923, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            ab.i("MicroMsg.MMNativeNetNotifyAdapter", "jacks do voice notify PUSH");
-            this.ges.e(241, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            ab.i("MicroMsg.MMNativeNetNotifyAdapter", "pandy do gamesync notify");
-            this.ges.e(244, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            ab.i("MicroMsg.MMNativeNetNotifyAdapter", "hy: on notify new year shake");
-            this.ges.e(319, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            ab.i("MicroMsg.MMNativeNetNotifyAdapter", "on notify F2F data");
-            this.ges.e(311, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            ab.i("MicroMsg.MMNativeNetNotifyAdapter", "summerbadcr on silence notify");
-            this.ges.e(318, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            this.ges.e(271, paramArrayOfByte);
-            AppMethodBeat.o(58642);
-            return;
-            this.ges.e(3941, paramArrayOfByte);
-          }
-        }
-      }
-    }
-  }
+  public abstract int bRd();
+  
+  public abstract String bRe();
+  
+  public abstract Map<String, List<String>> bRf();
+  
+  public abstract String bRg();
+  
+  public abstract int bRh();
+  
+  public abstract int bk(String paramString, int paramInt);
+  
+  public abstract void disconnect();
+  
+  public abstract String getHeaderField(String paramString);
+  
+  public abstract String getHost();
+  
+  public abstract InputStream getInputStream();
+  
+  public abstract int getResponseCode();
+  
+  public abstract void hB(boolean paramBoolean);
+  
+  public abstract void setRequestProperty(String paramString1, String paramString2);
+  
+  public abstract void xx(int paramInt);
+  
+  public abstract void xy(int paramInt);
 }
 
 

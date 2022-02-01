@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/b8b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/hy8" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager android:id="@id/hyo" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/hg" />
+    </FrameLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout android:id="@id/dj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/j2c" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/jq6">
+            <RelativeLayout android:id="@id/fbg" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip">
+                <com.tencent.widget.FadeIconImageView android:id="@id/i08" android:layout_width="18.0dip" android:layout_height="29.0dip" android:scaleType="center" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <include android:id="@id/jts" android:clickable="true" android:layout_width="0.0dip" android:layout_height="@dimen/atz" android:layout_marginRight="13.0dip" android:layout_weight="1.0" android:layout_centerVertical="true" layout="@layout/a98" />
+            <FrameLayout android:id="@id/nt2" android:paddingRight="7.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView android:layout_gravity="center" android:id="@id/nt1" android:layout_width="27.0dip" android:layout_height="27.0dip" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/lwb" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="7.0dip">
+                <ImageView android:layout_gravity="center" android:id="@id/hzk" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/dq8" android:scaleType="center" />
+                <TextView android:textSize="8.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/f1_" android:background="@drawable/dq9" android:layout_width="wrap_content" android:layout_height="12.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.5dip" android:minWidth="12.0dip" android:text="99+" android:includeFontPadding="false" android:lineSpacingExtra="0.0dip" />
+            </FrameLayout>
+            <ImageView android:id="@id/i07" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="13.5dip" android:src="@drawable/dp3" android:scaleType="center" android:layout_centerVertical="true" />
+        </LinearLayout>
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator android:textSize="18.0sp" android:id="@id/ixv" android:visibility="gone" android:layout_width="220.0dip" android:layout_height="fill_parent" android:layout_centerHorizontal="true" app:indicatorHeight="4.0dip" app:slidingCheckTextColor="@color/aav" app:slidingIndicatorColor="@color/aau" app:slidingTabPaddingLeftRight="17.0dip" app:slidingUncheckTextColor="@color/aaw" app:underlineColor="#00ffffff" app:underlineHeight="0.0dip" />
+        <include android:id="@id/hy6" android:layout_width="fill_parent" android:layout_height="@dimen/ate" android:layout_below="@id/jo9" layout="@layout/a8p" />
+        <include android:id="@id/hyy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/atf" android:layout_below="@id/jo9" layout="@layout/a8m" />
+        <RelativeLayout android:id="@id/o1k" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bq5" android:layout_below="@id/jq6">
+            <ImageView android:id="@id/nup" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="18.0dip" android:src="@drawable/dyi" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/o1j" android:layout_width="58.0dip" android:layout_height="36.0dip" android:src="@drawable/iab" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/mki" android:visibility="invisible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/ia2" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ViewStub android:id="@id/hzs" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:id="@id/i09" android:background="@drawable/f3h" android:paddingLeft="10.0dip" android:paddingTop="15.0dip" android:paddingRight="10.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

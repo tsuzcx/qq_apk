@@ -13,8 +13,8 @@ public class DownloadImageTask
 {
   private static final String TAG = "DownloadImageTask";
   private static ImageManagerEnv.ImageDownloaderListener imageDownloaderListener;
-  private static ConcurrentHashMap<String, DownloadImageTask> mDownloadTaskRecord;
-  private static IDownloader mImageDownloader = null;
+  private static ConcurrentHashMap<String, DownloadImageTask> mDownloadTaskRecord = new ConcurrentHashMap();
+  private static IDownloader mImageDownloader;
   private static int mObjectPoolSize;
   private static DownloadImageTask sPool;
   private static final Object sPoolSync;
@@ -22,7 +22,6 @@ public class DownloadImageTask
   
   static
   {
-    mDownloadTaskRecord = new ConcurrentHashMap();
     imageDownloaderListener = new DownloadImageTask.1();
     initDownloader();
     sPool = null;
@@ -57,6 +56,10 @@ public class DownloadImageTask
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   protected static IDownloader getDownloader()
@@ -71,38 +74,40 @@ public class DownloadImageTask
   
   public static DownloadImageTask obtain(ImageKey paramImageKey)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        DownloadImageTask localDownloadImageTask = sPool;
-        sPool = sPool.next;
-        localDownloadImageTask.next = null;
-        mObjectPoolSize -= 1;
-        localDownloadImageTask.setImageKey(paramImageKey);
-        return localDownloadImageTask;
+        if (sPool != null)
+        {
+          DownloadImageTask localDownloadImageTask = sPool;
+          sPool = sPool.next;
+          localDownloadImageTask.next = null;
+          mObjectPoolSize -= 1;
+          localDownloadImageTask.setImageKey(paramImageKey);
+          return localDownloadImageTask;
+        }
       }
-      return new DownloadImageTask(paramImageKey);
     }
+    return new DownloadImageTask(paramImageKey);
   }
   
   public static DownloadImageTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        DownloadImageTask localDownloadImageTask = sPool;
-        sPool = sPool.next;
-        localDownloadImageTask.next = null;
-        mObjectPoolSize -= 1;
-        localDownloadImageTask.setImageTask(paramImageTask);
-        return localDownloadImageTask;
+        if (sPool != null)
+        {
+          DownloadImageTask localDownloadImageTask = sPool;
+          sPool = sPool.next;
+          localDownloadImageTask.next = null;
+          mObjectPoolSize -= 1;
+          localDownloadImageTask.setImageTask(paramImageTask);
+          return localDownloadImageTask;
+        }
       }
-      return new DownloadImageTask(paramImageTask);
     }
+    return new DownloadImageTask(paramImageTask);
   }
   
   public void excuteTask()
@@ -128,33 +133,39 @@ public class DownloadImageTask
       if (this.mImageKey.options != null) {
         this.mImageKey.options.errCode = ImageManager.getErrorString(this.mImageKey, 801);
       }
-      ImageManagerLog.e("DownloadImageTask", "image canDownload=" + bool + ", url=" + this.mImageKey.url);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("image canDownload=");
+      ((StringBuilder)localObject1).append(bool);
+      ((StringBuilder)localObject1).append(", url=");
+      ((StringBuilder)localObject1).append(this.mImageKey.url);
+      ImageManagerLog.e("DownloadImageTask", ((StringBuilder)localObject1).toString());
       setResult(1, new Object[] { this.mImageKey.url });
       return;
     }
     if (this.mImageKey.isNetworkUrl)
     {
-      if (this.mImageKey.options == null) {}
-      for (bool = true;; bool = this.mImageKey.options.priority)
-      {
-        Object localObject2 = this.mImageKey.url;
-        localObject1 = localObject2;
-        if (ImageManagerEnv.g().enableSocketMonitor()) {
-          localObject1 = ImageManagerEnv.g().getSocketMonitorUrl((String)localObject2, this.mImageKey.options);
-        }
-        localObject2 = localObject1;
-        if (!ImageManagerEnv.g().isSupportSharpp())
-        {
-          localObject2 = SharpPUtils.getWebpUrl((String)localObject1);
-          ImageManagerLog.w("DownloadImageTask", "sharpp is not support,transfer to webp url");
-        }
-        mDownloadTaskRecord.put(localObject2, this);
-        ImageTaskTracer.addImageDownloadRecord(this.mImageKey.urlKey);
-        ImageTracer.startDownlaod(this.mImageKey.url);
-        ProgressTracer.print(1, this.mImageKey.urlKey);
-        mImageDownloader.download((String)localObject2, this.mImageKey.filePath, bool);
-        return;
+      if (this.mImageKey.options == null) {
+        bool = true;
+      } else {
+        bool = this.mImageKey.options.priority;
       }
+      Object localObject2 = this.mImageKey.url;
+      localObject1 = localObject2;
+      if (ImageManagerEnv.g().enableSocketMonitor()) {
+        localObject1 = ImageManagerEnv.g().getSocketMonitorUrl((String)localObject2, this.mImageKey.options);
+      }
+      localObject2 = localObject1;
+      if (!ImageManagerEnv.g().isSupportSharpp())
+      {
+        localObject2 = SharpPUtils.getWebpUrl((String)localObject1);
+        ImageManagerLog.w("DownloadImageTask", "sharpp is not support,transfer to webp url");
+      }
+      mDownloadTaskRecord.put(localObject2, this);
+      ImageTaskTracer.addImageDownloadRecord(this.mImageKey.urlKey);
+      ImageTracer.startDownlaod(this.mImageKey.url);
+      ProgressTracer.print(1, this.mImageKey.urlKey);
+      mImageDownloader.download((String)localObject2, this.mImageKey.filePath, bool);
+      return;
     }
     if ((ImageManagerEnv.g().needCheckAvatar()) && (this.mImageKey.isAvatarUrl()))
     {
@@ -197,7 +208,7 @@ public class DownloadImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.DownloadImageTask
  * JD-Core Version:    0.7.0.1
  */

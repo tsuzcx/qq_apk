@@ -10,14 +10,14 @@ class QZoneShareActivity$14
   
   public void run()
   {
-    int i = this.this$0.b();
-    int j = this.this$0.a();
+    int i = this.this$0.getContentWordCount();
+    int j = this.this$0.getMaxWordCnt();
     ThreadManager.getUIHandler().post(new QZoneShareActivity.14.1(this, i - j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.14
  * JD-Core Version:    0.7.0.1
  */

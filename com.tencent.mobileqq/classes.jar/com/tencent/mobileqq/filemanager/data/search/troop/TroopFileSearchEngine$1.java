@@ -1,26 +1,27 @@
 package com.tencent.mobileqq.filemanager.data.search.troop;
 
-import arcx;
-import ardp;
+import com.tencent.mobileqq.filemanager.data.search.ISearchViewBinder;
 
-public class TroopFileSearchEngine$1
+class TroopFileSearchEngine$1
   implements Runnable
 {
-  public TroopFileSearchEngine$1(ardp paramardp) {}
+  TroopFileSearchEngine$1(TroopFileSearchEngine paramTroopFileSearchEngine) {}
   
   public void run()
   {
-    if (!ardp.a(this.this$0)) {
+    if (!TroopFileSearchEngine.a(this.this$0)) {
       return;
     }
-    ardp.a(this.this$0);
-    ardp.a(this.this$0, ardp.a(this.this$0).b());
-    ardp.a(this.this$0, ardp.a(this.this$0));
+    TroopFileSearchEngine.b(this.this$0);
+    TroopFileSearchEngine localTroopFileSearchEngine = this.this$0;
+    TroopFileSearchEngine.a(localTroopFileSearchEngine, TroopFileSearchEngine.c(localTroopFileSearchEngine).a());
+    localTroopFileSearchEngine = this.this$0;
+    TroopFileSearchEngine.b(localTroopFileSearchEngine, TroopFileSearchEngine.d(localTroopFileSearchEngine));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

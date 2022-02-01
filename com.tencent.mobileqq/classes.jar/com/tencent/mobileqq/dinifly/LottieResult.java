@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.util.Arrays;
 
 public final class LottieResult<V>
@@ -24,15 +24,16 @@ public final class LottieResult<V>
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof LottieResult)) {
-        return false;
-      }
-      paramObject = (LottieResult)paramObject;
-    } while ((getValue() != null) && (getValue().equals(paramObject.getValue())));
+    }
+    if (!(paramObject instanceof LottieResult)) {
+      return false;
+    }
+    paramObject = (LottieResult)paramObject;
+    if ((getValue() != null) && (getValue().equals(paramObject.getValue()))) {
+      return true;
+    }
     if ((getException() != null) && (paramObject.getException() != null)) {
       return getException().toString().equals(getException().toString());
     }

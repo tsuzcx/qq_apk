@@ -5,7 +5,6 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.wearable.ChannelApi.ChannelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
 final class zzan
   extends zzn<Status>
@@ -13,13 +12,13 @@ final class zzan
   private final String zzce;
   private ChannelApi.ChannelListener zzcf;
   
-  zzan(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener, @Nullable String paramString)
+  zzan(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener, String paramString)
   {
     super(paramGoogleApiClient);
-    AppMethodBeat.i(71004);
+    AppMethodBeat.i(100987);
     this.zzcf = ((ChannelApi.ChannelListener)Preconditions.checkNotNull(paramChannelListener));
     this.zzce = paramString;
-    AppMethodBeat.o(71004);
+    AppMethodBeat.o(100987);
   }
 }
 

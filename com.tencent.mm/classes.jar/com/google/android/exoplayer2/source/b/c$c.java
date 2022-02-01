@@ -2,65 +2,65 @@ package com.google.android.exoplayer2.source.b;
 
 import android.os.SystemClock;
 import com.google.android.exoplayer2.g.b;
-import com.google.android.exoplayer2.source.o;
+import com.google.android.exoplayer2.source.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$c
   extends b
 {
-  private int aRn;
+  private int dbk;
   
-  public c$c(o paramo, int[] paramArrayOfInt)
+  public c$c(q paramq, int[] paramArrayOfInt)
   {
-    super(paramo, paramArrayOfInt);
-    AppMethodBeat.i(125901);
-    this.aRn = j(paramo.aQc[0]);
-    AppMethodBeat.o(125901);
+    super(paramq, paramArrayOfInt);
+    AppMethodBeat.i(62825);
+    this.dbk = j(paramq.cZY[0]);
+    AppMethodBeat.o(62825);
   }
   
-  public final void Y(long paramLong)
+  public final int Tq()
   {
-    AppMethodBeat.i(125902);
+    return 0;
+  }
+  
+  public final Object Tr()
+  {
+    return null;
+  }
+  
+  public final void cw(long paramLong)
+  {
+    AppMethodBeat.i(62826);
     paramLong = SystemClock.elapsedRealtime();
-    if (!k(this.aRn, paramLong))
+    if (!l(this.dbk, paramLong))
     {
-      AppMethodBeat.o(125902);
+      AppMethodBeat.o(62826);
       return;
     }
     int i = this.length - 1;
     while (i >= 0)
     {
-      if (!k(i, paramLong))
+      if (!l(i, paramLong))
       {
-        this.aRn = i;
-        AppMethodBeat.o(125902);
+        this.dbk = i;
+        AppMethodBeat.o(62826);
         return;
       }
       i -= 1;
     }
     IllegalStateException localIllegalStateException = new IllegalStateException();
-    AppMethodBeat.o(125902);
+    AppMethodBeat.o(62826);
     throw localIllegalStateException;
   }
   
-  public final int pv()
+  public final int getSelectedIndex()
   {
-    return this.aRn;
-  }
-  
-  public final int pw()
-  {
-    return 0;
-  }
-  
-  public final Object px()
-  {
-    return null;
+    return this.dbk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/jf3" android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/adk" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ScrollView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" android:text="@string/egl" style="@style/tk" />
+                <LinearLayout android:orientation="vertical" android:id="@id/fiq" android:background="@drawable/dw1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="0.0dip">
+                    <com.tenpay.sdk.view.SixPasswdDialogEditText android:id="@id/iwz" android:visibility="gone" style="@style/sp" />
+                    <com.tenpay.sdk.view.ClearableEditText android:id="@id/fai" android:hint="@string/ec5" android:inputType="textPassword" style="@style/sp" />
+                </LinearLayout>
+                <Button android:id="@id/jew" android:layout_marginLeft="12.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="12.0dip" android:text="@string/e1g" style="@style/su" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/je9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

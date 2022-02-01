@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.webview;
 
-import beep;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
-public class AbsWebView$WebViewClientImpl$1
+class AbsWebView$WebViewClientImpl$1
   implements Runnable
 {
-  public AbsWebView$WebViewClientImpl$1(beep parambeep, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  AbsWebView$WebViewClientImpl$1(AbsWebView.WebViewClientImpl paramWebViewClientImpl, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
+    WebViewPluginEngine localWebViewPluginEngine = this.a;
+    if (localWebViewPluginEngine != null) {
+      localWebViewPluginEngine.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.AbsWebView.WebViewClientImpl.1
  * JD-Core Version:    0.7.0.1
  */

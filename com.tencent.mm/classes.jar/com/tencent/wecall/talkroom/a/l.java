@@ -1,64 +1,82 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.af;
-import com.tencent.pb.common.b.a.a.i;
+import com.tencent.pb.common.b.a.a.a.ah;
+import com.tencent.pb.common.b.a.a.a.ap;
+import com.tencent.pb.common.b.a.a.a.i;
 import com.tencent.pb.common.b.d;
+import com.tencent.pb.common.c.b;
+import com.tencent.wecall.talkroom.model.c;
+import java.util.List;
 
 public final class l
   extends d
 {
-  public int nTj;
-  public String nuW;
-  public long tFh;
+  public String IMR;
+  public int JMX;
+  public long UGt;
   
-  public l(String paramString, int paramInt1, long paramLong, int paramInt2)
+  public l(String paramString, int paramInt, long paramLong, List<a.ap> paramList)
   {
-    AppMethodBeat.i(128028);
-    com.tencent.pb.common.c.c.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSwitchVideoGroup" });
+    AppMethodBeat.i(212274);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSubscribeScreenSharingVideo" });
     a.i locali = new a.i();
     try
     {
       locali.groupId = paramString;
-      this.nuW = paramString;
-      locali.nMZ = paramInt1;
-      this.nTj = paramInt1;
-      locali.nNa = paramLong;
-      this.tFh = paramLong;
-      locali.action = paramInt2;
-      locali.timestamp = System.currentTimeMillis();
-      this.mNetType = 3;
-      this.Bda = com.tencent.wecall.talkroom.model.c.dXv().axs(paramString);
-      c(243, locali);
-      AppMethodBeat.o(128028);
-      return;
+      this.IMR = paramString;
+      locali.roomId = paramInt;
+      this.JMX = paramInt;
+      locali.Hnt = paramLong;
+      this.UGt = paramLong;
+      i = paramList.size();
+      arrayOfap = null;
+      if (i > 0)
+      {
+        arrayOfap = new a.ap[i];
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          arrayOfap[paramInt] = ((a.ap)paramList.get(paramInt));
+          paramInt += 1;
+        }
+      }
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        com.tencent.pb.common.c.c.w(this.TAG2, new Object[] { "NetSceneSwitchVideoGroup constructor", paramString });
+        int i;
+        a.ap[] arrayOfap;
+        b.w(this.TAG2, new Object[] { "NetSceneSubscribeScreenSharingVideo constructor", paramString });
       }
     }
+    locali.ahdI = arrayOfap;
+    locali.timestamp = System.currentTimeMillis();
+    b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, timestamp: %d, memberCnt: %d", Integer.valueOf(locali.roomId), Long.valueOf(locali.Hnt), locali.groupId, Long.valueOf(locali.timestamp), Integer.valueOf(i) });
+    aGP(3);
+    aGQ(c.ked().bGH(paramString));
+    c(259, locali);
+    AppMethodBeat.o(212274);
   }
   
-  public final Object ck(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128029);
-    com.tencent.pb.common.c.c.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
+    AppMethodBeat.i(212276);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.af)e.a(new a.af(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(128029);
+        paramArrayOfByte = (a.ah)e.a(new a.ah(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(212276);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        com.tencent.pb.common.c.c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
+        b.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
         paramArrayOfByte = null;
         continue;
       }
@@ -66,19 +84,19 @@ public final class l
     }
   }
   
-  public final String dTD()
-  {
-    return "CsCmd.Cmd_V_CSSwitchVideoGroupReq";
-  }
-  
   public final int getType()
   {
-    return 214;
+    return 802;
+  }
+  
+  public final String jQW()
+  {
+    return "CsCmd.Cmd_V_CSSubscribeScreenSharingVideoReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.l
  * JD-Core Version:    0.7.0.1
  */

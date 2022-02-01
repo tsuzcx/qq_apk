@@ -1,39 +1,41 @@
 package com.tencent.mobileqq.addon;
 
-import akmx;
-import akmy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class DiyPendantFetcher$6
+class DiyPendantFetcher$6
   implements Runnable
 {
-  public DiyPendantFetcher$6(akmx paramakmx) {}
+  DiyPendantFetcher$6(DiyPendantFetcher paramDiyPendantFetcher) {}
   
   public void run()
   {
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.this$0.a.iterator();
+    Object localObject = new HashSet();
+    Iterator localIterator = this.this$0.i.iterator();
     while (localIterator.hasNext())
     {
-      akmy localakmy = (akmy)localIterator.next();
-      if ((localakmy != null) && (localakmy.a() != null))
+      DiyPendantFetcher.Invalidatable localInvalidatable = (DiyPendantFetcher.Invalidatable)localIterator.next();
+      if ((localInvalidatable != null) && (localInvalidatable.c() != null))
       {
-        if (!localHashSet.contains(localakmy))
+        if (!((HashSet)localObject).contains(localInvalidatable))
         {
-          localHashSet.add(localakmy);
-          localakmy.invalidateSelf();
-          this.this$0.a.remove(localakmy);
+          ((HashSet)localObject).add(localInvalidatable);
+          localInvalidatable.invalidateSelf();
+          this.this$0.i.remove(localInvalidatable);
         }
       }
       else {
-        this.this$0.a.remove(localakmy);
+        this.this$0.i.remove(localInvalidatable);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "wait for refresh size: " + this.this$0.a.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("wait for refresh size: ");
+      ((StringBuilder)localObject).append(this.this$0.i.size());
+      QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject).toString());
     }
   }
 }

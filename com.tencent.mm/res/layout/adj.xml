@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="148.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="@dimen/a43" />
-    <LinearLayout android:orientation="vertical" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/abk" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/l2" android:paddingRight="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2">
-            <include android:id="@id/d9q" layout="@layout/adi" />
-            <include android:id="@id/d9t" layout="@layout/adi" />
-            <include android:id="@id/d9u" layout="@layout/adi" />
-            <include android:id="@id/d9v" android:layout_marginRight="0.0dip" layout="@layout/adi" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/iiy" app:loadMoreLayout="@layout/b8d">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/iix" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+    <FrameLayout android:id="@id/cjf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/i7q" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/cj" android:indeterminateDrawable="@drawable/ang" />
+        <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/isi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cj" android:text="@string/d8n" style="@style/zo" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/cj6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cj" android:text="@string/ddj" style="@style/zo" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

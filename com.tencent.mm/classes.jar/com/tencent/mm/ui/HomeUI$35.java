@@ -1,24 +1,26 @@
 package com.tencent.mm.ui;
 
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.pluginsdk.permission.b;
 
 final class HomeUI$35
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   HomeUI$35(HomeUI paramHomeUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(153787);
-    ab.i("MicroMsg.LauncherUI.HomeUI", "contentView.post, padding: %s", new Object[] { Integer.valueOf(HomeUI.h(this.yYw).getPaddingTop()) });
-    AppMethodBeat.o(153787);
+    AppMethodBeat.i(249081);
+    paramDialogInterface.dismiss();
+    b.lx(HomeUI.c(this.adBf));
+    AppMethodBeat.o(249081);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.35
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,30 @@
 package com.tencent.token;
 
-import java.security.PublicKey;
-import java.security.cert.X509Certificate;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
-import javax.security.auth.x500.X500Principal;
+import android.content.Context;
 
-public final class ik
-  implements in
+public abstract interface ik
 {
-  private final Map a = new LinkedHashMap();
+  public abstract void a(Context paramContext, id paramid);
   
-  public ik(X509Certificate... paramVarArgs)
-  {
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      X509Certificate localX509Certificate = paramVarArgs[i];
-      X500Principal localX500Principal = localX509Certificate.getSubjectX500Principal();
-      Set localSet = (Set)this.a.get(localX500Principal);
-      Object localObject = localSet;
-      if (localSet == null)
-      {
-        localObject = new LinkedHashSet(1);
-        this.a.put(localX500Principal, localObject);
-      }
-      ((Set)localObject).add(localX509Certificate);
-      i += 1;
-    }
-  }
+  public abstract void a(id paramid, boolean paramBoolean);
   
-  public X509Certificate a(X509Certificate paramX509Certificate)
-  {
-    Object localObject = paramX509Certificate.getIssuerX500Principal();
-    localObject = (Set)this.a.get(localObject);
-    if (localObject == null) {
-      return null;
-    }
-    localObject = ((Set)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      X509Certificate localX509Certificate = (X509Certificate)((Iterator)localObject).next();
-      PublicKey localPublicKey = localX509Certificate.getPublicKey();
-      try
-      {
-        paramX509Certificate.verify(localPublicKey);
-        return localX509Certificate;
-      }
-      catch (Exception localException) {}
-    }
-    return null;
-  }
+  public abstract void a(a parama);
   
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    while (((paramObject instanceof ik)) && (((ik)paramObject).a.equals(this.a))) {
-      return true;
-    }
-    return false;
-  }
+  public abstract boolean a();
   
-  public int hashCode()
+  public abstract boolean a(iq paramiq);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b(if paramif);
+  
+  public abstract boolean c(if paramif);
+  
+  public static abstract interface a
   {
-    return this.a.hashCode();
+    public abstract void a(id paramid, boolean paramBoolean);
+    
+    public abstract boolean a(id paramid);
   }
 }
 

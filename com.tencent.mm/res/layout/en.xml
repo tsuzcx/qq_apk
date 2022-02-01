@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/r" android:paddingTop="@dimen/if" android:paddingRight="@dimen/r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/hn3" android:layout_width="@dimen/h" android:layout_height="@dimen/h" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_weight="1.0">
+            <TextView android:id="@id/hn4" android:text="{nick name}" style="@style/m5" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2">
+                <TextView android:id="@id/hn6" android:text="{installed|uninstalled|hide}" style="@style/m6" />
+                <View android:layout_width="fill_parent" android:layout_weight="1.0" style="@style/ot" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:layout_marginTop="@dimen/if" style="@style/i7" />
+        <TextView android:id="@id/hn8" android:layout_marginTop="@dimen/i6" android:text="@string/r7" android:singleLine="false" style="@style/ow" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/hn7" android:paddingTop="@dimen/r" android:paddingBottom="@dimen/m2" android:text="@string/r6" android:singleLine="false" style="@style/ow" />
+        <TextView android:id="@id/hn5" android:layout_marginTop="@dimen/i_" android:layout_marginBottom="@dimen/m2" style="@style/og" />
+    </LinearLayout>
+</LinearLayout>

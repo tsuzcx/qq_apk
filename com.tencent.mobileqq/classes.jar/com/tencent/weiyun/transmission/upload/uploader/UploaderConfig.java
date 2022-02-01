@@ -60,7 +60,11 @@ public class UploaderConfig
   public String getVersion()
   {
     WeiyunTransmissionGlobal.AppInfo localAppInfo = WeiyunTransmissionGlobal.getInstance().getAppInfo();
-    return localAppInfo.versionName + '.' + localAppInfo.versionCode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localAppInfo.versionName);
+    localStringBuilder.append('.');
+    localStringBuilder.append(localAppInfo.versionCode);
+    return localStringBuilder.toString();
   }
   
   public boolean isRdm()
@@ -70,7 +74,7 @@ public class UploaderConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.uploader.UploaderConfig
  * JD-Core Version:    0.7.0.1
  */

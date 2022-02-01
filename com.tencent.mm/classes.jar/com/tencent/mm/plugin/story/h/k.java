@@ -1,390 +1,318 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.l;
-import a.y;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cb;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.story.model.StoryCore;
+import com.tencent.mm.plugin.story.model.StoryCore.b;
 import com.tencent.mm.plugin.story.model.d;
 import com.tencent.mm.plugin.story.model.i;
-import com.tencent.mm.plugin.story.model.j.b;
-import com.tencent.mm.protocal.protobuf.cic;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.fjj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/StoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lcom/tencent/mm/plugin/story/storage/IStoryStorage;", "vdb", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "CON_POST", "", "CON_SERVER", "CON_TYPE_ERROR", "db", "delList", "", "kotlin.jvm.PlatformType", "", "itemFlagSet", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "localFlagSet", "sourceTypeSet", "getVdb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "setVdb", "addDelList", "", "localId", "addReadCount", "storyId", "", "count", "conTimestampAfter", "limitTime", "conTimestampBefore", "conUserWhere", "userName", "isSelf", "", "deleteByLocalId", "deleteByStoryId", "deleteByStoryIdWithNotify", "username", "deleteByUsername", "droptable", "dumpinfo", "get", "getAlbumStoryAfterByStoryId", "minId", "limitCount", "getByLocalId", "getByStoryId", "getByUserName", "getByUserNameAfter", "timeStamp", "excludePrivacy", "getDiedStory", "getFavHistoryMinIdByLimit", "maxId", "getFavStoryByUsername", "getForSnsByUserNameAfter", "getHistoryMinIdByLimit", "getInfoBetweenDate", "createTime", "getLastStoryByName", "getLastUpload", "getMinIdByLimit", "baseSql", "conServer", "getStoryAfterByStoryId", "getStoryById", "id", "getStoryReadCount", "getUserMinIdByLimit", "getUserSql", "getBuf", "checkCount", "inDelList", "isPcIdExist", "isStoryIdExist", "removeDelList", "replaceStoryId", "storyInfo", "replaceUserByPcId", "snsInfo", "set", "update", "updateByLocal", "storyinfo", "updateSourceTypeBefore", "sourceType", "updateStoryFavorite", "favorite", "updateStoryVisibility", "visibilitySelf", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/StoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lcom/tencent/mm/plugin/story/storage/IStoryStorage;", "vdb", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "CON_POST", "", "CON_SERVER", "CON_TYPE_ERROR", "db", "delList", "", "kotlin.jvm.PlatformType", "", "itemFlagSet", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "localFlagSet", "sourceTypeSet", "getVdb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "setVdb", "addDelList", "", "localId", "addReadCount", "storyId", "", "count", "conTimestampAfter", "limitTime", "conTimestampBefore", "conUserWhere", "userName", "isSelf", "", "deleteByLocalId", "deleteByStoryId", "deleteByStoryIdWithNotify", "username", "deleteByUsername", "droptable", "dumpinfo", "get", "getAlbumStoryAfterByStoryId", "minId", "limitCount", "getByLocalId", "getByStoryId", "getByUserName", "getByUserNameAfter", "timeStamp", "excludePrivacy", "getDiedStory", "getFavHistoryMinIdByLimit", "maxId", "getFavStoryByUsername", "getForSnsByUserNameAfter", "getHistoryMinIdByLimit", "getInfoBetweenDate", "createTime", "getLastStoryByName", "getLastUpload", "getMinIdByLimit", "baseSql", "conServer", "getStoryAfterByStoryId", "getStoryById", "id", "getStoryReadCount", "getUserMinIdByLimit", "getUserSql", "getBuf", "checkCount", "inDelList", "isStoryIdExist", "removeDelList", "set", "storyInfo", "update", "updateByLocal", "storyinfo", "updateSourceTypeBefore", "sourceType", "updateStoryFavorite", "favorite", "updateStoryLocalFlag", "localFlag", "updateStoryVisibility", "visibilitySelf", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
-  extends com.tencent.mm.sdk.e.j<j>
+  extends MAutoStorage<j>
 {
   private static final String[] INDEX_CREATE;
+  private static String QYW;
+  private static String QZe;
+  private static String QZf;
   private static final String[] SQL_CREATE;
-  public static final String TAG = "MicroMsg.StoryInfoStorage";
-  public static String rDl;
-  private static String rDu;
-  private static String rDv;
-  public static final String sGE = "MMStoryInfo";
-  private static final String sGS = "select count(*) from MMStoryInfo ";
-  private static String sGT;
-  public static final String sGU = " (storyID != 0  ) ";
-  private static String sGV;
-  private static String sGW;
-  private static String sGX;
-  public static final k.a sGY;
-  public final e db;
-  private String rDq;
-  private String rDr;
-  private final ArrayList<Integer> rDy;
-  private final ArrayList<Integer> rDz;
-  private e sGD;
-  private final String sGP;
-  private final ArrayList<Integer> sGQ;
-  private final List<String> sGR;
+  public static final k.a Sth;
+  private static final String Stl;
+  private static String Stm;
+  private static final String Stn;
+  private static String Sto;
+  private static String Stp;
+  private static String Stq;
+  public static final String TAG;
+  public static final String ptT;
+  private final ArrayList<Integer> FKI;
+  private String QZb;
+  private String QZd;
+  private final ArrayList<Integer> QZm;
+  private ISQLiteDatabase SsW;
+  private final String Sti;
+  private final ArrayList<Integer> Stj;
+  private final List<String> Stk;
+  public final ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(109965);
-    sGY = new k.a((byte)0);
+    AppMethodBeat.i(119590);
+    Sth = new k.a((byte)0);
     TAG = "MicroMsg.StoryInfoStorage";
-    sGS = "select count(*) from MMStoryInfo ";
-    sGE = "MMStoryInfo";
-    rDl = " order by " + sGE + ".createTime desc";
-    sGT = " order by " + sGE + ".favoriteTime asc";
-    sGU = " (storyID != 0  ) ";
+    Stl = "select count(*) from MMStoryInfo ";
+    ptT = "MMStoryInfo";
+    QYW = " order by " + ptT + ".createTime desc";
+    Stm = " order by " + ptT + ".favoriteTime asc";
+    Stn = " (storyID != 0  ) ";
     Object localObject1 = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
-    Object localObject2 = j.sGO;
-    localObject1 = j.cFg() + " ON " + sGE + " ( storyID )";
+    Object localObject2 = j.Ste;
+    localObject1 = j.eZU() + " ON " + ptT + " ( storyID )";
     localObject2 = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
-    Object localObject3 = j.sGO;
-    localObject2 = j.cFh() + " ON " + sGE + " (userName,storyID, createTime)";
+    Object localObject3 = j.Ste;
+    localObject2 = j.hzA() + " ON " + ptT + " (userName,storyID, createTime)";
     localObject3 = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
-    j.a locala = j.sGO;
-    INDEX_CREATE = new String[] { localObject1, localObject2, j.cFi() + " ON " + sGE + " (userName, createTime)" };
-    localObject1 = j.sGO;
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(j.cEM(), sGE) };
-    AppMethodBeat.o(109965);
+    j.a locala = j.Ste;
+    INDEX_CREATE = new String[] { localObject1, localObject2, j.hzB() + " ON " + ptT + " (userName, createTime)" };
+    localObject1 = j.Ste;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(j.access$getInfo$cp(), ptT) };
+    AppMethodBeat.o(119590);
   }
   
-  public k(e parame)
+  public k(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, j.cEM(), sGE, INDEX_CREATE);
-    AppMethodBeat.i(109964);
-    this.sGD = parame;
-    this.sGP = " (storyID != 0 ) ";
-    parame = a.d.sGd;
-    int i = a.d.cEy();
-    parame = a.d.sGd;
-    int j = a.d.cEz();
-    parame = a.d.sGd;
-    parame = Arrays.asList(new Integer[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(a.d.cEA()) });
-    a.f.b.j.p(parame, "Arrays.asList(ConstantsS…lag.LOCAL_FLAG_STATE_MIX)");
-    this.rDy = k.a.dh(parame);
-    parame = a.sFV;
-    i = a.cDO();
-    parame = a.sFV;
-    j = a.cDP();
-    parame = a.sFV;
-    parame = Arrays.asList(new Integer[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(a.cDQ()) });
-    a.f.b.j.p(parame, "Arrays.asList(ConstantsS…ORY_SOURCE_ALBUM_HISTORY)");
-    this.rDz = k.a.dh(parame);
-    parame = a.sFV;
-    i = a.cEp();
-    parame = a.sFV;
-    parame = Arrays.asList(new Integer[] { Integer.valueOf(i), Integer.valueOf(a.cEq()) });
-    a.f.b.j.p(parame, "Arrays.asList(ConstantsS…STORY_ITEM_FAVORITE_FLAG)");
-    this.sGQ = k.a.dh(parame);
-    this.db = this.sGD;
-    this.sGR = Collections.synchronizedList((List)new ArrayList());
-    parame = new ArrayList();
-    localObject1 = this.rDy.iterator();
+    super(paramISQLiteDatabase, j.access$getInfo$cp(), ptT, INDEX_CREATE);
+    AppMethodBeat.i(119589);
+    this.SsW = paramISQLiteDatabase;
+    this.Sti = " (storyID != 0 ) ";
+    paramISQLiteDatabase = a.d.Ssx;
+    int i = a.d.hza();
+    paramISQLiteDatabase = a.d.Ssx;
+    int j = a.d.hzb();
+    paramISQLiteDatabase = a.d.Ssx;
+    paramISQLiteDatabase = Arrays.asList(new Integer[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(a.d.hzc()) });
+    s.s(paramISQLiteDatabase, "asList(ConstantsStory.St…lag.LOCAL_FLAG_STATE_MIX)");
+    this.FKI = k.a.hA(paramISQLiteDatabase);
+    paramISQLiteDatabase = a.Sry;
+    i = a.hyu();
+    paramISQLiteDatabase = a.Sry;
+    j = a.hyv();
+    paramISQLiteDatabase = a.Sry;
+    paramISQLiteDatabase = Arrays.asList(new Integer[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(a.hyw()) });
+    s.s(paramISQLiteDatabase, "asList(ConstantsStory.ST…ORY_SOURCE_ALBUM_HISTORY)");
+    this.QZm = k.a.hA(paramISQLiteDatabase);
+    paramISQLiteDatabase = a.Sry;
+    i = a.hyT();
+    paramISQLiteDatabase = a.Sry;
+    paramISQLiteDatabase = Arrays.asList(new Integer[] { Integer.valueOf(i), Integer.valueOf(a.hyU()) });
+    s.s(paramISQLiteDatabase, "asList(ConstantsStory.ST…STORY_ITEM_FAVORITE_FLAG)");
+    this.Stj = k.a.hA(paramISQLiteDatabase);
+    this.db = this.SsW;
+    this.Stk = Collections.synchronizedList((List)new ArrayList());
+    paramISQLiteDatabase = new ArrayList();
+    localObject1 = this.FKI.iterator();
     Integer localInteger;
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localInteger = (Integer)((Iterator)localObject1).next();
       i = localInteger.intValue();
-      localObject2 = a.d.sGd;
-      if ((i & a.d.cEy()) != 0)
+      localObject2 = a.d.Ssx;
+      if ((i & a.d.hza()) != 0)
       {
         i = localInteger.intValue();
-        localObject2 = a.d.sGd;
-        if ((i & a.d.cEz()) == 0) {
-          parame.add(localInteger);
+        localObject2 = a.d.Ssx;
+        if ((i & a.d.hzb()) == 0) {
+          paramISQLiteDatabase.add(localInteger);
         }
       }
     }
-    this.rDq = k.a.g((List)parame, "localFlag");
-    parame.clear();
-    localObject1 = this.rDz.iterator();
+    this.QZb = k.a.t((List)paramISQLiteDatabase, "localFlag");
+    paramISQLiteDatabase.clear();
+    localObject1 = this.QZm.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localInteger = (Integer)((Iterator)localObject1).next();
       i = localInteger.intValue();
-      localObject2 = a.sFV;
-      if ((i & a.cDO()) != 0) {
-        parame.add(localInteger);
+      localObject2 = a.Sry;
+      if ((i & a.hyu()) != 0) {
+        paramISQLiteDatabase.add(localInteger);
       }
     }
-    rDu = k.a.g((List)parame, "sourceType");
-    parame.clear();
-    localObject1 = this.rDz.iterator();
+    QZe = k.a.t((List)paramISQLiteDatabase, "sourceType");
+    paramISQLiteDatabase.clear();
+    localObject1 = this.QZm.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localInteger = (Integer)((Iterator)localObject1).next();
       i = localInteger.intValue();
-      localObject2 = a.sFV;
-      if ((i & a.cDP()) != 0) {
-        parame.add(localInteger);
+      localObject2 = a.Sry;
+      if ((i & a.hyv()) != 0) {
+        paramISQLiteDatabase.add(localInteger);
       }
     }
-    rDv = k.a.g((List)parame, "sourceType");
-    parame.clear();
-    localObject1 = this.rDy.iterator();
+    QZf = k.a.t((List)paramISQLiteDatabase, "sourceType");
+    paramISQLiteDatabase.clear();
+    localObject1 = this.FKI.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localInteger = (Integer)((Iterator)localObject1).next();
       i = localInteger.intValue();
-      localObject2 = a.d.sGd;
-      if ((i & a.d.cEz()) != 0) {
-        parame.add(localInteger);
+      localObject2 = a.d.Ssx;
+      if ((i & a.d.hzb()) != 0) {
+        paramISQLiteDatabase.add(localInteger);
       }
     }
-    this.rDr = k.a.g((List)parame, "localFlag");
-    parame.clear();
-    localObject1 = this.rDz.iterator();
+    this.QZd = k.a.t((List)paramISQLiteDatabase, "localFlag");
+    paramISQLiteDatabase.clear();
+    localObject1 = this.QZm.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localInteger = (Integer)((Iterator)localObject1).next();
       i = localInteger.intValue();
-      localObject2 = a.sFV;
-      if ((i & a.cDQ()) != 0) {
-        parame.add(localInteger);
+      localObject2 = a.Sry;
+      if ((i & a.hyw()) != 0) {
+        paramISQLiteDatabase.add(localInteger);
       }
     }
-    sGW = k.a.g((List)parame, "sourceType");
-    parame.clear();
-    localObject1 = this.sGQ.iterator();
+    Stp = k.a.t((List)paramISQLiteDatabase, "sourceType");
+    paramISQLiteDatabase.clear();
+    localObject1 = this.Stj.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localInteger = (Integer)((Iterator)localObject1).next();
       i = localInteger.intValue();
-      localObject2 = a.sFV;
-      if ((i & a.cEp()) != 0) {
-        parame.add(localInteger);
+      localObject2 = a.Sry;
+      if ((i & a.hyT()) != 0) {
+        paramISQLiteDatabase.add(localInteger);
       }
     }
-    sGV = k.a.b((List)parame, "itemStoryFlag", true);
-    parame.clear();
-    localObject1 = this.sGQ.iterator();
+    Sto = k.a.b((List)paramISQLiteDatabase, "itemStoryFlag", true);
+    paramISQLiteDatabase.clear();
+    localObject1 = this.Stj.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localInteger = (Integer)((Iterator)localObject1).next();
       i = localInteger.intValue();
-      localObject2 = a.sFV;
-      if ((i & a.cEq()) != 0) {
-        parame.add(localInteger);
+      localObject2 = a.Sry;
+      if ((i & a.hyU()) != 0) {
+        paramISQLiteDatabase.add(localInteger);
       }
     }
-    sGX = k.a.g((List)parame, "itemStoryFlag");
-    AppMethodBeat.o(109964);
+    Stq = k.a.t((List)paramISQLiteDatabase, "itemStoryFlag");
+    AppMethodBeat.o(119589);
   }
   
-  private static String Gc(int paramInt)
+  private static String anw(int paramInt)
   {
-    AppMethodBeat.i(109944);
-    String str = sGE + ".createTime>" + paramInt;
-    AppMethodBeat.o(109944);
+    AppMethodBeat.i(119566);
+    String str = ptT + ".createTime>" + paramInt;
+    AppMethodBeat.o(119566);
     return str;
   }
   
-  private static String bB(String paramString, boolean paramBoolean)
+  private static String dd(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(109945);
-    paramString = "select *,rowid from MMStoryInfo " + bs(paramString, paramBoolean);
-    AppMethodBeat.o(109945);
-    return paramString;
-  }
-  
-  public static String bs(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(109943);
+    AppMethodBeat.i(119565);
     if (paramBoolean)
     {
-      paramString = " WHERE " + rDu;
-      AppMethodBeat.o(109943);
+      paramString = s.X(" WHERE ", QZe);
+      AppMethodBeat.o(119565);
       return paramString;
     }
-    paramString = " WHERE " + sGE + ".userName='" + bo.wC(paramString) + "' AND " + rDv;
-    AppMethodBeat.o(109943);
+    paramString = " WHERE " + ptT + ".userName='" + Util.escapeSqlValue(paramString) + "' AND " + QZf;
+    AppMethodBeat.o(119565);
     return paramString;
   }
   
-  private long l(String paramString, long paramLong, int paramInt)
+  private static String dp(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(109934);
-    a.f.b.j.q(paramString, "baseSql");
+    AppMethodBeat.i(119567);
+    paramString = s.X("select *,rowid from MMStoryInfo ", dd(paramString, paramBoolean));
+    AppMethodBeat.o(119567);
+    return paramString;
+  }
+  
+  private long s(String paramString, long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(119556);
+    s.u(paramString, "baseSql");
     Object localObject = paramString;
     if (paramLong != 0L) {
-      localObject = paramString + " AND " + sGE + ".storyID < '" + paramLong + '\'';
+      localObject = paramString + " AND " + ptT + ".storyID < '" + paramLong + '\'';
     }
-    paramString = (String)localObject + rDl + " limit " + paramInt;
-    ab.d(TAG, "getMinIdByLimit sql=".concat(String.valueOf(paramString)));
+    paramString = (String)localObject + QYW + " limit " + paramInt;
+    Log.d(TAG, s.X("getMinIdByLimit sql=", paramString));
     paramString = this.db.rawQuery(paramString, null);
     if (paramString.moveToLast())
     {
       localObject = new j();
-      a.f.b.j.p(paramString, "cu");
+      s.s(paramString, "cu");
       ((j)localObject).convertFrom(paramString);
       paramString.close();
       paramLong = ((j)localObject).field_storyID;
-      AppMethodBeat.o(109934);
+      AppMethodBeat.o(119556);
       return paramLong;
     }
     paramString.close();
-    AppMethodBeat.o(109934);
+    AppMethodBeat.o(119556);
     return 0L;
   }
   
-  private boolean mS(long paramLong)
+  private j wb(long paramLong)
   {
-    AppMethodBeat.i(138844);
-    Object localObject = "select *,rowid from MMStoryInfo  where " + sGE + ".storyID = " + paramLong;
-    localObject = this.db.rawQuery((String)localObject, null);
-    a.f.b.j.p(localObject, "cu");
-    int i = ((Cursor)localObject).getCount();
-    ((Cursor)localObject).close();
-    if (i > 0)
-    {
-      AppMethodBeat.o(138844);
-      return true;
-    }
-    AppMethodBeat.o(138844);
-    return false;
-  }
-  
-  private j mT(long paramLong)
-  {
-    AppMethodBeat.i(109942);
+    AppMethodBeat.i(119564);
     if (paramLong >= 0L)
     {
-      localj = Gb((int)paramLong);
-      AppMethodBeat.o(109942);
+      localj = anv((int)paramLong);
+      AppMethodBeat.o(119564);
       return localj;
     }
-    j localj = mV(paramLong);
-    AppMethodBeat.o(109942);
+    j localj = wd(paramLong);
+    AppMethodBeat.o(119564);
     return localj;
-  }
-  
-  private boolean mU(long paramLong)
-  {
-    AppMethodBeat.i(109956);
-    if (this.db.delete(sGE, "storyID=?", new String[] { String.valueOf(paramLong) }) > 0)
-    {
-      AppMethodBeat.o(109956);
-      return true;
-    }
-    AppMethodBeat.o(109956);
-    return false;
-  }
-  
-  public final boolean EA(int paramInt)
-  {
-    AppMethodBeat.i(109955);
-    e locale = this.db;
-    String str = sGE;
-    StringBuilder localStringBuilder = new StringBuilder();
-    j.a locala = j.sGO;
-    if (locale.delete(str, j.cFf() + "=?", new String[] { String.valueOf(paramInt) }) > 0)
-    {
-      AppMethodBeat.o(109955);
-      return true;
-    }
-    AppMethodBeat.o(109955);
-    return false;
-  }
-  
-  public final j Gb(int paramInt)
-  {
-    AppMethodBeat.i(109941);
-    j localj = new j();
-    Object localObject = new StringBuilder("select *,rowid from MMStoryInfo  where ").append(sGE).append('.');
-    j.a locala = j.sGO;
-    localObject = j.cFf() + '=' + paramInt;
-    localObject = this.db.a((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst())
-    {
-      a.f.b.j.p(localObject, "cu");
-      localj.convertFrom((Cursor)localObject);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(109941);
-      return localj;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(109941);
-    return null;
-  }
-  
-  public final long H(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(109960);
-    paramLong = l("select *,rowid from MMStoryInfo  WHERE " + sGW, paramLong, paramInt);
-    AppMethodBeat.o(109960);
-    return paramLong;
   }
   
   public final int a(int paramInt, j paramj)
   {
-    AppMethodBeat.i(109940);
-    a.f.b.j.q(paramj, "storyinfo");
-    Object localObject = com.tencent.mm.plugin.story.model.j.svi;
-    if (j.b.cAB().adG(paramInt + '_' + paramj.field_createTime))
+    AppMethodBeat.i(119562);
+    s.u(paramj, "storyinfo");
+    Object localObject = StoryCore.SjP;
+    if (StoryCore.b.hvR().bcq(paramInt + '_' + paramj.field_createTime))
     {
-      AppMethodBeat.o(109940);
+      AppMethodBeat.o(119562);
       return -1;
     }
     paramj = paramj.convertTo();
     paramj.remove("rowid");
     localObject = this.db;
-    String str = sGE;
-    StringBuilder localStringBuilder = new StringBuilder();
-    j.a locala = j.sGO;
-    paramInt = ((e)localObject).update(str, paramj, j.cFf() + "=?", new String[] { String.valueOf(paramInt) });
-    AppMethodBeat.o(109940);
+    String str = ptT;
+    j.a locala = j.Ste;
+    paramInt = ((ISQLiteDatabase)localObject).update(str, paramj, s.X(j.hzz(), "=?"), new String[] { s.X("", Integer.valueOf(paramInt)) });
+    AppMethodBeat.o(119562);
     return paramInt;
   }
   
   public final long a(long paramLong, String paramString, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(151119);
-    a.f.b.j.q(paramString, "username");
-    paramLong = l("select *,rowid from MMStoryInfo  " + bs(paramString, paramBoolean) + " AND " + sGX, paramLong, paramInt);
-    AppMethodBeat.o(151119);
+    AppMethodBeat.i(119582);
+    s.u(paramString, "username");
+    paramLong = s("select *,rowid from MMStoryInfo  " + dd(paramString, paramBoolean) + " AND " + Stq, paramLong, paramInt);
+    AppMethodBeat.o(119582);
     return paramLong;
   }
   
   public final List<j> a(String paramString, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(109952);
-    a.f.b.j.q(paramString, "userName");
+    AppMethodBeat.i(119572);
+    s.u(paramString, "userName");
     Object localObject1 = new ArrayList();
-    paramString = "select *,rowid from MMStoryInfo " + bs(paramString, paramBoolean1) + ' ';
-    paramString = paramString + " AND " + Gc(paramInt);
-    Object localObject2 = new StringBuilder().append(paramString);
+    paramString = "select *,rowid from MMStoryInfo " + dd(paramString, paramBoolean1) + ' ';
+    Object localObject2 = paramString + " AND " + anw(paramInt);
     if (paramBoolean1) {}
-    for (paramString = rDl;; paramString = " AND " + sGU + " AND " + sGV + ' ' + rDl)
+    for (paramString = QYW;; paramString = " AND " + Stn + " AND " + Sto + ' ' + QYW)
     {
-      paramString = paramString;
-      paramString = this.db.a(paramString, null, 2);
+      paramString = s.X((String)localObject2, paramString);
+      paramString = this.db.rawQuery(paramString, null, 2);
       if (paramString == null) {
-        break label212;
+        break label197;
       }
       while (paramString.moveToNext())
       {
@@ -394,44 +322,44 @@ public final class k
       }
     }
     paramString.close();
-    label212:
+    label197:
     if (paramBoolean1)
     {
-      paramString = d.sut;
-      d.FG(((ArrayList)localObject1).size());
+      paramString = d.Sjy;
+      d.anb(((ArrayList)localObject1).size());
     }
     if (paramBoolean2)
     {
       localObject1 = (Iterable)localObject1;
       paramString = (Collection)new ArrayList();
       localObject1 = ((Iterable)localObject1).iterator();
-      label311:
+      label296:
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = ((Iterator)localObject1).next();
-        if (!((j)localObject2).cFc()) {}
+        if (!((j)localObject2).hzw()) {}
         for (paramInt = 1;; paramInt = 0)
         {
           if (paramInt == 0) {
-            break label311;
+            break label296;
           }
           paramString.add(localObject2);
           break;
         }
       }
       paramString = (List)paramString;
-      AppMethodBeat.o(109952);
+      AppMethodBeat.o(119572);
       return paramString;
     }
     paramString = (List)localObject1;
-    AppMethodBeat.o(109952);
+    AppMethodBeat.o(119572);
     return paramString;
   }
   
   public final List<j> a(String paramString, boolean paramBoolean, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(138847);
-    a.f.b.j.q(paramString, "username");
+    AppMethodBeat.i(119587);
+    s.u(paramString, "username");
     ArrayList localArrayList = new ArrayList();
     int i;
     if (((CharSequence)paramString).length() > 0) {
@@ -439,18 +367,18 @@ public final class k
     }
     while (i != 0)
     {
-      Object localObject = "select *,rowid from MMStoryInfo  " + bs(paramString, paramBoolean) + " AND " + sGX + ' ';
+      Object localObject = "select *,rowid from MMStoryInfo  " + dd(paramString, paramBoolean) + " AND " + Stq + ' ';
       paramString = (String)localObject;
       if (paramLong < 0L) {
         paramString = (String)localObject + " AND storyID >= " + paramLong;
       }
-      localObject = paramString + rDl;
+      localObject = s.X(paramString, QYW);
       paramString = (String)localObject;
       if (paramInt > 0) {
         paramString = (String)localObject + " limit " + paramInt;
       }
-      ab.d(TAG, "getFavStoryByUsername sql:".concat(String.valueOf(paramString)));
-      paramString = this.db.a(paramString, null, 2);
+      Log.d(TAG, s.X("getFavStoryByUsername sql:", paramString));
+      paramString = this.db.rawQuery(paramString, null, 2);
       if (paramString != null)
       {
         for (;;)
@@ -469,120 +397,158 @@ public final class k
       }
     }
     paramString = (List)localArrayList;
-    AppMethodBeat.o(138847);
+    AppMethodBeat.o(119587);
     return paramString;
   }
   
-  public final boolean a(long paramLong, j paramj)
+  public final long aC(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(138843);
-    a.f.b.j.q(paramj, "storyInfo");
-    if (mS(paramLong))
+    AppMethodBeat.i(119581);
+    paramLong = s(s.X("select *,rowid from MMStoryInfo  WHERE ", Stp), paramLong, paramInt);
+    AppMethodBeat.o(119581);
+    return paramLong;
+  }
+  
+  public final boolean aj(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(119577);
+    s.u(paramString, "username");
+    boolean bool = wc(paramLong);
+    j localj = new j();
+    localj.field_userName = paramString;
+    localj.field_storyID = paramLong;
+    doNotify("notify_story_info_delete", 1, localj);
+    AppMethodBeat.o(119577);
+    return bool;
+  }
+  
+  public final boolean alC(int paramInt)
+  {
+    AppMethodBeat.i(119575);
+    ISQLiteDatabase localISQLiteDatabase = this.db;
+    String str = ptT;
+    j.a locala = j.Ste;
+    if (localISQLiteDatabase.delete(str, s.X(j.hzz(), "=?"), new String[] { s.X("", Integer.valueOf(paramInt)) }) > 0)
     {
-      boolean bool = b(paramLong, paramj);
-      AppMethodBeat.o(138843);
-      return bool;
-    }
-    if (e(paramj) != -1)
-    {
-      AppMethodBeat.o(138843);
+      AppMethodBeat.o(119575);
       return true;
     }
-    AppMethodBeat.o(138843);
+    AppMethodBeat.o(119575);
     return false;
   }
   
-  public final void adF(String paramString)
+  public final j anv(int paramInt)
   {
-    AppMethodBeat.i(109932);
-    a.f.b.j.q(paramString, "localId");
-    this.sGR.add(paramString);
-    AppMethodBeat.o(109932);
-  }
-  
-  public final boolean adG(String paramString)
-  {
-    AppMethodBeat.i(109933);
-    a.f.b.j.q(paramString, "localId");
-    boolean bool = false;
-    ??? = this.sGR;
-    a.f.b.j.p(???, "delList");
-    for (;;)
+    AppMethodBeat.i(119563);
+    j localj = new j();
+    Object localObject = new StringBuilder("select *,rowid from MMStoryInfo  where ").append(ptT).append('.');
+    j.a locala = j.Ste;
+    localObject = j.hzz() + '=' + paramInt;
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (((Cursor)localObject).moveToFirst())
     {
-      synchronized ((Iterable)???)
-      {
-        Iterator localIterator = ((Iterable)???).iterator();
-        if (localIterator.hasNext())
-        {
-          if (a.f.b.j.e((String)localIterator.next(), paramString))
-          {
-            bool = true;
-            ab.i(TAG, "wo wo wo ".concat(String.valueOf(paramString)));
-          }
-        }
-        else
-        {
-          paramString = y.BMg;
-          AppMethodBeat.o(109933);
-          return bool;
-        }
-      }
+      s.s(localObject, "cu");
+      localj.convertFrom((Cursor)localObject);
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(119563);
+      return localj;
     }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(119563);
+    return null;
   }
   
   public final long b(long paramLong, int paramInt, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(109946);
-    a.f.b.j.q(paramString, "username");
-    paramLong = l(bB(paramString, paramBoolean), paramLong, paramInt);
-    AppMethodBeat.o(109946);
+    AppMethodBeat.i(119568);
+    s.u(paramString, "username");
+    paramLong = s(dp(paramString, paramBoolean), paramLong, paramInt);
+    AppMethodBeat.o(119568);
     return paramLong;
   }
   
-  public final boolean b(long paramLong, j paramj)
+  public final void bcp(String paramString)
   {
-    AppMethodBeat.i(109935);
-    a.f.b.j.q(paramj, "storyInfo");
-    paramj = paramj.convertTo();
-    if (this.db.update(sGE, paramj, "storyID=?", new String[] { String.valueOf(paramLong) }) > 0)
-    {
-      AppMethodBeat.o(109935);
-      return true;
-    }
-    AppMethodBeat.o(109935);
-    return false;
+    AppMethodBeat.i(119554);
+    s.u(paramString, "localId");
+    this.Stk.add(paramString);
+    AppMethodBeat.o(119554);
   }
   
-  public final List<j> bC(String paramString, boolean paramBoolean)
+  public final boolean bcq(String paramString)
   {
-    AppMethodBeat.i(138845);
-    a.f.b.j.q(paramString, "userName");
-    ArrayList localArrayList = new ArrayList();
-    paramString = "select *,rowid from MMStoryInfo " + bs(paramString, paramBoolean);
-    Object localObject = new StringBuilder().append(paramString);
-    if (paramBoolean) {}
-    for (paramString = rDl;; paramString = " AND " + sGU + rDl)
+    AppMethodBeat.i(119555);
+    s.u(paramString, "localId");
+    ??? = this.Stk;
+    s.s(???, "delList");
+    synchronized ((Iterable)???)
     {
-      paramString = paramString;
-      paramString = this.db.a(paramString, null, 2);
+      Iterator localIterator = ((Iterable)???).iterator();
+      boolean bool = false;
+      while (localIterator.hasNext()) {
+        if (s.p((String)localIterator.next(), paramString))
+        {
+          Log.i(TAG, s.X("wo wo wo ", paramString));
+          bool = true;
+        }
+      }
+      paramString = ah.aiuX;
+      AppMethodBeat.o(119555);
+      return bool;
+    }
+  }
+  
+  public final List<j> dq(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(119569);
+    s.u(paramString, "userName");
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = s.X("select *,rowid from MMStoryInfo ", dd(paramString, paramBoolean));
+    if (paramBoolean) {}
+    for (paramString = QYW;; paramString = " AND " + Stn + QYW)
+    {
+      paramString = s.X((String)localObject, paramString);
+      paramString = this.db.rawQuery(paramString, null, 2);
       while (paramString.moveToNext())
       {
         localObject = new j();
-        a.f.b.j.p(paramString, "cu");
+        s.s(paramString, "cu");
         ((j)localObject).convertFrom(paramString);
         localArrayList.add(localObject);
       }
     }
     paramString.close();
     paramString = (List)localArrayList;
-    AppMethodBeat.o(138845);
+    AppMethodBeat.o(119569);
     return paramString;
   }
   
-  public final ArrayList<j> bD(String paramString, boolean paramBoolean)
+  public final j dr(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(109963);
-    a.f.b.j.q(paramString, "username");
+    AppMethodBeat.i(119583);
+    s.u(paramString, "userName");
+    j localj = new j();
+    String str = s.X("select *,rowid from MMStoryInfo ", dd(paramString, paramBoolean));
+    if (paramBoolean) {}
+    for (paramString = QYW;; paramString = " AND " + Stn + QYW)
+    {
+      paramString = s.X(s.X(str, paramString), " limit 1");
+      paramString = this.db.rawQuery(paramString, null, 2);
+      if (paramString.moveToFirst())
+      {
+        s.s(paramString, "cu");
+        localj.convertFrom(paramString);
+      }
+      paramString.close();
+      AppMethodBeat.o(119583);
+      return localj;
+    }
+  }
+  
+  public final ArrayList<j> ds(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(119586);
+    s.u(paramString, "username");
     ArrayList localArrayList = new ArrayList();
     int i;
     if (((CharSequence)paramString).length() > 0) {
@@ -590,9 +556,9 @@ public final class k
     }
     while (i != 0)
     {
-      paramString = "select *,rowid from MMStoryInfo  " + bs(paramString, paramBoolean) + " AND " + sGX + ' ' + rDl;
-      ab.d(TAG, "getFavStoryByUsername sql:".concat(String.valueOf(paramString)));
-      paramString = this.db.a(paramString, null, 2);
+      paramString = "select *,rowid from MMStoryInfo  " + dd(paramString, paramBoolean) + " AND " + Stq + ' ' + QYW;
+      Log.d(TAG, s.X("getFavStoryByUsername sql:", paramString));
+      paramString = this.db.rawQuery(paramString, null, 2);
       if (paramString != null)
       {
         for (;;)
@@ -610,100 +576,89 @@ public final class k
         paramString.close();
       }
     }
-    AppMethodBeat.o(109963);
+    AppMethodBeat.o(119586);
     return localArrayList;
   }
   
-  public final boolean c(long paramLong, j paramj)
+  public final boolean e(j paramj)
   {
-    AppMethodBeat.i(109947);
-    a.f.b.j.q(paramj, "snsInfo");
-    if (lR(paramLong))
-    {
-      boolean bool = b(paramLong, paramj);
-      AppMethodBeat.o(109947);
-      return bool;
-    }
-    if (e(paramj) != -1)
-    {
-      AppMethodBeat.o(109947);
-      return true;
-    }
-    AppMethodBeat.o(109947);
-    return false;
+    AppMethodBeat.i(119557);
+    s.u(paramj, "storyInfo");
+    boolean bool = replace((IAutoDBItem)paramj);
+    AppMethodBeat.o(119557);
+    return bool;
   }
   
-  public final j cFj()
+  public final int f(j paramj)
   {
-    AppMethodBeat.i(109939);
-    int i = cb.abr();
-    Object localObject1 = i.suJ;
-    int j = i.cAp();
-    localObject1 = new j();
-    Object localObject2 = new StringBuilder("select *,rowid from MMStoryInfo  where ").append(this.rDq).append(" and createTime > ").append(i - j).append(" order by ").append(sGE).append('.');
-    Object localObject3 = j.sGO;
-    localObject2 = j.cFf() + " asc limit 1";
-    localObject3 = this.db.a((String)localObject2, null, 2);
-    ab.d(TAG, "getLastUpload ".concat(String.valueOf(localObject2)));
-    if (!((Cursor)localObject3).moveToFirst())
-    {
-      ((Cursor)localObject3).close();
-      AppMethodBeat.o(109939);
-      return null;
-    }
-    a.f.b.j.p(localObject3, "cr");
-    ((j)localObject1).convertFrom((Cursor)localObject3);
-    ((Cursor)localObject3).close();
-    AppMethodBeat.o(109939);
-    return localObject1;
+    AppMethodBeat.i(119559);
+    s.u(paramj, "storyInfo");
+    Log.d(TAG, "storyInfo Insert");
+    paramj = paramj.convertTo();
+    int i = (int)this.db.insert(ptT, "", paramj);
+    Log.d(TAG, s.X("StoryInfo Insert result ", Integer.valueOf(i)));
+    AppMethodBeat.o(119559);
+    return i;
   }
   
-  public final void csu()
+  public final void gGK()
   {
-    AppMethodBeat.i(109958);
-    int i = this.db.delete(sGE, null, null);
-    ab.i(TAG, "dropTable ".concat(String.valueOf(i)));
-    AppMethodBeat.o(109958);
+    AppMethodBeat.i(119579);
+    int i = this.db.delete(ptT, null, null);
+    Log.i(TAG, s.X("dropTable ", Integer.valueOf(i)));
+    AppMethodBeat.o(119579);
   }
   
-  public final List<j> dy(String paramString, int paramInt)
+  public final List<j> hl(String paramString, int paramInt)
   {
-    AppMethodBeat.i(109959);
-    a.f.b.j.q(paramString, "userName");
+    AppMethodBeat.i(119580);
+    s.u(paramString, "userName");
     ArrayList localArrayList = new ArrayList();
-    paramString = "select *,rowid from MMStoryInfo " + bs(paramString, true);
-    paramString = paramString + " AND createTime BETWEEN " + paramInt + " AND " + (86400 + paramInt - 1);
-    paramString = paramString + rDl;
-    paramString = this.db.a(paramString, null, 2);
+    paramString = s.X("select *,rowid from MMStoryInfo ", dd(paramString, true));
+    paramString = s.X(paramString + " AND createTime BETWEEN " + paramInt + " AND " + (86400 + paramInt - 1), QYW);
+    paramString = this.db.rawQuery(paramString, null, 2);
     while (paramString.moveToNext())
     {
       j localj = new j();
-      a.f.b.j.p(paramString, "cu");
+      s.s(paramString, "cu");
       localj.convertFrom(paramString);
       localArrayList.add(localj);
     }
     paramString.close();
     paramString = (List)localArrayList;
-    AppMethodBeat.o(109959);
+    AppMethodBeat.o(119580);
     return paramString;
   }
   
-  public final int e(j paramj)
+  public final j hzC()
   {
-    AppMethodBeat.i(109937);
-    a.f.b.j.q(paramj, "storyInfo");
-    ab.d(TAG, "storyInfo Insert");
-    paramj = paramj.convertTo();
-    int i = (int)this.db.insert(sGE, "", paramj);
-    ab.d(TAG, "StoryInfo Insert result ".concat(String.valueOf(i)));
-    AppMethodBeat.o(109937);
-    return i;
+    AppMethodBeat.i(119561);
+    int i = cn.getSyncServerTimeSecond();
+    Object localObject1 = i.SjL;
+    int j = i.hvz();
+    localObject1 = new j();
+    Object localObject2 = new StringBuilder("select *,rowid from MMStoryInfo  where ").append(this.QZb).append(" and createTime > ").append(i - j).append(" order by ").append(ptT).append('.');
+    Object localObject3 = j.Ste;
+    localObject2 = j.hzz() + " asc limit 1";
+    localObject3 = this.db.rawQuery((String)localObject2, null, 2);
+    Log.d(TAG, s.X("getLastUpload ", localObject2));
+    if (!((Cursor)localObject3).moveToFirst())
+    {
+      ((Cursor)localObject3).close();
+      AppMethodBeat.o(119561);
+      return null;
+    }
+    s.s(localObject3, "cr");
+    ((j)localObject1).convertFrom((Cursor)localObject3);
+    ((Cursor)localObject3).close();
+    AppMethodBeat.o(119561);
+    return localObject1;
   }
   
-  public final List<j> i(String paramString, boolean paramBoolean, int paramInt)
+  public final List<j> l(String paramString, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(109954);
-    a.f.b.j.q(paramString, "userName");
+    AppMethodBeat.i(119574);
+    s.u(paramString, "userName");
     Object localObject1 = (Iterable)a(this, paramString, paramBoolean, paramInt);
     paramString = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
@@ -711,7 +666,7 @@ public final class k
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
-      if (((j)localObject2).cEY().xSM == 0) {}
+      if (((j)localObject2).hzt().abKb == 0) {}
       for (paramInt = 1;; paramInt = 0)
       {
         if (paramInt == 0) {
@@ -722,95 +677,77 @@ public final class k
       }
     }
     paramString = (List)paramString;
-    AppMethodBeat.o(109954);
+    AppMethodBeat.o(119574);
     return paramString;
   }
   
-  public final boolean lR(long paramLong)
+  public final j wa(long paramLong)
   {
-    AppMethodBeat.i(109948);
-    Object localObject = "select *,rowid from MMStoryInfo  where " + sGE + ".storyID = " + paramLong;
-    localObject = this.db.rawQuery((String)localObject, null);
-    a.f.b.j.p(localObject, "cu");
-    int i = ((Cursor)localObject).getCount();
-    ((Cursor)localObject).close();
-    if (i > 0)
+    AppMethodBeat.i(119560);
+    j localj = new j();
+    Object localObject = "select *,rowid from MMStoryInfo  where " + ptT + ".storyID=" + paramLong + " limit 1";
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (((Cursor)localObject).moveToFirst())
     {
-      AppMethodBeat.o(109948);
+      s.s(localObject, "cu");
+      localj.convertFrom((Cursor)localObject);
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(119560);
+      return localj;
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(119560);
+    return null;
+  }
+  
+  public final boolean wc(long paramLong)
+  {
+    AppMethodBeat.i(119576);
+    if (this.db.delete(ptT, "storyID=?", new String[] { s.X("", Long.valueOf(paramLong)) }) > 0)
+    {
+      AppMethodBeat.o(119576);
       return true;
     }
-    AppMethodBeat.o(109948);
+    AppMethodBeat.o(119576);
     return false;
   }
   
-  public final j mR(long paramLong)
+  public final j wd(long paramLong)
   {
-    AppMethodBeat.i(109938);
+    AppMethodBeat.i(119578);
     j localj = new j();
-    Object localObject = "select *,rowid from MMStoryInfo  where " + sGE + ".storyID=" + paramLong + " limit 1";
-    localObject = this.db.a((String)localObject, null, 2);
+    Object localObject = "select *,rowid from MMStoryInfo  WHERE " + ptT + ".storyID=" + paramLong;
+    localObject = this.db.rawQuery((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
-      a.f.b.j.p(localObject, "cu");
+      s.s(localObject, "cu");
       localj.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      AppMethodBeat.o(109938);
+      AppMethodBeat.o(119578);
       return localj;
     }
     ((Cursor)localObject).close();
-    AppMethodBeat.o(109938);
+    AppMethodBeat.o(119578);
     return null;
   }
   
-  public final j mV(long paramLong)
+  public final int we(long paramLong)
   {
-    AppMethodBeat.i(109957);
-    j localj = new j();
-    Object localObject = "select *,rowid from MMStoryInfo  WHERE " + sGE + ".storyID=" + paramLong;
-    localObject = this.db.a((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst())
+    AppMethodBeat.i(119584);
+    j localj = wb(paramLong);
+    if (localj == null)
     {
-      a.f.b.j.p(localObject, "cu");
-      localj.convertFrom((Cursor)localObject);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(109957);
-      return localj;
+      AppMethodBeat.o(119584);
+      return 0;
     }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(109957);
-    return null;
-  }
-  
-  public final int mW(long paramLong)
-  {
-    AppMethodBeat.i(109961);
-    j localj = mT(paramLong);
-    if (localj != null)
-    {
-      int i = localj.field_readCount;
-      AppMethodBeat.o(109961);
-      return i;
-    }
-    AppMethodBeat.o(109961);
-    return 0;
-  }
-  
-  public final boolean x(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(151118);
-    a.f.b.j.q(paramString, "username");
-    boolean bool = mU(paramLong);
-    j localj = new j();
-    localj.field_userName = paramString;
-    localj.field_storyID = paramLong;
-    doNotify("notify_story_info_delete", 1, localj);
-    AppMethodBeat.o(151118);
-    return bool;
+    int i = localj.field_readCount;
+    AppMethodBeat.o(119584);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.k
  * JD-Core Version:    0.7.0.1
  */

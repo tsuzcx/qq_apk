@@ -8,8 +8,8 @@ public final class FaceRsp
   extends JceStruct
 {
   static CommonRsp cache_stRet = new CommonRsp();
-  public int authRet;
-  public CommonRsp stRet;
+  public int authRet = 0;
+  public CommonRsp stRet = null;
   public String url = "";
   
   public FaceRsp() {}
@@ -30,18 +30,20 @@ public final class FaceRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stRet != null) {
-      paramJceOutputStream.write(this.stRet, 0);
+    Object localObject = this.stRet;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.authRet, 1);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 2);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.FaceRsp
  * JD-Core Version:    0.7.0.1
  */

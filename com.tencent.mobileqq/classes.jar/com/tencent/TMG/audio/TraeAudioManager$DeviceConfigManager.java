@@ -22,27 +22,39 @@ class TraeAudioManager$DeviceConfigManager
   
   boolean _addConfig(String paramString, int paramInt)
   {
-    AudioDeviceInterface.LogTraceEntry(" devName:" + paramString + " priority:" + paramInt);
-    TraeAudioManager.DeviceConfigManager.DeviceConfig localDeviceConfig = new TraeAudioManager.DeviceConfigManager.DeviceConfig(this);
-    if (localDeviceConfig.init(paramString, paramInt)) {
-      if (this.deviceConfigs.containsKey(paramString)) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" devName:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" priority:");
+    ((StringBuilder)localObject).append(paramInt);
+    AudioDeviceInterface.LogTraceEntry(((StringBuilder)localObject).toString());
+    localObject = new TraeAudioManager.DeviceConfigManager.DeviceConfig(this);
+    if (((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject).init(paramString, paramInt))
+    {
+      if (this.deviceConfigs.containsKey(paramString))
+      {
         if (QLog.isColorLevel()) {
           QLog.e("TRAE", 0, "err dev exist!");
         }
+        return false;
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return false;
-      this.deviceConfigs.put(paramString, localDeviceConfig);
+      this.deviceConfigs.put(paramString, localObject);
       this.visiableUpdate = true;
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, " n" + getDeviceNumber() + " 0:" + getDeviceName(0));
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append(" n");
+        paramString.append(getDeviceNumber());
+        paramString.append(" 0:");
+        paramString.append(getDeviceName(0));
+        QLog.w("TRAE", 0, paramString.toString());
       }
       AudioDeviceInterface.LogTraceExit();
       return true;
     }
-    QLog.e("TRAE", 0, " err dev init!");
+    if (QLog.isColorLevel()) {
+      QLog.e("TRAE", 0, " err dev init!");
+    }
     return false;
   }
   
@@ -99,29 +111,18 @@ class TraeAudioManager$DeviceConfigManager
   
   public String getAvailabledHighestPriorityDevice()
   {
-    Object localObject1 = null;
     this.mLock.lock();
     Iterator localIterator = this.deviceConfigs.entrySet().iterator();
-    while (localIterator.hasNext())
+    label22:
+    Object localObject2;
+    for (Object localObject1 = null; localIterator.hasNext(); localObject1 = localObject2)
     {
-      Object localObject2 = (Map.Entry)localIterator.next();
+      localObject2 = (Map.Entry)localIterator.next();
       ((Map.Entry)localObject2).getKey();
       ((Map.Entry)localObject2).getValue();
-      TraeAudioManager.DeviceConfigManager.DeviceConfig localDeviceConfig = (TraeAudioManager.DeviceConfigManager.DeviceConfig)((Map.Entry)localObject2).getValue();
-      if ((localDeviceConfig != null) && (localDeviceConfig.getVisible()))
-      {
-        if (localObject1 == null) {
-          localObject2 = localDeviceConfig;
-        }
-        for (;;)
-        {
-          localObject1 = localObject2;
-          break;
-          localObject2 = localDeviceConfig;
-          if (localDeviceConfig.getPriority() < localObject1.getPriority()) {
-            localObject2 = localObject1;
-          }
-        }
+      localObject2 = (TraeAudioManager.DeviceConfigManager.DeviceConfig)((Map.Entry)localObject2).getValue();
+      if ((localObject2 == null) || (!((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject2).getVisible()) || ((localObject1 != null) && (((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject2).getPriority() < localObject1.getPriority()))) {
+        break label22;
       }
     }
     this.mLock.unlock();
@@ -133,29 +134,18 @@ class TraeAudioManager$DeviceConfigManager
   
   public String getAvailabledHighestPriorityDevice(String paramString)
   {
-    Object localObject1 = null;
     this.mLock.lock();
     Iterator localIterator = this.deviceConfigs.entrySet().iterator();
-    while (localIterator.hasNext())
+    label23:
+    Object localObject2;
+    for (Object localObject1 = null; localIterator.hasNext(); localObject1 = localObject2)
     {
-      Object localObject2 = (Map.Entry)localIterator.next();
+      localObject2 = (Map.Entry)localIterator.next();
       ((Map.Entry)localObject2).getKey();
       ((Map.Entry)localObject2).getValue();
-      TraeAudioManager.DeviceConfigManager.DeviceConfig localDeviceConfig = (TraeAudioManager.DeviceConfigManager.DeviceConfig)((Map.Entry)localObject2).getValue();
-      if ((localDeviceConfig != null) && (localDeviceConfig.getVisible()) && (!localDeviceConfig.getDeviceName().equals(paramString)))
-      {
-        if (localObject1 == null) {
-          localObject2 = localDeviceConfig;
-        }
-        for (;;)
-        {
-          localObject1 = localObject2;
-          break;
-          localObject2 = localDeviceConfig;
-          if (localDeviceConfig.getPriority() < localObject1.getPriority()) {
-            localObject2 = localObject1;
-          }
-        }
+      localObject2 = (TraeAudioManager.DeviceConfigManager.DeviceConfig)((Map.Entry)localObject2).getValue();
+      if ((localObject2 == null) || (!((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject2).getVisible()) || (((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject2).getDeviceName().equals(paramString)) || ((localObject1 != null) && (((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject2).getPriority() < localObject1.getPriority()))) {
+        break label23;
       }
     }
     this.mLock.unlock();
@@ -182,12 +172,13 @@ class TraeAudioManager$DeviceConfigManager
   {
     this.mLock.lock();
     Object localObject = (TraeAudioManager.DeviceConfigManager.DeviceConfig)this.deviceConfigs.get(this.connectingDevice);
-    if ((localObject != null) && (((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject).getVisible())) {}
-    for (localObject = this.connectingDevice;; localObject = null)
-    {
-      this.mLock.unlock();
-      return localObject;
+    if ((localObject != null) && (((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject).getVisible())) {
+      localObject = this.connectingDevice;
+    } else {
+      localObject = null;
     }
+    this.mLock.unlock();
+    return localObject;
   }
   
   public String getDeviceName(int paramInt)
@@ -195,23 +186,25 @@ class TraeAudioManager$DeviceConfigManager
     this.mLock.lock();
     Object localObject = this.deviceConfigs.entrySet().iterator();
     int i = 0;
-    Map.Entry localEntry;
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject).hasNext())
     {
-      localEntry = (Map.Entry)((Iterator)localObject).next();
-      if (i != paramInt) {}
-    }
-    for (localObject = (TraeAudioManager.DeviceConfigManager.DeviceConfig)localEntry.getValue();; localObject = null)
-    {
-      if (localObject != null) {}
-      for (localObject = ((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject).getDeviceName();; localObject = "DEVICE_NONE")
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      if (i == paramInt)
       {
-        this.mLock.unlock();
-        return localObject;
-        i += 1;
-        break;
+        localObject = (TraeAudioManager.DeviceConfigManager.DeviceConfig)localEntry.getValue();
+        break label70;
       }
+      i += 1;
     }
+    localObject = null;
+    label70:
+    if (localObject != null) {
+      localObject = ((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject).getDeviceName();
+    } else {
+      localObject = "DEVICE_NONE";
+    }
+    this.mLock.unlock();
+    return localObject;
   }
   
   public int getDeviceNumber()
@@ -234,12 +227,14 @@ class TraeAudioManager$DeviceConfigManager
   {
     this.mLock.lock();
     paramString = (TraeAudioManager.DeviceConfigManager.DeviceConfig)this.deviceConfigs.get(paramString);
-    if (paramString != null) {}
-    for (int i = paramString.getPriority();; i = -1)
-    {
-      this.mLock.unlock();
-      return i;
+    int i;
+    if (paramString != null) {
+      i = paramString.getPriority();
+    } else {
+      i = -1;
     }
+    this.mLock.unlock();
+    return i;
   }
   
   public HashMap<String, Object> getSnapParams()
@@ -265,54 +260,75 @@ class TraeAudioManager$DeviceConfigManager
   {
     this.mLock.lock();
     paramString = (TraeAudioManager.DeviceConfigManager.DeviceConfig)this.deviceConfigs.get(paramString);
-    if (paramString != null) {}
-    for (boolean bool = paramString.getVisible();; bool = false)
-    {
-      this.mLock.unlock();
-      return bool;
+    boolean bool;
+    if (paramString != null) {
+      bool = paramString.getVisible();
+    } else {
+      bool = false;
     }
+    this.mLock.unlock();
+    return bool;
   }
   
   public boolean init(String paramString)
   {
-    AudioDeviceInterface.LogTraceEntry(" strConfigs:" + paramString);
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    do
-    {
-      String str;
-      do
-      {
-        return false;
-        str = paramString.replace("\n", "").replace("\r", "");
-      } while ((str == null) || (str.length() <= 0));
-      paramString = str;
-      if (str.indexOf(";") < 0) {
-        paramString = str + ";";
-      }
-      paramString = paramString.split(";");
-    } while ((paramString == null) || (1 > paramString.length));
-    this.mLock.lock();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" strConfigs:");
+    ((StringBuilder)localObject).append(paramString);
+    AudioDeviceInterface.LogTraceEntry(((StringBuilder)localObject).toString());
     int i = 0;
-    while (i < paramString.length)
+    if (paramString != null)
     {
-      _addConfig(paramString[i], i);
-      i += 1;
+      if (paramString.length() <= 0) {
+        return false;
+      }
+      localObject = paramString.replace("\n", "").replace("\r", "");
+      if (localObject != null)
+      {
+        if (((String)localObject).length() <= 0) {
+          return false;
+        }
+        paramString = (String)localObject;
+        if (((String)localObject).indexOf(";") < 0)
+        {
+          paramString = new StringBuilder();
+          paramString.append((String)localObject);
+          paramString.append(";");
+          paramString = paramString.toString();
+        }
+        paramString = paramString.split(";");
+        if (paramString != null)
+        {
+          if (1 > paramString.length) {
+            return false;
+          }
+          this.mLock.lock();
+          while (i < paramString.length)
+          {
+            _addConfig(paramString[i], i);
+            i += 1;
+          }
+          this.mLock.unlock();
+          this.this$0.printDevices();
+          return true;
+        }
+      }
     }
-    this.mLock.unlock();
-    this.this$0.printDevices();
-    return true;
+    return false;
   }
   
   public boolean isConnected(String paramString)
   {
     this.mLock.lock();
     TraeAudioManager.DeviceConfigManager.DeviceConfig localDeviceConfig = (TraeAudioManager.DeviceConfigManager.DeviceConfig)this.deviceConfigs.get(paramString);
-    if ((localDeviceConfig != null) && (localDeviceConfig.getVisible())) {}
-    for (boolean bool = this.connectedDevice.equals(paramString);; bool = false)
-    {
-      this.mLock.unlock();
-      return bool;
+    boolean bool;
+    if ((localDeviceConfig != null) && (localDeviceConfig.getVisible())) {
+      bool = this.connectedDevice.equals(paramString);
+    } else {
+      bool = false;
     }
+    this.mLock.unlock();
+    return bool;
   }
   
   public void resetVisiableUpdateFlag()
@@ -340,67 +356,81 @@ class TraeAudioManager$DeviceConfigManager
   public boolean setConnected(String paramString)
   {
     this.mLock.lock();
-    TraeAudioManager.DeviceConfigManager.DeviceConfig localDeviceConfig = (TraeAudioManager.DeviceConfigManager.DeviceConfig)this.deviceConfigs.get(paramString);
-    if ((localDeviceConfig != null) && (localDeviceConfig.getVisible()))
+    Object localObject = (TraeAudioManager.DeviceConfigManager.DeviceConfig)this.deviceConfigs.get(paramString);
+    boolean bool;
+    if ((localObject != null) && (((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject).getVisible()))
     {
-      if ((this.connectedDevice != null) && (!this.connectedDevice.equals(paramString))) {
+      localObject = this.connectedDevice;
+      if ((localObject != null) && (!((String)localObject).equals(paramString))) {
         this.prevConnectedDevice = this.connectedDevice;
       }
       this.connectedDevice = paramString;
       this.connectingDevice = "";
+      bool = true;
     }
-    for (boolean bool = true;; bool = false)
+    else
     {
-      this.mLock.unlock();
-      return bool;
+      bool = false;
     }
+    this.mLock.unlock();
+    return bool;
   }
   
   public boolean setConnecting(String paramString)
   {
     this.mLock.lock();
     TraeAudioManager.DeviceConfigManager.DeviceConfig localDeviceConfig = (TraeAudioManager.DeviceConfigManager.DeviceConfig)this.deviceConfigs.get(paramString);
-    if ((localDeviceConfig != null) && (localDeviceConfig.getVisible())) {
-      this.connectingDevice = paramString;
-    }
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((localDeviceConfig != null) && (localDeviceConfig.getVisible()))
     {
-      this.mLock.unlock();
-      return bool;
+      this.connectingDevice = paramString;
+      bool = true;
     }
+    else
+    {
+      bool = false;
+    }
+    this.mLock.unlock();
+    return bool;
   }
   
   public boolean setVisible(String paramString, boolean paramBoolean)
   {
     this.mLock.lock();
     Object localObject = (TraeAudioManager.DeviceConfigManager.DeviceConfig)this.deviceConfigs.get(paramString);
+    boolean bool2 = true;
+    boolean bool1;
     if ((localObject != null) && (((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject).getVisible() != paramBoolean))
     {
       ((TraeAudioManager.DeviceConfigManager.DeviceConfig)localObject).setVisible(paramBoolean);
       this.visiableUpdate = true;
+      bool1 = bool2;
       if (QLog.isColorLevel())
       {
-        localObject = new StringBuilder().append(" ++setVisible:").append(paramString);
-        if (!paramBoolean) {
-          break label98;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" ++setVisible:");
+        ((StringBuilder)localObject).append(paramString);
+        if (paramBoolean) {
+          paramString = " Y";
+        } else {
+          paramString = " N";
         }
-        paramString = " Y";
-        QLog.w("TRAE", 0, paramString);
+        ((StringBuilder)localObject).append(paramString);
+        QLog.w("TRAE", 0, ((StringBuilder)localObject).toString());
+        bool1 = bool2;
       }
     }
-    for (paramBoolean = true;; paramBoolean = false)
+    else
     {
-      this.mLock.unlock();
-      return paramBoolean;
-      label98:
-      paramString = " N";
-      break;
+      bool1 = false;
     }
+    this.mLock.unlock();
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.audio.TraeAudioManager.DeviceConfigManager
  * JD-Core Version:    0.7.0.1
  */

@@ -39,11 +39,13 @@ public final class UploadRoute
   
   public boolean isDuplicate(UploadRoute paramUploadRoute)
   {
-    if (paramUploadRoute == null) {}
-    while ((!this.mIp.equals(paramUploadRoute.getIp())) || (this.mPort != paramUploadRoute.getPort())) {
+    if (paramUploadRoute == null) {
       return false;
     }
-    return true;
+    if (this.mIp.equals(paramUploadRoute.getIp())) {
+      return this.mPort == paramUploadRoute.getPort();
+    }
+    return false;
   }
   
   public void setIp(String paramString)
@@ -63,27 +65,32 @@ public final class UploadRoute
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("(ip:");
-    if (this.mIp == null)
-    {
-      str = "null";
-      localStringBuilder = localStringBuilder.append(str).append(", port:").append(this.mPort).append(", ");
-      if (this.mRouteCategory != null) {
-        break label78;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(ip:");
+    String str2 = this.mIp;
+    String str1 = "null";
+    Object localObject = str2;
+    if (str2 == null) {
+      localObject = "null";
     }
-    label78:
-    for (String str = "null";; str = this.mRouteCategory.getDesc())
-    {
-      return str + ")";
-      str = this.mIp;
-      break;
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", port:");
+    localStringBuilder.append(this.mPort);
+    localStringBuilder.append(", ");
+    localObject = this.mRouteCategory;
+    if (localObject == null) {
+      localObject = str1;
+    } else {
+      localObject = ((IUploadRouteStrategy.RouteCategoryType)localObject).getDesc();
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.route.UploadRoute
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,32 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import android.os.Bundle;
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.a.f;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.bx;
 
 final class EmojiStoreV2DesignerUI$9
-  extends ak
+  implements az.b.a
 {
   EmojiStoreV2DesignerUI$9(EmojiStoreV2DesignerUI paramEmojiStoreV2DesignerUI) {}
   
-  public final void handleMessage(Message paramMessage)
+  public final void getContactCallBack(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(53587);
-    switch (paramMessage.what)
+    AppMethodBeat.i(109149);
+    Log.i("MicroMsg.emoji.EmojiStoreV2DesignerUI", "getContactCallBack username:%s,succ:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
     {
+      EmojiStoreV2DesignerUI.a(this.xWy, ((n)h.ax(n.class)).bzA().JE(paramString));
+      EmojiStoreV2DesignerUI.a(this.xWy);
     }
-    for (;;)
-    {
-      AppMethodBeat.o(53587);
-      return;
-      EmojiStoreV2DesignerUI.b(this.lpI);
-      AppMethodBeat.o(53587);
-      return;
-      this.lpI.gM(false);
-      AppMethodBeat.o(53587);
-      return;
-      EmojiStoreV2DesignerUI.c(this.lpI);
-      AppMethodBeat.o(53587);
-      return;
-      if ((EmojiStoreV2DesignerUI.d(this.lpI) == null) || (paramMessage.getData() == null))
-      {
-        AppMethodBeat.o(53587);
-        return;
-      }
-      String str = paramMessage.getData().getString("product_id");
-      if (str == null)
-      {
-        AppMethodBeat.o(53587);
-        return;
-      }
-      int i = paramMessage.getData().getInt("progress");
-      EmojiStoreV2DesignerUI.d(this.lpI).bY(str, i);
-      AppMethodBeat.o(53587);
-      return;
-      if ((EmojiStoreV2DesignerUI.d(this.lpI) == null) || (paramMessage.getData() == null))
-      {
-        AppMethodBeat.o(53587);
-        return;
-      }
-      str = paramMessage.getData().getString("product_id");
-      if (str == null)
-      {
-        AppMethodBeat.o(53587);
-        return;
-      }
-      i = paramMessage.getData().getInt("status");
-      EmojiStoreV2DesignerUI.d(this.lpI).bX(str, i);
-    }
+    AppMethodBeat.o(109149);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2DesignerUI.9
  * JD-Core Version:    0.7.0.1
  */

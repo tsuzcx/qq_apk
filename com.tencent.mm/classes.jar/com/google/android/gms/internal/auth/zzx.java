@@ -18,15 +18,15 @@ public final class zzx
   public zzx(Context paramContext, Looper paramLooper, ClientSettings paramClientSettings, zzq paramzzq, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
     super(paramContext, paramLooper, 128, paramClientSettings, paramConnectionCallbacks, paramOnConnectionFailedListener);
-    AppMethodBeat.i(77153);
+    AppMethodBeat.i(10812);
     if (paramzzq == null)
     {
       this.zzcf = new Bundle();
-      AppMethodBeat.o(77153);
+      AppMethodBeat.o(10812);
       return;
     }
     paramContext = new NoSuchMethodError();
-    AppMethodBeat.o(77153);
+    AppMethodBeat.o(10812);
     throw paramContext;
   }
   
@@ -52,7 +52,7 @@ public final class zzx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzx
  * JD-Core Version:    0.7.0.1
  */

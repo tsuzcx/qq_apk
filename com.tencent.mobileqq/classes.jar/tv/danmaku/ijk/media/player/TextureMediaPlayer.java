@@ -31,19 +31,16 @@ public class TextureMediaPlayer
   
   public void releaseSurfaceTexture()
   {
-    if (this.mSurfaceTexture != null)
+    SurfaceTexture localSurfaceTexture = this.mSurfaceTexture;
+    if (localSurfaceTexture != null)
     {
-      if (this.mSurfaceTextureHost == null) {
-        break label33;
+      ISurfaceTextureHost localISurfaceTextureHost = this.mSurfaceTextureHost;
+      if (localISurfaceTextureHost != null) {
+        localISurfaceTextureHost.releaseSurfaceTexture(localSurfaceTexture);
+      } else {
+        localSurfaceTexture.release();
       }
-      this.mSurfaceTextureHost.releaseSurfaceTexture(this.mSurfaceTexture);
-    }
-    for (;;)
-    {
       this.mSurfaceTexture = null;
-      return;
-      label33:
-      this.mSurfaceTexture.release();
     }
   }
   
@@ -89,7 +86,7 @@ public class TextureMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.TextureMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

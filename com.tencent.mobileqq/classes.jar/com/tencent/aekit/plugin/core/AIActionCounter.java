@@ -14,31 +14,20 @@ public class AIActionCounter
   
   private static void clearAction(int paramInt)
   {
-    AIActionCounter.ActionCounter localActionCounter2 = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(paramInt));
-    AIActionCounter.ActionCounter localActionCounter1 = localActionCounter2;
-    if (localActionCounter2 == null) {
-      localActionCounter1 = new AIActionCounter.ActionCounter(0, -1L);
+    AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(paramInt));
+    if (localActionCounter != null) {
+      localActionCounter.clear();
     }
-    localActionCounter1.clear();
   }
   
   public static void clearAction(AEDetectorType paramAEDetectorType)
   {
-    switch (AIActionCounter.1.$SwitchMap$com$tencent$aekit$plugin$core$AEDetectorType[paramAEDetectorType.ordinal()])
+    int i = AIActionCounter.1.$SwitchMap$com$tencent$aekit$plugin$core$AEDetectorType[paramAEDetectorType.ordinal()];
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      return;
-      paramAEDetectorType = PTHandAttr.handTypes;
-      int j = paramAEDetectorType.length;
-      int i = 0;
-      while (i < j)
-      {
-        clearAction(paramAEDetectorType[i]);
-        i += 1;
+      if (i != 2) {
+        return;
       }
-      continue;
       Iterator localIterator = commonActionCounterMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
@@ -48,16 +37,22 @@ public class AIActionCounter
         }
       }
     }
+    paramAEDetectorType = PTHandAttr.handTypes;
+    int j = paramAEDetectorType.length;
+    i = 0;
+    while (i < j)
+    {
+      clearAction(paramAEDetectorType[i]);
+      i += 1;
+    }
   }
   
   private static void clearAction(String paramString)
   {
-    AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)commonActionCounterMap.get(paramString);
-    paramString = localActionCounter;
-    if (localActionCounter == null) {
-      paramString = new AIActionCounter.ActionCounter(0, -1L);
+    paramString = (AIActionCounter.ActionCounter)commonActionCounterMap.get(paramString);
+    if (paramString != null) {
+      paramString.clear();
     }
-    paramString.clear();
   }
   
   public static void clearAll()
@@ -69,90 +64,67 @@ public class AIActionCounter
   public static Map<Integer, Integer> getActions(AEDetectorType paramAEDetectorType)
   {
     HashMap localHashMap = new HashMap();
-    switch (AIActionCounter.1.$SwitchMap$com$tencent$aekit$plugin$core$AEDetectorType[paramAEDetectorType.ordinal()])
-    {
-    default: 
+    if (AIActionCounter.1.$SwitchMap$com$tencent$aekit$plugin$core$AEDetectorType[paramAEDetectorType.ordinal()] != 1) {
       return localHashMap;
     }
     paramAEDetectorType = PTHandAttr.handTypes;
     int j = paramAEDetectorType.length;
     int i = 0;
-    label48:
-    int k;
-    if (i < j)
+    while (i < j)
     {
-      k = paramAEDetectorType[i];
+      int k = paramAEDetectorType[i];
       AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(k));
-      if (localActionCounter == null) {
-        break label106;
+      if (localActionCounter != null) {
+        localHashMap.put(Integer.valueOf(k), Integer.valueOf(localActionCounter.count));
+      } else {
+        localHashMap.put(Integer.valueOf(k), Integer.valueOf(0));
       }
-      localHashMap.put(Integer.valueOf(k), Integer.valueOf(localActionCounter.count));
-    }
-    for (;;)
-    {
       i += 1;
-      break label48;
-      break;
-      label106:
-      localHashMap.put(Integer.valueOf(k), Integer.valueOf(0));
     }
+    return localHashMap;
   }
   
   public static Map<String, Integer> getCommonActions(AEDetectorType paramAEDetectorType)
   {
     HashMap localHashMap = new HashMap();
-    switch (AIActionCounter.1.$SwitchMap$com$tencent$aekit$plugin$core$AEDetectorType[paramAEDetectorType.ordinal()])
-    {
-    }
-    for (;;)
-    {
+    if (AIActionCounter.1.$SwitchMap$com$tencent$aekit$plugin$core$AEDetectorType[paramAEDetectorType.ordinal()] != 2) {
       return localHashMap;
-      Iterator localIterator = commonActionCounterMap.entrySet().iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = commonActionCounterMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      String str = (String)((Map.Entry)localObject).getKey();
+      if (str.startsWith(paramAEDetectorType.name()))
       {
-        Object localObject = (Map.Entry)localIterator.next();
-        String str = (String)((Map.Entry)localObject).getKey();
-        if (str.startsWith(paramAEDetectorType.name()))
-        {
-          str = str.substring(paramAEDetectorType.value.length());
-          localObject = (AIActionCounter.ActionCounter)((Map.Entry)localObject).getValue();
-          if (localObject != null) {
-            localHashMap.put(str, Integer.valueOf(((AIActionCounter.ActionCounter)localObject).count));
-          } else {
-            localHashMap.put(str, Integer.valueOf(0));
-          }
+        str = str.substring(paramAEDetectorType.value.length());
+        localObject = (AIActionCounter.ActionCounter)((Map.Entry)localObject).getValue();
+        if (localObject != null) {
+          localHashMap.put(str, Integer.valueOf(((AIActionCounter.ActionCounter)localObject).count));
+        } else {
+          localHashMap.put(str, Integer.valueOf(0));
         }
       }
     }
+    return localHashMap;
   }
   
   private static void lockAction(int paramInt)
   {
-    AIActionCounter.ActionCounter localActionCounter2 = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(paramInt));
-    AIActionCounter.ActionCounter localActionCounter1 = localActionCounter2;
-    if (localActionCounter2 == null) {
-      localActionCounter1 = new AIActionCounter.ActionCounter(0, -1L);
+    AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)actionCounterList.get(Integer.valueOf(paramInt));
+    if (localActionCounter != null) {
+      localActionCounter.lockCounter();
     }
-    localActionCounter1.lockCounter();
   }
   
   public static void lockAction(AEDetectorType paramAEDetectorType)
   {
-    switch (AIActionCounter.1.$SwitchMap$com$tencent$aekit$plugin$core$AEDetectorType[paramAEDetectorType.ordinal()])
+    int i = AIActionCounter.1.$SwitchMap$com$tencent$aekit$plugin$core$AEDetectorType[paramAEDetectorType.ordinal()];
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      return;
-      paramAEDetectorType = PTHandAttr.handTypes;
-      int j = paramAEDetectorType.length;
-      int i = 0;
-      while (i < j)
-      {
-        lockAction(paramAEDetectorType[i]);
-        i += 1;
+      if (i != 2) {
+        return;
       }
-      continue;
       Iterator localIterator = commonActionCounterMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
@@ -162,16 +134,22 @@ public class AIActionCounter
         }
       }
     }
+    paramAEDetectorType = PTHandAttr.handTypes;
+    int j = paramAEDetectorType.length;
+    i = 0;
+    while (i < j)
+    {
+      lockAction(paramAEDetectorType[i]);
+      i += 1;
+    }
   }
   
   private static void lockAction(String paramString)
   {
-    AIActionCounter.ActionCounter localActionCounter = (AIActionCounter.ActionCounter)commonActionCounterMap.get(paramString);
-    paramString = localActionCounter;
-    if (localActionCounter == null) {
-      paramString = new AIActionCounter.ActionCounter(0, -1L);
+    paramString = (AIActionCounter.ActionCounter)commonActionCounterMap.get(paramString);
+    if (paramString != null) {
+      paramString.lockCounter();
     }
-    paramString.lockCounter();
   }
   
   public static void updateAction(int paramInt)
@@ -214,7 +192,7 @@ public class AIActionCounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.plugin.core.AIActionCounter
  * JD-Core Version:    0.7.0.1
  */

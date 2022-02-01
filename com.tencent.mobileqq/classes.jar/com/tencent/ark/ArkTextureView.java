@@ -19,7 +19,7 @@ public class ArkTextureView
   extends FrameLayout
   implements View.OnLongClickListener, View.OnTouchListener, ArkViewImplement.ArkViewInterface
 {
-  private static final ArkEnvironmentManager ENV = ArkEnvironmentManager.getInstance();
+  private static final ArkEnvironmentManager ENV = ;
   protected static String TAG = "ArkApp.ArkTextureView";
   private View mArkView;
   private Context mContext;
@@ -38,31 +38,25 @@ public class ArkTextureView
   private void prepareForRendering(ArkViewModel paramArkViewModel)
   {
     boolean bool = paramArkViewModel.isGpuRenderingEnabled();
-    if (bool != this.mIsGpuRendering)
-    {
+    if (bool != this.mIsGpuRendering) {
       this.mIsGpuRendering = bool;
-      if (this.mArkView != null)
-      {
-        removeAllViews();
-        this.mArkView = null;
-      }
-      if (!this.mIsGpuRendering) {
-        break label101;
-      }
+    } else if (this.mArkView != null) {
+      return;
     }
-    label101:
-    for (paramArkViewModel = new ArkTextureViewImpl(this.mContext, this.mViewImpl);; paramArkViewModel = new ArkSoftwareView(this.mContext, this.mViewImpl))
+    if (this.mArkView != null)
     {
-      this.mArkView = paramArkViewModel;
-      paramArkViewModel = new FrameLayout.LayoutParams(-1, -1);
-      addView(this.mArkView, paramArkViewModel);
-      this.mTextureViewInterface = ((ArkTextureView.ArkTextureViewInterface)this.mArkView);
-      return;
-      if (this.mArkView == null) {
-        break;
-      }
-      return;
+      removeAllViews();
+      this.mArkView = null;
     }
+    if (this.mIsGpuRendering) {
+      paramArkViewModel = new ArkTextureViewImpl(this.mContext, this.mViewImpl);
+    } else {
+      paramArkViewModel = new ArkSoftwareView(this.mContext, this.mViewImpl);
+    }
+    this.mArkView = paramArkViewModel;
+    paramArkViewModel = new FrameLayout.LayoutParams(-1, -1);
+    addView(this.mArkView, paramArkViewModel);
+    this.mTextureViewInterface = ((ArkTextureView.ArkTextureViewInterface)this.mArkView);
   }
   
   public void checkSurfaceAvailable()
@@ -235,16 +229,16 @@ public class ArkTextureView
     try
     {
       localJSONObject.put("pressed", paramBoolean);
-      this.mViewImpl.doOnViewEvent("ViewPressed", localJSONObject.toString());
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        ENV.logE(TAG, "setViewPressed JSONException e:" + localJSONException.toString());
-      }
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setViewPressed JSONException e:");
+      localStringBuilder.append(localJSONException.toString());
+      Logger.logE(str, localStringBuilder.toString());
     }
+    this.mViewImpl.doOnViewEvent("ViewPressed", localJSONObject.toString());
   }
   
   public void setViewRect(int paramInt1, int paramInt2)
@@ -254,7 +248,7 @@ public class ArkTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkTextureView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,146 +1,90 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public final class w
-  extends com.tencent.mm.bv.a
 {
-  public String onz;
-  public String ooB;
-  public String ooC;
-  public String ooD;
-  public String ooE;
-  public long ooo;
-  public String oop;
-  public String userName;
+  private Set<String> Kta;
+  private Object lock;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public w()
   {
-    AppMethodBeat.i(56615);
-    if (paramInt == 0)
+    AppMethodBeat.i(65225);
+    this.lock = new Object();
+    this.Kta = new HashSet();
+    Object localObject1 = (String)h.baE().ban().get(at.a.acPA, "");
+    if (!Util.isNullOrNil((String)localObject1))
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.ooB != null) {
-        paramVarArgs.e(1, this.ooB);
-      }
-      if (this.ooC != null) {
-        paramVarArgs.e(2, this.ooC);
-      }
-      paramVarArgs.am(3, this.ooo);
-      if (this.oop != null) {
-        paramVarArgs.e(4, this.oop);
-      }
-      if (this.ooD != null) {
-        paramVarArgs.e(5, this.ooD);
-      }
-      if (this.onz != null) {
-        paramVarArgs.e(6, this.onz);
-      }
-      if (this.ooE != null) {
-        paramVarArgs.e(7, this.ooE);
-      }
-      if (this.userName != null) {
-        paramVarArgs.e(8, this.userName);
-      }
-      AppMethodBeat.o(56615);
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.ooB == null) {
-        break label626;
+      localObject1 = ((String)localObject1).split(",");
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        this.Kta.add(localObject2);
+        i += 1;
       }
     }
-    label626:
-    for (paramInt = e.a.a.b.b.a.f(1, this.ooB) + 0;; paramInt = 0)
+    AppMethodBeat.o(65225);
+  }
+  
+  public final void aKA(String paramString)
+  {
+    AppMethodBeat.i(65227);
+    synchronized (this.lock)
     {
-      int i = paramInt;
-      if (this.ooC != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.ooC);
+      this.Kta.remove(paramString);
+      paramString = new StringBuilder();
+      Iterator localIterator = this.Kta.iterator();
+      if (localIterator.hasNext()) {
+        paramString.append((String)localIterator.next()).append(",");
       }
-      i += e.a.a.b.b.a.p(3, this.ooo);
-      paramInt = i;
-      if (this.oop != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.oop);
-      }
-      i = paramInt;
-      if (this.ooD != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.ooD);
-      }
-      paramInt = i;
-      if (this.onz != null) {
-        paramInt = i + e.a.a.b.b.a.f(6, this.onz);
-      }
-      i = paramInt;
-      if (this.ooE != null) {
-        i = paramInt + e.a.a.b.b.a.f(7, this.ooE);
-      }
-      paramInt = i;
-      if (this.userName != null) {
-        paramInt = i + e.a.a.b.b.a.f(8, this.userName);
-      }
-      AppMethodBeat.o(56615);
-      return paramInt;
-      if (paramInt == 2)
+    }
+    if (paramString.length() == 0) {}
+    for (paramString = paramString.toString();; paramString = paramString.substring(0, paramString.length() - 1))
+    {
+      h.baE().ban().set(at.a.acPA, paramString);
+      AppMethodBeat.o(65227);
+      return;
+    }
+  }
+  
+  public final boolean aKz(String paramString)
+  {
+    AppMethodBeat.i(65226);
+    synchronized (this.lock)
+    {
+      if (!this.Kta.contains(paramString))
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(56615);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        w localw = (w)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        StringBuilder localStringBuilder = new StringBuilder((String)h.baE().ban().get(at.a.acPA, ""));
+        if (this.Kta.size() <= 0)
         {
-        default: 
-          AppMethodBeat.o(56615);
-          return -1;
-        case 1: 
-          localw.ooB = locala.CLY.readString();
-          AppMethodBeat.o(56615);
-          return 0;
-        case 2: 
-          localw.ooC = locala.CLY.readString();
-          AppMethodBeat.o(56615);
-          return 0;
-        case 3: 
-          localw.ooo = locala.CLY.sm();
-          AppMethodBeat.o(56615);
-          return 0;
-        case 4: 
-          localw.oop = locala.CLY.readString();
-          AppMethodBeat.o(56615);
-          return 0;
-        case 5: 
-          localw.ooD = locala.CLY.readString();
-          AppMethodBeat.o(56615);
-          return 0;
-        case 6: 
-          localw.onz = locala.CLY.readString();
-          AppMethodBeat.o(56615);
-          return 0;
-        case 7: 
-          localw.ooE = locala.CLY.readString();
-          AppMethodBeat.o(56615);
-          return 0;
+          localStringBuilder.append(paramString);
+          h.baE().ban().set(at.a.acPA, localStringBuilder.toString());
+          boolean bool = this.Kta.add(paramString);
+          AppMethodBeat.o(65226);
+          return bool;
         }
-        localw.userName = locala.CLY.readString();
-        AppMethodBeat.o(56615);
-        return 0;
+        localStringBuilder.append(",").append(paramString);
       }
-      AppMethodBeat.o(56615);
-      return -1;
     }
+    Log.i("MicroMsg.LuckyMoneyMsg", "has contains msg, %s", new Object[] { paramString });
+    AppMethodBeat.o(65226);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.w
  * JD-Core Version:    0.7.0.1
  */

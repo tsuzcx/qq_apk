@@ -1,38 +1,36 @@
 package cooperation.qzone;
 
 import android.graphics.Bitmap;
-import android.os.Build.VERSION;
-import bjdt;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public final class QZoneHelper$4
+final class QZoneHelper$4
   implements Runnable
 {
-  public QZoneHelper$4(QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2, Bitmap paramBitmap) {}
+  QZoneHelper$4(Bitmap paramBitmap, AppRuntime paramAppRuntime, String paramString1, long paramLong, String paramString2) {}
   
   public void run()
   {
     try
     {
-      if (Build.VERSION.SDK_INT < 26)
-      {
-        bjdt.a(bjdt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidGraphicsBitmap);
-        return;
-      }
-      bjdt.b(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+      QZoneHelper.access$000(this.val$albumCoverBmp, this.val$app, this.val$albumId, this.val$ownerUin, this.val$albumName);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      QLog.e("QZoneHelper", 2, "updateAlbumShortCut error! exception e = " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createAlbumShortCut error! exception e = ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("QZoneHelper", 2, localStringBuilder.toString());
+      ToastUtil.a().a(2131886708);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.4
  * JD-Core Version:    0.7.0.1
  */

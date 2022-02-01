@@ -10,16 +10,14 @@ import android.view.ViewGroup;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import wcr;
-import wcs;
-import wct;
 
 public class QGSettingFragment
   extends IphoneTitleBarFragment
 {
-  private static boolean a;
-  private static boolean b;
-  private static boolean c;
+  private static boolean d = false;
+  private static boolean e = false;
+  private static boolean f = false;
+  private static boolean g = false;
   protected FormSwitchItem a;
   protected FormSwitchItem b;
   protected FormSwitchItem c;
@@ -29,7 +27,7 @@ public class QGSettingFragment
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit();
     localEditor.putBoolean("qg_sdcard_so_local", paramBoolean);
     localEditor.apply();
-    jdField_a_of_type_Boolean = paramBoolean;
+    d = paramBoolean;
   }
   
   public static boolean a()
@@ -42,7 +40,7 @@ public class QGSettingFragment
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit();
     localEditor.putBoolean("qg_libs_so_local", paramBoolean);
     localEditor.apply();
-    jdField_b_of_type_Boolean = paramBoolean;
+    e = paramBoolean;
   }
   
   public static boolean b()
@@ -55,7 +53,7 @@ public class QGSettingFragment
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit();
     localEditor.putBoolean("qg_js_debug", paramBoolean);
     localEditor.apply();
-    jdField_c_of_type_Boolean = paramBoolean;
+    f = paramBoolean;
   }
   
   public static boolean c()
@@ -63,26 +61,26 @@ public class QGSettingFragment
     return false;
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131376218));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369415));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131368993));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(b());
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new wcr(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(a());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new wcs(this));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(c());
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new wct(this));
+    this.a = ((FormSwitchItem)this.mContentView.findViewById(2131445378));
+    this.b = ((FormSwitchItem)this.mContentView.findViewById(2131437165));
+    this.c = ((FormSwitchItem)this.mContentView.findViewById(2131436682));
+    this.b.setChecked(b());
+    this.b.setOnCheckedChangeListener(new QGSettingFragment.1(this));
+    this.a.setChecked(a());
+    this.a.setOnCheckedChangeListener(new QGSettingFragment.2(this));
+    this.c.setChecked(c());
+    this.c.setOnCheckedChangeListener(new QGSettingFragment.3(this));
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131561554;
+    return 2131628134;
   }
   
-  public View onCreateCenterView()
+  protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
     setTitle("QG设置");
@@ -91,7 +89,7 @@ public class QGSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QGSettingFragment
  * JD-Core Version:    0.7.0.1
  */

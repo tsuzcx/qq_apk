@@ -1,28 +1,24 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.ys;
+import com.tencent.mm.sdk.event.IListener;
 
-final class SnsCommentDetailUI$18
-  implements MenuItem.OnMenuItemClickListener
+class SnsCommentDetailUI$18
+  extends IListener<ys>
 {
-  SnsCommentDetailUI$18(SnsCommentDetailUI paramSnsCommentDetailUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  SnsCommentDetailUI$18(SnsCommentDetailUI paramSnsCommentDetailUI, q paramq)
   {
-    AppMethodBeat.i(38797);
-    if (SnsCommentDetailUI.c(this.rPu) != null) {
-      SnsCommentDetailUI.c(this.rPu).lC(false);
-    }
-    this.rPu.finish();
-    AppMethodBeat.o(38797);
-    return true;
+    super(paramq);
+    AppMethodBeat.i(308275);
+    this.__eventId = ys.class.getName().hashCode();
+    AppMethodBeat.o(308275);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.18
  * JD-Core Version:    0.7.0.1
  */

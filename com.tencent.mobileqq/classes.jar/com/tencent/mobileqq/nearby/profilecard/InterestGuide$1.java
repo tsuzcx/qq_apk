@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import auwq;
-import avjr;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.lang.ref.WeakReference;
 
-public final class InterestGuide$1
+final class InterestGuide$1
   implements Runnable
 {
   public void run()
   {
-    if (((Boolean)auwq.a(this.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.TRUE)).booleanValue())
+    if (((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.a, "interest_guide_key", Boolean.TRUE)).booleanValue())
     {
-      avjr.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(new avjr(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int));
-      avjr.jdField_a_of_type_JavaLangBoolean = Boolean.TRUE;
+      InterestGuide.c = new WeakReference(new InterestGuide(this.a, this.b, this.c));
+      InterestGuide.a = Boolean.TRUE;
       return;
     }
-    avjr.jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
+    InterestGuide.a = Boolean.FALSE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.InterestGuide.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MakeFriendsCard
   extends JceStruct
@@ -13,23 +14,23 @@ public final class MakeFriendsCard
   static byte[] cache_vBackground;
   static byte[] cache_vQQFaceID;
   static ArrayList<TagInfo> cache_vTags;
-  public byte bSingle;
+  public byte bSingle = 0;
   public int eUserIdentityType = UserIdentityType.UserIdentityType_Nomal.value();
-  public int iFaceNum;
-  public int iQQLevel;
-  public long lFavoriteCount;
-  public long lVisitCount;
-  public long lVoteCount;
-  public int nFaceID;
-  public short shAge;
-  public short shGender;
-  public Intro stIntro;
+  public int iFaceNum = 0;
+  public int iQQLevel = 0;
+  public long lFavoriteCount = 0L;
+  public long lVisitCount = 0L;
+  public long lVoteCount = 0L;
+  public int nFaceID = 0;
+  public short shAge = 0;
+  public short shGender = 0;
+  public Intro stIntro = null;
   public String strCertificationInfo = "";
   public String strNick = "";
-  public int uFaceTimeStamp;
-  public byte[] vBackground;
-  public byte[] vQQFaceID;
-  public ArrayList<TagInfo> vTags;
+  public int uFaceTimeStamp = 0;
+  public byte[] vBackground = null;
+  public byte[] vQQFaceID = null;
+  public ArrayList<TagInfo> vTags = null;
   
   public MakeFriendsCard() {}
   
@@ -107,12 +108,14 @@ public final class MakeFriendsCard
     paramJceOutputStream.write(this.bSingle, 8);
     paramJceOutputStream.write(this.lVisitCount, 9);
     paramJceOutputStream.write(this.lVoteCount, 10);
-    if (this.vTags != null) {
-      paramJceOutputStream.write(this.vTags, 11);
+    Object localObject = this.vTags;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
     paramJceOutputStream.write(this.eUserIdentityType, 12);
-    if (this.vBackground != null) {
-      paramJceOutputStream.write(this.vBackground, 13);
+    localObject = this.vBackground;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
     paramJceOutputStream.write(this.iFaceNum, 14);
     paramJceOutputStream.write(this.lFavoriteCount, 15);
@@ -121,7 +124,7 @@ public final class MakeFriendsCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.MakeFriendsCard
  * JD-Core Version:    0.7.0.1
  */

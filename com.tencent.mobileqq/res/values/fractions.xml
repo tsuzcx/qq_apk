@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="fraction" name="a">@dimen/bsp</item>
+    <item type="fraction" name="b">@dimen/bsq</item>
+    <item type="fraction" name="c">@dimen/bsr</item>
+    <item type="fraction" name="d">@dimen/bst</item>
+    <item type="fraction" name="e">@dimen/bsu</item>
+    <item type="fraction" name="f">@dimen/bsv</item>
+</resources>

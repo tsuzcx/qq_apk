@@ -1,76 +1,81 @@
 package com.tencent.mm.plugin.sport.model;
 
+import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.sport.a.c;
-import com.tencent.mm.protocal.protobuf.aqd;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.gfe;
+import com.tencent.mm.protocal.protobuf.gff;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.co;
 
 public final class d
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private b fBd;
-  aqd spC;
-  aqe spD;
-  private WeakReference<c> spE;
+  gff SbC;
+  private h callback;
+  private c oDw;
   
-  public d(long paramLong1, long paramLong2, c paramc)
+  public d()
   {
-    AppMethodBeat.i(93657);
-    this.spE = new WeakReference(paramc);
-    paramc = new b.a();
-    paramc.funcId = 1734;
-    paramc.uri = "/cgi-bin/mmoc-bin/hardware/getsteplist";
-    paramc.fsX = new aqd();
-    paramc.fsY = new aqe();
-    this.fBd = paramc.ado();
-    this.spC = ((aqd)this.fBd.fsV.fta);
-    this.spC.wPH = ((int)(paramLong1 / 1000L));
-    this.spC.wPI = ((int)(paramLong2 / 1000L));
-    AppMethodBeat.o(93657);
+    AppMethodBeat.i(149302);
+    Object localObject = new c.a();
+    ((c.a)localObject).funcId = 1947;
+    ((c.a)localObject).uri = "/cgi-bin/mmoc-bin/hardware/getwxsportconfig";
+    ((c.a)localObject).otE = new gfe();
+    ((c.a)localObject).otF = new gff();
+    this.oDw = ((c.a)localObject).bEF();
+    localObject = (gfe)c.b.b(this.oDw.otB);
+    ((gfe)localObject).vgW = com.tencent.mm.protocal.d.Yxf;
+    ((gfe)localObject).YJY = co.jcP();
+    ((gfe)localObject).muu = Build.BRAND;
+    ((gfe)localObject).mut = q.aPo();
+    ((gfe)localObject).accB = com.tencent.mm.protocal.d.Yxc;
+    ((gfe)localObject).muv = com.tencent.mm.protocal.d.Yxd;
+    ((gfe)localObject).muw = com.tencent.mm.protocal.d.Yxe;
+    ((gfe)localObject).accC = BuildInfo.CLIENT_VERSION;
+    ((gfe)localObject).accD = Build.MANUFACTURER;
+    Log.i("MicroMsg.Sport.NetSceneGetWeSportConfig", "request params=[%s, %s, %s, %s, %s, %s, %s, %s, %s]", new Object[] { ((gfe)localObject).YJY, ((gfe)localObject).muu, ((gfe)localObject).mut, ((gfe)localObject).vgW, ((gfe)localObject).muw, ((gfe)localObject).muv, ((gfe)localObject).muw, ((gfe)localObject).accC, ((gfe)localObject).accD });
+    AppMethodBeat.o(149302);
   }
   
-  public final c cyI()
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(138291);
-    c localc = (c)this.spE.get();
-    AppMethodBeat.o(138291);
-    return localc;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(93658);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(93658);
+    AppMethodBeat.i(149303);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(149303);
     return i;
   }
   
   public final int getType()
   {
-    return 1734;
+    return 1947;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(93659);
-    ab.i("MicroMsg.Sport.NetSceneGetStepList", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.spD = ((aqe)this.fBd.fsW.fta);
+    AppMethodBeat.i(149304);
+    Log.i("MicroMsg.Sport.NetSceneGetWeSportConfig", "onGYNetEnd %d %d %d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(149304);
+      return;
+    }
+    this.SbC = ((gff)c.c.b(this.oDw.otC));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(93659);
+    AppMethodBeat.o(149304);
   }
 }
 

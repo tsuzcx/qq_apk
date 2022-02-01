@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import ajvu;
-import ajvz;
-import ajwb;
-import ajwf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,118 +8,131 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class VideoFramesFetcher
-  implements ajwb
+  implements OnFetchFrameListener
 {
-  private static long jdField_a_of_type_Long;
-  private volatile int jdField_a_of_type_Int = 1;
-  private ajvu jdField_a_of_type_Ajvu;
-  private BlockingQueue<ajwf> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, ajwf> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
-  private volatile boolean jdField_a_of_type_Boolean;
+  private static long i;
+  private volatile int a = 1;
   private int b = 1000;
   private int c;
+  private FrameAdapter d;
+  private BlockingQueue<VideoFramesFetcher.FrameFetchTask> e;
+  private ConcurrentHashMap<Integer, VideoFramesFetcher.FrameFetchTask> f;
+  private ExecutorService g;
+  private volatile boolean h = false;
   
-  private ajvz b(int paramInt)
+  private FramesProcessor.Frame b(int paramInt)
   {
-    if (!a()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
-      }
-    }
-    ajwf localajwf2;
-    do
+    Object localObject;
+    if (!b())
     {
-      return null;
-      try
+      if (QLog.isColorLevel())
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
-        {
-          ajwf localajwf1 = (ajwf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-          l = jdField_a_of_type_Long;
-          jdField_a_of_type_Long = 1L + l;
-          localajwf1.jdField_a_of_type_Long = l;
-          return null;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("FetchFrameAtTime fail, status=");
+        ((StringBuilder)localObject).append(this.a);
+        QLog.d("VideoFramesFetcher", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception localException)
+      return null;
+    }
+    try
+    {
+      if (this.f.containsKey(Integer.valueOf(paramInt)))
       {
-        localException.printStackTrace();
+        localObject = (VideoFramesFetcher.FrameFetchTask)this.f.get(Integer.valueOf(paramInt));
+        l = i;
+        i = 1L + l;
+        ((VideoFramesFetcher.FrameFetchTask)localObject).a = l;
         return null;
       }
-      long l = jdField_a_of_type_Long;
-      jdField_a_of_type_Long = 1L + l;
-      localajwf2 = new ajwf(this, l, paramInt, paramInt + this.b);
-    } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localajwf2);
+      long l = i;
+      i = 1L + l;
+      localObject = new VideoFramesFetcher.FrameFetchTask(this, l, paramInt, paramInt + this.b);
+      if (this.e != null)
+      {
+        this.e.offer(localObject);
+        return null;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
     return null;
   }
   
-  public int a(int paramInt1, int paramInt2, ajvu paramajvu)
+  public int a(int paramInt1, int paramInt2, FrameAdapter paramFrameAdapter)
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_Ajvu = paramajvu;
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new PriorityBlockingQueue();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new VideoFramesFetcher.FrameFetchRunnable(this));
+    this.d = paramFrameAdapter;
+    this.e = new PriorityBlockingQueue();
+    this.f = new ConcurrentHashMap();
+    this.g = Executors.newSingleThreadExecutor();
+    this.g.submit(new VideoFramesFetcher.FrameFetchRunnable(this));
     return 0;
   }
   
-  public ajvz a(int paramInt)
+  public FramesProcessor.Frame a(int paramInt)
   {
-    if ((!a()) || (paramInt < 0))
+    if ((b()) && (paramInt >= 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFramesFetcher", 2, "fetchFrameByIndex1 fail, status=" + this.jdField_a_of_type_Int);
+      if (this.d.b(paramInt)) {
+        return this.d.a(paramInt);
       }
-      return null;
+      return b(paramInt * this.b);
     }
-    if (this.jdField_a_of_type_Ajvu.a(paramInt)) {
-      return this.jdField_a_of_type_Ajvu.a(paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fetchFrameByIndex1 fail, status=");
+      localStringBuilder.append(this.a);
+      QLog.d("VideoFramesFetcher", 2, localStringBuilder.toString());
     }
-    return b(this.b * paramInt);
+    return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+    this.a = 1;
+    this.h = true;
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = null;
+      ((BlockingQueue)localObject).clear();
+      this.e = null;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    localObject = this.f;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+      ((ConcurrentHashMap)localObject).clear();
+      this.f = null;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdownNow();
-    jdField_a_of_type_Long = 0L;
+    this.g.shutdownNow();
+    i = 0L;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((!a()) || (paramInt1 < 0) || (paramInt2 < 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFramesFetcher", 2, "fetchFrameByIndex2 fail, status=" + this.jdField_a_of_type_Int);
-      }
-    }
-    for (;;)
+    if ((b()) && (paramInt1 >= 0) && (paramInt2 >= 0))
     {
-      return;
       paramInt2 -= 1;
       while (paramInt2 >= paramInt1)
       {
         a(paramInt2);
         paramInt2 -= 1;
       }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fetchFrameByIndex2 fail, status=");
+      localStringBuilder.append(this.a);
+      QLog.d("VideoFramesFetcher", 2, localStringBuilder.toString());
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
     return true;
   }

@@ -1,48 +1,37 @@
+import android.graphics.Bitmap;
 import android.view.View;
 import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
-import com.tencent.mobileqq.data.CircleBuddy;
-import com.tencent.mobileqq.service.circle.IFriendObserver;
+import com.tencent.mobileqq.richstatus.IIconListener;
 import com.tencent.widget.XListView;
 
 public class ecw
-  implements IFriendObserver
+  implements IIconListener
 {
   public ecw(CircleMemberListActivity paramCircleMemberListActivity) {}
   
-  public void a(String paramString)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    int j;
-    int i;
-    if (this.a.jdField_a_of_type_Int == 0)
-    {
-      j = CircleMemberListActivity.a(this.a).getChildCount();
-      i = 0;
-    }
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
     for (;;)
     {
-      if (i < j)
+      return;
+      if (this.a.jdField_a_of_type_Int == 0)
       {
-        Object localObject = CircleMemberListActivity.a(this.a).getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof edf)))
+        int i = CircleMemberListActivity.a(this.a).getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
         {
-          localObject = (edf)localObject;
-          if (((edf)localObject).a.uin.equals(paramString)) {
-            this.a.a(CircleMemberListActivity.a(this.a).getChildAt(i), ((edf)localObject).a);
+          paramBitmap = CircleMemberListActivity.a(this.a).getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof ede)))
+          {
+            paramBitmap = (ede)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqDataCircleBuddy);
+            }
           }
+          paramInt2 += 1;
         }
       }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 0)) {
-      this.a.jdField_a_of_type_Ede.notifyDataSetChanged();
     }
   }
 }

@@ -20,11 +20,6 @@ public final class h
   
   private <T> h a(T paramT, String paramString)
   {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int n = 0;
-    int i = 0;
     if (paramT == null)
     {
       this.a.append("null\n");
@@ -34,33 +29,42 @@ public final class h
     {
       i = ((Byte)paramT).byteValue();
       a(paramString);
-      this.a.append(i).append('\n');
+      paramT = this.a;
+      paramT.append(i);
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof Boolean))
     {
-      boolean bool = ((Boolean)paramT).booleanValue();
+      bool = ((Boolean)paramT).booleanValue();
       a(paramString);
       paramT = this.a;
-      if (bool) {}
-      for (char c = 'T';; c = 'F')
-      {
-        paramT.append(c).append('\n');
-        return this;
+      char c;
+      if (bool) {
+        c = 'T';
+      } else {
+        c = 'F';
       }
+      paramT.append(c);
+      paramT.append('\n');
+      return this;
     }
     if ((paramT instanceof Short))
     {
       i = ((Short)paramT).shortValue();
       a(paramString);
-      this.a.append(i).append('\n');
+      paramT = this.a;
+      paramT.append(i);
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof Integer))
     {
       i = ((Integer)paramT).intValue();
       a(paramString);
-      this.a.append(i).append('\n');
+      paramT = this.a;
+      paramT.append(i);
+      paramT.append('\n');
       return this;
     }
     long l;
@@ -68,7 +72,9 @@ public final class h
     {
       l = ((Long)paramT).longValue();
       a(paramString);
-      this.a.append(l).append('\n');
+      paramT = this.a;
+      paramT.append(l);
+      paramT.append('\n');
       return this;
     }
     float f;
@@ -76,7 +82,9 @@ public final class h
     {
       f = ((Float)paramT).floatValue();
       a(paramString);
-      this.a.append(f).append('\n');
+      paramT = this.a;
+      paramT.append(f);
+      paramT.append('\n');
       return this;
     }
     double d;
@@ -84,7 +92,9 @@ public final class h
     {
       d = ((Double)paramT).doubleValue();
       a(paramString);
-      this.a.append(d).append('\n');
+      paramT = this.a;
+      paramT.append(d);
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof String))
@@ -124,7 +134,14 @@ public final class h
       a((boolean[])paramT, paramString);
       return this;
     }
-    if ((paramT instanceof short[]))
+    boolean bool = paramT instanceof short[];
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int n = 0;
+    int i = 0;
+    StringBuilder localStringBuilder;
+    if (bool)
     {
       paramT = (short[])paramT;
       a(paramString);
@@ -135,21 +152,29 @@ public final class h
       }
       if (paramT.length == 0)
       {
-        this.a.append(paramT.length).append(", []\n");
+        paramString = this.a;
+        paramString.append(paramT.length);
+        paramString.append(", []\n");
         return this;
       }
-      this.a.append(paramT.length).append(", [\n");
+      paramString = this.a;
+      paramString.append(paramT.length);
+      paramString.append(", [\n");
       paramString = new h(this.a, this.b + 1);
       j = paramT.length;
       while (i < j)
       {
         k = paramT[i];
         paramString.a(null);
-        paramString.a.append(k).append('\n');
+        localStringBuilder = paramString.a;
+        localStringBuilder.append(k);
+        localStringBuilder.append('\n');
         i += 1;
       }
       a(null);
-      this.a.append(']').append('\n');
+      paramT = this.a;
+      paramT.append(']');
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof int[]))
@@ -163,10 +188,14 @@ public final class h
       }
       if (paramT.length == 0)
       {
-        this.a.append(paramT.length).append(", []\n");
+        paramString = this.a;
+        paramString.append(paramT.length);
+        paramString.append(", []\n");
         return this;
       }
-      this.a.append(paramT.length).append(", [\n");
+      paramString = this.a;
+      paramString.append(paramT.length);
+      paramString.append(", [\n");
       paramString = new h(this.a, this.b + 1);
       k = paramT.length;
       i = j;
@@ -174,11 +203,15 @@ public final class h
       {
         j = paramT[i];
         paramString.a(null);
-        paramString.a.append(j).append('\n');
+        localStringBuilder = paramString.a;
+        localStringBuilder.append(j);
+        localStringBuilder.append('\n');
         i += 1;
       }
       a(null);
-      this.a.append(']').append('\n');
+      paramT = this.a;
+      paramT.append(']');
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof long[]))
@@ -192,10 +225,14 @@ public final class h
       }
       if (paramT.length == 0)
       {
-        this.a.append(paramT.length).append(", []\n");
+        paramString = this.a;
+        paramString.append(paramT.length);
+        paramString.append(", []\n");
         return this;
       }
-      this.a.append(paramT.length).append(", [\n");
+      paramString = this.a;
+      paramString.append(paramT.length);
+      paramString.append(", [\n");
       paramString = new h(this.a, this.b + 1);
       j = paramT.length;
       i = k;
@@ -203,11 +240,15 @@ public final class h
       {
         l = paramT[i];
         paramString.a(null);
-        paramString.a.append(l).append('\n');
+        localStringBuilder = paramString.a;
+        localStringBuilder.append(l);
+        localStringBuilder.append('\n');
         i += 1;
       }
       a(null);
-      this.a.append(']').append('\n');
+      paramT = this.a;
+      paramT.append(']');
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof float[]))
@@ -221,10 +262,14 @@ public final class h
       }
       if (paramT.length == 0)
       {
-        this.a.append(paramT.length).append(", []\n");
+        paramString = this.a;
+        paramString.append(paramT.length);
+        paramString.append(", []\n");
         return this;
       }
-      this.a.append(paramT.length).append(", [\n");
+      paramString = this.a;
+      paramString.append(paramT.length);
+      paramString.append(", [\n");
       paramString = new h(this.a, this.b + 1);
       j = paramT.length;
       i = m;
@@ -232,11 +277,15 @@ public final class h
       {
         f = paramT[i];
         paramString.a(null);
-        paramString.a.append(f).append('\n');
+        localStringBuilder = paramString.a;
+        localStringBuilder.append(f);
+        localStringBuilder.append('\n');
         i += 1;
       }
       a(null);
-      this.a.append(']').append('\n');
+      paramT = this.a;
+      paramT.append(']');
+      paramT.append('\n');
       return this;
     }
     if ((paramT instanceof double[]))
@@ -250,10 +299,14 @@ public final class h
       }
       if (paramT.length == 0)
       {
-        this.a.append(paramT.length).append(", []\n");
+        paramString = this.a;
+        paramString.append(paramT.length);
+        paramString.append(", []\n");
         return this;
       }
-      this.a.append(paramT.length).append(", [\n");
+      paramString = this.a;
+      paramString.append(paramT.length);
+      paramString.append(", [\n");
       paramString = new h(this.a, this.b + 1);
       j = paramT.length;
       i = n;
@@ -261,11 +314,15 @@ public final class h
       {
         d = paramT[i];
         paramString.a(null);
-        paramString.a.append(d).append('\n');
+        localStringBuilder = paramString.a;
+        localStringBuilder.append(d);
+        localStringBuilder.append('\n');
         i += 1;
       }
       a(null);
-      this.a.append(']').append('\n');
+      paramT = this.a;
+      paramT.append(']');
+      paramT.append('\n');
       return this;
     }
     if (paramT.getClass().isArray())
@@ -273,7 +330,11 @@ public final class h
       a((Object[])paramT, paramString);
       return this;
     }
-    throw new b("write object error: unsupport type.");
+    paramT = new b("write object error: unsupport type.");
+    for (;;)
+    {
+      throw paramT;
+    }
   }
   
   private <T> h a(T[] paramArrayOfT, String paramString)
@@ -286,10 +347,14 @@ public final class h
     }
     if (paramArrayOfT.length == 0)
     {
-      this.a.append(paramArrayOfT.length).append(", []\n");
+      paramString = this.a;
+      paramString.append(paramArrayOfT.length);
+      paramString.append(", []\n");
       return this;
     }
-    this.a.append(paramArrayOfT.length).append(", [\n");
+    paramString = this.a;
+    paramString.append(paramArrayOfT.length);
+    paramString.append(", [\n");
     paramString = new h(this.a, this.b + 1);
     int j = paramArrayOfT.length;
     int i = 0;
@@ -299,7 +364,9 @@ public final class h
       i += 1;
     }
     a(null);
-    this.a.append(']').append('\n');
+    paramArrayOfT = this.a;
+    paramArrayOfT.append(']');
+    paramArrayOfT.append('\n');
     return this;
   }
   
@@ -311,46 +378,62 @@ public final class h
       this.a.append('\t');
       i += 1;
     }
-    if (paramString != null) {
-      this.a.append(paramString).append(": ");
+    if (paramString != null)
+    {
+      StringBuilder localStringBuilder = this.a;
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": ");
     }
   }
   
   public final h a(byte paramByte, String paramString)
   {
     a(paramString);
-    this.a.append(paramByte).append('\n');
+    paramString = this.a;
+    paramString.append(paramByte);
+    paramString.append('\n');
     return this;
   }
   
   public final h a(int paramInt, String paramString)
   {
     a(paramString);
-    this.a.append(paramInt).append('\n');
+    paramString = this.a;
+    paramString.append(paramInt);
+    paramString.append('\n');
     return this;
   }
   
   public final h a(long paramLong, String paramString)
   {
     a(paramString);
-    this.a.append(paramLong).append('\n');
+    paramString = this.a;
+    paramString.append(paramLong);
+    paramString.append('\n');
     return this;
   }
   
   public final h a(k paramk, String paramString)
   {
     a(paramString);
-    this.a.append('{').append('\n');
-    if (paramk == null) {
-      this.a.append('\t').append("null");
-    }
-    for (;;)
+    paramString = this.a;
+    paramString.append('{');
+    paramString.append('\n');
+    if (paramk == null)
     {
-      a(null);
-      this.a.append('}').append('\n');
-      return this;
+      paramk = this.a;
+      paramk.append('\t');
+      paramk.append("null");
+    }
+    else
+    {
       paramk.a(this.a, this.b + 1);
     }
+    a(null);
+    paramk = this.a;
+    paramk.append('}');
+    paramk.append('\n');
+    return this;
   }
   
   public final h a(String paramString1, String paramString2)
@@ -361,7 +444,9 @@ public final class h
       this.a.append("null\n");
       return this;
     }
-    this.a.append(paramString1).append('\n');
+    paramString2 = this.a;
+    paramString2.append(paramString1);
+    paramString2.append('\n');
     return this;
   }
   
@@ -375,32 +460,44 @@ public final class h
     }
     if (paramMap.isEmpty())
     {
-      this.a.append(paramMap.size()).append(", {}\n");
+      paramString = this.a;
+      paramString.append(paramMap.size());
+      paramString.append(", {}\n");
       return this;
     }
-    this.a.append(paramMap.size()).append(", {\n");
+    paramString = this.a;
+    paramString.append(paramMap.size());
+    paramString.append(", {\n");
     paramString = new h(this.a, this.b + 1);
     h localh = new h(this.a, this.b + 2);
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      Object localObject = (Map.Entry)paramMap.next();
       paramString.a(null);
-      paramString.a.append('(').append('\n');
-      localh.a(localEntry.getKey(), null);
-      localh.a(localEntry.getValue(), null);
+      StringBuilder localStringBuilder = paramString.a;
+      localStringBuilder.append('(');
+      localStringBuilder.append('\n');
+      localh.a(((Map.Entry)localObject).getKey(), null);
+      localh.a(((Map.Entry)localObject).getValue(), null);
       paramString.a(null);
-      paramString.a.append(')').append('\n');
+      localObject = paramString.a;
+      ((StringBuilder)localObject).append(')');
+      ((StringBuilder)localObject).append('\n');
     }
     a(null);
-    this.a.append('}').append('\n');
+    paramMap = this.a;
+    paramMap.append('}');
+    paramMap.append('\n');
     return this;
   }
   
   public final h a(short paramShort, String paramString)
   {
     a(paramString);
-    this.a.append(paramShort).append('\n');
+    paramString = this.a;
+    paramString.append(paramShort);
+    paramString.append('\n');
     return this;
   }
   
@@ -408,12 +505,15 @@ public final class h
   {
     a(paramString);
     paramString = this.a;
-    if (paramBoolean) {}
-    for (char c = 'T';; c = 'F')
-    {
-      paramString.append(c).append('\n');
-      return this;
+    char c;
+    if (paramBoolean) {
+      c = 'T';
+    } else {
+      c = 'F';
     }
+    paramString.append(c);
+    paramString.append('\n');
+    return this;
   }
   
   public final h a(byte[] paramArrayOfByte, String paramString)
@@ -426,10 +526,14 @@ public final class h
     }
     if (paramArrayOfByte.length == 0)
     {
-      this.a.append(paramArrayOfByte.length).append(", []\n");
+      paramString = this.a;
+      paramString.append(paramArrayOfByte.length);
+      paramString.append(", []\n");
       return this;
     }
-    this.a.append(paramArrayOfByte.length).append(", [\n");
+    paramString = this.a;
+    paramString.append(paramArrayOfByte.length);
+    paramString.append(", [\n");
     paramString = new h(this.a, this.b + 1);
     int j = paramArrayOfByte.length;
     int i = 0;
@@ -437,17 +541,21 @@ public final class h
     {
       int k = paramArrayOfByte[i];
       paramString.a(null);
-      paramString.a.append(k).append('\n');
+      StringBuilder localStringBuilder = paramString.a;
+      localStringBuilder.append(k);
+      localStringBuilder.append('\n');
       i += 1;
     }
     a(null);
-    this.a.append(']').append('\n');
+    paramArrayOfByte = this.a;
+    paramArrayOfByte.append(']');
+    paramArrayOfByte.append('\n');
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.h
  * JD-Core Version:    0.7.0.1
  */

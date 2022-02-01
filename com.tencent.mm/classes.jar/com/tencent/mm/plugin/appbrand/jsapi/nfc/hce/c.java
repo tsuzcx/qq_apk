@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static String aj(byte[] paramArrayOfByte)
+  public static String aX(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(137934);
+    AppMethodBeat.i(136183);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      AppMethodBeat.o(137934);
+      AppMethodBeat.o(136183);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -41,13 +41,13 @@ public final class c
       }
     }
     paramArrayOfByte = localStringBuilder.toString();
-    AppMethodBeat.o(137934);
+    AppMethodBeat.o(136183);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:id="@id/laa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.timi.game.ui.StatusBarPlaceHolder android:id="@id/q6i" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.timi.game.liveroom.impl.view.AnchorTopAreaView android:id="@id/qft" android:layout_width="fill_parent" android:layout_height="66.0dip" android:layout_marginTop="7.5dip" android:layout_below="@id/q6i" />
+    <FrameLayout android:id="@id/odc" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginTop="26.0dip" android:layout_below="@id/qft" android:keepScreenOn="true" />
+    <com.tencent.timi.game.liveroom.impl.inscription.LivingInscriptionInterEntranceView android:id="@id/o0s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_below="@id/odc" />
+    <View android:id="@id/nli" android:layout_width="fill_parent" android:layout_height="98.0dip" android:layout_below="@id/o0s" />
+    <com.tencent.timi.game.liveroom.impl.view.AnchorMessageLayout android:id="@id/8f" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_above="@id/8a" android:layout_below="@id/nli" />
+    <View android:id="@id/mvs" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/8a" />
+    <com.tencent.timi.game.liveroom.impl.view.operation.AnchorOperationContainer android:id="@id/8g" android:background="@color/ajr" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginBottom="92.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/nlj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/o0s" />
+    <FrameLayout android:id="@id/nll" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/8a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.timi.game.liveroom.impl.widget.AudienceOperationBarView android:id="@id/8h" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginBottom="22.0dip" android:layout_alignParentBottom="true" />
+        <com.tencent.timi.game.liveroom.impl.widget.AudienceInputBoxView android:id="@id/8e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <FrameLayout android:gravity="center" android:id="@id/ode" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

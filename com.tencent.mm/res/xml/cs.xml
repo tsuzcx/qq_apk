@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/foi" />
-    <IconPreference android:title="@string/fo6" android:key="wallet_lock_fingerprint" android:layout="@layout/afi" />
-    <IconPreference android:title="@string/fnz" android:key="wallet_lock_faceid" android:layout="@layout/afi" />
-    <IconPreference android:title="@string/fod" android:key="wallet_lock_gesture" android:layout="@layout/afi" />
-    <IconPreference android:title="@string/fnx" android:key="wallet_lock_close" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/cb6" android:key="wallet_lock_modify_gesture" android:layout="@layout/afi" />
+    <com.tencent.mm.plugin.voiceprint.ui.VoiceHeaderPreference android:key="settings_voiceprint_header" />
+    <PreferenceCategory />
+    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="settings_voiceprint_title" android:summary="@string/j23" android:title="@string/j22" />
+    <SummaryBelowPreference android:key="settings_voiceprint_create" android:summary="@string/j1z" android:title="@string/j1y" />
+    <Preference android:key="settings_voiceprint_reset" android:layout="@layout/bdi" android:title="@string/j21" />
+    <Preference android:key="settings_voiceprint_unlock" android:layout="@layout/bdi" android:title="@string/j24" />
+    <PreferenceCategory />
 </PreferenceScreen>

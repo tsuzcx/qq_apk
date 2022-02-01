@@ -6,7 +6,7 @@ import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class FaceLineFilter
   extends VideoFilterBase
 {
   public static final String FRAGMENT_SHADER = " precision highp float;\n uniform lowp float blurAlpha;\n \n void main(void) {\n     gl_FragColor = vec4(0.0+blurAlpha, 1.0, 0.0, 1.0);\n }";
-  private static final String TAG = FaceLineFilter.class.getSimpleName();
+  private static final String TAG = "FaceLineFilter";
   public static final String VERTEX_SHADER = "attribute vec4 position;\n\nvoid main() {\n    gl_Position = position;\n}\n";
   private float blurAlpha = 0.5F;
   private float[] faceVertices = new float[2760];
@@ -59,7 +59,15 @@ public class FaceLineFilter
   
   public void updateIrisPoints(List<PointF> paramList)
   {
-    setPositions(FaceOffUtil.initIrisLinePositions(VideoMaterialUtil.copyList(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.irisVertices));
+    paramList = VideoMaterial.copyList(paramList);
+    double d1 = this.width;
+    double d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    int i = (int)(d1 * d2);
+    d1 = this.height;
+    d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    setPositions(FaceOffUtil.initIrisLinePositions(paramList, i, (int)(d1 * d2), this.irisVertices));
     setCoordNum(48);
   }
   
@@ -71,15 +79,20 @@ public class FaceLineFilter
       setCoordNum(4);
       return;
     }
-    paramList = VideoMaterialUtil.copyList((List)paramList.get(paramInt));
+    paramList = VideoMaterial.copyList((List)paramList.get(paramInt));
     FaceOffUtil.getFullCoords(paramList, 2.0F);
-    setPositions(FaceOffUtil.initFaceLinePositions(paramList, (int)(this.width * paramDouble), (int)(this.height * paramDouble), this.faceVertices));
+    double d = this.width;
+    Double.isNaN(d);
+    paramInt = (int)(d * paramDouble);
+    d = this.height;
+    Double.isNaN(d);
+    setPositions(FaceOffUtil.initFaceLinePositions(paramList, paramInt, (int)(d * paramDouble), this.faceVertices));
     setCoordNum(1380);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FaceLineFilter
  * JD-Core Version:    0.7.0.1
  */

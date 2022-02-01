@@ -1,25 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import org.json.JSONObject;
+import kotlin.Metadata;
 
-public final class b
-  extends JsApiAppBrandNFCBase
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/IBackPressInterceptor;", "", "forceEnableBackPress", "", "luggage-commons_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface b
 {
-  public static final int CTRL_INDEX = 358;
-  public static final String NAME = "getHCEState";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(137868);
-    a(new b.1(this, paramc, paramInt));
-    AppMethodBeat.o(137868);
-  }
+  public abstract void ctx();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.b
  * JD-Core Version:    0.7.0.1
  */

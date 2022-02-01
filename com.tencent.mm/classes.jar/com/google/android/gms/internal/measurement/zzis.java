@@ -13,7 +13,7 @@ final class zzis
   
   public final void run()
   {
-    AppMethodBeat.i(69331);
+    AppMethodBeat.i(1854);
     localAtomicReference = this.zzapf;
     for (;;)
     {
@@ -37,7 +37,7 @@ final class zzis
       finally
       {
         this.zzapf.notify();
-        AppMethodBeat.o(69331);
+        AppMethodBeat.o(1854);
       }
       try
       {
@@ -46,7 +46,7 @@ final class zzis
       }
       finally
       {
-        AppMethodBeat.o(69331);
+        AppMethodBeat.o(1854);
       }
     }
     if (TextUtils.isEmpty(this.zzanj)) {
@@ -56,7 +56,7 @@ final class zzis
     {
       zzii.zze(this.zzape);
       this.zzapf.notify();
-      AppMethodBeat.o(69331);
+      AppMethodBeat.o(1854);
       return;
       this.zzapf.set(localzzey.zze(this.zzanj, this.zzanh, this.zzani));
     }
@@ -64,7 +64,7 @@ final class zzis
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzis
  * JD-Core Version:    0.7.0.1
  */

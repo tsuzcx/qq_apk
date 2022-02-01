@@ -1,23 +1,24 @@
 package com.tencent.mm.ui.base;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.k;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Field;
 
-@TargetApi(14)
 public class MMTextureView
   extends TextureView
 {
-  private Field zmV;
+  boolean GpP = false;
+  private Object GpQ;
+  private Object GpR;
+  private Field TGT;
   
   public MMTextureView(Context paramContext)
   {
@@ -34,105 +35,192 @@ public class MMTextureView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void dEs()
+  private void fjn()
   {
-    AppMethodBeat.i(106863);
-    if (d.fw(16))
-    {
-      ab.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-      AppMethodBeat.o(106863);
-      return;
-    }
-    if (d.iU(20))
-    {
-      ab.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-      AppMethodBeat.o(106863);
-      return;
-    }
-    if (ac.erF.epC == 2)
-    {
-      ab.i("MicroMsg.MMTextureView", "do not do sly textureView, config ERROR");
-      AppMethodBeat.o(106863);
-      return;
-    }
-    ab.i("MicroMsg.MMTextureView", "detect texture problem, sly");
+    AppMethodBeat.i(164151);
     try
     {
-      if (this.zmV == null)
+      Log.i("MicroMsg.MMTextureView", "hookInnerDetach");
+      Field localField = TextureView.class.getDeclaredField("mLayer");
+      localField.setAccessible(true);
+      this.GpQ = localField.get(this);
+      localField.set(this, null);
+      localField = TextureView.class.getDeclaredField("mSurface");
+      localField.setAccessible(true);
+      this.GpR = localField.get(this);
+      localField.set(this, null);
+      AppMethodBeat.o(164151);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.MMTextureView", localException, "", new Object[0]);
+      AppMethodBeat.o(164151);
+    }
+  }
+  
+  private void fjo()
+  {
+    AppMethodBeat.i(164152);
+    try
+    {
+      Log.i("MicroMsg.MMTextureView", "unHookInnerDetach");
+      Field localField;
+      if (this.GpQ != null)
       {
-        this.zmV = TextureView.class.getDeclaredField("mSurface");
-        this.zmV.setAccessible(true);
+        localField = TextureView.class.getDeclaredField("mLayer");
+        localField.setAccessible(true);
+        localField.set(this, this.GpQ);
+        this.GpQ = null;
       }
-      SurfaceTexture localSurfaceTexture = (SurfaceTexture)this.zmV.get(this);
+      if (this.GpR != null)
+      {
+        localField = TextureView.class.getDeclaredField("mSurface");
+        localField.setAccessible(true);
+        localField.set(this, this.GpR);
+        this.GpR = null;
+      }
+      AppMethodBeat.o(164152);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.MMTextureView", localException, "", new Object[0]);
+      AppMethodBeat.o(164152);
+    }
+  }
+  
+  public void destroyDrawingCache()
+  {
+    AppMethodBeat.i(164149);
+    super.destroyDrawingCache();
+    if (this.GpP) {
+      fjo();
+    }
+    AppMethodBeat.o(164149);
+  }
+  
+  public final void jmM()
+  {
+    AppMethodBeat.i(142223);
+    if (d.rc(16))
+    {
+      Log.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      AppMethodBeat.o(142223);
+      return;
+    }
+    if (d.rd(20))
+    {
+      Log.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      AppMethodBeat.o(142223);
+      return;
+    }
+    if (af.lYj.lVm == 2)
+    {
+      Log.i("MicroMsg.MMTextureView", "do not do sly textureView, config ERROR");
+      AppMethodBeat.o(142223);
+      return;
+    }
+    Log.i("MicroMsg.MMTextureView", "detect texture problem, sly");
+    try
+    {
+      if (this.TGT == null)
+      {
+        this.TGT = TextureView.class.getDeclaredField("mSurface");
+        this.TGT.setAccessible(true);
+      }
+      SurfaceTexture localSurfaceTexture = (SurfaceTexture)this.TGT.get(this);
       if (localSurfaceTexture != null) {
-        if (!(localSurfaceTexture instanceof r))
+        if (!(localSurfaceTexture instanceof y))
         {
-          r localr = new r();
-          localr.mSurfaceTexture = localSurfaceTexture;
-          this.zmV.set(this, localr);
-          ab.i("MicroMsg.MMTextureView", "detect texture problem, wrap");
-          AppMethodBeat.o(106863);
+          y localy = new y();
+          localy.mSurfaceTexture = localSurfaceTexture;
+          this.TGT.set(this, localy);
+          Log.i("MicroMsg.MMTextureView", "detect texture problem, wrap");
+          AppMethodBeat.o(142223);
           return;
         }
       }
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      ab.printErrStackTrace("MicroMsg.MMTextureView", localNoSuchFieldException, "", new Object[0]);
-      ab.e("MicroMsg.MMTextureView", "detect texture problem, NoSuchFieldException");
-      AppMethodBeat.o(106863);
+      Log.printErrStackTrace("MicroMsg.MMTextureView", localNoSuchFieldException, "", new Object[0]);
+      Log.e("MicroMsg.MMTextureView", "detect texture problem, NoSuchFieldException");
+      AppMethodBeat.o(142223);
       return;
-      ab.i("MicroMsg.MMTextureView", "detect texture problem, wrapped");
-      AppMethodBeat.o(106863);
+      Log.i("MicroMsg.MMTextureView", "detect texture problem, wrapped");
+      AppMethodBeat.o(142223);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      ab.printErrStackTrace("MicroMsg.MMTextureView", localIllegalArgumentException, "", new Object[0]);
-      ab.e("MicroMsg.MMTextureView", "detect texture problem, IllegalArgumentException");
-      AppMethodBeat.o(106863);
+      Log.printErrStackTrace("MicroMsg.MMTextureView", localIllegalArgumentException, "", new Object[0]);
+      Log.e("MicroMsg.MMTextureView", "detect texture problem, IllegalArgumentException");
+      AppMethodBeat.o(142223);
       return;
-      ab.i("MicroMsg.MMTextureView", "detect texture problem, no wrap");
-      AppMethodBeat.o(106863);
+      Log.i("MicroMsg.MMTextureView", "detect texture problem, no wrap");
+      AppMethodBeat.o(142223);
       return;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      ab.printErrStackTrace("MicroMsg.MMTextureView", localIllegalAccessException, "", new Object[0]);
-      ab.e("MicroMsg.MMTextureView", "detect texture problem, IllegalAccessException");
-      AppMethodBeat.o(106863);
+      Log.printErrStackTrace("MicroMsg.MMTextureView", localIllegalAccessException, "", new Object[0]);
+      Log.e("MicroMsg.MMTextureView", "detect texture problem, IllegalAccessException");
+      AppMethodBeat.o(142223);
     }
   }
   
-  @TargetApi(14)
+  protected void onAttachedToWindow()
+  {
+    AppMethodBeat.i(164150);
+    if (this.GpP) {
+      fjn();
+    }
+    super.onAttachedToWindow();
+    if (this.GpP) {
+      fjo();
+    }
+    AppMethodBeat.o(164150);
+  }
+  
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(106862);
+    AppMethodBeat.i(142222);
+    if (this.GpP)
+    {
+      fjn();
+      AppMethodBeat.o(142222);
+      return;
+    }
     try
     {
       super.onDetachedFromWindow();
-      AppMethodBeat.o(106862);
+      AppMethodBeat.o(142222);
       return;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.MMTextureView", localException, "unkown error", new Object[0]);
-      AppMethodBeat.o(106862);
+      Log.printErrStackTrace("MicroMsg.MMTextureView", localException, "unkown error", new Object[0]);
+      AppMethodBeat.o(142222);
     }
   }
   
-  @TargetApi(16)
+  public void setInterceptDetach(boolean paramBoolean)
+  {
+    this.GpP = paramBoolean;
+  }
+  
   public void setSurfaceTexture(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(106864);
+    AppMethodBeat.i(142224);
     super.setSurfaceTexture(paramSurfaceTexture);
-    dEs();
-    AppMethodBeat.o(106864);
+    jmM();
+    AppMethodBeat.o(142224);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMTextureView
  * JD-Core Version:    0.7.0.1
  */

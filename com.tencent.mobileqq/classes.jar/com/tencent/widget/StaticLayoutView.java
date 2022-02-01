@@ -8,13 +8,13 @@ import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import apja;
+import com.tencent.mobileqq.dating.widget.DatingCommentTextView.TouchableSpan;
 
 public class StaticLayoutView
   extends View
 {
-  private Layout jdField_a_of_type_AndroidTextLayout;
-  apja jdField_a_of_type_Apja;
+  DatingCommentTextView.TouchableSpan a;
+  private Layout b = null;
   
   public StaticLayoutView(Context paramContext)
   {
@@ -31,26 +31,28 @@ public class StaticLayoutView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public Layout a()
+  public Layout getLayout()
   {
-    return this.jdField_a_of_type_AndroidTextLayout;
+    return this.b;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
-    if (this.jdField_a_of_type_AndroidTextLayout != null) {
-      this.jdField_a_of_type_AndroidTextLayout.draw(paramCanvas, null, null, 0);
+    Layout localLayout = this.b;
+    if (localLayout != null) {
+      localLayout.draw(paramCanvas, null, null, 0);
     }
     paramCanvas.restore();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidTextLayout != null)
+    Layout localLayout = this.b;
+    if (localLayout != null)
     {
-      setMeasuredDimension(this.jdField_a_of_type_AndroidTextLayout.getWidth(), this.jdField_a_of_type_AndroidTextLayout.getHeight());
+      setMeasuredDimension(localLayout.getWidth(), this.b.getHeight());
       return;
     }
     super.onMeasure(paramInt1, paramInt2);
@@ -61,7 +63,7 @@ public class StaticLayoutView
     int i = paramMotionEvent.getAction();
     int j = (int)paramMotionEvent.getX();
     int k = (int)paramMotionEvent.getY();
-    Object localObject1 = a();
+    Object localObject1 = getLayout();
     Object localObject2 = ((Layout)localObject1).getText();
     if ((localObject2 instanceof Spannable))
     {
@@ -70,36 +72,41 @@ public class StaticLayoutView
       localObject1 = (ClickableSpan[])((Spannable)localObject2).getSpans(j, j, ClickableSpan.class);
       if ((localObject1 != null) && (localObject1.length != 0))
       {
-        if ((i == 1) || (i == 3))
+        if ((i != 1) && (i != 3))
+        {
+          if (i == 0)
+          {
+            if ((localObject1[0] instanceof DatingCommentTextView.TouchableSpan))
+            {
+              ((DatingCommentTextView.TouchableSpan)localObject1[0]).a(true);
+              this.a = ((DatingCommentTextView.TouchableSpan)localObject1[0]);
+            }
+            postInvalidate();
+            return true;
+          }
+        }
+        else
         {
           if (i == 1) {
             localObject1[0].onClick(this);
           }
-          if ((localObject1[0] instanceof apja)) {
-            ((apja)localObject1[0]).a(false);
+          if ((localObject1[0] instanceof DatingCommentTextView.TouchableSpan)) {
+            ((DatingCommentTextView.TouchableSpan)localObject1[0]).a(false);
           }
-          this.jdField_a_of_type_Apja = null;
+          this.a = null;
           postInvalidate();
         }
-        for (;;)
-        {
-          return true;
-          if (i == 0)
-          {
-            if ((localObject1[0] instanceof apja))
-            {
-              ((apja)localObject1[0]).a(true);
-              this.jdField_a_of_type_Apja = ((apja)localObject1[0]);
-            }
-            postInvalidate();
-          }
-        }
+        return true;
       }
-      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Apja != null))
+      if ((i == 1) || (i == 3))
       {
-        this.jdField_a_of_type_Apja.a(false);
-        this.jdField_a_of_type_Apja = null;
-        postInvalidate();
+        localObject1 = this.a;
+        if (localObject1 != null)
+        {
+          ((DatingCommentTextView.TouchableSpan)localObject1).a(false);
+          this.a = null;
+          postInvalidate();
+        }
       }
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -107,13 +114,13 @@ public class StaticLayoutView
   
   public void setLayout(Layout paramLayout)
   {
-    this.jdField_a_of_type_AndroidTextLayout = paramLayout;
+    this.b = paramLayout;
     requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.StaticLayoutView
  * JD-Core Version:    0.7.0.1
  */

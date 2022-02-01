@@ -1,48 +1,39 @@
 package com.tencent.luggage.sdk.b.a;
 
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-public abstract class a$a<Component extends c>
+public abstract class a$a<Component extends f>
 {
-  public Component bDN;
-  protected final Map<Class, Object> bDO = new HashMap(2);
+  private Component eqB;
+  private final Map<Class, Object> eqC = new HashMap(2);
   
   public a$a(Component paramComponent)
   {
-    this.bDN = paramComponent;
+    this.eqB = paramComponent;
   }
   
-  protected final <T> void b(Class<T> paramClass, T paramT)
+  protected final void a(a parama)
   {
-    synchronized (this.bDO)
+    synchronized (this.eqC)
     {
-      this.bDO.put(paramClass, paramT);
+      this.eqC.putAll(parama.eqC);
       return;
     }
   }
   
-  protected final Collection<Object> wi()
+  public <T> T aa(Class<T> paramClass)
   {
-    synchronized (this.bDO)
+    synchronized (this.eqC)
     {
-      LinkedList localLinkedList = new LinkedList(this.bDO.values());
-      return localLinkedList;
-    }
-  }
-  
-  public <T> T x(Class<T> paramClass)
-  {
-    synchronized (this.bDO)
-    {
-      Object localObject1 = paramClass.cast(this.bDO.get(paramClass));
+      Object localObject1 = paramClass.cast(this.eqC.get(paramClass));
       if (localObject1 == null)
       {
-        localObject1 = this.bDO.values().iterator();
+        localObject1 = this.eqC.values().iterator();
         Object localObject2;
         do
         {
@@ -55,13 +46,53 @@ public abstract class a$a<Component extends c>
         return paramClass;
       }
       return localObject1;
+      return null;
     }
-    return null;
+  }
+  
+  public final Component aqX()
+  {
+    try
+    {
+      f localf = this.eqB;
+      return localf;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected final Collection<Object> aqY()
+  {
+    synchronized (this.eqC)
+    {
+      LinkedList localLinkedList = new LinkedList(this.eqC.values());
+      return localLinkedList;
+    }
+  }
+  
+  protected final <T> void b(Class<T> paramClass, T paramT)
+  {
+    synchronized (this.eqC)
+    {
+      this.eqC.put(paramClass, paramT);
+      return;
+    }
+  }
+  
+  protected final void cleanup()
+  {
+    synchronized (this.eqC)
+    {
+      this.eqC.clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

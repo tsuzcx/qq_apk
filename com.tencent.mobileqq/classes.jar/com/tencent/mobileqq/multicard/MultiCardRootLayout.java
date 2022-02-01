@@ -14,147 +14,152 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import auof;
-import auog;
-import auoh;
-import auoi;
-import bdoo;
-import bhxe;
-import bhxf;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.widget.FitSystemWindowsRelativeLayout;
+import com.tencent.widget.FitSystemWindowsRelativeLayout.DispatchTouchEventListener;
+import com.tencent.widget.FitSystemWindowsRelativeLayout.OnInterceptTouchEventListener;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 public class MultiCardRootLayout
   extends FitSystemWindowsRelativeLayout
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float jdField_a_of_type_Float = bdoo.b(18.0F);
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private bhxe jdField_a_of_type_Bhxe;
-  private bhxf jdField_a_of_type_Bhxf;
-  private WeakReference<auoi> jdField_a_of_type_JavaLangRefWeakReference;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private boolean jdField_b_of_type_Boolean = true;
-  private boolean c = true;
-  private boolean d;
+  private static final ArrayList<String> v = new ArrayList();
+  private FitSystemWindowsRelativeLayout.OnInterceptTouchEventListener j;
+  private FitSystemWindowsRelativeLayout.DispatchTouchEventListener k;
+  private Path l;
+  private RectF m;
+  private float n = ViewUtils.dpToPx(18.0F);
+  private boolean o = true;
+  private boolean p = true;
+  private Paint q = null;
+  private Paint r = null;
+  private GestureDetector s;
+  private boolean t = false;
+  private WeakReference<MultiCardRootLayout.MultiCardRootLayoutListener> u;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add("HUAWEI;VKY-AL00");
-    jdField_a_of_type_JavaUtilArrayList.add("Meizu;m3 note");
-    jdField_a_of_type_JavaUtilArrayList.add("samsung;SM-C7000");
-    jdField_a_of_type_JavaUtilArrayList.add("HUAWEI;JMM-AL00");
+    v.add("HUAWEI;VKY-AL00");
+    v.add("Meizu;m3 note");
+    v.add("samsung;SM-C7000");
+    v.add("HUAWEI;JMM-AL00");
   }
   
   public MultiCardRootLayout(Context paramContext)
   {
     super(paramContext);
-    a();
+    b();
   }
   
   public MultiCardRootLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet, 0);
-    a();
-  }
-  
-  private void a()
-  {
-    setWillNotDraw(false);
-    if ((Build.VERSION.SDK_INT <= 18) || (a())) {
-      setLayerType(1, null);
-    }
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    if (this.jdField_a_of_type_AndroidViewGestureDetector == null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new auof(this), new Handler(Looper.getMainLooper()));
-    }
-    this.jdField_a_of_type_Bhxe = new auog(this);
-    this.jdField_a_of_type_Bhxf = new auoh(this);
-    a(true);
+    b();
   }
   
   private void a(Canvas paramCanvas)
   {
-    if (paramCanvas == null) {}
-    for (;;)
-    {
+    if (paramCanvas == null) {
       return;
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166948));
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166949));
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPath.reset();
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-        this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-        paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      }
-      paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.jdField_b_of_type_AndroidGraphicsPaint);
-      int j = (int)(0.203704F * getHeight());
-      int k = (int)(0.1034483F * getWidth());
-      int i = 0;
-      while (i < 5)
-      {
-        a(paramCanvas, k, j);
-        j += (int)(0.139918F * getHeight());
-        i += 1;
-      }
+    }
+    if (this.r == null)
+    {
+      this.r = new Paint();
+      this.r.setColor(getResources().getColor(2131168073));
+      this.r.setStyle(Paint.Style.FILL);
+    }
+    if (this.q == null)
+    {
+      this.q = new Paint();
+      this.q.setColor(getResources().getColor(2131168074));
+      this.q.setStyle(Paint.Style.FILL);
+    }
+    if (this.o)
+    {
+      this.l.reset();
+      this.m.set(0.0F, 0.0F, getWidth(), getHeight());
+      Path localPath = this.l;
+      RectF localRectF = this.m;
+      float f = this.n;
+      localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
+      paramCanvas.clipPath(this.l);
+    }
+    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.r);
+    int i1 = (int)(getHeight() * 0.203704F);
+    int i2 = (int)(getWidth() * 0.1034483F);
+    int i = 0;
+    while (i < 5)
+    {
+      a(paramCanvas, i2, i1);
+      i1 += (int)(getHeight() * 0.139918F);
+      i += 1;
     }
   }
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
     int i = (int)(getWidth() * 0.6275862F);
-    int j = (int)(getWidth() * 0.796552F);
-    int k = (int)(getHeight() * 0.02880658F);
-    int m = (int)(getHeight() * 0.02469136F);
-    int n = (int)(getHeight() * 0.02469136F);
-    a(paramCanvas, paramInt1, paramInt2, i, k);
-    a(paramCanvas, paramInt1, paramInt2 + n + k, j, m);
+    int i1 = (int)(getWidth() * 0.796552F);
+    int i2 = (int)(getHeight() * 0.02880658F);
+    int i3 = (int)(getHeight() * 0.02469136F);
+    int i4 = (int)(getHeight() * 0.02469136F);
+    a(paramCanvas, paramInt1, paramInt2, i, i2);
+    a(paramCanvas, paramInt1, paramInt2 + i4 + i2, i1, i3);
   }
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (paramCanvas != null)) {
-      paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, this.jdField_a_of_type_AndroidGraphicsPaint);
+    Paint localPaint = this.q;
+    if ((localPaint != null) && (paramCanvas != null)) {
+      paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, localPaint);
     }
   }
   
   private boolean a()
   {
-    if ((Build.VERSION.SDK_INT == 24) && ("Xiaomi".equals(Build.MANUFACTURER)) && ("MIX".equals(Build.MODEL))) {}
-    String str;
-    do
-    {
-      do
-      {
-        return true;
-      } while (((Build.VERSION.SDK_INT == 24) && ("HUAWEI".equals(Build.MANUFACTURER)) && ("BND-AL10".equals(Build.MODEL))) || ((Build.VERSION.SDK_INT == 24) && ("HUAWEI".equals(Build.MANUFACTURER)) && ("HUAWEI CAZ-AL10".equals(Build.MODEL))) || ((Build.VERSION.SDK_INT == 24) && ("Meizu".equals(Build.MANUFACTURER)) && ("M5 Note".equals(Build.MODEL))));
-      str = Build.MANUFACTURER + ";" + Build.MODEL;
-    } while (jdField_a_of_type_JavaUtilArrayList.contains(str));
-    return false;
+    if ((Build.VERSION.SDK_INT == 24) && ("Xiaomi".equals(Build.MANUFACTURER)) && ("MIX".equals(Build.MODEL))) {
+      return true;
+    }
+    if ((Build.VERSION.SDK_INT == 24) && ("HUAWEI".equals(Build.MANUFACTURER)) && ("BND-AL10".equals(Build.MODEL))) {
+      return true;
+    }
+    if ((Build.VERSION.SDK_INT == 24) && ("HUAWEI".equals(Build.MANUFACTURER)) && ("HUAWEI CAZ-AL10".equals(Build.MODEL))) {
+      return true;
+    }
+    if ((Build.VERSION.SDK_INT == 24) && ("Meizu".equals(Build.MANUFACTURER)) && ("M5 Note".equals(Build.MODEL))) {
+      return true;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append(";");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    return v.contains(localObject);
+  }
+  
+  private void b()
+  {
+    setWillNotDraw(false);
+    if ((Build.VERSION.SDK_INT <= 18) || (a())) {
+      setLayerType(1, null);
+    }
+    this.l = new Path();
+    this.m = new RectF();
+    if (this.s == null) {
+      this.s = new GestureDetector(getContext(), new MultiCardRootLayout.1(this), new Handler(Looper.getMainLooper()));
+    }
+    this.k = new MultiCardRootLayout.2(this);
+    this.j = new MultiCardRootLayout.3(this);
+    a(true);
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      super.setOnInterceptTouchEventListener(this.jdField_a_of_type_Bhxf);
-      super.setDispatchTouchEventListener(this.jdField_a_of_type_Bhxe);
+      super.setOnInterceptTouchEventListener(this.j);
+      super.setDispatchTouchEventListener(this.k);
       return;
     }
     super.setOnInterceptTouchEventListener(null);
@@ -163,42 +168,45 @@ public class MultiCardRootLayout
   
   public void b(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.p = paramBoolean;
   }
   
   public void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.o)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      this.l.reset();
+      this.m.set(0.0F, 0.0F, getWidth(), getHeight());
+      Path localPath = this.l;
+      RectF localRectF = this.m;
+      float f = this.n;
+      localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
+      paramCanvas.clipPath(this.l);
     }
     super.dispatchDraw(paramCanvas);
   }
   
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.c) {
+    if (this.p) {
       a(paramCanvas);
     }
     super.onDraw(paramCanvas);
   }
   
-  public void setListener(auoi paramauoi)
+  public void setListener(MultiCardRootLayout.MultiCardRootLayoutListener paramMultiCardRootLayoutListener)
   {
-    if (paramauoi == null)
+    if (paramMultiCardRootLayoutListener == null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.u = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramauoi);
+    this.u = new WeakReference(paramMultiCardRootLayoutListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRootLayout
  * JD-Core Version:    0.7.0.1
  */

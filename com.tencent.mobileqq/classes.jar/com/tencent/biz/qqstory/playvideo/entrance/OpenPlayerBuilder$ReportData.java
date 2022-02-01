@@ -7,7 +7,7 @@ public class OpenPlayerBuilder$ReportData
 {
   public long activityOnCreateTimeStamp;
   public int from;
-  public boolean hasReportFirstVideoTime;
+  public boolean hasReportFirstVideoTime = false;
   public long initViewPagerDataTimeStamp;
   public long initViewPagerUiTimeStamp;
   public String openSessionId;
@@ -16,7 +16,7 @@ public class OpenPlayerBuilder$ReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData
  * JD-Core Version:    0.7.0.1
  */

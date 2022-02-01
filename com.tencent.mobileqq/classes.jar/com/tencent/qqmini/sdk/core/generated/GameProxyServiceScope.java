@@ -1,5 +1,7 @@
 package com.tencent.qqmini.sdk.core.generated;
 
+import com.tencent.qqmini.minigame.proxy.MiniGameCmdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.CmdProxy;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,12 +11,12 @@ public final class GameProxyServiceScope
   
   static
   {
-    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.CmdProxy", "com.tencent.qqmini.sdk.minigame.proxy.MiniGameCmdProxyImpl");
+    PROXY_SERVICES.put(CmdProxy.class, MiniGameCmdProxyImpl.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.GameProxyServiceScope
  * JD-Core Version:    0.7.0.1
  */

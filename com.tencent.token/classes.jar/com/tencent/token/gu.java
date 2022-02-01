@@ -1,33 +1,61 @@
 package com.tencent.token;
 
-import javax.annotation.Nullable;
-import okhttp3.ap;
-import okhttp3.at;
-import okhttp3.e;
+import android.support.v4.widget.DrawerLayout.c;
 
 public final class gu
+  implements DrawerLayout.c
 {
-  @Nullable
-  public final ap a;
-  @Nullable
-  public final at b;
+  boolean a;
+  private final a b;
+  private hl c;
+  private boolean d;
+  private final int e;
+  private final int f;
   
-  gu(ap paramap, at paramat)
+  private void a(int paramInt)
   {
-    this.a = paramap;
-    this.b = paramat;
+    this.b.a(paramInt);
   }
   
-  public static boolean a(at paramat, ap paramap)
+  private void b(float paramFloat)
   {
-    switch (paramat.b())
-    {
+    if (paramFloat == 1.0F) {
+      this.c.a(true);
+    } else if (paramFloat == 0.0F) {
+      this.c.a(false);
     }
-    do
+    this.c.a(paramFloat);
+  }
+  
+  public final void a()
+  {
+    b(1.0F);
+    if (this.a) {
+      a(this.f);
+    }
+  }
+  
+  public final void a(float paramFloat)
+  {
+    if (this.d)
     {
-      return false;
-    } while (((paramat.a("Expires") == null) && (paramat.h().c() == -1) && (!paramat.h().e()) && (!paramat.h().d())) || (paramat.h().b()) || (paramap.f().b()));
-    return true;
+      b(Math.min(1.0F, Math.max(0.0F, paramFloat)));
+      return;
+    }
+    b(0.0F);
+  }
+  
+  public final void b()
+  {
+    b(0.0F);
+    if (this.a) {
+      a(this.e);
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt);
   }
 }
 

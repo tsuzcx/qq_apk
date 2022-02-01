@@ -11,17 +11,23 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class SigActPb$RspBody
   extends MessageMicro<RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50 }, new String[] { "ret", "desc", "cmd", "seq", "rsp", "auth_rsp" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Long.valueOf(0L), null, null }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public SigActPb.SigauthRsp auth_rsp = new SigActPb.SigauthRsp();
   public final PBUInt32Field cmd = PBField.initUInt32(0);
   public final PBStringField desc = PBField.initString("");
   public final PBInt32Field ret = PBField.initInt32(0);
   public SigActPb.SigactRsp rsp = new SigActPb.SigactRsp();
   public final PBUInt64Field seq = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50 }, new String[] { "ret", "desc", "cmd", "seq", "rsp", "auth_rsp" }, new Object[] { localInteger, "", localInteger, Long.valueOf(0L), null, null }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.signature.SigActPb.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -10,49 +10,30 @@ import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 
-@SafeParcelable.Class(creator="GetServiceRequestCreator")
-@SafeParcelable.Reserved({9})
 public class GetServiceRequest
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<GetServiceRequest> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int version;
-  @SafeParcelable.Field(id=2)
   private final int zzst;
-  @SafeParcelable.Field(id=3)
   private int zzsu;
-  @SafeParcelable.Field(id=4)
   private String zzsv;
-  @SafeParcelable.Field(id=5)
   private IBinder zzsw;
-  @SafeParcelable.Field(id=6)
   private Scope[] zzsx;
-  @SafeParcelable.Field(id=7)
   private Bundle zzsy;
-  @SafeParcelable.Field(id=8)
   private Account zzsz;
-  @SafeParcelable.Field(id=10)
   private Feature[] zzta;
-  @SafeParcelable.Field(id=11)
   private Feature[] zztb;
-  @SafeParcelable.Field(id=12)
   private boolean zztc;
   
   static
   {
-    AppMethodBeat.i(89610);
+    AppMethodBeat.i(4632);
     CREATOR = new GetServiceRequestCreator();
-    AppMethodBeat.o(89610);
+    AppMethodBeat.o(4632);
   }
   
   public GetServiceRequest(int paramInt)
@@ -63,10 +44,9 @@ public class GetServiceRequest
     this.zztc = true;
   }
   
-  @SafeParcelable.Constructor
-  GetServiceRequest(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) int paramInt2, @SafeParcelable.Param(id=3) int paramInt3, @SafeParcelable.Param(id=4) String paramString, @SafeParcelable.Param(id=5) IBinder paramIBinder, @SafeParcelable.Param(id=6) Scope[] paramArrayOfScope, @SafeParcelable.Param(id=7) Bundle paramBundle, @SafeParcelable.Param(id=8) Account paramAccount, @SafeParcelable.Param(id=10) Feature[] paramArrayOfFeature1, @SafeParcelable.Param(id=11) Feature[] paramArrayOfFeature2, @SafeParcelable.Param(id=12) boolean paramBoolean)
+  GetServiceRequest(int paramInt1, int paramInt2, int paramInt3, String paramString, IBinder paramIBinder, Scope[] paramArrayOfScope, Bundle paramBundle, Account paramAccount, Feature[] paramArrayOfFeature1, Feature[] paramArrayOfFeature2, boolean paramBoolean)
   {
-    AppMethodBeat.i(89604);
+    AppMethodBeat.i(4626);
     this.version = paramInt1;
     this.zzst = paramInt2;
     this.zzsu = paramInt3;
@@ -74,7 +54,7 @@ public class GetServiceRequest
     {
       this.zzsv = "com.google.android.gms";
       if (paramInt1 >= 2) {
-        break label99;
+        break label101;
       }
     }
     for (this.zzsz = zzb(paramIBinder);; this.zzsz = paramAccount)
@@ -84,11 +64,11 @@ public class GetServiceRequest
       this.zzta = paramArrayOfFeature1;
       this.zztb = paramArrayOfFeature2;
       this.zztc = paramBoolean;
-      AppMethodBeat.o(89604);
+      AppMethodBeat.o(4626);
       return;
       this.zzsv = paramString;
       break;
-      label99:
+      label101:
       this.zzsw = paramIBinder;
     }
   }
@@ -100,20 +80,20 @@ public class GetServiceRequest
   
   private static Account zzb(IBinder paramIBinder)
   {
-    AppMethodBeat.i(89609);
+    AppMethodBeat.i(4631);
     Account localAccount = null;
     if (paramIBinder != null) {
       localAccount = AccountAccessor.getAccountBinderSafe(IAccountAccessor.Stub.asInterface(paramIBinder));
     }
-    AppMethodBeat.o(89609);
+    AppMethodBeat.o(4631);
     return localAccount;
   }
   
   public Account getAuthenticatedAccount()
   {
-    AppMethodBeat.i(89605);
+    AppMethodBeat.i(4627);
     Account localAccount = zzb(this.zzsw);
-    AppMethodBeat.o(89605);
+    AppMethodBeat.o(4627);
     return localAccount;
   }
   
@@ -164,11 +144,11 @@ public class GetServiceRequest
   
   public GetServiceRequest setAuthenticatedAccount(IAccountAccessor paramIAccountAccessor)
   {
-    AppMethodBeat.i(89606);
+    AppMethodBeat.i(4628);
     if (paramIAccountAccessor != null) {
       this.zzsw = paramIAccountAccessor.asBinder();
     }
-    AppMethodBeat.o(89606);
+    AppMethodBeat.o(4628);
     return this;
   }
   
@@ -216,15 +196,15 @@ public class GetServiceRequest
   
   public GetServiceRequest setScopes(Collection<Scope> paramCollection)
   {
-    AppMethodBeat.i(89607);
+    AppMethodBeat.i(4629);
     this.zzsx = ((Scope[])paramCollection.toArray(new Scope[paramCollection.size()]));
-    AppMethodBeat.o(89607);
+    AppMethodBeat.o(4629);
     return this;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89608);
+    AppMethodBeat.i(4630);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.version);
     SafeParcelWriter.writeInt(paramParcel, 2, this.zzst);
@@ -238,12 +218,12 @@ public class GetServiceRequest
     SafeParcelWriter.writeTypedArray(paramParcel, 11, this.zztb, paramInt, false);
     SafeParcelWriter.writeBoolean(paramParcel, 12, this.zztc);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(89608);
+    AppMethodBeat.o(4630);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.GetServiceRequest
  * JD-Core Version:    0.7.0.1
  */

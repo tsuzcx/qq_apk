@@ -43,7 +43,7 @@ public class ImagePreviewActivity$ImageAdapter
     {
       paramView = this.a.getLayoutInflater().inflate(2130903316, null);
       paramViewGroup = new ImagePreviewActivity.ImageAdapter.ImagePhotoHolder(this);
-      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131232061));
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131232060));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

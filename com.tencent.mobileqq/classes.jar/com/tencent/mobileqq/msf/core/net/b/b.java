@@ -24,7 +24,10 @@ public class b
   public b(int paramInt1, String paramString1, String paramString2, int paramInt2, a.a parama)
   {
     super(paramInt1, parama);
-    this.i = (paramString1 + b(paramString1));
+    parama = new StringBuilder();
+    parama.append(paramString1);
+    parama.append(b(paramString1));
+    this.i = parama.toString();
     this.i = MsfSdkUtils.insertMtype("netdetect", this.i);
     this.k = paramString2;
     this.l = paramInt2;
@@ -33,28 +36,52 @@ public class b
   private String b(String paramString)
   {
     Object localObject = new Random(System.currentTimeMillis());
-    localObject = "r=" + String.valueOf(((Random)localObject).nextInt(100000));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("r=");
+    localStringBuilder.append(String.valueOf(((Random)localObject).nextInt(100000)));
+    localObject = localStringBuilder.toString();
     if (paramString.contains("?"))
     {
-      if (paramString.endsWith("?")) {
-        return paramString + (String)localObject;
+      if (paramString.endsWith("?"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append((String)localObject);
+        return localStringBuilder.toString();
       }
-      return (String)localObject + "&" + (String)localObject;
+      paramString = new StringBuilder();
+      paramString.append((String)localObject);
+      paramString.append("&");
+      paramString.append((String)localObject);
+      return paramString.toString();
     }
-    return "?" + (String)localObject;
+    paramString = new StringBuilder();
+    paramString.append("?");
+    paramString.append((String)localObject);
+    return paramString.toString();
   }
   
   protected int a(String paramString)
   {
     if ((this.n == 200) && (this.j.getHost().equals(this.o)) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.k)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " valid succ");
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("WIFI detect, HttpEchoTask ");
+        paramString.append(this.e);
+        paramString.append(" valid succ");
+        QLog.d("HttpEchoTask", 2, paramString.toString());
       }
       return 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " valid failed.");
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("WIFI detect, HttpEchoTask ");
+      paramString.append(this.e);
+      paramString.append(" valid failed.");
+      QLog.d("HttpEchoTask", 2, paramString.toString());
     }
     return -3;
   }
@@ -63,8 +90,15 @@ public class b
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " try connect " + this.i);
+      StringBuilder localStringBuilder1;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("WIFI detect, HttpEchoTask ");
+        localStringBuilder1.append(this.e);
+        localStringBuilder1.append(" try connect ");
+        localStringBuilder1.append(this.i);
+        QLog.d("HttpEchoTask", 2, localStringBuilder1.toString());
       }
       this.j = new URL(this.i);
       this.m = ((HttpURLConnection)this.j.openConnection());
@@ -75,19 +109,33 @@ public class b
       this.m.setConnectTimeout(this.l);
       this.m.setReadTimeout(10000);
       this.m.connect();
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " connect " + this.i + " succ.");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("WIFI detect, HttpEchoTask ");
+        localStringBuilder1.append(this.e);
+        localStringBuilder1.append(" connect ");
+        localStringBuilder1.append(this.i);
+        localStringBuilder1.append(" succ.");
+        QLog.d("HttpEchoTask", 2, localStringBuilder1.toString());
       }
       return true;
     }
     catch (Throwable localThrowable)
     {
-      localThrowable.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " connect " + this.i + " failed.");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("WIFI detect, HttpEchoTask ");
+        localStringBuilder2.append(this.e);
+        localStringBuilder2.append(" connect ");
+        localStringBuilder2.append(this.i);
+        localStringBuilder2.append(" failed.");
+        QLog.d("HttpEchoTask", 2, localStringBuilder2.toString(), localThrowable);
       }
-      if (this.m != null) {
-        this.m.disconnect();
+      HttpURLConnection localHttpURLConnection = this.m;
+      if (localHttpURLConnection != null) {
+        localHttpURLConnection.disconnect();
       }
     }
     return false;
@@ -95,51 +143,72 @@ public class b
   
   protected void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " disconnect " + this.i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WIFI detect, HttpEchoTask ");
+      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(" disconnect ");
+      ((StringBuilder)localObject).append(this.i);
+      QLog.d("HttpEchoTask", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.m != null) {
-      this.m.disconnect();
+    Object localObject = this.m;
+    if (localObject != null) {
+      ((HttpURLConnection)localObject).disconnect();
     }
   }
   
   protected String c()
   {
-    try
+    for (;;)
     {
-      this.n = this.m.getResponseCode();
-      this.o = this.m.getURL().getHost();
-      Object localObject1 = new BufferedReader(new InputStreamReader(this.m.getInputStream()));
-      Object localObject2;
-      for (String str = "";; str = str + (String)localObject2)
+      try
       {
-        localObject2 = ((BufferedReader)localObject1).readLine();
-        if (localObject2 == null) {
-          break;
+        this.n = this.m.getResponseCode();
+        this.o = this.m.getURL().getHost();
+        localObject1 = new BufferedReader(new InputStreamReader(this.m.getInputStream()));
+        String str = "";
+        Object localObject2 = ((BufferedReader)localObject1).readLine();
+        if (localObject2 != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append((String)localObject2);
+          str = localStringBuilder.toString();
+          continue;
+        }
+        ((BufferedReader)localObject1).close();
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("WIFI detect, HttpEchoTask ");
+          ((StringBuilder)localObject2).append(this.e);
+          ((StringBuilder)localObject2).append(" echo content: ");
+          if (str.length() > 10)
+          {
+            localObject1 = str.substring(0, 10);
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.d("HttpEchoTask", 2, ((StringBuilder)localObject2).toString());
+          }
+        }
+        else
+        {
+          return str;
         }
       }
-      ((BufferedReader)localObject1).close();
-      if (QLog.isColorLevel())
+      catch (Throwable localThrowable)
       {
-        localObject2 = new StringBuilder().append("WIFI detect, HttpEchoTask ").append(this.e).append(" echo content: ");
-        if (str.length() <= 10) {
-          break label149;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("WIFI detect, HttpEchoTask ");
+          ((StringBuilder)localObject1).append(this.e);
+          ((StringBuilder)localObject1).append(" echo failed");
+          QLog.d("HttpEchoTask", 2, ((StringBuilder)localObject1).toString(), localThrowable);
         }
+        return null;
       }
-      label149:
-      for (localObject1 = str.substring(0, 10);; localObject1 = str)
-      {
-        QLog.d("HttpEchoTask", 2, (String)localObject1);
-        return str;
-      }
-      return null;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " echo failed");
-      }
+      Object localObject1 = localThrowable;
     }
   }
   
@@ -150,7 +219,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.b
  * JD-Core Version:    0.7.0.1
  */

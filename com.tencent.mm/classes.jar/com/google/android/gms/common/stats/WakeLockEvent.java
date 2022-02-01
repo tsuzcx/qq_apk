@@ -4,59 +4,37 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import javax.annotation.Nullable;
 
-@SafeParcelable.Class(creator="WakeLockEventCreator")
 public final class WakeLockEvent
   extends StatsEvent
 {
   public static final Parcelable.Creator<WakeLockEvent> CREATOR;
-  @SafeParcelable.Field(getter="getTimeout", id=16)
   private final long mTimeout;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
-  @SafeParcelable.Field(getter="getTimeMillis", id=2)
   private final long zzxv;
-  @SafeParcelable.Field(getter="getEventType", id=11)
   private int zzxw;
-  @SafeParcelable.Field(getter="getElapsedRealtime", id=8)
   private final long zzyd;
   private long zzyf;
-  @SafeParcelable.Field(getter="getWakeLockName", id=4)
   private final String zzyq;
-  @SafeParcelable.Field(getter="getSecondaryWakeLockName", id=10)
   private final String zzyr;
-  @SafeParcelable.Field(getter="getCodePackage", id=17)
   private final String zzys;
-  @SafeParcelable.Field(getter="getWakeLockType", id=5)
   private final int zzyt;
-  @SafeParcelable.Field(getter="getCallingPackages", id=6)
   private final List<String> zzyu;
-  @SafeParcelable.Field(getter="getEventKey", id=12)
   private final String zzyv;
-  @SafeParcelable.Field(getter="getDeviceState", id=14)
   private int zzyw;
-  @SafeParcelable.Field(getter="getHostPackage", id=13)
   private final String zzyx;
-  @SafeParcelable.Field(getter="getBeginPowerPercentage", id=15)
   private final float zzyy;
   
   static
   {
-    AppMethodBeat.i(89980);
+    AppMethodBeat.i(5002);
     CREATOR = new WakeLockEventCreator();
-    AppMethodBeat.o(89980);
+    AppMethodBeat.o(5002);
   }
   
-  @SafeParcelable.Constructor
-  WakeLockEvent(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) long paramLong1, @SafeParcelable.Param(id=11) int paramInt2, @SafeParcelable.Param(id=4) String paramString1, @SafeParcelable.Param(id=5) int paramInt3, @SafeParcelable.Param(id=6) List<String> paramList, @SafeParcelable.Param(id=12) String paramString2, @SafeParcelable.Param(id=8) long paramLong2, @SafeParcelable.Param(id=14) int paramInt4, @SafeParcelable.Param(id=10) String paramString3, @SafeParcelable.Param(id=13) String paramString4, @SafeParcelable.Param(id=15) float paramFloat, @SafeParcelable.Param(id=16) long paramLong3, @SafeParcelable.Param(id=17) String paramString5)
+  WakeLockEvent(int paramInt1, long paramLong1, int paramInt2, String paramString1, int paramInt3, List<String> paramList, String paramString2, long paramLong2, int paramInt4, String paramString3, String paramString4, float paramFloat, long paramLong3, String paramString5)
   {
     this.zzal = paramInt1;
     this.zzxv = paramLong1;
@@ -83,33 +61,33 @@ public final class WakeLockEvent
   public WakeLockEvent(WakeLockEvent paramWakeLockEvent)
   {
     this(paramWakeLockEvent.zzal, paramWakeLockEvent.getTimeMillis(), paramWakeLockEvent.getEventType(), paramWakeLockEvent.getWakeLockName(), paramWakeLockEvent.getWakeLockType(), paramWakeLockEvent.getCallingPackages(), paramWakeLockEvent.getEventKey(), paramWakeLockEvent.getElapsedRealtime(), paramWakeLockEvent.getDeviceState(), paramWakeLockEvent.getSecondaryWakeLockName(), paramWakeLockEvent.getHostPackage(), paramWakeLockEvent.getBeginPowerPercentage(), paramWakeLockEvent.getTimeout(), paramWakeLockEvent.getCodePackage());
-    AppMethodBeat.i(89974);
-    AppMethodBeat.o(89974);
+    AppMethodBeat.i(4996);
+    AppMethodBeat.o(4996);
   }
   
   public static boolean checkEventType(StatsEvent paramStatsEvent)
   {
-    AppMethodBeat.i(89978);
+    AppMethodBeat.i(5000);
     if ((7 == paramStatsEvent.getEventType()) || (8 == paramStatsEvent.getEventType()) || (9 == paramStatsEvent.getEventType()) || (10 == paramStatsEvent.getEventType()) || (11 == paramStatsEvent.getEventType()) || (12 == paramStatsEvent.getEventType()))
     {
-      AppMethodBeat.o(89978);
+      AppMethodBeat.o(5000);
       return true;
     }
-    AppMethodBeat.o(89978);
+    AppMethodBeat.o(5000);
     return false;
   }
   
   public final StatsEvent ReconstructCloseEvent(StatsEvent paramStatsEvent)
   {
-    AppMethodBeat.i(89975);
+    AppMethodBeat.i(4997);
     if ((paramStatsEvent instanceof WakeLockEvent))
     {
       paramStatsEvent = (WakeLockEvent)paramStatsEvent;
       paramStatsEvent = new WakeLockEvent(paramStatsEvent).setEventType(getEventType()).setDurationMillis(getElapsedRealtime() - paramStatsEvent.getElapsedRealtime());
-      AppMethodBeat.o(89975);
+      AppMethodBeat.o(4997);
       return paramStatsEvent;
     }
-    AppMethodBeat.o(89975);
+    AppMethodBeat.o(4997);
     return paramStatsEvent;
   }
   
@@ -118,7 +96,6 @@ public final class WakeLockEvent
     return this.zzyy;
   }
   
-  @Nullable
   public final List<String> getCallingPackages()
   {
     return this.zzyu;
@@ -166,47 +143,47 @@ public final class WakeLockEvent
   
   public final String getSpecificString()
   {
-    AppMethodBeat.i(89977);
+    AppMethodBeat.i(4999);
     String str5 = getWakeLockName();
     int i = getWakeLockType();
     String str1;
     int j;
     String str2;
-    label43:
+    label44:
     String str3;
-    label54:
+    label55:
     float f;
     if (getCallingPackages() == null)
     {
       str1 = "";
       j = getDeviceState();
       if (getSecondaryWakeLockName() != null) {
-        break label228;
+        break label230;
       }
       str2 = "";
       if (getHostPackage() != null) {
-        break label237;
+        break label239;
       }
       str3 = "";
       f = getBeginPowerPercentage();
       if (getCodePackage() != null) {
-        break label246;
+        break label248;
       }
     }
-    label228:
-    label237:
-    label246:
+    label230:
+    label239:
+    label248:
     for (String str4 = "";; str4 = getCodePackage())
     {
       str1 = String.valueOf(str5).length() + 45 + String.valueOf(str1).length() + String.valueOf(str2).length() + String.valueOf(str3).length() + String.valueOf(str4).length() + "\t" + str5 + "\t" + i + "\t" + str1 + "\t" + j + "\t" + str2 + "\t" + str3 + "\t" + f + "\t" + str4;
-      AppMethodBeat.o(89977);
+      AppMethodBeat.o(4999);
       return str1;
       str1 = TextUtils.join(",", getCallingPackages());
       break;
       str2 = getSecondaryWakeLockName();
-      break label43;
+      break label44;
       str3 = getHostPackage();
-      break label54;
+      break label55;
     }
   }
   
@@ -259,7 +236,7 @@ public final class WakeLockEvent
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89976);
+    AppMethodBeat.i(4998);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeLong(paramParcel, 2, getTimeMillis());
@@ -276,12 +253,12 @@ public final class WakeLockEvent
     SafeParcelWriter.writeLong(paramParcel, 16, getTimeout());
     SafeParcelWriter.writeString(paramParcel, 17, getCodePackage(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(89976);
+    AppMethodBeat.o(4998);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.WakeLockEvent
  * JD-Core Version:    0.7.0.1
  */

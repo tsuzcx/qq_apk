@@ -1,12 +1,10 @@
 package com.tencent.biz.widgets;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
@@ -22,11 +20,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
-import bdqf;
-import bdqi;
-import bhsf;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,86 +32,68 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 import mqq.os.MqqHandler;
-import zgy;
-import zgz;
-import zha;
-import zhb;
-import zhc;
-import zhd;
-import zhp;
 
 public class ScannerView
   extends ViewGroup
   implements Camera.PreviewCallback, SurfaceHolder.Callback, Comparator<Camera.Size>
 {
-  private float jdField_a_of_type_Float;
-  public int a;
-  public long a;
-  public Rect a;
-  Camera jdField_a_of_type_AndroidHardwareCamera;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
-  private ScannerView.AutoFocusThread jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread;
-  ScannerView.DecodeThread jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread;
-  String jdField_a_of_type_JavaLangString;
-  public StringBuilder a;
-  ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private zha jdField_a_of_type_Zha;
-  private zhb jdField_a_of_type_Zhb;
-  private zhc jdField_a_of_type_Zhc;
-  private zhd jdField_a_of_type_Zhd;
-  private zhp jdField_a_of_type_Zhp;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  public int b;
-  public long b;
-  public Rect b;
-  public Handler b;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  int jdField_c_of_type_Int;
-  Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_c_of_type_Boolean;
-  int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  public int e;
-  private boolean e;
-  public int f;
-  private boolean f;
-  public int g;
-  private boolean g;
-  public int h;
-  private boolean h;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
-  private int m = -1;
-  private int n = -1;
-  private int o = 17;
+  private int A = 0;
+  private int B = -1;
+  private int C = -1;
+  private int D = 17;
+  private boolean E = false;
+  private boolean F = false;
+  private boolean G = false;
+  private boolean H = false;
+  private ScannerView.ScannerListener I;
+  private ScannerView.FileDecodeListener J;
+  private ScannerView.FlashLightListener K;
+  private ScannerView.AutoFocusThread L;
+  private SensorManager M;
+  private float N = 0.0F;
+  private float O = 0.0F;
+  private float P = 0.0F;
+  private boolean Q = true;
+  private boolean R = false;
+  private boolean S = true;
+  private ScannerView.WeakSensorEventListener T;
+  private boolean U = false;
+  ReentrantLock a = new ReentrantLock();
+  ScannerView.DecodeThread b;
+  Handler c;
+  Rect d = null;
+  Rect e = null;
+  Rect f = new Rect();
+  int g;
+  int h;
+  int i;
+  int j;
+  int k;
+  int l;
+  int m;
+  String n;
+  Camera o;
+  int p = 0;
+  protected long q;
+  protected long r;
+  public StringBuilder s;
+  public boolean t = false;
+  Handler u = new ScannerView.1(this);
+  private SurfaceView v;
+  private ViewFinderView w;
+  private int x = 0;
+  private int y = 0;
+  private int z = 0;
   
   public ScannerView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidOsHandler = new zgy(this);
     a(paramContext, null);
   }
   
   public ScannerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_g_of_type_Boolean = true;
-    this.jdField_b_of_type_AndroidOsHandler = new zgy(this);
     a(paramContext, paramAttributeSet);
   }
   
@@ -122,10 +101,8 @@ public class ScannerView
   {
     paramCamera = paramCamera.getParameters();
     Camera.Size localSize1 = paramCamera.getPreviewSize();
-    if (("samsung".equalsIgnoreCase(Build.MANUFACTURER)) && ("GT-I9008L".equalsIgnoreCase(Build.MODEL)))
-    {
-      localObject1 = new Point(localSize1.width, localSize1.height);
-      return localObject1;
+    if (("samsung".equalsIgnoreCase(Build.MANUFACTURER)) && ("GT-I9008L".equalsIgnoreCase(Build.MODEL))) {
+      return new Point(localSize1.width, localSize1.height);
     }
     paramCamera = paramCamera.getSupportedPreviewSizes();
     if (paramCamera == null) {
@@ -136,12 +113,23 @@ public class ScannerView
     Object localObject2;
     if (QLog.isDevelopLevel())
     {
-      paramCamera = new StringBuilder("manufacturer:").append(Build.MANUFACTURER).append(" model:").append(Build.MODEL).append("\ndefault size:").append(localSize1.width).append(" x ").append(localSize1.height).append("\nsizes:");
+      paramCamera = new StringBuilder("manufacturer:");
+      paramCamera.append(Build.MANUFACTURER);
+      paramCamera.append(" model:");
+      paramCamera.append(Build.MODEL);
+      paramCamera.append("\ndefault size:");
+      paramCamera.append(localSize1.width);
+      paramCamera.append(" x ");
+      paramCamera.append(localSize1.height);
+      paramCamera.append("\nsizes:");
       localObject2 = ((List)localObject1).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         Camera.Size localSize2 = (Camera.Size)((Iterator)localObject2).next();
-        paramCamera.append(localSize2.width).append(" x ").append(localSize2.height).append(" | ");
+        paramCamera.append(localSize2.width);
+        paramCamera.append(" x ");
+        paramCamera.append(localSize2.height);
+        paramCamera.append(" | ");
       }
       QLog.d("ScannerView", 4, paramCamera.toString());
     }
@@ -149,7 +137,6 @@ public class ScannerView
     float f3 = paramInt1 / paramInt2;
     float f1 = (1.0F / 1.0F);
     localObject1 = ((List)localObject1).iterator();
-    label256:
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (Camera.Size)((Iterator)localObject1).next();
@@ -158,64 +145,55 @@ public class ScannerView
       int i3 = i1 * i2;
       if ((i3 >= 76800) && (i3 <= 921600) && ((i1 != 980) || (i2 != 800) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || ((!"GT-I9220".equalsIgnoreCase(Build.MODEL)) && (!"GT-N7000".equalsIgnoreCase(Build.MODEL)))) && (((i1 == 1184) && (i2 == 666)) || ((i1 != 704) || (i2 != 576) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9300".equalsIgnoreCase(Build.MODEL)))))
       {
-        if (paramInt1 > paramInt2)
-        {
+        int i4 = 0;
+        if (paramInt1 > paramInt2) {
           i3 = 1;
-          if (i1 >= i2) {
-            break label479;
-          }
-          i4 = 1;
-          label434:
-          if (i3 != i4) {
-            break label485;
-          }
-          i3 = i1;
-        }
-        for (int i4 = i2;; i4 = i1)
-        {
-          if ((i4 != paramInt1) || (i3 != paramInt2)) {
-            break label496;
-          }
-          return new Point(i1, i2);
+        } else {
           i3 = 0;
-          break;
-          label479:
-          i4 = 0;
-          break label434;
-          label485:
-          i3 = i2;
         }
-        label496:
-        if ((i4 >= paramInt1 >> 1) && (i4 >> 1 <= paramInt1) && (i3 >= paramInt2 >> 1) && (i3 >> 1 <= paramInt2))
+        if (i1 < i2) {
+          i4 = 1;
+        }
+        int i5;
+        if (i3 == i4)
         {
-          float f2 = Math.abs(i4 / i3 - f3);
-          if (f2 >= f1) {
-            break label595;
+          i4 = i2;
+          i3 = i1;
+          i5 = i3;
+        }
+        else
+        {
+          i5 = i2;
+          i3 = i1;
+          i4 = i3;
+        }
+        if ((i4 == paramInt1) && (i5 == paramInt2)) {
+          return new Point(i1, i2);
+        }
+        if ((i4 >= paramInt1 >> 1) && (i4 >> 1 <= paramInt1) && (i5 >= paramInt2 >> 1) && (i5 >> 1 <= paramInt2))
+        {
+          float f2 = Math.abs(i4 / i5 - f3);
+          if (f2 < f1)
+          {
+            paramCamera = new Point(i1, i2);
+            f1 = f2;
           }
-          paramCamera = new Point(i1, i2);
-          f1 = f2;
         }
       }
     }
-    label595:
-    for (;;)
-    {
-      break label256;
-      localObject1 = paramCamera;
-      if (paramCamera != null) {
-        break;
-      }
-      return new Point(localSize1.width, localSize1.height);
+    if (paramCamera != null) {
+      return paramCamera;
     }
+    return new Point(localSize1.width, localSize1.height);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     setKeepScreenOn(true);
     a(paramContext);
-    this.jdField_a_of_type_AndroidViewSurfaceView = new SurfaceView(paramContext, paramAttributeSet);
-    addView(this.jdField_a_of_type_AndroidViewSurfaceView);
-    Object localObject = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+    this.v = new SurfaceView(paramContext, paramAttributeSet);
+    addView(this.v);
+    Object localObject = this.v.getHolder();
     ((SurfaceHolder)localObject).addCallback(this);
     if (Build.VERSION.SDK_INT < 11) {
       ((SurfaceHolder)localObject).setType(3);
@@ -225,235 +203,375 @@ public class ScannerView
       localObject = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ScannerView);
       int i2 = ((TypedArray)localObject).getIndexCount();
       int i1 = 0;
-      if (i1 < i2)
+      while (i1 < i2)
       {
         int i3 = ((TypedArray)localObject).getIndex(i1);
         switch (i3)
         {
-        }
-        for (;;)
-        {
-          i1 += 1;
+        default: 
           break;
-          this.l = ((TypedArray)localObject).getDimensionPixelOffset(i3, this.l);
-          continue;
-          this.j = ((TypedArray)localObject).getDimensionPixelOffset(i3, this.j);
-          continue;
-          this.k = ((TypedArray)localObject).getDimensionPixelOffset(i3, this.k);
-          continue;
-          this.i = ((TypedArray)localObject).getDimensionPixelOffset(i3, this.i);
-          continue;
-          this.m = ((TypedArray)localObject).getLayoutDimension(i3, this.m);
-          continue;
-          this.n = ((TypedArray)localObject).getLayoutDimension(i3, this.n);
-          continue;
-          this.o = ((TypedArray)localObject).getInt(i3, this.o);
+        case 8: 
+          this.B = ((TypedArray)localObject).getLayoutDimension(i3, this.B);
+          break;
+        case 7: 
+          this.x = ((TypedArray)localObject).getDimensionPixelOffset(i3, this.x);
+          break;
+        case 6: 
+          this.z = ((TypedArray)localObject).getDimensionPixelOffset(i3, this.z);
+          break;
+        case 5: 
+          this.y = ((TypedArray)localObject).getDimensionPixelOffset(i3, this.y);
+          break;
+        case 4: 
+          this.C = ((TypedArray)localObject).getLayoutDimension(i3, this.C);
+          break;
+        case 3: 
+          this.D = ((TypedArray)localObject).getInt(i3, this.D);
+          break;
+        case 2: 
+          this.A = ((TypedArray)localObject).getDimensionPixelOffset(i3, this.A);
         }
+        i1 += 1;
       }
       ((TypedArray)localObject).recycle();
-      this.jdField_a_of_type_Zhp = new zhp(paramContext);
-      addView(this.jdField_a_of_type_Zhp);
+      this.w = new ViewFinderView(paramContext);
+      addView(this.w);
     }
     if (paramAttributeSet != null) {
-      this.jdField_a_of_type_Boolean = paramAttributeSet.getAttributeBooleanValue(0, true);
+      this.E = paramAttributeSet.getAttributeBooleanValue(0, true);
     }
   }
   
   private void a(Camera paramCamera, boolean paramBoolean)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        localParameters = paramCamera.getParameters();
-        localObject = "torch";
-        if (bdqi.j) {
-          continue;
-        }
-        localObject = bdqf.a().a(localParameters);
+      localParameters = paramCamera.getParameters();
+      localObject = "torch";
+      if (MobileIssueSettings.j) {
+        break label141;
       }
-      catch (RuntimeException paramCamera)
+      localObject = KapalaiAdapterUtil.a().a(localParameters);
+    }
+    catch (RuntimeException paramCamera)
+    {
+      for (;;)
       {
         Camera.Parameters localParameters;
         Object localObject;
-        paramBoolean = false;
+        label45:
         continue;
-        paramCamera = Boolean.FALSE;
-        continue;
+        label141:
         if (!paramBoolean) {
-          continue;
+          localObject = "off";
         }
-        continue;
       }
-      localParameters.setFlashMode((String)localObject);
-      paramCamera.setParameters(localParameters);
-      if ((this.jdField_c_of_type_Boolean) && (("auto".equals(this.jdField_a_of_type_JavaLangString)) || ("macro".equals(this.jdField_a_of_type_JavaLangString))))
-      {
-        this.jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread = new ScannerView.AutoFocusThread(this, this.jdField_a_of_type_AndroidHardwareCamera);
-        this.jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread.start();
-      }
-      this.jdField_d_of_type_Boolean = paramBoolean;
-      localObject = this.jdField_b_of_type_AndroidOsHandler;
-      if (!paramBoolean) {
-        continue;
-      }
-      paramCamera = Boolean.TRUE;
-      ((Handler)localObject).obtainMessage(10, paramCamera).sendToTarget();
-      return;
-      localObject = "off";
     }
+    localParameters.setFlashMode((String)localObject);
+    paramCamera.setParameters(localParameters);
+    break label45;
+    paramBoolean = false;
+    if ((this.G) && (("auto".equals(this.n)) || ("macro".equals(this.n))))
+    {
+      this.L = new ScannerView.AutoFocusThread(this, this.o);
+      this.L.start();
+    }
+    this.H = paramBoolean;
+    localObject = this.u;
+    if (paramBoolean) {
+      paramCamera = Boolean.TRUE;
+    } else {
+      paramCamera = Boolean.FALSE;
+    }
+    ((Handler)localObject).obtainMessage(10, paramCamera).sendToTarget();
   }
   
-  @TargetApi(9)
-  private boolean a()
+  private void e()
   {
-    boolean bool2 = false;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    label330:
-    label337:
-    label342:
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidHardwareCamera != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ScannerView", 2, "camera already opened");
-          }
-          return true;
-        }
-        if (Build.VERSION.SDK_INT >= 9)
-        {
-          i2 = Camera.getNumberOfCameras();
-          if (i2 <= 0) {
-            break label337;
-          }
-          Object localObject1 = new Camera.CameraInfo();
-          i1 = 0;
-          if (i1 < i2)
-          {
-            Camera.getCameraInfo(i1, (Camera.CameraInfo)localObject1);
-            if (((Camera.CameraInfo)localObject1).facing != 0) {}
-          }
-          else
-          {
-            if (i1 < i2) {
-              break label330;
-            }
-            Camera.getCameraInfo(0, (Camera.CameraInfo)localObject1);
-            i2 = 0;
-            i1 = 1;
-            this.jdField_a_of_type_AndroidHardwareCamera = bhsf.a(i2);
-            i3 = ((Camera.CameraInfo)localObject1).orientation;
-            i2 = i1;
-            i1 = i3;
-            break label342;
-            if (bdqi.jdField_a_of_type_Int <= 0) {
-              continue;
-            }
-            i3 = bdqi.jdField_a_of_type_Int;
-            this.jdField_c_of_type_Int = i3;
-            this.jdField_d_of_type_Int = i2;
-            if (QLog.isColorLevel())
-            {
-              localObject1 = new StringBuilder().append("camera open:");
-              if (this.jdField_a_of_type_AndroidHardwareCamera == null) {
-                continue;
-              }
-              bool1 = true;
-              QLog.d("ScannerView", 2, bool1 + " orientation:" + i1 + " facing:" + i2);
-            }
-            localObject1 = this.jdField_a_of_type_AndroidHardwareCamera;
-            bool1 = bool2;
-            if (localObject1 != null) {
-              bool1 = true;
-            }
-            return bool1;
-          }
-          i1 += 1;
-          continue;
-        }
-        else
-        {
-          this.jdField_a_of_type_AndroidHardwareCamera = bhsf.a();
-          i2 = 0;
-          i1 = 90;
-          continue;
-        }
-        int i3 = i1;
-        continue;
-        boolean bool1 = false;
-        continue;
-        i2 = i1;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ScannerView", 2, "camera open failed:" + localRuntimeException.getMessage());
-        }
-        return false;
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      }
-      int i1 = 0;
-      continue;
-      i1 = 90;
-      int i2 = 0;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      return;
     }
+    throw new RuntimeException("This method must be called on UI thread");
   }
   
   /* Error */
-  @TargetApi(8)
-  private boolean b()
+  @android.annotation.TargetApi(9)
+  private boolean f()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   4: invokevirtual 400	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   1: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   4: invokevirtual 459	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   7: iconst_0
+    //   8: istore 5
+    //   10: aload_0
+    //   11: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   14: ifnull +27 -> 41
+    //   17: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   20: ifeq +12 -> 32
+    //   23: ldc 253
+    //   25: iconst_2
+    //   26: ldc_w 464
+    //   29: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: aload_0
+    //   33: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   36: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   39: iconst_1
+    //   40: ireturn
+    //   41: bipush 90
+    //   43: istore_1
+    //   44: getstatic 308	android/os/Build$VERSION:SDK_INT	I
+    //   47: bipush 9
+    //   49: if_icmplt +79 -> 128
+    //   52: invokestatic 470	android/hardware/Camera:getNumberOfCameras	()I
+    //   55: istore_2
+    //   56: iload_2
+    //   57: ifle +312 -> 369
+    //   60: new 472	android/hardware/Camera$CameraInfo
+    //   63: dup
+    //   64: invokespecial 473	android/hardware/Camera$CameraInfo:<init>	()V
+    //   67: astore 6
+    //   69: iconst_0
+    //   70: istore_1
+    //   71: iload_1
+    //   72: iload_2
+    //   73: if_icmpge +20 -> 93
+    //   76: iload_1
+    //   77: aload 6
+    //   79: invokestatic 477	android/hardware/Camera:getCameraInfo	(ILandroid/hardware/Camera$CameraInfo;)V
+    //   82: aload 6
+    //   84: getfield 480	android/hardware/Camera$CameraInfo:facing	I
+    //   87: ifne +270 -> 357
+    //   90: goto +3 -> 93
+    //   93: iload_1
+    //   94: iload_2
+    //   95: if_icmplt +269 -> 364
+    //   98: iconst_0
+    //   99: aload 6
+    //   101: invokestatic 477	android/hardware/Camera:getCameraInfo	(ILandroid/hardware/Camera$CameraInfo;)V
+    //   104: iconst_1
+    //   105: istore_2
+    //   106: iconst_0
+    //   107: istore_1
+    //   108: goto +3 -> 111
+    //   111: aload_0
+    //   112: iload_1
+    //   113: invokestatic 485	com/tencent/util/CameraUtil:a	(I)Landroid/hardware/Camera;
+    //   116: putfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   119: aload 6
+    //   121: getfield 488	android/hardware/Camera$CameraInfo:orientation	I
+    //   124: istore_1
+    //   125: goto +13 -> 138
+    //   128: aload_0
+    //   129: invokestatic 491	com/tencent/util/CameraUtil:a	()Landroid/hardware/Camera;
+    //   132: putfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   135: goto +234 -> 369
+    //   138: getstatic 493	com/tencent/mobileqq/utils/kapalaiadapter/MobileIssueSettings:n	I
+    //   141: ifle +233 -> 374
+    //   144: getstatic 493	com/tencent/mobileqq/utils/kapalaiadapter/MobileIssueSettings:n	I
+    //   147: istore_3
+    //   148: goto +3 -> 151
+    //   151: aload_0
+    //   152: iload_3
+    //   153: putfield 495	com/tencent/biz/widgets/ScannerView:i	I
+    //   156: aload_0
+    //   157: iload_2
+    //   158: putfield 497	com/tencent/biz/widgets/ScannerView:j	I
+    //   161: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   164: ifeq +85 -> 249
+    //   167: new 214	java/lang/StringBuilder
+    //   170: dup
+    //   171: invokespecial 498	java/lang/StringBuilder:<init>	()V
+    //   174: astore 6
+    //   176: aload 6
+    //   178: ldc_w 500
+    //   181: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: aload_0
+    //   186: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   189: ifnull +190 -> 379
+    //   192: iconst_1
+    //   193: istore 4
+    //   195: goto +3 -> 198
+    //   198: aload 6
+    //   200: iload 4
+    //   202: invokevirtual 503	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   205: pop
+    //   206: aload 6
+    //   208: ldc_w 505
+    //   211: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload 6
+    //   217: iload_1
+    //   218: invokevirtual 230	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   221: pop
+    //   222: aload 6
+    //   224: ldc_w 507
+    //   227: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: pop
+    //   231: aload 6
+    //   233: iload_2
+    //   234: invokevirtual 230	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   237: pop
+    //   238: ldc 253
+    //   240: iconst_2
+    //   241: aload 6
+    //   243: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   246: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   249: aload_0
+    //   250: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   253: astore 6
+    //   255: iload 5
+    //   257: istore 4
+    //   259: aload 6
+    //   261: ifnull +6 -> 267
+    //   264: iconst_1
+    //   265: istore 4
+    //   267: aload_0
+    //   268: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   271: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   274: iload 4
+    //   276: ireturn
+    //   277: astore 6
+    //   279: goto +62 -> 341
+    //   282: astore 6
+    //   284: iload 5
+    //   286: istore 4
+    //   288: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   291: ifeq -24 -> 267
+    //   294: new 214	java/lang/StringBuilder
+    //   297: dup
+    //   298: invokespecial 498	java/lang/StringBuilder:<init>	()V
+    //   301: astore 7
+    //   303: aload 7
+    //   305: ldc_w 509
+    //   308: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   311: pop
+    //   312: aload 7
+    //   314: aload 6
+    //   316: invokevirtual 512	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
+    //   319: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: pop
+    //   323: ldc 253
+    //   325: iconst_2
+    //   326: aload 7
+    //   328: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   331: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   334: iload 5
+    //   336: istore 4
+    //   338: goto -71 -> 267
+    //   341: aload_0
+    //   342: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   345: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   348: goto +6 -> 354
+    //   351: aload 6
+    //   353: athrow
+    //   354: goto -3 -> 351
+    //   357: iload_1
+    //   358: iconst_1
+    //   359: iadd
+    //   360: istore_1
+    //   361: goto -290 -> 71
+    //   364: iconst_0
+    //   365: istore_2
+    //   366: goto -255 -> 111
+    //   369: iconst_0
+    //   370: istore_2
+    //   371: goto -233 -> 138
+    //   374: iload_1
+    //   375: istore_3
+    //   376: goto -225 -> 151
+    //   379: iconst_0
+    //   380: istore 4
+    //   382: goto -184 -> 198
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	385	0	this	ScannerView
+    //   43	332	1	i1	int
+    //   55	316	2	i2	int
+    //   147	229	3	i3	int
+    //   193	188	4	bool1	boolean
+    //   8	327	5	bool2	boolean
+    //   67	193	6	localObject1	Object
+    //   277	1	6	localObject2	Object
+    //   282	70	6	localRuntimeException	RuntimeException
+    //   301	26	7	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   10	32	277	finally
+    //   44	56	277	finally
+    //   60	69	277	finally
+    //   76	90	277	finally
+    //   98	104	277	finally
+    //   111	125	277	finally
+    //   128	135	277	finally
+    //   138	148	277	finally
+    //   151	192	277	finally
+    //   198	249	277	finally
+    //   249	255	277	finally
+    //   288	334	277	finally
+    //   10	32	282	java/lang/RuntimeException
+    //   44	56	282	java/lang/RuntimeException
+    //   60	69	282	java/lang/RuntimeException
+    //   76	90	282	java/lang/RuntimeException
+    //   98	104	282	java/lang/RuntimeException
+    //   111	125	282	java/lang/RuntimeException
+    //   128	135	282	java/lang/RuntimeException
+    //   138	148	282	java/lang/RuntimeException
+    //   151	192	282	java/lang/RuntimeException
+    //   198	249	282	java/lang/RuntimeException
+    //   249	255	282	java/lang/RuntimeException
+  }
+  
+  /* Error */
+  @android.annotation.TargetApi(8)
+  private boolean g()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   4: invokevirtual 459	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   7: aload_0
-    //   8: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   8: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
     //   11: astore_3
     //   12: aload_3
     //   13: ifnonnull +12 -> 25
     //   16: aload_0
-    //   17: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   20: invokevirtual 408	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   17: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   20: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   23: iconst_0
     //   24: ireturn
     //   25: aload_0
-    //   26: getfield 343	com/tencent/biz/widgets/ScannerView:jdField_c_of_type_Boolean	Z
+    //   26: getfield 116	com/tencent/biz/widgets/ScannerView:G	Z
     //   29: ifeq +34 -> 63
     //   32: aload_0
-    //   33: getfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   33: getfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
     //   36: ifnull +20 -> 56
     //   39: aload_0
-    //   40: getfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
-    //   43: invokevirtual 466	com/tencent/biz/widgets/ScannerView$AutoFocusThread:isAlive	()Z
+    //   40: getfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   43: invokevirtual 521	com/tencent/biz/widgets/ScannerView$AutoFocusThread:isAlive	()Z
     //   46: ifeq +10 -> 56
     //   49: aload_0
-    //   50: getfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
-    //   53: invokevirtual 469	com/tencent/biz/widgets/ScannerView$AutoFocusThread:interrupt	()V
+    //   50: getfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   53: invokevirtual 524	com/tencent/biz/widgets/ScannerView$AutoFocusThread:interrupt	()V
     //   56: aload_0
-    //   57: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   60: invokevirtual 472	android/hardware/Camera:stopPreview	()V
+    //   57: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   60: invokevirtual 527	android/hardware/Camera:stopPreview	()V
     //   63: aload_0
-    //   64: invokevirtual 476	com/tencent/biz/widgets/ScannerView:getContext	()Landroid/content/Context;
-    //   67: ldc_w 478
-    //   70: invokevirtual 482	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   73: checkcast 484	android/view/WindowManager
-    //   76: invokeinterface 488 1 0
-    //   81: invokevirtual 493	android/view/Display:getOrientation	()I
+    //   64: invokevirtual 531	com/tencent/biz/widgets/ScannerView:getContext	()Landroid/content/Context;
+    //   67: ldc_w 533
+    //   70: invokevirtual 537	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   73: checkcast 539	android/view/WindowManager
+    //   76: invokeinterface 543 1 0
+    //   81: invokevirtual 548	android/view/Display:getOrientation	()I
     //   84: bipush 90
     //   86: imul
     //   87: istore_2
     //   88: aload_0
-    //   89: getfield 435	com/tencent/biz/widgets/ScannerView:jdField_d_of_type_Int	I
-    //   92: ifne +367 -> 459
+    //   89: getfield 497	com/tencent/biz/widgets/ScannerView:j	I
+    //   92: ifne +21 -> 113
     //   95: aload_0
-    //   96: getfield 433	com/tencent/biz/widgets/ScannerView:jdField_c_of_type_Int	I
+    //   96: getfield 495	com/tencent/biz/widgets/ScannerView:i	I
     //   99: iload_2
     //   100: isub
     //   101: sipush 360
@@ -461,448 +579,460 @@ public class ScannerView
     //   105: sipush 360
     //   108: irem
     //   109: istore_1
-    //   110: aload_0
-    //   111: iload_1
-    //   112: putfield 495	com/tencent/biz/widgets/ScannerView:jdField_g_of_type_Int	I
-    //   115: invokestatic 403	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   118: ifeq +39 -> 157
-    //   121: ldc 196
-    //   123: iconst_2
-    //   124: new 157	java/lang/StringBuilder
-    //   127: dup
-    //   128: invokespecial 436	java/lang/StringBuilder:<init>	()V
-    //   131: ldc_w 497
-    //   134: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: iload_2
-    //   138: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   141: ldc_w 499
-    //   144: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: iload_1
-    //   148: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   151: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   157: aload_0
-    //   158: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   161: invokevirtual 97	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
-    //   164: astore_3
-    //   165: getstatic 260	android/os/Build$VERSION:SDK_INT	I
-    //   168: bipush 8
-    //   170: if_icmplt +303 -> 473
-    //   173: aload_0
-    //   174: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   177: iload_1
-    //   178: invokevirtual 502	android/hardware/Camera:setDisplayOrientation	(I)V
-    //   181: aload_3
-    //   182: invokevirtual 505	android/hardware/Camera$Parameters:isZoomSupported	()Z
-    //   185: ifeq +15 -> 200
-    //   188: aload_3
-    //   189: iconst_2
-    //   190: aload_3
-    //   191: invokevirtual 508	android/hardware/Camera$Parameters:getMaxZoom	()I
-    //   194: invokestatic 511	java/lang/Math:min	(II)I
-    //   197: invokevirtual 514	android/hardware/Camera$Parameters:setZoom	(I)V
-    //   200: aload_0
-    //   201: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   204: aload_3
-    //   205: invokevirtual 341	android/hardware/Camera:setParameters	(Landroid/hardware/Camera$Parameters;)V
-    //   208: aload_0
-    //   209: aload_0
-    //   210: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   213: aload_0
-    //   214: getfield 516	com/tencent/biz/widgets/ScannerView:jdField_e_of_type_Int	I
-    //   217: aload_0
-    //   218: getfield 518	com/tencent/biz/widgets/ScannerView:jdField_f_of_type_Int	I
-    //   221: invokespecial 520	com/tencent/biz/widgets/ScannerView:a	(Landroid/hardware/Camera;II)Landroid/graphics/Point;
-    //   224: astore_3
-    //   225: aload_0
-    //   226: aload_3
-    //   227: getfield 523	android/graphics/Point:x	I
-    //   230: putfield 524	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_Int	I
-    //   233: aload_0
-    //   234: aload_3
-    //   235: getfield 527	android/graphics/Point:y	I
-    //   238: putfield 529	com/tencent/biz/widgets/ScannerView:jdField_b_of_type_Int	I
-    //   241: invokestatic 403	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   244: ifeq +44 -> 288
-    //   247: ldc 196
-    //   249: iconst_2
-    //   250: new 157	java/lang/StringBuilder
-    //   253: dup
-    //   254: invokespecial 436	java/lang/StringBuilder:<init>	()V
-    //   257: ldc_w 531
-    //   260: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: aload_3
-    //   264: getfield 523	android/graphics/Point:x	I
-    //   267: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   270: ldc 175
-    //   272: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: aload_3
-    //   276: getfield 527	android/graphics/Point:y	I
-    //   279: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   282: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   285: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   288: aload_0
-    //   289: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   292: invokevirtual 97	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
-    //   295: astore 4
-    //   297: aload 4
-    //   299: aload_3
-    //   300: getfield 523	android/graphics/Point:x	I
-    //   303: aload_3
-    //   304: getfield 527	android/graphics/Point:y	I
-    //   307: invokevirtual 534	android/hardware/Camera$Parameters:setPreviewSize	(II)V
-    //   310: aload_0
-    //   311: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   314: aload 4
-    //   316: invokevirtual 341	android/hardware/Camera:setParameters	(Landroid/hardware/Camera$Parameters;)V
-    //   319: aload_0
-    //   320: getfield 347	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   323: astore 5
-    //   325: aload 5
-    //   327: astore_3
-    //   328: aload 5
-    //   330: ifnonnull +51 -> 381
-    //   333: aload_0
-    //   334: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   337: invokevirtual 97	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
-    //   340: astore 6
-    //   342: aload 6
-    //   344: invokevirtual 537	android/hardware/Camera$Parameters:getSupportedFocusModes	()Ljava/util/List;
-    //   347: astore 7
-    //   349: aload 7
-    //   351: ifnonnull +218 -> 569
-    //   354: aload 5
-    //   356: astore_3
-    //   357: aload_3
-    //   358: ifnull +262 -> 620
-    //   361: aload_3
-    //   362: astore 4
-    //   364: aload_0
-    //   365: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   368: aload 6
-    //   370: invokevirtual 341	android/hardware/Camera:setParameters	(Landroid/hardware/Camera$Parameters;)V
-    //   373: aload_3
-    //   374: astore 4
+    //   110: goto +14 -> 124
+    //   113: aload_0
+    //   114: getfield 495	com/tencent/biz/widgets/ScannerView:i	I
+    //   117: iload_2
+    //   118: iadd
+    //   119: sipush 360
+    //   122: irem
+    //   123: istore_1
+    //   124: aload_0
+    //   125: iload_1
+    //   126: putfield 550	com/tencent/biz/widgets/ScannerView:m	I
+    //   129: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   132: ifeq +49 -> 181
+    //   135: new 214	java/lang/StringBuilder
+    //   138: dup
+    //   139: invokespecial 498	java/lang/StringBuilder:<init>	()V
+    //   142: astore_3
+    //   143: aload_3
+    //   144: ldc_w 552
+    //   147: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: aload_3
+    //   152: iload_2
+    //   153: invokevirtual 230	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   156: pop
+    //   157: aload_3
+    //   158: ldc_w 554
+    //   161: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: pop
+    //   165: aload_3
+    //   166: iload_1
+    //   167: invokevirtual 230	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   170: pop
+    //   171: ldc 253
+    //   173: iconst_2
+    //   174: aload_3
+    //   175: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   181: aload_0
+    //   182: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   185: invokevirtual 154	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
+    //   188: astore_3
+    //   189: getstatic 308	android/os/Build$VERSION:SDK_INT	I
+    //   192: bipush 8
+    //   194: if_icmplt +33 -> 227
+    //   197: aload_0
+    //   198: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   201: iload_1
+    //   202: invokevirtual 557	android/hardware/Camera:setDisplayOrientation	(I)V
+    //   205: aload_3
+    //   206: invokevirtual 560	android/hardware/Camera$Parameters:isZoomSupported	()Z
+    //   209: ifeq +41 -> 250
+    //   212: aload_3
+    //   213: iconst_2
+    //   214: aload_3
+    //   215: invokevirtual 563	android/hardware/Camera$Parameters:getMaxZoom	()I
+    //   218: invokestatic 566	java/lang/Math:min	(II)I
+    //   221: invokevirtual 569	android/hardware/Camera$Parameters:setZoom	(I)V
+    //   224: goto +26 -> 250
+    //   227: iload_2
+    //   228: sipush 180
+    //   231: irem
+    //   232: ifne +13 -> 245
+    //   235: aload_3
+    //   236: ldc_w 570
+    //   239: ldc_w 572
+    //   242: invokevirtual 576	android/hardware/Camera$Parameters:set	(Ljava/lang/String;Ljava/lang/String;)V
+    //   245: aload_3
+    //   246: iload_1
+    //   247: invokevirtual 579	android/hardware/Camera$Parameters:setRotation	(I)V
+    //   250: aload_0
+    //   251: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   254: aload_3
+    //   255: invokevirtual 381	android/hardware/Camera:setParameters	(Landroid/hardware/Camera$Parameters;)V
+    //   258: aload_0
+    //   259: aload_0
+    //   260: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   263: aload_0
+    //   264: getfield 581	com/tencent/biz/widgets/ScannerView:k	I
+    //   267: aload_0
+    //   268: getfield 583	com/tencent/biz/widgets/ScannerView:l	I
+    //   271: invokespecial 585	com/tencent/biz/widgets/ScannerView:a	(Landroid/hardware/Camera;II)Landroid/graphics/Point;
+    //   274: astore_3
+    //   275: aload_0
+    //   276: aload_3
+    //   277: getfield 586	android/graphics/Point:x	I
+    //   280: putfield 588	com/tencent/biz/widgets/ScannerView:g	I
+    //   283: aload_0
+    //   284: aload_3
+    //   285: getfield 589	android/graphics/Point:y	I
+    //   288: putfield 591	com/tencent/biz/widgets/ScannerView:h	I
+    //   291: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   294: ifeq +60 -> 354
+    //   297: new 214	java/lang/StringBuilder
+    //   300: dup
+    //   301: invokespecial 498	java/lang/StringBuilder:<init>	()V
+    //   304: astore 4
+    //   306: aload 4
+    //   308: ldc_w 593
+    //   311: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   314: pop
+    //   315: aload 4
+    //   317: aload_3
+    //   318: getfield 586	android/graphics/Point:x	I
+    //   321: invokevirtual 230	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   324: pop
+    //   325: aload 4
+    //   327: ldc 232
+    //   329: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: pop
+    //   333: aload 4
+    //   335: aload_3
+    //   336: getfield 589	android/graphics/Point:y	I
+    //   339: invokevirtual 230	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   342: pop
+    //   343: ldc 253
+    //   345: iconst_2
+    //   346: aload 4
+    //   348: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   351: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   354: aload_0
+    //   355: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   358: invokevirtual 154	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
+    //   361: astore 4
+    //   363: aload 4
+    //   365: aload_3
+    //   366: getfield 586	android/graphics/Point:x	I
+    //   369: aload_3
+    //   370: getfield 589	android/graphics/Point:y	I
+    //   373: invokevirtual 596	android/hardware/Camera$Parameters:setPreviewSize	(II)V
     //   376: aload_0
-    //   377: aload_3
-    //   378: putfield 347	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   381: aload_0
-    //   382: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   385: aload_0
-    //   386: getfield 241	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidViewSurfaceView	Landroid/view/SurfaceView;
-    //   389: invokevirtual 249	android/view/SurfaceView:getHolder	()Landroid/view/SurfaceHolder;
-    //   392: invokevirtual 541	android/hardware/Camera:setPreviewDisplay	(Landroid/view/SurfaceHolder;)V
-    //   395: aload_0
-    //   396: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   399: invokevirtual 544	android/hardware/Camera:startPreview	()V
-    //   402: aload_0
-    //   403: iconst_1
-    //   404: putfield 343	com/tencent/biz/widgets/ScannerView:jdField_c_of_type_Boolean	Z
-    //   407: ldc_w 345
-    //   410: aload_3
-    //   411: invokevirtual 351	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   414: ifne +13 -> 427
-    //   417: ldc_w 353
-    //   420: aload_3
-    //   421: invokevirtual 351	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   424: ifeq +26 -> 450
-    //   427: aload_0
-    //   428: new 355	com/tencent/biz/widgets/ScannerView$AutoFocusThread
-    //   431: dup
-    //   432: aload_0
-    //   433: aload_0
-    //   434: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   437: invokespecial 360	com/tencent/biz/widgets/ScannerView$AutoFocusThread:<init>	(Lcom/tencent/biz/widgets/ScannerView;Landroid/hardware/Camera;)V
-    //   440: putfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
-    //   443: aload_0
-    //   444: getfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
-    //   447: invokevirtual 365	com/tencent/biz/widgets/ScannerView$AutoFocusThread:start	()V
-    //   450: aload_0
-    //   451: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   454: invokevirtual 408	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   457: iconst_1
-    //   458: ireturn
-    //   459: aload_0
-    //   460: getfield 433	com/tencent/biz/widgets/ScannerView:jdField_c_of_type_Int	I
-    //   463: iload_2
-    //   464: iadd
-    //   465: sipush 360
-    //   468: irem
-    //   469: istore_1
-    //   470: goto -360 -> 110
-    //   473: iload_2
-    //   474: sipush 180
-    //   477: irem
-    //   478: ifne +13 -> 491
-    //   481: aload_3
-    //   482: ldc_w 545
-    //   485: ldc_w 547
-    //   488: invokevirtual 551	android/hardware/Camera$Parameters:set	(Ljava/lang/String;Ljava/lang/String;)V
-    //   491: aload_3
-    //   492: iload_1
-    //   493: invokevirtual 554	android/hardware/Camera$Parameters:setRotation	(I)V
-    //   496: goto -296 -> 200
-    //   499: astore_3
-    //   500: invokestatic 403	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   503: ifeq +12 -> 515
-    //   506: ldc 196
-    //   508: iconst_2
-    //   509: ldc_w 556
-    //   512: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   515: aload_0
-    //   516: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   519: invokevirtual 408	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   522: iconst_0
-    //   523: ireturn
-    //   524: astore_3
-    //   525: invokestatic 403	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   528: ifeq -209 -> 319
-    //   531: ldc 196
-    //   533: iconst_2
-    //   534: ldc_w 558
-    //   537: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   540: goto -221 -> 319
-    //   543: astore_3
-    //   544: invokestatic 403	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   547: ifeq +12 -> 559
-    //   550: ldc 196
-    //   552: iconst_2
-    //   553: ldc_w 556
-    //   556: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   559: aload_0
-    //   560: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   563: invokevirtual 408	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   566: goto -44 -> 522
-    //   569: aload 5
-    //   571: astore 4
-    //   573: aload 7
-    //   575: ldc_w 345
-    //   578: invokeinterface 561 2 0
-    //   583: ifeq +10 -> 593
-    //   586: ldc_w 345
-    //   589: astore_3
-    //   590: goto -233 -> 357
-    //   593: aload 5
-    //   595: astore_3
-    //   596: aload 5
-    //   598: astore 4
-    //   600: aload 7
-    //   602: ldc_w 563
-    //   605: invokeinterface 561 2 0
-    //   610: ifeq -253 -> 357
-    //   613: ldc_w 563
-    //   616: astore_3
-    //   617: goto -260 -> 357
-    //   620: aload_3
-    //   621: astore 4
-    //   623: aload_0
-    //   624: ldc_w 565
-    //   627: putfield 347	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   630: goto -249 -> 381
-    //   633: astore_3
-    //   634: aload 4
-    //   636: astore_3
-    //   637: invokestatic 403	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   640: ifeq -259 -> 381
-    //   643: ldc 196
-    //   645: iconst_2
-    //   646: new 157	java/lang/StringBuilder
-    //   649: dup
-    //   650: invokespecial 436	java/lang/StringBuilder:<init>	()V
-    //   653: ldc_w 567
-    //   656: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   659: aload 4
-    //   661: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   664: ldc_w 569
-    //   667: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   670: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   673: invokestatic 203	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   676: aload 4
-    //   678: astore_3
-    //   679: goto -298 -> 381
-    //   682: astore_3
-    //   683: aload_0
-    //   684: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   687: invokevirtual 408	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   690: aload_3
-    //   691: athrow
-    //   692: astore_3
-    //   693: goto -485 -> 208
+    //   377: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   380: aload 4
+    //   382: invokevirtual 381	android/hardware/Camera:setParameters	(Landroid/hardware/Camera$Parameters;)V
+    //   385: goto +18 -> 403
+    //   388: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   391: ifeq +12 -> 403
+    //   394: ldc 253
+    //   396: iconst_2
+    //   397: ldc_w 598
+    //   400: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   403: aload_0
+    //   404: getfield 385	com/tencent/biz/widgets/ScannerView:n	Ljava/lang/String;
+    //   407: astore 5
+    //   409: aload 5
+    //   411: astore_3
+    //   412: aload 5
+    //   414: ifnonnull +171 -> 585
+    //   417: aload_0
+    //   418: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   421: invokevirtual 154	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
+    //   424: astore 6
+    //   426: aload 6
+    //   428: invokevirtual 601	android/hardware/Camera$Parameters:getSupportedFocusModes	()Ljava/util/List;
+    //   431: astore 7
+    //   433: aload 7
+    //   435: ifnonnull +9 -> 444
+    //   438: aload 5
+    //   440: astore_3
+    //   441: goto +51 -> 492
+    //   444: aload 5
+    //   446: astore 4
+    //   448: aload 7
+    //   450: ldc_w 383
+    //   453: invokeinterface 604 2 0
+    //   458: ifeq +10 -> 468
+    //   461: ldc_w 383
+    //   464: astore_3
+    //   465: goto +27 -> 492
+    //   468: aload 5
+    //   470: astore_3
+    //   471: aload 5
+    //   473: astore 4
+    //   475: aload 7
+    //   477: ldc_w 606
+    //   480: invokeinterface 604 2 0
+    //   485: ifeq +7 -> 492
+    //   488: ldc_w 606
+    //   491: astore_3
+    //   492: aload_3
+    //   493: ifnull +26 -> 519
+    //   496: aload_3
+    //   497: astore 4
+    //   499: aload_0
+    //   500: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   503: aload 6
+    //   505: invokevirtual 381	android/hardware/Camera:setParameters	(Landroid/hardware/Camera$Parameters;)V
+    //   508: aload_3
+    //   509: astore 4
+    //   511: aload_0
+    //   512: aload_3
+    //   513: putfield 385	com/tencent/biz/widgets/ScannerView:n	Ljava/lang/String;
+    //   516: goto +69 -> 585
+    //   519: aload_3
+    //   520: astore 4
+    //   522: aload_0
+    //   523: ldc_w 608
+    //   526: putfield 385	com/tencent/biz/widgets/ScannerView:n	Ljava/lang/String;
+    //   529: goto +56 -> 585
+    //   532: aload 4
+    //   534: astore_3
+    //   535: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   538: ifeq +47 -> 585
+    //   541: new 214	java/lang/StringBuilder
+    //   544: dup
+    //   545: invokespecial 498	java/lang/StringBuilder:<init>	()V
+    //   548: astore_3
+    //   549: aload_3
+    //   550: ldc_w 610
+    //   553: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   556: pop
+    //   557: aload_3
+    //   558: aload 4
+    //   560: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   563: pop
+    //   564: aload_3
+    //   565: ldc_w 612
+    //   568: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   571: pop
+    //   572: ldc 253
+    //   574: iconst_2
+    //   575: aload_3
+    //   576: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   579: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   582: aload 4
+    //   584: astore_3
+    //   585: aload_0
+    //   586: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   589: aload_0
+    //   590: getfield 289	com/tencent/biz/widgets/ScannerView:v	Landroid/view/SurfaceView;
+    //   593: invokevirtual 297	android/view/SurfaceView:getHolder	()Landroid/view/SurfaceHolder;
+    //   596: invokevirtual 616	android/hardware/Camera:setPreviewDisplay	(Landroid/view/SurfaceHolder;)V
+    //   599: aload_0
+    //   600: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   603: invokevirtual 619	android/hardware/Camera:startPreview	()V
+    //   606: aload_0
+    //   607: iconst_1
+    //   608: putfield 116	com/tencent/biz/widgets/ScannerView:G	Z
+    //   611: ldc_w 383
+    //   614: aload_3
+    //   615: invokevirtual 389	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   618: ifne +13 -> 631
+    //   621: ldc_w 391
+    //   624: aload_3
+    //   625: invokevirtual 389	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   628: ifeq +26 -> 654
+    //   631: aload_0
+    //   632: new 393	com/tencent/biz/widgets/ScannerView$AutoFocusThread
+    //   635: dup
+    //   636: aload_0
+    //   637: aload_0
+    //   638: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   641: invokespecial 398	com/tencent/biz/widgets/ScannerView$AutoFocusThread:<init>	(Lcom/tencent/biz/widgets/ScannerView;Landroid/hardware/Camera;)V
+    //   644: putfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   647: aload_0
+    //   648: getfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   651: invokevirtual 403	com/tencent/biz/widgets/ScannerView$AutoFocusThread:start	()V
+    //   654: aload_0
+    //   655: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   658: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   661: iconst_1
+    //   662: ireturn
+    //   663: astore_3
+    //   664: goto +45 -> 709
+    //   667: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   670: ifeq +30 -> 700
+    //   673: ldc 253
+    //   675: iconst_2
+    //   676: ldc_w 621
+    //   679: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   682: goto +18 -> 700
+    //   685: invokestatic 462	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   688: ifeq +12 -> 700
+    //   691: ldc 253
+    //   693: iconst_2
+    //   694: ldc_w 621
+    //   697: invokestatic 260	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   700: aload_0
+    //   701: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   704: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   707: iconst_0
+    //   708: ireturn
+    //   709: aload_0
+    //   710: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   713: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   716: aload_3
+    //   717: athrow
+    //   718: astore_3
+    //   719: goto -34 -> 685
+    //   722: astore_3
+    //   723: goto -56 -> 667
+    //   726: astore_3
+    //   727: goto -469 -> 258
+    //   730: astore_3
+    //   731: goto -343 -> 388
+    //   734: astore_3
+    //   735: goto -203 -> 532
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	696	0	this	ScannerView
-    //   109	384	1	i1	int
-    //   87	391	2	i2	int
-    //   11	481	3	localObject1	Object
-    //   499	1	3	localIOException	java.io.IOException
-    //   524	1	3	localRuntimeException1	RuntimeException
-    //   543	1	3	localRuntimeException2	RuntimeException
-    //   589	32	3	localObject2	Object
-    //   633	1	3	localRuntimeException3	RuntimeException
-    //   636	43	3	localObject3	Object
-    //   682	9	3	localObject4	Object
-    //   692	1	3	localRuntimeException4	RuntimeException
-    //   295	382	4	localObject5	Object
-    //   323	274	5	str	String
-    //   340	29	6	localParameters	Camera.Parameters
-    //   347	254	7	localList	List
+    //   0	738	0	this	ScannerView
+    //   109	138	1	i1	int
+    //   87	145	2	i2	int
+    //   11	614	3	localObject1	Object
+    //   663	54	3	localObject2	Object
+    //   718	1	3	localIOException	java.io.IOException
+    //   722	1	3	localRuntimeException1	RuntimeException
+    //   726	1	3	localRuntimeException2	RuntimeException
+    //   730	1	3	localRuntimeException3	RuntimeException
+    //   734	1	3	localRuntimeException4	RuntimeException
+    //   304	279	4	localObject3	Object
+    //   407	65	5	str	String
+    //   424	80	6	localParameters	Camera.Parameters
+    //   431	45	7	localList	List
     // Exception table:
     //   from	to	target	type
-    //   7	12	499	java/io/IOException
-    //   25	56	499	java/io/IOException
-    //   56	63	499	java/io/IOException
-    //   63	110	499	java/io/IOException
-    //   110	157	499	java/io/IOException
-    //   157	200	499	java/io/IOException
-    //   200	208	499	java/io/IOException
-    //   208	288	499	java/io/IOException
-    //   288	319	499	java/io/IOException
-    //   319	325	499	java/io/IOException
-    //   333	349	499	java/io/IOException
-    //   364	373	499	java/io/IOException
-    //   376	381	499	java/io/IOException
-    //   381	427	499	java/io/IOException
-    //   427	450	499	java/io/IOException
-    //   459	470	499	java/io/IOException
-    //   481	491	499	java/io/IOException
-    //   491	496	499	java/io/IOException
-    //   525	540	499	java/io/IOException
-    //   573	586	499	java/io/IOException
-    //   600	613	499	java/io/IOException
-    //   623	630	499	java/io/IOException
-    //   637	676	499	java/io/IOException
-    //   288	319	524	java/lang/RuntimeException
-    //   7	12	543	java/lang/RuntimeException
-    //   25	56	543	java/lang/RuntimeException
-    //   56	63	543	java/lang/RuntimeException
-    //   63	110	543	java/lang/RuntimeException
-    //   110	157	543	java/lang/RuntimeException
-    //   157	200	543	java/lang/RuntimeException
-    //   208	288	543	java/lang/RuntimeException
-    //   319	325	543	java/lang/RuntimeException
-    //   333	349	543	java/lang/RuntimeException
-    //   381	427	543	java/lang/RuntimeException
-    //   427	450	543	java/lang/RuntimeException
-    //   459	470	543	java/lang/RuntimeException
-    //   481	491	543	java/lang/RuntimeException
-    //   491	496	543	java/lang/RuntimeException
-    //   525	540	543	java/lang/RuntimeException
-    //   637	676	543	java/lang/RuntimeException
-    //   364	373	633	java/lang/RuntimeException
-    //   376	381	633	java/lang/RuntimeException
-    //   573	586	633	java/lang/RuntimeException
-    //   600	613	633	java/lang/RuntimeException
-    //   623	630	633	java/lang/RuntimeException
-    //   7	12	682	finally
-    //   25	56	682	finally
-    //   56	63	682	finally
-    //   63	110	682	finally
-    //   110	157	682	finally
-    //   157	200	682	finally
-    //   200	208	682	finally
-    //   208	288	682	finally
-    //   288	319	682	finally
-    //   319	325	682	finally
-    //   333	349	682	finally
-    //   364	373	682	finally
-    //   376	381	682	finally
-    //   381	427	682	finally
-    //   427	450	682	finally
-    //   459	470	682	finally
-    //   481	491	682	finally
-    //   491	496	682	finally
-    //   500	515	682	finally
-    //   525	540	682	finally
-    //   544	559	682	finally
-    //   573	586	682	finally
-    //   600	613	682	finally
-    //   623	630	682	finally
-    //   637	676	682	finally
-    //   200	208	692	java/lang/RuntimeException
-  }
-  
-  private static boolean c()
-  {
-    if (("Lenovo K50-t5".equalsIgnoreCase(Build.MODEL)) && ("LENOVO".equalsIgnoreCase(Build.MANUFACTURER))) {}
-    while (("Redmi Note 3".equalsIgnoreCase(Build.MODEL)) && ("Xiaomi".equalsIgnoreCase(Build.MANUFACTURER))) {
-      return true;
-    }
-    return false;
-  }
-  
-  private void e()
-  {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      throw new RuntimeException("This method must be called on UI thread");
-    }
+    //   7	12	663	finally
+    //   25	56	663	finally
+    //   56	63	663	finally
+    //   63	110	663	finally
+    //   113	124	663	finally
+    //   124	181	663	finally
+    //   181	224	663	finally
+    //   235	245	663	finally
+    //   245	250	663	finally
+    //   250	258	663	finally
+    //   258	354	663	finally
+    //   354	385	663	finally
+    //   388	403	663	finally
+    //   403	409	663	finally
+    //   417	433	663	finally
+    //   448	461	663	finally
+    //   475	488	663	finally
+    //   499	508	663	finally
+    //   511	516	663	finally
+    //   522	529	663	finally
+    //   535	582	663	finally
+    //   585	631	663	finally
+    //   631	654	663	finally
+    //   667	682	663	finally
+    //   685	700	663	finally
+    //   7	12	718	java/io/IOException
+    //   25	56	718	java/io/IOException
+    //   56	63	718	java/io/IOException
+    //   63	110	718	java/io/IOException
+    //   113	124	718	java/io/IOException
+    //   124	181	718	java/io/IOException
+    //   181	224	718	java/io/IOException
+    //   235	245	718	java/io/IOException
+    //   245	250	718	java/io/IOException
+    //   250	258	718	java/io/IOException
+    //   258	354	718	java/io/IOException
+    //   354	385	718	java/io/IOException
+    //   388	403	718	java/io/IOException
+    //   403	409	718	java/io/IOException
+    //   417	433	718	java/io/IOException
+    //   448	461	718	java/io/IOException
+    //   475	488	718	java/io/IOException
+    //   499	508	718	java/io/IOException
+    //   511	516	718	java/io/IOException
+    //   522	529	718	java/io/IOException
+    //   535	582	718	java/io/IOException
+    //   585	631	718	java/io/IOException
+    //   631	654	718	java/io/IOException
+    //   7	12	722	java/lang/RuntimeException
+    //   25	56	722	java/lang/RuntimeException
+    //   56	63	722	java/lang/RuntimeException
+    //   63	110	722	java/lang/RuntimeException
+    //   113	124	722	java/lang/RuntimeException
+    //   124	181	722	java/lang/RuntimeException
+    //   181	224	722	java/lang/RuntimeException
+    //   235	245	722	java/lang/RuntimeException
+    //   245	250	722	java/lang/RuntimeException
+    //   258	354	722	java/lang/RuntimeException
+    //   388	403	722	java/lang/RuntimeException
+    //   403	409	722	java/lang/RuntimeException
+    //   417	433	722	java/lang/RuntimeException
+    //   535	582	722	java/lang/RuntimeException
+    //   585	631	722	java/lang/RuntimeException
+    //   631	654	722	java/lang/RuntimeException
+    //   250	258	726	java/lang/RuntimeException
+    //   354	385	730	java/lang/RuntimeException
+    //   448	461	734	java/lang/RuntimeException
+    //   475	488	734	java/lang/RuntimeException
+    //   499	508	734	java/lang/RuntimeException
+    //   511	516	734	java/lang/RuntimeException
+    //   522	529	734	java/lang/RuntimeException
   }
   
   /* Error */
-  private void f()
+  private void h()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   4: invokevirtual 400	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   1: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   4: invokevirtual 459	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   7: aload_0
-    //   8: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   8: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
     //   11: astore_1
     //   12: aload_1
     //   13: ifnonnull +11 -> 24
     //   16: aload_0
-    //   17: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   20: invokevirtual 408	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   17: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   20: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   23: return
     //   24: aload_0
-    //   25: getfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   25: getfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
     //   28: ifnull +25 -> 53
     //   31: aload_0
-    //   32: getfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
-    //   35: invokevirtual 466	com/tencent/biz/widgets/ScannerView$AutoFocusThread:isAlive	()Z
+    //   32: getfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   35: invokevirtual 521	com/tencent/biz/widgets/ScannerView$AutoFocusThread:isAlive	()Z
     //   38: ifeq +15 -> 53
     //   41: aload_0
-    //   42: getfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
-    //   45: invokevirtual 469	com/tencent/biz/widgets/ScannerView$AutoFocusThread:interrupt	()V
+    //   42: getfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   45: invokevirtual 524	com/tencent/biz/widgets/ScannerView$AutoFocusThread:interrupt	()V
     //   48: aload_0
     //   49: aconst_null
-    //   50: putfield 362	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
+    //   50: putfield 400	com/tencent/biz/widgets/ScannerView:L	Lcom/tencent/biz/widgets/ScannerView$AutoFocusThread;
     //   53: aload_0
-    //   54: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   57: invokevirtual 97	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
+    //   54: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   57: invokevirtual 154	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
     //   60: astore_1
     //   61: aload_1
-    //   62: ldc_w 386
-    //   65: invokevirtual 337	android/hardware/Camera$Parameters:setFlashMode	(Ljava/lang/String;)V
+    //   62: ldc_w 425
+    //   65: invokevirtual 377	android/hardware/Camera$Parameters:setFlashMode	(Ljava/lang/String;)V
     //   68: aload_0
-    //   69: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   69: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
     //   72: aload_1
-    //   73: invokevirtual 341	android/hardware/Camera:setParameters	(Landroid/hardware/Camera$Parameters;)V
+    //   73: invokevirtual 381	android/hardware/Camera:setParameters	(Landroid/hardware/Camera$Parameters;)V
     //   76: aload_0
     //   77: iconst_0
-    //   78: putfield 367	com/tencent/biz/widgets/ScannerView:jdField_d_of_type_Boolean	Z
+    //   78: putfield 118	com/tencent/biz/widgets/ScannerView:H	Z
     //   81: aload_0
-    //   82: getfield 343	com/tencent/biz/widgets/ScannerView:jdField_c_of_type_Boolean	Z
+    //   82: getfield 116	com/tencent/biz/widgets/ScannerView:G	Z
     //   85: ifeq +15 -> 100
     //   88: aload_0
     //   89: iconst_0
-    //   90: putfield 343	com/tencent/biz/widgets/ScannerView:jdField_c_of_type_Boolean	Z
+    //   90: putfield 116	com/tencent/biz/widgets/ScannerView:G	Z
     //   93: aload_0
-    //   94: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   97: invokevirtual 472	android/hardware/Camera:stopPreview	()V
+    //   94: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   97: invokevirtual 527	android/hardware/Camera:stopPreview	()V
     //   100: aload_0
-    //   101: getfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   104: invokevirtual 594	android/hardware/Camera:release	()V
+    //   101: getfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
+    //   104: invokevirtual 624	android/hardware/Camera:release	()V
     //   107: aload_0
     //   108: aconst_null
-    //   109: putfield 357	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   109: putfield 395	com/tencent/biz/widgets/ScannerView:o	Landroid/hardware/Camera;
     //   112: aload_0
-    //   113: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   116: invokevirtual 408	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   113: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   116: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   119: return
     //   120: astore_1
     //   121: aload_0
-    //   122: getfield 56	com/tencent/biz/widgets/ScannerView:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   125: invokevirtual 408	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   122: getfield 85	com/tencent/biz/widgets/ScannerView:a	Ljava/util/concurrent/locks/ReentrantLock;
+    //   125: invokevirtual 467	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   128: aload_1
     //   129: athrow
     //   130: astore_1
@@ -923,6 +1053,14 @@ public class ScannerView
     //   53	81	130	java/lang/RuntimeException
   }
   
+  private static boolean i()
+  {
+    if (("Lenovo K50-t5".equalsIgnoreCase(Build.MODEL)) && ("LENOVO".equalsIgnoreCase(Build.MANUFACTURER))) {
+      return true;
+    }
+    return ("Redmi Note 3".equalsIgnoreCase(Build.MODEL)) && ("Xiaomi".equalsIgnoreCase(Build.MANUFACTURER));
+  }
+  
   public int a(Camera.Size paramSize1, Camera.Size paramSize2)
   {
     int i1 = paramSize1.height * paramSize1.width;
@@ -938,55 +1076,63 @@ public class ScannerView
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null)
+    SensorManager localSensorManager = this.M;
+    if (localSensorManager != null)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Zhd);
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-      this.jdField_a_of_type_Zhd = null;
+      localSensorManager.unregisterListener(this.T);
+      this.M = null;
+      this.T = null;
     }
   }
   
   public void a(Context paramContext)
   {
-    if (c()) {}
-    do
-    {
+    if (i()) {
       return;
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
-    } while (this.jdField_a_of_type_AndroidHardwareSensorManager == null);
-    if (this.jdField_a_of_type_Zhd == null) {
-      this.jdField_a_of_type_Zhd = new zhd(this);
     }
-    paramContext = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(1);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Zhd, paramContext, 2);
+    this.M = ((SensorManager)paramContext.getSystemService("sensor"));
+    if (this.M != null)
+    {
+      if (this.T == null) {
+        this.T = new ScannerView.WeakSensorEventListener(this);
+      }
+      paramContext = this.M.getDefaultSensor(1);
+      this.M.registerListener(this.T, paramContext, 2);
+    }
   }
   
   public void a(SensorEvent paramSensorEvent)
   {
-    if ((this.jdField_a_of_type_AndroidHardwareCamera == null) || (!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread == null) || (this.jdField_e_of_type_Boolean)) {
-      return;
-    }
-    float f1 = paramSensorEvent.values[0];
-    float f2 = paramSensorEvent.values[1];
-    float f3 = paramSensorEvent.values[2];
-    if (!this.jdField_f_of_type_Boolean)
+    float f1;
+    float f2;
+    float f3;
+    if ((this.o != null) && (this.F) && (this.L != null))
     {
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_c_of_type_Float = f3;
-      this.jdField_f_of_type_Boolean = true;
+      if (this.Q) {
+        return;
+      }
+      f1 = paramSensorEvent.values[0];
+      f2 = paramSensorEvent.values[1];
+      f3 = paramSensorEvent.values[2];
+      if (!this.R)
+      {
+        this.N = f1;
+        this.O = f2;
+        this.P = f3;
+        this.R = true;
+      }
+      float f4 = Math.abs(this.N - f1);
+      float f5 = Math.abs(this.O - f2);
+      float f6 = Math.abs(this.P - f3);
+      if (((f4 <= 0.5D) && (f5 <= 0.5D) && (f6 <= 0.5D)) || (!this.S)) {}
     }
-    float f4 = Math.abs(this.jdField_a_of_type_Float - f1);
-    float f5 = Math.abs(this.jdField_b_of_type_Float - f2);
-    float f6 = Math.abs(this.jdField_c_of_type_Float - f3);
-    if (((f4 > 0.5D) || (f5 > 0.5D) || (f6 > 0.5D)) && (this.jdField_g_of_type_Boolean)) {}
     try
     {
-      this.jdField_a_of_type_ComTencentBizWidgetsScannerView$AutoFocusThread.a();
+      this.L.a();
       label157:
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_c_of_type_Float = f3;
+      this.N = f1;
+      this.O = f2;
+      this.P = f3;
       return;
     }
     catch (RuntimeException paramSensorEvent)
@@ -997,66 +1143,72 @@ public class ScannerView
   
   public void a(boolean paramBoolean)
   {
-    if ((this.jdField_h_of_type_Boolean) && (b()))
+    if ((this.U) && (g()))
     {
       ThreadManager.getUIHandler().post(new ScannerView.6(this));
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_b_of_type_Long = 0L;
-      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(7);
+      this.q = System.currentTimeMillis();
+      this.r = 0L;
+      this.u.sendEmptyMessage(7);
       return;
     }
-    this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(8);
+    this.u.sendEmptyMessage(8);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_b_of_type_Boolean) {
+    this.E = true;
+    if (this.F) {
       ThreadManager.post(new ScannerView.5(this), 8, null, true);
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Zhp != null) {
-      this.jdField_a_of_type_Zhp.b();
+    this.E = false;
+    ViewFinderView localViewFinderView = this.w;
+    if (localViewFinderView != null) {
+      localViewFinderView.b();
     }
     ThreadManager.post(new ScannerView.7(this), 8, null, false);
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread == null) {}
-    do
-    {
+    if (this.b == null) {
       try
       {
-        if (this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread == null)
+        if (this.b == null)
         {
-          this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread = new ScannerView.DecodeThread(this, "ScannerDecodeThread");
-          this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.start();
-          this.jdField_a_of_type_AndroidOsHandler = new zgz(this, this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.getLooper());
-        }
-        if (this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.jdField_a_of_type_Boolean) {
-          return;
+          this.b = new ScannerView.DecodeThread(this, "ScannerDecodeThread");
+          this.b.start();
+          this.c = new ScannerView.DecodeHandler(this, this.b.getLooper());
         }
       }
       finally {}
-    } while (!this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.tryLock());
-    try
-    {
-      Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
-      if (localCamera == null) {
-        return;
-      }
-      this.jdField_a_of_type_AndroidHardwareCamera.setOneShotPreviewCallback(this);
+    }
+    if (this.b.a) {
       return;
     }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    if (this.a.tryLock()) {
+      try
+      {
+        Camera localCamera = this.o;
+        if (localCamera == null) {
+          return;
+        }
+        this.o.setOneShotPreviewCallback(this);
+        return;
+      }
+      finally
+      {
+        this.a.unlock();
+      }
     }
+  }
+  
+  public SurfaceView getSurfaceView()
+  {
+    return this.v;
   }
   
   protected void onDetachedFromWindow()
@@ -1065,13 +1217,13 @@ public class ScannerView
     a();
     try
     {
-      if ((this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread != null) && (!this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.jdField_a_of_type_Boolean))
+      if ((this.b != null) && (!this.b.a))
       {
-        this.jdField_a_of_type_ComTencentBizWidgetsScannerView$DecodeThread.quit();
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        this.jdField_a_of_type_AndroidOsHandler = null;
+        this.b.quit();
+        this.c.removeCallbacksAndMessages(null);
+        this.c = null;
       }
-      this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.u.removeCallbacksAndMessages(null);
       return;
     }
     finally {}
@@ -1079,146 +1231,146 @@ public class ScannerView
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidViewSurfaceView.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-    if (this.jdField_a_of_type_Zhp != null)
+    Object localObject = this.v;
+    int i1 = paramInt3 - paramInt1;
+    paramInt4 -= paramInt2;
+    ((SurfaceView)localObject).layout(0, 0, i1, paramInt4);
+    localObject = this.w;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Zhp.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-      if (this.m != -1) {
-        break label167;
-      }
-      int i1 = this.j;
-      paramInt1 = paramInt3 - paramInt1 - this.k;
-      paramInt3 = i1;
-      if (this.n != -1) {
-        break label249;
-      }
-      i1 = this.i;
-      paramInt2 = paramInt4 - paramInt2 - this.l;
-      paramInt4 = i1;
-    }
-    for (;;)
-    {
-      Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-      if (this.jdField_c_of_type_AndroidGraphicsRect == null) {
-        this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
-      }
-      this.jdField_c_of_type_AndroidGraphicsRect.set(paramInt3, paramInt4, paramInt1, paramInt2);
-      this.jdField_a_of_type_AndroidGraphicsRect = this.jdField_c_of_type_AndroidGraphicsRect;
-      this.jdField_c_of_type_AndroidGraphicsRect = localRect;
-      this.jdField_b_of_type_AndroidGraphicsRect = null;
-      this.jdField_a_of_type_Zhp.a(paramInt3, paramInt4, paramInt1, paramInt2);
-      return;
-      label167:
-      if ((this.o & 0x3) == 3)
+      ((ViewFinderView)localObject).layout(0, 0, i1, paramInt4);
+      paramInt3 = this.B;
+      if (paramInt3 == -1)
       {
-        paramInt3 = this.j;
-        paramInt1 = this.m + paramInt3;
-        break;
-      }
-      if ((this.o & 0x5) == 5)
-      {
-        paramInt1 = paramInt3 - paramInt1 - this.k;
-        paramInt3 = paramInt1 - this.m;
-        break;
-      }
-      paramInt3 = paramInt3 - paramInt1 - this.m >> 1;
-      paramInt1 = this.m + paramInt3;
-      break;
-      label249:
-      if ((this.o & 0x30) == 48)
-      {
-        paramInt4 = this.i;
-        paramInt2 = this.n + paramInt4;
-      }
-      else if ((this.o & 0x50) == 80)
-      {
-        paramInt2 = paramInt4 - paramInt2 - this.l;
-        paramInt4 = paramInt2 - this.n;
+        paramInt1 = this.y;
+        paramInt2 = i1 - this.z;
       }
       else
       {
-        paramInt4 = paramInt4 - paramInt2 - this.n >> 1;
-        paramInt2 = this.n + paramInt4;
+        paramInt1 = this.D;
+        if ((paramInt1 & 0x3) == 3) {}
+        for (paramInt1 = this.y;; paramInt1 = i1 - paramInt3 >> 1)
+        {
+          paramInt2 = paramInt1 + paramInt3;
+          break;
+          if ((paramInt1 & 0x5) == 5)
+          {
+            paramInt2 = i1 - this.z;
+            paramInt1 = paramInt2 - paramInt3;
+            break;
+          }
+        }
       }
+      i1 = this.C;
+      if (i1 == -1)
+      {
+        paramInt3 = this.x;
+        paramInt4 -= this.A;
+      }
+      else
+      {
+        paramInt3 = this.D;
+        if ((paramInt3 & 0x30) == 48) {}
+        for (paramInt3 = this.x;; paramInt3 = paramInt4 - i1 >> 1)
+        {
+          paramInt4 = paramInt3 + i1;
+          break;
+          if ((paramInt3 & 0x50) == 80)
+          {
+            paramInt4 -= this.A;
+            paramInt3 = paramInt4 - i1;
+            break;
+          }
+        }
+      }
+      localObject = this.d;
+      if (this.f == null) {
+        this.f = new Rect();
+      }
+      this.f.set(paramInt1, paramInt3, paramInt2, paramInt4);
+      this.d = this.f;
+      this.f = ((Rect)localObject);
+      this.e = null;
+      this.w.a(paramInt1, paramInt3, paramInt2, paramInt4);
     }
   }
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(5, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramArrayOfByte).sendToTarget();
+    paramCamera = this.c;
+    if (paramCamera != null) {
+      paramCamera.obtainMessage(5, this.g, this.h, paramArrayOfByte).sendToTarget();
     }
   }
   
-  public void setFileDecodeListener(zha paramzha)
+  public void setFileDecodeListener(ScannerView.FileDecodeListener paramFileDecodeListener)
   {
     e();
-    this.jdField_a_of_type_Zha = paramzha;
+    this.J = paramFileDecodeListener;
   }
   
-  public void setFlashLightListener(zhb paramzhb)
+  public void setFlashLightListener(ScannerView.FlashLightListener paramFlashLightListener)
   {
     e();
-    this.jdField_a_of_type_Zhb = paramzhb;
+    this.K = paramFlashLightListener;
   }
   
-  public void setScanListener(zhc paramzhc)
+  public void setScanListener(ScannerView.ScannerListener paramScannerListener)
   {
     e();
-    this.jdField_a_of_type_Zhc = paramzhc;
+    this.I = paramScannerListener;
   }
   
   public void setViewFinder(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     e();
-    this.o = 51;
-    this.j = paramInt1;
-    this.i = paramInt2;
-    this.m = (paramInt3 - paramInt1);
-    this.n = (paramInt4 - paramInt2);
-    this.k = 0;
-    this.l = 0;
-    if (this.jdField_a_of_type_Zhp == null)
+    this.D = 51;
+    this.y = paramInt1;
+    this.x = paramInt2;
+    this.B = (paramInt3 - paramInt1);
+    this.C = (paramInt4 - paramInt2);
+    this.z = 0;
+    this.A = 0;
+    if (this.w == null)
     {
-      this.jdField_a_of_type_Zhp = new zhp(getContext());
-      addView(this.jdField_a_of_type_Zhp);
+      this.w = new ViewFinderView(getContext());
+      addView(this.w);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Zhp.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.d = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.e = null;
+    this.w.a(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_e_of_type_Int = paramInt2;
-    this.jdField_f_of_type_Int = paramInt3;
-    if (this.jdField_a_of_type_Boolean)
+    this.k = paramInt2;
+    this.l = paramInt3;
+    if (this.E)
     {
-      if (!this.jdField_c_of_type_Boolean) {
+      if (!this.G)
+      {
         ThreadManager.post(new ScannerView.2(this), 8, null, true);
+        return;
       }
+      ThreadManager.post(new ScannerView.3(this), 8, null, true);
     }
-    else {
-      return;
-    }
-    ThreadManager.post(new ScannerView.3(this), 8, null, true);
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.F = true;
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.F = false;
     ThreadManager.post(new ScannerView.4(this), 8, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.ScannerView
  * JD-Core Version:    0.7.0.1
  */

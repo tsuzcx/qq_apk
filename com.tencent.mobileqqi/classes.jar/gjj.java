@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.util.WeakReferenceHandler;
 
-class gjj
-  implements Runnable
+public class gjj
+  implements View.OnClickListener
 {
-  gjj(gji paramgji, boolean paramBoolean) {}
+  public gjj(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gji.a).sendEmptyMessageDelayed(8877, 800L);
-      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gji.a).a(0);
-      QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gji.a, QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gji.a));
-    }
-    for (;;)
-    {
-      if ((QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gji.a) != null) && (QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gji.a) != null))
-      {
-        QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gji.a).a(QZoneShareAlbumAssistantActivity.b(this.jdField_a_of_type_Gji.a));
-        QZoneShareAlbumAssistantActivity.a(this.jdField_a_of_type_Gji.a).notifyDataSetChanged();
-      }
-      return;
-      this.jdField_a_of_type_Gji.a.a(1, this.jdField_a_of_type_Gji.a.getString(2131562097));
-      this.jdField_a_of_type_Gji.a.a.B();
-    }
+    QZoneShareAlbumAssistantActivity.b(this.a);
+    QZoneShareAlbumAssistantActivity.c(this.a);
   }
 }
 

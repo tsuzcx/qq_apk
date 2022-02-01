@@ -1,18 +1,16 @@
 package com.tencent.biz.pubaccount;
 
-import nnp;
-
-public class EncryptUinHandler$1
+class EncryptUinHandler$1
   implements Runnable
 {
   public void run()
   {
-    nnp.a(this.this$0, this.a, 0);
+    EncryptUinHandler.a(this.this$0, this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.EncryptUinHandler.1
  * JD-Core Version:    0.7.0.1
  */

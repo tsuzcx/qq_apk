@@ -4,52 +4,52 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class t
 {
-  public static final t axm;
-  public final int axn;
+  public static final t cHm;
+  public final int cHn;
   
   static
   {
-    AppMethodBeat.i(95392);
-    axm = new t(0);
-    AppMethodBeat.o(95392);
+    AppMethodBeat.i(92514);
+    cHm = new t(0);
+    AppMethodBeat.o(92514);
   }
   
   public t(int paramInt)
   {
-    this.axn = paramInt;
+    this.cHn = paramInt;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(95391);
+    AppMethodBeat.i(92513);
     if (this == paramObject)
     {
-      AppMethodBeat.o(95391);
+      AppMethodBeat.o(92513);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(95391);
+      AppMethodBeat.o(92513);
       return false;
     }
     paramObject = (t)paramObject;
-    if (this.axn == paramObject.axn)
+    if (this.cHn == paramObject.cHn)
     {
-      AppMethodBeat.o(95391);
+      AppMethodBeat.o(92513);
       return true;
     }
-    AppMethodBeat.o(95391);
+    AppMethodBeat.o(92513);
     return false;
   }
   
   public final int hashCode()
   {
-    return this.axn;
+    return this.cHn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.t
  * JD-Core Version:    0.7.0.1
  */

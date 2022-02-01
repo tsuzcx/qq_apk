@@ -31,12 +31,14 @@ public class MaxHeightRelativelayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int j = View.MeasureSpec.getMode(paramInt2);
+    int k = View.MeasureSpec.getSize(paramInt2);
+    int m = this.a;
     int i = paramInt2;
-    if (View.MeasureSpec.getSize(paramInt2) > this.a)
+    if (k > m)
     {
       i = paramInt2;
       if (j != 0) {
-        i = View.MeasureSpec.makeMeasureSpec(this.a, j);
+        i = View.MeasureSpec.makeMeasureSpec(m, j);
       }
     }
     try
@@ -60,7 +62,7 @@ public class MaxHeightRelativelayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.MaxHeightRelativelayout
  * JD-Core Version:    0.7.0.1
  */

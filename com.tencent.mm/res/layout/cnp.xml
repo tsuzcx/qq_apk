@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="@dimen/b9"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/a37" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/a7j" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/e4" app:iconColor="#ffffffff" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/t" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h6m" android:singleLine="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/kt" android:id="@id/m__" android:paddingLeft="@dimen/cd" android:paddingTop="@dimen/bv" android:paddingRight="16.0dip" android:paddingBottom="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h6l" android:contentDescription="@string/h6l" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

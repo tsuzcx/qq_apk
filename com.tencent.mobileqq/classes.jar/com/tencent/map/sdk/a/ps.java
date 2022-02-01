@@ -24,47 +24,52 @@ public final class ps
   
   public final String a()
   {
-    if (this.b != null) {
-      return this.b.getMapPath();
+    QStorageManager localQStorageManager = this.b;
+    if (localQStorageManager != null) {
+      return localQStorageManager.getMapPath();
     }
     return null;
   }
   
   public final String b()
   {
-    if (this.b != null) {
-      return this.b.getSatPath();
+    QStorageManager localQStorageManager = this.b;
+    if (localQStorageManager != null) {
+      return localQStorageManager.getSatPath();
     }
     return null;
   }
   
   public final String c()
   {
-    if (this.b != null) {
-      return this.b.getConfigPath(this.c);
+    QStorageManager localQStorageManager = this.b;
+    if (localQStorageManager != null) {
+      return localQStorageManager.getConfigPath(this.c);
     }
     return null;
   }
   
   public final String d()
   {
-    if (this.b != null) {
-      return this.b.getAssetsLoadPath(this.c);
+    QStorageManager localQStorageManager = this.b;
+    if (localQStorageManager != null) {
+      return localQStorageManager.getAssetsLoadPath(this.c);
     }
     return null;
   }
   
   public final String e()
   {
-    if (this.b != null) {
-      return this.b.getRouteBlockPath();
+    QStorageManager localQStorageManager = this.b;
+    if (localQStorageManager != null) {
+      return localQStorageManager.getRouteBlockPath();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ps
  * JD-Core Version:    0.7.0.1
  */

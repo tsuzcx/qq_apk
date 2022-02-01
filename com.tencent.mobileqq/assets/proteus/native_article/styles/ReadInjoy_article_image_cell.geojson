@@ -24,12 +24,12 @@
 				"value": "345"
 			},
 			"attributes": {
-				"setFrameString:": "-1",
 				"setGifUrl:": "$articleImageUrl",
 				"setHeightString:": "$imageHeight",
 				"setWidthString:": "$imageWidth",
-				"setScaleType:": "1",
-				"setSupportGifEnable:": "1"
+				"setScaleType:": "6",
+				"setSupportGifEnable:": "1",
+				"setNeedGifUrl:": "YES"
 			}
 		}]
 	}

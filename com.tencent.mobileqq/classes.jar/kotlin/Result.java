@@ -75,7 +75,11 @@ public final class Result<T>
     if ((paramObject instanceof Result.Failure)) {
       return paramObject.toString();
     }
-    return "Success(" + paramObject + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Success(");
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
   
   public boolean equals(Object paramObject)
@@ -96,7 +100,7 @@ public final class Result<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.Result
  * JD-Core Version:    0.7.0.1
  */

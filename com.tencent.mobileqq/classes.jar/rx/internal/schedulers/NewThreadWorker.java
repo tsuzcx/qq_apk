@@ -33,7 +33,7 @@ public class NewThreadWorker
   private static final String PURGE_FORCE_KEY = "rx.scheduler.jdk6.purge-force";
   public static final int PURGE_FREQUENCY = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
   private static final String PURGE_THREAD_PREFIX = "RxSchedulerPurge-";
-  private static final Object SET_REMOVE_ON_CANCEL_POLICY_METHOD_NOT_SUPPORTED;
+  private static final Object SET_REMOVE_ON_CANCEL_POLICY_METHOD_NOT_SUPPORTED = new Object();
   private static final boolean SHOULD_TRY_ENABLE_CANCEL_POLICY;
   private static volatile Object cachedSetRemoveOnCancelPolicyMethod;
   private final ScheduledExecutorService executor;
@@ -44,13 +44,12 @@ public class NewThreadWorker
   {
     boolean bool = Boolean.getBoolean("rx.scheduler.jdk6.purge-force");
     int i = PlatformDependent.getAndroidApiVersion();
-    if ((!bool) && ((i == 0) || (i >= 21))) {}
-    for (bool = true;; bool = false)
-    {
-      SHOULD_TRY_ENABLE_CANCEL_POLICY = bool;
-      SET_REMOVE_ON_CANCEL_POLICY_METHOD_NOT_SUPPORTED = new Object();
-      return;
+    if ((!bool) && ((i == 0) || (i >= 21))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    SHOULD_TRY_ENABLE_CANCEL_POLICY = bool;
   }
   
   public NewThreadWorker(ThreadFactory paramThreadFactory)
@@ -90,29 +89,24 @@ public class NewThreadWorker
   
   static void purgeExecutors()
   {
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = EXECUTORS.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = EXECUTORS.keySet().iterator();
-        if (localIterator.hasNext())
-        {
-          ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = (ScheduledThreadPoolExecutor)localIterator.next();
-          if (!localScheduledThreadPoolExecutor.isShutdown()) {
-            localScheduledThreadPoolExecutor.purge();
-          }
-        }
-        else
-        {
-          return;
+        ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = (ScheduledThreadPoolExecutor)localIterator.next();
+        if (!localScheduledThreadPoolExecutor.isShutdown()) {
+          localScheduledThreadPoolExecutor.purge();
+        } else {
+          localIterator.remove();
         }
       }
-      catch (Throwable localThrowable)
-      {
-        Exceptions.throwIfFatal(localThrowable);
-        RxJavaPlugins.getInstance().getErrorHandler().handleError(localThrowable);
-      }
-      localThrowable.remove();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Exceptions.throwIfFatal(localThrowable);
+      RxJavaPlugins.getInstance().getErrorHandler().handleError(localThrowable);
     }
   }
   
@@ -120,17 +114,21 @@ public class NewThreadWorker
   {
     for (;;)
     {
-      if ((ScheduledExecutorService)PURGE.get() != null) {}
       ScheduledExecutorService localScheduledExecutorService;
-      for (;;)
+      if ((ScheduledExecutorService)PURGE.get() == null)
+      {
+        localScheduledExecutorService = Executors.newScheduledThreadPool(1, new RxThreadFactory("RxSchedulerPurge-"));
+        if (PURGE.compareAndSet(null, localScheduledExecutorService))
+        {
+          NewThreadWorker.1 local1 = new NewThreadWorker.1();
+          int i = PURGE_FREQUENCY;
+          localScheduledExecutorService.scheduleAtFixedRate(local1, i, i, TimeUnit.MILLISECONDS);
+        }
+      }
+      else
       {
         EXECUTORS.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
         return;
-        localScheduledExecutorService = Executors.newScheduledThreadPool(1, new RxThreadFactory("RxSchedulerPurge-"));
-        if (!PURGE.compareAndSet(null, localScheduledExecutorService)) {
-          break;
-        }
-        localScheduledExecutorService.scheduleAtFixedRate(new NewThreadWorker.1(), PURGE_FREQUENCY, PURGE_FREQUENCY, TimeUnit.MILLISECONDS);
       }
       localScheduledExecutorService.shutdownNow();
     }
@@ -141,7 +139,6 @@ public class NewThreadWorker
     if (SHOULD_TRY_ENABLE_CANCEL_POLICY)
     {
       Object localObject1;
-      Object localObject2;
       if ((paramScheduledExecutorService instanceof ScheduledThreadPoolExecutor))
       {
         localObject1 = cachedSetRemoveOnCancelPolicyMethod;
@@ -151,18 +148,24 @@ public class NewThreadWorker
         if (localObject1 == null)
         {
           localObject1 = findSetRemoveOnCancelPolicyMethod(paramScheduledExecutorService);
-          if (localObject1 != null)
-          {
+          Object localObject2;
+          if (localObject1 != null) {
             localObject2 = localObject1;
-            cachedSetRemoveOnCancelPolicyMethod = localObject2;
+          } else {
+            localObject2 = SET_REMOVE_ON_CANCEL_POLICY_METHOD_NOT_SUPPORTED;
           }
+          cachedSetRemoveOnCancelPolicyMethod = localObject2;
+        }
+        else
+        {
+          localObject1 = (Method)localObject1;
         }
       }
-      for (;;)
+      else
       {
-        if (localObject1 == null) {
-          break label102;
-        }
+        localObject1 = findSetRemoveOnCancelPolicyMethod(paramScheduledExecutorService);
+      }
+      if (localObject1 != null) {
         try
         {
           ((Method)localObject1).invoke(paramScheduledExecutorService, new Object[] { Boolean.valueOf(true) });
@@ -172,14 +175,8 @@ public class NewThreadWorker
         {
           RxJavaPlugins.getInstance().getErrorHandler().handleError(paramScheduledExecutorService);
         }
-        localObject2 = SET_REMOVE_ON_CANCEL_POLICY_METHOD_NOT_SUPPORTED;
-        break;
-        localObject1 = (Method)localObject1;
-        continue;
-        localObject1 = findSetRemoveOnCancelPolicyMethod(paramScheduledExecutorService);
       }
     }
-    label102:
     return false;
   }
   
@@ -204,36 +201,39 @@ public class NewThreadWorker
   public ScheduledAction scheduleActual(Action0 paramAction0, long paramLong, TimeUnit paramTimeUnit)
   {
     ScheduledAction localScheduledAction = new ScheduledAction(this.schedulersHook.onSchedule(paramAction0));
-    if (paramLong <= 0L) {}
-    for (paramAction0 = this.executor.submit(localScheduledAction);; paramAction0 = this.executor.schedule(localScheduledAction, paramLong, paramTimeUnit))
-    {
-      localScheduledAction.add(paramAction0);
-      return localScheduledAction;
+    if (paramLong <= 0L) {
+      paramAction0 = this.executor.submit(localScheduledAction);
+    } else {
+      paramAction0 = this.executor.schedule(localScheduledAction, paramLong, paramTimeUnit);
     }
+    localScheduledAction.add(paramAction0);
+    return localScheduledAction;
   }
   
   public ScheduledAction scheduleActual(Action0 paramAction0, long paramLong, TimeUnit paramTimeUnit, SubscriptionList paramSubscriptionList)
   {
     ScheduledAction localScheduledAction = new ScheduledAction(this.schedulersHook.onSchedule(paramAction0), paramSubscriptionList);
     paramSubscriptionList.add(localScheduledAction);
-    if (paramLong <= 0L) {}
-    for (paramAction0 = this.executor.submit(localScheduledAction);; paramAction0 = this.executor.schedule(localScheduledAction, paramLong, paramTimeUnit))
-    {
-      localScheduledAction.add(paramAction0);
-      return localScheduledAction;
+    if (paramLong <= 0L) {
+      paramAction0 = this.executor.submit(localScheduledAction);
+    } else {
+      paramAction0 = this.executor.schedule(localScheduledAction, paramLong, paramTimeUnit);
     }
+    localScheduledAction.add(paramAction0);
+    return localScheduledAction;
   }
   
   public ScheduledAction scheduleActual(Action0 paramAction0, long paramLong, TimeUnit paramTimeUnit, CompositeSubscription paramCompositeSubscription)
   {
     ScheduledAction localScheduledAction = new ScheduledAction(this.schedulersHook.onSchedule(paramAction0), paramCompositeSubscription);
     paramCompositeSubscription.add(localScheduledAction);
-    if (paramLong <= 0L) {}
-    for (paramAction0 = this.executor.submit(localScheduledAction);; paramAction0 = this.executor.schedule(localScheduledAction, paramLong, paramTimeUnit))
-    {
-      localScheduledAction.add(paramAction0);
-      return localScheduledAction;
+    if (paramLong <= 0L) {
+      paramAction0 = this.executor.submit(localScheduledAction);
+    } else {
+      paramAction0 = this.executor.schedule(localScheduledAction, paramLong, paramTimeUnit);
     }
+    localScheduledAction.add(paramAction0);
+    return localScheduledAction;
   }
   
   public void unsubscribe()
@@ -245,7 +245,7 @@ public class NewThreadWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.schedulers.NewThreadWorker
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajtp;
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 import com.tencent.qphone.base.util.QLog;
 
-public class RMVideoRecordState$2
+class RMVideoRecordState$2
   implements Runnable
 {
-  public RMVideoRecordState$2(ajtp paramajtp) {}
+  RMVideoRecordState$2(RMVideoRecordState paramRMVideoRecordState) {}
   
   public void run()
   {
@@ -16,28 +15,25 @@ public class RMVideoRecordState$2
     if (QLog.isColorLevel()) {
       QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风读取数据错误...");
     }
-    localRMVideoStateMgr.h = true;
-    localRMVideoStateMgr.e = false;
-    if (localRMVideoStateMgr.a != null)
+    localRMVideoStateMgr.z = true;
+    localRMVideoStateMgr.r = false;
+    if (localRMVideoStateMgr.p != null)
     {
-      if (localRMVideoStateMgr.a.i != -1) {
-        break label95;
-      }
-      localRMVideoStateMgr.b(0, alud.a(2131713861), false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风被禁用,音频录制失败 errorcode=" + localRMVideoStateMgr.a.i);
-      }
-      return;
-      label95:
-      if (localRMVideoStateMgr.a.i == -2) {
-        localRMVideoStateMgr.b(0, alud.a(2131713866), false);
-      } else if (localRMVideoStateMgr.a.i == -3) {
-        localRMVideoStateMgr.b(0, alud.a(2131713868), false);
+      if (localRMVideoStateMgr.p.t == -1) {
+        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131910945), false);
+      } else if (localRMVideoStateMgr.p.t == -2) {
+        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131910950), false);
+      } else if (localRMVideoStateMgr.p.t == -3) {
+        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131910952), false);
       } else {
-        localRMVideoStateMgr.b(0, alud.a(2131713864), false);
+        localRMVideoStateMgr.b(0, HardCodeUtil.a(2131910948), false);
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] EVENT_READ_MIC [error]麦克风被禁用,音频录制失败 errorcode=");
+        localStringBuilder.append(localRMVideoStateMgr.p.t);
+        QLog.d("RMRecordState", 2, localStringBuilder.toString());
       }
     }
   }

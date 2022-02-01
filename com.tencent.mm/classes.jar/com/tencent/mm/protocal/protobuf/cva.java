@@ -1,127 +1,131 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class cva
-  extends com.tencent.mm.bv.a
+  extends erp
 {
-  public String Desc;
-  public String ProductID;
-  public String Title;
-  public String nQe;
-  public int woE;
-  public String xBK;
-  public String ydJ;
+  public boolean aaAD;
+  public String aaAE;
+  public String appusername;
+  public String nRL;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28709);
+    AppMethodBeat.i(32281);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Title != null) {
-        paramVarArgs.e(1, this.Title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.appusername == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: appusername");
+        AppMethodBeat.o(32281);
+        throw paramVarArgs;
       }
-      if (this.xBK != null) {
-        paramVarArgs.e(2, this.xBK);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.nQe != null) {
-        paramVarArgs.e(3, this.nQe);
+      paramVarArgs.di(2, this.aaAD);
+      if (this.nRL != null) {
+        paramVarArgs.g(3, this.nRL);
       }
-      if (this.Desc != null) {
-        paramVarArgs.e(4, this.Desc);
+      if (this.appusername != null) {
+        paramVarArgs.g(4, this.appusername);
       }
-      if (this.ydJ != null) {
-        paramVarArgs.e(5, this.ydJ);
+      if (this.aaAE != null) {
+        paramVarArgs.g(5, this.aaAE);
       }
-      paramVarArgs.aO(6, this.woE);
-      if (this.ProductID != null) {
-        paramVarArgs.e(7, this.ProductID);
-      }
-      AppMethodBeat.o(28709);
+      AppMethodBeat.o(32281);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Title == null) {
-        break label575;
+      if (this.BaseRequest == null) {
+        break label567;
       }
     }
-    label575:
-    for (int i = e.a.a.b.b.a.f(1, this.Title) + 0;; i = 0)
+    label567:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + (i.a.a.b.b.a.ko(2) + 1);
       paramInt = i;
-      if (this.xBK != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.xBK);
+      if (this.nRL != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.nRL);
       }
       i = paramInt;
-      if (this.nQe != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.nQe);
+      if (this.appusername != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.appusername);
       }
       paramInt = i;
-      if (this.Desc != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.Desc);
+      if (this.aaAE != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.aaAE);
       }
-      i = paramInt;
-      if (this.ydJ != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.ydJ);
-      }
-      i += e.a.a.b.b.a.bl(6, this.woE);
-      paramInt = i;
-      if (this.ProductID != null) {
-        paramInt = i + e.a.a.b.b.a.f(7, this.ProductID);
-      }
-      AppMethodBeat.o(28709);
+      AppMethodBeat.o(32281);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(28709);
+        if (this.appusername == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: appusername");
+          AppMethodBeat.o(32281);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32281);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cva localcva = (cva)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(28709);
+          AppMethodBeat.o(32281);
           return -1;
         case 1: 
-          localcva.Title = locala.CLY.readString();
-          AppMethodBeat.o(28709);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcva.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32281);
           return 0;
         case 2: 
-          localcva.xBK = locala.CLY.readString();
-          AppMethodBeat.o(28709);
+          localcva.aaAD = ((i.a.a.a.a)localObject).ajGk.aai();
+          AppMethodBeat.o(32281);
           return 0;
         case 3: 
-          localcva.nQe = locala.CLY.readString();
-          AppMethodBeat.o(28709);
+          localcva.nRL = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32281);
           return 0;
         case 4: 
-          localcva.Desc = locala.CLY.readString();
-          AppMethodBeat.o(28709);
-          return 0;
-        case 5: 
-          localcva.ydJ = locala.CLY.readString();
-          AppMethodBeat.o(28709);
-          return 0;
-        case 6: 
-          localcva.woE = locala.CLY.sl();
-          AppMethodBeat.o(28709);
+          localcva.appusername = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(32281);
           return 0;
         }
-        localcva.ProductID = locala.CLY.readString();
-        AppMethodBeat.o(28709);
+        localcva.aaAE = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(32281);
         return 0;
       }
-      AppMethodBeat.o(28709);
+      AppMethodBeat.o(32281);
       return -1;
     }
   }

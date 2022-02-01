@@ -1,7 +1,9 @@
 package io.flutter.plugin.common;
 
-import android.support.annotation.UiThread;
 import android.util.Log;
+import androidx.annotation.UiThread;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.ByteBuffer;
 
 final class MethodChannel$IncomingMethodCallHandler
@@ -12,6 +14,13 @@ final class MethodChannel$IncomingMethodCallHandler
   MethodChannel$IncomingMethodCallHandler(MethodChannel paramMethodChannel, MethodChannel.MethodCallHandler paramMethodCallHandler)
   {
     this.handler = paramMethodCallHandler;
+  }
+  
+  private String getStackTrace(Exception paramException)
+  {
+    StringWriter localStringWriter = new StringWriter();
+    paramException.printStackTrace(new PrintWriter(localStringWriter));
+    return localStringWriter.toString();
   }
   
   @UiThread
@@ -29,13 +38,13 @@ final class MethodChannel$IncomingMethodCallHandler
       localStringBuilder.append("MethodChannel#");
       localStringBuilder.append(MethodChannel.access$100(this.this$0));
       Log.e(localStringBuilder.toString(), "Failed to handle method call", paramByteBuffer);
-      paramBinaryReply.reply(MethodChannel.access$000(this.this$0).encodeErrorEnvelope("error", paramByteBuffer.getMessage(), null));
+      paramBinaryReply.reply(MethodChannel.access$000(this.this$0).encodeErrorEnvelopeWithStacktrace("error", paramByteBuffer.getMessage(), null, getStackTrace(paramByteBuffer)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.common.MethodChannel.IncomingMethodCallHandler
  * JD-Core Version:    0.7.0.1
  */

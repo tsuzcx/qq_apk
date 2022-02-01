@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="355.0dip" android:layout_height="71.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/a15" android:layout_width="355.0dip" android:layout_height="51.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/l4u" android:layout_width="260.5dip" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginStart="12.0dip" />
+        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="14.0sp" android:textColor="#ff4f3a19" android:gravity="center" android:id="@id/isz" android:background="@drawable/a16" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:text="@string/pv4" android:layout_toRightOf="@id/l4u" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

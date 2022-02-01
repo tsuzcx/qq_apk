@@ -1,108 +1,76 @@
 package com.tencent.mm.plugin.appbrand.app;
 
+import android.app.Application;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Handler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.ad;
-import com.tencent.mm.plugin.appbrand.appcache.af;
-import com.tencent.mm.plugin.appbrand.appcache.ah;
-import com.tencent.mm.plugin.appbrand.appcache.b.e.h;
-import com.tencent.mm.plugin.appbrand.appcache.f;
-import com.tencent.mm.plugin.appbrand.appusage.k;
-import com.tencent.mm.plugin.appbrand.appusage.n;
-import com.tencent.mm.plugin.appbrand.appusage.s;
-import com.tencent.mm.plugin.appbrand.backgroundfetch.g;
-import com.tencent.mm.plugin.appbrand.launching.m;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import junit.framework.Assert;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 final class a
 {
-  static final Map<a.a, String[]> gSq;
-  private static final Map<Class, Object> gSr;
-  
-  static
+  static boolean cet()
   {
-    AppMethodBeat.i(129191);
-    gSq = new HashMap();
-    a(new a.1(), m.fkl);
-    a(new a.9(), ad.fkl);
-    a(new a.10(), n.fkl);
-    a(new a.11(), com.tencent.mm.plugin.appbrand.appcache.b.e.e.fkl);
-    a(new a.12(), ah.fkl);
-    a(new a.13(), k.fkl);
-    a(new a.14(), h.fkl);
-    a(new a.15(), com.tencent.mm.plugin.appbrand.appcache.b.e.d.fkl);
-    a(new a.16(), af.fkl);
-    a(new a.2(), com.tencent.mm.plugin.appbrand.appcache.b.e.b.fkl);
-    a(new a.3(), com.tencent.mm.plugin.appbrand.appusage.a.b.fkl);
-    a(new a.4(), s.fkl);
-    a(new a.5(), com.tencent.mm.plugin.appbrand.backgroundfetch.d.fkl);
-    a(new a.6(), g.fkl);
-    a(new a.7(), com.tencent.mm.plugin.appbrand.appcache.b.d.a.fkl);
-    a(new a.8(), f.fkl);
-    gSr = new HashMap();
-    AppMethodBeat.o(129191);
-  }
-  
-  private static void a(a.a parama, String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(129187);
-    gSq.put(parama, paramArrayOfString);
-    AppMethodBeat.o(129187);
-  }
-  
-  static void a(com.tencent.mm.sdk.e.e parame)
-  {
-    AppMethodBeat.i(129188);
-    synchronized (gSr)
-    {
-      gSr.clear();
-      Iterator localIterator = gSq.keySet().iterator();
-      if (localIterator.hasNext())
-      {
-        Object localObject = ((a.a)localIterator.next()).b(parame);
-        gSr.put(localObject.getClass(), localObject);
-      }
-    }
-    AppMethodBeat.o(129188);
-  }
-  
-  static void aus()
-  {
-    AppMethodBeat.i(129189);
-    synchronized (gSr)
-    {
-      gSr.clear();
-      AppMethodBeat.o(129189);
-      return;
-    }
-  }
-  
-  static <T> T w(Class<T> paramClass)
-  {
-    AppMethodBeat.i(129190);
-    boolean bool;
-    if (paramClass != null) {
-      bool = true;
-    }
+    AppMethodBeat.i(317795);
+    if ((a.hjc == null) || (a.qBf == null)) {}
     for (;;)
     {
-      Assert.assertTrue("Cant pass Null class here", bool);
-      synchronized (gSr)
+      try
       {
-        paramClass = gSr.get(paramClass);
-        AppMethodBeat.o(129190);
-        return paramClass;
-        bool = false;
+        localObject3 = (Application)MMApplicationContext.getContext().getApplicationContext();
+        localObject1 = Class.forName("android.app.ActivityThread").getMethod("currentActivityThread", new Class[0]);
+        ((Method)localObject1).setAccessible(true);
+        localObject1 = ((Method)localObject1).invoke(null, new Object[0]);
+        if (localObject1 == null) {
+          continue;
+        }
+        a.hjc = localObject1;
+        localObject3 = localObject1.getClass().getDeclaredField("mH");
+        ((Field)localObject3).setAccessible(true);
+        a.qBf = (Handler)((Field)localObject3).get(localObject1);
       }
+      finally
+      {
+        Object localObject3;
+        Object localObject1;
+        Log.e("MicroMsg.AppBrandProcessSuicideLogic.ActivityThreadHackDetector", "hack ActivityThread failed %s", new Object[] { localObject2 });
+        continue;
+        AppMethodBeat.o(317795);
+        return false;
+      }
+      localObject1 = a.qBf;
+      if (localObject1 == null) {
+        break label223;
+      }
+      if ((!((Handler)localObject1).hasMessages(100)) && (!((Handler)localObject1).hasMessages(126)) && ((Build.VERSION.SDK_INT != 28) || (!((Handler)localObject1).hasMessages(160))) && (!((Handler)localObject1).hasMessages(159))) {
+        continue;
+      }
+      AppMethodBeat.o(317795);
+      return true;
+      localObject1 = localObject3.getClass().getField("mLoadedApk");
+      ((Field)localObject1).setAccessible(true);
+      localObject1 = ((Field)localObject1).get(localObject3);
+      localObject3 = localObject1.getClass().getDeclaredField("mActivityThread");
+      ((Field)localObject3).setAccessible(true);
+      localObject1 = ((Field)localObject3).get(localObject1);
     }
+    label223:
+    AppMethodBeat.o(317795);
+    return false;
+  }
+  
+  static final class a
+  {
+    public static Object hjc;
+    public static Handler qBf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.a
  * JD-Core Version:    0.7.0.1
  */

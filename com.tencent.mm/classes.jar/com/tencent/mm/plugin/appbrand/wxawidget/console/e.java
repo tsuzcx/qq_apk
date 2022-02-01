@@ -14,76 +14,86 @@ import java.util.List;
 
 public final class e
 {
-  private static final List<WeakReference<ControlBoardPanel>> jxF;
-  private static final ControlBoardPanel.a jxG;
+  private static final List<WeakReference<ControlBoardPanel>> uSU;
+  private static final ControlBoardPanel.a uSV;
   
   static
   {
-    AppMethodBeat.i(11157);
-    jxF = new LinkedList();
-    jxG = new e.1();
-    AppMethodBeat.o(11157);
+    AppMethodBeat.i(121642);
+    uSU = new LinkedList();
+    uSV = new ControlBoardPanel.a()
+    {
+      public final void a(ControlBoardPanel paramAnonymousControlBoardPanel, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(121639);
+        if (!paramAnonymousBoolean) {
+          e.a(paramAnonymousControlBoardPanel);
+        }
+        AppMethodBeat.o(121639);
+      }
+    };
+    AppMethodBeat.o(121642);
   }
   
-  public static void dw(Context paramContext)
+  public static void fB(Context paramContext)
   {
-    AppMethodBeat.i(11155);
+    AppMethodBeat.i(121640);
     int i;
     Object localObject;
     if (paramContext != null)
     {
       i = 0;
-      if (i < jxF.size())
+      if (i < uSU.size())
       {
-        localObject = (WeakReference)jxF.get(i);
+        localObject = (WeakReference)uSU.get(i);
         if (localObject != null)
         {
           localObject = (ControlBoardPanel)((WeakReference)localObject).get();
           if ((localObject != null) && (paramContext == ((ControlBoardPanel)localObject).getContext()))
           {
-            label61:
+            label60:
             if (localObject != null) {
-              break label244;
+              break label242;
             }
             paramContext = new ControlBoardPanel(paramContext);
-            jxF.add(new WeakReference(paramContext));
+            uSU.add(new WeakReference(paramContext));
           }
         }
       }
     }
     for (;;)
     {
-      localObject = jxG;
-      if (!paramContext.jxP)
+      localObject = uSV;
+      if (!paramContext.uTe)
       {
-        paramContext.jxP = true;
+        paramContext.uTe = true;
         Activity localActivity = (Activity)paramContext.getContext();
-        paramContext.jxO = new WindowManager.LayoutParams(-2, -2, 1003, 520, -3);
-        paramContext.jxO.y = a.p(localActivity);
-        paramContext.jxO.token = localActivity.getWindow().getDecorView().getWindowToken();
-        paramContext.jxO.gravity = 51;
-        paramContext.jxO.softInputMode = 16;
-        paramContext.jxN.addView(paramContext, paramContext.jxO);
+        paramContext.uTd = new WindowManager.LayoutParams(-2, -2, 1003, 520, -3);
+        paramContext.uTd.y = a.v(localActivity);
+        paramContext.uTd.token = localActivity.getWindow().getDecorView().getWindowToken();
+        paramContext.uTd.gravity = 51;
+        paramContext.uTd.softInputMode = 16;
+        paramContext.uTc.addView(paramContext, paramContext.uTd);
         paramContext.reset();
-        paramContext.jxG = ((ControlBoardPanel.a)localObject);
-        if (paramContext.jxG != null) {
-          paramContext.jxG.a(paramContext, true);
+        paramContext.uSV = ((ControlBoardPanel.a)localObject);
+        if (paramContext.uSV != null) {
+          paramContext.uSV.a(paramContext, true);
         }
       }
-      AppMethodBeat.o(11155);
+      AppMethodBeat.o(121640);
       return;
       i += 1;
       break;
       localObject = null;
-      break label61;
-      label244:
+      break label60;
+      label242:
       paramContext = (Context)localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.e
  * JD-Core Version:    0.7.0.1
  */

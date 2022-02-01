@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/f9l" android:background="@color/a05" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/b4m" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/gg" android:gravity="center_horizontal" android:id="@id/kob" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="标题" />
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bru" android:layout_width="272.0dip" android:layout_height="153.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bsj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="24.0dip" android:text="弹窗内容" />
+    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="27.0dip" />
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/gm" android:gravity="center_horizontal" android:id="@id/al1" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="知道了" />
+</LinearLayout>

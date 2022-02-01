@@ -11,15 +11,15 @@ final class TVInfoUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(24913);
-    this.qRP.finish();
-    AppMethodBeat.o(24913);
+    AppMethodBeat.i(28582);
+    this.PEH.finish();
+    AppMethodBeat.o(28582);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.TVInfoUI.4
  * JD-Core Version:    0.7.0.1
  */

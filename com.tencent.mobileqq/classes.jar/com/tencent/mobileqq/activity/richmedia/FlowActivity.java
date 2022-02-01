@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajqa;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -9,45 +9,45 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public abstract class FlowActivity
   extends PeakActivity
 {
-  protected int a;
   protected ViewGroup a;
-  protected boolean a;
-  
-  public FlowActivity()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  protected ajqa a()
-  {
-    return null;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
+  protected int b;
+  protected boolean c = true;
   
   protected void a(Bundle paramBundle)
   {
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131296969));
+    this.b = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297474));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
   
+  public View b()
+  {
+    return this.a;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
   public void finish()
   {
     super.finish();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      overridePendingTransition(0, 2130772001);
+      overridePendingTransition(0, 2130772018);
       return;
     }
     overridePendingTransition(0, 0);
@@ -58,38 +58,42 @@ public abstract class FlowActivity
     super.onBackPressed();
   }
   
-  public void onCreate(Bundle paramBundle)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     getWindow().addFlags(256);
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296969));
+      this.b = ((int)getResources().getDimension(2131297474));
     }
     a(paramBundle);
-    setContentView(2131558444);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366604));
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      a(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    paramBundle = a();
+    setContentView(2131624023);
+    this.a = ((ViewGroup)findViewById(2131433486));
+    paramBundle = this.a;
     if (paramBundle != null) {
-      paramBundle.a((ViewGroup)$(2131366584));
+      a(paramBundle);
     }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
   }
@@ -99,7 +103,7 @@ public abstract class FlowActivity
     if (paramMotionEvent.getAction() != 0) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    View localView = a();
+    View localView = b();
     if (localView == null) {
       return super.onTouchEvent(paramMotionEvent);
     }

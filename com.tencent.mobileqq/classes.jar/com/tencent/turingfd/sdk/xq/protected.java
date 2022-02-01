@@ -1,39 +1,51 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.util.concurrent.atomic.AtomicReference;
+import android.content.Context;
+import android.net.Proxy;
+import android.os.Build.VERSION;
 
 public class protected
-  implements ServiceConnection
 {
-  public protected(implements paramimplements, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2, Object paramObject) {}
-  
-  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
+  public static String a(Context paramContext)
   {
-    this.uc.set(paramIBinder);
-    this.vc.set(this);
-    try
-    {
-      synchronized (this.wc)
-      {
-        this.wc.notifyAll();
-        label30:
-        return;
-      }
+    int i;
+    if (Build.VERSION.SDK_INT >= 14) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    catch (Throwable paramIBinder)
-    {
-      break label30;
+    if (i != 0) {
+      return System.getProperty("http.proxyHost");
     }
+    return Proxy.getHost(paramContext);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName) {}
+  public static int b(Context paramContext)
+  {
+    int i;
+    if (Build.VERSION.SDK_INT >= 14) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {}
+    try
+    {
+      i = Integer.parseInt(System.getProperty("http.proxyPort"));
+      return i;
+    }
+    catch (NumberFormatException paramContext)
+    {
+      label30:
+      break label30;
+    }
+    return -1;
+    return Proxy.getPort(paramContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.protected
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,9 @@ class SimpleGLThread$2
   
   public void run()
   {
-    if (this.val$clearRunable != null) {
-      this.val$clearRunable.run();
+    Runnable localRunnable = this.val$clearRunable;
+    if (localRunnable != null) {
+      localRunnable.run();
     }
     if (SimpleGLThread.access$000(this.this$0) != null)
     {
@@ -25,7 +26,7 @@ class SimpleGLThread$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.SimpleGLThread.2
  * JD-Core Version:    0.7.0.1
  */

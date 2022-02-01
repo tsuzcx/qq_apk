@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bor" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/npz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:src="@drawable/gzp" android:contentDescription="@string/pb" />
+            <TextView android:id="@id/lbi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="20.0dip" android:text="@string/wg1" style="@style/ahj" />
+            <LinearLayout android:orientation="vertical" android:id="@id/eaz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:orientation="vertical" android:id="@id/ny8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/anw" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lao" android:paddingLeft="20.0dip" android:paddingTop="6.0dip" android:paddingRight="20.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ych" android:drawableRight="@drawable/ekt" android:drawablePadding="2.0dip" style="@style/ahj" />
+                <TextView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yck" style="@style/ahi" />
+                <TextView android:layout_gravity="center_horizontal" android:id="@id/baa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/ycj" style="@style/ahi" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

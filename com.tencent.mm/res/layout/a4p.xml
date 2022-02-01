@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/c6l" android:layout_width="60.0dip" android:layout_height="30.0dip" android:text="@string/c8x" style="@style/k4" />
-    <com.tencent.mm.plugin.game.widget.TextProgressBar android:id="@id/c6m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:max="100" style="@style/k3" />
-</merge>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/iia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gb" android:ellipsize="end" android:id="@id/iib" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:maxLines="1" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/iim" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:maxLines="1" />
+</LinearLayout>

@@ -7,55 +7,57 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.asb;
-import com.tencent.mm.protocal.protobuf.cuy;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.cvs;
+import com.tencent.mm.protocal.protobuf.gdg;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 import junit.framework.Assert;
 
 final class IPCallMyGiftCardUI$a
   extends BaseAdapter
 {
-  private IPCallMyGiftCardUI nUc;
-  asb nUd;
-  List<cuy> nxh;
+  private IPCallMyGiftCardUI JNP;
+  cvs JNQ;
+  List<gdg> ell;
   
   public IPCallMyGiftCardUI$a(IPCallMyGiftCardUI paramIPCallMyGiftCardUI)
   {
-    AppMethodBeat.i(22212);
-    this.nxh = null;
-    this.nUc = null;
-    this.nUd = null;
+    AppMethodBeat.i(25831);
+    this.ell = null;
+    this.JNP = null;
+    this.JNQ = null;
     Assert.assertTrue(true);
-    this.nUc = paramIPCallMyGiftCardUI;
-    AppMethodBeat.o(22212);
+    this.JNP = paramIPCallMyGiftCardUI;
+    AppMethodBeat.o(25831);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(22213);
-    if (this.nxh == null)
+    AppMethodBeat.i(25832);
+    if (this.ell == null)
     {
-      AppMethodBeat.o(22213);
+      AppMethodBeat.o(25832);
       return 0;
     }
-    int i = this.nxh.size();
-    AppMethodBeat.o(22213);
+    int i = this.ell.size();
+    AppMethodBeat.o(25832);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(22214);
-    if (this.nxh != null)
+    AppMethodBeat.i(25833);
+    if (this.ell != null)
     {
-      Object localObject = this.nxh.get(paramInt);
-      AppMethodBeat.o(22214);
+      Object localObject = this.ell.get(paramInt);
+      AppMethodBeat.o(25833);
       return localObject;
     }
-    AppMethodBeat.o(22214);
+    AppMethodBeat.o(25833);
     return null;
   }
   
@@ -66,62 +68,73 @@ final class IPCallMyGiftCardUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(22215);
+    AppMethodBeat.i(25834);
     if (paramView == null)
     {
-      paramView = ((LayoutInflater)this.nUc.getSystemService("layout_inflater")).inflate(2130969940, paramViewGroup, false);
-      paramViewGroup = new IPCallMyGiftCardUI.a.a(this, (byte)0);
-      paramViewGroup.nUe = ((TextView)paramView.findViewById(2131825176));
-      paramViewGroup.nUf = ((TextView)paramView.findViewById(2131825177));
-      paramViewGroup.nUg = ((TextView)paramView.findViewById(2131825178));
-      paramViewGroup.nUh = ((CdnImageView)paramView.findViewById(2131821061));
-      paramViewGroup.nUi = ((ImageView)paramView.findViewById(2131825299));
+      paramView = ((LayoutInflater)this.JNP.getSystemService("layout_inflater")).inflate(R.i.gkX, paramViewGroup, false);
+      paramViewGroup = new a((byte)0);
+      paramViewGroup.JNR = ((TextView)paramView.findViewById(R.h.fDJ));
+      paramViewGroup.JNS = ((TextView)paramView.findViewById(R.h.fEt));
+      paramViewGroup.JNT = ((TextView)paramView.findViewById(R.h.fHu));
+      paramViewGroup.JNU = ((CdnImageView)paramView.findViewById(R.h.header_icon));
+      paramViewGroup.JNV = ((ImageView)paramView.findViewById(R.h.fEx));
       paramView.setTag(paramViewGroup);
     }
-    cuy localcuy;
+    gdg localgdg;
     for (;;)
     {
-      localcuy = (cuy)getItem(paramInt);
-      if (localcuy != null) {
+      localgdg = (gdg)getItem(paramInt);
+      if (localgdg != null) {
         break;
       }
-      AppMethodBeat.o(22215);
+      AppMethodBeat.o(25834);
       return paramView;
-      paramViewGroup = (IPCallMyGiftCardUI.a.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
     }
-    if (bo.isNullOrNil(localcuy.ydH))
+    if (Util.isNullOrNil(localgdg.acbo))
     {
-      paramViewGroup.nUe.setVisibility(0);
-      paramViewGroup.nUf.setVisibility(0);
-      paramViewGroup.nUg.setVisibility(8);
-      paramViewGroup.nUe.setText(localcuy.xBK);
-      paramViewGroup.nUf.setText(localcuy.ydG);
-      a.b.a(paramViewGroup.nUi, "", 0.5F, false);
-      if (bo.isNullOrNil(localcuy.nqE)) {
-        break label304;
+      paramViewGroup.JNR.setVisibility(0);
+      paramViewGroup.JNS.setVisibility(0);
+      paramViewGroup.JNT.setVisibility(8);
+      paramViewGroup.JNR.setText(localgdg.ablY);
+      paramViewGroup.JNS.setText(localgdg.acbn);
+      a.b.a(paramViewGroup.JNV, "", 0.5F, false);
+      if (Util.isNullOrNil(localgdg.IHW)) {
+        break label310;
       }
-      paramViewGroup.nUh.setVisibility(0);
-      paramViewGroup.nUh.setUrl(localcuy.nqE);
-      paramViewGroup.nUi.setVisibility(4);
+      paramViewGroup.JNU.setVisibility(0);
+      paramViewGroup.JNU.setUrl(localgdg.IHW);
+      paramViewGroup.JNV.setVisibility(4);
     }
     for (;;)
     {
-      AppMethodBeat.o(22215);
+      AppMethodBeat.o(25834);
       return paramView;
-      paramViewGroup.nUe.setVisibility(8);
-      paramViewGroup.nUf.setVisibility(8);
-      paramViewGroup.nUg.setVisibility(0);
-      paramViewGroup.nUg.setText(localcuy.ydH);
+      paramViewGroup.JNR.setVisibility(8);
+      paramViewGroup.JNS.setVisibility(8);
+      paramViewGroup.JNT.setVisibility(0);
+      paramViewGroup.JNT.setText(localgdg.acbo);
       break;
-      label304:
-      paramViewGroup.nUi.setVisibility(0);
-      paramViewGroup.nUh.setVisibility(4);
+      label310:
+      paramViewGroup.JNV.setVisibility(0);
+      paramViewGroup.JNU.setVisibility(4);
     }
   }
   
   public final int getViewTypeCount()
   {
     return 2;
+  }
+  
+  final class a
+  {
+    TextView JNR;
+    TextView JNS;
+    TextView JNT;
+    CdnImageView JNU;
+    ImageView JNV;
+    
+    private a() {}
   }
 }
 

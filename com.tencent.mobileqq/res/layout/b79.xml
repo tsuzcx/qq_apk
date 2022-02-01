@@ -33,11 +33,11 @@
                 </LinearLayout>
                 <LinearLayout android:orientation="horizontal" android:id="@id/e2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip">
                     <View android:layout_gravity="center_vertical" android:id="@id/cgx" android:background="@color/al3" android:layout_width="1.0dip" android:layout_height="11.0dip" android:layout_marginRight="8.0dip" />
-                    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/jgo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r7h" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/jgo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ka2" />
                     <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/jh0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" />
                 </LinearLayout>
             </LinearLayout>
-            <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/j6u" android:background="@drawable/amg" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="25.0dip" android:layout_marginTop="9.0dip" android:text="@string/r7p" android:singleLine="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/j6u" android:background="@drawable/amg" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="25.0dip" android:layout_marginTop="9.0dip" android:text="@string/ka2" android:singleLine="true" />
         </LinearLayout>
     </FrameLayout>
 </FrameLayout>

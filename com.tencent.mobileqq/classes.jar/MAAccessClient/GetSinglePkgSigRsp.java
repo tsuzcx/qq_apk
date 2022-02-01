@@ -8,7 +8,7 @@ public final class GetSinglePkgSigRsp
   extends JceStruct
 {
   public String pkgSig = "";
-  public int ret;
+  public int ret = 0;
   
   public GetSinglePkgSigRsp() {}
   
@@ -32,7 +32,7 @@ public final class GetSinglePkgSigRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MAAccessClient.GetSinglePkgSigRsp
  * JD-Core Version:    0.7.0.1
  */

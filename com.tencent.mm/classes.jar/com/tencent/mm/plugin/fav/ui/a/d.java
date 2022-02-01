@@ -1,97 +1,38 @@
 package com.tencent.mm.plugin.fav.ui.a;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.LinkedList;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import kotlin.Metadata;
 
-public abstract class d
-  extends BaseAdapter
-  implements View.OnClickListener
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/fav/ui/accessibility/TopStoryUploadUIAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "Companion", "ui-topstory_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
+  extends MMBaseAccessibilityConfig
 {
-  private Context context;
-  public String lbI;
-  public List<String> mzF = new LinkedList();
-  public SparseArray<SpannableString> mzG = new SparseArray();
+  public static final a AjV;
   
-  public d(Context paramContext)
+  static
   {
-    this.context = paramContext;
+    AppMethodBeat.i(274542);
+    AjV = new a((byte)0);
+    AppMethodBeat.o(274542);
   }
   
-  private String getItem(int paramInt)
+  public d(AppCompatActivity paramAppCompatActivity)
   {
-    return (String)this.mzF.get(paramInt);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(274537);
+    AppMethodBeat.o(274537);
   }
   
-  protected abstract void LV(String paramString);
+  public final void initConfig() {}
   
-  public int getCount()
-  {
-    return this.mzF.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = View.inflate(this.context, 2130969564, null);
-      paramViewGroup.setOnClickListener(this);
-    }
-    TextView localTextView = (TextView)paramViewGroup.findViewById(2131824096);
-    String str = bo.bf(getItem(paramInt), "");
-    int i = (int)localTextView.getTextSize();
-    paramInt = str.hashCode();
-    paramView = (SpannableString)this.mzG.get(paramInt);
-    if (paramView != null) {}
-    for (;;)
-    {
-      localTextView.setText(paramView);
-      return paramViewGroup;
-      paramView = new SpannableString(j.b(this.context, str, i));
-      i = str.indexOf(this.lbI);
-      if (-1 == i)
-      {
-        ab.w("MicroMsg.FavoriteTagSearchAdapter", "high light %s error", new Object[] { str });
-      }
-      else
-      {
-        int j = this.lbI.length() + i;
-        paramView.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131690701)), i, j, 33);
-        paramView.setSpan(new StyleSpan(1), i, j, 33);
-        this.mzG.put(paramInt, paramView);
-      }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = ((TextView)paramView.findViewById(2131824096)).getText().toString();
-    ab.d("MicroMsg.FavoriteTagSearchAdapter", "select search tag %s", new Object[] { paramView });
-    LV(paramView);
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/fav/ui/accessibility/TopStoryUploadUIAccessibility$Companion;", "", "()V", "KEY_EDITTEXT_CONTENT", "", "ui-topstory_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

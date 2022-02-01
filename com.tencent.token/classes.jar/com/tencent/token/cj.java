@@ -1,106 +1,194 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
-import gameloginsdk.CallbackPushStruct;
-import gameloginsdk.GameLogin;
+import android.content.res.Resources.Theme;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.Region;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 
-public class cj
+abstract class cj
+  extends Drawable
+  implements dz
 {
-  private static cj c;
-  private static boolean j = false;
-  GameLogin a;
-  Handler b = new ck(this);
-  private boolean d = false;
-  private boolean e = false;
-  private CallbackPushStruct f;
-  private int g;
-  private Handler h;
-  private long i = 0L;
+  Drawable b;
   
-  private cj(Context paramContext, String paramString, int paramInt)
+  public void applyTheme(Resources.Theme paramTheme)
   {
-    if (this.a == null) {
-      this.a = new GameLogin();
-    }
-    j = this.a.init(paramContext, 34, paramString, paramInt);
-    if (!j) {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      dy.a(localDrawable, paramTheme);
       return;
     }
-    this.a.setRespLimitTime(60000L);
-    this.a.setWaitPushTime(180000L);
-    this.a.setNetworkCallback(new cl(this));
   }
   
-  public static cj a(Context paramContext)
+  public void clearColorFilter()
   {
-    if ((c == null) || (!j)) {
-      c = new cj(paramContext, w.l(), 1);
-    }
-    return c;
-  }
-  
-  public void a(long paramLong)
-  {
-    if (!j) {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.clearColorFilter();
       return;
     }
-    this.d = false;
-    this.e = false;
-    h.a("game login get flow type appid=" + paramLong);
-    this.a.sendGetFlowType(paramLong);
+    super.clearColorFilter();
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt, Handler paramHandler)
+  public ColorFilter getColorFilter()
   {
-    if (!j) {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      if (Build.VERSION.SDK_INT >= 21) {
+        return localDrawable.getColorFilter();
+      }
+      return null;
+    }
+    return null;
+  }
+  
+  public Drawable getCurrent()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getCurrent();
+    }
+    return super.getCurrent();
+  }
+  
+  public int getMinimumHeight()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumHeight();
+    }
+    return super.getMinimumHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumWidth();
+    }
+    return super.getMinimumWidth();
+  }
+  
+  public boolean getPadding(Rect paramRect)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getPadding(paramRect);
+    }
+    return super.getPadding(paramRect);
+  }
+  
+  public int[] getState()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getState();
+    }
+    return super.getState();
+  }
+  
+  public Region getTransparentRegion()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getTransparentRegion();
+    }
+    return super.getTransparentRegion();
+  }
+  
+  public void jumpToCurrentState()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.jumpToCurrentState();
       return;
     }
-    this.g = paramInt;
-    this.h = paramHandler;
-    h.b("game login confirm send: " + paramString + "|" + paramArrayOfByte + "|" + paramInt);
-    this.a.sendGameConfirm(paramString, paramArrayOfByte, paramInt);
   }
   
-  public void a(String paramString1, byte[] paramArrayOfByte, String paramString2)
+  protected void onBoundsChange(Rect paramRect)
   {
-    if (!j) {}
-    while ((!this.e) || (!this.d)) {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setBounds(paramRect);
       return;
     }
-    h.c("game login info uin=" + paramString1 + ", guid=" + paramArrayOfByte + ", qrcode=" + paramString2);
-    this.a.sendGameLoginInfo(paramString1, paramArrayOfByte, paramString2);
+    super.onBoundsChange(paramRect);
   }
   
-  public boolean a()
+  protected boolean onLevelChange(int paramInt)
   {
-    return (this.e) && (this.d);
-  }
-  
-  public boolean b()
-  {
-    return (this.f == null) || (this.i <= 0L) || (cx.c().s() - this.i >= this.f.expirtTime * 1000);
-  }
-  
-  public int c()
-  {
-    if ((this.f != null) && (this.i > 0L)) {
-      return (int)((cx.c().s() - this.i) / 1000L);
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.setLevel(paramInt);
     }
-    return 0;
+    return super.onLevelChange(paramInt);
   }
   
-  public CallbackPushStruct d()
+  public void setChangingConfigurations(int paramInt)
   {
-    return this.f;
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setChangingConfigurations(paramInt);
+      return;
+    }
+    super.setChangingConfigurations(paramInt);
   }
   
-  public void e()
+  public void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
   {
-    this.f = null;
-    this.i = 0L;
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setColorFilter(paramInt, paramMode);
+      return;
+    }
+    super.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setFilterBitmap(paramBoolean);
+      return;
+    }
+  }
+  
+  public void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      dy.a(localDrawable, paramFloat1, paramFloat2);
+    }
+  }
+  
+  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      dy.a(localDrawable, paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
+    }
+  }
+  
+  public boolean setState(int[] paramArrayOfInt)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.setState(paramArrayOfInt);
+    }
+    return super.setState(paramArrayOfInt);
   }
 }
 

@@ -44,17 +44,25 @@ public class FileSystem$FileEntry
   
   public String toString()
   {
-    String str2 = this.relPath + " -> " + this.fileSystem.toString();
-    String str1 = str2;
-    if (this.isDirectory) {
-      str1 = "[DIR] " + str2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.relPath);
+    ((StringBuilder)localObject).append(" -> ");
+    ((StringBuilder)localObject).append(this.fileSystem.toString());
+    String str = ((StringBuilder)localObject).toString();
+    localObject = str;
+    if (this.isDirectory)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[DIR] ");
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.FileSystem.FileEntry
  * JD-Core Version:    0.7.0.1
  */

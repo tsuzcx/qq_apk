@@ -8,51 +8,67 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 
 public class IconPreference
   extends Preference
 {
+  protected ImageView KKj;
+  private String MPk;
+  private int MPl;
+  private int MPm;
+  protected TextView MPp;
+  private String MYb;
+  private int adYA;
+  private int adYB;
+  private View adYC;
+  private View adYD;
+  private TextView adYE;
+  private ImageView adYF;
+  public boolean adYG;
+  private boolean adYH;
+  private String adYI;
+  private boolean adYJ;
+  public boolean adYK;
+  private int adYL;
+  public boolean adYM;
+  public boolean adYN;
+  private boolean adYO;
+  public int adYn;
+  private int adYo;
+  private int adYp;
+  private ImageView adYq;
+  private ViewGroup adYr;
+  private TextView adYs;
+  protected Drawable adYu;
+  RelativeLayout.LayoutParams adYv;
+  private int adYw;
+  private int adYx;
+  private int adYy;
+  private int adYz;
+  protected int adva;
+  private Bitmap adzN;
   private Context context;
   private String desc;
+  private TextView descTv;
   public Drawable drawable;
   private int height;
-  private TextView hsI;
   private View mView;
-  protected ImageView oyN;
-  private String pAS;
-  private String pAT;
-  private int qGe;
-  private int qGf;
-  protected int yUb;
-  private Bitmap yXe;
-  private int zqL;
-  private int zqM;
-  private int zqN;
-  private ImageView zqO;
-  private ViewGroup zqP;
-  private TextView zqQ;
-  RelativeLayout.LayoutParams zqS;
-  private int zqT;
-  private int zqU;
-  private int zqV;
-  private int zqW;
-  private int zqX;
-  private int zqY;
-  private View zqZ;
-  private View zra;
-  private TextView zrb;
-  private TextView zrc;
-  protected ImageView zrd;
-  private boolean zre;
-  public boolean zrf;
-  private int zrg;
-  public boolean zrh;
   
   public IconPreference(Context paramContext)
   {
@@ -67,383 +83,496 @@ public class IconPreference
   public IconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107166);
-    this.yUb = -1;
-    this.oyN = null;
-    this.pAS = "";
-    this.qGe = -1;
-    this.qGf = 8;
-    this.zqL = 8;
-    this.zqT = 8;
+    AppMethodBeat.i(142543);
+    this.adva = -1;
+    this.KKj = null;
+    this.MPk = "";
+    this.MPl = -1;
+    this.MPm = 8;
+    this.adYn = 8;
+    this.adYw = 8;
     this.desc = "";
-    this.pAT = "";
-    this.zqU = -1;
-    this.zqV = 8;
-    this.zqW = -1;
-    this.yXe = null;
-    this.zqX = 8;
-    this.zqM = 0;
-    this.zqN = 8;
-    this.zqY = 8;
-    this.zqO = null;
-    this.zqP = null;
-    this.zqZ = null;
-    this.zra = null;
+    this.MYb = "";
+    this.adYx = -1;
+    this.adYy = 8;
+    this.adYz = -1;
+    this.adzN = null;
+    this.adYA = 8;
+    this.adYo = 8;
+    this.adYp = 8;
+    this.adYB = 8;
+    this.adYq = null;
+    this.adYr = null;
+    this.adYC = null;
+    this.adYD = null;
     this.height = -1;
-    this.zre = false;
-    this.zrf = false;
-    this.zrg = -1;
-    this.zrh = false;
+    this.adYJ = false;
+    this.adYK = false;
+    this.adYL = -1;
+    this.adYM = false;
+    this.adYN = false;
+    this.adYO = false;
     this.context = paramContext;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(107166);
+    setLayoutResource(a.h.mm_preference);
+    AppMethodBeat.o(142543);
   }
   
-  public final void OL(int paramInt)
+  public final void LF(boolean paramBoolean)
   {
-    AppMethodBeat.i(107171);
-    this.qGf = paramInt;
-    if (this.zrc != null) {
-      this.zrc.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(107171);
-  }
-  
-  public final void OM(int paramInt)
-  {
-    AppMethodBeat.i(107172);
-    this.zqV = paramInt;
-    if (this.zrb != null) {
-      this.zrb.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(107172);
-  }
-  
-  public final void ON(int paramInt)
-  {
-    AppMethodBeat.i(107175);
-    this.zqL = paramInt;
-    if (this.zqO != null) {
-      this.zqO.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(107175);
-  }
-  
-  public final void OO(int paramInt)
-  {
-    AppMethodBeat.i(107177);
-    this.yUb = paramInt;
-    this.yXe = null;
-    if (this.oyN != null) {
-      this.oyN.setImageResource(paramInt);
-    }
-    AppMethodBeat.o(107177);
-  }
-  
-  public final void OP(int paramInt)
-  {
-    AppMethodBeat.i(107178);
-    this.zqX = paramInt;
-    if (this.oyN != null) {
-      this.oyN.setVisibility(this.zqX);
-    }
-    AppMethodBeat.o(107178);
-  }
-  
-  public final void OQ(int paramInt)
-  {
-    AppMethodBeat.i(107179);
-    this.zqM = paramInt;
-    if (this.zqP != null) {
-      this.zqP.setVisibility(this.zqM);
-    }
-    AppMethodBeat.o(107179);
-  }
-  
-  public final void OR(int paramInt)
-  {
-    AppMethodBeat.i(107180);
-    this.zqN = paramInt;
-    if (this.zqZ != null) {
-      this.zqZ.setVisibility(this.zqN);
-    }
-    AppMethodBeat.o(107180);
-  }
-  
-  public final void aG(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(107170);
-    this.pAT = paramString;
-    this.zqU = paramInt1;
-    this.zqW = paramInt2;
-    if (this.zrb != null)
+    AppMethodBeat.i(142551);
+    this.adYJ = paramBoolean;
+    if (this.adYE != null)
     {
-      this.zrb.setText(paramString);
+      if (paramBoolean)
+      {
+        this.adYE.setCompoundDrawablesWithIntrinsicBounds(0, 0, a.f.unread_dot_shape, 0);
+        this.adYE.setCompoundDrawablePadding((int)this.context.getResources().getDimension(a.e.SmallPadding));
+        AppMethodBeat.o(142551);
+        return;
+      }
+      this.adYE.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    }
+    AppMethodBeat.o(142551);
+  }
+  
+  public final void T(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(182566);
+    this.adYu = paramDrawable;
+    this.adzN = null;
+    this.adva = -1;
+    if (this.KKj != null) {
+      this.KKj.setImageDrawable(paramDrawable);
+    }
+    AppMethodBeat.o(182566);
+  }
+  
+  public final void aBf(int paramInt)
+  {
+    AppMethodBeat.i(142549);
+    this.adYy = paramInt;
+    if (this.adYE != null) {
+      this.adYE.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(142549);
+  }
+  
+  public final void aBg(int paramInt)
+  {
+    AppMethodBeat.i(142554);
+    this.adva = paramInt;
+    this.adzN = null;
+    if (this.KKj != null) {
+      this.KKj.setImageResource(paramInt);
+    }
+    AppMethodBeat.o(142554);
+  }
+  
+  public final void aBh(int paramInt)
+  {
+    AppMethodBeat.i(142555);
+    this.adYA = paramInt;
+    if (this.KKj != null) {
+      this.KKj.setVisibility(this.adYA);
+    }
+    AppMethodBeat.o(142555);
+  }
+  
+  public final void aBi(int paramInt)
+  {
+    AppMethodBeat.i(142556);
+    this.adYo = paramInt;
+    if (this.adYr != null) {
+      this.adYr.setVisibility(this.adYo);
+    }
+    AppMethodBeat.o(142556);
+  }
+  
+  public final void aBj(int paramInt)
+  {
+    AppMethodBeat.i(142557);
+    this.adYp = paramInt;
+    if (this.adYC != null) {
+      this.adYC.setVisibility(this.adYp);
+    }
+    AppMethodBeat.o(142557);
+  }
+  
+  public void aeD(int paramInt)
+  {
+    AppMethodBeat.i(142552);
+    this.adYn = paramInt;
+    if (this.adYq != null) {
+      this.adYq.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(142552);
+  }
+  
+  public final void afx(int paramInt)
+  {
+    AppMethodBeat.i(142548);
+    this.MPm = paramInt;
+    if (this.MPp != null) {
+      this.MPp.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(142548);
+  }
+  
+  public final void bd(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(142553);
+    this.adzN = paramBitmap;
+    this.adva = -1;
+    this.adYu = null;
+    if (this.KKj != null) {
+      this.KKj.setImageBitmap(paramBitmap);
+    }
+    AppMethodBeat.o(142553);
+  }
+  
+  public final void bd(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(142547);
+    this.MYb = paramString;
+    this.adYx = paramInt1;
+    this.adYz = paramInt2;
+    if (this.adYE != null)
+    {
+      this.adYE.setText(paramString);
       if (paramInt1 != -1) {
-        this.zrb.setBackgroundDrawable(this.context.getResources().getDrawable(paramInt1));
+        this.adYE.setBackgroundDrawable(this.context.getResources().getDrawable(paramInt1));
       }
       if (paramInt2 != -1) {
-        this.zrb.setTextColor(paramInt2);
+        this.adYE.setTextColor(paramInt2);
       }
     }
-    AppMethodBeat.o(107170);
+    AppMethodBeat.o(142547);
   }
   
-  public final void ap(Bitmap paramBitmap)
+  public final void gv(String paramString, int paramInt)
   {
-    AppMethodBeat.i(107176);
-    this.yXe = paramBitmap;
-    this.yUb = -1;
-    if (this.oyN != null) {
-      this.oyN.setImageBitmap(paramBitmap);
-    }
-    AppMethodBeat.o(107176);
+    this.MPk = paramString;
+    this.MPl = paramInt;
   }
   
-  public final void dEJ()
+  public final void iO(String paramString, int paramInt)
   {
-    AppMethodBeat.i(107173);
-    this.zqT = 0;
-    if (this.hsI != null) {
-      this.hsI.setVisibility(0);
-    }
-    AppMethodBeat.o(107173);
-  }
-  
-  public final ImageView dEK()
-  {
-    return this.oyN;
-  }
-  
-  public final void eN(String paramString, int paramInt)
-  {
-    this.pAS = paramString;
-    this.qGe = paramInt;
-  }
-  
-  public final void eO(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(107168);
-    aG(paramString, paramInt, this.zqW);
-    AppMethodBeat.o(107168);
-  }
-  
-  public final void hB(int paramInt1, int paramInt2)
-  {
-    this.zqL = paramInt1;
-    this.zrg = paramInt2;
-  }
-  
-  public final void hC(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(107181);
-    this.zqS = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
-    this.zqS.addRule(13);
-    if (this.oyN == null)
+    AppMethodBeat.i(251521);
+    this.MPk = paramString;
+    this.MPl = paramInt;
+    if (this.MPp != null)
     {
-      AppMethodBeat.o(107181);
-      return;
+      if (this.MPk != null) {
+        this.MPp.setText(this.MPk);
+      }
+      if (this.MPl != -1) {
+        this.MPp.setBackgroundDrawable(this.context.getResources().getDrawable(this.MPl));
+      }
     }
-    this.oyN.setLayoutParams(this.zqS);
-    AppMethodBeat.o(107181);
+    AppMethodBeat.o(251521);
+  }
+  
+  public final void iP(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(142545);
+    bd(paramString, paramInt, this.adYz);
+    AppMethodBeat.o(142545);
+  }
+  
+  protected final View jnk()
+  {
+    AppMethodBeat.i(251516);
+    if (this.mView == null)
+    {
+      AppMethodBeat.o(251516);
+      return null;
+    }
+    View localView = this.mView.findViewById(16908312);
+    AppMethodBeat.o(251516);
+    return localView;
+  }
+  
+  public final void jnl()
+  {
+    AppMethodBeat.i(142550);
+    this.adYw = 0;
+    if (this.descTv != null) {
+      this.descTv.setVisibility(0);
+    }
+    AppMethodBeat.o(142550);
+  }
+  
+  public final ImageView jnm()
+  {
+    return this.KKj;
+  }
+  
+  public final ImageView jnn()
+  {
+    return this.adYF;
+  }
+  
+  public final void on(int paramInt1, int paramInt2)
+  {
+    this.adYn = paramInt1;
+    this.adYL = paramInt2;
   }
   
   protected void onBindView(View paramView)
   {
-    AppMethodBeat.i(107182);
+    AppMethodBeat.i(142559);
     super.onBindView(paramView);
-    this.zrd = ((ImageView)paramView.findViewById(2131822243));
-    label80:
-    Object localObject;
-    if (this.zrd != null)
+    this.adYF = ((ImageView)paramView.findViewById(a.g.image_iv));
+    label82:
+    Object localObject1;
+    label132:
+    Object localObject2;
+    label328:
+    int i;
+    if (this.adYF != null)
     {
       if (this.drawable != null)
       {
-        this.zrd.setImageDrawable(this.drawable);
-        this.zrd.setVisibility(0);
-        if (this.zsg == 0) {
-          break label778;
+        this.adYF.setImageDrawable(this.drawable);
+        this.adYF.setVisibility(0);
+        if (getIconColor() == 0) {
+          break label1016;
         }
-        this.zrd.getDrawable().setColorFilter(this.zsg, PorterDuff.Mode.SRC_ATOP);
+        this.adYF.getDrawable().setColorFilter(getIconColor(), PorterDuff.Mode.SRC_ATOP);
+        if (!this.adYG) {
+          break label1039;
+        }
+        localObject1 = (LinearLayout.LayoutParams)this.adYF.getLayoutParams();
+        ((LinearLayout.LayoutParams)localObject1).topMargin = bd.bs(this.mContext, a.e.Edge_2A);
+        ((LinearLayout.LayoutParams)localObject1).gravity = 48;
+        this.adYF.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
     }
     else
     {
-      localObject = (LinearLayout)paramView.findViewById(2131822408);
-      ((LinearLayout)localObject).setMinimumHeight(paramView.getResources().getDimensionPixelSize(2131427780));
+      localObject1 = (LinearLayout)paramView.findViewById(a.g.mm_preference_ll_id);
+      ((LinearLayout)localObject1).setMinimumHeight(paramView.getResources().getDimensionPixelSize(a.e.ListItemHeight));
+      if (this.adYH)
+      {
+        localObject2 = (LinearLayout)paramView.findViewById(a.g.right_ll);
+        if (localObject2 != null) {
+          ((LinearLayout)localObject2).setPadding(0, 0, 0, 0);
+        }
+        if ((((LinearLayout)localObject1).getParent() != null) && (((LinearLayout)localObject1).getParent().getParent() != null) && ((((LinearLayout)localObject1).getParent().getParent() instanceof LinearLayout))) {
+          ((LinearLayout)((LinearLayout)localObject1).getParent().getParent()).setPadding(0, 0, 0, 0);
+        }
+      }
       if (this.height != -1) {
-        ((LinearLayout)localObject).setMinimumHeight(this.height);
+        ((LinearLayout)localObject1).setMinimumHeight(this.height);
       }
-      this.zrc = ((TextView)paramView.findViewById(2131822409));
-      if (this.zrc != null)
+      this.MPp = ((TextView)paramView.findViewById(a.g.text_tv_one));
+      if (this.MPp != null)
       {
-        if (!this.zrf) {
-          break label801;
+        if (!this.adYK) {
+          break label1076;
         }
-        this.zrc.setCompoundDrawablesWithIntrinsicBounds(2130840641, 0, 0, 0);
-        this.zrc.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131427854));
-        label183:
-        this.zrc.setVisibility(this.qGf);
-        this.zrc.setText(this.pAS);
-        if (this.qGe != -1) {
-          this.zrc.setBackgroundDrawable(this.context.getResources().getDrawable(this.qGe));
-        }
-      }
-      this.zrb = ((TextView)paramView.findViewById(2131822411));
-      if (this.zrb != null)
-      {
-        this.zrb.setVisibility(this.zqV);
-        this.zrb.setText(this.pAT);
-        if (this.zqU != -1)
+        this.MPp.setCompoundDrawablesWithIntrinsicBounds(a.f.unread_dot_shape, 0, 0, 0);
+        this.MPp.setCompoundDrawablePadding((int)this.context.getResources().getDimension(a.e.SmallPadding));
+        this.MPp.setVisibility(this.MPm);
+        this.MPp.setText(this.MPk);
+        aw.d(this.MPp.getPaint());
+        if (this.MPl != -1)
         {
-          this.zrb.setBackgroundDrawable(this.context.getResources().getDrawable(this.zqU));
-          if (this.zqU == 2130839787) {
-            this.zrb.setTextSize(0, a.ap(this.context, 2131428776) * a.gr(this.context));
+          if (this.MPl != a.f.new_tips_bg) {
+            break label1090;
+          }
+          this.MPp.setTextSize(0, a.bs(this.mContext, a.e.unReadNewTextSize) * a.jO(this.context));
+          label405:
+          this.MPp.setBackgroundDrawable(this.context.getResources().getDrawable(this.MPl));
+        }
+      }
+      if (!this.adYN) {
+        break label1120;
+      }
+      i = a.g.text_tv_right;
+      label437:
+      this.adYE = ((TextView)paramView.findViewById(i));
+      if (this.adYE != null)
+      {
+        this.adYE.setVisibility(this.adYy);
+        this.adYE.setText(this.MYb);
+        if (this.adYx != -1)
+        {
+          this.adYE.setBackgroundDrawable(this.context.getResources().getDrawable(this.adYx));
+          if (this.adYx == a.f.new_tips_bg) {
+            this.adYE.setTextSize(0, a.bs(this.context, a.e.unReadNewTextSize) * a.jO(this.context));
           }
         }
-        if (this.zqW != -1) {
-          this.zrb.setTextColor(this.zqW);
+        if (this.adYz != -1) {
+          this.adYE.setTextColor(this.adYz);
         }
-        if (!this.zre) {
-          break label815;
+        if (!this.adYJ) {
+          break label1127;
         }
-        this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840641, 0);
-        this.zrb.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131427854));
+        this.adYE.setCompoundDrawablesWithIntrinsicBounds(0, 0, a.f.unread_dot_shape, 0);
+        this.adYE.setCompoundDrawablePadding((int)this.context.getResources().getDimension(a.e.SmallPadding));
       }
-      label403:
-      this.zqO = ((ImageView)paramView.findViewById(2131822410));
-      this.zqO.setVisibility(this.zqL);
-      if (this.zrg != -1) {
-        this.zqO.setImageResource(this.zrg);
+      label604:
+      this.adYq = ((ImageView)paramView.findViewById(a.g.text_prospect));
+      this.adYq.setVisibility(this.adYn);
+      if (this.adYL != -1) {
+        this.adYq.setImageResource(this.adYL);
       }
-      this.oyN = ((ImageView)paramView.findViewById(2131822413));
-      this.zqP = ((ViewGroup)paramView.findViewById(2131822412));
-      this.zra = paramView.findViewById(2131822415);
-      this.zra.setVisibility(this.zqY);
-      this.zqZ = paramView.findViewById(2131822414);
-      this.zqZ.setVisibility(this.zqN);
-      if (this.yXe == null) {
-        break label829;
+      this.KKj = ((ImageView)paramView.findViewById(a.g.image_right_iv));
+      this.adYr = ((ViewGroup)paramView.findViewById(a.g.right_rl));
+      this.adYD = paramView.findViewById(a.g.right_center_prospect);
+      this.adYD.setVisibility(this.adYB);
+      this.adYC = paramView.findViewById(a.g.right_prospect);
+      this.adYC.setVisibility(this.adYp);
+      if (this.adzN == null) {
+        break label1141;
       }
-      this.oyN.setImageBitmap(this.yXe);
-      label537:
-      this.oyN.setVisibility(this.zqX);
-      this.zqP.setVisibility(this.zqM);
-      if (this.zqS != null) {
-        this.oyN.setLayoutParams(this.zqS);
+      this.KKj.setImageBitmap(this.adzN);
+      label738:
+      this.KKj.setVisibility(this.adYA);
+      this.adYr.setVisibility(this.adYo);
+      if (this.adYv != null) {
+        this.KKj.setLayoutParams(this.adYv);
       }
-      this.zqQ = ((TextView)paramView.findViewById(16908310));
-      this.hsI = ((TextView)paramView.findViewById(2131821115));
-      if (this.hsI != null)
+      this.adYs = ((TextView)paramView.findViewById(16908310));
+      this.descTv = ((TextView)paramView.findViewById(a.g.desc));
+      if (this.descTv != null)
       {
-        this.hsI.setVisibility(this.zqT);
-        this.hsI.setText(this.desc);
-        if (!this.zrh) {
-          break label851;
+        this.descTv.setVisibility(this.adYw);
+        this.descTv.setText(this.desc);
+        if (!this.adYM) {
+          break label1184;
         }
-        this.hsI.setTextColor(this.context.getResources().getColor(2131689963));
+        this.descTv.setTextColor(this.context.getResources().getColor(a.d.disable_text_color));
       }
-      label661:
-      if (this.zqQ != null)
+      label862:
+      if (this.adYs != null)
       {
-        if (!this.zrh) {
-          break label874;
+        if (!this.adYM) {
+          break label1207;
         }
-        this.zqQ.setTextColor(this.context.getResources().getColor(2131689963));
+        this.adYs.setTextColor(this.context.getResources().getColor(a.d.disable_text_color));
       }
-      label695:
-      if (this.zrh) {
-        break label897;
+      label896:
+      if (this.adYM) {
+        break label1230;
       }
     }
-    label897:
+    label1039:
+    label1076:
+    label1090:
+    label1230:
     for (boolean bool = true;; bool = false)
     {
       paramView.setEnabled(bool);
-      AppMethodBeat.o(107182);
+      if ((this.adYO) && (this.adYs != null)) {
+        this.adYs.setTextColor(this.adYs.getResources().getColor(a.d.disable_text_color));
+      }
+      AppMethodBeat.o(142559);
       return;
-      if (this.UM != 0)
+      if (dqA() != 0)
       {
-        localObject = this.zrd;
-        Drawable localDrawable = this.mContext.getResources().getDrawable(this.UM);
-        this.drawable = localDrawable;
-        ((ImageView)localObject).setImageDrawable(localDrawable);
-        this.zrd.setVisibility(0);
+        localObject1 = this.adYF;
+        localObject2 = this.mContext.getResources().getDrawable(dqA());
+        this.drawable = ((Drawable)localObject2);
+        ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
+        this.adYF.setVisibility(0);
         break;
       }
-      this.zrd.setVisibility(8);
+      this.adYF.setVisibility(8);
       break;
-      label778:
-      if (this.zrd.getDrawable() == null) {
-        break label80;
+      label1016:
+      if (this.adYF.getDrawable() == null) {
+        break label82;
       }
-      this.zrd.getDrawable().clearColorFilter();
-      break label80;
-      label801:
-      this.zrc.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break label183;
-      label815:
-      this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break label403;
-      label829:
-      if (this.yUb == -1) {
-        break label537;
+      this.adYF.getDrawable().clearColorFilter();
+      break label82;
+      localObject1 = (LinearLayout.LayoutParams)this.adYF.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
+      ((LinearLayout.LayoutParams)localObject1).gravity = 16;
+      this.adYF.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      break label132;
+      this.MPp.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label328;
+      this.MPp.setTextSize(0, a.bs(this.mContext, a.e.unReadCountTextSize) * a.jO(this.context));
+      break label405;
+      label1120:
+      i = a.g.text_tv_two;
+      break label437;
+      label1127:
+      this.adYE.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label604;
+      label1141:
+      if (this.adva != -1)
+      {
+        this.KKj.setImageResource(this.adva);
+        break label738;
       }
-      this.oyN.setImageResource(this.yUb);
-      break label537;
-      label851:
-      this.hsI.setTextColor(this.context.getResources().getColor(2131690168));
-      break label661;
-      label874:
-      this.zqQ.setTextColor(this.context.getResources().getColor(2131690322));
-      break label695;
+      if (this.adYu == null) {
+        break label738;
+      }
+      this.KKj.setImageDrawable(this.adYu);
+      break label738;
+      this.descTv.setTextColor(this.context.getResources().getColor(a.d.desc_text_color));
+      break label862;
+      this.adYs.setTextColor(this.context.getResources().getColor(a.d.FG_0));
+      break label896;
     }
   }
   
   protected View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107167);
+    AppMethodBeat.i(142544);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970203, localViewGroup);
+    View.inflate(this.mContext, a.h.mm_preference_content_icon, localViewGroup);
     this.mView = paramViewGroup;
+    if ((this.adYI != null) && (this.adYI.length() > 0)) {
+      this.mView.setContentDescription(this.adYI);
+    }
     paramViewGroup = this.mView;
-    AppMethodBeat.o(107167);
+    AppMethodBeat.o(142544);
     return paramViewGroup;
   }
   
-  public final void qI(boolean paramBoolean)
+  public final void oo(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107174);
-    this.zre = paramBoolean;
-    if (this.zrb != null)
+    AppMethodBeat.i(142558);
+    this.adYv = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
+    this.adYv.addRule(13);
+    if (this.KKj == null)
     {
-      if (paramBoolean)
-      {
-        this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840641, 0);
-        this.zrb.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131427854));
-        AppMethodBeat.o(107174);
-        return;
-      }
-      this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      AppMethodBeat.o(142558);
+      return;
     }
-    AppMethodBeat.o(107174);
+    this.KKj.setLayoutParams(this.adYv);
+    AppMethodBeat.o(142558);
+  }
+  
+  public final void setContentDescription(String paramString)
+  {
+    AppMethodBeat.i(251587);
+    if (this.mView != null) {
+      this.mView.setContentDescription(paramString);
+    }
+    this.adYI = paramString;
+    AppMethodBeat.o(251587);
   }
   
   public final void setDesc(String paramString)
   {
-    AppMethodBeat.i(107169);
+    AppMethodBeat.i(142546);
     this.desc = paramString;
-    if (this.hsI != null) {
-      this.hsI.setText(paramString);
+    if (this.descTv != null) {
+      this.descTv.setText(paramString);
     }
-    AppMethodBeat.o(107169);
+    AppMethodBeat.o(142546);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.IconPreference
  * JD-Core Version:    0.7.0.1
  */

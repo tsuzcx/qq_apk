@@ -1,19 +1,15 @@
-import android.text.Editable;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class dng
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
   public dng(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
-    }
+    this.a.h();
   }
 }
 

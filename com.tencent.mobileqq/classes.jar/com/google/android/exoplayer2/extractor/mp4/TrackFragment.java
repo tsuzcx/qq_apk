@@ -46,7 +46,8 @@ final class TrackFragment
   
   public void initEncryptionData(int paramInt)
   {
-    if ((this.sampleEncryptionData == null) || (this.sampleEncryptionData.limit() < paramInt)) {
+    ParsableByteArray localParsableByteArray = this.sampleEncryptionData;
+    if ((localParsableByteArray == null) || (localParsableByteArray.limit() < paramInt)) {
       this.sampleEncryptionData = new ParsableByteArray(paramInt);
     }
     this.sampleEncryptionDataLength = paramInt;
@@ -58,12 +59,14 @@ final class TrackFragment
   {
     this.trunCount = paramInt1;
     this.sampleCount = paramInt2;
-    if ((this.trunLength == null) || (this.trunLength.length < paramInt1))
+    int[] arrayOfInt = this.trunLength;
+    if ((arrayOfInt == null) || (arrayOfInt.length < paramInt1))
     {
       this.trunDataPosition = new long[paramInt1];
       this.trunLength = new int[paramInt1];
     }
-    if ((this.sampleSizeTable == null) || (this.sampleSizeTable.length < paramInt2))
+    arrayOfInt = this.sampleSizeTable;
+    if ((arrayOfInt == null) || (arrayOfInt.length < paramInt2))
     {
       paramInt1 = paramInt2 * 125 / 100;
       this.sampleSizeTable = new int[paramInt1];
@@ -85,7 +88,7 @@ final class TrackFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.TrackFragment
  * JD-Core Version:    0.7.0.1
  */

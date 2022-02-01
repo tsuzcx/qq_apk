@@ -1,51 +1,58 @@
 package com.tencent.mm.ipcinvoker;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.ipcinvoker.d.e;
+import junit.framework.Assert;
 
-public class h
+public final class h
 {
-  private static volatile h eEo;
-  Map<String, BaseIPCService> eEp;
+  public String myC;
   
-  private h()
+  public h(String paramString)
   {
-    AppMethodBeat.i(114042);
-    this.eEp = new HashMap();
-    AppMethodBeat.o(114042);
+    this.myC = paramString;
   }
   
-  public static h PN()
+  public static String cI(Object paramObject)
   {
-    AppMethodBeat.i(114043);
-    if (eEo == null) {}
-    try
+    AppMethodBeat.i(158730);
+    paramObject = "Token#IPCObserver#" + paramObject.hashCode();
+    AppMethodBeat.o(158730);
+    return paramObject;
+  }
+  
+  public static class a
+    implements d<Bundle, Bundle>
+  {}
+  
+  public static class b
+    implements d<Bundle, Bundle>
+  {}
+  
+  static abstract class c
+    implements e
+  {
+    String token;
+    
+    c(String paramString)
     {
-      if (eEo == null) {
-        eEo = new h();
+      this.token = paramString;
+      Assert.assertNotNull(paramString);
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      if ((paramObject == null) || (!(paramObject instanceof c))) {
+        return false;
       }
-      h localh = eEo;
-      AppMethodBeat.o(114043);
-      return localh;
+      return this.token.equals(((c)paramObject).token);
     }
-    finally
-    {
-      AppMethodBeat.o(114043);
-    }
-  }
-  
-  public final BaseIPCService mc(String paramString)
-  {
-    AppMethodBeat.i(114044);
-    paramString = (BaseIPCService)this.eEp.get(paramString);
-    AppMethodBeat.o(114044);
-    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b4" style="@style/a9" />
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.wear.app.ui.widget.WearTextView android:textSize="16.0sp" android:textColor="#ff7f7c79" android:ellipsize="end" android:id="@id/b5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="true" />
-        <com.tencent.mm.wear.app.ui.widget.WearTextView android:textSize="16.0sp" android:textColor="@color/d" android:id="@id/b6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="3.0dip" />
-    </LinearLayout>
-</LinearLayout>

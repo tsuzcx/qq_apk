@@ -8,8 +8,8 @@ public final class RespVote
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  public long lMID;
-  public RespHead stHeader;
+  public long lMID = 0L;
+  public RespHead stHeader = null;
   
   public RespVote() {}
   
@@ -36,7 +36,7 @@ public final class RespVote
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespVote
  * JD-Core Version:    0.7.0.1
  */

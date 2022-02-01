@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.TabLayoutCompat android:id="@id/j_o" android:background="#fffafafc" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_alignParentBottom="true" app:tabCompatMinWidth="100.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/j_o">
+        <com.tencent.mobileqq.fpsreport.FPSSwipListView android:id="@id/bdq" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_above="@id/bdr" />
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/bdr" android:background="@drawable/ab6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentBottom="true">
+            <ImageView android:id="@id/bds" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="11.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/bdt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/qv5" android:singleLine="true" android:layout_toLeftOf="@id/yw" android:layout_toRightOf="@id/bds" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/yw" android:background="@drawable/common_arrow_right_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <ViewStub android:id="@id/grs" android:background="@color/al3" android:layout="@layout/hg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bdr" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bwq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_width="280.0dip" android:layout_height="187.0dip" android:src="@drawable/i49" />
+            <TextView android:textSize="8.0pt" android:textColor="@color/skin_hint_input" android:gravity="center_horizontal" android:id="@id/bwp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="还没有收到消息\n试试主动跟别人打招呼吧" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View android:id="@id/j_b" android:background="@drawable/d3c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/j_o" android:alpha="0.0" />
+</RelativeLayout>

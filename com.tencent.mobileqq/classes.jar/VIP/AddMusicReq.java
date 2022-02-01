@@ -9,9 +9,9 @@ public final class AddMusicReq
 {
   static MusicInfo cache_stMusic = new MusicInfo();
   static SourceInfo cache_stSource = new SourceInfo();
-  public long iUin;
-  public MusicInfo stMusic;
-  public SourceInfo stSource;
+  public long iUin = 0L;
+  public MusicInfo stMusic = null;
+  public SourceInfo stSource = null;
   
   public AddMusicReq() {}
   
@@ -32,17 +32,19 @@ public final class AddMusicReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iUin, 0);
-    if (this.stMusic != null) {
-      paramJceOutputStream.write(this.stMusic, 1);
+    Object localObject = this.stMusic;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stSource != null) {
-      paramJceOutputStream.write(this.stSource, 2);
+    localObject = this.stSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.AddMusicReq
  * JD-Core Version:    0.7.0.1
  */

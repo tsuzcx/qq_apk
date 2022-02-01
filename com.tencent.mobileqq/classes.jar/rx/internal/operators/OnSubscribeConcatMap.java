@@ -28,23 +28,23 @@ public final class OnSubscribeConcatMap<T, R>
   
   public void call(Subscriber<? super R> paramSubscriber)
   {
-    if (this.delayErrorMode == 0) {}
-    for (Object localObject = new SerializedSubscriber(paramSubscriber);; localObject = paramSubscriber)
-    {
-      localObject = new OnSubscribeConcatMap.ConcatMapSubscriber((Subscriber)localObject, this.mapper, this.prefetch, this.delayErrorMode);
-      paramSubscriber.add((Subscription)localObject);
-      paramSubscriber.add(((OnSubscribeConcatMap.ConcatMapSubscriber)localObject).inner);
-      paramSubscriber.setProducer(new OnSubscribeConcatMap.1(this, (OnSubscribeConcatMap.ConcatMapSubscriber)localObject));
-      if (!paramSubscriber.isUnsubscribed()) {
-        this.source.unsafeSubscribe((Subscriber)localObject);
-      }
-      return;
+    if (this.delayErrorMode == 0) {
+      localObject = new SerializedSubscriber(paramSubscriber);
+    } else {
+      localObject = paramSubscriber;
+    }
+    Object localObject = new OnSubscribeConcatMap.ConcatMapSubscriber((Subscriber)localObject, this.mapper, this.prefetch, this.delayErrorMode);
+    paramSubscriber.add((Subscription)localObject);
+    paramSubscriber.add(((OnSubscribeConcatMap.ConcatMapSubscriber)localObject).inner);
+    paramSubscriber.setProducer(new OnSubscribeConcatMap.1(this, (OnSubscribeConcatMap.ConcatMapSubscriber)localObject));
+    if (!paramSubscriber.isUnsubscribed()) {
+      this.source.unsafeSubscribe((Subscriber)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeConcatMap
  * JD-Core Version:    0.7.0.1
  */

@@ -18,10 +18,11 @@ public final class JpegDecompressor
   {
     try
     {
-      if (!JpegCompressor.soLoadStatus) {
+      if (!JpegCompressor.soLoadStatus)
+      {
         JpegCompressor.jpegcompressLoadSo();
+        return;
       }
-      return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
@@ -54,132 +55,65 @@ public final class JpegDecompressor
     if (this.insample <= 0) {
       this.insample = 1;
     }
-    this.outWidth = ((i - j + this.insample - 1) / this.insample);
-    this.outHeight = ((this.insample + (k - m) - 1) / this.insample);
+    int n = this.insample;
+    this.outWidth = ((i - j + n - 1) / n);
+    this.outHeight = ((k - m + n - 1) / n);
   }
   
-  /* Error */
   public static Bitmap decodeByteArray(byte[] paramArrayOfByte, JpegOptions paramJpegOptions)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_1
-    //   3: astore_2
-    //   4: aload_1
-    //   5: ifnonnull +7 -> 12
-    //   8: getstatic 80	com/tencent/mobileqq/pic/JpegOptions:DEFAULT	Lcom/tencent/mobileqq/pic/JpegOptions;
-    //   11: astore_2
-    //   12: new 2	com/tencent/mobileqq/pic/JpegDecompressor
-    //   15: dup
-    //   16: invokespecial 81	com/tencent/mobileqq/pic/JpegDecompressor:<init>	()V
-    //   19: astore_1
-    //   20: aload_2
-    //   21: getfield 84	com/tencent/mobileqq/pic/JpegOptions:inJustDecodeBounds	Z
-    //   24: ifeq +37 -> 61
-    //   27: aload_1
-    //   28: aload_0
-    //   29: aload_2
-    //   30: getfield 88	com/tencent/mobileqq/pic/JpegOptions:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   33: invokevirtual 92	com/tencent/mobileqq/pic/JpegDecompressor:computeOutSize	([BLandroid/graphics/Bitmap$Config;)I
-    //   36: pop
-    //   37: aload_2
-    //   38: aload_1
-    //   39: getfield 37	com/tencent/mobileqq/pic/JpegDecompressor:imageHeight	I
-    //   42: putfield 93	com/tencent/mobileqq/pic/JpegOptions:outHeight	I
-    //   45: aload_2
-    //   46: aload_1
-    //   47: getfield 35	com/tencent/mobileqq/pic/JpegDecompressor:imageWidth	I
-    //   50: putfield 94	com/tencent/mobileqq/pic/JpegOptions:outWidth	I
-    //   53: aload_3
-    //   54: astore_0
-    //   55: aload_1
-    //   56: invokevirtual 97	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
-    //   59: aload_0
-    //   60: areturn
-    //   61: aload_1
-    //   62: aload_0
-    //   63: aload_2
-    //   64: invokevirtual 100	com/tencent/mobileqq/pic/JpegDecompressor:createBitmap	([BLcom/tencent/mobileqq/pic/JpegOptions;)Landroid/graphics/Bitmap;
-    //   67: astore_0
-    //   68: goto -13 -> 55
-    //   71: astore_0
-    //   72: aload_1
-    //   73: invokevirtual 97	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
-    //   76: aload_0
-    //   77: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	78	0	paramArrayOfByte	byte[]
-    //   0	78	1	paramJpegOptions	JpegOptions
-    //   3	61	2	localJpegOptions	JpegOptions
-    //   1	53	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   20	53	71	finally
-    //   61	68	71	finally
+    JpegOptions localJpegOptions = paramJpegOptions;
+    if (paramJpegOptions == null) {
+      localJpegOptions = JpegOptions.DEFAULT;
+    }
+    paramJpegOptions = new JpegDecompressor();
+    try
+    {
+      if (localJpegOptions.inJustDecodeBounds)
+      {
+        paramJpegOptions.computeOutSize(paramArrayOfByte, localJpegOptions.inPreferredConfig);
+        localJpegOptions.outHeight = paramJpegOptions.imageHeight;
+        localJpegOptions.outWidth = paramJpegOptions.imageWidth;
+        paramArrayOfByte = null;
+      }
+      else
+      {
+        paramArrayOfByte = paramJpegOptions.createBitmap(paramArrayOfByte, localJpegOptions);
+      }
+      return paramArrayOfByte;
+    }
+    finally
+    {
+      paramJpegOptions.close();
+    }
   }
   
-  /* Error */
   public static Bitmap decodeFile(String paramString, JpegOptions paramJpegOptions)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_1
-    //   3: astore_2
-    //   4: aload_1
-    //   5: ifnonnull +7 -> 12
-    //   8: getstatic 80	com/tencent/mobileqq/pic/JpegOptions:DEFAULT	Lcom/tencent/mobileqq/pic/JpegOptions;
-    //   11: astore_2
-    //   12: new 2	com/tencent/mobileqq/pic/JpegDecompressor
-    //   15: dup
-    //   16: invokespecial 81	com/tencent/mobileqq/pic/JpegDecompressor:<init>	()V
-    //   19: astore_1
-    //   20: aload_2
-    //   21: getfield 84	com/tencent/mobileqq/pic/JpegOptions:inJustDecodeBounds	Z
-    //   24: ifeq +37 -> 61
-    //   27: aload_1
-    //   28: aload_0
-    //   29: aload_2
-    //   30: getfield 88	com/tencent/mobileqq/pic/JpegOptions:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   33: invokevirtual 105	com/tencent/mobileqq/pic/JpegDecompressor:computeOutSize	(Ljava/lang/String;Landroid/graphics/Bitmap$Config;)I
-    //   36: pop
-    //   37: aload_2
-    //   38: aload_1
-    //   39: getfield 37	com/tencent/mobileqq/pic/JpegDecompressor:imageHeight	I
-    //   42: putfield 93	com/tencent/mobileqq/pic/JpegOptions:outHeight	I
-    //   45: aload_2
-    //   46: aload_1
-    //   47: getfield 35	com/tencent/mobileqq/pic/JpegDecompressor:imageWidth	I
-    //   50: putfield 94	com/tencent/mobileqq/pic/JpegOptions:outWidth	I
-    //   53: aload_3
-    //   54: astore_0
-    //   55: aload_1
-    //   56: invokevirtual 97	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
-    //   59: aload_0
-    //   60: areturn
-    //   61: aload_1
-    //   62: aload_0
-    //   63: aload_2
-    //   64: invokevirtual 107	com/tencent/mobileqq/pic/JpegDecompressor:createBitmap	(Ljava/lang/String;Lcom/tencent/mobileqq/pic/JpegOptions;)Landroid/graphics/Bitmap;
-    //   67: astore_0
-    //   68: goto -13 -> 55
-    //   71: astore_0
-    //   72: aload_1
-    //   73: invokevirtual 97	com/tencent/mobileqq/pic/JpegDecompressor:close	()V
-    //   76: aload_0
-    //   77: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	78	0	paramString	String
-    //   0	78	1	paramJpegOptions	JpegOptions
-    //   3	61	2	localJpegOptions	JpegOptions
-    //   1	53	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   20	53	71	finally
-    //   61	68	71	finally
+    JpegOptions localJpegOptions = paramJpegOptions;
+    if (paramJpegOptions == null) {
+      localJpegOptions = JpegOptions.DEFAULT;
+    }
+    paramJpegOptions = new JpegDecompressor();
+    try
+    {
+      if (localJpegOptions.inJustDecodeBounds)
+      {
+        paramJpegOptions.computeOutSize(paramString, localJpegOptions.inPreferredConfig);
+        localJpegOptions.outHeight = paramJpegOptions.imageHeight;
+        localJpegOptions.outWidth = paramJpegOptions.imageWidth;
+        paramString = null;
+      }
+      else
+      {
+        paramString = paramJpegOptions.createBitmap(paramString, localJpegOptions);
+      }
+      return paramString;
+    }
+    finally
+    {
+      paramJpegOptions.close();
+    }
   }
   
   private native long decompress(long paramLong, byte[] paramArrayOfByte);
@@ -194,23 +128,25 @@ public final class JpegDecompressor
   
   private int getPixelSize(Bitmap.Config paramConfig)
   {
-    int i = 1;
-    if (this.idRgb) {}
-    for (int j = 3; paramConfig == null; j = 1) {
-      return j;
+    int i;
+    if (this.idRgb) {
+      i = 3;
+    } else {
+      i = 1;
+    }
+    if (paramConfig == null) {
+      return i;
     }
     if (Bitmap.Config.ARGB_8888 == paramConfig) {
-      i = 4;
+      return 4;
     }
-    for (;;)
-    {
-      return i;
-      if (Bitmap.Config.RGB_565 == paramConfig) {
-        i = 2;
-      } else if (Bitmap.Config.ALPHA_8 != paramConfig) {
-        i = j;
-      }
+    if (Bitmap.Config.RGB_565 == paramConfig) {
+      return 2;
     }
+    if (Bitmap.Config.ALPHA_8 == paramConfig) {
+      return 1;
+    }
+    return i;
   }
   
   private Bitmap getReuseBitmap(Bitmap.Config paramConfig, Bitmap paramBitmap)
@@ -247,19 +183,19 @@ public final class JpegDecompressor
     try
     {
       i = decompressFileHeader(this.nativePtr, paramString);
-      if (i != 0) {
-        JpegError.throwException(i);
-      }
-      computeOutWidthHeight();
-      return this.outWidth * this.outHeight * getPixelSize(paramConfig);
     }
     catch (UnsatisfiedLinkError paramString)
     {
-      for (;;)
-      {
-        int i = 52;
-      }
+      int i;
+      label24:
+      break label24;
     }
+    i = 52;
+    if (i != 0) {
+      JpegError.throwException(i);
+    }
+    computeOutWidthHeight();
+    return this.outWidth * this.outHeight * getPixelSize(paramConfig);
   }
   
   public int computeOutSize(byte[] paramArrayOfByte, Bitmap.Config paramConfig)
@@ -270,19 +206,19 @@ public final class JpegDecompressor
     try
     {
       i = decompressHeader(this.nativePtr, paramArrayOfByte);
-      if (i != 0) {
-        JpegError.throwException(i);
-      }
-      computeOutWidthHeight();
-      return this.outWidth * this.outHeight * getPixelSize(paramConfig);
     }
     catch (UnsatisfiedLinkError paramArrayOfByte)
     {
-      for (;;)
-      {
-        int i = 52;
-      }
+      int i;
+      label24:
+      break label24;
     }
+    i = 52;
+    if (i != 0) {
+      JpegError.throwException(i);
+    }
+    computeOutWidthHeight();
+    return this.outWidth * this.outHeight * getPixelSize(paramConfig);
   }
   
   public Bitmap createBitmap(String paramString, JpegOptions paramJpegOptions)
@@ -319,11 +255,11 @@ public final class JpegDecompressor
     }
     catch (UnsatisfiedLinkError paramArrayOfByte)
     {
-      for (;;)
-      {
-        int j = 52;
-      }
+      int j;
+      label46:
+      break label46;
     }
+    j = 52;
     if (j != 0) {
       JpegError.throwException(j);
     }
@@ -340,11 +276,11 @@ public final class JpegDecompressor
     }
     catch (UnsatisfiedLinkError paramConfig)
     {
-      for (;;)
-      {
-        int i = 52;
-      }
+      int i;
+      label29:
+      break label29;
     }
+    i = 52;
     paramConfig = paramBitmap;
     if (i != 0)
     {
@@ -388,7 +324,7 @@ public final class JpegDecompressor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.JpegDecompressor
  * JD-Core Version:    0.7.0.1
  */

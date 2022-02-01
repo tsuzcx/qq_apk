@@ -15,33 +15,33 @@ public class ContextUtils
   
   public static void initApplicationContext(Context paramContext)
   {
-    AppMethodBeat.i(138991);
+    AppMethodBeat.i(53785);
     if ((sApplicationContext != null) && (sApplicationContext != paramContext))
     {
       paramContext = new RuntimeException("Attempting to set multiple global application contexts.");
-      AppMethodBeat.o(138991);
+      AppMethodBeat.o(53785);
       throw paramContext;
     }
     initJavaSideApplicationContext(paramContext);
-    AppMethodBeat.o(138991);
+    AppMethodBeat.o(53785);
   }
   
   private static void initJavaSideApplicationContext(Context paramContext)
   {
-    AppMethodBeat.i(138992);
+    AppMethodBeat.i(53786);
     if (paramContext == null)
     {
       paramContext = new RuntimeException("Global application context cannot be set to null.");
-      AppMethodBeat.o(138992);
+      AppMethodBeat.o(53786);
       throw paramContext;
     }
     sApplicationContext = paramContext;
-    AppMethodBeat.o(138992);
+    AppMethodBeat.o(53786);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.sandbox.ContextUtils
  * JD-Core Version:    0.7.0.1
  */

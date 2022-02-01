@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GetGroupRedPackListReq
   extends JceStruct
 {
-  public int iGroupType;
-  public int iPlatForm;
+  public int iGroupType = 0;
+  public int iPlatForm = 0;
   public String sClientIp = "";
   public String sGroupUin = "";
   public String sQQVersion = "";
@@ -28,28 +28,33 @@ public final class GetGroupRedPackListReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sGroupUin != null) {
-      paramJceOutputStream.write(this.sGroupUin, 0);
+    String str = this.sGroupUin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.iPlatForm, 1);
-    if (this.sQQVersion != null) {
-      paramJceOutputStream.write(this.sQQVersion, 2);
+    str = this.sQQVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.iGroupType, 3);
-    if (this.sUin != null) {
-      paramJceOutputStream.write(this.sUin, 4);
+    str = this.sUin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.sSkey != null) {
-      paramJceOutputStream.write(this.sSkey, 5);
+    str = this.sSkey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.sClientIp != null) {
-      paramJceOutputStream.write(this.sClientIp, 6);
+    str = this.sClientIp;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetGroupRedPackListReq
  * JD-Core Version:    0.7.0.1
  */

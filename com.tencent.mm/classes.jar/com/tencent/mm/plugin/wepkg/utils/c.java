@@ -1,83 +1,117 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.j.a;
-import com.tencent.mm.g.a.qh;
-import com.tencent.mm.g.a.qh.a;
-import com.tencent.mm.g.a.wi;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.app.q.a;
+import com.tencent.mm.autogen.a.aee;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wepkg.e;
+import com.tencent.mm.plugin.wepkg.model.k;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.List;
 
-public final class c
+public class c
 {
-  public j.a appForegroundListener;
-  public com.tencent.mm.sdk.b.c vHa;
-  public final com.tencent.mm.sdk.b.c vHb;
+  public IListener XGW;
+  public final IListener XGX;
+  public q.a appForegroundListener;
   
   public c()
   {
-    AppMethodBeat.i(63636);
-    this.appForegroundListener = new j.a()
+    AppMethodBeat.i(110795);
+    this.appForegroundListener = new q.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
-        AppMethodBeat.i(141555);
-        if ((g.RG()) && (g.RJ().eHg))
+        AppMethodBeat.i(110787);
+        if ((h.baz()) && (h.baC().mBZ))
         {
-          g.RJ();
-          if (!com.tencent.mm.kernel.a.QP())
+          h.baC();
+          if (!b.aZG())
           {
-            paramAnonymousString = new wi();
-            paramAnonymousString.cNO.coO = 3;
-            com.tencent.mm.sdk.b.a.ymk.l(paramAnonymousString);
+            paramAnonymousString = new aee();
+            paramAnonymousString.iiI.hAf = 3;
+            paramAnonymousString.publish();
           }
         }
-        AppMethodBeat.o(141555);
+        AppMethodBeat.o(110787);
       }
       
       public final void onAppForeground(String paramAnonymousString)
       {
-        AppMethodBeat.i(141554);
-        if ((g.RG()) && (g.RJ().eHg))
+        AppMethodBeat.i(110786);
+        if ((h.baz()) && (h.baC().mBZ))
         {
-          g.RJ();
-          if (!com.tencent.mm.kernel.a.QP())
+          h.baC();
+          if (!b.aZG())
           {
-            paramAnonymousString = new wi();
-            paramAnonymousString.cNO.coO = 5;
-            com.tencent.mm.sdk.b.a.ymk.l(paramAnonymousString);
+            paramAnonymousString = new aee();
+            paramAnonymousString.iiI.hAf = 5;
+            paramAnonymousString.publish();
           }
         }
-        AppMethodBeat.o(141554);
+        AppMethodBeat.o(110786);
       }
     };
-    this.vHa = new com.tencent.mm.sdk.b.c()
+    this.XGW = new WepkgListener.2(this, com.tencent.mm.app.f.hfK);
+    this.XGX = new WepkgListener.3(this, com.tencent.mm.app.f.hfK);
+    AppMethodBeat.o(110795);
+  }
+  
+  public static void iFz()
+  {
+    AppMethodBeat.i(278666);
+    Object localObject = MMApplicationContext.getContext();
+    if (localObject == null)
     {
-      private boolean a(qh paramAnonymousqh)
+      AppMethodBeat.o(278666);
+      return;
+    }
+    try
+    {
+      localObject = ((Context)localObject).getSharedPreferences("we_pkg_sp", 4);
+      if (localObject == null)
       {
-        AppMethodBeat.i(141556);
-        boolean bool = paramAnonymousqh.cGV.cwK;
-        ab.i("MicroMsg.Wepkg.WepkgListener", "sendEntranceStateListener isInFindEntrance:%b", new Object[] { Boolean.valueOf(bool) });
-        if ((bool) && (bo.gz(bo.c((Long)g.RL().Ru().get(ac.a.yHo, Long.valueOf(0L)))) > 60L))
-        {
-          g.RL().Ru().set(ac.a.yHo, Long.valueOf(bo.aox()));
-          c.a(c.this, 2);
-        }
-        AppMethodBeat.o(141556);
-        return false;
+        Log.e("MicroMsg.Wepkg.WepkgListener", "sp is null");
+        AppMethodBeat.o(278666);
+        return;
       }
-    };
-    this.vHb = new c.3(this);
-    AppMethodBeat.o(63636);
+      if (((SharedPreferences)localObject).getBoolean("disable_we_pkg", false))
+      {
+        Log.i("MicroMsg.Wepkg.WepkgListener", "enable wepkg");
+        ((SharedPreferences)localObject).edit().putBoolean("disable_we_pkg", false).commit();
+      }
+      ((SharedPreferences)localObject).edit().putInt("white_screen_times", 0).commit();
+      AppMethodBeat.o(278666);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.Wepkg.WepkgListener", localException.getMessage());
+      AppMethodBeat.o(278666);
+    }
+  }
+  
+  static class a
+    implements d
+  {
+    public void invoke(Object paramObject, com.tencent.mm.ipcinvoker.f paramf)
+    {
+      AppMethodBeat.i(110794);
+      e.iET();
+      AppMethodBeat.o(110794);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.utils.c
  * JD-Core Version:    0.7.0.1
  */

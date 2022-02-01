@@ -1,84 +1,50 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.protocal.protobuf.csl;
+import com.tencent.mm.protocal.protobuf.csm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class e
-  extends com.tencent.mm.bv.a
+  extends z<csm>
 {
-  public int eoD;
-  public String ona;
-  public String onb;
-  
-  public final int op(int paramInt, Object... paramVarArgs)
+  public e(String paramString, int paramInt)
   {
-    AppMethodBeat.i(56608);
-    if (paramInt == 0)
+    AppMethodBeat.i(283971);
+    csl localcsl = new csl();
+    com.tencent.mm.am.c.a locala = new com.tencent.mm.am.c.a();
+    locala.otE = localcsl;
+    locala.otF = new csm();
+    boolean bool;
+    if (((c)h.ax(c.class)).a(com.tencent.mm.plugin.expt.b.c.a.znw, 1) == 1)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.eoD);
-      if (this.ona != null) {
-        paramVarArgs.e(2, this.ona);
+      bool = true;
+      Log.d("CgiGetShowSource", "is new: %s", new Object[] { Boolean.valueOf(bool) });
+      if (!bool) {
+        break label138;
       }
-      if (this.onb != null) {
-        paramVarArgs.e(3, this.onb);
-      }
-      AppMethodBeat.o(56608);
-      return 0;
+      locala.funcId = 3857;
     }
-    if (paramInt == 1)
+    for (locala.uri = "/cgi-bin/micromsg-bin/getshowsourcenew";; locala.uri = "/cgi-bin/mmpay-bin/ftfhb/getshowsource")
     {
-      int i = e.a.a.b.b.a.bl(1, this.eoD) + 0;
-      paramInt = i;
-      if (this.ona != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.ona);
-      }
-      i = paramInt;
-      if (this.onb != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.onb);
-      }
-      AppMethodBeat.o(56608);
-      return i;
+      localcsl.aayv = paramString;
+      localcsl.aayw = paramInt;
+      c(locala.bEF());
+      AppMethodBeat.o(283971);
+      return;
+      bool = false;
+      break;
+      label138:
+      locala.funcId = 2620;
     }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(56608);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      e locale = (e)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(56608);
-        return -1;
-      case 1: 
-        locale.eoD = locala.CLY.sl();
-        AppMethodBeat.o(56608);
-        return 0;
-      case 2: 
-        locale.ona = locala.CLY.readString();
-        AppMethodBeat.o(56608);
-        return 0;
-      }
-      locale.onb = locala.CLY.readString();
-      AppMethodBeat.o(56608);
-      return 0;
-    }
-    AppMethodBeat.o(56608);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.e
  * JD-Core Version:    0.7.0.1
  */

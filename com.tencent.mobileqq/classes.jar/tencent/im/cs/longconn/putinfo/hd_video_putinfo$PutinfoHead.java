@@ -27,15 +27,16 @@ public final class hd_video_putinfo$PutinfoHead
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58 }, new String[] { "enum_body_type", "uint64_uin", "bytes_appid", "uint64_seq", "uint32_error_no", "bytes_error_msg", "bytes_config_ver" }, new Object[] { Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, PutinfoHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 58 }, new String[] { "enum_body_type", "uint64_uin", "bytes_appid", "uint64_seq", "uint32_error_no", "bytes_error_msg", "bytes_config_ver" }, new Object[] { Integer.valueOf(1), localLong, localByteStringMicro1, localLong, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, PutinfoHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead
  * JD-Core Version:    0.7.0.1
  */

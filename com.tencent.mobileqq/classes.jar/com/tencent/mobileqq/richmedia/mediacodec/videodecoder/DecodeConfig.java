@@ -41,22 +41,49 @@ public class DecodeConfig
   
   public void copyFrom(DecodeConfig paramDecodeConfig)
   {
-    if (paramDecodeConfig == null) {
-      throw new NullPointerException();
+    if (paramDecodeConfig != null)
+    {
+      this.inputFilePath = paramDecodeConfig.inputFilePath;
+      this.speedType = paramDecodeConfig.speedType;
+      this.noSleep = paramDecodeConfig.noSleep;
+      this.repeat = paramDecodeConfig.repeat;
+      this.startTimeMillSecond = paramDecodeConfig.startTimeMillSecond;
+      this.endTimeMillSecond = paramDecodeConfig.endTimeMillSecond;
+      this.prolongToTime = paramDecodeConfig.prolongToTime;
+      this.syncDecode = paramDecodeConfig.syncDecode;
+      return;
     }
-    this.inputFilePath = paramDecodeConfig.inputFilePath;
-    this.speedType = paramDecodeConfig.speedType;
-    this.noSleep = paramDecodeConfig.noSleep;
-    this.repeat = paramDecodeConfig.repeat;
-    this.startTimeMillSecond = paramDecodeConfig.startTimeMillSecond;
-    this.endTimeMillSecond = paramDecodeConfig.endTimeMillSecond;
-    this.prolongToTime = paramDecodeConfig.prolongToTime;
-    this.syncDecode = paramDecodeConfig.syncDecode;
+    throw new NullPointerException();
   }
   
   public String toString()
   {
-    return "DecodeConfig{inputFilePath='" + this.inputFilePath + '\'' + ", speedType=" + this.speedType + ", noSleep=" + this.noSleep + ", repeat=" + this.repeat + ", startTimeMillSecond=" + this.startTimeMillSecond + ", endTimeMillSecond=" + this.endTimeMillSecond + ", rotation=" + this.rotation + ", adjustRotation=" + this.adjustRotation + ", isLocal=" + this.isLocal + ",prolongToTime=" + this.prolongToTime + ",syncDecode=" + this.syncDecode + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DecodeConfig{inputFilePath='");
+    localStringBuilder.append(this.inputFilePath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", speedType=");
+    localStringBuilder.append(this.speedType);
+    localStringBuilder.append(", noSleep=");
+    localStringBuilder.append(this.noSleep);
+    localStringBuilder.append(", repeat=");
+    localStringBuilder.append(this.repeat);
+    localStringBuilder.append(", startTimeMillSecond=");
+    localStringBuilder.append(this.startTimeMillSecond);
+    localStringBuilder.append(", endTimeMillSecond=");
+    localStringBuilder.append(this.endTimeMillSecond);
+    localStringBuilder.append(", rotation=");
+    localStringBuilder.append(this.rotation);
+    localStringBuilder.append(", adjustRotation=");
+    localStringBuilder.append(this.adjustRotation);
+    localStringBuilder.append(", isLocal=");
+    localStringBuilder.append(this.isLocal);
+    localStringBuilder.append(",prolongToTime=");
+    localStringBuilder.append(this.prolongToTime);
+    localStringBuilder.append(",syncDecode=");
+    localStringBuilder.append(this.syncDecode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public String verify()
@@ -64,18 +91,35 @@ public class DecodeConfig
     if (TextUtils.isEmpty(this.inputFilePath)) {
       return "inputFilePath is empty";
     }
-    if ((this.startTimeMillSecond < 0L) || (this.endTimeMillSecond < 0L)) {
-      return "time less than 0, start=" + this.startTimeMillSecond + ", end=" + this.endTimeMillSecond;
+    long l1 = this.startTimeMillSecond;
+    if (l1 >= 0L)
+    {
+      long l2 = this.endTimeMillSecond;
+      if (l2 >= 0L)
+      {
+        if (l2 < l1)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("end time less than start time, end=");
+          localStringBuilder.append(this.endTimeMillSecond);
+          localStringBuilder.append(", start=");
+          localStringBuilder.append(this.startTimeMillSecond);
+          return localStringBuilder.toString();
+        }
+        return null;
+      }
     }
-    if (this.endTimeMillSecond < this.startTimeMillSecond) {
-      return "end time less than start time, end=" + this.endTimeMillSecond + ", start=" + this.startTimeMillSecond;
-    }
-    return null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("time less than 0, start=");
+    localStringBuilder.append(this.startTimeMillSecond);
+    localStringBuilder.append(", end=");
+    localStringBuilder.append(this.endTimeMillSecond);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig
  * JD-Core Version:    0.7.0.1
  */

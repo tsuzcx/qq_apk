@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:scrollbarAlwaysDrawVerticalTrack="false" android:id="@id/i__" android:background="@color/a6w" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:fadeScrollbars="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/bs3" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:id="@id/gkj" style="@style/a7w">
+            <TextView android:id="@id/gki" android:text="@string/hl2" style="@style/a7y" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/ebs" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/i_6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <AutoCompleteTextView style="@style/a7u" />
+                </FrameLayout>
+            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
+            <ImageView android:id="@id/i_1" style="@style/a7v" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/i_9" style="@style/a7w">
+            <TextView android:text="@string/hkv" style="@style/a7y" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/i_5" android:visibility="gone" style="@style/a7w">
+            <TextView android:text="@string/hkt" style="@style/a7y" />
+            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/i_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <AutoCompleteTextView style="@style/a7u" />
+                </FrameLayout>
+            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
+            <ImageView android:id="@id/i_0" android:visibility="invisible" style="@style/a7v" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/i_3" android:visibility="gone" style="@style/a7w">
+            <TextView android:text="@string/hkr" style="@style/a7y" />
+            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/i_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <AutoCompleteTextView style="@style/a7u" />
+                </FrameLayout>
+            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
+            <ImageView android:id="@id/i9z" android:visibility="invisible" style="@style/a7v" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/gks" style="@style/a7w">
+            <TextView android:text="@string/hl0" style="@style/a7y" />
+            <EditText android:textColor="@color/a7b" android:id="@id/i_d" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <ImageView android:id="@id/i_c" android:visibility="gone" android:src="@drawable/afc" style="@style/a7z" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i9y" android:background="@drawable/anv" android:focusable="true" style="@style/a7w">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/a8j" android:id="@id/i_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hkl" android:layout_weight="1.0" />
+            <ImageView android:id="@id/i_7" android:src="@raw/qqmail_attach_icon_normal" style="@style/a7t" />
+        </LinearLayout>
+        <LinearLayout android:visibility="gone" style="@style/a7x">
+            <LinearLayout android:orientation="vertical" android:id="@id/hy_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <EditText android:textSize="@dimen/hq" android:gravity="center|left|top" android:id="@id/i_a" android:background="@null" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="100.0dip" />
+        <com.tencent.mm.ui.widget.MMWebView android:layout_gravity="center|left|top" android:id="@id/i_b" android:background="@null" android:padding="5.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="100.0dip" />
+        <LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/jit" android:background="@drawable/rj" android:padding="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:layout_marginBottom="15.0dip" android:minHeight="100.0dip">
+            <TextView android:textSize="20.0sp" android:textColor="@color/a7b" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/i8c" />
+            <TextView android:textSize="15.0sp" android:textColor="@color/a7b" android:id="@id/iwk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/i8e" android:maxLines="6" android:singleLine="false" />
+            <ImageView android:id="@id/i_n" android:layout_width="220.0dip" android:layout_height="220.0dip" android:layout_marginTop="23.0dip" android:src="@drawable/b8a" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/m4" android:gravity="center" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="33.0dip" android:text="@string/i8d" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

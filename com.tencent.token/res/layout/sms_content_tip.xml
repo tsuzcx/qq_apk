@@ -15,7 +15,7 @@
     </RelativeLayout>
     <RelativeLayout android:id="@id/btn_layout" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:layout_below="@id/mobile_num_layout">
         <TextView android:id="@id/text_ok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/have_sended" android:layout_centerInParent="true" style="@style/text_view_white" />
-        <ProgressBar android:id="@id/pb_id" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/text_ok" android:layout_centerVertical="true" style="?android:attr/progressBarStyleSmall" />
+        <ProgressBar android:id="@id/pb_id" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/text_ok" android:layout_centerVertical="true" style="?android:progressBarStyleSmall" />
     </RelativeLayout>
     <TextView android:gravity="center" android:id="@id/tip_text" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:text="@string/sms_not_sended" android:layout_below="@id/btn_layout" style="@style/sms_send_tip" />
 </RelativeLayout>

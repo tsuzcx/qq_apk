@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/eb2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:paddingLeft="@dimen/br" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gw" style="@style/nb" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/arl" android:paddingLeft="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.base.MaskLayout android:layout_gravity="center_vertical" android:id="@id/eax" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax">
+            <ImageView android:id="@id/br7" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+        </com.tencent.mm.ui.base.MaskLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ebe" android:background="@drawable/b7q" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="@dimen/az" android:layout_marginLeft="@dimen/j6">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:id="@id/ebj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" style="@style/ma" />
+                <TextView android:id="@id/ebi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m7" android:text="{lastmsg}" android:singleLine="true" style="@style/m_" />
+            </LinearLayout>
+            <TextView android:id="@id/ebc" android:visibility="visible" style="@style/zh" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

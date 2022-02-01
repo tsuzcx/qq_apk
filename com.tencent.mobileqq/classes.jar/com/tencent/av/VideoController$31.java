@@ -1,26 +1,22 @@
 package com.tencent.av;
 
-import com.tencent.qphone.base.util.QLog;
-import lfv;
+import com.tencent.av.gaudio.QQGAudioCtrl;
 
 class VideoController$31
   implements Runnable
 {
-  VideoController$31(VideoController paramVideoController) {}
+  VideoController$31(VideoController paramVideoController, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoController.a, 2, "quitDoubleVideoMeeting, time out task run.");
-    }
-    if (this.this$0.c != null) {
-      this.this$0.c.onCompletion(null);
+    if (this.this$0.U != null) {
+      this.this$0.U.setAudioNoiseCtrlParam(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.31
  * JD-Core Version:    0.7.0.1
  */

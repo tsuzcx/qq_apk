@@ -1,18 +1,41 @@
 package com.tencent.mobileqq.app;
 
+import com.tencent.mobileqq.data.troop.TroopMemberCardInfo;
+import com.tencent.mobileqq.troop.api.ITroopMemberInfoService;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+
 class TroopManager$7
-  implements Runnable
+  extends TroopObserver
 {
-  TroopManager$7(TroopManager paramTroopManager, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5) {}
+  TroopManager$7(TroopManager paramTroopManager) {}
   
-  public void run()
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Int, this.d, this.e);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetTroopInfoResult success: troopUin: ");
+    localStringBuilder.append(paramString);
+    QLog.i("troop_ext", 1, localStringBuilder.toString());
+  }
+  
+  protected void onModifyTroopInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        paramString = (TroopMemberCardInfo)paramArrayList.get(i);
+        ((ITroopMemberInfoService)this.a.a.getRuntimeService(ITroopMemberInfoService.class, "")).notifyChangeMember(paramString.troopuin, paramString.memberuin);
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.7
  * JD-Core Version:    0.7.0.1
  */

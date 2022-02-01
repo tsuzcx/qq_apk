@@ -1,20 +1,18 @@
 package cooperation.qqdataline.ipc;
 
-import biup;
-
-public class DatalineRemoteManager$3
+class DatalineRemoteManager$3
   implements Runnable
 {
-  public DatalineRemoteManager$3(biup parambiup) {}
+  DatalineRemoteManager$3(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void run()
   {
-    biup.c(this.this$0);
+    DatalineRemoteManager.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.3
  * JD-Core Version:    0.7.0.1
  */

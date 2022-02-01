@@ -9,55 +9,55 @@ final class q
 {
   private q(p paramp) {}
   
-  public final void e(int paramInt, boolean paramBoolean)
+  public final void f(int paramInt, boolean paramBoolean)
   {
-    p.a(this.MV).lock();
+    p.a(this.OK).lock();
     try
     {
-      if ((p.c(this.MV)) || (p.d(this.MV) == null) || (!p.d(this.MV).gm()))
+      if ((p.c(this.OK)) || (p.d(this.OK) == null) || (!p.d(this.OK).gw()))
       {
-        p.a(this.MV, false);
-        p.a(this.MV, paramInt, paramBoolean);
+        p.a(this.OK, false);
+        p.a(this.OK, paramInt, paramBoolean);
         return;
       }
-      p.a(this.MV, true);
-      p.e(this.MV).bd(paramInt);
+      p.a(this.OK, true);
+      p.e(this.OK).bx(paramInt);
       return;
     }
     finally
     {
-      p.a(this.MV).unlock();
+      p.a(this.OK).unlock();
     }
   }
   
   public final void g(ConnectionResult paramConnectionResult)
   {
-    p.a(this.MV).lock();
+    p.a(this.OK).lock();
     try
     {
-      p.a(this.MV, paramConnectionResult);
-      p.b(this.MV);
+      p.a(this.OK, paramConnectionResult);
+      p.b(this.OK);
       return;
     }
     finally
     {
-      p.a(this.MV).unlock();
+      p.a(this.OK).unlock();
     }
   }
   
   public final void j(Bundle paramBundle)
   {
-    p.a(this.MV).lock();
+    p.a(this.OK).lock();
     try
     {
-      p.a(this.MV, paramBundle);
-      p.a(this.MV, ConnectionResult.Hb);
-      p.b(this.MV);
+      p.a(this.OK, paramBundle);
+      p.a(this.OK, ConnectionResult.IQ);
+      p.b(this.OK);
       return;
     }
     finally
     {
-      p.a(this.MV).unlock();
+      p.a(this.OK).unlock();
     }
   }
 }

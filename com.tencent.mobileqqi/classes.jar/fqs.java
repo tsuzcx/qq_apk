@@ -1,25 +1,41 @@
-import com.tencent.mobileqq.filemanager.activity.FMCloudActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
+import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.Iterator;
 import java.util.List;
 
 public class fqs
-  extends FMObserver
+  extends AsyncTask
 {
-  public fqs(FMCloudActivity paramFMCloudActivity) {}
+  public fqs(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  protected void a(List paramList)
+  protected Integer a(Void... paramVarArgs)
   {
-    super.a(paramList);
-    FMCloudActivity.a(this.a, paramList);
-    FMCloudActivity.a(this.a);
+    return Integer.valueOf(FileCategoryUtil.e(this.a));
   }
   
-  protected void c(int paramInt, String paramString)
+  protected void a(Integer paramInteger)
   {
-    super.c(paramInt, paramString);
-    FMCloudActivity.a(this.a);
-    FMToastUtil.a(2131562097);
+    super.onPostExecute(paramInteger);
+    FMLocalFileActivity.b(this.a);
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
+      if (localFileCategoryEntity.G == 4)
+      {
+        localFileCategoryEntity.F = paramInteger.intValue();
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+      }
+    }
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    FMLocalFileActivity.a(this.a);
   }
 }
 

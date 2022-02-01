@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:gravity="right" android:id="@id/o81" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="80.0dip" android:layout_marginRight="36.0dip" android:layout_alignParentRight="true" android:lineSpacingExtra="5.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/oe_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/o81" android:layout_alignParentRight="true">
+            <include layout="@layout/d17" />
+        </LinearLayout>
+        <ImageView android:id="@id/dwp" android:visibility="gone" android:layout_width="304.0dip" android:layout_height="420.0dip" android:layout_marginTop="-8.0dip" android:scaleType="centerCrop" android:layout_below="@id/o81" android:layout_alignParentLeft="true" />
+        <ImageView android:id="@id/o80" android:visibility="gone" android:layout_width="321.0dip" android:layout_height="200.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:gravity="center|top" android:id="@id/qnk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="200.0dip" android:layout_marginTop="2.0dip" android:layout_below="@id/o80" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ofl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <include layout="@layout/cz2" />
+    </LinearLayout>
+</LinearLayout>

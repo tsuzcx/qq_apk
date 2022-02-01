@@ -1,89 +1,65 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.content.res.Resources;
 import android.text.Editable;
+import android.text.Spannable;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.plugin.sns.ui.widget.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.widget.MMEditText;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.pluginsdk.ui.span.o.a;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 final class SnsCommentFooter$4
   implements TextWatcher
 {
-  private int rQm = 0;
+  private List<ForegroundColorSpan> RqM;
   
-  SnsCommentFooter$4(SnsCommentFooter paramSnsCommentFooter) {}
+  SnsCommentFooter$4(SnsCommentFooter paramSnsCommentFooter)
+  {
+    AppMethodBeat.i(369941);
+    this.RqM = new LinkedList();
+    AppMethodBeat.o(369941);
+  }
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(38880);
-    if (SnsCommentFooter.b(this.rQk).getText() == null)
-    {
-      AppMethodBeat.o(38880);
-      return;
+    AppMethodBeat.i(369942);
+    paramEditable = SnsCommentFooter.b(this.RqJ).getText();
+    Object localObject = this.RqM.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      paramEditable.removeSpan((ForegroundColorSpan)((Iterator)localObject).next());
     }
-    if ((d.fS(SnsCommentFooter.c(this.rQk), 8)) && (!bo.isNullOrNil(SnsCommentFooter.d(this.rQk))) && (SnsCommentFooter.b(this.rQk).getText() != null) && (!SnsCommentFooter.b(this.rQk).getText().toString().startsWith(SnsCommentFooter.d(this.rQk))))
+    this.RqM.clear();
+    localObject = SnsCommentFooter.b(this.RqJ).getText().toString();
+    if (((com.tencent.mm.plugin.websearch.api.c)h.az(com.tencent.mm.plugin.websearch.api.c.class)).isOpenInlineSnsTag())
     {
-      ab.i("MicroMsg.SnsCommentFooter", "cur text %s", new Object[] { SnsCommentFooter.b(this.rQk).getText() });
-      SnsCommentFooter.a(this.rQk, "");
-      SnsCommentFooter.e(this.rQk);
-      this.rQk.EN(8);
-      SnsCommentFooter.a(this.rQk, 0);
-    }
-    SnsCommentFooter.b(this.rQk).requestFocus();
-    if (SnsCommentFooter.b(this.rQk).getText().toString().trim().length() > 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (this.rQk.oxr))
+      localObject = o.a.YoB.matcher((CharSequence)localObject);
+      while (((Matcher)localObject).find())
       {
-        SnsCommentFooter.a(this.rQk, true);
-        this.rQk.oxr = false;
+        ((Matcher)localObject).group();
+        int i = ((Matcher)localObject).start();
+        int j = ((Matcher)localObject).end();
+        ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(this.RqJ.getResources().getColor(b.c.Link_100));
+        this.RqM.add(localForegroundColorSpan);
+        paramEditable.setSpan(localForegroundColorSpan, i, j, 33);
       }
-      if (i == 0)
-      {
-        SnsCommentFooter.a(this.rQk, false);
-        this.rQk.oxr = true;
-      }
-      AppMethodBeat.o(38880);
-      return;
     }
+    AppMethodBeat.o(369942);
   }
   
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(38878);
-    if (paramCharSequence == null) {}
-    for (paramInt1 = 0;; paramInt1 = paramCharSequence.length())
-    {
-      this.rQm = paramInt1;
-      AppMethodBeat.o(38878);
-      return;
-    }
-  }
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(38879);
-    if ((paramCharSequence == null) || (paramCharSequence.length() < a.raX))
-    {
-      this.rQk.EN(16);
-      ab.d("MicroMsg.SnsCommentFooter", "clean SNS_COMMENT_FLAG_FOLD");
-      AppMethodBeat.o(38879);
-      return;
-    }
-    if (paramCharSequence.length() - this.rQm > a.raX)
-    {
-      this.rQk.setCommentFlag(16);
-      ab.d("MicroMsg.SnsCommentFooter", "add SNS_COMMENT_FLAG_FOLD");
-    }
-    AppMethodBeat.o(38879);
-  }
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentFooter.4
  * JD-Core Version:    0.7.0.1
  */

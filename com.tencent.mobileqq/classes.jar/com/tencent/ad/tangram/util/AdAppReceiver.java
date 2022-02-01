@@ -9,8 +9,9 @@ import android.support.annotation.Keep;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.statistics.b;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
+import com.tencent.ad.tangram.statistics.c;
+import com.tencent.ad.tangram.thread.AdThreadManager;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,28 +24,17 @@ public class AdAppReceiver
   private Map<String, AdClickUtil.Params> data = new HashMap();
   private boolean registered = false;
   
-  private void onReceivePackageAdded(Context paramContext, Intent paramIntent)
+  private void unObserve(String paramString)
   {
-    if ((paramContext == null) || (paramIntent == null) || (!TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED")) || (paramIntent.getData() == null) || (TextUtils.isEmpty(paramIntent.getData().getSchemeSpecificPart()))) {
-      AdLog.e("AdAppReceiver", "onReceivePackageAdded error");
+    this.data.remove(paramString);
+  }
+  
+  protected AdClickUtil.Params getParams(String paramString)
+  {
+    if (this.data.containsKey(paramString)) {
+      return (AdClickUtil.Params)this.data.get(paramString);
     }
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getData().getSchemeSpecificPart();
-        AdLog.i("AdAppReceiver", String.format("onReceivePackageAdded %s", new Object[] { paramContext }));
-      } while (!this.data.containsKey(paramContext));
-      paramIntent = (AdClickUtil.Params)this.data.get(paramContext);
-      this.data.remove(paramContext);
-      if (AdClickUtil.isValidForApp(paramIntent))
-      {
-        b.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 286);
-        AdReporterForAnalysis.reportForAppInstalled(paramIntent);
-      }
-    } while ((!AdClickUtil.isValidForApp(paramIntent)) || (TextUtils.isEmpty(paramIntent.ad.getAppDeeplink())));
-    AdClickUtil.handleAppWithDeeplink(paramIntent, true);
+    return null;
   }
   
   public void observe(AdClickUtil.Params paramParams)
@@ -60,43 +50,107 @@ public class AdAppReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramContext == null) || (paramIntent == null)) {
-      AdLog.e("AdAppReceiver", "onReceive error");
-    }
-    do
+    if ((paramContext != null) && (paramIntent != null))
     {
-      return;
       AdLog.i("AdAppReceiver", "onReceive");
-    } while (!TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED"));
-    onReceivePackageAdded(paramContext, paramIntent);
+      if (TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED")) {
+        onReceivePackageAdded(paramContext, paramIntent);
+      }
+      return;
+    }
+    AdLog.e("AdAppReceiver", "onReceive error");
+  }
+  
+  protected void onReceivePackageAdded(Context paramContext, Intent paramIntent)
+  {
+    if ((paramContext != null) && (paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "android.intent.action.PACKAGE_ADDED")) && (paramIntent.getData() != null) && (!TextUtils.isEmpty(paramIntent.getData().getSchemeSpecificPart())))
+    {
+      paramContext = paramIntent.getData().getSchemeSpecificPart();
+      AdLog.i("AdAppReceiver", String.format("onReceivePackageAdded %s", new Object[] { paramContext }));
+      paramIntent = getParams(paramContext);
+      if (paramIntent == null) {
+        return;
+      }
+      unObserve(paramContext);
+      if (AdClickUtil.isValidForApp(paramIntent))
+      {
+        c.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 286);
+        AdAnalysisHelperForUtil.reportForAppInstalled(paramIntent);
+      }
+      if (AdClickUtil.isValidForApp(paramIntent)) {
+        AdThreadManager.INSTANCE.postDelayed(new AdAppReceiver.1(this, paramIntent), 0, 1000L);
+      }
+      return;
+    }
+    AdLog.e("AdAppReceiver", "onReceivePackageAdded error");
   }
   
   public void register(Context paramContext)
   {
-    if ((paramContext == null) || (this.registered)) {
-      return;
+    if (paramContext != null)
+    {
+      if (this.registered) {
+        return;
+      }
+      try
+      {
+        if (this.registered) {
+          return;
+        }
+        this.registered = true;
+        AdLog.i("AdAppReceiver", "register");
+        IntentFilter localIntentFilter = new IntentFilter();
+        localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
+        localIntentFilter.addDataScheme("package");
+        try
+        {
+          paramContext.registerReceiver(this, localIntentFilter);
+          return;
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.e("AdAppReceiver", "register", paramContext);
+          return;
+        }
+        return;
+      }
+      finally {}
     }
-    AdLog.i("AdAppReceiver", "register");
-    this.registered = true;
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
-    localIntentFilter.addDataScheme("package");
-    paramContext.registerReceiver(this, localIntentFilter);
   }
   
   public void unregister(Context paramContext)
   {
-    if ((paramContext == null) || (!this.registered)) {
-      return;
+    if (paramContext != null)
+    {
+      if (!this.registered) {
+        return;
+      }
+      try
+      {
+        if (!this.registered) {
+          return;
+        }
+        this.registered = false;
+        AdLog.i("AdAppReceiver", "unregister");
+        try
+        {
+          paramContext.unregisterReceiver(this);
+          return;
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.e("AdAppReceiver", "unregisterReceiver", paramContext);
+          return;
+        }
+        return;
+      }
+      finally {}
     }
-    AdLog.i("AdAppReceiver", "unregister");
-    this.registered = false;
-    paramContext.unregisterReceiver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdAppReceiver
  * JD-Core Version:    0.7.0.1
  */

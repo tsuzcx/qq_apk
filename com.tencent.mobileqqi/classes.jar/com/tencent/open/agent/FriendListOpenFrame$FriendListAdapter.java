@@ -197,8 +197,8 @@ public class FriendListOpenFrame$FriendListAdapter
     {
       paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903964, paramViewGroup, false);
       paramViewGroup = new FriendListOpenFrame.ViewHolder();
-      paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131231567));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131231566));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131231566));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131231565));
       paramViewGroup.a = ((CheckBox)paramView.findViewById(2131230943));
       paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
       paramViewGroup.f = ((TextView)paramView.findViewById(2131231000));

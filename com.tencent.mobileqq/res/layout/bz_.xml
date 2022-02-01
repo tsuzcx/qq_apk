@@ -13,13 +13,13 @@
     <com.tencent.widget.XListView android:id="@id/b9y" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@color/ajr" android:divider="@null" android:layout_above="@id/dwk" android:layout_below="@id/do3" />
     <View android:id="@id/e51" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:id="@id/bvc" android:background="#fffdfdfe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <include android:id="@id/bve" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/n0" />
+        <include android:id="@id/bve" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/emoticon_aio_panel" />
     </LinearLayout>
     <RelativeLayout android:id="@id/do2" android:background="#fffdfdfe" android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bl3" android:background="@drawable/ym" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="12.0dip" android:minHeight="36.0dip" android:layout_toLeftOf="@id/ajw">
             <com.tencent.widget.XEditTextEx android:id="@id/byq" android:background="@color/ajr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="6" android:layout_weight="1.0" android:lineSpacingMultiplier="1.5" />
             <ImageView android:layout_gravity="bottom" android:id="@id/bvo" android:paddingLeft="4.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/skin_aio_panel_emotion_nor" android:scaleType="centerInside" />
         </LinearLayout>
-        <Button android:textSize="14.0dip" android:textColor="@color/skin_aio_send_button" android:id="@id/ajw" android:background="@drawable/dj" android:layout_width="60.0dip" android:layout_height="34.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="16.0dip" android:text="@string/a1p" android:layout_alignBottom="@id/bl3" android:layout_alignParentRight="true" />
+        <Button android:textSize="14.0dip" android:textColor="@color/skin_aio_send_button" android:id="@id/ajw" android:background="@drawable/g_r" android:layout_width="60.0dip" android:layout_height="34.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="16.0dip" android:text="@string/a1p" android:layout_alignBottom="@id/bl3" android:layout_alignParentRight="true" />
     </RelativeLayout>
 </RelativeLayout>

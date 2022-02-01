@@ -1,9 +1,9 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.c;
+import com.tencent.mm.b.c;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -13,74 +13,74 @@ public final class p$a
   extends l.d
   implements l.b
 {
-  public int bsY;
-  public int cut;
-  public int fQD;
-  public String wiC;
-  public byte[] wiD;
+  public String Yyh;
+  public byte[] Yyi;
+  public int eQp;
+  public int hId;
+  public int oUj;
   
   public p$a()
   {
-    AppMethodBeat.i(28283);
-    this.cut = 0;
-    this.bsY = 0;
-    this.fQD = 0;
-    this.wiC = "";
-    this.wiD = new byte[0];
-    AppMethodBeat.o(28283);
+    AppMethodBeat.i(32087);
+    this.hId = 0;
+    this.eQp = 0;
+    this.oUj = 0;
+    this.Yyh = "";
+    this.Yyi = new byte[0];
+    AppMethodBeat.o(32087);
   }
   
-  private byte[] bP(byte[] paramArrayOfByte)
+  private byte[] db(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(28285);
+    AppMethodBeat.i(32089);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(28285);
+      AppMethodBeat.o(32089);
       return null;
     }
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     try
     {
       DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-      localDataOutputStream.writeByte(this.cut);
-      localDataOutputStream.writeByte(this.bsY);
+      localDataOutputStream.writeByte(this.hId);
+      localDataOutputStream.writeByte(this.eQp);
       localDataOutputStream.write(paramArrayOfByte);
       localDataOutputStream.close();
       paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      AppMethodBeat.o(28285);
+      AppMethodBeat.o(32089);
       return paramArrayOfByte;
     }
     catch (IOException paramArrayOfByte)
     {
       for (;;)
       {
-        ab.e("MicroMsg.MMDirectSend", "direct merge all failed, err=" + paramArrayOfByte.getMessage());
+        Log.e("MicroMsg.MMDirectSend", "direct merge all failed, err=" + paramArrayOfByte.getMessage());
       }
     }
   }
   
-  private byte[] dqC()
+  private byte[] iPZ()
   {
-    AppMethodBeat.i(28284);
+    AppMethodBeat.i(32088);
     Object localObject = new ByteArrayOutputStream();
     try
     {
       DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-      localDataOutputStream.writeInt(this.fQD);
-      localDataOutputStream.writeShort(this.wiC.getBytes().length);
-      localDataOutputStream.write(this.wiC.getBytes());
-      localDataOutputStream.writeShort(this.wiD.length);
-      localDataOutputStream.write(this.wiD);
+      localDataOutputStream.writeInt(this.oUj);
+      localDataOutputStream.writeShort(this.Yyh.getBytes().length);
+      localDataOutputStream.write(this.Yyh.getBytes());
+      localDataOutputStream.writeShort(this.Yyi.length);
+      localDataOutputStream.write(this.Yyi);
       localDataOutputStream.close();
       localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-      AppMethodBeat.o(28284);
+      AppMethodBeat.o(32088);
       return localObject;
     }
     catch (IOException localIOException)
     {
       for (;;)
       {
-        ab.e("MicroMsg.MMDirectSend", "direct merge tail failed, err=" + localIOException.getMessage());
+        Log.e("MicroMsg.MMDirectSend", "direct merge tail failed, err=" + localIOException.getMessage());
       }
     }
   }
@@ -107,18 +107,18 @@ public final class p$a
   
   public final byte[] toProtoBuf()
   {
-    AppMethodBeat.i(28286);
-    byte[] arrayOfByte = dqC();
+    AppMethodBeat.i(32090);
+    byte[] arrayOfByte = iPZ();
     PByteArray localPByteArray = new PByteArray();
-    c.a(localPByteArray, arrayOfByte, p.anp(super.getDeviceID()));
-    arrayOfByte = bP(localPByteArray.value);
-    AppMethodBeat.o(28286);
+    c.a(localPByteArray, arrayOfByte, p.bsn(super.getDeviceID()));
+    arrayOfByte = db(localPByteArray.value);
+    AppMethodBeat.o(32090);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.p.a
  * JD-Core Version:    0.7.0.1
  */

@@ -24,21 +24,30 @@ public class PortalManager$AwardConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("awardId=").append(this.awardId);
-    localStringBuilder.append(", logoId=").append(this.logoId);
-    localStringBuilder.append(", awardImg=").append(this.awardImg);
-    localStringBuilder.append(", awardMd5=").append(this.awardMd5);
-    localStringBuilder.append(", starImg=").append(this.starImg);
-    localStringBuilder.append(", starMD5=").append(this.starMd5);
-    localStringBuilder.append(", ctfBgImg=").append(this.ctfBgImg);
-    localStringBuilder.append(", ctfBgMd5=").append(this.ctfBgMd5);
-    localStringBuilder.append(", showPublic=").append(this.showPublic);
+    localStringBuilder.append("awardId=");
+    localStringBuilder.append(this.awardId);
+    localStringBuilder.append(", logoId=");
+    localStringBuilder.append(this.logoId);
+    localStringBuilder.append(", awardImg=");
+    localStringBuilder.append(this.awardImg);
+    localStringBuilder.append(", awardMd5=");
+    localStringBuilder.append(this.awardMd5);
+    localStringBuilder.append(", starImg=");
+    localStringBuilder.append(this.starImg);
+    localStringBuilder.append(", starMD5=");
+    localStringBuilder.append(this.starMd5);
+    localStringBuilder.append(", ctfBgImg=");
+    localStringBuilder.append(this.ctfBgImg);
+    localStringBuilder.append(", ctfBgMd5=");
+    localStringBuilder.append(this.ctfBgMd5);
+    localStringBuilder.append(", showPublic=");
+    localStringBuilder.append(this.showPublic);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.AwardConfig
  * JD-Core Version:    0.7.0.1
  */

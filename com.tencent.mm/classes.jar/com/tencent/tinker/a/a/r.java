@@ -1,35 +1,19 @@
 package com.tencent.tinker.a.a;
 
-import com.tencent.tinker.a.a.b.c;
-import com.tencent.tinker.a.a.b.e;
-
 public final class r
-  extends t.a.a<r>
+  extends s.a.a<r>
 {
-  public int BpA;
-  public int BpB;
-  public int BpC;
+  public String value;
   
-  public r(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public r(int paramInt, String paramString)
   {
-    super(paramInt1);
-    this.BpA = paramInt2;
-    this.BpB = paramInt3;
-    this.BpC = paramInt4;
+    super(paramInt);
+    this.value = paramString;
   }
   
   private int b(r paramr)
   {
-    int i = c.ip(this.BpA, paramr.BpA);
-    if (i != 0) {}
-    int j;
-    do
-    {
-      return i;
-      j = c.ip(this.BpB, paramr.BpB);
-      i = j;
-    } while (j != 0);
-    return c.iq(this.BpC, paramr.BpC);
+    return this.value.compareTo(paramr.value);
   }
   
   public final boolean equals(Object paramObject)
@@ -43,12 +27,12 @@ public final class r
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.BpA), Integer.valueOf(this.BpB), Integer.valueOf(this.BpC) });
+    return this.value.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tinker.a.a.r
  * JD-Core Version:    0.7.0.1
  */

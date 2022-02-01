@@ -1,107 +1,86 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "mOldChildHeight", "", "mOldChildWidth", "mTable", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "getMTable", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "setMTable", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;)V", "onItemClickListener", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "getOnItemClickListener", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "setOnItemClickListener", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;)V", "computeScrollX", "computeScrollY", "initGridView", "", "onLayout", "changed", "", "l", "t", "r", "b", "reset", "OnItemClickListener", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "mOldChildHeight", "", "mOldChildWidth", "mTable", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "getMTable", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "setMTable", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;)V", "onItemClickListener", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "getOnItemClickListener", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "setOnItemClickListener", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;)V", "computeScrollX", "computeScrollY", "initGridView", "", "onLayout", "changed", "", "l", "t", "r", "b", "reset", "OnItemClickListener", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RadarSpecialGridView
   extends RadarSpecialSmoothScrollView
 {
-  private RadarSpecialGridView.a pRF;
-  public RadarSpecialTableLayout pRG;
-  private int pRH;
-  private int pRI;
+  private a Ntc;
+  public RadarSpecialTableLayout Ntd;
+  private int Nte;
+  private int Ntf;
   
   public RadarSpecialGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(103007);
+    AppMethodBeat.i(138653);
     paramContext = getContext();
-    j.p(paramContext, "context");
-    this.pRG = new RadarSpecialTableLayout(paramContext);
+    s.s(paramContext, "context");
+    setMTable(new RadarSpecialTableLayout(paramContext));
     paramContext = new FrameLayout.LayoutParams(-1, -2);
     paramContext.gravity = 80;
-    paramAttributeSet = this.pRG;
-    if (paramAttributeSet == null) {
-      j.ays("mTable");
-    }
-    paramAttributeSet.setLayoutParams((ViewGroup.LayoutParams)paramContext);
-    paramContext = this.pRG;
-    if (paramContext == null) {
-      j.ays("mTable");
-    }
-    paramContext.setStretchAllColumns(true);
-    paramContext = this.pRG;
-    if (paramContext == null) {
-      j.ays("mTable");
-    }
-    paramContext.setShrinkAllColumns(true);
-    paramContext = this.pRG;
-    if (paramContext == null) {
-      j.ays("mTable");
-    }
-    paramContext.setGravity(80);
-    paramContext = this.pRG;
-    if (paramContext == null) {
-      j.ays("mTable");
-    }
-    addView((View)paramContext);
-    AppMethodBeat.o(103007);
+    getMTable().setLayoutParams((ViewGroup.LayoutParams)paramContext);
+    getMTable().setStretchAllColumns(true);
+    getMTable().setShrinkAllColumns(true);
+    getMTable().setGravity(80);
+    addView((View)getMTable());
+    AppMethodBeat.o(138653);
   }
   
   public final RadarSpecialTableLayout getMTable()
   {
-    AppMethodBeat.i(103004);
-    RadarSpecialTableLayout localRadarSpecialTableLayout = this.pRG;
-    if (localRadarSpecialTableLayout == null) {
-      j.ays("mTable");
+    AppMethodBeat.i(138650);
+    RadarSpecialTableLayout localRadarSpecialTableLayout = this.Ntd;
+    if (localRadarSpecialTableLayout != null)
+    {
+      AppMethodBeat.o(138650);
+      return localRadarSpecialTableLayout;
     }
-    AppMethodBeat.o(103004);
-    return localRadarSpecialTableLayout;
+    s.bIx("mTable");
+    AppMethodBeat.o(138650);
+    return null;
   }
   
-  public final RadarSpecialGridView.a getOnItemClickListener()
+  public final a getOnItemClickListener()
   {
-    return this.pRF;
+    return this.Ntc;
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = 0;
-    AppMethodBeat.i(103006);
+    AppMethodBeat.i(138652);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (getChildCount() > 0)
     {
       View localView = getChildAt(0);
-      paramInt1 = getScrollX();
-      j.p(localView, "child");
-      paramInt1 = paramInt1 + localView.getWidth() - this.pRI;
-      this.pRI = localView.getWidth();
+      paramInt1 = getScrollX() + localView.getWidth() - this.Ntf;
+      this.Ntf = localView.getWidth();
       if (paramInt1 > 0)
       {
         if (getChildCount() <= 0) {
-          break label156;
+          break label138;
         }
         localView = getChildAt(0);
-        paramInt2 = getScrollY();
-        j.p(localView, "child");
-        paramInt3 = paramInt2 + localView.getHeight() - this.pRH;
-        this.pRH = localView.getHeight();
+        paramInt3 = getScrollY() + localView.getHeight() - this.Nte;
+        this.Nte = localView.getHeight();
         paramInt2 = i;
         if (paramInt3 <= 0) {}
       }
     }
-    label156:
+    label138:
     for (paramInt2 = paramInt3;; paramInt2 = getScrollY())
     {
       scrollTo(paramInt1, paramInt2);
-      AppMethodBeat.o(103006);
+      AppMethodBeat.o(138652);
       return;
       paramInt1 = 0;
       break;
@@ -112,20 +91,26 @@ public final class RadarSpecialGridView
   
   public final void setMTable(RadarSpecialTableLayout paramRadarSpecialTableLayout)
   {
-    AppMethodBeat.i(103005);
-    j.q(paramRadarSpecialTableLayout, "<set-?>");
-    this.pRG = paramRadarSpecialTableLayout;
-    AppMethodBeat.o(103005);
+    AppMethodBeat.i(138651);
+    s.u(paramRadarSpecialTableLayout, "<set-?>");
+    this.Ntd = paramRadarSpecialTableLayout;
+    AppMethodBeat.o(138651);
   }
   
-  public final void setOnItemClickListener(RadarSpecialGridView.a parama)
+  public final void setOnItemClickListener(a parama)
   {
-    this.pRF = parama;
+    this.Ntc = parama;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "", "onItemClick", "", "position", "", "view", "Landroid/view/View;", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface a
+  {
+    public abstract void c(int paramInt, View paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarSpecialGridView
  * JD-Core Version:    0.7.0.1
  */

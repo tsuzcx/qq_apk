@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.videoplatform.api;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class VideoPlayParam
 {
   public VideoPlayerCallback mCallback;
+  public ArrayList<String> mCookies;
   public String mFileID;
   public long mFileSize;
   public boolean mIsLocal;
@@ -16,30 +18,59 @@ public class VideoPlayParam
   public String mSavePath;
   public int mSceneId;
   public String mSceneName;
+  public long mStartPlayPosMs;
   public String[] mUrls;
   public long mVideoFileTimeMs;
+  public int mVideoFormat = 101;
   public String mVideoPath;
   
   public boolean isSameVideo(Object paramObject)
   {
-    if (!(paramObject instanceof VideoPlayParam)) {}
-    do
+    boolean bool1 = paramObject instanceof VideoPlayParam;
+    boolean bool2 = false;
+    if (!bool1) {
+      return false;
+    }
+    paramObject = (VideoPlayParam)paramObject;
+    bool1 = bool2;
+    if (paramObject.mIsLocal == this.mIsLocal)
     {
-      do
+      bool1 = bool2;
+      if (paramObject.mIsLoop == this.mIsLoop)
       {
-        return false;
-        paramObject = (VideoPlayParam)paramObject;
-      } while ((paramObject.mIsLocal != this.mIsLocal) || (paramObject.mIsLoop != this.mIsLoop) || (paramObject.mIsMute != this.mIsMute));
-      if ((paramObject.mVideoPath != null) && (this.mVideoPath != null) && (paramObject.mVideoPath.equals(this.mVideoPath))) {
-        return true;
+        if (paramObject.mIsMute != this.mIsMute) {
+          return false;
+        }
+        Object localObject = paramObject.mVideoPath;
+        if (localObject != null)
+        {
+          String str = this.mVideoPath;
+          if ((str != null) && (((String)localObject).equals(str))) {
+            return true;
+          }
+        }
+        paramObject = paramObject.mUrls;
+        bool1 = bool2;
+        if (paramObject != null)
+        {
+          localObject = this.mUrls;
+          bool1 = bool2;
+          if (localObject != null)
+          {
+            bool1 = bool2;
+            if (Arrays.equals(paramObject, (Object[])localObject)) {
+              bool1 = true;
+            }
+          }
+        }
       }
-    } while ((paramObject.mUrls == null) || (this.mUrls == null) || (!Arrays.equals(paramObject.mUrls, this.mUrls)));
-    return true;
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.api.VideoPlayParam
  * JD-Core Version:    0.7.0.1
  */

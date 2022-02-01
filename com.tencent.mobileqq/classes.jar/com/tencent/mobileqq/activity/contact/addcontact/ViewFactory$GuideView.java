@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahjf;
-import ahjg;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -10,20 +8,16 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class ViewFactory$GuideView
   extends LinearLayout
   implements View.OnClickListener
 {
-  public static final int a;
-  public ahjg a;
-  private int b = -1;
-  
-  static
-  {
-    jdField_a_of_type_Int = 3;
-  }
+  public static final int b = 2;
+  public ViewFactory.GuideView.OnItemClickListener a;
+  private int c = -1;
   
   public ViewFactory$GuideView(Context paramContext)
   {
@@ -36,9 +30,9 @@ public class ViewFactory$GuideView
     setOrientation(1);
     paramContext = LayoutInflater.from(paramContext);
     int i = 0;
-    while (i < jdField_a_of_type_Int)
+    while (i < b)
     {
-      addView(paramContext.inflate(2131558465, this, false));
+      addView(paramContext.inflate(2131624055, this, false));
       i += 1;
     }
   }
@@ -47,25 +41,31 @@ public class ViewFactory$GuideView
   {
     int j = getChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131367409)).setText(paramString);
-      String str = localView.getContentDescription().toString();
-      int k = str.length();
-      int m = str.indexOf(":");
-      if ((m == -1) || (m == k - 1)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localView.setContentDescription(str.substring(0, m + 1) + paramString);
+      ((TextView)localView.findViewById(2131434503)).setText(paramString);
+      Object localObject = localView.getContentDescription();
+      if (localObject == null) {
+        localObject = "";
+      } else {
+        localObject = ((CharSequence)localObject).toString();
       }
+      int k = ((String)localObject).length();
+      int m = ((String)localObject).indexOf(":");
+      if ((m != -1) && (m != k - 1))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((String)localObject).substring(0, m + 1));
+        localStringBuilder.append(paramString);
+        localView.setContentDescription(localStringBuilder.toString());
+      }
+      i += 1;
     }
   }
   
-  private void a(ArrayList<ahjf> paramArrayList, String paramString)
+  private void a(ArrayList<ViewFactory.GuideView.DataHolder> paramArrayList, String paramString)
   {
     int j = getChildCount();
     int i = 0;
@@ -73,33 +73,41 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setOnClickListener(this);
-      localView.setTag(Integer.valueOf(((ahjf)paramArrayList.get(i)).b));
-      localView.setTag(((ahjf)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131367404)).setImageResource(((ahjf)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131367419)).setText(localView.getContext().getResources().getString(((ahjf)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
-      ((TextView)localView.findViewById(2131367409)).setText(paramString);
-      localView.setContentDescription(getResources().getString(((ahjf)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
+      localView.setTag(Integer.valueOf(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b));
+      localView.setTag(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b, paramString);
+      ((ImageView)localView.findViewById(2131434498)).setImageResource(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b);
+      Object localObject = (TextView)localView.findViewById(2131434514);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localView.getContext().getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).a));
+      localStringBuilder.append(":");
+      ((TextView)localObject).setText(localStringBuilder.toString());
+      ((TextView)localView.findViewById(2131434503)).setText(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).a));
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(paramString);
+      localView.setContentDescription(((StringBuilder)localObject).toString());
       i += 1;
     }
   }
   
-  public ahjf a(int paramInt)
+  public ViewFactory.GuideView.DataHolder a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
-    case 80000000: 
-      return new ahjf(2131689718, 2130844326);
+    case 80000002: 
+      return new ViewFactory.GuideView.DataHolder(2131886282, 2130846147);
     case 80000001: 
-      return new ahjf(2131689720, 2130844327);
+      return new ViewFactory.GuideView.DataHolder(2131886283, 2130846146);
     }
-    return new ahjf(2131689719, 2130844328);
+    return new ViewFactory.GuideView.DataHolder(2131886281, 2130846145);
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (this.b != paramInt)
+    if (this.c != paramInt)
     {
       ArrayList localArrayList = new ArrayList(3);
       int[] arrayOfInt = ViewFactory.a(paramInt);
@@ -110,37 +118,45 @@ public class ViewFactory$GuideView
         localArrayList.add(a(arrayOfInt[i]));
         i += 1;
       }
-      this.b = paramInt;
+      this.c = paramInt;
       a(localArrayList, paramString);
       return;
     }
     a(paramString);
   }
   
+  public ViewFactory.GuideView.OnItemClickListener getListener()
+  {
+    return this.a;
+  }
+  
   public void onClick(View paramView)
   {
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = (String)paramView.getTag(i);
+    String str = (String)paramView.getTag(i);
     switch (i)
     {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Ahjg != null) {
-        this.jdField_a_of_type_Ahjg.a(i, paramView);
-      }
-      return;
-      i = 80000000;
-      continue;
-      i = 80000001;
-      continue;
+    default: 
+      break;
+    case 2130846147: 
       i = 80000002;
+      break;
+    case 2130846146: 
+      i = 80000001;
+      break;
+    case 2130846145: 
+      i = 80000000;
     }
+    ViewFactory.GuideView.OnItemClickListener localOnItemClickListener = this.a;
+    if (localOnItemClickListener != null) {
+      localOnItemClickListener.a(i, str);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setListener(ahjg paramahjg)
+  public void setListener(ViewFactory.GuideView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_Ahjg = paramahjg;
+    this.a = paramOnItemClickListener;
   }
 }
 

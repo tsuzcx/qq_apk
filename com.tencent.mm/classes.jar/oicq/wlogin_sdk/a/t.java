@@ -6,38 +6,38 @@ import oicq.wlogin_sdk.tools.util;
 public final class t
   extends a
 {
-  public int CNJ = 0;
+  public int ajHW = 0;
   
   public t()
   {
-    this.CMD = 282;
+    this.ajGQ = 282;
   }
   
-  public final Boolean erf()
+  public final Boolean kGl()
   {
-    AppMethodBeat.i(96503);
-    if (this.CNn < 5)
+    AppMethodBeat.i(88142);
+    if (this.ajHA < 5)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96503);
+      AppMethodBeat.o(88142);
       return localBoolean;
     }
-    int i = util.ad(this.CMx, this.CNm + 2 + 1 + 1);
-    if (this.CNn < i + 5)
+    int i = util.ap(this.ajGK, this.ajHz + 2 + 1 + 1);
+    if (this.ajHA < i + 5)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96503);
+      AppMethodBeat.o(88142);
       return localBoolean;
     }
-    this.CNJ = i;
+    this.ajHW = i;
     Boolean localBoolean = Boolean.TRUE;
-    AppMethodBeat.o(96503);
+    AppMethodBeat.o(88142);
     return localBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.t
  * JD-Core Version:    0.7.0.1
  */

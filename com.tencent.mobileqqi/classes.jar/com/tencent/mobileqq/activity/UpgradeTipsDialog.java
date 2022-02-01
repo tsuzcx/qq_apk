@@ -31,7 +31,7 @@ import com.tencent.mobileqq.utils.OSBuilderVersion;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import cooperation.qzone.QZoneHelper;
-import dul;
+import duk;
 import protocol.KQQConfig.UpgradeInfo;
 
 public class UpgradeTipsDialog
@@ -91,7 +91,7 @@ public class UpgradeTipsDialog
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((WebView)paramView.findViewById(2131233235));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = ((WebView)paramView.findViewById(2131233234));
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setVerticalFadingEdgeEnabled(false);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setFadingEdgeLength(0);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setHorizontalFadingEdgeEnabled(false);
@@ -102,20 +102,20 @@ public class UpgradeTipsDialog
       this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibility");
       this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibilityTraversal");
     }
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(new dul(this));
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(new duk(this));
     WebSettings localWebSettings = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
     localWebSettings.setUserAgentString(localWebSettings.getUserAgentString() + " " + QZoneHelper.a());
     localWebSettings.setJavaScriptEnabled(true);
     localWebSettings.setCacheMode(2);
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge = new JsBridge();
     this.jdField_a_of_type_ComTencentMobileqqJsbridgeJsBridge.a(new UpgradeTipsDialog.JsCover(this), "qqupgrade");
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131233231));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131233230));
     boolean bool = ConfigHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.b = ((Button)paramView.findViewById(2131233234));
+    this.b = ((Button)paramView.findViewById(2131233233));
     this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131233233));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131233232));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (UpgradeController.a().a() == 4) {
       this.jdField_a_of_type_AndroidWidgetButton.setText(2131562241);

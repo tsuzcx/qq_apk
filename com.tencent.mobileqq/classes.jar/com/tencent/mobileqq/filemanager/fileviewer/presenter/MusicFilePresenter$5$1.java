@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import arho;
-import armi;
-import arof;
+import com.tencent.mobileqq.filebrowser.FileViewMusicService;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
 
 class MusicFilePresenter$5$1
   implements Runnable
@@ -11,17 +10,17 @@ class MusicFilePresenter$5$1
   
   public void run()
   {
-    if ((this.a.this$0.jdField_a_of_type_Arho != null) && (this.a.this$0.jdField_a_of_type_Arho.b(armi.a(this.a.this$0))))
+    if ((this.a.this$0.b != null) && (this.a.this$0.b.b(MusicFilePresenter.a(this.a.this$0))))
     {
-      int i = this.a.this$0.jdField_a_of_type_Arho.a();
+      int i = this.a.this$0.b.b();
       this.a.this$0.b(i);
-      this.a.this$0.jdField_a_of_type_Arof.c(i);
+      this.a.this$0.a.c(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.5.1
  * JD-Core Version:    0.7.0.1
  */

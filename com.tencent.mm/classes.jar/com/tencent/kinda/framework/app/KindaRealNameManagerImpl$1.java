@@ -1,32 +1,47 @@
 package com.tencent.kinda.framework.app;
 
-import android.app.Activity;
-import com.tencent.kinda.gen.VoidCallback;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.id_verify.a.a;
-import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
+import com.tencent.mm.autogen.a.aeh;
+import com.tencent.mm.autogen.a.aeh.a;
+import com.tencent.mm.plugin.wallet_core.ui.w;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
 
 class KindaRealNameManagerImpl$1
-  implements a.a
+  extends IListener<aeh>
 {
-  KindaRealNameManagerImpl$1(KindaRealNameManagerImpl paramKindaRealNameManagerImpl, VoidCallback paramVoidCallback1, VoidCallback paramVoidCallback2) {}
-  
-  public void run(Activity paramActivity)
+  KindaRealNameManagerImpl$1(KindaRealNameManagerImpl paramKindaRealNameManagerImpl, q paramq)
   {
-    AppMethodBeat.i(144396);
-    if ((paramActivity instanceof WalletPwdConfirmUI))
+    super(paramq);
+    AppMethodBeat.i(226373);
+    this.__eventId = aeh.class.getName().hashCode();
+    AppMethodBeat.o(226373);
+  }
+  
+  public boolean callback(aeh paramaeh)
+  {
+    AppMethodBeat.i(226376);
+    if (KindaRealNameManagerImpl.access$000(this.this$0) != null)
     {
-      this.val$successCallback.call();
-      AppMethodBeat.o(144396);
-      return;
+      Log.i("KindaRealNameManagerImpl", "privacyDutyIListener callback：%s", new Object[] { Boolean.valueOf(paramaeh.iiT.hCQ) });
+      if (!paramaeh.iiT.hCQ) {
+        break label66;
+      }
+      KindaRealNameManagerImpl.access$000(this.this$0).agree();
     }
-    this.val$cancelCallback.call();
-    AppMethodBeat.o(144396);
+    for (;;)
+    {
+      AppMethodBeat.o(226376);
+      return true;
+      label66:
+      KindaRealNameManagerImpl.access$000(this.this$0).cancel();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaRealNameManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

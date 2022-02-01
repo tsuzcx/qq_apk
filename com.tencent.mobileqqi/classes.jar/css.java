@@ -1,23 +1,16 @@
 import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
 import java.util.List;
 
-public class css
-  extends GameCenterObserver
+class css
+  implements Runnable
 {
-  public css(LebaListMgrActivity paramLebaListMgrActivity) {}
+  css(csr paramcsr, List paramList) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
-    }
-    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
-    {
-      List localList = LebaShowListManager.a().a();
-      this.a.runOnUiThread(new cst(this, localList));
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Csr.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Csr.a).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
 }

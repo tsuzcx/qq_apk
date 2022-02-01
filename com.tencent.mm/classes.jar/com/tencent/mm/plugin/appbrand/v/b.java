@@ -1,68 +1,58 @@
 package com.tencent.mm.plugin.appbrand.v;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.d.a.l;
-import com.tencent.mm.d.a.t;
-import com.tencent.mm.d.a.t.a;
-import com.tencent.mm.d.a.u;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.v.c.c;
+import com.tencent.mm.plugin.appbrand.v.c.d;
+import com.tencent.mm.plugin.appbrand.v.c.e;
+import com.tencent.mm.plugin.appbrand.v.c.f;
+import com.tencent.mm.plugin.appbrand.v.c.g;
+import com.tencent.mm.plugin.appbrand.v.c.h;
+import com.tencent.mm.plugin.appbrand.v.c.i;
+import com.tencent.mm.plugin.appbrand.v.c.j;
+import com.tencent.mm.plugin.appbrand.v.c.k;
+import java.util.HashMap;
+import java.util.Map;
 
-class b
-  extends t
+public final class b
 {
-  b(u paramu)
+  private static final Map<Integer, com.tencent.mm.plugin.appbrand.v.a.a> tqo;
+  
+  static
   {
-    super(paramu);
+    AppMethodBeat.i(147368);
+    tqo = new HashMap();
+    a(new com.tencent.mm.plugin.appbrand.v.c.b());
+    a(new g());
+    a(new i());
+    a(new k());
+    a(new j());
+    a(new f());
+    a(new e());
+    a(new h());
+    a(new com.tencent.mm.plugin.appbrand.v.c.a());
+    a(new c());
+    a(new d());
+    AppMethodBeat.o(147368);
   }
   
-  public final void a(l paraml, t.a parama)
+  public static com.tencent.mm.plugin.appbrand.v.a.a Cx(int paramInt)
   {
-    AppMethodBeat.i(140991);
-    if ((parama instanceof a))
-    {
-      String str = ((a)parama).jxn;
-      if (!bo.isNullOrNil(str))
-      {
-        ab.i("MicroMsg.V8EngineWorkerManagerLU", "hy: %s has sourcemap", new Object[] { parama.filePath });
-        paraml.a(str, null);
-      }
-    }
-    ab.i("MicroMsg.V8EngineWorkerManagerLU", "hy: evaluating %s", new Object[] { parama.filePath });
-    long l = System.currentTimeMillis();
-    paraml.a(parama.filePath, parama.script, new b.1(this, parama, l));
-    AppMethodBeat.o(140991);
+    AppMethodBeat.i(147366);
+    com.tencent.mm.plugin.appbrand.v.a.a locala = (com.tencent.mm.plugin.appbrand.v.a.a)tqo.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(147366);
+    return locala;
   }
   
-  protected void a(t.a parama, long paramLong) {}
-  
-  static final class a
-    extends t.a
+  private static void a(com.tencent.mm.plugin.appbrand.v.a.a parama)
   {
-    String appId;
-    String jxn;
-    boolean jxo;
-    
-    a(t.a parama, String paramString1, String paramString2, boolean paramBoolean)
-    {
-      super(parama.script);
-      this.jxn = paramString1;
-      this.appId = paramString2;
-      this.jxo = paramBoolean;
-    }
-    
-    a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-    {
-      super(paramString2);
-      this.jxn = null;
-      this.appId = paramString3;
-      this.jxo = paramBoolean;
-    }
+    AppMethodBeat.i(147367);
+    tqo.put(Integer.valueOf(parama.cCX()), parama);
+    AppMethodBeat.o(147367);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.v.b
  * JD-Core Version:    0.7.0.1
  */

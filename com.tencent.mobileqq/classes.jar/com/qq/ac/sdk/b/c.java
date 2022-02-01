@@ -28,32 +28,34 @@ public final class c
     HashMap localHashMap = new HashMap();
     localAcMultiPictureListResponse.setMapData(localHashMap);
     long l = System.currentTimeMillis();
-    for (;;)
+    int i;
+    try
     {
-      try
+      JSONArray localJSONArray1 = new JSONArray(paramString);
+      if (localJSONArray1.length() > 0)
       {
-        JSONArray localJSONArray1 = new JSONArray(paramString);
-        if (localJSONArray1.length() <= 0) {
-          continue;
-        }
         i = 0;
-        if (i < localJSONArray1.length())
+        while (i < localJSONArray1.length())
         {
           ArrayList localArrayList = new ArrayList();
           paramString = (JSONObject)localJSONArray1.get(i);
-          String str2 = paramString.optString("img_host");
+          String str1 = paramString.optString("img_host");
           int k = paramString.optInt("img_url_type");
-          String str3 = paramString.optString("chapter_id");
+          String str2 = paramString.optString("chapter_id");
           JSONArray localJSONArray2 = paramString.getJSONArray("data");
           int j = 0;
-          if (j < localJSONArray2.length())
+          while (j < localJSONArray2.length())
           {
             AcPicture localAcPicture = new AcPicture();
             JSONObject localJSONObject = (JSONObject)localJSONArray2.get(j);
-            String str1 = localJSONObject.getString("img_url");
-            paramString = str1;
-            if (k == 1) {
-              paramString = str2 + str1;
+            localObject = localJSONObject.getString("img_url");
+            paramString = (String)localObject;
+            if (k == 1)
+            {
+              paramString = new StringBuilder();
+              paramString.append(str1);
+              paramString.append((String)localObject);
+              paramString = paramString.toString();
             }
             localAcPicture.setImgUrl(paramString);
             localAcPicture.setWidth(localJSONObject.getInt("width"));
@@ -62,38 +64,43 @@ public final class c
             localAcPicture.setImgId(localJSONObject.optInt("img_id"));
             localArrayList.add(localAcPicture);
             j += 1;
-            continue;
           }
-          localHashMap.put(str3, localArrayList);
+          localHashMap.put(str2, localArrayList);
           i += 1;
-          continue;
         }
         i = 2;
       }
-      catch (Exception paramString)
+      else
       {
-        paramString.printStackTrace();
-        int i = -60005;
-        continue;
+        i = -60004;
       }
-      localAcMultiPictureListResponse.setStatusCode(i);
-      b.a(a, "onConver time = " + (System.currentTimeMillis() - Long.valueOf(l).longValue()));
-      return localAcMultiPictureListResponse;
-      i = -60004;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      i = -60005;
+    }
+    localAcMultiPictureListResponse.setStatusCode(i);
+    paramString = a;
+    Object localObject = new StringBuilder("onConver time = ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - Long.valueOf(l).longValue());
+    b.a(paramString, ((StringBuilder)localObject).toString());
+    return localAcMultiPictureListResponse;
   }
   
   public final void onFailure(int paramInt)
   {
-    if (this.b != null) {
-      this.b.onFailure(paramInt);
+    AcMultiPictureListListener localAcMultiPictureListListener = this.b;
+    if (localAcMultiPictureListListener != null) {
+      localAcMultiPictureListListener.onFailure(paramInt);
     }
   }
   
   public final void onResponse(String paramString)
   {
-    if (this.b != null) {
-      this.b.onResponse(a(paramString));
+    AcMultiPictureListListener localAcMultiPictureListListener = this.b;
+    if (localAcMultiPictureListListener != null) {
+      localAcMultiPictureListListener.onResponse(a(paramString));
     }
   }
   
@@ -104,7 +111,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.ac.sdk.b.c
  * JD-Core Version:    0.7.0.1
  */

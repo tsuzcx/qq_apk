@@ -8,11 +8,11 @@ public final class RequestBindMobile
   extends JceStruct
 {
   static int cache_type;
-  public boolean isFromChangeBind;
-  public boolean isFromUni;
+  public boolean isFromChangeBind = false;
+  public boolean isFromUni = false;
   public String mobileNo = "";
   public String nationCode = "";
-  public long originBinder;
+  public long originBinder = 0L;
   public int type = 0;
   
   public RequestBindMobile() {}
@@ -49,7 +49,7 @@ public final class RequestBindMobile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestBindMobile
  * JD-Core Version:    0.7.0.1
  */

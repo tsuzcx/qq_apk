@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class st_Games_OrderData
   extends JceStruct
 {
-  public long uFrdRanking;
-  public long uWinCount;
+  public long uFrdRanking = 0L;
+  public long uWinCount = 0L;
   
   public st_Games_OrderData() {}
   
@@ -32,7 +32,7 @@ public final class st_Games_OrderData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS_GAMES.st_Games_OrderData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,29 @@
+import android.util.Log;
 import com.tencent.open.appcommon.js.BaseInterface;
 import com.tencent.smtt.sdk.WebView;
 import java.util.List;
-import java.util.TimerTask;
 
 public class hko
-  extends TimerTask
+  implements Runnable
 {
-  public hko(BaseInterface paramBaseInterface, WebView paramWebView, long paramLong) {}
+  public hko(BaseInterface paramBaseInterface, long paramLong, List paramList, WebView paramWebView) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.optLef <= 0)
+    String str = "javascript:QzoneApp.fire('batchCallback',{'guid':" + this.jdField_a_of_type_Long + ",'r':0,'data':" + this.jdField_a_of_type_JavaUtilList.toString() + "});";
+    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {}
+    try
     {
-      cancel();
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.firstIn = true;
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
+      label58:
+      Log.i(BaseInterface.TAG, "Response<callBatch> AsyncInterface result : " + str);
+      return;
+      Log.e(BaseInterface.TAG, "Response<callBatch> AsyncInterface result : webview is null !!!");
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallbackQueue.size() > 0) {
-      this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseInterface.batchCallback(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Long);
+    catch (Exception localException)
+    {
+      break label58;
     }
   }
 }

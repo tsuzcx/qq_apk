@@ -1,0 +1,85 @@
+{
+  "version": "1.5.2",
+  "minLiteAppSDK": "1.2.0",
+  "buildType": "production",
+  "md5": {
+    "Vue3ForFlutterPage.framework.js": "fbca6d314955db920929f7ee34c923a6",
+    "VueForFlutterPage.framework.js": "e818b1fdcac1f9d033752805309c9789",
+    "VuexForStore.framework.js": "5f84b8e3c06eb27950bd59e667f88efb",
+    "flutter-view.base.js": "1a50d7418ffafd5775af8e1b1e48d4b0",
+    "flutter-view.runtime.js": "aadf5d2e02f0db4d9d92fe5e24a80651",
+    "starter.js": "d9978b723746664d2ab2dcc74e549f65",
+    "store.base.js": "19dc1f6d28ee125ca193379e493f053f",
+    "store.runtime.js": "3bcaab09e1cbb8cef47d7e29ecef893c"
+  },
+  "buildTime": "2021/11/25 11:34:32",
+  "template": {
+    "pageCodeTemplate": "\n    function __runner_%instanceId%_%uuid%__(globalThis,runInInstance,createInstance,destroyInstance,callJS,register,setUp,liteAppVDom,reporter,setRuntimeConfig,baseLibApi,frameworks,System) {\n      with (globalThis) {\n        (function() {\n          'use strict';\n          %code%\n        }.call(globalThis));\n      }\n    }\n  ",
+    "libCodeTemplate": "\n    function __runner_%instanceId%_%uuid%__(module,globalThis,runInInstance,createInstance,destroyInstance,callJS,register,setUp,liteAppVDom,reporter,setRuntimeConfig,baseLibApi,frameworks,System) {\n      with (globalThis) {\n        (function() {\n          'use strict';\n          %code%\n        }.call(globalThis));\n      }\n    }\n  ",
+    "storeCodeTemplate": "\n    function __runner_%instanceId%_%uuid%__(globalThis,runInInstance,createInstance,destroyInstance,callJS,register,setUp,liteAppVDom,reporter,setRuntimeConfig,baseLibApi,frameworks,System) {\n      with (globalThis) {\n        (function() {\n          'use strict';\n          %code%\n        }.call(globalThis));\n      }\n    }\n  "
+  },
+  "baseLibBundle": {
+    "flutterView": {
+      "base": [
+        {
+          "path": "./starter.js"
+        },
+        {
+          "code": "System.currentModuleId = './flutter-view.base.js'"
+        },
+        {
+          "path": "./flutter-view.base.js"
+        },
+        {
+          "code": "System.currentModuleId = './flutter-view.runtime.js'"
+        },
+        {
+          "path": "./flutter-view.runtime.js"
+        }
+      ],
+      "VueForFlutterPage": [
+        {
+          "code": "System.currentModuleId = './VueForFlutterPage.framework.js'"
+        },
+        {
+          "path": "./VueForFlutterPage.framework.js"
+        }
+      ],
+      "Vue3ForFlutterPage": [
+        {
+          "code": "System.currentModuleId = './Vue3ForFlutterPage.framework.js'"
+        },
+        {
+          "path": "./Vue3ForFlutterPage.framework.js"
+        }
+      ]
+    },
+    "store": {
+      "base": [
+        {
+          "path": "./starter.js"
+        },
+        {
+          "code": "System.currentModuleId = './store.base.js'"
+        },
+        {
+          "path": "./store.base.js"
+        },
+        {
+          "code": "System.currentModuleId = './store.runtime.js'"
+        },
+        {
+          "path": "./store.runtime.js"
+        }
+      ],
+      "VuexForStore": [
+        {
+          "code": "System.currentModuleId = './VuexForStore.framework.js'"
+        },
+        {
+          "path": "./VuexForStore.framework.js"
+        }
+      ]
+    }
+  }
+}

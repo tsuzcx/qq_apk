@@ -1,35 +1,26 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
-import android.view.View;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
 
 final class AppBrandProfileUI$19
-  extends RecyclerView.h
+  implements MenuItem.OnMenuItemClickListener
 {
   AppBrandProfileUI$19(AppBrandProfileUI paramAppBrandProfileUI) {}
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(133043);
-    int i = a.ao(this.iOj, 2131428056);
-    int j = a.ao(this.iOj, 2131428051);
-    if (RecyclerView.bq(paramView) == 0) {}
-    for (paramRect.left = i;; paramRect.left = 0)
-    {
-      paramRect.right = j;
-      AppMethodBeat.o(133043);
-      return;
-    }
+    AppMethodBeat.i(322513);
+    AppBrandProfileUI.a(this.udA);
+    AppBrandProfileUI.a(this.udA, 27, 1);
+    AppMethodBeat.o(322513);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI.19
  * JD-Core Version:    0.7.0.1
  */

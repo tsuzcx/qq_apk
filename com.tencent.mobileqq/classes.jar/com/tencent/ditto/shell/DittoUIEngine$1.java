@@ -11,13 +11,17 @@ class DittoUIEngine$1
   
   public boolean onJsonField(String paramString, Object paramObject)
   {
-    if (((paramObject instanceof String)) && (((String)paramObject).startsWith("{{")))
+    if ((paramObject instanceof String))
     {
-      paramObject = MustacheParser.parse(((String)paramObject).substring(2, ((String)paramObject).length() - 2));
-      if (paramObject != null)
+      paramObject = (String)paramObject;
+      if (paramObject.startsWith("{{"))
       {
-        ((ArrayMap)this.val$kvcSet).put(paramString, paramObject);
-        return true;
+        paramObject = MustacheParser.parse(paramObject.substring(2, paramObject.length() - 2));
+        if (paramObject != null)
+        {
+          ((ArrayMap)this.val$kvcSet).put(paramString, paramObject);
+          return true;
+        }
       }
     }
     return false;
@@ -25,7 +29,7 @@ class DittoUIEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.shell.DittoUIEngine.1
  * JD-Core Version:    0.7.0.1
  */

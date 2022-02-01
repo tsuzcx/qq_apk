@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0dip" android:textColor="@color/aor" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/jq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="16.0dip" android:lineSpacingExtra="4.0dip" android:fontFamily="PingFangSC-Medium" />
+    <com.tencent.mobileqq.troop.widget.RoundRectUrlImageView android:id="@id/image" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_marginTop="@dimen/n2" android:scaleType="fitXY" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:id="@id/mnj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n7" android:layout_marginBottom="33.0dip" android:fontFamily="PingFangSC-Regular" />
+</LinearLayout>

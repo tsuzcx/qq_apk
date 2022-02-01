@@ -26,52 +26,49 @@ class c$a
       }
       return;
     }
-    b localb;
+    Object localObject;
     if (c.l == this.c) {
-      localb = (b)c.o.remove(Integer.valueOf(this.b));
+      localObject = (b)c.o.remove(Integer.valueOf(this.b));
+    } else if (c.m == this.c) {
+      localObject = (b)c.n.remove(Integer.valueOf(this.b));
+    } else {
+      localObject = null;
     }
-    for (;;)
+    if (localObject == null)
     {
-      if (localb == null)
+      if (QLog.isColorLevel())
       {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("MSF.D.MonitorSocket", 2, "taskRun dataFlowItem is null.,type:" + this.c + " ,keyhashCode:" + this.b);
-        return;
-        if (c.m != this.c) {
-          break label255;
-        }
-        localb = (b)c.n.remove(Integer.valueOf(this.b));
-        continue;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("taskRun dataFlowItem is null.,type:");
+        ((StringBuilder)localObject).append(this.c);
+        ((StringBuilder)localObject).append(" ,keyhashCode:");
+        ((StringBuilder)localObject).append(this.b);
+        QLog.d("MSF.D.MonitorSocket", 2, ((StringBuilder)localObject).toString());
       }
-      if ((localb.k > 0L) && (localb.l != null) && (System.currentTimeMillis() - localb.k < 3000L))
-      {
-        c.d().postDelayed(localb.l, 10000L);
-        if (c.l == this.c)
-        {
-          c.o.put(Integer.valueOf(this.b), localb);
-          return;
-        }
-        if (c.m != this.c) {
-          break;
-        }
-        c.n.put(Integer.valueOf(this.b), localb);
-        return;
-      }
-      c.a(this.a);
-      localb.l = null;
-      BaseApplication.monitor.insertData(localb);
-      c.a(this.a, localb);
       return;
-      label255:
-      localb = null;
     }
+    if ((((b)localObject).k > 0L) && (((b)localObject).l != null) && (System.currentTimeMillis() - ((b)localObject).k < 3000L))
+    {
+      c.d().postDelayed(((b)localObject).l, 10000L);
+      if (c.l == this.c)
+      {
+        c.o.put(Integer.valueOf(this.b), localObject);
+        return;
+      }
+      if (c.m == this.c) {
+        c.n.put(Integer.valueOf(this.b), localObject);
+      }
+      return;
+    }
+    c.a(this.a);
+    ((b)localObject).l = null;
+    BaseApplication.monitor.insertData((b)localObject);
+    c.a(this.a, (b)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.c.a
  * JD-Core Version:    0.7.0.1
  */

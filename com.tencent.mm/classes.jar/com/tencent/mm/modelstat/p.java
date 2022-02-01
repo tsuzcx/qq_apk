@@ -1,201 +1,191 @@
 package com.tencent.mm.modelstat;
 
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.modelsns.d;
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.cgf;
-import com.tencent.mm.protocal.protobuf.cgh;
-import com.tencent.mm.protocal.protobuf.cgi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import com.tencent.mm.am.g.d;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.model.az.e;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.y;
+import com.tencent.mm.network.ad;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.p.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storagebase.h.b;
+import com.tencent.threadpool.i;
+import java.util.HashMap;
 
-public final class p
+public class p
+  implements be
 {
-  public static String I(bi parambi)
+  private static HashMap<Integer, h.b> baseDBFactories;
+  private com.tencent.mm.network.p oAk;
+  private k oXA;
+  private com.tencent.mm.cp.h<l> oXB;
+  private ad oXC;
+  private com.tencent.mm.cp.h<f> oXD;
+  
+  static
   {
-    AppMethodBeat.i(35595);
-    if (parambi == null)
+    AppMethodBeat.i(151144);
+    HashMap localHashMap = new HashMap();
+    baseDBFactories = localHashMap;
+    localHashMap.put(Integer.valueOf("NETSTAT_TABLE".hashCode()), new h.b()
     {
-      AppMethodBeat.o(35595);
-      return "";
-    }
-    Object localObject = null;
-    if (parambi.bCn())
-    {
-      localObject = j.b.mY(parambi.field_content);
-      if ((localObject == null) || (bo.isNullOrNil(((j.b)localObject).cGU)))
+      public final String[] getSQLs()
       {
-        AppMethodBeat.o(35595);
-        return "";
+        return l.SQL_CREATE;
       }
-      localObject = ((j.b)localObject).cGU;
-    }
-    if (parambi.byk())
-    {
-      parambi = u.vr(parambi.field_imgPath);
-      if ((parambi == null) || (bo.isNullOrNil(parambi.cGU)))
-      {
-        AppMethodBeat.o(35595);
-        return "";
-      }
-      localObject = parambi.cGU;
-    }
-    AppMethodBeat.o(35595);
-    return localObject;
+    });
+    AppMethodBeat.o(151144);
   }
   
-  public static String a(cgi paramcgi)
+  public p()
   {
-    AppMethodBeat.i(35594);
-    if (paramcgi != null)
+    AppMethodBeat.i(151136);
+    this.oXA = new k();
+    this.oXB = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.oXC = new ad();
+    this.oXD = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.oAk = new p.a()
     {
-      Object localObject = paramcgi.xRc;
-      String str2 = "";
-      String str1 = str2;
-      if (!bo.isNullOrNil((String)localObject))
+      public final void onNetworkChange(int paramAnonymousInt)
       {
-        localObject = ((String)localObject).split("\\|");
-        str1 = str2;
-        if (localObject != null)
+        AppMethodBeat.i(151134);
+        if ((paramAnonymousInt != 4) && (paramAnonymousInt != 6))
         {
-          str1 = str2;
-          if (localObject.length > 0) {
-            str1 = localObject[0];
-          }
+          AppMethodBeat.o(151134);
+          return;
         }
+        com.tencent.mm.kernel.h.baH().postToWorkerDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(151132);
+            if (!com.tencent.mm.kernel.h.baC().aZN())
+            {
+              AppMethodBeat.o(151132);
+              return;
+            }
+            p.bNi().bNc();
+            AppMethodBeat.o(151132);
+          }
+          
+          public final String toString()
+          {
+            AppMethodBeat.i(151133);
+            String str = super.toString() + "|onNetworkChange";
+            AppMethodBeat.o(151133);
+            return str;
+          }
+        }, 3000L);
+        AppMethodBeat.o(151134);
       }
-      try
+    };
+    AppMethodBeat.o(151136);
+  }
+  
+  public static f bNi()
+  {
+    AppMethodBeat.i(151137);
+    com.tencent.mm.kernel.h.baC().aZJ();
+    f localf = (f)bNj().oXD.get();
+    AppMethodBeat.o(151137);
+    return localf;
+  }
+  
+  private static p bNj()
+  {
+    AppMethodBeat.i(151138);
+    p localp = (p)y.aL(p.class);
+    AppMethodBeat.o(151138);
+    return localp;
+  }
+  
+  public static l bNk()
+  {
+    AppMethodBeat.i(151139);
+    com.tencent.mm.kernel.h.baC().aZJ();
+    l locall = (l)bNj().oXB.get();
+    AppMethodBeat.o(151139);
+    return locall;
+  }
+  
+  public static void e(g paramg)
+  {
+    AppMethodBeat.i(151140);
+    if (paramg == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.d("MicroMsg.SubCoreStat", "dknetstat setNetworkMoniter  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), Util.getStack() });
+      if (paramg != null) {
+        paramg.a(bNj().oXA);
+      }
+      AppMethodBeat.o(151140);
+      return;
+    }
+  }
+  
+  public static void f(g paramg)
+  {
+    AppMethodBeat.i(151141);
+    if (paramg == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.d("MicroMsg.SubCoreStat", "setKVReportMonitor  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), Util.getStack() });
+      if (paramg != null) {
+        paramg.a(bNj().oXC);
+      }
+      AppMethodBeat.o(151141);
+      return;
+    }
+  }
+  
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.b> getBaseDBFactories()
+  {
+    return baseDBFactories;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(151143);
+    g.d.a(Integer.valueOf(9998), this.oXA);
+    com.tencent.mm.kernel.h.baD().a(this.oAk);
+    com.tencent.mm.model.az.a.okQ = new az.e()
+    {
+      public final void eB(final int paramAnonymousInt1, final int paramAnonymousInt2)
       {
-        paramcgi = String.format("expId=%d&adgroup_id=%s&snsId=%s", new Object[] { Integer.valueOf(paramcgi.xRd), URLEncoder.encode(str1, "UTF-8"), paramcgi.xRb });
-        AppMethodBeat.o(35594);
-        return paramcgi;
+        AppMethodBeat.i(151135);
+        Log.d("MicroMsg.SubCoreStat", "ReportDataFlow [%d][%d][%d] : %s ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(0), Util.getStack() });
+        com.tencent.threadpool.h.ahAA.g(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(242895);
+            m.d(paramAnonymousInt1, paramAnonymousInt2, this.val$type);
+            AppMethodBeat.o(242895);
+          }
+        }, "SubCoreStat-NetStatStorageLogic");
+        AppMethodBeat.o(151135);
       }
-      catch (UnsupportedEncodingException paramcgi)
-      {
-        ab.e("MicroMsg.SnsStatExtUtil", "", new Object[] { paramcgi });
-      }
-    }
-    AppMethodBeat.o(35594);
-    return "";
+    };
+    AppMethodBeat.o(151143);
   }
   
-  public static String a(String paramString, PString paramPString)
+  public void onAccountRelease()
   {
-    AppMethodBeat.i(35593);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(35593);
-      return "";
-    }
-    Object localObject = Base64.decode(paramString, 0);
-    paramString = new cgh();
-    try
-    {
-      paramString.parseFrom((byte[])localObject);
-      localObject = paramString.xQY.xRc;
-      String str = paramString.xQY.xRb;
-      localObject = String.format("snsId=%s&uxInfo=%s&source=%d&snsStatExt=%s", new Object[] { URLEncoder.encode((String)localObject, "UTF-8"), URLEncoder.encode(str, "UTF-8"), Integer.valueOf(paramString.xQY.cpt), URLEncoder.encode(a(paramString.xQY), "UTF-8") });
-      if (paramString.xRa == null) {}
-      for (paramString = "";; paramString = paramString.xRa.nmH)
-      {
-        paramPString.value = paramString;
-        AppMethodBeat.o(35593);
-        return localObject;
-      }
-      return "";
-    }
-    catch (Exception paramString)
-    {
-      ab.printErrStackTrace("MicroMsg.SnsStatExtUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(35593);
-    }
+    AppMethodBeat.i(151142);
+    com.tencent.mm.kernel.h.baD().b(this.oAk);
+    g.d.b(Integer.valueOf(9998), this.oXA);
+    this.oXA = new k();
+    com.tencent.mm.model.az.a.okQ = null;
+    AppMethodBeat.o(151142);
   }
   
-  public static void a(String paramString, d paramd)
-  {
-    AppMethodBeat.i(35589);
-    if (paramd == null)
-    {
-      AppMethodBeat.o(35589);
-      return;
-    }
-    b(paramString, paramd);
-    AppMethodBeat.o(35589);
-  }
-  
-  public static void a(String paramString, StringBuilder paramStringBuilder)
-  {
-    AppMethodBeat.i(35591);
-    if (paramStringBuilder == null)
-    {
-      AppMethodBeat.o(35591);
-      return;
-    }
-    paramString = uI(paramString);
-    StringBuilder localStringBuilder = paramStringBuilder.append(",");
-    if (paramString == null) {}
-    for (int i = -1;; i = paramString.cpt)
-    {
-      localStringBuilder.append(i);
-      paramStringBuilder.append(",").append(a(paramString));
-      AppMethodBeat.o(35591);
-      return;
-    }
-  }
-  
-  public static void b(String paramString, d paramd)
-  {
-    AppMethodBeat.i(35590);
-    if ((bo.isNullOrNil(paramString)) || (paramd == null))
-    {
-      AppMethodBeat.o(35590);
-      return;
-    }
-    paramString = uI(paramString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramString == null) {}
-    for (int i = -1;; i = paramString.cpt)
-    {
-      paramd.k("Source", i + ",");
-      paramd.k("SnsStatExt", a(paramString));
-      AppMethodBeat.o(35590);
-      return;
-    }
-  }
-  
-  public static cgi uI(String paramString)
-  {
-    AppMethodBeat.i(35592);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(35592);
-      return null;
-    }
-    byte[] arrayOfByte = Base64.decode(paramString, 0);
-    paramString = new cgh();
-    try
-    {
-      paramString.parseFrom(arrayOfByte);
-      paramString = paramString.xQY;
-      AppMethodBeat.o(35592);
-      return paramString;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.SnsStatExtUtil", "", new Object[] { localException });
-      }
-    }
-  }
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

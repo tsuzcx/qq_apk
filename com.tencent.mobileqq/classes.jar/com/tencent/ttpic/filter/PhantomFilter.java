@@ -21,7 +21,7 @@ public class PhantomFilter
   extends VideoFilterBase
 {
   public static final String FRAGMENT_SHADER = "mee2180x1667592816x1869181801x1768431726x544237671x1634692198x1980382068x1769566817x1746954094x1885890409x1667593760x1702109234x1920300152x1869562725x1852400754x996504673x1853164042x1919903337x1634934893x1701605485x541340274x1970302569x1634552180x1700029799x1920300152x168442725x1718185589x544043631x1886216563x846357868x1852383300x1232369008x1701273965x1954047316x1600483957x1963604785x1868982638x1931505010x1819307361x1144156773x1886284064x1833530485x1415931745x1970567269x845112690x1853164091x1919903337x1634934893x1701605485x541340274x1970302569x1634552180x1700029799x1920300152x993222501x1768846602x1836216166x1835103008x1919249520x1763722290x1953853550x1734438217x2019906661x1701999988x171652191x1718185589x544043631x1886216563x846357868x1852383300x1232369008x1701273965x1954047316x1600483957x1963604789x1868982638x1931505010x1819307361x1144156773x1886284064x1833530485x1415931745x1970567269x912221554x1853164091x1919903337x1634934893x1701605485x541340274x1970302569x1634552180x1700029799x1920300152x993484645x1768846602x1836216166x1835103008x1919249520x1763722290x1953853550x1734438217x2019906661x1701999988x171653215x1853164042x1919903337x1818632301x544498031x1818321779x1563974501x1853164091x1919903337x1818632301x544498031x1667330159x1534686313x171662648x1768846602x1836216166x1869375008x1864397921x1702061670x945510516x1963604829x1868982638x1713401202x1952542572x1717989152x1500800371x995965019x1853164042x1919903337x1852383341x1953046644x1866689893x997486197x1702234634x1847604323x1634562671x1701593708x1982358638x540304229x1702060386x1869377347x1981820018x540304229x1852140642x1819231076x539587183x538970747x1701978144x1852994932x1633820704x1866687859x544370540x824713258x1647128622x1684956524x1869377347x694234738x1646275360x1684956524x1869377347x539631730x1852140642x1819231076x1630433903x175966779x1768912394x1634541668x690515561x537557792x1981816864x540304229x1986945379x1866691425x544370540x1702109245x1920300152x675557989x1970302569x1634552180x1700029799x1920300152x1948265573x1970567269x1866687858x1768190575x1702125934x168442665x538976288x678588262x544501353x540876905x1763719984x1763720224x1131242868x1953396079x728309819x2065705259x538976266x538976288x1667593760x1869619250x540876915x845374838x1633907496x1767597420x539631709x1954047348x1130721909x1685221231x1952542313x544747109x1718558763x1952805734x1567185752x1931488288x1701601635x542992731x1702109226x1920300152x1869562725x1852400754x778400865x539697273x1936090735x1532589157x992566633x538976266x538976288x1667593760x1634541620x1866689395x544370540x1702240317x807941219x741351468x539766816x171649328x538976266x538976288x543582496x1936683048x1008760878x774905917x2088509488x1936683040x1042315310x774971453x2088509488x1936683040x1008761134x774905917x2088509488x1936683040x1042315566x774971453x2065705264x538976266x538976288x538976288x1935764768x1819231083x1025536623x1667593760x741353524x539766816x807414832x537541417x538976288x2099257376x1936483616x175841381x538976288x538976288x538976288x673212009x1027416169x539570208x538970747x538976288x538976288x538976288x1634541600x1866689395x544370540x1702109245x1920300152x675557989x1970302569x1634552180x1700029799x1920300152x741433189x1936683040x537541417x538976288x538976288x2099257376x1936483616x1718165605x1763715104x540884256x2065705265x538976266x538976288x538976288x538976288x1935764768x1819231083x1025536623x2019914784x1701999988x1764246578x1953853550x1734438217x2019906661x1701999988x539767391x695431024x538970683x538976288x538976288x545071136x1702063205x543582496x543760424x840973629x175841321x538976288x538976288x538976288x538976288x1802723693x1869377347x540876914x1954047348x845509237x1852385348x1232369008x1701273965x1954047316x1600483957x1881156659x992572271x538976266x538976288x538976288x1696628000x543519596x673212009x1025534240x691216445x537557792x538976288x538976288x538976288x1830821920x1131115361x1919904879x1948269856x1970567269x1144153458x1886284072x1833530485x1415931745x1970567269x878667122x1869619244x171649395x538976288x538976288x538976288x1818566781x1763730803x539500646x1027416169x539571232x538970747x538976288x538976288x538976288x1634541600x1866689395x544370540x1702109245x1920300152x675557989x1970302569x1634552180x1700029799x1920300152x741695333x1936683040x537541417x538976288x538976288x2099257376x1936483616x1718165605x1763715104x540884256x2065705269x538976266x538976288x538976288x538976288x1935764768x1819231083x1025536623x2019914784x1701999988x1764246578x1953853550x1734438217x2019906661x1701999988x539768415x695431024x538970683x538976288x538976288x545071136x1702063205x543582496x543760424x908082493x175841321x538976288x538976288x538976288x538976288x1802723693x1869377347x540876914x1954047348x845509237x1852385348x1232369008x1701273965x1954047316x1600483957x1881156663x992572271x538976266x538976288x538976288x1696628000x543519596x673212009x1025534240x691478589x537557792x538976288x538976288x538976288x1830821920x1131115361x1919904879x1948269856x1970567269x1144153458x1886284072x1833530485x1415931745x1970567269x945775986x1869619244x171649395x538976288x538976288x538976288x538970749x538976288x175972384x538976266x538976288x543582496x1935764776x1819231083x1915646575x540884512x825241136x175841321x538976288x538976288x538976288x878929270x2019914784x1701999988x1869377347x540876914x1954047348x845509237x1852385348x1232369008x1701273965x1954047316x744845941x1936683040x537541417x538976288x538976288x1948262432x1970567269x1866687858x779251564x540876897x1667330159x1534686313x706764137x1935764768x1819231083x1915646575x538970683x538976288x1661542432x1635151457x1819231091x1025536623x2020175136x1851876136x1131635062x1919904879x1702109228x1920300152x1819231077x539783791x1954047348x1130721909x1919904879x992567598x538976266x538976288x168459552x538976288x537528957x1730158624x1917214572x1866688353x544370540x1633886269x1935767150x1869377347x2097822578x";
-  private static final String TAG = PhantomFilter.class.getSimpleName();
+  private static final String TAG = "PhantomFilter";
   public static final String VERTEX_SHADER = "mee190x1920234593x1953849961x1702240357x1881158755x1953067887x997093225x1953784074x1969383794x1981834612x540173157x1970302569x2019906676x1701999988x1919905603x1634625892x171664756x2037539190x543649385x845374838x2019914784x1701999988x1919905603x1634625892x171664756x1870006794x1830839401x678324577x175841321x538976288x1348430951x1953067887x544108393x1869619261x1769236851x171667055x538976288x1954047348x1130721909x1685221231x1952542313x540876901x1970302569x2019906676x1701999988x1919905603x1634625892x171664756x2685x";
   private final int MAX_ITEM_SIZE = 8;
   private List<Bitmap> bitmaps = new ArrayList();
@@ -45,121 +45,121 @@ public class PhantomFilter
     float[] arrayOfFloat5 = new float[8];
     Iterator localIterator = this.items.iterator();
     int i = 1;
-    PhantomItem localPhantomItem;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      localPhantomItem = (PhantomItem)localIterator.next();
-      if (i <= 8) {}
-    }
-    else
-    {
-      addParam(new UniformParam.IntParam("itemCount", this.items.size()));
-      addParam(new UniformParam.FloatsParam("scale", arrayOfFloat2));
-      addParam(new UniformParam.FloatsParam("opacity", arrayOfFloat3));
-      addParam(new UniformParam.FloatsParam("blendMode", arrayOfFloat1));
-      addParam(new UniformParam.FloatsParam("offsetX", arrayOfFloat4));
-      addParam(new UniformParam.FloatsParam("offsetY", arrayOfFloat5));
-      return;
-    }
-    label193:
-    int j;
-    Object localObject;
-    if (localPhantomItem.getScale() != 0.0D)
-    {
-      arrayOfFloat2[(i - 1)] = ((float)(1.0D / localPhantomItem.getScale()));
-      arrayOfFloat3[(i - 1)] = ((float)localPhantomItem.getOpacity());
-      arrayOfFloat1[(i - 1)] = localPhantomItem.getBlendMode();
-      arrayOfFloat4[(i - 1)] = ((float)localPhantomItem.getxOffset());
-      arrayOfFloat5[(i - 1)] = ((float)localPhantomItem.getyOffset());
+      PhantomItem localPhantomItem = (PhantomItem)localIterator.next();
+      if (i > 8) {
+        break;
+      }
+      if (localPhantomItem.getScale() != 0.0D) {
+        arrayOfFloat2[(i - 1)] = ((float)(1.0D / localPhantomItem.getScale()));
+      } else {
+        arrayOfFloat2[(i - 1)] = 1.0F;
+      }
+      int j = i - 1;
+      arrayOfFloat3[j] = ((float)localPhantomItem.getOpacity());
+      arrayOfFloat1[j] = localPhantomItem.getBlendMode();
+      arrayOfFloat4[j] = ((float)localPhantomItem.getxOffset());
+      arrayOfFloat5[j] = ((float)localPhantomItem.getyOffset());
       localPhantomItem.setXtime(localPhantomItem.getxRange()[0]);
       localPhantomItem.setYtime(localPhantomItem.getyRange()[0]);
       j = this.maskNames.indexOf(localPhantomItem.getMaskImage());
-      if (j >= 0) {
-        break label481;
-      }
-      localObject = localPhantomItem.getDataPath() + File.separator + localPhantomItem.getMaskImage();
-      if (!((String)localObject).startsWith("assets://")) {
-        break label467;
-      }
-      localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
-      label343:
-      if (BitmapUtils.isLegal((Bitmap)localObject))
+      Object localObject;
+      StringBuilder localStringBuilder;
+      if (j < 0)
       {
-        this.maskNames.add(localPhantomItem.getMaskImage());
-        this.bitmaps.add(localObject);
-        addParam(new UniformParam.TextureBitmapParam("inputImageTexture_" + i, (Bitmap)localObject, 33985 + i, true));
-        LogUtils.d(TAG, "PhantomFitler inputImageTexuture_" + i + " mask bitmap loaded. " + localPhantomItem.getMaskImage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(localPhantomItem.getDataPath());
+        ((StringBuilder)localObject).append(File.separator);
+        ((StringBuilder)localObject).append(localPhantomItem.getMaskImage());
+        localObject = ((StringBuilder)localObject).toString();
+        if (((String)localObject).startsWith("assets://")) {
+          localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
+        } else {
+          localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
+        }
+        if (BitmapUtils.isLegal((Bitmap)localObject))
+        {
+          this.maskNames.add(localPhantomItem.getMaskImage());
+          this.bitmaps.add(localObject);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("inputImageTexture_");
+          localStringBuilder.append(i);
+          addParam(new UniformParam.TextureBitmapParam(localStringBuilder.toString(), (Bitmap)localObject, 33985 + i, true));
+          localObject = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("PhantomFitler inputImageTexuture_");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" mask bitmap loaded. ");
+          localStringBuilder.append(localPhantomItem.getMaskImage());
+          LogUtils.d((String)localObject, localStringBuilder.toString());
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("inputImageTexture_");
+        ((StringBuilder)localObject).append(i);
+        addParam(new UniformParam.TextureBitmapParam(((StringBuilder)localObject).toString(), (Bitmap)this.bitmaps.get(j), 33985 + i, true));
+        localObject = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PhantomFitler inputImageTexuture_");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" mask bitmap already loaded. ");
+        localStringBuilder.append(localPhantomItem.getMaskImage());
+        LogUtils.d((String)localObject, localStringBuilder.toString());
+      }
       i += 1;
-      break;
-      arrayOfFloat2[(i - 1)] = 1.0F;
-      break label193;
-      label467:
-      localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
-      break label343;
-      label481:
-      addParam(new UniformParam.TextureBitmapParam("inputImageTexture_" + i, (Bitmap)this.bitmaps.get(j), 33985 + i, true));
-      LogUtils.d(TAG, "PhantomFitler inputImageTexuture_" + i + " mask bitmap already loaded. " + localPhantomItem.getMaskImage());
     }
+    addParam(new UniformParam.IntParam("itemCount", this.items.size()));
+    addParam(new UniformParam.FloatsParam("scale", arrayOfFloat2));
+    addParam(new UniformParam.FloatsParam("opacity", arrayOfFloat3));
+    addParam(new UniformParam.FloatsParam("blendMode", arrayOfFloat1));
+    addParam(new UniformParam.FloatsParam("offsetX", arrayOfFloat4));
+    addParam(new UniformParam.FloatsParam("offsetY", arrayOfFloat5));
   }
   
   public void updatePreview(long paramLong)
   {
-    float[] arrayOfFloat1;
-    float[] arrayOfFloat2;
-    Iterator localIterator;
-    int i;
-    if (this.mLastTimestamp == 0L)
+    long l2 = this.mLastTimestamp;
+    long l1 = 0L;
+    if (l2 == 0L)
     {
       this.mLastTimestamp = paramLong;
-      paramLong = 0L;
-      arrayOfFloat1 = new float[8];
-      arrayOfFloat2 = new float[8];
-      localIterator = this.items.iterator();
-      i = 1;
+      paramLong = l1;
     }
-    for (;;)
+    else
     {
-      PhantomItem localPhantomItem;
-      if (localIterator.hasNext())
-      {
-        localPhantomItem = (PhantomItem)localIterator.next();
-        if (i <= 8) {}
-      }
-      else
-      {
-        addParam(new UniformParam.FloatsParam("offsetX", arrayOfFloat1));
-        addParam(new UniformParam.FloatsParam("offsetY", arrayOfFloat2));
-        return;
-        long l = this.mLastTimestamp;
-        this.mLastTimestamp = paramLong;
-        paramLong -= l;
+      l1 = paramLong - l2;
+      this.mLastTimestamp = paramLong;
+      paramLong = l1;
+    }
+    float[] arrayOfFloat1 = new float[8];
+    float[] arrayOfFloat2 = new float[8];
+    Iterator localIterator = this.items.iterator();
+    int i = 1;
+    while (localIterator.hasNext())
+    {
+      PhantomItem localPhantomItem = (PhantomItem)localIterator.next();
+      if (i > 8) {
         break;
       }
       localPhantomItem.makeXStep(paramLong);
-      double d1 = Math.toRadians(localPhantomItem.getXtime());
-      double d2 = localPhantomItem.getxK();
-      double d3 = localPhantomItem.getxAsin();
-      double d4 = Math.sin(localPhantomItem.getxPhase() + d1);
-      double d5 = localPhantomItem.getxBcos();
-      arrayOfFloat1[(i - 1)] = ((float)(Math.cos(d1 + localPhantomItem.getyPhase()) * d5 + (d2 * d1 + d3 * d4) + localPhantomItem.getxOffset()));
+      double d = Math.toRadians(localPhantomItem.getXtime());
+      int j = i - 1;
+      arrayOfFloat1[j] = ((float)(localPhantomItem.getxK() * d + localPhantomItem.getxAsin() * Math.sin(d + localPhantomItem.getxPhase()) + localPhantomItem.getxBcos() * Math.cos(d + localPhantomItem.getyPhase()) + localPhantomItem.getxOffset()));
       localPhantomItem.makeYStep(paramLong);
-      d1 = Math.toRadians(localPhantomItem.getYtime());
-      d2 = localPhantomItem.getyK();
-      d3 = localPhantomItem.getyAsin();
-      d4 = Math.sin(localPhantomItem.getyPhase() + d1);
-      d5 = localPhantomItem.getyBcos();
-      arrayOfFloat2[(i - 1)] = ((float)(Math.cos(d1 + localPhantomItem.getyPhase()) * d5 + (d2 * d1 + d3 * d4) + localPhantomItem.getyOffset()));
+      d = Math.toRadians(localPhantomItem.getYtime());
+      arrayOfFloat2[j] = ((float)(localPhantomItem.getyK() * d + localPhantomItem.getyAsin() * Math.sin(d + localPhantomItem.getyPhase()) + localPhantomItem.getyBcos() * Math.cos(d + localPhantomItem.getyPhase()) + localPhantomItem.getyOffset()));
       i += 1;
     }
+    addParam(new UniformParam.FloatsParam("offsetX", arrayOfFloat1));
+    addParam(new UniformParam.FloatsParam("offsetY", arrayOfFloat2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.PhantomFilter
  * JD-Core Version:    0.7.0.1
  */

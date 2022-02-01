@@ -18,7 +18,7 @@ public final class META$StUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQ_STORY_META.META.StUser
  * JD-Core Version:    0.7.0.1
  */

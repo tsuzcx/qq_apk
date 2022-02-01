@@ -1,12 +1,10 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aplz;
-
 public class QavVideoData
   extends XmlData
 {
-  @aplz(a=false, b=true)
-  public boolean autoDownload;
+  @saveInSP(a=false, b=true)
+  public boolean autoDownload = false;
   
   public String getSharedPreferencesName()
   {

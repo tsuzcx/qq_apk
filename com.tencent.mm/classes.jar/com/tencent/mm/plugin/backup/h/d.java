@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.backup.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
   extends com.tencent.mm.plugin.backup.b.a
 {
   private static String TAG = "MicroMsg.BackupStorageModel";
-  private static d jGz;
-  private b jGA;
-  private a jGB;
+  private static d vdU;
+  private b vdV;
+  private a vdW;
   
-  public static d aUK()
+  public static d cWK()
   {
-    AppMethodBeat.i(17706);
-    if (jGz == null)
+    AppMethodBeat.i(21763);
+    if (vdU == null)
     {
       locald = new d();
-      jGz = locald;
+      vdU = locald;
       a(locald);
     }
-    d locald = jGz;
-    AppMethodBeat.o(17706);
+    d locald = vdU;
+    AppMethodBeat.o(21763);
     return locald;
   }
   
-  public final void aSG()
+  public final void cUE()
   {
-    jGz = null;
+    vdU = null;
   }
   
-  public final b aUL()
+  public final b cWL()
   {
-    AppMethodBeat.i(17707);
-    if (this.jGA == null) {
-      this.jGA = new b();
+    AppMethodBeat.i(21764);
+    if (this.vdV == null) {
+      this.vdV = new b();
     }
-    b localb = this.jGA;
-    AppMethodBeat.o(17707);
+    b localb = this.vdV;
+    AppMethodBeat.o(21764);
     return localb;
   }
   
-  public final a aUM()
+  public final a cWM()
   {
-    AppMethodBeat.i(17708);
-    if (this.jGB == null) {
-      this.jGB = new a();
+    AppMethodBeat.i(21765);
+    if (this.vdW == null) {
+      this.vdW = new a();
     }
-    a locala = this.jGB;
-    AppMethodBeat.o(17708);
+    a locala = this.vdW;
+    AppMethodBeat.o(21765);
     return locala;
   }
   
-  public final void aUN()
+  public final void cWN()
   {
-    AppMethodBeat.i(17709);
-    ab.i(TAG, "backupInitStorage");
-    b localb = aUL();
-    aw.aaz();
+    AppMethodBeat.i(21766);
+    Log.i(TAG, "backupInitStorage.");
+    b localb = cWL();
+    bh.bCz();
     String str = c.getAccPath();
-    aw.aaz();
-    localb.bH(str, c.getUin());
-    AppMethodBeat.o(17709);
+    bh.bCz();
+    localb.du(str, c.getUin());
+    AppMethodBeat.o(21766);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.h.d
  * JD-Core Version:    0.7.0.1
  */

@@ -18,14 +18,15 @@ public final class articlesummary$FamilyCommentInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "icon_url", "jump_url", "medal_urls_width", "medal_urls_height" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, FamilyCommentInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "icon_url", "jump_url", "medal_urls_width", "medal_urls_height" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger }, FamilyCommentInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,117 +1,105 @@
 package com.tencent.mm.plugin.appbrand.j;
 
-import android.text.TextUtils;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.config.c;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Map;
+import com.tencent.mm.plugin.fts.a.a.c;
+import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.a.o;
+import com.tencent.mm.plugin.fts.a.d.e.a;
+import com.tencent.mm.plugin.fts.a.d.e.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import java.util.HashSet;
+import java.util.List;
 
-public enum f
-  implements n
+public final class f
+  extends com.tencent.mm.plugin.fts.ui.a
 {
-  static
+  public f(Context paramContext, e.b paramb, int paramInt)
   {
-    AppMethodBeat.i(132305);
-    irL = new f("INSTANCE");
-    irM = new f[] { irL };
-    AppMethodBeat.o(132305);
+    super(paramContext, paramb, paramInt);
   }
   
-  private f() {}
-  
-  public static Long cK(String paramString1, String paramString2)
+  public final c a(MMHandler paramMMHandler, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(132303);
-    String str = g.wg().get(cL(paramString1, paramString2), "");
-    if (TextUtils.isEmpty(str))
-    {
-      AppMethodBeat.o(132303);
-      return null;
-    }
-    if (Long.valueOf(str).longValue() < System.currentTimeMillis())
-    {
-      g.wg().qD(cL(paramString1, paramString2));
-      ab.i("MicroMsg.WxaWeAppPushCommandMgr", "delete data app id=".concat(String.valueOf(paramString1)));
-    }
-    paramString1 = Long.valueOf(str);
-    AppMethodBeat.o(132303);
-    return paramString1;
+    AppMethodBeat.i(45030);
+    l locall = new l();
+    locall.query = getQuery();
+    locall.HtB = com.tencent.mm.plugin.fts.a.c.d.Hug;
+    locall.HtC = this;
+    locall.handler = paramMMHandler;
+    locall.HtA = paramHashSet;
+    paramMMHandler = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fts.a.n.class)).search(7, locall);
+    AppMethodBeat.o(45030);
+    return paramMMHandler;
   }
   
-  private static String cL(String paramString1, String paramString2)
+  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
-    AppMethodBeat.i(132304);
-    paramString1 = paramString1 + "#WxaWeAppPushCommandMgr#" + paramString2;
-    AppMethodBeat.o(132304);
-    return paramString1;
-  }
-  
-  public final e.b a(String paramString, Map<String, String> paramMap, e.a parama)
-  {
-    AppMethodBeat.i(132302);
-    int i;
-    if ("WeAppPushCommand".equals(paramString))
+    AppMethodBeat.i(45032);
+    int i = paramInt - parama.Huj - 1;
+    o localo = null;
+    Object localObject = localo;
+    if (i < parama.tbH.size())
     {
-      paramString = ".sysmsg.WeAppPushCommand.weapp";
-      i = 0;
-    }
-    label172:
-    label192:
-    label339:
-    for (;;)
-    {
-      parama = (String)paramMap.get(paramString + ".$cmdtype");
-      String str = (String)paramMap.get(paramString + ".$appid");
-      paramString = (String)paramMap.get(paramString + ".expireSeconds");
-      int j;
-      if ((!TextUtils.isEmpty(parama)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString)) && (TextUtils.isDigitsOnly(paramString)))
+      localObject = localo;
+      if (i >= 0)
       {
-        j = 1;
-        if (j != 0) {
-          j = -1;
-        }
-        switch (parama.hashCode())
-        {
-        default: 
-          switch (j)
-          {
-          default: 
-            ab.i("MicroMsg.WxaWeAppPushCommandMgr", "[consumeNewXml] index = %d, appId =%s, cmdType=%s, expireSeconds = %s", new Object[] { Integer.valueOf(i), str, parama, paramString });
-            i += 1;
-            if (i != 0) {}
-            break;
-          }
-          break;
-        }
-      }
-      for (paramString = ".sysmsg.WeAppPushCommand.weapp";; paramString = ".sysmsg.WeAppPushCommand.weapp" + i)
-      {
-        if (paramMap.containsKey(paramString)) {
-          break label339;
-        }
-        AppMethodBeat.o(132302);
-        return null;
-        j = 0;
-        break;
-        if (!parama.equals("copypath")) {
-          break label172;
-        }
-        j = 0;
-        break label172;
-        long l = Long.valueOf(paramString).longValue();
-        g.wg().bG(cL(str, "copypath"), String.valueOf(l * 1000L + System.currentTimeMillis()));
-        break label192;
+        localo = (o)parama.tbH.get(i);
+        localObject = new d(paramInt);
+        ((d)localObject).rpp = localo;
+        ((d)localObject).FWt = parama.FWt;
+        ((d)localObject).iW(localo.type, localo.subtype);
       }
     }
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).Hur = (i + 1);
+    }
+    AppMethodBeat.o(45032);
+    return localObject;
+  }
+  
+  public final void a(m paramm, HashSet<String> paramHashSet)
+  {
+    AppMethodBeat.i(45031);
+    List localList = paramm.HtF;
+    if ((localList != null) && (!localList.isEmpty()))
+    {
+      com.tencent.mm.modelsns.n localn = new com.tencent.mm.modelsns.n();
+      String str = getQuery();
+      paramHashSet = str;
+      if (str != null) {
+        paramHashSet = str.replaceAll(",", " ");
+      }
+      localn.s("20KeyWordId", paramHashSet + ",");
+      localn.s("21ViewType", "2,");
+      localn.s("22OpType", "1,");
+      localn.s("23ResultCount", localList.size() + ",");
+      localn.s("24ClickPos", ",");
+      localn.s("25ClickAppUserName", ",");
+      Log.i("MicroMsg.FTSWeAppDetailUIUnit", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localn.aIF() });
+      com.tencent.mm.plugin.report.service.h.OAn.b(13963, new Object[] { localn });
+    }
+    if (hS(paramm.HtF))
+    {
+      paramHashSet = new e.a();
+      paramHashSet.businessType = -13;
+      paramHashSet.FWt = paramm.FWt;
+      paramHashSet.tbH = paramm.HtF;
+      this.HwJ.add(paramHashSet);
+    }
+    AppMethodBeat.o(45031);
+  }
+  
+  public final int getType()
+  {
+    return 4224;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.f
  * JD-Core Version:    0.7.0.1
  */

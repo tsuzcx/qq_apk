@@ -1,34 +1,28 @@
 package com.tencent.biz.qqstory.base.preload;
 
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
+import com.tencent.biz.qqstory.base.download.DownloadUrlManager.DownloadUrlQueryResult;
+import com.tencent.biz.qqstory.model.SuperManager;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
-import umm;
-import umu;
-import unj;
-import unn;
-import unv;
-import uwa;
 
 class PreloadDownloader$DownloadRunnable
   implements Runnable
 {
-  public volatile boolean a;
+  public volatile boolean a = true;
   
-  private PreloadDownloader$DownloadRunnable(PreloadDownloader paramPreloadDownloader)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  private PreloadDownloader$DownloadRunnable(PreloadDownloader paramPreloadDownloader) {}
   
   public void run()
   {
     for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.a) {
         return;
       }
-      if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue == null)
+      if (this.this$0.f == null)
       {
         try
         {
@@ -41,52 +35,53 @@ class PreloadDownloader$DownloadRunnable
       }
       else
       {
-        if ((this.this$0.jdField_a_of_type_Unv != null) && (!this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
-          this.this$0.jdField_a_of_type_Unv.a(this.this$0.a());
+        if ((this.this$0.d != null) && (!this.this$0.f.isBusy())) {
+          this.this$0.d.a(this.this$0.d());
         }
-        ??? = this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue;
-        this.this$0.jdField_a_of_type_Unj = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
-        unj localunj1 = this.this$0.jdField_a_of_type_Unj;
-        if (localunj1 != null)
+        ??? = this.this$0.f;
+        this.this$0.g = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
+        DownloadTask localDownloadTask = this.this$0.g;
+        if (localDownloadTask != null)
         {
-          localunj1.c = ((PreloadQueue)???).getId();
-          for (;;)
+          localDownloadTask.i = ((PreloadQueue)???).getId();
+          synchronized (PreloadDownloader.a)
           {
-            Iterator localIterator;
-            synchronized (PreloadDownloader.jdField_a_of_type_JavaLangObject)
+            Iterator localIterator = this.this$0.c.iterator();
+            while (localIterator.hasNext())
             {
-              localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              unn localunn = (unn)((WeakReference)localIterator.next()).get();
-              if (localunn != null) {
-                localunn.a(localunj1.jdField_b_of_type_JavaLangString, localunj1.jdField_a_of_type_Int, localunj1);
+              IVideoPreloader.OnPreloadListener localOnPreloadListener = (IVideoPreloader.OnPreloadListener)((WeakReference)localIterator.next()).get();
+              if (localOnPreloadListener != null) {
+                localOnPreloadListener.a(localDownloadTask.b, localDownloadTask.c, localDownloadTask);
+              } else {
+                localIterator.remove();
               }
             }
-            localIterator.remove();
-          }
-          localunj2.jdField_b_of_type_Int = 1;
-          if (TextUtils.isEmpty(localunj2.d))
-          {
-            ??? = ((umm)uwa.a(28)).a(localunj2.jdField_b_of_type_JavaLangString, localunj2.jdField_a_of_type_Int);
-            localunj2.d = ((umu)???).jdField_b_of_type_JavaLangString;
-            localunj2.jdField_a_of_type_Boolean = ((umu)???).jdField_a_of_type_Boolean;
-            localunj2.f = ((umu)???).c;
-            this.this$0.b(localunj2);
-          }
-          else
-          {
-            this.this$0.b(localunj2);
+            localDownloadTask.d = 1;
+            if (TextUtils.isEmpty(localDownloadTask.f))
+            {
+              ??? = ((DownloadUrlManager)SuperManager.a(28)).a(localDownloadTask.b, localDownloadTask.c);
+              localDownloadTask.f = ((DownloadUrlManager.DownloadUrlQueryResult)???).c;
+              localDownloadTask.k = ((DownloadUrlManager.DownloadUrlQueryResult)???).e;
+              localDownloadTask.r = ((DownloadUrlManager.DownloadUrlQueryResult)???).f;
+              this.this$0.b(localDownloadTask);
+            }
+            else
+            {
+              this.this$0.b(localDownloadTask);
+            }
           }
         }
       }
+    }
+    for (;;)
+    {
+      throw localObject1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadDownloader.DownloadRunnable
  * JD-Core Version:    0.7.0.1
  */

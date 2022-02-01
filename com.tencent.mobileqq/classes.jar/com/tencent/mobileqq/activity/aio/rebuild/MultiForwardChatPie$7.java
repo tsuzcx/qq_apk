@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agso;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MultiForwardChatPie$7
+class MultiForwardChatPie$7
   implements Runnable
 {
-  public MultiForwardChatPie$7(agso paramagso) {}
+  MultiForwardChatPie$7(MultiForwardChatPie paramMultiForwardChatPie) {}
   
   public void run()
   {
-    agso.a(this.this$0).setVisibility(0);
-    agso.a(this.this$0).setText(2131698783);
-    this.this$0.e.setText(this.this$0.h);
-    this.this$0.F();
+    MultiForwardChatPie.g(this.this$0).setVisibility(0);
+    MultiForwardChatPie.h(this.this$0).setText(2131896470);
+    this.this$0.C.setText(this.this$0.bm);
+    this.this$0.bz();
   }
 }
 

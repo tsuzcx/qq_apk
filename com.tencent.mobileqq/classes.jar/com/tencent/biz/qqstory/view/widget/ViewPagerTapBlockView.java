@@ -15,11 +15,11 @@ import com.tencent.mobileqq.R.styleable;
 public class ViewPagerTapBlockView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private int a;
   private int b;
   private int c;
   private int d;
+  private Paint e = new Paint();
   
   public ViewPagerTapBlockView(Context paramContext)
   {
@@ -34,36 +34,47 @@ public class ViewPagerTapBlockView
   public ViewPagerTapBlockView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.ViewPagerTapBlockView, paramInt, 0);
+    paramContext = paramContext.getTheme();
+    int[] arrayOfInt = R.styleable.ViewPagerTapBlockView;
+    int i = 0;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, arrayOfInt, paramInt, 0);
     int j = paramContext.getIndexCount();
     paramInt = i;
-    if (paramInt < j)
+    while (paramInt < j)
     {
       i = paramContext.getIndex(paramInt);
-      switch (i)
+      if (i != 0)
       {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i == 3) {
+              this.a = paramContext.getDimensionPixelSize(i, (int)TypedValue.applyDimension(1, 56.0F, getResources().getDisplayMetrics()));
+            }
+          }
+          else {
+            this.d = paramContext.getDimensionPixelSize(i, (int)TypedValue.applyDimension(1, 0.0F, getResources().getDisplayMetrics()));
+          }
+        }
+        else {
+          this.b = paramContext.getDimensionPixelSize(i, (int)TypedValue.applyDimension(1, 3.0F, getResources().getDisplayMetrics()));
+        }
       }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(i, (int)TypedValue.applyDimension(1, 56.0F, getResources().getDisplayMetrics()));
-        continue;
-        this.b = paramContext.getDimensionPixelSize(i, (int)TypedValue.applyDimension(1, 3.0F, getResources().getDisplayMetrics()));
-        continue;
+      else {
         this.c = paramContext.getColor(i, -1);
-        continue;
-        this.d = paramContext.getDimensionPixelSize(i, (int)TypedValue.applyDimension(1, 0.0F, getResources().getDisplayMetrics()));
       }
+      paramInt += 1;
     }
     paramContext.recycle();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-    paramCanvas.drawRect(this.d, 0.0F, this.jdField_a_of_type_Int + this.d, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.e.setStyle(Paint.Style.FILL);
+    this.e.setColor(this.c);
+    int i = this.d;
+    paramCanvas.drawRect(i, 0.0F, this.a + i, this.b, this.e);
   }
   
   public void setBlockColor(int paramInt)
@@ -73,7 +84,7 @@ public class ViewPagerTapBlockView
   
   public void setBlockWidth(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void setOffset(int paramInt)
@@ -84,12 +95,17 @@ public class ViewPagerTapBlockView
   
   public String toString()
   {
-    return "ViewPagerTapBlockView width:" + this.jdField_a_of_type_Int + " | offset:" + this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ViewPagerTapBlockView width:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" | offset:");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView
  * JD-Core Version:    0.7.0.1
  */

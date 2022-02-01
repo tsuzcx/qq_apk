@@ -3,17 +3,15 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import apvn;
-import apww;
-import aswk;
-import bhtv;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 
 public class EmotionPanelListView
   extends ListView
 {
-  private apww jdField_a_of_type_Apww;
-  private boolean jdField_a_of_type_Boolean;
+  public static final String TAG = "EmotionPanelListView";
+  private boolean enableExtendPanle = false;
+  private EmotionPanelListView.PullAndFastScrollListener mPullAndFastScrollListener;
   
   public EmotionPanelListView(Context paramContext)
   {
@@ -37,57 +35,58 @@ public class EmotionPanelListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (paramMotionEvent.getAction() != 0)) {
+    if ((this.enableExtendPanle) && (paramMotionEvent.getAction() == 0))
+    {
+      AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
+      if ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) {
+        ((EmoticonPanelOnScrollListener)localOnScrollListener).onTouch(this, paramMotionEvent);
+      }
       return super.dispatchTouchEvent(paramMotionEvent);
-    }
-    bhtv localbhtv = getOnScrollListener();
-    if ((localbhtv instanceof apvn)) {
-      ((apvn)localbhtv).onTouch(this, paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.enableExtendPanle) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    bhtv localbhtv = getOnScrollListener();
-    if ((localbhtv instanceof apvn)) {
-      ((apvn)localbhtv).onTouch(this, paramMotionEvent);
+    AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
+    if ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) {
+      ((EmoticonPanelOnScrollListener)localOnScrollListener).onTouch(this, paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setEnableExtendPanle(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.enableExtendPanle = paramBoolean;
   }
   
-  public void setOnScrollListener(bhtv parambhtv)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    if ((this.jdField_a_of_type_Boolean) && (!(parambhtv instanceof apvn)) && (parambhtv != null))
+    if ((this.enableExtendPanle) && (!(paramOnScrollListener instanceof EmoticonPanelOnScrollListener)) && (paramOnScrollListener != null))
     {
-      super.setOnScrollListener(new apvn(this, this.jdField_a_of_type_Apww, parambhtv));
+      super.setOnScrollListener(new EmoticonPanelOnScrollListener(this, this.mPullAndFastScrollListener, paramOnScrollListener));
       return;
     }
-    super.setOnScrollListener(parambhtv);
+    super.setOnScrollListener(paramOnScrollListener);
   }
   
-  public void setPullAndFastScrollListener(apww paramapww)
+  public void setPullAndFastScrollListener(EmotionPanelListView.PullAndFastScrollListener paramPullAndFastScrollListener)
   {
-    this.jdField_a_of_type_Apww = paramapww;
+    this.mPullAndFastScrollListener = paramPullAndFastScrollListener;
   }
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.enableExtendPanle) {
       return super.trackMotionScroll(paramInt1, paramInt2);
     }
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    bhtv localbhtv = getOnScrollListener();
-    if ((!bool) && ((localbhtv instanceof apvn)) && (paramInt2 < 0)) {
-      ((apvn)localbhtv).a().a(Math.abs(paramInt2));
+    AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
+    if ((!bool) && ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) && (paramInt2 < 0)) {
+      ((EmoticonPanelOnScrollListener)localOnScrollListener).getScrollVelometer().onMove(Math.abs(paramInt2));
     }
     return bool;
   }

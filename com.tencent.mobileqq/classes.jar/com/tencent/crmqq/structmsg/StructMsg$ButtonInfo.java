@@ -18,7 +18,7 @@ public final class StructMsg$ButtonInfo
   public static final int CLICK = 1;
   public static final int EVENT = 3;
   public static final int URL = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 64, 74, 80, 88 }, new String[] { "id", "name", "key", "url", "auth_type", "type", "sub_button", "event_id", "event_param", "is_need_lbs", "item_id" }, new Object[] { Integer.valueOf(0), "", "", "", Integer.valueOf(0), Integer.valueOf(1), null, Integer.valueOf(1), null, Boolean.valueOf(false), Integer.valueOf(0) }, ButtonInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField auth_type = PBField.initEnum(0);
   public final PBEnumField event_id = PBField.initEnum(1);
   public final PBRepeatMessageField<StructMsg.ButtonInfo_EventInfoParam> event_param = PBField.initRepeatMessage(StructMsg.ButtonInfo_EventInfoParam.class);
@@ -30,10 +30,17 @@ public final class StructMsg$ButtonInfo
   public final PBRepeatMessageField<ButtonInfo> sub_button = PBField.initRepeatMessage(ButtonInfo.class);
   public final PBEnumField type = PBField.initEnum(1);
   public final PBStringField url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 64, 74, 80, 88 }, new String[] { "id", "name", "key", "url", "auth_type", "type", "sub_button", "event_id", "event_param", "is_need_lbs", "item_id" }, new Object[] { localInteger1, "", "", "", localInteger1, localInteger2, null, localInteger2, null, Boolean.valueOf(false), localInteger1 }, ButtonInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.crmqq.structmsg.StructMsg.ButtonInfo
  * JD-Core Version:    0.7.0.1
  */

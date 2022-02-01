@@ -1,40 +1,41 @@
 package com.tencent.mm.audio.mix.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.mix.a.e;
 import java.util.List;
 
 public final class d
   implements i
 {
-  private h cgF;
-  private int cgG = 4;
+  private h htt;
+  private int htu = 4;
   
-  public final com.tencent.mm.audio.mix.a.b G(List<com.tencent.mm.audio.mix.a.d> paramList)
+  public final com.tencent.mm.audio.mix.a.b bm(List<e> paramList)
   {
-    AppMethodBeat.i(137116);
-    if (this.cgF == null)
+    AppMethodBeat.i(136865);
+    if (this.htt == null)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixer", "mixAlgorithm must be init, please call init() first");
-      AppMethodBeat.o(137116);
+      AppMethodBeat.o(136865);
       return null;
     }
-    com.tencent.mm.audio.mix.a.b localb = com.tencent.mm.audio.mix.b.a.CY().CZ();
-    if (!this.cgF.a(localb, paramList))
+    com.tencent.mm.audio.mix.a.b localb = com.tencent.mm.audio.mix.b.b.aFj().aFk();
+    if (!this.htt.a(localb, paramList))
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixer", "mix audio fail");
-      AppMethodBeat.o(137116);
+      AppMethodBeat.o(136865);
       return null;
     }
-    AppMethodBeat.o(137116);
+    AppMethodBeat.o(136865);
     return localb;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(137115);
+    AppMethodBeat.i(136864);
     Object localObject;
-    if (this.cgF == null) {
-      switch (this.cgG)
+    if (this.htt == null) {
+      switch (this.htu)
       {
       default: 
         localObject = new j();
@@ -42,8 +43,8 @@ public final class d
     }
     for (;;)
     {
-      this.cgF = ((h)localObject);
-      AppMethodBeat.o(137115);
+      this.htt = ((h)localObject);
+      AppMethodBeat.o(136864);
       return;
       localObject = new n();
       continue;

@@ -1,13 +1,15 @@
 package com.tencent.halley.common.b;
 
+import com.tencent.token.md;
+import com.tencent.token.me;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class e
   extends c
 {
-  private static byte[] k = null;
-  private static Map l = null;
+  private static byte[] k;
+  private static Map l;
   public short a = 3;
   public int b = 0;
   public String c = null;
@@ -19,57 +21,57 @@ public final class e
   private Map i;
   private Map j;
   
-  public final void a(a parama)
+  public final void a(md parammd)
   {
     try
     {
-      this.a = parama.a(this.a, 1, true);
-      this.f = parama.a(this.f, 2, true);
-      this.g = parama.a(this.g, 3, true);
-      this.b = parama.a(this.b, 4, true);
-      this.c = parama.a(5, true);
-      this.d = parama.a(6, true);
+      this.a = parammd.a(this.a, 1, true);
+      this.f = parammd.a(this.f, 2, true);
+      this.g = parammd.a(this.g, 3, true);
+      this.b = parammd.a(this.b, 4, true);
+      this.c = parammd.a(5, true);
+      this.d = parammd.a(6, true);
       if (k == null) {
         k = new byte[] { 0 };
       }
-      Object localObject = k;
-      this.e = ((byte[])parama.b(7, true));
-      this.h = parama.a(this.h, 8, true);
+      this.e = ((byte[])parammd.b(7, true));
+      this.h = parammd.a(this.h, 8, true);
+      HashMap localHashMap;
       if (l == null)
       {
-        localObject = new HashMap();
-        l = (Map)localObject;
-        ((Map)localObject).put("", "");
+        localHashMap = new HashMap();
+        l = localHashMap;
+        localHashMap.put("", "");
       }
-      this.i = ((Map)parama.a(l, 9, true));
+      this.i = ((Map)parammd.a(l, 9, true));
       if (l == null)
       {
-        localObject = new HashMap();
-        l = (Map)localObject;
-        ((Map)localObject).put("", "");
+        localHashMap = new HashMap();
+        l = localHashMap;
+        localHashMap.put("", "");
       }
-      this.j = ((Map)parama.a(l, 10, true));
+      this.j = ((Map)parammd.a(l, 10, true));
       return;
     }
-    catch (Exception parama)
+    catch (Exception parammd)
     {
-      parama.printStackTrace();
-      throw new RuntimeException(parama);
+      parammd.printStackTrace();
+      throw new RuntimeException(parammd);
     }
   }
   
-  public final void a(d paramd)
+  public final void a(me paramme)
   {
-    paramd.a(this.a, 1);
-    paramd.a(this.f, 2);
-    paramd.a(this.g, 3);
-    paramd.a(this.b, 4);
-    paramd.a(this.c, 5);
-    paramd.a(this.d, 6);
-    paramd.a(this.e, 7);
-    paramd.a(this.h, 8);
-    paramd.a(this.i, 9);
-    paramd.a(this.j, 10);
+    paramme.a(this.a, 1);
+    paramme.a(this.f, 2);
+    paramme.a(this.g, 3);
+    paramme.a(this.b, 4);
+    paramme.a(this.c, 5);
+    paramme.a(this.d, 6);
+    paramme.a(this.e, 7);
+    paramme.a(this.h, 8);
+    paramme.a(this.i, 9);
+    paramme.a(this.j, 10);
   }
 }
 

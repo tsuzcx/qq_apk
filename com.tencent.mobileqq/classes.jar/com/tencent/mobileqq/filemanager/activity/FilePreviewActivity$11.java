@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.animation.AlphaAnimation;
-import arsm;
-import arsn;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 
 class FilePreviewActivity$11
   implements Runnable
@@ -11,23 +11,25 @@ class FilePreviewActivity$11
   
   public void run()
   {
-    if (this.this$0.b == null) {
-      this.this$0.b = new arsm(this.this$0.a);
+    if (this.this$0.O == null)
+    {
+      localObject = this.this$0;
+      ((FilePreviewActivity)localObject).O = new FilePreviewAnimQueue(((FilePreviewActivity)localObject).v);
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    arsn localarsn = new arsn();
-    localarsn.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localarsn.jdField_a_of_type_Boolean = false;
-    localarsn.jdField_a_of_type_Int = arsm.jdField_a_of_type_Int;
-    localarsn.b = 1500;
-    this.this$0.b.a(localarsn);
-    this.this$0.b.a();
+    Object localObject = new AlphaAnimation(1.0F, 0.0F);
+    ((AlphaAnimation)localObject).setFillAfter(true);
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.a = localObject;
+    localFilePreviewAnim.c = false;
+    localFilePreviewAnim.b = FilePreviewAnimQueue.a;
+    localFilePreviewAnim.d = 1500;
+    this.this$0.O.a(localFilePreviewAnim);
+    this.this$0.O.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.11
  * JD-Core Version:    0.7.0.1
  */

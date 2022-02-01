@@ -1,21 +1,20 @@
 package com.tencent.common.galleryactivity;
 
 import android.widget.TextView;
-import zjf;
 
-public class GalleryPageView$3
+class GalleryPageView$3
   implements Runnable
 {
-  public GalleryPageView$3(zjf paramzjf) {}
+  GalleryPageView$3(GalleryPageView paramGalleryPageView) {}
   
   public void run()
   {
-    this.this$0.a.startAnimation(this.this$0.b);
+    this.this$0.a.startAnimation(this.this$0.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryPageView.3
  * JD-Core Version:    0.7.0.1
  */

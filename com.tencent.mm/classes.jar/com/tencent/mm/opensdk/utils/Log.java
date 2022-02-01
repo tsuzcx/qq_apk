@@ -8,38 +8,32 @@ public class Log
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128066);
-    if (logImpl == null)
-    {
-      AppMethodBeat.o(128066);
-      return;
+    AppMethodBeat.i(3751);
+    ILog localILog = logImpl;
+    if (localILog != null) {
+      localILog.d(paramString1, paramString2);
     }
-    logImpl.d(paramString1, paramString2);
-    AppMethodBeat.o(128066);
+    AppMethodBeat.o(3751);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128069);
-    if (logImpl == null)
-    {
-      AppMethodBeat.o(128069);
-      return;
+    AppMethodBeat.i(3754);
+    ILog localILog = logImpl;
+    if (localILog != null) {
+      localILog.e(paramString1, paramString2);
     }
-    logImpl.e(paramString1, paramString2);
-    AppMethodBeat.o(128069);
+    AppMethodBeat.o(3754);
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128067);
-    if (logImpl == null)
-    {
-      AppMethodBeat.o(128067);
-      return;
+    AppMethodBeat.i(3752);
+    ILog localILog = logImpl;
+    if (localILog != null) {
+      localILog.i(paramString1, paramString2);
     }
-    logImpl.i(paramString1, paramString2);
-    AppMethodBeat.o(128067);
+    AppMethodBeat.o(3752);
   }
   
   public static void setLogImpl(ILog paramILog)
@@ -49,26 +43,22 @@ public class Log
   
   public static void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128065);
-    if (logImpl == null)
-    {
-      AppMethodBeat.o(128065);
-      return;
+    AppMethodBeat.i(3750);
+    ILog localILog = logImpl;
+    if (localILog != null) {
+      localILog.v(paramString1, paramString2);
     }
-    logImpl.v(paramString1, paramString2);
-    AppMethodBeat.o(128065);
+    AppMethodBeat.o(3750);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(128068);
-    if (logImpl == null)
-    {
-      AppMethodBeat.o(128068);
-      return;
+    AppMethodBeat.i(3753);
+    ILog localILog = logImpl;
+    if (localILog != null) {
+      localILog.w(paramString1, paramString2);
     }
-    logImpl.w(paramString1, paramString2);
-    AppMethodBeat.o(128068);
+    AppMethodBeat.o(3753);
   }
 }
 

@@ -28,32 +28,36 @@ public class PatchDelete
       ViolaLogUtils.d("PatchDelete", "parent is null");
       return;
     }
-    if (this.mDeleteComponent == null)
+    paramOnComponentDiffListener = this.mDeleteComponent;
+    if (paramOnComponentDiffListener == null)
     {
       ViolaLogUtils.d("PatchDelete", "deleteComponent is null");
       return;
     }
-    if ((this.mDeleteComponent instanceof VRecyclerList))
+    paramOnComponentDiffListener.removedByDiff();
+    paramOnComponentDiffListener = this.mDeleteComponent;
+    if ((paramOnComponentDiffListener instanceof VRecyclerList))
     {
       if (this.mParent.mChildren != null) {
         this.mParent.mChildren.remove(this.mDeleteComponent);
+      } else {
+        ViolaLogUtils.d("PatchDelete", "child is null");
       }
-      while (this.mParent.getRealView() != null)
+      if (this.mParent.getRealView() != null)
       {
         this.mParent.getRealView().removeView(((VRecyclerList)this.mDeleteComponent).getRealParentView());
         this.mParent.getRealView().removeView(this.mDeleteComponent.getRealView());
         return;
-        ViolaLogUtils.d("PatchDelete", "child is null");
       }
       ViolaLogUtils.d("PatchDelete", "realView is null");
       return;
     }
-    this.mParent.remove(this.mDeleteComponent, false);
+    this.mParent.remove(paramOnComponentDiffListener, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.diff.PatchDelete
  * JD-Core Version:    0.7.0.1
  */

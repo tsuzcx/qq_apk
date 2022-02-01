@@ -40,33 +40,36 @@ public class VRefreshLayout
     paramContext = new JSONObject();
     try
     {
-      paramContext.put("width", FlexConvertUtils.px2dip(getWidth()) + "dp");
-      paramContext.put("height", FlexConvertUtils.px2dip(getHeight()) + "dp");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getWidth()));
+      localStringBuilder.append("dp");
+      paramContext.put("width", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getHeight()));
+      localStringBuilder.append("dp");
+      paramContext.put("height", localStringBuilder.toString());
       this.mFireEventJsonObject.put("size", paramContext);
-      this.mHandler = new Handler(getContext().getMainLooper());
-      this.mRunnable = new VRefreshLayout.1(this);
-      this.mRefreshMoveOberver = new VRefreshLayout.2(this);
-      return;
     }
     catch (JSONException paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
+    this.mHandler = new Handler(getContext().getMainLooper());
+    this.mRunnable = new VRefreshLayout.1(this);
+    this.mRefreshMoveOberver = new VRefreshLayout.2(this);
   }
   
   public void addOnHeaderStateChangeListener(VRefreshLayout.OnHeaderStateChangeListener paramOnHeaderStateChangeListener)
   {
-    if (paramOnHeaderStateChangeListener == null) {}
-    do
-    {
+    if (paramOnHeaderStateChangeListener == null) {
       return;
-      if (this.headerStateChangeListeners == null) {
-        this.headerStateChangeListeners = new ArrayList();
-      }
-    } while (this.headerStateChangeListeners.contains(paramOnHeaderStateChangeListener));
+    }
+    if (this.headerStateChangeListeners == null) {
+      this.headerStateChangeListeners = new ArrayList();
+    }
+    if (this.headerStateChangeListeners.contains(paramOnHeaderStateChangeListener)) {
+      return;
+    }
     this.headerStateChangeListeners.add(paramOnHeaderStateChangeListener);
   }
   
@@ -77,13 +80,15 @@ public class VRefreshLayout
   
   public void destroy()
   {
-    if (this.mWeakReference != null)
+    Object localObject = this.mWeakReference;
+    if (localObject != null)
     {
-      this.mWeakReference.clear();
+      ((WeakReference)localObject).clear();
       this.mWeakReference = null;
     }
-    if (this.mHandler != null) {
-      this.mHandler.removeCallbacks(this.mRunnable);
+    localObject = this.mHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacks(this.mRunnable);
     }
     this.mOnRefreshStateChangeListener = null;
   }
@@ -91,8 +96,9 @@ public class VRefreshLayout
   @Nullable
   public VRefresh getComponent()
   {
-    if (this.mWeakReference != null) {
-      return (VRefresh)this.mWeakReference.get();
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null) {
+      return (VRefresh)localWeakReference.get();
     }
     return null;
   }
@@ -110,6 +116,14 @@ public class VRefreshLayout
     return 0;
   }
   
+  public int getHeaderWidth()
+  {
+    if (getComponent() != null) {
+      return (int)getComponent().getDomObject().getLayoutWidth();
+    }
+    return 0;
+  }
+  
   public RefreshMoveOberver getRefreshMoveOberver()
   {
     return this.mRefreshMoveOberver;
@@ -122,65 +136,51 @@ public class VRefreshLayout
   
   public void notifyShowUpdate(int paramInt)
   {
-    boolean bool = true;
-    VRefreshViewGroup localVRefreshViewGroup;
     if ((getParent() instanceof VRefreshViewGroup))
     {
-      localVRefreshViewGroup = (VRefreshViewGroup)getParent();
+      VRefreshViewGroup localVRefreshViewGroup = (VRefreshViewGroup)getParent();
+      boolean bool = true;
       if (paramInt != 1) {
-        break label31;
+        bool = false;
       }
-    }
-    for (;;)
-    {
       localVRefreshViewGroup.updateRefreshShow(bool);
-      return;
-      label31:
-      bool = false;
     }
   }
   
   public void notifyVisiableChangeOnScreen(boolean paramBoolean)
   {
-    JSONArray localJSONArray;
-    VRefresh localVRefresh;
     if (getComponentType() == 2)
     {
-      localJSONArray = new JSONArray();
+      JSONArray localJSONArray = new JSONArray();
       if ((getComponent() != null) && (getComponent().getDomObject() != null))
       {
-        str = getComponent().getDomObject().getRef();
+        String str = getComponent().getDomObject().getRef();
         if (str != null) {
           localJSONArray.put(str);
         }
-        if (!paramBoolean) {
-          break label90;
+        str = "appear";
+        if (paramBoolean) {
+          localJSONArray.put("appear");
+        } else {
+          localJSONArray.put("disappear");
         }
-        localJSONArray.put("appear");
-        localVRefresh = getComponent();
+        VRefresh localVRefresh = getComponent();
         if (!paramBoolean) {
-          break label100;
+          str = "disappear";
         }
+        localVRefresh.refreshFireEvent(str, localJSONArray, this.mFireEventJsonObject);
       }
-    }
-    label90:
-    label100:
-    for (String str = "appear";; str = "disappear")
-    {
-      localVRefresh.refreshFireEvent(str, localJSONArray, this.mFireEventJsonObject);
-      return;
-      localJSONArray.put("disappear");
-      break;
     }
   }
   
   public void onFingerRelease()
   {
-    if (this.headerStateChangeListeners != null)
+    Object localObject = this.headerStateChangeListeners;
+    if (localObject != null)
     {
-      Iterator localIterator = this.headerStateChangeListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((VRefreshLayout.OnHeaderStateChangeListener)localIterator.next()).onHeaderFingerRelease();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((VRefreshLayout.OnHeaderStateChangeListener)((Iterator)localObject).next()).onHeaderFingerRelease();
       }
     }
   }
@@ -193,63 +193,67 @@ public class VRefreshLayout
   public void onStateNormal()
   {
     this.mHandler.removeCallbacks(this.mRunnable);
-    if (this.mOnRefreshStateChangeListener != null) {
-      this.mOnRefreshStateChangeListener.onStateIdel();
+    Object localObject = this.mOnRefreshStateChangeListener;
+    if (localObject != null) {
+      ((VRefreshLayout.onRefreshStateChangeListener)localObject).onStateIdel();
     }
-    JSONArray localJSONArray = new JSONArray();
+    localObject = new JSONArray();
     if ((getComponent() != null) && (getComponent().getDomObject() != null))
     {
       String str = getComponent().getDomObject().getRef();
       if (str != null) {
-        localJSONArray.put(str);
+        ((JSONArray)localObject).put(str);
       }
-      localJSONArray.put("idle");
-      getComponent().refreshFireEvent("idle", localJSONArray, this.mFireEventJsonObject);
+      ((JSONArray)localObject).put("idle");
+      getComponent().refreshFireEvent("idle", (JSONArray)localObject, this.mFireEventJsonObject);
     }
   }
   
   public void onStateReady()
   {
-    if (this.mOnRefreshStateChangeListener != null) {
-      this.mOnRefreshStateChangeListener.onStatePulling();
+    Object localObject = this.mOnRefreshStateChangeListener;
+    if (localObject != null) {
+      ((VRefreshLayout.onRefreshStateChangeListener)localObject).onStatePulling();
     }
-    JSONArray localJSONArray = new JSONArray();
+    localObject = new JSONArray();
     if ((getComponent() != null) && (getComponent().getDomObject() != null))
     {
       String str = getComponent().getDomObject().getRef();
       if (str != null) {
-        localJSONArray.put(str);
+        ((JSONArray)localObject).put(str);
       }
-      localJSONArray.put("pulling");
-      getComponent().refreshFireEvent("pulling", localJSONArray, this.mFireEventJsonObject);
+      ((JSONArray)localObject).put("pulling");
+      getComponent().refreshFireEvent("pulling", (JSONArray)localObject, this.mFireEventJsonObject);
     }
   }
   
   public void onStateRefreshing()
   {
     this.mHandler.removeCallbacks(this.mRunnable);
-    if (this.mOnRefreshStateChangeListener != null) {
-      this.mOnRefreshStateChangeListener.onStateRefreshing();
+    Object localObject = this.mOnRefreshStateChangeListener;
+    if (localObject != null) {
+      ((VRefreshLayout.onRefreshStateChangeListener)localObject).onStateRefreshing();
     }
-    JSONArray localJSONArray = new JSONArray();
+    localObject = new JSONArray();
     if ((getComponent() != null) && (getComponent().getDomObject() != null))
     {
       String str = getComponent().getDomObject().getRef();
       if (str != null) {
-        localJSONArray.put(str);
+        ((JSONArray)localObject).put(str);
       }
-      localJSONArray.put("refresh");
-      getComponent().refreshFireEvent("refresh", localJSONArray, this.mFireEventJsonObject);
+      ((JSONArray)localObject).put("refresh");
+      getComponent().refreshFireEvent("refresh", (JSONArray)localObject, this.mFireEventJsonObject);
     }
   }
   
   public void onStickRefreshing()
   {
-    if (this.headerStateChangeListeners != null)
+    Object localObject = this.headerStateChangeListeners;
+    if (localObject != null)
     {
-      Iterator localIterator = this.headerStateChangeListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((VRefreshLayout.OnHeaderStateChangeListener)localIterator.next()).onStickRefreshing();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((VRefreshLayout.OnHeaderStateChangeListener)((Iterator)localObject).next()).onStickRefreshing();
       }
     }
   }
@@ -261,8 +265,9 @@ public class VRefreshLayout
   
   public void setStateFinish(boolean paramBoolean, String paramString)
   {
-    if (this.mOnRefreshStateChangeListener != null) {
-      this.mOnRefreshStateChangeListener.onStateFinish(paramBoolean, paramString);
+    VRefreshLayout.onRefreshStateChangeListener localonRefreshStateChangeListener = this.mOnRefreshStateChangeListener;
+    if (localonRefreshStateChangeListener != null) {
+      localonRefreshStateChangeListener.onStateFinish(paramBoolean, paramString);
     }
   }
   
@@ -278,7 +283,7 @@ public class VRefreshLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.VRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

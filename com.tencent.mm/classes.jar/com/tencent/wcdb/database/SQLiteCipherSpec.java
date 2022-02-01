@@ -49,12 +49,12 @@ public class SQLiteCipherSpec
   
   public SQLiteCipherSpec setSQLCipherVersion(int paramInt)
   {
-    AppMethodBeat.i(12270);
+    AppMethodBeat.i(2951);
     switch (paramInt)
     {
     default: 
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Unsupported SQLCipher version: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(12270);
+      AppMethodBeat.o(2951);
       throw localIllegalArgumentException;
     case 1: 
       this.hmacEnabled = false;
@@ -64,7 +64,7 @@ public class SQLiteCipherSpec
     }
     for (;;)
     {
-      AppMethodBeat.o(12270);
+      AppMethodBeat.o(2951);
       return this;
       this.hmacEnabled = true;
       this.kdfIteration = 4000;
@@ -91,7 +91,7 @@ public class SQLiteCipherSpec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteCipherSpec
  * JD-Core Version:    0.7.0.1
  */

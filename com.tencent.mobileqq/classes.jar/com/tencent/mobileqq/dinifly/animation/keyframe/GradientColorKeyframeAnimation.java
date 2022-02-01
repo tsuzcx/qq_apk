@@ -12,13 +12,12 @@ public class GradientColorKeyframeAnimation
   public GradientColorKeyframeAnimation(List<Keyframe<GradientColor>> paramList)
   {
     super(paramList);
+    int i = 0;
     paramList = (GradientColor)((Keyframe)paramList.get(0)).startValue;
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.getSize())
-    {
-      this.gradientColor = new GradientColor(new float[i], new int[i]);
-      return;
+    if (paramList != null) {
+      i = paramList.getSize();
     }
+    this.gradientColor = new GradientColor(new float[i], new int[i]);
   }
   
   GradientColor getValue(Keyframe<GradientColor> paramKeyframe, float paramFloat)

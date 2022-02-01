@@ -4,10 +4,11 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
-import android.os.Environment;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 
 public class DBOption
@@ -21,29 +22,17 @@ public class DBOption
   
   public DBOption()
   {
-    AppMethodBeat.i(75607);
+    AppMethodBeat.i(101853);
     this.DB_PATH = "";
-    if (("mounted".equals(Environment.getExternalStorageState())) && (Environment.getExternalStorageDirectory().canWrite())) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        File localFile = Environment.getExternalStorageDirectory();
-        this.DB_PATH = (localFile.getPath() + "/tencent/assistant/");
-        localFile = new File(this.DB_PATH);
-        if (!localFile.exists()) {
-          localFile.mkdirs();
-        }
-        this.DB_PATH += ".SystemConfig.db";
-      }
-      AppMethodBeat.o(75607);
-      return;
-    }
+    this.DB_PATH = (b.bmz() + "/assistant/");
+    new u(this.DB_PATH).jKY();
+    this.DB_PATH += ".SystemConfig.db";
+    AppMethodBeat.o(101853);
   }
   
   private void checkAndCreateTable(SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(75614);
+    AppMethodBeat.i(101860);
     int i = paramSQLiteDatabase.getVersion();
     if (i != 1)
     {
@@ -59,25 +48,25 @@ public class DBOption
       finally
       {
         paramSQLiteDatabase.endTransaction();
-        AppMethodBeat.o(75614);
+        AppMethodBeat.o(101860);
       }
     }
-    AppMethodBeat.o(75614);
+    AppMethodBeat.o(101860);
   }
   
   private void closeDB(SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(75613);
+    AppMethodBeat.i(101859);
     if ((paramSQLiteDatabase != null) && (paramSQLiteDatabase.isOpen())) {
       try
       {
         paramSQLiteDatabase.close();
-        AppMethodBeat.o(75613);
+        AppMethodBeat.o(101859);
         return;
       }
       catch (Exception paramSQLiteDatabase) {}
     }
-    AppMethodBeat.o(75613);
+    AppMethodBeat.o(101859);
   }
   
   private SQLiteDatabase getReadableDatabase()
@@ -89,10 +78,10 @@ public class DBOption
       int i;
       try
       {
-        AppMethodBeat.i(75612);
-        if (!new File(this.DB_PATH).exists())
+        AppMethodBeat.i(101858);
+        if (!new u(this.DB_PATH).jKS())
         {
-          AppMethodBeat.o(75612);
+          AppMethodBeat.o(101858);
           return localObject3;
         }
         i = 0;
@@ -102,7 +91,7 @@ public class DBOption
       finally {}
       try
       {
-        localObject3 = SQLiteDatabase.openDatabase(this.DB_PATH, null, 1);
+        localObject3 = SQLiteDatabase.openDatabase(y.n(this.DB_PATH, true), null, 1);
         localObject1 = localObject3;
       }
       catch (SQLiteException localSQLiteException)
@@ -117,7 +106,7 @@ public class DBOption
       }
       else
       {
-        AppMethodBeat.o(75612);
+        AppMethodBeat.o(101858);
       }
     }
   }
@@ -125,23 +114,23 @@ public class DBOption
   private SQLiteDatabase getWritableDatabase()
   {
     Object localObject1 = null;
-    AppMethodBeat.i(75611);
+    AppMethodBeat.i(101857);
     int i = 0;
     for (;;)
     {
       localObject2 = localObject1;
       if (i >= 20) {
-        break label52;
+        break label56;
       }
       try
       {
-        localObject2 = SQLiteDatabase.openOrCreateDatabase(this.DB_PATH, null);
+        localObject2 = SQLiteDatabase.openOrCreateDatabase(y.n(this.DB_PATH, true), null);
         localObject1 = localObject2;
       }
       catch (SQLiteException localSQLiteException)
       {
-        label28:
-        break label28;
+        label32:
+        break label32;
       }
       if (localObject1 != null) {
         break;
@@ -151,32 +140,32 @@ public class DBOption
     }
     checkAndCreateTable(localObject1);
     Object localObject2 = localObject1;
-    label52:
-    AppMethodBeat.o(75611);
+    label56:
+    AppMethodBeat.o(101857);
     return localObject2;
   }
   
   public boolean delete(long paramLong)
   {
-    AppMethodBeat.i(75609);
+    AppMethodBeat.i(101855);
     SQLiteDatabase localSQLiteDatabase = getWritableDatabase();
     if (localSQLiteDatabase != null)
     {
       localSQLiteDatabase.delete("channeldata", "itemId=?", new String[] { String.valueOf(paramLong) });
       closeDB(localSQLiteDatabase);
-      AppMethodBeat.o(75609);
+      AppMethodBeat.o(101855);
       return true;
     }
-    AppMethodBeat.o(75609);
+    AppMethodBeat.o(101855);
     return false;
   }
   
   public long insert(TMAssistantSDKChannelDataItem paramTMAssistantSDKChannelDataItem)
   {
-    AppMethodBeat.i(75608);
+    AppMethodBeat.i(101854);
     if (paramTMAssistantSDKChannelDataItem == null)
     {
-      AppMethodBeat.o(75608);
+      AppMethodBeat.o(101854);
       return -1L;
     }
     paramTMAssistantSDKChannelDataItem = paramTMAssistantSDKChannelDataItem.getBuffer();
@@ -189,18 +178,18 @@ public class DBOption
         localContentValues.put("itemData", paramTMAssistantSDKChannelDataItem);
         long l = localSQLiteDatabase.insert("channeldata", "", localContentValues);
         closeDB(localSQLiteDatabase);
-        AppMethodBeat.o(75608);
+        AppMethodBeat.o(101854);
         return l;
       }
     }
-    AppMethodBeat.o(75608);
+    AppMethodBeat.o(101854);
     return -1L;
   }
   
   public ArrayList<TMAssistantSDKChannelDataItem> queryAll()
   {
     TMAssistantSDKChannelDataItem localTMAssistantSDKChannelDataItem = null;
-    AppMethodBeat.i(75610);
+    AppMethodBeat.i(101856);
     SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
     if (localSQLiteDatabase != null)
     {
@@ -229,16 +218,16 @@ public class DBOption
       }
       localCursor.close();
       closeDB(localSQLiteDatabase);
-      AppMethodBeat.o(75610);
+      AppMethodBeat.o(101856);
       return localObject;
     }
-    AppMethodBeat.o(75610);
+    AppMethodBeat.o(101856);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.channel.DBOption
  * JD-Core Version:    0.7.0.1
  */

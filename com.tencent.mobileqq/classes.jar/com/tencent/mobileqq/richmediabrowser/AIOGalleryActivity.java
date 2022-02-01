@@ -1,116 +1,162 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import agki;
-import agkj;
-import agkl;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Rect;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.Window;
-import aofm;
-import axxu;
-import axxw;
-import axxx;
-import axxy;
-import axxz;
-import axya;
-import axyd;
-import axyg;
-import axyh;
-import axyq;
-import bexu;
-import blqh;
-import bnle;
+import com.tencent.aelight.camera.qqstory.api.IAECaptureContext;
+import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider.Stub;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import com.tencent.mobileqq.app.MiniCodePeakHandler;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmediabrowser.api.IBrowserManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.richmediabrowser.core.BrowserDirector;
-import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.presenter.IProvider;
+import com.tencent.mobileqq.theme.ThemeNavigationBarUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.MainBrowserPresenter;
 import com.tencent.util.BinderWarpper;
-import mbt;
-import yqz;
+import com.tencent.util.LiuHaiUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AIOGalleryActivity
   extends PeakActivity
 {
-  agki jdField_a_of_type_Agki;
-  agkl jdField_a_of_type_Agkl = new axxz(this);
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private axxw jdField_a_of_type_Axxw;
-  private axyq jdField_a_of_type_Axyq;
-  public String a;
-  private yqz jdField_a_of_type_Yqz;
-  private volatile boolean jdField_a_of_type_Boolean;
+  IAIOImageProvider a;
   BroadcastReceiver b = null;
+  BroadcastReceiver c = null;
+  public String d = null;
+  IAIOImageProviderCallBack e = new AIOGalleryActivity.2(this);
+  private IBrowserManager f;
+  private MainBrowserPresenter g;
+  private TroopMemberApiClient h;
+  private volatile boolean i = false;
   
-  private void a()
+  private List<RichMediaBrowserInfo> a(Parcelable[] paramArrayOfParcelable)
   {
-    if (this.jdField_a_of_type_Agki == null)
+    if ((paramArrayOfParcelable != null) && (paramArrayOfParcelable.length > 0))
     {
-      Object localObject = (BinderWarpper)getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
-      if (localObject == null) {
-        break label157;
-      }
-      this.jdField_a_of_type_Agki = agkj.a(((BinderWarpper)localObject).a);
-      this.jdField_a_of_type_Agki.a(this.jdField_a_of_type_Agkl);
-      if (this.jdField_a_of_type_Axyq != null)
+      ArrayList localArrayList = new ArrayList();
+      int j = 0;
+      while (j < paramArrayOfParcelable.length)
       {
-        this.jdField_a_of_type_Axyq.a(this.jdField_a_of_type_Agki);
-        localObject = new axyg();
-        ((axyg)localObject).a(this.jdField_a_of_type_Agki);
-        RichMediaBrowserManager.getInstance().setProvider((IProvider)localObject);
-        if ((this.jdField_a_of_type_Agki != null) && (!axyd.a().e())) {
-          this.jdField_a_of_type_Agki.a(axyd.a().b());
+        if ((paramArrayOfParcelable[j] instanceof RichMediaBaseData))
+        {
+          RichMediaBrowserInfo localRichMediaBrowserInfo = new RichMediaBrowserInfo();
+          localRichMediaBrowserInfo.baseData = ((RichMediaBaseData)paramArrayOfParcelable[j]);
+          localArrayList.add(localRichMediaBrowserInfo);
         }
+        j += 1;
       }
+      return localArrayList;
     }
-    for (;;)
-    {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "IAIOImageProvider is " + this.jdField_a_of_type_Agki);
-      return;
-      label157:
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "binder is null!");
-      finish();
-    }
+    return null;
   }
   
-  private void a(Bundle paramBundle)
+  private void a(PeakProcessProvider paramPeakProcessProvider)
   {
-    a();
+    b(paramPeakProcessProvider);
     b();
+    paramPeakProcessProvider = getAppRuntime();
+    if ((paramPeakProcessProvider instanceof PeakAppInterface)) {
+      ((MiniCodePeakHandler)((PeakAppInterface)paramPeakProcessProvider).getBusinessHandler(PeakAppInterface.d)).a(this);
+    }
   }
   
   private void b()
   {
-    this.b = new axxy(this);
+    this.c = new AIOGalleryActivity.1(this);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.i)
       {
-        this.jdField_a_of_type_Boolean = true;
-        registerReceiver(this.b, localIntentFilter);
+        this.i = true;
+        registerReceiver(this.c, localIntentFilter);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
+  }
+  
+  private void b(PeakProcessProvider paramPeakProcessProvider)
+  {
+    if (this.a == null)
+    {
+      Object localObject = (BinderWarpper)getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
+      if (localObject != null)
+      {
+        this.a = IAIOImageProvider.Stub.a(((BinderWarpper)localObject).a);
+        localObject = this.a;
+        if (localObject != null)
+        {
+          ((IAIOImageProvider)localObject).a(this.e);
+          paramPeakProcessProvider.a(this.a);
+          if ((!ParamsManager.a().l()) && (!ParamsManager.a().b())) {
+            this.a.a(ParamsManager.a().m());
+          }
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOGalleryActivity", 2, "binder is null!");
+        }
+        finish();
+      }
+      if (QLog.isColorLevel())
+      {
+        paramPeakProcessProvider = new StringBuilder();
+        paramPeakProcessProvider.append("IAIOImageProvider is ");
+        paramPeakProcessProvider.append(this.a);
+        QLog.d("AIOGalleryActivity", 2, paramPeakProcessProvider.toString());
+      }
+    }
+  }
+  
+  public void c()
+  {
+    ThemeNavigationBarUtil.a(getWindow(), -16777216);
+  }
+  
+  public boolean cd_()
+  {
+    return false;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public void finish()
@@ -119,19 +165,27 @@ public class AIOGalleryActivity
     overridePendingTransition(0, 0);
   }
   
-  public boolean isWrapContent()
+  public boolean o()
   {
+    MainBrowserPresenter localMainBrowserPresenter = this.g;
+    if (localMainBrowserPresenter != null) {
+      return localMainBrowserPresenter.onBackEvent();
+    }
     return false;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Axxw.a(paramInt1, paramInt2, paramIntent);
+    MainBrowserPresenter localMainBrowserPresenter = this.g;
+    if (localMainBrowserPresenter != null) {
+      localMainBrowserPresenter.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
   }
   
   public void onBackPressed()
   {
-    if (!this.jdField_a_of_type_Axxw.a()) {
+    MainBrowserPresenter localMainBrowserPresenter = this.g;
+    if ((localMainBrowserPresenter != null) && (!localMainBrowserPresenter.onBackEvent())) {
       super.onBackPressed();
     }
   }
@@ -139,89 +193,121 @@ public class AIOGalleryActivity
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    this.jdField_a_of_type_Axxw.a(paramConfiguration);
+    MainBrowserPresenter localMainBrowserPresenter = this.g;
+    if (localMainBrowserPresenter != null) {
+      localMainBrowserPresenter.onConfigurationChanged(paramConfiguration);
+    }
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.mNeedStatusTrans = true;
-    this.mActNeedImmersive = false;
-    bnle.a(this);
-    bnle.c(this);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCreate()[");
+      ((StringBuilder)localObject).append(hashCode());
+      ((StringBuilder)localObject).append("]");
+      QLog.d("AIOGalleryActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    this.y = true;
+    this.z = false;
+    LiuHaiUtils.f(this);
+    LiuHaiUtils.enableNotch(this);
     getWindow().setFlags(1024, 1024);
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Yqz = yqz.a();
-    this.jdField_a_of_type_Yqz.a();
-    aghh.a = getResources().getDisplayMetrics().density;
-    ShortVideoUtils.a(blqh.a());
-    paramBundle = getIntent();
-    Bundle localBundle = paramBundle.getExtras();
-    if (localBundle != null) {
-      this.jdField_a_of_type_JavaLangString = localBundle.getString("extra.GROUP_UIN");
+    this.h = TroopMemberApiClient.a();
+    this.h.e();
+    com.tencent.mobileqq.activity.aio.photo.AIOConstants.a = getResources().getDisplayMetrics().density;
+    ShortVideoUtils.loadShortVideoSo(((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface());
+    Intent localIntent = getIntent();
+    Object localObject = localIntent.getExtras();
+    if (localObject != null)
+    {
+      this.d = ((Bundle)localObject).getString("extra.GROUP_UIN");
+      localObject = a(((Bundle)localObject).getParcelableArray("extra.EXTRA_CURRENT_IMAGE_LIST"));
+    }
+    else
+    {
+      localObject = null;
     }
     try
     {
-      RichMediaBrowserManager.getInstance().setLogProxy(new axyh());
-      RichMediaBrowserManager.getInstance().setMvpFactory(new axxx());
-      Rect localRect = (Rect)localBundle.getParcelable("KEY_THUMBNAL_BOUND");
-      axyd.a().a(localRect);
-      axxu localaxxu = new axxu();
-      localaxxu.a = localRect;
-      RichMediaBrowserManager.getInstance().setAnimationListener(localaxxu);
-      axyd.a().a(paramBundle);
-      this.jdField_a_of_type_Axxw = new axxw(this);
-      new BrowserDirector(this.jdField_a_of_type_Axxw).construct(paramBundle);
-      this.jdField_a_of_type_Axyq = this.jdField_a_of_type_Axxw.a();
-      a(localBundle);
-      return;
+      PeakProcessProvider localPeakProcessProvider = new PeakProcessProvider();
+      this.f = ((IBrowserManager)QRoute.api(IBrowserManager.class)).launchRichMediaBrowser(this, localIntent, localPeakProcessProvider, "KEY_THUMBNAL_BOUND", (List)localObject, 0);
+      this.g = this.f.getPresenter();
+      a(localPeakProcessProvider);
+      if (this.g != null)
+      {
+        this.g.onCreate(paramBundle);
+        return;
+      }
     }
     catch (Exception paramBundle)
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "onCreate exception = " + paramBundle.getMessage());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onCreate exception = ");
+        ((StringBuilder)localObject).append(paramBundle.getMessage());
+        QLog.d("AIOGalleryActivity", 2, ((StringBuilder)localObject).toString());
+      }
       finish();
     }
   }
   
   public void onDestroy()
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "onDestroy()");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDestroy()[");
+      ((StringBuilder)localObject).append(hashCode());
+      ((StringBuilder)localObject).append("]");
+      QLog.d("AIOGalleryActivity", 2, ((StringBuilder)localObject).toString());
+    }
     super.onDestroy();
-    if (this.jdField_a_of_type_Axxw != null) {
-      this.jdField_a_of_type_Axxw.e();
+    Object localObject = this.g;
+    if (localObject != null) {
+      ((MainBrowserPresenter)localObject).onDestroy();
     }
-    if (this.jdField_a_of_type_Agki != null) {}
-    try
-    {
-      if ((!getIntent().getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) && (!getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false)))
+    if (this.a != null) {
+      try
       {
-        this.jdField_a_of_type_Agki.c();
-        this.jdField_a_of_type_Agki.a();
-        this.jdField_a_of_type_Agkl = null;
-      }
-      for (;;)
-      {
-        if ((this.b != null) && (this.jdField_a_of_type_Boolean))
+        if ((!getIntent().getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) && (!getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false)))
         {
-          unregisterReceiver(this.b);
-          this.b = null;
+          this.a.c();
+          this.a.a();
+          this.e = null;
         }
-        this.jdField_a_of_type_Yqz.b();
-        return;
-        this.jdField_a_of_type_Agki.c();
+        else
+        {
+          this.a.c();
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
-        BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "onDestroy() exception = " + localException.getMessage());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onDestroy() exception = ");
+          localStringBuilder.append(localException.getMessage());
+          QLog.d("AIOGalleryActivity", 2, localStringBuilder.toString());
+        }
       }
     }
+    if ((this.c != null) && (this.i))
+    {
+      unregisterReceiver(this.c);
+      this.c = null;
+    }
+    this.h.f();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Axxw.a(paramInt, paramKeyEvent)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.g;
+    if ((localMainBrowserPresenter != null) && (!localMainBrowserPresenter.onKeyDown(paramInt, paramKeyEvent))) {
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -229,73 +315,99 @@ public class AIOGalleryActivity
   
   public void onPause()
   {
-    mbt.a(BaseApplicationImpl.getContext(), false);
-    bexu.a(BaseApplicationImpl.getContext(), true, 52);
-    aofm.a(BaseApplicationImpl.getContext(), 2, true);
+    SmallScreenUtils.a(BaseApplicationImpl.getContext(), false);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), true, 52);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(BaseApplicationImpl.getContext(), 2, true);
     AbstractGifImage.pauseAll();
     ApngImage.pauseAll();
     super.onPause();
-    if ((Build.MODEL.equals("Coolpad 5930")) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)) {}
-    try
+    if (Build.MODEL.equals("Coolpad 5930"))
     {
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Axxw.d();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "onPause exception = " + localException.getMessage());
+      BroadcastReceiver localBroadcastReceiver = this.b;
+      if (localBroadcastReceiver != null) {
+        try
+        {
+          unregisterReceiver(localBroadcastReceiver);
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onPause exception = ");
+            localStringBuilder.append(localException.getMessage());
+            QLog.d("AIOGalleryActivity", 2, localStringBuilder.toString());
+          }
+        }
       }
+    }
+    MainBrowserPresenter localMainBrowserPresenter = this.g;
+    if (localMainBrowserPresenter != null) {
+      localMainBrowserPresenter.onPause();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    mbt.a(BaseApplicationImpl.getContext(), true);
-    bexu.a(BaseApplicationImpl.getContext(), false, 52);
-    aofm.a(BaseApplicationImpl.getContext(), 2, false);
+    SmallScreenUtils.a(BaseApplicationImpl.getContext(), true);
+    ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowVisibleBroadcast(BaseApplicationImpl.getContext(), false, 52);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(BaseApplicationImpl.getContext(), 2, false);
     com.tencent.image.AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
     AbstractGifImage.resumeAll();
     ApngImage.playByTag(0);
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new axya(this);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      this.b = new AIOGalleryActivity.ScreenBroadcastReceiver(this);
+      localObject = new IntentFilter();
+      ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
+      ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
+      ((IntentFilter)localObject).addAction("android.intent.action.USER_PRESENT");
+      registerReceiver(this.b, (IntentFilter)localObject);
     }
-    this.jdField_a_of_type_Axxw.c();
+    Object localObject = this.g;
+    if (localObject != null) {
+      ((MainBrowserPresenter)localObject).onResume();
+    }
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_Axxw.b();
+    MainBrowserPresenter localMainBrowserPresenter = this.g;
+    if (localMainBrowserPresenter != null) {
+      localMainBrowserPresenter.onStart();
+    }
   }
   
   public void onStop()
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryActivity", 4, "onStop()");
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryActivity", 2, "onStop()");
+    }
     super.onStop();
     ((AudioManager)getSystemService("audio")).abandonAudioFocus(null);
+    MainBrowserPresenter localMainBrowserPresenter = this.g;
+    if (localMainBrowserPresenter != null) {
+      localMainBrowserPresenter.onStop();
+    }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (paramBoolean) {
-      this.jdField_a_of_type_Axxw.a();
+    if (paramBoolean)
+    {
+      MainBrowserPresenter localMainBrowserPresenter = this.g;
+      if (localMainBrowserPresenter != null) {
+        localMainBrowserPresenter.onWindowFocusChanged();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity
  * JD-Core Version:    0.7.0.1
  */

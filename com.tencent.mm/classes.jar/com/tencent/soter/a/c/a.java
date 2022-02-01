@@ -1,114 +1,77 @@
 package com.tencent.soter.a.c;
 
-import android.content.SharedPreferences;
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.soter.core.c.d;
+import com.tencent.soter.core.c.f;
+import java.util.HashMap;
 
-public class a
+public final class a
 {
-  private static volatile a BmX = null;
-  public int BmY;
-  public SparseArray<String> BmZ;
-  public SharedPreferences Bna;
-  public boolean bRB;
-  public boolean coB;
+  private static HashMap<Class, a> ahxN;
   
-  public a()
+  static
   {
-    AppMethodBeat.i(10465);
-    this.bRB = false;
-    this.coB = false;
-    this.BmY = 0;
-    this.BmZ = new SparseArray(10);
-    this.Bna = null;
-    AppMethodBeat.o(10465);
+    AppMethodBeat.i(15);
+    ahxN = new HashMap();
+    AppMethodBeat.o(15);
   }
   
-  public static a dVu()
+  public static boolean a(Class paramClass, f paramf)
   {
-    AppMethodBeat.i(10466);
-    if (BmX == null) {
-      try
+    AppMethodBeat.i(14);
+    if (paramf.isSuccess())
+    {
+      AppMethodBeat.o(14);
+      return false;
+    }
+    a locala = (a)ahxN.get(paramClass);
+    if (locala == null)
+    {
+      locala = new a((byte)0);
+      locala.a(paramf);
+      ahxN.put(paramClass, locala);
+      paramClass = locala;
+    }
+    for (;;)
+    {
+      d.d("Soter.RemoveASKStrategy", "error counter: %s", new Object[] { Integer.valueOf(paramClass.evg) });
+      AppMethodBeat.o(14);
+      return false;
+      if ((paramf.errCode == locala.errCode) && (paramf.errMsg.equals(locala.errMsg)))
       {
-        if (BmX == null) {
-          BmX = new a();
+        locala.evg += 1;
+        paramClass = locala;
+        if (locala.evg >= 2)
+        {
+          AppMethodBeat.o(14);
+          return true;
         }
-        a locala1 = BmX;
-        return locala1;
       }
-      finally
+      else
       {
-        AppMethodBeat.o(10466);
+        locala.a(paramf);
+        paramClass = locala;
       }
     }
-    a locala2 = BmX;
-    AppMethodBeat.o(10466);
-    return locala2;
   }
   
-  public final boolean dVs()
+  static final class a
   {
-    try
+    int errCode;
+    String errMsg;
+    int evg;
+    
+    public final void a(f paramf)
     {
-      boolean bool = this.coB;
-      return bool;
+      this.errCode = paramf.errCode;
+      this.errMsg = paramf.errMsg;
+      this.evg = 1;
     }
-    finally {}
-  }
-  
-  public final void dVv()
-  {
-    try
-    {
-      this.bRB = true;
-      return;
-    }
-    finally {}
-  }
-  
-  public final SparseArray<String> dVw()
-  {
-    try
-    {
-      SparseArray localSparseArray = this.BmZ;
-      return localSparseArray;
-    }
-    finally {}
-  }
-  
-  public final SharedPreferences dVx()
-  {
-    try
-    {
-      SharedPreferences localSharedPreferences = this.Bna;
-      return localSharedPreferences;
-    }
-    finally {}
-  }
-  
-  public final boolean isInit()
-  {
-    try
-    {
-      boolean bool = this.bRB;
-      return bool;
-    }
-    finally {}
-  }
-  
-  public final void rW(boolean paramBoolean)
-  {
-    try
-    {
-      this.coB = paramBoolean;
-      return;
-    }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.a.c.a
  * JD-Core Version:    0.7.0.1
  */

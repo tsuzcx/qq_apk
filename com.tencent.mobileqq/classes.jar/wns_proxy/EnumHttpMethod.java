@@ -5,26 +5,13 @@ import java.io.Serializable;
 public final class EnumHttpMethod
   implements Serializable
 {
-  private static EnumHttpMethod[] __values;
+  private static EnumHttpMethod[] __values = new EnumHttpMethod[2];
   public static final int _eGET = 0;
   public static final int _ePOST = 1;
-  public static final EnumHttpMethod eGET;
-  public static final EnumHttpMethod ePOST;
+  public static final EnumHttpMethod eGET = new EnumHttpMethod(0, 0, "eGET");
+  public static final EnumHttpMethod ePOST = new EnumHttpMethod(1, 1, "ePOST");
   private String __T = new String();
   private int __value;
-  
-  static
-  {
-    if (!EnumHttpMethod.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      __values = new EnumHttpMethod[2];
-      eGET = new EnumHttpMethod(0, 0, "eGET");
-      ePOST = new EnumHttpMethod(1, 1, "ePOST");
-      return;
-    }
-  }
   
   private EnumHttpMethod(int paramInt1, int paramInt2, String paramString)
   {
@@ -36,15 +23,16 @@ public final class EnumHttpMethod
   public static EnumHttpMethod convert(int paramInt)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].value() == paramInt) {
+      EnumHttpMethod[] arrayOfEnumHttpMethod = __values;
+      if (i >= arrayOfEnumHttpMethod.length) {
+        break;
+      }
+      if (arrayOfEnumHttpMethod[i].value() == paramInt) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -52,15 +40,16 @@ public final class EnumHttpMethod
   public static EnumHttpMethod convert(String paramString)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].toString().equals(paramString)) {
+      EnumHttpMethod[] arrayOfEnumHttpMethod = __values;
+      if (i >= arrayOfEnumHttpMethod.length) {
+        break;
+      }
+      if (arrayOfEnumHttpMethod[i].toString().equals(paramString)) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -77,7 +66,7 @@ public final class EnumHttpMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wns_proxy.EnumHttpMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -25,15 +25,15 @@ public class IndoorInfo
   
   public String toString()
   {
-    AppMethodBeat.i(101187);
+    AppMethodBeat.i(87545);
     String str = this.buildingId + "_" + this.floorName;
-    AppMethodBeat.o(101187);
+    AppMethodBeat.o(87545);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.IndoorInfo
  * JD-Core Version:    0.7.0.1
  */

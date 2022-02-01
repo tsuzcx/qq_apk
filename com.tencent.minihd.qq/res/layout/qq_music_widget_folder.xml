@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/card_shadow_body" android:paddingLeft="@dimen/qqmusic_widget_select_folder_padding_2" android:paddingRight="@dimen/qqmusic_widget_select_folder_padding_2" android:layout_width="fill_parent" android:layout_height="@dimen/qqmusic_widget_select_folder_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/image_qqmusic_folder" android:layout_width="@dimen/qqmusic_widget_select_folder_image_size" android:layout_height="@dimen/qqmusic_widget_select_folder_image_size" android:src="@drawable/qqmusic_widget_default_folder_image" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/qqmusic_widget_select_folder_textsize_1" android:textColor="@color/black" android:id="@id/text_qqmusic_folder_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qqmusic_widget_select_folder_padding_1" android:singleLine="true" android:layout_toRightOf="@id/image_qqmusic_folder" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcDelMsgInfo
   extends JceStruct
 {
-  public long lFromUin;
-  public long lMsgUid;
-  public short shMsgSeq;
-  public int shMsgType;
-  public int uMsgTime;
+  public long lFromUin = 0L;
+  public long lMsgUid = 0L;
+  public short shMsgSeq = 0;
+  public int shMsgType = 0;
+  public int uMsgTime = 0;
   
   public SvcDelMsgInfo() {}
   
@@ -44,7 +44,7 @@ public final class SvcDelMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcDelMsgInfo
  * JD-Core Version:    0.7.0.1
  */

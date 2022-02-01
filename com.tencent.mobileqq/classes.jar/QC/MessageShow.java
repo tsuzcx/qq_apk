@@ -28,7 +28,7 @@ public final class MessageShow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.MessageShow
  * JD-Core Version:    0.7.0.1
  */

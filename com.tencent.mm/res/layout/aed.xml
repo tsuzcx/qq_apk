@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dbi" android:background="@color/w4" android:layout_width="fill_parent" android:layout_height="@dimen/fa"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dbj" android:background="@drawable/am" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/dbk" android:paddingLeft="@dimen/gc" android:paddingRight="@dimen/gc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gg" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/e6" android:ellipsize="end" android:gravity="center|left" android:id="@id/dbl" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/cq3" android:singleLine="true" />
-    <View android:id="@id/dbm" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <ImageButton android:id="@id/dbn" android:background="@drawable/am" android:focusable="true" android:layout_width="@dimen/fa" android:layout_height="@dimen/fa" android:src="@raw/actionbar_icon_dark_search" />
-    <ImageButton android:id="@id/dbo" android:background="@drawable/am" android:focusable="true" android:visibility="gone" android:layout_width="@dimen/fa" android:layout_height="@dimen/fa" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dbp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <TextView android:id="@id/kx" android:layout_marginRight="@dimen/ft" android:text="send" style="@style/ns" />
-    </LinearLayout>
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:background="@drawable/xs" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/h6a" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/cp" style="@style/jv" />
+        <RelativeLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/h67" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d6" android:layout_marginRight="@dimen/d0">
+            <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/h71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌曲名字" android:singleLine="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/xe" android:ellipsize="end" android:id="@id/jlw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌手" android:singleLine="true" android:layout_below="@id/h71" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/cp" android:src="@raw/finder_live_move_icon" app:iconColor="@color/sn" />
+        <View android:layout_gravity="bottom" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/d6" />
+    </FrameLayout>
+</FrameLayout>

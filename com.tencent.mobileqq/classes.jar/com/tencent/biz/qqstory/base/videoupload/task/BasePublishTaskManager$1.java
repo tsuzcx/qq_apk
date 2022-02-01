@@ -1,20 +1,18 @@
 package com.tencent.biz.qqstory.base.videoupload.task;
 
-import uqc;
-
-public class BasePublishTaskManager$1
+class BasePublishTaskManager$1
   implements Runnable
 {
-  public BasePublishTaskManager$1(uqc paramuqc) {}
+  BasePublishTaskManager$1(BasePublishTaskManager paramBasePublishTaskManager) {}
   
   public void run()
   {
-    this.this$0.e();
+    this.this$0.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.BasePublishTaskManager.1
  * JD-Core Version:    0.7.0.1
  */

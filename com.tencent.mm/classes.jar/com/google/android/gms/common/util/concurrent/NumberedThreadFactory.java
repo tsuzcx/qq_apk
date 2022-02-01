@@ -21,28 +21,28 @@ public class NumberedThreadFactory
   
   public NumberedThreadFactory(String paramString, int paramInt)
   {
-    AppMethodBeat.i(90303);
+    AppMethodBeat.i(5324);
     this.zzaaw = new AtomicInteger();
     this.zzaau = Executors.defaultThreadFactory();
     this.zzaav = ((String)Preconditions.checkNotNull(paramString, "Name must not be null"));
     this.priority = paramInt;
-    AppMethodBeat.o(90303);
+    AppMethodBeat.o(5324);
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(90304);
+    AppMethodBeat.i(5325);
     paramRunnable = this.zzaau.newThread(new zza(paramRunnable, this.priority));
     String str = this.zzaav;
     int i = this.zzaaw.getAndIncrement();
     paramRunnable.setName(String.valueOf(str).length() + 13 + str + "[" + i + "]");
-    AppMethodBeat.o(90304);
+    AppMethodBeat.o(5325);
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.concurrent.NumberedThreadFactory
  * JD-Core Version:    0.7.0.1
  */

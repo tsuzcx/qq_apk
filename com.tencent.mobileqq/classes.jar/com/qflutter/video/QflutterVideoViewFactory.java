@@ -1,6 +1,5 @@
 package com.qflutter.video;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.ViewGroup;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -14,7 +13,6 @@ import io.flutter.view.TextureRegistry;
 public class QflutterVideoViewFactory
   extends PlatformViewFactory
 {
-  private final Activity activity;
   private final BinaryMessenger messenger;
   private final PluginRegistry.Registrar registrar;
   
@@ -22,19 +20,17 @@ public class QflutterVideoViewFactory
   {
     super(StandardMessageCodec.INSTANCE);
     this.messenger = paramBinaryMessenger;
-    this.activity = paramRegistrar.activity();
     this.registrar = paramRegistrar;
   }
   
   public PlatformView create(Context paramContext, int paramInt, Object paramObject)
   {
-    paramContext = (ViewGroup)this.registrar.view().getParent();
-    return new QflutterVideoView(this.activity, this.messenger, paramInt, this.registrar.textures().createSurfaceTexture(), ArgumentUtil.transFlutterArguments(paramObject));
+    return new QflutterVideoView(((ViewGroup)this.registrar.view().getParent()).getContext(), this.messenger, paramInt, this.registrar.textures().createSurfaceTexture(), ArgumentUtil.transFlutterArguments(paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.video.QflutterVideoViewFactory
  * JD-Core Version:    0.7.0.1
  */

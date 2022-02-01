@@ -2,37 +2,39 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.os.Handler;
 import android.widget.TextView;
-import aqlw;
 
-public class FilePreviewActivity$9$3
+class FilePreviewActivity$9$3
   implements Runnable
 {
-  public FilePreviewActivity$9$3(aqlw paramaqlw) {}
+  FilePreviewActivity$9$3(FilePreviewActivity.9 param9) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.a.b.removeCallbacksAndMessages(null);
     try
     {
-      String str = (String)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.getText();
-      if ((str == null) || (str.length() == 0)) {
-        return;
-      }
+      str = (String)this.a.c.v.getText();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject = null;
+      String str;
+      label31:
+      break label31;
+    }
+    str = null;
+    if (str != null)
+    {
+      if (str.length() == 0) {
+        return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.clearAnimation();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.setVisibility(0);
+      this.a.c.v.clearAnimation();
+      this.a.c.v.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.9.3
  * JD-Core Version:    0.7.0.1
  */

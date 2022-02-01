@@ -12,15 +12,15 @@ final class CardGiftVideoUI$6
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(88453);
-    this.kvN.bdV();
-    AppMethodBeat.o(88453);
+    AppMethodBeat.i(113380);
+    this.wCk.dmJ();
+    AppMethodBeat.o(113380);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftVideoUI.6
  * JD-Core Version:    0.7.0.1
  */

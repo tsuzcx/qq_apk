@@ -53,13 +53,14 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.XListView;
+import env;
 import enw;
 import enx;
 import eny;
 import enz;
 import eoa;
 import eob;
-import eoc;
+import eod;
 import eoe;
 import eof;
 import eog;
@@ -69,7 +70,6 @@ import eoj;
 import eok;
 import eol;
 import eom;
-import eon;
 import java.util.Calendar;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -145,16 +145,16 @@ public class BannerManager
   private View a()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903950, null);
-    ((TextView)localView.findViewById(2131234416)).setText(this.jdField_d_of_type_JavaLangString);
-    localView.setOnClickListener(new eog(this));
-    localView.findViewById(2131234415).setVisibility(8);
+    ((TextView)localView.findViewById(2131234415)).setText(this.jdField_d_of_type_JavaLangString);
+    localView.setOnClickListener(new eof(this));
+    localView.findViewById(2131234414).setVisibility(8);
     return localView;
   }
   
   private void a(View paramView)
   {
-    paramView.findViewById(2131231163).setVisibility(0);
-    ((TextView)paramView.findViewById(2131231164)).setText(2131561867);
+    paramView.findViewById(2131231162).setVisibility(0);
+    ((TextView)paramView.findViewById(2131231163)).setText(2131561867);
   }
   
   private void a(View paramView, Message paramMessage)
@@ -169,11 +169,11 @@ public class BannerManager
     if ((paramMessage != null) && ((paramMessage.obj instanceof String))) {}
     for (paramMessage = String.valueOf(paramMessage.obj);; paramMessage = "http://qq.com")
     {
-      paramView = paramView.findViewById(2131231163);
+      paramView = paramView.findViewById(2131231162);
       if (paramView.getVisibility() != 0) {
         paramView.setVisibility(0);
       }
-      paramView.setOnClickListener(new enw(this, paramMessage));
+      paramView.setOnClickListener(new env(this, paramMessage));
       ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b, "CliOper", "", "", "0X8004028", "0X8004028", 0, 0, "", "", "", "");
       return;
     }
@@ -260,13 +260,13 @@ public class BannerManager
       d(paramBanner.jdField_a_of_type_AndroidViewView, paramMessage);
       return;
     case 7: 
-      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131232013).setVisibility(0);
+      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131232012).setVisibility(0);
       return;
     case 9: 
-      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131234643).setVisibility(0);
+      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131234642).setVisibility(0);
       return;
     case 8: 
-      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131234643).setVisibility(0);
+      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131234642).setVisibility(0);
       return;
     case 11: 
       d(paramBanner.jdField_a_of_type_AndroidViewView);
@@ -275,7 +275,7 @@ public class BannerManager
       e(paramBanner.jdField_a_of_type_AndroidViewView, paramMessage);
       return;
     case 13: 
-      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131234415).setVisibility(0);
+      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131234414).setVisibility(0);
       return;
     case 16: 
       e(paramBanner.jdField_a_of_type_AndroidViewView);
@@ -345,7 +345,7 @@ public class BannerManager
             break;
           }
           localObject1 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2130903327, null);
-          ImageView localImageView = (ImageView)((FrameLayout)localObject1).findViewById(2131232091);
+          ImageView localImageView = (ImageView)((FrameLayout)localObject1).findViewById(2131232090);
           localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
           localImageView.setImageBitmap((Bitmap)localObject2);
           DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics();
@@ -353,12 +353,12 @@ public class BannerManager
           i1 = ((Bitmap)localObject2).getHeight() * Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) / ((Bitmap)localObject2).getWidth();
           localLayoutParams.height = Math.max((int)(30.0F * localDisplayMetrics.density), Math.min(Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) * 68 / 320, i1));
           localImageView.setLayoutParams(localLayoutParams);
-          localObject2 = (ImageView)((FrameLayout)localObject1).findViewById(2131232092);
+          localObject2 = (ImageView)((FrameLayout)localObject1).findViewById(2131232091);
           ((ImageView)localObject2).setTag(localPushBanner);
           ((ImageView)localObject2).setContentDescription("图片推广位");
-          ((ImageView)localObject2).setOnClickListener(new eof(this, paramView, paramInt, (FrameLayout)localObject1, str));
+          ((ImageView)localObject2).setOnClickListener(new eoe(this, paramView, paramInt, (FrameLayout)localObject1, str));
           ((FrameLayout)localObject1).setTag(localPushBanner);
-          ((ADView)paramView.findViewById(2131232088)).a((View)localObject1, paramInt);
+          ((ADView)paramView.findViewById(2131232087)).a((View)localObject1, paramInt);
           return true;
         }
       }
@@ -382,7 +382,7 @@ public class BannerManager
     int i4 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.a()).a(0);
     if (i4 > 0)
     {
-      ((ADView)paramView.findViewById(2131232088)).a();
+      ((ADView)paramView.findViewById(2131232087)).a();
       int i1 = 0;
       int i3;
       for (int i2 = 0; i1 < i4; i2 = i3)
@@ -408,16 +408,16 @@ public class BannerManager
   private View b()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903292, null);
-    ((TextView)localView.findViewById(2131231164)).setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131562476));
-    localView.setOnClickListener(new eoh(this));
-    localView.findViewById(2131231163).setVisibility(8);
+    ((TextView)localView.findViewById(2131231163)).setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131562476));
+    localView.setOnClickListener(new eog(this));
+    localView.findViewById(2131231162).setVisibility(8);
     return localView;
   }
   
   private void b(View paramView)
   {
-    paramView.findViewById(2131231163).setVisibility(0);
-    ((TextView)paramView.findViewById(2131231164)).setText(2131562476);
+    paramView.findViewById(2131231162).setVisibility(0);
+    ((TextView)paramView.findViewById(2131231163)).setText(2131562476);
     if (a(7))
     {
       a(7, 0);
@@ -435,8 +435,8 @@ public class BannerManager
       do
       {
         return;
-        paramView.findViewById(2131232886).setVisibility(0);
-        ((TextView)paramView.findViewById(2131232887)).setText(String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131563266), new Object[] { Integer.valueOf(i1) }));
+        paramView.findViewById(2131232885).setVisibility(0);
+        ((TextView)paramView.findViewById(2131232886)).setText(String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131563266), new Object[] { Integer.valueOf(i1) }));
       } while (i1 > 0);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
       return;
@@ -451,19 +451,19 @@ public class BannerManager
   private View c()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903292, null);
-    ((TextView)localView.findViewById(2131231164)).setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131562440));
-    localView.findViewById(2131231163).setVisibility(8);
+    ((TextView)localView.findViewById(2131231163)).setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131562440));
+    localView.findViewById(2131231162).setVisibility(8);
     return localView;
   }
   
   private void c(View paramView)
   {
-    paramView.findViewById(2131231163).setVisibility(0);
+    paramView.findViewById(2131231162).setVisibility(0);
   }
   
   private void c(View paramView, Message paramMessage)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131232804);
+    TextView localTextView = (TextView)paramView.findViewById(2131232803);
     if (paramMessage != null)
     {
       if (paramMessage.arg1 != 1) {
@@ -473,7 +473,7 @@ public class BannerManager
     }
     for (;;)
     {
-      paramView.findViewById(2131232803).setVisibility(0);
+      paramView.findViewById(2131232802).setVisibility(0);
       return;
       label42:
       if (paramMessage.arg2 == 2) {
@@ -490,15 +490,15 @@ public class BannerManager
   private View d()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903547, null);
-    ((TextView)localView.findViewById(2131232887)).setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131563266));
-    localView.setOnClickListener(new eoi(this));
-    localView.findViewById(2131232886).setVisibility(8);
+    ((TextView)localView.findViewById(2131232886)).setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131563266));
+    localView.setOnClickListener(new eoh(this));
+    localView.findViewById(2131232885).setVisibility(8);
     return localView;
   }
   
   private void d(View paramView)
   {
-    paramView.findViewById(2131231446).setVisibility(0);
+    paramView.findViewById(2131231445).setVisibility(0);
     if (this.c)
     {
       TroopAssistantManager.a().i(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b);
@@ -515,13 +515,13 @@ public class BannerManager
       {
         paramMessage = (VipBannerInfo)paramMessage.obj;
         localObject = paramMessage.b;
-        ((TextView)paramView.findViewById(2131233446)).setText((CharSequence)localObject);
-        localObject = (Button)paramView.findViewById(2131233447);
+        ((TextView)paramView.findViewById(2131233445)).setText((CharSequence)localObject);
+        localObject = (Button)paramView.findViewById(2131233446);
         localAppInfo = paramMessage.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
         localRedTouchManager = (RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.getManager(34);
         if ((paramMessage.jdField_a_of_type_JavaLangString != null) && (localAppInfo != null) && (localRedTouchManager != null))
         {
-          ((Button)localObject).setOnClickListener(new eol(this, paramMessage, localRedTouchManager, localAppInfo));
+          ((Button)localObject).setOnClickListener(new eok(this, paramMessage, localRedTouchManager, localAppInfo));
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9, paramMessage.jdField_a_of_type_Long);
           localRedTouchManager.a(localAppInfo, paramMessage.jdField_a_of_type_JavaLangString);
           paramView.setVisibility(0);
@@ -550,8 +550,8 @@ public class BannerManager
   {
     if (QQPlayerService.a())
     {
-      paramView.findViewById(2131231944).setVisibility(0);
-      paramView = (TextView)paramView.findViewById(2131231946);
+      paramView.findViewById(2131231943).setVisibility(0);
+      paramView = (TextView)paramView.findViewById(2131231945);
       SongInfo localSongInfo = QQPlayerService.a();
       if (localSongInfo != null)
       {
@@ -560,13 +560,13 @@ public class BannerManager
       }
       return;
     }
-    paramView.findViewById(2131231944).setVisibility(8);
+    paramView.findViewById(2131231943).setVisibility(8);
   }
   
   private void e(View paramView, Message paramMessage)
   {
-    paramView.findViewById(2131234643).setVisibility(0);
-    TextView localTextView = (TextView)paramView.findViewById(2131232620);
+    paramView.findViewById(2131234642).setVisibility(0);
+    TextView localTextView = (TextView)paramView.findViewById(2131232619);
     if (paramMessage != null)
     {
       if (!ConfigHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b))
@@ -597,17 +597,17 @@ public class BannerManager
   private View f()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903553, null);
-    ((TextView)localView.findViewById(2131231164)).setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131563345));
-    localView.setOnClickListener(new eoj(this));
-    localView.findViewById(2131231163).setVisibility(8);
+    ((TextView)localView.findViewById(2131231163)).setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131563345));
+    localView.setOnClickListener(new eoi(this));
+    localView.findViewById(2131231162).setVisibility(8);
     return localView;
   }
   
   private void f(View paramView)
   {
-    paramView.findViewById(2131232087).setVisibility(0);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131232086);
-    paramView = (ADView)paramView.findViewById(2131232088);
+    paramView.findViewById(2131232086).setVisibility(0);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131232085);
+    paramView = (ADView)paramView.findViewById(2131232087);
     if (b())
     {
       localRelativeLayout.setPadding(0, 0, 0, 0);
@@ -620,19 +620,19 @@ public class BannerManager
   private View g()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903527, null);
-    localView.findViewById(2131232804).setOnClickListener(new eok(this));
-    localView.findViewById(2131232803).setVisibility(8);
+    localView.findViewById(2131232803).setOnClickListener(new eoj(this));
+    localView.findViewById(2131232802).setVisibility(8);
     return localView;
   }
   
   private View h()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130904044, null);
-    TextView localTextView = (TextView)localView.findViewById(2131232620);
-    localTextView.setOnClickListener(new eom(this));
+    TextView localTextView = (TextView)localView.findViewById(2131232619);
+    localTextView.setOnClickListener(new eol(this));
     localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131562462));
-    ((ImageView)localView.findViewById(2131234644)).setOnClickListener(new eon(this));
-    localView.findViewById(2131234643).setVisibility(8);
+    ((ImageView)localView.findViewById(2131234643)).setOnClickListener(new eom(this));
+    localView.findViewById(2131234642).setVisibility(8);
     return localView;
   }
   
@@ -656,12 +656,12 @@ public class BannerManager
   private View i()
   {
     View localView1 = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903299, null);
-    View localView2 = localView1.findViewById(2131232014);
-    View localView3 = localView1.findViewById(2131232015);
-    enx localenx = new enx(this);
-    localView2.setOnClickListener(localenx);
-    localView3.setOnClickListener(localenx);
-    localView1.findViewById(2131232013).setVisibility(8);
+    View localView2 = localView1.findViewById(2131232013);
+    View localView3 = localView1.findViewById(2131232014);
+    enw localenw = new enw(this);
+    localView2.setOnClickListener(localenw);
+    localView3.setOnClickListener(localenw);
+    localView1.findViewById(2131232012).setVisibility(8);
     return localView1;
   }
   
@@ -691,8 +691,8 @@ public class BannerManager
   private View j()
   {
     View localView1 = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903157, null);
-    View localView2 = localView1.findViewById(2131231446);
-    localView1.setOnClickListener(new eny(this));
+    View localView2 = localView1.findViewById(2131231445);
+    localView1.setOnClickListener(new enx(this));
     localView2.setVisibility(8);
     return localView1;
   }
@@ -700,27 +700,27 @@ public class BannerManager
   private View k()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903287, null);
-    localView.setOnClickListener(new enz(this));
-    localView.findViewById(2131231944).setVisibility(8);
+    localView.setOnClickListener(new eny(this));
+    localView.findViewById(2131231943).setVisibility(8);
     return localView;
   }
   
   private View l()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130904044, null);
-    TextView localTextView = (TextView)localView.findViewById(2131232620);
-    localTextView.setOnClickListener(new eoa(this));
+    TextView localTextView = (TextView)localView.findViewById(2131232619);
+    localTextView.setOnClickListener(new enz(this));
     localTextView.setText("");
     localTextView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131561496));
-    ((ImageView)localView.findViewById(2131234644)).setOnClickListener(new eob(this));
-    localView.findViewById(2131234643).setVisibility(8);
+    ((ImageView)localView.findViewById(2131234643)).setOnClickListener(new eoa(this));
+    localView.findViewById(2131234642).setVisibility(8);
     return localView;
   }
   
   private View m()
   {
     View localView = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130903156, null);
-    localView.setOnClickListener(new eoc(this));
+    localView.setOnClickListener(new eob(this));
     return localView;
   }
   
@@ -728,8 +728,8 @@ public class BannerManager
   {
     View localView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2130903326, null);
     localView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    localView.findViewById(2131232087).setVisibility(8);
-    ((LinearLayout)localView.findViewById(2131232089)).setOnClickListener(new eoe(this));
+    localView.findViewById(2131232086).setVisibility(8);
+    ((LinearLayout)localView.findViewById(2131232088)).setOnClickListener(new eod(this));
     return localView;
   }
   
@@ -759,7 +759,7 @@ public class BannerManager
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.c())
+      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.d())
       {
         a(2, 2);
         a(null);
@@ -966,7 +966,7 @@ public class BannerManager
         {
           if (bool)
           {
-            localView.findViewById(2131232087).setVisibility(0);
+            localView.findViewById(2131232086).setVisibility(0);
             this.jdField_b_of_type_Boolean = true;
           }
           break;
@@ -1008,7 +1008,7 @@ public class BannerManager
     int i1;
     if ((localObject != null) && (((Banner)localObject).jdField_a_of_type_AndroidViewView != null))
     {
-      localObject = (ADView)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131232088);
+      localObject = (ADView)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131232087);
       localViewGroup = ((ADView)localObject).a(0);
       if (localViewGroup != null)
       {
@@ -1070,8 +1070,8 @@ public class BannerManager
     Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityRecentBanner[14];
     if ((localObject != null) && (((Banner)localObject).jdField_a_of_type_AndroidViewView != null))
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131232086);
-      localObject = (ADView)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131232088);
+      RelativeLayout localRelativeLayout = (RelativeLayout)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131232085);
+      localObject = (ADView)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131232087);
       if (localObject != null)
       {
         ((ADView)localObject).c();

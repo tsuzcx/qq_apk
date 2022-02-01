@@ -5,18 +5,18 @@ import android.text.Layout.Alignment;
 
 public class a
 {
-  public final Layout.Alignment aTC;
-  public final float aTD;
-  public final int aTE;
-  public final float aTF;
-  public final int aTG;
-  public final float aTH;
-  public final boolean aTI;
+  public final CharSequence bba;
   public final Bitmap bitmap;
+  public final int ddA;
+  public final float ddB;
+  public final boolean ddC;
+  public final int ddD;
+  public final Layout.Alignment ddw;
+  public final float ddx;
+  public final int ddy;
+  public final float ddz;
   public final int lineType;
   public final float size;
-  public final CharSequence text;
-  public final int windowColor;
   
   public a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
@@ -40,23 +40,23 @@ public class a
   
   private a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, Bitmap paramBitmap, float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, float paramFloat4, boolean paramBoolean, int paramInt4)
   {
-    this.text = paramCharSequence;
-    this.aTC = paramAlignment;
+    this.bba = paramCharSequence;
+    this.ddw = paramAlignment;
     this.bitmap = paramBitmap;
-    this.aTD = paramFloat1;
+    this.ddx = paramFloat1;
     this.lineType = paramInt1;
-    this.aTE = paramInt2;
-    this.aTF = paramFloat2;
-    this.aTG = paramInt3;
+    this.ddy = paramInt2;
+    this.ddz = paramFloat2;
+    this.ddA = paramInt3;
     this.size = paramFloat3;
-    this.aTH = paramFloat4;
-    this.aTI = paramBoolean;
-    this.windowColor = paramInt4;
+    this.ddB = paramFloat4;
+    this.ddC = paramBoolean;
+    this.ddD = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a
  * JD-Core Version:    0.7.0.1
  */

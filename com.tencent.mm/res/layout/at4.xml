@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckedTextView android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/eee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/e85" android:singleLine="true" android:drawableLeft="?android:listChoiceIndicatorMultiple" />
-    <TextView android:id="@id/b02" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/so" style="@style/nq" />
+<LinearLayout android:orientation="vertical" android:id="@id/eew" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/l3l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <FrameLayout android:id="@id/fko" android:background="@android:color/holo_red_dark" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/b9" />
+        <FrameLayout android:id="@id/fk4" android:layout_width="fill_parent" android:layout_height="@dimen/b9" />
+    </FrameLayout>
+    <View android:id="@id/l3g" android:layout_width="fill_parent" android:layout_height="0.0dip" />
 </LinearLayout>

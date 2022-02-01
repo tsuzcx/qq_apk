@@ -15,10 +15,19 @@ public final class DropSequence<T>
   {
     this.sequence = paramSequence;
     this.count = paramInt;
-    if (this.count >= 0) {}
-    for (paramInt = 1; paramInt == 0; paramInt = 0) {
-      throw ((Throwable)new IllegalArgumentException(("count must be non-negative, but was " + this.count + '.').toString()));
+    if (this.count >= 0) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
     }
+    if (paramInt != 0) {
+      return;
+    }
+    paramSequence = new StringBuilder();
+    paramSequence.append("count must be non-negative, but was ");
+    paramSequence.append(this.count);
+    paramSequence.append('.');
+    throw ((Throwable)new IllegalArgumentException(paramSequence.toString().toString()));
   }
   
   @NotNull
@@ -40,16 +49,17 @@ public final class DropSequence<T>
   @NotNull
   public Sequence<T> take(int paramInt)
   {
-    int i = this.count + paramInt;
-    if (i < 0) {
+    int i = this.count;
+    int j = i + paramInt;
+    if (j < 0) {
       return (Sequence)new TakeSequence((Sequence)this, paramInt);
     }
-    return (Sequence)new SubSequence(this.sequence, this.count, i);
+    return (Sequence)new SubSequence(this.sequence, i, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.sequences.DropSequence
  * JD-Core Version:    0.7.0.1
  */

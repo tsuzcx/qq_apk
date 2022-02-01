@@ -56,13 +56,16 @@ public class FailOnTimeout
   private long cpuTime(Thread paramThread)
   {
     ThreadMXBean localThreadMXBean = ManagementFactory.getThreadMXBean();
-    if (localThreadMXBean.isThreadCpuTimeSupported()) {
-      try
-      {
-        long l = localThreadMXBean.getThreadCpuTime(paramThread.getId());
-        return l;
-      }
-      catch (UnsupportedOperationException paramThread) {}
+    if (localThreadMXBean.isThreadCpuTimeSupported()) {}
+    try
+    {
+      long l = localThreadMXBean.getThreadCpuTime(paramThread.getId());
+      return l;
+    }
+    catch (UnsupportedOperationException paramThread)
+    {
+      label29:
+      break label29;
     }
     return 0L;
   }
@@ -70,20 +73,24 @@ public class FailOnTimeout
   private Exception createTimeoutException(Thread paramThread)
   {
     StackTraceElement[] arrayOfStackTraceElement = paramThread.getStackTrace();
-    if (this.lookForStuckThread) {}
-    TestTimedOutException localTestTimedOutException;
-    for (Thread localThread = getStuckThread(paramThread);; localThread = null)
+    Thread localThread;
+    if (this.lookForStuckThread) {
+      localThread = getStuckThread(paramThread);
+    } else {
+      localThread = null;
+    }
+    TestTimedOutException localTestTimedOutException = new TestTimedOutException(this.timeout, this.timeUnit);
+    if (arrayOfStackTraceElement != null)
     {
-      localTestTimedOutException = new TestTimedOutException(this.timeout, this.timeUnit);
-      if (arrayOfStackTraceElement != null)
-      {
-        localTestTimedOutException.setStackTrace(arrayOfStackTraceElement);
-        paramThread.interrupt();
-      }
-      if (localThread == null) {
-        break;
-      }
-      paramThread = new Exception("Appears to be stuck in thread " + localThread.getName());
+      localTestTimedOutException.setStackTrace(arrayOfStackTraceElement);
+      paramThread.interrupt();
+    }
+    if (localThread != null)
+    {
+      paramThread = new StringBuilder();
+      paramThread.append("Appears to be stuck in thread ");
+      paramThread.append(localThread.getName());
+      paramThread = new Exception(paramThread.toString());
       paramThread.setStackTrace(getStackTrace(localThread));
       return new MultipleFailureException(Arrays.asList(new Throwable[] { localTestTimedOutException, paramThread }));
     }
@@ -104,12 +111,16 @@ public class FailOnTimeout
     {
       return paramFutureTask.getCause();
     }
+    catch (InterruptedException paramFutureTask)
+    {
+      return paramFutureTask;
+    }
     catch (TimeoutException paramFutureTask)
     {
-      return createTimeoutException(paramThread);
+      label35:
+      break label35;
     }
-    catch (InterruptedException paramFutureTask) {}
-    return paramFutureTask;
+    return createTimeoutException(paramThread);
   }
   
   private StackTraceElement[] getStackTrace(Thread paramThread)
@@ -119,48 +130,55 @@ public class FailOnTimeout
       paramThread = paramThread.getStackTrace();
       return paramThread;
     }
-    catch (SecurityException paramThread) {}
+    catch (SecurityException paramThread)
+    {
+      label7:
+      break label7;
+    }
     return new StackTraceElement[0];
   }
   
   private Thread getStuckThread(Thread paramThread)
   {
-    if (this.threadGroup == null) {}
-    Thread[] arrayOfThread;
-    do
-    {
+    if (this.threadGroup == null) {
       return null;
-      arrayOfThread = getThreadArray(this.threadGroup);
-    } while (arrayOfThread == null);
+    }
+    Thread[] arrayOfThread = getThreadArray(this.threadGroup);
+    if (arrayOfThread == null) {
+      return null;
+    }
     int j = arrayOfThread.length;
     int i = 0;
-    Object localObject1 = null;
     long l1 = 0L;
-    Object localObject2;
-    if (i < j)
+    Object localObject1 = null;
+    while (i < j)
     {
-      localObject2 = arrayOfThread[i];
-      if (((Thread)localObject2).getState() != Thread.State.RUNNABLE) {
-        break label110;
+      Thread localThread = arrayOfThread[i];
+      Object localObject2 = localObject1;
+      long l2 = l1;
+      if (localThread.getState() == Thread.State.RUNNABLE)
+      {
+        long l3 = cpuTime(localThread);
+        if (localObject1 != null)
+        {
+          localObject2 = localObject1;
+          l2 = l1;
+          if (l3 <= l1) {}
+        }
+        else
+        {
+          localObject2 = localThread;
+          l2 = l3;
+        }
       }
-      long l2 = cpuTime((Thread)localObject2);
-      if ((localObject1 != null) && (l2 <= l1)) {
-        break label110;
-      }
-      l1 = l2;
-      localObject1 = localObject2;
-    }
-    label110:
-    for (;;)
-    {
       i += 1;
-      break;
-      localObject2 = localObject1;
-      if (localObject1 == paramThread) {
-        localObject2 = null;
-      }
-      return localObject2;
+      localObject1 = localObject2;
+      l1 = l2;
     }
+    if (localObject1 == paramThread) {
+      return null;
+    }
+    return localObject1;
   }
   
   private Thread[] getThreadArray(ThreadGroup paramThreadGroup)
@@ -192,14 +210,15 @@ public class FailOnTimeout
     localThread.start();
     ((FailOnTimeout.CallableStatement)localObject).awaitStarted();
     localObject = getResult(localFutureTask, localThread);
-    if (localObject != null) {
-      throw ((Throwable)localObject);
+    if (localObject == null) {
+      return;
     }
+    throw ((Throwable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.statements.FailOnTimeout
  * JD-Core Version:    0.7.0.1
  */

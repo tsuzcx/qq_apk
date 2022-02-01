@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GrpInfoItem
   extends JceStruct
 {
-  public long Content;
-  public byte Type;
+  public long Content = 0L;
+  public byte Type = 0;
   
   public GrpInfoItem() {}
   
@@ -32,7 +32,7 @@ public final class GrpInfoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.GrpInfoItem
  * JD-Core Version:    0.7.0.1
  */

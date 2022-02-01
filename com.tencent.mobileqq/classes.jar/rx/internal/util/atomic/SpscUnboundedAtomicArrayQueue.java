@@ -96,7 +96,7 @@ public final class SpscUnboundedAtomicArrayQueue<T>
     if (localObject == null) {
       return null;
     }
-    soConsumerIndex(1L + paramLong);
+    soConsumerIndex(paramLong + 1L);
     soElement(paramAtomicReferenceArray, paramInt, null);
     return localObject;
   }
@@ -105,7 +105,7 @@ public final class SpscUnboundedAtomicArrayQueue<T>
   {
     AtomicReferenceArray localAtomicReferenceArray = new AtomicReferenceArray(paramAtomicReferenceArray.length());
     this.producerBuffer = localAtomicReferenceArray;
-    this.producerLookAhead = (paramLong1 + paramLong2 - 1L);
+    this.producerLookAhead = (paramLong2 + paramLong1 - 1L);
     soProducerIndex(paramLong1 + 1L);
     soElement(localAtomicReferenceArray, paramInt, paramT);
     soNext(paramAtomicReferenceArray, localAtomicReferenceArray);
@@ -134,7 +134,7 @@ public final class SpscUnboundedAtomicArrayQueue<T>
   
   private boolean writeToQueue(AtomicReferenceArray<Object> paramAtomicReferenceArray, T paramT, long paramLong, int paramInt)
   {
-    soProducerIndex(1L + paramLong);
+    soProducerIndex(paramLong + 1L);
     soElement(paramAtomicReferenceArray, paramInt, paramT);
     return true;
   }
@@ -181,27 +181,28 @@ public final class SpscUnboundedAtomicArrayQueue<T>
   
   public final boolean offer(T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
-    }
-    AtomicReferenceArray localAtomicReferenceArray = this.producerBuffer;
-    long l = lpProducerIndex();
-    int i = this.producerMask;
-    int j = calcWrappedOffset(l, i);
-    if (l < this.producerLookAhead) {
-      return writeToQueue(localAtomicReferenceArray, paramT, l, j);
-    }
-    int k = this.producerLookAheadStep;
-    if (lvElement(localAtomicReferenceArray, calcWrappedOffset(k + l, i)) == null)
+    if (paramT != null)
     {
-      this.producerLookAhead = (k + l - 1L);
-      return writeToQueue(localAtomicReferenceArray, paramT, l, j);
+      AtomicReferenceArray localAtomicReferenceArray = this.producerBuffer;
+      long l1 = lpProducerIndex();
+      int i = this.producerMask;
+      int j = calcWrappedOffset(l1, i);
+      if (l1 < this.producerLookAhead) {
+        return writeToQueue(localAtomicReferenceArray, paramT, l1, j);
+      }
+      long l2 = this.producerLookAheadStep + l1;
+      if (lvElement(localAtomicReferenceArray, calcWrappedOffset(l2, i)) == null)
+      {
+        this.producerLookAhead = (l2 - 1L);
+        return writeToQueue(localAtomicReferenceArray, paramT, l1, j);
+      }
+      if (lvElement(localAtomicReferenceArray, calcWrappedOffset(1L + l1, i)) != null) {
+        return writeToQueue(localAtomicReferenceArray, paramT, l1, j);
+      }
+      resize(localAtomicReferenceArray, l1, j, paramT, i);
+      return true;
     }
-    if (lvElement(localAtomicReferenceArray, calcWrappedOffset(1L + l, i)) != null) {
-      return writeToQueue(localAtomicReferenceArray, paramT, l, j);
-    }
-    resize(localAtomicReferenceArray, l, j, paramT, i);
-    return true;
+    throw new NullPointerException();
   }
   
   public final T peek()
@@ -209,12 +210,11 @@ public final class SpscUnboundedAtomicArrayQueue<T>
     AtomicReferenceArray localAtomicReferenceArray = this.consumerBuffer;
     long l = lpConsumerIndex();
     int i = this.consumerMask;
-    Object localObject2 = lvElement(localAtomicReferenceArray, calcWrappedOffset(l, i));
-    Object localObject1 = localObject2;
-    if (localObject2 == HAS_NEXT) {
-      localObject1 = newBufferPeek(lvNext(localAtomicReferenceArray), l, i);
+    Object localObject = lvElement(localAtomicReferenceArray, calcWrappedOffset(l, i));
+    if (localObject == HAS_NEXT) {
+      return newBufferPeek(lvNext(localAtomicReferenceArray), l, i);
     }
-    return localObject1;
+    return localObject;
   }
   
   public final T poll()
@@ -224,8 +224,13 @@ public final class SpscUnboundedAtomicArrayQueue<T>
     int j = this.consumerMask;
     int k = calcWrappedOffset(l, j);
     Object localObject = lvElement(localAtomicReferenceArray, k);
-    if (localObject == HAS_NEXT) {}
-    for (int i = 1; (localObject != null) && (i == 0); i = 0)
+    int i;
+    if (localObject == HAS_NEXT) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((localObject != null) && (i == 0))
     {
       soConsumerIndex(l + 1L);
       soElement(localAtomicReferenceArray, k, null);
@@ -282,7 +287,7 @@ public final class SpscUnboundedAtomicArrayQueue<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.atomic.SpscUnboundedAtomicArrayQueue
  * JD-Core Version:    0.7.0.1
  */

@@ -1,228 +1,520 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
 import android.view.View;
-import android.view.ViewStub;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.e;
-import com.tencent.mm.pluginsdk.ui.tools.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.MultiTouchImageView;
+import com.tencent.mm.b.f.a;
+import com.tencent.mm.b.f.b;
+import com.tencent.mm.memory.a.b;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
 import com.tencent.mm.ui.base.WxImageView;
-import com.tencent.mm.ui.widget.MMPinProgressBtn;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 
-public final class k
+final class k
+  implements ViewPager.OnPageChangeListener
 {
-  long createTime;
-  String czp;
-  String fileId;
-  public int mPosition;
-  public TextView mzS;
-  public View ngZ;
-  int rxA;
-  public c zKg;
-  public ProgressBar zNA;
-  public ProgressBar zNB;
-  public LinearLayout zNC;
-  public TextView zND;
-  public ImageView zNE;
-  public MultiTouchImageView zNF;
-  public WxImageView zNG;
-  public MultiTouchImageView zNH;
-  public boolean zNI;
-  int zNJ;
-  int zNK;
-  public c.b zNi;
-  public HashMap<String, Boolean> zNj;
-  public RelativeLayout zNk;
-  public e zNl;
-  public ImageView zNm;
-  public ImageView zNn;
-  public MMPinProgressBtn zNo;
-  public View zNp;
-  public RelativeLayout zNq;
-  public ImageView zNr;
-  public ImageView zNs;
-  public e zNt;
-  public MMPinProgressBtn zNu;
-  public TextView zNv;
-  public LinearLayout zNw;
-  public TextView zNx;
-  public TextView zNy;
-  public ImageView zNz;
+  private static long aeCg = 0L;
+  private static int mScreenHeight;
+  private static int mScreenWidth = 0;
+  SparseArray<WeakReference<View>> HOD;
+  HashMap<String, Integer> HOE;
+  SparseArray<String> HOF;
+  SparseArray<Bitmap> HOG;
+  protected com.tencent.mm.b.f<String, Bitmap> HOH;
+  protected SparseIntArray HOI;
+  private LinkedList<String> HOJ;
+  private boolean HOL;
+  SparseArray<String> aeCd;
+  f aeCe;
+  protected com.tencent.mm.b.f<String, Bitmap> aeCf;
+  private LinkedList<Integer> aeCh;
+  private LinkedList<Integer> aeCi;
+  private int mI;
+  private MMHandler mRi;
+  private int mScrollState;
+  Bitmap mVG;
+  private QueueWorkerThread owH;
   
-  @TargetApi(11)
-  public k(c paramc, View paramView)
+  static
   {
-    AppMethodBeat.i(32392);
-    this.zNj = new HashMap();
-    this.rxA = 0;
-    this.zNJ = 0;
-    this.zNK = 0;
-    this.czp = "";
-    this.ngZ = paramView;
-    this.zKg = paramc;
-    this.zNF = ((MultiTouchImageView)paramView.findViewById(2131820629));
-    this.zNG = ((WxImageView)paramView.findViewById(2131825112));
-    this.zNH = ((MultiTouchImageView)paramView.findViewById(2131825113));
-    this.zNB = ((ProgressBar)paramView.findViewById(2131825116));
-    if (this.zNG != null) {
-      this.zNG.setForceTileFlag(com.tencent.mm.graphics.a.c.eAE);
-    }
-    if ((com.tencent.mm.compatible.util.d.fv(11)) && (paramView.getLayerType() != 2)) {
-      paramView.setLayerType(2, null);
-    }
-    AppMethodBeat.o(32392);
+    mScreenHeight = 0;
   }
   
-  public static void aq(View paramView, int paramInt)
+  public k(f paramf)
   {
-    AppMethodBeat.i(32393);
-    if (paramView != null) {
-      paramView.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(32393);
+    AppMethodBeat.i(254445);
+    this.owH = new QueueWorkerThread(1, "chatting-image-gallery-lazy-loader");
+    this.HOD = new SparseArray();
+    this.HOE = new HashMap();
+    this.HOF = new SparseArray();
+    this.HOG = new SparseArray();
+    this.aeCd = new SparseArray();
+    this.mScrollState = 0;
+    this.mI = -1;
+    this.aeCf = new b(400, new f.b() {}, getClass());
+    this.HOH = new b(5, new f.b() {}, getClass());
+    this.aeCh = new LinkedList();
+    this.HOI = new SparseIntArray();
+    this.HOJ = new LinkedList();
+    this.aeCi = new LinkedList();
+    this.mRi = new MMHandler();
+    this.HOL = false;
+    this.aeCe = paramf;
+    AppMethodBeat.o(254445);
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, long paramLong)
+  private void WQ(int paramInt)
   {
-    this.rxA = paramInt1;
-    this.zNJ = paramInt2;
-    this.zNK = paramInt3;
-    this.czp = paramString1;
-    this.fileId = paramString2;
-    this.createTime = paramLong;
-  }
-  
-  public final void a(boolean paramBoolean, float paramFloat)
-  {
-    AppMethodBeat.i(32398);
-    ab.i("MicroMsg.ImageGalleryViewHolder", "%d switch video model isVideoPlay[%b] alpha[%f]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat) });
-    if (paramBoolean)
+    AppMethodBeat.i(36063);
+    if (this.HOF.get(paramInt) != null)
     {
-      View localView = (View)dKP().zNt;
-      localView.setAlpha(paramFloat);
-      aq(localView, 0);
-      if (paramFloat >= 1.0D)
-      {
-        aq(dKP().zNr, 8);
-        aq(dKP().zNs, 8);
-      }
-      AppMethodBeat.o(32398);
+      String str = (String)this.HOF.get(paramInt);
+      this.HOD.remove(paramInt);
+      this.HOF.remove(paramInt);
+      this.HOE.remove(str);
+      this.HOG.remove(paramInt);
+    }
+    AppMethodBeat.o(36063);
+  }
+  
+  private void WR(final int paramInt)
+  {
+    AppMethodBeat.i(36062);
+    if (this.aeCf.check(String.valueOf(paramInt)))
+    {
+      AppMethodBeat.o(36062);
       return;
     }
-    aq((View)dKP().zNt, 8);
-    aq(dKP().zNr, 0);
-    aq(dKP().zNs, 0);
-    AppMethodBeat.o(32398);
-  }
-  
-  public final k dKM()
-  {
-    AppMethodBeat.i(32394);
-    if (this.zNw == null)
+    bh.baH().postToWorkerDelayed(new Runnable()
     {
-      this.zNw = ((LinearLayout)((ViewStub)this.ngZ.findViewById(2131825114)).inflate());
-      this.zNA = ((ProgressBar)this.zNw.findViewById(2131822683));
-      this.zNx = ((TextView)this.zNw.findViewById(2131824027));
-      this.zNy = ((TextView)this.zNw.findViewById(2131825118));
-      this.zNz = ((ImageView)this.zNw.findViewById(2131825117));
-    }
-    AppMethodBeat.o(32394);
-    return this;
-  }
-  
-  public final k dKN()
-  {
-    AppMethodBeat.i(32395);
-    if (this.zNC == null)
-    {
-      this.zNC = ((LinearLayout)((ViewStub)this.ngZ.findViewById(2131825115)).inflate());
-      this.zNE = ((ImageView)this.zNC.findViewById(2131825119));
-      this.zND = ((TextView)this.zNC.findViewById(2131823463));
-    }
-    AppMethodBeat.o(32395);
-    return this;
-  }
-  
-  public final k dKO()
-  {
-    AppMethodBeat.i(32396);
-    if (this.zNk == null)
-    {
-      this.zNk = ((RelativeLayout)((ViewStub)this.ngZ.findViewById(2131825111)).inflate());
-      this.zNl = q.ga(this.ngZ.getContext());
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(13);
-      this.zNk.addView((View)this.zNl, localLayoutParams);
-      ((View)this.zNl).setVisibility(8);
-      this.zNp = this.zNk.findViewById(2131823916);
-      this.zNp.setVisibility(8);
-      this.mzS = ((TextView)this.zNk.findViewById(2131827797));
-      this.zNo = ((MMPinProgressBtn)this.zNk.findViewById(2131827771));
-      this.zNo.setVisibility(8);
-      this.zNm = ((ImageView)this.zNk.findViewById(2131827770));
-      this.zNn = ((ImageView)this.zNk.findViewById(2131827772));
-      this.zNl.setVideoCallback(new k.1(this));
-      this.mzS.setOnClickListener(new k.2(this));
-    }
-    AppMethodBeat.o(32396);
-    return this;
-  }
-  
-  public final k dKP()
-  {
-    AppMethodBeat.i(32397);
-    if (this.zNq == null)
-    {
-      if (this.zNG != null) {
-        this.zNG.setVisibility(8);
+      public final void run()
+      {
+        AppMethodBeat.i(36052);
+        if (k.b(k.this) == null)
+        {
+          Log.e("MicroMsg.ImageGalleryLazyLoader", "loader is null!");
+          AppMethodBeat.o(36052);
+          return;
+        }
+        final Bitmap localBitmap = k.b(k.this).aCv(paramInt);
+        if (localBitmap == null)
+        {
+          AppMethodBeat.o(36052);
+          return;
+        }
+        k.c(k.this).post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(36051);
+            k.this.aeCf.put(k.5.this.dyI, localBitmap);
+            AppMethodBeat.o(36051);
+          }
+        });
+        AppMethodBeat.o(36052);
       }
-      if (this.zNF != null) {
-        this.zNF.setVisibility(8);
+    }, 300L);
+    AppMethodBeat.o(36062);
+  }
+  
+  private void aFi()
+  {
+    AppMethodBeat.i(36069);
+    if (this.HOL)
+    {
+      AppMethodBeat.o(36069);
+      return;
+    }
+    if (this.HOJ.size() == 0)
+    {
+      AppMethodBeat.o(36069);
+      return;
+    }
+    Object localObject = (String)this.HOJ.removeLast();
+    final int i = ((Integer)this.aeCi.removeLast()).intValue();
+    if (!this.HOE.containsKey(localObject))
+    {
+      AppMethodBeat.o(36069);
+      return;
+    }
+    this.HOL = true;
+    localObject = new QueueWorkerThread.ThreadObject()
+    {
+      private boolean aeCm = false;
+      private Bitmap wNk = null;
+      
+      public final boolean doInBackground()
+      {
+        AppMethodBeat.i(36055);
+        if ((k.b(k.this) == null) || (TextUtils.isEmpty(this.srj)))
+        {
+          AppMethodBeat.o(36055);
+          return false;
+        }
+        try
+        {
+          if (k.e(k.this).containsKey(this.srj))
+          {
+            int i = ((Integer)k.e(k.this).get(this.srj)).intValue();
+            Object localObject = (WeakReference)k.i(k.this).get(i);
+            if (localObject != null)
+            {
+              localObject = (View)((WeakReference)localObject).get();
+              if ((localObject != null) && ((localObject instanceof WxImageView)))
+              {
+                final String str = (String)k.j(k.this).get(i);
+                this.aeCm = true;
+                k.c(k.this).post(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(36053);
+                    k.6.a(k.6.this, (WxImageView)this.val$view, k.6.this.srj, str, k.6.this.aeCn);
+                    AppMethodBeat.o(36053);
+                  }
+                });
+                AppMethodBeat.o(36055);
+                return true;
+              }
+            }
+          }
+          this.wNk = k.b(k.this).aEY(this.srj);
+          AppMethodBeat.o(36055);
+          return true;
+        }
+        catch (Exception localException)
+        {
+          Log.w("MicroMsg.ImageGalleryLazyLoader", "try to load Bmp fail: %s", new Object[] { localException.getMessage() });
+          this.wNk = null;
+          AppMethodBeat.o(36055);
+        }
+        return false;
       }
-      this.zNq = ((RelativeLayout)((ViewStub)this.ngZ.findViewById(2131822190)).inflate());
-      this.zNr = ((ImageView)this.zNq.findViewById(2131825121));
-      this.zNs = ((ImageView)this.zNq.findViewById(2131825122));
-      this.zNs.setOnClickListener(new k.3(this));
-      com.tencent.mm.modelcontrol.d.afW();
-      if (!com.tencent.mm.modelcontrol.d.agf()) {
-        break label275;
+      
+      public final boolean onPostExecute()
+      {
+        AppMethodBeat.i(36054);
+        k.d(k.this);
+        if (!this.aeCm) {
+          if (k.e(k.this).containsKey(this.srj))
+          {
+            i = ((Integer)k.e(k.this).get(this.srj)).intValue();
+            if (k.f(k.this)) {
+              break label168;
+            }
+            k.g(k.this).put(i, this.wNk);
+          }
+        }
+        Object localObject;
+        int j;
+        for (;;)
+        {
+          k.this.w(this.srj, this.wNk);
+          k.this.g(i, this.wNk);
+          localObject = this.wNk;
+          if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+            break;
+          }
+          j = 0;
+          Log.i("MicroMsg.ImageGalleryLazyLoader", "bmp size : %s", new Object[] { Integer.valueOf(j) });
+          this.wNk = null;
+          k.h(k.this);
+          AppMethodBeat.o(36054);
+          return false;
+          label168:
+          k.a(k.this, i, this.wNk);
+        }
+        if (Build.VERSION.SDK_INT >= 12) {}
+        for (int i = ((Bitmap)localObject).getByteCount();; i = ((Bitmap)localObject).getRowBytes() * ((Bitmap)localObject).getHeight())
+        {
+          j = i;
+          if (i >= 0) {
+            break;
+          }
+          localObject = new IllegalStateException("Negative size: ".concat(String.valueOf(localObject)));
+          AppMethodBeat.o(36054);
+          throw ((Throwable)localObject);
+        }
       }
-      this.zNt = new VideoPlayerTextureView(this.ngZ.getContext());
-      h.qsU.idkeyStat(354L, 150L, 1L, false);
+    };
+    this.owH.add((QueueWorkerThread.ThreadObject)localObject);
+    AppMethodBeat.o(36069);
+  }
+  
+  private void b(int paramInt, View paramView, String paramString)
+  {
+    AppMethodBeat.i(36064);
+    this.HOE.put(paramString, Integer.valueOf(paramInt));
+    this.HOF.put(paramInt, paramString);
+    this.HOD.put(paramInt, new WeakReference(paramView));
+    AppMethodBeat.o(36064);
+  }
+  
+  private void e(int paramInt, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(36065);
+    if (this.HOD.get(paramInt) == null)
+    {
+      AppMethodBeat.o(36065);
+      return;
+    }
+    View localView = (View)((WeakReference)this.HOD.get(paramInt)).get();
+    String str = (String)this.HOF.get(paramInt);
+    this.aeCe.a(0L, localView, str, paramBitmap);
+    WQ(paramInt);
+    AppMethodBeat.o(36065);
+  }
+  
+  private boolean fBG()
+  {
+    return this.mScrollState == 0;
+  }
+  
+  public final void b(View paramView, String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(36067);
+    if (this.HOJ.contains(paramString1))
+    {
+      AppMethodBeat.o(36067);
+      return;
+    }
+    int i = paramView.hashCode();
+    WQ(i);
+    b(i, paramView, paramString1);
+    if ((paramView instanceof WxImageView))
+    {
+      this.aeCd.remove(i);
+      this.aeCd.put(i, paramString2);
+    }
+    this.HOJ.add(paramString1);
+    this.aeCi.add(Integer.valueOf(paramInt));
+    aFi();
+    AppMethodBeat.o(36067);
+  }
+  
+  public final void cL(Map<String, Bitmap> paramMap)
+  {
+    AppMethodBeat.i(36057);
+    Iterator localIterator = paramMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Bitmap localBitmap = (Bitmap)paramMap.get(str);
+      if (localBitmap != null)
+      {
+        this.HOH.put(str, localBitmap);
+        this.aeCh.push(Integer.valueOf(localBitmap.hashCode()));
+        Log.i("MicroMsg.ImageGalleryLazyLoader", "we got one cache from preload : %s %s", new Object[] { str, Integer.valueOf(localBitmap.hashCode()) });
+      }
+      else
+      {
+        Log.e("MicroMsg.ImageGalleryLazyLoader", "we got one null cache from preload");
+      }
+    }
+    AppMethodBeat.o(36057);
+  }
+  
+  public final boolean e(ImageView paramImageView, int paramInt)
+  {
+    AppMethodBeat.i(36066);
+    Log.i("MicroMsg.ImageGalleryLazyLoader", "loadThumb position %s", new Object[] { Integer.valueOf(paramInt) });
+    Bitmap localBitmap = (Bitmap)this.aeCf.ct(String.valueOf(paramInt));
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      this.aeCe.a(0L, paramImageView, null, localBitmap);
+      AppMethodBeat.o(36066);
+      return true;
+    }
+    AppMethodBeat.o(36066);
+    return false;
+  }
+  
+  final void fBF()
+  {
+    AppMethodBeat.i(36059);
+    this.aeCf.a(new f.a() {});
+    this.HOH.a(new f.a() {});
+    AppMethodBeat.o(36059);
+  }
+  
+  public final void g(int paramInt, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(36070);
+    if ((paramInt == this.mI) || (this.mI == -1))
+    {
+      Log.i("MicroMsg.ImageGalleryLazyLoader", "alvinluo notifyBitmapLoaded cache bitmap, position: %d", new Object[] { Integer.valueOf(paramInt) });
+      this.mVG = paramBitmap;
+    }
+    AppMethodBeat.o(36070);
+  }
+  
+  public final void k(ImageView paramImageView, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(36068);
+    if (this.HOJ.contains(paramString))
+    {
+      AppMethodBeat.o(36068);
+      return;
+    }
+    int i = paramImageView.hashCode();
+    WQ(i);
+    b(i, paramImageView, paramString);
+    this.HOJ.add(paramString);
+    this.aeCi.add(Integer.valueOf(paramInt));
+    aFi();
+    AppMethodBeat.o(36068);
+  }
+  
+  public final void onPageScrollStateChanged(int paramInt)
+  {
+    int j = 0;
+    AppMethodBeat.i(36060);
+    this.mScrollState = paramInt;
+    if (fBG())
+    {
+      int[] arrayOfInt = new int[this.HOG.size()];
+      int i = 0;
+      for (;;)
+      {
+        paramInt = j;
+        if (i >= arrayOfInt.length) {
+          break;
+        }
+        arrayOfInt[i] = this.HOG.keyAt(i);
+        i += 1;
+      }
+      while (paramInt < arrayOfInt.length)
+      {
+        i = arrayOfInt[paramInt];
+        e(i, (Bitmap)this.HOG.get(i));
+        paramInt += 1;
+      }
+    }
+    AppMethodBeat.o(36060);
+  }
+  
+  public final void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public final void onPageSelected(int paramInt)
+  {
+    AppMethodBeat.i(36061);
+    if (!((j)this.aeCe).aeAg.aeAC.cGv)
+    {
+      AppMethodBeat.o(36061);
+      return;
+    }
+    if (this.mI == -1)
+    {
+      int i = 0;
+      if (i == 0) {
+        WR(paramInt);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramInt + i > paramInt + 3) && (paramInt - i < Math.max(paramInt - 3, 0))) {
+          break label138;
+        }
+        if (paramInt + i <= paramInt + 3) {
+          WR(paramInt + i);
+        }
+        if (paramInt - i >= Math.max(paramInt - 3, 0)) {
+          WR(paramInt - i);
+        }
+      }
+    }
+    if (this.mI > paramInt) {
+      WR(Math.max(paramInt - 3, 0));
     }
     for (;;)
     {
-      this.zNv = ((TextView)this.ngZ.findViewById(2131825110));
-      this.zNt.setPlayProgressCallback(true);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      this.zNq.addView((View)this.zNt, 2, localLayoutParams);
-      this.zNu = ((MMPinProgressBtn)this.zNq.findViewById(2131825123));
-      this.zNu.setVisibility(8);
-      ((View)this.zNt).setVisibility(8);
-      this.zNt.setVideoCallback(new k.4(this));
-      AppMethodBeat.o(32397);
-      return this;
-      label275:
-      this.zNt = new VideoTextureView(this.ngZ.getContext());
-      h.qsU.idkeyStat(354L, 151L, 1L, false);
+      label138:
+      this.mI = paramInt;
+      localObject = (j)this.aeCe;
+      if (localObject == null) {
+        break label223;
+      }
+      if (((j)localObject).aeAg.WN(this.mI) == null) {
+        break;
+      }
+      this.mVG = null;
+      AppMethodBeat.o(36061);
+      return;
+      if (this.mI < paramInt) {
+        WR(paramInt + 3);
+      }
     }
+    Object localObject = ((j)localObject).aeAg.WO(this.mI);
+    if (localObject != null) {
+      this.mVG = ((WxImageView)localObject).getFullImageBitmap();
+    }
+    label223:
+    AppMethodBeat.o(36061);
+  }
+  
+  protected final void w(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(36056);
+    if (paramBitmap != null)
+    {
+      long l1 = paramBitmap.getWidth();
+      long l2 = paramBitmap.getHeight();
+      if ((mScreenHeight == 0) || (mScreenWidth == 0))
+      {
+        mScreenWidth = MMApplicationContext.getContext().getResources().getDisplayMetrics().widthPixels;
+        mScreenHeight = MMApplicationContext.getContext().getResources().getDisplayMetrics().heightPixels;
+        aeCg = mScreenWidth * aeCg;
+      }
+      if (l1 * l2 <= aeCg * 2L) {}
+    }
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.i("MicroMsg.ImageGalleryLazyLoader", "file %s too big to cache");
+      AppMethodBeat.o(36056);
+      return;
+    }
+    this.HOH.B(paramString, paramBitmap);
+    if (m.a.aeCt.HOH.check(paramString))
+    {
+      Log.i("MicroMsg.ImageGalleryLazyLoader", "update origCache and preload cache");
+      try
+      {
+        m.a.aeCt.HOH.B(paramString, paramBitmap);
+        AppMethodBeat.o(36056);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace("MicroMsg.ImageGalleryLazyLoader", paramString, "update preload cache failed", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(36056);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
+    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="tip_other" android:plugin_layout="@layout/beg" android:plugin_text="@string/i3z" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="common_chatroom" android:layout="@layout/bdi" android:title="@string/blk" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="friend_source" android:layout="@layout/bdi" android:title="@string/bsf" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="district" android:layout="@layout/bdi" android:title="@string/blu" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="signature" android:layout="@layout/bdi" android:title="@string/br0" />
+    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="tip_about_account" android:plugin_layout="@layout/beg" android:plugin_text="@string/bnk" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="weishop" android:layout="@layout/bdi" android:title="@string/br9" />
+    <PreferenceSmallCategory android:key="contact_info_category_1" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="send_to_friend" android:layout="@layout/bdi" android:title="@string/bqn" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/eda" android:key="contact_info_voiceinput_install" android:layout="@layout/a95" />
-    <Preference android:title="@string/edg" android:key="contact_info_voiceinput_uninstall" android:layout="@layout/aap" />
+    <CheckBoxPreference android:defaultValue="false" android:key="add_to_black" android:persistent="false" android:summary="@string/bok" android:title="@string/boj" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="expose" android:layout="@layout/bdi" android:title="@string/b7m" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.Preference android:key="delete_contact" android:layout="@layout/bdi" android:title="@string/blr" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

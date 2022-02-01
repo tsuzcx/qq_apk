@@ -1,43 +1,33 @@
 package com.tencent.av.share;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
-import mbc;
-import mbh;
 
-public class ShareChat$SharePanel$3
-  extends ResultReceiver
+class ShareChat$SharePanel$3
+  implements DialogInterface.OnDismissListener
 {
-  public ShareChat$SharePanel$3(mbc parammbc, Handler paramHandler, long paramLong, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramHandler);
-  }
-  
-  protected void onReceiveResult(int paramInt, Bundle paramBundle)
-  {
-    QLog.w("ShareChat", 1, "startTroop2DCode.PARAM_QRForwardReceiver, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Mbc.a + "]");
-    int i;
-    if (this.jdField_a_of_type_Mbc.a != null)
+    paramDialogInterface = new StringBuilder();
+    paramDialogInterface.append("ActionSheet.onDismiss, mChoosedLinkType[");
+    paramDialogInterface.append(this.b.c);
+    paramDialogInterface.append("], mIHandle[");
+    paramDialogInterface.append(this.b.f);
+    paramDialogInterface.append("], seq[");
+    paramDialogInterface.append(this.a);
+    paramDialogInterface.append("]");
+    QLog.w("ShareChat", 1, paramDialogInterface.toString());
+    if ((this.b.c == -1) && (this.b.f != null))
     {
-      paramBundle = this.jdField_a_of_type_Mbc.a;
-      i = this.jdField_a_of_type_Int;
-      if (paramInt != -1) {
-        break label97;
-      }
-    }
-    label97:
-    for (paramInt = 2;; paramInt = 3)
-    {
-      paramBundle.b(5, i, paramInt);
-      return;
+      paramDialogInterface = this.b;
+      paramDialogInterface.a(paramDialogInterface.b, this.b.c, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.3
  * JD-Core Version:    0.7.0.1
  */

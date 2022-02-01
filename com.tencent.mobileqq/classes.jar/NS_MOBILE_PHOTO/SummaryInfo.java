@@ -11,20 +11,19 @@ public final class SummaryInfo
   static face_show_info cache_face_show;
   static label_show_info cache_label_show = new label_show_info();
   static cell_lbs cache_poi_info;
-  static CategoryPhoto cache_preview_elements;
-  static int cache_type = 0;
+  static CategoryPhoto cache_preview_elements = new CategoryPhoto();
+  static int cache_type;
   public String categoryid = "";
-  public face_show_info face_show;
-  public label_show_info label_show;
-  public long photo_num;
-  public cell_lbs poi_info;
-  public CategoryPhoto preview_elements;
-  public int type;
+  public face_show_info face_show = null;
+  public label_show_info label_show = null;
+  public long photo_num = 0L;
+  public cell_lbs poi_info = null;
+  public CategoryPhoto preview_elements = null;
+  public int type = 0;
   public String url = "";
   
   static
   {
-    cache_preview_elements = new CategoryPhoto();
     cache_face_show = new face_show_info();
     cache_poi_info = new cell_lbs();
   }
@@ -59,29 +58,35 @@ public final class SummaryInfo
   {
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.photo_num, 1);
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 2);
+    Object localObject = this.categoryid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 3);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.preview_elements != null) {
-      paramJceOutputStream.write(this.preview_elements, 4);
+    localObject = this.preview_elements;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.face_show != null) {
-      paramJceOutputStream.write(this.face_show, 5);
+    localObject = this.face_show;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.poi_info != null) {
-      paramJceOutputStream.write(this.poi_info, 6);
+    localObject = this.poi_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.label_show != null) {
-      paramJceOutputStream.write(this.label_show, 7);
+    localObject = this.label_show;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.SummaryInfo
  * JD-Core Version:    0.7.0.1
  */

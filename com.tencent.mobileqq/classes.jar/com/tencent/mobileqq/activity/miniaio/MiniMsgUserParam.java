@@ -11,6 +11,7 @@ public class MiniMsgUserParam
   public Intent backConversationIntent;
   public int businessName;
   public int colorType;
+  public int contentIconResId;
   public int entryType;
   public View entryView;
   public int filterMsgType;
@@ -24,7 +25,7 @@ public class MiniMsgUserParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam
  * JD-Core Version:    0.7.0.1
  */

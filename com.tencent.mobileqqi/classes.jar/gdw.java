@@ -1,19 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.PicFowardInfo;
+import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.pic.UiCallBack;
 
-public final class gdw
-  implements Parcelable.Creator
+public abstract interface gdw
 {
-  public CompressInfo a(Parcel paramParcel)
-  {
-    return new CompressInfo(paramParcel, null);
-  }
+  public abstract MessageRecord a(PicFowardInfo paramPicFowardInfo);
   
-  public CompressInfo[] a(int paramInt)
-  {
-    return new CompressInfo[paramInt];
-  }
+  public abstract MessageRecord a(PicUploadInfo paramPicUploadInfo);
+  
+  public abstract void a(CompressInfo paramCompressInfo);
+  
+  public abstract void a(PicFowardInfo paramPicFowardInfo);
+  
+  public abstract void a(PicUploadInfo paramPicUploadInfo);
+  
+  public abstract void a(UiCallBack paramUiCallBack);
 }
 
 

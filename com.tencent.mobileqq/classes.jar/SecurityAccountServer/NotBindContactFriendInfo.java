@@ -8,10 +8,10 @@ public final class NotBindContactFriendInfo
   extends JceStruct
 {
   static byte[] cache_MobileNoMask = (byte[])new byte[1];
-  public byte[] MobileNoMask;
-  public long bindUin;
+  public byte[] MobileNoMask = null;
+  public long bindUin = 0L;
   public String contactsInfoEncrypt = "";
-  public long uAbiFlag;
+  public long uAbiFlag = 0L;
   
   static
   {
@@ -46,7 +46,7 @@ public final class NotBindContactFriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.NotBindContactFriendInfo
  * JD-Core Version:    0.7.0.1
  */

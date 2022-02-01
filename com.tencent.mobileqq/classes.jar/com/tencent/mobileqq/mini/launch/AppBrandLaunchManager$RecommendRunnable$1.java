@@ -6,6 +6,7 @@ import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
@@ -25,24 +26,33 @@ class AppBrandLaunchManager$RecommendRunnable$1
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
     Object localObject1;
+    Object localObject2;
     if (paramJSONObject != null)
     {
       long l = paramJSONObject.optLong("retCode");
       localObject1 = paramJSONObject.optString("errMsg");
-      QLog.e("DesktopDataManager-Recommend", 1, "getRecommendAppList, retCode = " + l + ", errMsg = " + (String)localObject1);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getRecommendAppList, retCode = ");
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append(", errMsg = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.e("DesktopDataManager-Recommend", 1, ((StringBuilder)localObject2).toString());
     }
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      AppBrandLaunchManager.access$1000(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$900(this.this$1));
-      QLog.e("DesktopDataManager-Recommend", 1, "getRecommendAppList suc : " + paramJSONObject.toString());
+      AppBrandLaunchManager.access$900(this.this$1.this$0).remove(AppBrandLaunchManager.RecommendRunnable.access$800(this.this$1));
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getRecommendAppList suc : ");
+      ((StringBuilder)localObject1).append(paramJSONObject.toString());
+      QLog.e("DesktopDataManager-Recommend", 1, ((StringBuilder)localObject1).toString());
       localObject1 = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject1 instanceof QQAppInterface)) {
-        ((DesktopDataManager)((AppRuntime)localObject1).getManager(336)).clearRecommendExposureList();
+        ((DesktopDataManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).clearRecommendExposureList();
       }
       paramJSONObject = (INTERFACE.StGetRecommendAppListRsp)paramJSONObject.opt("response");
       if (paramJSONObject != null)
       {
-        Object localObject2 = paramJSONObject.recommendModule.get();
+        localObject2 = paramJSONObject.recommendModule.get();
         localObject1 = MiniAppUtils.getAppInterface();
         if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
@@ -51,7 +61,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
           {
             INTERFACE.StModuleInfo localStModuleInfo = (INTERFACE.StModuleInfo)((Iterator)localObject2).next();
             if (localObject1 != null) {
-              ((DesktopDataManager)((AppInterface)localObject1).getManager(336)).updateModuleInfo(localStModuleInfo);
+              ((DesktopDataManager)((AppInterface)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).updateModuleInfo(localStModuleInfo);
             }
           }
         }
@@ -66,7 +76,7 @@ class AppBrandLaunchManager$RecommendRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.RecommendRunnable.1
  * JD-Core Version:    0.7.0.1
  */

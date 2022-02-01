@@ -1,23 +1,21 @@
 package com.tencent.biz.qrcode.activity;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-import ybk;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class QRDisplayActivity$20
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  QRDisplayActivity$20(QRDisplayActivity paramQRDisplayActivity, String paramString) {}
+  QRDisplayActivity$20(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    String str = ybk.a(this.this$0, this.a, this.this$0.b);
-    ThreadManager.getUIHandler().post(new QRDisplayActivity.20.1(this, str));
+    this.a.aM = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.20
  * JD-Core Version:    0.7.0.1
  */

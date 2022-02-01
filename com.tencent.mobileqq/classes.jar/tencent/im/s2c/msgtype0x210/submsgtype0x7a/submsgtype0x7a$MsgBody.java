@@ -30,12 +30,13 @@ public final class submsgtype0x7a$MsgBody
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 48, 56 }, new String[] { "bytes_content", "uint64_from_uin", "string_nick", "uint64_discuss_uin", "string_discuss_nick", "uint64_seq", "uint64_at_time" }, new Object[] { localByteStringMicro, Long.valueOf(0L), "", Long.valueOf(0L), "", Long.valueOf(0L), Long.valueOf(0L) }, MsgBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 48, 56 }, new String[] { "bytes_content", "uint64_from_uin", "string_nick", "uint64_discuss_uin", "string_discuss_nick", "uint64_seq", "uint64_at_time" }, new Object[] { localByteStringMicro, localLong, "", localLong, "", localLong, localLong }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x7a.submsgtype0x7a.MsgBody
  * JD-Core Version:    0.7.0.1
  */

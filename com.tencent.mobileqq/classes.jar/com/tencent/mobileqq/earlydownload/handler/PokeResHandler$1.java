@@ -1,36 +1,34 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import afxl;
 import android.text.TextUtils;
-import apll;
-import bdhb;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import com.tencent.mobileqq.activity.photo.album.QQAlbumUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 
-public class PokeResHandler$1
+class PokeResHandler$1
   implements Runnable
 {
-  public PokeResHandler$1(apll paramapll, String paramString1, String paramString2) {}
+  PokeResHandler$1(PokeResHandler paramPokeResHandler, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.a)) {}
-    try
-    {
-      bdhb.a(this.a, false);
-      bdhb.a(this.b, this.a, false);
-      afxl.b(this.a);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+    if (!TextUtils.isEmpty(this.a)) {
+      try
+      {
+        FileUtils.delete(this.a, false);
+        FileUtils.uncompressZip(this.b, this.a, false);
+        QQAlbumUtils.a(this.a);
+      }
+      catch (IOException localIOException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("PokeResHandler_0625", 2, localIOException.toString());
         }
       }
     }
+    PokeItemHelper.b(this.a);
   }
 }
 

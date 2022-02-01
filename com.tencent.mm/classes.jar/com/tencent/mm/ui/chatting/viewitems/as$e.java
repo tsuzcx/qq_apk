@@ -1,64 +1,65 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.k;
+import com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiView;
+import com.tencent.mm.ui.bb;
 
-public final class as$e
-  extends as.b
+final class as$e
+  extends c.a
 {
-  public final View a(LayoutInflater paramLayoutInflater, View paramView)
+  ImageView aeNG;
+  RTChattingEmojiView aePJ;
+  ImageView aePK;
+  ViewStub aeTZ;
+  View aeUa;
+  ImageView aeUb;
+  
+  public final c.a P(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(33415);
-    Object localObject;
-    if (paramView != null)
-    {
-      localObject = paramView;
-      if (paramView.getTag() != null) {}
+    AppMethodBeat.i(37294);
+    super.create(paramView);
+    this.timeTV = ((TextView)paramView.findViewById(R.h.fAm));
+    this.aePJ = ((RTChattingEmojiView)paramView.findViewById(R.h.fxz));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.fxt));
+    this.maskView = paramView.findViewById(R.h.fzn);
+    this.aeUa = paramView.findViewById(R.h.fxI);
+    this.aeUb = ((ImageView)paramView.findViewById(R.h.fxJ));
+    this.aeUb.setImageDrawable(bb.m(paramView.getContext(), R.k.emoticonstore_capture_icon, -1));
+    if (paramBoolean) {
+      this.userTV = ((TextView)paramView.findViewById(R.h.fAr));
     }
-    else
+    for (;;)
     {
-      localObject = new w(paramLayoutInflater, 2130969127);
-      ((View)localObject).setTag(new as.i().fl((View)localObject));
+      if (this.aePK != null) {
+        ((ViewGroup)this.aePK.getParent()).setBackgroundDrawable(null);
+      }
+      this.aeTZ = ((ViewStub)paramView.findViewById(R.h.fzT));
+      AppMethodBeat.o(37294);
+      return this;
+      this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.gbo));
+      this.userTV = ((TextView)paramView.findViewById(R.h.fAr));
+      this.stateIV = ((ImageView)paramView.findViewById(R.h.fAj));
+      this.aeNG = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
     }
-    AppMethodBeat.o(33415);
-    return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, bi parambi, String paramString)
+  public final View getMainContainerView()
   {
-    AppMethodBeat.i(33416);
-    as.i.a((as.i)parama, parambi, false, paramInt, parama1, o(parama1), c(parama1));
-    AppMethodBeat.o(33416);
-  }
-  
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bi parambi)
-  {
-    return false;
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, a parama, bi parambi)
-  {
-    return false;
-  }
-  
-  public final boolean aK(int paramInt, boolean paramBoolean)
-  {
-    return (paramBoolean) && (paramInt == 53);
-  }
-  
-  public final boolean b(View paramView, a parama, bi parambi)
-  {
-    return false;
+    return this.aePJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.as.e
  * JD-Core Version:    0.7.0.1
  */

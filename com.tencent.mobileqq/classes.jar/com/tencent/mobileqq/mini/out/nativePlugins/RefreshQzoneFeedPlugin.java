@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bjdt;
-import bjea;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 import org.json.JSONObject;
 
 public class RefreshQzoneFeedPlugin
@@ -16,7 +16,7 @@ public class RefreshQzoneFeedPlugin
   
   public void onDestroy() {}
   
-  public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
+  public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
     if (paramJSContext != null)
     {
@@ -27,22 +27,26 @@ public class RefreshQzoneFeedPlugin
         Bundle localBundle = new Bundle();
         localBundle.putString("cmd", "refreshFeed");
         localIntent.putExtras(localBundle);
-        bjdt.a(paramJSONObject, bjea.a(), localIntent);
+        QZoneHelper.forwardToQzoneTransluentActivity(paramJSONObject, QZoneHelper.UserInfo.getInstance(), localIntent);
         paramJSContext.evaluateCallback(true, null, "");
         if (QLog.isColorLevel()) {
           QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");
         }
-        return;
       }
-      QLog.e("RefreshQzoneFeedPlugin", 1, "activity is null");
-      return;
+      else
+      {
+        QLog.e("RefreshQzoneFeedPlugin", 1, "activity is null");
+      }
     }
-    QLog.e("RefreshQzoneFeedPlugin", 1, "jsContext is null");
+    else
+    {
+      QLog.e("RefreshQzoneFeedPlugin", 1, "jsContext is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.RefreshQzoneFeedPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ public class v
 {
   public static String a = "key_recv_queue_wait_length";
   public static String b = "key_add_queue_time";
-  public static ArrayList c = a();
+  public static ArrayList c = ;
   
   public static ArrayList a()
   {
@@ -22,7 +22,7 @@ public class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.v
  * JD-Core Version:    0.7.0.1
  */

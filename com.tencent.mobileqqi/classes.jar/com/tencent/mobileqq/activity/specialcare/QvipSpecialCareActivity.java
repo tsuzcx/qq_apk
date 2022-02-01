@@ -35,6 +35,7 @@ import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.QQToastNotifier;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.Switch;
+import esb;
 import esc;
 import esd;
 import ese;
@@ -42,7 +43,6 @@ import esf;
 import esg;
 import esh;
 import esi;
-import esj;
 
 public class QvipSpecialCareActivity
   extends IphoneTitleBarActivity
@@ -56,10 +56,10 @@ public class QvipSpecialCareActivity
   private Intent jdField_a_of_type_AndroidContentIntent;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = new esd(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new esc(this);
   private View jdField_a_of_type_AndroidViewView;
   @SuppressLint({"NewApi"})
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new ese(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new esd(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   protected RelativeLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -67,7 +67,7 @@ public class QvipSpecialCareActivity
   private QvipSpecialSoundManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager;
   private SpecialCareTipsController jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecialCareTipsController;
   private FriendsManagerImp jdField_a_of_type_ComTencentMobileqqAppFriendsManagerImp = null;
-  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new esj(this);
+  private QvipSpecialCareObserver jdField_a_of_type_ComTencentMobileqqAppQvipSpecialCareObserver = new esi(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private QQToastNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQToastNotifier;
@@ -115,7 +115,7 @@ public class QvipSpecialCareActivity
   
   private void a(String paramString, int paramInt)
   {
-    DialogUtil.a(this, 230, getString(2131562519), paramString, 2131561746, paramInt, new esf(this), new esg(this)).show();
+    DialogUtil.a(this, 230, getString(2131562519), paramString, 2131561746, paramInt, new ese(this), new esf(this)).show();
   }
   
   private void a(String paramString, ImageView paramImageView)
@@ -148,7 +148,7 @@ public class QvipSpecialCareActivity
   
   private void c(String paramString)
   {
-    DialogUtil.a(this, 230, getString(2131562519), paramString, 2131561845, 0, null, new esh(this)).show();
+    DialogUtil.a(this, 230, getString(2131562519), paramString, 2131561845, 0, null, new esg(this)).show();
   }
   
   private boolean c()
@@ -161,12 +161,12 @@ public class QvipSpecialCareActivity
   {
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131230985));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231000));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131233451));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131233450));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131233450));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131233449));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     h(2131561692);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233452));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233451));
   }
   
   private void e()
@@ -190,7 +190,7 @@ public class QvipSpecialCareActivity
   private void f()
   {
     d();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new esc(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new esb(this));
   }
   
   private void g()
@@ -237,7 +237,7 @@ public class QvipSpecialCareActivity
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130903699, null);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131233459).setOnClickListener(new esi(this));
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131233458).setOnClickListener(new esh(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecialCareTipsController.a(this.jdField_a_of_type_AndroidViewView);
   }

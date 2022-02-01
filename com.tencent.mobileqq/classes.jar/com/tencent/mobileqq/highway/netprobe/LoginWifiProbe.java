@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 
 public class LoginWifiProbe
   extends ProbeItem
@@ -19,7 +20,7 @@ public class LoginWifiProbe
   
   private String getWifiSSID()
   {
-    WifiInfo localWifiInfo = ((WifiManager)WeakNetLearner.mContext.getSystemService("wifi")).getConnectionInfo();
+    WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)WeakNetLearner.mContext.getSystemService("wifi"));
     if (localWifiInfo != null) {
       return localWifiInfo.getSSID();
     }
@@ -32,18 +33,21 @@ public class LoginWifiProbe
       this.ssid = getWifiSSID();
     }
     this.echoTask = new EchoTask(WeakNetLearner.mContext);
-    switch (this.echoTask.doEcho())
+    int i = this.echoTask.doEcho();
+    if (i != 1)
     {
-    default: 
-      return;
-    case 3: 
-      onFinish(3, this.echoTask.getErrorMsg());
-      return;
-    case 1: 
-      onFinish(0, null);
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        onFinish(3, this.echoTask.getErrorMsg());
+        return;
+      }
+      onFinish(2, this.echoTask.getResponseUrl());
       return;
     }
-    onFinish(2, this.echoTask.getResponseUrl());
+    onFinish(0, null);
   }
   
   public String getProbeName()
@@ -70,30 +74,44 @@ public class LoginWifiProbe
   public void onFinish(int paramInt, Object paramObject)
   {
     this.mResult.errCode = paramInt;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return;
+          }
+          this.mResult.success = false;
+          localProbeResult = this.mResult;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("the echo test has some exception:");
+          localStringBuilder.append((String)paramObject);
+          localProbeResult.errDesc = localStringBuilder.toString();
+          return;
+        }
+        this.mResult.success = false;
+        ProbeItem.ProbeResult localProbeResult = this.mResult;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("the wifi(");
+        localStringBuilder.append(this.ssid);
+        localStringBuilder.append(") need to login , the login-url:");
+        localStringBuilder.append(paramObject);
+        localProbeResult.errDesc = localStringBuilder.toString();
+        return;
+      }
       this.mResult.success = true;
       this.mResult.appendResult("the network type is not wifi!");
       return;
-    case 0: 
-      this.mResult.success = true;
-      this.mResult.appendResult("echo function is normal , wifi maybe is good !");
-      return;
-    case 3: 
-      this.mResult.success = false;
-      this.mResult.errDesc = ("the echo test has some exception:" + (String)paramObject);
-      return;
     }
-    this.mResult.success = false;
-    this.mResult.errDesc = ("the wifi(" + this.ssid + ") need to login , the login-url:" + paramObject);
+    this.mResult.success = true;
+    this.mResult.appendResult("echo function is normal , wifi maybe is good !");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.LoginWifiProbe
  * JD-Core Version:    0.7.0.1
  */

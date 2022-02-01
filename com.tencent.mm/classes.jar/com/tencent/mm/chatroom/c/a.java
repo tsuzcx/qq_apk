@@ -1,97 +1,75 @@
 package com.tencent.mm.chatroom.c;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Calendar;
+import com.tencent.mm.chatroom.ui.SeeRoomManagerUI;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.a.e;
+import com.tencent.mm.plugin.messenger.a.e.c;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public final class a
+  implements e.c
 {
-  private Calendar calendar;
-  public long cpO;
-  public int eel;
-  public long eem;
-  public int month;
-  public int year;
+  public com.tencent.mm.chatroom.e.a lxU;
   
   public a()
   {
-    AppMethodBeat.i(103902);
-    setTime(System.currentTimeMillis());
-    AppMethodBeat.o(103902);
+    AppMethodBeat.i(12445);
+    this.lxU = new com.tencent.mm.chatroom.e.a();
+    AppMethodBeat.o(12445);
   }
   
-  public a(int paramInt1, int paramInt2, int paramInt3)
+  public final CharSequence a(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(103903);
-    this.year = paramInt1;
-    this.month = paramInt2;
-    this.eel = paramInt3;
-    AppMethodBeat.o(103903);
-  }
-  
-  public a(long paramLong)
-  {
-    AppMethodBeat.i(103904);
-    this.eem = paramLong;
-    setTime(paramLong);
-    AppMethodBeat.o(103904);
-  }
-  
-  private void setTime(long paramLong)
-  {
-    AppMethodBeat.i(103905);
-    this.eem = paramLong;
-    if (this.calendar == null) {
-      this.calendar = Calendar.getInstance();
-    }
-    this.calendar.setTimeInMillis(paramLong);
-    this.month = this.calendar.get(2);
-    this.year = this.calendar.get(1);
-    this.eel = this.calendar.get(5);
-    AppMethodBeat.o(103905);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof a))
+    AppMethodBeat.i(241464);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    paramString = (String)paramMap.get(paramString + ".title");
+    if (Util.isNullOrNil(paramString))
     {
-      paramObject = (a)paramObject;
-      bool1 = bool2;
-      if (paramObject.eel == this.eel)
-      {
-        bool1 = bool2;
-        if (paramObject.month == this.month)
-        {
-          bool1 = bool2;
-          if (paramObject.year == this.year) {
-            bool1 = true;
-          }
-        }
-      }
+      AppMethodBeat.o(241464);
+      return "";
     }
-    return bool1;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(103906);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("{ year: ");
-    ((StringBuilder)localObject).append(this.year);
-    ((StringBuilder)localObject).append(", month: ");
-    ((StringBuilder)localObject).append(this.month);
-    ((StringBuilder)localObject).append(", day: ");
-    ((StringBuilder)localObject).append(this.eel);
-    ((StringBuilder)localObject).append(" }");
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(103906);
-    return localObject;
+    SpannableString localSpannableString = p.b(MMApplicationContext.getContext(), paramString);
+    localSpannableString.setSpan(new com.tencent.mm.plugin.messenger.a.a(paramWeakReference)
+    {
+      public final void onClickImp(View paramAnonymousView)
+      {
+        AppMethodBeat.i(12444);
+        if ((paramWeakReference != null) && (paramWeakReference.get() != null))
+        {
+          Object localObject = paramBundle.getString("conv_talker_username");
+          paramAnonymousView = (Context)paramWeakReference.get();
+          Intent localIntent = new Intent(paramAnonymousView, SeeRoomManagerUI.class);
+          localIntent.setFlags(32768);
+          localIntent.putExtra("RoomInfo_Id", (String)localObject);
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/chatroom/manager/ChatroomNewXmlMgr$1", "onClickImp", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/chatroom/manager/ChatroomNewXmlMgr$1", "onClickImp", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((e)h.ax(e.class)).a("link_admin_explain", paramMap, paramBundle);
+        }
+        AppMethodBeat.o(12444);
+      }
+    }, 0, paramString.length(), 33);
+    localSpannableStringBuilder.append(localSpannableString);
+    AppMethodBeat.o(241464);
+    return localSpannableStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.c.a
  * JD-Core Version:    0.7.0.1
  */

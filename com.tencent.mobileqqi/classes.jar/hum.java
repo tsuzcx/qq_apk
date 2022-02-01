@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import com.tencent.qqprotect.singleupdate.QPSinlgeUpdInfo;
 
 public class hum
-  implements DialogInterface.OnClickListener
 {
-  public hum(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  public String a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public hum(QPSinlgeUpdInfo paramQPSinlgeUpdInfo) {}
 }
 
 

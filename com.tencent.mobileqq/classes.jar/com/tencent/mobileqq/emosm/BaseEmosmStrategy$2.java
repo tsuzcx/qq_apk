@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.emosm;
 
-import apma;
-import apom;
-import azqs;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoSendControl;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.ArrayList;
 
-public class BaseEmosmStrategy$2
+class BaseEmosmStrategy$2
   implements Runnable
 {
-  public BaseEmosmStrategy$2(apma paramapma, ArrayList paramArrayList) {}
+  BaseEmosmStrategy$2(BaseEmosmStrategy paramBaseEmosmStrategy, ArrayList paramArrayList) {}
   
   public void run()
   {
-    apom.a(this.a);
-    azqs.b(null, "dc00898", "", "", "0X800A6E1", "0X800A6E1", 0, 0, "", "", "", "");
+    FavEmoSendControl.a(this.a);
+    ReportController.b(null, "dc00898", "", "", "0X800A6E1", "0X800A6E1", 0, 0, "", "", "", "");
   }
 }
 

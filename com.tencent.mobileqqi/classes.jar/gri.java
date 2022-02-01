@@ -1,26 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.model.FriendManager;
 import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.troop.activity.TroopAdminList.ViewHolder;
 
 public class gri
-  extends FriendListObserver
+  implements View.OnClickListener
 {
   public gri(TroopAdminList paramTroopAdminList) {}
   
-  protected void a(ArrayList paramArrayList, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
+    paramView = (TroopAdminList.ViewHolder)paramView.getTag();
+    if (paramView != null)
+    {
+      paramView = paramView.a;
+      if (!this.a.b.a().equals(paramView)) {
+        break label53;
+      }
+      paramView = new ProfileActivity.AllInOne(paramView, 0);
     }
-    this.a.f();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      this.a.f();
+    for (;;)
+    {
+      ProfileActivity.a(this.a, paramView);
+      return;
+      label53:
+      Friends localFriends = ((FriendManager)this.a.b.getManager(8)).c(paramView);
+      if ((localFriends != null) && (localFriends.isFriend()))
+      {
+        paramView = new ProfileActivity.AllInOne(paramView, 1);
+        paramView.g = localFriends.name;
+        paramView.h = localFriends.remark;
+      }
+      else
+      {
+        paramView = new ProfileActivity.AllInOne(paramView, 19);
+      }
     }
   }
 }

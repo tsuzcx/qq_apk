@@ -10,17 +10,17 @@ public class zzad
   extends zza
 {
   public static final Parcelable.Creator<zzad> CREATOR = new e();
-  private final Account GJ;
-  final int Hc;
-  private final int Jb;
-  private final GoogleSignInAccount Jc;
+  final int IR;
+  private final Account Iy;
+  private final int KQ;
+  private final GoogleSignInAccount KR;
   
   zzad(int paramInt1, Account paramAccount, int paramInt2, GoogleSignInAccount paramGoogleSignInAccount)
   {
-    this.Hc = paramInt1;
-    this.GJ = paramAccount;
-    this.Jb = paramInt2;
-    this.Jc = paramGoogleSignInAccount;
+    this.IR = paramInt1;
+    this.Iy = paramAccount;
+    this.KQ = paramInt2;
+    this.KR = paramGoogleSignInAccount;
   }
   
   public zzad(Account paramAccount, int paramInt, GoogleSignInAccount paramGoogleSignInAccount)
@@ -28,19 +28,19 @@ public class zzad
     this(2, paramAccount, paramInt, paramGoogleSignInAccount);
   }
   
-  public final Account fX()
-  {
-    return this.GJ;
-  }
-  
-  public final GoogleSignInAccount gU()
-  {
-    return this.Jc;
-  }
-  
   public final int getSessionId()
   {
-    return this.Jb;
+    return this.KQ;
+  }
+  
+  public final Account gi()
+  {
+    return this.Iy;
+  }
+  
+  public final GoogleSignInAccount he()
+  {
+    return this.KR;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

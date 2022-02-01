@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080a4f" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a54" android:layout_width="fill_parent" android:layout_height="51.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08047c" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200ba" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a014a" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08047d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我要发喇叭" />
+    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080a4e" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a54" android:layout_width="fill_parent" android:layout_height="51.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08047b" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200ba" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a014a" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08047c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="我要发喇叭" />
     </LinearLayout>
 </RelativeLayout>

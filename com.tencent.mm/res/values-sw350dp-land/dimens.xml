@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="agm">@dimen/cv</item>
+    <item type="dimen" name="agn">@dimen/d0</item>
+    <item type="dimen" name="agu">@dimen/df</item>
+    <item type="dimen" name="agv">@dimen/cv</item>
+    <item type="dimen" name="agw">@dimen/cp</item>
+    <item type="dimen" name="agx">@dimen/df</item>
+    <item type="dimen" name="agy">@dimen/cv</item>
+</resources>

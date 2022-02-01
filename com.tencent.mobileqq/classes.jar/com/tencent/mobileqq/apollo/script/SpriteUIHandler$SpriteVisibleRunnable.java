@@ -1,116 +1,111 @@
 package com.tencent.mobileqq.apollo.script;
 
-import akra;
-import alar;
-import alaw;
-import alba;
-import albf;
-import albi;
-import alnq;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.aio.api.impl.ApolloAIOHelperImpl;
+import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
+import com.tencent.mobileqq.apollo.api.impl.SpriteScriptManagerImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.cmshow.engine.ICMShowEngine;
+import com.tencent.mobileqq.cmshow.engine.render.ICMShowView;
+import com.tencent.mobileqq.cmshow.engine.render.IRenderService;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 class SpriteUIHandler$SpriteVisibleRunnable
   implements Runnable
 {
-  private alba jdField_a_of_type_Alba;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
   private boolean b;
+  private SpriteContext c;
+  private String d;
   
-  public SpriteUIHandler$SpriteVisibleRunnable(alba paramalba, boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public SpriteUIHandler$SpriteVisibleRunnable(SpriteContext paramSpriteContext, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     this.b = paramBoolean1;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Alba = paramalba;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramBoolean2;
+    this.c = paramSpriteContext;
+    this.d = paramString;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Alba == null)
+    Object localObject1 = this.c;
+    if (localObject1 == null)
     {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, "[onDoubleTap], mContext is null.");
+      QLog.e("[cmshow][scripted]SpriteUIHandler", 1, "[onDoubleTap], mContext is null.");
       return;
     }
-    Object localObject1;
-    int i;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      localObject1 = this.jdField_a_of_type_Alba;
-      if (this.b)
+      ((SpriteContext)localObject1).e(this.b);
+    }
+    else
+    {
+      localObject2 = this.d;
+      if (localObject2 != null) {
+        ((SpriteContext)localObject1).a((String)localObject2, this.b);
+      }
+    }
+    Object localObject2 = this.c.l();
+    if (localObject2 == null) {
+      return;
+    }
+    if (this.c.n() != null) {
+      localObject1 = this.c.n().c().a();
+    } else {
+      localObject1 = null;
+    }
+    QLog.d("[cmshow][scripted]SpriteUIHandler", 1, new Object[] { "[showOrHideSprite], isHide:", Boolean.valueOf(this.b), ", from:", this.d, ", cmshowView:", localObject1, ", canInit:", Boolean.valueOf(this.c.f), ", isViewReady:", Boolean.valueOf(this.c.r()) });
+    Object localObject3;
+    if (!this.b)
+    {
+      if ((localObject1 == null) && (!this.c.f))
       {
-        i = 1;
-        label37:
-        ((alba)localObject1).d = i;
-        this.jdField_a_of_type_Alba.a(this.b);
+        QLog.i("[cmshow][scripted]SpriteUIHandler", 1, "view is going to be created in basechatpie, pls wait.");
+        return;
       }
-    }
-    Object localObject2;
-    for (;;)
-    {
-      localObject1 = this.jdField_a_of_type_Alba.a();
-      localObject2 = this.jdField_a_of_type_Alba.a();
-      if (localObject2 == null) {
-        break;
-      }
-      QLog.d("cmshow_scripted_SpriteUIHandler", 1, new Object[] { "[showOrHideSprite], isHide:", Boolean.valueOf(this.b), ",from:", this.jdField_a_of_type_JavaLangString, ",surfaceView:", localObject1, ",canInit:", Boolean.valueOf(this.jdField_a_of_type_Alba.jdField_a_of_type_Boolean), ",isViweReady:", Boolean.valueOf(this.jdField_a_of_type_Alba.d()) });
-      if (this.b) {
-        break label367;
-      }
-      if ((localObject1 != null) || (this.jdField_a_of_type_Alba.jdField_a_of_type_Boolean)) {
-        break label220;
-      }
-      QLog.i("cmshow_scripted_SpriteUIHandler", 1, "surfaceView is going to be created in basechatpie, pls wait.");
-      return;
-      i = 0;
-      break label37;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_Alba.a(this.jdField_a_of_type_JavaLangString, this.b);
-      }
-    }
-    label220:
-    if ((localObject1 != null) && (!this.jdField_a_of_type_Alba.d()))
-    {
-      QLog.i("cmshow_scripted_SpriteUIHandler", 1, "surfaceView is being created but NOT yet ready, pls wait.");
-      return;
-    }
-    Object localObject3 = this.jdField_a_of_type_Alba.a();
-    if ((localObject3 != null) && (((BaseChatPie)localObject3).a != null) && (((BaseChatPie)localObject3).a.c))
-    {
-      QLog.i("cmshow_scripted_SpriteUIHandler", 1, "want to show apollo but AIO finish now");
-      return;
-    }
-    if ((localObject1 != null) && (this.jdField_a_of_type_Alba.d())) {
-      ((albf)((QQAppInterface)localObject2).getManager(249)).a(this.jdField_a_of_type_Alba.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alba.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new SpriteUIHandler.SpriteVisibleRunnable.1(this, (akra)localObject1));
-      return;
-      if ((localObject3 != null) && (this.jdField_a_of_type_Alba.jdField_a_of_type_Boolean))
+      if ((localObject1 != null) && (!this.c.r()))
       {
-        ((BaseChatPie)localObject3).d();
-        continue;
-        label367:
-        localObject3 = albi.a((QQAppInterface)localObject2);
-        if (localObject3 != null) {
-          ((alar)localObject3).b(2);
-        }
-        localObject2 = ((albf)((QQAppInterface)localObject2).getManager(249)).a();
+        QLog.i("[cmshow][scripted]SpriteUIHandler", 1, "view is being created but NOT yet ready, pls wait.");
+        return;
+      }
+      localObject3 = this.c.m();
+      if ((localObject3 != null) && (((BaseChatPie)localObject3).aY))
+      {
+        QLog.i("[cmshow][scripted]SpriteUIHandler", 1, "want to show apollo but AIO finish now");
+        return;
+      }
+      if ((localObject1 != null) && (this.c.r()))
+      {
+        ((SpriteScriptManagerImpl)((QQAppInterface)localObject2).getRuntimeService(ISpriteScriptManager.class, "all")).onSurfaceReady(this.c.b, this.c.a);
+      }
+      else if ((localObject3 != null) && (this.c.f))
+      {
+        localObject2 = (ApolloAIOHelperImpl)((BaseChatPie)localObject3).q(8);
         if (localObject2 != null) {
-          ((alaw)localObject2).e();
+          ((ApolloAIOHelperImpl)localObject2).validateCmShowFun();
         }
       }
     }
+    else
+    {
+      localObject3 = SpriteUtil.i((AppRuntime)localObject2);
+      if (localObject3 != null) {
+        ((SpriteActionScript)localObject3).b(2);
+      }
+      localObject2 = ((SpriteScriptManagerImpl)((QQAppInterface)localObject2).getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteBackgroundManager();
+      if (localObject2 != null) {
+        ((SpriteBackgroundManager)localObject2).e();
+      }
+    }
+    ThreadManager.getUIHandler().post(new SpriteUIHandler.SpriteVisibleRunnable.1(this, (ICMShowView)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.SpriteVisibleRunnable
  * JD-Core Version:    0.7.0.1
  */

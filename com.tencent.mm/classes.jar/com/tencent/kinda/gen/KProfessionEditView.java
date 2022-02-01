@@ -11,13 +11,15 @@ public abstract interface KProfessionEditView
   
   public abstract void setData(ITransmitKvData paramITransmitKvData);
   
+  public abstract void setDefaultProfession(int paramInt, String paramString);
+  
   public abstract void setFocus(boolean paramBoolean);
   
   public abstract void setOnSelectProfessionCallback(KProfessionEditViewOnSelectProfessionCallback paramKProfessionEditViewOnSelectProfessionCallback);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.KProfessionEditView
  * JD-Core Version:    0.7.0.1
  */

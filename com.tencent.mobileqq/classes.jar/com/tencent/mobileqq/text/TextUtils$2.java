@@ -1,27 +1,28 @@
 package com.tencent.mobileqq.text;
 
 import android.graphics.drawable.Drawable;
-import banh;
-import bani;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public final class TextUtils$2
+final class TextUtils$2
   implements Runnable
 {
-  public TextUtils$2(int paramInt, bani parambani) {}
+  TextUtils$2(int paramInt, TextUtils.LoadSysEmojiCallback paramLoadSysEmojiCallback) {}
   
   public void run()
   {
-    Drawable localDrawable = banh.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_Bani != null)) {
-      this.jdField_a_of_type_Bani.a(localDrawable);
+    Drawable localDrawable = TextUtils.getResourceDrawableThroughImageCache(BaseApplication.getContext().getResources(), this.val$resId);
+    if (localDrawable != null)
+    {
+      TextUtils.LoadSysEmojiCallback localLoadSysEmojiCallback = this.val$callback;
+      if (localLoadSysEmojiCallback != null) {
+        localLoadSysEmojiCallback.callbackWhenSysEmojiLoaded(localDrawable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.TextUtils.2
  * JD-Core Version:    0.7.0.1
  */

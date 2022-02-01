@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="16.0sp" android:textColor="#8c000000" android:gravity="center|left" android:id="@id/btn" android:background="@drawable/qq_common_item_bg" android:paddingLeft="@dimen/common_32dp" android:paddingRight="@dimen/common_32dp" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentLeft="true" />
+</RelativeLayout>

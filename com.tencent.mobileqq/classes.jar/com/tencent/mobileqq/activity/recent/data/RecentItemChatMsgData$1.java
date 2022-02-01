@@ -1,15 +1,32 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-class RecentItemChatMsgData$1
-  implements Runnable
+final class RecentItemChatMsgData$1
+  extends ArrayList<Integer>
 {
-  RecentItemChatMsgData$1(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  RecentItemChatMsgData$1(int paramInt)
   {
-    this.a.reportClickEvent("CliOper", "0X80085A3");
+    super(paramInt);
+    add(Integer.valueOf(0));
+    add(Integer.valueOf(1000));
+    add(Integer.valueOf(1020));
+    add(Integer.valueOf(1003));
+    add(Integer.valueOf(1005));
+    add(Integer.valueOf(1004));
+    add(Integer.valueOf(1022));
+    add(Integer.valueOf(1023));
+    add(Integer.valueOf(1024));
+    add(Integer.valueOf(1025));
+    add(Integer.valueOf(7400));
+    add(Integer.valueOf(10004));
+    add(Integer.valueOf(10005));
+    add(Integer.valueOf(1044));
+    add(Integer.valueOf(1045));
+    add(Integer.valueOf(10007));
+    add(Integer.valueOf(10008));
+    add(Integer.valueOf(10010));
+    add(Integer.valueOf(10013));
   }
 }
 

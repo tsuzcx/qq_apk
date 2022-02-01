@@ -19,7 +19,7 @@ class StringsKt__StringBuilderKt
   @InlineOnly
   private static final StringBuilder append(@NotNull StringBuilder paramStringBuilder, Object paramObject)
   {
-    paramStringBuilder = paramStringBuilder.append(paramObject);
+    paramStringBuilder.append(paramObject);
     Intrinsics.checkExpressionValueIsNotNull(paramStringBuilder, "this.append(obj)");
     return paramStringBuilder;
   }
@@ -77,7 +77,7 @@ class StringsKt__StringBuilderKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.text.StringsKt__StringBuilderKt
  * JD-Core Version:    0.7.0.1
  */

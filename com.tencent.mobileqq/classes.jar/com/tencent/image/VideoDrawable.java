@@ -15,7 +15,7 @@ import java.io.File;
 public class VideoDrawable
   extends Drawable
 {
-  private static final String TAG = VideoDrawable.class.getSimpleName();
+  private static final String TAG = "VideoDrawable";
   private boolean mApplyGravity;
   private final Rect mDstRect = new Rect();
   private VideoDrawable.OnPlayerOneFrameListener mFrameDrawListener = null;
@@ -35,12 +35,12 @@ public class VideoDrawable
   {
     this.mVideoState = paramVideoState;
     this.mVideoState.mVideo.attachDrawable(this);
-    if (paramResources != null) {}
-    for (this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;; this.mTargetDensity = paramVideoState.mTargetDensity)
-    {
-      computeImageSize();
-      return;
+    if (paramResources != null) {
+      this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
+    } else {
+      this.mTargetDensity = paramVideoState.mTargetDensity;
     }
+    computeImageSize();
   }
   
   public VideoDrawable(File paramFile, Resources paramResources, boolean paramBoolean)
@@ -83,8 +83,9 @@ public class VideoDrawable
       Gravity.apply(this.mVideoState.mGravity, this.mVideoWidth, this.mVideoHeight, getBounds(), this.mDstRect);
       this.mApplyGravity = false;
     }
-    if (this.mFrameDrawListener != null) {
-      this.mFrameDrawListener.oneFrameDrawed();
+    VideoDrawable.OnPlayerOneFrameListener localOnPlayerOneFrameListener = this.mFrameDrawListener;
+    if (localOnPlayerOneFrameListener != null) {
+      localOnPlayerOneFrameListener.oneFrameDrawed();
     }
     copyBounds(this.mDstRect);
     this.mVideoState.mVideo.draw(paramCanvas, this.mDstRect, this.mVideoState.mPaint, this.mPlayVideoFrame);
@@ -145,7 +146,8 @@ public class VideoDrawable
   
   public void removeOnPlayRepeatListener(VideoDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
-    if ((this.mVideoState != null) && (this.mVideoState.mVideo != null)) {
+    VideoDrawable.VideoState localVideoState = this.mVideoState;
+    if ((localVideoState != null) && (localVideoState.mVideo != null)) {
       this.mVideoState.mVideo.removeOnPlayRepeatListener(paramOnPlayRepeatListener);
     }
   }
@@ -195,14 +197,16 @@ public class VideoDrawable
   
   public void setOnAudioPlayOnceListener(VideoDrawable.OnAudioPlayOnceListener paramOnAudioPlayOnceListener)
   {
-    if ((this.mVideoState != null) && (this.mVideoState.mVideo != null)) {
+    VideoDrawable.VideoState localVideoState = this.mVideoState;
+    if ((localVideoState != null) && (localVideoState.mVideo != null)) {
       this.mVideoState.mVideo.setOnAudioPlayOnceListener(paramOnAudioPlayOnceListener);
     }
   }
   
   public void setOnPlayRepeatListener(VideoDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
-    if ((this.mVideoState != null) && (this.mVideoState.mVideo != null)) {
+    VideoDrawable.VideoState localVideoState = this.mVideoState;
+    if ((localVideoState != null) && (localVideoState.mVideo != null)) {
       this.mVideoState.mVideo.setOnPlayRepeatListener(paramOnPlayRepeatListener);
     }
   }
@@ -233,7 +237,7 @@ public class VideoDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.VideoDrawable
  * JD-Core Version:    0.7.0.1
  */

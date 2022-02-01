@@ -1,23 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.czk;
-import com.tencent.mm.protocal.protobuf.czl;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class aq
-  extends a
+  extends JsApiUploadWeRunData
 {
-  public static final int CTRL_INDEX = 236;
-  public static final String NAME = "getSetting";
+  public static final int CTRL_INDEX = 324;
+  public static final String NAME = "addWeRunData";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(101946);
-    paramJSONObject = new czk();
-    paramJSONObject.appId = paramc.getAppId();
-    ((com.tencent.mm.plugin.appbrand.networking.a)paramc.q(com.tencent.mm.plugin.appbrand.networking.a.class)).a("/cgi-bin/mmbiz-bin/wxaapp_getauthinfo", paramJSONObject, czl.class).c(new aq.1(this, paramc, paramInt));
-    AppMethodBeat.o(101946);
+    AppMethodBeat.i(45450);
+    Log.d("MicroMsg.JsApiAddWeRunData", "JsApiAddWeRunData!");
+    if (paramJSONObject == null)
+    {
+      paramf.callback(paramInt, ZP("fail:data is null"));
+      Log.e("MicroMsg.JsApiAddWeRunData", "data is null");
+      AppMethodBeat.o(45450);
+      return;
+    }
+    a(this, paramf, paramInt, paramJSONObject.optInt("step"), true);
+    AppMethodBeat.o(45450);
   }
 }
 

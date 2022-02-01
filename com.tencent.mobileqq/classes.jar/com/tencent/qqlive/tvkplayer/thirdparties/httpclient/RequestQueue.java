@@ -62,15 +62,22 @@ public class RequestQueue
           localRequest.cancel();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramRequestFilter;
     }
   }
   
   public void cancelAll(Object paramObject)
   {
-    if (paramObject == null) {
-      throw new IllegalArgumentException("Cannot cancelAll with a null tag");
+    if (paramObject != null)
+    {
+      cancelAll(new RequestQueue.1(this, paramObject));
+      return;
     }
-    cancelAll(new RequestQueue.1(this, paramObject));
+    throw new IllegalArgumentException("Cannot cancelAll with a null tag");
   }
   
   <T> void finish(Request paramRequest)
@@ -81,10 +88,15 @@ public class RequestQueue
       synchronized (this.mFinishedListeners)
       {
         Iterator localIterator = this.mFinishedListeners.iterator();
-        if (localIterator.hasNext()) {
+        while (localIterator.hasNext()) {
           ((RequestQueue.RequestFinishedListener)localIterator.next()).onRequestFinished(paramRequest);
         }
+        return;
       }
+    }
+    for (;;)
+    {
+      throw paramRequest;
     }
   }
   
@@ -123,7 +135,7 @@ public class RequestQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.RequestQueue
  * JD-Core Version:    0.7.0.1
  */

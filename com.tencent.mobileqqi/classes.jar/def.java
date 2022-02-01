@@ -1,44 +1,54 @@
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class def
-  extends FriendListObserver
+  extends WtloginObserver
 {
-  public def(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  public def(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  protected void b(boolean paramBoolean, Map paramMap)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.h();
-    if (paramBoolean)
+    if (this.a.isFinishing()) {}
+    do
     {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131562538, 0).b(this.a.d());
       return;
-    }
-    if (QQSettingMsgHistoryActivity.a(this.a) != null)
-    {
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramMap = QQSettingMsgHistoryActivity.a(this.a);
-      if (this.a.b.f() != 1) {
-        break label159;
+      if ((paramInt == 0) && (paramDevlockInfo != null))
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QQSetting2Activity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+          QLog.d("QQSetting2Activity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
+          QLog.d("QQSetting2Activity", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
+          QLog.d("QQSetting2Activity", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
+          QLog.d("QQSetting2Activity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
+          QLog.d("QQSetting2Activity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+        }
+        this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
+        this.a.a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
+        return;
       }
-    }
-    label159:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramMap.setChecked(paramBoolean);
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(this.a.getApplicationContext(), 2131562036, 0).b(this.a.d());
-      return;
-    }
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QQSetting2Activity", 2, "OnCheckDevLockStatus ret = " + paramInt);
+        if (paramErrMsg != null) {
+          QLog.d("QQSetting2Activity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+        }
+        if (paramDevlockInfo == null) {
+          QLog.d("QQSetting2Activity", 2, "OnCheckDevLockStatus DevlockInfo is null");
+        }
+      }
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+    } while (!this.a.isResume());
+    paramWUserSigInfo = this.a.getString(2131562073);
+    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.d());
   }
 }
 

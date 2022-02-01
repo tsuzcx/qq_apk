@@ -5,56 +5,54 @@ import android.graphics.Paint.Style;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v.b;
-import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.i;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import java.util.Stack;
 
-public final class d
+public class d
   implements a
 {
-  public c bDN;
-  public final v.b eGu;
-  public com.tencent.mm.plugin.appbrand.canvas.a.a heB;
-  public com.tencent.mm.plugin.appbrand.canvas.a.a heC;
-  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> heD;
-  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> heE;
-  public Paint heF;
-  public Paint heG;
-  public e heH;
-  private a heI;
-  boolean heJ;
+  public f eqB;
+  public final ad.b mBj;
+  public com.tencent.mm.plugin.appbrand.canvas.a.a qTi;
+  public com.tencent.mm.plugin.appbrand.canvas.a.a qTj;
+  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> qTk;
+  private Stack<com.tencent.mm.plugin.appbrand.canvas.a.a> qTl;
+  public Paint qTm;
+  public Paint qTn;
+  public e qTo;
+  private a qTp;
+  boolean qTq;
   
   public d(a parama)
   {
-    AppMethodBeat.i(103165);
-    this.heF = new Paint();
-    this.eGu = new v.b();
-    this.heJ = true;
-    this.heI = parama;
-    if (this.heJ)
+    AppMethodBeat.i(144848);
+    this.qTm = new Paint();
+    this.mBj = new ad.b();
+    this.qTq = true;
+    this.qTp = parama;
+    if (this.qTq)
     {
-      parama = i.ayg().axY();
-      this.heB = parama;
-      if (!this.heJ) {
+      parama = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.i.cki().cka();
+      this.qTi = parama;
+      if (!this.qTq) {
         break label196;
       }
     }
     label196:
-    for (parama = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.ayc().axY();; parama = new com.tencent.mm.plugin.appbrand.canvas.a.a())
+    for (parama = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.cke().cka();; parama = new com.tencent.mm.plugin.appbrand.canvas.a.a())
     {
-      this.heC = parama;
-      this.heB.setStyle(Paint.Style.STROKE);
-      this.heC.setStyle(Paint.Style.FILL);
-      this.heB.setAntiAlias(true);
-      this.heC.setAntiAlias(true);
-      this.heB.setStrokeWidth(g.pO(1));
-      this.heC.setStrokeWidth(g.pO(1));
-      this.heD = new Stack();
-      this.heE = new Stack();
-      this.heF.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-      AppMethodBeat.o(103165);
+      this.qTj = parama;
+      this.qTi.setStyle(Paint.Style.STROKE);
+      this.qTj.setStyle(Paint.Style.FILL);
+      this.qTi.setAntiAlias(true);
+      this.qTj.setAntiAlias(true);
+      this.qTi.setStrokeWidth(com.tencent.mm.plugin.appbrand.af.i.DC(1));
+      this.qTj.setStrokeWidth(com.tencent.mm.plugin.appbrand.af.i.DC(1));
+      this.qTk = new Stack();
+      this.qTl = new Stack();
+      this.qTm.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+      AppMethodBeat.o(144848);
       return;
       parama = new com.tencent.mm.plugin.appbrand.canvas.a.a();
       break;
@@ -63,86 +61,86 @@ public final class d
   
   public final void invalidate()
   {
-    AppMethodBeat.i(103169);
-    this.heI.invalidate();
-    AppMethodBeat.o(103169);
+    AppMethodBeat.i(144852);
+    this.qTp.invalidate();
+    AppMethodBeat.o(144852);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(103166);
-    this.heD.clear();
-    this.heE.clear();
-    this.heB.reset();
-    this.heC.reset();
-    this.heB.setStyle(Paint.Style.STROKE);
-    this.heC.setStyle(Paint.Style.FILL);
-    this.heB.setAntiAlias(true);
-    this.heC.setAntiAlias(true);
-    this.heB.setStrokeWidth(g.pO(1));
-    this.heC.setStrokeWidth(g.pO(1));
-    AppMethodBeat.o(103166);
+    AppMethodBeat.i(144849);
+    this.qTk.clear();
+    this.qTl.clear();
+    this.qTi.reset();
+    this.qTj.reset();
+    this.qTi.setStyle(Paint.Style.STROKE);
+    this.qTj.setStyle(Paint.Style.FILL);
+    this.qTi.setAntiAlias(true);
+    this.qTj.setAntiAlias(true);
+    this.qTi.setStrokeWidth(com.tencent.mm.plugin.appbrand.af.i.DC(1));
+    this.qTj.setStrokeWidth(com.tencent.mm.plugin.appbrand.af.i.DC(1));
+    AppMethodBeat.o(144849);
   }
   
   public final void restore()
   {
-    AppMethodBeat.i(103168);
-    if (this.heD.isEmpty())
+    AppMethodBeat.i(144851);
+    if (this.qTk.isEmpty())
     {
-      AppMethodBeat.o(103168);
+      AppMethodBeat.o(144851);
       return;
     }
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala1 = this.heB;
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala2 = this.heC;
-    this.heB = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.heD.pop());
-    this.heC = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.heE.pop());
-    if (this.heJ)
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala1 = this.qTi;
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala2 = this.qTj;
+    this.qTi = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.qTk.pop());
+    this.qTj = ((com.tencent.mm.plugin.appbrand.canvas.a.a)this.qTl.pop());
+    if (this.qTq)
     {
-      if (this.heB != locala1) {
-        i.ayg().a(locala1);
+      if (this.qTi != locala1) {
+        com.tencent.mm.plugin.appbrand.canvas.action.arg.a.i.cki().a(locala1);
       }
-      if (this.heC != locala2) {
-        com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.ayc().a(locala2);
+      if (this.qTj != locala2) {
+        com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.cke().a(locala2);
       }
     }
-    AppMethodBeat.o(103168);
+    AppMethodBeat.o(144851);
   }
   
-  public final void save()
+  public final void sz()
   {
-    AppMethodBeat.i(103167);
-    com.tencent.mm.plugin.appbrand.canvas.a.a locala = this.heB;
-    this.heD.push(this.heB);
-    if (this.heJ)
+    AppMethodBeat.i(144850);
+    com.tencent.mm.plugin.appbrand.canvas.a.a locala = this.qTi;
+    this.qTk.push(this.qTi);
+    if (this.qTq)
     {
-      this.heB = i.ayg().axY();
-      locala.b(this.heB);
-      if (this.heB == null) {
-        this.heB = locala;
+      this.qTi = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.i.cki().cka();
+      locala.b(this.qTi);
+      if (this.qTi == null) {
+        this.qTi = locala;
       }
-      locala = this.heC;
-      this.heE.push(this.heC);
-      if (!this.heJ) {
+      locala = this.qTj;
+      this.qTl.push(this.qTj);
+      if (!this.qTq) {
         break label132;
       }
     }
     label132:
-    for (this.heC = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.ayc().axY();; this.heC = locala.ayh())
+    for (this.qTj = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e.cke().cka();; this.qTj = locala.ckj())
     {
-      locala.b(this.heC);
-      if (this.heC == null) {
-        this.heC = locala;
+      locala.b(this.qTj);
+      if (this.qTj == null) {
+        this.qTj = locala;
       }
-      AppMethodBeat.o(103167);
+      AppMethodBeat.o(144850);
       return;
-      this.heB = locala.ayh();
+      this.qTi = locala.ckj();
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.d
  * JD-Core Version:    0.7.0.1
  */

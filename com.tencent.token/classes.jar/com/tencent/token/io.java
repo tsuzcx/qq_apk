@@ -1,8 +1,16 @@
 package com.tencent.token;
 
+import android.widget.ListView;
+
 public abstract interface io
 {
-  public abstract int a(String paramString, int paramInt);
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract boolean d();
+  
+  public abstract ListView e();
 }
 
 

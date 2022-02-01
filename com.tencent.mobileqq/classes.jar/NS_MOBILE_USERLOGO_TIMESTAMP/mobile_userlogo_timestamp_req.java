@@ -49,8 +49,9 @@ public final class mobile_userlogo_timestamp_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.others != null) {
-      paramJceOutputStream.write(this.others, 1);
+    ArrayList localArrayList = this.others;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
     paramJceOutputStream.write(this.last_timestamp, 2);
     paramJceOutputStream.write(this.field_flag, 3);
@@ -61,7 +62,7 @@ public final class mobile_userlogo_timestamp_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_USERLOGO_TIMESTAMP.mobile_userlogo_timestamp_req
  * JD-Core Version:    0.7.0.1
  */

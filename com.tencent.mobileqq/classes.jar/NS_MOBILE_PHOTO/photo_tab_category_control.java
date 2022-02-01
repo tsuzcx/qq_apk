@@ -9,8 +9,8 @@ public final class photo_tab_category_control
   extends JceStruct
 {
   static ArrayList<photo_tab_categroy_info> cache_category_infos = new ArrayList();
-  public ArrayList<photo_tab_categroy_info> category_infos;
-  public boolean is_visible;
+  public ArrayList<photo_tab_categroy_info> category_infos = null;
+  public boolean is_visible = false;
   
   static
   {
@@ -35,14 +35,15 @@ public final class photo_tab_category_control
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.is_visible, 0);
-    if (this.category_infos != null) {
-      paramJceOutputStream.write(this.category_infos, 1);
+    ArrayList localArrayList = this.category_infos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.photo_tab_category_control
  * JD-Core Version:    0.7.0.1
  */

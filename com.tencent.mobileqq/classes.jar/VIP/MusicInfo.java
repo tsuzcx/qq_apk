@@ -4,19 +4,20 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MusicInfo
   extends JceStruct
 {
   static ArrayList<SingerInfo> cache_vSingerList = new ArrayList();
-  public int iAccess;
-  public long iDuration;
+  public int iAccess = 0;
+  public long iDuration = 0L;
   public String sAlbumName = "";
   public String sPic = "";
   public String sSongId = "";
   public String sSongName = "";
   public String sSongUrl = "";
-  public ArrayList<SingerInfo> vSingerList;
+  public ArrayList<SingerInfo> vSingerList = null;
   
   static
   {
@@ -52,23 +53,29 @@ public final class MusicInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sSongId != null) {
-      paramJceOutputStream.write(this.sSongId, 0);
+    Object localObject = this.sSongId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.sSongName != null) {
-      paramJceOutputStream.write(this.sSongName, 1);
+    localObject = this.sSongName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.sAlbumName != null) {
-      paramJceOutputStream.write(this.sAlbumName, 2);
+    localObject = this.sAlbumName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.vSingerList != null) {
-      paramJceOutputStream.write(this.vSingerList, 3);
+    localObject = this.vSingerList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.sPic != null) {
-      paramJceOutputStream.write(this.sPic, 4);
+    localObject = this.sPic;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.sSongUrl != null) {
-      paramJceOutputStream.write(this.sSongUrl, 5);
+    localObject = this.sSongUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.iAccess, 6);
     paramJceOutputStream.write(this.iDuration, 7);
@@ -76,7 +83,7 @@ public final class MusicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.MusicInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,148 +1,135 @@
 package com.tencent.mm.plugin.emojicapture.model;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.ttpic.util.ResourcePathMapper;
-import java.io.IOException;
+import com.tencent.mm.plugin.emojicapture.a.i;
+import com.tencent.mm.plugin.emojicapture.api.a.b;
+import com.tencent.mm.protocal.protobuf.dhp;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sticker.c.c;
+import com.tencent.mm.sticker.c.d.a;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.vending.e.b;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.n.n;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/model/CheckLensInfo;", "", "context", "Landroid/content/Context;", "lensIdWithUrl", "", "onResult", "Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;)V", "TAG", "getContext", "()Landroid/content/Context;", "getLensIdWithUrl", "()Ljava/lang/String;", "loadHint", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "kotlin.jvm.PlatformType", "getOnResult", "()Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "exit", "", "startEmojiCapture", "lensId", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final String lto;
+  private final String TAG;
+  final Context context;
+  final w xEL;
+  private final String ygD;
+  final a.b ygE;
+  private final String ygF;
   
-  static
+  public a(final Context paramContext, String paramString, a.b paramb)
   {
-    AppMethodBeat.i(2559);
-    lto = com.tencent.mm.compatible.util.e.eQw + "bgcut/";
-    AppMethodBeat.o(2559);
-  }
-  
-  public static void bnI()
-  {
-    int m = 0;
-    AppMethodBeat.i(2554);
-    try
+    AppMethodBeat.i(143);
+    this.context = paramContext;
+    this.ygD = paramString;
+    this.ygE = paramb;
+    this.TAG = "MicroMsg.CheckLensInfo";
+    paramContext = this.context.getResources().getString(a.i.loading);
+    s.s(paramContext, "context.resources.getString(R.string.loading)");
+    this.ygF = paramContext;
+    this.xEL = w.a(this.context, (CharSequence)this.ygF, true, 0, new a..ExternalSyntheticLambda0(this));
+    paramContext = this.ygD;
+    if (paramContext == null)
     {
-      if (com.tencent.mm.vfs.e.cN("assets:///bgcut/version.txt"))
-      {
-        i = bo.apV(com.tencent.mm.vfs.e.cS("assets:///bgcut/version.txt"));
-        j = m;
-        k = i;
+      i = 0;
+      paramContext = this.ygD;
+      if (paramContext != null) {
+        break label180;
+      }
+      paramContext = null;
+      label119:
+      paramString = (CharSequence)paramContext;
+      if ((paramString != null) && (paramString.length() != 0)) {
+        break label199;
       }
     }
-    catch (IOException localIOException1)
+    label180:
+    label199:
+    for (int i = 1;; i = 0)
     {
-      for (;;)
+      if (i == 0) {
+        break label205;
+      }
+      this.ygE.onResult(false);
+      AppMethodBeat.o(143);
+      return;
+      i = n.a((CharSequence)paramContext, "lensid=", 0, false, 6);
+      break;
+      paramContext = paramContext.substring(i + 7);
+      s.s(paramContext, "(this as java.lang.String).substring(startIndex)");
+      break label119;
+    }
+    label205:
+    paramString = com.tencent.mm.sticker.c.d.acDm;
+    paramString = this.context;
+    if ((paramString instanceof MMActivity)) {}
+    for (paramString = (MMActivity)paramString;; paramString = null)
+    {
+      d.a.a((b)paramString, paramContext, (c)new c()
       {
-        try
+        public final void a(int paramAnonymousInt, dhp paramAnonymousdhp)
         {
-          if (com.tencent.mm.vfs.e.cN(lto + "version.txt"))
-          {
-            j = bo.apV(com.tencent.mm.vfs.e.cS(lto + "version.txt"));
-            k = i;
-          }
-          if (k > j)
-          {
-            ab.i("MicroMsg.BgCutSoLogic", "checkFile: version upgrade");
-            com.tencent.mm.vfs.e.O(lto, true);
-            com.tencent.mm.vfs.e.um(lto);
-            com.tencent.mm.vfs.e.C("assets:///bgcut/version.txt", lto + "version.txt");
-          }
-          if (!com.tencent.mm.vfs.e.cN(lto + "libsegmentern.so")) {
-            com.tencent.mm.vfs.e.C("assets:///bgcut/libsegmentern.so", lto + "libsegmentern.so");
-          }
-          if (!com.tencent.mm.vfs.e.cN(lto + "libsegmentero.so")) {
-            com.tencent.mm.vfs.e.C("assets:///bgcut/libsegmentero.so", lto + "libsegmentero.so");
-          }
-          ResourcePathMapper.setResPath("so3", lto);
-          ResourcePathMapper.setResPath("so4", lto);
-          ResourcePathMapper.setResPath("model5", "assets://");
-          AppMethodBeat.o(2554);
-          return;
+          AppMethodBeat.i(141);
+          com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(paramAnonymousdhp, this.ygG, paramContext));
+          AppMethodBeat.o(141);
         }
-        catch (IOException localIOException2)
+        
+        @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+        static final class a
+          extends u
+          implements kotlin.g.a.a<ah>
         {
-          int j;
-          int k;
-          continue;
+          a(dhp paramdhp, a parama, String paramString)
+          {
+            super();
+          }
+          
+          private static final void a(a parama, boolean paramBoolean, String paramString)
+          {
+            AppMethodBeat.i(269339);
+            s.u(parama, "this$0");
+            parama.exit();
+            AppMethodBeat.o(269339);
+          }
         }
-        localIOException1 = localIOException1;
-        int i = 0;
-        ab.printErrStackTrace("MicroMsg.BgCutSoLogic", localIOException1, "", new Object[0]);
-        j = m;
-        k = i;
-        continue;
-        i = 0;
-      }
+      });
+      AppMethodBeat.o(143);
+      return;
     }
   }
   
-  public static void bnJ()
+  private static final void a(a parama, DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(2555);
-    ResourcePathMapper.setResPath("so3", null);
-    ResourcePathMapper.setResPath("so4", null);
-    ResourcePathMapper.setResPath("model5", null);
-    AppMethodBeat.o(2555);
+    AppMethodBeat.i(269337);
+    s.u(parama, "this$0");
+    Log.i(parama.TAG, "CheckLensInfo: cancel loading");
+    parama.exit();
+    AppMethodBeat.o(269337);
   }
   
-  public static void bnK()
+  final void exit()
   {
-    AppMethodBeat.i(2556);
-    int i = as.apq("emoji_segment_so").getInt("load_start", 0);
-    as.apq("emoji_segment_so").putInt("load_start", i + 1);
-    as.apq("emoji_segment_so").commit();
-    ab.i("MicroMsg.BgCutSoLogic", "markStart:%s", new Object[] { Integer.valueOf(i + 1) });
-    AppMethodBeat.o(2556);
-  }
-  
-  public static void bnL()
-  {
-    AppMethodBeat.i(2557);
-    int i = as.apq("emoji_segment_so").getInt("load_start", 0);
-    as.apq("emoji_segment_so").putInt("load_end", i);
-    as.apq("emoji_segment_so").commit();
-    ab.i("MicroMsg.BgCutSoLogic", "markEnd:%s", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(2557);
-  }
-  
-  public static boolean bnM()
-  {
-    int i = 5;
-    AppMethodBeat.i(2558);
-    int k = as.apq("emoji_segment_so").getInt("load_start", 0);
-    int m = as.apq("emoji_segment_so").getInt("load_end", 0);
-    try
-    {
-      int j = ((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lVn, 5);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      label52:
-      boolean bool;
-      break label52;
-    }
-    if (k - m <= i) {}
-    for (bool = true;; bool = false)
-    {
-      ab.i("MicroMsg.BgCutSoLogic", "checkManualStart: %s, %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-      if (!bool)
-      {
-        d locald = d.ltx;
-        d.bot();
-      }
-      AppMethodBeat.o(2558);
-      return bool;
-    }
+    AppMethodBeat.i(269343);
+    this.xEL.dismiss();
+    this.ygE.onResult(false);
+    AppMethodBeat.o(269343);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a
  * JD-Core Version:    0.7.0.1
  */

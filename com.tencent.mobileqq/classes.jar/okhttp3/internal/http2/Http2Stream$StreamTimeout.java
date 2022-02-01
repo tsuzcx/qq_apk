@@ -11,12 +11,13 @@ class Http2Stream$StreamTimeout
   
   public void exitAndThrowIfTimedOut()
   {
-    if (exit()) {
-      throw newTimeoutException(null);
+    if (!exit()) {
+      return;
     }
+    throw newTimeoutException(null);
   }
   
-  public IOException newTimeoutException(IOException paramIOException)
+  protected IOException newTimeoutException(IOException paramIOException)
   {
     SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
     if (paramIOException != null) {
@@ -25,7 +26,7 @@ class Http2Stream$StreamTimeout
     return localSocketTimeoutException;
   }
   
-  public void timedOut()
+  protected void timedOut()
   {
     this.this$0.closeLater(ErrorCode.CANCEL);
     this.this$0.connection.sendDegradedPingLater();
@@ -33,7 +34,7 @@ class Http2Stream$StreamTimeout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http2.Http2Stream.StreamTimeout
  * JD-Core Version:    0.7.0.1
  */

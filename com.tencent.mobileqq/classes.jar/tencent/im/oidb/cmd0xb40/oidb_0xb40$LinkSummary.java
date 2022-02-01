@@ -35,7 +35,7 @@ public final class oidb_0xb40$LinkSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.LinkSummary
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,28 @@ class UploadSession$4
   
   public void run()
   {
-    int i = this.val$socketStatus;
-    if (SessionPool.isNetworkUnavailable(this.val$socketStatus)) {
+    int j = this.val$socketStatus;
+    int i = j;
+    if (SessionPool.isNetworkUnavailable(j)) {
       i = Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode();
     }
-    UploadLog.w("UploadSession", "Session Error. sid=" + UploadSession.access$100(this.this$0) + " socket_status=" + this.val$socketStatus);
-    UploadSession.access$600(this.this$0, this.val$callback, i, "NDK Network Error: " + i);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Session Error. sid=");
+    ((StringBuilder)localObject).append(UploadSession.access$100(this.this$0));
+    ((StringBuilder)localObject).append(" socket_status=");
+    ((StringBuilder)localObject).append(this.val$socketStatus);
+    UploadLog.w("UploadSession", ((StringBuilder)localObject).toString());
+    localObject = this.this$0;
+    IConnectionCallback localIConnectionCallback = this.val$callback;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NDK Network Error: ");
+    localStringBuilder.append(i);
+    UploadSession.access$600((UploadSession)localObject, localIConnectionCallback, i, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.session.UploadSession.4
  * JD-Core Version:    0.7.0.1
  */

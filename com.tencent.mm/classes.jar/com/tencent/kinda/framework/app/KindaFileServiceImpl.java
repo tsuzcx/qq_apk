@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.kinda.gen.KFileService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,13 +16,13 @@ public class KindaFileServiceImpl
 {
   public byte[] getData(String paramString)
   {
-    AppMethodBeat.i(144350);
+    AppMethodBeat.i(18425);
     byte[] arrayOfByte = new byte[0];
     Object localObject1 = arrayOfByte;
     Object localObject2;
     try
     {
-      paramString = new BufferedReader(new InputStreamReader(ah.getContext().getAssets().open("kinda-strings/".concat(String.valueOf(paramString))), StandardCharsets.UTF_8));
+      paramString = new BufferedReader(new InputStreamReader(MMApplicationContext.getContext().getAssets().open("kinda-strings/".concat(String.valueOf(paramString))), StandardCharsets.UTF_8));
       localObject1 = arrayOfByte;
       localObject2 = new StringBuilder();
       for (;;)
@@ -35,11 +35,11 @@ public class KindaFileServiceImpl
         localObject1 = arrayOfByte;
         ((StringBuilder)localObject2).append(str);
       }
-      AppMethodBeat.o(144350);
+      AppMethodBeat.o(18425);
     }
     catch (IOException paramString)
     {
-      ab.e("kinda KindaFileServiceImpl", "kinda打开json资源文件时出错，错误信息是：" + paramString.getMessage());
+      Log.e("kinda KindaFileServiceImpl", "kinda打开json资源文件时出错，错误信息是：" + paramString.getMessage());
       paramString = (String)localObject1;
     }
     for (;;)
@@ -52,13 +52,13 @@ public class KindaFileServiceImpl
       localObject1 = arrayOfByte;
       paramString = ((String)localObject2).getBytes();
       localObject1 = paramString;
-      ab.d("kinda KindaFileServiceImpl", "读取kinda的字符串资源文件结果是：".concat(String.valueOf(localObject2)));
+      Log.d("kinda KindaFileServiceImpl", "读取kinda的字符串资源文件结果是：".concat(String.valueOf(localObject2)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaFileServiceImpl
  * JD-Core Version:    0.7.0.1
  */

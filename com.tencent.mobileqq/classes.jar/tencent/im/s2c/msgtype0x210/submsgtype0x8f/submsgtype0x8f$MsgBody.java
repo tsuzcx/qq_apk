@@ -25,12 +25,13 @@ public final class submsgtype0x8f$MsgBody
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48 }, new String[] { "msg_source_id", "bytes_feeds_id", "enum_msg_type", "bytes_ext_msg", "uint64_author_uin", "uint64_confirm_uin" }, new Object[] { null, localByteStringMicro1, Integer.valueOf(1), localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L) }, MsgBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48 }, new String[] { "msg_source_id", "bytes_feeds_id", "enum_msg_type", "bytes_ext_msg", "uint64_author_uin", "uint64_confirm_uin" }, new Object[] { null, localByteStringMicro1, Integer.valueOf(1), localByteStringMicro2, localLong, localLong }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x8f.submsgtype0x8f.MsgBody
  * JD-Core Version:    0.7.0.1
  */

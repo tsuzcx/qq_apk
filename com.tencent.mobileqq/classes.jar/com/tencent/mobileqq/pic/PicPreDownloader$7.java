@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.pic;
 
-import awjb;
-import awjl;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.structmsg.api.IMsgStructing;
 
 class PicPreDownloader$7
   implements Runnable
 {
-  PicPreDownloader$7(PicPreDownloader paramPicPreDownloader, awjl paramawjl) {}
+  PicPreDownloader$7(PicPreDownloader paramPicPreDownloader, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    awjb.a(this.a, this.this$0.a);
+    ((IMsgStructing)QRoute.api(IMsgStructing.class)).consumeStructMsgPicPre(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.7
  * JD-Core Version:    0.7.0.1
  */

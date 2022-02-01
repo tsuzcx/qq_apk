@@ -1,87 +1,95 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bwh;
-import com.tencent.mm.protocal.protobuf.oa;
-import com.tencent.mm.protocal.protobuf.ob;
-import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public final class f
-  extends m
-  implements k
+  extends com.tencent.mm.bx.a
 {
-  private com.tencent.mm.ai.f callback;
-  private b rr;
+  public String MRA;
+  public j MRz;
   
-  public f(LinkedList<bwh> paramLinkedList, String paramString)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43982);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new oa();
-    ((b.a)localObject).fsY = new ob();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/cancelpreorder";
-    ((b.a)localObject).funcId = 555;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (oa)this.rr.fsV.fta;
-    ((oa)localObject).wDE = paramLinkedList;
-    if (paramLinkedList != null) {
-      i = paramLinkedList.size();
-    }
-    ((oa)localObject).pql = i;
-    ((oa)localObject).wDF = paramString;
-    ab.d("MicroMsg.NetSceneMallCancelPreOrder", "lockId ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(43982);
-  }
-  
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
-  {
-    AppMethodBeat.i(43984);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(43984);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 555;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(43983);
-    paramArrayOfByte = (ob)((b)paramq).fsW.fta;
-    paramInt1 = paramInt3;
-    paramq = paramString;
-    if (paramInt3 == 0)
+    AppMethodBeat.i(91272);
+    if (paramInt == 0)
     {
-      paramInt1 = paramInt3;
-      paramq = paramString;
-      if (paramArrayOfByte.wuD != 0)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.MRz != null)
       {
-        paramInt1 = paramArrayOfByte.wuD;
-        paramq = paramArrayOfByte.wuE;
+        paramVarArgs.qD(1, this.MRz.computeSize());
+        this.MRz.writeFields(paramVarArgs);
+      }
+      if (this.MRA != null) {
+        paramVarArgs.g(2, this.MRA);
+      }
+      AppMethodBeat.o(91272);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.MRz == null) {
+        break label344;
       }
     }
-    ab.d("MicroMsg.NetSceneMallCancelPreOrder", "errCode " + paramInt1 + ", errMsg " + paramq);
-    this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
-    AppMethodBeat.o(43983);
+    label344:
+    for (paramInt = i.a.a.a.qC(1, this.MRz.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.MRA != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.MRA);
+      }
+      AppMethodBeat.o(91272);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(91272);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        f localf = (f)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(91272);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            j localj = new j();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localj.parseFrom((byte[])localObject);
+            }
+            localf.MRz = localj;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91272);
+          return 0;
+        }
+        localf.MRA = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(91272);
+        return 0;
+      }
+      AppMethodBeat.o(91272);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.f
  * JD-Core Version:    0.7.0.1
  */

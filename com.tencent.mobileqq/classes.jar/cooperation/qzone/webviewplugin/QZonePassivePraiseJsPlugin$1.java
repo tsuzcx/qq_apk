@@ -1,86 +1,49 @@
 package cooperation.qzone.webviewplugin;
 
-import bjwx;
+import android.text.TextUtils;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class QZonePassivePraiseJsPlugin$1
+class QZonePassivePraiseJsPlugin$1
   implements Runnable
 {
-  public QZonePassivePraiseJsPlugin$1(bjwx parambjwx, String[] paramArrayOfString) {}
+  QZonePassivePraiseJsPlugin$1(QZonePassivePraiseJsPlugin paramQZonePassivePraiseJsPlugin, String[] paramArrayOfString) {}
   
-  /* Error */
   public void run()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:a	[Ljava/lang/String;
-    //   4: ifnull +75 -> 79
-    //   7: aload_0
-    //   8: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:a	[Ljava/lang/String;
-    //   11: arraylength
-    //   12: ifle +67 -> 79
-    //   15: aload_0
-    //   16: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:a	[Ljava/lang/String;
-    //   19: iconst_0
-    //   20: aaload
-    //   21: ifnull +58 -> 79
-    //   24: new 25	org/json/JSONObject
-    //   27: dup
-    //   28: aload_0
-    //   29: getfield 16	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:a	[Ljava/lang/String;
-    //   32: iconst_0
-    //   33: aaload
-    //   34: invokespecial 28	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   37: astore_2
-    //   38: aload_2
-    //   39: ldc 30
-    //   41: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   44: astore_1
-    //   45: aload_0
-    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbjwx;
-    //   49: aload_2
-    //   50: ldc 36
-    //   52: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   55: invokestatic 41	bjwx:a	(Lbjwx;Ljava/lang/String;)Ljava/lang/String;
-    //   58: pop
-    //   59: aload_1
-    //   60: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   63: ifne +16 -> 79
-    //   66: aload_0
-    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbjwx;
-    //   70: invokestatic 50	bjwx:a	(Lbjwx;)Ljava/lang/String;
-    //   73: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   76: ifeq +15 -> 91
-    //   79: return
-    //   80: astore_2
-    //   81: ldc 52
-    //   83: astore_1
-    //   84: aload_2
-    //   85: invokevirtual 55	org/json/JSONException:printStackTrace	()V
-    //   88: goto -29 -> 59
-    //   91: invokestatic 60	bjqu:a	()Lbjqu;
-    //   94: invokevirtual 63	bjqu:a	()Lbjqw;
-    //   97: ldc 52
-    //   99: aload_1
-    //   100: invokevirtual 68	bjqw:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   103: return
-    //   104: astore_2
-    //   105: goto -21 -> 84
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	108	0	this	1
-    //   44	56	1	str	String
-    //   37	13	2	localJSONObject	org.json.JSONObject
-    //   80	5	2	localJSONException1	org.json.JSONException
-    //   104	1	2	localJSONException2	org.json.JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   24	45	80	org/json/JSONException
-    //   45	59	104	org/json/JSONException
+    Object localObject = this.val$args;
+    if ((localObject != null) && (localObject.length > 0) && (localObject[0] != null))
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(localObject[0]);
+        localObject = localJSONObject.getString("zipUrl");
+        try
+        {
+          QZonePassivePraiseJsPlugin.access$002(this.this$0, localJSONObject.getString("callback"));
+        }
+        catch (JSONException localJSONException1) {}
+        localJSONException2.printStackTrace();
+      }
+      catch (JSONException localJSONException2)
+      {
+        localObject = "";
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (TextUtils.isEmpty(QZonePassivePraiseJsPlugin.access$000(this.this$0))) {
+          return;
+        }
+        RemoteHandleManager.getInstance().getSender().downloadPassivePraise("", (String)localObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZonePassivePraiseJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

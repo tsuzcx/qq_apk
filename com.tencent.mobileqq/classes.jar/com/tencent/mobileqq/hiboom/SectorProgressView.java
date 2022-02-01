@@ -10,138 +10,142 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bdaq;
-import bdhj;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class SectorProgressView
   extends View
 {
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static int jdField_b_of_type_Int;
-  private static Rect jdField_b_of_type_AndroidGraphicsRect;
-  private static int jdField_c_of_type_Int;
-  private static int d;
-  private static int e;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  public boolean a;
-  private boolean jdField_b_of_type_Boolean;
-  private Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
+  private static int g;
+  private static int h;
+  private static int i;
+  private static int j;
+  private static Bitmap k;
+  private static Rect l;
+  public boolean a = false;
+  private int b;
+  private boolean c;
+  private Paint d;
+  private Rect e = new Rect();
+  private RectF f = new RectF();
+  private Rect m = new Rect();
   
   public SectorProgressView(Context paramContext)
   {
     super(paramContext);
-    c();
+    d();
   }
   
   public SectorProgressView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    c();
+    d();
   }
   
   public SectorProgressView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    c();
+    d();
   }
   
-  private void c()
+  private void d()
   {
-    if (jdField_b_of_type_Int == 0) {
-      jdField_b_of_type_Int = bdaq.a(getContext(), 26.0F);
+    if (g == 0) {
+      g = DisplayUtil.a(getContext(), 26.0F);
     }
-    if (jdField_c_of_type_Int == 0) {
-      jdField_c_of_type_Int = bdaq.a(getContext(), 3.0F);
+    if (h == 0) {
+      h = DisplayUtil.a(getContext(), 3.0F);
     }
-    if (d == 0) {
-      d = bdaq.a(getContext(), 18.0F);
+    if (i == 0) {
+      i = DisplayUtil.a(getContext(), 18.0F);
     }
-    if (e == 0) {
-      e = bdaq.a(getContext(), 8.0F);
+    if (j == 0) {
+      j = DisplayUtil.a(getContext(), 8.0F);
     }
-    if (jdField_a_of_type_AndroidGraphicsBitmap == null)
+    if (k == null)
     {
-      jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a(getResources(), 2130846943);
-      jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      k = ImageUtil.a(getResources(), 2130849297);
+      l = new Rect(0, 0, k.getWidth(), k.getHeight());
     }
   }
   
   public void a()
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = true;
+    boolean bool = this.c;
+    this.c = true;
     if (!bool) {
       invalidate();
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
   public void b()
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = false;
+    boolean bool = this.c;
+    this.c = false;
     if (bool) {
       invalidate();
     }
   }
   
+  public boolean c()
+  {
+    return this.c;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.d = new Paint();
+      this.d.setAntiAlias(true);
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, getMeasuredWidth(), getMeasuredHeight());
-    if (this.jdField_b_of_type_Boolean)
+    this.e.set(0, 0, getMeasuredWidth(), getMeasuredHeight());
+    int n;
+    int i1;
+    int i2;
+    int i3;
+    if (this.c)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1073741824);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      f = this.jdField_a_of_type_Int * 360 / 100;
-      i = (getMeasuredWidth() - jdField_b_of_type_Int) / 2;
-      j = (getMeasuredHeight() - jdField_b_of_type_Int) / 2;
-      k = (getMeasuredWidth() + jdField_b_of_type_Int) / 2;
-      m = (getMeasuredWidth() + jdField_b_of_type_Int) / 2;
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(i, j, k, m);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-8354924);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(jdField_c_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      paramCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, jdField_b_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-13646081);
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, -f, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    while (!this.jdField_a_of_type_Boolean)
-    {
-      float f;
-      int k;
-      int m;
+      this.d.setColor(1073741824);
+      paramCanvas.drawRect(this.e, this.d);
+      float f1 = this.b * 360 / 100;
+      n = (getMeasuredWidth() - g) / 2;
+      i1 = (getMeasuredHeight() - g) / 2;
+      i2 = (getMeasuredWidth() + g) / 2;
+      i3 = (getMeasuredWidth() + g) / 2;
+      this.f.set(n, i1, i2, i3);
+      this.d.setColor(-8354924);
+      this.d.setStrokeWidth(h);
+      this.d.setStyle(Paint.Style.STROKE);
+      paramCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, g / 2, this.d);
+      this.d.setColor(-13646081);
+      paramCanvas.drawArc(this.f, -90.0F, -f1, false, this.d);
       return;
     }
-    int i = getMeasuredWidth() - e - d;
-    int j = getMeasuredHeight() - e - d;
-    this.jdField_c_of_type_AndroidGraphicsRect.set(i, j, d + i, d + j);
-    paramCanvas.drawBitmap(jdField_a_of_type_AndroidGraphicsBitmap, jdField_b_of_type_AndroidGraphicsRect, this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.a)
+    {
+      n = getMeasuredWidth() - j - i;
+      i2 = getMeasuredHeight();
+      i3 = j;
+      i1 = i;
+      i2 = i2 - i3 - i1;
+      this.m.set(n, i2, n + i1, i1 + i2);
+      paramCanvas.drawBitmap(k, l, this.m, this.d);
+    }
   }
   
   public void setProgress(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = paramInt;
-    if (i != this.jdField_a_of_type_Int) {
+    int n = this.b;
+    this.b = paramInt;
+    if (n != this.b) {
       invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.SectorProgressView
  * JD-Core Version:    0.7.0.1
  */

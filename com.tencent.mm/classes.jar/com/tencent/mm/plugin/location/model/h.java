@@ -1,150 +1,100 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.anj;
-import com.tencent.mm.protocal.protobuf.ank;
-import com.tencent.mm.protocal.protobuf.bjs;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cms;
+import com.tencent.mm.protocal.protobuf.cmt;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 
 public final class h
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private com.tencent.mm.ai.f callback;
-  public int ctW;
-  public boolean eRq;
-  public int errCode;
-  public String errMsg;
-  public int errType;
-  private Runnable fQa;
-  public String hng;
-  public List<com.tencent.mm.plugin.location.ui.impl.f> list;
-  public byte[] oai;
-  public byte[] oaj;
-  public String oak;
-  public int oal;
-  public final b rr;
+  private byte[] Kch;
+  String Kci;
+  private com.tencent.mm.am.h callback;
+  public final c rr;
   
-  public h(byte[] paramArrayOfByte, double paramDouble1, double paramDouble2, int paramInt1, int paramInt2, double paramDouble3, double paramDouble4, String paramString1, String paramString2, boolean paramBoolean)
+  public h(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(113315);
-    this.list = new ArrayList();
-    this.oaj = null;
-    this.eRq = false;
-    this.oak = "";
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new anj();
-    ((b.a)localObject).fsY = new ank();
-    ((b.a)localObject).fsY = new ank();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getpoilist";
-    ((b.a)localObject).funcId = 457;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    anj localanj = (anj)this.rr.fsV.fta;
-    if (paramArrayOfByte == null)
+    AppMethodBeat.i(55691);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cms();
+    ((c.a)localObject).otF = new cmt();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getlocimg";
+    ((c.a)localObject).funcId = 648;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cms)c.b.b(this.rr.otB);
+    ((cms)localObject).yts = paramString2;
+    if (Util.isOverseasUser(MMApplicationContext.getContext())) {}
+    for (((cms)localObject).aauu = 1;; ((cms)localObject).aauu = 0)
     {
-      localObject = new SKBuiltinBuffer_t();
-      localanj.xcE = ((SKBuiltinBuffer_t)localObject);
-      localanj.wXt = paramString2;
-      localanj.wyP = paramDouble1;
-      localanj.wyO = paramDouble2;
-      localanj.Scene = paramInt1;
-      localanj.OpCode = paramInt2;
-      localanj.xdK = paramDouble4;
-      localanj.xdJ = paramDouble3;
-      if (!paramBoolean) {
-        break label332;
+      ((cms)localObject).ZaH = paramFloat1;
+      ((cms)localObject).ZaG = paramFloat2;
+      ((cms)localObject).aauv = paramInt1;
+      Log.i("MicroMsg.NetSceneGetLocImg", "src w %d h %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      while (paramInt2 * paramInt3 > 270000)
+      {
+        paramInt2 = (int)(paramInt2 / 1.2D);
+        paramInt3 = (int)(paramInt3 / 1.2D);
       }
     }
-    label332:
-    for (int i = 1;; i = 0)
-    {
-      localanj.xcG = i;
-      this.ctW = localanj.OpCode;
-      this.oak = paramString1;
-      this.oai = paramArrayOfByte;
-      ab.i("MicroMsg.NetSceneGetPoiList", "lat %f lng %f scene %d opcode %d oriLat %f oriLng %f isAutuQuery %s".concat(String.valueOf(paramArrayOfByte)), new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Double.valueOf(paramDouble4), Double.valueOf(paramDouble3), Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(113315);
-      return;
-      localObject = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
-      break;
-    }
+    Log.i("MicroMsg.NetSceneGetLocImg", "NetSceneGetLocImg %f %f %d w = %d h = %d lan=%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), ((cms)localObject).yts });
+    ((cms)localObject).Height = paramInt3;
+    ((cms)localObject).Width = paramInt2;
+    this.Kci = paramString1;
+    AppMethodBeat.o(55691);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(113316);
-    ab.d("MicroMsg.NetSceneGetPoiList", "scene done");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(113316);
+    AppMethodBeat.i(55692);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(55692);
     return i;
   }
   
   public final int getType()
   {
-    return 457;
+    return 648;
   }
   
-  public final boolean isFirst()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    return this.oai == null;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(113317);
-    ab.d("MicroMsg.NetSceneGetPoiList", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + "errMsg:" + paramString);
-    this.errType = paramInt2;
-    this.errCode = paramInt3;
-    this.errMsg = paramString;
-    paramq = (ank)this.rr.fsW.fta;
-    this.list.clear();
-    ab.d("MicroMsg.NetSceneGetPoiList", "url " + paramq.xcN + " " + paramq.wxW + " " + paramq.Url + " " + paramq.wBZ);
-    ab.d("MicroMsg.NetSceneGetPoiList", "autoInterval: %d", new Object[] { Integer.valueOf(paramq.xcO) });
-    this.hng = paramq.wBZ;
-    this.oal = paramq.xcO;
-    if (paramq.xdM != null)
+    AppMethodBeat.i(55693);
+    Log.d("MicroMsg.NetSceneGetLocImg", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    params = (cmt)c.c.b(((c)params).otC);
+    try
     {
-      ab.d("MicroMsg.NetSceneGetPoiList", "poi result %d ", new Object[] { Integer.valueOf(paramq.xdM.size()) });
-      if (paramq.xdM.size() > 0) {
-        ab.d("MicroMsg.NetSceneGetPoiList", "addr %s, province %s, street %s, city %s", new Object[] { ((bjs)paramq.xdM.get(0)).xyb, ((bjs)paramq.xdM.get(0)).gwQ, ((bjs)paramq.xdM.get(0)).wOD, ((bjs)paramq.xdM.get(0)).gwR });
+      this.Kch = params.YFI.aaxD.Op;
+      y.f(this.Kci, this.Kch, this.Kch.length);
+      if (this.callback != null) {
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
-      paramArrayOfByte = paramq.xdM.iterator();
-      while (paramArrayOfByte.hasNext())
-      {
-        com.tencent.mm.plugin.location.ui.impl.f localf = new com.tencent.mm.plugin.location.ui.impl.f((bjs)paramArrayOfByte.next(), this.hng);
-        this.list.add(localf);
-      }
-    }
-    if (paramq.xcE != null) {
-      this.oaj = aa.a(paramq.xcE);
-    }
-    if (paramq.wzD == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.eRq = bool;
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      if (this.fQa != null) {
-        this.fQa.run();
-      }
-      AppMethodBeat.o(113317);
+      AppMethodBeat.o(55693);
       return;
+    }
+    catch (Exception params)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.NetSceneGetLocImg", params, "", new Object[0]);
+      }
     }
   }
 }

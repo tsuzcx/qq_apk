@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="60.0dip" android:width="60.0dip" android:viewportWidth="60.0" android:viewportHeight="60.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/e7a" />
-    <item android:drawable="@drawable/e7_" />
-</selector>
+    <path android:fillColor="#ff222222" android:pathData="M31,4.5C33.2091,4.5 35.2091,5.3954 36.6569,6.8431C38.1046,8.2909 39,10.2909 39,12.5L39,12.5L39,31.25C39,33.4591 38.1046,35.4591 36.6569,36.9069C35.2091,38.3546 33.2091,39.25 31,39.25L31,39.25L29,39.25C26.7909,39.25 24.7909,38.3546 23.3431,36.9069C21.8954,35.4591 21,33.4591 21,31.25L21,31.25L21,13.5C21,11.0147 22.0074,8.7647 23.636,7.136C25.2647,5.5074 27.5147,4.5 30,4.5L30,4.5Z" android:strokeColor="#ff222222" android:strokeWidth="4.0" android:fillType="evenOdd" />
+    <path android:fillColor="#00000000" android:pathData="M47,29L47,30C47,39.3888 39.3888,47 30,47C20.6112,47 13,39.3888 13,30L13,29L13,29" android:strokeColor="#ff222222" android:strokeWidth="4.0" android:strokeLineCap="round" android:fillType="evenOdd" />
+    <path android:fillColor="#ff222222" android:pathData="M28,47.5L32,47.5L32,55.5C32,56.6046 31.1046,57.5 30,57.5C28.8954,57.5 28,56.6046 28,55.5L28,47.5L28,47.5Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+</vector>

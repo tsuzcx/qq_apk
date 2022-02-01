@@ -35,11 +35,13 @@ public final class cell_separator
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 0);
+    String str = this.pic_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 1);
+    str = this.action_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.action_type, 2);
     paramJceOutputStream.write(this.pic_width, 3);
@@ -48,7 +50,7 @@ public final class cell_separator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_separator
  * JD-Core Version:    0.7.0.1
  */

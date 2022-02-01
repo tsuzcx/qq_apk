@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/gxb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/bvt" android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/emotion_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:id="@id/container_secondary_tab" android:background="#fff7f7f7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_below="@id/emotion_panel">
+            <RelativeLayout android:background="#ffdedede" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/c0p" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:background="@drawable/al1" android:layout_width="7.5dip" android:layout_height="fill_parent" android:layout_toLeftOf="@id/fun_btn" />
+            <com.tencent.widget.PatchedButton android:textSize="16.0dip" android:textColor="@color/skin_aio_send_button" android:layout_gravity="center_vertical" android:id="@id/fun_btn" android:background="@drawable/al0" android:layout_width="76.0dip" android:layout_height="fill_parent" android:text="@string/a1p" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

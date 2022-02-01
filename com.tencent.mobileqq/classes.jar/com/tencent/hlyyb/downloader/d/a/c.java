@@ -28,111 +28,101 @@ public final class c
   private void a(JSONObject paramJSONObject, String paramString)
   {
     this.a = false;
-    for (;;)
+    try
     {
-      Object localObject2;
-      try
+      paramJSONObject.optString("ipinfo");
+      paramJSONObject = new JSONObject(paramJSONObject.optString("resultmap"));
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
       {
-        paramJSONObject.optString("ipinfo");
-        paramJSONObject = new JSONObject(paramJSONObject.optString("resultmap"));
-        Iterator localIterator = paramJSONObject.keys();
-        continue;
-        if (!localIterator.hasNext()) {
-          break;
-        }
         this.h = ((String)localIterator.next());
-        if (!this.h.equals(paramString)) {
-          continue;
-        }
-        Object localObject1 = paramJSONObject.optJSONObject(this.h);
-        ((JSONObject)localObject1).optInt("code");
-        this.b = ((JSONObject)localObject1).optLong("size");
-        this.c = ((JSONObject)localObject1).optString("md5");
-        this.d = ((JSONObject)localObject1).optString("schedulecode");
-        this.e = ((JSONObject)localObject1).optString("featuresmd5");
-        localObject2 = ((JSONObject)localObject1).optJSONArray("reselements");
-        this.i = new ArrayList();
-        int j;
-        Object localObject4;
-        Object localObject3;
-        if (localObject2 != null)
+        if (this.h.equals(paramString))
         {
-          int m = ((JSONArray)localObject2).length();
-          j = 0;
-          if (j < m)
+          Object localObject1 = paramJSONObject.optJSONObject(this.h);
+          ((JSONObject)localObject1).optInt("code");
+          this.b = ((JSONObject)localObject1).optLong("size");
+          this.c = ((JSONObject)localObject1).optString("md5");
+          this.d = ((JSONObject)localObject1).optString("schedulecode");
+          this.e = ((JSONObject)localObject1).optString("featuresmd5");
+          Object localObject2 = ((JSONObject)localObject1).optJSONArray("reselements");
+          this.i = new ArrayList();
+          int j;
+          Object localObject4;
+          Object localObject3;
+          if (localObject2 != null)
           {
-            localObject4 = ((JSONArray)localObject2).getJSONObject(j);
-            localObject3 = new d(this);
-            d.a((d)localObject3, ((JSONObject)localObject4).optInt("type"));
-            d.a((d)localObject3, ((JSONObject)localObject4).optString("realurl"));
-            localObject4 = ((JSONObject)localObject4).optJSONArray("iplist");
-            d.a((d)localObject3, new ArrayList());
-            if (localObject4 != null)
+            int m = ((JSONArray)localObject2).length();
+            j = 0;
+            while (j < m)
             {
-              int k = 0;
-              if (k < ((JSONArray)localObject4).length())
+              localObject4 = ((JSONArray)localObject2).getJSONObject(j);
+              localObject3 = new d(this);
+              d.a((d)localObject3, ((JSONObject)localObject4).optInt("type"));
+              d.a((d)localObject3, ((JSONObject)localObject4).optString("realurl"));
+              localObject4 = ((JSONObject)localObject4).optJSONArray("iplist");
+              d.a((d)localObject3, new ArrayList());
+              if (localObject4 != null)
               {
-                String str = (String)((JSONArray)localObject4).get(k);
-                d.a((d)localObject3).add(str);
-                k += 1;
-                continue;
+                int k = 0;
+                while (k < ((JSONArray)localObject4).length())
+                {
+                  String str = (String)((JSONArray)localObject4).get(k);
+                  d.a((d)localObject3).add(str);
+                  k += 1;
+                }
+              }
+              this.i.add(localObject3);
+              j += 1;
+            }
+          }
+          localObject1 = ((JSONObject)localObject1).optJSONArray("features");
+          if (localObject1 != null)
+          {
+            this.f = new ArrayList();
+            j = 0;
+            while (j < ((JSONArray)localObject1).length())
+            {
+              localObject2 = ((JSONArray)localObject1).getJSONObject(j);
+              localObject2 = new a(((JSONObject)localObject2).optLong("offset"), ((JSONObject)localObject2).optInt("length"));
+              this.f.add(localObject2);
+              j += 1;
+            }
+          }
+          this.g = new ArrayList();
+          localObject1 = this.i.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (d)((Iterator)localObject1).next();
+            if (d.b((d)localObject2) == 0)
+            {
+              this.g.add(d.c((d)localObject2));
+              localObject3 = d.a((d)localObject2).iterator();
+              while (((Iterator)localObject3).hasNext())
+              {
+                localObject4 = (String)((Iterator)localObject3).next();
+                this.g.add(b.a(d.c((d)localObject2), (String)localObject4));
               }
             }
-            this.i.add(localObject3);
-            j += 1;
-            continue;
+            else if (d.b((d)localObject2) == 1)
+            {
+              this.g.add(d.c((d)localObject2));
+            }
           }
-        }
-        localObject1 = ((JSONObject)localObject1).optJSONArray("features");
-        if (localObject1 != null)
-        {
-          this.f = new ArrayList();
-          j = 0;
-          if (j < ((JSONArray)localObject1).length())
-          {
-            localObject2 = ((JSONArray)localObject1).getJSONObject(j);
-            localObject2 = new a(((JSONObject)localObject2).optLong("offset"), ((JSONObject)localObject2).optInt("length"));
-            this.f.add(localObject2);
-            j += 1;
-            continue;
-          }
-        }
-        this.g = new ArrayList();
-        localObject1 = this.i.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          continue;
-        }
-        localObject2 = (d)((Iterator)localObject1).next();
-        if (d.b((d)localObject2) == 0)
-        {
-          this.g.add(d.c((d)localObject2));
-          localObject3 = d.a((d)localObject2).iterator();
-          if (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (String)((Iterator)localObject3).next();
-            this.g.add(b.a(d.c((d)localObject2), (String)localObject4));
-            continue;
-          }
-          continue;
-        }
-        if (d.b((d)localObject2) != 1) {
-          continue;
         }
       }
-      catch (Exception paramJSONObject)
-      {
-        this.a = false;
-        paramJSONObject.printStackTrace();
-        return;
-      }
-      this.g.add(d.c((d)localObject2));
+      this.a = true;
+      return;
     }
-    this.a = true;
+    catch (Exception paramJSONObject)
+    {
+      this.a = false;
+      paramJSONObject.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.d.a.c
  * JD-Core Version:    0.7.0.1
  */

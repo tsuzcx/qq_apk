@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="32.0dip" android:paddingEnd="32.0dip" xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/a57" android:background="@color/nc" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="1.0px" />
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:id="@id/bn_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="48.0dip" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+            <ImageView android:id="@id/bn7" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/b__" android:importantForAccessibility="no" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/bnf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="22.0dip" android:textColor="@color/a7b" android:id="@id/bn9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bk9" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/bn_" />
+        <androidx.recyclerview.widget.RecyclerView android:orientation="vertical" android:id="@id/bng" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="48.0dip" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/bn9" />
+        <Button android:id="@id/bn8" android:layout_marginTop="246.0dip" android:layout_marginBottom="12.0dip" android:text="@string/g22" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/bng" style="@style/op" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

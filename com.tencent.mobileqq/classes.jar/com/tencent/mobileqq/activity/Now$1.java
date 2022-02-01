@@ -9,12 +9,12 @@ class Now$1
   
   public void run()
   {
-    this.this$0.a.a(null);
+    this.this$0.m.c(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Now.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,30 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryMixLocalFlag;", "", "()V", "MIX_ERRIR_FLAG", "", "getMIX_ERRIR_FLAG", "()I", "MIX_WAITING_FLAG", "getMIX_WAITING_FLAG", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryMsgType;", "", "()V", "STORY_VISIT_FLAG", "", "getSTORY_VISIT_FLAG", "()I", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$e
 {
-  private static final int sGe = 1;
-  private static final int sGf = 2;
-  public static final e sGg;
+  public static final e SsC;
+  private static final int SsD;
   
   static
   {
-    AppMethodBeat.i(109852);
-    sGg = new e();
-    sGe = 1;
-    sGf = 2;
-    AppMethodBeat.o(109852);
+    AppMethodBeat.i(119471);
+    SsC = new e();
+    SsD = 4;
+    AppMethodBeat.o(119471);
   }
   
-  public static int cEB()
+  public static int hze()
   {
-    return sGe;
-  }
-  
-  public static int cEC()
-  {
-    return sGf;
+    return SsD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.a.e
  * JD-Core Version:    0.7.0.1
  */

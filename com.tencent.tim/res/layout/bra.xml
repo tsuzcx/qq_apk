@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncMarkImageView android:id="@id/dxn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/asd" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/ezm" android:layout_alignLeft="@id/dxn" android:layout_alignRight="@id/dxn" android:layout_alignBottom="@id/dxn" style="@style/fp" />
+    <TextView android:textSize="12.0dip" android:layout_gravity="bottom|center" android:id="@id/ezn" android:visibility="gone" android:layout_marginRight="7.0dip" android:layout_marginBottom="2.0dip" android:text="00:00" android:layout_alignRight="@id/dxn" android:layout_alignBottom="@id/dxn" style="@style/ks" />
+    <View android:id="@id/dxo" android:background="#6f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/dxp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/s99" android:layout_centerInParent="true" />
+</RelativeLayout>

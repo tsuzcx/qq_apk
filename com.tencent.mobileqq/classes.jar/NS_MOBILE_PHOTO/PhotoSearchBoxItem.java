@@ -4,13 +4,14 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PhotoSearchBoxItem
   extends JceStruct
 {
   static ArrayList<PhotoSearchBoxItemElem> cache_elems = new ArrayList();
   public String desc = "";
-  public ArrayList<PhotoSearchBoxItemElem> elems;
+  public ArrayList<PhotoSearchBoxItemElem> elems = null;
   
   static
   {
@@ -34,17 +35,19 @@ public final class PhotoSearchBoxItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.elems != null) {
-      paramJceOutputStream.write(this.elems, 0);
+    Object localObject = this.elems;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 1);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PhotoSearchBoxItem
  * JD-Core Version:    0.7.0.1
  */

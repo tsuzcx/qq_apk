@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.detail.ui.component.FeedDetailTail android:orientation="vertical" android:background="@color/qzone_background" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/tail_container" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/feed_item_margin_left" android:layout_marginTop="@dimen/feed_detail_common_margin_ver" android:layout_marginRight="@dimen/feed_item_margin_left">
+            <View android:id="@id/divider" android:background="@color/divider_color" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+            <RelativeLayout android:gravity="center_vertical" android:id="@id/feeddetail_operation_area" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/feed_detail_common_margin_ver" android:baselineAligned="false">
+                <FrameLayout android:id="@id/feed_tail_forward_p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
+                    <ImageView android:layout_gravity="center" android:id="@id/feed_tail_forward" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_selector_feed_operation_forward" android:contentDescription="转发" />
+                </FrameLayout>
+                <FrameLayout android:id="@id/feed_tail_comment_p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+                    <ImageView android:layout_gravity="center" android:id="@id/feed_tail_comment" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_selector_feed_operation_reply" android:contentDescription="评论" />
+                </FrameLayout>
+                <FrameLayout android:id="@id/feed_tail_praise_p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.0dip" android:layout_toLeftOf="@id/feed_tail_comment_p" />
+                <ImageView android:id="@id/feed_tail_praise" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" android:src="@drawable/qzone_selector_feed_operation_praise" android:scaleType="center" android:layout_toLeftOf="@id/feed_tail_comment_p" android:contentDescription="赞" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.qzone.detail.ui.component.FeedDetailTail>

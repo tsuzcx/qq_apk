@@ -29,36 +29,36 @@ public class PTSItemViewManager
   
   private void bindData(PTSItemData paramPTSItemData, PTSItemView paramPTSItemView)
   {
-    if ((paramPTSItemData == null) || (paramPTSItemView == null))
+    if ((paramPTSItemData != null) && (paramPTSItemView != null))
     {
-      PTSLog.e("PTSItemViewManager", "[bindData] error, itemData or ptsItemView is null.");
-      return;
-    }
-    String str = paramPTSItemData.getItemID();
-    if (TextUtils.isEmpty(str))
-    {
-      PTSLog.e("PTSItemViewManager", "[bindData] error, itemId is null.");
-      return;
-    }
-    PTSAppInstance localPTSAppInstance2 = (PTSAppInstance)this.mItemIDToAppInstanceMap.get(str);
-    PTSAppInstance localPTSAppInstance1 = localPTSAppInstance2;
-    if (localPTSAppInstance2 == null)
-    {
-      localPTSAppInstance1 = new PTSAppInstance.Builder().withContext(this.activity).withRootView(paramPTSItemView).withRootNodeType(1).withPTSJSBridge(this.jsBridge).withItemData(paramPTSItemData).withAppName(paramPTSItemData.getAppName()).withFrameTreeJson(paramPTSItemData.getFrameTreeJson()).withPageJs(paramPTSItemData.getPageJs()).build();
-      this.mItemIDToAppInstanceMap.put(str, localPTSAppInstance1);
+      String str = paramPTSItemData.getItemID();
+      if (TextUtils.isEmpty(str))
+      {
+        PTSLog.e("PTSItemViewManager", "[bindData] error, itemId is null.");
+        return;
+      }
+      PTSAppInstance localPTSAppInstance2 = (PTSAppInstance)this.mItemIDToAppInstanceMap.get(str);
+      PTSAppInstance localPTSAppInstance1 = localPTSAppInstance2;
+      if (localPTSAppInstance2 == null)
+      {
+        localPTSAppInstance1 = new PTSAppInstance.Builder().withContext(this.activity).withRootView(paramPTSItemView).withRootNodeType(1).withPTSJSBridge(this.jsBridge).withItemData(paramPTSItemData).withPageName(paramPTSItemData.getPageName()).withFrameTreeJson(paramPTSItemData.getFrameTreeJson()).withPageJs(paramPTSItemData.getPageJs()).build();
+        this.mItemIDToAppInstanceMap.put(str, localPTSAppInstance1);
+      }
       paramPTSItemView.bindData(localPTSAppInstance1);
+      PTSThreadUtil.runOnSubThread(new PTSItemViewManager.1(this, paramPTSItemData, localPTSAppInstance1));
+      return;
     }
-    paramPTSItemView.bindData(localPTSAppInstance1);
-    PTSThreadUtil.runOnSubThread(new PTSItemViewManager.1(this, paramPTSItemData, localPTSAppInstance1));
+    PTSLog.e("PTSItemViewManager", "[bindData] error, itemData or ptsItemView is null.");
   }
   
   private void destroyAppInstance()
   {
-    if (this.mItemIDToAppInstanceMap != null)
+    Object localObject = this.mItemIDToAppInstanceMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mItemIDToAppInstanceMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((PTSAppInstance)localIterator.next()).onDestroy();
+      localObject = ((HashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PTSAppInstance)((Iterator)localObject).next()).onDestroy();
       }
       this.mItemIDToAppInstanceMap.clear();
     }
@@ -68,7 +68,8 @@ public class PTSItemViewManager
   {
     PTSLog.i("PTSItemViewManager", "[destroy].");
     destroyAppInstance();
-    if ((this.activity != null) && (this.activity.isFinishing()))
+    Activity localActivity = this.activity;
+    if ((localActivity != null) && (localActivity.isFinishing()))
     {
       PTSLog.i("PTSItemViewManager", "[destroy], destroyJSBridge.");
       PTSJSBridgeManager.getInstance().destroyJSBridge(this.activity);
@@ -79,17 +80,18 @@ public class PTSItemViewManager
   
   public PTSItemView getView(View paramView, PTSItemData paramPTSItemData)
   {
-    if ((paramView instanceof PTSItemView)) {}
-    for (paramView = (PTSItemView)paramView;; paramView = new PTSItemView(this.activity))
-    {
-      bindData(paramPTSItemData, paramView);
-      return paramView;
+    if ((paramView instanceof PTSItemView)) {
+      paramView = (PTSItemView)paramView;
+    } else {
+      paramView = new PTSItemView(this.activity);
     }
+    bindData(paramPTSItemData, paramView);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemViewManager
  * JD-Core Version:    0.7.0.1
  */

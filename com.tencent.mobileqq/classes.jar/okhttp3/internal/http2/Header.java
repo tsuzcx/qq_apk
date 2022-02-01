@@ -39,9 +39,10 @@ public final class Header
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof Header;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof Header))
+    if (bool3)
     {
       paramObject = (Header)paramObject;
       bool1 = bool2;
@@ -58,7 +59,7 @@ public final class Header
   
   public int hashCode()
   {
-    return (this.name.hashCode() + 527) * 31 + this.value.hashCode();
+    return (527 + this.name.hashCode()) * 31 + this.value.hashCode();
   }
   
   public String toString()
@@ -68,7 +69,7 @@ public final class Header
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http2.Header
  * JD-Core Version:    0.7.0.1
  */

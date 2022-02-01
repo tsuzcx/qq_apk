@@ -18,16 +18,27 @@ final class BaseHandler$5
       BaseHandler.isRegulated.set(Boolean.valueOf(false));
       BaseHandler.InitalPriority.remove();
       BaseHandler.access$400(i);
-      if (BaseHandler.access$400(i)) {}
-      for (i = BaseHandler.regulalteCount.decrementAndGet();; i = BaseHandler.regulalteCount.get())
-      {
-        Looper localLooper = Looper.myLooper();
-        if (localLooper != null) {
-          localLooper.setMessageLogging(null);
-        }
-        QLog.i("BaseHandler", 1, "resetPriority ThreadName:" + Thread.currentThread().getName() + "(" + l + ") currentPriority: " + j + ",changed:" + Process.getThreadPriority(Process.myTid()) + " regulated:" + i);
-        return;
+      if (BaseHandler.access$400(i)) {
+        i = BaseHandler.regulalteCount.decrementAndGet();
+      } else {
+        i = BaseHandler.regulalteCount.get();
       }
+      Object localObject = Looper.myLooper();
+      if (localObject != null) {
+        ((Looper)localObject).setMessageLogging(null);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("resetPriority ThreadName:");
+      ((StringBuilder)localObject).append(Thread.currentThread().getName());
+      ((StringBuilder)localObject).append("(");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(") currentPriority: ");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(",changed:");
+      ((StringBuilder)localObject).append(Process.getThreadPriority(Process.myTid()));
+      ((StringBuilder)localObject).append(" regulated:");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("BaseHandler", 1, ((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception localException)
@@ -38,7 +49,7 @@ final class BaseHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.thread.BaseHandler.5
  * JD-Core Version:    0.7.0.1
  */

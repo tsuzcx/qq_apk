@@ -7,23 +7,23 @@ final class d
   
   public final void onConnected()
   {
-    if (this.gs.gr != null) {
-      this.gs.gr.onConnected();
+    if (this.ip.io != null) {
+      this.ip.io.onConnected();
     }
-    this.gs.onConnected();
+    this.ip.onConnected();
   }
   
   public final void onConnectionFailed()
   {
-    this.gs.onConnectionFailed();
+    this.ip.onConnectionFailed();
   }
   
   public final void onConnectionSuspended()
   {
-    if (this.gs.gr != null) {
-      this.gs.gr.onConnectionSuspended();
+    if (this.ip.io != null) {
+      this.ip.io.onConnectionSuspended();
     }
-    this.gs.onConnectionSuspended();
+    this.ip.onConnectionSuspended();
   }
 }
 

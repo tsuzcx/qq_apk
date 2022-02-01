@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.json.JSONArray;
@@ -9,77 +9,13 @@ import org.json.JSONException;
 
 public final class a
 {
-  public static int BT(String paramString)
+  public static JSONArray Au(int paramInt)
   {
-    AppMethodBeat.i(3207);
-    if ("fingerPrint".equals(paramString))
-    {
-      AppMethodBeat.o(3207);
-      return 1;
-    }
-    if ("facial".equals(paramString))
-    {
-      AppMethodBeat.o(3207);
-      return 8;
-    }
-    if ("speech".equals(paramString))
-    {
-      AppMethodBeat.o(3207);
-      return 2;
-    }
-    ab.e("MicroMsg.AppBrandSoterTranslateUtil", "hy: invalid item");
-    AppMethodBeat.o(3207);
-    return 0;
-  }
-  
-  public static String n(JSONArray paramJSONArray)
-  {
-    AppMethodBeat.i(3206);
-    if (paramJSONArray == null) {}
-    for (String str = null;; str = paramJSONArray.toString())
-    {
-      ab.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translating string array: %s", new Object[] { str });
-      if ((paramJSONArray != null) && (paramJSONArray.length() != 0)) {
-        break;
-      }
-      AppMethodBeat.o(3206);
-      return "0x00";
-    }
-    int i = 0;
-    int j = 0;
-    for (;;)
-    {
-      if (i >= paramJSONArray.length()) {
-        break label109;
-      }
-      try
-      {
-        int k = BT(paramJSONArray.getString(i));
-        j = (byte)(j | k);
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          ab.printErrStackTrace("MicroMsg.AppBrandSoterTranslateUtil", localJSONException, "hy: json error in translate", new Object[0]);
-        }
-      }
-      i += 1;
-    }
-    label109:
-    paramJSONArray = "0x" + Integer.toHexString(j);
-    ab.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translated bitsetStr: %s", new Object[] { paramJSONArray });
-    AppMethodBeat.o(3206);
-    return paramJSONArray;
-  }
-  
-  public static JSONArray nS(int paramInt)
-  {
-    AppMethodBeat.i(3205);
+    AppMethodBeat.i(106570);
     if (paramInt <= 0)
     {
       localObject = new JSONArray();
-      AppMethodBeat.o(3205);
+      AppMethodBeat.o(106570);
       return localObject;
     }
     Object localObject = new ArrayList(3);
@@ -92,15 +28,79 @@ public final class a
     if ((paramInt & 0x2) == 2) {
       ((ArrayList)localObject).add("speech");
     }
-    ab.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: final string is: %s", new Object[] { ((ArrayList)localObject).toString() });
+    Log.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: final string is: %s", new Object[] { ((ArrayList)localObject).toString() });
     localObject = new JSONArray((Collection)localObject);
-    AppMethodBeat.o(3205);
+    AppMethodBeat.o(106570);
     return localObject;
+  }
+  
+  public static int aam(String paramString)
+  {
+    AppMethodBeat.i(106572);
+    if ("fingerPrint".equals(paramString))
+    {
+      AppMethodBeat.o(106572);
+      return 1;
+    }
+    if ("facial".equals(paramString))
+    {
+      AppMethodBeat.o(106572);
+      return 8;
+    }
+    if ("speech".equals(paramString))
+    {
+      AppMethodBeat.o(106572);
+      return 2;
+    }
+    Log.e("MicroMsg.AppBrandSoterTranslateUtil", "hy: invalid item");
+    AppMethodBeat.o(106572);
+    return 0;
+  }
+  
+  public static String r(JSONArray paramJSONArray)
+  {
+    AppMethodBeat.i(106571);
+    if (paramJSONArray == null) {}
+    for (String str = null;; str = paramJSONArray.toString())
+    {
+      Log.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translating string array: %s", new Object[] { str });
+      if ((paramJSONArray != null) && (paramJSONArray.length() != 0)) {
+        break;
+      }
+      AppMethodBeat.o(106571);
+      return "0x00";
+    }
+    int i = 0;
+    int j = 0;
+    for (;;)
+    {
+      if (i >= paramJSONArray.length()) {
+        break label107;
+      }
+      try
+      {
+        int k = aam(paramJSONArray.getString(i));
+        j = (byte)(j | k);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          Log.printErrStackTrace("MicroMsg.AppBrandSoterTranslateUtil", localJSONException, "hy: json error in translate", new Object[0]);
+        }
+      }
+      i += 1;
+    }
+    label107:
+    paramJSONArray = "0x" + Integer.toHexString(j);
+    Log.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translated bitsetStr: %s", new Object[] { paramJSONArray });
+    AppMethodBeat.o(106571);
+    return paramJSONArray;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bio.soter.a
  * JD-Core Version:    0.7.0.1
  */

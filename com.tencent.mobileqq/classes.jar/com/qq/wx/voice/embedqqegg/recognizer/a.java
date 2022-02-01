@@ -18,7 +18,9 @@ final class a
   {
     paramAssetManager = paramAssetManager.open(paramString1);
     byte[] arrayOfByte = new byte[2048];
-    paramString1 = new File(paramString2 + paramString1);
+    paramString2 = new StringBuilder(String.valueOf(paramString2));
+    paramString2.append(paramString1);
+    paramString1 = new File(paramString2.toString());
     paramString1.createNewFile();
     paramString1 = new FileOutputStream(paramString1);
     for (;;)
@@ -36,29 +38,30 @@ final class a
   
   private void a(File paramFile)
   {
-    if (paramFile.isFile()) {
-      paramFile.delete();
-    }
-    while (!paramFile.isDirectory()) {
-      return;
-    }
-    File[] arrayOfFile = paramFile.listFiles();
-    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
+    if (paramFile.isFile())
     {
       paramFile.delete();
       return;
     }
-    int j = arrayOfFile.length;
-    int i = 0;
-    for (;;)
+    if (paramFile.isDirectory())
     {
-      if (i >= j)
+      File[] arrayOfFile = paramFile.listFiles();
+      if ((arrayOfFile != null) && (arrayOfFile.length != 0))
       {
-        paramFile.delete();
-        return;
+        int j = arrayOfFile.length;
+        int i = 0;
+        for (;;)
+        {
+          if (i >= j)
+          {
+            paramFile.delete();
+            return;
+          }
+          a(arrayOfFile[i]);
+          i += 1;
+        }
       }
-      a(arrayOfFile[i]);
-      i += 1;
+      paramFile.delete();
     }
   }
   
@@ -67,77 +70,87 @@ final class a
     if (this.a) {
       return 0;
     }
-    String str1;
-    Object localObject;
-    String str2;
     int i;
     if (InfoRecognizer.c == null)
     {
-      str1 = paramContext.getFilesDir().getAbsolutePath() + "/wxvoiceembed/";
-      localObject = new File(str1);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdir();
+      Object localObject1 = new StringBuilder(String.valueOf(paramContext.getFilesDir().getAbsolutePath()));
+      ((StringBuilder)localObject1).append("/wxvoiceembed/");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new File((String)localObject1);
+      if (!((File)localObject2).exists()) {
+        ((File)localObject2).mkdir();
       }
-      str1 = str1 + "grammar/";
-      localObject = new File(str1);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdir();
+      localObject1 = new StringBuilder(String.valueOf(localObject1));
+      ((StringBuilder)localObject1).append("grammar/");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new File((String)localObject1);
+      if (!((File)localObject2).exists()) {
+        ((File)localObject2).mkdir();
       }
-      str2 = str1 + SDKVersion.Ver;
-      File localFile = new File(str2);
-      localObject = paramContext.getAssets();
+      localObject2 = new StringBuilder(String.valueOf(localObject1));
+      ((StringBuilder)localObject2).append(SDKVersion.Ver);
+      Object localObject3 = ((StringBuilder)localObject2).toString();
+      File localFile = new File((String)localObject3);
+      localObject2 = paramContext.getAssets();
       if (!localFile.exists())
       {
-        paramContext = new File(str1).listFiles();
+        paramContext = new File((String)localObject1).listFiles();
         if (paramContext != null)
         {
           int j = paramContext.length;
           i = 0;
-          if (i < j) {}
+          while (i < j)
+          {
+            a(paramContext[i]);
+            i += 1;
+          }
         }
-        else
+        localFile.mkdir();
+        paramContext = new StringBuilder(String.valueOf(localObject3));
+        paramContext.append("/");
+        paramContext = paramContext.toString();
+        try
         {
-          localFile.mkdir();
-          paramContext = str2 + "/";
+          a((AssetManager)localObject2, this.c, paramContext);
         }
+        catch (IOException paramContext)
+        {
+          paramContext.printStackTrace();
+          return -1;
+        }
+      }
+      else
+      {
+        paramContext = new StringBuilder(String.valueOf(localObject3));
+        paramContext.append("/");
+        localObject1 = paramContext.toString();
+      }
+      try
+      {
+        paramContext = this.c;
+        localObject3 = new StringBuilder(String.valueOf(localObject1));
+        ((StringBuilder)localObject3).append(paramContext);
+        paramContext = (Context)localObject1;
+        if (!new File(((StringBuilder)localObject3).toString()).exists())
+        {
+          a((AssetManager)localObject2, this.c, (String)localObject1);
+          paramContext = (Context)localObject1;
+        }
+        this.b = paramContext;
+      }
+      catch (IOException paramContext)
+      {
+        paramContext.printStackTrace();
+        return -1;
       }
     }
-    for (;;)
+    else
     {
-      try
-      {
-        a((AssetManager)localObject, this.c, paramContext);
-        this.b = paramContext;
-        this.a = true;
-        return 0;
-      }
-      catch (IOException paramContext)
-      {
-        paramContext.printStackTrace();
-        return -1;
-      }
-      a(paramContext[i]);
-      i += 1;
-      break;
-      str1 = str2 + "/";
-      try
-      {
-        str2 = this.c;
-        paramContext = str1;
-        if (new File(str1 + str2).exists()) {
-          continue;
-        }
-        a((AssetManager)localObject, this.c, str1);
-        paramContext = str1;
-      }
-      catch (IOException paramContext)
-      {
-        paramContext.printStackTrace();
-        return -1;
-      }
       if (!new File(InfoRecognizer.c).exists())
       {
-        LogTool.d("no found " + InfoRecognizer.c);
+        paramContext = new StringBuilder("no found ");
+        paramContext.append(InfoRecognizer.c);
+        LogTool.d(paramContext.toString());
         return -1;
       }
       this.b = "";
@@ -148,10 +161,18 @@ final class a
         this.b = InfoRecognizer.c.substring(0, i);
         this.c = InfoRecognizer.c.substring(i + 1);
       }
-      LogTool.d("init by binWXVoiceEmbedPath: " + InfoRecognizer.c);
-      LogTool.d("mPath = " + this.b);
-      LogTool.d("mData = " + this.c);
+      paramContext = new StringBuilder("init by binWXVoiceEmbedPath: ");
+      paramContext.append(InfoRecognizer.c);
+      LogTool.d(paramContext.toString());
+      paramContext = new StringBuilder("mPath = ");
+      paramContext.append(this.b);
+      LogTool.d(paramContext.toString());
+      paramContext = new StringBuilder("mData = ");
+      paramContext.append(this.c);
+      LogTool.d(paramContext.toString());
     }
+    this.a = true;
+    return 0;
   }
   
   public final String a()
@@ -166,7 +187,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.embedqqegg.recognizer.a
  * JD-Core Version:    0.7.0.1
  */

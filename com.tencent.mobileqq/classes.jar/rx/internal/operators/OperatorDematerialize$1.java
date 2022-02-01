@@ -33,26 +33,28 @@ class OperatorDematerialize$1
   
   public void onNext(Notification<T> paramNotification)
   {
-    switch (OperatorDematerialize.2.$SwitchMap$rx$Notification$Kind[paramNotification.getKind().ordinal()])
+    int i = OperatorDematerialize.2.$SwitchMap$rx$Notification$Kind[paramNotification.getKind().ordinal()];
+    if (i != 1)
     {
-    default: 
-    case 1: 
-      do
+      if (i != 2)
       {
+        if (i != 3) {
+          return;
+        }
+        onCompleted();
         return;
-      } while (this.terminated);
-      this.val$child.onNext(paramNotification.getValue());
-      return;
-    case 2: 
+      }
       onError(paramNotification.getThrowable());
       return;
     }
-    onCompleted();
+    if (!this.terminated) {
+      this.val$child.onNext(paramNotification.getValue());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorDematerialize.1
  * JD-Core Version:    0.7.0.1
  */

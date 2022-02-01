@@ -10,19 +10,19 @@ public class zzaf
   extends zza
 {
   public static final Parcelable.Creator<zzaf> CREATOR = new f();
-  final int Hc;
-  IBinder Jd;
-  private ConnectionResult Je;
-  private boolean Jf;
-  private boolean Jg;
+  final int IR;
+  IBinder KS;
+  private ConnectionResult KT;
+  private boolean KU;
+  private boolean KV;
   
   zzaf(int paramInt, IBinder paramIBinder, ConnectionResult paramConnectionResult, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.Hc = paramInt;
-    this.Jd = paramIBinder;
-    this.Je = paramConnectionResult;
-    this.Jf = paramBoolean1;
-    this.Jg = paramBoolean2;
+    this.IR = paramInt;
+    this.KS = paramIBinder;
+    this.KT = paramConnectionResult;
+    this.KU = paramBoolean1;
+    this.KV = paramBoolean2;
   }
   
   public boolean equals(Object paramObject)
@@ -35,28 +35,28 @@ public class zzaf
         return false;
       }
       paramObject = (zzaf)paramObject;
-    } while ((this.Je.equals(paramObject.Je)) && (al.f(this.Jd).equals(al.f(paramObject.Jd))));
+    } while ((this.KT.equals(paramObject.KT)) && (al.f(this.KS).equals(al.f(paramObject.KS))));
     return false;
   }
   
-  public final ak gV()
+  public final ak hf()
   {
-    return al.f(this.Jd);
+    return al.f(this.KS);
   }
   
-  public final ConnectionResult gW()
+  public final ConnectionResult hg()
   {
-    return this.Je;
+    return this.KT;
   }
   
-  public final boolean gX()
+  public final boolean hh()
   {
-    return this.Jf;
+    return this.KU;
   }
   
-  public final boolean gY()
+  public final boolean hi()
   {
-    return this.Jg;
+    return this.KV;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

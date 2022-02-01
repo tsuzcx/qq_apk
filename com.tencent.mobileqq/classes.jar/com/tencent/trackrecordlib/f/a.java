@@ -7,7 +7,7 @@ import com.tencent.trackrecordlib.core.c;
 public class a
   extends View.AccessibilityDelegate
 {
-  private static final String a = a.class.getSimpleName();
+  private static final String a = "a";
   private View.AccessibilityDelegate b;
   
   public a(View.AccessibilityDelegate paramAccessibilityDelegate)
@@ -23,9 +23,10 @@ public class a
   public void sendAccessibilityEvent(View paramView, int paramInt)
   {
     c.a().a(paramView, paramInt);
-    if (this.b != null)
+    View.AccessibilityDelegate localAccessibilityDelegate = this.b;
+    if (localAccessibilityDelegate != null)
     {
-      this.b.sendAccessibilityEvent(paramView, paramInt);
+      localAccessibilityDelegate.sendAccessibilityEvent(paramView, paramInt);
       return;
     }
     super.sendAccessibilityEvent(paramView, paramInt);
@@ -33,7 +34,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,58 +4,56 @@ import android.content.Context;
 import android.media.AudioRecord;
 import android.media.AudioTrack;
 import com.tencent.qphone.base.util.QLog;
-import zhs;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportAudioTrack;
 
 public class PcmPlayer
 {
-  private int jdField_a_of_type_Int = 44100;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AudioTrack jdField_a_of_type_AndroidMediaAudioTrack;
-  private PcmPlayer.PlayThread jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread;
-  private String jdField_a_of_type_JavaLangString;
-  private zhs jdField_a_of_type_Zhs;
-  private int b;
-  private int c = 2;
+  private AudioTrack a;
+  private int b = 44100;
+  private int c = 0;
   private int d = 2;
+  private int e = 2;
+  private String f;
+  private PcmPlayer.PlayThread g;
+  private Context h;
+  private PcmPlayer.QQPlayerListener i;
   
-  public PcmPlayer(Context paramContext, zhs paramzhs, int paramInt, String paramString)
+  public PcmPlayer(Context paramContext, PcmPlayer.QQPlayerListener paramQQPlayerListener, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Zhs = paramzhs;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.h = paramContext;
+    this.i = paramQQPlayerListener;
+    this.b = paramInt;
+    this.f = paramString;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread != null) {}
-    for (;;)
-    {
+    if (this.g != null) {
       return;
-      try
+    }
+    try
+    {
+      int j = AudioRecord.getMinBufferSize(this.b, this.d, this.e);
+      this.c = (this.b / 1000 * 20 * this.e);
+      this.a = new ReportAudioTrack(3, this.b, this.d, this.e, j, 1);
+      this.a.play();
+      this.g = new PcmPlayer.PlayThread(this, null);
+      this.g.start();
+      if (this.i != null)
       {
-        int i = AudioRecord.getMinBufferSize(this.jdField_a_of_type_Int, this.c, this.d);
-        this.b = (this.jdField_a_of_type_Int / 1000 * 20 * this.d);
-        this.jdField_a_of_type_AndroidMediaAudioTrack = new AudioTrack(3, this.jdField_a_of_type_Int, this.c, this.d, i, 1);
-        this.jdField_a_of_type_AndroidMediaAudioTrack.play();
-        this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread = new PcmPlayer.PlayThread(this, null);
-        this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread.start();
-        if (this.jdField_a_of_type_Zhs != null)
-        {
-          this.jdField_a_of_type_Zhs.j();
-          return;
-        }
+        this.i.n();
+        return;
       }
-      catch (Exception localException)
-      {
-        QLog.e("PcmPlayer", 1, "startPlay fail.", localException);
-      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("PcmPlayer", 1, "startPlay fail.", localException);
     }
   }
   
   public void b()
   {
-    PcmPlayer.PlayThread localPlayThread = this.jdField_a_of_type_ComTencentChirpPcmPlayer$PlayThread;
+    PcmPlayer.PlayThread localPlayThread = this.g;
     if (localPlayThread != null) {
       localPlayThread.a = false;
     }
@@ -63,7 +61,7 @@ public class PcmPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.chirp.PcmPlayer
  * JD-Core Version:    0.7.0.1
  */

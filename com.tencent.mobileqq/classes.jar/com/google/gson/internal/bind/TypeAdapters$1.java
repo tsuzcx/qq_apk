@@ -14,12 +14,16 @@ final class TypeAdapters$1
   
   public void write(JsonWriter paramJsonWriter, Class paramClass)
   {
-    throw new UnsupportedOperationException("Attempted to serialize java.lang.Class: " + paramClass.getName() + ". Forgot to register a type adapter?");
+    paramJsonWriter = new StringBuilder();
+    paramJsonWriter.append("Attempted to serialize java.lang.Class: ");
+    paramJsonWriter.append(paramClass.getName());
+    paramJsonWriter.append(". Forgot to register a type adapter?");
+    throw new UnsupportedOperationException(paramJsonWriter.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.1
  * JD-Core Version:    0.7.0.1
  */

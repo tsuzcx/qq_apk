@@ -1,83 +1,96 @@
 package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
-import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
-import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Resp;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.pluginsdk.model.app.ai;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.newtips.a.a;
+import com.tencent.mm.plugin.newtips.a.k;
+import com.tencent.mm.protocal.protobuf.fng;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ar
-  implements aa
+  implements a
 {
-  private static l<aa, Bundle> zCT;
-  private Context context;
-  private final Map<String, ShowMessageFromWX.Req> zCW;
+  private String aelQ;
+  private LinearLayout aelR;
+  private a aelS;
+  private Context mContext;
   
-  static
+  public ar(Context paramContext, String paramString, a parama)
   {
-    AppMethodBeat.i(31094);
-    zCT = new ar.1();
-    AppMethodBeat.o(31094);
+    AppMethodBeat.i(253731);
+    this.aelQ = paramString;
+    this.mContext = paramContext;
+    this.aelS = parama;
+    this.aelR = new LinearLayout(this.mContext);
+    AppMethodBeat.o(253731);
   }
   
-  public ar(Context paramContext)
+  public final void a(k paramk, boolean paramBoolean) {}
+  
+  public final boolean a(boolean paramBoolean, fng paramfng)
   {
-    AppMethodBeat.i(31089);
-    this.zCW = new HashMap();
-    this.context = paramContext;
-    AppMethodBeat.o(31089);
+    return false;
   }
   
-  public static void aI(Bundle paramBundle)
+  public final boolean b(boolean paramBoolean, fng paramfng)
   {
-    AppMethodBeat.i(31090);
-    zCT.cy(paramBundle);
-    zCT.doNotify();
-    AppMethodBeat.o(31090);
+    return false;
   }
   
-  public final void a(String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3)
+  public final boolean c(boolean paramBoolean, fng paramfng)
   {
-    AppMethodBeat.i(31092);
-    a(paramString1, paramWXMediaMessage, paramString2, paramString3, null);
-    AppMethodBeat.o(31092);
+    return false;
   }
   
-  public final void a(String paramString1, WXMediaMessage paramWXMediaMessage, String paramString2, String paramString3, ai paramai)
+  public final boolean d(boolean paramBoolean, fng paramfng)
   {
-    AppMethodBeat.i(31093);
-    ab.d("MicroMsg.WXAppMessageShower", "request pkg = %s, openId = %s", new Object[] { paramString1, paramString3 });
-    a.post(new ar.2(this, paramWXMediaMessage, paramString3, paramString1, paramString2, paramai));
-    AppMethodBeat.o(31093);
+    return false;
   }
   
-  public final void aH(Bundle paramBundle)
+  public final boolean fZD()
   {
-    AppMethodBeat.i(31091);
-    ab.d("MicroMsg.WXAppMessageShower", "handleResp, appid = ".concat(String.valueOf(Uri.parse(paramBundle.getString("_mmessage_content")).getQueryParameter("appid"))));
-    paramBundle = new ShowMessageFromWX.Resp(paramBundle);
-    ab.i("MicroMsg.WXAppMessageShower", "handleResp, errCode = " + paramBundle.errCode + ", type = " + paramBundle.getType());
-    if ((ShowMessageFromWX.Req)this.zCW.get(paramBundle.transaction) == null)
-    {
-      ab.e("MicroMsg.WXAppMessageShower", "invalid resp, check transaction failed, transaction=" + paramBundle.transaction);
-      AppMethodBeat.o(31091);
-      return;
-    }
-    this.zCW.remove(paramBundle.transaction);
-    AppMethodBeat.o(31091);
+    return true;
+  }
+  
+  public final String getPath()
+  {
+    return this.aelQ;
+  }
+  
+  public final View getRoot()
+  {
+    return this.aelR;
+  }
+  
+  public final boolean ym(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public final boolean yn(boolean paramBoolean)
+  {
+    AppMethodBeat.i(253736);
+    Log.i("MicroMsg.ShowRedDotCompoent", "menuKey:%s，show：%s", new Object[] { this.aelQ, Boolean.valueOf(paramBoolean) });
+    this.aelS.aR(paramBoolean, this.aelQ);
+    AppMethodBeat.o(253736);
+    return true;
+  }
+  
+  public final boolean yo(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void aR(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ar
  * JD-Core Version:    0.7.0.1
  */

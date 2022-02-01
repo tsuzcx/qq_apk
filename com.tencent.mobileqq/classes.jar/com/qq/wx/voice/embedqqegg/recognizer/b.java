@@ -2,23 +2,26 @@ package com.qq.wx.voice.embedqqegg.recognizer;
 
 final class b
 {
-  byte[] a = null;
-  InnerAudioState b = InnerAudioState.stop;
+  byte[] a;
+  InnerAudioState b;
   
   public b(byte[] paramArrayOfByte, InnerAudioState paramInnerAudioState)
   {
-    if (paramArrayOfByte == null) {}
-    for (paramArrayOfByte = localObject;; paramArrayOfByte = (byte[])paramArrayOfByte.clone())
-    {
-      this.a = paramArrayOfByte;
-      this.b = paramInnerAudioState;
-      return;
+    Object localObject = null;
+    this.a = null;
+    this.b = InnerAudioState.stop;
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = localObject;
+    } else {
+      paramArrayOfByte = (byte[])paramArrayOfByte.clone();
     }
+    this.a = paramArrayOfByte;
+    this.b = paramInnerAudioState;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.embedqqegg.recognizer.b
  * JD-Core Version:    0.7.0.1
  */

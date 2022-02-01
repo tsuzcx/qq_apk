@@ -6,45 +6,51 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.Point;
-import android.graphics.SurfaceTexture;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.Process;
-import android.support.v4.app.s.c;
+import android.text.TextUtils;
 import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.Toast;
+import androidx.core.app.f.d;
+import com.tencent.mars.comm.WakerLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.an;
-import com.tencent.mm.model.av;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.ay;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.plugin.voip.SubCoreVoip;
+import com.tencent.mm.plugin.voip.b.c;
+import com.tencent.mm.plugin.voip.b.g;
+import com.tencent.mm.plugin.voip.c.a.a;
+import com.tencent.mm.plugin.voip.f.k;
+import com.tencent.mm.plugin.voip.f.m;
 import com.tencent.mm.plugin.voip.model.t;
+import com.tencent.mm.plugin.voip.model.u;
+import com.tencent.mm.plugin.voip.model.v;
 import com.tencent.mm.plugin.voip.ui.VideoActivity;
 import com.tencent.mm.plugin.voip.ui.c;
-import com.tencent.mm.plugin.voip.video.CaptureView;
-import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.plugin.voip.video.b.a.a;
-import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
-import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.voip.ui.j;
+import com.tencent.mm.plugin.voip.ui.j.4;
+import com.tencent.mm.plugin.voip.ui.j.5;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.threadpool.i;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -52,678 +58,566 @@ import java.util.Locale;
 public final class b
   implements ServiceConnection, com.tencent.mm.plugin.voip.ui.b
 {
-  private byte[] buffer;
+  private boolean LoC;
+  private boolean UBV;
+  private int UII;
+  private c UVg;
+  private BaseSmallView UVh;
+  private MTimerHandler UVi;
+  private boolean UVj;
+  private long UVk;
+  private boolean UVl;
+  private boolean UVm;
+  private boolean UVn;
+  private View.OnClickListener UVo;
+  private int UVp;
+  boolean UVq;
+  private WakerLock UVr;
+  private int UxA;
+  private int UxE;
+  private int UxF;
+  private au Uxa;
+  private boolean Uxb;
+  public boolean Uxc;
+  private int Uxg;
+  private long Uxh;
+  private int Uxz;
   private int mStatus;
-  private boolean oTI;
-  private int tDS;
-  private PowerManager.WakeLock tDZ;
-  private ap tFb;
-  private boolean tJA;
-  a.a tJB;
-  private View.OnClickListener tJC;
-  private ap tJD;
-  private c tJw;
-  private BaseSmallView tJx;
-  private long tJy;
-  private boolean tJz;
-  private int txM;
-  private int txY;
-  private int txZ;
-  private CaptureView txe;
-  private ad txj;
-  private boolean txk;
-  private boolean txl;
-  private int txp;
-  private long txq;
-  private boolean tzd;
+  private PowerManager.WakeLock mUJ;
   
-  public b(c paramc, int paramInt, ad paramad, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public b(c paramc, int paramInt, au paramau, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(5180);
+    AppMethodBeat.i(293454);
+    this.UVj = false;
     this.mStatus = -1;
-    this.txq = -1L;
-    this.txp = 1;
-    this.tJy = -1L;
-    this.tJz = false;
-    this.tzd = false;
-    this.txM = 0;
-    this.txY = 0;
-    this.txZ = 0;
-    this.oTI = false;
-    this.tJA = false;
-    this.tJC = new View.OnClickListener()
+    this.Uxh = -1L;
+    this.Uxg = 1;
+    this.UVk = -1L;
+    this.UVl = false;
+    this.UVm = false;
+    this.UBV = false;
+    this.Uxz = 0;
+    this.UxA = 0;
+    this.UxE = 0;
+    this.UxF = 0;
+    this.LoC = false;
+    this.UVn = false;
+    this.UVo = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(5171);
-        if (b.a(b.this) != null) {
-          b.a(b.this).setOnClickListener(null);
+        AppMethodBeat.i(293482);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/voip/widget/NewVoipSmallWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        b.a(b.this).hVX();
+        if (!com.tencent.mm.plugin.voip.f.h.ibz()) {
+          paramAnonymousView = b.idM();
         }
-        b.this.cNc();
-        b.b(b.this);
-        paramAnonymousView = new Intent(ah.getContext(), VideoActivity.class);
-        paramAnonymousView.setFlags(268435456);
-        paramAnonymousView = PendingIntent.getActivity(ah.getContext(), 0, paramAnonymousView, 0);
-        try
+        for (;;)
         {
-          paramAnonymousView.send();
-          AppMethodBeat.o(5171);
-          return;
-        }
-        catch (PendingIntent.CanceledException paramAnonymousView)
-        {
-          ab.printErrStackTrace("MicroMsg.Voip.VoipSmallWindow", paramAnonymousView, "send pending intent error: %s", new Object[] { paramAnonymousView.getMessage() });
-          AppMethodBeat.o(5171);
+          if (paramAnonymousView != null)
+          {
+            paramAnonymousView.setFlags(268435456);
+            paramAnonymousView = PendingIntent.getActivity(MMApplicationContext.getContext(), 0, paramAnonymousView, 0);
+          }
+          try
+          {
+            paramAnonymousView.send();
+            MMHandlerThread.postToMainThreadDelayed(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(293444);
+                b.b(b.this);
+                AppMethodBeat.o(293444);
+              }
+            }, 200L);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/widget/NewVoipSmallWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(293482);
+            return;
+            paramAnonymousView = b.idN();
+          }
+          catch (PendingIntent.CanceledException paramAnonymousView)
+          {
+            for (;;)
+            {
+              Log.printErrStackTrace("MicroMsg.Voip.NewVoipSmallWindow", paramAnonymousView, "send pending intent error: %s", new Object[] { paramAnonymousView.getMessage() });
+            }
+          }
         }
       }
     };
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "initState: %s, talker: %s, isVideoCall: %b", new Object[] { com.tencent.mm.plugin.voip.a.b.HN(paramInt), paramad.field_username, Boolean.valueOf(paramBoolean1) });
-    this.txj = paramad;
-    this.tJw = paramc;
-    this.txl = paramBoolean1;
-    this.txk = paramBoolean2;
-    this.tzd = paramBoolean3;
-    gl(0, paramInt);
-    this.tDZ = ((PowerManager)ah.getContext().getSystemService("power")).newWakeLock(536870922, "MicroMsg.Voip.VoipSmallWindow");
-    this.tDZ.acquire();
-    paramc = com.tencent.mm.plugin.voip.model.s.tyN;
-    com.tencent.mm.plugin.voip.model.s.cNM();
-    AppMethodBeat.o(5180);
+    this.UVp = -1;
+    this.UVq = false;
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "initState: %s, talker: %s, isVideoCall: %b", new Object[] { k.arg(paramInt), paramau.field_username, Boolean.valueOf(paramBoolean1) });
+    this.Uxa = paramau;
+    this.UVg = paramc;
+    this.Uxc = paramBoolean1;
+    this.Uxb = paramBoolean2;
+    this.UBV = paramBoolean3;
+    iU(0, paramInt);
+    this.mUJ = ((PowerManager)MMApplicationContext.getContext().getSystemService("power")).newWakeLock(536870922, "MicroMsg.Voip.NewVoipSmallWindow");
+    paramc = this.mUJ;
+    com.tencent.mm.hellhoundlib.a.a.b(paramc, "com/tencent/mm/plugin/voip/widget/NewVoipSmallWindow", "<init>", "(Lcom/tencent/mm/plugin/voip/ui/IVoipUIListener;ILcom/tencent/mm/storage/Contact;ZZZ)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
+    paramc.acquire();
+    com.tencent.mm.hellhoundlib.a.a.c(paramc, "com/tencent/mm/plugin/voip/widget/NewVoipSmallWindow", "<init>", "(Lcom/tencent/mm/plugin/voip/ui/IVoipUIListener;ILcom/tencent/mm/storage/Contact;ZZZ)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
+    paramc = t.UBA;
+    t.hYe();
+    AppMethodBeat.o(293454);
   }
   
-  private static String Bm()
+  private void Hb(boolean paramBoolean)
   {
-    AppMethodBeat.i(5208);
-    String str2 = av.flM.Y("login_weixin_username", "");
-    String str1 = str2;
-    if (bo.isNullOrNil(str2)) {
-      str1 = av.flM.Y("login_user_name", "never_login_crash");
+    AppMethodBeat.i(293519);
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "removeSmallView isFinish: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ((com.tencent.mm.plugin.notification.b.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.notification.b.b.class)).getNotification().cancel(40);
+    if (this.UVi != null) {
+      this.UVi.stopTimer();
     }
-    AppMethodBeat.o(5208);
-    return str1;
-  }
-  
-  private void HZ(int paramInt)
-  {
-    AppMethodBeat.i(5182);
-    switch (paramInt)
-    {
-    default: 
-      cOQ();
-      nh(true);
-      AppMethodBeat.o(5182);
-      return;
-    case 4106: 
-      paramInt = 2131304736;
+    if (paramBoolean) {
+      SubCoreVoip.hVq().ghz();
     }
     for (;;)
     {
-      Ia(paramInt);
-      break;
-      paramInt = 2131304715;
-      continue;
-      if (this.txl) {
-        paramInt = 2131304748;
-      } else {
-        paramInt = 2131304613;
-      }
-    }
-  }
-  
-  private static void Ia(int paramInt)
-  {
-    AppMethodBeat.i(5183);
-    Context localContext = ah.getContext();
-    Toast.makeText(localContext, localContext.getString(paramInt), 1).show();
-    AppMethodBeat.o(5183);
-  }
-  
-  private void Ib(int paramInt)
-  {
-    AppMethodBeat.i(5187);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "showVoiceTalking");
-    if (-1L == this.tJy) {
-      this.tJy = System.currentTimeMillis();
-    }
-    if (2 == this.txp) {
-      Ia(2131304614);
-    }
-    nh(false);
-    if (this.tJw != null) {
-      this.tJw.a(this, 2);
-    }
-    String str = cQg();
-    f(str, com.tencent.mm.model.s.nE(this.txj.field_username), str, false);
-    cQf();
-    if (4101 == paramInt) {
-      Ia(2131304741);
-    }
-    AppMethodBeat.o(5187);
-  }
-  
-  public static int bYt()
-  {
-    if (Build.VERSION.SDK_INT < 19) {
-      return 2130839845;
-    }
-    return 2130839847;
-  }
-  
-  private void cPf()
-  {
-    AppMethodBeat.i(5184);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "showVideoTalking");
-    this.tJz = true;
-    if (-1L == this.tJy) {
-      this.tJy = System.currentTimeMillis();
-    }
-    if (this.tJw != null)
-    {
-      this.tJw.a(this, 2);
-      this.tJw.cMR();
-    }
-    Object localObject;
-    if (!com.tencent.mm.compatible.f.b.bK(ah.getContext()))
-    {
-      ab.e("MicroMsg.Voip.VoipSmallWindow", "showVideoTalking, permission denied");
-      localObject = ah.getContext();
-      RequestFloatWindowPermissionDialog.a(ah.getContext(), ((Context)localObject).getString(2131304682), new RequestFloatWindowPermissionDialog.a()
+      if ((this.UVh != null) && (!paramBoolean))
       {
-        public final void a(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
-        {
-          AppMethodBeat.i(5172);
-          paramAnonymousRequestFloatWindowPermissionDialog.finish();
-          paramAnonymousRequestFloatWindowPermissionDialog = ah.getContext().getString(2131304749);
-          b.this.f(paramAnonymousRequestFloatWindowPermissionDialog, com.tencent.mm.model.s.nE(b.c(b.this).field_username), paramAnonymousRequestFloatWindowPermissionDialog, false);
-          if ((com.tencent.mm.plugin.voip.a.b.HS(b.d(b.this))) || (com.tencent.mm.plugin.voip.a.b.HQ(b.d(b.this))))
-          {
-            b.e(b.this);
-            AppMethodBeat.o(5172);
-            return;
-          }
-          ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(40);
-          b.b(b.this);
-          AppMethodBeat.o(5172);
+        this.UVh.uninit();
+        if (this.UVh.getParent() != null) {
+          ((ViewGroup)this.UVh.getParent()).removeAllViews();
         }
-        
-        public final void b(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
-        {
-          AppMethodBeat.i(5173);
-          paramAnonymousRequestFloatWindowPermissionDialog.finish();
-          AppMethodBeat.o(5173);
-        }
-      });
-      if (!com.tencent.mm.plugin.voip.b.cLC().tzb)
-      {
-        com.tencent.mm.plugin.voip.b.cLC().tzb = true;
-        long l = com.tencent.mm.kernel.g.RL().Ru().Ns(327950);
-        if (System.currentTimeMillis() - l > 86400000L) {
-          qc("have not permission to showing floating window\n");
-        }
+        this.UVh = null;
       }
-    }
-    for (;;)
-    {
-      localObject = ah.getContext().getString(2131304749);
-      f((String)localObject, com.tencent.mm.model.s.nE(this.txj.field_username), (String)localObject, false);
-      AppMethodBeat.o(5184);
+      AppMethodBeat.o(293519);
       return;
-      cQc();
+      SubCoreVoip.hVq().jb(false);
     }
   }
   
-  private void cQc()
+  private static void KE(String paramString)
   {
-    AppMethodBeat.i(5185);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "show mini..");
-    nh(false);
-    Context localContext = ah.getContext();
-    com.tencent.mm.plugin.voip.b.cLC();
-    this.tJx = new a(localContext, t.mW(false));
-    this.tJx.setConnectSec(this.txq);
-    this.tJx.setVoipUIListener(this.tJw);
-    localContext = ah.getContext();
-    com.tencent.mm.plugin.voip.b.cLC();
-    float f1 = t.mW(true);
-    int i = ((WindowManager)localContext.getSystemService("window")).getDefaultDisplay().getHeight() / 5 + BackwardSupportUtil.b.b(localContext, 7.0F);
-    float f2 = i;
-    int j = (int)(BackwardSupportUtil.b.b(localContext, 7.0F) + f1 * f2);
-    this.tJx.eh(j, i);
-    this.tJx.setOnClickListener(this.tJC);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "now add to view..");
-    h(new Point(j, i));
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "steve: showMiniSmallView decMode:%d, beautyCmd:%d", new Object[] { Integer.valueOf(this.tDS), Integer.valueOf(this.txM) });
-    setHWDecMode(this.tDS);
-    setVoipBeauty(this.txM);
-    if ((this.txY != 0) && (this.txZ != 0)) {
-      gj(this.txY, this.txZ);
-    }
-    AppMethodBeat.o(5185);
-  }
-  
-  private void cQd()
-  {
-    AppMethodBeat.i(5186);
-    if (2 == this.txp) {
-      Ia(2131304614);
-    }
-    nh(false);
-    String str = ah.getContext().getString(2131304757);
-    f(str, com.tencent.mm.model.s.nE(this.txj.field_username), str, false);
-    cQf();
-    if (this.tJw != null) {
-      this.tJw.a(this, 2);
-    }
-    AppMethodBeat.o(5186);
-  }
-  
-  private void cQf()
-  {
-    AppMethodBeat.i(5190);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "showMini");
-    boolean bool = false;
-    if ((this.mStatus == 261) || (this.mStatus == 7))
-    {
-      this.tJD = new ap(new b.3(this), true);
-      this.tJD.ag(1000L, 1000L);
-      bool = true;
-    }
-    Intent localIntent = new Intent();
-    localIntent.setClass(ah.getContext(), VideoActivity.class);
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("Voip_User", this.txj.field_username);
-    localIntent.putExtra("Voip_Outcall", this.txk);
-    localIntent.putExtra("Voip_VideoCall", this.txl);
-    localIntent.putExtra("Voip_Is_Talking", bool);
-    com.tencent.mm.plugin.voip.b.cLD().a(localIntent, new b.4(this));
-    AppMethodBeat.o(5190);
-  }
-  
-  private static String cQg()
-  {
-    AppMethodBeat.i(5191);
-    String str = ah.getContext().getString(2131304757);
-    AppMethodBeat.o(5191);
-    return str;
-  }
-  
-  private void cQh()
-  {
-    AppMethodBeat.i(5192);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "showCalledVideoInviting");
-    if (this.tJx == null) {}
-    for (Object localObject = null; (localObject != null) && ((256 == ((Integer)localObject).intValue()) || (258 == ((Integer)localObject).intValue())); localObject = (Integer)this.tJx.getTag())
-    {
-      AppMethodBeat.o(5192);
-      return;
-    }
-    localObject = ah.getContext().getString(2131304749);
-    if (com.tencent.mm.model.s.nE(this.txj.field_username) != null) {
-      f((String)localObject, (String)localObject, com.tencent.mm.model.s.nE(this.txj.field_username), false);
-    }
-    for (;;)
-    {
-      if (this.tJw != null)
-      {
-        this.tJw.a(this, 2);
-        this.tJw.cMR();
-      }
-      AppMethodBeat.o(5192);
-      return;
-      f((String)localObject, (String)localObject, "", true);
-    }
-  }
-  
-  private void cQi()
-  {
-    AppMethodBeat.i(5193);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "showVideoInviting");
-    if (this.tJx == null) {}
-    for (Object localObject = null; (localObject != null) && ((((Integer)localObject).intValue() == 0) || (2 == ((Integer)localObject).intValue()) || (4 == ((Integer)localObject).intValue())); localObject = (Integer)this.tJx.getTag())
-    {
-      AppMethodBeat.o(5193);
-      return;
-    }
-    localObject = ah.getContext().getString(2131304749);
-    if (com.tencent.mm.model.s.nE(this.txj.field_username) != null) {
-      f((String)localObject, com.tencent.mm.model.s.nE(this.txj.field_username), (String)localObject, false);
-    }
-    for (;;)
-    {
-      if (this.tJw != null)
-      {
-        this.tJw.a(this, 2);
-        this.tJw.cMR();
-      }
-      AppMethodBeat.o(5193);
-      return;
-      f((String)localObject, (String)localObject, "", true);
-    }
-  }
-  
-  private void h(Point paramPoint)
-  {
-    AppMethodBeat.i(5195);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "addViewToWindowManager");
-    if ((!com.tencent.mm.plugin.voip.a.b.HS(this.mStatus)) && (!com.tencent.mm.plugin.voip.a.b.HQ(this.mStatus)))
-    {
-      ab.i("MicroMsg.Voip.VoipSmallWindow", "not in voip talking or inviting,now return..");
-      AppMethodBeat.o(5195);
-      return;
-    }
-    if (this.tJD != null) {
-      this.tJD.stopTimer();
-    }
-    if (this.tFb != null) {
-      this.tFb.stopTimer();
-    }
-    ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(40);
-    WindowManager localWindowManager = (WindowManager)ah.getContext().getSystemService("window");
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    int i;
-    int j;
-    if (com.tencent.mm.compatible.util.d.fv(26))
-    {
-      localLayoutParams.type = 2038;
-      localLayoutParams.format = 1;
-      localLayoutParams.flags = 40;
-      localLayoutParams.gravity = 51;
-      Context localContext = ah.getContext();
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      localWindowManager.getDefaultDisplay().getMetrics(localDisplayMetrics);
-      localLayoutParams.width = paramPoint.x;
-      localLayoutParams.height = paramPoint.y;
-      paramPoint = com.tencent.mm.plugin.voip.b.cLC().tza;
-      if (paramPoint != null) {
-        break label364;
-      }
-      i = com.tencent.mm.kernel.g.RL().Ru().getInt(327947, 0);
-      j = BackwardSupportUtil.b.b(localContext, 5.0F);
-      localLayoutParams.x = (localDisplayMetrics.widthPixels - localLayoutParams.width - j);
-    }
-    for (localLayoutParams.y = (j + i);; localLayoutParams.y = paramPoint.y)
-    {
-      if (this.txe != null)
-      {
-        if ((this.txe.getParent() != null) && ((this.txe.getParent() instanceof ViewGroup))) {
-          ((ViewGroup)this.txe.getParent()).removeView(this.txe);
-        }
-        this.tJx.setCaptureView(this.txe);
-      }
-      this.tJx.setTag(Integer.valueOf(this.mStatus));
-      try
-      {
-        localWindowManager.addView(this.tJx, localLayoutParams);
-        AppMethodBeat.o(5195);
-        return;
-      }
-      catch (Exception paramPoint)
-      {
-        label364:
-        ab.e("MicroMsg.Voip.VoipSmallWindow", "addViewToWindowManager failed: %s", new Object[] { paramPoint.getMessage() });
-        AppMethodBeat.o(5195);
-      }
-      localLayoutParams.type = 2002;
-      break;
-      localLayoutParams.x = paramPoint.x;
-    }
-  }
-  
-  private void nh(boolean paramBoolean)
-  {
-    AppMethodBeat.i(5196);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "removeSmallView");
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "remove small view..cancel notification first..");
-    ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(40);
-    Object localObject;
-    if (this.tJx != null)
-    {
-      localObject = (WindowManager.LayoutParams)this.tJx.getLayoutParams();
-      com.tencent.mm.plugin.voip.b.cLC().tza = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y);
-      this.tJx.uninit();
-      localObject = (WindowManager)ah.getContext().getSystemService("window");
-    }
-    try
-    {
-      ((WindowManager)localObject).removeView(this.tJx);
-      this.tJx = null;
-      if (paramBoolean) {
-        com.tencent.mm.plugin.voip.b.cLD().aeI(ah.getContext().getString(2131304702));
-      }
-      if (this.tJD != null) {
-        this.tJD.stopTimer();
-      }
-      com.tencent.mm.plugin.voip.b.cLD().dismiss();
-      AppMethodBeat.o(5196);
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.Voip.VoipSmallWindow", "remove failed", new Object[] { localIllegalArgumentException });
-      }
-    }
-  }
-  
-  private static void qc(String paramString)
-  {
-    AppMethodBeat.i(5207);
-    com.tencent.mm.kernel.g.RL().Ru().setLong(327950, System.currentTimeMillis());
-    ab.d("MicroMsg.Voip.VoipSmallWindow", "reportRawMessage, len: " + paramString.length());
+    AppMethodBeat.i(293523);
+    com.tencent.mm.kernel.h.baE().ban().setLong(327950, System.currentTimeMillis());
+    Log.d("MicroMsg.Voip.NewVoipSmallWindow", "reportRawMessage, len: " + paramString.length());
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\n#client.version=").append(com.tencent.mm.protocal.d.whH).append("\n");
-    localStringBuilder.append("#accinfo.revision=").append(f.REV).append("\n");
-    localStringBuilder.append("#accinfo.build=").append(f.TIME).append(":").append(f.HOSTNAME).append(":").append(com.tencent.mm.sdk.platformtools.g.bWu).append("\n");
+    localStringBuilder.append("\n#client.version=").append(d.Yxh).append("\n");
+    localStringBuilder.append("#accinfo.revision=").append(BuildInfo.REV).append("\n");
+    localStringBuilder.append("#accinfo.build=").append(BuildInfo.TIME).append(":").append(BuildInfo.HOSTNAME).append(":").append(ChannelUtil.channelId).append("\n");
     Object localObject = new Date();
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
     localStringBuilder.append("#accinfo.uploadTime=" + localSimpleDateFormat.format((Date)localObject)).append("\n");
     localStringBuilder.append("#accinfo.content:\n");
     localObject = new Intent();
-    ((Intent)localObject).setClassName(ah.getPackageName(), "com.tencent.mm.sandbox.monitor.ExceptionMonitorBroadcastReceiver");
+    ((Intent)localObject).setClassName(MMApplicationContext.getPackageName(), "com.tencent.mm.sandbox.monitor.ExceptionMonitorBroadcastReceiver");
     ((Intent)localObject).setAction("uncatch_exception");
     ((Intent)localObject).putExtra("exceptionWriteSdcard", false);
     ((Intent)localObject).putExtra("exceptionPid", Process.myPid());
-    ((Intent)localObject).putExtra("userName", Bm());
+    ((Intent)localObject).putExtra("userName", aCz());
     ((Intent)localObject).putExtra("tag", "float_window_permission");
     ((Intent)localObject).putExtra("exceptionMsg", Base64.encodeToString((localStringBuilder.toString() + paramString).getBytes(), 2));
-    ah.getContext().sendBroadcast((Intent)localObject);
-    AppMethodBeat.o(5207);
+    MMApplicationContext.getContext().sendBroadcast((Intent)localObject);
+    AppMethodBeat.o(293523);
   }
   
-  public final void HF(int paramInt) {}
-  
-  public final void a(SurfaceTexture paramSurfaceTexture, int paramInt)
+  private static String aCz()
   {
-    AppMethodBeat.i(140271);
-    if (this.tJx != null) {
-      this.tJx.a(paramSurfaceTexture, paramInt);
+    AppMethodBeat.i(293525);
+    String str2 = bg.okT.aM("login_weixin_username", "");
+    String str1 = str2;
+    if (Util.isNullOrNil(str2)) {
+      str1 = bg.okT.aM("login_user_name", "never_login_crash");
     }
-    AppMethodBeat.o(140271);
+    AppMethodBeat.o(293525);
+    return str1;
   }
   
-  public final void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  private void arA(int paramInt)
   {
-    AppMethodBeat.i(5202);
-    if ((260 != this.mStatus) && (6 != this.mStatus))
+    AppMethodBeat.i(293474);
+    switch (paramInt)
     {
-      AppMethodBeat.o(5202);
+    }
+    for (;;)
+    {
+      Hb(true);
+      AppMethodBeat.o(293474);
+      return;
+      MMApplicationContext.getContext();
+      continue;
+      MMApplicationContext.getContext();
+      continue;
+      MMApplicationContext.getContext();
+    }
+  }
+  
+  private void arB(int paramInt)
+  {
+    AppMethodBeat.i(293494);
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "showVoiceTalking");
+    this.UVm = true;
+    if (-1L == this.UVk) {
+      this.UVk = System.currentTimeMillis();
+    }
+    if (2 == this.Uxg) {
+      MMApplicationContext.getContext();
+    }
+    String str = idS();
+    bj(str, aa.getDisplayName(this.Uxa.field_username), str);
+    idQ();
+    this.UVh = SubCoreVoip.hVq().br(false, this.UVl);
+    if (this.UVl) {
+      a.a.Uvh.hVu();
+    }
+    if (4101 == paramInt) {
+      MMApplicationContext.getContext();
+    }
+    AppMethodBeat.o(293494);
+  }
+  
+  public static int guX()
+  {
+    if (Build.VERSION.SDK_INT < 19) {
+      return b.c.notification_icon;
+    }
+    return b.c.notification_icon_gray;
+  }
+  
+  private void iam()
+  {
+    AppMethodBeat.i(293481);
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "showVideoTalking");
+    this.UVl = true;
+    if (-1L == this.UVk) {
+      this.UVk = System.currentTimeMillis();
+    }
+    if (this.UVg != null) {
+      this.UVg.hVP();
+    }
+    String str = MMApplicationContext.getContext().getString(b.g.voip_video_is_talking_tip);
+    bj(str, aa.getDisplayName(this.Uxa.field_username), str);
+    idQ();
+    this.UVh = SubCoreVoip.hVq().br(true, false);
+    idR();
+    AppMethodBeat.o(293481);
+  }
+  
+  public static Intent idM()
+  {
+    AppMethodBeat.i(293433);
+    Intent localIntent = new Intent();
+    localIntent.setClass(MMApplicationContext.getContext(), VideoActivity.class);
+    localIntent.putExtra("Voip_Call_From", 3);
+    com.tencent.mm.plugin.voip.f.f localf = com.tencent.mm.plugin.voip.f.f.ULF;
+    com.tencent.mm.plugin.voip.f.f.ibk();
+    AppMethodBeat.o(293433);
+    return localIntent;
+  }
+  
+  public static Intent idN()
+  {
+    AppMethodBeat.i(293441);
+    Object localObject = SubCoreVoip.hVp().UBE.toUser;
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      Log.w("MicroMsg.Voip.NewVoipSmallWindow", "null talkName");
+      AppMethodBeat.o(293441);
+      return null;
+    }
+    localObject = ((com.tencent.mm.plugin.flutter.voip.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.flutter.voip.a.a.class)).aQ(MMApplicationContext.getContext(), (String)localObject);
+    AppMethodBeat.o(293441);
+    return localObject;
+  }
+  
+  private void idO()
+  {
+    AppMethodBeat.i(293465);
+    if ((this.mStatus == 261) || (this.mStatus == 7) || (this.mStatus == 260) || (this.mStatus == 6))
+    {
+      this.UVq = true;
+      if (this.UVi != null) {
+        this.UVi.stopTimer();
+      }
+      this.UVi = new MTimerHandler("timerCounter", new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(293473);
+          com.tencent.threadpool.h.ahAA.bk(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(293498);
+              SubCoreVoip.hVq().aNF(b.this.idP());
+              AppMethodBeat.o(293498);
+            }
+          });
+          AppMethodBeat.o(293473);
+          return true;
+        }
+      }, true);
+      this.UVi.startTimer(1000L);
+    }
+    AppMethodBeat.o(293465);
+  }
+  
+  private void idQ()
+  {
+    AppMethodBeat.i(293500);
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "showMini");
+    if (com.tencent.mm.plugin.voip.f.h.ibz()) {}
+    for (Intent localIntent = idN(); localIntent == null; localIntent = idM())
+    {
+      AppMethodBeat.o(293500);
       return;
     }
-    if (this.tJx != null) {
-      this.tJx.a(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    localIntent.putExtra("Voip_User", this.Uxa.field_username);
+    localIntent.putExtra("Voip_CallRoomKey", SubCoreVoip.hVp().hVw());
+    localIntent.putExtra("Voip_Outcall", this.Uxb);
+    localIntent.putExtra("Voip_VideoCall", this.Uxc);
+    localIntent.putExtra("Voip_Is_Talking", this.UVq);
+    SubCoreVoip.hVq().a(localIntent, this.Uxc, new com.tencent.mm.plugin.voip.ui.a()
+    {
+      public final void a(Intent paramAnonymousIntent, BaseSmallView paramAnonymousBaseSmallView)
+      {
+        AppMethodBeat.i(293488);
+        if (paramAnonymousIntent.getBooleanExtra("Voip_Is_Talking", false)) {
+          SubCoreVoip.hVq().aNF(b.this.idP());
+        }
+        for (;;)
+        {
+          if ((b.c(b.this)) && (b.f(b.this)))
+          {
+            b.a(b.this, false);
+            b.a(b.this, paramAnonymousBaseSmallView);
+            b.g(b.this);
+          }
+          AppMethodBeat.o(293488);
+          return;
+          SubCoreVoip.hVq().updateText(MMApplicationContext.getContext().getString(b.g.voip_multitalk_waiting_wording));
+        }
+      }
+      
+      public final boolean fQS()
+      {
+        AppMethodBeat.i(293480);
+        if (b.c(b.this))
+        {
+          String str = MMApplicationContext.getContext().getString(b.g.voip_video_is_talking_tip);
+          b.this.bj(str, aa.getDisplayName(b.d(b.this).field_username), str);
+          if ((k.arl(b.e(b.this))) || (k.arj(b.e(b.this))))
+          {
+            b.a(b.this, true);
+            AppMethodBeat.o(293480);
+            return true;
+          }
+          ((com.tencent.mm.plugin.notification.b.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.notification.b.b.class)).getNotification().cancel(40);
+          b.b(b.this);
+          AppMethodBeat.o(293480);
+          return false;
+        }
+        if ((k.arl(b.e(b.this))) || (k.arj(b.e(b.this))))
+        {
+          AppMethodBeat.o(293480);
+          return true;
+        }
+        AppMethodBeat.o(293480);
+        return false;
+      }
+      
+      public final void fQT()
+      {
+        AppMethodBeat.i(293495);
+        if (b.a(b.this) != null) {
+          b.a(b.this).b(b.this);
+        }
+        AppMethodBeat.o(293495);
+      }
+      
+      public final void fQU()
+      {
+        AppMethodBeat.i(293496);
+        if (b.a(b.this) != null) {
+          b.a(b.this).hWh();
+        }
+        AppMethodBeat.o(293496);
+      }
+    });
+    if (!SubCoreVoip.hVp().UBR)
+    {
+      SubCoreVoip.hVp().UBR = true;
+      long l = com.tencent.mm.kernel.h.baE().ban().amW(327950);
+      if (System.currentTimeMillis() - l > 86400000L) {
+        KE("have not permission to showing floating window\n");
+      }
     }
-    AppMethodBeat.o(5202);
+    AppMethodBeat.o(293500);
   }
   
-  public final void aeH(String paramString) {}
-  
-  public final void bKF() {}
-  
-  public final void br(int paramInt, String paramString)
+  private void idR()
   {
-    AppMethodBeat.i(5197);
-    if (paramInt == 241) {
-      Toast.makeText(ah.getContext(), paramString, 1).show();
+    AppMethodBeat.i(293509);
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "setVideoTalkingView");
+    if (this.UVh != null)
+    {
+      this.UVh.setStatus(this.mStatus);
+      this.UVh.setConnectSec(this.Uxh);
+      this.UVh.setVoipUIListener(this.UVg);
+      Context localContext = MMApplicationContext.getContext();
+      SubCoreVoip.hVp();
+      u.Gv(true);
+      ((WindowManager)localContext.getSystemService("window")).getDefaultDisplay().getHeight();
+      this.UVh.idK();
+      this.UVh.setOnClickListener(this.UVo);
+      Log.i("MicroMsg.Voip.NewVoipSmallWindow", "now add to view..");
+      Log.i("MicroMsg.Voip.NewVoipSmallWindow", "steve: showMiniSmallView decMode:%d, beautyCmd:%d", new Object[] { Integer.valueOf(this.UII), Integer.valueOf(this.Uxz) });
     }
-    ab.d("MicroMsg.Voip.VoipSmallWindow", "getHintByErrorCode ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(293509);
+  }
+  
+  private static String idS()
+  {
+    AppMethodBeat.i(293511);
+    String str = MMApplicationContext.getContext().getString(b.g.voip_voice_is_talking_tip);
+    AppMethodBeat.o(293511);
+    return str;
+  }
+  
+  public final void VR(int paramInt) {}
+  
+  public final void VV(int paramInt) {}
+  
+  public final void VW(int paramInt) {}
+  
+  public final void VX(int paramInt) {}
+  
+  public final void VY(int paramInt) {}
+  
+  public final void aDJ(String paramString) {}
+  
+  public final void aq(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public final void bX(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(293571);
+    if (paramInt == 241) {
+      MMApplicationContext.getContext();
+    }
+    Log.d("MicroMsg.Voip.NewVoipSmallWindow", "getHintByErrorCode ".concat(String.valueOf(paramInt)));
     if (paramInt == 235) {
-      paramInt = 2131304677;
+      paramInt = b.g.voip_errorhint_notsupport;
     }
     while (paramInt == 0)
     {
-      Ia(2131304675);
-      AppMethodBeat.o(5197);
+      MMApplicationContext.getContext();
+      AppMethodBeat.o(293571);
       return;
       if (paramInt == 233)
       {
-        com.tencent.mm.plugin.voip.b.cLC().cNW();
-        paramInt = 2131304676;
+        SubCoreVoip.hVp().hYu();
+        paramInt = b.g.voip_errorhint_notcontact;
       }
       else if (paramInt == 237)
       {
-        if ((!com.tencent.mm.au.b.aih()) || (this.txl)) {
-          paramInt = 2131304678;
+        if ((!com.tencent.mm.au.b.isOverseasUser()) || (this.Uxc)) {
+          paramInt = b.g.voip_errorhint_plugclose;
         } else {
-          paramInt = 2131304680;
+          paramInt = b.g.voip_errorhint_voice_plugclose_for_oversea;
         }
       }
       else if (paramInt == 236)
       {
-        paramInt = 2131304694;
+        paramInt = b.g.voip_inblacklist;
       }
       else if (paramInt == 211)
       {
-        paramInt = 2131304679;
+        paramInt = b.g.voip_errorhint_userbusy;
       }
       else
       {
         paramInt = 0;
       }
     }
-    Ia(paramInt);
-    AppMethodBeat.o(5197);
+    MMApplicationContext.getContext();
+    AppMethodBeat.o(293571);
   }
   
-  public final void cNc()
+  public final void bj(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(5199);
-    if (this.tJx != null) {
-      this.tJx.cNc();
+    AppMethodBeat.i(293569);
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "showNotification..show notification..tickContent:" + paramString1 + ",title:" + paramString2 + ",content:" + paramString3 + ",breathEffect:false");
+    Log.printDebugStack("MicroMsg.Voip.NewVoipSmallWindow", "breathEffect false", new Object[0]);
+    Object localObject1 = null;
+    if (com.tencent.mm.plugin.voip.f.h.ibz()) {
+      localObject1 = idN();
     }
-    AppMethodBeat.o(5199);
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = new Intent();
+      ((Intent)localObject2).setClass(MMApplicationContext.getContext(), VideoActivity.class);
+    }
+    ((Intent)localObject2).putExtra("Voip_CallRoomKey", SubCoreVoip.hVp().hVw());
+    ((Intent)localObject2).putExtra("Voip_Call_From", 3);
+    ((Intent)localObject2).putExtra("Voip_User", this.Uxa.field_username);
+    ((Intent)localObject2).putExtra("Voip_Outcall", this.Uxb);
+    ((Intent)localObject2).putExtra("Voip_VideoCall", this.Uxc);
+    localObject1 = PendingIntent.getActivity(MMApplicationContext.getContext(), 40, (Intent)localObject2, 134217728);
+    paramString1 = com.tencent.mm.bq.a.cA(MMApplicationContext.getContext(), "reminder_channel_id").o(paramString1).bt(System.currentTimeMillis()).l(paramString2).m(paramString3);
+    paramString1.bor = ((PendingIntent)localObject1);
+    paramString1 = paramString1.eb(guX());
+    paramString1.q(2, true);
+    paramString1 = m.e(paramString1);
+    ((com.tencent.mm.plugin.notification.b.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.notification.b.b.class)).getNotification().a(40, paramString1, false);
+    AppMethodBeat.o(293569);
   }
   
-  public final Context cOO()
+  public final void fwi()
+  {
+    AppMethodBeat.i(293600);
+    j localj = SubCoreVoip.hVq();
+    if ((localj.UKx != null) && (!localj.Lvy))
+    {
+      com.tencent.threadpool.h.ahAA.bFQ("showIcon");
+      com.tencent.threadpool.h.ahAA.g(new j.4(localj), "showIcon");
+    }
+    AppMethodBeat.o(293600);
+  }
+  
+  public final void fwq()
+  {
+    AppMethodBeat.i(293575);
+    if (this.UVh != null) {
+      this.UVh.fwq();
+    }
+    AppMethodBeat.o(293575);
+  }
+  
+  public final Context fwr()
   {
     return null;
   }
   
-  public final void cOP() {}
+  public final void fws() {}
   
-  public final void cOQ()
+  public final void fwv() {}
+  
+  public final void fww()
   {
-    AppMethodBeat.i(140273);
-    if (this.tJx != null) {
-      this.tJx.cOQ();
-    }
-    AppMethodBeat.o(140273);
+    AppMethodBeat.i(293645);
+    SubCoreVoip.hVq().GH(false);
+    AppMethodBeat.o(293645);
   }
   
-  public final byte[] cOR()
-  {
-    AppMethodBeat.i(5209);
-    if ((this.tJx != null) && (this.tJx.getFilterData() != null)) {
-      this.tJx.getFilterData().a(new b.5(this));
-    }
-    byte[] arrayOfByte = this.buffer;
-    AppMethodBeat.o(5209);
-    return arrayOfByte;
-  }
+  public final void fwx() {}
   
-  public final a.a cOS()
+  public final void iU(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(140274);
-    if ((this.tJx != null) && (this.tJx.getBeautyData() != null)) {
-      this.tJx.getBeautyData().a(new b.6(this));
-    }
-    a.a locala = this.tJB;
-    AppMethodBeat.o(140274);
-    return locala;
-  }
-  
-  public final String cQe()
-  {
-    AppMethodBeat.i(5189);
-    int i = (int)(System.currentTimeMillis() / 1000L - this.txq);
-    if (this.txq == -1L) {
-      i = 0;
-    }
-    if (i >= 3600) {}
-    for (String str1 = String.format(Locale.US, "%d:%02d:%02d", new Object[] { Integer.valueOf(i / 3600), Integer.valueOf(i % 3600 / 60), Integer.valueOf(i % 60) });; str1 = String.format(Locale.US, "%d:%02d", new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) }))
-    {
-      String str2 = str1;
-      if (bo.isNullOrNil(str1)) {
-        str2 = "00:00";
-      }
-      AppMethodBeat.o(5189);
-      return str2;
-    }
-  }
-  
-  public final void f(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(140269);
-    if ((260 != this.mStatus) && (6 != this.mStatus))
-    {
-      AppMethodBeat.o(140269);
-      return;
-    }
-    if (this.tJx != null) {
-      this.tJx.f(paramInt1, paramInt2, paramArrayOfByte);
-    }
-    AppMethodBeat.o(140269);
-  }
-  
-  public final void f(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    AppMethodBeat.i(5194);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "showNotification..show notification..tickContent:" + paramString1 + ",title:" + paramString2 + ",content:" + paramString3 + ",breathEffect:" + paramBoolean);
-    ab.a("MicroMsg.Voip.VoipSmallWindow", "breathEffect ".concat(String.valueOf(paramBoolean)), new Object[0]);
-    Object localObject = new Intent();
-    ((Intent)localObject).setClass(ah.getContext(), VideoActivity.class);
-    ((Intent)localObject).putExtra("Voip_User", this.txj.field_username);
-    ((Intent)localObject).putExtra("Voip_Outcall", this.txk);
-    ((Intent)localObject).putExtra("Voip_VideoCall", this.txl);
-    localObject = PendingIntent.getActivity(ah.getContext(), 40, (Intent)localObject, 134217728);
-    paramString1 = com.tencent.mm.bp.a.br(ah.getContext(), "reminder_channel_id").h(paramString1).g(System.currentTimeMillis()).e(paramString2).f(paramString3);
-    paramString1.ya = ((PendingIntent)localObject);
-    paramString1 = paramString1.Y(bYt());
-    paramString1.g(2, true);
-    paramString1 = com.tencent.mm.plugin.voip.a.d.c(paramString1);
-    ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.notification.b.a.class)).getNotification().a(40, paramString1, false);
-    AppMethodBeat.o(5194);
-  }
-  
-  public final void gj(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(140270);
-    this.txY = paramInt1;
-    this.txZ = paramInt2;
-    if (this.tJx != null) {
-      this.tJx.gj(paramInt1, paramInt2);
-    }
-    AppMethodBeat.o(140270);
-  }
-  
-  public final void gl(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(5181);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "newState: %s ", new Object[] { com.tencent.mm.plugin.voip.a.b.HN(paramInt2) });
+    AppMethodBeat.i(293560);
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "newState: %s ", new Object[] { k.arg(paramInt2) });
     if (paramInt2 == this.mStatus)
     {
-      ab.i("MicroMsg.Voip.VoipSmallWindow", "state unchange");
-      AppMethodBeat.o(5181);
+      Log.i("MicroMsg.Voip.NewVoipSmallWindow", "state unchange");
+      AppMethodBeat.o(293560);
       return;
     }
     this.mStatus = paramInt2;
@@ -732,153 +626,175 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(5181);
+      AppMethodBeat.o(293560);
       return;
-      cQi();
-      AppMethodBeat.o(5181);
-      return;
-      cPf();
-      AppMethodBeat.o(5181);
-      return;
-      cQh();
-      AppMethodBeat.o(5181);
-      return;
-      HZ(paramInt1);
-      AppMethodBeat.o(5181);
-      return;
-      cQd();
-      AppMethodBeat.o(5181);
-      return;
-      Ib(paramInt1);
+      idO();
+      if (!this.UVl)
+      {
+        iam();
+        AppMethodBeat.o(293560);
+        return;
+        arA(paramInt1);
+        AppMethodBeat.o(293560);
+        return;
+        idO();
+        if (!this.UVm) {
+          arB(paramInt1);
+        }
+      }
     }
   }
   
-  public final void mY(boolean paramBoolean)
+  public final String idP()
   {
-    AppMethodBeat.i(5205);
-    if (paramBoolean)
-    {
-      Toast.makeText(ah.getContext(), 2131304711, 1).show();
-      AppMethodBeat.o(5205);
-      return;
+    AppMethodBeat.i(293564);
+    int i = (int)(System.currentTimeMillis() / 1000L - this.Uxh);
+    if (this.Uxh == -1L) {
+      i = 0;
     }
-    Toast.makeText(ah.getContext(), 2131304710, 1).show();
-    AppMethodBeat.o(5205);
+    String str1;
+    if (i >= 3600) {
+      str1 = String.format(Locale.US, "%d:%02d:%02d", new Object[] { Integer.valueOf(i / 3600), Integer.valueOf(i % 3600 / 60), Integer.valueOf(i % 60) });
+    }
+    for (;;)
+    {
+      String str2 = str1;
+      if (Util.isNullOrNil(str1)) {
+        str2 = "00:00";
+      }
+      AppMethodBeat.o(293564);
+      return str2;
+      if (i >= 600) {
+        str1 = String.format(Locale.US, "%d:%02d", new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
+      } else {
+        str1 = String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
+      }
+    }
   }
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder) {}
   
   public final void onServiceDisconnected(ComponentName paramComponentName) {}
   
-  public final void requestRender()
-  {
-    AppMethodBeat.i(140272);
-    if (this.tJx != null) {
-      this.tJx.requestRender();
-    }
-    AppMethodBeat.o(140272);
-  }
-  
-  public final void setCaptureView(CaptureView paramCaptureView)
-  {
-    AppMethodBeat.i(5206);
-    this.txe = paramCaptureView;
-    if ((this.tJx != null) && (this.txe != null))
-    {
-      if ((this.txe.getParent() != null) && ((this.txe.getParent() instanceof ViewGroup))) {
-        ((ViewGroup)this.txe.getParent()).removeView(this.txe);
-      }
-      this.tJx.setCaptureView(paramCaptureView);
-    }
-    AppMethodBeat.o(5206);
-  }
-  
   public final void setConnectSec(long paramLong)
   {
-    AppMethodBeat.i(5204);
-    this.txq = paramLong;
-    if (this.tJx != null)
+    AppMethodBeat.i(293633);
+    this.Uxh = paramLong;
+    if (this.UVh != null)
     {
-      this.tJx.setConnectSec(paramLong);
-      AppMethodBeat.o(5204);
+      this.UVh.setConnectSec(paramLong);
+      AppMethodBeat.o(293633);
       return;
     }
     if ((261 == this.mStatus) || (7 == this.mStatus))
     {
-      String str = cQg();
-      f(str, com.tencent.mm.model.s.nE(this.txj.field_username), str, false);
+      String str = idS();
+      bj(str, aa.getDisplayName(this.Uxa.field_username), str);
     }
-    AppMethodBeat.o(5204);
-  }
-  
-  public final void setHWDecMode(int paramInt)
-  {
-    AppMethodBeat.i(5201);
-    if (this.tJx != null) {
-      this.tJx.setHWDecMode(paramInt);
-    }
-    this.tDS = paramInt;
-    AppMethodBeat.o(5201);
+    AppMethodBeat.o(293633);
   }
   
   public final void setMute(boolean paramBoolean) {}
   
-  public final void setScreenEnable(boolean paramBoolean) {}
-  
-  public final void setVoipBeauty(int paramInt)
+  public final void setScreenEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(5200);
-    if (this.tJx != null) {
-      this.tJx.setVoipBeauty(paramInt);
+    AppMethodBeat.i(293597);
+    Log.w("MicroMsg.Voip.NewVoipSmallWindow", "setScreenEnable: ".concat(String.valueOf(paramBoolean)));
+    if (!paramBoolean)
+    {
+      if (this.UVr == null) {
+        this.UVr = new WakerLock(MMApplicationContext.getContext(), "wechat:screen small-window-lock", 32);
+      }
+      if (!this.UVr.isLocking())
+      {
+        this.UVr.lock();
+        AppMethodBeat.o(293597);
+      }
     }
-    this.txM = paramInt;
-    AppMethodBeat.o(5200);
+    else if ((this.UVr != null) && (this.UVr.isLocking()))
+    {
+      this.UVr.unLock();
+    }
+    AppMethodBeat.o(293597);
+  }
+  
+  public final void setVoicePlayDevice(int paramInt)
+  {
+    AppMethodBeat.i(293554);
+    if ((this.UVp != -1) && (this.UVp != paramInt))
+    {
+      j localj = SubCoreVoip.hVq();
+      if ((localj.UKx != null) && (!localj.Lvy))
+      {
+        com.tencent.threadpool.h.ahAA.bFQ("showIcon");
+        com.tencent.threadpool.h.ahAA.g(new j.5(localj, paramInt), "showIcon");
+      }
+    }
+    this.UVp = paramInt;
+    AppMethodBeat.o(293554);
   }
   
   public final void uninit()
   {
     int i = 3;
-    AppMethodBeat.i(5203);
-    ab.i("MicroMsg.Voip.VoipSmallWindow", "uninit");
-    Object localObject;
-    long l;
-    if (-1L != this.tJy)
+    AppMethodBeat.i(293628);
+    Log.i("MicroMsg.Voip.NewVoipSmallWindow", "uninit");
+    if (this.UVn)
     {
-      localObject = h.qsU;
-      if (this.tJz) {
-        i = 2;
-      }
-      l = (System.currentTimeMillis() - this.tJy) / 1000L;
-      if (!this.tzd) {
-        break label180;
-      }
-    }
-    label180:
-    for (int j = 1;; j = 2)
-    {
-      ((h)localObject).e(11620, new Object[] { Integer.valueOf(i), Long.valueOf(l), Integer.valueOf(j) });
-      if ((this.tDZ != null) && (this.tDZ.isHeld()))
-      {
-        ab.i("MicroMsg.Voip.VoipSmallWindow", "release waklock");
-        this.tDZ.release();
-      }
-      nh(false);
-      this.tJA = true;
-      if (this.tJD != null) {
-        this.tJD.stopTimer();
-      }
-      ab.i("MicroMsg.Voip.VoipSmallWindow", "uninit..cancel notification..");
-      this.txe = null;
-      localObject = com.tencent.mm.plugin.voip.model.s.tyN;
-      com.tencent.mm.plugin.voip.model.s.cNN();
-      AppMethodBeat.o(5203);
+      AppMethodBeat.o(293628);
       return;
     }
+    this.UVn = true;
+    Object localObject;
+    long l;
+    if (-1L != this.UVk)
+    {
+      localObject = com.tencent.mm.plugin.report.service.h.OAn;
+      if (this.UVl) {
+        i = 2;
+      }
+      l = (System.currentTimeMillis() - this.UVk) / 1000L;
+      if (!this.UBV) {
+        break label255;
+      }
+    }
+    label255:
+    for (int j = 1;; j = 2)
+    {
+      ((com.tencent.mm.plugin.report.service.h)localObject).b(11620, new Object[] { Integer.valueOf(i), Long.valueOf(l), Integer.valueOf(j) });
+      if ((this.mUJ != null) && (this.mUJ.isHeld()))
+      {
+        Log.i("MicroMsg.Voip.NewVoipSmallWindow", "release waklock");
+        localObject = this.mUJ;
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, "com/tencent/mm/plugin/voip/widget/NewVoipSmallWindow", "uninit", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+        ((PowerManager.WakeLock)localObject).release();
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/voip/widget/NewVoipSmallWindow", "uninit", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+      }
+      Hb(false);
+      if (this.UVi != null) {
+        this.UVi.stopTimer();
+      }
+      Log.i("MicroMsg.Voip.NewVoipSmallWindow", "uninit..cancel notification..");
+      localObject = t.UBA;
+      t.hYf();
+      if ((this.UVr != null) && (this.UVr.isLocking())) {
+        this.UVr.unLock();
+      }
+      AppMethodBeat.o(293628);
+      return;
+    }
+  }
+  
+  public final void vJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(293641);
+    SubCoreVoip.hVq().GH(true);
+    AppMethodBeat.o(293641);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.b
  * JD-Core Version:    0.7.0.1
  */

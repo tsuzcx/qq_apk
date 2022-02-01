@@ -1,0 +1,19 @@
+package com.tencent.trpcprotocol.nearby.trpc_nearby_profile.nearby_profile;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+
+public final class nearbyProfile$PhotoWall
+  extends MessageMicro<PhotoWall>
+{
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "photo" }, new Object[] { null }, PhotoWall.class);
+  public final PBRepeatMessageField<nearbyProfile.Photo> photo = PBField.initRepeatMessage(nearbyProfile.Photo.class);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+ * Qualified Name:     com.tencent.trpcprotocol.nearby.trpc_nearby_profile.nearby_profile.nearbyProfile.PhotoWall
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,27 +1,30 @@
 package com.tencent.mm.plugin.soter.b;
 
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class d
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private h snM;
+  private h RZw;
   
-  public abstract void bzB();
+  public abstract void VE(int paramInt);
   
-  public abstract void d(int paramInt1, int paramInt2, String paramString, q paramq);
+  public abstract void d(int paramInt1, int paramInt2, String paramString, s params);
   
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public abstract void fuc();
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     int i = 1;
-    ab.i("MicroMsg.NetSceneSoterBase", "onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.snM = new h(new d.a(this, (byte)0));
-    this.snM.snP = -3202;
-    paramArrayOfByte = this.snM;
+    Log.i("MicroMsg.NetSceneSoterBase", "onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.RZw = new h(new a((byte)0));
+    this.RZw.RZz = -3202;
+    paramArrayOfByte = this.RZw;
     if ((paramInt2 == 4) && (paramInt3 == -3200))
     {
       com.tencent.soter.a.a.a(new h.1(paramArrayOfByte), true, new f());
@@ -30,15 +33,15 @@ public abstract class d
     for (;;)
     {
       if (paramInt1 == 0) {
-        d(paramInt2, paramInt3, paramString, paramq);
+        d(paramInt2, paramInt3, paramString, params);
       }
       return;
-      if ((paramInt2 == 4) && (paramInt3 == paramArrayOfByte.snP))
+      if ((paramInt2 == 4) && (paramInt3 == paramArrayOfByte.RZz))
       {
         paramInt1 = i;
-        if (paramArrayOfByte.snO != null)
+        if (paramArrayOfByte.RZy != null)
         {
-          paramArrayOfByte.snO.cxR();
+          paramArrayOfByte.RZy.htn();
           paramInt1 = i;
         }
       }
@@ -49,7 +52,25 @@ public abstract class d
     }
   }
   
-  public abstract void wf(int paramInt);
+  final class a
+    implements a
+  {
+    private a() {}
+    
+    public final void amN(int paramInt)
+    {
+      AppMethodBeat.i(130810);
+      d.this.VE(paramInt);
+      AppMethodBeat.o(130810);
+    }
+    
+    public final void htn()
+    {
+      AppMethodBeat.i(130809);
+      d.this.fuc();
+      AppMethodBeat.o(130809);
+    }
+  }
 }
 
 

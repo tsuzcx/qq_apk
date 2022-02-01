@@ -1,6 +1,6 @@
 package com.tencent.aladdin.config.handlers;
 
-public abstract interface AladdinConfigHandler
+abstract interface AladdinConfigHandler
 {
   public abstract boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString);
   
@@ -8,7 +8,7 @@ public abstract interface AladdinConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aladdin.config.handlers.AladdinConfigHandler
  * JD-Core Version:    0.7.0.1
  */

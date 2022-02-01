@@ -1,25 +1,31 @@
 package com.tencent.mobileqq.ar.model;
 
-import anfx;
 import com.tencent.qphone.base.util.QLog;
 
-public class QQARSession$4
+class QQARSession$4
   implements Runnable
 {
-  public QQARSession$4(anfx paramanfx) {}
+  QQARSession$4(QQARSession paramQQARSession) {}
   
   public void run()
   {
-    QLog.i("AREngine_QQARSession", 1, "uninit run. mIsInited = " + anfx.b(this.this$0));
-    anfx.a(this.this$0);
-    this.this$0.a = 5;
-    anfx.a(this.this$0, false);
-    QLog.i("AREngine_QQARSession", 1, "uninit end. mIsInited = " + anfx.b(this.this$0));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uninit run. mIsInited = ");
+    ((StringBuilder)localObject).append(QQARSession.b(this.this$0));
+    QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
+    QQARSession.c(this.this$0);
+    localObject = this.this$0;
+    ((QQARSession)localObject).a = 5;
+    QQARSession.a((QQARSession)localObject, false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uninit end. mIsInited = ");
+    ((StringBuilder)localObject).append(QQARSession.b(this.this$0));
+    QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.4
  * JD-Core Version:    0.7.0.1
  */

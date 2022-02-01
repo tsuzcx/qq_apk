@@ -19,22 +19,23 @@ class UIThreadOffFunction$InnerHandler
       return;
     }
     AssertUtils.checkNotNull(paramMessage.obj);
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = paramMessage.obj;
-      this.this$0.notifyResult(paramMessage);
+      if (i != 2) {
+        return;
+      }
+      paramMessage = (Error)paramMessage.obj;
+      this.this$0.notifyError(paramMessage);
       return;
     }
-    paramMessage = (Error)paramMessage.obj;
-    this.this$0.notifyError(paramMessage);
+    paramMessage = paramMessage.obj;
+    this.this$0.notifyResult(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.reactive.UIThreadOffFunction.InnerHandler
  * JD-Core Version:    0.7.0.1
  */

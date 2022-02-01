@@ -27,14 +27,16 @@ public final class hummer_commelem$MsgElemInfo_servtype21$C2CConfessContext
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 72, 80, 88, 96 }, new String[] { "uint64_confessor_uin", "uint64_confess_to_uin", "uint64_send_uin", "bytes_confessor_nick", "bytes_confess", "uint32_bg_type", "uint32_topic_id", "uint64_confess_time", "uint32_confessor_sex", "uint32_biz_type", "uint32_confess_num", "uint32_confess_to_sex" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, C2CConfessContext.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 72, 80, 88, 96 }, new String[] { "uint64_confessor_uin", "uint64_confess_to_uin", "uint64_send_uin", "bytes_confessor_nick", "bytes_confess", "uint32_bg_type", "uint32_topic_id", "uint64_confess_time", "uint32_confessor_sex", "uint32_biz_type", "uint32_confess_num", "uint32_confess_to_sex" }, new Object[] { localLong, localLong, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localLong, localInteger, localInteger, localInteger, localInteger }, C2CConfessContext.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype21.C2CConfessContext
  * JD-Core Version:    0.7.0.1
  */

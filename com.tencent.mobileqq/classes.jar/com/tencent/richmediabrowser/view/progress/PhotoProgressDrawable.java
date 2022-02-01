@@ -47,10 +47,11 @@ public class PhotoProgressDrawable
   {
     paramCanvas.save();
     paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-    if (this.mBitmap == null) {
+    Object localObject = this.mBitmap;
+    if (localObject == null) {
       return;
     }
-    int i = this.mBitmap.getWidth() / 2;
+    int i = ((Bitmap)localObject).getWidth() / 2;
     int j = this.mBitmap.getHeight() / 2;
     if (!this.inited)
     {
@@ -62,19 +63,40 @@ public class PhotoProgressDrawable
     paramCanvas.drawBitmap(this.mBitmap, this.mMatrix, null);
     if (this.isDrawText)
     {
-      if (this.mProgress < 10) {
-        break label183;
+      double d1;
+      double d2;
+      float f;
+      if (this.mProgress >= 10)
+      {
+        localObject = this.mProgressText;
+        d1 = this.centerX;
+        d2 = i;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f = (float)(d1 - d2 * 0.6D);
+        d1 = this.centerY;
+        d2 = j;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        paramCanvas.drawText((String)localObject, f, (float)(d1 + d2 * 0.25D), this.mPaint);
       }
-      paramCanvas.drawText(this.mProgressText, (float)(this.centerX - i * 0.6D), (float)(this.centerY + j * 0.25D), this.mPaint);
+      else
+      {
+        localObject = this.mProgressText;
+        d1 = this.centerX;
+        d2 = i;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f = (float)(d1 - d2 * 0.375D);
+        d1 = this.centerY;
+        d2 = j;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        paramCanvas.drawText((String)localObject, f, (float)(d1 + d2 * 0.25D), this.mPaint);
+      }
     }
-    for (;;)
-    {
-      paramCanvas.restore();
-      invalidateSelf();
-      return;
-      label183:
-      paramCanvas.drawText(this.mProgressText, (float)(this.centerX - i * 0.375D), (float)(this.centerY + j * 0.25D), this.mPaint);
-    }
+    paramCanvas.restore();
+    invalidateSelf();
   }
   
   public void enableDrawText()
@@ -89,16 +111,17 @@ public class PhotoProgressDrawable
   
   protected boolean onLevelChange(int paramInt)
   {
-    int i = 99;
     int j = paramInt / 85;
-    if (j > 99) {}
-    for (;;)
-    {
-      this.mProgress = i;
-      this.mProgressText = (this.mProgress + "%");
-      return super.onLevelChange(paramInt);
-      i = j;
+    int i = j;
+    if (j > 99) {
+      i = 99;
     }
+    this.mProgress = i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mProgress);
+    localStringBuilder.append("%");
+    this.mProgressText = localStringBuilder.toString();
+    return super.onLevelChange(paramInt);
   }
   
   public void setAlpha(int paramInt) {}
@@ -115,7 +138,7 @@ public class PhotoProgressDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.progress.PhotoProgressDrawable
  * JD-Core Version:    0.7.0.1
  */

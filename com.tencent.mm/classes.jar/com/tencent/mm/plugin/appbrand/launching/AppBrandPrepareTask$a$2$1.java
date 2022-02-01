@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.content.Intent;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class AppBrandPrepareTask$a$2$1
   implements Runnable
@@ -13,25 +14,25 @@ final class AppBrandPrepareTask$a$2$1
   
   public final void run()
   {
-    AppMethodBeat.i(131742);
-    Toast.makeText(ah.getContext(), 2131296557, 0).show();
+    AppMethodBeat.i(47093);
+    Toast.makeText(MMApplicationContext.getContext(), ba.i.app_brand_account_release_error, 0).show();
     try
     {
       Intent localIntent = new Intent();
       localIntent.addFlags(268435456).addFlags(67108864);
-      d.f(ah.getContext(), "com.tencent.mm.ui.LauncherUI", localIntent);
-      AppMethodBeat.o(131742);
+      c.g(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI", localIntent);
+      AppMethodBeat.o(47093);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(131742);
+      AppMethodBeat.o(47093);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandPrepareTask.a.2.1
  * JD-Core Version:    0.7.0.1
  */

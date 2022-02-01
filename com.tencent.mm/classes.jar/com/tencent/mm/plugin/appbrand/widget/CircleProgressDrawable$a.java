@@ -6,18 +6,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CircleProgressDrawable$a
 {
-  public static final Interpolator jay;
+  public static final Interpolator uxC;
   
   static
   {
-    AppMethodBeat.i(77385);
-    jay = new LinearInterpolator();
-    AppMethodBeat.o(77385);
+    AppMethodBeat.i(131454);
+    uxC = new LinearInterpolator();
+    AppMethodBeat.o(131454);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.CircleProgressDrawable.a
  * JD-Core Version:    0.7.0.1
  */

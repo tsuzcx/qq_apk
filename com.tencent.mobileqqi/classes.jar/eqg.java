@@ -1,11 +1,4 @@
-import android.widget.Button;
-
-class eqg
-{
-  public Button a;
-  
-  private eqg(eqd parameqd) {}
-}
+public class eqg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar

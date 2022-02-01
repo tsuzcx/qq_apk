@@ -18,13 +18,14 @@ public final class cmd0xcd4$InputNotifyRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "sint32_result", "bytes_err_msg", "uint32_interval" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, InputNotifyRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "sint32_result", "bytes_err_msg", "uint32_interval" }, new Object[] { localInteger, localByteStringMicro, localInteger }, InputNotifyRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xcd4.cmd0xcd4.InputNotifyRsp
  * JD-Core Version:    0.7.0.1
  */

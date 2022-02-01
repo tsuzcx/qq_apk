@@ -7,6 +7,9 @@ import java.util.List;
 
 public abstract interface IDecoderTrack
 {
+  public static final int FLAG_PLAY = 0;
+  public static final int FLAG_SEEK = 1;
+  
   public abstract void asyncReadNextSample(CMTime paramCMTime);
   
   public abstract void clipRangeAndClearRange(CMTimeRange paramCMTimeRange);
@@ -21,6 +24,8 @@ public abstract interface IDecoderTrack
   
   public abstract int getTrackId();
   
+  public abstract CMSampleBuffer readCurrentSample();
+  
   public abstract CMSampleBuffer readSample();
   
   public abstract CMSampleBuffer readSample(CMTime paramCMTime);
@@ -32,6 +37,8 @@ public abstract interface IDecoderTrack
   public abstract void setDecodeType(IDecoder.DecodeType paramDecodeType);
   
   public abstract void setFrameRate(int paramInt);
+  
+  public abstract void setTrackIndex(int paramInt);
   
   public abstract void setTrackSegments(List<DecoderTrackSegment> paramList);
   
@@ -45,7 +52,7 @@ public abstract interface IDecoderTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.IDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

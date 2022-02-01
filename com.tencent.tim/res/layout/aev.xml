@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="70.0dip" android:layout_height="75.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <RelativeLayout android:id="@id/e3y" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="2.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/d1d" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true" />
+            <RelativeLayout android:id="@id/d1n" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+                <ImageView android:layout_width="7.0dip" android:layout_height="7.0dip" android:src="@drawable/skin_tips_dot" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:id="@id/d1y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q22" android:maxEms="5" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/e3y" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/dgn" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_alignParentTop="true" />
+</RelativeLayout>

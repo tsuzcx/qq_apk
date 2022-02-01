@@ -32,94 +32,47 @@ public class BigHeadMaskManager
   
   public int getMergedMask(boolean paramBoolean)
   {
-    int i = 0;
     if ((this.mMaskArray[0].hasValidData) && (!this.mMaskArray[1].hasValidData)) {
-      i = this.mMaskArray[0].mTextureId;
+      return this.mMaskArray[0].mTextureId;
     }
-    do
-    {
-      return i;
-      if ((!this.mMaskArray[0].hasValidData) && (this.mMaskArray[1].hasValidData)) {
-        return this.mMaskArray[1].mTextureId;
-      }
-    } while (!this.mMaskArray[0].hasValidData);
-    i = 0;
+    if ((!this.mMaskArray[0].hasValidData) && (this.mMaskArray[1].hasValidData)) {
+      return this.mMaskArray[1].mTextureId;
+    }
+    if (!this.mMaskArray[0].hasValidData) {
+      return 0;
+    }
+    int i = 0;
     int k = 0;
     int j = 0;
-    if (i < this.mMaskArray.length)
+    BigHeadMaskManager.BGMask[] arrayOfBGMask;
+    for (;;)
     {
-      if (this.mMaskArray[i].last) {
+      arrayOfBGMask = this.mMaskArray;
+      if (i >= arrayOfBGMask.length) {
+        break;
+      }
+      if (arrayOfBGMask[i].last) {
+        k = i;
+      } else {
         j = i;
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        k = i;
-      }
+      i += 1;
     }
     if (paramBoolean)
     {
-      this.mRenderMerge.setUserTextureId(this.mMaskArray[k].mTextureId);
+      this.mRenderMerge.setUserTextureId(arrayOfBGMask[j].mTextureId);
       this.mRenderMerge.bind();
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(0, 768);
-      this.mRender.drawTexture(3553, this.mMaskArray[j].mTextureId, null, null);
+      this.mRender.drawTexture(3553, this.mMaskArray[k].mTextureId, null, null);
       GLES20.glDisable(3042);
       this.mRenderMerge.unbind();
-      return this.mMaskArray[k].mTextureId;
+      return this.mMaskArray[j].mTextureId;
     }
-    return this.mMaskArray[j].mTextureId;
+    return arrayOfBGMask[k].mTextureId;
   }
   
   public int getSpaceMask()
-  {
-    int k = 0;
-    BigHeadMaskManager.BGMask[] arrayOfBGMask = this.mMaskArray;
-    int m = arrayOfBGMask.length;
-    int i = 0;
-    int j = k;
-    if (i < m)
-    {
-      BigHeadMaskManager.BGMask localBGMask = arrayOfBGMask[i];
-      if (localBGMask.last) {}
-      while (localBGMask.mUsed)
-      {
-        i += 1;
-        break;
-      }
-      localBGMask.mUsed = true;
-      localBGMask.hasValidData = false;
-      j = localBGMask.mTextureId;
-    }
-    return j;
-  }
-  
-  public void queueMask(int paramInt)
-  {
-    BigHeadMaskManager.BGMask[] arrayOfBGMask = this.mMaskArray;
-    int j = arrayOfBGMask.length;
-    int i = 0;
-    if (i < j)
-    {
-      BigHeadMaskManager.BGMask localBGMask = arrayOfBGMask[i];
-      if (localBGMask.mTextureId == paramInt) {
-        if (localBGMask.mUsed)
-        {
-          localBGMask.mUsed = false;
-          localBGMask.hasValidData = true;
-        }
-      }
-      for (localBGMask.last = true;; localBGMask.last = false)
-      {
-        i += 1;
-        break;
-        throw new RuntimeException("状态错误或者使用错误...");
-      }
-    }
-  }
-  
-  public void release()
   {
     BigHeadMaskManager.BGMask[] arrayOfBGMask = this.mMaskArray;
     int j = arrayOfBGMask.length;
@@ -127,22 +80,71 @@ public class BigHeadMaskManager
     while (i < j)
     {
       BigHeadMaskManager.BGMask localBGMask = arrayOfBGMask[i];
-      if (localBGMask != null) {
-        localBGMask.destroy();
+      if ((!localBGMask.last) && (!localBGMask.mUsed))
+      {
+        localBGMask.mUsed = true;
+        localBGMask.hasValidData = false;
+        return localBGMask.mTextureId;
       }
       i += 1;
     }
-    if (this.mRender != null) {
-      this.mRender.release();
+    return 0;
+  }
+  
+  public void queueMask(int paramInt)
+  {
+    BigHeadMaskManager.BGMask[] arrayOfBGMask = this.mMaskArray;
+    int j = arrayOfBGMask.length;
+    int i = 0;
+    while (i < j)
+    {
+      BigHeadMaskManager.BGMask localBGMask = arrayOfBGMask[i];
+      if (localBGMask.mTextureId == paramInt)
+      {
+        if (localBGMask.mUsed)
+        {
+          localBGMask.mUsed = false;
+          localBGMask.hasValidData = true;
+          localBGMask.last = true;
+        }
+        else
+        {
+          throw new RuntimeException("状态错误或者使用错误...");
+        }
+      }
+      else {
+        localBGMask.last = false;
+      }
+      i += 1;
     }
-    if (this.mRenderMerge != null) {
-      this.mRenderMerge.destroy();
+  }
+  
+  public void release()
+  {
+    Object localObject1 = this.mMaskArray;
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      if (localObject2 != null) {
+        localObject2.destroy();
+      }
+      i += 1;
+    }
+    localObject1 = this.mRender;
+    if (localObject1 != null) {
+      ((TextureRender)localObject1).release();
+    }
+    localObject1 = this.mRenderMerge;
+    if (localObject1 != null) {
+      ((RenderBuffer)localObject1).destroy();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.bighead.BigHeadMaskManager
  * JD-Core Version:    0.7.0.1
  */

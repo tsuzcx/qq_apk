@@ -5,12 +5,12 @@ public final class c$az
 {
   public c$az()
   {
-    super("disablePullDownRefresh", "disablePullDownRefresh", 205, false);
+    super("currentMpInfoHide", "currentMpInfoHide", 347, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.az
  * JD-Core Version:    0.7.0.1
  */

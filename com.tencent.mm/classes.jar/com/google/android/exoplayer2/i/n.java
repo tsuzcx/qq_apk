@@ -4,108 +4,196 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
 {
-  private int aJm;
-  private int aJn;
-  private int aJo;
+  private int cTe;
+  private int cTf;
+  private int cTg;
   private byte[] data;
   
   public n(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(95920);
+    AppMethodBeat.i(93182);
     l(paramArrayOfByte, paramInt1, paramInt2);
-    AppMethodBeat.o(95920);
+    AppMethodBeat.o(93182);
   }
   
-  private boolean eq(int paramInt)
+  private void Sh()
   {
-    return (2 <= paramInt) && (paramInt < this.aJm) && (this.data[paramInt] == 3) && (this.data[(paramInt - 2)] == 0) && (this.data[(paramInt - 1)] == 0);
-  }
-  
-  private void ok()
-  {
-    AppMethodBeat.i(95930);
-    if ((this.aJn >= 0) && ((this.aJn < this.aJm) || ((this.aJn == this.aJm) && (this.aJo == 0)))) {}
+    AppMethodBeat.i(93192);
+    if ((this.cTf >= 0) && ((this.cTf < this.cTe) || ((this.cTf == this.cTe) && (this.cTg == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      AppMethodBeat.o(95930);
+      AppMethodBeat.o(93192);
       return;
     }
   }
   
-  public final int dD(int paramInt)
+  private boolean iK(int paramInt)
+  {
+    return (2 <= paramInt) && (paramInt < this.cTe) && (this.data[paramInt] == 3) && (this.data[(paramInt - 2)] == 0) && (this.data[(paramInt - 1)] == 0);
+  }
+  
+  public final boolean Sg()
+  {
+    AppMethodBeat.i(93187);
+    if ((this.data[this.cTf] & 128 >> this.cTg) != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      UD();
+      AppMethodBeat.o(93187);
+      return bool;
+    }
+  }
+  
+  public final void UD()
+  {
+    AppMethodBeat.i(93184);
+    int i = this.cTg + 1;
+    this.cTg = i;
+    int j;
+    if (i == 8)
+    {
+      this.cTg = 0;
+      j = this.cTf;
+      if (!iK(this.cTf + 1)) {
+        break label65;
+      }
+    }
+    label65:
+    for (i = 2;; i = 1)
+    {
+      this.cTf = (i + j);
+      Sh();
+      AppMethodBeat.o(93184);
+      return;
+    }
+  }
+  
+  public final boolean UR()
+  {
+    AppMethodBeat.i(93189);
+    int k = this.cTf;
+    int m = this.cTg;
+    int i = 0;
+    while ((this.cTf < this.cTe) && (!Sg())) {
+      i += 1;
+    }
+    if (this.cTf == this.cTe) {}
+    for (int j = 1;; j = 0)
+    {
+      this.cTf = k;
+      this.cTg = m;
+      if ((j != 0) || (!iJ(i * 2 + 1))) {
+        break;
+      }
+      AppMethodBeat.o(93189);
+      return true;
+    }
+    AppMethodBeat.o(93189);
+    return false;
+  }
+  
+  public final int US()
+  {
+    AppMethodBeat.i(93190);
+    int j = UT();
+    if (j % 2 == 0) {}
+    for (int i = -1;; i = 1)
+    {
+      j = (j + 1) / 2;
+      AppMethodBeat.o(93190);
+      return i * j;
+    }
+  }
+  
+  public final int UT()
+  {
+    int j = 0;
+    AppMethodBeat.i(93191);
+    int i = 0;
+    while (!Sg()) {
+      i += 1;
+    }
+    if (i > 0) {
+      j = hQ(i);
+    }
+    AppMethodBeat.o(93191);
+    return (1 << i) - 1 + j;
+  }
+  
+  public final int hQ(int paramInt)
   {
     int j = 2;
-    AppMethodBeat.i(95926);
-    this.aJo += paramInt;
+    AppMethodBeat.i(93188);
+    this.cTg += paramInt;
     int i = 0;
-    if (this.aJo > 8)
+    if (this.cTg > 8)
     {
-      this.aJo -= 8;
-      k = i | (this.data[this.aJn] & 0xFF) << this.aJo;
-      m = this.aJn;
-      if (eq(this.aJn + 1)) {}
+      this.cTg -= 8;
+      k = i | (this.data[this.cTf] & 0xFF) << this.cTg;
+      m = this.cTf;
+      if (iK(this.cTf + 1)) {}
       for (i = 2;; i = 1)
       {
-        this.aJn = (i + m);
+        this.cTf = (i + m);
         i = k;
         break;
       }
     }
-    int k = this.data[this.aJn];
-    int m = this.aJo;
+    int k = this.data[this.cTf];
+    int m = this.cTg;
     int n;
-    if (this.aJo == 8)
+    if (this.cTg == 8)
     {
-      this.aJo = 0;
-      n = this.aJn;
-      if (!eq(this.aJn + 1)) {
+      this.cTg = 0;
+      n = this.cTf;
+      if (!iK(this.cTf + 1)) {
         break label190;
       }
     }
     for (;;)
     {
-      this.aJn = (n + j);
-      ok();
-      AppMethodBeat.o(95926);
+      this.cTf = (n + j);
+      Sh();
+      AppMethodBeat.o(93188);
       return (i | (k & 0xFF) >> 8 - m) & -1 >>> 32 - paramInt;
       label190:
       j = 1;
     }
   }
   
-  public final void dE(int paramInt)
+  public final void hR(int paramInt)
   {
-    AppMethodBeat.i(95923);
-    int i = this.aJn;
+    AppMethodBeat.i(93185);
+    int i = this.cTf;
     int j = paramInt / 8;
-    this.aJn += j;
-    this.aJo = (paramInt - j * 8 + this.aJo);
-    if (this.aJo > 7)
+    this.cTf += j;
+    this.cTg = (paramInt - j * 8 + this.cTg);
+    if (this.cTg > 7)
     {
-      this.aJn += 1;
-      this.aJo -= 8;
+      this.cTf += 1;
+      this.cTg -= 8;
     }
-    for (paramInt = i + 1; paramInt <= this.aJn; paramInt = i + 1)
+    for (paramInt = i + 1; paramInt <= this.cTf; paramInt = i + 1)
     {
       i = paramInt;
-      if (eq(paramInt))
+      if (iK(paramInt))
       {
-        this.aJn += 1;
+        this.cTf += 1;
         i = paramInt + 2;
       }
     }
-    ok();
-    AppMethodBeat.o(95923);
+    Sh();
+    AppMethodBeat.o(93185);
   }
   
-  public final boolean ep(int paramInt)
+  public final boolean iJ(int paramInt)
   {
-    AppMethodBeat.i(95924);
-    int m = this.aJn;
+    AppMethodBeat.i(93186);
+    int m = this.cTf;
     int j = paramInt / 8;
-    int i = this.aJn + j;
-    int k = this.aJo + paramInt - j * 8;
+    int i = this.cTf + j;
+    int k = this.cTg + paramInt - j * 8;
     paramInt = i;
     j = k;
     if (k > 7)
@@ -114,11 +202,11 @@ public final class n
       j = k - 8;
     }
     i = m + 1;
-    while ((i <= paramInt) && (paramInt < this.aJm))
+    while ((i <= paramInt) && (paramInt < this.cTe))
     {
       k = paramInt;
       m = i;
-      if (eq(i))
+      if (iK(i))
       {
         k = paramInt + 1;
         m = i + 2;
@@ -126,117 +214,29 @@ public final class n
       i = m + 1;
       paramInt = k;
     }
-    if ((paramInt < this.aJm) || ((paramInt == this.aJm) && (j == 0)))
+    if ((paramInt < this.cTe) || ((paramInt == this.cTe) && (j == 0)))
     {
-      AppMethodBeat.o(95924);
+      AppMethodBeat.o(93186);
       return true;
     }
-    AppMethodBeat.o(95924);
+    AppMethodBeat.o(93186);
     return false;
   }
   
   public final void l(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(95921);
+    AppMethodBeat.i(93183);
     this.data = paramArrayOfByte;
-    this.aJn = paramInt1;
-    this.aJm = paramInt2;
-    this.aJo = 0;
-    ok();
-    AppMethodBeat.o(95921);
-  }
-  
-  public final boolean oj()
-  {
-    AppMethodBeat.i(95925);
-    if ((this.data[this.aJn] & 128 >> this.aJo) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      qK();
-      AppMethodBeat.o(95925);
-      return bool;
-    }
-  }
-  
-  public final void qK()
-  {
-    AppMethodBeat.i(95922);
-    int i = this.aJo + 1;
-    this.aJo = i;
-    int j;
-    if (i == 8)
-    {
-      this.aJo = 0;
-      j = this.aJn;
-      if (!eq(this.aJn + 1)) {
-        break label65;
-      }
-    }
-    label65:
-    for (i = 2;; i = 1)
-    {
-      this.aJn = (i + j);
-      ok();
-      AppMethodBeat.o(95922);
-      return;
-    }
-  }
-  
-  public final boolean qX()
-  {
-    AppMethodBeat.i(95927);
-    int k = this.aJn;
-    int m = this.aJo;
-    int i = 0;
-    while ((this.aJn < this.aJm) && (!oj())) {
-      i += 1;
-    }
-    if (this.aJn == this.aJm) {}
-    for (int j = 1;; j = 0)
-    {
-      this.aJn = k;
-      this.aJo = m;
-      if ((j != 0) || (!ep(i * 2 + 1))) {
-        break;
-      }
-      AppMethodBeat.o(95927);
-      return true;
-    }
-    AppMethodBeat.o(95927);
-    return false;
-  }
-  
-  public final int qY()
-  {
-    AppMethodBeat.i(95928);
-    int j = qZ();
-    if (j % 2 == 0) {}
-    for (int i = -1;; i = 1)
-    {
-      j = (j + 1) / 2;
-      AppMethodBeat.o(95928);
-      return i * j;
-    }
-  }
-  
-  public final int qZ()
-  {
-    int j = 0;
-    AppMethodBeat.i(95929);
-    int i = 0;
-    while (!oj()) {
-      i += 1;
-    }
-    if (i > 0) {
-      j = dD(i);
-    }
-    AppMethodBeat.o(95929);
-    return (1 << i) - 1 + j;
+    this.cTf = paramInt1;
+    this.cTe = paramInt2;
+    this.cTg = 0;
+    Sh();
+    AppMethodBeat.o(93183);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.i.n
  * JD-Core Version:    0.7.0.1
  */

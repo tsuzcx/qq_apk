@@ -11,7 +11,7 @@ public final class StCommonExt
 {
   static Map<String, String> cache_mapInfo = new HashMap();
   public String attachInfo = "";
-  public Map<String, String> mapInfo;
+  public Map<String, String> mapInfo = null;
   
   static
   {
@@ -34,17 +34,19 @@ public final class StCommonExt
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapInfo != null) {
-      paramJceOutputStream.write(this.mapInfo, 0);
+    Object localObject = this.mapInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.attachInfo != null) {
-      paramJceOutputStream.write(this.attachInfo, 1);
+    localObject = this.attachInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_PUBLIC.StCommonExt
  * JD-Core Version:    0.7.0.1
  */

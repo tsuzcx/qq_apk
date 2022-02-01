@@ -10,10 +10,10 @@ public final class GetPoiInfoRsp_V2
 {
   static ArrayList<PoiInfo_V2> cache_vPoiList = new ArrayList();
   public int iHasMore = 1;
-  public int iTotalNum;
+  public int iTotalNum = 0;
   public String request_id = "";
   public String strAttachInfo = "";
-  public ArrayList<PoiInfo_V2> vPoiList;
+  public ArrayList<PoiInfo_V2> vPoiList = null;
   
   static
   {
@@ -45,18 +45,20 @@ public final class GetPoiInfoRsp_V2
   {
     paramJceOutputStream.write(this.vPoiList, 0);
     paramJceOutputStream.write(this.iTotalNum, 1);
-    if (this.strAttachInfo != null) {
-      paramJceOutputStream.write(this.strAttachInfo, 2);
+    String str = this.strAttachInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.iHasMore, 3);
-    if (this.request_id != null) {
-      paramJceOutputStream.write(this.request_id, 4);
+    str = this.request_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.GetPoiInfoRsp_V2
  * JD-Core Version:    0.7.0.1
  */

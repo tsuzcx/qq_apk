@@ -1,64 +1,67 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.threadpool.j.a;
+import com.tencent.threadpool.j.d;
 
 public abstract class EmojiBaseActivity
   extends MMActivity
 {
-  private EmojiBaseActivity.a lle;
-  EmojiBaseActivity.b llf;
-  private HandlerThread mHandlerThread;
+  private a xRy;
+  b xRz;
   
-  public final void bms()
+  public final void dBx()
   {
-    if (this.llf != null) {
-      this.llf.removeMessages(131074);
+    if (this.xRz != null) {
+      this.xRz.removeMessages(131074);
     }
   }
   
-  public final void eb(int paramInt1, int paramInt2)
+  public final void gS(int paramInt1, int paramInt2)
   {
-    if (this.llf != null) {
-      this.llf.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    if (this.xRz != null) {
+      this.xRz.sendEmptyMessageDelayed(paramInt1, paramInt2);
     }
   }
   
-  public abstract void m(Message paramMessage);
+  public abstract void k(Message paramMessage);
   
-  public abstract void n(Message paramMessage);
+  public abstract void l(Message paramMessage);
   
-  public final void o(Message paramMessage)
+  public final void m(Message paramMessage)
   {
-    if (this.llf != null) {
-      this.llf.sendMessage(paramMessage);
+    if (this.xRz != null) {
+      this.xRz.sendMessage(paramMessage);
+    }
+  }
+  
+  public final void n(Message paramMessage)
+  {
+    if (this.xRy != null) {
+      this.xRy.sendMessage(paramMessage);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.mHandlerThread = d.aqu("EmojiBaseActivity_handlerThread");
-    this.mHandlerThread.start();
-    this.lle = new EmojiBaseActivity.a(this, this.mHandlerThread.getLooper());
-    this.llf = new EmojiBaseActivity.b(this, getMainLooper());
+    this.xRy = new a(a.bFV("EmojiBaseActivity_handlerThread"));
+    this.xRz = new b(getMainLooper());
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.lle != null) && (this.lle.getLooper() != null)) {
-      this.lle.getLooper().quit();
+    if ((this.xRy != null) && (this.xRy.getLooper() != null)) {
+      this.xRy.getSerial().ahCy.quit();
     }
-    this.mHandlerThread = null;
-    this.lle = null;
-    this.llf = null;
+    this.xRy = null;
+    this.xRz = null;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -67,16 +70,43 @@ public abstract class EmojiBaseActivity
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void p(Message paramMessage)
+  final class a
+    extends MMHandler
   {
-    if (this.lle != null) {
-      this.lle.sendMessage(paramMessage);
+    a(a parama)
+    {
+      super();
+    }
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(108857);
+      super.handleMessage(paramMessage);
+      EmojiBaseActivity.this.k(paramMessage);
+      AppMethodBeat.o(108857);
+    }
+  }
+  
+  final class b
+    extends MMHandler
+  {
+    b(Looper paramLooper)
+    {
+      super();
+    }
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(108858);
+      super.handleMessage(paramMessage);
+      EmojiBaseActivity.this.l(paramMessage);
+      AppMethodBeat.o(108858);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiBaseActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -15,32 +15,33 @@ class TPBaseMediaCodecDecoder$AsyncDecodeHandler
   
   public void handleMessage(Message paramMessage)
   {
-    boolean bool = false;
-    int i = 0;
     for (;;)
     {
       synchronized (TPBaseMediaCodecDecoder.access$400(this.this$0))
       {
-        switch (paramMessage.what)
+        int j = paramMessage.what;
+        int i = 0;
+        boolean bool = false;
+        switch (j)
         {
+        case 1003: 
+          i = TPBaseMediaCodecDecoder.access$800(this.this$0);
+          break;
+        case 1002: 
+          i = TPBaseMediaCodecDecoder.access$700(this.this$0);
+          break;
+        case 1001: 
+          i = TPBaseMediaCodecDecoder.access$600(this.this$0, (Surface)paramMessage.obj);
+          break;
         case 1000: 
-          TPBaseMediaCodecDecoder.access$900(this.this$0, i);
-          return;
           TPBaseMediaCodecDecoder localTPBaseMediaCodecDecoder = this.this$0;
           i = paramMessage.arg1;
           if (paramMessage.arg2 == 1) {
             bool = true;
           }
           i = TPBaseMediaCodecDecoder.access$500(localTPBaseMediaCodecDecoder, i, bool);
-          break;
-        case 1001: 
-          i = TPBaseMediaCodecDecoder.access$600(this.this$0, (Surface)paramMessage.obj);
-          break;
-        case 1002: 
-          i = TPBaseMediaCodecDecoder.access$700(this.this$0);
-          break;
-        case 1003: 
-          i = TPBaseMediaCodecDecoder.access$800(this.this$0);
+          TPBaseMediaCodecDecoder.access$900(this.this$0, i);
+          return;
         }
       }
     }
@@ -48,7 +49,7 @@ class TPBaseMediaCodecDecoder$AsyncDecodeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPBaseMediaCodecDecoder.AsyncDecodeHandler
  * JD-Core Version:    0.7.0.1
  */

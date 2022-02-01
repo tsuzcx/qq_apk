@@ -1,194 +1,250 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.cqc;
-import com.tencent.mm.protocal.protobuf.cqd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.fhq;
+import com.tencent.mm.protocal.protobuf.fhr;
+import com.tencent.mm.protocal.protobuf.fhs;
+import com.tencent.mm.protocal.protobuf.fht;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import java.util.HashSet;
+import java.util.LinkedList;
+import org.json.JSONObject;
 
 public final class ac
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public long fQd;
-  public b rr;
+  private static HashSet<Long> oTr;
+  private com.tencent.mm.am.h callback;
+  private final String hHa;
+  private final com.tencent.mm.am.c rr;
   
-  public ac(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, int paramInt2)
+  static
   {
-    this(paramInt1, paramString1, paramString2, paramString3, paramString4, paramBoolean, paramInt2, true);
+    AppMethodBeat.i(150959);
+    oTr = new HashSet();
+    AppMethodBeat.o(150959);
   }
   
-  public ac(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
+  public ac(String paramString, int paramInt1, int paramInt2, LinkedList<fht> paramLinkedList)
   {
-    AppMethodBeat.i(60000);
-    this.fQd = 0L;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cqc();
-    ((b.a)localObject).fsY = new cqd();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/newverifypasswd";
-    ((b.a)localObject).funcId = 384;
-    ((b.a)localObject).reqCmdId = 182;
-    ((b.a)localObject).respCmdId = 1000000182;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (cqc)this.rr.fsV.fta;
-    ((cqc)localObject).OpCode = paramInt1;
-    ((cqc)localObject).xMf = paramInt2;
-    ((cqc)localObject).xYG = bo.apP(paramString1);
-    ((cqc)localObject).wwj = bo.apO(paramString1);
-    ((cqc)localObject).xgV = new bwc().aoF(paramString2);
-    ((cqc)localObject).xYH = new bwc().aoF(paramString3);
-    ((cqc)localObject).wwn = new bwc().aoF(paramString4);
-    if ((paramInt1 == 5) || (paramInt1 == 2))
+    AppMethodBeat.i(150955);
+    this.hHa = paramString;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fhr();
+    ((c.a)localObject).otF = new fhs();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/statusnotify";
+    ((c.a)localObject).funcId = 251;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fhr)c.b.b(this.rr.otB);
+    ((fhr)localObject).IMh = z.bAM();
+    ((fhr)localObject).abIu = paramInt1;
+    ((fhr)localObject).IMg = paramString;
+    ((fhr)localObject).YHk = System.currentTimeMillis();
+    if ((paramLinkedList != null) && (paramLinkedList.size() == paramInt2))
     {
-      this.fQd = new p(r.Zm()).longValue();
-      if (paramBoolean1)
-      {
-        paramString1 = g.RJ().QN().d(this.fQd, paramString3);
-        ((cqc)localObject).wuh = new SKBuiltinBuffer_t().setBuffer(paramString1);
-      }
+      ((fhr)localObject).abIv = paramInt2;
+      ((fhr)localObject).abIw.addAll(paramLinkedList);
     }
-    else
+    Log.d("MicroMsg.NetSceneStatusNotify", "summerstatus toUserName = " + paramString + " unreadChatListCount = " + ((fhr)localObject).abIw.size());
+    AppMethodBeat.o(150955);
+  }
+  
+  private ac(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(150956);
+    this.hHa = paramString1;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fhr();
+    ((c.a)localObject).otF = new fhs();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/statusnotify";
+    ((c.a)localObject).funcId = 251;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fhr)c.b.b(this.rr.otB);
+    ((fhr)localObject).IMh = z.bAM();
+    ((fhr)localObject).abIu = paramInt;
+    ((fhr)localObject).IMg = paramString1;
+    ((fhr)localObject).YHk = System.currentTimeMillis();
+    ((fhr)localObject).abIx = new fhq();
+    ((fhr)localObject).abIx.IGU = paramString2;
+    ((fhr)localObject).abIx.abIt = paramString3;
+    AppMethodBeat.o(150956);
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(150953);
+    Log.i("MicroMsg.NetSceneStatusNotify", "enterSession %s %s %s %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2, paramString3 });
+    if ((Util.isNullOrNil(paramString1)) || (ab.IV(paramString1)))
     {
-      paramString1 = bo.nullAsNil((String)g.RL().Ru().get(47, null));
-      ((cqc)localObject).wwo = new SKBuiltinBuffer_t().setBuffer(bo.apQ(paramString1));
-      paramInt2 = ((cqc)localObject).OpCode;
-      if (((cqc)localObject).wuh != null) {
-        break label387;
-      }
-      paramInt1 = -1;
-      label301:
-      if (((cqc)localObject).wuh != null) {
-        break label399;
-      }
-    }
-    label387:
-    label399:
-    for (paramString1 = "null";; paramString1 = bo.aqg(bo.cd(((cqc)localObject).wuh.getBufferToBytes())))
-    {
-      ab.i("MicroMsg.NetSceneVerifyPswd", "summerauth opCode[%d], hasSecCode[%b], isManualAuth[%b], len:%d, content:[%s]", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt1), paramString1 });
-      AppMethodBeat.o(60000);
+      AppMethodBeat.o(150953);
       return;
-      paramString1 = g.RJ().QN().a(this.fQd, bo.apP(paramString1), paramBoolean2);
-      break;
-      paramInt1 = ((cqc)localObject).wuh.getILen();
-      break label301;
     }
-  }
-  
-  public ac(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this(1, paramString1, paramString2, paramString3, paramString4, false, 0);
-  }
-  
-  public final String agx()
-  {
-    AppMethodBeat.i(60002);
-    try
+    if (!com.tencent.mm.kernel.h.baC().aZN())
     {
-      String str = ((cqd)this.rr.fsW.fta).wQf;
-      AppMethodBeat.o(60002);
-      return str;
+      AppMethodBeat.o(150953);
+      return;
     }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.NetSceneVerifyPswd", localException, "", new Object[0]);
-      AppMethodBeat.o(60002);
-    }
-    return null;
+    paramString1 = new ac(paramString1, paramInt, paramString2, paramString3);
+    com.tencent.mm.kernel.h.baD().mCm.a(paramString1, 0);
+    AppMethodBeat.o(150953);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public static void aY(String paramString, int paramInt)
   {
-    AppMethodBeat.i(60001);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(60001);
+    AppMethodBeat.i(236695);
+    cc localcc = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().aLG(paramString);
+    if (localcc != null) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("messageSvrId", localcc.field_msgSvrId);
+        localJSONObject.put("MsgCreateTime", localcc.getCreateTime());
+        a(paramString, paramInt, "lastMessage", localJSONObject.toString());
+        AppMethodBeat.o(236695);
+        return;
+      }
+      catch (Exception paramString) {}
+    }
+    AppMethodBeat.o(236695);
+  }
+  
+  public static void aZ(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(150951);
+    Log.i("MicroMsg.NetSceneStatusNotify", "enterSession %s %s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(150951);
+      return;
+    }
+    if ((!com.tencent.mm.kernel.h.baC().aZN()) || ((ab.IV(paramString)) && (!au.bvT(paramString))))
+    {
+      AppMethodBeat.o(150951);
+      return;
+    }
+    paramString = new ac(paramString, paramInt, 0, null);
+    com.tencent.mm.kernel.h.baD().mCm.a(paramString, 0);
+    AppMethodBeat.o(150951);
+  }
+  
+  public static void am(cc paramcc)
+  {
+    AppMethodBeat.i(150952);
+    com.tencent.mm.kernel.h.baF();
+    if (!((Boolean)com.tencent.mm.kernel.h.baE().ban().get(at.a.acPp, Boolean.TRUE)).booleanValue())
+    {
+      Log.i("MicroMsg.NetSceneStatusNotify", "[MicroMsg.MultiTerminalSyncMgr]autoSyncState close");
+      AppMethodBeat.o(150952);
+      return;
+    }
+    if (oTr.contains(Long.valueOf(paramcc.field_msgId)))
+    {
+      Log.i("MicroMsg.NetSceneStatusNotify", "[MicroMsg.MultiTerminalSyncMgr]sendSyncMultiTerminalCmd: has send cmd: msgSvrId:%d, msgLocalId:%d", new Object[] { Long.valueOf(paramcc.field_msgId), Long.valueOf(paramcc.field_msgId) });
+      AppMethodBeat.o(150952);
+      return;
+    }
+    oTr.add(Long.valueOf(paramcc.field_msgId));
+    if (!com.tencent.mm.kernel.h.baC().aZN())
+    {
+      AppMethodBeat.o(150952);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<![CDATA[<downloadList>");
+    localStringBuilder.append("<downloadItem>");
+    localStringBuilder.append("<username>");
+    localStringBuilder.append(paramcc.field_talker);
+    localStringBuilder.append("</username>");
+    localStringBuilder.append("<msgsvrid>");
+    localStringBuilder.append(paramcc.field_msgSvrId);
+    localStringBuilder.append("</msgsvrid>");
+    localStringBuilder.append("</downloadItem>");
+    localStringBuilder.append("</downloadList>]]>");
+    String str = localStringBuilder.toString();
+    Log.i("MicroMsg.NetSceneStatusNotify", "[MicroMsg.MultiTerminalSyncMgr]sendSyncMultiTerminalCmd:msgID:%d,  %s", new Object[] { Long.valueOf(paramcc.field_msgId), localStringBuilder });
+    paramcc = new ac(z.bAM(), 11, "DownloadFile", str);
+    com.tencent.mm.kernel.h.baD().mCm.a(paramcc, 0);
+    AppMethodBeat.o(150952);
+  }
+  
+  public static void bN(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(236718);
+    Log.i("MicroMsg.NetSceneStatusNotify", "enterSessionFunction %s %s %s", new Object[] { Integer.valueOf(9), paramString1, paramString2 });
+    paramString1 = new ac(z.bAM(), 9, paramString1, paramString2);
+    com.tencent.mm.kernel.h.baD().mCm.a(paramString1, 0);
+    AppMethodBeat.o(236718);
+  }
+  
+  public static boolean bO(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(236726);
+    if (!com.tencent.mm.kernel.h.baC().aZN())
+    {
+      Log.e("MicroMsg.NetSceneStatusNotify", "sendHandOffSyncCmd fail due to account has not initialized");
+      AppMethodBeat.o(236726);
+      return false;
+    }
+    if (!Util.isNullOrNil(paramString1))
+    {
+      paramString1 = new ac(z.bAM(), 11, paramString2, paramString1);
+      com.tencent.mm.kernel.h.baD().mCm.a(paramString1, 0);
+      AppMethodBeat.o(236726);
+      return true;
+    }
+    AppMethodBeat.o(236726);
+    return false;
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(150957);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(150957);
     return i;
   }
   
   public final int getType()
   {
-    return 384;
+    return 251;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(60003);
-    updateDispatchId(paramInt1);
-    paramArrayOfByte = (cqc)this.rr.fsV.fta;
-    paramq = (cqd)this.rr.fsW.fta;
-    if ((paramq.wrN != null) && (paramq.wrN.getILen() > 0)) {
-      ab.i("MicroMsg.NetSceneVerifyPswd", "summerauth parseRet[%b], len[%d]", new Object[] { Boolean.valueOf(g.RJ().QN().a(this.fQd, aa.a(paramq.wrN))), Integer.valueOf(paramq.wrN.getILen()) });
+    AppMethodBeat.i(150958);
+    if ((paramInt2 != 0) || (paramInt3 != 0)) {
+      Log.d("MicroMsg.NetSceneStatusNotify", "StatusNotify Error. userName=" + this.hHa + ", errType=" + paramInt2 + ", errCode=" + paramInt3 + ",errMsg=" + paramString);
     }
-    int i;
-    label269:
-    int j;
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      g.RL().Ru().set(77830, paramq.wQf);
-      g.RL().Ru().set(32, paramArrayOfByte.xYG);
-      g.RL().Ru().set(33, paramArrayOfByte.wwj);
-      g.RL().Ru().set(46, bo.cg(aa.a(paramq.wrT)));
-      paramArrayOfByte = bo.cg(aa.a(paramArrayOfByte.wwo));
-      g.RL().Ru().set(47, paramArrayOfByte);
-      g.RL().eHM.set(18, paramArrayOfByte);
-      g.RL().Ru().set(-1535680990, paramq.wrS);
-      if (paramq.wrT == null)
-      {
-        paramInt1 = 0;
-        if (paramq.wrS != null) {
-          break label348;
-        }
-        i = 0;
-        if (paramq.wQf != null) {
-          break label361;
-        }
-        j = 0;
-        label280:
-        ab.i("MicroMsg.NetSceneVerifyPswd", "A2Key.len %d, authKey.len: %d, ticketLen:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(j) });
-      }
-    }
-    for (;;)
-    {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(60003);
-      return;
-      paramInt1 = paramq.wrT.getILen();
-      break;
-      label348:
-      i = paramq.wrS.length();
-      break label269;
-      label361:
-      j = paramq.wQf.length();
-      break label280;
-      if (paramInt2 == 4)
-      {
-        g.RL().Ru().set(32, "");
-        g.RL().Ru().set(33, "");
-      }
-    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(150958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.ac
  * JD-Core Version:    0.7.0.1
  */

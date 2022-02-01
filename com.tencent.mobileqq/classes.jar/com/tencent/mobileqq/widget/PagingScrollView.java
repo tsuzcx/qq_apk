@@ -7,9 +7,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import bero;
-import berp;
-import berq;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 import java.util.ArrayList;
@@ -19,8 +16,8 @@ public class PagingScrollView
 {
   private boolean mCanScroll = true;
   protected GestureDetector mGestureDetector;
-  public boolean mIsOnSpecialView = false;
-  protected berp mScrollChangedListener;
+  boolean mIsOnSpecialView = false;
+  protected PagingScrollView.OnScrollChangedListener mScrollChangedListener;
   protected ArrayList<View> pagingViews;
   
   public PagingScrollView(Context paramContext)
@@ -44,7 +41,7 @@ public class PagingScrollView
       this.pagingViews = new ArrayList();
     }
     this.pagingViews.add(paramView);
-    paramView.setOnTouchListener(new bero(this));
+    paramView.setOnTouchListener(new PagingScrollView.1(this));
   }
   
   public void clearPagingViews()
@@ -67,7 +64,7 @@ public class PagingScrollView
       setOverScrollMode(0);
     }
     setFadingEdgeLength(0);
-    this.mGestureDetector = new GestureDetector(paramContext, new berq(this));
+    this.mGestureDetector = new GestureDetector(paramContext, new PagingScrollView.YScrollDetector(this));
   }
   
   protected boolean isOnView(View paramView, float paramFloat1, float paramFloat2)
@@ -88,63 +85,61 @@ public class PagingScrollView
     int j = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    int i;
-    if (j == 0) {
-      if (this.pagingViews != null) {
-        i = 0;
-      }
-    }
-    for (;;)
+    if (j == 0)
     {
-      if (i < this.pagingViews.size())
+      if (this.pagingViews != null)
       {
-        if (isOnView((View)this.pagingViews.get(i), f1, f2)) {
-          this.mIsOnSpecialView = true;
-        }
-      }
-      else
-      {
-        if (this.mIsOnSpecialView)
+        int i = 0;
+        while (i < this.pagingViews.size())
         {
-          getParent().requestDisallowInterceptTouchEvent(true);
-          if (QLog.isDevelopLevel()) {
-            QLog.i("PageScrollView", 4, "P.ITE ACT_DOWNE onSpecialView");
-          }
-        }
-        if ((this.mIsOnSpecialView) && ((j == 1) || (j == 3)))
-        {
-          this.mIsOnSpecialView = false;
-          getParent().requestDisallowInterceptTouchEvent(false);
-          this.mCanScroll = true;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("PageScrollView", 4, "P.ITE ACT_UP or CANCEL");
-          }
-        }
-        try
-        {
-          if (this.mIsOnSpecialView)
+          if (isOnView((View)this.pagingViews.get(i), f1, f2))
           {
-            super.onInterceptTouchEvent(paramMotionEvent);
-            return this.mGestureDetector.onTouchEvent(paramMotionEvent);
+            this.mIsOnSpecialView = true;
+            break;
           }
-          boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-          return bool;
-        }
-        catch (Exception paramMotionEvent)
-        {
-          paramMotionEvent.printStackTrace();
-          return false;
+          i += 1;
         }
       }
-      i += 1;
+      if (this.mIsOnSpecialView)
+      {
+        getParent().requestDisallowInterceptTouchEvent(true);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PageScrollView", 4, "P.ITE ACT_DOWNE onSpecialView");
+        }
+      }
     }
+    if ((this.mIsOnSpecialView) && ((j == 1) || (j == 3)))
+    {
+      this.mIsOnSpecialView = false;
+      getParent().requestDisallowInterceptTouchEvent(false);
+      this.mCanScroll = true;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PageScrollView", 4, "P.ITE ACT_UP or CANCEL");
+      }
+    }
+    try
+    {
+      if (this.mIsOnSpecialView)
+      {
+        super.onInterceptTouchEvent(paramMotionEvent);
+        return this.mGestureDetector.onTouchEvent(paramMotionEvent);
+      }
+      boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+      return bool;
+    }
+    catch (Exception paramMotionEvent)
+    {
+      paramMotionEvent.printStackTrace();
+    }
+    return false;
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mScrollChangedListener != null) {
-      this.mScrollChangedListener.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    PagingScrollView.OnScrollChangedListener localOnScrollChangedListener = this.mScrollChangedListener;
+    if (localOnScrollChangedListener != null) {
+      localOnScrollChangedListener.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -176,9 +171,10 @@ public class PagingScrollView
   
   public void removePagingView(View paramView)
   {
-    if (this.pagingViews != null)
+    ArrayList localArrayList = this.pagingViews;
+    if (localArrayList != null)
     {
-      int i = this.pagingViews.size() - 1;
+      int i = localArrayList.size() - 1;
       while (i >= 0)
       {
         if (this.pagingViews.get(i) == paramView)
@@ -191,14 +187,14 @@ public class PagingScrollView
     }
   }
   
-  public void setOnScrollChangedListener(berp paramberp)
+  public void setOnScrollChangedListener(PagingScrollView.OnScrollChangedListener paramOnScrollChangedListener)
   {
-    this.mScrollChangedListener = paramberp;
+    this.mScrollChangedListener = paramOnScrollChangedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PagingScrollView
  * JD-Core Version:    0.7.0.1
  */

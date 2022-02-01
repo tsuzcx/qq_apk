@@ -1,115 +1,92 @@
 package com.tencent.mm.plugin.sport.model;
 
-import android.database.Cursor;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteStatement;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONObject;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sport/model/SportKtUtil;", "", "()V", "Companion", "plugin-sport_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
-  extends j<com.tencent.mm.plugin.sport.a.e>
 {
-  public static final String[] spZ;
-  private static final String[] sqa;
+  public static final a SbZ;
+  private static Boolean Sca;
+  private static Boolean Scb;
   
   static
   {
-    AppMethodBeat.i(93707);
-    spZ = new String[] { j.getCreateSQLs(com.tencent.mm.plugin.sport.a.e.info, "SportStepItem") };
-    sqa = new String[] { String.format("CREATE INDEX IF NOT EXISTS %s_date ON %s(date);", new Object[] { "SportStepItem", "SportStepItem" }), String.format("CREATE INDEX IF NOT EXISTS %s_timestamp ON %s(timestamp);", new Object[] { "SportStepItem", "SportStepItem" }) };
-    AppMethodBeat.o(93707);
+    AppMethodBeat.i(263909);
+    SbZ = new a((byte)0);
+    AppMethodBeat.o(263909);
   }
   
-  public m()
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sport/model/SportKtUtil$Companion;", "", "()V", "TAG", "", "hasDefaultSensor", "", "Ljava/lang/Boolean;", "hasSystemFeature", "checkDeviceSupportSport", "context", "Landroid/content/Context;", "plugin-sport_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    super(g.RL().eHS, com.tencent.mm.plugin.sport.a.e.info, "SportStepItem", sqa);
-    AppMethodBeat.i(93701);
-    AppMethodBeat.o(93701);
-  }
-  
-  public static List<com.tencent.mm.plugin.sport.a.e> Y(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(93702);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = String.format("SELECT * FROM %s WHERE timestamp >= ? AND timestamp <= ?;", new Object[] { "SportStepItem" });
-    localObject = g.RL().eHS.a((String)localObject, new String[] { String.valueOf(paramLong1), String.valueOf(paramLong2) }, 0);
-    while (((Cursor)localObject).moveToNext())
+    public static boolean jX(Context paramContext)
     {
-      com.tencent.mm.plugin.sport.a.e locale = new com.tencent.mm.plugin.sport.a.e();
-      locale.convertFrom((Cursor)localObject);
-      localArrayList.add(locale);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(93702);
-    return localArrayList;
-  }
-  
-  public static void Z(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(93705);
-    String str = String.format("DELETE FROM %s WHERE timestamp >= %d AND timestamp <= endTime", new Object[] { "SportStepItem", Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    g.RL().eHS.execSQL(null, str);
-    AppMethodBeat.o(93705);
-  }
-  
-  public static com.tencent.mm.plugin.sport.a.e cyx()
-  {
-    AppMethodBeat.i(93703);
-    Object localObject1 = String.format("SELECT * FROM %s ORDER BY timestamp desc LIMIT 1;", new Object[] { "SportStepItem" });
-    localObject1 = g.RL().eHS.a((String)localObject1, null, 0);
-    try
-    {
-      if (((Cursor)localObject1).moveToNext())
+      AppMethodBeat.i(263903);
+      s.u(paramContext, "context");
+      if (d.rc(19))
       {
-        com.tencent.mm.plugin.sport.a.e locale = new com.tencent.mm.plugin.sport.a.e();
-        locale.convertFrom((Cursor)localObject1);
-        return locale;
+        Log.i("MicroMsg.Sport.SportKtUtil", "Not Support SDK VERSION");
+        AppMethodBeat.o(263903);
+        return false;
       }
-      return null;
+      if (m.hup() == null) {
+        m.E(Boolean.valueOf(paramContext.getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter")));
+      }
+      if (!s.p(m.hup(), Boolean.TRUE))
+      {
+        Log.i("MicroMsg.Sport.SportKtUtil", "Not Support FEATURE_SENSOR_STEP_COUNTER");
+        AppMethodBeat.o(263903);
+        return false;
+      }
+      try
+      {
+        if (m.huq() != null) {
+          break label152;
+        }
+        paramContext = MMApplicationContext.getContext().getSystemService("sensor");
+        if (paramContext == null)
+        {
+          paramContext = new NullPointerException("null cannot be cast to non-null type android.hardware.SensorManager");
+          AppMethodBeat.o(263903);
+          throw paramContext;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        Log.i("MicroMsg.Sport.SportKtUtil", "Not Support can not get sensor Exception");
+        AppMethodBeat.o(263903);
+        return false;
+      }
+      if (((SensorManager)paramContext).getDefaultSensor(19) != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        m.F(Boolean.valueOf(bool));
+        label152:
+        if (s.p(m.huq(), Boolean.TRUE)) {
+          break;
+        }
+        Log.i("MicroMsg.Sport.SportKtUtil", "Not Support can not get sensor");
+        AppMethodBeat.o(263903);
+        return false;
+      }
+      if (k.huj().optInt("deviceStepSwitch") != 1)
+      {
+        Log.i("MicroMsg.Sport.SportKtUtil", "Not Support deviceStepSwitch is off");
+        AppMethodBeat.o(263903);
+        return false;
+      }
+      AppMethodBeat.o(263903);
+      return true;
     }
-    finally
-    {
-      ((Cursor)localObject1).close();
-      AppMethodBeat.o(93703);
-    }
-  }
-  
-  public static void cyy()
-  {
-    AppMethodBeat.i(93704);
-    String str = String.format("DELETE FROM %s;", new Object[] { "SportStepItem" });
-    g.RL().eHS.execSQL(null, str);
-    AppMethodBeat.o(93704);
-  }
-  
-  public static void dy(List<com.tencent.mm.plugin.sport.a.e> paramList)
-  {
-    AppMethodBeat.i(93706);
-    SQLiteDatabase localSQLiteDatabase = g.RL().eHS.dzV();
-    if (!localSQLiteDatabase.inTransaction()) {
-      localSQLiteDatabase.beginTransaction();
-    }
-    SQLiteStatement localSQLiteStatement = localSQLiteDatabase.compileStatement(String.format("INSERT INTO %s (date, step, timestamp) VALUES (?,?,?)", new Object[] { "SportStepItem" }));
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      com.tencent.mm.plugin.sport.a.e locale = (com.tencent.mm.plugin.sport.a.e)paramList.next();
-      localSQLiteStatement.bindString(1, locale.field_date);
-      localSQLiteStatement.bindLong(2, locale.field_step);
-      localSQLiteStatement.bindLong(3, locale.field_timestamp);
-      localSQLiteStatement.execute();
-    }
-    if (localSQLiteDatabase.inTransaction())
-    {
-      localSQLiteDatabase.setTransactionSuccessful();
-      localSQLiteDatabase.endTransaction();
-    }
-    AppMethodBeat.o(93706);
   }
 }
 

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:id="@id/a3b" android:background="@drawable/sj" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/fv_" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/aai">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/nd" android:layout_height="@dimen/nd" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_outlined_favorites" app:iconColor="@color/a3h" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a3h" android:gravity="center_vertical" android:id="@id/fva" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/lg" />
+<LinearLayout android:orientation="vertical" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="280.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/geg" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:id="@id/gej" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/xd" android:gravity="center" android:background="@color/gn" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="选择一个表情" />
+        <LinearLayout android:orientation="vertical" android:id="@id/gei" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

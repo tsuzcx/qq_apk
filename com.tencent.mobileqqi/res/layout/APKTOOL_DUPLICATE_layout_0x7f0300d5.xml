@@ -2,5 +2,5 @@
 <FrameLayout android:padding="0.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:minWidth="50.0dip" android:minHeight="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080109" android:layout_width="50.0dip" android:layout_height="50.0dip" />
-    <ImageView android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080456" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204a7" />
+    <ImageView android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080455" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204a7" />
 </FrameLayout>

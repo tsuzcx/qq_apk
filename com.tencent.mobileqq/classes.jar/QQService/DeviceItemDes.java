@@ -8,7 +8,7 @@ public final class DeviceItemDes
   extends JceStruct
 {
   static byte[] cache_vecItemDes;
-  public byte[] vecItemDes;
+  public byte[] vecItemDes = null;
   
   public DeviceItemDes() {}
   
@@ -34,7 +34,7 @@ public final class DeviceItemDes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.DeviceItemDes
  * JD-Core Version:    0.7.0.1
  */

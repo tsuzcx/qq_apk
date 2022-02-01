@@ -1,12 +1,99 @@
-public abstract interface hxc
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
+import com.tencent.widget.XBaseAdapter;
+import java.util.ArrayList;
+
+public class hxc
+  extends DataSetObservable
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public hxc(XBaseAdapter paramXBaseAdapter) {}
   
-  public abstract void a(int... paramVarArgs);
+  public void a(int paramInt1, int paramInt2)
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof hxb)) {
+            ((hxb)localDataSetObserver).a(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
+  }
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public void a(int... paramVarArgs)
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof hxb)) {
+            ((hxb)localDataSetObserver).a(paramVarArgs);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
+  }
   
-  public abstract void c(int paramInt1, int paramInt2);
+  public void b(int paramInt1, int paramInt2)
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof hxb)) {
+            ((hxb)localDataSetObserver).b(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
+    }
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    int i = this.mObservers.size() - 1;
+    if (i >= 0)
+    {
+      DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+      if ((localDataSetObserver instanceof hxb)) {
+        ((hxb)localDataSetObserver).c(paramInt1, paramInt2);
+      }
+      for (;;)
+      {
+        i -= 1;
+        break;
+        localDataSetObserver.onChanged();
+      }
+    }
+  }
 }
 
 

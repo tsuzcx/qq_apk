@@ -15,16 +15,15 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import aoks;
-import benn;
-import bhtb;
+import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.util.VersionUtils;
 
 public class BubbleVideoView
   extends BubbleImageView
 {
-  private static benn a;
-  private Bitmap b;
-  private boolean c;
+  private static BubbleVideoView.DrawListener A;
+  private boolean B;
+  private Bitmap a;
   
   public BubbleVideoView(Context paramContext)
   {
@@ -43,154 +42,159 @@ public class BubbleVideoView
   
   private void b(Canvas paramCanvas)
   {
-    if (jdField_a_of_type_Benn != null) {
-      jdField_a_of_type_Benn.a(this, paramCanvas);
+    BubbleVideoView.DrawListener localDrawListener = A;
+    if (localDrawListener != null) {
+      localDrawListener.a(this, paramCanvas);
     }
   }
   
-  public static void setDrawListener(benn parambenn)
+  public static void setDrawListener(BubbleVideoView.DrawListener paramDrawListener)
   {
-    jdField_a_of_type_Benn = parambenn;
+    A = paramDrawListener;
   }
   
   protected void a()
   {
     String str = Build.MODEL.toUpperCase();
     if ((str.contains("M821")) || (str.contains("A0001"))) {
-      this.jdField_a_of_type_Int = 2;
+      this.e = 2;
     }
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (a())
+    if (c())
     {
-      if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && ((this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth() != getWidth()) || (this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight() != getHeight())))
+      localObject = this.a;
+      if ((localObject != null) && ((((Bitmap)localObject).getWidth() != getWidth()) || (this.a.getHeight() != getHeight())))
       {
-        this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+        this.a.recycle();
+        this.a = null;
       }
-      if (this.jdField_b_of_type_AndroidGraphicsBitmap == null) {}
-      try
+      if (this.a != null) {}
+    }
+    try
+    {
+      this.a = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError1)
+    {
+      label81:
+      label102:
+      label123:
+      Paint localPaint;
+      Bitmap localBitmap;
+      break label81;
+    }
+    try
+    {
+      this.a = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError2)
+    {
+      break label102;
+    }
+    try
+    {
+      this.a = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError3)
+    {
+      break label123;
+    }
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      localObject = new Canvas((Bitmap)localObject);
+      ((Canvas)localObject).setDensity(getResources().getDisplayMetrics().densityDpi);
+      localPaint = new Paint(1);
+      localPaint.setColor(-16777216);
+      ((Canvas)localObject).drawPath(this.s, localPaint);
+      localBitmap = this.a;
+      if (localBitmap.getPixel(localBitmap.getWidth() >> 1, this.a.getHeight() >> 1) != -16777216)
       {
-        this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-        if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
-        {
-          Canvas localCanvas = new Canvas(this.jdField_b_of_type_AndroidGraphicsBitmap);
-          localCanvas.setDensity(getResources().getDisplayMetrics().densityDpi);
-          Paint localPaint = new Paint(1);
-          localPaint.setColor(-16777216);
-          localCanvas.drawPath(this.jdField_c_of_type_AndroidGraphicsPath, localPaint);
-          if (this.jdField_b_of_type_AndroidGraphicsBitmap.getPixel(this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth() >> 1, this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight() >> 1) != -16777216)
-          {
-            localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
-            localCanvas.drawRect(0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight(), localPaint);
-            this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-          }
-        }
-        if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-          paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsPaint);
-        }
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        for (;;)
-        {
-          try
-          {
-            this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
-          }
-          catch (OutOfMemoryError localOutOfMemoryError2)
-          {
-            try
-            {
-              this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);
-            }
-            catch (OutOfMemoryError localOutOfMemoryError3) {}
-          }
-        }
+        localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
+        ((Canvas)localObject).drawRect(0.0F, 0.0F, this.a.getWidth(), this.a.getHeight(), localPaint);
+        this.q.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
       }
     }
-    super.a(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
+    localObject = this.a;
+    if (localObject != null)
+    {
+      paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, this.q);
+      return;
+      super.a(paramCanvas);
+    }
   }
   
   protected void b()
   {
-    this.e = f;
-    int i;
-    if (bhtb.e())
+    this.w = x;
+    if (VersionUtils.e()) {
+      this.e = 1;
+    } else {
+      this.e = 2;
+    }
+    a();
+    this.u = getResources();
+    if (Build.VERSION.SDK_INT >= 28)
     {
-      this.jdField_a_of_type_Int = 1;
-      a();
-      this.jdField_a_of_type_AndroidContentResResources = getResources();
-      if (Build.VERSION.SDK_INT >= 28)
+      this.y = true;
+      Object localObject = (String)QConfigManager.b().b(462);
+      if ((localObject != null) && (((String)localObject).length() > 0))
       {
-        this.g = true;
-        Object localObject = (String)aoks.a().a(462);
-        if ((localObject != null) && (((String)localObject).length() > 0))
+        localObject = ((String)localObject).split("\\|");
+        if ((localObject != null) && (localObject.length > 0))
         {
-          localObject = ((String)localObject).split("\\|");
-          if ((localObject != null) && (localObject.length > 0))
+          String str = Build.MODEL.toUpperCase();
+          int j = localObject.length;
+          int i = 0;
+          while (i < j)
           {
-            String str = Build.MODEL.toUpperCase();
-            int j = localObject.length;
-            i = 0;
-            label96:
-            if (i < j)
+            CharSequence localCharSequence = localObject[i];
+            if ((localCharSequence != null) && (localCharSequence.length() > 0) && (str.contains(localCharSequence)))
             {
-              CharSequence localCharSequence = localObject[i];
-              if ((localCharSequence == null) || (localCharSequence.length() <= 0) || (!str.contains(localCharSequence))) {
-                break label252;
-              }
-              this.g = false;
+              this.y = false;
+              break;
             }
+            i += 1;
           }
         }
       }
-      if (this.jdField_a_of_type_Int != 1) {
-        break label280;
-      }
-      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-16777216);
-      if (!this.g) {
-        break label259;
-      }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
-      this.jdField_c_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-      this.jdField_b_of_type_ArrayOfFloat = new float[8];
     }
-    label252:
-    while (this.jdField_a_of_type_Int != 2) {
-      for (;;)
-      {
-        return;
-        this.jdField_a_of_type_Int = 2;
-        break;
-        i += 1;
-        break label96;
-        this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+    if (this.e == 1)
+    {
+      this.q = new Paint();
+      this.q.setStyle(Paint.Style.FILL);
+      this.q.setAntiAlias(true);
+      this.q.setFilterBitmap(true);
+      this.q.setColor(-16777216);
+      if (this.y) {
+        this.q.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
+      } else {
+        this.q.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
       }
+      this.s = new Path();
+      this.t = new RectF();
+      this.r = new float[8];
+      return;
     }
-    label259:
-    label280:
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_c_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_ArrayOfFloat = new float[8];
+    if (this.e == 2)
+    {
+      this.g = new Paint();
+      this.g.setAntiAlias(true);
+      this.g.setFilterBitmap(true);
+      this.o = new RectF();
+      this.p = new RectF();
+      this.s = new Path();
+      this.t = new RectF();
+      this.r = new float[8];
+    }
+  }
+  
+  public boolean c()
+  {
+    return this.B;
   }
   
   public void draw(Canvas paramCanvas)
@@ -201,12 +205,12 @@ public class BubbleVideoView
   
   public void setUseXfermodeBitmap(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.B = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleVideoView
  * JD-Core Version:    0.7.0.1
  */

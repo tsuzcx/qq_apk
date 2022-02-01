@@ -27,7 +27,6 @@ public class VTransform
   private boolean disable;
   private float disableOpacity;
   private boolean inverse;
-  private float lastAlpha = 0.0F;
   private float lastTransformY;
   private int length;
   private int top = -1;
@@ -57,14 +56,13 @@ public class VTransform
   {
     float f = Math.min(Math.max(paramFloat, 0.0F), 1.0F);
     if (this.disable) {
-      paramFloat = this.disableOpacity;
+      return this.disableOpacity;
     }
-    do
-    {
-      return paramFloat;
-      paramFloat = f;
-    } while (!this.inverse);
-    return 1.0F - f;
+    paramFloat = f;
+    if (this.inverse) {
+      paramFloat = 1.0F - f;
+    }
+    return paramFloat;
   }
   
   private boolean hasAlpha(String paramString)
@@ -117,29 +115,32 @@ public class VTransform
   
   private void setDisable(Object paramObject)
   {
-    if (getHostView() == null) {}
-    do
-    {
+    if (getHostView() == null) {
       return;
-      this.disable = ViolaUtils.getBoolean(paramObject);
-      if (this.disable)
-      {
-        ((VFrameLayout)getHostView()).setAlpha(this.disableOpacity);
-        return;
-      }
-    } while ((this.weakListRef == null) || (this.weakListRef.get() == null) || (((VRecyclerList)this.weakListRef.get()).getHostView() == null));
-    paramObject = (VRecyclerList)this.weakListRef.get();
-    onScroll((RecyclerView)paramObject.getHostView(), true, 0, ((VRecyclerView)paramObject.getHostView()).getContentOffsetY());
+    }
+    this.disable = ViolaUtils.getBoolean(paramObject);
+    if (this.disable)
+    {
+      ((VFrameLayout)getHostView()).setAlpha(this.disableOpacity);
+      return;
+    }
+    paramObject = this.weakListRef;
+    if ((paramObject != null) && (paramObject.get() != null) && (((VRecyclerList)this.weakListRef.get()).getHostView() != null))
+    {
+      paramObject = (VRecyclerList)this.weakListRef.get();
+      onScroll((RecyclerView)paramObject.getHostView(), true, 0, ((VRecyclerView)paramObject.getHostView()).getContentOffsetY());
+    }
   }
   
   private void tryInitRecyclerListRef(RecyclerView paramRecyclerView)
   {
-    if (!(paramRecyclerView instanceof VRecyclerView)) {}
-    do
-    {
+    if (!(paramRecyclerView instanceof VRecyclerView)) {
       return;
-      paramRecyclerView = ((VRecyclerView)paramRecyclerView).getComponent();
-    } while (paramRecyclerView == null);
+    }
+    paramRecyclerView = ((VRecyclerView)paramRecyclerView).getComponent();
+    if (paramRecyclerView == null) {
+      return;
+    }
     this.weakListRef = new WeakReference(paramRecyclerView);
   }
   
@@ -164,63 +165,64 @@ public class VTransform
   
   public void onScroll(RecyclerView paramRecyclerView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if ((!paramBoolean) || (this.mDomObj == null)) {}
-    View localView;
-    do
+    if (paramBoolean)
     {
-      do
+      if (this.mDomObj == null) {
+        return;
+      }
+      View localView = getHostView();
+      if (localView == null) {
+        return;
+      }
+      if (this.weakListRef == null) {
+        tryInitRecyclerListRef(paramRecyclerView);
+      }
+      if (this.top == -1) {
+        this.top = getTop(paramRecyclerView, this.mDomObj);
+      }
+      paramInt1 = localView.getHeight();
+      paramInt2 = (int)ViolaUtils.getLayoutYInList(getInstance().getInstanceId(), this.mDomObj.getRef()) - Math.abs(paramInt2);
+      int i = this.top;
+      if ((paramInt2 - i <= 0) || (this.length + paramInt2 >= i))
       {
-        do
+        i = this.top;
+        float f1 = (i - paramInt2) / this.length;
+        if (this.inverse) {
+          f1 = getTransformAlpha(1.0F - Math.min(Math.max(Math.abs(paramInt2 - i) * 1.0F / this.length, 0.0F), 1.0F));
+        }
+        float f2 = f1;
+        if (hasAlpha(this.type))
         {
-          do
-          {
-            do
-            {
-              return;
-              localView = getHostView();
-            } while (localView == null);
-            if (this.weakListRef == null) {
-              tryInitRecyclerListRef(paramRecyclerView);
-            }
-            if (this.top == -1) {
-              this.top = getTop(paramRecyclerView, this.mDomObj);
-            }
-            paramInt1 = localView.getHeight();
-            paramInt2 = (int)ViolaUtils.getLayoutYInList(getInstance().getInstanceId(), this.mDomObj.getRef()) - Math.abs(paramInt2);
-          } while ((paramInt2 - this.top > 0) && (this.length + paramInt2 < this.top));
-          f1 = (this.top - paramInt2) / this.length;
-          if (this.inverse) {
-            f1 = getTransformAlpha(1.0F - Math.min(Math.max(Math.abs(paramInt2 - this.top) * 1.0F / this.length, 0.0F), 1.0F));
+          f2 = f1;
+          if (f1 < 0.0F) {
+            f2 = 0.0F;
+          }
+          f1 = f2;
+          if (f2 > 1.0F) {
+            f1 = 1.0F;
+          }
+          localView.setAlpha(f1);
+          f2 = f1;
+        }
+        if (hasTranslationY(this.type))
+        {
+          f1 = paramInt1;
+          f2 = (1.0F - f2) * f1;
+          if (f2 == this.lastTransformY) {
+            return;
+          }
+          if (f2 <= f1) {
+            f1 = f2;
           }
           f2 = f1;
-          if (!hasAlpha(this.type)) {
-            break;
+          if (f1 < 0.0F) {
+            f2 = 0.0F;
           }
-        } while (f1 == this.lastAlpha);
-        f2 = f1;
-        if (f1 < 0.0F) {
-          f2 = 0.0F;
+          localView.setTranslationY(f2);
+          this.lastTransformY = f2;
         }
-        f1 = f2;
-        if (f2 > 1.0F) {
-          f1 = 1.0F;
-        }
-        localView.setAlpha(f1);
-        this.lastAlpha = f1;
-        f2 = f1;
-      } while (!hasTranslationY(this.type));
-      f2 = (1.0F - f2) * paramInt1;
-    } while (f2 == this.lastTransformY);
-    float f1 = f2;
-    if (f2 > paramInt1) {
-      f1 = paramInt1;
+      }
     }
-    float f2 = f1;
-    if (f1 < 0.0F) {
-      f2 = 0.0F;
-    }
-    localView.setTranslationY(f2);
-    this.lastTransformY = f2;
   }
   
   public boolean setProperty(String paramString, Object paramObject)
@@ -235,7 +237,7 @@ public class VTransform
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VTransform
  * JD-Core Version:    0.7.0.1
  */

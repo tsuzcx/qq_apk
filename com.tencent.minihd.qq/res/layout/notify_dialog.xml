@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/dialog_bg" android:layout_width="288.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:textColor="@color/color_zhonghui" android:gravity="center_vertical" android:id="@id/dialog_title" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="" />
+    <View android:id="@id/line01" android:background="#ffc2c8cd" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/dialog_title" />
+    <LinearLayout android:id="@id/layout01" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/line01">
+        <TextView android:textSize="16.0sp" android:textColor="@color/color_hei" android:id="@id/dialog_msg" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/error_info" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/layout02" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="26.0dip" android:layout_below="@id/layout01">
+        <Button android:textSize="16.0sp" android:textColor="@color/color_hei" android:gravity="center" android:id="@id/dialog_button_cancel" android:background="@drawable/op_bg_selector" android:layout_width="122.0dip" android:layout_height="fill_parent" android:layout_marginRight="8.0dip" android:text="@string/exit" />
+        <Button android:textSize="16.0sp" android:textColor="@color/color_hei" android:gravity="center" android:id="@id/dialog_button_ok" android:background="@drawable/op_bg_selector" android:layout_width="122.0dip" android:layout_height="fill_parent" android:text="@string/chat_send" />
+    </LinearLayout>
+</RelativeLayout>

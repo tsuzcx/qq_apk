@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bejc;
-import com.tencent.common.app.BaseApplicationImpl;
-import nbv;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 
-public class SwiftBrowserTBSHandler$5
+class SwiftBrowserTBSHandler$5
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$5(bejc parambejc, String paramString) {}
-  
   public void run()
   {
-    nbv.a(this.a, BaseApplicationImpl.getApplication().getRuntime(), null);
+    ??? = this.this$0;
+    ((SwiftBrowserTBSHandler)???).a(MsfSdkUtils.insertMtype("Web", ((SwiftBrowserTBSHandler)???).i), 0);
+    synchronized (this.this$0.e)
+    {
+      this.this$0.g = Boolean.valueOf(true);
+      this.this$0.e.notifyAll();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.5
  * JD-Core Version:    0.7.0.1
  */

@@ -16,11 +16,11 @@ public final class ReqGetSameStateList
   public int eFetchSex = -1;
   public int eSelfSex = 2;
   public int iPageSize = -1;
-  public long lFriendUin;
-  public BusiReqHead oHead;
-  public LBSInfo oLbsInfo;
-  public stRishState oSelfRishState;
-  public byte[] vCookie;
+  public long lFriendUin = 0L;
+  public BusiReqHead oHead = null;
+  public LBSInfo oLbsInfo = null;
+  public stRishState oSelfRishState = null;
+  public byte[] vCookie = null;
   
   public ReqGetSameStateList() {}
   
@@ -68,8 +68,9 @@ public final class ReqGetSameStateList
     paramJceOutputStream.write(this.vCookie, 1);
     paramJceOutputStream.write(this.oSelfRishState, 2);
     paramJceOutputStream.write(this.iPageSize, 3);
-    if (this.oLbsInfo != null) {
-      paramJceOutputStream.write(this.oLbsInfo, 4);
+    LBSInfo localLBSInfo = this.oLbsInfo;
+    if (localLBSInfo != null) {
+      paramJceOutputStream.write(localLBSInfo, 4);
     }
     paramJceOutputStream.write(this.eSelfSex, 5);
     paramJceOutputStream.write(this.eFetchSex, 6);
@@ -78,7 +79,7 @@ public final class ReqGetSameStateList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PersonalState.ReqGetSameStateList
  * JD-Core Version:    0.7.0.1
  */

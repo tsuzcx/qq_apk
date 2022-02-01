@@ -8,8 +8,8 @@ public final class Intro
   extends JceStruct
 {
   static byte[] cache_vContent;
-  public short shType;
-  public byte[] vContent;
+  public short shType = 0;
+  public byte[] vContent = null;
   
   public Intro() {}
   
@@ -38,7 +38,7 @@ public final class Intro
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.Intro
  * JD-Core Version:    0.7.0.1
  */

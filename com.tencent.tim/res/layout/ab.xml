@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/alq" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/ahl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GO" />
+        <EditText android:id="@id/btf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="http://www.qq.com" android:layout_toRightOf="@id/ahl" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/l1t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

@@ -1,266 +1,394 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.net.Uri;
-import android.os.HandlerThread;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
-import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.plugin.sns.ui.widget.SnsTextProgressBar;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.Serializable;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b.h.a;
+import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.widget.a.f;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.json.JSONObject;
 
 public final class m
-  extends j
-  implements Serializable
+  extends r
 {
-  private View rvA;
-  private Button rvB;
-  private SnsTextProgressBar rvC;
-  m.a rvD;
-  private al rvE;
-  private m.b rvF;
-  private View.OnClickListener rvG;
-  AdLandingPagesProxy.e rvH;
+  private static HashMap<Long, Long> PNJ;
+  protected com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.a.a QOM;
+  protected a QON;
+  private String QOO;
+  private String QOP;
+  private String QOQ;
+  protected String QdA;
+  protected w lKp;
+  protected f vlk;
   
-  public m(Context paramContext, b paramb, ViewGroup paramViewGroup)
+  static
   {
-    super(paramContext, paramb, paramViewGroup);
-    AppMethodBeat.i(37144);
-    this.rvG = new m.1(this);
-    this.rvH = new m.2(this);
-    this.rvE = new al("apkStateMachine");
-    this.rvD = new m.a(this, "apkStateMachine", this.rvE.oNc.getLooper());
-    AppMethodBeat.o(37144);
+    AppMethodBeat.i(307171);
+    PNJ = new HashMap();
+    AppMethodBeat.o(307171);
   }
   
-  private static String gu(String paramString1, String paramString2)
+  public m(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.a.a parama, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(37151);
-    if (bo.isNullOrNil(paramString1))
-    {
-      AppMethodBeat.o(37151);
-      return paramString2;
-    }
-    if (paramString1.matches("#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?"))
-    {
-      AppMethodBeat.o(37151);
-      return paramString1;
-    }
-    AppMethodBeat.o(37151);
-    return paramString2;
-  }
-  
-  public final void cqA()
-  {
-    AppMethodBeat.i(37147);
-    super.cqA();
-    this.rvD.sendMessage(2);
-    AdLandingPagesProxy.getInstance().addReportInfo(((b)this.rve).cwc, crc().rpv, crc().heu);
-    AppMethodBeat.o(37147);
-  }
-  
-  @TargetApi(17)
-  public final void cqK()
-  {
-    AppMethodBeat.i(37146);
-    this.clickCount = 0;
-    View localView = this.contentView;
-    this.rvA = localView.findViewById(2131827839);
-    this.rvB = ((Button)localView.findViewById(2131822726));
-    this.rvB.setOnClickListener(this.rvG);
-    this.rvC = ((SnsTextProgressBar)localView.findViewById(2131827840));
-    this.rvC.setProgress(0);
-    this.rvC.setVisibility(8);
-    this.rvC.setOnClickListener(this.rvG);
-    this.rvD.start();
-    AppMethodBeat.o(37146);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37145);
-    Object localObject1 = new HashMap();
-    ((Map)localObject1).put("fontNormalColor", gu(((b)this.rve).rrN, "#FFFFFF"));
-    ((Map)localObject1).put("fontDisableColor", gu(((b)this.rve).rrO, "#4CFFFFFF"));
-    ((Map)localObject1).put("fontPressedColor", gu(((b)this.rve).rrP, "#99FFFFFF"));
-    ((Map)localObject1).put("NormalColor", gu(((b)this.rve).rrH, "#1AAD19"));
-    ((Map)localObject1).put("PressedColor", gu(((b)this.rve).rrJ, "#179B16"));
-    ((Map)localObject1).put("DisableColor", gu(((b)this.rve).rrI, "#661AAD19"));
-    ((Map)localObject1).put("borderNormalColor", gu(((b)this.rve).rrK, "#179E16"));
-    ((Map)localObject1).put("borderPressedColor", gu(((b)this.rve).rrM, "#158E14"));
-    ((Map)localObject1).put("borderDisableColor", gu(((b)this.rve).rrL, "#00179E16"));
-    int i = Color.parseColor((String)((Map)localObject1).get("fontNormalColor"));
-    int j = Color.parseColor((String)((Map)localObject1).get("fontDisableColor"));
-    int k = Color.parseColor((String)((Map)localObject1).get("fontPressedColor"));
-    int m = Color.parseColor((String)((Map)localObject1).get("NormalColor"));
-    int n = Color.parseColor((String)((Map)localObject1).get("PressedColor"));
-    int i1 = Color.parseColor((String)((Map)localObject1).get("DisableColor"));
-    int i2 = (int)((b)this.rve).rsh;
-    int i3 = Color.parseColor((String)((Map)localObject1).get("borderNormalColor"));
-    int i4 = Color.parseColor((String)((Map)localObject1).get("borderPressedColor"));
-    int i5 = Color.parseColor((String)((Map)localObject1).get("borderDisableColor"));
-    int i6 = this.context.getResources().getDimensionPixelSize(2131427514);
-    localObject1 = new GradientDrawable();
-    ((GradientDrawable)localObject1).setShape(0);
-    ((GradientDrawable)localObject1).setCornerRadius(i6);
-    ((GradientDrawable)localObject1).setColor(i1);
-    ((GradientDrawable)localObject1).setStroke(i2, i5);
-    Object localObject2 = new GradientDrawable();
-    ((GradientDrawable)localObject2).setShape(0);
-    ((GradientDrawable)localObject2).setCornerRadius(i6);
-    ((GradientDrawable)localObject2).setColor(n);
-    ((GradientDrawable)localObject2).setStroke(i2, i4);
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(i6);
-    localGradientDrawable.setColor(m);
-    localGradientDrawable.setStroke(i2, i3);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { -16842910 }, (Drawable)localObject1);
-    localStateListDrawable.addState(new int[] { 16842919 }, (Drawable)localObject2);
-    localStateListDrawable.addState(new int[] { 16842910 }, localGradientDrawable);
-    this.rvB.setBackground(localStateListDrawable);
-    localObject1 = new int[] { -16842910 };
-    localObject2 = new int[] { 16842919 };
-    this.rvB.setTextColor(new ColorStateList(new int[][] { localObject1, localObject2, { 16842910 } }, new int[] { j, k, i }));
-    localObject1 = new GradientDrawable();
-    ((GradientDrawable)localObject1).setShape(0);
-    ((GradientDrawable)localObject1).setCornerRadius(i6);
-    ((GradientDrawable)localObject1).setColor(n);
-    ((GradientDrawable)localObject1).setStroke(i2, i4);
-    localObject2 = new GradientDrawable();
-    ((GradientDrawable)localObject2).setShape(0);
-    ((GradientDrawable)localObject2).setCornerRadius(i6);
-    ((GradientDrawable)localObject2).setColor(m);
-    localObject2 = new ClipDrawable((Drawable)localObject2, 3, 1);
-    localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(i6);
-    localGradientDrawable.setColor(m);
-    localObject1 = new LayerDrawable(new Drawable[] { localObject1, localObject2, new ClipDrawable(localGradientDrawable, 3, 1) });
-    ((LayerDrawable)localObject1).setId(0, 16908288);
-    ((LayerDrawable)localObject1).setId(1, 16908303);
-    ((LayerDrawable)localObject1).setId(2, 16908301);
-    this.rvC.setProgressDrawable((Drawable)localObject1);
-    this.rvC.setPaintColor(((b)this.rve).rrP);
-    if (((b)this.rve).height > 0.0F)
-    {
-      localObject1 = (RelativeLayout.LayoutParams)this.rvA.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject1).height = ((int)((b)this.rve).height);
-      this.rvA.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    }
-    this.rvB.setText(((b)this.rve).title);
-    this.rvD.sendMessage(11);
-    AppMethodBeat.o(37145);
-  }
-  
-  public final void cqz()
-  {
-    AppMethodBeat.i(37148);
-    super.cqz();
-    ab.i("MicroMsg.AdLandingPageDownloadApkBtnComp", "view destroy");
-    this.rvE.oNc.quit();
-    if (this.rvF != null)
-    {
-      this.context.unregisterReceiver(this.rvF);
-      this.rvF = null;
-    }
-    AppMethodBeat.o(37148);
-  }
-  
-  public final boolean crk()
-  {
-    AppMethodBeat.i(37149);
-    if ((this.context == null) || (TextUtils.isEmpty(((b)this.rve).cwc)) || (TextUtils.isEmpty(((b)this.rve).Ca)))
-    {
-      AppMethodBeat.o(37149);
-      return false;
-    }
-    Intent localIntent;
-    Object localObject;
-    if (!TextUtils.isEmpty(((b)this.rve).rrQ))
-    {
-      localIntent = new Intent("android.intent.action.VIEW", Uri.parse(((b)this.rve).rrQ));
-      localIntent.addFlags(268435456);
-      localObject = bo.H(this.context, localIntent);
-      if ((localObject != null) && (!((List)localObject).isEmpty()))
-      {
-        if ((!TextUtils.isEmpty(localIntent.getPackage())) || (((List)localObject).size() != 1)) {
-          break label209;
-        }
-        localObject = g.b((ResolveInfo)((List)localObject).get(0));
-        if (!bo.nullAsNil(ah.getPackageName()).equals(localObject)) {
-          a.post(new m.3(this, localIntent));
-        }
-      }
+    super(paramContext, parama, paramViewGroup);
+    AppMethodBeat.i(307101);
+    this.QdA = "0";
+    this.QOM = parama;
+    if (this.QOM.PMg != null) {
+      this.QPl.mx("appointmentId", parama.PMg.PKZ);
     }
     for (;;)
     {
-      AdLandingPagesProxy.getInstance().reportDownloadInfo(9, ((b)this.rve).cwc);
-      AppMethodBeat.o(37149);
-      return true;
-      label209:
-      localObject = localIntent.getPackage();
-      break;
-      a.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(37105);
-          Intent localIntent = m.this.context.getPackageManager().getLaunchIntentForPackage(m.b(m.this).Ca);
-          g.a(m.this.context, localIntent, g.t(m.this.context, m.b(m.this).cwc), new m.4.1(this));
-          AppMethodBeat.o(37105);
-        }
-      });
+      this.QOO = this.QOM.PSc;
+      this.QOP = this.QOM.QJR;
+      this.QOQ = this.QOM.QJV;
+      this.QON = new a(paramContext, this, this.QOM.PMg.PKZ);
+      AppMethodBeat.o(307101);
+      return;
+      Log.e("ADAppointment.AdLandingPageAppointmentBtnComp", "appointmentInfo==null");
+      this.QPl.mx("appointmentId", "");
     }
   }
   
-  public final void crl()
+  private void hjg()
   {
-    AppMethodBeat.i(37150);
-    ab.d("MicroMsg.AdLandingPageDownloadApkBtnComp", "writing deferred deep link");
-    AdLandingPagesProxy.getInstance().writeDeferredDeepLink(((b)this.rve).Ca, ((b)this.rve).rrQ);
-    AppMethodBeat.o(37150);
+    AppMethodBeat.i(307111);
+    if (this.QOM.PMg == null)
+    {
+      AppMethodBeat.o(307111);
+      return;
+    }
+    Log.i("ADAppointment.AdLandingPageAppointmentBtnComp", "updateBtnUI, status=" + this.QdA);
+    if (this.QPn != null) {
+      this.QPn.setEnabled(true);
+    }
+    if ("0".equals(this.QdA))
+    {
+      this.QOM.PSc = this.QOO;
+      this.QOM.QJR = this.QOP;
+      this.QOM.QJV = this.QOQ;
+    }
+    for (;;)
+    {
+      super.hjs();
+      if (!"1".equals(this.QdA)) {
+        break;
+      }
+      this.QPn.setText(this.QOM.PMg.PLd);
+      AppMethodBeat.o(307111);
+      return;
+      int i = (int)(Util.safeParseDouble("0.6") * 255.0D);
+      String str;
+      if (!TextUtils.isEmpty(this.QOO))
+      {
+        str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.QOO.substring(1) });
+        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)this.QOV).PSc = str;
+      }
+      if (!TextUtils.isEmpty(this.QOP))
+      {
+        str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.QOP.substring(1) });
+        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)this.QOV).QJR = str;
+      }
+      if (!TextUtils.isEmpty(this.QOQ))
+      {
+        str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.QOQ.substring(1) });
+        ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)this.QOV).QJV = str;
+      }
+      if (("1000".equals(this.QdA)) && (this.QPn != null)) {
+        this.QPn.setEnabled(false);
+      }
+    }
+    if ("1000".equals(this.QdA)) {
+      this.QPn.setText(this.QOM.PMg.PLj);
+    }
+    AppMethodBeat.o(307111);
   }
   
-  protected final int getLayout()
+  private void q(String paramString, long paramLong, int paramInt)
   {
-    return 2130970773;
+    AppMethodBeat.i(307118);
+    Log.i("ADAppointment.AdLandingPageAppointmentBtnComp", "sendAppointmentReq, opType=" + paramInt + ", id=" + paramLong + ", uxInfo=" + paramString);
+    if ((TextUtils.isEmpty(paramString)) || (paramLong == 0L))
+    {
+      AppMethodBeat.o(307118);
+      return;
+    }
+    if (paramInt == 0) {
+      showLoading();
+    }
+    for (;;)
+    {
+      AdLandingPagesProxy.getInstance().sendAppointmentReq(paramString, paramLong, paramInt, this.QON);
+      AppMethodBeat.o(307118);
+      return;
+      if (paramInt == 1) {
+        showLoading();
+      }
+    }
+  }
+  
+  private void showLoading()
+  {
+    AppMethodBeat.i(307125);
+    try
+    {
+      String str = this.context.getString(b.j.app_waiting);
+      if (this.lKp == null) {
+        this.lKp = w.a(this.context, str, true);
+      }
+      if (!this.lKp.isShowing()) {
+        this.lKp.show();
+      }
+      AppMethodBeat.o(307125);
+      return;
+    }
+    finally
+    {
+      Log.e("ADAppointment.AdLandingPageAppointmentBtnComp", "showLoading exp=" + localObject.toString());
+      AppMethodBeat.o(307125);
+    }
+  }
+  
+  protected final void had()
+  {
+    AppMethodBeat.i(307181);
+    super.had();
+    if (this.QOM.PMg == null)
+    {
+      Log.e("ADAppointment.AdLandingPageAppointmentBtnComp", "fillItem,appointmentInfo==null");
+      AppMethodBeat.o(307181);
+      return;
+    }
+    long l2 = this.QOM.PMg.PKZ;
+    ai localai = hjn();
+    String str1 = localai.QLy;
+    com.tencent.mm.plugin.sns.ad.d.a.um(l2);
+    String str2 = com.tencent.mm.plugin.sns.ad.d.a.a(str1, this.QOM.PMg);
+    Log.i("ADAppointment.AdLandingPageAppointmentBtnComp", "fillItem, snsId=" + str1 + ", cacheStatus=" + str2);
+    this.QdA = str2;
+    hjg();
+    if (!"1000".equals(this.QdA)) {
+      if (!PNJ.containsKey(Long.valueOf(l2))) {
+        break label218;
+      }
+    }
+    label218:
+    for (long l1 = ((Long)PNJ.get(Long.valueOf(l2))).longValue();; l1 = 0L)
+    {
+      if ((l1 == 0L) || (System.currentTimeMillis() - l1 > 30000L))
+      {
+        q(localai.uxInfo, l2, 2);
+        PNJ.put(Long.valueOf(l2), Long.valueOf(System.currentTimeMillis()));
+      }
+      AppMethodBeat.o(307181);
+      return;
+    }
+  }
+  
+  protected final void hiZ()
+  {
+    AppMethodBeat.i(307188);
+    if (this.QOM.PMg == null)
+    {
+      AppMethodBeat.o(307188);
+      return;
+    }
+    Log.i("ADAppointment.AdLandingPageAppointmentBtnComp", "onBtnClick, status=" + this.QdA);
+    if ("0".equals(this.QdA))
+    {
+      q(hjn().uxInfo, this.QOM.PMg.PKZ, 0);
+      this.QPl.bD("opType", 0L);
+    }
+    for (;;)
+    {
+      hja();
+      AppMethodBeat.o(307188);
+      return;
+      if ("1".equals(this.QdA))
+      {
+        if (this.QOM.PMg != null)
+        {
+          this.vlk = new f(this.context, 1, false);
+          this.vlk.Vtg = new u.g()
+          {
+            public final void onCreateMMMenu(s paramAnonymouss)
+            {
+              AppMethodBeat.i(307007);
+              paramAnonymouss.a(1, m.this.context.getResources().getColor(b.c.red_text_color_selector), m.this.QOM.PMg.PLc);
+              AppMethodBeat.o(307007);
+            }
+          };
+          this.vlk.sRz = true;
+          this.vlk.GAC = new u.i()
+          {
+            public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(307003);
+              if (paramAnonymousMenuItem != null) {}
+              try
+              {
+                if (paramAnonymousMenuItem.getItemId() == 1)
+                {
+                  m.a(m.this, m.this.hjn().uxInfo, m.this.QOM.PMg.PKZ);
+                  m.a(m.this);
+                }
+                if ((m.this.context instanceof SnsAdNativeLandingPagesUI)) {
+                  ar.bs((SnsAdNativeLandingPagesUI)m.this.context);
+                }
+                AppMethodBeat.o(307003);
+                return;
+              }
+              finally
+              {
+                Log.e("ADAppointment.AdLandingPageAppointmentBtnComp", "onMMMenuItemSelected exp=" + paramAnonymousMenuItem.toString());
+                AppMethodBeat.o(307003);
+              }
+            }
+          };
+          this.vlk.dDn();
+        }
+        this.QPl.bD("opType", 1L);
+      }
+    }
+  }
+  
+  protected final void hideLoading()
+  {
+    AppMethodBeat.i(307196);
+    try
+    {
+      if ((this.lKp != null) && (this.lKp.isShowing())) {
+        this.lKp.dismiss();
+      }
+      if ((this.context instanceof SnsAdNativeLandingPagesUI)) {
+        ar.bs((SnsAdNativeLandingPagesUI)this.context);
+      }
+      AppMethodBeat.o(307196);
+      return;
+    }
+    finally
+    {
+      Log.e("ADAppointment.AdLandingPageAppointmentBtnComp", "showLoading exp=" + localObject.toString());
+      AppMethodBeat.o(307196);
+    }
+  }
+  
+  static final class a
+    implements AdLandingPagesProxy.e
+  {
+    private long PNM;
+    private WeakReference<m> QOS;
+    private WeakReference<Context> mContextRef;
+    
+    public a(Context paramContext, m paramm, long paramLong)
+    {
+      AppMethodBeat.i(306898);
+      this.mContextRef = new WeakReference(paramContext);
+      this.QOS = new WeakReference(paramm);
+      this.PNM = paramLong;
+      AppMethodBeat.o(306898);
+    }
+    
+    public final void h(final int paramInt1, final int paramInt2, final Object paramObject)
+    {
+      AppMethodBeat.i(306902);
+      Log.i("ADAppointment.AdLandingPageAppointmentBtnComp", "onCallback, errType=" + paramInt1 + ", errCode=" + paramInt2 + ", data=" + paramObject);
+      Context localContext = (Context)this.mContextRef.get();
+      final m localm = (m)this.QOS.get();
+      if (((localContext instanceof Activity)) && (((Activity)localContext).isFinishing()))
+      {
+        Log.w("ADAppointment.AdLandingPageAppointmentBtnComp", "onCallback, isFinishing return");
+        AppMethodBeat.o(306902);
+        return;
+      }
+      if (localm == null)
+      {
+        Log.w("ADAppointment.AdLandingPageAppointmentBtnComp", "onCallback, btnComp == null");
+        AppMethodBeat.o(306902);
+        return;
+      }
+      h.ahAA.bk(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(306889);
+          for (;;)
+          {
+            try
+            {
+              if ((paramInt1 != 0) || (paramInt2 != 0)) {
+                break label230;
+              }
+              i = 1;
+              localm.hideLoading();
+              String str = "-1";
+              int j = -1;
+              if ((paramObject instanceof String))
+              {
+                JSONObject localJSONObject = new JSONObject((String)paramObject);
+                str = localJSONObject.optString("status");
+                j = localJSONObject.optInt("opType");
+              }
+              Log.i("ADAppointment.AdLandingPageAppointmentBtnComp", "onCallback, status=" + str + ", opType=" + j + ", appointmentId=" + m.a.a(m.a.this));
+              if (i != 0)
+              {
+                if ((j == 0) && ("1".equals(str)))
+                {
+                  m.b(localm);
+                  m.a(localm, str);
+                  AppMethodBeat.o(306889);
+                  return;
+                }
+                if ((j != 1) || (!"0".equals(str))) {
+                  continue;
+                }
+                m.a(localm, j, true);
+                continue;
+              }
+              m.a(localm, j, false);
+            }
+            finally
+            {
+              Log.e("ADAppointment.AdLandingPageAppointmentBtnComp", "onCallback exp=" + localObject.toString());
+              AppMethodBeat.o(306889);
+              return;
+            }
+            AppMethodBeat.o(306889);
+            return;
+            label230:
+            int i = 0;
+          }
+        }
+      });
+      AppMethodBeat.o(306902);
+    }
+    
+    public final void onCallback(Object paramObject) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m
  * JD-Core Version:    0.7.0.1
  */

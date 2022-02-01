@@ -4,14 +4,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.media.AudioManager;
-import android.media.AudioRecord;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.MultiUserInfo;
-import com.tencent.qqmini.sdk.core.proxy.VoIPProxy.VoIPListener;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.MultiUserInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.VoIPListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,20 +19,23 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
 
+@MiniKeep
 public class VoIPManager
 {
+  private static final int ROOM_STATE_ENTERED = 2;
+  private static final int ROOM_STATE_ENTERING = 1;
+  private static final int ROOM_STATE_INITIAL = 0;
   public static final String TAG = "VoIPManager";
   public static final int UNKNOWN = -1;
   public static volatile VoIPManager sInstance;
   private VoIPManager.EventListener mEventListener;
   private VoIPManager.JoinRoomListener mJoinRoomListener;
   private VoIPManager.MuteConfig mMuteConfig;
-  private boolean mQAvHasEnterRoom;
   private boolean mQAvHasInitSDK;
-  private AtomicBoolean mQAvRealEnterRoom = new AtomicBoolean(false);
+  private volatile AtomicInteger mQAvRoomState = new AtomicInteger(0);
   private final BroadcastReceiver mReceiver = new VoIPManager.1(this);
   private Map<Long, VoIPManager.UserModel> mRoomUserModelList = new ConcurrentHashMap();
   private int mSelfMicStat = -1;
@@ -41,35 +43,38 @@ public class VoIPManager
   private long mSelfUin = -1L;
   private VoIPProxy.VoIPListener mVoIPListener = new VoIPManager.2(this);
   private VoIPProxy mVoIPProxy = (VoIPProxy)ProxyManager.get(VoIPProxy.class);
+  private boolean needExitRoomImmediatelyAfterEntering = false;
   
   private void doExitRoom()
   {
     QMLog.i("VoIPManager", "exitRoom!");
+    MiniAppEnv.g().getContext().unregisterReceiver(this.mReceiver);
     this.mVoIPProxy.exitRoom();
     this.mVoIPProxy.unInit();
     this.mQAvHasInitSDK = false;
-    this.mQAvRealEnterRoom.set(false);
+    this.mQAvRoomState.set(0);
   }
   
   public static VoIPManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new VoIPManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new VoIPManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private JSONArray getRoomOpenIdList()
   {
-    Object localObject1 = null;
-    if (this.mRoomUserModelList != null)
+    Object localObject1 = this.mRoomUserModelList;
+    if (localObject1 != null)
     {
-      localObject2 = this.mRoomUserModelList.keySet();
+      localObject2 = ((Map)localObject1).keySet();
       localObject1 = new HashSet();
       localObject2 = ((Set)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
@@ -81,6 +86,10 @@ public class VoIPManager
       }
       localObject1 = new JSONArray((Collection)localObject1);
     }
+    else
+    {
+      localObject1 = null;
+    }
     Object localObject2 = localObject1;
     if (localObject1 == null) {
       localObject2 = new JSONArray();
@@ -91,12 +100,13 @@ public class VoIPManager
   private JSONArray getSpeakingOpenIdList()
   {
     JSONArray localJSONArray = new JSONArray();
-    if (this.mRoomUserModelList != null)
+    Object localObject = this.mRoomUserModelList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mRoomUserModelList.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         if (((VoIPManager.UserModel)localEntry.getValue()).mSpeaking) {
           localJSONArray.put(((VoIPManager.UserModel)localEntry.getValue()).mOpenId);
         }
@@ -107,60 +117,220 @@ public class VoIPManager
   
   private VoIPManager.UserModel getUserModel(long paramLong)
   {
-    VoIPManager.UserModel localUserModel = null;
-    if (this.mRoomUserModelList != null) {
-      localUserModel = (VoIPManager.UserModel)this.mRoomUserModelList.get(Long.valueOf(paramLong));
+    Map localMap = this.mRoomUserModelList;
+    if (localMap != null) {
+      return (VoIPManager.UserModel)localMap.get(Long.valueOf(paramLong));
     }
-    return localUserModel;
+    return null;
+  }
+  
+  private void handleOnEnterRoom()
+  {
+    QMLog.d("VoIPManager", "onEnterRoom");
+    this.mQAvRoomState.set(2);
+    VoIPManager.MuteConfig localMuteConfig = this.mMuteConfig;
+    if (localMuteConfig != null) {
+      updateMuteConfig(localMuteConfig, null);
+    }
+    this.mVoIPProxy.updateRoomInfo();
+    switchAudioRoute();
+    if (this.needExitRoomImmediatelyAfterEntering)
+    {
+      exitRoom();
+      this.needExitRoomImmediatelyAfterEntering = false;
+    }
+  }
+  
+  private void handleOnError(int paramInt)
+  {
+    QMLog.d("VoIPManager", String.format("onEnterRoom errorType=%s", new Object[] { Integer.valueOf(paramInt) }));
+    Object localObject;
+    if ((paramInt != 2) && (paramInt != 1))
+    {
+      if (paramInt == 4)
+      {
+        localObject = this.mEventListener;
+        if (localObject != null) {
+          ((VoIPManager.EventListener)localObject).onInterrupt(4, "第三方通话中断");
+        }
+      }
+      else if (paramInt == 3)
+      {
+        localObject = this.mEventListener;
+        if (localObject != null) {
+          ((VoIPManager.EventListener)localObject).onInterrupt(3, "网络原因中断");
+        }
+      }
+    }
+    else
+    {
+      localObject = this.mJoinRoomListener;
+      if (localObject != null)
+      {
+        ((VoIPManager.JoinRoomListener)localObject).onError(paramInt);
+        this.mJoinRoomListener = null;
+      }
+    }
+  }
+  
+  private void handleOnUserEnter(VoIPProxy.MultiUserInfo paramMultiUserInfo)
+  {
+    QMLog.d("VoIPManager", String.format("onUserEnter userInfo=%s", new Object[] { paramMultiUserInfo }));
+    if ((this.mJoinRoomListener == null) && (getUserModel(paramMultiUserInfo.mUin) == null))
+    {
+      VoIPManager.UserModel localUserModel = new VoIPManager.UserModel(this, null);
+      localUserModel.mUin = paramMultiUserInfo.mUin;
+      localUserModel.mOpenId = paramMultiUserInfo.mOpenId;
+      localUserModel.mMicStat = 1;
+      putUserModel(localUserModel);
+      paramMultiUserInfo = this.mEventListener;
+      if (paramMultiUserInfo != null) {
+        paramMultiUserInfo.onRoomMemberChange(getRoomOpenIdList());
+      }
+    }
+  }
+  
+  private void handleOnUserExit(VoIPProxy.MultiUserInfo paramMultiUserInfo)
+  {
+    QMLog.d("VoIPManager", String.format("onUserExit userInfo=%s", new Object[] { paramMultiUserInfo }));
+    if (this.mJoinRoomListener == null)
+    {
+      removeUserModel(paramMultiUserInfo.mUin);
+      paramMultiUserInfo = this.mEventListener;
+      if (paramMultiUserInfo != null) {
+        paramMultiUserInfo.onRoomMemberChange(getRoomOpenIdList());
+      }
+    }
+  }
+  
+  private void handleOnUserSpecking(VoIPProxy.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
+  {
+    QMLog.d("VoIPManager", String.format("onUserSpeaking userInfo=%s speaking=%s", new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) }));
+    paramMultiUserInfo = getUserModel(paramMultiUserInfo.mUin);
+    if (paramMultiUserInfo != null)
+    {
+      paramMultiUserInfo.mSpeaking = paramBoolean;
+      paramMultiUserInfo = this.mEventListener;
+      if (paramMultiUserInfo != null) {
+        paramMultiUserInfo.onRoomMemberSpeaking(getSpeakingOpenIdList());
+      }
+    }
+    else
+    {
+      QMLog.e("VoIPManager", "onUserSpeaking userModel==null");
+    }
+  }
+  
+  private void handleOnUserUpdate(List<VoIPProxy.MultiUserInfo> paramList)
+  {
+    if ((this.mJoinRoomListener != null) && (paramList != null))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        VoIPProxy.MultiUserInfo localMultiUserInfo = (VoIPProxy.MultiUserInfo)localIterator.next();
+        if (localMultiUserInfo.mUin != 0L) {
+          localJSONArray.put(localMultiUserInfo.mOpenId);
+        }
+      }
+      this.mJoinRoomListener.onJoinRoom(localJSONArray);
+      updateUserModelList(paramList);
+      this.mJoinRoomListener = null;
+    }
   }
   
   private boolean isBluetoothOn()
   {
-    return ((AudioManager)AppLoaderFactory.g().getMiniAppEnv().getContext().getSystemService("audio")).isBluetoothA2dpOn();
+    return ((AudioManager)MiniAppEnv.g().getContext().getSystemService("audio")).isBluetoothA2dpOn();
   }
   
   private boolean isHeadsetPlugged()
   {
-    return ((AudioManager)AppLoaderFactory.g().getMiniAppEnv().getContext().getSystemService("audio")).isWiredHeadsetOn();
+    return ((AudioManager)MiniAppEnv.g().getContext().getSystemService("audio")).isWiredHeadsetOn();
   }
   
+  /* Error */
   private boolean isMicAvailable()
   {
-    AudioRecord localAudioRecord = new AudioRecord(1, 44100, 16, 1, 44100);
-    for (;;)
-    {
-      try
-      {
-        if (localAudioRecord.getRecordingState() != 1)
-        {
-          Boolean localBoolean1 = Boolean.valueOf(false);
-          localAudioRecord.startRecording();
-          if (localAudioRecord.getRecordingState() != 3)
-          {
-            localAudioRecord.stop();
-            localBoolean1 = Boolean.valueOf(false);
-          }
-          localAudioRecord.stop();
-          return localBoolean1.booleanValue();
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QMLog.e("VoIPManager", "validateMicAvailability", localThrowable);
-        return false;
-      }
-      finally
-      {
-        localAudioRecord.release();
-      }
-      Boolean localBoolean2 = Boolean.valueOf(true);
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: invokestatic 332	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   4: astore_1
+    //   5: new 374	android/media/AudioRecord
+    //   8: dup
+    //   9: iconst_1
+    //   10: ldc_w 375
+    //   13: bipush 16
+    //   15: iconst_1
+    //   16: ldc_w 375
+    //   19: invokespecial 378	android/media/AudioRecord:<init>	(IIIII)V
+    //   22: astore_2
+    //   23: aload_2
+    //   24: invokevirtual 382	android/media/AudioRecord:getRecordingState	()I
+    //   27: iconst_1
+    //   28: if_icmpeq +8 -> 36
+    //   31: iconst_0
+    //   32: invokestatic 332	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   35: astore_1
+    //   36: aload_2
+    //   37: invokevirtual 385	android/media/AudioRecord:startRecording	()V
+    //   40: aload_2
+    //   41: invokevirtual 382	android/media/AudioRecord:getRecordingState	()I
+    //   44: iconst_3
+    //   45: if_icmpeq +12 -> 57
+    //   48: aload_2
+    //   49: invokevirtual 388	android/media/AudioRecord:stop	()V
+    //   52: iconst_0
+    //   53: invokestatic 332	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   56: astore_1
+    //   57: aload_2
+    //   58: invokevirtual 388	android/media/AudioRecord:stop	()V
+    //   61: aload_2
+    //   62: invokevirtual 391	android/media/AudioRecord:release	()V
+    //   65: aload_1
+    //   66: invokevirtual 394	java/lang/Boolean:booleanValue	()Z
+    //   69: ireturn
+    //   70: astore_1
+    //   71: goto +19 -> 90
+    //   74: astore_1
+    //   75: ldc 16
+    //   77: ldc_w 396
+    //   80: aload_1
+    //   81: invokestatic 399	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   84: aload_2
+    //   85: invokevirtual 391	android/media/AudioRecord:release	()V
+    //   88: iconst_0
+    //   89: ireturn
+    //   90: aload_2
+    //   91: invokevirtual 391	android/media/AudioRecord:release	()V
+    //   94: aload_1
+    //   95: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	96	0	this	VoIPManager
+    //   4	62	1	localBoolean	Boolean
+    //   70	1	1	localObject	Object
+    //   74	21	1	localThrowable	java.lang.Throwable
+    //   22	69	2	localAudioRecord	android.media.AudioRecord
+    // Exception table:
+    //   from	to	target	type
+    //   23	36	70	finally
+    //   36	40	70	finally
+    //   40	57	70	finally
+    //   57	61	70	finally
+    //   75	84	70	finally
+    //   23	36	74	java/lang/Throwable
+    //   36	40	74	java/lang/Throwable
+    //   40	57	74	java/lang/Throwable
+    //   57	61	74	java/lang/Throwable
   }
   
   private void putUserModel(VoIPManager.UserModel paramUserModel)
   {
-    if (this.mRoomUserModelList != null) {
-      this.mRoomUserModelList.put(Long.valueOf(paramUserModel.mUin), paramUserModel);
+    Map localMap = this.mRoomUserModelList;
+    if (localMap != null) {
+      localMap.put(Long.valueOf(paramUserModel.mUin), paramUserModel);
     }
   }
   
@@ -172,67 +342,67 @@ public class VoIPManager
   
   private int qavOpMic(boolean paramBoolean)
   {
-    if (!this.mQAvRealEnterRoom.get())
+    int j = this.mQAvRoomState.get();
+    int i = 2;
+    if (j != 2)
     {
       QMLog.e("VoIPManager", "cant op mic currently");
       return -1;
     }
-    int j = this.mVoIPProxy.enableLocalAudio(paramBoolean);
-    int i;
-    if (j == 0) {
-      if (paramBoolean)
-      {
-        i = 1;
-        this.mSelfMicStat = i;
-        VoIPManager.UserModel localUserModel = getUserModel(this.mSelfUin);
-        if (localUserModel != null) {
-          localUserModel.mMicStat = this.mSelfMicStat;
-        }
-        QMLog.i("VoIPManager", "OpMic " + paramBoolean);
-      }
-    }
-    for (;;)
+    j = this.mVoIPProxy.enableLocalAudio(paramBoolean);
+    if (j == 0)
     {
+      if (paramBoolean) {
+        i = 1;
+      }
+      this.mSelfMicStat = i;
+      Object localObject = getUserModel(this.mSelfUin);
+      if (localObject != null) {
+        ((VoIPManager.UserModel)localObject).mMicStat = this.mSelfMicStat;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OpMic ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QMLog.i("VoIPManager", ((StringBuilder)localObject).toString());
       return j;
-      i = 2;
-      break;
-      QMLog.e("VoIPManager", "multiOperator null");
     }
+    QMLog.e("VoIPManager", "multiOperator null");
+    return j;
   }
   
   private int qavOpMute(boolean paramBoolean)
   {
-    if (!this.mQAvRealEnterRoom.get())
+    int j = this.mQAvRoomState.get();
+    int i = 2;
+    if (j != 2)
     {
       QMLog.e("VoIPManager", "cant op mute currently");
       return -1;
     }
-    int j = this.mVoIPProxy.enableRemoteAudio(paramBoolean);
-    int i;
-    if (j == 0) {
-      if (paramBoolean)
-      {
-        i = 1;
-        this.mSelfMuteStat = i;
-        QMLog.i("VoIPManager", "OpMute " + paramBoolean);
-      }
-    }
-    for (;;)
+    j = this.mVoIPProxy.enableRemoteAudio(paramBoolean);
+    if (j == 0)
     {
+      if (paramBoolean) {
+        i = 1;
+      }
+      this.mSelfMuteStat = i;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OpMute ");
+      localStringBuilder.append(paramBoolean);
+      QMLog.i("VoIPManager", localStringBuilder.toString());
       return j;
-      i = 2;
-      break;
-      QMLog.e("VoIPManager", "multiOperator null");
     }
+    QMLog.e("VoIPManager", "multiOperator null");
+    return j;
   }
   
   private VoIPManager.UserModel removeUserModel(long paramLong)
   {
-    VoIPManager.UserModel localUserModel = null;
-    if (this.mRoomUserModelList != null) {
-      localUserModel = (VoIPManager.UserModel)this.mRoomUserModelList.remove(Long.valueOf(paramLong));
+    Map localMap = this.mRoomUserModelList;
+    if (localMap != null) {
+      return (VoIPManager.UserModel)localMap.remove(Long.valueOf(paramLong));
     }
-    return localUserModel;
+    return null;
   }
   
   private void switchAudioRoute()
@@ -266,6 +436,7 @@ public class VoIPManager
       ((Set)localObject2).add(Long.valueOf(((VoIPProxy.MultiUserInfo)localIterator.next()).mUin));
     }
     ((Set)localObject1).retainAll((Collection)localObject2);
+    int i = 0;
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -277,6 +448,14 @@ public class VoIPManager
         ((VoIPManager.UserModel)localObject2).mOpenId = ((VoIPProxy.MultiUserInfo)localObject1).mOpenId;
         ((VoIPManager.UserModel)localObject2).mMicStat = 1;
         putUserModel((VoIPManager.UserModel)localObject2);
+        i = 1;
+      }
+    }
+    if (i != 0)
+    {
+      paramList = this.mEventListener;
+      if (paramList != null) {
+        paramList.onRoomMemberChange(getRoomOpenIdList());
       }
     }
   }
@@ -285,63 +464,32 @@ public class VoIPManager
   {
     try
     {
-      if (this.mQAvHasEnterRoom)
+      int i = this.mQAvRoomState.get();
+      if (i != 1)
       {
-        AppLoaderFactory.g().getMiniAppEnv().getContext().unregisterReceiver(this.mReceiver);
-        doExitRoom();
-        this.mQAvHasEnterRoom = false;
+        if (i == 2)
+        {
+          doExitRoom();
+          this.mQAvRoomState.set(0);
+        }
+      }
+      else {
+        this.needExitRoomImmediatelyAfterEntering = true;
       }
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
-  /* Error */
   public boolean isEarPhoneMute()
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 71	com/tencent/qqmini/sdk/core/manager/VoIPManager:mSelfMuteStat	I
-    //   8: istore_1
-    //   9: iload_1
-    //   10: iconst_1
-    //   11: if_icmpne +7 -> 18
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: iload_2
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_2
-    //   20: goto -6 -> 14
-    //   23: astore_3
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: aload_3
-    //   27: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	28	0	this	VoIPManager
-    //   8	4	1	i	int
-    //   1	19	2	bool	boolean
-    //   23	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	9	23	finally
-  }
-  
-  public boolean isInRoom()
   {
     try
     {
-      boolean bool = this.mQAvHasEnterRoom;
+      int i = this.mSelfMuteStat;
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
       return bool;
     }
     finally
@@ -351,100 +499,87 @@ public class VoIPManager
     }
   }
   
-  /* Error */
+  public boolean isInRoom()
+  {
+    return this.mQAvRoomState.get() == 2;
+  }
+  
   public boolean isMicMute()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 69	com/tencent/qqmini/sdk/core/manager/VoIPManager:mSelfMicStat	I
-    //   6: istore_1
-    //   7: iload_1
-    //   8: iconst_2
-    //   9: if_icmpne +9 -> 18
-    //   12: iconst_1
-    //   13: istore_2
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: iload_2
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_2
-    //   20: goto -6 -> 14
-    //   23: astore_3
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: aload_3
-    //   27: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	28	0	this	VoIPManager
-    //   6	4	1	i	int
-    //   13	7	2	bool	boolean
-    //   23	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	23	finally
+    try
+    {
+      int i = this.mSelfMicStat;
+      boolean bool;
+      if (i == 2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void joinRoom(VoIPManager.IdResult paramIdResult, VoIPManager.MuteConfig paramMuteConfig, byte[] paramArrayOfByte, VoIPManager.JoinRoomListener paramJoinRoomListener)
   {
-    for (;;)
+    try
     {
-      int i;
-      try
+      if (this.mQAvRoomState.get() != 0)
       {
-        if (this.mQAvHasEnterRoom)
-        {
-          QMLog.e("VoIPManager", "不能重复进房");
-          if (paramJoinRoomListener != null) {
-            paramJoinRoomListener.onError(-3);
-          }
-          return;
+        QMLog.e("VoIPManager", "不能重复进房");
+        if (paramJoinRoomListener != null) {
+          paramJoinRoomListener.onError(-3);
         }
-        exitRoom();
-        if (!this.mQAvHasInitSDK)
+        return;
+      }
+      exitRoom();
+      if (!this.mQAvHasInitSDK) {
+        if (isMicAvailable())
         {
-          if (isMicAvailable())
-          {
-            qavInitSDK(paramIdResult.tinyId);
-            this.mQAvHasInitSDK = true;
-          }
+          qavInitSDK(paramIdResult.tinyId);
+          this.mQAvHasInitSDK = true;
         }
         else
         {
-          this.mJoinRoomListener = paramJoinRoomListener;
-          this.mSelfUin = paramIdResult.tinyId;
-          i = this.mVoIPProxy.joinRoom(paramIdResult.tinyId, paramIdResult.roomId, paramIdResult.openId, paramArrayOfByte);
-          if (i != 0) {
-            break label199;
+          if (paramJoinRoomListener != null) {
+            paramJoinRoomListener.onError(-2);
           }
-          this.mMuteConfig = paramMuteConfig;
-          this.mQAvHasEnterRoom = true;
-          paramIdResult = new IntentFilter();
-          paramIdResult.addAction("android.intent.action.HEADSET_PLUG");
-          paramIdResult.addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
-          paramIdResult.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-          AppLoaderFactory.g().getMiniAppEnv().getContext().registerReceiver(this.mReceiver, paramIdResult);
-          this.mRoomUserModelList.clear();
-          continue;
-        }
-        if (paramJoinRoomListener == null) {
-          continue;
+          return;
         }
       }
-      finally {}
-      paramJoinRoomListener.onError(-2);
-      continue;
-      label199:
-      QMLog.e("VoIPManager", "joinRoom ret = " + i);
-      if (this.mJoinRoomListener != null)
+      this.mJoinRoomListener = paramJoinRoomListener;
+      this.mSelfUin = paramIdResult.tinyId;
+      int i = this.mVoIPProxy.joinRoom(paramIdResult.tinyId, paramIdResult.roomId, paramIdResult.openId, paramArrayOfByte);
+      if (i == 0)
       {
-        this.mJoinRoomListener.onError(i);
-        this.mJoinRoomListener = null;
+        this.mMuteConfig = paramMuteConfig;
+        this.mQAvRoomState.set(1);
+        paramIdResult = new IntentFilter();
+        paramIdResult.addAction("android.intent.action.HEADSET_PLUG");
+        paramIdResult.addAction("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED");
+        paramIdResult.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
+        MiniAppEnv.g().getContext().registerReceiver(this.mReceiver, paramIdResult);
+        this.mRoomUserModelList.clear();
       }
+      else
+      {
+        paramIdResult = new StringBuilder();
+        paramIdResult.append("joinRoom ret = ");
+        paramIdResult.append(i);
+        QMLog.e("VoIPManager", paramIdResult.toString());
+        if (this.mJoinRoomListener != null)
+        {
+          this.mJoinRoomListener.onError(i);
+          this.mJoinRoomListener = null;
+        }
+      }
+      return;
     }
+    finally {}
   }
   
   public void setEventListener(VoIPManager.EventListener paramEventListener)
@@ -452,70 +587,37 @@ public class VoIPManager
     this.mEventListener = paramEventListener;
   }
   
-  /* Error */
   public void updateMuteConfig(VoIPManager.MuteConfig paramMuteConfig, VoIPManager.MuteConfigListener paramMuteConfigListener)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: getfield 476	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteMicrophone	Z
-    //   6: ifne +46 -> 52
-    //   9: iconst_1
-    //   10: istore 5
-    //   12: aload_0
-    //   13: iload 5
-    //   15: invokespecial 478	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMic	(Z)I
-    //   18: istore_3
-    //   19: aload_0
-    //   20: aload_1
-    //   21: getfield 481	com/tencent/qqmini/sdk/core/manager/VoIPManager$MuteConfig:isMuteEarphone	Z
-    //   24: invokespecial 483	com/tencent/qqmini/sdk/core/manager/VoIPManager:qavOpMute	(Z)I
-    //   27: istore 4
-    //   29: iload_3
-    //   30: ifne +8 -> 38
-    //   33: iload 4
-    //   35: ifeq +23 -> 58
-    //   38: aload_2
-    //   39: ifnull +10 -> 49
-    //   42: aload_2
-    //   43: iconst_m1
-    //   44: invokeinterface 488 2 0
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: return
-    //   52: iconst_0
-    //   53: istore 5
-    //   55: goto -43 -> 12
-    //   58: aload_2
-    //   59: ifnull -10 -> 49
-    //   62: aload_2
-    //   63: invokeinterface 491 1 0
-    //   68: goto -19 -> 49
-    //   71: astore_1
-    //   72: aload_0
-    //   73: monitorexit
-    //   74: aload_1
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	VoIPManager
-    //   0	76	1	paramMuteConfig	VoIPManager.MuteConfig
-    //   0	76	2	paramMuteConfigListener	VoIPManager.MuteConfigListener
-    //   18	12	3	i	int
-    //   27	7	4	j	int
-    //   10	44	5	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	71	finally
-    //   12	29	71	finally
-    //   42	49	71	finally
-    //   62	68	71	finally
+    for (;;)
+    {
+      try
+      {
+        if (!paramMuteConfig.isMuteMicrophone)
+        {
+          bool = true;
+          int i = qavOpMic(bool);
+          int j = qavOpMute(paramMuteConfig.isMuteEarphone);
+          if ((i == 0) && (j == 0))
+          {
+            if (paramMuteConfigListener != null) {
+              paramMuteConfigListener.onSuccess();
+            }
+          }
+          else if (paramMuteConfigListener != null) {
+            paramMuteConfigListener.onFail(-1);
+          }
+          return;
+        }
+      }
+      finally {}
+      boolean bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.VoIPManager
  * JD-Core Version:    0.7.0.1
  */

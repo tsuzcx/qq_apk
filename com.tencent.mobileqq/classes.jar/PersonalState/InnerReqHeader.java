@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class InnerReqHeader
   extends JceStruct
 {
-  public long iClientIp;
-  public int iSeq;
-  public long lUIN;
-  public int nAppid;
-  public short shVersion;
+  public long iClientIp = 0L;
+  public int iSeq = 0;
+  public long lUIN = 0L;
+  public int nAppid = 0;
+  public short shVersion = 0;
   public String strA2 = "";
   public String strImei = "";
-  public long uClientPort;
+  public long uClientPort = 0L;
   
   public InnerReqHeader() {}
   
@@ -49,18 +49,20 @@ public final class InnerReqHeader
     paramJceOutputStream.write(this.iSeq, 2);
     paramJceOutputStream.write(this.nAppid, 3);
     paramJceOutputStream.write(this.iClientIp, 4);
-    if (this.strA2 != null) {
-      paramJceOutputStream.write(this.strA2, 5);
+    String str = this.strA2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.uClientPort, 6);
-    if (this.strImei != null) {
-      paramJceOutputStream.write(this.strImei, 7);
+    str = this.strImei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PersonalState.InnerReqHeader
  * JD-Core Version:    0.7.0.1
  */

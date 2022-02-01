@@ -1,11 +1,11 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.IphoneTitleBarLocalAlbumsActivity;
 
 public class fdd
   implements View.OnClickListener
 {
-  public fdd(IphoneTitleBarActivity paramIphoneTitleBarActivity) {}
+  public fdd(IphoneTitleBarLocalAlbumsActivity paramIphoneTitleBarLocalAlbumsActivity) {}
   
   public void onClick(View paramView)
   {

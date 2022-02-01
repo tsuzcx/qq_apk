@@ -34,7 +34,6 @@ public class QIPCClientHelper
     sThreadEngine = paramEIPCThreadEngine;
   }
   
-  @Deprecated
   public EIPCResult callServer(String paramString1, String paramString2, Bundle paramBundle)
   {
     return getClient().callServer(paramString1, paramString2, paramBundle);
@@ -47,8 +46,12 @@ public class QIPCClientHelper
   
   public void disconnect()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIPCClientHelper", 2, "disconnect, " + sClient);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("disconnect, ");
+      localStringBuilder.append(sClient);
+      QLog.d("QIPCClientHelper", 2, localStringBuilder.toString());
     }
     if (sClient != null)
     {
@@ -59,17 +62,18 @@ public class QIPCClientHelper
   
   public EIPCClient getClient()
   {
-    if (sClient == null) {}
-    try
-    {
-      if (sClient == null)
+    if (sClient == null) {
+      try
       {
-        sClient = new EIPCClient(MobileQQ.sMobileQQ, 1);
-        sClient.registerModule(new QIPCClientModuleCore());
+        if (sClient == null)
+        {
+          sClient = new EIPCClient(MobileQQ.sMobileQQ, 1);
+          sClient.registerModule(new QIPCClientModuleCore());
+        }
       }
-      return sClient;
+      finally {}
     }
-    finally {}
+    return sClient;
   }
   
   public void register(QIPCModule paramQIPCModule)
@@ -79,7 +83,7 @@ public class QIPCClientHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCClientHelper
  * JD-Core Version:    0.7.0.1
  */

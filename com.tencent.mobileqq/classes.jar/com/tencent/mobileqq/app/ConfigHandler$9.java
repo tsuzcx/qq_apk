@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.app;
 
-import alqf;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 import java.net.URL;
 
-public class ConfigHandler$9
+class ConfigHandler$9
   implements Runnable
 {
-  public ConfigHandler$9(alqf paramalqf, String paramString, File paramFile) {}
+  ConfigHandler$9(ConfigHandler paramConfigHandler, String paramString, File paramFile) {}
   
   public void run()
   {
     try
     {
-      HttpDownloadUtil.a(this.this$0.app, new URL(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+      HttpDownloadUtil.download(this.this$0.c, new URL(this.a), this.b);
       return;
     }
     catch (Exception localException) {}
@@ -22,7 +21,7 @@ public class ConfigHandler$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.9
  * JD-Core Version:    0.7.0.1
  */

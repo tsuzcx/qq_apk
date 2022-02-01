@@ -12,21 +12,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import ayfo;
-import bcpg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.troop.robot.api.ITroopRobotService;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
 public class RobotChatTipLayout
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WeakReference<ayfo> jdField_a_of_type_JavaLangRefWeakReference;
+  private TextView a;
+  private ImageView b;
+  private WeakReference<RobotChatTipLayout.RobotChatTipLayoutListener> c;
   
   public RobotChatTipLayout(Context paramContext)
   {
@@ -35,95 +35,105 @@ public class RobotChatTipLayout
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.a = null;
+    this.c = null;
   }
   
-  public void a(ayfo paramayfo)
+  public void a(RobotChatTipLayout.RobotChatTipLayoutListener paramRobotChatTipLayoutListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramayfo);
-    LayoutInflater.from(getContext()).inflate(2131561354, this);
+    this.c = new WeakReference(paramRobotChatTipLayoutListener);
+    LayoutInflater.from(getContext()).inflate(2131627890, this);
     setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379033));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368742));
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.a = ((TextView)findViewById(2131448801));
+    this.b = ((ImageView)findViewById(2131436318));
+    paramRobotChatTipLayoutListener = this.b;
+    if (paramRobotChatTipLayoutListener != null) {
+      paramRobotChatTipLayoutListener.setOnClickListener(this);
     }
     setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-    if (!ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId)) {
+    if (!ThemeUtil.isNowThemeIsNight(null, false, ThemeUtil.curThemeId))
+    {
       setBackgroundColor(-1);
     }
-    for (;;)
+    else
     {
-      setVisibility(8);
-      return;
       setBackgroundColor(-5066062);
-      findViewById(2131368764).setBackgroundColor(-10197916);
+      findViewById(2131436349).setBackgroundColor(-10197916);
     }
+    setVisibility(8);
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    Object localObject = this.c;
+    if (localObject != null)
     {
-      paramView = (ayfo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramView != null) {
-        paramView.a(this);
+      localObject = (RobotChatTipLayout.RobotChatTipLayoutListener)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((RobotChatTipLayout.RobotChatTipLayoutListener)localObject).a(this);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setRobotName(String paramString)
   {
-    String str1 = paramString;
+    Object localObject1 = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str1 = getResources().getString(2131719298);
+      localObject1 = getResources().getString(2131915850);
     }
-    paramString = BaseApplicationImpl.getApplication().getRuntime();
-    String str2;
-    if ((paramString != null) && ((paramString instanceof QQAppInterface)))
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+    String str = null;
+    paramString = str;
+    if (localObject2 != null)
     {
-      str2 = ((bcpg)((QQAppInterface)paramString).getManager(203)).a();
-      paramString = str2;
-      if (TextUtils.isEmpty(str2)) {}
-    }
-    int i;
-    do
-    {
-      for (;;)
+      paramString = str;
+      if ((localObject2 instanceof QQAppInterface))
       {
-        try
-        {
-          paramString = str2.replace("[name]", "%1$s");
-          str2 = paramString;
-          if (TextUtils.isEmpty(paramString)) {
-            str2 = getResources().getString(2131719293);
+        paramString = ((ITroopRobotService)((QQAppInterface)localObject2).getRuntimeService(ITroopRobotService.class, "all")).getRobotWarning();
+        if (!TextUtils.isEmpty(paramString)) {
+          try
+          {
+            paramString = paramString.replace("[name]", "%1$s");
           }
-          paramString = String.format(str2, new Object[] { str1 });
-          if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(paramString))) {
-            break;
+          catch (Exception paramString)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("setRobotName exception: ");
+            ((StringBuilder)localObject2).append(paramString);
+            QLog.e("RobotChatTipLayout", 2, ((StringBuilder)localObject2).toString());
+            paramString = str;
           }
-          return;
         }
-        catch (Exception paramString)
-        {
-          QLog.e("RobotChatTipLayout", 2, "setRobotName exception: " + paramString);
-        }
-        paramString = null;
       }
-      i = paramString.indexOf(str1, 4);
-    } while (i < 0);
-    paramString = new SpannableString(paramString);
-    paramString.setSpan(new ForegroundColorSpan(-11692801), i, str1.length() + i, 33);
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     }
-    setVisibility(0);
+    str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = getResources().getString(2131915848);
+    }
+    paramString = String.format(str, new Object[] { localObject1 });
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      int i = paramString.indexOf((String)localObject1, 4);
+      if (i < 0) {
+        return;
+      }
+      paramString = new SpannableString(paramString);
+      paramString.setSpan(new ForegroundColorSpan(-11692801), i, ((String)localObject1).length() + i, 33);
+      localObject1 = this.a;
+      if (localObject1 != null) {
+        ((TextView)localObject1).setText(paramString);
+      }
+      setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatTipLayout
  * JD-Core Version:    0.7.0.1
  */

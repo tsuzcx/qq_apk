@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import NS_MINI_INTERFACE.INTERFACE.StGetAuthListRsp;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -18,38 +18,45 @@ class PermissionSettingFragment$1
   {
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      QLog.d(PermissionSettingFragment.access$000(), 1, "getSetting-getAuthList suc, ret:" + paramJSONObject.toString());
+      Object localObject = PermissionSettingFragment.access$000();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSetting-getAuthList suc, ret:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d((String)localObject, 1, localStringBuilder.toString());
       paramJSONObject = paramJSONObject.opt("authList");
       if ((paramJSONObject instanceof byte[]))
       {
-        INTERFACE.StGetAuthListRsp localStGetAuthListRsp = new INTERFACE.StGetAuthListRsp();
+        localObject = new INTERFACE.StGetAuthListRsp();
         try
         {
-          localStGetAuthListRsp.mergeFrom((byte[])paramJSONObject);
-          paramJSONObject = localStGetAuthListRsp.settings.get();
+          ((INTERFACE.StGetAuthListRsp)localObject).mergeFrom((byte[])paramJSONObject);
+          paramJSONObject = ((INTERFACE.StGetAuthListRsp)localObject).settings.get();
           this.this$0.authorizeCenter.updateAuthList(null, paramJSONObject);
           this.this$0.authorizeCenter.setAuthorizeSynchronized();
-          this.this$0.getActivity().runOnUiThread(new PermissionSettingFragment.1.1(this));
+          this.this$0.getBaseActivity().runOnUiThread(new PermissionSettingFragment.1.1(this));
           return;
         }
         catch (InvalidProtocolBufferMicroException paramJSONObject)
         {
-          QLog.e(PermissionSettingFragment.access$000(), 1, "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
+          localObject = PermissionSettingFragment.access$000();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getSetting, InvalidProtocolBufferMicroException:");
+          localStringBuilder.append(paramJSONObject);
+          QLog.e((String)localObject, 1, localStringBuilder.toString());
           paramJSONObject.printStackTrace();
         }
       }
     }
-    for (;;)
+    else
     {
-      this.this$0.getActivity().runOnUiThread(new PermissionSettingFragment.1.2(this));
-      return;
       QLog.e(PermissionSettingFragment.access$000(), 1, "getSetting-getAuthList failed");
     }
+    this.this$0.getBaseActivity().runOnUiThread(new PermissionSettingFragment.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

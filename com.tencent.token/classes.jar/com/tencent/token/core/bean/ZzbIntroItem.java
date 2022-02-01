@@ -15,16 +15,6 @@ public class ZzbIntroItem
     this.title = paramJSONObject.optString("title");
     this.desc = paramJSONObject.optString("desc");
   }
-  
-  public String a()
-  {
-    return this.title;
-  }
-  
-  public String b()
-  {
-    return this.desc;
-  }
 }
 
 

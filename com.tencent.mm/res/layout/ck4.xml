@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:weightSum="6.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ki4" android:text="@string/lq1" style="@style/a64" />
+    <TextView android:id="@id/ki5" android:text="@string/lq2" style="@style/a64" />
+    <TextView android:id="@id/ki6" android:text="@string/lq3" style="@style/a64" />
+    <TextView android:id="@id/ki7" android:text="@string/lq4" style="@style/a64" />
+    <TextView android:id="@id/ki8" android:text="@string/lq5" style="@style/a64" />
+    <TextView android:id="@id/ki9" android:text="@string/lq6" style="@style/a64" />
+</LinearLayout>

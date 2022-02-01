@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas;
 
-import aevp;
 import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-public class PendantInfo$AnimationLruCache
+class PendantInfo$AnimationLruCache
   extends AvatarPendantManager.LruLinkedHashMap<Long, Drawable>
 {
   static final long serialVersionUID = 1L;
@@ -23,8 +23,8 @@ public class PendantInfo$AnimationLruCache
     {
       Drawable localDrawable = (Drawable)localIterator.next();
       localDrawable.setCallback(null);
-      if ((localDrawable instanceof aevp)) {
-        ((aevp)localDrawable).a();
+      if ((localDrawable instanceof VipPendantDrawable)) {
+        ((VipPendantDrawable)localDrawable).a();
       }
     }
     super.clear();
@@ -36,8 +36,8 @@ public class PendantInfo$AnimationLruCache
     {
       paramEntry = (Drawable)paramEntry.getValue();
       paramEntry.setCallback(null);
-      if ((paramEntry instanceof aevp)) {
-        ((aevp)paramEntry).a();
+      if ((paramEntry instanceof VipPendantDrawable)) {
+        ((VipPendantDrawable)paramEntry).a();
       }
       return true;
     }
@@ -46,7 +46,7 @@ public class PendantInfo$AnimationLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.PendantInfo.AnimationLruCache
  * JD-Core Version:    0.7.0.1
  */

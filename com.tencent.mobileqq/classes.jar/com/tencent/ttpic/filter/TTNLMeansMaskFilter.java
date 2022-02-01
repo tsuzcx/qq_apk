@@ -43,14 +43,36 @@ public class TTNLMeansMaskFilter
   {
     addAttribParam("inputSkinOpacity", this.eyeOpacity);
     paramList = AlgoUtils.getLeftEyeRectF(paramList);
-    setPositions(AlgoUtils.calPositions(paramList.left, paramList.top, paramList.right, paramList.bottom, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale)));
+    float f1 = paramList.left;
+    float f2 = paramList.top;
+    float f3 = paramList.right;
+    float f4 = paramList.bottom;
+    double d1 = this.width;
+    double d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    int i = (int)(d1 * d2);
+    d1 = this.height;
+    d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    setPositions(AlgoUtils.calPositions(f1, f2, f3, f4, i, (int)(d1 * d2)));
   }
   
   public void updateRightEyeAttribute(List<PointF> paramList)
   {
     addAttribParam("inputSkinOpacity", this.eyeOpacity);
     paramList = AlgoUtils.getRightEyeRectF(paramList);
-    setPositions(AlgoUtils.calPositions(paramList.left, paramList.top, paramList.right, paramList.bottom, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale)));
+    float f1 = paramList.left;
+    float f2 = paramList.top;
+    float f3 = paramList.right;
+    float f4 = paramList.bottom;
+    double d1 = this.width;
+    double d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    int i = (int)(d1 * d2);
+    d1 = this.height;
+    d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    setPositions(AlgoUtils.calPositions(f1, f2, f3, f4, i, (int)(d1 * d2)));
   }
   
   public void updateSize(float paramFloat1, float paramFloat2)
@@ -60,7 +82,7 @@ public class TTNLMeansMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.TTNLMeansMaskFilter
  * JD-Core Version:    0.7.0.1
  */

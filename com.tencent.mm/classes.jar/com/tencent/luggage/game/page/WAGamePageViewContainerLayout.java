@@ -6,14 +6,16 @@ import android.util.AttributeSet;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public class WAGamePageViewContainerLayout
   extends FrameLayout
 {
-  private b bBM = null;
-  private a bBN = null;
+  private b eno;
+  private a enp;
+  Activity mActivity;
   
   public WAGamePageViewContainerLayout(Context paramContext)
   {
@@ -28,44 +30,49 @@ public class WAGamePageViewContainerLayout
   public WAGamePageViewContainerLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(220150);
+    this.eno = null;
+    this.enp = null;
+    this.mActivity = AndroidContextUtil.castActivityOrNull(getContext());
+    AppMethodBeat.o(220150);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(140501);
+    AppMethodBeat.i(130643);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     b localb;
-    if ((getContext() instanceof Activity))
+    if (this.mActivity != null)
     {
-      paramInt1 = ((Activity)getContext()).getWindowManager().getDefaultDisplay().getRotation();
+      paramInt1 = this.mActivity.getWindowManager().getDefaultDisplay().getRotation();
       switch (paramInt1)
       {
       default: 
-        d.e("MicroMsg.WAContainerView", "hy: invalid rotate: %d!", new Object[] { Integer.valueOf(paramInt1) });
-        localb = b.bBO;
+        Log.e("MicroMsg.WAContainerView", "hy: invalid rotate: %d!", new Object[] { Integer.valueOf(paramInt1) });
+        localb = b.enq;
       }
     }
     for (;;)
     {
-      if (this.bBN != null) {
-        this.bBN.a(this.bBM, localb);
+      if (this.enp != null) {
+        this.enp.a(this.eno, localb);
       }
-      this.bBM = localb;
-      AppMethodBeat.o(140501);
+      this.eno = localb;
+      AppMethodBeat.o(130643);
       return;
-      localb = b.bBP;
+      localb = b.enr;
       continue;
-      localb = b.bBQ;
+      localb = b.ens;
       continue;
-      localb = b.bBR;
+      localb = b.ent;
       continue;
-      localb = b.bBS;
+      localb = b.enu;
     }
   }
   
   public void setOnConfigurationChangedListener(a parama)
   {
-    this.bBN = parama;
+    this.enp = parama;
   }
   
   public static abstract interface a
@@ -77,14 +84,14 @@ public class WAGamePageViewContainerLayout
   {
     static
     {
-      AppMethodBeat.i(140500);
-      bBO = new b("UNDEFINED", 0);
-      bBP = new b("PORTRAIT", 1);
-      bBQ = new b("LANDSCAPE", 2);
-      bBR = new b("PORTRAIT_REVERSE", 3);
-      bBS = new b("LANDSCAPE_REVERSE", 4);
-      bBT = new b[] { bBO, bBP, bBQ, bBR, bBS };
-      AppMethodBeat.o(140500);
+      AppMethodBeat.i(130642);
+      enq = new b("UNDEFINED", 0);
+      enr = new b("PORTRAIT", 1);
+      ens = new b("LANDSCAPE", 2);
+      ent = new b("PORTRAIT_REVERSE", 3);
+      enu = new b("LANDSCAPE_REVERSE", 4);
+      enw = new b[] { enq, enr, ens, ent, enu };
+      AppMethodBeat.o(130642);
     }
     
     private b() {}
@@ -92,7 +99,7 @@ public class WAGamePageViewContainerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.page.WAGamePageViewContainerLayout
  * JD-Core Version:    0.7.0.1
  */

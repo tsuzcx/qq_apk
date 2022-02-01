@@ -1,12 +1,29 @@
 package com.tencent.mm.plugin.exdevice.i;
 
-public abstract interface d
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.ej;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+
+public final class d
+  extends ej
 {
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString);
+  protected static IAutoDBItem.MAutoDBInfo info;
+  
+  static
+  {
+    AppMethodBeat.i(274558);
+    info = ej.aJm();
+    AppMethodBeat.o(274558);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.i.d
  * JD-Core Version:    0.7.0.1
  */

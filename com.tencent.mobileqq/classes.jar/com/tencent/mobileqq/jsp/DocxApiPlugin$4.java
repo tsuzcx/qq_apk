@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.jsp;
 
-import athh;
-import bahm;
+import com.tencent.mobileqq.teamwork.TeamWorkHandlerUtils;
 
-public class DocxApiPlugin$4
+class DocxApiPlugin$4
   implements Runnable
 {
-  public DocxApiPlugin$4(athh paramathh, String paramString) {}
+  DocxApiPlugin$4(DocxApiPlugin paramDocxApiPlugin, String paramString) {}
   
   public void run()
   {
-    bahm.a(this.a);
+    TeamWorkHandlerUtils.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.4
  * JD-Core Version:    0.7.0.1
  */

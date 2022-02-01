@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.PointF;
-import android.util.JsonReader;
-import android.util.JsonToken;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 
 public class PointFParser
   implements ValueParser<PointF>
@@ -12,27 +12,28 @@ public class PointFParser
   public PointF parse(JsonReader paramJsonReader, float paramFloat)
   {
     Object localObject = paramJsonReader.peek();
-    if (localObject == JsonToken.BEGIN_ARRAY)
-    {
-      localObject = JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
-      return localObject;
-    }
-    if (localObject == JsonToken.BEGIN_OBJECT) {
+    if (localObject == JsonReader.Token.BEGIN_ARRAY) {
       return JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
     }
-    if (localObject == JsonToken.NUMBER)
+    if (localObject == JsonReader.Token.BEGIN_OBJECT) {
+      return JsonUtils.jsonToPoint(paramJsonReader, paramFloat);
+    }
+    if (localObject == JsonReader.Token.NUMBER)
     {
-      PointF localPointF = new PointF((float)paramJsonReader.nextDouble() * paramFloat, (float)paramJsonReader.nextDouble() * paramFloat);
-      for (;;)
-      {
-        localObject = localPointF;
-        if (!paramJsonReader.hasNext()) {
-          break;
-        }
+      localObject = new PointF((float)paramJsonReader.nextDouble() * paramFloat, (float)paramJsonReader.nextDouble() * paramFloat);
+      while (paramJsonReader.hasNext()) {
         paramJsonReader.skipValue();
       }
+      return localObject;
     }
-    throw new IllegalArgumentException("Cannot convert json to point. Next token is " + localObject);
+    paramJsonReader = new StringBuilder();
+    paramJsonReader.append("Cannot convert json to point. Next token is ");
+    paramJsonReader.append(localObject);
+    paramJsonReader = new IllegalArgumentException(paramJsonReader.toString());
+    for (;;)
+    {
+      throw paramJsonReader;
+    }
   }
 }
 

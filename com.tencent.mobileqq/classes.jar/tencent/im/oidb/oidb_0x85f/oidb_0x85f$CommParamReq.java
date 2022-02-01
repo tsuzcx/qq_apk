@@ -18,13 +18,14 @@ public final class oidb_0x85f$CommParamReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_portal", "bytes_version", "uint32_platform", "uint32_use_uin" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, CommParamReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_portal", "bytes_version", "uint32_platform", "uint32_use_uin" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger }, CommParamReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x85f.oidb_0x85f.CommParamReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,18 @@
-import android.graphics.Rect;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PictureCutInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-public final class icq
-  implements Parcelable.Creator
+public class icq
+  implements DialogInterface.OnClickListener
 {
-  public PictureCutInfo a(Parcel paramParcel)
-  {
-    PictureCutInfo localPictureCutInfo = new PictureCutInfo();
-    localPictureCutInfo.jdField_a_of_type_AndroidGraphicsRect = ((Rect)paramParcel.readParcelable(getClass().getClassLoader()));
-    localPictureCutInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localPictureCutInfo.b = paramParcel.readInt();
-    localPictureCutInfo.c = paramParcel.readInt();
-    localPictureCutInfo.d = paramParcel.readInt();
-    return localPictureCutInfo;
-  }
+  public icq(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String[] paramArrayOfString) {}
   
-  public PictureCutInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new PictureCutInfo[paramInt];
+    QzoneWebMusicJsPlugin.access$002(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, true);
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusic(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    paramDialogInterface.dismiss();
+    QzoneWebMusicJsPlugin.access$102(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, false);
   }
 }
 

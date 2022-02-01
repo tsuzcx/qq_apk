@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.NotAllowInterceptRelativeLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/top_bar" android:background="@drawable/skin_header_bar_bg" android:paddingLeft="@dimen/dp_32" android:paddingRight="@dimen/dp_32" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
+        <Button android:id="@id/back_photo_list_btn" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="20.0sp" android:textColor="@color/black" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/photo_crop_cut_andt_translate" android:layout_centerInParent="true" />
+        <Button android:textSize="20.0sp" android:id="@id/cut_btn" android:layout_width="wrap_content" android:layout_height="29.0dip" android:text="@string/finish" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/SmallButtonlightBlueLocalAlbums" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/photocrop_rootview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/top_bar" />
+</com.tencent.mobileqq.widget.NotAllowInterceptRelativeLayout>

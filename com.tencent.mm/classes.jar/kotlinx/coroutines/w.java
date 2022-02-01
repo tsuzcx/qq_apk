@@ -1,68 +1,41 @@
 package kotlinx.coroutines;
 
-import a.c.a;
-import a.c.c;
-import a.c.d;
-import a.c.e;
-import a.c.e.b;
-import a.c.e.c;
-import a.c.f;
-import a.f.b.j;
-import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/ContinuationInterceptor;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatchYield", "interceptContinuation", "Lkotlin/coroutines/Continuation;", "T", "continuation", "isDispatchNeeded", "", "plus", "other", "toString", "", "kotlinx-coroutines-core"})
-public abstract class w
-  extends a
-  implements d
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/ChildHandleNode;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/ChildHandle;", "childJob", "Lkotlinx/coroutines/ChildJob;", "(Lkotlinx/coroutines/ChildJob;)V", "parent", "Lkotlinx/coroutines/Job;", "getParent", "()Lkotlinx/coroutines/Job;", "childCancelled", "", "cause", "", "invoke", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class w
+  extends cd
+  implements v
 {
-  public w()
+  public final x ajvu;
+  
+  public w(x paramx)
   {
-    super((e.c)d.BML);
+    this.ajvu = paramx;
   }
   
-  public final <T> c<T> a(c<? super T> paramc)
+  public final void N(Throwable paramThrowable)
   {
-    j.q(paramc, "continuation");
-    return (c)new al(this, paramc);
+    AppMethodBeat.i(118192);
+    this.ajvu.a((cq)kCx());
+    AppMethodBeat.o(118192);
   }
   
-  public abstract void a(e parame, Runnable paramRunnable);
-  
-  public final void b(c<?> paramc)
+  public final boolean Q(Throwable paramThrowable)
   {
-    j.q(paramc, "continuation");
-    j.q(paramc, "continuation");
+    AppMethodBeat.i(118194);
+    boolean bool = kCx().Q(paramThrowable);
+    AppMethodBeat.o(118194);
+    return bool;
   }
   
-  public boolean b(e parame)
+  public final cb kBL()
   {
-    j.q(parame, "context");
-    return true;
-  }
-  
-  public <E extends e.b> E get(e.c<E> paramc)
-  {
-    j.q(paramc, "key");
-    j.q(paramc, "key");
-    if (paramc == d.BML) {
-      return (e.b)this;
-    }
-    return null;
-  }
-  
-  public e minusKey(e.c<?> paramc)
-  {
-    j.q(paramc, "key");
-    j.q(paramc, "key");
-    if (paramc == d.BML) {
-      return (e)f.BMO;
-    }
-    return (e)this;
-  }
-  
-  public String toString()
-  {
-    return af.ea(this) + '@' + af.dZ(this);
+    AppMethodBeat.i(188773);
+    cb localcb = (cb)kCx();
+    AppMethodBeat.o(188773);
+    return localcb;
   }
 }
 

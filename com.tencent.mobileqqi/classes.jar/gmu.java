@@ -1,25 +1,34 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.service.message.MessageFactoryReceiver.UploadStreamStruct;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.streamtransfile.StreamDataManager;
 import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
 import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class gmu
-  extends MessageObserver
+  implements Runnable
 {
-  public gmu(BuddyTransfileProcessor paramBuddyTransfileProcessor) {}
+  public gmu(BuddyTransfileProcessor paramBuddyTransfileProcessor, String paramString, short paramShort, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct)
+  public void run()
   {
-    this.a.c(2);
-    if ((paramUploadStreamStruct == null) || (paramUploadStreamStruct.a == null) || (!paramUploadStreamStruct.a.equalsIgnoreCase(this.a.a.e))) {
-      return;
-    }
-    if (!paramBoolean)
+    FileMsg localFileMsg;
+    if ((StreamDataManager.b(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString) != 0) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.k))
     {
-      BuddyTransfileProcessor.a(this.a, false, paramUploadStreamStruct);
-      return;
+      localFileMsg = this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
+      BuddyTransfileProcessor localBuddyTransfileProcessor = this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor;
+      long l = System.nanoTime();
+      localBuddyTransfileProcessor.jdField_a_of_type_Long = l;
+      localFileMsg.jdField_e_of_type_Long = l;
+      this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.k = true;
     }
-    BuddyTransfileProcessor.a(this.a, true, paramUploadStreamStruct);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, BuddyTransfileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor), this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Short, BuddyTransfileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor), BuddyTransfileProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor));
+    this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true, NetworkUtil.b(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()), 2, 0, StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Short));
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      localFileMsg = this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
+      localFileMsg.d += StreamDataManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileBuddyTransfileProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Short);
+    }
   }
 }
 

@@ -9,8 +9,8 @@ public final class RegisterHttpShortConnectionBusiPack
 {
   static byte[] cache_vBusi;
   public String strSvcCmd = "";
-  public long uSeq;
-  public byte[] vBusi;
+  public long uSeq = 0L;
+  public byte[] vBusi = null;
   
   public RegisterHttpShortConnectionBusiPack() {}
   
@@ -42,7 +42,7 @@ public final class RegisterHttpShortConnectionBusiPack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.RegisterHttpShortConnectionBusiPack
  * JD-Core Version:    0.7.0.1
  */

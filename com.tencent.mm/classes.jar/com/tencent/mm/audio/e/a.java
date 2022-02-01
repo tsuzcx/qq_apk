@@ -4,15 +4,15 @@ import com.tencent.mm.audio.b.g.a;
 
 public abstract interface a
 {
-  public abstract void Fb();
-  
-  public abstract boolean Fc();
-  
   public abstract int a(g.a parama);
   
   public abstract int a(g.a parama, int paramInt, boolean paramBoolean);
   
-  public abstract boolean eN(String paramString);
+  public abstract boolean aIA();
+  
+  public abstract void aIz();
+  
+  public abstract boolean jO(String paramString);
 }
 
 

@@ -1,50 +1,33 @@
 package com.tencent.mm.plugin.appbrand.game.c;
 
 import com.tencent.magicbrush.MBRuntime;
-import com.tencent.magicbrush.a.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 
 public final class a
-  extends com.tencent.luggage.game.c.a
+  extends com.tencent.luggage.game.b.a
 {
-  public static final a hsP;
+  public static final a rqJ;
   
   static
   {
-    AppMethodBeat.i(143123);
-    hsP = new a();
-    AppMethodBeat.o(143123);
+    AppMethodBeat.i(45104);
+    rqJ = new a();
+    AppMethodBeat.o(45104);
   }
   
-  public final void a(MBRuntime paramMBRuntime, i parami)
+  public final void a(MBRuntime paramMBRuntime, AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(143122);
-    super.a(paramMBRuntime, parami);
+    AppMethodBeat.i(45103);
+    super.a(paramMBRuntime, paramAppBrandRuntime);
     com.tencent.magicbrush.a.a.a(new a.a((byte)0));
-    com.tencent.magicbrush.handler.glfont.a.a(new b());
-    AppMethodBeat.o(143122);
-  }
-  
-  static final class b
-    implements d.a
-  {
-    private int bAc = -1;
-    
-    public final void fI(int paramInt)
-    {
-      AppMethodBeat.i(143121);
-      ab.i("MicroMsg.MBFontManagerRegistryWC", "mbfont idkey logid:" + this.bAc + ",key:" + paramInt);
-      h.qsU.cT(this.bAc, paramInt);
-      AppMethodBeat.o(143121);
-    }
+    com.tencent.magicbrush.handler.glfont.a.a(new a.b());
+    AppMethodBeat.o(45103);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.c.a
  * JD-Core Version:    0.7.0.1
  */

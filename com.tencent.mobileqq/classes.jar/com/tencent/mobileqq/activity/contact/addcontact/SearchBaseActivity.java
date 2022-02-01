@@ -1,20 +1,13 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahhs;
-import ahht;
-import ahhu;
-import ahhv;
-import ahhw;
-import alud;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -22,55 +15,48 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.regex.Pattern;
 
 public class SearchBaseActivity
-  extends FragmentActivity
+  extends BaseActivity
 {
-  public static final Pattern a;
-  public static final Pattern b = Pattern.compile("[^0-9]");
-  public static final Pattern c = Pattern.compile("^1[0-9]{2}\\d{8}$");
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ahhw(this);
-  public Button a;
-  public EditText a;
-  public ImageButton a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public SearchBaseFragment a;
-  protected String d;
-  public final int g = 64;
-  public int h;
-  protected int i;
+  public static final Pattern C = Pattern.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$", 2);
+  public static final Pattern D = Pattern.compile("[^0-9]");
+  public static final Pattern E = Pattern.compile("^1[0-9]{2}\\d{8}$");
+  public final int B = 64;
+  protected String F;
+  protected int G;
+  protected int H;
+  Button I;
+  ImageButton J;
+  EditText K;
+  ImageView L;
+  SearchBaseFragment M;
+  private int a;
+  private Handler b = new SearchBaseActivity.5(this);
   
-  static
-  {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$", 2);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  protected SearchBaseFragment a()
-  {
-    return new SearchBaseFragment();
-  }
-  
-  public boolean a(boolean paramBoolean, View paramView)
+  protected boolean a(boolean paramBoolean, View paramView)
   {
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
-    if ((localInputMethodManager == null) || (paramView == null)) {
-      return false;
-    }
-    if (localInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0))
+    if (localInputMethodManager != null)
     {
-      if (paramBoolean) {
-        paramView.clearFocus();
+      if (paramView == null) {
+        return false;
       }
-      return true;
+      if (localInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0))
+      {
+        if (paramBoolean) {
+          paramView.clearFocus();
+        }
+        return true;
+      }
     }
     return false;
   }
@@ -80,81 +66,110 @@ public class SearchBaseActivity
     Intent localIntent = getIntent();
     if (localIntent.hasExtra("from_key"))
     {
-      this.h = localIntent.getIntExtra("from_key", 0);
-      this.d = localIntent.getStringExtra("last_key_words");
-      this.jdField_a_of_type_Int = localIntent.getIntExtra("jump_src_key", 1);
+      this.G = localIntent.getIntExtra("from_key", 0);
+      this.F = localIntent.getStringExtra("last_key_words");
+      this.a = localIntent.getIntExtra("jump_src_key", 1);
     }
     if (localIntent.hasExtra("fromType")) {
-      this.i = localIntent.getIntExtra("fromType", -1);
+      this.H = localIntent.getIntExtra("fromType", -1);
     }
   }
   
   protected void c()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363522));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131166911));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahhs(this));
-    if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidWidgetButton.getText());
+    this.I = ((Button)findViewById(2131429816));
+    this.I.setTextColor(getResources().getColor(2131168002));
+    this.I.setOnClickListener(new SearchBaseActivity.1(this));
+    if (AppSetting.e)
+    {
+      Button localButton = this.I;
+      localButton.setContentDescription(localButton.getText());
     }
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365851));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(getResources().getString(2131689716));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(64) });
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, getResources().getDimension(2131298850));
-    this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new ahht(this));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131367817));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ahhu(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368709));
-    if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131713999));
+    this.K = ((EditText)findViewById(2131432634));
+    this.K.setHint(getResources().getString(2131886278));
+    this.K.setFilters(new InputFilter[] { new InputFilter.LengthFilter(64) });
+    this.K.setTextSize(0, getResources().getDimension(2131299845));
+    this.K.setImeOptions(3);
+    this.K.setSingleLine();
+    this.K.setOnEditorActionListener(new SearchBaseActivity.2(this));
+    this.J = ((ImageButton)findViewById(2131435215));
+    this.J.setOnClickListener(new SearchBaseActivity.3(this));
+    this.L = ((ImageView)findViewById(2131436275));
+    if (AppSetting.e) {
+      this.L.setContentDescription(HardCodeUtil.a(2131901576));
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ahhv(this));
+    this.L.setOnClickListener(new SearchBaseActivity.4(this));
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected SearchBaseFragment d()
+  {
+    return new SearchBaseFragment();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561258);
-    paramBundle = super.findViewById(2131376034);
+    super.setContentView(2131627775);
+    paramBundle = super.findViewById(2131445137);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       paramBundle.setFitsSystemWindows(true);
     }
     super.getWindow().setBackgroundDrawable(null);
     b();
     c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment instanceof ClassificationSearchFragment)) {
-      ((ClassificationSearchFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).a(this.i);
+    this.M = d();
+    paramBundle = this.M;
+    if ((paramBundle instanceof ClassificationSearchFragment)) {
+      ((ClassificationSearchFragment)paramBundle).b(this.H);
     }
     paramBundle = new Bundle();
-    paramBundle.putInt("from_key", this.h);
-    paramBundle.putString("last_key_words", this.d);
+    paramBundle.putInt("from_key", this.G);
+    paramBundle.putString("last_key_words", this.F);
     paramBundle.putString("start_search_key", getIntent().getStringExtra("start_search_key"));
     paramBundle.putBoolean("auto_add_and_prohibit_auto_search", getIntent().getBooleanExtra("auto_add_and_prohibit_auto_search", false));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.setArguments(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.jdField_a_of_type_AndroidOsHandler);
+    this.M.setArguments(paramBundle);
+    this.M.a(this.b);
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131364736, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment);
+    paramBundle.replace(2131431280, this.M);
     paramBundle.commit();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    ViewFactory.a().a();
+    ViewFactory.a().b();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    setContentBackgroundResource(2130838593);
+    setContentBackgroundResource(2130838959);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  public int f()
+  {
+    return this.a;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }

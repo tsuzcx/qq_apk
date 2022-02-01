@@ -19,12 +19,12 @@
         </LinearLayout>
         <RadioGroup android:orientation="horizontal" android:id="@id/qz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </RelativeLayout>
-    <android.support.v4.view.ViewPager android:id="@id/pc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/pa" android:layout_below="@id/dez" android:layout_alignParentLeft="true" />
-    <LinearLayout android:orientation="vertical" android:id="@id/dez" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <androidx.viewpager.widget.ViewPager android:id="@id/pc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/pa" android:layout_below="@id/ocl" android:layout_alignParentLeft="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ocl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <View android:background="#ffefefef" android:layout_width="fill_parent" android:layout_height="0.5dip" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffffffff" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
-            <View android:background="@drawable/g5i" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="2.0dip" />
-            <TextView android:textSize="14.0sp" android:textColor="#ff34394c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="点击进入空间" android:layout_weight="1.0" />
+            <View android:id="@id/dgv" android:background="@drawable/g5i" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="2.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff34394c" android:id="@id/eay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="点击进入空间" android:layout_weight="1.0" />
             <View android:background="@drawable/fus" android:layout_width="15.0dip" android:layout_height="15.0dip" />
         </LinearLayout>
         <View android:background="#ffefefef" android:layout_width="fill_parent" android:layout_height="0.5dip" />

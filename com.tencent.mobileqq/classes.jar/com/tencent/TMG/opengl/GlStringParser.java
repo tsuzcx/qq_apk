@@ -93,40 +93,46 @@ public class GlStringParser
   
   public void set(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString1.indexOf(this.mend) != -1) || (paramString1.indexOf(this.mkey) != -1)) {}
-    while ((paramString2 == null) || (paramString2.indexOf(this.mkey) != -1) || (paramString2.indexOf(this.mend) != -1)) {
-      return;
+    if ((paramString1 != null) && (paramString1.indexOf(this.mend) == -1))
+    {
+      if (paramString1.indexOf(this.mkey) != -1) {
+        return;
+      }
+      if ((paramString2 != null) && (paramString2.indexOf(this.mkey) == -1))
+      {
+        if (paramString2.indexOf(this.mend) != -1) {
+          return;
+        }
+        this.mMap.put(paramString1, paramString2);
+      }
     }
-    this.mMap.put(paramString1, paramString2);
   }
   
   public void unflatten(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return;
-      this.mMap.clear();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.mend);
-      paramString = new StringTokenizer(paramString, ((StringBuilder)localObject).toString());
-      while (paramString.hasMoreElements())
+    }
+    this.mMap.clear();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mend);
+    paramString = new StringTokenizer(paramString, ((StringBuilder)localObject).toString());
+    while (paramString.hasMoreElements())
+    {
+      String str = paramString.nextToken();
+      int i = str.indexOf(this.mkey);
+      if (i != -1)
       {
-        String str = paramString.nextToken();
-        int i = str.indexOf(this.mkey);
-        if (i != -1)
-        {
-          localObject = str.substring(0, i);
-          str = str.substring(i + 1);
-          this.mMap.put(localObject, str);
-        }
+        localObject = str.substring(0, i);
+        str = str.substring(i + 1);
+        this.mMap.put(localObject, str);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.GlStringParser
  * JD-Core Version:    0.7.0.1
  */

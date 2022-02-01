@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<apps count="11">
+    <app name="QQ邮箱" appid="" developer="腾讯公司" package="com.tencent.androidqqmail" task="" version="6.1.2" />
+    <app name="微视" appid="" developer="腾讯公司" package="com.tencent.weishi" task="" version="8.5.5.305" />
+    <app name="腾讯手机管家" appid="" developer="腾讯公司" package="com.tencent.qqpimsecure" task="" version="8.9.0" />
+    <app name="QQ浏览器" appid="" developer="腾讯公司" package="com.tencent.mtt" task="" version="11.0.1.1500" />
+    <app name="腾讯新闻" appid="" developer="腾讯公司" package="com.tencent.news" task="" version="6.3.50" />
+    <app name="腾讯视频" appid="" developer="腾讯公司" package="com.tencent.qqlive" task="" version="8.2.75.21629" />
+    <app name="腾讯体育" appid="" developer="深圳市腾讯计算机系统有限公司北京分公司" package="com.tencent.qqsports" task="" version="6.4.20.935" />
+    <app name="企业微信" appid="" developer="腾讯公司" package="com.tencent.wework" task="" version="3.0.36" />
+    <app name="腾讯地图" appid="" developer="腾讯公司" package="com.tencent.map" task="tencentmap" version="9.3.0" />
+    <app name="腾讯会议" appid="" developer="腾讯云计算（北京）有限责任公司" package="com.tencent.wemeet.app" task="" version="2.4.0.456" />
+    <app name="应用宝" appid="" developer="腾讯公司" package="com.tencent.android.qqdownloader" task="" version="7.6.6" />
+</apps>

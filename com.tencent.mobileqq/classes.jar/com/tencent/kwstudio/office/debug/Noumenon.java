@@ -36,19 +36,22 @@ public final class Noumenon
   
   public static void setLibVersion(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    synchronized (VER_MAP)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      VER_MAP.put(paramString1, paramString2);
-      return;
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      synchronized (VER_MAP)
+      {
+        VER_MAP.put(paramString1, paramString2);
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.kwstudio.office.debug.Noumenon
  * JD-Core Version:    0.7.0.1
  */

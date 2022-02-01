@@ -1,17 +1,20 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.SpaceGateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ImageCreator;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
-class djl
-  implements ImageCreator
+public class djl
 {
-  djl(djk paramdjk, String paramString) {}
-  
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_Djk.a.b.b(this.jdField_a_of_type_JavaLangString);
-  }
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  ShaderAnimLayout jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout;
+  TextView b;
+  TextView c;
 }
 
 

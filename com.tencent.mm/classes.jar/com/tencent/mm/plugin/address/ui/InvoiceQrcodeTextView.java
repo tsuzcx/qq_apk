@@ -16,41 +16,49 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.a;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.n;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class InvoiceQrcodeTextView
   extends RelativeLayout
   implements View.OnFocusChangeListener
 {
   private int background;
-  private View.OnFocusChangeListener gLH;
-  private TextView gLI;
-  private ImageView gLK;
-  private String gLL;
-  private String gLM;
-  private int gLN;
-  private int gLO;
-  public boolean gLP;
-  private int gLQ;
-  public boolean gLR;
-  private int gLS;
-  private int gLT;
-  private boolean gLU;
-  private View.OnClickListener gLV;
-  private String gLW;
-  public boolean gLY;
-  private int gMc;
-  public boolean gMd;
-  private a gMs;
-  private InvoiceQrcodeTextView.c gMt;
-  private InvoiceQrcodeTextView.b gMu;
-  TextView gMv;
-  private int gravity;
-  private int imeOptions;
+  private boolean bcF;
+  private int editType;
+  private int fl;
   private int inputType;
+  private TextView pls;
+  private View.OnFocusChangeListener qiH;
+  private ImageView qiJ;
+  private String qiK;
+  private String qiL;
+  private int qiM;
+  private int qiN;
+  public boolean qiO;
+  private int qiP;
+  public boolean qiQ;
+  private int qiR;
+  private int qiS;
+  private View.OnClickListener qiT;
+  private String qiU;
+  public boolean qiW;
+  private int qja;
+  public boolean qjb;
+  private a qjo;
+  private c qjp;
+  private b qjq;
+  TextView qjr;
+  private int qjs;
+  private int qjt;
   
   public InvoiceQrcodeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -60,82 +68,140 @@ public class InvoiceQrcodeTextView
   public InvoiceQrcodeTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(16886);
-    this.gLY = false;
-    this.gLL = "";
-    this.gLM = "";
+    AppMethodBeat.i(20929);
+    this.qiW = false;
+    this.qiK = "";
+    this.qiL = "";
     this.inputType = 1;
-    this.gMc = 0;
-    this.gravity = 19;
-    this.gLN = -1;
+    this.qja = 0;
+    this.fl = 19;
+    this.editType = -1;
     this.background = -1;
-    this.gLO = -1;
-    this.gLP = true;
-    this.gMd = true;
-    this.gLR = false;
-    this.gLS = 0;
-    this.gLT = 100;
-    this.gLU = true;
-    this.gLV = new InvoiceQrcodeTextView.2(this);
-    this.gLW = null;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.InvoiceEditView, paramInt, 0);
-    paramInt = paramAttributeSet.getResourceId(5, 0);
+    this.qiN = -1;
+    this.qiO = true;
+    this.qjb = true;
+    this.qiQ = false;
+    this.qiR = 0;
+    this.qiS = 100;
+    this.bcF = true;
+    this.qiT = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(267172);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/InvoiceQrcodeTextView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (InvoiceQrcodeTextView.c(InvoiceQrcodeTextView.this).getVisibility() == 0)
+        {
+          if ((!InvoiceQrcodeTextView.this.qiO) || (InvoiceQrcodeTextView.d(InvoiceQrcodeTextView.this) == 2) || (Util.isNullOrNil(InvoiceQrcodeTextView.this.getText()))) {
+            break label128;
+          }
+          InvoiceQrcodeTextView.this.qjr.setText("");
+          InvoiceQrcodeTextView.a(InvoiceQrcodeTextView.this, InvoiceQrcodeTextView.e(InvoiceQrcodeTextView.this).isFocused());
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/InvoiceQrcodeTextView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(267172);
+          return;
+          label128:
+          if (InvoiceQrcodeTextView.f(InvoiceQrcodeTextView.this) != null) {
+            InvoiceQrcodeTextView.f(InvoiceQrcodeTextView.this);
+          }
+        }
+      }
+    };
+    this.qiU = null;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.ham, paramInt, 0);
+    paramInt = paramAttributeSet.getResourceId(R.n.hat, 0);
     if (paramInt != 0) {
-      this.gLL = paramContext.getString(paramInt);
+      this.qiK = paramContext.getString(paramInt);
     }
-    paramInt = paramAttributeSet.getResourceId(6, 0);
+    paramInt = paramAttributeSet.getResourceId(R.n.hax, 0);
     if (paramInt != 0) {
-      this.gLM = paramContext.getString(paramInt);
+      this.qiL = paramContext.getString(paramInt);
     }
-    this.inputType = paramAttributeSet.getInteger(3, 1);
-    this.gLN = paramAttributeSet.getInteger(7, 0);
-    this.gLP = paramAttributeSet.getBoolean(10, true);
-    this.gravity = paramAttributeSet.getInt(0, 19);
-    this.imeOptions = paramAttributeSet.getInteger(4, 5);
-    this.background = paramAttributeSet.getResourceId(1, 2130840999);
-    this.gLQ = paramAttributeSet.getResourceId(12, -1);
-    this.gLO = paramAttributeSet.getResourceId(9, 2130840999);
-    this.gLU = paramAttributeSet.getBoolean(13, true);
+    this.inputType = paramAttributeSet.getInteger(R.n.hap, 1);
+    this.editType = paramAttributeSet.getInteger(R.n.har, 0);
+    this.qiO = paramAttributeSet.getBoolean(R.n.has, true);
+    this.fl = paramAttributeSet.getInt(R.n.han, 19);
+    this.qiM = paramAttributeSet.getInteger(R.n.haq, 5);
+    this.background = paramAttributeSet.getResourceId(R.n.hao, R.g.transparent_background);
+    this.qiP = paramAttributeSet.getResourceId(R.n.hav, -1);
+    this.qiN = paramAttributeSet.getResourceId(R.n.hau, R.g.transparent_background);
+    this.bcF = paramAttributeSet.getBoolean(R.n.haw, true);
     paramAttributeSet.recycle();
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2130969918, this, true);
-    this.gMv = ((TextView)paramAttributeSet.findViewById(2131821072));
-    this.gMv.setTextSize(0, a.ao(paramContext, 2131427809));
-    this.gLI = ((TextView)paramAttributeSet.findViewById(2131821071));
-    this.gLK = ((ImageView)paramAttributeSet.findViewById(2131821073));
-    this.gLK.setOnClickListener(this.gLV);
-    this.gMv.setImeOptions(this.imeOptions);
-    if (!bo.isNullOrNil(this.gLL)) {
-      this.gMv.setHint(this.gLL);
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.i.gkD, this, true);
+    this.qjr = ((TextView)paramAttributeSet.findViewById(R.h.hint_et));
+    this.qjr.setTextSize(0, com.tencent.mm.cd.a.br(paramContext, R.f.NormalTextSize));
+    this.pls = ((TextView)paramAttributeSet.findViewById(R.h.tip_tv));
+    this.qiJ = ((ImageView)paramAttributeSet.findViewById(R.h.info_iv));
+    this.qiJ.setOnClickListener(this.qiT);
+    this.qjr.setImeOptions(this.qiM);
+    if (!Util.isNullOrNil(this.qiK)) {
+      this.qjr.setHint(this.qiK);
     }
-    if (!bo.isNullOrNil(this.gLM)) {
-      this.gLI.setText(this.gLM);
+    if (!Util.isNullOrNil(this.qiL)) {
+      this.pls.setText(this.qiL);
     }
     paramContext = new Rect();
-    i(this.gMv, paramContext);
-    j(this.gMv, paramContext);
-    setPadding(a.fromDPToPix(getContext(), 8), getPaddingTop(), getPaddingRight(), getPaddingBottom());
-    if (this.gLQ != -1) {
-      this.gLK.setImageResource(this.gLQ);
+    d(this.qjr, paramContext);
+    e(this.qjr, paramContext);
+    setPadding(com.tencent.mm.cd.a.fromDPToPix(getContext(), 8), getPaddingTop(), getPaddingRight(), getPaddingBottom());
+    if (this.qiP != -1) {
+      this.qiJ.setImageResource(this.qiP);
     }
-    if (!this.gLU) {
-      this.gMv.setSingleLine(false);
+    if (!this.bcF) {
+      this.qjr.setSingleLine(false);
     }
-    this.gMv.setOnLongClickListener(new InvoiceQrcodeTextView.1(this));
-    AppMethodBeat.o(16886);
+    this.qjr.setOnTouchListener(new InvoiceQrcodeTextView.1(this));
+    this.qjr.setOnLongClickListener(new InvoiceQrcodeTextView.2(this));
+    AppMethodBeat.o(20929);
   }
   
-  private void dD(boolean paramBoolean)
+  private static void d(View paramView, Rect paramRect)
   {
-    AppMethodBeat.i(16893);
-    if ((this.gLP) && (!bo.isNullOrNil(getText())))
+    AppMethodBeat.i(20948);
+    paramRect.left = paramView.getPaddingLeft();
+    paramRect.right = paramView.getPaddingRight();
+    paramRect.top = paramView.getPaddingTop();
+    paramRect.bottom = paramView.getPaddingBottom();
+    AppMethodBeat.o(20948);
+  }
+  
+  private static void e(View paramView, Rect paramRect)
+  {
+    AppMethodBeat.i(20949);
+    paramView.setPadding(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+    AppMethodBeat.o(20949);
+  }
+  
+  private Rect getValidRectOfInfoIv()
+  {
+    AppMethodBeat.i(20947);
+    Rect localRect = new Rect();
+    this.qiJ.getHitRect(localRect);
+    localRect.left -= 50;
+    localRect.right += 50;
+    localRect.top -= 25;
+    localRect.bottom += 25;
+    AppMethodBeat.o(20947);
+    return localRect;
+  }
+  
+  private void hS(boolean paramBoolean)
+  {
+    AppMethodBeat.i(20936);
+    if ((this.qiO) && (!Util.isNullOrNil(getText())))
     {
-      this.gLK.setImageResource(2130839272);
-      this.gLK.setContentDescription(getContext().getString(2131298408));
-      switch (this.gLN)
+      this.qiJ.setImageResource(R.g.list_clear);
+      this.qiJ.setContentDescription(getContext().getString(R.l.clear_btn));
+      switch (this.editType)
       {
       default: 
-        this.gLK.setVisibility(8);
-        AppMethodBeat.o(16893);
+        this.qiJ.setVisibility(8);
+        AppMethodBeat.o(20936);
         return;
       case 0: 
       case 1: 
@@ -143,138 +209,108 @@ public class InvoiceQrcodeTextView
       case 5: 
         if (paramBoolean)
         {
-          this.gLK.setVisibility(0);
-          AppMethodBeat.o(16893);
+          this.qiJ.setVisibility(0);
+          AppMethodBeat.o(20936);
           return;
         }
-        this.gLK.setVisibility(8);
-        AppMethodBeat.o(16893);
+        this.qiJ.setVisibility(8);
+        AppMethodBeat.o(20936);
         return;
       case 3: 
-        this.gLK.setVisibility(0);
-        this.gLK.setContentDescription(getContext().getString(2131296479));
-        AppMethodBeat.o(16893);
+        this.qiJ.setVisibility(0);
+        this.qiJ.setContentDescription(getContext().getString(R.l.address_location));
+        AppMethodBeat.o(20936);
         return;
       }
-      this.gLK.setVisibility(0);
-      this.gLK.setContentDescription(getContext().getString(2131296451));
-      AppMethodBeat.o(16893);
+      this.qiJ.setVisibility(0);
+      this.qiJ.setContentDescription(getContext().getString(R.l.address_contact));
+      AppMethodBeat.o(20936);
       return;
     }
-    switch (this.gLN)
+    switch (this.editType)
     {
     default: 
-      this.gLK.setVisibility(8);
-      AppMethodBeat.o(16893);
+      this.qiJ.setVisibility(8);
+      AppMethodBeat.o(20936);
       return;
     case 0: 
     case 1: 
     case 4: 
-      this.gLK.setVisibility(8);
-      AppMethodBeat.o(16893);
+      this.qiJ.setVisibility(8);
+      AppMethodBeat.o(20936);
       return;
     case 3: 
-      this.gLK.setVisibility(0);
-      this.gLK.setContentDescription(getContext().getString(2131296479));
-      AppMethodBeat.o(16893);
+      this.qiJ.setVisibility(0);
+      this.qiJ.setContentDescription(getContext().getString(R.l.address_location));
+      AppMethodBeat.o(20936);
       return;
     }
-    this.gLK.setVisibility(0);
-    this.gLK.setContentDescription(getContext().getString(2131296451));
-    AppMethodBeat.o(16893);
+    this.qiJ.setVisibility(0);
+    this.qiJ.setContentDescription(getContext().getString(R.l.address_contact));
+    AppMethodBeat.o(20936);
   }
   
-  private Rect getValidRectOfInfoIv()
+  public final void bZs()
   {
-    AppMethodBeat.i(16904);
-    Rect localRect = new Rect();
-    this.gLK.getHitRect(localRect);
-    localRect.left -= 50;
-    localRect.right += 50;
-    localRect.top -= 25;
-    localRect.bottom += 25;
-    AppMethodBeat.o(16904);
-    return localRect;
-  }
-  
-  private static void i(View paramView, Rect paramRect)
-  {
-    AppMethodBeat.i(16905);
-    paramRect.left = paramView.getPaddingLeft();
-    paramRect.right = paramView.getPaddingRight();
-    paramRect.top = paramView.getPaddingTop();
-    paramRect.bottom = paramView.getPaddingBottom();
-    AppMethodBeat.o(16905);
-  }
-  
-  private static void j(View paramView, Rect paramRect)
-  {
-    AppMethodBeat.i(16906);
-    paramView.setPadding(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
-    AppMethodBeat.o(16906);
-  }
-  
-  public final void asy()
-  {
-    AppMethodBeat.i(16887);
+    AppMethodBeat.i(20930);
     setBackgroundResource(0);
-    this.gLI.setTextColor(getResources().getColor(2131690436));
-    this.gMv.setTextColor(getResources().getColor(2131689763));
-    this.gMv.setInputType(0);
-    this.gMv.clearFocus();
-    this.gMv.setSingleLine(false);
-    ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.gMv.getWindowToken(), 0);
-    AppMethodBeat.o(16887);
+    this.pls.setTextColor(getResources().getColor(R.e.hint_text_color));
+    this.qjr.setTextColor(getResources().getColor(R.e.normal_text_color));
+    this.qjr.setInputType(0);
+    this.qjr.clearFocus();
+    this.qjr.setSingleLine(false);
+    ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.qjr.getWindowToken(), 0);
+    AppMethodBeat.o(20930);
   }
   
   public String getText()
   {
-    AppMethodBeat.i(16888);
-    String str = this.gMv.getText().toString();
-    AppMethodBeat.o(16888);
+    AppMethodBeat.i(20931);
+    String str = this.qjr.getText().toString();
+    AppMethodBeat.o(20931);
     return str;
   }
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(16895);
-    if (this.gLH != null) {
-      this.gLH.onFocusChange(this, paramBoolean);
+    AppMethodBeat.i(20938);
+    if (this.qiH != null) {
+      this.qiH.onFocusChange(this, paramBoolean);
     }
-    ab.d("MicroMsg.InvoiceEditView", "View:" + this.gLM + ", editType:" + this.gLN + " onFocusChange to " + paramBoolean);
-    if (!this.gLR)
+    Log.d("MicroMsg.InvoiceEditView", "View:" + this.qiL + ", editType:" + this.editType + " onFocusChange to " + paramBoolean);
+    if (!this.qiQ)
     {
-      this.gLI.setEnabled(false);
-      if (paramView == this.gMv)
+      this.pls.setEnabled(false);
+      if (paramView == this.qjr)
       {
         paramView = new Rect();
-        i(this, paramView);
+        d(this, paramView);
         if (!paramBoolean) {
           break label148;
         }
-        setBackgroundResource(2130839162);
+        setBackgroundResource(R.g.input_bar_bg_active);
       }
     }
     for (;;)
     {
-      j(this, paramView);
-      dD(paramBoolean);
-      AppMethodBeat.o(16895);
+      e(this, paramView);
+      hS(paramBoolean);
+      AppMethodBeat.o(20938);
       return;
-      this.gLI.setEnabled(true);
+      this.pls.setEnabled(true);
       break;
       label148:
-      setBackgroundResource(2130839163);
+      setBackgroundResource(R.g.input_bar_bg_normal);
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(16891);
+    AppMethodBeat.i(20934);
     int i;
-    if (!this.gLP)
+    if (!this.qiO)
     {
-      if (this.gLK.getVisibility() != 0) {
+      if (this.qiJ.getVisibility() != 0) {
         break label63;
       }
       i = 1;
@@ -291,7 +327,7 @@ public class InvoiceQrcodeTextView
       if (i == 0) {
         break label78;
       }
-      AppMethodBeat.o(16891);
+      AppMethodBeat.o(20934);
       return false;
       label63:
       i = 0;
@@ -303,15 +339,15 @@ public class InvoiceQrcodeTextView
       i = 0;
     }
     label78:
-    AppMethodBeat.o(16891);
+    AppMethodBeat.o(20934);
     return true;
   }
   
   public void setBankNumberValStr(String paramString)
   {
-    AppMethodBeat.i(16899);
+    AppMethodBeat.i(20942);
     String str1 = paramString;
-    if (this.gLN == 5)
+    if (this.editType == 5)
     {
       String str2 = paramString.replace(" ", "");
       str1 = paramString;
@@ -327,119 +363,123 @@ public class InvoiceQrcodeTextView
         str1 = str2.substring(str2.length() / 4 * 4, str2.length());
       }
     }
-    this.gMv.setText(str1);
-    AppMethodBeat.o(16899);
+    this.qjr.setText(str1);
+    AppMethodBeat.o(20942);
   }
   
   public void setEditBG(int paramInt)
   {
-    AppMethodBeat.i(16900);
-    if (this.gMv != null)
+    AppMethodBeat.i(20943);
+    if (this.qjr != null)
     {
       Rect localRect = new Rect();
-      i(this.gMv, localRect);
-      this.gMv.setBackgroundResource(paramInt);
-      j(this.gMv, localRect);
+      d(this.qjr, localRect);
+      this.qjr.setBackgroundResource(paramInt);
+      e(this.qjr, localRect);
     }
-    AppMethodBeat.o(16900);
+    AppMethodBeat.o(20943);
   }
   
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
-    AppMethodBeat.i(16889);
-    this.gMv.setEllipsize(paramTruncateAt);
-    AppMethodBeat.o(16889);
+    AppMethodBeat.i(20932);
+    this.qjr.setEllipsize(paramTruncateAt);
+    AppMethodBeat.o(20932);
   }
   
   public void setEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(16890);
+    AppMethodBeat.i(20933);
     super.setEnabled(paramBoolean);
-    this.gLP = paramBoolean;
-    this.gLK.setEnabled(true);
-    AppMethodBeat.o(16890);
+    this.qiO = paramBoolean;
+    this.qiJ.setEnabled(true);
+    AppMethodBeat.o(20933);
   }
   
   public void setHintStr(String paramString)
   {
-    AppMethodBeat.i(16896);
-    this.gMv.setHint(paramString);
-    AppMethodBeat.o(16896);
+    AppMethodBeat.i(20939);
+    this.qjr.setHint(paramString);
+    AppMethodBeat.o(20939);
   }
   
   public void setImeOptions(int paramInt)
   {
-    AppMethodBeat.i(16902);
-    this.gMv.setImeOptions(paramInt);
-    AppMethodBeat.o(16902);
+    AppMethodBeat.i(20945);
+    this.qjr.setImeOptions(paramInt);
+    AppMethodBeat.o(20945);
   }
   
   public void setInfoIvOnClickListener(a parama)
   {
-    this.gMs = parama;
+    this.qjo = parama;
   }
   
   public void setInfoIvVisible(int paramInt)
   {
-    AppMethodBeat.i(16903);
-    this.gLK.setVisibility(paramInt);
-    AppMethodBeat.o(16903);
+    AppMethodBeat.i(20946);
+    this.qiJ.setVisibility(paramInt);
+    AppMethodBeat.o(20946);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(16892);
+    AppMethodBeat.i(20935);
     super.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(16892);
+    AppMethodBeat.o(20935);
   }
   
   public void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    AppMethodBeat.i(16894);
+    AppMethodBeat.i(20937);
     super.setOnFocusChangeListener(paramOnFocusChangeListener);
-    this.gLH = paramOnFocusChangeListener;
-    AppMethodBeat.o(16894);
+    this.qiH = paramOnFocusChangeListener;
+    AppMethodBeat.o(20937);
   }
   
-  public void setOnInputInvoiceTypeChangeListener(InvoiceQrcodeTextView.b paramb)
+  public void setOnInputInvoiceTypeChangeListener(b paramb)
   {
-    this.gMu = paramb;
+    this.qjq = paramb;
   }
   
-  public void setOnInputValidChangeListener(InvoiceQrcodeTextView.c paramc)
+  public void setOnInputValidChangeListener(c paramc)
   {
-    this.gMt = paramc;
+    this.qjp = paramc;
   }
   
   public void setTipStr(String paramString)
   {
-    AppMethodBeat.i(16897);
-    this.gLI.setText(paramString);
-    AppMethodBeat.o(16897);
+    AppMethodBeat.i(20940);
+    this.pls.setText(paramString);
+    AppMethodBeat.o(20940);
   }
   
   public void setTipTextColor(int paramInt)
   {
-    AppMethodBeat.i(16901);
-    if (this.gLI != null) {
-      this.gLI.setTextColor(paramInt);
+    AppMethodBeat.i(20944);
+    if (this.pls != null) {
+      this.pls.setTextColor(paramInt);
     }
-    AppMethodBeat.o(16901);
+    AppMethodBeat.o(20944);
   }
   
   public void setValStr(String paramString)
   {
-    AppMethodBeat.i(16898);
-    this.gMv.setText(paramString);
-    this.gLW = paramString;
-    AppMethodBeat.o(16898);
+    AppMethodBeat.i(20941);
+    this.qjr.setText(paramString);
+    this.qiU = paramString;
+    AppMethodBeat.o(20941);
   }
   
   public static abstract interface a {}
+  
+  public static abstract interface b {}
+  
+  public static abstract interface c {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView
  * JD-Core Version:    0.7.0.1
  */

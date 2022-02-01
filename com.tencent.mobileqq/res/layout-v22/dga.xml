@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/q9x" android:background="@drawable/h0r" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/q_r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@id/q_q" android:paddingLeft="11.0dip" android:paddingTop="8.0dip" android:paddingRight="11.0dip" android:paddingBottom="14.0dip" android:layout_width="50.0dip" android:layout_height="25.0dip" android:src="@drawable/h0z" android:layout_centerHorizontal="true" android:paddingHorizontal="11.0dip" />
+        </FrameLayout>
+        <com.tencent.timi.game.team.impl.title.TeamTitleView android:id="@id/q_x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/q_r" />
+        <com.tencent.timi.game.team.impl.team.TeamPlayerListView android:id="@id/q_s" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:verticalSpacing="0.0dip" android:layout_below="@id/q_x" android:overScrollMode="never" />
+        <com.tencent.timi.game.team.impl.chat.TeamChatView android:id="@id/q_p" android:background="#fff3f3ec" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/q_s" />
+        <View android:id="@id/nlk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/q_s" />
+    </RelativeLayout>
+</merge>

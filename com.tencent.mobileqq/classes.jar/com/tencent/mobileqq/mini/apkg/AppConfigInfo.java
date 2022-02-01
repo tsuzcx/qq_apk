@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.text.TextUtils;
-import bdnn;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import common.config.service.QzoneConfig;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,6 +17,7 @@ public class AppConfigInfo
   private static final boolean mEnableSubpakPathIntercapt;
   public String PackageToolVersion;
   private Map<String, String> configStrs = new HashMap();
+  public boolean darkmode;
   public boolean debug;
   public String entryPagePath;
   public PageInfo globalPageInfo;
@@ -29,14 +30,12 @@ public class AppConfigInfo
   
   static
   {
-    boolean bool = true;
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_subpkg_path_intercept", 0) == 1) {}
-    for (;;)
-    {
-      mEnableSubpakPathIntercapt = bool;
-      return;
-      bool = false;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqminiapp", "mini_app_subpkg_path_intercept", 0) == 1) {
+      bool = true;
     }
+    mEnableSubpakPathIntercapt = bool;
   }
   
   private static List<String> getSubPackRoots(JSONArray paramJSONArray)
@@ -64,10 +63,9 @@ public class AppConfigInfo
   public static AppConfigInfo parseAppConfig(String paramString, ApkgInfo paramApkgInfo)
   {
     AppConfigInfo localAppConfigInfo = new AppConfigInfo();
-    JSONObject localJSONObject;
     try
     {
-      localJSONObject = new JSONObject(paramString);
+      JSONObject localJSONObject = new JSONObject(paramString);
       paramString = localJSONObject.keys();
       while (paramString.hasNext())
       {
@@ -76,27 +74,28 @@ public class AppConfigInfo
         localAppConfigInfo.configStrs.put(str1, str2);
       }
       localAppConfigInfo.debug = localJSONObject.optBoolean("debug");
+      localAppConfigInfo.entryPagePath = localJSONObject.optString("entryPagePath");
+      localAppConfigInfo.globalPageInfo = PageInfo.getDefault();
+      localAppConfigInfo.globalPageInfo.updateInfo(localJSONObject.optJSONObject("global"));
+      localAppConfigInfo.pagesInfo = parsePagesInfo(localJSONObject.optJSONObject("page"), localAppConfigInfo.globalPageInfo);
+      localAppConfigInfo.pagesPathList = parsePagesPathList(localJSONObject.optJSONArray("pages"));
+      localAppConfigInfo.networkTimeoutInfo = NetworkTimeoutInfo.parse(localJSONObject.optJSONObject("networkTimeout"));
+      localAppConfigInfo.tabBarInfo = TabBarInfo.parse(localJSONObject.optJSONObject("tabBar"), paramApkgInfo);
+      paramApkgInfo = localJSONObject.optJSONArray("subpackages");
+      paramString = paramApkgInfo;
+      if (paramApkgInfo == null) {
+        paramString = localJSONObject.optJSONArray("subPackages");
+      }
+      localAppConfigInfo.subPackRoots = getSubPackRoots(paramString);
+      localAppConfigInfo.PackageToolVersion = localJSONObject.optString("PackageToolVersion");
+      localAppConfigInfo.permissionInfo = localJSONObject.optJSONObject("permission");
+      localAppConfigInfo.darkmode = localJSONObject.optBoolean("darkmode");
+      return localAppConfigInfo;
     }
     catch (Throwable paramString)
     {
       paramString.printStackTrace();
-      return localAppConfigInfo;
     }
-    localAppConfigInfo.entryPagePath = localJSONObject.optString("entryPagePath");
-    localAppConfigInfo.globalPageInfo = PageInfo.getDefault();
-    localAppConfigInfo.globalPageInfo.updateInfo(localJSONObject.optJSONObject("global"));
-    localAppConfigInfo.pagesInfo = parsePagesInfo(localJSONObject.optJSONObject("page"), localAppConfigInfo.globalPageInfo);
-    localAppConfigInfo.pagesPathList = parsePagesPathList(localJSONObject.optJSONArray("pages"));
-    localAppConfigInfo.networkTimeoutInfo = NetworkTimeoutInfo.parse(localJSONObject.optJSONObject("networkTimeout"));
-    localAppConfigInfo.tabBarInfo = TabBarInfo.parse(localJSONObject.optJSONObject("tabBar"), paramApkgInfo);
-    paramApkgInfo = localJSONObject.optJSONArray("subpackages");
-    paramString = paramApkgInfo;
-    if (paramApkgInfo == null) {
-      paramString = localJSONObject.optJSONArray("subPackages");
-    }
-    localAppConfigInfo.subPackRoots = getSubPackRoots(paramString);
-    localAppConfigInfo.PackageToolVersion = localJSONObject.optString("PackageToolVersion");
-    localAppConfigInfo.permissionInfo = localJSONObject.optJSONObject("permission");
     return localAppConfigInfo;
   }
   
@@ -153,40 +152,34 @@ public class AppConfigInfo
   
   public String getRootPath(String paramString)
   {
-    if (bdnn.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     String str2 = AppBrandUtil.getUrlWithoutParams(paramString);
     Iterator localIterator = this.subPackRoots.iterator();
-    label128:
-    label131:
     while (localIterator.hasNext())
     {
       String str3 = (String)localIterator.next();
-      String str1;
-      if (str3.startsWith("/"))
-      {
+      if (str3.startsWith("/")) {
         paramString = str3.substring(1);
+      } else {
+        paramString = str3;
+      }
+      String str1 = paramString;
+      if (mEnableSubpakPathIntercapt)
+      {
         str1 = paramString;
-        if (mEnableSubpakPathIntercapt)
-        {
-          str1 = paramString;
-          if (paramString.endsWith("/")) {
-            str1 = paramString.substring(0, paramString.length() - 1);
-          }
-        }
-        if (!str2.startsWith("/")) {
-          break label128;
+        if (paramString.endsWith("/")) {
+          str1 = paramString.substring(0, paramString.length() - 1);
         }
       }
-      for (paramString = str2.substring(1);; paramString = str2)
-      {
-        if (!paramString.startsWith(str1)) {
-          break label131;
-        }
+      if (str2.startsWith("/")) {
+        paramString = str2.substring(1);
+      } else {
+        paramString = str2;
+      }
+      if (paramString.startsWith(str1)) {
         return str3;
-        paramString = str3;
-        break;
       }
     }
     return "";
@@ -194,7 +187,7 @@ public class AppConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.AppConfigInfo
  * JD-Core Version:    0.7.0.1
  */

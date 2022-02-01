@@ -1,25 +1,19 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import alud;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import apgp;
-import apgq;
-import apgr;
-import apgs;
-import apgv;
-import apgw;
-import aphn;
-import beae;
-import beag;
-import beaj;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import java.io.File;
 import java.util.ArrayList;
@@ -27,45 +21,48 @@ import java.util.ArrayList;
 public class DataReportSettingFragment
   extends IphoneTitleBarFragment
 {
-  protected ListView a;
-  public apgw a;
   protected FormSwitchItem a;
-  public ArrayList<apgp> a;
   protected FormSwitchItem b;
+  protected ListView c;
+  protected ArrayList<BaseReportDataConfig> d;
+  protected DataReportSettingFragment.DataAdapter e;
   
   protected void a()
   {
-    String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/data/0e9a7ce1473f44db9732a452360195ae.json";
-    beae localbeae = new beae("http://pub.idqqimg.com/pc/misc/files/20180717/0e9a7ce1473f44db9732a452360195ae.json", new File(str));
-    localbeae.d = 60L;
-    ((beag)getActivity().app.getManager(47)).a(1).a(localbeae, new apgv(this, str), new Bundle());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    ((StringBuilder)localObject).append("/tencent/MobileQQ/data/0e9a7ce1473f44db9732a452360195ae.json");
+    localObject = ((StringBuilder)localObject).toString();
+    DownloadTask localDownloadTask = new DownloadTask("https://pub.idqqimg.com/pc/misc/files/20180717/0e9a7ce1473f44db9732a452360195ae.json", new File((String)localObject));
+    localDownloadTask.u = 60L;
+    ((DownloaderFactory)getBaseActivity().app.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).startDownload(localDownloadTask, new DataReportSettingFragment.4(this, (String)localObject), new Bundle());
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131365770));
-    this.b = ((FormSwitchItem)this.mContentView.findViewById(2131362935));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.mContentView.findViewById(2131376528));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(aphn.a().a());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new apgq(this));
-    this.b.setOnCheckedChangeListener(new apgr(this));
-    setRightButton(2131689628, new apgs(this));
-    this.jdField_a_of_type_JavaUtilArrayList = aphn.a().a();
-    this.jdField_a_of_type_Apgw = new apgw(this);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Apgw);
+    this.a = ((FormSwitchItem)this.mContentView.findViewById(2131432539));
+    this.b = ((FormSwitchItem)this.mContentView.findViewById(2131428941));
+    this.c = ((ListView)this.mContentView.findViewById(2131445724));
+    this.a.setChecked(DataReportViewerFloatViewHelper.a().f());
+    this.a.setOnCheckedChangeListener(new DataReportSettingFragment.1(this));
+    this.b.setOnCheckedChangeListener(new DataReportSettingFragment.2(this));
+    setRightButton(2131886199, new DataReportSettingFragment.3(this));
+    this.d = DataReportViewerFloatViewHelper.a().g();
+    this.e = new DataReportSettingFragment.DataAdapter(this);
+    this.c.setAdapter(this.e);
     a();
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131559470;
+    return 2131625625;
   }
   
-  public View onCreateCenterView()
+  protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(alud.a(2131703160));
+    setTitle(HardCodeUtil.a(2131900916));
     return localView;
   }
 }

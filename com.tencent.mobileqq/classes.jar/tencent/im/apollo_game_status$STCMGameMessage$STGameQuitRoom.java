@@ -18,13 +18,14 @@ public final class apollo_game_status$STCMGameMessage$STGameQuitRoom
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_room_vol", "rpt_uint32_uin_list", "str_game_quit_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, STGameQuitRoom.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_room_vol", "rpt_uint32_uin_list", "str_game_quit_info" }, new Object[] { localInteger, localInteger, localByteStringMicro }, STGameQuitRoom.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.apollo_game_status.STCMGameMessage.STGameQuitRoom
  * JD-Core Version:    0.7.0.1
  */

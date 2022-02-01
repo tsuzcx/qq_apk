@@ -1,10 +1,8 @@
 package android.support.v4.app;
 
-import android.app.Notification;
-
-abstract interface bb
+public abstract class bb
 {
-  public abstract Notification b(ar paramar);
+  private static int hF = 1048576;
 }
 
 

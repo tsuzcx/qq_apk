@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/imz" android:background="@drawable/bkp" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="49.0dip" android:minHeight="50.0dip" android:layout_alignParentBottom="true">
+        <Button android:id="@id/imy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="@dimen/ie" android:text="@string/a1p" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i0" />
+        <TextView android:textSize="16.0sp" android:id="@id/o8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wul" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/aoz" android:ellipsize="end" android:gravity="center|left" android:id="@id/o8q" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" android:layout_marginRight="8.0dip" android:text="@string/wt9" android:maxLines="1" android:layout_toLeftOf="@id/imy" android:layout_toRightOf="@id/o8r" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" />
+    </RelativeLayout>
+</merge>

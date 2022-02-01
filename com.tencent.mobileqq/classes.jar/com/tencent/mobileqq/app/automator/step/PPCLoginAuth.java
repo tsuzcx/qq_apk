@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alyb;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.PPCLoginAuthHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,13 +12,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class PPCLoginAuth
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    SharedPreferences localSharedPreferences = this.a.app.getApp().getSharedPreferences("mobileQQ", 0);
+    SharedPreferences localSharedPreferences = this.mAutomator.k.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("lastPPCLoginAuthTime", 0L);
     if (System.currentTimeMillis() - l > 86400000L)
     {
-      ((alyb)this.a.app.a(58)).b();
+      ((PPCLoginAuthHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.PPC_LOGIN_AUTH)).b();
       localSharedPreferences.edit().putLong("lastPPCLoginAuthTime", System.currentTimeMillis()).commit();
     }
     return 7;
@@ -25,7 +26,7 @@ public class PPCLoginAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.PPCLoginAuth
  * JD-Core Version:    0.7.0.1
  */

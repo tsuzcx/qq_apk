@@ -1,80 +1,98 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 
 public final class nk
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public long Id;
-  public String wCx;
+  public String UserName;
+  public String YPo;
+  public String pSi;
+  public String vhX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124303);
+    AppMethodBeat.i(258959);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wCx == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ObjectDesc");
-        AppMethodBeat.o(124303);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.UserName != null) {
+        paramVarArgs.g(1, this.UserName);
       }
-      paramVarArgs.am(1, this.Id);
-      if (this.wCx != null) {
-        paramVarArgs.e(2, this.wCx);
+      if (this.vhX != null) {
+        paramVarArgs.g(2, this.vhX);
       }
-      AppMethodBeat.o(124303);
+      if (this.YPo != null) {
+        paramVarArgs.g(3, this.YPo);
+      }
+      if (this.pSi != null) {
+        paramVarArgs.g(4, this.pSi);
+      }
+      AppMethodBeat.o(258959);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.UserName == null) {
+        break label390;
+      }
+    }
+    label390:
+    for (int i = i.a.a.b.b.a.h(1, this.UserName) + 0;; i = 0)
     {
-      int i = e.a.a.b.b.a.p(1, this.Id) + 0;
       paramInt = i;
-      if (this.wCx != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.wCx);
+      if (this.vhX != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.vhX);
       }
-      AppMethodBeat.o(124303);
+      i = paramInt;
+      if (this.YPo != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YPo);
+      }
+      paramInt = i;
+      if (this.pSi != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.pSi);
+      }
+      AppMethodBeat.o(258959);
       return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
-      }
-      if (this.wCx == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ObjectDesc");
-        AppMethodBeat.o(124303);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(124303);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      nk localnk = (nk)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(124303);
-        return -1;
-      case 1: 
-        localnk.Id = locala.CLY.sm();
-        AppMethodBeat.o(124303);
+        AppMethodBeat.o(258959);
         return 0;
       }
-      localnk.wCx = locala.CLY.readString();
-      AppMethodBeat.o(124303);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        nk localnk = (nk)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(258959);
+          return -1;
+        case 1: 
+          localnk.UserName = locala.ajGk.readString();
+          AppMethodBeat.o(258959);
+          return 0;
+        case 2: 
+          localnk.vhX = locala.ajGk.readString();
+          AppMethodBeat.o(258959);
+          return 0;
+        case 3: 
+          localnk.YPo = locala.ajGk.readString();
+          AppMethodBeat.o(258959);
+          return 0;
+        }
+        localnk.pSi = locala.ajGk.readString();
+        AppMethodBeat.o(258959);
+        return 0;
+      }
+      AppMethodBeat.o(258959);
+      return -1;
     }
-    AppMethodBeat.o(124303);
-    return -1;
   }
 }
 

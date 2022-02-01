@@ -1,35 +1,48 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.soter.core.c.j;
-import java.security.Signature;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.wallet_core.model.ab;
+import java.util.Map;
 
-public enum x
+public final class x
 {
-  public String mGC = null;
-  public boolean mGD = false;
-  private Signature ulj = null;
-  public j ulk = null;
+  public String VJs;
+  public int VJt;
+  public String VJu;
+  public String VJv;
+  public String VJw;
+  public String bgColor;
+  public String wording;
   
-  static
+  public static void bgy(String paramString)
   {
-    AppMethodBeat.i(46896);
-    uli = new x("IML");
-    ull = new x[] { uli };
-    AppMethodBeat.o(46896);
+    AppMethodBeat.i(70409);
+    ((a)h.az(a.class)).getWalletCacheStg().set(at.a.acVp, paramString);
+    AppMethodBeat.o(70409);
   }
   
-  private x() {}
-  
-  public final void reset()
+  public static x bl(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(46895);
-    ab.i("MicroMsg.WalletFingerprintVerifyManager", "hy: start reset");
-    this.ulj = null;
-    this.mGC = null;
-    this.mGD = false;
-    AppMethodBeat.o(46895);
+    AppMethodBeat.i(70408);
+    if (paramMap == null)
+    {
+      AppMethodBeat.o(70408);
+      return null;
+    }
+    x localx = new x();
+    localx.wording = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording"));
+    localx.VJs = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording_color"));
+    localx.bgColor = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.bg_color"));
+    localx.VJu = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.route_url"));
+    localx.VJv = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.left_icon"));
+    localx.VJw = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.right_icon"));
+    localx.VJt = Util.getInt((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording_size"), 14);
+    AppMethodBeat.o(70408);
+    return localx;
   }
 }
 

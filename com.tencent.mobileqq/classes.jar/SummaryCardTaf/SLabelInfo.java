@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SLabelInfo
   extends JceStruct
 {
-  public long likeit;
+  public long likeit = 0L;
   public String name = "";
   public boolean valid = true;
   
@@ -36,7 +36,7 @@ public final class SLabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SLabelInfo
  * JD-Core Version:    0.7.0.1
  */

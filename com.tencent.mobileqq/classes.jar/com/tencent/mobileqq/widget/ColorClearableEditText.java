@@ -19,9 +19,9 @@ import android.text.Spannable;
 import android.text.TextPaint;
 import android.text.style.CharacterStyle;
 import android.util.AttributeSet;
-import bamw;
-import benz;
-import beoa;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.text.style.EmoticonSpan;
+import com.tencent.mobileqq.troop.api.ITroopNickEdit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,17 +29,18 @@ import java.util.List;
 public class ColorClearableEditText
   extends ClearableEditText
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private beoa jdField_a_of_type_Beoa = new beoa();
-  private ArrayList<benz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private Rect c = new Rect();
+  private Bitmap e;
+  private Rect f = new Rect();
+  private int g = 0;
+  private int[] h;
+  private float[] i;
+  private int j;
+  private Bitmap k;
+  private Rect l = new Rect();
+  private Rect m = new Rect();
+  private ArrayList<ColorClearableEditText.Paragraph> n = new ArrayList();
+  private int o;
+  private ColorClearableEditText.SpanComparator p = new ColorClearableEditText.SpanComparator();
   
   public ColorClearableEditText(Context paramContext)
   {
@@ -58,306 +59,359 @@ public class ColorClearableEditText
   
   private Canvas a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != paramInt1) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != paramInt2))
+    Object localObject = this.e;
+    if ((localObject == null) || (((Bitmap)localObject).getWidth() != paramInt1) || (this.e.getHeight() != paramInt2))
     {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      localObject = this.e;
+      if (localObject != null) {
+        ((Bitmap)localObject).recycle();
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      this.e = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     }
-    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-    return localCanvas;
+    localObject = new Canvas(this.e);
+    ((Canvas)localObject).drawColor(0, PorterDuff.Mode.CLEAR);
+    return localObject;
   }
   
-  private PointF a()
+  public static void a(List<ColorClearableEditText.Paragraph> paramList, ColorClearableEditText.SpanComparator paramSpanComparator, Spannable paramSpannable)
+  {
+    paramList.clear();
+    int i2 = paramSpannable.length();
+    int i1 = 0;
+    CharacterStyle[] arrayOfCharacterStyle = (CharacterStyle[])paramSpannable.getSpans(0, i2, CharacterStyle.class);
+    if (arrayOfCharacterStyle.length == 0)
+    {
+      paramList.add(new ColorClearableEditText.Paragraph(1, 0, paramSpannable.length(), paramSpannable.toString(), null));
+      return;
+    }
+    paramSpanComparator.a(paramSpannable);
+    Arrays.sort(arrayOfCharacterStyle, paramSpanComparator);
+    int i3;
+    for (i2 = 0; i1 < arrayOfCharacterStyle.length; i2 = i3)
+    {
+      int i4 = paramSpannable.getSpanStart(arrayOfCharacterStyle[i1]);
+      i3 = paramSpannable.getSpanEnd(arrayOfCharacterStyle[i1]);
+      if (i4 > i2) {
+        paramList.add(new ColorClearableEditText.Paragraph(1, i2, i4, paramSpannable.subSequence(i2, i4).toString(), null));
+      }
+      paramSpanComparator = paramSpannable.subSequence(i4, i3).toString();
+      if ((arrayOfCharacterStyle[i1] instanceof EmoticonSpan)) {
+        i2 = 2;
+      } else {
+        i2 = 3;
+      }
+      paramList.add(new ColorClearableEditText.Paragraph(i2, i4, i3, paramSpanComparator, arrayOfCharacterStyle[i1]));
+      if ((i1 == arrayOfCharacterStyle.length - 1) && (i3 < paramSpannable.length()))
+      {
+        paramSpanComparator = paramSpannable.subSequence(i3, paramSpannable.length()).toString();
+        paramList.add(new ColorClearableEditText.Paragraph(1, i3, paramSpannable.length(), paramSpanComparator, null));
+      }
+      i1 += 1;
+    }
+  }
+  
+  private PointF getContentSize()
   {
     PointF localPointF = new PointF();
     Rect localRect = new Rect();
-    int i = 0;
-    float f = 0.0F;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int i1 = 0;
+    float f1 = 0.0F;
+    while (i1 < this.n.size())
     {
-      Object localObject = (benz)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      switch (((benz)localObject).c)
+      Object localObject = (ColorClearableEditText.Paragraph)this.n.get(i1);
+      int i2 = ((ColorClearableEditText.Paragraph)localObject).e;
+      if (i2 != 1)
       {
+        if (i2 == 2)
+        {
+          localObject = (EmoticonSpan)((ColorClearableEditText.Paragraph)localObject).d;
+          localPointF.x += ((EmoticonSpan)localObject).getDrawable().getBounds().width();
+          f1 = Math.max(f1, ((EmoticonSpan)localObject).getDrawable().getBounds().height());
+        }
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        localPointF.x += getPaint().measureText(((benz)localObject).jdField_a_of_type_JavaLangString);
-        getPaint().getTextBounds(((benz)localObject).jdField_a_of_type_JavaLangString, 0, ((benz)localObject).jdField_a_of_type_JavaLangString.length(), localRect);
-        f = Math.max(f, localRect.height());
-        continue;
-        localObject = (bamw)((benz)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        localPointF.x += ((bamw)localObject).a().getBounds().width();
-        f = Math.max(f, ((bamw)localObject).a().getBounds().height());
+        localPointF.x += getPaint().measureText(((ColorClearableEditText.Paragraph)localObject).c);
+        getPaint().getTextBounds(((ColorClearableEditText.Paragraph)localObject).c, 0, ((ColorClearableEditText.Paragraph)localObject).c.length(), localRect);
+        f1 = Math.max(f1, localRect.height());
       }
+      i1 += 1;
     }
-    localPointF.y = f;
+    localPointF.y = f1;
     return localPointF;
-  }
-  
-  public static void a(List<benz> paramList, beoa parambeoa, Spannable paramSpannable)
-  {
-    paramList.clear();
-    CharacterStyle[] arrayOfCharacterStyle = (CharacterStyle[])paramSpannable.getSpans(0, paramSpannable.length(), CharacterStyle.class);
-    if (arrayOfCharacterStyle.length == 0)
-    {
-      paramList.add(new benz(1, 0, paramSpannable.length(), paramSpannable.toString(), null));
-      return;
-    }
-    parambeoa.a(paramSpannable);
-    Arrays.sort(arrayOfCharacterStyle, parambeoa);
-    int j = 0;
-    int i = 0;
-    label76:
-    int m;
-    int k;
-    if (i < arrayOfCharacterStyle.length)
-    {
-      m = paramSpannable.getSpanStart(arrayOfCharacterStyle[i]);
-      k = paramSpannable.getSpanEnd(arrayOfCharacterStyle[i]);
-      if (m > j) {
-        paramList.add(new benz(1, j, m, paramSpannable.subSequence(j, m).toString(), null));
-      }
-      parambeoa = paramSpannable.subSequence(m, k).toString();
-      if (!(arrayOfCharacterStyle[i] instanceof bamw)) {
-        break label279;
-      }
-    }
-    label279:
-    for (j = 2;; j = 3)
-    {
-      paramList.add(new benz(j, m, k, parambeoa, arrayOfCharacterStyle[i]));
-      if ((i == arrayOfCharacterStyle.length - 1) && (k < paramSpannable.length()))
-      {
-        parambeoa = paramSpannable.subSequence(k, paramSpannable.length()).toString();
-        paramList.add(new benz(1, k, paramSpannable.length(), parambeoa, null));
-      }
-      i += 1;
-      j = k;
-      break label76;
-      break;
-    }
-  }
-  
-  public ArrayList<benz> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public void a()
   {
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Beoa, getText());
+    a(this.n, this.p, getText());
+  }
+  
+  public void b()
+  {
+    a();
+    Drawable localDrawable = getBackground();
+    ((ITroopNickEdit)QRoute.api(ITroopNickEdit.class)).updateDrawablePadding(localDrawable, getContentSize());
+  }
+  
+  public ArrayList<ColorClearableEditText.Paragraph> getParagraphs()
+  {
+    return this.n;
+  }
+  
+  public int getScid()
+  {
+    return this.o;
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    Drawable localDrawable = getBackground();
+    ((ITroopNickEdit)QRoute.api(ITroopNickEdit.class)).onDetachedFromWindow(localDrawable);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    Object localObject;
-    float f3;
-    float f6;
-    float f1;
-    Paint localPaint;
-    int i;
-    int j;
-    benz localbenz;
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.g != 0)
     {
-      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Beoa, getText());
-      localObject = a();
-      f3 = ((PointF)localObject).x;
-      f6 = ((PointF)localObject).y;
-      if ((f3 > 0.0F) && (f6 > 0.0F)) {}
-      switch (this.jdField_a_of_type_Int)
+      a(this.n, this.p, getText());
+      Object localObject1 = getContentSize();
+      float f3 = ((PointF)localObject1).x;
+      float f6 = ((PointF)localObject1).y;
+      float f1 = 0.0F;
+      if ((f3 > 0.0F) && (f6 > 0.0F))
       {
-      default: 
-        super.onDraw(paramCanvas);
-        return;
-      case 2: 
-        getPaint().setShader(null);
-        localObject = a((int)f3, (int)f6);
-        f1 = 0.0F;
-        localPaint = new Paint(getPaint());
-        i = 0;
-        j = 0;
-        while (j < this.jdField_a_of_type_JavaUtilArrayList.size())
+        int i1 = this.g;
+        float f2;
+        float f4;
+        if (i1 != 1)
         {
-          localbenz = (benz)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-          switch (localbenz.c)
+          int i3;
+          int i4;
+          Object localObject2;
+          int i2;
+          ColorClearableEditText.Paragraph localParagraph;
+          Object localObject3;
+          String str;
+          if (i1 != 2)
           {
-          default: 
-            j += 1;
-            break;
-          case 1: 
-            label196:
-            if (i != 0) {
-              break label1096;
+            if (i1 != 3)
+            {
+              if (i1 != 4)
+              {
+                if (i1 == 5)
+                {
+                  getPaint().setShader(null);
+                  if (this.k != null)
+                  {
+                    i1 = (int)f3;
+                    i3 = (int)f6;
+                    localObject1 = a(i1, i3);
+                    i4 = this.k.getWidth();
+                    for (i1 = 0; i1 < f3; i1 = i2)
+                    {
+                      localObject2 = this.m;
+                      i2 = i1 + i4;
+                      ((Rect)localObject2).set(i1, 0, i2, i3);
+                      ((Canvas)localObject1).drawBitmap(this.k, this.l, this.m, getPaint());
+                    }
+                    localObject1 = new BitmapShader(this.e, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+                    getPaint().setShader((Shader)localObject1);
+                  }
+                }
+              }
+              else
+              {
+                getPaint().setShader(null);
+                localObject1 = a((int)f3, (int)f6);
+                localObject2 = new Paint(getPaint());
+                i1 = 0;
+                i2 = 0;
+                while (i2 < this.n.size())
+                {
+                  localParagraph = (ColorClearableEditText.Paragraph)this.n.get(i2);
+                  i3 = localParagraph.e;
+                  if (i3 != 1)
+                  {
+                    if (i3 == 2) {
+                      f1 += ((EmoticonSpan)localParagraph.d).getDrawable().getBounds().width();
+                    }
+                  }
+                  else {
+                    for (i3 = 0; i3 < localParagraph.c.length(); i3 = i4)
+                    {
+                      localObject3 = getPaint();
+                      str = localParagraph.c;
+                      i4 = i3 + 1;
+                      f2 = ((TextPaint)localObject3).measureText(str, i3, i4);
+                      localObject3 = this.h;
+                      ((Paint)localObject2).setColor(localObject3[(i1 % localObject3.length)]);
+                      ((Paint)localObject2).setStyle(Paint.Style.FILL);
+                      f2 = f1 + f2;
+                      ((Canvas)localObject1).drawRect(f1, 0.0F, f2, f6, (Paint)localObject2);
+                      i1 += 1;
+                      f1 = f2;
+                    }
+                  }
+                  i2 += 1;
+                }
+                localObject1 = new BitmapShader(this.e, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+                getPaint().setShader((Shader)localObject1);
+              }
             }
-            getPaint().getTextBounds(localbenz.jdField_a_of_type_JavaLangString, 0, localbenz.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-            i = this.jdField_a_of_type_AndroidGraphicsRect.height();
+            else
+            {
+              f1 = f3 / 2.0F;
+              localObject1 = new RadialGradient(f1, f6 / 2.0F, f1, this.h, this.i, Shader.TileMode.CLAMP);
+              getPaint().setShader((Shader)localObject1);
+            }
           }
-        }
-      }
-    }
-    label290:
-    label313:
-    label327:
-    label1096:
-    for (;;)
-    {
-      int k = 0;
-      float f2;
-      if (k < localbenz.jdField_a_of_type_JavaLangString.length())
-      {
-        float f7 = getPaint().measureText(localbenz.jdField_a_of_type_JavaLangString, k, k + 1);
-        if (this.jdField_b_of_type_Int == 1)
-        {
-          f2 = f1;
-          if (this.jdField_b_of_type_Int != 1) {
-            break label434;
-          }
-          f3 = i * 0.5F + f6 - i;
-          if (this.jdField_b_of_type_Int != 1) {
-            break label445;
-          }
-          f4 = f1 + f7;
-          if (this.jdField_b_of_type_Int != 1) {
-            break label457;
-          }
-        }
-        label457:
-        for (float f5 = i * 0.5F + f6 - i;; f5 = i)
-        {
-          localPaint.setShader(new LinearGradient(f2, f3, f4, f5, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP));
-          localPaint.setStyle(Paint.Style.FILL);
-          ((Canvas)localObject).drawRect(f1, f6 - i, f1 + f7, f6, localPaint);
-          k += 1;
-          f1 += f7;
-          break;
-          f2 = f1 + 0.5F * f7;
-          break label290;
-          f3 = f6 - i;
-          break label313;
-          f4 = f1 + 0.5F * f7;
-          break label327;
-        }
-      }
-      break label196;
-      f1 += ((bamw)localbenz.jdField_a_of_type_AndroidTextStyleCharacterStyle).a().getBounds().width();
-      break label196;
-      localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-      getPaint().setShader((Shader)localObject);
-      break;
-      localObject = new RadialGradient(f3 / 2.0F, f6 / 2.0F, f3 / 2.0F, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP);
-      getPaint().setShader((Shader)localObject);
-      break;
-      getPaint().setShader(null);
-      if (this.jdField_b_of_type_Int == 1)
-      {
-        f1 = 0.0F;
-        label588:
-        if (this.jdField_b_of_type_Int != 1) {
-          break label673;
-        }
-        f2 = f6 * 0.5F;
-        label602:
-        if (this.jdField_b_of_type_Int != 1) {
-          break label678;
-        }
-        label610:
-        if (this.jdField_b_of_type_Int != 1) {
-          break label688;
-        }
-      }
-      for (float f4 = f6 * 0.5F;; f4 = f6)
-      {
-        localObject = new LinearGradient(f1, f2, f3, f4, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP);
-        getPaint().setShader((Shader)localObject);
-        break;
-        f1 = f3 * 0.5F;
-        break label588;
-        f2 = 0.0F;
-        break label602;
-        f3 *= 0.5F;
-        break label610;
-      }
-      getPaint().setShader(null);
-      localObject = a((int)f3, (int)f6);
-      f1 = 0.0F;
-      localPaint = new Paint(getPaint());
-      i = 0;
-      j = 0;
-      if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        localbenz = (benz)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        switch (localbenz.c)
-        {
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          k = 0;
-          while (k < localbenz.jdField_a_of_type_JavaLangString.length())
+          else
           {
-            f2 = getPaint().measureText(localbenz.jdField_a_of_type_JavaLangString, k, k + 1);
-            localPaint.setColor(this.jdField_a_of_type_ArrayOfInt[(i % this.jdField_a_of_type_ArrayOfInt.length)]);
-            localPaint.setStyle(Paint.Style.FILL);
-            ((Canvas)localObject).drawRect(f1, 0.0F, f1 + f2, f6, localPaint);
-            k += 1;
-            i += 1;
-            f1 += f2;
+            getPaint().setShader(null);
+            localObject1 = a((int)f3, (int)f6);
+            localObject2 = new Paint(getPaint());
+            i1 = 0;
+            f1 = 0.0F;
+            i3 = 0;
+            while (i3 < this.n.size())
+            {
+              localParagraph = (ColorClearableEditText.Paragraph)this.n.get(i3);
+              i2 = localParagraph.e;
+              if (i2 != 1)
+              {
+                if (i2 == 2) {
+                  f1 += ((EmoticonSpan)localParagraph.d).getDrawable().getBounds().width();
+                }
+              }
+              else
+              {
+                i2 = i1;
+                if (i1 == 0)
+                {
+                  getPaint().getTextBounds(localParagraph.c, 0, localParagraph.c.length(), this.f);
+                  i2 = this.f.height();
+                }
+                i1 = i2;
+                for (i2 = 0; i2 < localParagraph.c.length(); i2 = i4)
+                {
+                  localObject3 = getPaint();
+                  str = localParagraph.c;
+                  i4 = i2 + 1;
+                  float f7 = ((TextPaint)localObject3).measureText(str, i2, i4);
+                  if (this.j == 1) {
+                    f2 = f1;
+                  } else {
+                    f2 = f7 * 0.5F + f1;
+                  }
+                  if (this.j == 1)
+                  {
+                    f3 = i1;
+                    f3 = f3 * 0.5F + f6 - f3;
+                  }
+                  else
+                  {
+                    f3 = f6 - i1;
+                  }
+                  if (this.j == 1) {
+                    f4 = f1 + f7;
+                  } else {
+                    f4 = f7 * 0.5F + f1;
+                  }
+                  float f5;
+                  if (this.j == 1)
+                  {
+                    f5 = i1;
+                    f5 = f5 * 0.5F + f6 - f5;
+                  }
+                  else
+                  {
+                    f5 = i1;
+                  }
+                  ((Paint)localObject2).setShader(new LinearGradient(f2, f3, f4, f5, this.h, this.i, Shader.TileMode.CLAMP));
+                  ((Paint)localObject2).setStyle(Paint.Style.FILL);
+                  f3 = i1;
+                  f2 = f1 + f7;
+                  ((Canvas)localObject1).drawRect(f1, f6 - f3, f2, f6, (Paint)localObject2);
+                  f1 = f2;
+                }
+              }
+              i3 += 1;
+            }
+            localObject1 = new BitmapShader(this.e, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            getPaint().setShader((Shader)localObject1);
           }
-          continue;
-          f1 += ((bamw)localbenz.jdField_a_of_type_AndroidTextStyleCharacterStyle).a().getBounds().width();
+        }
+        else
+        {
+          getPaint().setShader(null);
+          if (this.j == 1) {
+            f1 = 0.0F;
+          } else {
+            f1 = f3 * 0.5F;
+          }
+          if (this.j == 1) {
+            f2 = f6 * 0.5F;
+          } else {
+            f2 = 0.0F;
+          }
+          if (this.j != 1) {
+            f3 *= 0.5F;
+          }
+          f4 = f6;
+          if (this.j == 1) {
+            f4 = f6 * 0.5F;
+          }
+          localObject1 = new LinearGradient(f1, f2, f3, f4, this.h, this.i, Shader.TileMode.CLAMP);
+          getPaint().setShader((Shader)localObject1);
         }
       }
-      localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-      getPaint().setShader((Shader)localObject);
-      break;
-      getPaint().setShader(null);
-      if (this.jdField_b_of_type_AndroidGraphicsBitmap == null) {
-        break;
-      }
-      localObject = a((int)f3, (int)f6);
-      j = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
-      i = 0;
-      while (i < f3)
-      {
-        this.c.set(i, 0, i + j, (int)f6);
-        ((Canvas)localObject).drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsRect, this.c, getPaint());
-        i += j;
-      }
-      localObject = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-      getPaint().setShader((Shader)localObject);
-      break;
-      getPaint().setShader(null);
-      break;
     }
+    else
+    {
+      getPaint().setShader(null);
+    }
+    super.onDraw(paramCanvas);
+  }
+  
+  public void setBackgroundDrawable(Drawable paramDrawable)
+  {
+    super.setBackgroundDrawable(paramDrawable);
+  }
+  
+  public void setCustomCloth(int paramInt)
+  {
+    setCustomCloth(paramInt, false);
+  }
+  
+  public void setCustomCloth(int paramInt, boolean paramBoolean)
+  {
+    this.o = paramInt;
+    ((ITroopNickEdit)QRoute.api(ITroopNickEdit.class)).setCustomCloth(this, getContext(), paramInt, paramBoolean);
+    b();
   }
   
   public void setSpecialColor(int paramInt1, int[] paramArrayOfInt, float[] paramArrayOfFloat, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.g = paramInt1;
+    this.j = paramInt2;
     if (paramArrayOfInt != null) {
-      this.jdField_a_of_type_ArrayOfInt = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
+      this.h = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
     }
     if (paramArrayOfFloat != null) {
-      this.jdField_a_of_type_ArrayOfFloat = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
+      this.i = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
+    this.k = paramBitmap;
+    paramArrayOfInt = this.k;
+    if (paramArrayOfInt != null) {
+      this.l.set(0, 0, paramArrayOfInt.getWidth(), this.k.getHeight());
     }
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ColorClearableEditText
  * JD-Core Version:    0.7.0.1
  */

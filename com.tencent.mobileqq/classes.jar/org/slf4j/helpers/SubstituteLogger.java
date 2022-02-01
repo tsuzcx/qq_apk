@@ -98,15 +98,17 @@ public class SubstituteLogger
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (SubstituteLogger)paramObject;
-    } while (this.name.equals(paramObject.name));
+      return this.name.equals(paramObject.name);
+    }
     return false;
   }
   
@@ -232,22 +234,22 @@ public class SubstituteLogger
   
   public boolean isDelegateEventAware()
   {
-    if (this.delegateEventAware != null) {
-      return this.delegateEventAware.booleanValue();
+    Boolean localBoolean = this.delegateEventAware;
+    if (localBoolean != null) {
+      return localBoolean.booleanValue();
     }
     try
     {
       this.logMethodCache = this._delegate.getClass().getMethod("log", new Class[] { LoggingEvent.class });
       this.delegateEventAware = Boolean.TRUE;
-      return this.delegateEventAware.booleanValue();
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      for (;;)
-      {
-        this.delegateEventAware = Boolean.FALSE;
-      }
+      label49:
+      break label49;
     }
+    this.delegateEventAware = Boolean.FALSE;
+    return this.delegateEventAware.booleanValue();
   }
   
   public boolean isDelegateNOP()
@@ -308,7 +310,7 @@ public class SubstituteLogger
       this.logMethodCache.invoke(this._delegate, new Object[] { paramLoggingEvent });
       return;
     }
-    catch (InvocationTargetException paramLoggingEvent) {}catch (IllegalArgumentException paramLoggingEvent) {}catch (IllegalAccessException paramLoggingEvent) {}
+    catch (IllegalAccessException|IllegalArgumentException|InvocationTargetException paramLoggingEvent) {}
   }
   
   public void setDelegate(Logger paramLogger)
@@ -418,7 +420,7 @@ public class SubstituteLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.helpers.SubstituteLogger
  * JD-Core Version:    0.7.0.1
  */

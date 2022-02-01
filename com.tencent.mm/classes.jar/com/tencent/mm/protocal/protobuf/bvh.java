@@ -1,81 +1,129 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
+import java.util.LinkedList;
 
 public final class bvh
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int vNt;
-  public int xCa;
-  public int xIV;
-  public int xIX;
+  public b AEA;
+  public LinkedList<String> aacP;
+  public LinkedList<String> aacQ;
+  public String cardId;
+  public String title;
+  public String uCW;
+  
+  public bvh()
+  {
+    AppMethodBeat.i(258974);
+    this.aacP = new LinkedList();
+    this.aacQ = new LinkedList();
+    AppMethodBeat.o(258974);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(80166);
+    AppMethodBeat.i(258980);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.xCa);
-      paramVarArgs.aO(2, this.xIX);
-      paramVarArgs.aO(3, this.xIV);
-      paramVarArgs.aO(4, this.vNt);
-      AppMethodBeat.o(80166);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.bl(1, this.xCa);
-      int i = e.a.a.b.b.a.bl(2, this.xIX);
-      int j = e.a.a.b.b.a.bl(3, this.xIV);
-      int k = e.a.a.b.b.a.bl(4, this.vNt);
-      AppMethodBeat.o(80166);
-      return paramInt + 0 + i + j + k;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.cardId != null) {
+        paramVarArgs.g(1, this.cardId);
       }
-      AppMethodBeat.o(80166);
+      if (this.title != null) {
+        paramVarArgs.g(2, this.title);
+      }
+      if (this.uCW != null) {
+        paramVarArgs.g(3, this.uCW);
+      }
+      paramVarArgs.e(4, 1, this.aacP);
+      paramVarArgs.e(5, 1, this.aacQ);
+      if (this.AEA != null) {
+        paramVarArgs.d(6, this.AEA);
+      }
+      AppMethodBeat.o(258980);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.cardId == null) {
+        break label506;
+      }
+    }
+    label506:
+    for (int i = i.a.a.b.b.a.h(1, this.cardId) + 0;; i = 0)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      bvh localbvh = (bvh)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.title != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.title);
+      }
+      i = paramInt;
+      if (this.uCW != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.uCW);
+      }
+      i = i + i.a.a.a.c(4, 1, this.aacP) + i.a.a.a.c(5, 1, this.aacQ);
+      paramInt = i;
+      if (this.AEA != null) {
+        paramInt = i + i.a.a.b.b.a.c(6, this.AEA);
+      }
+      AppMethodBeat.o(258980);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(80166);
-        return -1;
-      case 1: 
-        localbvh.xCa = locala.CLY.sl();
-        AppMethodBeat.o(80166);
-        return 0;
-      case 2: 
-        localbvh.xIX = locala.CLY.sl();
-        AppMethodBeat.o(80166);
-        return 0;
-      case 3: 
-        localbvh.xIV = locala.CLY.sl();
-        AppMethodBeat.o(80166);
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.aacP.clear();
+        this.aacQ.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(258980);
         return 0;
       }
-      localbvh.vNt = locala.CLY.sl();
-      AppMethodBeat.o(80166);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        bvh localbvh = (bvh)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(258980);
+          return -1;
+        case 1: 
+          localbvh.cardId = locala.ajGk.readString();
+          AppMethodBeat.o(258980);
+          return 0;
+        case 2: 
+          localbvh.title = locala.ajGk.readString();
+          AppMethodBeat.o(258980);
+          return 0;
+        case 3: 
+          localbvh.uCW = locala.ajGk.readString();
+          AppMethodBeat.o(258980);
+          return 0;
+        case 4: 
+          localbvh.aacP.add(locala.ajGk.readString());
+          AppMethodBeat.o(258980);
+          return 0;
+        case 5: 
+          localbvh.aacQ.add(locala.ajGk.readString());
+          AppMethodBeat.o(258980);
+          return 0;
+        }
+        localbvh.AEA = locala.ajGk.kFX();
+        AppMethodBeat.o(258980);
+        return 0;
+      }
+      AppMethodBeat.o(258980);
+      return -1;
     }
-    AppMethodBeat.o(80166);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bvh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,60 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import org.json.JSONException;
+import com.tencent.mm.plugin.report.service.h;
 import org.json.JSONObject;
 
 public class ag
-  extends bh
+  extends bv
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b.a parama)
   {
-    AppMethodBeat.i(6338);
-    try
+    boolean bool2 = true;
+    AppMethodBeat.i(78570);
+    int i = parama.eiZ.eif.optInt("id");
+    if (i <= 0) {
+      parama.a("fail", null);
+    }
+    String str = parama.eiZ.eif.optString("value");
+    boolean bool1;
+    if (parama.eiZ.eif.optInt("is_important") > 0)
     {
-      paramString = new JSONObject(paramString);
-      paramString = paramString.optString("username");
-      if (bo.isNullOrNil(paramString))
-      {
-        parama.c("param_err", null);
-        AppMethodBeat.o(6338);
-        return;
+      bool1 = true;
+      if (parama.eiZ.eif.optInt("is_report_now") <= 0) {
+        break label108;
       }
     }
-    catch (JSONException paramContext)
+    for (;;)
     {
-      ab.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
-      parama.c("fail", null);
-      AppMethodBeat.o(6338);
+      h.OAn.b(i, str, bool2, bool1);
+      parama.a("", null);
+      AppMethodBeat.o(78570);
       return;
+      bool1 = false;
+      break;
+      label108:
+      bool2 = false;
     }
-    Object localObject = ((j)g.E(j.class)).YA().arw(paramString);
-    if ((localObject == null) || (!((ad)localObject).dwz()))
-    {
-      parama.c("not biz username", null);
-      AppMethodBeat.o(6338);
-      return;
-    }
-    if (!a.je(((aq)localObject).field_type))
-    {
-      parama.c("open_biz_chat", null);
-      AppMethodBeat.o(6338);
-      return;
-    }
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("Chat_User", paramString);
-    ((Intent)localObject).putExtra("finish_direct", true);
-    d.f(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
-    parama.c(null, null);
-    AppMethodBeat.o(6338);
   }
   
-  public final void b(a.a parama) {}
-  
-  public final int bjL()
+  public final int dgI()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "openBizChat";
+    return "kvReport";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ag
  * JD-Core Version:    0.7.0.1
  */

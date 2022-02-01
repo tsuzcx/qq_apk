@@ -1,76 +1,83 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cec
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<ayx> wok;
-  
-  public cec()
-  {
-    AppMethodBeat.i(94578);
-    this.wok = new LinkedList();
-    AppMethodBeat.o(94578);
-  }
+  public int YGX;
+  public int aaoo;
+  public String oOI;
+  public int vhJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94579);
+    AppMethodBeat.i(123572);
     if (paramInt == 0)
     {
-      ((e.a.a.c.a)paramVarArgs[0]).e(1, 8, this.wok);
-      AppMethodBeat.o(94579);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.oOI != null) {
+        paramVarArgs.g(1, this.oOI);
+      }
+      paramVarArgs.bS(2, this.vhJ);
+      paramVarArgs.bS(3, this.YGX);
+      paramVarArgs.bS(4, this.aaoo);
+      AppMethodBeat.o(123572);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.a.c(1, 8, this.wok);
-      AppMethodBeat.o(94579);
-      return paramInt + 0;
+    if (paramInt == 1) {
+      if (this.oOI == null) {
+        break label346;
+      }
     }
-    if (paramInt == 2)
+    label346:
+    for (paramInt = i.a.a.b.b.a.h(1, this.oOI) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.wok.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      int i = i.a.a.b.b.a.cJ(2, this.vhJ);
+      int j = i.a.a.b.b.a.cJ(3, this.YGX);
+      int k = i.a.a.b.b.a.cJ(4, this.aaoo);
+      AppMethodBeat.o(123572);
+      return paramInt + i + j + k;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
+        AppMethodBeat.o(123572);
+        return 0;
       }
-      AppMethodBeat.o(94579);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      cec localcec = (cec)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(94579);
-        return -1;
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        cec localcec = (cec)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(123572);
+          return -1;
+        case 1: 
+          localcec.oOI = locala.ajGk.readString();
+          AppMethodBeat.o(123572);
+          return 0;
+        case 2: 
+          localcec.vhJ = locala.ajGk.aar();
+          AppMethodBeat.o(123572);
+          return 0;
+        case 3: 
+          localcec.YGX = locala.ajGk.aar();
+          AppMethodBeat.o(123572);
+          return 0;
+        }
+        localcec.aaoo = locala.ajGk.aar();
+        AppMethodBeat.o(123572);
+        return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new ayx();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((ayx)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localcec.wok.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(94579);
-      return 0;
+      AppMethodBeat.o(123572);
+      return -1;
     }
-    AppMethodBeat.o(94579);
-    return -1;
   }
 }
 

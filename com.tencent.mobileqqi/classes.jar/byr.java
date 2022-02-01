@@ -1,47 +1,35 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.FriendsManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionManager;
 
 public class byr
-  extends DiscussionObserver
+  implements View.OnTouchListener
 {
   public byr(ChatActivity paramChatActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.a.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.a.jdField_a_of_type_Int == 3000))
-    {
-      paramString = ((FriendsManagerImp)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(paramString);
-      if ((paramString != null) && (paramString.discussionName != null))
+    if (paramMotionEvent.getAction() == 0) {
+      if ((!this.a.permissionManager.checkPermission("android.permission.RECORD_AUDIO")) || (!this.a.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")))
       {
-        this.a.a.d = paramString.discussionName;
-        ChatActivity.a(this.a, this.a.a.d, paramString.uin, this.a.jdField_b_of_type_AndroidWidgetTextView);
+        paramView = new PermissionsDialog();
+        paramMotionEvent = this.a.a();
+        localbys = new bys(this);
+        paramView.a(paramMotionEvent, new String[] { "android.permission.RECORD_AUDIO", "android.permission.WRITE_EXTERNAL_STORAGE" }, localbys);
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    String str = (String)paramArrayOfObject[0];
-    boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-    if ((this.a.a.jdField_a_of_type_JavaLangString.equals(str)) && (paramBoolean))
+    while (paramMotionEvent.getAction() != 1)
     {
-      if (bool) {
-        this.a.b(false);
-      }
-      if (this.a.a.jdField_a_of_type_Int == 3000)
-      {
-        paramArrayOfObject = ((FriendsManagerImp)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).a(str);
-        if ((paramArrayOfObject != null) && (paramArrayOfObject.discussionName != null))
-        {
-          this.a.a.d = paramArrayOfObject.discussionName;
-          ChatActivity.a(this.a, this.a.a.d, paramArrayOfObject.uin, this.a.jdField_b_of_type_AndroidWidgetTextView);
-        }
-      }
+      bys localbys;
+      return false;
+      this.a.findViewById(2131231202).setBackgroundResource(2130840096);
+      return false;
     }
+    this.a.findViewById(2131231202).setBackgroundResource(2130840095);
+    return false;
   }
 }
 

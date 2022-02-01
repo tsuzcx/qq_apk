@@ -1,70 +1,61 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bas;
-import com.tencent.mm.protocal.protobuf.bat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.crl;
+import com.tencent.mm.protocal.protobuf.crm;
 
 public final class r
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public final b rr;
+  private h callback;
+  public final c oDw;
   
   public r()
   {
-    AppMethodBeat.i(78584);
-    b.a locala = new b.a();
-    locala.fsX = new bas();
-    locala.fsY = new bat();
-    locala.uri = "/cgi-bin/micromsg-bin/logout";
-    locala.funcId = 282;
-    locala.reqCmdId = 0;
+    AppMethodBeat.i(20635);
+    c.a locala = new c.a();
+    locala.otE = new crl();
+    locala.otF = new crm();
+    locala.uri = "/cgi-bin/micromsg-bin/getremind";
+    locala.funcId = 866;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((bas)this.rr.fsV.fta).Scene = 0;
-    AppMethodBeat.o(78584);
+    this.oDw = locala.bEF();
+    AppMethodBeat.o(20635);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(78585);
-    ab.d("MicroMsg.NetSceneLogout", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(78585);
+    AppMethodBeat.i(20636);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(20636);
     return i;
   }
   
   public final int getType()
   {
-    return 282;
+    return 866;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(78586);
-    if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ab.d("MicroMsg.NetSceneLogout", "logout Error. ");
-    }
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(78586);
+    AppMethodBeat.i(20637);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(20637);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelsimple.r
  * JD-Core Version:    0.7.0.1
  */

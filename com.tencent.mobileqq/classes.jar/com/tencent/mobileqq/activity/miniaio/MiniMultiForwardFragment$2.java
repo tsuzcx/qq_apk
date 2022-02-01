@@ -9,8 +9,8 @@ class MiniMultiForwardFragment$2
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.setText(this.a);
+    if (this.this$0.g != null) {
+      this.this$0.g.setText(this.a);
     }
   }
 }

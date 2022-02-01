@@ -10,14 +10,14 @@ import java.util.Locale;
 
 public final class e
 {
-  public static Locale Xi;
+  public static Locale Zk;
   
   static
   {
     if (Build.VERSION.SDK_INT < 24) {}
-    for (Xi = Locale.getDefault();; Xi = LocaleList.getDefault().get(0))
+    for (Zk = Locale.getDefault();; Zk = LocaleList.getDefault().get(0))
     {
-      Locale.setDefault(Xi);
+      Locale.setDefault(Zk);
       return;
     }
   }
@@ -36,21 +36,29 @@ public final class e
     if (paramString.equals("zh_CN")) {
       return Locale.CHINA;
     }
-    if ((paramString.equalsIgnoreCase("th")) || (paramString.equalsIgnoreCase("id")) || (paramString.equalsIgnoreCase("vi")) || (paramString.equalsIgnoreCase("pt")) || (paramString.equalsIgnoreCase("es")) || (paramString.equalsIgnoreCase("ru")) || (paramString.equalsIgnoreCase("ar")) || (paramString.equalsIgnoreCase("ja")) || (paramString.equalsIgnoreCase("it")) || (paramString.equalsIgnoreCase("ko")) || (paramString.equalsIgnoreCase("ms")) || (paramString.equalsIgnoreCase("tr")) || (paramString.equalsIgnoreCase("de")) || (paramString.equalsIgnoreCase("fr")) || (paramString.equalsIgnoreCase("my")) || (paramString.equalsIgnoreCase("lo"))) {
+    if ((paramString.equalsIgnoreCase("th")) || (paramString.equalsIgnoreCase("id")) || (paramString.equalsIgnoreCase("in")) || (paramString.equalsIgnoreCase("vi")) || (paramString.equalsIgnoreCase("pt")) || (paramString.equalsIgnoreCase("es")) || (paramString.equalsIgnoreCase("ru")) || (paramString.equalsIgnoreCase("ar")) || (paramString.equalsIgnoreCase("ja")) || (paramString.equalsIgnoreCase("it")) || (paramString.equalsIgnoreCase("ko")) || (paramString.equalsIgnoreCase("ms")) || (paramString.equalsIgnoreCase("tr")) || (paramString.equalsIgnoreCase("de")) || (paramString.equalsIgnoreCase("fr")) || (paramString.equalsIgnoreCase("my")) || (paramString.equalsIgnoreCase("lo"))) {
       return new Locale(paramString);
     }
-    f.c("MicroMsg.LocaleUtil", "transLanguageToLocale country = " + paramString);
+    f.c("MicroMsg.LocaleUtil", "transLanguageToLocale country = ".concat(String.valueOf(paramString)));
     return Locale.ENGLISH;
   }
   
   public static void a(Context paramContext, Locale paramLocale)
   {
-    paramContext = paramContext.getResources();
-    Configuration localConfiguration = paramContext.getConfiguration();
-    DisplayMetrics localDisplayMetrics = paramContext.getDisplayMetrics();
-    localConfiguration.locale = paramLocale;
-    paramContext.updateConfiguration(localConfiguration, localDisplayMetrics);
-    Resources.getSystem().updateConfiguration(localConfiguration, localDisplayMetrics);
+    try
+    {
+      paramContext = paramContext.getResources();
+      Configuration localConfiguration = paramContext.getConfiguration();
+      DisplayMetrics localDisplayMetrics = paramContext.getDisplayMetrics();
+      localConfiguration.locale = paramLocale;
+      paramContext.updateConfiguration(localConfiguration, localDisplayMetrics);
+      Resources.getSystem().updateConfiguration(localConfiguration, localDisplayMetrics);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      f.a("MicroMsg.LocaleUtil", paramContext, "updateApplicationResourceLocale err~~~", new Object[0]);
+    }
   }
 }
 

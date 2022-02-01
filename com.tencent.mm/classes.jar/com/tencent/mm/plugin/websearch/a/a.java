@@ -1,181 +1,216 @@
 package com.tencent.mm.plugin.websearch.a;
 
-import android.text.TextUtils;
+import android.content.Intent;
+import android.webkit.JavascriptInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.d;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.r;
+import com.tencent.mm.plugin.websearch.webview.e;
+import com.tencent.mm.plugin.websearch.webview.g;
+import com.tencent.mm.plugin.websearch.webview.o;
+import com.tencent.mm.protocal.protobuf.amr;
+import com.tencent.mm.protocal.protobuf.crx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
-import java.util.Set;
+import kotlin.Metadata;
+import kotlin.ah;
+import org.json.JSONObject;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/emojisearch/EmojiSearchJSApi;", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchQueryJSApi;", "Lcom/tencent/mm/protocal/protobuf/EmojiSearchHomeContext;", "uiComponent", "Lcom/tencent/mm/plugin/websearch/emojisearch/ui/IEmojiSearchUIComponent;", "(Lcom/tencent/mm/plugin/websearch/emojisearch/ui/IEmojiSearchUIComponent;)V", "enterEmojiStore", "", "params", "getUIComponent", "openSearchWebView", "setSearchTagResult", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  extends o<amr>
 {
-  public static String F(Map<String, String> paramMap)
+  public a(com.tencent.mm.plugin.websearch.a.a.d paramd)
   {
-    AppMethodBeat.i(91361);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("file://");
-    localStringBuffer.append(aLw());
-    localStringBuffer.append("/app.html?");
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    super((e)paramd);
+    AppMethodBeat.i(315040);
+    AppMethodBeat.o(315040);
+  }
+  
+  private final com.tencent.mm.plugin.websearch.a.a.d iqy()
+  {
+    com.tencent.mm.plugin.websearch.webview.c localc = this.WrO;
+    if ((localc instanceof com.tencent.mm.plugin.websearch.a.a.d)) {
+      return (com.tencent.mm.plugin.websearch.a.a.d)localc;
+    }
+    return null;
+  }
+  
+  @JavascriptInterface
+  public final String enterEmojiStore(String paramString)
+  {
+    AppMethodBeat.i(315076);
+    try
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuffer.append("&");
-      localStringBuffer.append((String)localEntry.getKey());
-      localStringBuffer.append("=");
-      localStringBuffer.append((String)localEntry.getValue());
-    }
-    if (!paramMap.containsKey("sessionId"))
-    {
-      localStringBuffer.append("&");
-      localStringBuffer.append("sessionId");
-      localStringBuffer.append("=");
-      localStringBuffer.append(com.tencent.mm.plugin.websearch.api.aa.IZ(bo.apV((String)paramMap.get("scene"))));
-    }
-    paramMap = localStringBuffer.toString();
-    AppMethodBeat.o(91361);
-    return paramMap;
-  }
-  
-  /* Error */
-  private static Properties J(File paramFile)
-  {
-    // Byte code:
-    //   0: ldc 105
-    //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 107	java/util/Properties
-    //   8: dup
-    //   9: invokespecial 108	java/util/Properties:<init>	()V
-    //   12: astore_3
-    //   13: aload_0
-    //   14: invokevirtual 113	java/io/File:isFile	()Z
-    //   17: ifeq +23 -> 40
-    //   20: new 115	java/io/FileInputStream
-    //   23: dup
-    //   24: aload_0
-    //   25: invokespecial 118	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   28: astore_1
-    //   29: aload_1
-    //   30: astore_0
-    //   31: aload_3
-    //   32: aload_1
-    //   33: invokevirtual 122	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   36: aload_1
-    //   37: invokestatic 127	com/tencent/mm/a/e:l	(Ljava/io/InputStream;)V
-    //   40: ldc 105
-    //   42: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   45: aload_3
-    //   46: areturn
-    //   47: astore_2
-    //   48: aconst_null
-    //   49: astore_1
-    //   50: aload_1
-    //   51: astore_0
-    //   52: ldc 129
-    //   54: aload_2
-    //   55: ldc 131
-    //   57: iconst_0
-    //   58: anewarray 4	java/lang/Object
-    //   61: invokestatic 137	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   64: aload_1
-    //   65: invokestatic 127	com/tencent/mm/a/e:l	(Ljava/io/InputStream;)V
-    //   68: goto -28 -> 40
-    //   71: astore_1
-    //   72: aconst_null
-    //   73: astore_0
-    //   74: aload_0
-    //   75: invokestatic 127	com/tencent/mm/a/e:l	(Ljava/io/InputStream;)V
-    //   78: ldc 105
-    //   80: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   83: aload_1
-    //   84: athrow
-    //   85: astore_1
-    //   86: goto -12 -> 74
-    //   89: astore_2
-    //   90: goto -40 -> 50
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	93	0	paramFile	File
-    //   28	37	1	localFileInputStream	java.io.FileInputStream
-    //   71	13	1	localObject1	Object
-    //   85	1	1	localObject2	Object
-    //   47	8	2	localException1	java.lang.Exception
-    //   89	1	2	localException2	java.lang.Exception
-    //   12	34	3	localProperties	Properties
-    // Exception table:
-    //   from	to	target	type
-    //   20	29	47	java/lang/Exception
-    //   20	29	71	finally
-    //   31	36	85	finally
-    //   52	64	85	finally
-    //   31	36	89	java/lang/Exception
-  }
-  
-  public static String aLw()
-  {
-    AppMethodBeat.i(91358);
-    Object localObject = new File(agk(), "wxa_fts/res");
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    localObject = ((File)localObject).getAbsolutePath();
-    AppMethodBeat.o(91358);
-    return localObject;
-  }
-  
-  private static int aLx()
-  {
-    AppMethodBeat.i(91360);
-    int i = Integer.valueOf(J(new File(aLw(), "config.conf")).getProperty("version", "0")).intValue();
-    AppMethodBeat.o(91360);
-    return i;
-  }
-  
-  private static String agk()
-  {
-    AppMethodBeat.i(91357);
-    String str = e.eQw.replace("/data/user/0", "/data/data");
-    AppMethodBeat.o(91357);
-    return str;
-  }
-  
-  public static Map<String, String> bA(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(91362);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("scene", String.valueOf(paramInt));
-    localHashMap.put("type", "64");
-    localHashMap.put("lang", com.tencent.mm.sdk.platformtools.aa.gP(ah.getContext()));
-    localHashMap.put("platform", "android");
-    localHashMap.put("version", String.valueOf(aLx()));
-    localHashMap.put("isHomePage", "0");
-    if (!TextUtils.isEmpty(paramString)) {
-      localHashMap.put("extParams", paramString);
-    }
-    paramString = com.tencent.mm.model.c.c.abU().me("100192");
-    if ((paramString.isValid()) && ("1".equals(paramString.dvN().get("openSearchSuggestion")))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ab.i("MicroMsg.WxaFTSExportLogic", "genFTSParams scene = %d, isHomePage = %b, type = %d, isSug = %b", new Object[] { Integer.valueOf(paramInt), Boolean.FALSE, Integer.valueOf(64), Boolean.valueOf(bool) });
-      if (bool) {
-        localHashMap.put("isSug", "1");
+      paramString = new JSONObject(paramString).optString("talker");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("preceding_scence", 13);
+      localIntent.putExtra("download_entrance_scene", 17);
+      localIntent.putExtra("check_clickflag", false);
+      if (!Util.isNullOrNil(paramString)) {
+        localIntent.putExtra("to_talker_name", paramString);
       }
-      AppMethodBeat.o(91362);
-      return localHashMap;
+      paramString = iqy();
+      if (paramString == null) {}
+      for (paramString = null;; paramString = paramString.getActivityContext())
+      {
+        com.tencent.mm.br.c.b(paramString, "emoji", ".ui.v2.EmojiStoreV2UI", localIntent);
+        paramString = iqR().toString();
+        kotlin.g.b.s.s(paramString, "returnSuccess().toString()");
+        AppMethodBeat.o(315076);
+        return paramString;
+      }
+      return paramString;
     }
+    catch (Exception paramString)
+    {
+      paramString = fqu().toString();
+      kotlin.g.b.s.s(paramString, "returnFail().toString()");
+      AppMethodBeat.o(315076);
+    }
+  }
+  
+  @JavascriptInterface
+  public final String openSearchWebView(String paramString)
+  {
+    AppMethodBeat.i(315069);
+    Log.i("MicroMsg.WebSearch.BaseWebSearchJSApi", kotlin.g.b.s.X("openSearchWebView ", paramString));
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      String str1 = ((JSONObject)localObject).optString("query");
+      int i = ((JSONObject)localObject).optInt("scene", 0);
+      int j = ((JSONObject)localObject).optInt("type", 0);
+      int k = ((JSONObject)localObject).optInt("subType", 0);
+      String str2 = ((JSONObject)localObject).optString("searchId", "");
+      String str3 = ((JSONObject)localObject).optString("sessionId", "");
+      int m = ((JSONObject)localObject).optInt("actionType", 0);
+      paramString = ((JSONObject)localObject).optString("extParams", "");
+      localObject = ((JSONObject)localObject).optJSONObject("nativeConfig");
+      if (localObject != null) {
+        ((JSONObject)localObject).optString("title");
+      }
+      Map localMap;
+      amr localamr;
+      if (m == 3)
+      {
+        localMap = aj.a(i, false, j, paramString);
+        localMap.put("query", str1);
+        localMap.put("searchId", str2);
+        localMap.put("subType", String.valueOf(k));
+        localMap.put("sessionId", str3);
+        localMap.put("subSessionId", aj.asV(i));
+        localamr = new amr();
+        paramString = iqy();
+        if (paramString != null) {
+          break label322;
+        }
+        paramString = "";
+      }
+      for (;;)
+      {
+        localamr.talker = paramString;
+        paramString = c.WqA;
+        kotlin.g.b.s.s(localMap, "urlParams");
+        localamr.url = c.bq(localMap);
+        localamr.hAB = str1;
+        localamr.scene = i;
+        localamr.mpa = str2;
+        localamr.sessionId = str3;
+        localamr.hOG = aj.asV(i);
+        paramString = iqy();
+        if (paramString != null) {
+          paramString.a(localamr);
+        }
+        paramString = iqR().toString();
+        AppMethodBeat.o(315069);
+        return paramString;
+        label322:
+        paramString = (amr)paramString.fyQ();
+        if (paramString == null)
+        {
+          paramString = "";
+        }
+        else
+        {
+          localObject = paramString.talker;
+          paramString = (String)localObject;
+          if (localObject == null) {
+            paramString = "";
+          }
+        }
+      }
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString = fqu().toString();
+      AppMethodBeat.o(315069);
+    }
+  }
+  
+  @JavascriptInterface
+  public final String setSearchTagResult(String paramString)
+  {
+    AppMethodBeat.i(315056);
+    Log.i("MicroMsg.WebSearch.BaseWebSearchJSApi", kotlin.g.b.s.X("setSearchTagResult ", paramString));
+    Object localObject1;
+    if (paramString != null)
+    {
+      localObject1 = iqy();
+      if (localObject1 != null)
+      {
+        localObject1 = ((com.tencent.mm.plugin.websearch.a.a.d)localObject1).iqB();
+        if (localObject1 != null) {
+          kotlin.g.b.s.u(paramString, "paramsStr");
+        }
+      }
+    }
+    try
+    {
+      Object localObject2 = ((d)localObject1).WqB;
+      if (localObject2 != null)
+      {
+        h.aZW().a((p)localObject2);
+        ((d)localObject1).WqB = null;
+      }
+      localObject2 = new JSONObject(paramString);
+      paramString = new crx();
+      paramString.IJG = ((JSONObject)localObject2).optInt("scene", 0);
+      paramString.SessionId = ((JSONObject)localObject2).optString("sessionId", "");
+      paramString.aaye = ((JSONObject)localObject2).optString("requestId", "");
+      paramString.aayf = ((JSONObject)localObject2).optString("searchId", "");
+      paramString.YWK = ((JSONObject)localObject2).optString("query", "");
+      paramString.nUB = ((JSONObject)localObject2).optString("content", "");
+      paramString.aayc = ((JSONObject)localObject2).optInt("h5Version", 0);
+      localObject2 = new r(paramString, ((d)localObject1).ipD());
+      h.aZW().a((p)localObject2, 0);
+      ah localah = ah.aiuX;
+      ((d)localObject1).WqB = ((r)localObject2);
+      localObject1 = ((d)localObject1).iqz();
+      paramString = paramString.aaye;
+      kotlin.g.b.s.s(paramString, "request.RequestId");
+      ((com.tencent.mm.plugin.websearch.a.a.d)localObject1).biF(paramString);
+    }
+    catch (Exception paramString)
+    {
+      label233:
+      break label233;
+    }
+    paramString = iqR().toString();
+    AppMethodBeat.o(315056);
+    return paramString;
+    paramString = fqu().toString();
+    AppMethodBeat.o(315056);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.a.a
  * JD-Core Version:    0.7.0.1
  */

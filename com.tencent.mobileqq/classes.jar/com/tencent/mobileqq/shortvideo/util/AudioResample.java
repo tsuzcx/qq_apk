@@ -8,14 +8,21 @@ public class AudioResample
 {
   static
   {
-    boolean bool = ShortVideoUtils.a();
-    QLog.i("SegmentClipUtils", 2, "LoadExtractedShortVideoSo:loaded=" + bool);
+    boolean bool = ShortVideoUtils.isVideoSoLibLoaded();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoadExtractedShortVideoSo:loaded=");
+    localStringBuilder.append(bool);
+    QLog.i("SegmentClipUtils", 2, localStringBuilder.toString());
     if (!bool)
     {
-      VideoEnvironment.a("AVCodec", null, true);
-      bool = ShortVideoUtils.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("SegmentClipUtils", 2, "LoadExtractedShortVideoSo:loaded=" + bool);
+      VideoEnvironment.loadAVCodecSo();
+      bool = ShortVideoUtils.isVideoSoLibLoaded();
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("LoadExtractedShortVideoSo:loaded=");
+        localStringBuilder.append(bool);
+        QLog.i("SegmentClipUtils", 2, localStringBuilder.toString());
       }
     }
   }
@@ -26,7 +33,7 @@ public class AudioResample
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.AudioResample
  * JD-Core Version:    0.7.0.1
  */

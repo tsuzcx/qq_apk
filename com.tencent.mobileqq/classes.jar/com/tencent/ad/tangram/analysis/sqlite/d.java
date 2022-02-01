@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.ad.tangram.analysis.sqlite.b;>;
 
 public class d
 {
@@ -14,79 +13,74 @@ public class d
   
   public static boolean delete(Context paramContext, List<b> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      AdLog.e("AdAnalysisSQLiteUtil", "delete error");
-      return false;
-    }
-    Object localObject = "";
-    Iterator localIterator = paramList.iterator();
-    paramList = (List<b>)localObject;
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if ((localb == null) || (!localb.isValid()))
+      Iterator localIterator = paramList.iterator();
+      paramList = "";
+      while (localIterator.hasNext())
+      {
+        b localb = (b)localIterator.next();
+        if ((localb != null) && (localb.isValid()))
+        {
+          Object localObject = paramList;
+          if (!TextUtils.isEmpty(paramList))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramList);
+            ((StringBuilder)localObject).append(",");
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          paramList = new StringBuilder();
+          paramList.append((String)localObject);
+          paramList.append(String.format("'%s'", new Object[] { localb.uuid }));
+          paramList = paramList.toString();
+        }
+        else
+        {
+          AdLog.e("AdAnalysisSQLiteUtil", "delete error");
+        }
+      }
+      if (TextUtils.isEmpty(paramList))
       {
         AdLog.e("AdAnalysisSQLiteUtil", "delete error");
-      }
-      else
-      {
-        localObject = paramList;
-        if (!TextUtils.isEmpty(paramList)) {
-          localObject = paramList + ",";
-        }
-        paramList = (String)localObject + String.format("'%s'", new Object[] { localb.uuid });
-      }
-    }
-    if (TextUtils.isEmpty(paramList))
-    {
-      AdLog.e("AdAnalysisSQLiteUtil", "delete error");
-      return false;
-    }
-    try
-    {
-      paramContext = c.getInstance(paramContext);
-      if (paramContext == null)
-      {
-        AdLog.e("AdAnalysisSQLiteUtil", "delete error, helper is null");
         return false;
       }
-      paramContext = paramContext.getWritableDatabase();
-      if (paramContext == null)
-      {
-        AdLog.e("AdAnalysisSQLiteUtil", "delete error, db is null");
-        return false;
-      }
-      paramContext.execSQL(String.format("DELETE FROM %s WHERE %s IN (%s)", new Object[] { "gdt_analysis_table_v4", "uuid", paramList }));
-      return true;
-    }
-    catch (Throwable paramContext)
-    {
-      AdLog.e("AdAnalysisSQLiteUtil", "delete error", paramContext);
-    }
-    return false;
-  }
-  
-  public static void insert(Context paramContext, b paramb)
-  {
-    if ((paramb == null) || (!paramb.isValid())) {
-      AdLog.e("AdAnalysisSQLiteUtil", "insert error");
-    }
-    do
-    {
-      return;
       try
       {
         paramContext = c.getInstance(paramContext);
         if (paramContext == null)
         {
-          AdLog.e("AdAnalysisSQLiteUtil", "insert error, helper is null");
-          return;
+          AdLog.e("AdAnalysisSQLiteUtil", "delete error, helper is null");
+          return false;
         }
+        paramContext = paramContext.getWritableDatabase();
+        if (paramContext == null)
+        {
+          AdLog.e("AdAnalysisSQLiteUtil", "delete error, db is null");
+          return false;
+        }
+        paramContext.execSQL(String.format("DELETE FROM %s WHERE %s IN (%s)", new Object[] { "gdt_analysis_table_v4", "uuid", paramList }));
+        return true;
       }
       catch (Throwable paramContext)
       {
-        AdLog.e("AdAnalysisSQLiteUtil", "insert error");
+        AdLog.e("AdAnalysisSQLiteUtil", "delete error", paramContext);
+        return false;
+      }
+    }
+    AdLog.e("AdAnalysisSQLiteUtil", "delete error");
+    return false;
+  }
+  
+  public static void insert(Context paramContext, b paramb)
+  {
+    if ((paramb != null) && (paramb.isValid())) {}
+    try
+    {
+      paramContext = c.getInstance(paramContext);
+      if (paramContext == null)
+      {
+        AdLog.e("AdAnalysisSQLiteUtil", "insert error, helper is null");
         return;
       }
       paramContext = paramContext.getWritableDatabase();
@@ -95,8 +89,21 @@ public class d
         AdLog.e("AdAnalysisSQLiteUtil", "insert error, db is null");
         return;
       }
-    } while (paramContext.insertOrThrow("gdt_analysis_table_v4", null, paramb.getContentValues()) != -1L);
-    AdLog.e("AdAnalysisSQLiteUtil", "insert error, rowId is -1");
+      if (paramContext.insertOrThrow("gdt_analysis_table_v4", null, paramb.getContentValues()) != -1L) {
+        break label81;
+      }
+      AdLog.e("AdAnalysisSQLiteUtil", "insert error, rowId is -1");
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      label74:
+      break label74;
+    }
+    AdLog.e("AdAnalysisSQLiteUtil", "insert error");
+    label81:
+    return;
+    AdLog.e("AdAnalysisSQLiteUtil", "insert error");
   }
   
   /* Error */
@@ -104,240 +111,232 @@ public class d
   {
     // Byte code:
     //   0: iload_1
-    //   1: ifgt +24 -> 25
+    //   1: ifgt +12 -> 13
     //   4: ldc 8
     //   6: ldc 134
-    //   8: invokestatic 31	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   11: iconst_0
-    //   12: ifeq +11 -> 23
-    //   15: new 136	java/lang/NullPointerException
-    //   18: dup
-    //   19: invokespecial 137	java/lang/NullPointerException:<init>	()V
-    //   22: athrow
-    //   23: aconst_null
-    //   24: areturn
-    //   25: aload_0
-    //   26: invokestatic 86	com/tencent/ad/tangram/analysis/sqlite/c:getInstance	(Landroid/content/Context;)Lcom/tencent/ad/tangram/analysis/sqlite/c;
-    //   29: astore_0
-    //   30: aload_0
-    //   31: ifnonnull +22 -> 53
-    //   34: ldc 8
-    //   36: ldc 139
-    //   38: invokestatic 31	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   41: iconst_0
-    //   42: ifeq -19 -> 23
-    //   45: new 136	java/lang/NullPointerException
-    //   48: dup
-    //   49: invokespecial 137	java/lang/NullPointerException:<init>	()V
-    //   52: athrow
-    //   53: aload_0
-    //   54: invokevirtual 142	com/tencent/ad/tangram/analysis/sqlite/c:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   57: astore_0
-    //   58: aload_0
-    //   59: ifnonnull +22 -> 81
-    //   62: ldc 8
-    //   64: ldc 144
-    //   66: invokestatic 31	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   69: iconst_0
-    //   70: ifeq -47 -> 23
-    //   73: new 136	java/lang/NullPointerException
-    //   76: dup
-    //   77: invokespecial 137	java/lang/NullPointerException:<init>	()V
-    //   80: athrow
-    //   81: aload_0
-    //   82: ldc 146
-    //   84: iconst_3
-    //   85: anewarray 4	java/lang/Object
-    //   88: dup
-    //   89: iconst_0
-    //   90: ldc 98
-    //   92: aastore
-    //   93: dup
-    //   94: iconst_1
-    //   95: ldc 148
-    //   97: aastore
-    //   98: dup
-    //   99: iconst_2
-    //   100: iload_1
-    //   101: invokestatic 154	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   104: aastore
-    //   105: invokestatic 80	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   108: aconst_null
-    //   109: invokevirtual 158	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   112: astore_3
-    //   113: aload_3
-    //   114: ifnonnull +24 -> 138
-    //   117: aload_3
-    //   118: astore_0
-    //   119: ldc 8
-    //   121: ldc 160
-    //   123: invokestatic 31	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   126: aload_3
-    //   127: ifnull -104 -> 23
-    //   130: aload_3
-    //   131: invokeinterface 165 1 0
-    //   136: aconst_null
-    //   137: areturn
-    //   138: aload_3
-    //   139: astore_0
-    //   140: aload_3
-    //   141: invokeinterface 168 1 0
-    //   146: istore_2
-    //   147: iload_2
-    //   148: ifne +15 -> 163
-    //   151: aload_3
-    //   152: ifnull -129 -> 23
-    //   155: aload_3
-    //   156: invokeinterface 165 1 0
-    //   161: aconst_null
-    //   162: areturn
-    //   163: aload_3
-    //   164: astore_0
-    //   165: new 170	java/util/ArrayList
-    //   168: dup
-    //   169: invokespecial 171	java/util/ArrayList:<init>	()V
-    //   172: astore 5
+    //   8: invokestatic 80	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   11: aconst_null
+    //   12: areturn
+    //   13: aload_0
+    //   14: invokestatic 86	com/tencent/ad/tangram/analysis/sqlite/c:getInstance	(Landroid/content/Context;)Lcom/tencent/ad/tangram/analysis/sqlite/c;
+    //   17: astore_0
+    //   18: aload_0
+    //   19: ifnonnull +12 -> 31
+    //   22: ldc 8
+    //   24: ldc 136
+    //   26: invokestatic 80	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   29: aconst_null
+    //   30: areturn
+    //   31: aload_0
+    //   32: invokevirtual 139	com/tencent/ad/tangram/analysis/sqlite/c:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   35: astore_0
+    //   36: aload_0
+    //   37: ifnonnull +12 -> 49
+    //   40: ldc 8
+    //   42: ldc 141
+    //   44: invokestatic 80	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   47: aconst_null
+    //   48: areturn
+    //   49: aload_0
+    //   50: ldc 143
+    //   52: iconst_3
+    //   53: anewarray 4	java/lang/Object
+    //   56: dup
+    //   57: iconst_0
+    //   58: ldc 98
+    //   60: aastore
+    //   61: dup
+    //   62: iconst_1
+    //   63: ldc 145
+    //   65: aastore
+    //   66: dup
+    //   67: iconst_2
+    //   68: iload_1
+    //   69: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   72: aastore
+    //   73: invokestatic 72	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   76: aconst_null
+    //   77: invokevirtual 155	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   80: astore_3
+    //   81: aload_3
+    //   82: ifnonnull +24 -> 106
+    //   85: aload_3
+    //   86: astore_0
+    //   87: ldc 8
+    //   89: ldc 157
+    //   91: invokestatic 80	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   94: aload_3
+    //   95: ifnull +9 -> 104
+    //   98: aload_3
+    //   99: invokeinterface 162 1 0
+    //   104: aconst_null
+    //   105: areturn
+    //   106: aload_3
+    //   107: astore_0
+    //   108: aload_3
+    //   109: invokeinterface 165 1 0
+    //   114: istore_2
+    //   115: iload_2
+    //   116: ifne +15 -> 131
+    //   119: aload_3
+    //   120: ifnull +9 -> 129
+    //   123: aload_3
+    //   124: invokeinterface 162 1 0
+    //   129: aconst_null
+    //   130: areturn
+    //   131: aload_3
+    //   132: astore_0
+    //   133: new 167	java/util/ArrayList
+    //   136: dup
+    //   137: invokespecial 168	java/util/ArrayList:<init>	()V
+    //   140: astore 4
+    //   142: aload_3
+    //   143: astore_0
+    //   144: new 40	com/tencent/ad/tangram/analysis/sqlite/b
+    //   147: dup
+    //   148: invokespecial 169	com/tencent/ad/tangram/analysis/sqlite/b:<init>	()V
+    //   151: astore 5
+    //   153: aload_3
+    //   154: astore_0
+    //   155: aload 5
+    //   157: aload_3
+    //   158: aload_3
+    //   159: ldc 99
+    //   161: invokeinterface 173 2 0
+    //   166: invokeinterface 177 2 0
+    //   171: putfield 66	com/tencent/ad/tangram/analysis/sqlite/b:uuid	Ljava/lang/String;
     //   174: aload_3
     //   175: astore_0
-    //   176: new 48	com/tencent/ad/tangram/analysis/sqlite/b
-    //   179: dup
-    //   180: invokespecial 172	com/tencent/ad/tangram/analysis/sqlite/b:<init>	()V
-    //   183: astore 4
-    //   185: aload_3
-    //   186: astore_0
-    //   187: aload 4
-    //   189: aload_3
-    //   190: aload_3
-    //   191: ldc 99
-    //   193: invokeinterface 176 2 0
-    //   198: invokeinterface 180 2 0
-    //   203: putfield 74	com/tencent/ad/tangram/analysis/sqlite/b:uuid	Ljava/lang/String;
-    //   206: aload_3
-    //   207: astore_0
-    //   208: aload 4
-    //   210: aload_3
-    //   211: aload_3
-    //   212: ldc 182
-    //   214: invokeinterface 176 2 0
-    //   219: invokeinterface 186 2 0
-    //   224: putfield 190	com/tencent/ad/tangram/analysis/sqlite/b:timeMillis	J
-    //   227: aload_3
-    //   228: astore_0
-    //   229: aload 4
-    //   231: aload_3
-    //   232: aload_3
-    //   233: ldc 148
-    //   235: invokeinterface 176 2 0
-    //   240: invokeinterface 194 2 0
-    //   245: putfield 197	com/tencent/ad/tangram/analysis/sqlite/b:strategy	I
-    //   248: aload_3
-    //   249: astore_0
-    //   250: aload 4
-    //   252: aload_3
-    //   253: aload_3
-    //   254: ldc 199
-    //   256: invokeinterface 176 2 0
-    //   261: invokeinterface 180 2 0
-    //   266: putfield 202	com/tencent/ad/tangram/analysis/sqlite/b:eventString	Ljava/lang/String;
-    //   269: aload_3
-    //   270: astore_0
-    //   271: aload 5
-    //   273: aload 4
-    //   275: invokeinterface 206 2 0
-    //   280: pop
-    //   281: aload_3
-    //   282: astore_0
-    //   283: aload_3
-    //   284: invokeinterface 209 1 0
-    //   289: istore_2
-    //   290: iload_2
-    //   291: ifne -117 -> 174
-    //   294: aload_3
-    //   295: ifnull +9 -> 304
-    //   298: aload_3
-    //   299: invokeinterface 165 1 0
-    //   304: aload 5
-    //   306: areturn
-    //   307: astore 4
-    //   309: aconst_null
-    //   310: astore_3
-    //   311: aload_3
-    //   312: astore_0
-    //   313: ldc 8
-    //   315: ldc 210
-    //   317: aload 4
-    //   319: invokestatic 108	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   322: aload_3
-    //   323: ifnull -300 -> 23
-    //   326: aload_3
-    //   327: invokeinterface 165 1 0
-    //   332: aconst_null
-    //   333: areturn
-    //   334: astore_3
-    //   335: aconst_null
-    //   336: astore_0
-    //   337: aload_0
-    //   338: ifnull +9 -> 347
-    //   341: aload_0
-    //   342: invokeinterface 165 1 0
-    //   347: aload_3
-    //   348: athrow
-    //   349: astore_3
-    //   350: goto -13 -> 337
-    //   353: astore 4
-    //   355: goto -44 -> 311
+    //   176: aload 5
+    //   178: aload_3
+    //   179: aload_3
+    //   180: ldc 179
+    //   182: invokeinterface 173 2 0
+    //   187: invokeinterface 183 2 0
+    //   192: putfield 187	com/tencent/ad/tangram/analysis/sqlite/b:timeMillis	J
+    //   195: aload_3
+    //   196: astore_0
+    //   197: aload 5
+    //   199: aload_3
+    //   200: aload_3
+    //   201: ldc 145
+    //   203: invokeinterface 173 2 0
+    //   208: invokeinterface 191 2 0
+    //   213: putfield 194	com/tencent/ad/tangram/analysis/sqlite/b:strategy	I
+    //   216: aload_3
+    //   217: astore_0
+    //   218: aload 5
+    //   220: aload_3
+    //   221: aload_3
+    //   222: ldc 196
+    //   224: invokeinterface 173 2 0
+    //   229: invokeinterface 177 2 0
+    //   234: putfield 199	com/tencent/ad/tangram/analysis/sqlite/b:eventString	Ljava/lang/String;
+    //   237: aload_3
+    //   238: astore_0
+    //   239: aload 4
+    //   241: aload 5
+    //   243: invokeinterface 203 2 0
+    //   248: pop
+    //   249: aload_3
+    //   250: astore_0
+    //   251: aload_3
+    //   252: invokeinterface 206 1 0
+    //   257: istore_2
+    //   258: iload_2
+    //   259: ifne -117 -> 142
+    //   262: aload_3
+    //   263: ifnull +9 -> 272
+    //   266: aload_3
+    //   267: invokeinterface 162 1 0
+    //   272: aload 4
+    //   274: areturn
+    //   275: astore 4
+    //   277: goto +16 -> 293
+    //   280: astore_0
+    //   281: aconst_null
+    //   282: astore_3
+    //   283: aload_0
+    //   284: astore 4
+    //   286: goto +34 -> 320
+    //   289: astore 4
+    //   291: aconst_null
+    //   292: astore_3
+    //   293: aload_3
+    //   294: astore_0
+    //   295: ldc 8
+    //   297: ldc 207
+    //   299: aload 4
+    //   301: invokestatic 108	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   304: aload_3
+    //   305: ifnull +9 -> 314
+    //   308: aload_3
+    //   309: invokeinterface 162 1 0
+    //   314: aconst_null
+    //   315: areturn
+    //   316: astore 4
+    //   318: aload_0
+    //   319: astore_3
+    //   320: aload_3
+    //   321: ifnull +9 -> 330
+    //   324: aload_3
+    //   325: invokeinterface 162 1 0
+    //   330: goto +6 -> 336
+    //   333: aload 4
+    //   335: athrow
+    //   336: goto -3 -> 333
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	358	0	paramContext	Context
-    //   0	358	1	paramInt	int
-    //   146	145	2	bool	boolean
-    //   112	215	3	localCursor	android.database.Cursor
-    //   334	14	3	localObject1	Object
-    //   349	1	3	localObject2	Object
-    //   183	91	4	localb	b
-    //   307	11	4	localThrowable1	Throwable
-    //   353	1	4	localThrowable2	Throwable
-    //   172	133	5	localArrayList	java.util.ArrayList
+    //   0	339	0	paramContext	Context
+    //   0	339	1	paramInt	int
+    //   114	145	2	bool	boolean
+    //   80	245	3	localObject1	Object
+    //   140	133	4	localArrayList	java.util.ArrayList
+    //   275	1	4	localThrowable1	Throwable
+    //   284	1	4	localContext	Context
+    //   289	11	4	localThrowable2	Throwable
+    //   316	18	4	localObject2	Object
+    //   151	91	5	localb	b
     // Exception table:
     //   from	to	target	type
-    //   4	11	307	java/lang/Throwable
-    //   25	30	307	java/lang/Throwable
-    //   34	41	307	java/lang/Throwable
-    //   53	58	307	java/lang/Throwable
-    //   62	69	307	java/lang/Throwable
-    //   81	113	307	java/lang/Throwable
-    //   4	11	334	finally
-    //   25	30	334	finally
-    //   34	41	334	finally
-    //   53	58	334	finally
-    //   62	69	334	finally
-    //   81	113	334	finally
-    //   119	126	349	finally
-    //   140	147	349	finally
-    //   165	174	349	finally
-    //   176	185	349	finally
-    //   187	206	349	finally
-    //   208	227	349	finally
-    //   229	248	349	finally
-    //   250	269	349	finally
-    //   271	281	349	finally
-    //   283	290	349	finally
-    //   313	322	349	finally
-    //   119	126	353	java/lang/Throwable
-    //   140	147	353	java/lang/Throwable
-    //   165	174	353	java/lang/Throwable
-    //   176	185	353	java/lang/Throwable
-    //   187	206	353	java/lang/Throwable
-    //   208	227	353	java/lang/Throwable
-    //   229	248	353	java/lang/Throwable
-    //   250	269	353	java/lang/Throwable
-    //   271	281	353	java/lang/Throwable
-    //   283	290	353	java/lang/Throwable
+    //   87	94	275	java/lang/Throwable
+    //   108	115	275	java/lang/Throwable
+    //   133	142	275	java/lang/Throwable
+    //   144	153	275	java/lang/Throwable
+    //   155	174	275	java/lang/Throwable
+    //   176	195	275	java/lang/Throwable
+    //   197	216	275	java/lang/Throwable
+    //   218	237	275	java/lang/Throwable
+    //   239	249	275	java/lang/Throwable
+    //   251	258	275	java/lang/Throwable
+    //   4	11	280	finally
+    //   13	18	280	finally
+    //   22	29	280	finally
+    //   31	36	280	finally
+    //   40	47	280	finally
+    //   49	81	280	finally
+    //   4	11	289	java/lang/Throwable
+    //   13	18	289	java/lang/Throwable
+    //   22	29	289	java/lang/Throwable
+    //   31	36	289	java/lang/Throwable
+    //   40	47	289	java/lang/Throwable
+    //   49	81	289	java/lang/Throwable
+    //   87	94	316	finally
+    //   108	115	316	finally
+    //   133	142	316	finally
+    //   144	153	316	finally
+    //   155	174	316	finally
+    //   176	195	316	finally
+    //   197	216	316	finally
+    //   218	237	316	finally
+    //   239	249	316	finally
+    //   251	258	316	finally
+    //   295	304	316	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.analysis.sqlite.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aiqf;
-
-public class VideoPlayController$3
+class VideoPlayController$3
   implements Runnable
 {
-  public VideoPlayController$3(aiqf paramaiqf) {}
+  VideoPlayController$3(VideoPlayController paramVideoPlayController) {}
   
   public void run()
   {

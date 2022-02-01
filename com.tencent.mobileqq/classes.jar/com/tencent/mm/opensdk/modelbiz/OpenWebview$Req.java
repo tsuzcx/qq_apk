@@ -12,11 +12,15 @@ public class OpenWebview$Req
   
   public boolean checkArgs()
   {
-    if ((this.url == null) || (this.url.length() < 0)) {}
-    while (this.url.length() > 10240) {
-      return false;
+    String str = this.url;
+    if (str != null)
+    {
+      if (str.length() < 0) {
+        return false;
+      }
+      return this.url.length() <= 10240;
     }
-    return true;
+    return false;
   }
   
   public void fromBundle(Bundle paramBundle)
@@ -38,7 +42,7 @@ public class OpenWebview$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.OpenWebview.Req
  * JD-Core Version:    0.7.0.1
  */

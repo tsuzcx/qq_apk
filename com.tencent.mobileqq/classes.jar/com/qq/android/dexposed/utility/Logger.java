@@ -4,25 +4,20 @@ import android.util.Log;
 
 public class Logger
 {
-  private static final boolean DEBUG = false;
-  public static final String preFix = "epic.";
+  public static void a(String paramString1, String paramString2) {}
   
-  public static void d(String paramString1, String paramString2) {}
+  public static void b(String paramString1, String paramString2) {}
   
-  public static void e(String paramString1, String paramString2) {}
-  
-  public static void e(String paramString1, String paramString2, Throwable paramThrowable) {}
-  
-  public static void i(String paramString1, String paramString2) {}
-  
-  public static void w(String paramString1, String paramString2)
+  public static void c(String paramString1, String paramString2)
   {
-    Log.w("epic." + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder("epic.");
+    localStringBuilder.append(paramString1);
+    Log.w(localStringBuilder.toString(), paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.android.dexposed.utility.Logger
  * JD-Core Version:    0.7.0.1
  */

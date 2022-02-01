@@ -1,34 +1,79 @@
 package com.tencent.xweb.x5;
 
-import android.content.Context;
+import android.webkit.WebHistoryItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.xweb.c.b.b;
 
 public final class e
-  implements b.b
+  extends android.webkit.WebBackForwardList
 {
-  CookieSyncManager BHU;
+  private com.tencent.smtt.sdk.WebBackForwardList ainh;
   
-  public final void init(Context paramContext)
+  public e(com.tencent.smtt.sdk.WebBackForwardList paramWebBackForwardList)
   {
-    AppMethodBeat.i(84806);
-    this.BHU = CookieSyncManager.createInstance(paramContext);
-    AppMethodBeat.o(84806);
+    this.ainh = paramWebBackForwardList;
   }
   
-  public final void sync()
+  protected final android.webkit.WebBackForwardList clone()
   {
-    AppMethodBeat.i(84807);
-    if (this.BHU != null) {
-      this.BHU.sync();
+    AppMethodBeat.i(213195);
+    e locale = new e(this.ainh);
+    AppMethodBeat.o(213195);
+    return locale;
+  }
+  
+  public final int getCurrentIndex()
+  {
+    AppMethodBeat.i(213182);
+    if (this.ainh == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.ainh.getCurrentIndex()))
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(213182);
+      return i;
     }
-    AppMethodBeat.o(84807);
+  }
+  
+  public final WebHistoryItem getCurrentItem()
+  {
+    AppMethodBeat.i(213177);
+    if (this.ainh == null)
+    {
+      AppMethodBeat.o(213177);
+      return null;
+    }
+    h localh = new h(this.ainh.getCurrentItem());
+    AppMethodBeat.o(213177);
+    return localh;
+  }
+  
+  public final WebHistoryItem getItemAtIndex(int paramInt)
+  {
+    AppMethodBeat.i(213186);
+    if (this.ainh == null)
+    {
+      AppMethodBeat.o(213186);
+      return null;
+    }
+    h localh = new h(this.ainh.getItemAtIndex(paramInt));
+    AppMethodBeat.o(213186);
+    return localh;
+  }
+  
+  public final int getSize()
+  {
+    AppMethodBeat.i(213191);
+    if (this.ainh == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.ainh.getSize()))
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(213191);
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.x5.e
  * JD-Core Version:    0.7.0.1
  */

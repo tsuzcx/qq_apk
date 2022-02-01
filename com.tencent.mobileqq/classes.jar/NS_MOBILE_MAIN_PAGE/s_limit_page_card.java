@@ -9,7 +9,7 @@ public final class s_limit_page_card
   extends JceStruct
 {
   static ArrayList<s_limit_page_card_item> cache_lst_data = new ArrayList();
-  public ArrayList<s_limit_page_card_item> lst_data;
+  public ArrayList<s_limit_page_card_item> lst_data = null;
   
   static
   {
@@ -36,7 +36,7 @@ public final class s_limit_page_card
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_limit_page_card
  * JD-Core Version:    0.7.0.1
  */

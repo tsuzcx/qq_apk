@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class el
 {
-  private static el mB = null;
+  private static el mB;
   private fk<Integer, el.a> mA = new fk(200);
   private dt mC = null;
   private PowerManager mD = null;
@@ -64,17 +64,17 @@ public class el
     //   32: invokevirtual 90	wf7/eh:b	(ZZ)I
     //   35: putfield 94	wf7/el$a:mI	I
     //   38: aload_0
-    //   39: getfield 35	wf7/el:mD	Landroid/os/PowerManager;
+    //   39: getfield 33	wf7/el:mD	Landroid/os/PowerManager;
     //   42: astore 4
     //   44: aload 4
     //   46: ifnull +15 -> 61
     //   49: aload 5
     //   51: aload_0
-    //   52: getfield 35	wf7/el:mD	Landroid/os/PowerManager;
+    //   52: getfield 33	wf7/el:mD	Landroid/os/PowerManager;
     //   55: invokevirtual 100	android/os/PowerManager:isScreenOn	()Z
     //   58: putfield 104	wf7/el$a:mJ	Z
     //   61: aload_0
-    //   62: getfield 31	wf7/el:mA	Lwf7/fk;
+    //   62: getfield 29	wf7/el:mA	Lwf7/fk;
     //   65: iload_1
     //   66: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   69: aload 5
@@ -121,35 +121,28 @@ public class el
   
   public void a(String paramString1, int paramInt1, int paramInt2, ae paramae, int paramInt3, int paramInt4, String paramString2)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        paramString1 = (el.a)this.mA.get(Integer.valueOf(paramInt2));
-        if (paramString1 == null) {
-          return;
-        }
-        paramString1.bH = paramInt1;
-        if (paramString2 != null) {
-          paramString1.mR = paramString2;
-        }
-        paramString1.mG.set(paramInt3, true);
-        if (paramInt3 == 14)
-        {
-          paramString1.mM = paramInt4;
-          paramString1.mP = System.currentTimeMillis();
-          continue;
-        }
-        if (paramInt3 != 16) {
-          break label94;
-        }
+      paramString1 = (el.a)this.mA.get(Integer.valueOf(paramInt2));
+      if (paramString1 == null) {
+        return;
       }
-      finally {}
-      paramString1.mN = paramInt4;
-      continue;
-      label94:
-      paramString1.cc = paramInt4;
+      paramString1.bH = paramInt1;
+      if (paramString2 != null) {
+        paramString1.mR = paramString2;
+      }
+      paramString1.mG.set(paramInt3, true);
+      if (paramInt3 == 14) {
+        paramString1.mM = paramInt4;
+      } else if (paramInt3 == 16) {
+        paramString1.mN = paramInt4;
+      } else {
+        paramString1.cc = paramInt4;
+      }
+      paramString1.mP = System.currentTimeMillis();
+      return;
     }
+    finally {}
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, x paramx, int paramInt3)
@@ -168,47 +161,45 @@ public class el
   
   public void a(String paramString1, int paramInt1, int paramInt2, x paramx, int paramInt3, int paramInt4, String paramString2)
   {
+    try
+    {
+      paramString1 = (el.a)this.mA.get(Integer.valueOf(paramInt2));
+      if (paramString1 == null) {
+        return;
+      }
+      paramString1.bH = paramInt1;
+      paramString1.mG.set(paramInt3, true);
+      if (paramString2 == null) {
+        break label133;
+      }
+      paramString1.mQ = paramString2;
+    }
+    finally {}
+    if (paramInt3 == 16)
+    {
+      paramString1.mN = paramInt4;
+      if (this.mC != null) {
+        this.mC.v(paramInt1, paramInt4);
+      }
+    }
+    else
+    {
+      paramString1.cc = paramInt4;
+    }
     for (;;)
     {
-      label76:
-      try
-      {
-        paramString1 = (el.a)this.mA.get(Integer.valueOf(paramInt2));
-        if (paramString1 == null) {
-          return;
-        }
-        paramString1.bH = paramInt1;
-        paramString1.mG.set(paramInt3, true);
-        if (paramString2 == null) {
-          break label133;
-        }
-        paramString1.mQ = paramString2;
-      }
-      finally {}
       paramString1.mM = paramInt4;
       if (this.mC != null) {
         this.mC.u(paramInt1, paramInt4);
       }
       paramString1.mP = System.currentTimeMillis();
-      continue;
+      return;
       label133:
-      do
-      {
-        if (paramInt3 == 16)
-        {
-          paramString1.mN = paramInt4;
-          if (this.mC == null) {
-            break label76;
-          }
-          this.mC.v(paramInt1, paramInt4);
-          break label76;
-        }
-        paramString1.cc = paramInt4;
-        break label76;
-        if ((paramInt3 == 14) || (paramInt3 == 9)) {
+      if ((paramInt3 != 14) && (paramInt3 != 9)) {
+        if (paramInt3 != 10) {
           break;
         }
-      } while (paramInt3 != 10);
+      }
     }
   }
   
@@ -248,13 +239,13 @@ public class el
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_1
-    //   4: putfield 33	wf7/el:mC	Lwf7/dt;
+    //   4: putfield 31	wf7/el:mC	Lwf7/dt;
     //   7: aload_0
     //   8: invokestatic 183	wf7/ea:cr	()Landroid/content/Context;
     //   11: ldc 185
     //   13: invokevirtual 191	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   16: checkcast 96	android/os/PowerManager
-    //   19: putfield 35	wf7/el:mD	Landroid/os/PowerManager;
+    //   19: putfield 33	wf7/el:mD	Landroid/os/PowerManager;
     //   22: invokestatic 197	wf7/ei:cI	()Lwf7/ei;
     //   25: new 199	wf7/el$1
     //   28: dup
@@ -287,159 +278,127 @@ public class el
   {
     for (;;)
     {
-      el.a locala;
-      boolean bool;
       int j;
       int k;
-      int i;
+      int m;
       try
       {
-        locala = (el.a)this.mA.get(Integer.valueOf(paramInt));
-        if (locala == null)
-        {
-          paramBoolean = false;
-          return paramBoolean;
+        el.a locala = (el.a)this.mA.get(Integer.valueOf(paramInt));
+        if (locala == null) {
+          return false;
         }
         this.mA.a(Integer.valueOf(paramInt));
-        bool = locala.mG.get(15);
+        boolean bool = locala.mG.get(15);
         j = locala.cc;
-        if (j == 0) {
-          break label598;
-        }
-        k = dm.ac(j);
-        i = locala.mI;
-        StringBuilder localStringBuilder;
-        if (i == -2)
+        i = j;
+        if (j != 0)
         {
-          i = j - k - 160000;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("|cmd|cmd_");
-          localStringBuilder.append(locala.bH);
-          localStringBuilder.append("|seqNo|seq_");
-          localStringBuilder.append(paramInt);
-          if (!TextUtils.isEmpty(locala.mH))
+          k = dm.ac(j);
+          m = locala.mI;
+          if (m == -2)
           {
-            localStringBuilder.append("|reason|");
-            localStringBuilder.append(locala.mH);
+            i = j - k - 160000;
           }
-          localStringBuilder.append("|channel|");
-          if (!bool) {
-            break label659;
-          }
-          String str1 = "http";
-          localStringBuilder.append(str1);
-          localStringBuilder.append("|step|");
-          localStringBuilder.append(locala.mG.toString());
-          localStringBuilder.append("|netState|");
-          localStringBuilder.append(eh.ag(locala.mI));
-          localStringBuilder.append("|isScreenOn|");
-          localStringBuilder.append(locala.mJ);
-          localStringBuilder.append("|isNetworkChanged|");
-          localStringBuilder.append(locala.mK);
-          localStringBuilder.append("|tcpRetCode|");
-          localStringBuilder.append(locala.mM);
-          localStringBuilder.append("|httpRecCode|");
-          localStringBuilder.append(locala.mN);
-          localStringBuilder.append("|retCode|");
-          if (i == locala.cc)
+          else
           {
-            localStringBuilder.append(locala.cc);
-            localStringBuilder.append("|timeOut|");
-            localStringBuilder.append(locala.mL);
-            localStringBuilder.append("|totalTime|");
-            localStringBuilder.append(System.currentTimeMillis() - locala.mO);
-            localStringBuilder.append("|sendFlow|");
-            localStringBuilder.append(locala.mQ);
-            localStringBuilder.append("|recFlow|");
-            localStringBuilder.append(locala.mR);
-            if (locala.cc != 0) {
-              break label560;
+            i = j;
+            if (k == -50000)
+            {
+              if (!locala.mK) {
+                break label602;
+              }
+              i = -550000;
+              break label646;
             }
-            if (this.mC == null) {
-              break label604;
-            }
-            if (locala.bH <= 10000) {
-              break label567;
-            }
-            paramInt = locala.bH - 10000;
-            if ((paramInt == 999) || (paramInt == 794) || (paramInt == 797) || (paramInt == 782)) {
-              break label604;
-            }
-            if (i != 0) {
-              break label576;
-            }
-            this.mC.t(paramInt, i);
-            break label604;
           }
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("|cmd|cmd_");
+        localStringBuilder.append(locala.bH);
+        localStringBuilder.append("|seqNo|seq_");
+        localStringBuilder.append(paramInt);
+        if (!TextUtils.isEmpty(locala.mH))
+        {
+          localStringBuilder.append("|reason|");
+          localStringBuilder.append(locala.mH);
+        }
+        localStringBuilder.append("|channel|");
+        if (!bool) {
+          break label657;
+        }
+        String str1 = "http";
+        localStringBuilder.append(str1);
+        localStringBuilder.append("|step|");
+        localStringBuilder.append(locala.mG.toString());
+        localStringBuilder.append("|netState|");
+        localStringBuilder.append(eh.ag(locala.mI));
+        localStringBuilder.append("|isScreenOn|");
+        localStringBuilder.append(locala.mJ);
+        localStringBuilder.append("|isNetworkChanged|");
+        localStringBuilder.append(locala.mK);
+        localStringBuilder.append("|tcpRetCode|");
+        localStringBuilder.append(locala.mM);
+        localStringBuilder.append("|httpRecCode|");
+        localStringBuilder.append(locala.mN);
+        localStringBuilder.append("|retCode|");
+        if (i == locala.cc)
+        {
+          localStringBuilder.append(locala.cc);
         }
         else
         {
-          if (k != -50000) {
-            break label598;
-          }
-          if (!locala.mK) {
-            break label621;
-          }
-          i = -550000;
-          break label610;
+          localStringBuilder.append(locala.cc);
+          localStringBuilder.append("->");
+          localStringBuilder.append(i);
         }
-        localStringBuilder.append(locala.cc).append("->").append(i);
-        continue;
-        if (!paramBoolean) {
-          continue;
+        localStringBuilder.append("|timeOut|");
+        localStringBuilder.append(locala.mL);
+        localStringBuilder.append("|totalTime|");
+        localStringBuilder.append(System.currentTimeMillis() - locala.mO);
+        localStringBuilder.append("|sendFlow|");
+        localStringBuilder.append(locala.mQ);
+        localStringBuilder.append("|recFlow|");
+        localStringBuilder.append(locala.mR);
+        paramInt = locala.cc;
+        if (this.mC != null)
+        {
+          if (locala.bH > 10000) {
+            paramInt = locala.bH - 10000;
+          } else {
+            paramInt = locala.bH;
+          }
+          if ((paramInt != 999) && (paramInt != 794) && (paramInt != 797) && (paramInt != 782)) {
+            if (i == 0) {
+              this.mC.t(paramInt, i);
+            } else if (paramBoolean) {
+              this.mC.t(paramInt, i);
+            }
+          }
         }
+        return bool;
       }
       finally {}
-      label560:
-      continue;
-      label567:
-      paramInt = locala.bH;
-      continue;
-      label576:
-      if (paramBoolean)
-      {
-        this.mC.t(paramInt, i);
-        break label604;
-        label592:
+      label602:
+      if (m == -4) {
+        i = -530000;
+      } else if (m == -1) {
+        i = -220000;
+      } else if (m == -3) {
+        i = -540000;
+      } else {
         i = k;
-        break label610;
-        label598:
-        i = j;
-        continue;
       }
-      label604:
-      paramBoolean = bool;
+      label646:
+      int i = j - k + i;
       continue;
-      for (;;)
-      {
-        label610:
-        i += j - k;
-        break;
-        label621:
-        if (i == -4)
-        {
-          i = -530000;
-        }
-        else if (i == -1)
-        {
-          i = -220000;
-        }
-        else
-        {
-          if (i != -3) {
-            break label592;
-          }
-          i = -540000;
-        }
-      }
-      label659:
+      label657:
       String str2 = "tcp";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.el
  * JD-Core Version:    0.7.0.1
  */

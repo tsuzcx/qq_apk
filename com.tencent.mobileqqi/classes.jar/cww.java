@@ -1,19 +1,37 @@
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import java.util.ArrayList;
 
 public class cww
-  implements Runnable
+  extends TroopObserver
 {
-  public cww(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  public cww(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.a.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.b.setText(this.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.c.setText(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.d.setText(this.d);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.e.setText(this.e);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.f.setText(this.f);
+    if ((!paramBoolean) || (paramArrayList == null)) {
+      return;
+    }
+    int i = 0;
+    label11:
+    TroopMemberCardInfo localTroopMemberCardInfo;
+    if (i < paramArrayList.size())
+    {
+      localTroopMemberCardInfo = (TroopMemberCardInfo)paramArrayList.get(i);
+      if ((localTroopMemberCardInfo != null) && (localTroopMemberCardInfo.memberuin != null)) {
+        break label49;
+      }
+    }
+    label49:
+    while (!localTroopMemberCardInfo.memberuin.equals(this.a.b.a()))
+    {
+      i += 1;
+      break label11;
+      break;
+    }
+    this.a.a(localTroopMemberCardInfo, false);
   }
 }
 

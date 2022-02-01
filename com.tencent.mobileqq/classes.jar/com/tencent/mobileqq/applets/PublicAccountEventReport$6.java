@@ -1,30 +1,40 @@
 package com.tencent.mobileqq.applets;
 
-import afwq;
-import akgt;
-import amrz;
-import azqs;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.AppRuntime;
 
-public final class PublicAccountEventReport$6
+final class PublicAccountEventReport$6
   implements Runnable
 {
-  public PublicAccountEventReport$6(String paramString1, String paramString2, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  PublicAccountEventReport$6(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface, String paramString4) {}
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_b_of_type_JavaLangString;
-    if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      amrz.a(str1, 138, str2, bool);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB4", "0X8009EB4", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
-      if (afwq.a(this.jdField_a_of_type_JavaLangString)) {
-        akgt.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
-      }
-      return;
+    Object localObject1 = this.a;
+    String str = this.b;
+    boolean bool;
+    if ((this.c == 0) && (this.d <= 0)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    Object localObject2 = this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.f.mPosition);
+    localStringBuilder.append("");
+    PublicAccountEventReport.a((String)localObject1, 102, str, bool, (String)localObject2, localStringBuilder.toString());
+    localObject1 = this.g;
+    str = this.a;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append("");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("");
+    ReportController.b((AppRuntime)localObject1, "dc00898", "", str, "0X8009EB4", "0X8009EB4", 1, 0, (String)localObject2, localStringBuilder.toString(), this.h, "");
   }
 }
 

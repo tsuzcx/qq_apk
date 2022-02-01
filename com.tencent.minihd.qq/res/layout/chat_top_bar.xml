@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.UpScrollHideView android:id="@id/chat_top_bar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:background="@drawable/common_tips_bg_white" android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <View android:layout_gravity="center_vertical" android:background="@drawable/group_aio_header_icon_mute" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" />
+            <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/chat_top_bar_text" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/troopassit_guide_aio_tip" android:singleLine="true" android:layout_weight="1.0" android:contentDescription="@string/troopassit_guide_aio_tip" style="@style/B2_Font" />
+            <Button android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/chat_top_bar_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/troopassit_guide_aio_topbar_btn" style="@style/SmallButtonWhite" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.UpScrollHideView>
+</RelativeLayout>

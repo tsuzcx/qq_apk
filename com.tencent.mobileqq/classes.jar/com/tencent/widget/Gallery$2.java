@@ -7,12 +7,12 @@ class Gallery$2
   
   public void run()
   {
-    Gallery.a(this.this$0);
+    Gallery.access$500(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.Gallery.2
  * JD-Core Version:    0.7.0.1
  */

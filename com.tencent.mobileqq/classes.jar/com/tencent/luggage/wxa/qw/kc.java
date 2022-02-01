@@ -1,0 +1,40 @@
+package com.tencent.luggage.wxa.qw;
+
+public class kc
+  extends com.tencent.luggage.wxa.qu.a
+{
+  protected final int a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt == 0)
+    {
+      paramVarArgs = (com.tencent.luggage.wxa.tc.a)paramVarArgs[0];
+      return 0;
+    }
+    if (paramInt == 1) {
+      return 0;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new com.tencent.luggage.wxa.sx.a((byte[])paramVarArgs[0], p);
+      for (paramInt = com.tencent.luggage.wxa.qu.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.luggage.wxa.qu.a.a(paramVarArgs)) {
+        if (!super.a(paramVarArgs, this, paramInt)) {
+          paramVarArgs.b();
+        }
+      }
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (com.tencent.luggage.wxa.sx.a)paramVarArgs[0];
+      localObject = (kc)paramVarArgs[1];
+      ((Integer)paramVarArgs[2]).intValue();
+    }
+    return -1;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.luggage.wxa.qw.kc
+ * JD-Core Version:    0.7.0.1
+ */

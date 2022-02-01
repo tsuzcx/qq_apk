@@ -6,19 +6,19 @@ import com.google.android.gms.common.ConnectionResult;
 abstract class m
   extends q<Boolean>
 {
-  public final Bundle JJ;
+  public final Bundle Ly;
   public final int statusCode;
   
   protected m(l paraml, int paramInt, Bundle paramBundle)
   {
-    super(paraml, Boolean.valueOf(true));
+    super(paraml, Boolean.TRUE);
     this.statusCode = paramInt;
-    this.JJ = paramBundle;
+    this.Ly = paramBundle;
   }
   
   protected abstract void b(ConnectionResult paramConnectionResult);
   
-  protected abstract boolean hj();
+  protected abstract boolean ht();
 }
 
 

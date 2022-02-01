@@ -68,15 +68,17 @@ public class NetworkDispatcher
   public void run()
   {
     Process.setThreadPriority(10);
-    try
+    for (;;)
     {
-      for (;;)
+      try
       {
         processRequest();
+        continue;
       }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
+      catch (Throwable localThrowable)
+      {
+        continue;
+      }
       if (this.mQuit)
       {
         Thread.currentThread().interrupt();
@@ -88,7 +90,7 @@ public class NetworkDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.NetworkDispatcher
  * JD-Core Version:    0.7.0.1
  */

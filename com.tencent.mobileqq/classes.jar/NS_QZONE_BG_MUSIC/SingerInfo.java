@@ -26,17 +26,19 @@ public final class SingerInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strSingerId != null) {
-      paramJceOutputStream.write(this.strSingerId, 0);
+    String str = this.strSingerId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strSingerName != null) {
-      paramJceOutputStream.write(this.strSingerName, 1);
+    str = this.strSingerName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_BG_MUSIC.SingerInfo
  * JD-Core Version:    0.7.0.1
  */

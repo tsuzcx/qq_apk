@@ -1,55 +1,24 @@
 package com.tencent.mm.plugin.story.ui.view;
 
-import a.l;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.view.View;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-final class StoryCommentView$f
-  implements DialogInterface.OnDismissListener
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+public final class StoryCommentView$f
+  extends u
+  implements b<View, ah>
 {
-  StoryCommentView$f(StoryCommentView paramStoryCommentView) {}
-  
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public StoryCommentView$f(StoryCommentView paramStoryCommentView)
   {
-    AppMethodBeat.i(110419);
-    this.sMZ.oq(2);
-    StoryCommentView localStoryCommentView;
-    if (!StoryCommentView.d(this.sMZ))
-    {
-      localStoryCommentView = this.sMZ;
-      paramDialogInterface = StoryCommentView.e(this.sMZ);
-      if (paramDialogInterface == null) {
-        break label90;
-      }
-      paramDialogInterface = paramDialogInterface.sLt;
-      if (paramDialogInterface == null) {
-        break label90;
-      }
-    }
-    label90:
-    for (paramDialogInterface = paramDialogInterface.getContent();; paramDialogInterface = null)
-    {
-      StoryCommentView.a(localStoryCommentView, paramDialogInterface);
-      paramDialogInterface = StoryCommentView.e(this.sMZ);
-      if (paramDialogInterface == null) {
-        break;
-      }
-      paramDialogInterface = paramDialogInterface.sLt;
-      if (paramDialogInterface == null) {
-        break;
-      }
-      paramDialogInterface.destroy();
-      AppMethodBeat.o(110419);
-      return;
-    }
-    AppMethodBeat.o(110419);
+    super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryCommentView.f
  * JD-Core Version:    0.7.0.1
  */

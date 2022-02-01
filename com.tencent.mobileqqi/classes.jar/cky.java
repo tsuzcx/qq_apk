@@ -1,27 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.EmosmDetailActivity;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticon.EmoticonController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class cky
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public cky(EmosmDetailActivity paramEmosmDetailActivity) {}
+  public cky(EmosmDetailActivity paramEmosmDetailActivity, Context paramContext) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    EmosmDetailActivity.b(this.a, true);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.b.setVisibility(0);
-    paramAnimation = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    paramAnimation.height = (this.a.a.getHeight() - this.a.b.getHeight());
-    this.a.a.setLayoutParams(paramAnimation);
+    if ((2 == this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType) && (!EmoticonController.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface).a()))
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131562210, 0);
+      return;
+    }
+    MarketFaceItemBuilder.m = 2;
+    EmosmDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Ep_detail_forward", 0);
+    paramView = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext);
+    paramView.a(this.jdField_a_of_type_AndroidContentContext.getString(2131562658));
+    paramView.show();
+    EmosmDetailActivity.a(7, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo, this.jdField_a_of_type_ComTencentMobileqqActivityEmosmDetailActivity.jdField_b_of_type_AndroidWidgetImageView, paramView, null);
   }
 }
 

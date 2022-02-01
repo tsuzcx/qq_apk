@@ -15,49 +15,48 @@ public class SocketChannelIOHelper
   
   public static boolean batch(WebSocketImpl paramWebSocketImpl, ByteChannel paramByteChannel)
   {
+    boolean bool = false;
     if (paramWebSocketImpl == null) {
       return false;
     }
-    Object localObject2 = (ByteBuffer)paramWebSocketImpl.outQueue.peek();
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    ByteBuffer localByteBuffer = (ByteBuffer)paramWebSocketImpl.outQueue.peek();
+    WrappedByteChannel localWrappedByteChannel = null;
+    Object localObject = localByteBuffer;
+    if (localByteBuffer == null)
     {
-      if (!(paramByteChannel instanceof WrappedByteChannel)) {
-        break label184;
-      }
-      localObject2 = (WrappedByteChannel)paramByteChannel;
-      localObject1 = localObject2;
-      if (((WrappedByteChannel)localObject2).isNeedWrite())
+      localObject = localWrappedByteChannel;
+      if ((paramByteChannel instanceof WrappedByteChannel))
       {
-        ((WrappedByteChannel)localObject2).writeMore();
-        localObject1 = localObject2;
-      }
-      label64:
-      if ((paramWebSocketImpl.outQueue.isEmpty()) && (paramWebSocketImpl.isFlushAndClose()) && (paramWebSocketImpl.getDraft() != null) && (paramWebSocketImpl.getDraft().getRole() != null) && (paramWebSocketImpl.getDraft().getRole() == Role.SERVER)) {
-        paramWebSocketImpl.closeConnection();
-      }
-      if ((localObject1 != null) && (((WrappedByteChannel)paramByteChannel).isNeedWrite())) {
-        break label189;
+        localWrappedByteChannel = (WrappedByteChannel)paramByteChannel;
+        localObject = localWrappedByteChannel;
+        if (localWrappedByteChannel.isNeedWrite())
+        {
+          localWrappedByteChannel.writeMore();
+          localObject = localWrappedByteChannel;
+        }
       }
     }
-    label184:
-    label189:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      return bool;
       do
       {
-        paramByteChannel.write(localObject1);
-        if (localObject1.remaining() > 0) {
-          break;
+        paramByteChannel.write((ByteBuffer)localObject);
+        if (((ByteBuffer)localObject).remaining() > 0) {
+          return false;
         }
         paramWebSocketImpl.outQueue.poll();
-        localObject2 = (ByteBuffer)paramWebSocketImpl.outQueue.peek();
-        localObject1 = localObject2;
-      } while (localObject2 != null);
-      localObject1 = null;
-      break label64;
+        localByteBuffer = (ByteBuffer)paramWebSocketImpl.outQueue.peek();
+        localObject = localByteBuffer;
+      } while (localByteBuffer != null);
+      localObject = localWrappedByteChannel;
     }
+    if ((paramWebSocketImpl.outQueue.isEmpty()) && (paramWebSocketImpl.isFlushAndClose()) && (paramWebSocketImpl.getDraft() != null) && (paramWebSocketImpl.getDraft().getRole() != null) && (paramWebSocketImpl.getDraft().getRole() == Role.SERVER)) {
+      paramWebSocketImpl.closeConnection();
+    }
+    if ((localObject == null) || (!((WrappedByteChannel)paramByteChannel).isNeedWrite())) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean read(ByteBuffer paramByteBuffer, WebSocketImpl paramWebSocketImpl, ByteChannel paramByteChannel)
@@ -65,13 +64,16 @@ public class SocketChannelIOHelper
     paramByteBuffer.clear();
     int i = paramByteChannel.read(paramByteBuffer);
     paramByteBuffer.flip();
-    if (i == -1) {
+    boolean bool = false;
+    if (i == -1)
+    {
       paramWebSocketImpl.eot();
-    }
-    while (i == 0) {
       return false;
     }
-    return true;
+    if (i != 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean readMore(ByteBuffer paramByteBuffer, WebSocketImpl paramWebSocketImpl, WrappedByteChannel paramWrappedByteChannel)
@@ -89,7 +91,7 @@ public class SocketChannelIOHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.SocketChannelIOHelper
  * JD-Core Version:    0.7.0.1
  */

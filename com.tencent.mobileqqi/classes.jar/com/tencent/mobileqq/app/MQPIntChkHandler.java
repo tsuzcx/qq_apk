@@ -39,11 +39,11 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fdg;
 import fdh;
 import fdi;
 import fdj;
 import fdk;
-import fdl;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
@@ -85,7 +85,7 @@ public class MQPIntChkHandler
     localAppInfo.uint32_platform_type.set(1);
     String str = BaseApplication.getContext().getPackageName();
     localAppInfo.bytes_package_name.set(ByteStringMicro.copyFromUtf8(str));
-    localAppInfo.bytes_app_version.set(ByteStringMicro.copyFromUtf8("6.0.2.master"));
+    localAppInfo.bytes_app_version.set(ByteStringMicro.copyFromUtf8("6.0.3.603"));
     localAppInfo.uint32_intchk_module_version.set(IntChkUtil.jdField_a_of_type_Int);
     int m = n;
     switch (NetworkCenter.a().a())
@@ -363,7 +363,7 @@ public class MQPIntChkHandler
       localObject = (Element)((NodeList)localObject).item(0);
       str1 = ((Element)localObject).getAttribute("text");
     }
-    for (localObject = new fdh(this, Integer.parseInt(((Element)localObject).getAttribute("action")));; localObject = null)
+    for (localObject = new fdg(this, Integer.parseInt(((Element)localObject).getAttribute("action")));; localObject = null)
     {
       String str2 = "";
       paramElement = paramElement.getElementsByTagName("btn_cancel");
@@ -372,13 +372,13 @@ public class MQPIntChkHandler
         paramElement = (Element)paramElement.item(0);
         str2 = paramElement.getAttribute("text");
       }
-      for (paramElement = new fdi(this, Integer.parseInt(paramElement.getAttribute("action")));; paramElement = null)
+      for (paramElement = new fdh(this, Integer.parseInt(paramElement.getAttribute("action")));; paramElement = null)
       {
-        fdj localfdj = new fdj(this);
+        fdi localfdi = new fdi(this);
         if (QLog.isDevelopLevel()) {
           QLog.d("IntChk", 4, "start create toast.");
         }
-        new Handler(Looper.getMainLooper()).post(new fdk(this, str3, str4, (DialogInterface.OnClickListener)localObject, paramElement, str2, str1, localfdj));
+        new Handler(Looper.getMainLooper()).post(new fdj(this, str3, str4, (DialogInterface.OnClickListener)localObject, paramElement, str2, str1, localfdi));
         return;
       }
     }
@@ -723,7 +723,7 @@ public class MQPIntChkHandler
       return;
       this.d = 31;
       IntentFilter localIntentFilter = new IntentFilter("android.intent.action.DOWNLOAD_COMPLETE");
-      ((Context)localObject).registerReceiver(new fdl(this, localDownloadManager), localIntentFilter);
+      ((Context)localObject).registerReceiver(new fdk(this, localDownloadManager), localIntentFilter);
       try
       {
         localObject = new DownloadManager.Request(Uri.parse(this.jdField_b_of_type_JavaLangString));

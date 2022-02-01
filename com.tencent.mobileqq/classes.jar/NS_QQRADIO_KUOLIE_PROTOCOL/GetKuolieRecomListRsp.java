@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,13 +16,13 @@ public final class GetKuolieRecomListRsp
   static DefaultInfo cache_info;
   static ArrayList<SimpleKuolieRoomInfo> cache_roomList;
   static SimpleKuolieRoomInfo cache_userRoom = new SimpleKuolieRoomInfo();
-  public CommonInfo commInfo;
-  public Map<String, String> dc_report;
-  public int favNum;
-  public DefaultInfo info;
-  public ArrayList<SimpleKuolieRoomInfo> roomList;
+  public CommonInfo commInfo = null;
+  public Map<String, String> dc_report = null;
+  public int favNum = 0;
+  public DefaultInfo info = null;
+  public ArrayList<SimpleKuolieRoomInfo> roomList = null;
   public String userId = "";
-  public SimpleKuolieRoomInfo userRoom;
+  public SimpleKuolieRoomInfo userRoom = null;
   
   static
   {
@@ -59,30 +60,36 @@ public final class GetKuolieRecomListRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.commInfo != null) {
-      paramJceOutputStream.write(this.commInfo, 0);
+    Object localObject = this.commInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.userId != null) {
-      paramJceOutputStream.write(this.userId, 1);
+    localObject = this.userId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.favNum, 2);
-    if (this.userRoom != null) {
-      paramJceOutputStream.write(this.userRoom, 3);
+    localObject = this.userRoom;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.roomList != null) {
-      paramJceOutputStream.write(this.roomList, 4);
+    localObject = this.roomList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.info != null) {
-      paramJceOutputStream.write(this.info, 5);
+    localObject = this.info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.dc_report != null) {
-      paramJceOutputStream.write(this.dc_report, 6);
+    localObject = this.dc_report;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_KUOLIE_PROTOCOL.GetKuolieRecomListRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ public class TccCryptor
 {
   public static int EndianSwap(int paramInt)
   {
-    return paramInt << 24 | (0xFF00 & paramInt) << 8 | (0xFF0000 & paramInt) >>> 8 | paramInt >>> 24;
+    return paramInt >>> 24 | paramInt << 24 | (0xFF00 & paramInt) << 8 | (0xFF0000 & paramInt) >>> 8;
   }
   
   public static native byte[] decrypt(Context paramContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
@@ -14,10 +14,12 @@ public class TccCryptor
   public static String encrypt(Context paramContext, String paramString1, String paramString2)
   {
     byte[] arrayOfByte = paramString1.getBytes();
-    if (paramString2 == null) {}
-    for (paramString1 = null;; paramString1 = paramString2.getBytes()) {
-      return new String(encrypt(paramContext, arrayOfByte, paramString1));
+    if (paramString2 == null) {
+      paramString1 = null;
+    } else {
+      paramString1 = paramString2.getBytes();
     }
+    return new String(encrypt(paramContext, arrayOfByte, paramString1));
   }
   
   public static native byte[] encrypt(Context paramContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
@@ -26,7 +28,7 @@ public class TccCryptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.jni.TccCryptor
  * JD-Core Version:    0.7.0.1
  */

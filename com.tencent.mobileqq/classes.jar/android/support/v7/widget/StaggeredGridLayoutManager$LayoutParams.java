@@ -39,10 +39,11 @@ public class StaggeredGridLayoutManager$LayoutParams
   
   public final int getSpanIndex()
   {
-    if (this.mSpan == null) {
+    StaggeredGridLayoutManager.Span localSpan = this.mSpan;
+    if (localSpan == null) {
       return -1;
     }
-    return this.mSpan.mIndex;
+    return localSpan.mIndex;
   }
   
   public boolean isFullSpan()

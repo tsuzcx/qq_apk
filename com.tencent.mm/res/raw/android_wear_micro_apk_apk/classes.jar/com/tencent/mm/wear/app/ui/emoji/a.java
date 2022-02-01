@@ -5,9 +5,9 @@ import com.tencent.mm.sdk.platformtools.q;
 
 public final class a
 {
-  public static String O(String paramString)
+  public static String V(String paramString)
   {
-    if (com.tencent.mm.wear.app.emoji.a.mw() == null) {
+    if (com.tencent.mm.wear.app.emoji.a.ni() == null) {
       return paramString;
     }
     if (q.D(paramString.toString())) {
@@ -22,14 +22,14 @@ public final class a
       {
         if (i < localObject1.length)
         {
-          Object localObject2 = com.tencent.mm.wear.app.emoji.a.mw().bI(localObject1[i]);
+          Object localObject2 = com.tencent.mm.wear.app.emoji.a.ni().ce(localObject1[i]);
           if (localObject2 != null)
           {
-            char[] arrayOfChar = Character.toChars(((b)localObject2).Ys);
+            char[] arrayOfChar = Character.toChars(((b)localObject2).abS);
             StringBuffer localStringBuffer2 = new StringBuffer();
             localStringBuffer2.append(new String(arrayOfChar));
-            if (((b)localObject2).Yt != 0) {
-              localStringBuffer2.append(new String(Character.toChars(((b)localObject2).Yt)));
+            if (((b)localObject2).abT != 0) {
+              localStringBuffer2.append(new String(Character.toChars(((b)localObject2).abT)));
             }
             localObject2 = localStringBuffer2.toString();
             if (!q.D((String)localObject2)) {

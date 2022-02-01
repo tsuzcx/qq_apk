@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.os.Handler;
-import com.tencent.qqmini.sdk.core.proxy.PayProxy.IPayResultCallBack;
+import com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy.IPayResultCallBack;
 
 class PayProxyImpl$1
   extends PayProxyImpl.PayResultRecevicer
@@ -13,7 +13,7 @@ class PayProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PayProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

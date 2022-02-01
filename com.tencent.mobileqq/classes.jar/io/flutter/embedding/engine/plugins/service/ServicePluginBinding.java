@@ -1,11 +1,15 @@
 package io.flutter.embedding.engine.plugins.service;
 
 import android.app.Service;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public abstract interface ServicePluginBinding
 {
   public abstract void addOnModeChangeListener(@NonNull ServiceAware.OnModeChangeListener paramOnModeChangeListener);
+  
+  @Nullable
+  public abstract Object getLifecycle();
   
   @NonNull
   public abstract Service getService();
@@ -14,7 +18,7 @@ public abstract interface ServicePluginBinding
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.service.ServicePluginBinding
  * JD-Core Version:    0.7.0.1
  */

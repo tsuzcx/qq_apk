@@ -31,8 +31,8 @@ import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import dzw;
 import dzx;
-import dzy;
 import java.util.ArrayList;
 
 public class PAMultiItemBuilder
@@ -43,7 +43,7 @@ public class PAMultiItemBuilder
   public PAMultiItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dzx(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new dzw(this);
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -60,23 +60,23 @@ public class PAMultiItemBuilder
     {
       if (i < localArrayList.size())
       {
-        dzy localdzy = new dzy(this);
+        dzx localdzx = new dzx(this);
         PAMessage.Item localItem = (PAMessage.Item)localArrayList.get(i);
-        localdzy.jdField_a_of_type_Int = 5;
-        localdzy.jdField_c_of_type_JavaLangString = localItem.url;
-        localdzy.jdField_b_of_type_Int = paramLinearLayout.type;
-        localdzy.jdField_b_of_type_JavaLangString = localItem.actionUrl;
-        localdzy.jdField_a_of_type_JavaLangString = localItem.nativeJumpString;
-        localdzy.jdField_a_of_type_Long = paramView.uniseq;
-        localdzy.jdField_c_of_type_Int = i;
+        localdzx.jdField_a_of_type_Int = 5;
+        localdzx.jdField_c_of_type_JavaLangString = localItem.url;
+        localdzx.jdField_b_of_type_Int = paramLinearLayout.type;
+        localdzx.jdField_b_of_type_JavaLangString = localItem.actionUrl;
+        localdzx.jdField_a_of_type_JavaLangString = localItem.nativeJumpString;
+        localdzx.jdField_a_of_type_Long = paramView.uniseq;
+        localdzx.jdField_c_of_type_Int = i;
         label168:
         ImageView localImageView;
         int j;
         if (i == 0)
         {
           paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903109, null);
-          TextView localTextView = (TextView)paramMessageRecord.findViewById(2131231228);
-          localImageView = (ImageView)paramMessageRecord.findViewById(2131231229);
+          TextView localTextView = (TextView)paramMessageRecord.findViewById(2131231227);
+          localImageView = (ImageView)paramMessageRecord.findViewById(2131231228);
           String str = Util.e(localItem.title);
           localTextView.setText(str);
           if (localItem.mVideoFlag == 1)
@@ -98,7 +98,7 @@ public class PAMultiItemBuilder
         {
           localImageView.setImageDrawable(URLDrawable.getDrawable(localItem.cover));
           localViewGroup.addView(paramMessageRecord);
-          paramMessageRecord.setTag(localdzy);
+          paramMessageRecord.setTag(localdzx);
           paramMessageRecord.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
           paramMessageRecord.setOnTouchListener(paramOnLongClickAndTouchListener);
           paramMessageRecord.setOnLongClickListener(paramOnLongClickAndTouchListener);
@@ -136,7 +136,7 @@ public class PAMultiItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new dzy(this);
+    return new dzx(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -168,7 +168,7 @@ public class PAMultiItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131234874, this.jdField_a_of_type_AndroidContentContext.getString(2131562749));
+    paramView.a(2131234873, this.jdField_a_of_type_AndroidContentContext.getString(2131562749));
     return paramView.a();
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.recharge.ui.form;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
+import android.text.TextWatcher;
 import android.text.method.KeyListener;
 import android.text.method.NumberKeyListener;
 import android.text.method.PasswordTransformationMethod;
@@ -20,49 +20,52 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.k;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import junit.framework.Assert;
 
 public final class MallFormView
   extends LinearLayout
   implements View.OnFocusChangeListener
 {
-  private TextView iJG;
-  private String pXA;
-  private int pXB;
-  private int pXC;
-  private String pXD;
-  private int pXE;
-  private int pXF;
-  private int pXG;
-  private boolean pXH;
-  private boolean pXI;
-  private boolean pXJ;
-  private int pXK;
-  private int pXL;
-  private int pXM;
-  public boolean pXN;
-  private TextView pXi;
-  public EditText pXj;
-  private WalletIconImageView pXk;
-  private TextView pXl;
-  private MallFormView.a pXm;
-  private View.OnFocusChangeListener pXn;
-  private View.OnClickListener pXo;
-  private a pXp;
-  private b pXq;
-  private int pXr;
-  private String pXs;
-  private int pXt;
-  private String pXu;
-  private int pXv;
-  private int pXw;
-  private int pXx;
-  private String pXy;
-  private int pXz;
+  private boolean NzA;
+  private boolean NzB;
+  private boolean NzC;
+  private int NzD;
+  private int NzE;
+  private int NzF;
+  public boolean NzG;
+  private TextView Nzb;
+  public EditText Nzc;
+  private WalletIconImageView Nzd;
+  private TextView Nze;
+  private a Nzf;
+  private View.OnFocusChangeListener Nzg;
+  private View.OnClickListener Nzh;
+  private a Nzi;
+  private b Nzj;
+  private int Nzk;
+  private String Nzl;
+  private int Nzm;
+  private String Nzn;
+  private int Nzo;
+  private int Nzp;
+  private int Nzq;
+  private String Nzr;
+  private int Nzs;
+  private String Nzt;
+  private int Nzu;
+  private int Nzv;
+  private String Nzw;
+  private int Nzx;
+  private int Nzy;
+  private int Nzz;
+  private TextView sUt;
   
   public MallFormView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -72,128 +75,96 @@ public final class MallFormView
   public MallFormView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(44377);
-    this.iJG = null;
-    this.pXi = null;
-    this.pXj = null;
-    this.pXk = null;
-    this.pXl = null;
-    this.pXm = null;
-    this.pXn = null;
-    this.pXo = null;
-    this.pXp = null;
-    this.pXq = null;
-    this.pXr = -1;
-    this.pXs = "";
-    this.pXt = 0;
-    this.pXu = "";
-    this.pXv = 8;
-    this.pXw = -1;
-    this.pXx = 4;
-    this.pXy = "";
-    this.pXz = 8;
-    this.pXA = "";
-    this.pXB = 19;
-    this.pXC = 2131690322;
-    this.pXD = "";
-    this.pXE = 2147483647;
-    this.pXF = 1;
-    this.pXG = 2130839676;
-    this.pXH = true;
-    this.pXI = false;
-    this.pXJ = true;
-    this.pXK = 1;
-    this.pXL = 5;
-    this.pXM = 2131690217;
-    this.pXN = true;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MallFormAttrs, paramInt, 0);
-    this.pXr = paramAttributeSet.getResourceId(2, this.pXr);
-    paramInt = paramAttributeSet.getResourceId(3, 0);
+    AppMethodBeat.i(67287);
+    this.sUt = null;
+    this.Nzb = null;
+    this.Nzc = null;
+    this.Nzd = null;
+    this.Nze = null;
+    this.Nzf = null;
+    this.Nzg = null;
+    this.Nzh = null;
+    this.Nzi = null;
+    this.Nzj = null;
+    this.Nzk = -1;
+    this.Nzl = "";
+    this.Nzm = 0;
+    this.Nzn = "";
+    this.Nzo = 8;
+    this.Nzp = -1;
+    this.Nzq = 4;
+    this.Nzr = "";
+    this.Nzs = 8;
+    this.Nzt = "";
+    this.Nzu = 19;
+    this.Nzv = a.c.normal_text_color;
+    this.Nzw = "";
+    this.Nzx = 2147483647;
+    this.Nzy = 1;
+    this.Nzz = a.e.mm_trans;
+    this.NzA = true;
+    this.NzB = false;
+    this.NzC = true;
+    this.NzD = 1;
+    this.NzE = 5;
+    this.NzF = a.c.list_devider_color;
+    this.NzG = true;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.MallFormAttrs, paramInt, 0);
+    this.Nzk = paramAttributeSet.getResourceId(a.k.MallFormAttrs_malllayoutRes, this.Nzk);
+    paramInt = paramAttributeSet.getResourceId(a.k.MallFormAttrs_malltitleText, 0);
     if (paramInt != 0) {
-      this.pXs = paramContext.getString(paramInt);
+      this.Nzl = paramContext.getString(paramInt);
     }
-    this.pXw = paramAttributeSet.getResourceId(4, this.pXw);
-    paramInt = paramAttributeSet.getResourceId(5, 0);
+    this.Nzp = paramAttributeSet.getResourceId(a.k.MallFormAttrs_mallinfoIvRes, this.Nzp);
+    paramInt = paramAttributeSet.getResourceId(a.k.MallFormAttrs_malltipsText, 0);
     if (paramInt != 0) {
-      this.pXy = paramContext.getString(paramInt);
+      this.Nzr = paramContext.getString(paramInt);
     }
-    this.pXx = paramAttributeSet.getInteger(8, this.pXx);
-    this.pXt = paramAttributeSet.getInteger(9, this.pXt);
-    this.pXz = paramAttributeSet.getInteger(10, this.pXz);
-    this.pXv = paramAttributeSet.getInteger(11, this.pXv);
-    paramInt = paramAttributeSet.getResourceId(12, 0);
+    this.Nzq = paramAttributeSet.getInteger(a.k.MallFormAttrs_mallinfoIvVisibility, this.Nzq);
+    this.Nzm = paramAttributeSet.getInteger(a.k.MallFormAttrs_malltitleTvVisibility, this.Nzm);
+    this.Nzs = paramAttributeSet.getInteger(a.k.MallFormAttrs_malltipsTvVisibility, this.Nzs);
+    this.Nzo = paramAttributeSet.getInteger(a.k.MallFormAttrs_mallprefilledTvVisibility, this.Nzo);
+    paramInt = paramAttributeSet.getResourceId(a.k.MallFormAttrs_mallprefilledText, 0);
     if (paramInt != 0) {
-      this.pXu = paramContext.getString(paramInt);
+      this.Nzn = paramContext.getString(paramInt);
     }
-    paramInt = paramAttributeSet.getResourceId(13, 0);
+    paramInt = paramAttributeSet.getResourceId(a.k.MallFormAttrs_mallcontentHint, 0);
     if (paramInt != 0) {
-      this.pXA = paramContext.getString(paramInt);
+      this.Nzt = paramContext.getString(paramInt);
     }
-    this.pXB = paramAttributeSet.getInteger(14, this.pXB);
-    this.pXC = paramAttributeSet.getColor(15, this.pXC);
-    paramInt = paramAttributeSet.getResourceId(16, 0);
+    this.Nzu = paramAttributeSet.getInteger(a.k.MallFormAttrs_mallcontentGravity, this.Nzu);
+    this.Nzv = paramAttributeSet.getColor(a.k.MallFormAttrs_mallcontentTextColor, this.Nzv);
+    paramInt = paramAttributeSet.getResourceId(a.k.MallFormAttrs_mallcontentText, 0);
     if (paramInt != 0) {
-      this.pXD = paramContext.getString(paramInt);
+      this.Nzw = paramContext.getString(paramInt);
     }
-    this.pXE = paramAttributeSet.getInteger(18, this.pXE);
-    this.pXF = paramAttributeSet.getInteger(19, this.pXF);
-    this.pXG = paramAttributeSet.getResourceId(20, this.pXG);
-    this.pXH = paramAttributeSet.getBoolean(21, this.pXH);
-    this.pXI = paramAttributeSet.getBoolean(23, this.pXI);
-    this.pXJ = paramAttributeSet.getBoolean(21, this.pXJ);
-    this.pXK = paramAttributeSet.getInteger(0, this.pXK);
-    this.pXL = paramAttributeSet.getInteger(1, this.pXL);
-    this.pXM = paramAttributeSet.getInteger(24, this.pXM);
+    this.Nzx = paramAttributeSet.getInteger(a.k.MallFormAttrs_mallcontentMaxSize, this.Nzx);
+    this.Nzy = paramAttributeSet.getInteger(a.k.MallFormAttrs_mallcontentMinSize, this.Nzy);
+    this.Nzz = paramAttributeSet.getResourceId(a.k.MallFormAttrs_mallcontentBackground, this.Nzz);
+    this.NzA = paramAttributeSet.getBoolean(a.k.MallFormAttrs_mallcontentEnabled, this.NzA);
+    this.NzB = paramAttributeSet.getBoolean(a.k.MallFormAttrs_mallcontentClickable, this.NzB);
+    this.NzC = paramAttributeSet.getBoolean(a.k.MallFormAttrs_mallcontentEnabled, this.NzC);
+    this.NzD = paramAttributeSet.getInteger(a.k.MallFormAttrs_android_inputType, this.NzD);
+    this.NzE = paramAttributeSet.getInteger(a.k.MallFormAttrs_android_imeOptions, this.NzE);
+    this.NzF = paramAttributeSet.getInteger(a.k.MallFormAttrs_mallcontentHintTextColor, this.NzF);
     paramAttributeSet.recycle();
-    if (this.pXr > 0) {
+    if (this.Nzk > 0) {
       bool = true;
     }
     Assert.assertTrue(bool);
     setOrientation(1);
-    inflate(paramContext, this.pXr, this);
-    this.iJG = ((TextView)findViewById(2131820644));
-    this.pXi = ((TextView)findViewById(2131820642));
-    this.pXj = ((EditText)findViewById(2131820640));
-    this.pXk = ((WalletIconImageView)findViewById(2131820641));
-    this.pXl = ((TextView)findViewById(2131820643));
-    AppMethodBeat.o(44377);
+    inflate(paramContext, this.Nzk, this);
+    this.sUt = ((TextView)findViewById(a.f.mall_title));
+    this.Nzb = ((TextView)findViewById(a.f.mall_prefilled));
+    this.Nzc = ((EditText)findViewById(a.f.mall_content));
+    this.Nzd = ((WalletIconImageView)findViewById(a.f.mall_info));
+    this.Nze = ((TextView)findViewById(a.f.mall_tips_msg));
+    AppMethodBeat.o(67287);
   }
   
-  private boolean b(View paramView, MotionEvent paramMotionEvent)
+  private Rect g(View paramView, Rect paramRect)
   {
-    AppMethodBeat.i(44389);
-    if ((paramView != null) && (paramView.getVisibility() == 0))
-    {
-      if (dw(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
-      {
-        AppMethodBeat.o(44389);
-        return true;
-      }
-      AppMethodBeat.o(44389);
-      return false;
-    }
-    AppMethodBeat.o(44389);
-    return false;
-  }
-  
-  private Rect dw(View paramView)
-  {
-    AppMethodBeat.i(44390);
-    if (paramView != null)
-    {
-      Rect localRect = new Rect();
-      paramView.getHitRect(localRect);
-      paramView = l(paramView, localRect);
-      AppMethodBeat.o(44390);
-      return paramView;
-    }
-    AppMethodBeat.o(44390);
-    return null;
-  }
-  
-  private Rect l(View paramView, Rect paramRect)
-  {
-    if (paramView == this.pXk)
+    if (paramView == this.Nzd)
     {
       paramRect.left -= 50;
       paramRect.right += 50;
@@ -203,232 +174,297 @@ public final class MallFormView
     return paramRect;
   }
   
-  public final boolean asv()
+  private Rect iH(View paramView)
   {
-    AppMethodBeat.i(44398);
-    if (this.pXj != null)
+    AppMethodBeat.i(67300);
+    if (paramView != null)
     {
-      if (this.pXj.getText() == null) {}
-      for (int i = 0; (i > this.pXE) || (i < this.pXF); i = this.pXj.getText().length())
+      Rect localRect = new Rect();
+      paramView.getHitRect(localRect);
+      paramView = g(paramView, localRect);
+      AppMethodBeat.o(67300);
+      return paramView;
+    }
+    AppMethodBeat.o(67300);
+    return null;
+  }
+  
+  private boolean k(View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(67299);
+    if ((paramView != null) && (paramView.getVisibility() == 0))
+    {
+      if (iH(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
       {
-        AppMethodBeat.o(44398);
+        AppMethodBeat.o(67299);
+        return true;
+      }
+      AppMethodBeat.o(67299);
+      return false;
+    }
+    AppMethodBeat.o(67299);
+    return false;
+  }
+  
+  public final boolean bZp()
+  {
+    AppMethodBeat.i(67308);
+    if (this.Nzc != null)
+    {
+      if (this.Nzc.getText() == null) {}
+      for (int i = 0; (i > this.Nzx) || (i < this.Nzy); i = this.Nzc.getText().length())
+      {
+        AppMethodBeat.o(67308);
         return false;
       }
-      if (this.pXq != null)
+      if (this.Nzj != null)
       {
-        boolean bool = this.pXq.a(this);
-        AppMethodBeat.o(44398);
+        boolean bool = this.Nzj.a(this);
+        AppMethodBeat.o(67308);
         return bool;
       }
-      AppMethodBeat.o(44398);
+      AppMethodBeat.o(67308);
       return true;
     }
-    ab.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
-    AppMethodBeat.o(44398);
+    Log.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
+    AppMethodBeat.o(67308);
     return true;
   }
   
-  public final void cfI()
+  public final void gGb()
   {
-    AppMethodBeat.i(44381);
-    if ((this.pXk != null) && (!bo.isNullOrNil(getText())) && (this.pXj != null) && (this.pXj.isEnabled()) && (this.pXj.isClickable()) && (this.pXj.isFocusable()) && (this.pXj.isFocused()))
+    AppMethodBeat.i(67291);
+    if ((this.Nzd != null) && (!Util.isNullOrNil(getText())) && (this.Nzc != null) && (this.Nzc.isEnabled()) && (this.Nzc.isClickable()) && (this.Nzc.isFocusable()) && (this.Nzc.isFocused()))
     {
-      this.pXk.setToClearState(new MallFormView.2(this));
-      AppMethodBeat.o(44381);
+      this.Nzd.setToClearState(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(67286);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recharge/ui/form/MallFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          MallFormView.this.gGd();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recharge/ui/form/MallFormView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(67286);
+        }
+      });
+      AppMethodBeat.o(67291);
       return;
     }
-    if (this.pXk != null)
+    if (this.Nzd != null)
     {
-      this.pXk.dpM();
-      AppMethodBeat.o(44381);
+      this.Nzd.iOU();
+      AppMethodBeat.o(67291);
       return;
     }
-    ab.v("MicroMsg.WalletFormView", "hy: no info iv");
-    AppMethodBeat.o(44381);
+    Log.v("MicroMsg.WalletFormView", "hy: no info iv");
+    AppMethodBeat.o(67291);
   }
   
-  public final void cfJ()
+  public final void gGc()
   {
-    AppMethodBeat.i(44391);
-    ab.d("MicroMsg.WalletFormView", "shouldClearFocus: %s", new Object[] { Boolean.valueOf(this.pXN) });
-    if (this.pXN)
+    AppMethodBeat.i(67301);
+    Log.d("MicroMsg.WalletFormView", "shouldClearFocus: %s", new Object[] { Boolean.valueOf(this.NzG) });
+    if (this.NzG)
     {
       getContentEditText().clearFocus();
-      AppMethodBeat.o(44391);
+      AppMethodBeat.o(67301);
       return;
     }
-    this.pXN = true;
-    AppMethodBeat.o(44391);
+    this.NzG = true;
+    AppMethodBeat.o(67301);
   }
   
-  public final void cfK()
+  public final void gGd()
   {
-    AppMethodBeat.i(44399);
-    if (this.pXj != null) {
-      this.pXj.setText("");
+    AppMethodBeat.i(67309);
+    if (this.Nzc != null) {
+      this.Nzc.setText("");
     }
-    AppMethodBeat.o(44399);
+    AppMethodBeat.o(67309);
   }
   
   public final EditText getContentEditText()
   {
-    return this.pXj;
+    return this.Nzc;
   }
   
   public final a getEventDelegate()
   {
-    return this.pXp;
+    return this.Nzi;
   }
   
   public final WalletIconImageView getInfoIv()
   {
-    return this.pXk;
+    return this.Nzd;
   }
   
   public final int getInputLength()
   {
-    AppMethodBeat.i(44401);
-    if (this.pXj != null)
+    AppMethodBeat.i(67311);
+    if (this.Nzc != null)
     {
-      int i = this.pXj.getText().length();
-      AppMethodBeat.o(44401);
+      int i = this.Nzc.getText().length();
+      AppMethodBeat.o(67311);
       return i;
     }
-    AppMethodBeat.o(44401);
+    AppMethodBeat.o(67311);
     return 0;
   }
   
-  public final MallFormView.a getInputValidChangeListener()
+  public final a getInputValidChangeListener()
   {
-    return this.pXm;
+    return this.Nzf;
   }
   
   public final KeyListener getKeyListener()
   {
-    AppMethodBeat.i(44394);
-    if (this.pXj != null)
+    AppMethodBeat.i(67304);
+    if (this.Nzc != null)
     {
-      KeyListener localKeyListener = this.pXj.getKeyListener();
-      AppMethodBeat.o(44394);
+      KeyListener localKeyListener = this.Nzc.getKeyListener();
+      AppMethodBeat.o(67304);
       return localKeyListener;
     }
-    ab.w("MicroMsg.WalletFormView", "hy: no content et");
-    AppMethodBeat.o(44394);
+    Log.w("MicroMsg.WalletFormView", "hy: no content et");
+    AppMethodBeat.o(67304);
     return null;
   }
   
   public final b getLogicDelegate()
   {
-    return this.pXq;
+    return this.Nzj;
   }
   
   public final int getMaxInputLength()
   {
-    return this.pXE;
+    return this.Nzx;
   }
   
   public final int getMinInputLength()
   {
-    return this.pXF;
+    return this.Nzy;
   }
   
   public final TextView getPrefilledTv()
   {
-    return this.pXi;
+    return this.Nzb;
   }
   
   public final String getText()
   {
-    AppMethodBeat.i(44393);
-    if (this.pXj != null)
+    AppMethodBeat.i(67303);
+    if (this.Nzc != null)
     {
-      String str = this.pXj.getText().toString();
-      if ((this.pXq != null) && (this.pXq.cfH()))
+      String str = this.Nzc.getText().toString();
+      if ((this.Nzj != null) && (this.Nzj.gGa()))
       {
-        str = this.pXq.XQ(str);
-        AppMethodBeat.o(44393);
+        str = this.Nzj.aSF(str);
+        AppMethodBeat.o(67303);
         return str;
       }
-      AppMethodBeat.o(44393);
+      AppMethodBeat.o(67303);
       return str;
     }
-    ab.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
-    AppMethodBeat.o(44393);
+    Log.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
+    AppMethodBeat.o(67303);
     return "";
   }
   
   public final TextView getTipsTv()
   {
-    return this.pXl;
+    return this.Nze;
   }
   
   public final TextView getTitleTv()
   {
-    return this.iJG;
+    return this.sUt;
   }
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(44382);
+    AppMethodBeat.i(67292);
     super.onAttachedToWindow();
-    AppMethodBeat.o(44382);
+    AppMethodBeat.o(67292);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(44383);
+    AppMethodBeat.i(67293);
     super.onDetachedFromWindow();
-    AppMethodBeat.o(44383);
+    AppMethodBeat.o(67293);
   }
   
   protected final void onFinishInflate()
   {
-    AppMethodBeat.i(44384);
+    AppMethodBeat.i(67294);
     super.onFinishInflate();
     if (getTitleTv() != null)
     {
-      getTitleTv().setText(this.pXs);
-      getTitleTv().setVisibility(this.pXt);
+      getTitleTv().setText(this.Nzl);
+      getTitleTv().setVisibility(this.Nzm);
     }
     if (getPrefilledTv() != null)
     {
-      getPrefilledTv().setText(this.pXu);
-      getPrefilledTv().setVisibility(this.pXv);
+      getPrefilledTv().setText(this.Nzn);
+      getPrefilledTv().setVisibility(this.Nzo);
     }
     if (getInfoIv() != null)
     {
-      getInfoIv().setImageResource(this.pXw);
-      getInfoIv().setVisibility(this.pXx);
+      getInfoIv().setImageResource(this.Nzp);
+      getInfoIv().setVisibility(this.Nzq);
     }
     if (getTipsTv() != null)
     {
-      getTipsTv().setText(this.pXy);
-      getTipsTv().setVisibility(this.pXz);
+      getTipsTv().setText(this.Nzr);
+      getTipsTv().setVisibility(this.Nzs);
     }
     getContext();
-    if (this.pXj != null)
+    if (this.Nzc != null)
     {
-      this.pXj.setHint(this.pXA);
-      this.pXj.setGravity(this.pXB);
-      this.pXj.setTextColor(this.pXC);
-      setText(this.pXD);
-      this.pXj.setBackgroundResource(this.pXG);
-      this.pXj.setEnabled(this.pXH);
-      this.pXj.setFocusable(this.pXJ);
-      this.pXj.setClickable(this.pXI);
-      this.pXj.setHintTextColor(this.pXM);
-      setImeOptions(this.pXL);
-      setInputType(this.pXK);
-      this.pXj.addTextChangedListener(new MallFormView.1(this));
-      this.pXj.setOnFocusChangeListener(this);
+      this.Nzc.setHint(this.Nzt);
+      this.Nzc.setGravity(this.Nzu);
+      this.Nzc.setTextColor(this.Nzv);
+      setText(this.Nzw);
+      this.Nzc.setBackgroundResource(this.Nzz);
+      this.Nzc.setEnabled(this.NzA);
+      this.Nzc.setFocusable(this.NzC);
+      this.Nzc.setClickable(this.NzB);
+      this.Nzc.setHintTextColor(this.NzF);
+      setImeOptions(this.NzE);
+      setInputType(this.NzD);
+      this.Nzc.addTextChangedListener(new TextWatcher()
+      {
+        private boolean NzH = false;
+        
+        public final void afterTextChanged(Editable paramAnonymousEditable) {}
+        
+        public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+        
+        public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+        {
+          AppMethodBeat.i(67285);
+          if (MallFormView.this.bZp() != this.NzH)
+          {
+            if (MallFormView.c(MallFormView.this) != null) {
+              MallFormView.c(MallFormView.this).onInputValidChange(MallFormView.this.bZp());
+            }
+            this.NzH = MallFormView.this.bZp();
+          }
+          MallFormView.this.gGb();
+          AppMethodBeat.o(67285);
+        }
+      });
+      this.Nzc.setOnFocusChangeListener(this);
     }
-    cfI();
-    if (this.pXj != null)
+    gGb();
+    if (this.Nzc != null)
     {
-      if (this.pXK != 2) {
+      if (this.NzD != 2) {
         break label347;
       }
-      this.pXj.setKeyListener(new NumberKeyListener()
+      this.Nzc.setKeyListener(new NumberKeyListener()
       {
         protected final char[] getAcceptedChars()
         {
@@ -443,212 +479,249 @@ public final class MallFormView
     }
     for (;;)
     {
-      if (this.pXE != -1) {
-        this.pXj.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.pXE) });
+      if (this.Nzx != -1) {
+        this.Nzc.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.Nzx) });
       }
-      AppMethodBeat.o(44384);
+      AppMethodBeat.o(67294);
       return;
       label347:
-      if (this.pXK == 4)
+      if (this.NzD == 4)
       {
-        this.pXj.setKeyListener(new MallFormView.4(this));
+        this.Nzc.setKeyListener(new NumberKeyListener()
+        {
+          protected final char[] getAcceptedChars()
+          {
+            return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 120, 88 };
+          }
+          
+          public final int getInputType()
+          {
+            return 1;
+          }
+        });
       }
-      else if (this.pXK == 128)
+      else if (this.NzD == 128)
       {
-        this.pXj.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        this.pXj.setKeyListener(new MallFormView.5(this));
-        this.pXj.setRawInputType(18);
+        this.Nzc.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        this.Nzc.setKeyListener(new NumberKeyListener()
+        {
+          protected final char[] getAcceptedChars()
+          {
+            return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48 };
+          }
+          
+          public final int getInputType()
+          {
+            return 18;
+          }
+        });
+        this.Nzc.setRawInputType(18);
       }
-      else if (this.pXK == 3)
+      else if (this.NzD == 3)
       {
-        this.pXj.setKeyListener(new MallFormView.6(this));
+        this.Nzc.setKeyListener(new NumberKeyListener()
+        {
+          protected final char[] getAcceptedChars()
+          {
+            return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45 };
+          }
+          
+          public final int getInputType()
+          {
+            return 3;
+          }
+        });
       }
       else
       {
-        this.pXj.setInputType(this.pXK);
+        this.Nzc.setInputType(this.NzD);
       }
     }
   }
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(44402);
-    if (this.pXn != null) {
-      this.pXn.onFocusChange(this, paramBoolean);
+    AppMethodBeat.i(67312);
+    if (this.Nzg != null) {
+      this.Nzg.onFocusChange(this, paramBoolean);
     }
-    if (!asv()) {
-      if (this.iJG != null) {
-        this.iJG.setEnabled(false);
+    if (!bZp()) {
+      if (this.sUt != null) {
+        this.sUt.setEnabled(false);
       }
     }
     for (;;)
     {
-      cfI();
-      AppMethodBeat.o(44402);
+      gGb();
+      AppMethodBeat.o(67312);
       return;
-      if (this.iJG != null) {
-        this.iJG.setEnabled(true);
+      if (this.sUt != null) {
+        this.sUt.setEnabled(true);
       }
     }
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(44388);
-    if ((this.pXp == null) || (!this.pXp.cfG()))
+    AppMethodBeat.i(67298);
+    if ((this.Nzi == null) || (!this.Nzi.gFY()))
     {
-      if ((this.pXj != null) && (b(this.pXj, paramMotionEvent)) && (!this.pXj.isClickable()))
+      if ((this.Nzc != null) && (k(this.Nzc, paramMotionEvent)) && (!this.Nzc.isClickable()))
       {
-        ab.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
-        AppMethodBeat.o(44388);
+        Log.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
+        AppMethodBeat.o(67298);
         return true;
       }
-      if ((b(this.pXk, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
+      if ((k(this.Nzd, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
       {
-        ab.d("MicroMsg.WalletFormView", "hy: click on info iv");
-        this.pXk.performClick();
-        AppMethodBeat.o(44388);
+        Log.d("MicroMsg.WalletFormView", "hy: click on info iv");
+        this.Nzd.performClick();
+        AppMethodBeat.o(67298);
         return true;
       }
-      AppMethodBeat.o(44388);
+      AppMethodBeat.o(67298);
       return false;
     }
-    AppMethodBeat.o(44388);
+    AppMethodBeat.o(67298);
     return true;
   }
   
-  @SuppressLint({"WrongCall"})
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(44387);
-    if ((this.pXp == null) || (!this.pXp.cfF())) {
+    AppMethodBeat.i(67297);
+    if ((this.Nzi == null) || (!this.Nzi.gFX())) {
       super.onMeasure(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(44387);
+    AppMethodBeat.o(67297);
   }
   
   public final void setEventDelegate(a parama)
   {
-    this.pXp = parama;
+    this.Nzi = parama;
   }
   
   public final void setFilters(InputFilter[] paramArrayOfInputFilter)
   {
-    AppMethodBeat.i(44400);
-    if (this.pXj != null) {
-      this.pXj.setFilters(paramArrayOfInputFilter);
+    AppMethodBeat.i(67310);
+    if (this.Nzc != null) {
+      this.Nzc.setFilters(paramArrayOfInputFilter);
     }
-    AppMethodBeat.o(44400);
+    AppMethodBeat.o(67310);
   }
   
   public final void setHint(String paramString)
   {
-    AppMethodBeat.i(44385);
-    if (this.pXj != null) {
-      this.pXj.setHint(paramString);
+    AppMethodBeat.i(67295);
+    if (this.Nzc != null) {
+      this.Nzc.setHint(paramString);
     }
-    AppMethodBeat.o(44385);
+    AppMethodBeat.o(67295);
   }
   
   public final void setImeOptions(int paramInt)
   {
-    AppMethodBeat.i(44378);
-    if (this.pXj != null) {
-      this.pXj.setImeOptions(paramInt);
+    AppMethodBeat.i(67288);
+    if (this.Nzc != null) {
+      this.Nzc.setImeOptions(paramInt);
     }
-    AppMethodBeat.o(44378);
+    AppMethodBeat.o(67288);
   }
   
   public final void setInputType(int paramInt)
   {
-    AppMethodBeat.i(44379);
-    if (this.pXj != null) {
-      this.pXj.setInputType(paramInt);
+    AppMethodBeat.i(67289);
+    if (this.Nzc != null) {
+      this.Nzc.setInputType(paramInt);
     }
-    AppMethodBeat.o(44379);
+    AppMethodBeat.o(67289);
   }
   
   public final void setKeyListener(KeyListener paramKeyListener)
   {
-    AppMethodBeat.i(44397);
-    if (this.pXj != null) {
-      this.pXj.setKeyListener(paramKeyListener);
+    AppMethodBeat.i(67307);
+    if (this.Nzc != null) {
+      this.Nzc.setKeyListener(paramKeyListener);
     }
-    AppMethodBeat.o(44397);
+    AppMethodBeat.o(67307);
   }
   
   public final void setLogicDelegate(b paramb)
   {
-    this.pXq = paramb;
+    this.Nzj = paramb;
   }
   
   public final void setMaxInputLength(int paramInt)
   {
-    this.pXE = paramInt;
+    this.Nzx = paramInt;
   }
   
   public final void setMinInputLength(int paramInt)
   {
-    this.pXF = paramInt;
+    this.Nzy = paramInt;
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(44395);
+    AppMethodBeat.i(67305);
     super.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(44395);
+    AppMethodBeat.o(67305);
   }
   
   public final void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener)
   {
-    AppMethodBeat.i(44386);
-    this.pXj.setOnEditorActionListener(paramOnEditorActionListener);
-    AppMethodBeat.o(44386);
+    AppMethodBeat.i(67296);
+    this.Nzc.setOnEditorActionListener(paramOnEditorActionListener);
+    AppMethodBeat.o(67296);
   }
   
   public final void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.pXn = paramOnFocusChangeListener;
+    this.Nzg = paramOnFocusChangeListener;
   }
   
   public final void setOnInfoIvClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(44396);
-    this.pXo = paramOnClickListener;
+    AppMethodBeat.i(67306);
+    this.Nzh = paramOnClickListener;
     if (getInfoIv() != null) {
-      getInfoIv().setOnClickListener(this.pXo);
+      getInfoIv().setOnClickListener(this.Nzh);
     }
-    AppMethodBeat.o(44396);
+    AppMethodBeat.o(67306);
   }
   
-  public final void setOnInputValidChangeListener(MallFormView.a parama)
+  public final void setOnInputValidChangeListener(a parama)
   {
-    this.pXm = parama;
+    this.Nzf = parama;
   }
   
   public final void setSelection(int paramInt)
   {
-    AppMethodBeat.i(44392);
-    if (this.pXj != null) {
-      this.pXj.setSelection(paramInt);
+    AppMethodBeat.i(67302);
+    if (this.Nzc != null) {
+      this.Nzc.setSelection(paramInt);
     }
-    AppMethodBeat.o(44392);
+    AppMethodBeat.o(67302);
   }
   
   public final void setText(String paramString)
   {
-    AppMethodBeat.i(44380);
-    if (this.pXj != null)
+    AppMethodBeat.i(67290);
+    if ((this.Nzc != null) && ((this.Nzj == null) || (!this.Nzj.gFZ())))
     {
-      this.pXj.setText(paramString);
-      this.pXj.setSelection(getInputLength());
+      this.Nzc.setText(paramString);
+      this.Nzc.setSelection(getInputLength());
     }
-    AppMethodBeat.o(44380);
+    AppMethodBeat.o(67290);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onInputValidChange(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.form.MallFormView
  * JD-Core Version:    0.7.0.1
  */

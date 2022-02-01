@@ -28,8 +28,7 @@ public final class ArrayTypeAdapter<E>
     if (paramJsonReader.peek() == JsonToken.NULL)
     {
       paramJsonReader.nextNull();
-      paramJsonReader = null;
-      return paramJsonReader;
+      return null;
     }
     ArrayList localArrayList = new ArrayList();
     paramJsonReader.beginArray();
@@ -38,17 +37,14 @@ public final class ArrayTypeAdapter<E>
     }
     paramJsonReader.endArray();
     int j = localArrayList.size();
-    Object localObject = Array.newInstance(this.componentType, j);
+    paramJsonReader = Array.newInstance(this.componentType, j);
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      paramJsonReader = localObject;
-      if (i >= j) {
-        break;
-      }
-      Array.set(localObject, i, localArrayList.get(i));
+      Array.set(paramJsonReader, i, localArrayList.get(i));
       i += 1;
     }
+    return paramJsonReader;
   }
   
   public void write(JsonWriter paramJsonWriter, Object paramObject)
@@ -72,7 +68,7 @@ public final class ArrayTypeAdapter<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.bind.ArrayTypeAdapter
  * JD-Core Version:    0.7.0.1
  */

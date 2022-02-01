@@ -4,15 +4,16 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RecordPlayInfo
   extends JceStruct
 {
   static ArrayList<OneVideoVidInfo> cache_video_info_vec = new ArrayList();
   public String fileName = "";
-  public int status;
-  public int totalCount;
-  public ArrayList<OneVideoVidInfo> video_info_vec;
+  public int status = 0;
+  public int totalCount = 0;
+  public ArrayList<OneVideoVidInfo> video_info_vec = null;
   
   static
   {
@@ -40,19 +41,21 @@ public final class RecordPlayInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.fileName != null) {
-      paramJceOutputStream.write(this.fileName, 0);
+    Object localObject = this.fileName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.totalCount, 1);
     paramJceOutputStream.write(this.status, 2);
-    if (this.video_info_vec != null) {
-      paramJceOutputStream.write(this.video_info_vec, 3);
+    localObject = this.video_info_vec;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_PROTOCOL.RecordPlayInfo
  * JD-Core Version:    0.7.0.1
  */

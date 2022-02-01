@@ -6,185 +6,190 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.card.b.e;
-import com.tencent.mm.plugin.card.d.m;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.f;
+import com.tencent.mm.plugin.card.a.g;
+import com.tencent.mm.plugin.card.c.n;
+import com.tencent.mm.plugin.card.mgr.d;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.plugin.card.sharecard.model.l;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.ow;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.wi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
 
 public final class f
 {
-  private View iCk;
-  private MMActivity jpX;
-  private b krp;
-  private int kvQ;
-  private View kvR;
-  private TextView kvS;
-  private TextView kvT;
-  private CdnImageView kvU;
-  private ImageView[] kvV;
-  private ImageView kvW;
-  private ow kvX;
+  private View plc;
+  private int wCo;
+  private View wCp;
+  private TextView wCq;
+  private TextView wCr;
+  private CdnImageView wCs;
+  private ImageView[] wCt;
+  private ImageView wCu;
+  private wi wCv;
+  private MMActivity wry;
+  private b wxM;
   
   public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb)
   {
     this(paramMMActivity, paramView, paramInt, paramb, null);
   }
   
-  public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb, ow paramow)
+  public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb, wi paramwi)
   {
-    AppMethodBeat.i(88479);
-    this.kvV = new ImageView[3];
-    this.jpX = paramMMActivity;
-    this.iCk = paramView;
-    this.kvQ = paramInt;
-    this.krp = paramb;
-    this.kvX = paramow;
-    this.kvR = this.iCk.findViewById(2131822195);
-    this.kvS = ((TextView)this.iCk.findViewById(2131822197));
-    this.kvT = ((TextView)this.iCk.findViewById(2131822198));
-    this.kvU = ((CdnImageView)this.iCk.findViewById(2131822196));
-    this.kvV[0] = ((ImageView)this.iCk.findViewById(2131822200));
-    this.kvV[1] = ((ImageView)this.iCk.findViewById(2131822201));
-    this.kvV[2] = ((ImageView)this.iCk.findViewById(2131822202));
-    this.kvW = ((ImageView)this.iCk.findViewById(2131822203));
-    if (this.kvQ == 1)
+    AppMethodBeat.i(113406);
+    this.wCt = new ImageView[3];
+    this.wry = paramMMActivity;
+    this.plc = paramView;
+    this.wCo = paramInt;
+    this.wxM = paramb;
+    this.wCv = paramwi;
+    this.wCp = this.plc.findViewById(a.d.wgE);
+    this.wCq = ((TextView)this.plc.findViewById(a.d.wgG));
+    this.wCr = ((TextView)this.plc.findViewById(a.d.wgF));
+    this.wCs = ((CdnImageView)this.plc.findViewById(a.d.wgH));
+    this.wCt[0] = ((ImageView)this.plc.findViewById(a.d.wgB));
+    this.wCt[1] = ((ImageView)this.plc.findViewById(a.d.wgC));
+    this.wCt[2] = ((ImageView)this.plc.findViewById(a.d.wgD));
+    this.wCu = ((ImageView)this.plc.findViewById(a.d.whz));
+    if (this.wCo == 1)
     {
-      this.kvS.setText(this.jpX.getString(2131297986, new Object[] { Integer.valueOf(0) }));
-      this.kvU.setImageResource(2131231077);
-      AppMethodBeat.o(88479);
+      this.wCq.setText(this.wry.getString(a.g.wpu, new Object[] { Integer.valueOf(0) }));
+      this.wCs.setImageResource(a.f.card_home_member_card_icon);
+      AppMethodBeat.o(113406);
       return;
     }
-    if (this.kvQ == 2)
+    if (this.wCo == 2)
     {
-      this.kvS.setText(2131298046);
-      this.kvU.setImageResource(2131231076);
-      AppMethodBeat.o(88479);
+      this.wCq.setText(a.g.wqf);
+      this.wCs.setImageResource(a.f.card_home_friend_ticket_icon);
+      AppMethodBeat.o(113406);
       return;
     }
-    if (this.kvQ == 3)
+    if (this.wCo == 3)
     {
-      this.kvS.setText(2131298079);
-      this.kvU.setImageResource(2131231078);
-      AppMethodBeat.o(88479);
+      this.wCq.setText(a.g.wqE);
+      this.wCs.setImageResource(a.f.card_home_my_ticket_icon);
+      AppMethodBeat.o(113406);
       return;
     }
-    if (this.kvQ == 4)
+    if (this.wCo == 4)
     {
-      if (this.kvX == null)
+      if (this.wCv == null)
       {
-        ab.w("MicroMsg.CardHomePageItemController", "cell element is null");
-        bed();
+        Log.w("MicroMsg.CardHomePageItemController", "cell element is null");
+        dmQ();
       }
-      this.iCk.findViewById(2131822199).setVisibility(8);
-      this.kvS.setText(this.kvX.wFt);
-      this.kvU.setUseSdcardCache(true);
-      this.kvU.setUrl(this.kvX.wFu);
-      if (!bo.isNullOrNil(this.kvX.wFv))
+      this.plc.findViewById(a.d.wgA).setVisibility(8);
+      this.wCq.setText(this.wCv.Zde);
+      this.wCs.setUseSdcardCache(true);
+      this.wCs.setUrl(this.wCv.Zdf);
+      if (!Util.isNullOrNil(this.wCv.Zdg))
       {
-        this.kvT.setText(this.kvX.wFv);
-        this.kvT.setVisibility(0);
-        AppMethodBeat.o(88479);
+        this.wCr.setText(this.wCv.Zdg);
+        this.wCr.setVisibility(0);
+        AppMethodBeat.o(113406);
         return;
       }
-      this.kvT.setVisibility(8);
+      this.wCr.setVisibility(8);
     }
-    AppMethodBeat.o(88479);
+    AppMethodBeat.o(113406);
   }
   
-  public final void bJ()
+  public final void dmQ()
   {
-    AppMethodBeat.i(88481);
+    AppMethodBeat.i(113409);
+    this.plc.setVisibility(8);
+    AppMethodBeat.o(113409);
+  }
+  
+  public final void setOnClickListener(View.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(113407);
+    this.wCp.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(113407);
+  }
+  
+  public final void updateView()
+  {
+    AppMethodBeat.i(113408);
     Object localObject;
-    if (this.kvQ == 2)
+    if (this.wCo == 2)
     {
-      localObject = (l)am.bci().getValue("key_share_card_layout_data");
+      localObject = (l)am.dkO().getValue("key_share_card_layout_data");
       if (localObject == null)
       {
-        ab.w("MicroMsg.CardHomePageItemController", "updateShareCardView data is null");
-        AppMethodBeat.o(88481);
+        Log.w("MicroMsg.CardHomePageItemController", "updateShareCardView data is null");
+        AppMethodBeat.o(113408);
         return;
       }
-      if (bo.isNullOrNil(((l)localObject).kqb)) {
-        this.kvT.setVisibility(8);
+      if (Util.isNullOrNil(((l)localObject).lym)) {
+        this.wCr.setVisibility(8);
       }
-      while (bo.es(((l)localObject).kqa))
+      while (Util.isNullOrNil(((l)localObject).wwD))
       {
         i = 0;
         while (i < 3)
         {
-          this.kvV[i].setVisibility(8);
+          this.wCt[i].setVisibility(8);
           i += 1;
         }
-        this.kvT.setVisibility(0);
-        this.kvT.setText(((l)localObject).kqb);
+        this.wCr.setVisibility(0);
+        this.wCr.setText(((l)localObject).lym);
       }
       int i = 0;
       if (i < 3)
       {
-        if (i < ((l)localObject).kqa.size())
+        if (i < ((l)localObject).wwD.size())
         {
-          this.kvV[i].setVisibility(0);
-          int j = this.jpX.getResources().getDimensionPixelSize(2131427775);
-          m.a(this.kvV[i], (String)((l)localObject).kqa.get(i), j, 2130839758, false);
+          this.wCt[i].setVisibility(0);
+          int j = this.wry.getResources().getDimensionPixelSize(a.b.LargerPadding);
+          n.a(this.wCt[i], (String)((l)localObject).wwD.get(i), j, a.c.my_card_package_defaultlogo, false);
         }
         for (;;)
         {
           i += 1;
           break;
-          this.kvV[i].setVisibility(8);
+          this.wCt[i].setVisibility(8);
         }
       }
-      if ((!bo.es(((l)localObject).kqa)) && (((l)localObject).kqa.size() == 1) && (((l)localObject).cHw) && (!((l)localObject).cHx))
+      if ((!Util.isNullOrNil(((l)localObject).wwD)) && (((l)localObject).wwD.size() == 1) && (((l)localObject).iaS) && (!((l)localObject).iaT))
       {
-        this.kvW.setVisibility(0);
-        AppMethodBeat.o(88481);
+        this.wCu.setVisibility(0);
+        AppMethodBeat.o(113408);
         return;
       }
-      this.kvW.setVisibility(8);
-      AppMethodBeat.o(88481);
+      this.wCu.setVisibility(8);
+      AppMethodBeat.o(113408);
       return;
     }
-    if (this.kvQ == 3)
+    if (this.wCo == 3)
     {
-      this.kvS.setText(2131298079);
-      this.iCk.findViewById(2131822199).setVisibility(8);
-      localObject = (String)am.bci().getValue("key_card_entrance_tips");
-      if (!bo.isNullOrNil((String)localObject))
+      this.wCq.setText(a.g.wqE);
+      this.plc.findViewById(a.d.wgA).setVisibility(8);
+      localObject = (String)am.dkO().getValue("key_card_entrance_tips");
+      if (!Util.isNullOrNil((String)localObject))
       {
-        this.kvT.setText((CharSequence)localObject);
-        this.kvT.setVisibility(0);
-        AppMethodBeat.o(88481);
+        this.wCr.setText((CharSequence)localObject);
+        this.wCr.setVisibility(0);
+        AppMethodBeat.o(113408);
         return;
       }
-      this.kvT.setVisibility(8);
+      this.wCr.setVisibility(8);
     }
-    AppMethodBeat.o(88481);
-  }
-  
-  public final void bed()
-  {
-    AppMethodBeat.i(88482);
-    this.iCk.setVisibility(8);
-    AppMethodBeat.o(88482);
-  }
-  
-  public final void setOnClickListener(View.OnClickListener paramOnClickListener)
-  {
-    AppMethodBeat.i(88480);
-    this.kvR.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(88480);
+    AppMethodBeat.o(113408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.f
  * JD-Core Version:    0.7.0.1
  */

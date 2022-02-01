@@ -1,34 +1,31 @@
 package com.tencent.av;
 
-import bdin;
-import com.tencent.av.app.VideoAppInterface;
-import lid;
-import mqq.app.MobileQQ;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.gaudio.QQGAudioCtrl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class VideoController$21
   implements Runnable
 {
-  VideoController$21(VideoController paramVideoController, int paramInt, long paramLong) {}
+  VideoController$21(VideoController paramVideoController, long paramLong) {}
   
   public void run()
   {
-    this.this$0.j = null;
-    this.this$0.a().a("startGAudioChat.1", 0);
-    boolean bool = bdin.g(this.this$0.a.getApplication().getApplicationContext());
-    VideoController localVideoController = this.this$0;
-    int j = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_Long;
-    if (bool) {}
-    for (int i = 71;; i = 70)
+    if (this.this$0.U.stopVideoRecv() != 0)
     {
-      localVideoController.a(j, l, i, 0);
-      return;
+      if (this.this$0.k().bi.size() == 0) {
+        this.this$0.k().a(this.a, "StopGVideo", false, true);
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.e(VideoController.a, 2, "StopGVideo-->Stop GVideo Failed.The Cmd Did Not Send Suc");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.21
  * JD-Core Version:    0.7.0.1
  */

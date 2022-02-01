@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ah
   extends JceStruct
@@ -16,16 +17,6 @@ public final class ah
   public String cC = "";
   public ArrayList<ak> cD = null;
   public String cz = "";
-  
-  static
-  {
-    if (!ah.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      cF = bool;
-      return;
-    }
-  }
   
   public ah()
   {
@@ -63,29 +54,50 @@ public final class ah
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (cF) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (cF) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ah)paramObject;
-    } while ((!JceUtil.equals(this.cz, paramObject.cz)) || (!JceUtil.equals(this.cA, paramObject.cA)) || (!JceUtil.equals(this.cB, paramObject.cB)) || (!JceUtil.equals(this.cC, paramObject.cC)) || (!JceUtil.equals(this.cD, paramObject.cD)));
-    return true;
+    }
+    paramObject = (ah)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.cz, paramObject.cz))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.cA, paramObject.cA))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.cB, paramObject.cB))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.cC, paramObject.cC))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.cD, paramObject.cD)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -121,17 +133,19 @@ public final class ah
     paramJceOutputStream.write(this.cz, 0);
     paramJceOutputStream.write(this.cA, 1);
     paramJceOutputStream.write(this.cB, 2);
-    if (this.cC != null) {
-      paramJceOutputStream.write(this.cC, 3);
+    Object localObject = this.cC;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.cD != null) {
-      paramJceOutputStream.write(this.cD, 4);
+    localObject = this.cD;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ah
  * JD-Core Version:    0.7.0.1
  */

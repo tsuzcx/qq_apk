@@ -40,17 +40,19 @@ public final class ParasiticUnit
   {
     paramJceOutputStream.write(this.iDataType, 0);
     paramJceOutputStream.write(this.iDataEdit, 1);
-    if (this.strSubCmdCode != null) {
-      paramJceOutputStream.write(this.strSubCmdCode, 2);
+    Object localObject = this.strSubCmdCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.vecData != null) {
-      paramJceOutputStream.write(this.vecData, 3);
+    localObject = this.vecData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.ParasiticUnit
  * JD-Core Version:    0.7.0.1
  */

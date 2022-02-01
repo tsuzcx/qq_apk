@@ -1,39 +1,46 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqtj;
-import aqyj;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
 
-public class FileTransferHandler$9
+class FileTransferHandler$9
   implements Runnable
 {
-  public FileTransferHandler$9(aqtj paramaqtj, long paramLong, int paramInt, String paramString1, String paramString2) {}
+  FileTransferHandler$9(FileTransferHandler paramFileTransferHandler, long paramLong, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] Handle upload failed notify. retCode =" + this.jdField_a_of_type_Int + "(1:cancel upload) reason=" + this.jdField_a_of_type_JavaLangString);
-    if (1 == this.jdField_a_of_type_Int)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OLfilesession[");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("] Handle upload failed notify. retCode =");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("(1:cancel upload) reason=");
+    localStringBuilder.append(this.c);
+    QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
+    int i = this.b;
+    if (1 == i)
     {
-      this.this$0.a.a().a(this.b, this.jdField_a_of_type_Long);
+      this.this$0.a.getOnlineFileSessionCenter().b(this.d, this.a);
       return;
     }
-    if (2 == this.jdField_a_of_type_Int)
+    if (2 == i)
     {
-      this.this$0.a.a().a(this.b, this.jdField_a_of_type_Long);
+      this.this$0.a.getOnlineFileSessionCenter().b(this.d, this.a);
       return;
     }
-    if (3 == this.jdField_a_of_type_Int)
+    if (3 == i)
     {
-      this.this$0.a.a().c(this.b, this.jdField_a_of_type_Long);
+      this.this$0.a.getOnlineFileSessionCenter().d(this.d, this.a);
       return;
     }
-    this.this$0.a.a().a(this.b, this.jdField_a_of_type_Long);
+    this.this$0.a.getOnlineFileSessionCenter().b(this.d, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.9
  * JD-Core Version:    0.7.0.1
  */

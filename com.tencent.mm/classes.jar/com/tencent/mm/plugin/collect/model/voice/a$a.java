@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.collect.model.voice;
 
-import com.tencent.mm.g.a.by;
-import com.tencent.mm.g.a.by.a;
+import com.tencent.mm.autogen.a.cv;
+import com.tencent.mm.autogen.a.cv.a;
 
 public final class a$a
 {
-  public int cpo;
-  public String cpp;
-  public String cpq;
-  public String cpr;
-  public long cps;
-  public int cpt;
-  public String cpu;
+  public long delay;
+  public int fee;
+  public String hCH;
+  public String hCI;
+  public String hCJ;
+  public String hCK;
+  public int source;
   
-  public a$a(a parama, by paramby)
+  public a$a(a parama, cv paramcv)
   {
-    this.cpo = paramby.cpn.cpo;
-    this.cpp = paramby.cpn.cpp;
-    this.cpq = paramby.cpn.cpq;
-    this.cpr = paramby.cpn.cpr;
-    this.cps = paramby.cpn.cps;
-    this.cpt = paramby.cpn.cpt;
-    this.cpu = paramby.cpn.cpu;
+    this.fee = paramcv.hCG.fee;
+    this.hCH = paramcv.hCG.hCH;
+    this.hCI = paramcv.hCG.hCI;
+    this.hCJ = paramcv.hCG.hCJ;
+    this.delay = paramcv.hCG.delay;
+    this.source = paramcv.hCG.source;
+    this.hCK = paramcv.hCG.hCK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.voice.a.a
  * JD-Core Version:    0.7.0.1
  */

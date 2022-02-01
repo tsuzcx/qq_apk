@@ -5,13 +5,18 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import androidx.core.app.a.a;
+import androidx.core.content.a;
+import com.tencent.luggage.l.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.permission.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.permission.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,95 +27,99 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class g
-  extends a
+  extends c
 {
   public static final int CTRL_INDEX = 414;
   public static final String NAME = "searchContacts";
-  private List<String[]> hKT;
   
-  private static List<String[]> cL(Context paramContext)
+  private static String Tu(String paramString)
   {
-    AppMethodBeat.i(126275);
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject2 = paramContext.getContentResolver();
-    if (!com.tencent.luggage.g.g.o(paramContext, "android.permission.READ_CONTACTS"))
+    AppMethodBeat.i(327797);
+    if (paramString == null)
     {
-      ab.e("MicroMsg.JsApiSearchContacts", "no contact permission");
-      AppMethodBeat.o(126275);
-      return localLinkedList;
+      AppMethodBeat.o(327797);
+      return null;
     }
-    try
-    {
-      paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, "sort_key_alt");
-      if (paramContext == null)
-      {
-        ab.e("MicroMsg.JsApiSearchContacts", "getMobileInfo: mobile is null");
-        AppMethodBeat.o(126275);
-        return localLinkedList;
-      }
+    String str = paramString.replaceAll("\\D", "");
+    paramString = str;
+    if (str.startsWith("86")) {
+      paramString = str.substring(2);
     }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.JsApiSearchContacts", paramContext, "", new Object[0]);
-        ab.e("MicroMsg.JsApiSearchContacts", "exception in getMoblieOrderInfo(), [%s]", new Object[] { paramContext.getMessage() });
-        paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
-      }
-      try
-      {
-        if ((paramContext.getCount() > 0) && (paramContext.moveToFirst()))
-        {
-          boolean bool;
-          do
-          {
-            localObject2 = paramContext.getString(paramContext.getColumnIndex("display_name"));
-            localLinkedList.add(new String[] { paramContext.getString(paramContext.getColumnIndex("contact_id")), localObject2, paramContext.getString(paramContext.getColumnIndex("data1")), paramContext.getString(paramContext.getColumnIndex("raw_contact_id")) });
-            bool = paramContext.moveToNext();
-          } while (bool);
-        }
-        paramContext.close();
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ab.printErrStackTrace("MicroMsg.JsApiSearchContacts", localException, "", new Object[0]);
-          ab.e("MicroMsg.JsApiSearchContacts", "exception in getMoblieOrderInfo()2, [%s]", new Object[] { localException.getMessage() });
-          paramContext.close();
-        }
-      }
-      finally
-      {
-        paramContext.close();
-        AppMethodBeat.o(126275);
-      }
-      AppMethodBeat.o(126275);
-      return localLinkedList;
-    }
+    AppMethodBeat.o(327797);
+    return paramString;
   }
   
-  private static boolean ce(String paramString1, String paramString2)
+  private boolean c(final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(126274);
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
+    AppMethodBeat.i(327801);
+    if (a.checkSelfPermission(MMApplicationContext.getContext(), "android.permission.READ_CONTACTS") == 0)
     {
-      ab.e("MicroMsg.JsApiSearchContacts", "phoneNumber or targetPhoneNumber is null, return false");
-      AppMethodBeat.o(126274);
+      AppMethodBeat.o(327801);
+      return true;
+    }
+    paramf.V(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(327793);
+        s.a(paramf.getAppId(), new a.a()
+        {
+          public final void onRequestPermissionsResult(int paramAnonymous2Int, String[] paramAnonymous2ArrayOfString, int[] paramAnonymous2ArrayOfInt)
+          {
+            AppMethodBeat.i(327806);
+            if (paramAnonymous2Int != 48)
+            {
+              AppMethodBeat.o(327806);
+              return;
+            }
+            if ((paramAnonymous2ArrayOfInt != null) && (paramAnonymous2ArrayOfInt.length > 0) && (paramAnonymous2ArrayOfInt[0] == 0))
+            {
+              g.this.a(g.1.this.erj, g.1.this.ejE, g.1.this.elZ, true);
+              AppMethodBeat.o(327806);
+              return;
+            }
+            g.1.this.erj.callback(g.1.this.elZ, g.this.a(null, a.e.rVw, null));
+            AppMethodBeat.o(327806);
+          }
+        });
+        Context localContext = paramf.getContext();
+        if ((localContext == null) || (!(localContext instanceof Activity)))
+        {
+          paramf.callback(paramInt, g.this.ZP("fail:internal error invalid android context"));
+          AppMethodBeat.o(327793);
+          return;
+        }
+        if (i.a((Activity)localContext, paramf, "android.permission.READ_CONTACTS", 48, "", "")) {
+          s.afs(paramf.getAppId());
+        }
+        AppMethodBeat.o(327793);
+      }
+    });
+    AppMethodBeat.o(327801);
+    return false;
+  }
+  
+  private static boolean dS(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(137502);
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
+    {
+      Log.e("MicroMsg.JsApiSearchContacts", "phoneNumber or targetPhoneNumber is null, return false");
+      AppMethodBeat.o(137502);
       return false;
     }
     int m = paramString1.length();
     int i = paramString2.length();
     if (m < 8)
     {
-      ab.d("MicroMsg.JsApiSearchContacts", "phoneNumberSize:%d, return false", new Object[] { Integer.valueOf(paramString1.length()) });
-      AppMethodBeat.o(126274);
+      Log.d("MicroMsg.JsApiSearchContacts", "phoneNumberSize:%d, return false", new Object[] { Integer.valueOf(paramString1.length()) });
+      AppMethodBeat.o(137502);
       return false;
     }
     if (m > i)
     {
-      ab.d("MicroMsg.JsApiSearchContacts", "phoneNumberSize:%d, targetPhoneNumberSize:%d return false", new Object[] { Integer.valueOf(m), Integer.valueOf(i) });
-      AppMethodBeat.o(126274);
+      Log.d("MicroMsg.JsApiSearchContacts", "phoneNumberSize:%d, targetPhoneNumberSize:%d return false", new Object[] { Integer.valueOf(m), Integer.valueOf(i) });
+      AppMethodBeat.o(137502);
       return false;
     }
     int j = 0;
@@ -135,119 +144,141 @@ public final class g
     }
     if (k <= 3)
     {
-      AppMethodBeat.o(126274);
+      AppMethodBeat.o(137502);
       return true;
     }
-    AppMethodBeat.o(126274);
+    AppMethodBeat.o(137502);
     return false;
   }
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  private static List<String[]> eI(Context paramContext)
   {
-    AppMethodBeat.i(126273);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(137503);
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject2 = paramContext.getContentResolver();
+    try
     {
-      ab.e("MicroMsg.JsApiSearchContacts", "data is null, err");
-      paramc.h(paramInt, j("fail:invalid data", null));
-      AppMethodBeat.o(126273);
-      return;
-    }
-    ab.i("MicroMsg.JsApiSearchContacts", "JsApiSearchContacts invoke");
-    ab.d("MicroMsg.JsApiSearchContacts", "data:%s", new Object[] { paramJSONObject });
-    Object localObject1 = paramc.getContext();
-    if ((localObject1 == null) || (!(localObject1 instanceof Activity)))
-    {
-      ab.e("MicroMsg.JsApiSearchContacts", "getPageContext failed, appid is %s", new Object[] { paramc.getAppId() });
-      paramc.h(paramInt, j("fail", null));
-      AppMethodBeat.o(126273);
-      return;
-    }
-    n.b(paramc.getAppId(), new g.1(this, paramc, paramJSONObject, paramInt));
-    Object localObject2 = paramc.getContext();
-    int i;
-    if ((localObject2 == null) || (!(localObject2 instanceof Activity)))
-    {
-      paramc.h(paramInt, j("fail", null));
-      i = 0;
-    }
-    while (i == 0)
-    {
-      ab.i("MicroMsg.JsApiSearchContacts", "check permission");
-      AppMethodBeat.o(126273);
-      return;
-      boolean bool = com.tencent.luggage.g.g.a((Activity)localObject2, "android.permission.READ_CONTACTS", 48, "", "");
-      i = bool;
-      if (bool)
+      paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, "sort_key_alt");
+      if (paramContext == null)
       {
-        n.EA(paramc.getAppId());
-        i = bool;
+        Log.e("MicroMsg.JsApiSearchContacts", "getMobileInfo: mobile is null");
+        AppMethodBeat.o(137503);
+        return localLinkedList;
       }
     }
-    localObject2 = paramJSONObject.optString("phoneNumber");
-    if (((String)localObject2).length() < 8)
+    catch (Exception paramContext)
     {
-      ab.e("MicroMsg.JsApiSearchContacts", "phoneNumber is short");
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("result", "");
-      paramc.h(paramInt, j("ok", paramJSONObject));
-      AppMethodBeat.o(126273);
-      return;
-    }
-    if (this.hKT == null) {
-      this.hKT = cL((Context)localObject1);
-    }
-    if (this.hKT == null)
-    {
-      ab.e("MicroMsg.JsApiSearchContacts", "addressList is null, err");
-      paramc.h(paramInt, j("fail", null));
-      AppMethodBeat.o(126273);
-      return;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    if ((this.hKT != null) && (!this.hKT.isEmpty()))
-    {
-      Iterator localIterator = this.hKT.iterator();
-      if (localIterator.hasNext())
+      for (;;)
       {
-        Object localObject3 = (String[])localIterator.next();
-        paramJSONObject = localObject3[2];
-        if (paramJSONObject == null) {
-          paramJSONObject = null;
+        Log.printErrStackTrace("MicroMsg.JsApiSearchContacts", paramContext, "", new Object[0]);
+        Log.e("MicroMsg.JsApiSearchContacts", "exception in getMoblieOrderInfo(), [%s]", new Object[] { paramContext.getMessage() });
+        paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
+      }
+      try
+      {
+        if ((paramContext.getCount() > 0) && (paramContext.moveToFirst()))
+        {
+          boolean bool;
+          do
+          {
+            localObject2 = paramContext.getString(paramContext.getColumnIndex("display_name"));
+            localLinkedList.add(new String[] { paramContext.getString(paramContext.getColumnIndex("contact_id")), localObject2, paramContext.getString(paramContext.getColumnIndex("data1")), paramContext.getString(paramContext.getColumnIndex("raw_contact_id")) });
+            bool = paramContext.moveToNext();
+          } while (bool);
         }
+        paramContext.close();
+      }
+      catch (Exception localException)
+      {
         for (;;)
         {
-          for (;;)
+          Log.printErrStackTrace("MicroMsg.JsApiSearchContacts", localException, "", new Object[0]);
+          Log.e("MicroMsg.JsApiSearchContacts", "exception in getMoblieOrderInfo()2, [%s]", new Object[] { localException.getMessage() });
+          paramContext.close();
+        }
+      }
+      finally
+      {
+        paramContext.close();
+        AppMethodBeat.o(137503);
+      }
+      AppMethodBeat.o(137503);
+      return localLinkedList;
+    }
+  }
+  
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(137501);
+    a(paramf, paramJSONObject, paramInt, false);
+    AppMethodBeat.o(137501);
+  }
+  
+  final void a(f paramf, JSONObject paramJSONObject, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(327808);
+    if (paramJSONObject == null)
+    {
+      Log.e("MicroMsg.JsApiSearchContacts", "data is null, err");
+      paramf.callback(paramInt, ZP("fail:invalid data"));
+      AppMethodBeat.o(327808);
+      return;
+    }
+    Log.i("MicroMsg.JsApiSearchContacts", "JsApiSearchContacts invoke");
+    Log.d("MicroMsg.JsApiSearchContacts", "data:%s", new Object[] { paramJSONObject });
+    if ((!paramBoolean) && (!c(paramf, paramJSONObject, paramInt)))
+    {
+      Log.i("MicroMsg.JsApiSearchContacts", "check permission");
+      AppMethodBeat.o(327808);
+      return;
+    }
+    Object localObject1 = paramJSONObject.optString("phoneNumber");
+    if (((String)localObject1).length() < 8)
+    {
+      Log.e("MicroMsg.JsApiSearchContacts", "phoneNumber is short");
+      paramJSONObject = new HashMap();
+      paramJSONObject.put("result", "");
+      paramf.callback(paramInt, m("ok", paramJSONObject));
+      AppMethodBeat.o(327808);
+      return;
+    }
+    Object localObject2 = eI(MMApplicationContext.getContext());
+    if (localObject2 == null)
+    {
+      Log.e("MicroMsg.JsApiSearchContacts", "addressList is null, err");
+      paramf.callback(paramInt, ZP("fail"));
+      AppMethodBeat.o(327808);
+      return;
+    }
+    paramJSONObject = new JSONArray();
+    if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+    {
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        Object localObject3 = (String[])((Iterator)localObject2).next();
+        String str = Tu(localObject3[2]);
+        localObject3 = Util.nullAs(localObject3[1], "");
+        if ((!Util.isNullOrNil(str)) && (dS((String)localObject1, str))) {
+          try
           {
-            localObject1 = bo.bf(localObject3[1], "");
-            if ((bo.isNullOrNil(paramJSONObject)) || (!ce((String)localObject2, paramJSONObject))) {
-              break;
-            }
-            try
-            {
-              localObject3 = new JSONObject();
-              ((JSONObject)localObject3).put("phoneNumber", paramJSONObject);
-              ((JSONObject)localObject3).put("name", localObject1);
-              localJSONArray.put(localObject3);
-            }
-            catch (JSONException paramJSONObject)
-            {
-              ab.printErrStackTrace("MicroMsg.JsApiSearchContacts", paramJSONObject, "", new Object[0]);
-            }
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("phoneNumber", str);
+            localJSONObject.put("name", localObject3);
+            paramJSONObject.put(localJSONObject);
           }
-          break;
-          localObject1 = paramJSONObject.replaceAll("\\D", "");
-          paramJSONObject = (JSONObject)localObject1;
-          if (((String)localObject1).startsWith("86")) {
-            paramJSONObject = ((String)localObject1).substring(2);
+          catch (JSONException localJSONException)
+          {
+            Log.printErrStackTrace("MicroMsg.JsApiSearchContacts", localJSONException, "", new Object[0]);
           }
         }
       }
     }
-    ab.d("MicroMsg.JsApiSearchContacts", "resultArray:%s", new Object[] { localJSONArray.toString() });
-    paramJSONObject = new HashMap();
-    paramJSONObject.put("result", localJSONArray.toString());
-    paramc.h(paramInt, j("ok", paramJSONObject));
-    AppMethodBeat.o(126273);
+    Log.d("MicroMsg.JsApiSearchContacts", "resultArray:%s", new Object[] { paramJSONObject.toString() });
+    localObject1 = new HashMap();
+    ((Map)localObject1).put("result", paramJSONObject);
+    paramf.callback(paramInt, m("ok", (Map)localObject1));
+    AppMethodBeat.o(327808);
   }
 }
 

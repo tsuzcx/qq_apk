@@ -1,0 +1,217 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_ad_biu_small_image_pgc",
+    "layout_type": "layout_relative",
+    "margin_left" :"12",
+    "margin_top" : "-5",
+    "margin_bottom": "9",
+    "height": {
+        "type": "relative",
+        "value": "58"
+    },
+    "width": {
+        "type": "relative",
+        "value": "351"
+    },
+    "attributes": {
+        "setBackgroundColorString:": "#F7F7F7"
+    },
+    "event_type": "cmd_native_detail_ad_click",
+    "subviews": [
+        {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_inner_small_img",
+            "height": {
+                "type": "relative",
+                "value": "48"
+            },
+            "width": {
+                "type": "relative",
+                "value": "68"
+            },
+            "margin_left": "5",
+            "margin_top": "5",
+            "margin_bottom": "5",
+            "align_parent_left": "YES",
+            "event_type": "cmd_native_inner_ad_cover_click",
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$image_url",
+                    "-1"
+                ],
+                "setCornerRadiusString:": "$ad_icon_radius"
+            }
+        },
+        {
+            "view_type": "UIView",
+            "view_id":"id_area_right_of_img",
+            "event_type": "cmd_id_area_right_of_img_click",
+            "layout_type":"layout_relative",
+            "right_of_view": "id_inner_small_img",
+            "left_of_view": "id_inner_button_area",
+            "visible_depend_on_children":"YES",
+            "height": {
+                "type":"relative",
+                "value":"40"
+            },
+            "width":{
+                "type":"match_parent"
+            },
+            "margin_left": "8",
+            "margin_top": "10",
+            "margin_bottom": "8",
+            "subviews": [
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_inner_title",
+                    "event_type": "cmd_native_inner_ad_title_click",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width":{
+                        "type": "match_parent"
+                    },
+                    "align_parent_right": "YES",
+                    "attributes": {
+                        "setTextColorString:": "#262626",
+                        "setText:lineSpace:": [
+                            "$text_title",
+                            "4"
+                        ],
+                        "setFontSizeString:": "14",
+                        "setNumberOfLinesString:": "1"
+                    }
+                },
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_info_status",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "event_type": "cmd_native_info_status_click",
+                    "align_parent_left": "YES",
+                    "align_parent_bottom": "YES",
+                    "attributes": {
+                        "setTextColorString:": "#A6A6A6",
+                        "setText:lineSpace:": [
+                            "$text_default",
+                            "4"
+                        ],
+                        "setFontSizeString:": "12",
+                        "setNumberOfLinesString": "1"
+                    }
+                },
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_view_app",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "match_parent"
+                    },
+                    "event_type": "cmd_native_id_view_app",
+                    "right_of_view": "id_info_status",
+                    "align_parent_bottom": "YES",
+                    "margin_left":"6",
+                    "margin_right":"82",
+                    "attributes": {
+                        "setTextColorString:": "#A6A6A6",
+                        "setText:lineSpace:": [
+                            "$text_app",
+                            "4"
+                        ],
+                        "setFontSizeString:": "12",
+                        "setNumberOfLinesString:": "1"
+                    }
+                },
+                {
+                    "view_type": "UIButton",
+                    "view_id": "id_biu_ad_dislike_button",
+                    "margin_bottom":"-3",
+                    "align_parent_right": "YES",
+                    "align_parent_bottom": "YES",
+                    "event_type": "cmd_biu_ad_dislike_click",
+                    "default_visible":"YES",
+                    "height": {
+                        "type": "relative",
+                        "value": "20"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "20"
+                    },
+                    "attributes": {
+                        "setImage:": "feeds_dislike"
+                    }
+                },
+                {
+                    "view_type": "UILabel",
+                    "view_id": "id_view_download_label",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "event_type": "cmd_native_id_view_download_label",
+                    "left_of_view": "id_biu_ad_dislike_button",
+                    "align_parent_bottom": "YES",
+                    "margin_right":"5",
+                    "attributes": {
+                        "setTextColorString:": "#00CAFC",
+                        "setText:": "$text_download",
+                        "setFontSizeString:": "12",
+                        "setTextAlignmentString:": "1"
+                    }
+                },
+                {
+                    "view_type": "ReadInJoyAdDownloadView",
+                    "view_id": "id_view_AdDownloadView",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "event_type": "cmd_biu_ad_download_click",
+                    "margin_right": "25",
+                    "align_parent_bottom": "YES",
+                    "align_parent_right": "YES",
+                    "attributes": {
+                        "setFeedsModel:": "$article_model",
+                        "setDownloadBtnStyle:": {
+                            "buttonTextColor": "#00CAFC",
+                            "buttonTextSize": "12",
+                            "buttonCornerSize": "",
+                            "buttonBackgroundColor": "",
+                            "showBunttonLeftIconOrNot": "",
+                            "buttonBorderSize": "",
+                            "buttonBorderColor": "",
+                            "buttonHorizontalPadding": "",
+                            "buttonVerticalPadding": "",
+                            "showAdIconOrNot": "",
+                            "buttonAlignment": "3"
+                        },
+                        "progressStyle:": {
+                            "style": "1",
+                            "showProgress": "1",
+                            "width": "82",
+                            "height": "20",
+                            "textColor": "#ffffff",
+                            "textSize": "12",
+                            "corner": "2.5",
+                            "background": "",
+                            "progressBg": "#F2F2F2",
+                            "secondaryProgressBg": "#F2F2F2",
+                            "progressColor": "#12B7F5"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

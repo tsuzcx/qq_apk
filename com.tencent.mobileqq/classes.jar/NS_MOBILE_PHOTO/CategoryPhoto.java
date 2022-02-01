@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CategoryPhoto
   extends JceStruct
@@ -11,10 +12,10 @@ public final class CategoryPhoto
   static ArrayList<PhotoFeedsData> cache_cover_photos;
   static ArrayList<PhotoFeedsData> cache_photos = new ArrayList();
   public String categoryid = "";
-  public ArrayList<PhotoFeedsData> cover_photos;
-  public boolean has_more;
+  public ArrayList<PhotoFeedsData> cover_photos = null;
+  public boolean has_more = false;
   public String photo_page_str = "";
-  public ArrayList<PhotoFeedsData> photos;
+  public ArrayList<PhotoFeedsData> photos = null;
   
   static
   {
@@ -47,24 +48,28 @@ public final class CategoryPhoto
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.photos != null) {
-      paramJceOutputStream.write(this.photos, 0);
+    Object localObject = this.photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 1);
+    localObject = this.categoryid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.photo_page_str != null) {
-      paramJceOutputStream.write(this.photo_page_str, 2);
+    localObject = this.photo_page_str;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.has_more, 3);
-    if (this.cover_photos != null) {
-      paramJceOutputStream.write(this.cover_photos, 4);
+    localObject = this.cover_photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.CategoryPhoto
  * JD-Core Version:    0.7.0.1
  */

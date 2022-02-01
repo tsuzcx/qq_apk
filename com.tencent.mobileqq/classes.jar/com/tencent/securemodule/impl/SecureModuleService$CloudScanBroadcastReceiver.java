@@ -18,8 +18,9 @@ public class SecureModuleService$CloudScanBroadcastReceiver
   
   public boolean a(CloudScanListener paramCloudScanListener)
   {
-    if (this.b != null) {
-      return this.b.equals(paramCloudScanListener);
+    CloudScanListener localCloudScanListener = this.b;
+    if (localCloudScanListener != null) {
+      return localCloudScanListener.equals(paramCloudScanListener);
     }
     return paramCloudScanListener == null;
   }
@@ -31,17 +32,18 @@ public class SecureModuleService$CloudScanBroadcastReceiver
       this.b.onRiskFound();
       paramContext = (List)paramIntent.getSerializableExtra("key_rise");
       this.b.onRiskFoud(paramContext);
-    }
-    while (!"1000031".equals(paramIntent.getAction())) {
       return;
     }
-    int i = paramIntent.getIntExtra("key_errcode", 0);
-    this.b.onFinish(i);
+    if ("1000031".equals(paramIntent.getAction()))
+    {
+      int i = paramIntent.getIntExtra("key_errcode", 0);
+      this.b.onFinish(i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.impl.SecureModuleService.CloudScanBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

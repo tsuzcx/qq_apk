@@ -49,22 +49,29 @@ public class DrivingParam$Travel$Point
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.a != null)
+    LatLng localLatLng = this.a;
+    if (localLatLng != null)
     {
-      localStringBuilder.append(this.a.latitude).append(",");
-      localStringBuilder.append(this.a.longitude).append(",");
+      localStringBuilder.append(localLatLng.latitude);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.a.longitude);
+      localStringBuilder.append(",");
     }
-    localStringBuilder.append(this.b).append(",");
-    localStringBuilder.append(this.c).append(",");
-    localStringBuilder.append(this.d).append(",");
-    localStringBuilder.append(this.e).append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
     localStringBuilder.append(this.f);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.DrivingParam.Travel.Point
  * JD-Core Version:    0.7.0.1
  */

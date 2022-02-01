@@ -3,7 +3,6 @@ package com.tencent.analysis.c.b;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Log;
 import com.tencent.analysis.a.i;
 import com.tencent.analysis.a.j;
 import com.tencent.analysis.d.a.c;
@@ -18,233 +17,183 @@ public final class a
   
   private String d()
   {
-    Object localObject = new com.tencent.analysis.e.a();
-    i locali = this.a;
-    if (locali != null)
+    Object localObject1 = new com.tencent.analysis.e.a();
+    Object localObject2 = this.a;
+    if (localObject2 != null)
     {
-      String str;
-      if ((((com.tencent.analysis.e.a)localObject).a != null) && (!((com.tencent.analysis.e.a)localObject).a.equals("")))
+      boolean bool;
+      if ((((com.tencent.analysis.e.a)localObject1).a != null) && (!((com.tencent.analysis.e.a)localObject1).a.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.a, ((com.tencent.analysis.e.a)localObject).a);
-        str = "sdkRequst_qimei:" + ((com.tencent.analysis.e.a)localObject).a;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.a, ((com.tencent.analysis.e.a)localObject1).a);
+        new StringBuilder("sdkRequst_qimei:").append(((com.tencent.analysis.e.a)localObject1).a);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).b != null) && (!((com.tencent.analysis.e.a)localObject).b.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).b != null) && (!((com.tencent.analysis.e.a)localObject1).b.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.b, ((com.tencent.analysis.e.a)localObject).b);
-        str = "sdkRequst_imei:" + ((com.tencent.analysis.e.a)localObject).b;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.b, ((com.tencent.analysis.e.a)localObject1).b);
+        new StringBuilder("sdkRequst_imei:").append(((com.tencent.analysis.e.a)localObject1).b);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).c != null) && (!((com.tencent.analysis.e.a)localObject).c.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).c != null) && (!((com.tencent.analysis.e.a)localObject1).c.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.c, ((com.tencent.analysis.e.a)localObject).c);
-        str = "sdkRequst_mac:" + ((com.tencent.analysis.e.a)localObject).c;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.c, ((com.tencent.analysis.e.a)localObject1).c);
+        new StringBuilder("sdkRequst_mac:").append(((com.tencent.analysis.e.a)localObject1).c);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).d != null) && (!((com.tencent.analysis.e.a)localObject).d.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).d != null) && (!((com.tencent.analysis.e.a)localObject1).d.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.d, ((com.tencent.analysis.e.a)localObject).d);
-        str = "sdkRequst_imsi:" + ((com.tencent.analysis.e.a)localObject).d;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.d, ((com.tencent.analysis.e.a)localObject1).d);
+        new StringBuilder("sdkRequst_imsi:").append(((com.tencent.analysis.e.a)localObject1).d);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).e != null) && (!((com.tencent.analysis.e.a)localObject).e.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).e != null) && (!((com.tencent.analysis.e.a)localObject1).e.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.e, ((com.tencent.analysis.e.a)localObject).e);
-        str = "sdkRequst_androidId:" + ((com.tencent.analysis.e.a)localObject).e;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.e, ((com.tencent.analysis.e.a)localObject1).e);
+        new StringBuilder("sdkRequst_androidId:").append(((com.tencent.analysis.e.a)localObject1).e);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).f != null) && (!((com.tencent.analysis.e.a)localObject).f.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).f != null) && (!((com.tencent.analysis.e.a)localObject1).f.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.f, ((com.tencent.analysis.e.a)localObject).f);
-        str = "sdkRequst_model:" + ((com.tencent.analysis.e.a)localObject).f;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.f, ((com.tencent.analysis.e.a)localObject1).f);
+        new StringBuilder("sdkRequst_model:").append(((com.tencent.analysis.e.a)localObject1).f);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).g != null) && (!((com.tencent.analysis.e.a)localObject).g.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).g != null) && (!((com.tencent.analysis.e.a)localObject1).g.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.g, ((com.tencent.analysis.e.a)localObject).g);
-        str = "sdkRequst_phonePlatform:" + ((com.tencent.analysis.e.a)localObject).g;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.g, ((com.tencent.analysis.e.a)localObject1).g);
+        new StringBuilder("sdkRequst_phonePlatform:").append(((com.tencent.analysis.e.a)localObject1).g);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).h != null) && (!((com.tencent.analysis.e.a)localObject).h.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).h != null) && (!((com.tencent.analysis.e.a)localObject1).h.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.h, ((com.tencent.analysis.e.a)localObject).h);
-        str = "sdkRequst_osVersion:" + ((com.tencent.analysis.e.a)localObject).h;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.h, ((com.tencent.analysis.e.a)localObject1).h);
+        new StringBuilder("sdkRequst_osVersion:").append(((com.tencent.analysis.e.a)localObject1).h);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).i != null) && (!((com.tencent.analysis.e.a)localObject).i.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).i != null) && (!((com.tencent.analysis.e.a)localObject1).i.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.i, ((com.tencent.analysis.e.a)localObject).i);
-        str = "sdkRequst_resolution:" + ((com.tencent.analysis.e.a)localObject).i;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.i, ((com.tencent.analysis.e.a)localObject1).i);
+        new StringBuilder("sdkRequst_resolution:").append(((com.tencent.analysis.e.a)localObject1).i);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).j != null) && (!((com.tencent.analysis.e.a)localObject).j.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).j != null) && (!((com.tencent.analysis.e.a)localObject1).j.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.j, ((com.tencent.analysis.e.a)localObject).j);
-        str = "sdkRequst_cpu:" + ((com.tencent.analysis.e.a)localObject).j;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.j, ((com.tencent.analysis.e.a)localObject1).j);
+        new StringBuilder("sdkRequst_cpu:").append(((com.tencent.analysis.e.a)localObject1).j);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).k != null) && (!((com.tencent.analysis.e.a)localObject).k.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).k != null) && (!((com.tencent.analysis.e.a)localObject1).k.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.k, ((com.tencent.analysis.e.a)localObject).k);
-        str = "sdkRequst_gpu:" + ((com.tencent.analysis.e.a)localObject).k;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.k, ((com.tencent.analysis.e.a)localObject1).k);
+        new StringBuilder("sdkRequst_gpu:").append(((com.tencent.analysis.e.a)localObject1).k);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).l != null) && (!((com.tencent.analysis.e.a)localObject).l.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).l != null) && (!((com.tencent.analysis.e.a)localObject1).l.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.l, ((com.tencent.analysis.e.a)localObject).l);
-        str = "sdkRequst_romSize:" + ((com.tencent.analysis.e.a)localObject).l;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.l, ((com.tencent.analysis.e.a)localObject1).l);
+        new StringBuilder("sdkRequst_romSize:").append(((com.tencent.analysis.e.a)localObject1).l);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).m != null) && (!((com.tencent.analysis.e.a)localObject).m.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).m != null) && (!((com.tencent.analysis.e.a)localObject1).m.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.m, ((com.tencent.analysis.e.a)localObject).m);
-        str = "sdkRequst_ramSize:" + ((com.tencent.analysis.e.a)localObject).m;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.m, ((com.tencent.analysis.e.a)localObject1).m);
+        new StringBuilder("sdkRequst_ramSize:").append(((com.tencent.analysis.e.a)localObject1).m);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).n != null) && (!((com.tencent.analysis.e.a)localObject).n.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).n != null) && (!((com.tencent.analysis.e.a)localObject1).n.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.n, ((com.tencent.analysis.e.a)localObject).n);
-        str = "sdkRequst_country:" + ((com.tencent.analysis.e.a)localObject).n;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.n, ((com.tencent.analysis.e.a)localObject1).n);
+        new StringBuilder("sdkRequst_country:").append(((com.tencent.analysis.e.a)localObject1).n);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).o != null) && (!((com.tencent.analysis.e.a)localObject).o.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).o != null) && (!((com.tencent.analysis.e.a)localObject1).o.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.o, ((com.tencent.analysis.e.a)localObject).o);
-        str = "sdkRequst_language:" + ((com.tencent.analysis.e.a)localObject).o;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.o, ((com.tencent.analysis.e.a)localObject1).o);
+        new StringBuilder("sdkRequst_language:").append(((com.tencent.analysis.e.a)localObject1).o);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).p != null) && (!((com.tencent.analysis.e.a)localObject).p.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).p != null) && (!((com.tencent.analysis.e.a)localObject1).p.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.p, ((com.tencent.analysis.e.a)localObject).p);
-        str = "sdkRequst_sensor:" + ((com.tencent.analysis.e.a)localObject).p;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.p, ((com.tencent.analysis.e.a)localObject1).p);
+        new StringBuilder("sdkRequst_sensor:").append(((com.tencent.analysis.e.a)localObject1).p);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).q != null) && (!((com.tencent.analysis.e.a)localObject).q.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).q != null) && (!((com.tencent.analysis.e.a)localObject1).q.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.q, ((com.tencent.analysis.e.a)localObject).q);
-        str = "sdkRequst_appName:" + ((com.tencent.analysis.e.a)localObject).q;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.q, ((com.tencent.analysis.e.a)localObject1).q);
+        new StringBuilder("sdkRequst_appName:").append(((com.tencent.analysis.e.a)localObject1).q);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).r != null) && (!((com.tencent.analysis.e.a)localObject).r.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).r != null) && (!((com.tencent.analysis.e.a)localObject1).r.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.r, ((com.tencent.analysis.e.a)localObject).r);
-        str = "sdkRequst_appVersion:" + ((com.tencent.analysis.e.a)localObject).r;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.r, ((com.tencent.analysis.e.a)localObject1).r);
+        new StringBuilder("sdkRequst_appVersion:").append(((com.tencent.analysis.e.a)localObject1).r);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).s != null) && (!((com.tencent.analysis.e.a)localObject).s.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).s != null) && (!((com.tencent.analysis.e.a)localObject1).s.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.s, ((com.tencent.analysis.e.a)localObject).s);
-        str = "sdkRequst_sdkVersion:" + ((com.tencent.analysis.e.a)localObject).s;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.s, ((com.tencent.analysis.e.a)localObject1).s);
+        new StringBuilder("sdkRequst_sdkVersion:").append(((com.tencent.analysis.e.a)localObject1).s);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).t != null) && (!((com.tencent.analysis.e.a)localObject).t.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).t != null) && (!((com.tencent.analysis.e.a)localObject1).t.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.t, ((com.tencent.analysis.e.a)localObject).t);
-        str = "sdkRequst_channel:" + ((com.tencent.analysis.e.a)localObject).t;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.t, ((com.tencent.analysis.e.a)localObject1).t);
+        new StringBuilder("sdkRequst_channel:").append(((com.tencent.analysis.e.a)localObject1).t);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).u != null) && (!((com.tencent.analysis.e.a)localObject).u.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).u != null) && (!((com.tencent.analysis.e.a)localObject1).u.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.u, ((com.tencent.analysis.e.a)localObject).u);
-        str = "sdkRequst_brand:" + ((com.tencent.analysis.e.a)localObject).u;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.u, ((com.tencent.analysis.e.a)localObject1).u);
+        new StringBuilder("sdkRequst_brand:").append(((com.tencent.analysis.e.a)localObject1).u);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).v != null) && (!((com.tencent.analysis.e.a)localObject).v.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).v != null) && (!((com.tencent.analysis.e.a)localObject1).v.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.v, ((com.tencent.analysis.e.a)localObject).v);
-        str = "sdkRequst_inumeric:" + ((com.tencent.analysis.e.a)localObject).v;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.v, ((com.tencent.analysis.e.a)localObject1).v);
+        new StringBuilder("sdkRequst_inumeric:").append(((com.tencent.analysis.e.a)localObject1).v);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).w != null) && (!((com.tencent.analysis.e.a)localObject).w.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).w != null) && (!((com.tencent.analysis.e.a)localObject1).w.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.w, ((com.tencent.analysis.e.a)localObject).w);
-        str = "sdkRequst_uptimeMillis:" + ((com.tencent.analysis.e.a)localObject).w;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.w, ((com.tencent.analysis.e.a)localObject1).w);
+        new StringBuilder("sdkRequst_uptimeMillis:").append(((com.tencent.analysis.e.a)localObject1).w);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).x != null) && (!((com.tencent.analysis.e.a)localObject).x.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).x != null) && (!((com.tencent.analysis.e.a)localObject1).x.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.x, ((com.tencent.analysis.e.a)localObject).x);
-        str = "sdkRequst_elapsedRealtime:" + ((com.tencent.analysis.e.a)localObject).x;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.x, ((com.tencent.analysis.e.a)localObject1).x);
+        new StringBuilder("sdkRequst_elapsedRealtime:").append(((com.tencent.analysis.e.a)localObject1).x);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).y != null) && (!((com.tencent.analysis.e.a)localObject).y.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).y != null) && (!((com.tencent.analysis.e.a)localObject1).y.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.y, ((com.tencent.analysis.e.a)localObject).y);
-        str = "sdkRequst_userID:" + ((com.tencent.analysis.e.a)localObject).y;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.y, ((com.tencent.analysis.e.a)localObject1).y);
+        new StringBuilder("sdkRequst_userID:").append(((com.tencent.analysis.e.a)localObject1).y);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).z != null) && (!((com.tencent.analysis.e.a)localObject).z.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).z != null) && (!((com.tencent.analysis.e.a)localObject1).z.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.z, ((com.tencent.analysis.e.a)localObject).z);
-        str = "sdkRequst_networkType:" + ((com.tencent.analysis.e.a)localObject).z;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", str);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.z, ((com.tencent.analysis.e.a)localObject1).z);
+        new StringBuilder("sdkRequst_networkType:").append(((com.tencent.analysis.e.a)localObject1).z);
+        bool = com.tencent.analysis.b.c;
       }
-      if ((((com.tencent.analysis.e.a)localObject).A != null) && (!((com.tencent.analysis.e.a)localObject).A.equals("")))
+      if ((((com.tencent.analysis.e.a)localObject1).A != null) && (!((com.tencent.analysis.e.a)localObject1).A.equals("")))
       {
-        locali.b(com.tencent.analysis.a.b.A, ((com.tencent.analysis.e.a)localObject).A);
-        localObject = "sdkRequst_appVersionName:" + ((com.tencent.analysis.e.a)localObject).A;
-        if (com.tencent.analysis.b.c) {
-          Log.i("sdkRequst", (String)localObject);
-        }
+        ((i)localObject2).b(com.tencent.analysis.a.b.A, ((com.tencent.analysis.e.a)localObject1).A);
+        new StringBuilder("sdkRequst_appVersionName:").append(((com.tencent.analysis.e.a)localObject1).A);
+        bool = com.tencent.analysis.b.c;
       }
     }
-    this.a.a(com.tencent.analysis.a.b.B, c.a().a);
+    localObject1 = this.a;
+    localObject2 = com.tencent.analysis.a.b.B;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c.a().a);
+    ((i)localObject1).a((com.tencent.analysis.a.b)localObject2, localStringBuilder.toString());
     try
     {
-      localObject = this.a.c();
-      return localObject;
+      localObject1 = this.a.c();
+      return localObject1;
     }
     catch (Exception localException)
     {
@@ -255,71 +204,62 @@ public final class a
   
   public final void b()
   {
-    if (com.tencent.analysis.b.c) {
-      Log.i("sdkResponse", "shakeHands resPonse fail");
-    }
+    boolean bool = com.tencent.analysis.b.c;
   }
   
   public final void b(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {}
-    do
-    {
-      for (;;)
-      {
+    if (paramString != null) {
+      if (paramString.equals("")) {
         return;
-        try
+      }
+    }
+    try
+    {
+      this.b.a(paramString);
+      if (!this.b.c()) {
+        return;
+      }
+      Object localObject;
+      if ((this.b.d().containsKey(com.tencent.analysis.a.b.a)) && (!((String)this.b.d().get(com.tencent.analysis.a.b.a)).equals("")))
+      {
+        paramString = com.tencent.analysis.a.a;
+        localObject = c.b();
+        String str = (String)this.b.d().get(com.tencent.analysis.a.b.a);
+        localObject = ((d)localObject).b.c(str.getBytes());
+        paramString.getSharedPreferences("analysis_sdk", 0).edit().putString("key_qimei", (String)localObject).commit();
+        new StringBuilder("sdkResponse_qimei:").append((String)this.b.d().get(com.tencent.analysis.a.b.a));
+        bool = com.tencent.analysis.b.c;
+      }
+      if ((this.b.a().containsKey(com.tencent.analysis.a.b.C)) && (this.b.a().containsKey(com.tencent.analysis.a.b.B))) {
+        c.a(Integer.parseInt((String)this.b.a().get(com.tencent.analysis.a.b.B)), (String)this.b.a().get(com.tencent.analysis.a.b.C));
+      }
+      if (this.b.a().containsKey(com.tencent.analysis.a.b.D))
+      {
+        localObject = (String)this.b.a().get(com.tencent.analysis.a.b.D);
+        "sdkResponse_locate_config:".concat(String.valueOf(localObject));
+        bool = com.tencent.analysis.b.c;
+        if (localObject != null)
         {
-          this.b.a(paramString);
-          if (this.b.c())
-          {
-            Object localObject;
-            if ((this.b.d().containsKey(com.tencent.analysis.a.b.a)) && (!((String)this.b.d().get(com.tencent.analysis.a.b.a)).equals("")))
-            {
-              paramString = com.tencent.analysis.a.a;
-              localObject = c.b();
-              String str = (String)this.b.d().get(com.tencent.analysis.a.b.a);
-              localObject = ((d)localObject).b.c(str.getBytes());
-              paramString.getSharedPreferences("analysis_sdk", 0).edit().putString("key_qimei", (String)localObject).commit();
-              paramString = "sdkResponse_qimei:" + (String)this.b.d().get(com.tencent.analysis.a.b.a);
-              if (com.tencent.analysis.b.c) {
-                Log.i("sdkResponse", paramString);
-              }
-            }
-            if ((this.b.a().containsKey(com.tencent.analysis.a.b.C)) && (this.b.a().containsKey(com.tencent.analysis.a.b.B))) {
-              c.a(Integer.parseInt((String)this.b.a().get(com.tencent.analysis.a.b.B)), (String)this.b.a().get(com.tencent.analysis.a.b.C));
-            }
-            if (this.b.a().containsKey(com.tencent.analysis.a.b.D))
-            {
-              paramString = (String)this.b.a().get(com.tencent.analysis.a.b.D);
-              localObject = "sdkResponse_locate_config:" + paramString;
-              if (com.tencent.analysis.b.c) {
-                Log.i("sdkResponse", (String)localObject);
-              }
-              if (paramString != null)
-              {
-                localObject = com.tencent.analysis.a.a;
-                paramString = c.b().b.c(paramString.getBytes());
-                ((Context)localObject).getSharedPreferences("analysis_sdk", 0).edit().putString("local_gps", paramString).commit();
-                return;
-              }
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          paramString = paramString.toString();
+          paramString = com.tencent.analysis.a.a;
+          localObject = c.b().b.c(((String)localObject).getBytes());
+          paramString.getSharedPreferences("analysis_sdk", 0).edit().putString("local_gps", (String)localObject).commit();
         }
       }
-    } while (!com.tencent.analysis.b.c);
-    Log.i("ShakeHandsTask", paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      boolean bool;
+      label363:
+      break label363;
+    }
+    bool = com.tencent.analysis.b.c;
   }
   
   public final void c()
   {
-    if (com.tencent.analysis.b.c) {
-      Log.i("ShakeHandsTask", "ShakeHandsTask preparestart");
-    }
+    boolean bool = com.tencent.analysis.b.c;
     a(d());
   }
 }

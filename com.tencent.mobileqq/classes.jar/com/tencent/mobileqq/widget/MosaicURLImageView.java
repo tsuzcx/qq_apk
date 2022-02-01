@@ -3,15 +3,13 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import berb;
-import berc;
 import com.tencent.image.URLImageView;
 
 public class MosaicURLImageView
   extends URLImageView
-  implements berc
+  implements MosaicEffect.IMosaicEffect
 {
-  private berb a;
+  private MosaicEffect a;
   
   public MosaicURLImageView(Context paramContext)
   {
@@ -28,21 +26,12 @@ public class MosaicURLImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-  }
-  
   public void draw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null)
     {
-      this.a.a(paramCanvas);
+      localMosaicEffect.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -50,29 +39,42 @@ public class MosaicURLImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null)
     {
-      this.a.b(paramCanvas);
+      localMosaicEffect.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(berb paramberb)
+  public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
-    if (this.a != null) {
-      this.a.a(null);
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null) {
+      localMosaicEffect.a(null);
     }
-    this.a = paramberb;
-    if (this.a != null) {
-      this.a.a(this);
+    this.a = paramMosaicEffect;
+    paramMosaicEffect = this.a;
+    if (paramMosaicEffect != null) {
+      paramMosaicEffect.a(this);
     }
     invalidate();
+  }
+  
+  public void superDrawMosaic(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+  }
+  
+  public void superOnDrawMosaic(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MosaicURLImageView
  * JD-Core Version:    0.7.0.1
  */

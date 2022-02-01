@@ -1,155 +1,179 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alto;
-import alvm;
-import amif;
-import ampk;
 import android.content.SharedPreferences;
-import auwq;
-import avue;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.LBSHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
+import com.tencent.mobileqq.nearpeople.api.INearbyRecommenderUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
 public class GetNearbyRecommender
   extends AsyncStep
 {
-  private amif a;
+  private GetNearbyRecommender.MyCardObserver a;
   
-  public int a()
+  protected int doStep()
   {
-    Object localObject = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin());
-    long l2 = 0L;
-    long l1 = 0L;
-    int k = 0;
-    int m = 0;
-    long l6 = 0L;
-    int n = 0;
-    int i1 = 0;
-    int i = 0;
-    if (localObject == null)
+    Object localObject1 = ((FriendsManager)this.mAutomator.k.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.mAutomator.k.getCurrentAccountUin());
+    int i = 1;
+    if (localObject1 == null)
     {
-      if (this.jdField_a_of_type_Amif == null) {
-        this.jdField_a_of_type_Amif = new amif(this);
+      if (this.a == null) {
+        this.a = new GetNearbyRecommender.MyCardObserver(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Amif, true);
+      this.mAutomator.k.addObserver(this.a, true);
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "GetNearbyRecommender doStep|RESULT_WAITING");
       }
       return 2;
     }
-    int i2 = ((Card)localObject).age;
-    int j = n;
-    long l3 = l6;
-    long l4;
-    if (i2 >= 18)
+    int i1 = ((Card)localObject1).age;
+    localObject1 = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
+    int j = 0;
+    long l2;
+    long l3;
+    long l1;
+    if (i1 >= 18)
     {
-      k = 1;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApplication().getSharedPreferences("sp_nearbyrecommender", 0);
-      l4 = ((Long)auwq.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getAccount(), "nearby_enter_time", Long.valueOf(0L))).longValue();
-      long l5 = System.currentTimeMillis();
-      if (l4 != 0L)
+      localObject1 = this.mAutomator.k.getApplication();
+      Object localObject2 = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
+      localObject1 = ((MobileQQ)localObject1).getSharedPreferences("sp_nearbyrecommender", 0);
+      l2 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.mAutomator.k.getAccount(), "nearby_enter_time", Long.valueOf(0L))).longValue();
+      l3 = System.currentTimeMillis();
+      if ((l2 != 0L) && (86400L > Math.abs(l3 - l2) / 1000L))
       {
-        j = i1;
-        i = m;
-        l1 = l6;
-        if (86400L > Math.abs(l5 - l4) / 1000L) {}
+        l1 = 0L;
       }
       else
       {
-        i = 2;
-        m = ((SharedPreferences)localObject).getInt(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin() + "_" + "key_login_pull_interval", 86400);
-        l6 = ((SharedPreferences)localObject).getLong(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin() + "_" + "key_login_pull_time", 0L);
-        if (l6 != 0L)
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.mAutomator.k.getCurrentAccountUin());
+        ((StringBuilder)localObject2).append("_");
+        INearbyRecommenderUtils localINearbyRecommenderUtils = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
+        ((StringBuilder)localObject2).append("key_login_pull_interval");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localINearbyRecommenderUtils = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
+        j = ((SharedPreferences)localObject1).getInt((String)localObject2, 86400);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.mAutomator.k.getCurrentAccountUin());
+        ((StringBuilder)localObject2).append("_");
+        localINearbyRecommenderUtils = (INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class);
+        ((StringBuilder)localObject2).append("key_login_pull_time");
+        l1 = ((SharedPreferences)localObject1).getLong(((StringBuilder)localObject2).toString(), 0L);
+        if ((l1 != 0L) && (j > Math.abs(l3 - l1) / 1000L))
         {
-          j = n;
-          k = m;
-          l3 = l6;
-          l1 = l4;
-          l2 = l5;
-          if (m > Math.abs(l5 - l6) / 1000L) {
-            break label636;
+          i = 2;
+        }
+        else
+        {
+          i = 3;
+          localObject1 = this.mAutomator.k.getMessageFacade();
+          m = ((QQMessageFacade)localObject1).w();
+          k = ((QQMessageFacade)localObject1).A();
+          int n = m - k;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("GetNearbyRecommender doStep|unreadnum|unReadMsgNum=");
+            ((StringBuilder)localObject1).append(n);
+            ((StringBuilder)localObject1).append(",paUnreaded=");
+            ((StringBuilder)localObject1).append(k);
+            QLog.d("QQInitHandler", 2, ((StringBuilder)localObject1).toString());
           }
+          l6 = l1;
+          m = j;
+          k = n;
+          l5 = l2;
+          l4 = l3;
+          if (n > 0) {
+            break label629;
+          }
+          i = 4;
+          l6 = l1;
+          m = j;
+          k = n;
+          l5 = l2;
+          l4 = l3;
+          if (!((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).isLastLocationSuccess()) {
+            break label629;
+          }
+          i = 5;
+          ((LBSHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.LBS_HANDLER)).a(0);
+          l6 = l1;
+          m = j;
+          k = n;
+          l5 = l2;
+          l4 = l3;
+          break label629;
         }
-        i = 3;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a();
-        k = ((QQMessageFacade)localObject).b();
-        j = ((QQMessageFacade)localObject).e();
-        n = k - j;
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, "GetNearbyRecommender doStep|unreadnum|unReadMsgNum=" + n + ",paUnreaded=" + j);
-        }
-        j = n;
-        k = m;
-        l3 = l6;
-        l1 = l4;
-        l2 = l5;
-        if (n > 0) {
-          break label636;
-        }
-        i = 4;
-        j = n;
-        k = m;
-        l3 = l6;
-        l1 = l4;
-        l2 = l5;
-        if (!ampk.a()) {
-          break label636;
-        }
-        k = 5;
-        ((alvm)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(3)).a(0);
-        l1 = l6;
-        i = m;
-        j = n;
       }
-      l2 = l5;
-      m = i;
-      l3 = l1;
-      i = k;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("GetNearbyRecommender doStep|age=").append(i2).append(",currentTime=").append(l2).append(",enter_nearby_time=").append(l4).append(",login_pull_interval=").append(m).append(",login_pull_time=").append(l3).append(",unReadMsgNum=").append(j).append(",lbsInfo=");
-        if (0 == 0) {
-          break label630;
-        }
-      }
-      label630:
-      for (boolean bool = true;; bool = false)
-      {
-        QLog.d("QQInitHandler", 2, bool + ",step=" + i);
-        return 7;
-      }
-      label636:
-      m = k;
-      l4 = l1;
+      l1 = 0L;
+      l2 = l1;
+      l3 = l2;
+      i = 0;
+      j = 0;
     }
+    int k = 0;
+    long l4 = l3;
+    long l5 = l2;
+    int m = j;
+    long l6 = l1;
+    label629:
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("GetNearbyRecommender doStep|age=");
+      ((StringBuilder)localObject1).append(i1);
+      ((StringBuilder)localObject1).append(",currentTime=");
+      ((StringBuilder)localObject1).append(l4);
+      ((StringBuilder)localObject1).append(",enter_nearby_time=");
+      ((StringBuilder)localObject1).append(l5);
+      ((StringBuilder)localObject1).append(",login_pull_interval=");
+      ((StringBuilder)localObject1).append(m);
+      ((StringBuilder)localObject1).append(",login_pull_time=");
+      ((StringBuilder)localObject1).append(l6);
+      ((StringBuilder)localObject1).append(",unReadMsgNum=");
+      ((StringBuilder)localObject1).append(k);
+      ((StringBuilder)localObject1).append(",lbsInfo=");
+      ((StringBuilder)localObject1).append(false);
+      ((StringBuilder)localObject1).append(",step=");
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("QQInitHandler", 2, ((StringBuilder)localObject1).toString());
+    }
+    return 7;
   }
   
-  public void a()
+  public void onCreate()
   {
-    avue.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
-    this.c = 1;
+    ((INearbyRecommenderUtils)QRoute.api(INearbyRecommenderUtils.class)).checkExpireTime(this.mAutomator.k);
+    this.mCountRetry = 1;
   }
   
-  public void d()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_Amif != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Amif);
-      this.jdField_a_of_type_Amif = null;
+      this.mAutomator.k.removeObserver(this.a);
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetNearbyRecommender
  * JD-Core Version:    0.7.0.1
  */

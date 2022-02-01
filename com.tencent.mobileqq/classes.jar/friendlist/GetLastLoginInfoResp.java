@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetLastLoginInfoResp
   extends JceStruct
@@ -11,11 +12,11 @@ public final class GetLastLoginInfoResp
   static int cache_result;
   static LastLoginPageInfo cache_stPageInfo;
   static ArrayList<LastLoginInfo> cache_vecLastLoginInfo;
-  public short errorCode;
-  public int iRefreshIntervalMin;
-  public int result;
-  public LastLoginPageInfo stPageInfo;
-  public ArrayList<LastLoginInfo> vecLastLoginInfo;
+  public short errorCode = 0;
+  public int iRefreshIntervalMin = 0;
+  public int result = 0;
+  public LastLoginPageInfo stPageInfo = null;
+  public ArrayList<LastLoginInfo> vecLastLoginInfo = null;
   
   public GetLastLoginInfoResp() {}
   
@@ -50,18 +51,20 @@ public final class GetLastLoginInfoResp
   {
     paramJceOutputStream.write(this.result, 0);
     paramJceOutputStream.write(this.errorCode, 1);
-    if (this.stPageInfo != null) {
-      paramJceOutputStream.write(this.stPageInfo, 2);
+    Object localObject = this.stPageInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.vecLastLoginInfo != null) {
-      paramJceOutputStream.write(this.vecLastLoginInfo, 3);
+    localObject = this.vecLastLoginInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.iRefreshIntervalMin, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetLastLoginInfoResp
  * JD-Core Version:    0.7.0.1
  */

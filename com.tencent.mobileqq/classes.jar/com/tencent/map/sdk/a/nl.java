@@ -27,19 +27,20 @@ public final class nl
   
   public static String b(String paramString)
   {
-    if (a(paramString)) {}
-    int i;
-    do
-    {
+    if (a(paramString)) {
       return paramString;
-      i = paramString.lastIndexOf(".");
-    } while (i <= 0);
-    return paramString.substring(0, i);
+    }
+    int i = paramString.lastIndexOf(".");
+    String str = paramString;
+    if (i > 0) {
+      str = paramString.substring(0, i);
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.nl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/idg" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/cqz" />
+    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/ms6" android:paddingTop="50.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

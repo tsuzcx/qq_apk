@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/tvTime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="-3.0dip" android:text="10:10:02" android:singleLine="true" android:includeFontPadding="false" style="@style/D3_Font" />
+    <RelativeLayout android:id="@id/systemMsg" android:background="@drawable/list_system_bg_selector" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip">
+        <TextView android:id="@id/tvTitle" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_marginRight="66.0dip" android:text="nicknamemnicknamenicknamenickname" android:singleLine="true" android:includeFontPadding="false" style="@style/B4_Font" />
+        <RelativeLayout android:id="@id/bodyLayout" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/tvTitle">
+            <ImageView android:id="@id/new_flag" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/systemmsg_unread" />
+            <TextView android:id="@id/tvBody" android:paddingBottom="11.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="result_summary" android:singleLine="false" android:includeFontPadding="false" android:layout_toRightOf="@id/new_flag" style="@style/C4_Font" />
+        </RelativeLayout>
+        <View android:id="@id/broadcast_block_divider" android:background="@drawable/list_blockbg_divider" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_below="@id/bodyLayout" />
+        <RelativeLayout android:id="@id/bottomRelative" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/broadcast_block_divider">
+            <ImageView android:id="@id/arrowIcon" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/open_arrow" android:layout_alignParentRight="true" />
+            <TextView android:autoLink="web" android:id="@id/tvUrl" android:paddingRight="10.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="downLoad" android:singleLine="true" android:layout_toLeftOf="@id/arrowIcon" style="@style/D2_Font" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

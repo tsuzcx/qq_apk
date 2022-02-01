@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.FillLinearLayout android:orientation="vertical" android:id="@id/user_info_header" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/user_info_header_panel" android:background="@drawable/qq_profilecard_cover_default" android:layout_width="fill_parent" android:layout_height="@dimen/qzone_feeds_header_height" android:layout_marginBottom="@dimen/qzone_feeds_header_marginBottom">
+        <com.qzone.cover.ui.QZoneCoverContainer android:id="@id/feed_cover" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <FrameLayout android:layout_gravity="center|right|top" android:id="@id/qzone_friendship_container" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.qzone.cover.business.QZoneWidgetControllerDecorator android:layout_gravity="bottom|center|right" android:id="@id/qzone_cover_widget_decorator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="11.0dip" android:layout_marginBottom="51.0dip" />
+        <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include android:id="@id/user_info_summary_bar" layout="@layout/qzone_activity_homepage_summary_bar" />
+        </LinearLayout>
+    </FrameLayout>
+    <include android:id="@id/avatar_area" layout="@layout/qzone_hd_avatar" />
+    <com.qzone.navigationbar.HDNavigatorBarForMyQzone android:layout_gravity="center_horizontal" android:id="@id/title_navbar" android:background="@drawable/card_shadow" android:layout_width="@dimen/qzone_feed_width" android:layout_height="@dimen/qzone_navbar_height" />
+    <com.qzone.widget.CommonBtmLine android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <RelativeLayout android:layout_gravity="center" android:id="@id/personal_setting_personalize_rl" android:background="@drawable/qzone_skin_color_item_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/personal_setting_personalize_icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/qzone_personal_setting_entry_icon" android:scaleType="center" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/personal_setting_personalize_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="6.0dip" android:text="个性化中心" android:singleLine="true" android:layout_toRightOf="@id/personal_setting_personalize_icon" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" />
+        <ImageView android:id="@id/personal_setting_personalize_forward" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/qzone_icon_forward_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/personal_setting_personalize_dot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_new_game" android:layout_toLeftOf="@id/personal_setting_personalize_forward" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.qzone.widget.CommonBtmLine android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <RelativeLayout android:layout_gravity="center" android:id="@id/personal_setting_entry" android:background="@drawable/qzone_skin_color_item_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/personal_setting_entry_icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/qzone_personal_setting_gift_icon" android:scaleType="centerInside" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/personal_setting_entry_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="6.0dip" android:text="个性化中心" android:singleLine="true" android:layout_toRightOf="@id/personal_setting_entry_icon" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/qzone_icon_forward_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <include android:id="@id/user_info_music_bar" android:visibility="gone" layout="@layout/qzone_activity_homepage_music_bar" />
+</com.qzone.widget.FillLinearLayout>

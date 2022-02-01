@@ -7,12 +7,12 @@ class ReadInJoyNativeAdAppVideoView$3
   
   public void run()
   {
-    ReadInJoyNativeAdAppVideoView.a(this.this$0);
+    ReadInJoyNativeAdAppVideoView.e(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.3
  * JD-Core Version:    0.7.0.1
  */

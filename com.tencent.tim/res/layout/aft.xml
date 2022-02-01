@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h11" android:background="@color/w0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/adk" />
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/ee0" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="83.0dip" android:layout_marginLeft="12.5dip" android:layout_marginRight="12.5dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/h17" android:paddingLeft="12.5dip" android:paddingRight="12.5dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_above="@id/ee0" android:layout_below="@id/if4">
+        <ScrollView android:id="@id/h1r" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include android:id="@id/h1m" android:visibility="visible" layout="@layout/ag1" />
+                <include android:id="@id/h16" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/afx" />
+                <include android:id="@id/kok" android:visibility="gone" layout="@layout/afz" />
+                <include android:id="@id/kol" android:visibility="gone" layout="@layout/ag3" />
+                <FrameLayout android:id="@id/ccm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+    <include android:id="@id/h18" android:visibility="gone" layout="@layout/afy" />
+    <include android:id="@id/h1n" android:visibility="gone" layout="@layout/ag2" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/adi" />
+</RelativeLayout>

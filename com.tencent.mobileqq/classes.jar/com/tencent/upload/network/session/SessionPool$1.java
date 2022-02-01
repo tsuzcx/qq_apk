@@ -11,7 +11,10 @@ class SessionPool$1
   
   public void onStateChanged(boolean paramBoolean)
   {
-    UploadLog.d("SessionPool", "hasNetwork: " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hasNetwork: ");
+    localStringBuilder.append(paramBoolean);
+    UploadLog.d("SessionPool", localStringBuilder.toString());
     if (!paramBoolean) {
       return;
     }
@@ -20,7 +23,7 @@ class SessionPool$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.session.SessionPool.1
  * JD-Core Version:    0.7.0.1
  */

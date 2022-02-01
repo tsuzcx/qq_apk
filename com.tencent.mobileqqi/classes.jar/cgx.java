@@ -1,41 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.FriendsManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class cgx
-  extends BroadcastReceiver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cgx(DirectForwardActivity paramDirectForwardActivity) {}
+  public cgx(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramIntent = paramIntent.getExtras();
-    if (paramIntent != null)
+    paramCompoundButton = (FriendsManagerImp)this.a.b.getManager(8);
+    Object localObject = paramCompoundButton.a(DiscussionInfoCardActivity.a(this.a), this.a.b.a());
+    int i = ((DiscussionMemberInfo)localObject).flag;
+    if (paramBoolean)
     {
-      paramContext = paramIntent.getStringArrayList("procNameList");
-      paramIntent = paramIntent.getString("verify");
-      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.d != null) && (BrowserAppInterface.a(paramIntent, paramContext))) {
-        break label53;
+      ((DiscussionMemberInfo)localObject).flag = ((byte)(((DiscussionMemberInfo)localObject).flag & 0xFFFFFFFE));
+      if (i != ((DiscussionMemberInfo)localObject).flag)
+      {
+        byte b = (byte)(((DiscussionMemberInfo)localObject).flag & 0x1);
+        paramCompoundButton.a((DiscussionMemberInfo)localObject);
+        if (QLog.isDevelopLevel()) {
+          QLog.d(DiscussionInfoCardActivity.c(), 4, "DiscussionMemberInfo.flag changed save now:" + ((DiscussionMemberInfo)localObject).flag + " flag:" + b);
+        }
+        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b);
+      }
+      localObject = this.a.b;
+      if (!paramBoolean) {
+        break label215;
       }
     }
-    for (;;)
+    label215:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
     {
+      ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "0X80040EB", "0X80040EB", 0, 0, paramCompoundButton, "", "", "");
       return;
-      label53:
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        if (this.a.d.equals(paramContext.get(i)))
-        {
-          this.a.finish();
-          return;
-        }
-        i += 1;
-      }
+      ((DiscussionMemberInfo)localObject).flag = ((byte)(((DiscussionMemberInfo)localObject).flag | 0x1));
+      break;
     }
   }
 }

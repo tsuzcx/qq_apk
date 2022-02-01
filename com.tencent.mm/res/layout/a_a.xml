@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.ipcall.ui.IPCallShareSquareLayout android:id="@id/c2a" android:background="@drawable/a1l" android:clickable="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/iwt" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="5.0">
-            <ImageView android:layout_gravity="center" android:id="@id/cr7" android:layout_width="48.0dip" android:layout_height="48.0dip" />
-        </FrameLayout>
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/l9" android:padding="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d6">
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/ce7" android:background="@null" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_outlined_emoji" android:scaleType="fitXY" />
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/om" android:background="@null" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_outlined_alignment_left" android:scaleType="fitXY" />
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="2.0" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/nh" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center" android:id="@id/cr8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.54" />
-        </FrameLayout>
-    </LinearLayout>
-</com.tencent.mm.plugin.ipcall.ui.IPCallShareSquareLayout>
+</LinearLayout>

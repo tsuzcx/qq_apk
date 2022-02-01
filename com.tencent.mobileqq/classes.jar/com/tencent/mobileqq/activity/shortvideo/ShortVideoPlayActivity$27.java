@@ -7,7 +7,7 @@ class ShortVideoPlayActivity$27
   
   public void run()
   {
-    this.this$0.p();
+    this.this$0.dismissLoadingView();
   }
 }
 

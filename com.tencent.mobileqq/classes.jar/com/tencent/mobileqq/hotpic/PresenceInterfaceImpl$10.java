@@ -1,35 +1,36 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.app.Dialog;
-import asvy;
-import asvz;
-import bdgm;
-import bdjz;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
-public class PresenceInterfaceImpl$10
+class PresenceInterfaceImpl$10
   implements Runnable
 {
-  public PresenceInterfaceImpl$10(asvy paramasvy, String paramString) {}
+  PresenceInterfaceImpl$10(PresenceInterfaceImpl paramPresenceInterfaceImpl, String paramString) {}
   
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.this$0.a, 232, null, this.a, new asvz(this), null);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0.f, 232, null, this.a, new PresenceInterfaceImpl.10.1(this), null);
     try
     {
-      localbdjz.show();
+      localQQCustomDialog.show();
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
+      label33:
+      break label33;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("PresenceInterfaceImpl", 2, "show dialog fail");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.10
  * JD-Core Version:    0.7.0.1
  */

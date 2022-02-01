@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/jl" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/axa" android:clickable="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:checked="false" android:button="@drawable/ha" /> /> <com.tencent.widget.RecentDynamicAvatarView android:id="@id/icon" android:focusable="false" android:clickable="false" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/tbj" android:singleLine="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/ix0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="110M" />
+    </LinearLayout>> </LinearLayout>

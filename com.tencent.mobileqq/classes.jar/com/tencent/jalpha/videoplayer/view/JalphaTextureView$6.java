@@ -12,24 +12,31 @@ class JalphaTextureView$6
   {
     if ((JalphaTextureView.access$1400(this.this$0)) && (JalphaTextureView.access$1700(this.this$0) != null) && (JalphaTextureView.access$900(this.this$0) != null) && (JalphaTextureView.access$1800(this.this$0) != null))
     {
-      JalphaTextureView.access$1902(this.this$0, JalphaTextureView.access$2000(this.this$0));
+      Object localObject = this.this$0;
+      JalphaTextureView.access$1902((JalphaTextureView)localObject, JalphaTextureView.access$2000((JalphaTextureView)localObject));
       int i = JalphaTextureView.access$1700(this.this$0).createDecoder(JalphaTextureView.access$900(this.this$0), JalphaTextureView.access$1800(this.this$0));
-      Logger.e(JalphaTextureView.access$000(this.this$0), " ret =" + i);
-      Logger.v(JalphaTextureView.access$000(this.this$0), "===============hardware decode create return = " + i);
-      if (i == 1) {
+      localObject = JalphaTextureView.access$000(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" ret =");
+      localStringBuilder.append(i);
+      Logger.e((String)localObject, localStringBuilder.toString());
+      localObject = JalphaTextureView.access$000(this.this$0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("===============hardware decode create return = ");
+      localStringBuilder.append(i);
+      Logger.v((String)localObject, localStringBuilder.toString());
+      if (i == 1)
+      {
         JalphaTextureView.access$1700(this.this$0).decode();
+        return;
       }
+      Logger.e(JalphaTextureView.access$000(this.this$0), " 不开始解码。。。。 ");
     }
-    else
-    {
-      return;
-    }
-    Logger.e(JalphaTextureView.access$000(this.this$0), " 不开始解码。。。。 ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.view.JalphaTextureView.6
  * JD-Core Version:    0.7.0.1
  */

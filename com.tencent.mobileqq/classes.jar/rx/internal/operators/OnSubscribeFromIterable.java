@@ -11,10 +11,12 @@ public final class OnSubscribeFromIterable<T>
   
   public OnSubscribeFromIterable(Iterable<? extends T> paramIterable)
   {
-    if (paramIterable == null) {
-      throw new NullPointerException("iterable must not be null");
+    if (paramIterable != null)
+    {
+      this.is = paramIterable;
+      return;
     }
-    this.is = paramIterable;
+    throw new NullPointerException("iterable must not be null");
   }
   
   public void call(Subscriber<? super T> paramSubscriber)
@@ -30,7 +32,7 @@ public final class OnSubscribeFromIterable<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeFromIterable
  * JD-Core Version:    0.7.0.1
  */

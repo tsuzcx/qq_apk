@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class get_user_gashapon_rsp
   extends JceStruct
 {
-  public int iFrameRate;
+  public int iFrameRate = 0;
   public String strH5Url = "";
   public String strPicUrl = "";
   public String strTextUrl = "";
-  public long uiGashaponCount;
+  public long uiGashaponCount = 0L;
   
   public get_user_gashapon_rsp() {}
   
@@ -35,14 +35,17 @@ public final class get_user_gashapon_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strPicUrl != null) {
-      paramJceOutputStream.write(this.strPicUrl, 0);
+    String str = this.strPicUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strTextUrl != null) {
-      paramJceOutputStream.write(this.strTextUrl, 1);
+    str = this.strTextUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strH5Url != null) {
-      paramJceOutputStream.write(this.strH5Url, 2);
+    str = this.strH5Url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.uiGashaponCount, 3);
     paramJceOutputStream.write(this.iFrameRate, 4);
@@ -50,7 +53,7 @@ public final class get_user_gashapon_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_GASHAPON.get_user_gashapon_rsp
  * JD-Core Version:    0.7.0.1
  */

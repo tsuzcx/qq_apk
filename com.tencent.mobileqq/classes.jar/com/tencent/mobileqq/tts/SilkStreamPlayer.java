@@ -1,127 +1,143 @@
 package com.tencent.mobileqq.tts;
 
-import android.app.Application;
 import android.content.Context;
-import banh;
-import bcxy;
-import bdhe;
-import bflr;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qqemoticon.api.ITextUtilsApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.DataOutputStream;
 import java.io.InputStream;
-import java.net.URL;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import ndd;
+import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SilkStreamPlayer
 {
-  private static long jdField_a_of_type_Long;
-  private Application jdField_a_of_type_AndroidAppApplication = BaseApplicationImpl.sApplication;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bcxy jdField_a_of_type_Bcxy;
-  private SilkStreamPlayer.SilkStreamPlayerThread jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private HttpsURLConnection jdField_a_of_type_JavaxNetSslHttpsURLConnection;
-  private String b;
+  private static long a;
+  private SilkStreamPlayer.SilkStreamPlayerThread b;
   private String c;
   private String d;
+  private String e = "0";
+  private String f;
   
   public SilkStreamPlayer(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = banh.e(paramString1).replaceAll("/", " ");
-    this.b = paramString2;
-    this.d = paramString3;
+    this.c = ((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(paramString1).replaceAll("/", " ");
+    this.c = paramString1;
+    this.d = paramString2;
+    this.f = paramString3;
   }
   
-  private InputStream a()
+  private InputStream a(HttpsURLConnection paramHttpsURLConnection, int paramInt)
   {
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection = ((HttpsURLConnection)new URL("https://textts.qq.com/cgi-bin/tts").openConnection());
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.setRequestMethod("POST");
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.setRequestProperty("Accept", "application/json");
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("uin=");
-    ((StringBuilder)localObject1).append(this.b);
-    ((StringBuilder)localObject1).append(";skey=");
-    ((StringBuilder)localObject1).append(this.d);
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.setRequestProperty("Cookie", ((StringBuilder)localObject1).toString());
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.setDoOutput(true);
-    this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.setDoInput(true);
+    paramHttpsURLConnection.setRequestMethod("POST");
+    paramHttpsURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+    paramHttpsURLConnection.setRequestProperty("Accept", "application/json");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uin=");
+    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(";skey=");
+    ((StringBuilder)localObject).append(this.f);
+    paramHttpsURLConnection.setRequestProperty("Cookie", ((StringBuilder)localObject).toString());
+    paramHttpsURLConnection.setDoOutput(true);
+    paramHttpsURLConnection.setDoInput(true);
     try
     {
-      localObject1 = SSLContext.getDefault();
-      if (localObject1 != null) {
-        this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.setSSLSocketFactory(((SSLContext)localObject1).getSocketFactory());
-      }
-      localObject1 = new JSONObject();
+      localObject = SSLContext.getDefault();
     }
     catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
     {
-      try
-      {
-        ((JSONObject)localObject1).put("appid", "201908021016");
-        ((JSONObject)localObject1).put("uin", Long.valueOf(this.b));
-        ((JSONObject)localObject1).put("sendUin", Long.valueOf(this.c));
-        ((JSONObject)localObject1).put("text", this.jdField_a_of_type_JavaLangString);
-        ((JSONObject)localObject1).put("textmd5", bflr.d(this.jdField_a_of_type_JavaLangString));
-        long l = jdField_a_of_type_Long;
-        jdField_a_of_type_Long = 1L + l;
-        ((JSONObject)localObject1).put("seq", l);
-        ((JSONObject)localObject1).put("clientVersion", "AND_" + AppSetting.a() + "_" + "8.3.5");
-        ((JSONObject)localObject1).put("net", ndd.a());
-        DataOutputStream localDataOutputStream = new DataOutputStream(this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getOutputStream());
-        localDataOutputStream.write(new String(((JSONObject)localObject1).toString().getBytes(), "utf-8").getBytes());
-        localDataOutputStream.flush();
-        localDataOutputStream.close();
-        if (this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getResponseCode() == 200)
-        {
-          return this.jdField_a_of_type_JavaxNetSslHttpsURLConnection.getInputStream();
-          localNoSuchAlgorithmException = localNoSuchAlgorithmException;
-          QLog.e("SilkStreamPlayer", 2, localNoSuchAlgorithmException, new Object[0]);
-          Object localObject2 = null;
-        }
+      QLog.e("SilkStreamPlayer", 2, localNoSuchAlgorithmException, new Object[0]);
+      localJSONObject = null;
+    }
+    if (localJSONObject != null) {
+      paramHttpsURLConnection.setSSLSocketFactory(localJSONObject.getSocketFactory());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("appid", "201908021016");
+      localJSONObject.put("uin", Long.valueOf(this.d));
+      localJSONObject.put("sendUin", Long.valueOf(this.e));
+      localJSONObject.put("text", this.c);
+      localJSONObject.put("textmd5", MD5Utils.toMD5(this.c));
+      long l = a;
+      a = 1L + l;
+      localJSONObject.put("seq", l);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AND_");
+      localStringBuilder.append(AppSetting.d());
+      localStringBuilder.append("_");
+      localStringBuilder.append("8.8.17");
+      localJSONObject.put("clientVersion", localStringBuilder.toString());
+      localJSONObject.put("net", HttpUtil.getNetWorkType());
+      localJSONObject.put("businessID", paramInt);
+    }
+    catch (JSONException localJSONException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SilkStreamPlayer", 1, localJSONException, new Object[0]);
       }
-      catch (JSONException localJSONException)
+    }
+    try
+    {
+      DataOutputStream localDataOutputStream = new DataOutputStream(paramHttpsURLConnection.getOutputStream());
+      localDataOutputStream.write(new String(localJSONObject.toString().getBytes(), "utf-8").getBytes());
+      localDataOutputStream.flush();
+      localDataOutputStream.close();
+      if (paramHttpsURLConnection.getResponseCode() == 200)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("SilkStreamPlayer", 1, localJSONException, new Object[0]);
-          }
+        if (paramInt == 1) {
+          a("0", "0");
         }
+        return paramHttpsURLConnection.getInputStream();
+      }
+      if (paramInt == 1)
+      {
+        paramHttpsURLConnection = String.valueOf(paramHttpsURLConnection.getResponseCode());
+        a(paramHttpsURLConnection, paramHttpsURLConnection);
+        return null;
+      }
+    }
+    catch (Exception paramHttpsURLConnection)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SilkStreamPlayer", 1, paramHttpsURLConnection, new Object[0]);
       }
     }
     return null;
   }
   
+  private void a(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("playSuccess", paramString1);
+    localHashMap.put("playError", paramString2);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "TTSPlayMonitor", true, 0L, 0L, localHashMap, "");
+  }
+  
   private boolean a(byte[] paramArrayOfByte)
   {
-    boolean bool2 = true;
-    byte[] arrayOfByte = bdhe.a("02232153494C4B5F5633");
+    byte[] arrayOfByte = HexUtil.hexStr2Bytes("02232153494C4B5F5633");
     int i = 1;
-    for (;;)
+    while (i < 10)
     {
-      boolean bool1 = bool2;
-      if (i < 10)
-      {
-        if (arrayOfByte[i] != paramArrayOfByte[i]) {
-          bool1 = false;
-        }
-      }
-      else {
-        return bool1;
+      if (arrayOfByte[i] != paramArrayOfByte[i]) {
+        return false;
       }
       i += 1;
     }
+    return true;
   }
   
   private byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -133,48 +149,55 @@ public class SilkStreamPlayer
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread = new SilkStreamPlayer.SilkStreamPlayerThread(this, this.jdField_a_of_type_AndroidAppApplication);
+    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.b;
+    if (localSilkStreamPlayerThread != null)
+    {
+      SilkStreamPlayer.SilkStreamPlayerThread.a(localSilkStreamPlayerThread, false);
+      this.b = null;
     }
-    ThreadManagerV2.excute(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread, 128, null, true);
   }
   
-  public void a(bcxy parambcxy)
+  public void a(SilkStreamPlayer.OnSilkStreamPlay paramOnSilkStreamPlay, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bcxy = parambcxy;
+    if (this.b == null) {
+      this.b = new SilkStreamPlayer.SilkStreamPlayerThread(this, MobileQQ.sMobileQQ, paramOnSilkStreamPlay, paramInt1, paramInt2);
+    }
+    ThreadManagerV2.excute(this.b, 128, null, true);
   }
   
   public void a(String paramString)
   {
-    this.c = paramString;
+    this.d = paramString;
   }
   
-  public boolean a()
+  public void b(String paramString)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread != null) && (SilkStreamPlayer.SilkStreamPlayerThread.a(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread));
+    this.f = paramString;
   }
   
-  public void b()
+  public boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread != null)
-    {
-      SilkStreamPlayer.SilkStreamPlayerThread.a(this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread, false);
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer$SilkStreamPlayerThread = null;
-    }
-    this.jdField_a_of_type_Bcxy = null;
-    if (this.jdField_a_of_type_Bcxy != null) {
-      this.jdField_a_of_type_Bcxy.c();
-    }
+    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.b;
+    return (localSilkStreamPlayerThread != null) && (SilkStreamPlayer.SilkStreamPlayerThread.a(localSilkStreamPlayerThread));
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Bcxy = null;
+    SilkStreamPlayer.SilkStreamPlayerThread localSilkStreamPlayerThread = this.b;
+    if (localSilkStreamPlayerThread != null) {
+      SilkStreamPlayer.SilkStreamPlayerThread.a(localSilkStreamPlayerThread, false);
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    this.c = ((ITextUtilsApi)QRoute.api(ITextUtilsApi.class)).emoticonToTextForTalkBack(paramString).replaceAll("/", " ");
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.SilkStreamPlayer
  * JD-Core Version:    0.7.0.1
  */

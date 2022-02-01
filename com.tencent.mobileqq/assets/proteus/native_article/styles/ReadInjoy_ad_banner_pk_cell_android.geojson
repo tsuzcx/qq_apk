@@ -236,7 +236,6 @@
             },
             "attributes": {
               "setBackgroundColorString:": "#4d000000",
-              "setFrameString:": "-1",
               "setText:": "$text",
               "setTextColorString:": "#FFFFFF",
               "setFontSizeString:": "11",

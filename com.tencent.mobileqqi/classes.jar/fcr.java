@@ -1,16 +1,30 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
 import com.tencent.mobileqq.app.GuardManager;
-import java.util.TimerTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class fcr
-  extends TimerTask
+  extends BroadcastReceiver
 {
   private fcr(GuardManager paramGuardManager) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (GuardManager.b(this.a)) {
-      GuardManager.a(this.a).a(4, null);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, "received with " + paramContext);
     }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
+      if (GuardManager.a(this.a) > 0L) {
+        this.a.a(false);
+      }
+    }
+    while ((!"android.intent.action.SCREEN_ON".equals(paramContext)) || (GuardManager.a(this.a) != 0L) || (!GuardManager.a(this.a))) {
+      return;
+    }
+    GuardManager.a(this.a, SystemClock.uptimeMillis());
   }
 }
 

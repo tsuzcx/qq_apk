@@ -11,7 +11,7 @@ public final class oidb_cmd0xc96$GetFollowInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.GetFollowInfoRsp
  * JD-Core Version:    0.7.0.1
  */

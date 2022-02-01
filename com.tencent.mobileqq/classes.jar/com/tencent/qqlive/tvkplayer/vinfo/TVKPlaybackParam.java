@@ -86,20 +86,32 @@ public class TVKPlaybackParam
   
   void dumpParams(String paramString)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder(paramString);
-    localStringBuilder1.append("(");
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("[").append("vid =");
-    if (this.mVideoInfo != null) {}
-    for (paramString = this.mVideoInfo.getVid();; paramString = "")
-    {
-      localStringBuilder2.append(paramString).append("]");
-      localStringBuilder1.append("[").append("definition =").append(this.mDefinition).append("]");
-      localStringBuilder1.append("[").append("startTime =").append(this.mStartPosition).append("]");
-      localStringBuilder1.append("[").append("skipTime =").append(this.mSkipEndPosition).append("]");
-      localStringBuilder1.append(")");
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", localStringBuilder1.toString());
-      return;
+    StringBuilder localStringBuilder = new StringBuilder(paramString);
+    localStringBuilder.append("(");
+    localStringBuilder.append("[");
+    localStringBuilder.append("vid =");
+    paramString = this.mVideoInfo;
+    if (paramString != null) {
+      paramString = paramString.getVid();
+    } else {
+      paramString = "";
     }
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append("definition =");
+    localStringBuilder.append(this.mDefinition);
+    localStringBuilder.append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append("startTime =");
+    localStringBuilder.append(this.mStartPosition);
+    localStringBuilder.append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append("skipTime =");
+    localStringBuilder.append(this.mSkipEndPosition);
+    localStringBuilder.append("]");
+    localStringBuilder.append(")");
+    TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", localStringBuilder.toString());
   }
   
   public String flowId()
@@ -140,8 +152,9 @@ public class TVKPlaybackParam
   public void mediaSource(@NonNull TVKMediaSource paramTVKMediaSource)
   {
     this.mMediaSource = paramTVKMediaSource;
-    if (this.mUserInfo != null) {
-      this.mMediaSource.setHttpHeaders(this.mUserInfo.getCdnHttpHeader());
+    paramTVKMediaSource = this.mUserInfo;
+    if (paramTVKMediaSource != null) {
+      this.mMediaSource.setHttpHeaders(paramTVKMediaSource.getCdnHttpHeader());
     }
   }
   
@@ -158,12 +171,12 @@ public class TVKPlaybackParam
   public void skipEndPosition(long paramLong)
   {
     long l = 0L;
-    if (paramLong < 0L) {}
-    for (paramLong = l;; paramLong = this.mSkipEndPosition)
-    {
-      this.mSkipEndPosition = paramLong;
-      return;
+    if (paramLong < 0L) {
+      paramLong = l;
+    } else {
+      paramLong = this.mSkipEndPosition;
     }
+    this.mSkipEndPosition = paramLong;
   }
   
   public void speedRatio(float paramFloat)
@@ -206,8 +219,9 @@ public class TVKPlaybackParam
       localTVKUserInfo = new TVKUserInfo();
     }
     this.mUserInfo = localTVKUserInfo;
-    if (this.mMediaSource != null) {
-      this.mMediaSource.setHttpHeaders(this.mUserInfo.getCdnHttpHeader());
+    paramTVKUserInfo = this.mMediaSource;
+    if (paramTVKUserInfo != null) {
+      paramTVKUserInfo.setHttpHeaders(this.mUserInfo.getCdnHttpHeader());
     }
   }
   
@@ -223,14 +237,16 @@ public class TVKPlaybackParam
       localTVKPlayerVideoInfo = new TVKPlayerVideoInfo();
     }
     this.mVideoInfo = localTVKPlayerVideoInfo;
-    if (TextUtils.isEmpty(this.mVideoInfo.getCid())) {
-      this.mVideoInfo.setCid(this.mVideoInfo.getVid());
+    if (TextUtils.isEmpty(this.mVideoInfo.getCid()))
+    {
+      paramTVKPlayerVideoInfo = this.mVideoInfo;
+      paramTVKPlayerVideoInfo.setCid(paramTVKPlayerVideoInfo.getVid());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlaybackParam
  * JD-Core Version:    0.7.0.1
  */

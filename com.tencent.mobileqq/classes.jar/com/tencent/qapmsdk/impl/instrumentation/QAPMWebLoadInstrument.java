@@ -36,17 +36,14 @@ public class QAPMWebLoadInstrument
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_Impl_QAPMWebLoadInstrument", "set user agent failed:", localException);
-      }
+      Logger.INSTANCE.exception("QAPM_Impl_QAPMWebLoadInstrument", "set user agent failed:", localException);
     }
     paramWebView.setWebViewClient(paramWebViewClient);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMWebLoadInstrument
  * JD-Core Version:    0.7.0.1
  */

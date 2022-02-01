@@ -11,14 +11,14 @@ final class GameVideoDownloadUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(151848);
-    GameVideoDownloadUI.a(this.nlB, this.mAj);
-    AppMethodBeat.o(151848);
+    AppMethodBeat.i(41123);
+    GameVideoDownloadUI.a(this.IAy, this.Alb);
+    AppMethodBeat.o(41123);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameVideoDownloadUI.3
  * JD-Core Version:    0.7.0.1
  */

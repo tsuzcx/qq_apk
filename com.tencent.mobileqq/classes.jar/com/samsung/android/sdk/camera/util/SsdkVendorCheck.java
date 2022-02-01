@@ -9,13 +9,14 @@ public class SsdkVendorCheck
   
   public static boolean isSamsungDevice()
   {
+    String str = strBrand;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (strBrand != null)
+    if (str != null)
     {
       bool1 = bool2;
       if (strManufacturer != null) {
-        if (strBrand.compareToIgnoreCase("Samsung") != 0)
+        if (str.compareToIgnoreCase("Samsung") != 0)
         {
           bool1 = bool2;
           if (strManufacturer.compareToIgnoreCase("Samsung") != 0) {}
@@ -31,7 +32,7 @@ public class SsdkVendorCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.samsung.android.sdk.camera.util.SsdkVendorCheck
  * JD-Core Version:    0.7.0.1
  */

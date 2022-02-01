@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/a6q" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="27.0dip" android:textColor="#ff353535" android:gravity="center_horizontal" android:id="@id/cj6" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="44.0dip" android:layout_marginRight="@dimen/l2" android:text="@string/ceu" style="@style/w2" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/h6" android:gravity="center_horizontal" android:id="@id/cj7" android:layout_marginLeft="69.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="69.0dip" android:text="@string/cew" style="@style/w2" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/h6" android:gravity="center_horizontal" android:id="@id/cj8" android:visibility="gone" android:layout_marginLeft="69.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="69.0dip" style="@style/w2" />
-    <com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView android:id="@id/cj9" android:layout_marginLeft="51.0dip" android:layout_marginTop="66.0dip" android:layout_marginRight="51.0dip" wallet:format="g5" style="@style/p7" />
-    <include layout="@layout/l_" />
+<LinearLayout android:orientation="horizontal" android:padding="@dimen/f1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <include layout="@layout/a86" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/cv9" style="@style/jd" />
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ew">
+                    <TextView android:id="@id/cwv" android:text="{title}" style="@style/jk" />
+                    <TextView android:id="@id/cux" android:layout_marginTop="@dimen/f6" android:text="{detail}" style="@style/jh" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

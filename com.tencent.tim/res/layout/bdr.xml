@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h70" android:background="@color/a4p" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <include android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/j1w" layout="@layout/bct" />
+    <com.tencent.mobileqq.widget.PagingScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/ii8" android:background="@android:color/transparent" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" android:layout_below="@id/rlCommenTitle">
+        <LinearLayout android:orientation="vertical" android:id="@id/h72" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/h5d" android:background="@color/a4p" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.PagingScrollView>
+</RelativeLayout>

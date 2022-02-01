@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="28.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/nb1" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginRight="6.0dip">
+        <com.tencent.timi.game.userinfo.api.view.AvatarRoundImageView android:layout_gravity="center_horizontal" android:id="@id/m1d" android:layout_width="26.0dip" android:layout_height="26.0dip" />
+        <TextView android:textSize="7.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/pz0" android:background="@drawable/gws" android:layout_width="wrap_content" android:layout_height="10.0dip" android:minWidth="24.0dip" android:maxLines="1" android:singleLine="true" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/q09" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginRight="6.0dip">
+        <com.tencent.timi.game.userinfo.api.view.AvatarRoundImageView android:layout_gravity="center_horizontal" android:id="@id/m1f" android:layout_width="26.0dip" android:layout_height="26.0dip" />
+        <TextView android:textSize="7.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/pz1" android:background="@drawable/gwy" android:layout_width="wrap_content" android:layout_height="10.0dip" android:minWidth="24.0dip" android:maxLines="1" android:singleLine="true" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/qcy" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginRight="6.0dip">
+        <com.tencent.timi.game.userinfo.api.view.AvatarRoundImageView android:layout_gravity="center_horizontal" android:id="@id/m1h" android:layout_width="26.0dip" android:layout_height="26.0dip" />
+        <TextView android:textSize="7.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/pz2" android:background="@drawable/gwz" android:layout_width="wrap_content" android:layout_height="10.0dip" android:minWidth="24.0dip" android:maxLines="1" android:singleLine="true" />
+    </FrameLayout>
+    <TextView android:textSize="9.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/qgh" android:background="@drawable/gxy" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="2.0dip" android:minWidth="28.0dip" />
+</LinearLayout>

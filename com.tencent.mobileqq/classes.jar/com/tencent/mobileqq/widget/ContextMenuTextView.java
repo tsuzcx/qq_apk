@@ -8,39 +8,35 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bamp;
-import bamw;
-import beok;
-import beom;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.text.style.EmoticonSpan;
 import com.tencent.widget.BubblePopupWindow;
 
 public class ContextMenuTextView
   extends TextView
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  public View.OnClickListener a;
-  beom jdField_a_of_type_Beom = new beom(this, null);
-  public BubblePopupWindow a;
-  private boolean jdField_a_of_type_Boolean;
-  private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+  BubblePopupWindow a;
+  ContextMenuTextView.TextViewOnlongClickListener b = new ContextMenuTextView.TextViewOnlongClickListener(this, null);
+  View.OnClickListener c = new ContextMenuTextView.1(this);
+  private Context d = null;
+  private Drawable[] e;
+  private boolean f = false;
   
   public ContextMenuTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new beok(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Beom);
+    this.d = paramContext;
+    setOnLongClickListener(this.b);
     setSelectAllOnFocus(true);
   }
   
   public ContextMenuTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new beok(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Beom);
+    this.d = paramContext;
+    setOnLongClickListener(this.b);
     setSelectAllOnFocus(true);
-    setOnTouchListener(this.jdField_a_of_type_Beom);
+    setOnTouchListener(this.b);
   }
   
   private void a(Object paramObject)
@@ -72,57 +68,58 @@ public class ContextMenuTextView
     if ((localObject1 instanceof Spannable))
     {
       localObject1 = (Spannable)localObject1;
-      localObject1 = (bamw[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), bamw.class);
+      localObject1 = (EmoticonSpan[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), EmoticonSpan.class);
       if ((localObject1 != null) && (localObject1.length > 0))
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.f = true;
         int j = localObject1.length;
         int i = 0;
         while (i < j)
         {
           Object localObject2 = localObject1[i];
-          if (localObject2.a() == paramDrawable) {
+          if (localObject2.getDrawable() == paramDrawable) {
             a(localObject2);
           }
           i += 1;
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.f = false;
       }
     }
   }
   
   public void requestLayout()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.f) {
       super.requestLayout();
     }
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    int i = 0;
     if (!getText().equals(paramCharSequence))
     {
       super.setText(paramCharSequence, paramBufferType);
-      if ((getText() instanceof bamp))
+      if ((getText() instanceof QQText))
       {
         paramCharSequence = (Spannable)getText();
-        paramCharSequence = (bamw[])paramCharSequence.getSpans(0, paramCharSequence.length(), bamw.class);
+        int j = paramCharSequence.length();
+        int i = 0;
+        paramCharSequence = (EmoticonSpan[])paramCharSequence.getSpans(0, j, EmoticonSpan.class);
         paramBufferType = new Drawable[paramCharSequence.length];
         while (i < paramCharSequence.length)
         {
-          paramBufferType[i] = paramCharSequence[i].a();
+          paramBufferType[i] = paramCharSequence[i].getDrawable();
           paramBufferType[i].setCallback(this);
           i += 1;
         }
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramBufferType;
+        this.e = paramBufferType;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContextMenuTextView
  * JD-Core Version:    0.7.0.1
  */

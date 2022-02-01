@@ -9,11 +9,13 @@ import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
+import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ExpParam;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.Ext;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 import com.tencent.ad.tangram.util.AdUriUtil;
 import java.io.Serializable;
+import java.util.List;
 import org.json.JSONObject;
 
 public final class a
@@ -34,7 +36,17 @@ public final class a
     this.info = paramAdInfo;
   }
   
+  private boolean isXiJingOffline()
+  {
+    return (!TextUtils.isEmpty(getJSONKeyForXiJingOffline())) && (!TextUtils.isEmpty(getJSONUrlForXiJingOffline())) && (!TextUtils.isEmpty(getUrlForXiJingOffline()));
+  }
+  
   public boolean disableAutoDownload()
+  {
+    return false;
+  }
+  
+  public boolean disableLaunchApp()
   {
     return false;
   }
@@ -120,10 +132,10 @@ public final class a
   
   public String getAppPackageName()
   {
-    if (isAppProductType()) {
-      return this.info.app_info.app_package_name;
+    if ((!isAppProductType()) && (!isJDProductType())) {
+      return null;
     }
-    return null;
+    return this.info.app_info.app_package_name;
   }
   
   public String getAppPackageUrl()
@@ -134,11 +146,63 @@ public final class a
     return null;
   }
   
+  public String getAppRightInfoUrl()
+  {
+    if (isValid()) {
+      return this.info.app_info.app_standard_info_url;
+    }
+    return null;
+  }
+  
+  public int getBannerInvalidClickXPercent()
+  {
+    if (isValid())
+    {
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101164) {
+          return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value);
+        }
+        i += 1;
+      }
+    }
+    return -2147483648;
+  }
+  
+  public int getBannerInvalidClickYPercent()
+  {
+    if (isValid())
+    {
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101166) {
+          return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value);
+        }
+        i += 1;
+      }
+    }
+    return -2147483648;
+  }
+  
+  public String getBusinessIdForXiJingOffline()
+  {
+    return null;
+  }
+  
   public String getCanvas()
   {
     if (isCanvas()) {
       return this.info.dest_info.canvas_json;
     }
+    return null;
+  }
+  
+  public String getCanvasForXiJingOffline()
+  {
     return null;
   }
   
@@ -158,21 +222,69 @@ public final class a
     return -2147483648;
   }
   
+  public List getExpMap()
+  {
+    return null;
+  }
+  
+  public List<?> getFeedbackItems()
+  {
+    return null;
+  }
+  
+  public int getInnerShowType()
+  {
+    return 0;
+  }
+  
+  public String getJSONKeyForXiJingOffline()
+  {
+    return null;
+  }
+  
+  public String getJSONUrlForXiJingOffline()
+  {
+    return null;
+  }
+  
+  public long getMinIntervalMillisBetweenExposureAndClick()
+  {
+    if (isValid())
+    {
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 101168)
+        {
+          if (Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value) >= 1000) {
+            return 1000L;
+          }
+          return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value);
+        }
+        i += 1;
+      }
+    }
+    return -2147483648L;
+  }
+  
   public String getPosId()
   {
     Object localObject = getUrlForClick();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      localObject = null;
-    }
-    while (!TextUtils.isEmpty((CharSequence)localObject))
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      return localObject;
       localObject = AdUriUtil.parse((String)localObject);
-      if (localObject == null) {
-        localObject = null;
-      } else {
-        localObject = AdUriUtil.getQueryParameter((Uri)localObject, "pid");
-      }
+      if (localObject != null) {}
+    }
+    else
+    {
+      localObject = null;
+      break label36;
+    }
+    localObject = AdUriUtil.getQueryParameter((Uri)localObject, "pid");
+    label36:
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      return localObject;
     }
     return null;
   }
@@ -191,6 +303,32 @@ public final class a
       return this.info.product_type;
     }
     return -2147483648;
+  }
+  
+  public int getRelationTarget()
+  {
+    if (isValid())
+    {
+      if (this.info.ext.relation_target >= 0) {
+        return this.info.ext.relation_target;
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json)) {
+        try
+        {
+          qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
+          if (localExt != null)
+          {
+            int i = localExt.relation_target;
+            return i;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          AdLog.e("AdImplementation", "getRelationTarget", localThrowable);
+        }
+      }
+    }
+    return 0;
   }
   
   public String getTencent_video_id()
@@ -233,6 +371,14 @@ public final class a
     return null;
   }
   
+  public String getUrlForFeedBack()
+  {
+    if (isValid()) {
+      return this.info.report_info.negative_feedback_url;
+    }
+    return null;
+  }
+  
   public String getUrlForImpression()
   {
     if (isValid()) {
@@ -246,6 +392,11 @@ public final class a
     if (isValid()) {
       return this.info.dest_info.landing_page;
     }
+    return null;
+  }
+  
+  public String getUrlForXiJingOffline()
+  {
     return null;
   }
   
@@ -273,6 +424,32 @@ public final class a
     return null;
   }
   
+  public boolean isAppPreOrder()
+  {
+    if ((isValid()) && ((isAppXiJing()) || (isAppXiJingFengling())))
+    {
+      if (this.info.ext != null) {
+        return this.info.ext.is_app_preorder;
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json)) {
+        try
+        {
+          qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
+          if (localExt != null)
+          {
+            boolean bool = localExt.is_app_preorder;
+            return bool;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          AdLog.e("AdImplementation", "isAppPreOder", localThrowable);
+        }
+      }
+    }
+    return false;
+  }
+  
   public boolean isAppProductType()
   {
     return getProductType() == 12;
@@ -288,76 +465,49 @@ public final class a
     return (isAppProductType()) && (getDestType() == 0);
   }
   
+  public boolean isAppXiJingFengling()
+  {
+    return (isAppProductType()) && (getDestType() == 4);
+  }
+  
+  public boolean isAppXiJingOffline()
+  {
+    return (isAppXiJing()) && (isXiJingOffline());
+  }
+  
   public boolean isCanvas()
   {
     return ((isAppXiJing()) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json))) || ((getProductType() == 1000) && (getDestType() == 4) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json)));
   }
   
-  public boolean isHitCanvasVideoCeilingExp()
+  public boolean isHitFirstLoadImageExp()
   {
-    boolean bool = true;
-    if (!isValid()) {}
-    for (;;)
-    {
-      bool = false;
-      do
-      {
-        return bool;
-      } while (this.info.ext.landing_page_style == 1);
-      if (TextUtils.isEmpty(this.info.ext_json)) {
-        continue;
-      }
-      try
-      {
-        qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
-        if (localExt == null) {
-          continue;
-        }
-        int i = localExt.landing_page_style;
-        if (i == 1) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        AdLog.e("AdImplementation", "isHitCanvasVideoCeilingExp", localThrowable);
-      }
-    }
-  }
-  
-  public boolean isHitJumpExperiment()
-  {
-    if (!isValid()) {}
-    for (;;)
-    {
+    if (!isValid()) {
       return false;
-      if (this.info.ext.no_clkcgi_jump) {
+    }
+    List localList = getExpMap();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key == 95837) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.equals("1"))) {
         return true;
       }
-      if (!TextUtils.isEmpty(this.info.ext_json)) {
-        try
-        {
-          qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
-          if (localExt != null)
-          {
-            boolean bool = localExt.no_clkcgi_jump;
-            return bool;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          AdLog.e("AdImplementation", "isHitJumpExperiment", localThrowable);
-        }
-      }
+      i += 1;
     }
+    return false;
+  }
+  
+  public boolean isJDProductType()
+  {
+    return getProductType() == 25;
   }
   
   public boolean isQQMINIProgram()
   {
+    boolean bool3 = isValid();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (isValid())
+    if (bool3)
     {
       bool1 = bool2;
       if (this.info.display_info.mini_program_type == 11) {
@@ -372,19 +522,63 @@ public final class a
     return this.info != null;
   }
   
+  public boolean isVideoOnTopDisabled()
+  {
+    if ((isValid()) && (!TextUtils.isEmpty(this.info.ext_json))) {
+      try
+      {
+        qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json));
+        if (localExt != null)
+        {
+          boolean bool = localExt.disable_video_on_top;
+          return bool;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        AdLog.e("AdImplementation", "isVideoOnTopDisabled", localThrowable);
+      }
+    }
+    return false;
+  }
+  
   public boolean isVideoSplice()
   {
-    return ((getProductType() == 1000) || (getProductType() == 12) || (getProductType() == 25) || (getProductType() == 30)) && ((getDestType() == 0) || (getDestType() == 4) || (getDestType() == 1)) && ((getCreativeSize() == 585) || (getCreativeSize() == 930));
+    int i = getProductType();
+    boolean bool = true;
+    if (((i == 1000) || (getProductType() == 12) || (getProductType() == 25) || (getProductType() == 30)) && ((getDestType() == 0) || (getDestType() == 4) || (getDestType() == 1)))
+    {
+      if (getCreativeSize() == 585) {
+        return bool;
+      }
+      if (getCreativeSize() == 930) {
+        return true;
+      }
+    }
+    bool = false;
+    return bool;
+  }
+  
+  public boolean isWebXiJing()
+  {
+    return (getProductType() == 1000) && (getDestType() == 4);
+  }
+  
+  public boolean isWebXiJingOffline()
+  {
+    return (isWebXiJing()) && (isXiJingOffline());
   }
   
   public void setActionSetId(long paramLong)
   {
     this.actionSetId = paramLong;
   }
+  
+  public void setCanvasForXiJingOffline(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.a
  * JD-Core Version:    0.7.0.1
  */

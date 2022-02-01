@@ -1,22 +1,24 @@
 package com.tencent.open.downloadnew;
 
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import bfox;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class MyAppApi$14
-  implements Runnable
+class MyAppApi$14
+  implements DialogInterface.OnDismissListener
 {
-  public MyAppApi$14(bfox parambfox, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
+  MyAppApi$14(MyAppApi paramMyAppApi) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidAppActivity);
+    paramDialogInterface = this.a;
+    paramDialogInterface.k = null;
+    paramDialogInterface.l = false;
+    paramDialogInterface.l = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.14
  * JD-Core Version:    0.7.0.1
  */

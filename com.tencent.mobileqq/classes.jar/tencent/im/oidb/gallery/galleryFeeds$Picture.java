@@ -18,12 +18,13 @@ public final class galleryFeeds$Picture
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 32, 40 }, new String[] { "bytes_pic_url", "uint64_width", "uint64_height" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L) }, Picture.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 32, 40 }, new String[] { "bytes_pic_url", "uint64_width", "uint64_height" }, new Object[] { localByteStringMicro, localLong, localLong }, Picture.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.gallery.galleryFeeds.Picture
  * JD-Core Version:    0.7.0.1
  */

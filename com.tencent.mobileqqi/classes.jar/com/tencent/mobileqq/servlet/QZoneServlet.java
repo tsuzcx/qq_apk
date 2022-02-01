@@ -14,7 +14,7 @@ import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gjh;
+import gjg;
 import java.util.Timer;
 import mqq.app.Servlet;
 
@@ -26,7 +26,7 @@ public class QZoneServlet
   public static final String a = "QZone_Get_Unread";
   public static final String b = "QZone_Update_Unread_Count";
   public SharedPreferences a;
-  private gjh jdField_a_of_type_Gjh;
+  private gjg jdField_a_of_type_Gjg;
   private Timer jdField_a_of_type_JavaUtilTimer;
   
   private void a()
@@ -34,13 +34,13 @@ public class QZoneServlet
     if (this.jdField_a_of_type_JavaUtilTimer == null) {
       this.jdField_a_of_type_JavaUtilTimer = ThreadManager.a();
     }
-    if (this.jdField_a_of_type_Gjh != null)
+    if (this.jdField_a_of_type_Gjg != null)
     {
-      this.jdField_a_of_type_Gjh.cancel();
-      this.jdField_a_of_type_Gjh = null;
+      this.jdField_a_of_type_Gjg.cancel();
+      this.jdField_a_of_type_Gjg = null;
     }
-    this.jdField_a_of_type_Gjh = new gjh(this, null);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_Gjh, jdField_a_of_type_Long);
+    this.jdField_a_of_type_Gjg = new gjg(this, null);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_Gjg, jdField_a_of_type_Long);
     if (QLog.isColorLevel()) {
       QLog.d("QZoneServlet", 2, "QZONE GET UNREAD Start");
     }

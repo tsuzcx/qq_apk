@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center|top" android:id="@id/sq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/aea" android:background="@color/aky" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textColor="#ff6f7476" android:gravity="center" android:id="@id/aeb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/gi" android:text="" />
+        <TextView android:textColor="#ff6f7476" android:id="@id/jbx" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text=" QQ浏览器X5内核提供技术支持" android:drawableLeft="@drawable/cao" />
+    </LinearLayout>
+    <com.tencent.biz.ui.RefreshView android:layout_gravity="bottom" android:id="@id/l2a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="50.0dip">
+        <View android:id="@id/enc" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/g1p" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentTop="true" />
+    </com.tencent.biz.ui.RefreshView>
+    <ViewStub android:id="@id/fgp" android:layout="@layout/a3q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

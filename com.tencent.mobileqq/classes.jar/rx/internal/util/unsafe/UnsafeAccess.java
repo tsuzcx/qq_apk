@@ -9,21 +9,20 @@ public final class UnsafeAccess
   
   static
   {
+    Object localObject1 = null;
     try
     {
-      Object localObject1 = Unsafe.class.getDeclaredField("theUnsafe");
-      ((Field)localObject1).setAccessible(true);
-      localObject1 = (Unsafe)((Field)localObject1).get(null);
-      UNSAFE = (Unsafe)localObject1;
-      return;
+      Object localObject2 = Unsafe.class.getDeclaredField("theUnsafe");
+      ((Field)localObject2).setAccessible(true);
+      localObject2 = (Unsafe)((Field)localObject2).get(null);
+      localObject1 = localObject2;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
+      label26:
+      break label26;
     }
+    UNSAFE = localObject1;
   }
   
   private UnsafeAccess()
@@ -89,7 +88,7 @@ public final class UnsafeAccess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.unsafe.UnsafeAccess
  * JD-Core Version:    0.7.0.1
  */

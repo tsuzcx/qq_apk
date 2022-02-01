@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/qzone_feeditem_nor" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.ExtendScrollView android:id="@id/wrapScrollView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <FrameLayout android:id="@id/user_info_header_panel" android:background="@drawable/qq_profilecard_cover_default" android:layout_width="fill_parent" android:layout_height="@dimen/qzone_home_guest_feeds_header_height">
+                <com.qzone.cover.ui.QZoneCoverContainer android:id="@id/cover" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <FrameLayout android:gravity="bottom" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <FrameLayout android:layout_gravity="bottom" android:background="@drawable/qzone_skin_color_item_bg" android:paddingLeft="90.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip">
+                        <include android:id="@id/user_info_summary_bar" android:visibility="gone" layout="@layout/qzone_activity_homepage_summary_bar" />
+                    </FrameLayout>
+                    <com.qzone.cover.ui.CoverAvatarWidget android:layout_gravity="bottom" android:id="@id/qzone_cover_avatar_widget" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" />
+                </FrameLayout>
+            </FrameLayout>
+            <RelativeLayout android:id="@id/operation_detail" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip">
+                <LinearLayout android:orientation="vertical" android:id="@id/question_panel" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:layout_centerHorizontal="true">
+                    <TextView android:textSize="15.0sp" android:textColor="#ff656565" android:id="@id/user_access_tips_question" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginBottom="10.0dip" android:text="权限提醒" />
+                    <include android:id="@id/show_questtions" layout="@layout/qzone_activity_guest_panel_question" />
+                    <TextView android:textSize="18.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center" android:layout_gravity="center" android:id="@id/send_result" android:background="@drawable/qzone_homepage_permission_button_green" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="@dimen/qzone_home_guest_sendResult_marginTop" android:text="提交 " />
+                    <LinearLayout android:orientation="horizontal" android:id="@id/other_tips" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                        <TextView android:textSize="16.0sp" android:textColor="#ff656565" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="你还可以" />
+                        <TextView android:textSize="16.0sp" android:textColor="@color/qzone_color_blue" android:gravity="center" android:id="@id/tips_add_friend" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="加好友" />
+                        <TextView android:textSize="16.0sp" android:textColor="#ff656565" android:gravity="center" android:id="@id/tips_or" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="或" />
+                        <TextView android:textSize="16.0sp" android:textColor="@color/qzone_color_blue" android:gravity="center" android:id="@id/tips_apply_access" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="申请访问" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/no_question_panel" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:layout_centerHorizontal="true">
+                    <TextView android:textSize="16.0sp" android:textColor="#ff656565" android:id="@id/user_access_tips" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="权限提醒" />
+                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/noright_lock" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/qzone_home_noright_lock" />
+                    <TextView android:textSize="16.0sp" android:textColor="#ff656565" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lock_below_tips" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="xxx" />
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center" android:id="@id/add_frined_btn" android:background="@drawable/qzone_homepage_permission_button_green" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="加为好友" />
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center" android:id="@id/access_apply_btn" android:background="@drawable/qzone_homepage_permission_button_green" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="申请访问" />
+                    <RelativeLayout android:id="@id/private_msg_btn" android:background="@drawable/qzone_homepage_permission_button_green" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip">
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/qb_diamond_yellow" android:scaleType="fitXY" android:layout_toLeftOf="@id/private_msg_textview" android:layout_centerVertical="true" />
+                        <TextView android:textSize="16.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center" android:id="@id/private_msg_textview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="私密留言" android:drawablePadding="4.0dip" android:layout_centerInParent="true" />
+                    </RelativeLayout>
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center" android:id="@id/active_space_btn" android:background="@drawable/qzone_homepage_permission_button_green" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:text="邀请开通" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </com.qzone.widget.ExtendScrollView>
+</RelativeLayout>

@@ -25,24 +25,24 @@ public final class GeneratorSequence$iterator$1
     if (this.nextState == -2)
     {
       localObject1 = GeneratorSequence.access$getGetInitialValue$p(this.this$0).invoke();
-      this.nextItem = localObject1;
-      if (this.nextItem != null) {
-        break label73;
-      }
     }
-    label73:
-    for (int i = 0;; i = 1)
+    else
     {
-      this.nextState = i;
-      return;
       localObject1 = GeneratorSequence.access$getGetNextValue$p(this.this$0);
       Object localObject2 = this.nextItem;
       if (localObject2 == null) {
         Intrinsics.throwNpe();
       }
       localObject1 = ((Function1)localObject1).invoke(localObject2);
-      break;
     }
+    this.nextItem = localObject1;
+    int i;
+    if (this.nextItem == null) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    this.nextState = i;
   }
   
   @Nullable
@@ -70,15 +70,17 @@ public final class GeneratorSequence$iterator$1
     if (this.nextState < 0) {
       calcNext();
     }
-    if (this.nextState == 0) {
-      throw ((Throwable)new NoSuchElementException());
-    }
-    Object localObject = this.nextItem;
-    if (localObject == null) {
+    if (this.nextState != 0)
+    {
+      Object localObject = this.nextItem;
+      if (localObject != null)
+      {
+        this.nextState = -1;
+        return localObject;
+      }
       throw new TypeCastException("null cannot be cast to non-null type T");
     }
-    this.nextState = -1;
-    return localObject;
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -98,7 +100,7 @@ public final class GeneratorSequence$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.sequences.GeneratorSequence.iterator.1
  * JD-Core Version:    0.7.0.1
  */

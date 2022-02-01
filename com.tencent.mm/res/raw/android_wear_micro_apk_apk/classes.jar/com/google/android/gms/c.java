@@ -2,11 +2,11 @@ package com.google.android.gms;
 
 public final class c
 {
-  public static final int FO = 2130837522;
-  public static final int FP = 2130837527;
-  public static final int FR = 2130837512;
-  public static final int FS = 2130837513;
-  public static final int FT = 2130837518;
+  public static final int HD = 2130837522;
+  public static final int HE = 2130837527;
+  public static final int HG = 2130837512;
+  public static final int HH = 2130837513;
+  public static final int HI = 2130837518;
 }
 
 

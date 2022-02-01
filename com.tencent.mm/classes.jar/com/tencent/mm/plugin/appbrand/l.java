@@ -1,194 +1,101 @@
 package com.tencent.mm.plugin.appbrand;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.j;
-import com.tencent.mm.plugin.appbrand.page.r;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandEmbedUI;
+import com.tencent.mm.app.f;
+import com.tencent.mm.plugin.appbrand.platform.window.a.o;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
-import com.tencent.mm.plugin.appbrand.widget.input.w;
-import com.tencent.mm.plugin.appbrand.widget.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.b;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI1;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI2;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI3;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI4;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.xweb.ao;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig;", "", "()V", "KEY_XWEB_INSTALLED", "", "PERSISTENT_UI_CLASS", "", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPluginUI;", "[Ljava/lang/Class;", "TAG", "canKeepPersistent", "", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "isPersistentConfigOpen", "isPersistentXWebConfigOpen", "watchApp", "", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends com.tencent.luggage.sdk.d.a
 {
-  private boolean gQL;
-  public final Class[] gQM;
+  public static final l qrP;
+  private static final Class<? extends AppBrandPluginUI>[] qrQ;
   
-  public l(com.tencent.mm.plugin.appbrand.task.i parami)
+  static
   {
-    super(parami, o.class);
-    AppMethodBeat.i(128961);
-    this.gQL = false;
-    this.gQM = new Class[] { j.class };
-    if ((Build.VERSION.SDK_INT >= 21) && (com.tencent.mm.plugin.appbrand.widget.input.a.aQr())) {
-      m.a(this.gQx, this.gQx.getWindow().getDecorView());
-    }
-    AppMethodBeat.o(128961);
+    AppMethodBeat.i(50136);
+    qrP = new l();
+    qrQ = new Class[] { AppBrandPluginUI.class, AppBrandPluginUI1.class, AppBrandPluginUI2.class, AppBrandPluginUI3.class, AppBrandPluginUI4.class };
+    AppMethodBeat.o(50136);
   }
   
-  private void atL()
+  public static final boolean a(AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
-    AppMethodBeat.i(128969);
-    if ((this.gQx instanceof AppBrandPluginUI)) {
-      b.aD(this.gQx);
-    }
-    AppMethodBeat.o(128969);
-  }
-  
-  private void h(AppBrandInitConfig paramAppBrandInitConfig)
-  {
-    AppMethodBeat.i(156243);
-    if (paramAppBrandInitConfig == null)
+    AppMethodBeat.i(50133);
+    s.u(paramAppBrandRuntimeContainerWC, "container");
+    Object localObject = AndroidContextUtil.castActivityOrNull(paramAppBrandRuntimeContainerWC.mContext);
+    paramAppBrandRuntimeContainerWC = (AppBrandRuntimeContainerWC)localObject;
+    if (localObject == null)
     {
-      AppMethodBeat.o(156243);
-      return;
+      Log.e("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, container.activity == NULL");
+      paramAppBrandRuntimeContainerWC = Boolean.FALSE;
     }
-    int i;
-    if (((paramAppBrandInitConfig instanceof AppBrandInitConfigLU)) && (((AppBrandInitConfigLU)paramAppBrandInitConfig).vY()))
+    localObject = new Boolean[2];
+    localObject[0] = Boolean.valueOf(ao.kgm());
+    if ((ao.kgn()) && (ao.aJB(2003))) {}
+    for (boolean bool = true;; bool = false)
     {
-      i = 1;
-      if (i == 0) {
-        break label82;
+      localObject[1] = Boolean.valueOf(bool);
+      Log.i("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, containerUI[" + paramAppBrandRuntimeContainerWC.getClass().getSimpleName() + "], kernelConditions[" + org.apache.commons.c.a.ca(localObject) + ']');
+      if ((!org.apache.commons.c.a.contains(qrQ, paramAppBrandRuntimeContainerWC.getClass())) || (!org.apache.commons.c.a.contains((Object[])localObject, Boolean.TRUE))) {
+        break;
       }
-    }
-    label82:
-    for (paramAppBrandInitConfig = w.cQ(this.gQy);; paramAppBrandInitConfig = com.tencent.luggage.game.widget.input.a.cf(this.gQy))
-    {
-      if ((paramAppBrandInitConfig != null) && ((paramAppBrandInitConfig.getParent() instanceof ViewGroup))) {
-        ((ViewGroup)paramAppBrandInitConfig.getParent()).removeView(paramAppBrandInitConfig);
-      }
-      AppMethodBeat.o(156243);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public final void a(WindowManager.LayoutParams paramLayoutParams)
-  {
-    AppMethodBeat.i(143031);
-    super.a(paramLayoutParams);
-    int j;
-    if ((this.gQx != null) && (this.gQx.getWindow() != null))
-    {
-      paramLayoutParams = this.gQx.getWindow().getDecorView();
-      if ((paramLayoutParams.getWindowSystemUiVisibility() & 0x2) == 0)
-      {
-        paramLayoutParams = paramLayoutParams.getBackground();
-        if ((paramLayoutParams instanceof m))
-        {
-          paramLayoutParams = (m)paramLayoutParams;
-          j = this.gQx.getWindow().getNavigationBarColor();
-          if (j == paramLayoutParams.jaK) {
-            break label104;
-          }
-        }
-      }
-    }
-    label104:
-    for (int i = 1;; i = 0)
-    {
-      paramLayoutParams.jaK = j;
-      if (i != 0) {
-        paramLayoutParams.invalidateSelf();
-      }
-      AppMethodBeat.o(143031);
-      return;
-    }
-  }
-  
-  public final void a(i parami, MiniProgramNavigationBackResult paramMiniProgramNavigationBackResult)
-  {
-    AppMethodBeat.i(128965);
-    if (paramMiniProgramNavigationBackResult != null) {
-      try
-      {
-        if ((this.gQx instanceof AppBrandEmbedUI))
-        {
-          Intent localIntent = new Intent();
-          localIntent.putExtra("result_key_mini_program_navigate_back_result", paramMiniProgramNavigationBackResult);
-          this.gQx.setResult(-1, localIntent);
-          this.gQx.finish();
-          AppMethodBeat.o(128965);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        ab.printErrStackTrace("MicroMsg.AppBrandRuntimeContainerWC", localException, "close runtime %s", new Object[] { parami.mAppId });
-      }
-    }
-    super.a(parami, paramMiniProgramNavigationBackResult);
-    AppMethodBeat.o(128965);
-  }
-  
-  public final void b(i parami1, i parami2, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(128967);
-    super.b(parami1, parami2, new l.1(this, paramRunnable));
-    AppMethodBeat.o(128967);
-  }
-  
-  public final void bf(boolean paramBoolean)
-  {
-    AppMethodBeat.i(128966);
-    if (this.gQL)
-    {
-      ab.i("MicroMsg.AppBrandRuntimeContainerWC", "closeActivity(%b), mKeepActivityFrontOnce=TRUE", new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(128966);
-      return;
-    }
-    super.bf(paramBoolean);
-    if (((this.gQx instanceof AppBrandPluginUI)) && (this.gQx.isFinishing()))
-    {
-      i locali = atG();
-      if (locali != null) {}
-      try
-      {
-        if (locali.atj().getCurrentPage().mSwiping) {
-          this.gQx.overridePendingTransition(0, 0);
-        }
-        AppMethodBeat.o(128966);
-        return;
-      }
-      catch (NullPointerException localNullPointerException) {}
-    }
-    AppMethodBeat.o(128966);
-  }
-  
-  public final Activity getContext()
-  {
-    return this.gQx;
-  }
-  
-  public final boolean wN()
-  {
-    AppMethodBeat.i(128970);
-    if (this.gQz.size() <= 0)
-    {
-      bf(false);
-      AppMethodBeat.o(128970);
+      AppMethodBeat.o(50133);
       return true;
     }
-    AppMethodBeat.o(128970);
+    AppMethodBeat.o(50133);
     return false;
+  }
+  
+  public static final boolean cbn()
+  {
+    AppMethodBeat.i(50135);
+    boolean bool = MultiProcessMMKV.getMMKV("MicroMsg.AppBrandPersistentRuntimeConfig").getBoolean("KEY_XWEB_INSTALLED", false);
+    AppMethodBeat.o(50135);
+    return bool;
+  }
+  
+  public static final void k(Application paramApplication)
+  {
+    AppMethodBeat.i(50134);
+    s.u(paramApplication, "app");
+    paramApplication.registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)new a());
+    new AppBrandPersistentRuntimeConfig.watchApp.2(f.hfK).alive();
+    AppMethodBeat.o(50134);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig$watchApp$1", "Lcom/tencent/mm/plugin/appbrand/util/ActivityLifecycleCallbacksAdapter;", "onActivityStarted", "", "activity", "Landroid/app/Activity;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends com.tencent.mm.plugin.appbrand.af.a
+  {
+    public final void onActivityStarted(Activity paramActivity)
+    {
+      AppMethodBeat.i(316795);
+      s.u(paramActivity, "activity");
+      if ((paramActivity instanceof AppBrandUI)) {
+        l.cbo();
+      }
+      AppMethodBeat.o(316795);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.l
  * JD-Core Version:    0.7.0.1
  */

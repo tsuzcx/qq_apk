@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.mm.protocal.protobuf.EmotionBanner;
-import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
+import com.tencent.mm.emoji.c.b.ad;
+import com.tencent.mm.emoji.c.b.y;
+import kotlin.Metadata;
 
-public final class a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "T", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "()V", "entrance", "", "getEntrance", "()Z", "setEntrance", "(Z)V", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class a<T extends y>
+  extends ad<T>
 {
-  public EmotionBannerSet lgX;
-  public EmotionBanner lgY;
-  public boolean lgZ = false;
+  private boolean xMm;
   
-  public a(EmotionBanner paramEmotionBanner, EmotionBannerSet paramEmotionBannerSet, boolean paramBoolean)
+  public void dzJ()
   {
-    this.lgY = paramEmotionBanner;
-    this.lgX = paramEmotionBannerSet;
-    this.lgZ = paramBoolean;
+    this.xMm = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.a
  * JD-Core Version:    0.7.0.1
  */

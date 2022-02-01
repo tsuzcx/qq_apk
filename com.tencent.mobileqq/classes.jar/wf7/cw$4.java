@@ -9,29 +9,27 @@ class cw$4
   {
     if (this.iL) {
       cw.a(this.iJ, true);
+    } else if (this.iM) {
+      cw.a(this.iJ, false);
     }
-    do
+    if (this.iN)
     {
-      while (this.iN)
-      {
-        cw.b(this.iJ, this.iO);
-        return;
-        if (this.iM) {
-          cw.a(this.iJ, false);
-        }
-      }
-      if (this.iP)
-      {
-        cw.b(this.iJ, this.iO);
-        return;
-      }
-    } while (!this.iQ);
-    cw.b(this.iJ, null);
+      cw.b(this.iJ, this.iO);
+      return;
+    }
+    if (this.iP)
+    {
+      cw.b(this.iJ, this.iO);
+      return;
+    }
+    if (this.iQ) {
+      cw.b(this.iJ, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cw.4
  * JD-Core Version:    0.7.0.1
  */

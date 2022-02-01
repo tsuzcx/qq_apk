@@ -18,11 +18,25 @@ public class ChooseCardFromWXCardPackage$Req
   
   public boolean checkArgs()
   {
-    if ((this.appId == null) || (this.appId.length() <= 0)) {}
-    while ((this.signType == null) || (this.signType.length() <= 0) || (this.cardSign == null) || (this.cardSign.length() <= 0)) {
-      return false;
+    String str = this.appId;
+    if (str != null)
+    {
+      if (str.length() <= 0) {
+        return false;
+      }
+      str = this.signType;
+      if (str != null)
+      {
+        if (str.length() <= 0) {
+          return false;
+        }
+        str = this.cardSign;
+        if (str != null) {
+          return str.length() > 0;
+        }
+      }
     }
-    return true;
+    return false;
   }
   
   public int getType()
@@ -46,7 +60,7 @@ public class ChooseCardFromWXCardPackage$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.ChooseCardFromWXCardPackage.Req
  * JD-Core Version:    0.7.0.1
  */

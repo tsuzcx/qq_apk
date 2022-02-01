@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.tencent.common.galleryactivity.GalleryManager;
 import com.tencent.common.galleryactivity.ImageScene;
-import ebp;
+import ebo;
 
 public class AIOGalleryActivity
   extends PeakActivity
@@ -19,7 +19,7 @@ public class AIOGalleryActivity
   
   public AIOGalleryActivity()
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new ebp(this, null);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new ebo(this, null);
   }
   
   protected boolean a()

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="right" android:layout_gravity="right" android:id="@id/title" android:visibility="gone" android:text="@string/qvip_profile_tag_title" style="@style/CardInfoItemTitle" />
+    <com.tencent.mobileqq.widget.AdaptiveLayout android:id="@id/tag_label_container" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

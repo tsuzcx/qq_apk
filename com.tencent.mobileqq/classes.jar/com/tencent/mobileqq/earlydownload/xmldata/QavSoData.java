@@ -1,18 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import apls;
+import com.tencent.mobileqq.earlydownload.handler.QavSoDownloadHandler;
 
 public class QavSoData
-  extends QavSoDataBase
+  extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + apls.e();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("preload_");
+    localStringBuilder.append(QavSoDownloadHandler.w());
+    return localStringBuilder.toString();
   }
   
   public String getStrResName()
   {
-    return apls.e();
+    return QavSoDownloadHandler.w();
   }
 }
 

@@ -70,18 +70,21 @@ public class BeautysRealAutoFilter
   
   public void setParameterDic(Map<String, Object> paramMap)
   {
+    BaseFilter localBaseFilter;
     if (paramMap.containsKey("opttype"))
     {
       this.opttype = ((Float)paramMap.get("opttype")).floatValue();
-      if (this.processfilter != null) {
-        this.processfilter.addParam(new UniformParam.FloatParam("opttype", this.opttype));
+      localBaseFilter = this.processfilter;
+      if (localBaseFilter != null) {
+        localBaseFilter.addParam(new UniformParam.FloatParam("opttype", this.opttype));
       }
     }
     if (paramMap.containsKey("whitenmag"))
     {
       this.whitenmag = Math.max(0.0F, Math.min(((Float)paramMap.get("whitenmag")).floatValue(), 1.0F));
-      if (this.processfilter != null) {
-        this.processfilter.addParam(new UniformParam.FloatParam("whiten", this.whitenmag));
+      localBaseFilter = this.processfilter;
+      if (localBaseFilter != null) {
+        localBaseFilter.addParam(new UniformParam.FloatParam("whiten", this.whitenmag));
       }
     }
     if (paramMap.containsKey("scale")) {
@@ -93,22 +96,24 @@ public class BeautysRealAutoFilter
     if (paramMap.containsKey("smoothMag"))
     {
       this.smoothMag = ((Float)paramMap.get("smoothMag")).floatValue();
-      if (this.processfilter != null) {
-        this.processfilter.addParam(new UniformParam.FloatParam("smoothMag", this.smoothMag));
+      localBaseFilter = this.processfilter;
+      if (localBaseFilter != null) {
+        localBaseFilter.addParam(new UniformParam.FloatParam("smoothMag", this.smoothMag));
       }
     }
     if (paramMap.containsKey("skinFilter"))
     {
       this.skinFilter = ((Float)paramMap.get("skinFilter")).floatValue();
-      if (this.processfilter != null) {
-        this.processfilter.addParam(new UniformParam.FloatParam("skinFilter", this.skinFilter));
+      paramMap = this.processfilter;
+      if (paramMap != null) {
+        paramMap.addParam(new UniformParam.FloatParam("skinFilter", this.skinFilter));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.ttpic.BeautysRealAutoFilter
  * JD-Core Version:    0.7.0.1
  */

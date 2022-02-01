@@ -1,53 +1,63 @@
 package com.tencent.mm.plugin.facedetectaction.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.akg;
-import com.tencent.mm.protocal.protobuf.akh;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cjq;
+import com.tencent.mm.protocal.protobuf.cjr;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private akg mpZ;
-  public akh mqa;
-  private b rr;
+  private h callback;
+  private c rr;
+  private cjq zZo;
+  public cjr zZp;
   
   public a(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(670);
-    b.a locala = new b.a();
-    locala.fsX = new akg();
-    locala.fsY = new akh();
-    locala.funcId = 2696;
-    locala.uri = "/cgi-bin/mmpay-bin/getfacecheckaction";
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    this.mpZ = ((akg)this.rr.fsV.fta);
-    this.mpZ.scene = paramInt;
-    this.mpZ.kWn = paramString1;
-    this.mpZ.xbx = paramString2;
-    ab.i("MicroMsg.NetSceneGetFaceCheckAction", "create GetFaceCheckAction, scene: %s, packageName: %s, packageSign: %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
-    AppMethodBeat.o(670);
+    this(paramInt, paramString1, paramString2, 1, new byte[1]);
+    AppMethodBeat.i(104195);
+    AppMethodBeat.o(104195);
   }
   
-  public final int doScene(e parame, f paramf)
+  public a(int paramInt1, String paramString1, String paramString2, int paramInt2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(671);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(671);
+    AppMethodBeat.i(262597);
+    c.a locala = new c.a();
+    locala.otE = new cjq();
+    locala.otF = new cjr();
+    locala.funcId = 2696;
+    locala.uri = "/cgi-bin/mmpay-bin/getfacecheckaction";
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    this.zZo = ((cjq)c.b.b(this.rr.otB));
+    this.zZo.scene = paramInt1;
+    this.zZo.xlr = paramString1;
+    this.zZo.aasl = paramString2;
+    this.zZo.live_type = paramInt2;
+    this.zZo.aasm = b.cX(paramArrayOfByte);
+    Log.i("MicroMsg.NetSceneGetFaceCheckAction", "create GetFaceCheckAction, scene: %s, packageName: %s, packageSign: %s", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2 });
+    AppMethodBeat.o(262597);
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(104196);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(104196);
     return i;
   }
   
@@ -56,18 +66,18 @@ public final class a
     return 2696;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(672);
-    ab.i("MicroMsg.NetSceneGetFaceCheckAction", "onGYNetEnd, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.mqa = ((akh)((b)paramq).fsW.fta);
+    AppMethodBeat.i(104197);
+    Log.i("MicroMsg.NetSceneGetFaceCheckAction", "onGYNetEnd, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.zZp = ((cjr)c.c.b(((c)params).otC));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(672);
+    AppMethodBeat.o(104197);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.a.a
  * JD-Core Version:    0.7.0.1
  */

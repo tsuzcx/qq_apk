@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvt" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchText="红点通知" />
+        <com.tencent.mobileqq.widget.FormMultiLineSwitchItem android:id="@id/lvs" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:switchChecked="false" formItem:switchSubText="关闭后，将不再收到小程序红点通知" formItem:switchText="红点通知" />
+    </LinearLayout>
+</LinearLayout>

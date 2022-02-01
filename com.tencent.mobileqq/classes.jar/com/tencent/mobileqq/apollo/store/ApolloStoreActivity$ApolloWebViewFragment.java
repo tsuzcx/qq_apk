@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.store;
 
-import aleh;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -8,61 +7,60 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import beft;
-import bhsl;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.util.MqqWeakReferenceHandler;
 import mqq.os.MqqHandler;
 
 public class ApolloStoreActivity$ApolloWebViewFragment
   extends WebViewFragment
   implements Handler.Callback
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhsl(Looper.getMainLooper(), this);
-  private long b;
+  private String a;
+  private long b = 0L;
+  private long c = 0L;
+  private MqqHandler d = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
   
   public void a(WebView paramWebView, String paramString)
   {
-    super.a(paramWebView, paramString);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-    this.b = System.currentTimeMillis();
-    int i = (int)(this.b - this.jdField_a_of_type_Long);
+    this.d.removeMessages(1);
+    this.c = System.currentTimeMillis();
+    int i = (int)(this.c - this.b);
     if ((getActivity() != null) && ((getActivity() instanceof ApolloStoreActivity))) {
       ApolloStoreActivity.a((ApolloStoreActivity)getActivity(), i);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloStoreActivity_apollo_store_stability_", 2, new Object[] { "onPageFinished total cost:", Integer.valueOf(i), " url:", paramString });
+      QLog.d("[cmshow]ApolloStoreActivity_apollo_store_stability_", 2, new Object[] { "onPageFinished total cost:", Integer.valueOf(i), " url:", paramString });
     }
   }
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    super.a(paramWebView, paramString, paramBitmap);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.b = 0L;
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+    this.b = System.currentTimeMillis();
+    this.c = 0L;
+    this.d.removeMessages(1);
     long l = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 4).getLong("SP_KEY_APOLLO_STORE_PAGE_LOAD_TIMEOUT_VALUE", 15000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloStoreActivity", 2, new Object[] { "page load timeout value is:", Long.valueOf(l) });
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, l);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloStoreActivity", 2, "onPageStarted url:" + paramString);
+    QLog.d("[cmshow]ApolloStoreActivity", 2, new Object[] { "page load timeout value is:", Long.valueOf(l) });
+    this.d.sendEmptyMessageDelayed(1, l);
+    if (QLog.isColorLevel())
+    {
+      paramWebView = new StringBuilder();
+      paramWebView.append("onPageStarted url:");
+      paramWebView.append(paramString);
+      QLog.d("[cmshow]ApolloStoreActivity", 2, paramWebView.toString());
     }
     if ((getActivity() instanceof ApolloStoreActivity))
     {
       paramWebView = (ApolloStoreActivity)getActivity();
-      if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramString)) && (ApolloStoreActivity.a(paramWebView) != null)) {
+      paramBitmap = this.a;
+      if ((paramBitmap != null) && (!paramBitmap.equals(paramString)) && (ApolloStoreActivity.a(paramWebView) != null)) {
         ApolloStoreActivity.a(paramWebView).b();
       }
       ApolloStoreActivity.a(paramWebView, paramString);
@@ -70,41 +68,31 @@ public class ApolloStoreActivity$ApolloWebViewFragment
       paramWebView.putString("apollo_store_watch_current_url", paramString);
       paramWebView.apply();
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
-  public int f(Bundle paramBundle)
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    int i = super.f(paramBundle);
-    this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidViewViewGroup.setClickable(false);
-    this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(null);
-    this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if (getActivity() != null) {
-      ImmersiveUtils.a(getActivity().getWindow(), true);
-    }
-    return i;
+    return new ApolloStoreActivity.ApolloWebViewFragment.1(this, this.webViewSurface);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
+    if (paramMessage.what != 1) {
       return true;
-      if ((getActivity() != null) && ((getActivity() instanceof ApolloStoreActivity)) && (this.b == 0L)) {
-        ApolloStoreActivity.a((ApolloStoreActivity)getActivity());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment_apollo_store_stability_", 2, "handleMessage. MSG_CODE_CHECK_PAGE_LOAD_TIMEOUT");
-      }
     }
+    if ((getActivity() != null) && ((getActivity() instanceof ApolloStoreActivity)) && (this.c == 0L)) {
+      ApolloStoreActivity.b((ApolloStoreActivity)getActivity());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment_apollo_store_stability_", 2, "handleMessage. MSG_CODE_CHECK_PAGE_LOAD_TIMEOUT");
+    }
+    return true;
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.jdField_a_of_type_Beft.jdField_a_of_type_AndroidWidgetTextView) && ((getActivity() instanceof ApolloStoreActivity)))
+    if ((paramView == getSwiftTitleUI().d) && ((getActivity() instanceof ApolloStoreActivity)))
     {
       ((ApolloStoreActivity)getActivity()).a();
       return;
@@ -116,14 +104,14 @@ public class ApolloStoreActivity$ApolloWebViewFragment
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if ((getActivity() instanceof ApolloStoreActivity)) {
-      ((ApolloStoreActivity)getActivity()).a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer);
+      ((ApolloStoreActivity)getActivity()).a(this.contentView);
     }
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.ApolloWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingRight="@dimen/fx" android:layout_width="@dimen/g9" android:layout_height="wrap_content"
+<androidx.appcompat.view.menu.ListMenuItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="196.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/jp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/ln" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:src="@drawable/a66" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <ImageView android:id="@id/erl" android:background="@drawable/ae" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" />
+    <LinearLayout android:id="@id/br7" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="?kg" style="@style/t0">
+        <TextView android:textAppearance="?a4r" android:layout_gravity="center_vertical" android:id="@id/ko8" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/t5" />
+        <Space android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+        <TextView android:textAppearance="?a4z" android:layout_gravity="center_vertical" android:id="@id/jk2" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/t2" />
+        <ImageView android:layout_gravity="center" android:id="@id/k_5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" style="@style/t3" />
+    </LinearLayout>
+</androidx.appcompat.view.menu.ListMenuItemView>

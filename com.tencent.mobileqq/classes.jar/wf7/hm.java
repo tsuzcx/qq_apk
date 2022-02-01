@@ -10,48 +10,57 @@ import java.util.List;
 
 public class hm
 {
-  private static final String TAG = hm.class.getSimpleName();
+  private static final String TAG = "hm";
   
   public static int a(@NonNull bl parambl)
   {
-    int i = 2;
     int j = parambl.J();
-    if ((j == 1) || (j == 2)) {
+    int i = 3;
+    if ((j != 1) && (j != 2))
+    {
+      if (j == 3) {
+        return 2;
+      }
+      if (j == 4) {
+        return 3;
+      }
+      if (j == 5) {
+        return 4;
+      }
+      if (j == 6) {
+        return 5;
+      }
+    }
+    else
+    {
       i = 1;
     }
-    while (j == 3) {
-      return i;
-    }
-    if (j == 4) {
-      return 3;
-    }
-    if (j == 5) {
-      return 4;
-    }
-    if (j == 6) {
-      return 5;
-    }
-    return 3;
+    return i;
   }
   
   public static Pair<Boolean, String> b(@NonNull bl parambl)
   {
-    boolean bool1 = false;
-    String str2 = "";
-    String str1 = str2;
-    if (parambl.I() == 5)
+    int i = parambl.I();
+    String str = "";
+    boolean bool1;
+    if (i == 5)
     {
       boolean bool2 = true;
-      parambl = parambl.R();
-      str1 = str2;
+      d locald = parambl.R();
       bool1 = bool2;
-      if (parambl != null)
+      parambl = str;
+      if (locald != null)
       {
-        str1 = parambl.X;
+        parambl = locald.X;
         bool1 = bool2;
       }
     }
-    return new Pair(Boolean.valueOf(bool1), str1);
+    else
+    {
+      bool1 = false;
+      parambl = str;
+    }
+    return new Pair(Boolean.valueOf(bool1), parambl);
   }
   
   public static boolean d(@NonNull bn parambn)
@@ -153,15 +162,15 @@ public class hm
   
   public static int z(@IntRange(from=0L, to=100L) int paramInt1, @IntRange(from=4L, to=5L) int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 > 100)) {
-      return 0;
+    if ((paramInt1 >= 0) && (paramInt1 <= 100)) {
+      return paramInt1 / (100 / (paramInt2 - 1));
     }
-    return paramInt1 / (100 / (paramInt2 - 1));
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.hm
  * JD-Core Version:    0.7.0.1
  */

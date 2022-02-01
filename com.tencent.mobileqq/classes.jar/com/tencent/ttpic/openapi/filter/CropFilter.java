@@ -17,7 +17,7 @@ public class CropFilter
   {
     float f3 = (paramInt3 - paramInt1) / paramInt3;
     float f2 = (paramInt4 - paramInt2) / paramInt4;
-    float f1 = -1.0F + f3;
+    float f1 = f3 - 1.0F;
     f3 = 1.0F - f3;
     float f4 = -1.0F + f2;
     f2 = 1.0F - f2;
@@ -52,7 +52,7 @@ public class CropFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CropFilter
  * JD-Core Version:    0.7.0.1
  */

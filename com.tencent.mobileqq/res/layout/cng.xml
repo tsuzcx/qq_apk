@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/root" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/1p"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="@dimen/29" android:layout_height="@dimen/29">
+        <ImageView android:id="@id/nx1" android:background="@drawable/gqp" android:layout_width="@dimen/29" android:layout_height="@dimen/29" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/icon" android:layout_width="@dimen/ba4" android:layout_height="@dimen/ba4" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/ba6" android:textColor="@color/dg" android:gravity="center" android:id="@id/title" android:layout_width="@dimen/29" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="2" />
+</LinearLayout>

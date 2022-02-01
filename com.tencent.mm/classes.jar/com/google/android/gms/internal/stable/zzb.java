@@ -14,9 +14,9 @@ public class zzb
   
   protected zzb(String paramString)
   {
-    AppMethodBeat.i(90461);
+    AppMethodBeat.i(5482);
     attachInterface(this, paramString);
-    AppMethodBeat.o(90461);
+    AppMethodBeat.o(5482);
   }
   
   public IBinder asBinder()
@@ -31,34 +31,34 @@ public class zzb
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    AppMethodBeat.i(90463);
+    AppMethodBeat.i(5484);
     if (routeToSuperOrEnforceInterface(paramInt1, paramParcel1, paramParcel2, paramInt2))
     {
-      AppMethodBeat.o(90463);
+      AppMethodBeat.o(5484);
       return true;
     }
     boolean bool = dispatchTransaction(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    AppMethodBeat.o(90463);
+    AppMethodBeat.o(5484);
     return bool;
   }
   
   protected boolean routeToSuperOrEnforceInterface(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    AppMethodBeat.i(90462);
+    AppMethodBeat.i(5483);
     if (paramInt1 > 16777215)
     {
       boolean bool = super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-      AppMethodBeat.o(90462);
+      AppMethodBeat.o(5483);
       return bool;
     }
     paramParcel1.enforceInterface(getInterfaceDescriptor());
-    AppMethodBeat.o(90462);
+    AppMethodBeat.o(5483);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.stable.zzb
  * JD-Core Version:    0.7.0.1
  */

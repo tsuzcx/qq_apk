@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.emoticon.StickerInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.AnimationImageShow;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
 import tencent.im.msg.hummer.resv6.NotOnlineImageExtPb.ResvAttr;
@@ -17,14 +18,17 @@ public class PicMessageExtraData
   public String doutuSupplier = "";
   public String emojiId;
   public String emojiPkgId;
-  public int from;
+  public int from = 0;
   public String iconUrl;
   public int imageBizType;
+  public String mAdEmoDescStr;
+  public String mAdEmoJumpUrl;
+  public String mDownloadIndex;
   public String mTemplateId;
   public String mTemplateName;
   public String packageName;
   public String source;
-  public EmojiStickerManager.StickerInfo stickerInfo;
+  public StickerInfo stickerInfo;
   public String textSummary = "";
   public String webUrl;
   
@@ -48,6 +52,9 @@ public class PicMessageExtraData
     this.packageName = paramResvAttr.string_emoji_marketFaceName.get();
     this.mTemplateId = paramResvAttr.string_camera_capture_templateinfo.get();
     this.mTemplateName = paramResvAttr.string_camera_capture_materialname.get();
+    this.mAdEmoJumpUrl = paramResvAttr.string_ad_emo_jump_url.get();
+    this.mAdEmoDescStr = paramResvAttr.string_ad_emo_desc_str.get();
+    this.mDownloadIndex = paramResvAttr.bytes_download_index.get().toStringUtf8();
   }
   
   public PicMessageExtraData(NotOnlineImageExtPb.ResvAttr paramResvAttr)
@@ -67,6 +74,8 @@ public class PicMessageExtraData
     this.packageName = paramResvAttr.string_emoji_marketFaceName.get();
     this.mTemplateId = paramResvAttr.string_camera_capture_templateinfo.get();
     this.mTemplateName = paramResvAttr.string_camera_capture_materialname.get();
+    this.mAdEmoJumpUrl = paramResvAttr.string_ad_emo_jump_url.get();
+    this.mAdEmoDescStr = paramResvAttr.string_ad_emo_desc_str.get();
   }
   
   public CustomFaceExtPb.ResvAttr getCustomFaceResvAttr()
@@ -86,12 +95,10 @@ public class PicMessageExtraData
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-      }
+      localNumberFormatException.printStackTrace();
     }
-    if ((this.animationImageShow != null) && (this.animationImageShow.has())) {
+    CustomFaceExtPb.AnimationImageShow localAnimationImageShow = this.animationImageShow;
+    if ((localAnimationImageShow != null) && (localAnimationImageShow.has())) {
       localResvAttr.msg_image_show.set(this.animationImageShow);
     }
     if (!TextUtils.isEmpty(this.textSummary)) {
@@ -116,6 +123,15 @@ public class PicMessageExtraData
     if (!TextUtils.isEmpty(this.mTemplateName)) {
       localResvAttr.string_camera_capture_materialname.set(this.mTemplateName);
     }
+    if (!TextUtils.isEmpty(this.mAdEmoJumpUrl)) {
+      localResvAttr.string_ad_emo_jump_url.set(this.mAdEmoJumpUrl);
+    }
+    if (!TextUtils.isEmpty(this.mAdEmoDescStr)) {
+      localResvAttr.string_ad_emo_desc_str.set(this.mAdEmoDescStr);
+    }
+    if (!TextUtils.isEmpty(this.mDownloadIndex)) {
+      localResvAttr.bytes_download_index.set(ByteStringMicro.copyFromUtf8(this.mDownloadIndex));
+    }
     return localResvAttr;
   }
   
@@ -136,10 +152,7 @@ public class PicMessageExtraData
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-      }
+      localNumberFormatException.printStackTrace();
     }
     if (!TextUtils.isEmpty(this.textSummary)) {
       localResvAttr.bytes_text_summary.set(ByteStringMicro.copyFromUtf8(this.textSummary));
@@ -163,6 +176,12 @@ public class PicMessageExtraData
     if (!TextUtils.isEmpty(this.mTemplateName)) {
       localResvAttr.string_camera_capture_materialname.set(this.mTemplateName);
     }
+    if (!TextUtils.isEmpty(this.mAdEmoJumpUrl)) {
+      localResvAttr.string_ad_emo_jump_url.set(this.mAdEmoJumpUrl);
+    }
+    if (!TextUtils.isEmpty(this.mAdEmoDescStr)) {
+      localResvAttr.string_ad_emo_desc_str.set(this.mAdEmoDescStr);
+    }
     return localResvAttr;
   }
   
@@ -176,14 +195,39 @@ public class PicMessageExtraData
     return (isCustomFace()) && (2 == this.customFaceType);
   }
   
+  public boolean isDoutu()
+  {
+    return this.imageBizType == 3;
+  }
+  
+  public boolean isEmotion()
+  {
+    return (isCustomFace()) || (isStickerPics()) || (isStickerAdPic()) || (isDiyDouTu()) || (isHotPics()) || (isZhitu()) || (isSelfieFace()) || (isDoutu()) || (isRelatedEmo()) || (isHotSearch());
+  }
+  
   public boolean isHotPics()
   {
     return this.imageBizType == 2;
   }
   
+  public boolean isHotSearch()
+  {
+    return this.imageBizType == 13;
+  }
+  
+  public boolean isRelatedEmo()
+  {
+    return this.imageBizType == 10;
+  }
+  
   public boolean isSelfieFace()
   {
     return this.imageBizType == 8;
+  }
+  
+  public boolean isStickerAdPic()
+  {
+    return this.imageBizType == 9;
   }
   
   public boolean isStickerPics()
@@ -194,6 +238,30 @@ public class PicMessageExtraData
   public boolean isZhitu()
   {
     return this.imageBizType == 4;
+  }
+  
+  public void setAdEmoDescStr(String paramString)
+  {
+    this.mAdEmoDescStr = paramString;
+    if ((QLog.isColorLevel()) && (paramString != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("adEmoDescStr, length = ");
+      localStringBuilder.append(paramString.length());
+      QLog.d("PicMessageExtraData", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void setAdEmoJumpUrl(String paramString)
+  {
+    this.mAdEmoJumpUrl = paramString;
+    if ((QLog.isColorLevel()) && (paramString != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setAdEmoJumpUrl, length = ");
+      localStringBuilder.append(paramString.length());
+      QLog.d("PicMessageExtraData", 2, localStringBuilder.toString());
+    }
   }
 }
 

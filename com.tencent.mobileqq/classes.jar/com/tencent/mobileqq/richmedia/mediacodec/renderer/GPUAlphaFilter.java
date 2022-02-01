@@ -30,17 +30,15 @@ public class GPUAlphaFilter
     GLES20.glEnable(3042);
     GLES20.glBlendFunc(770, 771);
     int n = getProgram();
-    float[] arrayOfFloat = paramArrayOfFloat1;
     if (paramArrayOfFloat1 == null)
-    {
-      arrayOfFloat = new float[16];
-      Matrix.setIdentityM(arrayOfFloat, 0);
-    }
-    paramArrayOfFloat1 = paramArrayOfFloat2;
-    if (paramArrayOfFloat2 == null)
     {
       paramArrayOfFloat1 = new float[16];
       Matrix.setIdentityM(paramArrayOfFloat1, 0);
+    }
+    if (paramArrayOfFloat2 == null)
+    {
+      paramArrayOfFloat2 = new float[16];
+      Matrix.setIdentityM(paramArrayOfFloat2, 0);
     }
     GLES20.glUseProgram(n);
     checkGlError("glUseProgram");
@@ -66,8 +64,8 @@ public class GPUAlphaFilter
     checkGlError("glVertexAttribPointer aColor");
     GLES20.glEnableVertexAttribArray(k);
     checkGlError("glEnableVertexAttribArray aColor");
-    GLES20.glUniformMatrix4fv(m, 1, false, paramArrayOfFloat1, 0);
-    GLES20.glUniformMatrix4fv(n, 1, false, arrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(m, 1, false, paramArrayOfFloat2, 0);
+    GLES20.glUniformMatrix4fv(n, 1, false, paramArrayOfFloat1, 0);
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(this.mTextureType, paramInt);
     onDrawTexture();
@@ -80,7 +78,7 @@ public class GPUAlphaFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUAlphaFilter
  * JD-Core Version:    0.7.0.1
  */

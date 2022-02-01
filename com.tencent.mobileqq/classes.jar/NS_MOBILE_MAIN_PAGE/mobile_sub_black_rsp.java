@@ -27,14 +27,15 @@ public final class mobile_sub_black_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.black != null) {
-      paramJceOutputStream.write(this.black, 0);
+    s_black locals_black = this.black;
+    if (locals_black != null) {
+      paramJceOutputStream.write(locals_black, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_black_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.view.QMListItemView style="@style/a_p"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/jkr" android:contentDescription="@string/xl8" style="@style/a_s" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/jkr" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_gravity="bottom" android:id="@id/ca5" android:text="编程珠玑.pdf" android:layout_weight="1.0" style="@style/a_q" />
+            <TextView android:layout_gravity="bottom|center|right" android:id="@id/ca9" android:text="1.2M" android:includeFontPadding="false" style="@style/a_r" />
+        </LinearLayout>
+        <TextView android:ellipsize="end" android:id="@id/ny1" android:text="yahuang" style="@style/a_r" />
+        <TextView android:ellipsize="end" android:id="@id/o1w" android:layout_marginTop="1.0dip" android:text="美味的咖啡" android:singleLine="true" style="@style/a_r" />
+    </LinearLayout>
+</com.tencent.qqmail.view.QMListItemView>

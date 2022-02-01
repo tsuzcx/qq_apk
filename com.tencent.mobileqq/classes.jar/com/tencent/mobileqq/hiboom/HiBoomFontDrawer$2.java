@@ -1,39 +1,49 @@
 package com.tencent.mobileqq.hiboom;
 
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import assa;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.List;
-import java.util.Vector;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IVasCommonAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class HiBoomFontDrawer$2
+class HiBoomFontDrawer$2
   implements Runnable
 {
-  public HiBoomFontDrawer$2(assa paramassa, List paramList) {}
+  HiBoomFontDrawer$2(HiBoomFontDrawer paramHiBoomFontDrawer) {}
   
   public void run()
   {
-    int i = 0;
-    if (i < this.a.size())
+    ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).checkFZEngineReady();
+    if (this.this$0.e == -1)
     {
-      Bitmap localBitmap = assa.a((String)this.a.get(i));
-      if (localBitmap != null) {
-        BaseApplicationImpl.sImageCache.put(this.a.get(i), localBitmap);
-      }
-      for (;;)
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.this$0.l.a());
+      ((StringBuilder)localObject).append(this.this$0.c);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.this$0.c);
+      ((StringBuilder)localObject).append(".fz4");
+      localObject = ((StringBuilder)localObject).toString();
+      this.this$0.e = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).initColorFont(this.this$0.c, (String)localObject);
+      if (QLog.isColorLevel())
       {
-        i += 1;
-        break;
-        this.this$0.a.add(this.a.get(i));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initColorFont: fontid=");
+        ((StringBuilder)localObject).append(this.this$0.c);
+        ((StringBuilder)localObject).append(" result=");
+        ((StringBuilder)localObject).append(this.this$0.e);
+        QLog.d("HiBoomFont.FontDrawer", 2, ((StringBuilder)localObject).toString());
+      }
+      this.this$0.g.set(true);
+      this.this$0.h.set(false);
+      if (this.this$0.g.get()) {
+        HiBoomFontDrawer.a(this.this$0);
       }
     }
-    assa.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomFontDrawer.2
  * JD-Core Version:    0.7.0.1
  */

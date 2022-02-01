@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/ixs" android:background="@color/a5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="17.0dip" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/kwv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/k1o" android:alpha="0.8" />
+    </FrameLayout>
+</LinearLayout>

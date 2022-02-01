@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerRelativeLayout android:id="@id/ess" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.SphereImageView android:id="@id/est" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" />
-        <ImageView android:id="@id/elx" android:background="@drawable/b8a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <com.tencent.mm.ui.widget.MMPinProgressBtn android:layout_gravity="center" android:id="@id/wj" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" />
+    <View android:id="@id/elq" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+    <FrameLayout android:id="@id/elo" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lk" android:layout_marginRight="@dimen/lk">
+        <TextView android:textColor="@color/xo" android:ellipsize="end" android:id="@id/elp" android:paddingTop="@dimen/lk" android:paddingBottom="@dimen/lk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
     </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/esk" android:paddingLeft="20.0dip" android:paddingTop="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/esl" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="#80000000" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="4.0" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/esm" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:shadowColor="#80000000" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="4.0" />
-    </LinearLayout>
-    <RelativeLayout android:orientation="vertical" android:id="@id/esn" android:paddingLeft="20.0dip" android:paddingTop="16.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/eso" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="#80000000" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="4.0" android:layout_alignParentTop="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/esp" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" android:shadowColor="#80000000" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="4.0" android:layout_below="@id/eso" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/esq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/esp">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/bdt" />
-            <TextView android:textSize="10.0sp" android:textColor="@color/a6s" android:ellipsize="end" android:gravity="center" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/en7" android:maxLines="1" />
-        </LinearLayout>
-    </RelativeLayout>
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/bk9" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</com.tencent.mm.ui.widget.RoundedCornerRelativeLayout>
+</LinearLayout>

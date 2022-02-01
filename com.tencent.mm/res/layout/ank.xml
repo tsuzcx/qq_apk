@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:paddingLeft="@dimen/dl" android:paddingRight="@dimen/dl" style="@style/mp">
-        <ImageView android:id="@id/br4" android:background="@raw/default_avatar" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/br5" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_gravity="center" android:id="@id/e_y" android:background="@drawable/a3d" android:layout_width="@dimen/d4" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/cr">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_2" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d1" android:text="@string/eha" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+    <ImageView android:layout_gravity="center" android:id="@id/fdf" android:layout_width="350.0dip" android:layout_height="265.0dip" android:layout_marginTop="@dimen/d0" android:src="@drawable/bwd" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g1a" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <CheckBox android:id="@id/ay_" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:longClickable="false" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="@dimen/a6t" style="@style/lq" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/kxr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ehl" android:layout_marginStart="@dimen/bv" />
         </LinearLayout>
-        <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/dvz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="75.0dip" android:minHeight="30.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="@color/t_" android:gravity="center" android:layout_gravity="center" android:id="@id/dw0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:minHeight="30.0dip" android:text="@string/c3d" />
-            <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/dw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-        </FrameLayout>
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/Link" android:id="@id/kxs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ehm" />
     </LinearLayout>
 </LinearLayout>

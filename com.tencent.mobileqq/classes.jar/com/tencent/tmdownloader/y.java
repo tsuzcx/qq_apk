@@ -27,50 +27,70 @@ public class y
   public int a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, Map paramMap)
   {
     ab.c("TMADownloadSDKService", "<startDownloadTask>enter");
-    ab.c("TMADownloadSDKService", "<startDownloadTask>clientkey:" + paramString1 + ",url:" + paramString2 + ",manager:" + this.a.mServiceDownloadTaskManager + ",fileName:" + paramString4);
-    String str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("<startDownloadTask>clientkey:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(",url:");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(",manager:");
+    ((StringBuilder)localObject).append(this.a.mServiceDownloadTaskManager);
+    ((StringBuilder)localObject).append(",fileName:");
+    ((StringBuilder)localObject).append(paramString4);
+    ab.c("TMADownloadSDKService", ((StringBuilder)localObject).toString());
+    StringBuilder localStringBuilder;
     if (paramMap != null)
     {
-      ab.c("TMADownloadSDKService", "startDownloadTask params size : " + paramMap.size());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startDownloadTask params size : ");
+      ((StringBuilder)localObject).append(paramMap.size());
+      ab.c("TMADownloadSDKService", ((StringBuilder)localObject).toString());
       if (paramMap.containsKey(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION))
       {
-        str = (String)paramMap.get(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION);
-        ab.c("TMADownloadSDKService", "startDownloadTask showNotificationStr : " + str);
+        localObject = (String)paramMap.get(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startDownloadTask showNotificationStr : ");
+        localStringBuilder.append((String)localObject);
+        ab.c("TMADownloadSDKService", localStringBuilder.toString());
+      }
+      else
+      {
+        ab.c("TMADownloadSDKService", "startDownloadTask params do not cotain notification");
       }
     }
-    for (;;)
+    else
     {
-      if (this.a.mServiceDownloadTaskManager != null)
+      ab.c("TMADownloadSDKService", "startDownloadTask params null");
+    }
+    if (this.a.mServiceDownloadTaskManager != null)
+    {
+      com.tencent.tmdownloader.internal.storage.a.a().a(paramString1, paramString2);
+      if ((paramMap != null) && (paramMap.containsKey(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION)))
       {
-        com.tencent.tmdownloader.internal.storage.a.a().a(paramString1, paramString2);
-        if ((paramMap != null) && (paramMap.containsKey(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION)))
-        {
-          str = (String)paramMap.get(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION);
-          ab.c("TMADownloadSDKService", "startDownloadTask showNotificationStr : " + str);
-        }
+        localObject = (String)paramMap.get(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startDownloadTask showNotificationStr : ");
+        localStringBuilder.append((String)localObject);
+        ab.c("TMADownloadSDKService", localStringBuilder.toString());
         try
         {
-          if ((!TextUtils.isEmpty(str)) && (Integer.valueOf(str).intValue() == TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE) && (this.a.mNotificationManager == null))
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (Integer.valueOf((String)localObject).intValue() == TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE) && (this.a.mNotificationManager == null))
           {
             this.a.mNotificationManager = com.tencent.tmdownloader.internal.notification.a.a();
             this.a.mNotificationManager.b();
           }
-          paramInt = this.a.mServiceDownloadTaskManager.a(paramString1, paramString2, paramInt, paramString3, paramString4, paramMap);
-          ab.c("TMADownloadSDKService", "<startDownloadTask>returnValue: " + paramInt);
-          ab.c("TMADownloadSDKService", "<startDownloadTask>exit");
-          return paramInt;
-          ab.c("TMADownloadSDKService", "startDownloadTask params do not cotain notification");
-          continue;
-          ab.c("TMADownloadSDKService", "startDownloadTask params null");
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            ab.c("TMADownloadSDKService", "call startDownload showNotificationStr parse Exception: ", localException);
-          }
+          ab.c("TMADownloadSDKService", "call startDownload showNotificationStr parse Exception: ", localException);
         }
       }
+      paramInt = this.a.mServiceDownloadTaskManager.a(paramString1, paramString2, paramInt, paramString3, paramString4, paramMap);
+      paramString1 = new StringBuilder();
+      paramString1.append("<startDownloadTask>returnValue: ");
+      paramString1.append(paramInt);
+      ab.c("TMADownloadSDKService", paramString1.toString());
+      ab.c("TMADownloadSDKService", "<startDownloadTask>exit");
+      return paramInt;
     }
     ab.c("TMADownloadSDKService", "<startDownloadTask>returnValue: TMAssistantDownloadErrorCode.DownloadSDK_DB_DATA_NOT_READY");
     return 6;
@@ -82,7 +102,10 @@ public class y
     if (this.a.mServiceDownloadTaskManager != null)
     {
       paramString1 = this.a.mServiceDownloadTaskManager.a(paramString1, paramString2);
-      ab.c("TMADownloadSDKService", "<getDownloadTaskInfo>returnValue: " + paramString1);
+      paramString2 = new StringBuilder();
+      paramString2.append("<getDownloadTaskInfo>returnValue: ");
+      paramString2.append(paramString1);
+      ab.c("TMADownloadSDKService", paramString2.toString());
       ab.c("TMADownloadSDKService", "<getDownloadTaskInfo>exit");
       return paramString1;
     }
@@ -97,7 +120,10 @@ public class y
     if (this.a.mServiceDownloadTaskManager != null)
     {
       paramString = this.a.mServiceDownloadTaskManager.b(paramString);
-      ab.c("TMADownloadSDKService", "<getDownloadTaskInfoByVia>jimluo service return " + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<getDownloadTaskInfoByVia>jimluo service return ");
+      localStringBuilder.append(paramString);
+      ab.c("TMADownloadSDKService", localStringBuilder.toString());
       return paramString;
     }
     return null;
@@ -106,7 +132,10 @@ public class y
   public void a(int paramInt)
   {
     ab.c("TMADownloadSDKService", "<setServiceSetingMaxTaskNum>enter");
-    ab.c("TMADownloadSDKService", "<setServiceSetingMaxTaskNum>maxTaskNum: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<setServiceSetingMaxTaskNum>maxTaskNum: ");
+    localStringBuilder.append(paramInt);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     g.a().a(paramInt);
     ab.c("TMADownloadSDKService", "<setServiceSetingMaxTaskNum>exit");
   }
@@ -114,25 +143,30 @@ public class y
   public void a(String paramString, com.tencent.tmassistant.aidl.a parama)
   {
     ab.c("TMADownloadSDKService", "<registerDownloadTaskCallback>enter");
-    ab.c("TMADownloadSDKService", "<registerDownloadTaskCallback>clientKey:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<registerDownloadTaskCallback>clientKey:");
+    localStringBuilder.append(paramString);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     if ((paramString != null) && (parama != null))
     {
       this.a.mCallbacks.register(parama);
       ab.c("TMADownloadSDKService", "<registerDownloadTaskCallback>register callback");
+      try
+      {
+        this.a.mCallbackHashMap.put(parama, paramString);
+      }
+      finally {}
     }
-    try
-    {
-      this.a.mCallbackHashMap.put(parama, paramString);
-      ab.c("TMADownloadSDKService", "<registerDownloadTaskCallback>exit");
-      return;
-    }
-    finally {}
+    ab.c("TMADownloadSDKService", "<registerDownloadTaskCallback>exit");
   }
   
   public void a(boolean paramBoolean)
   {
     ab.c("TMADownloadSDKService", "<setServiceSetingIsTaskAutoResume>enter");
-    ab.c("TMADownloadSDKService", "<setServiceSetingIsTaskAutoResume>isTaskAutoResume: " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<setServiceSetingIsTaskAutoResume>isTaskAutoResume: ");
+    localStringBuilder.append(paramBoolean);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     g.a().a(paramBoolean);
     ab.c("TMADownloadSDKService", "<setServiceSetingIsTaskAutoResume>exit");
   }
@@ -140,25 +174,32 @@ public class y
   public void b(String paramString, com.tencent.tmassistant.aidl.a parama)
   {
     ab.c("TMADownloadSDKService", "<unregisterDownloadTaskCallback>enter");
-    ab.c("TMADownloadSDKService", "<unregisterDownloadTaskCallback>clientKey:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<unregisterDownloadTaskCallback>clientKey:");
+    localStringBuilder.append(paramString);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     if ((paramString != null) && (parama != null))
     {
       this.a.mCallbacks.unregister(parama);
       ab.c("TMADownloadSDKService", "<unregisterDownloadTaskCallback>unregister callback");
+      try
+      {
+        this.a.mCallbackHashMap.remove(parama);
+      }
+      finally {}
     }
-    try
-    {
-      this.a.mCallbackHashMap.remove(parama);
-      ab.c("TMADownloadSDKService", "<unregisterDownloadTaskCallback>exit");
-      return;
-    }
-    finally {}
+    ab.c("TMADownloadSDKService", "<unregisterDownloadTaskCallback>exit");
   }
   
   public void b(String paramString1, String paramString2)
   {
     ab.c("TMADownloadSDKService", "<pauseDownloadTask>enter");
-    ab.c("TMADownloadSDKService", "<pauseDownloadTask>clientkey:" + paramString1 + ",url:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<pauseDownloadTask>clientkey:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",url:");
+    localStringBuilder.append(paramString2);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     try
     {
       if (this.a.mServiceDownloadTaskManager != null)
@@ -166,23 +207,22 @@ public class y
         this.a.mServiceDownloadTaskManager.b(paramString1, paramString2);
         ab.c("TMADownloadSDKService", "<pauseDownloadTask>pauseDownload");
       }
-      ab.c("TMADownloadSDKService", "<pauseDownloadTask>exit");
-      return;
     }
     catch (Exception paramString1)
     {
-      for (;;)
-      {
-        ab.c("TMADownloadSDKService", "<pauseDownloadTask>exception: ", paramString1);
-        paramString1.printStackTrace();
-      }
+      ab.c("TMADownloadSDKService", "<pauseDownloadTask>exception: ", paramString1);
+      paramString1.printStackTrace();
     }
+    ab.c("TMADownloadSDKService", "<pauseDownloadTask>exit");
   }
   
   public void b(boolean paramBoolean)
   {
     ab.c("TMADownloadSDKService", "<setServiceSetingIsDownloadWifiOnly>enter");
-    ab.c("TMADownloadSDKService", "<setServiceSetingIsDownloadWifiOnly>isDownloadWifiOnly: " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<setServiceSetingIsDownloadWifiOnly>isDownloadWifiOnly: ");
+    localStringBuilder.append(paramBoolean);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     g.a().b(paramBoolean);
     ab.c("TMADownloadSDKService", "<setServiceSetingIsDownloadWifiOnly>exit");
   }
@@ -191,7 +231,10 @@ public class y
   {
     ab.c("TMADownloadSDKService", "<isAllDownloadFinished>enter");
     boolean bool = ApkDownloadManager.getInstance().isAllDownloadFinished().booleanValue();
-    ab.c("TMADownloadSDKService", "<isAllDownloadFinished>returnValue: " + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<isAllDownloadFinished>returnValue: ");
+    localStringBuilder.append(bool);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     ab.c("TMADownloadSDKService", "<isAllDownloadFinished>exit");
     return bool;
   }
@@ -209,7 +252,12 @@ public class y
   public void c(String paramString1, String paramString2)
   {
     ab.c("TMADownloadSDKService", "<cancelDownloadTask>enter");
-    ab.c("TMADownloadSDKService", "<cancelDownloadTask>clientkey:" + paramString1 + ",url:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<cancelDownloadTask>clientkey:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",url:");
+    localStringBuilder.append(paramString2);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     if (this.a.mServiceDownloadTaskManager != null)
     {
       this.a.mServiceDownloadTaskManager.c(paramString1, paramString2);
@@ -230,7 +278,12 @@ public class y
   public void d(String paramString1, String paramString2)
   {
     ab.c("TMADownloadSDKService", "<deleteDownloadTask>deleteDownloadTask enter");
-    ab.c("TMADownloadSDKService", "<deleteDownloadTask>clientkey:" + paramString1 + ",url:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<deleteDownloadTask>clientkey:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",url:");
+    localStringBuilder.append(paramString2);
+    ab.c("TMADownloadSDKService", localStringBuilder.toString());
     if (this.a.mServiceDownloadTaskManager != null)
     {
       this.a.mServiceDownloadTaskManager.d(paramString1, paramString2);
@@ -241,7 +294,7 @@ public class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.y
  * JD-Core Version:    0.7.0.1
  */

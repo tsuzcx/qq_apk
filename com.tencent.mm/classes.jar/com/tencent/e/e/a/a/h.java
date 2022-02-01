@@ -19,31 +19,23 @@ import java.util.Set;
 
 public final class h
 {
-  private static final j<h> Bky;
+  private static final j<h> MtV;
   public Context mContext;
   public boolean mInit = false;
   
   static
   {
-    AppMethodBeat.i(114568);
-    Bky = new h.1();
-    AppMethodBeat.o(114568);
+    AppMethodBeat.i(138409);
+    MtV = new j() {};
+    AppMethodBeat.o(138409);
   }
   
-  public static h dUM()
+  public static a j(Map<String, a> paramMap, int paramInt)
   {
-    AppMethodBeat.i(114563);
-    h localh = (h)Bky.get();
-    AppMethodBeat.o(114563);
-    return localh;
-  }
-  
-  public static h.a e(Map<String, a> paramMap, int paramInt)
-  {
-    AppMethodBeat.i(114566);
+    AppMethodBeat.i(138407);
     if (paramMap == null)
     {
-      AppMethodBeat.o(114566);
+      AppMethodBeat.o(138407);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -59,44 +51,58 @@ public final class h
         if (localObject == null) {
           localObject = locala;
         } else {
-          localObject.Blk.addAll(locala.Blk);
+          localObject.ahuB.addAll(locala.ahuB);
         }
       }
     }
     if (localObject != null)
     {
-      paramMap = new h.a((byte)0);
-      paramMap.Blb = localObject;
-      paramMap.Blc = localArrayList;
-      AppMethodBeat.o(114566);
+      paramMap = new a((byte)0);
+      paramMap.ahur = localObject;
+      paramMap.ahus = localArrayList;
+      AppMethodBeat.o(138407);
       return paramMap;
     }
-    AppMethodBeat.o(114566);
+    AppMethodBeat.o(138407);
     return null;
   }
   
-  public static String im(int paramInt1, int paramInt2)
+  public static h jXt()
   {
-    AppMethodBeat.i(114567);
+    AppMethodBeat.i(138404);
+    h localh = (h)MtV.get();
+    AppMethodBeat.o(138404);
+    return localh;
+  }
+  
+  public static String pH(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(138408);
     String str = paramInt1 + "00" + paramInt2;
-    AppMethodBeat.o(114567);
+    AppMethodBeat.o(138408);
     return str;
   }
   
-  public final Map<String, a> dUN()
+  public final void init(Context paramContext)
   {
-    AppMethodBeat.i(114565);
+    this.mContext = paramContext;
+    this.mInit = true;
+  }
+  
+  public final Map<String, a> jXu()
+  {
+    AppMethodBeat.i(138406);
     HashMap localHashMap = new HashMap();
     Object localObject = this.mContext.getDir("turingmm", 0);
     if (localObject == null)
     {
-      AppMethodBeat.o(114565);
+      AppMethodBeat.o(138406);
       return localHashMap;
     }
     File[] arrayOfFile = ((File)localObject).listFiles();
     if (arrayOfFile == null)
     {
-      AppMethodBeat.o(114565);
+      AppMethodBeat.o(138406);
       return localHashMap;
     }
     int j = arrayOfFile.length;
@@ -106,7 +112,7 @@ public final class h
       File localFile = arrayOfFile[i];
       try
       {
-        localObject = c.n(f.af(new File(localFile.getAbsolutePath())), c.dUP());
+        localObject = c.r(f.Y(new File(localFile.getAbsolutePath())), c.jXz());
         if (localObject == null)
         {
           localObject = null;
@@ -115,11 +121,11 @@ public final class h
             break label175;
           }
           localObject = new NullPointerException("csGroupRecord is null.");
-          AppMethodBeat.o(114565);
+          AppMethodBeat.o(138406);
           throw ((Throwable)localObject);
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
         localFile.deleteOnExit();
       }
@@ -127,37 +133,37 @@ public final class h
       {
         i += 1;
         break;
-        byte[] arrayOfByte = b.co(localThrowable);
-        if (arrayOfByte == null)
+        byte[] arrayOfByte2 = b.dv(arrayOfByte1);
+        if (arrayOfByte2 == null)
         {
           locala = null;
           break label101;
         }
         a locala = new a();
-        locala.readFrom(new JceInputStream(arrayOfByte));
+        locala.readFrom(new JceInputStream(arrayOfByte2));
         break label101;
         label175:
         localHashMap.put(localFile.getAbsolutePath(), locala);
       }
     }
-    AppMethodBeat.o(114565);
+    AppMethodBeat.o(138406);
     return localHashMap;
   }
   
-  public final String il(int paramInt1, int paramInt2)
+  public final String pG(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(114564);
-    String str = im(paramInt1, paramInt2);
+    AppMethodBeat.i(138405);
+    String str = pH(paramInt1, paramInt2);
     File localFile = this.mContext.getDir("turingmm", 0);
     if (localFile == null)
     {
-      AppMethodBeat.o(114564);
+      AppMethodBeat.o(138405);
       return "";
     }
     Object localObject2 = localFile.listFiles();
     if (localObject2 == null)
     {
-      AppMethodBeat.o(114564);
+      AppMethodBeat.o(138405);
       return "";
     }
     Object localObject1 = new ArrayList();
@@ -174,7 +180,7 @@ public final class h
     }
     if (((List)localObject1).size() <= 2)
     {
-      AppMethodBeat.o(114564);
+      AppMethodBeat.o(138405);
       return "";
     }
     localObject2 = new ArrayList();
@@ -188,24 +194,24 @@ public final class h
     }
     if (((List)localObject2).size() <= 2)
     {
-      AppMethodBeat.o(114564);
+      AppMethodBeat.o(138405);
       return "";
     }
     Collections.sort((List)localObject2);
     str = localFile.getAbsolutePath() + File.separator + str + "_" + ((List)localObject2).get(0);
-    AppMethodBeat.o(114564);
+    AppMethodBeat.o(138405);
     return str;
   }
   
-  public final void init(Context paramContext)
+  public static final class a
   {
-    this.mContext = paramContext;
-    this.mInit = true;
+    public a ahur;
+    public List<String> ahus;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.e.a.a.h
  * JD-Core Version:    0.7.0.1
  */

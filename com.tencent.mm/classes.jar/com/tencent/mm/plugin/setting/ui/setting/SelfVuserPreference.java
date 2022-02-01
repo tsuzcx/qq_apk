@@ -8,15 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SelfVuserPreference
   extends Preference
 {
+  private String PpL;
   Drawable drawable;
-  private String qGE;
   String text;
   
   public SelfVuserPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,47 +29,47 @@ public class SelfVuserPreference
   public SelfVuserPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(127040);
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(127040);
+    AppMethodBeat.i(73979);
+    setLayoutResource(b.g.mm_preference);
+    AppMethodBeat.o(73979);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(127042);
+    AppMethodBeat.i(73981);
     super.onBindView(paramView);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131822243);
+    ImageView localImageView = (ImageView)paramView.findViewById(b.f.image_iv);
     if (localImageView != null)
     {
       localImageView.setImageDrawable(this.drawable);
-      ab.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
-      if (!bo.isNullOrNil(this.qGE)) {
-        localImageView.setContentDescription(this.qGE);
+      Log.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
+      if (!Util.isNullOrNil(this.PpL)) {
+        localImageView.setContentDescription(this.PpL);
       }
     }
-    paramView = (TextView)paramView.findViewById(2131821551);
+    paramView = (TextView)paramView.findViewById(b.f.text_tv);
     if (paramView != null)
     {
       paramView.setVisibility(0);
       paramView.setText(this.text);
     }
-    AppMethodBeat.o(127042);
+    AppMethodBeat.o(73981);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(127041);
+    AppMethodBeat.i(73980);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(b.f.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970253, localViewGroup);
-    AppMethodBeat.o(127041);
+    View.inflate(this.mContext, b.g.mm_preference_self_vuser, localViewGroup);
+    AppMethodBeat.o(73980);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SelfVuserPreference
  * JD-Core Version:    0.7.0.1
  */

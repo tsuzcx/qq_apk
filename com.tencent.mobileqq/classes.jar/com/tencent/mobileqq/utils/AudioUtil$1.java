@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.utils;
 
-import aubw;
-import bdfi;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public final class AudioUtil$1
-  implements Runnable
+final class AudioUtil$1
+  implements MediaPlayer.OnCompletionListener
 {
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    aubw.a().a(bdfi.a());
+    paramMediaPlayer.release();
+    AudioUtil.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioUtil.1
  * JD-Core Version:    0.7.0.1
  */

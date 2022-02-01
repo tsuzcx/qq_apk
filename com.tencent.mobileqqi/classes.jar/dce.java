@@ -1,8 +1,31 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class dce
+  extends Thread
 {
-  TextView a;
+  public dce(QQLSUnlockActivity paramQQLSUnlockActivity) {}
+  
+  public void run()
+  {
+    try
+    {
+      wait(1500L);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, " QQLSUnlockActivity finish");
+      }
+      this.a.finish();
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
+    finally {}
+  }
 }
 
 

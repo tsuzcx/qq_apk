@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/gri" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d6" android:layout_marginRight="@dimen/d6" android:layout_marginBottom="@dimen/df" android:layout_marginHorizontal="@dimen/d6">
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/yd" android:id="@id/ew6" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="238.0dip" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/yd" android:ellipsize="end" android:layout_gravity="bottom" android:id="@id/ex6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:paddingBottom="@dimen/cr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="30.0dip">
+        <com.tencent.mm.plugin.finder.video.FinderLongVideoPlayerSeekBar android:id="@id/l7p" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/cd" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@android:color/white" android:gravity="center" android:layout_gravity="center" android:id="@id/hxc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="30.0dip" android:minHeight="30.0dip" android:text="@string/grj" android:layout_marginEnd="@dimen/cp" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/ear" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_channels_minimize" android:layout_marginEnd="@dimen/cp" app:iconColor="@android:color/white" />
+    </LinearLayout>
+</LinearLayout>

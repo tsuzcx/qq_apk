@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import android.os.Bundle;
+import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.c;
+import com.tencent.mm.ac.b.b.a;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.model.v.b;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.t;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.z.b.b.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public final class g
@@ -18,16 +19,43 @@ public final class g
     super("makePhoneCall", 327);
   }
   
-  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
-    AppMethodBeat.i(10838);
-    parama = parama.Qx();
-    g.a locala = new g.a((byte)0);
+    AppMethodBeat.i(121318);
+    parama = parama.aZk();
+    a locala = new a((byte)0);
     locala.id = parama.getString("__page_view_id", "");
-    locala.cHB = paramJSONObject.optString("phoneNumber", "");
-    XIPCInvoker.a(parama.getString("__process_name", ah.getProcessName()), locala, g.b.class, new g.1(this, parama1));
-    AppMethodBeat.o(10838);
+    locala.iaX = paramJSONObject.optString("phoneNumber", "");
+    XIPCInvoker.a(parama.getString("__process_name", MMApplicationContext.getProcessName()), locala, b.class, new com.tencent.mm.ipcinvoker.f() {});
+    AppMethodBeat.o(121318);
   }
+  
+  static final class a
+    implements com.tencent.mm.ipcinvoker.extension.f
+  {
+    String iaX;
+    String id;
+    
+    public final void g(Parcel paramParcel)
+    {
+      AppMethodBeat.i(121314);
+      paramParcel.writeString(this.id);
+      paramParcel.writeString(this.iaX);
+      AppMethodBeat.o(121314);
+    }
+    
+    public final void readFromParcel(Parcel paramParcel)
+    {
+      AppMethodBeat.i(121315);
+      this.id = paramParcel.readString();
+      this.iaX = paramParcel.readString();
+      AppMethodBeat.o(121315);
+    }
+  }
+  
+  static class b
+    implements d<g.a, Bundle>
+  {}
 }
 
 

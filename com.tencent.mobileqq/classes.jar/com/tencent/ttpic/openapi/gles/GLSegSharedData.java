@@ -25,30 +25,23 @@ public class GLSegSharedData
   public SegmentDataPipe getCurrentTexturePile()
   {
     int i;
-    int j;
-    if (this.mTexturePile[0].getTexureCurrentStatus() == 2)
-    {
+    if (this.mTexturePile[0].getTexureCurrentStatus() == 2) {
       i = 1;
-      if (this.mTexturePile[1].getTexureCurrentStatus() != 2) {
-        break label72;
-      }
-      j = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
+    int j;
+    if (this.mTexturePile[1].getTexureCurrentStatus() == 2) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if ((i != 0) && (j != 0))
     {
-      if ((i != 0) && (j != 0))
-      {
-        if (this.mTexturePile[0].mTimestamp < this.mTexturePile[1].mTimestamp)
-        {
-          return this.mTexturePile[0];
-          i = 0;
-          break;
-          label72:
-          j = 0;
-          continue;
-        }
-        return this.mTexturePile[1];
+      if (this.mTexturePile[0].mTimestamp < this.mTexturePile[1].mTimestamp) {
+        return this.mTexturePile[0];
       }
+      return this.mTexturePile[1];
     }
     if (i != 0) {
       return this.mTexturePile[0];
@@ -62,13 +55,17 @@ public class GLSegSharedData
   public SegmentDataPipe getFreeTexturePileMakeBusy()
   {
     int i = 0;
-    while (i < this.mTexturePile.length)
+    for (;;)
     {
-      if (this.mTexturePile[i].getTexureCurrentStatus() == 0)
+      Object localObject = this.mTexturePile;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i].getTexureCurrentStatus() == 0)
       {
-        SegmentDataPipe localSegmentDataPipe = this.mTexturePile[i];
-        localSegmentDataPipe.makeBusy();
-        return localSegmentDataPipe;
+        localObject = this.mTexturePile[i];
+        ((SegmentDataPipe)localObject).makeBusy();
+        return localObject;
       }
       i += 1;
     }
@@ -77,18 +74,24 @@ public class GLSegSharedData
   
   public boolean judgeBrotherTextureIsReady(SegmentDataPipe paramSegmentDataPipe)
   {
-    SegmentDataPipe localSegmentDataPipe = this.mTexturePile[0];
-    if (this.mTexturePile[0] == paramSegmentDataPipe) {
-      localSegmentDataPipe = this.mTexturePile[1];
+    SegmentDataPipe[] arrayOfSegmentDataPipe = this.mTexturePile;
+    boolean bool = false;
+    SegmentDataPipe localSegmentDataPipe = arrayOfSegmentDataPipe[0];
+    if (arrayOfSegmentDataPipe[0] == paramSegmentDataPipe) {
+      localSegmentDataPipe = arrayOfSegmentDataPipe[1];
     }
-    return localSegmentDataPipe.getTexureCurrentStatus() == 2;
+    if (localSegmentDataPipe.getTexureCurrentStatus() == 2) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void makeBrotherTextureFree(SegmentDataPipe paramSegmentDataPipe)
   {
-    SegmentDataPipe localSegmentDataPipe = this.mTexturePile[0];
-    if (this.mTexturePile[0] == paramSegmentDataPipe) {
-      localSegmentDataPipe = this.mTexturePile[1];
+    SegmentDataPipe[] arrayOfSegmentDataPipe = this.mTexturePile;
+    SegmentDataPipe localSegmentDataPipe = arrayOfSegmentDataPipe[0];
+    if (arrayOfSegmentDataPipe[0] == paramSegmentDataPipe) {
+      localSegmentDataPipe = arrayOfSegmentDataPipe[1];
     }
     localSegmentDataPipe.makeFree();
   }
@@ -107,7 +110,7 @@ public class GLSegSharedData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.gles.GLSegSharedData
  * JD-Core Version:    0.7.0.1
  */

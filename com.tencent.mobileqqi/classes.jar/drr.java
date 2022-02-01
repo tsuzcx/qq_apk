@@ -1,20 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class drr
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
   public drr(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.f();
-    }
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

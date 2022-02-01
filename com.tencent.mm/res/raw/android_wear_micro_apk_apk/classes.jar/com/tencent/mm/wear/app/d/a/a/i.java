@@ -13,54 +13,54 @@ final class i
   public final void run()
   {
     Process.setThreadPriority(-16);
-    int i = AudioTrack.getMinBufferSize(h.a(this.adF), 2, 2) * 2;
+    int i = AudioTrack.getMinBufferSize(h.a(this.ahh), 2, 2) * 2;
     ??? = new byte[i];
-    short s = (short)(h.a(this.adF) * 20 / 1000);
-    d.e("MicroMsg.SilkPlayer", "frameLen: %d, playBufferSize: %d", new Object[] { Short.valueOf(s), Integer.valueOf(i) });
+    short s = (short)(h.a(this.ahh) * 20 / 1000);
+    d.d("MicroMsg.SilkPlayer", "frameLen: %d, playBufferSize: %d", new Object[] { Short.valueOf(s), Integer.valueOf(i) });
     for (;;)
     {
-      if (h.b(this.adF) == f.ads) {
-        synchronized (h.mI())
+      if (h.b(this.ahh) == f.agU) {
+        synchronized (h.nu())
         {
-          if (h.mJ() != h.c(this.adF))
+          if (h.nv() != h.c(this.ahh))
           {
-            d.c("MicroMsg.SilkPlayer", "[%d] diff id, useDeocder: %d", new Object[] { Integer.valueOf(h.c(this.adF)), Integer.valueOf(h.mJ()) });
-            h.a(this.adF, h.d(this.adF));
+            d.c("MicroMsg.SilkPlayer", "[%d] diff id, useDeocder: %d", new Object[] { Integer.valueOf(h.c(this.ahh)), Integer.valueOf(h.nv()) });
+            h.a(this.ahh, h.d(this.ahh));
           }
-          i = MediaRecorder.SilkDoDec((byte[])???, s);
+          i = MediaRecorder.SilkDoDec((byte[])???, s, MediaRecorder.Xa);
           d.c("MicroMsg.SilkPlayer", "SilkDoDec ret %d", new Object[] { Integer.valueOf(i) });
           if (i <= 0) {
-            h.a(this.adF, f.adt);
+            h.a(this.ahh, f.agV);
           }
         }
       }
       try
       {
         Thread.sleep(1000L);
-        synchronized (h.mI())
+        synchronized (h.nu())
         {
-          label194:
-          if (h.mJ() == h.c(this.adF))
+          label197:
+          if (h.nv() == h.c(this.ahh))
           {
-            MediaRecorder.SilkDecUnInit();
-            d.c("MicroMsg.SilkPlayer", "[%d] SilkDecUnInit", new Object[] { Integer.valueOf(h.c(this.adF)) });
-            h.mK();
+            MediaRecorder.SilkDecUnInit(MediaRecorder.Xa);
+            d.c("MicroMsg.SilkPlayer", "[%d] SilkDecUnInit", new Object[] { Integer.valueOf(h.c(this.ahh)) });
+            h.nw();
           }
-          h.f(this.adF);
-          this.adF.g(h.g(this.adF));
+          h.f(this.ahh);
+          this.ahh.h(h.g(this.ahh));
           return;
           arrayOfByte = finally;
           throw arrayOfByte;
           try
           {
-            h.e(this.adF).write(arrayOfByte, 0, s * 2);
+            h.e(this.ahh).write(arrayOfByte, 0, s * 2);
           }
           catch (Exception localException) {}
         }
       }
       catch (InterruptedException localInterruptedException)
       {
-        break label194;
+        break label197;
       }
     }
   }

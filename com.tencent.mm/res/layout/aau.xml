@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/cvv" android:layout_width="56.0dip" android:layout_height="56.0dip" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip">
-        <TextView android:textSize="@dimen/dw" android:textColor="@color/h8" android:id="@id/cvw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-        <TextView android:textSize="@dimen/dw" android:textColor="@color/rv" android:id="@id/cvx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" />
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.view.HardTouchableLayout android:id="@id/gq8" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderMediaBanner android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/fo0" android:visibility="gone" android:layout_width="@dimen/d9" android:layout_height="@dimen/d9" android:src="@raw/icon_filled_awesome" app:iconColor="@color/Red_90" />
+</com.tencent.mm.view.HardTouchableLayout>

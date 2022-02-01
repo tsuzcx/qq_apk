@@ -11,17 +11,27 @@ public final class ResourceConstant
   @NotNull
   private static final long[] LOCAL_IFACE_HASHES = { "dummy0".hashCode(), "lo".hashCode() };
   @NotNull
-  private static final String PID_STATS_PATH = "/proc/" + Process.myPid() + "/stat";
+  private static final String PID_STATS_PATH;
   @NotNull
   public static final String STATS_PATH = "/proc/net/xt_qtaguid/stats";
   @NotNull
   public static final String SYS_STATS_PATH = "/proc/stat";
   private static final long UID = Process.myUid();
-  private static final long WLAN0_HASH = "wlan0".hashCode();
+  private static final long WLAN0_HASH;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/proc/");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("/stat");
+    PID_STATS_PATH = localStringBuilder.toString();
+    WLAN0_HASH = "wlan0".hashCode();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.resource.ResourceConstant
  * JD-Core Version:    0.7.0.1
  */

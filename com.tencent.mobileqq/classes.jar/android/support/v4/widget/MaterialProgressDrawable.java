@@ -69,11 +69,9 @@ class MaterialProgressDrawable
     updateRingColor(paramFloat, paramRing);
     float f1 = (float)(Math.floor(paramRing.getStartingRotation() / 0.8F) + 1.0D);
     float f2 = getMinProgressArc(paramRing);
-    float f3 = paramRing.getStartingStartTrim();
-    paramRing.setStartTrim((paramRing.getStartingEndTrim() - f2 - paramRing.getStartingStartTrim()) * paramFloat + f3);
+    paramRing.setStartTrim(paramRing.getStartingStartTrim() + (paramRing.getStartingEndTrim() - f2 - paramRing.getStartingStartTrim()) * paramFloat);
     paramRing.setEndTrim(paramRing.getStartingEndTrim());
-    f2 = paramRing.getStartingRotation();
-    paramRing.setRotation((f1 - paramRing.getStartingRotation()) * paramFloat + f2);
+    paramRing.setRotation(paramRing.getStartingRotation() + (f1 - paramRing.getStartingRotation()) * paramFloat);
   }
   
   private int evaluateColorChange(float paramFloat, int paramInt1, int paramInt2)
@@ -84,15 +82,15 @@ class MaterialProgressDrawable
     int j = k >> 8 & 0xFF;
     k &= 0xFF;
     paramInt2 = Integer.valueOf(paramInt2).intValue();
-    int m = (int)(((paramInt2 >> 24 & 0xFF) - paramInt1) * paramFloat);
-    int n = (int)(((paramInt2 >> 16 & 0xFF) - i) * paramFloat);
-    int i1 = (int)(((paramInt2 >> 8 & 0xFF) - j) * paramFloat);
-    return k + (int)(((paramInt2 & 0xFF) - k) * paramFloat) | paramInt1 + m << 24 | i + n << 16 | i1 + j << 8;
+    return paramInt1 + (int)(((paramInt2 >> 24 & 0xFF) - paramInt1) * paramFloat) << 24 | i + (int)(((paramInt2 >> 16 & 0xFF) - i) * paramFloat) << 16 | j + (int)(((paramInt2 >> 8 & 0xFF) - j) * paramFloat) << 8 | k + (int)(paramFloat * ((paramInt2 & 0xFF) - k));
   }
   
   private float getMinProgressArc(MaterialProgressDrawable.Ring paramRing)
   {
-    return (float)Math.toRadians(paramRing.getStrokeWidth() / (6.283185307179586D * paramRing.getCenterRadius()));
+    double d1 = paramRing.getStrokeWidth();
+    double d2 = paramRing.getCenterRadius();
+    Double.isNaN(d1);
+    return (float)Math.toRadians(d1 / (d2 * 6.283185307179586D));
   }
   
   private float getRotation()
@@ -104,12 +102,16 @@ class MaterialProgressDrawable
   {
     MaterialProgressDrawable.Ring localRing = this.mRing;
     float f = this.mResources.getDisplayMetrics().density;
-    this.mWidth = (f * paramDouble1);
-    this.mHeight = (f * paramDouble2);
+    double d = f;
+    Double.isNaN(d);
+    this.mWidth = (paramDouble1 * d);
+    Double.isNaN(d);
+    this.mHeight = (paramDouble2 * d);
     localRing.setStrokeWidth((float)paramDouble4 * f);
-    localRing.setCenterRadius(f * paramDouble3);
+    Double.isNaN(d);
+    localRing.setCenterRadius(paramDouble3 * d);
     localRing.setColorIndex(0);
-    localRing.setArrowDimensions(paramFloat1 * f, f * paramFloat2);
+    localRing.setArrowDimensions(paramFloat1 * f, paramFloat2 * f);
     localRing.setInsets((int)this.mWidth, (int)this.mHeight);
   }
   

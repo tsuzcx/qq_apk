@@ -14,12 +14,6 @@ public class NightRGBStretchFilter
     super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void ClearGLSL()
-  {
-    this.adjustFilter = null;
-    super.ClearGLSL();
-  }
-  
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     this.glslProgramShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
@@ -30,14 +24,17 @@ public class NightRGBStretchFilter
     this.adjustFilter.addParam(new UniformParam.FloatParam("param", this.strenth));
     if (this.strenth >= 0.5F) {
       this.adjustFilter.addParam(new UniformParam.FloatParam("scale", 2.0F));
-    }
-    for (;;)
-    {
-      localBaseFilter.setNextFilter(this.adjustFilter, new int[] { this.srcTextureIndex + 1 });
-      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-      return;
+    } else {
       this.adjustFilter.addParam(new UniformParam.FloatParam("scale", 1.0F));
     }
+    localBaseFilter.setNextFilter(this.adjustFilter, new int[] { this.srcTextureIndex + 1 });
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
+  }
+  
+  public void clearGLSL()
+  {
+    this.adjustFilter = null;
+    super.clearGLSL();
   }
   
   public boolean isAdjustFilter()
@@ -48,14 +45,15 @@ public class NightRGBStretchFilter
   public void setAdjustParam(float paramFloat)
   {
     this.strenth = paramFloat;
-    if (this.adjustFilter != null) {
-      this.adjustFilter.addParam(new UniformParam.FloatParam("param", this.strenth));
+    BaseFilter localBaseFilter = this.adjustFilter;
+    if (localBaseFilter != null) {
+      localBaseFilter.addParam(new UniformParam.FloatParam("param", this.strenth));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.art.NightRGBStretchFilter
  * JD-Core Version:    0.7.0.1
  */

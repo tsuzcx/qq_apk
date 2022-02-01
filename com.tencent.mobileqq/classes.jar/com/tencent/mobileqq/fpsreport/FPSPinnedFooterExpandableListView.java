@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.fpsreport;
 
-import abvq;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import bdiz;
+import com.tencent.qqperf.monitor.fps.FPSCalculator;
+import com.tencent.qqperf.tools.PerformanceReportUtils;
 import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class FPSPinnedFooterExpandableListView
   extends PinnedFooterExpandableListView
 {
-  private long jdField_a_of_type_Long;
-  private abvq jdField_a_of_type_Abvq;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean b;
+  private FPSCalculator a;
+  private boolean b = false;
+  private long c = 0L;
+  private String d;
   
   public FPSPinnedFooterExpandableListView(Context paramContext)
   {
@@ -34,8 +34,9 @@ public class FPSPinnedFooterExpandableListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_Abvq != null) {
-      this.jdField_a_of_type_Abvq.b();
+    paramCanvas = this.a;
+    if (paramCanvas != null) {
+      paramCanvas.b();
     }
   }
   
@@ -45,35 +46,36 @@ public class FPSPinnedFooterExpandableListView
     if (this.b)
     {
       this.b = false;
-      bdiz.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
+      PerformanceReportUtils.a(this.d, SystemClock.uptimeMillis());
     }
   }
   
-  public void reportScrollStateChange(int paramInt)
+  protected void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Abvq != null) {
-      this.jdField_a_of_type_Abvq.a(paramInt);
+    FPSCalculator localFPSCalculator = this.a;
+    if (localFPSCalculator != null) {
+      localFPSCalculator.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Abvq = new abvq();
-    this.jdField_a_of_type_Abvq.a(paramString);
+    this.d = paramString;
+    this.a = new FPSCalculator();
+    this.a.a(paramString);
     setStartTime(SystemClock.uptimeMillis());
   }
   
   public void setStartTime(long paramLong)
   {
     this.b = true;
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSPinnedFooterExpandableListView
  * JD-Core Version:    0.7.0.1
  */

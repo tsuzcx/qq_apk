@@ -6,38 +6,50 @@ import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.mmsight.model.j;
 import com.tencent.mm.plugin.mmsight.model.o;
-import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.at.a;
 
 public final class k
 {
-  private static k oJq;
-  public SightParams oJr;
+  private static k KXr;
+  public SightParams KXs;
   
   static
   {
-    AppMethodBeat.i(76593);
-    oJq = new k();
-    AppMethodBeat.o(76593);
+    AppMethodBeat.i(89505);
+    KXr = new k();
+    AppMethodBeat.o(89505);
   }
   
-  public static k bRq()
+  public static boolean anH()
   {
-    return oJq;
+    AppMethodBeat.i(89504);
+    if (CaptureMMProxy.getInstance().getInt(at.a.acOt, 0) == 1)
+    {
+      AppMethodBeat.o(89504);
+      return true;
+    }
+    AppMethodBeat.o(89504);
+    return false;
   }
   
-  public static int bRs()
+  public static k gcB()
   {
-    return j.oHG.videoBitrate;
+    return KXr;
   }
   
-  public static int bRt()
+  public static int gcC()
   {
-    return j.oHG.eZQ;
+    return j.KVJ.videoBitrate;
   }
   
-  public static String bRu()
+  public static int gcD()
   {
-    switch (j.oHG.eqK)
+    return j.KVJ.nFY;
+  }
+  
+  public static String gcE()
+  {
+    switch (j.KVJ.lWy)
     {
     default: 
       return "";
@@ -47,45 +59,28 @@ public final class k
     return "RECORDER_TYPE_FFMPEG";
   }
   
-  public static boolean isDebug()
-  {
-    AppMethodBeat.i(76592);
-    if (CaptureMMProxy.getInstance().getInt(ac.a.yDR, 0) == 1)
-    {
-      AppMethodBeat.o(76592);
-      return true;
-    }
-    AppMethodBeat.o(76592);
-    return false;
-  }
-  
   public static d q(VideoTransPara paramVideoTransPara)
   {
-    AppMethodBeat.i(76591);
+    AppMethodBeat.i(89503);
     Object localObject = null;
-    switch (j.oHG.eqK)
+    switch (j.KVJ.lWy)
     {
     default: 
       paramVideoTransPara = localObject;
     }
     for (;;)
     {
-      AppMethodBeat.o(76591);
+      AppMethodBeat.o(89503);
       return paramVideoTransPara;
       paramVideoTransPara = new n(paramVideoTransPara);
       continue;
       paramVideoTransPara = new l(paramVideoTransPara);
     }
   }
-  
-  public final SightParams bRr()
-  {
-    return this.oJr;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.k
  * JD-Core Version:    0.7.0.1
  */

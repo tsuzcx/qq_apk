@@ -1,288 +1,103 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.os.RemoteException;
-import android.util.Base64;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.lifecycle.x;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.af;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.protocal.protobuf.dcn;
+import com.tencent.mm.protocal.protobuf.fuw;
+import com.tencent.mm.ui.widget.a.j;
+import java.util.LinkedList;
 
 public final class g
 {
-  private static final HashMap<String, WeakReference<Bitmap>> vbm;
+  a WSU;
+  public LinkedList<dcn> WSV;
+  public LinkedList<fuw> WSW;
+  x<Integer> WSX;
+  int WSY;
+  final Context mContext;
+  private RecyclerView mRecyclerView;
+  View tss;
+  j xcO;
   
-  static
+  public g(Context paramContext, LinkedList<dcn> paramLinkedList, LinkedList<fuw> paramLinkedList1)
   {
-    AppMethodBeat.i(7489);
-    vbm = new HashMap();
-    AppMethodBeat.o(7489);
+    AppMethodBeat.i(296214);
+    this.WSX = new x();
+    this.WSY = 0;
+    this.mContext = paramContext;
+    this.xcO = new j(paramContext, 0, 3);
+    this.WSV = paramLinkedList;
+    this.WSW = paramLinkedList1;
+    ixq();
+    AppMethodBeat.o(296214);
   }
   
-  private static long G(String paramString, long paramLong)
+  final void ixq()
   {
-    AppMethodBeat.i(7485);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(7485);
-      return paramLong;
+    AppMethodBeat.i(296222);
+    this.mRecyclerView = new RecyclerView(this.mContext);
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+    this.mRecyclerView.setLayoutParams(localLayoutParams);
+    this.mRecyclerView.setLayoutManager(new LinearLayoutManager());
+    this.mRecyclerView.setPadding(0, 0, 0, com.tencent.mm.cd.a.fromDPToPix(this.mContext, 98));
+    this.WSU = new a();
+    this.mRecyclerView.setAdapter(this.WSU);
+    if (this.xcO != null) {
+      this.xcO.setCustomView(this.mRecyclerView);
     }
-    Object localObject = paramString;
-    if (paramString.startsWith("#"))
+    AppMethodBeat.o(296222);
+  }
+  
+  public final class a
+    extends RecyclerView.a<a>
+  {
+    public a() {}
+    
+    public final int getItemCount()
     {
-      localObject = paramString;
-      if (paramString.length() == 4)
+      AppMethodBeat.i(296240);
+      int i = ((dcn)g.this.WSV.get(g.this.WSY)).aaIv.size();
+      AppMethodBeat.o(296240);
+      return i;
+    }
+    
+    public final class a
+      extends RecyclerView.v
+    {
+      View WTb;
+      TextView WTc;
+      View WTd;
+      ImageView WTe;
+      
+      public a(View paramView)
       {
-        localObject = new StringBuilder(paramString);
-        ((StringBuilder)localObject).insert(2, paramString.charAt(1));
-        ((StringBuilder)localObject).insert(4, paramString.charAt(2));
-        ((StringBuilder)localObject).insert(6, paramString.charAt(3));
-        localObject = ((StringBuilder)localObject).toString();
+        super();
+        AppMethodBeat.i(296391);
+        this.WTb = paramView;
+        this.WTc = ((TextView)paramView.findViewById(c.f.appdata_auth_half_bottom_selection));
+        this.WTd = paramView.findViewById(c.f.appdata_auth_half_bottom_selection_mark);
+        this.WTe = ((ImageView)paramView.findViewById(c.f.bottom_line));
+        AppMethodBeat.o(296391);
       }
     }
-    try
-    {
-      int i = Color.parseColor((String)localObject);
-      paramLong = i;
-      AppMethodBeat.o(7485);
-      return 0xFFFFFFFF & paramLong;
-    }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.WebView.RemoteUtil", "Failed to parse color: %s", new Object[] { localObject });
-      AppMethodBeat.o(7485);
-    }
-    return paramLong;
-  }
-  
-  public static int Kq(int paramInt)
-  {
-    AppMethodBeat.i(7487);
-    paramInt = af.Kq(paramInt);
-    AppMethodBeat.o(7487);
-    return paramInt;
-  }
-  
-  public static void a(com.tencent.mm.plugin.webview.stub.d paramd, int paramInt, List<String> paramList)
-  {
-    AppMethodBeat.i(7481);
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      AppMethodBeat.o(7481);
-      return;
-    }
-    try
-    {
-      paramd.k(paramInt, paramList);
-      AppMethodBeat.o(7481);
-      return;
-    }
-    catch (Exception paramd)
-    {
-      ab.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + paramd.getMessage());
-      AppMethodBeat.o(7481);
-    }
-  }
-  
-  public static void a(com.tencent.mm.plugin.webview.stub.d paramd, int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(7480);
-    ArrayList localArrayList = new ArrayList();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
-    {
-      AppMethodBeat.o(7480);
-      return;
-    }
-    try
-    {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        localArrayList.add(String.valueOf(paramVarArgs[i]));
-        i += 1;
-      }
-      paramd.k(paramInt, localArrayList);
-      AppMethodBeat.o(7480);
-      return;
-    }
-    catch (Exception paramd)
-    {
-      ab.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + paramd.getMessage());
-      AppMethodBeat.o(7480);
-    }
-  }
-  
-  public static boolean a(Bundle paramBundle, String paramString1, String paramString2, com.tencent.mm.plugin.webview.stub.e parame, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(7488);
-    if (parame == null)
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      AppMethodBeat.o(7488);
-      return true;
-    }
-    Bundle localBundle = new Bundle(3);
-    localBundle.putBundle("open_ui_with_webview_ui_extras", paramBundle);
-    localBundle.putString("open_ui_with_webview_ui_plugin_name", paramString1);
-    localBundle.putString("open_ui_with_webview_ui_plugin_entry", paramString2);
-    try
-    {
-      parame.i(101, localBundle);
-      AppMethodBeat.o(7488);
-      return true;
-    }
-    catch (RemoteException paramBundle)
-    {
-      ab.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(7488);
-      return false;
-    }
-    catch (Exception paramBundle)
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      ab.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(7488);
-    }
-    return false;
-  }
-  
-  public static Bitmap aie(String paramString)
-  {
-    AppMethodBeat.i(7482);
-    Object localObject = (WeakReference)vbm.get(paramString);
-    if ((localObject != null) && (((WeakReference)localObject).get() != null) && (!((Bitmap)((WeakReference)localObject).get()).isRecycled()))
-    {
-      paramString = (Bitmap)((WeakReference)localObject).get();
-      AppMethodBeat.o(7482);
-      return paramString;
-    }
-    if (com.tencent.mm.vfs.e.cN(paramString)) {}
-    for (localObject = com.tencent.mm.sdk.platformtools.d.decodeFile(paramString, null);; localObject = null)
-    {
-      if (localObject != null) {
-        vbm.put(paramString, new WeakReference(localObject));
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(7482);
-        return localObject;
-        try
-        {
-          Bitmap localBitmap = BackwardSupportUtil.b.b(ah.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
-          localObject = localBitmap;
-          vbm.put(paramString, new WeakReference(localBitmap));
-          localObject = localBitmap;
-        }
-        catch (Exception paramString)
-        {
-          ab.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramString, "", new Object[0]);
-        }
-      }
-    }
-  }
-  
-  public static long aif(String paramString)
-  {
-    AppMethodBeat.i(7483);
-    long l = G(paramString, -1L);
-    AppMethodBeat.o(7483);
-    return l;
-  }
-  
-  public static Bitmap aig(String paramString)
-  {
-    AppMethodBeat.i(7486);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(7486);
-      return null;
-    }
-    Object localObject1 = (WeakReference)vbm.get(paramString);
-    if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (!((Bitmap)((WeakReference)localObject1).get()).isRecycled()))
-    {
-      paramString = (Bitmap)((WeakReference)localObject1).get();
-      AppMethodBeat.o(7486);
-      return paramString;
-    }
-    localObject1 = Base64.decode(paramString, 0);
-    if (localObject1 == null)
-    {
-      AppMethodBeat.o(7486);
-      return null;
-    }
-    Object localObject2 = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-    BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
-    int k = ((BitmapFactory.Options)localObject2).outWidth;
-    int j = ((BitmapFactory.Options)localObject2).outHeight;
-    int i = Math.min(((BitmapFactory.Options)localObject2).outWidth, ((BitmapFactory.Options)localObject2).outHeight);
-    ((BitmapFactory.Options)localObject2).inJustDecodeBounds = false;
-    if (i > 96)
-    {
-      ((BitmapFactory.Options)localObject2).inSampleSize = Math.max((int)(i * 1.0F / 96.0F), 1);
-      localObject1 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
-      if (localObject1 == null)
-      {
-        AppMethodBeat.o(7486);
-        return null;
-      }
-      k = ((Bitmap)localObject1).getWidth();
-      j = ((Bitmap)localObject1).getHeight();
-      i = Math.min(k, j);
-    }
-    do
-    {
-      localObject2 = Bitmap.createBitmap((Bitmap)localObject1, Math.max(k / 2 - i / 2, 0), Math.max(j / 2 - i / 2, 0), i, i);
-      if (localObject2 != localObject1) {
-        ((Bitmap)localObject1).recycle();
-      }
-      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, 96, 96, false);
-      if (localObject2 != localObject1)
-      {
-        ab.i("MicroMsg.WebView.RemoteUtil", "bitmap recycle %s", new Object[] { localObject2.toString() });
-        ((Bitmap)localObject2).recycle();
-      }
-      if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
-        vbm.put(paramString, new WeakReference(localObject1));
-      }
-      AppMethodBeat.o(7486);
-      return localObject1;
-      localObject2 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    AppMethodBeat.o(7486);
-    return null;
-  }
-  
-  public static int by(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(7484);
-    paramInt = (int)G(paramString, paramInt);
-    AppMethodBeat.o(7484);
-    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.g
  * JD-Core Version:    0.7.0.1
  */

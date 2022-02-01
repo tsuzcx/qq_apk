@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class dii
-  implements DialogInterface.OnDismissListener
+  implements Handler.Callback
 {
-  public dii(ShortcutGuideDialogActivity paramShortcutGuideDialogActivity) {}
+  public dii(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleMessage(Message paramMessage)
   {
     this.a.finish();
+    return true;
   }
 }
 

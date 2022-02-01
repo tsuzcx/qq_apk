@@ -45,26 +45,39 @@ final class PendingPost
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof PendingPost)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof PendingPost;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (PendingPost)paramObject;
-    } while ((!paramObject.dispatchable.equals(this.dispatchable)) || (!TextUtils.equals(this.group, paramObject.group)) || (!paramObject.tag.equals(this.tag)));
-    return true;
+    }
+    paramObject = (PendingPost)paramObject;
+    bool1 = bool2;
+    if (paramObject.dispatchable.equals(this.dispatchable))
+    {
+      bool1 = bool2;
+      if (TextUtils.equals(this.group, paramObject.group))
+      {
+        bool1 = bool2;
+        if (paramObject.tag.equals(this.tag)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
   {
-    if (this.dispatchable == null) {
+    Dispatcher.Dispatchable localDispatchable = this.dispatchable;
+    if (localDispatchable == null) {
       return 0;
     }
-    return this.dispatchable.hashCode();
+    return localDispatchable.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.dispatch.PendingPost
  * JD-Core Version:    0.7.0.1
  */

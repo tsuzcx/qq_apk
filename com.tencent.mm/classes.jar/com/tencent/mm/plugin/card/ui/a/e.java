@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.ui.e.b;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
@@ -15,98 +15,101 @@ public final class e
     super(paramMMActivity);
   }
   
-  public final boolean beD()
+  public final boolean dnB()
   {
-    AppMethodBeat.i(88719);
-    if ((super.beD()) && (this.klk.isNormal()) && (!this.kyA) && (!beA()) && (!beB()))
+    AppMethodBeat.i(113642);
+    if ((this.wru.djq()) && (!l.IN(this.wAo.lCR)) && (this.wru.djF()) && (!dmH()))
     {
-      AppMethodBeat.o(88719);
+      AppMethodBeat.o(113642);
       return true;
     }
-    AppMethodBeat.o(88719);
+    AppMethodBeat.o(113642);
     return false;
   }
   
-  public final boolean beL()
+  public final boolean dnC()
   {
-    AppMethodBeat.i(88714);
-    if ((this.klk.baL()) && (!l.tv(this.ktU.ejF)) && (this.klk.isNormal()) && (!this.kyA))
+    AppMethodBeat.i(293804);
+    boolean bool = dmH();
+    AppMethodBeat.o(293804);
+    return bool;
+  }
+  
+  public final boolean dnE()
+  {
+    AppMethodBeat.i(113647);
+    if ((this.wru.djK() != null) && (this.wru.djK().Zep))
     {
-      AppMethodBeat.o(88714);
+      AppMethodBeat.o(113647);
+      return true;
+    }
+    AppMethodBeat.o(113647);
+    return false;
+  }
+  
+  public final boolean dnF()
+  {
+    AppMethodBeat.i(113643);
+    if ((super.dnF()) || ((this.wru.djF()) && (!dmH()) && ((dnl()) || (dnm()))))
+    {
+      AppMethodBeat.o(113643);
+      return true;
+    }
+    AppMethodBeat.o(113643);
+    return false;
+  }
+  
+  public final boolean dnK()
+  {
+    AppMethodBeat.i(113645);
+    if ((this.wru.djF()) && (super.dnK()) && (!dnE()))
+    {
+      AppMethodBeat.o(113645);
+      return true;
+    }
+    AppMethodBeat.o(113645);
+    return false;
+  }
+  
+  public final boolean dnO()
+  {
+    AppMethodBeat.i(113644);
+    if ((this.wru.djq()) && (this.wru.djK().Zeb != null) && (this.wru.djF()) && (!dmH()) && (!dnl()) && (!dnm()))
+    {
+      AppMethodBeat.o(113644);
+      return true;
+    }
+    AppMethodBeat.o(113644);
+    return false;
+  }
+  
+  public final boolean dno()
+  {
+    AppMethodBeat.i(113646);
+    if ((super.dno()) && (this.wru.djF()) && (!dmH()) && (!dnl()) && (!dnm()))
+    {
+      AppMethodBeat.o(113646);
+      return true;
+    }
+    AppMethodBeat.o(113646);
+    return false;
+  }
+  
+  public final boolean dnx()
+  {
+    AppMethodBeat.i(113641);
+    if ((this.wru.djq()) && (!l.IN(this.wAo.lCR)) && (this.wru.djF()) && (!dmH()))
+    {
+      AppMethodBeat.o(113641);
       return false;
     }
-    AppMethodBeat.o(88714);
+    AppMethodBeat.o(113641);
     return true;
-  }
-  
-  public final boolean beP()
-  {
-    AppMethodBeat.i(88715);
-    if ((this.klk.baL()) && (!l.tv(this.ktU.ejF)) && (this.klk.isNormal()) && (!this.kyA))
-    {
-      AppMethodBeat.o(88715);
-      return true;
-    }
-    AppMethodBeat.o(88715);
-    return false;
-  }
-  
-  public final boolean beQ()
-  {
-    return this.kyA;
-  }
-  
-  public final boolean beS()
-  {
-    AppMethodBeat.i(88720);
-    if ((this.klk.bbd() != null) && (this.klk.bbd().wGF))
-    {
-      AppMethodBeat.o(88720);
-      return true;
-    }
-    AppMethodBeat.o(88720);
-    return false;
-  }
-  
-  public final boolean beT()
-  {
-    AppMethodBeat.i(88716);
-    if ((super.beT()) || ((this.klk.isNormal()) && (!this.kyA) && ((beA()) || (beB()))))
-    {
-      AppMethodBeat.o(88716);
-      return true;
-    }
-    AppMethodBeat.o(88716);
-    return false;
-  }
-  
-  public final boolean beY()
-  {
-    AppMethodBeat.i(88718);
-    if ((this.klk.isNormal()) && (super.beY()) && (!beS()))
-    {
-      AppMethodBeat.o(88718);
-      return true;
-    }
-    AppMethodBeat.o(88718);
-    return false;
-  }
-  
-  public final boolean bfc()
-  {
-    AppMethodBeat.i(88717);
-    if ((this.klk.baL()) && (this.klk.bbd().wGr != null) && (this.klk.isNormal()) && (!this.kyA) && (!beA()) && (!beB()))
-    {
-      AppMethodBeat.o(88717);
-      return true;
-    }
-    AppMethodBeat.o(88717);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

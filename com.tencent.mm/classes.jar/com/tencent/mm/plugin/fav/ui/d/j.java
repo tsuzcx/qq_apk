@@ -1,293 +1,294 @@
 package com.tencent.mm.plugin.fav.ui.d;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.y;
-import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.plugin.fav.ui.l.2;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.acb;
-import com.tencent.mm.protocal.protobuf.ach;
-import com.tencent.mm.protocal.protobuf.acp;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acs;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.autogen.mmdata.rpt.kn;
+import com.tencent.mm.aw.f;
+import com.tencent.mm.aw.i;
+import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.fav.a.z;
+import com.tencent.mm.plugin.fav.ui.FavoriteImageServer;
+import com.tencent.mm.plugin.fav.ui.q.c;
+import com.tencent.mm.plugin.fav.ui.q.d;
+import com.tencent.mm.plugin.fav.ui.q.e;
+import com.tencent.mm.plugin.fav.ui.q.f;
+import com.tencent.mm.plugin.fav.ui.q.h;
+import com.tencent.mm.plugin.fav.ui.q.i;
+import com.tencent.mm.plugin.findersdk.a.cp;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.arx;
+import com.tencent.mm.protocal.protobuf.asb;
+import com.tencent.mm.protocal.protobuf.dtj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class j
-  extends a
+  extends b
 {
-  private final int mDa;
-  private HashMap<String, SpannableString> mDy;
+  private final int Aod;
+  private Set<ImageView> Aos;
+  private View.OnClickListener Aot;
   
-  public j(l paraml)
+  public j(FavoriteImageServer paramFavoriteImageServer)
   {
-    super(paraml);
-    AppMethodBeat.i(74639);
-    this.mDy = new HashMap();
-    this.mDa = com.tencent.mm.cb.a.ao(paraml.context, 2131427653);
-    AppMethodBeat.o(74639);
-  }
-  
-  private static String M(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(74642);
-    paramContext = "[" + paramContext.getResources().getString(paramInt) + "]";
-    AppMethodBeat.o(74642);
-    return paramContext;
-  }
-  
-  private static void a(TextView paramTextView1, TextView paramTextView2, aca paramaca)
-  {
-    AppMethodBeat.i(74641);
-    if (!paramaca.wTz)
+    super(paramFavoriteImageServer);
+    AppMethodBeat.i(274437);
+    this.Aot = new View.OnClickListener()
     {
-      ab.d("MicroMsg.FavRecordListItem", "has no datasrcname");
-      paramTextView1.setVisibility(8);
-      ab.d("MicroMsg.FavRecordListItem", "field type %d", new Object[] { Integer.valueOf(paramaca.dataType) });
-      switch (paramaca.dataType)
+      public final void onClick(View paramAnonymousView)
       {
+        AppMethodBeat.i(274452);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fav/ui/listitem/FavMusicMvListItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        if (!e.aPU())
+        {
+          aa.j(j.this.AfM.context, null);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/listitem/FavMusicMvListItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(274452);
+          return;
+        }
+        asb localasb;
+        arf localarf;
+        if ((paramAnonymousView.getTag() instanceof com.tencent.mm.plugin.fav.a.g))
+        {
+          localObject = (com.tencent.mm.plugin.fav.a.g)paramAnonymousView.getTag();
+          localasb = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.ZBt;
+          localarf = com.tencent.mm.plugin.fav.a.b.c((com.tencent.mm.plugin.fav.a.g)localObject);
+          if (localarf == null)
+          {
+            Log.w("MicroMsg.FavBaseListItem", "data item is null");
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/listitem/FavMusicMvListItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(274452);
+            return;
+          }
+          if (com.tencent.mm.plugin.fav.a.b.f(localarf))
+          {
+            Log.i("MicroMsg.FavBaseListItem", "same song, do release");
+            paramAnonymousView = new kn();
+            paramAnonymousView.ioV = 2L;
+            paramAnonymousView.iqr = 9L;
+            cp.a(paramAnonymousView);
+            com.tencent.mm.aw.a.bLi();
+            j.a(j.this, null);
+          }
+        }
+        else
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/listitem/FavMusicMvListItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(274452);
+          return;
+        }
+        if (!WeChatBrands.Business.Entries.SessionMusic.checkAvailable(paramAnonymousView.getContext()))
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/listitem/FavMusicMvListItem$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(274452);
+          return;
+        }
+        localObject = new u(com.tencent.mm.plugin.fav.a.b.a(localarf));
+        if (!((u)localObject).jKS()) {
+          if (localarf.hDd == null)
+          {
+            localObject = "";
+            label267:
+            if (localarf.Zzy == null) {
+              break label534;
+            }
+          }
+        }
+        label534:
+        for (dtj localdtj = localarf.Zzy.ZAJ;; localdtj = null)
+        {
+          localObject = i.a(6, null, localarf.title, localarf.desc, localarf.ZyM, localarf.ZyQ, localarf.ZyO, localarf.hIQ, com.tencent.mm.plugin.fav.a.b.dQc(), (String)localObject, "", localasb.appId, com.tencent.mm.aw.h.a(localarf.hIQ, localdtj));
+          ((f)localObject).oOM = localarf.songAlbumUrl;
+          ((f)localObject).oOE = localarf.songLyric;
+          if ((localarf.Zzy != null) && (localarf.Zzy.ZAJ != null) && (!Util.isNullOrNil(localarf.Zzy.ZAJ.oOZ))) {
+            ((f)localObject).oOZ = localarf.Zzy.ZAJ.oOZ;
+          }
+          ((f)localObject).oOW = localarf.hIQ;
+          com.tencent.mm.aw.a.c((f)localObject);
+          j.a(j.this, (ImageView)paramAnonymousView);
+          paramAnonymousView = new kn();
+          paramAnonymousView.ioV = 1L;
+          paramAnonymousView.iqr = 9L;
+          cp.a(paramAnonymousView);
+          break;
+          localObject = new u(com.tencent.mm.plugin.fav.a.b.dPW() + com.tencent.mm.b.g.getMessageDigest(localarf.hDd.getBytes()));
+          if (((u)localObject).jKS()) {}
+          for (localObject = ah.v(((u)localObject).jKT());; localObject = "") {
+            break;
+          }
+          localObject = ah.v(((u)localObject).jKT());
+          break label267;
+        }
       }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView1.setVisibility(0);
-      paramTextView1.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramTextView1.getContext(), paramaca.wTy, paramTextView1.getTextSize()));
-      break;
-      paramTextView2.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramTextView2.getContext(), paramaca.desc, paramTextView2.getTextSize()));
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299840));
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299838) + paramaca.title);
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299835) + paramaca.title);
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView1 = paramaca.wTw.wUd;
-      paramaca = new StringBuilder().append(M(paramTextView2.getContext(), 2131299834));
-      if (bo.isNullOrNil(paramTextView1.cDl)) {}
-      for (paramTextView1 = paramTextView1.label;; paramTextView1 = paramTextView1.cDl)
-      {
-        paramTextView2.setText(paramTextView1);
-        AppMethodBeat.o(74641);
-        return;
-      }
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299831) + paramaca.title);
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299827));
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299839));
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299832));
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299754) + paramaca.wTw.wUh.title);
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299735));
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299837));
-      AppMethodBeat.o(74641);
-      return;
-      paramTextView2.setText(M(paramTextView2.getContext(), 2131299829) + paramaca.title);
-    }
+    };
+    this.Aod = com.tencent.mm.cd.a.br(paramFavoriteImageServer.context, q.c.FavIconSize);
+    this.Aos = new HashSet();
+    AppMethodBeat.o(274437);
   }
   
   public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
   {
-    AppMethodBeat.i(74640);
-    Object localObject = paramViewGroup.getContext();
-    int m;
-    int i;
-    boolean bool;
-    LinkedList localLinkedList;
-    int k;
-    int j;
-    label189:
-    int n;
+    dtj localdtj = null;
+    AppMethodBeat.i(274443);
+    Context localContext = paramViewGroup.getContext();
+    a locala;
+    View localView1;
     if (paramView == null)
     {
-      paramViewGroup = new j.a();
-      localObject = a(View.inflate((Context)localObject, 2130969545, null), paramViewGroup, paramg);
-      paramViewGroup.ivs = ((ImageView)((View)localObject).findViewById(2131821517));
-      paramViewGroup.mDA = ((TextView)((View)localObject).findViewById(2131824037));
-      paramViewGroup.mDC = ((TextView)((View)localObject).findViewById(2131824038));
-      paramViewGroup.mDD = ((TextView)((View)localObject).findViewById(2131824039));
-      paramViewGroup.mDE = ((TextView)((View)localObject).findViewById(2131824040));
-      paramViewGroup.mDn = ((ImageView)((View)localObject).findViewById(2131824035));
-      paramViewGroup.mDz = ((ImageView)((View)localObject).findViewById(2131824036));
-      paramViewGroup.mDF = ((FrameLayout)((View)localObject).findViewById(2131824034));
-      a(paramViewGroup, paramg);
-      m = 0;
-      i = 0;
-      bool = false;
-      localLinkedList = paramg.field_favProto.wVc;
-      paramView = localLinkedList.iterator();
-      k = 0;
-      j = 0;
-      if (!paramView.hasNext()) {
-        break label385;
-      }
-      switch (((aca)paramView.next()).dataType)
-      {
-      case 9: 
-      case 12: 
-      case 13: 
-      default: 
-        label292:
-        n = k;
-        k = j;
-        j = n;
-      }
+      locala = new a();
+      localView1 = a(View.inflate(localContext, q.f.fav_listitem_appmsg, null), locala, paramg);
+      locala.ttT = ((ImageView)localView1.findViewById(q.e.fav_icon));
+      locala.pJJ = ((TextView)localView1.findViewById(q.e.fav_title));
+      locala.plr = ((TextView)localView1.findViewById(q.e.fav_desc));
+      locala.Aov = ((ImageView)localView1.findViewById(q.e.fav_icon_mask));
+      locala.Aoo = ((TextView)localView1.findViewById(q.e.fav_source));
+      locala.Aoo.setVisibility(8);
+      locala.Aov.setOnClickListener(this.Aot);
+      locala.Aov.setVisibility(0);
+      this.Aos.add(locala.Aov);
+      am(locala.ttT, 7);
     }
+    arf localarf;
     for (;;)
     {
-      n = i + 1;
-      i = j;
-      j = k;
-      k = i;
-      i = n;
-      break label189;
-      paramViewGroup = (j.a)paramView.getTag();
-      localObject = paramView;
-      break;
-      if (bool) {
-        break label292;
-      }
-      bool = true;
-      n = k;
-      m = i;
-      k = j;
-      j = n;
-      continue;
-      if (k != 0) {
-        break label292;
-      }
-      j = 1;
-      k = i;
-    }
-    label385:
-    ab.d("MicroMsg.FavRecordListItem", "hasThumb %s, firstRemarkIndex %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j) });
-    if (localLinkedList.size() <= 0)
-    {
-      ab.w("MicroMsg.FavRecordListItem", "dataList size is null");
-      AppMethodBeat.o(74640);
-      return localObject;
-    }
-    paramView = (aca)localLinkedList.get(j);
-    a(paramViewGroup.mDA, paramViewGroup.mDC, paramView);
-    ImageView localImageView;
-    aca localaca;
-    label599:
-    l locall;
-    if (bool)
-    {
-      paramViewGroup.mDF.setVisibility(0);
-      paramViewGroup.ivs.setVisibility(0);
-      localImageView = paramViewGroup.ivs;
-      localaca = (aca)localLinkedList.get(m);
-      switch (localaca.dataType)
+      a(locala, paramg);
+      localarf = com.tencent.mm.plugin.fav.a.b.c(paramg);
+      if (localarf == null)
       {
-      default: 
-      case 2: 
-        for (;;)
+        Log.w("MicroMsg.FavBaseListItem", "getView, data item is null");
+        AppMethodBeat.o(274443);
+        return localView1;
+        try
         {
-          if (j + 1 < localLinkedList.size())
-          {
-            paramViewGroup.mDD.setVisibility(0);
-            paramViewGroup.mDE.setVisibility(0);
-            a(paramViewGroup.mDD, paramViewGroup.mDE, (aca)localLinkedList.get(j + 1));
-            AppMethodBeat.o(74640);
-            return localObject;
-            locall = this.mvC;
-            i = this.mDa;
-            k = this.mDa;
-            if (localImageView != null) {
-              if (!f.Mi())
-              {
-                localImageView.setImageResource(2130839821);
-              }
-              else if ((localaca != null) && (paramg != null))
-              {
-                String str = localaca.mBq;
-                if (str != null)
-                {
-                  paramView = null;
-                  if (localaca.mBq != null)
-                  {
-                    paramView = (String[])locall.myv.get(str);
-                    if (paramView != null) {
-                      break label852;
-                    }
-                    paramView = new String[2];
-                    paramView[0] = b.b(localaca);
-                    paramView[1] = b.c(localaca);
-                    locall.myv.put(str, paramView);
-                  }
-                }
-              }
-            }
-          }
+          locala = (a)paramView.getTag();
+          localView1 = paramView;
+        }
+        catch (Exception paramViewGroup)
+        {
+          Log.e("MicroMsg.FavBaseListItem", "invalid type, message:" + paramViewGroup.getMessage());
+          AppMethodBeat.o(274443);
+          return paramView;
         }
       }
     }
-    label852:
+    String str1 = localarf.title;
+    paramView = localarf.desc;
+    String str2 = "";
+    if (localarf.Zzy != null) {
+      localdtj = localarf.Zzy.ZAJ;
+    }
+    View localView2 = paramView;
+    paramViewGroup = str1;
+    if (localdtj != null)
+    {
+      if (!Util.isNullOrNil(localdtj.YqQ))
+      {
+        paramView = localdtj.YqQ + localContext.getString(q.i.music_mv_info_share_suffix);
+        paramViewGroup = str1 + String.format("·%s", new Object[] { localarf.desc });
+        str2 = localdtj.YqP;
+        localView2 = paramView;
+      }
+    }
+    else
+    {
+      locala.pJJ.setText(paramViewGroup);
+      if (!Util.isNullOrNil(localView2))
+      {
+        locala.plr.setText(localView2);
+        locala.plr.setVisibility(0);
+      }
+      if (localarf.Zzy == null) {
+        localarf.a(new arg());
+      }
+      if (localarf.Zzy.ZAJ == null) {
+        localarf.Zzy.e(new dtj());
+      }
+      if (Util.isNullOrNil(str2)) {
+        break label647;
+      }
+      paramViewGroup = new c.a();
+      paramView = com.tencent.mm.plugin.music.h.b.aPp(str2);
+      paramViewGroup.fullPath = paramView;
+      paramViewGroup.oKp = true;
+      paramViewGroup.nrc = true;
+      paramViewGroup.oKn = true;
+      paramViewGroup.nqa = true;
+      paramViewGroup.oKI = com.tencent.mm.cd.a.fromDPToPix(localContext, 2);
+      paramViewGroup = paramViewGroup.bKx();
+      r.bKe().a(str2, locala.ttT, paramViewGroup);
+      localarf.Zzy.ZAJ.oPc = paramView;
+      label569:
+      locala.Aov.setTag(paramg);
+      if (!com.tencent.mm.plugin.fav.a.b.f(localarf)) {
+        break label676;
+      }
+      locala.Aov.setImageResource(q.d.music_pauseicon);
+      locala.Aov.setContentDescription(localContext.getString(q.i.app_pause));
+    }
     for (;;)
     {
-      locall.myu.a(localImageView, paramView, null, 2131231919, i, k);
-      if ((paramView == null) || (paramView.length <= 0)) {
+      AppMethodBeat.o(274443);
+      return localView1;
+      paramViewGroup = str1;
+      if (Util.isNullOrNil(localdtj.singerName)) {
         break;
       }
-      paramView = paramView[0];
-      com.tencent.mm.kernel.g.RO().ac(new l.2(locall, paramView, paramg, localaca));
+      paramView = localdtj.singerName;
+      paramViewGroup = str1;
       break;
-      this.mvC.b(localImageView, localaca, paramg, 2131230826, this.mDa, this.mDa);
-      break;
-      paramViewGroup.mDF.setVisibility(8);
-      paramViewGroup.ivs.setVisibility(8);
-      break;
-      paramViewGroup.mDD.setVisibility(8);
-      paramViewGroup.mDE.setVisibility(8);
-      break label599;
+      label647:
+      this.AfM.a(locala.ttT, localarf, paramg, q.h.app_attach_file_icon_music, this.Aod, this.Aod);
+      break label569;
+      label676:
+      locala.Aov.setImageResource(q.d.music_playicon);
+      locala.Aov.setContentDescription(localContext.getString(q.i.app_play));
     }
   }
   
-  public final void a(View paramView, acs paramacs)
+  public final void a(View paramView, arx paramarx)
   {
-    AppMethodBeat.i(74643);
-    j.a locala = (j.a)paramView.getTag();
+    AppMethodBeat.i(274445);
+    if (!WeChatBrands.Business.Entries.SessionMusic.checkAvailable(paramView.getContext()))
+    {
+      AppMethodBeat.o(274445);
+      return;
+    }
+    a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
-    AppMethodBeat.o(74643);
+    ((z)com.tencent.mm.kernel.h.ax(z.class)).a(paramView, locala.AdF, paramarx);
+    AppMethodBeat.o(274445);
+  }
+  
+  public static final class a
+    extends b.b
+  {
+    TextView Aoo;
+    ImageView Aov;
+    TextView pJJ;
+    TextView plr;
+    ImageView ttT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.j
  * JD-Core Version:    0.7.0.1
  */

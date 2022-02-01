@@ -8,7 +8,7 @@ public abstract interface EIPClientConnectListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     eipc.EIPClientConnectListener
  * JD-Core Version:    0.7.0.1
  */

@@ -23,15 +23,16 @@ public final class StatSvcStatSong$SongInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 18, 26, 32, 42, 48, 56, 64, 72 }, new String[] { "bytes_song_id", "bytes_song_name", "uint32_song_type", "bytes_singer_name", "uint64_end_time", "uint32_source_type", "uint32_pause_remaining_time", "uint32_song_play_time" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, SongInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 18, 26, 32, 42, 48, 56, 64, 72 }, new String[] { "bytes_song_id", "bytes_song_name", "uint32_song_type", "bytes_singer_name", "uint64_end_time", "uint32_source_type", "uint32_pause_remaining_time", "uint32_song_play_time" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, Long.valueOf(0L), localInteger, localInteger, localInteger }, SongInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.statsvc.song.StatSvcStatSong.SongInfo
  * JD-Core Version:    0.7.0.1
  */

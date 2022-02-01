@@ -8,15 +8,15 @@ public final class ReqGetGroupInArea
   extends JceStruct
 {
   static byte[] cache_vClientVersion = (byte[])new byte[1];
-  public long dwGroupStartIdx;
-  public int iCount;
-  public int iFilterId;
-  public int iLat;
-  public int iLon;
+  public long dwGroupStartIdx = 0L;
+  public int iCount = 0;
+  public int iFilterId = 0;
+  public int iLat = 0;
+  public int iLon = 0;
   public String strAreaName = "";
-  public long uiClientType;
-  public long uiLabelStyle;
-  public byte[] vClientVersion;
+  public long uiClientType = 0L;
+  public long uiLabelStyle = 0L;
+  public byte[] vClientVersion = null;
   
   static
   {
@@ -60,15 +60,16 @@ public final class ReqGetGroupInArea
     paramJceOutputStream.write(this.iCount, 4);
     paramJceOutputStream.write(this.iFilterId, 5);
     paramJceOutputStream.write(this.uiLabelStyle, 6);
-    if (this.vClientVersion != null) {
-      paramJceOutputStream.write(this.vClientVersion, 7);
+    byte[] arrayOfByte = this.vClientVersion;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 7);
     }
     paramJceOutputStream.write(this.uiClientType, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.ReqGetGroupInArea
  * JD-Core Version:    0.7.0.1
  */

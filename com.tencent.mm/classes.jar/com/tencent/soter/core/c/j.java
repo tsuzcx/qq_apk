@@ -6,57 +6,57 @@ import org.json.JSONObject;
 
 public final class j
 {
-  private String BmA = "";
-  private String BmB = "";
-  private String BmC = "";
-  private String BmD = "";
-  private String BmE = "";
-  public int BmF = 20;
-  public String BmG = "";
-  private long Bmu = -1L;
-  private String Bmy = null;
-  public String Bmz = null;
+  private long ahxh = -1L;
+  public String ahxl = null;
+  private String ahxm = "";
+  private String ahxn = "";
+  private String ahxo = "";
+  private String ahxp = "";
+  private String ahxq = "";
+  public int ahxr = 20;
+  public String ahxs = "";
+  private String rawValue = null;
   public String signature = "";
   
-  public static j awO(String paramString)
+  public static j bFJ(String paramString)
   {
-    AppMethodBeat.i(73049);
+    AppMethodBeat.i(88677);
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
       j localj = new j();
-      localj.BmG = paramString;
-      localj.Bmy = localJSONObject.optString("raw");
-      localj.Bmz = localJSONObject.optString("fid");
-      localj.Bmu = localJSONObject.optLong("counter");
-      localj.BmA = localJSONObject.optString("tee_n");
-      localj.BmB = localJSONObject.optString("tee_v");
-      localj.BmC = localJSONObject.optString("fp_n");
-      localj.BmD = localJSONObject.optString("fp_v");
-      localj.BmE = localJSONObject.optString("cpu_id");
-      localj.BmF = localJSONObject.optInt("rsa_pss_saltlen", 20);
-      AppMethodBeat.o(73049);
+      localj.ahxs = paramString;
+      localj.rawValue = localJSONObject.optString("raw");
+      localj.ahxl = localJSONObject.optString("fid");
+      localj.ahxh = localJSONObject.optLong("counter");
+      localj.ahxm = localJSONObject.optString("tee_n");
+      localj.ahxn = localJSONObject.optString("tee_v");
+      localj.ahxo = localJSONObject.optString("fp_n");
+      localj.ahxp = localJSONObject.optString("fp_v");
+      localj.ahxq = localJSONObject.optString("cpu_id");
+      localj.ahxr = localJSONObject.optInt("rsa_pss_saltlen", 20);
+      AppMethodBeat.o(88677);
       return localj;
     }
     catch (JSONException paramString)
     {
       d.e("Soter.SoterSignatureResult", "soter: convert from json failed." + paramString.toString(), new Object[0]);
-      AppMethodBeat.o(73049);
+      AppMethodBeat.o(88677);
     }
     return null;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(73048);
-    String str = "SoterSignatureResult{rawValue='" + this.Bmy + '\'' + ", fid='" + this.Bmz + '\'' + ", counter=" + this.Bmu + ", TEEName='" + this.BmA + '\'' + ", TEEVersion='" + this.BmB + '\'' + ", FpName='" + this.BmC + '\'' + ", FpVersion='" + this.BmD + '\'' + ", cpuId='" + this.BmE + '\'' + ", saltLen=" + this.BmF + ", jsonValue='" + this.BmG + '\'' + ", signature='" + this.signature + '\'' + '}';
-    AppMethodBeat.o(73048);
+    AppMethodBeat.i(88676);
+    String str = "SoterSignatureResult{rawValue='" + this.rawValue + '\'' + ", fid='" + this.ahxl + '\'' + ", counter=" + this.ahxh + ", TEEName='" + this.ahxm + '\'' + ", TEEVersion='" + this.ahxn + '\'' + ", FpName='" + this.ahxo + '\'' + ", FpVersion='" + this.ahxp + '\'' + ", cpuId='" + this.ahxq + '\'' + ", saltLen=" + this.ahxr + ", jsonValue='" + this.ahxs + '\'' + ", signature='" + this.signature + '\'' + '}';
+    AppMethodBeat.o(88676);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.soter.core.c.j
  * JD-Core Version:    0.7.0.1
  */

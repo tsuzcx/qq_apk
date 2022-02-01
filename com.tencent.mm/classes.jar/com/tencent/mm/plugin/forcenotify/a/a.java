@@ -3,13 +3,15 @@ package com.tencent.mm.plugin.forcenotify.a;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void b(String paramString1, String paramString2, int paramInt, long paramLong);
+  public abstract void D(String paramString, int paramInt, long paramLong);
   
-  public abstract void f(String paramString, int paramInt, long paramLong);
+  public abstract void E(String paramString, int paramInt, long paramLong);
   
-  public abstract void g(String paramString, int paramInt, long paramLong);
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean);
   
-  public abstract void h(String paramString, int paramInt, long paramLong);
+  public abstract void d(int paramInt1, String paramString1, int paramInt2, String paramString2);
+  
+  public abstract void f(String paramString1, String paramString2, int paramInt, long paramLong);
 }
 
 

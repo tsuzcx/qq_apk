@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.msgbackup.data;
 
 import android.text.TextUtils;
-import aujq;
-import awge;
-import awhp;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 
 public class MsgBackupResEntity
-  extends awge
+  extends Entity
 {
   public static final String TABLE_NAME = "res";
   public byte[] extraData;
-  @awhp
+  @notColumn
   public String extraDataStr;
   public String filePath;
   public long fileSize;
@@ -24,42 +24,62 @@ public class MsgBackupResEntity
     return "res";
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
-    aujq.b(this);
+    MsgBackupUtil.b(this);
     try
     {
-      if (this.extraData != null) {
-        this.extraDataStr = new String(this.extraData, "utf-8");
+      if (this.extraData == null) {
+        break label50;
       }
+      this.extraDataStr = new String(this.extraData, "utf-8");
       return;
     }
     catch (Exception localException)
     {
-      aujq.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
-      this.extraDataStr = "";
+      label33:
+      label50:
+      break label33;
     }
+    MsgBackupUtil.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+    this.extraDataStr = "";
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
     if (!TextUtils.isEmpty(this.extraDataStr)) {
       this.extraData = this.extraDataStr.getBytes();
     }
-    aujq.a(this);
-    this.filePath = aujq.c(this.filePath);
+    MsgBackupUtil.a(this);
+    this.filePath = MsgBackupUtil.e(this.filePath);
   }
   
   public String toLogString()
   {
-    return "MsgBackupResEntity{msgSeq=" + this.msgSeq + ", msgRandom=" + this.msgRandom + ", msgType=" + this.msgType + ", msgSubType=" + this.msgSubType + ", filePath='" + this.filePath + '\'' + ", extraDataStr='" + this.extraDataStr + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgBackupResEntity{msgSeq=");
+    localStringBuilder.append(this.msgSeq);
+    localStringBuilder.append(", msgRandom=");
+    localStringBuilder.append(this.msgRandom);
+    localStringBuilder.append(", msgType=");
+    localStringBuilder.append(this.msgType);
+    localStringBuilder.append(", msgSubType=");
+    localStringBuilder.append(this.msgSubType);
+    localStringBuilder.append(", filePath='");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extraDataStr='");
+    localStringBuilder.append(this.extraDataStr);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity
  * JD-Core Version:    0.7.0.1
  */

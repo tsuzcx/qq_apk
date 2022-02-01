@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/esy" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/ep_" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_margin="1.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:scaleType="centerCrop" />
-</com.tencent.mm.plugin.sns.ui.PhotosContent>
+<com.tencent.mm.plugin.game.media.FixAspectRatioRelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" app:fix_ratio="0.7486"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/l6_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/game_video_mask" android:scaleType="centerCrop" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/game_video_mask" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/l66" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="10.0dip" android:textColor="@color/BW_BG_100" android:id="@id/cnj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10:00" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/eoh" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@raw/video_cloud" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_above="@id/l66">
+        <com.tencent.mm.plugin.game.media.GameVideoTagContainer android:orientation="horizontal" android:id="@id/l7v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/l84" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/l7v" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+</com.tencent.mm.plugin.game.media.FixAspectRatioRelativeLayout>

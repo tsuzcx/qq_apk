@@ -22,21 +22,24 @@ public final class e
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.C != 0) {
-      paramJceOutputStream.write(this.C, 0);
+    int i = this.C;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.ah != null) {
-      paramJceOutputStream.write(this.ah, 1);
+    String str = this.ah;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.ai, 2);
-    if (this.aj != 0) {
-      paramJceOutputStream.write(this.aj, 3);
+    i = this.aj;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.e
  * JD-Core Version:    0.7.0.1
  */

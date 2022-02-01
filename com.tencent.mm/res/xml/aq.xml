@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:title="@string/bnz" android:key="facebook_auth_tip" android:layout="@layout/ah2" />
-    <PreferenceCategory android:key="facebook_auth_cat" />
-    <Preference android:title="@string/bny" android:key="facebook_auth_bind_btn" android:layout="@layout/ym" />
-    <Preference android:title="@string/bo1" android:key="facebook_auth_account" android:layout="@layout/afi" />
-    <PreferenceCategory android:key="facebook_auth_cat2" />
-    <Preference android:title="@string/bo8" android:key="facebook_auth_unbind_btn" android:layout="@layout/akj" />
+    <PreferenceTitleCategory android:title="^_^" />
 </PreferenceScreen>

@@ -43,12 +43,12 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public Map<String, com.tencent.mm.plugin.appbrand.canvas.action.d> heA;
+  public Map<String, com.tencent.mm.plugin.appbrand.canvas.action.d> qTh;
   
   public c()
   {
-    AppMethodBeat.i(103162);
-    this.heA = new HashMap();
+    AppMethodBeat.i(144845);
+    this.qTh = new HashMap();
     a(new ae());
     a(new q());
     a(new af());
@@ -85,35 +85,35 @@ public final class c
     a(new o());
     a(new m());
     a(new aj());
-    AppMethodBeat.o(103162);
+    AppMethodBeat.o(144845);
   }
   
   private void a(com.tencent.mm.plugin.appbrand.canvas.action.d paramd)
   {
-    AppMethodBeat.i(103164);
-    this.heA.put(paramd.getMethod(), paramd);
-    AppMethodBeat.o(103164);
+    AppMethodBeat.i(144847);
+    this.qTh.put(paramd.getMethod(), paramd);
+    AppMethodBeat.o(144847);
   }
   
   public final boolean a(d paramd, Canvas paramCanvas, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103163);
+    AppMethodBeat.i(144846);
     Object localObject = paramJSONObject.optString("method");
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    localObject = (com.tencent.mm.plugin.appbrand.canvas.action.d)this.heA.get(localObject);
+    localObject = (com.tencent.mm.plugin.appbrand.canvas.action.d)this.qTh.get(localObject);
     if (localObject == null)
     {
-      AppMethodBeat.o(103163);
+      AppMethodBeat.o(144846);
       return false;
     }
     boolean bool = ((com.tencent.mm.plugin.appbrand.canvas.action.d)localObject).a(paramd, paramCanvas, paramJSONObject);
-    AppMethodBeat.o(103163);
+    AppMethodBeat.o(144846);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.c
  * JD-Core Version:    0.7.0.1
  */

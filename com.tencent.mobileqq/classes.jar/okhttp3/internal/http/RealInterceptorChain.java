@@ -76,29 +76,54 @@ public final class RealInterceptorChain
   
   public Response proceed(Request paramRequest, StreamAllocation paramStreamAllocation, HttpCodec paramHttpCodec, RealConnection paramRealConnection)
   {
-    if (this.index >= this.interceptors.size()) {
-      throw new AssertionError();
+    if (this.index < this.interceptors.size())
+    {
+      this.calls += 1;
+      if ((this.httpCodec != null) && (!this.connection.supportsUrl(paramRequest.url())))
+      {
+        paramRequest = new StringBuilder();
+        paramRequest.append("network interceptor ");
+        paramRequest.append(this.interceptors.get(this.index - 1));
+        paramRequest.append(" must retain the same host and port");
+        throw new IllegalStateException(paramRequest.toString());
+      }
+      if ((this.httpCodec != null) && (this.calls > 1))
+      {
+        paramRequest = new StringBuilder();
+        paramRequest.append("network interceptor ");
+        paramRequest.append(this.interceptors.get(this.index - 1));
+        paramRequest.append(" must call proceed() exactly once");
+        throw new IllegalStateException(paramRequest.toString());
+      }
+      paramStreamAllocation = new RealInterceptorChain(this.interceptors, paramStreamAllocation, paramHttpCodec, paramRealConnection, this.index + 1, paramRequest, this.call, this.eventListener, this.connectTimeout, this.readTimeout, this.writeTimeout);
+      paramRequest = (Interceptor)this.interceptors.get(this.index);
+      paramRealConnection = paramRequest.intercept(paramStreamAllocation);
+      if ((paramHttpCodec != null) && (this.index + 1 < this.interceptors.size()) && (paramStreamAllocation.calls != 1))
+      {
+        paramStreamAllocation = new StringBuilder();
+        paramStreamAllocation.append("network interceptor ");
+        paramStreamAllocation.append(paramRequest);
+        paramStreamAllocation.append(" must call proceed() exactly once");
+        throw new IllegalStateException(paramStreamAllocation.toString());
+      }
+      if (paramRealConnection != null)
+      {
+        if (paramRealConnection.body() != null) {
+          return paramRealConnection;
+        }
+        paramStreamAllocation = new StringBuilder();
+        paramStreamAllocation.append("interceptor ");
+        paramStreamAllocation.append(paramRequest);
+        paramStreamAllocation.append(" returned a response with no body");
+        throw new IllegalStateException(paramStreamAllocation.toString());
+      }
+      paramStreamAllocation = new StringBuilder();
+      paramStreamAllocation.append("interceptor ");
+      paramStreamAllocation.append(paramRequest);
+      paramStreamAllocation.append(" returned null");
+      throw new NullPointerException(paramStreamAllocation.toString());
     }
-    this.calls += 1;
-    if ((this.httpCodec != null) && (!this.connection.supportsUrl(paramRequest.url()))) {
-      throw new IllegalStateException("network interceptor " + this.interceptors.get(this.index - 1) + " must retain the same host and port");
-    }
-    if ((this.httpCodec != null) && (this.calls > 1)) {
-      throw new IllegalStateException("network interceptor " + this.interceptors.get(this.index - 1) + " must call proceed() exactly once");
-    }
-    paramRequest = new RealInterceptorChain(this.interceptors, paramStreamAllocation, paramHttpCodec, paramRealConnection, this.index + 1, paramRequest, this.call, this.eventListener, this.connectTimeout, this.readTimeout, this.writeTimeout);
-    paramStreamAllocation = (Interceptor)this.interceptors.get(this.index);
-    paramRealConnection = paramStreamAllocation.intercept(paramRequest);
-    if ((paramHttpCodec != null) && (this.index + 1 < this.interceptors.size()) && (paramRequest.calls != 1)) {
-      throw new IllegalStateException("network interceptor " + paramStreamAllocation + " must call proceed() exactly once");
-    }
-    if (paramRealConnection == null) {
-      throw new NullPointerException("interceptor " + paramStreamAllocation + " returned null");
-    }
-    if (paramRealConnection.body() == null) {
-      throw new IllegalStateException("interceptor " + paramStreamAllocation + " returned a response with no body");
-    }
-    return paramRealConnection;
+    throw new AssertionError();
   }
   
   public int readTimeoutMillis()
@@ -141,7 +166,7 @@ public final class RealInterceptorChain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http.RealInterceptorChain
  * JD-Core Version:    0.7.0.1
  */

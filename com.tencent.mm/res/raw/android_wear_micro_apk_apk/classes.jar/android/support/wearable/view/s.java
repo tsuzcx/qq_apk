@@ -16,23 +16,23 @@ import android.view.animation.LinearInterpolator;
 final class s
   extends Drawable
 {
-  private static Property<s, Integer> Dt = new Property(Integer.class, "level") {};
-  private static final TimeInterpolator Du = q.Dq;
-  private int AX;
-  private float AY;
-  private final RectF Dv = new RectF();
-  private final ObjectAnimator Dw;
-  private final Paint nC = new Paint();
+  private static Property<s, Integer> Fi = new Property(Integer.class, "level") {};
+  private static final TimeInterpolator Fj = q.Ff;
+  private int CM;
+  private float CN;
+  private final RectF Fk = new RectF();
+  private final ObjectAnimator Fl;
+  private final Paint pq = new Paint();
   
   public s()
   {
-    this.nC.setAntiAlias(true);
-    this.nC.setStyle(Paint.Style.STROKE);
-    this.Dw = ObjectAnimator.ofInt(this, Dt, new int[] { 0, 10000 });
-    this.Dw.setRepeatCount(-1);
-    this.Dw.setRepeatMode(1);
-    this.Dw.setDuration(6000L);
-    this.Dw.setInterpolator(new LinearInterpolator());
+    this.pq.setAntiAlias(true);
+    this.pq.setStyle(Paint.Style.STROKE);
+    this.Fl = ObjectAnimator.ofInt(this, Fi, new int[] { 0, 10000 });
+    this.Fl.setRepeatCount(-1);
+    this.Fl.setRepeatMode(1);
+    this.Fl.setDuration(6000L);
+    this.Fl.setInterpolator(new LinearInterpolator());
   }
   
   private static float c(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -43,19 +43,19 @@ final class s
     return 0.0F;
   }
   
-  public final void aW(int paramInt)
+  public final void bq(int paramInt)
   {
-    this.AX = paramInt;
+    this.CM = paramInt;
   }
   
   public final void draw(Canvas paramCanvas)
   {
     float f2 = 0.0F;
     paramCanvas.save();
-    this.Dv.set(getBounds());
-    this.Dv.inset(this.AY / 2.0F, this.AY / 2.0F);
-    this.nC.setStrokeWidth(this.AY);
-    this.nC.setColor(this.AX);
+    this.Fk.set(getBounds());
+    this.Fk.inset(this.CN / 2.0F, this.CN / 2.0F);
+    this.pq.setStrokeWidth(this.CN);
+    this.pq.setColor(this.CM);
     int j = getLevel();
     float f3 = (j - j / 2000 * 2000) / 2000.0F;
     int i;
@@ -68,10 +68,10 @@ final class s
       if (i == 0) {
         break label203;
       }
-      f1 = Du.getInterpolation(c(0.0F, 0.5F, f3)) * 306.0F;
+      f1 = Fj.getInterpolation(c(0.0F, 0.5F, f3)) * 306.0F;
       f4 = Math.max(1.0F, f1);
-      paramCanvas.rotate(j * 1.0E-004F * 2.0F * 360.0F - 90.0F + 54.0F * f3, this.Dv.centerX(), this.Dv.centerY());
-      localRectF = this.Dv;
+      paramCanvas.rotate(j * 1.0E-004F * 2.0F * 360.0F - 90.0F + 54.0F * f3, this.Fk.centerX(), this.Fk.centerY());
+      localRectF = this.Fk;
       if (i == 0) {
         break label228;
       }
@@ -80,24 +80,24 @@ final class s
     label228:
     for (float f1 = f2;; f1 = 306.0F - f4)
     {
-      paramCanvas.drawArc(localRectF, f1, f4, false, this.nC);
+      paramCanvas.drawArc(localRectF, f1, f4, false, this.pq);
       paramCanvas.restore();
       return;
       i = 0;
       break;
-      f1 = (1.0F - Du.getInterpolation(c(0.5F, 1.0F, f3))) * 306.0F;
+      f1 = (1.0F - Fj.getInterpolation(c(0.5F, 1.0F, f3))) * 306.0F;
       break label120;
     }
   }
   
-  public final void fq()
+  public final void fA()
   {
-    this.Dw.start();
+    this.Fl.cancel();
   }
   
-  public final void fr()
+  public final void fz()
   {
-    this.Dw.cancel();
+    this.Fl.start();
   }
   
   public final int getOpacity()
@@ -114,9 +114,9 @@ final class s
   
   public final void setColorFilter(ColorFilter paramColorFilter) {}
   
-  public final void x(float paramFloat)
+  public final void y(float paramFloat)
   {
-    this.AY = paramFloat;
+    this.CN = paramFloat;
   }
 }
 

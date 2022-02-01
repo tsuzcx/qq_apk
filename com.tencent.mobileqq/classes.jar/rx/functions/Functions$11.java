@@ -7,16 +7,17 @@ final class Functions$11
   
   public Void call(Object... paramVarArgs)
   {
-    if (paramVarArgs.length != 0) {
-      throw new RuntimeException("Action0 expecting 0 arguments.");
+    if (paramVarArgs.length == 0)
+    {
+      this.val$f.call();
+      return null;
     }
-    this.val$f.call();
-    return null;
+    throw new RuntimeException("Action0 expecting 0 arguments.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.functions.Functions.11
  * JD-Core Version:    0.7.0.1
  */

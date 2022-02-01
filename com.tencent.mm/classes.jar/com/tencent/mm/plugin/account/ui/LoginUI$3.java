@@ -1,25 +1,35 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.b.d;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.ui.base.u.i;
 
 final class LoginUI$3
-  implements View.OnClickListener
+  implements u.i
 {
-  LoginUI$3(LoginUI paramLoginUI, d paramd) {}
+  LoginUI$3(LoginUI paramLoginUI) {}
   
-  public final void onClick(View paramView)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(152551);
-    this.gEx.crd();
-    AppMethodBeat.o(152551);
+    AppMethodBeat.i(304903);
+    switch (paramMenuItem.getItemId())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(304903);
+      return;
+      LoginUI.b(this.qbD);
+      AppMethodBeat.o(304903);
+      return;
+      LoginUI.X(this.qbD, this.qbD.getString(r.j.wechat_help_center_url) + LocaleUtil.getApplicationLanguage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.3
  * JD-Core Version:    0.7.0.1
  */

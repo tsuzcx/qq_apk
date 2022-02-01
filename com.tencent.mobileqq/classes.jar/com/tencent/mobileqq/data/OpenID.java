@@ -1,18 +1,23 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class OpenID
-  extends awge
+  extends Entity
 {
-  @awhs
+  @unique
   public String appID;
   public String openID;
   
   public String toString()
   {
-    return "appid = " + this.appID + "; openid = " + this.openID;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appid = ");
+    localStringBuilder.append(this.appID);
+    localStringBuilder.append("; openid = ");
+    localStringBuilder.append(this.openID);
+    return localStringBuilder.toString();
   }
 }
 

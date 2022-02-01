@@ -1,19 +1,25 @@
 package com.tencent.mm.plugin.profile.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class SayHiWithSnsPermissionUI$1
-  implements n.b
+  implements View.OnClickListener
 {
   SayHiWithSnsPermissionUI$1(SayHiWithSnsPermissionUI paramSayHiWithSnsPermissionUI) {}
   
-  public final void a(int paramInt, n paramn, Object paramObject)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(23766);
-    SayHiWithSnsPermissionUI.a(this.pCR);
-    AppMethodBeat.o(23766);
+    AppMethodBeat.i(27392);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.NaS.hideVKB();
+    a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(27392);
   }
 }
 

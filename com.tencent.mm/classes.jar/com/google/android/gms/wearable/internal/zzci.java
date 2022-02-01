@@ -24,37 +24,37 @@ public final class zzci
   
   public final ParcelFileDescriptor getFd()
   {
-    AppMethodBeat.i(71137);
+    AppMethodBeat.i(101120);
     if (this.closed)
     {
       localObject = new IllegalStateException("Cannot access the file descriptor after release().");
-      AppMethodBeat.o(71137);
+      AppMethodBeat.o(101120);
       throw ((Throwable)localObject);
     }
     Object localObject = this.zzf;
-    AppMethodBeat.o(71137);
+    AppMethodBeat.o(101120);
     return localObject;
   }
   
   public final InputStream getInputStream()
   {
-    AppMethodBeat.i(71138);
+    AppMethodBeat.i(101121);
     if (this.closed)
     {
       localObject = new IllegalStateException("Cannot access the input stream after release().");
-      AppMethodBeat.o(71138);
+      AppMethodBeat.o(101121);
       throw ((Throwable)localObject);
     }
     if (this.zzf == null)
     {
-      AppMethodBeat.o(71138);
+      AppMethodBeat.o(101121);
       return null;
     }
     if (this.zzct == null) {
       this.zzct = new ParcelFileDescriptor.AutoCloseInputStream(this.zzf);
     }
     Object localObject = this.zzct;
-    AppMethodBeat.o(71138);
+    AppMethodBeat.o(101121);
     return localObject;
   }
   
@@ -65,16 +65,16 @@ public final class zzci
   
   public final void release()
   {
-    AppMethodBeat.i(71139);
+    AppMethodBeat.i(101122);
     if (this.zzf == null)
     {
-      AppMethodBeat.o(71139);
+      AppMethodBeat.o(101122);
       return;
     }
     if (this.closed)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("releasing an already released result.");
-      AppMethodBeat.o(71139);
+      AppMethodBeat.o(101122);
       throw localIllegalStateException;
     }
     try
@@ -87,7 +87,7 @@ public final class zzci
         this.closed = true;
         this.zzf = null;
         this.zzct = null;
-        AppMethodBeat.o(71139);
+        AppMethodBeat.o(101122);
         return;
         this.zzf.close();
       }
@@ -95,13 +95,13 @@ public final class zzci
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(71139);
+      AppMethodBeat.o(101122);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzci
  * JD-Core Version:    0.7.0.1
  */

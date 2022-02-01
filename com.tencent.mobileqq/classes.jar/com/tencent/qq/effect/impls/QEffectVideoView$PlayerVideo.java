@@ -1,6 +1,7 @@
 package com.tencent.qq.effect.impls;
 
 import android.media.MediaPlayer;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import java.io.File;
 
 class QEffectVideoView$PlayerVideo
@@ -16,7 +17,7 @@ class QEffectVideoView$PlayerVideo
       if (!localFile.exists()) {
         return;
       }
-      QEffectVideoView.access$202(this.this$0, new MediaPlayer());
+      QEffectVideoView.access$202(this.this$0, new ReportMediaPlayer());
       QEffectVideoView.access$200(this.this$0).setDataSource(localFile.getAbsolutePath());
       QEffectVideoView.access$200(this.this$0).setSurface(QEffectVideoView.access$300(this.this$0));
       QEffectVideoView.access$200(this.this$0).setAudioStreamType(3);
@@ -33,7 +34,7 @@ class QEffectVideoView$PlayerVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qq.effect.impls.QEffectVideoView.PlayerVideo
  * JD-Core Version:    0.7.0.1
  */

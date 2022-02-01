@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apuc;
-
 class EmoticonLinearLayout$2
   implements Runnable
 {
@@ -9,9 +7,9 @@ class EmoticonLinearLayout$2
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.callback != null)
     {
-      this.this$0.a.b();
+      this.this$0.callback.delete();
       this.this$0.postDelayed(this, 100L);
     }
   }

@@ -7,40 +7,42 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.product.c.h;
-import com.tencent.mm.plugin.product.c.m;
+import com.tencent.mm.plugin.product.b.h;
+import com.tencent.mm.plugin.product.b.m;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.g;
 import java.util.LinkedList;
 
 public final class j
   extends BaseAdapter
 {
+  m MTg;
+  String MTh;
   private Context mContext;
-  m pwI;
-  String pwJ;
   
   public j(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private h Bp(int paramInt)
+  private h afB(int paramInt)
   {
-    AppMethodBeat.i(44125);
-    h localh = (h)this.pwI.pvh.get(paramInt);
-    AppMethodBeat.o(44125);
+    AppMethodBeat.i(67032);
+    h localh = (h)this.MTg.MRH.get(paramInt);
+    AppMethodBeat.o(67032);
     return localh;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(44124);
-    if (this.pwI.pvh != null)
+    AppMethodBeat.i(67031);
+    if (this.MTg.MRH != null)
     {
-      int i = this.pwI.pvh.size();
-      AppMethodBeat.o(44124);
+      int i = this.MTg.MRH.size();
+      AppMethodBeat.o(67031);
       return i;
     }
-    AppMethodBeat.o(44124);
+    AppMethodBeat.o(67031);
     return 0;
   }
   
@@ -51,29 +53,29 @@ public final class j
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(44127);
-    paramViewGroup = Bp(paramInt);
+    AppMethodBeat.i(67034);
+    paramViewGroup = afB(paramInt);
     if ((paramView == null) || (paramView.getTag() == null)) {
-      paramView = View.inflate(this.mContext, 2130970453, null);
+      paramView = View.inflate(this.mContext, a.g.product_select_sku_cell, null);
     }
     for (;;)
     {
       CheckBox localCheckBox = (CheckBox)paramView;
       localCheckBox.setText(paramViewGroup.name);
-      localCheckBox.setEnabled(paramViewGroup.pva);
-      localCheckBox.setChecked(paramViewGroup.id.equals(this.pwJ));
-      if (!paramViewGroup.pva) {
-        paramView.setBackgroundResource(2130839977);
+      localCheckBox.setEnabled(paramViewGroup.dsb);
+      localCheckBox.setChecked(paramViewGroup.id.equals(this.MTh));
+      if (!paramViewGroup.dsb) {
+        paramView.setBackgroundResource(a.e.product_sku_bg_disable);
       }
       for (;;)
       {
-        paramView.setTag(new Pair(this.pwI.pvf, paramViewGroup.id));
-        AppMethodBeat.o(44127);
+        paramView.setTag(new Pair(this.MTg.MRF, paramViewGroup.id));
+        AppMethodBeat.o(67034);
         return paramView;
-        if (paramViewGroup.id.equals(this.pwJ)) {
-          paramView.setBackgroundResource(2130839979);
+        if (paramViewGroup.id.equals(this.MTh)) {
+          paramView.setBackgroundResource(a.e.product_sku_bg_selected);
         } else {
-          paramView.setBackgroundResource(2130839978);
+          paramView.setBackgroundResource(a.e.product_sku_bg_normal);
         }
       }
     }
@@ -81,15 +83,15 @@ public final class j
   
   public final boolean isEnabled(int paramInt)
   {
-    AppMethodBeat.i(44126);
-    boolean bool = Bp(paramInt).pva;
-    AppMethodBeat.o(44126);
+    AppMethodBeat.i(67033);
+    boolean bool = afB(paramInt).dsb;
+    AppMethodBeat.o(67033);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.j
  * JD-Core Version:    0.7.0.1
  */

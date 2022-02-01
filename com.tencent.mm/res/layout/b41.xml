@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.kinda.framework.app.KindaPlatformLayout android:orientation="vertical" android:id="@id/fgl" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/c37" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <FrameLayout android:id="@id/fgm" android:layout_width="fill_parent" android:layout_height="24.0dip" />
+    <ViewStub android:id="@id/fgi" android:layout="@layout/b4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:id="@id/br3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/bqz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <ImageView android:id="@id/jok" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <View android:id="@id/l8n" android:background="@color/ahb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c9a" />
+</com.tencent.kinda.framework.app.KindaPlatformLayout>

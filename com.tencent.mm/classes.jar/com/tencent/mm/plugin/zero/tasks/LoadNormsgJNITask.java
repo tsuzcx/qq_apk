@@ -10,11 +10,14 @@ public final class LoadNormsgJNITask
 {
   public final void execute(g paramg)
   {
-    AppMethodBeat.i(58780);
-    k.a("stlport_shared", getClass().getClassLoader());
-    k.a("wechatxlog", getClass().getClassLoader());
-    k.a("wechatnormsg", getClass().getClassLoader());
-    AppMethodBeat.o(58780);
+    AppMethodBeat.i(133030);
+    getClass().getClassLoader();
+    k.DA("stlport_shared");
+    getClass().getClassLoader();
+    k.DA("wechatxlog");
+    getClass().getClassLoader();
+    k.DA("wechatnormsg");
+    AppMethodBeat.o(133030);
   }
   
   public final String name()

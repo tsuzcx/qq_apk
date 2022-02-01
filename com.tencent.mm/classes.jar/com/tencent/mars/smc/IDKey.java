@@ -9,12 +9,12 @@ public class IDKey
 {
   public static final Parcelable.Creator<IDKey> CREATOR = new Parcelable.Creator()
   {
-    public final IDKey createFromParcel(Parcel paramAnonymousParcel)
+    public IDKey createFromParcel(Parcel paramAnonymousParcel)
     {
       return new IDKey(paramAnonymousParcel);
     }
     
-    public final IDKey[] newArray(int paramAnonymousInt)
+    public IDKey[] newArray(int paramAnonymousInt)
     {
       return new IDKey[paramAnonymousInt];
     }
@@ -95,7 +95,7 @@ public class IDKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.smc.IDKey
  * JD-Core Version:    0.7.0.1
  */

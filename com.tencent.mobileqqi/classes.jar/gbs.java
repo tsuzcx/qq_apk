@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.maproam.Utils;
 import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.maproam.widget.RoamingMapView;
+import com.tencent.tencentmap.mapsdk.map.MapController;
 
 public class gbs
-  implements View.OnClickListener
+  implements Runnable
 {
   public gbs(RoamingActivity paramRoamingActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    VipUtils.b(this.a, 1, "mvip.gongneng.mobileqq.ditumanyou.numberandroid");
-    Utils.a();
+    this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapController.setZoom(this.a.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamingMapView.getMaxZoomLevel() - 1);
   }
 }
 

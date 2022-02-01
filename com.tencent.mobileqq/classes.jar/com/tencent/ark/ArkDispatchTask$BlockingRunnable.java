@@ -86,17 +86,24 @@ public final class ArkDispatchTask$BlockingRunnable
         }
         catch (InterruptedException paramHandler)
         {
-          ArkDispatchTask.ENV.logD("ArkApp.DispatchTask", "DispatchTask.exception: " + paramHandler.getLocalizedMessage());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DispatchTask.exception: ");
+          localStringBuilder.append(paramHandler.getLocalizedMessage());
+          Logger.logD("ArkApp.DispatchTask", localStringBuilder.toString());
         }
       }
+      return true;
     }
     finally {}
-    return true;
+    for (;;)
+    {
+      throw paramHandler;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkDispatchTask.BlockingRunnable
  * JD-Core Version:    0.7.0.1
  */

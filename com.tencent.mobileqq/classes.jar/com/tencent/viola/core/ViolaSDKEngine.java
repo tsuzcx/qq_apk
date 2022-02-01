@@ -15,6 +15,7 @@ import com.tencent.viola.module.JSTimerModule;
 import com.tencent.viola.module.ModuleSimpleHolder;
 import com.tencent.viola.module.MonitorModule;
 import com.tencent.viola.module.RouterModule;
+import com.tencent.viola.module.V8JSTimerModule;
 import com.tencent.viola.module.ViolaModuleManager;
 import com.tencent.viola.module.WebSocketModule;
 import com.tencent.viola.ui.animation.AnimationModule;
@@ -49,7 +50,7 @@ import com.tencent.viola.ui.component.VText;
 import com.tencent.viola.ui.component.VTransform;
 import com.tencent.viola.ui.component.image.VImage2;
 import com.tencent.viola.utils.ViolaLogUtils;
-import com.tencent.viola.vinstance.VInstance;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -81,6 +82,11 @@ public class ViolaSDKEngine
     ViolaBridgeManager.getInstance().post(new ViolaSDKEngine.1(paramInitConfig, paramInitCallback, paramString));
   }
   
+  public static void forceBaseRegisterInit()
+  {
+    baseRegisterInit = true;
+  }
+  
   public static void initialize(Application paramApplication, InitConfig paramInitConfig, @NonNull ViolaSDKEngine.InitCallback paramInitCallback)
   {
     synchronized (mLock)
@@ -95,20 +101,17 @@ public class ViolaSDKEngine
   
   public static void initialize(Application paramApplication, InitConfig paramInitConfig, @NonNull ViolaSDKEngine.InitCallback paramInitCallback, String paramString)
   {
-    for (;;)
+    synchronized (mLock)
     {
-      synchronized (mLock)
-      {
-        if (isInitialized()) {
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
-        {
-          initialize(paramApplication, paramInitConfig, paramInitCallback, paramString);
-          return;
-        }
+      if (isInitialized()) {
+        return;
       }
-      doInitInternal(paramApplication, paramInitConfig, paramInitCallback, paramString);
+      if (TextUtils.isEmpty(paramString)) {
+        initialize(paramApplication, paramInitConfig, paramInitCallback, paramString);
+      } else {
+        doInitInternal(paramApplication, paramInitConfig, paramInitCallback, paramString);
+      }
+      return;
     }
   }
   
@@ -159,8 +162,12 @@ public class ViolaSDKEngine
       registerComponent(VSeekBar.class, false, new String[] { "seek-bar" });
       registerComponent(VTransform.class, false, new String[] { "transform" });
       registerComponent(VLottie.class, false, new String[] { "vlottie" });
-      registerComponent(VInstance.class, false, new String[] { "instance" });
-      registerModule("jsTimer", JSTimerModule.class, true);
+      boolean bool = ViolaUtils.useV8Engine();
+      if (bool) {
+        registerModule("jsTimer", V8JSTimerModule.class, true);
+      } else {
+        registerModule("jsTimer", JSTimerModule.class, true);
+      }
       registerModule("http", HttpModule.class, true);
       registerModule("event", EventModule.class, true);
       registerModule("animation", AnimationModule.class, false);
@@ -175,7 +182,10 @@ public class ViolaSDKEngine
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("ViolaSDKEngine", "[SDKEngine] register exception e:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[SDKEngine] register exception e:");
+      localStringBuilder.append(localException);
+      ViolaLogUtils.e("ViolaSDKEngine", localStringBuilder.toString());
     }
   }
   
@@ -184,19 +194,19 @@ public class ViolaSDKEngine
     int j = paramVarArgs.length;
     int i = 0;
     boolean bool = true;
-    if (i < j)
+    while (i < j)
     {
       String str = paramVarArgs[i];
       HashMap localHashMap = new HashMap();
       if (paramBoolean) {
         localHashMap.put("append", "tree");
       }
-      if ((bool) && (ComponentRegistry.registerComponent(str, paramIFComponentHolder, localHashMap))) {}
-      for (bool = true;; bool = false)
-      {
-        i += 1;
-        break;
+      if ((bool) && (ComponentRegistry.registerComponent(str, paramIFComponentHolder, localHashMap))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      i += 1;
     }
     return bool;
   }
@@ -218,10 +228,37 @@ public class ViolaSDKEngine
   {
     return (paramClass != null) && (registerModule(paramString, new ModuleSimpleHolder(paramClass), paramBoolean));
   }
+  
+  public static boolean registerNativeComponent(Class<? extends VComponent> paramClass, String... paramVarArgs)
+  {
+    if (paramClass == null) {
+      return false;
+    }
+    paramClass = new ComponentSimpleHolder(paramClass);
+    int j = paramVarArgs.length;
+    int i = 0;
+    boolean bool = true;
+    while (i < j)
+    {
+      String str = paramVarArgs[i];
+      if ((bool) && (ComponentRegistry.registerOnlyNativeComponent(str, paramClass))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      i += 1;
+    }
+    return bool;
+  }
+  
+  public static boolean registerNativeModule(String paramString, Class paramClass)
+  {
+    return (paramClass != null) && (ViolaModuleManager.registerOnlyNativeModule(paramString, new ModuleSimpleHolder(paramClass)));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKEngine
  * JD-Core Version:    0.7.0.1
  */

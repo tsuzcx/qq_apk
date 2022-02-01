@@ -23,14 +23,16 @@ public final class FaceSecureCheck$SecureCheckRequest
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 56, 64 }, new String[] { "uint32_timestamp", "uint32_seq", "uint32_client_addr", "bytes_client_addr", "uint32_version", "bytes_guid", "uint64_appid", "uint64_nonce" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L) }, SecureCheckRequest.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 56, 64 }, new String[] { "uint32_timestamp", "uint32_seq", "uint32_client_addr", "bytes_client_addr", "uint32_version", "bytes_guid", "uint64_appid", "uint64_nonce" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localLong, localLong }, SecureCheckRequest.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     face.qqlogin.FaceSecureCheck.SecureCheckRequest
  * JD-Core Version:    0.7.0.1
  */

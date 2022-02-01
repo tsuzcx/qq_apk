@@ -26,12 +26,16 @@ public class IVec3f
   public String toString()
   {
     String str = super.toString();
-    return this.index + "  : " + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.index);
+    localStringBuilder.append("  : ");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.matchTemplate.IVec3f
  * JD-Core Version:    0.7.0.1
  */

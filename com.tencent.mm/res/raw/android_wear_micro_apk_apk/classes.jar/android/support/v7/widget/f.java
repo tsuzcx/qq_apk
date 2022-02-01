@@ -5,13 +5,13 @@ import android.view.ViewGroup.LayoutParams;
 
 abstract interface f
 {
-  public abstract an Z(View paramView);
-  
-  public abstract void aa(View paramView);
-  
-  public abstract void ab(View paramView);
-  
   public abstract void addView(View paramView, int paramInt);
+  
+  public abstract an af(View paramView);
+  
+  public abstract void ag(View paramView);
+  
+  public abstract void ah(View paramView);
   
   public abstract void attachViewToParent(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams);
   

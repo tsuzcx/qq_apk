@@ -12,21 +12,11 @@ public final class stDisGroupInfo
 {
   static int cache_eInfoFlag;
   public int eInfoFlag = eDisGroupInfoFlag.E_DIS_GROUP_DEFAULT.value();
-  public long lDisCode;
-  public long lRedPackTime;
-  public long uDisMsgSeq;
-  public long uInfoSeq;
-  public long uMemberMsgSeq;
-  
-  static
-  {
-    if (!stDisGroupInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public long lDisCode = 0L;
+  public long lRedPackTime = 0L;
+  public long uDisMsgSeq = 0L;
+  public long uInfoSeq = 0L;
+  public long uMemberMsgSeq = 0L;
   
   public stDisGroupInfo() {}
   
@@ -41,18 +31,17 @@ public final class stDisGroupInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -77,13 +66,32 @@ public final class stDisGroupInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stDisGroupInfo)paramObject;
-    } while ((!JceUtil.equals(this.lDisCode, paramObject.lDisCode)) || (!JceUtil.equals(this.uDisMsgSeq, paramObject.uDisMsgSeq)) || (!JceUtil.equals(this.uMemberMsgSeq, paramObject.uMemberMsgSeq)) || (!JceUtil.equals(this.uInfoSeq, paramObject.uInfoSeq)) || (!JceUtil.equals(this.eInfoFlag, paramObject.eInfoFlag)));
-    return true;
+    }
+    paramObject = (stDisGroupInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lDisCode, paramObject.lDisCode))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.uDisMsgSeq, paramObject.uDisMsgSeq))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.uMemberMsgSeq, paramObject.uMemberMsgSeq))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.uInfoSeq, paramObject.uInfoSeq))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.eInfoFlag, paramObject.eInfoFlag)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -121,7 +129,7 @@ public final class stDisGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.stDisGroupInfo
  * JD-Core Version:    0.7.0.1
  */

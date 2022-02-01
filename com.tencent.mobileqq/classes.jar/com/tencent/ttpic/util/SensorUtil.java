@@ -61,8 +61,11 @@ public class SensorUtil
     arrayOfFloat2[0] = (-arrayOfFloat1[0]);
     arrayOfFloat2[1] = (-arrayOfFloat1[2]);
     arrayOfFloat2[2] = arrayOfFloat1[1];
-    double d2 = Math.acos(arrayOfFloat2[2] / Math.sqrt(arrayOfFloat2[0] * arrayOfFloat2[0] + arrayOfFloat2[2] * arrayOfFloat2[2]));
-    double d1 = d2;
+    double d1 = arrayOfFloat2[2];
+    double d2 = Math.sqrt(arrayOfFloat2[0] * arrayOfFloat2[0] + arrayOfFloat2[2] * arrayOfFloat2[2]);
+    Double.isNaN(d1);
+    d2 = Math.acos(d1 / d2);
+    d1 = d2;
     if (arrayOfFloat2[0] < 0.0F) {
       d1 = 6.283185307179586D - d2;
     }
@@ -115,86 +118,95 @@ public class SensorUtil
   
   private void updateMatrix(long paramLong)
   {
-    long l = paramLong;
-    if (Math.abs(paramLong - this.maxSensorTime) / 1000000L > 50000L) {
-      l = paramLong + this.offset;
-    }
     if (this.matrixQueue.isEmpty()) {
       return;
     }
     Map.Entry localEntry3 = (Map.Entry)this.matrixQueue.poll();
     Map.Entry localEntry4 = (Map.Entry)this.matrixQueue.peek();
     Map.Entry localEntry1 = localEntry3;
-    label74:
-    Map.Entry localEntry2 = localEntry3;
-    if (localEntry4 != null)
+    Map.Entry localEntry2;
+    for (;;)
     {
-      if (((Long)localEntry4.getKey()).longValue() <= l) {
-        break label220;
-      }
-      if (l - ((Long)localEntry1.getKey()).longValue() <= ((Long)localEntry4.getKey()).longValue() - l) {
-        break label265;
-      }
-      releaseFloatArray((float[])localEntry1.getValue());
-    }
-    label265:
-    for (localEntry2 = (Map.Entry)this.matrixQueue.poll();; localEntry2 = localEntry1)
-    {
-      System.arraycopy(localEntry2.getValue(), 0, this.mRotationMatrix, 0, 16);
-      releaseFloatArray((float[])localEntry2.getValue());
-      if (!this.needCalAjust) {
+      localEntry2 = localEntry3;
+      if (localEntry4 == null) {
         break;
       }
-      calAdjust(this.mRotationMatrix, this.mAdjustRotationMatrix);
-      this.needCalAjust = false;
-      return;
-      label220:
+      if (((Long)localEntry4.getKey()).longValue() > paramLong)
+      {
+        if (paramLong - ((Long)localEntry1.getKey()).longValue() > ((Long)localEntry4.getKey()).longValue() - paramLong)
+        {
+          releaseFloatArray((float[])localEntry1.getValue());
+          localEntry2 = (Map.Entry)this.matrixQueue.poll();
+          break;
+        }
+        localEntry2 = localEntry1;
+        break;
+      }
       releaseFloatArray((float[])localEntry1.getValue());
       localEntry1 = (Map.Entry)this.matrixQueue.poll();
       localEntry4 = (Map.Entry)this.matrixQueue.peek();
-      break label74;
+    }
+    System.arraycopy(localEntry2.getValue(), 0, this.mRotationMatrix, 0, 16);
+    releaseFloatArray((float[])localEntry2.getValue());
+    if (this.needCalAjust)
+    {
+      calAdjust(this.mRotationMatrix, this.mAdjustRotationMatrix);
+      this.needCalAjust = false;
     }
   }
   
   public float[] centerUp(long paramLong)
   {
-    synchronized (this.mStartLock)
+    float[] arrayOfFloat1;
+    try
     {
-      try
+      synchronized (this.mStartLock)
       {
-        while (this.restart) {
+        if (this.restart) {
           this.mStartLock.wait();
         }
-        return (float[])this.centerUpMap.get(Long.valueOf(paramLong));
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        if (!this.centerUpMap.containsKey(Long.valueOf(paramLong))) {}
       }
     }
-    this.centerUpMap.clear();
-    updateMatrix(paramLong);
-    multiplyMatrixVector(this.mRotationMatrix, this.oCenter, this.center1);
-    multiplyMatrixVector(this.mRotationMatrix, this.oUp, this.up1);
-    this.center2[0] = (-this.center1[0]);
-    this.center2[1] = (-this.center1[2]);
-    this.center2[2] = this.center1[1];
-    this.center2[3] = 0.0F;
-    this.up2[0] = this.up1[0];
-    this.up2[1] = this.up1[2];
-    this.up2[2] = (-this.up1[1]);
-    this.up2[3] = 0.0F;
-    multiplyMatrixVector(this.mAdjustRotationMatrix, this.center2, this.center3);
-    multiplyMatrixVector(this.mAdjustRotationMatrix, this.up2, this.up3);
-    this.centerUp[0] = this.center3[0];
-    this.centerUp[1] = this.center3[1];
-    this.centerUp[2] = this.center3[2];
-    this.centerUp[3] = this.up3[0];
-    this.centerUp[4] = this.up3[1];
-    this.centerUp[5] = this.up3[2];
-    this.centerUpMap.put(Long.valueOf(paramLong), this.centerUp);
-    return this.centerUp;
+    catch (InterruptedException localInterruptedException)
+    {
+      localInterruptedException.printStackTrace();
+      if (this.centerUpMap.containsKey(Long.valueOf(paramLong))) {
+        return (float[])this.centerUpMap.get(Long.valueOf(paramLong));
+      }
+      this.centerUpMap.clear();
+      updateMatrix(paramLong);
+      multiplyMatrixVector(this.mRotationMatrix, this.oCenter, this.center1);
+      multiplyMatrixVector(this.mRotationMatrix, this.oUp, this.up1);
+      ??? = this.center2;
+      arrayOfFloat1 = this.center1;
+      ???[0] = (-arrayOfFloat1[0]);
+      ???[1] = (-arrayOfFloat1[2]);
+      ???[2] = arrayOfFloat1[1];
+      ???[3] = 0.0F;
+      arrayOfFloat1 = this.up2;
+      float[] arrayOfFloat2 = this.up1;
+      arrayOfFloat1[0] = arrayOfFloat2[0];
+      arrayOfFloat1[1] = arrayOfFloat2[2];
+      arrayOfFloat1[2] = (-arrayOfFloat2[1]);
+      arrayOfFloat1[3] = 0.0F;
+      multiplyMatrixVector(this.mAdjustRotationMatrix, (float[])???, this.center3);
+      multiplyMatrixVector(this.mAdjustRotationMatrix, this.up2, this.up3);
+      ??? = this.centerUp;
+      arrayOfFloat1 = this.center3;
+      ???[0] = arrayOfFloat1[0];
+      ???[1] = arrayOfFloat1[1];
+      ???[2] = arrayOfFloat1[2];
+      arrayOfFloat1 = this.up3;
+      ???[3] = arrayOfFloat1[0];
+      ???[4] = arrayOfFloat1[1];
+      ???[5] = arrayOfFloat1[2];
+      this.centerUpMap.put(Long.valueOf(paramLong), this.centerUp);
+      return this.centerUp;
+    }
+    for (;;)
+    {
+      throw arrayOfFloat1;
+    }
   }
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
@@ -208,16 +220,16 @@ public class SensorUtil
     }
     float[] arrayOfFloat = getFloatArray();
     SensorManager.getRotationMatrixFromVector(arrayOfFloat, paramSensorEvent.values);
-    if (this.restart) {}
-    synchronized (this.mStartLock)
-    {
-      this.restart = false;
-      this.mStartLock.notifyAll();
-      this.needCalAjust = true;
-      long l = paramSensorEvent.timestamp;
-      this.matrixQueue.add(new SensorUtil.1(this, l, arrayOfFloat));
-      return;
+    if (this.restart) {
+      synchronized (this.mStartLock)
+      {
+        this.restart = false;
+        this.mStartLock.notifyAll();
+        this.needCalAjust = true;
+      }
     }
+    long l = paramSensorEvent.timestamp;
+    this.matrixQueue.add(new SensorUtil.1(this, l, arrayOfFloat));
   }
   
   public void start()
@@ -237,7 +249,7 @@ public class SensorUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.SensorUtil
  * JD-Core Version:    0.7.0.1
  */

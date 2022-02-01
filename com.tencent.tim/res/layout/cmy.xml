@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ndb" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_black_theme_version2" android:id="@id/nc8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="16.0dip" android:text="@string/yq3" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <EditText android:textSize="16.0dip" android:textColor="@color/skin_input_theme_version2" android:textColorHint="@color/skin_hint_input_theme_version2" android:id="@id/nd6" android:background="@drawable/skin_searchbar_input_theme_version2" android:paddingLeft="15.0dip" android:paddingTop="0.0dip" android:paddingRight="30.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="12.0dip" android:hint="@string/xiy" android:singleLine="true" android:maxLength="200" android:drawableLeft="@drawable/skin_searchbar_icon_theme_version2" android:drawablePadding="5.0dip" android:layout_toLeftOf="@id/nc8" android:layout_centerVertical="true" android:inputType="textNoSuggestions" android:imeOptions="actionSearch" />
+        <ImageButton android:id="@id/nd8" android:background="@null" android:padding="0.0dip" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/cross" android:scaleType="centerCrop" android:layout_alignRight="@id/nd6" android:layout_centerVertical="true" android:contentDescription="@string/r2_" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/ndd" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/nc9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/nd_" android:background="@drawable/skin_list_item_normal_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/nda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/xiw" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                <ImageView android:id="@id/nd7" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/i7p" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+                <com.tencent.mobileqq.mini.entry.search.widget.BubbleViewGroup android:id="@id/nd9" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/nda" />
+            </RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/ndh" android:background="@drawable/skin_list_item_normal_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/ndi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:text="@string/xix" />
+                <GridView android:id="@id/ndf" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:numColumns="2" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:orientation="vertical" android:id="@id/ndp" android:background="@drawable/skin_list_item_normal_theme_version2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ndc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:id="@id/ndr" android:layout_width="192.0dip" android:layout_height="192.0dip" android:scaleType="centerInside" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_theme_version2" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xiz" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:layout_gravity="center_horizontal" android:id="@id/nds" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/xiv" />
+            </LinearLayout>
+            <TextView android:textColor="@color/skin_black_theme_version2" android:id="@id/ndw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:text="@string/xj1" android:layout_alignParentTop="true" />
+            <ListView android:id="@id/ndu" android:background="@android:color/transparent" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@android:color/transparent" android:dividerHeight="0.0dip" android:layout_below="@id/ndw" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

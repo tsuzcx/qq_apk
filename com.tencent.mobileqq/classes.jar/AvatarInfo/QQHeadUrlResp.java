@@ -9,9 +9,9 @@ public final class QQHeadUrlResp
   extends JceStruct
 {
   static ArrayList<QQHeadInfo> cache_UserHeadInfoList;
-  public ArrayList<QQHeadInfo> UserHeadInfoList;
-  public long myUin;
-  public int result;
+  public ArrayList<QQHeadInfo> UserHeadInfoList = null;
+  public long myUin = 0L;
+  public int result = 0;
   
   public QQHeadUrlResp() {}
   
@@ -44,7 +44,7 @@ public final class QQHeadUrlResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AvatarInfo.QQHeadUrlResp
  * JD-Core Version:    0.7.0.1
  */

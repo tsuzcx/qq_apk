@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestSetConfMsgRead
   extends JceStruct
 {
-  public byte cVerifyType;
-  public long lConfUin;
-  public long lLastReadSeq;
+  public byte cVerifyType = 0;
+  public long lConfUin = 0L;
+  public long lLastReadSeq = 0L;
   
   public SvcRequestSetConfMsgRead() {}
   
@@ -36,7 +36,7 @@ public final class SvcRequestSetConfMsgRead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestSetConfMsgRead
  * JD-Core Version:    0.7.0.1
  */

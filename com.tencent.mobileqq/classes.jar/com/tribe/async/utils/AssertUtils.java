@@ -6,39 +6,39 @@ public class AssertUtils
   
   public static void assertTrue(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new AssertionError();
+    if (paramBoolean) {
+      return;
     }
+    throw new AssertionError();
   }
   
   public static void assertTrue(boolean paramBoolean, String paramString)
   {
-    if (!paramBoolean) {
-      throw new AssertionError(paramString);
+    if (paramBoolean) {
+      return;
     }
+    throw new AssertionError(paramString);
   }
   
   public static <T> T checkNotNull(T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new NullPointerException();
   }
   
   public static void fail(String paramString, Object... paramVarArgs)
   {
-    if (paramVarArgs.length == 0) {}
-    for (;;)
-    {
-      throw new AssertionError(paramString);
+    if (paramVarArgs.length != 0) {
       paramString = String.format(paramString, paramVarArgs);
     }
+    throw new AssertionError(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.utils.AssertUtils
  * JD-Core Version:    0.7.0.1
  */

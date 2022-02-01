@@ -4,12 +4,12 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -31,47 +31,52 @@ public class MiniAppSetUserSwitchServlet
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppSetUserSwitchServlet", 2, "onReceive.");
     }
-    localBundle = new Bundle();
-    for (;;)
+    Bundle localBundle = new Bundle();
+    try
     {
-      try
+      localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
+      if (paramFromServiceMsg != null)
       {
-        localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
+        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+        localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        if (paramFromServiceMsg.isSuccess())
+        {
+          localBundle.putParcelable("setUserSwitch", paramFromServiceMsg);
+          localBundle.putLong("retCode", localStQWebRsp.retCode.get());
+          localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+          notifyObserver(paramIntent, 1050, true, localBundle, MiniAppObserver.class);
         }
-        localBundle.putParcelable("setUserSwitch", paramFromServiceMsg);
-        localBundle.putLong("retCode", localStQWebRsp.retCode.get());
-        localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        notifyObserver(paramIntent, 1050, true, localBundle, MiniAppObserver.class);
+        else
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onReceive. MiniAppSetUserSwitchServlet rsp = ");
+            localStringBuilder.append(localStQWebRsp);
+            QLog.d("MiniAppSetUserSwitchServlet", 2, localStringBuilder.toString());
+          }
+          notifyObserver(paramIntent, 1050, false, localBundle, MiniAppObserver.class);
+        }
       }
-      catch (Throwable localThrowable)
+      else
       {
-        PROTOCAL.StQWebRsp localStQWebRsp;
-        QLog.e("MiniAppSetUserSwitchServlet", 1, localThrowable + "onReceive error");
-        localBundle.putInt("key_index", this.index);
-        notifyObserver(paramIntent, 1050, false, localBundle, MiniAppObserver.class);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppSetUserSwitchServlet", 2, "onReceive. inform MiniAppSetUserSwitchServlet resultcode fail.");
         }
-        QLog.d("MiniAppSetUserSwitchServlet", 2, "onReceive. inform MiniAppSetUserSwitchServlet resultcode fail.");
         notifyObserver(paramIntent, 1050, false, localBundle, MiniAppObserver.class);
-        continue;
       }
-      doReport(paramIntent, paramFromServiceMsg);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSetUserSwitchServlet", 2, "onReceive. MiniAppSetUserSwitchServlet rsp = " + localStQWebRsp);
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localThrowable);
+      localStringBuilder.append("onReceive error");
+      QLog.e("MiniAppSetUserSwitchServlet", 1, localStringBuilder.toString());
+      localBundle.putInt("key_index", this.index);
       notifyObserver(paramIntent, 1050, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -80,27 +85,14 @@ public class MiniAppSetUserSwitchServlet
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
     Object localObject2 = paramIntent.getStringExtra("key");
     int i = paramIntent.getIntExtra("value", 0);
-    Object localObject1 = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte != null)
+    {
       localObject1 = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
-      localObject2 = new MiniAppSetUserSwitchRequest((COMM.StCommonExt)localObject1, (String)localObject2, i).encode(paramIntent, this.index, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_user_info.SetUserSwitch");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("MiniAppSetUserSwitchServlet", 2, "onSend. mergeFrom extData exception!");
@@ -108,11 +100,24 @@ public class MiniAppSetUserSwitchServlet
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    else
+    {
+      localObject1 = null;
+    }
+    localObject2 = new MiniAppSetUserSwitchRequest((COMM.StCommonExt)localObject1, (String)localObject2, i).encode(paramIntent, this.index, getTraceId());
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_user_info.SetUserSwitch");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSetUserSwitchServlet
  * JD-Core Version:    0.7.0.1
  */

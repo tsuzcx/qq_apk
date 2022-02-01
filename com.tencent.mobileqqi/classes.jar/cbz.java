@@ -1,28 +1,29 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.image.AbstractGifImage;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cbz
-  implements AbsListView.OnScrollListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public cbz(ChatHistory paramChatHistory) {}
+  public cbz(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.v = paramInt;
-    if (paramInt == 0)
+    switch (paramInt)
     {
-      AbstractGifImage.resumeAll();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      paramView = ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).obtainMessage(1);
+      ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).sendMessageDelayed(paramView, 800L);
+      Utils.executeAsyncTaskOnThreadPool(new cca(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
     }
-    if ((this.a.a != null) && (this.a.a.c == 1) && (!this.a.a.a)) {
-      this.a.a.b();
-    }
-    AbstractGifImage.pauseAll();
   }
 }
 

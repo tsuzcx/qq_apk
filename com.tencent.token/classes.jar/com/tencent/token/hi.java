@@ -1,120 +1,115 @@
 package com.tencent.token;
 
-import java.util.List;
-import okhttp3.ah;
-import okhttp3.ai;
-import okhttp3.ap;
-import okhttp3.at;
-import okhttp3.internal.connection.c;
-import okhttp3.n;
-import okhttp3.y;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.util.SparseArray;
+import android.util.TypedValue;
+import java.util.WeakHashMap;
+import org.xmlpull.v1.XmlPullParser;
 
 public final class hi
-  implements ai
 {
-  private final List a;
-  private final okhttp3.internal.connection.g b;
-  private final hd c;
-  private final c d;
-  private final int e;
-  private final ap f;
-  private final okhttp3.g g;
-  private final y h;
-  private final int i;
-  private final int j;
-  private final int k;
-  private int l;
+  private static final ThreadLocal<TypedValue> a = new ThreadLocal();
+  private static final WeakHashMap<Context, SparseArray<a>> b = new WeakHashMap(0);
+  private static final Object c = new Object();
   
-  public hi(List paramList, okhttp3.internal.connection.g paramg, hd paramhd, c paramc, int paramInt1, ap paramap, okhttp3.g paramg1, y paramy, int paramInt2, int paramInt3, int paramInt4)
+  public static ColorStateList a(Context paramContext, int paramInt)
   {
-    this.a = paramList;
-    this.d = paramc;
-    this.b = paramg;
-    this.c = paramhd;
-    this.e = paramInt1;
-    this.f = paramap;
-    this.g = paramg1;
-    this.h = paramy;
-    this.i = paramInt2;
-    this.j = paramInt3;
-    this.k = paramInt4;
-  }
-  
-  public ap a()
-  {
-    return this.f;
-  }
-  
-  public at a(ap paramap)
-  {
-    return a(paramap, this.b, this.c, this.d);
-  }
-  
-  public at a(ap paramap, okhttp3.internal.connection.g paramg, hd paramhd, c paramc)
-  {
-    if (this.e >= this.a.size()) {
-      throw new AssertionError();
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramContext.getColorStateList(paramInt);
     }
-    this.l += 1;
-    if ((this.c != null) && (!this.d.a(paramap.a()))) {
-      throw new IllegalStateException("network interceptor " + this.a.get(this.e - 1) + " must retain the same host and port");
+    Object localObject1 = d(paramContext, paramInt);
+    if (localObject1 != null) {
+      return localObject1;
     }
-    if ((this.c != null) && (this.l > 1)) {
-      throw new IllegalStateException("network interceptor " + this.a.get(this.e - 1) + " must call proceed() exactly once");
+    ColorStateList localColorStateList = c(paramContext, paramInt);
+    if (localColorStateList != null) {
+      synchronized (c)
+      {
+        SparseArray localSparseArray = (SparseArray)b.get(paramContext);
+        localObject1 = localSparseArray;
+        if (localSparseArray == null)
+        {
+          localObject1 = new SparseArray();
+          b.put(paramContext, localObject1);
+        }
+        ((SparseArray)localObject1).append(paramInt, new a(localColorStateList, paramContext.getResources().getConfiguration()));
+        return localColorStateList;
+      }
     }
-    paramap = new hi(this.a, paramg, paramhd, paramc, this.e + 1, paramap, this.g, this.h, this.i, this.j, this.k);
-    paramg = (ah)this.a.get(this.e);
-    paramc = paramg.a(paramap);
-    if ((paramhd != null) && (this.e + 1 < this.a.size()) && (paramap.l != 1)) {
-      throw new IllegalStateException("network interceptor " + paramg + " must call proceed() exactly once");
+    return dj.b(paramContext, paramInt);
+  }
+  
+  public static Drawable b(Context paramContext, int paramInt)
+  {
+    return iy.a().a(paramContext, paramInt, false);
+  }
+  
+  private static ColorStateList c(Context paramContext, int paramInt)
+  {
+    Resources localResources = paramContext.getResources();
+    Object localObject2 = (TypedValue)a.get();
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new TypedValue();
+      a.set(localObject1);
     }
-    if (paramc == null) {
-      throw new NullPointerException("interceptor " + paramg + " returned null");
+    int i = 1;
+    localResources.getValue(paramInt, (TypedValue)localObject1, true);
+    if ((((TypedValue)localObject1).type < 28) || (((TypedValue)localObject1).type > 31)) {
+      i = 0;
     }
-    if (paramc.e() == null) {
-      throw new IllegalStateException("interceptor " + paramg + " returned a response with no body");
+    if (i != 0) {
+      return null;
     }
-    return paramc;
+    localObject1 = paramContext.getResources();
+    localObject2 = ((Resources)localObject1).getXml(paramInt);
+    try
+    {
+      paramContext = hh.a((Resources)localObject1, (XmlPullParser)localObject2, paramContext.getTheme());
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return null;
   }
   
-  public int b()
+  private static ColorStateList d(Context paramContext, int paramInt)
   {
-    return this.i;
+    synchronized (c)
+    {
+      SparseArray localSparseArray = (SparseArray)b.get(paramContext);
+      if ((localSparseArray != null) && (localSparseArray.size() > 0))
+      {
+        a locala = (a)localSparseArray.get(paramInt);
+        if (locala != null)
+        {
+          if (locala.b.equals(paramContext.getResources().getConfiguration()))
+          {
+            paramContext = locala.a;
+            return paramContext;
+          }
+          localSparseArray.remove(paramInt);
+        }
+      }
+      return null;
+    }
   }
   
-  public int c()
+  static final class a
   {
-    return this.j;
-  }
-  
-  public int d()
-  {
-    return this.k;
-  }
-  
-  public n e()
-  {
-    return this.d;
-  }
-  
-  public okhttp3.internal.connection.g f()
-  {
-    return this.b;
-  }
-  
-  public hd g()
-  {
-    return this.c;
-  }
-  
-  public okhttp3.g h()
-  {
-    return this.g;
-  }
-  
-  public y i()
-  {
-    return this.h;
+    final ColorStateList a;
+    final Configuration b;
+    
+    a(ColorStateList paramColorStateList, Configuration paramConfiguration)
+    {
+      this.a = paramColorStateList;
+      this.b = paramConfiguration;
+    }
   }
 }
 

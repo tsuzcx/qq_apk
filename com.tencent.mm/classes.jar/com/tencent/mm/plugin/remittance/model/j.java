@@ -1,100 +1,126 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cz;
-import com.tencent.mm.protocal.protobuf.mr;
-import com.tencent.mm.protocal.protobuf.ms;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import d.a.a.c;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.apu;
+import com.tencent.mm.protocal.protobuf.sh;
+import com.tencent.mm.protocal.protobuf.si;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 import java.util.LinkedList;
 
 public final class j
-  extends m
-  implements k
+  extends w
 {
-  private f callback;
-  private b goo;
-  public ms qjl;
+  public int OgO;
+  sh Oin;
+  public si Oio;
+  public e Oip;
+  public f Oiq;
+  public boolean Oir;
+  public String Ois;
+  private h callback;
+  public boolean cancel;
+  private c nao;
   
-  public j(cz paramcz, String paramString)
+  public j(a parama, e parame, f paramf)
   {
-    this(paramcz, paramString, 0, 0, 0L);
-    AppMethodBeat.i(44741);
-    AppMethodBeat.o(44741);
+    AppMethodBeat.i(288828);
+    this.Oir = false;
+    this.Ois = "";
+    this.cancel = false;
+    this.OgO = 0;
+    this.Ois = (System.currentTimeMillis() + parama.amount);
+    c.a locala = new c.a();
+    this.OgO = parama.amount;
+    locala.otE = new sh();
+    locala.otF = new si();
+    locala.funcId = 2677;
+    locala.uri = "/cgi-bin/mmpay-bin/busif2fgetfavor";
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.nao = locala.bEF();
+    this.Oin = ((sh)c.b.b(this.nao.otB));
+    this.Oin.amount = parama.amount;
+    this.Oin.channel = parama.channel;
+    this.Oin.OhP = parama.OhP;
+    this.Oin.Oiu = parama.Oiu;
+    this.Oin.Oiv = parama.Oiv;
+    this.Oin.OhQ = parama.OhQ;
+    this.Oin.Oiw = parama.Oiw;
+    this.Oin.nQU = parama.nQU;
+    this.Oin.OhR = parama.OhR;
+    this.Oin.Oix = parama.Oix;
+    this.Oin.YXk = parama.Oit;
+    this.Oin.Oiy = parama.Oiy;
+    this.Oip = parame;
+    this.Oiq = paramf;
+    parama = new StringBuffer();
+    parama.append(String.format("request.amount %s", new Object[] { Integer.valueOf(this.Oin.amount) }));
+    parama.append(String.format("request.channel %s", new Object[] { Integer.valueOf(this.Oin.channel) }));
+    parama.append(String.format("request.scan_scene %s", new Object[] { Integer.valueOf(this.Oin.OhP) }));
+    parama.append(String.format("request.receiver_desc %s", new Object[] { this.Oin.Oiu }));
+    parama.append(String.format("request.mch_name %s", new Object[] { this.Oin.Oiv }));
+    parama.append(String.format("request.favor_req_sign %s", new Object[] { this.Oin.OhQ }));
+    parama.append(String.format("request.receiver_openid %s", new Object[] { this.Oin.Oiw }));
+    parama.append(String.format("request.receiver_username %s", new Object[] { this.Oin.nQU }));
+    parama.append(String.format("request.favor_req_extend %s", new Object[] { this.Oin.OhR }));
+    parama.append(String.format("request.fail_click_cell %s", new Object[] { Integer.valueOf(this.Oin.Oix) }));
+    Log.i("MicroMsg.NetSceneBusiF2fGetFavor", "NetSceneBusiF2fGetFavor req %s", new Object[] { parama.toString() });
+    AppMethodBeat.o(288828);
   }
   
-  public j(cz paramcz, String paramString, int paramInt1, int paramInt2, long paramLong)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(142131);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new mr();
-    ((b.a)localObject).fsY = new ms();
-    ((b.a)localObject).funcId = 2504;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/busif2fsucpage";
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.goo = ((b.a)localObject).ado();
-    localObject = (mr)this.goo.fsV.fta;
-    ((mr)localObject).wAZ = paramcz;
-    ((mr)localObject).wBo = paramString;
-    ((mr)localObject).wBD = paramInt1;
-    if (bo.hl(paramInt1, 1))
-    {
-      ((mr)localObject).wBE = paramInt2;
-      ((mr)localObject).wBF = paramLong;
-    }
-    ab.i("MicroMsg.NetSceneBusiF2fSucpage", "NetSceneBusiF2fSucpage suc_page_extend %s req %s fault_flag %s fault_retry_cnt %s fault_retry_client_time %s", new Object[] { paramString, a.a(paramcz), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
-    AppMethodBeat.o(142131);
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(44742);
-    this.callback = paramf;
-    int i = dispatch(parame, this.goo, this);
-    AppMethodBeat.o(44742);
+    AppMethodBeat.i(67844);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(67844);
     return i;
   }
   
   public final int getType()
   {
-    return 2504;
+    return 2677;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(44743);
-    ab.i("MicroMsg.NetSceneBusiF2fSucpage", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.qjl = ((ms)((b)paramq).fsW.fta);
-    paramq = new StringBuffer();
-    if (this.qjl.ukr != null)
-    {
-      paramq.append("response: " + this.qjl.wBG);
-      paramq.append("is_show_btn: " + this.qjl.ukr.wRa);
-      if (this.qjl.ukr.wQZ != null) {
-        paramq.append("single_exposure_info_list " + this.qjl.ukr.wQZ.size());
-      }
-    }
-    ab.i("MicroMsg.NetSceneBusiF2fSucpage", "ret_code: %s, ret_msg: %s %s", new Object[] { Integer.valueOf(this.qjl.koj), this.qjl.kok, paramq.toString() });
+    AppMethodBeat.i(288835);
+    Log.i("MicroMsg.NetSceneBusiF2fGetFavor", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.Oio = ((si)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneBusiF2fGetFavor", "ret_code: %s, ret_msg: %s favor_comm_resp : %s", new Object[] { Integer.valueOf(this.Oio.wuz), this.Oio.wuA, b.a(this.Oio.OhT) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(44743);
+    AppMethodBeat.o(288835);
+  }
+  
+  public static final class a
+  {
+    public int OhP;
+    public String OhQ;
+    public String OhR;
+    public int Oit;
+    public String Oiu;
+    public String Oiv;
+    public String Oiw;
+    public int Oix;
+    public LinkedList<apu> Oiy;
+    public int amount;
+    public int channel;
+    public String nQU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.j
  * JD-Core Version:    0.7.0.1
  */

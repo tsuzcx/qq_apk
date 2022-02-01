@@ -1,59 +1,60 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
 public class g
-  extends com.tencent.liteav.basic.d.g
+  extends j
 {
-  protected List<com.tencent.liteav.basic.d.g> r;
-  protected List<com.tencent.liteav.basic.d.g> s;
+  protected List<j> r;
+  protected List<j> s;
   private int[] t;
   private int[] u;
-  private com.tencent.liteav.basic.d.g v;
+  private j v;
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(66910);
+    AppMethodBeat.i(15097);
     int k = this.s.size();
     k();
     int j = 0;
     int i = 0;
     if (j < k)
     {
-      com.tencent.liteav.basic.d.g localg = (com.tencent.liteav.basic.d.g)this.s.get(j);
+      j localj = (j)this.s.get(j);
       if (i != 0)
       {
-        paramInt1 = localg.a(paramInt1, paramInt2, paramInt3);
-        label63:
+        paramInt1 = localj.a(paramInt1, paramInt2, paramInt3);
+        label64:
         if (i == 0) {
-          break label102;
+          break label103;
         }
       }
-      label102:
+      label103:
       for (i = 0;; i = 1)
       {
         j += 1;
         break;
-        paramInt1 = localg.a(paramInt1, this.t[0], this.u[0]);
-        break label63;
+        paramInt1 = localj.a(paramInt1, this.t[0], this.u[0]);
+        break label64;
       }
     }
     if (i != 0) {
       this.v.a(paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(66910);
+    AppMethodBeat.o(15097);
     return paramInt3;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66909);
+    AppMethodBeat.i(15096);
     if ((this.e == paramInt1) && (this.f == paramInt2))
     {
-      AppMethodBeat.o(66909);
+      AppMethodBeat.o(15096);
       return;
     }
     if (this.t != null) {
@@ -64,7 +65,7 @@ public class g
     int i = 0;
     while (i < j)
     {
-      ((com.tencent.liteav.basic.d.g)this.s.get(i)).a(paramInt1, paramInt2);
+      ((j)this.s.get(i)).a(paramInt1, paramInt2);
       i += 1;
     }
     this.v.a(paramInt1, paramInt2);
@@ -91,51 +92,51 @@ public class g
         i += 1;
       }
     }
-    AppMethodBeat.o(66909);
+    AppMethodBeat.o(15096);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(66906);
+    AppMethodBeat.i(15093);
     boolean bool2 = super.b();
     boolean bool1 = bool2;
     if (bool2)
     {
       Iterator localIterator = this.r.iterator();
-      com.tencent.liteav.basic.d.g localg;
+      j localj;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localg = (com.tencent.liteav.basic.d.g)localIterator.next();
-        localg.a();
-      } while (localg.m());
+        localj = (j)localIterator.next();
+        localj.a();
+      } while (localj.n());
       bool1 = this.v.a();
     }
     if ((bool1) && (GLES20.glGetError() == 0))
     {
-      AppMethodBeat.o(66906);
+      AppMethodBeat.o(15093);
       return true;
     }
-    AppMethodBeat.o(66906);
+    AppMethodBeat.o(15093);
     return false;
   }
   
   public void e()
   {
-    AppMethodBeat.i(66907);
+    AppMethodBeat.i(15094);
     super.e();
     Iterator localIterator = this.r.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.liteav.basic.d.g)localIterator.next()).d();
+      ((j)localIterator.next()).d();
     }
-    AppMethodBeat.o(66907);
+    AppMethodBeat.o(15094);
   }
   
   public void f()
   {
-    AppMethodBeat.i(66908);
+    AppMethodBeat.i(15095);
     super.f();
     if (this.u != null)
     {
@@ -147,12 +148,12 @@ public class g
       GLES20.glDeleteFramebuffers(2, this.t, 0);
       this.t = null;
     }
-    AppMethodBeat.o(66908);
+    AppMethodBeat.o(15095);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.g
  * JD-Core Version:    0.7.0.1
  */

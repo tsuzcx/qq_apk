@@ -30,16 +30,20 @@ public class PayRequest
   
   public static MiniAppMidasPay.StGamePayRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniAppMidasPay.StGamePayRsp localStGamePayRsp = new MiniAppMidasPay.StGamePayRsp();
+    Object localObject = new MiniAppMidasPay.StGamePayRsp();
     try
     {
-      localStGamePayRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGamePayRsp;
+      ((MiniAppMidasPay.StGamePayRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppPayRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("MiniAppPayRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -52,7 +56,7 @@ public class PayRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.PayRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,11 @@ public class RecoveryStatusItem
   extends RecoveryPersistentItem
 {
   public static final Parcelable.Creator<RecoveryStatusItem> CREATOR = new Parcelable.Creator() {};
-  public int ajA;
-  public int ajn;
-  public String ajr;
-  public String ajs;
-  public int ajz;
+  public int amP;
+  public String amT;
+  public String amU;
+  public int anb;
+  public int anc;
   public String processName;
   public long timestamp;
   
@@ -20,20 +20,20 @@ public class RecoveryStatusItem
     return 0;
   }
   
-  public final String nO()
+  public final String oC()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append(this.processName);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.ajr);
+    localStringBuffer.append(this.amT);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.ajs);
+    localStringBuffer.append(this.amU);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.ajn);
+    localStringBuffer.append(this.amP);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.ajz);
+    localStringBuffer.append(this.anb);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.ajA);
+    localStringBuffer.append(this.anc);
     localStringBuffer.append(",");
     localStringBuffer.append(this.timestamp);
     return localStringBuffer.toString();
@@ -42,11 +42,11 @@ public class RecoveryStatusItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.processName);
-    paramParcel.writeString(this.ajr);
-    paramParcel.writeString(this.ajs);
-    paramParcel.writeInt(this.ajn);
-    paramParcel.writeInt(this.ajz);
-    paramParcel.writeInt(this.ajA);
+    paramParcel.writeString(this.amT);
+    paramParcel.writeString(this.amU);
+    paramParcel.writeInt(this.amP);
+    paramParcel.writeInt(this.anb);
+    paramParcel.writeInt(this.anc);
     paramParcel.writeLong(this.timestamp);
   }
 }

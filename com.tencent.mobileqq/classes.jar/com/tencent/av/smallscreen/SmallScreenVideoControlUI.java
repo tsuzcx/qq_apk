@@ -9,67 +9,65 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
-import bdfi;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.ControlUIObserver;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
 import com.tencent.av.ui.VideoControlUI;
+import com.tencent.mobileqq.utils.AudioUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import lid;
-import mbv;
-import meu;
 
 public class SmallScreenVideoControlUI
   implements Animation.AnimationListener
 {
-  protected Resources a;
-  protected TextView a;
-  protected VideoController a;
-  protected VideoAppInterface a;
-  SmallScreenService jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService;
-  SmallScreenVideoControlUI.TimmerRunnable jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable = null;
-  protected WeakReference<Context> a;
-  protected meu a;
-  View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[2];
-  String b;
-  protected boolean b;
-  String c = "DEVICE_EARPHONE;DEVICE_SPEAKERPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
-  protected boolean c;
-  protected int e = 0;
+  protected ControlUIObserver A;
+  protected TextView B = null;
+  View[] C = new View[2];
+  String D = "DEVICE_EARPHONE;DEVICE_SPEAKERPHONE;DEVICE_BLUETOOTH_HEADSET;DEVICE_WIRED_HEADSET;";
+  SmallScreenService q;
+  protected int r = 0;
+  protected boolean s = false;
+  protected boolean t = false;
+  String u = null;
+  SmallScreenVideoControlUI.TimmerRunnable v = null;
+  protected Resources w = null;
+  protected WeakReference<Context> x = null;
+  public VideoAppInterface y = null;
+  protected VideoController z = null;
   
-  public SmallScreenVideoControlUI(VideoAppInterface paramVideoAppInterface, SmallScreenService paramSmallScreenService, meu parammeu)
+  public SmallScreenVideoControlUI(VideoAppInterface paramVideoAppInterface, SmallScreenService paramSmallScreenService, ControlUIObserver paramControlUIObserver)
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService = paramSmallScreenService;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService);
-    this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.getResources();
-    if (this.jdField_a_of_type_AndroidContentResResources == null)
+    this.q = paramSmallScreenService;
+    this.y = paramVideoAppInterface;
+    this.x = new WeakReference(this.q);
+    this.w = this.q.getResources();
+    if (this.w == null)
     {
       QLog.d("SmallScreenVideoControlUI", 1, "mRes is null. exit video progress");
-      paramVideoAppInterface = paramSmallScreenService.getString(2131721302) + " 0x03";
-      QQToast.a(paramSmallScreenService.getApplicationContext(), paramVideoAppInterface, 0).a();
+      paramVideoAppInterface = new StringBuilder();
+      paramVideoAppInterface.append(paramSmallScreenService.getString(2131917844));
+      paramVideoAppInterface.append(" 0x03");
+      paramVideoAppInterface = paramVideoAppInterface.toString();
+      QQToast.makeText(paramSmallScreenService.getApplicationContext(), paramVideoAppInterface, 0).show();
       paramSmallScreenService.stopSelf();
       return;
     }
-    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    if (this.jdField_a_of_type_ComTencentAvVideoController == null)
+    this.z = this.y.b();
+    if (this.z == null)
     {
       QLog.d("SmallScreenVideoControlUI", 1, "mVideoController is null. exit video progress");
-      paramVideoAppInterface = this.jdField_a_of_type_AndroidContentResResources.getString(2131721302) + " 0x04";
-      QQToast.a(paramSmallScreenService.getApplicationContext(), paramVideoAppInterface, 0).a();
+      paramVideoAppInterface = new StringBuilder();
+      paramVideoAppInterface.append(this.w.getString(2131917844));
+      paramVideoAppInterface.append(" 0x04");
+      paramVideoAppInterface = paramVideoAppInterface.toString();
+      QQToast.makeText(paramSmallScreenService.getApplicationContext(), paramVideoAppInterface, 0).show();
       paramSmallScreenService.stopSelf();
       return;
     }
-    this.jdField_a_of_type_Meu = parammeu;
-  }
-  
-  public int a(int paramInt)
-  {
-    DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
-    return 0;
+    this.A = paramControlUIObserver;
   }
   
   public void a() {}
@@ -78,21 +76,30 @@ public class SmallScreenVideoControlUI
   
   public void a(long paramLong)
   {
-    QLog.w("SmallScreenVideoControlUI", 1, "onDestroy, mUIState[" + this.e + "->" + 6 + "], seq[" + paramLong + "]");
-    this.e = 6;
-    u();
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onDestroy, mUIState[");
+    ((StringBuilder)localObject).append(this.r);
+    ((StringBuilder)localObject).append("->");
+    ((StringBuilder)localObject).append(6);
+    ((StringBuilder)localObject).append("], seq[");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("SmallScreenVideoControlUI", 1, ((StringBuilder)localObject).toString());
+    this.r = 6;
+    w();
+    localObject = this.y;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+      ((VideoAppInterface)localObject).a().removeCallbacks(this.v);
+      this.y = null;
     }
-    this.jdField_a_of_type_AndroidContentResResources = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_a_of_type_ArrayOfAndroidViewView = null;
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable = null;
-    this.jdField_a_of_type_Meu = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.w = null;
+    this.x = null;
+    this.z = null;
+    this.C = null;
+    this.v = null;
+    this.A = null;
+    this.B = null;
   }
   
   public void a(String paramString1, String paramString2) {}
@@ -102,7 +109,7 @@ public class SmallScreenVideoControlUI
   public void a(boolean paramBoolean)
   {
     QLog.d("SmallScreenVideoControlUI", 1, "onCreate");
-    this.e = 1;
+    this.r = 1;
     j();
   }
   
@@ -110,76 +117,113 @@ public class SmallScreenVideoControlUI
   
   public void b()
   {
-    this.e = 2;
-  }
-  
-  @TargetApi(11)
-  public void b(int paramInt)
-  {
-    if ((!this.jdField_a_of_type_ComTencentAvVideoController.a().j) && (this.jdField_a_of_type_ComTencentAvVideoController.a().k)) {}
+    this.r = 2;
   }
   
   public void b(boolean paramBoolean) {}
   
-  public void c() {}
-  
-  public void c(int paramInt)
+  public int c(int paramInt)
   {
-    QLog.d("SmallScreenVideoControlUI", 1, "onClose type = " + paramInt);
-    if ((this.jdField_a_of_type_ComTencentAvVideoController.a().n()) || (this.jdField_a_of_type_ComTencentAvVideoController.f))
-    {
-      d(paramInt);
-      u();
-      return;
-    }
-    if ((paramInt == 25) || (paramInt == 56)) {
-      d(paramInt);
-    }
-    for (;;)
-    {
-      v();
-      return;
-      if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentAvVideoController.d()) && (this.jdField_a_of_type_ComTencentAvVideoController.a().o()))
-      {
-        d(65);
-        bdfi.a(2131230741, 1, new mbv(this));
-      }
-    }
+    DoubleVideoCtrlUI.a(this.y, paramInt);
+    return 0;
   }
+  
+  public void c() {}
   
   public void d() {}
   
-  void d(int paramInt)
+  @TargetApi(11)
+  public void d(int paramInt)
   {
-    a(VideoControlUI.a(this.jdField_a_of_type_ComTencentAvVideoController.a(), paramInt));
+    if (!this.z.k().H) {
+      boolean bool = this.z.k().I;
+    }
   }
   
   public void e()
   {
-    this.e = 3;
+    this.r = 3;
+  }
+  
+  public void e(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onClose type = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("SmallScreenVideoControlUI", 1, localStringBuilder.toString());
+    if (this.z.k().m())
+    {
+      g(paramInt);
+      w();
+      return;
+    }
+    if ((paramInt != 25) && (paramInt != 56))
+    {
+      if ((paramInt == 2) && (this.z.l()) && (this.z.k().n()))
+      {
+        g(65);
+        AudioUtil.a(2131230813, 1, new SmallScreenVideoControlUI.1(this));
+      }
+    }
+    else {
+      g(paramInt);
+    }
+    x();
+  }
+  
+  protected void f(int paramInt)
+  {
+    g(65);
+    AudioUtil.a(2131230813, 1, new SmallScreenVideoControlUI.2(this));
+    x();
   }
   
   public void g()
   {
-    this.e = 4;
+    this.r = 4;
+  }
+  
+  void g(int paramInt)
+  {
+    int i = VideoControlUI.a(this.z.k(), paramInt);
+    if (paramInt == 3) {
+      i = 2131893622;
+    }
+    a(i);
   }
   
   protected void j()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131372898));
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131372619);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131372619);
+    Object localObject = this.q;
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((SmallScreenService)localObject).b(1);
+    SmallScreenRelativeLayout localSmallScreenRelativeLayout = this.q.b(0);
+    if (localSmallScreenRelativeLayout != null)
+    {
+      if (localObject == null) {
+        return;
+      }
+      this.B = ((TextView)localSmallScreenRelativeLayout.findViewById(2013331469));
+      this.C[0] = ((SmallScreenRelativeLayout)localObject).findViewById(2013331462);
+      this.C[1] = localSmallScreenRelativeLayout.findViewById(2013331462);
+    }
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_ArrayOfAndroidViewView != null)
+    if (this.C != null)
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
+      for (;;)
       {
-        if (this.jdField_a_of_type_ArrayOfAndroidViewView[i] != null) {
-          this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(8);
+        paramAnimation = this.C;
+        if (i >= paramAnimation.length) {
+          break;
+        }
+        if (paramAnimation[i] != null) {
+          paramAnimation[i].setVisibility(8);
         }
         i += 1;
       }
@@ -190,63 +234,68 @@ public class SmallScreenVideoControlUI
   
   public void onAnimationStart(Animation paramAnimation) {}
   
-  public void q()
+  public void s()
   {
     QLog.d("SmallScreenVideoControlUI", 1, "onStop");
-    this.e = 5;
-    u();
+    this.r = 5;
+    w();
   }
   
-  public void r()
+  public void t()
   {
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenVideoControlUI", 2, "onPauseAudio");
     }
   }
   
-  public void s()
+  public void u()
   {
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenVideoControlUI", 2, "onResumeAudio");
     }
   }
   
-  public void t()
+  public void v()
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    while (((this.e < 2) || (this.e > 4)) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().k())) {
+    if (this.s) {
+      return;
+    }
+    int i = this.r;
+    if (((i < 2) || (i > 4)) && (!this.z.k().j())) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenVideoControlUI", 2, "startTimer");
     }
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable == null) {
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable = new SmallScreenVideoControlUI.TimmerRunnable(this);
+    this.s = true;
+    if (this.v == null) {
+      this.v = new SmallScreenVideoControlUI.TimmerRunnable(this);
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable, 0L);
+    this.y.a().postDelayed(this.v, 0L);
   }
   
-  public void u()
+  public void w()
   {
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
-    {
+    if (!this.s) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenVideoControlUI", 2, "stopTimer");
-      }
-      this.jdField_b_of_type_Boolean = false;
-    } while (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable == null);
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable);
     }
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI$TimmerRunnable = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("SmallScreenVideoControlUI", 2, "stopTimer");
+    }
+    this.s = false;
+    if (this.v != null)
+    {
+      VideoAppInterface localVideoAppInterface = this.y;
+      if (localVideoAppInterface != null) {
+        localVideoAppInterface.a().removeCallbacks(this.v);
+      }
+      this.v = null;
+    }
   }
   
-  protected void v()
+  protected void x()
   {
-    if (this.jdField_a_of_type_ArrayOfAndroidViewView != null)
+    if (this.C != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("SmallScreenVideoControlUI", 2, "setScreenDarken");
@@ -258,12 +307,16 @@ public class SmallScreenVideoControlUI
       localAlphaAnimation.setFillAfter(true);
       localAlphaAnimation.setAnimationListener(this);
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
+      for (;;)
       {
-        if (this.jdField_a_of_type_ArrayOfAndroidViewView[i] != null)
+        View[] arrayOfView = this.C;
+        if (i >= arrayOfView.length) {
+          break;
+        }
+        if (arrayOfView[i] != null)
         {
-          this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
-          this.jdField_a_of_type_ArrayOfAndroidViewView[i].startAnimation(localAlphaAnimation);
+          arrayOfView[i].setVisibility(0);
+          this.C[i].startAnimation(localAlphaAnimation);
         }
         i += 1;
       }
@@ -272,7 +325,7 @@ public class SmallScreenVideoControlUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoControlUI
  * JD-Core Version:    0.7.0.1
  */

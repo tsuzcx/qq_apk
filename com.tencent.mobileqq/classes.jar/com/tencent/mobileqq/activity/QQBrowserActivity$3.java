@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import befg;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.WebViewTitleStyleHelper;
+import mqq.app.MobileQQ;
 
 class QQBrowserActivity$3
   implements Runnable
@@ -10,12 +10,12 @@ class QQBrowserActivity$3
   
   public void run()
   {
-    befg.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
+    WebViewTitleStyleHelper.a().a(MobileQQ.sMobileQQ.waitAppRuntime(null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserActivity.3
  * JD-Core Version:    0.7.0.1
  */

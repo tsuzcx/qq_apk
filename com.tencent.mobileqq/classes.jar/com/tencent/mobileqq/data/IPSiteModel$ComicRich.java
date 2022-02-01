@@ -3,12 +3,11 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apec;
 
 public class IPSiteModel$ComicRich
   implements Parcelable
 {
-  public static final Parcelable.Creator<ComicRich> CREATOR = new apec();
+  public static final Parcelable.Creator<ComicRich> CREATOR = new IPSiteModel.ComicRich.1();
   public String extCover;
   public String extName;
   public String extTitle;
@@ -31,7 +30,21 @@ public class IPSiteModel$ComicRich
   
   public String toString()
   {
-    return "ComicRich{extCover='" + this.extCover + '\'' + ", extName='" + this.extName + '\'' + ", extTitle='" + this.extTitle + '\'' + ", extUrl='" + this.extUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ComicRich{extCover='");
+    localStringBuilder.append(this.extCover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extName='");
+    localStringBuilder.append(this.extName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extTitle='");
+    localStringBuilder.append(this.extTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extUrl='");
+    localStringBuilder.append(this.extUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

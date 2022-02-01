@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.viola.core.ViolaEnvironment;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.text.DecimalFormat;
@@ -17,11 +18,12 @@ import java.text.DecimalFormatSymbols;
 
 public class FlexConvertUtils
 {
-  public static String TAG = "FlexConvertUtils";
+  public static final String TAG = "FlexConvertUtils";
+  private static DecimalFormat decimalFormat;
   private static String deviceid = "";
-  private static int mScreenContentHeight;
-  private static int mScreenHeight;
-  private static int mScreenWidth;
+  private static int mScreenContentHeight = 0;
+  private static int mScreenHeight = 0;
+  private static int mScreenWidth = 0;
   private static final boolean mUseWebPx = false;
   
   public static int converColor(String paramString)
@@ -41,13 +43,16 @@ public class FlexConvertUtils
   public static FlexPositionType converPosition(String paramString)
   {
     FlexPositionType localFlexPositionType = FlexPositionType.RELATIVE;
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("relative")) || (paramString.equals("sticky"))) {
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("relative")) && (!paramString.equals("sticky")))
+    {
+      if ((paramString.equals("absolute")) || (paramString.equals("fixed"))) {
+        return FlexPositionType.ABSOLUTE;
+      }
+    }
+    else {
       localFlexPositionType = FlexPositionType.RELATIVE;
     }
-    while ((!paramString.equals("absolute")) && (!paramString.equals("fixed"))) {
-      return localFlexPositionType;
-    }
-    return FlexPositionType.ABSOLUTE;
+    return localFlexPositionType;
   }
   
   public static float converPxByViewportToRealPx(Object paramObject, int paramInt)
@@ -99,126 +104,120 @@ public class FlexConvertUtils
   {
     FlexAlign localFlexAlign = FlexAlign.STRETCH;
     if (TextUtils.isEmpty(paramString)) {
-      localFlexAlign = FlexAlign.STRETCH;
+      return FlexAlign.STRETCH;
     }
-    do
-    {
-      return localFlexAlign;
-      if (paramString.equals("stretch")) {
-        return FlexAlign.STRETCH;
-      }
-      if (paramString.equals("flex-start")) {
-        return FlexAlign.FLEX_START;
-      }
-      if (paramString.equals("flex-end")) {
-        return FlexAlign.FLEX_END;
-      }
-    } while (!paramString.equals("center"));
-    return FlexAlign.CENTER;
+    if (paramString.equals("stretch")) {
+      return FlexAlign.STRETCH;
+    }
+    if (paramString.equals("flex-start")) {
+      return FlexAlign.FLEX_START;
+    }
+    if (paramString.equals("flex-end")) {
+      return FlexAlign.FLEX_END;
+    }
+    if (paramString.equals("center")) {
+      localFlexAlign = FlexAlign.CENTER;
+    }
+    return localFlexAlign;
   }
   
   public static FlexAlign convertAlignSelf(String paramString)
   {
     FlexAlign localFlexAlign = FlexAlign.AUTO;
     if (TextUtils.isEmpty(paramString)) {
-      localFlexAlign = FlexAlign.AUTO;
+      return FlexAlign.AUTO;
     }
-    do
-    {
-      return localFlexAlign;
-      if (paramString.equals("flex-start")) {
-        return FlexAlign.FLEX_START;
-      }
-      if (paramString.equals("flex-end")) {
-        return FlexAlign.FLEX_END;
-      }
-      if (paramString.equals("stretch")) {
-        return FlexAlign.STRETCH;
-      }
-    } while (!paramString.equals("center"));
-    return FlexAlign.CENTER;
+    if (paramString.equals("flex-start")) {
+      return FlexAlign.FLEX_START;
+    }
+    if (paramString.equals("flex-end")) {
+      return FlexAlign.FLEX_END;
+    }
+    if (paramString.equals("stretch")) {
+      return FlexAlign.STRETCH;
+    }
+    if (paramString.equals("center")) {
+      localFlexAlign = FlexAlign.CENTER;
+    }
+    return localFlexAlign;
   }
   
   public static FlexDirection convertDirection(String paramString)
   {
     FlexDirection localFlexDirection = FlexDirection.COLUMN;
     if (TextUtils.isEmpty(paramString)) {
-      localFlexDirection = FlexDirection.COLUMN;
+      return FlexDirection.COLUMN;
     }
-    do
-    {
-      return localFlexDirection;
-      if (paramString.equals("column")) {
-        return FlexDirection.COLUMN;
-      }
-      if (paramString.equals("column-reverse")) {
-        return FlexDirection.COLUMN_REVERSE;
-      }
-      if (paramString.equals("row")) {
-        return FlexDirection.ROW;
-      }
-    } while (!paramString.equals("row-reverse"));
-    return FlexDirection.ROW_REVERSE;
+    if (paramString.equals("column")) {
+      return FlexDirection.COLUMN;
+    }
+    if (paramString.equals("column-reverse")) {
+      return FlexDirection.COLUMN_REVERSE;
+    }
+    if (paramString.equals("row")) {
+      return FlexDirection.ROW;
+    }
+    if (paramString.equals("row-reverse")) {
+      localFlexDirection = FlexDirection.ROW_REVERSE;
+    }
+    return localFlexDirection;
   }
   
   public static ImageSpanAlign convertImageSpanAlign(String paramString)
   {
     ImageSpanAlign localImageSpanAlign = ImageSpanAlign.BASELINE;
     if (TextUtils.isEmpty(paramString)) {
-      localImageSpanAlign = ImageSpanAlign.BASELINE;
+      return ImageSpanAlign.BASELINE;
     }
-    do
-    {
-      return localImageSpanAlign;
-      if (paramString.equals("top")) {
-        return ImageSpanAlign.TOP;
-      }
-      if (paramString.equals("bottom")) {
-        return ImageSpanAlign.BOTTOM;
-      }
-    } while (!paramString.equals("center"));
-    return ImageSpanAlign.CENTER;
+    if (paramString.equals("top")) {
+      return ImageSpanAlign.TOP;
+    }
+    if (paramString.equals("bottom")) {
+      return ImageSpanAlign.BOTTOM;
+    }
+    if (paramString.equals("center")) {
+      localImageSpanAlign = ImageSpanAlign.CENTER;
+    }
+    return localImageSpanAlign;
   }
   
   public static FlexJustifyContent convertJustifyContent(String paramString)
   {
     FlexJustifyContent localFlexJustifyContent = FlexJustifyContent.FLEX_START;
     if (TextUtils.isEmpty(paramString)) {
-      localFlexJustifyContent = FlexJustifyContent.FLEX_START;
+      return FlexJustifyContent.FLEX_START;
     }
-    do
-    {
-      return localFlexJustifyContent;
-      if (paramString.equals("flex-start")) {
-        return FlexJustifyContent.FLEX_START;
-      }
-      if (paramString.equals("flex-end")) {
-        return FlexJustifyContent.FLEX_END;
-      }
-      if (paramString.equals("center")) {
-        return FlexJustifyContent.CENTER;
-      }
-      if (paramString.equals("space-between")) {
-        return FlexJustifyContent.SPACE_BETWEEN;
-      }
-    } while (!paramString.equals("space-around"));
-    return FlexJustifyContent.SPACE_AROUND;
+    if (paramString.equals("flex-start")) {
+      return FlexJustifyContent.FLEX_START;
+    }
+    if (paramString.equals("flex-end")) {
+      return FlexJustifyContent.FLEX_END;
+    }
+    if (paramString.equals("center")) {
+      return FlexJustifyContent.CENTER;
+    }
+    if (paramString.equals("space-between")) {
+      return FlexJustifyContent.SPACE_BETWEEN;
+    }
+    if (paramString.equals("space-around")) {
+      localFlexJustifyContent = FlexJustifyContent.SPACE_AROUND;
+    }
+    return localFlexJustifyContent;
   }
   
   public static FlexWrap convertWrap(String paramString)
   {
     FlexWrap localFlexWrap = FlexWrap.NOWRAP;
     if (TextUtils.isEmpty(paramString)) {
-      localFlexWrap = FlexWrap.NOWRAP;
+      return FlexWrap.NOWRAP;
     }
-    do
-    {
-      return localFlexWrap;
-      if (paramString.equals("nowrap")) {
-        return FlexWrap.NOWRAP;
-      }
-    } while (!paramString.equals("wrap"));
-    return FlexWrap.WRAP;
+    if (paramString.equals("nowrap")) {
+      return FlexWrap.NOWRAP;
+    }
+    if (paramString.equals("wrap")) {
+      localFlexWrap = FlexWrap.WRAP;
+    }
+    return localFlexWrap;
   }
   
   public static int dip2px(float paramFloat)
@@ -226,143 +225,179 @@ public class FlexConvertUtils
     try
     {
       f = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
-      paramFloat = f * paramFloat + 0.5F;
-      if ((paramFloat > 0.0F) && (paramFloat < 1.0F)) {
-        return 1;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e(TAG, "Exception e:" + localException.getMessage());
-        float f = 2.0F;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception e:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+      f = 2.0F;
     }
-    return (int)paramFloat;
+    float f = f * paramFloat + 0.5F;
+    if (paramFloat == 0.0F) {
+      f = 0.0F;
+    }
+    if ((f > 0.0F) && (f < 1.0F)) {
+      return 1;
+    }
+    return (int)f;
   }
   
   public static int dip2px(int paramInt)
   {
-    float f;
     try
     {
       f = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
-      f *= paramInt;
-      if ((f > 0.0F) && (f < 1.0F)) {
-        return 1;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e(TAG, "Exception e:" + localException.getMessage());
-        f = 2.0F;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception e:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+      f = 2.0F;
+    }
+    float f = paramInt * f;
+    if ((f > 0.0F) && (f < 1.0F)) {
+      return 1;
     }
     return (int)f;
   }
   
   public static float getFloatByViewport(Object paramObject, int paramInt)
   {
-    if (paramObject == null) {}
-    do
-    {
-      return (0.0F / 0.0F);
-      paramObject = paramObject.toString().trim();
-    } while (("auto".equals(paramObject)) || ("undefined".equals(paramObject)) || (TextUtils.isEmpty(paramObject)));
-    float f;
-    if (paramObject.endsWith("vx")) {
-      try
-      {
-        f = transferVxToViewPortPx(paramObject, paramInt);
-        return f;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        ViolaLogUtils.e(TAG, "getFloatByViewport NumberFormatException e:" + paramObject.getMessage());
-        return (0.0F / 0.0F);
-      }
-      catch (Exception paramObject)
-      {
-        ViolaLogUtils.e(TAG, "getFloatByViewport Exception e:" + paramObject.getMessage());
-        return (0.0F / 0.0F);
-      }
-    }
-    if (paramObject.endsWith("px")) {
-      try
-      {
-        f = Float.parseFloat(paramObject.substring(0, paramObject.indexOf("px")));
-        return f;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        ViolaLogUtils.e(TAG, "getFloatByViewport NumberFormatException e:" + paramObject.getMessage());
-        return (0.0F / 0.0F);
-      }
-      catch (Exception paramObject)
-      {
-        ViolaLogUtils.e(TAG, "getFloatByViewport Exception e:" + paramObject.getMessage());
-        return (0.0F / 0.0F);
-      }
-    }
-    if (paramObject.endsWith("dp")) {
-      try
-      {
-        paramInt = dip2px(Float.parseFloat(paramObject.substring(0, paramObject.indexOf("dp"))));
-        return paramInt;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        ViolaLogUtils.e(TAG, "getFloatByViewport NumberFormatException e:" + paramObject.getMessage());
-        return (0.0F / 0.0F);
-      }
-      catch (Exception paramObject)
-      {
-        ViolaLogUtils.e(TAG, "getFloatByViewport Exception e:" + paramObject.getMessage());
-        return (0.0F / 0.0F);
-      }
-    }
-    if (paramObject.endsWith("vw")) {
-      try
-      {
-        paramObject = paramObject.substring(0, paramObject.indexOf("vw"));
-        f = paramInt;
-        f = getRealPxByWidth(Float.parseFloat(paramObject) * f / 100.0F, paramInt);
-        return f;
-      }
-      catch (Exception paramObject)
-      {
-        ViolaLogUtils.e(TAG, "getFloatByViewport Exception e:" + paramObject.getMessage());
-        return (0.0F / 0.0F);
-      }
-    }
-    if (paramObject.endsWith("rt")) {
-      try
-      {
-        f = getRealPxByWidth(Float.parseFloat(paramObject.substring(0, paramObject.indexOf("rt"))), paramInt);
-        return f;
-      }
-      catch (Exception paramObject)
-      {
-        ViolaLogUtils.e(TAG, "getFloatByViewport Exception e:" + paramObject.getMessage());
-        return (0.0F / 0.0F);
-      }
-    }
-    try
-    {
-      f = getRealPxByWidth(Float.parseFloat(paramObject), paramInt);
-      return f;
-    }
-    catch (NumberFormatException paramObject)
-    {
-      ViolaLogUtils.e(TAG, "getFloatByViewport NumberFormatException e:" + paramObject.getMessage());
+    if (paramObject == null) {
       return (0.0F / 0.0F);
     }
-    catch (Exception paramObject)
+    paramObject = paramObject.toString().trim();
+    if ((!"auto".equals(paramObject)) && (!"undefined".equals(paramObject)))
     {
-      ViolaLogUtils.e(TAG, "getFloatByViewport Exception e:" + paramObject.getMessage());
+      if (TextUtils.isEmpty(paramObject)) {
+        return (0.0F / 0.0F);
+      }
+      float f;
+      StringBuilder localStringBuilder;
+      if (paramObject.endsWith("vx")) {
+        try
+        {
+          f = transferVxToViewPortPx(paramObject, paramInt);
+          return f;
+        }
+        catch (Exception paramObject)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getFloatByViewport Exception e:");
+          localStringBuilder.append(paramObject.getMessage());
+          ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+          return (0.0F / 0.0F);
+        }
+        catch (NumberFormatException paramObject)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getFloatByViewport NumberFormatException e:");
+          localStringBuilder.append(paramObject.getMessage());
+          ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+          return (0.0F / 0.0F);
+        }
+      }
+      if (paramObject.endsWith("px"))
+      {
+        try
+        {
+          f = Float.parseFloat(paramObject.substring(0, paramObject.indexOf("px")));
+          return f;
+        }
+        catch (Exception paramObject) {}catch (NumberFormatException paramObject)
+        {
+          break label212;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFloatByViewport Exception e:");
+        localStringBuilder.append(paramObject.getMessage());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+        return (0.0F / 0.0F);
+        label212:
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFloatByViewport NumberFormatException e:");
+        localStringBuilder.append(paramObject.getMessage());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+        return (0.0F / 0.0F);
+      }
+      if (paramObject.endsWith("dp"))
+      {
+        try
+        {
+          paramInt = dip2px(Float.parseFloat(paramObject.substring(0, paramObject.indexOf("dp"))));
+          return paramInt;
+        }
+        catch (Exception paramObject) {}catch (NumberFormatException paramObject)
+        {
+          break label326;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFloatByViewport Exception e:");
+        localStringBuilder.append(paramObject.getMessage());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+        return (0.0F / 0.0F);
+        label326:
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFloatByViewport NumberFormatException e:");
+        localStringBuilder.append(paramObject.getMessage());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+        return (0.0F / 0.0F);
+      }
+      if (paramObject.endsWith("vw")) {
+        try
+        {
+          paramObject = paramObject.substring(0, paramObject.indexOf("vw"));
+          f = getRealPxByWidth(paramInt * Float.parseFloat(paramObject) / 100.0F, paramInt);
+          return f;
+        }
+        catch (Exception paramObject)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getFloatByViewport Exception e:");
+          localStringBuilder.append(paramObject.getMessage());
+          ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+          return (0.0F / 0.0F);
+        }
+      }
+      if (paramObject.endsWith("rt")) {
+        try
+        {
+          f = getRealPxByWidth(Float.parseFloat(paramObject.substring(0, paramObject.indexOf("rt"))), paramInt);
+          return f;
+        }
+        catch (Exception paramObject)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getFloatByViewport Exception e:");
+          localStringBuilder.append(paramObject.getMessage());
+          ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+          return (0.0F / 0.0F);
+        }
+      }
+      try
+      {
+        f = getRealPxByWidth(Float.parseFloat(paramObject), paramInt);
+        return f;
+      }
+      catch (Exception paramObject)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFloatByViewport Exception e:");
+        localStringBuilder.append(paramObject.getMessage());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+        return (0.0F / 0.0F);
+      }
+      catch (NumberFormatException paramObject)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFloatByViewport NumberFormatException e:");
+        localStringBuilder.append(paramObject.getMessage());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+      }
     }
     return (0.0F / 0.0F);
   }
@@ -370,44 +405,46 @@ public class FlexConvertUtils
   @SuppressLint({"MissingPermission"})
   public static String getIMEI()
   {
-    if ((deviceid != null) && (deviceid.length() > 0)) {
+    Object localObject = deviceid;
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
       return deviceid;
     }
     try
     {
-      TelephonyManager localTelephonyManager = (TelephonyManager)ViolaEnvironment.sApplication.getSystemService("phone");
-      if (Build.VERSION.SDK_INT < 26) {
-        deviceid = localTelephonyManager.getDeviceId();
+      localObject = (TelephonyManager)ViolaEnvironment.sApplication.getSystemService("phone");
+      if (Build.VERSION.SDK_INT >= 26) {
+        break label63;
       }
-      return deviceid;
+      deviceid = PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject);
     }
     catch (SecurityException localSecurityException)
     {
-      for (;;)
-      {
-        deviceid = "";
-      }
+      break label58;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        deviceid = "";
-      }
+      label50:
+      break label50;
     }
+    deviceid = "";
+    break label63;
+    label58:
+    deviceid = "";
+    label63:
+    return deviceid;
   }
   
   public static float getRealPxByWidth(float paramFloat, int paramInt)
   {
-    float f = 1.0F;
     if (Float.isNaN(paramFloat)) {
       return paramFloat;
     }
-    paramFloat = getScreenWidth() * paramFloat / paramInt;
-    if ((paramFloat > 0.005D) && (paramFloat < 1.0F)) {}
-    for (paramFloat = f;; paramFloat = (float)Math.rint(paramFloat)) {
-      return paramFloat;
+    paramFloat = paramFloat * getScreenWidth() / paramInt;
+    double d = paramFloat;
+    if ((d > 0.005D) && (paramFloat < 1.0F)) {
+      return 1.0F;
     }
+    return (float)Math.rint(d);
   }
   
   public static int getScreenContentHeight()
@@ -469,46 +506,63 @@ public class FlexConvertUtils
   public static float px2dip(float paramFloat)
   {
     float f2 = 2.0F;
+    float f1;
+    StringBuilder localStringBuilder;
     try
     {
       f1 = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
-      if (f1 == 0.0F)
+    }
+    catch (Exception localException1)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception e:");
+      localStringBuilder.append(localException1.getMessage());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+      f1 = 2.0F;
+    }
+    if (f1 == 0.0F) {
+      f1 = f2;
+    }
+    try
+    {
+      if (decimalFormat == null)
       {
-        f1 = f2;
-        DecimalFormat localDecimalFormat = new DecimalFormat("0.00");
+        decimalFormat = new DecimalFormat("0.00");
         DecimalFormatSymbols localDecimalFormatSymbols = new DecimalFormatSymbols();
         localDecimalFormatSymbols.setDecimalSeparator('.');
-        localDecimalFormat.setDecimalFormatSymbols(localDecimalFormatSymbols);
-        return Float.valueOf(localDecimalFormat.format(paramFloat / f1)).floatValue();
+        decimalFormat.setDecimalFormatSymbols(localDecimalFormatSymbols);
       }
+      f1 = Float.valueOf(decimalFormat.format(paramFloat / f1)).floatValue();
+      return f1;
     }
-    catch (Exception localException)
+    catch (Exception localException2)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e(TAG, "Exception e:" + localException.getMessage());
-        float f1 = 2.0F;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[px2dip]: ");
+      localStringBuilder.append(localException2.getMessage());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
     }
+    return paramFloat;
   }
   
   public static int sp2px(float paramFloat)
   {
+    float f;
     try
     {
       f = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().scaledDensity;
-      paramFloat = f * paramFloat + 0.5F;
-      if ((paramFloat > 0.0F) && (paramFloat < 1.0F)) {
-        return 1;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e(TAG, "Exception e:" + localException.getMessage());
-        float f = 2.0F;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception e:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
+      f = 2.0F;
+    }
+    paramFloat = paramFloat * f + 0.5F;
+    if ((paramFloat > 0.0F) && (paramFloat < 1.0F)) {
+      return 1;
     }
     return (int)paramFloat;
   }
@@ -532,7 +586,7 @@ public class FlexConvertUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.FlexConvertUtils
  * JD-Core Version:    0.7.0.1
  */

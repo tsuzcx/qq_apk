@@ -9,12 +9,17 @@ class DocxApiPlugin$8$1
   
   public void run()
   {
-    this.this$0.a.loadUrl("javascript:window.injectLocalTcntDocData(" + this.a + ")");
+    TouchWebView localTouchWebView = this.this$0.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("javascript:window.injectLocalTcntDocData(");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(")");
+    localTouchWebView.loadUrl(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.8.1
  * JD-Core Version:    0.7.0.1
  */

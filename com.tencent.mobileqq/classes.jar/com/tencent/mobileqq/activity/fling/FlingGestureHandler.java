@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -13,7 +12,7 @@ public class FlingGestureHandler
   extends FlingHandler
   implements TopGestureLayout.OnGestureListener
 {
-  private View a;
+  private View mInnerView;
   public TopGestureLayout mTopLayout;
   
   public FlingGestureHandler(Activity paramActivity)
@@ -21,92 +20,19 @@ public class FlingGestureHandler
     super(paramActivity);
   }
   
-  private ViewGroup a(Activity paramActivity)
+  private ViewGroup getDecorView(Activity paramActivity)
   {
-    ViewGroup localViewGroup = (ViewGroup)paramActivity.getWindow().getDecorView();
-    View localView = localViewGroup.getChildAt(0);
-    paramActivity = localViewGroup;
-    if (localView != null)
-    {
-      paramActivity = localViewGroup;
-      if ((localView instanceof DragFrameLayout)) {
-        paramActivity = (ViewGroup)localView;
-      }
+    paramActivity = (ViewGroup)paramActivity.getWindow().getDecorView();
+    View localView = paramActivity.getChildAt(0);
+    if (FlingHelperUtils.utils.isDragFrameLayoutClass(localView)) {
+      paramActivity = (ViewGroup)localView;
     }
     return paramActivity;
   }
   
-  protected void a()
-  {
-    if (!a()) {}
-    ViewGroup localViewGroup;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (localObject == null);
-        localViewGroup = a((Activity)localObject);
-        if (this.mTopLayout != null) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidViewView = localViewGroup.getChildAt(0);
-      } while (this.jdField_a_of_type_AndroidViewView == null);
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      this.mTopLayout = new TopGestureLayout((Context)localObject);
-      Object localObject = this.mTopLayout;
-      ((TopGestureLayout)localObject).setOnFlingGesture(this);
-      localViewGroup.addView((View)localObject);
-      ((ViewGroup)localView.getParent()).removeView(localView);
-      ((TopGestureLayout)localObject).addView(localView);
-      return;
-    } while (b());
-    if ((this.mTopLayout != null) && (this.mTopLayout.getParent() != null)) {
-      ((ViewGroup)this.mTopLayout.getParent()).removeView(this.mTopLayout);
-    }
-    localViewGroup.addView(this.mTopLayout);
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
-    }
-    try
-    {
-      this.mTopLayout.addView(this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("FlingGestureHandler", 1, localException, new Object[0]);
-    }
-  }
-  
-  protected void b()
-  {
-    Object localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {}
-    do
-    {
-      do
-      {
-        return;
-        localObject = a((Activity)localObject);
-      } while ((!b()) || (!this.mTopLayout.getParent().equals(localObject)));
-      ((ViewGroup)localObject).removeView(this.mTopLayout);
-    } while (!this.jdField_a_of_type_AndroidViewView.getParent().equals(this.mTopLayout));
-    this.mTopLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-    ((ViewGroup)localObject).addView(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  protected boolean b()
-  {
-    return (this.mTopLayout != null) && (this.mTopLayout.getParent() != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == this.mTopLayout);
-  }
-  
   public void flingLToR()
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.mWrappedActivity.get();
     if (localActivity != null) {
       localActivity.onBackPressed();
     }
@@ -114,27 +40,107 @@ public class FlingGestureHandler
   
   public void flingRToL() {}
   
+  protected boolean isWrapped()
+  {
+    Object localObject = this.mTopLayout;
+    if ((localObject != null) && (((TopGestureLayout)localObject).getParent() != null))
+    {
+      localObject = this.mInnerView;
+      if ((localObject != null) && (((View)localObject).getParent() == this.mTopLayout)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public void setTopLayout(TopGestureLayout paramTopGestureLayout)
   {
-    if ((!a()) && (paramTopGestureLayout == null)) {}
-    Activity localActivity;
-    do
-    {
-      return;
-      localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localActivity == null);
-    if (b())
-    {
-      b();
-      this.jdField_a_of_type_AndroidViewView = a(localActivity).getChildAt(0);
-      this.mTopLayout = paramTopGestureLayout;
-      paramTopGestureLayout.setOnFlingGesture(this);
-      a();
+    if ((!canWrapContent()) && (paramTopGestureLayout == null)) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = a(localActivity).getChildAt(0);
+    Activity localActivity = (Activity)this.mWrappedActivity.get();
+    if (localActivity == null) {
+      return;
+    }
+    if (isWrapped())
+    {
+      unwrap();
+      this.mInnerView = getDecorView(localActivity).getChildAt(0);
+      this.mTopLayout = paramTopGestureLayout;
+      paramTopGestureLayout.setOnFlingGesture(this);
+      wrap();
+      return;
+    }
+    this.mInnerView = getDecorView(localActivity).getChildAt(0);
     this.mTopLayout = paramTopGestureLayout;
     paramTopGestureLayout.setOnFlingGesture(this);
+  }
+  
+  protected void unwrap()
+  {
+    Object localObject = (Activity)this.mWrappedActivity.get();
+    if (localObject == null) {
+      return;
+    }
+    localObject = getDecorView((Activity)localObject);
+    if ((isWrapped()) && (this.mTopLayout.getParent().equals(localObject)))
+    {
+      ((ViewGroup)localObject).removeView(this.mTopLayout);
+      if (this.mInnerView.getParent().equals(this.mTopLayout))
+      {
+        this.mTopLayout.removeView(this.mInnerView);
+        ((ViewGroup)localObject).addView(this.mInnerView);
+      }
+    }
+  }
+  
+  protected void wrap()
+  {
+    if (!canWrapContent()) {
+      return;
+    }
+    Object localObject3 = (Activity)this.mWrappedActivity.get();
+    if (localObject3 == null) {
+      return;
+    }
+    Object localObject1 = getDecorView((Activity)localObject3);
+    Object localObject2;
+    if (this.mTopLayout == null)
+    {
+      this.mInnerView = ((ViewGroup)localObject1).getChildAt(0);
+      localObject2 = this.mInnerView;
+      if (localObject2 == null) {
+        return;
+      }
+      this.mTopLayout = new TopGestureLayout((Context)localObject3);
+      localObject3 = this.mTopLayout;
+      ((TopGestureLayout)localObject3).setOnFlingGesture(this);
+      ((ViewGroup)localObject1).addView((View)localObject3);
+      ((ViewGroup)((View)localObject2).getParent()).removeView((View)localObject2);
+      ((TopGestureLayout)localObject3).addView((View)localObject2);
+      return;
+    }
+    if (!isWrapped())
+    {
+      localObject2 = this.mTopLayout;
+      if ((localObject2 != null) && (((TopGestureLayout)localObject2).getParent() != null)) {
+        ((ViewGroup)this.mTopLayout.getParent()).removeView(this.mTopLayout);
+      }
+      ((ViewGroup)localObject1).addView(this.mTopLayout);
+      localObject1 = this.mInnerView;
+      if ((localObject1 != null) && (((View)localObject1).getParent() != null)) {
+        ((ViewGroup)this.mInnerView.getParent()).removeView(this.mInnerView);
+      }
+      try
+      {
+        this.mTopLayout.addView(this.mInnerView);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("FlingGestureHandler", 1, localException, new Object[0]);
+      }
+    }
   }
 }
 

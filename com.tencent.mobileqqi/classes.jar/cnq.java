@@ -11,16 +11,12 @@ public class cnq
   public void onAnimationEnd(Animation paramAnimation)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.c) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

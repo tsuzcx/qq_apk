@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a6q" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/emp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textSize="@dimen/dq" android:textColor="@color/rv" android:id="@id/emq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ll" android:text="@string/eo1" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/emr" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/dq" android:textColor="@color/rv" android:id="@id/emn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/enz" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/a_4" android:layout_marginLeft="@dimen/ll" android:src="@raw/arrow_right" />
+    <com.tencent.mm.plugin.game.ui.GameRankHeadView android:orientation="vertical" android:id="@id/eng" android:background="@drawable/bal" android:layout_width="fill_parent" android:layout_height="190.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/ek7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/k" android:src="@drawable/bat" android:scaleType="centerCrop" />
+        <TextView android:textSize="20.0dip" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/ek9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:layout_gravity="center_horizontal" android:id="@id/eju" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/k" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/Link" android:layout_gravity="center_horizontal" android:id="@id/ek8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/g" />
+            <ImageView android:id="@id/emo" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/bag" />
         </LinearLayout>
-    </LinearLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/ems" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
-</RelativeLayout>
+    </com.tencent.mm.plugin.game.ui.GameRankHeadView>
+</LinearLayout>

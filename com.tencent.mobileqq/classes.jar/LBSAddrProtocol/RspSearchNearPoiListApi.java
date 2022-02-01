@@ -10,9 +10,9 @@ public final class RspSearchNearPoiListApi
 {
   static GPS cache_stUsrLoc;
   static ArrayList<PoiInfo> cache_vPoiList;
-  public int iTotalNum;
-  public GPS stUsrLoc;
-  public ArrayList<PoiInfo> vPoiList;
+  public int iTotalNum = 0;
+  public GPS stUsrLoc = null;
+  public ArrayList<PoiInfo> vPoiList = null;
   
   public RspSearchNearPoiListApi() {}
   
@@ -48,7 +48,7 @@ public final class RspSearchNearPoiListApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSAddrProtocol.RspSearchNearPoiListApi
  * JD-Core Version:    0.7.0.1
  */

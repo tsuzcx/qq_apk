@@ -1,55 +1,48 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.cxa;
+import java.util.HashSet;
+import java.util.Set;
 
-public final class k
-  extends j<b>
+public class k
 {
-  public static final String[] fkl;
-  public final e gVl;
+  private static volatile k qOK;
+  private final Object mLock;
+  private final Set<Object> qOL;
+  private volatile cxa qOM;
   
-  static
+  public k()
   {
-    AppMethodBeat.i(129556);
-    fkl = new String[] { j.getCreateSQLs(b.fkk, "AppBrandAppLaunchUsernameDuplicateRecord") };
-    AppMethodBeat.o(129556);
+    AppMethodBeat.i(44498);
+    this.mLock = new Object();
+    this.qOL = new HashSet();
+    this.qOM = null;
+    AppMethodBeat.o(44498);
   }
   
-  public k(e parame)
+  public static k ciN()
   {
-    super(parame, b.fkk, "AppBrandAppLaunchUsernameDuplicateRecord", b.INDEX_CREATE);
-    this.gVl = parame;
-  }
-  
-  public final boolean E(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(129555);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(44499);
+    if (qOK == null) {}
+    try
     {
-      AppMethodBeat.o(129555);
-      return false;
+      if (qOK == null) {
+        qOK = new k();
+      }
+      k localk = qOK;
+      AppMethodBeat.o(44499);
+      return localk;
     }
-    b localb = new b();
-    localb.field_username = paramString;
-    boolean bool = get(localb, new String[0]);
-    localb.field_updateTime = paramLong;
-    if (bool)
+    finally
     {
-      bool = update(localb, new String[0]);
-      AppMethodBeat.o(129555);
-      return bool;
+      AppMethodBeat.o(44499);
     }
-    bool = insert(localb);
-    AppMethodBeat.o(129555);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.k
  * JD-Core Version:    0.7.0.1
  */

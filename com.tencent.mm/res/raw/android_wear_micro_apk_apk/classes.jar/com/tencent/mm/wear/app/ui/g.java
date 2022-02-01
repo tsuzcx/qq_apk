@@ -5,8 +5,8 @@ import com.tencent.mm.e.a.s;
 public final class g
   implements Comparable<g>
 {
-  public s afg;
-  public int afh;
+  public s aiI;
+  public int aiJ;
   
   public g(f paramf) {}
 }

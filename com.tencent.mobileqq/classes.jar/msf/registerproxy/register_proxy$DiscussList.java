@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class register_proxy$DiscussList
   extends MessageMicro<DiscussList>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64 }, new String[] { "discuss_code", "discuss_seq", "member_seq", "info_seq", "bHotGroup", "redpack_time", "has_msg", "dicuss_flag" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Boolean.valueOf(false), Long.valueOf(0L), Boolean.valueOf(false), Long.valueOf(0L) }, DiscussList.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bHotGroup = PBField.initBool(false);
   public final PBInt64Field dicuss_flag = PBField.initInt64(0L);
   public final PBUInt64Field discuss_code = PBField.initUInt64(0L);
@@ -19,10 +19,17 @@ public final class register_proxy$DiscussList
   public final PBUInt64Field info_seq = PBField.initUInt64(0L);
   public final PBUInt64Field member_seq = PBField.initUInt64(0L);
   public final PBUInt64Field redpack_time = PBField.initUInt64(0L);
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64 }, new String[] { "discuss_code", "discuss_seq", "member_seq", "info_seq", "bHotGroup", "redpack_time", "has_msg", "dicuss_flag" }, new Object[] { localLong, localLong, localLong, localLong, localBoolean, localLong, localBoolean, localLong }, DiscussList.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.registerproxy.register_proxy.DiscussList
  * JD-Core Version:    0.7.0.1
  */

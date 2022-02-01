@@ -2,16 +2,14 @@ package com.tencent.mobileqq.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
 import android.os.Handler;
-import azhg;
-import com.enrique.stackblur.StackBlurManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qqconnectface.api.ICamera;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 
@@ -24,47 +22,51 @@ class QQIdentiferActivity$9
   {
     try
     {
-      if (QQIdentiferActivity.a(this.this$0) == null)
+      if (QQIdentiferActivity.access$1000(this.this$0) == null)
       {
         QLog.e("qq_Identification.act", 1, "blur bmp error, mLastPreviewData is null");
         return;
       }
-      Camera localCamera = azhg.a().a;
-      if (localCamera == null)
+      Object localObject1 = QQIdentiferActivity.access$1100(this.this$0).d();
+      if (localObject1 == null)
       {
         QLog.e("qq_Identification.act", 1, "blur bmp error, camera is null");
         return;
       }
+      localObject1 = ((Camera)localObject1).getParameters().getPreviewSize();
+      localObject2 = new YuvImage(QQIdentiferActivity.access$1000(this.this$0), 17, ((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height, null);
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      ((YuvImage)localObject2).compressToJpeg(new Rect(0, 0, ((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height), 100, localByteArrayOutputStream);
+      localObject1 = BitmapFactory.decodeByteArray(localByteArrayOutputStream.toByteArray(), 0, localByteArrayOutputStream.size());
+      localObject1 = QQIdentiferActivity.access$1100(this.this$0).a((Bitmap)localObject1);
+      if (localObject1 == null)
+      {
+        QLog.e("qq_Identification.act", 1, "blurBitmap return null");
+        return;
+      }
+      ThreadManagerV2.getUIHandlerV2().post(new QQIdentiferActivity.9.1(this, (Bitmap)localObject1));
+      return;
     }
     catch (Exception localException)
     {
-      QLog.e("qq_Identification.act", 1, "blur last img error : " + localException.getMessage());
-      return;
-      Object localObject1 = localException.getParameters().getPreviewSize();
-      Object localObject2 = new YuvImage(QQIdentiferActivity.a(this.this$0), 17, ((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height, null);
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      ((YuvImage)localObject2).compressToJpeg(new Rect(0, 0, ((Camera.Size)localObject1).width, ((Camera.Size)localObject1).height), 100, localByteArrayOutputStream);
-      localObject2 = new StackBlurManager(BitmapFactory.decodeByteArray(localByteArrayOutputStream.toByteArray(), 0, localByteArrayOutputStream.size())).process(15);
-      int i = azhg.a().b();
-      localObject1 = new Matrix();
-      ((Matrix)localObject1).setRotate(i);
-      localObject2 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1, false);
-      ((Matrix)localObject1).reset();
-      ((Matrix)localObject1).postScale(-1.0F, 1.0F);
-      localObject1 = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1, false);
-      ThreadManagerV2.getUIHandlerV2().post(new QQIdentiferActivity.9.1(this, (Bitmap)localObject1));
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("blur last img error : ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      QLog.e("qq_Identification.act", 1, ((StringBuilder)localObject2).toString());
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      QLog.e("qq_Identification.act", 1, "blur last img out of memory");
-      QQIdentiferActivity.a(this.this$0, null);
+      label169:
+      break label169;
     }
+    QLog.e("qq_Identification.act", 1, "blur last img out of memory");
+    QQIdentiferActivity.access$1002(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.9
  * JD-Core Version:    0.7.0.1
  */

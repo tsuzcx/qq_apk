@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class ActionInfo
   extends JceStruct
 {
-  static int cache_action_attr = 0;
-  static int cache_action_id = 0;
-  public int action_attr;
-  public int action_id;
-  public long action_value;
-  public long oper_time;
+  static int cache_action_attr;
+  static int cache_action_id;
+  public int action_attr = 0;
+  public int action_id = 0;
+  public long action_value = 0L;
+  public long oper_time = 0L;
   
   public ActionInfo() {}
   
@@ -42,7 +42,7 @@ public final class ActionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.ActionInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -26,23 +26,25 @@ public final class hu
   
   public final boolean a(ViewGroup paramViewGroup)
   {
-    if ((paramViewGroup == null) || (this.c == null)) {
-      return false;
+    if ((paramViewGroup != null) && (this.c != null))
+    {
+      Object localObject = new FrameLayout.LayoutParams(-2, -2);
+      ((FrameLayout.LayoutParams)localObject).gravity = 17;
+      this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      int i = paramViewGroup.getMeasuredWidth();
+      int j = paramViewGroup.getMeasuredHeight();
+      this.c.setTextSize(18.0F);
+      this.c.setTextColor(-16777216);
+      this.c.setText("鉴权失败,请检查你的key");
+      localObject = fy.a(this.c);
+      paramViewGroup.addView(this.c);
+      paramViewGroup = this.a;
+      if (paramViewGroup != null) {
+        paramViewGroup.a((Bitmap)localObject, i, j);
+      }
+      return true;
     }
-    Object localObject = new FrameLayout.LayoutParams(-2, -2);
-    ((FrameLayout.LayoutParams)localObject).gravity = 17;
-    this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    int i = paramViewGroup.getMeasuredWidth();
-    int j = paramViewGroup.getMeasuredHeight();
-    this.c.setTextSize(18.0F);
-    this.c.setTextColor(-16777216);
-    this.c.setText("鉴权失败,请检查你的key");
-    localObject = fy.a(this.c);
-    paramViewGroup.addView(this.c);
-    if (this.a != null) {
-      this.a.a((Bitmap)localObject, i, j);
-    }
-    return true;
+    return false;
   }
 }
 

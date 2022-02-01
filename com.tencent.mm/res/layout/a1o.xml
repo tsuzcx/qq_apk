@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:orientation="vertical" android:id="@id/gu0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/l0">
-        <ImageView android:id="@id/bzk" android:src="@drawable/ag9" style="@style/jd" />
-        <TextView android:id="@id/bzl" android:text="正在获取Wi-Fi信息..." style="@style/k0" />
-        <Button android:textSize="15.0sp" android:id="@id/bzm" android:visibility="invisible" android:layout_width="220.0dip" android:layout_marginTop="70.0dip" android:minHeight="34.0dip" android:text="@string/c31" style="@style/jz" />
-    </LinearLayout>
+    <include layout="@layout/a1p" />
+    <include android:id="@id/gtz" layout="@layout/a1q" />
+    <include layout="@layout/a1p" />
 </LinearLayout>

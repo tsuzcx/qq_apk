@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.imaxad;
 
-import asyf;
-
-public class ImaxAdVideoPreloadManager$5
+class ImaxAdVideoPreloadManager$5
   implements Runnable
 {
-  public ImaxAdVideoPreloadManager$5(asyf paramasyf) {}
+  ImaxAdVideoPreloadManager$5(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
   
   public void run()
   {
-    asyf.a(this.this$0, 2);
+    ImaxAdVideoPreloadManager.a(this.this$0, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager.5
  * JD-Core Version:    0.7.0.1
  */

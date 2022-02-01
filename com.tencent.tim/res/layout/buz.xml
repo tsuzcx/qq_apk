@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/hhz" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/m46" android:visibility="invisible" android:layout_width="170.0dip" android:layout_height="120.0dip" />
+    <com.qzone.widget.AsyncImageView android:id="@id/m45" android:layout_width="268.0dip" android:layout_height="68.0dip" android:layout_marginLeft="31.0dip" android:layout_alignParentBottom="true" android:transformPivotY="68.0dip" />
+    <com.qzone.component.PolymorphicLikeCellLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/hhy" android:layout_width="240.0dip" android:layout_height="94.0dip" android:layout_marginLeft="45.0dip" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

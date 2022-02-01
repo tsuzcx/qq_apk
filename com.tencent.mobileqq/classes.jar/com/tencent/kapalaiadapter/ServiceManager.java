@@ -23,9 +23,9 @@ public final class ServiceManager
       mListServiceMethod = mServiceManagerClass.getDeclaredMethod("listServices", new Class[0]);
       return;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    catch (NoSuchMethodException localNoSuchMethodException)
     {
-      localClassNotFoundException.printStackTrace();
+      localNoSuchMethodException.printStackTrace();
       return;
     }
     catch (SecurityException localSecurityException)
@@ -33,9 +33,9 @@ public final class ServiceManager
       localSecurityException.printStackTrace();
       return;
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      localNoSuchMethodException.printStackTrace();
+      localClassNotFoundException.printStackTrace();
     }
   }
   
@@ -61,7 +61,7 @@ public final class ServiceManager
       paramMethod = paramMethod.invoke(null, paramVarArgs);
       return paramMethod;
     }
-    catch (IllegalArgumentException paramMethod)
+    catch (InvocationTargetException paramMethod)
     {
       paramMethod.printStackTrace();
       return null;
@@ -71,7 +71,7 @@ public final class ServiceManager
       paramMethod.printStackTrace();
       return null;
     }
-    catch (InvocationTargetException paramMethod)
+    catch (IllegalArgumentException paramMethod)
     {
       paramMethod.printStackTrace();
     }
@@ -85,7 +85,7 @@ public final class ServiceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kapalaiadapter.ServiceManager
  * JD-Core Version:    0.7.0.1
  */

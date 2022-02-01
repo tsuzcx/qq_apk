@@ -6,62 +6,62 @@ import java.util.Arrays;
 
 final class k
 {
-  private int aAA;
-  final int aAg;
-  private final int aAh;
-  private final int aAi;
-  final int aAj;
-  private final short[] aAk;
-  private int aAl;
-  short[] aAm;
-  private int aAn;
-  short[] aAo;
-  private int aAp;
-  private short[] aAq;
-  private int aAr;
-  private int aAs;
-  int aAt;
-  int aAu;
-  int aAv;
-  int aAw;
-  private int aAx;
-  private int aAy;
-  private int aAz;
+  float cHk;
+  final int cKa;
+  private final int cKb;
+  private final int cKc;
+  final int cKd;
+  private final short[] cKe;
+  private int cKf;
+  short[] cKg;
+  private int cKh;
+  short[] cKi;
+  private int cKj;
+  private short[] cKk;
+  private int cKl;
+  private int cKm;
+  int cKn;
+  int cKo;
+  int cKp;
+  int cKq;
+  private int cKr;
+  private int cKs;
+  private int cKt;
+  private int cKu;
   float pitch;
   private final int sampleRate;
-  float speed;
   
   public k(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(94722);
+    AppMethodBeat.i(91833);
     this.sampleRate = paramInt1;
-    this.aAg = paramInt2;
-    this.aAh = (paramInt1 / 400);
-    this.aAi = (paramInt1 / 65);
-    this.aAj = (this.aAi * 2);
-    this.aAk = new short[this.aAj];
-    this.aAl = this.aAj;
-    this.aAm = new short[this.aAj * paramInt2];
-    this.aAn = this.aAj;
-    this.aAo = new short[this.aAj * paramInt2];
-    this.aAp = this.aAj;
-    this.aAq = new short[this.aAj * paramInt2];
-    this.aAr = 0;
-    this.aAs = 0;
-    this.aAx = 0;
-    this.speed = 1.0F;
+    this.cKa = paramInt2;
+    this.cKb = (paramInt1 / 400);
+    this.cKc = (paramInt1 / 65);
+    this.cKd = (this.cKc * 2);
+    this.cKe = new short[this.cKd];
+    this.cKf = this.cKd;
+    this.cKg = new short[this.cKd * paramInt2];
+    this.cKh = this.cKd;
+    this.cKi = new short[this.cKd * paramInt2];
+    this.cKj = this.cKd;
+    this.cKk = new short[this.cKd * paramInt2];
+    this.cKl = 0;
+    this.cKm = 0;
+    this.cKr = 0;
+    this.cHk = 1.0F;
     this.pitch = 1.0F;
-    AppMethodBeat.o(94722);
+    AppMethodBeat.o(91833);
   }
   
   private int a(short[] paramArrayOfShort, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(94726);
+    AppMethodBeat.i(91837);
     int k = 0;
     int j = 255;
     int m = 1;
     int i = 0;
-    int i2 = paramInt1 * this.aAg;
+    int i2 = paramInt1 * this.cKa;
     paramInt1 = paramInt2;
     int n;
     int i1;
@@ -93,9 +93,9 @@ final class k
       m = i1;
       k = n;
       break;
-      this.aAz = (m / k);
-      this.aAA = (i / j);
-      AppMethodBeat.o(94726);
+      this.cKt = (m / k);
+      this.cKu = (i / j);
+      AppMethodBeat.o(91837);
       return k;
       label161:
       paramInt2 = i;
@@ -125,18 +125,18 @@ final class k
   
   private void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(94725);
-    cZ(paramInt2);
-    System.arraycopy(paramArrayOfShort, this.aAg * paramInt1, this.aAo, this.aAu * this.aAg, this.aAg * paramInt2);
-    this.aAu += paramInt2;
-    AppMethodBeat.o(94725);
+    AppMethodBeat.i(91836);
+    hn(paramInt2);
+    System.arraycopy(paramArrayOfShort, this.cKa * paramInt1, this.cKi, this.cKo * this.cKa, this.cKa * paramInt2);
+    this.cKo += paramInt2;
+    AppMethodBeat.o(91836);
   }
   
   private void b(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
-    int k = this.aAj / paramInt2;
-    int m = this.aAg * paramInt2;
-    int n = this.aAg;
+    int k = this.cKd / paramInt2;
+    int m = this.cKa * paramInt2;
+    int n = this.cKa;
     paramInt2 = 0;
     while (paramInt2 < k)
     {
@@ -148,38 +148,27 @@ final class k
         i += 1;
       }
       i = j / m;
-      this.aAk[paramInt2] = ((short)i);
+      this.cKe[paramInt2] = ((short)i);
       paramInt2 += 1;
     }
   }
   
-  private void cZ(int paramInt)
+  private void hn(int paramInt)
   {
-    AppMethodBeat.i(94723);
-    if (this.aAu + paramInt > this.aAn)
+    AppMethodBeat.i(91834);
+    if (this.cKo + paramInt > this.cKh)
     {
-      this.aAn += this.aAn / 2 + paramInt;
-      this.aAo = Arrays.copyOf(this.aAo, this.aAn * this.aAg);
+      this.cKh += this.cKh / 2 + paramInt;
+      this.cKi = Arrays.copyOf(this.cKi, this.cKh * this.cKa);
     }
-    AppMethodBeat.o(94723);
+    AppMethodBeat.o(91834);
   }
   
-  final void da(int paramInt)
+  final void Rw()
   {
-    AppMethodBeat.i(94724);
-    if (this.aAt + paramInt > this.aAl)
-    {
-      this.aAl += this.aAl / 2 + paramInt;
-      this.aAm = Arrays.copyOf(this.aAm, this.aAl * this.aAg);
-    }
-    AppMethodBeat.o(94724);
-  }
-  
-  final void nC()
-  {
-    AppMethodBeat.i(94727);
-    int n = this.aAu;
-    float f = this.speed / this.pitch;
+    AppMethodBeat.i(91838);
+    int n = this.cKo;
+    float f = this.cHk / this.pitch;
     int i1;
     int k;
     int i;
@@ -188,30 +177,30 @@ final class k
     short[] arrayOfShort1;
     if ((f > 1.00001D) || (f < 0.9999900000000001D))
     {
-      if (this.aAt >= this.aAj)
+      if (this.cKn >= this.cKd)
       {
-        i1 = this.aAt;
+        i1 = this.cKn;
         k = 0;
         do
         {
-          if (this.aAw <= 0) {
+          if (this.cKq <= 0) {
             break;
           }
-          i = Math.min(this.aAj, this.aAw);
-          a(this.aAm, k, i);
-          this.aAw -= i;
+          i = Math.min(this.cKd, this.cKq);
+          a(this.cKg, k, i);
+          this.cKq -= i;
           i = k + i;
           k = i;
-        } while (this.aAj + i <= i1);
-        j = this.aAt - i;
-        System.arraycopy(this.aAm, this.aAg * i, this.aAm, 0, this.aAg * j);
-        this.aAt = j;
+        } while (this.cKd + i <= i1);
+        j = this.cKn - i;
+        System.arraycopy(this.cKg, this.cKa * i, this.cKg, 0, this.cKa * j);
+        this.cKn = j;
       }
       if (this.pitch == 1.0F) {
         break label1163;
       }
       f = this.pitch;
-      if (this.aAu == n) {
+      if (this.cKo == n) {
         break label1163;
       }
       j = (int)(this.sampleRate / f);
@@ -221,85 +210,85 @@ final class k
         j /= 2;
         i /= 2;
       }
-      arrayOfShort1 = this.aAm;
+      arrayOfShort1 = this.cKg;
       if (this.sampleRate > 4000)
       {
         i = this.sampleRate / 4000;
         label241:
-        if ((this.aAg != 1) || (i != 1)) {
+        if ((this.cKa != 1) || (i != 1)) {
           break label400;
         }
-        i = a(arrayOfShort1, k, this.aAh, this.aAi);
+        i = a(arrayOfShort1, k, this.cKb, this.cKc);
       }
     }
     for (;;)
     {
       label271:
-      j = this.aAz;
-      int m = this.aAA;
-      if ((j == 0) || (this.aAx == 0))
+      j = this.cKt;
+      int m = this.cKu;
+      if ((j == 0) || (this.cKr == 0))
       {
         j = 0;
         label295:
         if (j == 0) {
           break label561;
         }
-        j = this.aAx;
+        j = this.cKr;
         label304:
-        this.aAy = this.aAz;
-        this.aAx = i;
+        this.cKs = this.cKt;
+        this.cKr = i;
         if (f <= 1.0D) {
           break label586;
         }
-        arrayOfShort1 = this.aAm;
+        arrayOfShort1 = this.cKg;
         if (f < 2.0F) {
           break label566;
         }
         i = (int)(j / (f - 1.0F));
         label344:
-        cZ(i);
-        a(i, this.aAg, this.aAo, this.aAu, arrayOfShort1, k, arrayOfShort1, k + j);
-        this.aAu += i;
+        hn(i);
+        a(i, this.cKa, this.cKi, this.cKo, arrayOfShort1, k, arrayOfShort1, k + j);
+        this.cKo += i;
         i = k + (i + j);
         break;
         i = 1;
         break label241;
         label400:
         b(arrayOfShort1, k, i);
-        j = a(this.aAk, 0, this.aAh / i, this.aAi / i);
+        j = a(this.cKe, 0, this.cKb / i, this.cKc / i);
         if (i == 1) {
           break label1178;
         }
         j *= i;
         m = j - i * 4;
         j += i * 4;
-        if (m >= this.aAh) {
+        if (m >= this.cKb) {
           break label1172;
         }
       }
       label1163:
       label1172:
-      for (i = this.aAh;; i = m)
+      for (i = this.cKb;; i = m)
       {
-        if (j > this.aAi) {
-          j = this.aAi;
+        if (j > this.cKc) {
+          j = this.cKc;
         }
         for (;;)
         {
-          if (this.aAg == 1)
+          if (this.cKa == 1)
           {
             i = a(arrayOfShort1, k, i, j);
             break label271;
           }
           b(arrayOfShort1, k, 1);
-          i = a(this.aAk, 0, i, j);
+          i = a(this.cKe, 0, i, j);
           break label271;
           if (m > j * 3)
           {
             j = 0;
             break label295;
           }
-          if (j * 2 <= this.aAy * 3)
+          if (j * 2 <= this.cKs * 3)
           {
             j = 0;
             break label295;
@@ -310,66 +299,66 @@ final class k
           j = i;
           break label304;
           label566:
-          this.aAw = ((int)(j * (2.0F - f) / (f - 1.0F)));
+          this.cKq = ((int)(j * (2.0F - f) / (f - 1.0F)));
           i = j;
           break label344;
           label586:
-          arrayOfShort1 = this.aAm;
+          arrayOfShort1 = this.cKg;
           if (f < 0.5F) {}
           for (i = (int)(j * f / (1.0F - f));; i = j)
           {
-            cZ(j + i);
-            System.arraycopy(arrayOfShort1, this.aAg * k, this.aAo, this.aAu * this.aAg, this.aAg * j);
-            a(i, this.aAg, this.aAo, this.aAu + j, arrayOfShort1, k + j, arrayOfShort1, k);
-            this.aAu += j + i;
+            hn(j + i);
+            System.arraycopy(arrayOfShort1, this.cKa * k, this.cKi, this.cKo * this.cKa, this.cKa * j);
+            a(i, this.cKa, this.cKi, this.cKo + j, arrayOfShort1, k + j, arrayOfShort1, k);
+            this.cKo += j + i;
             i = k + i;
             break;
-            this.aAw = ((int)(j * (2.0F * f - 1.0F) / (1.0F - f)));
+            this.cKq = ((int)(j * (2.0F * f - 1.0F) / (1.0F - f)));
           }
-          a(this.aAm, 0, this.aAt);
-          this.aAt = 0;
+          a(this.cKg, 0, this.cKn);
+          this.cKn = 0;
           break label154;
-          k = this.aAu - n;
-          if (this.aAv + k > this.aAp)
+          k = this.cKo - n;
+          if (this.cKp + k > this.cKj)
           {
-            this.aAp += this.aAp / 2 + k;
-            this.aAq = Arrays.copyOf(this.aAq, this.aAp * this.aAg);
+            this.cKj += this.cKj / 2 + k;
+            this.cKk = Arrays.copyOf(this.cKk, this.cKj * this.cKa);
           }
-          System.arraycopy(this.aAo, this.aAg * n, this.aAq, this.aAv * this.aAg, this.aAg * k);
-          this.aAu = n;
-          this.aAv = (k + this.aAv);
+          System.arraycopy(this.cKi, this.cKa * n, this.cKk, this.cKp * this.cKa, this.cKa * k);
+          this.cKo = n;
+          this.cKp = (k + this.cKp);
           k = 0;
-          if (k < this.aAv - 1)
+          if (k < this.cKp - 1)
           {
-            while ((this.aAr + 1) * j > this.aAs * i)
+            while ((this.cKl + 1) * j > this.cKm * i)
             {
-              cZ(1);
+              hn(1);
               m = 0;
-              while (m < this.aAg)
+              while (m < this.cKa)
               {
-                arrayOfShort1 = this.aAo;
-                n = this.aAu;
-                i1 = this.aAg;
-                short[] arrayOfShort2 = this.aAq;
-                int i3 = this.aAg * k + m;
+                arrayOfShort1 = this.cKi;
+                n = this.cKo;
+                i1 = this.cKa;
+                short[] arrayOfShort2 = this.cKk;
+                int i3 = this.cKa * k + m;
                 int i2 = arrayOfShort2[i3];
-                i3 = arrayOfShort2[(i3 + this.aAg)];
-                int i6 = this.aAs;
-                int i4 = this.aAr;
-                int i5 = (this.aAr + 1) * j;
+                i3 = arrayOfShort2[(i3 + this.cKa)];
+                int i6 = this.cKm;
+                int i4 = this.cKl;
+                int i5 = (this.cKl + 1) * j;
                 i6 = i5 - i6 * i;
                 i4 = i5 - i4 * j;
                 arrayOfShort1[(n * i1 + m)] = ((short)((i3 * (i4 - i6) + i2 * i6) / i4));
                 m += 1;
               }
-              this.aAs += 1;
-              this.aAu += 1;
+              this.cKm += 1;
+              this.cKo += 1;
             }
-            this.aAr += 1;
-            if (this.aAr == i)
+            this.cKl += 1;
+            if (this.cKl == i)
             {
-              this.aAr = 0;
-              if (this.aAs != j) {
+              this.cKl = 0;
+              if (this.cKm != j) {
                 break label1107;
               }
             }
@@ -377,18 +366,18 @@ final class k
             for (boolean bool = true;; bool = false)
             {
               a.checkState(bool);
-              this.aAs = 0;
+              this.cKm = 0;
               k += 1;
               break;
             }
           }
-          i = this.aAv - 1;
+          i = this.cKp - 1;
           if (i != 0)
           {
-            System.arraycopy(this.aAq, this.aAg * i, this.aAq, 0, (this.aAv - i) * this.aAg);
-            this.aAv -= i;
+            System.arraycopy(this.cKk, this.cKa * i, this.cKk, 0, (this.cKp - i) * this.cKa);
+            this.cKp -= i;
           }
-          AppMethodBeat.o(94727);
+          AppMethodBeat.o(91838);
           return;
         }
       }
@@ -396,10 +385,21 @@ final class k
       i = j;
     }
   }
+  
+  final void ho(int paramInt)
+  {
+    AppMethodBeat.i(91835);
+    if (this.cKn + paramInt > this.cKf)
+    {
+      this.cKf += this.cKf / 2 + paramInt;
+      this.cKg = Arrays.copyOf(this.cKg, this.cKf * this.cKa);
+    }
+    AppMethodBeat.o(91835);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.a.k
  * JD-Core Version:    0.7.0.1
  */

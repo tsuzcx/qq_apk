@@ -1,18 +1,18 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.a;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.opengl.a;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class p
-  extends g
+  extends j
 {
   private a r;
   
   public int b(int paramInt)
   {
-    AppMethodBeat.i(146364);
+    AppMethodBeat.i(14968);
     if (this.r == null)
     {
       this.r = new a();
@@ -23,13 +23,13 @@ public class p
     }
     GLES20.glViewport(this.r.a, this.r.b, this.r.c, this.r.d);
     paramInt = super.b(paramInt);
-    AppMethodBeat.o(146364);
+    AppMethodBeat.o(14968);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.p
  * JD-Core Version:    0.7.0.1
  */

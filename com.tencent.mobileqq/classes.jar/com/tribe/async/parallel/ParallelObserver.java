@@ -25,29 +25,28 @@ public abstract class ParallelObserver
     try
     {
       SLog.d("vianhuang.SimpleParallelObserver", "add a function that need be observed. functionCode = %d", new Object[] { paramInteger });
-      if (this.mObserverFunctions.size() == 100) {
-        throw new IllegalStateException("you can't add more than 100 functions.");
+      if (this.mObserverFunctions.size() != 100)
+      {
+        int i = this.mObserverFunctions.size();
+        this.mObserverFunctions.put(paramInteger.intValue(), Integer.valueOf(i));
+        this.mObserverFunctionCount = this.mObserverFunctions.size();
+        return;
       }
+      throw new IllegalStateException("you can't add more than 100 functions.");
     }
     finally {}
-    int i = this.mObserverFunctions.size();
-    this.mObserverFunctions.put(paramInteger.intValue(), Integer.valueOf(i));
-    this.mObserverFunctionCount = this.mObserverFunctions.size();
   }
   
   public <Result> Result getFunctionResult(int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.mObserverFunctionCount) {
-        localObject1 = this.mFunctionResults[paramInt];
-      }
+    Object localObject;
+    if ((paramInt >= 0) && (paramInt < this.mObserverFunctionCount)) {
+      localObject = this.mFunctionResults[paramInt];
+    } else {
+      localObject = null;
     }
-    SLog.i("vianhuang.SimpleParallelObserver", "get the %d function's result is %s.", new Object[] { Integer.valueOf(paramInt), localObject1 });
-    return localObject1;
+    SLog.i("vianhuang.SimpleParallelObserver", "get the %d function's result is %s.", new Object[] { Integer.valueOf(paramInt), localObject });
+    return localObject;
   }
   
   public abstract void onCancel();
@@ -58,65 +57,60 @@ public abstract class ParallelObserver
   
   public final void onOneFunctionErr(Integer paramInteger, @NonNull Error paramError)
   {
-    if (this.mIsCancel) {
-      SLog.d("vianhuang.SimpleParallelObserver", "one function error while stream is cancel.");
-    }
-    for (;;)
+    if (this.mIsCancel)
     {
+      SLog.d("vianhuang.SimpleParallelObserver", "one function error while stream is cancel.");
       return;
-      int i = ((Integer)this.mObserverFunctions.get(paramInteger.intValue())).intValue();
-      int j = this.mObserverFunctionCount;
-      if (i < 0)
+    }
+    int i = ((Integer)this.mObserverFunctions.get(paramInteger.intValue())).intValue();
+    int j = this.mObserverFunctionCount;
+    if (i < 0)
+    {
+      SLog.w("vianhuang.SimpleParallelObserver", "can't find this error function in observing queue, just ignore.");
+      return;
+    }
+    SLog.d("vianhuang.SimpleParallelObserver", "on one function error. functionCode = %d, error = %s.", new Object[] { paramInteger, paramError });
+    try
+    {
+      this.mSuccess = false;
+      this.mObserverFunctions.delete(paramInteger.intValue());
+      onOneFuncErr(j - (i + 1), paramError);
+      if (isAllFunctionComplete())
       {
-        SLog.w("vianhuang.SimpleParallelObserver", "can't find this error function in observing queue, just ignore.");
-        return;
-      }
-      SLog.d("vianhuang.SimpleParallelObserver", "on one function error. functionCode = %d, error = %s.", new Object[] { paramInteger, paramError });
-      try
-      {
-        this.mSuccess = false;
-        this.mObserverFunctions.delete(paramInteger.intValue());
-        onOneFuncErr(j - (i + 1), paramError);
-        if (!isAllFunctionComplete()) {
-          continue;
-        }
         SLog.d("vianhuang.SimpleParallelObserver", "all functions had completed. result = %s.", new Object[] { Boolean.valueOf(this.mSuccess) });
         onAllFunctionComplete(this.mSuccess);
-        return;
       }
-      finally {}
+      return;
     }
+    finally {}
   }
   
   public final void onOneFunctionSuc(Integer paramInteger, Object paramObject)
   {
-    if (this.mIsCancel) {
-      SLog.d("vianhuang.SimpleParallelObserver", "one function success while stream is cancel.");
-    }
-    for (;;)
+    if (this.mIsCancel)
     {
+      SLog.d("vianhuang.SimpleParallelObserver", "one function success while stream is cancel.");
       return;
-      if (this.mObserverFunctions.get(paramInteger.intValue()) == null)
-      {
-        SLog.w("vianhuang.SimpleParallelObserver", "can't find this successful function in observing queue, just ignore.");
-        return;
-      }
-      int i = ((Integer)this.mObserverFunctions.get(paramInteger.intValue())).intValue();
-      i = this.mObserverFunctionCount - (i + 1);
-      SLog.d("vianhuang.SimpleParallelObserver", "on one function success. functionCode = %d, result = %s.", new Object[] { paramInteger, paramObject });
-      try
-      {
-        this.mObserverFunctions.delete(paramInteger.intValue());
-        this.mFunctionResults[i] = paramObject;
-        onOneFuncSuc(i, paramObject);
-        if (!isAllFunctionComplete()) {
-          continue;
-        }
-        onAllFunctionComplete(this.mSuccess);
-        return;
-      }
-      finally {}
     }
+    if (this.mObserverFunctions.get(paramInteger.intValue()) == null)
+    {
+      SLog.w("vianhuang.SimpleParallelObserver", "can't find this successful function in observing queue, just ignore.");
+      return;
+    }
+    int i = ((Integer)this.mObserverFunctions.get(paramInteger.intValue())).intValue();
+    i = this.mObserverFunctionCount - (i + 1);
+    SLog.d("vianhuang.SimpleParallelObserver", "on one function success. functionCode = %d, result = %s.", new Object[] { paramInteger, paramObject });
+    try
+    {
+      this.mObserverFunctions.delete(paramInteger.intValue());
+      this.mFunctionResults[i] = paramObject;
+      onOneFuncSuc(i, paramObject);
+      if (isAllFunctionComplete()) {
+        onAllFunctionComplete(this.mSuccess);
+      }
+      return;
+    }
+    finally {}
   }
   
   public final void onStreamCancel()
@@ -127,7 +121,7 @@ public abstract class ParallelObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.parallel.ParallelObserver
  * JD-Core Version:    0.7.0.1
  */

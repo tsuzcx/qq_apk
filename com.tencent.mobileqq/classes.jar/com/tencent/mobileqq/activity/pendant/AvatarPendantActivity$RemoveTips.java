@@ -17,10 +17,10 @@ class AvatarPendantActivity$RemoveTips
   public void run()
   {
     if (this.b) {
-      this.this$0.b.setVisibility(8);
+      this.this$0.aa.setVisibility(8);
     }
     if (this.a) {
-      this.this$0.a.setVisibility(8);
+      this.this$0.Z.setVisibility(8);
     }
   }
 }

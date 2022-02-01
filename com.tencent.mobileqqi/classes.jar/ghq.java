@@ -1,20 +1,21 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
 
 public class ghq
-  extends GestureDetector.SimpleOnGestureListener
+  extends Handler
 {
-  public ghq(StatusHistoryActivity paramStatusHistoryActivity, int paramInt) {}
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public ghq(StatusHistoryActivity paramStatusHistoryActivity, Looper paramLooper)
   {
-    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    if ((paramFloat1 <= -this.jdField_a_of_type_Int) && (paramFloat2 < 0.5F)) {
-      return StatusHistoryActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusHistoryActivity);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a = false;
     }
-    return false;
   }
 }
 

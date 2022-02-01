@@ -121,25 +121,31 @@ public class ExoMediaPlayer
     paramContext = new ExoMediaPlayer.RendererEventListener(this, null);
     this.mRenderers = new DefaultRendererProvider(this.mAppContext, this.mMainHandler, paramContext, paramContext, paramContext, paramContext).generate();
     this.mMainHandler.post(new ExoMediaPlayer.1(this));
-    try
+    for (;;)
     {
-      for (;;)
+      try
       {
         paramContext = this.mExoPlayer;
         if (paramContext != null) {
           break;
         }
-        try
-        {
-          wait();
-        }
-        catch (InterruptedException paramContext)
-        {
-          Thread.currentThread().interrupt();
-        }
       }
+      finally
+      {
+        continue;
+        throw paramContext;
+        continue;
+      }
+      try
+      {
+        wait();
+      }
+      catch (InterruptedException paramContext)
+      {
+        continue;
+      }
+      Thread.currentThread().interrupt();
     }
-    finally {}
   }
   
   private DataSource.Factory buildDataSourceFactory(DefaultBandwidthMeter paramDefaultBandwidthMeter, String paramString)
@@ -149,10 +155,13 @@ public class ExoMediaPlayer
   
   private DataSource.Factory buildDataSourceFactory(boolean paramBoolean, String paramString)
   {
-    if (paramBoolean) {}
-    for (DefaultBandwidthMeter localDefaultBandwidthMeter = BANDWIDTH_METER;; localDefaultBandwidthMeter = null) {
-      return buildDataSourceFactory(localDefaultBandwidthMeter, paramString);
+    DefaultBandwidthMeter localDefaultBandwidthMeter;
+    if (paramBoolean) {
+      localDefaultBandwidthMeter = BANDWIDTH_METER;
+    } else {
+      localDefaultBandwidthMeter = null;
     }
+    return buildDataSourceFactory(localDefaultBandwidthMeter, paramString);
   }
   
   private HttpDataSource.Factory buildHttpDataSourceFactory(DefaultBandwidthMeter paramDefaultBandwidthMeter, String paramString)
@@ -162,21 +171,34 @@ public class ExoMediaPlayer
   
   private MediaSource buildMediaSource(Context paramContext, Uri paramUri, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (int i = Util.inferContentType(paramUri);; i = Util.inferContentType("." + paramString))
+    int i;
+    if (TextUtils.isEmpty(paramString))
     {
-      paramContext = Util.getUserAgent(paramContext, "ExoMediaPlayer");
-      switch (i)
+      i = Util.inferContentType(paramUri);
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString);
+      i = Util.inferContentType(localStringBuilder.toString());
+    }
+    paramContext = Util.getUserAgent(paramContext, "ExoMediaPlayer");
+    if (i != 2)
+    {
+      if (i == 3)
       {
-      default: 
-        throw new IllegalStateException("Unsupported type: " + i);
+        paramContext = new ExtractorMediaSource.Factory(buildDataSourceFactory(BANDWIDTH_METER, paramContext));
+        paramContext.setContinueLoadingCheckIntervalBytes(2097152);
+        paramContext.setMinLoadableRetryCount(10);
+        return paramContext.createMediaSource(paramUri, this.mMainHandler, this.mMediaSourceEventListener);
       }
+      paramContext = new StringBuilder();
+      paramContext.append("Unsupported type: ");
+      paramContext.append(i);
+      throw new IllegalStateException(paramContext.toString());
     }
     return new HlsMediaSource.Factory(buildDataSourceFactory(BANDWIDTH_METER, paramContext)).createMediaSource(paramUri, this.mMainHandler, this.mMediaSourceEventListener);
-    paramContext = new ExtractorMediaSource.Factory(buildDataSourceFactory(BANDWIDTH_METER, paramContext));
-    paramContext.setContinueLoadingCheckIntervalBytes(2097152);
-    paramContext.setMinLoadableRetryCount(10);
-    return paramContext.createMediaSource(paramUri, this.mMainHandler, this.mMediaSourceEventListener);
   }
   
   private void clearVideoSurface(Surface paramSurface)
@@ -195,12 +217,12 @@ public class ExoMediaPlayer
   
   private void clearVideoSurfaceView(SurfaceView paramSurfaceView)
   {
-    if (paramSurfaceView == null) {}
-    for (paramSurfaceView = null;; paramSurfaceView = paramSurfaceView.getHolder())
-    {
-      clearVideoSurfaceHolder(paramSurfaceView);
-      return;
+    if (paramSurfaceView == null) {
+      paramSurfaceView = null;
+    } else {
+      paramSurfaceView = paramSurfaceView.getHolder();
     }
+    clearVideoSurfaceHolder(paramSurfaceView);
   }
   
   private void clearVideoTextureView(TextureView paramTextureView)
@@ -212,46 +234,53 @@ public class ExoMediaPlayer
   
   private int getBufferedPercentage()
   {
-    if (this.mExoPlayer == null) {
+    ExoPlayer localExoPlayer = this.mExoPlayer;
+    if (localExoPlayer == null) {
       return 0;
     }
-    return this.mExoPlayer.getBufferedPercentage();
+    return localExoPlayer.getBufferedPercentage();
   }
   
   public static ILogger getLogger()
   {
-    if (sLogger == null) {}
-    try
-    {
-      if (sLogger == null) {
-        sLogger = new DefaultLogger();
+    if (sLogger == null) {
+      try
+      {
+        if (sLogger == null) {
+          sLogger = new DefaultLogger();
+        }
       }
-      return sLogger;
+      finally {}
     }
-    finally {}
+    return sLogger;
   }
   
   private void initPlayer()
   {
     DefaultTrackSelector localDefaultTrackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(new DefaultBandwidthMeter()));
     QLoadControl localQLoadControl = new QLoadControl();
-    this.mExoPlayer = ExoPlayerFactory.newInstance((Renderer[])this.mRenderers.toArray(new Renderer[this.mRenderers.size()]), localDefaultTrackSelector, localQLoadControl);
+    List localList = this.mRenderers;
+    this.mExoPlayer = ExoPlayerFactory.newInstance((Renderer[])localList.toArray(new Renderer[localList.size()]), localDefaultTrackSelector, localQLoadControl);
     this.mExoPlayer.addListener(this.mExo2EventListener);
   }
   
   private void notifyOnBufferingUpdate(int paramInt)
   {
-    getLogger().v("ExoMediaPlayer", "notifyOnBufferingUpdate " + paramInt);
+    Object localObject1 = getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyOnBufferingUpdate ");
+    localStringBuilder.append(paramInt);
+    ((ILogger)localObject1).v("ExoMediaPlayer", localStringBuilder.toString());
     try
     {
       if (this.mIsRelease) {
         return;
       }
-      if (this.mOnBufferingUpdateListener != null)
-      {
-        this.mOnBufferingUpdateListener.onBufferingUpdate(this, paramInt);
-        return;
+      localObject1 = this.mOnBufferingUpdateListener;
+      if (localObject1 != null) {
+        ((MediaPlayerInterface.OnBufferingUpdateListener)localObject1).onBufferingUpdate(this, paramInt);
       }
+      return;
     }
     finally {}
   }
@@ -264,25 +293,41 @@ public class ExoMediaPlayer
       if (this.mIsRelease) {
         return;
       }
-      if (this.mOnCompletionListener != null)
-      {
-        this.mOnCompletionListener.onCompletion(this);
-        return;
+      MediaPlayerInterface.OnCompletionListener localOnCompletionListener = this.mOnCompletionListener;
+      if (localOnCompletionListener != null) {
+        localOnCompletionListener.onCompletion(this);
       }
+      return;
     }
     finally {}
   }
   
   private boolean notifyOnError(int paramInt1, int paramInt2)
   {
-    getLogger().d("ExoMediaPlayer", "notifyOnError [" + paramInt1 + "," + paramInt2 + "]");
-    return (this.mOnErrorListener != null) && (this.mOnErrorListener.onError(this, paramInt1, paramInt2));
+    Object localObject = getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyOnError [");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    ((ILogger)localObject).d("ExoMediaPlayer", localStringBuilder.toString());
+    localObject = this.mOnErrorListener;
+    return (localObject != null) && (((MediaPlayerInterface.OnErrorListener)localObject).onError(this, paramInt1, paramInt2));
   }
   
   private boolean notifyOnInfo(int paramInt1, int paramInt2)
   {
-    getLogger().d("ExoMediaPlayer", "notifyOnInfo [" + paramInt1 + "," + paramInt2 + "]");
-    return (this.mOnInfoListener != null) && (this.mOnInfoListener.onInfo(this, paramInt1, paramInt2));
+    Object localObject = getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyOnInfo [");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    ((ILogger)localObject).d("ExoMediaPlayer", localStringBuilder.toString());
+    localObject = this.mOnInfoListener;
+    return (localObject != null) && (((MediaPlayerInterface.OnInfoListener)localObject).onInfo(this, paramInt1, paramInt2));
   }
   
   private void notifyOnPrepared()
@@ -293,11 +338,11 @@ public class ExoMediaPlayer
       if (this.mIsRelease) {
         return;
       }
-      if (this.mOnPreparedListener != null)
-      {
-        this.mOnPreparedListener.onPrepared(this);
-        return;
+      MediaPlayerInterface.OnPreparedListener localOnPreparedListener = this.mOnPreparedListener;
+      if (localOnPreparedListener != null) {
+        localOnPreparedListener.onPrepared(this);
       }
+      return;
     }
     finally {}
   }
@@ -310,52 +355,56 @@ public class ExoMediaPlayer
       if (this.mIsRelease) {
         return;
       }
-      if (this.mOnSeekCompleteListener != null)
-      {
-        this.mOnSeekCompleteListener.onSeekComplete(this);
-        return;
+      MediaPlayerInterface.OnSeekCompleteListener localOnSeekCompleteListener = this.mOnSeekCompleteListener;
+      if (localOnSeekCompleteListener != null) {
+        localOnSeekCompleteListener.onSeekComplete(this);
       }
+      return;
     }
     finally {}
   }
   
   private void notifyOnVideoSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    getLogger().v("ExoMediaPlayer", "notifyOnVideoSizeChanged [" + paramInt1 + "," + paramInt2 + "]");
+    Object localObject1 = getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyOnVideoSizeChanged [");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    ((ILogger)localObject1).v("ExoMediaPlayer", localStringBuilder.toString());
     try
     {
       if (this.mIsRelease) {
         return;
       }
-      if (this.mOnVideoSizeChangedListener != null)
-      {
-        this.mOnVideoSizeChangedListener.onVideoSizeChanged(this, paramInt1, paramInt2);
-        return;
+      localObject1 = this.mOnVideoSizeChangedListener;
+      if (localObject1 != null) {
+        ((MediaPlayerInterface.OnVideoSizeChangedListener)localObject1).onVideoSizeChanged(this, paramInt1, paramInt2);
       }
+      return;
     }
     finally {}
   }
   
   private void removeSurfaceCallbacks()
   {
-    if (this.mTextureView != null)
+    Object localObject = this.mTextureView;
+    if (localObject != null)
     {
-      if (this.mTextureView.getSurfaceTextureListener() == this.mSurfaceListener) {
-        break label66;
+      if (((TextureView)localObject).getSurfaceTextureListener() != this.mSurfaceListener) {
+        getLogger().w("ExoMediaPlayer", "SurfaceTextureListener already unset or replaced");
+      } else {
+        this.mTextureView.setSurfaceTextureListener(null);
       }
-      getLogger().w("ExoMediaPlayer", "SurfaceTextureListener already unset or replaced");
-    }
-    for (;;)
-    {
       this.mTextureView = null;
-      if (this.mSurfaceHolder != null)
-      {
-        this.mSurfaceHolder.removeCallback(this.mSurfaceListener);
-        this.mSurfaceHolder = null;
-      }
-      return;
-      label66:
-      this.mTextureView.setSurfaceTextureListener(null);
+    }
+    localObject = this.mSurfaceHolder;
+    if (localObject != null)
+    {
+      ((SurfaceHolder)localObject).removeCallback(this.mSurfaceListener);
+      this.mSurfaceHolder = null;
     }
   }
   
@@ -366,70 +415,82 @@ public class ExoMediaPlayer
       int j;
       try
       {
-        if (this.mExoPlayer != null)
+        if ((this.mExoPlayer != null) && (!this.mIsRelease))
         {
-          bool = this.mIsRelease;
-          if (!bool) {}
+          boolean bool1 = this.mExoPlayer.getPlayWhenReady();
+          int i = this.mExoPlayer.getPlaybackState();
+          j = this.mStateStore.getState(bool1, i);
+          if (j != this.mStateStore.getMostRecentState())
+          {
+            ILogger localILogger = getLogger();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("setMostRecentState [");
+            localStringBuilder.append(bool1);
+            localStringBuilder.append(",");
+            localStringBuilder.append(i);
+            localStringBuilder.append("]");
+            localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
+            this.mStateStore.setMostRecentState(bool1, i);
+            if (j != 3) {
+              break label513;
+            }
+            setBufferRepeaterStarted(true);
+            continue;
+            setBufferRepeaterStarted(false);
+            if (j == this.mStateStore.getState(true, 4))
+            {
+              if (isLooping())
+              {
+                getLogger().i("ExoMediaPlayer", "looping play start");
+                this.mLoopingPlaySeek = true;
+                seekTo(0L);
+                if (this.mOnLoopStartListener != null) {
+                  this.mOnLoopStartListener.onLoopStart(this);
+                }
+              }
+              else
+              {
+                notifyOnCompletion();
+              }
+              return;
+            }
+            if (this.mStateStore.matchesHistory(new int[] { this.mStateStore.getState(false, 1), this.mStateStore.getState(false, 2), this.mStateStore.getState(false, 3) }, false))
+            {
+              notifyOnPrepared();
+              return;
+            }
+            bool1 = this.mStateStore.matchesHistory(new int[] { 100, 2, 3 }, true);
+            boolean bool2 = this.mStateStore.matchesHistory(new int[] { 2, 100, 3 }, true);
+            if ((this.mStateStore.matchesHistory(new int[] { 100, 3, 2, 3 }, true) | bool1 | bool2))
+            {
+              if (!this.mLoopingPlaySeek) {
+                notifyOnSeekComplete();
+              } else {
+                this.mLoopingPlaySeek = false;
+              }
+              return;
+            }
+            if (this.mStateStore.matchesHistory(new int[] { this.mStateStore.getState(true, 3), this.mStateStore.getState(true, 2) }, false))
+            {
+              notifyOnInfo(701, getBufferedPercentage());
+              return;
+            }
+            if (this.mStateStore.matchesHistory(new int[] { this.mStateStore.getState(true, 2), this.mStateStore.getState(true, 3) }, false))
+            {
+              notifyOnInfo(702, getBufferedPercentage());
+              return;
+            }
+          }
         }
         else
         {
           return;
         }
-        boolean bool = this.mExoPlayer.getPlayWhenReady();
-        int i = this.mExoPlayer.getPlaybackState();
-        j = this.mStateStore.getState(bool, i);
-        if (j == this.mStateStore.getMostRecentState()) {
-          continue;
-        }
-        getLogger().d("ExoMediaPlayer", "setMostRecentState [" + bool + "," + i + "]");
-        this.mStateStore.setMostRecentState(bool, i);
-        if (j == 3)
-        {
-          setBufferRepeaterStarted(true);
-          if (j != this.mStateStore.getState(true, 4)) {
-            break label224;
-          }
-          if (!isLooping()) {
-            break label217;
-          }
-          getLogger().i("ExoMediaPlayer", "looping play start");
-          this.mLoopingPlaySeek = true;
-          seekTo(0L);
-          if (this.mOnLoopStartListener == null) {
-            continue;
-          }
-          this.mOnLoopStartListener.onLoopStart(this);
-          continue;
-        }
-        if (j == 1) {
-          break label209;
-        }
       }
       finally {}
-      if (j == 4)
-      {
-        label209:
-        setBufferRepeaterStarted(false);
-        continue;
-        label217:
-        notifyOnCompletion();
-        continue;
-        label224:
-        if (this.mStateStore.matchesHistory(new int[] { this.mStateStore.getState(false, 1), this.mStateStore.getState(false, 2), this.mStateStore.getState(false, 3) }, false)) {
-          notifyOnPrepared();
-        } else if ((this.mStateStore.matchesHistory(new int[] { 100, 2, 3 }, true) | this.mStateStore.matchesHistory(new int[] { 2, 100, 3 }, true) | this.mStateStore.matchesHistory(new int[] { 100, 3, 2, 3 }, true)))
-        {
-          if (!this.mLoopingPlaySeek) {
-            notifyOnSeekComplete();
-          } else {
-            this.mLoopingPlaySeek = false;
-          }
-        }
-        else if (this.mStateStore.matchesHistory(new int[] { this.mStateStore.getState(true, 3), this.mStateStore.getState(true, 2) }, false)) {
-          notifyOnInfo(701, getBufferedPercentage());
-        } else if (this.mStateStore.matchesHistory(new int[] { this.mStateStore.getState(true, 2), this.mStateStore.getState(true, 3) }, false)) {
-          notifyOnInfo(702, getBufferedPercentage());
-        }
+      label513:
+      if (j != 1) {
+        if (j != 4) {}
       }
     }
   }
@@ -463,7 +524,11 @@ public class ExoMediaPlayer
   
   private void setBufferRepeaterStarted(boolean paramBoolean)
   {
-    getLogger().d("ExoMediaPlayer", "setBufferRepeaterStarted " + paramBoolean);
+    ILogger localILogger = getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setBufferRepeaterStarted ");
+    localStringBuilder.append(paramBoolean);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
     if ((paramBoolean) && (this.mOnBufferingUpdateListener != null))
     {
       this.mBufferUpdateRepeater.start();
@@ -489,10 +554,11 @@ public class ExoMediaPlayer
       getLogger().w("ExoMediaPlayer", "call setVideoSurfaceInternal after release");
       return;
     }
-    if ((this.mSurface != null) && (this.mSurface != paramSurface) && (paramSurface != null))
+    Surface localSurface = this.mSurface;
+    if ((localSurface != null) && (localSurface != paramSurface) && (paramSurface != null))
     {
       if (this.mOwnsSurface) {
-        this.mSurface.release();
+        localSurface.release();
       }
       sendMessage(2, 1, paramSurface, true);
       long l = this.mExoPlayer.getCurrentPosition();
@@ -500,31 +566,30 @@ public class ExoMediaPlayer
         this.mMainHandler.postDelayed(new ExoMediaPlayer.2(this, l), 200L);
       }
     }
-    for (;;)
+    else
     {
-      this.mSurface = paramSurface;
-      this.mOwnsSurface = paramBoolean;
-      updateSurfaceScreenOn();
-      return;
       sendMessage(2, 1, paramSurface, false);
     }
+    this.mSurface = paramSurface;
+    this.mOwnsSurface = paramBoolean;
+    updateSurfaceScreenOn();
   }
   
   private void setVideoSurfaceView(SurfaceView paramSurfaceView)
   {
-    if (paramSurfaceView == null) {}
-    for (paramSurfaceView = null;; paramSurfaceView = paramSurfaceView.getHolder())
-    {
-      setDisplay(paramSurfaceView);
-      return;
+    if (paramSurfaceView == null) {
+      paramSurfaceView = null;
+    } else {
+      paramSurfaceView = paramSurfaceView.getHolder();
     }
+    setDisplay(paramSurfaceView);
   }
   
   private void setVideoTextureView(TextureView paramTextureView)
   {
-    Surface localSurface = null;
     removeSurfaceCallbacks();
     this.mTextureView = paramTextureView;
+    Surface localSurface = null;
     if (paramTextureView == null)
     {
       setVideoSurfaceInternal(null, true);
@@ -534,64 +599,59 @@ public class ExoMediaPlayer
       getLogger().w("ExoMediaPlayer", "Replacing existing SurfaceTextureListener");
     }
     SurfaceTexture localSurfaceTexture = paramTextureView.getSurfaceTexture();
-    if (localSurfaceTexture == null) {}
-    for (;;)
-    {
-      setVideoSurfaceInternal(localSurface, true);
-      paramTextureView.setSurfaceTextureListener(this.mSurfaceListener);
-      return;
+    if (localSurfaceTexture != null) {
       localSurface = new Surface(localSurfaceTexture);
     }
+    setVideoSurfaceInternal(localSurface, true);
+    paramTextureView.setSurfaceTextureListener(this.mSurfaceListener);
   }
   
   private void stayAwake(boolean paramBoolean)
   {
-    if (this.mWakeLock != null)
-    {
-      if ((!paramBoolean) || (this.mWakeLock.isHeld())) {
-        break label38;
-      }
-      this.mWakeLock.acquire();
-    }
-    for (;;)
-    {
-      this.mStayAwake = paramBoolean;
-      updateSurfaceScreenOn();
-      return;
-      label38:
-      if ((!paramBoolean) && (this.mWakeLock.isHeld())) {
+    PowerManager.WakeLock localWakeLock = this.mWakeLock;
+    if (localWakeLock != null) {
+      if ((paramBoolean) && (!localWakeLock.isHeld())) {
+        this.mWakeLock.acquire();
+      } else if ((!paramBoolean) && (this.mWakeLock.isHeld())) {
         this.mWakeLock.release();
       }
     }
+    this.mStayAwake = paramBoolean;
+    updateSurfaceScreenOn();
   }
   
   public static void updateLoadControlConfig(QLoadControl.Config paramConfig)
   {
-    getLogger().d("ExoMediaPlayer", "updateLoadControlConfig " + paramConfig);
+    ILogger localILogger = getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateLoadControlConfig ");
+    localStringBuilder.append(paramConfig);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
     QLoadControl.updateConfig(paramConfig);
   }
   
   public static void updateLoadControlConfig(String paramString)
   {
-    getLogger().d("ExoMediaPlayer", "updateLoadControlConfig " + paramString);
+    ILogger localILogger = getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateLoadControlConfig ");
+    localStringBuilder.append(paramString);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
     QLoadControl.updateConfig(paramString);
   }
   
   private void updateSurfaceScreenOn()
   {
-    SurfaceHolder localSurfaceHolder;
-    if (this.mSurfaceHolder != null)
+    SurfaceHolder localSurfaceHolder = this.mSurfaceHolder;
+    if (localSurfaceHolder != null)
     {
-      localSurfaceHolder = this.mSurfaceHolder;
-      if ((!this.mScreenOnWhilePlaying) || (!this.mStayAwake)) {
-        break label36;
+      boolean bool;
+      if ((this.mScreenOnWhilePlaying) && (this.mStayAwake)) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label36:
-    for (boolean bool = true;; bool = false)
-    {
       localSurfaceHolder.setKeepScreenOn(bool);
-      return;
     }
   }
   
@@ -612,16 +672,18 @@ public class ExoMediaPlayer
   
   public double getAudioDuration()
   {
-    if (this.mAudioFrameManager != null) {
-      return this.mAudioFrameManager.getDuration();
+    AudioFrameManager localAudioFrameManager = this.mAudioFrameManager;
+    if (localAudioFrameManager != null) {
+      return localAudioFrameManager.getDuration();
     }
     return 0.0D;
   }
   
   public double getAudioEnergy()
   {
-    if (this.mAudioFrameManager != null) {
-      return this.mAudioFrameManager.getAudioEnergy();
+    AudioFrameManager localAudioFrameManager = this.mAudioFrameManager;
+    if (localAudioFrameManager != null) {
+      return localAudioFrameManager.getAudioEnergy();
     }
     return 0.0D;
   }
@@ -633,11 +695,12 @@ public class ExoMediaPlayer
   
   public double getAudioLevel()
   {
+    AudioFrameManager localAudioFrameManager = this.mAudioFrameManager;
     double d1 = 0.0D;
     double d2 = d1;
-    if (this.mAudioFrameManager != null)
+    if (localAudioFrameManager != null)
     {
-      d2 = this.mAudioFrameManager.getDuration() - this.mLastAudioLevelDuration;
+      d2 = localAudioFrameManager.getDuration() - this.mLastAudioLevelDuration;
       if (d2 > 0.0D) {
         d1 = Math.sqrt((this.mAudioFrameManager.getAudioEnergy() - this.mLastAudioLevelEnergy) / d2);
       }
@@ -655,29 +718,37 @@ public class ExoMediaPlayer
   
   public long getCurrentPosition()
   {
-    if (this.mExoPlayer == null) {
+    ExoPlayer localExoPlayer = this.mExoPlayer;
+    long l = 0L;
+    if (localExoPlayer == null) {
       return 0L;
     }
     if (this.mClipDurations.size() > 0)
     {
       int i = this.mExoPlayer.getCurrentWindowIndex();
-      for (long l = 0L; i > 0; l = ((Long)this.mClipDurations.get(i)).longValue() + l) {
+      while (i > 0)
+      {
         i -= 1;
+        l += ((Long)this.mClipDurations.get(i)).longValue();
       }
-      return this.mExoPlayer.getCurrentPosition() + l;
+      return l + this.mExoPlayer.getCurrentPosition();
     }
     return this.mExoPlayer.getCurrentPosition();
   }
   
   public long getDuration()
   {
-    if (this.mExoPlayer == null) {
+    Object localObject = this.mExoPlayer;
+    long l = 0L;
+    if (localObject == null) {
       return 0L;
     }
     if (this.mClipDurations.size() > 0)
     {
-      Iterator localIterator = this.mClipDurations.iterator();
-      for (long l = 0L; localIterator.hasNext(); l = ((Long)localIterator.next()).longValue() + l) {}
+      localObject = this.mClipDurations.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        l += ((Long)((Iterator)localObject).next()).longValue();
+      }
       return l;
     }
     return this.mExoPlayer.getDuration();
@@ -710,35 +781,43 @@ public class ExoMediaPlayer
   
   public boolean isPlaying()
   {
-    if (this.mExoPlayer == null) {}
-    do
-    {
+    ExoPlayer localExoPlayer = this.mExoPlayer;
+    if (localExoPlayer == null) {
       return false;
-      switch (this.mExoPlayer.getPlaybackState())
+    }
+    int i = localExoPlayer.getPlaybackState();
+    if (i != 1)
+    {
+      if (i != 2)
       {
-      default: 
-        return false;
-      case 1: 
-      case 3: 
-        return this.mExoPlayer.getPlayWhenReady();
+        if (i == 3) {
+          break label51;
+        }
+        if (i != 4) {
+          return false;
+        }
       }
-    } while (!this.mIsLooping);
-    return true;
+      return this.mIsLooping;
+    }
+    label51:
+    return this.mExoPlayer.getPlayWhenReady();
   }
   
   public void pause()
   {
-    if (this.mExoPlayer == null) {
+    ExoPlayer localExoPlayer = this.mExoPlayer;
+    if (localExoPlayer == null) {
       return;
     }
-    this.mExoPlayer.setPlayWhenReady(false);
+    localExoPlayer.setPlayWhenReady(false);
   }
   
   public void prepareAsync()
   {
     getLogger().v("ExoMediaPlayer", "prepareAsync");
-    if (this.mSurface != null) {
-      setSurface(this.mSurface);
+    Surface localSurface = this.mSurface;
+    if (localSurface != null) {
+      setSurface(localSurface);
     }
     if (this.mIsLooping) {
       getLogger().v("ExoMediaPlayer", "looping play video");
@@ -800,9 +879,10 @@ public class ExoMediaPlayer
     if (this.mExoPlayer != null)
     {
       setBufferRepeaterStarted(false);
-      if (this.mExoPlayer != null)
+      ExoPlayer localExoPlayer = this.mExoPlayer;
+      if (localExoPlayer != null)
       {
-        this.mExoPlayer.setPlayWhenReady(false);
+        localExoPlayer.setPlayWhenReady(false);
         this.mExoPlayer.stop(true);
       }
       this.mIsLooping = false;
@@ -819,29 +899,24 @@ public class ExoMediaPlayer
     if (this.mExoPlayer == null) {
       return;
     }
-    int i;
     if (this.mClipDurations.size() > 0)
     {
       long l = 0L;
-      i = 0;
-      if (i < this.mClipDurations.size())
+      int i = 0;
+      while (i < this.mClipDurations.size())
       {
         l += ((Long)this.mClipDurations.get(i)).longValue();
-        if (l <= paramLong) {
-          break label106;
+        if (l > paramLong)
+        {
+          this.mExoPlayer.seekTo(i, paramLong - l + ((Long)this.mClipDurations.get(i)).longValue());
+          break;
         }
-        this.mExoPlayer.seekTo(i, paramLong - l + ((Long)this.mClipDurations.get(i)).longValue());
+        i += 1;
       }
     }
-    for (;;)
-    {
-      this.mStateStore.setMostRecentState(this.mStateStore.isLastReportedPlayWhenReady(), 100);
-      return;
-      label106:
-      i += 1;
-      break;
-      this.mExoPlayer.seekTo(paramLong);
-    }
+    this.mExoPlayer.seekTo(paramLong);
+    ExoMediaPlayer.StateStore localStateStore = this.mStateStore;
+    localStateStore.setMostRecentState(localStateStore.isLastReportedPlayWhenReady(), 100);
   }
   
   public void setAudioEventListener(MediaPlayerInterface.AudioEventListener paramAudioEventListener)
@@ -891,19 +966,30 @@ public class ExoMediaPlayer
     {
       Object localObject = (VideoMeta)paramList.next();
       long l2 = ((VideoMeta)localObject).startPosition * 1000L;
-      if (((VideoMeta)localObject).endPosition == -1L) {}
-      for (long l1 = ((VideoMeta)localObject).duration;; l1 = ((VideoMeta)localObject).endPosition)
-      {
-        l1 *= 1000L;
-        if (l1 > l2) {
-          break;
-        }
-        throw new IllegalArgumentException("wrong range [" + l2 + "," + l1 + "]");
+      long l1;
+      if (((VideoMeta)localObject).endPosition == -1L) {
+        l1 = ((VideoMeta)localObject).duration;
+      } else {
+        l1 = ((VideoMeta)localObject).endPosition;
       }
-      long l3 = (l1 - l2) / 1000L;
-      this.mClipDurations.add(Long.valueOf(l3));
-      localObject = buildMediaSource(this.mAppContext, Uri.parse(((VideoMeta)localObject).uri), null);
-      ((DynamicConcatenatingMediaSource)this.mMediaSource).addMediaSource(new ClippingMediaSource((MediaSource)localObject, l2, l1));
+      l1 *= 1000L;
+      if (l1 > l2)
+      {
+        long l3 = (l1 - l2) / 1000L;
+        this.mClipDurations.add(Long.valueOf(l3));
+        localObject = buildMediaSource(this.mAppContext, Uri.parse(((VideoMeta)localObject).uri), null);
+        ((DynamicConcatenatingMediaSource)this.mMediaSource).addMediaSource(new ClippingMediaSource((MediaSource)localObject, l2, l1));
+      }
+      else
+      {
+        paramList = new StringBuilder();
+        paramList.append("wrong range [");
+        paramList.append(l2);
+        paramList.append(",");
+        paramList.append(l1);
+        paramList.append("]");
+        throw new IllegalArgumentException(paramList.toString());
+      }
     }
   }
   
@@ -928,23 +1014,31 @@ public class ExoMediaPlayer
   public void setLooping(boolean paramBoolean)
   {
     this.mIsLooping = paramBoolean;
-    getLogger().i("ExoMediaPlayer", "setLooping " + this.mIsLooping);
+    ILogger localILogger = getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setLooping ");
+    localStringBuilder.append(this.mIsLooping);
+    localILogger.i("ExoMediaPlayer", localStringBuilder.toString());
   }
   
   public void setNextMediaPlayer(MediaPlayerInterface paramMediaPlayerInterface)
   {
-    throw new UnsupportedOperationException("setNextMediaPlayer is not supported by " + ExoMediaPlayer.class.getSimpleName());
+    paramMediaPlayerInterface = new StringBuilder();
+    paramMediaPlayerInterface.append("setNextMediaPlayer is not supported by ");
+    paramMediaPlayerInterface.append(ExoMediaPlayer.class.getSimpleName());
+    throw new UnsupportedOperationException(paramMediaPlayerInterface.toString());
   }
   
   public void setOnBufferingUpdateListener(MediaPlayerInterface.OnBufferingUpdateListener paramOnBufferingUpdateListener)
   {
     this.mOnBufferingUpdateListener = paramOnBufferingUpdateListener;
-    if (paramOnBufferingUpdateListener != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setBufferRepeaterStarted(bool);
-      return;
+    boolean bool;
+    if (paramOnBufferingUpdateListener != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    setBufferRepeaterStarted(bool);
   }
   
   public void setOnCompletionListener(MediaPlayerInterface.OnCompletionListener paramOnCompletionListener)
@@ -1003,8 +1097,9 @@ public class ExoMediaPlayer
   
   public void setSeekParameters(SeekParameters paramSeekParameters)
   {
-    if (this.mExoPlayer != null) {
-      this.mExoPlayer.setSeekParameters(paramSeekParameters);
+    ExoPlayer localExoPlayer = this.mExoPlayer;
+    if (localExoPlayer != null) {
+      localExoPlayer.setSeekParameters(paramSeekParameters);
     }
   }
   
@@ -1024,66 +1119,73 @@ public class ExoMediaPlayer
   
   public void setWakeMode(Context paramContext, int paramInt)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if (this.mWakeLock != null)
+    PowerManager.WakeLock localWakeLock = this.mWakeLock;
+    boolean bool;
+    if (localWakeLock != null)
     {
-      bool1 = bool2;
-      if (this.mWakeLock.isHeld())
+      if (localWakeLock.isHeld())
       {
-        bool1 = true;
+        bool = true;
         this.mWakeLock.release();
       }
+      else
+      {
+        bool = false;
+      }
       this.mWakeLock = null;
+    }
+    else
+    {
+      bool = false;
     }
     try
     {
       if (paramContext.getPackageManager().checkPermission("android.permission.WAKE_LOCK", paramContext.getPackageName()) == 0)
       {
-        this.mWakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(0x20000000 | paramInt, ExoMediaPlayer.class.getName());
+        this.mWakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(paramInt | 0x20000000, ExoMediaPlayer.class.getName());
         this.mWakeLock.setReferenceCounted(false);
       }
-      for (;;)
+      else
       {
-        stayAwake(bool1);
-        return;
         getLogger().w("ExoMediaPlayer", "Unable to acquire WAKE_LOCK due to missing manifest permission");
       }
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        getLogger().w("ExoMediaPlayer", "Unable to acquire WAKE_LOCK ", paramContext);
-      }
+      getLogger().w("ExoMediaPlayer", "Unable to acquire WAKE_LOCK ", paramContext);
     }
+    stayAwake(bool);
   }
   
   public void start()
   {
-    if (this.mExoPlayer == null) {}
-    do
-    {
+    ExoPlayer localExoPlayer = this.mExoPlayer;
+    if (localExoPlayer == null) {
       return;
-      this.mExoPlayer.setPlayWhenReady(true);
-    } while ((this.mFirstFrameDecodedEventSent) || (!this.mFirstFrameDecoded));
-    notifyOnInfo(3, 0);
-    this.mFirstFrameDecodedEventSent = true;
+    }
+    localExoPlayer.setPlayWhenReady(true);
+    if ((!this.mFirstFrameDecodedEventSent) && (this.mFirstFrameDecoded))
+    {
+      notifyOnInfo(3, 0);
+      this.mFirstFrameDecodedEventSent = true;
+    }
   }
   
   public void stop()
   {
-    if (this.mExoPlayer == null) {}
-    while (this.mStopped.getAndSet(true)) {
+    if (this.mExoPlayer == null) {
       return;
     }
-    this.mExoPlayer.setPlayWhenReady(false);
-    this.mExoPlayer.stop();
+    if (!this.mStopped.getAndSet(true))
+    {
+      this.mExoPlayer.setPlayWhenReady(false);
+      this.mExoPlayer.stop();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.mediaplayer.ExoMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

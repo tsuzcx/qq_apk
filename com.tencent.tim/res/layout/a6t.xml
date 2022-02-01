@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="top" android:orientation="horizontal" android:id="@id/hwr" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+        <LinearLayout android:id="@id/hws" android:background="@null" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView android:id="@id/hvp" android:paddingRight="3.5dip" android:paddingBottom="3.5dip" android:layout_width="43.0dip" android:layout_height="43.0dip">
+                <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/hwf" android:background="@drawable/zw" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/f_h" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+                <ImageView android:id="@id/hwp" android:background="@drawable/dp9" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="5.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+            </com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView>
+            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/hwg" android:background="@drawable/zw" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="7.0dip" android:src="@drawable/f_h" android:scaleType="fitXY" />
+            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/hwh" android:background="@drawable/zw" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="7.0dip" android:src="@drawable/f_h" android:scaleType="centerCrop" />
+            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/hwi" android:background="@drawable/zw" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="7.0dip" android:src="@drawable/f_h" android:scaleType="centerCrop" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/hww" android:paddingTop="15.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+                <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@drawable/zv" android:ellipsize="end" android:id="@id/hwv" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ptz" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+                <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/hwm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/pzs" android:lines="1" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" />
+            </LinearLayout>
+            <TextView android:textSize="12.0dip" android:textColor="#ff9d9d9d" android:ellipsize="end" android:id="@id/hwu" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="5分钟前" android:lines="1" android:includeFontPadding="false" />
+        </LinearLayout>
+        <Button android:state_enabled="false" android:id="@id/ahf" style="@style/hi" />
+        <com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest android:layout_gravity="center_vertical" android:id="@id/fao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" />
+    </LinearLayout>
+    <ImageView android:id="@id/dya" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="60.0dip" android:src="@drawable/gl8" android:layout_alignParentRight="true" />
+</RelativeLayout>

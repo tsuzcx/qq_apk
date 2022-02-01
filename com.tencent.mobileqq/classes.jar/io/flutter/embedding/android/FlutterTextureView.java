@@ -1,31 +1,27 @@
 package io.flutter.embedding.android;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.Log;
 import io.flutter.embedding.engine.renderer.FlutterRenderer;
-import io.flutter.embedding.engine.renderer.FlutterRenderer.RenderSurface;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import io.flutter.embedding.engine.renderer.RenderSurface;
 
 public class FlutterTextureView
   extends TextureView
-  implements FlutterRenderer.RenderSurface
+  implements RenderSurface
 {
   private static final String TAG = "FlutterTextureView";
   @Nullable
   private FlutterRenderer flutterRenderer;
   private boolean isAttachedToFlutterRenderer = false;
   private boolean isSurfaceAvailableForRendering = false;
-  @NonNull
-  private Set<OnFirstFrameRenderedListener> onFirstFrameRenderedListeners = new HashSet();
+  @Nullable
+  private Surface renderSurface;
   private final TextureView.SurfaceTextureListener surfaceTextureListener = new FlutterTextureView.1(this);
   
   public FlutterTextureView(@NonNull Context paramContext)
@@ -59,7 +55,8 @@ public class FlutterTextureView
   {
     if ((this.flutterRenderer != null) && (getSurfaceTexture() != null))
     {
-      this.flutterRenderer.surfaceCreated(new Surface(getSurfaceTexture()));
+      this.renderSurface = new Surface(getSurfaceTexture());
+      this.flutterRenderer.startRenderingToSurface(this.renderSurface);
       return;
     }
     throw new IllegalStateException("connectSurfaceToRenderer() should only be called when flutterRenderer and getSurfaceTexture() are non-null.");
@@ -67,9 +64,16 @@ public class FlutterTextureView
   
   private void disconnectSurfaceFromRenderer()
   {
-    if (this.flutterRenderer != null)
+    Object localObject = this.flutterRenderer;
+    if (localObject != null)
     {
-      this.flutterRenderer.surfaceDestroyed();
+      ((FlutterRenderer)localObject).stopRenderingToSurface();
+      localObject = this.renderSurface;
+      if (localObject != null)
+      {
+        ((Surface)localObject).release();
+        this.renderSurface = null;
+      }
       return;
     }
     throw new IllegalStateException("disconnectSurfaceFromRenderer() should only be called when flutterRenderer is non-null.");
@@ -80,18 +84,13 @@ public class FlutterTextureView
     setSurfaceTextureListener(this.surfaceTextureListener);
   }
   
-  public void addOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
-  {
-    this.onFirstFrameRenderedListeners.add(paramOnFirstFrameRenderedListener);
-  }
-  
   public void attachToRenderer(@NonNull FlutterRenderer paramFlutterRenderer)
   {
     Log.v("FlutterTextureView", "Attaching to FlutterRenderer.");
     if (this.flutterRenderer != null)
     {
       Log.v("FlutterTextureView", "Already connected to a FlutterRenderer. Detaching from old one and attaching to new one.");
-      this.flutterRenderer.detachFromRenderSurface();
+      this.flutterRenderer.stopRenderingToSurface();
     }
     this.flutterRenderer = paramFlutterRenderer;
     this.isAttachedToFlutterRenderer = true;
@@ -118,23 +117,26 @@ public class FlutterTextureView
     Log.w("FlutterTextureView", "detachFromRenderer() invoked when no FlutterRenderer was attached.");
   }
   
-  public void onFirstFrameRendered()
+  @Nullable
+  public FlutterRenderer getAttachedRenderer()
   {
-    Log.v("FlutterTextureView", "onFirstFrameRendered()");
-    Iterator localIterator = this.onFirstFrameRenderedListeners.iterator();
-    while (localIterator.hasNext()) {
-      ((OnFirstFrameRenderedListener)localIterator.next()).onFirstFrameRendered();
-    }
+    return this.flutterRenderer;
   }
   
-  public void removeOnFirstFrameRenderedListener(@NonNull OnFirstFrameRenderedListener paramOnFirstFrameRenderedListener)
+  public void pause()
   {
-    this.onFirstFrameRenderedListeners.remove(paramOnFirstFrameRenderedListener);
+    if (this.flutterRenderer != null)
+    {
+      this.flutterRenderer = null;
+      this.isAttachedToFlutterRenderer = false;
+      return;
+    }
+    Log.w("FlutterTextureView", "pause() invoked when no FlutterRenderer was attached.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterTextureView
  * JD-Core Version:    0.7.0.1
  */

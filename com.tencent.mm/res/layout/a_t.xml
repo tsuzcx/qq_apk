@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="@dimen/oe" android:textColor="@color/h6" android:ellipsize="end" android:gravity="center|right" android:id="@id/d8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textCursorDrawable="@drawable/m0" />
+<RelativeLayout android:id="@id/iwl" android:background="@color/n0" android:paddingTop="@dimen/b7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/gl6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/iix" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <TextView android:gravity="center_horizontal" android:id="@id/hgy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cj" android:text="@string/eng" style="@style/zo" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <ProgressBar android:background="@color/ahb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:indeterminateDrawable="@drawable/ang" />
     </LinearLayout>
-</merge>
+</RelativeLayout>

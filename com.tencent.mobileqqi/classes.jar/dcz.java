@@ -1,74 +1,45 @@
-import android.os.AsyncTask;
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
 import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.utils.ReverseGeocode;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 
 public class dcz
-  extends AsyncTask
+  extends SOSOMapLBSApiListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  GeoPoint jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint;
-  
-  public dcz(QQMapActivity paramQQMapActivity, GeoPoint paramGeoPoint, TextView paramTextView)
+  public dcz(QQMapActivity paramQQMapActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = paramGeoPoint;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint);
+    super(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  protected String a(GeoPoint... paramVarArgs)
+  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
   {
-    int i = 0;
-    while (i < 3)
+    SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    String str;
+    if (paramSOSOMapLBSApiResult.Address == null)
     {
-      String str = ReverseGeocode.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6() / 1000000.0D, 3);
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
-        if (str != null) {
-          break label102;
-        }
+      str = "";
+      if (QLog.isColorLevel()) {
+        QLog.d("get_location", 2, "get location finish, latitude = " + paramSOSOMapLBSApiResult.Latitude + " longitude=" + paramSOSOMapLBSApiResult.Longitude + " address=" + str);
       }
-      label102:
-      for (paramVarArgs = "";; paramVarArgs = str)
-      {
-        QLog.i("fetch_address", 2, paramVarArgs);
-        if ((str == null) || (str.length() <= 0)) {
-          break;
-        }
-        return str;
+      if (paramSOSOMapLBSApiResult.Info != 1) {
+        break label113;
       }
-      i += 1;
+      this.a.runOnUiThread(new dda(this, paramSOSOMapLBSApiResult, str));
     }
-    return "";
-  }
-  
-  protected void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("fetch_address", 2, "get address finish, onPostExecute, result:" + paramString);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    for (;;)
     {
-      GeoPoint localGeoPoint = (GeoPoint)this.jdField_a_of_type_AndroidWidgetTextView.getTag();
-      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint.getLongitudeE6()) && (paramString != null) && (paramString.length() > 0))
+      label113:
+      try
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.jdField_h_of_type_Boolean) {
-          break label147;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.jdField_h_of_type_AndroidViewView.findViewById(2131231874).setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.jdField_h_of_type_AndroidViewView.findViewById(2131231875).setVisibility(0);
+        this.a.dismissDialog(0);
+        return;
       }
+      catch (IllegalArgumentException paramSOSOMapLBSApiResult) {}
+      str = paramSOSOMapLBSApiResult.Address;
+      break;
+      this.a.s();
     }
-    return;
-    label147:
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.j = paramString;
   }
 }
 

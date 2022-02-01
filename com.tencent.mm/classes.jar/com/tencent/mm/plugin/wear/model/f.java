@@ -4,31 +4,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public String cqq = "";
+  public int WiQ = 0;
+  a WiR;
   public int id = 0;
+  public String md5 = "";
   public String talker = "";
-  public int uHk = 0;
-  f.a uHl;
   
   protected final Object clone()
   {
-    AppMethodBeat.i(26330);
+    AppMethodBeat.i(30012);
     f localf = new f();
     localf.id = this.id;
     localf.talker = this.talker;
-    localf.cqq = this.cqq;
-    localf.uHk = this.uHk;
-    localf.uHl = this.uHl;
-    AppMethodBeat.o(26330);
+    localf.md5 = this.md5;
+    localf.WiQ = this.WiQ;
+    localf.WiR = this.WiR;
+    AppMethodBeat.o(30012);
     return localf;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(26331);
-    String str = "WearNotification [talker=" + this.talker + ", id=" + this.id + ", md5=" + this.cqq + ", ignoreInWatch=" + this.uHk + ", status=" + this.uHl + "]";
-    AppMethodBeat.o(26331);
+    AppMethodBeat.i(30013);
+    String str = "WearNotification [talker=" + this.talker + ", id=" + this.id + ", md5=" + this.md5 + ", ignoreInWatch=" + this.WiQ + ", status=" + this.WiR + "]";
+    AppMethodBeat.o(30013);
     return str;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(30011);
+      WiS = new a("INIT", 0);
+      WiT = new a("SHOWING", 1);
+      WiU = new a("IGNORE", 2);
+      WiV = new a("REPLY", 3);
+      WiW = new a[] { WiS, WiT, WiU, WiV };
+      AppMethodBeat.o(30011);
+    }
+    
+    private a() {}
   }
 }
 

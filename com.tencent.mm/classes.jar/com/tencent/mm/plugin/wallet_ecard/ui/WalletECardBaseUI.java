@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_ecard.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 

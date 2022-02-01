@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.addon;
 
-import akmx;
-import akmy;
-import akmz;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -12,44 +10,48 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-public class DiyPendantFetcher$2
+class DiyPendantFetcher$2
   implements Runnable
 {
-  public DiyPendantFetcher$2(akmx paramakmx, QQAppInterface paramQQAppInterface) {}
+  DiyPendantFetcher$2(DiyPendantFetcher paramDiyPendantFetcher, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     Object localObject2;
-    if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+    if (!this.this$0.g.isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "now query mUnCacheDiyId: " + TextUtils.join(",", this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet));
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("now query mUnCacheDiyId: ");
+        ((StringBuilder)localObject1).append(TextUtils.join(",", this.this$0.g));
+        QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject1).toString());
       }
       this.this$0.c(this.a);
-      if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+      if (!this.this$0.g.isEmpty())
       {
-        localObject1 = (akmz)this.a.a(114);
+        localObject1 = (DiyPendantHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DIY_PENDANT_HANDLER);
         localObject2 = new ArrayList();
-        Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+        Iterator localIterator = this.this$0.g.iterator();
         while (localIterator.hasNext()) {
           ((List)localObject2).add(Long.valueOf(Long.parseLong(((java.lang.String)localIterator.next()).split("_")[0])));
         }
-        ((akmz)localObject1).a((List)localObject2, null);
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
+        ((DiyPendantHandler)localObject1).a((List)localObject2, null);
+        this.this$0.g.clear();
       }
     }
-    if (!this.this$0.b.isEmpty()) {
-      this.this$0.b();
+    if (!this.this$0.h.isEmpty()) {
+      this.this$0.c();
     }
-    Object localObject1 = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Object localObject1 = this.this$0.i.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (akmy)((Iterator)localObject1).next();
-      if ((localObject2 == null) || (((akmy)localObject2).a() == null)) {
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
+      localObject2 = (DiyPendantFetcher.Invalidatable)((Iterator)localObject1).next();
+      if ((localObject2 == null) || (((DiyPendantFetcher.Invalidatable)localObject2).c() == null)) {
+        this.this$0.i.remove(localObject2);
       }
     }
-    akmx.jdField_a_of_type_Long = 0L;
+    DiyPendantFetcher.l = 0L;
   }
 }
 

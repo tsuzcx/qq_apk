@@ -1,52 +1,54 @@
 package com.tencent.mm.plugin.wear.model.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aum;
-import com.tencent.mm.protocal.protobuf.aun;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.czc;
+import com.tencent.mm.protocal.protobuf.czd;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  public String bYu;
-  private f callback;
-  public String cqJ;
-  private com.tencent.mm.ai.b fBd;
+  private h callback;
+  public String hEl;
+  public String hEr;
+  private c oDw;
   
   public a(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(26372);
-    this.bYu = paramString1;
-    this.cqJ = paramString2;
-    Object localObject = new b.a();
-    ((b.a)localObject).funcId = 1091;
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/device/register";
-    ((b.a)localObject).fsX = new aum();
-    ((b.a)localObject).fsY = new aun();
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.fBd = ((b.a)localObject).ado();
-    localObject = (aum)this.fBd.fsV.fta;
-    ((aum)localObject).wuq = new com.tencent.mm.bv.b(paramString1.getBytes());
-    ((aum)localObject).wus = new com.tencent.mm.bv.b(paramString2.getBytes());
-    ((aum)localObject).xjB = new com.tencent.mm.bv.b("5".getBytes());
-    AppMethodBeat.o(26372);
+    AppMethodBeat.i(30054);
+    this.hEl = paramString1;
+    this.hEr = paramString2;
+    Object localObject = new c.a();
+    ((c.a)localObject).funcId = 1091;
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/device/register";
+    ((c.a)localObject).otE = new czc();
+    ((c.a)localObject).otF = new czd();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.oDw = ((c.a)localObject).bEF();
+    localObject = (czc)c.b.b(this.oDw.otB);
+    ((czc)localObject).YMq = new b(paramString1.getBytes());
+    ((czc)localObject).YMs = new b(paramString2.getBytes());
+    ((czc)localObject).aaEf = new b("5".getBytes());
+    AppMethodBeat.o(30054);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(26373);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(26373);
+    AppMethodBeat.i(30055);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(30055);
     return i;
   }
   
@@ -55,17 +57,17 @@ public final class a
     return 1091;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(26374);
-    ab.i("MicroMsg.Wear.NetSceneBizDeviceAuth", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    AppMethodBeat.i(30056);
+    Log.i("MicroMsg.Wear.NetSceneBizDeviceAuth", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(26374);
+    AppMethodBeat.o(30056);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,7 @@ public class PortalManager$PortalConfig
   public String hotTopic;
   public String hotUrl;
   public int id;
-  public boolean isHit;
+  public boolean isHit = false;
   public String leftCloudImageMD5;
   public String leftCloudImageUrl;
   List<PortalManager.LogoConfig> logoList = new ArrayList();
@@ -70,12 +70,13 @@ public class PortalManager$PortalConfig
   
   public PortalManager.AwardConfig findRealAwardConfigById(long paramLong)
   {
-    if ((this.awardConfigList != null) && (!this.awardConfigList.isEmpty()))
+    Object localObject = this.awardConfigList;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      Iterator localIterator = this.awardConfigList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.awardConfigList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        PortalManager.AwardConfig localAwardConfig = (PortalManager.AwardConfig)localIterator.next();
+        PortalManager.AwardConfig localAwardConfig = (PortalManager.AwardConfig)((Iterator)localObject).next();
         if ((localAwardConfig != null) && (localAwardConfig.awardId == paramLong)) {
           return localAwardConfig;
         }
@@ -86,30 +87,43 @@ public class PortalManager$PortalConfig
   
   public boolean isOver(long paramLong)
   {
-    return (this.useTime != 0L) && (paramLong > this.useTime + this.countTime);
+    long l = this.useTime;
+    return (l != 0L) && (paramLong > l + this.countTime);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(this.id);
-    localStringBuilder.append(", type=").append(this.type);
-    localStringBuilder.append(", mode=").append(this.mode);
-    localStringBuilder.append(", countTime=").append(this.countTime);
-    localStringBuilder.append(", realBegin=").append(this.realBegin);
-    localStringBuilder.append(", realEnd=").append(this.realEnd);
-    localStringBuilder.append(", useFlag=").append(this.useFlag);
-    localStringBuilder.append(", logoList=").append(this.logoList);
-    localStringBuilder.append(", awardConfigList=").append(this.awardConfigList);
-    localStringBuilder.append(", starLucytype=").append(this.starLucytype);
-    localStringBuilder.append(", starNoLucyType=").append(this.starNoLucyType);
-    localStringBuilder.append(", shareType=").append(this.starShareType);
+    localStringBuilder.append("id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", mode=");
+    localStringBuilder.append(this.mode);
+    localStringBuilder.append(", countTime=");
+    localStringBuilder.append(this.countTime);
+    localStringBuilder.append(", realBegin=");
+    localStringBuilder.append(this.realBegin);
+    localStringBuilder.append(", realEnd=");
+    localStringBuilder.append(this.realEnd);
+    localStringBuilder.append(", useFlag=");
+    localStringBuilder.append(this.useFlag);
+    localStringBuilder.append(", logoList=");
+    localStringBuilder.append(this.logoList);
+    localStringBuilder.append(", awardConfigList=");
+    localStringBuilder.append(this.awardConfigList);
+    localStringBuilder.append(", starLucytype=");
+    localStringBuilder.append(this.starLucytype);
+    localStringBuilder.append(", starNoLucyType=");
+    localStringBuilder.append(this.starNoLucyType);
+    localStringBuilder.append(", shareType=");
+    localStringBuilder.append(this.starShareType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.PortalConfig
  * JD-Core Version:    0.7.0.1
  */

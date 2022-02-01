@@ -1,23 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Build.VERSION;
+import android.os.Handler;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class ewf
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public ewf(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    if (Build.VERSION.SDK_INT > 10)
+    if (VoipDialInterfaceActivity.c(this.a))
     {
-      this.a.startActivity(new Intent("android.settings.SETTINGS"));
-      return;
+      VoipDialInterfaceActivity.a(this.a);
+      new String();
+      String str = this.a.a(VoipDialInterfaceActivity.b(this.a) * 1000L);
+      if (VoipDialInterfaceActivity.a(this.a) != null) {
+        VoipDialInterfaceActivity.a(this.a).setText(str);
+      }
     }
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    this.a.a.postDelayed(this, 1000L);
   }
 }
 

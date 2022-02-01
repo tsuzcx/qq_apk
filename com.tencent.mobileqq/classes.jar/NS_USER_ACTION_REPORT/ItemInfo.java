@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ItemInfo
   extends JceStruct
@@ -11,14 +12,14 @@ public final class ItemInfo
   static ArrayList<ActionInfo> cache_action_infos;
   static RuleInfo cache_rule_info;
   static ArrayList<String> cache_sub_item_id = new ArrayList();
-  public ArrayList<ActionInfo> action_infos;
+  public ArrayList<ActionInfo> action_infos = null;
   public String busi_info = "";
   public String item_id = "";
   public String item_type = "";
   public String module_id = "";
   public String position_id = "";
-  public RuleInfo rule_info;
-  public ArrayList<String> sub_item_id;
+  public RuleInfo rule_info = null;
+  public ArrayList<String> sub_item_id = null;
   public String sub_module_id = "";
   public String trigger_info = "";
   
@@ -64,36 +65,44 @@ public final class ItemInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.item_id, 0);
-    if (this.sub_item_id != null) {
-      paramJceOutputStream.write(this.sub_item_id, 1);
+    Object localObject = this.sub_item_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.module_id != null) {
-      paramJceOutputStream.write(this.module_id, 2);
+    localObject = this.module_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.sub_module_id != null) {
-      paramJceOutputStream.write(this.sub_module_id, 3);
+    localObject = this.sub_module_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.position_id != null) {
-      paramJceOutputStream.write(this.position_id, 4);
+    localObject = this.position_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.rule_info != null) {
-      paramJceOutputStream.write(this.rule_info, 5);
+    localObject = this.rule_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.action_infos, 6);
-    if (this.trigger_info != null) {
-      paramJceOutputStream.write(this.trigger_info, 7);
+    localObject = this.trigger_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.busi_info != null) {
-      paramJceOutputStream.write(this.busi_info, 8);
+    localObject = this.busi_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.item_type != null) {
-      paramJceOutputStream.write(this.item_type, 9);
+    localObject = this.item_type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.ItemInfo
  * JD-Core Version:    0.7.0.1
  */

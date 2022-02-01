@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/iwl" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/lmv" android:background="@drawable/b4g" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" style="@style/mb">
+        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/a7b" android:layout_gravity="bottom" android:id="@id/lmw" android:background="@drawable/bxu" android:layout_width="0.0dip" android:layout_marginTop="8.0dip" android:maxHeight="@dimen/ae" android:minHeight="@dimen/ag" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/b2y" style="@style/lx" />
+            <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/ln2" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/nd" android:contentDescription="@string/b3i" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ln0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginStart="6.0dip">
+            <Button android:textColor="#1a000000" android:id="@id/lmz" android:background="@drawable/ard" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/al" android:text="@string/bbi" />
+            <Button android:textColor="@color/al9" android:id="@id/lmy" android:background="@drawable/j8" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/al" android:text="@string/bbi" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

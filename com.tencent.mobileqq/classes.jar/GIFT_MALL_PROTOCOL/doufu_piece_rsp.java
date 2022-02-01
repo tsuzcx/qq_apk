@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +13,8 @@ public final class doufu_piece_rsp
 {
   static ArrayList<DouFuInfo> cache_doufu = new ArrayList();
   static Map<String, String> cache_mapExt;
-  public ArrayList<DouFuInfo> doufu;
-  public Map<String, String> mapExt;
+  public ArrayList<DouFuInfo> doufu = null;
+  public Map<String, String> mapExt = null;
   
   static
   {
@@ -39,17 +40,19 @@ public final class doufu_piece_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.doufu != null) {
-      paramJceOutputStream.write(this.doufu, 0);
+    Object localObject = this.doufu;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 1);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GIFT_MALL_PROTOCOL.doufu_piece_rsp
  * JD-Core Version:    0.7.0.1
  */

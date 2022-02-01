@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/ekk" style="@style/rx"
+<LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/ekl" style="@style/rw" />
-    <TextView android:id="@id/ekm" style="@style/ru" />
+    <com.tencent.mm.plugin.game.ui.GameInfoViewForeign android:id="@id/eig" android:background="@drawable/a74" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/h1s" android:layout_width="34.0dip" android:layout_height="36.0dip" android:layout_marginRight="@dimen/g">
+            <ImageView android:id="@id/h1r" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/ba5" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/al6" android:gravity="center" android:id="@id/emx" android:background="@drawable/azh" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/h2r" android:layout_width="wrap_content" android:layout_height="28.0dip" android:text="@string/faw" android:layout_toRightOf="@id/h1s" android:layout_alignBottom="@id/h1s" android:layout_toEndOf="@id/h1s" />
+    </com.tencent.mm.plugin.game.ui.GameInfoViewForeign>
 </LinearLayout>

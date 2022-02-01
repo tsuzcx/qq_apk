@@ -38,15 +38,16 @@ public final class C2CType0x211_SubC2CType0x8$UserProfile
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 64, 72, 82, 90 }, new String[] { "uint64_uin", "int32_face_id", "int32_sex", "int32_age", "str_nick", "bytes_tmp_talk_sig", "msg_result", "int32_ip", "int32_port", "bytes_tip", "bytes_extra" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro1, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, UserProfile.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 64, 72, 82, 90 }, new String[] { "uint64_uin", "int32_face_id", "int32_sex", "int32_age", "str_nick", "bytes_tmp_talk_sig", "msg_result", "int32_ip", "int32_port", "bytes_tip", "bytes_extra" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, "", localByteStringMicro1, null, localInteger, localInteger, localByteStringMicro2, localByteStringMicro3 }, UserProfile.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x8.C2CType0x211_SubC2CType0x8.UserProfile
  * JD-Core Version:    0.7.0.1
  */

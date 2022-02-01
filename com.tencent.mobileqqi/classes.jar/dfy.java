@@ -1,21 +1,16 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.service.profile.ProfileUtil;
-import com.tencent.widget.TimePickerView.TimePickerListener;
 
 public class dfy
-  implements TimePickerView.TimePickerListener
+  implements DialogInterface.OnClickListener
 {
   public dfy(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt1 = ProfileUtil.a(paramInt1, paramInt2, paramInt3);
-    if (RegisterPhoneNumActivity.a(this.a) != null) {
-      RegisterPhoneNumActivity.a(this.a).setText(ProfileUtil.a(paramInt1));
-    }
-    this.a.g = paramInt1;
-    RegisterPhoneNumActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

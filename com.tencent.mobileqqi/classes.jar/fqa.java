@@ -1,40 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class fqa
-  implements View.OnClickListener
+class fqa
+  implements ActionSheet.OnButtonClickListener
 {
-  public fqa(FMActivity paramFMActivity) {}
+  fqa(fpz paramfpz, RecentFileAdapter.ItemHolder paramItemHolder, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    RecentFileAdapter.ItemHolder localItemHolder = (RecentFileAdapter.ItemHolder)paramView.getTag();
-    if (localItemHolder.a.cloudType == 5)
-    {
-      FileManagerUtil.a(this.a.b, this.a, localItemHolder.a);
-      return;
-    }
-    String str;
-    if ((localItemHolder.a.nOpType == 1) || (localItemHolder.a.nOpType == 5) || (localItemHolder.a.nOpType == 8)) {
-      str = this.a.getString(2131558690);
-    }
-    for (paramView = this.a.getString(2131558688);; paramView = this.a.getString(2131558687))
-    {
-      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-      localActionSheet.c(str);
-      localActionSheet.d(this.a.getString(2131561746));
-      localActionSheet.a(paramView);
-      localActionSheet.a(new fqb(this, localItemHolder, localActionSheet));
-      localActionSheet.show();
-      return;
-      str = this.a.getString(2131558689);
-    }
+    FileManagerUtil.a(this.jdField_a_of_type_Fpz.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter$ItemHolder.a, this.jdField_a_of_type_Fpz.a.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter$ItemHolder.a.bSend);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
   }
 }
 

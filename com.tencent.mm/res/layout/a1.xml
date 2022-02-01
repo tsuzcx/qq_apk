@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.view.menu.ListMenuItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="196.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/k5" android:background="@drawable/a1" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" />
-    <LinearLayout android:id="@id/k6" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="?eq" style="@style/u">
-        <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/v">
-            <TextView android:textAppearance="?ei" android:ellipsize="marquee" android:id="@id/cz" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentTop="true" style="@style/y" />
-            <TextView android:textAppearance="?ej" android:id="@id/k7" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/cz" style="@style/y" />
-        </RelativeLayout>
-        <ImageView android:layout_gravity="center" android:id="@id/k8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" style="@style/x" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="80.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/ag" android:focusable="false" android:layout_width="@dimen/nk" android:layout_height="@dimen/nk" android:src="@raw/aa_record_default_icon" android:scaleType="fitXY" />
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/aj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="2.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/nm" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/ah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" />
+            <TextView android:textSize="@dimen/mv" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/al" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxLines="1" />
+            <TextView android:textSize="@dimen/mv" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/ai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:maxLines="1" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center|right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip">
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/nm" android:textColor="@color/a7b" android:id="@id/af" android:layout_width="wrap_content" android:layout_height="wrap_content" wallet:walletTypeFace="k1x" />
+            <TextView android:textSize="@dimen/mv" android:textColor="@color/FG_2" android:id="@id/ak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" />
+        </LinearLayout>
     </LinearLayout>
-</android.support.v7.view.menu.ListMenuItemView>
+    <View android:id="@id/c7o" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="62.0dip" android:layout_marginTop="16.0dip" />
+</LinearLayout>

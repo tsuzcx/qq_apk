@@ -17,7 +17,11 @@ public class IMLogger
       String str = TIMManager.getInstance().getLogPath();
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label9:
+      break label9;
+    }
     return "";
   }
   
@@ -43,7 +47,11 @@ public class IMLogger
       boolean bool = TIMManager.getInstance().getIsLogPrintEnabled();
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label9:
+      break label9;
+    }
     return true;
   }
   
@@ -62,13 +70,17 @@ public class IMLogger
       label50:
       return true;
     }
-    catch (Exception paramString1) {}
+    catch (Exception paramString1)
+    {
+      label52:
+      break label52;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.logger.IMLogger
  * JD-Core Version:    0.7.0.1
  */

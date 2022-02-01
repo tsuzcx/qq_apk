@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMEditText android:gravity="top" android:id="@id/ec5" android:layout_width="fill_parent" android:layout_height="@dimen/bx" android:hint="路径" />
+    <com.tencent.mm.ui.widget.MMEditText android:gravity="top" android:id="@id/fjg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="2" android:hint="layer" android:inputType="numberDecimal" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_width="120.0dip" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="扫描" style="@style/og" />
+    <ScrollView android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cp" android:fadeScrollbars="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/hq9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

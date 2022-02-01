@@ -21,19 +21,21 @@ public abstract class GLProgram
   public void create()
   {
     this.mProgramId = GlUtil.createProgram(this.mVertexShader, this.mFragmentShader);
-    if (this.mProgramId == 0) {}
-    do
-    {
+    if (this.mProgramId == 0) {
       return;
-      this.maPositionHandle = GLES20.glGetAttribLocation(getProgramId(), "aPosition");
-      GlUtil.checkGlError("glGetAttribLocation aPosition");
-      if (this.maPositionHandle == -1) {
-        throw new RuntimeException("Could not get attrib location for aPosition");
-      }
+    }
+    this.maPositionHandle = GLES20.glGetAttribLocation(getProgramId(), "aPosition");
+    GlUtil.checkGlError("glGetAttribLocation aPosition");
+    if (this.maPositionHandle != -1)
+    {
       this.maTextureCoordinateHandle = GLES20.glGetAttribLocation(getProgramId(), "aTextureCoord");
       GlUtil.checkGlError("glGetAttribLocation aTextureCoord");
-    } while (this.maTextureCoordinateHandle != -1);
-    throw new RuntimeException("Could not get attrib location for aTextureCoord");
+      if (this.maTextureCoordinateHandle != -1) {
+        return;
+      }
+      throw new RuntimeException("Could not get attrib location for aTextureCoord");
+    }
+    throw new RuntimeException("Could not get attrib location for aPosition");
   }
   
   public int getPositionHandle()
@@ -64,7 +66,7 @@ public abstract class GLProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.GL.GLProgram
  * JD-Core Version:    0.7.0.1
  */

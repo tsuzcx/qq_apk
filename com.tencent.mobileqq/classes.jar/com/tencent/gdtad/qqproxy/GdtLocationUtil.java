@@ -1,55 +1,48 @@
 package com.tencent.gdtad.qqproxy;
 
-import ampk;
 import android.content.Context;
 import com.tencent.ad.tangram.analysis.AdAnalysis;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
+import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
+import com.tencent.mobileqq.soso.location.data.SosoLocation;
 import java.lang.ref.WeakReference;
 
-public enum GdtLocationUtil
+public final class GdtLocationUtil
 {
-  INSTANCE;
-  
-  public final String TAG = "GdtLocationUtil";
-  
-  private GdtLocationUtil() {}
+  public final String a = "GdtLocationUtil";
   
   @Deprecated
-  public int[] getLocation(Context paramContext)
+  public static int[] a(Context paramContext)
   {
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = ampk.a("gdt_tangram");
+    long l2 = System.currentTimeMillis();
+    SosoLbsInfo localSosoLbsInfo = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("gdt_tangram");
     boolean bool;
-    AdAnalysis localAdAnalysis;
-    WeakReference localWeakReference;
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null))
-    {
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
       bool = true;
-      localAdAnalysis = AdAnalysis.INSTANCE;
-      localWeakReference = new WeakReference(paramContext);
-      if (!bool) {
-        break label87;
-      }
-    }
-    label87:
-    for (long l = System.currentTimeMillis() - localSosoLbsInfo.a.jdField_a_of_type_Long;; l = -2147483648L)
-    {
-      localAdAnalysis.handleAsync(localWeakReference, AdReporterForAnalysis.createEventForLocation(paramContext, bool, l));
-      if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null)) {
-        break label94;
-      }
-      return null;
+    } else {
       bool = false;
-      break;
     }
-    label94:
-    return new int[] { (int)(localSosoLbsInfo.a.jdField_a_of_type_Double * 1000000.0D), (int)(localSosoLbsInfo.a.b * 1000000.0D) };
+    AdAnalysis localAdAnalysis = AdAnalysis.INSTANCE;
+    WeakReference localWeakReference = new WeakReference(paramContext);
+    long l3 = System.currentTimeMillis();
+    long l1;
+    if (bool) {
+      l1 = System.currentTimeMillis() - localSosoLbsInfo.mLocation.locationTime;
+    } else {
+      l1 = -2147483648L;
+    }
+    localAdAnalysis.handleAsync(localWeakReference, AdAnalysisHelperForUtil.createEventForLocation(paramContext, null, bool, l3 - l2, l1));
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
+      return new int[] { (int)(localSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(localSosoLbsInfo.mLocation.mLon02 * 1000000.0D) };
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.qqproxy.GdtLocationUtil
  * JD-Core Version:    0.7.0.1
  */

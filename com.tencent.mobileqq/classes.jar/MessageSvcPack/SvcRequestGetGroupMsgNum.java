@@ -9,9 +9,9 @@ public final class SvcRequestGetGroupMsgNum
   extends JceStruct
 {
   static ArrayList<SvcRequestGroupInfo> cache_vGroupInfo;
-  public byte cVerifyType;
-  public long lUin;
-  public ArrayList<SvcRequestGroupInfo> vGroupInfo;
+  public byte cVerifyType = 0;
+  public long lUin = 0L;
+  public ArrayList<SvcRequestGroupInfo> vGroupInfo = null;
   
   public SvcRequestGetGroupMsgNum() {}
   
@@ -44,7 +44,7 @@ public final class SvcRequestGetGroupMsgNum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestGetGroupMsgNum
  * JD-Core Version:    0.7.0.1
  */

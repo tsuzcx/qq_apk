@@ -41,61 +41,83 @@ public class QQSpecialAVFilter
   {
     if ((this.mFilterTextureFbo == -1) || (this.mFilterTextureId[0] == -1) || (this.fboWidth != paramInt1) || (this.fboHeight != paramInt2))
     {
-      GLES20.glGenTextures(this.mFilterTextureId.length, this.mFilterTextureId, 0);
+      localObject = this.mFilterTextureId;
+      GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
       this.mFilterTextureFbo = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.mFilterTextureId[0]);
       this.fboWidth = paramInt1;
       this.fboHeight = paramInt2;
     }
-    if ((this.mCurrentDesc == null) || (this.mCurrentDesc.id == -1)) {
-      return null;
-    }
-    if (this.mOldFilter != null)
+    Object localObject = this.mCurrentDesc;
+    if (localObject != null)
     {
-      this.mOldFilter.destroy();
-      this.mOldFilter = null;
-    }
-    if (this.mCurrentFilter == null) {
-      switch (this.mCurrentDesc.id)
-      {
+      if (((FilterDesc)localObject).id == -1) {
+        return null;
       }
-    }
-    for (;;)
-    {
-      if (this.mCurrentFilter != null) {
-        this.mCurrentFilter.init();
+      localObject = this.mOldFilter;
+      if (localObject != null)
+      {
+        ((QQAVImageFilter)localObject).destroy();
+        this.mOldFilter = null;
+      }
+      if (this.mCurrentFilter == null)
+      {
+        switch (this.mCurrentDesc.id)
+        {
+        default: 
+          break;
+        case 1016: 
+          this.mCurrentFilter = new MirrorSpecialEffectImageFilter(1016);
+          break;
+        case 1015: 
+          this.mCurrentFilter = new QQAVImageBoxFilter();
+          break;
+        case 1014: 
+          this.mCurrentFilter = new QQAVImageSoulFilter();
+          break;
+        case 1013: 
+          this.mCurrentFilter = new QQAVImageShakeFilter();
+          break;
+        case 1012: 
+          this.mCurrentFilter = new QQAVImageOldTVFilter();
+          break;
+        case 1011: 
+          this.mCurrentFilter = new QQAVImageWrongEraseFilter();
+          break;
+        case 1010: 
+          this.mCurrentFilter = new QQAVImageGhostFilter();
+          break;
+        case 1009: 
+          this.mCurrentFilter = new QQAVImageKaleidoscopeFilter();
+          break;
+        case 1008: 
+          this.mCurrentFilter = new QQAVImageGaussianSelecterBlurFilter();
+          break;
+        case 1007: 
+          this.mCurrentFilter = new QQAVImageBulgeDistortionFilter();
+          break;
+        case 1006: 
+          this.mCurrentFilter = new MirrorSpecialEffectImageFilter(1006);
+        }
+        localObject = this.mCurrentFilter;
+        if (localObject != null) {
+          ((QQAVImageFilter)localObject).init();
+        }
       }
       return this.mCurrentFilter;
-      this.mCurrentFilter = new MirrorSpecialEffectImageFilter(1006);
-      continue;
-      this.mCurrentFilter = new MirrorSpecialEffectImageFilter(1016);
-      continue;
-      this.mCurrentFilter = new QQAVImageBulgeDistortionFilter();
-      continue;
-      this.mCurrentFilter = new QQAVImageGaussianSelecterBlurFilter();
-      continue;
-      this.mCurrentFilter = new QQAVImageKaleidoscopeFilter();
-      continue;
-      this.mCurrentFilter = new QQAVImageGhostFilter();
-      continue;
-      this.mCurrentFilter = new QQAVImageWrongEraseFilter();
-      continue;
-      this.mCurrentFilter = new QQAVImageOldTVFilter();
-      continue;
-      this.mCurrentFilter = new QQAVImageShakeFilter();
-      continue;
-      this.mCurrentFilter = new QQAVImageSoulFilter();
-      continue;
-      this.mCurrentFilter = new QQAVImageBoxFilter();
     }
+    return null;
   }
   
   private boolean isSpecialId(FilterDesc paramFilterDesc)
   {
-    if (paramFilterDesc == null) {}
-    while (QQAVImageFilterConstants.getFilterType(paramFilterDesc.id) != 2) {
+    boolean bool = false;
+    if (paramFilterDesc == null) {
       return false;
     }
-    return true;
+    if (QQAVImageFilterConstants.getFilterType(paramFilterDesc.id) == 2) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean isFilterWork()
@@ -106,52 +128,41 @@ public class QQSpecialAVFilter
   public void onDrawFrame()
   {
     QQAVImageFilter localQQAVImageFilter = getSpecialFilter(getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
-    int i;
     if ((localQQAVImageFilter != null) && (this.mFilterTextureFbo != -1))
     {
-      i = getQQFilterRenderManager().getIntParam("key_orientation_degree");
-      if (i != -1) {
-        break label209;
+      int j = getQQFilterRenderManager().getIntParam("key_orientation_degree");
+      int i = j;
+      if (j == -1) {
+        i = 90;
       }
-      i = 90;
-    }
-    label163:
-    label176:
-    label209:
-    for (;;)
-    {
       localQQAVImageFilter.onOutputSizeChanged(getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
       if ((localQQAVImageFilter instanceof MirrorSpecialEffectImageFilter)) {
         ((MirrorSpecialEffectImageFilter)localQQAVImageFilter).setOrientation(i);
       }
-      float f;
       if ((localQQAVImageFilter instanceof QQSpecialAVFilter.MusicWaveformShaker))
       {
-        if (this.mMusicWaveformSupporter != null) {
-          break label163;
+        QQSpecialAVFilter.MusicWaveformSupporter localMusicWaveformSupporter = this.mMusicWaveformSupporter;
+        float f;
+        if (localMusicWaveformSupporter == null) {
+          f = getQQFilterRenderManager().getBusinessOperation().getCurrentMusicGain();
+        } else {
+          f = localMusicWaveformSupporter.getCurrentMusicGain();
         }
-        f = getQQFilterRenderManager().getBusinessOperation().getCurrentMusicGain();
-        if ((f <= 0.0F) || (f > 1.0F)) {
-          break label176;
+        if ((f > 0.0F) && (f <= 1.0F)) {
+          ((QQSpecialAVFilter.MusicWaveformShaker)localQQAVImageFilter).setMusicScale(f);
+        } else {
+          ((QQSpecialAVFilter.MusicWaveformShaker)localQQAVImageFilter).setMusicScale(0.0F);
         }
-        ((QQSpecialAVFilter.MusicWaveformShaker)localQQAVImageFilter).setMusicScale(f);
       }
-      for (;;)
-      {
-        localQQAVImageFilter.onDraw2(this.mInputTextureID, this.mFilterTextureFbo);
-        this.mOutputTextureID = this.mFilterTextureId[0];
-        QQFilterLogManager.setFilterStatus("QQSpecialAVFilter", true);
-        this.bwork = true;
-        return;
-        f = this.mMusicWaveformSupporter.getCurrentMusicGain();
-        break;
-        ((QQSpecialAVFilter.MusicWaveformShaker)localQQAVImageFilter).setMusicScale(0.0F);
-      }
-      this.mOutputTextureID = this.mInputTextureID;
-      QQFilterLogManager.setFilterStatus("QQSpecialAVFilter", false);
-      this.bwork = false;
+      localQQAVImageFilter.onDraw2(this.mInputTextureID, this.mFilterTextureFbo);
+      this.mOutputTextureID = this.mFilterTextureId[0];
+      QQFilterLogManager.setFilterStatus("QQSpecialAVFilter", true);
+      this.bwork = true;
       return;
     }
+    this.mOutputTextureID = this.mInputTextureID;
+    QQFilterLogManager.setFilterStatus("QQSpecialAVFilter", false);
+    this.bwork = false;
   }
   
   public void onSurfaceChange(int paramInt1, int paramInt2)
@@ -162,14 +173,16 @@ public class QQSpecialAVFilter
   
   public void onSurfaceDestroy()
   {
-    if (this.mCurrentFilter != null)
+    Object localObject = this.mCurrentFilter;
+    if (localObject != null)
     {
-      this.mCurrentFilter.destroy();
+      ((QQAVImageFilter)localObject).destroy();
       this.mCurrentFilter = null;
     }
-    if (this.mOldFilter != null)
+    localObject = this.mOldFilter;
+    if (localObject != null)
     {
-      this.mOldFilter.destroy();
+      ((QQAVImageFilter)localObject).destroy();
       this.mOldFilter = null;
     }
     this.mCurrentDesc = null;
@@ -177,25 +190,29 @@ public class QQSpecialAVFilter
     if (this.mFilterTextureFbo != -1) {
       this.mFilterTextureFbo = -1;
     }
-    if (this.mFilterTextureId[0] != -1) {
-      this.mFilterTextureId[0] = -1;
+    localObject = this.mFilterTextureId;
+    if (localObject[0] != -1) {
+      localObject[0] = -1;
     }
   }
   
   public void setCurrentId(FilterDesc paramFilterDesc)
   {
-    if (isSpecialId(paramFilterDesc)) {
-      this.mCurrentDesc = new FilterDesc(paramFilterDesc.id, paramFilterDesc.predownload, paramFilterDesc.resurl, paramFilterDesc.resMD5, paramFilterDesc.iconurl, paramFilterDesc.iconMD5, paramFilterDesc.name, 2);
-    }
-    for (this.bwork = true;; this.bwork = false)
+    if (isSpecialId(paramFilterDesc))
     {
-      if (this.mCurrentFilter != null)
-      {
-        this.mOldFilter = this.mCurrentFilter;
-        this.mCurrentFilter = null;
-      }
-      return;
+      this.mCurrentDesc = new FilterDesc(paramFilterDesc.id, paramFilterDesc.predownload, paramFilterDesc.resurl, paramFilterDesc.resMD5, paramFilterDesc.iconurl, paramFilterDesc.iconMD5, paramFilterDesc.name, 2);
+      this.bwork = true;
+    }
+    else
+    {
       this.mCurrentDesc = null;
+      this.bwork = false;
+    }
+    paramFilterDesc = this.mCurrentFilter;
+    if (paramFilterDesc != null)
+    {
+      this.mOldFilter = paramFilterDesc;
+      this.mCurrentFilter = null;
     }
   }
   
@@ -211,7 +228,7 @@ public class QQSpecialAVFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQSpecialAVFilter
  * JD-Core Version:    0.7.0.1
  */

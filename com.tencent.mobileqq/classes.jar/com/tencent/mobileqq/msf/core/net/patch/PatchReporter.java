@@ -4,14 +4,11 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.b;
-import com.tencent.mobileqq.msf.sdk.report.e;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.msf.sdk.b.e;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Properties;
 
 public class PatchReporter
 {
@@ -40,6 +37,7 @@ public class PatchReporter
   public static final int CODE_LOAD_SUCCESS = 400;
   public static final int CODE_RELAX_FAIL = 801;
   public static final int CODE_RELAX_INIT_FAIL = 803;
+  public static final int CODE_RELAX_INJECT_FAILED = 807;
   public static final int CODE_RELAX_IO_EXCEPTION = 802;
   public static final int CODE_RELAX_LOAD_SO_FAIL = 806;
   public static final int CODE_RELAX_LOSE_FILE = 804;
@@ -59,36 +57,48 @@ public class PatchReporter
   
   public static void reportPatchDownload(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong)
   {
-    try
+    for (;;)
     {
-      String str2 = String.valueOf(paramInt1);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("resultCode", str2);
-      localHashMap.put("patchPath", paramString2);
-      localHashMap.put("patchTmpPath", paramString3);
-      localHashMap.put("patchUrl", paramString1);
-      String str1 = "";
-      paramString1 = str1;
-      if (TextUtils.isEmpty(""))
+      try
       {
-        paramString1 = str1;
-        if (MsfCore.sCore != null) {
-          paramString1 = MsfCore.sCore.getMainAccount();
+        String str = String.valueOf(paramInt1);
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("resultCode", str);
+        localHashMap.put("patchPath", paramString2);
+        localHashMap.put("patchTmpPath", paramString3);
+        localHashMap.put("patchUrl", paramString1);
+        Object localObject = "";
+        paramString1 = (String)localObject;
+        if (TextUtils.isEmpty(""))
+        {
+          paramString1 = (String)localObject;
+          if (MsfCore.sCore != null) {
+            paramString1 = MsfCore.sCore.getMainAccount();
+          }
+        }
+        localObject = new StringBuilder("reportPatchDownload reportPatchEvent curUin=");
+        ((StringBuilder)localObject).append(paramString1);
+        ((StringBuilder)localObject).append(", path=");
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append(", result=");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(", tmpPath=");
+        ((StringBuilder)localObject).append(paramString3);
+        QLog.d("PatchLogTag", 1, ((StringBuilder)localObject).toString());
+        if (paramInt1 == 0)
+        {
+          bool = true;
+          e.a(paramString1, "actPatchDownMsf", bool, paramLong, paramInt2, localHashMap, null, false);
+          QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent actPatchDownMsf");
+          return;
         }
       }
-      QLog.d("PatchLogTag", 1, "reportPatchDownload reportPatchEvent curUin=" + paramString1 + ", path=" + paramString2 + ", result=" + str2 + ", tmpPath=" + paramString3);
-      if (paramInt1 == 0) {}
-      for (boolean bool = true;; bool = false)
+      catch (Throwable paramString1)
       {
-        e.a(paramString1, "actPatchDownMsf", bool, paramLong, paramInt2, localHashMap, null, false);
-        QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent actPatchDownMsf");
+        paramString1.printStackTrace();
         return;
       }
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
+      boolean bool = false;
     }
   }
   
@@ -101,88 +111,91 @@ public class PatchReporter
   {
     for (;;)
     {
-      String str1;
-      HashMap localHashMap;
-      String str2;
       try
       {
-        str1 = String.valueOf(paramInt1);
-        localHashMap = new HashMap();
-        localHashMap.put("resultCode", str1);
+        Object localObject1 = String.valueOf(paramInt1);
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("resultCode", localObject1);
         localHashMap.put("relaxCode", String.valueOf(paramInt2));
         localHashMap.put("patchName", paramString3);
         if ((!TextUtils.isEmpty(paramString1)) || (MsfCore.sCore == null)) {
-          break label515;
+          break label527;
         }
         paramString1 = MsfCore.sCore.getMainAccount();
-        QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent curUin=" + paramString1 + ", event=" + paramString2 + ", result=" + paramInt1 + ", patchName=" + paramString3);
+        Object localObject2 = new StringBuilder("PatchReporter reportPatchEvent curUin=");
+        ((StringBuilder)localObject2).append(paramString1);
+        ((StringBuilder)localObject2).append(", event=");
+        ((StringBuilder)localObject2).append(paramString2);
+        ((StringBuilder)localObject2).append(", result=");
+        ((StringBuilder)localObject2).append(paramInt1);
+        ((StringBuilder)localObject2).append(", patchName=");
+        ((StringBuilder)localObject2).append(paramString3);
+        QLog.d("PatchLogTag", 1, ((StringBuilder)localObject2).toString());
         if (paramInt1 % 100 != 0) {
-          break label519;
+          break label530;
         }
         bool = true;
-        if (("actPatchConfig".equals(paramString2)) || ("actPatchDownload".equals(paramString2)) || ("actPatchResolve".equals(paramString2)) || ("actPatchUnzip".equals(paramString2)))
+        if ((!"actPatchConfig".equals(paramString2)) && (!"actPatchDownload".equals(paramString2)) && (!"actPatchResolve".equals(paramString2)) && (!"actPatchUnzip".equals(paramString2)))
         {
-          e.a(paramString1, paramString2, bool, 0L, 0L, localHashMap, null, false);
-          QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent " + paramString2);
-          return;
-        }
-        paramString3 = paramString2 + paramString1 + paramString3;
-        str2 = PatchSharedPreUtil.getPatchReportInfo(paramContext, paramString3);
-        if ("actPatchCheck".equals(paramString2))
-        {
-          if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1))) {
-            break label518;
+          localObject2 = new StringBuilder(paramString2);
+          ((StringBuilder)localObject2).append(paramString1);
+          ((StringBuilder)localObject2).append(paramString3);
+          paramString3 = ((StringBuilder)localObject2).toString();
+          localObject2 = PatchSharedPreUtil.getPatchReportInfo(paramContext, paramString3);
+          if ("actPatchCheck".equals(paramString2))
+          {
+            if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(localObject1)))
+            {
+              e.a(paramString1, paramString2, bool, 0L, 0L, localHashMap, null, false);
+              PatchSharedPreUtil.updatePatchReportInfo(paramContext, paramString3, (String)localObject1);
+              QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent actPatchCheck");
+            }
           }
+          else if ("actPatchInstall".equals(paramString2))
+          {
+            String str = patchReportDateFormat.format(new Date(System.currentTimeMillis()));
+            localObject1 = new StringBuilder((String)localObject1);
+            ((StringBuilder)localObject1).append(str.substring(0, 8));
+            ((StringBuilder)localObject1).append(Integer.parseInt(str.substring(8)) / 8);
+            localObject1 = ((StringBuilder)localObject1).toString();
+            if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(localObject1)))
+            {
+              localHashMap.put("uin", paramString1);
+              localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
+              e.a(paramString1, paramString2, bool, 0L, 0L, localHashMap, null, false);
+              PatchSharedPreUtil.updatePatchReportInfo(paramContext, paramString3, (String)localObject1);
+              QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent actPatchInstall");
+            }
+          }
+        }
+        else
+        {
           e.a(paramString1, paramString2, bool, 0L, 0L, localHashMap, null, false);
-          PatchSharedPreUtil.updatePatchReportInfo(paramContext, paramString3, str1);
-          QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent actPatchCheck");
+          paramContext = new StringBuilder();
+          paramContext.append("PatchReporter reportPatchEvent ");
+          paramContext.append(paramString2);
+          QLog.d("PatchLogTag", 1, paramContext.toString());
           return;
         }
       }
       catch (Throwable paramContext)
       {
-        QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent throwable=" + paramContext);
-        return;
+        paramString1 = new StringBuilder();
+        paramString1.append("PatchReporter reportPatchEvent throwable=");
+        paramString1.append(paramContext);
+        QLog.d("PatchLogTag", 1, paramString1.toString());
       }
-      if ("actPatchInstall".equals(paramString2))
-      {
-        String str3 = patchReportDateFormat.format(new Date(System.currentTimeMillis()));
-        str1 = str1 + str3.substring(0, 8) + Integer.parseInt(str3.substring(8)) / 8;
-        if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1)))
-        {
-          e.a(paramString1, paramString2, bool, 0L, 0L, localHashMap, null, false);
-          try
-          {
-            localHashMap.put("uin", paramString1);
-            localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-            paramString1 = new Properties();
-            paramString1.putAll(localHashMap);
-            b.a(BaseApplication.getContext()).reportKVEvent("actPatchInstall", paramString1);
-            PatchSharedPreUtil.updatePatchReportInfo(paramContext, paramString3, str1);
-            QLog.d("PatchLogTag", 1, "PatchReporter reportPatchEvent actPatchInstall");
-            return;
-          }
-          catch (Exception paramString1)
-          {
-            for (;;)
-            {
-              QLog.d("PatchLogTag", 1, "PatchReporter reportKVEvent actPatchInstall exception=" + paramString1);
-            }
-          }
-          label515:
-          continue;
-        }
-      }
-      label518:
       return;
-      label519:
+      label527:
+      continue;
+      label530:
       boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.patch.PatchReporter
  * JD-Core Version:    0.7.0.1
  */

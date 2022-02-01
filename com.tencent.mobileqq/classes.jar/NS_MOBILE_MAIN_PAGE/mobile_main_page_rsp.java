@@ -8,6 +8,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,57 +54,57 @@ public final class mobile_main_page_rsp
   static ArrayList<s_space_event> cache_vec_event;
   static s_visit cache_visit;
   static s_visit cache_visit_no_right;
-  public FunnySpace StuFunnySpace;
-  public ArrayList<QueryADBannerUnit> adv_banner;
-  public ArrayList<s_app_acc> all_acc;
-  public ArrayList<MusicInfo> all_music_list;
-  public int all_music_nums;
-  public s_appinfo appinfo;
+  public FunnySpace StuFunnySpace = null;
+  public ArrayList<QueryADBannerUnit> adv_banner = null;
+  public ArrayList<s_app_acc> all_acc = null;
+  public ArrayList<MusicInfo> all_music_list = null;
+  public int all_music_nums = 0;
+  public s_appinfo appinfo = null;
   public String attach_info = "";
-  public byte[] bgvoice_buf;
-  public s_birthday birthday;
-  public s_brandspace_h5 brandspace_h5;
-  public s_campus_qz campus_qz;
-  public s_count count;
-  public s_flower flower;
-  public s_friend_ship friend_ship;
-  public s_friendreq friendreq;
-  public s_game game;
-  public s_gift gift;
-  public byte green_diamond_flag;
-  public s_limit_page_card limit_page_card;
-  public byte loop_playback_flag;
-  public s_main_page mainpage;
-  public Map<Integer, s_mainPageTabItem> map_entrys;
-  public s_mayknow mayknow;
-  public s_msgb_festival msgb_festival;
+  public byte[] bgvoice_buf = null;
+  public s_birthday birthday = null;
+  public s_brandspace_h5 brandspace_h5 = null;
+  public s_campus_qz campus_qz = null;
+  public s_count count = null;
+  public s_flower flower = null;
+  public s_friend_ship friend_ship = null;
+  public s_friendreq friendreq = null;
+  public s_game game = null;
+  public s_gift gift = null;
+  public byte green_diamond_flag = 0;
+  public s_limit_page_card limit_page_card = null;
+  public byte loop_playback_flag = 0;
+  public s_main_page mainpage = null;
+  public Map<Integer, s_mainPageTabItem> map_entrys = null;
+  public s_mayknow mayknow = null;
+  public s_msgb_festival msgb_festival = null;
   public boolean music_can_play = true;
-  public s_mainPageTabItem myFriendEntryItem;
-  public ArrayList<s_navigation_item> navigation_order;
-  public int no_update;
+  public s_mainPageTabItem myFriendEntryItem = null;
+  public ArrayList<s_navigation_item> navigation_order = null;
+  public int no_update = 0;
   public boolean open_msg_board = true;
-  public s_part_error part_error;
-  public s_rec_photo_list photos;
-  public ArrayList<byte[]> photos_buf;
-  public s_gamebar_pk_banner pk_banner;
-  public byte play_mode_flag;
-  public s_profile profile;
+  public s_part_error part_error = null;
+  public s_rec_photo_list photos = null;
+  public ArrayList<byte[]> photos_buf = null;
+  public s_gamebar_pk_banner pk_banner = null;
+  public byte play_mode_flag = 0;
+  public s_profile profile = null;
   public String qzmall_cover_url = "";
-  public s_read_space readspace;
-  public ArrayList<single_feed> recent_photos;
-  public Map<Integer, s_red_comm> redinfo;
-  public s_qzone_reward_data reward_data;
+  public s_read_space readspace = null;
+  public ArrayList<single_feed> recent_photos = null;
+  public Map<Integer, s_red_comm> redinfo = null;
+  public s_qzone_reward_data reward_data = null;
   public String share_bg_url = "";
-  public s_special special;
-  public s_sq_mainpage_switch sq_mainpage_switch;
-  public byte[] stShangchengInfo;
-  public s_tab_list tab_lst;
-  public s_tab_list tab_lst_mq;
-  public long uWanBaNew;
-  public ArrayList<s_space_event> vec_event;
-  public s_visit visit;
-  public s_visit visit_no_right;
-  public byte wifi_auto_play;
+  public s_special special = null;
+  public s_sq_mainpage_switch sq_mainpage_switch = null;
+  public byte[] stShangchengInfo = null;
+  public s_tab_list tab_lst = null;
+  public s_tab_list tab_lst_mq = null;
+  public long uWanBaNew = 0L;
+  public ArrayList<s_space_event> vec_event = null;
+  public s_visit visit = null;
+  public s_visit visit_no_right = null;
+  public byte wifi_auto_play = 0;
   
   static
   {
@@ -119,28 +120,30 @@ public final class mobile_main_page_rsp
     cache_photos = new s_rec_photo_list();
     cache_visit_no_right = new s_visit();
     cache_photos_buf = new ArrayList();
-    Object localObject = (byte[])new byte[1];
-    ((byte[])localObject)[0] = 0;
-    cache_photos_buf.add(localObject);
+    Object localObject2 = (byte[])new byte[1];
+    byte[] arrayOfByte = (byte[])localObject2;
+    Object localObject1 = Integer.valueOf(0);
+    arrayOfByte[0] = 0;
+    cache_photos_buf.add(localObject2);
     cache_recent_photos = new ArrayList();
-    localObject = new single_feed();
-    cache_recent_photos.add(localObject);
+    localObject2 = new single_feed();
+    cache_recent_photos.add(localObject2);
     cache_readspace = new s_read_space();
     cache_flower = new s_flower();
     cache_game = new s_game();
     cache_redinfo = new HashMap();
-    localObject = new s_red_comm();
-    cache_redinfo.put(Integer.valueOf(0), localObject);
+    localObject2 = new s_red_comm();
+    cache_redinfo.put(localObject1, localObject2);
     cache_friend_ship = new s_friend_ship();
     cache_all_music_list = new ArrayList();
-    localObject = new MusicInfo();
-    cache_all_music_list.add(localObject);
+    localObject2 = new MusicInfo();
+    cache_all_music_list.add(localObject2);
     cache_all_acc = new ArrayList();
-    localObject = new s_app_acc();
-    cache_all_acc.add(localObject);
+    localObject2 = new s_app_acc();
+    cache_all_acc.add(localObject2);
     cache_adv_banner = new ArrayList();
-    localObject = new QueryADBannerUnit();
-    cache_adv_banner.add(localObject);
+    localObject2 = new QueryADBannerUnit();
+    cache_adv_banner.add(localObject2);
     cache_msgb_festival = new s_msgb_festival();
     cache_brandspace_h5 = new s_brandspace_h5();
     cache_campus_qz = new s_campus_qz();
@@ -154,17 +157,17 @@ public final class mobile_main_page_rsp
     cache_myFriendEntryItem = new s_mainPageTabItem();
     cache_StuFunnySpace = new FunnySpace();
     cache_map_entrys = new HashMap();
-    localObject = new s_mainPageTabItem();
-    cache_map_entrys.put(Integer.valueOf(0), localObject);
+    localObject2 = new s_mainPageTabItem();
+    cache_map_entrys.put(localObject1, localObject2);
     cache_stShangchengInfo = (byte[])new byte[1];
     ((byte[])cache_stShangchengInfo)[0] = 0;
     cache_tab_lst_mq = new s_tab_list();
     cache_navigation_order = new ArrayList();
-    localObject = new s_navigation_item();
-    cache_navigation_order.add(localObject);
+    localObject1 = new s_navigation_item();
+    cache_navigation_order.add(localObject1);
     cache_vec_event = new ArrayList();
-    localObject = new s_space_event();
-    cache_vec_event.add(localObject);
+    localObject1 = new s_space_event();
+    cache_vec_event.add(localObject1);
   }
   
   public mobile_main_page_rsp() {}
@@ -281,146 +284,188 @@ public final class mobile_main_page_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mainpage != null) {
-      paramJceOutputStream.write(this.mainpage, 0);
+    Object localObject = this.mainpage;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.profile != null) {
-      paramJceOutputStream.write(this.profile, 1);
+    localObject = this.profile;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.count != null) {
-      paramJceOutputStream.write(this.count, 2);
+    localObject = this.count;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.visit != null) {
-      paramJceOutputStream.write(this.visit, 3);
+    localObject = this.visit;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.birthday != null) {
-      paramJceOutputStream.write(this.birthday, 4);
+    localObject = this.birthday;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.gift != null) {
-      paramJceOutputStream.write(this.gift, 5);
+    localObject = this.gift;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.friendreq != null) {
-      paramJceOutputStream.write(this.friendreq, 6);
+    localObject = this.friendreq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.special != null) {
-      paramJceOutputStream.write(this.special, 7);
+    localObject = this.special;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.mayknow != null) {
-      paramJceOutputStream.write(this.mayknow, 8);
+    localObject = this.mayknow;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.part_error != null) {
-      paramJceOutputStream.write(this.part_error, 9);
+    localObject = this.part_error;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.appinfo != null) {
-      paramJceOutputStream.write(this.appinfo, 10);
+    localObject = this.appinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.photos != null) {
-      paramJceOutputStream.write(this.photos, 11);
+    localObject = this.photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.visit_no_right != null) {
-      paramJceOutputStream.write(this.visit_no_right, 12);
+    localObject = this.visit_no_right;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.photos_buf != null) {
-      paramJceOutputStream.write(this.photos_buf, 13);
+    localObject = this.photos_buf;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 13);
     }
-    if (this.recent_photos != null) {
-      paramJceOutputStream.write(this.recent_photos, 14);
+    localObject = this.recent_photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
-    if (this.readspace != null) {
-      paramJceOutputStream.write(this.readspace, 15);
+    localObject = this.readspace;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 16);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
     paramJceOutputStream.write(this.no_update, 17);
-    if (this.flower != null) {
-      paramJceOutputStream.write(this.flower, 18);
+    localObject = this.flower;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 18);
     }
-    if (this.game != null) {
-      paramJceOutputStream.write(this.game, 19);
+    localObject = this.game;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 19);
     }
-    if (this.redinfo != null) {
-      paramJceOutputStream.write(this.redinfo, 20);
+    localObject = this.redinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 20);
     }
     paramJceOutputStream.write(this.uWanBaNew, 21);
-    if (this.friend_ship != null) {
-      paramJceOutputStream.write(this.friend_ship, 22);
+    localObject = this.friend_ship;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 22);
     }
     paramJceOutputStream.write(this.green_diamond_flag, 23);
     paramJceOutputStream.write(this.music_can_play, 24);
     paramJceOutputStream.write(this.all_music_nums, 25);
-    if (this.all_music_list != null) {
-      paramJceOutputStream.write(this.all_music_list, 26);
+    localObject = this.all_music_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 26);
     }
-    if (this.all_acc != null) {
-      paramJceOutputStream.write(this.all_acc, 27);
+    localObject = this.all_acc;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 27);
     }
     paramJceOutputStream.write(this.wifi_auto_play, 28);
     paramJceOutputStream.write(this.play_mode_flag, 29);
-    if (this.adv_banner != null) {
-      paramJceOutputStream.write(this.adv_banner, 30);
+    localObject = this.adv_banner;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 30);
     }
-    if (this.msgb_festival != null) {
-      paramJceOutputStream.write(this.msgb_festival, 31);
+    localObject = this.msgb_festival;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 31);
     }
-    if (this.brandspace_h5 != null) {
-      paramJceOutputStream.write(this.brandspace_h5, 32);
+    localObject = this.brandspace_h5;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 32);
     }
-    if (this.campus_qz != null) {
-      paramJceOutputStream.write(this.campus_qz, 33);
+    localObject = this.campus_qz;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 33);
     }
-    if (this.bgvoice_buf != null) {
-      paramJceOutputStream.write(this.bgvoice_buf, 34);
+    localObject = this.bgvoice_buf;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 34);
     }
     paramJceOutputStream.write(this.loop_playback_flag, 35);
-    if (this.tab_lst != null) {
-      paramJceOutputStream.write(this.tab_lst, 36);
+    localObject = this.tab_lst;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 36);
     }
-    if (this.share_bg_url != null) {
-      paramJceOutputStream.write(this.share_bg_url, 37);
+    localObject = this.share_bg_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 37);
     }
-    if (this.qzmall_cover_url != null) {
-      paramJceOutputStream.write(this.qzmall_cover_url, 38);
+    localObject = this.qzmall_cover_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 38);
     }
     paramJceOutputStream.write(this.open_msg_board, 39);
-    if (this.sq_mainpage_switch != null) {
-      paramJceOutputStream.write(this.sq_mainpage_switch, 40);
+    localObject = this.sq_mainpage_switch;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 40);
     }
-    if (this.pk_banner != null) {
-      paramJceOutputStream.write(this.pk_banner, 41);
+    localObject = this.pk_banner;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 41);
     }
-    if (this.limit_page_card != null) {
-      paramJceOutputStream.write(this.limit_page_card, 42);
+    localObject = this.limit_page_card;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 42);
     }
-    if (this.reward_data != null) {
-      paramJceOutputStream.write(this.reward_data, 43);
+    localObject = this.reward_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 43);
     }
-    if (this.myFriendEntryItem != null) {
-      paramJceOutputStream.write(this.myFriendEntryItem, 44);
+    localObject = this.myFriendEntryItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 44);
     }
-    if (this.StuFunnySpace != null) {
-      paramJceOutputStream.write(this.StuFunnySpace, 45);
+    localObject = this.StuFunnySpace;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 45);
     }
-    if (this.map_entrys != null) {
-      paramJceOutputStream.write(this.map_entrys, 46);
+    localObject = this.map_entrys;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 46);
     }
-    if (this.stShangchengInfo != null) {
-      paramJceOutputStream.write(this.stShangchengInfo, 47);
+    localObject = this.stShangchengInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 47);
     }
-    if (this.tab_lst_mq != null) {
-      paramJceOutputStream.write(this.tab_lst_mq, 48);
+    localObject = this.tab_lst_mq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 48);
     }
-    if (this.navigation_order != null) {
-      paramJceOutputStream.write(this.navigation_order, 49);
+    localObject = this.navigation_order;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 49);
     }
-    if (this.vec_event != null) {
-      paramJceOutputStream.write(this.vec_event, 50);
+    localObject = this.vec_event;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 50);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_main_page_rsp
  * JD-Core Version:    0.7.0.1
  */

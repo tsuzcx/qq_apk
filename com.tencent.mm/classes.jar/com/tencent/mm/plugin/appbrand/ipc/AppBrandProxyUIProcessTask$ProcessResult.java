@@ -10,14 +10,14 @@ public abstract class AppBrandProxyUIProcessTask$ProcessResult
   
   public AppBrandProxyUIProcessTask$ProcessResult(Parcel paramParcel)
   {
-    j(paramParcel);
+    readParcel(paramParcel);
   }
   
-  protected abstract void j(Parcel paramParcel);
+  protected abstract void readParcel(Parcel paramParcel);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult
  * JD-Core Version:    0.7.0.1
  */

@@ -8,48 +8,48 @@ import java.util.Locale;
 final class g
   implements NumberPicker.Formatter
 {
-  final Object[] AJl;
-  char AJm;
-  Formatter AJn;
+  Formatter agkA;
+  final Object[] agky;
+  char agkz;
   final StringBuilder mBuilder;
   
   g()
   {
-    AppMethodBeat.i(112866);
+    AppMethodBeat.i(159590);
     this.mBuilder = new StringBuilder();
-    this.AJl = new Object[1];
-    d(Locale.getDefault());
-    AppMethodBeat.o(112866);
+    this.agky = new Object[1];
+    e(Locale.getDefault());
+    AppMethodBeat.o(159590);
   }
   
-  private void d(Locale paramLocale)
+  private void e(Locale paramLocale)
   {
-    AppMethodBeat.i(112867);
-    this.AJn = e(paramLocale);
-    this.AJm = '0';
-    AppMethodBeat.o(112867);
+    AppMethodBeat.i(159591);
+    this.agkA = f(paramLocale);
+    this.agkz = '0';
+    AppMethodBeat.o(159591);
   }
   
-  private Formatter e(Locale paramLocale)
+  private Formatter f(Locale paramLocale)
   {
-    AppMethodBeat.i(112869);
+    AppMethodBeat.i(159593);
     paramLocale = new Formatter(this.mBuilder, paramLocale);
-    AppMethodBeat.o(112869);
+    AppMethodBeat.o(159593);
     return paramLocale;
   }
   
   public final String format(int paramInt)
   {
-    AppMethodBeat.i(112868);
+    AppMethodBeat.i(159592);
     Object localObject = Locale.getDefault();
-    if (this.AJm != '0') {
-      d((Locale)localObject);
+    if (this.agkz != '0') {
+      e((Locale)localObject);
     }
-    this.AJl[0] = Integer.valueOf(paramInt);
+    this.agky[0] = Integer.valueOf(paramInt);
     this.mBuilder.delete(0, this.mBuilder.length());
-    this.AJn.format("%02d", this.AJl);
-    localObject = this.AJn.toString();
-    AppMethodBeat.o(112868);
+    this.agkA.format("%02d", this.agky);
+    localObject = this.agkA.toString();
+    AppMethodBeat.o(159592);
     return localObject;
   }
 }

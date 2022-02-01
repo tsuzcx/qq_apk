@@ -10,10 +10,10 @@ public final class GetAutoInfoReq
   static int cache_sourceID;
   static int cache_sourceSubID;
   public byte cType = 1;
-  public long dwFriendUin;
+  public long dwFriendUin = 0L;
   public int sourceID = 3999;
   public int sourceSubID = 0;
-  public long uin;
+  public long uin = 0L;
   
   public GetAutoInfoReq() {}
   
@@ -46,7 +46,7 @@ public final class GetAutoInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetAutoInfoReq
  * JD-Core Version:    0.7.0.1
  */

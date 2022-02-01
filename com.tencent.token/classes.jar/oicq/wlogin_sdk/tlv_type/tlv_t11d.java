@@ -27,21 +27,21 @@ public class tlv_t11d
   public byte[] get_stkey()
   {
     byte[] arrayOfByte = new byte[16];
-    System.arraycopy(this._buf, this._head_len + 4, arrayOfByte, 0, arrayOfByte.length);
+    System.arraycopy(this._buf, this._head_len + 4, arrayOfByte, 0, 16);
     return arrayOfByte;
   }
   
   public Boolean verify()
   {
     if (this._body_len < 22) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._st_len = util.buf_to_int16(this._buf, this._head_len + 4 + 16);
     this._st_len &= 0xFFFF;
     if (this._body_len < this._st_len + 22) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

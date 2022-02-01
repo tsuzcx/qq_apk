@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textColor="#ff262626" android:id="@id/nxo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="16.0dip" />
+    <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="16.0dip" android:textColor="#ff19baff" android:id="@id/nud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" />
+    <ListView android:id="@id/eaw" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginTop="12.0dip" android:divider="@null" android:layout_below="@id/nxo" />
+    <RelativeLayout android:gravity="center" android:id="@id/ef4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginTop="12.0dip" android:layout_below="@id/nxo">
+        <ImageView android:id="@id/n_h" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/common_loading2" android:tint="#ffb3b3b3" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="-4.0dip" android:text="" android:layout_toRightOf="@id/n_h" android:layout_alignTop="@id/n_h" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout android:id="@id/mux" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginTop="12.0dip" android:layout_below="@id/nxo">
+        <ImageView android:id="@id/muw" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_marginTop="50.0dip" android:src="@drawable/iac" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="#ff666666" android:id="@id/muy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_below="@id/muw" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff19baff" android:id="@id/mkt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" android:layout_below="@id/muy" android:layout_centerHorizontal="true" />
+    </com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout>
+</RelativeLayout>

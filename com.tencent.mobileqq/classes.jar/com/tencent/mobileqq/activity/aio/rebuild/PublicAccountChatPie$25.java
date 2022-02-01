@@ -1,17 +1,37 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class PublicAccountChatPie$25
-  implements Runnable
+class PublicAccountChatPie$25
+  implements ActionSheet.OnButtonClickListener
 {
-  public PublicAccountChatPie$25(agti paramagti, int paramInt) {}
+  PublicAccountChatPie$25(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onClick(View paramView, int paramInt)
   {
-    if (agti.d(this.this$0) > 0) {
-      this.this$0.A(this.a);
+    if (this.a.cj) {
+      return;
     }
+    paramView = this.a;
+    paramView.cj = true;
+    if ((paramView.bv != null) && (this.a.bv.length > 0))
+    {
+      this.a.s(2131893010);
+      paramInt = this.a.bv[0];
+      if (paramInt == 0) {
+        this.a.a(true, 0);
+      } else {
+        this.a.a(false, paramInt);
+      }
+    }
+    else
+    {
+      this.a.s(2131893010);
+      this.a.a(true, 0);
+    }
+    this.a.ck.dismiss();
   }
 }
 

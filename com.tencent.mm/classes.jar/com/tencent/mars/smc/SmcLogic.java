@@ -45,6 +45,8 @@ public class SmcLogic
   
   public static native void SetMonitorId(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
+  public static native void flushAllReportData();
+  
   private static String getKVCommPath()
   {
     if (callBack == null) {
@@ -53,10 +55,10 @@ public class SmcLogic
     return callBack.getKVCommPath();
   }
   
-  private static BaseInfo getKVCommReqBaseInfo()
+  private static SmcLogic.BaseInfo getKVCommReqBaseInfo()
   {
     if (callBack == null) {
-      return new BaseInfo();
+      return new SmcLogic.BaseInfo();
     }
     return callBack.getKVCommReqBaseInfo();
   }
@@ -73,12 +75,14 @@ public class SmcLogic
   
   public static native ArrayList<Integer> getStrategyVersions();
   
-  private static void onReportDataReady(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  public static native void onCreate();
+  
+  private static void onReportDataReady(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, String paramString)
   {
     if (callBack == null) {
       return;
     }
-    callBack.onReportDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
+    callBack.onReportDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt, paramString);
   }
   
   private static boolean onRequestGetStrategy(byte[] paramArrayOfByte, int paramInt)
@@ -112,20 +116,13 @@ public class SmcLogic
   
   public static native void writeKvData(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
+  public static native void writeKvDataWithIsolate(long paramLong, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2);
+  
   public static native void writeKvDataWithType(long paramLong1, long paramLong2, String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
   public static native void writeKvPbData(long paramLong, byte[] paramArrayOfByte, boolean paramBoolean);
   
   public static native void writeKvPbDataWithType(long paramLong1, long paramLong2, byte[] paramArrayOfByte, boolean paramBoolean);
-  
-  public static class BaseInfo
-  {
-    public String deviceBrand;
-    public String deviceModel;
-    public String languageVer;
-    public String osName;
-    public String osVersion;
-  }
   
   public static abstract interface ICallBack
   {
@@ -137,14 +134,14 @@ public class SmcLogic
     
     public abstract int getSingleReportBufSizeB();
     
-    public abstract void onReportDataReady(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt);
+    public abstract void onReportDataReady(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, String paramString);
     
     public abstract boolean onRequestGetStrategy(byte[] paramArrayOfByte, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.smc.SmcLogic
  * JD-Core Version:    0.7.0.1
  */

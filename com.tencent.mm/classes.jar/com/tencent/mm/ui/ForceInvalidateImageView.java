@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,20 +19,19 @@ public class ForceInvalidateImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  @TargetApi(8)
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
-    AppMethodBeat.i(29302);
+    AppMethodBeat.i(33136);
     if (paramInt == 0) {
       invalidate();
     }
     super.onVisibilityChanged(paramView, paramInt);
-    AppMethodBeat.o(29302);
+    AppMethodBeat.o(33136);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.ForceInvalidateImageView
  * JD-Core Version:    0.7.0.1
  */

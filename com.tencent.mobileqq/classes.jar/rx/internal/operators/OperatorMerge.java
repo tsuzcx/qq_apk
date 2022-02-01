@@ -26,13 +26,17 @@ public final class OperatorMerge<T>
   
   public static <T> OperatorMerge<T> instance(boolean paramBoolean, int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("maxConcurrent > 0 required but it was " + paramInt);
+    if (paramInt > 0)
+    {
+      if (paramInt == 2147483647) {
+        return instance(paramBoolean);
+      }
+      return new OperatorMerge(paramBoolean, paramInt);
     }
-    if (paramInt == 2147483647) {
-      return instance(paramBoolean);
-    }
-    return new OperatorMerge(paramBoolean, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("maxConcurrent > 0 required but it was ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public Subscriber<Observable<? extends T>> call(Subscriber<? super T> paramSubscriber)
@@ -47,7 +51,7 @@ public final class OperatorMerge<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorMerge
  * JD-Core Version:    0.7.0.1
  */

@@ -4,53 +4,63 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
+import android.os.Message;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.token.aau;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.a;
-import com.tencent.token.cz;
-import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.x;
+import com.tencent.token.sx;
+import com.tencent.token.sy;
+import com.tencent.token.tt;
+import com.tencent.token.ui.IndexActivity;
 
 public class DualMsgView
   extends RelativeLayout
 {
-  private View a;
-  private View b;
-  private TextView c;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private Button h;
-  private Button i;
-  private ImageView j;
-  private ImageView k;
-  private ImageView l;
-  private Activity m;
-  private LayoutInflater n;
-  private View o;
-  private View p;
-  private View q;
-  private View r;
-  private View s;
-  private Bitmap t;
-  private Bitmap u;
-  private int v;
+  View a;
+  View b;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
+  TextView g;
+  Button h;
+  Button i;
+  ImageView j;
+  ImageView k;
+  ImageView l;
+  Activity m;
+  LayoutInflater n;
+  View o;
+  View p;
+  View q;
+  View r;
+  View s;
+  Bitmap t;
+  Bitmap u;
+  Handler v = new Handler()
+  {
+    public final void handleMessage(Message paramAnonymousMessage) {}
+  };
   private int w;
-  private w x;
-  private Handler y = new m(this);
+  private int x;
+  private f y;
   
   public DualMsgView(Activity paramActivity)
   {
@@ -70,159 +80,311 @@ public class DualMsgView
     this.m = ((Activity)paramContext);
   }
   
-  private String a(String paramString1, String paramString2)
+  private static String a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString1.length() <= 0)) {
-      return "";
-    }
-    String str = null;
-    int i1 = 0;
-    if (i1 < paramString1.length() - 1)
+    if ((paramString1 != null) && (paramString1.length() > 0))
     {
-      if (str == null) {}
-      for (str = paramString1.substring(i1, i1 + 1);; str = str + paramString1.substring(i1, i1 + 1))
+      String str = null;
+      int i1 = 0;
+      while (i1 < paramString1.length() - 1)
       {
-        str = str + paramString2;
+        if (str == null)
+        {
+          str = paramString1.substring(i1, i1 + 1);
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(paramString1.substring(i1, i1 + 1));
+          str = localStringBuilder.toString();
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(paramString2);
+        str = localStringBuilder.toString();
         i1 += 1;
-        break;
       }
+      paramString2 = new StringBuilder();
+      paramString2.append(str);
+      paramString2.append(paramString1.substring(paramString1.length() - 1, paramString1.length()));
+      return paramString2.toString();
     }
-    return str + paramString1.substring(paramString1.length() - 1, paramString1.length());
+    return "";
   }
   
-  public void a()
+  private void b()
   {
-    if (this.t != null) {
-      this.t.recycle();
+    this.v.post(new c(this.p, this.q, this.r, this.s));
+    sx.a(RqdApplication.n()).a();
+  }
+  
+  private void c()
+  {
+    this.v.post(new d(this));
+  }
+  
+  public final void a()
+  {
+    Bitmap localBitmap = this.t;
+    if (localBitmap != null) {
+      localBitmap.recycle();
     }
-    if (this.u != null) {
-      this.u.recycle();
+    localBitmap = this.u;
+    if (localBitmap != null) {
+      localBitmap.recycle();
     }
   }
   
-  public void a(int paramInt)
+  public final void a(int paramInt)
   {
     if (paramInt == 3)
     {
-      d();
+      c();
       return;
     }
-    c();
+    b();
   }
   
-  public void a(a parama)
+  public final void a(sy paramsy)
   {
-    this.c.setText(Html.fromHtml(parama.f()));
-    this.d.setText(Html.fromHtml(parama.g()));
-    this.h.setText(a(parama.h(), " "));
-    this.i.setText(a(parama.i(), " "));
-    parama = do.a().c(parama.c());
-    if (parama != null)
+    this.c.setText(Html.fromHtml(paramsy.f));
+    this.d.setText(Html.fromHtml(paramsy.g));
+    this.h.setText(a(paramsy.h, " "));
+    this.i.setText(a(paramsy.i, " "));
+    paramsy = tt.a().c(paramsy.c);
+    if (paramsy != null)
     {
-      this.j.setImageDrawable(com.tencent.token.utils.k.a(parama.b() + "", parama.mUin + ""));
-      if (parama.mIsZzb)
+      ImageView localImageView = this.j;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramsy.mRealUin);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramsy.mUin);
+      localImageView.setImageDrawable(aau.a((String)localObject, localStringBuilder.toString()));
+      if (paramsy.mIsZzb)
       {
-        this.k.setImageDrawable(getResources().getDrawable(2130838075));
+        this.k.setImageDrawable(getResources().getDrawable(2131100233));
         this.l.setVisibility(0);
       }
-      this.g.setText(parama.mNickName);
+      this.g.setText(paramsy.mNickName);
       return;
     }
     this.g.setText("");
   }
   
-  public boolean a(Context paramContext)
-  {
-    if ((this.m == null) || ((this.m != null) && (this.m.isFinishing()))) {
-      return false;
-    }
-    this.n = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.o = this.n.inflate(2130968640, null);
-    this.o.setVisibility(4);
-    this.p = this.o.findViewById(2131558822);
-    this.q = this.o.findViewById(2131558808);
-    this.r = this.o.findViewById(2131558803);
-    this.s = this.o.findViewById(2131558805);
-    this.t = x.a(this.m.getResources(), 2130837681);
-    this.u = x.a(this.m.getResources(), 2130837680);
-    if (this.t != null) {
-      ((LinearLayout)this.o.findViewById(2131558809)).setBackgroundDrawable(new BitmapDrawable(this.t));
-    }
-    if (this.u != null)
-    {
-      ((LinearLayout)this.o.findViewById(2131558810)).setBackgroundDrawable(new BitmapDrawable(this.u));
-      ((LinearLayout)this.o.findViewById(2131558811)).setBackgroundDrawable(new BitmapDrawable(this.u));
-    }
-    this.a = this.o.findViewById(2131558814);
-    this.c = ((TextView)this.o.findViewById(2131558815));
-    this.d = ((TextView)this.o.findViewById(2131558816));
-    this.b = this.o.findViewById(2131558817);
-    this.e = ((TextView)this.o.findViewById(2131558818));
-    this.f = ((TextView)this.o.findViewById(2131558819));
-    this.j = ((ImageView)this.o.findViewById(2131558824));
-    this.k = ((ImageView)this.o.findViewById(2131558825));
-    this.l = ((ImageView)this.o.findViewById(2131558826));
-    this.h = ((Button)this.o.findViewById(2131558820));
-    this.i = ((Button)this.o.findViewById(2131558821));
-    this.g = ((TextView)this.o.findViewById(2131558813));
-    this.h.setOnClickListener(new k(this));
-    this.i.setOnClickListener(new l(this));
-    addView(this.o, new RelativeLayout.LayoutParams(-1, -1));
-    return true;
-  }
-  
-  public void b()
-  {
-    this.y.post(new p(this, this.p, this.q, this.r, this.s));
-  }
-  
-  public void b(a parama)
-  {
-    this.e.setText(Html.fromHtml(parama.f()));
-    this.f.setText(Html.fromHtml(parama.g()));
-    this.h.setText("  " + Html.fromHtml(parama.h()));
-    this.i.setText("  " + Html.fromHtml(parama.i()));
-    parama = do.a().c(parama.c());
-    if (parama != null)
-    {
-      this.j.setImageDrawable(com.tencent.token.utils.k.a(parama.b() + "", parama.mUin + ""));
-      if (parama.mIsZzb)
-      {
-        this.k.setImageDrawable(getResources().getDrawable(2130838075));
-        this.l.setVisibility(0);
-      }
-      this.g.setText(parama.mNickName);
-    }
-    for (;;)
-    {
-      this.y.post(new n(this, this.a, this.b));
-      return;
-      this.g.setText("");
-      this.l.setVisibility(4);
-    }
-  }
-  
-  public void c()
-  {
-    this.y.post(new r(this, this.p, this.q, this.r, this.s));
-    cz.a(RqdApplication.l()).a();
-  }
-  
-  public void d()
-  {
-    this.y.post(new t(this, this));
-  }
-  
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.v = this.p.getMeasuredHeight();
-    this.w = this.q.getMeasuredHeight();
+    this.w = this.p.getMeasuredHeight();
+    this.x = this.q.getMeasuredHeight();
   }
   
-  public void setListener(w paramw)
+  public void setListener(f paramf)
   {
-    this.x = paramw;
+    this.y = paramf;
+  }
+  
+  final class a
+    implements Runnable
+  {
+    private View b;
+    private View c;
+    private Animation d;
+    private Animation e;
+    
+    public a(View paramView1, View paramView2)
+    {
+      this.b = paramView1;
+      this.c = paramView2;
+      this.d = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2130771989);
+      this.e = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2130771992);
+      this.e.setAnimationListener(new Animation.AnimationListener()
+      {
+        public final void onAnimationEnd(Animation paramAnonymousAnimation)
+        {
+          DualMsgView.i(DualMsgView.this).setText(DualMsgView.h(DualMsgView.this).getText());
+          DualMsgView.k(DualMsgView.this).setText(DualMsgView.j(DualMsgView.this).getText());
+          DualMsgView.a.a(DualMsgView.a.this).setVisibility(4);
+        }
+        
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+      });
+    }
+    
+    public final void run()
+    {
+      this.c.setVisibility(0);
+      this.b.startAnimation(this.e);
+      this.c.startAnimation(this.d);
+    }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    private View b;
+    private View c;
+    private View d;
+    private View e;
+    private TranslateAnimation f;
+    private TranslateAnimation g;
+    private TranslateAnimation h;
+    private TranslateAnimation i;
+    
+    public b(View paramView1, View paramView2, View paramView3, View paramView4)
+    {
+      this.b = paramView1;
+      this.c = paramView2;
+      this.d = paramView3;
+      this.e = paramView4;
+      int j = (int)(IndexActivity.S_DENSITY * 40.0F);
+      this.h = new TranslateAnimation(0.0F, 0.0F, DualMsgView.b(DualMsgView.this), 0.0F);
+      this.h.setDuration(400L);
+      this.h.setInterpolator(new AccelerateDecelerateInterpolator());
+      this.i = new TranslateAnimation(0.0F, 0.0F, -DualMsgView.c(DualMsgView.this) + j, 0.0F);
+      this.i.setDuration(400L);
+      this.i.setInterpolator(new AccelerateDecelerateInterpolator());
+      this.f = new TranslateAnimation(0.0F, 0.0F, DualMsgView.b(DualMsgView.this), 0.0F);
+      this.f.setDuration(500L);
+      this.g = new TranslateAnimation(0.0F, 0.0F, -DualMsgView.c(DualMsgView.this), 0.0F);
+      this.g.setDuration(500L);
+      this.g.setAnimationListener(new Animation.AnimationListener()
+      {
+        public final void onAnimationEnd(Animation paramAnonymousAnimation) {}
+        
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+      });
+    }
+    
+    public final void run()
+    {
+      DualMsgView.d(DualMsgView.this).setVisibility(0);
+      DualMsgView.e(DualMsgView.this).setEnabled(true);
+      DualMsgView.f(DualMsgView.this).setEnabled(true);
+      this.c.startAnimation(this.f);
+      this.b.startAnimation(this.g);
+      this.e.startAnimation(this.h);
+      this.d.startAnimation(this.i);
+    }
+  }
+  
+  final class c
+    implements Runnable
+  {
+    private View b;
+    private View c;
+    private View d;
+    private View e;
+    private TranslateAnimation f;
+    private TranslateAnimation g;
+    private TranslateAnimation h;
+    private TranslateAnimation i;
+    
+    public c(View paramView1, View paramView2, View paramView3, View paramView4)
+    {
+      this.b = paramView1;
+      this.c = paramView2;
+      this.d = paramView3;
+      this.e = paramView4;
+      int j = (int)(IndexActivity.S_DENSITY * 40.0F);
+      this.h = new TranslateAnimation(0.0F, 0.0F, 0.0F, -DualMsgView.c(DualMsgView.this) + j);
+      this.h.setDuration(600L);
+      this.h.setInterpolator(new DualMsgView.e(DualMsgView.this, (byte)0));
+      this.i = new TranslateAnimation(0.0F, 0.0F, 0.0F, DualMsgView.b(DualMsgView.this));
+      this.i.setDuration(600L);
+      this.i.setInterpolator(new DualMsgView.e(DualMsgView.this, (byte)0));
+      this.f = new TranslateAnimation(0.0F, 0.0F, 0.0F, -DualMsgView.c(DualMsgView.this));
+      this.f.setDuration(600L);
+      this.f.setInterpolator(new AccelerateInterpolator());
+      this.f.setFillAfter(true);
+      this.g = new TranslateAnimation(0.0F, 0.0F, 0.0F, DualMsgView.b(DualMsgView.this));
+      this.g.setDuration(600L);
+      this.g.setInterpolator(new AccelerateInterpolator());
+      this.g.setFillAfter(true);
+      this.i.setAnimationListener(new Animation.AnimationListener()
+      {
+        public final void onAnimationEnd(Animation paramAnonymousAnimation)
+        {
+          DualMsgView.this.setVisibility(8);
+          if (DualMsgView.a(DualMsgView.this) != null) {
+            DualMsgView.a(DualMsgView.this).a();
+          }
+        }
+        
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+      });
+    }
+    
+    public final void run()
+    {
+      DualMsgView.e(DualMsgView.this).setEnabled(false);
+      DualMsgView.f(DualMsgView.this).setEnabled(false);
+      this.b.startAnimation(this.f);
+      this.c.startAnimation(this.g);
+      this.d.startAnimation(this.h);
+      this.e.startAnimation(this.i);
+    }
+  }
+  
+  final class d
+    implements Runnable
+  {
+    private View b;
+    private Animation c;
+    
+    public d(View paramView)
+    {
+      this.b = paramView;
+      this.c = AnimationUtils.loadAnimation(DualMsgView.g(DualMsgView.this), 2130771993);
+      this.c.setAnimationListener(new Animation.AnimationListener()
+      {
+        public final void onAnimationEnd(Animation paramAnonymousAnimation)
+        {
+          DualMsgView.this.setVisibility(8);
+          if (DualMsgView.a(DualMsgView.this) != null) {
+            DualMsgView.a(DualMsgView.this).a();
+          }
+        }
+        
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+      });
+    }
+    
+    public final void run()
+    {
+      this.b.startAnimation(this.c);
+    }
+  }
+  
+  final class e
+    implements Interpolator
+  {
+    private e() {}
+    
+    public final float getInterpolation(float paramFloat)
+    {
+      if (paramFloat < 0.3D) {
+        return 0.0F;
+      }
+      paramFloat = (paramFloat - 0.3F) / 0.7F;
+      return paramFloat * paramFloat;
+    }
+  }
+  
+  public static abstract interface f
+  {
+    public abstract void a();
+    
+    public abstract void a(int paramInt);
   }
 }
 

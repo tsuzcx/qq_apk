@@ -24,11 +24,11 @@ public class NormalIconPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  protected View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107249);
+    AppMethodBeat.i(142626);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    AppMethodBeat.o(107249);
+    AppMethodBeat.o(142626);
     return paramViewGroup;
   }
 }

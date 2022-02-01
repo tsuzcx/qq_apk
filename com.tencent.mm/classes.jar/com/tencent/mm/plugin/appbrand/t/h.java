@@ -1,83 +1,66 @@
 package com.tencent.mm.plugin.appbrand.t;
 
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.k;
-import com.tencent.mm.sdk.d.d;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class h<Task>
-  extends d
+public final class h
 {
-  final h<Task>.b iXF = new h.b(this, (byte)0);
-  private final h<Task>.a iXG = new a((byte)0);
-  final String iXH;
-  private final Queue<Task> iXI = new LinkedList();
+  private static AtomicInteger tns;
+  public HashMap<String, g> tnt;
   
-  protected h(String paramString, Looper paramLooper)
+  static
   {
-    super(paramString, paramLooper);
-    this.iXH = paramString;
-    a(this.iXF);
-    a(this.iXG);
-    b(this.iXF);
-    start();
+    AppMethodBeat.i(144363);
+    tns = new AtomicInteger(1);
+    AppMethodBeat.o(144363);
   }
   
-  protected abstract boolean aBX();
-  
-  public final void avu()
+  private h()
   {
-    super.avu();
-    synchronized (this.iXI)
+    AppMethodBeat.i(144359);
+    this.tnt = new HashMap();
+    AppMethodBeat.o(144359);
+  }
+  
+  public static int cCg()
+  {
+    AppMethodBeat.i(144360);
+    int i = tns.incrementAndGet();
+    AppMethodBeat.o(144360);
+    return i;
+  }
+  
+  public static h cCm()
+  {
+    AppMethodBeat.i(144361);
+    h localh = a.cCn();
+    AppMethodBeat.o(144361);
+    return localh;
+  }
+  
+  public final g aec(String paramString)
+  {
+    AppMethodBeat.i(144362);
+    if (this.tnt.containsKey(paramString))
     {
-      this.iXI.clear();
-      return;
+      paramString = (g)this.tnt.get(paramString);
+      AppMethodBeat.o(144362);
+      return paramString;
     }
+    AppMethodBeat.o(144362);
+    return null;
   }
   
-  protected abstract void bj(Task paramTask);
-  
-  public final void bu(Task paramTask)
+  static final class a
   {
-    if (aBX()) {
-      return;
-    }
-    synchronized (this.iXI)
-    {
-      this.iXI.offer(paramTask);
-      sendMessage(1);
-      return;
-    }
-  }
-  
-  final class a
-    extends k
-  {
-    private a() {}
+    private static h toj;
     
-    public final String getName()
+    static
     {
-      AppMethodBeat.i(73197);
-      String str = h.this.iXH + "|StateExecuting";
-      AppMethodBeat.o(73197);
-      return str;
-    }
-    
-    public final boolean k(Message paramMessage)
-    {
-      AppMethodBeat.i(73196);
-      if (2 == paramMessage.what)
-      {
-        h.this.b(h.this.iXF);
-        AppMethodBeat.o(73196);
-        return true;
-      }
-      boolean bool = super.k(paramMessage);
-      AppMethodBeat.o(73196);
-      return bool;
+      AppMethodBeat.i(144358);
+      toj = new h((byte)0);
+      AppMethodBeat.o(144358);
     }
   }
 }

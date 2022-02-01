@@ -15,16 +15,22 @@ public final class Roam$RoamReqHead
   public static final int OS_VER_FIELD_NUMBER = 4;
   public static final int PROTOCOL_VER_FIELD_NUMBER = 1;
   public static final int UIN_FIELD_NUMBER = 5;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40 }, new String[] { "protocol_ver", "client_plat_id", "client_ver", "os_ver", "uin" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", Long.valueOf(0L) }, RoamReqHead.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field client_plat_id = PBField.initInt32(0);
   public final PBStringField client_ver = PBField.initString("");
   public final PBStringField os_ver = PBField.initString("");
   public final PBInt32Field protocol_ver = PBField.initInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40 }, new String[] { "protocol_ver", "client_plat_id", "client_ver", "os_ver", "uin" }, new Object[] { localInteger, localInteger, "", "", Long.valueOf(0L) }, RoamReqHead.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.sso.roam.Roam.RoamReqHead
  * JD-Core Version:    0.7.0.1
  */

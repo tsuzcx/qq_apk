@@ -33,12 +33,17 @@ public final class WavExtractor
     if (this.wavHeader == null)
     {
       this.wavHeader = WavHeaderReader.peek(paramExtractorInput);
-      if (this.wavHeader == null) {
+      paramPositionHolder = this.wavHeader;
+      if (paramPositionHolder != null)
+      {
+        paramPositionHolder = Format.createAudioSampleFormat(null, "audio/raw", null, paramPositionHolder.getBitrate(), 32768, this.wavHeader.getNumChannels(), this.wavHeader.getSampleRateHz(), this.wavHeader.getEncoding(), null, null, 0, null);
+        this.trackOutput.format(paramPositionHolder);
+        this.bytesPerFrame = this.wavHeader.getBytesPerFrame();
+      }
+      else
+      {
         throw new ParserException("Unsupported or unrecognized wav header.");
       }
-      paramPositionHolder = Format.createAudioSampleFormat(null, "audio/raw", null, this.wavHeader.getBitrate(), 32768, this.wavHeader.getNumChannels(), this.wavHeader.getSampleRateHz(), this.wavHeader.getEncoding(), null, null, 0, null);
-      this.trackOutput.format(paramPositionHolder);
-      this.bytesPerFrame = this.wavHeader.getBytesPerFrame();
     }
     if (!this.wavHeader.hasDataBounds())
     {
@@ -77,7 +82,7 @@ public final class WavExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.wav.WavExtractor
  * JD-Core Version:    0.7.0.1
  */

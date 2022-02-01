@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9c" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a009f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9b" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a009f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9d" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="72.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bd3" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9c" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="72.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bd3" />
     </LinearLayout>
     <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.qzone.widget.FeedImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9e" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+        <com.qzone.widget.FeedImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9d" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
     </LinearLayout>
 </FrameLayout>

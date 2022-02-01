@@ -1,33 +1,48 @@
 package com.tencent.biz.pubaccount.weishi_new.report;
 
-import azri;
 import com.google.gson.Gson;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import java.util.HashMap;
-import tlo;
 
 class WSStatisticsReporter$1
   implements Runnable
 {
-  WSStatisticsReporter$1(WSStatisticsReporter paramWSStatisticsReporter) {}
+  WSStatisticsReporter$1(WSStatisticsReporter paramWSStatisticsReporter, String paramString) {}
   
   public void run()
   {
-    if (WSStatisticsReporter.access$400(this.this$0) == null) {
+    if (WSStatisticsReporter.access$500(this.this$0) == null) {
       return;
     }
-    String str = new Gson().toJson(WSStatisticsReporter.Builder.access$600(WSStatisticsReporter.access$500(this.this$0)));
-    WSStatisticsReporter.access$400(this.this$0).setExtendInfo(str);
-    WSStatisticsReporter.access$800(this.this$0).putAll(WSStatisticsReporter.Builder.access$700(WSStatisticsReporter.access$500(this.this$0)));
-    WSStatisticsReporter.access$800(this.this$0).putAll(WSStatisticsReporter.access$400(this.this$0).getBaseParams());
-    azri.a(BaseApplication.getContext()).a(null, WSStatisticsReporter.access$900(this.this$0), true, 0L, 0L, WSStatisticsReporter.access$800(this.this$0), "", WSStatisticsReporter.access$1000(this.this$0));
-    WSStatisticsReporter.access$1100(this.this$0);
-    tlo.b("WSStatisticsReporter", "event report: " + WSStatisticsReporter.access$900(this.this$0) + ", position: " + (String)WSStatisticsReporter.access$800(this.this$0).get("position") + ",params:" + WSStatisticsReporter.access$800(this.this$0).toString() + " isFlush: " + WSStatisticsReporter.access$1000(this.this$0));
+    WSStatisticsReporter.access$500(this.this$0).setEventName(WSStatisticsReporter.access$600(this.this$0));
+    Object localObject = this.this$0;
+    WSStatisticsReporter.access$900((WSStatisticsReporter)localObject, WSStatisticsReporter.Builder.access$800(WSStatisticsReporter.access$700((WSStatisticsReporter)localObject)));
+    localObject = new Gson().toJson(WSStatisticsReporter.Builder.access$800(WSStatisticsReporter.access$700(this.this$0)));
+    WSStatisticsReporter.access$500(this.this$0).setExtendInfo((String)localObject);
+    WSStatisticsReporter.access$1100(this.this$0).putAll(WSStatisticsReporter.Builder.access$1000(WSStatisticsReporter.access$700(this.this$0)));
+    WSStatisticsReporter.access$500(this.this$0).setSubSession(this.a);
+    WSStatisticsReporter.access$1100(this.this$0).putAll(WSStatisticsReporter.access$500(this.this$0).getBaseParams());
+    UserAction.onUserAction(WSStatisticsReporter.access$600(this.this$0), true, -1L, -1L, WSStatisticsReporter.access$1100(this.this$0), true);
+    if (WSStatisticsReporter.access$1200(this.this$0)) {
+      WSStatisticsReporter.access$1300(this.this$0);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mEventName :");
+    ((StringBuilder)localObject).append(WSStatisticsReporter.access$600(this.this$0));
+    ((StringBuilder)localObject).append(", position: ");
+    ((StringBuilder)localObject).append((String)WSStatisticsReporter.access$1100(this.this$0).get("position"));
+    ((StringBuilder)localObject).append(", sopName: ");
+    ((StringBuilder)localObject).append((String)WSStatisticsReporter.access$1100(this.this$0).get("sop_name"));
+    ((StringBuilder)localObject).append(", videoPageSession: ");
+    ((StringBuilder)localObject).append((String)WSStatisticsReporter.access$1100(this.this$0).get("sub_session_id"));
+    WSLog.b("reportVideoSession", ((StringBuilder)localObject).toString());
+    WSStatisticsReporter.access$1400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,6 @@ public final class c
     d locald = new d(0, new byte[] { 37, 36, 35, 41, 64, 56, 72, 71, 80, 76, 62, 60, 78, 82, 77, 118 });
     a = locald;
     b = locald;
-    locald = a;
   }
   
   public static d a()
@@ -32,18 +31,15 @@ public final class c
   {
     try
     {
-      localObject = paramString.getBytes("UTF-8");
-      paramString = (String)localObject;
+      byte[] arrayOfByte = paramString.getBytes("UTF-8");
+      paramString = arrayOfByte;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        Object localObject;
-        paramString = paramString.getBytes();
-      }
+      label12:
+      break label12;
     }
-    localObject = b;
+    paramString = paramString.getBytes();
     b = new d(paramInt, paramString);
     c.put(Integer.valueOf(paramInt), b);
   }

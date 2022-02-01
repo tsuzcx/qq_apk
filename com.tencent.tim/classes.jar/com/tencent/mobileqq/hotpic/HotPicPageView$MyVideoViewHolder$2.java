@@ -1,0 +1,18 @@
+package com.tencent.mobileqq.hotpic;
+
+class HotPicPageView$MyVideoViewHolder$2
+  implements Runnable
+{
+  HotPicPageView$MyVideoViewHolder$2(HotPicPageView.c paramc, int paramInt) {}
+  
+  public void run()
+  {
+    this.c.PE(this.val$state);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder.2
+ * JD-Core Version:    0.7.0.1
+ */

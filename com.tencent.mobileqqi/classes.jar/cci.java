@@ -1,15 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
 public class cci
   implements View.OnClickListener
 {
-  public cci(ChatHistory paramChatHistory) {}
+  public cci(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString) {}
   
   public void onClick(View paramView)
   {
-    this.a.h();
+    View localView = (View)paramView.getParent();
+    new ccj(this, paramView.getTag(), localView).run();
   }
 }
 

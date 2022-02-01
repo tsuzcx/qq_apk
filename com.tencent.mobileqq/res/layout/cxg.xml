@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingRight="51.0dip" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="end" android:id="@id/p4i" android:background="@drawable/qcircle_skin_feed_newpost_bg_operation" android:layout_width="wrap_content" android:layout_height="101.0dip" android:layout_marginRight="-19.0dip">
+        <com.tencent.image.URLImageView android:id="@id/p47" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="33.0dip" android:src="@drawable/qcircle_skin_icon_general_hashtag_ghost" />
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_ghost" android:ellipsize="end" android:id="@id/p55" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="58.0dip" android:layout_marginTop="31.0dip" android:layout_marginRight="60.0dip" android:maxWidth="116.0dip" android:lines="1" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/qcircle_skin_color_text_ghost" android:ellipsize="end" android:id="@id/p56" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginRight="60.0dip" android:layout_marginBottom="32.5dip" android:maxWidth="116.0dip" android:lines="1" android:includeFontPadding="false" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</FrameLayout>

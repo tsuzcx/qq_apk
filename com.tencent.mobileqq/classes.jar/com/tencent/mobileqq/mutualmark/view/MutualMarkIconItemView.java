@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import ausp;
-import autj;
+import com.tencent.mobileqq.mutualmark.MutualMarkIconProxyDrawable;
+import com.tencent.mobileqq.mutualmark.info.MutualMarkForDisplayInfo;
 
 public class MutualMarkIconItemView
   extends ImageView
 {
-  ausp jdField_a_of_type_Ausp;
-  autj jdField_a_of_type_Autj;
+  MutualMarkForDisplayInfo a;
+  MutualMarkIconProxyDrawable b;
   
   public MutualMarkIconItemView(Context paramContext)
   {
@@ -29,34 +29,38 @@ public class MutualMarkIconItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public int a()
-  {
-    if (this.jdField_a_of_type_Ausp != null) {
-      return this.jdField_a_of_type_Ausp.getIntrinsicWidth();
-    }
-    return getMeasuredWidth();
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_Autj != null) {
-      return this.jdField_a_of_type_Autj.a;
-    }
-    return 0L;
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_Ausp != null) {
-      this.jdField_a_of_type_Ausp.b();
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.b;
+    if (localMutualMarkIconProxyDrawable != null) {
+      localMutualMarkIconProxyDrawable.c();
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Ausp != null) {
-      this.jdField_a_of_type_Ausp.a(paramString);
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.b;
+    if (localMutualMarkIconProxyDrawable != null) {
+      localMutualMarkIconProxyDrawable.a(paramString);
     }
+  }
+  
+  public int getMaybeWidth()
+  {
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.b;
+    if (localMutualMarkIconProxyDrawable != null) {
+      return localMutualMarkIconProxyDrawable.getIntrinsicWidth();
+    }
+    return getMeasuredWidth();
+  }
+  
+  public long getMutualMarkType()
+  {
+    MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = this.a;
+    if (localMutualMarkForDisplayInfo != null) {
+      return localMutualMarkForDisplayInfo.a;
+    }
+    return 0L;
   }
   
   public void setIconAlpha(float paramFloat)
@@ -65,27 +69,28 @@ public class MutualMarkIconItemView
     setAlpha(paramFloat);
   }
   
-  public void setIconResource(autj paramautj)
+  public void setIconResource(MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo)
   {
-    if (this.jdField_a_of_type_Autj == paramautj) {}
-    do
-    {
+    if (this.a == paramMutualMarkForDisplayInfo) {
       return;
-      this.jdField_a_of_type_Autj = paramautj;
-      if (!TextUtils.isEmpty(paramautj.jdField_c_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_Ausp = new ausp(getContext(), paramautj.jdField_c_of_type_JavaLangString);
-        setImageDrawable(this.jdField_a_of_type_Ausp);
-        return;
-      }
-    } while (paramautj.jdField_c_of_type_Int == 0);
-    this.jdField_a_of_type_Ausp = new ausp(getContext(), paramautj.jdField_c_of_type_Int);
-    setImageDrawable(this.jdField_a_of_type_Ausp);
+    }
+    this.a = paramMutualMarkForDisplayInfo;
+    if (!TextUtils.isEmpty(paramMutualMarkForDisplayInfo.s))
+    {
+      this.b = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.s);
+      setImageDrawable(this.b);
+      return;
+    }
+    if (paramMutualMarkForDisplayInfo.q != 0)
+    {
+      this.b = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.q);
+      setImageDrawable(this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.view.MutualMarkIconItemView
  * JD-Core Version:    0.7.0.1
  */

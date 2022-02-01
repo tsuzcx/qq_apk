@@ -19,16 +19,28 @@ public class RightEyeStatusChecker
   
   public boolean isInRange(FaceRangeStatus paramFaceRangeStatus, StickerItem.ValueRange paramValueRange)
   {
-    if ((paramFaceRangeStatus == null) || (paramValueRange == null)) {}
-    while ((paramFaceRangeStatus.rightEye < paramValueRange.min) || (paramFaceRangeStatus.rightEye > paramValueRange.max)) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramFaceRangeStatus != null)
+    {
+      if (paramValueRange == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (paramFaceRangeStatus.rightEye >= paramValueRange.min)
+      {
+        bool1 = bool2;
+        if (paramFaceRangeStatus.rightEye <= paramValueRange.max) {
+          bool1 = true;
+        }
+      }
     }
-    return true;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.face.RightEyeStatusChecker
  * JD-Core Version:    0.7.0.1
  */

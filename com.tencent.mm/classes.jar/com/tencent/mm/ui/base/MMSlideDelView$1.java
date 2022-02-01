@@ -9,62 +9,62 @@ final class MMSlideDelView$1
 {
   public final void a(MMSlideDelView paramMMSlideDelView, boolean paramBoolean)
   {
-    AppMethodBeat.i(106770);
+    AppMethodBeat.i(142127);
     if (paramBoolean)
     {
-      nTX.add(paramMMSlideDelView);
-      AppMethodBeat.o(106770);
+      JNK.add(paramMMSlideDelView);
+      AppMethodBeat.o(142127);
       return;
     }
-    nTX.remove(paramMMSlideDelView);
-    AppMethodBeat.o(106770);
+    JNK.remove(paramMMSlideDelView);
+    AppMethodBeat.o(142127);
   }
   
-  public final boolean bKj()
+  public final boolean fSl()
   {
-    AppMethodBeat.i(106771);
-    if (nTX.size() > 0)
+    AppMethodBeat.i(142128);
+    if (JNK.size() > 0)
     {
-      AppMethodBeat.o(106771);
+      AppMethodBeat.o(142128);
       return true;
     }
-    AppMethodBeat.o(106771);
+    AppMethodBeat.o(142128);
     return false;
   }
   
-  public final void bKk()
+  public final void fSm()
   {
-    AppMethodBeat.i(106772);
-    Iterator localIterator = nTX.iterator();
+    AppMethodBeat.i(142129);
+    Iterator localIterator = JNK.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.dEk();
+        localMMSlideDelView.jmE();
       }
     }
-    nTX.clear();
-    AppMethodBeat.o(106772);
+    JNK.clear();
+    AppMethodBeat.o(142129);
   }
   
-  public final void bKl()
+  public final void fSn()
   {
-    AppMethodBeat.i(106773);
-    Iterator localIterator = nTX.iterator();
+    AppMethodBeat.i(142130);
+    Iterator localIterator = JNK.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.dEj();
+        localMMSlideDelView.jmD();
       }
     }
-    nTX.clear();
-    AppMethodBeat.o(106773);
+    JNK.clear();
+    AppMethodBeat.o(142130);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMSlideDelView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,27 @@
+package com.tencent.ilive.opensdk.apiinterfaces;
+
+import com.tencent.ilive.opensdk.linkmicinterface.LinkMicEventListener4User;
+import com.tencent.ilive.opensdk.linkmicinterface.LinkMicUserparams;
+
+public abstract interface IRtcLink
+{
+  public abstract void addLinkEvent(LinkMicEventListener4User paramLinkMicEventListener4User);
+  
+  public abstract void init(LinkMicUserparams paramLinkMicUserparams);
+  
+  public abstract void release();
+  
+  public abstract void removeLinkEvent(LinkMicEventListener4User paramLinkMicEventListener4User);
+  
+  public abstract void setLinkMicMute(boolean paramBoolean);
+  
+  public abstract void startLink();
+  
+  public abstract void stopLink();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.ilive.opensdk.apiinterfaces.IRtcLink
+ * JD-Core Version:    0.7.0.1
+ */

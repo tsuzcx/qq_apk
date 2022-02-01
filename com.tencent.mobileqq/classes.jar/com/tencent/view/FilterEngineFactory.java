@@ -29,15 +29,16 @@ public final class FilterEngineFactory
   
   public static FilterEngineFactory getInstance()
   {
-    if (sIntance == null) {}
-    try
-    {
-      if (sIntance == null) {
-        sIntance = new FilterEngineFactory();
+    if (sIntance == null) {
+      try
+      {
+        if (sIntance == null) {
+          sIntance = new FilterEngineFactory();
+        }
       }
-      return sIntance;
+      finally {}
     }
-    finally {}
+    return sIntance;
   }
   
   private void initGlThread()
@@ -56,10 +57,11 @@ public final class FilterEngineFactory
   
   public Looper getLooper()
   {
-    if (this.mGlThread == null) {
+    HandlerThread localHandlerThread = this.mGlThread;
+    if (localHandlerThread == null) {
       return null;
     }
-    return this.mGlThread.getLooper();
+    return localHandlerThread.getLooper();
   }
   
   public void queue(Runnable paramRunnable)
@@ -69,15 +71,16 @@ public final class FilterEngineFactory
   
   public boolean usecurruntContext()
   {
-    if (this.mFilterContext != null) {
-      return this.mFilterContext.usecurruntContext();
+    FilterContext localFilterContext = this.mFilterContext;
+    if (localFilterContext != null) {
+      return localFilterContext.usecurruntContext();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.view.FilterEngineFactory
  * JD-Core Version:    0.7.0.1
  */

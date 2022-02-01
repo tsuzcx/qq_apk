@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<permissions
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <permission description="申请获取你的昵称、头像、地区及性别" id="scope.userInfo" name="用户信息" />
-    <permission description="申请获取你的位置信息" id="scope.userLocation" name="位置信息" />
-    <permission description="申请获取你的通讯地址" id="scope.address" name="通讯地址" />
-    <permission description="申请获取你的发票抬头" id="scope.invoiceTitle" name="发票抬头" />
-    <permission description="申请获取你的运动步数" id="scope.qqrun" name="运动步数" />
-    <permission description="申请使用你的麦克风" id="scope.record" name="录音功能" />
-    <permission description="申请使用你的系统相册" id="scope.writePhotosAlbum" name="保存视频或图片到你的相册" />
-    <permission description="申请使用你的摄像头" id="scope.camera" name="相机功能" />
-    <permission description="申请修改你的个人资料如昵称、头像" id="scope.personalize" name="修改资料" />
-    <permission description="申请发送订阅消息" description-reject="暂不接收" id="setting.appMsgSubscribed" name="小程序订阅消息" />
-    <permission id="scope.getPhoneNumber" name="获取你的电话号码" />
-    <permission description="允许该小程序向我发起加好友请求" id="setting.addFriend" name="向我发起加好友请求" />
+<permissions>
+    <permission description="申请获取你的昵称、头像、地区及性别" description-reject="取消" id="scope.userInfo" name="用户信息" report_sub_action="userinfo" />
+    <permission description="申请获取你的位置信息" id="scope.userLocation" name="位置信息" report_sub_action="userLocation" />
+    <permission description="申请获取你的通讯地址" id="scope.address" name="通讯地址" report_sub_action="chooseAddress" />
+    <permission description="申请获取你的发票抬头" id="scope.invoiceTitle" name="发票抬头" report_sub_action="invoiceTitle" />
+    <permission description="申请获取你的发票" id="scope.invoice" name="获取发票" report_sub_action="invoice" />
+    <permission description="申请获取你的运动步数" id="scope.qqrun" name="运动步数" report_sub_action="qqrun" />
+    <permission description="申请使用你的麦克风" id="scope.record" name="录音功能" report_sub_action="record" />
+    <permission description="申请使用你的系统相册" id="scope.writePhotosAlbum" name="保存视频或图片到你的相册" report_sub_action="writePhotosAlbum" />
+    <permission description="申请使用你的摄像头" id="scope.camera" name="相机功能" report_sub_action="camera" />
+    <permission description="申请修改你的个人资料如昵称、头像" id="scope.personalize" name="修改资料" report_sub_action="personalize" />
+    <permission description="申请发送订阅消息" description-reject="暂不接收" id="setting.appMsgSubscribed" name="小程序订阅消息" report_sub_action="appMsgSubscribed" />
+    <permission id="scope.getPhoneNumber" name="获取你的电话号码" report_sub_action="getphonenumber" />
+    <permission description="允许该小程序向我发起加好友请求" id="setting.addFriend" name="向我发起加好友请求" report_sub_action="addFriend" />
+    <permission description="允许后，当你在阅读类小程序中添加阅读内容至书架时，该内容也将同步至“我的书架”中，你可在小程序设置中更改" id="scope.insertBookShelf" name="申请同步内容到“我的书架”" report_sub_action="insertBookShelf" />
+    <permission description="允许授权后，小程序会加入到「最近浏览」彩签" id="scope.recentColorSign" name="申请加入「最近浏览」彩签" report_sub_action="addRecentColorSign" />
+    <permission description="" id="scope.uploadAvatar" name="是否允许将此图标设为你的QQ头像" />
+    <permission description="交友卡" id="scope.expandUserInfo" name="获取你的交友卡资料" report_sub_action="getExpandUserInfo" />
+    <permission description="允许该小游戏使用你的厘米秀形象" id="scope.cmshowInfo" name="厘米秀形象" report_sub_action="getCMShowInfo" />
+    <permission description="获取你的QQ2D厘米秀形象，若尚未开2D厘米秀将会为你开通，后续可在厘米秀主页继续进行装扮哦。" id="scope.cmshowInfo2d" name="QQ2D厘米秀形象" report_sub_action="getCMShowInfo" />
+    <permission description="获取你的QQ3D厘米秀形象，若尚未开通3D厘米秀将会为你开通，后续可在厘米秀主页继续进行装扮哦。" id="scope.cmshowInfo3d" name="QQ3D厘米秀形象" report_sub_action="getCMShowInfo" />
     <permission built-in="true" description="系统位置权限" id="android.permission.ACCESS_FINE_LOCATION" name="系统位置权限" />
     <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.RECORD_AUDIO" name="系统麦克风权限" />
     <permission built-in="true" description="需要麦克风权限，请到设置中设置" id="android.permission.CALL_PHONE" name="系统麦克风权限" />
@@ -28,9 +35,6 @@
     </event>
     <event name="getLocation">
         <request-permission>scope.userLocation</request-permission>
-    </event>
-    <event name="makePhoneCall">
-        <request-permission>android.permission.CALL_PHONE</request-permission>
     </event>
     <event name="insertCamera">
         <request-permission>scope.camera</request-permission>
@@ -48,11 +52,15 @@
     <event name="chooseImage">
         <request-permission>android.permission.CAMERA</request-permission>
     </event>
+    <event name="chooseMedia">
+        <request-permission>android.permission.CAMERA</request-permission>
+    </event>
     <event name="startRecord">
         <request-permission>scope.record</request-permission>
         <request-permission>android.permission.RECORD_AUDIO</request-permission>
     </event>
     <event name="operateRecorder">
+        <request-permission>scope.record</request-permission>
         <request-permission>android.permission.RECORD_AUDIO</request-permission>
     </event>
     <event name="joinVoIPChat">
@@ -81,5 +89,23 @@
     </event>
     <event name="Personalize">
         <request-permission>scope.personalize</request-permission>
+    </event>
+    <event name="getPhoneNumber">
+        <request-permission>scope.getPhoneNumber</request-permission>
+    </event>
+    <event name="invokeNativePlugin.uploadAvatar">
+        <request-permission>scope.uploadAvatar</request-permission>
+    </event>
+    <event name="invokeNativePlugin.getExpandUserInfo">
+        <request-permission>scope.expandUserInfo</request-permission>
+    </event>
+    <event name="insertBookshelf">
+        <request-permission>scope.insertBookShelf</request-permission>
+    </event>
+    <event name="addRecentColorSign">
+        <request-permission>scope.recentColorSign</request-permission>
+    </event>
+    <event name="getCMShowInfo">
+        <request-permission>scope.cmshowInfo</request-permission>
     </event>
 </permissions>

@@ -85,52 +85,63 @@ public final class ShuoshuoPicInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 0);
+    Object localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.pictureid != null) {
-      paramJceOutputStream.write(this.pictureid, 1);
+    localObject = this.pictureid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.sloc != null) {
-      paramJceOutputStream.write(this.sloc, 2);
+    localObject = this.sloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.pictype, 3);
     paramJceOutputStream.write(this.picheight, 4);
     paramJceOutputStream.write(this.picwidth, 5);
     paramJceOutputStream.write(this.ishd, 6);
-    if (this.hdid != null) {
-      paramJceOutputStream.write(this.hdid, 7);
+    localObject = this.hdid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.hdheight, 8);
     paramJceOutputStream.write(this.hdwidth, 9);
-    if (this.strWaterMarkID != null) {
-      paramJceOutputStream.write(this.strWaterMarkID, 10);
+    localObject = this.strWaterMarkID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.strWaterMarkMemo != null) {
-      paramJceOutputStream.write(this.strWaterMarkMemo, 11);
+    localObject = this.strWaterMarkMemo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.mapWaterMarkParams != null) {
-      paramJceOutputStream.write(this.mapWaterMarkParams, 12);
+    localObject = this.mapWaterMarkParams;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 13);
+    localObject = this.pic_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.is_appext_pic, 14);
-    if (this.richval != null) {
-      paramJceOutputStream.write(this.richval, 15);
+    localObject = this.richval;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.sourceType, 16);
-    if (this.imageId != null) {
-      paramJceOutputStream.write(this.imageId, 17);
+    localObject = this.imageId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.video_id != null) {
-      paramJceOutputStream.write(this.video_id, 18);
+    localObject = this.video_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.ShuoshuoPicInfo
  * JD-Core Version:    0.7.0.1
  */

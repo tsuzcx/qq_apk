@@ -11,17 +11,18 @@ class em$5
     if (locald == null) {
       return;
     }
-    if (locald.nH) {}
-    for (int i = -21050000;; i = -21000020)
-    {
-      em.a(this.nm, this.nn.ny, locald, i, 0, null);
-      return;
+    int i;
+    if (locald.nH) {
+      i = -21050000;
+    } else {
+      i = -21000020;
     }
+    em.a(this.nm, this.nn.ny, locald, i, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.em.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.svg.a;
 
-import android.annotation.TargetApi;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -16,66 +15,86 @@ import java.lang.ref.WeakReference;
 public abstract class b
   extends Drawable
 {
-  protected final Rect Bc = new Rect();
+  protected int adoA = 0;
+  protected boolean adoB = false;
+  protected Paint adoC = new Paint();
+  protected WeakReference<View> adoD;
+  protected int adoE = 0;
+  protected int adoF = 0;
+  protected int adoG = 0;
+  protected int adoH = 0;
+  protected float adoI;
+  protected final Rect bre = new Rect();
+  protected ColorFilter kx;
   public long mDuration = 0L;
-  protected ColorFilter nO;
-  protected int yRU = 0;
-  protected boolean yRV = false;
-  protected Paint yRW = new Paint();
-  protected WeakReference<View> yRX;
-  protected int yRY = 0;
-  protected int yRZ = 0;
-  protected int ySa = 0;
-  protected int ySb = 0;
-  protected float ySc;
   
   public b(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.ySa = paramInt1;
-    this.ySb = paramInt2;
-    this.ySc = 1.0F;
-    this.yRY = this.ySa;
-    this.yRZ = this.ySb;
+    this.adoG = paramInt1;
+    this.adoH = paramInt2;
+    this.adoI = 1.0F;
+    this.adoE = this.adoG;
+    this.adoF = this.adoH;
     setLevel(10000);
-    this.yRU = paramInt3;
+    this.adoA = paramInt3;
   }
   
-  private void dAe()
+  private void jeo()
   {
-    View localView = a.v(this);
-    eJ(localView);
+    View localView = a.S(this);
+    kU(localView);
     if (localView != null)
     {
-      if (this.nO != null) {
-        setColorFilter(this.nO);
+      if (this.kx != null) {
+        setColorFilter(this.kx);
       }
-      a.b(localView, this.yRW);
+      a.b(localView, this.adoC);
     }
   }
   
-  protected final void dAc()
+  public int getIntrinsicHeight()
   {
-    this.Bc.set(0, 0, getIntrinsicWidth(), getIntrinsicHeight());
+    return this.adoF;
   }
   
-  protected final void dAd()
+  public int getIntrinsicWidth()
   {
-    if (this.yRV)
+    return this.adoE;
+  }
+  
+  public int getOpacity()
+  {
+    View localView = jep();
+    if ((localView != null) && (localView.getAlpha() < 1.0F)) {}
+    while ((this.adoC != null) && (this.adoC.getAlpha() < 255)) {
+      return -3;
+    }
+    return 0;
+  }
+  
+  protected final void jem()
+  {
+    this.bre.set(0, 0, getIntrinsicWidth(), getIntrinsicHeight());
+  }
+  
+  protected final void jen()
+  {
+    if (this.adoB)
     {
       Rect localRect = getBounds();
-      Gravity.apply(119, getIntrinsicWidth(), getIntrinsicHeight(), localRect, this.Bc);
+      Gravity.apply(119, getIntrinsicWidth(), getIntrinsicHeight(), localRect, this.bre);
     }
-    this.yRV = false;
+    this.adoB = false;
   }
   
   /* Error */
-  protected final View dAf()
+  protected final View jep()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 109	com/tencent/mm/svg/a/b:yRX	Ljava/lang/ref/WeakReference;
+    //   3: getfield 120	com/tencent/mm/svg/a/b:adoD	Ljava/lang/ref/WeakReference;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnonnull +9 -> 17
@@ -86,9 +105,9 @@ public abstract class b
     //   15: aload_1
     //   16: areturn
     //   17: aload_0
-    //   18: getfield 109	com/tencent/mm/svg/a/b:yRX	Ljava/lang/ref/WeakReference;
-    //   21: invokevirtual 115	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   24: checkcast 117	android/view/View
+    //   18: getfield 120	com/tencent/mm/svg/a/b:adoD	Ljava/lang/ref/WeakReference;
+    //   21: invokevirtual 126	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   24: checkcast 92	android/view/View
     //   27: astore_1
     //   28: goto -15 -> 13
     //   31: astore_1
@@ -107,11 +126,11 @@ public abstract class b
     //   17	28	31	finally
   }
   
-  protected final void eJ(View paramView)
+  protected final void kU(View paramView)
   {
     try
     {
-      this.yRX = new WeakReference(paramView);
+      this.adoD = new WeakReference(paramView);
       return;
     }
     finally
@@ -121,66 +140,26 @@ public abstract class b
     }
   }
   
-  public int getIntrinsicHeight()
-  {
-    return this.yRZ;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.yRY;
-  }
-  
-  public int getOpacity()
-  {
-    View localView = dAf();
-    if ((localView != null) && (localView.getAlpha() < 1.0F)) {}
-    while ((this.yRW != null) && (this.yRW.getAlpha() < 255)) {
-      return -3;
-    }
-    return 0;
-  }
-  
-  protected final void m(Canvas paramCanvas)
-  {
-    if (com.tencent.mm.svg.b.b.dAj())
-    {
-      int i = this.Bc.height() / 3;
-      paramCanvas.save();
-      Paint localPaint = new Paint();
-      localPaint.setStyle(Paint.Style.FILL);
-      localPaint.setColor(-12303292);
-      localPaint.setAlpha(127);
-      localPaint.setTextSize(i);
-      localPaint.setStrokeWidth(1.0F);
-      float f = localPaint.measureText("SVG");
-      paramCanvas.translate(this.Bc.width() - f, this.Bc.height() * 2 / 3);
-      paramCanvas.drawText("SVG", 0.0F, i, localPaint);
-      paramCanvas.restore();
-    }
-  }
-  
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.yRV = true;
+    this.adoB = true;
   }
   
   protected boolean onLevelChange(int paramInt)
   {
-    dAe();
+    jeo();
     return super.onLevelChange(paramInt);
   }
   
-  @TargetApi(17)
   public void setAlpha(int paramInt)
   {
-    this.yRW.setAlpha(paramInt);
-    View localView = dAf();
+    this.adoC.setAlpha(paramInt);
+    View localView = jep();
     if ((localView != null) && (Build.VERSION.SDK_INT >= 17)) {}
     try
     {
-      localView.setLayerPaint(this.yRW);
+      localView.setLayerPaint(this.adoC);
       return;
     }
     catch (NoSuchMethodError localNoSuchMethodError)
@@ -189,16 +168,15 @@ public abstract class b
     }
   }
   
-  @TargetApi(17)
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.yRW.setColorFilter(paramColorFilter);
-    View localView = dAf();
+    this.adoC.setColorFilter(paramColorFilter);
+    View localView = jep();
     if ((localView != null) && (Build.VERSION.SDK_INT >= 17)) {}
     while (localView != null) {
       try
       {
-        localView.setLayerPaint(this.yRW);
+        localView.setLayerPaint(this.adoC);
         return;
       }
       catch (NoSuchMethodError paramColorFilter)
@@ -207,18 +185,37 @@ public abstract class b
         return;
       }
     }
-    this.nO = paramColorFilter;
+    this.kx = paramColorFilter;
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    dAe();
+    jeo();
     return super.setVisible(paramBoolean1, paramBoolean2);
+  }
+  
+  protected final void w(Canvas paramCanvas)
+  {
+    if (com.tencent.mm.svg.b.b.jeu())
+    {
+      int i = this.bre.height() / 3;
+      paramCanvas.save();
+      Paint localPaint = new Paint();
+      localPaint.setStyle(Paint.Style.FILL);
+      localPaint.setColor(-12303292);
+      localPaint.setAlpha(127);
+      localPaint.setTextSize(i);
+      localPaint.setStrokeWidth(1.0F);
+      float f = localPaint.measureText("SVG");
+      paramCanvas.translate(this.bre.width() - f, this.bre.height() * 2 / 3);
+      paramCanvas.drawText("SVG", 0.0F, i, localPaint);
+      paramCanvas.restore();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.svg.a.b
  * JD-Core Version:    0.7.0.1
  */

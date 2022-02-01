@@ -20,13 +20,14 @@ public final class Oidb_0xaef$SearchDocRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "next", "is_end", "key_word", "match_count", "doc_list" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), null }, SearchDocRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "next", "is_end", "key_word", "match_count", "doc_list" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, null }, SearchDocRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xaef.Oidb_0xaef.SearchDocRsp
  * JD-Core Version:    0.7.0.1
  */

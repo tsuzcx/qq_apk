@@ -10,10 +10,10 @@ final class zzaai
   
   static
   {
-    AppMethodBeat.i(3339);
+    AppMethodBeat.i(40129);
     zzbtg = zztv();
     zzbth = new zzaah();
-    AppMethodBeat.o(3339);
+    AppMethodBeat.o(40129);
   }
   
   static zzaag zztt()
@@ -28,23 +28,23 @@ final class zzaai
   
   private static zzaag zztv()
   {
-    AppMethodBeat.i(3338);
+    AppMethodBeat.i(40128);
     try
     {
-      zzaag localzzaag = (zzaag)Class.forName("com.google.protobuf.MapFieldSchemaFull").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      AppMethodBeat.o(3338);
+      zzaag localzzaag = (zzaag)Class.forName("com.google.d.by").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      AppMethodBeat.o(40128);
       return localzzaag;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(3338);
+      AppMethodBeat.o(40128);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzaai
  * JD-Core Version:    0.7.0.1
  */

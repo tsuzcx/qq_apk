@@ -34,17 +34,19 @@ public final class GameLogoUrl
   {
     paramJceOutputStream.write(this.sLogoMd5, 0);
     paramJceOutputStream.write(this.sLogoName, 1);
-    if (this.sAppid != null) {
-      paramJceOutputStream.write(this.sAppid, 2);
+    String str = this.sAppid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.sGameName != null) {
-      paramJceOutputStream.write(this.sGameName, 3);
+    str = this.sGameName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GameCenter.GameLogoUrl
  * JD-Core Version:    0.7.0.1
  */

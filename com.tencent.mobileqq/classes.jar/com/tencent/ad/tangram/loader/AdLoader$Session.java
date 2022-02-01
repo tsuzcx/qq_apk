@@ -18,7 +18,7 @@ public final class AdLoader$Session
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.loader.AdLoader.Session
  * JD-Core Version:    0.7.0.1
  */

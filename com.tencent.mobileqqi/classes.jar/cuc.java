@@ -9,7 +9,7 @@ public class cuc
   
   public void onClick(View paramView)
   {
-    this.a.c();
+    this.a.b();
   }
 }
 

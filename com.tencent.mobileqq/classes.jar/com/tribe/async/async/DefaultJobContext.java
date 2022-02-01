@@ -32,8 +32,9 @@ class DefaultJobContext<Progress>
   
   void notifyCancelListener()
   {
-    if (this.mCancelListener != null) {
-      this.mCancelListener.onCancel();
+    JobContext.CancelListener localCancelListener = this.mCancelListener;
+    if (localCancelListener != null) {
+      localCancelListener.onCancel();
     }
   }
   
@@ -64,7 +65,7 @@ class DefaultJobContext<Progress>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.DefaultJobContext
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ public class bvm
   {
     try
     {
-      if ((AuthDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        AuthDevActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+      if ((AuthDevActivity.a(this.a) != null) && (AuthDevActivity.a(this.a).isShowing()))
+      {
+        AuthDevActivity.a(this.a).dismiss();
+        AuthDevActivity.a(this.a).cancel();
       }
-      if ((AuthDevActivity.a(this.a) != null) && (!AuthDevActivity.a(this.a).isShowing())) {
-        AuthDevActivity.a(this.a).show();
-      }
+      AuthDevActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

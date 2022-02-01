@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.richstatus;
 
-import aybu;
-import ayec;
-import ayef;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,25 +10,26 @@ class StatusManager$3$2$1
   
   public void run()
   {
-    if (ayec.b(this.a.jdField_a_of_type_Ayef.a) != null)
+    if (StatusManager.i(this.a.b.a) != null)
     {
-      Iterator localIterator = ayec.b(this.a.jdField_a_of_type_Ayef.a).iterator();
-      if (localIterator.hasNext())
+      Iterator localIterator = StatusManager.i(this.a.b.a).iterator();
+      while (localIterator.hasNext())
       {
-        aybu localaybu = (aybu)localIterator.next();
-        if (this.a.jdField_a_of_type_Boolean) {}
-        for (int i = 100;; i = -1)
-        {
-          localaybu.a(i, RichStatus.getEmptyStatus(), null);
-          break;
+        IStatusListener localIStatusListener = (IStatusListener)localIterator.next();
+        int i;
+        if (this.a.a) {
+          i = 100;
+        } else {
+          i = -1;
         }
+        localIStatusListener.a(i, RichStatus.getEmptyStatus(), null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.3.2.1
  * JD-Core Version:    0.7.0.1
  */

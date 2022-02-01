@@ -1,34 +1,33 @@
 package com.tencent.biz.qqcircle.viewmodels;
 
-import axlx;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.biz.qcircleshadow.lib.QCircleHostRedPointHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import ubo;
-import ubp;
 
-public class QCircleMessageNoticeViewModel$1
+class QCircleMessageNoticeViewModel$1
   implements Runnable
 {
-  public QCircleMessageNoticeViewModel$1(ubo paramubo) {}
+  QCircleMessageNoticeViewModel$1(QCircleMessageNoticeViewModel paramQCircleMessageNoticeViewModel, Context paramContext) {}
   
   public void run()
   {
-    axlx localaxlx = (axlx)BaseApplicationImpl.getApplication().getRuntime().getManager(36);
     try
     {
-      localaxlx.a(new ubp(this));
+      QCircleHostRedPointHelper.asyncGetNumRedPointInfoByAppid("circle_entrance", new QCircleMessageNoticeViewModel.1.1(this), false);
       return;
     }
     catch (Exception localException)
     {
-      QLog.e("QCircleMessageNoticeViewModel", 1, "updateQQCircleRedFlag  updateRedDot" + localException.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateQQCircleRedFlag  updateRedDot");
+      localStringBuilder.append(localException.toString());
+      QLog.e("QCircleMessageNoticeViewModel", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1
  * JD-Core Version:    0.7.0.1
  */

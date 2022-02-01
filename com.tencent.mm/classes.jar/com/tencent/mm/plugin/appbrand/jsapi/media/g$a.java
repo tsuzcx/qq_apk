@@ -1,19 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-final class g$a
-{
-  String result;
-  boolean success;
-  
-  public g$a(boolean paramBoolean, String paramString)
-  {
-    this.success = paramBoolean;
-    this.result = paramString;
-  }
-}
+import kotlin.Metadata;
+
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/JsApiChooseVideoNew$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class g$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.g.a
  * JD-Core Version:    0.7.0.1
  */

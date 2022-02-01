@@ -14,40 +14,35 @@ final class bx
   {
     Object localObject1 = ao.b();
     bw localbw = this.a;
-    Object localObject2 = this.a.a.a((String)localObject1);
+    Object localObject2 = localbw.a.a((String)localObject1);
     try
     {
-      Iterator localIterator;
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!dg.a((byte[])localObject2)))
       {
         localObject2 = new JSONObject(new String((byte[])localObject2));
         localObject1 = new ak((String)localObject1);
         ((JSONObject)localObject2).getString("ipInfo");
         localObject2 = ((JSONObject)localObject2).optJSONObject("resultMap");
-        if (localObject2 != null) {
-          localIterator = ((JSONObject)localObject2).keys();
-        }
-      }
-      else
-      {
-        while (localIterator.hasNext())
+        if (localObject2 != null)
         {
-          JSONArray localJSONArray = ((JSONObject)localObject2).optJSONArray((String)localIterator.next());
-          if (localJSONArray != null)
+          Iterator localIterator = ((JSONObject)localObject2).keys();
+          while (localIterator.hasNext())
           {
-            bw.a((ak)localObject1, localJSONArray);
-            continue;
-            return;
+            JSONArray localJSONArray = ((JSONObject)localObject2).optJSONArray((String)localIterator.next());
+            if (localJSONArray != null) {
+              bw.a((ak)localObject1, localJSONArray);
+            }
           }
         }
+        localbw.b = ((ak)localObject1);
+        af.c();
       }
+      return;
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    localThrowable.b = ((ak)localObject1);
-    af.c();
   }
 }
 

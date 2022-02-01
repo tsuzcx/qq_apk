@@ -1,65 +1,70 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.s.i;
+import com.tencent.mm.plugin.appbrand.af.j;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import java.util.Collection;
 import java.util.Iterator;
 
 public final class e
 {
-  private static final i<v, aa> jkP;
+  private static final j<ad, ae<?>> uFi;
   
   static
   {
-    AppMethodBeat.i(123598);
-    jkP = new i();
-    AppMethodBeat.o(123598);
+    AppMethodBeat.i(136329);
+    uFi = new j();
+    AppMethodBeat.o(136329);
   }
   
-  public static aa a(v paramv, e.a parama)
+  public static void C(ad paramad)
   {
-    AppMethodBeat.i(123597);
-    if (paramv == null)
+    AppMethodBeat.i(136327);
+    uFi.ek(paramad);
+    AppMethodBeat.o(136327);
+  }
+  
+  public static ae<?> a(ad paramad, a parama)
+  {
+    AppMethodBeat.i(136328);
+    if (paramad == null)
     {
-      AppMethodBeat.o(123597);
+      AppMethodBeat.o(136328);
       return null;
     }
-    paramv = jkP.br(paramv);
-    if (paramv != null)
+    paramad = uFi.ej(paramad);
+    if (paramad != null)
     {
-      paramv = paramv.iterator();
-      while (paramv.hasNext())
+      paramad = paramad.iterator();
+      while (paramad.hasNext())
       {
-        aa localaa = (aa)paramv.next();
-        if ((localaa != null) && (parama.a(localaa)))
+        ae localae = (ae)paramad.next();
+        if ((localae != null) && (parama.a(localae)))
         {
-          AppMethodBeat.o(123597);
-          return localaa;
+          AppMethodBeat.o(136328);
+          return localae;
         }
       }
     }
-    AppMethodBeat.o(123597);
+    AppMethodBeat.o(136328);
     return null;
   }
   
-  public static void a(v paramv, aa paramaa)
+  public static void a(ad paramad, ae<?> paramae)
   {
-    AppMethodBeat.i(123595);
-    jkP.s(paramv, paramaa);
-    AppMethodBeat.o(123595);
+    AppMethodBeat.i(136326);
+    uFi.v(paramad, paramae);
+    AppMethodBeat.o(136326);
   }
   
-  public static void o(v paramv)
+  public static abstract interface a
   {
-    AppMethodBeat.i(123596);
-    jkP.bs(paramv);
-    AppMethodBeat.o(123596);
+    public abstract boolean a(ae<?> paramae);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.e
  * JD-Core Version:    0.7.0.1
  */

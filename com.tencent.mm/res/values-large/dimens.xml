@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="oe">440.0dip</dimen>
+    <item type="dimen" name="oj">60.000004%</item>
+    <item type="dimen" name="ok">90.0%</item>
+    <item type="dimen" name="ol">60.000004%</item>
+    <item type="dimen" name="om">90.0%</item>
+    <item type="dimen" name="op">55.000008%</item>
+    <item type="dimen" name="oq">79.99999%</item>
+</resources>

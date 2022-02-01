@@ -14,29 +14,29 @@ public class UinInfo
   {
     this._uin = paramLong;
     this._hasPassword = paramBoolean;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.pwdState = i;
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    this.pwdState = i;
   }
   
   public boolean getHasPassword()
   {
+    boolean bool3 = this._hasPassword;
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (!this._hasPassword) {
-      if (this.pwdState > 1) {
-        break label31;
+    if (!bool3) {
+      if (this.pwdState <= 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
     }
-    label31:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      this._hasPassword = bool1;
-      return this._hasPassword;
-    }
+    this._hasPassword = bool1;
+    return this._hasPassword;
   }
 }
 

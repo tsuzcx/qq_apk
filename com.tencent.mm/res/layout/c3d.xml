@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:id="@id/jsw" android:background="@drawable/a6p" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/j95" app:layout_constraintDimensionRatio="9:16"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.sns.cover.preview.SnsCoverFadeImageView android:id="@id/jsx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/bv2" android:layout_width="fill_parent" android:layout_height="@dimen/arw" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <View android:id="@id/jt1" android:layout_width="fill_parent" android:layout_height="256.0dip" />
+    <View android:layout_gravity="bottom" android:id="@id/jt0" android:layout_width="fill_parent" android:layout_height="128.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

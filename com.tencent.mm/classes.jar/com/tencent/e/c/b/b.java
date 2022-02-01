@@ -9,139 +9,137 @@ import java.util.ArrayList;
 public final class b
   extends JceStruct
 {
-  static byte[] BjR;
-  static byte[] BjS;
-  static ArrayList<Integer> BjT;
-  static ArrayList<byte[]> BjU;
-  public String BjA = "";
-  public byte[] BjB = null;
-  public long BjC = 0L;
-  public String BjD = "";
-  public int BjE = 0;
-  public String BjF = "";
-  public int BjG = 0;
-  public String BjH = "";
-  public int BjI = 0;
-  public int BjJ = 0;
-  public int BjK = 0;
-  public ArrayList<Integer> BjL = null;
-  public int BjM = 0;
-  public boolean BjN = false;
-  public int BjO = 0;
-  public int BjP = 0;
-  public ArrayList<byte[]> BjQ = null;
-  public int Bjy = 0;
-  public byte[] Bjz = null;
+  static byte[] ahtk;
+  static byte[] ahtl;
+  static ArrayList<Integer> ahtm;
+  static ArrayList<byte[]> ahtn;
+  public int ahsR = 0;
+  public byte[] ahsS = null;
+  public String ahsT = "";
+  public byte[] ahsU = null;
+  public long ahsV = 0L;
+  public String ahsW = "";
+  public int ahsX = 0;
+  public String ahsY = "";
+  public int ahsZ = 0;
+  public String ahta = "";
+  public int ahtb = 0;
+  public int ahtc = 0;
+  public int ahtd = 0;
+  public ArrayList<Integer> ahte = null;
+  public int ahtf = 0;
+  public boolean ahtg = false;
+  public int ahth = 0;
+  public int ahti = 0;
+  public ArrayList<byte[]> ahtj = null;
   
   static
   {
-    AppMethodBeat.i(114494);
-    byte[] arrayOfByte = (byte[])new byte[1];
-    BjR = arrayOfByte;
-    ((byte[])arrayOfByte)[0] = 0;
-    arrayOfByte = (byte[])new byte[1];
-    BjS = arrayOfByte;
-    ((byte[])arrayOfByte)[0] = 0;
-    BjT = new ArrayList();
-    BjT.add(Integer.valueOf(0));
-    BjU = new ArrayList();
-    arrayOfByte = (byte[])new byte[1];
-    ((byte[])arrayOfByte)[0] = 0;
-    BjU.add(arrayOfByte);
-    AppMethodBeat.o(114494);
+    AppMethodBeat.i(138335);
+    byte[] arrayOfByte = new byte[1];
+    ahtk = arrayOfByte;
+    arrayOfByte[0] = 0;
+    arrayOfByte = new byte[1];
+    ahtl = arrayOfByte;
+    arrayOfByte[0] = 0;
+    ahtm = new ArrayList();
+    ahtm.add(Integer.valueOf(0));
+    ahtn = new ArrayList();
+    ahtn.add(new byte[] { 0 });
+    AppMethodBeat.o(138335);
   }
   
   public final JceStruct newInit()
   {
-    AppMethodBeat.i(114491);
+    AppMethodBeat.i(138332);
     b localb = new b();
-    AppMethodBeat.o(114491);
+    AppMethodBeat.o(138332);
     return localb;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(114493);
-    this.Bjy = paramJceInputStream.read(this.Bjy, 0, true);
-    this.Bjz = ((byte[])paramJceInputStream.read(BjR, 1, false));
-    this.BjA = paramJceInputStream.readString(2, false);
-    this.BjB = ((byte[])paramJceInputStream.read(BjS, 3, false));
-    this.BjC = paramJceInputStream.read(this.BjC, 4, false);
-    this.BjD = paramJceInputStream.readString(5, false);
-    this.BjE = paramJceInputStream.read(this.BjE, 6, false);
-    this.BjF = paramJceInputStream.readString(7, false);
-    this.BjG = paramJceInputStream.read(this.BjG, 8, false);
-    this.BjH = paramJceInputStream.readString(9, false);
-    this.BjI = paramJceInputStream.read(this.BjI, 10, false);
-    this.BjJ = paramJceInputStream.read(this.BjJ, 11, false);
-    this.BjK = paramJceInputStream.read(this.BjK, 12, false);
-    this.BjL = ((ArrayList)paramJceInputStream.read(BjT, 13, false));
-    this.BjM = paramJceInputStream.read(this.BjM, 14, false);
-    this.BjN = paramJceInputStream.read(this.BjN, 15, false);
-    this.BjO = paramJceInputStream.read(this.BjO, 16, false);
-    this.BjP = paramJceInputStream.read(this.BjP, 17, false);
-    this.BjQ = ((ArrayList)paramJceInputStream.read(BjU, 18, false));
-    AppMethodBeat.o(114493);
+    AppMethodBeat.i(138334);
+    this.ahsR = paramJceInputStream.read(this.ahsR, 0, true);
+    this.ahsS = paramJceInputStream.read(ahtk, 1, false);
+    this.ahsT = paramJceInputStream.readString(2, false);
+    this.ahsU = paramJceInputStream.read(ahtl, 3, false);
+    this.ahsV = paramJceInputStream.read(this.ahsV, 4, false);
+    this.ahsW = paramJceInputStream.readString(5, false);
+    this.ahsX = paramJceInputStream.read(this.ahsX, 6, false);
+    this.ahsY = paramJceInputStream.readString(7, false);
+    this.ahsZ = paramJceInputStream.read(this.ahsZ, 8, false);
+    this.ahta = paramJceInputStream.readString(9, false);
+    this.ahtb = paramJceInputStream.read(this.ahtb, 10, false);
+    this.ahtc = paramJceInputStream.read(this.ahtc, 11, false);
+    this.ahtd = paramJceInputStream.read(this.ahtd, 12, false);
+    this.ahte = ((ArrayList)paramJceInputStream.read(ahtm, 13, false));
+    this.ahtf = paramJceInputStream.read(this.ahtf, 14, false);
+    this.ahtg = paramJceInputStream.read(this.ahtg, 15, false);
+    this.ahth = paramJceInputStream.read(this.ahth, 16, false);
+    this.ahti = paramJceInputStream.read(this.ahti, 17, false);
+    this.ahtj = ((ArrayList)paramJceInputStream.read(ahtn, 18, false));
+    AppMethodBeat.o(138334);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(114492);
-    paramJceOutputStream.write(this.Bjy, 0);
-    if (this.Bjz != null) {
-      paramJceOutputStream.write(this.Bjz, 1);
+    AppMethodBeat.i(138333);
+    paramJceOutputStream.write(this.ahsR, 0);
+    if (this.ahsS != null) {
+      paramJceOutputStream.write(this.ahsS, 1);
     }
-    if (this.BjA != null) {
-      paramJceOutputStream.write(this.BjA, 2);
+    if (this.ahsT != null) {
+      paramJceOutputStream.write(this.ahsT, 2);
     }
-    if (this.BjB != null) {
-      paramJceOutputStream.write(this.BjB, 3);
+    if (this.ahsU != null) {
+      paramJceOutputStream.write(this.ahsU, 3);
     }
-    if (this.BjC != 0L) {
-      paramJceOutputStream.write(this.BjC, 4);
+    if (this.ahsV != 0L) {
+      paramJceOutputStream.write(this.ahsV, 4);
     }
-    if (this.BjD != null) {
-      paramJceOutputStream.write(this.BjD, 5);
+    if (this.ahsW != null) {
+      paramJceOutputStream.write(this.ahsW, 5);
     }
-    if (this.BjE != 0) {
-      paramJceOutputStream.write(this.BjE, 6);
+    if (this.ahsX != 0) {
+      paramJceOutputStream.write(this.ahsX, 6);
     }
-    if (this.BjF != null) {
-      paramJceOutputStream.write(this.BjF, 7);
+    if (this.ahsY != null) {
+      paramJceOutputStream.write(this.ahsY, 7);
     }
-    if (this.BjG != 0) {
-      paramJceOutputStream.write(this.BjG, 8);
+    if (this.ahsZ != 0) {
+      paramJceOutputStream.write(this.ahsZ, 8);
     }
-    if (this.BjH != null) {
-      paramJceOutputStream.write(this.BjH, 9);
+    if (this.ahta != null) {
+      paramJceOutputStream.write(this.ahta, 9);
     }
-    paramJceOutputStream.write(this.BjI, 10);
-    if (this.BjJ != 0) {
-      paramJceOutputStream.write(this.BjJ, 11);
+    paramJceOutputStream.write(this.ahtb, 10);
+    if (this.ahtc != 0) {
+      paramJceOutputStream.write(this.ahtc, 11);
     }
-    if (this.BjK != 0) {
-      paramJceOutputStream.write(this.BjK, 12);
+    if (this.ahtd != 0) {
+      paramJceOutputStream.write(this.ahtd, 12);
     }
-    if (this.BjL != null) {
-      paramJceOutputStream.write(this.BjL, 13);
+    if (this.ahte != null) {
+      paramJceOutputStream.write(this.ahte, 13);
     }
-    if (this.BjM != 0) {
-      paramJceOutputStream.write(this.BjM, 14);
+    if (this.ahtf != 0) {
+      paramJceOutputStream.write(this.ahtf, 14);
     }
-    paramJceOutputStream.write(this.BjN, 15);
-    if (this.BjO != 0) {
-      paramJceOutputStream.write(this.BjO, 16);
+    paramJceOutputStream.write(this.ahtg, 15);
+    if (this.ahth != 0) {
+      paramJceOutputStream.write(this.ahth, 16);
     }
-    paramJceOutputStream.write(this.BjP, 17);
-    if (this.BjQ != null) {
-      paramJceOutputStream.write(this.BjQ, 18);
+    paramJceOutputStream.write(this.ahti, 17);
+    if (this.ahtj != null) {
+      paramJceOutputStream.write(this.ahtj, 18);
     }
-    AppMethodBeat.o(114492);
+    AppMethodBeat.o(138333);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.c.b.b
  * JD-Core Version:    0.7.0.1
  */

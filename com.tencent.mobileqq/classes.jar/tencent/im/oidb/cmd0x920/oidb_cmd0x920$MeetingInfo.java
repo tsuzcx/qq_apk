@@ -38,14 +38,16 @@ public final class oidb_cmd0x920$MeetingInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 64, 72, 160, 170 }, new String[] { "uint64_discuss_uin", "uint64_creator_uin", "uint32_begin_time", "uint32_end_time", "rpt_uint64_participants", "bytes_meeting_intro", "uint64_meeting_seq", "uint32_enable", "uint32_type", "uint32_err_code", "bytes_error_info" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, MeetingInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 56, 64, 72, 160, 170 }, new String[] { "uint64_discuss_uin", "uint64_creator_uin", "uint32_begin_time", "uint32_end_time", "rpt_uint64_participants", "bytes_meeting_intro", "uint64_meeting_seq", "uint32_enable", "uint32_type", "uint32_err_code", "bytes_error_info" }, new Object[] { localLong, localLong, localInteger, localInteger, localLong, localByteStringMicro1, localLong, localInteger, localInteger, localInteger, localByteStringMicro2 }, MeetingInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x920.oidb_cmd0x920.MeetingInfo
  * JD-Core Version:    0.7.0.1
  */

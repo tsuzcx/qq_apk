@@ -3,24 +3,23 @@ package SummaryCard;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.richstatus.RichStatus;
 
 public final class CondFitUser
   extends JceStruct
 {
   static byte[] cache_vRichSign = (byte[])new byte[1];
-  public byte cConstellationId;
-  public byte cSex;
-  public long dwAge;
-  public long dwCity;
-  public long dwCountry;
-  public long dwProvince;
-  public int iOccupationId;
-  public long lUIN;
+  public byte cConstellationId = 0;
+  public byte cSex = 0;
+  public long dwAge = 0L;
+  public long dwCity = 0L;
+  public long dwCountry = 0L;
+  public long dwProvince = 0L;
+  public int iOccupationId = 0;
+  public long lUIN = 0L;
   public String locDesc;
-  public RichStatus richStatus;
+  public String personalSignature;
   public String strNick = "";
-  public byte[] vRichSign;
+  public byte[] vRichSign = null;
   
   static
   {
@@ -60,11 +59,13 @@ public final class CondFitUser
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.lUIN, 0);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 1);
+    Object localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.vRichSign != null) {
-      paramJceOutputStream.write(this.vRichSign, 2);
+    localObject = this.vRichSign;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
     paramJceOutputStream.write(this.cSex, 3);
     paramJceOutputStream.write(this.dwAge, 4);
@@ -77,7 +78,7 @@ public final class CondFitUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.CondFitUser
  * JD-Core Version:    0.7.0.1
  */

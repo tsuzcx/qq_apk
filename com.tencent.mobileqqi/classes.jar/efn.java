@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.FriendManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class efn
-  implements DialogInterface.OnDismissListener
+  extends SearchResultDialog
 {
-  public efn(BaseTroopView paramBaseTroopView, int paramInt) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public efn(DiscussionView paramDiscussionView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b.setVisibility(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.a = null;
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((FriendManager)paramQQAppInterface.getManager(8) == null) {
+      return localArrayList;
+    }
+    return c(paramContext, paramQQAppInterface, 0L, 0);
   }
 }
 

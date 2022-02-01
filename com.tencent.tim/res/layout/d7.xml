@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/icl" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/d79" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/ick" android:background="@drawable/c7j" android:layout_width="280.0dip" android:layout_height="373.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/dum" android:background="@drawable/eo8" android:clickable="true" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_margin="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffffdc73" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/k55" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:singleLine="true" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/ic0" android:layout_width="fill_parent" android:layout_height="105.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="60.0dip" android:layout_marginRight="8.0dip">
+            <com.tencent.image.URLImageView android:id="@id/dwa" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="17.0dip" android:src="@drawable/eob" android:scaleType="fitCenter" />
+            <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/k53" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="21.0dip" android:layout_marginRight="25.0dip" android:singleLine="true" android:layout_toRightOf="@id/dwa" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/k52" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="25.0dip" android:singleLine="true" android:layout_toRightOf="@id/dwa" android:layout_below="@id/k53" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/c7i" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <TextView android:textSize="15.0sp" android:textColor="#ff7d1e29" android:gravity="center" android:id="@id/k54" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="55.0dip" android:layout_below="@id/ic0" android:layout_centerHorizontal="true" android:lineSpacingExtra="4.0dip" />
+        <TextView android:textSize="17.0sp" android:textColor="#ffd13d4b" android:gravity="center" android:id="@id/k6a" android:background="@drawable/ab7" android:layout_width="163.0dip" android:layout_height="44.0dip" android:layout_marginBottom="26.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0sp" android:textColor="#ffffdc73" android:gravity="center" android:id="@id/k8f" android:visibility="gone" android:layout_width="163.0dip" android:layout_height="44.0dip" android:layout_marginBottom="26.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

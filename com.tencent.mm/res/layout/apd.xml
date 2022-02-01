@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.record.ui.RecordVoiceBaseView android:textSize="14.0sp" android:textColor="#ff353535" android:gravity="center|left" android:id="@id/bvl" android:background="@drawable/oq" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/n_" android:clickable="true" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="@dimen/i0" android:drawableLeft="@raw/chatfrom_voice_playing_new" android:drawablePadding="@dimen/n_"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/iiy" app:loadMoreLayout="@layout/b8d">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/cw6" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+    <FrameLayout android:id="@id/cjf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/i7q" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/ca" android:indeterminateDrawable="@drawable/ang" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/isi" android:paddingTop="@dimen/ca" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/d8n" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/cj6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ca" android:text="@string/esb" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

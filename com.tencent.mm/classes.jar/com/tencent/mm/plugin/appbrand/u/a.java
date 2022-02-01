@@ -1,46 +1,35 @@
 package com.tencent.mm.plugin.appbrand.u;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.u.d.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-public abstract interface a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/nfc/WxaNFCDiscoverableFactory;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCDiscoverable$IFactory;", "()V", "TAG", "", "value", "", "useReaderMode", "getUseReaderMode", "()Z", "setUseReaderMode", "(Z)V", "create", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCDiscoverable;", "appId", "activity", "Landroid/app/Activity;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "luggage-wxa-app-jsapi_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class a
 {
-  public abstract void b(d paramd);
+  public static final a tqf;
+  static boolean tqg;
   
-  public static enum a
+  static
   {
-    static
-    {
-      AppMethodBeat.i(73203);
-      iYy = new a("NOT_YET_CONNECTED", 0);
-      iYz = new a("CONNECTING", 1);
-      iYA = new a("OPEN", 2);
-      iYB = new a("CLOSING", 3);
-      iYC = new a("CLOSED", 4);
-      iYD = new a[] { iYy, iYz, iYA, iYB, iYC };
-      AppMethodBeat.o(73203);
-    }
-    
-    private a() {}
+    AppMethodBeat.i(317037);
+    tqf = new a();
+    tqg = true;
+    AppMethodBeat.o(317037);
   }
   
-  public static enum b
+  public static void kh(boolean paramBoolean)
   {
-    static
-    {
-      AppMethodBeat.i(73206);
-      iYE = new b("CLIENT", 0);
-      iYF = new b("SERVER", 1);
-      iYG = new b[] { iYE, iYF };
-      AppMethodBeat.o(73206);
-    }
-    
-    private b() {}
+    AppMethodBeat.i(317033);
+    Log.i("MicroMsg.AppBrand.WxaNFCDiscoverableFactory", s.X("set#useReaderMode, value: ", Boolean.valueOf(paramBoolean)));
+    tqg = paramBoolean;
+    AppMethodBeat.o(317033);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.a
  * JD-Core Version:    0.7.0.1
  */

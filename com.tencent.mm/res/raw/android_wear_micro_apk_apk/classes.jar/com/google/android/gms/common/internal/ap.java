@@ -30,7 +30,7 @@ public abstract class ap
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.google.android.gms.common.internal.ICertData");
-      paramParcel1 = hC();
+      paramParcel1 = hM();
       paramParcel2.writeNoException();
       if (paramParcel1 != null) {}
       for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
@@ -40,7 +40,7 @@ public abstract class ap
       }
     }
     paramParcel1.enforceInterface("com.google.android.gms.common.internal.ICertData");
-    paramInt1 = hD();
+    paramInt1 = hN();
     paramParcel2.writeNoException();
     paramParcel2.writeInt(paramInt1);
     return true;

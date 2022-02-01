@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="#fff3f5f8" android:paddingBottom="@dimen/bsu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jo9" android:paddingTop="2.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <com.tencent.widget.FadeIconImageView android:id="@id/nb0" android:paddingLeft="16.0dip" android:paddingTop="8.0dip" android:paddingRight="16.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/i7e" android:layout_alignParentLeft="true" />
+        <com.tencent.mobileqq.troop.widget.RedDotImageView android:id="@id/nb1" android:background="@drawable/top_button_right_selector" android:paddingLeft="16.0dip" android:paddingTop="8.0dip" android:paddingRight="16.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/i7f" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/j5j" android:visibility="gone" android:layout="@layout/cx5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jo9" />
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/hg" />
+</RelativeLayout>

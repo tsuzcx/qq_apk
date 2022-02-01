@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apod;
 import com.tencent.image.URLDrawable;
 
-public class EmoticonFromGroupManager$7
+class EmoticonFromGroupManager$7
   implements Runnable
 {
-  public EmoticonFromGroupManager$7(apod paramapod, URLDrawable paramURLDrawable) {}
+  EmoticonFromGroupManager$7(EmoticonFromGroupManager paramEmoticonFromGroupManager, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

@@ -1,21 +1,19 @@
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog.HistoryListChangeListener;
-import com.tencent.widget.XListView;
 
 public class edn
-  implements SearchResultDialog.HistoryListChangeListener
+  implements View.OnTouchListener
 {
-  public edn(SearchResultDialog paramSearchResultDialog, View paramView) {}
+  public edn(SearchResultDialog paramSearchResultDialog, Context paramContext) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).a(this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    catch (Exception localException) {}
+    ((InputMethodManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

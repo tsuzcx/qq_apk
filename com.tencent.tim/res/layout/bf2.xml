@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/e2e" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/l0c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="96.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/l0l" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/ahb" android:scaleType="fitCenter" />
+            <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/skin_gray2" android:layout_gravity="center_vertical" android:id="@id/l0m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="@string/rif" android:includeFontPadding="false" />
+            <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/l0g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="9999" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/i4x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="1.0dip" android:scaleX="0.7" android:scaleY="0.7">
+            <TextView android:textSize="@dimen/mr" android:textColor="@color/al3" android:id="@id/i4y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
+        </FrameLayout>
+    </FrameLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/e2d" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f5e" />
+        <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="#ff989eb4" android:layout_gravity="center_vertical" android:id="@id/fj4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cqs" android:includeFontPadding="false" />
+    </LinearLayout>
+</merge>

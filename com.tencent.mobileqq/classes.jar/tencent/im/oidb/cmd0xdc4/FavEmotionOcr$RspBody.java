@@ -23,13 +23,14 @@ public final class FavEmotionOcr$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "int32_result", "string_fail_msg", "uint32_cmd_type", "list_ocr_info", "list_modify_rsp", "bytes_rsp_other" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), null, null, localByteStringMicro }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "int32_result", "string_fail_msg", "uint32_cmd_type", "list_ocr_info", "list_modify_rsp", "bytes_rsp_other" }, new Object[] { localInteger, "", localInteger, null, null, localByteStringMicro }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xdc4.FavEmotionOcr.RspBody
  * JD-Core Version:    0.7.0.1
  */

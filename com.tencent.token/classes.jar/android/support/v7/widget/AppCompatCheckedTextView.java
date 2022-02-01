@@ -1,23 +1,22 @@
 package android.support.v7.widget;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.v7.content.res.AppCompatResources;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.CheckedTextView;
+import com.tencent.token.hi;
+import com.tencent.token.iz;
+import com.tencent.token.jd;
+import com.tencent.token.jt;
+import com.tencent.token.jw;
 
 public class AppCompatCheckedTextView
   extends CheckedTextView
 {
-  private static final int[] TINT_ATTRS = { 16843016 };
-  private final AppCompatTextHelper mTextHelper = AppCompatTextHelper.create(this);
-  
-  public AppCompatCheckedTextView(Context paramContext)
-  {
-    this(paramContext, null);
-  }
+  private static final int[] a = { 16843016 };
+  private final jd b = jd.a(this);
   
   public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,37 +25,39 @@ public class AppCompatCheckedTextView
   
   public AppCompatCheckedTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
-    this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);
-    this.mTextHelper.applyCompoundDrawablesTints();
-    paramContext = TintTypedArray.obtainStyledAttributes(getContext(), paramAttributeSet, TINT_ATTRS, paramInt, 0);
-    setCheckMarkDrawable(paramContext.getDrawable(0));
-    paramContext.recycle();
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
+    this.b.a(paramAttributeSet, paramInt);
+    this.b.a();
+    paramContext = jw.a(getContext(), paramAttributeSet, a, paramInt, 0);
+    setCheckMarkDrawable(paramContext.a(0));
+    paramContext.a.recycle();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mTextHelper != null) {
-      this.mTextHelper.applyCompoundDrawablesTints();
+    jd localjd = this.b;
+    if (localjd != null) {
+      localjd.a();
     }
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return AppCompatHintHelper.onCreateInputConnection(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
+    return iz.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
   }
   
-  public void setCheckMarkDrawable(@DrawableRes int paramInt)
+  public void setCheckMarkDrawable(int paramInt)
   {
-    setCheckMarkDrawable(AppCompatResources.getDrawable(getContext(), paramInt));
+    setCheckMarkDrawable(hi.b(getContext(), paramInt));
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.mTextHelper != null) {
-      this.mTextHelper.onSetTextAppearance(paramContext, paramInt);
+    jd localjd = this.b;
+    if (localjd != null) {
+      localjd.a(paramContext, paramInt);
     }
   }
 }

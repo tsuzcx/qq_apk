@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aheq;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class FriendListHandler$2
   implements Runnable
@@ -9,13 +10,17 @@ class FriendListHandler$2
   
   public void run()
   {
-    aheq.a();
-    this.this$0.d();
+    if (QLog.isColorLevel()) {
+      QLog.i("FriendListHandler", 2, "decodePush0x210_0x111,do getMayKnowRecommend");
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("from", "push");
+    this.this$0.getMayKnowRecommend(null, null, 6, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendListHandler.2
  * JD-Core Version:    0.7.0.1
  */

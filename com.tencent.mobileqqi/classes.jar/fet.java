@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 
 public final class fet
   implements DialogInterface.OnClickListener
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface != null)
-    {
+    PrivacyPolicyHelper.a("1");
+    if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
-      System.exit(0);
     }
   }
 }

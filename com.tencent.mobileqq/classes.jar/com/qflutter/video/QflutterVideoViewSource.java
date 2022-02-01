@@ -11,9 +11,10 @@ public class QflutterVideoViewSource
   
   public static View getVideoView(Context paramContext, int paramInt, Surface paramSurface, Map<String, Object> paramMap)
   {
-    if (provider != null)
+    QflutterVideoViewSource.Provider localProvider = provider;
+    if (localProvider != null)
     {
-      paramContext = provider.getView(paramContext, paramInt, paramSurface, paramMap);
+      paramContext = localProvider.getView(paramContext, paramInt, paramSurface, paramMap);
       if ((paramContext instanceof IQflutterVideoView)) {
         return paramContext;
       }
@@ -29,7 +30,7 @@ public class QflutterVideoViewSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.video.QflutterVideoViewSource
  * JD-Core Version:    0.7.0.1
  */

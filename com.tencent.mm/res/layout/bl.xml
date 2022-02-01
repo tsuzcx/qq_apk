@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/fm" android:textColor="#ff888888" android:gravity="center|left" android:id="@id/pp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:drawableLeft="@drawable/axw"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/gkt" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/fll" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="noHideDescendants" />
+    <androidx.fragment.app.FragmentContainerView android:id="@id/flm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/fkl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/b9" app:layout_constraintTop_toTopOf="hr_">
+        <include layout="@layout/bc" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,34 +34,26 @@ final class UnicastSubject$State<T>
   
   public UnicastSubject$State(int paramInt, Action0 paramAction0)
   {
-    if (paramAction0 != null)
-    {
+    if (paramAction0 != null) {
       paramAction0 = new AtomicReference(paramAction0);
-      this.terminateOnce = paramAction0;
-      if (paramInt <= 1) {
-        break label83;
-      }
-      if (!UnsafeAccess.isUnsafeAvailable()) {
-        break label71;
-      }
-      paramAction0 = new SpscUnboundedArrayQueue(paramInt);
-    }
-    for (;;)
-    {
-      this.queue = paramAction0;
-      return;
+    } else {
       paramAction0 = null;
-      break;
-      label71:
-      paramAction0 = new SpscUnboundedAtomicArrayQueue(paramInt);
-      continue;
-      label83:
+    }
+    this.terminateOnce = paramAction0;
+    if (paramInt > 1)
+    {
       if (UnsafeAccess.isUnsafeAvailable()) {
-        paramAction0 = new SpscLinkedQueue();
+        paramAction0 = new SpscUnboundedArrayQueue(paramInt);
       } else {
-        paramAction0 = new SpscLinkedAtomicQueue();
+        paramAction0 = new SpscUnboundedAtomicArrayQueue(paramInt);
       }
     }
+    else if (UnsafeAccess.isUnsafeAvailable()) {
+      paramAction0 = new SpscLinkedQueue();
+    } else {
+      paramAction0 = new SpscLinkedAtomicQueue();
+    }
+    this.queue = paramAction0;
   }
   
   public void call()
@@ -130,79 +122,20 @@ final class UnicastSubject$State<T>
   
   public void onCompleted()
   {
-    int i = 1;
-    if (!this.done)
-    {
-      doTerminate();
-      this.done = true;
-      if (this.caughtUp) {}
-    }
-    else
-    {
-      try
-      {
-        if (!this.caughtUp) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break;
-          }
-          replay();
-          return;
-          i = 0;
-        }
-        ((Subscriber)this.subscriber.get()).onCompleted();
-      }
-      finally {}
-    }
-  }
-  
-  public void onError(Throwable paramThrowable)
-  {
-    int i = 1;
-    if (!this.done)
-    {
-      doTerminate();
-      this.error = paramThrowable;
-      this.done = true;
-      if (this.caughtUp) {}
-    }
-    else
-    {
-      try
-      {
-        if (!this.caughtUp) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break;
-          }
-          replay();
-          return;
-          i = 0;
-        }
-        ((Subscriber)this.subscriber.get()).onError(paramThrowable);
-      }
-      finally {}
-    }
-  }
-  
-  public void onNext(T paramT)
-  {
     int i;
     if (!this.done)
     {
-      if (!this.caughtUp) {
-        i = 0;
-      }
+      doTerminate();
+      i = 1;
+      this.done = true;
+      if (this.caughtUp) {}
     }
-    else {
+    for (;;)
+    {
       try
       {
-        if (!this.caughtUp)
-        {
-          this.queue.offer(this.nl.next(paramT));
-          i = 1;
+        if (this.caughtUp) {
+          break label67;
         }
         if (i != 0)
         {
@@ -211,61 +144,137 @@ final class UnicastSubject$State<T>
         }
       }
       finally {}
-    }
-    Subscriber localSubscriber = (Subscriber)this.subscriber.get();
-    try
-    {
-      localSubscriber.onNext(paramT);
+      ((Subscriber)this.subscriber.get()).onCompleted();
       return;
+      label67:
+      i = 0;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public void onError(Throwable paramThrowable)
+  {
+    int i;
+    if (!this.done)
     {
-      Exceptions.throwOrReport(localThrowable, localSubscriber, paramT);
+      doTerminate();
+      this.error = paramThrowable;
+      i = 1;
+      this.done = true;
+      if (this.caughtUp) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.caughtUp) {
+          break label73;
+        }
+        if (i != 0)
+        {
+          replay();
+          return;
+        }
+      }
+      finally {}
+      ((Subscriber)this.subscriber.get()).onError(paramThrowable);
+      return;
+      label73:
+      i = 0;
+    }
+  }
+  
+  public void onNext(T paramT)
+  {
+    if (!this.done)
+    {
+      if (!this.caughtUp)
+      {
+        int i = 0;
+        try
+        {
+          if (!this.caughtUp)
+          {
+            this.queue.offer(this.nl.next(paramT));
+            i = 1;
+          }
+          if (i != 0)
+          {
+            replay();
+            return;
+          }
+        }
+        finally {}
+      }
+      Subscriber localSubscriber = (Subscriber)this.subscriber.get();
+      try
+      {
+        localSubscriber.onNext(paramT);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Exceptions.throwOrReport(localThrowable, localSubscriber, paramT);
+      }
     }
   }
   
   void replay()
   {
-    for (;;)
+    try
     {
-      Subscriber localSubscriber;
-      long l2;
-      long l1;
-      try
+      if (this.emitting)
       {
-        if (this.emitting)
-        {
-          this.missed = true;
-          return;
-        }
-        this.emitting = true;
-        Queue localQueue = this.queue;
-        localSubscriber = (Subscriber)this.subscriber.get();
-        int j = 0;
+        this.missed = true;
+        return;
+      }
+      this.emitting = true;
+      Queue localQueue = this.queue;
+      for (;;)
+      {
+        Subscriber localSubscriber = (Subscriber)this.subscriber.get();
+        int j;
         if (localSubscriber != null)
         {
           if (checkTerminated(this.done, localQueue.isEmpty(), localSubscriber)) {
-            break;
+            return;
           }
-          l2 = get();
-          if (l2 != 9223372036854775807L) {
-            break label209;
+          long l2 = get();
+          int i;
+          if (l2 == 9223372036854775807L) {
+            i = 1;
+          } else {
+            i = 0;
           }
-          i = 1;
-          l1 = 0L;
-          if (l2 != 0L)
+          long l1 = 0L;
+          while (l2 != 0L)
           {
             boolean bool2 = this.done;
-            localObject3 = localQueue.poll();
-            if (localObject3 != null) {
-              break label214;
+            Object localObject3 = localQueue.poll();
+            boolean bool1;
+            if (localObject3 == null) {
+              bool1 = true;
+            } else {
+              bool1 = false;
             }
-            bool1 = true;
             if (checkTerminated(bool2, bool1, localSubscriber)) {
-              break;
+              return;
             }
-            if (!bool1) {
-              break label220;
+            if (!bool1)
+            {
+              localObject3 = this.nl.getValue(localObject3);
+              try
+              {
+                localSubscriber.onNext(localObject3);
+                l2 -= 1L;
+                l1 += 1L;
+              }
+              catch (Throwable localThrowable)
+              {
+                localQueue.clear();
+                Exceptions.throwIfFatal(localThrowable);
+                localSubscriber.onError(OnErrorThrowable.addValueAsLastCause(localThrowable, localObject3));
+                return;
+              }
             }
           }
           j = i;
@@ -279,65 +288,51 @@ final class UnicastSubject$State<T>
             }
           }
         }
+        else
+        {
+          j = 0;
+        }
         try
         {
-          if (this.missed) {
-            break label278;
+          if (!this.missed)
+          {
+            if ((j != 0) && (localQueue.isEmpty())) {
+              this.caughtUp = true;
+            }
+            this.emitting = false;
+            return;
           }
-          if ((j != 0) && (localQueue.isEmpty())) {
-            this.caughtUp = true;
-          }
-          this.emitting = false;
-          return;
+          this.missed = false;
         }
         finally {}
-        int i = 0;
       }
-      finally {}
-      label209:
-      continue;
-      label214:
-      boolean bool1 = false;
-      continue;
-      label220:
-      Object localObject3 = this.nl.getValue(localObject3);
-      try
-      {
-        localSubscriber.onNext(localObject3);
-        l2 -= 1L;
-        l1 = 1L + l1;
-      }
-      catch (Throwable localThrowable)
-      {
-        localObject2.clear();
-        Exceptions.throwIfFatal(localThrowable);
-        localSubscriber.onError(OnErrorThrowable.addValueAsLastCause(localThrowable, localObject3));
-        return;
-      }
-      label278:
-      this.missed = false;
+      throw localObject2;
     }
+    finally {}
+    for (;;) {}
   }
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required");
-    }
-    if (paramLong > 0L)
+    if (paramLong >= 0L)
     {
-      BackpressureUtils.getAndAddRequest(this, paramLong);
-      replay();
-    }
-    while (!this.done) {
+      if (paramLong > 0L)
+      {
+        BackpressureUtils.getAndAddRequest(this, paramLong);
+        replay();
+        return;
+      }
+      if (this.done) {
+        replay();
+      }
       return;
     }
-    replay();
+    throw new IllegalArgumentException("n >= 0 required");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.UnicastSubject.State
  * JD-Core Version:    0.7.0.1
  */

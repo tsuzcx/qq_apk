@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import alud;
-import amum;
-import amup;
-import bdgm;
-import bdjz;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class ARRecordUtils$1
+final class ARRecordUtils$1
   implements Runnable
 {
-  public ARRecordUtils$1(String paramString1, String paramString2) {}
+  ARRecordUtils$1(String paramString1, String paramString2) {}
   
   public void run()
   {
     try
     {
-      bdgm.a(amup.a().a(), 230, this.a, this.b, "", alud.a(2131701119), new amum(this), null).show();
+      DialogUtil.a(ARVideoRecordUIControllerImpl.a().c(), 230, this.a, this.b, "", HardCodeUtil.a(2131898983), new ARRecordUtils.1.1(this), null).show();
       return;
     }
     catch (Exception localException)
@@ -26,7 +24,7 @@ public final class ARRecordUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1
  * JD-Core Version:    0.7.0.1
  */

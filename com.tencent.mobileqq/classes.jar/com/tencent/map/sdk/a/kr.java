@@ -11,29 +11,32 @@ public final class kr
   
   public final void a(boolean paramBoolean)
   {
-    if (this.a != null) {
-      this.a.l(paramBoolean);
+    ld localld = this.a;
+    if (localld != null) {
+      localld.l(paramBoolean);
     }
   }
   
   public final boolean a()
   {
-    if (this.a != null) {
-      return this.a.i();
+    ld localld = this.a;
+    if (localld != null) {
+      return localld.i();
     }
     return false;
   }
   
   public final void b(boolean paramBoolean)
   {
-    if (this.a != null) {
-      this.a.k(paramBoolean);
+    ld localld = this.a;
+    if (localld != null) {
+      localld.k(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.kr
  * JD-Core Version:    0.7.0.1
  */

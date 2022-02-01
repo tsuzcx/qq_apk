@@ -1,114 +1,87 @@
 package com.tencent.mm.plugin.wepkg.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wepkg.e;
+import com.tencent.mm.plugin.wepkg.utils.a;
 import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.xweb.s;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.xweb.WebResourceResponse;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public final class f
 {
-  private String charset;
-  public WepkgVersion vGb;
-  private e vGl;
-  private Map<String, WepkgPreloadFile> vGm;
+  private Map<String, h> XFO;
+  private int wHj;
   
-  public f(WepkgVersion paramWepkgVersion, e parame, Map<String, WepkgPreloadFile> paramMap)
+  public f()
   {
-    AppMethodBeat.i(63547);
-    this.charset = "UTF-8";
-    this.vGb = paramWepkgVersion;
-    this.vGl = parame;
-    this.vGm = paramMap;
-    if ((paramWepkgVersion != null) && (!bo.isNullOrNil(paramWepkgVersion.charset))) {
-      this.charset = paramWepkgVersion.charset;
-    }
-    AppMethodBeat.o(63547);
+    AppMethodBeat.i(110678);
+    this.XFO = new HashMap();
+    this.wHj = 1;
+    AppMethodBeat.o(110678);
   }
   
-  public final String Ly(String paramString)
+  public final void boo(String paramString)
   {
-    AppMethodBeat.i(63550);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(110679);
+    if (this.wHj > 3)
     {
-      AppMethodBeat.o(63550);
-      return null;
+      Log.i("MicroMsg.Wepkg.SupportIframe", "more than 3 wepkgs");
+      AppMethodBeat.o(110679);
+      return;
     }
-    if ((this.vGm != null) && (this.vGm.get(paramString) != null))
+    String str = d.boB(paramString);
+    if ((!Util.isNullOrNil(str)) && (this.XFO.get(str) == null))
     {
-      paramString = (WepkgPreloadFile)this.vGm.get(paramString);
-      if (!bo.isNullOrNil(paramString.filePath))
+      this.wHj += 1;
+      h localh = e.bnQ(str);
+      if (localh != null)
       {
-        File localFile = new File(paramString.filePath);
-        if ((localFile.exists()) && (localFile.isFile()) && (localFile.length() == paramString.size))
-        {
-          paramString = paramString.filePath;
-          AppMethodBeat.o(63550);
-          return paramString;
-        }
+        this.XFO.put(str, localh);
+        AppMethodBeat.o(110679);
+        return;
+      }
+      localh = e.dS(paramString, true);
+      if ((localh != null) && (localh.XFY != null))
+      {
+        this.XFO.put(str, localh);
+        a.b("EnterWeb", paramString, localh.XFY.mtT, localh.XFY.version, 1L, 0L, null);
+        Log.i("MicroMsg.Wepkg.SupportIframe", "load wepkg: %s", new Object[] { str });
       }
     }
-    AppMethodBeat.o(63550);
-    return null;
+    AppMethodBeat.o(110679);
   }
   
-  public final s akB(String paramString)
+  public final WebResourceResponse bop(String paramString)
   {
-    AppMethodBeat.i(63549);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(110680);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(63549);
+      AppMethodBeat.o(110680);
       return null;
     }
-    if ((this.vGm != null) && (this.vGm.get(paramString) != null))
+    Iterator localIterator = this.XFO.values().iterator();
+    while (localIterator.hasNext())
     {
-      Object localObject1 = (WepkgPreloadFile)this.vGm.get(paramString);
-      if (!bo.isNullOrNil(((WepkgPreloadFile)localObject1).filePath))
+      WebResourceResponse localWebResourceResponse = ((h)localIterator.next()).bop(paramString);
+      if (localWebResourceResponse != null)
       {
-        Object localObject2 = new File(((WepkgPreloadFile)localObject1).filePath);
-        if ((((File)localObject2).exists()) && (((File)localObject2).isFile()) && (((File)localObject2).length() == ((WepkgPreloadFile)localObject1).size)) {
-          try
-          {
-            ab.i("MicroMsg.Wepkg.WepkgInterceptor", "rid hit preload file. rid:%s, localPath:%s", new Object[] { paramString, ((WepkgPreloadFile)localObject1).filePath });
-            localObject2 = new FileInputStream((File)localObject2);
-            localObject1 = new s(((WepkgPreloadFile)localObject1).mimeType, this.charset, (InputStream)localObject2);
-            AppMethodBeat.o(63549);
-            return localObject1;
-          }
-          catch (FileNotFoundException localFileNotFoundException) {}
-        }
+        Log.i("MicroMsg.Wepkg.SupportIframe", "hit rid: %s", new Object[] { paramString });
+        AppMethodBeat.o(110680);
+        return localWebResourceResponse;
       }
     }
-    if (this.vGl != null)
-    {
-      paramString = this.vGl.hO(paramString, this.charset);
-      AppMethodBeat.o(63549);
-      return paramString;
-    }
-    AppMethodBeat.o(63549);
+    AppMethodBeat.o(110680);
     return null;
-  }
-  
-  public final boolean akC(String paramString)
-  {
-    AppMethodBeat.i(63548);
-    if (akB(d.akO(paramString)) != null)
-    {
-      AppMethodBeat.o(63548);
-      return true;
-    }
-    AppMethodBeat.o(63548);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,98 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 final class b$a$b
 {
-  StringBuffer jDt;
+  StringBuffer sb;
   
   b$a$b()
   {
-    AppMethodBeat.i(17769);
-    this.jDt = new StringBuffer();
-    AppMethodBeat.o(17769);
+    AppMethodBeat.i(21826);
+    this.sb = new StringBuffer();
+    AppMethodBeat.o(21826);
   }
   
   private void setText(int paramInt)
   {
-    AppMethodBeat.i(17773);
-    this.jDt.append(paramInt);
-    AppMethodBeat.o(17773);
+    AppMethodBeat.i(21830);
+    this.sb.append(paramInt);
+    AppMethodBeat.o(21830);
   }
   
   private void setText(String paramString)
   {
-    AppMethodBeat.i(17772);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(21829);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(17772);
+      AppMethodBeat.o(21829);
       return;
     }
-    if (paramString.contains(b.a.jDr))
+    if (paramString.contains(b.a.INVALID_TAG))
     {
-      this.jDt.append("<![CDATA[" + bo.apT(paramString) + "]]>");
-      AppMethodBeat.o(17772);
+      this.sb.append("<![CDATA[" + Util.escapeStringForXml(paramString) + "]]>");
+      AppMethodBeat.o(21829);
       return;
     }
-    this.jDt.append("<![CDATA[" + paramString + "]]>");
-    AppMethodBeat.o(17772);
+    this.sb.append("<![CDATA[" + paramString + "]]>");
+    AppMethodBeat.o(21829);
   }
   
-  public final void Gp(String paramString)
+  public final void addTag(String paramString, int paramInt)
   {
-    AppMethodBeat.i(17770);
-    this.jDt.append("<" + paramString + ">");
-    AppMethodBeat.o(17770);
-  }
-  
-  public final void Gq(String paramString)
-  {
-    AppMethodBeat.i(17771);
-    this.jDt.append("</" + paramString + ">");
-    AppMethodBeat.o(17771);
-  }
-  
-  public final void bG(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(17775);
-    Gp(paramString);
+    AppMethodBeat.i(21832);
+    startTag(paramString);
     setText(paramInt);
-    Gq(paramString);
-    AppMethodBeat.o(17775);
+    endTag(paramString);
+    AppMethodBeat.o(21832);
   }
   
-  public final void da(String paramString1, String paramString2)
+  public final void addTag(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(17774);
-    Gp(paramString1);
+    AppMethodBeat.i(21831);
+    startTag(paramString1);
     setText(paramString2);
-    Gq(paramString1);
-    AppMethodBeat.o(17774);
+    endTag(paramString1);
+    AppMethodBeat.o(21831);
   }
   
-  public final void n(String paramString, Map<String, String> paramMap)
+  public final void endTag(String paramString)
   {
-    AppMethodBeat.i(17776);
-    this.jDt.append("<".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(21828);
+    this.sb.append("</" + paramString + ">");
+    AppMethodBeat.o(21828);
+  }
+  
+  public final void startTag(String paramString)
+  {
+    AppMethodBeat.i(21827);
+    this.sb.append("<" + paramString + ">");
+    AppMethodBeat.o(21827);
+  }
+  
+  public final void startTag(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(21833);
+    this.sb.append("<".concat(String.valueOf(paramString)));
     paramString = paramMap.keySet().iterator();
     while (paramString.hasNext())
     {
       String str1 = (String)paramString.next();
       String str2 = (String)paramMap.get(str1);
-      this.jDt.append(" " + str1 + " =  \"" + str2 + "\" ");
+      this.sb.append(" " + str1 + " =  \"" + str2 + "\" ");
     }
-    this.jDt.append(">");
+    this.sb.append(">");
     paramMap.clear();
-    AppMethodBeat.o(17776);
+    AppMethodBeat.o(21833);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.b.b.a.b
  * JD-Core Version:    0.7.0.1
  */

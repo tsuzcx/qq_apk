@@ -6,34 +6,34 @@ import oicq.wlogin_sdk.tools.util;
 public final class r
   extends a
 {
-  int CNH = 0;
-  int CNI = 0;
+  int ajHU = 0;
+  int ajHV = 0;
   
   public r()
   {
-    this.CMD = 278;
+    this.ajGQ = 278;
   }
   
-  public final byte[] iS(int paramInt1, int paramInt2)
+  public final byte[] qE(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(96501);
-    this.CNH = 10;
-    byte[] arrayOfByte = new byte[this.CNH];
-    util.N(arrayOfByte, 0, this.CNI);
-    util.P(arrayOfByte, 1, paramInt1);
-    util.P(arrayOfByte, 5, paramInt2);
-    util.N(arrayOfByte, 9, 0);
-    super.Wr(this.CMD);
-    super.ab(arrayOfByte, this.CNH);
-    super.ere();
-    arrayOfByte = super.era();
-    AppMethodBeat.o(96501);
+    AppMethodBeat.i(88140);
+    this.ajHU = 10;
+    byte[] arrayOfByte = new byte[this.ajHU];
+    util.af(arrayOfByte, 0, this.ajHV);
+    util.ah(arrayOfByte, 1, paramInt1);
+    util.ah(arrayOfByte, 5, paramInt2);
+    util.af(arrayOfByte, 9, 0);
+    super.aMR(this.ajGQ);
+    super.an(arrayOfByte, this.ajHU);
+    super.kGk();
+    arrayOfByte = super.kGg();
+    AppMethodBeat.o(88140);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.r
  * JD-Core Version:    0.7.0.1
  */

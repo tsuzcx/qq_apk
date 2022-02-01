@@ -20,20 +20,22 @@ public class FontBitmapManager
     localPaint.setTextSize(paramFloat);
     if (paramBoolean) {
       localPaint.setStyle(Paint.Style.FILL);
+    } else {
+      localPaint.setStyle(Paint.Style.STROKE);
     }
-    for (;;)
+    paramFloat = -localPaint.ascent();
+    int i = (int)(localPaint.measureText(paramString2) + 0.5F);
+    int j = (int)(localPaint.descent() + paramFloat + 0.5F);
+    if (i > 0)
     {
-      paramFloat = -localPaint.ascent();
-      int i = (int)(localPaint.measureText(paramString2) + 0.5F);
-      int j = (int)(localPaint.descent() + paramFloat + 0.5F);
-      if ((i <= 0) || (j <= 0)) {
-        break;
+      if (j <= 0) {
+        return null;
       }
       paramString1 = Bitmap.createBitmap(i, j, Bitmap.Config.ALPHA_8);
       new Canvas(paramString1).drawText(paramString2, 0.0F, paramFloat, localPaint);
       return paramString1;
-      localPaint.setStyle(Paint.Style.STROKE);
     }
+    return null;
   }
   
   public static float measureText(String paramString1, String paramString2, float paramFloat)
@@ -49,7 +51,7 @@ public class FontBitmapManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.font.FontBitmapManager
  * JD-Core Version:    0.7.0.1
  */

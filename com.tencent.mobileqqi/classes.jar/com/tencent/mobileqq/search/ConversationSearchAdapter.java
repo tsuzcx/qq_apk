@@ -29,8 +29,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
+import gif;
 import gig;
-import gih;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,7 +41,7 @@ public class ConversationSearchAdapter
   implements SearchAdapterInterface, FaceDecoder.DecodeTaskCompletionListener, AbsListView.OnScrollListener
 {
   public static final int a = 0;
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new gig();
+  private static Comparator jdField_a_of_type_JavaUtilComparator = new gif();
   public static final int b = 1;
   public static final int c = 2;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -53,7 +53,7 @@ public class ConversationSearchAdapter
   private ConversationSearchAdapter.SearchResultCallBack jdField_a_of_type_ComTencentMobileqqSearchConversationSearchAdapter$SearchResultCallBack = null;
   protected FaceDecoder a;
   protected XListView a;
-  private gih jdField_a_of_type_Gih = null;
+  private gig jdField_a_of_type_Gig = null;
   private String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList;
   public boolean a;
@@ -109,12 +109,12 @@ public class ConversationSearchAdapter
     {
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903150, paramViewGroup, false);
       paramViewGroup = new ContactsSearchResultAdapter.ViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231408));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231409));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231412));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231411));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231413));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231414));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231407));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231408));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231411));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231410));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231412));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231413));
       paramView.setTag(paramViewGroup);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramIContactSearchable.c());
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(paramIContactSearchable.b());
@@ -308,13 +308,13 @@ public class ConversationSearchAdapter
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
-    if (this.jdField_a_of_type_Gih != null)
+    if (this.jdField_a_of_type_Gig != null)
     {
-      this.jdField_a_of_type_Gih.cancel(true);
-      this.jdField_a_of_type_Gih = null;
+      this.jdField_a_of_type_Gig.cancel(true);
+      this.jdField_a_of_type_Gig = null;
     }
-    this.jdField_a_of_type_Gih = new gih(this, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Gih.execute(new Void[0]);
+    this.jdField_a_of_type_Gig = new gig(this, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Gig.execute(new Void[0]);
   }
   
   public void a(List paramList)

@@ -1,0 +1,36 @@
+{
+    "view_type": "UIView",
+    "layout_type": "layout_relative",
+    "view_id": "id_dislike_button",
+    "default_visible": "YES",
+    "align_parent_right": "YES",
+    "align_parent_center_vertical": "YES",
+    "event_type": "cmd_dislike_click",
+    "height": {
+        "type": "relative",
+        "value": "30"
+    },
+    "width": {
+        "type": "relative",
+        "value": "40"
+    },
+    "subviews": [
+        {
+            "view_type": "UIImageView",
+            "view_id": "id_dislike_img",
+            "default_visible": "YES",
+            "align_parent_center": "YES",
+            "height": {
+                "type": "relative",
+                "value": "12"
+            },
+            "width": {
+                "type": "relative",
+                "value": "12"
+            },
+            "attributes": {
+                "loadImageWithPath:": "feeds_dislike"
+            }
+        }
+    ]
+}

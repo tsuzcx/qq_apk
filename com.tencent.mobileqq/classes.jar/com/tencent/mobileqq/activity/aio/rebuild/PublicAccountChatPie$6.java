@@ -1,26 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
-import bdug;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.biz.common.offline.AsyncBack;
 
-public class PublicAccountChatPie$6
-  implements Runnable
+class PublicAccountChatPie$6
+  implements AsyncBack
 {
-  public PublicAccountChatPie$6(agti paramagti) {}
+  PublicAccountChatPie$6(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
-  {
-    int j = agti.a(this.this$0);
-    int i = j;
-    if (j > 2) {
-      i = 2;
-    }
-    List localList = this.this$0.a.a().a("2747277822", 1008, i);
-    ((bdug)this.this$0.a.a(71)).a(2, localList);
-  }
+  public void loaded(String paramString, int paramInt) {}
+  
+  public void progress(int paramInt) {}
 }
 
 

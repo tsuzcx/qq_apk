@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgItemTitle$TitleTextView
   extends TextView
 {
-  public int a;
+  public int a = 0;
   
   public StructMsgItemTitle$TitleTextView(Context paramContext)
   {
@@ -18,22 +18,36 @@ public class StructMsgItemTitle$TitleTextView
   
   private void a(CharSequence paramCharSequence, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramCharSequence)) || (paramInt <= 0)) {}
-    do
+    if (!TextUtils.isEmpty(paramCharSequence))
     {
-      return;
-      i = (int)Math.ceil(Layout.getDesiredWidth(paramCharSequence, getPaint()));
-    } while (i <= paramInt);
-    int j = (int)Math.floor(getTextSize() * paramInt / i);
-    if (QLog.isColorLevel()) {
-      QLog.i("StructMsg", 2, "adjustTextSize avail:" + paramInt + " width:" + i + " oldSize:" + getTextSize() + " newSize:" + j);
+      if (paramInt <= 0) {
+        return;
+      }
+      int i = (int)Math.ceil(Layout.getDesiredWidth(paramCharSequence, getPaint()));
+      if (i > paramInt)
+      {
+        int j = (int)Math.floor(getTextSize() * paramInt / i);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("adjustTextSize avail:");
+          localStringBuilder.append(paramInt);
+          localStringBuilder.append(" width:");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" oldSize:");
+          localStringBuilder.append(getTextSize());
+          localStringBuilder.append(" newSize:");
+          localStringBuilder.append(j);
+          QLog.i("StructMsg", 2, localStringBuilder.toString());
+        }
+        i = j;
+        if (j == getTextSize()) {
+          i = j - 1;
+        }
+        setTextSize(0, i);
+        a(paramCharSequence, paramInt);
+      }
     }
-    int i = j;
-    if (j == getTextSize()) {
-      i = j - 1;
-    }
-    setTextSize(0, i);
-    a(paramCharSequence, paramInt);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -48,7 +62,7 @@ public class StructMsgItemTitle$TitleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTitle.TitleTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ReqUserInfo
   extends JceStruct
@@ -20,14 +21,14 @@ public final class ReqUserInfo
   static ArrayList<SOSO_Wifi> cache_vSOSOMac;
   public int eListType = 1;
   public int eLocalInfo = 0;
-  public GPS stGps;
+  public GPS stGps = null;
   public String strAuthName = "";
   public String strAuthPassword = "";
-  public ArrayList<Cell> vCells;
-  public byte[] vLBSKeyData;
-  public ArrayList<Long> vMacs;
-  public ArrayList<SOSO_Cell> vSOSOCells;
-  public ArrayList<SOSO_Wifi> vSOSOMac;
+  public ArrayList<Cell> vCells = null;
+  public byte[] vLBSKeyData = null;
+  public ArrayList<Long> vMacs = null;
+  public ArrayList<SOSO_Cell> vSOSOCells = null;
+  public ArrayList<SOSO_Wifi> vSOSOMac = null;
   
   static
   {
@@ -79,37 +80,45 @@ public final class ReqUserInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stGps != null) {
-      paramJceOutputStream.write(this.stGps, 0);
+    Object localObject = this.stGps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.vMacs != null) {
-      paramJceOutputStream.write(this.vMacs, 1);
+    localObject = this.vMacs;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.vCells != null) {
-      paramJceOutputStream.write(this.vCells, 2);
+    localObject = this.vCells;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.strAuthName != null) {
-      paramJceOutputStream.write(this.strAuthName, 3);
+    localObject = this.strAuthName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.strAuthPassword != null) {
-      paramJceOutputStream.write(this.strAuthPassword, 4);
+    localObject = this.strAuthPassword;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.eListType, 5);
     paramJceOutputStream.write(this.eLocalInfo, 6);
-    if (this.vLBSKeyData != null) {
-      paramJceOutputStream.write(this.vLBSKeyData, 7);
+    localObject = this.vLBSKeyData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
-    if (this.vSOSOMac != null) {
-      paramJceOutputStream.write(this.vSOSOMac, 8);
+    localObject = this.vSOSOMac;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.vSOSOCells != null) {
-      paramJceOutputStream.write(this.vSOSOCells, 9);
+    localObject = this.vSOSOCells;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.ReqUserInfo
  * JD-Core Version:    0.7.0.1
  */

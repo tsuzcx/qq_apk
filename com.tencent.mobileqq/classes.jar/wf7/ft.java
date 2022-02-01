@@ -52,8 +52,12 @@ public class ft
           return localfu;
         }
       }
+      return null;
     }
-    return null;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static final ft eJ()
@@ -65,24 +69,30 @@ public class ft
   {
     synchronized (this.hx)
     {
-      if ((this.rA == null) || (this.rA.rF == null) || (this.rA.rF.isEmpty())) {
+      if ((this.rA != null) && (this.rA.rF != null) && (!this.rA.rF.isEmpty()))
+      {
+        fv localfv = new fv();
+        localfv.rF = new ArrayList();
+        Iterator localIterator = this.rA.rF.iterator();
+        while (localIterator.hasNext())
+        {
+          fu localfu = (fu)localIterator.next();
+          if (localfu.networkId != cb.gI) {
+            localfv.rF.add(localfu);
+          }
+        }
+        if (localfv.rF.isEmpty()) {
+          return;
+        }
+        gk.a(df.a(localfv), eM());
         return;
       }
-      fv localfv = new fv();
-      localfv.rF = new ArrayList();
-      Iterator localIterator = this.rA.rF.iterator();
-      while (localIterator.hasNext())
-      {
-        fu localfu = (fu)localIterator.next();
-        if (localfu.networkId != cb.gI) {
-          localfv.rF.add(localfu);
-        }
-      }
-    }
-    if (localJceStruct.rF.isEmpty()) {
       return;
     }
-    gk.a(df.a(localJceStruct), eM());
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   private void eO()
@@ -106,10 +116,11 @@ public class ft
   
   protected void a(String paramString, JceStruct paramJceStruct)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramJceStruct == null)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
+      if (paramJceStruct == null) {
+        return;
+      }
       try
       {
         paramString = gk.a(new File(paramString));
@@ -130,25 +141,30 @@ public class ft
   {
     synchronized (this.hx)
     {
-      if (this.rA == null) {
+      if (this.rA == null)
+      {
         this.rA = paramfv;
       }
-      fu localfu1;
-      fu localfu2;
-      do
+      else
       {
-        do
+        paramfv = paramfv.rF.iterator();
+        while (paramfv.hasNext())
         {
-          while (!paramfv.hasNext())
+          fu localfu1 = (fu)paramfv.next();
+          if (localfu1 != null)
           {
-            return;
-            paramfv = paramfv.rF.iterator();
+            fu localfu2 = au(localfu1.id);
+            if (((localfu2 == null) || (localfu2.networkId == localfu1.networkId) || (localfu2.networkId != cb.gI)) && (localfu2 == null)) {
+              a(localfu1);
+            }
           }
-          localfu1 = (fu)paramfv.next();
-        } while (localfu1 == null);
-        localfu2 = au(localfu1.id);
-      } while (((localfu2 != null) && (localfu2.networkId != localfu1.networkId) && (localfu2.networkId == cb.gI)) || (localfu2 != null));
-      a(localfu1);
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramfv;
     }
   }
   
@@ -156,20 +172,25 @@ public class ft
   {
     synchronized (this.hx)
     {
-      if ((this.rA == null) || (this.rA.rF == null)) {
-        return null;
-      }
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.rA.rF.iterator();
-      while (localIterator.hasNext())
+      if ((this.rA != null) && (this.rA.rF != null))
       {
-        fu localfu = (fu)localIterator.next();
-        if (localfu.networkId != cb.gI) {
-          localArrayList.add(new Pair(localfu.ssid, Integer.valueOf(localfu.security)));
+        ArrayList localArrayList = new ArrayList();
+        Iterator localIterator = this.rA.rF.iterator();
+        while (localIterator.hasNext())
+        {
+          fu localfu = (fu)localIterator.next();
+          if (localfu.networkId != cb.gI) {
+            localArrayList.add(new Pair(localfu.ssid, Integer.valueOf(localfu.security)));
+          }
         }
+        return localArrayList;
       }
+      return null;
     }
-    return localList;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   protected void eK()
@@ -185,14 +206,16 @@ public class ft
     String str = eM();
     fv localfv = new fv();
     a(str, localfv);
-    if ((localfv.rF != null) && (!localfv.rF.isEmpty())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool) {
-        a(localfv);
-      }
-      return bool;
+    boolean bool;
+    if ((localfv.rF != null) && (!localfv.rF.isEmpty())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (bool) {
+      a(localfv);
+    }
+    return bool;
   }
   
   protected String eM()
@@ -217,44 +240,41 @@ public class ft
   
   public boolean j(String paramString, int paramInt)
   {
-    boolean bool = true;
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     fu localfu = au(cb.d(paramString, paramInt));
+    boolean bool = true;
     if (localfu == null) {
       l(paramString, paramInt);
+    } else if (localfu.networkId == cb.gI) {
+      localfu.networkId = 0;
+    } else {
+      bool = false;
     }
-    for (;;)
-    {
-      this.rC |= bool;
-      if (this.rC) {
-        eO();
-      }
-      return bool;
-      if (localfu.networkId == cb.gI) {
-        localfu.networkId = 0;
-      } else {
-        bool = false;
-      }
+    this.rC |= bool;
+    if (this.rC) {
+      eO();
     }
+    return bool;
   }
   
   public void k(String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      paramString = au(cb.d(paramString, paramInt));
-    } while (paramString == null);
-    paramString.networkId = cb.gI;
-    this.rC |= true;
+    }
+    paramString = au(cb.d(paramString, paramInt));
+    if (paramString != null)
+    {
+      paramString.networkId = cb.gI;
+      this.rC |= true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ft
  * JD-Core Version:    0.7.0.1
  */

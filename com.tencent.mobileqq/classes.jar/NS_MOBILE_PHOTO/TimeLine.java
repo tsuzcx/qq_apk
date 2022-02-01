@@ -10,15 +10,15 @@ public final class TimeLine
   extends JceStruct
 {
   static Map<String, TimeEvent> cache_festivals = new HashMap();
-  public long begin_time;
-  public long end_time;
-  public Map<String, TimeEvent> festivals;
-  public int show_day;
-  public int show_month;
-  public int show_time;
-  public int show_week;
-  public int show_year;
-  public int total;
+  public long begin_time = 0L;
+  public long end_time = 0L;
+  public Map<String, TimeEvent> festivals = null;
+  public int show_day = 0;
+  public int show_month = 0;
+  public int show_time = 0;
+  public int show_week = 0;
+  public int show_year = 0;
+  public int total = 0;
   
   static
   {
@@ -64,14 +64,15 @@ public final class TimeLine
     paramJceOutputStream.write(this.show_month, 5);
     paramJceOutputStream.write(this.show_week, 6);
     paramJceOutputStream.write(this.show_day, 7);
-    if (this.festivals != null) {
-      paramJceOutputStream.write(this.festivals, 8);
+    Map localMap = this.festivals;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.TimeLine
  * JD-Core Version:    0.7.0.1
  */

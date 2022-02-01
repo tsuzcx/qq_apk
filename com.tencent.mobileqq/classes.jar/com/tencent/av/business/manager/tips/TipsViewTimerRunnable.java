@@ -3,145 +3,142 @@ package com.tencent.av.business.manager.tips;
 import android.os.Handler;
 import android.os.SystemClock;
 import com.tencent.av.app.VideoAppInterface;
-import lli;
-import mdf;
+import com.tencent.av.tips.data.AvTipsItemBase;
 
 public class TipsViewTimerRunnable
   implements Runnable
 {
-  volatile long jdField_a_of_type_Long = 0L;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  volatile mdf jdField_a_of_type_Mdf = null;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  volatile long jdField_b_of_type_Long = 0L;
-  volatile mdf jdField_b_of_type_Mdf = null;
+  VideoAppInterface a;
+  Object b = new Object();
+  volatile long c = 0L;
+  volatile AvTipsItemBase d = null;
+  volatile long e = 0L;
+  volatile AvTipsItemBase f = null;
+  volatile boolean g = false;
   
   public TipsViewTimerRunnable(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.a = paramVideoAppInterface;
   }
   
-  private boolean a(mdf parammdf, long paramLong)
+  private boolean a(AvTipsItemBase paramAvTipsItemBase, long paramLong)
   {
-    boolean bool = true;
-    if ((parammdf == null) || (parammdf.a())) {
-      bool = false;
+    int i = 0;
+    if (paramAvTipsItemBase == null) {
+      return false;
     }
-    for (;;)
-    {
-      return bool;
-      if (SystemClock.elapsedRealtime() - paramLong >= parammdf.c() * 1000) {}
-      for (int i = 1; i != 0; i = 0) {
-        return false;
-      }
+    if (paramAvTipsItemBase.g()) {
+      return true;
     }
+    if (SystemClock.elapsedRealtime() - paramLong >= paramAvTipsItemBase.c() * 1000) {
+      i = 1;
+    }
+    return i ^ 0x1;
   }
   
-  private void c()
+  private void e()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
-    do
-    {
+    VideoAppInterface localVideoAppInterface = this.a;
+    if (localVideoAppInterface == null) {
       return;
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this);
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
-  }
-  
-  public mdf a()
-  {
-    return this.jdField_a_of_type_Mdf;
+    }
+    localVideoAppInterface.a().removeCallbacks(this);
+    if (!this.g) {
+      return;
+    }
+    this.a.a().postDelayed(this, 1000L);
   }
   
   public void a()
   {
-    mdf localmdf = this.jdField_a_of_type_Mdf;
-    this.jdField_a_of_type_Mdf = null;
-    this.jdField_a_of_type_Long = 0L;
-    lli locallli = (lli)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
-    if (locallli != null) {
-      locallli.a(localmdf);
+    AvTipsItemBase localAvTipsItemBase = this.d;
+    this.d = null;
+    this.c = 0L;
+    TipsManager localTipsManager = (TipsManager)this.a.c(11);
+    if (localTipsManager != null) {
+      localTipsManager.b(localAvTipsItemBase);
     }
   }
   
-  public boolean a(mdf parammdf)
+  public boolean a(AvTipsItemBase paramAvTipsItemBase)
   {
-    if (parammdf == null) {
+    if (paramAvTipsItemBase == null) {
       return false;
     }
-    this.jdField_a_of_type_Mdf = parammdf;
-    if (!parammdf.a())
+    this.d = paramAvTipsItemBase;
+    if (!paramAvTipsItemBase.g())
     {
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_Boolean = true;
-      c();
+      this.c = SystemClock.elapsedRealtime();
+      this.g = true;
+      e();
       return true;
     }
-    this.jdField_a_of_type_Long = 0L;
+    this.c = 0L;
     return true;
-  }
-  
-  public mdf b()
-  {
-    return this.jdField_b_of_type_Mdf;
   }
   
   public void b()
   {
-    mdf localmdf = this.jdField_b_of_type_Mdf;
-    this.jdField_b_of_type_Mdf = null;
-    this.jdField_b_of_type_Long = 0L;
-    lli locallli = (lli)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11);
-    if (locallli != null) {
-      locallli.b(localmdf);
+    AvTipsItemBase localAvTipsItemBase = this.f;
+    this.f = null;
+    this.e = 0L;
+    TipsManager localTipsManager = (TipsManager)this.a.c(11);
+    if (localTipsManager != null) {
+      localTipsManager.c(localAvTipsItemBase);
     }
   }
   
-  public boolean b(mdf parammdf)
+  public boolean b(AvTipsItemBase paramAvTipsItemBase)
   {
-    if (parammdf == null) {
+    if (paramAvTipsItemBase == null) {
       return false;
     }
-    this.jdField_b_of_type_Mdf = parammdf;
-    if (!parammdf.a())
+    this.f = paramAvTipsItemBase;
+    if (!paramAvTipsItemBase.g())
     {
-      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_Boolean = true;
-      c();
+      this.e = SystemClock.elapsedRealtime();
+      this.g = true;
+      e();
       return true;
     }
-    this.jdField_b_of_type_Long = 0L;
+    this.e = 0L;
     return true;
+  }
+  
+  public AvTipsItemBase c()
+  {
+    return this.d;
+  }
+  
+  public AvTipsItemBase d()
+  {
+    return this.f;
   }
   
   public void run()
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if (a(this.jdField_a_of_type_Mdf, this.jdField_a_of_type_Long))
+    boolean bool;
+    if (a(this.d, this.c))
     {
-      bool1 = true;
-      if (!a(this.jdField_b_of_type_Mdf, this.jdField_b_of_type_Long)) {
-        break label55;
-      }
-      bool1 = bool2;
+      bool = true;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Boolean = bool1;
-      c();
-      return;
       a();
-      break;
-      label55:
+      bool = false;
+    }
+    if (a(this.f, this.e)) {
+      bool = true;
+    } else {
       b();
     }
+    this.g = bool;
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.tips.TipsViewTimerRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -15,41 +15,41 @@ public class GoogleApiAvailabilityCache
   public GoogleApiAvailabilityCache()
   {
     this(GoogleApiAvailability.getInstance());
-    AppMethodBeat.i(61347);
-    AppMethodBeat.o(61347);
+    AppMethodBeat.i(11839);
+    AppMethodBeat.o(11839);
   }
   
   public GoogleApiAvailabilityCache(GoogleApiAvailabilityLight paramGoogleApiAvailabilityLight)
   {
-    AppMethodBeat.i(61348);
+    AppMethodBeat.i(11840);
     this.zzug = new SparseIntArray();
     Preconditions.checkNotNull(paramGoogleApiAvailabilityLight);
     this.zzuh = paramGoogleApiAvailabilityLight;
-    AppMethodBeat.o(61348);
+    AppMethodBeat.o(11840);
   }
   
   public void flush()
   {
-    AppMethodBeat.i(61350);
+    AppMethodBeat.i(11842);
     this.zzug.clear();
-    AppMethodBeat.o(61350);
+    AppMethodBeat.o(11842);
   }
   
   public int getClientAvailability(Context paramContext, Api.Client paramClient)
   {
-    AppMethodBeat.i(61349);
+    AppMethodBeat.i(11841);
     Preconditions.checkNotNull(paramContext);
     Preconditions.checkNotNull(paramClient);
     if (!paramClient.requiresGooglePlayServices())
     {
-      AppMethodBeat.o(61349);
+      AppMethodBeat.o(11841);
       return 0;
     }
     int k = paramClient.getMinApkVersion();
     int j = this.zzug.get(k, -1);
     if (j != -1)
     {
-      AppMethodBeat.o(61349);
+      AppMethodBeat.o(11841);
       return j;
     }
     int i = 0;
@@ -65,7 +65,7 @@ public class GoogleApiAvailabilityCache
         j = this.zzuh.isGooglePlayServicesAvailable(paramContext, k);
       }
       this.zzug.put(k, j);
-      AppMethodBeat.o(61349);
+      AppMethodBeat.o(11841);
       return j;
       i += 1;
       break;
@@ -74,7 +74,7 @@ public class GoogleApiAvailabilityCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.GoogleApiAvailabilityCache
  * JD-Core Version:    0.7.0.1
  */

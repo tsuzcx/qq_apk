@@ -14,17 +14,17 @@ public final class Status
   implements w, ReflectedParcelable
 {
   public static final Parcelable.Creator<Status> CREATOR = new af();
-  public static final Status HL = new Status(0);
-  public static final Status HM = new Status(14);
-  public static final Status HN = new Status(8);
-  public static final Status HO = new Status(15);
-  public static final Status HP = new Status(16);
-  public static final Status HQ = new Status(17);
-  public static final Status HR = new Status(18);
-  final int Hc;
-  private final int Hd;
-  private final PendingIntent He;
-  private final String Hf;
+  public static final Status JA = new Status(0);
+  public static final Status JB = new Status(14);
+  public static final Status JC = new Status(8);
+  public static final Status JD = new Status(15);
+  public static final Status JE = new Status(16);
+  public static final Status JF = new Status(17);
+  public static final Status JG = new Status(18);
+  final int IR;
+  private final int IS;
+  private final PendingIntent IT;
+  private final String IU;
   
   public Status(int paramInt)
   {
@@ -33,10 +33,10 @@ public final class Status
   
   Status(int paramInt1, int paramInt2, String paramString, PendingIntent paramPendingIntent)
   {
-    this.Hc = paramInt1;
-    this.Hd = paramInt2;
-    this.Hf = paramString;
-    this.He = paramPendingIntent;
+    this.IR = paramInt1;
+    this.IS = paramInt2;
+    this.IU = paramString;
+    this.IT = paramPendingIntent;
   }
   
   public Status(int paramInt, String paramString)
@@ -56,46 +56,46 @@ public final class Status
     {
       return false;
       paramObject = (Status)paramObject;
-    } while ((this.Hc != paramObject.Hc) || (this.Hd != paramObject.Hd) || (!b.b(this.Hf, paramObject.Hf)) || (!b.b(this.He, paramObject.He)));
+    } while ((this.IR != paramObject.IR) || (this.IS != paramObject.IS) || (!b.c(this.IU, paramObject.IU)) || (!b.c(this.IT, paramObject.IT)));
     return true;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
     return this;
   }
   
-  final PendingIntent gF()
+  final PendingIntent gP()
   {
-    return this.He;
+    return this.IT;
   }
   
-  public final String gG()
+  public final String gQ()
   {
-    return this.Hf;
+    return this.IU;
   }
   
   public final int getStatusCode()
   {
-    return this.Hd;
+    return this.IS;
   }
   
-  public final boolean gm()
+  public final boolean gw()
   {
-    return this.Hd <= 0;
+    return this.IS <= 0;
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.Hc), Integer.valueOf(this.Hd), this.Hf, this.He });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.IR), Integer.valueOf(this.IS), this.IU, this.IT });
   }
   
   public final String toString()
   {
-    c localc = b.t(this);
-    if (this.Hf != null) {}
-    for (String str = this.Hf;; str = o.bc(this.Hd)) {
-      return localc.a("statusCode", str).a("resolution", this.He).toString();
+    c localc = b.C(this);
+    if (this.IU != null) {}
+    for (String str = this.IU;; str = o.bw(this.IS)) {
+      return localc.a("statusCode", str).a("resolution", this.IT).toString();
     }
   }
   

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apuy;
-
 class EmoticonPanelMallHelper$1$1
   implements Runnable
 {
@@ -9,7 +7,7 @@ class EmoticonPanelMallHelper$1$1
   
   public void run()
   {
-    this.a.a.a();
+    this.this$1.val$callback.callbackInMainThread();
   }
 }
 

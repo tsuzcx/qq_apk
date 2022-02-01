@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.webwx;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.webwx.a.g;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.webwx.model.g;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final n createApplication()
   {
-    AppMethodBeat.i(26478);
+    AppMethodBeat.i(30153);
     a locala = new a();
-    AppMethodBeat.o(26478);
+    AppMethodBeat.o(30153);
     return locala;
   }
   
-  public final at createSubCore()
+  public final be createSubCore()
   {
-    AppMethodBeat.i(26479);
+    AppMethodBeat.i(30154);
     g localg = new g();
-    AppMethodBeat.o(26479);
+    AppMethodBeat.o(30154);
     return localg;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
     return null;
   }

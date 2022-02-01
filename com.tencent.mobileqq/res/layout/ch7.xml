@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/msj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="42.0dip" android:text="9/9" android:shadowColor="@color/by" android:shadowDx="5.0" android:shadowDy="5.0" />
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ch6" />
-    <com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView android:layout_gravity="bottom|center|right" android:id="@id/mo4" android:layout_width="115.0dip" android:layout_height="210.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="62.0dip" />
-    <com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView android:id="@id/mlw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</merge>
+    <View android:id="@id/obh" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+    <Button android:textSize="14.0dip" android:id="@id/mqw" android:layout_width="fill_parent" android:layout_height="31.0dip" android:layout_marginLeft="23.5dip" android:layout_marginTop="12.0dip" android:layout_marginRight="23.5dip" android:text="加入频道" android:contentDescription="@string/x1d" style="@style/abl" />
+    <Space android:layout_width="fill_parent" android:layout_height="12.0dip" />
+</LinearLayout>

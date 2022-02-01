@@ -13,6 +13,8 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.ByteArrayInputStream;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -42,32 +44,31 @@ public class ManagerDeviceInfo
   
   private String a(String paramString)
   {
-    for (;;)
+    try
     {
-      StringBuffer localStringBuffer;
-      int i1;
-      try
+      paramString = this.a.getPackageManager().getPackageInfo(paramString, 64).signatures;
+      Object localObject = CertificateFactory.getInstance("X.509");
+      int i1 = 0;
+      paramString = a((X509Certificate)((CertificateFactory)localObject).generateCertificate(new ByteArrayInputStream(paramString[0].toByteArray())));
+      localObject = new StringBuffer();
+      for (;;)
       {
-        paramString = this.a.getPackageManager().getPackageInfo(paramString, 64).signatures;
-        paramString = a((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(paramString[0].toByteArray())));
-        localStringBuffer = new StringBuffer();
-        i1 = 0;
         if (i1 >= paramString.length()) {
-          return localStringBuffer.toString();
+          return ((StringBuffer)localObject).toString();
         }
+        ((StringBuffer)localObject).append(paramString.charAt(i1));
+        i1 += 1;
       }
-      catch (PackageManager.NameNotFoundException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      catch (CertificateException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-      localStringBuffer.append(paramString.charAt(i1));
-      i1 += 1;
+      return null;
+    }
+    catch (CertificateException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
@@ -122,16 +123,17 @@ public class ManagerDeviceInfo
   
   public int getNetTypeNum()
   {
-    if (this.h == "2g") {
+    String str = this.h;
+    if (str == "2g") {
       return 1;
     }
-    if (this.h == "ct3g") {
+    if (str == "ct3g") {
       return 2;
     }
-    if (this.h == "cu3g") {
+    if (str == "cu3g") {
       return 3;
     }
-    if (this.h == "wifi") {
+    if (str == "wifi") {
       return 4;
     }
     return 0;
@@ -154,8 +156,9 @@ public class ManagerDeviceInfo
   
   public String getWapProxyIP()
   {
-    if (this.l != null) {
-      return this.l;
+    String str = this.l;
+    if (str != null) {
+      return str;
     }
     return null;
   }
@@ -199,12 +202,17 @@ public class ManagerDeviceInfo
   
   public void setGuidNeedService()
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      this.g = ((TelephonyManager)this.a.getSystemService("phone")).getDeviceId();
-      this.g += "-";
-      WifiInfo localWifiInfo = ((WifiManager)this.a.getSystemService("wifi")).getConnectionInfo();
-      this.g += localWifiInfo.getMacAddress();
+      this.g = PhoneInfoMonitor.getDeviceId((TelephonyManager)((Context)localObject).getSystemService("phone"));
+      localObject = new StringBuilder(String.valueOf(this.g));
+      ((StringBuilder)localObject).append("-");
+      this.g = ((StringBuilder)localObject).toString();
+      localObject = NetworkMonitor.getConnectionInfo((WifiManager)this.a.getSystemService("wifi"));
+      StringBuilder localStringBuilder = new StringBuilder(String.valueOf(this.g));
+      localStringBuilder.append(((WifiInfo)localObject).getMacAddress());
+      this.g = localStringBuilder.toString();
     }
   }
   
@@ -212,48 +220,42 @@ public class ManagerDeviceInfo
   {
     try
     {
-      localEnumeration1 = NetworkInterface.getNetworkInterfaces();
-      boolean bool = localEnumeration1.hasMoreElements();
-      if (bool) {
-        break label21;
+      Enumeration localEnumeration1 = NetworkMonitor.getNetworkInterfaces();
+      while (localEnumeration1.hasMoreElements())
+      {
+        Enumeration localEnumeration2 = ((NetworkInterface)localEnumeration1.nextElement()).getInetAddresses();
+        while (localEnumeration2.hasMoreElements())
+        {
+          InetAddress localInetAddress = (InetAddress)localEnumeration2.nextElement();
+          if (!localInetAddress.isLoopbackAddress()) {
+            this.n = localInetAddress.getHostAddress();
+          }
+        }
       }
+      return;
     }
     catch (SocketException localSocketException)
     {
-      for (;;)
-      {
-        Enumeration localEnumeration1;
-        label21:
-        Enumeration localEnumeration2;
-        localSocketException.printStackTrace();
-      }
-    }
-    this.n = null;
-    return;
-    localEnumeration2 = ((NetworkInterface)localEnumeration1.nextElement()).getInetAddresses();
-    while (localEnumeration2.hasMoreElements())
-    {
-      InetAddress localInetAddress = (InetAddress)localEnumeration2.nextElement();
-      if (!localInetAddress.isLoopbackAddress()) {
-        this.n = localInetAddress.getHostAddress();
-      }
+      localSocketException.printStackTrace();
+      this.n = null;
     }
   }
   
   public int setNetType()
   {
-    if (this.a == null) {
+    Object localObject = this.a;
+    if (localObject == null) {
       return -101;
     }
-    NetworkInfo localNetworkInfo = ((ConnectivityManager)this.a.getSystemService("connectivity")).getActiveNetworkInfo();
-    if (localNetworkInfo == null) {
+    localObject = ((ConnectivityManager)((Context)localObject).getSystemService("connectivity")).getActiveNetworkInfo();
+    if (localObject == null) {
       return -201;
     }
-    int i1 = localNetworkInfo.getType();
+    int i1 = ((NetworkInfo)localObject).getType();
     if (i1 == 0)
     {
-      this.h = localNetworkInfo.getExtraInfo();
-      this.i = localNetworkInfo.getSubtype();
+      this.h = ((NetworkInfo)localObject).getExtraInfo();
+      this.i = ((NetworkInfo)localObject).getSubtype();
       switch (this.i)
       {
       case 5: 
@@ -261,40 +263,51 @@ public class ManagerDeviceInfo
       case 14: 
       default: 
         this.h = "other";
+        break;
+      case 15: 
+        this.h = "other";
+        break;
+      case 13: 
+        this.h = "other";
+        break;
+      case 12: 
+        this.h = "ct3g";
+        break;
+      case 11: 
+        this.h = "other";
+        break;
+      case 10: 
+        this.h = "other";
+        break;
+      case 9: 
+        this.h = "other";
+        break;
+      case 8: 
+        this.h = "cu3g";
+        break;
+      case 6: 
+        this.h = "ct3g";
+        break;
+      case 4: 
+        this.h = "2g";
+        break;
+      case 3: 
+        this.h = "cu3g";
+        break;
+      case 2: 
+        this.h = "2g";
+        break;
+      case 1: 
+        this.h = "2g";
+        break;
       }
     }
-    for (;;)
+    else if (i1 == 1)
     {
       this.h = "wifi";
-      return 0;
-      this.h = "2g";
-      continue;
-      this.h = "2g";
-      continue;
-      this.h = "2g";
-      continue;
-      this.h = "ct3g";
-      continue;
-      this.h = "ct3g";
-      continue;
-      this.h = "cu3g";
-      continue;
-      this.h = "cu3g";
-      continue;
-      this.h = "other";
-      continue;
-      this.h = "other";
-      continue;
-      this.h = "other";
-      continue;
-      this.h = "other";
-      continue;
-      this.h = "other";
-      continue;
-      if (i1 == 1) {
-        this.h = "wifi";
-      }
     }
+    this.h = "wifi";
+    return 0;
   }
   
   public void setNetType(String paramString)
@@ -309,15 +322,19 @@ public class ManagerDeviceInfo
   
   public int setSigInfo()
   {
-    String str1 = this.a.getPackageName();
-    setAndroid_package_name(str1);
-    String str2 = a(str1);
-    setAndroid_signature(str2);
-    if ((str1 == null) || (str2 == null)) {
-      return -1;
+    Object localObject = this.a.getPackageName();
+    setAndroid_package_name((String)localObject);
+    String str = a((String)localObject);
+    setAndroid_signature(str);
+    if ((localObject != null) && (str != null))
+    {
+      localObject = new StringBuilder(String.valueOf(localObject));
+      ((StringBuilder)localObject).append(";");
+      ((StringBuilder)localObject).append(str);
+      this.d = ((StringBuilder)localObject).toString();
+      return 0;
     }
-    this.d = (str1 + ";" + str2);
-    return 0;
+    return -1;
   }
   
   public void setWap()
@@ -327,22 +344,20 @@ public class ManagerDeviceInfo
     if ((localNetworkInfo != null) && (localNetworkInfo.getType() == 0))
     {
       this.k = true;
-      if (Proxy.getDefaultPort() != -1) {
-        break label64;
+      int i1;
+      if (Proxy.getDefaultPort() == -1) {
+        i1 = 80;
+      } else {
+        i1 = Proxy.getDefaultPort();
       }
-    }
-    label64:
-    for (int i1 = 80;; i1 = Proxy.getDefaultPort())
-    {
       this.m = i1;
       this.l = Proxy.getDefaultHost();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.util.ManagerDeviceInfo
  * JD-Core Version:    0.7.0.1
  */

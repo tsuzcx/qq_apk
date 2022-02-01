@@ -1,18 +1,14 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
 
 class erj
   implements DialogInterface.OnClickListener
 {
-  erj(eri parameri) {}
+  erj(erh paramerh) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.f();
     paramDialogInterface.dismiss();
-    ReportController.b(this.a.a.b, "CliOper", "", "", "Multi_call", "Clk_join_discuss_next", 0, 0, "", "", "", "");
   }
 }
 

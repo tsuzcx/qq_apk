@@ -1,20 +1,16 @@
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
 
 public class fdw
-  implements ProxyListener
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public fdw(MessageHandler paramMessageHandler) {}
+  public fdw(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord, long paramLong) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    this.a.a(2000, true, null);
-    this.a.a(2002, true, null);
+    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Long, this.e, this.jdField_a_of_type_Int);
   }
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void b(String paramString, int paramInt) {}
 }
 
 

@@ -23,7 +23,7 @@ public final class BatchDownloadActionResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(75981);
+    AppMethodBeat.i(102227);
     this.batchRequestType = paramJceInputStream.read(this.batchRequestType, 0, true);
     if (cache_batchData == null)
     {
@@ -32,17 +32,17 @@ public final class BatchDownloadActionResponse
       cache_batchData.add(localIPCQueryDownloadInfo);
     }
     this.batchData = ((ArrayList)paramJceInputStream.read(cache_batchData, 1, false));
-    AppMethodBeat.o(75981);
+    AppMethodBeat.o(102227);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(75980);
+    AppMethodBeat.i(102226);
     paramJceOutputStream.write(this.batchRequestType, 0);
     if (this.batchData != null) {
       paramJceOutputStream.write(this.batchData, 1);
     }
-    AppMethodBeat.o(75980);
+    AppMethodBeat.o(102226);
   }
 }
 

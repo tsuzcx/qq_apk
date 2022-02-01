@@ -1,78 +1,41 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
-import android.view.View;
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.ui.MMWizardActivity;
 
 public final class d
-  extends TouchDelegate
 {
-  private static final Rect elb;
-  ArrayList<TouchDelegate> elc;
-  TouchDelegate eld;
-  
-  static
+  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(104461);
-    elb = new Rect();
-    AppMethodBeat.o(104461);
-  }
-  
-  public d(View paramView)
-  {
-    super(elb, paramView);
-  }
-  
-  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(104460);
-    Object localObject;
-    switch (paramMotionEvent.getAction())
+    AppMethodBeat.i(12767);
+    if (paramBoolean)
     {
-    default: 
-      localObject = null;
+      localIntent = new Intent(paramActivity, RoomUpgradeUI.class);
+      localIntent.setFlags(603979776);
+      localIntent.putExtra("room_name", paramString);
+      paramString = new Intent();
+      paramString.setClassName(paramActivity, "com.tencent.mm.plugin.account.ui.bind.BindMobileUI");
+      paramString.putExtra("is_bind_for_chatroom_upgrade", true);
+      MMWizardActivity.b(paramActivity, paramString, localIntent);
+      AppMethodBeat.o(12767);
+      return;
     }
-    for (;;)
-    {
-      if (localObject != null) {
-        break label141;
-      }
-      AppMethodBeat.o(104460);
-      return false;
-      if (this.elc == null) {
-        break;
-      }
-      localObject = this.elc.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        TouchDelegate localTouchDelegate = (TouchDelegate)((Iterator)localObject).next();
-        if ((localTouchDelegate != null) && (localTouchDelegate.onTouchEvent(paramMotionEvent)))
-        {
-          this.eld = localTouchDelegate;
-          AppMethodBeat.o(104460);
-          return true;
-        }
-      }
-      localObject = null;
-      continue;
-      localObject = this.eld;
-      continue;
-      localObject = this.eld;
-      this.eld = null;
-    }
-    label141:
-    boolean bool = ((TouchDelegate)localObject).onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(104460);
-    return bool;
+    Intent localIntent = new Intent(paramActivity, RoomUpgradeUI.class);
+    localIntent.setFlags(603979776);
+    localIntent.putExtra("room_name", paramString);
+    localIntent.putExtra("announce_ok", true);
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramString.aYi(), "com/tencent/mm/chatroom/ui/RoomUpgradeHelper", "goUpgrade", "(Landroid/app/Activity;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramString.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/mm/chatroom/ui/RoomUpgradeHelper", "goUpgrade", "(Landroid/app/Activity;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(12767);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/ni">
-        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" style="@style/l0">
-            <TextView android:gravity="center" android:id="@id/ejm" android:layout_marginBottom="@dimen/l2" android:lineSpacingExtra="4.0dip" style="@style/l1" />
-            <ImageView android:id="@id/nd" android:layout_width="280.0dip" android:layout_height="280.0dip" android:layout_marginBottom="@dimen/l2" />
-            <Button android:id="@id/ejn" android:text="@string/so" style="@style/nq" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/ej" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/p5" android:paddingLeft="@dimen/ej" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/f1c" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="5.0dip" android:src="@raw/icon_outlined_search" app:iconColor="@color/FG_2" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/br7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="2" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/m3h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/yp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ep" android:layout_marginRight="15.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/FG_2" />
+    </LinearLayout>
+</RelativeLayout>

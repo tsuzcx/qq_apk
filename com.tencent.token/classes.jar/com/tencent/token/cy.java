@@ -1,232 +1,177 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.h;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class cy
+public abstract class cy
 {
-  private static cy b = null;
-  public int a = 0;
-  private Context c = null;
-  private String d = null;
-  
-  public static cy a()
+  static ArrayList<String> a(ArrayList<View> paramArrayList)
   {
-    if (b == null) {
-      b = new cy();
-    }
-    b.d(RqdApplication.l());
-    return b;
-  }
-  
-  public static void b()
-  {
-    b = null;
-  }
-  
-  private String c(String paramString)
-  {
-    return com.tencent.token.utils.encrypt.c.c(com.tencent.token.utils.encrypt.c.a(paramString));
-  }
-  
-  private void d(Context paramContext)
-  {
-    if (this.c == paramContext) {}
-    label36:
-    label105:
-    label110:
-    label124:
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-      return;
-      this.c = paramContext;
-      boolean bool;
-      if (paramContext != null)
+      View localView = (View)paramArrayList.get(i);
+      localArrayList.add(fo.h(localView));
+      fo.a(localView, null);
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  protected static void a(View paramView, Rect paramRect)
+  {
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    paramRect.set(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+  }
+  
+  protected static boolean a(List paramList)
+  {
+    return (paramList == null) || (paramList.isEmpty());
+  }
+  
+  static boolean a(List<View> paramList, View paramView, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      if (paramList.get(i) == paramView) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public abstract Object a(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  final void a(View paramView, final ArrayList<View> paramArrayList1, final ArrayList<View> paramArrayList2, final ArrayList<String> paramArrayList, Map<String, String> paramMap)
+  {
+    final int k = paramArrayList2.size();
+    final ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < k)
+    {
+      Object localObject = (View)paramArrayList1.get(i);
+      String str = fo.h((View)localObject);
+      localArrayList.add(str);
+      if (str != null)
       {
-        bool = true;
-        h.a(bool);
-        paramContext = c(paramContext);
-        if (paramContext == null) {
-          break label105;
-        }
-        bool = true;
-        h.a(bool);
-        this.a = paramContext.getInt("pwd_type", 0);
-        if (this.a != 2) {
-          break label110;
+        fo.a((View)localObject, null);
+        localObject = (String)paramMap.get(str);
+        int j = 0;
+        while (j < k)
+        {
+          if (((String)localObject).equals(paramArrayList.get(j)))
+          {
+            fo.a((View)paramArrayList2.get(j), str);
+            break;
+          }
+          j += 1;
         }
       }
-      for (this.d = paramContext.getString("pwd3g", null);; this.d = paramContext.getString("pwd", null))
+      i += 1;
+    }
+    de.a(paramView, new Runnable()
+    {
+      public final void run()
       {
-        if (this.a != 0) {
-          break label124;
+        int i = 0;
+        while (i < k)
+        {
+          fo.a((View)paramArrayList2.get(i), (String)paramArrayList.get(i));
+          fo.a((View)paramArrayList1.get(i), (String)localArrayList.get(i));
+          i += 1;
         }
-        a(this.c, this.d);
-        this.a = 1;
+      }
+    });
+  }
+  
+  public abstract void a(ViewGroup paramViewGroup, Object paramObject);
+  
+  public abstract void a(Object paramObject, Rect paramRect);
+  
+  public abstract void a(Object paramObject, View paramView);
+  
+  public abstract void a(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject1, Object paramObject2, ArrayList<View> paramArrayList1, Object paramObject3, ArrayList<View> paramArrayList2, Object paramObject4, ArrayList<View> paramArrayList3);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  final void a(ArrayList<View> paramArrayList, View paramView)
+  {
+    if (paramView.getVisibility() == 0)
+    {
+      if ((paramView instanceof ViewGroup))
+      {
+        paramView = (ViewGroup)paramView;
+        if (fp.a(paramView))
+        {
+          paramArrayList.add(paramView);
+          return;
+        }
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          a(paramArrayList, paramView.getChildAt(i));
+          i += 1;
+        }
         return;
-        bool = false;
-        break;
-        bool = false;
-        break label36;
+      }
+      paramArrayList.add(paramView);
+    }
+  }
+  
+  final void a(Map<String, View> paramMap, View paramView)
+  {
+    if (paramView.getVisibility() == 0)
+    {
+      String str = fo.h(paramView);
+      if (str != null) {
+        paramMap.put(str, paramView);
+      }
+      if ((paramView instanceof ViewGroup))
+      {
+        paramView = (ViewGroup)paramView;
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          a(paramMap, paramView.getChildAt(i));
+          i += 1;
+        }
       }
     }
   }
   
-  public void a(Context paramContext)
-  {
-    b(paramContext, null);
-    a(paramContext, 0L);
-  }
+  public abstract boolean a(Object paramObject);
   
-  public void a(Context paramContext, int paramInt)
-  {
-    paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      h.a(bool);
-      paramContext = paramContext.edit();
-      paramContext.putInt("lock_time", paramInt);
-      paramContext.commit();
-      return;
-    }
-  }
+  public abstract Object b(Object paramObject);
   
-  public void a(Context paramContext, long paramLong)
-  {
-    paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      h.a(bool);
-      paramContext = paramContext.edit();
-      paramContext.putLong("last_lock", paramLong);
-      paramContext.commit();
-      return;
-    }
-  }
+  public abstract Object b(Object paramObject1, Object paramObject2, Object paramObject3);
   
-  public boolean a(Context paramContext, String paramString)
-  {
-    paramContext = c(paramContext);
-    boolean bool;
-    if (paramContext != null)
-    {
-      bool = true;
-      h.a(bool);
-      paramContext = paramContext.edit();
-      if ((paramString != null) && (paramString.length() > 0)) {
-        break label62;
-      }
-      this.d = null;
-      paramContext.remove("pwd");
-    }
-    for (;;)
-    {
-      paramContext.commit();
-      return true;
-      bool = false;
-      break;
-      label62:
-      this.d = c(paramString);
-      paramContext.putString("pwd", this.d);
-      paramContext.putInt("pwd_type", 1);
-      this.a = 1;
-    }
-  }
+  public abstract void b(Object paramObject, View paramView);
   
-  public boolean a(String paramString)
-  {
-    if ((paramString == null) || (this.d == null)) {}
-    while (1 > this.a) {
-      return false;
-    }
-    return this.d.equals(c(paramString));
-  }
+  public abstract void b(Object paramObject, View paramView, ArrayList<View> paramArrayList);
   
-  public int b(Context paramContext)
-  {
-    paramContext = c(paramContext);
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      h.a(bool);
-      return paramContext.getInt("lock_time", 0);
-    }
-  }
+  public abstract void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
   
-  public void b(String paramString)
-  {
-    SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("startpwd_gesture_new_tip", 0).edit();
-    localEditor.putBoolean(paramString, false);
-    localEditor.commit();
-  }
+  public abstract Object c(Object paramObject);
   
-  public boolean b(Context paramContext, String paramString)
-  {
-    Object localObject = c(paramContext);
-    boolean bool;
-    if (localObject != null)
-    {
-      bool = true;
-      h.a(bool);
-      localObject = ((SharedPreferences)localObject).edit();
-      if ((paramString != null) && (paramString.length() > 0)) {
-        break label68;
-      }
-      this.d = null;
-      ((SharedPreferences.Editor)localObject).remove("pwd3g");
-    }
-    for (;;)
-    {
-      ((SharedPreferences.Editor)localObject).commit();
-      return true;
-      bool = false;
-      break;
-      label68:
-      if (this.a == 1) {
-        a(paramContext, null);
-      }
-      this.d = c(paramString);
-      this.a = 2;
-      ((SharedPreferences.Editor)localObject).putString("pwd3g", this.d);
-      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 2);
-    }
-  }
-  
-  public SharedPreferences c(Context paramContext)
-  {
-    switch ()
-    {
-    default: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
-    case 0: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file_test", 0);
-    case 1: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
-    case 2: 
-      return RqdApplication.l().getSharedPreferences("token_pwd_file_exp", 0);
-    }
-    return RqdApplication.l().getSharedPreferences("token_pwd_file_gray", 0);
-  }
-  
-  public boolean c()
-  {
-    return (this.d != null) && (this.d.length() > 0);
-  }
-  
-  public boolean d()
-  {
-    return (this.d != null) && (this.d.length() > 0) && (this.a == 2);
-  }
-  
-  public int e()
-  {
-    return this.a;
-  }
+  public abstract void c(Object paramObject, View paramView);
 }
 
 

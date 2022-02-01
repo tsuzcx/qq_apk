@@ -8,8 +8,8 @@ public final class ResponeUpdateAddressBookNotBind
   extends JceStruct
 {
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public long nextFlag;
-  public byte[] sessionSid;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
   
   static
   {
@@ -38,7 +38,7 @@ public final class ResponeUpdateAddressBookNotBind
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponeUpdateAddressBookNotBind
  * JD-Core Version:    0.7.0.1
  */

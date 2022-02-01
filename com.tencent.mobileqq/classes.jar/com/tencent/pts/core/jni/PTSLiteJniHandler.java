@@ -10,7 +10,6 @@ public class PTSLiteJniHandler
   
   public static void create(PTSAppInstance paramPTSAppInstance, String paramString)
   {
-    boolean bool = true;
     if (paramPTSAppInstance == null) {
       return;
     }
@@ -18,14 +17,13 @@ public class PTSLiteJniHandler
     int i = paramPTSAppInstance.getUniqueID();
     float f1 = paramPTSAppInstance.getRootViewWidth();
     float f2 = PTSDeviceUtil.getScreenScale();
-    float f3 = PTSDeviceUtil.getRPXScaling();
-    if (paramPTSAppInstance.getRootNodeType() == 1) {}
-    for (;;)
-    {
-      createPTSLitePage(i, f1, f2, f3, bool, paramString);
-      return;
+    float f3 = PTSDeviceUtil.getRPXScaling(paramPTSAppInstance.getRootViewWidth());
+    int j = paramPTSAppInstance.getRootNodeType();
+    boolean bool = true;
+    if (j != 1) {
       bool = false;
     }
+    createPTSLitePage(i, f1, f2, f3, bool, paramString);
   }
   
   private static native void createPTSLitePage(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean, String paramString);
@@ -50,10 +48,20 @@ public class PTSLiteJniHandler
   }
   
   private static native void setPTSLiteData(int paramInt, String paramString);
+  
+  public static String updateData(PTSAppInstance paramPTSAppInstance, String paramString)
+  {
+    if (paramPTSAppInstance == null) {
+      return "";
+    }
+    return updatePTSLiteData(paramPTSAppInstance.getUniqueID(), paramString);
+  }
+  
+  private static native String updatePTSLiteData(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.jni.PTSLiteJniHandler
  * JD-Core Version:    0.7.0.1
  */

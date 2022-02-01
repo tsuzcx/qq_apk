@@ -14,13 +14,13 @@ class VideoDecoderTrack$DecoderWrapper
   
   private void release()
   {
-    Logger.d(VideoDecoderTrack.access$400(), "Video DecoderWrapper release: ");
-    VideoDecoderTrack.access$500(this.this$0, this.decoder);
+    Logger.d(VideoDecoderTrack.access$500(), "Video DecoderWrapper release: ");
+    VideoDecoderTrack.access$600(this.this$0, this.decoder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoderTrack.DecoderWrapper
  * JD-Core Version:    0.7.0.1
  */

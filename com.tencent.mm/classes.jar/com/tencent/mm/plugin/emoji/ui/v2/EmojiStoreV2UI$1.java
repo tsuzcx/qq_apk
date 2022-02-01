@@ -11,15 +11,15 @@ final class EmojiStoreV2UI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(53816);
-    EmojiStoreV2UI.a(this.lsd);
-    AppMethodBeat.o(53816);
+    AppMethodBeat.i(109388);
+    EmojiStoreV2UI.a(this.xYY);
+    AppMethodBeat.o(109388);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2UI.1
  * JD-Core Version:    0.7.0.1
  */

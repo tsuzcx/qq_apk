@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.confess;
 
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.qphone.base.util.QLog;
-import ybk;
 
 class ConfessPlugin$3
   implements Runnable
@@ -12,19 +12,22 @@ class ConfessPlugin$3
   {
     try
     {
-      ybk.a(this.a, this.b);
+      QRUtils.a(this.a, this.b);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      QLog.d("ConfessPlugin", 1, "showQQToast error: " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showQQToast error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.d("ConfessPlugin", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.3
  * JD-Core Version:    0.7.0.1
  */

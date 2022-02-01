@@ -1,9 +1,9 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.a;
-import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class j
@@ -14,29 +14,29 @@ public class j
   private boolean c;
   private w d;
   private boolean e;
-  private h f;
+  private k f;
   private e g;
   private p h;
   private boolean i;
-  private a k;
+  private b k;
   
   private void b()
   {
-    AppMethodBeat.i(67026);
-    TXCLog.d(j, "come into destroyPlayer");
+    AppMethodBeat.i(15084);
+    TXCLog.i(j, "come into destroyPlayer");
     if (this.d != null) {
       this.d.a();
     }
     this.d = null;
     this.e = false;
     this.i = false;
-    TXCLog.d(j, "come out destroyPlayer");
-    AppMethodBeat.o(67026);
+    TXCLog.i(j, "come out destroyPlayer");
+    AppMethodBeat.o(15084);
   }
   
   private void c()
   {
-    AppMethodBeat.i(67028);
+    AppMethodBeat.i(15086);
     if ((this.b != -1) && (this.b != this.a))
     {
       GLES20.glDeleteTextures(1, new int[] { this.b }, 0);
@@ -47,7 +47,7 @@ public class j
       GLES20.glDeleteTextures(1, new int[] { this.a }, 0);
       this.a = -1;
     }
-    AppMethodBeat.o(67028);
+    AppMethodBeat.o(15086);
   }
   
   public int a(int paramInt)
@@ -57,8 +57,8 @@ public class j
   
   public void a()
   {
-    AppMethodBeat.i(67027);
-    TXCLog.d(j, "come into GreenScreen destroy");
+    AppMethodBeat.i(15085);
+    TXCLog.i(j, "come into GreenScreen destroy");
     b();
     c();
     if (this.f != null)
@@ -77,21 +77,21 @@ public class j
       this.h = null;
     }
     this.c = false;
-    TXCLog.d(j, "come out GreenScreen destroy");
-    AppMethodBeat.o(67027);
+    TXCLog.i(j, "come out GreenScreen destroy");
+    AppMethodBeat.o(15085);
   }
   
-  public void a(a parama)
+  public void a(b paramb)
   {
-    AppMethodBeat.i(146363);
+    AppMethodBeat.i(229863);
     TXCLog.i(j, "set notify");
-    this.k = parama;
-    AppMethodBeat.o(146363);
+    this.k = paramb;
+    AppMethodBeat.o(229863);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.j
  * JD-Core Version:    0.7.0.1
  */

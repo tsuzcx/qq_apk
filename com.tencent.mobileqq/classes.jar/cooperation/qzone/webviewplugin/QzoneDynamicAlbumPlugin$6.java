@@ -2,60 +2,65 @@ package cooperation.qzone.webviewplugin;
 
 import android.os.Handler;
 import android.os.Message;
-import bjqu;
-import bjqw;
-import bjxu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class QzoneDynamicAlbumPlugin$6
+class QzoneDynamicAlbumPlugin$6
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$6(bjxu parambjxu, ArrayList paramArrayList, int paramInt) {}
+  QzoneDynamicAlbumPlugin$6(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, ArrayList paramArrayList, int paramInt) {}
   
   public void run()
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.val$selectedLocalImages.size())
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.get(i) == null) {}
-      for (;;)
+      if (this.val$selectedLocalImages.get(i) != null)
       {
-        i += 1;
-        break;
-        String str1 = bjxu.jdField_a_of_type_JavaLangString + (new Date().getTime() + i);
-        String str2 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        boolean bool = bjxu.a(BaseApplicationImpl.getContext(), str2, str1, bjxu.b()[0], bjxu.b()[1]);
-        if ((bool) && (i == 0) && (!bjxu.b(this.this$0)))
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(QzoneDynamicAlbumPlugin.PHOTO_TMPFILE_PATH_DYNAMIC_ALBUM);
+        ((StringBuilder)localObject1).append(new Date().getTime() + i);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        String str = (String)this.val$selectedLocalImages.get(i);
+        boolean bool = QzoneDynamicAlbumPlugin.compressDynamicAlbumImage(BaseApplicationImpl.getContext(), str, (String)localObject1, QzoneDynamicAlbumPlugin.access$000()[0], QzoneDynamicAlbumPlugin.access$000()[1]);
+        Object localObject2;
+        if ((bool) && (i == 0) && (!QzoneDynamicAlbumPlugin.access$400(this.this$0)))
         {
-          QLog.d("QzoneDynamicAlbumPlugin", 4, "pickDynamicAlbumImage uploadFirstDynamicPhoto:" + str1);
-          bjqu.a().a().a(str1, this.jdField_a_of_type_JavaUtilArrayList.size());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("pickDynamicAlbumImage uploadFirstDynamicPhoto:");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.d("QzoneDynamicAlbumPlugin", 4, ((StringBuilder)localObject2).toString());
+          RemoteHandleManager.getInstance().getSender().uploadFirstDynamicPhoto((String)localObject1, this.val$selectedLocalImages.size());
         }
-        for (;;)
+        else
         {
-          if (!bool) {
-            break label234;
-          }
-          QLog.d("QzoneDynamicAlbumPlugin", 2, "pickDynamicAlbumImage sendMsg: MSG_PICK_PHOTO_COMPRESS_FINISH");
-          Message localMessage = Message.obtain();
-          localMessage.what = 2;
-          localMessage.arg1 = this.jdField_a_of_type_Int;
-          localMessage.obj = new String[] { str2, str1 };
-          this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-          break;
           QLog.d("QzoneDynamicAlbumPlugin", 4, "no launch uploadFirstDynamicPhoto;");
         }
-        label234:
-        QLog.e("QzoneDynamicAlbumPlugin", 2, "compressDynamicAlbumImage failed! skip this photo.");
+        if (bool)
+        {
+          QLog.d("QzoneDynamicAlbumPlugin", 2, "pickDynamicAlbumImage sendMsg: MSG_PICK_PHOTO_COMPRESS_FINISH");
+          localObject2 = Message.obtain();
+          ((Message)localObject2).what = 2;
+          ((Message)localObject2).arg1 = this.val$totalGetPhotosNum;
+          ((Message)localObject2).obj = new String[] { str, localObject1 };
+          this.this$0.handler.sendMessage((Message)localObject2);
+        }
+        else
+        {
+          QLog.e("QzoneDynamicAlbumPlugin", 2, "compressDynamicAlbumImage failed! skip this photo.");
+        }
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin.6
  * JD-Core Version:    0.7.0.1
  */

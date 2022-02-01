@@ -1,70 +1,142 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.ciu;
-import com.tencent.mm.protocal.protobuf.civ;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.p;
+import com.tencent.mm.modelsimple.o;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.ac;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.dal;
+import com.tencent.mm.protocal.protobuf.dts;
+import com.tencent.mm.protocal.protobuf.dtt;
+import com.tencent.mm.protocal.protobuf.sc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public final class q
-  extends m
-  implements k
+public abstract class q
+  extends com.tencent.mm.am.q
 {
-  private f callback;
-  public boolean mhl;
-  public boolean mhm;
-  private b rr;
+  private static String zSh = null;
+  protected com.tencent.mm.am.h callback = null;
   
-  public q(int paramInt)
+  public static void atH(String paramString)
   {
-    AppMethodBeat.i(95);
-    this.mhl = false;
-    this.mhm = false;
-    b.a locala = new b.a();
-    locala.fsX = new ciu();
-    locala.fsY = new civ();
-    locala.uri = "/cgi-bin/micromsg-bin/switchopface";
-    locala.funcId = getType();
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((ciu)this.rr.fsV.fta).OpCode = paramInt;
-    AppMethodBeat.o(95);
+    zSh = paramString;
   }
   
-  public final int doScene(e parame, f paramf)
+  protected static String bIQ()
   {
-    AppMethodBeat.i(96);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(96);
-    return i;
+    return zSh;
   }
   
-  public final int getType()
+  public final void a(final int paramInt1, int paramInt2, String paramString, s params)
   {
-    return 938;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(97);
-    paramq = (civ)((b)paramq).fsW.fta;
-    this.mhl = paramq.xTd;
-    this.mhm = paramq.xTe;
-    ab.i("MicroMsg.NetSceneFaceSwitchOpFace", "hy: NetSceneFaceSwitchOpFace errType: %d, errCode: %d, errMsg: %s, hasBio: %b, isOpen: %b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Boolean.valueOf(this.mhl), Boolean.valueOf(this.mhm) });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    Log.i("MicroMsg.NetSceneFaceRsaBase", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if ((paramInt1 == 4) && (paramInt2 == -102))
+    {
+      paramInt1 = params.getReqObj().getRsaInfo().ver;
+      Log.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(103619);
+          new o().doScene(q.a(q.this), new com.tencent.mm.am.h()
+          {
+            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, p paramAnonymous2p)
+            {
+              AppMethodBeat.i(103618);
+              Log.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2p.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
+              {
+                Log.e("MicroMsg.NetSceneFaceRsaBase", "hy: do scene err in rsa when get cert. clear ticket");
+                q.dOF();
+                q.this.atG(q.bIQ());
+                q.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", q.this);
+                AppMethodBeat.o(103618);
+                return;
+              }
+              q.this.g(q.b(q.this));
+              AppMethodBeat.o(103618);
+            }
+          });
+          AppMethodBeat.o(103619);
+        }
+      });
+      return;
     }
-    AppMethodBeat.o(97);
+    c(paramInt1, paramInt2, paramString, params);
   }
+  
+  abstract void atG(String paramString);
+  
+  public final sc b(s params)
+  {
+    params = g(params);
+    if (params != null) {
+      return params.YOA;
+    }
+    return null;
+  }
+  
+  public final void bFM()
+  {
+    if (this.callback != null) {
+      this.callback.onSceneEnd(3, -1, "", this);
+    }
+  }
+  
+  public final com.tencent.mm.am.h bFN()
+  {
+    return this.callback;
+  }
+  
+  public final dts c(s params)
+  {
+    params = g(params);
+    if (params != null) {
+      return params.YOB;
+    }
+    return null;
+  }
+  
+  abstract void c(int paramInt1, int paramInt2, String paramString, s params);
+  
+  public final dal d(s params)
+  {
+    params = g(params);
+    if (params != null) {
+      return params.YOz;
+    }
+    return null;
+  }
+  
+  public int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    this.callback = paramh;
+    if (!Util.isNullOrNil(zSh))
+    {
+      Log.i("MicroMsg.NetSceneFaceRsaBase", "hy: has ticket: %s", new Object[] { zSh });
+      atG(zSh);
+      return g(paramg);
+    }
+    return getType();
+  }
+  
+  public final int e(s params)
+  {
+    params = g(params);
+    if (params != null) {
+      return params.aaZs;
+    }
+    return 0;
+  }
+  
+  abstract int g(g paramg);
+  
+  protected abstract dtt g(s params);
 }
 
 

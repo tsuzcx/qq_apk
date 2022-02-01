@@ -46,15 +46,16 @@ public final class mobile_sub_del_visit_req
     paramJceOutputStream.write(this.vtime, 2);
     paramJceOutputStream.write(this.hostUin, 3);
     paramJceOutputStream.write(this.mod, 4);
-    if (this.contentid != null) {
-      paramJceOutputStream.write(this.contentid, 5);
+    String str = this.contentid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.add_to_hidelist, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_del_visit_req
  * JD-Core Version:    0.7.0.1
  */

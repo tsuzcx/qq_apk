@@ -7,7 +7,7 @@ public class t
   
   public t()
   {
-    this.vxr = "-1";
+    this.xyo = "-1";
     this.type = 1;
   }
 }

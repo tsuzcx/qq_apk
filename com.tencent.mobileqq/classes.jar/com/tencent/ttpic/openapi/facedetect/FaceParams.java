@@ -1,7 +1,7 @@
 package com.tencent.ttpic.openapi.facedetect;
 
 import android.graphics.PointF;
-import com.tencent.faceBeauty.FaceParam;
+import com.tencent.facebeauty.FaceParam;
 import java.util.List;
 
 public class FaceParams
@@ -42,7 +42,7 @@ public class FaceParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.facedetect.FaceParams
  * JD-Core Version:    0.7.0.1
  */

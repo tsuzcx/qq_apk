@@ -28,22 +28,17 @@ public class VReflectionUtils
       Annotation[] arrayOfAnnotation = paramClass[i].getDeclaredAnnotations();
       int m = arrayOfAnnotation.length;
       int j = 0;
-      if (j < m)
+      while (j < m)
       {
         Object localObject = arrayOfAnnotation[j];
-        if (localObject == null) {}
-        for (;;)
+        if ((localObject != null) && ((localObject instanceof VComponentProp)))
         {
-          j += 1;
-          break;
-          if ((localObject instanceof VComponentProp))
-          {
-            localObject = (VComponentProp)localObject;
-            if (((VComponentProp)localObject).initToHostView()) {
-              localHashMap.put(((VComponentProp)localObject).name(), ((VComponentProp)localObject).nativeReturnMethod());
-            }
+          localObject = (VComponentProp)localObject;
+          if (((VComponentProp)localObject).initToHostView()) {
+            localHashMap.put(((VComponentProp)localObject).name(), ((VComponentProp)localObject).nativeReturnMethod());
           }
         }
+        j += 1;
       }
       i += 1;
     }
@@ -52,8 +47,7 @@ public class VReflectionUtils
   
   public static Field getDeclaredField(Object paramObject, String paramString)
   {
-    paramObject = paramObject.getClass();
-    while (paramObject != Object.class) {
+    for (paramObject = paramObject.getClass(); paramObject != Object.class; paramObject = paramObject.getSuperclass()) {
       try
       {
         Field localField = paramObject.getDeclaredField(paramString);
@@ -61,7 +55,8 @@ public class VReflectionUtils
       }
       catch (Exception localException)
       {
-        paramObject = paramObject.getSuperclass();
+        label19:
+        break label19;
       }
     }
     return null;
@@ -76,12 +71,11 @@ public class VReflectionUtils
       paramObject = paramString.get(paramObject);
       return paramObject;
     }
-    catch (IllegalAccessException paramObject)
+    catch (IndexOutOfBoundsException paramObject)
     {
       paramObject.printStackTrace();
-      return null;
     }
-    catch (IndexOutOfBoundsException paramObject)
+    catch (IllegalAccessException paramObject)
     {
       paramObject.printStackTrace();
     }
@@ -96,26 +90,22 @@ public class VReflectionUtils
     }
     catch (NoSuchMethodException paramString)
     {
-      for (;;)
-      {
-        try
-        {
-          paramObject = paramString.invoke(paramObject, new Object[0]);
-          return paramObject;
-        }
-        catch (IllegalAccessException paramObject)
-        {
-          paramObject.printStackTrace();
-          return null;
-        }
-        catch (InvocationTargetException paramObject)
-        {
-          paramObject.printStackTrace();
-        }
-        paramString = paramString;
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
+      paramString = null;
+    }
+    try
+    {
+      paramObject = paramString.invoke(paramObject, new Object[0]);
+      return paramObject;
+    }
+    catch (InvocationTargetException paramObject)
+    {
+      paramObject.printStackTrace();
+      return null;
+    }
+    catch (IllegalAccessException paramObject)
+    {
+      paramObject.printStackTrace();
     }
     return null;
   }
@@ -141,79 +131,86 @@ public class VReflectionUtils
   
   public static Object parseArgument(Type paramType, Object paramObject)
   {
-    if (paramObject != null) {
-      if (paramObject.getClass() != paramType) {}
-    }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return paramObject;
-                } while (((paramType instanceof Class)) && (((Class)paramType).isAssignableFrom(paramObject.getClass())));
-                if ((paramType != String.class) || (paramObject == null)) {}
-                try
-                {
-                  return new JSONObject().toString();
-                }
-                catch (JSONException paramType)
-                {
-                  break;
-                }
-              } while ((paramObject instanceof String));
-              paramType = new JSONObject(paramObject.toString()).toString();
-              return paramType;
-              if (paramType != Integer.TYPE) {
-                break;
-              }
-            } while (paramObject.getClass().isAssignableFrom(Integer.TYPE));
-            return Integer.valueOf(ViolaUtils.getInt(paramObject));
-            if (paramType != Long.TYPE) {
-              break;
-            }
-          } while (paramObject.getClass().isAssignableFrom(Long.TYPE));
-          return Long.valueOf(ViolaUtils.getLong(paramObject));
-          if (paramType != Double.TYPE) {
-            break;
-          }
-        } while (paramObject.getClass().isAssignableFrom(Double.TYPE));
-        return Double.valueOf(ViolaUtils.getDouble(paramObject));
-        if (paramType == Boolean.class) {
-          return Boolean.valueOf(ViolaUtils.getBoolean(paramObject));
-        }
-        if (paramType == Boolean.TYPE) {
-          return Boolean.valueOf(ViolaUtils.getBoolean(paramObject));
-        }
-        if (paramType != Float.TYPE) {
-          break;
-        }
-      } while (paramObject.getClass().isAssignableFrom(Float.TYPE));
+      if (paramObject.getClass() == paramType) {
+        return paramObject;
+      }
+      if (((paramType instanceof Class)) && (((Class)paramType).isAssignableFrom(paramObject.getClass()))) {
+        return paramObject;
+      }
+    }
+    if (paramType == String.class)
+    {
+      if (paramObject == null) {
+        return new JSONObject().toString();
+      }
+      return paramObject.toString();
+    }
+    if (paramType == Integer.TYPE)
+    {
+      if (paramObject.getClass().isAssignableFrom(Integer.TYPE)) {
+        return paramObject;
+      }
+      return Integer.valueOf(ViolaUtils.getInt(paramObject));
+    }
+    if (paramType == Long.TYPE)
+    {
+      if (paramObject.getClass().isAssignableFrom(Long.TYPE)) {
+        return paramObject;
+      }
+      return Long.valueOf(ViolaUtils.getLong(paramObject));
+    }
+    if (paramType == Double.TYPE)
+    {
+      if (paramObject.getClass().isAssignableFrom(Double.TYPE)) {
+        return paramObject;
+      }
+      return Double.valueOf(ViolaUtils.getDouble(paramObject));
+    }
+    if (paramType == Boolean.class) {
+      return Boolean.valueOf(ViolaUtils.getBoolean(paramObject));
+    }
+    if (paramType == Boolean.TYPE) {
+      return Boolean.valueOf(ViolaUtils.getBoolean(paramObject));
+    }
+    if (paramType == Float.TYPE)
+    {
+      if (paramObject.getClass().isAssignableFrom(Float.TYPE)) {
+        return paramObject;
+      }
       return Float.valueOf(ViolaUtils.getFloat(paramObject));
-    } while (((paramType == JSONArray.class) && (paramObject != null) && (paramObject.getClass() == JSONArray.class)) || ((paramType == JSONObject.class) && (paramObject != null) && (paramObject.getClass() == JSONObject.class)));
+    }
+    if ((paramType == JSONArray.class) && (paramObject != null) && (paramObject.getClass() == JSONArray.class)) {
+      return paramObject;
+    }
+    if ((paramType == JSONObject.class) && (paramObject != null) && (paramObject.getClass() == JSONObject.class)) {
+      return paramObject;
+    }
     try
     {
-      if ((paramObject instanceof String)) {}
-      for (paramType = (String)paramObject;; paramType = new JSONObject(paramObject.toString()).toString()) {
-        return new JSONObject(paramType);
+      if ((paramObject instanceof String)) {
+        paramType = (String)paramObject;
+      } else {
+        paramType = new JSONObject(paramObject.toString()).toString();
       }
-      return null;
+      paramType = new JSONObject(paramType);
+      return paramType;
     }
-    catch (JSONException paramType) {}
+    catch (JSONException paramType)
+    {
+      label295:
+      break label295;
+    }
+    return null;
   }
   
   public static void setProperty(Object paramObject1, Field paramField, Object paramObject2)
   {
-    if ((paramObject1 == null) || (paramField == null)) {
-      return;
+    if (paramObject1 != null) {
+      if (paramField == null) {
+        return;
+      }
     }
     try
     {
@@ -226,57 +223,77 @@ public class VReflectionUtils
   
   public static void setValue(Object paramObject1, String paramString, Object paramObject2)
   {
-    if ((paramObject1 == null) || (TextUtils.isEmpty(paramString))) {}
+    if (paramObject1 != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+    }
     for (;;)
     {
-      return;
       try
       {
         Field localField = getDeclaredField(paramObject1, paramString);
-        if (localField == null) {
-          continue;
-        }
-        if (((paramObject2 instanceof BigDecimal)) || ((paramObject2 instanceof Number)) || ((paramObject2 instanceof String))) {
-          if ((localField.getType() == Float.class) || (localField.getType() == Float.TYPE)) {
-            paramString = Float.valueOf(Float.parseFloat(paramObject2.toString()));
-          }
-        }
-        for (;;)
+        if (localField != null)
         {
-          Object localObject;
-          if (localField.getType() != Boolean.TYPE)
+          if (((paramObject2 instanceof BigDecimal)) || ((paramObject2 instanceof Number)) || ((paramObject2 instanceof String)))
           {
-            localObject = paramString;
-            if (localField.getType() != Boolean.class) {}
-          }
-          else
-          {
-            localObject = paramString;
-            if (paramObject2 != null) {
-              localObject = Boolean.valueOf(paramObject2.toString());
+            if ((localField.getType() != Float.class) && (localField.getType() != Float.TYPE))
+            {
+              if ((localField.getType() != Double.class) && (localField.getType() != Double.TYPE))
+              {
+                if ((localField.getType() != Integer.class) && (localField.getType() != Integer.TYPE))
+                {
+                  if (localField.getType() != Boolean.class) {
+                    if (localField.getType() != Boolean.TYPE) {
+                      break label239;
+                    }
+                  }
+                  paramString = Boolean.valueOf(paramObject2.toString());
+                }
+                else
+                {
+                  paramString = Integer.valueOf((int)Double.parseDouble(paramObject2.toString()));
+                }
+              }
+              else {
+                paramString = Double.valueOf(Double.parseDouble(paramObject2.toString()));
+              }
             }
-          }
-          setProperty(paramObject1, localField, localObject);
-          return;
-          if ((localField.getType() == Double.class) || (localField.getType() == Double.TYPE)) {
-            paramString = Double.valueOf(Double.parseDouble(paramObject2.toString()));
-          } else if ((localField.getType() == Integer.class) || (localField.getType() == Integer.TYPE)) {
-            paramString = Integer.valueOf((int)Double.parseDouble(paramObject2.toString()));
-          } else if ((localField.getType() == Boolean.class) || (localField.getType() == Boolean.TYPE)) {
-            paramString = Boolean.valueOf(paramObject2.toString());
-          } else {
-            paramString = paramObject2;
+            else {
+              paramString = Float.valueOf(Float.parseFloat(paramObject2.toString()));
+            }
+            Object localObject;
+            if (localField.getType() != Boolean.TYPE)
+            {
+              localObject = paramString;
+              if (localField.getType() != Boolean.class) {}
+            }
+            else
+            {
+              localObject = paramString;
+              if (paramObject2 != null) {
+                localObject = Boolean.valueOf(paramObject2.toString());
+              }
+            }
+            setProperty(paramObject1, localField, localObject);
           }
         }
+        else {
+          return;
+        }
+      }
+      catch (Exception paramObject1)
+      {
         return;
       }
-      catch (Exception paramObject1) {}
+      label239:
+      paramString = paramObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.VReflectionUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class s_user
   extends JceStruct
 {
-  public boolean isSuperLike;
+  public boolean isSuperLike = false;
   public String nickname = "";
-  public long uin;
+  public long uin = 0L;
   
   public s_user() {}
   
@@ -30,15 +30,16 @@ public final class s_user
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 1);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.isSuperLike, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.s_user
  * JD-Core Version:    0.7.0.1
  */

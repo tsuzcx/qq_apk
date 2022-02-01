@@ -19,13 +19,14 @@ public final class BroadcastMsgCtr$ExtGroupKeyInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_cur_max_seq", "uint64_cur_time", "uint32_operate_by_parents", "bytes_ext_group_info" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro }, ExtGroupKeyInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_cur_max_seq", "uint64_cur_time", "uint32_operate_by_parents", "bytes_ext_group_info" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localByteStringMicro }, ExtGroupKeyInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.group.broadcast.BroadcastMsgCtr.ExtGroupKeyInfo
  * JD-Core Version:    0.7.0.1
  */

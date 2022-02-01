@@ -23,7 +23,17 @@ public final class dc$a
   
   public final String toString()
   {
-    return "appid:" + this.f + "," + this.a + "," + this.b + "," + this.c + "," + this.d;
+    StringBuilder localStringBuilder = new StringBuilder("appid:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 

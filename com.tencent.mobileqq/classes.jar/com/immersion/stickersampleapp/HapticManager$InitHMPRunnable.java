@@ -7,7 +7,7 @@ class HapticManager$InitHMPRunnable
   
   public void run()
   {
-    if (HapticManager.a(this.this$0)) {
+    if (HapticManager.b(this.this$0)) {
       this.this$0.a();
     }
     HapticManager.a(this.this$0, false);
@@ -15,7 +15,7 @@ class HapticManager$InitHMPRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.immersion.stickersampleapp.HapticManager.InitHMPRunnable
  * JD-Core Version:    0.7.0.1
  */

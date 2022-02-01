@@ -30,15 +30,16 @@ public final class s_skin_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.id, 0);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 1);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.timestamp, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_USERLOGO_TIMESTAMP.s_skin_info
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,16 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.FrameLayout;
-import bdaq;
-import bevk;
-import bevl;
-import bevm;
-import bevn;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class SlideDownFrameLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private bevn jdField_a_of_type_Bevn;
-  private float b;
+  private SlideDownFrameLayout.OnSlideListener a;
+  private float b = 0.0F;
+  private float c = 0.0F;
+  private int d = 0;
+  private VelocityTracker e;
   
   public SlideDownFrameLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -32,73 +28,75 @@ public class SlideDownFrameLayout
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bevn == null) {
+    Object localObject = this.a;
+    if (localObject == null) {
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bevn.a().getY(), 0.0F });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new bevk(this));
-    localValueAnimator.start();
+    localObject = ValueAnimator.ofFloat(new float[] { ((SlideDownFrameLayout.OnSlideListener)localObject).e().getY(), 0.0F });
+    ((ValueAnimator)localObject).setDuration(250L);
+    ((ValueAnimator)localObject).addUpdateListener(new SlideDownFrameLayout.1(this));
+    ((ValueAnimator)localObject).start();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Bevn == null) {
+    Object localObject = this.a;
+    if (localObject == null) {
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_Bevn.a().getY(), this.jdField_a_of_type_Bevn.a().getHeight() });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new bevl(this));
-    localValueAnimator.addListener(new bevm(this));
-    localValueAnimator.start();
+    localObject = ValueAnimator.ofFloat(new float[] { ((SlideDownFrameLayout.OnSlideListener)localObject).e().getY(), this.a.e().getHeight() });
+    ((ValueAnimator)localObject).setDuration(250L);
+    ((ValueAnimator)localObject).addUpdateListener(new SlideDownFrameLayout.2(this));
+    ((ValueAnimator)localObject).addListener(new SlideDownFrameLayout.3(this));
+    ((ValueAnimator)localObject).start();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bevn == null) {
+    if (this.a == null) {
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
     if (paramMotionEvent.getPointerCount() > 1) {
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
     int i = paramMotionEvent.getAction();
-    this.b = paramMotionEvent.getY();
+    this.c = paramMotionEvent.getY();
     if (i == 0)
     {
-      this.jdField_a_of_type_Float = this.b;
+      this.b = this.c;
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
     if (i == 2)
     {
-      float f = Math.abs(this.b - this.jdField_a_of_type_Float);
-      if ((this.jdField_a_of_type_Int == 0) && (f < bdaq.a(getContext(), 5.0F))) {
+      float f = Math.abs(this.c - this.b);
+      if ((this.d == 0) && (f < DisplayUtil.a(getContext(), 5.0F))) {
         return super.onInterceptTouchEvent(paramMotionEvent);
       }
-      f = this.b - this.jdField_a_of_type_Float;
+      f = this.c - this.b;
       if (Math.abs(f) > 0.0F)
       {
-        if ((this.jdField_a_of_type_Int == 0) && (f > 0.0F))
+        if ((this.d == 0) && (f > 0.0F))
         {
-          if (this.jdField_a_of_type_Bevn.a())
+          if (this.a.c())
           {
-            this.jdField_a_of_type_Float = this.b;
-            this.jdField_a_of_type_Int = 1;
+            this.b = this.c;
+            this.d = 1;
             return true;
           }
-          this.jdField_a_of_type_Float = this.b;
+          this.b = this.c;
           return super.onInterceptTouchEvent(paramMotionEvent);
         }
       }
       else
       {
-        this.jdField_a_of_type_Float = this.b;
-        this.jdField_a_of_type_Int = 0;
+        this.b = this.c;
+        this.d = 0;
         return super.onInterceptTouchEvent(paramMotionEvent);
       }
     }
     else if ((i == 1) || (i == 3))
     {
-      this.jdField_a_of_type_Int = 0;
+      this.d = 0;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -107,61 +105,67 @@ public class SlideDownFrameLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    this.b = paramMotionEvent.getY();
-    if (i == 0) {
-      this.jdField_a_of_type_Float = this.b;
-    }
-    do
+    this.c = paramMotionEvent.getY();
+    if (i == 0)
     {
-      do
+      this.b = this.c;
+    }
+    else
+    {
+      Object localObject;
+      if (i == 2)
       {
-        return super.onTouchEvent(paramMotionEvent);
-        if (i != 2) {
-          break;
+        if (this.d == 1)
+        {
+          localObject = this.a;
+          if (localObject != null)
+          {
+            ((SlideDownFrameLayout.OnSlideListener)localObject).e().setY(Math.max(this.c - this.b, 0.0F));
+            this.a.a(Math.max(this.c - this.b, 0.0F), this.a.e().getHeight());
+          }
+          if (this.e == null) {
+            this.e = VelocityTracker.obtain();
+          }
+          this.e.addMovement(paramMotionEvent);
+          return true;
         }
-      } while (this.jdField_a_of_type_Int != 1);
-      if (this.jdField_a_of_type_Bevn != null)
+      }
+      else if ((i == 1) || (i == 3))
       {
-        this.jdField_a_of_type_Bevn.a().setY(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F));
-        this.jdField_a_of_type_Bevn.a(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F), this.jdField_a_of_type_Bevn.a().getHeight());
+        if (this.d != 0)
+        {
+          localObject = this.a;
+          if ((localObject != null) && (this.e != null))
+          {
+            float f = ((SlideDownFrameLayout.OnSlideListener)localObject).e().getY();
+            this.e.computeCurrentVelocity(1000);
+            if ((f <= DisplayUtil.a(getContext(), 100.0F)) && ((f <= DisplayUtil.a(getContext(), 30.0F)) || (this.e.getYVelocity() <= 1000.0F))) {
+              a();
+            } else {
+              b();
+            }
+          }
+        }
+        this.d = 0;
+        localObject = this.e;
+        if (localObject != null)
+        {
+          ((VelocityTracker)localObject).recycle();
+          this.e = null;
+        }
       }
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-        this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-      }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-      return true;
-    } while ((i != 1) && (i != 3));
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Bevn != null) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
-    {
-      float f = this.jdField_a_of_type_Bevn.a().getY();
-      this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-      if ((f <= bdaq.a(getContext(), 100.0F)) && ((f <= bdaq.a(getContext(), 30.0F)) || (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity() <= 1000.0F))) {
-        break label262;
-      }
-      b();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = 0;
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-      break;
-      label262:
-      a();
-    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnSlideListener(bevn parambevn)
+  public void setOnSlideListener(SlideDownFrameLayout.OnSlideListener paramOnSlideListener)
   {
-    this.jdField_a_of_type_Bevn = parambevn;
+    this.a = paramOnSlideListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDownFrameLayout
  * JD-Core Version:    0.7.0.1
  */

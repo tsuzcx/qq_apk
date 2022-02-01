@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/cle" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MultiTouchImageView android:id="@id/clh" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="150.0dip" />
-    <ProgressBar android:id="@id/ats" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginBottom="3.0dip" style="?android:attr/progressBarStyleHorizontal" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:gravity="center" android:id="@id/cli" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/cg_" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:gravity="center" android:id="@id/bt1" android:background="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cv" android:paddingEnd="@dimen/cv"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/y" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/ge" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </LinearLayout>

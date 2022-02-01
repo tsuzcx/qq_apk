@@ -6,15 +6,16 @@ public class TVKHttpProcessorFactory
   
   public static ITVKHttpProcessor getInstance()
   {
-    if (mProcessor == null) {}
-    try
-    {
-      if (mProcessor == null) {
-        mProcessor = TVKHttpClient.getInstance();
+    if (mProcessor == null) {
+      try
+      {
+        if (mProcessor == null) {
+          mProcessor = TVKHttpClient.getInstance();
+        }
       }
-      return mProcessor;
+      finally {}
     }
-    finally {}
+    return mProcessor;
   }
   
   public static void init(ITVKHttpProcessor paramITVKHttpProcessor)
@@ -35,7 +36,7 @@ public class TVKHttpProcessorFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKHttpProcessorFactory
  * JD-Core Version:    0.7.0.1
  */

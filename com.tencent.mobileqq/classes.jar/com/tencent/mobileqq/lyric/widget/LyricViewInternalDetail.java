@@ -6,9 +6,9 @@ import android.graphics.Paint;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
-import atwl;
-import atwn;
-import atwq;
+import com.tencent.mobileqq.lyric.data.Lyric;
+import com.tencent.mobileqq.lyric.data.Sentence;
+import com.tencent.mobileqq.lyric.util.LyricContext;
 import java.util.ArrayList;
 
 public class LyricViewInternalDetail
@@ -17,243 +17,246 @@ public class LyricViewInternalDetail
   public LyricViewInternalDetail(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.u = this.jdField_b_of_type_Int;
+    this.U = this.b;
   }
   
-  private int c(int paramInt)
+  private int d(int paramInt)
   {
-    int m;
-    if ((this.jdField_a_of_type_Atwl == null) || (this.jdField_a_of_type_Atwl.a()))
+    Lyric localLyric = this.t;
+    int m = 0;
+    if ((localLyric != null) && (!this.t.f()))
     {
-      Log.e("LyricViewInternalDetail", "computeHilightWhileScrolling -> mLineLyric == null");
-      m = 0;
-      return m;
-    }
-    int i = this.jdField_a_of_type_Atwl.a();
-    int j;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      j = this.p;
-      i = this.q;
-    }
-    for (;;)
-    {
-      int k = this.jdField_b_of_type_Int;
+      int i = this.t.b();
+      int j;
+      if (this.H)
+      {
+        i = this.K;
+        j = this.L;
+      }
+      else
+      {
+        j = i - 1;
+        i = 0;
+      }
+      int k = this.b;
       k = this.c;
-      m = 0;
-      k = j;
-      j = m;
-      m = i;
-      if (k > i) {
-        break;
-      }
-      m = ((atwn)this.jdField_a_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
-      int n = this.jdField_b_of_type_Int;
-      j += (m - 1) * this.jdField_d_of_type_Int + n * m + this.c;
-      if ((this.jdField_f_of_type_Boolean) && (this.jdField_b_of_type_Atwl != null) && (this.jdField_b_of_type_Atwl.a() == this.jdField_a_of_type_Atwl.a()))
+      k = i;
+      while (k <= j)
       {
-        m = ((atwn)this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
-        n = this.jdField_b_of_type_Int;
-        j = (m - 1) * this.jdField_d_of_type_Int + n * m + this.c + j;
-      }
-      for (;;)
-      {
-        if (paramInt < j) {
+        i = ((Sentence)this.t.b.get(k)).b();
+        m += this.b * i + this.d * (i - 1) + this.c;
+        i = m;
+        if (this.V)
+        {
+          i = m;
+          if (this.u != null)
+          {
+            i = m;
+            if (this.u.b() == this.t.b())
+            {
+              i = ((Sentence)this.u.b.get(k)).b();
+              i = m + (this.b * i + this.d * (i - 1) + this.c);
+            }
+          }
+        }
+        if (paramInt < i) {
           return k;
         }
         k += 1;
-        break;
+        m = i;
       }
-      i -= 1;
-      j = 0;
+      return j;
     }
+    Log.e("LyricViewInternalDetail", "computeHilightWhileScrolling -> mLineLyric == null");
+    return 0;
   }
   
   public int a(int paramInt)
   {
     super.a(paramInt);
-    this.r = c(this.u + paramInt);
+    this.M = d(paramInt + this.U);
     postInvalidate();
-    return this.r;
+    return this.M;
   }
   
   public void a()
   {
-    int m = 0;
-    int n = this.jdField_b_of_type_Int + this.c;
-    int j = this.r;
-    if (this.jdField_b_of_type_Boolean) {
-      j -= this.p;
+    int i1 = this.b + this.c;
+    int i = this.M;
+    int j = i;
+    if (this.H) {
+      j = i - this.K;
     }
-    for (;;)
+    ArrayList localArrayList = this.t.b;
+    int m = localArrayList.size() - 1;
+    boolean bool = this.H;
+    int n = 0;
+    if (bool)
     {
-      ArrayList localArrayList = this.jdField_a_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList;
-      int i = localArrayList.size();
-      int k;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        i = this.p;
-        k = this.q;
-      }
-      for (;;)
-      {
-        if (j > k) {
-          return;
-        }
-        k = i;
-        i = m;
-        if (k < j)
-        {
-          i += ((atwn)localArrayList.get(k)).a();
-          if ((!this.jdField_f_of_type_Boolean) || (this.jdField_b_of_type_Atwl == null) || (this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList == null) || (k >= this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.size())) {
-            break label230;
-          }
-          if (k >= 0) {}
-        }
-        label230:
-        for (;;)
-        {
-          k += 1;
-          break;
-          i = ((atwn)this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(k)).a() + i;
-          continue;
-          if (this.w >= 0)
-          {
-            this.t = (this.jdField_f_of_type_Int + (i + 1 - this.w) * n - this.c);
-            return;
-          }
-          this.t = (this.jdField_f_of_type_Int + (i - this.v - this.w) * n - this.c);
-          return;
-        }
-        k = i - 1;
-        i = 0;
-      }
+      i = this.K;
+      m = this.L;
     }
+    else
+    {
+      i = 0;
+    }
+    int k = i;
+    i = n;
+    if (j > m) {
+      return;
+    }
+    while (k < j)
+    {
+      m = i + ((Sentence)localArrayList.get(k)).b();
+      i = m;
+      if (this.V)
+      {
+        i = m;
+        if (this.u != null)
+        {
+          i = m;
+          if (this.u.b != null)
+          {
+            i = m;
+            if (k < this.u.b.size()) {
+              if (k < 0) {
+                i = m;
+              } else {
+                i = m + ((Sentence)this.u.b.get(k)).b();
+              }
+            }
+          }
+        }
+      }
+      k += 1;
+    }
+    if (this.ac >= 0)
+    {
+      this.O = (this.f + i1 * (i + 1 - this.ac) - this.c);
+      return;
+    }
+    this.O = (this.f + i1 * (i - this.ab - this.ac) - this.c);
   }
   
   protected void a(Canvas paramCanvas, int paramInt)
   {
-    int n = this.jdField_b_of_type_Int + this.c;
-    ArrayList localArrayList = this.jdField_a_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList;
-    int k = localArrayList.size();
-    int j = this.r;
-    int i = j;
-    if (j < 0) {
+    int n = this.b + this.c;
+    ArrayList localArrayList = this.t.b;
+    int m = localArrayList.size();
+    int k = this.M;
+    int j = 0;
+    int i = k;
+    if (k < 0) {
       i = 0;
     }
-    int i1;
-    if (i >= k)
-    {
-      j = k - 1;
-      if (localArrayList.isEmpty()) {
-        break label380;
-      }
-      i1 = paramInt + b();
-      i = this.jdField_f_of_type_Int;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label381;
-      }
-      paramInt = this.p;
-      k = this.q;
+    k = i;
+    if (i >= m) {
+      k = m - 1;
     }
-    for (;;)
+    if (!localArrayList.isEmpty())
     {
-      int m = paramInt;
-      label97:
-      if (m <= k)
+      int i1 = paramInt + getAdJust();
+      paramInt = this.f;
+      m -= 1;
+      i = j;
+      j = paramInt;
+      if (this.H)
       {
-        atwn localatwn = (atwn)localArrayList.get(m);
-        paramInt = Math.abs(m - j);
-        if (paramInt == 0) {
-          if ((this.g) && (this.jdField_a_of_type_Atwl.jdField_a_of_type_Int == 2) && (this.jdField_i_of_type_Boolean))
+        i = this.K;
+        m = this.L;
+        j = paramInt;
+      }
+      while (i <= m)
+      {
+        Sentence localSentence = (Sentence)localArrayList.get(i);
+        paramInt = Math.abs(i - k);
+        if (paramInt == 0)
+        {
+          if ((this.W) && (this.t.a == 2) && (this.aa))
           {
-            a(localatwn, paramCanvas, i1, i);
-            paramInt = i + localatwn.a() * n;
-            a(paramCanvas, i1, paramInt, true, m, null);
-            i = paramInt;
-            if (this.jdField_f_of_type_Boolean)
+            a(localSentence, paramCanvas, i1, j);
+            paramInt = localSentence.b();
+          }
+          else
+          {
+            a(localSentence, paramCanvas, i1, j, this.aa);
+            paramInt = localSentence.b();
+          }
+          paramInt = j + paramInt * n;
+          a(paramCanvas, i1, paramInt, true, i, null);
+        }
+        else if ((paramInt > 0) && (paramInt <= this.ab))
+        {
+          a(localSentence, paramCanvas, i1, j, this.i);
+          paramInt = j + localSentence.b() * n;
+          a(paramCanvas, i1, paramInt, false, i, this.i);
+        }
+        else
+        {
+          paramInt = j + localSentence.b() * n;
+        }
+        j = paramInt;
+        if (this.V)
+        {
+          j = paramInt;
+          if (this.u != null)
+          {
+            j = paramInt;
+            if (this.u.b != null)
             {
-              i = paramInt;
-              if (this.jdField_b_of_type_Atwl != null)
-              {
-                i = paramInt;
-                if (this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList != null)
-                {
-                  i = paramInt;
-                  if (m < this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.size()) {
-                    if (m >= 0) {
-                      break label353;
-                    }
-                  }
+              j = paramInt;
+              if (i < this.u.b.size()) {
+                if (i < 0) {
+                  j = paramInt;
+                } else {
+                  j = paramInt + ((Sentence)this.u.b.get(i)).b() * n;
                 }
               }
             }
           }
         }
-        for (i = paramInt;; i = paramInt + ((atwn)this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList.get(m)).a() * n)
-        {
-          m += 1;
-          break label97;
-          j = i;
-          break;
-          a(localatwn, paramCanvas, i1, i, this.jdField_i_of_type_Boolean);
-          paramInt = i + localatwn.a() * n;
-          break label175;
-          if ((paramInt > 0) && (paramInt <= this.v))
-          {
-            a(localatwn, paramCanvas, i1, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-            paramInt = i + localatwn.a() * n;
-            a(paramCanvas, i1, paramInt, false, m, this.jdField_a_of_type_AndroidGraphicsPaint);
-            break label187;
-          }
-          paramInt = i + localatwn.a() * n;
-          break label187;
-        }
+        i += 1;
       }
-      label175:
-      label187:
-      label353:
-      label380:
-      return;
-      label381:
-      k -= 1;
-      paramInt = 0;
     }
   }
   
   protected void a(Canvas paramCanvas, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, Paint paramPaint)
   {
-    if ((this.jdField_f_of_type_Boolean) && (this.jdField_b_of_type_Atwl != null) && (this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList != null))
+    if ((this.V) && (this.u != null) && (this.u.b != null))
     {
-      paramPaint = this.jdField_b_of_type_Atwl.jdField_a_of_type_JavaUtilArrayList;
-      if ((paramInt3 < paramPaint.size()) && (paramInt3 >= 0)) {}
+      paramPaint = this.u.b;
+      if (paramInt3 < paramPaint.size())
+      {
+        if (paramInt3 < 0) {
+          return;
+        }
+        if ((paramBoolean) && (!this.S))
+        {
+          a((Sentence)paramPaint.get(paramInt3), paramCanvas, paramInt1, paramInt2);
+          return;
+        }
+        a((Sentence)paramPaint.get(paramInt3), paramCanvas, paramInt1, paramInt2, this.i, this.q);
+      }
     }
-    else
-    {
-      return;
-    }
-    if ((paramBoolean) && (!this.jdField_d_of_type_Boolean))
-    {
-      a((atwn)paramPaint.get(paramInt3), paramCanvas, paramInt1, paramInt2);
-      return;
-    }
-    a((atwn)paramPaint.get(paramInt3), paramCanvas, paramInt1, paramInt2, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_i_of_type_AndroidGraphicsPaint);
   }
   
   public void a(boolean paramBoolean)
   {
-    Log.d("LyricViewInternalDetail", "showLyricPronounce:" + paramBoolean);
-    if (this.jdField_f_of_type_Boolean == paramBoolean) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showLyricPronounce:");
+    localStringBuilder.append(paramBoolean);
+    Log.d("LyricViewInternalDetail", localStringBuilder.toString());
+    if (this.V == paramBoolean) {
       return;
     }
-    this.jdField_f_of_type_Boolean = paramBoolean;
-    this.e = false;
-    atwq.a().post(new LyricViewInternalDetail.1(this));
+    this.V = paramBoolean;
+    this.T = false;
+    LyricContext.b().post(new LyricViewInternalDetail.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewInternalDetail
  * JD-Core Version:    0.7.0.1
  */

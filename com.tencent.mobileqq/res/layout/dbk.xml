@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="#02000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/mrv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/mrw" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.component.media.image.view.AsyncImageView android:id="@id/mry" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <TextView android:textColor="@color/al3" android:gravity="center" android:layout_gravity="right" android:id="@id/ms0" android:background="@drawable/gp4" android:layout_width="50.0dip" android:layout_height="27.0dip" android:layout_marginTop="57.0dip" android:layout_marginRight="12.0dip" android:text="跳过" />
+        <FrameLayout android:id="@id/mrx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.component.media.image.view.AsyncImageView android:layout_gravity="center" android:id="@id/mrz" android:layout_width="295.0dip" android:layout_height="490.0dip" android:scaleType="fitXY" />
+    </FrameLayout>
+</FrameLayout>

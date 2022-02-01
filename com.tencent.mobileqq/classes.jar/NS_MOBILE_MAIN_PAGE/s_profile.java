@@ -12,47 +12,47 @@ public final class s_profile
   static byte[] cache_QzmallProfileDecoGetRsp;
   static combine_diamond_info cache_stuCombineDiamondInfo;
   static star_info cache_stuStarInfo = new star_info();
-  public byte[] QzmallProfileDecoGetRsp;
-  public byte age;
+  public byte[] QzmallProfileDecoGetRsp = null;
+  public byte age = 0;
   public String astro = "";
   public String authinfo = "";
-  public int birthday;
-  public int brand_flag;
+  public int birthday = 0;
+  public int brand_flag = 0;
   public String city = "";
   public String country = "";
-  public int fans_limit;
-  public long fans_num;
+  public int fans_limit = 0;
+  public long fans_num = 0L;
   public String fans_num_express = "";
-  public int follow_num;
-  public byte gender;
-  public byte isAnnualVip;
+  public int follow_num = 0;
+  public byte gender = 0;
+  public byte isAnnualVip = 0;
   public boolean isFamousQzone = true;
   public boolean is_famouse_custom_homepage_white = true;
   public boolean is_readspace = true;
-  public boolean is_sweet_user;
-  public int nameplate_flag;
+  public boolean is_sweet_user = false;
+  public int nameplate_flag = 0;
   public String nick = "";
   public String nickname = "";
   public String province = "";
-  public int qzone_right_flag;
+  public int qzone_right_flag = 0;
   public String qzonename = "";
   public String readspace_picurl = "";
   public boolean show_menu_panel = true;
   public String space_desc = "";
-  public int sqqlevel;
+  public int sqqlevel = 0;
   public String strvipoverday = "";
-  public combine_diamond_info stuCombineDiamondInfo;
-  public star_info stuStarInfo;
-  public long uin;
-  public int user_type;
-  public byte vip;
-  public int vip_keepdays;
-  public int vipexpiretime;
-  public int viplevel;
-  public int vipratio;
-  public int vipscore;
-  public int vipspeed;
-  public int viptype;
+  public combine_diamond_info stuCombineDiamondInfo = null;
+  public star_info stuStarInfo = null;
+  public long uin = 0L;
+  public int user_type = 0;
+  public byte vip = 0;
+  public int vip_keepdays = 0;
+  public int vipexpiretime = 0;
+  public int viplevel = 0;
+  public int vipratio = 0;
+  public int vipscore = 0;
+  public int vipspeed = 0;
+  public int viptype = 0;
   public String vipurl = "";
   public String weishi_schema = "";
   
@@ -162,87 +162,104 @@ public final class s_profile
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 1);
+    Object localObject = this.nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.qzonename != null) {
-      paramJceOutputStream.write(this.qzonename, 2);
+    localObject = this.qzonename;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.vip, 3);
     paramJceOutputStream.write(this.gender, 4);
     paramJceOutputStream.write(this.age, 5);
     paramJceOutputStream.write(this.birthday, 6);
-    if (this.astro != null) {
-      paramJceOutputStream.write(this.astro, 7);
+    localObject = this.astro;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.country != null) {
-      paramJceOutputStream.write(this.country, 8);
+    localObject = this.country;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.province != null) {
-      paramJceOutputStream.write(this.province, 9);
+    localObject = this.province;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.city != null) {
-      paramJceOutputStream.write(this.city, 10);
+    localObject = this.city;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.viplevel, 11);
     paramJceOutputStream.write(this.sqqlevel, 12);
     paramJceOutputStream.write(this.isFamousQzone, 13);
     paramJceOutputStream.write(this.fans_num, 14);
-    if (this.fans_num_express != null) {
-      paramJceOutputStream.write(this.fans_num_express, 15);
+    localObject = this.fans_num_express;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.viptype, 16);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 17);
+    localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
     paramJceOutputStream.write(this.is_readspace, 18);
-    if (this.authinfo != null) {
-      paramJceOutputStream.write(this.authinfo, 19);
+    localObject = this.authinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
     paramJceOutputStream.write(this.vipscore, 20);
     paramJceOutputStream.write(this.vipspeed, 21);
     paramJceOutputStream.write(this.vipratio, 22);
     paramJceOutputStream.write(this.vipexpiretime, 23);
-    if (this.strvipoverday != null) {
-      paramJceOutputStream.write(this.strvipoverday, 24);
+    localObject = this.strvipoverday;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
-    if (this.readspace_picurl != null) {
-      paramJceOutputStream.write(this.readspace_picurl, 25);
+    localObject = this.readspace_picurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 25);
     }
     paramJceOutputStream.write(this.qzone_right_flag, 26);
     paramJceOutputStream.write(this.is_famouse_custom_homepage_white, 27);
     paramJceOutputStream.write(this.isAnnualVip, 28);
     paramJceOutputStream.write(this.is_sweet_user, 29);
-    if (this.stuStarInfo != null) {
-      paramJceOutputStream.write(this.stuStarInfo, 30);
+    localObject = this.stuStarInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 30);
     }
-    if (this.stuCombineDiamondInfo != null) {
-      paramJceOutputStream.write(this.stuCombineDiamondInfo, 31);
+    localObject = this.stuCombineDiamondInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 31);
     }
     paramJceOutputStream.write(this.nameplate_flag, 32);
-    if (this.QzmallProfileDecoGetRsp != null) {
-      paramJceOutputStream.write(this.QzmallProfileDecoGetRsp, 33);
+    localObject = this.QzmallProfileDecoGetRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 33);
     }
     paramJceOutputStream.write(this.user_type, 34);
-    if (this.vipurl != null) {
-      paramJceOutputStream.write(this.vipurl, 35);
+    localObject = this.vipurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 35);
     }
     paramJceOutputStream.write(this.follow_num, 36);
     paramJceOutputStream.write(this.show_menu_panel, 37);
     paramJceOutputStream.write(this.fans_limit, 38);
     paramJceOutputStream.write(this.brand_flag, 39);
-    if (this.space_desc != null) {
-      paramJceOutputStream.write(this.space_desc, 40);
+    localObject = this.space_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 40);
     }
-    if (this.weishi_schema != null) {
-      paramJceOutputStream.write(this.weishi_schema, 41);
+    localObject = this.weishi_schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 41);
     }
     paramJceOutputStream.write(this.vip_keepdays, 42);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_profile
  * JD-Core Version:    0.7.0.1
  */

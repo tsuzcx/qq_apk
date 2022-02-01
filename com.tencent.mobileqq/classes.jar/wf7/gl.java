@@ -8,18 +8,18 @@ public class gl
   
   protected void a(int paramInt, Bundle paramBundle)
   {
-    if (this.sn != null)
+    gl.a locala = this.sn;
+    if (locala != null)
     {
-      if (paramInt != 1) {
-        break label23;
+      if (paramInt == 1)
+      {
+        locala.a(paramBundle);
+        return;
       }
-      this.sn.a(paramBundle);
+      if (paramInt == 2) {
+        locala.b(paramBundle);
+      }
     }
-    label23:
-    while (paramInt != 2) {
-      return;
-    }
-    this.sn.b(paramBundle);
   }
   
   public void a(gl.a parama)
@@ -29,7 +29,7 @@ public class gl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gl
  * JD-Core Version:    0.7.0.1
  */

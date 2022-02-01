@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.ActionMenuView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" app:divider="?e2" app:dividerPadding="12.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<FrameLayout android:id="@id/j6e" android:background="@color/BW_93" android:paddingLeft="@dimen/df" android:paddingTop="@dimen/df" android:paddingRight="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/tk" android:layout_width="fill_parent" android:layout_height="@dimen/d0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/xo" android:id="@id/j5x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a2o" android:layout_marginStart="@dimen/df" />
+    </LinearLayout>
+</FrameLayout>

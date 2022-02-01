@@ -74,45 +74,46 @@ public class AudioUploadTask
     return TaskTypeConfig.AudioUploadTaskType;
   }
   
-  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     try
     {
-      localObject1 = (UploadRsp)ProtocolUtil.unpack(UploadRsp.class.getSimpleName(), paramArrayOfByte);
-      localObject2 = localObject1;
+      UploadRsp localUploadRsp = (UploadRsp)ProtocolUtil.unpack(UploadRsp.class.getSimpleName(), paramArrayOfByte);
       localObject1 = null;
+      localObject2 = localUploadRsp;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localObject1 = Log.getStackTraceString(localException);
-        UploadLog.i("AudioUploadTask", "processFileUploadFinishRsp", localException);
-      }
-      Object localObject1 = new AudioUploadResult();
-      ((AudioUploadResult)localObject1).result = ((UploadRsp)localObject2).result;
-      ((AudioUploadResult)localObject1).voice_id = ((UploadRsp)localObject2).voice_id;
-      ((AudioUploadResult)localObject1).flowId = this.flowId;
-      ((AudioUploadResult)localObject1).voice_length = this.voice_length;
-      onUploadSucceed(localObject1);
-      super.processFileUploadFinishRsp(paramArrayOfByte);
-      onDestroy();
+      localObject1 = Log.getStackTraceString(localException);
+      UploadLog.i("AudioUploadTask", "processFileUploadFinishRsp", localException);
     }
     if (localObject2 == null)
     {
       localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = "unpack UploadRsp == null. " + paramArrayOfByte;
+      if (localObject1 == null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unpack UploadRsp == null. ");
+        ((StringBuilder)localObject1).append(paramArrayOfByte);
+        localObject2 = ((StringBuilder)localObject1).toString();
       }
       onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), (String)localObject2);
       return;
     }
+    Object localObject1 = new AudioUploadResult();
+    ((AudioUploadResult)localObject1).result = ((UploadRsp)localObject2).result;
+    ((AudioUploadResult)localObject1).voice_id = ((UploadRsp)localObject2).voice_id;
+    ((AudioUploadResult)localObject1).flowId = this.flowId;
+    ((AudioUploadResult)localObject1).voice_length = this.voice_length;
+    onUploadSucceed(localObject1);
+    super.processFileUploadFinishRsp(paramArrayOfByte);
+    onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.AudioUploadTask
  * JD-Core Version:    0.7.0.1
  */

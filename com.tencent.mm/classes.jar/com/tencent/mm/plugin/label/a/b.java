@@ -6,29 +6,29 @@ import java.util.List;
 public abstract interface b
   extends a
 {
-  public abstract String RN(String paramString);
+  public abstract void G(List<String> paramList1, List<String> paramList2);
   
-  public abstract String RO(String paramString);
+  public abstract String aJG(String paramString);
   
-  public abstract List<String> RP(String paramString);
+  public abstract String aJH(String paramString);
   
-  public abstract List<String> RQ(String paramString);
+  public abstract List<String> aJI(String paramString);
   
-  public abstract List<String> RR(String paramString);
+  public abstract List<String> aJJ(String paramString);
   
-  public abstract void ahN();
+  public abstract List<String> aJK(String paramString);
   
-  public abstract List<String> bKQ();
+  public abstract void bja();
   
-  public abstract List<String> bKS();
+  public abstract List<String> fSW();
   
-  public abstract String cb(List<String> paramList);
+  public abstract List<String> fSY();
   
-  public abstract void cc(List<String> paramList);
+  public abstract String iD(List<String> paramList);
   
-  public abstract void eY(String paramString1, String paramString2);
+  public abstract void iE(List<String> paramList);
   
-  public abstract void j(List<String> paramList1, List<String> paramList2);
+  public abstract void jP(String paramString1, String paramString2);
 }
 
 

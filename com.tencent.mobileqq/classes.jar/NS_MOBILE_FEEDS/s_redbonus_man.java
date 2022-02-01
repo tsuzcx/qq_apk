@@ -8,9 +8,9 @@ public final class s_redbonus_man
   extends JceStruct
 {
   static s_user cache_user = new s_user();
-  public long payMoney;
-  public long payTime;
-  public s_user user;
+  public long payMoney = 0L;
+  public long payTime = 0L;
+  public s_user user = null;
   
   public s_redbonus_man() {}
   
@@ -30,8 +30,9 @@ public final class s_redbonus_man
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 0);
+    s_user locals_user = this.user;
+    if (locals_user != null) {
+      paramJceOutputStream.write(locals_user, 0);
     }
     paramJceOutputStream.write(this.payTime, 1);
     paramJceOutputStream.write(this.payMoney, 2);
@@ -39,7 +40,7 @@ public final class s_redbonus_man
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_redbonus_man
  * JD-Core Version:    0.7.0.1
  */

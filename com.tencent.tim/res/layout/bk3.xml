@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dnr" android:layout_width="84.0dip" android:layout_height="24.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/dnq" android:layout_width="10.0dip" android:layout_height="9.0dip" />
+    <TextView android:textSize="12.0sp" android:textColor="#a3ffffff" android:id="@id/dns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/rra" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/dnt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" />
+</LinearLayout>

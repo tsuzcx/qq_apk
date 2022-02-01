@@ -9,6 +9,6 @@
     </LinearLayout>
     <TextView android:textSize="14.0dip" android:textColor="@color/ur" android:id="@id/jnh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/l07" android:layout_centerHorizontal="true" />
     <ImageView android:id="@id/mfr" android:layout_width="165.0dip" android:layout_height="165.0dip" android:layout_marginBottom="35.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <com.tencent.mobileqq.activity.qwallet.voice.RecordMicView android:id="@id/i3o" android:layout_width="145.0dip" android:layout_height="145.0dip" android:layout_marginBottom="45.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.qwallet.hb.grap.voice.impl.RecordMicView android:id="@id/i3o" android:layout_width="145.0dip" android:layout_height="145.0dip" android:layout_marginBottom="45.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
     <TextView android:textSize="14.0dip" android:textColor="@drawable/a3o" android:id="@id/d1f" android:paddingRight="3.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/rhq" android:drawableRight="@drawable/dww" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

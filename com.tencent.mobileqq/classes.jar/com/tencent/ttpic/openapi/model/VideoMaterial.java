@@ -1,299 +1,606 @@
 package com.tencent.ttpic.openapi.model;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.text.TextUtils;
-import com.tencent.ttpic.gameplaysdk.model.GameParams;
-import com.tencent.ttpic.gameplaysdk.model.StickerItem3D;
-import com.tencent.ttpic.model.Audio2Text;
-import com.tencent.ttpic.model.BlurEffectItem;
-import com.tencent.ttpic.model.FaceCropItem;
-import com.tencent.ttpic.model.FaceExpression;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.device.DeviceInstance;
+import com.tencent.ttpic.baseutils.io.FileUtils;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOGameSetting;
 import com.tencent.ttpic.model.FaceFeatureItem;
-import com.tencent.ttpic.model.FaceMaskItem;
-import com.tencent.ttpic.model.FaceMeshItem;
-import com.tencent.ttpic.model.FaceMoveItem;
-import com.tencent.ttpic.model.ImageMaskItem;
 import com.tencent.ttpic.model.MultiViewerItem;
-import com.tencent.ttpic.model.NonFitItem;
-import com.tencent.ttpic.model.PhantomItem;
-import com.tencent.ttpic.model.VideoFilterEffect;
+import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.filter.FabbyParts;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.AR_MATERIAL_TYPE;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.SHADER_TYPE;
 import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable;
 import com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable.Info;
+import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
 import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import org.light.LightAsset;
 
 public class VideoMaterial
 {
-  public static final int SEGMENT_BORDERTYPE_SHAKE = 3;
-  private List<TriggerActionItem> actionItemList;
-  private String adAppLink;
-  private String adIcon;
-  private String adLink;
-  private float alpha;
-  private List<String> arParticleList;
-  private int arParticleType;
-  private Audio2Text audio2Text;
-  private GameParams audio3DParams;
-  private double blendAlpha;
-  private int blendMode;
-  private BlurEffectItem blurEffectItem;
-  private int categoryFlag;
-  private List<VideoMaterial.ChildPendant> childrenPendants;
+  public static final String CRAZYFACE_FACE_COLOR2 = "imageFaceColor2";
+  public static final String CRAZYFACE_FACE_COLOR_RANGE = "faceColorRange";
+  public static final String[] DEVICE_NEED_COPY_TRANSFORM = { "A1001", "SM-N9006", "vivo_X5Max_L", "vivo_X5Max_L", "vivo_X5V", "vivo_Y23L" };
+  public static final int INVALID_INT_FIELD_VALUE = -999999;
+  public static final int INVALID_ONLY_ONE_GESTURE = -1;
+  public static final String MP4_SUFFIX = ".mp4";
+  public static final String PARAMS_FILE_NAME = "params";
+  public static final String PNG_SUFFIX = ".png";
+  public static final double SCALE_DIFF = 100.0D;
+  public static final int SIZE_FACE_ANGLE = 3;
+  public static final int SIZE_FACE_POINT = 90;
+  public static FilenameFilter mPngFilter = new VideoMaterial.2();
+  private float[] arShaderPlanOffset = { 0.0F, 0.0F, 0.0F };
   private CosFun cosFun;
-  private int cosmeticChangeMode;
-  private int cosmeticChangeSwitch;
-  private int cosmeticShelterSwitchClose;
   private String dataPath;
-  public String delayTips;
-  private List<String> dependencies;
-  private int detectorFlag;
   private List<DistortionItem> distortionItemList;
   private DoodleItem doodleItem;
-  private List<MaterialStateEdgeItem> edgeItemList;
-  private int environment;
-  private HashMap<String, Object> extAttributes = new HashMap();
   private FabbyParts fabbyParts;
-  private FaceCropItem faceCropItem;
-  private int faceDetectType;
-  private String faceExchangeImage;
-  private boolean faceExchangeImageDisableOpacity;
-  private boolean faceExchangeImageFullFace;
-  private FaceExpression faceExpression;
-  private List<FaceFeatureItem> faceFeatureItemList;
-  private FaceImageLayer faceImageLayer;
-  private List<FaceMaskItem> faceMaskItemList;
-  private List<FaceMeshItem> faceMeshItemList;
-  private List<FaceMoveItem> faceMoveItemList;
-  private int[] faceMoveTriangles;
   private List<FaceItem> faceOffItemList;
-  private List<Float> facePoints;
-  private List<FaceStyleItem> faceStyleItemList;
-  private int faceSwapType;
-  private int faceValueDetectType;
-  private int faceoffType;
-  private int featureType;
-  private List<String> filamentParticleList;
-  private double filterBlurStrength;
-  private String filterId;
-  private boolean flattenEar;
-  private boolean flattenNose;
-  private float fov;
-  private GameParams gameParams;
-  public int gestureAnimGapTime;
-  public int gestureAnimType;
-  public int gesturePointIndex;
-  private List<GLBItemJava> glbList;
-  private int grayScale;
-  private String gridModel;
-  private List<GridViewerItem> gridViewerItemList;
-  private int handBoostEnable;
-  private boolean hasAudio;
-  private List<StickerItem> headCropItemList;
-  private boolean hideUserHeadModel;
   private String id;
-  private String imageFacePointsFileName;
-  private List<ImageMaskItem> imageMaskItemList;
-  public boolean isDualPeople;
-  private boolean isFaceCharmRangeMaterial = false;
+  private boolean isAR3DMaterial;
   private boolean isFreezeFrameRequired = false;
-  private boolean isHandCharmRangeMaterial = false;
-  public boolean isNeedDecodeFaceFilter = true;
-  private boolean isNeedDetectGender = false;
-  private boolean isShookHeadPendant = false;
-  private List<StickerItem> itemList;
-  private List<StickerItem3D> itemList3D;
-  public String itemTips;
-  private String lipsLutPath;
-  private String lipsLutStyleMaskPath;
-  private int lipsSegType;
+  LightAsset lightAsset;
   private boolean loadImageFromCache = true;
-  public BigAnimationParam mBigHeadParam;
-  public boolean mEnableFaceDetect = true;
-  public List<String> mFilterList = new ArrayList();
-  public String mGuideTips = null;
-  public boolean mHasGestureFilter = false;
-  public boolean mUseUlseeSdk = false;
-  private String maskPaintImage;
-  private int maskPaintRenderId;
-  private int maskPaintSize;
-  private int maskPaintType;
-  private int maskType;
-  private int maxFaceCount;
-  private int minAppVersion;
   private List<MultiViewerItem> multiViewerItemList = new ArrayList();
-  private boolean needBodyInfo = false;
-  private boolean needFaceInfo = true;
-  public NonFitItem[] nonFitItems;
-  private int orderMode;
-  private List<PhantomItem> phantomItemList;
-  private String preferCameraId;
-  private int randomGroupCount;
-  private List<String> renderOrderList;
-  private boolean resetWhenStartRecord;
-  private List<String> resourceList;
-  private int segmentBorderType = -1;
-  private int segmentFeather;
-  private boolean segmentRequired = false;
-  private float[] segmentStrokeColor;
-  private double segmentStrokeGap;
-  private List<VideoMaterial.SegmentStroke> segmentStrokeList = new ArrayList();
-  private double segmentStrokeWidth;
   private int shaderType;
-  private String showTips;
-  private float splitScreen;
-  private StarParam starParam;
-  private int stateVersion = 1;
-  private int stickerOrderMode;
-  private boolean supportLandscape;
-  private boolean supportPause;
   private LazyLoadAnimationDrawable.Info tipsDrawableInfo;
-  private String tipsIcon;
-  private String tipsText;
-  private int touchFlag = 0;
-  private float transformAdjustAlpha = 1.0F;
-  private int triggerType;
-  private boolean useMesh = false;
-  public BuckleFaceItem videoFaceCrop;
-  private VideoFilterEffect videoFilterEffect;
-  private int voicekind;
-  private String weiboTag;
   
-  private boolean hasCustomVideoFilter()
+  public static List<PointF> arrayToPointList(int[][] paramArrayOfInt)
   {
-    return (this.shaderType == VideoMaterialUtil.SHADER_TYPE.CUSTOM_BEFORE_COMMON.value) || (this.shaderType == VideoMaterialUtil.SHADER_TYPE.COMMON_BEFORE_CUSTOM.value);
+    ArrayList localArrayList = new ArrayList();
+    if (paramArrayOfInt == null) {
+      return localArrayList;
+    }
+    int i = 0;
+    while (i < paramArrayOfInt.length)
+    {
+      localArrayList.add(new PointF(paramArrayOfInt[i][0], paramArrayOfInt[i][1]));
+      i += 1;
+    }
+    return localArrayList;
   }
   
-  public void addExtAttribute(Object paramObject)
+  public static int calSampleSize(long paramLong1, long paramLong2)
   {
-    if (paramObject != null) {
-      this.extAttributes.put(paramObject.getClass().getName(), paramObject);
+    if (paramLong1 <= 0L) {
+      return 128;
+    }
+    int i = 1;
+    while (paramLong2 > paramLong1)
+    {
+      i <<= 1;
+      paramLong2 >>= 2;
+    }
+    return i;
+  }
+  
+  public static List<PointF> copyList(List<PointF> paramList)
+  {
+    if (paramList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      PointF localPointF = (PointF)paramList.next();
+      localArrayList.add(new PointF(localPointF.x, localPointF.y));
+    }
+    return localArrayList;
+  }
+  
+  public static void flipYPoints(List<PointF> paramList, int paramInt) {}
+  
+  public static float[] flipYPoints(float[] paramArrayOfFloat, int paramInt)
+  {
+    return paramArrayOfFloat;
+  }
+  
+  public static int genFullScreenVertices(float[] paramArrayOfFloat, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
+      paramFloat2 = (paramFloat2 - paramFloat1) / paramInt1;
+      paramFloat4 = (paramFloat4 - paramFloat3) / paramInt2;
+      paramArrayOfFloat[0] = getCoordinate(paramFloat1, paramFloat2, 0);
+      paramArrayOfFloat[1] = getCoordinate(paramFloat3, paramFloat4, 0);
+      int j = 0;
+      int i = 1;
+      while (j < paramInt1)
+      {
+        int k;
+        int m;
+        if (j % 2 == 0)
+        {
+          k = 0;
+          while (k < paramInt2)
+          {
+            m = i * 2;
+            paramArrayOfFloat[m] = getCoordinate(paramFloat1, paramFloat2, j + 1);
+            paramArrayOfFloat[(m + 1)] = getCoordinate(paramFloat3, paramFloat4, k);
+            i += 1;
+            m = i * 2;
+            paramArrayOfFloat[m] = getCoordinate(paramFloat1, paramFloat2, j);
+            k += 1;
+            paramArrayOfFloat[(m + 1)] = getCoordinate(paramFloat3, paramFloat4, k);
+            i += 1;
+          }
+          k = i * 2;
+          paramArrayOfFloat[k] = getCoordinate(paramFloat1, paramFloat2, j + 1);
+          paramArrayOfFloat[(k + 1)] = getCoordinate(paramFloat3, paramFloat4, paramInt2);
+        }
+        else
+        {
+          k = paramInt2;
+          while (k > 0)
+          {
+            m = i * 2;
+            paramArrayOfFloat[m] = getCoordinate(paramFloat1, paramFloat2, j + 1);
+            paramArrayOfFloat[(m + 1)] = getCoordinate(paramFloat3, paramFloat4, k);
+            i += 1;
+            m = i * 2;
+            paramArrayOfFloat[m] = getCoordinate(paramFloat1, paramFloat2, j);
+            paramArrayOfFloat[(m + 1)] = getCoordinate(paramFloat3, paramFloat4, k - 1);
+            i += 1;
+            k -= 1;
+          }
+          k = i * 2;
+          paramArrayOfFloat[k] = getCoordinate(paramFloat1, paramFloat2, j + 1);
+          paramArrayOfFloat[(k + 1)] = getCoordinate(paramFloat3, paramFloat4, 0);
+        }
+        i += 1;
+        j += 1;
+      }
+      return 0;
+    }
+    return -1;
+  }
+  
+  public static List<PointF> genFullScreenVertices(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramInt1 > 0)
+    {
+      if (paramInt2 <= 0) {
+        return localArrayList;
+      }
+      paramFloat2 = (paramFloat2 - paramFloat1) / paramInt1;
+      paramFloat4 = (paramFloat4 - paramFloat3) / paramInt2;
+      localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, 0), getCoordinate(paramFloat3, paramFloat4, 0)));
+      int i = 0;
+      while (i < paramInt1)
+      {
+        int j;
+        if (i % 2 == 0)
+        {
+          j = 0;
+          while (j < paramInt2)
+          {
+            localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, j)));
+            float f = getCoordinate(paramFloat1, paramFloat2, i);
+            j += 1;
+            localArrayList.add(new PointF(f, getCoordinate(paramFloat3, paramFloat4, j)));
+          }
+          localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, paramInt2)));
+        }
+        else
+        {
+          j = paramInt2;
+          while (j > 0)
+          {
+            localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, j)));
+            localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i), getCoordinate(paramFloat3, paramFloat4, j - 1)));
+            j -= 1;
+          }
+          localArrayList.add(new PointF(getCoordinate(paramFloat1, paramFloat2, i + 1), getCoordinate(paramFloat3, paramFloat4, 0)));
+        }
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static int getAllImageSize(String paramString)
+  {
+    boolean bool = paramString.startsWith("assets://");
+    int i = 0;
+    String[] arrayOfString;
+    Context localContext;
+    StringBuilder localStringBuilder;
+    int j;
+    if (bool)
+    {
+      try
+      {
+        arrayOfString = AEModule.getContext().getAssets().list(FileUtils.getRealPath(paramString));
+        if (arrayOfString != null)
+        {
+          if (arrayOfString.length == 0) {
+            return 0;
+          }
+          localContext = AEModule.getContext();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append(arrayOfString[0]);
+          paramString = BitmapUtils.getBitmapSize(localContext, localStringBuilder.toString());
+          if (paramString == null) {
+            return 0;
+          }
+          i = paramString.x * paramString.y * 4;
+          j = arrayOfString.length;
+          break label228;
+        }
+        return 0;
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        return 0;
+      }
+    }
+    else
+    {
+      arrayOfString = new File(paramString).list(mPngFilter);
+      if (arrayOfString == null) {
+        return i;
+      }
+      if (arrayOfString.length == 0) {
+        return 0;
+      }
+      localContext = AEModule.getContext();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(arrayOfString[0]);
+      paramString = BitmapUtils.getBitmapSize(localContext, localStringBuilder.toString());
+      if (paramString == null) {
+        return 0;
+      }
+      i = paramString.x * paramString.y * 4;
+      j = arrayOfString.length;
+    }
+    label228:
+    i = 0 + i * j;
+    return i;
+  }
+  
+  private static float getCoordinate(float paramFloat1, float paramFloat2, int paramInt)
+  {
+    return paramFloat1 + paramInt * paramFloat2;
+  }
+  
+  public static String getMaterialId(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    paramString = paramString.split(File.separator);
+    int i = paramString.length - 1;
+    while (i >= 0)
+    {
+      if (!TextUtils.isEmpty(paramString[i])) {
+        return paramString[i];
+      }
+      i -= 1;
+    }
+    return null;
+  }
+  
+  public static boolean isAllFreezeFrameTriggerType(int paramInt)
+  {
+    return paramInt == PTFaceAttr.PTExpression.ALL_VIEWER_ITEM_FRAME_FROZEN.value;
+  }
+  
+  public static boolean isAudioTextTriggerType(int paramInt)
+  {
+    return (300 <= paramInt) && (paramInt <= 311);
+  }
+  
+  public static boolean isBody2AnchorItem(StickerItem paramStickerItem)
+  {
+    return (isBodyDetectItem(paramStickerItem)) && (paramStickerItem.anchorPoint != null) && (paramStickerItem.anchorPoint.length >= 4) && (paramStickerItem.alignFacePoints != null) && (paramStickerItem.alignFacePoints.length >= 2);
+  }
+  
+  public static boolean isBody4AnchorItem(StickerItem paramStickerItem)
+  {
+    return (isBodyDetectItem(paramStickerItem)) && (paramStickerItem.anchorPoint != null) && (paramStickerItem.anchorPoint.length >= 8) && (paramStickerItem.alignFacePoints != null) && (paramStickerItem.alignFacePoints.length >= 4);
+  }
+  
+  public static boolean isBodyDetectItem(StickerItem paramStickerItem)
+  {
+    return (paramStickerItem != null) && (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.BODY.type);
+  }
+  
+  public static boolean isBodyDetectType(int paramInt)
+  {
+    return paramInt == 400;
+  }
+  
+  public static boolean isBodyTriggerType(int paramInt)
+  {
+    return paramInt == 401;
+  }
+  
+  public static boolean isCatItem(StickerItem paramStickerItem)
+  {
+    return (paramStickerItem != null) && (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.CAT.type);
+  }
+  
+  public static boolean isCatTriggerType(int paramInt)
+  {
+    return paramInt == 700;
+  }
+  
+  public static boolean isEmptyItem(FaceItem paramFaceItem)
+  {
+    return (paramFaceItem == null) || ((TextUtils.isEmpty(paramFaceItem.id)) && (TextUtils.isEmpty(paramFaceItem.faceExchangeImage))) || ((!TextUtils.isEmpty(paramFaceItem.id)) && (paramFaceItem.id.equals("action"))) || ((!TextUtils.isEmpty(paramFaceItem.id)) && (paramFaceItem.id.equals("audio")));
+  }
+  
+  public static boolean isEmptyItem(StickerItem paramStickerItem)
+  {
+    return (paramStickerItem == null) || (TextUtils.isEmpty(paramStickerItem.id)) || (paramStickerItem.id.equals("action")) || (paramStickerItem.id.equals("audio"));
+  }
+  
+  public static boolean isExternalWordsTriggerType(int paramInt)
+  {
+    return paramInt == PTFaceAttr.PTExpression.EXTERNAL_WORDS.value;
+  }
+  
+  public static boolean isFaceItem(StickerItem paramStickerItem)
+  {
+    return (paramStickerItem != null) && ((paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.TRANSPARENT.type));
+  }
+  
+  public static boolean isFaceTriggerType(int paramInt)
+  {
+    return paramInt < 200;
+  }
+  
+  public static boolean isGestureItem(StickerItem paramStickerItem)
+  {
+    return (paramStickerItem != null) && (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.GESTURE.type);
+  }
+  
+  public static boolean isGestureTriggerType(int paramInt)
+  {
+    return ((200 <= paramInt) && (paramInt <= 214)) || (paramInt == 220);
+  }
+  
+  public static boolean isHotAreaTriggerItem(StickerItem paramStickerItem)
+  {
+    boolean bool2 = false;
+    if (paramStickerItem == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (paramStickerItem.triggerArea != null)
+    {
+      bool1 = bool2;
+      if (paramStickerItem.triggerArea.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean isStarItem(StickerItem paramStickerItem)
+  {
+    return (paramStickerItem != null) && (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.STAR.type);
+  }
+  
+  public static boolean isTimeTriggerType(int paramInt)
+  {
+    return paramInt == PTFaceAttr.PTExpression.TIME_TRIGGER.value;
+  }
+  
+  public static boolean isTouchTriggerType(int paramInt)
+  {
+    return paramInt == PTFaceAttr.PTExpression.TAP_SCREEN.value;
+  }
+  
+  public static float[][] listToFloatArray(List<PointF> paramList)
+  {
+    if (paramList == null) {
+      return new float[0][];
+    }
+    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { paramList.size(), 2 });
+    int i = 0;
+    while (i < paramList.size())
+    {
+      arrayOfFloat[i][0] = ((PointF)paramList.get(i)).x;
+      arrayOfFloat[i][1] = ((PointF)paramList.get(i)).y;
+      i += 1;
+    }
+    return arrayOfFloat;
+  }
+  
+  public static int[][] listToIntArray(List<PointF> paramList)
+  {
+    if (paramList == null) {
+      return new int[0][];
+    }
+    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { paramList.size(), 2 });
+    int i = 0;
+    while (i < paramList.size())
+    {
+      arrayOfInt[i][0] = ((int)((PointF)paramList.get(i)).x);
+      arrayOfInt[i][1] = ((int)((PointF)paramList.get(i)).y);
+      i += 1;
+    }
+    return arrayOfInt;
+  }
+  
+  public static VideoMaterial loadLightAsset(String paramString)
+  {
+    VideoMaterial localVideoMaterial = new VideoMaterial();
+    localVideoMaterial.setDataPath(paramString);
+    localVideoMaterial.setId(getMaterialId(paramString));
+    localVideoMaterial.lightAsset = LightAsset.Load(paramString, 0);
+    return localVideoMaterial;
+  }
+  
+  public static boolean needCopyTransform()
+  {
+    String str1 = DeviceInstance.getInstance().getDeviceName().trim();
+    if (!TextUtils.isEmpty(str1))
+    {
+      String[] arrayOfString = DEVICE_NEED_COPY_TRANSFORM;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str2 = arrayOfString[i];
+        if (str1.toLowerCase().endsWith(str2.toLowerCase())) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+    return false;
+  }
+  
+  private boolean needReal3DMM()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.3dmm"));
+  }
+  
+  public static boolean needRenderStar(StarParam paramStarParam)
+  {
+    return (paramStarParam != null) && (paramStarParam.starStrength >= 0.0F);
+  }
+  
+  public static float[] toFlatArray(List<PointF> paramList)
+  {
+    int i = 0;
+    if (paramList == null) {
+      return new float[0];
+    }
+    float[] arrayOfFloat = new float[paramList.size() * 2];
+    while (i < paramList.size())
+    {
+      PointF localPointF = (PointF)paramList.get(i);
+      if (localPointF != null)
+      {
+        int j = i * 2;
+        arrayOfFloat[j] = localPointF.x;
+        arrayOfFloat[(j + 1)] = localPointF.y;
+      }
+      i += 1;
+    }
+    return arrayOfFloat;
+  }
+  
+  public static float[] toFlatArray(PointF[] paramArrayOfPointF)
+  {
+    if (paramArrayOfPointF == null) {
+      return new float[0];
+    }
+    try
+    {
+      float[] arrayOfFloat2 = new float[paramArrayOfPointF.length * 2];
+      int i = 0;
+      float[] arrayOfFloat1;
+      for (;;)
+      {
+        arrayOfFloat1 = arrayOfFloat2;
+        if (i >= paramArrayOfPointF.length) {
+          break;
+        }
+        if (paramArrayOfPointF[i] != null)
+        {
+          int j = i * 2;
+          arrayOfFloat2[j] = paramArrayOfPointF[i].x;
+          arrayOfFloat2[(j + 1)] = paramArrayOfPointF[i].y;
+        }
+        i += 1;
+      }
+      return arrayOfFloat1;
+    }
+    catch (OutOfMemoryError paramArrayOfPointF)
+    {
+      paramArrayOfPointF.printStackTrace();
+      arrayOfFloat1 = new float[0];
     }
   }
   
   public void createTipsDrawableInfo(Resources paramResources, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    int j = 0;
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return;
-      localObject1 = new File(paramString1 + File.separator + paramString2);
-    } while (!((File)localObject1).isDirectory());
-    paramString1 = new ArrayList();
-    Object localObject1 = ((File)localObject1).listFiles();
-    int k = localObject1.length;
-    int i = 0;
-    while (i < k)
-    {
-      localObject2 = localObject1[i];
-      if (!((File)localObject2).getName().startsWith(".")) {
-        paramString1.add(localObject2);
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
       }
-      i += 1;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(paramString2);
+      localObject1 = new File(((StringBuilder)localObject1).toString());
+      if (((File)localObject1).isDirectory())
+      {
+        paramString1 = new ArrayList();
+        localObject1 = ((File)localObject1).listFiles();
+        int k = localObject1.length;
+        int j = 0;
+        int i = 0;
+        while (i < k)
+        {
+          localObject2 = localObject1[i];
+          if (!((File)localObject2).getName().startsWith(".")) {
+            paramString1.add(localObject2);
+          }
+          i += 1;
+        }
+        localObject1 = new int[paramString1.size()];
+        i = 0;
+        while (i < paramString1.size())
+        {
+          localObject2 = ((File)paramString1.get(i)).getName();
+          localObject1[i] = Integer.parseInt(((String)localObject2).substring(paramString2.length() + 1, ((String)localObject2).lastIndexOf(46)));
+          i += 1;
+        }
+        paramString2 = new Integer[localObject1.length];
+        i = 0;
+        while (i < localObject1.length)
+        {
+          paramString2[i] = Integer.valueOf(i);
+          i += 1;
+        }
+        Arrays.sort(paramString2, new VideoMaterial.1(this, (int[])localObject1));
+        Object localObject2 = new int[localObject1.length];
+        for (i = j; i < paramString2.length - 1; i = j)
+        {
+          j = i + 1;
+          localObject2[i] = ((localObject1[paramString2[j].intValue()] - localObject1[paramString2[i].intValue()]) * paramInt1);
+        }
+        if (paramString2.length >= 1)
+        {
+          i = localObject1[paramString2[(paramString2.length - 1)].intValue()];
+          localObject2[(paramString2.length - 1)] = (paramInt1 * (paramInt2 - i));
+        }
+        this.tipsDrawableInfo = new LazyLoadAnimationDrawable.Info(paramResources, paramString1, (int[])localObject2, paramString2);
+      }
     }
-    localObject1 = new int[paramString1.size()];
-    i = 0;
-    while (i < paramString1.size())
-    {
-      localObject2 = ((File)paramString1.get(i)).getName();
-      localObject1[i] = Integer.parseInt(((String)localObject2).substring(paramString2.length() + 1, ((String)localObject2).lastIndexOf(46)));
-      i += 1;
-    }
-    paramString2 = new Integer[localObject1.length];
-    i = 0;
-    while (i < localObject1.length)
-    {
-      paramString2[i] = Integer.valueOf(i);
-      i += 1;
-    }
-    Arrays.sort(paramString2, new VideoMaterial.1(this, (int[])localObject1));
-    Object localObject2 = new int[localObject1.length];
-    i = j;
-    while (i < paramString2.length - 1)
-    {
-      localObject2[i] = ((localObject1[paramString2[(i + 1)].intValue()] - localObject1[paramString2[i].intValue()]) * paramInt1);
-      i += 1;
-    }
-    if (paramString2.length >= 1)
-    {
-      i = localObject1[paramString2[(paramString2.length - 1)].intValue()];
-      localObject2[(paramString2.length - 1)] = ((paramInt2 - i) * paramInt1);
-    }
-    this.tipsDrawableInfo = new LazyLoadAnimationDrawable.Info(paramResources, paramString1, (int[])localObject2, paramString2);
   }
   
-  public String getAdAppLink()
+  public float[] getArShaderPlanOffset()
   {
-    return this.adAppLink;
-  }
-  
-  public String getAdIcon()
-  {
-    return this.adIcon;
-  }
-  
-  public String getAdLink()
-  {
-    return this.adLink;
-  }
-  
-  public float getAlpha()
-  {
-    return this.alpha;
-  }
-  
-  public List<String> getArParticleList()
-  {
-    return this.arParticleList;
-  }
-  
-  public int getArParticleType()
-  {
-    return this.arParticleType;
-  }
-  
-  public Audio2Text getAudio2Text()
-  {
-    return this.audio2Text;
-  }
-  
-  public GameParams getAudio3DParams()
-  {
-    return this.audio3DParams;
-  }
-  
-  public double getBlendAlpha()
-  {
-    return this.blendAlpha;
-  }
-  
-  public int getBlendMode()
-  {
-    return this.blendMode;
-  }
-  
-  public BlurEffectItem getBlurEffectItem()
-  {
-    return this.blurEffectItem;
-  }
-  
-  public int getCategoryFlag()
-  {
-    return this.categoryFlag;
-  }
-  
-  public List<VideoMaterial.ChildPendant> getChildrenPendants()
-  {
-    return this.childrenPendants;
+    return this.arShaderPlanOffset;
   }
   
   public CosFun getCosFun()
@@ -301,34 +608,9 @@ public class VideoMaterial
     return this.cosFun;
   }
   
-  public int getCosmeticChangeMode()
-  {
-    return this.cosmeticChangeMode;
-  }
-  
-  public int getCosmeticChangeSwitch()
-  {
-    return this.cosmeticChangeSwitch;
-  }
-  
-  public int getCosmeticShelterSwitchClose()
-  {
-    return this.cosmeticShelterSwitchClose;
-  }
-  
   public String getDataPath()
   {
     return this.dataPath;
-  }
-  
-  public List<String> getDependencies()
-  {
-    return this.dependencies;
-  }
-  
-  public int getDetectorFlag()
-  {
-    return this.detectorFlag;
   }
   
   public List<DistortionItem> getDistortionItemList()
@@ -341,83 +623,14 @@ public class VideoMaterial
     return this.doodleItem;
   }
   
-  public int getEnvironment()
-  {
-    return this.environment;
-  }
-  
-  public Object getExtAttribute(String paramString)
-  {
-    if ((this.extAttributes != null) && (!this.extAttributes.isEmpty())) {
-      return this.extAttributes.get(paramString);
-    }
-    return null;
-  }
-  
   public FabbyParts getFabbyParts()
   {
     return this.fabbyParts;
   }
   
-  public FaceCropItem getFaceCropItem()
-  {
-    return this.faceCropItem;
-  }
-  
-  public int getFaceDetectType()
-  {
-    return this.faceDetectType;
-  }
-  
-  public String getFaceExchangeImage()
-  {
-    return this.faceExchangeImage;
-  }
-  
-  public FaceExpression getFaceExpression()
-  {
-    return this.faceExpression;
-  }
-  
   public List<FaceFeatureItem> getFaceFeatureItemList()
   {
-    return this.faceFeatureItemList;
-  }
-  
-  public FaceImageLayer getFaceImageLayer()
-  {
-    return this.faceImageLayer;
-  }
-  
-  public FaceMaskItem getFaceMaskItemById(String paramString)
-  {
-    if ((paramString != null) && (this.faceMaskItemList != null) && (this.faceMaskItemList.size() > 0))
-    {
-      Iterator localIterator = this.faceMaskItemList.iterator();
-      while (localIterator.hasNext())
-      {
-        FaceMaskItem localFaceMaskItem = (FaceMaskItem)localIterator.next();
-        if (paramString.equals(localFaceMaskItem.faceMaskID)) {
-          return localFaceMaskItem;
-        }
-      }
-    }
     return null;
-  }
-  
-  public List<FaceMeshItem> getFaceMeshItemList()
-  {
-    return this.faceMeshItemList;
-  }
-  
-  public List<FaceMoveItem> getFaceMoveItemList()
-  {
-    return this.faceMoveItemList;
-  }
-  
-  public int[] getFaceMoveTriangles()
-  {
-    return this.faceMoveTriangles;
   }
   
   public List<FaceItem> getFaceOffItemList()
@@ -425,185 +638,42 @@ public class VideoMaterial
     return this.faceOffItemList;
   }
   
-  public List<Float> getFacePoints()
-  {
-    return this.facePoints;
-  }
-  
-  public List<FaceStyleItem> getFaceStyleItemList()
-  {
-    return this.faceStyleItemList;
-  }
-  
-  public int getFaceSwapType()
-  {
-    return this.faceSwapType;
-  }
-  
-  public int getFaceValueDetectType()
-  {
-    return this.faceValueDetectType;
-  }
-  
-  public int getFaceoffType()
-  {
-    return this.faceoffType;
-  }
-  
-  public int getFeatureType()
-  {
-    return this.featureType;
-  }
-  
-  public List<String> getFilamentParticleList()
-  {
-    return this.filamentParticleList;
-  }
-  
-  public double getFilterBlurStrength()
-  {
-    return this.filterBlurStrength;
-  }
-  
-  public String getFilterId()
-  {
-    return this.filterId;
-  }
-  
-  public List<String> getFilterList()
-  {
-    return this.mFilterList;
-  }
-  
-  public float getFov()
-  {
-    return this.fov;
-  }
-  
-  public GameParams getGameParams()
-  {
-    return this.gameParams;
-  }
-  
   public List<GLBItemJava> getGlbList()
   {
-    return this.glbList;
-  }
-  
-  public int getGrayScale()
-  {
-    return this.grayScale;
-  }
-  
-  public String getGridModel()
-  {
-    return this.gridModel;
-  }
-  
-  public List<GridViewerItem> getGridViewerItemList()
-  {
-    return this.gridViewerItemList;
-  }
-  
-  public int getHandBoostEnable()
-  {
-    return this.handBoostEnable;
+    return null;
   }
   
   public List<StickerItem> getHeadCropItemList()
   {
-    return this.headCropItemList;
+    return null;
   }
   
   public String getId()
   {
+    String str = this.id;
+    if ((str == null) || (str.length() == 0))
+    {
+      str = this.dataPath;
+      if ((str != null) && (str.length() > 0)) {
+        this.id = getMaterialId(this.dataPath);
+      }
+    }
     return this.id;
   }
   
-  public String getImageFacePointsFileName()
+  public boolean getIsAR3DMaterial()
   {
-    return this.imageFacePointsFileName;
-  }
-  
-  public ImageMaskItem getImageMaskItemById(String paramString)
-  {
-    if ((this.imageMaskItemList != null) && (this.imageMaskItemList.size() > 0))
-    {
-      Iterator localIterator = this.imageMaskItemList.iterator();
-      while (localIterator.hasNext())
-      {
-        ImageMaskItem localImageMaskItem = (ImageMaskItem)localIterator.next();
-        if (paramString.equals(localImageMaskItem.getMaskId())) {
-          return localImageMaskItem;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public List<ImageMaskItem> getImageMaskItemList()
-  {
-    return this.imageMaskItemList;
+    return this.isAR3DMaterial;
   }
   
   public List<StickerItem> getItemList()
   {
-    return this.itemList;
+    return null;
   }
   
-  public List<StickerItem3D> getItemList3D()
+  public LightAsset getLightAsset()
   {
-    return this.itemList3D;
-  }
-  
-  public String getLipsLutPath()
-  {
-    return this.lipsLutPath;
-  }
-  
-  public String getLipsLutStyleMaskPath()
-  {
-    return this.lipsLutStyleMaskPath;
-  }
-  
-  public int getLipsSegType()
-  {
-    return this.lipsSegType;
-  }
-  
-  public String getMaskPaintImage()
-  {
-    return this.maskPaintImage;
-  }
-  
-  public int getMaskPaintRenderId()
-  {
-    return this.maskPaintRenderId;
-  }
-  
-  public int getMaskPaintSize()
-  {
-    return this.maskPaintSize;
-  }
-  
-  public int getMaskPaintType()
-  {
-    return this.maskPaintType;
-  }
-  
-  public int getMaskType()
-  {
-    return this.maskType;
-  }
-  
-  public int getMaxFaceCount()
-  {
-    return this.maxFaceCount;
-  }
-  
-  public int getMinAppVersion()
-  {
-    return this.minAppVersion;
+    return this.lightAsset;
   }
   
   public List<MultiViewerItem> getMultiViewerItemList()
@@ -611,325 +681,98 @@ public class VideoMaterial
     return this.multiViewerItemList;
   }
   
-  public List<StickerItem> getNonFitItemList()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.nonFitItems != null)
-    {
-      localObject1 = localObject2;
-      if (this.nonFitItems.length > 0)
-      {
-        localObject1 = new ArrayList();
-        int i = 0;
-        while (i < this.nonFitItems.length)
-        {
-          ((List)localObject1).add(this.nonFitItems[i]);
-          i += 1;
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public NonFitItem[] getNonFitItems()
-  {
-    return this.nonFitItems;
-  }
-  
-  public int getOrderMode()
-  {
-    return this.orderMode;
-  }
-  
-  public List<PhantomItem> getPhantomItemList()
-  {
-    return this.phantomItemList;
-  }
-  
-  public String getPreferCameraId()
-  {
-    return this.preferCameraId;
-  }
-  
-  public int getRandomGroupCount()
-  {
-    return this.randomGroupCount;
-  }
-  
-  public List<String> getRenderOrderList()
-  {
-    return this.renderOrderList;
-  }
-  
-  public List<String> getResourceList()
-  {
-    return this.resourceList;
-  }
-  
-  public int getSegmentBorderType()
-  {
-    return this.segmentBorderType;
-  }
-  
-  public int getSegmentFeather()
-  {
-    return this.segmentFeather;
-  }
-  
-  public float[] getSegmentStrokeColor()
-  {
-    return this.segmentStrokeColor;
-  }
-  
-  public double getSegmentStrokeGap()
-  {
-    return this.segmentStrokeGap;
-  }
-  
-  public StickerItem getSegmentStrokeItem()
-  {
-    if ((this.itemList != null) && (!this.itemList.isEmpty()))
-    {
-      Iterator localIterator = this.itemList.iterator();
-      while (localIterator.hasNext())
-      {
-        StickerItem localStickerItem = (StickerItem)localIterator.next();
-        if (VideoMaterialUtil.isSegStrokeItem(localStickerItem)) {
-          return localStickerItem;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public List<VideoMaterial.SegmentStroke> getSegmentStrokeList()
-  {
-    return this.segmentStrokeList;
-  }
-  
-  public List<StickerItem> getSegmentStrokeTriggerItems()
-  {
-    Iterator localIterator = null;
-    Object localObject1 = null;
-    Object localObject2 = localIterator;
-    if (this.itemList != null)
-    {
-      localObject2 = localIterator;
-      if (!this.itemList.isEmpty())
-      {
-        localIterator = this.itemList.iterator();
-        for (;;)
-        {
-          localObject2 = localObject1;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          StickerItem localStickerItem = (StickerItem)localIterator.next();
-          if (VideoMaterialUtil.isSegStrokeTriggerItem(localStickerItem))
-          {
-            localObject2 = localObject1;
-            if (localObject1 == null) {
-              localObject2 = new ArrayList();
-            }
-            ((ArrayList)localObject2).add(localStickerItem);
-            localObject1 = localObject2;
-          }
-        }
-      }
-    }
-    return localObject2;
-  }
-  
-  public double getSegmentStrokeWidth()
-  {
-    return this.segmentStrokeWidth;
-  }
-  
   public int getShaderType()
   {
     return this.shaderType;
   }
   
-  public String getShowTips()
-  {
-    return this.showTips;
-  }
-  
-  public float getSplitScreen()
-  {
-    return this.splitScreen;
-  }
-  
-  public StarParam getStarParam()
-  {
-    return this.starParam;
-  }
-  
-  public int getStateVersion()
-  {
-    return this.stateVersion;
-  }
-  
-  public int getStickerOrderMode()
-  {
-    return this.stickerOrderMode;
-  }
-  
   public LazyLoadAnimationDrawable getTipsDrawable()
   {
-    if (this.tipsDrawableInfo == null) {
+    LazyLoadAnimationDrawable.Info localInfo = this.tipsDrawableInfo;
+    if (localInfo == null) {
       return null;
     }
-    return new LazyLoadAnimationDrawable(this.tipsDrawableInfo);
+    return new LazyLoadAnimationDrawable(localInfo);
   }
   
   public String getTipsIcon()
   {
-    return this.tipsIcon;
+    return null;
   }
   
   public String getTipsText()
   {
-    return this.tipsText;
+    return null;
   }
   
-  public int getTouchFlag()
+  public UKYOGameSetting getUkyoGameSetting()
   {
-    return this.touchFlag;
+    return null;
   }
   
-  public float getTransformAdjustAlpha()
+  public boolean hasInnerBeauty()
   {
-    return this.transformAdjustAlpha;
-  }
-  
-  public List<TriggerActionItem> getTriggerActionItemList()
-  {
-    return this.actionItemList;
-  }
-  
-  public List<MaterialStateEdgeItem> getTriggerStateEdgeItemList()
-  {
-    return this.edgeItemList;
-  }
-  
-  public int getTriggerType()
-  {
-    return this.triggerType;
-  }
-  
-  public VideoFilterEffect getVideoFilterEffect()
-  {
-    return this.videoFilterEffect;
-  }
-  
-  public int getVoicekind()
-  {
-    return this.voicekind;
-  }
-  
-  public String getWeiboTag()
-  {
-    return this.weiboTag;
-  }
-  
-  public boolean hasAd()
-  {
-    return (!TextUtils.isEmpty(this.adIcon)) || (!TextUtils.isEmpty(this.adLink)) || (!TextUtils.isEmpty(this.adAppLink));
-  }
-  
-  public boolean hasFilterList()
-  {
-    return this.mFilterList.size() > 0;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("materialLUT.enable"));
   }
   
   public boolean hasMultiViewer()
   {
-    return (this.multiViewerItemList != null) && (this.multiViewerItemList.size() > 0);
+    List localList = this.multiViewerItemList;
+    return (localList != null) && (localList.size() > 0);
   }
   
-  public boolean isDBTriggered()
+  public boolean isAR3DMaterial()
   {
-    if (this.itemList == null) {
-      return false;
-    }
-    if (hasCustomVideoFilter()) {
-      return true;
-    }
-    Iterator localIterator = this.itemList.iterator();
-    while (localIterator.hasNext()) {
-      if (((StickerItem)localIterator.next()).isDBTriggered()) {
-        return true;
-      }
-    }
+    return getIsAR3DMaterial();
+  }
+  
+  public boolean isAudio2textMaterial()
+  {
     return false;
   }
   
-  public boolean isDetectGender()
+  public boolean isCosFunMaterial()
   {
-    return this.isNeedDetectGender;
+    return getCosFun() != null;
   }
   
-  public boolean isFaceCharmRange()
+  public boolean isCyberpunkMaterial()
   {
-    return this.isFaceCharmRangeMaterial;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needCyberpunkStyleAbility());
   }
   
-  public boolean isFaceExchangeImageDisableOpacity()
+  public boolean isEditableWatermark()
   {
-    return this.faceExchangeImageDisableOpacity;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.isEditableWatermarkMaterial());
   }
   
-  public boolean isFaceExchangeImageFullFace()
+  public boolean isFace3DMaterial()
   {
-    return this.faceExchangeImageFullFace;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.face3d"));
   }
   
-  public boolean isFlattenEar()
+  public boolean isFaceMarkingMaterial()
   {
-    return this.flattenEar;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("todo"));
   }
   
-  public boolean isFlattenNose()
+  public boolean isFreezeFrameRequired()
   {
-    return this.flattenNose;
+    return this.isFreezeFrameRequired;
   }
   
-  public boolean isHandCharmRange()
+  public boolean isGestureDetectMaterial()
   {
-    return this.isHandCharmRangeMaterial;
-  }
-  
-  public boolean isHasAudio()
-  {
-    Iterator localIterator = this.multiViewerItemList.iterator();
-    if (localIterator.hasNext())
-    {
-      MultiViewerItem localMultiViewerItem = (MultiViewerItem)localIterator.next();
-      if ((this.hasAudio) || (localMultiViewerItem.videoMaterial.hasAudio)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.hasAudio = bool;
-        break;
-      }
+    LightAsset localLightAsset = this.lightAsset;
+    if (localLightAsset != null) {
+      return localLightAsset.needRenderAbility("ai.hand");
     }
-    return this.hasAudio;
-  }
-  
-  public boolean isHasCosFun()
-  {
-    return this.cosFun != null;
-  }
-  
-  public boolean isHideUserHeadModel()
-  {
-    return this.hideUserHeadModel;
-  }
-  
-  public boolean isLoadImageFromCache()
-  {
-    return this.loadImageFromCache;
+    return false;
   }
   
   public boolean isNeedFreezeFrame()
@@ -937,159 +780,157 @@ public class VideoMaterial
     return this.isFreezeFrameRequired;
   }
   
-  public boolean isResetWhenStartRecord()
+  public boolean isParticleMaterial()
   {
-    return this.resetWhenStartRecord;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.particle"));
   }
   
-  public boolean isSegmentRequired()
+  public boolean isSticker3DMaterial()
   {
-    return this.segmentRequired;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.sticker3d"));
   }
   
-  public boolean isShookHeadPendant()
+  public boolean isTNNMaterial()
   {
-    return this.isShookHeadPendant;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.gan"));
   }
   
-  public boolean isSpecificFilter()
+  public boolean isUse3DMMTransform()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.videoFilterEffect != null)
-    {
-      bool1 = bool2;
-      if (this.videoFilterEffect.order == 100) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean isSupportLandscape()
-  {
-    return this.supportLandscape;
-  }
-  
-  public boolean isSupportPause()
-  {
-    return this.supportPause;
-  }
-  
-  public boolean isSupportTouchEvent()
-  {
-    return getArParticleType() == VideoMaterialUtil.AR_MATERIAL_TYPE.CLICKABLE.value;
+    return isFace3DMaterial();
   }
   
   public boolean isUseMesh()
   {
-    return this.useMesh;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.mesh"));
   }
   
-  public boolean needBodyInfo()
+  public boolean isWatermarkMaterial()
   {
-    return this.needBodyInfo;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.isWatermarkMaterial());
+  }
+  
+  public boolean need3DMM()
+  {
+    return (isSticker3DMaterial()) || (isFace3DMaterial()) || (needPout()) || (needReal3DMM());
+  }
+  
+  public boolean needAce3D()
+  {
+    return isSticker3DMaterial();
+  }
+  
+  public boolean needAvatar2D()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.isAvatar2D"));
+  }
+  
+  public boolean needBody3D()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.body3d"));
+  }
+  
+  public boolean needBodyDetect()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.body"));
+  }
+  
+  public boolean needBodySegment()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.segment"));
+  }
+  
+  public boolean needDetectCat()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.catFace"));
+  }
+  
+  public boolean needDetectGender()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.gender"));
+  }
+  
+  public boolean needEmotion()
+  {
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.emotion"));
   }
   
   public boolean needFaceInfo()
   {
-    return this.needFaceInfo;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.face"));
   }
   
-  public void setAdAppLink(String paramString)
+  public boolean needGazeDetect()
   {
-    this.adAppLink = paramString;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.viewPoint"));
   }
   
-  public void setAdIcon(String paramString)
+  public boolean needHairSegment()
   {
-    this.adIcon = paramString;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.segmentHair"));
   }
   
-  public void setAdLink(String paramString)
+  public boolean needHandDetect()
   {
-    this.adLink = paramString;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.hand"));
   }
   
-  public void setAllRenderID(int paramInt)
+  public boolean needHeadSegment()
   {
-    if (this.itemList != null)
-    {
-      Iterator localIterator = this.itemList.iterator();
-      while (localIterator.hasNext()) {
-        ((StickerItem)localIterator.next()).renderId = paramInt;
-      }
-    }
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.headInset"));
   }
   
-  public void setAlpha(float paramFloat)
+  public boolean needPag()
   {
-    this.alpha = paramFloat;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.pag"));
   }
   
-  public void setArParticleList(List<String> paramList)
+  public boolean needPout()
   {
-    this.arParticleList = paramList;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.pout"));
   }
   
-  public void setArParticleType(int paramInt)
+  public boolean needRGBDepth()
   {
-    this.arParticleType = paramInt;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.rgbDepth"));
   }
   
-  public void setAudio2Text(Audio2Text paramAudio2Text)
+  public boolean needResetWhenRecord()
   {
-    this.audio2Text = paramAudio2Text;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.nativeResetWhenStartRecord());
   }
   
-  public void setAudio3DParams(GameParams paramGameParams)
+  public boolean needSkySegment()
   {
-    this.audio3DParams = paramGameParams;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("ai.segmentSky"));
   }
   
-  public void setBlendAlpha(double paramDouble)
+  public boolean needVoiceChange()
   {
-    this.blendAlpha = paramDouble;
-  }
-  
-  public void setBlendMode(int paramInt)
-  {
-    this.blendMode = paramInt;
-  }
-  
-  public void setBlurEffectItem(BlurEffectItem paramBlurEffectItem)
-  {
-    this.blurEffectItem = paramBlurEffectItem;
-  }
-  
-  public void setCategoryFlag(int paramInt)
-  {
-    this.categoryFlag = paramInt;
-  }
-  
-  public void setChildrenPendants(List<VideoMaterial.ChildPendant> paramList)
-  {
-    this.childrenPendants = paramList;
-  }
-  
-  public void setCosFun(CosFun paramCosFun)
-  {
-    this.cosFun = paramCosFun;
-  }
-  
-  public void setCosmeticChangeMode(int paramInt)
-  {
-    this.cosmeticChangeMode = paramInt;
-  }
-  
-  public void setCosmeticChangeSwitch(int paramInt)
-  {
-    this.cosmeticChangeSwitch = paramInt;
-  }
-  
-  public void setCosmeticShelterSwitchClose(int paramInt)
-  {
-    this.cosmeticShelterSwitchClose = paramInt;
+    LightAsset localLightAsset = this.lightAsset;
+    return (localLightAsset != null) && (localLightAsset.needRenderAbility("material.voiceChange"));
   }
   
   public void setDataPath(String paramString)
@@ -1097,219 +938,9 @@ public class VideoMaterial
     this.dataPath = paramString;
   }
   
-  public void setDependencies(List<String> paramList)
-  {
-    this.dependencies = paramList;
-  }
-  
-  public void setDetectGender(boolean paramBoolean)
-  {
-    this.isNeedDetectGender = paramBoolean;
-  }
-  
-  public void setDetectorFlag(int paramInt)
-  {
-    this.detectorFlag = paramInt;
-  }
-  
-  public void setDistortionItemList(List<DistortionItem> paramList)
-  {
-    this.distortionItemList = paramList;
-  }
-  
   public void setDoodleItem(DoodleItem paramDoodleItem)
   {
     this.doodleItem = paramDoodleItem;
-  }
-  
-  public void setEnvironment(int paramInt)
-  {
-    this.environment = paramInt;
-  }
-  
-  public void setFabbyParts(FabbyParts paramFabbyParts)
-  {
-    this.fabbyParts = paramFabbyParts;
-  }
-  
-  public void setFaceCharmRangeMaterial(boolean paramBoolean)
-  {
-    this.isFaceCharmRangeMaterial = paramBoolean;
-  }
-  
-  public void setFaceCropItem(FaceCropItem paramFaceCropItem)
-  {
-    this.faceCropItem = paramFaceCropItem;
-  }
-  
-  public void setFaceDetectType(int paramInt)
-  {
-    this.faceDetectType = paramInt;
-  }
-  
-  public void setFaceExchangeImage(String paramString)
-  {
-    this.faceExchangeImage = paramString;
-  }
-  
-  public void setFaceExchangeImageDisableOpacity(boolean paramBoolean)
-  {
-    this.faceExchangeImageDisableOpacity = paramBoolean;
-  }
-  
-  public void setFaceExchangeImageFullFace(boolean paramBoolean)
-  {
-    this.faceExchangeImageFullFace = paramBoolean;
-  }
-  
-  public void setFaceExpression(FaceExpression paramFaceExpression)
-  {
-    this.faceExpression = paramFaceExpression;
-  }
-  
-  public void setFaceFeatureItemList(List<FaceFeatureItem> paramList)
-  {
-    this.faceFeatureItemList = paramList;
-  }
-  
-  public void setFaceImageLayer(FaceImageLayer paramFaceImageLayer)
-  {
-    this.faceImageLayer = paramFaceImageLayer;
-  }
-  
-  public void setFaceMaskItemList(List<FaceMaskItem> paramList)
-  {
-    this.faceMaskItemList = paramList;
-  }
-  
-  public void setFaceMeshItemList(List<FaceMeshItem> paramList)
-  {
-    this.faceMeshItemList = paramList;
-  }
-  
-  public void setFaceMoveItemList(List<FaceMoveItem> paramList)
-  {
-    this.faceMoveItemList = paramList;
-  }
-  
-  public void setFaceMoveTriangles(int[] paramArrayOfInt)
-  {
-    this.faceMoveTriangles = paramArrayOfInt;
-  }
-  
-  public void setFaceOffItemList(List<FaceItem> paramList)
-  {
-    this.faceOffItemList = paramList;
-  }
-  
-  public void setFacePoints(List<Float> paramList)
-  {
-    this.facePoints = paramList;
-  }
-  
-  public void setFaceStyleItemList(List<FaceStyleItem> paramList)
-  {
-    this.faceStyleItemList = paramList;
-  }
-  
-  public void setFaceSwapType(int paramInt)
-  {
-    this.faceSwapType = paramInt;
-  }
-  
-  public void setFaceValueDetectType(int paramInt)
-  {
-    this.faceValueDetectType = paramInt;
-  }
-  
-  public void setFaceoffType(int paramInt)
-  {
-    this.faceoffType = paramInt;
-  }
-  
-  public void setFeatureType(int paramInt)
-  {
-    this.featureType = paramInt;
-  }
-  
-  public void setFilamentParticleList(List<String> paramList)
-  {
-    this.filamentParticleList = paramList;
-  }
-  
-  public void setFilterBlurStrength(double paramDouble)
-  {
-    this.filterBlurStrength = paramDouble;
-  }
-  
-  public void setFilterId(String paramString)
-  {
-    this.filterId = paramString;
-  }
-  
-  public void setFlattenEar(boolean paramBoolean)
-  {
-    this.flattenEar = paramBoolean;
-  }
-  
-  public void setFlattenNose(boolean paramBoolean)
-  {
-    this.flattenNose = paramBoolean;
-  }
-  
-  public void setFov(float paramFloat)
-  {
-    this.fov = paramFloat;
-  }
-  
-  public void setGameParams(GameParams paramGameParams)
-  {
-    this.gameParams = paramGameParams;
-  }
-  
-  public void setGlbList(List<GLBItemJava> paramList)
-  {
-    this.glbList = paramList;
-  }
-  
-  public void setGrayScale(int paramInt)
-  {
-    this.grayScale = paramInt;
-  }
-  
-  public void setGridModel(String paramString)
-  {
-    this.gridModel = paramString;
-  }
-  
-  public void setGridViewerItemList(List<GridViewerItem> paramList)
-  {
-    this.gridViewerItemList = paramList;
-  }
-  
-  public void setHandBoostEnable(int paramInt)
-  {
-    this.handBoostEnable = paramInt;
-  }
-  
-  public void setHandCharmRangeMaterial(boolean paramBoolean)
-  {
-    this.isHandCharmRangeMaterial = paramBoolean;
-  }
-  
-  public void setHasAudio(boolean paramBoolean)
-  {
-    this.hasAudio = paramBoolean;
-  }
-  
-  public void setHeadCropItemList(List<StickerItem> paramList)
-  {
-    this.headCropItemList = paramList;
-  }
-  
-  public void setHideUserHeadModel(boolean paramBoolean)
-  {
-    this.hideUserHeadModel = paramBoolean;
   }
   
   public void setId(String paramString)
@@ -1317,288 +948,41 @@ public class VideoMaterial
     this.id = paramString;
   }
   
-  public void setImageFacePointsFileName(String paramString)
-  {
-    this.imageFacePointsFileName = paramString;
-  }
-  
-  public void setImageMaskItemList(List<ImageMaskItem> paramList)
-  {
-    this.imageMaskItemList = paramList;
-  }
-  
-  public void setItemList(List<StickerItem> paramList)
-  {
-    this.itemList = paramList;
-  }
-  
-  public void setItemList3D(List<StickerItem3D> paramList)
-  {
-    this.itemList3D = paramList;
-  }
-  
-  public void setLipsLutPath(String paramString)
-  {
-    this.lipsLutPath = paramString;
-  }
-  
-  public void setLipsLutStyleMaskPath(String paramString)
-  {
-    this.lipsLutStyleMaskPath = paramString;
-  }
-  
-  public void setLipsSegType(int paramInt)
-  {
-    this.lipsSegType = paramInt;
-  }
-  
-  public void setLoadImageFromCache(boolean paramBoolean)
-  {
-    this.loadImageFromCache = paramBoolean;
-  }
-  
-  public void setMaskPaintImage(String paramString)
-  {
-    this.maskPaintImage = paramString;
-  }
-  
-  public void setMaskPaintRenderId(int paramInt)
-  {
-    this.maskPaintRenderId = paramInt;
-  }
-  
-  public void setMaskPaintSize(int paramInt)
-  {
-    this.maskPaintSize = paramInt;
-  }
-  
-  public void setMaskPaintType(int paramInt)
-  {
-    this.maskPaintType = paramInt;
-  }
-  
-  public void setMaskType(int paramInt)
-  {
-    this.maskType = paramInt;
-  }
-  
-  public void setMaxFaceCount(int paramInt)
-  {
-    this.maxFaceCount = Math.max(1, paramInt);
-  }
-  
-  public void setMinAppVersion(int paramInt)
-  {
-    this.minAppVersion = paramInt;
-  }
-  
-  public void setMultiViewerItemList(List<MultiViewerItem> paramList)
-  {
-    this.multiViewerItemList = paramList;
-  }
-  
-  public void setNeedBodyInfo(boolean paramBoolean)
-  {
-    this.needBodyInfo = paramBoolean;
-  }
-  
-  public void setNeedFaceInfo(boolean paramBoolean)
-  {
-    this.needFaceInfo = paramBoolean;
-  }
-  
-  public void setNeedFreezeFrame(boolean paramBoolean)
-  {
-    this.isFreezeFrameRequired = paramBoolean;
-  }
-  
-  public void setNonFitItems(NonFitItem[] paramArrayOfNonFitItem)
-  {
-    if ((paramArrayOfNonFitItem != null) && (paramArrayOfNonFitItem.length > 0)) {
-      this.nonFitItems = paramArrayOfNonFitItem;
-    }
-  }
-  
-  public void setOrderMode(int paramInt)
-  {
-    this.orderMode = paramInt;
-  }
-  
-  public void setPhantomItemList(List<PhantomItem> paramList)
-  {
-    this.phantomItemList = paramList;
-  }
-  
-  public void setPreferCameraId(String paramString)
-  {
-    this.preferCameraId = paramString;
-  }
-  
-  public void setRandomGroupCount(int paramInt)
-  {
-    this.randomGroupCount = paramInt;
-  }
-  
-  public void setRenderOrderList(List<String> paramList)
-  {
-    this.renderOrderList = paramList;
-  }
-  
-  public void setResetWhenStartRecord(boolean paramBoolean)
-  {
-    this.resetWhenStartRecord = paramBoolean;
-  }
-  
-  public void setResourceList(List<String> paramList)
-  {
-    this.resourceList = paramList;
-  }
-  
-  public void setSegmentBorderType(int paramInt)
-  {
-    this.segmentBorderType = paramInt;
-  }
-  
-  public void setSegmentFeather(int paramInt)
-  {
-    this.segmentFeather = paramInt;
-  }
-  
-  public void setSegmentRequired(boolean paramBoolean)
-  {
-    this.segmentRequired = paramBoolean;
-  }
-  
-  public void setSegmentStrokeColor(float[] paramArrayOfFloat)
-  {
-    this.segmentStrokeColor = paramArrayOfFloat;
-  }
-  
-  public void setSegmentStrokeGap(double paramDouble)
-  {
-    this.segmentStrokeGap = paramDouble;
-  }
-  
-  public void setSegmentStrokeList(List<VideoMaterial.SegmentStroke> paramList)
-  {
-    this.segmentStrokeList = paramList;
-  }
-  
-  public void setSegmentStrokeWidth(double paramDouble)
-  {
-    this.segmentStrokeWidth = paramDouble;
-  }
-  
   public void setShaderType(int paramInt)
   {
     this.shaderType = paramInt;
   }
   
-  public void setShookHeadPendant(boolean paramBoolean)
-  {
-    this.isShookHeadPendant = paramBoolean;
-  }
-  
-  public void setShowTips(String paramString)
-  {
-    this.showTips = paramString;
-  }
-  
-  public void setSplitScreen(float paramFloat)
-  {
-    this.splitScreen = paramFloat;
-  }
-  
-  public void setStarParam(StarParam paramStarParam)
-  {
-    this.starParam = paramStarParam;
-  }
-  
-  public void setStateVersion(int paramInt)
-  {
-    this.stateVersion = paramInt;
-  }
-  
-  public void setStickerOrderMode(int paramInt)
-  {
-    this.stickerOrderMode = paramInt;
-  }
-  
-  public void setSupportLandscape(boolean paramBoolean)
-  {
-    this.supportLandscape = paramBoolean;
-  }
-  
-  public void setSupportPause(boolean paramBoolean)
-  {
-    this.supportPause = paramBoolean;
-  }
-  
-  public void setTipsIcon(String paramString)
-  {
-    this.tipsIcon = paramString;
-  }
-  
-  public void setTipsText(String paramString)
-  {
-    this.tipsText = paramString;
-  }
-  
-  public void setTouchFlag(int paramInt)
-  {
-    this.touchFlag = paramInt;
-  }
-  
-  public void setTransformAdjustAlpha(float paramFloat)
-  {
-    this.transformAdjustAlpha = paramFloat;
-  }
-  
-  public void setTriggerActionItemList(List<TriggerActionItem> paramList)
-  {
-    this.actionItemList = paramList;
-  }
-  
-  public void setTriggerStateEdgeItemList(List<MaterialStateEdgeItem> paramList)
-  {
-    this.edgeItemList = paramList;
-  }
-  
-  public void setTriggerType(int paramInt)
-  {
-    if ((paramInt > this.triggerType) && (paramInt < 100)) {
-      this.triggerType = paramInt;
-    }
-  }
-  
-  public void setUseMesh(boolean paramBoolean)
-  {
-    this.useMesh = paramBoolean;
-  }
-  
-  public void setVideoFilterEffect(VideoFilterEffect paramVideoFilterEffect)
-  {
-    this.videoFilterEffect = paramVideoFilterEffect;
-  }
-  
-  public void setVoicekind(int paramInt)
-  {
-    this.voicekind = paramInt;
-  }
-  
-  public void setWeiboTag(String paramString)
-  {
-    this.weiboTag = paramString;
-  }
-  
   public String toString()
   {
-    return "VideoMaterial{dataPath='" + this.dataPath + '\'' + ", hasAudio=" + this.hasAudio + ", minAppVersion=" + this.minAppVersion + ", shaderType=" + this.shaderType + ", faceoffType=" + this.faceoffType + ", maxFaceCount=" + this.maxFaceCount + ", stickerOrderMode=" + this.stickerOrderMode + ", voicekind=" + this.voicekind + ", environment=" + this.environment + ", resourceList=" + this.resourceList + ", renderOrderList=" + this.renderOrderList + ", itemList=" + this.itemList + ", itemList3D=" + this.itemList3D + ", faceOffItemList=" + this.faceOffItemList + ", faceStyleItemList=" + this.faceStyleItemList + ", headCropItemList=" + this.headCropItemList + ", distortionItemList=" + this.distortionItemList + ", faceMeshItemList=" + this.faceMeshItemList + ", faceMoveItemList=" + this.faceMoveItemList + ", multiViewerItemList=" + this.multiViewerItemList + ", facePoints=" + this.facePoints + ", triggerType=" + this.triggerType + ", faceExchangeImage='" + this.faceExchangeImage + '\'' + ", faceExchangeImageFullFace='" + this.faceExchangeImageFullFace + '\'' + ", faceExchangeImageDisableOpacity='" + this.faceExchangeImageDisableOpacity + '\'' + ", imageFacePointsFileName='" + this.imageFacePointsFileName + '\'' + ", blendAlpha=" + this.blendAlpha + ", grayScale=" + this.grayScale + ", orderMode=" + this.orderMode + ", blendMode=" + this.blendMode + ", featureType=" + this.featureType + ", id='" + this.id + '\'' + ", supportLandscape=" + this.supportLandscape + ", randomGroupCount=" + this.randomGroupCount + ", faceMoveTriangles=" + Arrays.toString(this.faceMoveTriangles) + ", filterId='" + this.filterId + '\'' + ", filterBlurStrength='" + this.filterBlurStrength + '\'' + ", videoFilterEffect=" + this.videoFilterEffect + ", faceSwapType=" + this.faceSwapType + ", arParticleType=" + this.arParticleType + ", arParticleList=" + this.arParticleList + ", faceDetectType=" + this.faceDetectType + ", faceExpression=" + this.faceExpression + ", faceImageLayer=" + this.faceImageLayer + ", tipsText='" + this.tipsText + '\'' + ", tipsIcon='" + this.tipsIcon + '\'' + ", faceCropItem=" + this.faceCropItem + ", faceValueDetectType=" + this.faceValueDetectType + ", adIcon='" + this.adIcon + '\'' + ", adLink='" + this.adLink + '\'' + ", adAppLink='" + this.adAppLink + '\'' + ", weiboTag='" + this.weiboTag + '\'' + ", lipsLutPath='" + this.lipsLutPath + '\'' + ", useMesh=" + this.useMesh + ", detectorFlag=" + this.detectorFlag + ", segmentRequired=" + this.segmentRequired + ", segmentStrokeWidth=" + this.segmentStrokeWidth + ", segmentStrokeGap=" + this.segmentStrokeGap + ", segmentStrokeColor=" + Arrays.toString(this.segmentStrokeColor) + ", segmentFeather=" + this.segmentFeather + ", fabbyParts=" + this.fabbyParts + ", categoryFlag=" + this.categoryFlag + ", needFaceInfo=" + this.needFaceInfo + ", fov=" + this.fov + ", gameParams=" + this.gameParams + ", auido2Text=" + this.audio2Text + ", audio3DParams=" + this.audio3DParams + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoMaterial{dataPath='");
+    localStringBuilder.append(this.dataPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", faceOffItemList=");
+    localStringBuilder.append(this.faceOffItemList);
+    localStringBuilder.append(", distortionItemList=");
+    localStringBuilder.append(this.distortionItemList);
+    localStringBuilder.append(", multiViewerItemList=");
+    localStringBuilder.append(this.multiViewerItemList);
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", useMesh=");
+    localStringBuilder.append(isUseMesh());
+    localStringBuilder.append(", segmentRequired=");
+    localStringBuilder.append(needBodySegment());
+    localStringBuilder.append(", fabbyParts=");
+    localStringBuilder.append(this.fabbyParts);
+    localStringBuilder.append(", needFaceInfo=");
+    localStringBuilder.append(needFaceInfo());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.VideoMaterial
  * JD-Core Version:    0.7.0.1
  */

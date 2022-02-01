@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
-import bdys;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vashealth.api.ISportManager;
+import mqq.app.AppRuntime;
 
 class StepAlarmReceiver$1
   implements Runnable
@@ -10,15 +10,15 @@ class StepAlarmReceiver$1
   
   public void run()
   {
-    if (this.this$0.a == null) {
-      return;
+    ISportManager localISportManager = (ISportManager)this.this$0.d.getRuntimeService(ISportManager.class, "multi");
+    if (localISportManager != null) {
+      localISportManager.doOnTimer1();
     }
-    ((bdys)this.this$0.a.getManager(260)).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepAlarmReceiver.1
  * JD-Core Version:    0.7.0.1
  */

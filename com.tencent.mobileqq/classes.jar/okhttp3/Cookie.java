@@ -50,66 +50,54 @@ public final class Cookie
   
   Cookie(Cookie.Builder paramBuilder)
   {
-    if (paramBuilder.name == null) {
-      throw new NullPointerException("builder.name == null");
-    }
-    if (paramBuilder.value == null) {
+    if (paramBuilder.name != null)
+    {
+      if (paramBuilder.value != null)
+      {
+        if (paramBuilder.domain != null)
+        {
+          this.name = paramBuilder.name;
+          this.value = paramBuilder.value;
+          this.expiresAt = paramBuilder.expiresAt;
+          this.domain = paramBuilder.domain;
+          this.path = paramBuilder.path;
+          this.secure = paramBuilder.secure;
+          this.httpOnly = paramBuilder.httpOnly;
+          this.persistent = paramBuilder.persistent;
+          this.hostOnly = paramBuilder.hostOnly;
+          return;
+        }
+        throw new NullPointerException("builder.domain == null");
+      }
       throw new NullPointerException("builder.value == null");
     }
-    if (paramBuilder.domain == null) {
-      throw new NullPointerException("builder.domain == null");
-    }
-    this.name = paramBuilder.name;
-    this.value = paramBuilder.value;
-    this.expiresAt = paramBuilder.expiresAt;
-    this.domain = paramBuilder.domain;
-    this.path = paramBuilder.path;
-    this.secure = paramBuilder.secure;
-    this.httpOnly = paramBuilder.httpOnly;
-    this.persistent = paramBuilder.persistent;
-    this.hostOnly = paramBuilder.hostOnly;
+    throw new NullPointerException("builder.name == null");
   }
   
   private static int dateCharacterOffset(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    for (;;)
+    while (paramInt1 < paramInt2)
     {
-      int i = paramInt2;
-      if (paramInt1 < paramInt2)
-      {
-        i = paramString.charAt(paramInt1);
-        if (((i >= 32) || (i == 9)) && (i < 127) && ((i < 48) || (i > 57)) && ((i < 97) || (i > 122)) && ((i < 65) || (i > 90)) && (i != 58)) {
-          break label108;
-        }
-        i = 1;
-        if (paramBoolean) {
-          break label114;
-        }
-      }
-      label108:
-      label114:
-      for (int j = 1;; j = 0)
-      {
-        if (i != j) {
-          break label120;
-        }
-        i = paramInt1;
-        return i;
+      int i = paramString.charAt(paramInt1);
+      if (((i >= 32) || (i == 9)) && (i < 127) && ((i < 48) || (i > 57)) && ((i < 97) || (i > 122)) && ((i < 65) || (i > 90)) && (i != 58)) {
         i = 0;
-        break;
+      } else {
+        i = 1;
       }
-      label120:
+      if (i == (paramBoolean ^ true)) {
+        return paramInt1;
+      }
       paramInt1 += 1;
     }
+    return paramInt2;
   }
   
   private static boolean domainMatch(String paramString1, String paramString2)
   {
-    if (paramString1.equals(paramString2)) {}
-    while ((paramString1.endsWith(paramString2)) && (paramString1.charAt(paramString1.length() - paramString2.length() - 1) == '.') && (!Util.verifyAsIpAddress(paramString1))) {
+    if (paramString1.equals(paramString2)) {
       return true;
     }
-    return false;
+    return (paramString1.endsWith(paramString2)) && (paramString1.charAt(paramString1.length() - paramString2.length() - 1) == '.') && (!Util.verifyAsIpAddress(paramString1));
   }
   
   @Nullable
@@ -121,145 +109,187 @@ public final class Cookie
     if (k == i) {
       return null;
     }
-    String str4 = Util.trimSubstring(paramString, 0, k);
-    if ((str4.isEmpty()) || (Util.indexOfControlOrNonAscii(str4) != -1)) {
-      return null;
-    }
-    String str5 = Util.trimSubstring(paramString, k + 1, i);
-    if (Util.indexOfControlOrNonAscii(str5) != -1) {
-      return null;
-    }
-    long l1 = 253402300799999L;
-    long l2 = -1L;
-    Object localObject1 = null;
-    Object localObject2 = null;
-    boolean bool4 = false;
-    boolean bool3 = false;
-    boolean bool2 = true;
-    boolean bool1 = false;
-    i += 1;
-    String str6;
-    String str1;
-    if (i < j)
+    String str1 = Util.trimSubstring(paramString, 0, k);
+    if ((!str1.isEmpty()) && (Util.indexOfControlOrNonAscii(str1) == -1))
     {
-      k = Util.delimiterOffset(paramString, i, j, ';');
-      int m = Util.delimiterOffset(paramString, i, k, '=');
-      str6 = Util.trimSubstring(paramString, i, m);
-      if (m < k)
+      String str2 = Util.trimSubstring(paramString, k + 1, i);
+      if (Util.indexOfControlOrNonAscii(str2) != -1) {
+        return null;
+      }
+      i += 1;
+      localObject2 = null;
+      localObject1 = localObject2;
+      l2 = -1L;
+      l1 = 253402300799999L;
+      bool3 = false;
+      boolean bool4 = false;
+      bool2 = true;
+      for (bool1 = false; i < j; bool1 = bool7)
       {
-        str1 = Util.trimSubstring(paramString, m + 1, k);
-        label182:
-        if (!str6.equalsIgnoreCase("expires")) {
-          break label233;
+        k = Util.delimiterOffset(paramString, i, j, ';');
+        int m = Util.delimiterOffset(paramString, i, k, '=');
+        String str3 = Util.trimSubstring(paramString, i, m);
+        if (m < k) {
+          localObject3 = Util.trimSubstring(paramString, m + 1, k);
+        } else {
+          localObject3 = "";
         }
-      }
-    }
-    label554:
-    for (;;)
-    {
-      long l3;
-      try
-      {
-        l3 = parseExpires(str1, 0, str1.length());
-        bool1 = true;
-        l1 = l3;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException1)
-      {
-        continue;
-      }
-      i = k + 1;
-      break;
-      str1 = "";
-      break label182;
-      label233:
-      if (str6.equalsIgnoreCase("max-age"))
-      {
+        if (str3.equalsIgnoreCase("expires")) {}
         try
         {
-          l3 = parseMaxAge(localIllegalArgumentException1);
-          l2 = l3;
-          bool1 = true;
-        }
-        catch (NumberFormatException localNumberFormatException) {}
-      }
-      else if (str6.equalsIgnoreCase("domain"))
-      {
-        try
-        {
-          String str2 = parseDomain(localNumberFormatException);
-          localObject1 = str2;
-          bool2 = false;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException2) {}
-      }
-      else if (str6.equalsIgnoreCase("path"))
-      {
-        localObject2 = localIllegalArgumentException2;
-      }
-      else if (str6.equalsIgnoreCase("secure"))
-      {
-        bool4 = true;
-      }
-      else if (str6.equalsIgnoreCase("httponly"))
-      {
-        bool3 = true;
-        continue;
-        if (l2 == -9223372036854775808L) {
-          paramLong = -9223372036854775808L;
-        }
-        for (;;)
-        {
-          String str3 = paramHttpUrl.host();
-          if (localObject1 == null) {
-            paramString = str3;
-          }
-          for (;;)
+          l3 = parseExpires((String)localObject3, 0, ((String)localObject3).length());
+          l1 = l3;
+          if (str3.equalsIgnoreCase("max-age"))
           {
-            if ((str3.length() != paramString.length()) && (PublicSuffixDatabase.get().getEffectiveTldPlusOne(paramString) == null))
+            l3 = parseMaxAge((String)localObject3);
+            l2 = l3;
+            bool7 = true;
+            localObject3 = localObject2;
+            l3 = l2;
+            l4 = l1;
+            localObject5 = localObject1;
+            bool5 = bool3;
+            bool6 = bool2;
+          }
+          else if (str3.equalsIgnoreCase("domain"))
+          {
+            localObject3 = parseDomain((String)localObject3);
+            bool6 = false;
+            l3 = l2;
+            l4 = l1;
+            localObject5 = localObject1;
+            bool5 = bool3;
+            bool7 = bool1;
+          }
+          else if (str3.equalsIgnoreCase("path"))
+          {
+            localObject5 = localObject3;
+            localObject3 = localObject2;
+            l3 = l2;
+            l4 = l1;
+            bool5 = bool3;
+            bool6 = bool2;
+            bool7 = bool1;
+          }
+          else if (str3.equalsIgnoreCase("secure"))
+          {
+            bool5 = true;
+            localObject3 = localObject2;
+            l3 = l2;
+            l4 = l1;
+            localObject5 = localObject1;
+            bool6 = bool2;
+            bool7 = bool1;
+          }
+          else
+          {
+            localObject3 = localObject2;
+            l3 = l2;
+            l4 = l1;
+            localObject5 = localObject1;
+            bool5 = bool3;
+            bool6 = bool2;
+            bool7 = bool1;
+            if (str3.equalsIgnoreCase("httponly"))
             {
-              return null;
-              if (l2 == -1L) {
-                break label554;
-              }
-              if (l2 <= 9223372036854775L) {}
-              for (l1 = l2 * 1000L;; l1 = 9223372036854775807L)
-              {
-                l1 += paramLong;
-                if (l1 >= paramLong)
-                {
-                  paramLong = l1;
-                  if (l1 <= 253402300799999L) {
-                    break;
-                  }
-                }
-                paramLong = 253402300799999L;
-                break;
-              }
-              paramString = localObject1;
-              if (!domainMatch(str3, localObject1)) {
-                return null;
-              }
+              bool4 = true;
+              bool7 = bool1;
+              bool6 = bool2;
+              bool5 = bool3;
+              localObject5 = localObject1;
+              l4 = l1;
+              l3 = l2;
+              localObject3 = localObject2;
             }
           }
-          if ((localObject2 == null) || (!localObject2.startsWith("/")))
-          {
-            paramHttpUrl = paramHttpUrl.encodedPath();
-            i = paramHttpUrl.lastIndexOf('/');
-            if (i != 0) {
-              paramHttpUrl = paramHttpUrl.substring(0, i);
-            }
-          }
+        }
+        catch (IllegalArgumentException|NumberFormatException localIllegalArgumentException)
+        {
           for (;;)
           {
-            return new Cookie(str4, str5, paramLong, paramString, paramHttpUrl, bool4, bool3, bool2, bool1);
-            paramHttpUrl = "/";
-            continue;
-            paramHttpUrl = localObject2;
+            Object localObject4 = localObject2;
+            long l3 = l2;
+            long l4 = l1;
+            Object localObject5 = localObject1;
+            boolean bool5 = bool3;
+            boolean bool6 = bool2;
+            boolean bool7 = bool1;
           }
+        }
+        i = k + 1;
+        localObject2 = localObject3;
+        l2 = l3;
+        l1 = l4;
+        localObject1 = localObject5;
+        bool3 = bool5;
+        bool2 = bool6;
+      }
+      l3 = -9223372036854775808L;
+      if (l2 == -9223372036854775808L) {
+        paramLong = l3;
+      }
+      for (;;)
+      {
+        break;
+        if (l2 != -1L)
+        {
+          if (l2 <= 9223372036854775L) {
+            l1 = l2 * 1000L;
+          } else {
+            l1 = 9223372036854775807L;
+          }
+          l1 = paramLong + l1;
+          if (l1 >= paramLong)
+          {
+            paramLong = l1;
+            if (l1 <= 253402300799999L) {
+              break;
+            }
+          }
+          else
+          {
+            paramLong = 253402300799999L;
+          }
+        }
+        else
+        {
           paramLong = l1;
         }
       }
+      Object localObject3 = paramHttpUrl.host();
+      if (localObject2 == null)
+      {
+        paramString = (String)localObject3;
+      }
+      else
+      {
+        if (!domainMatch((String)localObject3, (String)localObject2)) {
+          return null;
+        }
+        paramString = (String)localObject2;
+      }
+      if ((((String)localObject3).length() != paramString.length()) && (PublicSuffixDatabase.get().getEffectiveTldPlusOne(paramString) == null)) {
+        return null;
+      }
+      localObject2 = "/";
+      if ((localObject1 != null) && (((String)localObject1).startsWith("/")))
+      {
+        paramHttpUrl = (HttpUrl)localObject1;
+      }
+      else
+      {
+        localObject1 = paramHttpUrl.encodedPath();
+        i = ((String)localObject1).lastIndexOf('/');
+        paramHttpUrl = (HttpUrl)localObject2;
+        if (i != 0) {
+          paramHttpUrl = ((String)localObject1).substring(0, i);
+        }
+      }
+      return new Cookie(str1, str2, paramLong, paramString, paramHttpUrl, bool3, bool4, bool2, bool1);
+    }
+    else
+    {
+      return null;
     }
   }
   
@@ -272,139 +302,128 @@ public final class Cookie
   public static List<Cookie> parseAll(HttpUrl paramHttpUrl, Headers paramHeaders)
   {
     List localList = paramHeaders.values("Set-Cookie");
-    paramHeaders = null;
     int j = localList.size();
+    paramHeaders = null;
     int i = 0;
-    Cookie localCookie;
     while (i < j)
     {
-      localCookie = parse(paramHttpUrl, (String)localList.get(i));
-      if (localCookie == null)
+      Cookie localCookie = parse(paramHttpUrl, (String)localList.get(i));
+      if (localCookie != null)
       {
-        i += 1;
-      }
-      else
-      {
-        if (paramHeaders != null) {
-          break label91;
+        Object localObject = paramHeaders;
+        if (paramHeaders == null) {
+          localObject = new ArrayList();
         }
-        paramHeaders = new ArrayList();
+        ((List)localObject).add(localCookie);
+        paramHeaders = (Headers)localObject;
       }
+      i += 1;
     }
-    label91:
-    for (;;)
-    {
-      paramHeaders.add(localCookie);
-      break;
-      if (paramHeaders != null) {
-        return Collections.unmodifiableList(paramHeaders);
-      }
-      return Collections.emptyList();
+    if (paramHeaders != null) {
+      return Collections.unmodifiableList(paramHeaders);
     }
+    return Collections.emptyList();
   }
   
   private static String parseDomain(String paramString)
   {
-    if (paramString.endsWith(".")) {
+    if (!paramString.endsWith("."))
+    {
+      String str = paramString;
+      if (paramString.startsWith(".")) {
+        str = paramString.substring(1);
+      }
+      paramString = Util.canonicalizeHost(str);
+      if (paramString != null) {
+        return paramString;
+      }
       throw new IllegalArgumentException();
     }
-    String str = paramString;
-    if (paramString.startsWith(".")) {
-      str = paramString.substring(1);
-    }
-    paramString = Util.canonicalizeHost(str);
-    if (paramString == null) {
-      throw new IllegalArgumentException();
-    }
-    return paramString;
+    throw new IllegalArgumentException();
   }
   
   private static long parseExpires(String paramString, int paramInt1, int paramInt2)
   {
     int i1 = dateCharacterOffset(paramString, paramInt1, paramInt2, false);
-    int i = -1;
-    int k = -1;
+    Matcher localMatcher = TIME_PATTERN.matcher(paramString);
+    paramInt1 = -1;
     int n = -1;
     int j = -1;
+    int i = -1;
     int m = -1;
-    paramInt1 = -1;
-    Matcher localMatcher = TIME_PATTERN.matcher(paramString);
-    if (i1 < paramInt2)
+    int k = -1;
+    while (i1 < paramInt2)
     {
       int i7 = dateCharacterOffset(paramString, i1 + 1, paramInt2, true);
       localMatcher.region(i1, i7);
       int i2;
-      int i4;
-      int i6;
       int i5;
+      int i6;
       int i3;
-      if ((i == -1) && (localMatcher.usePattern(TIME_PATTERN).matches()))
+      int i4;
+      if ((n == -1) && (localMatcher.usePattern(TIME_PATTERN).matches()))
       {
         i2 = Integer.parseInt(localMatcher.group(1));
-        i4 = Integer.parseInt(localMatcher.group(2));
+        i5 = Integer.parseInt(localMatcher.group(2));
         i6 = Integer.parseInt(localMatcher.group(3));
-        i5 = j;
-        i3 = m;
         i1 = paramInt1;
+        i3 = j;
+        i4 = i;
       }
-      for (;;)
+      else if ((j == -1) && (localMatcher.usePattern(DAY_OF_MONTH_PATTERN).matches()))
       {
-        i7 = dateCharacterOffset(paramString, i7 + 1, paramInt2, false);
-        paramInt1 = i1;
-        m = i3;
-        j = i5;
-        n = i6;
-        k = i4;
-        i = i2;
-        i1 = i7;
-        break;
-        if ((j == -1) && (localMatcher.usePattern(DAY_OF_MONTH_PATTERN).matches()))
-        {
-          i5 = Integer.parseInt(localMatcher.group(1));
-          i1 = paramInt1;
-          i3 = m;
-          i6 = n;
-          i4 = k;
-          i2 = i;
-        }
-        else if ((m == -1) && (localMatcher.usePattern(MONTH_PATTERN).matches()))
-        {
-          String str = localMatcher.group(1).toLowerCase(Locale.US);
-          i3 = MONTH_PATTERN.pattern().indexOf(str) / 4;
-          i1 = paramInt1;
-          i5 = j;
-          i6 = n;
-          i4 = k;
-          i2 = i;
-        }
-        else
+        i3 = Integer.parseInt(localMatcher.group(1));
+        i1 = paramInt1;
+        i2 = n;
+        i4 = i;
+        i5 = m;
+        i6 = k;
+      }
+      else if ((i == -1) && (localMatcher.usePattern(MONTH_PATTERN).matches()))
+      {
+        String str = localMatcher.group(1).toLowerCase(Locale.US);
+        i4 = MONTH_PATTERN.pattern().indexOf(str) / 4;
+        i1 = paramInt1;
+        i2 = n;
+        i3 = j;
+        i5 = m;
+        i6 = k;
+      }
+      else
+      {
+        i1 = paramInt1;
+        i2 = n;
+        i3 = j;
+        i4 = i;
+        i5 = m;
+        i6 = k;
+        if (paramInt1 == -1)
         {
           i1 = paramInt1;
-          i3 = m;
-          i5 = j;
-          i6 = n;
-          i4 = k;
-          i2 = i;
-          if (paramInt1 == -1)
+          i2 = n;
+          i3 = j;
+          i4 = i;
+          i5 = m;
+          i6 = k;
+          if (localMatcher.usePattern(YEAR_PATTERN).matches())
           {
-            i1 = paramInt1;
-            i3 = m;
-            i5 = j;
-            i6 = n;
-            i4 = k;
-            i2 = i;
-            if (localMatcher.usePattern(YEAR_PATTERN).matches())
-            {
-              i1 = Integer.parseInt(localMatcher.group(1));
-              i3 = m;
-              i5 = j;
-              i6 = n;
-              i4 = k;
-              i2 = i;
-            }
+            i1 = Integer.parseInt(localMatcher.group(1));
+            i6 = k;
+            i5 = m;
+            i4 = i;
+            i3 = j;
+            i2 = n;
           }
         }
       }
+      i7 = dateCharacterOffset(paramString, i7 + 1, paramInt2, false);
+      paramInt1 = i1;
+      n = i2;
+      j = i3;
+      i = i4;
+      m = i5;
+      k = i6;
+      i1 = i7;
     }
     paramInt2 = paramInt1;
     if (paramInt1 >= 70)
@@ -422,66 +441,83 @@ public final class Cookie
         paramInt1 = paramInt2 + 2000;
       }
     }
-    if (paramInt1 < 1601) {
+    if (paramInt1 >= 1601)
+    {
+      if (i != -1)
+      {
+        if ((j >= 1) && (j <= 31))
+        {
+          if ((n >= 0) && (n <= 23))
+          {
+            if ((m >= 0) && (m <= 59))
+            {
+              if ((k >= 0) && (k <= 59))
+              {
+                paramString = new GregorianCalendar(Util.UTC);
+                paramString.setLenient(false);
+                paramString.set(1, paramInt1);
+                paramString.set(2, i - 1);
+                paramString.set(5, j);
+                paramString.set(11, n);
+                paramString.set(12, m);
+                paramString.set(13, k);
+                paramString.set(14, 0);
+                return paramString.getTimeInMillis();
+              }
+              throw new IllegalArgumentException();
+            }
+            throw new IllegalArgumentException();
+          }
+          throw new IllegalArgumentException();
+        }
+        throw new IllegalArgumentException();
+      }
       throw new IllegalArgumentException();
     }
-    if (m == -1) {
-      throw new IllegalArgumentException();
+    paramString = new IllegalArgumentException();
+    for (;;)
+    {
+      throw paramString;
     }
-    if ((j < 1) || (j > 31)) {
-      throw new IllegalArgumentException();
-    }
-    if ((i < 0) || (i > 23)) {
-      throw new IllegalArgumentException();
-    }
-    if ((k < 0) || (k > 59)) {
-      throw new IllegalArgumentException();
-    }
-    if ((n < 0) || (n > 59)) {
-      throw new IllegalArgumentException();
-    }
-    paramString = new GregorianCalendar(Util.UTC);
-    paramString.setLenient(false);
-    paramString.set(1, paramInt1);
-    paramString.set(2, m - 1);
-    paramString.set(5, j);
-    paramString.set(11, i);
-    paramString.set(12, k);
-    paramString.set(13, n);
-    paramString.set(14, 0);
-    return paramString.getTimeInMillis();
   }
   
   private static long parseMaxAge(String paramString)
   {
     try
     {
-      l = Long.parseLong(paramString);
-      if (l > 0L) {
-        break label15;
+      long l = Long.parseLong(paramString);
+      if (l <= 0L) {
+        return -9223372036854775808L;
       }
+      return l;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      long l;
-      label15:
-      while (paramString.matches("-?\\d+")) {
-        if (!paramString.startsWith("-")) {
-          return 9223372036854775807L;
+      if (paramString.matches("-?\\d+"))
+      {
+        if (paramString.startsWith("-")) {
+          return -9223372036854775808L;
         }
+        return 9223372036854775807L;
       }
       throw localNumberFormatException;
     }
-    return -9223372036854775808L;
-    return l;
   }
   
   private static boolean pathMatch(HttpUrl paramHttpUrl, String paramString)
   {
     paramHttpUrl = paramHttpUrl.encodedPath();
-    if (paramHttpUrl.equals(paramString)) {}
-    while ((paramHttpUrl.startsWith(paramString)) && ((paramString.endsWith("/")) || (paramHttpUrl.charAt(paramString.length()) == '/'))) {
+    if (paramHttpUrl.equals(paramString)) {
       return true;
+    }
+    if (paramHttpUrl.startsWith(paramString))
+    {
+      if (paramString.endsWith("/")) {
+        return true;
+      }
+      if (paramHttpUrl.charAt(paramString.length()) == '/') {
+        return true;
+      }
     }
     return false;
   }
@@ -493,13 +529,49 @@ public final class Cookie
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (!(paramObject instanceof Cookie)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof Cookie;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (Cookie)paramObject;
-    } while ((!paramObject.name.equals(this.name)) || (!paramObject.value.equals(this.value)) || (!paramObject.domain.equals(this.domain)) || (!paramObject.path.equals(this.path)) || (paramObject.expiresAt != this.expiresAt) || (paramObject.secure != this.secure) || (paramObject.httpOnly != this.httpOnly) || (paramObject.persistent != this.persistent) || (paramObject.hostOnly != this.hostOnly));
-    return true;
+    }
+    paramObject = (Cookie)paramObject;
+    bool1 = bool2;
+    if (paramObject.name.equals(this.name))
+    {
+      bool1 = bool2;
+      if (paramObject.value.equals(this.value))
+      {
+        bool1 = bool2;
+        if (paramObject.domain.equals(this.domain))
+        {
+          bool1 = bool2;
+          if (paramObject.path.equals(this.path))
+          {
+            bool1 = bool2;
+            if (paramObject.expiresAt == this.expiresAt)
+            {
+              bool1 = bool2;
+              if (paramObject.secure == this.secure)
+              {
+                bool1 = bool2;
+                if (paramObject.httpOnly == this.httpOnly)
+                {
+                  bool1 = bool2;
+                  if (paramObject.persistent == this.persistent)
+                  {
+                    bool1 = bool2;
+                    if (paramObject.hostOnly == this.hostOnly) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public long expiresAt()
@@ -509,46 +581,12 @@ public final class Cookie
   
   public int hashCode()
   {
-    int m = 0;
-    int n = this.name.hashCode();
-    int i1 = this.value.hashCode();
-    int i2 = this.domain.hashCode();
-    int i3 = this.path.hashCode();
-    int i4 = (int)(this.expiresAt ^ this.expiresAt >>> 32);
-    int i;
-    int j;
-    label72:
-    int k;
-    if (this.secure)
-    {
-      i = 0;
-      if (!this.httpOnly) {
-        break label145;
-      }
-      j = 0;
-      if (!this.persistent) {
-        break label150;
-      }
-      k = 0;
-      label81:
-      if (!this.hostOnly) {
-        break label155;
-      }
-    }
-    for (;;)
-    {
-      return (k + (j + (i + (((((n + 527) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31) * 31) * 31) * 31 + m;
-      i = 1;
-      break;
-      label145:
-      j = 1;
-      break label72;
-      label150:
-      k = 1;
-      break label81;
-      label155:
-      m = 1;
-    }
+    int i = this.name.hashCode();
+    int j = this.value.hashCode();
+    int k = this.domain.hashCode();
+    int m = this.path.hashCode();
+    long l = this.expiresAt;
+    return ((((((((527 + i) * 31 + j) * 31 + k) * 31 + m) * 31 + (int)(l ^ l >>> 32)) * 31 + (this.secure ^ true)) * 31 + (this.httpOnly ^ true)) * 31 + (this.persistent ^ true)) * 31 + (this.hostOnly ^ true);
   }
   
   public boolean hostOnly()
@@ -564,21 +602,18 @@ public final class Cookie
   public boolean matches(HttpUrl paramHttpUrl)
   {
     boolean bool;
-    if (this.hostOnly)
-    {
+    if (this.hostOnly) {
       bool = paramHttpUrl.host().equals(this.domain);
-      if (bool) {
-        break label40;
-      }
-    }
-    label40:
-    while ((!pathMatch(paramHttpUrl, this.path)) || ((this.secure) && (!paramHttpUrl.isHttps())))
-    {
-      return false;
+    } else {
       bool = domainMatch(paramHttpUrl.host(), this.domain);
-      break;
     }
-    return true;
+    if (!bool) {
+      return false;
+    }
+    if (!pathMatch(paramHttpUrl, this.path)) {
+      return false;
+    }
+    return (!this.secure) || (paramHttpUrl.isHttps());
   }
   
   public String name()
@@ -612,34 +647,34 @@ public final class Cookie
     localStringBuilder.append(this.name);
     localStringBuilder.append('=');
     localStringBuilder.append(this.value);
-    if (this.persistent)
-    {
-      if (this.expiresAt != -9223372036854775808L) {
-        break label145;
-      }
-      localStringBuilder.append("; max-age=0");
-    }
-    for (;;)
-    {
-      if (!this.hostOnly)
+    if (this.persistent) {
+      if (this.expiresAt == -9223372036854775808L)
       {
-        localStringBuilder.append("; domain=");
-        if (paramBoolean) {
-          localStringBuilder.append(".");
-        }
-        localStringBuilder.append(this.domain);
+        localStringBuilder.append("; max-age=0");
       }
-      localStringBuilder.append("; path=").append(this.path);
-      if (this.secure) {
-        localStringBuilder.append("; secure");
+      else
+      {
+        localStringBuilder.append("; expires=");
+        localStringBuilder.append(HttpDate.format(new Date(this.expiresAt)));
       }
-      if (this.httpOnly) {
-        localStringBuilder.append("; httponly");
-      }
-      return localStringBuilder.toString();
-      label145:
-      localStringBuilder.append("; expires=").append(HttpDate.format(new Date(this.expiresAt)));
     }
+    if (!this.hostOnly)
+    {
+      localStringBuilder.append("; domain=");
+      if (paramBoolean) {
+        localStringBuilder.append(".");
+      }
+      localStringBuilder.append(this.domain);
+    }
+    localStringBuilder.append("; path=");
+    localStringBuilder.append(this.path);
+    if (this.secure) {
+      localStringBuilder.append("; secure");
+    }
+    if (this.httpOnly) {
+      localStringBuilder.append("; httponly");
+    }
+    return localStringBuilder.toString();
   }
   
   public String value()
@@ -649,7 +684,7 @@ public final class Cookie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Cookie
  * JD-Core Version:    0.7.0.1
  */

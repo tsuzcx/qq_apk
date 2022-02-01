@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/mmm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/mml" android:layout="@layout/cjp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/mwm" android:layout="@layout/cjq" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_alignParentTop="true" />
+    <ViewStub android:id="@id/oib" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

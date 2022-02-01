@@ -16,7 +16,7 @@ public class ColorUtil
   
   public static String int2Hex(int paramInt)
   {
-    return String.format("#%06X", new Object[] { Integer.valueOf(0xFFFFFF & paramInt) });
+    return String.format("#%06X", new Object[] { Integer.valueOf(paramInt & 0xFFFFFF) });
   }
   
   public static int[] int2Rgb(int paramInt)
@@ -42,41 +42,45 @@ public class ColorUtil
   {
     String str = "#";
     int j = 0;
-    if (j < paramArrayOfInt.length)
+    while (j < paramArrayOfInt.length)
     {
       int k = paramArrayOfInt[j];
       int i;
-      if (k < 0) {
+      if (k < 0)
+      {
         i = 0;
       }
-      for (;;)
+      else
       {
-        String[] arrayOfString = new String[16];
-        arrayOfString[0] = "0";
-        arrayOfString[1] = "1";
-        arrayOfString[2] = "2";
-        arrayOfString[3] = "3";
-        arrayOfString[4] = "4";
-        arrayOfString[5] = "5";
-        arrayOfString[6] = "6";
-        arrayOfString[7] = "7";
-        arrayOfString[8] = "8";
-        arrayOfString[9] = "9";
-        arrayOfString[10] = "A";
-        arrayOfString[11] = "B";
-        arrayOfString[12] = "C";
-        arrayOfString[13] = "D";
-        arrayOfString[14] = "E";
-        arrayOfString[15] = "F";
-        k = i / 16;
-        str = str + arrayOfString[k] + arrayOfString[(i % 16)];
-        j += 1;
-        break;
         i = k;
         if (k > 255) {
           i = 255;
         }
       }
+      String[] arrayOfString = new String[16];
+      arrayOfString[0] = "0";
+      arrayOfString[1] = "1";
+      arrayOfString[2] = "2";
+      arrayOfString[3] = "3";
+      arrayOfString[4] = "4";
+      arrayOfString[5] = "5";
+      arrayOfString[6] = "6";
+      arrayOfString[7] = "7";
+      arrayOfString[8] = "8";
+      arrayOfString[9] = "9";
+      arrayOfString[10] = "A";
+      arrayOfString[11] = "B";
+      arrayOfString[12] = "C";
+      arrayOfString[13] = "D";
+      arrayOfString[14] = "E";
+      arrayOfString[15] = "F";
+      k = i / 16;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(arrayOfString[k]);
+      localStringBuilder.append(arrayOfString[(i % 16)]);
+      str = localStringBuilder.toString();
+      j += 1;
     }
     return str;
   }
@@ -88,7 +92,7 @@ public class ColorUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.ColorUtil
  * JD-Core Version:    0.7.0.1
  */

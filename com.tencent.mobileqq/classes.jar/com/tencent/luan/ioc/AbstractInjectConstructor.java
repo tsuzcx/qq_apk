@@ -19,19 +19,19 @@ public abstract class AbstractInjectConstructor<T>
   
   protected AbstractInjectConstructor(Class<T> paramClass, int paramInt)
   {
-    this(paramInt, paramClass.getName() + "#<init>");
+    this(paramInt, localStringBuilder.toString());
   }
   
   private ObjectWrapper<T> getWrapperByScope(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return new DefaultObjectWrapper(this);
-    case 1: 
-      return GlobalSingletonObjectWrapper.getInstanceByConstructor(this);
+      if (paramInt != 2) {
+        return new DefaultObjectWrapper(this);
+      }
+      return new PrototypeObjectWrapper(this);
     }
-    return new PrototypeObjectWrapper(this);
+    return GlobalSingletonObjectWrapper.getInstanceByConstructor(this);
   }
   
   public boolean needInject()
@@ -51,7 +51,7 @@ public abstract class AbstractInjectConstructor<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.ioc.AbstractInjectConstructor
  * JD-Core Version:    0.7.0.1
  */

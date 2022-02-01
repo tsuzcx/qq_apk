@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.f.a.m;
-import a.f.b.k;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.a.m;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "i", "", "j", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "i", "", "j"}, k=3, mv={1, 5, 1}, xi=48)
 final class f$b
-  extends k
+  extends u
   implements m<Long, Long, Boolean>
 {
-  public static final b sGz;
+  public static final b SsU;
   
   static
   {
-    AppMethodBeat.i(109871);
-    sGz = new b();
-    AppMethodBeat.o(109871);
+    AppMethodBeat.i(119489);
+    SsU = new b();
+    AppMethodBeat.o(119489);
   }
   
   f$b()
@@ -26,7 +26,7 @@ final class f$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.f.b
  * JD-Core Version:    0.7.0.1
  */

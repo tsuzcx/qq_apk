@@ -4,71 +4,88 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
-import beqa;
-import beqb;
-import beqd;
-import beqe;
-import bhuw;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
 
 @Deprecated
 public class GridListView
   extends XListView
 {
-  public int a;
-  public View.OnClickListener a;
-  public View a;
-  public beqd a;
-  public beqe a;
-  public bhuw a;
-  public int b = 4;
-  public int c = 0;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  GridListView.GridListAdapter a;
+  int b = 0;
+  int c = 4;
+  int d = 0;
+  AdapterView.OnItemClickListener e;
+  View.OnClickListener f;
+  int g;
+  int h;
+  int i;
+  int j;
+  int k;
+  View l = new View(getContext());
+  GridListView.WraperAdapter m = new GridListView.WraperAdapter(this);
+  int n;
   
   public GridListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_Beqe = new beqe(this);
   }
   
   public GridListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_Beqe = new beqe(this);
   }
   
   public GridListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_Beqe = new beqe(this);
   }
   
   private void a(int paramInt)
   {
-    if (this.d != paramInt) {
+    if (this.g != paramInt) {
       b(paramInt);
     }
   }
   
   private void b(int paramInt)
   {
+    this.g = paramInt;
+    paramInt = this.g;
     this.d = paramInt;
-    this.c = this.d;
-    if (this.jdField_a_of_type_Int == 1) {
-      this.c = ((this.d + this.b - 1) / this.b);
+    if (this.b == 1)
+    {
+      int i1 = this.c;
+      this.d = ((paramInt + i1 - 1) / i1);
     }
+  }
+  
+  public int getGridChildCount()
+  {
+    int i1 = super.getChildCount();
+    int i2 = i1;
+    if (this.b == 1)
+    {
+      i2 = i1;
+      if (i1 > 0)
+      {
+        int i3 = i1 - 1;
+        LinearLayout localLinearLayout = (LinearLayout)super.getChildAt(i3);
+        i2 = i1;
+        if (i1 > 1) {
+          i2 = this.c * i3;
+        }
+        i2 += localLinearLayout.getChildCount();
+      }
+    }
+    return i2;
+  }
+  
+  public int getMode()
+  {
+    return this.b;
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
@@ -76,19 +93,19 @@ public class GridListView
     if (paramListAdapter == null) {
       return;
     }
-    this.jdField_a_of_type_Beqd = ((beqd)paramListAdapter);
-    this.jdField_a_of_type_Beqd.registerDataSetObserver(new beqa(this));
-    this.jdField_a_of_type_Beqd.a(this.jdField_a_of_type_Int);
-    this.i = this.jdField_a_of_type_Beqd.a();
-    a(this.jdField_a_of_type_Beqd.getCount());
-    super.setAdapter(this.jdField_a_of_type_Beqe);
+    this.a = ((GridListView.GridListAdapter)paramListAdapter);
+    this.a.registerDataSetObserver(new GridListView.1(this));
+    this.a.a(this.b);
+    this.n = this.a.a();
+    a(this.a.getCount());
+    super.setAdapter(this.m);
   }
   
   public void setEmptyView(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    if (this.d == 0) {
-      this.jdField_a_of_type_Beqe.notifyDataSetChanged();
+    this.l = paramView;
+    if (this.g == 0) {
+      this.m.notifyDataSetChanged();
     }
   }
   
@@ -99,72 +116,71 @@ public class GridListView
   
   public void setGridSize(int paramInt1, int paramInt2)
   {
-    if ((this.g != paramInt1) || (this.h != paramInt2))
+    if ((this.j != paramInt1) || (this.k != paramInt2))
     {
-      this.g = paramInt1;
-      this.h = paramInt2;
-      this.jdField_a_of_type_Beqe.notifyDataSetChanged();
+      this.j = paramInt1;
+      this.k = paramInt2;
+      this.m.notifyDataSetChanged();
     }
   }
   
   public void setGridSpacing(int paramInt1, int paramInt2)
   {
-    if ((this.e != paramInt1) || (this.f != paramInt2))
+    if ((this.h != paramInt1) || (this.i != paramInt2))
     {
-      this.e = paramInt1;
-      this.f = paramInt2;
-      if (this.jdField_a_of_type_Int == 1) {
-        setPadding(0, 0, 0, this.f);
+      this.h = paramInt1;
+      this.i = paramInt2;
+      if (this.b == 1) {
+        setPadding(0, 0, 0, this.i);
       }
-      this.jdField_a_of_type_Beqe.notifyDataSetChanged();
+      this.m.notifyDataSetChanged();
     }
   }
   
   public void setMode(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.b != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Beqd != null)
+      this.b = paramInt;
+      GridListView.GridListAdapter localGridListAdapter = this.a;
+      if (localGridListAdapter != null)
       {
-        this.jdField_a_of_type_Beqd.a(this.jdField_a_of_type_Int);
-        b(this.jdField_a_of_type_Beqd.getCount());
+        localGridListAdapter.a(this.b);
+        b(this.a.getCount());
       }
-      if (this.jdField_a_of_type_Int != 1) {
-        break label71;
+      if (this.b == 1) {
+        paramInt = this.i;
+      } else {
+        paramInt = 0;
       }
-    }
-    label71:
-    for (paramInt = this.f;; paramInt = 0)
-    {
       setPadding(0, 0, 0, paramInt);
-      this.jdField_a_of_type_Beqe.notifyDataSetChanged();
-      return;
+      this.m.notifyDataSetChanged();
     }
   }
   
   public void setNumColumns(int paramInt)
   {
-    if (paramInt != this.b)
+    if (paramInt != this.c)
     {
-      this.b = paramInt;
-      if (this.jdField_a_of_type_Beqd != null) {
-        a(this.jdField_a_of_type_Beqd.getCount());
+      this.c = paramInt;
+      GridListView.GridListAdapter localGridListAdapter = this.a;
+      if (localGridListAdapter != null) {
+        a(localGridListAdapter.getCount());
       }
     }
   }
   
-  public void setOnItemClickListener(bhuw parambhuw)
+  public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_Bhuw = parambhuw;
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = new beqb(this);
+    this.e = paramOnItemClickListener;
+    if (this.f == null) {
+      this.f = new GridListView.2(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GridListView
  * JD-Core Version:    0.7.0.1
  */

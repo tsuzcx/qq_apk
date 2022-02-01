@@ -1,109 +1,137 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.os.Bundle;
-import android.view.MotionEvent;
+import android.net.Uri;
 import android.view.View;
+import android.webkit.ConsoleMessage;
+import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.x5.a.a.a.a.b;
+import com.tencent.xweb.JsResult;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.q;
+import com.tencent.xweb.z;
+import com.tencent.xweb.z.a;
 
 public class f
-  extends b
+  extends z
 {
-  private b uSa;
+  private z WFN;
   
   public f()
   {
-    AppMethodBeat.i(6095);
-    this.uSa = new b();
-    AppMethodBeat.o(6095);
+    AppMethodBeat.i(78223);
+    this.WFN = new z();
+    AppMethodBeat.o(78223);
   }
   
-  public final void a(b paramb)
+  public final void a(WebView paramWebView, int paramInt)
   {
-    if (paramb != null) {
-      this.uSa = paramb;
+    AppMethodBeat.i(78233);
+    this.WFN.a(paramWebView, paramInt);
+    AppMethodBeat.o(78233);
+  }
+  
+  public final void a(z paramz)
+  {
+    if (paramz != null) {
+      this.WFN = paramz;
     }
   }
   
-  public void computeScroll(View paramView)
+  public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, z.a parama)
   {
-    AppMethodBeat.i(6103);
-    this.uSa.computeScroll(paramView);
-    AppMethodBeat.o(6103);
-  }
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    AppMethodBeat.i(6099);
-    boolean bool = this.uSa.dispatchTouchEvent(paramMotionEvent, paramView);
-    AppMethodBeat.o(6099);
+    AppMethodBeat.i(78232);
+    boolean bool = this.WFN.a(paramWebView, paramValueCallback, parama);
+    AppMethodBeat.o(78232);
     return bool;
   }
   
-  public void invalidate()
+  public final boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    AppMethodBeat.i(6105);
-    this.uSa.invalidate();
-    AppMethodBeat.o(6105);
-  }
-  
-  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    AppMethodBeat.i(6098);
-    boolean bool = this.uSa.onInterceptTouchEvent(paramMotionEvent, paramView);
-    AppMethodBeat.o(6098);
+    AppMethodBeat.i(78227);
+    boolean bool = this.WFN.a(paramWebView, paramString1, paramString2, paramJsResult);
+    AppMethodBeat.o(78227);
     return bool;
   }
   
-  public Object onMiscCallBack(String paramString, Bundle paramBundle)
+  public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, q paramq)
   {
-    AppMethodBeat.i(6096);
-    paramString = this.uSa.onMiscCallBack(paramString, paramBundle);
-    AppMethodBeat.o(6096);
-    return paramString;
-  }
-  
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
-  {
-    AppMethodBeat.i(6102);
-    this.uSa.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
-    AppMethodBeat.o(6102);
-  }
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    AppMethodBeat.i(6101);
-    this.uSa.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-    AppMethodBeat.o(6101);
-  }
-  
-  public boolean onShowLongClickPopupMenu()
-  {
-    AppMethodBeat.i(6104);
-    boolean bool = this.uSa.onShowLongClickPopupMenu();
-    AppMethodBeat.o(6104);
+    AppMethodBeat.i(78229);
+    boolean bool = this.WFN.a(paramWebView, paramString1, paramString2, paramString3, paramq);
+    AppMethodBeat.o(78229);
     return bool;
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  public final boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    AppMethodBeat.i(6097);
-    boolean bool = this.uSa.onTouchEvent(paramMotionEvent, paramView);
-    AppMethodBeat.o(6097);
+    AppMethodBeat.i(78228);
+    boolean bool = this.WFN.b(paramWebView, paramString1, paramString2, paramJsResult);
+    AppMethodBeat.o(78228);
     return bool;
   }
   
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  public void d(WebView paramWebView, String paramString)
   {
-    AppMethodBeat.i(6100);
-    paramBoolean = this.uSa.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
-    AppMethodBeat.o(6100);
-    return paramBoolean;
+    AppMethodBeat.i(78234);
+    this.WFN.d(paramWebView, paramString);
+    AppMethodBeat.o(78234);
+  }
+  
+  public final View getVideoLoadingProgressView()
+  {
+    AppMethodBeat.i(78230);
+    View localView = this.WFN.getVideoLoadingProgressView();
+    AppMethodBeat.o(78230);
+    return localView;
+  }
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    AppMethodBeat.i(78224);
+    boolean bool = this.WFN.onConsoleMessage(paramConsoleMessage);
+    AppMethodBeat.o(78224);
+    return bool;
+  }
+  
+  public final void onGeolocationPermissionsHidePrompt()
+  {
+    AppMethodBeat.i(295933);
+    this.WFN.onGeolocationPermissionsHidePrompt();
+    AppMethodBeat.o(295933);
+  }
+  
+  public final void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissions.Callback paramCallback)
+  {
+    AppMethodBeat.i(78225);
+    this.WFN.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+    AppMethodBeat.o(78225);
+  }
+  
+  public final void onHideCustomView()
+  {
+    AppMethodBeat.i(78226);
+    this.WFN.onHideCustomView();
+    AppMethodBeat.o(78226);
+  }
+  
+  public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    AppMethodBeat.i(78235);
+    this.WFN.onShowCustomView(paramView, paramCustomViewCallback);
+    AppMethodBeat.o(78235);
+  }
+  
+  public final void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(78231);
+    this.WFN.openFileChooser(paramValueCallback, paramString1, paramString2);
+    AppMethodBeat.o(78231);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.f
  * JD-Core Version:    0.7.0.1
  */

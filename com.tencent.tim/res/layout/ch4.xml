@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="bottom" android:background="@drawable/bjz" android:paddingRight="10.0dip" android:layout_height="@dimen/bm5" android:minHeight="@dimen/bm5" android:layout_alignParentBottom="true" style="@style/aek"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o0n" android:duplicateParentState="true" android:src="@drawable/cf9" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/wrz" style="@style/adt" />
+    <ImageView android:id="@id/o0p" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/i6x" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/aiy" android:id="@id/o0q" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="2.0dip" android:text="此帐号被禁言24小时，请注意文明用语" android:singleLine="true" android:layout_toRightOf="@id/o0p" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/aiy" android:id="@id/o0o" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:text="你的瓶子涉及垃圾或色情内容，被多人投诉" android:singleLine="true" android:layout_below="@id/o0p" android:layout_alignLeft="@id/o0q" />
+</RelativeLayout>

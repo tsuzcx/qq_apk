@@ -1,67 +1,47 @@
 package com.tencent.mm.openim.e;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/openim/storage/OpenIMArchiveStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/openim/storage/OpenIMArchive;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "Companion", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends j<e>
+  extends MAutoStorage<e>
 {
-  public static final String[] SQL_CREATE;
-  public h fnw;
+  public static final a ptS;
+  private static final String ptT;
+  private static final String[] ptU;
+  private final ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(78994);
-    SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "OpenIMWordingInfo") };
-    AppMethodBeat.o(78994);
+    AppMethodBeat.i(235761);
+    ptS = new a((byte)0);
+    ptT = "OpenIMArchive";
+    ptU = new String[] { MAutoStorage.getCreateSQLs(e.dbInfo, "OpenIMArchive") };
+    AppMethodBeat.o(235761);
   }
   
-  public f(h paramh)
+  public f(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramh, e.info, "OpenIMWordingInfo", null);
-    this.fnw = paramh;
+    super(paramISQLiteDatabase, e.dbInfo, "OpenIMArchive", null);
+    AppMethodBeat.i(235757);
+    this.db = paramISQLiteDatabase;
+    AppMethodBeat.o(235757);
   }
   
-  public final List<String> E(int paramInt, String paramString)
+  public static final String[] bSq()
   {
-    AppMethodBeat.i(78992);
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject = " select wordingId from OpenIMWordingInfo where language='" + paramString + "' order by updateTime limit " + paramInt;
-    ab.d("MicroMsg.Openim.OpenIMWordingInfoStg", "getLastWording sql:%s", new Object[] { localObject });
-    localObject = this.fnw.a((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst()) {
-      do
-      {
-        String str = ((Cursor)localObject).getString(0);
-        if (!bo.isNullOrNil(str)) {
-          localLinkedList.add(str);
-        }
-      } while (((Cursor)localObject).moveToNext());
-    }
-    ab.d("MicroMsg.Openim.OpenIMWordingInfoStg", "getLastWording result cnt: %d, language:%s", new Object[] { Integer.valueOf(localLinkedList.size()), paramString });
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(78992);
-    return localLinkedList;
+    return ptU;
   }
   
-  public final boolean a(e parame)
-  {
-    AppMethodBeat.i(78991);
-    parame.field_updateTime = bo.aox();
-    boolean bool = super.replace(parame);
-    AppMethodBeat.o(78991);
-    return bool;
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/openim/storage/OpenIMArchiveStorage$Companion;", "", "()V", "TABLE", "", "getTABLE", "()Ljava/lang/String;", "TABLE_CREATE_SQL", "", "kotlin.jvm.PlatformType", "getTABLE_CREATE_SQL$annotations", "getTABLE_CREATE_SQL", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.e.f
  * JD-Core Version:    0.7.0.1
  */

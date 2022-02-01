@@ -39,22 +39,21 @@ public class ModuleEngine
   
   public void unRegisterJsModule(BaseJsModule paramBaseJsModule)
   {
-    if (paramBaseJsModule == null) {}
-    BaseJsModule localBaseJsModule;
-    do
-    {
+    if (paramBaseJsModule == null) {
       return;
-      localBaseJsModule = (BaseJsModule)this.mJsModules.remove(paramBaseJsModule.getModuleName());
-      if (localBaseJsModule != null) {
-        localBaseJsModule.onDestroy();
-      }
-    } while (paramBaseJsModule == localBaseJsModule);
-    paramBaseJsModule.onDestroy();
+    }
+    BaseJsModule localBaseJsModule = (BaseJsModule)this.mJsModules.remove(paramBaseJsModule.getModuleName());
+    if (localBaseJsModule != null) {
+      localBaseJsModule.onDestroy();
+    }
+    if (paramBaseJsModule != localBaseJsModule) {
+      paramBaseJsModule.onDestroy();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.invoke.ModuleEngine
  * JD-Core Version:    0.7.0.1
  */

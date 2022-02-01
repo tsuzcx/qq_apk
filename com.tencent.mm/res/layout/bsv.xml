@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/hlw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/c2" android:hint="老包:" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/hrw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/c2" android:layout_marginTop="@dimen/cp" android:hint="patch包:" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/hff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/c2" android:layout_marginTop="@dimen/cp" android:hint="新包:" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="开始合成" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/idj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="校验文件格式" style="@style/oh" />
+    <TextView android:textSize="@dimen/cr" android:textColor="@color/a9x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="合成结果\n1.花费时间\n2.平均内存\n3.CPU情况\n4.patch包大小\n5.newAPk:MD5值" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/a19" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="自动更新下载和合成" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/a1_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="自动更新-弹窗" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c8o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="手动更新" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/bde" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="清空缓存" style="@style/oh" />
+</LinearLayout>

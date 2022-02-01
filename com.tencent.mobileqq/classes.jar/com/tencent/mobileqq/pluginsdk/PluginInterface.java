@@ -117,20 +117,13 @@ public class PluginInterface
   
   void setBinder(IBinder paramIBinder)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramIBinder != null)
-    {
-      localObject1 = localObject2;
-      if (paramIBinder.isBinderAlive())
-      {
-        localObject1 = localObject2;
-        if (paramIBinder.pingBinder()) {
-          localObject1 = PluginCommunicationChannel.Stub.asInterface(paramIBinder);
-        }
-      }
+    PluginCommunicationChannel localPluginCommunicationChannel;
+    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder())) {
+      localPluginCommunicationChannel = PluginCommunicationChannel.Stub.asInterface(paramIBinder);
+    } else {
+      localPluginCommunicationChannel = null;
     }
-    this.mClient = ((PluginCommunicationChannel)localObject1);
+    this.mClient = localPluginCommunicationChannel;
     try
     {
       paramIBinder.linkToDeath(new PluginInterface.1(this, paramIBinder), 0);
@@ -138,8 +131,9 @@ public class PluginInterface
     }
     catch (Exception paramIBinder)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("plugin_tag", 2, paramIBinder, new Object[0]);
+      if (QLog.isColorLevel()) {
+        QLog.e("plugin_tag", 2, paramIBinder, new Object[0]);
+      }
     }
   }
   
@@ -192,7 +186,7 @@ public class PluginInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginInterface
  * JD-Core Version:    0.7.0.1
  */

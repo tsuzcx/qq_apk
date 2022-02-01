@@ -29,20 +29,23 @@ public final class guide_button
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.button_title != null) {
-      paramJceOutputStream.write(this.button_title, 0);
+    String str = this.button_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 1);
+    str = this.action_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 2);
+    str = this.pic_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.guide_button
  * JD-Core Version:    0.7.0.1
  */

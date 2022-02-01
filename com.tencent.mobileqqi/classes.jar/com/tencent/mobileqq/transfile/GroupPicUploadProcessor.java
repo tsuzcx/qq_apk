@@ -46,10 +46,10 @@ import com.tencent.mobileqq.utils.QQRecorder;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
+import gnj;
 import gnk;
 import gnl;
-import gnm;
-import gnz;
+import gny;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
@@ -82,7 +82,7 @@ public class GroupPicUploadProcessor
     super(paramTransFileController, paramTransferRequest);
     this.jdField_b_of_type_ComTencentWsttSSCMSSCM = new SSCM();
     this.jdField_i_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gnm(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new gnl(this);
   }
   
   public static int a(String paramString)
@@ -160,7 +160,7 @@ public class GroupPicUploadProcessor
       if (QLog.isColorLevel()) {
         QLog.d("GroupPicUploadProcessor", 2, "HighSpeedTest");
       }
-      new gnk(this, localPicReq).execute(new Void[0]);
+      new gnj(this, localPicReq).execute(new Void[0]);
       return;
       m = 0;
       break;
@@ -893,7 +893,7 @@ public class GroupPicUploadProcessor
       this.at = 0;
       this.J = "";
       this.jdField_b_of_type_ComTencentWsttSSCMSSCM.a();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new gnl(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new gnk(this));
     }
     return 0;
   }

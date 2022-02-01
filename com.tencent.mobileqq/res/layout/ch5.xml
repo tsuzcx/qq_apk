@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqcircle.transition.QCircleTransitionLayout android:orientation="vertical" android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout android:id="@id/kts" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.widget.pull2refresh.RecyclerViewCompat android:id="@id/mq4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.biz.subscribe.widget.StatusView android:id="@id/mqv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <RelativeLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lqn" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="39.0dip">
-            <ImageView android:id="@id/ln8" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/f7z" android:scaleType="centerCrop" android:layout_alignParentLeft="true" />
-            <ImageView android:id="@id/dy1" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/bjq" android:scaleType="centerCrop" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <ViewStub android:layout_gravity="bottom" android:id="@id/mwr" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView android:id="@id/mn9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout>
-</com.tencent.biz.qqcircle.transition.QCircleTransitionLayout>
+    <com.tencent.mobileqq.guild.widget.RadiusFrameLayout android:id="@id/oay" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="11.0dip" android:contentDescription="banner封面" app:top_left_corner_radius="4.0dip">
+        <ImageView android:id="@id/nyi" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:contentDescription="banner封面" />
+    </com.tencent.mobileqq.guild.widget.RadiusFrameLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="700.0dip">
+        <ImageView android:layout_gravity="top" android:id="@id/nym" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitStart" android:contentDescription="超出的banner封面" />
+    </LinearLayout>
+    <com.tencent.mobileqq.guild.widget.RadiusFrameLayout android:orientation="vertical" android:id="@id/mlp" android:background="@drawable/bk2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginTop="11.0dip" app:top_left_corner_radius="4.0dip" />
+    <LinearLayout android:layout_gravity="bottom|center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+        <TextView android:textSize="26.0dip" android:textColor="#ff222222" android:gravity="center|left" android:layout_gravity="bottom|center|left" android:id="@id/qbz" android:paddingLeft="21.5dip" android:paddingBottom="1.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:lineSpacingExtra="-3.5dip" />
+        <ImageView android:layout_gravity="bottom" android:id="@id/nsa" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="5.0dip" android:layout_marginBottom="7.5dip" />
+    </LinearLayout>
+</merge>

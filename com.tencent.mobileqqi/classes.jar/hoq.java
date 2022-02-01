@@ -10,16 +10,32 @@ import org.json.JSONObject;
 public class hoq
   implements DownloadQueryListener
 {
-  public hoq(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
+  public hoq(VipDownloadInterface paramVipDownloadInterface) {}
   
   public void a(int paramInt, String paramString)
   {
-    LogUtility.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
+    LogUtility.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("errCode", paramInt);
+      localJSONObject.put("errMsg", paramString);
+      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
+      this.a.a(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
   
   public void b(List paramList)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
+    LogUtility.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
     JSONArray localJSONArray = new JSONArray();
     int j = paramList.size();
     int i = 0;
@@ -47,9 +63,9 @@ public class hoq
         }
       }
     }
-    paramList = "javascript:QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});void(0);";
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
+    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
+    LogUtility.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
+    this.a.a(paramList);
   }
 }
 

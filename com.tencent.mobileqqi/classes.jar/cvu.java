@@ -1,15 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.MayKnowManActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
 
-class cvu
-  implements Runnable
+public class cvu
+  implements DialogInterface.OnDismissListener
 {
-  cvu(cvt paramcvt, List paramList) {}
+  public cvu(MayKnowManActivity paramMayKnowManActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    MayKnowManActivity.a(this.jdField_a_of_type_Cvt.a.a, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Cvt.a.a.b.a());
+    this.a.a = null;
   }
 }
 

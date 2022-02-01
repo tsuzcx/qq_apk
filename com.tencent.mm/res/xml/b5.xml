@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <Preference mm:title="@string/d8i" mm:layout="@layout/ah2" />
-    <com.tencent.mm.ui.base.preference.ChoicePreference mm:title="@string/eee" mm:entries="@array/ae" mm:entryValues="@array/af" mm:key="settings_sex" mm:layout="@layout/ahd" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:title="@string/e_k" mm:key="settings_district" mm:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:title="@string/eem" mm:key="settings_signature" mm:layout="@layout/afi" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <IconPreference android:icon="@drawable/bfe" android:key="settings_invite_facebook_friends" android:title="@string/isw" />
+    <IconPreference android:icon="@raw/find_more_friend_qq_icon" android:key="settings_invite_qq_friends" android:title="@string/isz" />
+    <IconPreference android:icon="@drawable/bb5" android:key="settings_recommend_by_mail" android:title="@string/ixi" />
+    <IconPreference android:icon="@drawable/bfg" android:key="settings_recommend_by_mb" android:title="@string/ixj" />
+    <IconPreference android:icon="@drawable/bb6" android:key="settings_invite_mobile_friends" android:title="@string/isy" />
 </PreferenceScreen>

@@ -30,7 +30,11 @@ public class StringUtils
         localStringBuilder.append((char)((paramArrayOfByte[i] + 256) % 256));
         i += 1;
       }
-      catch (Exception paramArrayOfByte) {}
+      catch (Exception paramArrayOfByte)
+      {
+        label53:
+        break label53;
+      }
     }
     paramArrayOfByte = localStringBuilder.toString();
     return paramArrayOfByte;
@@ -39,15 +43,19 @@ public class StringUtils
   
   public static byte char2Byte(char paramChar)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return (byte)(paramChar - '0');
+    if ((paramChar >= '0') && (paramChar <= '9'))
+    {
+      paramChar -= '0';
+      return (byte)paramChar;
     }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return (byte)(paramChar - 'a' + 10);
-    }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return (byte)(paramChar - 'A' + 10);
-    }
+    char c = 'a';
+    if ((paramChar >= 'a') && (paramChar <= 'f')) {}
+    do
+    {
+      paramChar = paramChar - c + 10;
+      break;
+      c = 'A';
+    } while ((paramChar >= 'A') && (paramChar <= 'F'));
     return 0;
   }
   
@@ -69,8 +77,9 @@ public class StringUtils
     int i = 0;
     while (i < arrayOfByte.length)
     {
-      char c1 = paramString.charAt(i * 2);
-      char c2 = paramString.charAt(i * 2 + 1);
+      int j = i * 2;
+      char c1 = paramString.charAt(j);
+      char c2 = paramString.charAt(j + 1);
       arrayOfByte[i] = ((byte)(char2Byte(c1) * 16 + char2Byte(c2)));
       i += 1;
     }
@@ -79,34 +88,45 @@ public class StringUtils
   
   public static boolean isIpv4String(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return false;
-      paramString = paramString.split("\\.");
-      if ((paramString != null) && (paramString.length == 4)) {
-        try
+    }
+    paramString = paramString.split("\\.");
+    if (paramString != null) {
+      if (paramString.length != 4) {
+        return false;
+      }
+    }
+    try
+    {
+      int i = Integer.parseInt(paramString[0]);
+      if (i > 0)
+      {
+        if (i > 255) {
+          return false;
+        }
+        i = Integer.parseInt(paramString[1]);
+        if (i >= 0)
         {
-          int i = Integer.parseInt(paramString[0]);
-          if ((i > 0) && (i <= 255))
+          if (i > 255) {
+            return false;
+          }
+          i = Integer.parseInt(paramString[2]);
+          if (i >= 0)
           {
-            i = Integer.parseInt(paramString[1]);
-            if ((i >= 0) && (i <= 255))
-            {
-              i = Integer.parseInt(paramString[2]);
-              if ((i >= 0) && (i <= 255))
-              {
-                i = Integer.parseInt(paramString[3]);
-                if ((i >= 0) && (i <= 255)) {
-                  return true;
-                }
-              }
+            if (i > 255) {
+              return false;
+            }
+            i = Integer.parseInt(paramString[3]);
+            if (i >= 0) {
+              return i <= 255;
             }
           }
         }
-        catch (NumberFormatException paramString) {}
       }
+      return false;
     }
+    catch (NumberFormatException paramString) {}
     return false;
   }
   
@@ -141,30 +161,30 @@ public class StringUtils
     }
     try
     {
-      localObject = MessageDigest.getInstance("MD5");
+      Object localObject = MessageDigest.getInstance("MD5");
       if (localObject == null) {
         return "";
       }
+      ((MessageDigest)localObject).update(paramString.getBytes());
+      paramString = ((MessageDigest)localObject).digest();
+      localObject = new StringBuffer();
+      int i = 0;
+      while (i < paramString.length)
+      {
+        int j = paramString[i] & 0xFF;
+        if (j < 16) {
+          ((StringBuffer)localObject).append(0);
+        }
+        ((StringBuffer)localObject).append(Integer.toHexString(j));
+        i += 1;
+      }
+      return ((StringBuffer)localObject).toString();
     }
     catch (NoSuchAlgorithmException paramString)
     {
       paramString.printStackTrace();
-      return null;
     }
-    ((MessageDigest)localObject).update(paramString.getBytes());
-    paramString = ((MessageDigest)localObject).digest();
-    Object localObject = new StringBuffer();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      int j = paramString[i] & 0xFF;
-      if (j < 16) {
-        ((StringBuffer)localObject).append(0);
-      }
-      ((StringBuffer)localObject).append(Integer.toHexString(j));
-      i += 1;
-    }
-    return ((StringBuffer)localObject).toString();
+    return null;
   }
   
   public static String toHexString(byte[] paramArrayOfByte)
@@ -182,7 +202,7 @@ public class StringUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.utils.StringUtils
  * JD-Core Version:    0.7.0.1
  */

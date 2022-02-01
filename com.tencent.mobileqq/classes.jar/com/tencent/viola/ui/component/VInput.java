@@ -59,51 +59,62 @@ public class VInput
   
   public void addEvent(String paramString)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("input"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("change"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("focus"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("blur"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("return")) {
-                  i = 4;
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 100358090: 
+      if (paramString.equals("input")) {
+        i = 0;
       }
+      break;
+    case 97604824: 
+      if (paramString.equals("focus")) {
+        i = 2;
+      }
+      break;
+    case 3027047: 
+      if (paramString.equals("blur")) {
+        i = 3;
+      }
+      break;
+    case -934396624: 
+      if (paramString.equals("return")) {
+        i = 4;
+      }
+      break;
+    case -1361636432: 
+      if (paramString.equals("change")) {
+        i = 1;
+      }
+      break;
     }
-    this.mListEvent.add(paramString);
-    return;
-    this.mListEvent.add(paramString);
-    return;
-    this.mListEvent.add(paramString);
-    return;
-    this.mListEvent.add(paramString);
-    return;
+    int i = -1;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              super.addEvent(paramString);
+              return;
+            }
+            this.mListEvent.add(paramString);
+            return;
+          }
+          this.mListEvent.add(paramString);
+          return;
+        }
+        this.mListEvent.add(paramString);
+        return;
+      }
+      this.mListEvent.add(paramString);
+      return;
+    }
     this.mListEvent.add(paramString);
   }
   
@@ -132,18 +143,14 @@ public class VInput
     try
     {
       localJSONObject.put("value", this.mCurrentMessage);
-      JSONArray localJSONArray = new JSONArray();
-      localJSONArray.put(paramString);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localJSONObject, true);
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    JSONArray localJSONArray = new JSONArray();
+    localJSONArray.put(paramString);
+    ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localJSONObject, true);
   }
   
   protected VInputView initComponentHostView(@NonNull Context paramContext)
@@ -164,8 +171,8 @@ public class VInput
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("value", paramString2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("value", paramString2);
       paramString2 = new JSONArray();
       if (getDomObject() != null)
       {
@@ -175,16 +182,20 @@ public class VInput
         }
       }
       paramString2.put(paramString1);
-      fireEvent(paramString1, paramString2, localJSONObject);
+      fireEvent(paramString1, paramString2, localObject);
       return;
     }
     catch (Exception paramString1)
     {
-      ViolaLogUtils.e(TAG, "inputFireEvent error :" + paramString1.getMessage());
+      paramString2 = TAG;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("inputFireEvent error :");
+      ((StringBuilder)localObject).append(paramString1.getMessage());
+      ViolaLogUtils.e(paramString2, ((StringBuilder)localObject).toString());
     }
   }
   
-  public boolean resetAttr(String paramString)
+  protected boolean resetAttr(String paramString)
   {
     if ((!super.resetAttr(paramString)) && (paramString.equals("type")))
     {
@@ -235,87 +246,113 @@ public class VInput
   public boolean setProperty(String paramString, Object paramObject)
   {
     String str = ViolaUtils.getString(paramObject, null);
-    int i;
     if (str != null)
     {
-      i = -1;
+      int i = -1;
       switch (paramString.hashCode())
       {
-      }
-    }
-    for (;;)
-    {
-      switch (i)
-      {
       default: 
-        return super.setProperty(paramString, paramObject);
-        if (paramString.equals("placeholderColor"))
-        {
+        break;
+      case 713848971: 
+        if (paramString.equals("paddingRight")) {
+          i = 2;
+        }
+        break;
+      case 365601008: 
+        if (paramString.equals("fontSize")) {
+          i = 4;
+        }
+        break;
+      case 94842723: 
+        if (paramString.equals("color")) {
+          i = 3;
+        }
+        break;
+      case -1501175880: 
+        if (paramString.equals("paddingLeft")) {
+          i = 1;
+        }
+        break;
+      case -1576785488: 
+        if (paramString.equals("placeholderColor")) {
           i = 0;
-          continue;
-          if (paramString.equals("paddingLeft"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("paddingRight"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("color"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("fontSize")) {
-                  i = 4;
-                }
-              }
-            }
-          }
         }
         break;
       }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i == 4)
+              {
+                ((VInputView)getHostView()).setTextSize(0, FlexConvertUtils.converPxByViewportToRealPx(str, 750));
+                return true;
+              }
+            }
+            else
+            {
+              ((VInputView)getHostView()).setTextColor(ColorParseUtils.parseColor(str));
+              return true;
+            }
+          }
+          else
+          {
+            this.mPaddingList[2] = ((int)FlexConvertUtils.converPxByViewportToRealPx(str, 750));
+            paramString = (VInputView)getHostView();
+            paramObject = this.mPaddingList;
+            paramString.setPadding(paramObject[0], paramObject[1], paramObject[2], paramObject[3]);
+            return true;
+          }
+        }
+        else
+        {
+          this.mPaddingList[0] = ((int)FlexConvertUtils.converPxByViewportToRealPx(str, 750));
+          paramString = (VInputView)getHostView();
+          paramObject = this.mPaddingList;
+          paramString.setPadding(paramObject[0], paramObject[1], paramObject[2], paramObject[3]);
+          return true;
+        }
+      }
+      else
+      {
+        this.mHintTextColor = ColorParseUtils.parseColor(str);
+        ((VInputView)getHostView()).setHintTextColor(this.mHintTextColor);
+        return true;
+      }
     }
-    this.mHintTextColor = ColorParseUtils.parseColor(str);
-    ((VInputView)getHostView()).setHintTextColor(this.mHintTextColor);
-    return true;
-    this.mPaddingList[0] = ((int)FlexConvertUtils.converPxByViewportToRealPx(str, 750));
-    ((VInputView)getHostView()).setPadding(this.mPaddingList[0], this.mPaddingList[1], this.mPaddingList[2], this.mPaddingList[3]);
-    return true;
-    this.mPaddingList[2] = ((int)FlexConvertUtils.converPxByViewportToRealPx(str, 750));
-    ((VInputView)getHostView()).setPadding(this.mPaddingList[0], this.mPaddingList[1], this.mPaddingList[2], this.mPaddingList[3]);
-    return true;
-    ((VInputView)getHostView()).setTextColor(ColorParseUtils.parseColor(str));
-    return true;
-    ((VInputView)getHostView()).setTextSize(0, FlexConvertUtils.converPxByViewportToRealPx(str, 750));
-    return true;
+    return super.setProperty(paramString, paramObject);
   }
   
   @VComponentProp(initToHostView=true, name="returnKeyType", nativeReturnMethod="getImeOptions")
   public void setReturnKeyType(String paramString)
   {
-    if ("next".equals(paramString)) {
-      ((VInputView)getHostView()).setImeOptions(5);
-    }
-    do
+    if ("next".equals(paramString))
     {
+      ((VInputView)getHostView()).setImeOptions(5);
       return;
-      if ("go".equals(paramString))
-      {
-        ((VInputView)getHostView()).setImeOptions(2);
-        return;
-      }
-      if ("search".equals(paramString))
-      {
-        ((VInputView)getHostView()).setImeOptions(3);
-        return;
-      }
-      if ("send".equals(paramString))
-      {
-        ((VInputView)getHostView()).setImeOptions(4);
-        return;
-      }
-    } while (!"done".equals(paramString));
-    ((VInputView)getHostView()).setImeOptions(6);
+    }
+    if ("go".equals(paramString))
+    {
+      ((VInputView)getHostView()).setImeOptions(2);
+      return;
+    }
+    if ("search".equals(paramString))
+    {
+      ((VInputView)getHostView()).setImeOptions(3);
+      return;
+    }
+    if ("send".equals(paramString))
+    {
+      ((VInputView)getHostView()).setImeOptions(4);
+      return;
+    }
+    if ("done".equals(paramString)) {
+      ((VInputView)getHostView()).setImeOptions(6);
+    }
   }
   
   @JSMethod(uiThread=true)
@@ -329,17 +366,12 @@ public class VInput
   {
     if ("text".equals(paramString)) {
       ((VInputView)getHostView()).setInputType(1);
+    } else if ("password".equals(paramString)) {
+      ((VInputView)getHostView()).setInputType(128);
+    } else if ("number".equals(paramString)) {
+      ((VInputView)getHostView()).setInputType(2);
     }
-    for (;;)
-    {
-      trySetMulLine();
-      return;
-      if ("password".equals(paramString)) {
-        ((VInputView)getHostView()).setInputType(128);
-      } else if ("number".equals(paramString)) {
-        ((VInputView)getHostView()).setInputType(2);
-      }
-    }
+    trySetMulLine();
   }
   
   @VComponentProp(initToHostView=true, name="value", nativeReturnMethod="getText")
@@ -354,7 +386,7 @@ public class VInput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VInput
  * JD-Core Version:    0.7.0.1
  */

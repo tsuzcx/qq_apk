@@ -28,7 +28,7 @@ public final class IPCDownloadParam
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(75993);
+    AppMethodBeat.i(102239);
     if (cache_baseParam == null) {
       cache_baseParam = new IPCBaseParam();
     }
@@ -37,12 +37,12 @@ public final class IPCDownloadParam
     this.actionFlag = paramJceInputStream.readString(2, false);
     this.verifyType = paramJceInputStream.readString(3, false);
     this.reverse = paramJceInputStream.readString(4, false);
-    AppMethodBeat.o(75993);
+    AppMethodBeat.o(102239);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(75992);
+    AppMethodBeat.i(102238);
     paramJceOutputStream.write(this.baseParam, 0);
     if (this.opList != null) {
       paramJceOutputStream.write(this.opList, 1);
@@ -56,12 +56,12 @@ public final class IPCDownloadParam
     if (this.reverse != null) {
       paramJceOutputStream.write(this.reverse, 4);
     }
-    AppMethodBeat.o(75992);
+    AppMethodBeat.o(102238);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.IPCDownloadParam
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/othersLinearlayout" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:orientation="horizontal" android:background="@drawable/common_strip_setting_bg_nopress" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:id="@id/others_title_tv" android:paddingTop="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qq_dating_edit_others_title" android:layout_alignParentLeft="true" style="@style/DatingFont_1" />
+            <EditText android:enabled="false" android:id="@id/others_edit" android:background="@null" android:paddingTop="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="94.0dip" android:layout_marginRight="15.0dip" android:hint="@string/qq_dating_edit_others_hint" android:maxLength="50" android:layout_alignTop="@id/others_title_tv" style="@style/DatingFont_1" />
+            <View android:id="@id/others_cover_layer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="94.0dip" android:layout_alignTop="@id/others_edit" android:layout_alignBottom="@id/others_edit" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

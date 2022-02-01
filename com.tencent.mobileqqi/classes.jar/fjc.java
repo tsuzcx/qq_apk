@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.app.message.DiscMessageProcessor;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MsgProxy;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class fjc
-  extends TimerTask
+  implements Runnable
 {
-  private fjc(DiscMessageProcessor paramDiscMessageProcessor) {}
+  public fjc(MsgProxy paramMsgProxy, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.a.cancel();
+    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
+    String str = MsgProxy.f(this.jdField_a_of_type_ComTencentMobileqqAppMessageMsgProxy).a();
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      return;
+    }
   }
 }
 

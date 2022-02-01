@@ -497,12 +497,12 @@ public class QZoneAppWebViewActivity
     this.jdField_a_of_type_ComTencentSmttSdkWebView = new WebView(this);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.requestFocus();
     this.jdField_a_of_type_ComTencentSmttSdkWebView.requestFocusFromTouch();
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_Hkh);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebViewClient(this.jdField_a_of_type_Hkg);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setScrollBarStyle(0);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setHorizontalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setFocusableInTouchMode(true);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(this.jdField_a_of_type_Hkg);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(this.jdField_a_of_type_Hkf);
     this.jdField_a_of_type_ComTencentSmttSdkWebView.setOnCreateContextMenuListener(null);
     Object localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView.getSettings();
     ((WebSettings)localObject).setJavaScriptEnabled(true);
@@ -543,7 +543,7 @@ public class QZoneAppWebViewActivity
       this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibility");
       this.jdField_a_of_type_ComTencentSmttSdkWebView.removeJavascriptInterface("accessibilityTraversal");
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232114));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232113));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentSmttSdkWebView);
   }
   
@@ -565,10 +565,10 @@ public class QZoneAppWebViewActivity
     x();
     e();
     this.jdField_a_of_type_AndroidWidgetTextView.setText(2131560958);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232132);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232131);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232131);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232130);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131232116);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131232115);
     n();
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
@@ -601,7 +601,7 @@ public class QZoneAppWebViewActivity
     {
     default: 
       return;
-    case 2131231456: 
+    case 2131231455: 
       o();
       return;
     }

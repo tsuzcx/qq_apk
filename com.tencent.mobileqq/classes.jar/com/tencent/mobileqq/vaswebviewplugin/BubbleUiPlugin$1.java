@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import apmh;
-import apml;
-import aprh;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class BubbleUiPlugin$1
   implements Runnable
@@ -15,13 +16,13 @@ class BubbleUiPlugin$1
     Bundle localBundle = new Bundle();
     localBundle.putString("optype", "Bubble");
     localBundle.putString("opname", "Clk_bubble_setting");
-    localBundle = apml.a("reportActionCount", "", this.this$0.mOnRemoteResp.key, localBundle);
-    aprh.a().a(localBundle);
+    localBundle = DataFactory.a("reportActionCount", "", this.this$0.mOnRemoteResp.key, localBundle);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.BubbleUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

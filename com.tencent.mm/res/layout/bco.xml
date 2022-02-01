@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/iwl" android:background="@drawable/aqy" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/mbj" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/kio" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/w0" android:layout_centerInParent="true">
+            <TextView android:textSize="@dimen/w2" android:textColor="@color/FG_0" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a0t" />
+            <TextView android:textSize="@dimen/w1" android:textColor="@color/gr" android:id="@id/c21" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a0t" android:lineSpacingMultiplier="1.2" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/f1c" android:visibility="gone" android:layout_width="@dimen/vz" android:layout_height="@dimen/vz" android:src="@drawable/bmp" android:scaleType="fitCenter" android:layout_toLeftOf="@id/kio" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/df" />
+        <TextView android:id="@id/he3" android:visibility="gone" android:layout_centerVertical="true" android:layout_marginStart="4.0dip" android:layout_toEndOf="@id/kio" style="@style/r9" />
+        <TextView android:id="@id/iiz" android:visibility="gone" android:layout_centerVertical="true" android:layout_marginStart="4.0dip" android:layout_toEndOf="@id/kio" style="@style/zi" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/c7o" style="@style/i7" />
+</LinearLayout>

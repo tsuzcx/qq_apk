@@ -1,32 +1,45 @@
 package com.tencent.token;
 
-import javax.annotation.Nullable;
-import okhttp3.av;
-import okio.i;
+import java.lang.reflect.Array;
 
-public final class hj
-  extends av
+final class hj
 {
-  @Nullable
-  private final String a;
-  private final long b;
-  private final i c;
-  
-  public hj(@Nullable String paramString, long paramLong, i parami)
+  private static int a(int paramInt)
   {
-    this.a = paramString;
-    this.b = paramLong;
-    this.c = parami;
+    if (paramInt <= 4) {
+      return 8;
+    }
+    return paramInt * 2;
   }
   
-  public long a()
+  public static int[] a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    return this.b;
+    if ((!a) && (paramInt1 > paramArrayOfInt.length)) {
+      throw new AssertionError();
+    }
+    int[] arrayOfInt = paramArrayOfInt;
+    if (paramInt1 + 1 > paramArrayOfInt.length)
+    {
+      arrayOfInt = new int[a(paramInt1)];
+      System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt1);
+    }
+    arrayOfInt[paramInt1] = paramInt2;
+    return arrayOfInt;
   }
   
-  public i c()
+  public static <T> T[] a(T[] paramArrayOfT, int paramInt, T paramT)
   {
-    return this.c;
+    if ((!a) && (paramInt > paramArrayOfT.length)) {
+      throw new AssertionError();
+    }
+    Object localObject = paramArrayOfT;
+    if (paramInt + 1 > paramArrayOfT.length)
+    {
+      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), a(paramInt));
+      System.arraycopy(paramArrayOfT, 0, localObject, 0, paramInt);
+    }
+    localObject[paramInt] = paramT;
+    return localObject;
   }
 }
 

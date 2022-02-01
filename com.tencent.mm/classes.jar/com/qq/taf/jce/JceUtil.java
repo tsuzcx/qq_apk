@@ -133,15 +133,15 @@ public final class JceUtil
   
   public static <T extends Comparable<T>> int compareTo(T paramT1, T paramT2)
   {
-    AppMethodBeat.i(117087);
+    AppMethodBeat.i(109641);
     int i = paramT1.compareTo(paramT2);
-    AppMethodBeat.o(117087);
+    AppMethodBeat.o(109641);
     return i;
   }
   
   public static <T extends Comparable<T>> int compareTo(List<T> paramList1, List<T> paramList2)
   {
-    AppMethodBeat.i(117088);
+    AppMethodBeat.i(109642);
     paramList1 = paramList1.iterator();
     paramList2 = paramList2.iterator();
     int i;
@@ -150,12 +150,12 @@ public final class JceUtil
       if ((!paramList1.hasNext()) || (!paramList2.hasNext()))
       {
         i = compareTo(paramList1.hasNext(), paramList2.hasNext());
-        AppMethodBeat.o(117088);
+        AppMethodBeat.o(109642);
         return i;
       }
       i = ((Comparable)paramList1.next()).compareTo((Comparable)paramList2.next());
     } while (i == 0);
-    AppMethodBeat.o(117088);
+    AppMethodBeat.o(109642);
     return i;
   }
   
@@ -193,7 +193,7 @@ public final class JceUtil
   
   public static int compareTo(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(117091);
+    AppMethodBeat.i(109645);
     int j = 0;
     int i = 0;
     for (;;)
@@ -201,13 +201,13 @@ public final class JceUtil
       if ((i >= paramArrayOfByte1.length) || (j >= paramArrayOfByte2.length))
       {
         i = compareTo(paramArrayOfByte1.length, paramArrayOfByte2.length);
-        AppMethodBeat.o(117091);
+        AppMethodBeat.o(109645);
         return i;
       }
       int k = compareTo(paramArrayOfByte1[i], paramArrayOfByte2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117091);
+        AppMethodBeat.o(109645);
         return k;
       }
       j += 1;
@@ -217,7 +217,7 @@ public final class JceUtil
   
   public static int compareTo(char[] paramArrayOfChar1, char[] paramArrayOfChar2)
   {
-    AppMethodBeat.i(117092);
+    AppMethodBeat.i(109646);
     int j = 0;
     int i = 0;
     for (;;)
@@ -225,13 +225,13 @@ public final class JceUtil
       if ((i >= paramArrayOfChar1.length) || (j >= paramArrayOfChar2.length))
       {
         i = compareTo(paramArrayOfChar1.length, paramArrayOfChar2.length);
-        AppMethodBeat.o(117092);
+        AppMethodBeat.o(109646);
         return i;
       }
       int k = compareTo(paramArrayOfChar1[i], paramArrayOfChar2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117092);
+        AppMethodBeat.o(109646);
         return k;
       }
       j += 1;
@@ -241,7 +241,7 @@ public final class JceUtil
   
   public static int compareTo(double[] paramArrayOfDouble1, double[] paramArrayOfDouble2)
   {
-    AppMethodBeat.i(117097);
+    AppMethodBeat.i(109651);
     int j = 0;
     int i = 0;
     for (;;)
@@ -249,13 +249,13 @@ public final class JceUtil
       if ((i >= paramArrayOfDouble1.length) || (j >= paramArrayOfDouble2.length))
       {
         i = compareTo(paramArrayOfDouble1.length, paramArrayOfDouble2.length);
-        AppMethodBeat.o(117097);
+        AppMethodBeat.o(109651);
         return i;
       }
       int k = compareTo(paramArrayOfDouble1[i], paramArrayOfDouble2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117097);
+        AppMethodBeat.o(109651);
         return k;
       }
       j += 1;
@@ -265,7 +265,7 @@ public final class JceUtil
   
   public static int compareTo(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    AppMethodBeat.i(117096);
+    AppMethodBeat.i(109650);
     int j = 0;
     int i = 0;
     for (;;)
@@ -273,13 +273,13 @@ public final class JceUtil
       if ((i >= paramArrayOfFloat1.length) || (j >= paramArrayOfFloat2.length))
       {
         i = compareTo(paramArrayOfFloat1.length, paramArrayOfFloat2.length);
-        AppMethodBeat.o(117096);
+        AppMethodBeat.o(109650);
         return i;
       }
       int k = compareTo(paramArrayOfFloat1[i], paramArrayOfFloat2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117096);
+        AppMethodBeat.o(109650);
         return k;
       }
       j += 1;
@@ -289,7 +289,7 @@ public final class JceUtil
   
   public static int compareTo(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    AppMethodBeat.i(117094);
+    AppMethodBeat.i(109648);
     int j = 0;
     int i = 0;
     for (;;)
@@ -297,13 +297,13 @@ public final class JceUtil
       if ((i >= paramArrayOfInt1.length) || (j >= paramArrayOfInt2.length))
       {
         i = compareTo(paramArrayOfInt1.length, paramArrayOfInt2.length);
-        AppMethodBeat.o(117094);
+        AppMethodBeat.o(109648);
         return i;
       }
       int k = compareTo(paramArrayOfInt1[i], paramArrayOfInt2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117094);
+        AppMethodBeat.o(109648);
         return k;
       }
       j += 1;
@@ -313,7 +313,7 @@ public final class JceUtil
   
   public static int compareTo(long[] paramArrayOfLong1, long[] paramArrayOfLong2)
   {
-    AppMethodBeat.i(117095);
+    AppMethodBeat.i(109649);
     int j = 0;
     int i = 0;
     for (;;)
@@ -321,13 +321,13 @@ public final class JceUtil
       if ((i >= paramArrayOfLong1.length) || (j >= paramArrayOfLong2.length))
       {
         i = compareTo(paramArrayOfLong1.length, paramArrayOfLong2.length);
-        AppMethodBeat.o(117095);
+        AppMethodBeat.o(109649);
         return i;
       }
       int k = compareTo(paramArrayOfLong1[i], paramArrayOfLong2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117095);
+        AppMethodBeat.o(109649);
         return k;
       }
       j += 1;
@@ -337,7 +337,7 @@ public final class JceUtil
   
   public static <T extends Comparable<T>> int compareTo(T[] paramArrayOfT1, T[] paramArrayOfT2)
   {
-    AppMethodBeat.i(117089);
+    AppMethodBeat.i(109643);
     int j = 0;
     int i = 0;
     for (;;)
@@ -345,13 +345,13 @@ public final class JceUtil
       if ((i >= paramArrayOfT1.length) || (j >= paramArrayOfT2.length))
       {
         i = compareTo(paramArrayOfT1.length, paramArrayOfT2.length);
-        AppMethodBeat.o(117089);
+        AppMethodBeat.o(109643);
         return i;
       }
       int k = paramArrayOfT1[i].compareTo(paramArrayOfT2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117089);
+        AppMethodBeat.o(109643);
         return k;
       }
       j += 1;
@@ -361,7 +361,7 @@ public final class JceUtil
   
   public static int compareTo(short[] paramArrayOfShort1, short[] paramArrayOfShort2)
   {
-    AppMethodBeat.i(117093);
+    AppMethodBeat.i(109647);
     int j = 0;
     int i = 0;
     for (;;)
@@ -369,13 +369,13 @@ public final class JceUtil
       if ((i >= paramArrayOfShort1.length) || (j >= paramArrayOfShort2.length))
       {
         i = compareTo(paramArrayOfShort1.length, paramArrayOfShort2.length);
-        AppMethodBeat.o(117093);
+        AppMethodBeat.o(109647);
         return i;
       }
       int k = compareTo(paramArrayOfShort1[i], paramArrayOfShort2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117093);
+        AppMethodBeat.o(109647);
         return k;
       }
       j += 1;
@@ -385,7 +385,7 @@ public final class JceUtil
   
   public static int compareTo(boolean[] paramArrayOfBoolean1, boolean[] paramArrayOfBoolean2)
   {
-    AppMethodBeat.i(117090);
+    AppMethodBeat.i(109644);
     int j = 0;
     int i = 0;
     for (;;)
@@ -393,13 +393,13 @@ public final class JceUtil
       if ((i >= paramArrayOfBoolean1.length) || (j >= paramArrayOfBoolean2.length))
       {
         i = compareTo(paramArrayOfBoolean1.length, paramArrayOfBoolean2.length);
-        AppMethodBeat.o(117090);
+        AppMethodBeat.o(109644);
         return i;
       }
       int k = compareTo(paramArrayOfBoolean1[i], paramArrayOfBoolean2[j]);
       if (k != 0)
       {
-        AppMethodBeat.o(117090);
+        AppMethodBeat.o(109644);
         return k;
       }
       j += 1;
@@ -439,9 +439,9 @@ public final class JceUtil
   
   public static boolean equals(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(117086);
+    AppMethodBeat.i(109640);
     boolean bool = paramObject1.equals(paramObject2);
-    AppMethodBeat.o(117086);
+    AppMethodBeat.o(109640);
     return bool;
   }
   
@@ -457,11 +457,11 @@ public final class JceUtil
   
   public static String getHexdump(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(117106);
+    AppMethodBeat.i(109660);
     int i = paramByteBuffer.remaining();
     if (i == 0)
     {
-      AppMethodBeat.o(117106);
+      AppMethodBeat.o(109660);
       return "empty";
     }
     StringBuffer localStringBuffer = new StringBuffer(paramByteBuffer.remaining() * 3 - 1);
@@ -476,7 +476,7 @@ public final class JceUtil
       {
         paramByteBuffer.position(j);
         paramByteBuffer = localStringBuffer.toString();
-        AppMethodBeat.o(117106);
+        AppMethodBeat.o(109660);
         return paramByteBuffer;
       }
       localStringBuffer.append(' ');
@@ -489,18 +489,18 @@ public final class JceUtil
   
   public static String getHexdump(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(117105);
+    AppMethodBeat.i(109659);
     paramArrayOfByte = getHexdump(ByteBuffer.wrap(paramArrayOfByte));
-    AppMethodBeat.o(117105);
+    AppMethodBeat.o(109659);
     return paramArrayOfByte;
   }
   
   public static byte[] getJceBufArray(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(117104);
+    AppMethodBeat.i(109658);
     byte[] arrayOfByte = new byte[paramByteBuffer.position()];
     System.arraycopy(paramByteBuffer.array(), 0, arrayOfByte, 0, arrayOfByte.length);
-    AppMethodBeat.o(117104);
+    AppMethodBeat.o(109658);
     return arrayOfByte;
   }
   
@@ -516,17 +516,17 @@ public final class JceUtil
   
   public static int hashCode(double paramDouble)
   {
-    AppMethodBeat.i(117098);
+    AppMethodBeat.i(109652);
     int i = hashCode(Double.doubleToLongBits(paramDouble));
-    AppMethodBeat.o(117098);
+    AppMethodBeat.o(109652);
     return i;
   }
   
   public static int hashCode(float paramFloat)
   {
-    AppMethodBeat.i(117100);
+    AppMethodBeat.i(109654);
     int i = Float.floatToIntBits(paramFloat);
-    AppMethodBeat.o(117100);
+    AppMethodBeat.o(109654);
     return i + 629;
   }
   
@@ -542,12 +542,12 @@ public final class JceUtil
   
   public static int hashCode(Object paramObject)
   {
-    AppMethodBeat.i(117103);
+    AppMethodBeat.i(109657);
     for (;;)
     {
       if (paramObject == null)
       {
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return 629;
       }
       if (!paramObject.getClass().isArray()) {
@@ -556,55 +556,55 @@ public final class JceUtil
       if ((paramObject instanceof long[]))
       {
         i = hashCode((long[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       if ((paramObject instanceof int[]))
       {
         i = hashCode((int[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       if ((paramObject instanceof short[]))
       {
         i = hashCode((short[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       if ((paramObject instanceof char[]))
       {
         i = hashCode((char[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       if ((paramObject instanceof byte[]))
       {
         i = hashCode((byte[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       if ((paramObject instanceof double[]))
       {
         i = hashCode((double[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       if ((paramObject instanceof float[]))
       {
         i = hashCode((float[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       if ((paramObject instanceof boolean[]))
       {
         i = hashCode((boolean[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       if ((paramObject instanceof JceStruct[]))
       {
         i = hashCode((JceStruct[])paramObject);
-        AppMethodBeat.o(117103);
+        AppMethodBeat.o(109657);
         return i;
       }
       paramObject = (Object[])paramObject;
@@ -612,11 +612,11 @@ public final class JceUtil
     if ((paramObject instanceof JceStruct))
     {
       i = paramObject.hashCode();
-      AppMethodBeat.o(117103);
+      AppMethodBeat.o(109657);
       return i;
     }
     int i = paramObject.hashCode();
-    AppMethodBeat.o(117103);
+    AppMethodBeat.o(109657);
     return i + 629;
   }
   
@@ -677,10 +677,10 @@ public final class JceUtil
   
   public static int hashCode(double[] paramArrayOfDouble)
   {
-    AppMethodBeat.i(117099);
+    AppMethodBeat.i(109653);
     if (paramArrayOfDouble == null)
     {
-      AppMethodBeat.o(117099);
+      AppMethodBeat.o(109653);
       return 629;
     }
     int j = 17;
@@ -689,7 +689,7 @@ public final class JceUtil
     {
       if (i >= paramArrayOfDouble.length)
       {
-        AppMethodBeat.o(117099);
+        AppMethodBeat.o(109653);
         return j;
       }
       j = j * 37 + (int)(Double.doubleToLongBits(paramArrayOfDouble[i]) ^ Double.doubleToLongBits(paramArrayOfDouble[i]) >> 32);
@@ -699,10 +699,10 @@ public final class JceUtil
   
   public static int hashCode(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(117101);
+    AppMethodBeat.i(109655);
     if (paramArrayOfFloat == null)
     {
-      AppMethodBeat.o(117101);
+      AppMethodBeat.o(109655);
       return 629;
     }
     int j = 17;
@@ -711,7 +711,7 @@ public final class JceUtil
     {
       if (i >= paramArrayOfFloat.length)
       {
-        AppMethodBeat.o(117101);
+        AppMethodBeat.o(109655);
         return j;
       }
       j = j * 37 + Float.floatToIntBits(paramArrayOfFloat[i]);
@@ -763,10 +763,10 @@ public final class JceUtil
   
   public static int hashCode(JceStruct[] paramArrayOfJceStruct)
   {
-    AppMethodBeat.i(117102);
+    AppMethodBeat.i(109656);
     if (paramArrayOfJceStruct == null)
     {
-      AppMethodBeat.o(117102);
+      AppMethodBeat.o(109656);
       return 629;
     }
     int j = 17;
@@ -775,7 +775,7 @@ public final class JceUtil
     {
       if (i >= paramArrayOfJceStruct.length)
       {
-        AppMethodBeat.o(117102);
+        AppMethodBeat.o(109656);
         return j;
       }
       j = j * 37 + paramArrayOfJceStruct[i].hashCode();
@@ -829,7 +829,7 @@ public final class JceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.JceUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -14,23 +14,23 @@ import java.util.Set;
 final class as
   implements r, bm
 {
-  private Set<Scope> GR = null;
-  private final ef<?> HW;
-  private final j MW;
-  private ak NE = null;
-  private boolean OM = false;
+  private Set<Scope> IG = null;
+  private final ef<?> JL;
+  private final j OL;
+  private ak Pt = null;
+  private boolean QB = false;
   
   public as(j paramj, ef<?> paramef)
   {
-    this.MW = paramef;
+    this.OL = paramef;
     Object localObject;
-    this.HW = localObject;
+    this.JL = localObject;
   }
   
-  private void iX()
+  private void jg()
   {
-    if ((this.OM) && (this.NE != null)) {
-      this.MW.a(this.NE, this.GR);
+    if ((this.QB) && (this.Pt != null)) {
+      this.OL.a(this.Pt, this.IG);
     }
   }
   
@@ -39,24 +39,24 @@ final class as
     if ((paramak == null) || (paramSet == null))
     {
       Log.wtf("GoogleApiManager", "Received null response from onSignInSuccess", new Exception());
-      k(new ConnectionResult(4));
+      l(new ConnectionResult(4));
       return;
     }
-    this.NE = paramak;
-    this.GR = paramSet;
-    iX();
+    this.Pt = paramak;
+    this.IG = paramSet;
+    jg();
   }
   
   public final void c(final ConnectionResult paramConnectionResult)
   {
-    aq.a(this.OB).post(new Runnable()
+    aq.a(this.Qq).post(new Runnable()
     {
       public final void run()
       {
-        if (paramConnectionResult.gm())
+        if (paramConnectionResult.gw())
         {
           as.a(as.this);
-          if (as.b(as.this).gs())
+          if (as.b(as.this).gC())
           {
             as.c(as.this);
             return;
@@ -64,14 +64,14 @@ final class as
           as.b(as.this).a(null, Collections.emptySet());
           return;
         }
-        ((ar)aq.j(as.this.OB).get(as.d(as.this))).a(paramConnectionResult);
+        ((ar)aq.j(as.this.Qq).get(as.d(as.this))).a(paramConnectionResult);
       }
     });
   }
   
-  public final void k(ConnectionResult paramConnectionResult)
+  public final void l(ConnectionResult paramConnectionResult)
   {
-    ((ar)aq.j(this.OB).get(this.HW)).k(paramConnectionResult);
+    ((ar)aq.j(this.Qq).get(this.JL)).l(paramConnectionResult);
   }
 }
 

@@ -11,7 +11,14 @@ class o
   
   public void run()
   {
-    QLog.d("MSF.C.NetConnTag", 1, "asyncSelectAndConnect threadId: " + Thread.currentThread().getId() + ", threadName" + Thread.currentThread().getName() + ", connID" + this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("asyncSelectAndConnect threadId: ");
+    localStringBuilder.append(Thread.currentThread().getId());
+    localStringBuilder.append(", threadName");
+    localStringBuilder.append(Thread.currentThread().getName());
+    localStringBuilder.append(", connID");
+    localStringBuilder.append(this.a);
+    QLog.d("MSF.C.NetConnTag", 1, localStringBuilder.toString());
     if (!n.a(this.e, this.b, this.c, this.d, this.a)) {
       this.e.i.a(-1, this.a);
     }
@@ -19,7 +26,7 @@ class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.o
  * JD-Core Version:    0.7.0.1
  */

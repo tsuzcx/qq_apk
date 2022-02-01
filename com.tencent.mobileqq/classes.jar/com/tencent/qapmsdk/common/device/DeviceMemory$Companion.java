@@ -16,34 +16,39 @@ public final class DeviceMemory$Companion
   @SuppressLint({"ObsoleteSdkInt"})
   public final long getScPageSize(long paramLong)
   {
-    if (AndroidVersion.Companion.isL()) {}
-    for (;;)
-    {
+    long l1;
+    if (AndroidVersion.Companion.isL()) {
       try
       {
         long l2 = Os.sysconf(OsConstants._SC_PAGESIZE);
         l1 = l2;
-        if (l2 <= 0L) {
-          l1 = Os.sysconf(OsConstants._SC_PAGE_SIZE);
+        if (l2 > 0L) {
+          break label98;
         }
+        l1 = Os.sysconf(OsConstants._SC_PAGE_SIZE);
       }
       catch (Exception localException)
       {
-        Logger.INSTANCE.d(new String[] { "QAPM_common_DeviceMemory", localException + ": get system page size failed." });
+        Logger localLogger = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localException);
+        localStringBuilder.append(": get system page size failed.");
+        localLogger.d(new String[] { "QAPM_common_DeviceMemory", localStringBuilder.toString() });
         l1 = 0L;
-        continue;
       }
-      if (l1 > 0L) {
-        paramLong = l1;
-      }
-      return paramLong;
-      long l1 = paramLong;
+    } else {
+      l1 = paramLong;
     }
+    label98:
+    if (l1 > 0L) {
+      paramLong = l1;
+    }
+    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.device.DeviceMemory.Companion
  * JD-Core Version:    0.7.0.1
  */

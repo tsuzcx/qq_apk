@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/sc"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView style="@style/sd" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/br0" />
+        <TextView android:id="@id/ii0" android:paddingRight="@dimen/f4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jo" />
+        <TextView android:id="@id/ii7" android:paddingRight="@dimen/f4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ig" style="@style/jo" />
+        <ProgressBar android:gravity="center" android:layout_gravity="center|left" android:id="@id/ii8" android:padding="@dimen/iq" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" style="@style/a85" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ii4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m7">
+            <ImageView android:id="@id/ii5" android:paddingRight="@dimen/ig" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b0s" />
+            <TextView android:textSize="11.0dip" android:textColor="@color/a14" android:gravity="center_vertical" android:id="@id/ii6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ke9" android:includeFontPadding="false" />
+        </LinearLayout>
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/sg" />
+    </LinearLayout>
+</LinearLayout>

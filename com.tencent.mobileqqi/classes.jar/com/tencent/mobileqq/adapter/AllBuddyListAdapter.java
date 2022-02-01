@@ -25,8 +25,8 @@ import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
+import exh;
 import exi;
-import exj;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -48,7 +48,7 @@ public class AllBuddyListAdapter
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new exi(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new exh(this);
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private char[] jdField_a_of_type_ArrayOfChar = null;
   private int[] jdField_a_of_type_ArrayOfInt = null;
@@ -82,8 +82,8 @@ public class AllBuddyListAdapter
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903145, paramViewGroup, false);
       paramViewGroup = new BuddyListAdapter.ViewTag();
       paramViewGroup.c = ((ImageView)paramView.findViewById(2131230940));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131231395));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131231396));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131231394));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131231395));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       localFriends = (Friends)getItem(paramInt);
@@ -114,7 +114,7 @@ public class AllBuddyListAdapter
       paramViewGroup.e.setText((CharSequence)localObject1);
       paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131362080));
       paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      paramViewGroup.c.setOnClickListener(new exj(this, localFriends));
+      paramViewGroup.c.setOnClickListener(new exi(this, localFriends));
       paramViewGroup = new StringBuilder(str);
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         paramViewGroup.append(this.jdField_a_of_type_AndroidContentContext.getString(2131559165)).append((CharSequence)localObject1);

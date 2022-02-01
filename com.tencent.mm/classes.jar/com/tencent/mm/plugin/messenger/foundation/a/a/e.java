@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.storage.ax;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.storage.bp;
 import java.util.List;
 
 public abstract interface e
-  extends g
+  extends IStorage
 {
-  public abstract boolean Td(String paramString);
+  public abstract bp aLv(String paramString);
   
-  public abstract List<ax> bPV();
+  public abstract boolean aLw(String paramString);
+  
+  public abstract List<bp> gbe();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.a.e
  * JD-Core Version:    0.7.0.1
  */

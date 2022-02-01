@@ -1,37 +1,52 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import a.f.b.j;
-import a.l;
-import a.v;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.m;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.l;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "()V", "onLoadMore", "", "onScrollStateChanged", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "()V", "onLoadMore", "", "onScrollStateChanged", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "newState", "", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class e
-  extends RecyclerView.m
+  extends RecyclerView.l
 {
-  public abstract void Kt();
+  public abstract void onLoadMore();
   
-  public final void c(RecyclerView paramRecyclerView, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super.c(paramRecyclerView, paramInt);
-    if (paramRecyclerView == null) {
-      j.ebi();
-    }
+    b localb = new b();
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt);
+    a.c("com/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
+    s.u(paramRecyclerView, "recyclerView");
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
     paramRecyclerView = paramRecyclerView.getLayoutManager();
     if (paramRecyclerView == null) {
-      throw new v("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
+      throw new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
     }
     paramRecyclerView = (LinearLayoutManager)paramRecyclerView;
-    if ((paramInt == 0) && (paramRecyclerView.iw() == paramRecyclerView.getItemCount() - 1)) {
-      Kt();
+    if ((paramInt == 0) && (paramRecyclerView.Jx() == paramRecyclerView.getItemCount() - 1)) {
+      onLoadMore();
     }
+    a.a(this, "com/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    b localb = new b();
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt1);
+    localb.sc(paramInt2);
+    a.c("com/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    a.a(this, "com/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.e
  * JD-Core Version:    0.7.0.1
  */

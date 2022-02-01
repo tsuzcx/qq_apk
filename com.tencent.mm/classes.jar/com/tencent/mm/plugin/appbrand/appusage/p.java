@@ -1,94 +1,124 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import a.f.b.j;
-import a.l;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.config.r;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.cwv;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.Collections;
-import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandLocalUsageStorageNewImpl;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandLocalUsageStorage;", "()V", "TAG", "", "add", "", "listener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "looper", "Landroid/os/Looper;", "getCount", "", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "remove", "removeUsage", "", "username", "versionType", "plugin-appbrand-integration_release"})
-public final class p
-  extends k
-  implements ag
+public enum p
 {
-  private final String TAG = "MicroMsg.AppBrandLocalUsageStorageNewImpl";
+  private static volatile cwv qOY;
+  private static final Set<Object> qOZ;
   
-  public final boolean aF(String paramString, int paramInt)
+  static
   {
-    boolean bool1 = false;
-    AppMethodBeat.i(134539);
-    al.m(paramString, null, paramInt);
-    if (!g.auK().aM(paramString, paramInt)) {}
-    for (;;)
+    AppMethodBeat.i(44546);
+    qPa = new p[0];
+    qOZ = Collections.newSetFromMap(new ConcurrentHashMap());
+    AppMethodBeat.o(44546);
+  }
+  
+  public static boolean ciO()
+  {
+    return true;
+  }
+  
+  public static boolean ciP()
+  {
+    AppMethodBeat.i(44539);
+    switch (1.qPb[ciQ().ordinal()])
     {
-      try
-      {
-        boolean bool2 = g.auK().aN(paramString, paramInt);
-        if (bool2) {
-          continue;
-        }
-        bool1 = true;
-      }
-      catch (Exception paramString)
-      {
-        ab.printErrStackTrace(this.TAG, (Throwable)paramString, "removeUsage", new Object[0]);
-        continue;
-      }
-      AppMethodBeat.o(134539);
-      return bool1;
-      bool1 = false;
     }
-  }
-  
-  public final void add(k.a parama)
-  {
-    AppMethodBeat.i(134541);
-    add(parama, Looper.getMainLooper());
-    AppMethodBeat.o(134541);
-  }
-  
-  public final void add(k.a parama, Looper paramLooper)
-  {
-    AppMethodBeat.i(134542);
-    g.auK().add(parama, paramLooper);
-    g.auF().add(parama, paramLooper);
-    AppMethodBeat.o(134542);
-  }
-  
-  public final List<? extends LocalUsageInfo> nu(int paramInt)
-  {
-    AppMethodBeat.i(134540);
-    if (paramInt <= 0)
+    do
     {
-      localObject = Collections.emptyList();
-      j.p(localObject, "Collections.emptyList<LocalUsageInfo>()");
-      AppMethodBeat.o(134540);
-      return localObject;
+      AppMethodBeat.o(44539);
+      return false;
+      AppMethodBeat.o(44539);
+      return false;
+      AppMethodBeat.o(44539);
+      return true;
+      if (ciR())
+      {
+        AppMethodBeat.o(44539);
+        return true;
+      }
+    } while (qOY == null);
+    if (qOY.uYb >= qOY.aaCi)
+    {
+      AppMethodBeat.o(44539);
+      return true;
     }
-    Object localObject = w.d(g.auK().a(null, paramInt, 0));
-    j.p(localObject, "obtainHistoryList(SubCor…istories(null, count, 0))");
-    localObject = (List)localObject;
-    AppMethodBeat.o(134540);
-    return localObject;
+    AppMethodBeat.o(44539);
+    return false;
   }
   
-  public final void remove(k.a parama)
+  static a ciQ()
   {
-    AppMethodBeat.i(134543);
-    g.auK().remove(parama);
-    g.auF().remove(parama);
-    AppMethodBeat.o(134543);
+    AppMethodBeat.i(44541);
+    if (!h.baz())
+    {
+      locala = a.qPc;
+      AppMethodBeat.o(44541);
+      return locala;
+    }
+    a locala = a.qPd;
+    AppMethodBeat.o(44541);
+    return locala;
+  }
+  
+  static boolean ciR()
+  {
+    AppMethodBeat.i(44542);
+    boolean bool = h.baE().ban().getBoolean(at.a.acNB, false);
+    AppMethodBeat.o(44542);
+    return bool;
+  }
+  
+  static void ciS()
+  {
+    AppMethodBeat.i(44543);
+    h.baE().ban().set(at.a.acNB, Boolean.TRUE);
+    AppMethodBeat.o(44543);
+  }
+  
+  public static cwv ciT()
+  {
+    return qOY;
+  }
+  
+  public static void clearData()
+  {
+    qOY = null;
+  }
+  
+  static enum a
+  {
+    final int value;
+    
+    static
+    {
+      AppMethodBeat.i(44534);
+      qPc = new a("FORCE_OFF", 0, 0);
+      qPd = new a("FORCE_ON", 1, 1);
+      qPe = new a("DYNAMIC_THRESHOLD", 2, 2);
+      qPf = new a[] { qPc, qPd, qPe };
+      AppMethodBeat.o(44534);
+    }
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.p
  * JD-Core Version:    0.7.0.1
  */

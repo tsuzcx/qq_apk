@@ -28,9 +28,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.Switch;
 import com.tencent.widget.XListView;
+import dpd;
 import dpe;
 import dpf;
-import dpg;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +40,12 @@ public class TroopGagActivity
 {
   public LinearLayout a;
   public TextView a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new dpe(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dpf(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new dpd(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new dpe(this);
   TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
   public Switch a;
   public XListView a;
-  public dpg a;
+  public dpf a;
   public String a;
   public List a;
   LinearLayout b;
@@ -105,10 +105,10 @@ public class TroopGagActivity
     this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramBundle.b(this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this);
     paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130903399, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131232459));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131232458));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextAppearance(this, 2131624137);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131560428));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramBundle.findViewById(2131231313));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramBundle.findViewById(2131231312));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setFocusable(false);
@@ -130,7 +130,7 @@ public class TroopGagActivity
     localObject = View.inflate(this, 2130903648, null);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
     localObject = View.inflate(this, 2130903380, null);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)((View)localObject).findViewById(2131232380));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)((View)localObject).findViewById(2131232379));
     TroopGagMgr.TroopGagInfo localTroopGagInfo = ((TroopGagMgr)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(44)).a(this.jdField_a_of_type_JavaLangString, false);
     if ((localTroopGagInfo != null) && (localTroopGagInfo.a != 0L)) {
       this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
@@ -142,8 +142,8 @@ public class TroopGagActivity
       localObject = View.inflate(this, 2130903648, null);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
       this.jdField_a_of_type_ComTencentWidgetXListView.b(this.jdField_b_of_type_AndroidWidgetLinearLayout);
-      this.jdField_a_of_type_Dpg = new dpg(this);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dpg);
+      this.jdField_a_of_type_Dpf = new dpf(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dpf);
       this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130837729);
       setContentView(paramBundle);
       setTitle(getString(2131562887));
@@ -166,8 +166,8 @@ public class TroopGagActivity
   
   protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Dpg != null) {
-      this.jdField_a_of_type_Dpg.b();
+    if (this.jdField_a_of_type_Dpf != null) {
+      this.jdField_a_of_type_Dpf.b();
     }
     b(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
     b(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);

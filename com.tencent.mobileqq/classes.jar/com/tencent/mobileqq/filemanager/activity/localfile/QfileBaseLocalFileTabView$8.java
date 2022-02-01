@@ -7,13 +7,13 @@ class QfileBaseLocalFileTabView$8
   
   public void run()
   {
-    this.this$0.f();
-    this.this$0.k();
+    this.this$0.e();
+    this.this$0.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.8
  * JD-Core Version:    0.7.0.1
  */

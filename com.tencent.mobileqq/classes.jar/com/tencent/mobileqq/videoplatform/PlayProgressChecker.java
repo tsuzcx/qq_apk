@@ -24,7 +24,11 @@ public class PlayProgressChecker
   
   protected String getLogTag()
   {
-    return "[VideoPlatForm]PlayProgressChecker[" + this.mId + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[VideoPlatForm]PlayProgressChecker[");
+    localStringBuilder.append(this.mId);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void run()
@@ -32,17 +36,28 @@ public class PlayProgressChecker
     if (this.mStoped.get()) {
       return;
     }
-    if ((this.mPlayer != null) && (this.mPlayer.isPlaying()))
+    Object localObject = this.mPlayer;
+    if ((localObject != null) && (((ISuperPlayer)localObject).isPlaying()))
     {
       long l = this.mPlayer.getCurrentPositionMs();
-      if (LogUtil.isColorLevel()) {
-        LogUtil.d(getLogTag(), 2, "ProgressChecker, playPos = " + l);
+      if (LogUtil.isColorLevel())
+      {
+        localObject = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ProgressChecker, playPos = ");
+        localStringBuilder.append(l);
+        LogUtil.d((String)localObject, 2, localStringBuilder.toString());
       }
       if ((l > 0L) && (this.mCallback != null)) {
         ThreadUtil.postOnUIThread(new PlayProgressChecker.1(this, l));
       }
     }
     ThreadUtil.postOnSubThreadDelayed(this, 200L);
+  }
+  
+  public void setId(long paramLong)
+  {
+    this.mId = paramLong;
   }
   
   public void start()
@@ -66,7 +81,7 @@ public class PlayProgressChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.PlayProgressChecker
  * JD-Core Version:    0.7.0.1
  */

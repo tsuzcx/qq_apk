@@ -1,65 +1,76 @@
 package com.tencent.av.compat;
 
 import android.content.Intent;
+import com.tencent.av.SessionMgr;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
-import lfb;
-import lid;
-import lmy;
 import mqq.app.BaseActivity;
 
-public class AVCallCompactHelper$1
+class AVCallCompactHelper$1
   implements Runnable
 {
-  public AVCallCompactHelper$1(lmy paramlmy, BaseActivity paramBaseActivity) {}
+  AVCallCompactHelper$1(AVCallCompactHelper paramAVCallCompactHelper, BaseActivity paramBaseActivity) {}
   
   public void run()
   {
-    Object localObject = null;
-    Intent localIntent = lmy.a(this.this$0, lmy.a());
-    String str1;
+    Intent localIntent = AVCallCompactHelper.a(this.this$0, AVCallCompactHelper.a());
+    boolean bool = this.a.isResume();
+    Object localObject1 = null;
+    Object localObject2;
     int i;
-    if ((this.a.isResume()) && (localIntent != null))
+    SessionInfo localSessionInfo1;
+    if ((bool) && (localIntent != null))
     {
-      int j = lfb.a().a();
-      String str2 = lmy.a(lmy.a(), localIntent);
-      lid locallid = lfb.a().c(str2);
-      localObject = locallid;
-      str1 = str2;
+      int j = SessionMgr.a().c();
+      localObject2 = AVCallCompactHelper.b(AVCallCompactHelper.a(), localIntent);
+      SessionInfo localSessionInfo2 = SessionMgr.a().d((String)localObject2);
       i = j;
+      localObject1 = localObject2;
+      localSessionInfo1 = localSessionInfo2;
       if (j >= 2)
       {
-        localObject = locallid;
-        str1 = str2;
         i = j;
-        if (locallid != null)
+        localObject1 = localObject2;
+        localSessionInfo1 = localSessionInfo2;
+        if (localSessionInfo2 != null)
         {
-          localObject = locallid;
-          str1 = str2;
           i = j;
-          if (locallid.i())
+          localObject1 = localObject2;
+          localSessionInfo1 = localSessionInfo2;
+          if (localSessionInfo2.h())
           {
             this.a.startActivity(localIntent);
             i = j;
-            str1 = str2;
-            localObject = locallid;
+            localObject1 = localObject2;
+            localSessionInfo1 = localSessionInfo2;
           }
         }
       }
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("CompatModeTag", 2, "checkThirdCallIntent, isResume[" + this.a.isResume() + "], count[" + i + "], session[" + str1 + "], info[" + localObject + "]");
-      }
-      return;
       i = 0;
-      str1 = null;
+      localSessionInfo1 = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkThirdCallIntent, isResume[");
+      ((StringBuilder)localObject2).append(this.a.isResume());
+      ((StringBuilder)localObject2).append("], count[");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append("], session[");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append("], info[");
+      ((StringBuilder)localObject2).append(localSessionInfo1);
+      ((StringBuilder)localObject2).append("]");
+      QLog.i("CompatModeTag", 2, ((StringBuilder)localObject2).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.compat.AVCallCompactHelper.1
  * JD-Core Version:    0.7.0.1
  */

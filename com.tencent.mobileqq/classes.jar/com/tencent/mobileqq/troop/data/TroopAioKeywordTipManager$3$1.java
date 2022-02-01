@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.data;
 
-import bbpz;
 import com.tencent.mobileqq.data.MessageRecord;
 
 class TroopAioKeywordTipManager$3$1
@@ -10,16 +9,18 @@ class TroopAioKeywordTipManager$3$1
   
   public void run()
   {
-    String str = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("key_aio_keyword");
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = ((MessageRecord)localObject).getExtInfoFromExtStr("key_aio_keyword");
+    } else {
+      localObject = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$3.a.a(str, this.jdField_a_of_type_JavaLangInteger);
+    this.c.d.a((String)localObject, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.3.1
  * JD-Core Version:    0.7.0.1
  */

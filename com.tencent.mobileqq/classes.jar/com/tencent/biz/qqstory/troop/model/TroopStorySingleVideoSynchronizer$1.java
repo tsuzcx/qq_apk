@@ -1,11 +1,13 @@
 package com.tencent.biz.qqstory.troop.model;
 
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.Collections;
-import xqo;
 
-public class TroopStorySingleVideoSynchronizer$1
+class TroopStorySingleVideoSynchronizer$1
   implements Runnable
 {
+  TroopStorySingleVideoSynchronizer$1(TroopStorySingleVideoSynchronizer paramTroopStorySingleVideoSynchronizer, StoryVideoItem paramStoryVideoItem) {}
+  
   public void run()
   {
     this.this$0.a(Collections.singletonList(this.a), true);
@@ -13,7 +15,7 @@ public class TroopStorySingleVideoSynchronizer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.model.TroopStorySingleVideoSynchronizer.1
  * JD-Core Version:    0.7.0.1
  */

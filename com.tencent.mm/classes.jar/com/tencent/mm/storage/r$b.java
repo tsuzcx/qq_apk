@@ -1,24 +1,32 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-public enum r$b
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+final class r$b
+  extends u
+  implements a<Boolean>
 {
+  public static final b acEt;
+  
   static
   {
-    AppMethodBeat.i(11863);
-    ywO = new b("INSERT", 0);
-    ywP = new b("DELETE", 1);
-    ywQ = new b("UPDATE", 2);
-    ywR = new b[] { ywO, ywP, ywQ };
-    AppMethodBeat.o(11863);
+    AppMethodBeat.i(248889);
+    acEt = new b();
+    AppMethodBeat.o(248889);
   }
   
-  private r$b() {}
+  r$b()
+  {
+    super(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.r.b
  * JD-Core Version:    0.7.0.1
  */

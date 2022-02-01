@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class stLinkStragegyArgs
   extends JceStruct
 {
-  public boolean hasInstalledWeish;
-  public int todayClickCount;
-  public int todayEnterCount;
-  public int todayLastLinkId;
+  public boolean hasInstalledWeish = false;
+  public int todayClickCount = 0;
+  public int todayEnterCount = 0;
+  public int todayLastLinkId = 0;
   
   public stLinkStragegyArgs() {}
   
@@ -32,7 +32,17 @@ public final class stLinkStragegyArgs
   
   public String toString()
   {
-    return "stLinkStragegyArgs{hasInstalledWeish=" + this.hasInstalledWeish + ", todayEnterCount=" + this.todayEnterCount + ", todayClickCount=" + this.todayClickCount + ", todayLastLinkId=" + this.todayLastLinkId + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stLinkStragegyArgs{hasInstalledWeish=");
+    localStringBuilder.append(this.hasInstalledWeish);
+    localStringBuilder.append(", todayEnterCount=");
+    localStringBuilder.append(this.todayEnterCount);
+    localStringBuilder.append(", todayClickCount=");
+    localStringBuilder.append(this.todayClickCount);
+    localStringBuilder.append(", todayLastLinkId=");
+    localStringBuilder.append(this.todayLastLinkId);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -45,7 +55,7 @@ public final class stLinkStragegyArgs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stLinkStragegyArgs
  * JD-Core Version:    0.7.0.1
  */

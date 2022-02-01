@@ -7,53 +7,53 @@ import java.util.List;
 
 final class d
 {
-  final f rh;
-  final e ri;
-  final List<View> rj;
+  final f sX;
+  final e sY;
+  final List<View> sZ;
   
   d(f paramf)
   {
-    this.rh = paramf;
-    this.ri = new e();
-    this.rj = new ArrayList();
+    this.sX = paramf;
+    this.sY = new e();
+    this.sZ = new ArrayList();
   }
   
-  private void T(View paramView)
+  private void Z(View paramView)
   {
-    this.rj.add(paramView);
-    this.rh.aa(paramView);
+    this.sZ.add(paramView);
+    this.sX.ag(paramView);
   }
   
-  private boolean U(View paramView)
+  private boolean aa(View paramView)
   {
-    if (this.rj.remove(paramView))
+    if (this.sZ.remove(paramView))
     {
-      this.rh.ab(paramView);
+      this.sX.ah(paramView);
       return true;
     }
     return false;
   }
   
-  private int aa(int paramInt)
+  private int al(int paramInt)
   {
     if (paramInt < 0)
     {
       paramInt = -1;
       return paramInt;
     }
-    int j = this.rh.getChildCount();
+    int j = this.sX.getChildCount();
     int i = paramInt;
     for (;;)
     {
       if (i >= j) {
         break label72;
       }
-      int k = paramInt - (i - this.ri.ad(i));
+      int k = paramInt - (i - this.sY.ao(i));
       if (k == 0) {
         for (;;)
         {
           paramInt = i;
-          if (!this.ri.get(i)) {
+          if (!this.sY.get(i)) {
             break;
           }
           i += 1;
@@ -65,54 +65,16 @@ final class d
     return -1;
   }
   
-  final void V(View paramView)
-  {
-    a(paramView, -1, true);
-  }
-  
-  final boolean W(View paramView)
-  {
-    return this.rj.contains(paramView);
-  }
-  
-  final void X(View paramView)
-  {
-    int i = this.rh.indexOfChild(paramView);
-    if (i < 0) {
-      throw new IllegalArgumentException("view is not a child, cannot hide " + paramView);
-    }
-    this.ri.set(i);
-    T(paramView);
-  }
-  
-  final boolean Y(View paramView)
-  {
-    int i = this.rh.indexOfChild(paramView);
-    if (i == -1)
-    {
-      U(paramView);
-      return true;
-    }
-    if (this.ri.get(i))
-    {
-      this.ri.ac(i);
-      U(paramView);
-      this.rh.removeViewAt(i);
-      return true;
-    }
-    return false;
-  }
-  
   final void a(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams, boolean paramBoolean)
   {
     if (paramInt < 0) {}
-    for (paramInt = this.rh.getChildCount();; paramInt = aa(paramInt))
+    for (paramInt = this.sX.getChildCount();; paramInt = al(paramInt))
     {
-      this.ri.b(paramInt, paramBoolean);
+      this.sY.c(paramInt, paramBoolean);
       if (paramBoolean) {
-        T(paramView);
+        Z(paramView);
       }
-      this.rh.attachViewToParent(paramView, paramInt, paramLayoutParams);
+      this.sX.attachViewToParent(paramView, paramInt, paramLayoutParams);
       return;
     }
   }
@@ -120,73 +82,140 @@ final class d
   final void a(View paramView, int paramInt, boolean paramBoolean)
   {
     if (paramInt < 0) {}
-    for (paramInt = this.rh.getChildCount();; paramInt = aa(paramInt))
+    for (paramInt = this.sX.getChildCount();; paramInt = al(paramInt))
     {
-      this.ri.b(paramInt, paramBoolean);
+      this.sY.c(paramInt, paramBoolean);
       if (paramBoolean) {
-        T(paramView);
+        Z(paramView);
       }
-      this.rh.addView(paramView, paramInt);
+      this.sX.addView(paramView, paramInt);
       return;
     }
   }
   
-  final View ab(int paramInt)
+  final void ab(View paramView)
   {
-    return this.rh.getChildAt(paramInt);
+    a(paramView, -1, true);
   }
   
-  final int cE()
+  final boolean ac(View paramView)
   {
-    return this.rh.getChildCount();
+    return this.sZ.contains(paramView);
+  }
+  
+  final void ad(View paramView)
+  {
+    int i = this.sX.indexOfChild(paramView);
+    if (i < 0) {
+      throw new IllegalArgumentException("view is not a child, cannot hide ".concat(String.valueOf(paramView)));
+    }
+    this.sY.set(i);
+    Z(paramView);
+  }
+  
+  final boolean ae(View paramView)
+  {
+    int i = this.sX.indexOfChild(paramView);
+    if (i == -1)
+    {
+      aa(paramView);
+      return true;
+    }
+    if (this.sY.get(i))
+    {
+      this.sY.an(i);
+      aa(paramView);
+      this.sX.removeViewAt(i);
+      return true;
+    }
+    return false;
+  }
+  
+  final View am(int paramInt)
+  {
+    return this.sX.getChildAt(paramInt);
+  }
+  
+  final void cL()
+  {
+    for (e locale = this.sY;; locale = locale.tb)
+    {
+      locale.ta = 0L;
+      if (locale.tb == null) {
+        break;
+      }
+    }
+    int i = this.sZ.size() - 1;
+    while (i >= 0)
+    {
+      this.sX.ah((View)this.sZ.get(i));
+      this.sZ.remove(i);
+      i -= 1;
+    }
+    this.sX.removeAllViews();
+  }
+  
+  final int cM()
+  {
+    return this.sX.getChildCount();
   }
   
   final void detachViewFromParent(int paramInt)
   {
-    paramInt = aa(paramInt);
-    this.ri.ac(paramInt);
-    this.rh.detachViewFromParent(paramInt);
+    paramInt = al(paramInt);
+    this.sY.an(paramInt);
+    this.sX.detachViewFromParent(paramInt);
   }
   
   final View getChildAt(int paramInt)
   {
-    paramInt = aa(paramInt);
-    return this.rh.getChildAt(paramInt);
+    paramInt = al(paramInt);
+    return this.sX.getChildAt(paramInt);
   }
   
   final int getChildCount()
   {
-    return this.rh.getChildCount() - this.rj.size();
+    return this.sX.getChildCount() - this.sZ.size();
+  }
+  
+  final int indexOfChild(View paramView)
+  {
+    int i = this.sX.indexOfChild(paramView);
+    if (i == -1) {}
+    while (this.sY.get(i)) {
+      return -1;
+    }
+    return i - this.sY.ao(i);
   }
   
   final void removeView(View paramView)
   {
-    int i = this.rh.indexOfChild(paramView);
+    int i = this.sX.indexOfChild(paramView);
     if (i < 0) {
       return;
     }
-    if (this.ri.ac(i)) {
-      U(paramView);
+    if (this.sY.an(i)) {
+      aa(paramView);
     }
-    this.rh.removeViewAt(i);
+    this.sX.removeViewAt(i);
   }
   
   final void removeViewAt(int paramInt)
   {
-    paramInt = aa(paramInt);
-    View localView = this.rh.getChildAt(paramInt);
+    paramInt = al(paramInt);
+    View localView = this.sX.getChildAt(paramInt);
     if (localView == null) {
       return;
     }
-    if (this.ri.ac(paramInt)) {
-      U(localView);
+    if (this.sY.an(paramInt)) {
+      aa(localView);
     }
-    this.rh.removeViewAt(paramInt);
+    this.sX.removeViewAt(paramInt);
   }
   
   public final String toString()
   {
-    return this.ri.toString() + ", hidden list:" + this.rj.size();
+    return this.sY.toString() + ", hidden list:" + this.sZ.size();
   }
 }
 

@@ -1,22 +1,31 @@
 package com.tencent.mm.ui;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tr;
-import com.tencent.mm.sdk.b.a;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class ad
+public abstract class ad
+  implements MenuItem.OnMenuItemClickListener
 {
-  public static void bK(int paramInt, String paramString)
+  private long JqZ = -1L;
+  
+  public abstract void d(MenuItem paramMenuItem);
+  
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(106131);
-    if (a.ymk != null)
+    Log.i("MicroMsg.MMCustomMenuItemClickListener", "button onclick");
+    if (this.JqZ != -1L)
     {
-      tr localtr = new tr();
-      localtr.cKj.className = paramString;
-      localtr.cKj.cKk = paramInt;
-      a.ymk.l(localtr);
+      long l = (System.nanoTime() - this.JqZ) / 1000000L;
+      if (l < 500L)
+      {
+        Log.i("MicroMsg.MMCustomMenuItemClickListener", "click time limited limitetime:%d, delaytime:%d", new Object[] { Long.valueOf(l), Long.valueOf(500L) });
+        return false;
+      }
     }
-    AppMethodBeat.o(106131);
+    this.JqZ = System.nanoTime();
+    d(paramMenuItem);
+    return false;
   }
 }
 

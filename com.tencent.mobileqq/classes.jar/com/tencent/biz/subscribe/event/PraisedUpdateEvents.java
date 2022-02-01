@@ -1,5 +1,7 @@
 package com.tencent.biz.subscribe.event;
 
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+
 public class PraisedUpdateEvents
   extends SimpleBaseEvent
 {
@@ -16,7 +18,7 @@ public class PraisedUpdateEvents
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.event.PraisedUpdateEvents
  * JD-Core Version:    0.7.0.1
  */

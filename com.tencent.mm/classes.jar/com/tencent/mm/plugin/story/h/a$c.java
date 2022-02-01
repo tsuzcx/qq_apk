@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryFavConstants;", "", "()V", "MAX_SELECT_COUNT", "", "getMAX_SELECT_COUNT", "()I", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryFavConstants;", "", "()V", "MAX_SELECT_COUNT", "", "getMAX_SELECT_COUNT", "()I", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$c
 {
-  private static final int sFY = 9;
-  public static final c sFZ;
+  public static final c Ssv;
+  private static final int Ssw;
   
   static
   {
-    AppMethodBeat.i(151117);
-    sFZ = new c();
-    sFY = 9;
-    AppMethodBeat.o(151117);
+    AppMethodBeat.i(119469);
+    Ssv = new c();
+    Ssw = 9;
+    AppMethodBeat.o(119469);
   }
   
-  public static int cEx()
+  public static int hyZ()
   {
-    return sFY;
+    return Ssw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.a.c
  * JD-Core Version:    0.7.0.1
  */

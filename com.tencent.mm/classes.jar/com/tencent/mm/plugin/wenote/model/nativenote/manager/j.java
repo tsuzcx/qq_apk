@@ -9,83 +9,83 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class j
+public class j
   implements Serializable
 {
-  private static final Pattern vzv;
-  int vzw;
-  public final ArrayList<n> vzx;
+  private static final Pattern xAk;
+  int xAl;
+  public final ArrayList<n> xAm;
   
   static
   {
-    AppMethodBeat.i(26830);
-    vzv = Pattern.compile("\\r\\n|\\r|\\n");
-    AppMethodBeat.o(26830);
+    AppMethodBeat.i(30523);
+    xAk = Pattern.compile("\\r\\n|\\r|\\n");
+    AppMethodBeat.o(30523);
   }
   
   public j(Spanned paramSpanned)
   {
-    AppMethodBeat.i(26827);
-    this.vzw = 0;
-    this.vzx = new ArrayList();
+    AppMethodBeat.i(30520);
+    this.xAl = 0;
+    this.xAm = new ArrayList();
     if (paramSpanned != null)
     {
       paramSpanned = paramSpanned.toString();
-      this.vzw = 1;
-      Matcher localMatcher = vzv.matcher(paramSpanned);
+      this.xAl = 1;
+      Matcher localMatcher = xAk.matcher(paramSpanned);
       int i = 0;
       int j;
       boolean bool1;
       if (localMatcher.find())
       {
         j = localMatcher.end();
-        if (this.vzw == 1) {}
+        if (this.xAl == 1) {}
         for (bool1 = true;; bool1 = false)
         {
           n localn = new n(i, j, bool1, false);
-          this.vzx.add(localn);
+          this.xAm.add(localn);
           i = localMatcher.end();
-          this.vzw += 1;
+          this.xAl += 1;
           break;
         }
       }
-      if (this.vzx.size() < this.vzw)
+      if (this.xAm.size() < this.xAl)
       {
         j = paramSpanned.length();
         bool1 = bool2;
-        if (this.vzw == 1) {
+        if (this.xAl == 1) {
           bool1 = true;
         }
         paramSpanned = new n(i, j, bool1, true);
-        this.vzx.add(paramSpanned);
+        this.xAm.add(paramSpanned);
       }
     }
-    AppMethodBeat.o(26827);
+    AppMethodBeat.o(30520);
   }
   
-  public final int getLineForOffset(int paramInt)
+  public final int di(int paramInt)
   {
-    AppMethodBeat.i(26828);
+    AppMethodBeat.i(30521);
     int i = 0;
-    while ((i < this.vzw) && (paramInt >= ((n)this.vzx.get(i)).Fe)) {
+    while ((i < this.xAl) && (paramInt >= ((n)this.xAm.get(i)).uH)) {
       i += 1;
     }
-    paramInt = Math.min(Math.max(0, i), this.vzx.size() - 1);
-    AppMethodBeat.o(26828);
+    paramInt = Math.min(Math.max(0, i), this.xAm.size() - 1);
+    AppMethodBeat.o(30521);
     return paramInt;
   }
   
-  public final String toString()
+  public String toString()
   {
-    AppMethodBeat.i(26829);
+    AppMethodBeat.i(30522);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Iterator localIterator = this.vzx.iterator();
+    Iterator localIterator = this.xAm.iterator();
     int i = 1;
     if (localIterator.hasNext())
     {
       localObject = (n)localIterator.next();
-      StringBuilder localStringBuilder2 = localStringBuilder1.append(i).append(": ").append(((e)localObject).akX).append("-").append(((e)localObject).Fe);
-      if (((n)localObject).vBc) {}
+      StringBuilder localStringBuilder2 = localStringBuilder1.append(i).append(": ").append(((e)localObject).uG).append("-").append(((e)localObject).uH);
+      if (((n)localObject).xBO) {}
       for (localObject = "";; localObject = ", ")
       {
         localStringBuilder2.append((String)localObject);
@@ -94,7 +94,7 @@ public final class j
       }
     }
     Object localObject = localStringBuilder1.toString();
-    AppMethodBeat.o(26829);
+    AppMethodBeat.o(30522);
     return localObject;
   }
 }

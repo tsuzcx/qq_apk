@@ -9,8 +9,9 @@ public class EntryModel
   implements Parcelable
 {
   public static final Parcelable.Creator<EntryModel> CREATOR = new EntryModel.1();
-  public static final int TYPE_C2C = 1;
-  public static final int TYPE_GROUP = 2;
+  public static final int TYPE_C2C = 0;
+  public static final int TYPE_GROUP = 1;
+  public long dwGroupClassExt;
   private String entryDataHash;
   public boolean isAdmin;
   public String name;
@@ -18,12 +19,14 @@ public class EntryModel
   public int type;
   public long uin;
   
-  public EntryModel(int paramInt, long paramLong, String paramString, boolean paramBoolean)
+  public EntryModel(int paramInt, long paramLong1, String paramString1, boolean paramBoolean, long paramLong2, String paramString2)
   {
     this.type = paramInt;
-    this.uin = paramLong;
-    this.name = paramString;
+    this.uin = paramLong1;
+    this.name = paramString1;
     this.isAdmin = paramBoolean;
+    this.dwGroupClassExt = paramLong2;
+    this.reportData = paramString2;
     this.entryDataHash = UUID.randomUUID().toString();
   }
   
@@ -32,14 +35,16 @@ public class EntryModel
     this.type = paramParcel.readInt();
     this.uin = paramParcel.readLong();
     this.name = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isAdmin = bool;
-      this.entryDataHash = paramParcel.readString();
-      this.reportData = paramParcel.readString();
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.isAdmin = bool;
+    this.entryDataHash = paramParcel.readString();
+    this.dwGroupClassExt = paramParcel.readLong();
+    this.reportData = paramParcel.readString();
   }
   
   public int describeContents()
@@ -57,19 +62,15 @@ public class EntryModel
     paramParcel.writeInt(this.type);
     paramParcel.writeLong(this.uin);
     paramParcel.writeString(this.name);
-    if (this.isAdmin) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.entryDataHash);
-      paramParcel.writeString(this.reportData);
-      return;
-    }
+    paramParcel.writeByte((byte)this.isAdmin);
+    paramParcel.writeString(this.entryDataHash);
+    paramParcel.writeLong(this.dwGroupClassExt);
+    paramParcel.writeString(this.reportData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.EntryModel
  * JD-Core Version:    0.7.0.1
  */

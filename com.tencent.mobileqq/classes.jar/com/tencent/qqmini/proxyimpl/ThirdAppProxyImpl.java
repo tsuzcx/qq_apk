@@ -2,41 +2,39 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bkik;
-import bkit;
-import bkjb;
+import com.tencent.gamecenter.wadl.api.IQQGameNetService;
+import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
+import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceUtil;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceWrap;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy.AppDownloadListener;
-import cooperation.wadl.ipc.WadlParams;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ThirdAppProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ThirdAppProxy.AppDownloadListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.json.JSONObject;
 
+@ProxyService(proxy=ThirdAppProxy.class)
 public class ThirdAppProxyImpl
   extends ThirdAppProxy
 {
-  private static final String CHANNEL = "10036618";
-  public static final int DOWNLOAD_ERRCODE_URL_INVALID = -1000;
-  private static final int MAX_RETRY_COUNT = 3;
-  private static final String TAG = "ThirdAppProxyImpl";
-  private static final String VIA = "SmallGame";
-  private HashMap<String, JSONObject> mAppJsonInfo = new HashMap();
-  private Context mContext;
-  private HashMap<String, ThirdAppProxy.AppDownloadListener> mDownloadListenerMap;
-  private HashMap<String, AsyncResult> mInstallCallbackMap = new HashMap();
-  private boolean mIsInitFlag;
-  private HashMap<String, Integer> mProgressMap = new HashMap();
-  private HashMap<String, AsyncResult> mQueryCallbackMap = new HashMap();
-  private HashMap<String, List<AsyncResult>> mQueryDownloadInfoListenerMap = new HashMap();
-  private int mRetryCount;
-  private bkik mWadlCallback = new ThirdAppProxyImpl.1(this);
-  private HashMap<String, WadlParams> mWadlParams = new HashMap();
-  private bkit mWadlProxyService;
+  private HashMap<String, ThirdAppProxy.AppDownloadListener> a;
+  private HashMap<String, AsyncResult> b = new HashMap();
+  private HashMap<String, AsyncResult> c = new HashMap();
+  private HashMap<String, List<AsyncResult>> d = new HashMap();
+  private HashMap<String, JSONObject> e = new HashMap();
+  private HashMap<String, WadlParams> f = new HashMap();
+  private Context g;
+  private boolean h = false;
+  private int i = 0;
+  private HashMap<String, Integer> j = new HashMap();
+  private WadlProxyServiceCallBackInterface k = new ThirdAppProxyImpl.1(this);
   
-  private WadlParams createWadlParams(JSONObject paramJSONObject)
+  private WadlParams a(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
       return null;
@@ -44,16 +42,16 @@ public class ThirdAppProxyImpl
     try
     {
       WadlParams localWadlParams = new WadlParams();
-      localWadlParams.m = "SmallGame";
-      localWadlParams.jdField_d_of_type_JavaLangString = "10036618";
-      localWadlParams.jdField_d_of_type_Int = 6;
-      localWadlParams.jdField_b_of_type_JavaLangString = paramJSONObject.optString("android_download_url");
-      localWadlParams.a = paramJSONObject.optString("appid");
-      localWadlParams.f = paramJSONObject.optInt("version_code");
-      localWadlParams.j = paramJSONObject.optString("pkg_name");
-      localWadlParams.k = paramJSONObject.optString("app_name");
-      localWadlParams.l = paramJSONObject.optString("app_icon");
-      localWadlParams.n = "interrupt";
+      localWadlParams.w = "SmallGame";
+      localWadlParams.i = "10036618";
+      localWadlParams.h = 6;
+      localWadlParams.k = paramJSONObject.optString("android_download_url");
+      localWadlParams.e = paramJSONObject.optString("appid");
+      localWadlParams.l = paramJSONObject.optInt("version_code");
+      localWadlParams.m = paramJSONObject.optString("pkg_name");
+      localWadlParams.u = paramJSONObject.optString("app_name");
+      localWadlParams.v = paramJSONObject.optString("app_icon");
+      localWadlParams.x = "interrupt";
       return localWadlParams;
     }
     catch (Throwable paramJSONObject)
@@ -63,58 +61,64 @@ public class ThirdAppProxyImpl
     return null;
   }
   
-  public void addDownloadListener(String paramString, ThirdAppProxy.AppDownloadListener paramAppDownloadListener)
+  public void a(String paramString, ThirdAppProxy.AppDownloadListener paramAppDownloadListener)
   {
-    if (this.mDownloadListenerMap == null) {
-      this.mDownloadListenerMap = new HashMap();
+    if (this.a == null) {
+      this.a = new HashMap();
     }
-    this.mDownloadListenerMap.put(paramString, paramAppDownloadListener);
+    this.a.put(paramString, paramAppDownloadListener);
   }
   
   public void init()
   {
-    if (this.mIsInitFlag) {
+    if (this.h) {
       return;
     }
-    this.mIsInitFlag = true;
-    this.mRetryCount = 0;
-    this.mDownloadListenerMap = new HashMap();
-    this.mWadlProxyService = new bkit();
-    this.mWadlProxyService.a(this.mWadlCallback);
+    this.h = true;
+    this.i = 0;
+    this.a = new HashMap();
+    WadlProxyServiceUtil.a().a(this.k);
   }
   
   public boolean installApp(String paramString, AsyncResult paramAsyncResult)
   {
-    if ((this.mWadlProxyService == null) || (TextUtils.isEmpty(paramString)) || (paramAsyncResult == null)) {
-      return false;
-    }
-    WadlParams localWadlParams2 = createWadlParams((JSONObject)this.mAppJsonInfo.get(paramString));
-    WadlParams localWadlParams1 = localWadlParams2;
-    if (localWadlParams2 == null) {
-      localWadlParams1 = (WadlParams)this.mWadlParams.get(paramString);
-    }
-    if (localWadlParams1 == null)
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramAsyncResult.onReceiveResult(false, null);
-      return false;
+      if (paramAsyncResult == null) {
+        return false;
+      }
+      WadlParams localWadlParams2 = a((JSONObject)this.e.get(paramString));
+      WadlParams localWadlParams1 = localWadlParams2;
+      if (localWadlParams2 == null) {
+        localWadlParams1 = (WadlParams)this.f.get(paramString);
+      }
+      if (localWadlParams1 == null)
+      {
+        paramAsyncResult.onReceiveResult(false, null);
+        return false;
+      }
+      localWadlParams1.c(2);
+      localWadlParams1.c = 5;
+      WadlProxyServiceUtil.a().c(localWadlParams1);
+      paramAsyncResult.onReceiveResult(true, null);
+      return true;
     }
-    localWadlParams1.b(2);
-    localWadlParams1.jdField_b_of_type_Int = 5;
-    this.mWadlProxyService.b(localWadlParams1);
-    paramAsyncResult.onReceiveResult(true, null);
-    return true;
+    return false;
   }
   
   public void queryApkDownloadInfo(String paramString, AsyncResult paramAsyncResult)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramAsyncResult == null)) {
-      return;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramAsyncResult == null) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      paramString = new ThirdAppProxyImpl.QueryDownloadInfoListener(this, paramString, paramAsyncResult);
+      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).addListener(paramString);
+      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).getApkDownloadInfo("10036618", localArrayList);
     }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    paramString = new ThirdAppProxyImpl.QueryDownloadInfoListener(this, paramString, paramAsyncResult);
-    bkjb.a().a(paramString);
-    bkjb.a().a("10036618", localArrayList);
   }
   
   public void queryDownloadTask(String paramString, AsyncResult paramAsyncResult)
@@ -122,102 +126,86 @@ public class ThirdAppProxyImpl
     if (paramAsyncResult == null) {
       return;
     }
-    if ((this.mWadlProxyService == null) || (TextUtils.isEmpty(paramString))) {
+    if (TextUtils.isEmpty(paramString)) {
       paramAsyncResult.onReceiveResult(false, null);
     }
-    this.mQueryCallbackMap.put(paramString, paramAsyncResult);
+    this.b.put(paramString, paramAsyncResult);
     paramAsyncResult = new ArrayList();
     paramAsyncResult.add(paramString);
-    this.mWadlProxyService.a(paramAsyncResult);
-  }
-  
-  public void removeDownloadListener(String paramString)
-  {
-    if (this.mDownloadListenerMap != null) {
-      this.mDownloadListenerMap.remove(paramString);
-    }
+    WadlProxyServiceUtil.a().a(paramAsyncResult);
   }
   
   public void startDownload(String paramString, JSONObject paramJSONObject, boolean paramBoolean, ThirdAppProxy.AppDownloadListener paramAppDownloadListener)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramJSONObject == null))
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null))
     {
-      QLog.i("ThirdAppProxyImpl", 1, "startDownload, url is empty!");
       if (paramAppDownloadListener != null) {
-        paramAppDownloadListener.onDownloadFailed(-1000, -1, "url is invalid");
+        a(paramString, paramAppDownloadListener);
       }
-      return;
-    }
-    if (paramAppDownloadListener != null) {
-      addDownloadListener(paramString, paramAppDownloadListener);
-    }
-    for (;;)
-    {
       try
       {
-        this.mAppJsonInfo.put(paramString, paramJSONObject);
-        paramString = createWadlParams(paramJSONObject);
+        this.e.put(paramString, paramJSONObject);
+        paramString = a(paramJSONObject);
         if (paramString == null) {
-          break;
+          return;
         }
-        if (!paramBoolean) {
-          break label124;
+        if (paramBoolean) {
+          paramString.c(7);
+        } else {
+          paramString.c(6);
         }
-        paramString.b(7);
-        paramString.jdField_b_of_type_Int = 2;
-        this.mWadlProxyService.a(paramString);
+        paramString.c = 2;
+        WadlProxyServiceUtil.a().b(paramString);
         return;
       }
       catch (Exception paramString)
       {
         QLog.i("ThirdAppProxyImpl", 1, "startDownload---exception happend:", paramString);
+        if (paramAppDownloadListener != null) {
+          paramAppDownloadListener.onDownloadFailed(-1000, -2, "url is invalid");
+        }
+        return;
       }
-      if (paramAppDownloadListener == null) {
-        break;
-      }
-      paramAppDownloadListener.onDownloadFailed(-1000, -2, "url is invalid");
-      return;
-      label124:
-      paramString.b(6);
+    }
+    QLog.i("ThirdAppProxyImpl", 1, "startDownload, url is empty!");
+    if (paramAppDownloadListener != null) {
+      paramAppDownloadListener.onDownloadFailed(-1000, -1, "url is invalid");
     }
   }
   
   public boolean stopDownloadTask(String paramString)
   {
-    if ((this.mWadlProxyService == null) || (TextUtils.isEmpty(paramString))) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    WadlParams localWadlParams = createWadlParams((JSONObject)this.mAppJsonInfo.get(paramString));
+    WadlParams localWadlParams = a((JSONObject)this.e.get(paramString));
     if (localWadlParams == null) {
       return false;
     }
-    localWadlParams.b(2);
-    localWadlParams.jdField_b_of_type_Int = 3;
-    this.mWadlProxyService.a(6, paramString);
+    localWadlParams.c(2);
+    localWadlParams.c = 3;
+    WadlProxyServiceUtil.a().a(0, paramString);
     return true;
   }
   
   public void unInit()
   {
-    if (this.mDownloadListenerMap != null)
+    HashMap localHashMap = this.a;
+    if (localHashMap != null)
     {
-      this.mDownloadListenerMap.clear();
-      this.mDownloadListenerMap = null;
+      localHashMap.clear();
+      this.a = null;
     }
-    this.mIsInitFlag = false;
-    this.mRetryCount = 0;
-    this.mContext = null;
-    if (this.mWadlProxyService != null)
-    {
-      this.mWadlProxyService.b(this.mWadlCallback);
-      this.mWadlProxyService.d();
-      this.mWadlProxyService = null;
-    }
+    this.h = false;
+    this.i = 0;
+    this.g = null;
+    WadlProxyServiceUtil.a().b(this.k);
+    WadlProxyServiceUtil.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ThirdAppProxyImpl
  * JD-Core Version:    0.7.0.1
  */

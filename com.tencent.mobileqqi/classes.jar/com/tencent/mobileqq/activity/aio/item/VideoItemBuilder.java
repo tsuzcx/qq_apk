@@ -26,8 +26,8 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForVideo;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import ebl;
 import ebm;
-import ebn;
 
 public class VideoItemBuilder
   extends BaseBubbleBuilder
@@ -37,7 +37,7 @@ public class VideoItemBuilder
   public VideoItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ebm(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ebl(this);
   }
   
   private void a(ImageView paramImageView, int paramInt)
@@ -72,23 +72,23 @@ public class VideoItemBuilder
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    ebn localebn = (ebn)paramViewHolder;
+    ebm localebm = (ebm)paramViewHolder;
     paramBaseChatItemLayout = paramBaseChatItemLayout.getContext();
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(paramBaseChatItemLayout).inflate(2130903117, null);
-      localebn.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131231227));
-      localebn.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131231226));
+      localebm.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131231226));
+      localebm.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131231225));
     }
     paramView = (MessageForVideo)paramChatMessage;
     if (paramView.isSend()) {
-      localebn.jdField_a_of_type_AndroidWidgetTextView.setPadding(BaseChatItemLayout.s, BaseChatItemLayout.n, BaseChatItemLayout.q, BaseChatItemLayout.o);
+      localebm.jdField_a_of_type_AndroidWidgetTextView.setPadding(BaseChatItemLayout.s, BaseChatItemLayout.n, BaseChatItemLayout.q, BaseChatItemLayout.o);
     }
     for (;;)
     {
-      localebn.jdField_a_of_type_AndroidWidgetImageView.setPadding(BaseChatItemLayout.p, 0, 0, 0);
-      localebn.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.text);
+      localebm.jdField_a_of_type_AndroidWidgetImageView.setPadding(BaseChatItemLayout.p, 0, 0, 0);
+      localebm.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.text);
       paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -96,13 +96,13 @@ public class VideoItemBuilder
         paramViewHolder.setContentDescription(paramBaseChatItemLayout.getResources().getString(2131560149));
       }
       return paramViewHolder;
-      localebn.jdField_a_of_type_AndroidWidgetTextView.setPadding(BaseChatItemLayout.s, BaseChatItemLayout.n, BaseChatItemLayout.q, BaseChatItemLayout.o);
+      localebm.jdField_a_of_type_AndroidWidgetTextView.setPadding(BaseChatItemLayout.s, BaseChatItemLayout.n, BaseChatItemLayout.q, BaseChatItemLayout.o);
     }
   }
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new ebn(this);
+    return new ebm(this);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -112,28 +112,28 @@ public class VideoItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131234874) {
+    if (paramInt == 2131234873) {
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
     }
   }
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
   {
-    ebn localebn = (ebn)paramViewHolder;
-    localebn.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+    ebm localebm = (ebm)paramViewHolder;
+    localebm.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
     if ((paramBubbleInfo.a == 0) || (!paramBubbleInfo.a()))
     {
       paramView = paramView.getResources();
-      if (localebn.jdField_a_of_type_AndroidWidgetTextView.getText().toString().contains(this.jdField_a_of_type_AndroidContentContext.getString(2131560131)))
+      if (localebm.jdField_a_of_type_AndroidWidgetTextView.getText().toString().contains(this.jdField_a_of_type_AndroidContentContext.getString(2131560131)))
       {
         paramViewHolder = paramView.getColorStateList(2131362125);
-        localebn.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
+        localebm.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
         return;
       }
       if (paramChatMessage.isSend())
       {
         paramViewHolder = paramView.getColorStateList(2131362090);
-        localebn.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
+        localebm.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
         if (!paramChatMessage.isSend()) {
           break label149;
         }
@@ -141,22 +141,22 @@ public class VideoItemBuilder
       label149:
       for (paramViewHolder = paramView.getColorStateList(2131362089);; paramViewHolder = paramView.getColorStateList(2131362088))
       {
-        localebn.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
+        localebm.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
         return;
         paramViewHolder = paramView.getColorStateList(2131362087);
         break;
       }
     }
     if (paramBubbleInfo.b == 0) {
-      localebn.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      localebm.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
     }
     while (paramBubbleInfo.c == 0)
     {
-      localebn.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131362088));
+      localebm.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131362088));
       return;
-      localebn.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.b);
+      localebm.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.b);
     }
-    localebn.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramBubbleInfo.c);
+    localebm.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramBubbleInfo.c);
   }
   
   public QQCustomMenuItem[] a(View paramView)

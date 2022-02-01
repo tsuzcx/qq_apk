@@ -1,27 +1,52 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.f.b.j;
-import a.l;
-import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/radar/ui/RadarStateView$switchHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
-public final class RadarStateView$d
-  extends ak
+@Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+final class RadarStateView$d
+  extends u
+  implements a<Animation>
 {
-  public final void handleMessage(Message paramMessage)
+  RadarStateView$d(RadarStateView paramRadarStateView)
   {
-    AppMethodBeat.i(103041);
-    j.q(paramMessage, "msg");
-    RadarStateView.a(this.pSd);
-    this.pSd.ceX();
-    AppMethodBeat.o(103041);
+    super(0);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/radar/ui/RadarStateView$slideOutAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements Animation.AnimationListener
+  {
+    public final void onAnimationEnd(Animation paramAnimation)
+    {
+      AppMethodBeat.i(138687);
+      s.u(paramAnimation, "animation");
+      AppMethodBeat.o(138687);
+    }
+    
+    public final void onAnimationRepeat(Animation paramAnimation)
+    {
+      AppMethodBeat.i(138688);
+      s.u(paramAnimation, "animation");
+      AppMethodBeat.o(138688);
+    }
+    
+    public final void onAnimationStart(Animation paramAnimation)
+    {
+      AppMethodBeat.i(138686);
+      s.u(paramAnimation, "animation");
+      AppMethodBeat.o(138686);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarStateView.d
  * JD-Core Version:    0.7.0.1
  */

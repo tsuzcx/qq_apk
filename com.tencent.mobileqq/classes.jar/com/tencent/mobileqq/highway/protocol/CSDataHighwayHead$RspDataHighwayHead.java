@@ -25,13 +25,15 @@ public final class CSDataHighwayHead$RspDataHighwayHead
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 64, 72, 80 }, new String[] { "msg_basehead", "msg_seghead", "uint32_error_code", "uint32_allow_retry", "uint32_cachecost", "uint32_htcost", "bytes_rsp_extendinfo", "uint64_timestamp", "uint64_range", "uint32_is_reset" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, RspDataHighwayHead.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 64, 72, 80 }, new String[] { "msg_basehead", "msg_seghead", "uint32_error_code", "uint32_allow_retry", "uint32_cachecost", "uint32_htcost", "bytes_rsp_extendinfo", "uint64_timestamp", "uint64_range", "uint32_is_reset" }, new Object[] { null, null, localInteger, localInteger, localInteger, localInteger, localByteStringMicro, localLong, localLong, localInteger }, RspDataHighwayHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.RspDataHighwayHead
  * JD-Core Version:    0.7.0.1
  */

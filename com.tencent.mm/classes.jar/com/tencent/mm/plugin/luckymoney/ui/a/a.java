@@ -1,68 +1,56 @@
 package com.tencent.mm.plugin.luckymoney.ui.a;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.t.a;
-import com.tencent.mm.api.u;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.Random;
 
 public final class a
 {
-  public static void a(ViewGroup paramViewGroup, ChatFooterPanel paramChatFooterPanel, int paramInt, t.a parama)
+  public static boolean bMS()
   {
-    AppMethodBeat.i(43090);
-    paramChatFooterPanel.setEntranceScene(paramInt);
-    paramChatFooterPanel.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, (int)paramViewGroup.getResources().getDimension(2131428503));
-    localLayoutParams.gravity = 80;
-    paramViewGroup.removeAllViews();
-    paramViewGroup.addView(paramChatFooterPanel, localLayoutParams);
-    paramViewGroup = u.AF();
-    paramViewGroup.bWo = parama;
-    paramChatFooterPanel.setCallback(paramViewGroup);
-    AppMethodBeat.o(43090);
-  }
-  
-  public static void a(ChatFooterPanel paramChatFooterPanel)
-  {
-    AppMethodBeat.i(43089);
-    paramChatFooterPanel.setBackgroundResource(2130838022);
-    paramChatFooterPanel.bo(false);
-    paramChatFooterPanel.AA();
-    paramChatFooterPanel.onResume();
-    AppMethodBeat.o(43089);
-  }
-  
-  public static boolean a(Context paramContext, ChatFooterPanel paramChatFooterPanel)
-  {
-    AppMethodBeat.i(43088);
-    if (paramChatFooterPanel == null)
+    AppMethodBeat.i(284545);
+    int i = ((Integer)h.baE().ban().get(at.a.acVG, Integer.valueOf(0))).intValue();
+    if (i <= 0)
     {
-      AppMethodBeat.o(43088);
+      AppMethodBeat.o(284545);
       return false;
     }
-    paramChatFooterPanel.onPause();
-    if (paramChatFooterPanel.getVisibility() == 0)
+    if (i >= 100)
     {
-      paramChatFooterPanel.setVisibility(8);
-      paramContext = AnimationUtils.loadAnimation(paramContext, 2131034228);
-      paramContext.setAnimationListener(new a.1(paramChatFooterPanel));
-      paramChatFooterPanel.startAnimation(paramContext);
-      AppMethodBeat.o(43088);
+      AppMethodBeat.o(284545);
       return true;
     }
-    AppMethodBeat.o(43088);
+    int j = new Random().nextInt(101);
+    Log.i("MicroMsg.GetTimeLimitPromotBlindBox", "random: %s, %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+    if (j <= i)
+    {
+      AppMethodBeat.o(284545);
+      return true;
+    }
+    AppMethodBeat.o(284545);
     return false;
+  }
+  
+  public static void jG(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(284544);
+    int i = ((Integer)h.baE().ban().get(at.a.acVF, Integer.valueOf(-1))).intValue();
+    Log.i("MicroMsg.GetTimeLimitPromotBlindBox", "new: [%s, %s], old: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(i) });
+    if (paramInt2 > i)
+    {
+      h.baE().ban().set(at.a.acVF, Integer.valueOf(paramInt2));
+      h.baE().ban().set(at.a.acVG, Integer.valueOf(paramInt1));
+    }
+    AppMethodBeat.o(284544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

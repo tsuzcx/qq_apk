@@ -1,20 +1,34 @@
 package kotlinx.coroutines;
 
-import a.f.a.b;
-import a.l;
-import a.y;
-import kotlinx.coroutines.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.Metadata;
+import kotlin.d.d;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CompletionHandlerBase;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "()V", "invoke", "kotlinx-coroutines-core"})
-public abstract class t
-  extends h
-  implements b<Throwable, y>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CancelledContinuation;", "Lkotlin/coroutines/Continuation;", "continuation", "", "cause", "", "handled", "<init>", "(Lkotlin/coroutines/Continuation;Ljava/lang/Throwable;Z)V", "makeResumed", "()Z", "kotlinx-coroutines-core", "Lkotlinx/coroutines/CompletedExceptionally;"}, k=1, mv={1, 5, 1}, xi=48)
+public final class t
+  extends ae
 {
-  public abstract void v(Throwable paramThrowable);
+  static
+  {
+    AppMethodBeat.i(188762);
+    ajvs = AtomicIntegerFieldUpdater.newUpdater(t.class, "_resumed");
+    AppMethodBeat.o(188762);
+  }
+  
+  public t(d<?> paramd, Throwable paramThrowable, boolean paramBoolean) {}
+  
+  public final boolean kBK()
+  {
+    AppMethodBeat.i(188768);
+    boolean bool = ajvs.compareAndSet(this, 0, 1);
+    AppMethodBeat.o(188768);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.t
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,18 @@ class UnlimitedBladeWorks$7
   
   public void run()
   {
-    if (((Build.VERSION.SDK_INT > 16) && (this.a.isDestroyed())) || (this.a.isFinishing())) {}
-    View localView;
-    do
-    {
+    if (((Build.VERSION.SDK_INT > 16) && (this.a.isDestroyed())) || (this.a.isFinishing())) {
       return;
-      localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0).findViewById(2131362208);
-    } while (localView == null);
-    localView.clearAnimation();
+    }
+    View localView = ((ViewGroup)this.a.getWindow().getDecorView()).getChildAt(0).findViewById(2131427887);
+    if (localView != null) {
+      localView.clearAnimation();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.7
  * JD-Core Version:    0.7.0.1
  */

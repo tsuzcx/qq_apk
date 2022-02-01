@@ -1,236 +1,214 @@
 package com.tencent.mm.plugin.music.f;
 
-import android.os.Looper;
-import android.support.v4.content.b;
-import com.tencent.mm.g.a.ki;
-import com.tencent.mm.g.a.ki.a;
-import com.tencent.mm.plugin.music.f.a.d.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.mmdata.rpt.km;
+import com.tencent.mm.aw.c;
+import com.tencent.mm.aw.f;
 
-public abstract class a
-  implements com.tencent.mm.plugin.music.f.a.d
+public final class a
 {
-  public boolean cAf;
-  private ax oXi;
-  protected boolean oXj;
-  protected d.a oXk;
-  protected com.tencent.mm.plugin.music.e.d paA;
-  protected com.tencent.mm.plugin.music.e.a paB;
-  protected String paz = "";
+  static km LOr;
+  public static String LOs = "1.0";
+  public static String LOt = "2.0";
+  static String rate = "1.0";
+  static String scene = LOs;
   
-  public final void A(com.tencent.mm.aw.e parame)
+  private static String M(String[] paramArrayOfString)
   {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(aiw()) });
-    this.paz = "play";
-    ki localki = new ki();
-    localki.cAc.action = 0;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "play";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
-    if (this.paB != null) {
-      this.paB.k(parame);
-    }
-  }
-  
-  public final void B(com.tencent.mm.aw.e parame)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onResumeEvent");
-    this.paz = "play";
-    ki localki = new ki();
-    localki.cAc.action = 1;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "play";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
-    if (this.paB != null) {
-      this.paB.l(parame);
-    }
-  }
-  
-  public final void C(com.tencent.mm.aw.e parame)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onPauseEvent");
-    this.paz = "pause";
-    ki localki = new ki();
-    localki.cAc.action = 3;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "pause";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
-    if (this.paB != null) {
-      this.paB.m(parame);
-    }
-  }
-  
-  public final void D(com.tencent.mm.aw.e parame)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onStopEvent");
-    this.paz = "stop";
-    ki localki = new ki();
-    localki.cAc.action = 2;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "stop";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    ki.a locala = localki.cAc;
-    boolean bool = this.cAf;
-    this.cAf = false;
-    locala.cAf = bool;
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
-    if (this.paB != null) {
-      this.paB.n(parame);
-    }
-  }
-  
-  public final void E(com.tencent.mm.aw.e parame)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onSeekToEvent");
-    this.paz = "seeked";
-    ki localki = new ki();
-    localki.cAc.action = 8;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "seeked";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
-  }
-  
-  public final void F(com.tencent.mm.aw.e parame)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onSeekingEvent");
-    this.paz = "seeking";
-    ki localki = new ki();
-    localki.cAc.action = 12;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "seeking";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
-  }
-  
-  public final void G(com.tencent.mm.aw.e parame)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onStopEvent");
-    this.paz = "ended";
-    ki localki = new ki();
-    localki.cAc.action = 7;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "ended";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
-    if (this.paB != null) {
-      this.paB.o(parame);
-    }
-  }
-  
-  public final void H(com.tencent.mm.aw.e parame)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent");
-    d(parame, -1);
-  }
-  
-  public void a(com.tencent.mm.aw.e parame, int paramInt1, int paramInt2)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent");
-    d(parame, -1);
-  }
-  
-  public final void a(d.a parama)
-  {
-    this.oXk = parama;
-  }
-  
-  protected final void bUl()
-  {
-    if (this.oXi != null)
+    AppMethodBeat.i(270849);
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < 5)
     {
-      this.oXi.end();
-      this.oXi.dtv();
-      this.oXi = null;
+      localStringBuffer.append(paramArrayOfString[i]);
+      if (i != 4) {
+        localStringBuffer.append("|");
+      }
+      i += 1;
     }
+    paramArrayOfString = localStringBuffer.toString();
+    AppMethodBeat.o(270849);
+    return paramArrayOfString;
   }
   
-  protected final void bVZ()
+  public static void X(f paramf)
   {
-    if (this.oXi != null) {
+    AppMethodBeat.i(270832);
+    if (paramf == null)
+    {
+      AppMethodBeat.o(270832);
       return;
     }
-    if (b.checkSelfPermission(ah.getContext(), "android.permission.READ_PHONE_STATE") != 0)
+    km localkm = new km();
+    LOr = localkm;
+    localkm.ijk = localkm.F("SessionId", String.valueOf(System.currentTimeMillis()), true);
+    localkm = LOr;
+    localkm.iWV = localkm.F("DataUrl", paramf.oOB, true);
+    localkm = LOr;
+    localkm.iWT = localkm.F("Singer", paramf.oOy, true);
+    localkm = LOr;
+    localkm.iWS = localkm.F("SongName", paramf.oOx, true);
+    localkm = LOr;
+    localkm.iWU = localkm.F("WebUrl", paramf.oOD, true);
+    localkm = LOr;
+    localkm.ilL = localkm.F("Appid", paramf.oOI, true);
+    AppMethodBeat.o(270832);
+  }
+  
+  private static void cIX()
+  {
+    AppMethodBeat.i(270848);
+    if (LOr == null)
     {
-      ab.e("MicroMsg.Music.BaseMusicPlayer", "addPhoneStatusWatcher() not have read_phone_state perm");
+      AppMethodBeat.o(270848);
       return;
     }
-    this.oXi = new ax();
-    this.oXi.hd(ah.getContext());
-    this.oXi.a(new a.1(this));
+    LOr.bMH();
+    AppMethodBeat.o(270848);
   }
   
-  protected abstract void bVk();
-  
-  protected final String bWa()
+  public static void goE()
   {
-    return this.paz;
-  }
-  
-  public final void d(com.tencent.mm.aw.e parame, int paramInt)
-  {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
-    this.paz = "error";
-    ki localki = new ki();
-    localki.cAc.action = 4;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "error";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    localki.cAc.errCode = com.tencent.mm.plugin.music.f.a.e.Aw(paramInt);
-    localki.cAc.errMsg = com.tencent.mm.plugin.music.f.a.e.oP(paramInt);
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
-    if (this.paB != null) {
-      this.paB.a(parame, paramInt);
+    AppMethodBeat.i(270834);
+    if (LOr == null)
+    {
+      AppMethodBeat.o(270834);
+      return;
     }
+    String str1 = String.valueOf(Long.valueOf(System.currentTimeMillis()));
+    String str2 = scene;
+    String str3 = rate;
+    LOr.sS(M(new String[] { str1, str2, "preparing", str3, "0" }));
+    cIX();
+    AppMethodBeat.o(270834);
   }
   
-  public void f(com.tencent.mm.aw.e parame)
+  public static void goF()
   {
-    bVk();
+    AppMethodBeat.i(270837);
+    if (LOr == null)
+    {
+      AppMethodBeat.o(270837);
+      return;
+    }
+    String str1 = String.valueOf(Long.valueOf(System.currentTimeMillis()));
+    String str2 = scene;
+    String str3 = rate;
+    LOr.sS(M(new String[] { str1, str2, "readyToPlay", str3, "0" }));
+    cIX();
+    AppMethodBeat.o(270837);
   }
   
-  public final void y(com.tencent.mm.aw.e parame)
+  public static void goG()
   {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onPreparingEvent %b", new Object[] { Boolean.valueOf(aiw()) });
-    this.paz = "waiting";
-    ki localki = new ki();
-    localki.cAc.action = 11;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "waiting";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    AppMethodBeat.i(270840);
+    if (LOr == null)
+    {
+      AppMethodBeat.o(270840);
+      return;
+    }
+    LOr.iWW = com.tencent.mm.aw.a.bLo().cam;
+    String str1 = String.valueOf(Long.valueOf(System.currentTimeMillis()));
+    String str2 = scene;
+    String str3 = rate;
+    LOr.sS(M(new String[] { str1, str2, "playing", str3, "0" }));
+    cIX();
+    AppMethodBeat.o(270840);
   }
   
-  public final void z(com.tencent.mm.aw.e parame)
+  public static void goH()
   {
-    ab.i("MicroMsg.Music.BaseMusicPlayer", "onPrepareEvent %b", new Object[] { Boolean.valueOf(aiw()) });
-    this.paz = "canplay";
-    ki localki = new ki();
-    localki.cAc.action = 9;
-    localki.cAc.czW = parame;
-    localki.cAc.state = "canplay";
-    localki.cAc.duration = getDuration();
-    localki.cAc.cAe = bUn();
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    AppMethodBeat.i(270844);
+    if (LOr == null)
+    {
+      AppMethodBeat.o(270844);
+      return;
+    }
+    String str1 = String.valueOf(Long.valueOf(System.currentTimeMillis()));
+    String str2 = scene;
+    String str3 = rate;
+    int i = com.tencent.mm.aw.a.bLo().mPosition;
+    LOr.sS(M(new String[] { str1, str2, "buffering", str3, String.valueOf(i) }));
+    cIX();
+    AppMethodBeat.o(270844);
+  }
+  
+  public static void goI()
+  {
+    AppMethodBeat.i(270845);
+    if (LOr == null)
+    {
+      AppMethodBeat.o(270845);
+      return;
+    }
+    String str1 = String.valueOf(Long.valueOf(System.currentTimeMillis()));
+    String str2 = scene;
+    String str3 = rate;
+    int i = com.tencent.mm.aw.a.bLo().mPosition;
+    LOr.sS(M(new String[] { str1, str2, "seeking", str3, String.valueOf(i) }));
+    cIX();
+    AppMethodBeat.o(270845);
+  }
+  
+  public static void goJ()
+  {
+    AppMethodBeat.i(270847);
+    if (LOr == null)
+    {
+      AppMethodBeat.o(270847);
+      return;
+    }
+    String str1 = String.valueOf(Long.valueOf(System.currentTimeMillis()));
+    String str2 = scene;
+    String str3 = rate;
+    int i = com.tencent.mm.aw.a.bLo().mPosition;
+    LOr.sS(M(new String[] { str1, str2, "seekEnd", str3, String.valueOf(i) }));
+    cIX();
+    AppMethodBeat.o(270847);
+  }
+  
+  public static void onPaused()
+  {
+    AppMethodBeat.i(270842);
+    if (LOr == null)
+    {
+      AppMethodBeat.o(270842);
+      return;
+    }
+    String str1 = String.valueOf(Long.valueOf(System.currentTimeMillis()));
+    String str2 = scene;
+    String str3 = rate;
+    int i = com.tencent.mm.aw.a.bLo().mPosition;
+    LOr.sS(M(new String[] { str1, str2, "paused", str3, String.valueOf(i) }));
+    cIX();
+    AppMethodBeat.o(270842);
+  }
+  
+  public static void onStop()
+  {
+    AppMethodBeat.i(270843);
+    if (LOr == null)
+    {
+      AppMethodBeat.o(270843);
+      return;
+    }
+    String str1 = String.valueOf(Long.valueOf(System.currentTimeMillis()));
+    String str2 = scene;
+    String str3 = rate;
+    int i = com.tencent.mm.aw.a.bLo().mPosition;
+    LOr.sS(M(new String[] { str1, str2, "end/stop", str3, String.valueOf(i) }));
+    cIX();
+    AppMethodBeat.o(270843);
+  }
+  
+  public static void setScene(String paramString)
+  {
+    scene = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a
  * JD-Core Version:    0.7.0.1
  */

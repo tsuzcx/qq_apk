@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/bp9" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l5">
-        <ImageView android:id="@id/bpr" android:background="@drawable/b5_" android:layout_width="@dimen/x8" android:layout_height="@dimen/x8" android:layout_marginTop="@dimen/l6" />
-        <TextView android:textSize="24.0dip" android:textColor="@color/h6" android:gravity="center" android:id="@id/bps" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/bmu" />
-        <RelativeLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bpt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="80.0dip">
-            <Button android:textSize="@dimen/dq" android:id="@id/bpb" android:padding="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:text="@string/bmt" style="@style/nq" />
-        </RelativeLayout>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/bqp" android:background="@drawable/b7r" android:paddingTop="@dimen/i6" android:paddingBottom="@dimen/m7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/bqs" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:id="@id/bqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="111" android:singleLine="true" style="@style/ma" />
+        </LinearLayout>
+        <TextView android:id="@id/bqy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="signature" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hw" />
     </LinearLayout>
 </LinearLayout>

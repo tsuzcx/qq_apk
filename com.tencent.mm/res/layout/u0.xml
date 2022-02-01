@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="53.0dip" android:src="@raw/remittance_received" />
-    <TextView android:textSize="@dimen/kp" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/lt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="37.0dip" android:text="@string/b_5" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:id="@id/be_" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginBottom="96.0dip" android:text="@string/b_4" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/nq" />
-    </RelativeLayout>
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/gyz" android:background="@drawable/ay7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1">
+        <ImageView android:gravity="center_vertical" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="4.0dip" android:src="@raw/monitor_banner_icon" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/agv" android:ellipsize="marquee" android:gravity="left" android:id="@id/b7n" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:maxLines="1" android:marqueeRepeatLimit="marquee_forever" style="@style/m4" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bem" android:padding="10.0dip" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/ib" android:adjustViewBounds="true" />
+    </LinearLayout>
 </LinearLayout>

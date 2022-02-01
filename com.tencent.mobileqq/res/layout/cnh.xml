@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/hy7" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ba7">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/icon" android:layout_width="@dimen/ba9" android:layout_height="@dimen/ba9" android:layout_marginLeft="@dimen/ba8" android:scaleType="fitCenter" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/1w" android:layout_marginBottom="@dimen/1w" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/bab" android:textColor="@color/av_" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ba8" />
+            <TextView android:textSize="@dimen/baa" android:textColor="@color/66" android:id="@id/bg6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ba8" android:layout_marginTop="2.0dip" android:maxLines="2" />
+        </LinearLayout>
+        <LinearLayout android:gravity="right" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RadioButton android:textSize="0.0dip" android:id="@id/pqp" android:background="@drawable/gsx" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/2c" android:layout_marginRight="@dimen/ba8" android:button="@null" android:text="" android:drawablePadding="0.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/bmt" android:layout_marginLeft="@dimen/ba8" style="@style/58" />
+</LinearLayout>

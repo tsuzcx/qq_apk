@@ -1,48 +1,46 @@
 package com.tencent.mobileqq.app.automator;
 
-import amhf;
-
 public class ParallGroup
   extends StepGroup
-  implements amhf
+  implements IResultListener
 {
-  protected int d;
-  
-  protected int a()
-  {
-    this.d = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-    for (;;)
-    {
-      AsyncStep localAsyncStep = a();
-      if ((localAsyncStep == null) || (this.jdField_a_of_type_Int == 8)) {
-        break;
-      }
-      localAsyncStep.a = this;
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b(localAsyncStep);
-    }
-    return 2;
-  }
+  protected int a;
   
   public void a(AsyncStep paramAsyncStep, int paramInt)
   {
     try
     {
-      paramInt = this.d - 1;
-      this.d = paramInt;
+      paramInt = this.a - 1;
+      this.a = paramInt;
       if (paramInt == 0)
       {
-        a(7);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = null;
+        setResult(7);
+        this.b = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep);
+      this.mAutomator.a(this.b);
       return;
     }
     finally {}
   }
+  
+  protected int doStep()
+  {
+    this.a = this.e.length;
+    for (;;)
+    {
+      AsyncStep localAsyncStep = a();
+      if ((localAsyncStep == null) || (this.mResult == 8)) {
+        break;
+      }
+      localAsyncStep.mResultListener = this;
+      this.mAutomator.b(localAsyncStep);
+    }
+    return 2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.ParallGroup
  * JD-Core Version:    0.7.0.1
  */

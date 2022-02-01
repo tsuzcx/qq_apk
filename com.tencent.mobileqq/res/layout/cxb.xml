@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/p8w" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/p8l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <com.tencent.biz.qqcircle.widgets.QCircleFeedCleanPlayView android:id="@id/p8h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <com.tencent.image.URLImageView android:id="@id/p8m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/o6h" android:background="@drawable/isx" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+</FrameLayout>

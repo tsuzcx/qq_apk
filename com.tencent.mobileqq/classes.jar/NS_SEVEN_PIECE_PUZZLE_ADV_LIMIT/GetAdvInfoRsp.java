@@ -4,14 +4,15 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetAdvInfoRsp
   extends JceStruct
 {
   static ArrayList<AdvExposureInfo> cache_vecAdvExposureInfo = new ArrayList();
-  public int Code;
+  public int Code = 0;
   public String Msg = "";
-  public ArrayList<AdvExposureInfo> vecAdvExposureInfo;
+  public ArrayList<AdvExposureInfo> vecAdvExposureInfo = null;
   
   static
   {
@@ -38,17 +39,19 @@ public final class GetAdvInfoRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.Code, 0);
-    if (this.Msg != null) {
-      paramJceOutputStream.write(this.Msg, 1);
+    Object localObject = this.Msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.vecAdvExposureInfo != null) {
-      paramJceOutputStream.write(this.vecAdvExposureInfo, 2);
+    localObject = this.vecAdvExposureInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.GetAdvInfoRsp
  * JD-Core Version:    0.7.0.1
  */

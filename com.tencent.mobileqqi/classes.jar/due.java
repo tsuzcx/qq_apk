@@ -1,6 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class due
   implements DialogInterface.OnClickListener
@@ -9,6 +10,7 @@ public class due
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    ReportController.b(this.a.b, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
     UpgradeActivity.a(this.a, false);
   }
 }

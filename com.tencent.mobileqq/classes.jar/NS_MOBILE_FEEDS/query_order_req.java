@@ -10,10 +10,10 @@ public final class query_order_req
   extends JceStruct
 {
   static Map<String, String> cache_extendinfo = new HashMap();
-  public Map<String, String> extendinfo;
+  public Map<String, String> extendinfo = null;
   public String strIMSI = "";
   public String strIphoneNum = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {
@@ -41,20 +41,23 @@ public final class query_order_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.strIphoneNum != null) {
-      paramJceOutputStream.write(this.strIphoneNum, 1);
+    Object localObject = this.strIphoneNum;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strIMSI != null) {
-      paramJceOutputStream.write(this.strIMSI, 2);
+    localObject = this.strIMSI;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 3);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.query_order_req
  * JD-Core Version:    0.7.0.1
  */

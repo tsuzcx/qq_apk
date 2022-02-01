@@ -19,13 +19,14 @@ public final class MqqLbsPack$LBSSig
   
   static
   {
+    Integer localInteger = Integer.valueOf(900000000);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "int32_lat", "int32_lon", "uint32_time", "bytes_verify_key" }, new Object[] { Integer.valueOf(900000000), Integer.valueOf(900000000), Integer.valueOf(0), localByteStringMicro }, LBSSig.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "int32_lat", "int32_lon", "uint32_time", "bytes_verify_key" }, new Object[] { localInteger, localInteger, Integer.valueOf(0), localByteStringMicro }, LBSSig.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.LBSSig
  * JD-Core Version:    0.7.0.1
  */

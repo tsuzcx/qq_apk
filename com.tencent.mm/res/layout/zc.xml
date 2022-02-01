@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bt3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/p6" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="10.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/om" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip">
-        <ImageView android:id="@id/b9" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="10.0dip" android:src="@raw/fav_list_error" />
-        <TextView android:textSize="@dimen/nf" android:textColor="@color/p2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bty" android:layout_weight="1.0" />
-        <TextView android:textColor="@color/p2" android:id="@id/bt4" android:background="@null" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/btz" />
-    </LinearLayout>
-</LinearLayout>
+    <CheckedTextView android:textAppearance="@style/v1" android:gravity="start|center" android:id="@id/c2o" android:layout_width="0.0dip" android:layout_height="fill_parent" android:maxLines="1" android:drawablePadding="@dimen/a1g" android:layout_weight="1.0" />
+    <ViewStub android:id="@id/c2n" android:layout="@layout/z7" android:inflatedId="@id/c2m" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+</merge>

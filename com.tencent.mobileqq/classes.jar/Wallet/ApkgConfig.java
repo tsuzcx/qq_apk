@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,18 +17,18 @@ public final class ApkgConfig
   private static final int BIT_RISK_SWITCH = 1;
   static ArrayList<AllowDomainInfo> cache_allow_domains;
   static Map<String, String> cache_sub_apkg_urls = new HashMap();
-  public ArrayList<AllowDomainInfo> allow_domains;
+  public ArrayList<AllowDomainInfo> allow_domains = null;
   public String apkg_url = "";
   public String app_name = "";
-  public int bit_control;
+  public int bit_control = 0;
   public String cos_sign = "";
   public String desc_info = "";
   public String icon_url = "";
   public String mini_appid = "";
-  public int mini_version;
+  public int mini_version = 0;
   public String qq_qr_code = "";
   public String share_pic_url = "";
-  public Map<String, String> sub_apkg_urls;
+  public Map<String, String> sub_apkg_urls = null;
   public String union_id = "";
   public String wx_qr_code = "";
   
@@ -57,14 +58,6 @@ public final class ApkgConfig
     this.wx_qr_code = paramString8;
     this.qq_qr_code = paramString9;
     this.cos_sign = paramString10;
-  }
-  
-  public int getRuntimeType()
-  {
-    if ((this.bit_control & 0x4) != 0) {
-      return 1;
-    }
-    return 0;
   }
   
   public boolean isInnerUser()
@@ -102,54 +95,106 @@ public final class ApkgConfig
   
   public String toString()
   {
-    return "ApkgConfig{mini_appid='" + this.mini_appid + '\'' + ", union_id='" + this.union_id + '\'' + ", app_name='" + this.app_name + '\'' + ", mini_version=" + this.mini_version + ", icon_url='" + this.icon_url + '\'' + ", downloadUrl='" + this.apkg_url + '\'' + ", sub_apkg_urls=" + this.sub_apkg_urls + ", desc_info='" + this.desc_info + '\'' + ", share_pic_url='" + this.share_pic_url + '\'' + ", bit_control=" + this.bit_control + ", allow_domains=" + this.allow_domains + ", wx_qr_code='" + this.wx_qr_code + '\'' + ", qq_qr_code='" + this.qq_qr_code + '\'' + ", cos_sign='" + this.cos_sign + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ApkgConfig{mini_appid='");
+    localStringBuilder.append(this.mini_appid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", union_id='");
+    localStringBuilder.append(this.union_id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", app_name='");
+    localStringBuilder.append(this.app_name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mini_version=");
+    localStringBuilder.append(this.mini_version);
+    localStringBuilder.append(", icon_url='");
+    localStringBuilder.append(this.icon_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadUrl='");
+    localStringBuilder.append(this.apkg_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", sub_apkg_urls=");
+    localStringBuilder.append(this.sub_apkg_urls);
+    localStringBuilder.append(", desc_info='");
+    localStringBuilder.append(this.desc_info);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", share_pic_url='");
+    localStringBuilder.append(this.share_pic_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bit_control=");
+    localStringBuilder.append(this.bit_control);
+    localStringBuilder.append(", allow_domains=");
+    localStringBuilder.append(this.allow_domains);
+    localStringBuilder.append(", wx_qr_code='");
+    localStringBuilder.append(this.wx_qr_code);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", qq_qr_code='");
+    localStringBuilder.append(this.qq_qr_code);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cos_sign='");
+    localStringBuilder.append(this.cos_sign);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mini_appid != null) {
-      paramJceOutputStream.write(this.mini_appid, 0);
+    Object localObject = this.mini_appid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.union_id != null) {
-      paramJceOutputStream.write(this.union_id, 1);
+    localObject = this.union_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.app_name != null) {
-      paramJceOutputStream.write(this.app_name, 2);
+    localObject = this.app_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.mini_version, 3);
-    if (this.icon_url != null) {
-      paramJceOutputStream.write(this.icon_url, 4);
+    localObject = this.icon_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.apkg_url != null) {
-      paramJceOutputStream.write(this.apkg_url, 5);
+    localObject = this.apkg_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.sub_apkg_urls != null) {
-      paramJceOutputStream.write(this.sub_apkg_urls, 6);
+    localObject = this.sub_apkg_urls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
-    if (this.desc_info != null) {
-      paramJceOutputStream.write(this.desc_info, 7);
+    localObject = this.desc_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.share_pic_url != null) {
-      paramJceOutputStream.write(this.share_pic_url, 8);
+    localObject = this.share_pic_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.bit_control, 9);
-    if (this.allow_domains != null) {
-      paramJceOutputStream.write(this.allow_domains, 10);
+    localObject = this.allow_domains;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
-    if (this.wx_qr_code != null) {
-      paramJceOutputStream.write(this.wx_qr_code, 11);
+    localObject = this.wx_qr_code;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.qq_qr_code != null) {
-      paramJceOutputStream.write(this.qq_qr_code, 12);
+    localObject = this.qq_qr_code;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.cos_sign != null) {
-      paramJceOutputStream.write(this.cos_sign, 13);
+    localObject = this.cos_sign;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.ApkgConfig
  * JD-Core Version:    0.7.0.1
  */

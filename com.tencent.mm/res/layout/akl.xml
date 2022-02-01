@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="50.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/dnh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{Content}" style="@style/o2" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/jl5" android:layout_width="fill_parent" android:layout_height="@dimen/db" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <TextView android:textSize="17.0dip" android:textColor="@color/az" android:id="@id/fsx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginBottom="@dimen/cr" android:text="{title}" android:maxLines="1" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/mbq" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="16.0dip" android:layout_marginBottom="@dimen/cr" android:src="@raw/icons_filled_close" app:iconColor="@color/al6" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toRightOf="hr_" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.tencent.mm.plugin.finder.view.sidebar.DraggableConstraintLayout android:id="@id/jl0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="0.0dip" android:layout_marginBottom="0.0dip" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <include android:id="@id/g0n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cp" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" layout="@layout/al5" />
+    </com.tencent.mm.plugin.finder.view.sidebar.DraggableConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/jl1" android:layout_width="@dimen/bx" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/jl4" app:layout_constraintLeft_toRightOf="@id/jl0" app:layout_constraintTop_toBottomOf="@id/jl5">
+        <com.tencent.mm.ui.widget.pulldown.NestedBounceView android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/fue" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.ui.widget.pulldown.NestedBounceView>
+        <View android:id="@id/jkx" android:background="@drawable/a56" android:layout_width="fill_parent" android:layout_height="@dimen/d4" app:layout_constraintTop_toTopOf="hr_" />
+        <View android:id="@id/jkw" android:background="@drawable/a55" android:layout_width="fill_parent" android:layout_height="@dimen/d4" app:layout_constraintBottom_toBottomOf="hr_" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/jl4" android:layout_width="fill_parent" android:layout_height="@dimen/d6" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

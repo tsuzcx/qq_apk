@@ -10,15 +10,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.c.b;
+import com.tencent.mm.R.h;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fts.a.a.c;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.a.o;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -27,154 +28,168 @@ import java.util.List;
 public final class d
   implements TextWatcher, View.OnClickListener, View.OnFocusChangeListener, com.tencent.mm.plugin.fts.a.l
 {
-  private ak handler;
-  public EditText qWm;
-  public TextView qWn;
-  public View qWo;
-  private a qWp;
-  InputMethodManager qWq;
-  public d.b qWr;
-  public d.a qWs;
+  public EditText HQl;
+  public TextView PIP;
+  public View PIQ;
+  private c PIR;
+  InputMethodManager PIS;
+  public d.b PIT;
+  public a PIU;
+  private MMHandler handler;
   
   public d()
   {
-    AppMethodBeat.i(25075);
-    this.qWr = d.b.qWu;
-    this.handler = new ak(Looper.getMainLooper());
-    AppMethodBeat.o(25075);
+    AppMethodBeat.i(28746);
+    this.PIT = d.b.PIW;
+    this.handler = new MMHandler(Looper.getMainLooper());
+    AppMethodBeat.o(28746);
   }
   
-  private void cnm()
+  private void gZh()
   {
-    AppMethodBeat.i(25079);
-    if (cnk())
+    AppMethodBeat.i(28750);
+    if (gZf())
     {
-      AppMethodBeat.o(25079);
+      AppMethodBeat.o(28750);
       return;
     }
-    this.qWr = d.b.qWt;
-    this.qWo.setVisibility(0);
-    if (this.qWs != null) {
-      this.qWs.cno();
+    this.PIT = d.b.PIV;
+    this.PIQ.setVisibility(0);
+    if (this.PIU != null) {
+      this.PIU.gZj();
     }
-    this.qWm.requestFocus();
-    this.qWq.showSoftInput(this.qWm, 0);
-    AppMethodBeat.o(25079);
+    this.HQl.requestFocus();
+    this.PIS.showSoftInput(this.HQl, 0);
+    AppMethodBeat.o(28750);
   }
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(25082);
-    if (bo.isNullOrNil(paramEditable.toString()))
+    AppMethodBeat.i(28753);
+    if (Util.isNullOrNil(paramEditable.toString()))
     {
-      AppMethodBeat.o(25082);
+      AppMethodBeat.o(28753);
       return;
     }
     paramEditable = paramEditable.toString();
-    ab.i("MicroMsg.MainSightSelectContactSearchHelper", "doSearch: query=%s", new Object[] { paramEditable });
-    if (this.qWp != null)
+    Log.i("MicroMsg.MainSightSelectContactSearchHelper", "doSearch: query=%s", new Object[] { paramEditable });
+    if (this.PIR != null)
     {
-      ((n)g.G(n.class)).cancelSearchTask(this.qWp);
-      this.qWp = null;
+      ((n)h.az(n.class)).cancelSearchTask(this.PIR);
+      this.PIR = null;
     }
     HashSet localHashSet = new HashSet();
-    b localb = b.mTt;
-    ak localak = this.handler;
-    paramEditable = i.a(paramEditable, new int[] { 131072, 131075 }, null, 3, localHashSet, localb, this, localak);
-    this.qWp = ((n)g.G(n.class)).search(2, paramEditable);
-    AppMethodBeat.o(25082);
+    com.tencent.mm.plugin.fts.a.c.b localb = com.tencent.mm.plugin.fts.a.c.b.Hue;
+    MMHandler localMMHandler = this.handler;
+    paramEditable = com.tencent.mm.plugin.fts.a.a.l.a(paramEditable, new int[] { 131072, 131075 }, null, 3, localHashSet, localb, this, localMMHandler);
+    this.PIR = ((n)h.az(n.class)).search(2, paramEditable);
+    AppMethodBeat.o(28753);
   }
   
-  public final void b(j paramj)
+  public final void b(m paramm)
   {
-    AppMethodBeat.i(25081);
-    if (paramj.bpE == 0)
+    AppMethodBeat.i(28752);
+    if (paramm.resultCode == 0)
     {
-      if ((paramj.mSW == null) || (this.qWs == null))
+      if ((paramm.HtF == null) || (this.PIU == null))
       {
-        AppMethodBeat.o(25081);
+        AppMethodBeat.o(28752);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      paramj = paramj.mSW.iterator();
-      while (paramj.hasNext()) {
-        localArrayList.add(((com.tencent.mm.plugin.fts.a.a.l)paramj.next()).mRV);
+      paramm = paramm.HtF.iterator();
+      while (paramm.hasNext()) {
+        localArrayList.add(((o)paramm.next()).Hsz);
       }
-      this.qWs.cX(localArrayList);
+      this.PIU.ks(localArrayList);
     }
-    AppMethodBeat.o(25081);
+    AppMethodBeat.o(28752);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public final boolean cnk()
+  public final boolean gZf()
   {
-    return this.qWr == d.b.qWt;
+    return this.PIT == d.b.PIV;
   }
   
-  public final void cnl()
+  public final void gZg()
   {
-    AppMethodBeat.i(25078);
-    if (cnk())
+    AppMethodBeat.i(28749);
+    if (gZf())
     {
-      cnn();
-      AppMethodBeat.o(25078);
+      gZi();
+      AppMethodBeat.o(28749);
       return;
     }
-    cnm();
-    AppMethodBeat.o(25078);
+    gZh();
+    AppMethodBeat.o(28749);
   }
   
-  public final void cnn()
+  public final void gZi()
   {
-    AppMethodBeat.i(25080);
-    if (!cnk())
+    AppMethodBeat.i(28751);
+    if (!gZf())
     {
-      AppMethodBeat.o(25080);
+      AppMethodBeat.o(28751);
       return;
     }
-    this.qWm.setText("");
-    this.qWm.clearFocus();
-    bo.hideVKB(this.qWm);
-    this.qWr = d.b.qWu;
-    this.qWo.setVisibility(8);
-    if (this.qWs != null) {
-      this.qWs.cnp();
+    this.HQl.setText("");
+    this.HQl.clearFocus();
+    Util.hideVKB(this.HQl);
+    this.PIT = d.b.PIW;
+    this.PIQ.setVisibility(8);
+    if (this.PIU != null) {
+      this.PIU.gZk();
     }
-    AppMethodBeat.o(25080);
+    AppMethodBeat.o(28751);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(25077);
-    if (paramView.getId() == 2131825893)
+    AppMethodBeat.i(28748);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/sight/encode/ui/MainSightSelectContactSearchHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (paramView.getId() == R.h.fVq)
     {
-      if (!cnk())
+      if (!gZf())
       {
-        AppMethodBeat.o(25077);
+        a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightSelectContactSearchHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(28748);
         return;
       }
-      cnl();
+      gZg();
     }
-    AppMethodBeat.o(25077);
+    a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightSelectContactSearchHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(28748);
   }
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(25076);
+    AppMethodBeat.i(28747);
     if (!paramBoolean)
     {
-      this.qWm.clearFocus();
-      bo.hideVKB(this.qWm);
+      this.HQl.clearFocus();
+      Util.hideVKB(this.HQl);
     }
-    AppMethodBeat.o(25076);
+    AppMethodBeat.o(28747);
   }
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public static abstract interface a
+  {
+    public abstract void gZj();
+    
+    public abstract void gZk();
+    
+    public abstract void ks(List<String> paramList);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.d
  * JD-Core Version:    0.7.0.1
  */

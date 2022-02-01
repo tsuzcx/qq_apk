@@ -12,12 +12,12 @@ import java.util.List;
 
 public final class a
 {
-  private static a KY;
-  private static final Object Kp = new Object();
-  private final List<String> KZ = Collections.EMPTY_LIST;
-  private final List<String> La = Collections.EMPTY_LIST;
-  private final List<String> Lb = Collections.EMPTY_LIST;
-  private final List<String> Lc = Collections.EMPTY_LIST;
+  private static a MN;
+  private static final Object Me = new Object();
+  private final List<String> MO = Collections.EMPTY_LIST;
+  private final List<String> MP = Collections.EMPTY_LIST;
+  private final List<String> MQ = Collections.EMPTY_LIST;
+  private final List<String> MR = Collections.EMPTY_LIST;
   
   @SuppressLint({"UntrackedBindService"})
   public static void a(Context paramContext, ServiceConnection paramServiceConnection)
@@ -38,20 +38,16 @@ public final class a
     return paramContext.bindService(paramIntent, paramServiceConnection, 129);
   }
   
-  public static a hR()
+  public static a ib()
   {
-    synchronized (Kp)
+    synchronized (Me)
     {
-      if (KY == null) {
-        KY = new a();
+      if (MN == null) {
+        MN = new a();
       }
-      return KY;
+      return MN;
     }
   }
-  
-  public static void hS() {}
-  
-  public static void hT() {}
 }
 
 

@@ -3,166 +3,219 @@ package com.tencent.mm.plugin.appbrand.performance;
 import android.os.Build.VERSION;
 import android.os.Process;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
+import com.tencent.luggage.sdk.customize.a;
+import com.tencent.luggage.sdk.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.e.c;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.af.o;
+import com.tencent.mm.plugin.appbrand.af.o.a;
+import com.tencent.mm.plugin.appbrand.appstorage.v;
 import com.tencent.mm.plugin.appbrand.jsapi.storage.GetStorageSizeTask;
-import com.tencent.mm.plugin.appbrand.s.m;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.k.d;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AppBrandPerformanceManager$a
   implements Runnable
 {
-  protected final com.tencent.luggage.sdk.d.b bEZ;
-  private volatile double iAI;
-  private volatile int iAJ;
-  private volatile boolean iAK;
-  protected volatile boolean iAL;
-  private e iAM;
-  f iAN;
-  f.a iAO;
-  private e.c ifl;
+  volatile boolean cgD;
+  protected final d etN;
   protected final String mAppId;
   private volatile boolean mEnabled;
-  volatile boolean mPaused;
+  private volatile double tDA;
+  private volatile int tDB;
+  private volatile boolean tDC;
+  protected volatile boolean tDD;
+  private e tDE;
+  f tDF;
+  private k.c tDG;
   
-  public AppBrandPerformanceManager$a(com.tencent.luggage.sdk.d.b paramb)
+  public AppBrandPerformanceManager$a(d paramd)
   {
-    AppMethodBeat.i(102219);
-    this.iAI = 0.0D;
-    this.iAJ = 4;
+    AppMethodBeat.i(147570);
+    this.tDA = 0.0D;
+    this.tDB = 4;
     this.mEnabled = true;
-    this.mPaused = false;
-    this.iAK = false;
-    this.iAL = false;
-    this.iAO = new AppBrandPerformanceManager.a.2(this);
-    this.ifl = new AppBrandPerformanceManager.a.3(this);
-    this.bEZ = paramb;
-    this.mAppId = paramb.mAppId;
-    this.iAM = new e(Process.myPid());
-    this.iAL = false;
-    if (aKh())
+    this.cgD = false;
+    this.tDC = false;
+    this.tDD = false;
+    this.tDG = new k.c()
     {
-      this.iAN = new f();
-      this.iAN.mInterval = 100L;
-      this.iAN.iAO = this.iAO;
-    }
-    AppMethodBeat.o(102219);
+      public final void a(k.d paramAnonymousd)
+      {
+        AppMethodBeat.i(147568);
+        super.a(paramAnonymousd);
+        paramAnonymousd = AppBrandPerformanceManager.a.this;
+        paramAnonymousd.cgD = true;
+        if ((AppBrandPerformanceManager.a.cGz()) && (paramAnonymousd.tDF != null)) {
+          paramAnonymousd.tDF.stop();
+        }
+        AppMethodBeat.o(147568);
+      }
+      
+      public final void onDestroy()
+      {
+        AppMethodBeat.i(147567);
+        super.onDestroy();
+        AppBrandPerformanceManager.a.this.stop();
+        AppMethodBeat.o(147567);
+      }
+      
+      public final void onResume()
+      {
+        AppMethodBeat.i(147569);
+        super.onResume();
+        AppBrandPerformanceManager.a locala = AppBrandPerformanceManager.a.this;
+        locala.cgD = false;
+        if ((AppBrandPerformanceManager.a.cGz()) && (locala.tDF != null)) {
+          locala.tDF.start();
+        }
+        AppMethodBeat.o(147569);
+      }
+    };
+    this.etN = paramd;
+    this.mAppId = paramd.mAppId;
+    this.tDE = new e(Process.myPid());
+    this.tDD = false;
+    AppMethodBeat.o(147570);
   }
   
-  static boolean aKh()
+  static boolean cGz()
   {
     return Build.VERSION.SDK_INT >= 16;
   }
   
-  private void aKo()
+  protected void cGA()
   {
-    AppMethodBeat.i(140977);
-    Object localObject = this.bEZ.wR();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(140977);
-      return;
-    }
-    if (((AppBrandSysConfigLU)localObject).hiY == 1)
-    {
-      localObject = new GetStorageSizeTask();
-      ((GetStorageSizeTask)localObject).appId = this.mAppId;
-      ((GetStorageSizeTask)localObject).hxp = new AppBrandPerformanceManager.a.1(this, (GetStorageSizeTask)localObject);
-      ((GetStorageSizeTask)localObject).aBj();
-      AppBrandMainProcessService.a((MainProcessTask)localObject);
-      AppMethodBeat.o(140977);
-      return;
-    }
-    AppBrandPerformanceManager.a(this.bEZ, 401, bo.hk(((com.tencent.luggage.sdk.customize.b)com.tencent.luggage.a.e.q(com.tencent.luggage.sdk.customize.b.class)).cc(this.mAppId).yT(this.mAppId)));
-    AppMethodBeat.o(140977);
-  }
-  
-  protected void aKi()
-  {
-    AppMethodBeat.i(102222);
-    int i = bo.hp(ah.getContext());
-    AppBrandPerformanceManager.a(this.bEZ, 102, i + "m");
+    AppMethodBeat.i(147573);
+    int i = Util.getSelfMemInMB(MMApplicationContext.getContext());
+    AppBrandPerformanceManager.a(this.etN, 102, i + "m");
     c.a(this.mAppId, "Hardware", "MEMORY", i);
-    AppMethodBeat.o(102222);
+    AppMethodBeat.o(147573);
   }
   
-  protected void aKj()
+  protected void cGB()
   {
-    if (!this.iAL) {}
+    if (!this.tDD) {}
   }
   
-  protected void aKk()
+  protected void cGC()
   {
-    if (!this.iAL) {}
+    if (!this.tDD) {}
   }
   
-  protected void aKl() {}
+  protected void cGD() {}
   
-  protected void aKm() {}
+  protected void cGE() {}
   
-  protected void aKn() {}
+  protected void cGF() {}
   
   public void run()
   {
-    AppMethodBeat.i(102223);
-    if (this.bEZ.mFinished)
+    AppMethodBeat.i(147574);
+    if (this.etN.qsE.get())
     {
-      AppMethodBeat.o(102223);
+      AppMethodBeat.o(147574);
       return;
     }
-    if ((this.mEnabled) && (!this.mPaused))
+    Object localObject;
+    if ((this.mEnabled) && (!this.cgD))
     {
-      double d = this.iAM.aKr();
-      AppBrandPerformanceManager.a(this.bEZ, 101, (int)d + "%");
+      double d = this.tDE.cGJ();
+      AppBrandPerformanceManager.a(this.etN, 101, (int)d + "%");
       c.a(this.mAppId, "Hardware", "CPU", d);
-      aKi();
-      aKj();
-      aKk();
-      aKl();
-      aKm();
-      aKn();
-      this.iAJ += 1;
-      if (this.iAJ >= 4)
+      cGA();
+      cGB();
+      cGC();
+      cGD();
+      cGE();
+      cGF();
+      this.tDB += 1;
+      if (this.tDB >= 4)
       {
-        this.iAJ = 0;
-        aKo();
+        this.tDB = 0;
+        localObject = this.etN.asz();
+        if (localObject != null)
+        {
+          if (((AppBrandSysConfigLU)localObject).qYZ != 1) {
+            break label211;
+          }
+          localObject = new GetStorageSizeTask();
+          ((GetStorageSizeTask)localObject).appId = this.mAppId;
+          ((GetStorageSizeTask)localObject).rxj = new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(317246);
+              AppBrandPerformanceManager.a(AppBrandPerformanceManager.a.this.etN, 401, Util.getSizeKB(this.tDI.size));
+              this.tDI.cpx();
+              AppMethodBeat.o(317246);
+            }
+          };
+          ((GetStorageSizeTask)localObject).bQt();
+        }
       }
     }
-    if (this.mEnabled) {
-      m.aNS().o(this, 3000L);
+    for (;;)
+    {
+      if (this.mEnabled) {
+        o.cNm().j(this, 1000L);
+      }
+      AppMethodBeat.o(147574);
+      return;
+      label211:
+      AppBrandPerformanceManager.a(this.etN, 401, Util.getSizeKB(((a)com.tencent.luggage.a.e.T(a.class)).f(this.mAppId, ((AppBrandSysConfigLU)localObject).qYZ, ((AppBrandSysConfigLU)localObject).qLQ).VT(this.mAppId)));
     }
-    AppMethodBeat.o(102223);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(102220);
-    this.mEnabled = true;
-    m.aNS().ac(this);
-    com.tencent.mm.plugin.appbrand.e.a(this.mAppId, this.ifl);
-    if ((aKh()) && (this.iAN != null)) {
-      this.iAN.start();
+    AppMethodBeat.i(147571);
+    if ((!this.tDD) && (cGz()))
+    {
+      f.a local1 = new f.a()
+      {
+        public final void K(double paramAnonymousDouble)
+        {
+          AppMethodBeat.i(317245);
+          if (Math.round(AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this)) != Math.round(paramAnonymousDouble))
+          {
+            AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this, paramAnonymousDouble);
+            String str = Math.round(AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this)) + " fps";
+            AppBrandPerformanceManager.a(AppBrandPerformanceManager.a.this.etN, 303, str);
+            c.a(AppBrandPerformanceManager.a.this.mAppId, "Hardware", "FPS", AppBrandPerformanceManager.a.a(AppBrandPerformanceManager.a.this));
+          }
+          AppMethodBeat.o(317245);
+        }
+      };
+      this.tDF = new f();
+      this.tDF.mInterval = 100L;
+      this.tDF.tDX = local1;
     }
-    AppMethodBeat.o(102220);
+    this.mEnabled = true;
+    o.cNm().postToWorker(this);
+    k.a(this.mAppId, this.tDG);
+    if ((cGz()) && (this.tDF != null)) {
+      this.tDF.start();
+    }
+    AppMethodBeat.o(147571);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(102221);
+    AppMethodBeat.i(147572);
     this.mEnabled = false;
-    com.tencent.mm.plugin.appbrand.e.b(this.mAppId, this.ifl);
-    if ((aKh()) && (this.iAN != null)) {
-      this.iAN.stop();
+    k.b(this.mAppId, this.tDG);
+    if ((cGz()) && (this.tDF != null)) {
+      this.tDF.stop();
     }
-    if (this.iAM != null) {
-      this.iAM.close();
+    if (this.tDE != null) {
+      this.tDE.close();
     }
-    AppMethodBeat.o(102221);
+    AppMethodBeat.o(147572);
   }
 }
 

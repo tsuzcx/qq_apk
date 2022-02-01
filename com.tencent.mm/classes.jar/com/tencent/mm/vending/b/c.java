@@ -15,53 +15,39 @@ public abstract class c<_Callback>
     super(paramd);
   }
   
-  private void b(com.tencent.mm.vending.j.a parama)
+  private void a(final com.tencent.mm.vending.j.a parama)
   {
-    Iterator localIterator = dQk().iterator();
+    Iterator localIterator = getQueueImpl().iterator();
     while (localIterator.hasNext())
     {
-      b localb = (b)localIterator.next();
+      final b localb = (b)localIterator.next();
       if (localb != null)
       {
-        if (localb.AOk != null) {
-          this.AOi.c(localb.AOk);
+        if (localb.mScheduler != null) {
+          this.mSchedulerInvoker.c(localb.mScheduler);
         }
         for (;;)
         {
-          this.AOi.a(new c.1(this, localb, parama), com.tencent.mm.vending.c.a.AOo, true);
+          this.mSchedulerInvoker.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.aguz, true);
           break;
-          this.AOi.c(d.dQu());
+          this.mSchedulerInvoker.c(d.current());
         }
       }
     }
   }
   
-  public final void a(com.tencent.mm.vending.j.a parama)
-  {
-    try
-    {
-      b(parama);
-      return;
-    }
-    finally
-    {
-      parama = finally;
-      throw parama;
-    }
-  }
-  
   public abstract void a(_Callback param_Callback, com.tencent.mm.vending.j.a parama);
   
-  public final b<_Callback> at(_Callback param_Callback)
+  public final b<_Callback> add(_Callback param_Callback)
   {
-    return a(new b(param_Callback, this));
+    return add(new b(param_Callback, this));
   }
   
-  public final void ate()
+  public final void invoke()
   {
     try
     {
-      b(null);
+      a(null);
       return;
     }
     finally
@@ -71,14 +57,28 @@ public abstract class c<_Callback>
     }
   }
   
+  public final void invoke(com.tencent.mm.vending.j.a parama)
+  {
+    try
+    {
+      a(parama);
+      return;
+    }
+    finally
+    {
+      parama = finally;
+      throw parama;
+    }
+  }
+  
   public final void remove(_Callback param_Callback)
   {
-    b(new b(param_Callback, this));
+    remove(new b(param_Callback, this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.b.c
  * JD-Core Version:    0.7.0.1
  */

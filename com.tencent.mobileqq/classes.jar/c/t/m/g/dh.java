@@ -2,7 +2,7 @@ package c.t.m.g;
 
 public final class dh
 {
-  private static volatile di a = null;
+  private static volatile di a;
   private static volatile boolean b = false;
   
   public static di a()
@@ -22,7 +22,7 @@ public final class dh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dh
  * JD-Core Version:    0.7.0.1
  */

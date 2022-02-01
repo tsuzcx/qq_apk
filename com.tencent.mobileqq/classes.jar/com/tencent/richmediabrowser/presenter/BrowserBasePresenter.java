@@ -1,20 +1,23 @@
 package com.tencent.richmediabrowser.presenter;
 
+import android.content.Intent;
 import android.widget.RelativeLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.image.URLDrawable;
+import com.tencent.richmediabrowser.core.IBaseModelBuilder;
+import com.tencent.richmediabrowser.core.IBasePresenterBuilder;
+import com.tencent.richmediabrowser.core.IBaseViewBuilder;
 import com.tencent.richmediabrowser.listener.IDownloadEventListener;
 import com.tencent.richmediabrowser.listener.IGalleryImageListener;
 import com.tencent.richmediabrowser.model.MainBrowserModel;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import com.tencent.richmediabrowser.view.BaseView;
 import com.tencent.richmediabrowser.view.BrowserBaseView;
 import com.tencent.richmediabrowser.view.MainBrowserScene;
-import com.tencent.richmediabrowser.view.page.Gallery;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BrowserBasePresenter
   extends BasePresenter
-  implements IDownloadEventListener, IGalleryImageListener
+  implements IBasePresenterBuilder, IDownloadEventListener, IGalleryImageListener
 {
   public BrowserBaseView browserBaseView;
   public ConcurrentHashMap<Integer, URLDrawable> mActiveDrawable = new ConcurrentHashMap();
@@ -22,14 +25,22 @@ public class BrowserBasePresenter
   
   public void back()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       this.mainBrowserPresenter.browserScene.back();
     }
   }
   
+  public void buildComplete() {}
+  
+  public void buildParams(Intent paramIntent) {}
+  
+  public void buildPresenter() {}
+  
   public RelativeLayout getContentView()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       return this.mainBrowserPresenter.browserScene.getContentView();
     }
     return null;
@@ -37,7 +48,8 @@ public class BrowserBasePresenter
   
   public int getCount()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
       return this.mainBrowserPresenter.browserModel.getCount();
     }
     return 0;
@@ -45,31 +57,44 @@ public class BrowserBasePresenter
   
   public int getCurrentPosition()
   {
-    if (this.mainBrowserPresenter != null) {
-      return this.mainBrowserPresenter.getCurrentPosition();
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if (localMainBrowserPresenter != null) {
+      return localMainBrowserPresenter.getCurrentPosition();
     }
     return -1;
   }
   
-  public Gallery getGallery()
+  public RichMediaBrowserInfo getItem(int paramInt)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
-      return this.mainBrowserPresenter.browserScene.mGallery;
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
+      return this.mainBrowserPresenter.browserScene.getItem(paramInt);
     }
     return null;
   }
   
-  public RichMediaBrowserInfo getItem(int paramInt)
+  public RichMediaBrowserInfo getItem(String paramString)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
-      return this.mainBrowserPresenter.browserScene.getItem(paramInt);
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
+      return this.mainBrowserPresenter.browserModel.getItem(paramString);
+    }
+    return null;
+  }
+  
+  public RecyclerView getRecyclerView()
+  {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
+      return this.mainBrowserPresenter.browserScene.getRecyclerView();
     }
     return null;
   }
   
   public RelativeLayout getRootView()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       return this.mainBrowserPresenter.browserScene.mRoot;
     }
     return null;
@@ -77,7 +102,8 @@ public class BrowserBasePresenter
   
   public int getSelectedIndex()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
       return this.mainBrowserPresenter.browserModel.getSelectedIndex();
     }
     return 0;
@@ -85,7 +111,8 @@ public class BrowserBasePresenter
   
   public RichMediaBrowserInfo getSelectedItem()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
       return this.mainBrowserPresenter.browserModel.getSelectedItem();
     }
     return null;
@@ -93,24 +120,30 @@ public class BrowserBasePresenter
   
   public void notifyDataSetChanged()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       this.mainBrowserPresenter.browserScene.notifyDataSetChanged();
     }
   }
   
-  public void notifyProgress(String paramString, int paramInt)
+  public void notifyItemChanged(int paramInt)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
-      this.mainBrowserPresenter.browserModel.updateItemProgress(paramString, paramInt);
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
+      this.mainBrowserPresenter.browserScene.notifyItemChanged(paramInt);
     }
   }
   
-  public void notifyResult(String paramString, int paramInt)
+  public void notifyProgress(String paramString, int paramInt) {}
+  
+  public void notifyResult(String paramString, int paramInt) {}
+  
+  public void onDestroy()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
-      this.mainBrowserPresenter.browserModel.updateItemStatus(paramString, paramInt);
-    }
+    this.mActiveDrawable.clear();
   }
+  
+  public void onItemSelect(int paramInt) {}
   
   public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable)
   {
@@ -121,30 +154,34 @@ public class BrowserBasePresenter
   
   public void onLoadFinish(int paramInt, boolean paramBoolean)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       this.mainBrowserPresenter.browserScene.onLoadFinish(paramInt, paramBoolean);
     }
   }
   
   public void onLoadStart(int paramInt1, int paramInt2)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       this.mainBrowserPresenter.browserScene.onLoadStart(paramInt1, paramInt2);
     }
   }
   
   public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       this.mainBrowserPresenter.browserScene.onLoadSuccessed(paramInt, paramBoolean);
     }
   }
   
-  public void setGalleryView(BaseView paramBaseView)
+  public void setBrowserModel(IBaseModelBuilder paramIBaseModelBuilder) {}
+  
+  public void setBrowserView(IBaseViewBuilder paramIBaseViewBuilder)
   {
-    super.setGalleryView(paramBaseView);
-    if ((paramBaseView instanceof BrowserBaseView)) {
-      this.browserBaseView = ((BrowserBaseView)paramBaseView);
+    if ((paramIBaseViewBuilder instanceof BrowserBaseView)) {
+      this.browserBaseView = ((BrowserBaseView)paramIBaseViewBuilder);
     }
   }
   
@@ -153,44 +190,56 @@ public class BrowserBasePresenter
     this.mainBrowserPresenter = paramMainBrowserPresenter;
   }
   
-  public void setRelyPresenter(BasePresenter paramBasePresenter)
+  public void setRelyPresenter(IBasePresenterBuilder paramIBasePresenterBuilder)
   {
-    if ((paramBasePresenter instanceof MainBrowserPresenter)) {
-      setMainBrowserPresenter((MainBrowserPresenter)paramBasePresenter);
+    if ((paramIBasePresenterBuilder instanceof MainBrowserPresenter)) {
+      setMainBrowserPresenter((MainBrowserPresenter)paramIBasePresenterBuilder);
     }
   }
   
   public void showContentView(boolean paramBoolean)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       this.mainBrowserPresenter.browserScene.showContentView(paramBoolean);
     }
   }
   
   public void updateItem(RichMediaBrowserInfo paramRichMediaBrowserInfo)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
       this.mainBrowserPresenter.browserModel.updateItem(paramRichMediaBrowserInfo);
     }
   }
   
   public void updateItem(RichMediaBrowserInfo paramRichMediaBrowserInfo, int paramInt)
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
       this.mainBrowserPresenter.browserModel.updateItem(paramRichMediaBrowserInfo, paramInt);
+    }
+  }
+  
+  public void updateItemStatus(String paramString, int paramInt)
+  {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserModel != null)) {
+      this.mainBrowserPresenter.browserModel.updateItemStatus(paramString, paramInt);
     }
   }
   
   public void updateSystemUIVisablity()
   {
-    if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserScene != null)) {
+    MainBrowserPresenter localMainBrowserPresenter = this.mainBrowserPresenter;
+    if ((localMainBrowserPresenter != null) && (localMainBrowserPresenter.browserScene != null)) {
       this.mainBrowserPresenter.browserScene.updateSystemUIVisablity();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.presenter.BrowserBasePresenter
  * JD-Core Version:    0.7.0.1
  */

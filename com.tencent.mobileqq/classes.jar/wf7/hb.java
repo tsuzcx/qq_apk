@@ -8,12 +8,12 @@ public class hb
 {
   private static void a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
-    int j = 0;
     int k = paramArrayOfByte.length;
     int i = 0;
-    while (i < k >> 2)
+    int m;
+    for (int j = 0; i < k >> 2; j = m + 1)
     {
-      int m = j + 1;
+      m = j + 1;
       paramArrayOfByte[j] &= 0xFF;
       int n = paramArrayOfInt[i];
       j = m + 1;
@@ -21,9 +21,7 @@ public class hb
       n = paramArrayOfInt[i];
       m = j + 1;
       paramArrayOfInt[i] = (n | (paramArrayOfByte[j] & 0xFF) << 16);
-      n = paramArrayOfInt[i];
-      j = m + 1;
-      paramArrayOfInt[i] = ((paramArrayOfByte[m] & 0xFF) << 24 | n);
+      paramArrayOfInt[i] |= (paramArrayOfByte[m] & 0xFF) << 24;
       i += 1;
     }
     if (j < paramArrayOfByte.length)
@@ -47,25 +45,30 @@ public class hb
     if (i > paramInt) {
       j = paramInt;
     }
-    int k = 0;
     i = 0;
-    while (i < j)
+    int k = 0;
+    int m;
+    for (;;)
     {
-      int m = k + 1;
+      m = 8;
+      if (i >= j) {
+        break;
+      }
+      m = k + 1;
       paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] & 0xFF));
       k = m + 1;
       paramArrayOfByte[m] = ((byte)(paramArrayOfInt[i] >>> 8 & 0xFF));
       m = k + 1;
       paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] >>> 16 & 0xFF));
+      k = m + 1;
       paramArrayOfByte[m] = ((byte)(paramArrayOfInt[i] >>> 24 & 0xFF));
       i += 1;
-      k = m + 1;
     }
     if ((paramInt > j) && (k < paramArrayOfByte.length))
     {
       paramInt = k + 1;
       paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] & 0xFF));
-      j = 8;
+      j = m;
       while ((j <= 24) && (paramInt < paramArrayOfByte.length))
       {
         paramArrayOfByte[paramInt] = ((byte)(paramArrayOfInt[i] >>> j & 0xFF));
@@ -79,122 +82,138 @@ public class hb
   public static byte[] c(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     byte[] arrayOfByte = l(paramArrayOfByte2);
-    if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0)) {
-      return paramArrayOfByte1;
-    }
-    if (paramArrayOfByte1.length % 4 == 0)
+    paramArrayOfByte2 = paramArrayOfByte1;
+    if (paramArrayOfByte1 != null)
     {
-      i = (paramArrayOfByte1.length >>> 2) + 1;
-      paramArrayOfByte2 = new int[i];
-      a(paramArrayOfByte1, paramArrayOfByte2);
-      paramArrayOfByte2[(i - 1)] = paramArrayOfByte1.length;
-      if (arrayOfByte.length % 4 != 0) {
-        break label107;
-      }
-    }
-    label107:
-    for (int i = arrayOfByte.length >>> 2;; i = (arrayOfByte.length >>> 2) + 1)
-    {
-      j = i;
-      if (i < 4) {
-        j = 4;
-      }
-      paramArrayOfByte1 = new int[j];
-      i = 0;
-      while (i < j)
+      paramArrayOfByte2 = paramArrayOfByte1;
+      if (arrayOfByte != null)
       {
-        paramArrayOfByte1[i] = 0;
-        i += 1;
+        if (paramArrayOfByte1.length == 0) {
+          return paramArrayOfByte1;
+        }
+        if (paramArrayOfByte1.length % 4 == 0) {
+          i = (paramArrayOfByte1.length >>> 2) + 1;
+        } else {
+          i = (paramArrayOfByte1.length >>> 2) + 2;
+        }
+        int[] arrayOfInt = new int[i];
+        a(paramArrayOfByte1, arrayOfInt);
+        arrayOfInt[(i - 1)] = paramArrayOfByte1.length;
+        if (arrayOfByte.length % 4 == 0) {
+          i = arrayOfByte.length >>> 2;
+        } else {
+          i = (arrayOfByte.length >>> 2) + 1;
+        }
+        int j = i;
+        if (i < 4) {
+          j = 4;
+        }
+        paramArrayOfByte1 = new int[j];
+        int i = 0;
+        while (i < j)
+        {
+          paramArrayOfByte1[i] = 0;
+          i += 1;
+        }
+        a(arrayOfByte, paramArrayOfByte1);
+        int i1 = arrayOfInt.length - 1;
+        i = arrayOfInt[i1];
+        j = arrayOfInt[0];
+        j = 52 / (i1 + 1) + 6;
+        int m;
+        for (int k = 0; j > 0; k = m)
+        {
+          m = k - 1640531527;
+          int i2 = m >>> 2 & 0x3;
+          int n = 0;
+          k = i;
+          for (i = n; i < i1; i = n)
+          {
+            n = i + 1;
+            int i3 = arrayOfInt[n];
+            int i4 = arrayOfInt[i];
+            k = ((k >>> 5 ^ i3 << 2) + (i3 >>> 3 ^ k << 4) ^ (i3 ^ m) + (k ^ paramArrayOfByte1[(i & 0x3 ^ i2)])) + i4;
+            arrayOfInt[i] = k;
+          }
+          n = arrayOfInt[0];
+          i = arrayOfInt[i1] + ((k >>> 5 ^ n << 2) + (n >>> 3 ^ k << 4) ^ (n ^ m) + (paramArrayOfByte1[(i2 ^ i & 0x3)] ^ k));
+          arrayOfInt[i1] = i;
+          j -= 1;
+        }
+        paramArrayOfByte2 = new byte[arrayOfInt.length << 2];
+        a(arrayOfInt, arrayOfInt.length, paramArrayOfByte2);
       }
-      i = (paramArrayOfByte1.length >>> 2) + 2;
-      break;
     }
-    a(arrayOfByte, paramArrayOfByte1);
-    int i1 = paramArrayOfByte2.length - 1;
-    i = paramArrayOfByte2[i1];
-    int j = paramArrayOfByte2[0];
-    j = 52 / (i1 + 1) + 6;
-    int m;
-    for (int k = 0; j > 0; k = m)
-    {
-      m = k - 1640531527;
-      int i2 = m >>> 2 & 0x3;
-      int n = 0;
-      k = i;
-      i = n;
-      while (i < i1)
-      {
-        n = paramArrayOfByte2[(i + 1)];
-        int i3 = paramArrayOfByte2[i];
-        k = ((k ^ paramArrayOfByte1[(i & 0x3 ^ i2)]) + (n ^ m) ^ (k >>> 5 ^ n << 2) + (n >>> 3 ^ k << 4)) + i3;
-        paramArrayOfByte2[i] = k;
-        i += 1;
-      }
-      n = paramArrayOfByte2[0];
-      i = paramArrayOfByte2[i1] + ((paramArrayOfByte1[(i & 0x3 ^ i2)] ^ k) + (n ^ m) ^ (k >>> 5 ^ n << 2) + (n >>> 3 ^ k << 4));
-      paramArrayOfByte2[i1] = i;
-      j -= 1;
-    }
-    paramArrayOfByte1 = new byte[paramArrayOfByte2.length << 2];
-    a(paramArrayOfByte2, paramArrayOfByte2.length, paramArrayOfByte1);
-    return paramArrayOfByte1;
+    return paramArrayOfByte2;
   }
   
   @Deprecated
   public static byte[] d(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     byte[] arrayOfByte = l(paramArrayOfByte2);
-    if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0)) {
-      return paramArrayOfByte1;
-    }
-    if ((paramArrayOfByte1.length % 4 != 0) || (paramArrayOfByte1.length < 8)) {
+    if ((paramArrayOfByte1 != null) && (arrayOfByte != null))
+    {
+      if (paramArrayOfByte1.length == 0) {
+        return paramArrayOfByte1;
+      }
+      if (paramArrayOfByte1.length % 4 == 0)
+      {
+        if (paramArrayOfByte1.length < 8) {
+          return null;
+        }
+        paramArrayOfByte2 = new int[paramArrayOfByte1.length >>> 2];
+        a(paramArrayOfByte1, paramArrayOfByte2);
+        if (arrayOfByte.length % 4 == 0) {
+          i = arrayOfByte.length >>> 2;
+        } else {
+          i = (arrayOfByte.length >>> 2) + 1;
+        }
+        int j = i;
+        if (i < 4) {
+          j = 4;
+        }
+        paramArrayOfByte1 = new int[j];
+        int i = 0;
+        while (i < j)
+        {
+          paramArrayOfByte1[i] = 0;
+          i += 1;
+        }
+        a(arrayOfByte, paramArrayOfByte1);
+        int m = paramArrayOfByte2.length - 1;
+        i = paramArrayOfByte2[m];
+        i = paramArrayOfByte2[0];
+        j = (52 / (m + 1) + 6) * -1640531527;
+        while (j != 0)
+        {
+          int n = j >>> 2 & 0x3;
+          int k = i;
+          i = m;
+          while (i > 0)
+          {
+            i1 = paramArrayOfByte2[(i - 1)];
+            k = paramArrayOfByte2[i] - ((k ^ j) + (i1 ^ paramArrayOfByte1[(i & 0x3 ^ n)]) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
+            paramArrayOfByte2[i] = k;
+            i -= 1;
+          }
+          int i1 = paramArrayOfByte2[m];
+          i = paramArrayOfByte2[0] - ((i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4) ^ (k ^ j) + (paramArrayOfByte1[(i & 0x3 ^ n)] ^ i1));
+          paramArrayOfByte2[0] = i;
+          j += 1640531527;
+        }
+        i = paramArrayOfByte2[(paramArrayOfByte2.length - 1)];
+        if (i >= 0)
+        {
+          if (i > paramArrayOfByte2.length - 1 << 2) {
+            return null;
+          }
+          paramArrayOfByte1 = new byte[i];
+          a(paramArrayOfByte2, paramArrayOfByte2.length - 1, paramArrayOfByte1);
+          return paramArrayOfByte1;
+        }
+      }
       return null;
     }
-    paramArrayOfByte2 = new int[paramArrayOfByte1.length >>> 2];
-    a(paramArrayOfByte1, paramArrayOfByte2);
-    if (arrayOfByte.length % 4 == 0) {}
-    for (int i = arrayOfByte.length >>> 2;; i = (arrayOfByte.length >>> 2) + 1)
-    {
-      j = i;
-      if (i < 4) {
-        j = 4;
-      }
-      paramArrayOfByte1 = new int[j];
-      i = 0;
-      while (i < j)
-      {
-        paramArrayOfByte1[i] = 0;
-        i += 1;
-      }
-    }
-    a(arrayOfByte, paramArrayOfByte1);
-    int m = paramArrayOfByte2.length - 1;
-    i = paramArrayOfByte2[m];
-    i = paramArrayOfByte2[0];
-    int j = (52 / (m + 1) + 6) * -1640531527;
-    while (j != 0)
-    {
-      int n = j >>> 2 & 0x3;
-      int k = i;
-      i = m;
-      while (i > 0)
-      {
-        i1 = paramArrayOfByte2[(i - 1)];
-        k = paramArrayOfByte2[i] - ((k ^ j) + (i1 ^ paramArrayOfByte1[(i & 0x3 ^ n)]) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
-        paramArrayOfByte2[i] = k;
-        i -= 1;
-      }
-      int i1 = paramArrayOfByte2[m];
-      i = paramArrayOfByte2[0] - ((paramArrayOfByte1[(i & 0x3 ^ n)] ^ i1) + (k ^ j) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
-      paramArrayOfByte2[0] = i;
-      j += 1640531527;
-    }
-    i = paramArrayOfByte2[(paramArrayOfByte2.length - 1)];
-    if ((i < 0) || (i > paramArrayOfByte2.length - 1 << 2)) {
-      return null;
-    }
-    paramArrayOfByte1 = new byte[i];
-    a(paramArrayOfByte2, paramArrayOfByte2.length - 1, paramArrayOfByte1);
     return paramArrayOfByte1;
   }
   
@@ -242,16 +261,21 @@ public class hb
     {
       localObject = MessageDigest.getInstance("MD5");
       ((MessageDigest)localObject).update(paramArrayOfByte);
-      localObject = ((MessageDigest)localObject).digest();
-      return localObject;
+      paramArrayOfByte = ((MessageDigest)localObject).digest();
+      return paramArrayOfByte;
     }
-    catch (NoSuchAlgorithmException paramArrayOfByte) {}
-    return null;
+    catch (NoSuchAlgorithmException paramArrayOfByte)
+    {
+      label33:
+      break label33;
+    }
+    localObject = null;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.hb
  * JD-Core Version:    0.7.0.1
  */

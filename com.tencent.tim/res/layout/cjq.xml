@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.compose.QMComposeMailView android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/mp1" layout="@layout/cjp" />
+        <LinearLayout android:orientation="vertical" android:id="@id/mos" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.qqmail.utilities.richeditor.QMEditText android:textSize="16.0sp" android:textColor="@color/atq" android:gravity="center|left|top" android:id="@id/mot" android:background="@color/au4" android:paddingLeft="@dimen/bhf" android:paddingTop="@dimen/bhh" android:paddingRight="@dimen/bhf" android:paddingBottom="@dimen/bhh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wy1" android:minLines="5" android:lineSpacingExtra="5.0dip" android:inputType="textMultiLine" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/mrp" android:background="@drawable/eez" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip">
+                <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/mrq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/air" android:gravity="center_vertical" android:id="@id/mrr" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/x0e" />
+            </LinearLayout>
+        </LinearLayout>
+        <com.tencent.qqmail.activity.compose.ComposeToolBar android:id="@id/mou" android:layout_width="fill_parent" android:layout_height="@dimen/br6" />
+    </LinearLayout>
+</com.tencent.qqmail.activity.compose.QMComposeMailView>

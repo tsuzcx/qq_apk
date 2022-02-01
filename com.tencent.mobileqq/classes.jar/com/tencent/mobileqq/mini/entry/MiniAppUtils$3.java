@@ -1,44 +1,42 @@
 package com.tencent.mobileqq.mini.entry;
 
-import android.content.Context;
-import bfbm;
-import com.tencent.mobileqq.mini.cache.Storage;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 final class MiniAppUtils$3
-  implements Runnable
+  extends Handler
 {
-  MiniAppUtils$3(Context paramContext, String paramString1, String paramString2, String paramString3) {}
-  
-  public void run()
+  MiniAppUtils$3(Looper paramLooper, String paramString1, String paramString2)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
-      Storage localStorage = Storage.open(this.val$context, String.valueOf(bfbm.a().a()), this.val$appId);
-      localObject1 = localStorage;
-      localObject3 = localStorage;
-      localStorage.writeSync(this.val$key, "Object", this.val$data);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localObject3 = localObject1;
-      QLog.e("MiniAppUtils", 1, "saveToMiniAppStorage ", localException);
-      return;
-    }
-    finally
-    {
-      if (localObject3 != null) {
-        localObject3.close();
+      WebSoCgiService.WebSoCgiState localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
+      if (localWebSoCgiState.i == 0)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleMessage() called with: msg = [");
+        localStringBuilder.append(paramMessage);
+        localStringBuilder.append("]");
+        QLog.d("MiniAppUtils", 2, localStringBuilder.toString());
+        ThreadManager.getFileThreadHandler().post(new MiniAppUtils.3.1(this, localWebSoCgiState));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.3
  * JD-Core Version:    0.7.0.1
  */

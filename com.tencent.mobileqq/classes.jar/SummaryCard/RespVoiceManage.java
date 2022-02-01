@@ -8,7 +8,7 @@ public final class RespVoiceManage
   extends JceStruct
 {
   static int cache_eOpType;
-  public int eOpType;
+  public int eOpType = 0;
   
   public RespVoiceManage() {}
   
@@ -29,7 +29,7 @@ public final class RespVoiceManage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.RespVoiceManage
  * JD-Core Version:    0.7.0.1
  */

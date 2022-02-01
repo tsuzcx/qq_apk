@@ -23,82 +23,65 @@ class ParticleEmitter3D$SpriteDecodeTask
   
   protected Void doInBackground(Void... paramVarArgs)
   {
-    String str;
-    int i;
     if (this.sprite != null)
     {
-      str = this.folder + File.separator + this.sprite.path;
-      i = -1;
-    }
-    label128:
-    label136:
-    label220:
-    do
-    {
-      for (;;)
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append(this.folder);
+      paramVarArgs.append(File.separator);
+      paramVarArgs.append(this.sprite.path);
+      String str = paramVarArgs.toString();
+      int i = -1;
+      try
       {
+        paramVarArgs = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), str, 1);
         try
         {
-          paramVarArgs = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), str, 1);
-          BitmapFactory.Options localOptions;
-          int k;
-          localThrowable1.printStackTrace();
+          BitmapFactory.Options localOptions = new BitmapFactory.Options();
+          localOptions.inJustDecodeBounds = true;
+          BitmapFactory.decodeFile(str, localOptions);
+          j = localOptions.outWidth;
+          int k = localOptions.outHeight;
+          j /= this.sprite.width;
+          i = j;
         }
-        catch (Throwable localThrowable1)
-        {
-          try
-          {
-            localOptions = new BitmapFactory.Options();
-            localOptions.inJustDecodeBounds = true;
-            BitmapFactory.decodeFile(str, localOptions);
-            j = localOptions.outWidth;
-            k = localOptions.outHeight;
-            j /= this.sprite.width;
-            i = j;
-            j = 0;
-            if (j >= this.sprite.frameCount) {
-              break label220;
-            }
-            if (!isCancelled()) {
-              break label136;
-            }
-            return null;
-          }
-          catch (Throwable localThrowable3)
-          {
-            int j;
-            break label128;
-          }
-          localThrowable1 = localThrowable1;
-          paramVarArgs = null;
-        }
-        continue;
-        try
-        {
-          Bitmap localBitmap = Bitmap.createBitmap(paramVarArgs, j % i * this.sprite.width, j / i * this.sprite.height, this.sprite.width, this.sprite.height);
-          if (!BitmapUtils.isLegal(localBitmap)) {
-            j += 1;
-          }
-        }
-        catch (Throwable localThrowable2)
-        {
-          for (;;)
-          {
-            localThrowable2.printStackTrace();
-            Object localObject = null;
-            continue;
-            ParticleEmitter3D.access$000(this.this$0)[j] = localObject;
-          }
-        }
+        catch (Throwable localThrowable1) {}
+        localThrowable2.printStackTrace();
       }
-    } while (paramVarArgs == null);
-    paramVarArgs.recycle();
+      catch (Throwable localThrowable2)
+      {
+        paramVarArgs = null;
+      }
+      int j = 0;
+      while (j < this.sprite.frameCount)
+      {
+        if (isCancelled()) {
+          return null;
+        }
+        Bitmap localBitmap2;
+        try
+        {
+          Bitmap localBitmap1 = Bitmap.createBitmap(paramVarArgs, j % i * this.sprite.width, j / i * this.sprite.height, this.sprite.width, this.sprite.height);
+        }
+        catch (Throwable localThrowable3)
+        {
+          localThrowable3.printStackTrace();
+          localBitmap2 = null;
+        }
+        if (BitmapUtils.isLegal(localBitmap2)) {
+          ParticleEmitter3D.access$000(this.this$0)[j] = localBitmap2;
+        }
+        j += 1;
+      }
+      if (paramVarArgs != null) {
+        paramVarArgs.recycle();
+      }
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.particle.ParticleEmitter3D.SpriteDecodeTask
  * JD-Core Version:    0.7.0.1
  */

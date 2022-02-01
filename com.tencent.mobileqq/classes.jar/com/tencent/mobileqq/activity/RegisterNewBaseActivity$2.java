@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.activity;
 
-import adum;
-import bdgm;
-import bdjz;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class RegisterNewBaseActivity$2
+class RegisterNewBaseActivity$2
   implements Runnable
 {
   RegisterNewBaseActivity$2(RegisterNewBaseActivity paramRegisterNewBaseActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.this$0, 230);
-    localbdjz.setTitle(this.a);
-    localbdjz.setMessage(this.b);
-    localbdjz.setPositiveButton(2131720421, new adum(this));
-    localbdjz.show();
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0, 230);
+    localQQCustomDialog.setTitle(this.a);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(2131897869, new RegisterNewBaseActivity.2.1(this));
+    localQQCustomDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

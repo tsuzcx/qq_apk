@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:layout_gravity="center" android:id="@id/dismiss_overlay_explain" android:padding="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="32.0dip" style="@style/DismissOverlayText" />
+    <android.support.wearable.view.ActionPage android:id="@id/dismiss_overlay_button" android:background="@color/dismiss_overlay_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ic_full_cancel" android:text="@string/dismiss_overlay_button_label" android:color="@color/dismiss_close" app:buttonRippleColor="@color/dismiss_close_pressed" />
+</merge>

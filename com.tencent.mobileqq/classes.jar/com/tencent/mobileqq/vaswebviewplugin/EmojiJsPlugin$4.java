@@ -3,14 +3,14 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnKeyListener;
 import android.view.KeyEvent;
-import bdkn;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class EmojiJsPlugin$4
   implements DialogInterface.OnKeyListener
 {
-  EmojiJsPlugin$4(EmojiJsPlugin paramEmojiJsPlugin, bdkn parambdkn, String paramString) {}
+  EmojiJsPlugin$4(EmojiJsPlugin paramEmojiJsPlugin, QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, String paramString) {}
   
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
@@ -22,22 +22,19 @@ class EmojiJsPlugin$4
       {
         paramDialogInterface.put("message", "press");
         this.this$0.onAppResponse(this.val$callbackid, paramDialogInterface.toString());
-        return true;
       }
       catch (JSONException paramDialogInterface)
       {
-        for (;;)
-        {
-          paramDialogInterface.printStackTrace();
-        }
+        paramDialogInterface.printStackTrace();
       }
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

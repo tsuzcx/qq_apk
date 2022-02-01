@@ -1,137 +1,242 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.app.g;
+import java.util.ArrayList;
 
 public final class a
 {
   public final String TAG;
-  a.a vVA;
-  a.a vVB;
-  a.a vVC;
-  a.a vVD;
-  a.a vVE;
-  a.a vVF;
-  a.a vVG;
-  a.a vVH;
-  a.a vVI;
-  a.a vVJ;
-  a.a vVK;
-  a.a vVL;
-  public a.a vVM;
-  a.a vVN;
-  a.a vVO;
-  public a.a vVP;
-  private a.a vVQ;
-  a.a vVR;
-  a.a vVu;
-  a.a vVv;
-  public a.a vVw;
-  a.a vVx;
-  a.a vVy;
-  a.a vVz;
+  private c YeA;
+  c YeB;
+  c YeC;
+  c YeD;
+  c YeE;
+  c YeF;
+  c YeG;
+  c YeH;
+  ArrayList<a> YeI;
+  c Yee;
+  c Yef;
+  c Yeg;
+  c Yeh;
+  c Yei;
+  c Yej;
+  c Yek;
+  c Yel;
+  c Yem;
+  c Yen;
+  c Yeo;
+  c Yep;
+  c Yeq;
+  c Yer;
+  c Yes;
+  c Yet;
+  c Yeu;
+  c Yev;
+  public c Yew;
+  c Yex;
+  c Yey;
+  public c Yez;
   
   public a()
   {
-    AppMethodBeat.i(27785);
+    AppMethodBeat.i(31493);
     this.TAG = "MircoMsg.AppPanelControl";
-    this.vVu = new a.a(this);
-    this.vVv = new a.a(this);
-    this.vVw = new a.a(this);
-    this.vVx = new a.a(this);
-    this.vVy = new a.a(this);
-    this.vVz = new a.a(this);
-    this.vVA = new a.a(this);
-    this.vVJ = new a.a(this);
-    this.vVH = new a.a(this);
-    this.vVB = new a.a(this);
-    this.vVC = new a.a(this);
-    this.vVD = new a.a(this);
-    this.vVE = new a.a(this);
-    this.vVF = new a.a(this);
-    this.vVG = new a.a(this);
-    this.vVI = new a.a(this);
-    this.vVK = new a.a(this);
-    this.vVL = new a.a(this);
-    this.vVM = new a.a(this);
-    this.vVN = new a.a(this);
-    this.vVO = new a.a(this);
-    this.vVP = new a.a(this);
-    this.vVQ = new a.a(this);
-    this.vVR = new a.a(this);
-    AppMethodBeat.o(27785);
+    this.Yee = new c();
+    this.Yef = new c();
+    this.Yeg = new c();
+    this.Yeh = new c();
+    this.Yei = new c();
+    this.Yej = new c();
+    this.Yek = new c();
+    this.Yet = new c();
+    this.Yer = new c();
+    this.Yel = new c();
+    this.Yem = new c();
+    this.Yen = new c();
+    this.Yeo = new c();
+    this.Yep = new c();
+    this.Yeq = new c();
+    this.Yes = new c();
+    this.Yeu = new c();
+    this.Yev = new c();
+    this.Yew = new c();
+    this.Yex = new c();
+    this.Yey = new c();
+    this.Yez = new c();
+    this.YeA = new c();
+    this.YeB = new c();
+    this.YeE = new c();
+    this.YeF = new c();
+    this.YeC = new c();
+    this.YeD = new c();
+    this.YeG = new c();
+    this.YeH = new c();
+    AppMethodBeat.o(31493);
   }
   
-  public final void doa()
+  public final void JP(boolean paramBoolean)
   {
-    this.vVu.value = true;
-    this.vVv.value = true;
-    this.vVw.value = true;
-    this.vVx.value = true;
-    this.vVy.value = true;
-    this.vVz.value = true;
-    this.vVA.value = true;
-    this.vVJ.value = true;
-    this.vVH.value = true;
-    this.vVB.value = true;
-    this.vVC.value = true;
-    this.vVD.value = true;
-    this.vVE.value = true;
-    this.vVF.value = true;
-    this.vVG.value = true;
-    this.vVI.value = true;
-    this.vVK.value = true;
-    this.vVL.value = false;
-    this.vVM.value = true;
-    this.vVN.value = true;
-    this.vVP.value = true;
-    this.vVQ.value = true;
-    this.vVP.value = false;
-    this.vVR.value = true;
+    this.Yel.value = paramBoolean;
   }
   
-  public final void dob()
+  public final void JQ(boolean paramBoolean)
   {
-    this.vVA.value = true;
+    this.Yem.value = paramBoolean;
   }
   
-  public final void doc()
+  public final void JR(boolean paramBoolean)
   {
-    this.vVI.value = true;
+    this.Yeq.value = paramBoolean;
   }
   
-  public final void pl(boolean paramBoolean)
+  public final void JS(boolean paramBoolean)
   {
-    this.vVB.value = paramBoolean;
+    this.Yeu.value = paramBoolean;
   }
   
-  public final void pm(boolean paramBoolean)
+  public final void JT(boolean paramBoolean)
   {
-    this.vVC.value = paramBoolean;
+    this.Yex.value = paramBoolean;
   }
   
-  public final void pn(boolean paramBoolean)
+  public final void JU(boolean paramBoolean)
   {
-    this.vVG.value = paramBoolean;
+    this.YeA.value = paramBoolean;
   }
   
-  public final void po(boolean paramBoolean)
+  public final void JV(boolean paramBoolean)
   {
-    this.vVK.value = paramBoolean;
+    this.YeE.value = paramBoolean;
   }
   
-  public final void pp(boolean paramBoolean)
+  public final void JW(boolean paramBoolean)
   {
-    this.vVN.value = paramBoolean;
+    this.YeH.value = paramBoolean;
   }
   
-  public final void pq(boolean paramBoolean)
+  public final ArrayList<a> getAppPanelUnCertainEnterArrayList()
   {
-    this.vVQ.value = paramBoolean;
+    AppMethodBeat.i(163211);
+    if (this.YeI == null)
+    {
+      localArrayList = new ArrayList();
+      AppMethodBeat.o(163211);
+      return localArrayList;
+    }
+    ArrayList localArrayList = this.YeI;
+    AppMethodBeat.o(163211);
+    return localArrayList;
+  }
+  
+  public final void iLS()
+  {
+    this.Yee.value = true;
+    this.Yef.value = true;
+    this.Yeg.value = true;
+    this.Yeh.value = true;
+    this.Yei.value = true;
+    this.Yej.value = true;
+    this.Yek.value = true;
+    this.Yet.value = true;
+    this.Yer.value = true;
+    this.Yel.value = true;
+    this.Yem.value = true;
+    this.Yen.value = true;
+    this.Yeo.value = true;
+    this.Yep.value = true;
+    this.Yeq.value = true;
+    this.Yes.value = true;
+    this.Yeu.value = true;
+    this.Yev.value = false;
+    this.Yew.value = true;
+    this.Yex.value = true;
+    this.Yez.value = true;
+    this.YeA.value = true;
+    this.Yez.value = false;
+    this.YeF.value = false;
+    this.YeB.value = true;
+    this.YeC.value = true;
+    this.YeD.value = true;
+    this.YeG.value = true;
+    this.YeH.value = true;
+  }
+  
+  public final void iLT()
+  {
+    this.Yek.value = true;
+  }
+  
+  public final void iLU()
+  {
+    this.Yes.value = true;
+  }
+  
+  public static final class a
+    extends g
+  {
+    public String PNd;
+    public String YeJ;
+    public String YeK;
+    public String YeL;
+    public int YeM;
+    public String YeN;
+    public String YeO;
+    public a.b YeP;
+    public a.b YeQ;
+    public a.b YeR;
+    public a.b YeS;
+    public int YeT;
+    public int YeU;
+    public long YeV;
+    public int YeW;
+    public a YeX;
+    public String icX;
+    public String iconUrl;
+    public int jump_type;
+    public int red_dot;
+    public String ttL;
+    
+    public a()
+    {
+      AppMethodBeat.i(163209);
+      this.YeP = new a.b();
+      this.YeQ = new a.b();
+      this.YeR = new a.b();
+      this.YeS = new a.b();
+      AppMethodBeat.o(163209);
+    }
+    
+    public static abstract interface a
+    {
+      public abstract String iLV();
+    }
+  }
+  
+  public static final class b
+  {
+    public String desc;
+    public String title;
+  }
+  
+  public final class c
+  {
+    private boolean YeY;
+    public boolean value;
+    
+    public c()
+    {
+      AppMethodBeat.i(31492);
+      this.YeY = true;
+      this.value = true;
+      AppMethodBeat.o(31492);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="150" android:drawable="@drawable/hp1" />
+    <item android:duration="150" android:drawable="@drawable/hp2" />
+    <item android:duration="150" android:drawable="@drawable/hp5" />
+    <item android:duration="150" android:drawable="@drawable/hp6" />
+    <item android:duration="150" android:drawable="@drawable/hp7" />
+    <item android:duration="150" android:drawable="@drawable/hp8" />
+    <item android:duration="150" android:drawable="@drawable/hp9" />
+    <item android:duration="150" android:drawable="@drawable/hp_" />
+    <item android:duration="150" android:drawable="@drawable/hpa" />
+    <item android:duration="150" android:drawable="@drawable/hpb" />
+    <item android:duration="150" android:drawable="@drawable/hp3" />
+    <item android:duration="150" android:drawable="@drawable/hp4" />
+</animation-list>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/apn" />
-    <item android:drawable="@drawable/apm" />
-</selector>
+    <corners android:radius="6.0dip" />
+    <solid android:color="@color/BW_100_Alpha_0_1" />
+</shape>

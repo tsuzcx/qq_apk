@@ -1,26 +1,20 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import UserGrowth.stSimpleGetFeedListRsp;
-import tcq;
-import tgx;
-import tlo;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public class WeiShiCacheManager$7
+class WeiShiCacheManager$7
   implements Runnable
 {
+  WeiShiCacheManager$7(WeiShiCacheManager paramWeiShiCacheManager) {}
+  
   public void run()
   {
-    tlo.b("CacheResponseLog", "getCachedRecommendData startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
-    if (!this.this$0.b()) {
-      return;
-    }
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = tcq.a(this.this$0, 1);
-    tgx.a().a(new WeiShiCacheManager.7.1(this, localstSimpleGetFeedListRsp));
+    FileUtils.delete(WeiShiCacheManager.d(this.this$0), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.7
  * JD-Core Version:    0.7.0.1
  */

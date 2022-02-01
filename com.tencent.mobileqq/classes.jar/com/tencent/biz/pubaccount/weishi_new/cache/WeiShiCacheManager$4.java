@@ -1,44 +1,32 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import UserGrowth.stFollowFeedsRsp;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.ArrayList;
-import java.util.List;
-import tcq;
-import tlv;
+import UserGrowth.stGetFollowedDramasRsp;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 
-public class WeiShiCacheManager$4
+class WeiShiCacheManager$4
   implements Runnable
 {
-  public WeiShiCacheManager$4(tcq paramtcq, List paramList) {}
+  WeiShiCacheManager$4(WeiShiCacheManager paramWeiShiCacheManager, IWeiShiCacheCallback paramIWeiShiCacheCallback) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (this.a.size() > tcq.a(this.this$0))
-    {
-      int i = 0;
-      while (i < tcq.a(this.this$0))
-      {
-        localArrayList.add(this.a.get(i));
-        i += 1;
-      }
-    }
-    for (;;)
-    {
-      stFollowFeedsRsp localstFollowFeedsRsp = new stFollowFeedsRsp();
-      localstFollowFeedsRsp.feeds = localArrayList;
-      if (tcq.a(this.this$0, localstFollowFeedsRsp, tcq.a(this.this$0), localArrayList.size())) {
-        LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", tlv.c());
-      }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCacheDataForFollowDrama startTime = ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(", thread = ");
+    ((StringBuilder)localObject).append(Thread.currentThread());
+    WSLog.b("CacheResponseLog", ((StringBuilder)localObject).toString());
+    if (!this.this$0.c()) {
       return;
-      localArrayList = new ArrayList(this.a);
     }
+    localObject = (stGetFollowedDramasRsp)WeiShiCacheManager.a(this.this$0, new stGetFollowedDramasRsp(), 7);
+    WeishiBusinessLooper.a().a(new WeiShiCacheManager.4.1(this, (stGetFollowedDramasRsp)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.4
  * JD-Core Version:    0.7.0.1
  */

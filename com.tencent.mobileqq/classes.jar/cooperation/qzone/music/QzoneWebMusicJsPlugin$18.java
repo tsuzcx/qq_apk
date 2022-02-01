@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bjqu;
-import bjqw;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
 class QzoneWebMusicJsPlugin$18
   implements Runnable
@@ -10,12 +10,12 @@ class QzoneWebMusicJsPlugin$18
   
   public void run()
   {
-    bjqu.a().a().e();
+    RemoteHandleManager.getInstance().getSender().getLivingInfo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.18
  * JD-Core Version:    0.7.0.1
  */

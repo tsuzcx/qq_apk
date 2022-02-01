@@ -7,15 +7,15 @@ import com.tencent.qphone.base.util.QLog;
 public class AVActivity$AnimationTrigger
   implements Runnable
 {
-  float jdField_a_of_type_Float = -1.0F;
-  final int jdField_a_of_type_Int = 1000;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  boolean jdField_a_of_type_Boolean = false;
-  float b = -1.0F;
+  final int a = 1000;
+  VideoAppInterface b = null;
+  float c = -1.0F;
+  float d = -1.0F;
+  boolean e = false;
   
   public AVActivity$AnimationTrigger(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.b = paramVideoAppInterface;
   }
   
   public void a()
@@ -23,21 +23,16 @@ public class AVActivity$AnimationTrigger
     if (QLog.isColorLevel()) {
       QLog.e("AnimationTrigger", 2, "[childLock] requestShowOrHiddenChildLockUI");
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(3) });
+    this.b.a(new Object[] { Integer.valueOf(119), Integer.valueOf(3) });
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.e = false;
+    this.b.a().removeCallbacks(this);
+    this.b.a().postDelayed(this, 1000L);
   }
   
   public void b()
@@ -45,7 +40,7 @@ public class AVActivity$AnimationTrigger
     if (QLog.isColorLevel()) {
       QLog.e("AnimationTrigger", 2, "[childLock] requestShowTips");
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(2) });
+    this.b.a(new Object[] { Integer.valueOf(119), Integer.valueOf(2) });
   }
   
   public void c()
@@ -53,25 +48,35 @@ public class AVActivity$AnimationTrigger
     if (QLog.isColorLevel()) {
       QLog.e("AnimationTrigger", 2, "[childLock] cancel animation");
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(0) });
+    this.e = false;
+    this.b.a(new Object[] { Integer.valueOf(119), Integer.valueOf(0) });
+  }
+  
+  public boolean d()
+  {
+    return this.e;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    if (this.b != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("AnimationTrigger", 1, "[childLock] trigger animation, isTriggeredAnimation[" + this.jdField_a_of_type_Boolean + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[childLock] trigger animation, isTriggeredAnimation[");
+        localStringBuilder.append(this.e);
+        localStringBuilder.append("]");
+        QLog.w("AnimationTrigger", 1, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.b) });
+      this.e = true;
+      this.b.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(this.c), Float.valueOf(this.d) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.AnimationTrigger
  * JD-Core Version:    0.7.0.1
  */

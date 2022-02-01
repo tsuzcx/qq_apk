@@ -1,39 +1,29 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputConnectionWrapper;
-import android.view.inputmethod.InputMethodManager;
 import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView.AdapterDataSetObserver;
+import com.tencent.widget.FastScroller;
 
 public class huu
-  extends InputConnectionWrapper
+  extends AdapterView.AdapterDataSetObserver
 {
-  public huu(AbsListView paramAbsListView, InputConnection paramInputConnection, boolean paramBoolean)
+  public huu(AbsListView paramAbsListView)
   {
-    super(paramInputConnection, paramBoolean);
+    super(paramAbsListView);
   }
   
-  public boolean performEditorAction(int paramInt)
+  public void onChanged()
   {
-    if (paramInt == 6)
-    {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      return true;
+    super.onChanged();
+    if (this.a.a != null) {
+      this.a.a.c();
     }
-    return false;
   }
   
-  public boolean reportFullscreenMode(boolean paramBoolean)
+  public void onInvalidated()
   {
-    return AbsListView.a(this.a).reportFullscreenMode(paramBoolean);
-  }
-  
-  public boolean sendKeyEvent(KeyEvent paramKeyEvent)
-  {
-    return AbsListView.a(this.a).sendKeyEvent(paramKeyEvent);
+    super.onInvalidated();
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
   }
 }
 

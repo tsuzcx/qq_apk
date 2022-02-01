@@ -22,15 +22,13 @@ public final class ConnectInterceptor
     RealInterceptorChain localRealInterceptorChain = (RealInterceptorChain)paramChain;
     Request localRequest = localRealInterceptorChain.request();
     StreamAllocation localStreamAllocation = localRealInterceptorChain.streamAllocation();
-    if (!localRequest.method().equals("GET")) {}
-    for (boolean bool = true;; bool = false) {
-      return localRealInterceptorChain.proceed(localRequest, localStreamAllocation, localStreamAllocation.newStream(this.client, paramChain, bool), localStreamAllocation.connection());
-    }
+    boolean bool = localRequest.method().equals("GET");
+    return localRealInterceptorChain.proceed(localRequest, localStreamAllocation, localStreamAllocation.newStream(this.client, paramChain, bool ^ true), localStreamAllocation.connection());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.connection.ConnectInterceptor
  * JD-Core Version:    0.7.0.1
  */

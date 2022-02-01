@@ -1,6 +1,5 @@
 package AvatarInfo;
 
-import a;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -15,19 +14,20 @@ public final class QQHeadInfo
   extends JceStruct
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QQHeadInfo> CREATOR = new a();
-  public byte cHeadType;
+  public static final Parcelable.Creator<QQHeadInfo> CREATOR = new QQHeadInfo.1();
+  public byte cHeadType = 0;
   public String downLoadUrl = "";
-  public byte dstUsrType;
-  public byte dwFaceFlgas;
-  public long dwTimestamp;
-  public byte headLevel;
+  public byte dstUsrType = 0;
+  public byte dwFaceFlgas = 0;
+  public long dwTimestamp = 0L;
+  public byte headLevel = 0;
   public String headVerify = "";
   public int idType;
-  public int originUsrType;
+  public int originUsrType = 0;
   public String phoneNum = "";
-  public short systemHeadID;
-  public long uin;
+  public int sizeType = 0;
+  public short systemHeadID = 0;
+  public long uin = 0L;
   
   public QQHeadInfo() {}
   
@@ -92,17 +92,30 @@ public final class QQHeadInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("uin=").append(this.uin);
-    localStringBuilder.append(",dwTimestamp=").append(this.dwTimestamp);
-    localStringBuilder.append(",cHeadType=").append(this.cHeadType);
-    localStringBuilder.append(",dstUsrType=").append(this.dstUsrType);
-    localStringBuilder.append(",dwFaceFlgas=").append(this.dwFaceFlgas);
-    localStringBuilder.append(",downLoadUrl=").append(this.downLoadUrl);
-    localStringBuilder.append(",systemHeadID=").append(this.systemHeadID);
-    localStringBuilder.append(",phoneNum=").append(this.phoneNum);
-    localStringBuilder.append(",headLevel=").append(this.headLevel);
-    localStringBuilder.append(",idType=").append(this.idType);
-    localStringBuilder.append(",originUsrType=").append(this.originUsrType);
+    localStringBuilder.append("uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(",dwTimestamp=");
+    localStringBuilder.append(this.dwTimestamp);
+    localStringBuilder.append(",cHeadType=");
+    localStringBuilder.append(this.cHeadType);
+    localStringBuilder.append(",dstUsrType=");
+    localStringBuilder.append(this.dstUsrType);
+    localStringBuilder.append(",dwFaceFlgas=");
+    localStringBuilder.append(this.dwFaceFlgas);
+    localStringBuilder.append(",systemHeadID=");
+    localStringBuilder.append(this.systemHeadID);
+    localStringBuilder.append(",phoneNum=");
+    localStringBuilder.append(this.phoneNum);
+    localStringBuilder.append(",headLevel=");
+    localStringBuilder.append(this.headLevel);
+    localStringBuilder.append(",idType=");
+    localStringBuilder.append(this.idType);
+    localStringBuilder.append(",originUsrType=");
+    localStringBuilder.append(this.originUsrType);
+    localStringBuilder.append(",sizeType=");
+    localStringBuilder.append(this.sizeType);
+    localStringBuilder.append(",downLoadUrl=");
+    localStringBuilder.append(this.downLoadUrl);
     return localStringBuilder.toString();
   }
   
@@ -115,8 +128,9 @@ public final class QQHeadInfo
     paramJceOutputStream.write(this.dwFaceFlgas, 4);
     paramJceOutputStream.write(this.downLoadUrl, 5);
     paramJceOutputStream.write(this.systemHeadID, 6);
-    if (this.phoneNum != null) {
-      paramJceOutputStream.write(this.phoneNum, 7);
+    String str = this.phoneNum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
   
@@ -137,7 +151,7 @@ public final class QQHeadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AvatarInfo.QQHeadInfo
  * JD-Core Version:    0.7.0.1
  */

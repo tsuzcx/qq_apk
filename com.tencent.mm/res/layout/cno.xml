@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="@dimen/b9"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/a37" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/a7j" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@null" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/e4" app:iconColor="@color/BW_100_Alpha_0_8" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/t" android:textStyle="bold" android:textColor="@color/BW_0_Alpha_0_9_night_mode" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/e0q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dmr" android:singleLine="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

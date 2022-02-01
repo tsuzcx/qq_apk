@@ -30,7 +30,7 @@ public final class aa
     }
     this.e = false;
     this.f = SystemClock.uptimeMillis();
-    this.a.postAtFrontOfQueue(this);
+    this.a.post(this);
   }
   
   public final void a(long paramLong)
@@ -54,14 +54,14 @@ public final class aa
     return 3;
   }
   
-  public final Thread d()
-  {
-    return this.a.getLooper().getThread();
-  }
-  
-  public final String e()
+  public final String d()
   {
     return this.b;
+  }
+  
+  public final Looper e()
+  {
+    return this.a.getLooper();
   }
   
   public final void f()
@@ -77,7 +77,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.aa
  * JD-Core Version:    0.7.0.1
  */

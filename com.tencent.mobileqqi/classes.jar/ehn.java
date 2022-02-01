@@ -1,21 +1,25 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.mobileqq.activity.language.SelectTransLangActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.international.LocaleUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ehn
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
   public ehn(SelectTransLangActivity paramSelectTransLangActivity) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class);
-    paramView.putExtra("uin", this.a.b.a());
-    paramView.putExtra("url", "http://m.fanyi.qq.com/intro/?ADTAG=iqq");
-    this.a.startActivity(paramView);
+    QLog.i("SelectTransLangActivity", 2, "position:" + paramInt + "current:" + SelectTransLangActivity.a(this.a) + "language:" + (String)SelectTransLangActivity.a(this.a).get(paramInt));
+    SelectTransLangActivity.a(this.a, paramInt);
+    paramAdapterView = (ehp)paramView.getTag();
+    SelectTransLangActivity.a(this.a, paramAdapterView.a);
+    LocaleUtil.a(this.a.b.a(), this.a, (String)SelectTransLangActivity.a(this.a).get(SelectTransLangActivity.a(this.a)));
+    SelectTransLangActivity.a(this.a).notifyDataSetChanged();
   }
 }
 

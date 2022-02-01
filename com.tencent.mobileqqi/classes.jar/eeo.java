@@ -1,23 +1,15 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class eeo
-  implements Runnable
+  implements View.OnClickListener
 {
   public eeo(NewFriendActivity paramNewFriendActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (NewFriendActivity.a(this.a) != null) {
-      NewFriendActivity.a(this.a).k();
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.b, "CliOper", "", "", "frd_recommend", "clean_apply", 0, 0, "", "", "", "");
-      return;
-      SystemMsgListView.a(this.a.b);
-    }
+    this.a.g();
   }
 }
 

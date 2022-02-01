@@ -1,0 +1,15 @@
+{
+    "view_type": "RIJCommentLinksView",
+    "view_id": "id_comment_links_view",
+    "margin_top": "4",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "294"
+    },
+    "attributes": {
+        "setCommentModel:": "$commentLinkModel"
+    }
+}

@@ -33,7 +33,13 @@ public class PlugInBean
   
   public String toString()
   {
-    return "plid:" + this.a + " plV:" + this.b + " plUUID:" + this.c;
+    StringBuilder localStringBuilder = new StringBuilder("plid:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" plV:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" plUUID:");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -45,7 +51,7 @@ public class PlugInBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.common.info.PlugInBean
  * JD-Core Version:    0.7.0.1
  */

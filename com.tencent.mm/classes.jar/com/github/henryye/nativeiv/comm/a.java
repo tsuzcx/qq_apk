@@ -10,36 +10,44 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public final class a
+public class a
   implements b<NativeBitmapStruct>
 {
-  HashMap<Integer, NativeImage> auT;
+  HashMap<Integer, NativeImage> cEJ;
   private NativeImageJni jni;
   
   public a()
   {
-    AppMethodBeat.i(115768);
-    this.auT = new HashMap();
+    AppMethodBeat.i(127373);
+    this.cEJ = new HashMap();
     this.jni = new NativeImageJni();
     Object localObject = this.jni;
     if (((NativeImageJni)localObject).mNativeInst != 0L)
     {
       localObject = new IllegalStateException("NativeImageJni not released last time");
-      AppMethodBeat.o(115768);
+      AppMethodBeat.o(127373);
       throw ((Throwable)localObject);
     }
     ((NativeImageJni)localObject).mNativeInst = ((NativeImageJni)localObject).nativeInit();
-    AppMethodBeat.o(115768);
+    AppMethodBeat.o(127373);
+  }
+  
+  public final IBitmap<NativeBitmapStruct> Qg()
+  {
+    AppMethodBeat.i(127374);
+    NativeImage localNativeImage = new NativeImage(this.jni, this);
+    AppMethodBeat.o(127374);
+    return localNativeImage;
   }
   
   public final boolean a(c paramc)
   {
-    return (paramc == c.auK) || (paramc == c.auJ);
+    return (paramc == c.cEB) || (paramc == c.cEA);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(115770);
+    AppMethodBeat.i(127375);
     Object localObject1 = this.jni;
     if (((NativeImageJni)localObject1).mNativeInst != 0L) {
       ((NativeImageJni)localObject1).nativeDestroy(((NativeImageJni)localObject1).mNativeInst);
@@ -47,35 +55,27 @@ public final class a
     localObject1 = new LinkedList();
     try
     {
-      localIterator = this.auT.values().iterator();
+      localIterator = this.cEJ.values().iterator();
       while (localIterator.hasNext()) {
         ((LinkedList)localObject1).push((NativeImage)localIterator.next());
       }
-      this.auT.clear();
+      this.cEJ.clear();
     }
     finally
     {
-      AppMethodBeat.o(115770);
+      AppMethodBeat.o(127375);
     }
     Iterator localIterator = localObject2.iterator();
     while (localIterator.hasNext()) {
       ((NativeImage)localIterator.next()).recycle();
     }
     localObject2.clear();
-    AppMethodBeat.o(115770);
-  }
-  
-  public final IBitmap<NativeBitmapStruct> mt()
-  {
-    AppMethodBeat.i(115769);
-    NativeImage localNativeImage = new NativeImage(this.jni, this);
-    AppMethodBeat.o(115769);
-    return localNativeImage;
+    AppMethodBeat.o(127375);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,239 +6,245 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.TextView;
+import com.tencent.token.dj;
 
 public class PagerTabStrip
   extends PagerTitleStrip
 {
-  private static final int FULL_UNDERLINE_HEIGHT = 1;
-  private static final int INDICATOR_HEIGHT = 3;
-  private static final int MIN_PADDING_BOTTOM = 6;
-  private static final int MIN_STRIP_HEIGHT = 32;
-  private static final int MIN_TEXT_SPACING = 64;
-  private static final int TAB_PADDING = 16;
-  private static final int TAB_SPACING = 32;
-  private static final String TAG = "PagerTabStrip";
-  private boolean mDrawFullUnderline = false;
-  private boolean mDrawFullUnderlineSet = false;
-  private int mFullUnderlineHeight;
-  private boolean mIgnoreTap;
-  private int mIndicatorColor = this.mTextColor;
-  private int mIndicatorHeight;
-  private float mInitialMotionX;
-  private float mInitialMotionY;
-  private int mMinPaddingBottom;
-  private int mMinStripHeight;
-  private int mMinTextSpacing;
-  private int mTabAlpha = 255;
-  private int mTabPadding;
-  private final Paint mTabPaint = new Paint();
-  private final Rect mTempRect = new Rect();
-  private int mTouchSlop;
+  private int g = this.f;
+  private int h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private final Paint m = new Paint();
+  private final Rect n = new Rect();
+  private int o = 255;
+  private boolean p = false;
+  private boolean q = false;
+  private int r;
+  private boolean s;
+  private float t;
+  private float u;
+  private int v;
   
-  public PagerTabStrip(@NonNull Context paramContext)
-  {
-    this(paramContext, null);
-  }
-  
-  public PagerTabStrip(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
+  public PagerTabStrip(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.mTabPaint.setColor(this.mIndicatorColor);
+    this.m.setColor(this.g);
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.mIndicatorHeight = ((int)(3.0F * f + 0.5F));
-    this.mMinPaddingBottom = ((int)(6.0F * f + 0.5F));
-    this.mMinTextSpacing = ((int)(64.0F * f));
-    this.mTabPadding = ((int)(16.0F * f + 0.5F));
-    this.mFullUnderlineHeight = ((int)(1.0F * f + 0.5F));
-    this.mMinStripHeight = ((int)(f * 32.0F + 0.5F));
-    this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.h = ((int)(3.0F * f + 0.5F));
+    this.i = ((int)(6.0F * f + 0.5F));
+    this.j = ((int)(64.0F * f));
+    this.l = ((int)(16.0F * f + 0.5F));
+    this.r = ((int)(1.0F * f + 0.5F));
+    this.k = ((int)(f * 32.0F + 0.5F));
+    this.v = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
     setTextSpacing(getTextSpacing());
     setWillNotDraw(false);
-    this.mPrevText.setFocusable(true);
-    this.mPrevText.setOnClickListener(new PagerTabStrip.1(this));
-    this.mNextText.setFocusable(true);
-    this.mNextText.setOnClickListener(new PagerTabStrip.2(this));
+    this.b.setFocusable(true);
+    this.b.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        PagerTabStrip.this.a.setCurrentItem(PagerTabStrip.this.a.getCurrentItem() - 1);
+      }
+    });
+    this.d.setFocusable(true);
+    this.d.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        PagerTabStrip.this.a.setCurrentItem(PagerTabStrip.this.a.getCurrentItem() + 1);
+      }
+    });
     if (getBackground() == null) {
-      this.mDrawFullUnderline = true;
+      this.p = true;
     }
+  }
+  
+  final void a(int paramInt, float paramFloat, boolean paramBoolean)
+  {
+    Rect localRect = this.n;
+    int i1 = getHeight();
+    int i2 = this.c.getLeft();
+    int i3 = this.l;
+    int i4 = this.c.getRight();
+    int i5 = this.l;
+    int i6 = i1 - this.h;
+    localRect.set(i2 - i3, i6, i4 + i5, i1);
+    super.a(paramInt, paramFloat, paramBoolean);
+    this.o = ((int)(Math.abs(paramFloat - 0.5F) * 2.0F * 255.0F));
+    localRect.union(this.c.getLeft() - this.l, i6, this.c.getRight() + this.l, i1);
+    invalidate(localRect);
   }
   
   public boolean getDrawFullUnderline()
   {
-    return this.mDrawFullUnderline;
+    return this.p;
   }
   
   int getMinHeight()
   {
-    return Math.max(super.getMinHeight(), this.mMinStripHeight);
+    return Math.max(super.getMinHeight(), this.k);
   }
   
-  @ColorInt
   public int getTabIndicatorColor()
   {
-    return this.mIndicatorColor;
+    return this.g;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = getHeight();
-    int j = this.mCurrText.getLeft();
-    int k = this.mTabPadding;
-    int m = this.mCurrText.getRight();
-    int n = this.mTabPadding;
-    int i1 = this.mIndicatorHeight;
-    this.mTabPaint.setColor(this.mTabAlpha << 24 | this.mIndicatorColor & 0xFFFFFF);
-    paramCanvas.drawRect(j - k, i - i1, m + n, i, this.mTabPaint);
-    if (this.mDrawFullUnderline)
+    int i1 = getHeight();
+    int i2 = this.c.getLeft();
+    int i3 = this.l;
+    int i4 = this.c.getRight();
+    int i5 = this.l;
+    int i6 = this.h;
+    this.m.setColor(this.o << 24 | this.g & 0xFFFFFF);
+    float f1 = i2 - i3;
+    float f2 = i1 - i6;
+    float f3 = i4 + i5;
+    float f4 = i1;
+    paramCanvas.drawRect(f1, f2, f3, f4, this.m);
+    if (this.p)
     {
-      this.mTabPaint.setColor(0xFF000000 | this.mIndicatorColor & 0xFFFFFF);
-      paramCanvas.drawRect(getPaddingLeft(), i - this.mFullUnderlineHeight, getWidth() - getPaddingRight(), i, this.mTabPaint);
+      this.m.setColor(0xFF000000 | this.g & 0xFFFFFF);
+      paramCanvas.drawRect(getPaddingLeft(), i1 - this.r, getWidth() - getPaddingRight(), f4, this.m);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    if ((i != 0) && (this.mIgnoreTap)) {
+    int i1 = paramMotionEvent.getAction();
+    if ((i1 != 0) && (this.s)) {
       return false;
     }
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (i)
+    switch (i1)
     {
-    }
-    for (;;)
-    {
+    default: 
       return true;
-      this.mInitialMotionX = f1;
-      this.mInitialMotionY = f2;
-      this.mIgnoreTap = false;
-      continue;
-      if ((Math.abs(f1 - this.mInitialMotionX) > this.mTouchSlop) || (Math.abs(f2 - this.mInitialMotionY) > this.mTouchSlop))
+    case 2: 
+      if ((Math.abs(f1 - this.t) > this.v) || (Math.abs(f2 - this.u) > this.v))
       {
-        this.mIgnoreTap = true;
-        continue;
-        if (f1 < this.mCurrText.getLeft() - this.mTabPadding) {
-          this.mPager.setCurrentItem(this.mPager.getCurrentItem() - 1);
-        } else if (f1 > this.mCurrText.getRight() + this.mTabPadding) {
-          this.mPager.setCurrentItem(this.mPager.getCurrentItem() + 1);
-        }
+        this.s = true;
+        return true;
       }
+      break;
+    case 1: 
+      if (f1 < this.c.getLeft() - this.l)
+      {
+        this.a.setCurrentItem(this.a.getCurrentItem() - 1);
+        return true;
+      }
+      if (f1 > this.c.getRight() + this.l)
+      {
+        this.a.setCurrentItem(this.a.getCurrentItem() + 1);
+        return true;
+      }
+      break;
+    case 0: 
+      this.t = f1;
+      this.u = f2;
+      this.s = false;
     }
+    return true;
   }
   
-  public void setBackgroundColor(@ColorInt int paramInt)
+  public void setBackgroundColor(int paramInt)
   {
     super.setBackgroundColor(paramInt);
-    if (!this.mDrawFullUnderlineSet) {
-      if ((0xFF000000 & paramInt) != 0) {
-        break label27;
-      }
-    }
-    label27:
-    for (boolean bool = true;; bool = false)
+    if (!this.q)
     {
-      this.mDrawFullUnderline = bool;
-      return;
+      boolean bool;
+      if ((paramInt & 0xFF000000) == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.p = bool;
     }
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (!this.mDrawFullUnderlineSet) {
-      if (paramDrawable != null) {
-        break label24;
-      }
-    }
-    label24:
-    for (boolean bool = true;; bool = false)
+    if (!this.q)
     {
-      this.mDrawFullUnderline = bool;
-      return;
+      boolean bool;
+      if (paramDrawable == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.p = bool;
     }
   }
   
-  public void setBackgroundResource(@DrawableRes int paramInt)
+  public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (!this.mDrawFullUnderlineSet) {
-      if (paramInt != 0) {
-        break label24;
-      }
-    }
-    label24:
-    for (boolean bool = true;; bool = false)
+    if (!this.q)
     {
-      this.mDrawFullUnderline = bool;
-      return;
+      boolean bool;
+      if (paramInt == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.p = bool;
     }
   }
   
   public void setDrawFullUnderline(boolean paramBoolean)
   {
-    this.mDrawFullUnderline = paramBoolean;
-    this.mDrawFullUnderlineSet = true;
+    this.p = paramBoolean;
+    this.q = true;
     invalidate();
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = paramInt4;
-    if (paramInt4 < this.mMinPaddingBottom) {
-      i = this.mMinPaddingBottom;
+    int i2 = this.i;
+    int i1 = paramInt4;
+    if (paramInt4 < i2) {
+      i1 = i2;
     }
-    super.setPadding(paramInt1, paramInt2, paramInt3, i);
+    super.setPadding(paramInt1, paramInt2, paramInt3, i1);
   }
   
-  public void setTabIndicatorColor(@ColorInt int paramInt)
+  public void setTabIndicatorColor(int paramInt)
   {
-    this.mIndicatorColor = paramInt;
-    this.mTabPaint.setColor(this.mIndicatorColor);
+    this.g = paramInt;
+    this.m.setColor(this.g);
     invalidate();
   }
   
-  public void setTabIndicatorColorResource(@ColorRes int paramInt)
+  public void setTabIndicatorColorResource(int paramInt)
   {
-    setTabIndicatorColor(ContextCompat.getColor(getContext(), paramInt));
+    setTabIndicatorColor(dj.c(getContext(), paramInt));
   }
   
   public void setTextSpacing(int paramInt)
   {
-    int i = paramInt;
-    if (paramInt < this.mMinTextSpacing) {
-      i = this.mMinTextSpacing;
+    int i2 = this.j;
+    int i1 = paramInt;
+    if (paramInt < i2) {
+      i1 = i2;
     }
-    super.setTextSpacing(i);
-  }
-  
-  void updateTextPositions(int paramInt, float paramFloat, boolean paramBoolean)
-  {
-    Rect localRect = this.mTempRect;
-    int i = getHeight();
-    int j = this.mCurrText.getLeft();
-    int k = this.mTabPadding;
-    int m = this.mCurrText.getRight();
-    int n = this.mTabPadding;
-    int i1 = i - this.mIndicatorHeight;
-    localRect.set(j - k, i1, m + n, i);
-    super.updateTextPositions(paramInt, paramFloat, paramBoolean);
-    this.mTabAlpha = ((int)(Math.abs(paramFloat - 0.5F) * 2.0F * 255.0F));
-    localRect.union(this.mCurrText.getLeft() - this.mTabPadding, i1, this.mCurrText.getRight() + this.mTabPadding, i);
-    invalidate(localRect);
+    super.setTextSpacing(i1);
   }
 }
 

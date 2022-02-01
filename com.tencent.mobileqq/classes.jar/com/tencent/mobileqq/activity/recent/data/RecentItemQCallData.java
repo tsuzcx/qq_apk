@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import bdgc;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class RecentItemQCallData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public RecentItemQCallData(RecentUser paramRecentUser)
   {
@@ -16,34 +16,42 @@ public class RecentItemQCallData
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.mTitleName = bdgc.b(paramQQAppInterface, this.mUser.uin, true);
+    this.mTitleName = ContactUtils.a(paramQQAppInterface, this.mUser.uin, true);
     this.mDisplayTime = this.mUser.lastmsgtime;
     a(paramQQAppInterface, paramContext, this.msgSummary);
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.c)
+    if (AppSetting.e)
     {
       paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append(this.mTitleName).append(",");
+      paramQQAppInterface.append(this.mTitleName);
+      paramQQAppInterface.append(",");
       if (this.mUnreadNum != 0) {
-        break label142;
+        if (this.mUnreadNum == 1)
+        {
+          paramQQAppInterface.append("有一条未读");
+        }
+        else if (this.mUnreadNum == 2)
+        {
+          paramQQAppInterface.append("有两条未读");
+        }
+        else if (this.mUnreadNum > 0)
+        {
+          paramQQAppInterface.append("有");
+          paramQQAppInterface.append(this.mUnreadNum);
+          paramQQAppInterface.append("条未读,");
+        }
       }
-    }
-    for (;;)
-    {
-      if (this.mMsgExtroInfo != null) {
-        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+      if (this.mMsgExtroInfo != null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(this.mMsgExtroInfo);
+        paramContext.append(",");
+        paramQQAppInterface.append(paramContext.toString());
       }
-      paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+      paramQQAppInterface.append(this.mLastMsg);
+      paramQQAppInterface.append(",");
+      paramQQAppInterface.append(this.mShowTime);
       this.mContentDesc = paramQQAppInterface.toString();
-      return;
-      label142:
-      if (this.mUnreadNum == 1) {
-        paramQQAppInterface.append("有一条未读");
-      } else if (this.mUnreadNum == 2) {
-        paramQQAppInterface.append("有两条未读");
-      } else if (this.mUnreadNum > 0) {
-        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读,");
-      }
     }
   }
 }

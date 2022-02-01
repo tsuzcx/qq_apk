@@ -41,13 +41,13 @@ public class EllipsisTextView
     {
       paramInt1 = (int)(localLayout.getLineRight(0) + 0.5F);
       paramInt2 = getMeasuredHeight();
-      setMeasuredDimension(paramInt1 + getCompoundPaddingLeft() + getCompoundPaddingRight(), paramInt2);
+      setMeasuredDimension(getCompoundPaddingLeft() + paramInt1 + getCompoundPaddingRight(), paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.EllipsisTextView
  * JD-Core Version:    0.7.0.1
  */

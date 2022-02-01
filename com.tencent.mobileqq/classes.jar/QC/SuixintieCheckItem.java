@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class SuixintieCheckItem
   extends JceStruct
 {
-  public int appid;
-  public int fontType;
-  public int itemId;
+  public int appid = 0;
+  public int fontType = 0;
+  public int itemId = 0;
   
   public SuixintieCheckItem() {}
   
@@ -36,7 +36,7 @@ public final class SuixintieCheckItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.SuixintieCheckItem
  * JD-Core Version:    0.7.0.1
  */

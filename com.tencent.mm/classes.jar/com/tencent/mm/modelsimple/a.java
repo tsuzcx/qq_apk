@@ -7,9 +7,9 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 final class a
 {
-  public static BindWordingContent un(String paramString)
+  public static BindWordingContent OV(String paramString)
   {
-    AppMethodBeat.i(123429);
+    AppMethodBeat.i(134148);
     BindWordingContent localBindWordingContent = new BindWordingContent("", "");
     Object localObject = XmlPullParserFactory.newInstance();
     ((XmlPullParserFactory)localObject).setNamespaceAware(true);
@@ -56,12 +56,12 @@ final class a
               if (paramString.equalsIgnoreCase("type")) {
                 try
                 {
-                  localBindWordingContent.bOw = Integer.valueOf(str2);
+                  localBindWordingContent.type = Integer.valueOf(str2);
                   localObject = paramString;
                 }
                 catch (Exception localException)
                 {
-                  localBindWordingContent.bOw = Integer.valueOf(0);
+                  localBindWordingContent.type = Integer.valueOf(0);
                   String str1 = paramString;
                 }
               }
@@ -70,7 +70,7 @@ final class a
         }
       }
     }
-    AppMethodBeat.o(123429);
+    AppMethodBeat.o(134148);
     return localBindWordingContent;
   }
 }

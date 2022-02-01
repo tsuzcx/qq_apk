@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/e99" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:id="@id/hw7" android:background="@drawable/arw" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="5.0dip">
+        <com.qzone.module.feedcomponent.view.AvatarImageView android:layout_gravity="center" android:id="@id/hw1" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="7.0dip" android:layout_marginBottom="7.0dip" android:src="@drawable/g69" android:scaleType="fitXY" android:contentDescription="@string/sh5" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/aes" android:id="@id/hw2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="7.0dip" android:layout_toRightOf="@id/hw1" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:textColor="@color/aes" android:id="@id/hw3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/sgj" android:layout_toRightOf="@id/hw1" android:layout_below="@id/hw2" />
+        <ImageView android:id="@id/yx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:src="@drawable/bw7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

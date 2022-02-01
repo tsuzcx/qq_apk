@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="right" style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b__" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <NumberPicker android:id="@id/b_a" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
-        <NumberPicker android:id="@id/b_b" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
-        <NumberPicker android:id="@id/b_c" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
-    </LinearLayout>
-    <CalendarView android:id="@id/b_d" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="245.0dip" android:layout_height="280.0dip" android:layout_marginLeft="44.0dip" android:layout_weight="1.0" android:layout_marginStart="44.0dip" />
+    <RelativeLayout android:id="@id/xy" android:layout_width="131.0dip" android:layout_height="188.0dip" style="@style/h3">
+        <ImageView android:id="@id/xw" android:background="@drawable/c1_" android:layout_width="131.0dip" android:layout_height="188.0dip" />
+        <ImageView android:id="@id/xx" android:background="@drawable/js" android:layout_width="126.0dip" android:layout_height="188.0dip" android:layout_alignParentLeft="true" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/b47" android:layout_width="130.0dip" android:layout_height="188.0dip" android:layout_alignParentLeft="true">
+            <RelativeLayout android:gravity="bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="10.0dip" android:layout_weight="1.0">
+                <com.tencent.mm.ui.widget.MMTextView android:textSize="14.0dip" android:textColor="@color/Yellow" android:ellipsize="end" android:id="@id/xv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="16.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/xz" android:background="@drawable/jt" android:layout_width="131.0dip" android:layout_height="188.0dip" />
+    </RelativeLayout>
+    <include layout="@layout/qk" />
 </LinearLayout>

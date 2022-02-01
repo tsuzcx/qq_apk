@@ -16,8 +16,8 @@ import com.tencent.mobileqq.widget.GridListView;
 import com.tencent.mobileqq.widget.StatableBitmapDrawable;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
+import ggd;
 import gge;
-import ggf;
 import java.util.ArrayList;
 
 public class ActionGridActivity
@@ -30,7 +30,7 @@ public class ActionGridActivity
   private ActionInfo jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo;
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private GridListView jdField_a_of_type_ComTencentMobileqqWidgetGridListView;
-  private gge jdField_a_of_type_Gge;
+  private ggd jdField_a_of_type_Ggd;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int c = 0;
   private int d = 0;
@@ -56,7 +56,7 @@ public class ActionGridActivity
     if (paramInt1 == 100)
     {
       this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.i, this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Gge.notifyDataSetChanged();
+      this.jdField_a_of_type_Ggd.notifyDataSetChanged();
     }
   }
   
@@ -79,10 +79,10 @@ public class ActionGridActivity
       {
         return;
       }
-      Object localObject = (ggf)((View)localObject).getTag();
-      if (((ggf)localObject).jdField_a_of_type_Int == paramInt1)
+      Object localObject = (gge)((View)localObject).getTag();
+      if (((gge)localObject).jdField_a_of_type_Int == paramInt1)
       {
-        ((ggf)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(getResources(), paramBitmap, false, false));
+        ((gge)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new StatableBitmapDrawable(getResources(), paramBitmap, false, false));
         return;
       }
       paramInt2 += 1;
@@ -113,15 +113,15 @@ public class ActionGridActivity
     }
     setTitle(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.c);
     this.k.setContentDescription(this.k.getText() + "按钮");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131234549));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView = ((GridListView)findViewById(2131234548));
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setOnItemClickListener(this);
     i = this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionInfo.i, this.jdField_a_of_type_JavaUtilArrayList);
     if (i != 100) {
       this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(i);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setMode(1);
-    this.jdField_a_of_type_Gge = new gge(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setAdapter(this.jdField_a_of_type_Gge);
+    this.jdField_a_of_type_Ggd = new ggd(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setAdapter(this.jdField_a_of_type_Ggd);
     d();
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this);
     if (ThemeUtil.isInNightMode(this.b))

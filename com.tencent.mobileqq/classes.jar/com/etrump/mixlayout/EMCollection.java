@@ -1,9 +1,13 @@
 package com.etrump.mixlayout;
 
+import com.etrump.mixlayout.api.IEMCollection;
+import com.etrump.mixlayout.api.IETFont;
+
 public class EMCollection
+  implements IEMCollection
 {
-  private int[] mEmoticonIndexArray;
-  private ETEngine mEngine;
+  private int[] mEmoticonIndexArray = null;
+  private ETEngine mEngine = null;
   
   public EMCollection(ETEngine paramETEngine)
   {
@@ -12,69 +16,72 @@ public class EMCollection
   
   private int getStringCount(String paramString)
   {
+    int m = paramString.length();
     int i = 0;
-    int k = paramString.length();
     int j = 0;
-    if (i < k)
+    while (i < m)
     {
-      if ((Character.isHighSurrogate(paramString.charAt(i))) && (i + 1 < k) && (Character.isLowSurrogate(paramString.charAt(i + 1))))
+      if (Character.isHighSurrogate(paramString.charAt(i)))
       {
-        j += 1;
-        i += 1;
+        int k = i + 1;
+        if ((k < m) && (Character.isLowSurrogate(paramString.charAt(k))))
+        {
+          j += 1;
+          i = k;
+          break label65;
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        j += 1;
-      }
+      j += 1;
+      label65:
+      i += 1;
     }
     return j;
   }
   
   public int getEmoticonCount()
   {
-    if (this.mEmoticonIndexArray != null) {
-      return this.mEmoticonIndexArray.length;
+    int[] arrayOfInt = this.mEmoticonIndexArray;
+    if (arrayOfInt != null) {
+      return arrayOfInt.length;
     }
     return 0;
   }
   
   public EMImage getEmoticonImage(String paramString, int paramInt, ETFont paramETFont)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.mEngine != null)
+    ETEngine localETEngine = this.mEngine;
+    if (localETEngine != null)
     {
-      localObject1 = localObject2;
-      if (this.mEmoticonIndexArray != null) {
-        localObject1 = this.mEngine.native_emoticonCreateImage(paramString, this.mEmoticonIndexArray[paramInt], paramETFont);
+      int[] arrayOfInt = this.mEmoticonIndexArray;
+      if (arrayOfInt != null) {
+        return localETEngine.native_emoticonCreateImage(paramString, arrayOfInt[paramInt], paramETFont);
       }
     }
-    return localObject1;
+    return null;
   }
   
   public int getEmoticonIndex(int paramInt)
   {
-    if ((this.mEmoticonIndexArray != null) && (paramInt >= 0) && (paramInt < this.mEmoticonIndexArray.length)) {
-      return this.mEmoticonIndexArray[paramInt];
+    int[] arrayOfInt = this.mEmoticonIndexArray;
+    if ((arrayOfInt != null) && (paramInt >= 0) && (paramInt < arrayOfInt.length)) {
+      return arrayOfInt[paramInt];
     }
     return -1;
   }
   
-  public boolean retrieve(String paramString, ETFont paramETFont)
+  public boolean retrieve(String paramString, IETFont paramIETFont)
   {
-    if ((this.mEngine != null) && (paramString != null) && (paramETFont != null))
+    if ((this.mEngine != null) && (paramString != null) && (paramIETFont != null))
     {
       int i = getStringCount(paramString);
-      this.mEmoticonIndexArray = this.mEngine.native_emoticonRetrieveCollection(paramString, i, paramETFont);
+      this.mEmoticonIndexArray = this.mEngine.native_emoticonRetrieveCollection(paramString, i, (ETFont)paramIETFont);
     }
     return this.mEmoticonIndexArray != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.EMCollection
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,12 @@
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.config.ResourcePluginListener;
 
 public class eie
-  implements Runnable
+  extends ResourcePluginListener
 {
   public eie(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
-  {
-    if ((!BaseApplicationImpl.a(BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) && (MainAssistObserver.a(this.a) < 5)) {
-      BaseApplicationImpl.jdField_a_of_type_AndroidOsHandler.postDelayed(MainAssistObserver.a(this.a), MainAssistObserver.b(this.a) * 30000);
-    }
-  }
+  public void b(byte paramByte) {}
 }
 
 

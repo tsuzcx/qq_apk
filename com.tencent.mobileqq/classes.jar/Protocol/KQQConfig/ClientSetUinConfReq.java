@@ -11,7 +11,7 @@ public final class ClientSetUinConfReq
   extends JceStruct
 {
   static Map<String, ArrayList<byte[]>> cache_uinConf;
-  public Map<String, ArrayList<byte[]>> uinConf;
+  public Map<String, ArrayList<byte[]>> uinConf = null;
   
   public ClientSetUinConfReq() {}
   
@@ -41,7 +41,7 @@ public final class ClientSetUinConfReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.ClientSetUinConfReq
  * JD-Core Version:    0.7.0.1
  */

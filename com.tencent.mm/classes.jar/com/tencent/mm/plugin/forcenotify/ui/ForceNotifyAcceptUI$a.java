@@ -1,27 +1,12 @@
 package com.tencent.mm.plugin.forcenotify.ui;
 
-import a.l;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-final class ForceNotifyAcceptUI$a
-  implements MenuItem.OnMenuItemClickListener
-{
-  ForceNotifyAcceptUI$a(ForceNotifyAcceptUI paramForceNotifyAcceptUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
-  {
-    AppMethodBeat.i(140600);
-    this.mHy.onBackPressed();
-    AppMethodBeat.o(140600);
-    return true;
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI$Companion;", "", "()V", "TITLE", "", "WARNING_CONTENT", "bottomDialog", "Lcom/tencent/mm/ui/widget/dialog/MMHalfBottomDialog;", "resultCallBack", "Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyAcceptUI$OverlayPermissionResultCallBack;", "showWarningAlert", "", "context", "Landroid/content/Context;", "title", "warningContent", "newTask", "", "channel", "plugin-force-notify_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class ForceNotifyAcceptUI$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.ui.ForceNotifyAcceptUI.a
  * JD-Core Version:    0.7.0.1
  */

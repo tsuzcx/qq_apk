@@ -24,13 +24,15 @@ public final class ilive_feeds_write$DelFeedReq
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 56 }, new String[] { "del_type", "uid", "del_st", "select_all", "del_source", "vid", "anchor_del_user" }, new Object[] { Integer.valueOf(1), Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(1), localByteStringMicro, Integer.valueOf(0) }, DelFeedReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50, 56 }, new String[] { "del_type", "uid", "del_st", "select_all", "del_source", "vid", "anchor_del_user" }, new Object[] { localInteger2, Long.valueOf(0L), null, localInteger1, localInteger2, localByteStringMicro, localInteger1 }, DelFeedReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_write.DelFeedReq
  * JD-Core Version:    0.7.0.1
  */

@@ -40,8 +40,8 @@ final class TypeAdapters$10
   public void write(JsonWriter paramJsonWriter, AtomicIntegerArray paramAtomicIntegerArray)
   {
     paramJsonWriter.beginArray();
-    int i = 0;
     int j = paramAtomicIntegerArray.length();
+    int i = 0;
     while (i < j)
     {
       paramJsonWriter.value(paramAtomicIntegerArray.get(i));
@@ -52,7 +52,7 @@ final class TypeAdapters$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.10
  * JD-Core Version:    0.7.0.1
  */

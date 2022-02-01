@@ -1,33 +1,41 @@
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Scroller;
+import com.tencent.mobileqq.widget.TCTransitDrawable;
 
 public class hhv
-  implements AbsListView.OnScrollListener
+  extends Handler
 {
-  public hhv(SlideDetectListView paramSlideDetectListView) {}
+  public hhv(TCTransitDrawable paramTCTransitDrawable) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.c = paramInt;
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
+    if (paramMessage.what == 1) {
+      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.b) && (this.a.c)) {}
     }
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
+    while (paramMessage.what != 2)
+    {
+      return;
+      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+      {
+        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+        int k = this.a.f;
+        int m = this.a.g;
+        this.a.f = i;
+        this.a.g = j;
+        paramMessage = this.a;
+        paramMessage.d += i - k;
+        paramMessage = this.a;
+        paramMessage.e += j - m;
+        this.a.invalidateSelf();
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
+        return;
+      }
+      this.a.d();
+      return;
     }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
+    this.a.d();
   }
 }
 

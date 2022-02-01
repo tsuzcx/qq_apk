@@ -1,30 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.AntiFraudGetConfigObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.utils.SecUtil;
 
-public class hbg
-  extends AntiFraudGetConfigObserver
+class hbg
+  implements Runnable
 {
-  public hbg(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil) {}
+  hbg(hbf paramhbf, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
-  protected void a(int paramInt, Bundle paramBundle)
+  public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localQQAppInterface != null) {
-      localQQAppInterface.c(AntiFraudConfigFileUtil.a(this.a));
-    }
-    if (paramInt != 1)
+    this.jdField_a_of_type_Hbf.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    String str = SecUtil.a(AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Hbf.a, this.jdField_a_of_type_JavaLangString));
+    if (!this.b.equalsIgnoreCase(str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AntiFraudGetConfigObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
-      }
+      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Hbf.a, this.jdField_a_of_type_JavaLangString, this.b, this.c);
       return;
     }
-    ThreadManager.a(new hbh(this, paramBundle.getString("config_name"), paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")));
+    this.jdField_a_of_type_Hbf.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
   }
 }
 

@@ -10,29 +10,37 @@ class QFindBLEScanMgr$2
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_Boolean = false;
-    }
-    try
+    if (this.this$0.l)
     {
-      if (this.this$0.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null)
+      Object localObject = this.this$0;
+      ((QFindBLEScanMgr)localObject).l = false;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE", 2, "call native mBluetoothAdapter.stopLeScan with cb=" + this.this$0.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback + ", mScanning=" + this.this$0.jdField_a_of_type_Boolean);
+        if (((QFindBLEScanMgr)localObject).j != null)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("call native mBluetoothAdapter.stopLeScan with cb=");
+            ((StringBuilder)localObject).append(this.this$0.k);
+            ((StringBuilder)localObject).append(", mScanning=");
+            ((StringBuilder)localObject).append(this.this$0.l);
+            QLog.i("QFindBLE", 2, ((StringBuilder)localObject).toString());
+          }
+          this.this$0.j.stopLeScan(this.this$0.k);
+          return;
         }
-        this.this$0.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.stopLeScan(this.this$0.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback);
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,71 +5,54 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location.ui.d;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class LocationInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LocationInfo> CREATOR;
-  public String cDl;
-  public String nZU;
-  public double nZV;
-  public double nZW;
-  public int nZX;
-  public String nZY;
-  public String nZZ;
-  String oaa;
-  public int oab;
-  public String oac;
+  public String KbV;
+  public double KbW;
+  public double KbX;
+  public int KbY;
+  public String KbZ;
+  public String Kca;
+  String Kcb;
+  public int Kcc;
+  public String Kcd;
+  public String hVI;
   
   static
   {
-    AppMethodBeat.i(113298);
-    CREATOR = new LocationInfo.1();
-    AppMethodBeat.o(113298);
+    AppMethodBeat.i(55677);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(55677);
   }
   
   public LocationInfo()
   {
-    this.nZU = "";
-    this.nZV = -85.0D;
-    this.nZW = -1000.0D;
-    this.nZY = "";
-    this.nZZ = "zh-cn";
-    this.oaa = "";
-    this.oab = 0;
+    this.KbV = "";
+    this.KbW = -85.0D;
+    this.KbX = -1000.0D;
+    this.KbZ = "";
+    this.Kca = "zh-cn";
+    this.Kcb = "";
+    this.Kcc = 0;
   }
   
   public LocationInfo(byte paramByte)
   {
-    AppMethodBeat.i(113294);
-    this.nZU = "";
-    this.nZV = -85.0D;
-    this.nZW = -1000.0D;
-    this.nZY = "";
-    this.nZZ = "zh-cn";
-    this.oaa = "";
-    this.oab = 0;
-    this.nZU = (toString() + " " + System.nanoTime());
-    this.nZX = d.bLF();
-    AppMethodBeat.o(113294);
-  }
-  
-  public final boolean bLh()
-  {
-    return (this.nZV != -85.0D) && (this.nZW != -1000.0D);
-  }
-  
-  public final boolean bLi()
-  {
-    AppMethodBeat.i(113296);
-    if ((bo.isNullOrNil(this.nZY)) && (bo.isNullOrNil(this.cDl)))
-    {
-      AppMethodBeat.o(113296);
-      return false;
-    }
-    AppMethodBeat.o(113296);
-    return true;
+    AppMethodBeat.i(55673);
+    this.KbV = "";
+    this.KbW = -85.0D;
+    this.KbX = -1000.0D;
+    this.KbZ = "";
+    this.Kca = "zh-cn";
+    this.Kcb = "";
+    this.Kcc = 0;
+    this.KbV = (toString() + " " + System.nanoTime());
+    this.KbY = d.fUQ();
+    AppMethodBeat.o(55673);
   }
   
   public int describeContents()
@@ -77,28 +60,45 @@ public class LocationInfo
     return 0;
   }
   
+  public final boolean fUs()
+  {
+    return (this.KbW != -85.0D) && (this.KbX != -1000.0D);
+  }
+  
+  public final boolean fUt()
+  {
+    AppMethodBeat.i(55675);
+    if ((Util.isNullOrNil(this.KbZ)) && (Util.isNullOrNil(this.hVI)))
+    {
+      AppMethodBeat.o(55675);
+      return false;
+    }
+    AppMethodBeat.o(55675);
+    return true;
+  }
+  
   public String toString()
   {
-    AppMethodBeat.i(113297);
-    String str = this.nZV + " " + this.nZW + " " + this.nZY + " " + this.cDl + "  " + this.nZU;
-    AppMethodBeat.o(113297);
+    AppMethodBeat.i(55676);
+    String str = this.KbW + " " + this.KbX + " " + this.KbZ + " " + this.hVI + "  " + this.KbV;
+    AppMethodBeat.o(55676);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(113295);
-    paramParcel.writeString(this.nZU);
-    paramParcel.writeDouble(this.nZV);
-    paramParcel.writeDouble(this.nZW);
-    paramParcel.writeInt(this.nZX);
-    paramParcel.writeString(this.nZY);
-    paramParcel.writeString(this.nZZ);
-    paramParcel.writeString(this.cDl);
-    paramParcel.writeString(this.oaa);
-    paramParcel.writeInt(this.oab);
-    paramParcel.writeString(this.oac);
-    AppMethodBeat.o(113295);
+    AppMethodBeat.i(55674);
+    paramParcel.writeString(this.KbV);
+    paramParcel.writeDouble(this.KbW);
+    paramParcel.writeDouble(this.KbX);
+    paramParcel.writeInt(this.KbY);
+    paramParcel.writeString(this.KbZ);
+    paramParcel.writeString(this.Kca);
+    paramParcel.writeString(this.hVI);
+    paramParcel.writeString(this.Kcb);
+    paramParcel.writeInt(this.Kcc);
+    paramParcel.writeString(this.Kcd);
+    AppMethodBeat.o(55674);
   }
 }
 

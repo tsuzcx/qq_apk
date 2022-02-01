@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.wenote.model.a;
 
 public final class r
 {
-  public float cyV;
-  public int cyX;
-  public float fFN;
-  public String vxB;
-  public String vxC;
-  public String vxD;
+  public String XAO;
+  public String XAP;
+  public String XAQ;
+  public int hQp;
+  public float latitude;
+  public float longtitude;
 }
 
 

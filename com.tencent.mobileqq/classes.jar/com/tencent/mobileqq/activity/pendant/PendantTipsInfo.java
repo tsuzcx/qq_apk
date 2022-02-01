@@ -14,14 +14,42 @@ public class PendantTipsInfo
   public String titleWording;
   public int type = -1;
   public String url;
-  public boolean valid;
+  public boolean valid = false;
   public int vipMonth;
   public String vipType;
   public String wording;
   
   public String toString()
   {
-    return "TipsInfo{valid=" + this.valid + ", ret=" + this.ret + ", type=" + this.type + ", titleWording='" + this.titleWording + '\'' + ", wording='" + this.wording + '\'' + ", rightBtnWording='" + this.rightBtnWording + '\'' + ", leftBtnWording='" + this.leftBtnWording + '\'' + ", vipType='" + this.vipType + '\'' + ", vipMonth=" + this.vipMonth + ", url='" + this.url + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TipsInfo{valid=");
+    localStringBuilder.append(this.valid);
+    localStringBuilder.append(", ret=");
+    localStringBuilder.append(this.ret);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", titleWording='");
+    localStringBuilder.append(this.titleWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", wording='");
+    localStringBuilder.append(this.wording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", rightBtnWording='");
+    localStringBuilder.append(this.rightBtnWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", leftBtnWording='");
+    localStringBuilder.append(this.leftBtnWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", vipType='");
+    localStringBuilder.append(this.vipType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", vipMonth=");
+    localStringBuilder.append(this.vipMonth);
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

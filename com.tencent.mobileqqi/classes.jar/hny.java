@@ -1,16 +1,27 @@
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
 import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKParam;
 
 public class hny
-  implements Runnable
+  implements TicketUtils.TicketCallback
 {
-  public hny(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
+  public hny(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void run()
+  public void a()
   {
-    StaticAnalyz.a("100", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
-    ControlPolicyUtil.a();
+    ThreadManager.b().post(new hob(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.c("TIME-STATISTIC", "onGetA1");
+    ThreadManager.b().post(new hnz(this, paramArrayOfByte, paramString));
   }
 }
 

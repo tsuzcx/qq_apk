@@ -9,8 +9,8 @@ public final class PersonInfoChange
   extends JceStruct
 {
   static ArrayList<PersonInfoField> cache_vChgField;
-  public byte cType;
-  public ArrayList<PersonInfoField> vChgField;
+  public byte cType = 0;
+  public ArrayList<PersonInfoField> vChgField = null;
   
   public PersonInfoChange() {}
   
@@ -35,14 +35,15 @@ public final class PersonInfoChange
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cType, 0);
-    if (this.vChgField != null) {
-      paramJceOutputStream.write(this.vChgField, 1);
+    ArrayList localArrayList = this.vChgField;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.PersonInfoChange
  * JD-Core Version:    0.7.0.1
  */

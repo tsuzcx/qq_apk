@@ -33,20 +33,23 @@ public final class s_one_game
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uCount, 0);
-    if (this.strIconUrl != null) {
-      paramJceOutputStream.write(this.strIconUrl, 1);
+    String str = this.strIconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strDesc != null) {
-      paramJceOutputStream.write(this.strDesc, 2);
+    str = this.strDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strGameUrl != null) {
-      paramJceOutputStream.write(this.strGameUrl, 3);
+    str = this.strGameUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_one_game
  * JD-Core Version:    0.7.0.1
  */

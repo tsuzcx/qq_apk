@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class ReSortGroupResp
   extends JceStruct
 {
-  public long dwSequence;
-  public long dwToUin;
+  public long dwSequence = 0L;
+  public long dwToUin = 0L;
   
   public ReSortGroupResp() {}
   
@@ -32,7 +32,7 @@ public final class ReSortGroupResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.ReSortGroupResp
  * JD-Core Version:    0.7.0.1
  */

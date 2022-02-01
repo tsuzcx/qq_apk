@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.tools.h;
+import com.tencent.mm.ui.tools.i;
 
 final class TopStoryCommentFloatDialog$4
   implements Runnable
@@ -10,14 +10,14 @@ final class TopStoryCommentFloatDialog$4
   
   public final void run()
   {
-    AppMethodBeat.i(2246);
-    this.tmJ.ehl.start();
-    AppMethodBeat.o(2246);
+    AppMethodBeat.i(126653);
+    this.TQC.lKz.start();
+    AppMethodBeat.o(126653);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.TopStoryCommentFloatDialog.4
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import android.os.SystemClock;
 class Transaction$TransTimeOutMonitor
   implements Runnable
 {
-  public volatile boolean isKilled;
-  public long mStartTime = SystemClock.uptimeMillis();
+  public volatile boolean isKilled = false;
+  public long mStartTime = 0L;
   
   public Transaction$TransTimeOutMonitor(Transaction paramTransaction) {}
   
@@ -24,7 +24,7 @@ class Transaction$TransTimeOutMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.Transaction.TransTimeOutMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,8 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetCommentListReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetCommentListRsp;
 import NS_COMM.COMM.StCommonExt;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -26,7 +27,15 @@ public class GetCommentListRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     CertifiedAccountRead.StGetCommentListRsp localStGetCommentListRsp = new CertifiedAccountRead.StGetCommentListRsp();
-    localStGetCommentListRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetCommentListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetCommentListRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetCommentListRsp;
   }
   
@@ -35,14 +44,14 @@ public class GetCommentListRequest
     return "CertifiedAccountSvc.certified_account_read.GetCommentList";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.req.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.GetCommentListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -39,28 +39,35 @@ public final class UploadSDKContext
   
   public void traceLogEx(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = new String(Arrays.copyOf(paramArrayOfByte, paramArrayOfByte.length), "UTF-8");
-      switch (paramInt)
-      {
-      default: 
+      if (paramArrayOfByte.length <= 0) {
         return;
       }
+      try
+      {
+        paramArrayOfByte = new String(Arrays.copyOf(paramArrayOfByte, paramArrayOfByte.length), "UTF-8");
+        if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3) {
+              return;
+            }
+            XpLog.d(paramArrayOfByte);
+            return;
+          }
+          XpLog.i(paramArrayOfByte);
+          return;
+        }
+        XpLog.e(paramArrayOfByte);
+        return;
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte)
+      {
+        XpLog.e("traceLogEx convert String error", paramArrayOfByte);
+      }
     }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      XpLog.e("traceLogEx convert String error", paramArrayOfByte);
-      return;
-    }
-    XpLog.e(paramArrayOfByte);
-    return;
-    XpLog.d(paramArrayOfByte);
-    return;
-    XpLog.i(paramArrayOfByte);
   }
   
   public void uploadCancelled(String paramString)
@@ -80,7 +87,7 @@ public final class UploadSDKContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.uploader.xplatform.UploadSDKContext
  * JD-Core Version:    0.7.0.1
  */

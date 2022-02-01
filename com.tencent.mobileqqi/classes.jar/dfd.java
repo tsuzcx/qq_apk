@@ -1,26 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class dfd
-  extends Handler
+  implements Runnable
 {
-  public dfd(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public dfd(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.g();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131563125);
-    }
-    this.a.a(paramMessage, 1);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(2131562543, new dfe(this));
+    localQQCustomDialog.show();
   }
 }
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:layout_gravity="center_horizontal" android:id="@id/test_btn" android:layout_width="300.0dip" android:layout_height="120.0dip" android:layout_marginTop="20.0dip" android:text="QQ HD" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="360.0dip" android:layout_height="wrap_content" android:layout_marginTop="160.0dip">
+        <TextView android:textColor="@color/black" android:id="@id/center_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        <SeekBar android:id="@id/seek_bar" android:layout_width="500.0dip" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/center_text" />
+        <TextView android:textColor="@color/black" android:id="@id/left_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/seek_bar" />
+        <TextView android:textColor="@color/black" android:id="@id/right_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/seek_bar" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/right_text" android:layout_centerHorizontal="true">
+            <Button android:id="@id/reload_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="重启生效" />
+            <Button android:id="@id/auto_adjust_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="自动调整并重启" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

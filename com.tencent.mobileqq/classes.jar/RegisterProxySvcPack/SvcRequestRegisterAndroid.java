@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestRegisterAndroid
   extends JceStruct
 {
-  public long ulRequestOptional;
+  public long ulRequestOptional = 0L;
   
   public SvcRequestRegisterAndroid() {}
   
@@ -28,7 +28,7 @@ public final class SvcRequestRegisterAndroid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.SvcRequestRegisterAndroid
  * JD-Core Version:    0.7.0.1
  */

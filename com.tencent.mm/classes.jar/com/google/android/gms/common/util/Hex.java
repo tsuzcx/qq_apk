@@ -9,11 +9,11 @@ public class Hex
   
   public static String bytesToColonDelimitedStringLowercase(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(90206);
+    AppMethodBeat.i(5228);
     if (paramArrayOfByte.length == 0)
     {
       paramArrayOfByte = new String();
-      AppMethodBeat.o(90206);
+      AppMethodBeat.o(5228);
       return paramArrayOfByte;
     }
     char[] arrayOfChar = new char[paramArrayOfByte.length * 3 - 1];
@@ -34,17 +34,17 @@ public class Hex
     arrayOfChar[j] = zzaaa[(i >>> 4)];
     arrayOfChar[(j + 1)] = zzaaa[(i & 0xF)];
     paramArrayOfByte = new String(arrayOfChar);
-    AppMethodBeat.o(90206);
+    AppMethodBeat.o(5228);
     return paramArrayOfByte;
   }
   
   public static String bytesToColonDelimitedStringUppercase(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(90205);
+    AppMethodBeat.i(5227);
     if (paramArrayOfByte.length == 0)
     {
       paramArrayOfByte = new String();
-      AppMethodBeat.o(90205);
+      AppMethodBeat.o(5227);
       return paramArrayOfByte;
     }
     char[] arrayOfChar = new char[paramArrayOfByte.length * 3 - 1];
@@ -65,13 +65,13 @@ public class Hex
     arrayOfChar[j] = zzzz[(i >>> 4)];
     arrayOfChar[(j + 1)] = zzzz[(i & 0xF)];
     paramArrayOfByte = new String(arrayOfChar);
-    AppMethodBeat.o(90205);
+    AppMethodBeat.o(5227);
     return paramArrayOfByte;
   }
   
   public static String bytesToStringLowercase(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(90204);
+    AppMethodBeat.i(5226);
     char[] arrayOfChar = new char[paramArrayOfByte.length << 1];
     int i = 0;
     int k;
@@ -84,21 +84,21 @@ public class Hex
       i += 1;
     }
     paramArrayOfByte = new String(arrayOfChar);
-    AppMethodBeat.o(90204);
+    AppMethodBeat.o(5226);
     return paramArrayOfByte;
   }
   
   public static String bytesToStringUppercase(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(90202);
+    AppMethodBeat.i(5224);
     paramArrayOfByte = bytesToStringUppercase(paramArrayOfByte, false);
-    AppMethodBeat.o(90202);
+    AppMethodBeat.o(5224);
     return paramArrayOfByte;
   }
   
   public static String bytesToStringUppercase(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    AppMethodBeat.i(90203);
+    AppMethodBeat.i(5225);
     int j = paramArrayOfByte.length;
     StringBuilder localStringBuilder = new StringBuilder(j << 1);
     int i = 0;
@@ -109,26 +109,26 @@ public class Hex
       i += 1;
     }
     paramArrayOfByte = localStringBuilder.toString();
-    AppMethodBeat.o(90203);
+    AppMethodBeat.o(5225);
     return paramArrayOfByte;
   }
   
   public static byte[] colonDelimitedStringToBytes(String paramString)
   {
-    AppMethodBeat.i(90207);
+    AppMethodBeat.i(5229);
     paramString = stringToBytes(paramString.replace(":", ""));
-    AppMethodBeat.o(90207);
+    AppMethodBeat.o(5229);
     return paramString;
   }
   
   public static byte[] stringToBytes(String paramString)
   {
-    AppMethodBeat.i(90208);
+    AppMethodBeat.i(5230);
     int j = paramString.length();
     if (j % 2 != 0)
     {
       paramString = new IllegalArgumentException("Hex string has odd number of characters");
-      AppMethodBeat.o(90208);
+      AppMethodBeat.o(5230);
       throw paramString;
     }
     byte[] arrayOfByte = new byte[j / 2];
@@ -138,7 +138,7 @@ public class Hex
       arrayOfByte[(i / 2)] = ((byte)Integer.parseInt(paramString.substring(i, i + 2), 16));
       i += 2;
     }
-    AppMethodBeat.o(90208);
+    AppMethodBeat.o(5230);
     return arrayOfByte;
   }
 }

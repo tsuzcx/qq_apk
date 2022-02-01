@@ -23,10 +23,12 @@ public final class get_app_info_list_new_req
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (cache_current_serial_map == null)
+    Map localMap = cache_current_serial_map;
+    Integer localInteger = Integer.valueOf(0);
+    if (localMap == null)
     {
       cache_current_serial_map = new HashMap();
-      cache_current_serial_map.put(Integer.valueOf(0), Integer.valueOf(0));
+      cache_current_serial_map.put(localInteger, localInteger);
     }
     this.current_serial_map = ((Map)paramJceInputStream.read(cache_current_serial_map, 0, false));
     this.current_list_serial = paramJceInputStream.read(this.current_list_serial, 1, false);
@@ -34,15 +36,16 @@ public final class get_app_info_list_new_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.current_serial_map != null) {
-      paramJceOutputStream.write(this.current_serial_map, 0);
+    Map localMap = this.current_serial_map;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
     paramJceOutputStream.write(this.current_list_serial, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.get_app_info_list_new_req
  * JD-Core Version:    0.7.0.1
  */

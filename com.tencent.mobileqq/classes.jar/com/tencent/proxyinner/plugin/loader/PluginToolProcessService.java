@@ -5,7 +5,8 @@ import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.SystemClock;
-import atdh;
+import com.tencent.mobileqq.intervideo.now.dynamic.IDynamicNowManagerApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.shadow.dynamic.host.MultiLoaderPluginProcessService;
 import com.tencent.shadow.dynamic.host.MultiLoaderPpsController;
@@ -13,54 +14,56 @@ import com.tencent.shadow.dynamic.host.MultiLoaderPpsController;
 public class PluginToolProcessService
   extends MultiLoaderPluginProcessService
 {
-  private long jdField_a_of_type_Long;
-  private MultiLoaderPpsController jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController;
+  private MultiLoaderPpsController a;
+  private long b = 0L;
   
   public IBinder onBind(Intent paramIntent)
   {
     paramIntent = super.onBind(paramIntent);
-    this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController = wrapBinder(paramIntent);
+    this.a = wrapBinder(paramIntent);
     return paramIntent;
   }
   
   public void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    atdh.d();
+    this.b = SystemClock.elapsedRealtime();
+    ((IDynamicNowManagerApi)QRoute.api(IDynamicNowManagerApi.class)).addJumpCallback();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     Process.killProcess(Process.myPid());
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController != null) {}
+    MultiLoaderPpsController localMultiLoaderPpsController = this.a;
+    if (localMultiLoaderPpsController != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController.exit();
-      label24:
-      this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController = null;
+      localMultiLoaderPpsController.exit();
+      label23:
+      this.a = null;
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      break label24;
+      break label23;
     }
   }
   
   public void onTaskRemoved(Intent paramIntent)
   {
     super.onTaskRemoved(paramIntent);
-    if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long < 1000L)
+    if (SystemClock.elapsedRealtime() - this.b < 1000L)
     {
       QLog.i("QTProxyService", 2, "onTaskRemoved, SystemClock.elapsedRealtime() - mOnCreateTimeStamp < 1000");
       return;
     }
     QLog.i("QTProxyService", 2, "onTaskRemoved");
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController != null) {
+    paramIntent = this.a;
+    if (paramIntent != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController.exit();
+        paramIntent.exit();
         return;
       }
       catch (RemoteException paramIntent)
@@ -74,7 +77,7 @@ public class PluginToolProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.proxyinner.plugin.loader.PluginToolProcessService
  * JD-Core Version:    0.7.0.1
  */

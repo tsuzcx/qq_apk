@@ -21,58 +21,60 @@ public class NetUtil
   
   public static int getNetType(Context paramContext)
   {
-    int j = 6;
     paramContext = getNetworkInfo(paramContext);
-    int i;
-    if ((paramContext == null) || (!paramContext.isAvailable())) {
-      i = 0;
-    }
-    do
+    if ((paramContext != null) && (paramContext.isAvailable()))
     {
-      int k;
-      do
-      {
-        return i;
-        k = paramContext.getType();
-        if (k == 1) {
-          return 5;
-        }
-        i = j;
-      } while (k != 0);
+      int i = paramContext.getType();
+      if (i == 1) {
+        return 5;
+      }
+      if (i != 0) {
+        return 6;
+      }
       paramContext = paramContext.getExtraInfo();
-      i = j;
-    } while (TextUtils.isEmpty(paramContext));
-    if (paramContext.equalsIgnoreCase("cmwap")) {
-      return 1;
-    }
-    if (!paramContext.equalsIgnoreCase("3gwap"))
-    {
-      if (paramContext.equalsIgnoreCase("uniwap")) {
-        return 2;
+      if (TextUtils.isEmpty(paramContext)) {
+        return 6;
       }
-      if (paramContext.equalsIgnoreCase("ctwap")) {
-        return 4;
+      if (paramContext.equalsIgnoreCase("cmwap")) {
+        return 1;
       }
+      if (!paramContext.equalsIgnoreCase("3gwap"))
+      {
+        if (paramContext.equalsIgnoreCase("uniwap")) {
+          return 2;
+        }
+        if (paramContext.equalsIgnoreCase("ctwap")) {
+          return 4;
+        }
+      }
+      return 3;
     }
-    return 3;
+    return 0;
   }
   
   public static String getNetTypeStr(Context paramContext)
   {
-    switch (getNetType(paramContext))
+    int i = getNetType(paramContext);
+    if (i != 1)
     {
-    default: 
-      return "";
-    case 5: 
-      return "wifi";
-    case 3: 
-      return "3gwap";
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return "";
+            }
+            return "wifi";
+          }
+          return "ctwap";
+        }
+        return "3gwap";
+      }
       return "uniwap";
-    case 1: 
-      return "cmwap";
     }
-    return "ctwap";
+    return "cmwap";
   }
   
   public static NetworkInfo getNetworkInfo(Context paramContext)
@@ -82,7 +84,11 @@ public class NetUtil
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
   
@@ -105,20 +111,16 @@ public class NetUtil
           case 7: 
           default: 
             return "other";
-          case 4: 
-            return "2g";
-          case 2: 
-            return "2g";
           case 5: 
-            return "3g";
           case 6: 
-            return "3g";
-          case 1: 
-            return "2g";
           case 8: 
             return "3g";
+          case 4: 
+            return "2g";
+          case 3: 
+            return "3g";
           }
-          return "3g";
+          return "2g";
         }
         return "other";
       }
@@ -161,6 +163,7 @@ public class NetUtil
       return false;
     }
     catch (Exception paramContext) {}
+    return false;
   }
   
   public static boolean isWifi(Context paramContext)
@@ -170,7 +173,7 @@ public class NetUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.tools.net.NetUtil
  * JD-Core Version:    0.7.0.1
  */

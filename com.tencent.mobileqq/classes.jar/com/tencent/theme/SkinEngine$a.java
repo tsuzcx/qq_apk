@@ -16,8 +16,11 @@ class SkinEngine$a
     if (SkinEngine.SWITCH_DEBUG) {
       Log.d("SkinEngine.switch", "UpdateTask.doInBackground start");
     }
-    i.a("SkinEngine", 1, "UpdateTask switch theme start");
-    this.a.a(paramVarArgs[0]);
+    h.a("SkinEngine", 1, "UpdateTask switch theme start");
+    if (this.a.mUpdateCallback != null) {
+      this.a.mUpdateCallback.a();
+    }
+    this.a.update(paramVarArgs[0]);
     System.gc();
     Thread.yield();
     System.gc();
@@ -32,12 +35,16 @@ class SkinEngine$a
     if (SkinEngine.SWITCH_DEBUG) {
       Log.d("SkinEngine.switch", "UpdateTask.onPostExecute start");
     }
-    i.a("SkinEngine", 1, "UpdateTask switch theme end");
-    SkinEngine.a(this.a, null);
-    SkinEngine.a(this.a, SkinEngine.a(this.a));
-    Intent localIntent = new Intent("com.tencent.qplus.THEME_INVALIDATE");
-    localIntent.putExtra("pid", Process.myPid());
-    paramContext.sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+    h.a("SkinEngine", 1, "UpdateTask switch theme end");
+    SkinEngine.access$002(this.a, null);
+    Object localObject = this.a;
+    SkinEngine.access$200((SkinEngine)localObject, SkinEngine.access$100((SkinEngine)localObject));
+    if (this.a.mUpdateCallback != null) {
+      this.a.mUpdateCallback.b();
+    }
+    localObject = new Intent("com.tencent.qplus.THEME_INVALIDATE");
+    ((Intent)localObject).putExtra("pid", Process.myPid());
+    paramContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
     if (SkinEngine.SWITCH_DEBUG)
     {
       Log.d("SkinEngine.switch", "UpdateTask.onPostExecute sendBroadcast(ACTION_THEME_INVALIDATE)");
@@ -47,7 +54,7 @@ class SkinEngine$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.SkinEngine.a
  * JD-Core Version:    0.7.0.1
  */

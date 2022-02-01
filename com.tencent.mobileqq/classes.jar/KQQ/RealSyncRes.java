@@ -9,8 +9,8 @@ public final class RealSyncRes
   extends JceStruct
 {
   static ArrayList<InfoItem> cache_vecResPkg;
-  public byte result;
-  public ArrayList<InfoItem> vecResPkg;
+  public byte result = 0;
+  public ArrayList<InfoItem> vecResPkg = null;
   
   public RealSyncRes() {}
   
@@ -40,7 +40,7 @@ public final class RealSyncRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.RealSyncRes
  * JD-Core Version:    0.7.0.1
  */

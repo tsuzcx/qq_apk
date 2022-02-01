@@ -10,8 +10,8 @@ public final class stPostFeedDingReq
   extends JceStruct
 {
   static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
-  public ArrayList<stMetaReportDataItem> data;
-  public int dingAction;
+  public ArrayList<stMetaReportDataItem> data = null;
+  public int dingAction = 0;
   public String feed_id = "";
   
   static
@@ -39,15 +39,16 @@ public final class stPostFeedDingReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.feed_id, 1);
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 2);
+    ArrayList localArrayList = this.data;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.dingAction, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stPostFeedDingReq
  * JD-Core Version:    0.7.0.1
  */

@@ -19,11 +19,12 @@ public class DefaultLogger
   private static List<String> splitEqually(String paramString, int paramInt)
   {
     ArrayList localArrayList = new ArrayList((paramString.length() + paramInt - 1) / paramInt);
-    int i = 0;
-    while (i < paramString.length())
+    int j;
+    for (int i = 0; i < paramString.length(); i = j)
     {
-      localArrayList.add(paramString.substring(i, Math.min(paramString.length(), i + paramInt)));
-      i += paramInt;
+      int k = paramString.length();
+      j = i + paramInt;
+      localArrayList.add(paramString.substring(i, Math.min(k, j)));
     }
     return localArrayList;
   }
@@ -33,7 +34,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(3, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.d("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.d(localStringBuilder.toString(), paramString2);
   }
   
   public int d(String paramString1, String paramString2, Throwable paramThrowable)
@@ -41,7 +45,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(3, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.d("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.d(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int e(String paramString1, String paramString2)
@@ -49,7 +56,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(6, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.e("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.e(localStringBuilder.toString(), paramString2);
   }
   
   public int e(String paramString1, String paramString2, Throwable paramThrowable)
@@ -57,7 +67,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(6, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.e("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.e(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int i(String paramString1, String paramString2)
@@ -65,7 +78,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(4, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.i("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.i(localStringBuilder.toString(), paramString2);
   }
   
   public int i(String paramString1, String paramString2, Throwable paramThrowable)
@@ -73,7 +89,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(4, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.i("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.i(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int log(int paramInt, String paramString, List<String> paramList)
@@ -82,24 +101,32 @@ public class DefaultLogger
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      switch (paramInt)
+      if (paramInt != 2)
       {
-      default: 
-        break;
-      case 2: 
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              if (paramInt == 6) {
+                e(paramString, str);
+              }
+            }
+            else {
+              w(paramString, str);
+            }
+          }
+          else {
+            i(paramString, str);
+          }
+        }
+        else {
+          d(paramString, str);
+        }
+      }
+      else {
         v(paramString, str);
-        break;
-      case 3: 
-        d(paramString, str);
-        break;
-      case 4: 
-        i(paramString, str);
-        break;
-      case 5: 
-        w(paramString, str);
-        break;
-      case 6: 
-        e(paramString, str);
       }
     }
     return 0;
@@ -110,7 +137,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(2, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.v("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.v(localStringBuilder.toString(), paramString2);
   }
   
   public int v(String paramString1, String paramString2, Throwable paramThrowable)
@@ -118,7 +148,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(2, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.v("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.v(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int w(String paramString1, String paramString2)
@@ -126,7 +159,10 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(5, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.w("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.w(localStringBuilder.toString(), paramString2);
   }
   
   public int w(String paramString1, String paramString2, Throwable paramThrowable)
@@ -134,17 +170,23 @@ public class DefaultLogger
     if (paramString2.length() > 1000) {
       return log(5, paramString1, splitEqually(paramString2, 1000));
     }
-    return Log.w("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.w(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int w(String paramString, Throwable paramThrowable)
   {
-    return Log.w("OskPlayer/" + paramString, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString);
+    return Log.w(localStringBuilder.toString(), paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.mediaplayer.DefaultLogger
  * JD-Core Version:    0.7.0.1
  */

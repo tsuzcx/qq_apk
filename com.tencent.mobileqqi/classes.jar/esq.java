@@ -1,33 +1,40 @@
 import android.os.Handler;
 import android.os.Message;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.io.File;
+import java.util.HashMap;
 
 public class esq
-  extends Handler
+  implements Runnable
 {
-  public esq(QvipSpecialSoundActivity paramQvipSpecialSoundActivity) {}
+  public esq(QvipSpecialSoundActivity paramQvipSpecialSoundActivity, String paramString, File paramFile) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    boolean bool = QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).a(this.jdField_a_of_type_JavaLangString);
+    Object localObject;
+    if (QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity) != null)
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        QvipSpecialSoundActivity.b(this.a);
-        QvipSpecialSoundActivity.a(this.a).removeMessages(2);
-      } while (((Boolean)paramMessage.obj).booleanValue());
-      QvipSpecialSoundActivity.a(this.a, this.a.getString(2131562062));
-      return;
-    case 1: 
-      QvipSpecialSoundActivity.a(this.a).setText(this.a.getString(2131562762));
+      localObject = Message.obtain(QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity), 0);
+      ((Message)localObject).obj = Boolean.valueOf(bool);
+      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).sendMessage((Message)localObject);
+    }
+    if (bool)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      localObject = new File(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      if (localObject == null) {
+        break label136;
+      }
+    }
+    label136:
+    for (long l = ((File)localObject).length();; l = 0L)
+    {
+      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).a(l);
+      QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).remove(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    QvipSpecialSoundActivity.c(this.a);
-    QvipSpecialSoundActivity.a(this.a, this.a.getString(2131562882));
   }
 }
 

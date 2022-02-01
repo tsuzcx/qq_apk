@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class DeviceInfo
   extends JceStruct
 {
-  public byte cNetType;
+  public byte cNetType = 0;
   public String strDevType = "";
   public String strIOSIdfa = "";
   public String strOSVer = "";
@@ -39,26 +39,31 @@ public final class DeviceInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cNetType, 0);
-    if (this.strDevType != null) {
-      paramJceOutputStream.write(this.strDevType, 1);
+    String str = this.strDevType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strOSVer != null) {
-      paramJceOutputStream.write(this.strOSVer, 2);
+    str = this.strOSVer;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strVendorName != null) {
-      paramJceOutputStream.write(this.strVendorName, 3);
+    str = this.strVendorName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strVendorOSName != null) {
-      paramJceOutputStream.write(this.strVendorOSName, 4);
+    str = this.strVendorOSName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.strIOSIdfa != null) {
-      paramJceOutputStream.write(this.strIOSIdfa, 5);
+    str = this.strIOSIdfa;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     OnlinePushPack.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

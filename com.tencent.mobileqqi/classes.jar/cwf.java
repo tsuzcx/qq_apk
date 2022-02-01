@@ -1,24 +1,27 @@
 import android.os.Handler;
 import android.os.Message;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.model.FriendManager;
 
 public class cwf
-  extends Thread
+  extends Handler
 {
   public cwf(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = ((FriendManager)this.a.b.getManager(8)).a(this.a.jdField_a_of_type_JavaLangString);
-    if (localObject != null) {
-      this.a.c = ((Card)localObject).strReMark;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        return;
+      } while ((this.a.c == null) || (this.a.c.length() <= 0));
+      this.a.b.setText(this.a.c);
+      return;
     }
-    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    ((Message)localObject).what = 1;
-    ((Message)localObject).sendToTarget();
+    this.a.a.setText(this.a.d);
   }
 }
 

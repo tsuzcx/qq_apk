@@ -9,9 +9,9 @@ public final class tGetMusicInfoReq
   extends JceStruct
 {
   static ArrayList<String> cache_vecSongId = new ArrayList();
-  public int iNeedUrl;
-  public long lUin;
-  public ArrayList<String> vecSongId;
+  public int iNeedUrl = 0;
+  public long lUin = 0L;
+  public ArrayList<String> vecSongId = null;
   
   static
   {
@@ -37,15 +37,16 @@ public final class tGetMusicInfoReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.lUin, 0);
-    if (this.vecSongId != null) {
-      paramJceOutputStream.write(this.vecSongId, 1);
+    ArrayList localArrayList = this.vecSongId;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
     paramJceOutputStream.write(this.iNeedUrl, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_BG_MUSIC.tGetMusicInfoReq
  * JD-Core Version:    0.7.0.1
  */

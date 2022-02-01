@@ -55,20 +55,20 @@ public final class OperatorPublish<T>
       localPublishSubscriber1 = new OperatorPublish.PublishSubscriber(this.current);
       localPublishSubscriber1.init();
     } while (!this.current.compareAndSet(localPublishSubscriber2, localPublishSubscriber1));
-    if ((!localPublishSubscriber1.shouldConnect.get()) && (localPublishSubscriber1.shouldConnect.compareAndSet(false, true))) {}
-    for (int i = 1;; i = 0)
-    {
-      paramAction1.call(localPublishSubscriber1);
-      if (i != 0) {
-        this.source.unsafeSubscribe(localPublishSubscriber1);
-      }
-      return;
+    boolean bool = localPublishSubscriber1.shouldConnect.get();
+    int i = 1;
+    if ((bool) || (!localPublishSubscriber1.shouldConnect.compareAndSet(false, true))) {
+      i = 0;
+    }
+    paramAction1.call(localPublishSubscriber1);
+    if (i != 0) {
+      this.source.unsafeSubscribe(localPublishSubscriber1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorPublish
  * JD-Core Version:    0.7.0.1
  */

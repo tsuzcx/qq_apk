@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="fill_parent" android:layout_height="wrap_content" app:cardCornerRadius="8.0dip" app:cardElevation="6.0dip" app:cardMaxElevation="12.0dip" app:cardUseCompatPadding="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/f3m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/b__" android:scaleType="centerCrop" android:adjustViewBounds="true" android:maxHeight="550.0dip" android:contentDescription="@string/a0t" />
+</androidx.cardview.widget.CardView>

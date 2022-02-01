@@ -22,7 +22,8 @@ class LayoutState
   
   boolean hasMore(RecyclerView.State paramState)
   {
-    return (this.mCurrentPosition >= 0) && (this.mCurrentPosition < paramState.getItemCount());
+    int i = this.mCurrentPosition;
+    return (i >= 0) && (i < paramState.getItemCount());
   }
   
   View next(RecyclerView.Recycler paramRecycler)
@@ -34,7 +35,21 @@ class LayoutState
   
   public String toString()
   {
-    return "LayoutState{mAvailable=" + this.mAvailable + ", mCurrentPosition=" + this.mCurrentPosition + ", mItemDirection=" + this.mItemDirection + ", mLayoutDirection=" + this.mLayoutDirection + ", mStartLine=" + this.mStartLine + ", mEndLine=" + this.mEndLine + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LayoutState{mAvailable=");
+    localStringBuilder.append(this.mAvailable);
+    localStringBuilder.append(", mCurrentPosition=");
+    localStringBuilder.append(this.mCurrentPosition);
+    localStringBuilder.append(", mItemDirection=");
+    localStringBuilder.append(this.mItemDirection);
+    localStringBuilder.append(", mLayoutDirection=");
+    localStringBuilder.append(this.mLayoutDirection);
+    localStringBuilder.append(", mStartLine=");
+    localStringBuilder.append(this.mStartLine);
+    localStringBuilder.append(", mEndLine=");
+    localStringBuilder.append(this.mEndLine);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

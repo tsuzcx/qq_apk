@@ -5,16 +5,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.pb.common.c.b;
 import com.tencent.pb.common.c.c;
-import com.tencent.pb.common.c.d;
 
 public final class g
 {
-  private WifiInfo Bdt = null;
-  private int Bdu = 1;
-  private NetworkInfo dYZ = null;
+  private WifiInfo ahdh = null;
+  private int lastNetType = 1;
+  private NetworkInfo lrD = null;
   
-  public final boolean Ik()
+  public final boolean aKw()
   {
     Object localObject1 = null;
     int i;
@@ -22,49 +23,49 @@ public final class g
     {
       try
       {
-        localObject3 = (ConnectivityManager)d.tFk.getSystemService("connectivity");
+        localObject3 = (ConnectivityManager)c.UMe.getSystemService("connectivity");
         if (localObject3 != null) {
           continue;
         }
-        c.w("NetworkChangeMgr", new Object[] { "can't get ConnectivityManager" });
-        this.Bdu = 1;
-        this.Bdt = null;
-        this.dYZ = null;
+        b.w("NetworkChangeMgr", new Object[] { "can't get ConnectivityManager" });
+        this.lastNetType = 1;
+        this.ahdh = null;
+        this.lrD = null;
         bool = true;
       }
       catch (Exception localException)
       {
         Object localObject3;
         label122:
-        c.w("NetworkChangeMgr", new Object[] { localException });
-        this.Bdu = 1;
-        this.Bdt = null;
-        this.dYZ = null;
+        b.w("NetworkChangeMgr", new Object[] { localException });
+        this.lastNetType = 1;
+        this.ahdh = null;
+        this.lrD = null;
         bool = true;
         continue;
         if (((NetworkInfo)localObject3).getType() != 1) {
-          break label456;
+          break label471;
         }
-        localWifiInfo = ((WifiManager)d.tFk.getSystemService("wifi")).getConnectionInfo();
+        localWifiInfo = (WifiInfo)a.a((WifiManager)c.UMe.getSystemService("wifi"), "com/tencent/pb/common/network/NetworkChangeMgr", "isNetWorkChange", "()Z", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
         i = 2;
         continue;
         if (i != 2) {
           continue;
         }
-        if ((localWifiInfo == null) || (this.Bdt == null) || (!this.Bdt.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.Bdt.getSSID().equals(localWifiInfo.getSSID())) || (this.Bdt.getNetworkId() != localWifiInfo.getNetworkId())) {
-          break label461;
+        if ((localWifiInfo == null) || (this.ahdh == null) || (!this.ahdh.getBSSID().equals(localWifiInfo.getBSSID())) || (!this.ahdh.getSSID().equals(localWifiInfo.getSSID())) || (this.ahdh.getNetworkId() != localWifiInfo.getNetworkId())) {
+          break label476;
         }
         bool = false;
         continue;
-        if ((this.dYZ == null) || (this.dYZ.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.dYZ.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.dYZ.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.dYZ.getType() != ((NetworkInfo)localObject3).getType())) {
+        if ((this.lrD == null) || (this.lrD.getExtraInfo() == null) || (((NetworkInfo)localObject3).getExtraInfo() == null) || (!this.lrD.getExtraInfo().equals(((NetworkInfo)localObject3).getExtraInfo())) || (this.lrD.getSubtype() != ((NetworkInfo)localObject3).getSubtype()) || (this.lrD.getType() != ((NetworkInfo)localObject3).getType())) {
           continue;
         }
         bool = false;
         continue;
-        if ((this.dYZ == null) || (this.dYZ.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.dYZ.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
+        if ((this.lrD == null) || (this.lrD.getExtraInfo() != null) || (((NetworkInfo)localObject3).getExtraInfo() != null) || (this.lrD.getSubtype() != ((NetworkInfo)localObject3).getSubtype())) {
           continue;
         }
-        j = this.dYZ.getType();
+        j = this.lrD.getType();
         k = ((NetworkInfo)localObject3).getType();
         if (j != k) {
           continue;
@@ -79,18 +80,18 @@ public final class g
       localObject3 = ((ConnectivityManager)localObject3).getActiveNetworkInfo();
       if (localObject3 == null)
       {
-        this.Bdu = 1;
-        this.Bdt = null;
-        this.dYZ = null;
+        this.lastNetType = 1;
+        this.ahdh = null;
+        this.lrD = null;
         bool = true;
       }
       else
       {
-        c.d("NetworkChangeMgr", new Object[] { "NetworkChangeMgr ", localObject3 });
+        b.d("NetworkChangeMgr", new Object[] { "NetworkChangeMgr ", localObject3 });
         if (!((NetworkInfo)localObject3).isConnected())
         {
           i = 1;
-          if (i != this.Bdu) {
+          if (i != this.lastNetType) {
             continue;
           }
           if (i != 1) {
@@ -99,13 +100,13 @@ public final class g
         }
       }
     }
-    label456:
-    label461:
+    label471:
+    label476:
     for (boolean bool = false;; bool = true)
     {
-      this.Bdu = i;
-      this.Bdt = localObject1;
-      this.dYZ = ((NetworkInfo)localObject3);
+      this.lastNetType = i;
+      this.ahdh = localObject1;
+      this.lrD = ((NetworkInfo)localObject3);
       break;
       WifiInfo localWifiInfo;
       int j;

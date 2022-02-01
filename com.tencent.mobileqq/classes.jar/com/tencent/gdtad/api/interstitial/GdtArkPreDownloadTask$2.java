@@ -1,40 +1,34 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaoj;
-import aaol;
-import aase;
+import com.tencent.gdtad.log.GdtLog;
 import java.lang.ref.WeakReference;
 
-public class GdtArkPreDownloadTask$2
+class GdtArkPreDownloadTask$2
   implements Runnable
 {
-  public GdtArkPreDownloadTask$2(aaoj paramaaoj) {}
+  GdtArkPreDownloadTask$2(GdtArkPreDownloadTask paramGdtArkPreDownloadTask) {}
   
   public void run()
   {
     boolean bool;
-    if ((aaoj.a(this.this$0) != null) && (aaoj.a(this.this$0).get() != null))
-    {
+    if ((GdtArkPreDownloadTask.g(this.this$0) != null) && (GdtArkPreDownloadTask.g(this.this$0).get() != null)) {
       bool = true;
-      aase.b("GdtArkPreDownloadTask", String.format("notifySuccess listener:%b status:%d notified:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(aaoj.a(this.this$0)), Boolean.valueOf(aaoj.b(this.this$0)) }));
-      if (!aaoj.b(this.this$0)) {
-        break label88;
-      }
-    }
-    label88:
-    do
-    {
-      return;
+    } else {
       bool = false;
-      break;
-      aaoj.a(this.this$0, true);
-    } while ((aaoj.a(this.this$0) == null) || (aaoj.a(this.this$0).get() == null));
-    ((aaol)aaoj.a(this.this$0).get()).a(aaoj.a(this.this$0));
+    }
+    GdtLog.b("GdtArkPreDownloadTask", String.format("notifySuccess listener:%b status:%d notified:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(GdtArkPreDownloadTask.a(this.this$0)), Boolean.valueOf(GdtArkPreDownloadTask.h(this.this$0)) }));
+    if (GdtArkPreDownloadTask.h(this.this$0)) {
+      return;
+    }
+    GdtArkPreDownloadTask.a(this.this$0, true);
+    if ((GdtArkPreDownloadTask.g(this.this$0) != null) && (GdtArkPreDownloadTask.g(this.this$0).get() != null)) {
+      ((GdtArkPreDownloadTask.Listener)GdtArkPreDownloadTask.g(this.this$0).get()).a(GdtArkPreDownloadTask.i(this.this$0));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.2
  * JD-Core Version:    0.7.0.1
  */

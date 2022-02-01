@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.finder.view.FinderViewPager android:orientation="horizontal" android:id="@id/l8k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/ad1" />
+    <FrameLayout android:id="@id/e8a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/al5" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lqh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" android:minHeight="@dimen/cr" />
+</FrameLayout>

@@ -10,11 +10,11 @@ public final class k
   static void a(zzd paramzzd, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzd.Hc);
-    c.a(paramParcel, 2, paramzzd.Jd);
-    c.a(paramParcel, 3, paramzzd.Jj, paramInt);
-    c.a(paramParcel, 4, paramzzd.Jm);
-    c.a(paramParcel, 5, paramzzd.Jn);
+    c.c(paramParcel, 1, paramzzd.IR);
+    c.a(paramParcel, 2, paramzzd.KS);
+    c.a(paramParcel, 3, paramzzd.KY, paramInt);
+    c.a(paramParcel, 4, paramzzd.Lb);
+    c.a(paramParcel, 5, paramzzd.Lc);
     c.v(paramParcel, i);
   }
 }

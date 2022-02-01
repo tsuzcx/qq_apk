@@ -11,16 +11,16 @@ final class SettingsPersonalInfoUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(127365);
-    this.qJr.hideVKB();
-    this.qJr.finish();
-    AppMethodBeat.o(127365);
+    AppMethodBeat.i(74303);
+    this.Pvn.hideVKB();
+    this.Pvn.finish();
+    AppMethodBeat.o(74303);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsPersonalInfoUI.1
  * JD-Core Version:    0.7.0.1
  */

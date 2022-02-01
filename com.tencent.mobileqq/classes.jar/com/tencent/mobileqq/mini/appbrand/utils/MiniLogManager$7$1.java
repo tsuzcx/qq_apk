@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
-import com.tencent.mobileqq.mini.http.HttpCallBack;
+import com.tencent.mobileqq.mini.network.http.HttpCallBack;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.List;
@@ -15,26 +15,33 @@ class MiniLogManager$7$1
   
   public void httpCallBack(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
   {
-    if (paramInt == 200) {
-      if (QLog.isDebugVersion()) {
-        QLog.d(MiniLogManager.access$100(), 2, "log upload success " + this.this$0.val$targetUrl);
-      }
-    }
-    for (;;)
+    if (paramInt == 200)
     {
-      new File(this.this$0.val$filePath).delete();
-      return;
-      if (QLog.isDebugVersion()) {
-        QLog.d(MiniLogManager.access$100(), 2, "log upload failed " + this.this$0.val$targetUrl);
+      if (QLog.isDebugVersion())
+      {
+        paramArrayOfByte = MiniLogManager.access$100();
+        paramMap = new StringBuilder();
+        paramMap.append("log upload success ");
+        paramMap.append(this.this$0.val$targetUrl);
+        QLog.d(paramArrayOfByte, 2, paramMap.toString());
       }
     }
+    else if (QLog.isDebugVersion())
+    {
+      paramArrayOfByte = MiniLogManager.access$100();
+      paramMap = new StringBuilder();
+      paramMap.append("log upload failed ");
+      paramMap.append(this.this$0.val$targetUrl);
+      QLog.d(paramArrayOfByte, 2, paramMap.toString());
+    }
+    new File(this.this$0.val$filePath).delete();
   }
   
   public void onProgressUpdate(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLogManager.7.1
  * JD-Core Version:    0.7.0.1
  */

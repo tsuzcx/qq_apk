@@ -2,389 +2,278 @@ package android.support.v7.app;
 
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.content.res.TypedArray;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.util.ArrayMap;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.appcompat.R.styleable;
-import android.support.v7.view.ContextThemeWrapper;
-import android.support.v7.widget.AppCompatAutoCompleteTextView;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatCheckBox;
-import android.support.v7.widget.AppCompatCheckedTextView;
-import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.AppCompatImageButton;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
-import android.support.v7.widget.AppCompatRadioButton;
-import android.support.v7.widget.AppCompatRatingBar;
-import android.support.v7.widget.AppCompatSeekBar;
-import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.TintContextWrapper;
+import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.token.em;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 public class AppCompatViewInflater
 {
-  private static final String LOG_TAG = "AppCompatViewInflater";
-  private static final String[] sClassPrefixList = { "android.widget.", "android.view.", "android.webkit." };
-  private static final Map sConstructorMap = new ArrayMap();
-  private static final Class[] sConstructorSignature = { Context.class, AttributeSet.class };
-  private static final int[] sOnClickAttrs = { 16843375 };
-  private final Object[] mConstructorArgs = new Object[2];
+  static final int[] a = { 16843375 };
+  private static final Class<?>[] b = { Context.class, AttributeSet.class };
+  private static final String[] c = { "android.widget.", "android.view.", "android.webkit." };
+  private static final Map<String, Constructor<? extends View>> d = new em();
+  private final Object[] e = new Object[2];
   
-  private void checkOnClickListener(View paramView, AttributeSet paramAttributeSet)
+  private View a(Context paramContext, String paramString1, String paramString2)
   {
-    Object localObject = paramView.getContext();
-    if ((!(localObject instanceof ContextWrapper)) || ((Build.VERSION.SDK_INT >= 15) && (!ViewCompat.hasOnClickListeners(paramView)))) {
-      return;
-    }
-    paramAttributeSet = ((Context)localObject).obtainStyledAttributes(paramAttributeSet, sOnClickAttrs);
-    localObject = paramAttributeSet.getString(0);
-    if (localObject != null) {
-      paramView.setOnClickListener(new AppCompatViewInflater.DeclaredOnClickListener(paramView, (String)localObject));
-    }
-    paramAttributeSet.recycle();
-  }
-  
-  private View createViewByPrefix(Context paramContext, String paramString1, String paramString2)
-  {
-    Constructor localConstructor = (Constructor)sConstructorMap.get(paramString1);
+    Constructor localConstructor = (Constructor)d.get(paramString1);
     Object localObject = localConstructor;
     if (localConstructor == null) {}
     try
     {
       localObject = paramContext.getClassLoader();
-      if (paramString2 != null) {}
-      for (paramContext = paramString2 + paramString1;; paramContext = paramString1)
-      {
-        localObject = ((ClassLoader)localObject).loadClass(paramContext).asSubclass(View.class).getConstructor(sConstructorSignature);
-        sConstructorMap.put(paramString1, localObject);
-        ((Constructor)localObject).setAccessible(true);
-        paramContext = (View)((Constructor)localObject).newInstance(this.mConstructorArgs);
-        return paramContext;
+      if (paramString2 == null) {
+        break label119;
       }
-      return null;
-    }
-    catch (Exception paramContext) {}
-  }
-  
-  private View createViewFromTag(Context paramContext, String paramString, AttributeSet paramAttributeSet)
-  {
-    String str = paramString;
-    if (paramString.equals("view")) {
-      str = paramAttributeSet.getAttributeValue(null, "class");
-    }
-    try
-    {
-      this.mConstructorArgs[0] = paramContext;
-      this.mConstructorArgs[1] = paramAttributeSet;
-      if (-1 == str.indexOf('.'))
-      {
-        int i = 0;
-        while (i < sClassPrefixList.length)
-        {
-          paramString = createViewByPrefix(paramContext, str, sClassPrefixList[i]);
-          if (paramString != null) {
-            return paramString;
-          }
-          i += 1;
-        }
-        return null;
-      }
-      paramContext = createViewByPrefix(paramContext, str, null);
-      return paramContext;
+      paramContext = new StringBuilder();
+      paramContext.append(paramString2);
+      paramContext.append(paramString1);
+      paramContext = paramContext.toString();
     }
     catch (Exception paramContext)
     {
-      return null;
-    }
-    finally
-    {
-      this.mConstructorArgs[0] = null;
-      this.mConstructorArgs[1] = null;
-    }
-  }
-  
-  private static Context themifyContext(Context paramContext, AttributeSet paramAttributeSet, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.View, 0, 0);
-    if (paramBoolean1) {}
-    for (int i = paramAttributeSet.getResourceId(R.styleable.View_android_theme, 0);; i = 0)
-    {
-      int j = i;
-      if (paramBoolean2)
+      for (;;)
       {
-        j = i;
-        if (i == 0)
-        {
-          i = paramAttributeSet.getResourceId(R.styleable.View_theme, 0);
-          j = i;
-          if (i != 0)
-          {
-            Log.i("AppCompatViewInflater", "app:theme is now deprecated. Please move to using android:theme instead.");
-            j = i;
-          }
-        }
+        continue;
+        paramContext = paramString1;
       }
-      paramAttributeSet.recycle();
-      paramAttributeSet = paramContext;
-      if (j != 0) {
-        if ((paramContext instanceof ContextThemeWrapper))
-        {
-          paramAttributeSet = paramContext;
-          if (((ContextThemeWrapper)paramContext).getThemeResId() == j) {}
-        }
-        else
-        {
-          paramAttributeSet = new ContextThemeWrapper(paramContext, j);
-        }
-      }
-      return paramAttributeSet;
     }
-  }
-  
-  private void verifyNotNull(View paramView, String paramString)
-  {
-    if (paramView == null) {
-      throw new IllegalStateException(getClass().getName() + " asked to inflate view for <" + paramString + ">, but returned null");
-    }
-  }
-  
-  @NonNull
-  protected AppCompatAutoCompleteTextView createAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatAutoCompleteTextView(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatButton createButton(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatButton(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatCheckBox createCheckBox(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatCheckBox(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatCheckedTextView createCheckedTextView(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatCheckedTextView(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatEditText createEditText(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatEditText(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatImageButton createImageButton(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatImageButton(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatImageView createImageView(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatImageView(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatMultiAutoCompleteTextView createMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatMultiAutoCompleteTextView(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatRadioButton createRadioButton(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatRadioButton(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatRatingBar createRatingBar(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatRatingBar(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatSeekBar createSeekBar(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatSeekBar(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatSpinner createSpinner(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatSpinner(paramContext, paramAttributeSet);
-  }
-  
-  @NonNull
-  protected AppCompatTextView createTextView(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    return new AppCompatTextView(paramContext, paramAttributeSet);
-  }
-  
-  @Nullable
-  protected View createView(Context paramContext, String paramString, AttributeSet paramAttributeSet)
-  {
+    localObject = ((ClassLoader)localObject).loadClass(paramContext).asSubclass(View.class).getConstructor(b);
+    d.put(paramString1, localObject);
+    ((Constructor)localObject).setAccessible(true);
+    paramContext = (View)((Constructor)localObject).newInstance(this.e);
+    return paramContext;
     return null;
   }
   
-  final View createView(View paramView, String paramString, @NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  /* Error */
+  final View a(Context paramContext, String paramString, AttributeSet paramAttributeSet)
   {
-    if ((paramBoolean1) && (paramView != null)) {}
-    for (Object localObject = paramView.getContext();; localObject = paramContext)
+    // Byte code:
+    //   0: aload_2
+    //   1: astore 5
+    //   3: aload_2
+    //   4: ldc 109
+    //   6: invokevirtual 113	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   9: ifeq +14 -> 23
+    //   12: aload_3
+    //   13: aconst_null
+    //   14: ldc 115
+    //   16: invokeinterface 119 3 0
+    //   21: astore 5
+    //   23: aload_0
+    //   24: getfield 52	android/support/v7/app/AppCompatViewInflater:e	[Ljava/lang/Object;
+    //   27: iconst_0
+    //   28: aload_1
+    //   29: aastore
+    //   30: aload_0
+    //   31: getfield 52	android/support/v7/app/AppCompatViewInflater:e	[Ljava/lang/Object;
+    //   34: iconst_1
+    //   35: aload_3
+    //   36: aastore
+    //   37: iconst_m1
+    //   38: aload 5
+    //   40: bipush 46
+    //   42: invokevirtual 123	java/lang/String:indexOf	(I)I
+    //   45: if_icmpne +72 -> 117
+    //   48: iconst_0
+    //   49: istore 4
+    //   51: iload 4
+    //   53: getstatic 41	android/support/v7/app/AppCompatViewInflater:c	[Ljava/lang/String;
+    //   56: arraylength
+    //   57: if_icmpge +45 -> 102
+    //   60: aload_0
+    //   61: aload_1
+    //   62: aload 5
+    //   64: getstatic 41	android/support/v7/app/AppCompatViewInflater:c	[Ljava/lang/String;
+    //   67: iload 4
+    //   69: aaload
+    //   70: invokespecial 125	android/support/v7/app/AppCompatViewInflater:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Landroid/view/View;
+    //   73: astore_2
+    //   74: aload_2
+    //   75: ifnull +18 -> 93
+    //   78: aload_0
+    //   79: getfield 52	android/support/v7/app/AppCompatViewInflater:e	[Ljava/lang/Object;
+    //   82: astore_1
+    //   83: aload_1
+    //   84: iconst_0
+    //   85: aconst_null
+    //   86: aastore
+    //   87: aload_1
+    //   88: iconst_1
+    //   89: aconst_null
+    //   90: aastore
+    //   91: aload_2
+    //   92: areturn
+    //   93: iload 4
+    //   95: iconst_1
+    //   96: iadd
+    //   97: istore 4
+    //   99: goto -48 -> 51
+    //   102: aload_0
+    //   103: getfield 52	android/support/v7/app/AppCompatViewInflater:e	[Ljava/lang/Object;
+    //   106: astore_1
+    //   107: aload_1
+    //   108: iconst_0
+    //   109: aconst_null
+    //   110: aastore
+    //   111: aload_1
+    //   112: iconst_1
+    //   113: aconst_null
+    //   114: aastore
+    //   115: aconst_null
+    //   116: areturn
+    //   117: aload_0
+    //   118: aload_1
+    //   119: aload 5
+    //   121: aconst_null
+    //   122: invokespecial 125	android/support/v7/app/AppCompatViewInflater:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Landroid/view/View;
+    //   125: astore_1
+    //   126: aload_0
+    //   127: getfield 52	android/support/v7/app/AppCompatViewInflater:e	[Ljava/lang/Object;
+    //   130: astore_2
+    //   131: aload_2
+    //   132: iconst_0
+    //   133: aconst_null
+    //   134: aastore
+    //   135: aload_2
+    //   136: iconst_1
+    //   137: aconst_null
+    //   138: aastore
+    //   139: aload_1
+    //   140: areturn
+    //   141: astore_1
+    //   142: aload_0
+    //   143: getfield 52	android/support/v7/app/AppCompatViewInflater:e	[Ljava/lang/Object;
+    //   146: astore_2
+    //   147: aload_2
+    //   148: iconst_0
+    //   149: aconst_null
+    //   150: aastore
+    //   151: aload_2
+    //   152: iconst_1
+    //   153: aconst_null
+    //   154: aastore
+    //   155: aload_1
+    //   156: athrow
+    //   157: aload_0
+    //   158: getfield 52	android/support/v7/app/AppCompatViewInflater:e	[Ljava/lang/Object;
+    //   161: astore_1
+    //   162: aload_1
+    //   163: iconst_0
+    //   164: aconst_null
+    //   165: aastore
+    //   166: aload_1
+    //   167: iconst_1
+    //   168: aconst_null
+    //   169: aastore
+    //   170: aconst_null
+    //   171: areturn
+    //   172: astore_1
+    //   173: goto -16 -> 157
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	176	0	this	AppCompatViewInflater
+    //   0	176	1	paramContext	Context
+    //   0	176	2	paramString	String
+    //   0	176	3	paramAttributeSet	AttributeSet
+    //   49	49	4	i	int
+    //   1	119	5	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   23	48	141	finally
+    //   51	74	141	finally
+    //   117	126	141	finally
+    //   23	48	172	java/lang/Exception
+    //   51	74	172	java/lang/Exception
+    //   117	126	172	java/lang/Exception
+  }
+  
+  static final class a
+    implements View.OnClickListener
+  {
+    private final View a;
+    private final String b;
+    private Method c;
+    private Context d;
+    
+    public a(View paramView, String paramString)
     {
-      if (!paramBoolean2)
+      this.a = paramView;
+      this.b = paramString;
+    }
+    
+    public final void onClick(View paramView)
+    {
+      if (this.c == null)
       {
-        paramView = (View)localObject;
-        if (!paramBoolean3) {}
+        Object localObject = this.a.getContext();
+        while (localObject != null)
+        {
+          try
+          {
+            if (!((Context)localObject).isRestricted())
+            {
+              Method localMethod = localObject.getClass().getMethod(this.b, new Class[] { View.class });
+              if (localMethod != null)
+              {
+                this.c = localMethod;
+                this.d = ((Context)localObject);
+              }
+            }
+          }
+          catch (NoSuchMethodException localNoSuchMethodException)
+          {
+            label67:
+            int i;
+            break label67;
+          }
+          if ((localObject instanceof ContextWrapper)) {
+            localObject = ((ContextWrapper)localObject).getBaseContext();
+          } else {
+            localObject = null;
+          }
+        }
+        i = this.a.getId();
+        if (i == -1)
+        {
+          paramView = "";
+        }
+        else
+        {
+          paramView = new StringBuilder(" with id '");
+          paramView.append(this.a.getContext().getResources().getResourceEntryName(i));
+          paramView.append("'");
+          paramView = paramView.toString();
+        }
+        localObject = new StringBuilder("Could not find method ");
+        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append("(View) in a parent or ancestor Context for android:onClick attribute defined on view ");
+        ((StringBuilder)localObject).append(this.a.getClass());
+        ((StringBuilder)localObject).append(paramView);
+        throw new IllegalStateException(((StringBuilder)localObject).toString());
       }
       else
       {
-        paramView = themifyContext((Context)localObject, paramAttributeSet, paramBoolean2, paramBoolean3);
-      }
-      localObject = paramView;
-      if (paramBoolean4) {
-        localObject = TintContextWrapper.wrap(paramView);
-      }
-      int i = -1;
-      switch (paramString.hashCode())
-      {
-      default: 
-        switch (i)
+        try
         {
-        default: 
-          paramView = createView((Context)localObject, paramString, paramAttributeSet);
-          label254:
-          if ((paramView == null) && (paramContext != localObject)) {
-            paramView = createViewFromTag((Context)localObject, paramString, paramAttributeSet);
-          }
-          break;
+          this.c.invoke(this.d, new Object[] { paramView });
+          return;
         }
-        break;
-      }
-      for (;;)
-      {
-        if (paramView != null) {
-          checkOnClickListener(paramView, paramAttributeSet);
+        catch (InvocationTargetException paramView)
+        {
+          throw new IllegalStateException("Could not execute method for android:onClick", paramView);
         }
-        return paramView;
-        if (!paramString.equals("TextView")) {
-          break;
+        catch (IllegalAccessException paramView)
+        {
+          throw new IllegalStateException("Could not execute non-public method for android:onClick", paramView);
         }
-        i = 0;
-        break;
-        if (!paramString.equals("ImageView")) {
-          break;
-        }
-        i = 1;
-        break;
-        if (!paramString.equals("Button")) {
-          break;
-        }
-        i = 2;
-        break;
-        if (!paramString.equals("EditText")) {
-          break;
-        }
-        i = 3;
-        break;
-        if (!paramString.equals("Spinner")) {
-          break;
-        }
-        i = 4;
-        break;
-        if (!paramString.equals("ImageButton")) {
-          break;
-        }
-        i = 5;
-        break;
-        if (!paramString.equals("CheckBox")) {
-          break;
-        }
-        i = 6;
-        break;
-        if (!paramString.equals("RadioButton")) {
-          break;
-        }
-        i = 7;
-        break;
-        if (!paramString.equals("CheckedTextView")) {
-          break;
-        }
-        i = 8;
-        break;
-        if (!paramString.equals("AutoCompleteTextView")) {
-          break;
-        }
-        i = 9;
-        break;
-        if (!paramString.equals("MultiAutoCompleteTextView")) {
-          break;
-        }
-        i = 10;
-        break;
-        if (!paramString.equals("RatingBar")) {
-          break;
-        }
-        i = 11;
-        break;
-        if (!paramString.equals("SeekBar")) {
-          break;
-        }
-        i = 12;
-        break;
-        paramView = createTextView((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createImageView((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createButton((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createEditText((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createSpinner((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createImageButton((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createCheckBox((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createRadioButton((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createCheckedTextView((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createAutoCompleteTextView((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createMultiAutoCompleteTextView((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createRatingBar((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
-        paramView = createSeekBar((Context)localObject, paramAttributeSet);
-        verifyNotNull(paramView, paramString);
-        break label254;
       }
     }
   }

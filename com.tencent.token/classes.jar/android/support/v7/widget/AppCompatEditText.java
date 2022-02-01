@@ -4,115 +4,114 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.TintableBackgroundView;
-import android.support.v7.appcompat.R.attr;
 import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
+import com.tencent.token.fn;
+import com.tencent.token.hg.a;
+import com.tencent.token.iw;
+import com.tencent.token.iz;
+import com.tencent.token.jd;
+import com.tencent.token.jt;
 
 public class AppCompatEditText
   extends EditText
-  implements TintableBackgroundView
+  implements fn
 {
-  private final AppCompatBackgroundHelper mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
-  private final AppCompatTextHelper mTextHelper;
-  
-  public AppCompatEditText(Context paramContext)
-  {
-    this(paramContext, null);
-  }
+  private final iw a = new iw(this);
+  private final jd b;
   
   public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.editTextStyle);
+    this(paramContext, paramAttributeSet, hg.a.editTextStyle);
   }
   
   public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
-    this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);
-    this.mTextHelper = AppCompatTextHelper.create(this);
-    this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);
-    this.mTextHelper.applyCompoundDrawablesTints();
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
+    this.a.a(paramAttributeSet, paramInt);
+    this.b = jd.a(this);
+    this.b.a(paramAttributeSet, paramInt);
+    this.b.a();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.applySupportBackgroundTint();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((iw)localObject).d();
     }
-    if (this.mTextHelper != null) {
-      this.mTextHelper.applyCompoundDrawablesTints();
+    localObject = this.b;
+    if (localObject != null) {
+      ((jd)localObject).a();
     }
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintList();
+    iw localiw = this.a;
+    if (localiw != null) {
+      return localiw.b();
     }
     return null;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintMode();
+    iw localiw = this.a;
+    if (localiw != null) {
+      return localiw.c();
     }
     return null;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    return AppCompatHintHelper.onCreateInputConnection(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
+    return iz.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundDrawable(paramDrawable);
+    paramDrawable = this.a;
+    if (paramDrawable != null) {
+      paramDrawable.a();
     }
   }
   
-  public void setBackgroundResource(@DrawableRes int paramInt)
+  public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundResource(paramInt);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramInt);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportBackgroundTintList(@Nullable ColorStateList paramColorStateList)
+  public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramColorStateList);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode paramMode)
+  public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.mTextHelper != null) {
-      this.mTextHelper.onSetTextAppearance(paramContext, paramInt);
+    jd localjd = this.b;
+    if (localjd != null) {
+      localjd.a(paramContext, paramInt);
     }
   }
 }

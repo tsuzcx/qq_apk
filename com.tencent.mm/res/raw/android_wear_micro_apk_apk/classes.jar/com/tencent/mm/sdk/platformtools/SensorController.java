@@ -11,15 +11,15 @@ public class SensorController
   extends BroadcastReceiver
   implements SensorEventListener
 {
-  private static float XR = 4.294967E+009F;
-  private static float XS = 0.5F;
-  public static boolean XY = false;
-  public static double XZ = -1.0D;
-  private p XT;
-  private Sensor XU;
-  private boolean XV;
-  private float XW;
-  private float XX;
+  private static float ZT = 4.294967E+009F;
+  private static float ZU = 0.5F;
+  public static boolean aaa = false;
+  public static double aab = -1.0D;
+  private p ZV;
+  private Sensor ZW;
+  private boolean ZX;
+  private float ZY;
+  private float ZZ;
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
@@ -36,15 +36,15 @@ public class SensorController
       } while ((paramContext == null) || (!paramContext.equals("android.intent.action.HEADSET_PLUG")));
       i = paramIntent.getIntExtra("state", 0);
       if (i == 1) {
-        this.XV = true;
+        this.ZX = true;
       }
     } while (i != 0);
-    this.XV = false;
+    this.ZX = false;
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((paramSensorEvent == null) || (paramSensorEvent.sensor == null) || (this.XU == null)) {}
+    if ((paramSensorEvent == null) || (paramSensorEvent.sensor == null) || (this.ZW == null)) {}
     float f2;
     float f1;
     float f3;
@@ -53,17 +53,17 @@ public class SensorController
       do
       {
         return;
-      } while (this.XV);
+      } while (this.ZX);
       f2 = paramSensorEvent.values[0];
       double d = 3.0D;
-      f.c("MicroMsg.SensorController", "newValue: %s, maxValue: %s, divideRatio: %s, configNearFarDivideRatio: %s, lastValue: %s, maxRange: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.XW), Double.valueOf(3.0D), Double.valueOf(XZ), Float.valueOf(this.XX), Float.valueOf(this.XU.getMaximumRange()) });
-      if (XZ > 0.0D) {
-        d = XZ;
+      f.c("MicroMsg.SensorController", "newValue: %s, maxValue: %s, divideRatio: %s, configNearFarDivideRatio: %s, lastValue: %s, maxRange: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.ZY), Double.valueOf(3.0D), Double.valueOf(aab), Float.valueOf(this.ZZ), Float.valueOf(this.ZW.getMaximumRange()) });
+      if (aab > 0.0D) {
+        d = aab;
       }
-      if ((XZ <= 0.0D) && (this.XW >= 0.0F)) {
+      if ((aab <= 0.0D) && (this.ZY >= 0.0F)) {
         break;
       }
-      f1 = this.XU.getMaximumRange();
+      f1 = this.ZW.getMaximumRange();
       f3 = Math.max(0.1F, (float)(f1 / d));
       f.c("MicroMsg.SensorController", "onSensorChanged, near threshold: %s, max: %s", new Object[] { Float.valueOf(f3), Float.valueOf(f1) });
       switch (paramSensorEvent.sensor.getType())
@@ -71,15 +71,15 @@ public class SensorController
       default: 
         return;
       }
-    } while ((this.XT == null) || (f2 == this.XX));
+    } while ((this.ZV == null) || (f2 == this.ZZ));
     if (f2 < f3) {
       f.e("MicroMsg.SensorController", "sensor near-far event near false");
     }
     for (;;)
     {
-      this.XX = f2;
+      this.ZZ = f2;
       return;
-      f1 = this.XW;
+      f1 = this.ZY;
       break;
       f.e("MicroMsg.SensorController", "sensor near-far event far true");
     }

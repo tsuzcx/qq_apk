@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class u
-  extends e<ar>
+  extends e<bd>
 {
   private static final int CTRL_INDEX = -1;
-  private static final String NAME = "isdirSync";
+  private static final String NAME = "isdir";
   
   public u()
   {
-    super(new ar());
-    AppMethodBeat.i(102791);
-    AppMethodBeat.o(102791);
+    super(new bd());
+    AppMethodBeat.i(128882);
+    AppMethodBeat.o(128882);
   }
 }
 

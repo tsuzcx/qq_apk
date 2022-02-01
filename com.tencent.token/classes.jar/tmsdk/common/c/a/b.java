@@ -4,24 +4,31 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import com.tencent.token.art;
 
-class b
+public final class b
   extends BroadcastReceiver
 {
   public String a = null;
   public Runnable b = null;
   
-  b(a parama) {}
+  public b(art paramart) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public final void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!this.a.equals(paramContext)) || (this.b == null)) {
+    if (paramContext == null) {
       return;
     }
-    a.a(this.c).post(this.b);
-    this.c.a(paramContext);
+    if (this.a.equals(paramContext))
+    {
+      if (this.b == null) {
+        return;
+      }
+      art.a(this.c).post(this.b);
+      this.c.a(paramContext);
+      return;
+    }
   }
 }
 

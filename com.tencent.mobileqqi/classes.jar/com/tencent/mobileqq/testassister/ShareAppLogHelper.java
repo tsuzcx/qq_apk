@@ -6,9 +6,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.format.Time;
+import gme;
 import gmf;
 import gmg;
-import gmh;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,7 +35,7 @@ public class ShareAppLogHelper
   private static final int h = 1001;
   private static final int i = 1002;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new gmf(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new gme(this, Looper.getMainLooper());
   private Time jdField_a_of_type_AndroidTextFormatTime;
   private ShareAppLogHelper.OnGetLocalLogListener jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener;
   volatile Object jdField_a_of_type_JavaLangObject = new Object();
@@ -60,7 +60,7 @@ public class ShareAppLogHelper
     if (!((File)localObject).exists()) {
       return -1;
     }
-    this.jdField_a_of_type_ArrayOfJavaIoFile = ((File)localObject).listFiles(new gmg(this));
+    this.jdField_a_of_type_ArrayOfJavaIoFile = ((File)localObject).listFiles(new gmf(this));
     File localFile;
     if (this.jdField_a_of_type_Boolean)
     {
@@ -166,7 +166,7 @@ public class ShareAppLogHelper
   
   private void a(String paramString)
   {
-    new gmh(this, paramString).start();
+    new gmg(this, paramString).start();
   }
   
   private int b()

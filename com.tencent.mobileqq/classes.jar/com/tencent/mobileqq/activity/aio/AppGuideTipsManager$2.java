@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aepn;
-import bdiv;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.PackageUtil;
 
-public class AppGuideTipsManager$2
+class AppGuideTipsManager$2
   implements Runnable
 {
-  public AppGuideTipsManager$2(aepn paramaepn) {}
+  AppGuideTipsManager$2(AppGuideTipsManager paramAppGuideTipsManager) {}
   
   public void run()
   {
-    aepn.b(this.this$0, bdiv.a(aepn.a(this.this$0).getApp(), "com.tencent.tim"));
+    AppGuideTipsManager localAppGuideTipsManager = this.this$0;
+    AppGuideTipsManager.b(localAppGuideTipsManager, PackageUtil.a(AppGuideTipsManager.d(localAppGuideTipsManager).getApp(), "com.tencent.tim"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager.2
  * JD-Core Version:    0.7.0.1
  */

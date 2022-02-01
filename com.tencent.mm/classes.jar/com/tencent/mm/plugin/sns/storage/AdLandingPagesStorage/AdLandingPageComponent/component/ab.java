@@ -1,167 +1,100 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.view.View;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
-import com.tencent.mm.sdk.g.a.e;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b.h.a;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class ab
-  extends h
+  extends r
 {
-  TextView euY;
-  private Runnable gaj;
-  volatile boolean rxV = false;
-  
-  public ab(Context paramContext, w paramw, ViewGroup paramViewGroup)
+  public ab(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r paramr, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramw, paramViewGroup);
-  }
-  
-  public final void cqA()
-  {
-    AppMethodBeat.i(37343);
-    super.cqA();
-    AppMethodBeat.o(37343);
-  }
-  
-  public final void cqB()
-  {
-    AppMethodBeat.i(37344);
-    super.cqB();
-    AppMethodBeat.o(37344);
-  }
-  
-  @TargetApi(17)
-  public final void cqK()
-  {
-    AppMethodBeat.i(37342);
-    View localView = this.contentView;
-    localView.setBackgroundColor(this.backgroundColor);
-    localView.findViewById(2131827873).setBackgroundColor(this.backgroundColor);
-    localView.findViewById(2131827874).setBackgroundColor(this.backgroundColor);
-    this.euY = ((TextView)localView.findViewById(2131827874));
-    AppMethodBeat.o(37342);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37341);
-    if (((w)this.rve).textSize > 0.0F) {
-      this.euY.setTextSize(0, ((w)this.rve).textSize);
-    }
-    Object localObject;
-    if (((w)this.rve).subType == 1)
+    super(paramContext, paramr, paramViewGroup);
+    AppMethodBeat.i(96657);
+    paramContext = h.s(paramr.QJQ, true, false);
+    paramViewGroup = this.QPl;
+    if (paramContext == null) {}
+    for (paramContext = "";; paramContext = paramContext.field_packageName)
     {
-      if (!bo.isNullOrNil(((w)this.rve).rta))
-      {
-        localObject = ((w)this.rve).rta.trim().replace("<icon", "<img");
-        d.ysm.remove(this.gaj);
-        this.gaj = new ab.1(this, (String)localObject);
-        d.post(this.gaj, "");
-      }
-      if (((w)this.rve).textAlignment != 0) {
-        break label412;
-      }
-      this.euY.setGravity(3);
-      label145:
-      if ((((w)this.rve).oKE == null) || (((w)this.rve).oKE.length() <= 0)) {
-        break label497;
-      }
+      paramViewGroup.mx("pkg", paramContext);
+      this.QPl.mx("appid", paramr.QJQ);
+      AppMethodBeat.o(96657);
+      return;
     }
-    for (;;)
+  }
+  
+  private boolean Q(Context paramContext, final String paramString1, final String paramString2)
+  {
+    AppMethodBeat.i(96659);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
     {
-      try
+      AppMethodBeat.o(96659);
+      return false;
+    }
+    try
+    {
+      final Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
+      if (localIntent != null)
       {
-        i = Color.parseColor(((w)this.rve).oKE);
-        this.euY.setTextColor(i);
-        if (((w)this.rve).rte > 0.0F) {
-          this.euY.setLineSpacing(0.0F, ((w)this.rve).rte + 1.0F);
+        paramString1 = paramContext;
+        if (!(paramContext instanceof Activity)) {
+          paramString1 = this.context;
         }
-        localObject = this.euY.getPaint();
-        if (((w)this.rve).rtb) {
-          ((TextPaint)localObject).setFakeBoldText(true);
-        }
-        if (((w)this.rve).rtc) {
-          ((TextPaint)localObject).setTextSkewX(-0.25F);
-        }
-        if (((w)this.rve).rtd) {
-          ((TextPaint)localObject).setUnderlineText(true);
-        }
-        if (((w)this.rve).maxLines > 0) {
-          this.euY.setMaxLines(((w)this.rve).maxLines);
-        }
-        if (((w)this.rve).rsi == w.rsZ) {
-          this.euY.setTypeface(ae.eW(this.context));
-        }
-        AppMethodBeat.o(37341);
-        return;
-        if (bo.isNullOrNil(((w)this.rve).rta)) {
-          break;
-        }
-        this.euY.setText(g.dvk().b(((w)this.rve).rta.trim(), this.euY.getTextSize()));
-        break;
-        label412:
-        if (((w)this.rve).textAlignment == 1)
+        a.post(new Runnable()
         {
-          this.euY.setGravity(17);
-          break label145;
-        }
-        if (((w)this.rve).textAlignment != 2) {
-          break label145;
-        }
-        this.euY.setGravity(5);
+          public final void run()
+          {
+            AppMethodBeat.i(96656);
+            h.b(paramString1, localIntent, paramString2);
+            AppMethodBeat.o(96656);
+          }
+        });
+        AppMethodBeat.o(96659);
+        return true;
       }
-      catch (Exception localException)
+    }
+    catch (Exception paramContext)
+    {
+      Log.e("AdLandingPageOpenAppBtnComp", Util.stackTraceToString(paramContext));
+      AppMethodBeat.o(96659);
+    }
+    return false;
+  }
+  
+  protected final void hiZ()
+  {
+    AppMethodBeat.i(96658);
+    Object localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)this.QOV;
+    if (h.y(this.context, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)localObject).QJQ))
+    {
+      localObject = h.s(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)localObject).QJQ, true, false);
+      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (Q(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.Sns.AdLandingPageTextComponent", "parse the color is error : " + ((w)this.rve).oKE);
-        continue;
+        hja();
+        AppMethodBeat.o(96658);
+        return;
       }
-      label497:
-      int i = Color.parseColor("#FFFFFF");
-      this.euY.setTextColor(i);
+      super.hiZ();
+      AppMethodBeat.o(96658);
+      return;
     }
-  }
-  
-  protected final void cqQ()
-  {
-    AppMethodBeat.i(37340);
-    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
-    }
-    this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(37340);
-  }
-  
-  public final void cqz()
-  {
-    AppMethodBeat.i(37339);
-    super.cqz();
-    d.ysm.remove(this.gaj);
-    this.rxV = true;
-    AppMethodBeat.o(37339);
-  }
-  
-  protected final int getLayout()
-  {
-    return 2130970790;
+    super.hiZ();
+    AppMethodBeat.o(96658);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ab
  * JD-Core Version:    0.7.0.1
  */

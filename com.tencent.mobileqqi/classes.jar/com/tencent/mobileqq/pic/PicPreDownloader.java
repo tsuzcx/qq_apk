@@ -17,9 +17,9 @@ import com.tencent.mobileqq.utils.ActionMsgUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import gdx;
 import gdy;
 import gdz;
-import gea;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -68,7 +68,7 @@ public class PicPreDownloader
     ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
     ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
     ((IntentFilter)localObject).addAction("android.intent.action.USER_PRESENT");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new gea(paramQQAppInterface.a());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new gdz(paramQQAppInterface.a());
     paramQQAppInterface.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
     if (this.jdField_a_of_type_Boolean) {}
     for (localObject = new PreDownloadStrategyBeta();; localObject = new PreDownloadStrategyAlpha())
@@ -224,7 +224,7 @@ public class PicPreDownloader
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     Logger.a("PIC_TAG_PRELOAD", "picPreDownloadOff", "mIsPicPreloadSuitable:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-    new Timer().schedule(new gdy(this), 60000L);
+    new Timer().schedule(new gdx(this), 60000L);
   }
   
   public void a(MessageForPic paramMessageForPic, int paramInt1, int paramInt2)
@@ -322,7 +322,7 @@ public class PicPreDownloader
     if ((!(paramMessageRecord instanceof MessageForPic)) && (!(paramMessageRecord instanceof MessageForMixedMsg))) {
       return;
     }
-    ThreadManager.a().postDelayed(new gdz(this, paramMessageRecord, paramInt1, paramInt2, paramInt3), 100L);
+    ThreadManager.a().postDelayed(new gdy(this, paramMessageRecord, paramInt1, paramInt2, paramInt3), 100L);
   }
   
   public void a(String paramString)

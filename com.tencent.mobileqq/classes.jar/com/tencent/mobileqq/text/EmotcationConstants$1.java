@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.text;
 
-import bama;
 import java.io.File;
 
-public final class EmotcationConstants$1
+final class EmotcationConstants$1
   implements Runnable
 {
-  public EmotcationConstants$1(File paramFile1, File paramFile2, File paramFile3) {}
+  EmotcationConstants$1(File paramFile1, File paramFile2, File paramFile3) {}
   
   public void run()
   {
-    if (this.a.exists()) {
-      this.a.delete();
+    if (this.val$indexFile.exists()) {
+      this.val$indexFile.delete();
     }
-    if (this.b.exists()) {
-      this.b.delete();
+    if (this.val$emojiFile.exists()) {
+      this.val$emojiFile.delete();
     }
-    bama.a(this.c);
+    AppleEmojiManager.unzip(this.val$zipfile);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.EmotcationConstants.1
  * JD-Core Version:    0.7.0.1
  */

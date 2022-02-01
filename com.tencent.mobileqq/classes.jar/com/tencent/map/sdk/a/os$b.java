@@ -9,12 +9,18 @@ public final class os$b
   
   public final String toString()
   {
-    return "TraceInfo{id='" + this.b + '\'' + ", values=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder("TraceInfo{id='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", values=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.os.b
  * JD-Core Version:    0.7.0.1
  */

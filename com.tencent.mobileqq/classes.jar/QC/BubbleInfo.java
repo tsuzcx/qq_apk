@@ -9,9 +9,9 @@ public final class BubbleInfo
 {
   static ItemBase cache_item = new ItemBase();
   public String btn = "";
-  public int feeType;
-  public ItemBase item;
-  public int month;
+  public int feeType = 0;
+  public ItemBase item = null;
+  public int month = 0;
   public String msg = "";
   public String name = "";
   public String payUrl = "";
@@ -51,37 +51,45 @@ public final class BubbleInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.item != null) {
-      paramJceOutputStream.write(this.item, 0);
+    Object localObject = this.item;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.feeType, 1);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 2);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.payUrl != null) {
-      paramJceOutputStream.write(this.payUrl, 3);
+    localObject = this.payUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.type != null) {
-      paramJceOutputStream.write(this.type, 4);
+    localObject = this.type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.month, 5);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 6);
+    localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.btn != null) {
-      paramJceOutputStream.write(this.btn, 7);
+    localObject = this.btn;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 8);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.strPicUrl != null) {
-      paramJceOutputStream.write(this.strPicUrl, 9);
+    localObject = this.strPicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.BubbleInfo
  * JD-Core Version:    0.7.0.1
  */

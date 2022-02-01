@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/idg" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/m6p" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0dip" android:textColor="#ff222222" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kaa" />
+        <TextView android:textSize="13.5dip" android:textColor="#ff878b99" android:id="@id/mdr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="14.0dip" android:maxLines="1" android:maxLength="10" android:drawableRight="@drawable/common_arrow_right_selector" android:drawablePadding="2.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/m7c" android:layout_width="fill_parent" android:layout_height="132.0dip" android:overScrollMode="never" />
+    <View android:id="@id/kmm" android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</LinearLayout>

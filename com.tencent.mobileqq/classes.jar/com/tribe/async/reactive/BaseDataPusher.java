@@ -15,8 +15,9 @@ public class BaseDataPusher<T>
   public void cancel()
   {
     this.mIsCanceled = true;
-    if (this.mLastObserver != null) {
-      this.mLastObserver.onCancel();
+    Observer localObserver = this.mLastObserver;
+    if (localObserver != null) {
+      localObserver.onCancel();
     }
   }
   
@@ -27,7 +28,7 @@ public class BaseDataPusher<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.reactive.BaseDataPusher
  * JD-Core Version:    0.7.0.1
  */

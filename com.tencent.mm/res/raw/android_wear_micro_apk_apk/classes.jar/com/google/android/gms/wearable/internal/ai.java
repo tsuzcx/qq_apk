@@ -6,14 +6,14 @@ import android.os.Parcel;
 final class ai
   implements ag
 {
-  private IBinder KE;
+  private IBinder Mt;
   
   ai(IBinder paramIBinder)
   {
-    this.KE = paramIBinder;
+    this.Mt = paramIBinder;
   }
   
-  public final void ae(int paramInt1, int paramInt2)
+  public final void ag(int paramInt1, int paramInt2)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -22,7 +22,7 @@ final class ai
       localParcel1.writeInterfaceToken("com.google.android.gms.wearable.internal.IChannelStreamCallbacks");
       localParcel1.writeInt(paramInt1);
       localParcel1.writeInt(paramInt2);
-      this.KE.transact(2, localParcel1, localParcel2, 0);
+      this.Mt.transact(2, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -35,7 +35,7 @@ final class ai
   
   public final IBinder asBinder()
   {
-    return this.KE;
+    return this.Mt;
   }
 }
 

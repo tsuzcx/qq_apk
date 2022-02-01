@@ -1,13 +1,19 @@
 package com.tencent.mobileqq.dinifly;
 
-class DiniFlyAnimationView$1
-  implements LottieListener<LottieComposition>
+import com.tencent.mobileqq.dinifly.utils.Logger;
+import com.tencent.mobileqq.dinifly.utils.Utils;
+
+final class DiniFlyAnimationView$1
+  implements LottieListener<Throwable>
 {
-  DiniFlyAnimationView$1(DiniFlyAnimationView paramDiniFlyAnimationView) {}
-  
-  public void onResult(LottieComposition paramLottieComposition)
+  public void onResult(Throwable paramThrowable)
   {
-    this.this$0.setComposition(paramLottieComposition);
+    if (Utils.isNetworkException(paramThrowable))
+    {
+      Logger.warning("Unable to load composition.", paramThrowable);
+      return;
+    }
+    throw new IllegalStateException("Unable to parse composition", paramThrowable);
   }
 }
 

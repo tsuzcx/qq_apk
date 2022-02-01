@@ -8,28 +8,28 @@ import org.json.JSONObject;
 
 final class q
 {
-  private static final long bfI;
-  final String bfJ;
-  private final String bfK;
+  private static final long dDg;
+  final String dDh;
+  private final String dDi;
   private final long timestamp;
   
   static
   {
-    AppMethodBeat.i(108764);
-    bfI = TimeUnit.DAYS.toMillis(7L);
-    AppMethodBeat.o(108764);
+    AppMethodBeat.i(4200);
+    dDg = TimeUnit.DAYS.toMillis(7L);
+    AppMethodBeat.o(4200);
   }
   
   private q(String paramString1, String paramString2, long paramLong)
   {
-    this.bfJ = paramString1;
-    this.bfK = paramString2;
+    this.dDh = paramString1;
+    this.dDi = paramString2;
     this.timestamp = paramLong;
   }
   
   static String b(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(108762);
+    AppMethodBeat.i(4198);
     try
     {
       JSONObject localJSONObject = new JSONObject();
@@ -37,24 +37,24 @@ final class q
       localJSONObject.put("appVersion", paramString2);
       localJSONObject.put("timestamp", paramLong);
       paramString1 = localJSONObject.toString();
-      AppMethodBeat.o(108762);
+      AppMethodBeat.o(4198);
       return paramString1;
     }
     catch (JSONException paramString1)
     {
       paramString1 = String.valueOf(paramString1);
       new StringBuilder(String.valueOf(paramString1).length() + 24).append("Failed to encode token: ").append(paramString1);
-      AppMethodBeat.o(108762);
+      AppMethodBeat.o(4198);
     }
     return null;
   }
   
-  static q ba(String paramString)
+  static q dD(String paramString)
   {
-    AppMethodBeat.i(108761);
+    AppMethodBeat.i(4197);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(108761);
+      AppMethodBeat.o(4197);
       return null;
     }
     if (paramString.startsWith("{")) {
@@ -62,37 +62,37 @@ final class q
       {
         paramString = new JSONObject(paramString);
         paramString = new q(paramString.getString("token"), paramString.getString("appVersion"), paramString.getLong("timestamp"));
-        AppMethodBeat.o(108761);
+        AppMethodBeat.o(4197);
         return paramString;
       }
       catch (JSONException paramString)
       {
         paramString = String.valueOf(paramString);
         new StringBuilder(String.valueOf(paramString).length() + 23).append("Failed to parse token: ").append(paramString);
-        AppMethodBeat.o(108761);
+        AppMethodBeat.o(4197);
         return null;
       }
     }
     paramString = new q(paramString, null, 0L);
-    AppMethodBeat.o(108761);
+    AppMethodBeat.o(4197);
     return paramString;
   }
   
-  final boolean bb(String paramString)
+  final boolean dE(String paramString)
   {
-    AppMethodBeat.i(108763);
-    if ((System.currentTimeMillis() > this.timestamp + bfI) || (!paramString.equals(this.bfK)))
+    AppMethodBeat.i(4199);
+    if ((System.currentTimeMillis() > this.timestamp + dDg) || (!paramString.equals(this.dDi)))
     {
-      AppMethodBeat.o(108763);
+      AppMethodBeat.o(4199);
       return true;
     }
-    AppMethodBeat.o(108763);
+    AppMethodBeat.o(4199);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.firebase.iid.q
  * JD-Core Version:    0.7.0.1
  */

@@ -1,91 +1,99 @@
 package com.tencent.mobileqq.activity.history.link.search;
 
-import aieg;
 import android.os.Bundle;
 import android.os.Message;
-import bdhf;
-import bhsl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
+import com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.ArrayList;
 
-public class LinkMessageResultAdapter$1
+class LinkMessageResultAdapter$1
   implements Runnable
 {
-  public LinkMessageResultAdapter$1(aieg paramaieg, String paramString, int paramInt, long paramLong) {}
+  LinkMessageResultAdapter$1(LinkMessageResultAdapter paramLinkMessageResultAdapter, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageResultAdapter", 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("loadMessageResult, run(), keyword = ");
+      ((StringBuilder)???).append(this.a);
+      ((StringBuilder)???).append(", loadType = ");
+      ((StringBuilder)???).append(this.b);
+      QLog.i("LinkMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     ??? = null;
-    Object localObject2;
-    Object localObject4;
-    if (this.jdField_a_of_type_Int == 1)
+    int i = this.b;
+    boolean bool1 = true;
+    if (i == 1)
     {
-      ??? = this.this$0.a(aieg.a(this.this$0), this.jdField_a_of_type_JavaLangString);
-      bdhf.a(aieg.a(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-      localObject2 = new ArrayList();
-      localObject4 = aieg.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.i("LinkMessageResultAdapter", 2, "loadMessageResult, get: messageItems[] = " + localObject2);
-      }
+      ??? = this.this$0;
+      ??? = ((LinkMessageResultAdapter)???).a(LinkMessageResultAdapter.a((LinkMessageResultAdapter)???), this.a);
+      HistoryChatMsgSearchKeyUtil.a(LinkMessageResultAdapter.b(this.this$0).getCurrentAccountUin(), this.a);
+    }
+    else if (i == 2)
+    {
+      ??? = this.this$0;
+      ??? = ((LinkMessageResultAdapter)???).a(LinkMessageResultAdapter.c((LinkMessageResultAdapter)???), "");
+    }
+    Object localObject2 = new ArrayList();
+    Object localObject4 = LinkMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("loadMessageResult, get: messageItems[] = ");
+      ((StringBuilder)???).append(localObject2);
+      QLog.i("LinkMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     for (;;)
     {
       synchronized (this.this$0.a)
       {
-        if (aieg.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+        if (LinkMessageResultAdapter.d(this.this$0).equals(this.a))
         {
-          if (this.jdField_a_of_type_Int != 1) {
-            continue;
-          }
-          localaieg = this.this$0;
-          if (((ArrayList)localObject2).size() < 20)
+          i = this.b;
+          boolean bool2 = false;
+          LinkMessageResultAdapter localLinkMessageResultAdapter;
+          if (i == 1)
           {
-            aieg.a(localaieg, bool);
-            aieg.a(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = aieg.a(this.this$0).obtainMessage(2, localObject2);
+            localLinkMessageResultAdapter = this.this$0;
+            bool1 = bool2;
+            if (((ArrayList)localObject2).size() < 20) {
+              bool1 = true;
+            }
+            LinkMessageResultAdapter.a(localLinkMessageResultAdapter, bool1);
+            LinkMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)localObject4);
+            localObject2 = LinkMessageResultAdapter.e(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject4).putLong("searchSequence", this.c);
+            ((Bundle)localObject4).putString("searchKeyword", this.a);
             ((Message)localObject2).setData((Bundle)localObject4);
             ((Message)localObject2).sendToTarget();
           }
-        }
-        else
-        {
-          return;
-          if (this.jdField_a_of_type_Int != 2) {
-            break;
+          else if (this.b == 2)
+          {
+            localLinkMessageResultAdapter = this.this$0;
+            if (((ArrayList)localObject2).size() >= 20) {
+              break label468;
+            }
+            LinkMessageResultAdapter.b(localLinkMessageResultAdapter, bool1);
+            LinkMessageResultAdapter.b(this.this$0, (ChatHistorySearchData)localObject4);
+            localObject2 = LinkMessageResultAdapter.f(this.this$0).obtainMessage(2, localObject2);
+            ((Message)localObject2).arg1 = 2;
+            localObject4 = new Bundle();
+            ((Bundle)localObject4).putLong("searchSequence", this.c);
+            ((Bundle)localObject4).putString("searchKeyword", this.a);
+            ((Message)localObject2).setData((Bundle)localObject4);
           }
-          ??? = this.this$0.a(aieg.b(this.this$0), "");
-          break;
         }
-        bool = false;
-        continue;
-        if (this.jdField_a_of_type_Int != 2) {
-          continue;
-        }
-        aieg localaieg = this.this$0;
-        if (((ArrayList)localObject2).size() < 20)
-        {
-          bool = true;
-          aieg.b(localaieg, bool);
-          aieg.b(this.this$0, (ChatHistorySearchData)localObject4);
-          localObject2 = aieg.b(this.this$0).obtainMessage(2, localObject2);
-          ((Message)localObject2).arg1 = 2;
-          localObject4 = new Bundle();
-          ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-          ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
-          ((Message)localObject2).setData((Bundle)localObject4);
-        }
+        return;
       }
-      bool = false;
+      label468:
+      bool1 = false;
     }
   }
 }

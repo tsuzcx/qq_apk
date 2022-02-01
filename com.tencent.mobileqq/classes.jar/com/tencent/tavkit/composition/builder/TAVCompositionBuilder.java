@@ -1,6 +1,5 @@
 package com.tencent.tavkit.composition.builder;
 
-import android.support.annotation.NonNull;
 import com.tencent.tav.asset.Asset;
 import com.tencent.tav.core.AudioMix;
 import com.tencent.tav.core.AudioMixInputParameters;
@@ -19,7 +18,6 @@ import java.util.List;
 public class TAVCompositionBuilder
 {
   private static final String TAG = "TAVCompositionBuilder";
-  @NonNull
   private final BuilderModel builderModel;
   private boolean isAudioTracksMerge = true;
   private boolean isReloadChannels = true;
@@ -60,27 +58,39 @@ public class TAVCompositionBuilder
   
   private void reloadChannels()
   {
-    Iterator localIterator = this.builderModel.getVideoChannels().iterator();
-    while (localIterator.hasNext()) {
-      CompositionUtils.reloadVideoStartTimeWithTransitionableVideo((List)localIterator.next());
+    Object localObject = this.builderModel.getVideoChannels().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      CompositionUtils.reloadVideoStartTimeWithTransitionableVideo((List)((Iterator)localObject).next());
     }
-    Logger.longlogd("TAVCompositionBuilder", "buildComposition: reloadVideoChannels = " + this.builderModel.getVideoChannels());
-    localIterator = this.builderModel.getAudioChannels().iterator();
-    while (localIterator.hasNext()) {
-      CompositionUtils.reloadAudioStartTimeWithTransitionableAudio((List)localIterator.next());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("buildComposition: reloadVideoChannels = ");
+    ((StringBuilder)localObject).append(this.builderModel.getVideoChannels());
+    Logger.d("TAVCompositionBuilder", ((StringBuilder)localObject).toString());
+    localObject = this.builderModel.getAudioChannels().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      CompositionUtils.reloadAudioStartTimeWithTransitionableAudio((List)((Iterator)localObject).next());
     }
-    Logger.longlogd("TAVCompositionBuilder", "buildComposition: reloadAudioChannels = " + this.builderModel.getAudioChannels());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("buildComposition: reloadAudioChannels = ");
+    ((StringBuilder)localObject).append(this.builderModel.getAudioChannels());
+    Logger.d("TAVCompositionBuilder", ((StringBuilder)localObject).toString());
   }
   
   public TAVSource buildSource()
   {
-    Logger.longlogd("TAVCompositionBuilder", "buildSource: begin, tavComposition = " + this.builderModel.getTavComposition());
-    TAVSource localTAVSource = new TAVSource();
-    localTAVSource.setAsset(buildComposition());
-    localTAVSource.setVideoComposition(buildVideoComposition());
-    localTAVSource.setAudioMix(buildAudioMix());
-    Logger.longlogd("TAVCompositionBuilder", "buildSource: end, return source = " + localTAVSource);
-    return localTAVSource;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("buildSource: begin, tavComposition = ");
+    ((StringBuilder)localObject).append(this.builderModel.getTavComposition());
+    Logger.i("TAVCompositionBuilder", ((StringBuilder)localObject).toString());
+    localObject = new TAVSource();
+    ((TAVSource)localObject).setAsset(buildComposition());
+    ((TAVSource)localObject).setVideoComposition(buildVideoComposition());
+    ((TAVSource)localObject).setAudioMix(buildAudioMix());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("buildSource: end, return source = ");
+    localStringBuilder.append(localObject);
+    Logger.i("TAVCompositionBuilder", localStringBuilder.toString());
+    return localObject;
   }
   
   public void setAudioTracksMerge(boolean paramBoolean)
@@ -100,7 +110,7 @@ public class TAVCompositionBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.TAVCompositionBuilder
  * JD-Core Version:    0.7.0.1
  */

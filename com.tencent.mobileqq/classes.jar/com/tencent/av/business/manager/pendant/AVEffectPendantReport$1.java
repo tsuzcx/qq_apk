@@ -1,38 +1,42 @@
 package com.tencent.av.business.manager.pendant;
 
+import com.tencent.av.AVLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lek;
-import lkp;
 
-public final class AVEffectPendantReport$1
+final class AVEffectPendantReport$1
   implements Runnable
 {
   public void run()
   {
-    if ((lkp.a() == null) || (lkp.a().isEmpty()))
+    if ((AVEffectPendantReport.f() != null) && (!AVEffectPendantReport.f().isEmpty()))
     {
-      lkp.d();
+      AVEffectPendantReport.a(0);
+      AVEffectPendantReport.b(0);
+      Object localObject = AVEffectPendantReport.f().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        PendantItem localPendantItem = (PendantItem)((Iterator)localObject).next();
+        AVEffectPendantReport.g();
+        if (AVEffectPendantReport.a(localPendantItem)) {
+          AVEffectPendantReport.h();
+        }
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("refleshAndSetDownloadInfo()  mTotalCount = ");
+      ((StringBuilder)localObject).append(AVEffectPendantReport.i());
+      ((StringBuilder)localObject).append("  mDownloadCount = ");
+      ((StringBuilder)localObject).append(AVEffectPendantReport.j());
+      AVLog.printColorLog("AVEffectPendantReport", ((StringBuilder)localObject).toString());
+      AVEffectPendantReport.a();
       return;
     }
-    lkp.a(0);
-    lkp.b(0);
-    Iterator localIterator = lkp.a().iterator();
-    while (localIterator.hasNext())
-    {
-      PendantItem localPendantItem = (PendantItem)localIterator.next();
-      lkp.a();
-      if (lkp.a(localPendantItem)) {
-        lkp.b();
-      }
-    }
-    lek.c("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + lkp.c() + "  mDownloadCount = " + lkp.d());
-    lkp.a();
+    AVEffectPendantReport.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.AVEffectPendantReport.1
  * JD-Core Version:    0.7.0.1
  */

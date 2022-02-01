@@ -1,88 +1,111 @@
 package com.tencent.biz.videostory.video;
 
 import android.os.Build.VERSION;
+import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import yyw;
-import zao;
-import zaq;
 
 public class FrameVideoHelper
 {
-  private int jdField_a_of_type_Int = 80;
-  private final long jdField_a_of_type_Long;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<FrameVideoHelper.FrameBuffer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private zaq jdField_a_of_type_Zaq;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private long b;
-  private long c;
-  private long d = ((Long)yyw.a().a("SmartCutPicWidth", Long.valueOf(224L))).longValue();
-  private long e = ((Long)yyw.a().a("SmartCutPicSpacing", Long.valueOf(500L))).longValue();
+  private MediaCodecGLFrameFetcher a;
+  private ArrayList<FrameVideoHelper.FrameBuffer> b = new ArrayList();
+  private final String c;
+  private final long d;
+  private final long e;
   private long f;
-  private long g = ((Long)yyw.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
-  private long h;
-  private long i;
+  private long g;
+  private long h = ((Long)VSConfigManager.a().a("SmartCutPicWidth", Long.valueOf(224L))).longValue();
+  private long i = ((Long)VSConfigManager.a().a("SmartCutPicCount", Long.valueOf(10L))).longValue();
+  private long j = ((Long)VSConfigManager.a().a("SmartCutPicQuality_And", Long.valueOf(80L))).longValue();
+  private long k = ((Long)VSConfigManager.a().a("SmartCutPicMaxByte", Long.valueOf(90000L))).longValue();
+  private long l;
+  private long m = 0L;
+  private long n;
+  private volatile boolean o;
   
   public FrameVideoHelper(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.c = paramInt2;
-    long l = paramLong;
+    this.c = paramString;
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.d = paramLong;
+    long l1 = 60000L;
     if (paramLong > 60000L) {
-      l = 60000L;
+      paramLong = l1;
     }
-    this.jdField_a_of_type_Long = l;
+    this.e = paramLong;
   }
   
-  public long a()
+  private long a(long paramLong)
   {
-    return this.f;
+    long l2 = Math.min(paramLong + this.e, this.d);
+    long l3 = this.i;
+    long l1 = l2 / l3;
+    paramLong = l1;
+    if (l1 > 1000L) {
+      paramLong = (l2 - 1000L) / l3;
+    }
+    return paramLong;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Zaq != null) {
-      this.jdField_a_of_type_Zaq.a();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((MediaCodecGLFrameFetcher)localObject).a();
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    localObject = this.b;
+    if (localObject != null) {
+      ((ArrayList)localObject).clear();
     }
   }
   
-  public void a(long paramLong, zao paramzao)
+  public void a(long paramLong, FrameVideoHelper.GetFrameByteArrayListener paramGetFrameByteArrayListener)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    AEQLog.b("AEEditorMusicHelper", "FrameVideoHelper.start(), BEGIN");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FrameVideoHelper.start(), videoStart=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", videoDuration=");
+    localStringBuilder.append(this.d);
+    AEQLog.b("AEEditorMusicHelper", localStringBuilder.toString());
+    if (this.o) {
       return;
-      if (Build.VERSION.SDK_INT >= 16) {
-        break;
+    }
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      if (paramGetFrameByteArrayListener != null) {
+        paramGetFrameByteArrayListener.a(false, null, -1L);
       }
-    } while (paramzao == null);
-    paramzao.a(false, null, -1L);
-    return;
-    this.f = 0L;
-    this.i = 0L;
-    this.h = System.currentTimeMillis();
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManager.executeOnFileThread(new FrameVideoHelper.1(this, paramLong, paramzao));
+      return;
+    }
+    this.m = 0L;
+    this.n = 0L;
+    this.l = System.currentTimeMillis();
+    this.o = true;
+    ThreadManager.executeOnFileThread(new FrameVideoHelper.1(this, paramLong, paramGetFrameByteArrayListener));
+    AEQLog.b("AEEditorMusicHelper", "FrameVideoHelper.start(), END");
   }
   
-  public void a(zao paramzao)
+  public void a(FrameVideoHelper.GetFrameByteArrayListener paramGetFrameByteArrayListener)
   {
-    a(0L, paramzao);
+    a(0L, paramGetFrameByteArrayListener);
   }
   
   public long b()
   {
-    return this.i / 1000L;
+    return this.m;
+  }
+  
+  public long c()
+  {
+    return this.n / 1000L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.video.FrameVideoHelper
  * JD-Core Version:    0.7.0.1
  */

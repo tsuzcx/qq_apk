@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.ProfileCardBrowserActivity.ImageGalleryAdapter;
+import com.tencent.mobileqq.profile.view.CircularProgressBar;
 
 public class ger
-  implements Runnable
 {
-  public ger(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public CircularProgressBar a;
+  public ImageView b;
+  public ImageView c;
   
-  public void run()
-  {
-    new ProfileCardTemplate().a(this.a.b);
-  }
+  public ger(ProfileCardBrowserActivity.ImageGalleryAdapter paramImageGalleryAdapter) {}
 }
 
 

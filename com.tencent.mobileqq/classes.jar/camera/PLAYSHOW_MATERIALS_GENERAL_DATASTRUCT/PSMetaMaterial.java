@@ -10,15 +10,15 @@ public final class PSMetaMaterial
   extends JceStruct
 {
   static Map<String, String> cache_additionalFields = new HashMap();
-  public Map<String, String> additionalFields;
+  public Map<String, String> additionalFields = null;
   public String id = "";
   public String name = "";
   public String packageMd5 = "";
   public String packageUrl = "";
   public String thumbMd5 = "";
   public String thumbUrl = "";
-  public int type;
-  public int updateTime;
+  public int type = 0;
+  public int updateTime = 0;
   
   static
   {
@@ -55,34 +55,41 @@ public final class PSMetaMaterial
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 1);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.type, 2);
-    if (this.thumbUrl != null) {
-      paramJceOutputStream.write(this.thumbUrl, 3);
+    localObject = this.thumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.thumbMd5 != null) {
-      paramJceOutputStream.write(this.thumbMd5, 4);
+    localObject = this.thumbMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.packageUrl != null) {
-      paramJceOutputStream.write(this.packageUrl, 5);
+    localObject = this.packageUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.packageMd5 != null) {
-      paramJceOutputStream.write(this.packageMd5, 6);
+    localObject = this.packageMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.additionalFields != null) {
-      paramJceOutputStream.write(this.additionalFields, 7);
+    localObject = this.additionalFields;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
     paramJceOutputStream.write(this.updateTime, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSMetaMaterial
  * JD-Core Version:    0.7.0.1
  */

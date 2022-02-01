@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <TextView android:id="@id/iki" android:padding="0.0dip" android:text="@string/hy1" android:layout_weight="1.0" style="@style/n_" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cq" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6" android:minHeight="@dimen/m1">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:id="@id/dc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i6" android:text="@string/j1s" />
+                <TextView android:textSize="@dimen/l" android:textColor="@color/xo" android:gravity="left" android:id="@id/l31" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/ikg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/hlv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i6" android:text="@string/hxy" />
+                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/ikl" android:minHeight="@dimen/hy" android:hint="@string/hxt" style="@style/n8" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/hro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i6" android:text="@string/hxw" />
+                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/ikn" android:minHeight="@dimen/hy" android:hint="@string/hxs" style="@style/n8" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/blv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i6" android:text="@string/hxr" />
+                <com.tencent.mm.plugin.account.sdk.ImeEditText android:id="@id/ikm" android:minHeight="@dimen/hy" android:hint="@string/hxu" style="@style/n8" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6" android:text="@string/k_2" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/a1c" android:id="@id/eef" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f21" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

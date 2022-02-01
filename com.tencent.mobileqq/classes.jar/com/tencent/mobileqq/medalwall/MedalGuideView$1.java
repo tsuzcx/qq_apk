@@ -2,6 +2,7 @@ package com.tencent.mobileqq.medalwall;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 
 class MedalGuideView$1
   implements Runnable
@@ -12,7 +13,7 @@ class MedalGuideView$1
   {
     try
     {
-      ((MedalWallMng)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(250)).a(1, null);
+      ((MedalWallMng)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.MEDAL_WALL_MNG)).a(1, null);
       return;
     }
     catch (Exception localException)
@@ -23,7 +24,7 @@ class MedalGuideView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView.1
  * JD-Core Version:    0.7.0.1
  */

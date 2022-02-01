@@ -17,11 +17,7 @@ final class py$2
       paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, py.b(this.a), null);
       return paramEGL10;
     }
-    catch (OutOfMemoryError paramEGL10)
-    {
-      return null;
-    }
-    catch (IllegalArgumentException paramEGL10) {}
+    catch (IllegalArgumentException|OutOfMemoryError paramEGL10) {}
     return null;
   }
   
@@ -32,7 +28,7 @@ final class py$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.py.2
  * JD-Core Version:    0.7.0.1
  */

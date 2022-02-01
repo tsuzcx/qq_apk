@@ -1,69 +1,122 @@
 import android.content.Intent;
-import android.os.Parcelable;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileFileViewerActivity;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
+import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.activity.FMCloudActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class fqq
   implements View.OnClickListener
 {
-  public fqq(FMActivity paramFMActivity) {}
+  public fqq(FMCloudActivity paramFMCloudActivity) {}
+  
+  private void a(long paramLong)
+  {
+    int i = 5;
+    boolean bool = this.a.g();
+    switch ((int)paramLong)
+    {
+    case 4: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      return;
+    case 10: 
+      if (bool) {
+        i = 3;
+      }
+      if (!this.a.g()) {
+        break;
+      }
+    }
+    for (String str = "file_choose_aio";; str = "file_assistant_in")
+    {
+      FileManagerReporter.fileAssistantReportData localfileAssistantReportData = new FileManagerReporter.fileAssistantReportData();
+      localfileAssistantReportData.jdField_a_of_type_Int = i;
+      localfileAssistantReportData.jdField_a_of_type_JavaLangString = str;
+      FileManagerReporter.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), localfileAssistantReportData);
+      return;
+      if (bool)
+      {
+        i = 4;
+        break;
+      }
+      i = 6;
+      break;
+      if (bool) {
+        break;
+      }
+      i = 7;
+      break;
+      if (bool)
+      {
+        i = 6;
+        break;
+      }
+      i = 8;
+      break;
+      if (bool)
+      {
+        i = 7;
+        break;
+      }
+      i = 9;
+      break;
+      if (bool)
+      {
+        i = 2;
+        break;
+      }
+      i = 4;
+      break;
+    }
+  }
   
   public void onClick(View paramView)
   {
-    paramView = (RecentFileAdapter.ItemHolder)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().b();
-    FMActivity.a(this.a);
-    if (this.a.g()) {
-      if (FMDataCache.a(localFileManagerEntity))
-      {
-        FMDataCache.b(localFileManagerEntity);
-        this.a.f();
-        FMActivity.a(this.a);
-      }
+    if (!this.a.c()) {
+      QLog.i(FMCloudActivity.jdField_b_of_type_JavaLangString, 1, "click too fast , wait a minute.");
     }
     do
     {
       return;
-      FMDataCache.a(localFileManagerEntity);
-      break;
-      if (this.a.c()) {
-        break label102;
+      this.a.d();
+      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
+    } while (paramView.jdField_a_of_type_Int == 0);
+    long l = paramView.jdField_a_of_type_Int;
+    String str = paramView.jdField_a_of_type_JavaLangString;
+    Bundle localBundle = null;
+    paramView = localBundle;
+    switch ((int)l)
+    {
+    }
+    for (paramView = localBundle;; paramView = new Intent(this.a.getApplicationContext(), CloudFileBrowserActivity.class))
+    {
+      a(l);
+      if (paramView == null) {
+        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i(FMActivity.jdField_b_of_type_JavaLangString, 2, "click too fast , wait a minute.");
-    return;
-    label102:
-    this.a.d();
-    Object localObject = new FileManagerReporter.fileAssistantReportData();
-    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_JavaLangString = "file_viewer_in";
-    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Int = 73;
-    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_b_of_type_JavaLangString = FileUtil.a(localFileManagerEntity.fileName);
-    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Long = localFileManagerEntity.fileSize;
-    FileManagerReporter.a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), (FileManagerReporter.fileAssistantReportData)localObject);
-    localObject = new ForwardFileInfo();
-    ((ForwardFileInfo)localObject).c(localFileManagerEntity.cloudType);
-    ((ForwardFileInfo)localObject).a(10001);
-    ((ForwardFileInfo)localObject).b(paramView.b);
-    ((ForwardFileInfo)localObject).c(paramView.jdField_a_of_type_Long);
-    ((ForwardFileInfo)localObject).d(localFileManagerEntity.fileName);
-    ((ForwardFileInfo)localObject).d(localFileManagerEntity.fileSize);
-    ((ForwardFileInfo)localObject).b(localFileManagerEntity.Uuid);
-    paramView = new Intent(this.a.getApplicationContext(), QfileFileViewerActivity.class);
-    paramView.putExtra("fileinfo", (Parcelable)localObject);
-    this.a.startActivityForResult(paramView, 102);
+      try
+      {
+        localBundle = new Bundle();
+        localBundle.putLong("category", l);
+        localBundle.putString("categoryid", str);
+        paramView.putExtra("bundle", localBundle);
+        this.a.startActivityForResult(paramView, 101);
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+    }
   }
 }
 

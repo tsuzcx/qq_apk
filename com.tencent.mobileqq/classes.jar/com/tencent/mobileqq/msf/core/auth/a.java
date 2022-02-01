@@ -42,299 +42,211 @@ class a
   
   public static a b(String paramString)
   {
-    Object localObject4 = null;
-    String[] arrayOfString = null;
-    Object localObject3 = null;
-    Object localObject2 = arrayOfString;
-    Object localObject1;
     if (paramString != null)
     {
-      localObject1 = localObject4;
-      localObject2 = arrayOfString;
-    }
-    for (;;)
-    {
-      int i1;
       try
       {
-        if (paramString.length() > 0)
+        if (paramString.length() <= 0) {
+          break label796;
+        }
+        String[] arrayOfString = paramString.split(",");
+        int i2 = arrayOfString.length;
+        paramString = null;
+        int i1 = 0;
+        for (;;)
         {
-          localObject1 = localObject4;
-          arrayOfString = paramString.split(",");
-          localObject1 = localObject4;
-          int i2 = arrayOfString.length;
-          i1 = 0;
-          paramString = localObject3;
-          localObject2 = paramString;
-          if (i1 < i2)
+          Object localObject1 = paramString;
+          if (i1 >= i2) {
+            return localObject1;
+          }
+          Object localObject2 = arrayOfString[i1];
+          localObject1 = paramString;
+          try
           {
-            localObject2 = arrayOfString[i1];
-            localObject1 = paramString;
             if (((String)localObject2).length() > 0)
             {
-              localObject1 = paramString;
               localObject2 = ((String)localObject2).split("=");
               localObject1 = paramString;
-              if (localObject2.length == 2)
-              {
-                localObject1 = paramString;
+              if (localObject2.length == 2) {
                 if ("uin".equals(localObject2[0]))
                 {
+                  localObject1 = new a(localObject2[1]);
+                }
+                else if ("loginTime".equals(localObject2[0]))
+                {
+                  paramString.a(Long.parseLong(localObject2[1]));
                   localObject1 = paramString;
-                  paramString = new a(localObject2[1]);
+                }
+                else if ("active".equals(localObject2[0]))
+                {
+                  paramString.a(Boolean.parseBoolean(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("A1".equals(localObject2[0]))
+                {
+                  paramString.d(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("A2".equals(localObject2[0]))
+                {
+                  paramString.e(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("A3".equals(localObject2[0]))
+                {
+                  paramString.f(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("D1".equals(localObject2[0]))
+                {
+                  paramString.g(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("D2".equals(localObject2[0]))
+                {
+                  paramString.h(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("S2".equals(localObject2[0]))
+                {
+                  paramString.i(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("key".equals(localObject2[0]))
+                {
+                  paramString.j(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("sid".equals(localObject2[0]))
+                {
+                  localObject1 = paramString;
+                }
+                else if ("MiniA2".equals(localObject2[0]))
+                {
+                  paramString.l(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("MainAccount".equals(localObject2[0]))
+                {
+                  paramString.m(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("FaceId".equalsIgnoreCase(localObject2[0]))
+                {
+                  paramString.a(Integer.parseInt(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("Age".equalsIgnoreCase(localObject2[0]))
+                {
+                  paramString.b(Integer.parseInt(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("Gender".equalsIgnoreCase(localObject2[0]))
+                {
+                  paramString.c(Integer.parseInt(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("NickName".equals(localObject2[0]))
+                {
+                  paramString.n(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("sid".equals(localObject2[0]))
+                {
+                  localObject1 = paramString;
+                }
+                else if ("renewA2D2Time".equals(localObject2[0]))
+                {
+                  paramString.b(Long.parseLong(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("renewSidTime".equals(localObject2[0]))
+                {
+                  paramString.c(Long.parseLong(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("loginedProcess".equals(localObject2[0]))
+                {
+                  paramString.c(localObject2[1]);
+                  localObject1 = paramString;
+                }
+                else if ("vkey".equals(localObject2[0]))
+                {
+                  paramString.a(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("skey".equals(localObject2[0]))
+                {
+                  paramString.b(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("stweb".equals(localObject2[0]))
+                {
+                  paramString.c(HexUtil.hexStr2Bytes(localObject2[1]));
+                  localObject1 = paramString;
+                }
+                else if ("renewSkeyTime".equals(localObject2[0]))
+                {
+                  paramString.d(Long.parseLong(localObject2[1]));
+                  localObject1 = paramString;
                 }
                 else
                 {
                   localObject1 = paramString;
-                  if ("loginTime".equals(localObject2[0]))
+                  if ("renewWebviewKeyTime".equals(localObject2[0]))
                   {
+                    paramString.e(Long.parseLong(localObject2[1]));
                     localObject1 = paramString;
-                    paramString.a(Long.parseLong(localObject2[1]));
-                  }
-                  else
-                  {
-                    localObject1 = paramString;
-                    if ("active".equals(localObject2[0]))
-                    {
-                      localObject1 = paramString;
-                      paramString.a(Boolean.parseBoolean(localObject2[1]));
-                    }
-                    else
-                    {
-                      localObject1 = paramString;
-                      if ("A1".equals(localObject2[0]))
-                      {
-                        localObject1 = paramString;
-                        paramString.d(HexUtil.hexStr2Bytes(localObject2[1]));
-                      }
-                      else
-                      {
-                        localObject1 = paramString;
-                        if ("A2".equals(localObject2[0]))
-                        {
-                          localObject1 = paramString;
-                          paramString.e(HexUtil.hexStr2Bytes(localObject2[1]));
-                        }
-                        else
-                        {
-                          localObject1 = paramString;
-                          if ("A3".equals(localObject2[0]))
-                          {
-                            localObject1 = paramString;
-                            paramString.f(HexUtil.hexStr2Bytes(localObject2[1]));
-                          }
-                          else
-                          {
-                            localObject1 = paramString;
-                            if ("D1".equals(localObject2[0]))
-                            {
-                              localObject1 = paramString;
-                              paramString.g(HexUtil.hexStr2Bytes(localObject2[1]));
-                            }
-                            else
-                            {
-                              localObject1 = paramString;
-                              if ("D2".equals(localObject2[0]))
-                              {
-                                localObject1 = paramString;
-                                paramString.h(HexUtil.hexStr2Bytes(localObject2[1]));
-                              }
-                              else
-                              {
-                                localObject1 = paramString;
-                                if ("S2".equals(localObject2[0]))
-                                {
-                                  localObject1 = paramString;
-                                  paramString.i(HexUtil.hexStr2Bytes(localObject2[1]));
-                                }
-                                else
-                                {
-                                  localObject1 = paramString;
-                                  if ("key".equals(localObject2[0]))
-                                  {
-                                    localObject1 = paramString;
-                                    paramString.j(HexUtil.hexStr2Bytes(localObject2[1]));
-                                  }
-                                  else
-                                  {
-                                    localObject1 = paramString;
-                                    if (!"sid".equals(localObject2[0]))
-                                    {
-                                      localObject1 = paramString;
-                                      if ("MiniA2".equals(localObject2[0]))
-                                      {
-                                        localObject1 = paramString;
-                                        paramString.l(HexUtil.hexStr2Bytes(localObject2[1]));
-                                      }
-                                      else
-                                      {
-                                        localObject1 = paramString;
-                                        if ("MainAccount".equals(localObject2[0]))
-                                        {
-                                          localObject1 = paramString;
-                                          paramString.m(HexUtil.hexStr2Bytes(localObject2[1]));
-                                        }
-                                        else
-                                        {
-                                          localObject1 = paramString;
-                                          if ("FaceId".equalsIgnoreCase(localObject2[0]))
-                                          {
-                                            localObject1 = paramString;
-                                            paramString.a(Integer.parseInt(localObject2[1]));
-                                          }
-                                          else
-                                          {
-                                            localObject1 = paramString;
-                                            if ("Age".equalsIgnoreCase(localObject2[0]))
-                                            {
-                                              localObject1 = paramString;
-                                              paramString.b(Integer.parseInt(localObject2[1]));
-                                            }
-                                            else
-                                            {
-                                              localObject1 = paramString;
-                                              if ("Gender".equalsIgnoreCase(localObject2[0]))
-                                              {
-                                                localObject1 = paramString;
-                                                paramString.c(Integer.parseInt(localObject2[1]));
-                                              }
-                                              else
-                                              {
-                                                localObject1 = paramString;
-                                                if ("NickName".equals(localObject2[0]))
-                                                {
-                                                  localObject1 = paramString;
-                                                  paramString.n(HexUtil.hexStr2Bytes(localObject2[1]));
-                                                }
-                                                else
-                                                {
-                                                  localObject1 = paramString;
-                                                  if (!"sid".equals(localObject2[0]))
-                                                  {
-                                                    localObject1 = paramString;
-                                                    if ("renewA2D2Time".equals(localObject2[0]))
-                                                    {
-                                                      localObject1 = paramString;
-                                                      paramString.b(Long.parseLong(localObject2[1]));
-                                                    }
-                                                    else
-                                                    {
-                                                      localObject1 = paramString;
-                                                      if ("renewSidTime".equals(localObject2[0]))
-                                                      {
-                                                        localObject1 = paramString;
-                                                        paramString.c(Long.parseLong(localObject2[1]));
-                                                      }
-                                                      else
-                                                      {
-                                                        localObject1 = paramString;
-                                                        if ("loginedProcess".equals(localObject2[0]))
-                                                        {
-                                                          localObject1 = paramString;
-                                                          paramString.c(localObject2[1]);
-                                                        }
-                                                        else
-                                                        {
-                                                          localObject1 = paramString;
-                                                          if ("vkey".equals(localObject2[0]))
-                                                          {
-                                                            localObject1 = paramString;
-                                                            paramString.a(HexUtil.hexStr2Bytes(localObject2[1]));
-                                                          }
-                                                          else
-                                                          {
-                                                            localObject1 = paramString;
-                                                            if ("skey".equals(localObject2[0]))
-                                                            {
-                                                              localObject1 = paramString;
-                                                              paramString.b(HexUtil.hexStr2Bytes(localObject2[1]));
-                                                            }
-                                                            else
-                                                            {
-                                                              localObject1 = paramString;
-                                                              if ("stweb".equals(localObject2[0]))
-                                                              {
-                                                                localObject1 = paramString;
-                                                                paramString.c(HexUtil.hexStr2Bytes(localObject2[1]));
-                                                              }
-                                                              else
-                                                              {
-                                                                localObject1 = paramString;
-                                                                if ("renewSkeyTime".equals(localObject2[0]))
-                                                                {
-                                                                  localObject1 = paramString;
-                                                                  paramString.d(Long.parseLong(localObject2[1]));
-                                                                }
-                                                                else
-                                                                {
-                                                                  localObject1 = paramString;
-                                                                  if ("renewWebviewKeyTime".equals(localObject2[0]))
-                                                                  {
-                                                                    localObject1 = paramString;
-                                                                    paramString.e(Long.parseLong(localObject2[1]));
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
                   }
                 }
               }
             }
+            i1 += 1;
+            paramString = (String)localObject1;
           }
+          catch (Exception localException1) {}
         }
+        QLog.e("MSF.C.Account", 2, "parse account error", localException2);
       }
-      catch (Exception paramString)
+      catch (Exception localException2)
       {
-        QLog.e("MSF.C.Account", 2, "parse account error", paramString);
-        localObject2 = localObject1;
+        paramString = null;
       }
-      return localObject2;
-      i1 += 1;
+      return paramString;
     }
+    label796:
+    a locala = null;
+    return locala;
   }
   
   public long A()
   {
-    if (this.z == 0L) {
-      return this.u;
+    long l2 = this.z;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = this.u;
     }
-    return this.z;
+    return l1;
   }
   
   public long B()
   {
-    if (this.A == 0L) {
-      return this.u;
+    long l2 = this.A;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = this.u;
     }
-    return this.A;
+    return l1;
   }
   
   public long C()
   {
-    if (this.B == 0L) {
-      return this.u;
+    long l2 = this.B;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = this.u;
     }
-    return this.B;
+    return l1;
   }
   
   public void a(int paramInt)
@@ -555,58 +467,96 @@ class a
   public String p()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(",uin=").append(this.c);
-    if (m() > 0L) {
-      localStringBuilder.append(",loginTime=").append(m());
+    localStringBuilder.append(",uin=");
+    localStringBuilder.append(this.c);
+    if (m() > 0L)
+    {
+      localStringBuilder.append(",loginTime=");
+      localStringBuilder.append(m());
     }
-    localStringBuilder.append(",active=").append(this.v);
-    if ((e() != null) && (e().length > 0)) {
-      localStringBuilder.append(",A1=").append(HexUtil.bytes2HexStr(e()));
+    localStringBuilder.append(",active=");
+    localStringBuilder.append(this.v);
+    if ((e() != null) && (e().length > 0))
+    {
+      localStringBuilder.append(",A1=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(e()));
     }
-    if ((f() != null) && (f().length > 0)) {
-      localStringBuilder.append(",A2=").append(HexUtil.bytes2HexStr(f()));
+    if ((f() != null) && (f().length > 0))
+    {
+      localStringBuilder.append(",A2=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(f()));
     }
-    if ((g() != null) && (g().length > 0)) {
-      localStringBuilder.append(",A3=").append(HexUtil.bytes2HexStr(g()));
+    if ((g() != null) && (g().length > 0))
+    {
+      localStringBuilder.append(",A3=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(g()));
     }
-    if ((h() != null) && (h().length > 0)) {
-      localStringBuilder.append(",D1=").append(HexUtil.bytes2HexStr(h()));
+    if ((h() != null) && (h().length > 0))
+    {
+      localStringBuilder.append(",D1=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(h()));
     }
-    if ((i() != null) && (i().length > 0)) {
-      localStringBuilder.append(",D2=").append(HexUtil.bytes2HexStr(i()));
+    if ((i() != null) && (i().length > 0))
+    {
+      localStringBuilder.append(",D2=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(i()));
     }
-    if ((j() != null) && (j().length > 0)) {
-      localStringBuilder.append(",S2=").append(HexUtil.bytes2HexStr(j()));
+    if ((j() != null) && (j().length > 0))
+    {
+      localStringBuilder.append(",S2=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(j()));
     }
-    if ((k() != null) && (k().length > 0)) {
-      localStringBuilder.append(",key=").append(HexUtil.bytes2HexStr(k()));
+    if ((k() != null) && (k().length > 0))
+    {
+      localStringBuilder.append(",key=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(k()));
     }
-    if ((q() != null) && (q().length > 0)) {
-      localStringBuilder.append(",MiniA2=").append(HexUtil.bytes2HexStr(q()));
+    if ((q() != null) && (q().length > 0))
+    {
+      localStringBuilder.append(",MiniA2=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(q()));
     }
-    if ((r() != null) && (r().length > 0)) {
-      localStringBuilder.append(",MainAccount=").append(HexUtil.bytes2HexStr(r()));
+    if ((r() != null) && (r().length > 0))
+    {
+      localStringBuilder.append(",MainAccount=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(r()));
     }
-    if ((a() != null) && (a().length > 0)) {
-      localStringBuilder.append(",vkey=").append(HexUtil.bytes2HexStr(a()));
+    if ((a() != null) && (a().length > 0))
+    {
+      localStringBuilder.append(",vkey=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(a()));
     }
-    if ((b() != null) && (b().length > 0)) {
-      localStringBuilder.append(",skey=").append(HexUtil.bytes2HexStr(b()));
+    if ((b() != null) && (b().length > 0))
+    {
+      localStringBuilder.append(",skey=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(b()));
     }
-    if ((c() != null) && (c().length > 0)) {
-      localStringBuilder.append(",stweb=").append(HexUtil.bytes2HexStr(c()));
+    if ((c() != null) && (c().length > 0))
+    {
+      localStringBuilder.append(",stweb=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(c()));
     }
-    localStringBuilder.append(",FaceId=").append(s());
-    localStringBuilder.append(",Age=").append(t());
-    localStringBuilder.append(",Gender=").append(u());
-    if ((v() != null) && (v().length > 0)) {
-      localStringBuilder.append(",NickName=").append(HexUtil.bytes2HexStr(v()));
+    localStringBuilder.append(",FaceId=");
+    localStringBuilder.append(s());
+    localStringBuilder.append(",Age=");
+    localStringBuilder.append(t());
+    localStringBuilder.append(",Gender=");
+    localStringBuilder.append(u());
+    if ((v() != null) && (v().length > 0))
+    {
+      localStringBuilder.append(",NickName=");
+      localStringBuilder.append(HexUtil.bytes2HexStr(v()));
     }
-    localStringBuilder.append(",renewA2D2Time=").append(z());
-    localStringBuilder.append(",renewSidTime=").append(A());
-    localStringBuilder.append(",renewSkeyTime=").append(B());
-    localStringBuilder.append(",renewWebviewKeyTime=").append(C());
-    localStringBuilder.append(",loginedProcess=").append(this.x);
+    localStringBuilder.append(",renewA2D2Time=");
+    localStringBuilder.append(z());
+    localStringBuilder.append(",renewSidTime=");
+    localStringBuilder.append(A());
+    localStringBuilder.append(",renewSkeyTime=");
+    localStringBuilder.append(B());
+    localStringBuilder.append(",renewWebviewKeyTime=");
+    localStringBuilder.append(C());
+    localStringBuilder.append(",loginedProcess=");
+    localStringBuilder.append(this.x);
     return localStringBuilder.toString();
   }
   
@@ -657,15 +607,17 @@ class a
   
   public long z()
   {
-    if (this.y == 0L) {
-      return this.u;
+    long l2 = this.y;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = this.u;
     }
-    return this.y;
+    return l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.a
  * JD-Core Version:    0.7.0.1
  */

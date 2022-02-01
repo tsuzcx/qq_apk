@@ -15,20 +15,25 @@ final class PopupDialog$1
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    if (paramInt == 0) {
-      if (this.a != null) {
-        this.a.onClick(null, paramInt);
+    if (paramInt == 0)
+    {
+      paramBundle = this.a;
+      if (paramBundle != null) {
+        paramBundle.onClick(null, paramInt);
       }
     }
-    while ((paramInt != 1) || (this.b == null)) {
-      return;
+    else if (paramInt == 1)
+    {
+      paramBundle = this.b;
+      if (paramBundle != null) {
+        paramBundle.onClick(null, paramInt);
+      }
     }
-    this.b.onClick(null, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialog.1
  * JD-Core Version:    0.7.0.1
  */

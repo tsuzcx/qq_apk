@@ -11,14 +11,14 @@ final class IPCallShareCouponCardUI$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(22292);
-    this.nVC.finish();
-    AppMethodBeat.o(22292);
+    AppMethodBeat.i(25912);
+    this.JPm.finish();
+    AppMethodBeat.o(25912);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallShareCouponCardUI.10
  * JD-Core Version:    0.7.0.1
  */

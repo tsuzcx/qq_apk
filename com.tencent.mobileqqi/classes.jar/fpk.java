@@ -1,13 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
 
 public class fpk
-  implements Runnable
+  implements View.OnClickListener
 {
   public fpk(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.b = true;
+    FMDataCache.b();
+    this.a.setResult(5);
+    this.a.finish();
   }
 }
 

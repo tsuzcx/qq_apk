@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.aeeditor.module.topbar.AEEditorClipPageTopBar android:id="@id/mkv" android:layout_width="fill_parent" android:layout_height="44.0dip" />
+    <FrameLayout android:id="@id/ms8" android:background="@color/l4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/nrh" android:layout_below="@id/mkv" />
+    <RelativeLayout android:id="@id/nrh" android:background="@color/l4" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_above="@id/mh8">
+        <ImageView android:id="@id/nrf" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="60.0dip" android:src="@drawable/hmh" android:layout_toLeftOf="@id/nre" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/nre" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/hl6" android:scaleType="fitXY" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/nrg" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="60.0dip" android:src="@drawable/hs2" android:layout_toRightOf="@id/nre" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/mh8" android:background="@color/l5" android:paddingTop="10.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <android.support.v7.widget.RecyclerView android:id="@id/o4t" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/mku" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="20.0dip" android:text="下一步" android:layout_alignParentRight="true" style="@style/hz" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

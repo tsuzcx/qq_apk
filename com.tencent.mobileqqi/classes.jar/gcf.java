@@ -1,27 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
 import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
 public class gcf
-  implements TextWatcher
+  implements Runnable
 {
-  public gcf(RoamSearchDialog paramRoamSearchDialog) {}
+  public gcf(RoamSearchDialog paramRoamSearchDialog, String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    if (this.a.a.getText().toString().trim().length() == 0)
-    {
-      this.a.findViewById(2131233088).setVisibility(8);
-      return;
-    }
-    this.a.findViewById(2131233088).setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

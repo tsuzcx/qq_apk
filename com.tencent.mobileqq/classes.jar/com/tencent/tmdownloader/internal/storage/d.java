@@ -28,15 +28,14 @@ public class d
   
   public static String a(Context paramContext)
   {
-    String str = "";
     try
     {
-      File localFile = paramContext.getExternalCacheDir();
-      paramContext = str;
-      if (localFile != null) {
-        paramContext = localFile.getParent();
+      paramContext = paramContext.getExternalCacheDir();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getParent();
+        return paramContext;
       }
-      return paramContext;
     }
     catch (Exception paramContext)
     {
@@ -47,43 +46,65 @@ public class d
   
   public static String a(String paramString)
   {
-    if (paramString == null) {}
-    String str;
-    do
-    {
+    if (paramString == null) {
       return null;
-      str = b();
-      Log.i("TMAssistantFile", "getSaveFilePath rootDirString=" + str);
-    } while (str == null);
-    return str + File.separator + paramString;
+    }
+    String str = b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getSaveFilePath rootDirString=");
+    localStringBuilder.append(str);
+    Log.i("TMAssistantFile", localStringBuilder.toString());
+    if (str == null) {
+      return null;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static String b()
   {
-    Object localObject = GlobalUtil.getInstance().getContext();
-    if (localObject == null) {
+    Object localObject2 = GlobalUtil.getInstance().getContext();
+    if (localObject2 == null) {
       return null;
     }
     boolean bool = c();
-    String str = a((Context)localObject);
-    b.a("TMAssistantFile", "hasExternalStorage=" + bool + ", externalPath=" + str);
-    if ((bool) && (!TextUtils.isEmpty(str)))
+    Object localObject1 = a((Context)localObject2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hasExternalStorage=");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", externalPath=");
+    localStringBuilder.append((String)localObject1);
+    b.a("TMAssistantFile", localStringBuilder.toString());
+    if ((bool) && (!TextUtils.isEmpty((CharSequence)localObject1)))
     {
-      localObject = ((Context)localObject).getPackageName();
-      localObject = "/tencent/TMAssistantSDK/Download/" + (String)localObject;
-      return str + (String)localObject;
+      localObject2 = ((Context)localObject2).getPackageName();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("/tencent/TMAssistantSDK/Download/");
+      localStringBuilder.append((String)localObject2);
+      localObject2 = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append((String)localObject2);
+      return localStringBuilder.toString();
     }
-    return ((Context)localObject).getFilesDir().getAbsolutePath() + "/TMAssistantSDK/Download";
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(((Context)localObject2).getFilesDir().getAbsolutePath());
+    ((StringBuilder)localObject1).append("/TMAssistantSDK/Download");
+    return ((StringBuilder)localObject1).toString();
   }
   
   public static String b(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return null;
-      paramString = b();
-    } while (paramString == null);
+    }
+    paramString = b();
+    if (paramString == null) {
+      return null;
+    }
     return paramString;
   }
   
@@ -94,57 +115,62 @@ public class d
       boolean bool = "mounted".equals(Environment.getExternalStorageState());
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label11:
+      break label11;
+    }
     return false;
   }
   
   public long a()
   {
-    long l = 0L;
     Object localObject = a(this.b);
     if (localObject != null)
     {
       localObject = new File((String)localObject);
-      if (((File)localObject).exists()) {
-        break label82;
-      }
-      localObject = c(this.a);
-      if (localObject != null)
+      if (!((File)localObject).exists())
       {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          break label71;
+        localObject = c(this.a);
+        if (localObject != null)
+        {
+          localObject = new File((String)localObject);
+          if (!((File)localObject).exists()) {
+            this.e = 0L;
+          } else {
+            this.e = ((File)localObject).length();
+          }
         }
-        this.e = 0L;
       }
+      else
+      {
+        this.e = ((File)localObject).length();
+      }
+      return this.e;
     }
-    for (;;)
-    {
-      l = this.e;
-      return l;
-      label71:
-      this.e = ((File)localObject).length();
-      continue;
-      label82:
-      this.e = ((File)localObject).length();
-    }
+    return 0L;
   }
   
   public String c(String paramString)
   {
-    if (paramString == null) {}
-    String str;
-    do
-    {
+    if (paramString == null) {
       return null;
-      str = b();
-    } while (str == null);
-    return str + "/.tmp/" + paramString + ".tmp";
+    }
+    String str = b();
+    if (str == null) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("/.tmp/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".tmp");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.d
  * JD-Core Version:    0.7.0.1
  */

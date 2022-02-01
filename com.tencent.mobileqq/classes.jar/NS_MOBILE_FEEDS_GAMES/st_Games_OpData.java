@@ -4,15 +4,16 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class st_Games_OpData
   extends JceStruct
 {
   static ArrayList<Long> cache_vcDataSec = new ArrayList();
   public String uBattleNickName = "";
-  public long uBattleuin;
-  public long uOpuin;
-  public ArrayList<Long> vcDataSec;
+  public long uBattleuin = 0L;
+  public long uOpuin = 0L;
+  public ArrayList<Long> vcDataSec = null;
   
   static
   {
@@ -40,18 +41,20 @@ public final class st_Games_OpData
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uOpuin, 0);
-    if (this.vcDataSec != null) {
-      paramJceOutputStream.write(this.vcDataSec, 1);
+    Object localObject = this.vcDataSec;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.uBattleuin, 2);
-    if (this.uBattleNickName != null) {
-      paramJceOutputStream.write(this.uBattleNickName, 3);
+    localObject = this.uBattleNickName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS_GAMES.st_Games_OpData
  * JD-Core Version:    0.7.0.1
  */

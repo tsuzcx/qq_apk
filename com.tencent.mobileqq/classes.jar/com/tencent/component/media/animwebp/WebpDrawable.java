@@ -67,7 +67,8 @@ public class WebpDrawable
   
   public void draw(@NonNull Canvas paramCanvas)
   {
-    if ((this.currentBitmap != null) && (!this.currentBitmap.isRecycled()))
+    Bitmap localBitmap = this.currentBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       paramCanvas.drawBitmap(this.currentBitmap, 0.0F, 0.0F, (Paint)null);
       if (this.running.get()) {
@@ -96,16 +97,18 @@ public class WebpDrawable
   
   public int getIntrinsicHeight()
   {
-    if (this.globalWebPInfo != null) {
-      return this.globalWebPInfo.getCanvasHeight();
+    AnimWebPInfo localAnimWebPInfo = this.globalWebPInfo;
+    if (localAnimWebPInfo != null) {
+      return localAnimWebPInfo.getCanvasHeight();
     }
     return 480;
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.globalWebPInfo != null) {
-      return this.globalWebPInfo.getCanvasWidth();
+    AnimWebPInfo localAnimWebPInfo = this.globalWebPInfo;
+    if (localAnimWebPInfo != null) {
+      return localAnimWebPInfo.getCanvasWidth();
     }
     return 270;
   }
@@ -144,30 +147,29 @@ public class WebpDrawable
         this.mExecutor.schedule(this, 200L, TimeUnit.MILLISECONDS);
         return;
       }
+      if (this.webPNative != null)
+      {
+        AnimWebPInfo localAnimWebPInfo = this.webPNative.nextFrame();
+        if (localAnimWebPInfo != null)
+        {
+          ByteBuffer localByteBuffer = this.webPNative.getCurrentFrameByteBuffer();
+          localByteBuffer.position(0);
+          localByteBuffer.limit(localAnimWebPInfo.getCanvasWidth() * localAnimWebPInfo.getCanvasHeight() * 4);
+          this.currentBitmap.copyPixelsFromBuffer(localByteBuffer);
+          this.delay = localAnimWebPInfo.getDurationMillis();
+          if (this.delay == 0) {
+            this.delay = 100;
+          }
+          this.mainHandler.post(this.runnable);
+        }
+        else
+        {
+          ImageManagerLog.e("AnimWebPDrawable", "webp getNextFrame error");
+        }
+      }
+      return;
     }
     finally {}
-    if (this.webPNative != null)
-    {
-      AnimWebPInfo localAnimWebPInfo = this.webPNative.nextFrame();
-      if (localAnimWebPInfo == null) {
-        break label245;
-      }
-      ByteBuffer localByteBuffer = this.webPNative.getCurrentFrameByteBuffer();
-      localByteBuffer.position(0);
-      localByteBuffer.limit(localAnimWebPInfo.getCanvasWidth() * localAnimWebPInfo.getCanvasHeight() * 4);
-      this.currentBitmap.copyPixelsFromBuffer(localByteBuffer);
-      this.delay = localAnimWebPInfo.getDurationMillis();
-      if (this.delay == 0) {
-        this.delay = 100;
-      }
-      this.mainHandler.post(this.runnable);
-    }
-    for (;;)
-    {
-      return;
-      label245:
-      ImageManagerLog.e("AnimWebPDrawable", "webp getNextFrame error");
-    }
   }
   
   public void setAlpha(int paramInt) {}
@@ -178,12 +180,10 @@ public class WebpDrawable
   {
     if (paramBoolean1) {
       start();
-    }
-    for (;;)
-    {
-      return super.setVisible(paramBoolean1, paramBoolean2);
+    } else {
       stop();
     }
+    return super.setVisible(paramBoolean1, paramBoolean2);
   }
   
   public void start()
@@ -222,7 +222,7 @@ public class WebpDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.animwebp.WebpDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,47 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import anwm;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class BubbleDiyFetcher$2
+class BubbleDiyFetcher$2
   implements Runnable
 {
-  public BubbleDiyFetcher$2(anwm paramanwm, QQAppInterface paramQQAppInterface) {}
+  BubbleDiyFetcher$2(BubbleDiyFetcher paramBubbleDiyFetcher, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    List localList = this.a.getEntityManagerFactory().createEntityManager().a(BubbleDiyEntity.class, true, null, null, null, null, null, " 20 ");
+    List localList = this.a.getEntityManagerFactory().createEntityManager().query(BubbleDiyEntity.class, true, null, null, null, null, null, " 20 ");
     if ((localList != null) && (localList.size() > 0))
     {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = localList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)localIterator.next();
+        BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)((Iterator)localObject).next();
         if (!TextUtils.isEmpty(localBubbleDiyEntity.uinAndDiyId))
         {
-          this.this$0.a.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
-          this.this$0.b.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
+          this.this$0.c.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
+          this.this$0.d.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleDiyFetcher", 2, "initCacheFromDB, size: " + localList.size());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initCacheFromDB, size: ");
+        ((StringBuilder)localObject).append(localList.size());
+        QLog.i("BubbleDiyFetcher", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher.2
  * JD-Core Version:    0.7.0.1
  */

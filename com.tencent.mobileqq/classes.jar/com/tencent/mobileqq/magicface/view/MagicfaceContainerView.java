@@ -6,16 +6,14 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import atzg;
-import atzh;
 
 public class MagicfaceContainerView
   extends RelativeLayout
 {
-  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new atzg(this);
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  public atzh a;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  MagicfaceContainerView.MagicfaceGestureListener b;
+  GestureDetector.SimpleOnGestureListener c = new MagicfaceContainerView.1(this);
+  GestureDetector d;
   
   public MagicfaceContainerView(Context paramContext)
   {
@@ -25,12 +23,12 @@ public class MagicfaceContainerView
   public MagicfaceContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+    this.d = new GestureDetector(this.c);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -38,27 +36,27 @@ public class MagicfaceContainerView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      this.d.onTouchEvent(paramMotionEvent);
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setMagicfaceGestureListener(atzh paramatzh)
+  public void setMagicfaceGestureListener(MagicfaceContainerView.MagicfaceGestureListener paramMagicfaceGestureListener)
   {
-    this.jdField_a_of_type_Atzh = paramatzh;
+    this.b = paramMagicfaceGestureListener;
   }
   
   public void setTouchEffect(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceContainerView
  * JD-Core Version:    0.7.0.1
  */

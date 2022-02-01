@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.share;
 
 import android.content.Context;
 import android.view.Window;
-import bety;
 import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniProgramOpenSdkUtil$1
@@ -17,23 +17,26 @@ final class MiniProgramOpenSdkUtil$1
     {
       if (((this.val$context instanceof JumpActivity)) && (!((JumpActivity)this.val$context).isFinishing()))
       {
-        this.val$outInfo.progressDialog = new bety(this.val$context, 0, 2131558667, 17);
-        this.val$outInfo.progressDialog.a(this.val$context.getString(2131690291));
+        this.val$outInfo.progressDialog = new QQProgressDialog(this.val$context, 0, 2131624257, 17);
+        this.val$outInfo.progressDialog.a(this.val$context.getString(2131887062));
         this.val$outInfo.progressDialog.getWindow().setDimAmount(0.0F);
         this.val$outInfo.progressDialog.setCanceledOnTouchOutside(true);
         this.val$outInfo.progressDialog.show();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("MiniProgramOpenSdkUtil", 1, "forwardShare showLoadingRunnable has Exception" + localThrowable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("forwardShare showLoadingRunnable has Exception");
+      localStringBuilder.append(localThrowable.getMessage());
+      QLog.e("MiniProgramOpenSdkUtil", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil.1
  * JD-Core Version:    0.7.0.1
  */

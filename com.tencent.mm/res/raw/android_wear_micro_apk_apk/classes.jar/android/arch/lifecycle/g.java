@@ -1,25 +1,12 @@
 package android.arch.lifecycle;
 
-final class g
+public enum g
 {
-  a E;
-  d u;
+  private g() {}
   
-  final void b(e parame, c paramc)
+  public final boolean a(g paramg)
   {
-    d locald2 = f.b(paramc);
-    d locald3 = this.u;
-    d locald1 = locald3;
-    if (locald2 != null)
-    {
-      locald1 = locald3;
-      if (locald2.compareTo(locald3) < 0) {
-        locald1 = locald2;
-      }
-    }
-    this.u = locald1;
-    this.E.a(parame, paramc);
-    this.u = locald2;
+    return compareTo(paramg) >= 0;
   }
 }
 

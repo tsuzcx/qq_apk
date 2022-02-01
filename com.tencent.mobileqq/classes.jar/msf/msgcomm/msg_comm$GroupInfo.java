@@ -23,15 +23,17 @@ public final class msg_comm$GroupInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 66 }, new String[] { "group_code", "group_type", "group_info_seq", "group_card", "group_rank", "group_level", "group_card_type", "group_name" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3 }, GroupInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 66 }, new String[] { "group_code", "group_type", "group_info_seq", "group_card", "group_rank", "group_level", "group_card_type", "group_name" }, new Object[] { localLong, localInteger, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localByteStringMicro3 }, GroupInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgcomm.msg_comm.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

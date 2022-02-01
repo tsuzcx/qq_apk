@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
 import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class dey
-  implements DialogInterface.OnKeyListener
+  implements Runnable
 {
   public dey(RegisterActivity paramRegisterActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    try
     {
-      RegisterActivity.b(this.a);
-      return true;
+      if (RegisterActivity.a(this.a) != null)
+      {
+        RegisterActivity.a(this.a).dismiss();
+        RegisterActivity.a(this.a).cancel();
+        RegisterActivity.a(this.a, null);
+      }
+      return;
     }
-    return false;
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

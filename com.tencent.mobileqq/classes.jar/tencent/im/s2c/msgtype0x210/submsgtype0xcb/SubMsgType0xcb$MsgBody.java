@@ -23,18 +23,19 @@ public final class SubMsgType0xcb$MsgBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 72 }, new String[] { "uint32_anchor_status", "bytes_jump_schema", "bytes_anchor_nickname", "bytes_anchor_head_url", "bytes_live_wording", "bytes_live_end_wording", "bytes_c2c_msg_wording", "uint32_live_wording_type", "uint32_end_wording_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0) }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 72 }, new String[] { "uint32_anchor_status", "bytes_jump_schema", "bytes_anchor_nickname", "bytes_anchor_head_url", "bytes_live_wording", "bytes_live_end_wording", "bytes_c2c_msg_wording", "uint32_live_wording_type", "uint32_end_wording_type" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localInteger, localInteger }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0xcb.SubMsgType0xcb.MsgBody
  * JD-Core Version:    0.7.0.1
  */

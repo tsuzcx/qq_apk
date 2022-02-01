@@ -6,8 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import esu;
 import esv;
-import esw;
 import java.util.List;
 
 public class QvipSpecialSoundActivity$SpecialSoundAdapter
@@ -40,42 +40,42 @@ public class QvipSpecialSoundActivity$SpecialSoundAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    esw localesw;
+    esv localesv;
     if (paramView == null)
     {
       paramView = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity.getLayoutInflater().inflate(2130903702, null);
-      paramViewGroup = new esv(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131233469));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131233470));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131233471));
+      paramViewGroup = new esu(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131233468));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131233469));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131233470));
       paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity);
       paramView.setTag(paramViewGroup);
-      localesw = (esw)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localesw.jdField_a_of_type_JavaLangString);
-      paramViewGroup.b.setText(localesw.jdField_a_of_type_JavaLangString);
-      paramView.setContentDescription(localesw.jdField_a_of_type_JavaLangString);
-      paramViewGroup.jdField_a_of_type_Int = localesw.jdField_a_of_type_Int;
-      paramViewGroup.jdField_a_of_type_JavaLangString = localesw.c;
+      localesv = (esv)getItem(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localesv.jdField_a_of_type_JavaLangString);
+      paramViewGroup.b.setText(localesv.jdField_a_of_type_JavaLangString);
+      paramView.setContentDescription(localesv.jdField_a_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_Int = localesv.jdField_a_of_type_Int;
+      paramViewGroup.jdField_a_of_type_JavaLangString = localesv.c;
       if (paramInt != 0) {
         break label236;
       }
       paramView.setBackgroundResource(2130837882);
       label154:
-      if (localesw.b != 1) {
+      if (localesv.b != 1) {
         break label245;
       }
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
     for (;;)
     {
-      if (QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).a(QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity)) != localesw.jdField_a_of_type_Int) {
+      if (QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity).a(QvipSpecialSoundActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundActivity)) != localesv.jdField_a_of_type_Int) {
         break label257;
       }
-      paramView.findViewById(2131233472).setVisibility(0);
+      paramView.findViewById(2131233471).setVisibility(0);
       paramViewGroup.b.setVisibility(0);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       return paramView;
-      paramViewGroup = (esv)paramView.getTag();
+      paramViewGroup = (esu)paramView.getTag();
       break;
       label236:
       paramView.setBackgroundResource(2130837881);
@@ -84,7 +84,7 @@ public class QvipSpecialSoundActivity$SpecialSoundAdapter
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     label257:
-    paramView.findViewById(2131233472).setVisibility(8);
+    paramView.findViewById(2131233471).setVisibility(8);
     paramViewGroup.b.setVisibility(8);
     paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     return paramView;

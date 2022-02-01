@@ -10,23 +10,26 @@ public final class fn
   public final float a;
   public final float b;
   public final float c;
-  private final long d;
-  private final long e;
+  public final long d;
   
-  public fn(long paramLong1, long paramLong2, float paramFloat1, float paramFloat2, float paramFloat3)
+  public fn(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    this.d = paramLong1;
-    this.e = paramLong2;
     this.a = paramFloat1;
     this.b = paramFloat2;
     this.c = paramFloat3;
+    this.d = paramLong;
   }
   
   public static int a(Context paramContext)
   {
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramContext == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return -1;
     }
     try
@@ -37,6 +40,7 @@ public final class fn
         i = paramContext.getType();
         return i;
       }
+      return -1;
     }
     catch (Exception paramContext) {}
     return -1;
@@ -45,45 +49,40 @@ public final class fn
   public static boolean b(Context paramContext)
   {
     int i;
-    try
+    label56:
+    do
     {
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (paramContext != null) {
-        break label62;
+      try
+      {
+        paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+        if (paramContext != null) {
+          break label56;
+        }
+        i = 1;
       }
-      i = 1;
-    }
-    catch (Exception paramContext)
-    {
-      NetworkInfo.State localState;
-      return false;
-    }
-    paramContext = paramContext.getActiveNetworkInfo();
-    if ((paramContext != null) && (paramContext.isConnected()))
-    {
-      paramContext = paramContext.getState();
-      localState = NetworkInfo.State.CONNECTED;
-      if (paramContext == localState) {
-        return true;
+      catch (Exception paramContext)
+      {
+        NetworkInfo.State localState;
+        return false;
       }
-    }
-    return false;
-    while (i != 0)
-    {
+      paramContext = paramContext.getActiveNetworkInfo();
+      if ((paramContext != null) && (paramContext.isConnected()))
+      {
+        paramContext = paramContext.getState();
+        localState = NetworkInfo.State.CONNECTED;
+        if (paramContext == localState) {
+          return true;
+        }
+      }
       return false;
-      label62:
       i = 0;
-    }
-  }
-  
-  public final float a()
-  {
-    return (float)Math.sqrt(Math.pow(this.a, 2.0D) + Math.pow(this.b, 2.0D) + Math.pow(this.c, 2.0D));
+    } while (i == 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.fn
  * JD-Core Version:    0.7.0.1
  */

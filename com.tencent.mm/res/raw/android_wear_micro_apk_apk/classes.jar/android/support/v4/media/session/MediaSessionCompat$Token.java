@@ -1,6 +1,5 @@
 package android.support.v4.media.session;
 
-import android.media.session.MediaSession.Token;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.os.Parcel;
@@ -11,8 +10,8 @@ public final class MediaSessionCompat$Token
   implements Parcelable
 {
   public static final Parcelable.Creator<Token> CREATOR = new Parcelable.Creator() {};
-  private final d ic;
-  private final Object iq;
+  private final d kb;
+  private final Object ko;
   
   MediaSessionCompat$Token(Object paramObject)
   {
@@ -21,35 +20,31 @@ public final class MediaSessionCompat$Token
   
   private MediaSessionCompat$Token(Object paramObject, d paramd)
   {
-    this.iq = paramObject;
-    this.ic = paramd;
+    this.ko = paramObject;
+    this.kb = paramd;
   }
   
   public static Token a(Object paramObject, d paramd)
   {
-    if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21))
-    {
-      if ((paramObject instanceof MediaSession.Token)) {
-        return new Token(paramObject, paramd);
-      }
-      throw new IllegalArgumentException("token is not a valid MediaSession.Token object");
+    if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21)) {
+      return new Token(u.n(paramObject), paramd);
     }
     return null;
   }
   
-  public static Token g(Object paramObject)
+  public static Token m(Object paramObject)
   {
     return a(paramObject, null);
   }
   
-  public final Object bc()
+  public final Object bt()
   {
-    return this.iq;
+    return this.ko;
   }
   
-  public final d bd()
+  public final d bu()
   {
-    return this.ic;
+    return this.kb;
   }
   
   public final int describeContents()
@@ -67,33 +62,33 @@ public final class MediaSessionCompat$Token
         return false;
       }
       paramObject = (Token)paramObject;
-      if (this.iq != null) {
+      if (this.ko != null) {
         break;
       }
-    } while (paramObject.iq == null);
+    } while (paramObject.ko == null);
     return false;
-    if (paramObject.iq == null) {
+    if (paramObject.ko == null) {
       return false;
     }
-    return this.iq.equals(paramObject.iq);
+    return this.ko.equals(paramObject.ko);
   }
   
   public final int hashCode()
   {
-    if (this.iq == null) {
+    if (this.ko == null) {
       return 0;
     }
-    return this.iq.hashCode();
+    return this.ko.hashCode();
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramParcel.writeParcelable((Parcelable)this.iq, paramInt);
+      paramParcel.writeParcelable((Parcelable)this.ko, paramInt);
       return;
     }
-    paramParcel.writeStrongBinder((IBinder)this.iq);
+    paramParcel.writeStrongBinder((IBinder)this.ko);
   }
 }
 

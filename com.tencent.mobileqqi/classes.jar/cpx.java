@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HelloListActivity;
+import com.tencent.mobileqq.activity.NearPeopleActivity;
 
 public class cpx
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public cpx(GroupManagerActivity paramGroupManagerActivity) {}
+  public cpx(HelloListActivity paramHelloListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    GroupManagerActivity.a(this.a, null);
+    if (HelloListActivity.a(this.a) == HelloListActivity.b)
+    {
+      HelloListActivity.a(this.a);
+      return;
+    }
+    this.a.startActivity(new Intent(this.a.getBaseContext(), NearPeopleActivity.class).putExtra(NearPeopleActivity.a, NearPeopleActivity.g));
   }
 }
 

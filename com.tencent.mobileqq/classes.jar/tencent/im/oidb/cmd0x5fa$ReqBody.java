@@ -14,16 +14,22 @@ public final class cmd0x5fa$ReqBody
   public static final int UINT32_REFER_IDX_FIELD_NUMBER = 2;
   public static final int UINT32_REQ_NEXT_COUNT_FIELD_NUMBER = 4;
   public static final int UINT32_REQ_PREV_COUNT_FIELD_NUMBER = 5;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "rpt_appoint_ids", "uint32_refer_idx", "uint32_get_refer_rec", "uint32_req_next_count", "uint32_req_prev_count" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public appoint_define.AppointID rpt_appoint_ids = new appoint_define.AppointID();
   public final PBUInt32Field uint32_get_refer_rec = PBField.initUInt32(0);
   public final PBUInt32Field uint32_refer_idx = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_next_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_prev_count = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "rpt_appoint_ids", "uint32_refer_idx", "uint32_get_refer_rec", "uint32_req_next_count", "uint32_req_prev_count" }, new Object[] { null, localInteger, localInteger, localInteger, localInteger }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5fa.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,23 @@
 package com.tencent.token;
 
-public abstract interface an
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+
+public final class an
+  extends JceStruct
 {
-  public abstract am a(Runnable paramRunnable);
+  public int a = 0;
   
-  public abstract am b(Runnable paramRunnable);
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.read(this.a, 0, true);
+  }
   
-  public abstract am c(Runnable paramRunnable);
-  
-  public abstract am d(Runnable paramRunnable);
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+  }
 }
 
 

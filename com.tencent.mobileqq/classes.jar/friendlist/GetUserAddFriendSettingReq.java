@@ -11,13 +11,13 @@ public final class GetUserAddFriendSettingReq
   static byte[] cache_name1;
   static int cache_sourceID;
   static int cache_sourceSubID;
-  public byte[] name;
-  public byte[] name1;
-  public long queryuin;
+  public byte[] name = null;
+  public byte[] name1 = null;
+  public long queryuin = 0L;
   public int sourceID = 3999;
   public int sourceSubID = 0;
-  public long uin;
-  public long version;
+  public long uin = 0L;
+  public long version = 0L;
   
   public GetUserAddFriendSettingReq() {}
   
@@ -59,18 +59,20 @@ public final class GetUserAddFriendSettingReq
     paramJceOutputStream.write(this.queryuin, 1);
     paramJceOutputStream.write(this.sourceID, 2);
     paramJceOutputStream.write(this.sourceSubID, 3);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 4);
+    byte[] arrayOfByte = this.name;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 4);
     }
     paramJceOutputStream.write(this.version, 5);
-    if (this.name1 != null) {
-      paramJceOutputStream.write(this.name1, 6);
+    arrayOfByte = this.name1;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetUserAddFriendSettingReq
  * JD-Core Version:    0.7.0.1
  */

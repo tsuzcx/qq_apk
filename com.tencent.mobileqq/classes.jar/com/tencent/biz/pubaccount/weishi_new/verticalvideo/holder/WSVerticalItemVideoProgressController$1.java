@@ -1,33 +1,36 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder;
 
 import android.content.res.Resources;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
-import tlo;
-import tne;
 
-public class WSVerticalItemVideoProgressController$1
+class WSVerticalItemVideoProgressController$1
   implements Runnable
 {
-  public WSVerticalItemVideoProgressController$1(tne paramtne) {}
+  WSVerticalItemVideoProgressController$1(WSVerticalItemVideoProgressController paramWSVerticalItemVideoProgressController) {}
   
   public void run()
   {
     try
     {
-      if (tne.a(this.this$0) != null) {
-        tne.a(this.this$0).setThumb(tne.a(this.this$0).getDrawable(2130841468));
+      if (WSVerticalItemVideoProgressController.a(this.this$0) != null)
+      {
+        WSVerticalItemVideoProgressController.a(this.this$0).setThumb(WSVerticalItemVideoProgressController.b(this.this$0).getDrawable(2130842803));
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      tlo.d("WS_VIDEO_seekBar", "seekBar un active runnable error:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seekBar un active runnable error:");
+      localStringBuilder.append(localException);
+      WSLog.d("WS_VIDEO_seekBar", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.1
  * JD-Core Version:    0.7.0.1
  */

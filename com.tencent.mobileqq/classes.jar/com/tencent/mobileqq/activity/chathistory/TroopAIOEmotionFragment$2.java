@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import aqam;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emotionintegrate.EmotionPreviewData;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 class TroopAIOEmotionFragment$2
@@ -22,29 +23,21 @@ class TroopAIOEmotionFragment$2
     ArrayList localArrayList = new ArrayList();
     Object localObject = TroopAIOEmotionFragment.a(this.this$0).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add((ChatMessage)((aqam)((Iterator)localObject).next()).a);
+      localArrayList.add((ChatMessage)((EmotionPreviewData)((Iterator)localObject).next()).a);
     }
-    localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (localArrayList.size() != 1) {
-          break label122;
-        }
-        ((QQAppInterface)localObject).a().a((MessageRecord)localArrayList.get(0), false);
-      }
-      for (;;)
-      {
-        ThreadManager.getUIHandler().post(new TroopAIOEmotionFragment.2.1(this));
-        return;
-        label122:
-        if (localArrayList.size() > 1) {
-          ((QQAppInterface)localObject).a().a(localArrayList, false);
-        }
+    localObject = null;
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      localObject = (QQAppInterface)localAppRuntime;
+    }
+    if (localObject != null) {
+      if (localArrayList.size() == 1) {
+        ((QQAppInterface)localObject).getMessageFacade().a((MessageRecord)localArrayList.get(0), false);
+      } else if (localArrayList.size() > 1) {
+        ((QQAppInterface)localObject).getMessageFacade().a(localArrayList, false);
       }
     }
+    ThreadManager.getUIHandler().post(new TroopAIOEmotionFragment.2.1(this));
   }
 }
 

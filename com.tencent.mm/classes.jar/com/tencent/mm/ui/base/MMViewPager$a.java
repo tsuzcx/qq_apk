@@ -1,17 +1,10 @@
 package com.tencent.mm.ui.base;
 
-abstract class MMViewPager$a
+import android.view.MotionEvent;
+
+public abstract interface MMViewPager$a
 {
-  protected boolean bVC = false;
-  
-  public MMViewPager$a(MMViewPager paramMMViewPager) {}
-  
-  public final boolean bEL()
-  {
-    return this.bVC;
-  }
-  
-  public abstract void play();
+  public abstract boolean an(MotionEvent paramMotionEvent);
 }
 
 

@@ -13,23 +13,27 @@ class QGGLSurfaceView$1
   {
     int i = (int)(paramMotionEvent.getX() * this.val$xPosScaleRate);
     int j = (int)(paramMotionEvent.getY() * this.val$yPosScaleRate);
-    switch (paramMotionEvent.getAction() & 0xFF)
+    int k = paramMotionEvent.getAction() & 0xFF;
+    if (k != 0)
     {
-    }
-    for (;;)
-    {
+      if (k != 1)
+      {
+        if (k != 2) {
+          return true;
+        }
+        this.this$0.mRenderer.nativeTouch(paramMotionEvent.getAction(), i, j, paramMotionEvent.getPointerId(0));
+        return true;
+      }
+      this.this$0.mRenderer.nativeTouch(paramMotionEvent.getAction(), i, j, paramMotionEvent.getPointerId(0));
       return true;
-      this.this$0.mRenderer.nativeTouch(paramMotionEvent.getAction(), i, j, paramMotionEvent.getPointerId(0));
-      continue;
-      this.this$0.mRenderer.nativeTouch(paramMotionEvent.getAction(), i, j, paramMotionEvent.getPointerId(0));
-      continue;
-      this.this$0.mRenderer.nativeTouch(paramMotionEvent.getAction(), i, j, paramMotionEvent.getPointerId(0));
     }
+    this.this$0.mRenderer.nativeTouch(paramMotionEvent.getAction(), i, j, paramMotionEvent.getPointerId(0));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.QGGLSurfaceView.1
  * JD-Core Version:    0.7.0.1
  */

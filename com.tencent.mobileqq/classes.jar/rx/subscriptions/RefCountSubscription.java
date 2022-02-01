@@ -12,10 +12,12 @@ public final class RefCountSubscription
   
   public RefCountSubscription(Subscription paramSubscription)
   {
-    if (paramSubscription == null) {
-      throw new IllegalArgumentException("s");
+    if (paramSubscription != null)
+    {
+      this.actual = paramSubscription;
+      return;
     }
-    this.actual = paramSubscription;
+    throw new IllegalArgumentException("s");
   }
   
   private void unsubscribeActualIfApplicable(RefCountSubscription.State paramState)
@@ -75,7 +77,7 @@ public final class RefCountSubscription
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.subscriptions.RefCountSubscription
  * JD-Core Version:    0.7.0.1
  */

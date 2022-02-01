@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bcdy;
-import bced;
-import bcfa;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
 
-public class ImageItem$1
+class ImageItem$1
   implements Runnable
 {
-  public ImageItem$1(bcfa parambcfa, bcdy parambcdy) {}
+  ImageItem$1(ImageItem paramImageItem, EditItemInfoBase paramEditItemInfoBase) {}
   
   public void run()
   {
-    bcfa.a(this.this$0, (bced)this.a, true);
+    ImageItem.a(this.this$0, (ImageInfo)this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.1
  * JD-Core Version:    0.7.0.1
  */

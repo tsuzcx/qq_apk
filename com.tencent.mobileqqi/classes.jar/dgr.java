@@ -9,7 +9,7 @@ public class dgr
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RegisterSendUpSms.c(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

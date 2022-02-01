@@ -11,16 +11,6 @@ public class PluginBaseInfoHelper$Base64Helper
   public static final int NO_WRAP = 2;
   public static final int URL_SAFE = 8;
   
-  static
-  {
-    if (!PluginBaseInfoHelper.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public static byte[] decode(String paramString, int paramInt)
   {
     return decode(paramString.getBytes(), paramInt);
@@ -34,15 +24,16 @@ public class PluginBaseInfoHelper$Base64Helper
   public static byte[] decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     PluginBaseInfoHelper.Base64Helper.Decoder localDecoder = new PluginBaseInfoHelper.Base64Helper.Decoder(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localDecoder.process(paramArrayOfByte, paramInt1, paramInt2, true)) {
-      throw new IllegalArgumentException("bad base-64");
+    if (localDecoder.process(paramArrayOfByte, paramInt1, paramInt2, true))
+    {
+      if (localDecoder.op == localDecoder.output.length) {
+        return localDecoder.output;
+      }
+      paramArrayOfByte = new byte[localDecoder.op];
+      System.arraycopy(localDecoder.output, 0, paramArrayOfByte, 0, localDecoder.op);
+      return paramArrayOfByte;
     }
-    if (localDecoder.op == localDecoder.output.length) {
-      return localDecoder.output;
-    }
-    paramArrayOfByte = new byte[localDecoder.op];
-    System.arraycopy(localDecoder.output, 0, paramArrayOfByte, 0, localDecoder.op);
-    return paramArrayOfByte;
+    throw new IllegalArgumentException("bad base-64");
   }
   
   public static byte[] encode(byte[] paramArrayOfByte, int paramInt)
@@ -54,52 +45,51 @@ public class PluginBaseInfoHelper$Base64Helper
   {
     PluginBaseInfoHelper.Base64Helper.Encoder localEncoder = new PluginBaseInfoHelper.Base64Helper.Encoder(paramInt3, null);
     int i = paramInt2 / 3 * 4;
-    int j;
-    if (localEncoder.do_padding)
+    boolean bool = localEncoder.do_padding;
+    int j = 2;
+    int k;
+    if (bool)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
-      i = paramInt3;
-      if (localEncoder.do_newline)
-      {
-        i = paramInt3;
-        if (paramInt2 > 0)
+    }
+    else
+    {
+      k = paramInt2 % 3;
+      paramInt3 = i;
+      if (k != 0) {
+        if (k != 1)
         {
-          j = (paramInt2 - 1) / 57;
-          if (!localEncoder.do_cr) {
-            break label186;
+          if (k != 2) {
+            paramInt3 = i;
+          } else {
+            paramInt3 = i + 3;
           }
+        }
+        else {
+          paramInt3 = i + 2;
         }
       }
     }
-    label186:
-    for (i = 2;; i = 1)
+    i = paramInt3;
+    if (localEncoder.do_newline)
     {
-      i = paramInt3 + i * (j + 1);
-      localEncoder.output = new byte[i];
-      localEncoder.process(paramArrayOfByte, paramInt1, paramInt2, true);
-      if (($assertionsDisabled) || (localEncoder.op == i)) {
-        break label192;
-      }
-      throw new AssertionError();
-      paramInt3 = i;
-      switch (paramInt2 % 3)
+      i = paramInt3;
+      if (paramInt2 > 0)
       {
-      case 0: 
-      default: 
-        paramInt3 = i;
-        break;
-      case 1: 
-        paramInt3 = i + 2;
-        break;
-      case 2: 
-        paramInt3 = i + 3;
-        break;
+        k = (paramInt2 - 1) / 57;
+        if (localEncoder.do_cr) {
+          i = j;
+        } else {
+          i = 1;
+        }
+        i = paramInt3 + (k + 1) * i;
       }
     }
-    label192:
+    localEncoder.output = new byte[i];
+    localEncoder.process(paramArrayOfByte, paramInt1, paramInt2, true);
     return localEncoder.output;
   }
   
@@ -131,7 +121,7 @@ public class PluginBaseInfoHelper$Base64Helper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper.Base64Helper
  * JD-Core Version:    0.7.0.1
  */

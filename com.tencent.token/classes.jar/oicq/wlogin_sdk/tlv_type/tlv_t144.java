@@ -13,262 +13,298 @@ public class tlv_t144
     this._cmd = 324;
   }
   
-  public byte[] get_tlv_144(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5)
+  public byte[] get_tlv_144(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6)
   {
-    int m;
-    int k;
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length > 0))
     {
-      m = 0 + paramArrayOfByte1.length;
-      k = 1;
+      m = paramArrayOfByte1.length + 0;
+      j = 1;
     }
-    for (;;)
+    else
     {
-      int i = k;
-      int j = m;
-      if (paramArrayOfByte2 != null)
-      {
-        i = k;
-        j = m;
-        if (paramArrayOfByte2.length > 0)
-        {
-          j = m + paramArrayOfByte2.length;
-          i = k + 1;
-        }
-      }
-      k = i;
-      m = j;
-      if (paramArrayOfByte3 != null)
-      {
-        k = i;
-        m = j;
-        if (paramArrayOfByte3.length > 0)
-        {
-          m = j + paramArrayOfByte3.length;
-          k = i + 1;
-        }
-      }
-      j = k;
-      i = m;
-      if (paramArrayOfByte4 != null)
-      {
-        j = k;
-        i = m;
-        if (paramArrayOfByte4.length > 0)
-        {
-          i = m + paramArrayOfByte4.length;
-          j = k + 1;
-        }
-      }
-      byte[] arrayOfByte = new byte[i + 2];
-      util.int16_to_buf(arrayOfByte, 0, j);
-      j = 2;
+      m = 0;
+      j = 0;
+    }
+    int k = m;
+    int i = j;
+    if (paramArrayOfByte2 != null)
+    {
+      k = m;
       i = j;
-      if (paramArrayOfByte1 != null)
+      if (paramArrayOfByte2.length > 0)
       {
-        i = j;
-        if (paramArrayOfByte1.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, paramArrayOfByte1.length);
-          i = paramArrayOfByte1.length + 2;
-        }
+        k = m + paramArrayOfByte2.length;
+        i = j + 1;
       }
+    }
+    int m = k;
+    int j = i;
+    if (paramArrayOfByte3 != null)
+    {
+      m = k;
       j = i;
-      if (paramArrayOfByte2 != null)
+      if (paramArrayOfByte3.length > 0)
       {
-        j = i;
-        if (paramArrayOfByte2.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i, paramArrayOfByte2.length);
-          j = i + paramArrayOfByte2.length;
-        }
+        m = k + paramArrayOfByte3.length;
+        j = i + 1;
       }
+    }
+    k = m;
+    i = j;
+    if (paramArrayOfByte4 != null)
+    {
+      k = m;
       i = j;
-      if (paramArrayOfByte3 != null)
+      if (paramArrayOfByte4.length > 0)
       {
-        i = j;
-        if (paramArrayOfByte3.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, j, paramArrayOfByte3.length);
-          i = j + paramArrayOfByte3.length;
-        }
+        k = m + paramArrayOfByte4.length;
+        i = j + 1;
       }
-      if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0))
+    }
+    m = k;
+    j = i;
+    if (paramArrayOfByte5 != null)
+    {
+      m = k;
+      j = i;
+      if (paramArrayOfByte5.length > 0)
+      {
+        m = k + paramArrayOfByte5.length;
+        j = i + 1;
+      }
+    }
+    k = 2;
+    byte[] arrayOfByte = new byte[m + 2];
+    util.int16_to_buf(arrayOfByte, 0, j);
+    i = k;
+    if (paramArrayOfByte1 != null)
+    {
+      i = k;
+      if (paramArrayOfByte1.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, paramArrayOfByte1.length);
+        i = 2 + paramArrayOfByte1.length;
+      }
+    }
+    j = i;
+    if (paramArrayOfByte2 != null)
+    {
+      j = i;
+      if (paramArrayOfByte2.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i, paramArrayOfByte2.length);
+        j = i + paramArrayOfByte2.length;
+      }
+    }
+    i = j;
+    if (paramArrayOfByte3 != null)
+    {
+      i = j;
+      if (paramArrayOfByte3.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, j, paramArrayOfByte3.length);
+        i = j + paramArrayOfByte3.length;
+      }
+    }
+    j = i;
+    if (paramArrayOfByte4 != null)
+    {
+      j = i;
+      if (paramArrayOfByte4.length > 0)
       {
         System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, i, paramArrayOfByte4.length);
-        i = paramArrayOfByte4.length;
+        j = i + paramArrayOfByte4.length;
       }
-      paramArrayOfByte1 = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte5);
-      this._t144_body_len = paramArrayOfByte1.length;
-      fill_head(this._cmd);
-      fill_body(paramArrayOfByte1, paramArrayOfByte1.length);
-      set_length();
-      return get_buf();
-      k = 0;
-      m = 0;
     }
+    if ((paramArrayOfByte5 != null) && (paramArrayOfByte5.length > 0)) {
+      System.arraycopy(paramArrayOfByte5, 0, arrayOfByte, j, paramArrayOfByte5.length);
+    }
+    paramArrayOfByte1 = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte6);
+    this._t144_body_len = paramArrayOfByte1.length;
+    fill_head(this._cmd);
+    fill_body(paramArrayOfByte1, paramArrayOfByte1.length);
+    set_length();
+    return get_buf();
   }
   
-  public byte[] get_tlv_144(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8)
+  public byte[] get_tlv_144(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9)
   {
-    int m;
-    int k;
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length > 0))
     {
-      m = 0 + paramArrayOfByte1.length;
-      k = 1;
+      m = paramArrayOfByte1.length + 0;
+      j = 1;
     }
-    for (;;)
+    else
     {
-      int i = k;
-      int j = m;
-      if (paramArrayOfByte2 != null)
-      {
-        i = k;
-        j = m;
-        if (paramArrayOfByte2.length > 0)
-        {
-          j = m + paramArrayOfByte2.length;
-          i = k + 1;
-        }
-      }
-      k = i;
-      m = j;
-      if (paramArrayOfByte3 != null)
-      {
-        k = i;
-        m = j;
-        if (paramArrayOfByte3.length > 0)
-        {
-          m = j + paramArrayOfByte3.length;
-          k = i + 1;
-        }
-      }
-      i = k;
-      j = m;
-      if (paramArrayOfByte4 != null)
-      {
-        i = k;
-        j = m;
-        if (paramArrayOfByte4.length > 0)
-        {
-          j = m + paramArrayOfByte4.length;
-          i = k + 1;
-        }
-      }
-      k = i;
-      m = j;
-      if (paramArrayOfByte5 != null)
-      {
-        k = i;
-        m = j;
-        if (paramArrayOfByte5.length > 0)
-        {
-          m = j + paramArrayOfByte5.length;
-          k = i + 1;
-        }
-      }
-      i = k;
-      j = m;
-      if (paramArrayOfByte6 != null)
-      {
-        i = k;
-        j = m;
-        if (paramArrayOfByte6.length > 0)
-        {
-          j = m + paramArrayOfByte6.length;
-          i = k + 1;
-        }
-      }
-      m = i;
-      k = j;
-      if (paramArrayOfByte7 != null)
-      {
-        m = i;
-        k = j;
-        if (paramArrayOfByte7.length > 0)
-        {
-          k = j + paramArrayOfByte7.length;
-          m = i + 1;
-        }
-      }
-      byte[] arrayOfByte = new byte[k + 2];
-      util.int16_to_buf(arrayOfByte, 0, m);
-      j = 2;
+      m = 0;
+      j = 0;
+    }
+    int k = m;
+    int i = j;
+    if (paramArrayOfByte2 != null)
+    {
+      k = m;
       i = j;
-      if (paramArrayOfByte1 != null)
+      if (paramArrayOfByte2.length > 0)
       {
-        i = j;
-        if (paramArrayOfByte1.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, paramArrayOfByte1.length);
-          i = paramArrayOfByte1.length + 2;
-        }
+        k = m + paramArrayOfByte2.length;
+        i = j + 1;
       }
+    }
+    int m = k;
+    int j = i;
+    if (paramArrayOfByte3 != null)
+    {
+      m = k;
       j = i;
-      if (paramArrayOfByte2 != null)
+      if (paramArrayOfByte3.length > 0)
       {
-        j = i;
-        if (paramArrayOfByte2.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i, paramArrayOfByte2.length);
-          j = i + paramArrayOfByte2.length;
-        }
+        m = k + paramArrayOfByte3.length;
+        j = i + 1;
       }
+    }
+    k = m;
+    i = j;
+    if (paramArrayOfByte4 != null)
+    {
+      k = m;
       i = j;
-      if (paramArrayOfByte3 != null)
+      if (paramArrayOfByte4.length > 0)
       {
-        i = j;
-        if (paramArrayOfByte3.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, j, paramArrayOfByte3.length);
-          i = j + paramArrayOfByte3.length;
-        }
+        k = m + paramArrayOfByte4.length;
+        i = j + 1;
       }
+    }
+    m = k;
+    j = i;
+    if (paramArrayOfByte5 != null)
+    {
+      m = k;
       j = i;
-      if (paramArrayOfByte4 != null)
+      if (paramArrayOfByte5.length > 0)
       {
-        j = i;
-        if (paramArrayOfByte4.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, i, paramArrayOfByte4.length);
-          j = i + paramArrayOfByte4.length;
-        }
+        m = k + paramArrayOfByte5.length;
+        j = i + 1;
       }
+    }
+    k = m;
+    i = j;
+    if (paramArrayOfByte6 != null)
+    {
+      k = m;
       i = j;
-      if (paramArrayOfByte5 != null)
+      if (paramArrayOfByte6.length > 0)
       {
-        i = j;
-        if (paramArrayOfByte5.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte5, 0, arrayOfByte, j, paramArrayOfByte5.length);
-          i = j + paramArrayOfByte5.length;
-        }
+        k = m + paramArrayOfByte6.length;
+        i = j + 1;
       }
+    }
+    m = k;
+    j = i;
+    if (paramArrayOfByte7 != null)
+    {
+      m = k;
       j = i;
-      if (paramArrayOfByte6 != null)
+      if (paramArrayOfByte7.length > 0)
       {
-        j = i;
-        if (paramArrayOfByte6.length > 0)
-        {
-          System.arraycopy(paramArrayOfByte6, 0, arrayOfByte, i, paramArrayOfByte6.length);
-          j = i + paramArrayOfByte6.length;
-        }
+        m = k + paramArrayOfByte7.length;
+        j = i + 1;
       }
-      if ((paramArrayOfByte7 != null) && (paramArrayOfByte7.length > 0))
+    }
+    k = m;
+    i = j;
+    if (paramArrayOfByte8 != null)
+    {
+      k = m;
+      i = j;
+      if (paramArrayOfByte8.length > 0)
+      {
+        k = m + paramArrayOfByte8.length;
+        i = j + 1;
+      }
+    }
+    j = 2;
+    byte[] arrayOfByte = new byte[k + 2];
+    util.int16_to_buf(arrayOfByte, 0, i);
+    i = j;
+    if (paramArrayOfByte1 != null)
+    {
+      i = j;
+      if (paramArrayOfByte1.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, paramArrayOfByte1.length);
+        i = 2 + paramArrayOfByte1.length;
+      }
+    }
+    j = i;
+    if (paramArrayOfByte2 != null)
+    {
+      j = i;
+      if (paramArrayOfByte2.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i, paramArrayOfByte2.length);
+        j = i + paramArrayOfByte2.length;
+      }
+    }
+    i = j;
+    if (paramArrayOfByte3 != null)
+    {
+      i = j;
+      if (paramArrayOfByte3.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte3, 0, arrayOfByte, j, paramArrayOfByte3.length);
+        i = j + paramArrayOfByte3.length;
+      }
+    }
+    j = i;
+    if (paramArrayOfByte4 != null)
+    {
+      j = i;
+      if (paramArrayOfByte4.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, i, paramArrayOfByte4.length);
+        j = i + paramArrayOfByte4.length;
+      }
+    }
+    i = j;
+    if (paramArrayOfByte5 != null)
+    {
+      i = j;
+      if (paramArrayOfByte5.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte5, 0, arrayOfByte, j, paramArrayOfByte5.length);
+        i = j + paramArrayOfByte5.length;
+      }
+    }
+    j = i;
+    if (paramArrayOfByte6 != null)
+    {
+      j = i;
+      if (paramArrayOfByte6.length > 0)
+      {
+        System.arraycopy(paramArrayOfByte6, 0, arrayOfByte, i, paramArrayOfByte6.length);
+        j = i + paramArrayOfByte6.length;
+      }
+    }
+    i = j;
+    if (paramArrayOfByte7 != null)
+    {
+      i = j;
+      if (paramArrayOfByte7.length > 0)
       {
         System.arraycopy(paramArrayOfByte7, 0, arrayOfByte, j, paramArrayOfByte7.length);
-        i = paramArrayOfByte7.length;
+        i = j + paramArrayOfByte7.length;
       }
-      paramArrayOfByte1 = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte8);
-      this._t144_body_len = paramArrayOfByte1.length;
-      fill_head(this._cmd);
-      fill_body(paramArrayOfByte1, paramArrayOfByte1.length);
-      set_length();
-      return get_buf();
-      k = 0;
-      m = 0;
     }
+    if ((paramArrayOfByte8 != null) && (paramArrayOfByte8.length > 0)) {
+      System.arraycopy(paramArrayOfByte8, 0, arrayOfByte, i, paramArrayOfByte8.length);
+    }
+    paramArrayOfByte1 = cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, paramArrayOfByte9);
+    this._t144_body_len = paramArrayOfByte1.length;
+    fill_head(this._cmd);
+    fill_body(paramArrayOfByte1, paramArrayOfByte1.length);
+    set_length();
+    return get_buf();
   }
 }
 

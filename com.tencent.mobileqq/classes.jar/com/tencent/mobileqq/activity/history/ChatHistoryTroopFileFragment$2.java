@@ -9,7 +9,7 @@ class ChatHistoryTroopFileFragment$2
   
   public void run()
   {
-    ChatHistoryTroopFileFragment.a(this.this$0).springBackOverScrollHeaderView();
+    ChatHistoryTroopFileFragment.c(this.this$0).springBackOverScrollHeaderView();
   }
 }
 

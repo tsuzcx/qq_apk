@@ -1,103 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class atv
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public String cDz;
-  public String desc;
-  public String title;
-  public String url;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56839);
+    AppMethodBeat.i(258054);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.e(1, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.desc != null) {
-        paramVarArgs.e(2, this.desc);
-      }
-      if (this.cDz != null) {
-        paramVarArgs.e(3, this.cDz);
-      }
-      if (this.url != null) {
-        paramVarArgs.e(4, this.url);
-      }
-      AppMethodBeat.o(56839);
+      AppMethodBeat.o(258054);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label394;
+      if (this.BaseResponse == null) {
+        break label284;
       }
     }
-    label394:
-    for (int i = e.a.a.b.b.a.f(1, this.title) + 0;; i = 0)
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.desc);
-      }
-      i = paramInt;
-      if (this.cDz != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.cDz);
-      }
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.url);
-      }
-      AppMethodBeat.o(56839);
+      AppMethodBeat.o(258054);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(56839);
+        AppMethodBeat.o(258054);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         atv localatv = (atv)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(56839);
+          AppMethodBeat.o(258054);
           return -1;
-        case 1: 
-          localatv.title = locala.CLY.readString();
-          AppMethodBeat.o(56839);
-          return 0;
-        case 2: 
-          localatv.desc = locala.CLY.readString();
-          AppMethodBeat.o(56839);
-          return 0;
-        case 3: 
-          localatv.cDz = locala.CLY.readString();
-          AppMethodBeat.o(56839);
-          return 0;
         }
-        localatv.url = locala.CLY.readString();
-        AppMethodBeat.o(56839);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          kd localkd = new kd();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localkd.parseFrom((byte[])localObject);
+          }
+          localatv.BaseResponse = localkd;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(258054);
         return 0;
       }
-      AppMethodBeat.o(56839);
+      AppMethodBeat.o(258054);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.atv
  * JD-Core Version:    0.7.0.1
  */

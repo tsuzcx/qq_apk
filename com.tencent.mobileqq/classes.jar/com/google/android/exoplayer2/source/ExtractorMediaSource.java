@@ -28,7 +28,10 @@ public final class ExtractorMediaSource
   private final Uri uri;
   
   @Deprecated
-  public ExtractorMediaSource(Uri paramUri, DataSource.Factory paramFactory, ExtractorsFactory paramExtractorsFactory, int paramInt1, Handler paramHandler, ExtractorMediaSource.EventListener paramEventListener, String paramString, int paramInt2) {}
+  public ExtractorMediaSource(Uri paramUri, DataSource.Factory paramFactory, ExtractorsFactory paramExtractorsFactory, int paramInt1, Handler paramHandler, ExtractorMediaSource.EventListener paramEventListener, String paramString, int paramInt2)
+  {
+    this(paramUri, paramFactory, paramExtractorsFactory, paramInt1, paramHandler, paramEventListener, paramString, paramInt2);
+  }
   
   private ExtractorMediaSource(Uri paramUri, DataSource.Factory paramFactory, ExtractorsFactory paramExtractorsFactory, int paramInt1, @Nullable Handler paramHandler, @Nullable MediaSourceEventListener paramMediaSourceEventListener, @Nullable String paramString, int paramInt2)
   {
@@ -62,12 +65,14 @@ public final class ExtractorMediaSource
   
   public MediaPeriod createPeriod(MediaSource.MediaPeriodId paramMediaPeriodId, Allocator paramAllocator)
   {
-    if (paramMediaPeriodId.periodIndex == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      return new ExtractorMediaPeriod(this.uri, this.dataSourceFactory.createDataSource(), this.extractorsFactory.createExtractors(), this.minLoadableRetryCount, this.eventDispatcher, this, paramAllocator, this.customCacheKey, this.continueLoadingCheckIntervalBytes);
+    boolean bool;
+    if (paramMediaPeriodId.periodIndex == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    return new ExtractorMediaPeriod(this.uri, this.dataSourceFactory.createDataSource(), this.extractorsFactory.createExtractors(), this.minLoadableRetryCount, this.eventDispatcher, this, paramAllocator, this.customCacheKey, this.continueLoadingCheckIntervalBytes);
   }
   
   public void maybeThrowSourceInfoRefreshError() {}
@@ -102,7 +107,7 @@ public final class ExtractorMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ExtractorMediaSource
  * JD-Core Version:    0.7.0.1
  */

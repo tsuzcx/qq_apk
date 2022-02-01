@@ -1,22 +1,21 @@
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.mobileqq.activity.SubaccountUgActivity;
 
-public class dmi
-  extends MessageObserver
+class dmi
+  implements DialogInterface.OnClickListener
 {
-  public dmi(SubAccountSettingActivity paramSubAccountSettingActivity) {}
+  dmi(dmh paramdmh) {}
   
-  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramString = this.a.getString(2131562520);
-    if (paramSubAccountBackProtocData.p == 0) {}
-    for (int i = 2131563288;; i = 2131563291)
-    {
-      paramSubAccountBackProtocData = this.a.getString(i);
-      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dmj(this));
-      return;
-    }
+    this.a.a.a().setTitle("");
+    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

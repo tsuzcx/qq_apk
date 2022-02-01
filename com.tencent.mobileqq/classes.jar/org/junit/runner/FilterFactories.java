@@ -47,19 +47,15 @@ class FilterFactories
     Description localDescription = paramRequest.getRunner().getDescription();
     if (paramString.contains("=")) {
       paramRequest = paramString.split("=", 2);
+    } else {
+      paramRequest = new String[] { paramString, "" };
     }
-    for (;;)
-    {
-      return createFilter(paramRequest[0], new FilterFactoryParams(localDescription, paramRequest[1]));
-      paramRequest = new String[2];
-      paramRequest[0] = paramString;
-      paramRequest[1] = "";
-    }
+    return createFilter(paramRequest[0], new FilterFactoryParams(localDescription, paramRequest[1]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runner.FilterFactories
  * JD-Core Version:    0.7.0.1
  */

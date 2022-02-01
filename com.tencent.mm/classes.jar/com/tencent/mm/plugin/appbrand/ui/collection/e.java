@@ -1,62 +1,45 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
-import a.f.b.j;
-import a.l;
-import a.v;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "()V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "root", "Landroid/view/View;", "(Landroid/view/View;)V", "canShowLongClickTestMenu", "", "getCanShowLongClickTestMenu", "()Z", "deleteHandle", "kotlin.jvm.PlatformType", "getDeleteHandle", "()Landroid/view/View;", "rightExtraBottomLine", "getRightExtraBottomLine", "sortHandle", "getSortHandle", "setBottomLineVisibility", "", "visibility", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class e
-  extends RecyclerView.h
+  extends h
 {
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  private final View uio;
+  final View uiq;
+  final View uir;
+  private final boolean uis;
+  
+  public e(View paramView)
   {
-    AppMethodBeat.i(135100);
-    if (paramRect == null) {
-      j.ebi();
-    }
-    paramRect.left = 0;
-    paramRect.right = 0;
-    paramRect.top = 0;
-    if (paramRecyclerView == null) {
-      j.ebi();
-    }
-    params = paramRecyclerView.getLayoutManager();
-    if (params == null)
+    super(paramView);
+    AppMethodBeat.i(51269);
+    this.uio = paramView.findViewById(ba.f.app_brand_collection_drag_sort_item_handle);
+    this.uiq = paramView.findViewById(ba.f.app_brand_collection_sort_delete_handle);
+    this.uir = paramView.findViewById(ba.f.extra_bottom_line);
+    paramView = cMn().getLayoutParams();
+    if ((paramView instanceof ViewGroup.MarginLayoutParams)) {}
+    for (paramView = (ViewGroup.MarginLayoutParams)paramView;; paramView = null)
     {
-      paramRect = new v("null cannot be cast to non-null type android.support.v7.widget.GridLayoutManager");
-      AppMethodBeat.o(135100);
-      throw paramRect;
-    }
-    params = (GridLayoutManager)params;
-    if (paramView == null) {
-      j.ebi();
-    }
-    paramView = paramRecyclerView.bb(paramView);
-    j.p(paramView, "parent.getChildViewHolder(view!!)");
-    int i = paramView.jN();
-    paramView = paramRecyclerView.getAdapter();
-    j.p(paramView, "parent.adapter");
-    int j = paramView.getItemCount() / params.ig();
-    if (i >= params.ig() * j) {}
-    for (i = 0;; i = paramView.getResources().getDimensionPixelSize(2131428084))
-    {
-      paramRect.bottom = i;
-      AppMethodBeat.o(135100);
+      if (paramView != null) {
+        paramView.leftMargin = 0;
+      }
+      cMn().requestLayout();
+      this.uix.setVisibility(4);
+      AppMethodBeat.o(51269);
       return;
-      paramView = paramRecyclerView.getContext();
-      j.p(paramView, "parent.context");
     }
+  }
+  
+  public final boolean cMl()
+  {
+    return this.uis;
   }
 }
 

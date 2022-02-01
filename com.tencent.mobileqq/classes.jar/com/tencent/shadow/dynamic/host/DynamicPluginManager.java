@@ -4,89 +4,104 @@ import android.content.Context;
 import android.os.Bundle;
 import com.tencent.shadow.core.common.Logger;
 import com.tencent.shadow.core.common.LoggerFactory;
-import com.tencent.shadow.proguard.k;
 import java.io.File;
 
 public final class DynamicPluginManager
   implements PluginManager
 {
-  private static final Logger d = LoggerFactory.getLogger(DynamicPluginManager.class);
-  private final PluginManagerUpdater a;
-  private PluginManagerImpl b;
-  private long c;
+  private static final Logger mLogger = LoggerFactory.getLogger(ShadowTag.class);
+  private long mLastModified;
+  private PluginManagerImpl mManagerImpl;
+  private final PluginManagerUpdater mUpdater;
   
   public DynamicPluginManager(PluginManagerUpdater paramPluginManagerUpdater)
   {
-    if (paramPluginManagerUpdater.getLatest() == null) {
-      throw new IllegalArgumentException("构造DynamicPluginManager时传入的PluginManagerUpdater必须已经已有本地文件，即getLatest()!=null");
-    }
-    this.a = paramPluginManagerUpdater;
-  }
-  
-  public final void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
-  {
-    if (d.isInfoEnabled()) {
-      d.info("enter fromId:" + paramLong + " callback:" + paramEnterCallback);
-    }
-    Object localObject1 = this.a.getLatest();
-    long l = ((File)localObject1).lastModified();
-    Object localObject2;
-    boolean bool;
-    if (d.isInfoEnabled())
+    if (paramPluginManagerUpdater.getLatest() != null)
     {
-      localObject2 = d;
-      StringBuilder localStringBuilder = new StringBuilder("mLastModified != lastModified : ");
-      if (this.c != l)
-      {
-        bool = true;
-        ((Logger)localObject2).info(bool);
-      }
-    }
-    else if (this.c != l)
-    {
-      localObject2 = new k(paramContext, (File)localObject1).b();
-      if (this.b == null) {
-        break label234;
-      }
-      localObject1 = new Bundle();
-      this.b.onSaveInstanceState((Bundle)localObject1);
-      this.b.onDestroy();
-    }
-    for (;;)
-    {
-      ((PluginManagerImpl)localObject2).onCreate((Bundle)localObject1);
-      this.b = ((PluginManagerImpl)localObject2);
-      this.c = l;
-      this.b.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
-      this.a.update();
+      this.mUpdater = paramPluginManagerUpdater;
       return;
-      bool = false;
-      break;
-      label234:
-      localObject1 = null;
     }
+    throw new IllegalArgumentException("构造DynamicPluginManager时传入的PluginManagerUpdater必须已经已有本地文件，即getLatest()!=null");
   }
   
-  public final PluginManager getManagerImpl()
+  private void updateManagerImpl(Context paramContext)
   {
-    return this.b;
-  }
-  
-  public final void release()
-  {
-    if (d.isInfoEnabled()) {
-      d.info("release");
-    }
-    if (this.b != null)
+    Object localObject = this.mUpdater.getLatest();
+    long l = ((File)localObject).lastModified();
+    if (mLogger.isInfoEnabled())
     {
-      this.b.onDestroy();
-      this.b = null;
+      Logger localLogger = mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mLastModified != lastModified : ");
+      boolean bool;
+      if (this.mLastModified != l) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
+      localLogger.info(localStringBuilder.toString());
+    }
+    if (this.mLastModified != l)
+    {
+      localObject = new ManagerImplLoader(paramContext, (File)localObject).load();
+      if (this.mManagerImpl != null)
+      {
+        paramContext = new Bundle();
+        this.mManagerImpl.onSaveInstanceState(paramContext);
+        this.mManagerImpl.onDestroy();
+      }
+      else
+      {
+        paramContext = null;
+      }
+      ((PluginManagerImpl)localObject).onCreate(paramContext);
+      this.mManagerImpl = ((PluginManagerImpl)localObject);
+      this.mLastModified = l;
+    }
+  }
+  
+  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    if (mLogger.isInfoEnabled())
+    {
+      Logger localLogger = mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enter fromId:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" callback:");
+      localStringBuilder.append(paramEnterCallback);
+      localLogger.info(localStringBuilder.toString());
+    }
+    updateManagerImpl(paramContext);
+    if (mLogger.isInfoEnabled()) {
+      mLogger.info("realEnter");
+    }
+    this.mManagerImpl.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+    this.mUpdater.update();
+  }
+  
+  public PluginManager getManagerImpl()
+  {
+    return this.mManagerImpl;
+  }
+  
+  public void release()
+  {
+    if (mLogger.isInfoEnabled()) {
+      mLogger.info("release");
+    }
+    PluginManagerImpl localPluginManagerImpl = this.mManagerImpl;
+    if (localPluginManagerImpl != null)
+    {
+      localPluginManagerImpl.onDestroy();
+      this.mManagerImpl = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.DynamicPluginManager
  * JD-Core Version:    0.7.0.1
  */

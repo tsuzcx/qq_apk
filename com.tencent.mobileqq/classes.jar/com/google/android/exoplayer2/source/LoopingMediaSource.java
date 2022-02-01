@@ -21,14 +21,15 @@ public final class LoopingMediaSource
   
   public LoopingMediaSource(MediaSource paramMediaSource, int paramInt)
   {
-    if (paramInt > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      this.childSource = paramMediaSource;
-      this.loopCount = paramInt;
-      return;
+    boolean bool;
+    if (paramInt > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    this.childSource = paramMediaSource;
+    this.loopCount = paramInt;
   }
   
   public MediaPeriod createPeriod(MediaSource.MediaPeriodId paramMediaPeriodId, Allocator paramAllocator)
@@ -42,12 +43,13 @@ public final class LoopingMediaSource
   protected void onChildSourceInfoRefreshed(Void paramVoid, MediaSource paramMediaSource, Timeline paramTimeline, @Nullable Object paramObject)
   {
     this.childPeriodCount = paramTimeline.getPeriodCount();
-    if (this.loopCount != 2147483647) {}
-    for (paramVoid = new LoopingMediaSource.LoopingTimeline(paramTimeline, this.loopCount);; paramVoid = new LoopingMediaSource.InfinitelyLoopingTimeline(paramTimeline))
-    {
-      this.listener.onSourceInfoRefreshed(this, paramVoid, paramObject);
-      return;
+    int i = this.loopCount;
+    if (i != 2147483647) {
+      paramVoid = new LoopingMediaSource.LoopingTimeline(paramTimeline, i);
+    } else {
+      paramVoid = new LoopingMediaSource.InfinitelyLoopingTimeline(paramTimeline);
     }
+    this.listener.onSourceInfoRefreshed(this, paramVoid, paramObject);
   }
   
   public void prepareSource(ExoPlayer paramExoPlayer, boolean paramBoolean, MediaSource.Listener paramListener)
@@ -71,7 +73,7 @@ public final class LoopingMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.LoopingMediaSource
  * JD-Core Version:    0.7.0.1
  */

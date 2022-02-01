@@ -31,9 +31,7 @@ public class QuickLoginWebViewActivity
   
   public boolean onOptionsItemSelected(MenuItem paramMenuItem)
   {
-    switch (paramMenuItem.getItemId())
-    {
-    default: 
+    if (paramMenuItem.getItemId() != 16908332) {
       return super.onOptionsItemSelected(paramMenuItem);
     }
     util.LOGI("onOptionsItemSelected clicked", "");

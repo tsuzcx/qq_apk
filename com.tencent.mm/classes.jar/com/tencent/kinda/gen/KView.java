@@ -2,6 +2,18 @@ package com.tencent.kinda.gen;
 
 public abstract interface KView
 {
+  public abstract void accessibilityClickFrom(KView paramKView);
+  
+  public abstract void accessibilityTraitsType(TraitsType paramTraitsType);
+  
+  public abstract void addBlurEffect(int paramInt);
+  
+  public abstract KPoint convertPointToScreen(KPoint paramKPoint);
+  
+  public abstract KPoint convertPointToView(KPoint paramKPoint, KView paramKView);
+  
+  public abstract void expandHitSize(float paramFloat1, float paramFloat2);
+  
   public abstract String getAccessibilityString();
   
   public abstract boolean getAccessible();
@@ -12,11 +24,11 @@ public abstract interface KView
   
   public abstract float getAspectRatio();
   
-  public abstract long getBackgroundColor();
+  public abstract DynamicColor getBackgroundColor();
   
-  public abstract long getBorderColor();
+  public abstract DynamicColor getBorderColor();
   
-  public abstract long getBorderPressedColor();
+  public abstract DynamicColor getBorderPressedColor();
   
   public abstract float getBorderWidth();
   
@@ -40,9 +52,15 @@ public abstract interface KView
   
   public abstract float getFlexShrink();
   
+  public abstract float getFrameOriginX();
+  
+  public abstract float getFrameOriginY();
+  
   public abstract float getHeight();
   
   public abstract float getHeightPercent();
+  
+  public abstract boolean getIsRefreshing();
   
   public abstract float getLeft();
   
@@ -90,6 +108,8 @@ public abstract interface KView
   
   public abstract PositionType getPositionType();
   
+  public abstract String getReportId();
+  
   public abstract float getRight();
   
   public abstract float getRightPercent();
@@ -100,11 +120,15 @@ public abstract interface KView
   
   public abstract float getScaleY();
   
-  public abstract long getShadowColor();
+  public abstract boolean getSecure();
+  
+  public abstract DynamicColor getShadowColor();
   
   public abstract float getShadowOffset();
   
   public abstract float getShadowRadius();
+  
+  public abstract boolean getSupportDynamicSize();
   
   public abstract float getTop();
   
@@ -128,6 +152,12 @@ public abstract interface KView
   
   public abstract void initWithPlatformDelegate(IUIPagePlatformDelegate paramIUIPagePlatformDelegate);
   
+  public abstract void removeBlurEffect();
+  
+  public abstract void requestFrameImpl(VoidKRectCallback paramVoidKRectCallback);
+  
+  public abstract void requestLayout();
+  
   public abstract void setAccessibilityString(String paramString);
   
   public abstract void setAccessible(boolean paramBoolean);
@@ -138,11 +168,11 @@ public abstract interface KView
   
   public abstract void setAspectRatio(float paramFloat);
   
-  public abstract void setBackgroundColor(long paramLong);
+  public abstract void setBackgroundColor(DynamicColor paramDynamicColor);
   
-  public abstract void setBorderColor(long paramLong);
+  public abstract void setBorderColor(DynamicColor paramDynamicColor);
   
-  public abstract void setBorderPressedColor(long paramLong);
+  public abstract void setBorderPressedColor(DynamicColor paramDynamicColor);
   
   public abstract void setBorderWidth(float paramFloat);
   
@@ -166,9 +196,13 @@ public abstract interface KView
   
   public abstract void setFlexShrink(float paramFloat);
   
+  public abstract void setFrameImpl(KRect paramKRect, VoidCallback paramVoidCallback);
+  
   public abstract void setHeight(float paramFloat);
   
   public abstract void setHeightPercent(float paramFloat);
+  
+  public abstract void setIsRefreshing(boolean paramBoolean);
   
   public abstract void setLeft(float paramFloat);
   
@@ -222,6 +256,8 @@ public abstract interface KView
   
   public abstract void setPositionType(PositionType paramPositionType);
   
+  public abstract void setReportId(String paramString);
+  
   public abstract void setRight(float paramFloat);
   
   public abstract void setRightPercent(float paramFloat);
@@ -232,11 +268,15 @@ public abstract interface KView
   
   public abstract void setScaleY(float paramFloat);
   
-  public abstract void setShadowColor(long paramLong);
+  public abstract void setSecure(boolean paramBoolean);
+  
+  public abstract void setShadowColor(DynamicColor paramDynamicColor);
   
   public abstract void setShadowOffset(float paramFloat);
   
   public abstract void setShadowRadius(float paramFloat);
+  
+  public abstract void setSupportDynamicSize(boolean paramBoolean);
   
   public abstract void setTop(float paramFloat);
   
@@ -260,7 +300,7 @@ public abstract interface KView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.KView
  * JD-Core Version:    0.7.0.1
  */

@@ -20,15 +20,15 @@ public class tlv_t202
     if (paramArrayOfByte2 == null) {
       paramArrayOfByte1 = new byte[0];
     }
-    int j = limit_len(arrayOfByte, 16);
-    int i = limit_len(paramArrayOfByte1, 32);
-    paramArrayOfByte2 = new byte[j + 2 + 2 + i];
-    util.int16_to_buf(paramArrayOfByte2, 0, j);
-    System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, 2, j);
-    j += 2;
-    util.int16_to_buf(paramArrayOfByte2, j, i);
-    j += 2;
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, j, i);
+    int i = limit_len(arrayOfByte, 16);
+    int j = limit_len(paramArrayOfByte1, 32);
+    int k = i + 2;
+    int m = k + 2;
+    paramArrayOfByte2 = new byte[m + j];
+    util.int16_to_buf(paramArrayOfByte2, 0, i);
+    System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, 2, i);
+    util.int16_to_buf(paramArrayOfByte2, k, j);
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, m, j);
     fill_head(this._cmd);
     fill_body(paramArrayOfByte2, paramArrayOfByte2.length);
     set_length();

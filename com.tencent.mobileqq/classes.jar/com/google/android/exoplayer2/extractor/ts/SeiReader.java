@@ -27,38 +27,36 @@ final class SeiReader
   public void createTracks(ExtractorOutput paramExtractorOutput, TsPayloadReader.TrackIdGenerator paramTrackIdGenerator)
   {
     int i = 0;
-    if (i < this.outputs.length)
+    while (i < this.outputs.length)
     {
       paramTrackIdGenerator.generateNewId();
       TrackOutput localTrackOutput = paramExtractorOutput.track(paramTrackIdGenerator.getTrackId(), 3);
       Format localFormat = (Format)this.closedCaptionFormats.get(i);
-      String str2 = localFormat.sampleMimeType;
+      String str = localFormat.sampleMimeType;
       boolean bool;
-      if (("application/cea-608".equals(str2)) || ("application/cea-708".equals(str2)))
-      {
-        bool = true;
-        label73:
-        Assertions.checkArgument(bool, "Invalid closed caption mime type provided: " + str2);
-        if (localFormat.id == null) {
-          break label166;
-        }
-      }
-      label166:
-      for (String str1 = localFormat.id;; str1 = paramTrackIdGenerator.getFormatId())
-      {
-        localTrackOutput.format(Format.createTextSampleFormat(str1, str2, null, -1, localFormat.selectionFlags, localFormat.language, localFormat.accessibilityChannel, null));
-        this.outputs[i] = localTrackOutput;
-        i += 1;
-        break;
+      if ((!"application/cea-608".equals(str)) && (!"application/cea-708".equals(str))) {
         bool = false;
-        break label73;
+      } else {
+        bool = true;
       }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Invalid closed caption mime type provided: ");
+      ((StringBuilder)localObject).append(str);
+      Assertions.checkArgument(bool, ((StringBuilder)localObject).toString());
+      if (localFormat.id != null) {
+        localObject = localFormat.id;
+      } else {
+        localObject = paramTrackIdGenerator.getFormatId();
+      }
+      localTrackOutput.format(Format.createTextSampleFormat((String)localObject, str, null, -1, localFormat.selectionFlags, localFormat.language, localFormat.accessibilityChannel, null));
+      this.outputs[i] = localTrackOutput;
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.SeiReader
  * JD-Core Version:    0.7.0.1
  */

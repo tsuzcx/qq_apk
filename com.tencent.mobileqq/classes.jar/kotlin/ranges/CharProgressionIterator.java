@@ -17,29 +17,16 @@ public final class CharProgressionIterator
   {
     this.step = paramInt;
     this.finalElement = paramChar2;
-    if (this.step > 0) {
-      if (paramChar1 <= paramChar2)
-      {
-        this.hasNext = bool;
-        if (!this.hasNext) {
-          break label65;
-        }
-      }
+    paramInt = this.step;
+    boolean bool = true;
+    if (paramInt > 0 ? paramChar1 > paramChar2 : paramChar1 < paramChar2) {
+      bool = false;
     }
-    for (;;)
-    {
-      this.next = paramChar1;
-      return;
-      bool = false;
-      break;
-      if (paramChar1 >= paramChar2) {
-        break;
-      }
-      bool = false;
-      break;
-      label65:
+    this.hasNext = bool;
+    if (!this.hasNext) {
       paramChar1 = this.finalElement;
     }
+    this.next = paramChar1;
   }
   
   public final int getStep()
@@ -57,21 +44,21 @@ public final class CharProgressionIterator
     int i = this.next;
     if (i == this.finalElement)
     {
-      if (!this.hasNext) {
+      if (this.hasNext) {
+        this.hasNext = false;
+      } else {
         throw ((Throwable)new NoSuchElementException());
       }
-      this.hasNext = false;
     }
-    for (;;)
-    {
-      return (char)i;
-      this.next += this.step;
+    else {
+      this.next = (this.step + i);
     }
+    return (char)i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.CharProgressionIterator
  * JD-Core Version:    0.7.0.1
  */

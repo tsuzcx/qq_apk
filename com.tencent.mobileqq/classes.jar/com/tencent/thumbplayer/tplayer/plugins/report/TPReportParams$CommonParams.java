@@ -9,7 +9,6 @@ public class TPReportParams$CommonParams
   public int cdnIdInt;
   public String cdnIpString;
   public String cdnUipString;
-  public int configIdInt;
   public String deviceNameString;
   public String deviceResolutionString;
   public int downloadTypeInt;
@@ -31,6 +30,8 @@ public class TPReportParams$CommonParams
   public int playTypeInt;
   public int playerTypeInt;
   public String playerVersionString;
+  public String proto;
+  public String protover;
   public String qqOpenIdString;
   public int scenesId;
   public int seqInt = 0;
@@ -73,17 +74,18 @@ public class TPReportParams$CommonParams
     paramITPReportProperties.put("p2pver", this.p2pVersionString);
     paramITPReportProperties.put("appver", this.appVersionString);
     paramITPReportProperties.put("playerver", this.playerVersionString);
-    paramITPReportProperties.put("playertype", this.playTypeInt);
-    paramITPReportProperties.put("confid", this.configIdInt);
+    paramITPReportProperties.put("playertype", this.playerTypeInt);
     paramITPReportProperties.put("cdnid", this.cdnIdInt);
     paramITPReportProperties.put("scenesid", this.scenesId);
-    paramITPReportProperties.put("playtype", this.playerTypeInt);
+    paramITPReportProperties.put("playtype", this.playTypeInt);
     paramITPReportProperties.put("dltype", this.downloadTypeInt);
     paramITPReportProperties.put("vid", this.vidString);
     paramITPReportProperties.put("definition", this.mediaResolutionString);
     paramITPReportProperties.put("fmt", this.mediaFormatInt);
     paramITPReportProperties.put("rate", this.mediaRateInt);
     paramITPReportProperties.put("duration", this.mediaDurationFloat);
+    paramITPReportProperties.put("proto", this.proto);
+    paramITPReportProperties.put("protover", this.protover);
   }
   
   public void reset()
@@ -114,7 +116,6 @@ public class TPReportParams$CommonParams
     this.appVersionString = "";
     this.playerVersionString = "";
     this.playerTypeInt = 0;
-    this.configIdInt = 0;
     this.cdnIdInt = 0;
     this.scenesId = 0;
     this.downloadTypeInt = 0;
@@ -123,11 +124,13 @@ public class TPReportParams$CommonParams
     this.mediaFormatInt = 0;
     this.mediaRateInt = 0;
     this.mediaDurationFloat = 0.0F;
+    this.proto = "";
+    this.protover = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportParams.CommonParams
  * JD-Core Version:    0.7.0.1
  */

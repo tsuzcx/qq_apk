@@ -1,17 +1,17 @@
 package com.tencent.mm.kernel.a;
 
 import android.os.HandlerThread;
+import com.tencent.mm.autogen.a.rz;
+import com.tencent.mm.autogen.a.sa;
 import com.tencent.mm.blink.b.2;
 import com.tencent.mm.blink.b.b;
-import com.tencent.mm.compatible.e.n;
-import com.tencent.mm.g.a.mr;
-import com.tencent.mm.g.a.ms;
+import com.tencent.mm.compatible.deviceinfo.n;
 import com.tencent.mm.kernel.a.b.e.b;
 import com.tencent.mm.kernel.a.b.e.c;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -19,147 +19,137 @@ import java.util.List;
 public abstract class d
   implements b
 {
-  public com.tencent.mm.kernel.a.b.e<Object> eJC = com.tencent.mm.kernel.a.b.e.So();
-  private final HashSet<String> eJD = new HashSet();
+  public com.tencent.mm.kernel.a.b.e<Object> mEB = com.tencent.mm.kernel.a.b.e.bbj();
+  private final HashSet<String> mEC = new HashSet();
   
-  public static void K(Class<? extends f> paramClass)
+  protected static void FF(String paramString)
   {
-    com.tencent.mm.kernel.g.RH().C(paramClass);
+    com.tencent.mm.kernel.h.baA().Fx(paramString);
   }
   
-  protected static void mG(String paramString)
+  public static void aD(Class<? extends f> paramClass)
   {
-    com.tencent.mm.kernel.g.RH().mz(paramString);
+    com.tencent.mm.kernel.h.baA().av(paramClass);
   }
   
-  public void Bc()
+  protected final void FG(String paramString)
   {
-    boolean bool = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.RI().Rj()).SD();
+    this.mEC.add(paramString);
+  }
+  
+  public void a(g paramg)
+  {
+    this.mEB.a(new e.b(), c.mEi, c.baR().mDW, "task-functional plugins");
+    com.tencent.mm.blink.a.Ch("executeTasks");
+  }
+  
+  public void aBY()
+  {
+    boolean bool = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).bbA();
     double d2 = n.getNumCores();
     if (bool) {}
     for (double d1 = 1.5D;; d1 = 1.0D)
     {
       int i = (int)Math.min(Math.floor(d1 * d2), 6.0D);
-      ab.i("MicroMsg.ParallelsBootStep", "core num %s for parallels", new Object[] { Integer.valueOf(i) });
-      this.eJC.init(i);
-      c localc = c.RX();
-      localc.eIY.a(new Class[] { com.tencent.mm.kernel.b.b.class });
-      localc.eIX.a(new Class[] { com.tencent.mm.kernel.a.c.b.class });
-      localc.eIZ.a(new Class[] { com.tencent.mm.kernel.api.h.class, com.tencent.mm.kernel.api.a.class, com.tencent.mm.kernel.api.e.class, aj.class, com.tencent.mm.kernel.api.c.class });
-      Object localObject = localc.eIZ;
-      ((com.tencent.mm.kernel.a.b.g)localObject).eKn = new Class[1];
-      localObject = ((com.tencent.mm.kernel.a.b.g)localObject).eKn;
-      System.arraycopy(new Class[] { com.tencent.mm.kernel.api.c.class }, 0, localObject, 0, 1);
-      ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.RI().Rj()).eHJ.eIR = new c.1(localc);
-      com.tencent.mm.blink.a.ks("helloWeChat");
+      Log.i("MicroMsg.ParallelsBootStep", "core num %s for parallels", new Object[] { Integer.valueOf(i) });
+      this.mEB.sE(i);
+      c.baR().baS();
+      com.tencent.mm.blink.a.Ch("helloWeChat");
       return;
     }
   }
   
-  public boolean Bf()
+  public boolean aCp()
   {
     return true;
   }
   
-  public final void RV()
+  public void b(g paramg)
   {
-    com.tencent.mm.kernel.g.RH().Rh();
-    this.eJC.prepare();
-    Iterator localIterator = this.eJC.Sq().iterator();
+    this.mEB.a(new e.b(), c.mEh, c.baR().mDX, "configure-functional plugins");
+    com.tencent.mm.blink.a.Ch("configurePlugins");
+    new rz().publish();
+  }
+  
+  public final void baQ()
+  {
+    com.tencent.mm.kernel.h.baA().bab();
+    this.mEB.prepare();
+    Iterator localIterator = this.mEB.bbl().iterator();
     while (localIterator.hasNext())
     {
       e.c localc = (e.c)localIterator.next();
-      c.RX().d(localc.bYd.getLooper());
+      c.baR().h(localc.hgw.getLooper());
     }
-    com.tencent.mm.blink.a.ks("makeDependency");
+    com.tencent.mm.blink.a.Ch("makeDependency");
   }
   
-  public final void RW()
+  public void c(g paramg)
   {
-    this.eJC.a(new e.b(), c.eJj, c.RX().eIX, "task-functional plugins");
-    com.tencent.mm.blink.a.ks("executeTasks");
-  }
-  
-  public void a(com.tencent.mm.kernel.b.g paramg)
-  {
-    this.eJC.a(new e.b(), c.eJi, c.RX().eIY, "configure-functional plugins");
-    com.tencent.mm.blink.a.ks("configurePlugins");
-    paramg = new mr();
-    com.tencent.mm.sdk.b.a.ymk.l(paramg);
-  }
-  
-  public void b(com.tencent.mm.kernel.b.g paramg)
-  {
-    a.g("startup final step, account initialize... for parallels", new Object[0]);
+    a.j("startup final step, account initialize... for parallels", new Object[0]);
     Object localObject1;
     Object localObject2;
-    if (paramg.SD())
+    if (paramg.bbA())
     {
-      localObject1 = c.RX();
-      localObject2 = com.tencent.mm.kernel.g.RH().Ri().iterator();
+      localObject1 = c.baR();
+      localObject2 = com.tencent.mm.kernel.h.baA().bac().iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((c)localObject1).aq((f)((Iterator)localObject2).next());
+        ((c)localObject1).cT((f)((Iterator)localObject2).next());
       }
-      if (com.tencent.mm.kernel.g.RJ().QU()) {
-        com.tencent.mm.kernel.g.RJ().QL();
+      if (com.tencent.mm.kernel.h.baC().aZN()) {
+        com.tencent.mm.kernel.h.baC().aZC();
       }
     }
-    com.tencent.mm.blink.a.ks("installPendingPlugins");
+    com.tencent.mm.blink.a.Ch("installPendingPlugins");
     long l = System.nanoTime();
-    if (this.eJD.size() > 0)
+    if (this.mEC.size() > 0)
     {
-      localObject1 = this.eJD.iterator();
+      localObject1 = this.mEC.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        com.tencent.mm.kernel.g.RM();
-        com.tencent.mm.kernel.g.RH().v((String)localObject2, true);
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baA().B((String)localObject2, true);
       }
-      this.eJD.clear();
-      com.tencent.mm.blink.a.p("installPendingPlugins installed", l);
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RH().Rh();
-      com.tencent.mm.blink.a.ks("installPendingPlugins dependency made.");
-      localObject1 = new ms();
-      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject1);
+      this.mEC.clear();
+      com.tencent.mm.blink.a.o("installPendingPlugins installed", l);
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baA().bab();
+      com.tencent.mm.blink.a.Ch("installPendingPlugins dependency made.");
+      new sa().publish();
     }
-    boolean bool = Bf();
+    boolean bool = aCp();
     int i;
-    if ((paramg.SD()) && (com.tencent.mm.kernel.g.RJ().QU()))
+    if ((paramg.bbA()) && (com.tencent.mm.kernel.h.baC().aZN()))
     {
       i = 1;
       if ((i != 0) && (!bool)) {
-        com.tencent.mm.kernel.g.RJ().QV();
+        com.tencent.mm.kernel.h.baC().aZO();
       }
-      paramg = com.tencent.mm.blink.b.HP();
-      ab.i("MicroMsg.FirstScreenArrangement", "arrangeInitializePendingPlugins now? %s", new Object[] { Boolean.valueOf(bool) });
+      paramg = com.tencent.mm.blink.b.aJY();
+      Log.i("MicroMsg.FirstScreenArrangement", "arrangeInitializePendingPlugins now? %s", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
-        break label297;
+        break label288;
       }
-      paramg.a(b.b.dYp);
+      paramg.a(b.b.lqT);
     }
     for (;;)
     {
       if ((i != 0) && (bool)) {
-        com.tencent.mm.kernel.g.RJ().QV();
+        com.tencent.mm.kernel.h.baC().aZO();
       }
-      com.tencent.mm.blink.a.ks("afterAccountInit");
+      com.tencent.mm.blink.a.Ch("afterAccountInit");
       return;
       i = 0;
       break;
-      label297:
-      al.p(new b.2(paramg), 1000L);
+      label288:
+      MMHandlerThread.postToMainThreadDelayed(new b.2(paramg), 1000L);
     }
-  }
-  
-  protected final void mH(String paramString)
-  {
-    this.eJD.add(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kernel.a.d
  * JD-Core Version:    0.7.0.1
  */

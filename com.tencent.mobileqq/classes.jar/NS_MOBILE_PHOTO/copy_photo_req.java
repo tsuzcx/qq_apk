@@ -12,9 +12,9 @@ public final class copy_photo_req
   public String desc = "";
   public String dstAlbumType = "";
   public String dstAlbumid = "";
-  public ArrayList<st_copy_photo> photos;
+  public ArrayList<st_copy_photo> photos = null;
   public String reqSource = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {
@@ -56,7 +56,7 @@ public final class copy_photo_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.copy_photo_req
  * JD-Core Version:    0.7.0.1
  */

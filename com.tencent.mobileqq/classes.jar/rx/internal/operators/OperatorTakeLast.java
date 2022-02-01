@@ -11,10 +11,12 @@ public final class OperatorTakeLast<T>
   
   public OperatorTakeLast(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IndexOutOfBoundsException("count cannot be negative");
+    if (paramInt >= 0)
+    {
+      this.count = paramInt;
+      return;
     }
-    this.count = paramInt;
+    throw new IndexOutOfBoundsException("count cannot be negative");
   }
   
   public Subscriber<? super T> call(Subscriber<? super T> paramSubscriber)
@@ -28,7 +30,7 @@ public final class OperatorTakeLast<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorTakeLast
  * JD-Core Version:    0.7.0.1
  */

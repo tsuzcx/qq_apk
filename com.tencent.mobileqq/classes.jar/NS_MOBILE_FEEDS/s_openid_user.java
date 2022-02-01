@@ -29,20 +29,23 @@ public final class s_openid_user
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.openid != null) {
-      paramJceOutputStream.write(this.openid, 0);
+    String str = this.openid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 1);
+    str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.logo != null) {
-      paramJceOutputStream.write(this.logo, 2);
+    str = this.logo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_openid_user
  * JD-Core Version:    0.7.0.1
  */

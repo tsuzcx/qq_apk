@@ -21,7 +21,7 @@ public final class CircleOptions
   
   public CircleOptions()
   {
-    AppMethodBeat.i(101174);
+    AppMethodBeat.i(87551);
     this.strokeColor = -16777216;
     this.strokeWidth = 10.0F;
     this.isVisible = true;
@@ -32,7 +32,7 @@ public final class CircleOptions
     this.strokeDash = false;
     this.dashPathEffect = null;
     this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
-    AppMethodBeat.o(101174);
+    AppMethodBeat.o(87551);
   }
   
   public final CircleOptions center(LatLng paramLatLng)
@@ -153,7 +153,7 @@ public final class CircleOptions
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(101175);
+    AppMethodBeat.i(87552);
     Bundle localBundle = new Bundle();
     if (this.point != null)
     {
@@ -171,7 +171,7 @@ public final class CircleOptions
     {
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.id);
-      AppMethodBeat.o(101175);
+      AppMethodBeat.o(87552);
       return;
     }
   }
@@ -184,7 +184,7 @@ public final class CircleOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.CircleOptions
  * JD-Core Version:    0.7.0.1
  */

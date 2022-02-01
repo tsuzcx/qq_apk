@@ -4,11 +4,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Interpolator;
 
 public abstract class VerticalAbsSpinner
   extends AbsSpinner
 {
-  View a = null;
+  Interpolator mInterpolator;
+  View mSelectedView = null;
   
   public VerticalAbsSpinner(Context paramContext)
   {
@@ -34,29 +36,21 @@ public abstract class VerticalAbsSpinner
   {
     if ((this.mItemCount > 0) && (this.mSelectedPosition >= 0))
     {
-      int i;
-      View localView2;
-      View localView1;
       if (Math.abs(this.mSelectedPosition - this.mFirstPosition) > getChildCount())
       {
         i = this.mSelectedPosition + this.mItemCount - this.mFirstPosition;
-        localView2 = getChildAt(i);
-        localView1 = localView2;
-        if (localView2 != null)
-        {
-          localView2.setTag(String.valueOf(i));
-          localView1 = localView2;
+        localView = getChildAt(i);
+        if (localView != null) {
+          localView.setTag(String.valueOf(i));
         }
+        return localView;
       }
-      do
-      {
-        return localView1;
-        i = this.mSelectedPosition - this.mFirstPosition;
-        localView2 = getChildAt(i);
-        localView1 = localView2;
-      } while (localView2 == null);
-      localView2.setTag(String.valueOf(i));
-      return localView2;
+      int i = this.mSelectedPosition - this.mFirstPosition;
+      View localView = getChildAt(i);
+      if (localView != null) {
+        localView.setTag(String.valueOf(i));
+      }
+      return localView;
     }
     return null;
   }
@@ -80,7 +74,7 @@ public abstract class VerticalAbsSpinner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.VerticalAbsSpinner
  * JD-Core Version:    0.7.0.1
  */

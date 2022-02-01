@@ -1,75 +1,37 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.widget.LinearLayout;
+import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.k.g;
+import java.util.ArrayList;
+import kotlin.Metadata;
 
-final class b
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/setting/ui/setting/RingtoneViewAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/setting/ui/setting/RingtoneViewHolder;", "compositionList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/config/MessageRingtone;", "iRingtoneChooseCallback", "Lcom/tencent/mm/plugin/setting/ui/setting/RingtoneViewHolder$IRingtoneChooseCallback;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/setting/ui/setting/RingtoneViewHolder$IRingtoneChooseCallback;)V", "getIRingtoneChooseCallback", "()Lcom/tencent/mm/plugin/setting/ui/setting/RingtoneViewHolder$IRingtoneChooseCallback;", "getItemCount", "", "onBindViewHolder", "", "viewHolderLongClick", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "viewType", "plugin-setting_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class b
+  extends RecyclerView.a<c>
 {
-  LinearLayout qLM;
-  LinearLayout qLN;
-  LinearLayout qLO;
-  LinearLayout qLP;
-  LinearLayout qLQ;
+  private final ArrayList<g> Jql;
+  private final c.a Ppy;
   
-  public final void YY(String paramString)
+  public b(ArrayList<g> paramArrayList, c.a parama)
   {
-    AppMethodBeat.i(127689);
-    if (paramString.equals("downloading"))
-    {
-      this.qLM.setVisibility(0);
-      this.qLN.setVisibility(8);
-      this.qLO.setVisibility(8);
-      this.qLP.setVisibility(8);
-      this.qLQ.setVisibility(8);
-      AppMethodBeat.o(127689);
-      return;
-    }
-    if (paramString.equals("downloaded"))
-    {
-      this.qLM.setVisibility(8);
-      this.qLN.setVisibility(0);
-      this.qLO.setVisibility(8);
-      this.qLP.setVisibility(8);
-      this.qLQ.setVisibility(8);
-      AppMethodBeat.o(127689);
-      return;
-    }
-    if (paramString.equals("undownloaded"))
-    {
-      this.qLM.setVisibility(8);
-      this.qLN.setVisibility(8);
-      this.qLO.setVisibility(0);
-      this.qLP.setVisibility(8);
-      this.qLQ.setVisibility(8);
-      AppMethodBeat.o(127689);
-      return;
-    }
-    if (paramString.equals("using"))
-    {
-      this.qLM.setVisibility(8);
-      this.qLN.setVisibility(8);
-      this.qLO.setVisibility(8);
-      this.qLP.setVisibility(0);
-      this.qLQ.setVisibility(8);
-      AppMethodBeat.o(127689);
-      return;
-    }
-    if (paramString.equals("canceling"))
-    {
-      this.qLM.setVisibility(8);
-      this.qLN.setVisibility(8);
-      this.qLO.setVisibility(8);
-      this.qLP.setVisibility(8);
-      this.qLQ.setVisibility(0);
-      AppMethodBeat.o(127689);
-      return;
-    }
-    AppMethodBeat.o(127689);
+    AppMethodBeat.i(298725);
+    this.Jql = paramArrayList;
+    this.Ppy = parama;
+    AppMethodBeat.o(298725);
+  }
+  
+  public final int getItemCount()
+  {
+    AppMethodBeat.i(298729);
+    int i = this.Jql.size();
+    AppMethodBeat.o(298729);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.b
  * JD-Core Version:    0.7.0.1
  */

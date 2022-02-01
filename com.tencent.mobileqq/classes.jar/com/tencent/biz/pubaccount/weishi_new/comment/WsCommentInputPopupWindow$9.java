@@ -1,22 +1,21 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import com.tencent.biz.subscribe.comment.WorkSpaceView;
-import tdf;
-import tlo;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
-public class WsCommentInputPopupWindow$9
+class WsCommentInputPopupWindow$9
   implements Runnable
 {
-  public WsCommentInputPopupWindow$9(tdf paramtdf, WorkSpaceView paramWorkSpaceView) {}
+  WsCommentInputPopupWindow$9(WsCommentInputPopupWindow paramWsCommentInputPopupWindow, View paramView) {}
   
   public void run()
   {
-    tlo.b("CommentInputPopupWindow", 1, "top   " + this.a.getTop() + " bottom： " + this.a.getBottom() + " getx :  " + this.a.getX() + " gety :  " + this.a.getY() + "   Width：  " + this.a.getMeasuredWidth() + "  Height：  " + this.a.getMeasuredHeight());
+    WsCommentInputPopupWindow.m(this.this$0).showSoftInput(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.9
  * JD-Core Version:    0.7.0.1
  */

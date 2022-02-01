@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bety;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class AuthDevRenameActivity$4
   implements Runnable
@@ -11,28 +11,24 @@ class AuthDevRenameActivity$4
   {
     try
     {
-      if ((AuthDevRenameActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        AuthDevRenameActivity.a(this.this$0, new bety(this.this$0, this.this$0.getTitleBarHeight()));
+      if ((AuthDevRenameActivity.access$100(this.this$0) == null) && (!this.this$0.isFinishing())) {
+        AuthDevRenameActivity.access$102(this.this$0, new QQProgressDialog(this.this$0, this.this$0.getTitleBarHeight()));
       }
-      if ((AuthDevRenameActivity.a(this.this$0) != null) && (!AuthDevRenameActivity.a(this.this$0).isShowing()))
-      {
-        AuthDevRenameActivity.a(this.this$0).a(this.this$0.getString(2131692241));
-        AuthDevRenameActivity.a(this.this$0).show();
-      }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
+    }
+    if ((AuthDevRenameActivity.access$100(this.this$0) != null) && (!AuthDevRenameActivity.access$100(this.this$0).isShowing()))
+    {
+      AuthDevRenameActivity.access$100(this.this$0).a(this.this$0.getString(2131889009));
+      AuthDevRenameActivity.access$100(this.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity.4
  * JD-Core Version:    0.7.0.1
  */

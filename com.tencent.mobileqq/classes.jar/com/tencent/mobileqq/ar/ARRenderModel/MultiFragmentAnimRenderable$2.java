@@ -1,22 +1,19 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amvh;
-import amwd;
-
-public class MultiFragmentAnimRenderable$2
+class MultiFragmentAnimRenderable$2
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$2(amwd paramamwd, amvh paramamvh) {}
+  MultiFragmentAnimRenderable$2(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable, ARBaseRender paramARBaseRender) {}
   
   public void run()
   {
-    this.a.c();
-    this.a.d();
+    this.a.i();
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.2
  * JD-Core Version:    0.7.0.1
  */

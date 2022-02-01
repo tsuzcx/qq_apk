@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class y
   extends JceStruct
@@ -38,26 +39,31 @@ public final class y
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bZ != 0) {
-      paramJceOutputStream.write(this.bZ, 0);
+    int i = this.bZ;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.ca != 0) {
-      paramJceOutputStream.write(this.ca, 1);
+    i = this.ca;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.ci != 1) {
-      paramJceOutputStream.write(this.ci, 2);
+    i = this.ci;
+    if (i != 1) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.cj != null) {
-      paramJceOutputStream.write(this.cj, 3);
+    Object localObject = this.cj;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.ck != null) {
-      paramJceOutputStream.write(this.ck, 4);
+    localObject = this.ck;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.y
  * JD-Core Version:    0.7.0.1
  */

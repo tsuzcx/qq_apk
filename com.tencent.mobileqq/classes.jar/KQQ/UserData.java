@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class UserData
   extends JceStruct
 {
-  public byte cIfPushPic;
+  public byte cIfPushPic = 0;
   
   public UserData() {}
   
@@ -28,7 +28,7 @@ public final class UserData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.UserData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/m0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/dpv" android:paddingLeft="@dimen/l2" android:layout_width="wrap_content" android:layout_height="@dimen/m0" android:maxWidth="200.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/dpw" android:paddingLeft="@dimen/l2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_toRightOf="@id/dpv" android:layout_centerVertical="true" />
-    <Button android:id="@id/ay2" android:visibility="visible" android:layout_marginRight="@dimen/l2" android:minWidth="60.0dip" android:text="@string/pn" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/nv" />
+<RelativeLayout android:orientation="vertical" android:background="@color/a1q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/afr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/l_g" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/l_g" android:background="@drawable/ac1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:gravity="center_vertical" android:id="@id/kpx" android:paddingLeft="@dimen/cp" android:layout_width="fill_parent" android:layout_height="@dimen/db" android:text="@string/e_e" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/l_h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/kpx" />
+        <View android:id="@id/jzp" android:background="@color/BW_0_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="@dimen/df" android:layout_below="@id/l_h" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/aq9" android:layout_width="fill_parent" android:layout_height="@dimen/db" android:text="@string/e_d" android:layout_below="@id/jzp" />
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
 </RelativeLayout>

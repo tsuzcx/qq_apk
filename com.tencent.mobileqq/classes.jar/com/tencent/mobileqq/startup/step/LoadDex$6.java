@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import azpf;
+import com.tencent.qqperf.monitor.network.NetworkMonitor;
 
 class LoadDex$6
   implements Runnable
@@ -9,12 +9,12 @@ class LoadDex$6
   
   public void run()
   {
-    azpf.b(40, this.this$0.mDirector, null).step();
+    NetworkMonitor.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadDex.6
  * JD-Core Version:    0.7.0.1
  */

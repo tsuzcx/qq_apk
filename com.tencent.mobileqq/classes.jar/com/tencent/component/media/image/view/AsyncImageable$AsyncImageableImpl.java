@@ -44,13 +44,12 @@ public class AsyncImageable$AsyncImageableImpl
   {
     if (paramDrawable != null)
     {
-      if (!paramBoolean) {
+      if (!paramBoolean)
+      {
         this.mImageView.setImageDrawable(paramDrawable);
       }
-      for (;;)
+      else
       {
-        this.mAsyncImageId = paramDrawable.hashCode();
-        return;
         Animation localAnimation1 = this.mAsyncOptions.inAnimation;
         Animation localAnimation2 = this.mAsyncOptions.outAnimation;
         if (localAnimation2 != null)
@@ -67,6 +66,8 @@ public class AsyncImageable$AsyncImageableImpl
           this.mImageView.setImageDrawable(paramDrawable);
         }
       }
+      this.mAsyncImageId = paramDrawable.hashCode();
+      return;
     }
     this.mAsyncImageId = 0;
   }
@@ -75,31 +76,33 @@ public class AsyncImageable$AsyncImageableImpl
   {
     Drawable localDrawable = this.mAsyncOptions.defaultImage;
     int i = this.mAsyncOptions.defaultImageId;
-    if (localDrawable != null) {
+    if (localDrawable != null)
+    {
       this.mImageView.setImageDrawable(localDrawable);
-    }
-    while (i == 0) {
       return;
     }
-    this.mImageView.setImageResource(i);
+    if (i != 0) {
+      this.mImageView.setImageResource(i);
+    }
   }
   
   private void applyFailImage()
   {
     Drawable localDrawable = this.mAsyncOptions.failImage;
     int i = this.mAsyncOptions.failImageId;
-    if (localDrawable != null) {
+    if (localDrawable != null)
+    {
       this.mImageView.setImageDrawable(localDrawable);
-    }
-    while (i == 0) {
       return;
     }
-    this.mImageView.setImageResource(i);
+    if (i != 0) {
+      this.mImageView.setImageResource(i);
+    }
   }
   
   private boolean checkAsyncChanged(String paramString)
   {
-    return !equalsString(this.mUrl, paramString);
+    return equalsString(this.mUrl, paramString) ^ true;
   }
   
   private void ensureDrawable()
@@ -116,92 +119,78 @@ public class AsyncImageable$AsyncImageableImpl
   
   private void ensureThread(String paramString)
   {
-    if (Thread.currentThread() != this.mMainThread) {
-      throw new RuntimeException(paramString + " can ONLY be called within main thread!");
+    if (Thread.currentThread() == this.mMainThread) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" can ONLY be called within main thread!");
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   private static boolean equalsString(String paramString1, String paramString2)
   {
-    boolean bool = true;
-    if ((paramString1 == null) || (paramString2 == null)) {
-      bool = false;
-    }
-    while (paramString1.equals(paramString2)) {
-      return bool;
-    }
-    if (paramString1 != null) {
-      return ImageKey.getUrlKey(paramString1, true).equals(ImageKey.getUrlKey(paramString2, true));
+    if (paramString1 != null)
+    {
+      if (paramString2 == null) {
+        return false;
+      }
+      if (paramString1.equals(paramString2)) {
+        return true;
+      }
+      if (paramString1 != null) {
+        return ImageKey.getUrlKey(paramString1, true).equals(ImageKey.getUrlKey(paramString2, true));
+      }
     }
     return false;
   }
   
   private static boolean equalsStringArray(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (paramArrayOfString1 == paramArrayOfString2) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramArrayOfString1 != null)
     {
-      do
+      if (paramArrayOfString2 == null) {
+        return false;
+      }
+      if (paramArrayOfString1.length != paramArrayOfString2.length) {
+        return false;
+      }
+      int i = 0;
+      while (i < paramArrayOfString1.length)
       {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramArrayOfString1 == null);
-        bool1 = bool2;
-      } while (paramArrayOfString2 == null);
-      bool1 = bool2;
-    } while (paramArrayOfString1.length != paramArrayOfString2.length);
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramArrayOfString1.length) {
-        break label66;
+        if (!equalsString(paramArrayOfString1[i], paramArrayOfString2[i])) {
+          return false;
+        }
+        i += 1;
       }
-      bool1 = bool2;
-      if (!equalsString(paramArrayOfString1[i], paramArrayOfString2[i])) {
-        break;
-      }
-      i += 1;
+      return true;
     }
-    label66:
-    return true;
+    return false;
   }
   
   private void notifyAsyncImageFailed()
   {
     AsyncImageable.AsyncImageListener localAsyncImageListener = this.mAsyncListener;
     Object localObject1 = this.mAsyncListenerCallback;
-    Object localObject2;
     if (localAsyncImageListener != null)
     {
-      if (localObject1 != null)
-      {
+      if (localObject1 != null) {
         localObject2 = localObject1;
-        localAsyncImageListener.onImageFailed((AsyncImageable)localObject2);
+      } else {
+        localObject2 = this;
       }
+      localAsyncImageListener.onImageFailed((AsyncImageable)localObject2);
     }
-    else
+    Object localObject2 = this.mInternalAsyncListener;
+    if (localObject2 != null)
     {
-      localObject2 = this.mInternalAsyncListener;
-      if (localObject2 != null) {
-        if (localObject1 == null) {
-          break label53;
-        }
+      if (localObject1 == null) {
+        localObject1 = this;
       }
-    }
-    for (;;)
-    {
       ((AsyncImageable.AsyncImageListener)localObject2).onImageFailed((AsyncImageable)localObject1);
-      return;
-      localObject2 = this;
-      break;
-      label53:
-      localObject1 = this;
     }
   }
   
@@ -209,32 +198,22 @@ public class AsyncImageable$AsyncImageableImpl
   {
     AsyncImageable.AsyncImageListener localAsyncImageListener = this.mAsyncListener;
     Object localObject1 = this.mAsyncListenerCallback;
-    Object localObject2;
     if (localAsyncImageListener != null)
     {
-      if (localObject1 != null)
-      {
+      if (localObject1 != null) {
         localObject2 = localObject1;
-        localAsyncImageListener.onImageLoaded((AsyncImageable)localObject2);
+      } else {
+        localObject2 = this;
       }
+      localAsyncImageListener.onImageLoaded((AsyncImageable)localObject2);
     }
-    else
+    Object localObject2 = this.mInternalAsyncListener;
+    if (localObject2 != null)
     {
-      localObject2 = this.mInternalAsyncListener;
-      if (localObject2 != null) {
-        if (localObject1 == null) {
-          break label53;
-        }
+      if (localObject1 == null) {
+        localObject1 = this;
       }
-    }
-    for (;;)
-    {
       ((AsyncImageable.AsyncImageListener)localObject2).onImageLoaded((AsyncImageable)localObject1);
-      return;
-      localObject2 = this;
-      break;
-      label53:
-      localObject1 = this;
     }
   }
   
@@ -242,32 +221,22 @@ public class AsyncImageable$AsyncImageableImpl
   {
     AsyncImageable.AsyncImageListener localAsyncImageListener = this.mAsyncListener;
     Object localObject1 = this.mAsyncListenerCallback;
-    Object localObject2;
     if (localAsyncImageListener != null)
     {
-      if (localObject1 != null)
-      {
+      if (localObject1 != null) {
         localObject2 = localObject1;
-        localAsyncImageListener.onImageProgress((AsyncImageable)localObject2, paramFloat);
+      } else {
+        localObject2 = this;
       }
+      localAsyncImageListener.onImageProgress((AsyncImageable)localObject2, paramFloat);
     }
-    else
+    Object localObject2 = this.mInternalAsyncListener;
+    if (localObject2 != null)
     {
-      localObject2 = this.mInternalAsyncListener;
-      if (localObject2 != null) {
-        if (localObject1 == null) {
-          break label58;
-        }
+      if (localObject1 == null) {
+        localObject1 = this;
       }
-    }
-    for (;;)
-    {
       ((AsyncImageable.AsyncImageListener)localObject2).onImageProgress((AsyncImageable)localObject1, paramFloat);
-      return;
-      localObject2 = this;
-      break;
-      label58:
-      localObject1 = this;
     }
   }
   
@@ -275,32 +244,22 @@ public class AsyncImageable$AsyncImageableImpl
   {
     AsyncImageable.AsyncImageListener localAsyncImageListener = this.mAsyncListener;
     Object localObject1 = this.mAsyncListenerCallback;
-    Object localObject2;
     if (localAsyncImageListener != null)
     {
-      if (localObject1 != null)
-      {
+      if (localObject1 != null) {
         localObject2 = localObject1;
-        localAsyncImageListener.onImageStarted((AsyncImageable)localObject2);
+      } else {
+        localObject2 = this;
       }
+      localAsyncImageListener.onImageStarted((AsyncImageable)localObject2);
     }
-    else
+    Object localObject2 = this.mInternalAsyncListener;
+    if (localObject2 != null)
     {
-      localObject2 = this.mInternalAsyncListener;
-      if (localObject2 != null) {
-        if (localObject1 == null) {
-          break label53;
-        }
+      if (localObject1 == null) {
+        localObject1 = this;
       }
-    }
-    for (;;)
-    {
       ((AsyncImageable.AsyncImageListener)localObject2).onImageStarted((AsyncImageable)localObject1);
-      return;
-      localObject2 = this;
-      break;
-      label53:
-      localObject1 = this;
     }
   }
   
@@ -311,16 +270,16 @@ public class AsyncImageable$AsyncImageableImpl
   
   private static void scheduleAnimation(View paramView, Animation paramAnimation, Runnable paramRunnable)
   {
-    if ((paramView == null) || (paramAnimation == null))
+    if ((paramView != null) && (paramAnimation != null))
     {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
+      paramView.clearAnimation();
+      paramAnimation.setAnimationListener(new AsyncImageable.AsyncImageableImpl.4(paramRunnable));
+      paramView.startAnimation(paramAnimation);
       return;
     }
-    paramView.clearAnimation();
-    paramAnimation.setAnimationListener(new AsyncImageable.AsyncImageableImpl.4(paramRunnable));
-    paramView.startAnimation(paramAnimation);
+    if (paramRunnable != null) {
+      paramRunnable.run();
+    }
   }
   
   private void setAsyncImageInternal(String paramString, String... paramVarArgs)
@@ -342,11 +301,11 @@ public class AsyncImageable$AsyncImageableImpl
     ensureThread("setAsyncImage");
     this.mUrl = paramString;
     this.mLatestUrl = paramString;
-    paramVarArgs = this.mOptions;
     this.mOptions = ImageLoader.Options.copy(this.mOptions);
     this.mAsyncOptions.fillOptions(this.mOptions);
-    this.mOptions.needCallBackProcessPercent = true;
-    this.mOptions.useMainThread = true;
+    paramVarArgs = this.mOptions;
+    paramVarArgs.needCallBackProcessPercent = true;
+    paramVarArgs.useMainThread = true;
     paramVarArgs = this.mImageView.getLayoutParams();
     if ((paramVarArgs != null) && (paramVarArgs.width > 0) && (paramVarArgs.height > 0))
     {
@@ -354,8 +313,12 @@ public class AsyncImageable$AsyncImageableImpl
       this.mOptions.clipHeight = paramVarArgs.height;
     }
     notifyAsyncImageStart();
-    if (this.mAsyncOptions.justMemoryCache) {}
-    for (paramString = this.mImageLoader.loadImageSync(paramString, this.mOptions); paramString != null; paramString = this.mImageLoader.loadImage(paramString, this.mImageLoadListener, this.mOptions))
+    if (this.mAsyncOptions.justMemoryCache) {
+      paramString = this.mImageLoader.loadImageSync(paramString, this.mOptions);
+    } else {
+      paramString = this.mImageLoader.loadImage(paramString, this.mImageLoadListener, this.mOptions);
+    }
+    if (paramString != null)
     {
       applyAsyncImage(paramString, false);
       notifyAsyncImageLoaded();
@@ -414,7 +377,7 @@ public class AsyncImageable$AsyncImageableImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -20,16 +20,21 @@ public final class Cookie$Builder
   
   private Builder domain(String paramString, boolean paramBoolean)
   {
-    if (paramString == null) {
-      throw new NullPointerException("domain == null");
+    if (paramString != null)
+    {
+      Object localObject = Util.canonicalizeHost(paramString);
+      if (localObject != null)
+      {
+        this.domain = ((String)localObject);
+        this.hostOnly = paramBoolean;
+        return this;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unexpected domain: ");
+      ((StringBuilder)localObject).append(paramString);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    String str = Util.canonicalizeHost(paramString);
-    if (str == null) {
-      throw new IllegalArgumentException("unexpected domain: " + paramString);
-    }
-    this.domain = str;
-    this.hostOnly = paramBoolean;
-    return this;
+    throw new NullPointerException("domain == null");
   }
   
   public Cookie build()
@@ -44,22 +49,17 @@ public final class Cookie$Builder
   
   public Builder expiresAt(long paramLong)
   {
-    long l = 253402300799999L;
+    long l = paramLong;
     if (paramLong <= 0L) {
-      paramLong = -9223372036854775808L;
+      l = -9223372036854775808L;
     }
-    for (;;)
-    {
-      if (paramLong > 253402300799999L) {
-        paramLong = l;
-      }
-      for (;;)
-      {
-        this.expiresAt = paramLong;
-        this.persistent = true;
-        return this;
-      }
+    paramLong = l;
+    if (l > 253402300799999L) {
+      paramLong = 253402300799999L;
     }
+    this.expiresAt = paramLong;
+    this.persistent = true;
+    return this;
   }
   
   public Builder hostOnlyDomain(String paramString)
@@ -75,23 +75,26 @@ public final class Cookie$Builder
   
   public Builder name(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("name == null");
-    }
-    if (!paramString.trim().equals(paramString)) {
+    if (paramString != null)
+    {
+      if (paramString.trim().equals(paramString))
+      {
+        this.name = paramString;
+        return this;
+      }
       throw new IllegalArgumentException("name is not trimmed");
     }
-    this.name = paramString;
-    return this;
+    throw new NullPointerException("name == null");
   }
   
   public Builder path(String paramString)
   {
-    if (!paramString.startsWith("/")) {
-      throw new IllegalArgumentException("path must start with '/'");
+    if (paramString.startsWith("/"))
+    {
+      this.path = paramString;
+      return this;
     }
-    this.path = paramString;
-    return this;
+    throw new IllegalArgumentException("path must start with '/'");
   }
   
   public Builder secure()
@@ -102,19 +105,21 @@ public final class Cookie$Builder
   
   public Builder value(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("value == null");
-    }
-    if (!paramString.trim().equals(paramString)) {
+    if (paramString != null)
+    {
+      if (paramString.trim().equals(paramString))
+      {
+        this.value = paramString;
+        return this;
+      }
       throw new IllegalArgumentException("value is not trimmed");
     }
-    this.value = paramString;
-    return this;
+    throw new NullPointerException("value == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Cookie.Builder
  * JD-Core Version:    0.7.0.1
  */

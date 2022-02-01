@@ -1,13 +1,10 @@
 package Wallet;
 
-import bdgk;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Collection;
 
 public final class RedInfoSyncReq
   extends JceStruct
@@ -16,9 +13,9 @@ public final class RedInfoSyncReq
   static ArrayList<RedInfo> cache_vecRedInfo = new ArrayList();
   public String OSVersion = "";
   public String deviceModel = "";
-  public int platId;
+  public int platId = 0;
   public String qVersion = "";
-  public ArrayList<RedInfo> vecRedInfo;
+  public ArrayList<RedInfo> vecRedInfo = null;
   
   static
   {
@@ -37,18 +34,6 @@ public final class RedInfoSyncReq
     this.vecRedInfo = paramArrayList;
   }
   
-  public static RedInfoSyncReq createReq(List<QWRedConfig.RedInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)paramList.next();
-      localArrayList.add(new RedInfo(localRedInfo.path, localRedInfo.taskId, localRedInfo.isShow));
-    }
-    return new RedInfoSyncReq(1, bdgk.c(), bdgk.e(), bdgk.i(), localArrayList);
-  }
-  
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.platId = paramJceInputStream.read(this.platId, 0, false);
@@ -61,23 +46,27 @@ public final class RedInfoSyncReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.platId, 0);
-    if (this.qVersion != null) {
-      paramJceOutputStream.write(this.qVersion, 1);
+    Object localObject = this.qVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.OSVersion != null) {
-      paramJceOutputStream.write(this.OSVersion, 2);
+    localObject = this.OSVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.deviceModel != null) {
-      paramJceOutputStream.write(this.deviceModel, 3);
+    localObject = this.deviceModel;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.vecRedInfo != null) {
-      paramJceOutputStream.write(this.vecRedInfo, 4);
+    localObject = this.vecRedInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.RedInfoSyncReq
  * JD-Core Version:    0.7.0.1
  */

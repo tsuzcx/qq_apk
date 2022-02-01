@@ -1,52 +1,97 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azct;
-import baub;
-import baue;
-import bavg;
-import bdin;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.av.ManageConfig.QAVConfItem;
+import com.tencent.av.ManageConfig.QAVConfig;
+import com.tencent.av.utils.UITools;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public class PtvTemplateManager$5
+class PtvTemplateManager$5
   implements Runnable
 {
-  PtvTemplateManager$5(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  PtvTemplateManager$5(PtvTemplateManager paramPtvTemplateManager, Runnable paramRunnable) {}
   
   public void run()
   {
-    if (this.this$0.a(this.a)) {
-      this.a.usable = true;
+    boolean bool2 = QLog.isColorLevel();
+    boolean bool1 = false;
+    if (bool2) {
+      QLog.i("PtvTemplateManager", 2, String.format("双人挂件加载 start, rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
     }
-    do
-    {
-      QQAppInterface localQQAppInterface;
-      do
-      {
-        return;
-        this.a.usable = false;
-        localQQAppInterface = this.this$0.a();
-        if (localQQAppInterface != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("PtvTemplateManager", 2, "preDownloadTemplates  null!");
+    Object localObject1 = QAVConfig.b(106).b;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
-      baub localbaub = new baub();
-      localbaub.jdField_a_of_type_Baug = new azct(this);
-      localbaub.jdField_a_of_type_JavaLangString = this.a.resurl;
-      localbaub.jdField_a_of_type_Int = 0;
-      localbaub.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.a, this.a.name).getPath();
-      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
-      localQQAppInterface.getNetEngine(0).a(localbaub);
-    } while (!QLog.isColorLevel());
-    QLog.i("PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.resurl);
+    }
+    ??? = PtvTemplateManager.a(this.this$0, (String)localObject1);
+    if (??? != null)
+    {
+      if (((List)???).isEmpty()) {
+        return;
+      }
+      localObject1 = new ArrayList();
+      int i = UITools.getQQVersion();
+      Object localObject4;
+      if (QLog.isColorLevel())
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("cur version:");
+        ((StringBuilder)localObject4).append(i);
+        QLog.d("PtvTemplateManager", 2, ((StringBuilder)localObject4).toString());
+      }
+      ??? = ((List)???).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject4 = (PtvTemplateManager.PtvTemplateInfo)((Iterator)???).next();
+        if (QLog.isColorLevel()) {
+          QLog.d("PtvTemplateManager", 2, String.format("the pandent[%s], platform[%s]", new Object[] { ((PtvTemplateManager.PtvTemplateInfo)localObject4).id, Integer.valueOf(((PtvTemplateManager.PtvTemplateInfo)localObject4).platform) }));
+        }
+        if ((((PtvTemplateManager.PtvTemplateInfo)localObject4).platform != 0) && (i < ((PtvTemplateManager.PtvTemplateInfo)localObject4).platform))
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("PtvTemplateManager", 4, String.format("双人挂件加载, platform不符合, %s", new Object[] { localObject4 }));
+          }
+        }
+        else
+        {
+          ((PtvTemplateManager.PtvTemplateInfo)localObject4).usable = this.this$0.a((PtvTemplateManager.PtvTemplateInfo)localObject4);
+          ((List)localObject1).add(localObject4);
+        }
+      }
+      if (QLog.isDevelopLevel())
+      {
+        i = ((List)localObject1).size();
+        if (this.a != null) {
+          bool1 = true;
+        }
+        QLog.d("PtvTemplateManager", 2, String.format("双人挂件加载 size[%s], onInitFinishSink[%s], mVersion[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), this.this$0.s }));
+      }
+      synchronized (this.this$0.k)
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("initLocalTemplateConfigInfoWithExtra, isEmpty[");
+        ((StringBuilder)localObject4).append(this.this$0.k.isEmpty());
+        ((StringBuilder)localObject4).append("], size[");
+        ((StringBuilder)localObject4).append(((List)localObject1).size());
+        ((StringBuilder)localObject4).append("]");
+        QLog.w("PtvTemplateManager", 1, ((StringBuilder)localObject4).toString());
+        this.this$0.k.clear();
+        this.this$0.k.addAll((Collection)localObject1);
+        localObject1 = this.a;
+        if (localObject1 != null) {
+          ((Runnable)localObject1).run();
+        }
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

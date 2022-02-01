@@ -12,16 +12,12 @@ final class aw
     try
     {
       this.a[0] = av.b();
-      this.b.countDown();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    this.b.countDown();
   }
 }
 

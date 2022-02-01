@@ -1,33 +1,40 @@
 package com.tencent.thumbplayer.adapter.player.systemplayer;
 
-import android.media.MediaPlayer;
-import com.tencent.thumbplayer.utils.TPLogUtil;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
+import com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayerUtils;
+import com.tencent.thumbplayer.api.TPSubtitleData;
+import com.tencent.thumbplayer.core.common.TPSubtitleFrame;
 
 class TPSystemMediaPlayer$1
-  implements Runnable
+  implements ITPSysPlayerExternalSubtitle.IOnSubTitleListener
 {
   TPSystemMediaPlayer$1(TPSystemMediaPlayer paramTPSystemMediaPlayer) {}
   
-  public void run()
+  public void onEventInfo() {}
+  
+  public void onSubtitleFrameData(TPSubtitleFrame paramTPSubtitleFrame)
   {
-    if ((!TPSystemMediaPlayer.access$300(this.this$0)) && (TPSystemMediaPlayer.access$400(this.this$0) != TPSystemMediaPlayer.PlayerState.PAUSED)) {
-      TPSystemMediaPlayer.access$502(this.this$0, true);
+    paramTPSubtitleFrame = TPThumbPlayerUtils.convert2TPSubtitleFrameBuffer(paramTPSubtitleFrame);
+    ITPPlayerBaseListener.IOnSubtitleFrameOutListener localIOnSubtitleFrameOutListener = TPSystemMediaPlayer.access$300(this.this$0);
+    if (localIOnSubtitleFrameOutListener != null) {
+      localIOnSubtitleFrameOutListener.onSubtitleFrameOut(paramTPSubtitleFrame);
     }
-    try
-    {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "position not change, so auto seek");
-      TPSystemMediaPlayer.access$700(this.this$0).seekTo(TPSystemMediaPlayer.access$600(this.this$0) + 500);
-      return;
-    }
-    catch (Exception localException)
-    {
-      TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", localException);
+  }
+  
+  public void onSubtitleInfo(ITPSysPlayerExternalSubtitle.SubtitleData paramSubtitleData)
+  {
+    TPSubtitleData localTPSubtitleData = new TPSubtitleData();
+    localTPSubtitleData.subtitleData = paramSubtitleData.text;
+    paramSubtitleData = TPSystemMediaPlayer.access$200(this.this$0);
+    if (paramSubtitleData != null) {
+      paramSubtitleData.onSubtitleData(localTPSubtitleData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemMediaPlayer.1
  * JD-Core Version:    0.7.0.1
  */

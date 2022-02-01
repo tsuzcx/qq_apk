@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import apks;
-import apld;
-import apls;
-import azqs;
+import com.tencent.av.core.VcSystemInfo;
+import com.tencent.av.utils.AVSoUtils;
+import com.tencent.av.utils.TraeHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.mobileqq.earlydownload.api.IEarlyDownloadService;
+import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
+import com.tencent.mobileqq.earlydownload.handler.QavSoDownloadHandler;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import lnz;
-import mwk;
 
 final class PressToChangeVoicePanel$2
   implements Runnable
@@ -18,42 +18,51 @@ final class PressToChangeVoicePanel$2
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    Object localObject1;
+    if (!this.a)
     {
-      if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null) {
-        PressToChangeVoicePanel.jdField_a_of_type_JavaLangString = mwk.a(BaseApplicationImpl.sApplication);
+      if (PressToChangeVoicePanel.p == null) {
+        PressToChangeVoicePanel.p = TraeHelper.b(BaseApplicationImpl.sApplication);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "checkVcSo async:" + PressToChangeVoicePanel.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkVcSo async:");
+        ((StringBuilder)localObject1).append(PressToChangeVoicePanel.p);
+        QLog.d("AIOAudioPanel", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    if ((PressToChangeVoicePanel.jdField_a_of_type_JavaLangString != null) || (lnz.f() <= 2)) {}
-    for (;;)
+    if (PressToChangeVoicePanel.p == null)
     {
-      try
-      {
-        apld localapld = ((apks)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(77)).a(apls.e());
-        if (localapld == null) {
-          continue;
+      if (VcSystemInfo.getCpuArchitecture() <= 2) {
+        try
+        {
+          localObject1 = ((IEarlyDownloadService)this.b.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler(QavSoDownloadHandler.w());
+          if (localObject1 != null) {
+            ((EarlyHandler)localObject1).a(false);
+          } else {
+            QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo null == earlyHandler:");
+          }
         }
-        localapld.a(false);
+        catch (Exception localException)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("voiceChang checkVcSo Exception:");
+          ((StringBuilder)localObject2).append(localException.getMessage());
+          QLog.e("AIOAudioPanel", 1, ((StringBuilder)localObject2).toString());
+        }
+      } else {
+        AVSoUtils.b(BaseApplicationImpl.sApplication, "traeimp-armeabi-v7a", true);
       }
-      catch (Exception localException)
-      {
-        QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo Exception:" + localException.getMessage());
-        continue;
-      }
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
-      return;
-      QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo null == earlyHandler:");
-      continue;
-      UpdateAvSo.b(BaseApplicationImpl.sApplication, "traeimp-armeabi-v7a", true);
+      QQAppInterface localQQAppInterface = this.b;
+      Object localObject2 = this.c;
+      ReportController.b(localQQAppInterface, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel.2
  * JD-Core Version:    0.7.0.1
  */

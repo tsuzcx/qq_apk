@@ -4,7 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.protocol.jce.ReportLogRequest;
 import com.tencent.tmassistantsdk.protocol.jce.ReqHead;
 import com.tencent.tmassistantsdk.protocol.jce.Request;
@@ -26,10 +26,10 @@ public class ProtocolPackage
   
   public static byte[] buildPostData(Request paramRequest)
   {
-    AppMethodBeat.i(76017);
+    AppMethodBeat.i(102263);
     if (paramRequest == null)
     {
-      AppMethodBeat.o(76017);
+      AppMethodBeat.o(102263);
       return null;
     }
     paramRequest.head.encryptWithPack = 0;
@@ -41,44 +41,44 @@ public class ProtocolPackage
     paramRequest.body = encrypt(paramRequest.body, "ji*9^&43U0X-~./(".getBytes());
     paramRequest.head.encryptWithPack = ((byte)(paramRequest.head.encryptWithPack | 0x2));
     paramRequest = jceStructToUTF8Byte(paramRequest);
-    AppMethodBeat.o(76017);
+    AppMethodBeat.o(102263);
     return paramRequest;
   }
   
   public static JceStruct buildReportRequest(byte paramByte, List<byte[]> paramList, String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(76014);
+    AppMethodBeat.i(102260);
     ReportLogRequest localReportLogRequest = new ReportLogRequest();
     localReportLogRequest.logType = paramByte;
     localReportLogRequest.logData = formatLogData(paramList);
     localReportLogRequest.hostAppPackageName = paramString1;
     localReportLogRequest.hostAppVersion = paramInt;
     localReportLogRequest.hostUserId = paramString2;
-    AppMethodBeat.o(76014);
+    AppMethodBeat.o(102260);
     return localReportLogRequest;
   }
   
   public static Request buildRequest(JceStruct paramJceStruct)
   {
-    AppMethodBeat.i(76016);
+    AppMethodBeat.i(102262);
     if (paramJceStruct == null)
     {
-      AppMethodBeat.o(76016);
+      AppMethodBeat.o(102262);
       return null;
     }
     Request localRequest = new Request();
     localRequest.head = getReqHead(paramJceStruct);
     localRequest.body = jceStructToUTF8Byte(paramJceStruct);
-    AppMethodBeat.o(76016);
+    AppMethodBeat.o(102262);
     return localRequest;
   }
   
   public static JceStruct bytes2JceObj(byte[] paramArrayOfByte, Class<? extends JceStruct> paramClass)
   {
-    AppMethodBeat.i(76022);
+    AppMethodBeat.i(102268);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(76022);
+      AppMethodBeat.o(102268);
       return null;
     }
     try
@@ -87,22 +87,22 @@ public class ProtocolPackage
       paramArrayOfByte.setServerEncoding("utf-8");
       paramClass = (JceStruct)paramClass.newInstance();
       paramClass.readFrom(paramArrayOfByte);
-      AppMethodBeat.o(76022);
+      AppMethodBeat.o(102268);
       return paramClass;
     }
     catch (Exception paramArrayOfByte)
     {
-      AppMethodBeat.o(76022);
+      AppMethodBeat.o(102268);
     }
     return null;
   }
   
   private static JceStruct createFromRequest(JceStruct paramJceStruct)
   {
-    AppMethodBeat.i(76020);
+    AppMethodBeat.i(102266);
     if (paramJceStruct == null)
     {
-      AppMethodBeat.o(76020);
+      AppMethodBeat.o(102266);
       return null;
     }
     paramJceStruct = paramJceStruct.getClass().getName();
@@ -110,14 +110,14 @@ public class ProtocolPackage
     try
     {
       paramJceStruct = (JceStruct)Class.forName(paramJceStruct).newInstance();
-      AppMethodBeat.o(76020);
+      AppMethodBeat.o(102266);
       return paramJceStruct;
     }
     catch (ClassNotFoundException paramJceStruct)
     {
       for (;;)
       {
-        ab.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
+        Log.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
         paramJceStruct = null;
       }
     }
@@ -125,7 +125,7 @@ public class ProtocolPackage
     {
       for (;;)
       {
-        ab.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
+        Log.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
         paramJceStruct = null;
       }
     }
@@ -133,7 +133,7 @@ public class ProtocolPackage
     {
       for (;;)
       {
-        ab.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
+        Log.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
         paramJceStruct = null;
       }
     }
@@ -141,17 +141,17 @@ public class ProtocolPackage
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(76025);
+    AppMethodBeat.i(102271);
     paramArrayOfByte1 = new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2);
-    AppMethodBeat.o(76025);
+    AppMethodBeat.o(102271);
     return paramArrayOfByte1;
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(76024);
+    AppMethodBeat.i(102270);
     paramArrayOfByte1 = new Cryptor().encrypt(paramArrayOfByte1, paramArrayOfByte2);
-    AppMethodBeat.o(76024);
+    AppMethodBeat.o(102270);
     return paramArrayOfByte1;
   }
   
@@ -222,7 +222,7 @@ public class ProtocolPackage
     //   108: ldc 179
     //   110: iconst_0
     //   111: anewarray 4	java/lang/Object
-    //   114: invokestatic 185	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   114: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   117: aload_1
     //   118: ifnull +7 -> 125
     //   121: aload_1
@@ -256,7 +256,7 @@ public class ProtocolPackage
     //   170: ldc 179
     //   172: iconst_0
     //   173: anewarray 4	java/lang/Object
-    //   176: invokestatic 185	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   176: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   179: goto -25 -> 154
     //   182: astore_1
     //   183: ldc 19
@@ -264,7 +264,7 @@ public class ProtocolPackage
     //   186: ldc 179
     //   188: iconst_0
     //   189: anewarray 4	java/lang/Object
-    //   192: invokestatic 185	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   192: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   195: goto -36 -> 159
     //   198: astore_1
     //   199: ldc 19
@@ -272,7 +272,7 @@ public class ProtocolPackage
     //   202: ldc 179
     //   204: iconst_0
     //   205: anewarray 4	java/lang/Object
-    //   208: invokestatic 185	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   208: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   211: goto -86 -> 125
     //   214: astore_0
     //   215: ldc 19
@@ -280,7 +280,7 @@ public class ProtocolPackage
     //   218: ldc 179
     //   220: iconst_0
     //   221: anewarray 4	java/lang/Object
-    //   224: invokestatic 185	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   224: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   227: goto -94 -> 133
     //   230: astore_0
     //   231: aconst_null
@@ -305,7 +305,7 @@ public class ProtocolPackage
     //   262: ldc 179
     //   264: iconst_0
     //   265: anewarray 4	java/lang/Object
-    //   268: invokestatic 185	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   268: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   271: goto -28 -> 243
     //   274: astore_1
     //   275: ldc 19
@@ -313,7 +313,7 @@ public class ProtocolPackage
     //   278: ldc 179
     //   280: iconst_0
     //   281: anewarray 4	java/lang/Object
-    //   284: invokestatic 185	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   284: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   287: goto -36 -> 251
     //   290: astore_0
     //   291: aconst_null
@@ -381,10 +381,10 @@ public class ProtocolPackage
   
   public static ReqHead getReqHead(JceStruct paramJceStruct)
   {
-    AppMethodBeat.i(76015);
+    AppMethodBeat.i(102261);
     if (paramJceStruct == null)
     {
-      AppMethodBeat.o(76015);
+      AppMethodBeat.o(102261);
       return null;
     }
     ReqHead localReqHead = new ReqHead();
@@ -397,32 +397,32 @@ public class ProtocolPackage
     localReqHead.terminal = new Terminal();
     localReqHead.assistantAPILevel = GlobalUtil.getInstance().getQQDownloaderAPILevel();
     localReqHead.assistantVersionCode = GlobalUtil.getInstance().getQQDownloaderVersionCode();
-    AppMethodBeat.o(76015);
+    AppMethodBeat.o(102261);
     return localReqHead;
   }
   
   public static byte[] jceStructToUTF8Byte(JceStruct paramJceStruct)
   {
-    AppMethodBeat.i(76021);
+    AppMethodBeat.i(102267);
     if (paramJceStruct == null)
     {
-      AppMethodBeat.o(76021);
+      AppMethodBeat.o(102267);
       return null;
     }
     JceOutputStream localJceOutputStream = new JceOutputStream();
     localJceOutputStream.setServerEncoding("utf-8");
     paramJceStruct.writeTo(localJceOutputStream);
     paramJceStruct = localJceOutputStream.toByteArray();
-    AppMethodBeat.o(76021);
+    AppMethodBeat.o(102267);
     return paramJceStruct;
   }
   
   public static Response unpackPackage(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(76018);
+    AppMethodBeat.i(102264);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4))
     {
-      AppMethodBeat.o(76018);
+      AppMethodBeat.o(102264);
       return null;
     }
     Response localResponse = new Response();
@@ -441,20 +441,20 @@ public class ProtocolPackage
         }
         GlobalUtil.getInstance().setPhoneGuid(localResponse.head.phoneGuid);
       }
-      AppMethodBeat.o(76018);
+      AppMethodBeat.o(102264);
       return localResponse;
     }
     catch (Exception paramArrayOfByte)
     {
-      ab.printErrStackTrace("ProtocolPackage", paramArrayOfByte, "", new Object[0]);
-      AppMethodBeat.o(76018);
+      Log.printErrStackTrace("ProtocolPackage", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(102264);
     }
     return null;
   }
   
   public static JceStruct unpageageJceResponse(JceStruct paramJceStruct, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(76019);
+    AppMethodBeat.i(102265);
     if ((paramJceStruct != null) && (paramArrayOfByte != null))
     {
       paramJceStruct = createFromRequest(paramJceStruct);
@@ -464,24 +464,24 @@ public class ProtocolPackage
           paramArrayOfByte = new JceInputStream(paramArrayOfByte);
           paramArrayOfByte.setServerEncoding("utf-8");
           paramJceStruct.readFrom(paramArrayOfByte);
-          AppMethodBeat.o(76019);
+          AppMethodBeat.o(102265);
           return paramJceStruct;
         }
         catch (Exception paramJceStruct)
         {
-          ab.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
-          AppMethodBeat.o(76019);
+          Log.printErrStackTrace("ProtocolPackage", paramJceStruct, "", new Object[0]);
+          AppMethodBeat.o(102265);
           return null;
         }
       }
     }
-    AppMethodBeat.o(76019);
+    AppMethodBeat.o(102265);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.ProtocolPackage
  * JD-Core Version:    0.7.0.1
  */

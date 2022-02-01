@@ -1,13 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONObject;
 
-public final class h
-  extends a<c>
+public class h
+  extends f<y>
 {
-  public static final int CTRL_INDEX = 218;
-  public static final String NAME = "sendBizRedPacket";
+  private static final int CTRL_INDEX = 587;
+  private static final String NAME = "disableLocationUpdate";
+  
+  public void a(y paramy, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(138192);
+    super.a(paramy, paramJSONObject, paramInt);
+    if (!(this.rZZ instanceof v))
+    {
+      Log.w("MicroMsg.AppBrand.JsApiDisableLocationUpdateWxa", "state manager not RuntimeLocationUpdateStateManagerWxa");
+      paramy.callback(paramInt, ZP("fail:system error"));
+      AppMethodBeat.o(138192);
+      return;
+    }
+    ((v)this.rZZ).am(paramy.getRuntime());
+    AppMethodBeat.o(138192);
+  }
 }
 
 

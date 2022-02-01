@@ -5,73 +5,91 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.am.i;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.plugin.account.ui.r.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.ui.base.w;
 
 public final class c
-  implements f, com.tencent.mm.ai.g
+  implements com.tencent.mm.am.h, i
 {
   public Context context;
-  public m cqE;
-  public c.a gAJ;
-  private ak handler;
-  public com.tencent.mm.ui.base.p tipDialog;
+  public p hEi;
+  private MMHandler handler;
+  public a pWx;
+  public w tipDialog;
   
-  public c(Context paramContext, c.a parama)
+  public c(Context paramContext, a parama)
   {
-    AppMethodBeat.i(124673);
-    this.handler = new ak(Looper.getMainLooper());
+    AppMethodBeat.i(127826);
+    this.handler = new MMHandler(Looper.getMainLooper());
     this.context = paramContext;
-    this.gAJ = parama;
-    AppMethodBeat.o(124673);
+    this.pWx = parama;
+    AppMethodBeat.o(127826);
   }
   
-  public final void a(int paramInt1, int paramInt2, m paramm)
+  public final void a(final int paramInt1, int paramInt2, p paramp)
   {
-    AppMethodBeat.i(124674);
+    AppMethodBeat.i(127827);
     if (paramInt2 != 0) {}
     for (paramInt1 = (int)(paramInt1 * 100L / paramInt2);; paramInt1 = 0)
     {
-      this.handler.post(new c.2(this, paramInt1));
-      AppMethodBeat.o(124674);
+      this.handler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(127825);
+          if (c.b(c.this) != null) {
+            c.b(c.this).setMessage(c.c(c.this).getString(r.j.app_loading_data) + paramInt1 + "%");
+          }
+          AppMethodBeat.o(127825);
+        }
+      });
+      AppMethodBeat.o(127827);
       return;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(124675);
-    if (paramm.getType() == 139)
+    AppMethodBeat.i(127828);
+    if (paramp.getType() == 139)
     {
-      com.tencent.mm.kernel.g.Rc().b(139, this);
+      com.tencent.mm.kernel.h.aZW().b(139, this);
       if ((paramInt2 != 0) || (paramInt1 != 0)) {
         break label87;
       }
-      this.gAJ.aqZ();
+      this.pWx.bXK();
     }
     for (;;)
     {
       if (this.tipDialog != null) {
         this.tipDialog.dismiss();
       }
-      AppMethodBeat.o(124675);
+      AppMethodBeat.o(127828);
       return;
-      if (paramm.getType() != 138) {
+      if (paramp.getType() != 138) {
         break;
       }
-      com.tencent.mm.kernel.g.Rc().b(138, this);
+      com.tencent.mm.kernel.h.aZW().b(138, this);
       break;
       label87:
-      ab.e("MicroMsg.DoInit", "do init failed, err=" + paramInt1 + "," + paramInt2);
-      this.gAJ.aqZ();
+      Log.e("MicroMsg.DoInit", "do init failed, err=" + paramInt1 + "," + paramInt2);
+      this.pWx.bXK();
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bXK();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.c
  * JD-Core Version:    0.7.0.1
  */

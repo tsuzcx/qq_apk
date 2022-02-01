@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bgx" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0sp" android:textColor="@color/w_" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qx" android:shadowDx="2.0" />
-        <ImageView android:layout_gravity="center" android:background="@drawable/alz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="17.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginLeft="19.0dip" android:layout_marginRight="19.0dip" android:text="@string/f0v" android:layout_weight="1.0" />
-        <Button android:id="@id/f2o" android:layout_width="200.0dip" android:layout_marginTop="17.0dip" android:layout_marginBottom="20.0dip" android:text="@string/g8x" style="@style/nq" />
+<com.tencent.mm.plugin.hld.emoji.ImeEmojiGridScrollView android:id="@id/iwz" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:fadeScrollbars="false" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/iwl" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+        <RelativeLayout android:id="@id/cfh" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="58.569977dip">
+            <TextView android:textSize="13.309998dip" android:textColor="@color/an" android:gravity="center" android:id="@id/ci4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.589996dip" android:text="@string/loh" android:layout_toLeftOf="@id/cfj" android:layout_marginStart="25.0dip" android:layout_marginEnd="15.0dip" />
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/cfj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true">
+                <View android:id="@id/cfi" android:layout_width="53.25dip" android:layout_height="37.26999dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toStartOf="@id/cfk" app:layout_goneMarginEnd="10.639984dip" />
+                <View android:id="@id/cfk" android:layout_width="53.25dip" android:layout_height="37.26999dip" android:layout_marginEnd="10.639984dip" app:layout_constraintBottom_toBottomOf="@id/cfi" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="@id/j0l" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </LinearLayout>
-</LinearLayout>
+</com.tencent.mm.plugin.hld.emoji.ImeEmojiGridScrollView>

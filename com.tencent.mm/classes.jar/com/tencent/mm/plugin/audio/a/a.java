@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.audio.a;
 
+import com.tencent.mm.kernel.b.d;
+
 public abstract interface a
-  extends com.tencent.mm.kernel.b.a
+  extends d
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.a.a
  * JD-Core Version:    0.7.0.1
  */

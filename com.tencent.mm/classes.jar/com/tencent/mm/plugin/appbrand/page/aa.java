@@ -1,314 +1,115 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewConfiguration;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.FrameLayout;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.modelappbrand.a.b.d;
+import com.tencent.mm.modelappbrand.a.b.l;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.af.j;
+import com.tencent.mm.plugin.appbrand.appcache.bl;
+import com.tencent.mm.plugin.appbrand.appstorage.t;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Set;
 
-public class aa
-  extends FrameLayout
+public final class aa
 {
-  View Qz;
-  View ixK;
-  FrameLayout ixL;
-  FrameLayout ixM;
-  public boolean ixN;
-  private boolean ixO;
-  private boolean ixP;
-  private boolean ixQ;
-  private boolean ixR;
-  private int ixS;
-  private int ixT;
-  private boolean ixU;
-  private ObjectAnimator ixV;
-  private int mTouchSlop;
-  private int tW;
+  private static final b.l twO;
+  private static final j<AppBrandRuntime, String> twP;
   
-  public aa(Context paramContext)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(87278);
-    this.ixN = true;
-    this.ixO = false;
-    this.ixP = false;
-    this.ixQ = false;
-    this.ixR = false;
-    this.ixU = false;
-    this.ixV = null;
-    setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    AppMethodBeat.o(87278);
+    AppMethodBeat.i(135112);
+    twO = new b.d();
+    twP = new j();
+    AppMethodBeat.o(135112);
   }
   
-  private int getMaxOverScrollDistance()
+  public static void at(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(87285);
-    int i = getHeight();
-    AppMethodBeat.o(87285);
-    return i;
-  }
-  
-  private void pe(int paramInt)
-  {
-    AppMethodBeat.i(87288);
-    int i = (int)this.ixM.getTranslationY();
-    if (i == paramInt)
+    AppMethodBeat.i(325190);
+    paramAppBrandRuntime = twP.ek(paramAppBrandRuntime);
+    if (paramAppBrandRuntime != null)
     {
-      AppMethodBeat.o(87288);
-      return;
-    }
-    ab.i("MicroMsg.AppBrandPullDownView", "fastScrollTo from = %s, to = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-    if (this.ixV != null) {
-      this.ixV.cancel();
-    }
-    long l = (Math.abs(i - paramInt) / getStayHeight() * 250.0F);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.ixM, "translationY", new float[] { i, paramInt });
-    localObjectAnimator.setDuration(Math.min(l, 250L));
-    localObjectAnimator.setInterpolator(new DecelerateInterpolator());
-    localObjectAnimator.start();
-    localObjectAnimator.addUpdateListener(new aa.1(this));
-    this.ixV = localObjectAnimator;
-    AppMethodBeat.o(87288);
-  }
-  
-  protected final void aJC()
-  {
-    AppMethodBeat.i(87281);
-    pe(getStayHeight());
-    if (!this.ixP) {
-      aJE();
-    }
-    this.ixQ = true;
-    this.ixP = true;
-    this.ixR = true;
-    AppMethodBeat.o(87281);
-  }
-  
-  protected final void aJD()
-  {
-    AppMethodBeat.i(87282);
-    pe(0);
-    if (this.ixP) {
-      aJF();
-    }
-    this.ixQ = false;
-    this.ixP = false;
-    this.ixR = false;
-    AppMethodBeat.o(87282);
-  }
-  
-  protected void aJE() {}
-  
-  protected void aJF() {}
-  
-  protected int getOpenHeight()
-  {
-    AppMethodBeat.i(87286);
-    int i = this.ixK.getHeight();
-    AppMethodBeat.o(87286);
-    return i;
-  }
-  
-  protected int getStayHeight()
-  {
-    AppMethodBeat.i(87287);
-    int i = this.ixK.getHeight();
-    AppMethodBeat.o(87287);
-    return i;
-  }
-  
-  public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(87279);
-    if (this.ixN)
-    {
-      boolean bool = this.ixR;
-      AppMethodBeat.o(87279);
-      return bool;
-    }
-    int i = paramMotionEvent.getAction();
-    if ((i == 3) || (i == 1))
-    {
-      this.ixQ = false;
-      this.ixU = false;
-      AppMethodBeat.o(87279);
-      return false;
-    }
-    if ((i == 2) && (this.ixQ))
-    {
-      AppMethodBeat.o(87279);
-      return true;
-    }
-    switch (i)
-    {
-    }
-    while ((this.ixQ) || (this.ixR))
-    {
-      AppMethodBeat.o(87279);
-      return true;
-      if (vq())
+      paramAppBrandRuntime = paramAppBrandRuntime.iterator();
+      while (paramAppBrandRuntime.hasNext())
       {
-        this.ixS = ((int)paramMotionEvent.getX());
-        this.ixT = ((int)paramMotionEvent.getY());
-        this.tW = ((int)paramMotionEvent.getY());
-        this.ixQ = false;
-        this.ixU = true;
-        continue;
-        if (vq())
-        {
-          if (!this.ixU)
-          {
-            this.ixS = ((int)paramMotionEvent.getX());
-            this.ixT = ((int)paramMotionEvent.getY());
-            this.tW = ((int)paramMotionEvent.getY());
-            this.ixQ = false;
-            this.ixU = true;
-            AppMethodBeat.o(87279);
-            return false;
-          }
-          i = (int)paramMotionEvent.getX();
-          int j = (int)paramMotionEvent.getY();
-          int k = this.ixS;
-          int m = j - this.ixT;
-          if ((Math.abs(m) > this.mTouchSlop) && (Math.abs(m) > Math.abs(i - k)) && (m > 0))
-          {
-            this.ixS = i;
-            this.ixT = j;
-            this.ixQ = true;
-            this.ixU = false;
-            AppMethodBeat.o(87279);
-            return true;
-          }
-        }
+        String str = (String)paramAppBrandRuntime.next();
+        twO.remove(str);
       }
     }
-    AppMethodBeat.o(87279);
-    return false;
+    AppMethodBeat.o(325190);
   }
   
-  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public static Bitmap l(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
-    AppMethodBeat.i(87280);
-    if (this.ixN)
+    AppMethodBeat.i(135111);
+    if (paramAppBrandRuntime == null)
     {
-      if (this.ixR) {
-        aJD();
+      AppMethodBeat.o(135111);
+      return null;
+    }
+    Object localObject = t.Ws(paramString);
+    if (Util.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(135111);
+      return null;
+    }
+    paramString = paramAppBrandRuntime.hashCode() + 35 + (String)localObject;
+    twP.v(paramAppBrandRuntime, paramString);
+    Bitmap localBitmap = twO.Eo(paramString);
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(135111);
+      return localBitmap;
+    }
+    paramAppBrandRuntime = bl.f(paramAppBrandRuntime, (String)localObject);
+    if (paramAppBrandRuntime != null) {}
+    try
+    {
+      int i = paramAppBrandRuntime.available();
+      if (i <= 0) {
+        return null;
       }
-      boolean bool = this.ixR;
-      AppMethodBeat.o(87280);
-      return bool;
-    }
-    if ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getEdgeFlags() != 0))
-    {
-      AppMethodBeat.o(87280);
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      do
+      localObject = BitmapUtil.decodeStream(paramAppBrandRuntime);
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        do
-        {
-          AppMethodBeat.o(87280);
-          return false;
-        } while ((!vq()) && (!this.ixR));
-        this.ixT = ((int)paramMotionEvent.getY());
-        this.ixS = ((int)paramMotionEvent.getX());
-        this.tW = ((int)paramMotionEvent.getY());
-        this.ixU = true;
-        AppMethodBeat.o(87280);
-        return true;
-      } while ((!this.ixQ) && (!this.ixR));
-      if (!this.ixU)
-      {
-        this.ixT = ((int)paramMotionEvent.getY());
-        this.ixS = ((int)paramMotionEvent.getX());
-        this.tW = ((int)paramMotionEvent.getY());
-        this.ixU = true;
-        AppMethodBeat.o(87280);
-        return true;
+        twO.put(paramString, (Bitmap)localObject);
+        return localObject;
       }
-      int k = (int)paramMotionEvent.getY() - this.tW;
-      int i = k >> 1;
-      int j = getMaxOverScrollDistance();
-      if (i > j) {
-        i = j;
+      if (paramAppBrandRuntime != null) {
+        Util.qualityClose(paramAppBrandRuntime);
       }
+    }
+    catch (IOException paramString)
+    {
       for (;;)
       {
-        j = i;
-        if (this.ixP) {
-          j = i + getStayHeight();
+        Log.e("MicroMsg.AppBrandPageIconCache", "try decode icon e = %s", new Object[] { paramString });
+        if (paramAppBrandRuntime != null) {
+          Util.qualityClose(paramAppBrandRuntime);
         }
-        i = Math.max(j, 0);
-        ab.d("MicroMsg.AppBrandPullDownView", "real diff: %d, calc diff: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        j = Math.min(getMaxOverScrollDistance(), i);
-        this.ixM.setTranslationY(j);
-        pd(i);
-        AppMethodBeat.o(87280);
-        return true;
       }
-      this.ixU = false;
-      if ((this.ixM.getTranslationY() > getOpenHeight()) && (this.ixO))
-      {
-        aJC();
-        AppMethodBeat.o(87280);
-        return true;
+    }
+    finally
+    {
+      if (paramAppBrandRuntime == null) {
+        break label227;
       }
-    } while ((!this.ixQ) && (!this.ixR));
-    aJD();
-    AppMethodBeat.o(87280);
-    return true;
-  }
-  
-  protected void pd(int paramInt) {}
-  
-  public void setNeedStay(boolean paramBoolean)
-  {
-    this.ixO = paramBoolean;
-  }
-  
-  public void setPullDownBackgroundColor(int paramInt)
-  {
-    AppMethodBeat.i(87283);
-    this.ixL.setBackgroundColor(paramInt);
-    AppMethodBeat.o(87283);
-  }
-  
-  public void setPullDownEnabled(boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.ixN = paramBoolean;
-      return;
+      Util.qualityClose(paramAppBrandRuntime);
+      AppMethodBeat.o(135111);
     }
-  }
-  
-  protected boolean vq()
-  {
-    AppMethodBeat.i(87284);
-    if (this.Qz.getScrollY() == 0)
-    {
-      AppMethodBeat.o(87284);
-      return true;
-    }
-    AppMethodBeat.o(87284);
-    return false;
+    AppMethodBeat.o(135111);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.aa
  * JD-Core Version:    0.7.0.1
  */

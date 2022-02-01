@@ -40,45 +40,45 @@ public final class PluginController
   public final boolean canCollect(int paramInt)
   {
     Object localObject2 = ((Iterable)PluginCombination.Companion.getLoosePlugins$qapmbase_release()).iterator();
+    boolean bool1;
     int i;
-    if (((Iterator)localObject2).hasNext())
+    do
     {
-      localObject1 = ((Iterator)localObject2).next();
-      if (((DefaultPluginConfig)localObject1).plugin == paramInt)
-      {
-        i = 1;
-        label49:
-        if (i == 0) {
-          break label77;
-        }
-        label53:
-        localObject1 = (DefaultPluginConfig)localObject1;
-        if (looseReportNum <= SDKConfig.Companion.getMAX_LOOSE_REPORT_NUM()) {
-          break label85;
-        }
+      boolean bool2 = ((Iterator)localObject2).hasNext();
+      bool1 = false;
+      if (!bool2) {
+        break;
       }
-    }
-    label77:
-    label85:
-    while (((paramInt == PluginCombination.resourcePlugin.plugin) && (((startedPluginMode & PluginCombination.resourcePlugin.mode) == 0) || ((SDKConfig.RES_TYPE & DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_TAG.getValue()) == 0))) || ((PluginCombination.Companion.isAusterityPlugin(paramInt)) && (austerityReportNum > SDKConfig.Companion.getMAX_AUSTERITY_REPORT_NUM())))
-    {
+      localObject1 = ((Iterator)localObject2).next();
+      if (((DefaultPluginConfig)localObject1).plugin == paramInt) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    } while (i == 0);
+    break label70;
+    Object localObject1 = null;
+    label70:
+    localObject1 = (DefaultPluginConfig)localObject1;
+    if (looseReportNum > SDKConfig.Companion.getMAX_LOOSE_REPORT_NUM()) {
       return false;
-      i = 0;
-      break label49;
-      break;
-      localObject1 = null;
-      break label53;
+    }
+    if ((paramInt == PluginCombination.resourcePlugin.plugin) && (((startedPluginMode & PluginCombination.resourcePlugin.mode) == 0) || ((SDKConfig.RES_TYPE & DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_TAG.getValue()) == 0))) {
+      return false;
+    }
+    if ((PluginCombination.Companion.isAusterityPlugin(paramInt)) && (austerityReportNum > SDKConfig.Companion.getMAX_AUSTERITY_REPORT_NUM())) {
+      return false;
     }
     localObject2 = PluginCombination.Companion.handle(paramInt, (Function1)PluginController.canCollect.3.INSTANCE);
-    Object localObject1 = localObject2;
+    localObject1 = localObject2;
     if (!(localObject2 instanceof Boolean)) {
       localObject1 = null;
     }
     localObject1 = (Boolean)localObject1;
-    if (localObject1 != null) {}
-    for (boolean bool = ((Boolean)localObject1).booleanValue();; bool = false) {
-      return bool;
+    if (localObject1 != null) {
+      bool1 = ((Boolean)localObject1).booleanValue();
     }
+    return bool1;
   }
   
   public final void flushReportNum()
@@ -105,29 +105,27 @@ public final class PluginController
   {
     SharedPreferences localSharedPreferences = BaseInfo.sharePreference;
     long l;
-    if (localSharedPreferences != null)
-    {
+    if (localSharedPreferences != null) {
       l = localSharedPreferences.getLong("last_start_date", 0L);
-      if (startDate - l <= 0L) {
-        break label87;
-      }
+    } else {
+      l = startDate;
+    }
+    if (startDate - l > 0L)
+    {
       BaseInfo.editor.putLong("last_start_date", startDate);
       BaseInfo.editor.putInt("count_today_austerity_reported", 0);
       BaseInfo.editor.putInt("count_today_loose_reported", 0);
       PluginCombination.Companion.each((Function1)PluginController.resetReportNum.1.INSTANCE);
       BaseInfo.editor.apply();
-    }
-    label87:
-    do
-    {
       return;
-      l = startDate;
-      break;
-      localSharedPreferences = BaseInfo.sharePreference;
-    } while (localSharedPreferences == null);
-    austerityReportNum = localSharedPreferences.getInt("count_today_austerity_reported", 0);
-    looseReportNum = localSharedPreferences.getInt("count_today_loose_reported", 0);
-    PluginCombination.Companion.each((Function1)new PluginController.resetReportNum.2.1(localSharedPreferences));
+    }
+    localSharedPreferences = BaseInfo.sharePreference;
+    if (localSharedPreferences != null)
+    {
+      austerityReportNum = localSharedPreferences.getInt("count_today_austerity_reported", 0);
+      looseReportNum = localSharedPreferences.getInt("count_today_loose_reported", 0);
+      PluginCombination.Companion.each((Function1)new PluginController.resetReportNum.2.1(localSharedPreferences));
+    }
   }
   
   public final void setAusterityReportNum(int paramInt)
@@ -142,22 +140,34 @@ public final class PluginController
   
   public final boolean whetherPluginSampling(int paramInt)
   {
-    Object localObject2 = PluginCombination.Companion.handle(paramInt, (Function1)PluginController.whetherPluginSampling.familySampleRatio.1.INSTANCE);
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof Float)) {
-      localObject1 = null;
+    boolean bool3 = canCollect(paramInt);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      Object localObject2 = PluginCombination.Companion.handle(paramInt, (Function1)PluginController.whetherPluginSampling.familySampleRatio.1.INSTANCE);
+      Object localObject1 = localObject2;
+      if (!(localObject2 instanceof Float)) {
+        localObject1 = null;
+      }
+      localObject1 = (Float)localObject1;
+      float f;
+      if (localObject1 != null) {
+        f = ((Float)localObject1).floatValue();
+      } else {
+        f = 0.0F;
+      }
+      bool1 = bool2;
+      if (Math.random() < f) {
+        bool1 = true;
+      }
     }
-    localObject1 = (Float)localObject1;
-    if (localObject1 != null) {}
-    for (float f = ((Float)localObject1).floatValue(); Math.random() < f; f = 0.0F) {
-      return true;
-    }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.monitorplugin.PluginController
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,14 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewDebug.ExportedProperty;
 import android.widget.TextView;
-import apja;
 import com.tencent.qphone.base.util.QLog;
 
 public class DatingCommentTextView
   extends TextView
 {
-  private int jdField_a_of_type_Int = -1;
-  private ClickableSpan jdField_a_of_type_AndroidTextStyleClickableSpan;
+  private int a = -1;
   private int b = -1;
+  private ClickableSpan c;
   
   public DatingCommentTextView(Context paramContext)
   {
@@ -44,90 +43,93 @@ public class DatingCommentTextView
   {
     boolean bool = super.onTouchEvent(paramMotionEvent);
     int i;
-    ClickableSpan[] arrayOfClickableSpan;
-    try
+    do
     {
-      i = paramMotionEvent.getActionMasked();
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = getTotalPaddingLeft();
-      int n = getTotalPaddingTop();
-      int i1 = getScrollX();
-      int i2 = getScrollY();
-      paramMotionEvent = getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = getText();
-      if ((TextUtils.isEmpty(paramMotionEvent)) || (!(paramMotionEvent instanceof Spannable))) {
-        break label455;
-      }
-      paramMotionEvent = (Spannable)getText();
-      arrayOfClickableSpan = (ClickableSpan[])paramMotionEvent.getSpans(j, j, ClickableSpan.class);
-      if ((arrayOfClickableSpan == null) || (arrayOfClickableSpan.length == 0)) {
-        break label360;
-      }
-      if (i == 0)
+      try
       {
-        this.jdField_a_of_type_AndroidTextStyleClickableSpan = arrayOfClickableSpan[0];
-        this.jdField_a_of_type_Int = paramMotionEvent.getSpanStart(arrayOfClickableSpan[0]);
-        this.b = paramMotionEvent.getSpanEnd(arrayOfClickableSpan[0]);
-        if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
-          break label458;
+        i = paramMotionEvent.getActionMasked();
+        int j = (int)paramMotionEvent.getX();
+        int k = (int)paramMotionEvent.getY();
+        int m = getTotalPaddingLeft();
+        int n = getTotalPaddingTop();
+        int i1 = getScrollX();
+        int i2 = getScrollY();
+        paramMotionEvent = getLayout();
+        j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+        paramMotionEvent = getText();
+        if (!TextUtils.isEmpty(paramMotionEvent))
+        {
+          if (!(paramMotionEvent instanceof Spannable)) {
+            return bool;
+          }
+          paramMotionEvent = (Spannable)getText();
+          ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])paramMotionEvent.getSpans(j, j, ClickableSpan.class);
+          if ((arrayOfClickableSpan != null) && (arrayOfClickableSpan.length != 0))
+          {
+            if (i == 0)
+            {
+              this.c = arrayOfClickableSpan[0];
+              this.a = paramMotionEvent.getSpanStart(arrayOfClickableSpan[0]);
+              this.b = paramMotionEvent.getSpanEnd(arrayOfClickableSpan[0]);
+              if ((this.a < 0) || (this.b < this.a)) {
+                break;
+              }
+              if ((arrayOfClickableSpan[0] instanceof DatingCommentTextView.TouchableSpan))
+              {
+                ((DatingCommentTextView.TouchableSpan)arrayOfClickableSpan[0]).a(true);
+                return true;
+              }
+              paramMotionEvent.setSpan(new BackgroundColorSpan(Color.parseColor("#d5d5d5")), this.a, this.b, 33);
+              return true;
+              this.c = null;
+              if ((this.a < 0) || (this.b < this.a)) {
+                break;
+              }
+              if ((arrayOfClickableSpan[0] instanceof DatingCommentTextView.TouchableSpan)) {
+                ((DatingCommentTextView.TouchableSpan)arrayOfClickableSpan[0]).a(false);
+              } else {
+                paramMotionEvent.setSpan(new BackgroundColorSpan(0), this.a, this.b, 33);
+              }
+              Selection.removeSelection(paramMotionEvent);
+              this.a = -1;
+              this.b = -1;
+              return true;
+            }
+          }
+          else
+          {
+            if ((this.a >= 0) && (this.b >= this.a))
+            {
+              if ((this.c != null) && ((this.c instanceof DatingCommentTextView.TouchableSpan)))
+              {
+                ((DatingCommentTextView.TouchableSpan)this.c).a(false);
+                this.c = null;
+              }
+              else
+              {
+                paramMotionEvent.setSpan(new BackgroundColorSpan(0), this.a, this.b, 33);
+              }
+              Selection.removeSelection(paramMotionEvent);
+              this.a = -1;
+              this.b = -1;
+            }
+            return false;
+          }
         }
-        if ((arrayOfClickableSpan[0] instanceof apja)) {
-          ((apja)arrayOfClickableSpan[0]).a(true);
-        } else {
-          paramMotionEvent.setSpan(new BackgroundColorSpan(Color.parseColor("#d5d5d5")), this.jdField_a_of_type_Int, this.b, 33);
+        else
+        {
+          return bool;
         }
       }
-    }
-    catch (Exception paramMotionEvent)
-    {
-      if (QLog.isDevelopLevel()) {
-        paramMotionEvent.printStackTrace();
-      }
-      return bool;
-    }
-    if ((i == 1) || (i == 3))
-    {
-      this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
-      if ((this.jdField_a_of_type_Int >= 0) && (this.b >= this.jdField_a_of_type_Int))
+      catch (Exception paramMotionEvent)
       {
-        if ((arrayOfClickableSpan[0] instanceof apja)) {
-          ((apja)arrayOfClickableSpan[0]).a(false);
+        if (QLog.isDevelopLevel()) {
+          paramMotionEvent.printStackTrace();
         }
-        for (;;)
-        {
-          Selection.removeSelection(paramMotionEvent);
-          this.jdField_a_of_type_Int = -1;
-          this.b = -1;
-          break;
-          paramMotionEvent.setSpan(new BackgroundColorSpan(0), this.jdField_a_of_type_Int, this.b, 33);
-        }
-        label360:
-        if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
-          break label460;
-        }
-        if ((this.jdField_a_of_type_AndroidTextStyleClickableSpan != null) && ((this.jdField_a_of_type_AndroidTextStyleClickableSpan instanceof apja)))
-        {
-          ((apja)this.jdField_a_of_type_AndroidTextStyleClickableSpan).a(false);
-          this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
-        }
-        for (;;)
-        {
-          Selection.removeSelection(paramMotionEvent);
-          this.jdField_a_of_type_Int = -1;
-          this.b = -1;
-          break;
-          paramMotionEvent.setSpan(new BackgroundColorSpan(0), this.jdField_a_of_type_Int, this.b, 33);
-        }
-        label455:
         return bool;
       }
-    }
-    label458:
+    } while ((i == 1) || (i == 3));
     return true;
-    label460:
-    return false;
   }
 }
 

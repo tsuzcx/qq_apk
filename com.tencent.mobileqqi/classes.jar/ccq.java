@@ -1,42 +1,77 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Dialog;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.widget.BubblePopupWindow;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
 public class ccq
-  implements Runnable
+  implements View.OnClickListener, OnLongClickAndTouchListener, BubblePopupWindow.OnDismissListener
 {
-  public ccq(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, Uri paramUri, String paramString) {}
+  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   
-  public void run()
+  private ccq(ChatHistory paramChatHistory) {}
+  
+  public void a()
   {
-    try
-    {
-      localObject3 = BaseApplicationImpl.getContext().getContentResolver().query(this.jdField_a_of_type_AndroidNetUri, null, this.jdField_a_of_type_JavaLangString, null, null);
-      localObject1 = localObject3;
-      if (localObject3 != null)
-      {
-        ((Cursor)localObject3).getCount();
-        localObject1 = localObject3;
-      }
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+  }
+  
+  void a(View paramView)
+  {
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory) != null) && (ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).isShowing())) {
+      ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).dismiss();
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject3;
-        Object localObject1;
-        Object localObject2 = null;
-      }
+    if (paramView.getId() == 2131234873) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
-    localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.obtainMessage(8);
-    ((Message)localObject3).obj = localObject1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.sendMessage((Message)localObject3);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.g()))
+    {
+      a(paramView);
+      return false;
+    }
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131234873, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131562749));
+    if (localQQCustomMenu.a() > 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((ccr)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory, BubbleContextMenu.a(paramView, localQQCustomMenu, this, null));
+      a(paramView);
+      return true;
+    }
+    a(paramView);
+    return false;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    }
+    return false;
   }
 }
 

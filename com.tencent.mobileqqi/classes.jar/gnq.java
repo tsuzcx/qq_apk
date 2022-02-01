@@ -1,5 +1,5 @@
-import com.tencent.mobileqq.transfile.OldHttpEngine;
 import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -13,7 +13,8 @@ public class gnq
     if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.a.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a(9004, -1, "nonetwork");
+    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.a.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
   }
 }
 

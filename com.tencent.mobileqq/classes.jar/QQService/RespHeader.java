@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class RespHeader
   extends JceStruct
 {
-  public int iReplyCode;
-  public int iSeq;
-  public long lMID;
-  public short shVersion;
+  public int iReplyCode = 0;
+  public int iSeq = 0;
+  public long lMID = 0L;
+  public short shVersion = 0;
   public String strResult = "";
   
   public RespHeader() {}
@@ -39,14 +39,15 @@ public final class RespHeader
     paramJceOutputStream.write(this.iSeq, 1);
     paramJceOutputStream.write(this.lMID, 2);
     paramJceOutputStream.write(this.iReplyCode, 3);
-    if (this.strResult != null) {
-      paramJceOutputStream.write(this.strResult, 4);
+    String str = this.strResult;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespHeader
  * JD-Core Version:    0.7.0.1
  */

@@ -7,25 +7,23 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import besd;
-import bese;
-import bhtv;
 import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
 import java.util.LinkedList;
 
 public class PinnedDividerListView
   extends XListView
-  implements bhtv
+  implements AbsListView.OnScrollListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private besd jdField_a_of_type_Besd;
-  private bese jdField_a_of_type_Bese;
-  private bhtv jdField_a_of_type_Bhtv;
-  private LinkedList<View> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private int b;
+  private Context a = null;
+  private PinnedDividerListView.DividerAdapter b = null;
+  private View c = null;
+  private int d = 0;
+  private int e = 0;
+  private AbsListView.OnScrollListener f = null;
+  private LinkedList<View> g = new LinkedList();
+  private PinnedDividerListView.OnLayoutListener h = null;
   
   public PinnedDividerListView(Context paramContext)
   {
@@ -47,13 +45,8 @@ public class PinnedDividerListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     super.setOnScrollListener(this);
-  }
-  
-  protected besd a()
-  {
-    return this.jdField_a_of_type_Besd;
   }
   
   public void addHeaderView(View paramView)
@@ -64,174 +57,180 @@ public class PinnedDividerListView
   public void addHeaderView(View paramView, Object paramObject, boolean paramBoolean)
   {
     super.addHeaderView(paramView, paramObject, paramBoolean);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(paramView);
+    this.g.add(paramView);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
-      drawChild(paramCanvas, this.jdField_a_of_type_AndroidViewView, getDrawingTime());
+    View localView = this.c;
+    if ((localView != null) && (localView.getVisibility() == 0)) {
+      drawChild(paramCanvas, this.c, getDrawingTime());
     }
+  }
+  
+  protected PinnedDividerListView.DividerAdapter getDividerAdapter()
+  {
+    return this.b;
   }
   
   @SuppressLint({"WrongCall"})
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    int i;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.c != null)
     {
-      i = getFirstVisiblePosition() - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      if ((i < 0) || (this.jdField_a_of_type_Besd.a(this.jdField_a_of_type_AndroidViewView, i))) {
-        break label161;
+      i = getFirstVisiblePosition() - this.g.size();
+      if ((i >= 0) && (!this.b.b(this.c, i)))
+      {
+        this.c.setVisibility(0);
+        localObject = this.c;
+        ((View)localObject).layout(0, -this.e, ((View)localObject).getMeasuredWidth(), this.c.getMeasuredHeight() - this.e);
+        this.b.a(this.c, i);
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.layout(0, -this.b, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
-      this.jdField_a_of_type_Besd.a(this.jdField_a_of_type_AndroidViewView, i);
+      else
+      {
+        this.c.setVisibility(4);
+      }
     }
+    int k = getChildCount();
+    int i = this.g.size();
     for (;;)
     {
-      int j = getChildCount();
-      i = this.jdField_a_of_type_JavaUtilLinkedList.size() + 1;
-      while (i < j)
-      {
-        View localView = getChildAt(i);
-        if (localView.getVisibility() != 0) {
-          localView.setVisibility(0);
-        }
-        i += 1;
+      int j = i + 1;
+      if (j >= k) {
+        break;
       }
-      label161:
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      localObject = getChildAt(j);
+      i = j;
+      if (((View)localObject).getVisibility() != 0)
+      {
+        ((View)localObject).setVisibility(0);
+        i = j;
+      }
     }
-    if (this.jdField_a_of_type_Bese != null) {
-      this.jdField_a_of_type_Bese.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    Object localObject = this.h;
+    if (localObject != null) {
+      ((PinnedDividerListView.OnLayoutListener)localObject).a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      measureChild(this.jdField_a_of_type_AndroidViewView, paramInt1, paramInt2);
+    View localView = this.c;
+    if (localView != null) {
+      measureChild(localView, paramInt1, paramInt2);
     }
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramInt1;
-    int j;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.c != null)
     {
-      if ((paramInt1 < this.jdField_a_of_type_JavaUtilLinkedList.size()) || (this.jdField_a_of_type_Besd.a(this.jdField_a_of_type_AndroidViewView, paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size()))) {
-        break label359;
-      }
-      i = paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      this.jdField_a_of_type_Besd.a(this.jdField_a_of_type_AndroidViewView, i);
-      if (this.jdField_a_of_type_Besd.a(i))
+      int j;
+      if ((paramInt1 >= this.g.size()) && (!this.b.b(this.c, paramInt1 - this.g.size())))
       {
-        this.jdField_a_of_type_Int = 0;
-        paramInt1 = 1;
-        j = getChildCount();
+        j = paramInt1 - this.g.size();
+        this.b.a(this.c, j);
+        if (this.b.a(j))
+        {
+          this.d = 0;
+          paramInt1 = 1;
+        }
+        else
+        {
+          localObject = getChildAt(0);
+          if ((localObject != null) && (((View)localObject).getBottom() > this.c.getMeasuredHeight())) {
+            this.d = 0;
+          } else if (this.b.a(j + 1)) {
+            this.d = 1;
+          } else {
+            this.d = 0;
+          }
+          paramInt1 = 0;
+        }
+        int k = getChildCount();
+        i = paramInt1;
         if (paramInt1 != 0)
         {
-          localView = getChildAt(0);
-          if ((localView != null) && (localView.getVisibility() != 4)) {
-            localView.setVisibility(4);
-          }
-        }
-        if (paramInt1 == 0) {
-          break label235;
-        }
-        paramInt1 = 1;
-      }
-      for (;;)
-      {
-        if (paramInt1 >= j) {
-          break label240;
-        }
-        localView = getChildAt(paramInt1);
-        if (localView.getVisibility() != 0) {
-          localView.setVisibility(0);
-        }
-        paramInt1 += 1;
-        continue;
-        localView = getChildAt(0);
-        if ((localView != null) && (localView.getBottom() > this.jdField_a_of_type_AndroidViewView.getMeasuredHeight()))
-        {
-          this.jdField_a_of_type_Int = 0;
-          paramInt1 = 0;
-          break;
-        }
-        if (this.jdField_a_of_type_Besd.a(i + 1))
-        {
-          this.jdField_a_of_type_Int = 1;
-          paramInt1 = 0;
-          break;
-        }
-        this.jdField_a_of_type_Int = 0;
-        paramInt1 = 0;
-        break;
-        label235:
-        paramInt1 = 0;
-      }
-      label240:
-      if (this.jdField_a_of_type_Int != 1) {
-        break label351;
-      }
-      View localView = getChildAt(1);
-      j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-      if (localView == null) {
-        break label346;
-      }
-      paramInt1 = localView.getTop();
-      this.b = (j - paramInt1);
-      label283:
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.layout(0, -this.b, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bhtv != null) {
-        this.jdField_a_of_type_Bhtv.onScroll(paramAbsListView, i, paramInt2, paramInt3);
-      }
-      return;
-      label346:
-      paramInt1 = 0;
-      break;
-      label351:
-      this.b = 0;
-      break label283;
-      label359:
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      j = this.jdField_a_of_type_JavaUtilLinkedList.size();
-      i = paramInt1;
-      if (this.jdField_a_of_type_Besd.getCount() > 0)
-      {
-        i = paramInt1;
-        if (this.jdField_a_of_type_Besd.a(0))
-        {
+          localObject = getChildAt(0);
           i = paramInt1;
-          if (j >= paramInt1)
+          if (localObject != null)
           {
             i = paramInt1;
-            if (j < paramInt1 + paramInt2)
+            if (((View)localObject).getVisibility() != 4)
             {
-              getChildAt(j - paramInt1).setVisibility(0);
+              ((View)localObject).setVisibility(4);
               i = paramInt1;
+            }
+          }
+        }
+        while (i < k)
+        {
+          localObject = getChildAt(i);
+          if (((View)localObject).getVisibility() != 0) {
+            ((View)localObject).setVisibility(0);
+          }
+          i += 1;
+        }
+        if (this.d == 1)
+        {
+          localObject = getChildAt(1);
+          i = this.c.getMeasuredHeight();
+          if (localObject != null) {
+            paramInt1 = ((View)localObject).getTop();
+          } else {
+            paramInt1 = 0;
+          }
+          this.e = (i - paramInt1);
+        }
+        else
+        {
+          this.e = 0;
+        }
+        this.c.setVisibility(0);
+        localObject = this.c;
+        ((View)localObject).layout(0, -this.e, ((View)localObject).getMeasuredWidth(), this.c.getMeasuredHeight() - this.e);
+        i = j;
+      }
+      else
+      {
+        this.d = -1;
+        this.c.setVisibility(4);
+        j = this.g.size();
+        i = paramInt1;
+        if (this.b.getCount() > 0)
+        {
+          i = paramInt1;
+          if (this.b.a(0))
+          {
+            i = paramInt1;
+            if (j >= paramInt1)
+            {
+              i = paramInt1;
+              if (j < paramInt1 + paramInt2)
+              {
+                getChildAt(j - paramInt1).setVisibility(0);
+                i = paramInt1;
+              }
             }
           }
         }
       }
     }
+    Object localObject = this.f;
+    if (localObject != null) {
+      ((AbsListView.OnScrollListener)localObject).onScroll(paramAbsListView, i, paramInt2, paramInt3);
+    }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bhtv != null) {
-      this.jdField_a_of_type_Bhtv.onScrollStateChanged(paramAbsListView, paramInt);
+    AbsListView.OnScrollListener localOnScrollListener = this.f;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -239,42 +238,42 @@ public class PinnedDividerListView
   {
     boolean bool = super.removeHeaderView(paramView);
     if (bool) {
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(paramView);
+      this.g.remove(paramView);
     }
     return bool;
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((paramListAdapter instanceof besd))
+    if ((paramListAdapter instanceof PinnedDividerListView.DividerAdapter))
     {
-      this.jdField_a_of_type_Besd = ((besd)paramListAdapter);
-      int i = this.jdField_a_of_type_Besd.a();
+      this.b = ((PinnedDividerListView.DividerAdapter)paramListAdapter);
+      int i = this.b.a();
       if (i != 0)
       {
-        this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
+        this.c = LayoutInflater.from(this.a).inflate(i, this, false);
         requestLayout();
       }
-      super.setAdapter(this.jdField_a_of_type_Besd);
+      super.setAdapter(this.b);
       return;
     }
-    this.jdField_a_of_type_Besd = null;
+    this.b = null;
     super.setAdapter(paramListAdapter);
   }
   
-  public void setOnLayoutListener(bese parambese)
+  public void setOnLayoutListener(PinnedDividerListView.OnLayoutListener paramOnLayoutListener)
   {
-    this.jdField_a_of_type_Bese = parambese;
+    this.h = paramOnLayoutListener;
   }
   
-  public void setOnScrollListener(bhtv parambhtv)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Bhtv = parambhtv;
+    this.f = paramOnScrollListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PinnedDividerListView
  * JD-Core Version:    0.7.0.1
  */

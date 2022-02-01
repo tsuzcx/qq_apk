@@ -20,18 +20,21 @@ public final class OperatorObserveOn<T>
   
   public Subscriber<? super T> call(Subscriber<? super T> paramSubscriber)
   {
-    if ((this.scheduler instanceof ImmediateScheduler)) {}
-    while ((this.scheduler instanceof TrampolineScheduler)) {
+    Scheduler localScheduler = this.scheduler;
+    if ((localScheduler instanceof ImmediateScheduler)) {
       return paramSubscriber;
     }
-    paramSubscriber = new OperatorObserveOn.ObserveOnSubscriber(this.scheduler, paramSubscriber, this.delayError);
+    if ((localScheduler instanceof TrampolineScheduler)) {
+      return paramSubscriber;
+    }
+    paramSubscriber = new OperatorObserveOn.ObserveOnSubscriber(localScheduler, paramSubscriber, this.delayError);
     paramSubscriber.init();
     return paramSubscriber;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorObserveOn
  * JD-Core Version:    0.7.0.1
  */

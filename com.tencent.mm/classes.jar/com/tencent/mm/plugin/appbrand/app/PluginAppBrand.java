@@ -1,318 +1,762 @@
 package com.tencent.mm.plugin.appbrand.app;
 
+import android.app.Activity;
 import android.app.Application;
 import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentCallbacks;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
-import android.support.annotation.Keep;
+import android.os.Bundle;
+import android.os.HandlerThread;
 import com.tencent.luggage.bridge.a.a.1;
 import com.tencent.luggage.bridge.a.a.b;
-import com.tencent.luggage.xweb_ext.extendplugin.component.video.cache.VideoCacheServiceIPC;
+import com.tencent.luggage.sdk.processes.main.LuggageInitTask;
+import com.tencent.mars.cdn.CdnLogic;
+import com.tencent.mars.cdn.CdnLogic.AppCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wm;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.appbrand.appcache.s;
-import com.tencent.mm.plugin.appbrand.appcache.z;
-import com.tencent.mm.plugin.appbrand.appstorage.x.a;
-import com.tencent.mm.plugin.appbrand.appstorage.x.b;
+import com.tencent.mm.ipcinvoker.wx_extension.service.SupportProcessIPCService;
+import com.tencent.mm.kernel.a.b.a.a;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.model.au;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.aa;
+import com.tencent.mm.plugin.appbrand.appcache.at;
+import com.tencent.mm.plugin.appbrand.appcache.bv.a;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.PreDownloadServiceExportAnyProcess;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.export.WxaPkgDownloaderExportServiceIPC;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.export.WxaPkgStorageExportServiceIPC;
+import com.tencent.mm.plugin.appbrand.appstorage.ag.a;
+import com.tencent.mm.plugin.appbrand.appstorage.ag.b;
 import com.tencent.mm.plugin.appbrand.appusage.ad;
-import com.tencent.mm.plugin.appbrand.appusage.af;
-import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.plugin.appbrand.appusage.am;
+import com.tencent.mm.plugin.appbrand.appusage.an;
 import com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDataStorageIPC;
 import com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDataTokenStorageIPC;
-import com.tencent.mm.plugin.appbrand.config.g.1;
+import com.tencent.mm.plugin.appbrand.bo;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
+import com.tencent.mm.plugin.appbrand.config.l.1;
 import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
-import com.tencent.mm.plugin.appbrand.jsapi.file.an;
-import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoWrapper;
-import com.tencent.mm.plugin.appbrand.q.a;
-import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.plugin.appbrand.keylogger.KeyStepBaseActivity;
+import com.tencent.mm.plugin.appbrand.launching.bh;
+import com.tencent.mm.plugin.appbrand.menu.o.a;
+import com.tencent.mm.plugin.appbrand.n.ac;
+import com.tencent.mm.plugin.appbrand.permission.a.a.c;
+import com.tencent.mm.plugin.appbrand.permission.a.a.d;
+import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
 import com.tencent.mm.plugin.appbrand.service.IBSPatchJNIService;
-import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.plugin.appbrand.service.v;
+import com.tencent.mm.plugin.appbrand.service.x;
+import com.tencent.mm.plugin.appbrand.service.z;
+import com.tencent.mm.plugin.appbrand.task.preload.AppBrandBatchPreloadController;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
-import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.protocal.protobuf.deb;
+import com.tencent.mm.protocal.protobuf.eul;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.FilesCopy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.thread.DeprecatedThreadFactory;
+import com.tencent.mm.ui.ay;
+import java.io.File;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Locale.Category;
 import java.util.Queue;
 
-@Keep
 public final class PluginAppBrand
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.c, com.tencent.mm.model.aj, com.tencent.mm.plugin.appbrand.a.c
+  implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.c, com.tencent.mm.model.av, com.tencent.mm.plugin.appbrand.api.c
 {
-  public static final String TAG = "MicroMsg.PluginAppBrand";
-  private final com.tencent.mm.plugin.appbrand.t.f singletonRegistry;
-  private com.tencent.mm.sdk.b.c<wm> xWebViewInitCompleteEventIListener;
+  public static final String TAG = "MicroMsg.PluginAppBrand[speedtest]";
+  public static final long WXA_CACHE_SIZE = 536870912L;
+  private static final com.tencent.mm.ipcinvoker.b ipcSerialThreadPoolDelegate;
+  private com.tencent.mm.plugin.appbrand.appcache.bp mWxaPkgStorageRouter;
+  private final com.tencent.mm.plugin.appbrand.utils.n singletonRegistry;
   
   static
   {
-    AppMethodBeat.i(129236);
-    com.tencent.mm.compatible.util.k.a("appbrandcommon", an.class.getClassLoader());
-    com.tencent.mm.compatible.util.k.a("wechatzstd", PluginAppBrand.class.getClassLoader());
-    AppMethodBeat.o(129236);
+    AppMethodBeat.i(317828);
+    ipcSerialThreadPoolDelegate = new PluginAppBrand.1();
+    AppMethodBeat.o(317828);
   }
   
   public PluginAppBrand()
   {
-    AppMethodBeat.i(129226);
-    this.xWebViewInitCompleteEventIListener = new PluginAppBrand.1(this);
-    this.singletonRegistry = new com.tencent.mm.plugin.appbrand.t.f();
-    AppMethodBeat.o(129226);
+    AppMethodBeat.i(44152);
+    this.singletonRegistry = new com.tencent.mm.plugin.appbrand.utils.n();
+    AppMethodBeat.o(44152);
+  }
+  
+  private void copyWxaDecodeKeyFile()
+  {
+    AppMethodBeat.i(174699);
+    String str = MMApplicationContext.getContext().getApplicationContext().getFilesDir().getAbsolutePath() + "/wasae.dat";
+    if ((!com.tencent.mm.vfs.y.ZC(str)) || (!"43bff1e72298b0ea0b73e2960d3c97b8".equals(com.tencent.mm.vfs.y.bub(str))))
+    {
+      Log.d("MicroMsg.PluginAppBrand[speedtest]", "copy key file ok: %b", new Object[] { Boolean.valueOf(FilesCopy.copyAssets(MMApplicationContext.getContext(), "wasae.dat", str)) });
+      AppMethodBeat.o(174699);
+      return;
+    }
+    Log.d("MicroMsg.PluginAppBrand[speedtest]", "key file exist, skip copy");
+    AppMethodBeat.o(174699);
   }
   
   private static void fixProcessSharedStringFormatLocale()
   {
-    AppMethodBeat.i(154851);
+    AppMethodBeat.i(44158);
     if (Build.VERSION.SDK_INT >= 24) {
       Locale.setDefault(Locale.Category.FORMAT, Locale.ENGLISH);
     }
-    AppMethodBeat.o(154851);
+    AppMethodBeat.o(44158);
   }
   
+  public static SharedPreferences getProcessSharedPrefs()
+  {
+    AppMethodBeat.i(44162);
+    Object localObject = f.qBv;
+    localObject = f.aBP();
+    AppMethodBeat.o(44162);
+    return localObject;
+  }
+  
+  @Deprecated
   private void initJSONABTestGetter()
   {
-    AppMethodBeat.i(129235);
-    com.tencent.mm.aa.h.a(new PluginAppBrand.7(this));
-    AppMethodBeat.o(129235);
+    AppMethodBeat.i(44163);
+    com.tencent.mm.ad.h.a(new com.tencent.mm.ad.e()
+    {
+      boolean clZ;
+      int qCs;
+      
+      public final int aZm()
+      {
+        return this.qCs;
+      }
+      
+      public final boolean isValid()
+      {
+        return this.clZ;
+      }
+    });
+    AppMethodBeat.o(44163);
   }
   
   static boolean isAppBrandProcess()
   {
-    AppMethodBeat.i(129233);
+    AppMethodBeat.i(44160);
     try
     {
-      String str = com.tencent.mm.sdk.platformtools.ah.getPackageName();
-      boolean bool = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.RI().Rj()).mProcessName.startsWith(str + ":appbrand");
-      AppMethodBeat.o(129233);
+      String str = MMApplicationContext.getPackageName();
+      boolean bool = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).mProcessName.startsWith(str + ":appbrand");
+      AppMethodBeat.o(44160);
       return bool;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(129233);
+      AppMethodBeat.o(44160);
     }
     return false;
   }
   
   static boolean isSupportProcess()
   {
-    AppMethodBeat.i(129234);
+    AppMethodBeat.i(44161);
     try
     {
-      boolean bool = "com.tencent.mm:support".equals(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.RI().Rj()).mProcessName);
-      AppMethodBeat.o(129234);
+      boolean bool = SupportProcessIPCService.PROCESS_NAME.equals(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).mProcessName);
+      AppMethodBeat.o(44161);
       return bool;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(129234);
+      AppMethodBeat.o(44161);
     }
     return false;
   }
   
   public final void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(129231);
-    ab.i("MicroMsg.PluginAppBrand", "configure()");
+    AppMethodBeat.i(44157);
+    Log.i("MicroMsg.PluginAppBrand[speedtest]", "configure()");
+    com.tencent.mm.ipcinvoker.extension.c.a(com.tencent.mm.plugin.appbrand.ui.b.a.a.upG);
     if (isAppBrandProcess())
     {
       fixProcessSharedStringFormatLocale();
-      paramg.bX.registerActivityLifecycleCallbacks(new PluginAppBrand.2(this));
-      paramg.bX.registerComponentCallbacks(new PluginAppBrand.3(this));
-      com.tencent.mm.sdk.a.b.b(com.tencent.mm.plugin.appbrand.d.a.hkV);
+      paramg.bGP.registerActivityLifecycleCallbacks(new com.tencent.mm.plugin.appbrand.af.a()
+      {
+        public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
+        {
+          AppMethodBeat.i(317734);
+          PluginAppBrand.access$100();
+          AppMethodBeat.o(317734);
+        }
+        
+        public final void onActivityStarted(Activity paramAnonymousActivity)
+        {
+          AppMethodBeat.i(317737);
+          PluginAppBrand.access$100();
+          AppMethodBeat.o(317737);
+        }
+      });
+      paramg.bGP.registerComponentCallbacks(new ComponentCallbacks()
+      {
+        public final void onConfigurationChanged(Configuration paramAnonymousConfiguration)
+        {
+          AppMethodBeat.i(317645);
+          PluginAppBrand.access$100();
+          AppMethodBeat.o(317645);
+        }
+        
+        public final void onLowMemory() {}
+      });
+      CrashReportFactory.addCrashReportExtraMessageGetter(com.tencent.mm.plugin.appbrand.crash_report.a.rcS);
     }
-    if (!com.tencent.mm.sdk.platformtools.ah.brt())
+    if ((!MMApplicationContext.isMMProcess()) && (com.tencent.mm.cp.i.agWI == null))
     {
-      com.tencent.mm.cm.i.AZz = new com.tencent.mm.vending.h.h(com.tencent.mm.cm.d.c(m.aNS().caB()), "WeChat.WORKER");
-      com.tencent.mm.vending.h.g.a("WeChat.WORKER", com.tencent.mm.cm.i.AZz);
+      com.tencent.mm.cp.i.agWI = new com.tencent.mm.vending.h.h(com.tencent.mm.cp.d.c(new MMHandler(DeprecatedThreadFactory.createHandlerThread("WeChat.WORKER").getLooper())), "WeChat.WORKER");
+      com.tencent.mm.vending.h.g.a("WeChat.WORKER", com.tencent.mm.cp.i.agWI);
     }
-    AppMethodBeat.o(129231);
+    com.tencent.mm.vfs.af.a("MixAudio", "MixAudio", 259200000L, 101);
+    com.tencent.mm.vfs.af.a("ExoVideoCache", "videocache", 259200000L, 101);
+    com.tencent.mm.vfs.af.a("wagamefiles", "wagamefiles", 86400000L, 517);
+    com.tencent.mm.vfs.af.b("WxaCommCacheFiles", "wxacache/", 536870912L, 7776000000L, 37);
+    com.tencent.mm.vfs.af.b("AppBrandEmojiCache", "appbrand/emojicache/", 536870912L, 259200000L, 6);
+    com.tencent.mm.vfs.af.a("wxaFlattenFileSystem", "wxafiles/", 9223372036854775807L, 517);
+    com.tencent.mm.vfs.af.a("wxaNonFlattenFileSystem", "wxanewfiles/", 9223372036854775807L, 517);
+    com.tencent.mm.vfs.af.a("WxaJsCodeCache", "appbrand/jscache/", 9223372036854775807L, 6);
+    com.tencent.mm.vfs.af.a("WxaWASMCache", "appbrand/wasmcache/", 9223372036854775807L, 6);
+    com.tencent.mm.vfs.g.aQ(null, "appbrand", 6);
+    com.tencent.mm.vfs.af.aR("WxaCodePkgsCache", "appbrand", 2);
+    com.tencent.mm.vfs.af.a("ThumbVideoCache", "ThumbVideoCache", 259200000L, 101);
+    com.tencent.mm.vfs.af.a("WxaSecureInput", "appbrand/secureInput/", 9223372036854775807L, 6);
+    com.tencent.mm.vfs.af.a("QQMusicCache", "QQMusic", 259200000L, 102);
+    com.tencent.mm.vfs.af.b("AppBrandXnetModelCache", "appbrand/appBrandXnetModelCache/", 536870912L, 1296000000L, 97);
+    AppMethodBeat.o(44157);
   }
   
   public final void dependency()
   {
-    AppMethodBeat.i(129230);
-    ab.i("MicroMsg.PluginAppBrand", "dependency()");
-    dependsOn(com.tencent.mm.plugin.comm.a.a.class);
-    dependsOn(com.tencent.mm.plugin.appbrand.compat.a.c.class);
-    AppMethodBeat.o(129230);
+    AppMethodBeat.i(44156);
+    Log.i("MicroMsg.PluginAppBrand[speedtest]", "dependency()");
+    if (MMApplicationContext.isMainProcess()) {
+      dependsOn(com.tencent.mm.plugin.comm.a.b.class);
+    }
+    AppMethodBeat.o(44156);
   }
   
-  public final void execute(com.tencent.mm.kernel.b.g paramg)
+  public final void execute(final com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(129232);
-    ab.i("MicroMsg.PluginAppBrand", "execute() current process name = %s, isMainThread %b", new Object[] { ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.RI().Rj()).mProcessName, Boolean.valueOf(al.isMainThread()) });
-    q.a.a(com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.f.ioC);
-    com.tencent.mm.kernel.g.a(IBSPatchJNIService.class, new com.tencent.mm.kernel.c.e(new BSPatchJNIWrapper()));
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.j.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.launching.ao()));
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.f.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.w.a.b()));
-    com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.e.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.dynamic.a.c()));
-    com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.g.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.dynamic.a.d()));
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.launching.b.g()));
-    Object localObject1;
-    if (paramg.SD())
+    Object localObject2 = null;
+    int k = 2;
+    AppMethodBeat.i(44159);
+    Log.i("MicroMsg.PluginAppBrand[speedtest]", "execute() current process name = %s, isMainThread %b", new Object[] { ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).mProcessName, Boolean.valueOf(MMHandlerThread.isMainThread()) });
+    if (com.tencent.mm.plugin.appbrand.report.a.a.cIH())
     {
-      localObject1 = x.b.haG;
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.appbrand.appstorage.a.a.class, (com.tencent.mm.kernel.c.a)localObject1);
-      com.tencent.mm.plugin.appbrand.game.c.b.uD();
-      com.tencent.luggage.game.c.c.uC().bAe = new com.tencent.mm.plugin.appbrand.game.d.a();
-      initJSONABTestGetter();
-      localObject1 = new h(paramg);
-      if (com.tencent.luggage.bridge.a.a.byu == null) {
-        break label761;
-      }
-      com.tencent.luggage.g.d.e("Luggage.LuggageBoot", "do not setup more than once.");
+      com.tencent.mm.plugin.appbrand.keylogger.c.a(new com.tencent.mm.plugin.appbrand.keylogger.g());
+      com.tencent.mm.plugin.appbrand.keylogger.c.czs();
     }
-    for (;;)
+    com.tencent.mm.plugin.appbrand.keylogger.d.a("WeAppLaunch", com.tencent.mm.plugin.appbrand.report.quality.n.tTb);
+    com.tencent.mm.kernel.h.a(IBSPatchJNIService.class, new com.tencent.mm.kernel.c.e(new BSPatchJNIWrapper()));
+    com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.t.class, new com.tencent.mm.kernel.c.e(new bh()));
+    com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.appbrand.e.c.class, com.tencent.mm.plugin.appbrand.e.b.qVq);
+    if (paramg.bbA())
     {
-      if (!paramg.SD()) {
-        break label781;
-      }
-      com.tencent.mm.kernel.g.RM().a(new PluginAppBrand.4(this));
-      paramg = com.tencent.mm.plugin.appbrand.widget.desktop.dynamicbackground.c.jgP;
-      com.tencent.mm.plugin.appbrand.widget.desktop.dynamicbackground.c.init(com.tencent.mm.sdk.platformtools.ah.getContext());
-      com.tencent.mm.plugin.w.c.qSb.a(new com.tencent.mm.plugin.appbrand.ai());
-      com.tencent.mm.plugin.w.c.qSb.a(new com.tencent.mm.plugin.appbrand.aj());
-      com.tencent.mm.kernel.g.a(PluginAppBrand.a.class, new com.tencent.mm.kernel.c.e(new PluginAppBrand.a()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.widget.recentview.d.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.widget.c()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.i.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.share.a.a()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.ui.banner.e.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.ui.banner.a()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.e.class, new com.tencent.mm.kernel.c.e(new e()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.i.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.config.o()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.l.class, new com.tencent.mm.kernel.c.e(new d()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.a.d.class, new com.tencent.mm.kernel.c.e(new i()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.widget.a.a.class, new com.tencent.mm.kernel.c.e(new j()));
-      com.tencent.mm.kernel.g.a(n.class, new com.tencent.mm.kernel.c.e(new am()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.h.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.game.c()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.j.e()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.j.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.j.a()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.g.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.t.j()));
-      com.tencent.mm.pluginsdk.cmd.b.a(new com.tencent.mm.plugin.appbrand.b(), new String[] { "//wagame", "//enable_appbrand_monkey_test", "//disable_appbrand_monkey_test", "//appbrand_predownload_trigger", "//callsearchshowoutwxaapp", "//getsearchshowoutwxaapp", "//appbrandtest", "//wxafts", "//wxatest", "//xweb_live", "//xweb_video_preload", "//xweb_video_player", "//xweb_video", "//localwxalibrary" });
-      com.tencent.mm.pluginsdk.cmd.b.a(new com.tencent.mm.plugin.appbrand.dynamic.c.a(), new String[] { "//widget" });
-      com.tencent.mm.plugin.appbrand.w.a.uD();
-      com.tencent.mm.kernel.g.RM().a(new PluginAppBrand.5(this));
-      if (DebuggerShell.ayR()) {
-        com.tencent.mm.kernel.g.b(DebuggerShell.class, new DebuggerShell());
-      }
-      z.a(new s());
-      AppBrandVideoWrapper.aCz();
-      AppMethodBeat.o(129232);
-      return;
-      localObject1 = x.a.haE;
-      break;
-      label761:
-      com.tencent.luggage.bridge.a.a.byu = (a.b)localObject1;
-      ((a.b)localObject1).a(new a.1());
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.l.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.xweb_ext.video.d()));
+      bv.a.f(paramg);
     }
-    label781:
-    Object localObject2;
-    if ((com.tencent.mm.sdk.platformtools.ah.dsW()) || (com.tencent.mm.sdk.platformtools.ah.dsX()) || (isAppBrandProcess()))
-    {
-      com.tencent.mm.plugin.appbrand.report.model.i.aLk();
-      com.tencent.mm.ipcinvoker.g.ma("com.tencent.mm:tools");
-      com.tencent.mm.kernel.g.a(ag.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.o()));
-      com.tencent.mm.kernel.g.a(af.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.g()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.widget.recentview.d.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.widget.c()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.backgroundfetch.k.class, new com.tencent.mm.kernel.c.e(new AppBrandBackgroundFetchDataStorageIPC()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.backgroundfetch.l.class, new com.tencent.mm.kernel.c.e(new AppBrandBackgroundFetchDataTokenStorageIPC()));
-      com.tencent.mm.kernel.g.b(com.tencent.luggage.xweb_ext.extendplugin.component.video.cache.b.class, VideoCacheServiceIPC.bId);
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.e.class, new com.tencent.mm.kernel.c.e(new f()));
-      com.tencent.mm.plugin.appbrand.launching.precondition.i.cT(com.tencent.mm.sdk.platformtools.ah.getContext());
-      localObject1 = this.singletonRegistry;
-      localObject2 = paramg.bX;
-      ab.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.AppSingletonRegistry ");
-      ((Application)localObject2).registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)localObject1);
-      localObject1 = this.singletonRegistry;
-      localObject2 = paramg.bX;
-      ((com.tencent.mm.plugin.appbrand.t.f)localObject1).iXE = true;
-      ((com.tencent.mm.plugin.appbrand.t.f)localObject1).app = ((Application)localObject2);
-      localObject1 = this.singletonRegistry;
-      localObject2 = com.tencent.mm.plugin.appbrand.t.a.a.iYk;
-      ab.i("MicroMsg.AppSingletonRegistry", "registerAppSingleton() called with: singleton = [%s]", new Object[] { localObject2 });
-      ((com.tencent.mm.plugin.appbrand.t.f)localObject1).iXC.offer(localObject2);
-      com.tencent.mm.plugin.appbrand.f.e(paramg.bX);
-      com.tencent.mm.ui.ah.e(paramg.bX);
+    if (!isAppBrandProcess()) {
+      com.tencent.mm.kernel.h.a(com.tencent.mm.modelappbrand.h.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.dynamic.a.c()));
     }
-    if ((com.tencent.mm.sdk.platformtools.ah.dsW()) || (com.tencent.mm.sdk.platformtools.ah.dsX()))
-    {
-      com.tencent.mm.plugin.appbrand.dynamic.widget.b.initialize();
-      com.tencent.mm.sdk.platformtools.ao.a(new PluginAppBrand.6(this));
+    if (paramg.bbA()) {
+      com.tencent.mm.kernel.h.a(com.tencent.mm.modelappbrand.j.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.dynamic.a.d()));
     }
-    for (;;)
+    if (paramg.bbA()) {
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.p.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.report.c()));
+    }
+    com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.u.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.launching.c.g()));
+    if (paramg.bbA()) {}
+    for (Object localObject1 = ag.b.qOc;; localObject1 = ag.a.qOa)
     {
-      if (com.tencent.mm.sdk.platformtools.ah.dsW()) {
-        com.tencent.mm.aa.h.initialize();
-      }
-      AppMethodBeat.o(129232);
-      return;
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.appbrand.appstorage.a.a.class, (com.tencent.mm.kernel.c.a)localObject1);
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.appbrand.service.j.class, com.tencent.mm.plugin.appbrand.openmaterial.b.tre);
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.m.class, new com.tencent.mm.kernel.c.e(new i()));
+      com.tencent.luggage.a.e.a(com.tencent.mm.plugin.appbrand.platform.window.a.j.class, new com.tencent.mm.plugin.appbrand.report.u());
       if (isAppBrandProcess())
       {
-        AppBrandProcessSuicideLogic.f(paramg.bX);
-        try
+        localObject1 = com.tencent.mm.plugin.webview.jsapi.b.WDu;
+        com.tencent.mm.plugin.webview.jsapi.b.its();
+        Log.i("MicroMsg.PluginAppBrand[speedtest]", "init DefaultJsApiPool");
+        com.tencent.mm.plugin.appbrand.game.c.b.aoW();
+        com.tencent.luggage.game.b.d.aoV().ekK = new com.tencent.mm.plugin.appbrand.game.d.a();
+        com.tencent.mm.plugin.appbrand.af.i.cNj();
+        com.tencent.xweb.u.a(com.tencent.mm.plugin.appbrand.xweb_ext.g.uTP);
+        new LuggageInitTask(MMApplicationContext.getProcessName()).bQt();
+        com.tencent.mm.kernel.h.b(com.tencent.mm.api.ab.class, new com.tencent.mm.plugin.webview.p());
+        com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.sns.c.e.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.sns.ad.c()));
+      }
+      com.tencent.luggage.sdk.h.d.a("WeChatMultiProcessInitDelegateImpl", new Runnable()
+      {
+        public final void run()
         {
-          localObject1 = MultiProcessSharedPreferences.getSharedPreferences(com.tencent.mm.sdk.platformtools.ah.getContext(), "pref_appbrand_process", 4);
-          localObject2 = com.tencent.mm.sdk.platformtools.ah.getProcessName() + ":start_time";
-          SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-          if (((SharedPreferences)localObject1).contains((String)localObject2))
+          AppMethodBeat.i(317649);
+          o localo = new o(paramg);
+          if (com.tencent.luggage.bridge.a.a.eiP != null)
           {
-            localEditor.remove((String)localObject2);
-            com.tencent.mm.plugin.report.e.qrI.idkeyStat(365L, 2L, 1L, false);
+            Log.e("Luggage.LuggageBoot", "do not setup more than once.");
+            AppMethodBeat.o(317649);
+            return;
           }
-          com.tencent.mm.plugin.report.e.qrI.idkeyStat(365L, 4L, 1L, false);
-          localEditor.putLong((String)localObject2, System.currentTimeMillis());
-          localEditor.commit();
-          ab.v("MicroMsg.AppBrandReporter", "onProcessStart");
-          KVCommCrossProcessReceiver.chK();
+          com.tencent.luggage.bridge.a.a.eiP = localo;
+          localo.a(new a.1());
+          AppMethodBeat.o(317649);
         }
-        catch (Throwable localThrowable)
+      });
+      localObject1 = com.tencent.mm.plugin.appbrand.utils.e.uqt;
+      com.tencent.mm.modelappbrand.a.b.gW(com.tencent.mm.plugin.appbrand.utils.e.cNv());
+      com.tencent.mm.plugin.appbrand.widget.a.c.a(new PluginAppBrand.12(this));
+      if (!paramg.bbA()) {
+        break;
+      }
+      com.tencent.mm.plugin.appbrand.n.w.czm();
+      paramg.bGP.registerActivityLifecycleCallbacks(new com.tencent.mm.plugin.appbrand.af.a()
+      {
+        public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
         {
+          AppMethodBeat.i(317653);
+          if (((paramAnonymousActivity instanceof KeyStepBaseActivity)) && (!com.tencent.mm.plugin.appbrand.report.a.a.cIH())) {
+            paramAnonymousActivity.finish();
+          }
+          AppMethodBeat.o(317653);
+        }
+      });
+      paramg = com.tencent.mm.msgsubscription.api.b.piw;
+      com.tencent.mm.msgsubscription.api.b.a("name_wxa", new PluginAppBrand.14(this, com.tencent.mm.msgsubscription.d.c.pjX));
+      com.tencent.mm.kernel.h.baF().a(new PluginAppBrand.15(this));
+      com.tencent.mm.plugin.an.c.PET.a(new bo());
+      com.tencent.mm.plugin.an.c.PET.a(new com.tencent.mm.plugin.appbrand.bp());
+      PluginAppBrand.a.ceS();
+      com.tencent.mm.plugin.appbrand.appcache.av.a(at.qFK);
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.api.e.class, new com.tencent.mm.kernel.c.e(new p()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.widget.recent.k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.widget.recent.g()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.modelappbrand.k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.share.a.a()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.ui.banner.e.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.ui.banner.a()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.k.class, new com.tencent.mm.kernel.c.e(new l()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.s.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.config.ab()));
+      com.tencent.mm.kernel.h.a(v.class, new com.tencent.mm.kernel.c.e(new j()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.widget.b.b.class, new com.tencent.mm.kernel.c.e(new q()));
+      com.tencent.mm.kernel.h.a(z.class, new com.tencent.mm.kernel.c.e(new an()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.r.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.game.d()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.modelappbrand.m.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.message.g()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.modelappbrand.l.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.message.c()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.o.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.utils.s()));
+      com.tencent.mm.kernel.h.a(IAppBrandBatchPreloadController.class, new com.tencent.mm.kernel.c.e(new AppBrandBatchPreloadController()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.h.class, new com.tencent.mm.kernel.c.e(new d()));
+      com.tencent.mm.pluginsdk.cmd.b.a(new com.tencent.mm.plugin.appbrand.e(), new String[] { "//wagame", "//enable_appbrand_monkey_test", "//disable_appbrand_monkey_test", "//appbrand_monkey_bringtofront", "//appbrand_monkey_test_skip_appbrand_process_suicide", "//appbrand_predownload_trigger", "//callsearchshowoutwxaapp", "//getsearchshowoutwxaapp", "//appbrandtest", "//wxafts", "//wxatest", "//xweb_live", "//xweb_video_preload", "//xweb_video_ps", "//xweb_video_player", "//xweb_video_proxy", "//xweb_video_hls_proxy", "//xweb_video", "//showad", "//allshowad", "//localwxalibrary", "//appbrand_video", "//enable_appbrand_file_size_statistics_debug", "//enableweappallhalfscreen", "//appbrand_profile", "//appbrand_weishi", "//deletexnetlibdebugdir", "//xnetusingdebugso" });
+      com.tencent.mm.pluginsdk.cmd.b.a(new com.tencent.mm.plugin.appbrand.dynamic.c.a(), new String[] { "//widget" });
+      com.tencent.mm.plugin.appbrand.xweb_ext.b.aoW();
+      com.tencent.mm.kernel.h.baF().a(new PluginAppBrand.3(this));
+      if (DebuggerShell.clt()) {
+        com.tencent.mm.kernel.h.b(DebuggerShell.class, new DebuggerShell());
+      }
+      com.tencent.mm.plugin.appbrand.appcache.ag.a(new aa());
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.init();
+      com.tencent.mm.plugin.appbrand.jsapi.video.i.cvD().a(MMApplicationContext.getContext(), com.tencent.mm.plugin.appbrand.utils.d.cNp(), com.tencent.mm.plugin.appbrand.utils.d.cNr(), com.tencent.mm.plugin.appbrand.xweb_ext.video.c.cTF(), null);
+      com.tencent.mm.pluginsdk.ui.span.p.YoG = new PluginAppBrand.4(this);
+      if ((MMApplicationContext.isMainProcess()) || (MMApplicationContext.isAppBrandProcess())) {
+        com.tencent.mm.plugin.appbrand.report.t.init();
+      }
+      paramg = com.tencent.mm.plugin.appbrand.debugger.console.f.rfJ;
+      com.tencent.mm.plugin.appbrand.debugger.console.f.enable();
+      AppMethodBeat.o(44159);
+      return;
+    }
+    boolean bool;
+    if (isAppBrandProcess())
+    {
+      com.tencent.mm.plugin.performance.watchdogs.d.gzs().MOg = com.tencent.mm.plugin.appbrand.report.h.tNO;
+      com.tencent.mm.plugin.appbrand.debugger.b.setup();
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.appusage.ag.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.n()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.appusage.af.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.f()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.widget.recent.k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.widget.recent.g()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.backgroundfetch.k.class, new com.tencent.mm.kernel.c.e(new AppBrandBackgroundFetchDataStorageIPC()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.backgroundfetch.l.class, new com.tencent.mm.kernel.c.e(new AppBrandBackgroundFetchDataTokenStorageIPC()));
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.flutter.a.a.class, new com.tencent.mm.plugin.flutter.b());
+      com.tencent.mm.kernel.h.a(IAppBrandBatchPreloadController.class, new com.tencent.mm.kernel.c.e(new AppBrandBatchPreloadController()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.k.class, new com.tencent.mm.kernel.c.e(new m()));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.g.class, new com.tencent.mm.kernel.c.e(c.qBk));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.y.class, new com.tencent.mm.kernel.c.e(PreDownloadServiceExportAnyProcess.qIN));
+      com.tencent.mm.kernel.h.a(x.class, new com.tencent.mm.kernel.c.e(WxaPkgStorageExportServiceIPC.qJV));
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.w.class, new com.tencent.mm.kernel.c.e(WxaPkgDownloaderExportServiceIPC.qJO));
+      localObject1 = this.singletonRegistry;
+      Object localObject3 = paramg.bGP;
+      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.AppSingletonRegistry ");
+      ((Application)localObject3).registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)localObject1);
+      localObject1 = this.singletonRegistry;
+      localObject3 = paramg.bGP;
+      ((com.tencent.mm.plugin.appbrand.utils.n)localObject1).uqK = true;
+      ((com.tencent.mm.plugin.appbrand.utils.n)localObject1).app = ((Application)localObject3);
+      localObject1 = this.singletonRegistry;
+      localObject3 = com.tencent.mm.plugin.appbrand.utils.a.a.urT;
+      Log.i("MicroMsg.AppSingletonRegistry", "registerAppSingleton() called with: singleton = [%s]", new Object[] { localObject3 });
+      ((com.tencent.mm.plugin.appbrand.utils.n)localObject1).uqI.offer(localObject3);
+      com.tencent.mm.plugin.appbrand.l.k(paramg.bGP);
+      ay.k(paramg.bGP);
+      localObject1 = com.tencent.mm.plugin.appbrand.luggage.b.c.tfv;
+      localObject3 = paramg.bGP;
+      kotlin.g.b.s.u(localObject3, "app");
+      ((Application)localObject3).registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)localObject1);
+      com.tencent.mm.plugin.appbrand.jsapi.video.i.cvD().a(MMApplicationContext.getContext(), com.tencent.mm.plugin.appbrand.utils.d.cNp(), com.tencent.mm.plugin.appbrand.utils.d.cNr(), com.tencent.mm.plugin.appbrand.xweb_ext.video.c.cTF(), null);
+      bool = com.tencent.mm.plugin.appbrand.jsapi.video.e.f.cwx();
+      localObject1 = (com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class);
+      if (localObject1 == null) {
+        break label2589;
+      }
+      bool = ((com.tencent.mm.plugin.expt.b.c)localObject1).a(c.a.yPH, bool);
+      Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "useContentInferer, expt is ".concat(String.valueOf(bool)));
+    }
+    label1809:
+    label2589:
+    for (;;)
+    {
+      com.tencent.mm.plugin.appbrand.jsapi.video.e.f.jL(bool);
+      bool = com.tencent.mm.plugin.appbrand.jsapi.video.e.f.cwy();
+      localObject1 = (com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class);
+      if (localObject1 != null)
+      {
+        bool = ((com.tencent.mm.plugin.expt.b.c)localObject1).a(c.a.yPI, bool);
+        Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "contentInferUseNewInputStream, expt is ".concat(String.valueOf(bool)));
+      }
+      for (;;)
+      {
+        com.tencent.mm.plugin.appbrand.jsapi.video.e.f.jM(bool);
+        localObject1 = (com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class);
+        if (localObject1 != null)
+        {
+          bool = ((com.tencent.mm.plugin.expt.b.c)localObject1).a(c.a.yPJ, true);
+          Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "enableExoByteRangeFix, expt is ".concat(String.valueOf(bool)));
+        }
+        for (;;)
+        {
+          com.tencent.mm.plugin.appbrand.jsapi.video.e.c.c.jN(bool);
+          bool = com.tencent.mm.plugin.appbrand.utils.d.cCQ();
+          localObject1 = (com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class);
+          if (localObject1 != null) {
+            bool = ((com.tencent.mm.plugin.expt.b.c)localObject1).a(c.a.yPQ, bool);
+          }
           for (;;)
           {
-            ab.printErrStackTrace("MicroMsg.AppBrandReporter", localThrowable, "onProcessStart()", new Object[0]);
+            Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "enableFixExoVideoSize, ".concat(String.valueOf(bool)));
+            com.tencent.mm.plugin.appbrand.jsapi.video.e.c.j.jR(bool);
+            int i;
+            int j;
+            if (com.tencent.mm.plugin.appbrand.utils.d.cCQ())
+            {
+              i = 2;
+              localObject1 = (com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class);
+              j = i;
+              if (localObject1 != null)
+              {
+                j = ((com.tencent.mm.plugin.expt.b.c)localObject1).a(c.a.yQa, i);
+                Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "notifyErrorWorkaroundChannel, expt is ".concat(String.valueOf(j)));
+              }
+              if (!MultiProcessMMKV.getMMKV("xweb_abtest_command").contains("video_fix_notify_error_command_value")) {
+                break label2464;
+              }
+              localObject1 = Boolean.valueOf(MultiProcessMMKV.getMMKV("xweb_abtest_command").getBoolean("video_fix_notify_error_command_value", false));
+              label1888:
+              if (localObject1 == null) {
+                break label2572;
+              }
+              if (!((Boolean)localObject1).booleanValue()) {
+                break label2470;
+              }
+              i = k;
+            }
+            for (;;)
+            {
+              label1904:
+              Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "notifyErrorWorkaroundChannel: ".concat(String.valueOf(i)));
+              com.tencent.mm.plugin.appbrand.jsapi.video.e.c.m.sGH = i;
+              localObject1 = com.tencent.mm.plugin.appbrand.jsapi.video.e.c.e.sFN;
+              bool = com.tencent.mm.plugin.appbrand.utils.d.cCQ();
+              localObject1 = (com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class);
+              if (localObject1 != null)
+              {
+                bool = ((com.tencent.mm.plugin.expt.b.c)localObject1).a(c.a.yQd, bool);
+                Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "cancelCacheWhenPlay, expt is ".concat(String.valueOf(bool)));
+              }
+              for (;;)
+              {
+                localObject1 = localObject2;
+                if (MultiProcessMMKV.getMMKV("xweb_abtest_command").contains("video_cancel_cache_when_play_command_value")) {
+                  localObject1 = Boolean.valueOf(MultiProcessMMKV.getMMKV("xweb_abtest_command").getBoolean("video_cancel_cache_when_play_command_value", false));
+                }
+                if (localObject1 != null) {
+                  bool = ((Boolean)localObject1).booleanValue();
+                }
+                Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "cancelCacheWhenPlay: ".concat(String.valueOf(bool)));
+                com.tencent.mm.plugin.appbrand.jsapi.video.e.c.e.jO(bool);
+                Log.i("MicroMsg.SameLayer.AppBrandXWebVideoStrategy", "init");
+                switch (com.tencent.mm.plugin.appbrand.utils.d.cNu())
+                {
+                default: 
+                  label2084:
+                  i = BuildInfo.LIVE_JS_ADAPTER_VERSION;
+                  if (i != 0) {
+                    if (1 != i) {
+                      bool = true;
+                    }
+                  }
+                  break;
+                }
+                for (;;)
+                {
+                  label2100:
+                  Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "useLiveJSAdapterV2: ".concat(String.valueOf(bool)));
+                  Log.i("MicroMsg.AppBrand.TXLiveJSAdapter", kotlin.g.b.s.X("set#useV2, value: ", Boolean.valueOf(bool)));
+                  com.tencent.mm.plugin.appbrand.jsapi.live.m.sbn = bool;
+                  com.tencent.luggage.xweb_ext.extendplugin.component.e.enable();
+                  com.tencent.mm.plugin.appbrand.permission.a.a.a(new a.c()
+                  {
+                    public final com.tencent.mm.plugin.appbrand.permission.a.a a(a.d paramAnonymousd, com.tencent.mm.plugin.appbrand.permission.a.c paramAnonymousc)
+                    {
+                      AppMethodBeat.i(317731);
+                      paramAnonymousd = new com.tencent.mm.plugin.appbrand.permission.a.a(paramAnonymousd, paramAnonymousc)
+                      {
+                        public final boolean P(AppBrandRuntime paramAnonymous2AppBrandRuntime)
+                        {
+                          AppMethodBeat.i(317747);
+                          boolean bool = false;
+                          if ((paramAnonymous2AppBrandRuntime instanceof com.tencent.mm.plugin.appbrand.w)) {
+                            bool = ((com.tencent.mm.plugin.appbrand.w)paramAnonymous2AppBrandRuntime).getInitConfig().qAT.isEnable();
+                          }
+                          AppMethodBeat.o(317747);
+                          return bool;
+                        }
+                        
+                        public final deb a(deb paramAnonymous2deb)
+                        {
+                          AppMethodBeat.i(317756);
+                          if ((com.tencent.mm.plugin.appbrand.device_discovery.bluetooth.f.rgV.cmM()) && (paramAnonymous2deb != null))
+                          {
+                            paramAnonymous2deb.aaJD = com.tencent.mm.plugin.appbrand.device_discovery.bluetooth.f.rgX;
+                            localObject1 = paramAnonymous2deb.aans;
+                            if (localObject1 == null)
+                            {
+                              localObject1 = null;
+                              if (localObject1 == null) {
+                                break label121;
+                              }
+                              ((eul)localObject1).IGG = com.tencent.mm.plugin.appbrand.device_discovery.bluetooth.f.cmN().IGG;
+                              ((eul)localObject1).abxn = com.tencent.mm.plugin.appbrand.device_discovery.bluetooth.f.cmN().abxn;
+                            }
+                          }
+                          else
+                          {
+                            AppMethodBeat.o(317756);
+                            return paramAnonymous2deb;
+                          }
+                          Object localObject2 = ((Iterable)localObject1).iterator();
+                          do
+                          {
+                            if (!((Iterator)localObject2).hasNext()) {
+                              break;
+                            }
+                            localObject1 = ((Iterator)localObject2).next();
+                          } while (!kotlin.g.b.s.p("scope.bluetooth", ((eul)localObject1).YVX));
+                          for (;;)
+                          {
+                            localObject1 = (eul)localObject1;
+                            break;
+                            localObject1 = null;
+                          }
+                          label121:
+                          Object localObject1 = paramAnonymous2deb.aans;
+                          kotlin.g.b.s.s(localObject1, "response.ScopeList");
+                          localObject2 = ((Iterable)localObject1).iterator();
+                          do
+                          {
+                            if (!((Iterator)localObject2).hasNext()) {
+                              break;
+                            }
+                            localObject1 = ((Iterator)localObject2).next();
+                          } while (!kotlin.g.b.s.p("scope.bluetoothBackground", ((eul)localObject1).YVX));
+                          for (;;)
+                          {
+                            localObject1 = (eul)localObject1;
+                            if (localObject1 == null) {
+                              break;
+                            }
+                            localObject2 = paramAnonymous2deb.aans;
+                            if (localObject2 != null) {
+                              ((LinkedList)localObject2).add(com.tencent.mm.plugin.appbrand.device_discovery.bluetooth.f.cmN());
+                            }
+                            ((eul)localObject1).IGG = com.tencent.mm.plugin.appbrand.device_discovery.bluetooth.f.cmN().IGG;
+                            ((eul)localObject1).abxn = com.tencent.mm.plugin.appbrand.device_discovery.bluetooth.f.cmN().abxn;
+                            break;
+                            localObject1 = null;
+                          }
+                        }
+                      };
+                      AppMethodBeat.o(317731);
+                      return paramAnonymousd;
+                    }
+                  });
+                  if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
+                  {
+                    com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.g.class, new com.tencent.mm.kernel.c.e(c.qBk));
+                    com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.y.class, new com.tencent.mm.kernel.c.e(PreDownloadServiceExportAnyProcess.qIN));
+                    com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.k.class, new com.tencent.mm.kernel.c.e(new m()));
+                    com.tencent.mm.kernel.h.a(IAppBrandBatchPreloadController.class, new com.tencent.mm.kernel.c.e(new AppBrandBatchPreloadController()));
+                    com.tencent.mm.plugin.appbrand.dynamic.widget.b.initialize();
+                    if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yOr, 0) != 1) {
+                      break label2560;
+                    }
+                  }
+                  for (bool = true;; bool = false)
+                  {
+                    com.tencent.mm.plugin.appbrand.jsapi.video.i.cvD().a(MMApplicationContext.getContext(), bool, bool, com.tencent.mm.plugin.appbrand.xweb_ext.video.c.cTF(), new com.tencent.luggage.xweb_ext.extendplugin.component.video.a.a.a());
+                    com.tencent.mm.kernel.h.a(x.class, new com.tencent.mm.kernel.c.e(WxaPkgStorageExportServiceIPC.qJV));
+                    com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.service.w.class, new com.tencent.mm.kernel.c.e(WxaPkgDownloaderExportServiceIPC.qJO));
+                    if (isAppBrandProcess())
+                    {
+                      AppBrandProcessSuicideLogic.f(paramg.bGP);
+                      e.l(paramg.bGP);
+                      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(365L, 4L, 1L, false);
+                      KVCommCrossProcessReceiver.ahu(1000);
+                      com.tencent.mm.plugin.appbrand.task.preload.f.f(paramg.bGP);
+                      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.appbrand.backgroundrunning.f.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.backgroundrunning.a()));
+                      copyWxaDecodeKeyFile();
+                      localObject1 = new PluginAppBrand.6(this);
+                      CdnLogic.InitSavePath("/data/user/0/" + paramg.getPackageName() + "/MicroMsg/CronetCache/appbrand/cache/", (CdnLogic.AppCallback)localObject1);
+                      com.tencent.luggage.sdk.h.d.a("SkylineBoot#Init", new Runnable()
+                      {
+                        public final void run()
+                        {
+                          AppMethodBeat.i(317730);
+                          Object localObject = com.tencent.luggage.h.a.b.ewj;
+                          localObject = com.tencent.mm.plugin.appbrand.ab.d.tVn;
+                          com.tencent.luggage.h.c.mw(com.tencent.mm.plugin.appbrand.ab.d.cJB());
+                          Log.i("Luggage.SkylineBoot", "init " + MMApplicationContext.getProcessName() + " renderBackend:" + com.tencent.luggage.h.c.asS());
+                          localObject = com.tencent.luggage.h.c.evV;
+                          if (com.tencent.luggage.h.c.asU()) {}
+                          for (boolean bool = MMApplicationContext.isAppBrandProcess();; bool = false)
+                          {
+                            if (bool)
+                            {
+                              localObject = com.tencent.luggage.h.e.evY;
+                              Context localContext = MMApplicationContext.getContext();
+                              kotlin.g.b.s.s(localContext, "getContext()");
+                              ((com.tencent.luggage.h.e)localObject).br(localContext);
+                            }
+                            AppMethodBeat.o(317730);
+                            return;
+                          }
+                        }
+                      });
+                    }
+                    if (!MMApplicationContext.isToolsProcess()) {
+                      break;
+                    }
+                    com.tencent.mm.ad.h.initialize();
+                    break;
+                    i = 0;
+                    break label1809;
+                    label2464:
+                    localObject1 = null;
+                    break label1888;
+                    label2470:
+                    i = 0;
+                    break label1904;
+                    Log.i("MicroMsg.SameLayer.AppBrandXWebVideoStrategy", "init, use ThumbPlayer");
+                    localObject1 = com.tencent.mm.plugin.appbrand.ag.b.a.c.utd;
+                    localObject1 = MMApplicationContext.getContext();
+                    kotlin.g.b.s.u(localObject1, "context");
+                    if (!com.tencent.mm.plugin.appbrand.ag.b.a.c.ute) {
+                      break label2084;
+                    }
+                    com.tencent.mm.plugin.appbrand.ag.b.a.c.fq((Context)localObject1);
+                    break label2084;
+                    bool = false;
+                    break label2100;
+                    bool = com.tencent.mm.plugin.appbrand.utils.d.cCQ();
+                    localObject1 = (com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class);
+                    if (localObject1 == null) {
+                      break label2566;
+                    }
+                    bool = ((com.tencent.mm.plugin.expt.b.c)localObject1).a(c.a.yQe, bool);
+                    break label2100;
+                  }
+                }
+              }
+              i = j;
+            }
           }
+          bool = true;
         }
-        com.tencent.mm.plugin.appbrand.task.a.c.f(paramg.bX);
-        continue;
-      }
-      if (isSupportProcess())
-      {
-        com.tencent.mm.plugin.appbrand.dynamic.h.e.cH(com.tencent.mm.sdk.platformtools.ah.getContext());
-        com.tencent.mm.aa.h.initialize();
       }
     }
   }
   
-  final g getCore()
+  final n getCore()
   {
-    AppMethodBeat.i(129228);
-    g localg = (g)q.S(g.class);
-    AppMethodBeat.o(129228);
-    return localg;
+    AppMethodBeat.i(44154);
+    n localn = PluginAppBrand.a.ceT();
+    AppMethodBeat.o(44154);
+    return localn;
   }
   
-  public final List<com.tencent.mm.model.ai> getDataTransferList()
+  public final List<au> getDataTransferList()
   {
-    AppMethodBeat.i(129227);
+    AppMethodBeat.i(44153);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(new g.1(new com.tencent.mm.plugin.appbrand.config.g()));
+    localLinkedList.add(new l.1(new com.tencent.mm.plugin.appbrand.config.l()));
     localLinkedList.add(new ad());
-    localLinkedList.add(new com.tencent.mm.plugin.appbrand.appusage.e());
-    AppMethodBeat.o(129227);
+    localLinkedList.add(new com.tencent.mm.plugin.appbrand.appusage.d());
+    localLinkedList.add(new com.tencent.mm.plugin.appbrand.appusage.r());
+    localLinkedList.add(new ac());
+    localLinkedList.add(new o.a());
+    AppMethodBeat.o(44153);
     return localLinkedList;
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.appcache.bp getWxaPkgStorageRouter()
+  {
+    return this.mWxaPkgStorageRouter;
   }
   
   public final void installed()
   {
-    AppMethodBeat.i(129229);
-    ab.i("MicroMsg.PluginAppBrand", "installed()");
-    alias(com.tencent.mm.plugin.appbrand.a.c.class);
-    this.xWebViewInitCompleteEventIListener.alive();
-    AppMethodBeat.o(129229);
+    AppMethodBeat.i(44155);
+    Log.i("MicroMsg.PluginAppBrand[speedtest]", "installed()");
+    alias(com.tencent.mm.plugin.appbrand.api.c.class);
+    if (MMApplicationContext.isMainProcess()) {
+      com.tencent.mm.plugin.appbrand.task.i.a(com.tencent.mm.plugin.appbrand.task.j.cJX());
+    }
+    com.tencent.mm.ipcinvoker.i.myG = ipcSerialThreadPoolDelegate;
+    if (!isAppBrandProcess()) {
+      new PluginAppBrand.2(this, com.tencent.mm.app.f.hfK).alive();
+    }
+    if (isAppBrandProcess())
+    {
+      com.tencent.mm.plugin.appbrand.crash_report.b.setup();
+      com.tencent.mm.kernel.h.b(com.tencent.mm.api.ab.class, new com.tencent.mm.plugin.webview.p());
+    }
+    if (MMApplicationContext.isMainProcess())
+    {
+      com.tencent.mm.plugin.appbrand.msg.dyeingtemplate.a locala = com.tencent.mm.plugin.appbrand.msg.dyeingtemplate.a.tmI;
+      com.tencent.mm.plugin.appbrand.msg.dyeingtemplate.a.initialize();
+    }
+    AppMethodBeat.o(44155);
   }
   
   public final String name()
@@ -320,13 +764,26 @@ public final class PluginAppBrand
     return "plugin-appbrand";
   }
   
-  public final void onAccountInitialized(e.c paramc) {}
+  public final void onAccountInitialized(f.c paramc) {}
   
   public final void onAccountRelease() {}
+  
+  public final void parallelsDependency()
+  {
+    AppMethodBeat.i(317917);
+    PluginAppBrand.a.ceS();
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).db(com.tencent.mm.kernel.h.ax(PluginAppBrand.a.class));
+    AppMethodBeat.o(317917);
+  }
+  
+  final void setWxaPkgStorageRouter(com.tencent.mm.plugin.appbrand.appcache.bp parambp)
+  {
+    this.mWxaPkgStorageRouter = parambp;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.PluginAppBrand
  * JD-Core Version:    0.7.0.1
  */

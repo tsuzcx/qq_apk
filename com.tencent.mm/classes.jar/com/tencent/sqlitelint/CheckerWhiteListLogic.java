@@ -25,10 +25,10 @@ public final class CheckerWhiteListLogic
   
   private static void addToNative(String paramString, Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(93975);
+    AppMethodBeat.i(52819);
     if (paramMap == null)
     {
-      AppMethodBeat.o(93975);
+      AppMethodBeat.o(52819);
       return;
     }
     Iterator localIterator = paramMap.entrySet().iterator();
@@ -50,13 +50,13 @@ public final class CheckerWhiteListLogic
       i += 1;
     }
     SQLiteLintNativeBridge.nativeAddToWhiteList(paramString, arrayOfString, paramMap);
-    AppMethodBeat.o(93975);
+    AppMethodBeat.o(52819);
   }
   
   public static void setWhiteList(Context paramContext, String paramString, int paramInt)
   {
     localObject = null;
-    AppMethodBeat.i(93974);
+    AppMethodBeat.i(52818);
     XmlResourceParser localXmlResourceParser;
     try
     {
@@ -64,14 +64,14 @@ public final class CheckerWhiteListLogic
       if (localXmlResourceParser == null)
       {
         SLog.w("SQLiteLint.CheckerWhiteListLogic", "buildWhiteListSet: parser null", new Object[0]);
-        AppMethodBeat.o(93974);
+        AppMethodBeat.o(52818);
         return;
       }
     }
     catch (Exception paramContext)
     {
       SLog.w("SQLiteLint.CheckerWhiteListLogic", "buildWhiteListSet: getResources exp=%s", new Object[] { paramContext.getLocalizedMessage() });
-      AppMethodBeat.o(93974);
+      AppMethodBeat.o(52818);
       return;
     }
     try
@@ -122,7 +122,7 @@ public final class CheckerWhiteListLogic
       SLog.e("SQLiteLint.CheckerWhiteListLogic", "buildWhiteListMap:maybe dead loop!!", new Object[0]);
       addToNative(paramString, localHashMap);
       localXmlResourceParser.close();
-      AppMethodBeat.o(93974);
+      AppMethodBeat.o(52818);
       return;
       localObject = localXmlResourceParser.getName();
       if ("checker".equalsIgnoreCase((String)localObject))
@@ -151,7 +151,7 @@ public final class CheckerWhiteListLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.CheckerWhiteListLogic
  * JD-Core Version:    0.7.0.1
  */

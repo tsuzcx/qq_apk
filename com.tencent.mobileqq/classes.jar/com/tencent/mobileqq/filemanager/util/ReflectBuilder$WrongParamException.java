@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.util.Log;
 
-public class ReflectBuilder$WrongParamException
+class ReflectBuilder$WrongParamException
   extends Exception
 {
   ReflectBuilder$WrongParamException()
@@ -12,7 +12,7 @@ public class ReflectBuilder$WrongParamException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.ReflectBuilder.WrongParamException
  * JD-Core Version:    0.7.0.1
  */

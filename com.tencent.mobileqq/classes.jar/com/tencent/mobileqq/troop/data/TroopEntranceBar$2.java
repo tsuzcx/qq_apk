@@ -1,52 +1,54 @@
 package com.tencent.mobileqq.troop.data;
 
-import alud;
 import android.content.Context;
 import android.content.Intent;
-import azqs;
-import bbrh;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.AccountDetail;
-import syb;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class TroopEntranceBar$2
+class TroopEntranceBar$2
   implements Runnable
 {
-  public TroopEntranceBar$2(bbrh parambbrh) {}
+  TroopEntranceBar$2(TroopEntranceBar paramTroopEntranceBar) {}
   
   public void run()
   {
-    Object localObject2 = "";
-    Object localObject1 = "";
-    Object localObject4 = syb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localObject4 != null)
+    Object localObject1 = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).queryAccountDetail(this.this$0.a, this.this$0.c.b);
+    if (localObject1 != null)
     {
-      localObject3 = ((AccountDetail)localObject4).uin;
-      localObject4 = ((AccountDetail)localObject4).name;
-      localObject1 = localObject4;
-      localObject2 = localObject3;
-      if (localObject4 != null)
+      str = ((IPublicAccountDetail)localObject1).getUin();
+      localObject2 = ((IPublicAccountDetail)localObject1).getName();
+      localObject1 = localObject2;
+      if (localObject2 != null)
       {
-        localObject1 = localObject4;
-        localObject2 = localObject3;
-        if (((String)localObject4).endsWith(alud.a(2131715698)))
-        {
-          localObject1 = ((String)localObject4).substring(0, ((String)localObject4).length() - 3);
-          localObject2 = localObject3;
+        localObject1 = localObject2;
+        if (((String)localObject2).endsWith(HardCodeUtil.a(2131912573))) {
+          localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 3);
         }
       }
+      localObject2 = localObject1;
+      localObject1 = str;
     }
-    localObject1 = String.format("https://buluo.qq.com/mobile/relativegroup.html?from=%s&scode=%s&keyword=%s&channel=1&_wv=1027&_bid=128", new Object[] { "qun_aio", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localObject1 });
-    Object localObject3 = new Intent(this.this$0.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    ((Intent)localObject3).putExtra("url", (String)localObject1);
-    this.this$0.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
-    azqs.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, "", "");
+    else
+    {
+      str = "";
+      localObject1 = str;
+      localObject2 = str;
+    }
+    String str = String.format("https://buluo.qq.com/mobile/relativegroup.html?from=%s&scode=%s&keyword=%s&channel=1&_wv=1027&_bid=128", new Object[] { "qun_aio", this.this$0.c.b, localObject2 });
+    Object localObject2 = new Intent(this.this$0.b, QQBrowserActivity.class);
+    ((Intent)localObject2).putExtra("url", str);
+    this.this$0.b.startActivity((Intent)localObject2);
+    ReportController.b(this.this$0.a, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.this$0.c.b, (String)localObject1, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopEntranceBar.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,20 @@ public class fxb
 {
   public fxb(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void a(Boolean paramBoolean)
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramBoolean + "]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
     }
-    this.a.a.a().a(true, 44, new Object[] { Integer.valueOf(0), null, paramBoolean });
+    this.a.a.a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramString });
   }
   
   public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + String.valueOf(paramWyErrorStatus.errorCode) + "],errorMsg[" + paramWyErrorStatus.errorMsg + "]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + String.valueOf(paramWyErrorStatus.errorCode) + "],errorMsg[" + paramWyErrorStatus.errorMsg + "]");
     }
-    this.a.a.a().a(false, 44, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, null });
+    this.a.a.a().a(false, 45, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, null });
   }
 }
 

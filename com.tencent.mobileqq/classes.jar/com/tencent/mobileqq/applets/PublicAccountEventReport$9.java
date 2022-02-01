@@ -1,20 +1,26 @@
 package com.tencent.mobileqq.applets;
 
-import android.text.TextUtils;
-import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class PublicAccountEventReport$9
+final class PublicAccountEventReport$9
   implements Runnable
 {
-  public PublicAccountEventReport$9(QQAppInterface paramQQAppInterface, String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2) {}
+  PublicAccountEventReport$9(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, long paramLong) {}
   
   public void run()
   {
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB6", "0X8009EB6", this.jdField_a_of_type_Int, 0, "" + this.jdField_b_of_type_Int, "", this.jdField_a_of_type_Long + "", "");
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc05007", "", this.jdField_a_of_type_JavaLangString, "0X8009EB6", "0X8009EB6", this.jdField_a_of_type_Int, 0, "" + this.jdField_b_of_type_Int, "", this.jdField_a_of_type_Long + "", this.jdField_b_of_type_JavaLangString);
-    }
+    QQAppInterface localQQAppInterface = this.a;
+    String str = this.b;
+    int i = this.c;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(this.d);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("");
+    ReportController.b(localQQAppInterface, "dc00898", "", str, "0X8009EB5", "0X8009EB5", i, 0, (String)localObject, localStringBuilder.toString(), "", "");
   }
 }
 

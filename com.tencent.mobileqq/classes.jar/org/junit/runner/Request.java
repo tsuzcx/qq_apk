@@ -30,8 +30,10 @@ public abstract class Request
     }
     catch (InitializationError paramComputer)
     {
-      throw new RuntimeException("Bug in saff's brain: Suite constructor, called as above, should always complete");
+      label19:
+      break label19;
     }
+    throw new RuntimeException("Bug in saff's brain: Suite constructor, called as above, should always complete");
   }
   
   public static Request classes(Class<?>... paramVarArgs)
@@ -74,7 +76,7 @@ public abstract class Request
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runner.Request
  * JD-Core Version:    0.7.0.1
  */

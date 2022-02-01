@@ -2,66 +2,66 @@ package com.tencent.mm.plugin.appbrand.dynamic.a;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.c;
-import com.tencent.mm.plugin.appbrand.s.i;
+import com.tencent.mm.modelappbrand.f;
+import com.tencent.mm.plugin.appbrand.af.j;
 import java.util.Map;
 import java.util.Set;
 
 final class a
-  implements c
+  implements f
 {
-  private final i<Object, View> hnV;
+  private final j<Object, View> rkP;
   
   a()
   {
-    AppMethodBeat.i(10726);
-    this.hnV = new i();
-    AppMethodBeat.o(10726);
+    AppMethodBeat.i(121207);
+    this.rkP = new j();
+    AppMethodBeat.o(121207);
   }
   
-  public final Set<View> aS(Object paramObject)
+  public final Map<Object, Set<View>> bEG()
   {
-    AppMethodBeat.i(10729);
-    paramObject = this.hnV.br(paramObject);
-    AppMethodBeat.o(10729);
-    return paramObject;
-  }
-  
-  public final Set<View> aT(Object paramObject)
-  {
-    AppMethodBeat.i(10730);
-    paramObject = this.hnV.bs(paramObject);
-    AppMethodBeat.o(10730);
-    return paramObject;
-  }
-  
-  public final Map<Object, Set<View>> acj()
-  {
-    AppMethodBeat.i(141924);
-    Map localMap = this.hnV.aNQ();
-    AppMethodBeat.o(141924);
+    AppMethodBeat.i(121212);
+    Map localMap = this.rkP.cNk();
+    AppMethodBeat.o(121212);
     return localMap;
   }
   
   public final boolean d(Object paramObject, View paramView)
   {
-    AppMethodBeat.i(10727);
-    boolean bool = this.hnV.s(paramObject, paramView);
-    AppMethodBeat.o(10727);
+    AppMethodBeat.i(121208);
+    boolean bool = this.rkP.v(paramObject, paramView);
+    AppMethodBeat.o(121208);
     return bool;
+  }
+  
+  public final Set<View> dA(Object paramObject)
+  {
+    AppMethodBeat.i(121211);
+    paramObject = this.rkP.ek(paramObject);
+    AppMethodBeat.o(121211);
+    return paramObject;
+  }
+  
+  public final Set<View> dz(Object paramObject)
+  {
+    AppMethodBeat.i(121210);
+    paramObject = this.rkP.ej(paramObject);
+    AppMethodBeat.o(121210);
+    return paramObject;
   }
   
   public final boolean e(Object paramObject, View paramView)
   {
-    AppMethodBeat.i(10728);
-    boolean bool = this.hnV.t(paramObject, paramView);
-    AppMethodBeat.o(10728);
+    AppMethodBeat.i(121209);
+    boolean bool = this.rkP.O(paramObject, paramView);
+    AppMethodBeat.o(121209);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a.a
  * JD-Core Version:    0.7.0.1
  */

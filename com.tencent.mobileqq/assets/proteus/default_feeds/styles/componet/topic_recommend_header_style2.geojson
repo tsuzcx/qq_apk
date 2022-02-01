@@ -31,7 +31,6 @@
                 "value":"375"
                 },
                 "attributes":{
-                "setFrameString:":"-1",
                 "setBackgroundColorString:":"#eaeaea"
                 }
                 },
@@ -47,7 +46,6 @@
                 "type":"wrap_content"
                 },
                 "attributes":{
-                "setFrameString":"-1",
                 "setText:":"-1",
                 "setTextColorString:":"#07D0B0",
                 "setBoldFontSizeString:":"14",
@@ -68,7 +66,6 @@
                 "value":"210"
                 },
                 "attributes":{
-                "setFrameString":"-1",
                 "setText:":"-1",
                 "setTextColorString:":"-1",
                 "setFontSizeString:":"14",
@@ -108,7 +105,6 @@
                 "type":"wrap_content"
                 },
                 "attributes":{
-                "setFrameString:":"-1",
                 "setText:":"更多该话题内容",
                 "setTextColorString:":"#777777",
                 "setFontSizeString:":"14",

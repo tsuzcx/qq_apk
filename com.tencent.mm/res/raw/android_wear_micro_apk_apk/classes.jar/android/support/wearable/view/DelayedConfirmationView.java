@@ -15,12 +15,8 @@ import android.view.MotionEvent;
 public class DelayedConfirmationView
   extends CircledImageView
 {
-  private long BH;
-  private long BI = 0L;
-  private g BJ;
-  private long BK;
-  private long BL;
-  private Handler BM = new Handler()
+  private long DA;
+  private Handler DB = new Handler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
@@ -32,9 +28,13 @@ public class DelayedConfirmationView
       while ((DelayedConfirmationView.b(DelayedConfirmationView.this) <= 0L) || (DelayedConfirmationView.f(DelayedConfirmationView.this) == null)) {
         return;
       }
-      DelayedConfirmationView.f(DelayedConfirmationView.this).eU();
+      DelayedConfirmationView.f(DelayedConfirmationView.this).fk();
     }
   };
+  private long Dw;
+  private long Dx = 0L;
+  private g Dy;
+  private long Dz;
   
   public DelayedConfirmationView(Context paramContext)
   {
@@ -49,26 +49,26 @@ public class DelayedConfirmationView
   public DelayedConfirmationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.xN, paramInt, 0);
-    this.BI = paramContext.getInteger(k.xO, 33);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.zC, paramInt, 0);
+    this.Dx = paramContext.getInteger(k.zD, 33);
     setProgress(0.0F);
     paramContext.recycle();
   }
   
   public final void a(g paramg)
   {
-    this.BJ = paramg;
+    this.Dy = paramg;
   }
   
-  public final void eT()
+  public final void fj()
   {
-    this.BH = 5000L;
+    this.Dw = 5000L;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.BK > 0L) {
-      setProgress((float)(this.BL - this.BK) / (float)this.BH);
+    if (this.Dz > 0L) {
+      setProgress((float)(this.DA - this.Dz) / (float)this.Dw);
     }
     super.onDraw(paramCanvas);
   }
@@ -81,17 +81,17 @@ public class DelayedConfirmationView
     for (;;)
     {
       return false;
-      if (this.BJ != null) {
-        this.BJ.eV();
+      if (this.Dy != null) {
+        this.Dy.fl();
       }
     }
   }
   
   public final void start()
   {
-    this.BK = SystemClock.elapsedRealtime();
-    this.BL = SystemClock.elapsedRealtime();
-    this.BM.sendEmptyMessageDelayed(0, this.BI);
+    this.Dz = SystemClock.elapsedRealtime();
+    this.DA = SystemClock.elapsedRealtime();
+    this.DB.sendEmptyMessageDelayed(0, this.Dx);
   }
 }
 

@@ -1,9 +1,27 @@
 package com.tencent.thumbplayer.core.decoder;
 
-class TPBaseMediaCodecDecoder$1 {}
+import com.tencent.tmediacodec.callback.SimpleCodecCallback;
+
+class TPBaseMediaCodecDecoder$1
+  extends SimpleCodecCallback
+{
+  TPBaseMediaCodecDecoder$1(TPBaseMediaCodecDecoder paramTPBaseMediaCodecDecoder) {}
+  
+  public void onReuseCodecAPIException(String paramString, Throwable paramThrowable)
+  {
+    super.onReuseCodecAPIException(paramString, paramThrowable);
+    TPMediaCodecManager.onMediaCodecException(this.this$0.mCodecId, paramString);
+  }
+  
+  public void onStarted(Boolean paramBoolean, String paramString)
+  {
+    super.onStarted(paramBoolean, paramString);
+    TPMediaCodecManager.onMediaCodecReady(this.this$0.mCodecId, paramString);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPBaseMediaCodecDecoder.1
  * JD-Core Version:    0.7.0.1
  */

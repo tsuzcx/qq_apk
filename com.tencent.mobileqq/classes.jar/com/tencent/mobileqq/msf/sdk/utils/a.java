@@ -18,15 +18,12 @@ public class a
       try
       {
         localActivityManager.getMemoryInfo((ActivityManager.MemoryInfo)localObject);
-        return ((ActivityManager.MemoryInfo)localObject).availMem;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.w("DeviceInfoUtils", 1, localException.getMessage(), localException.getCause());
-        }
+        QLog.w("DeviceInfoUtils", 1, localException.getMessage(), localException.getCause());
       }
+      return ((ActivityManager.MemoryInfo)localObject).availMem;
     }
     return -1L;
   }
@@ -40,10 +37,17 @@ public class a
       localObject1 = new ActivityManager.MemoryInfo();
       ((ActivityManager)localObject2).getMemoryInfo((ActivityManager.MemoryInfo)localObject1);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("sysTotalMem:").append(((ActivityManager.MemoryInfo)localObject1).totalMem / 1024L / 1024L).append("M");
-      ((StringBuilder)localObject2).append("|sysAvailMem:").append(((ActivityManager.MemoryInfo)localObject1).availMem / 1024L / 1024L).append("M");
-      ((StringBuilder)localObject2).append("|sysThreshold:").append(((ActivityManager.MemoryInfo)localObject1).threshold / 1014L / 1014L).append("M");
-      ((StringBuilder)localObject2).append("|isLowMem:").append(((ActivityManager.MemoryInfo)localObject1).lowMemory);
+      ((StringBuilder)localObject2).append("sysTotalMem:");
+      ((StringBuilder)localObject2).append(((ActivityManager.MemoryInfo)localObject1).totalMem / 1024L / 1024L);
+      ((StringBuilder)localObject2).append("M");
+      ((StringBuilder)localObject2).append("|sysAvailMem:");
+      ((StringBuilder)localObject2).append(((ActivityManager.MemoryInfo)localObject1).availMem / 1024L / 1024L);
+      ((StringBuilder)localObject2).append("M");
+      ((StringBuilder)localObject2).append("|sysThreshold:");
+      ((StringBuilder)localObject2).append(((ActivityManager.MemoryInfo)localObject1).threshold / 1014L / 1014L);
+      ((StringBuilder)localObject2).append("M");
+      ((StringBuilder)localObject2).append("|isLowMem:");
+      ((StringBuilder)localObject2).append(((ActivityManager.MemoryInfo)localObject1).lowMemory);
       QLog.d("SysMemoryInfo", 1, ((StringBuilder)localObject2).toString());
     }
   }
@@ -54,16 +58,22 @@ public class a
     if (localRuntime != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("appMaxMem:").append(localRuntime.maxMemory() / 1024L / 1024L).append("M");
-      localStringBuilder.append("|appTotalMem:").append(localRuntime.totalMemory() / 1024L / 1024L).append("M");
-      localStringBuilder.append("|appFreeMem:").append(localRuntime.freeMemory() / 1014L / 1014L).append("M");
+      localStringBuilder.append("appMaxMem:");
+      localStringBuilder.append(localRuntime.maxMemory() / 1024L / 1024L);
+      localStringBuilder.append("M");
+      localStringBuilder.append("|appTotalMem:");
+      localStringBuilder.append(localRuntime.totalMemory() / 1024L / 1024L);
+      localStringBuilder.append("M");
+      localStringBuilder.append("|appFreeMem:");
+      localStringBuilder.append(localRuntime.freeMemory() / 1014L / 1014L);
+      localStringBuilder.append("M");
       QLog.d("AppMemoryInfo", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.a
  * JD-Core Version:    0.7.0.1
  */

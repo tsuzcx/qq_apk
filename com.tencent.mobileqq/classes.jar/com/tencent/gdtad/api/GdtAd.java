@@ -1,42 +1,38 @@
 package com.tencent.gdtad.api;
 
-import aamt;
-import aamu;
-import aamv;
-import aanc;
-import aand;
-import aane;
-import aanf;
-import aase;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
 import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.aditem.GdtAdLoader;
+import com.tencent.gdtad.aditem.GdtAdLoader.Listener;
+import com.tencent.gdtad.aditem.GdtAdLoader.Session;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.log.GdtLog;
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
 
 public abstract class GdtAd
-  implements Serializable
+  implements IGdtAd, Serializable
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long = -2147483648L;
-  private WeakReference<aane> listener;
-  private aamu loadListener = new aanc(this);
+  private static int a = 0;
+  private static long b = -2147483648L;
+  private WeakReference<GdtAdListener> listener;
+  private GdtAdLoader.Listener loadListener = new GdtAd.6(this);
   private long loadedTimeMillis = -2147483648L;
-  private aamt loader;
+  private GdtAdLoader loader;
   private int status = 0;
   
-  public GdtAd(aanf paramaanf)
+  public GdtAd(GdtAdParams paramGdtAdParams)
   {
-    if (paramaanf == null)
+    if (paramGdtAdParams == null)
     {
-      aase.d("GdtAd", "constructor");
+      GdtLog.d("GdtAd", "constructor");
       return;
     }
-    aamv localaamv = new aamv();
-    localaamv.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramaanf.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
-    this.loader = new aamt(localaamv, new WeakReference(this.loadListener));
+    GdtAdLoader.Session localSession = new GdtAdLoader.Session();
+    localSession.a = paramGdtAdParams.a;
+    this.loader = new GdtAdLoader(localSession, new WeakReference(this.loadListener));
   }
   
   private void a()
@@ -45,48 +41,43 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.2(this, localWeakReference));
   }
   
-  private void a(aand paramaand)
+  private void a(GdtAdError paramGdtAdError)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    new Handler().post(new GdtAd.1(this, localWeakReference, paramaand));
+    new Handler().post(new GdtAd.1(this, localWeakReference, paramGdtAdError));
   }
   
   public com.tencent.gdtad.aditem.GdtAd getAd()
   {
     if (isLoaded()) {
-      return getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a;
+      return getParams().b.a;
     }
     return null;
   }
   
-  public int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
+  protected int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 6;
-    int i;
     if (paramInt1 == -2147483648) {
-      i = 3;
+      return 3;
     }
-    do
+    int i = 6;
+    if (paramInt1 != 200) {
+      return 6;
+    }
+    if (paramInt2 != 0)
     {
-      do
-      {
-        do
-        {
-          return i;
-          i = j;
-        } while (paramInt1 != 200);
-        if (paramInt2 == 0) {
-          break;
-        }
-        i = j;
-      } while (paramInt2 != 1);
-      return 4;
-      if (paramInt3 == 0) {
-        break;
+      if (paramInt2 == 1) {
+        i = 4;
       }
-      i = j;
-    } while (paramInt3 != 102006);
-    return 5;
+      return i;
+    }
+    if (paramInt3 != 0)
+    {
+      if (paramInt3 == 102006) {
+        i = 5;
+      }
+      return i;
+    }
     if (paramGdtAd == null) {
       return 1;
     }
@@ -96,12 +87,30 @@ public abstract class GdtAd
     return 0;
   }
   
-  public aamt getGdtAdLoader()
+  public GdtAdLoader getGdtAdLoader()
   {
     return this.loader;
   }
   
-  public abstract aanf getParams();
+  protected abstract GdtAdParams getParams();
+  
+  protected void init()
+  {
+    if (getParams() == null) {
+      return;
+    }
+    if (getParams().b == null) {
+      return;
+    }
+    if (getParams().b.a == null) {
+      return;
+    }
+    if (!getParams().b.a.isValid()) {
+      return;
+    }
+    this.status = 2;
+    this.loadedTimeMillis = System.currentTimeMillis();
+  }
   
   public boolean isInvalidated()
   {
@@ -110,43 +119,47 @@ public abstract class GdtAd
   
   public boolean isLoaded()
   {
-    return (isValid()) && (this.status == 2) && (getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a != null) && (getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.isValid()) && (this.loadedTimeMillis != -9223372036854775808L);
+    return (isValid()) && (this.status == 2) && (getParams().b.a != null) && (getParams().b.a.isValid()) && (this.loadedTimeMillis != -9223372036854775808L);
   }
   
-  public boolean isValid()
+  protected boolean isValid()
   {
-    return (getParams() != null) && (getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet != null) && (getParams().a());
+    return (getParams() != null) && (getParams().a());
   }
   
   public boolean load(Context paramContext)
   {
-    if (paramContext == null) {}
-    for (;;)
+    if ((paramContext != null) && (isValid()) && (getParams().a != null))
     {
-      aase.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
-      return false;
-      if ((isValid()) && ((this.status == 0) || (this.status == 3)))
+      int i = this.status;
+      if ((i == 0) || (i == 3))
       {
-        if ((jdField_a_of_type_Long == -2147483648L) || (SystemClock.elapsedRealtime() - jdField_a_of_type_Long > 60000L)) {
-          break;
+        if ((b != -2147483648L) && (SystemClock.elapsedRealtime() - b <= 60000L))
+        {
+          if (a >= 30)
+          {
+            this.status = 3;
+            a(new GdtAdError(2));
+            break label136;
+          }
         }
-        if (jdField_a_of_type_Int < 30) {
-          break label114;
+        else
+        {
+          a = 0;
+          b = SystemClock.elapsedRealtime();
         }
-        this.status = 3;
-        a(new aand(2));
+        this.status = 1;
+        a += 1;
+        this.loader.a(new WeakReference(paramContext));
+        return true;
       }
     }
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    label114:
-    this.status = 1;
-    jdField_a_of_type_Int += 1;
-    this.loader.a(new WeakReference(paramContext));
-    return true;
+    label136:
+    GdtLog.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
+    return false;
   }
   
-  public void notifyClicked()
+  protected void notifyClicked()
   {
     WeakReference localWeakReference = new WeakReference(this);
     new Handler().post(new GdtAd.4(this, localWeakReference));
@@ -164,14 +177,14 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.3(this, localWeakReference));
   }
   
-  public void setListener(WeakReference<aane> paramWeakReference)
+  public void setListener(WeakReference<GdtAdListener> paramWeakReference)
   {
     this.listener = paramWeakReference;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAd
  * JD-Core Version:    0.7.0.1
  */

@@ -2,304 +2,353 @@ package cooperation.qqfav.globalsearch;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import ayug;
-import ayuh;
-import ayuu;
-import bivc;
-import bivz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavHelper;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteSearchEngine
-  implements ayug<bivz>
+  implements ISearchEngine<FavoriteSearchResultModel>
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final FavoriteSearchEngine.QueryRunnable jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable = new FavoriteSearchEngine.QueryRunnable(this, null);
-  private final FavoriteSearchEngine.SearchRunnable jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable = new FavoriteSearchEngine.SearchRunnable(this, null);
-  private String jdField_a_of_type_JavaLangString;
-  private Thread jdField_a_of_type_JavaLangThread;
-  private List<bivz> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Thread b;
+  private static boolean f;
+  private final QQAppInterface a;
+  private String b;
+  private long c;
+  private int d;
+  private List<FavoriteSearchResultModel> e = new ArrayList();
+  private final FavoriteSearchEngine.QueryRunnable g = new FavoriteSearchEngine.QueryRunnable(this, null);
+  private Thread h;
+  private Thread i;
+  private final FavoriteSearchEngine.SearchRunnable j = new FavoriteSearchEngine.SearchRunnable(this, null);
   
   public FavoriteSearchEngine(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
-  public List<bivz> a(ayuu paramayuu)
+  /* Error */
+  public static void a(com.tencent.common.app.AppInterface paramAppInterface)
   {
-    if (paramayuu != null) {}
-    int i;
-    long l;
-    boolean bool2;
-    boolean bool1;
-    label111:
-    Object localObject1;
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 62	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   4: invokevirtual 68	mqq/app/MobileQQ:getContentResolver	()Landroid/content/ContentResolver;
+    //   7: astore_1
+    //   8: new 70	java/lang/StringBuilder
+    //   11: dup
+    //   12: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   15: astore_2
+    //   16: aload_2
+    //   17: ldc 73
+    //   19: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: pop
+    //   23: aload_2
+    //   24: aload_0
+    //   25: invokevirtual 81	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   28: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: pop
+    //   32: aload_2
+    //   33: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokestatic 90	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   39: astore_0
+    //   40: aload_1
+    //   41: aload_0
+    //   42: aconst_null
+    //   43: aconst_null
+    //   44: aconst_null
+    //   45: aconst_null
+    //   46: invokevirtual 96	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   49: astore_0
+    //   50: aload_0
+    //   51: ifnull +24 -> 75
+    //   54: aload_0
+    //   55: invokeinterface 101 1 0
+    //   60: return
+    //   61: astore_0
+    //   62: goto +14 -> 76
+    //   65: astore_0
+    //   66: ldc 103
+    //   68: iconst_1
+    //   69: ldc 105
+    //   71: aload_0
+    //   72: invokestatic 110	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   75: return
+    //   76: aload_0
+    //   77: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	78	0	paramAppInterface	com.tencent.common.app.AppInterface
+    //   7	34	1	localContentResolver	android.content.ContentResolver
+    //   15	18	2	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   40	50	61	finally
+    //   66	75	61	finally
+    //   40	50	65	java/lang/Exception
+  }
+  
+  public List<FavoriteSearchResultModel> a(SearchRequest paramSearchRequest)
+  {
+    if (paramSearchRequest != null) {}
+    label1153:
+    label1158:
+    label1180:
+    label1187:
+    label1192:
+    label1194:
     for (;;)
     {
+      int n;
+      int i1;
       try
       {
-        if (paramayuu.jdField_a_of_type_JavaLangString != null)
+        if ((paramSearchRequest.a != null) && (paramSearchRequest.a.trim().length() != 0))
         {
-          i = paramayuu.jdField_a_of_type_JavaLangString.trim().length();
-          if (i != 0) {}
-        }
-        else
-        {
-          paramayuu = null;
-          return paramayuu;
-        }
-        if (!jdField_a_of_type_Boolean) {
-          jdField_a_of_type_Boolean = bivc.a(false);
-        }
-        this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Ayuu = paramayuu;
-        if (paramayuu.jdField_a_of_type_AndroidOsBundle == null) {
-          break label1090;
-        }
-        i = paramayuu.jdField_a_of_type_AndroidOsBundle.getInt("iNumber", 1);
-        l = paramayuu.jdField_a_of_type_AndroidOsBundle.getLong("lModifyTime", 9223372036854775807L);
-        bool2 = paramayuu.jdField_a_of_type_AndroidOsBundle.getBoolean("bMore", false);
-        bool1 = paramayuu.jdField_a_of_type_AndroidOsBundle.getBoolean("bSearchNet", false);
-        if ((!paramayuu.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) || ((bool1) && (this.jdField_a_of_type_Int == 1)))
-        {
-          this.jdField_a_of_type_JavaLangString = paramayuu.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_Long = 9223372036854775807L;
-          this.jdField_a_of_type_JavaUtilList.clear();
-          this.jdField_a_of_type_Int = 0;
-        }
-        if ((this.jdField_a_of_type_Int != 2) && ((bool1) || (this.jdField_a_of_type_Int != 1))) {
-          break;
-        }
-        localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-        paramayuu = (ayuu)localObject1;
-        if (!bool2) {
-          if (this.jdField_a_of_type_JavaUtilList.size() > 1)
-          {
-            ((ArrayList)localObject1).remove(((ArrayList)localObject1).size() - 1);
-            paramayuu = (ayuu)localObject1;
+          bool1 = f;
+          n = 0;
+          if (!bool1) {
+            f = QfavHelper.a(false);
           }
-          else
-          {
-            paramayuu = null;
+          this.j.a = paramSearchRequest;
+          if (paramSearchRequest.b == null) {
+            break label1120;
           }
+          k = paramSearchRequest.b.getInt("iNumber", 1);
+          l1 = paramSearchRequest.b.getLong("lModifyTime", 9223372036854775807L);
+          bool1 = paramSearchRequest.b.getBoolean("bMore", false);
+          bool2 = paramSearchRequest.b.getBoolean("bSearchNet", false);
+          if ((!paramSearchRequest.a.equals(this.b)) || ((bool2) && (this.d == 1)))
+          {
+            this.b = paramSearchRequest.a;
+            this.c = 9223372036854775807L;
+            this.e.clear();
+            this.d = 0;
+          }
+          if ((this.d != 2) && ((bool2) || (this.d != 1)))
+          {
+            long l2 = l1;
+            if (bool1)
+            {
+              l2 = l1;
+              if (this.e.size() > 0) {
+                l2 = Math.min(l1, this.c);
+              }
+            }
+            this.d = 0;
+            this.h = Thread.currentThread();
+            this.g.a = this.b;
+            this.g.c = k;
+            this.g.b = l2;
+            this.g.d = bool2;
+            this.g.e = null;
+            synchronized (this.g)
+            {
+              this.i = new Thread(this.g);
+              this.i.start();
+              try
+              {
+                this.g.wait();
+                localCursor = this.g.e;
+              }
+              catch (InterruptedException localInterruptedException)
+              {
+                Cursor localCursor;
+                int i2;
+                int i3;
+                int i4;
+                continue;
+              }
+              if (!QLog.isColorLevel()) {
+                break label1136;
+              }
+              QLog.d("qqfav", 2, "InterruptedException, search cancel.");
+              break label1136;
+              if (localCursor != null)
+              {
+                if (localCursor.moveToFirst())
+                {
+                  if ((this.e.size() >= 5) || (localCursor.getCount() <= 1)) {
+                    break label1142;
+                  }
+                  k = 1;
+                  if (this.e.size() > 0) {
+                    this.e.remove(this.e.size() - 1);
+                  }
+                  ??? = new FavoriteSearchResultModel();
+                  ((FavoriteSearchResultModel)???).d = paramSearchRequest.a;
+                  ((FavoriteSearchResultModel)???).a = localCursor.getLong(0);
+                  ((FavoriteSearchResultModel)???).b = localCursor.getLong(4);
+                  ((FavoriteSearchResultModel)???).c = localCursor.getLong(5);
+                  ((FavoriteSearchResultModel)???).e = localCursor.getString(1);
+                  m = 2;
+                  ((FavoriteSearchResultModel)???).f = localCursor.getString(2);
+                  ((FavoriteSearchResultModel)???).j = localCursor.getString(3);
+                  ((FavoriteSearchResultModel)???).m = localCursor.getInt(6);
+                  ((FavoriteSearchResultModel)???).k = localCursor.getInt(8);
+                  ((FavoriteSearchResultModel)???).l = localCursor.getBlob(7);
+                  ((FavoriteSearchResultModel)???).n = localCursor.getInt(9);
+                  if (localCursor.getInt(10) <= 0) {
+                    break label1147;
+                  }
+                  bool3 = true;
+                  ((FavoriteSearchResultModel)???).o = bool3;
+                  ((FavoriteSearchResultModel)???).h = localCursor.getInt(11);
+                  ((FavoriteSearchResultModel)???).i = localCursor.getInt(12);
+                  ((FavoriteSearchResultModel)???).g = localCursor.getInt(13);
+                  ((FavoriteSearchResultModel)???).p = localCursor.getInt(14);
+                  ((FavoriteSearchResultModel)???).q = this.e.size();
+                  this.e.add(???);
+                  if (localCursor.moveToNext()) {
+                    break label1194;
+                  }
+                  if (((FavoriteSearchResultModel)???).a < 0L) {
+                    if (((FavoriteSearchResultModel)???).a == -2L)
+                    {
+                      this.c = ((FavoriteSearchResultModel)???).b;
+                      if (!bool2) {
+                        break label1153;
+                      }
+                      this.d = m;
+                    }
+                    else if ((localCursor.getCount() <= 1) && (l2 <= ((FavoriteSearchResultModel)???).b))
+                    {
+                      this.d = -1;
+                    }
+                    else
+                    {
+                      this.c = ((FavoriteSearchResultModel)???).b;
+                    }
+                  }
+                  if (k != 0)
+                  {
+                    i1 = Math.min(4, this.e.size() - 1);
+                    k = n;
+                    break label1158;
+                    if (m <= 0) {
+                      break label1187;
+                    }
+                    i2 = n - m;
+                    paramSearchRequest = (FavoriteSearchResultModel)this.e.get(i2);
+                    i3 = paramSearchRequest.p;
+                    ??? = this.e;
+                    i4 = i2 + 1;
+                    if (i3 <= ((FavoriteSearchResultModel)((List)???).get(i4)).p) {
+                      break label1180;
+                    }
+                    this.e.set(i2, this.e.get(i4));
+                    this.e.set(i4, paramSearchRequest);
+                    break label1180;
+                  }
+                }
+                else
+                {
+                  this.d = -1;
+                }
+                localCursor.close();
+              }
+              else
+              {
+                this.d = -1;
+              }
+              if ((this.d == -1) && (this.e.size() > 0)) {
+                ((FavoriteSearchResultModel)this.e.get(this.e.size() - 1)).a = -3L;
+              }
+              paramSearchRequest = new ArrayList(this.e);
+              if (!bool1) {
+                if (this.e.size() > 1) {
+                  paramSearchRequest.remove(paramSearchRequest.size() - 1);
+                } else {
+                  paramSearchRequest = null;
+                }
+              }
+              return paramSearchRequest;
+            }
+          }
+          paramSearchRequest = new ArrayList(this.e);
+          if (!bool1) {
+            if (this.e.size() > 1) {
+              paramSearchRequest.remove(paramSearchRequest.size() - 1);
+            } else {
+              paramSearchRequest = null;
+            }
+          }
+          return paramSearchRequest;
         }
       }
       finally {}
-    }
-    label279:
-    label427:
-    boolean bool3;
-    label627:
-    int j;
-    label764:
-    int m;
-    label795:
-    int k;
-    if ((bool2) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      l = Math.min(l, this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_AndroidDatabaseCursor = null;
+      return null;
+      label1120:
+      long l1 = 9223372036854775807L;
+      int k = 1;
+      boolean bool1 = false;
+      boolean bool2 = false;
+      continue;
+      label1136:
+      Object localObject1 = null;
+      continue;
+      label1142:
+      k = 0;
+      continue;
+      label1147:
+      boolean bool3 = false;
+      continue;
+      int m = 1;
+      continue;
       for (;;)
       {
-        synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable)
-        {
-          this.b = new Thread(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable);
-          this.b.start();
-          try
-          {
-            this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.wait();
-            localObject1 = this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_AndroidDatabaseCursor;
-            if (localObject1 == null) {
-              break label1074;
-            }
-            if (!((Cursor)localObject1).moveToFirst()) {
-              break;
-            }
-            if ((this.jdField_a_of_type_JavaUtilList.size() >= 5) || (((Cursor)localObject1).getCount() <= 1)) {
-              break label1134;
-            }
-            i = 1;
-            if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-              this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-            }
-            ??? = new bivz();
-            ((bivz)???).jdField_a_of_type_JavaLangString = paramayuu.jdField_a_of_type_JavaLangString;
-            ((bivz)???).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(0);
-            ((bivz)???).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(4);
-            ((bivz)???).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(5);
-            ((bivz)???).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(1);
-            ((bivz)???).jdField_c_of_type_JavaLangString = ((Cursor)localObject1).getString(2);
-            ((bivz)???).jdField_d_of_type_JavaLangString = ((Cursor)localObject1).getString(3);
-            ((bivz)???).e = ((Cursor)localObject1).getInt(6);
-            ((bivz)???).jdField_d_of_type_Int = ((Cursor)localObject1).getInt(8);
-            ((bivz)???).jdField_a_of_type_ArrayOfByte = ((Cursor)localObject1).getBlob(7);
-            ((bivz)???).f = ((Cursor)localObject1).getInt(9);
-            if (((Cursor)localObject1).getInt(10) <= 0) {
-              break label1139;
-            }
-            bool3 = true;
-            ((bivz)???).jdField_a_of_type_Boolean = bool3;
-            ((bivz)???).jdField_b_of_type_Int = ((Cursor)localObject1).getInt(11);
-            ((bivz)???).jdField_c_of_type_Int = ((Cursor)localObject1).getInt(12);
-            ((bivz)???).jdField_a_of_type_Int = ((Cursor)localObject1).getInt(13);
-            ((bivz)???).g = ((Cursor)localObject1).getInt(14);
-            ((bivz)???).h = this.jdField_a_of_type_JavaUtilList.size();
-            this.jdField_a_of_type_JavaUtilList.add(???);
-            if (((Cursor)localObject1).moveToNext()) {
-              continue;
-            }
-            if (((bivz)???).jdField_a_of_type_Long < 0L)
-            {
-              if (((bivz)???).jdField_a_of_type_Long != -2L) {
-                break label918;
-              }
-              this.jdField_a_of_type_Long = ((bivz)???).jdField_b_of_type_Long;
-              if (!bool1) {
-                break label1145;
-              }
-              j = 2;
-              this.jdField_a_of_type_Int = j;
-            }
-            if (i == 0) {
-              break label965;
-            }
-            m = Math.min(4, this.jdField_a_of_type_JavaUtilList.size() - 1);
-            i = 0;
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            int n;
-            if (!QLog.isColorLevel()) {
-              break label1128;
-            }
-          }
-          if (j <= 0) {
-            break label1150;
-          }
-          n = k - j;
-          paramayuu = (bivz)this.jdField_a_of_type_JavaUtilList.get(n);
-          if (paramayuu.g > ((bivz)this.jdField_a_of_type_JavaUtilList.get(n + 1)).g)
-          {
-            this.jdField_a_of_type_JavaUtilList.set(n, this.jdField_a_of_type_JavaUtilList.get(n + 1));
-            this.jdField_a_of_type_JavaUtilList.set(n + 1, paramayuu);
-          }
-          j -= 1;
-          continue;
-          QLog.d("qqfav", 2, "InterruptedException, search cancel.");
+        if (k >= i1 - 1) {
+          break label1192;
         }
-        label918:
-        if ((localInterruptedException.getCount() > 1) || (l > ((bivz)???).jdField_b_of_type_Long)) {
-          this.jdField_a_of_type_Long = ((bivz)???).jdField_b_of_type_Long;
-        } else {
-          this.jdField_a_of_type_Int = -1;
-        }
-      }
-      this.jdField_a_of_type_Int = -1;
-    }
-    label1155:
-    for (;;)
-    {
-      label965:
-      localInterruptedException.close();
-      ArrayList localArrayList;
-      for (;;)
-      {
-        if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-          ((bivz)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).jdField_a_of_type_Long = -3L;
-        }
-        localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-        paramayuu = localArrayList;
-        if (bool2) {
-          break;
-        }
-        if (this.jdField_a_of_type_JavaUtilList.size() <= 1) {
-          break label1082;
-        }
-        localArrayList.remove(localArrayList.size() - 1);
-        paramayuu = localArrayList;
+        n = i1 - k - 1;
+        m = n;
         break;
-        label1074:
-        this.jdField_a_of_type_Int = -1;
-      }
-      label1082:
-      paramayuu = null;
-      break;
-      break label279;
-      label1090:
-      bool2 = false;
-      i = 1;
-      bool1 = false;
-      l = 9223372036854775807L;
-      break label111;
-      for (;;)
-      {
-        if (i >= m - 1) {
-          break label1155;
-        }
-        k = m - i - 1;
-        j = k;
-        break label795;
-        label1128:
-        localArrayList = null;
+        m -= 1;
         break;
-        label1134:
-        i = 0;
-        break label427;
-        label1139:
-        bool3 = false;
-        break label627;
-        label1145:
-        j = 1;
-        break label764;
-        label1150:
-        i += 1;
+        k += 1;
       }
     }
   }
   
   public void a()
   {
-    if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = bivc.a(false);
+    if (!f) {
+      f = QfavHelper.a(false);
     }
   }
   
-  public void a(ayuu paramayuu, ayuh<bivz> paramayuh)
+  public void a(SearchRequest paramSearchRequest, ISearchListener<FavoriteSearchResultModel> paramISearchListener)
   {
-    if ((paramayuu == null) || (paramayuu.jdField_a_of_type_JavaLangString == null) || (paramayuu.jdField_a_of_type_JavaLangString.trim().length() == 0)) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable)
+    if ((paramSearchRequest != null) && (paramSearchRequest.a != null))
     {
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Ayuu = paramayuu;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Ayuh = paramayuh;
-      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable, 32);
-      ThreadManager.excute(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable, 32, null, false);
-      return;
+      if (paramSearchRequest.a.trim().length() == 0) {
+        return;
+      }
+      synchronized (this.j)
+      {
+        this.j.a = paramSearchRequest;
+        this.j.b = paramISearchListener;
+        ThreadManager.removeJobFromThreadPool(this.j, 32);
+        ThreadManager.excute(this.j, 32, null, false);
+        return;
+      }
     }
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable)
+    synchronized (this.j)
     {
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Ayuu = null;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Ayuh = null;
-      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable, 32);
-      if (this.jdField_a_of_type_JavaLangThread != null) {
-        this.jdField_a_of_type_JavaLangThread.interrupt();
+      this.j.a = null;
+      this.j.b = null;
+      ThreadManager.removeJobFromThreadPool(this.j, 32);
+      ??? = this.h;
+      if (??? != null) {
+        ((Thread)???).interrupt();
       }
       return;
     }
@@ -313,7 +362,7 @@ public class FavoriteSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchEngine
  * JD-Core Version:    0.7.0.1
  */

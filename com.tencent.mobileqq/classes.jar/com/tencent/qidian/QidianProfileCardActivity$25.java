@@ -1,34 +1,47 @@
 package com.tencent.qidian;
 
 import android.text.TextUtils;
-import awqt;
-import bjdt;
-import bjea;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class QidianProfileCardActivity$25
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  QidianProfileCardActivity$25(QidianProfileCardActivity paramQidianProfileCardActivity, byte[] paramArrayOfByte) {}
+  QidianProfileCardActivity$25(QidianProfileCardActivity paramQidianProfileCardActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView, int paramInt)
   {
-    Object localObject2 = this.this$0.app.getCurrentNickname();
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = this.this$0.app.getCurrentNickname();
+    if (paramView == null)
+    {
+      this.a.dismiss();
+      return;
     }
-    localObject2 = bjea.a();
-    ((bjea)localObject2).a = this.this$0.app.getCurrentAccountUin();
-    ((bjea)localObject2).b = ((String)localObject1);
-    bjdt.a(this.this$0, (bjea)localObject2, this.this$0.jdField_a_of_type_Awqt.a.a, this.this$0.jdField_a_of_type_Awqt.a.g, -1, 5, this.this$0.jdField_a_of_type_Asta, this.a, false);
-    QidianProfileCardActivity.b(this.this$0, false);
+    paramView = this.a.getContent(paramInt);
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.a.dismiss();
+      return;
+    }
+    if (paramView.equals(this.d.getString(2131890804)))
+    {
+      QidianProfileCardActivity.a(this.d, this.b);
+      return;
+    }
+    if (paramView.equals(this.d.getString(2131890810)))
+    {
+      QidianProfileCardActivity.b(this.d, this.b);
+      return;
+    }
+    if (paramView.equals(this.d.getString(2131896249))) {
+      QidianProfileCardActivity.c(this.d, this.c);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.25
  * JD-Core Version:    0.7.0.1
  */

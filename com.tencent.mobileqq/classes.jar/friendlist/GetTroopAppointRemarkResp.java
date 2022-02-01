@@ -10,13 +10,13 @@ public final class GetTroopAppointRemarkResp
 {
   static int cache_result;
   static ArrayList<stTroopRemarkInfo> cache_vecTroopRemark;
-  public long GroupCode;
-  public long GroupUin;
-  public short errorCode;
-  public long office_mode;
-  public int result;
-  public long uin;
-  public ArrayList<stTroopRemarkInfo> vecTroopRemark;
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public short errorCode = 0;
+  public long office_mode = 0L;
+  public int result = 0;
+  public long uin = 0L;
+  public ArrayList<stTroopRemarkInfo> vecTroopRemark = null;
   
   public GetTroopAppointRemarkResp() {}
   
@@ -61,7 +61,7 @@ public final class GetTroopAppointRemarkResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetTroopAppointRemarkResp
  * JD-Core Version:    0.7.0.1
  */

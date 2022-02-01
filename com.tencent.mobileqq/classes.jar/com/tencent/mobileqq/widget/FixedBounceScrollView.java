@@ -18,35 +18,32 @@ import android.view.animation.Interpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ScrollView;
-import bepr;
-import beps;
-import bept;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
 public class FixedBounceScrollView
   extends ScrollView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private View jdField_a_of_type_AndroidViewView;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private beps jdField_a_of_type_Beps;
-  private bept jdField_a_of_type_Bept;
-  boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float = -1.0F;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float = -1.0F;
-  private int jdField_d_of_type_Int;
-  private float e = -1.0F;
-  private float f = -1.0F;
+  boolean a;
+  private boolean b;
+  private float c;
+  private boolean d;
+  private long e;
+  private int f;
+  private Interpolator g;
+  private View h;
+  private float i;
+  private int j;
+  private int k;
+  private Rect l = new Rect();
+  private TranslateAnimation m;
+  private FixedBounceScrollView.OnScrollListener n;
+  private FixedBounceScrollView.OnOverScrollListener o;
+  private float p = -1.0F;
+  private float q = -1.0F;
+  private float r = -1.0F;
+  private float s = -1.0F;
+  private int t;
   
   public FixedBounceScrollView(@NonNull Context paramContext)
   {
@@ -61,147 +58,148 @@ public class FixedBounceScrollView
   public FixedBounceScrollView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    boolean bool = false;
+    this.a = false;
+    this.t = 0;
     setOverScrollMode(2);
     setHorizontalScrollBarEnabled(false);
     setVerticalScrollBarEnabled(false);
     setFillViewport(true);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FixedBounceScrollView, 0, 0);
-    this.jdField_a_of_type_Float = paramContext.getFloat(1, 4.0F);
-    if (paramContext.getInt(3, 0) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      this.jdField_c_of_type_Boolean = paramContext.getBoolean(2, true);
-      this.jdField_a_of_type_Long = paramContext.getInt(0, 400);
-      this.jdField_a_of_type_Int = paramContext.getInt(4, 20);
-      paramContext.recycle();
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewAnimationInterpolator = new bepr(null);
-      }
-      setmCustomBottomFadingEdgeScale(0.0F);
-      setmCustomTopFadingEdgeScale(0.0F);
-      return;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aB, 0, 0);
+    this.c = paramContext.getFloat(R.styleable.aD, 4.0F);
+    if (paramContext.getInt(R.styleable.aF, 0) == 1) {
+      bool = true;
     }
+    this.b = bool;
+    this.d = paramContext.getBoolean(R.styleable.aE, true);
+    this.e = paramContext.getInt(R.styleable.aC, 400);
+    this.f = paramContext.getInt(R.styleable.aG, 20);
+    paramContext.recycle();
+    if (this.d) {
+      this.g = new FixedBounceScrollView.DefaultQuartOutInterpolator(null);
+    }
+    setmCustomBottomFadingEdgeScale(0.0F);
+    setmCustomTopFadingEdgeScale(0.0F);
   }
   
   private float a()
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    for (float f1 = Math.abs(this.jdField_a_of_type_AndroidViewView.getLeft()) * 1.0F / this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();; f1 = Math.abs(this.jdField_a_of_type_AndroidViewView.getTop()) * 1.0F / this.jdField_a_of_type_AndroidViewView.getMeasuredHeight())
+    int i1;
+    if (this.b)
     {
-      f1 = (float)(f1 + 0.2D);
-      if (!this.jdField_c_of_type_Boolean) {
-        break;
-      }
-      return this.jdField_a_of_type_Float / (1.0F - (float)Math.pow(f1, 2.0D));
+      f1 = Math.abs(this.h.getLeft()) * 1.0F;
+      i1 = this.h.getMeasuredWidth();
     }
-    return this.jdField_a_of_type_Float;
-  }
-  
-  private void a()
-  {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    int i = 0;
-    int j;
-    if (this.jdField_b_of_type_Boolean) {
-      if (ViewCompat.getLayoutDirection(this) == 1)
-      {
-        j = ViewCompat.getPaddingEnd(this);
-        i = j;
-        if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          break label252;
-        }
-        i = ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin;
-      }
-    }
-    for (;;)
+    else
     {
-      for (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(this.jdField_a_of_type_AndroidViewView.getLeft() - j - i, this.jdField_a_of_type_AndroidGraphicsRect.left - j - i, 0.0F, 0.0F);; this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getTop() - j - i, this.jdField_a_of_type_AndroidGraphicsRect.top - j - i))
-      {
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-        this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-        this.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
-        return;
-        j = ViewCompat.getPaddingStart(this);
-        i = j;
-        if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          break label252;
-        }
-        i = ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin;
-        break;
-        j = getPaddingTop();
-        if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          i = ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin;
-        }
-      }
-      label252:
-      int k = 0;
-      j = i;
-      i = k;
+      f1 = Math.abs(this.h.getTop()) * 1.0F;
+      i1 = this.h.getMeasuredHeight();
     }
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      if (getScrollX() != 0) {}
+    double d1 = f1 / i1;
+    Double.isNaN(d1);
+    float f1 = (float)(d1 + 0.2D);
+    if (this.d) {
+      return this.c / (1.0F - (float)Math.pow(f1, 2.0D));
     }
-    while (getScrollY() == 0)
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return this.c;
   }
   
   private boolean a(int paramInt)
   {
     if ((paramInt != 0) && (paramInt < 0)) {
-      return a();
+      return c();
     }
-    return b();
+    return d();
   }
   
-  private boolean b()
+  private void b()
   {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (this.jdField_b_of_type_Boolean)
+    ViewGroup.LayoutParams localLayoutParams = this.h.getLayoutParams();
+    boolean bool = this.b;
+    int i2 = 0;
+    int i1 = 0;
+    int i3;
+    if (bool)
     {
-      j = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth() - getWidth();
-      i = j;
-      if (j < 0) {
-        i = 0;
+      if (ViewCompat.getLayoutDirection(this) == 1)
+      {
+        i3 = ViewCompat.getPaddingEnd(this);
+        i2 = i3;
+        if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
+        {
+          i1 = ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin;
+          i2 = i3;
+        }
       }
-      bool1 = bool2;
-      if (getScrollX() == i) {
-        bool1 = true;
+      else
+      {
+        i3 = ViewCompat.getPaddingStart(this);
+        i2 = i3;
+        if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
+        {
+          i1 = ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin;
+          i2 = i3;
+        }
       }
-      return bool1;
+      this.m = new TranslateAnimation(this.h.getLeft() - i2 - i1, this.l.left - i2 - i1, 0.0F, 0.0F);
     }
-    int j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - getHeight();
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    if (getScrollY() == i) {}
-    for (;;)
+    else
     {
-      return bool1;
-      bool1 = false;
+      i3 = getPaddingTop();
+      i1 = i2;
+      if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+        i1 = ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin;
+      }
+      this.m = new TranslateAnimation(0.0F, 0.0F, this.h.getTop() - i3 - i1, this.l.top - i3 - i1);
     }
+    this.m.setInterpolator(this.g);
+    this.m.setDuration(this.e);
+    this.h.startAnimation(this.m);
+    this.h.layout(this.l.left, this.l.top, this.l.right, this.l.bottom);
+    this.l.setEmpty();
+  }
+  
+  private boolean c()
+  {
+    if (this.b)
+    {
+      if (getScrollX() == 0) {
+        return true;
+      }
+    }
+    else if (getScrollY() == 0) {
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean d()
+  {
+    if (this.b)
+    {
+      i2 = this.h.getMeasuredWidth() - getWidth();
+      i1 = i2;
+      if (i2 < 0) {
+        i1 = 0;
+      }
+      return getScrollX() == i1;
+    }
+    int i2 = this.h.getMeasuredHeight() - getHeight();
+    int i1 = i2;
+    if (i2 < 0) {
+      i1 = 0;
+    }
+    return getScrollY() == i1;
   }
   
   public boolean canScrollHorizontally(int paramInt)
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.b;
   }
   
   public boolean canScrollVertically(int paramInt)
   {
-    return !this.jdField_b_of_type_Boolean;
+    return this.b ^ true;
   }
   
   protected float getBottomFadingEdgeStrength()
@@ -209,23 +207,35 @@ public class FixedBounceScrollView
     if (getChildCount() == 0) {
       return 0.0F;
     }
-    if (this.jdField_d_of_type_Float != -1.0F) {
-      return this.jdField_d_of_type_Float;
+    float f1 = this.q;
+    if (f1 != -1.0F) {
+      return f1;
     }
-    int i = getVerticalFadingEdgeLength();
-    int j = getHeight();
-    int k = getPaddingBottom();
-    j = getChildAt(0).getBottom() - getScrollY() - (j - k);
-    if (j < i) {
-      return j / i;
+    int i1 = getVerticalFadingEdgeLength();
+    int i2 = getHeight();
+    int i3 = getPaddingBottom();
+    i2 = getChildAt(0).getBottom() - getScrollY() - (i2 - i3);
+    if (i2 < i1) {
+      return i2 / i1;
     }
     return 1.0F;
   }
   
+  public long getBounceDelay()
+  {
+    return this.e;
+  }
+  
+  public float getDamping()
+  {
+    return this.c;
+  }
+  
   protected float getLeftFadingEdgeStrength()
   {
-    if (this.e != -1.0F) {
-      return this.e;
+    float f1 = this.r;
+    if (f1 != -1.0F) {
+      return f1;
     }
     if (computeHorizontalScrollOffset() > 0) {
       return 1.0F;
@@ -235,8 +245,9 @@ public class FixedBounceScrollView
   
   protected float getRightFadingEdgeStrength()
   {
-    if (this.f != -1.0F) {
-      return this.f;
+    float f1 = this.s;
+    if (f1 != -1.0F) {
+      return f1;
     }
     if (computeHorizontalScrollOffset() + computeHorizontalScrollExtent() < computeHorizontalScrollRange()) {
       return 1.0F;
@@ -249,21 +260,48 @@ public class FixedBounceScrollView
     if (getChildCount() == 0) {
       return 0.0F;
     }
-    if (this.jdField_c_of_type_Float != -1.0F) {
-      return this.jdField_c_of_type_Float;
+    float f1 = this.p;
+    if (f1 != -1.0F) {
+      return f1;
     }
-    int i = getVerticalFadingEdgeLength();
-    if (getScrollY() < i) {
-      return getScrollY() / i;
+    int i1 = getVerticalFadingEdgeLength();
+    if (getScrollY() < i1) {
+      return getScrollY() / i1;
     }
     return 1.0F;
+  }
+  
+  public int getTriggerOverScrollThreshold()
+  {
+    return this.f;
+  }
+  
+  public float getmCustomBottomFadingEdgeScale()
+  {
+    return this.q;
+  }
+  
+  public float getmCustomLeftFadingEdgeScale()
+  {
+    return this.r;
+  }
+  
+  public float getmCustomRightFadingEdgeScale()
+  {
+    return this.s;
+  }
+  
+  public float getmCustomTopFadingEdgeScale()
+  {
+    return this.p;
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.hasEnded())) {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
+    TranslateAnimation localTranslateAnimation = this.m;
+    if ((localTranslateAnimation != null) && (!localTranslateAnimation.hasEnded())) {
+      this.m.cancel();
     }
   }
   
@@ -271,271 +309,278 @@ public class FixedBounceScrollView
   {
     super.onFinishInflate();
     if (getChildCount() > 0) {
-      this.jdField_a_of_type_AndroidViewView = getChildAt(0);
+      this.h = getChildAt(0);
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       getParent().requestDisallowInterceptTouchEvent(true);
     }
-    switch (paramMotionEvent.getAction())
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-    case 1: 
-    default: 
-      bool = super.onInterceptTouchEvent(paramMotionEvent);
-    }
-    label114:
-    do
-    {
-      do
+      if (i1 == 2)
       {
-        return bool;
-        if (this.jdField_b_of_type_Boolean) {}
-        for (float f1 = paramMotionEvent.getX();; f1 = paramMotionEvent.getY())
-        {
-          this.jdField_b_of_type_Float = f1;
-          break;
+        if (this.b) {
+          return Math.abs(paramMotionEvent.getX() - this.i) >= this.f;
         }
-        if (!this.jdField_b_of_type_Boolean) {
-          break label114;
-        }
-      } while (Math.abs(paramMotionEvent.getX() - this.jdField_b_of_type_Float) >= this.jdField_a_of_type_Int);
-      return false;
-    } while (Math.abs(paramMotionEvent.getY() - this.jdField_b_of_type_Float) >= this.jdField_a_of_type_Int);
-    return false;
+        return Math.abs(paramMotionEvent.getY() - this.i) >= this.f;
+      }
+    }
+    else
+    {
+      float f1;
+      if (this.b) {
+        f1 = paramMotionEvent.getX();
+      } else {
+        f1 = paramMotionEvent.getY();
+      }
+      this.i = f1;
+    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_d_of_type_Int > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.jdField_d_of_type_Int, -2147483648);
+    int i1 = this.t;
+    if (i1 > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(i1, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
-    View localView;
     if (getChildCount() > 0)
     {
-      localView = getChildAt(0);
+      View localView = getChildAt(0);
       paramInt2 = localView.getMeasuredHeight();
-      if (paramInt2 > 0) {
-        break label49;
-      }
-    }
-    label49:
-    int k;
-    int i;
-    int m;
-    int j;
-    do
-    {
-      ViewGroup.LayoutParams localLayoutParams;
-      do
-      {
+      if (paramInt2 <= 0) {
         return;
-        paramInt1 = localView.getMeasuredWidth();
-        localLayoutParams = localView.getLayoutParams();
-      } while (!(localLayoutParams instanceof FrameLayout.LayoutParams));
-      k = ((FrameLayout.LayoutParams)localLayoutParams).leftMargin;
-      i = ((FrameLayout.LayoutParams)localLayoutParams).topMargin;
-      m = ((FrameLayout.LayoutParams)localLayoutParams).rightMargin;
-      j = ((FrameLayout.LayoutParams)localLayoutParams).bottomMargin;
-      if (QLog.isColorLevel()) {
-        QLog.d("FixedBounceScrollView", 4, "marginStart=" + k + " topMargin=" + i + " marginEnd=" + m + " bottomMargin=" + j);
       }
-    } while ((k == 0) && (i == 0) && (m == 0) && (j == 0));
-    if (paramInt2 <= getMeasuredHeight())
-    {
-      paramInt1 -= m + k;
-      paramInt2 -= j + i;
-    }
-    for (;;)
-    {
-      localView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
-      return;
-      paramInt2 = i + j + paramInt2;
+      paramInt1 = localView.getMeasuredWidth();
+      Object localObject = localView.getLayoutParams();
+      if ((localObject instanceof FrameLayout.LayoutParams))
+      {
+        localObject = (FrameLayout.LayoutParams)localObject;
+        int i3 = ((FrameLayout.LayoutParams)localObject).leftMargin;
+        i1 = ((FrameLayout.LayoutParams)localObject).topMargin;
+        int i4 = ((FrameLayout.LayoutParams)localObject).rightMargin;
+        int i2 = ((FrameLayout.LayoutParams)localObject).bottomMargin;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("marginStart=");
+          ((StringBuilder)localObject).append(i3);
+          ((StringBuilder)localObject).append(" topMargin=");
+          ((StringBuilder)localObject).append(i1);
+          ((StringBuilder)localObject).append(" marginEnd=");
+          ((StringBuilder)localObject).append(i4);
+          ((StringBuilder)localObject).append(" bottomMargin=");
+          ((StringBuilder)localObject).append(i2);
+          QLog.d("FixedBounceScrollView", 4, ((StringBuilder)localObject).toString());
+        }
+        if ((i3 != 0) || (i1 != 0) || (i4 != 0) || (i2 != 0))
+        {
+          if (paramInt2 <= getMeasuredHeight())
+          {
+            paramInt1 -= i3 + i4;
+            paramInt2 -= i1 + i2;
+          }
+          else
+          {
+            paramInt2 += i1 + i2;
+          }
+          localView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
+        }
+      }
     }
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bept != null) {
-      this.jdField_a_of_type_Bept.a(paramInt1, paramInt2);
+    FixedBounceScrollView.OnScrollListener localOnScrollListener = this.n;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.a(paramInt1, paramInt2);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.h == null) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    float f1;
-    label66:
-    int j;
-    int i;
-    switch (paramMotionEvent.getActionMasked())
+    int i1 = paramMotionEvent.getActionMasked();
+    boolean bool = true;
+    if (i1 != 1)
     {
-    default: 
-      return super.onTouchEvent(paramMotionEvent);
-    case 2: 
-      if (this.jdField_b_of_type_Boolean)
+      if (i1 != 2)
       {
-        f1 = paramMotionEvent.getX();
-        j = (int)((this.jdField_b_of_type_Float - f1) / a());
-        this.jdField_b_of_type_Float = f1;
+        if (i1 != 3) {
+          break label557;
+        }
+      }
+      else
+      {
+        float f1;
+        if (this.b) {
+          f1 = paramMotionEvent.getX();
+        } else {
+          f1 = paramMotionEvent.getY();
+        }
+        int i2 = (int)((this.i - f1) / a());
+        this.i = f1;
         setmCustomTopFadingEdgeScale(1.0F);
         setmCustomBottomFadingEdgeScale(1.0F);
-        if ((this.jdField_b_of_type_Int > 0) || (j <= 0)) {
-          break label411;
-        }
-        i = 0;
-      }
-      break;
-    }
-    for (;;)
-    {
-      label109:
-      this.jdField_b_of_type_Int = j;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("FixedBounceScrollView", 2, "dampingDelta=" + j);
-        QLog.d("FixedBounceScrollView", 2, "mChildView.getTop()+mChildView.getPaddingTop()" + this.jdField_a_of_type_AndroidViewView.getTop() + " " + this.jdField_a_of_type_AndroidViewView.getPaddingTop());
-        QLog.d("FixedBounceScrollView", 2, "mChildView.getBottom() + mChildView.getPaddingBottom()" + this.jdField_a_of_type_AndroidViewView.getBottom() + " " + this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
-      }
-      if ((i == 0) || (!a(j))) {
-        break;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
-      }
-      label353:
-      beps localbeps;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft() - j, this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight() - j, this.jdField_a_of_type_AndroidViewView.getBottom());
-        if (this.jdField_a_of_type_Beps == null) {
+        if ((this.j <= 0) && (i2 > 0)) {}
+        while ((this.j >= 0) && (i2 < 0))
+        {
+          i1 = 0;
           break;
         }
-        this.jdField_c_of_type_Int += j;
-        localbeps = this.jdField_a_of_type_Beps;
-        if (this.jdField_c_of_type_Int > 0) {
-          break label476;
+        i1 = 1;
+        this.j = i2;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("dampingDelta=");
+          ((StringBuilder)localObject).append(i2);
+          QLog.d("FixedBounceScrollView", 2, ((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mChildView.getTop()+mChildView.getPaddingTop()");
+          ((StringBuilder)localObject).append(this.h.getTop());
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(this.h.getPaddingTop());
+          QLog.d("FixedBounceScrollView", 2, ((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mChildView.getBottom() + mChildView.getPaddingBottom()");
+          ((StringBuilder)localObject).append(this.h.getBottom());
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(this.h.getPaddingBottom());
+          QLog.d("FixedBounceScrollView", 2, ((StringBuilder)localObject).toString());
         }
-      }
-      for (;;)
-      {
-        localbeps.a(bool, Math.abs(this.jdField_c_of_type_Int));
-        break;
-        f1 = paramMotionEvent.getY();
-        break label66;
-        label411:
-        if ((this.jdField_b_of_type_Int < 0) || (j >= 0)) {
-          break label528;
+        if ((i1 == 0) || (!a(i2))) {
+          break label557;
         }
-        i = 0;
-        break label109;
-        this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop() - j + 2, this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom() - j + 2);
-        break label353;
-        label476:
-        bool = false;
+        if (this.l.isEmpty()) {
+          this.l.set(this.h.getLeft(), this.h.getTop(), this.h.getRight(), this.h.getBottom());
+        }
+        if (this.b)
+        {
+          localObject = this.h;
+          ((View)localObject).layout(((View)localObject).getLeft() - i2, this.h.getTop(), this.h.getRight() - i2, this.h.getBottom());
+        }
+        else
+        {
+          localObject = this.h;
+          ((View)localObject).layout(((View)localObject).getLeft(), this.h.getTop() - i2 + 2, this.h.getRight(), this.h.getBottom() - i2 + 2);
+        }
+        Object localObject = this.o;
+        if (localObject == null) {
+          break label557;
+        }
+        this.k += i2;
+        if (this.k > 0) {
+          bool = false;
+        }
+        ((FixedBounceScrollView.OnOverScrollListener)localObject).a(bool, Math.abs(this.k));
+        break label557;
       }
+    }
+    else
+    {
       setmCustomTopFadingEdgeScale(0.0F);
       setmCustomBottomFadingEdgeScale(0.0F);
       postInvalidate();
       performClick();
-      if (!this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
-        a();
-      }
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_c_of_type_Int = 0;
-      break;
-      label528:
-      i = 1;
     }
+    if (!this.l.isEmpty()) {
+      b();
+    }
+    this.j = 0;
+    this.k = 0;
+    label557:
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setBounceDelay(long paramLong)
   {
     if (paramLong >= 0L) {
-      this.jdField_a_of_type_Long = paramLong;
+      this.e = paramLong;
     }
   }
   
   public void setBounceInterpolator(@NonNull Interpolator paramInterpolator)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.g = paramInterpolator;
   }
   
   public void setDamping(@FloatRange(from=0.0D, to=100.0D) float paramFloat)
   {
-    if (this.jdField_a_of_type_Float > 0.0F) {
-      this.jdField_a_of_type_Float = paramFloat;
+    if (this.c > 0.0F) {
+      this.c = paramFloat;
     }
   }
   
   public void setIncrementalDamping(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void setMaxHeight(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.t = paramInt;
   }
   
   public void setNeedDisallowIntercept(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
-  public void setOnOverScrollListener(beps parambeps)
+  public void setOnOverScrollListener(FixedBounceScrollView.OnOverScrollListener paramOnOverScrollListener)
   {
-    this.jdField_a_of_type_Beps = parambeps;
+    this.o = paramOnOverScrollListener;
   }
   
-  public void setOnScrollListener(bept parambept)
+  public void setOnScrollListener(FixedBounceScrollView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Bept = parambept;
+    this.n = paramOnScrollListener;
   }
   
   public void setScrollHorizontally(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void setTriggerOverScrollThreshold(int paramInt)
   {
     if (paramInt >= 0) {
-      this.jdField_a_of_type_Int = paramInt;
+      this.f = paramInt;
     }
   }
   
   public void setmCustomBottomFadingEdgeScale(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.jdField_d_of_type_Float = paramFloat;
+    this.q = paramFloat;
   }
   
   public void setmCustomLeftFadingEdgeScale(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.e = paramFloat;
+    this.r = paramFloat;
   }
   
   public void setmCustomRightFadingEdgeScale(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.f = paramFloat;
+    this.s = paramFloat;
   }
   
   public void setmCustomTopFadingEdgeScale(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.jdField_c_of_type_Float = paramFloat;
+    this.p = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FixedBounceScrollView
  * JD-Core Version:    0.7.0.1
  */

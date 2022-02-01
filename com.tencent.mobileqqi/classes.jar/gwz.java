@@ -1,16 +1,24 @@
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class gwz
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  public gwz(VideoPlayLogic paramVideoPlayLogic, CharSequence paramCharSequence1, CharSequence paramCharSequence2) {}
+  public gwz(VideoPlayLogic paramVideoPlayLogic) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    if (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) {
-      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).a(this.jdField_a_of_type_JavaLangCharSequence, this.b);
+    if (paramBundle.getBoolean("ret"))
+    {
+      VideoPlayLogic.b(this.a);
+      return;
     }
+    if ((VideoPlayLogic.a(this.a) != null) && (VideoPlayLogic.a(this.a).isShowing() == true)) {
+      VideoPlayLogic.a(this.a).dismiss();
+    }
+    this.a.a(VideoPlayLogic.a(this.a));
   }
 }
 

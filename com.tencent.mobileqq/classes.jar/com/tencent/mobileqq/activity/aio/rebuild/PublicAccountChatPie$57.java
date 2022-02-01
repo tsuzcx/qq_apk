@@ -1,21 +1,67 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
-import nti;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qidian.controller.QidianHandler;
+import org.json.JSONObject;
 
-public class PublicAccountChatPie$57
+class PublicAccountChatPie$57
   implements Runnable
 {
-  public PublicAccountChatPie$57(agti paramagti, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
+  PublicAccountChatPie$57(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    QidianHandler localQidianHandler = (QidianHandler)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
+    int j;
+    Object localObject;
+    if (!this.this$0.cC)
     {
-      this.this$0.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
-      return;
+      j = 0;
+      localObject = new JSONObject();
     }
-    this.this$0.a.a();
+    try
+    {
+      ((JSONObject)localObject).put("app", "QD");
+      if (this.this$0.cx != null) {
+        ((JSONObject)localObject).put("assignType", Long.parseLong(this.this$0.cx));
+      }
+      if (this.this$0.cy != null) {
+        ((JSONObject)localObject).put("assignKey", Long.parseLong(this.this$0.cy));
+      }
+      i = j;
+      if (this.this$0.cz == null) {
+        break label134;
+      }
+      ((JSONObject)localObject).put("ext", this.this$0.cz);
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      int i;
+      label132:
+      String str1;
+      String str2;
+      String str3;
+      String str4;
+      break label132;
+    }
+    i = 1;
+    label134:
+    str1 = this.this$0.ah.b;
+    str2 = this.this$0.cw;
+    str3 = this.this$0.cv;
+    str4 = this.this$0.cA;
+    if (i != 0) {
+      localObject = null;
+    } else {
+      localObject = ((JSONObject)localObject).toString();
+    }
+    localQidianHandler.a(str1, str2, str3, str4, (String)localObject);
+    this.this$0.aX().runOnUiThread(new PublicAccountChatPie.57.1(this));
+    localQidianHandler.a(this.this$0.ah.b, this.this$0.cw);
   }
 }
 

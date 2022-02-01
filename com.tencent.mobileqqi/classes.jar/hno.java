@@ -1,20 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.open.base.LogUtility;
+import android.app.Activity;
 import com.tencent.open.downloadnew.MyAppApi;
 
 public class hno
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public hno(MyAppApi paramMyAppApi) {}
+  public hno(MyAppApi paramMyAppApi, String paramString, Activity paramActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.i.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
-    }
+    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

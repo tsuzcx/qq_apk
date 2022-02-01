@@ -9,57 +9,59 @@ public class MallNews
   implements Parcelable
 {
   public static final Parcelable.Creator<MallNews> CREATOR;
-  public String crs;
-  public String ftd;
-  public String sWB;
-  public int showType;
+  public int Avy;
+  public String VKO;
+  public String VKP;
+  public String VKQ;
+  public String VKR;
+  public String VKS;
+  public String VKT;
+  public int VKU;
+  public String VKV;
+  public String VKW;
+  public int expireTime;
+  public int hAN;
+  public String hFb;
+  public int igf;
+  public String otL;
+  public String rBJ;
   public String type;
-  public int uki;
-  public String umn;
-  public String umo;
-  public String ump;
-  public String umq;
-  public String umr;
-  public int ums;
-  public String umt;
-  public int umu;
-  public String umv;
-  public String umw;
   
   static
   {
-    AppMethodBeat.i(47020);
-    CREATOR = new MallNews.1();
-    AppMethodBeat.o(47020);
+    AppMethodBeat.i(70552);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(70552);
   }
   
   public MallNews(Parcel paramParcel)
   {
-    AppMethodBeat.i(47017);
-    this.umn = "0";
-    this.umo = "0";
-    this.ftd = paramParcel.readString();
-    this.sWB = paramParcel.readString();
-    this.crs = paramParcel.readString();
-    this.ump = paramParcel.readString();
-    this.umq = paramParcel.readString();
-    this.umr = paramParcel.readString();
-    this.ums = paramParcel.readInt();
-    this.umt = paramParcel.readString();
-    this.umn = paramParcel.readString();
-    this.umo = paramParcel.readString();
-    this.showType = paramParcel.readInt();
-    this.umv = paramParcel.readString();
-    this.uki = paramParcel.readInt();
-    this.umw = paramParcel.readString();
-    AppMethodBeat.o(47017);
+    AppMethodBeat.i(70549);
+    this.VKO = "0";
+    this.VKP = "0";
+    this.otL = paramParcel.readString();
+    this.rBJ = paramParcel.readString();
+    this.hFb = paramParcel.readString();
+    this.VKQ = paramParcel.readString();
+    this.VKR = paramParcel.readString();
+    this.VKS = paramParcel.readString();
+    this.expireTime = paramParcel.readInt();
+    this.VKT = paramParcel.readString();
+    this.VKO = paramParcel.readString();
+    this.VKP = paramParcel.readString();
+    this.hAN = paramParcel.readInt();
+    this.VKV = paramParcel.readString();
+    this.Avy = paramParcel.readInt();
+    this.VKW = paramParcel.readString();
+    this.igf = paramParcel.readInt();
+    AppMethodBeat.o(70549);
   }
   
   public MallNews(String paramString)
   {
-    this.umn = "0";
-    this.umo = "0";
-    this.ftd = paramString;
+    this.VKO = "0";
+    this.VKP = "0";
+    this.otL = paramString;
   }
   
   public int describeContents()
@@ -69,58 +71,59 @@ public class MallNews
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(47016);
+    AppMethodBeat.i(70548);
     if ((paramObject instanceof MallNews))
     {
       paramObject = (MallNews)paramObject;
-      if ((this.ftd == null) || (!this.ftd.equals(paramObject.ftd)))
+      if ((this.otL == null) || (!this.otL.equals(paramObject.otL)))
       {
-        AppMethodBeat.o(47016);
+        AppMethodBeat.o(70548);
         return false;
       }
-      if ((this.sWB == null) || (!this.sWB.equals(paramObject.sWB)))
+      if ((this.rBJ == null) || (!this.rBJ.equals(paramObject.rBJ)))
       {
-        AppMethodBeat.o(47016);
+        AppMethodBeat.o(70548);
         return false;
       }
-      AppMethodBeat.o(47016);
+      AppMethodBeat.o(70548);
       return true;
     }
-    AppMethodBeat.o(47016);
+    AppMethodBeat.o(70548);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(47019);
-    String str = String.format("functionId : %s, activityId : %s, ticket : %s, activityMsg : %s, activityLink : %s, activityIconLink : %s, showFlag : %s, orgStr : %s, activityTips: %s, activityType: %d, activityUrl: %s", new Object[] { this.ftd, this.sWB, this.crs, this.ump, this.umq, this.umr, this.umn, this.umv, this.umt, Integer.valueOf(this.uki), this.umw });
-    AppMethodBeat.o(47019);
+    AppMethodBeat.i(70551);
+    String str = String.format("functionId : %s, activityId : %s, ticket : %s, activityMsg : %s, activityLink : %s, activityIconLink : %s, showFlag : %s, orgStr : %s, activityTips: %s, activityType: %d, activityUrl: %s, walletRegion: %d", new Object[] { this.otL, this.rBJ, this.hFb, this.VKQ, this.VKR, this.VKS, this.VKO, this.VKV, this.VKT, Integer.valueOf(this.Avy), this.VKW, Integer.valueOf(this.igf) });
+    AppMethodBeat.o(70551);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(47018);
-    paramParcel.writeString(this.ftd);
-    paramParcel.writeString(this.sWB);
-    paramParcel.writeString(this.crs);
-    paramParcel.writeString(this.ump);
-    paramParcel.writeString(this.umq);
-    paramParcel.writeString(this.umr);
-    paramParcel.writeInt(this.ums);
-    paramParcel.writeString(this.umt);
-    paramParcel.writeString(this.umn);
-    paramParcel.writeString(this.umo);
-    paramParcel.writeInt(this.showType);
-    paramParcel.writeString(this.umv);
-    paramParcel.writeInt(this.uki);
-    paramParcel.writeString(this.umw);
-    AppMethodBeat.o(47018);
+    AppMethodBeat.i(70550);
+    paramParcel.writeString(this.otL);
+    paramParcel.writeString(this.rBJ);
+    paramParcel.writeString(this.hFb);
+    paramParcel.writeString(this.VKQ);
+    paramParcel.writeString(this.VKR);
+    paramParcel.writeString(this.VKS);
+    paramParcel.writeInt(this.expireTime);
+    paramParcel.writeString(this.VKT);
+    paramParcel.writeString(this.VKO);
+    paramParcel.writeString(this.VKP);
+    paramParcel.writeInt(this.hAN);
+    paramParcel.writeString(this.VKV);
+    paramParcel.writeInt(this.Avy);
+    paramParcel.writeString(this.VKW);
+    paramParcel.writeInt(this.igf);
+    AppMethodBeat.o(70550);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.MallNews
  * JD-Core Version:    0.7.0.1
  */

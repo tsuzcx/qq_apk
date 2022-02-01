@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/p8w" android:layout_width="fill_parent" android:layout_height="250.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/p8l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <com.tencent.biz.qqcircle.widgets.QCircleFeedCleanPlayView android:id="@id/p8h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <com.tencent.image.URLImageView android:id="@id/p8m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <com.tencent.biz.qqcircle.fragments.content.stick.QCircleExpandStickView android:id="@id/p81" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <FrameLayout android:background="@drawable/ipj" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/p8n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ih5" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/p8o" android:visibility="gone" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="4.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <com.tencent.biz.qqcircle.widgets.QCirclePaiTongKuanIconView android:id="@id/pav" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true">
+        <SeekBar android:layout_gravity="center" android:id="@id/p8p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" style="@style/acl" />
+        <View android:layout_gravity="center_horizontal" android:id="@id/p8i" android:background="@color/al9" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/qcircle_skin_color_text_ghost" android:id="@id/p8q" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="4.0dip" android:text="00:00" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:alpha="0.7" />
+</RelativeLayout>

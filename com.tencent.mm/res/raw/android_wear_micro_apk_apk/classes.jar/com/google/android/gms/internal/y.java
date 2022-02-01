@@ -10,46 +10,46 @@ import java.util.concurrent.TimeUnit;
 public class y
   extends p
 {
-  private final UnsupportedOperationException Nr;
+  private final UnsupportedOperationException Pg;
   
   public y(String paramString)
   {
-    this.Nr = new UnsupportedOperationException(paramString);
+    this.Pg = new UnsupportedOperationException(paramString);
   }
   
   public final ConnectionResult a(TimeUnit paramTimeUnit)
   {
-    throw this.Nr;
+    throw this.Pg;
   }
   
   public final void a(s params)
   {
-    throw this.Nr;
+    throw this.Pg;
   }
   
   public final void b(s params)
   {
-    throw this.Nr;
+    throw this.Pg;
   }
   
   public final void connect()
   {
-    throw this.Nr;
+    throw this.Pg;
   }
   
   public final void disconnect()
   {
-    throw this.Nr;
+    throw this.Pg;
   }
   
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    throw this.Nr;
+    throw this.Pg;
   }
   
   public final boolean isConnected()
   {
-    throw this.Nr;
+    throw this.Pg;
   }
 }
 

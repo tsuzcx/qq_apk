@@ -1,28 +1,27 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
-import bece;
-import becm;
-import becn;
+import com.tencent.mobileqq.vip.lianghao.data.LiangHaoRsp;
 import java.util.List;
 
-public class GetRegisterLiangHaoList$2
+class GetRegisterLiangHaoList$2
   implements Runnable
 {
-  public GetRegisterLiangHaoList$2(becm parambecm, bece parambece, becn parambecn) {}
+  GetRegisterLiangHaoList$2(GetRegisterLiangHaoList paramGetRegisterLiangHaoList, LiangHaoRsp paramLiangHaoRsp, GetRegisterLiangHaoList.RequestCallBack paramRequestCallBack) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bece != null) && (this.jdField_a_of_type_Bece.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Bece.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Bece.jdField_a_of_type_JavaUtilList.size() > 0))
+    LiangHaoRsp localLiangHaoRsp = this.a;
+    if ((localLiangHaoRsp != null) && (localLiangHaoRsp.b == 0) && (this.a.f != null) && (this.a.f.size() > 0))
     {
-      this.jdField_a_of_type_Becn.a(this.jdField_a_of_type_Bece);
+      this.b.a(this.a);
       return;
     }
-    this.jdField_a_of_type_Becn.a(-1, "");
+    this.b.a(-1, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.GetRegisterLiangHaoList.2
  * JD-Core Version:    0.7.0.1
  */

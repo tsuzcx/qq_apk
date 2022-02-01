@@ -4,52 +4,51 @@ import android.os.SystemClock;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.AssetExtractor;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.tav.extractor.ExtractorUtils;
 
 class VideoDecoder$1
-  extends Thread
+  implements Runnable
 {
   VideoDecoder$1(VideoDecoder paramVideoDecoder) {}
   
   public void run()
   {
-    long l2;
     try
     {
-      l2 = SystemClock.currentThreadTimeMillis();
-      AssetExtractor localAssetExtractor = new AssetExtractor();
-      localAssetExtractor.setDataSource(VideoDecoder.access$000(this.this$0).getSourcePath());
-      while (localAssetExtractor.getSampleTrackIndex() != -1) {
-        localAssetExtractor.unselectTrack(localAssetExtractor.getSampleTrackIndex());
+      long l2 = SystemClock.currentThreadTimeMillis();
+      Object localObject = new AssetExtractor();
+      ((AssetExtractor)localObject).setDataSource(VideoDecoder.access$000(this.this$0));
+      while (((AssetExtractor)localObject).getSampleTrackIndex() != -1) {
+        ((AssetExtractor)localObject).unselectTrack(((AssetExtractor)localObject).getSampleTrackIndex());
       }
-      localException.selectTrack(DecoderUtils.getFirstTrackIndex(localException, "video/"));
+      ((AssetExtractor)localObject).selectTrack(ExtractorUtils.getFirstTrackIndex((AssetExtractor)localObject, "video/"));
+      long l1;
+      if (VideoDecoder.access$100(this.this$0) == null) {
+        l1 = 0L;
+      } else {
+        l1 = VideoDecoder.access$100(this.this$0).getStartUs();
+      }
+      ((AssetExtractor)localObject).seekTo(l1, 0);
+      while (((AssetExtractor)localObject).getSampleTime() != -1L) {
+        ((AssetExtractor)localObject).advance();
+      }
+      VideoDecoder.access$202(this.this$0, (AssetExtractor)localObject);
+      localObject = this.this$0.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Decoder: MirrorExtractor Init ");
+      localStringBuilder.append(SystemClock.currentThreadTimeMillis() - l2);
+      Logger.d((String)localObject, localStringBuilder.toString());
+      return;
     }
     catch (Exception localException)
     {
-      localException.printStackTrace();
-      return;
+      Logger.e(this.this$0.TAG, "createMirrorExtractor: ", localException);
     }
-    if (VideoDecoder.access$100(this.this$0) == null) {}
-    ArrayList localArrayList;
-    for (long l1 = 0L;; l1 = VideoDecoder.access$100(this.this$0).getStartUs())
-    {
-      localException.seekTo(l1, 0);
-      localArrayList = new ArrayList();
-      while (localException.getSampleTime() != -1L)
-      {
-        localArrayList.add(Long.valueOf(localException.getSampleTime()));
-        localException.advance();
-      }
-    }
-    VideoDecoder.access$200(this.this$0).addAll(localArrayList);
-    VideoDecoder.access$302(this.this$0, localException);
-    Logger.i(this.this$0.TAG, "Decoder: MirrorExtractor Init " + (SystemClock.currentThreadTimeMillis() - l2), new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoder.1
  * JD-Core Version:    0.7.0.1
  */

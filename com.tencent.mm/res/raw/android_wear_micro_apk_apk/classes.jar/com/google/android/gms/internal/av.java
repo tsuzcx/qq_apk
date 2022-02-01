@@ -20,7 +20,7 @@ public abstract interface av
   
   public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  public abstract void ik();
+  public abstract void is();
   
   public abstract boolean isConnected();
 }

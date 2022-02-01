@@ -3,20 +3,21 @@ package com.tencent.mobileqq.richstatus;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import atgt;
-import aybe;
-import aybf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.jsbridge.JsBridge;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.widget.ProtectedWebView;
 import java.io.File;
@@ -24,114 +25,129 @@ import java.io.File;
 public class ActionUrlActivity
   extends IphoneTitleBarActivity
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private atgt jdField_a_of_type_Atgt;
-  private StatusJsHandler jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler;
-  private ProtectedWebView jdField_a_of_type_ComTencentWidgetProtectedWebView;
-  private String jdField_a_of_type_JavaLangString;
+  private ProtectedWebView a;
   private View b;
+  private ProgressBar c;
+  private JsBridge d;
+  private StatusJsHandler e;
+  private String f = null;
+  private RelativeLayout g;
+  private View h;
   
   @SuppressLint({"SetJavaScriptEnabled"})
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379403));
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView = new ProtectedWebView(BaseApplicationImpl.sApplication);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentWidgetProtectedWebView, 0, new RelativeLayout.LayoutParams(-1, -1));
+    this.g = ((RelativeLayout)findViewById(2131449203));
+    this.a = new ProtectedWebView(BaseApplicationImpl.sApplication);
+    this.g.addView(this.a, 0, new RelativeLayout.LayoutParams(-1, -1));
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_ComTencentWidgetProtectedWebView.removeJavascriptInterface("searchBoxJavaBridge_");
+      this.a.removeJavascriptInterface("searchBoxJavaBridge_");
     }
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setScrollBarStyle(0);
-    WebSettings localWebSettings = this.jdField_a_of_type_ComTencentWidgetProtectedWebView.getSettings();
+    this.a.setScrollBarStyle(0);
+    WebSettings localWebSettings = this.a.getSettings();
     localWebSettings.setJavaScriptEnabled(true);
-    localWebSettings.setUserAgentString(localWebSettings.getUserAgentString() + " " + "QQ/5.2");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localWebSettings.getUserAgentString());
+    localStringBuilder.append(" ");
+    localStringBuilder.append("QQ/5.2");
+    localWebSettings.setUserAgentString(localStringBuilder.toString());
     localWebSettings.setDatabaseEnabled(true);
     localWebSettings.setDatabasePath(getApplicationContext().getDir("database", 0).getPath());
     localWebSettings.setDomStorageEnabled(true);
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebViewClient(new aybf(this, null));
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.setWebChromeClient(new aybe(this, null));
-    this.jdField_a_of_type_Atgt = new atgt();
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler = new StatusJsHandler(this, this.jdField_a_of_type_ComTencentWidgetProtectedWebView, null);
-    this.jdField_a_of_type_Atgt.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusJsHandler, "statusJsHandler");
-    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131379399));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131379400));
-    this.jdField_a_of_type_JavaLangString = this.leftView.getText().toString();
-    this.b = findViewById(2131370086);
+    this.a.setWebViewClient(new ActionUrlActivity.UrlActionWebViewClient(this, null));
+    this.a.setWebChromeClient(new ActionUrlActivity.UrlActionWebChromeClient(this, null));
+    this.d = new JsBridge();
+    this.e = new StatusJsHandler(this, this.a, null);
+    this.d.a(this.e, "statusJsHandler");
+    this.b = ((LinearLayout)findViewById(2131449199));
+    this.b.setVisibility(0);
+    this.c = ((ProgressBar)findViewById(2131449200));
+    this.f = this.leftView.getText().toString();
+    this.h = findViewById(2131437976);
     if (ThemeUtil.isInNightMode(this.app)) {
-      this.b.setVisibility(0);
+      this.h.setVisibility(0);
     }
   }
   
-  public void a()
+  void a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetProtectedWebView.canGoBack())
+    if (this.a.canGoBack())
     {
-      this.leftView.setText(2131721152);
+      this.leftView.setText(2131917687);
       return;
     }
-    this.leftView.setText(this.jdField_a_of_type_JavaLangString);
+    this.leftView.setText(this.f);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131562805);
+    setContentView(2131629621);
     b();
-    this.jdField_a_of_type_ComTencentWidgetProtectedWebView.loadUrl(getIntent().getStringExtra("key_params_qq"));
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    this.a.loadUrl(getIntent().getStringExtra("key_params_qq"));
+    this.c.setVisibility(0);
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     try
     {
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      if (this.g != null) {
+        this.g.removeAllViews();
       }
+    }
+    catch (Exception localException2)
+    {
       try
       {
-        label18:
-        this.jdField_a_of_type_ComTencentWidgetProtectedWebView.stopLoading();
+        this.a.stopLoading();
+      }
+      catch (Exception localException2)
+      {
         try
         {
-          label25:
-          this.jdField_a_of_type_ComTencentWidgetProtectedWebView.clearView();
-          try
+          for (;;)
           {
-            label32:
-            this.jdField_a_of_type_ComTencentWidgetProtectedWebView.destroy();
-            return;
+            this.a.clearView();
+            try
+            {
+              label32:
+              this.a.destroy();
+              return;
+            }
+            catch (Exception localException4) {}
+            localException1 = localException1;
+            continue;
+            localException2 = localException2;
           }
-          catch (Exception localException1) {}
         }
-        catch (Exception localException2)
+        catch (Exception localException3)
         {
           break label32;
         }
       }
-      catch (Exception localException3)
-      {
-        break label25;
-      }
-    }
-    catch (Exception localException4)
-    {
-      break label18;
     }
   }
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetProtectedWebView.canGoBack()) {}
+    if (this.a.canGoBack()) {}
     try
     {
-      this.jdField_a_of_type_ComTencentWidgetProtectedWebView.stopLoading();
+      this.a.stopLoading();
       label17:
-      this.jdField_a_of_type_ComTencentWidgetProtectedWebView.goBack();
+      this.a.goBack();
       return true;
       return super.onBackEvent();
     }
@@ -140,10 +156,17 @@ public class ActionUrlActivity
       break label17;
     }
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ActionUrlActivity
  * JD-Core Version:    0.7.0.1
  */

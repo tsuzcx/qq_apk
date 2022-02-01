@@ -1,47 +1,47 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-final class r
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/app/AppShareUtil;", "", "()V", "TAG", "", "canSendToStatus", "", "wxMsg", "Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "canShareVideoFile", "req", "Lcom/tencent/mm/opensdk/modelmsg/SendMessageToWX$Req;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class r
 {
-  public String appId;
-  public int fPp;
+  public static final r XSH;
   
-  public r(String paramString, int paramInt)
+  static
   {
-    this.appId = paramString;
-    this.fPp = paramInt;
+    AppMethodBeat.i(244906);
+    XSH = new r();
+    AppMethodBeat.o(244906);
   }
   
-  public final boolean equals(Object paramObject)
+  public static final boolean a(SendMessageToWX.Req paramReq)
   {
-    AppMethodBeat.i(79360);
-    if (paramObject == null)
+    AppMethodBeat.i(244902);
+    s.u(paramReq, "req");
+    if ((paramReq.scene == 1) || (paramReq.scene == 4))
     {
-      AppMethodBeat.o(79360);
-      return false;
-    }
-    if (!(paramObject instanceof r))
-    {
-      AppMethodBeat.o(79360);
-      return false;
-    }
-    paramObject = (r)paramObject;
-    if ((paramObject.appId.equals(this.appId)) && (paramObject.fPp == this.fPp))
-    {
-      AppMethodBeat.o(79360);
+      AppMethodBeat.o(244902);
       return true;
     }
-    AppMethodBeat.o(79360);
+    AppMethodBeat.o(244902);
     return false;
   }
   
-  public final String toString()
+  public static final boolean b(WXMediaMessage paramWXMediaMessage)
   {
-    AppMethodBeat.i(79361);
-    String str = this.appId + this.fPp;
-    AppMethodBeat.o(79361);
-    return str;
+    AppMethodBeat.i(244900);
+    s.u(paramWXMediaMessage, "wxMsg");
+    if ((paramWXMediaMessage.getType() == 1) || (paramWXMediaMessage.getType() == 2) || (paramWXMediaMessage.getType() == 76) || (paramWXMediaMessage.getType() == 38))
+    {
+      AppMethodBeat.o(244900);
+      return true;
+    }
+    AppMethodBeat.o(244900);
+    return false;
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.vending.a;
 
 public abstract interface f<_Index>
 {
-  public abstract void K(_Index param_Index);
+  public abstract void T(_Index param_Index);
   
   public abstract void cancel();
 }

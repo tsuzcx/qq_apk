@@ -2,270 +2,129 @@ package android.support.v7.app;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.support.annotation.StringRes;
-import android.support.v7.view.ActionMode;
-import android.support.v7.view.ActionMode.Callback;
+import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.SpinnerAdapter;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.token.hg.j;
+import com.tencent.token.ho;
+import com.tencent.token.ho.a;
 
 public abstract class ActionBar
 {
-  public static final int DISPLAY_HOME_AS_UP = 4;
-  public static final int DISPLAY_SHOW_CUSTOM = 16;
-  public static final int DISPLAY_SHOW_HOME = 2;
-  public static final int DISPLAY_SHOW_TITLE = 8;
-  public static final int DISPLAY_USE_LOGO = 1;
-  @Deprecated
-  public static final int NAVIGATION_MODE_LIST = 1;
-  @Deprecated
-  public static final int NAVIGATION_MODE_STANDARD = 0;
-  @Deprecated
-  public static final int NAVIGATION_MODE_TABS = 2;
+  public abstract int a();
   
-  public abstract void addOnMenuVisibilityListener(ActionBar.OnMenuVisibilityListener paramOnMenuVisibilityListener);
-  
-  @Deprecated
-  public abstract void addTab(ActionBar.Tab paramTab);
-  
-  @Deprecated
-  public abstract void addTab(ActionBar.Tab paramTab, int paramInt);
-  
-  @Deprecated
-  public abstract void addTab(ActionBar.Tab paramTab, int paramInt, boolean paramBoolean);
-  
-  @Deprecated
-  public abstract void addTab(ActionBar.Tab paramTab, boolean paramBoolean);
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public boolean closeOptionsMenu()
-  {
-    return false;
-  }
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public boolean collapseActionView()
-  {
-    return false;
-  }
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void dispatchMenuVisibilityChanged(boolean paramBoolean) {}
-  
-  public abstract View getCustomView();
-  
-  public abstract int getDisplayOptions();
-  
-  public float getElevation()
-  {
-    return 0.0F;
-  }
-  
-  public abstract int getHeight();
-  
-  public int getHideOffset()
-  {
-    return 0;
-  }
-  
-  @Deprecated
-  public abstract int getNavigationItemCount();
-  
-  @Deprecated
-  public abstract int getNavigationMode();
-  
-  @Deprecated
-  public abstract int getSelectedNavigationIndex();
-  
-  @Deprecated
-  @Nullable
-  public abstract ActionBar.Tab getSelectedTab();
-  
-  @Nullable
-  public abstract CharSequence getSubtitle();
-  
-  @Deprecated
-  public abstract ActionBar.Tab getTabAt(int paramInt);
-  
-  @Deprecated
-  public abstract int getTabCount();
-  
-  public Context getThemedContext()
+  public ho a(ho.a parama)
   {
     return null;
   }
   
-  @Nullable
-  public abstract CharSequence getTitle();
-  
-  public abstract void hide();
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public boolean invalidateOptionsMenu()
+  public void a(float paramFloat)
   {
-    return false;
-  }
-  
-  public boolean isHideOnContentScrollEnabled()
-  {
-    return false;
-  }
-  
-  public abstract boolean isShowing();
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public boolean isTitleTruncated()
-  {
-    return false;
-  }
-  
-  @Deprecated
-  public abstract ActionBar.Tab newTab();
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void onConfigurationChanged(Configuration paramConfiguration) {}
-  
-  void onDestroy() {}
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public boolean onMenuKeyEvent(KeyEvent paramKeyEvent)
-  {
-    return false;
-  }
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public boolean openOptionsMenu()
-  {
-    return false;
-  }
-  
-  @Deprecated
-  public abstract void removeAllTabs();
-  
-  public abstract void removeOnMenuVisibilityListener(ActionBar.OnMenuVisibilityListener paramOnMenuVisibilityListener);
-  
-  @Deprecated
-  public abstract void removeTab(ActionBar.Tab paramTab);
-  
-  @Deprecated
-  public abstract void removeTabAt(int paramInt);
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  boolean requestFocus()
-  {
-    return false;
-  }
-  
-  @Deprecated
-  public abstract void selectTab(ActionBar.Tab paramTab);
-  
-  public abstract void setBackgroundDrawable(@Nullable Drawable paramDrawable);
-  
-  public abstract void setCustomView(int paramInt);
-  
-  public abstract void setCustomView(View paramView);
-  
-  public abstract void setCustomView(View paramView, ActionBar.LayoutParams paramLayoutParams);
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setDefaultDisplayHomeAsUpEnabled(boolean paramBoolean) {}
-  
-  public abstract void setDisplayHomeAsUpEnabled(boolean paramBoolean);
-  
-  public abstract void setDisplayOptions(int paramInt);
-  
-  public abstract void setDisplayOptions(int paramInt1, int paramInt2);
-  
-  public abstract void setDisplayShowCustomEnabled(boolean paramBoolean);
-  
-  public abstract void setDisplayShowHomeEnabled(boolean paramBoolean);
-  
-  public abstract void setDisplayShowTitleEnabled(boolean paramBoolean);
-  
-  public abstract void setDisplayUseLogoEnabled(boolean paramBoolean);
-  
-  public void setElevation(float paramFloat)
-  {
-    if (paramFloat != 0.0F) {
-      throw new UnsupportedOperationException("Setting a non-zero elevation is not supported in this action bar configuration.");
+    if (paramFloat == 0.0F) {
+      return;
     }
+    throw new UnsupportedOperationException("Setting a non-zero elevation is not supported in this action bar configuration.");
   }
   
-  public void setHideOffset(int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(Configuration paramConfiguration) {}
+  
+  public void a(CharSequence paramCharSequence) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt != 0) {
-      throw new UnsupportedOperationException("Setting an explicit action bar hide offset is not supported in this action bar configuration.");
-    }
+    return false;
   }
   
-  public void setHideOnContentScrollEnabled(boolean paramBoolean)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    if (paramBoolean) {
-      throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
-    }
+    return false;
   }
   
-  public void setHomeActionContentDescription(@StringRes int paramInt) {}
-  
-  public void setHomeActionContentDescription(@Nullable CharSequence paramCharSequence) {}
-  
-  public void setHomeAsUpIndicator(@DrawableRes int paramInt) {}
-  
-  public void setHomeAsUpIndicator(@Nullable Drawable paramDrawable) {}
-  
-  public void setHomeButtonEnabled(boolean paramBoolean) {}
-  
-  public abstract void setIcon(@DrawableRes int paramInt);
-  
-  public abstract void setIcon(Drawable paramDrawable);
-  
-  @Deprecated
-  public abstract void setListNavigationCallbacks(SpinnerAdapter paramSpinnerAdapter, ActionBar.OnNavigationListener paramOnNavigationListener);
-  
-  public abstract void setLogo(@DrawableRes int paramInt);
-  
-  public abstract void setLogo(Drawable paramDrawable);
-  
-  @Deprecated
-  public abstract void setNavigationMode(int paramInt);
-  
-  @Deprecated
-  public abstract void setSelectedNavigationItem(int paramInt);
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setShowHideAnimationEnabled(boolean paramBoolean) {}
-  
-  public void setSplitBackgroundDrawable(Drawable paramDrawable) {}
-  
-  public void setStackedBackgroundDrawable(Drawable paramDrawable) {}
-  
-  public abstract void setSubtitle(int paramInt);
-  
-  public abstract void setSubtitle(CharSequence paramCharSequence);
-  
-  public abstract void setTitle(@StringRes int paramInt);
-  
-  public abstract void setTitle(CharSequence paramCharSequence);
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setWindowTitle(CharSequence paramCharSequence) {}
-  
-  public abstract void show();
-  
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public ActionMode startActionMode(ActionMode.Callback paramCallback)
+  public Context b()
   {
     return null;
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c()
+  {
+    throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
+  }
+  
+  public void c(boolean paramBoolean) {}
+  
+  public boolean d()
+  {
+    return false;
+  }
+  
+  public boolean e()
+  {
+    return false;
+  }
+  
+  public boolean f()
+  {
+    return false;
+  }
+  
+  public boolean g()
+  {
+    return false;
+  }
+  
+  protected void h() {}
+  
+  public static class LayoutParams
+    extends ViewGroup.MarginLayoutParams
+  {
+    public int a = 0;
+    
+    public LayoutParams()
+    {
+      super(-2);
+      this.a = 8388627;
+    }
+    
+    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, hg.j.ActionBarLayout);
+      this.a = paramContext.getInt(hg.j.ActionBarLayout_android_layout_gravity, 0);
+      paramContext.recycle();
+    }
+    
+    public LayoutParams(LayoutParams paramLayoutParams)
+    {
+      super();
+      this.a = paramLayoutParams.a;
+    }
+    
+    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+  }
+  
+  @Deprecated
+  public static abstract class a
+  {
+    public abstract Drawable a();
+    
+    public abstract CharSequence b();
+    
+    public abstract View c();
+    
+    public abstract CharSequence d();
   }
 }
 

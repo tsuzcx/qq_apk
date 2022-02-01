@@ -1,49 +1,18 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
 
-public class git
+public final class git
+  implements Parcelable.Creator
 {
-  private static HashMap a = new HashMap();
-  
-  public static String a(long paramLong)
+  public FriendGroupListInfo a(Parcel paramParcel)
   {
-    try
-    {
-      String str = (String)a.get(String.valueOf(paramLong));
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return new FriendGroupListInfo(paramParcel);
   }
   
-  public static void a(long paramLong)
+  public FriendGroupListInfo[] a(int paramInt)
   {
-    try
-    {
-      a.remove(String.valueOf(paramLong));
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(long paramLong, String paramString)
-  {
-    try
-    {
-      a.put(String.valueOf(paramLong), paramString);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    return new FriendGroupListInfo[paramInt];
   }
 }
 

@@ -11,138 +11,138 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class WebViewBagBgView
   extends View
 {
-  private RectF gM;
-  int mDuration;
+  private int Xag;
+  private int Xah;
+  private float Xai;
+  private float Xaj;
+  private float Xak;
+  private int Xal;
+  private int Xam;
+  boolean Xan;
+  private RectF Xao;
+  int cam;
+  int cqG;
   private Paint mPaint;
   long mStartTime;
-  int tal;
-  private int vin;
-  private int vio;
-  private float vip;
-  private float viq;
-  private float vir;
-  private int vis;
-  private int vit;
-  boolean viu;
   
   public WebViewBagBgView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(8198);
-    this.vin = -7829368;
-    this.vio = -65536;
-    this.vip = 0.0F;
+    AppMethodBeat.i(80429);
+    this.Xag = -7829368;
+    this.Xah = -65536;
+    this.Xai = 0.0F;
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.vit = -1;
-    AppMethodBeat.o(8198);
-  }
-  
-  final void nq(long paramLong)
-  {
-    AppMethodBeat.i(8201);
-    if (this.vit < 0)
-    {
-      ab.i("MicroMsg.WebViewBagBgView", "doUpdateAngryInfo not measured, mDiameter:%d", new Object[] { Integer.valueOf(this.vit) });
-      AppMethodBeat.o(8201);
-      return;
-    }
-    this.vip = (this.vit * 2 / (this.mDuration / this.tal));
-    if (paramLong - this.mStartTime <= 0L)
-    {
-      f = this.vit;
-      this.viq = f;
-      if (this.vit - this.viq >= this.vis) {
-        break label191;
-      }
-    }
-    label191:
-    for (float f = this.vit;; f = this.viq + this.vis)
-    {
-      this.vir = f;
-      AppMethodBeat.o(8201);
-      return;
-      int i = (int)((float)(paramLong - this.mStartTime) / this.tal);
-      this.viq = (this.vit - (i + 1) * this.vip);
-      if (this.viq < -this.vis)
-      {
-        f = -this.vis;
-        break;
-      }
-      f = this.viq;
-      break;
-    }
+    this.Xam = -1;
+    AppMethodBeat.o(80429);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(8199);
+    AppMethodBeat.i(80430);
     super.onDraw(paramCanvas);
-    if (this.vir == this.viq) {
-      this.viq -= 0.001F;
+    if (this.Xak == this.Xaj) {
+      this.Xaj -= 0.001F;
     }
-    float f1 = this.viq;
-    float f2 = this.vir;
-    int i = this.vin;
-    int j = this.vio;
+    float f1 = this.Xaj;
+    float f2 = this.Xak;
+    int i = this.Xag;
+    int j = this.Xah;
     Object localObject = Shader.TileMode.CLAMP;
     localObject = new LinearGradient(0.0F, f1, 0.0F, f2, new int[] { i, j }, null, (Shader.TileMode)localObject);
     this.mPaint.setShader((Shader)localObject);
-    paramCanvas.drawOval(this.gM, this.mPaint);
-    if ((this.viu) && (this.vir > 0.0F))
+    paramCanvas.drawOval(this.Xao, this.mPaint);
+    if ((this.Xan) && (this.Xak > 0.0F))
     {
-      this.viq -= this.vip;
-      if (this.viq >= -this.vis) {
-        break label213;
+      this.Xaj -= this.Xai;
+      if (this.Xaj >= -this.Xal) {
+        break label211;
       }
-      f1 = -this.vis;
-      this.viq = f1;
-      if (this.vit - this.viq >= this.vis) {
-        break label221;
+      f1 = -this.Xal;
+      this.Xaj = f1;
+      if (this.Xam - this.Xaj >= this.Xal) {
+        break label219;
       }
     }
-    label213:
-    label221:
-    for (f1 = this.vit;; f1 = this.viq + this.vis)
+    label211:
+    label219:
+    for (f1 = this.Xam;; f1 = this.Xaj + this.Xal)
     {
-      this.vir = f1;
-      postInvalidateDelayed(this.tal);
-      AppMethodBeat.o(8199);
+      this.Xak = f1;
+      postInvalidateDelayed(this.cqG);
+      AppMethodBeat.o(80430);
       return;
-      f1 = this.viq;
+      f1 = this.Xaj;
       break;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(8200);
+    AppMethodBeat.i(80431);
     super.onMeasure(paramInt1, paramInt2);
-    this.vit = View.MeasureSpec.getSize(paramInt1);
-    this.gM = new RectF(0.0F, 0.0F, this.vit, this.vit);
-    this.vis = (this.vit / 2);
-    nq(System.currentTimeMillis());
-    AppMethodBeat.o(8200);
+    this.Xam = View.MeasureSpec.getSize(paramInt1);
+    this.Xao = new RectF(0.0F, 0.0F, this.Xam, this.Xam);
+    this.Xal = (this.Xam / 2);
+    xP(System.currentTimeMillis());
+    AppMethodBeat.o(80431);
   }
   
   public void setAngryColor(int paramInt)
   {
-    this.vio = paramInt;
+    this.Xah = paramInt;
   }
   
   public void setStartColor(int paramInt)
   {
-    this.vin = paramInt;
+    this.Xag = paramInt;
+  }
+  
+  final void xP(long paramLong)
+  {
+    AppMethodBeat.i(80432);
+    if (this.Xam < 0)
+    {
+      Log.i("MicroMsg.WebViewBagBgView", "doUpdateAngryInfo not measured, mDiameter:%d", new Object[] { Integer.valueOf(this.Xam) });
+      AppMethodBeat.o(80432);
+      return;
+    }
+    this.Xai = (this.Xam * 2 / (this.cam / this.cqG));
+    if (paramLong - this.mStartTime <= 0L)
+    {
+      f = this.Xam;
+      this.Xaj = f;
+      if (this.Xam - this.Xaj >= this.Xal) {
+        break label188;
+      }
+    }
+    label188:
+    for (float f = this.Xam;; f = this.Xaj + this.Xal)
+    {
+      this.Xak = f;
+      AppMethodBeat.o(80432);
+      return;
+      int i = (int)((float)(paramLong - this.mStartTime) / this.cqG);
+      this.Xaj = (this.Xam - (i + 1) * this.Xai);
+      if (this.Xaj < -this.Xal)
+      {
+        f = -this.Xal;
+        break;
+      }
+      f = this.Xaj;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.WebViewBagBgView
  * JD-Core Version:    0.7.0.1
  */

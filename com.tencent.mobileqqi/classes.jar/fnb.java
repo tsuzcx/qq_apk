@@ -1,18 +1,23 @@
-import android.accounts.AccountManagerCallback;
-import android.accounts.AccountManagerFuture;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
 
 public class fnb
-  implements AccountManagerCallback
 {
-  public fnb(ContactSyncManager paramContactSyncManager) {}
+  public static final int a = 0;
+  public static final Uri a;
+  public static final String a = "raw_contact_id=?";
+  public static final String[] a;
+  public static final int b = 1;
+  public static final String b = "mimetype = ?";
+  public static final String[] b = { "raw_contact_id", "data1" };
+  public static final int c = 2;
+  public static final int d = 0;
+  public static final int e = 1;
   
-  public void run(AccountManagerFuture paramAccountManagerFuture)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
-    }
+    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
   }
 }
 

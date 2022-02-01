@@ -3,13 +3,11 @@ package com.tencent.mm.pluginsdk;
 @Deprecated
 public abstract interface o
 {
-  public abstract void a(m paramm);
-  
-  public abstract void a(n paramn);
+  public static abstract interface c {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.o
  * JD-Core Version:    0.7.0.1
  */

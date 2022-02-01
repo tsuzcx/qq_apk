@@ -1,45 +1,41 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import ssj;
-import ssp;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StMessageStatus;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowFeedsRsp;
+import android.text.TextUtils;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.BaseRequest;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 
 class FolderFollowTabFragment$7
-  implements Runnable
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetFollowFeedsRsp>
 {
-  FolderFollowTabFragment$7(FolderFollowTabFragment paramFolderFollowTabFragment, int paramInt) {}
+  FolderFollowTabFragment$7(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void run()
+  public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowFeedsRsp paramStGetFollowFeedsRsp)
   {
-    Object localObject = ssp.a();
-    List localList = ((ssp)localObject).a();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
+    boolean bool = VSNetworkHelper.isProtocolCache(paramString);
+    if ((paramBoolean) && (paramLong == 0L) && (paramStGetFollowFeedsRsp != null))
     {
-      ssj localssj = (ssj)localIterator.next();
-      if (FolderFollowTabFragment.a(this.this$0, localssj.a))
+      if ((FolderFollowTabFragment.d(this.a) != null) && (!bool) && (paramStGetFollowFeedsRsp.messStatus.get() != null))
       {
-        localArrayList.add(localssj);
-        localIterator.remove();
+        FolderFollowTabFragment.d(this.a).a(paramStGetFollowFeedsRsp.messStatus.noticeCount.get());
+        FolderFollowTabFragment.d(this.a).setJumpWebMessageListUrl(paramStGetFollowFeedsRsp.messStatus.jumpURL.get());
       }
+      return;
     }
-    ((ssp)localObject).a(localList);
-    localObject = Message.obtain();
-    ((Message)localObject).arg1 = this.a;
-    ((Message)localObject).obj = localList;
-    ((Message)localObject).what = 101;
-    FolderFollowTabFragment.a(this.this$0).sendMessage((Message)localObject);
-    FolderFollowTabFragment.a(this.this$0, localArrayList);
+    if (!TextUtils.isEmpty(paramString)) {
+      QQToast.makeText(FolderFollowTabFragment.c(this.a), 1, paramString, 0).show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.7
  * JD-Core Version:    0.7.0.1
  */

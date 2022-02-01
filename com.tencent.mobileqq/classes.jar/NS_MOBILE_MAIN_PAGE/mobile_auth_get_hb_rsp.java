@@ -11,13 +11,13 @@ public final class mobile_auth_get_hb_rsp
 {
   static callback_info cache_hb_info = new callback_info();
   static Map<Long, String> cache_uin_nick = new HashMap();
-  public int auth_res;
-  public long channel;
+  public int auth_res = 0;
+  public long channel = 0L;
   public String encryp_key = "";
   public String err_msg = "";
-  public callback_info hb_info;
-  public int operate_type;
-  public Map<Long, String> uin_nick;
+  public callback_info hb_info = null;
+  public int operate_type = 0;
+  public Map<Long, String> uin_nick = null;
   
   static
   {
@@ -51,25 +51,29 @@ public final class mobile_auth_get_hb_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.auth_res, 0);
-    if (this.encryp_key != null) {
-      paramJceOutputStream.write(this.encryp_key, 1);
+    Object localObject = this.encryp_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.channel, 2);
-    if (this.hb_info != null) {
-      paramJceOutputStream.write(this.hb_info, 3);
+    localObject = this.hb_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.err_msg != null) {
-      paramJceOutputStream.write(this.err_msg, 4);
+    localObject = this.err_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.operate_type, 5);
-    if (this.uin_nick != null) {
-      paramJceOutputStream.write(this.uin_nick, 6);
+    localObject = this.uin_nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_auth_get_hb_rsp
  * JD-Core Version:    0.7.0.1
  */

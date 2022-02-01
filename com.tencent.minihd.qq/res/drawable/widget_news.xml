@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="#fffcfcfc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/news_image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/emoji_000" android:contentDescription="@string/news" />
+    <TextView android:textSize="18.0sp" android:textColor="@android:color/black" android:ellipsize="marquee" android:gravity="bottom|center" android:id="@id/news_text" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="20.0dip" android:text="@string/news" android:singleLine="true" />
+</FrameLayout>

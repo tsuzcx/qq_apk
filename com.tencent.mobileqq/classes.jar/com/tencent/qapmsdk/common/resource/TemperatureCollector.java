@@ -41,23 +41,35 @@ public final class TemperatureCollector
   public void onReceive(@NotNull Context paramContext, @Nullable Intent paramIntent)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    if (paramIntent != null) {}
-    try
-    {
-      if (Intrinsics.areEqual("android.intent.action.BATTERY_CHANGED", paramIntent.getAction())) {
-        temperature = paramIntent.getIntExtra("temperature", -10000) * 1.0D / 10;
+    if (paramIntent != null) {
+      try
+      {
+        if (Intrinsics.areEqual("android.intent.action.BATTERY_CHANGED", paramIntent.getAction()))
+        {
+          int i = paramIntent.getIntExtra("temperature", -10000);
+          double d1 = i;
+          Double.isNaN(d1);
+          double d2 = 10;
+          Double.isNaN(d2);
+          d1 = d1 * 1.0D / d2;
+          temperature = d1;
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      Logger.INSTANCE.d(new String[] { "QAPM_common_TemperatureCollector", paramContext + ": override BroadcastReceiver onReceive error." });
+      catch (Exception paramContext)
+      {
+        paramIntent = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramContext);
+        localStringBuilder.append(": override BroadcastReceiver onReceive error.");
+        paramIntent.d(new String[] { "QAPM_common_TemperatureCollector", localStringBuilder.toString() });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.resource.TemperatureCollector
  * JD-Core Version:    0.7.0.1
  */

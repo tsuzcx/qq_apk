@@ -28,14 +28,15 @@ public final class QQProtectCommon$QQProtectQueryHead
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 66, 72, 82, 90, 98, 104 }, new String[] { "uint32_sec_cmd", "bytes_imei", "bytes_guid", "string_uin", "os_version", "qq_version", "cpu_arch", "rom_info", "root", "brand_info", "manufacturer", "package_name", "app_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, "", Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", "", "", Integer.valueOf(0) }, QQProtectQueryHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 66, 72, 82, 90, 98, 104 }, new String[] { "uint32_sec_cmd", "bytes_imei", "bytes_guid", "string_uin", "os_version", "qq_version", "cpu_arch", "rom_info", "root", "brand_info", "manufacturer", "package_name", "app_id" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, "", localInteger, localInteger, "", "", localInteger, "", "", "", localInteger }, QQProtectQueryHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.QQProtectCommon.QQProtectQueryHead
  * JD-Core Version:    0.7.0.1
  */

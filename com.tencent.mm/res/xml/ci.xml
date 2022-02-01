@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference android:key="setting_news_notification" android:summary="@string/ivy" android:title="@string/ivs" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_show_detail" android:persistent="false" android:title="@string/ivj" />
+    <PreferenceSmallCategory />
+</PreferenceScreen>

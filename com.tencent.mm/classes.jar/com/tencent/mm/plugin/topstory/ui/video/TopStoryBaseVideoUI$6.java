@@ -1,28 +1,25 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class TopStoryBaseVideoUI$6
-  implements Runnable
+  implements View.OnClickListener
 {
-  TopStoryBaseVideoUI$6(TopStoryBaseVideoUI paramTopStoryBaseVideoUI, List paramList, boolean paramBoolean) {}
+  TopStoryBaseVideoUI$6(TopStoryBaseVideoUI paramTopStoryBaseVideoUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(1724);
-    if (this.tiT.tiR)
-    {
-      this.tiT.tiB.l(this.tiV, this.tiW);
-      this.tiT.tix.ajb.notifyChanged();
-      AppMethodBeat.o(1724);
-      return;
-    }
-    this.tiT.tix.l(this.tiV, this.tiW);
-    this.tiT.tiB.ajb.notifyChanged();
-    AppMethodBeat.o(1724);
+    AppMethodBeat.i(126083);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    TopStoryBaseVideoUI.a(this.TMz);
+    a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(126083);
   }
 }
 

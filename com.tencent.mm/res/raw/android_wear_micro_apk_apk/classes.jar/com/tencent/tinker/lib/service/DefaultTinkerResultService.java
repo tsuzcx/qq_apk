@@ -40,9 +40,9 @@ public class DefaultTinkerResultService
     {
       return;
       com.tencent.tinker.lib.e.a.c("Tinker.DefaultTinkerResultService", "DefaultTinkerResultService received a result:%s ", new Object[] { parama.toString() });
-      com.tencent.tinker.lib.e.c.E(getApplicationContext());
-    } while (!parama.ajJ);
-    c(new File(parama.ajK));
+      com.tencent.tinker.lib.e.c.F(getApplicationContext());
+    } while (!parama.anl);
+    c(new File(parama.anm));
     if (b(parama))
     {
       Process.killProcess(Process.myPid());
@@ -53,14 +53,14 @@ public class DefaultTinkerResultService
   
   public final boolean b(a parama)
   {
-    Object localObject = com.tencent.tinker.lib.d.a.D(getApplicationContext());
-    if (((com.tencent.tinker.lib.d.a)localObject).ob())
+    Object localObject = com.tencent.tinker.lib.d.a.E(getApplicationContext());
+    if (((com.tencent.tinker.lib.d.a)localObject).oO())
     {
-      localObject = ((com.tencent.tinker.lib.d.a)localObject).nY();
+      localObject = ((com.tencent.tinker.lib.d.a)localObject).oL();
       if (localObject != null)
       {
-        localObject = ((com.tencent.tinker.lib.d.c)localObject).akh;
-        if ((parama.ajM != null) && (parama.ajM.equals(localObject))) {
+        localObject = ((com.tencent.tinker.lib.d.c)localObject).anG;
+        if ((parama.ann != null) && (parama.ann.equals(localObject))) {
           return false;
         }
       }

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/bkd" />
-    <item android:state_selected="true" android:drawable="@drawable/bkd" />
-    <item android:drawable="@drawable/w6" />
+    <item>
+        <shape>
+            <solid android:color="@color/BW_97" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
 </selector>

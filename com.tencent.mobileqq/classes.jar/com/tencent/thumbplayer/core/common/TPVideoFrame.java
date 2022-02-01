@@ -2,10 +2,6 @@ package com.tencent.thumbplayer.core.common;
 
 public class TPVideoFrame
 {
-  public static final int TP_PIX_FMT_NONE = -1;
-  public static final int TP_PIX_FMT_RGB565 = 37;
-  public static final int TP_PIX_FMT_YUV420P = 0;
-  public static final int TP_PIX_FMT_YUVJ420P = 12;
   public byte[][] data;
   public int format;
   public int height;
@@ -18,7 +14,7 @@ public class TPVideoFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPVideoFrame
  * JD-Core Version:    0.7.0.1
  */

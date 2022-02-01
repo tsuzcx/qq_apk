@@ -1,9 +1,9 @@
 package com.google.android.gms.common.util;
 
 import android.os.Build.VERSION;
+import androidx.core.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@VisibleForTesting
 public final class PlatformVersion
 {
   public static boolean isAtLeastFroyo()
@@ -64,9 +64,9 @@ public final class PlatformVersion
   @Deprecated
   public static boolean isAtLeastKeyLimePie()
   {
-    AppMethodBeat.i(90253);
+    AppMethodBeat.i(5275);
     boolean bool = isAtLeastKitKat();
-    AppMethodBeat.o(90253);
+    AppMethodBeat.o(5275);
     return bool;
   }
   
@@ -83,9 +83,9 @@ public final class PlatformVersion
   @Deprecated
   public static boolean isAtLeastL()
   {
-    AppMethodBeat.i(90254);
+    AppMethodBeat.i(5276);
     boolean bool = isAtLeastLollipop();
-    AppMethodBeat.o(90254);
+    AppMethodBeat.o(5276);
     return bool;
   }
   
@@ -126,19 +126,15 @@ public final class PlatformVersion
   
   public static boolean isAtLeastP()
   {
-    AppMethodBeat.i(90255);
-    if (Build.VERSION.SDK_INT >= 28)
-    {
-      AppMethodBeat.o(90255);
-      return true;
-    }
-    AppMethodBeat.o(90255);
-    return false;
+    AppMethodBeat.i(210376);
+    boolean bool = a.isAtLeastP();
+    AppMethodBeat.o(210376);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.PlatformVersion
  * JD-Core Version:    0.7.0.1
  */

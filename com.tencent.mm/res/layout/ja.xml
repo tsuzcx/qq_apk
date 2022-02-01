@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/hr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="84.0dip"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView android:id="@id/ah3" android:layout_width="fill_parent" android:layout_height="84.0dip" android:src="#ffdc6f49" android:scaleType="centerCrop" android:minHeight="84.0dip" />
-    <ImageView android:id="@id/ah4" android:background="@drawable/b1_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="84.0dip" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_centerVertical="true">
-        <TextView android:textSize="22.0dip" android:textColor="@color/a6q" android:id="@id/ah5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/a6q" android:id="@id/ah6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" android:layout_below="@id/ah5" android:layout_alignLeft="@id/ah5" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/ah7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <ImageView android:background="@drawable/hu" android:layout_width="fill_parent" android:layout_height="84.0dip" />
-</RelativeLayout>
+    <com.tencent.mm.plugin.bizui.widget.StoryListView android:id="@id/ae3" android:background="#00000000" style="@style/na" />
+    <TextView android:id="@id/cj1" android:visibility="gone" style="@style/m3" />
+</LinearLayout>

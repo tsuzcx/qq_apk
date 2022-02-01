@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
   public static final String[] SQL_CREATE;
   
   static
   {
-    AppMethodBeat.i(36919);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "CanvasInfo") };
-    AppMethodBeat.o(36919);
+    AppMethodBeat.i(96282);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "CanvasInfo") };
+    AppMethodBeat.o(96282);
   }
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(parame, c.info, "CanvasInfo");
+    this(paramISQLiteDatabase, c.info, "CanvasInfo");
   }
   
-  private d(e parame, c.a parama, String paramString)
+  private d(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    super(parame, parama, paramString, null);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
   }
   
   public final void a(c paramc)
   {
-    AppMethodBeat.i(36918);
+    AppMethodBeat.i(96281);
     if (paramc == null)
     {
-      AppMethodBeat.o(36918);
+      AppMethodBeat.o(96281);
       return;
     }
     paramc.field_createTime = System.currentTimeMillis();
     if (!insert(paramc)) {
       update(paramc, new String[0]);
     }
-    AppMethodBeat.o(36918);
+    AppMethodBeat.o(96281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.d
  * JD-Core Version:    0.7.0.1
  */

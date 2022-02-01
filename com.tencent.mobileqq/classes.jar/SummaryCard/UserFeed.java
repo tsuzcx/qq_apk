@@ -8,8 +8,8 @@ public final class UserFeed
   extends JceStruct
 {
   static byte[] cache_vFeedInfo;
-  public long uFlag;
-  public byte[] vFeedInfo;
+  public long uFlag = 0L;
+  public byte[] vFeedInfo = null;
   
   public UserFeed() {}
   
@@ -33,14 +33,15 @@ public final class UserFeed
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uFlag, 0);
-    if (this.vFeedInfo != null) {
-      paramJceOutputStream.write(this.vFeedInfo, 1);
+    byte[] arrayOfByte = this.vFeedInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.UserFeed
  * JD-Core Version:    0.7.0.1
  */

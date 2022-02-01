@@ -9,8 +9,8 @@ public final class MobileQbossReportExceptionReq
   extends JceStruct
 {
   static ArrayList<ReportExceptionInfo> cache_vecRepInfo = new ArrayList();
-  public long uiUin;
-  public ArrayList<ReportExceptionInfo> vecRepInfo;
+  public long uiUin = 0L;
+  public ArrayList<ReportExceptionInfo> vecRepInfo = null;
   
   static
   {
@@ -35,14 +35,15 @@ public final class MobileQbossReportExceptionReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uiUin, 0);
-    if (this.vecRepInfo != null) {
-      paramJceOutputStream.write(this.vecRepInfo, 1);
+    ArrayList localArrayList = this.vecRepInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionReq
  * JD-Core Version:    0.7.0.1
  */

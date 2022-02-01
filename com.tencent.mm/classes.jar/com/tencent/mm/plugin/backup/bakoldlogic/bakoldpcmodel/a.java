@@ -3,84 +3,85 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.backup.b.d;
 
 public final class a
-  extends com.tencent.mm.plugin.backup.b.d
+  extends d
 {
-  private static a jGV;
-  private e jGW;
-  private c jGX;
-  private b jGY;
+  private static a vet;
+  private e veu;
+  private c vev;
+  private b vew;
   
-  public static a aUU()
+  public static a cWU()
   {
-    AppMethodBeat.i(17802);
-    if (jGV == null)
+    AppMethodBeat.i(21859);
+    if (vet == null)
     {
       locala = new a();
-      jGV = locala;
+      vet = locala;
       a(locala);
     }
-    a locala = jGV;
-    AppMethodBeat.o(17802);
+    a locala = vet;
+    AppMethodBeat.o(21859);
     return locala;
   }
   
-  public final void aSG()
+  public final void cUE()
   {
-    jGV = null;
+    vet = null;
   }
   
-  public final void aSM() {}
+  public final void cUK() {}
   
-  public final void aSN() {}
+  public final void cUL() {}
   
-  public final e aUV()
+  public final e cWV()
   {
-    AppMethodBeat.i(17804);
-    if (this.jGW == null) {
-      this.jGW = new e();
+    AppMethodBeat.i(21861);
+    if (this.veu == null) {
+      this.veu = new e();
     }
-    e locale = this.jGW;
-    AppMethodBeat.o(17804);
+    e locale = this.veu;
+    AppMethodBeat.o(21861);
     return locale;
   }
   
-  public final c aUW()
+  public final c cWW()
   {
-    AppMethodBeat.i(17805);
-    if (this.jGX == null) {
-      this.jGX = new c();
+    AppMethodBeat.i(21862);
+    if (this.vev == null) {
+      this.vev = new c();
     }
-    c localc = this.jGX;
-    AppMethodBeat.o(17805);
+    c localc = this.vev;
+    AppMethodBeat.o(21862);
     return localc;
   }
   
-  public final b aUX()
+  public final b cWX()
   {
-    AppMethodBeat.i(17806);
-    if (this.jGY == null) {
-      this.jGY = new b();
+    AppMethodBeat.i(21863);
+    if (this.vew == null) {
+      this.vew = new b();
     }
-    b localb = this.jGY;
-    AppMethodBeat.o(17806);
+    b localb = this.vew;
+    AppMethodBeat.o(21863);
     return localb;
   }
   
-  public final void m(Object... paramVarArgs)
+  public final void p(Object... paramVarArgs)
   {
-    AppMethodBeat.i(17803);
+    AppMethodBeat.i(21860);
     paramVarArgs = (Context)paramVarArgs[0];
-    aUU().aUX().aUY();
+    cWU().cWX().cWY();
     com.tencent.mm.plugin.backup.g.b.clear();
-    com.tencent.mm.bq.d.aH(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
-    AppMethodBeat.o(17803);
+    com.tencent.mm.br.c.bV(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
+    AppMethodBeat.o(21860);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a
  * JD-Core Version:    0.7.0.1
  */

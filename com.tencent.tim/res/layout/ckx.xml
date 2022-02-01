@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e6w" android:background="@drawable/jm" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="56.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.leba.widget.LebaRoundLayout android:id="@id/ifh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ibc" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.leba.widget.LebaRoundLayout>
+    <com.tencent.widget.ThemeImageView android:id="@id/letsIcon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/ibo" android:layout_width="28.0dip" android:layout_height="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/yx" android:duplicateParentState="true" android:layout_width="7.0dip" android:layout_height="11.5dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black_theme_version2" android:gravity="center_vertical" android:id="@id/npv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:singleLine="true" android:layout_toRightOf="@id/letsIcon" android:layout_centerVertical="true" />
+    <TextView android:id="@id/npw" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/rs" android:layout_marginBottom="@dimen/rq" android:layout_toRightOf="@id/npv" android:layout_centerVertical="true" style="@style/hb" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:id="@id/npy" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="58.0dip" android:singleLine="true" android:layout_toLeftOf="@id/ibo" android:layout_centerVertical="true" />
+    <RelativeLayout android:layout_width="88.0dip" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/ibo" android:layout_centerInParent="true">
+        <ImageSwitcher android:id="@id/nps" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginRight="36.0dip" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+        <ImageSwitcher android:id="@id/npr" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/npt" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="7.0dip" android:src="@drawable/g0q" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+        <TextView android:id="@id/npx" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/rm" android:layout_above="@id/npq" android:layout_alignParentRight="true" style="@style/cg" />
+        <View android:id="@id/npq" android:layout_width="1.0px" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

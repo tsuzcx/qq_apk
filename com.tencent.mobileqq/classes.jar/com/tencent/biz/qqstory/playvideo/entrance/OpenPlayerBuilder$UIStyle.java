@@ -5,23 +5,33 @@ import java.io.Serializable;
 public class OpenPlayerBuilder$UIStyle
   implements Serializable
 {
-  public int bottomWidgetShowFlag;
-  public boolean hideBannerInfo;
-  public boolean hideMoreIcon;
-  public boolean hideVideoDetailInfo;
-  public boolean mForDebug;
+  public int bottomWidgetShowFlag = 0;
+  public boolean hideBannerInfo = false;
+  public boolean hideMoreIcon = false;
+  public boolean hideVideoDetailInfo = false;
+  public boolean mForDebug = false;
   public int mPlayerRepeatMode = 0;
   public boolean showVideoCoverList = true;
-  public boolean showVideoNoInteresting;
+  public boolean showVideoNoInteresting = false;
   
   public String toString()
   {
-    return "UIStyle{showVideoCoverList=" + this.showVideoCoverList + ", hideVideoDetailInfo=" + this.hideVideoDetailInfo + ", bottomWidgetShowFlag=" + this.bottomWidgetShowFlag + ", mPlayerRepeatMode=" + this.mPlayerRepeatMode + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UIStyle{showVideoCoverList=");
+    localStringBuilder.append(this.showVideoCoverList);
+    localStringBuilder.append(", hideVideoDetailInfo=");
+    localStringBuilder.append(this.hideVideoDetailInfo);
+    localStringBuilder.append(", bottomWidgetShowFlag=");
+    localStringBuilder.append(this.bottomWidgetShowFlag);
+    localStringBuilder.append(", mPlayerRepeatMode=");
+    localStringBuilder.append(this.mPlayerRepeatMode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle
  * JD-Core Version:    0.7.0.1
  */

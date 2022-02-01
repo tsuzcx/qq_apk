@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity;
 
-import acha;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Message;
@@ -16,20 +15,20 @@ import mqq.os.MqqHandler;
 public class AutoFitScrollView
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
   public int a;
-  private long jdField_a_of_type_Long;
-  private acha jdField_a_of_type_Acha;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = 0;
-  private int d;
-  private int e;
+  private int b;
+  private int c = 0;
+  private float d;
+  private float e;
+  private int f;
+  private AutoFitScroller g;
+  private VelocityTracker h;
+  private float i;
+  private boolean j;
+  private long k;
+  private MqqHandler l;
+  private boolean m = false;
+  private int n;
   
   public AutoFitScrollView(Context paramContext)
   {
@@ -51,230 +50,242 @@ public class AutoFitScrollView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Acha = new acha(getContext());
-    this.d = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.g = new AutoFitScroller(getContext());
+    this.f = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     setFitWidth(paramContext.getResources().getDisplayMetrics().widthPixels, 10);
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.m = true;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Acha.a() == 0) {
-      this.jdField_a_of_type_Acha.a(this.jdField_a_of_type_Acha.a(), this.jdField_a_of_type_Acha.b(), paramInt1, paramInt2);
-    }
-    for (;;)
+    AutoFitScroller localAutoFitScroller;
+    if (this.g.b() == 0)
     {
-      scrollTo(this.jdField_a_of_type_Acha.a(), this.jdField_a_of_type_Acha.b());
-      postInvalidate();
-      return;
-      this.jdField_a_of_type_Acha.a(this.jdField_a_of_type_Acha.a(), this.jdField_a_of_type_Acha.b(), paramInt1 - this.jdField_a_of_type_Acha.a(), paramInt2);
+      localAutoFitScroller = this.g;
+      localAutoFitScroller.a(localAutoFitScroller.b(), this.g.c(), paramInt1, paramInt2);
     }
+    else
+    {
+      localAutoFitScroller = this.g;
+      localAutoFitScroller.a(localAutoFitScroller.b(), this.g.c(), paramInt1 - this.g.b(), paramInt2);
+    }
+    scrollTo(this.g.b(), this.g.c());
+    postInvalidate();
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.m = false;
   }
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_Acha.b())
+    if (this.g.d())
     {
-      scrollTo(this.jdField_a_of_type_Acha.a(), this.jdField_a_of_type_Acha.b());
+      scrollTo(this.g.b(), this.g.c());
       postInvalidate();
-    }
-    while (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    int i;
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    if (this.j)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(65539);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(65540);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(65538);
-      i = this.jdField_a_of_type_Int - getWidth();
-      if (getScrollX() <= i) {
-        break label151;
+      Object localObject = this.l;
+      if (localObject != null)
+      {
+        ((MqqHandler)localObject).removeMessages(65539);
+        this.l.removeMessages(65540);
+        this.l.removeMessages(65538);
+        int i1 = this.a - getWidth();
+        if (getScrollX() <= i1) {
+          i1 = getScrollX();
+        }
+        if (i1 <= 0) {
+          i1 = 0;
+        }
+        localObject = this.l.obtainMessage(65540, i1, getScrollX() - this.n, Integer.valueOf(this.a));
+        this.l.sendMessage((Message)localObject);
+        this.l.sendEmptyMessageDelayed(65538, 3000L);
       }
-      if (i <= 0) {
-        break label159;
-      }
+      this.j = false;
     }
-    for (;;)
-    {
-      Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(65540, i, getScrollX() - this.e, Integer.valueOf(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(65538, 3000L);
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      label151:
-      i = getScrollX();
-      break;
-      label159:
-      i = 0;
-    }
+  }
+  
+  public int getItemWidth()
+  {
+    return this.b;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction() & 0xFF;
-    if ((i == 2) && (this.jdField_c_of_type_Int != 0)) {}
-    for (;;)
-    {
+    int i1 = paramMotionEvent.getAction() & 0xFF;
+    if ((i1 == 2) && (this.c != 0)) {
       return true;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      switch (i)
-      {
-      }
-      while (this.jdField_c_of_type_Int == 0)
-      {
-        return false;
-        this.jdField_a_of_type_Float = f1;
-        this.jdField_b_of_type_Float = f2;
-        if (this.jdField_a_of_type_Acha.a()) {}
-        for (i = 0;; i = 1)
-        {
-          this.jdField_c_of_type_Int = i;
-          break;
-        }
-        i = (int)(f1 - this.jdField_a_of_type_Float);
-        if ((Math.abs((int)(f2 - this.jdField_b_of_type_Float)) < Math.abs(i)) && (Math.abs(i) > this.d))
-        {
-          this.jdField_c_of_type_Int = 1;
-          continue;
-          this.jdField_c_of_type_Int = 0;
-        }
-      }
     }
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (i1 != 0)
+    {
+      if (i1 != 1) {
+        if (i1 != 2)
+        {
+          if (i1 != 3) {
+            break label139;
+          }
+        }
+        else
+        {
+          i1 = (int)(f1 - this.d);
+          if ((Math.abs((int)(f2 - this.e)) >= Math.abs(i1)) || (Math.abs(i1) <= this.f)) {
+            break label139;
+          }
+          this.c = 1;
+          break label139;
+        }
+      }
+      this.c = 0;
+    }
+    else
+    {
+      this.d = f1;
+      this.e = f2;
+      this.c = (this.g.a() ^ true);
+    }
+    label139:
+    return this.c != 0;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getChildCount() > 0) {
-      getChildAt(0).layout(0, 0, this.jdField_a_of_type_Int, paramInt4 - paramInt2);
+      getChildAt(0).layout(0, 0, this.a, paramInt4 - paramInt2);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int j = 0;
     super.onTouchEvent(paramMotionEvent);
-    if (this.jdField_b_of_type_Boolean) {}
-    long l;
-    do
-    {
+    if (this.m) {
       return true;
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-        this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-      }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-      float f = paramMotionEvent.getX();
-      paramMotionEvent.getY();
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        return true;
-      case 0: 
-        if ((this.jdField_a_of_type_Acha != null) && (!this.jdField_a_of_type_Acha.a())) {
-          this.jdField_a_of_type_Acha.a();
+    }
+    if (this.h == null) {
+      this.h = VelocityTracker.obtain();
+    }
+    this.h.addMovement(paramMotionEvent);
+    float f1 = paramMotionEvent.getX();
+    paramMotionEvent.getY();
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
+    {
+      if (i1 != 1) {
+        if (i1 != 2)
+        {
+          if (i1 != 3) {
+            return true;
+          }
         }
-        this.jdField_c_of_type_Float = f;
-        this.jdField_a_of_type_Boolean = false;
-        this.e = getScrollX();
-        return true;
-      case 2: 
-        scrollBy((int)(this.jdField_c_of_type_Float - f), 0);
-        this.jdField_c_of_type_Float = f;
-        this.jdField_a_of_type_Boolean = false;
-        l = System.currentTimeMillis();
+        else
+        {
+          scrollBy((int)(this.i - f1), 0);
+          this.i = f1;
+          this.j = false;
+          long l1 = System.currentTimeMillis();
+          paramMotionEvent = this.l;
+          if ((paramMotionEvent == null) || (l1 - this.k <= 50L)) {
+            break label522;
+          }
+          this.k = l1;
+          paramMotionEvent.removeMessages(65539);
+          i1 = this.a - getWidth();
+          if (getScrollX() <= i1) {
+            i1 = getScrollX();
+          }
+          if (i1 <= 0) {
+            i1 = 0;
+          }
+          paramMotionEvent = this.l.obtainMessage(65539, i1, this.b);
+          this.l.sendMessage(paramMotionEvent);
+          return true;
+        }
       }
-    } while ((this.jdField_a_of_type_MqqOsMqqHandler == null) || (l - this.jdField_a_of_type_Long <= 50L));
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(65539);
-    int i = this.jdField_a_of_type_Int - getWidth();
-    if (getScrollX() > i) {}
-    for (;;)
-    {
-      if (i > 0) {
-        j = i;
-      }
-      paramMotionEvent = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(65539, j, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramMotionEvent);
-      return true;
-      i = getScrollX();
-    }
-    paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
-    paramMotionEvent.computeCurrentVelocity(1000);
-    int k = (int)paramMotionEvent.getXVelocity();
-    boolean bool;
-    if (getChildCount() > 0)
-    {
-      if (Math.abs(k) <= 1000) {
-        break label473;
-      }
-      j = this.jdField_a_of_type_Acha.a(k);
-      i = j;
-      if (k > 0) {
-        i = -j;
-      }
-      i = Math.round((i + getScrollX()) / this.jdField_b_of_type_Int);
-      j = this.jdField_b_of_type_Int;
-      paramMotionEvent = this.jdField_a_of_type_Acha;
-      if (k >= 0) {
-        break label436;
-      }
-      bool = true;
-      i = paramMotionEvent.a(bool, Math.abs(j * i - getScrollX()));
-      if (i >= 0) {
-        break label442;
-      }
-      this.jdField_a_of_type_Acha.a(getScrollX(), getScrollY(), -i, 0, 0, this.jdField_a_of_type_Int - getWidth(), 0, 0);
-      label401:
-      postInvalidate();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+      paramMotionEvent = this.h;
+      paramMotionEvent.computeCurrentVelocity(1000);
+      int i3 = (int)paramMotionEvent.getXVelocity();
+      if (getChildCount() > 0)
       {
-        this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-        this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+        int i2;
+        if (Math.abs(i3) > 1000)
+        {
+          i2 = this.g.a(i3);
+          i1 = i2;
+          if (i3 > 0) {
+            i1 = -i2;
+          }
+          i1 = Math.round((i1 + getScrollX()) / this.b);
+          i2 = this.b;
+          paramMotionEvent = this.g;
+          boolean bool;
+          if (i3 < 0) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          i1 = paramMotionEvent.a(bool, Math.abs(i1 * i2 - getScrollX()));
+          if (i1 < 0) {
+            this.g.a(getScrollX(), getScrollY(), -i1, 0, 0, this.a - getWidth(), 0, 0);
+          } else {
+            this.g.a(getScrollX(), getScrollY(), -i1, 0, 0, this.g.b(), 0, 0);
+          }
+          postInvalidate();
+        }
+        else
+        {
+          i1 = getScrollX();
+          i2 = Math.max(Math.min(Math.round((i1 + 0.1F) / this.b) * this.b, this.a - getWidth()), 0);
+          this.g.a(i1, getScrollY(), i2 - i1, 0);
+          postInvalidate();
+        }
       }
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = true;
+      paramMotionEvent = this.h;
+      if (paramMotionEvent != null)
+      {
+        paramMotionEvent.recycle();
+        this.h = null;
+      }
+      this.c = 0;
+      this.j = true;
       return true;
-      label436:
-      bool = false;
-      break;
-      label442:
-      this.jdField_a_of_type_Acha.a(getScrollX(), getScrollY(), -i, 0, 0, this.jdField_a_of_type_Acha.a(), 0, 0);
-      break label401;
-      label473:
-      i = getScrollX();
-      j = Math.max(Math.min(Math.round((i + 0.1F) / this.jdField_b_of_type_Int) * this.jdField_b_of_type_Int, this.jdField_a_of_type_Int - getWidth()), 0);
-      this.jdField_a_of_type_Acha.a(i, getScrollY(), j - i, 0);
-      postInvalidate();
     }
+    else
+    {
+      paramMotionEvent = this.g;
+      if ((paramMotionEvent != null) && (!paramMotionEvent.a())) {
+        this.g.e();
+      }
+      this.i = f1;
+      this.j = false;
+      this.n = getScrollX();
+    }
+    label522:
+    return true;
   }
   
   public void setCallback(MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.l = paramMqqHandler;
   }
   
   public void setFitWidth(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.a = paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoFitScrollView
  * JD-Core Version:    0.7.0.1
  */

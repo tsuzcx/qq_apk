@@ -9,218 +9,195 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.Binder;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.s.a.a;
-import com.tencent.mm.plugin.s.a.a.a;
-import com.tencent.mm.pluginsdk.c.b;
+import com.tencent.mm.am.s;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bw;
+import com.tencent.mm.model.bw.a;
+import com.tencent.mm.plugin.openapi.a.a;
+import com.tencent.mm.plugin.openapi.a.a.a;
 import com.tencent.mm.pluginsdk.d.a.b;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.e.c;
+import com.tencent.mm.pluginsdk.model.app.u;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 
-@JgClassChecked(author=32, fComment="checked", lastDate="20141016", reviewer=20, vComment={com.jg.EType.PROVIDERCHECK})
 public class ExtContentProviderBase
   extends ContentProvider
 {
-  protected static boolean jLZ;
-  private static HashMap<String, Long> mel;
-  protected MatrixCursor jLW;
-  private long meg;
-  private String meh;
-  public String mei;
-  private String[] mej;
-  private int mek;
+  protected static boolean vsk;
+  private static HashMap<String, Long> zPd;
+  protected MatrixCursor vsh;
+  private long zOY;
+  private String zOZ;
+  public String zPa;
+  private String[] zPb;
+  private int zPc;
   
   static
   {
-    AppMethodBeat.i(20340);
-    jLZ = false;
-    mel = new HashMap();
-    AppMethodBeat.o(20340);
+    AppMethodBeat.i(24419);
+    vsk = false;
+    zPd = new HashMap();
+    AppMethodBeat.o(24419);
   }
   
   public ExtContentProviderBase()
   {
-    AppMethodBeat.i(20326);
-    this.jLW = new MatrixCursor(new String[0]);
-    this.meg = bo.yB();
-    this.mei = "";
-    this.mek = 0;
-    AppMethodBeat.o(20326);
+    AppMethodBeat.i(24405);
+    this.vsh = new MatrixCursor(new String[0]);
+    this.zOY = Util.currentTicks();
+    this.zPa = "";
+    this.zPc = 0;
+    AppMethodBeat.o(24405);
   }
   
-  private int btC()
+  private int dOd()
   {
-    AppMethodBeat.i(20330);
-    int i = (int)bo.av(this.meg);
-    AppMethodBeat.o(20330);
+    AppMethodBeat.i(24409);
+    int i = (int)Util.ticksToNow(this.zOY);
+    AppMethodBeat.o(24409);
     return i;
   }
   
-  private void dP(Context paramContext)
+  private void gi(Context paramContext)
   {
-    AppMethodBeat.i(20339);
+    AppMethodBeat.i(24418);
     if (paramContext == null)
     {
-      ab.w("MicroMsg.ExtContentProviderBase", "in initCallerPkgName(), context == null");
-      AppMethodBeat.o(20339);
+      Log.w("MicroMsg.ExtContentProviderBase", "in initCallerPkgName(), context == null");
+      AppMethodBeat.o(24418);
       return;
     }
-    ab.i("MicroMsg.ExtContentProviderBase", "Binder.getCallingUid() = " + Binder.getCallingUid());
-    this.mej = paramContext.getPackageManager().getPackagesForUid(Binder.getCallingUid());
-    if (this.mej == null) {
-      ab.w("MicroMsg.ExtContentProviderBase", "m_pkgs == null");
+    Log.i("MicroMsg.ExtContentProviderBase", "Binder.getCallingUid() = " + Binder.getCallingUid());
+    this.zPb = paramContext.getPackageManager().getPackagesForUid(Binder.getCallingUid());
+    if (this.zPb == null) {
+      Log.w("MicroMsg.ExtContentProviderBase", "m_pkgs == null");
     }
-    AppMethodBeat.o(20339);
+    AppMethodBeat.o(24418);
   }
   
-  private static String i(Uri paramUri)
+  private static String l(Uri paramUri)
   {
-    AppMethodBeat.i(20336);
+    AppMethodBeat.i(24415);
     if (paramUri == null)
     {
-      AppMethodBeat.o(20336);
+      AppMethodBeat.o(24415);
       return "";
     }
-    paramUri = bo.nullAsNil(paramUri.getQueryParameter("appid"));
-    AppMethodBeat.o(20336);
+    paramUri = Util.nullAsNil(paramUri.getQueryParameter("appid"));
+    AppMethodBeat.o(24415);
     return paramUri;
   }
   
-  protected final void S(int paramInt1, int paramInt2, int paramInt3)
+  protected final void Mm(int paramInt)
   {
-    AppMethodBeat.i(20329);
-    ab.i("MicroMsg.ExtContentProviderBase", "callingPkg = %s, appID = %s, apiID = %s, result = %s, timeCost = %s", new Object[] { btD(), this.mei, Integer.valueOf(this.mek), Integer.valueOf(paramInt2), Integer.valueOf(btC()) });
-    h.qsU.e(10505, new Object[] { btD(), this.mei, Integer.valueOf(this.mek), Integer.valueOf(paramInt2), Integer.valueOf(btC()), Integer.valueOf(paramInt3) });
-    h.qsU.idkeyStat(300L, paramInt1, 1L, false);
-    AppMethodBeat.o(20329);
+    AppMethodBeat.i(24406);
+    Log.i("MicroMsg.ExtContentProviderBase", "callingPkg = %s, appID = %s, apiID = %s, result = %s, timeCost = %s", new Object[] { dOe(), this.zPa, Integer.valueOf(this.zPc), Integer.valueOf(paramInt), Integer.valueOf(dOd()) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(10505, new Object[] { dOe(), this.zPa, Integer.valueOf(this.zPc), Integer.valueOf(paramInt), Integer.valueOf(dOd()) });
+    AppMethodBeat.o(24406);
   }
   
   protected final void a(Uri paramUri, Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(20332);
-    this.mei = i(paramUri);
-    dP(paramContext);
-    this.mek = paramInt;
-    this.meg = bo.yB();
-    AppMethodBeat.o(20332);
+    AppMethodBeat.i(24411);
+    this.zPa = l(paramUri);
+    gi(paramContext);
+    this.zPc = paramInt;
+    this.zOY = Util.currentTicks();
+    AppMethodBeat.o(24411);
   }
   
   protected final void a(Uri paramUri, Context paramContext, int paramInt, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(20333);
-    this.mei = i(paramUri);
+    AppMethodBeat.i(24412);
+    this.zPa = l(paramUri);
     if (paramArrayOfString == null) {
-      dP(paramContext);
+      gi(paramContext);
     }
     for (;;)
     {
-      this.mek = paramInt;
-      this.meg = bo.yB();
-      AppMethodBeat.o(20333);
+      this.zPc = paramInt;
+      this.zOY = Util.currentTicks();
+      AppMethodBeat.o(24412);
       return;
-      this.mej = paramArrayOfString;
+      this.zPb = paramArrayOfString;
     }
   }
   
   protected final void a(Uri paramUri, Context paramContext, UriMatcher paramUriMatcher)
   {
-    AppMethodBeat.i(20331);
-    this.mei = i(paramUri);
-    dP(paramContext);
+    AppMethodBeat.i(24410);
+    this.zPa = l(paramUri);
+    gi(paramContext);
     if (paramUriMatcher != null)
     {
-      this.mek = paramUriMatcher.match(paramUri);
-      if (this.mek < 0) {
-        this.mek = 0;
+      this.zPc = paramUriMatcher.match(paramUri);
+      if (this.zPc < 0) {
+        this.zPc = 0;
       }
     }
-    this.meg = bo.yB();
-    AppMethodBeat.o(20331);
+    this.zOY = Util.currentTicks();
+    AppMethodBeat.o(24410);
   }
   
-  protected final boolean aVH()
+  protected final void au(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(20335);
-    try
-    {
-      ab.i("MicroMsg.ExtContentProviderBase", "checkIsLogin()");
-      if (!jLZ)
-      {
-        b localb = new b();
-        localb.b(4000L, new ExtContentProviderBase.1(this, localb));
-      }
-      if ((aw.RG()) && (aw.aaB()) && (!aw.QP())) {}
-      for (jLZ = true;; jLZ = false)
-      {
-        ab.i("MicroMsg.ExtContentProviderBase", "hasLogin = " + jLZ);
-        boolean bool = jLZ;
-        AppMethodBeat.o(20335);
-        return bool;
-      }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      ab.w("MicroMsg.ExtContentProviderBase", localException.getMessage());
-      ab.printErrStackTrace("MicroMsg.ExtContentProviderBase", localException, "", new Object[0]);
-      AppMethodBeat.o(20335);
-    }
+    AppMethodBeat.i(24408);
+    Log.i("MicroMsg.ExtContentProviderBase", "callingPkg = %s, appID = %s, apiID = %s, result = %s, timeCost = %s", new Object[] { dOe(), this.zPa, Integer.valueOf(this.zPc), Integer.valueOf(paramInt2), Integer.valueOf(dOd()) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(10505, new Object[] { dOe(), this.zPa, Integer.valueOf(this.zPc), Integer.valueOf(paramInt2), Integer.valueOf(dOd()), Integer.valueOf(paramInt3) });
+    com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(300L, paramInt1, 1L, false);
+    AppMethodBeat.o(24408);
   }
   
-  protected final String btD()
+  public final String dOe()
   {
-    AppMethodBeat.i(20334);
-    if (!bo.isNullOrNil(this.meh))
+    AppMethodBeat.i(24413);
+    if (!Util.isNullOrNil(this.zOZ))
     {
-      str = this.meh;
-      AppMethodBeat.o(20334);
+      str = this.zOZ;
+      AppMethodBeat.o(24413);
       return str;
     }
-    if ((this.mej == null) || (this.mej.length <= 0))
+    if ((this.zPb == null) || (this.zPb.length <= 0))
     {
-      AppMethodBeat.o(20334);
+      AppMethodBeat.o(24413);
       return "";
     }
-    String str = this.mej[0];
-    AppMethodBeat.o(20334);
+    String str = this.zPb[0];
+    AppMethodBeat.o(24413);
     return str;
   }
   
-  protected final int btE()
+  protected final int dOf()
   {
-    AppMethodBeat.i(20338);
-    if (bo.isNullOrNil(this.mei))
+    AppMethodBeat.i(24417);
+    if (Util.isNullOrNil(this.zPa))
     {
-      ab.e("MicroMsg.ExtContentProviderBase", "invalid appid, ignore");
-      AppMethodBeat.o(20338);
+      Log.e("MicroMsg.ExtContentProviderBase", "invalid appid, ignore");
+      AppMethodBeat.o(24417);
       return 7;
     }
-    if ((this.mej == null) || (this.mej.length <= 0))
+    if ((this.zPb == null) || (this.zPb.length <= 0))
     {
-      ab.e("MicroMsg.ExtContentProviderBase", "packageList is null");
-      AppMethodBeat.o(20338);
+      Log.e("MicroMsg.ExtContentProviderBase", "packageList is null");
+      AppMethodBeat.o(24417);
       return 6;
     }
     try
     {
-      localf = g.ca(this.mei, true);
-      if (localf == null)
+      localg = com.tencent.mm.pluginsdk.model.app.h.s(this.zPa, true, false);
+      if (localg == null)
       {
-        ab.w("MicroMsg.ExtContentProviderBase", "app not reg, do nothing");
-        AppMethodBeat.o(20338);
+        Log.w("MicroMsg.ExtContentProviderBase", "app not reg, do nothing");
+        AppMethodBeat.o(24417);
         return 13;
       }
-      if (localf.field_status == 3)
+      if (localg.field_status == 3)
       {
-        ab.e("MicroMsg.ExtContentProviderBase", "app is in blacklist.pkg:%s", new Object[] { localf.field_packageName });
+        Log.e("MicroMsg.ExtContentProviderBase", "app is in blacklist.pkg:%s", new Object[] { localg.field_packageName });
         i = 10;
       }
     }
@@ -231,14 +208,14 @@ public class ExtContentProviderBase
         try
         {
           int j;
-          label254:
-          this.meh = ((String)localObject2);
+          label251:
+          this.zOZ = ((String)localObject2);
           i = 1;
           if (i != 1) {}
         }
         catch (Exception localException2)
         {
-          f localf;
+          com.tencent.mm.pluginsdk.model.app.g localg;
           Object localObject1;
           Object localObject2;
           i = 1;
@@ -246,20 +223,20 @@ public class ExtContentProviderBase
         }
         try
         {
-          localObject2 = (Integer)c.b.vJq.get(Integer.valueOf(this.mek));
+          localObject2 = (Integer)e.c.XNC.get(Integer.valueOf(this.zPc));
           localObject1 = localObject2;
           if (localObject2 == null)
           {
-            ej(5, 16);
-            ab.i("MicroMsg.ExtContentProviderBase", "api flag = null");
+            hf(5, 16);
+            Log.i("MicroMsg.ExtContentProviderBase", "api flag = null");
             localObject1 = Integer.valueOf(64);
           }
-          if (!g.b(localf, ((Integer)localObject1).intValue()))
+          if (!com.tencent.mm.pluginsdk.model.app.h.b(localg, ((Integer)localObject1).intValue()))
           {
             i = 11;
             continue;
           }
-          ab.e("MicroMsg.ExtContentProviderBase", "appInfoFlag not set");
+          Log.e("MicroMsg.ExtContentProviderBase", "appInfoFlag not set");
         }
         catch (Exception localException3)
         {
@@ -267,77 +244,149 @@ public class ExtContentProviderBase
         }
         localException1 = localException1;
         i = 0;
-        ab.e("MicroMsg.ExtContentProviderBase", "Exception in isAppidValid, %s", new Object[] { localException1.getMessage() });
-        ab.printErrStackTrace("MicroMsg.ExtContentProviderBase", localException1, "", new Object[0]);
+        Log.e("MicroMsg.ExtContentProviderBase", "Exception in isAppidValid, %s", new Object[] { localException1.getMessage() });
+        Log.printErrStackTrace("MicroMsg.ExtContentProviderBase", localException1, "", new Object[0]);
       }
     }
     try
     {
-      localObject1 = Long.valueOf(bo.a((Long)mel.get(this.mei), 0L));
-      ab.i("MicroMsg.ExtContentProviderBase", "lastCheckTime = %s, current = %s", new Object[] { localObject1, Long.valueOf(System.currentTimeMillis()) });
+      localObject1 = Long.valueOf(Util.nullAs((Long)zPd.get(this.zPa), 0L));
+      Log.i("MicroMsg.ExtContentProviderBase", "lastCheckTime = %s, current = %s", new Object[] { localObject1, Long.valueOf(System.currentTimeMillis()) });
       if (System.currentTimeMillis() - ((Long)localObject1).longValue() > 3600000L)
       {
-        ab.i("MicroMsg.ExtContentProviderBase", "update appInfo %s", new Object[] { this.mei });
-        a.a.caj().WF(this.mei);
-        mel.put(this.mei, Long.valueOf(System.currentTimeMillis()));
+        Log.i("MicroMsg.ExtContentProviderBase", "update appInfo %s", new Object[] { this.zPa });
+        a.a.gxu().aRb(this.zPa);
+        zPd.put(this.zPa, Long.valueOf(System.currentTimeMillis()));
       }
-      AppMethodBeat.o(20338);
+      AppMethodBeat.o(24417);
       return i;
     }
     catch (Exception localException4)
     {
-      break label400;
+      break label397;
       i = 0;
-      break label316;
+      break label313;
       i += 1;
-      break label254;
+      break label251;
     }
-    localObject1 = this.mej;
+    localObject1 = this.zPb;
     j = localObject1.length;
     i = 0;
     if (i < j)
     {
       localObject2 = localObject1[i];
-      if ((!((String)localObject2).equals(localf.field_packageName)) || (!p.a(ah.getContext(), localf, (String)localObject2, false))) {
-        break label453;
+      if ((!((String)localObject2).equals(localg.field_packageName)) || (!u.a(MMApplicationContext.getContext(), localg, (String)localObject2, false))) {
+        break label450;
       }
-      ab.i("MicroMsg.ExtContentProviderBase", "check app success, calling package name = %s", new Object[] { localObject2 });
+      Log.i("MicroMsg.ExtContentProviderBase", "check app success, calling package name = %s", new Object[] { localObject2 });
     }
   }
   
-  protected final boolean dO(Context paramContext)
+  protected final boolean dak()
   {
-    AppMethodBeat.i(20337);
+    AppMethodBeat.i(24414);
+    try
+    {
+      Log.i("MicroMsg.ExtContentProviderBase", "checkIsLogin()");
+      if (!vsk)
+      {
+        final b localb = new b();
+        localb.c(4000L, new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(24404);
+            try
+            {
+              boolean bool = bh.baz();
+              if (!bool)
+              {
+                AppMethodBeat.o(24404);
+                return;
+              }
+              bh.aZW().a(new bw(new bw.a()
+              {
+                public final void b(com.tencent.mm.network.g paramAnonymous2g)
+                {
+                  AppMethodBeat.i(24403);
+                  Log.i("MicroMsg.ExtContentProviderBase", "checkIsLogin() onSceneEnd()");
+                  ExtContentProviderBase.1.this.vsq.asP();
+                  AppMethodBeat.o(24403);
+                }
+              }), 0);
+              AppMethodBeat.o(24404);
+              return;
+            }
+            catch (Exception localException)
+            {
+              Log.e("MicroMsg.ExtContentProviderBase", "exception in NetSceneLocalProxy");
+              localb.asP();
+              AppMethodBeat.o(24404);
+            }
+          }
+        });
+      }
+      if ((bh.baz()) && (bh.bCA()) && (!bh.aZG())) {}
+      for (vsk = true;; vsk = false)
+      {
+        Log.i("MicroMsg.ExtContentProviderBase", "hasLogin = " + vsk);
+        boolean bool = vsk;
+        AppMethodBeat.o(24414);
+        return bool;
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      Log.w("MicroMsg.ExtContentProviderBase", localException.getMessage());
+      Log.printErrStackTrace("MicroMsg.ExtContentProviderBase", localException, "", new Object[0]);
+      AppMethodBeat.o(24414);
+    }
+  }
+  
+  public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
+  {
+    return 0;
+  }
+  
+  public String getType(Uri paramUri)
+  {
+    return null;
+  }
+  
+  protected final boolean gh(Context paramContext)
+  {
+    AppMethodBeat.i(24416);
     if (paramContext == null)
     {
-      ab.w("MicroMsg.ExtContentProviderBase", "in checkAppId(), context == null");
-      AppMethodBeat.o(20337);
+      Log.w("MicroMsg.ExtContentProviderBase", "in checkAppId(), context == null");
+      AppMethodBeat.o(24416);
       return false;
     }
-    if (bo.isNullOrNil(this.mei))
+    if (Util.isNullOrNil(this.zPa))
     {
-      ab.e("MicroMsg.ExtContentProviderBase", "invalid appid, ignore");
-      AppMethodBeat.o(20337);
+      Log.e("MicroMsg.ExtContentProviderBase", "invalid appid, ignore");
+      AppMethodBeat.o(24416);
       return false;
     }
-    if ((this.mej == null) || (this.mej.length <= 0))
+    if ((this.zPb == null) || (this.zPb.length <= 0))
     {
-      ab.e("MicroMsg.ExtContentProviderBase", "packageList is null");
-      AppMethodBeat.o(20337);
+      Log.e("MicroMsg.ExtContentProviderBase", "packageList is null");
+      AppMethodBeat.o(24416);
       return false;
     }
     try
     {
-      localf = g.ca(this.mei, true);
-      if (localf == null)
+      localg = com.tencent.mm.pluginsdk.model.app.h.s(this.zPa, true, false);
+      if (localg == null)
       {
-        ab.w("MicroMsg.ExtContentProviderBase", "app not reg, do nothing");
-        AppMethodBeat.o(20337);
+        Log.w("MicroMsg.ExtContentProviderBase", "app not reg, do nothing");
+        AppMethodBeat.o(24416);
         return false;
       }
-      if (localf.field_status == 3)
+      if (localg.field_status == 3)
       {
-        ab.e("MicroMsg.ExtContentProviderBase", "app is in blacklist.pkg:%s", new Object[] { localf.field_packageName });
+        Log.e("MicroMsg.ExtContentProviderBase", "app is in blacklist.pkg:%s", new Object[] { localg.field_packageName });
         bool = false;
       }
     }
@@ -348,31 +397,31 @@ public class ExtContentProviderBase
         try
         {
           int j;
-          label272:
-          this.meh = ((String)localObject);
+          label269:
+          this.zOZ = ((String)localObject);
           bool = true;
           if (!bool) {}
         }
         catch (Exception paramContext)
         {
-          f localf;
+          com.tencent.mm.pluginsdk.model.app.g localg;
           Object localObject;
           bool = true;
           continue;
         }
         try
         {
-          localObject = (Integer)c.b.vJq.get(Integer.valueOf(this.mek));
+          localObject = (Integer)e.c.XNC.get(Integer.valueOf(this.zPc));
           paramContext = (Context)localObject;
           if (localObject == null) {
             paramContext = Integer.valueOf(64);
           }
-          if (!g.b(localf, paramContext.intValue()))
+          if (!com.tencent.mm.pluginsdk.model.app.h.b(localg, paramContext.intValue()))
           {
             bool = false;
             continue;
           }
-          ab.e("MicroMsg.ExtContentProviderBase", "appInfoFlag not set");
+          Log.e("MicroMsg.ExtContentProviderBase", "appInfoFlag not set");
         }
         catch (Exception paramContext)
         {
@@ -380,60 +429,50 @@ public class ExtContentProviderBase
         }
         paramContext = paramContext;
         bool = false;
-        ab.e("MicroMsg.ExtContentProviderBase", "Exception in isAppidValid, %s", new Object[] { paramContext.getMessage() });
-        ab.printErrStackTrace("MicroMsg.ExtContentProviderBase", paramContext, "", new Object[0]);
+        Log.e("MicroMsg.ExtContentProviderBase", "Exception in isAppidValid, %s", new Object[] { paramContext.getMessage() });
+        Log.printErrStackTrace("MicroMsg.ExtContentProviderBase", paramContext, "", new Object[0]);
       }
     }
     try
     {
-      paramContext = Long.valueOf(bo.a((Long)mel.get(this.mei), 0L));
-      ab.i("MicroMsg.ExtContentProviderBase", "lastCheckTime = %s, current = %s", new Object[] { paramContext, Long.valueOf(System.currentTimeMillis()) });
+      paramContext = Long.valueOf(Util.nullAs((Long)zPd.get(this.zPa), 0L));
+      Log.i("MicroMsg.ExtContentProviderBase", "lastCheckTime = %s, current = %s", new Object[] { paramContext, Long.valueOf(System.currentTimeMillis()) });
       if (System.currentTimeMillis() - paramContext.longValue() > 3600000L)
       {
-        ab.i("MicroMsg.ExtContentProviderBase", "update appInfo %s", new Object[] { this.mei });
-        a.a.caj().WF(this.mei);
-        mel.put(this.mei, Long.valueOf(System.currentTimeMillis()));
+        Log.i("MicroMsg.ExtContentProviderBase", "update appInfo %s", new Object[] { this.zPa });
+        a.a.gxu().aRb(this.zPa);
+        zPd.put(this.zPa, Long.valueOf(System.currentTimeMillis()));
       }
-      AppMethodBeat.o(20337);
+      AppMethodBeat.o(24416);
       return bool;
     }
     catch (Exception paramContext)
     {
-      break label405;
+      break label402;
       bool = false;
-      break label335;
+      break label332;
       i += 1;
-      break label272;
+      break label269;
     }
-    paramContext = this.mej;
+    paramContext = this.zPb;
     j = paramContext.length;
     i = 0;
     if (i < j)
     {
       localObject = paramContext[i];
-      if ((!((String)localObject).equals(localf.field_packageName)) || (!p.a(ah.getContext(), localf, (String)localObject, false))) {
-        break label460;
+      if ((!((String)localObject).equals(localg.field_packageName)) || (!u.a(MMApplicationContext.getContext(), localg, (String)localObject, false))) {
+        break label457;
       }
-      ab.i("MicroMsg.ExtContentProviderBase", "check app success, calling package name = %s", new Object[] { localObject });
+      Log.i("MicroMsg.ExtContentProviderBase", "check app success, calling package name = %s", new Object[] { localObject });
     }
   }
   
-  public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
+  protected final void hf(int paramInt1, int paramInt2)
   {
-    return 0;
-  }
-  
-  protected final void ej(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(20328);
-    ab.i("MicroMsg.ExtContentProviderBase", "callingPkg = %s, appID = %s, apiID = %s, result = %s, timeCost = %s", new Object[] { btD(), this.mei, Integer.valueOf(this.mek), Integer.valueOf(paramInt1), Integer.valueOf(btC()) });
-    h.qsU.e(10505, new Object[] { btD(), this.mei, Integer.valueOf(this.mek), Integer.valueOf(paramInt1), Integer.valueOf(btC()), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(20328);
-  }
-  
-  public String getType(Uri paramUri)
-  {
-    return null;
+    AppMethodBeat.i(24407);
+    Log.i("MicroMsg.ExtContentProviderBase", "callingPkg = %s, appID = %s, apiID = %s, result = %s, timeCost = %s", new Object[] { dOe(), this.zPa, Integer.valueOf(this.zPc), Integer.valueOf(paramInt1), Integer.valueOf(dOd()) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(10505, new Object[] { dOe(), this.zPa, Integer.valueOf(this.zPc), Integer.valueOf(paramInt1), Integer.valueOf(dOd()), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(24407);
   }
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
@@ -455,18 +494,10 @@ public class ExtContentProviderBase
   {
     return 0;
   }
-  
-  protected final void vA(int paramInt)
-  {
-    AppMethodBeat.i(20327);
-    ab.i("MicroMsg.ExtContentProviderBase", "callingPkg = %s, appID = %s, apiID = %s, result = %s, timeCost = %s", new Object[] { btD(), this.mei, Integer.valueOf(this.mek), Integer.valueOf(paramInt), Integer.valueOf(btC()) });
-    h.qsU.e(10505, new Object[] { btD(), this.mei, Integer.valueOf(this.mek), Integer.valueOf(paramInt), Integer.valueOf(btC()) });
-    AppMethodBeat.o(20327);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.provider.ExtContentProviderBase
  * JD-Core Version:    0.7.0.1
  */

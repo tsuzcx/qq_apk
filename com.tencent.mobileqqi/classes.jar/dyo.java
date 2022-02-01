@@ -1,23 +1,36 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.FrameAnimationActor;
+import com.tencent.mobileqq.activity.aio.item.FrameAnimationActor.Listener;
 
 public class dyo
-  extends BaseBubbleBuilder.ViewHolder
+  implements Runnable
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public ProgressBar b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public dyo(FrameAnimationActor paramFrameAnimationActor) {}
   
-  public dyo(FileItemBuilder paramFileItemBuilder) {}
+  public void run()
+  {
+    if (this.a.jdField_a_of_type_AndroidViewView == null) {}
+    do
+    {
+      return;
+      if ((this.a.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.a();
+      }
+      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_ArrayOfInt.length) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.a.jdField_a_of_type_ArrayOfInt[this.a.b]);
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.b();
+    return;
+    this.a.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.a.jdField_a_of_type_ArrayOfInt[this.a.jdField_a_of_type_Int]);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFrameAnimationActor$Listener.a(this.a.jdField_a_of_type_Int);
+    }
+    this.a.jdField_a_of_type_AndroidViewView.postDelayed(FrameAnimationActor.a(this.a), this.a.c);
+    FrameAnimationActor localFrameAnimationActor = this.a;
+    localFrameAnimationActor.jdField_a_of_type_Int += 1;
+  }
 }
 
 

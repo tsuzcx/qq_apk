@@ -13,29 +13,26 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
-import axrd;
-import axre;
-import axrf;
 
 public class CircleBarView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private axrd jdField_a_of_type_Axrd;
-  private axre jdField_a_of_type_Axre;
-  private axrf jdField_a_of_type_Axrf;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float d;
+  private Paint a;
+  private Paint b;
+  private RectF c;
+  private CircleBarView.ProgressAnim d;
   private float e;
   private float f;
+  private int g;
+  private int h;
+  private float i;
+  private float j;
+  private float k;
+  private int l;
+  private float m;
+  private TextView n;
+  private CircleBarView.OnAnimationListener o;
+  private CircleBarView.CircleAnim p;
   
   public CircleBarView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -45,73 +42,63 @@ public class CircleBarView
   
   private int a(int paramInt1, int paramInt2)
   {
-    int j = View.MeasureSpec.getMode(paramInt2);
-    int i = View.MeasureSpec.getSize(paramInt2);
-    if (j == 1073741824) {
-      paramInt2 = i;
+    int i1 = View.MeasureSpec.getMode(paramInt2);
+    int i2 = View.MeasureSpec.getSize(paramInt2);
+    if (i1 == 1073741824) {
+      return i2;
     }
-    do
-    {
-      return paramInt2;
-      paramInt2 = paramInt1;
-    } while (j != -2147483648);
-    return Math.min(paramInt1, i);
+    paramInt2 = paramInt1;
+    if (i1 == -2147483648) {
+      paramInt2 = Math.min(paramInt1, i2);
+    }
+    return paramInt2;
   }
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_Int = -16711936;
-    this.jdField_b_of_type_Int = -7829368;
-    this.jdField_c_of_type_Float = -90.0F;
-    this.d = 360.0F;
-    this.e = a(paramContext, 4.0F);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 100.0F;
-    this.jdField_c_of_type_Int = a(paramContext, 100.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Axrf = new axrf(this);
+    this.g = -16711936;
+    this.h = -7829368;
+    this.i = -90.0F;
+    this.j = 360.0F;
+    this.k = a(paramContext, 4.0F);
+    this.e = 0.0F;
+    this.f = 100.0F;
+    this.l = a(paramContext, 100.0F);
+    this.c = new RectF();
+    this.b = new Paint();
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setColor(this.g);
+    this.b.setAntiAlias(true);
+    this.b.setStrokeWidth(this.k);
+    this.b.setStrokeCap(Paint.Cap.ROUND);
+    this.a = new Paint();
+    this.a.setStyle(Paint.Style.STROKE);
+    this.a.setColor(this.h);
+    this.a.setAntiAlias(true);
+    this.a.setStrokeWidth(this.k);
+    this.a.setStrokeCap(Paint.Cap.ROUND);
+    this.d = new CircleBarView.ProgressAnim(this);
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Axrd != null) && (this.jdField_a_of_type_Axrd.hasStarted())) {
-      this.jdField_a_of_type_Axrd.cancel();
+    CircleBarView.CircleAnim localCircleAnim = this.p;
+    if ((localCircleAnim != null) && (localCircleAnim.hasStarted())) {
+      this.p.cancel();
     }
     clearAnimation();
   }
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Axrd = new axrd(this);
-    this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_Axrd.setDuration(paramInt);
-    this.jdField_a_of_type_Axrd.setRepeatCount(-1);
-    this.jdField_a_of_type_Axrd.setInterpolator(new LinearInterpolator());
-    startAnimation(this.jdField_a_of_type_Axrd);
-  }
-  
   public boolean a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint.getColor() != paramInt)
+    if (this.a.getColor() != paramInt)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+      this.a.setColor(paramInt);
       invalidate();
       return true;
     }
@@ -120,51 +107,63 @@ public class CircleBarView
   
   public boolean b(int paramInt)
   {
-    if (this.jdField_b_of_type_AndroidGraphicsPaint.getColor() != paramInt)
+    if (this.b.getColor() != paramInt)
     {
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramInt);
+      this.b.setColor(paramInt);
       invalidate();
       return true;
     }
     return false;
   }
   
+  public void c(int paramInt)
+  {
+    this.p = new CircleBarView.CircleAnim(this);
+    this.e = 100.0F;
+    this.p.setDuration(paramInt);
+    this.p.setRepeatCount(-1);
+    this.p.setInterpolator(new LinearInterpolator());
+    startAnimation(this.p);
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Float, this.d, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Float, this.f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawArc(this.c, this.i, this.j, false, this.a);
+    paramCanvas.drawArc(this.c, this.i, this.m, false, this.b);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    paramInt2 = a(this.jdField_c_of_type_Int, paramInt2);
-    paramInt1 = Math.min(a(this.jdField_c_of_type_Int, paramInt1), paramInt2);
+    paramInt2 = a(this.l, paramInt2);
+    paramInt1 = Math.min(a(this.l, paramInt1), paramInt2);
     setMeasuredDimension(paramInt1, paramInt1);
-    if (paramInt1 >= this.e * 2.0F) {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.e / 2.0F, this.e / 2.0F, paramInt1 - this.e / 2.0F, paramInt1 - this.e / 2.0F);
+    float f1 = paramInt1;
+    float f2 = this.k;
+    if (f1 >= f2 * 2.0F) {
+      this.c.set(f2 / 2.0F, f2 / 2.0F, f1 - f2 / 2.0F, f1 - f2 / 2.0F);
     }
   }
   
   public void setMaxNum(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
+    this.f = paramFloat;
   }
   
-  public void setOnAnimationListener(axre paramaxre)
+  public void setOnAnimationListener(CircleBarView.OnAnimationListener paramOnAnimationListener)
   {
-    this.jdField_a_of_type_Axre = paramaxre;
+    this.o = paramOnAnimationListener;
   }
   
   public void setTextView(TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.n = paramTextView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CircleBarView
  * JD-Core Version:    0.7.0.1
  */

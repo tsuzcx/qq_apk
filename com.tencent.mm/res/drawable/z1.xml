@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <rotate android:drawable="@drawable/bkh" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/cp" />
+            <gradient android:startColor="#ffefb600" android:endColor="#fffad961" android:angle="0.0" />
+        </shape>
     </item>
-</layer-list>
+</selector>

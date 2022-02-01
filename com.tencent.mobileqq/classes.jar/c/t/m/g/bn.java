@@ -22,14 +22,18 @@ public final class bn
       {
         localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
       }
-      catch (Exception localException) {}
+      catch (Exception localException)
+      {
+        label65:
+        break label65;
+      }
     }
     return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.bn
  * JD-Core Version:    0.7.0.1
  */

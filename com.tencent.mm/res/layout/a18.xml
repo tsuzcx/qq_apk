@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/q1"
+<RelativeLayout android:layout_width="@dimen/a43" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/byb" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginRight="@dimen/l5" android:text="@string/byc" style="@style/nw" />
-</FrameLayout>
+    <View android:background="@drawable/emoji_capture_sticker_bg" android:layout_width="@dimen/a43" android:layout_height="@dimen/a43" />
+    <ImageView android:id="@id/ceo" android:padding="@dimen/cp" android:layout_width="@dimen/a43" android:layout_height="@dimen/a43" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m3" android:textColor="?a56" android:gravity="center_horizontal" android:id="@id/cep" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/c58" android:maxLines="2" android:layout_below="@id/ceo" android:layout_centerHorizontal="true" />
+</RelativeLayout>

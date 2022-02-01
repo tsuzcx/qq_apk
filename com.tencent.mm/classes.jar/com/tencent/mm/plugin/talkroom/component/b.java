@@ -5,9 +5,7 @@ import android.os.IInterface;
 public abstract interface b
   extends IInterface
 {
-  public abstract void keep_OnError(int paramInt);
-  
-  public abstract void keep_OnOpenSuccess();
+  public abstract void P(int paramInt1, int paramInt2, boolean paramBoolean);
 }
 
 

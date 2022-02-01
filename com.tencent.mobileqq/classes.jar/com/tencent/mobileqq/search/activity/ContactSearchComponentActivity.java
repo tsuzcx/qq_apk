@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.search.activity;
 
-import alof;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import ayja;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.search.base.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.business.contact.fragment.ContactSearchFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class ContactSearchComponentActivity
@@ -25,14 +27,14 @@ public class ContactSearchComponentActivity
   public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1500L)
+    if (l - a < 1500L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ContactSearchComponentActivity", 2, "ContactSearchComponentActivity launch failed! Too frequently.");
       }
       return;
     }
-    jdField_a_of_type_Long = l;
+    a = l;
     Intent localIntent = new Intent(paramActivity, ContactSearchComponentActivity.class);
     localIntent.putExtra("keyword", paramString);
     localIntent.putExtra("fromType", paramInt1);
@@ -47,14 +49,14 @@ public class ContactSearchComponentActivity
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 1500L)
+    if (l - a < 1500L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ContactSearchComponentActivity", 2, "ContactSearchComponentActivity launch failed! Too frequently.");
       }
       return;
     }
-    jdField_a_of_type_Long = l;
+    a = l;
     Intent localIntent = new Intent(paramActivity, ContactSearchComponentActivity.class);
     localIntent.putExtra("keyword", paramString1);
     localIntent.putExtra("fromType", paramInt1);
@@ -67,25 +69,33 @@ public class ContactSearchComponentActivity
     paramActivity.overridePendingTransition(0, 0);
   }
   
-  protected BaseSearchFragment a()
+  protected BaseSearchFragment c()
   {
     int i = getIntent().getIntExtra("fromType", -1);
-    int j = getIntent().getIntExtra("contactSearchSource", 197437);
+    int j = getIntent().getIntExtra("contactSearchSource", 33751869);
     String str = getIntent().getStringExtra("specifiedTroopUin");
     ArrayList localArrayList = new ArrayList();
-    if ((i == 7) || (i == 6) || (i == 23))
-    {
-      localArrayList.add(alof.aC);
-      return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
+    if ((i != 7) && (i != 6) && (i != 23)) {
+      return super.c();
     }
-    return super.a();
+    localArrayList.add(AppConstants.BABY_Q_UIN);
+    return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131376251).setOnTouchListener(new ayja(this));
+    this.g.setVisibility(8);
+    findViewById(2131445417).setOnTouchListener(new ContactSearchComponentActivity.1(this));
     return true;
   }
   
@@ -94,10 +104,17 @@ public class ContactSearchComponentActivity
     super.finish();
     overridePendingTransition(0, 0);
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchComponentActivity
  * JD-Core Version:    0.7.0.1
  */

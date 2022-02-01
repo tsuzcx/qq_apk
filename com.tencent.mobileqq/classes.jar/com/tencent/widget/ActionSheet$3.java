@@ -1,27 +1,58 @@
 package com.tencent.widget;
 
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
-import bhuf;
-import bhuh;
+import android.os.Handler;
+import android.util.Pair;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ActionSheet$3
-  implements Runnable
+class ActionSheet$3
+  implements URLDrawable.URLDrawableListener
 {
-  public ActionSheet$3(bhuf parambhuf) {}
+  ActionSheet$3(ActionSheet paramActionSheet, TextView paramTextView, Pair paramPair) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    bhuf.a(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, bhuf.a(this.this$0).getHeight()));
-    bhuf.a(this.this$0).setDuration(200L);
-    bhuf.a(this.this$0).setFillAfter(true);
-    bhuf.a(this.this$0).startAnimation(bhuf.a(this.this$0));
-    bhuf.a(this.this$0).setAnimationListener(new bhuh(this));
+    QLog.i("ActionSheet", 1, "onLoadCanceled");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.i("ActionSheet", 1, "onLoadFialed ", paramThrowable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadProgressed ");
+    paramURLDrawable.append(paramInt);
+    QLog.i("ActionSheet", 1, paramURLDrawable.toString());
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLoadSuccessed ");
+      localStringBuilder.append(paramURLDrawable);
+      QLog.i("ActionSheet", 1, localStringBuilder.toString());
+      if (paramURLDrawable != null)
+      {
+        ActionSheet.access$000(this.this$0).post(new ActionSheet.3.1(this, paramURLDrawable));
+        return;
+      }
+    }
+    catch (Exception paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.3
  * JD-Core Version:    0.7.0.1
  */

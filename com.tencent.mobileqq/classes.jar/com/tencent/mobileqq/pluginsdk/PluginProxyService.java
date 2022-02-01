@@ -43,40 +43,37 @@ public class PluginProxyService
   private String initPlugin()
   {
     PluginRecoverReceiver.addCarePluginId(this.mPluginID);
-    PackageInfo localPackageInfo = (PackageInfo)PluginStatic.sPackageInfoMap.get(this.mApkFilePath);
-    if (localPackageInfo == null)
-    {
+    Object localObject2 = (PackageInfo)PluginStatic.sPackageInfoMap.get(this.mApkFilePath);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
       try
       {
-        localPackageInfo = ApkFileParser.getPackageInfoWithException(this, this.mApkFilePath, 129);
-        if (localPackageInfo == null) {
+        localObject1 = ApkFileParser.getPackageInfoWithException(this, this.mApkFilePath, 129);
+        if (localObject1 == null) {
           return "Get Package Info Failed!";
         }
+        PluginStatic.sPackageInfoMap.put(this.mApkFilePath, localObject1);
       }
       catch (Throwable localThrowable1)
       {
         throw new PluginUtils.GetPackageInfoFailException("getPackageInfoWithException", localThrowable1);
       }
-      PluginStatic.sPackageInfoMap.put(this.mApkFilePath, localThrowable1);
     }
-    for (;;)
+    localObject2 = PluginStatic.getOrCreateClassLoaderByPath(this, this.mPluginID, this.mApkFilePath, true);
+    Class localClass = ((ClassLoader)localObject2).loadClass(this.mLaunchService);
+    try
     {
-      ClassLoader localClassLoader = PluginStatic.getOrCreateClassLoaderByPath(this, this.mPluginID, this.mApkFilePath);
-      Class localClass = localClassLoader.loadClass(this.mLaunchService);
-      try
-      {
-        this.mPluginService = ((IPluginService)localClass.newInstance());
-        this.mPluginService.IInit(this.mPluginName, this.mPluginID, this.mApkFilePath, this, localClassLoader, localThrowable1, this.mPluginResoucesType);
-        return null;
-      }
-      catch (Throwable localThrowable2)
-      {
-        if (DebugHelper.sDebug) {
-          DebugHelper.log("plugin_tag", "PluginProxyService initPlugin ", localThrowable2);
-        }
-        return "new PluginService failed!";
+      this.mPluginService = ((IPluginService)localClass.newInstance());
+      this.mPluginService.IInit(this.mPluginName, this.mPluginID, this.mApkFilePath, this, (ClassLoader)localObject2, localThrowable1, this.mPluginResoucesType);
+      return null;
+    }
+    catch (Throwable localThrowable2)
+    {
+      if (DebugHelper.sDebug) {
+        DebugHelper.log("plugin_tag", "PluginProxyService initPlugin ", localThrowable2);
       }
     }
+    return "new PluginService failed!";
   }
   
   public static void openService(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, Intent paramIntent)
@@ -98,20 +95,30 @@ public class PluginProxyService
   
   public IBinder onBind(Intent paramIntent)
   {
-    IBinder localIBinder = null;
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginProxyService.onBind PluginService:" + this.mPluginService);
+    if (DebugHelper.sDebug)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PluginProxyService.onBind PluginService:");
+      ((StringBuilder)localObject).append(this.mPluginService);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject).toString());
     }
     if (this.mPluginService == null) {
       startPluginIfNeccessary(paramIntent);
     }
-    if (this.mPluginService != null) {
-      localIBinder = this.mPluginService.IOnBind(paramIntent);
+    Object localObject = this.mPluginService;
+    if (localObject != null) {
+      paramIntent = ((IPluginService)localObject).IOnBind(paramIntent);
+    } else {
+      paramIntent = null;
     }
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginProxyService.onBind IBinder:" + localIBinder);
+    if (DebugHelper.sDebug)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PluginProxyService.onBind IBinder:");
+      ((StringBuilder)localObject).append(paramIntent);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject).toString());
     }
-    return localIBinder;
+    return paramIntent;
   }
   
   public void onCreate()
@@ -129,9 +136,10 @@ public class PluginProxyService
     if (DebugHelper.sDebug) {
       DebugHelper.log("plugin_tag", "PluginProxyService.onDestroy");
     }
-    if (this.mPluginService != null)
+    IPluginService localIPluginService = this.mPluginService;
+    if (localIPluginService != null)
     {
-      this.mPluginService.IOnDestroy();
+      localIPluginService.IOnDestroy();
       this.mPluginService = null;
     }
   }
@@ -139,11 +147,20 @@ public class PluginProxyService
   public void onStart(Intent paramIntent, int paramInt)
   {
     super.onStart(paramIntent, paramInt);
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginProxyService.onStart Intent:" + paramIntent);
+    Object localObject;
+    if (DebugHelper.sDebug)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PluginProxyService.onStart Intent:");
+      ((StringBuilder)localObject).append(paramIntent);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject).toString());
     }
-    if ((startPluginIfNeccessary(paramIntent)) && (this.mPluginService != null)) {
-      this.mPluginService.IOnStart(paramIntent, paramInt);
+    if (startPluginIfNeccessary(paramIntent))
+    {
+      localObject = this.mPluginService;
+      if (localObject != null) {
+        ((IPluginService)localObject).IOnStart(paramIntent, paramInt);
+      }
     }
   }
   
@@ -151,15 +168,21 @@ public class PluginProxyService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     int j = super.onStartCommand(paramIntent, paramInt1, paramInt2);
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginProxyService.onStartCommand Intent:" + paramIntent);
+    Object localObject;
+    if (DebugHelper.sDebug)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PluginProxyService.onStartCommand Intent:");
+      ((StringBuilder)localObject).append(paramIntent);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject).toString());
     }
     int i = j;
     if (startPluginIfNeccessary(paramIntent))
     {
+      localObject = this.mPluginService;
       i = j;
-      if (this.mPluginService != null) {
-        i = this.mPluginService.IOnStartCommand(paramIntent, paramInt1, paramInt2);
+      if (localObject != null) {
+        i = ((IPluginService)localObject).IOnStartCommand(paramIntent, paramInt1, paramInt2);
       }
     }
     return i;
@@ -168,45 +191,68 @@ public class PluginProxyService
   public boolean onUnbind(Intent paramIntent)
   {
     boolean bool = super.onUnbind(paramIntent);
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginProxyService.onUnbind Intent:" + paramIntent);
+    if (DebugHelper.sDebug)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PluginProxyService.onUnbind Intent:");
+      ((StringBuilder)localObject).append(paramIntent);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject).toString());
     }
-    if (this.mPluginService != null) {
-      bool = this.mPluginService.IOnUnbind(paramIntent);
+    Object localObject = this.mPluginService;
+    if (localObject != null) {
+      bool = ((IPluginService)localObject).IOnUnbind(paramIntent);
     }
     return bool;
   }
   
   protected boolean startPluginIfNeccessary(Intent paramIntent)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginProxyService.startPluginIfNeccessary Intent:" + paramIntent);
+    Object localObject1;
+    if (DebugHelper.sDebug)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("PluginProxyService.startPluginIfNeccessary Intent:");
+      ((StringBuilder)localObject1).append(paramIntent);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject1).toString());
     }
-    if ((paramIntent == null) || (!PluginStatic.isValidPluginIntent(paramIntent.getExtras()))) {
-      return false;
-    }
-    String str3 = paramIntent.getStringExtra("pluginsdk_pluginName");
-    String str4 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    String str5 = paramIntent.getStringExtra("pluginsdk_launchService");
-    this.mPluginResoucesType = paramIntent.getIntExtra("userQqResources", 0);
-    String str2 = paramIntent.getStringExtra("pluginsdk_pluginpath");
-    Object localObject = paramIntent.getStringExtra("pluginsdk_selfuin");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      IPluginAdapterProxy.getProxy().currentUin = ((String)localObject);
-    }
-    localObject = str2;
-    if (TextUtils.isEmpty(str2)) {
-      localObject = PluginUtils.getInstalledPluginPath(this, str4);
+    String str1;
+    String str2;
+    String str3;
+    Object localObject3;
+    if (paramIntent != null)
+    {
+      if (!PluginStatic.isValidPluginIntent(paramIntent.getExtras())) {
+        return false;
+      }
+      str1 = paramIntent.getStringExtra("pluginsdk_pluginName");
+      str2 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
+      str3 = paramIntent.getStringExtra("pluginsdk_launchService");
+      this.mPluginResoucesType = paramIntent.getIntExtra("userQqResources", 0);
+      localObject3 = paramIntent.getStringExtra("pluginsdk_pluginpath");
+      localObject1 = paramIntent.getStringExtra("pluginsdk_selfuin");
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        IPluginAdapterProxy.getProxy().currentUin = ((String)localObject1);
+      }
+      localObject1 = localObject3;
+      if (TextUtils.isEmpty((CharSequence)localObject3)) {
+        localObject1 = PluginUtils.getInstalledPluginPath(this, str2);
+      }
     }
     try
     {
-      localObject = ((File)localObject).getCanonicalPath();
-      if (DebugHelper.sDebug) {
-        DebugHelper.log("plugin_tag", "PluginProxyService.startPluginIfNeccessary Params:" + str4 + ", " + str5);
+      localObject1 = ((File)localObject1).getCanonicalPath();
+      if (DebugHelper.sDebug)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("PluginProxyService.startPluginIfNeccessary Params:");
+        ((StringBuilder)localObject3).append(str2);
+        ((StringBuilder)localObject3).append(", ");
+        ((StringBuilder)localObject3).append(str3);
+        DebugHelper.log("plugin_tag", ((StringBuilder)localObject3).toString());
       }
       if (this.mPluginService != null)
       {
-        if ((this.mPluginID.equals(str4)) && (this.mPluginName.equals(str3)) && (this.mLaunchService.equals(str5)))
+        if ((this.mPluginID.equals(str2)) && (this.mPluginName.equals(str1)) && (this.mLaunchService.equals(str3)))
         {
           if (DebugHelper.sDebug) {
             DebugHelper.log("plugin_tag", "PluginProxyService.startPluginIfNeccessary: already init the same service");
@@ -218,59 +264,65 @@ public class PluginProxyService
         }
         return false;
       }
-      this.mPluginID = str4;
-      this.mApkFilePath = ((String)localObject);
-      this.mPluginName = str3;
-      this.mLaunchService = str5;
-      localObject = PluginStatic.getClassLoader(this.mPluginID);
-      if (localObject != null) {
-        paramIntent.setExtrasClassLoader((ClassLoader)localObject);
+      this.mPluginID = str2;
+      this.mApkFilePath = ((String)localObject1);
+      this.mPluginName = str1;
+      this.mLaunchService = str3;
+      localObject1 = PluginStatic.getClassLoader(this.mPluginID);
+      if (localObject1 != null) {
+        paramIntent.setExtrasClassLoader((ClassLoader)localObject1);
       }
-      if ((this.mPluginID == null) || (this.mPluginID.length() == 0)) {
-        localObject = "Param mPluingLocation missing!";
-      }
-      for (;;)
+      localObject1 = this.mPluginID;
+      if ((localObject1 != null) && (((String)localObject1).length() != 0))
       {
-        if (DebugHelper.sDebug) {
-          DebugHelper.log("plugin_tag", "PluginProxyService.startPluginIfNeccessary ErrorInfo: " + (String)localObject);
-        }
-        return true;
-        localObject = new File(this.mApkFilePath);
-        if ((!((File)localObject).exists()) && (!((File)localObject).isFile())) {
-          localObject = "Plugin File Not Found!";
+        localObject1 = new File(this.mApkFilePath);
+        if ((!((File)localObject1).exists()) && (!((File)localObject1).isFile())) {
+          paramIntent = "Plugin File Not Found!";
         } else {
           try
           {
-            str2 = initPlugin();
-            localObject = str2;
-            if (str2 == null)
+            localObject1 = initPlugin();
+            if (localObject1 == null)
             {
               PluginProxyActivity.uploadLaunchInfoWhenCreateClassLoader(this.mLaunchService, paramIntent);
               this.mPluginService.IOnCreate();
-              localObject = str2;
             }
+            paramIntent = (Intent)localObject1;
           }
           catch (Exception paramIntent)
           {
             paramIntent.printStackTrace();
-            localObject = PluginUtils.getExceptionInfo(paramIntent);
+            paramIntent = PluginUtils.getExceptionInfo(paramIntent);
             stopSelf();
           }
         }
       }
+      else
+      {
+        paramIntent = "Param mPluingLocation missing!";
+      }
+      if (DebugHelper.sDebug)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("PluginProxyService.startPluginIfNeccessary ErrorInfo: ");
+        ((StringBuilder)localObject1).append(paramIntent);
+        DebugHelper.log("plugin_tag", ((StringBuilder)localObject1).toString());
+      }
+      return true;
+      return false;
     }
     catch (IOException localIOException)
     {
       for (;;)
       {
-        String str1 = str2;
+        Object localObject2 = localObject3;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginProxyService
  * JD-Core Version:    0.7.0.1
  */

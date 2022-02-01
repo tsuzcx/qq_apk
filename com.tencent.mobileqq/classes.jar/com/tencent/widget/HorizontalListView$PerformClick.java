@@ -2,13 +2,12 @@ package com.tencent.widget;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import bhxv;
 
 class HorizontalListView$PerformClick
-  extends bhxv
+  extends HorizontalListView.WindowRunnnable
   implements Runnable
 {
-  int a;
+  int mClickMotionPosition;
   
   private HorizontalListView$PerformClick(HorizontalListView paramHorizontalListView)
   {
@@ -17,30 +16,29 @@ class HorizontalListView$PerformClick
   
   public void run()
   {
-    if (this.this$0.needTtransTouchStateToParen()) {}
-    ListAdapter localListAdapter;
-    int i;
-    View localView;
-    do
+    if (this.this$0.needTtransTouchStateToParen())
     {
-      do
-      {
-        ((View)this.this$0.getParent()).performClick();
-        do
-        {
-          return;
-        } while (this.this$0.mDataChanged);
-        localListAdapter = this.this$0.mAdapter;
-        i = this.a;
-      } while ((localListAdapter == null) || (i == -1) || (i >= localListAdapter.getCount()) || (!a()));
-      localView = this.this$0.getChildAt(i - this.this$0.getFirstVisiblePosition());
-    } while (localView == null);
-    this.this$0.performItemClick(localView, i, localListAdapter.getItemId(i));
+      ((View)this.this$0.getParent()).performClick();
+      return;
+    }
+    if (this.this$0.mDataChanged) {
+      return;
+    }
+    ListAdapter localListAdapter = this.this$0.mAdapter;
+    int i = this.mClickMotionPosition;
+    if ((localListAdapter != null) && (i != -1) && (i < localListAdapter.getCount()) && (sameWindow()))
+    {
+      Object localObject = this.this$0;
+      localObject = ((HorizontalListView)localObject).getChildAt(i - ((HorizontalListView)localObject).getFirstVisiblePosition());
+      if (localObject != null) {
+        this.this$0.performItemClick((View)localObject, i, localListAdapter.getItemId(i));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.PerformClick
  * JD-Core Version:    0.7.0.1
  */

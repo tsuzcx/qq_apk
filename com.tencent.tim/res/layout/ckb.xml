@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/mr2" android:visibility="gone" style="@style/aeu" />
+    <com.tencent.qqmail.view.keeppressed.KeepPressedRelativeLayout android:id="@id/dq8" android:background="@drawable/e_x" android:paddingLeft="@dimen/bp2" android:paddingTop="@dimen/bi7" android:paddingRight="30.0dip" android:paddingBottom="@dimen/bi7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <CheckBox android:id="@id/mq8" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_marginRight="@dimen/bi1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/ahv" />
+        <com.tencent.qqmail.view.QMAvatarView android:id="@id/mr1" android:layout_marginRight="@dimen/bhz" android:layout_toRightOf="@id/mq8" android:layout_alignParentLeft="true" android:layout_centerVertical="true" qm:avatar_view_type="evy" style="@style/a_v" />
+        <TextView android:textSize="@dimen/bi4" android:textColor="@color/atu" android:id="@id/mr5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x05" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/mrl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/mr5" android:layout_toRightOf="@id/mr1" android:layout_alignParentTop="true">
+            <TextView android:textSize="@dimen/bi4" android:textColor="@color/atq" android:ellipsize="end" android:id="@id/mr4" android:paddingRight="@dimen/bi5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/mr6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:src="@drawable/grg" android:layout_alignRight="@id/mr4" android:layout_centerVertical="true" android:contentDescription="@null" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/bi2" android:textColor="@color/atu" android:ellipsize="end" android:id="@id/mr3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bi3" android:singleLine="true" android:layout_toLeftOf="@id/mr5" android:layout_toRightOf="@id/mr1" android:layout_below="@id/mrl" />
+    </com.tencent.qqmail.view.keeppressed.KeepPressedRelativeLayout>
+</LinearLayout>

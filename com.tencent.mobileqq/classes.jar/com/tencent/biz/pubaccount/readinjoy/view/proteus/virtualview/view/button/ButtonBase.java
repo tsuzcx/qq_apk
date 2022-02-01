@@ -51,7 +51,6 @@ public abstract class ButtonBase
   
   private void setClickStatus(JSONArray paramJSONArray)
   {
-    int i = 0;
     if (paramJSONArray == null) {
       return;
     }
@@ -59,6 +58,7 @@ public abstract class ButtonBase
     {
       if (paramJSONArray.length() >= 4)
       {
+        int i = 0;
         JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
         JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
         JSONArray localJSONArray3 = paramJSONArray.getJSONArray(2);
@@ -90,130 +90,154 @@ public abstract class ButtonBase
   
   private void setStatusBackGroundColor(JSONArray paramJSONArray)
   {
-    int i = 0;
     if (paramJSONArray == null) {
       return;
     }
     try
     {
-      if (paramJSONArray.length() >= 2)
-      {
-        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
-        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
-        while (i < localJSONArray2.length())
-        {
-          int j = Integer.valueOf(localJSONArray2.getString(i)).intValue();
-          if (i < localJSONArray1.length())
-          {
-            String str = localJSONArray1.getString(i);
-            getStatus(j).backgroundColor = str;
-          }
-          i += 1;
-        }
+      if (paramJSONArray.length() < 2) {
+        break label120;
       }
-      return;
+      int i = 0;
+      localObject = paramJSONArray.getJSONArray(0);
+      JSONArray localJSONArray = paramJSONArray.getJSONArray(1);
+      while (i < localJSONArray.length())
+      {
+        int j = Integer.valueOf(localJSONArray.getString(i)).intValue();
+        if (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).getString(i);
+          getStatus(j).backgroundColor = str;
+        }
+        i += 1;
+      }
     }
     catch (Exception localException)
     {
-      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramJSONArray);
-      doOnFinish(new ButtonBase.2(this));
+      Object localObject;
+      label85:
+      break label85;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setStatusBackgroud: setStatusBackgroud :");
+    ((StringBuilder)localObject).append(paramJSONArray);
+    Log.e("ButtonBase", ((StringBuilder)localObject).toString());
+    label120:
+    doOnFinish(new ButtonBase.2(this));
   }
   
   private void setStatusBackground(JSONArray paramJSONArray)
   {
-    int i = 0;
     if (paramJSONArray == null) {
       return;
     }
     try
     {
-      if (paramJSONArray.length() >= 2)
-      {
-        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
-        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
-        while (i < localJSONArray2.length())
-        {
-          int j = Integer.valueOf(localJSONArray2.getString(i)).intValue();
-          if (i < localJSONArray1.length())
-          {
-            String str = localJSONArray1.getString(i);
-            getStatus(j).background = str;
-          }
-          i += 1;
-        }
+      if (paramJSONArray.length() < 2) {
+        break label120;
       }
-      return;
+      int i = 0;
+      localObject = paramJSONArray.getJSONArray(0);
+      JSONArray localJSONArray = paramJSONArray.getJSONArray(1);
+      while (i < localJSONArray.length())
+      {
+        int j = Integer.valueOf(localJSONArray.getString(i)).intValue();
+        if (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).getString(i);
+          getStatus(j).background = str;
+        }
+        i += 1;
+      }
     }
     catch (Exception localException)
     {
-      Log.e("ButtonBase", "setStatusBackground: setStatusBackground :" + paramJSONArray);
-      doOnFinish(new ButtonBase.1(this));
+      Object localObject;
+      label85:
+      break label85;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setStatusBackground: setStatusBackground :");
+    ((StringBuilder)localObject).append(paramJSONArray);
+    Log.e("ButtonBase", ((StringBuilder)localObject).toString());
+    label120:
+    doOnFinish(new ButtonBase.1(this));
   }
   
   private void setStatusImage(JSONArray paramJSONArray)
   {
-    int i = 0;
     if (paramJSONArray == null) {
       return;
     }
     try
     {
-      if (paramJSONArray.length() >= 2)
-      {
-        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
-        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
-        while (i < localJSONArray2.length())
-        {
-          int j = Integer.valueOf(localJSONArray2.getString(i)).intValue();
-          if (i < localJSONArray1.length())
-          {
-            String str = localJSONArray1.getString(i);
-            getStatus(j).img = str;
-          }
-          i += 1;
-        }
+      if (paramJSONArray.length() < 2) {
+        break label120;
       }
-      return;
+      int i = 0;
+      localObject = paramJSONArray.getJSONArray(0);
+      JSONArray localJSONArray = paramJSONArray.getJSONArray(1);
+      while (i < localJSONArray.length())
+      {
+        int j = Integer.valueOf(localJSONArray.getString(i)).intValue();
+        if (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).getString(i);
+          getStatus(j).img = str;
+        }
+        i += 1;
+      }
     }
     catch (Exception localException)
     {
-      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramJSONArray);
-      doOnFinish(new ButtonBase.3(this));
+      Object localObject;
+      label85:
+      break label85;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setStatusBackgroud: setStatusBackgroud :");
+    ((StringBuilder)localObject).append(paramJSONArray);
+    Log.e("ButtonBase", ((StringBuilder)localObject).toString());
+    label120:
+    doOnFinish(new ButtonBase.3(this));
   }
   
   private void setStatusTextColor(JSONArray paramJSONArray)
   {
-    int i = 0;
     if (paramJSONArray == null) {
       return;
     }
     try
     {
-      if (paramJSONArray.length() >= 2)
-      {
-        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
-        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
-        while (i < localJSONArray2.length())
-        {
-          int j = Integer.valueOf(localJSONArray2.getString(i)).intValue();
-          if (i < localJSONArray1.length())
-          {
-            String str = localJSONArray1.getString(i);
-            getStatus(j).textColor = str;
-          }
-          i += 1;
-        }
+      if (paramJSONArray.length() < 2) {
+        break label120;
       }
-      return;
+      int i = 0;
+      localObject = paramJSONArray.getJSONArray(0);
+      JSONArray localJSONArray = paramJSONArray.getJSONArray(1);
+      while (i < localJSONArray.length())
+      {
+        int j = Integer.valueOf(localJSONArray.getString(i)).intValue();
+        if (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).getString(i);
+          getStatus(j).textColor = str;
+        }
+        i += 1;
+      }
     }
     catch (Exception localException)
     {
-      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramJSONArray);
-      setTextColorForStates();
+      Object localObject;
+      label85:
+      break label85;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setStatusBackgroud: setStatusBackgroud :");
+    ((StringBuilder)localObject).append(paramJSONArray);
+    Log.e("ButtonBase", ((StringBuilder)localObject).toString());
+    label120:
+    setTextColorForStates();
   }
   
   protected ButtonBase.ClickStatus getStatus(int paramInt)
@@ -236,123 +260,178 @@ public abstract class ButtonBase
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    if (this.mState == 4) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (this.mState == 4) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    setSelected(bool);
+    float f = this.mAlpha;
+    if ((f >= 0.0D) && (f <= 1.001D)) {
+      getNativeView().setAlpha(this.mAlpha);
+    }
+    getNativeView().setEnabled(this.mEnable);
+    Object localObject = this.mRunnableList;
+    if (localObject != null)
     {
-      setSelected(bool);
-      if ((this.mAlpha >= 0.0D) && (this.mAlpha <= 1.001D)) {
-        getNativeView().setAlpha(this.mAlpha);
-      }
-      getNativeView().setEnabled(this.mEnable);
-      if (this.mRunnableList == null) {
-        break;
-      }
-      Iterator localIterator = this.mRunnableList.iterator();
-      while (localIterator.hasNext()) {
-        ((Runnable)localIterator.next()).run();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((Runnable)((Iterator)localObject).next()).run();
       }
     }
   }
   
-  public boolean setAttribute(int paramInt, Object paramObject)
+  protected boolean setAttribute(int paramInt, Object paramObject)
   {
     boolean bool2 = super.setAttribute(paramInt, paramObject);
     boolean bool1 = bool2;
     if (!bool2)
     {
-      bool1 = true;
-      switch (paramInt)
+      bool2 = true;
+      if (paramInt != 39)
       {
-      case 40: 
-      case 41: 
-      case 45: 
-      case 46: 
-      default: 
-        bool1 = false;
+        if (paramInt != 47)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return false;
+          case 44: 
+            bool1 = bool2;
+            if (!(paramObject instanceof JSONArray)) {
+              break;
+            }
+            setStatusTextColor((JSONArray)paramObject);
+            return true;
+          case 43: 
+            bool1 = bool2;
+            if (!(paramObject instanceof JSONArray)) {
+              break;
+            }
+            setStatusImage((JSONArray)paramObject);
+            return true;
+          case 42: 
+            bool1 = bool2;
+            if (!(paramObject instanceof JSONArray)) {
+              break;
+            }
+            setClickStatus((JSONArray)paramObject);
+            return true;
+          }
+        }
+        else
+        {
+          bool1 = bool2;
+          if ((paramObject instanceof JSONArray))
+          {
+            setStatusBackGroundColor((JSONArray)paramObject);
+            return true;
+          }
+        }
+      }
+      else
+      {
+        bool1 = bool2;
+        if ((paramObject instanceof JSONArray))
+        {
+          setStatusBackground((JSONArray)paramObject);
+          bool1 = bool2;
+        }
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-            } while (!(paramObject instanceof JSONArray));
-            setStatusBackground((JSONArray)paramObject);
-            return true;
-          } while (!(paramObject instanceof JSONArray));
-          setClickStatus((JSONArray)paramObject);
-          return true;
-        } while (!(paramObject instanceof JSONArray));
-        setStatusImage((JSONArray)paramObject);
-        return true;
-      } while (!(paramObject instanceof JSONArray));
-      setStatusBackGroundColor((JSONArray)paramObject);
-      return true;
-    } while (!(paramObject instanceof JSONArray));
-    setStatusTextColor((JSONArray)paramObject);
-    return true;
+    return bool1;
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  protected boolean setAttribute(int paramInt, String paramString)
   {
-    boolean bool1 = false;
-    int i = 0;
     boolean bool2 = super.setAttribute(paramInt, paramString);
+    int i = 0;
+    boolean bool3 = false;
+    boolean bool1 = bool2;
     if (!bool2)
     {
-      switch (paramInt)
+      Object localObject;
+      if (paramInt != 13)
       {
-      default: 
-        return false;
-      case 13: 
-        localObject = Utils.toDouble(paramString);
-        if (localObject != null)
+        if (paramInt != 45)
         {
-          this.mCompoundDrawablePadding = Utils.rp2px(((Double)localObject).doubleValue());
-          return true;
+          if (paramInt != 48)
+          {
+            if (paramInt != 49) {
+              return false;
+            }
+            localObject = Utils.toInteger(paramString);
+            if (localObject != null)
+            {
+              bool1 = bool3;
+              if (((Integer)localObject).intValue() == 1) {
+                bool1 = true;
+              }
+              this.mEnable = bool1;
+            }
+            else
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("setAttribute: fail to parse - ");
+              ((StringBuilder)localObject).append(paramInt);
+              ((StringBuilder)localObject).append(": ");
+              ((StringBuilder)localObject).append(paramString);
+              LogUtil.QLog.d("ButtonBase", 2, ((StringBuilder)localObject).toString());
+            }
+          }
+          else
+          {
+            localObject = Utils.toFloat(paramString);
+            if (localObject != null)
+            {
+              this.mAlpha = ((Float)localObject).floatValue();
+            }
+            else
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("setAttribute: fail to parse - ");
+              ((StringBuilder)localObject).append(paramInt);
+              ((StringBuilder)localObject).append(": ");
+              ((StringBuilder)localObject).append(paramString);
+              LogUtil.QLog.d("ButtonBase", 2, ((StringBuilder)localObject).toString());
+            }
+          }
         }
-        LogUtil.QLog.d("ButtonBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-        return true;
-      case 45: 
-        paramString = Utils.toInteger(paramString);
-        if (paramString != null) {}
-        for (paramInt = paramString.intValue();; paramInt = 0)
+        else
         {
+          paramString = Utils.toInteger(paramString);
+          if (paramString != null) {
+            paramInt = paramString.intValue();
+          } else {
+            paramInt = 0;
+          }
           if (paramInt == 1) {
             i = 4;
           }
           this.mState = i;
-          return true;
         }
-      case 48: 
-        localObject = Utils.toFloat(paramString);
+      }
+      else
+      {
+        localObject = Utils.toDouble(paramString);
         if (localObject != null)
         {
-          this.mAlpha = ((Float)localObject).floatValue();
-          return true;
+          this.mCompoundDrawablePadding = Utils.rp2px(((Double)localObject).doubleValue());
         }
-        LogUtil.QLog.d("ButtonBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-        return true;
-      }
-      Object localObject = Utils.toInteger(paramString);
-      if (localObject != null)
-      {
-        if (((Integer)localObject).intValue() == 1) {
-          bool1 = true;
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("setAttribute: fail to parse - ");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append(": ");
+          ((StringBuilder)localObject).append(paramString);
+          LogUtil.QLog.d("ButtonBase", 2, ((StringBuilder)localObject).toString());
         }
-        this.mEnable = bool1;
-        return true;
       }
-      LogUtil.QLog.d("ButtonBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-      return true;
+      bool1 = true;
     }
-    return bool2;
+    return bool1;
   }
   
   protected abstract void setBackgroundColorForStates();
@@ -375,7 +454,7 @@ public abstract class ButtonBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase
  * JD-Core Version:    0.7.0.1
  */

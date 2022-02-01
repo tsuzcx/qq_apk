@@ -1,101 +1,46 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Intent;
 import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.app.CircleObserver;
-import com.tencent.mobileqq.service.circle.IGroupObserver;
-import com.tencent.mobileqq.service.circle.ISwitchObserver;
+import com.tencent.mobileqq.app.CircleServlet;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
 
 public class ezy
-  extends CircleObserver
+  implements INetEngine.INetEngineListener
 {
-  public ezy(CircleManager paramCircleManager) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public void a(boolean paramBoolean, int paramInt)
+  public ezy(CircleServlet paramCircleServlet, Intent paramIntent, byte[] paramArrayOfByte)
   {
-    CircleManager.a(this.a, false);
-    label82:
-    IGroupObserver localIGroupObserver;
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      CircleManager.a(this.a, System.currentTimeMillis());
-      CircleManager.a(this.a).edit().putLong("circle_data_update_stamp", CircleManager.a(this.a)).commit();
-      if (this.a.b == null) {
-        break label177;
-      }
-      Iterator localIterator = this.a.b.iterator();
-      if (!localIterator.hasNext()) {
-        break label177;
-      }
-      localIGroupObserver = (IGroupObserver)localIterator.next();
-      if ((!paramBoolean) || (paramInt != 0)) {
-        break label172;
-      }
-    }
-    label172:
-    for (boolean bool = true;; bool = false)
-    {
-      localIGroupObserver.a(bool, 2);
-      break label82;
-      if ((!paramBoolean) || (paramInt != 67)) {
-        break;
-      }
-      CircleManager.b(this.a);
-      if (CircleManager.b(this.a) >= 1) {
-        break;
-      }
-      CircleManager.c(this.a);
-      CircleManager.c(this.a);
-      break;
-    }
-    label177:
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public void a(NetReq paramNetReq, int paramInt1, int paramInt2) {}
+  
+  public void a(NetResp paramNetResp)
+  {
+    int i = 0;
     if (QLog.isColorLevel()) {
-      QLog.d("CircleManager", 2, "$onGetCircle | cost = " + (System.currentTimeMillis() - CircleManager.b(this.a)) + " | isSuccess = " + paramBoolean + " | errorCode = " + paramInt);
+      QLog.d("CircleManager", 2, "CircleHttpCommnunicatorListener$onResp");
     }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.a(paramBoolean2, false);
-    }
-    for (;;)
+    if ((paramNetResp == null) || (paramNetResp.d != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CircleManager", 2, "$onSetSwitches | isSearchable = " + paramBoolean2);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("CircleHttpCommnunicatorListener$onResp | resp = ").append(paramNetResp).append(" | mResult=");
+        if (paramNetResp != null) {
+          i = paramNetResp.d;
+        }
+        QLog.d("CircleManager", 2, i);
       }
-      if (this.a.a == null) {
-        break;
-      }
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ISwitchObserver)localIterator.next()).a(paramBoolean1, paramBoolean2);
-      }
-      paramBoolean2 = this.a.a(false);
+      CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet, this.jdField_a_of_type_AndroidContentIntent, -10, null, new byte[1]);
+      CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet).a();
+      return;
     }
-  }
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.a(paramBoolean2, false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CircleManager", 2, "$onGetSwitches | isSearchable = " + paramBoolean2);
-      }
-      if (this.a.a == null) {
-        break;
-      }
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ISwitchObserver)localIterator.next()).b(paramBoolean1, paramBoolean2);
-      }
-      paramBoolean2 = this.a.a(false);
-    }
+    CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet, this.jdField_a_of_type_AndroidContentIntent, 0, paramNetResp.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

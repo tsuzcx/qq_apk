@@ -16,7 +16,7 @@ public class BankCardInfo
   
   public BankCardInfo(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(72864);
+    AppMethodBeat.i(40584);
     this.cardNumLen = 0;
     this.cardNum = "";
     this.rectY = new int[20];
@@ -25,7 +25,7 @@ public class BankCardInfo
     this.height = 0;
     this.bitmapLen = 0;
     this.bitmapData = new byte[(int)(0.8D * paramInt1) * (int)(0.52D * paramInt1) * 3 + 54];
-    AppMethodBeat.o(72864);
+    AppMethodBeat.o(40584);
   }
   
   public String getCardNum()
@@ -70,7 +70,7 @@ public class BankCardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.licence.model.BankCardInfo
  * JD-Core Version:    0.7.0.1
  */

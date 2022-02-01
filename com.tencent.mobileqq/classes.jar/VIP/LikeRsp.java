@@ -8,7 +8,7 @@ public final class LikeRsp
   extends JceStruct
 {
   static CommRsp cache_errInfo = new CommRsp();
-  public CommRsp errInfo;
+  public CommRsp errInfo = null;
   
   public LikeRsp() {}
   
@@ -24,14 +24,15 @@ public final class LikeRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.errInfo != null) {
-      paramJceOutputStream.write(this.errInfo, 0);
+    CommRsp localCommRsp = this.errInfo;
+    if (localCommRsp != null) {
+      paramJceOutputStream.write(localCommRsp, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.LikeRsp
  * JD-Core Version:    0.7.0.1
  */

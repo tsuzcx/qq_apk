@@ -1,22 +1,12 @@
 package com.tencent.mm.plugin.facedetect.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bg;
-import com.tencent.mm.sdk.b.c;
-
-public final class m
-  extends c<bg>
+public abstract interface m
 {
-  public m()
-  {
-    AppMethodBeat.i(250);
-    this.__eventId = bg.class.getName().hashCode();
-    AppMethodBeat.o(250);
-  }
+  public abstract void ep(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.m
  * JD-Core Version:    0.7.0.1
  */

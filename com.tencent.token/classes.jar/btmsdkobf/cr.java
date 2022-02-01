@@ -2,6 +2,8 @@ package btmsdkobf;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
 import com.tmsdk.base.utils.NetworkUtil;
 
@@ -20,7 +22,7 @@ public class cr
   private cr()
   {
     this.ik.start();
-    this.mHandler = new ft(this, this.ik.getLooper());
+    this.mHandler = new a(this.ik.getLooper());
     eh.f("NetworkDetector", "[detect_conn]init, register & start detect");
     cz.bS().a(this);
     this.mHandler.sendEmptyMessageDelayed(1, 5000L);
@@ -45,32 +47,60 @@ public class cr
   
   private boolean bt()
   {
-    bool = true;
     eh.f("NetworkDetector", "[detect_conn]detectSync()");
     this.ii = true;
-    Object localObject = null;
+    CharSequence localCharSequence;
     try
     {
-      String str = ef.a(new fs(this));
-      localObject = str;
+      String str = ef.a(new ef.a()
+      {
+        public final void c(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        {
+          eh.f("NetworkDetector", "[detect_conn]detectSync(), network error? ".concat(String.valueOf(paramAnonymousBoolean2)));
+          cr localcr;
+          int i;
+          if (paramAnonymousBoolean2)
+          {
+            localcr = cr.this;
+            i = -3;
+          }
+          for (;;)
+          {
+            cr.a(localcr, i);
+            return;
+            if (paramAnonymousBoolean1)
+            {
+              localcr = cr.this;
+              i = -2;
+            }
+            else
+            {
+              localcr = cr.this;
+              i = 0;
+            }
+          }
+        }
+      });
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        this.ig = -3;
-        eh.h("NetworkDetector", "[detect_conn]detectSync(), exception: " + localThrowable.toString());
-        continue;
-        bool = false;
-      }
+      this.ig = -3;
+      localStringBuilder = new StringBuilder("[detect_conn]detectSync(), exception: ");
+      localStringBuilder.append(localThrowable.toString());
+      eh.h("NetworkDetector", localStringBuilder.toString());
+      localCharSequence = null;
     }
     this.ii = false;
     this.ij = System.currentTimeMillis();
-    if (!TextUtils.isEmpty(localObject))
-    {
-      eh.f("NetworkDetector", "[detect_conn]detectSync(),  isNeed wifi approve? " + bool + " url: " + localObject + " state: " + u(this.ig));
-      return bool;
-    }
+    boolean bool = true ^ TextUtils.isEmpty(localCharSequence);
+    StringBuilder localStringBuilder = new StringBuilder("[detect_conn]detectSync(),  isNeed wifi approve? ");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(" url: ");
+    localStringBuilder.append(localCharSequence);
+    localStringBuilder.append(" state: ");
+    localStringBuilder.append(u(this.ig));
+    eh.f("NetworkDetector", localStringBuilder.toString());
+    return bool;
   }
   
   public static String u(int paramInt)
@@ -97,32 +127,34 @@ public class cr
   
   public int b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (bs()) {
-      this.ig = -1;
-    }
-    for (;;)
+    if (bs()) {}
+    for (int i = -1;; i = -5)
     {
-      eh.f("NetworkDetector", "[detect_conn]getNetworkState(), mNetworkState: " + u(this.ig));
-      return this.ig;
-      if ((this.ij > 0L) && (Math.abs(System.currentTimeMillis() - this.ij) <= 300000L)) {}
-      for (int i = 1;; i = 0)
+      this.ig = i;
+      break;
+      if ((this.ij > 0L) && (Math.abs(System.currentTimeMillis() - this.ij) <= 300000L)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (paramBoolean1)
       {
-        if (!paramBoolean1) {
-          break label93;
-        }
         bt();
         break;
       }
-      label93:
       if ((paramBoolean2) && (i == 0) && (Math.abs(System.currentTimeMillis() - this.ij) > 60000L))
       {
         this.mHandler.removeMessages(1);
         this.mHandler.sendEmptyMessage(1);
       }
-      if ((this.ig == 0) && (i == 0)) {
-        this.ig = -5;
+      if ((this.ig != 0) || (i != 0)) {
+        break;
       }
     }
+    StringBuilder localStringBuilder = new StringBuilder("[detect_conn]getNetworkState(), mNetworkState: ");
+    localStringBuilder.append(u(this.ig));
+    eh.f("NetworkDetector", localStringBuilder.toString());
+    return this.ig;
   }
   
   public void br()
@@ -140,17 +172,22 @@ public class cr
   public void onConnected()
   {
     br();
-    if ((this.ij > 0L) && (Math.abs(System.currentTimeMillis() - this.ij) < 60000L)) {}
-    for (int i = 1; (i != 0) || (this.ii); i = 0)
+    int i;
+    if ((this.ij > 0L) && (Math.abs(System.currentTimeMillis() - this.ij) < 60000L)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i == 0) && (!this.ii))
     {
-      eh.f("NetworkDetector", "[detect_conn]onConnected(), trigger detect in 60000");
+      eh.f("NetworkDetector", "[detect_conn]onConnected(), trigger detect in 5s");
       this.mHandler.removeMessages(1);
-      this.mHandler.sendEmptyMessageDelayed(1, 60000L);
+      this.mHandler.sendEmptyMessageDelayed(1, 5000L);
       return;
     }
-    eh.f("NetworkDetector", "[detect_conn]onConnected(), trigger detect in 5s");
+    eh.f("NetworkDetector", "[detect_conn]onConnected(), trigger detect in 60000");
     this.mHandler.removeMessages(1);
-    this.mHandler.sendEmptyMessageDelayed(1, 5000L);
+    this.mHandler.sendEmptyMessageDelayed(1, 60000L);
   }
   
   public void onDisconnected()
@@ -159,6 +196,23 @@ public class cr
     br();
     this.mHandler.removeMessages(1);
     this.ig = -1;
+  }
+  
+  final class a
+    extends Handler
+  {
+    public a(Looper paramLooper)
+    {
+      super();
+    }
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      if (paramMessage.what != 1) {
+        return;
+      }
+      cr.a(cr.this);
+    }
   }
 }
 

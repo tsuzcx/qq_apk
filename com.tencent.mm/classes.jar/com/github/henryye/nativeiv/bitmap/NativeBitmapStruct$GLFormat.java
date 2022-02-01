@@ -1,8 +1,5 @@
 package com.github.henryye.nativeiv.bitmap;
 
-import android.support.annotation.Keep;
-
-@Keep
 public abstract interface NativeBitmapStruct$GLFormat
 {
   public static final int GL_ALPHA = 6406;

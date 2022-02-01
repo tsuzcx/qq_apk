@@ -9,7 +9,7 @@ public class ehf
   
   public void onClick(View paramView)
   {
-    SelectLanguageActivity.a(this.a, 2);
+    SelectLanguageActivity.a(this.a, 3);
   }
 }
 

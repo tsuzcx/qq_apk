@@ -58,74 +58,72 @@ public class ChannelTranslateFilter
   {
     if (this.expectFace == 1)
     {
-      if ((this.rgbaBuffer == null) || (this.rgbaBuffer.length != paramInt2 * paramInt3 * 4)) {
+      Object localObject1 = this.rgbaBuffer;
+      if ((localObject1 == null) || (localObject1.length != paramInt2 * paramInt3 * 4)) {
         this.rgbaBuffer = new byte[paramInt2 * paramInt3 * 4];
       }
-      int[] arrayOfInt = new int[1];
-      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-      RendererUtils.saveTextureToRgbBuffer(paramInt1, paramInt2, paramInt3, this.rgbaBuffer, arrayOfInt[0]);
-      Object localObject = new VideoPreviewFaceOutlineDetector();
-      ((VideoPreviewFaceOutlineDetector)localObject).init();
-      ((VideoPreviewFaceOutlineDetector)localObject).doFaceDetect(this.rgbaBuffer, paramInt2, paramInt3);
-      ((VideoPreviewFaceOutlineDetector)localObject).doTrack(this.rgbaBuffer, paramInt2, paramInt3);
-      List localList = ((VideoPreviewFaceOutlineDetector)localObject).getAllPoints(0);
-      ((VideoPreviewFaceOutlineDetector)localObject).destroy();
-      if ((localList == null) || (localList.size() <= 88)) {
+      localObject1 = new int[1];
+      GLES20.glGenFramebuffers(1, (int[])localObject1, 0);
+      RendererUtils.saveTextureToRgbBuffer(paramInt1, paramInt2, paramInt3, this.rgbaBuffer, localObject1[0]);
+      Object localObject2 = new VideoPreviewFaceOutlineDetector();
+      ((VideoPreviewFaceOutlineDetector)localObject2).init();
+      ((VideoPreviewFaceOutlineDetector)localObject2).doFaceDetect(this.rgbaBuffer, paramInt2, paramInt3);
+      ((VideoPreviewFaceOutlineDetector)localObject2).doTrack(this.rgbaBuffer, paramInt2, paramInt3);
+      List localList = ((VideoPreviewFaceOutlineDetector)localObject2).getAllPoints(0);
+      ((VideoPreviewFaceOutlineDetector)localObject2).destroy();
+      if (localList != null)
+      {
+        if (localList.size() <= 88) {
+          return;
+        }
+        localObject2 = new Rect();
+        ((Rect)localObject2).left = ((int)((PointF)localList.get(86)).x);
+        ((Rect)localObject2).top = ((int)Math.min(((PointF)localList.get(86)).y, ((PointF)localList.get(88)).y));
+        ((Rect)localObject2).right = ((int)((PointF)localList.get(88)).x);
+        ((Rect)localObject2).bottom = ((int)((PointF)localList.get(9)).y);
+        if (((Rect)localObject2).left < 0) {
+          ((Rect)localObject2).left = 0;
+        }
+        if (((Rect)localObject2).top < 0) {
+          ((Rect)localObject2).top = 0;
+        }
+        if (((Rect)localObject2).right > paramInt2) {
+          ((Rect)localObject2).right = paramInt2;
+        }
+        if (((Rect)localObject2).bottom > paramInt3) {
+          ((Rect)localObject2).bottom = paramInt3;
+        }
+        this.faceCenter[0] = ((Rect)localObject2).centerX();
+        this.faceCenter[1] = ((Rect)localObject2).centerY();
+        this.radiusL = ((float)Math.sqrt((((PointF)localList.get(9)).x - this.faceCenter[0]) * (((PointF)localList.get(9)).x - this.faceCenter[0]) + (((PointF)localList.get(9)).y - this.faceCenter[1]) * (((PointF)localList.get(9)).y - this.faceCenter[1])) * 1.05F);
+        addParam(new UniformParam.FloatsParam("faceCenter", this.faceCenter));
+        addParam(new UniformParam.FloatParam("radiusL", this.radiusL));
+        this.vectorL[0] = (((PointF)localList.get(9)).x - ((Rect)localObject2).centerX());
+        this.vectorL[1] = (((PointF)localList.get(9)).y - ((Rect)localObject2).centerY());
+        localObject2 = this.vectorL;
+        float f = (float)Math.sqrt(localObject2[0] * localObject2[0] + localObject2[1] * localObject2[1]);
+        if (f > 0.0F)
+        {
+          localObject2 = this.vectorL;
+          localObject2[0] /= f;
+          localObject2[1] /= f;
+        }
+        addParam(new UniformParam.FloatsParam("vectorL", this.vectorL));
+        localObject2 = this.vectorS;
+        float[] arrayOfFloat = this.vectorL;
+        localObject2[0] = arrayOfFloat[1];
+        localObject2[1] = (-arrayOfFloat[0]);
+        addParam(new UniformParam.FloatsParam("vectorS", (float[])localObject2));
+        this.radiusS1 = (Math.abs((((PointF)localList.get(0)).x - this.faceCenter[0]) * this.vectorS[0] + (((PointF)localList.get(0)).y - this.faceCenter[1]) * this.vectorS[1]) * 1.05F);
+        this.radiusS2 = (Math.abs((((PointF)localList.get(18)).x - this.faceCenter[0]) * this.vectorS[0] + (((PointF)localList.get(18)).y - this.faceCenter[1]) * this.vectorS[1]) * 1.05F);
+        addParam(new UniformParam.FloatParam("radiusS1", this.radiusS1));
+        addParam(new UniformParam.FloatParam("radiusS2", this.radiusS2));
+        GLES20.glDeleteFramebuffers(1, (int[])localObject1, 0);
+      }
+      else
+      {
         return;
       }
-      localObject = new Rect();
-      ((Rect)localObject).left = ((int)((PointF)localList.get(86)).x);
-      ((Rect)localObject).top = ((int)Math.min(((PointF)localList.get(86)).y, ((PointF)localList.get(88)).y));
-      ((Rect)localObject).right = ((int)((PointF)localList.get(88)).x);
-      ((Rect)localObject).bottom = ((int)((PointF)localList.get(9)).y);
-      if (((Rect)localObject).left < 0) {
-        ((Rect)localObject).left = 0;
-      }
-      if (((Rect)localObject).top < 0) {
-        ((Rect)localObject).top = 0;
-      }
-      if (((Rect)localObject).right > paramInt2) {
-        ((Rect)localObject).right = paramInt2;
-      }
-      if (((Rect)localObject).bottom > paramInt3) {
-        ((Rect)localObject).bottom = paramInt3;
-      }
-      this.faceCenter[0] = ((Rect)localObject).centerX();
-      this.faceCenter[1] = ((Rect)localObject).centerY();
-      float f1 = ((PointF)localList.get(9)).x;
-      float f2 = this.faceCenter[0];
-      float f3 = ((PointF)localList.get(9)).x;
-      float f4 = this.faceCenter[0];
-      float f5 = ((PointF)localList.get(9)).y;
-      float f6 = this.faceCenter[1];
-      this.radiusL = ((float)Math.sqrt((((PointF)localList.get(9)).y - this.faceCenter[1]) * (f5 - f6) + (f1 - f2) * (f3 - f4)) * 1.05F);
-      addParam(new UniformParam.FloatsParam("faceCenter", this.faceCenter));
-      addParam(new UniformParam.FloatParam("radiusL", this.radiusL));
-      this.vectorL[0] = (((PointF)localList.get(9)).x - ((Rect)localObject).centerX());
-      this.vectorL[1] = (((PointF)localList.get(9)).y - ((Rect)localObject).centerY());
-      f1 = (float)Math.sqrt(this.vectorL[0] * this.vectorL[0] + this.vectorL[1] * this.vectorL[1]);
-      if (f1 > 0.0F)
-      {
-        localObject = this.vectorL;
-        localObject[0] /= f1;
-        localObject = this.vectorL;
-        localObject[1] /= f1;
-      }
-      addParam(new UniformParam.FloatsParam("vectorL", this.vectorL));
-      this.vectorS[0] = this.vectorL[1];
-      this.vectorS[1] = (-this.vectorL[0]);
-      addParam(new UniformParam.FloatsParam("vectorS", this.vectorS));
-      f1 = ((PointF)localList.get(0)).x;
-      f2 = this.faceCenter[0];
-      f3 = this.vectorS[0];
-      this.radiusS1 = (Math.abs((((PointF)localList.get(0)).y - this.faceCenter[1]) * this.vectorS[1] + f3 * (f1 - f2)) * 1.05F);
-      f1 = ((PointF)localList.get(18)).x;
-      f2 = this.faceCenter[0];
-      f3 = this.vectorS[0];
-      this.radiusS2 = (Math.abs((((PointF)localList.get(18)).y - this.faceCenter[1]) * this.vectorS[1] + f3 * (f1 - f2)) * 1.05F);
-      addParam(new UniformParam.FloatParam("radiusS1", this.radiusS1));
-      addParam(new UniformParam.FloatParam("radiusS2", this.radiusS2));
-      GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
     }
     super.beforeRender(paramInt1, paramInt2, paramInt3);
   }
@@ -168,7 +166,7 @@ public class ChannelTranslateFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ChannelTranslateFilter
  * JD-Core Version:    0.7.0.1
  */

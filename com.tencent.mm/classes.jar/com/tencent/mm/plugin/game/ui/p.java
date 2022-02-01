@@ -3,12 +3,11 @@ package com.tencent.mm.plugin.game.ui;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.api.e;
-import com.tencent.mm.plugin.game.model.n;
-import com.tencent.mm.plugin.game.model.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.game.report.g;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.model.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class p
   extends b
@@ -16,36 +15,20 @@ public final class p
   public p(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.nok = paramInt;
+    this.IFc = paramInt;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(112087);
-    paramView = paramView.getTag();
+    AppMethodBeat.i(42282);
+    paramView = fO(paramView.getTag());
     if (paramView == null)
     {
-      ab.e("MicroMsg.GameMessageOnClickListener", "Tag is null.");
-      paramView = null;
-    }
-    while (paramView == null)
-    {
-      ab.e("MicroMsg.GameMessageContentClickListener", "The game message is null.");
-      AppMethodBeat.o(112087);
+      Log.e("MicroMsg.GameMessageContentClickListener", "The game message is null.");
+      AppMethodBeat.o(42282);
       return;
-      if (!(paramView instanceof Long))
-      {
-        ab.e("MicroMsg.GameMessageOnClickListener", "The tag of action listener is not instance of Long");
-        paramView = null;
-      }
-      else
-      {
-        paramView = ((e)g.E(e.class)).bES().kl(((Long)paramView).longValue());
-        if (paramView != null) {
-          paramView.bGm();
-        }
-      }
     }
+    String str = g.a(null, null, paramView.IEi, null);
     switch (paramView.field_msgType)
     {
     case 7: 
@@ -53,39 +36,39 @@ public final class p
     case 9: 
     default: 
       i = a(this.mContext, paramView);
-      com.tencent.mm.game.report.c.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.nok, paramView.field_msgType, paramView.field_gameMsgId, paramView.nnM, null);
+      g.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.IFc, paramView.field_msgType, paramView.field_gameMsgId, paramView.mNoticeId, str);
     }
     do
     {
       do
       {
-        AppMethodBeat.o(112087);
+        AppMethodBeat.o(42282);
         return;
-        if (!bo.isNullOrNil(paramView.nmR))
+        if (!Util.isNullOrNil(paramView.IDi))
         {
-          i = com.tencent.mm.plugin.game.f.c.ax(this.mContext, paramView.nmR);
-          com.tencent.mm.game.report.c.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.nok, paramView.field_msgType, paramView.field_gameMsgId, paramView.nnM, null);
-          AppMethodBeat.o(112087);
+          i = c.ba(this.mContext, paramView.IDi);
+          g.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.IFc, paramView.field_msgType, paramView.field_gameMsgId, paramView.mNoticeId, str);
+          AppMethodBeat.o(42282);
           return;
         }
         i = a(this.mContext, paramView);
-        com.tencent.mm.game.report.c.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.nok, paramView.field_msgType, paramView.field_gameMsgId, paramView.nnM, null);
-        AppMethodBeat.o(112087);
+        g.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.IFc, paramView.field_msgType, paramView.field_gameMsgId, paramView.mNoticeId, str);
+        AppMethodBeat.o(42282);
         return;
-      } while (bo.isNullOrNil(paramView.nnt));
-      i = com.tencent.mm.plugin.game.f.c.ax(this.mContext, paramView.nnt);
-      com.tencent.mm.game.report.c.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.nok, paramView.field_msgType, paramView.field_gameMsgId, paramView.nnM, null);
-      AppMethodBeat.o(112087);
+      } while (Util.isNullOrNil(paramView.IDL));
+      i = c.ba(this.mContext, paramView.IDL);
+      g.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.IFc, paramView.field_msgType, paramView.field_gameMsgId, paramView.mNoticeId, str);
+      AppMethodBeat.o(42282);
       return;
-    } while (bo.isNullOrNil(paramView.nnw));
-    int i = com.tencent.mm.plugin.game.f.c.ax(this.mContext, paramView.nnw);
-    com.tencent.mm.game.report.c.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.nok, paramView.field_msgType, paramView.field_gameMsgId, paramView.nnM, null);
-    AppMethodBeat.o(112087);
+    } while (Util.isNullOrNil(paramView.IDO));
+    int i = c.ba(this.mContext, paramView.IDO);
+    g.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.IFc, paramView.field_msgType, paramView.field_gameMsgId, paramView.mNoticeId, str);
+    AppMethodBeat.o(42282);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.p
  * JD-Core Version:    0.7.0.1
  */

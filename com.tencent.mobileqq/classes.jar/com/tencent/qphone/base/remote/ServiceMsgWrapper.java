@@ -21,66 +21,73 @@ public class ServiceMsgWrapper
     this.tmpWupBuffer = new byte[paramInt];
     this.hasTransLength = 0;
     this.hasTransIndex = new ArrayList();
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.S.ServiceMsgWrapper", 2, "construct ServiceMsgWrapper: cmd = " + paramFromServiceMsg.getServiceCmd() + ", totalLength = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("construct ServiceMsgWrapper: cmd = ");
+      paramToServiceMsg.append(paramFromServiceMsg.getServiceCmd());
+      paramToServiceMsg.append(", totalLength = ");
+      paramToServiceMsg.append(paramInt);
+      QLog.d("MSF.S.ServiceMsgWrapper", 2, paramToServiceMsg.toString());
     }
   }
   
-  public boolean buildFromMsgWupBuffer(byte[] paramArrayOfByte, int paramInt)
+  public boolean buildFromMsgWupBuffer(int paramInt, byte[] paramArrayOfByte)
   {
-    boolean bool2 = false;
-    for (;;)
+    try
     {
-      boolean bool1;
-      try
+      if (paramInt < this.hasTransLength)
       {
-        if (paramInt < this.hasTransLength)
-        {
-          bool1 = bool2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("MSF.S.ServiceMsgWrapper", 2, "buildFromMsgWupBuffer but the startIndex has trans, startIndex = " + paramInt);
-            bool1 = bool2;
-          }
-          return bool1;
-        }
-        if (this.hasTransIndex.contains(Integer.valueOf(paramInt)))
-        {
-          bool1 = bool2;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("MSF.S.ServiceMsgWrapper", 2, "buildFromMsgWupBuffer but the index " + paramInt + " repeat");
-          bool1 = bool2;
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label186;
-        }
-      }
-      finally {}
-      QLog.d("MSF.S.ServiceMsgWrapper", 2, "buildFromMsgWupBuffer: cmd = " + this.fromServiceMsg.getServiceCmd() + ", hasTransLength = " + this.hasTransLength + ", startIndex = " + paramInt + ", buffer.length = " + paramArrayOfByte.length);
-      label186:
-      if (this.hasTransLength + paramArrayOfByte.length > this.totalLength)
-      {
-        bool1 = bool2;
         if (QLog.isColorLevel())
         {
-          QLog.d("MSF.S.ServiceMsgWrapper", 2, "buildFromMsgWupBuffer fail with index out of bound");
-          bool1 = bool2;
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("buildFromMsgWupBuffer but the startIndex has trans, startIndex = ");
+          paramArrayOfByte.append(paramInt);
+          QLog.d("MSF.S.ServiceMsgWrapper", 2, paramArrayOfByte.toString());
         }
+        return false;
       }
-      else
+      if (this.hasTransIndex.contains(Integer.valueOf(paramInt)))
       {
-        this.hasTransLength += paramArrayOfByte.length;
-        this.hasTransIndex.add(Integer.valueOf(paramInt));
-        System.arraycopy(paramArrayOfByte, 0, this.tmpWupBuffer, paramInt, paramArrayOfByte.length);
-        if (isFinishTransported()) {
-          this.fromServiceMsg.putWupBuffer(this.tmpWupBuffer);
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("buildFromMsgWupBuffer but the index ");
+          paramArrayOfByte.append(paramInt);
+          paramArrayOfByte.append(" repeat");
+          QLog.d("MSF.S.ServiceMsgWrapper", 2, paramArrayOfByte.toString());
         }
-        bool1 = true;
+        return false;
       }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("buildFromMsgWupBuffer: cmd = ");
+        localStringBuilder.append(this.fromServiceMsg.getServiceCmd());
+        localStringBuilder.append(", hasTransLength = ");
+        localStringBuilder.append(this.hasTransLength);
+        localStringBuilder.append(", startIndex = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", buffer.length = ");
+        localStringBuilder.append(paramArrayOfByte.length);
+        QLog.d("MSF.S.ServiceMsgWrapper", 2, localStringBuilder.toString());
+      }
+      if (this.hasTransLength + paramArrayOfByte.length > this.totalLength)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.S.ServiceMsgWrapper", 2, "buildFromMsgWupBuffer fail with index out of bound");
+        }
+        return false;
+      }
+      this.hasTransLength += paramArrayOfByte.length;
+      this.hasTransIndex.add(Integer.valueOf(paramInt));
+      System.arraycopy(paramArrayOfByte, 0, this.tmpWupBuffer, paramInt, paramArrayOfByte.length);
+      if (isFinishTransported()) {
+        this.fromServiceMsg.putWupBuffer(this.tmpWupBuffer);
+      }
+      return true;
     }
+    finally {}
   }
   
   public FromServiceMsg getFromServiceMsg()
@@ -100,7 +107,7 @@ public class ServiceMsgWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.remote.ServiceMsgWrapper
  * JD-Core Version:    0.7.0.1
  */

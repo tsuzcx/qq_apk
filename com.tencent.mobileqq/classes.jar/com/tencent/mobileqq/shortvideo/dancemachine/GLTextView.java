@@ -28,10 +28,11 @@ public class GLTextView
   private void drawText()
   {
     float f1 = getTextWidth();
-    if (this.pixelHeightSize == 0) {
+    int i = this.pixelHeightSize;
+    if (i == 0) {
       return;
     }
-    this.mBitmap = Bitmap.createBitmap((int)f1, this.pixelHeightSize, Bitmap.Config.ARGB_8888);
+    this.mBitmap = Bitmap.createBitmap((int)f1, i, Bitmap.Config.ARGB_8888);
     this.mCanvas = new Canvas(this.mBitmap);
     this.paint.setTextSize(this.pixelHeightSize);
     this.paint.setAntiAlias(true);
@@ -39,7 +40,7 @@ public class GLTextView
     float f2 = Math.abs(this.paint.getFontMetrics().ascent);
     Iterator localIterator = this.mStringList.iterator();
     GLTextView.StringItem localStringItem;
-    for (f1 = 0.0F; localIterator.hasNext(); f1 = localStringItem.measureSize + f1)
+    for (f1 = 0.0F; localIterator.hasNext(); f1 += localStringItem.measureSize)
     {
       localStringItem = (GLTextView.StringItem)localIterator.next();
       this.paint.setColor(localStringItem.color);
@@ -78,8 +79,7 @@ public class GLTextView
       {
         GLTextView.StringItem localStringItem = (GLTextView.StringItem)localIterator.next();
         localStringItem.measureSize = this.paint.measureText(localStringItem.data);
-        float f = this.totalWidth;
-        this.totalWidth = (localStringItem.measureSize + f);
+        this.totalWidth += localStringItem.measureSize;
       }
     }
     return this.totalWidth;
@@ -106,7 +106,7 @@ public class GLTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLTextView
  * JD-Core Version:    0.7.0.1
  */

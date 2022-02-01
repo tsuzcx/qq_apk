@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.activity.recent;
 
-import bacu;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.subaccount.api.ISubAccountControllUtil;
 
-public final class RecentUtil$5
+final class RecentUtil$5
   implements Runnable
 {
-  public RecentUtil$5(QQAppInterface paramQQAppInterface) {}
+  RecentUtil$5(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      bacu.c(this.a);
-      bacu.a(this.a, true, null);
+      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).cleanAllThirdQQUnreadMsgNum(this.a);
+      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).cleanAllSubAccountMessageUnread(this.a, true, null);
     }
   }
 }

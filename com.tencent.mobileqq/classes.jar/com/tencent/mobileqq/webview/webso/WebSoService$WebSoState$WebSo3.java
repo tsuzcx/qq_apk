@@ -3,52 +3,58 @@ package com.tencent.mobileqq.webview.webso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import belb;
 
 public class WebSoService$WebSoState$WebSo3
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebSo3> CREATOR = new belb();
-  public String a;
+  public static final Parcelable.Creator<WebSo3> CREATOR = new WebSoService.WebSoState.WebSo3.1();
   public boolean a;
   public String b;
   public String c;
   public String d;
-  public String e = "";
-  public String f = "0";
+  public String e;
+  public String f;
+  public String g;
   
-  public WebSoService$WebSoState$WebSo3() {}
-  
-  public WebSoService$WebSoState$WebSo3(Parcel paramParcel)
+  public WebSoService$WebSoState$WebSo3()
   {
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.b = paramParcel.readString();
-      this.c = paramParcel.readString();
-      this.d = paramParcel.readString();
-      this.e = paramParcel.readString();
-      this.f = paramParcel.readString();
-      return;
-    }
+    this.a = false;
+    this.f = "";
+    this.g = "0";
   }
   
-  public String a()
+  protected WebSoService$WebSoState$WebSo3(Parcel paramParcel)
   {
-    return String.format("{\"code\":\"%s\",\"type\":\"%s\",\"data\":%s}", new Object[] { this.f, this.e, this.c });
+    boolean bool = false;
+    this.a = false;
+    this.f = "";
+    this.g = "0";
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    }
+    this.a = bool;
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readString();
+    this.f = paramParcel.readString();
+    this.g = paramParcel.readString();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
+    this.a = false;
     this.b = null;
     this.c = null;
     this.d = null;
-    this.f = "0";
-    this.e = "";
+    this.e = null;
+    this.g = "0";
+    this.f = "";
+  }
+  
+  public String b()
+  {
+    return String.format("{\"code\":\"%s\",\"type\":\"%s\",\"data\":%s}", new Object[] { this.g, this.f, this.d });
   }
   
   public int describeContents()
@@ -58,28 +64,45 @@ public class WebSoService$WebSoState$WebSo3
   
   public String toString()
   {
-    return "WebSo3{valid=" + this.jdField_a_of_type_Boolean + ", eTag='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pageVersion='" + this.b + '\'' + ", jsonData='" + this.c + '\'' + ", uri='" + this.d + '\'' + ", callbackType='" + this.e + '\'' + ", code='" + this.f + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WebSo3{valid=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", eTag='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pageVersion='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jsonData='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uri='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", callbackType='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", code='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeString(this.b);
-      paramParcel.writeString(this.c);
-      paramParcel.writeString(this.d);
-      paramParcel.writeString(this.e);
-      paramParcel.writeString(this.f);
-      return;
-    }
+    paramParcel.writeByte((byte)this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeString(this.e);
+    paramParcel.writeString(this.f);
+    paramParcel.writeString(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3
  * JD-Core Version:    0.7.0.1
  */

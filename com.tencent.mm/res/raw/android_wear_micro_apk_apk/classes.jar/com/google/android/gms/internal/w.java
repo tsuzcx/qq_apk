@@ -14,19 +14,19 @@ import java.util.WeakHashMap;
 
 public final class w
 {
-  private final Map<k<?>, Boolean> Nm = Collections.synchronizedMap(new WeakHashMap());
-  private final Map<c<?>, Boolean> Nn = Collections.synchronizedMap(new WeakHashMap());
+  private final Map<k<?>, Boolean> Pb = Collections.synchronizedMap(new WeakHashMap());
+  private final Map<c<?>, Boolean> Pc = Collections.synchronizedMap(new WeakHashMap());
   
   private void a(boolean paramBoolean, Status paramStatus)
   {
     Object localObject2;
-    synchronized (this.Nm)
+    synchronized (this.Pb)
     {
-      localObject2 = new HashMap(this.Nm);
+      localObject2 = new HashMap(this.Pb);
     }
-    synchronized (this.Nn)
+    synchronized (this.Pc)
     {
-      ??? = new HashMap(this.Nn);
+      ??? = new HashMap(this.Pc);
       localObject2 = ((Map)localObject2).entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -52,29 +52,29 @@ public final class w
   
   final void a(final k<? extends com.google.android.gms.common.api.w> paramk, boolean paramBoolean)
   {
-    this.Nm.put(paramk, Boolean.valueOf(paramBoolean));
+    this.Pb.put(paramk, Boolean.valueOf(paramBoolean));
     paramk.a(new u()
     {
-      public final void gB()
+      public final void gL()
       {
         w.a(w.this).remove(paramk);
       }
     });
   }
   
-  final boolean ip()
+  final boolean ix()
   {
-    return (!this.Nm.isEmpty()) || (!this.Nn.isEmpty());
+    return (!this.Pb.isEmpty()) || (!this.Pc.isEmpty());
   }
   
-  public final void iq()
+  public final void iy()
   {
-    a(false, aq.Or);
+    a(false, aq.Qg);
   }
   
-  public final void ir()
+  public final void iz()
   {
-    a(true, br.Px);
+    a(true, br.Rm);
   }
 }
 

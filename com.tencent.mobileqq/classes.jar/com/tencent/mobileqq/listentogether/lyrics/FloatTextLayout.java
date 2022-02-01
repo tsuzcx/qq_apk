@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import aepi;
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint.Align;
@@ -14,187 +12,173 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import atnt;
-import atnu;
-import atnv;
-import atog;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class FloatTextLayout
   extends FloatBaseLayout
-  implements View.OnClickListener, atog
+  implements View.OnClickListener, OnSizeChangeListener
 {
-  View a;
-  public atnv a;
-  boolean d = true;
+  public ILyricView o;
+  boolean p = true;
+  View q;
   
   public FloatTextLayout(@NonNull Context paramContext)
   {
     super(paramContext);
-    f();
+    i();
   }
   
-  private void f()
+  private void i()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560816, null);
-    this.jdField_a_of_type_Atnv = ((atnv)this.jdField_a_of_type_AndroidViewView.findViewById(2131369903));
-    this.jdField_a_of_type_Atnv.setStrokeColor(-1);
-    this.jdField_a_of_type_Atnv.setStrokeWidth(aepi.a(1.5F, getResources()));
-    ((TextView)this.jdField_a_of_type_Atnv).setTextColor(-8293377);
-    ((TextView)this.jdField_a_of_type_Atnv).getPaint().setFakeBoldText(true);
-    ((TextView)this.jdField_a_of_type_Atnv).setTextSize(1, 18.0F);
-    ((TextView)this.jdField_a_of_type_Atnv).setOnClickListener(this);
-    ((TextView)this.jdField_a_of_type_Atnv).setContentDescription(alud.a(2131705030));
-    this.jdField_b_of_type_Int = aepi.a(40.0F, getResources());
-    int i = (int)getResources().getDimension(2131297175);
+    this.q = LayoutInflater.from(getContext()).inflate(2131627278, null);
+    this.o = ((ILyricView)this.q.findViewById(2131437793));
+    this.o.setStrokeColor(-1);
+    this.o.setStrokeWidth(AIOUtils.b(1.5F, getResources()));
+    ((TextView)this.o).setTextColor(-8293377);
+    ((TextView)this.o).getPaint().setFakeBoldText(true);
+    ((TextView)this.o).setTextSize(1, 18.0F);
+    ((TextView)this.o).setOnClickListener(this);
+    ((TextView)this.o).setContentDescription(HardCodeUtil.a(2131902645));
+    this.c = AIOUtils.b(40.0F, getResources());
+    int i = (int)getResources().getDimension(2131297752);
     int j = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - aepi.a(16.0F, getResources())) - i));
-    this.jdField_a_of_type_Atnv.setLineMaxWidth(this.jdField_a_of_type_Int);
-    addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(-2, this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_Atnv.setOnSizeChangeListener(this);
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = this.jdField_b_of_type_Int;
+    this.b = ((int)(Math.min(j * 0.85F, j - AIOUtils.b(16.0F, getResources())) - i));
+    this.o.setLineMaxWidth(this.b);
+    addView(this.q, new FrameLayout.LayoutParams(-2, this.c));
+    this.o.setOnSizeChangeListener(this);
+    this.e.width = this.b;
+    this.e.height = this.c;
   }
   
-  public int a(atnu paramatnu)
+  public void a(FloatParams paramFloatParams)
   {
-    if (paramatnu.jdField_a_of_type_Boolean) {
-      return paramatnu.jdField_a_of_type_Int + paramatnu.jdField_c_of_type_Int / 2;
-    }
-    return paramatnu.jdField_a_of_type_Int - paramatnu.jdField_c_of_type_Int / 2 - this.jdField_a_of_type_Int;
-  }
-  
-  public atnv a()
-  {
-    return this.jdField_a_of_type_Atnv;
-  }
-  
-  public void a(atnu paramatnu)
-  {
-    if (paramatnu == null) {}
-    label138:
-    label143:
-    label146:
-    for (;;)
-    {
+    if (paramFloatParams == null) {
       return;
-      Object localObject;
-      int i;
-      if ((paramatnu.f) && (!paramatnu.g) && (!paramatnu.jdField_b_of_type_Boolean))
+    }
+    if ((paramFloatParams.k) && (!paramFloatParams.l) && (!paramFloatParams.f)) {
+      if (!paramFloatParams.h)
       {
-        if (!paramatnu.jdField_c_of_type_Boolean) {
-          this.jdField_a_of_type_Atnv.setAlign(Paint.Align.CENTER);
-        }
+        this.o.setAlign(Paint.Align.CENTER);
       }
       else
       {
-        this.d = paramatnu.jdField_a_of_type_Boolean;
-        localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-        i = ((FrameLayout.LayoutParams)localObject).gravity;
-        if (!paramatnu.jdField_c_of_type_Boolean) {
-          break label143;
+        if (paramFloatParams.e) {
+          localObject = Paint.Align.RIGHT;
+        } else {
+          localObject = Paint.Align.LEFT;
         }
-        if (!this.d) {
-          break label138;
-        }
+        this.o.setAlign((Paint.Align)localObject);
+      }
+    }
+    this.p = paramFloatParams.e;
+    Object localObject = (FrameLayout.LayoutParams)this.q.getLayoutParams();
+    int i = ((FrameLayout.LayoutParams)localObject).gravity;
+    if (paramFloatParams.h)
+    {
+      if (this.p) {
         i = 5;
-      }
-      for (;;)
-      {
-        if (((FrameLayout.LayoutParams)localObject).gravity == i) {
-          break label146;
-        }
-        ((FrameLayout.LayoutParams)localObject).gravity = i;
-        this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        return;
-        if (paramatnu.jdField_a_of_type_Boolean) {}
-        for (localObject = Paint.Align.RIGHT;; localObject = Paint.Align.LEFT)
-        {
-          this.jdField_a_of_type_Atnv.setAlign((Paint.Align)localObject);
-          break;
-        }
+      } else {
         i = 3;
-        continue;
-        i = 1;
       }
     }
-  }
-  
-  public boolean a(atnu paramatnu)
-  {
-    boolean bool = true;
-    if (paramatnu == null) {
-      return false;
+    else {
+      i = 1;
     }
-    if ((paramatnu.f) && (!paramatnu.g) && (!paramatnu.jdField_b_of_type_Boolean)) {
-      if (a()) {}
-    }
-    for (;;)
+    if (((FrameLayout.LayoutParams)localObject).gravity != i)
     {
-      return bool;
-      bool = false;
-      continue;
-      if (b()) {
-        bool = false;
-      }
-    }
-  }
-  
-  public int b(atnu paramatnu)
-  {
-    return paramatnu.jdField_b_of_type_Int - this.jdField_b_of_type_Int / 2;
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_Atnv != null)
-    {
-      this.jdField_a_of_type_Atnv.setOnSizeChangeListener(null);
-      this.jdField_a_of_type_Atnv.c();
+      ((FrameLayout.LayoutParams)localObject).gravity = i;
+      this.q.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 != this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Atnt != null)) {
-      this.jdField_a_of_type_Atnt.b(paramInt1, paramInt2);
+    if ((paramInt1 != this.b) && (this.a != null)) {
+      this.a.b(paramInt1, paramInt2);
     }
   }
   
-  public boolean b()
+  public boolean b(FloatParams paramFloatParams)
   {
-    boolean bool = super.b();
-    if (this.jdField_a_of_type_Atnv != null) {
-      this.jdField_a_of_type_Atnv.c();
+    if (paramFloatParams == null) {
+      return false;
+    }
+    boolean bool;
+    if ((paramFloatParams.k) && (!paramFloatParams.l) && (!paramFloatParams.f)) {
+      bool = a();
+    } else {
+      bool = c();
+    }
+    return bool ^ true;
+  }
+  
+  public int c(FloatParams paramFloatParams)
+  {
+    if (paramFloatParams.e) {
+      return paramFloatParams.a + paramFloatParams.c / 2;
+    }
+    return paramFloatParams.a - paramFloatParams.c / 2 - this.b;
+  }
+  
+  public boolean c()
+  {
+    boolean bool = super.c();
+    ILyricView localILyricView = this.o;
+    if (localILyricView != null) {
+      localILyricView.c();
     }
     return bool;
   }
   
+  public int d(FloatParams paramFloatParams)
+  {
+    return paramFloatParams.b - this.c / 2;
+  }
+  
   public void e()
   {
-    int i = (int)getResources().getDimension(2131297175);
+    super.e();
+    ILyricView localILyricView = this.o;
+    if (localILyricView != null)
+    {
+      localILyricView.setOnSizeChangeListener(null);
+      this.o.c();
+    }
+  }
+  
+  public ILyricView getLyricView()
+  {
+    return this.o;
+  }
+  
+  public void h()
+  {
+    int i = (int)getResources().getDimension(2131297752);
     int j = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Int = ((int)(Math.min(j * 0.85F, j - aepi.a(16.0F, getResources())) - i));
-    this.jdField_a_of_type_Atnv.setLineMaxWidth(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = this.jdField_a_of_type_Int;
+    this.b = ((int)(Math.min(j * 0.85F, j - AIOUtils.b(16.0F, getResources())) - i));
+    this.o.setLineMaxWidth(this.b);
+    this.e.width = this.b;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Atnt != null) {
-      this.jdField_a_of_type_Atnt.b();
+    if (this.a != null) {
+      this.a.b();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setFloatWidth(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = paramInt;
+    this.b = paramInt;
+    this.e.width = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout
  * JD-Core Version:    0.7.0.1
  */

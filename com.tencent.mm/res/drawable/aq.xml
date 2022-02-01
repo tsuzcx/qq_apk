@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="@dimen/og" android:insetRight="@dimen/og" android:insetTop="@dimen/og" android:insetBottom="@dimen/og"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="2.0dip" />
-            <solid android:color="#ffe5e5e5" />
-        </shape>
-    </item>
-</selector>
+    <selector>
+        <item android:state_checked="false" android:state_pressed="false">
+            <layer-list>
+                <item android:drawable="@drawable/b6j" />
+                <item android:drawable="@drawable/b6_" />
+            </layer-list>
+        </item>
+        <item>
+            <layer-list>
+                <item android:drawable="@drawable/b6i" />
+                <item android:drawable="@drawable/b6_" />
+            </layer-list>
+        </item>
+    </selector>
+</inset>

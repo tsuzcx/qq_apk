@@ -1,37 +1,71 @@
 package kotlinx.coroutines;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.a.m;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlin.Metadata;
+import kotlinx.coroutines.internal.ae;
+import kotlinx.coroutines.internal.af;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"CLOSED_EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "CLOSED_EMPTY$annotations", "()V", "DISPOSED_TASK", "MAX_MS", "", "MS_TO_NS", "SCHEDULE_COMPLETED", "", "SCHEDULE_DISPOSED", "SCHEDULE_OK", "delayNanosToMillis", "timeNanos", "delayToNanos", "timeMillis", "Queue", "T", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"ASSERTIONS_ENABLED", "", "getASSERTIONS_ENABLED", "()Z", "COROUTINE_ID", "Ljava/util/concurrent/atomic/AtomicLong;", "getCOROUTINE_ID", "()Ljava/util/concurrent/atomic/AtomicLong;", "DEBUG", "getDEBUG", "DEBUG_PROPERTY_NAME", "", "DEBUG_PROPERTY_VALUE_AUTO", "DEBUG_PROPERTY_VALUE_OFF", "DEBUG_PROPERTY_VALUE_ON", "RECOVER_STACK_TRACES", "getRECOVER_STACK_TRACES", "STACKTRACE_RECOVERY_PROPERTY_NAME", "assert", "", "value", "Lkotlin/Function0;", "resetCoroutineId", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class au
 {
-  private static final m CId;
-  private static final m CIe;
+  public static final boolean ASSERTIONS_ENABLED;
+  public static final boolean DEBUG;
+  public static final boolean ajvP;
+  static final AtomicLong ajvQ;
   
   static
   {
-    AppMethodBeat.i(118373);
-    CId = new m("REMOVED_TASK");
-    CIe = new m("CLOSED_EMPTY");
-    AppMethodBeat.o(118373);
-  }
-  
-  public static final long pv(long paramLong)
-  {
-    if (1000L <= 0L) {
-      return 0L;
+    boolean bool2 = true;
+    AppMethodBeat.i(118233);
+    ASSERTIONS_ENABLED = ao.class.desiredAssertionStatus();
+    Object localObject = ae.bJL("kotlinx.coroutines.debug");
+    if (localObject != null) {
+      switch (((String)localObject).hashCode())
+      {
+      default: 
+      case 0: 
+        do
+        {
+          localObject = (Throwable)new IllegalStateException(("System property 'kotlinx.coroutines.debug' has unrecognized value '" + localObject + '\'').toString());
+          AppMethodBeat.o(118233);
+          throw ((Throwable)localObject);
+        } while (!((String)localObject).equals(""));
+        label123:
+        bool1 = true;
+        label125:
+        DEBUG = bool1;
+        if ((!bool1) || (!af.bJM("kotlinx.coroutines.stacktrace.recovery"))) {
+          break;
+        }
+      }
     }
-    if (1000L >= 9223372036854L) {
-      return 9223372036854775807L;
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ajvP = bool1;
+      ajvQ = new AtomicLong(0L);
+      AppMethodBeat.o(118233);
+      return;
+      if (!((String)localObject).equals("auto")) {
+        break;
+      }
+      bool1 = ASSERTIONS_ENABLED;
+      break label125;
+      if (!((String)localObject).equals("off")) {
+        break;
+      }
+      bool1 = false;
+      break label125;
+      if (((String)localObject).equals("on")) {
+        break label123;
+      }
+      break;
     }
-    return 1000000000L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.au
  * JD-Core Version:    0.7.0.1
  */

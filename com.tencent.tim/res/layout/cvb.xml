@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView android:orientation="vertical" android:layout_width="27.0dip" android:layout_height="27.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -14,16 +14,6 @@ public final class stReplyListInfo
   public boolean isFinished = true;
   public boolean isRFinished = true;
   
-  static
-  {
-    if (!stReplyListInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public stReplyListInfo() {}
   
   public stReplyListInfo(boolean paramBoolean1, boolean paramBoolean2, String paramString)
@@ -40,18 +30,17 @@ public final class stReplyListInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -72,13 +61,24 @@ public final class stReplyListInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stReplyListInfo)paramObject;
-    } while ((!JceUtil.equals(this.isFinished, paramObject.isFinished)) || (!JceUtil.equals(this.isRFinished, paramObject.isRFinished)) || (!JceUtil.equals(this.attach_info, paramObject.attach_info)));
-    return true;
+    }
+    paramObject = (stReplyListInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.isFinished, paramObject.isFinished))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.isRFinished, paramObject.isRFinished))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.attach_info, paramObject.attach_info)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -140,14 +140,15 @@ public final class stReplyListInfo
   {
     paramJceOutputStream.write(this.isFinished, 0);
     paramJceOutputStream.write(this.isRFinished, 1);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    String str = this.attach_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stReplyListInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,8 @@ import android.graphics.drawable.Drawable.ConstantState;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.io.RandomAccessFile;
 
@@ -38,12 +39,12 @@ public class ApngDrawable
     if (paramApngState.mApng.mGetResetLoop) {
       paramApngState.mApng.currentApngLoop = 0;
     }
-    if (paramResources != null) {}
-    for (this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;; this.mTargetDensity = paramApngState.mTargetDensity)
-    {
-      computeImageSize();
-      return;
+    if (paramResources != null) {
+      this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
+    } else {
+      this.mTargetDensity = paramApngState.mTargetDensity;
     }
+    computeImageSize();
   }
   
   public ApngDrawable(ApngImage paramApngImage)
@@ -78,74 +79,80 @@ public class ApngDrawable
     if (paramFile == null) {
       return false;
     }
-    paramFile = new RandomAccessFile(paramFile, "r");
-    byte[] arrayOfByte = new byte[SIGNATURE.length];
-    paramFile.read(arrayOfByte);
-    paramFile.close();
+    Object localObject = new RandomAccessFile(paramFile, "r");
+    paramFile = new byte[SIGNATURE.length];
+    ((RandomAccessFile)localObject).read(paramFile);
+    ((RandomAccessFile)localObject).close();
     int i = 0;
     for (;;)
     {
-      if (i >= SIGNATURE.length) {
-        break label62;
-      }
-      if (arrayOfByte[i] != SIGNATURE[i]) {
+      localObject = SIGNATURE;
+      if (i >= localObject.length) {
         break;
+      }
+      if (paramFile[i] != localObject[i]) {
+        return false;
       }
       i += 1;
     }
-    label62:
     return true;
   }
   
   public void draw(Canvas paramCanvas)
   {
+    URLDrawable.depImp.mLog.isColorLevel();
+    boolean bool = this.reCalculateRects;
     Rect localRect = null;
-    int i;
-    int j;
-    Object localObject;
-    int k;
-    if ((!QLog.isColorLevel()) || (this.reCalculateRects)) {
+    if (bool)
+    {
       if (this.useRect)
       {
-        i = this.mApngState.mApng.width;
-        j = this.mApngState.mApng.height;
-        if ((j <= 0) || (i <= 0)) {
-          break label308;
+        int i = this.mApngState.mApng.width;
+        int j = this.mApngState.mApng.height;
+        if ((j > 0) && (i > 0))
+        {
+          localObject = getBounds();
+          if (this.chatWindowHeight < ((Rect)localObject).height()) {
+            this.chatWindowHeight = ((Rect)localObject).height();
+          }
+          int k;
+          double d;
+          if (this.chatWindowHeight / ((Rect)localObject).width() >= j / i)
+          {
+            int m = ((Rect)localObject).width();
+            k = this.chatWindowHeight;
+            m = m * j / k;
+            d = i - m;
+            Double.isNaN(d);
+            int n = (int)(d * 0.5D);
+            i = j;
+            if (k > ((Rect)localObject).height()) {
+              i = j * ((Rect)localObject).height() / this.chatWindowHeight;
+            }
+            this.drawRect = new Rect(n, 0, m + n, i);
+          }
+          else
+          {
+            k = ((Rect)localObject).height() * i / ((Rect)localObject).width();
+            d = j - this.chatWindowHeight * i / ((Rect)localObject).width();
+            Double.isNaN(d);
+            j = (int)(d * 0.5D);
+            this.drawRect = new Rect(0, j, i, k + j);
+          }
         }
-        localObject = getBounds();
-        if (this.chatWindowHeight < ((Rect)localObject).height()) {
-          this.chatWindowHeight = ((Rect)localObject).height();
+        else
+        {
+          this.drawRect = null;
         }
-        if (this.chatWindowHeight / ((Rect)localObject).width() < j / i) {
-          break label251;
-        }
-        k = ((Rect)localObject).width() * j / this.chatWindowHeight;
-        int m = (int)((i - k) * 0.5D);
-        i = j;
-        if (this.chatWindowHeight > ((Rect)localObject).height()) {
-          i = j * ((Rect)localObject).height() / this.chatWindowHeight;
-        }
-        this.drawRect = new Rect(m, 0, k + m, i);
       }
-    }
-    for (;;)
-    {
       Gravity.apply(this.mApngState.mGravity, this.mApngWidth, this.mApngHeight, getBounds(), this.mDstRect);
       this.reCalculateRects = false;
-      localObject = this.mApngState.mApng;
-      if (this.useRect) {
-        localRect = this.drawRect;
-      }
-      ((ApngImage)localObject).draw(paramCanvas, localRect, this.mDstRect, this.mApngState.mPaint, this.mUseAnimation);
-      return;
-      label251:
-      k = ((Rect)localObject).height() * i / ((Rect)localObject).width();
-      j = (int)((j - this.chatWindowHeight * i / ((Rect)localObject).width()) * 0.5D);
-      this.drawRect = new Rect(0, j, i, k + j);
-      continue;
-      label308:
-      this.drawRect = null;
     }
+    Object localObject = this.mApngState.mApng;
+    if (this.useRect) {
+      localRect = this.drawRect;
+    }
+    ((ApngImage)localObject).draw(paramCanvas, localRect, this.mDstRect, this.mApngState.mPaint, this.mUseAnimation);
   }
   
   public Drawable.ConstantState getConstantState()
@@ -199,7 +206,8 @@ public class ApngDrawable
   
   public void removeOnPlayRepeatListener(ApngDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
-    if ((this.mApngState != null) && (this.mApngState.mApng != null)) {
+    ApngDrawable.ApngState localApngState = this.mApngState;
+    if ((localApngState != null) && (localApngState.mApng != null)) {
       this.mApngState.mApng.removeOnPlayRepeatListener(paramOnPlayRepeatListener);
     }
   }
@@ -248,7 +256,8 @@ public class ApngDrawable
   
   public void setOnPlayRepeatListener(ApngDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
-    if ((this.mApngState != null) && (this.mApngState.mApng != null)) {
+    ApngDrawable.ApngState localApngState = this.mApngState;
+    if ((localApngState != null) && (localApngState.mApng != null)) {
       this.mApngState.mApng.setOnPlayRepeatListener(paramOnPlayRepeatListener);
     }
   }
@@ -278,7 +287,7 @@ public class ApngDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.ApngDrawable
  * JD-Core Version:    0.7.0.1
  */

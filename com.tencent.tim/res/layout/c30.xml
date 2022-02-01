@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ab5"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <GridView android:layout_gravity="center|top" android:id="@id/lob" android:layout_marginTop="@dimen/btw" android:layout_marginBottom="@dimen/bjl" android:listSelector="@android:color/transparent" style="@style/ab6" />
+    <RelativeLayout android:layout_gravity="center" android:id="@id/aol" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <include layout="@layout/cxy" />
+</FrameLayout>

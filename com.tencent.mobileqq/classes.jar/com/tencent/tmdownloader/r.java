@@ -14,14 +14,29 @@ class r
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    ab.c("TMAssistantDownloadSDKClient", "clientKey:" + paramString1 + ",state:" + paramInt1 + ", errorcode:" + paramInt2 + ",url:" + paramString2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("clientKey:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(",state:");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", errorcode:");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(",url:");
+    ((StringBuilder)localObject).append(paramString2);
+    ab.c("TMAssistantDownloadSDKClient", ((StringBuilder)localObject).toString());
     paramString1 = this.a.mWeakListenerArrayList.iterator();
     while (paramString1.hasNext())
     {
-      WeakReference localWeakReference = (WeakReference)paramString1.next();
-      ITMAssistantDownloadClientListener localITMAssistantDownloadClientListener = (ITMAssistantDownloadClientListener)localWeakReference.get();
-      if (localITMAssistantDownloadClientListener != null) {
-        ab.c("TMAssistantDownloadSDKClient", " listener : " + localITMAssistantDownloadClientListener + "   linstenerWeakReference :" + localWeakReference);
+      localObject = (WeakReference)paramString1.next();
+      ITMAssistantDownloadClientListener localITMAssistantDownloadClientListener = (ITMAssistantDownloadClientListener)((WeakReference)localObject).get();
+      if (localITMAssistantDownloadClientListener != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" listener : ");
+        localStringBuilder.append(localITMAssistantDownloadClientListener);
+        localStringBuilder.append("   linstenerWeakReference :");
+        localStringBuilder.append(localObject);
+        ab.c("TMAssistantDownloadSDKClient", localStringBuilder.toString());
       }
       t.a().a(this.a, localITMAssistantDownloadClientListener, paramString2, paramInt1, paramInt2, paramString3);
     }
@@ -33,7 +48,6 @@ class r
     while (paramString1.hasNext())
     {
       ITMAssistantDownloadClientListener localITMAssistantDownloadClientListener = (ITMAssistantDownloadClientListener)((WeakReference)paramString1.next()).get();
-      if (localITMAssistantDownloadClientListener != null) {}
       t.a().a(this.a, localITMAssistantDownloadClientListener, paramString2, paramLong1, paramLong2);
     }
   }
@@ -55,7 +69,7 @@ class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.r
  * JD-Core Version:    0.7.0.1
  */

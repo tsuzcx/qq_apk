@@ -1,20 +1,20 @@
 package com.tencent.mm.memory.a.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
-import com.tencent.mm.a.f.a;
-import com.tencent.mm.a.f.b;
-import com.tencent.mm.a.h;
+import com.tencent.mm.b.f;
+import com.tencent.mm.b.f.a;
+import com.tencent.mm.b.f.b;
+import com.tencent.mm.b.h;
 import java.util.Set;
 
 public abstract class e<T, V, X, Y>
   implements f<T, V>
 {
-  protected a feC;
-  public f<T, X> feH = null;
-  public d<T, Y> feI = null;
-  public f.b<T, V> feJ = null;
   public int maxSize;
+  protected a nOk;
+  public f<T, X> nOp = null;
+  public d<T, Y> nOq = null;
+  public f.b<T, V> nOr = null;
   
   public e(int paramInt)
   {
@@ -22,55 +22,32 @@ public abstract class e<T, V, X, Y>
     init();
   }
   
-  public e(int paramInt, f.b<T, V> paramb, a parama)
+  public e(int paramInt, f.b<T, V> paramb)
   {
-    this.feJ = paramb;
-    this.maxSize = paramInt;
-    this.feC = parama;
-    init();
-  }
-  
-  public e(f.b<T, V> paramb)
-  {
-    this.feJ = paramb;
+    this.nOr = paramb;
     this.maxSize = 10;
     init();
   }
   
-  protected abstract T XY();
-  
-  protected f<T, X> XZ()
+  public e(int paramInt, f.b<T, V> paramb, a parama)
   {
-    new h(this.maxSize, new f.b()
+    this.nOr = paramb;
+    this.maxSize = paramInt;
+    this.nOk = parama;
+    init();
+  }
+  
+  public void B(T paramT, V paramV)
+  {
+    this.nOp.B(paramT, dt(paramV));
+    if (this.nOq != null)
     {
-      public final void c(T paramAnonymousT, X paramAnonymousX1, X paramAnonymousX2)
-      {
-        AppMethodBeat.i(115467);
-        if (e.this.feJ != null) {
-          e.this.feJ.c(paramAnonymousT, e.this.aK(paramAnonymousX1), e.this.aK(paramAnonymousX2));
-        }
-        AppMethodBeat.o(115467);
-      }
-    });
+      Object localObject = bvY();
+      this.nOq.d(localObject, paramT, E(paramT, paramV));
+    }
   }
   
-  public V Y(T paramT)
-  {
-    Object localObject = aK(this.feH.Y(paramT));
-    if (this.feI != null) {
-      this.feI.p(XY(), paramT);
-    }
-    return localObject;
-  }
-  
-  public final boolean Z(T paramT)
-  {
-    boolean bool = this.feH.Z(paramT);
-    if (this.feI != null) {
-      this.feI.l(XY(), paramT);
-    }
-    return bool;
-  }
+  protected abstract Y E(T paramT, V paramV);
   
   protected d<T, Y> a(a parama)
   {
@@ -79,127 +56,178 @@ public abstract class e<T, V, X, Y>
   
   public final void a(final f.a<T, V> parama)
   {
-    this.feH.a(new f.a() {});
+    this.nOp.a(new f.a() {});
   }
   
-  protected abstract V aK(X paramX);
+  protected abstract T bvY();
   
-  protected abstract X aM(V paramV);
-  
-  public final boolean aa(T paramT)
+  protected f<T, X> bvZ()
   {
-    boolean bool = this.feH.aa(paramT);
-    if (this.feI != null) {
-      this.feI.q(XY(), paramT);
+    new h(this.maxSize, new f.b()
+    {
+      public final void preRemoveCallback(T paramAnonymousT, X paramAnonymousX1, X paramAnonymousX2)
+      {
+        AppMethodBeat.i(156513);
+        if (e.this.nOr != null) {
+          e.this.nOr.preRemoveCallback(paramAnonymousT, e.this.dr(paramAnonymousX1), e.this.dr(paramAnonymousX2));
+        }
+        AppMethodBeat.o(156513);
+      }
+    });
+  }
+  
+  public boolean check(T paramT)
+  {
+    boolean bool = this.nOp.check(paramT);
+    if (this.nOq != null) {
+      this.nOq.G(bvY(), paramT);
+    }
+    return bool;
+  }
+  
+  public boolean checkAndUpTime(T paramT)
+  {
+    boolean bool = this.nOp.checkAndUpTime(paramT);
+    if (this.nOq != null) {
+      this.nOq.L(bvY(), paramT);
     }
     return bool;
   }
   
   public final void clear()
   {
-    this.feH.clear();
+    this.nOp.clear();
   }
   
-  public final int createCount()
+  public int createCount()
   {
-    return this.feH.createCount();
-  }
-  
-  public final int evictionCount()
-  {
-    return this.feH.evictionCount();
-  }
-  
-  public void f(T paramT, V paramV)
-  {
-    this.feH.f(paramT, aM(paramV));
-    if (this.feI != null)
-    {
-      Object localObject = XY();
-      this.feI.f(localObject, paramT, j(paramT, paramV));
+    int i = this.nOp.createCount();
+    if (this.nOq != null) {
+      this.nOq.createCount();
     }
+    return i;
+  }
+  
+  public V ct(T paramT)
+  {
+    Object localObject = dr(this.nOp.ct(paramT));
+    if (this.nOq != null) {
+      this.nOq.K(bvY(), paramT);
+    }
+    return localObject;
+  }
+  
+  protected abstract V dr(X paramX);
+  
+  protected abstract X dt(V paramV);
+  
+  public int evictionCount()
+  {
+    int i = this.nOp.evictionCount();
+    if (this.nOq != null) {
+      this.nOq.evictionCount();
+    }
+    return i;
   }
   
   public V get(T paramT)
   {
-    Object localObject = aK(this.feH.get(paramT));
-    if (this.feI != null) {
-      this.feI.o(XY(), paramT);
+    Object localObject = dr(this.nOp.get(paramT));
+    if (this.nOq != null) {
+      this.nOq.J(bvY(), paramT);
     }
     return localObject;
   }
   
-  public final int hitCount()
+  public int hitCount()
   {
-    return this.feH.hitCount();
+    int i = this.nOp.hitCount();
+    if (this.nOq != null) {
+      this.nOq.hitCount();
+    }
+    return i;
   }
   
   protected void init()
   {
-    this.feH = XZ();
-    this.feI = a(this.feC);
+    this.nOp = bvZ();
+    this.nOq = a(this.nOk);
   }
   
-  protected abstract Y j(T paramT, V paramV);
-  
-  public final Set<T> keySet()
+  public Set<T> keySet()
   {
-    return this.feH.keySet();
+    return this.nOp.keySet();
   }
   
-  public final int maxSize()
+  public int maxSize()
   {
-    return this.feH.maxSize();
+    int i = this.nOp.maxSize();
+    if (this.nOq != null) {
+      this.nOq.maxSize();
+    }
+    return i;
   }
   
-  public final int missCount()
+  public int missCount()
   {
-    return this.feH.missCount();
+    int i = this.nOp.missCount();
+    if (this.nOq != null) {
+      this.nOq.missCount();
+    }
+    return i;
   }
   
   public V put(T paramT, V paramV)
   {
-    Object localObject1 = aK(this.feH.put(paramT, aM(paramV)));
-    if (this.feI != null)
+    Object localObject1 = dr(this.nOp.put(paramT, dt(paramV)));
+    if (this.nOq != null)
     {
-      Object localObject2 = XY();
-      this.feI.g(localObject2, paramT, j(paramT, paramV));
+      Object localObject2 = bvY();
+      this.nOq.e(localObject2, paramT, E(paramT, paramV));
     }
     return localObject1;
   }
   
-  public final int putCount()
+  public int putCount()
   {
-    return this.feH.putCount();
+    int i = this.nOp.putCount();
+    if (this.nOq != null) {
+      this.nOq.putCount();
+    }
+    return i;
   }
   
   public V remove(T paramT)
   {
-    Object localObject = aK(this.feH.remove(paramT));
-    if (this.feI != null) {
-      this.feI.n(XY(), paramT);
+    Object localObject = dr(this.nOp.remove(paramT));
+    if (this.nOq != null) {
+      this.nOq.I(bvY(), paramT);
     }
     return localObject;
   }
   
-  public final int size()
+  public int size()
   {
-    return this.feH.size();
+    int i = this.nOp.size();
+    if (this.nOq != null) {
+      this.nOq.size();
+    }
+    return i;
   }
   
-  public final int sizeOf(T paramT, V paramV)
+  public int sizeOf(T paramT, V paramV)
   {
-    return this.feH.sizeOf(paramT, aM(paramV));
+    return this.nOp.sizeOf(paramT, dt(paramV));
   }
   
-  public final void trimToSize(int paramInt)
+  public void trimToSize(int paramInt)
   {
-    this.feH.trimToSize(paramInt);
+    this.nOp.trimToSize(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.e
  * JD-Core Version:    0.7.0.1
  */

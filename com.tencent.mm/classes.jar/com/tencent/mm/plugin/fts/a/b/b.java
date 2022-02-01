@@ -10,45 +10,45 @@ import java.util.Queue;
 
 public final class b
 {
-  private HashSet<String> mTo;
-  public c mTp;
+  private HashSet<String> HtZ;
+  public c Hua;
   
   public b()
   {
-    AppMethodBeat.i(114284);
-    this.mTp = new c(' ');
-    this.mTo = new HashSet();
-    AppMethodBeat.o(114284);
+    AppMethodBeat.i(131720);
+    this.Hua = new c(' ');
+    this.HtZ = new HashSet();
+    AppMethodBeat.o(131720);
   }
   
-  public final void Pi(String paramString)
+  public final void aEs(String paramString)
   {
-    AppMethodBeat.i(114285);
-    if (!this.mTo.add(paramString))
+    AppMethodBeat.i(131721);
+    if (!this.HtZ.add(paramString))
     {
-      AppMethodBeat.o(114285);
+      AppMethodBeat.o(131721);
       return;
     }
-    c localc = this.mTp;
+    c localc = this.Hua;
     char[] arrayOfChar = paramString.toLowerCase().toCharArray();
     int i = 0;
     paramString = localc;
     while (i < arrayOfChar.length)
     {
       int j = arrayOfChar[i] - 'a';
-      if (paramString.mTq[j] == null) {
-        paramString.mTq[j] = new c(arrayOfChar[i]);
+      if (paramString.Hub[j] == null) {
+        paramString.Hub[j] = new c(arrayOfChar[i]);
       }
-      paramString = paramString.mTq[j];
+      paramString = paramString.Hub[j];
       i += 1;
     }
-    paramString.mTn = true;
-    AppMethodBeat.o(114285);
+    paramString.HtY = true;
+    AppMethodBeat.o(131721);
   }
   
-  public final List<List<String>> Pj(String paramString)
+  public final List<List<String>> aEt(String paramString)
   {
-    AppMethodBeat.i(114286);
+    AppMethodBeat.i(131722);
     ArrayDeque localArrayDeque = new ArrayDeque();
     localArrayDeque.offer(new a(0, 0, null));
     char[] arrayOfChar = paramString.toLowerCase().toCharArray();
@@ -60,33 +60,33 @@ public final class b
         break;
       }
       int i = locala.end;
-      Object localObject1 = this.mTp;
+      Object localObject1 = this.Hua;
       Object localObject2;
       while (i < arrayOfChar.length)
       {
         int j = arrayOfChar[i] - 'a';
-        if (localObject1.mTq[j] == null) {
+        if (localObject1.Hub[j] == null) {
           break;
         }
-        localObject1 = localObject1.mTq[j];
-        if ((((c)localObject1).mTn) || (i == arrayOfChar.length - 1))
+        localObject1 = localObject1.Hub[j];
+        if ((((c)localObject1).HtY) || (i == arrayOfChar.length - 1))
         {
-          if (locala.aWy == null) {
-            locala.aWy = new ArrayList();
+          if (locala.aAO == null) {
+            locala.aAO = new ArrayList();
           }
           localObject2 = new a(locala.end, i + 1, locala);
-          locala.aWy.add(localObject2);
+          locala.aAO.add(localObject2);
           if (((a)localObject2).end == arrayOfChar.length) {
-            ((a)localObject2).mTn = true;
+            ((a)localObject2).HtY = true;
           }
           localArrayDeque.offer(localObject2);
         }
         i += 1;
       }
-      if (locala.mTn)
+      if (locala.HtY)
       {
         localObject2 = new ArrayList();
-        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).mTm) {
+        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).HtX) {
           if (((a)localObject1).end > ((a)localObject1).start) {
             ((List)localObject2).add(paramString.substring(((a)localObject1).start, ((a)localObject1).end));
           }
@@ -95,7 +95,7 @@ public final class b
         localArrayList.add(localObject2);
       }
     }
-    AppMethodBeat.o(114286);
+    AppMethodBeat.o(131722);
     return localArrayList;
   }
 }

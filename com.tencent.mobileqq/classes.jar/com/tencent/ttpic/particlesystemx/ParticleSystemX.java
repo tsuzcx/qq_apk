@@ -8,7 +8,7 @@ import java.util.List;
 
 public final class ParticleSystemX
 {
-  private static final String TAG = ParticleSystemX.class.getSimpleName();
+  private static final String TAG = "ParticleSystemX";
   private static ParticleSystemX mInstance;
   private List<ParticleTemplateX> mClouds = new ArrayList();
   private Context mContext = null;
@@ -30,18 +30,16 @@ public final class ParticleSystemX
   private void loadFinish()
   {
     int i = 0;
-    int j = 0;
-    int m;
-    for (int k = 0; i < this.mClouds.size(); k = m)
+    int k;
+    for (int j = 0; i < this.mClouds.size(); j = k)
     {
       ParticleTemplateX localParticleTemplateX = (ParticleTemplateX)this.mClouds.get(i);
-      m = k + localParticleTemplateX.mMaxCount;
+      k = localParticleTemplateX.mMaxCount;
       k = j;
       if (localParticleTemplateX.mMaxCount > j) {
         k = localParticleTemplateX.mMaxCount;
       }
       i += 1;
-      j = k;
     }
     nativeRegisterTemplate(this.mNativeCtx, this.mClouds.toArray());
   }
@@ -109,9 +107,10 @@ public final class ParticleSystemX
   
   public void release()
   {
-    if (this.mNativeCtx != 0L)
+    long l = this.mNativeCtx;
+    if (l != 0L)
     {
-      nativeRelease(this.mNativeCtx);
+      nativeRelease(l);
       this.mNativeCtx = 0L;
       this.mContext = null;
     }
@@ -124,7 +123,7 @@ public final class ParticleSystemX
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.particlesystemx.ParticleSystemX
  * JD-Core Version:    0.7.0.1
  */

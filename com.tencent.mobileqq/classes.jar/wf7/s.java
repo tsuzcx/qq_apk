@@ -21,14 +21,15 @@ public final class s
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.aZ != null) {
-      paramJceOutputStream.write(this.aZ, 0);
+    String str = this.aZ;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.s
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/l72" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/l5b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
+    <View android:id="@id/l87" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/a43" />
+    <ImageView android:id="@id/l8b" android:visibility="gone" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:src="@drawable/azw" android:layout_centerInParent="true" android:contentDescription="@string/a1r" />
+    <ProgressBar android:id="@id/l78" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a75" />
+    <RelativeLayout android:id="@id/l71" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/kqu" android:background="@drawable/b04" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/c9" android:layout_alignParentBottom="true" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bhc" />
+        <RelativeLayout android:id="@id/l76" android:background="@drawable/azx" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_alignParentBottom="true">
+            <com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar android:id="@id/l79" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" />
+            <FrameLayout android:id="@id/l75" android:background="@drawable/aq0" android:visibility="visible" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/cp" android:layout_below="@id/l79" android:contentDescription="@string/bfi">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_close" android:contentDescription="@string/bfi" app:iconColor="@color/az" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/l77" android:background="@drawable/aq0" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cr" android:layout_below="@id/l79" android:layout_alignParentRight="true" android:contentDescription="@string/a0g">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_more" android:contentDescription="@string/a0g" app:iconColor="@color/az" />
+            </FrameLayout>
+            <FrameLayout android:id="@id/l7_" android:background="@drawable/aq0" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cr" android:layout_toLeftOf="@id/l77" android:layout_below="@id/l79" android:contentDescription="@string/a30">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_share" android:contentDescription="@string/a30" app:iconColor="@color/az" />
+            </FrameLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

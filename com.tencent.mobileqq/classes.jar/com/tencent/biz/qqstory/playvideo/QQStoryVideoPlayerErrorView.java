@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -11,14 +10,15 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import uqn;
-import wxe;
+import com.tencent.biz.qqstory.boundaries.StoryApi;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class QQStoryVideoPlayerErrorView
   extends RelativeLayout
 {
-  protected ImageView a;
   protected TextView a;
+  protected ImageView b;
   
   public QQStoryVideoPlayerErrorView(Context paramContext)
   {
@@ -36,52 +36,52 @@ public class QQStoryVideoPlayerErrorView
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(uqn.a(2131700093));
-      setTipsIcon(2130845961);
+      this.a.setVisibility(0);
+      setTipsText(StoryApi.b(2131897984));
+      setTipsIcon(2130848196);
       setTipsTextSize(16.0F);
-    }
-    do
-    {
       return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        setTipsText(alud.a(2131711485));
-        setTipsIcon(2130846119);
-        setTipsTextSize(14.0F);
-        return;
-      }
-    } while (paramInt != 2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    if (paramInt == 1)
+    {
+      this.a.setVisibility(0);
+      setTipsText(HardCodeUtil.a(2131908706));
+      setTipsIcon(2130848352);
+      setTipsTextSize(14.0F);
+      return;
+    }
+    if (paramInt == 2) {
+      this.a.setVisibility(8);
+    }
   }
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561638, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131377898));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368742));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131628205, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131447419));
+    this.b = ((ImageView)paramContext.findViewById(2131436318));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    ImageView localImageView = this.b;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localImageView.setVisibility(i);
   }
   
   public void setOnCloseClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    this.b.setOnClickListener(paramOnClickListener);
   }
   
   public void setOnTipsClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    this.a.setOnClickListener(paramOnClickListener);
   }
   
   public void setTipsIcon(int paramInt)
@@ -89,28 +89,30 @@ public class QQStoryVideoPlayerErrorView
     try
     {
       Drawable localDrawable = getResources().getDrawable(paramInt);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+      this.a.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      wxe.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
+      label21:
+      break label21;
     }
+    SLog.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
   }
   
   public void setTipsText(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.a.setText(paramString);
   }
   
   public void setTipsTextSize(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, paramFloat);
+    this.a.setTextSize(1, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView
  * JD-Core Version:    0.7.0.1
  */

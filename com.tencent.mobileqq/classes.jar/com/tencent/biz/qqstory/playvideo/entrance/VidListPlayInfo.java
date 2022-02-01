@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.playvideo.entrance;
 
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import xqq;
 
 public class VidListPlayInfo
   implements Serializable
@@ -57,22 +57,35 @@ public class VidListPlayInfo
     this.mStartVid = paramString2;
     this.mVidList = paramList2;
     this.mVideoFeedIdList = paramList1;
-    if (paramList1.size() == paramList2.size()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      xqq.a(bool, "vid size not equal feedId size");
-      return;
+    boolean bool;
+    if (paramList1.size() == paramList2.size()) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool, "vid size not equal feedId size");
   }
   
   public String toString()
   {
-    return "VidListPlayInfo{mStartVideoFeedId='" + this.mStartVideoFeedId + '\'' + ", mStartVid='" + this.mStartVid + '\'' + ", mVideoFeedIdList=" + this.mVideoFeedIdList + ", mVidList=" + this.mVidList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VidListPlayInfo{mStartVideoFeedId='");
+    localStringBuilder.append(this.mStartVideoFeedId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mStartVid='");
+    localStringBuilder.append(this.mStartVid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mVideoFeedIdList=");
+    localStringBuilder.append(this.mVideoFeedIdList);
+    localStringBuilder.append(", mVidList=");
+    localStringBuilder.append(this.mVidList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo
  * JD-Core Version:    0.7.0.1
  */

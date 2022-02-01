@@ -13,18 +13,18 @@ class ThreadOffFunction$ThreadOffJob
   
   protected IN doInBackground(@NonNull JobContext paramJobContext, @Nullable IN... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      ThreadOffFunction.access$200(this.this$0, null);
-      return null;
+      ThreadOffFunction.access$300(this.this$0, paramVarArgs[0]);
+      return paramVarArgs[0];
     }
-    ThreadOffFunction.access$300(this.this$0, paramVarArgs[0]);
-    return paramVarArgs[0];
+    ThreadOffFunction.access$200(this.this$0, null);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.ThreadOffFunction.ThreadOffJob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,179 +1,19 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.halley.common.h;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-public final class cc
+final class cc
 {
-  private static String a = "";
-  private static String b = "";
-  
-  public static String a(Context paramContext)
-  {
-    int i = 1;
-    if (paramContext == null) {
-      return null;
-    }
-    for (;;)
-    {
-      try
-      {
-        str = a;
-        if (str != null) {
-          continue;
-        }
-        if (i != 0)
-        {
-          paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-          if (paramContext != null) {
-            a = paramContext.getDeviceId();
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        String str;
-        int j;
-        continue;
-      }
-      return a;
-      j = str.trim().length();
-      if (j != 0) {
-        i = 0;
-      }
-    }
-  }
-  
-  public static String a(Exception paramException)
-  {
-    String str = Log.getStackTraceString(paramException);
-    if (str != null)
-    {
-      if ((str.indexOf("\n") != -1) && (str.indexOf("\n") < 100)) {
-        paramException = str.substring(0, str.indexOf("\n"));
-      }
-      do
-      {
-        return paramException;
-        paramException = str;
-      } while (str.length() <= 100);
-      return str.substring(0, 100);
-    }
-    return "";
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString == null) {}
-    while (paramString.trim().length() == 0) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static String b(Context paramContext)
-  {
-    int i = 1;
-    if (paramContext == null) {
-      return null;
-    }
-    for (;;)
-    {
-      try
-      {
-        str = b;
-        if (str != null) {
-          continue;
-        }
-        if (i != 0)
-        {
-          paramContext = (WifiManager)paramContext.getSystemService("wifi");
-          if (paramContext != null)
-          {
-            paramContext = paramContext.getConnectionInfo();
-            if (paramContext != null) {
-              b = paramContext.getMacAddress();
-            }
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        String str;
-        int j;
-        continue;
-      }
-      return b;
-      j = str.trim().length();
-      if (j != 0) {
-        i = 0;
-      }
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    Object localObject = h.a();
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder("");
-      String str = a((Context)localObject);
-      if (!TextUtils.isEmpty(str)) {
-        localStringBuilder.append(str);
-      }
-      localObject = b((Context)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localStringBuilder.append((String)localObject);
-      }
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuilder.append(paramString);
-      localStringBuilder.append((int)(Math.random() * 2147483647.0D));
-      paramString = c(localStringBuilder.toString());
-      return paramString;
-    }
-    catch (Exception paramString) {}
-    return "";
-  }
-  
-  private static String c(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    try
-    {
-      localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).update(paramString.getBytes());
-      paramString = ((MessageDigest)localObject).digest();
-      if (paramString == null) {
-        return "";
-      }
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    Object localObject = new StringBuffer();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      String str = Integer.toHexString(paramString[i] & 0xFF);
-      if (str.length() == 1) {
-        ((StringBuffer)localObject).append("0");
-      }
-      ((StringBuffer)localObject).append(str);
-      i += 1;
-    }
-    return ((StringBuffer)localObject).toString().toUpperCase();
-  }
+  static final int[] a = { 16842755, 16843041, 16843093, 16843097, 16843551, 16843754, 16843771, 16843778, 16843779 };
+  static final int[] b = { 16842755, 16843189, 16843190, 16843556, 16843557, 16843558, 16843866, 16843867 };
+  static final int[] c = { 16842755, 16843780, 16843781, 16843782, 16843783, 16843784, 16843785, 16843786, 16843787, 16843788, 16843789, 16843979, 16843980, 16844062 };
+  static final int[] d = { 16842755, 16843781 };
+  static final int[] e = { 16843161 };
+  static final int[] f = { 16842755, 16843213 };
+  public static final int[] g = { 16843073, 16843160, 16843198, 16843199, 16843200, 16843486, 16843487, 16843488, 17891484 };
+  public static final int[] h = { 16843490 };
+  public static final int[] i = { 16843486, 16843487, 16843488, 16843489 };
+  public static final int[] j = { 16842788, 16843073, 16843488, 16843992 };
+  public static final int[] k = { 16843489, 16843781, 16843892, 16843893 };
+  public static final int[] l = { 16843772, 16843773, 16843774, 16843775, 16843781 };
 }
 
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/agk" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.biz.qqcircle.widgets.QCirclePanelLoadingView android:layout_gravity="center" android:id="@id/ngo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/d3g" />
+            <com.tencent.biz.qqcircle.immersive.views.QFSPageTurnContainer android:id="@id/ngp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.biz.qqcircle.immersive.views.QFSFullScreenHintView android:id="@id/ngj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <include layout="@layout/d36" />
+        </FrameLayout>
+        <include layout="@layout/d34" />
+    </LinearLayout>
+    <ViewStub android:id="@id/myk" android:visibility="gone" android:layout="@layout/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p_q" android:visibility="gone" android:layout="@layout/cyi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

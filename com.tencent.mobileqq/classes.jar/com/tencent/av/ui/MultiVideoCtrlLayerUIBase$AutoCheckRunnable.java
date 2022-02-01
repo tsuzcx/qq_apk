@@ -7,12 +7,12 @@ class MultiVideoCtrlLayerUIBase$AutoCheckRunnable
   
   public void run()
   {
-    this.this$0.v();
+    this.this$0.J();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.AutoCheckRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,161 @@
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.StatusHistoryActivity;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity.ItemViewHolder;
+import com.tencent.mobileqq.richstatus.StatusHistoryActivity.MoreViewHolder;
 import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.richstatus.StatusServlet;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
-import mqq.app.NewIntent;
 
 public class ght
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public ght(StatusHistoryActivity paramStatusHistoryActivity) {}
+  private ght(StatusHistoryActivity paramStatusHistoryActivity) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
     int i = 1;
-    boolean bool;
-    if ((paramView != null) && (paramView.getTag() != null) && ((paramView.getTag() instanceof Integer)))
-    {
-      if (!NetworkUtil.e(this.a)) {
-        QQToast.a(this.a, this.a.getString(2131562452), 0).b(this.a.d());
-      }
-      int j;
-      do
-      {
-        return;
-        j = ((Integer)paramView.getTag()).intValue();
-      } while ((StatusHistoryActivity.a(this.a) == null) || (j < 0) || (j >= StatusHistoryActivity.a(this.a).size()));
-      StatusHistoryActivity.a(this.a, (RichStatus)StatusHistoryActivity.a(this.a).get(j));
-      paramView = this.a;
-      if (j != 0) {
-        break label271;
-      }
-      bool = true;
-      StatusHistoryActivity.b(paramView, bool);
-      StatusHistoryActivity.a(this.a, new QQProgressDialog(this.a, this.a.d()));
-      StatusHistoryActivity.a(this.a).a(this.a.getString(2131559283));
-      StatusHistoryActivity.a(this.a).show();
-      if ((!StatusHistoryActivity.b(this.a)) || (StatusHistoryActivity.a(this.a).size() != 1)) {
-        break label277;
-      }
-      paramView = (StatusManager)this.a.b.getManager(13);
-      if (paramView != null) {
-        paramView.a(RichStatus.a(), -1);
-      }
+    int j = StatusHistoryActivity.a(this.a).size();
+    if (j == 0) {
+      return 1;
     }
-    label271:
-    label277:
+    if (StatusHistoryActivity.a(this.a) != 0) {}
     for (;;)
     {
-      label250:
-      if (StatusHistoryActivity.a(this.a) != null)
+      return i + j;
+      i = 0;
+    }
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return getItemViewType(paramInt);
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    int i = StatusHistoryActivity.a(this.a).size();
+    if (i == 0) {
+      return 2;
+    }
+    if (paramInt < i) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = getItemViewType(paramInt);
+    if (i == 2)
+    {
+      StatusHistoryActivity.a(this.a).setLayoutParams(new AbsListView.LayoutParams(StatusHistoryActivity.a(this.a).getWidth(), StatusHistoryActivity.a(this.a).getHeight()));
+      return StatusHistoryActivity.a(this.a);
+    }
+    if (i == 0)
+    {
+      RichStatus localRichStatus;
+      if (paramView == null)
       {
-        StatusHistoryActivity.a(this.a).d();
-        return;
-        bool = false;
+        paramView = LayoutInflater.from(this.a).inflate(2130903989, null);
+        paramView.setFocusable(true);
+        paramViewGroup = new StatusHistoryActivity.ItemViewHolder();
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131234527));
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView = ((ClickableColorSpanTextView)paramView.findViewById(2131234528));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131234526));
+        paramViewGroup.b = paramView.findViewById(2131234525);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setTag(paramViewGroup);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setSpanClickListener(this.a);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131230987));
+        paramViewGroup.jdField_a_of_type_AndroidViewView = paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout.findViewById(2131231700);
+        paramView.setTag(paramViewGroup);
+        paramView.setClickable(true);
+        localRichStatus = (RichStatus)StatusHistoryActivity.a(this.a).get(paramInt);
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = localRichStatus;
+        if (!TextUtils.isEmpty(localRichStatus.c)) {
+          break label352;
+        }
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840236);
+        label240:
+        if (StatusHistoryActivity.a(this.a).size() != 1) {
+          break label380;
+        }
+        paramViewGroup.b.setVisibility(8);
+      }
+      for (;;)
+      {
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView.setText(localRichStatus.a(null, this.a.getResources().getColor(2131362083)));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRichStatus.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView, TimeFormatterUtils.a(this.a, 3, localRichStatus.a * 1000L) + "    "));
+        return paramView;
+        paramViewGroup = (StatusHistoryActivity.ItemViewHolder)paramView.getTag();
         break;
-        if ((StatusHistoryActivity.a(this.a) != null) && (this.a.b != null) && (StatusHistoryActivity.a(this.a).a != null))
-        {
-          paramView = new NewIntent(this.a.b.a(), StatusServlet.class);
-          paramView.putExtra("k_cmd", 5);
-          paramView.putExtra("k_status_key", StatusHistoryActivity.a(this.a).a);
-          if (!StatusHistoryActivity.c(this.a)) {
-            break label387;
-          }
+        label352:
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(StatusHistoryActivity.a(this.a).a(localRichStatus.b, 201));
+        break label240;
+        label380:
+        paramViewGroup.b.setVisibility(0);
+        if (paramInt == 0) {
+          paramViewGroup.b.setBackgroundResource(2130840239);
+        } else if (paramInt == StatusHistoryActivity.a(this.a).size() - 1) {
+          paramViewGroup.b.setBackgroundResource(2130840237);
+        } else {
+          paramViewGroup.b.setBackgroundResource(2130840238);
         }
       }
     }
-    for (;;)
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      paramView.putExtra("k_status_flag", i);
-      this.a.b.startServlet(paramView);
-      break label250;
-      break;
-      label387:
-      i = 0;
+      paramViewGroup = this.a.getLayoutInflater().inflate(2130903283, null);
+      paramViewGroup.setOnClickListener(this.a);
+      paramView = new StatusHistoryActivity.MoreViewHolder();
+      paramViewGroup.setTag(paramView);
+      paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131231066));
+      paramViewGroup.findViewById(2131231867).setVisibility(8);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131231868));
     }
+    if (StatusHistoryActivity.a(this.a) == 1)
+    {
+      StatusHistoryActivity.a(this.a, 2);
+      this.a.a(false, false);
+    }
+    paramView = (StatusHistoryActivity.MoreViewHolder)paramViewGroup.getTag();
+    if (StatusHistoryActivity.a(this.a) == 3)
+    {
+      paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131559278));
+      return paramViewGroup;
+    }
+    paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getString(2131559279));
+    return paramViewGroup;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return 2 != getItemViewType(paramInt);
   }
 }
 

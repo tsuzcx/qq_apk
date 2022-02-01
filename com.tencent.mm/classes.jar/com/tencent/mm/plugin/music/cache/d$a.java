@@ -7,7 +7,7 @@ public final class d$a
 {
   public static byte[] a(BitSet paramBitSet)
   {
-    AppMethodBeat.i(137402);
+    AppMethodBeat.i(137152);
     byte[] arrayOfByte = new byte[paramBitSet.size() / 8];
     int i = 0;
     if (i < paramBitSet.size())
@@ -22,13 +22,13 @@ public final class d$a
         break;
       }
     }
-    AppMethodBeat.o(137402);
+    AppMethodBeat.o(137152);
     return arrayOfByte;
   }
   
-  public static BitSet bc(byte[] paramArrayOfByte)
+  public static BitSet cl(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(137403);
+    AppMethodBeat.i(137153);
     BitSet localBitSet = new BitSet(paramArrayOfByte.length * 8);
     int i = 0;
     int j = 0;
@@ -48,13 +48,13 @@ public final class d$a
       }
       i += 1;
     }
-    AppMethodBeat.o(137403);
+    AppMethodBeat.o(137153);
     return localBitSet;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.music.cache.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -20,32 +20,32 @@ public class FormSwitchSimpleItem
   public FormSwitchSimpleItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166991));
+      this.a = new TextView(getContext());
+      this.a.setTextSize(2, 14.0F);
+      this.a.setTextColor(getResources().getColorStateList(2131168133));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.rightMargin = getResources().getDimensionPixelSize(2131297152);
-      localLayoutParams.addRule(0, this.jdField_a_of_type_ComTencentWidgetSwitch.getId());
+      localLayoutParams.rightMargin = getResources().getDimensionPixelSize(2131297718);
+      localLayoutParams.addRule(0, this.d.getId());
       localLayoutParams.addRule(15);
-      addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
+      addView(this.a, localLayoutParams);
     }
   }
   
-  public TextView b()
+  public TextView getRightText()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormSwitchSimpleItem
  * JD-Core Version:    0.7.0.1
  */

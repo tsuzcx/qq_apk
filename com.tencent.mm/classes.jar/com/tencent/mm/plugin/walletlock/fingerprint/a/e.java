@@ -1,52 +1,53 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.clb;
-import com.tencent.mm.protocal.protobuf.clc;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.foo;
+import com.tencent.mm.protocal.protobuf.fop;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  String mGC;
-  private b rr;
-  boolean uEq;
+  String Hgd;
+  boolean WfT;
+  private h callback;
+  private c rr;
   
   public e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(51478);
-    this.uEq = false;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new clb();
-    ((b.a)localObject).fsY = new clc();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/touchlockgetchallenge";
-    ((b.a)localObject).funcId = 1548;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (clb)this.rr.fsV.fta;
-    ((clb)localObject).scene = 1548;
-    ((clb)localObject).son = paramString1;
-    ((clb)localObject).kbP = paramString2;
-    AppMethodBeat.o(51478);
+    AppMethodBeat.i(129683);
+    this.WfT = false;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new foo();
+    ((c.a)localObject).otF = new fop();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/touchlockgetchallenge";
+    ((c.a)localObject).funcId = 1548;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (foo)c.b.b(this.rr.otB);
+    ((foo)localObject).scene = 1548;
+    ((foo)localObject).RZY = paramString1;
+    ((foo)localObject).mXG = paramString2;
+    AppMethodBeat.o(129683);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(51479);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(51479);
+    AppMethodBeat.i(129684);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(129684);
     return i;
   }
   
@@ -55,27 +56,27 @@ public final class e
     return 1548;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(51480);
-    ab.i("MicroMsg.NetSceneGetTouchWalletLockChallenge", "alvinluo get touch wallet lock challenge errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (clc)((b)paramq).fsW.fta;
-    this.mGC = paramq.mGC;
-    ab.d("MicroMsg.NetSceneGetTouchWalletLockChallenge", "alvinluo get touch lock challenge: %s", new Object[] { this.mGC });
-    if (paramq.xPX == 1) {}
-    for (this.uEq = true;; this.uEq = false)
+    AppMethodBeat.i(129685);
+    Log.i("MicroMsg.NetSceneGetTouchWalletLockChallenge", "alvinluo get touch wallet lock challenge errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = (fop)c.c.b(((c)params).otC);
+    this.Hgd = params.Hgd;
+    Log.d("MicroMsg.NetSceneGetTouchWalletLockChallenge", "alvinluo get touch lock challenge: %s", new Object[] { this.Hgd });
+    if (params.abGo == 1) {}
+    for (this.WfT = true;; this.WfT = false)
     {
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
-      AppMethodBeat.o(51480);
+      AppMethodBeat.o(129685);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.fingerprint.a.e
  * JD-Core Version:    0.7.0.1
  */

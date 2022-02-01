@@ -8,7 +8,7 @@ public final class GetImgInfoFromSOSOReq
   extends JceStruct
 {
   static byte[] cache_vecReqBody;
-  public byte[] vecReqBody;
+  public byte[] vecReqBody = null;
   
   public GetImgInfoFromSOSOReq() {}
   
@@ -34,7 +34,7 @@ public final class GetImgInfoFromSOSOReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.GetImgInfoFromSOSOReq
  * JD-Core Version:    0.7.0.1
  */

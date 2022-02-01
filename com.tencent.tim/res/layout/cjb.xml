@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/root" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ebg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="49.0dip">
+        <com.tencent.mobileqq.fpsreport.FPSSwipListView android:id="@id/eap" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:divider="@null" android:dividerHeight="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="bottom" android:id="@id/nhs" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/mmf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wvd" android:layout_weight="1.0" style="@style/a3w" />
+        <Button android:id="@id/mme" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wvc" android:layout_weight="1.0" style="@style/a3v" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ob4" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/ob5" android:paddingBottom="54.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="@string/ysv" />
+    </LinearLayout>
+</FrameLayout>

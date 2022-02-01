@@ -1,32 +1,24 @@
-import android.content.res.Resources;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.mobileqq.widget.CameraFrameLayout;
 
-public class hfk
-  implements Runnable
+class hfk
+  implements View.OnClickListener
 {
-  public hfk(CameraFrameLayout paramCameraFrameLayout) {}
+  hfk(hfj paramhfj) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    CameraFrameLayout.a(this.a, true);
-    synchronized (CameraFrameLayout.a(this.a))
-    {
-      if (CameraFrameLayout.a(this.a) != null)
-      {
-        CameraFrameLayout.a(this.a, new ImageView(this.a.getContext()));
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.addRule(11);
-        localLayoutParams.addRule(3, CameraFrameLayout.a(this.a));
-        CameraFrameLayout.a(this.a).setLayoutParams(localLayoutParams);
-        CameraFrameLayout.a(this.a).setImageDrawable(this.a.getResources().getDrawable(2130837673));
-        CameraFrameLayout.a(this.a).addView(CameraFrameLayout.a(this.a));
-        CameraFrameLayout.a(this.a).setOnClickListener(new hfl(this));
-      }
+    if (!CameraFrameLayout.a(this.a.a)) {
       return;
     }
+    paramView = (QQAppInterface)((BaseActivity)this.a.a.getContext()).getAppRuntime();
+    ReportController.b(paramView, "CliOper", "", "", "background", "bkground_shut", 0, 0, "1", "", "", "");
+    CameraUtil.b(paramView);
   }
 }
 

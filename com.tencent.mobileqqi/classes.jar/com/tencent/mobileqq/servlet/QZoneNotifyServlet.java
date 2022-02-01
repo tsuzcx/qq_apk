@@ -18,7 +18,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
-import gjf;
+import gje;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
@@ -35,7 +35,7 @@ public class QZoneNotifyServlet
   public static final String c = "qzone_send_by_time";
   public static final String d = "scene";
   private static final String e = "Q.lebatab.QZoneNotifyServlet";
-  private gjf jdField_a_of_type_Gjf;
+  private gje jdField_a_of_type_Gje;
   private Timer jdField_a_of_type_JavaUtilTimer;
   private long c = 0L;
   
@@ -49,12 +49,12 @@ public class QZoneNotifyServlet
     if (this.jdField_a_of_type_JavaUtilTimer == null) {
       this.jdField_a_of_type_JavaUtilTimer = ThreadManager.a();
     }
-    if (this.jdField_a_of_type_Gjf != null)
+    if (this.jdField_a_of_type_Gje != null)
     {
-      this.jdField_a_of_type_Gjf.cancel();
-      this.jdField_a_of_type_Gjf = null;
+      this.jdField_a_of_type_Gje.cancel();
+      this.jdField_a_of_type_Gje = null;
     }
-    this.jdField_a_of_type_Gjf = new gjf(this);
+    this.jdField_a_of_type_Gje = new gje(this);
     long l = b;
     Object localObject = (QQAppInterface)getAppRuntime();
     if (localObject != null)
@@ -66,7 +66,7 @@ public class QZoneNotifyServlet
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_Gjf, l);
+      this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_Gje, l);
       if (QLog.isColorLevel()) {
         QLog.d("Q.lebatab.QZoneNotifyServlet", 2, "scheduleQZoneCountTask.section interval=" + l);
       }
@@ -92,10 +92,10 @@ public class QZoneNotifyServlet
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Gjf != null)
+    if (this.jdField_a_of_type_Gje != null)
     {
-      this.jdField_a_of_type_Gjf.cancel();
-      this.jdField_a_of_type_Gjf = null;
+      this.jdField_a_of_type_Gje.cancel();
+      this.jdField_a_of_type_Gje = null;
     }
     if (this.jdField_a_of_type_JavaUtilTimer != null) {
       this.jdField_a_of_type_JavaUtilTimer.purge();

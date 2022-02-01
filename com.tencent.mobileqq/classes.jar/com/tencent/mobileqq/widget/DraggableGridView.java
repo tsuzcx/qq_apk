@@ -19,56 +19,47 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.ListAdapter;
-import bdaq;
-import beni;
-import beoz;
-import bepa;
-import bepb;
-import bepc;
-import bepe;
-import bepg;
-import beph;
-import bepi;
-import bhse;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.util.BitmapUtil;
 import com.tencent.widget.ListView;
 
 public class DraggableGridView
   extends FrameLayout
 {
-  private static int jdField_a_of_type_Int;
-  private float jdField_a_of_type_Float;
-  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
-  private Handler jdField_a_of_type_AndroidOsHandler = new bepb(this, Looper.getMainLooper());
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private beni jdField_a_of_type_Beni;
-  private bepe jdField_a_of_type_Bepe;
-  private beph jdField_a_of_type_Beph;
-  private bepi jdField_a_of_type_Bepi;
-  private DraggableGridView.ScrollThread jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView$ScrollThread;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 2;
-  private Point jdField_b_of_type_AndroidGraphicsPoint = new Point();
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
-  private int e;
+  private static int a;
+  private int b = 2;
+  private ListView c;
+  private DraggableGridView.GridListViewAdapter d;
+  private BaseDraggableGridViewAdapter e;
+  private DraggableGridView.OnGridItemClickListener f;
+  private DraggableGridView.OnGridItemLongClickListener g;
+  private ImageView h;
+  private Point i = new Point();
+  private boolean j = false;
+  private boolean k = false;
+  private float l = 0.0F;
+  private float m = 0.0F;
+  private float n = 0.0F;
+  private float o = 0.0F;
+  private int p = -1;
+  private int q = -1;
+  private Point r = new Point();
+  private boolean s = false;
+  private boolean t = false;
+  private DraggableGridView.ScrollThread u;
+  private int v = 0;
+  private Handler w = new DraggableGridView.3(this, Looper.getMainLooper());
   
   public DraggableGridView(Context paramContext)
   {
     super(paramContext);
-    b();
+    d();
   }
   
   public DraggableGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b();
+    d();
   }
   
   private Point a(Point paramPoint)
@@ -77,24 +68,21 @@ public class DraggableGridView
       return null;
     }
     if (paramPoint.x == 0) {
-      return new Point(this.jdField_a_of_type_Beni.a(paramPoint.y - 1) - 1, paramPoint.y - 1);
+      return new Point(this.e.b(paramPoint.y - 1) - 1, paramPoint.y - 1);
     }
     return new Point(paramPoint.x - 1, paramPoint.y);
   }
   
   private MeasureGridView a(int paramInt)
   {
-    int i = 0;
-    if (i < this.jdField_a_of_type_ComTencentWidgetListView.getChildCount())
+    int i1 = 0;
+    while (i1 < this.c.getChildCount())
     {
-      View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-      if ((localView.getTag() == null) || (!(localView.getTag() instanceof Integer))) {}
-      while ((((Integer)localView.getTag()).intValue() != paramInt) || (!(localView instanceof GridView)))
-      {
-        i += 1;
-        break;
+      View localView = this.c.getChildAt(i1);
+      if ((localView.getTag() != null) && ((localView.getTag() instanceof Integer)) && (((Integer)localView.getTag()).intValue() == paramInt) && ((localView instanceof GridView))) {
+        return (MeasureGridView)localView;
       }
-      return (MeasureGridView)localView;
+      i1 += 1;
     }
     return null;
   }
@@ -102,217 +90,214 @@ public class DraggableGridView
   private void a(Point paramPoint, boolean paramBoolean)
   {
     MeasureGridView localMeasureGridView = a(paramPoint.y);
-    if ((localMeasureGridView == null) || (localMeasureGridView.getChildAt(paramPoint.x) == null)) {}
-    bepg localbepg;
-    View localView;
-    Point localPoint;
-    int j;
-    int k;
-    do
+    if (localMeasureGridView != null)
     {
-      do
+      if (localMeasureGridView.getChildAt(paramPoint.x) == null) {
+        return;
+      }
+      if (this.s) {
+        return;
+      }
+      DraggableGridView.MovoAnimationListener localMovoAnimationListener = new DraggableGridView.MovoAnimationListener(this, this.r, paramPoint, paramBoolean);
+      View localView;
+      Point localPoint;
+      if (paramPoint.y == this.r.y)
       {
-        do
+        if (paramPoint.x > this.r.x)
         {
-          return;
-        } while (this.jdField_c_of_type_Boolean);
-        localbepg = new bepg(this, this.jdField_b_of_type_AndroidGraphicsPoint, paramPoint, paramBoolean);
-        if (paramPoint.y == this.jdField_b_of_type_AndroidGraphicsPoint.y)
-        {
-          if (paramPoint.x > this.jdField_b_of_type_AndroidGraphicsPoint.x)
+          i1 = this.r.x;
+          for (;;)
           {
-            i = this.jdField_b_of_type_AndroidGraphicsPoint.x + 1;
-            while (i <= paramPoint.x)
+            i1 += 1;
+            if (i1 > paramPoint.x) {
+              break;
+            }
+            localView = localMeasureGridView.getChildAt(i1);
+            localPoint = new Point(i1, paramPoint.y);
+            a(localView, localPoint, a(localPoint), localMovoAnimationListener);
+          }
+        }
+        i1 = this.r.x - 1;
+        while (i1 >= paramPoint.x)
+        {
+          localView = localMeasureGridView.getChildAt(i1);
+          localPoint = new Point(i1, paramPoint.y);
+          a(localView, localPoint, b(localPoint), localMovoAnimationListener);
+          i1 -= 1;
+        }
+      }
+      int i3;
+      int i2;
+      if (paramPoint.y > this.r.y)
+      {
+        localMeasureGridView = a(this.r.y);
+        if (localMeasureGridView == null) {
+          return;
+        }
+        i1 = this.r.x;
+        for (;;)
+        {
+          i1 += 1;
+          if (i1 >= this.e.b(this.r.y)) {
+            break;
+          }
+          localView = localMeasureGridView.getChildAt(i1);
+          localPoint = new Point(i1, this.r.y);
+          a(localView, localPoint, a(localPoint), localMovoAnimationListener);
+        }
+        for (i1 = this.r.y;; i1 = i3)
+        {
+          i3 = i1 + 1;
+          if (i3 > paramPoint.y) {
+            break;
+          }
+          localMeasureGridView = a(i3);
+          if (localMeasureGridView != null)
+          {
+            if (i3 == paramPoint.y) {
+              i1 = paramPoint.x + 1;
+            } else {
+              i1 = localMeasureGridView.getAdapter().getCount();
+            }
+            i2 = 0;
+            while (i2 < i1)
             {
-              localView = localMeasureGridView.getChildAt(i);
-              localPoint = new Point(i, paramPoint.y);
-              a(localView, localPoint, a(localPoint), localbepg);
-              i += 1;
+              localView = localMeasureGridView.getChildAt(i2);
+              localPoint = new Point(i2, i3);
+              a(localView, localPoint, a(localPoint), localMovoAnimationListener);
+              i2 += 1;
             }
           }
-          i = this.jdField_b_of_type_AndroidGraphicsPoint.x - 1;
-          while (i >= paramPoint.x)
-          {
-            localView = localMeasureGridView.getChildAt(i);
-            localPoint = new Point(i, paramPoint.y);
-            a(localView, localPoint, b(localPoint), localbepg);
-            i -= 1;
-          }
         }
-        if (paramPoint.y <= this.jdField_b_of_type_AndroidGraphicsPoint.y) {
-          break;
-        }
-        localMeasureGridView = a(this.jdField_b_of_type_AndroidGraphicsPoint.y);
-      } while (localMeasureGridView == null);
-      i = this.jdField_b_of_type_AndroidGraphicsPoint.x + 1;
-      while (i < this.jdField_a_of_type_Beni.a(this.jdField_b_of_type_AndroidGraphicsPoint.y))
-      {
-        localView = localMeasureGridView.getChildAt(i);
-        localPoint = new Point(i, this.jdField_b_of_type_AndroidGraphicsPoint.y);
-        a(localView, localPoint, a(localPoint), localbepg);
-        i += 1;
       }
-      i = this.jdField_b_of_type_AndroidGraphicsPoint.y + 1;
-      while (i <= paramPoint.y)
+      localMeasureGridView = a(this.r.y);
+      if (localMeasureGridView == null) {
+        return;
+      }
+      int i1 = this.r.x - 1;
+      while (i1 >= 0)
       {
-        localMeasureGridView = a(i);
+        localView = localMeasureGridView.getChildAt(i1);
+        localPoint = new Point(i1, this.r.y);
+        a(localView, localPoint, b(localPoint), localMovoAnimationListener);
+        i1 -= 1;
+      }
+      i1 = this.r.y - 1;
+      while (i1 >= paramPoint.y)
+      {
+        localMeasureGridView = a(i1);
         if (localMeasureGridView != null)
         {
-          if (i == paramPoint.y) {}
-          for (j = paramPoint.x + 1;; j = localMeasureGridView.getAdapter().getCount())
+          if (i1 == paramPoint.y) {
+            i2 = paramPoint.x;
+          } else {
+            i2 = 0;
+          }
+          i3 = localMeasureGridView.getAdapter().getCount() - 1;
+          while (i3 >= i2)
           {
-            k = 0;
-            while (k < j)
-            {
-              localView = localMeasureGridView.getChildAt(k);
-              localPoint = new Point(k, i);
-              a(localView, localPoint, a(localPoint), localbepg);
-              k += 1;
-            }
+            localView = localMeasureGridView.getChildAt(i3);
+            localPoint = new Point(i3, paramPoint.y);
+            a(localView, localPoint, b(localPoint), localMovoAnimationListener);
+            i3 -= 1;
           }
         }
-        i += 1;
+        i1 -= 1;
       }
-      localMeasureGridView = a(this.jdField_b_of_type_AndroidGraphicsPoint.y);
-    } while (localMeasureGridView == null);
-    int i = this.jdField_b_of_type_AndroidGraphicsPoint.x - 1;
-    while (i >= 0)
-    {
-      localView = localMeasureGridView.getChildAt(i);
-      localPoint = new Point(i, this.jdField_b_of_type_AndroidGraphicsPoint.y);
-      a(localView, localPoint, b(localPoint), localbepg);
-      i -= 1;
+      this.r.set(paramPoint.x, paramPoint.y);
     }
-    i = this.jdField_b_of_type_AndroidGraphicsPoint.y - 1;
-    while (i >= paramPoint.y)
-    {
-      localMeasureGridView = a(i);
-      if (localMeasureGridView != null)
-      {
-        if (i == paramPoint.y) {}
-        for (j = paramPoint.x;; j = 0)
-        {
-          k = localMeasureGridView.getAdapter().getCount() - 1;
-          while (k >= j)
-          {
-            localView = localMeasureGridView.getChildAt(k);
-            localPoint = new Point(k, paramPoint.y);
-            a(localView, localPoint, b(localPoint), localbepg);
-            k -= 1;
-          }
-        }
-      }
-      i -= 1;
-    }
-    this.jdField_b_of_type_AndroidGraphicsPoint.set(paramPoint.x, paramPoint.y);
   }
   
-  private void a(View paramView, Point paramPoint1, Point paramPoint2, bepg parambepg)
+  private void a(View paramView, Point paramPoint1, Point paramPoint2, DraggableGridView.MovoAnimationListener paramMovoAnimationListener)
   {
-    if (paramPoint2 == null) {}
-    do
-    {
+    if (paramPoint2 == null) {
       return;
-      paramPoint1 = a(paramPoint1.y, paramPoint1.x);
-      paramPoint2 = a(paramPoint2.y, paramPoint2.x);
-    } while ((paramPoint1 == null) || (paramPoint2 == null));
-    int i = paramPoint2.getLeft();
-    int j = paramPoint1.getLeft();
-    int k = ((View)paramPoint2.getParent()).getLeft();
-    int m = ((View)paramPoint1.getParent()).getLeft();
-    int n = paramPoint2.getTop();
-    int i1 = paramPoint1.getTop();
-    int i2 = ((View)paramPoint2.getParent()).getTop();
-    int i3 = ((View)paramPoint1.getParent()).getTop();
-    paramPoint1 = new TranslateAnimation(0, 0.0F, 0, i - j + k - m, 0, 0.0F, 0, n - i1 + i2 - i3);
-    paramPoint1.setDuration(300L);
-    paramPoint1.setAnimationListener(parambepg);
-    bepg.a(parambepg);
-    paramView.startAnimation(paramPoint1);
+    }
+    paramPoint1 = b(paramPoint1.y, paramPoint1.x);
+    paramPoint2 = b(paramPoint2.y, paramPoint2.x);
+    if (paramPoint1 != null)
+    {
+      if (paramPoint2 == null) {
+        return;
+      }
+      int i1 = paramPoint2.getLeft();
+      int i2 = paramPoint1.getLeft();
+      int i3 = ((View)paramPoint2.getParent()).getLeft();
+      int i4 = ((View)paramPoint1.getParent()).getLeft();
+      int i5 = paramPoint2.getTop();
+      int i6 = paramPoint1.getTop();
+      int i7 = ((View)paramPoint2.getParent()).getTop();
+      int i8 = ((View)paramPoint1.getParent()).getTop();
+      paramPoint1 = new TranslateAnimation(0, 0.0F, 0, i1 - i2 + i3 - i4, 0, 0.0F, 0, i5 - i6 + i7 - i8);
+      paramPoint1.setDuration(300L);
+      paramPoint1.setAnimationListener(paramMovoAnimationListener);
+      DraggableGridView.MovoAnimationListener.a(paramMovoAnimationListener);
+      paramView.startAnimation(paramPoint1);
+    }
   }
   
   private Point b(Point paramPoint)
   {
-    if ((paramPoint.x == this.jdField_a_of_type_Beni.a(paramPoint.y) - 1) && (paramPoint.y == this.jdField_a_of_type_Beni.a() - 1)) {
+    if ((paramPoint.x == this.e.b(paramPoint.y) - 1) && (paramPoint.y == this.e.d() - 1)) {
       return null;
     }
-    if (paramPoint.x == this.jdField_a_of_type_Beni.a(paramPoint.y) - 1) {
+    if (paramPoint.x == this.e.b(paramPoint.y) - 1) {
       return new Point(0, paramPoint.y + 1);
     }
     return new Point(paramPoint.x + 1, paramPoint.y);
   }
   
-  private void b()
+  private void c(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentWidgetListView = new bepa(this, getContext());
-    this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setVerticalFadingEdgeEnabled(false);
-    this.jdField_a_of_type_ComTencentWidgetListView.setScrollbarFadingEnabled(false);
-    addView(this.jdField_a_of_type_ComTencentWidgetListView, new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView$ScrollThread = new DraggableGridView.ScrollThread(this);
-  }
-  
-  private void b(int paramInt1, int paramInt2)
-  {
-    Object localObject = a(this.jdField_a_of_type_ComTencentWidgetListView.pointToPosition(paramInt1, paramInt2) / 2);
+    Object localObject = a(this.c.pointToPosition(paramInt1, paramInt2) / 2);
     if ((localObject instanceof MeasureGridView))
     {
       localObject = (GridView)localObject;
-      int i = ((GridView)localObject).getLeft();
-      int j = ((GridView)localObject).getTop();
-      localObject = new Point((paramInt1 - i) / (((GridView)localObject).getWidth() / this.jdField_b_of_type_Int) + (paramInt2 - j) / (((GridView)localObject).getHeight() / (int)Math.ceil(((GridView)localObject).getCount() / this.jdField_b_of_type_Int)) * this.jdField_b_of_type_Int, ((Integer)((GridView)localObject).getTag()).intValue());
-      if (!this.jdField_b_of_type_AndroidGraphicsPoint.equals(localObject)) {
+      int i2 = ((GridView)localObject).getLeft();
+      int i1 = ((GridView)localObject).getTop();
+      paramInt1 = (paramInt1 - i2) / (((GridView)localObject).getWidth() / this.b);
+      i2 = ((GridView)localObject).getHeight();
+      double d1 = ((GridView)localObject).getCount();
+      double d2 = this.b;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      localObject = new Point((paramInt2 - i1) / (i2 / (int)Math.ceil(d1 / d2)) * this.b + paramInt1, ((Integer)((GridView)localObject).getTag()).intValue());
+      if (!this.r.equals(localObject)) {
         a((Point)localObject, false);
       }
     }
   }
   
-  public View a(int paramInt1, int paramInt2)
+  private void d()
   {
-    MeasureGridView localMeasureGridView = a(paramInt1);
-    if (localMeasureGridView != null) {
-      return localMeasureGridView.getChildAt(paramInt2);
-    }
-    return null;
+    this.c = new DraggableGridView.2(this, getContext());
+    this.c.setDivider(null);
+    this.c.setVerticalFadingEdgeEnabled(false);
+    this.c.setScrollbarFadingEnabled(false);
+    addView(this.c, new FrameLayout.LayoutParams(-1, -1));
+    this.u = new DraggableGridView.ScrollThread(this);
   }
   
-  public Adapter a()
+  void a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Bepe;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_AndroidWidgetImageView = null;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_AndroidGraphicsPoint.set(paramInt2, paramInt1);
-    int j = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition() / 2;
-    int i = j;
-    if (this.jdField_a_of_type_Bepe.getItemViewType(this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition()) > 0) {
-      if (j <= 0) {
-        break label132;
+    this.r.set(paramInt2, paramInt1);
+    int i2 = this.c.getLastVisiblePosition() / 2;
+    int i1 = i2;
+    if (this.d.getItemViewType(this.c.getLastVisiblePosition()) > 0) {
+      if (i2 > 0) {
+        i1 = i2 - 1;
+      } else {
+        i1 = 0;
       }
     }
-    Point localPoint;
-    label132:
-    for (i = j - 1;; i = 0)
+    Point localPoint = new Point(this.e.b(i1) - 1, i1);
+    View localView = b(paramInt1, paramInt2);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(300L);
+    localView.startAnimation(localAlphaAnimation);
+    if (localPoint.equals(this.r))
     {
-      localPoint = new Point(this.jdField_a_of_type_Beni.a(i) - 1, i);
-      View localView = a(paramInt1, paramInt2);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-      localAlphaAnimation.setDuration(300L);
-      localView.startAnimation(localAlphaAnimation);
-      if (!localPoint.equals(this.jdField_b_of_type_AndroidGraphicsPoint)) {
-        break;
-      }
-      localAlphaAnimation.setAnimationListener(new beoz(this, paramInt1, paramInt2));
+      localAlphaAnimation.setAnimationListener(new DraggableGridView.1(this, paramInt1, paramInt2));
       return;
     }
     a(localPoint, true);
@@ -321,155 +306,182 @@ public class DraggableGridView
   @SuppressLint({"RtlHardcoded"})
   public void a(View paramView1, View paramView2)
   {
-    int i = paramView1.getLeft() + paramView2.getLeft();
-    int j = paramView1.getTop() + paramView2.getTop() - this.jdField_a_of_type_ComTencentWidgetListView.getScrollY();
-    paramView1 = bhse.a(paramView2);
+    int i1 = paramView1.getLeft();
+    int i2 = paramView2.getLeft();
+    int i3 = paramView1.getTop();
+    int i4 = paramView2.getTop();
+    int i5 = this.c.getScrollY();
+    paramView1 = BitmapUtil.a(paramView2);
     if (paramView1 != null)
     {
-      int k = bdaq.a(getContext(), 15.0F);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramView1.getWidth() + k, paramView1.getHeight() + k);
-      localLayoutParams.topMargin = (j - k / 2);
-      localLayoutParams.leftMargin = (i - k / 2);
+      int i6 = DisplayUtil.a(getContext(), 15.0F);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramView1.getWidth() + i6, paramView1.getHeight() + i6);
+      i6 /= 2;
+      i3 = i3 + i4 - i5 - i6;
+      localLayoutParams.topMargin = i3;
+      i1 = i1 + i2 - i6;
+      localLayoutParams.leftMargin = i1;
       localLayoutParams.gravity = 51;
-      if (this.jdField_a_of_type_AndroidWidgetImageView == null)
+      if (this.h == null)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramView2.getContext());
-        addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+        this.h = new ImageView(paramView2.getContext());
+        addView(this.h, localLayoutParams);
       }
-      this.jdField_a_of_type_AndroidGraphicsPoint.set(i - k / 2, j - k / 2);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramView1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      this.i.set(i1, i3);
+      this.h.setLayoutParams(localLayoutParams);
+      this.h.setImageBitmap(paramView1);
+      this.h.setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
   }
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.k;
+  }
+  
+  public View b(int paramInt1, int paramInt2)
+  {
+    MeasureGridView localMeasureGridView = a(paramInt1);
+    if (localMeasureGridView != null) {
+      return localMeasureGridView.getChildAt(paramInt2);
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    ImageView localImageView = this.h;
+    if (localImageView != null)
+    {
+      removeView(localImageView);
+      this.h = null;
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 255) {
+    int i1 = paramMotionEvent.getAction();
+    if (i1 == 255) {
       return false;
     }
-    this.jdField_c_of_type_Float = paramMotionEvent.getX();
-    this.jdField_d_of_type_Float = paramMotionEvent.getY();
-    if (i == 2)
+    this.n = paramMotionEvent.getX();
+    this.o = paramMotionEvent.getY();
+    if (i1 == 2)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.j)
       {
-        if (!this.jdField_b_of_type_Boolean)
+        if (!this.k)
         {
-          this.jdField_b_of_type_Boolean = true;
-          this.jdField_d_of_type_Boolean = true;
-          this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-          this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-          this.e = 0;
+          this.k = true;
+          this.t = true;
+          this.l = this.n;
+          this.m = this.o;
+          this.v = 0;
         }
-        paramMotionEvent = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-        paramMotionEvent.leftMargin = ((int)(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float + this.jdField_a_of_type_AndroidGraphicsPoint.x));
-        paramMotionEvent.topMargin = ((int)(this.jdField_d_of_type_Float - this.jdField_b_of_type_Float + this.jdField_a_of_type_AndroidGraphicsPoint.y));
-        if (paramMotionEvent.leftMargin + this.jdField_a_of_type_AndroidWidgetImageView.getWidth() < 1)
-        {
-          paramMotionEvent.leftMargin = (1 - this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
-          if (paramMotionEvent.topMargin + this.jdField_a_of_type_AndroidWidgetImageView.getHeight() >= 1) {
-            break label282;
-          }
-          paramMotionEvent.topMargin = (1 - this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
-          label195:
-          this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramMotionEvent);
-          b((int)this.jdField_c_of_type_Float, (int)this.jdField_d_of_type_Float);
-          i = this.jdField_a_of_type_ComTencentWidgetListView.getHeight();
-          if (this.jdField_d_of_type_Float <= i - bdaq.a(getContext(), 30.0F)) {
-            break label308;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView$ScrollThread.a(1);
-        }
-        for (;;)
-        {
-          return true;
-          if (paramMotionEvent.leftMargin <= getWidth() - 1) {
-            break;
-          }
+        paramMotionEvent = (FrameLayout.LayoutParams)this.h.getLayoutParams();
+        paramMotionEvent.leftMargin = ((int)(this.n - this.l + this.i.x));
+        paramMotionEvent.topMargin = ((int)(this.o - this.m + this.i.y));
+        if (paramMotionEvent.leftMargin + this.h.getWidth() < 1) {
+          paramMotionEvent.leftMargin = (1 - this.h.getWidth());
+        } else if (paramMotionEvent.leftMargin > getWidth() - 1) {
           paramMotionEvent.leftMargin = (getWidth() - 1);
-          break;
-          label282:
-          if (paramMotionEvent.topMargin <= getHeight() - 1) {
-            break label195;
-          }
-          paramMotionEvent.topMargin = (getHeight() - 1);
-          break label195;
-          label308:
-          if (this.jdField_d_of_type_Float < bdaq.a(getContext(), 30.0F)) {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView$ScrollThread.a(2);
-          } else if (this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView$ScrollThread != null) {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView$ScrollThread.jdField_a_of_type_Boolean = true;
-          }
         }
+        if (paramMotionEvent.topMargin + this.h.getHeight() < 1) {
+          paramMotionEvent.topMargin = (1 - this.h.getHeight());
+        } else if (paramMotionEvent.topMargin > getHeight() - 1) {
+          paramMotionEvent.topMargin = (getHeight() - 1);
+        }
+        this.h.setLayoutParams(paramMotionEvent);
+        c((int)this.n, (int)this.o);
+        i1 = this.c.getHeight();
+        if (this.o > i1 - DisplayUtil.a(getContext(), 30.0F))
+        {
+          this.u.a(1);
+          return true;
+        }
+        if (this.o < DisplayUtil.a(getContext(), 30.0F))
+        {
+          this.u.a(2);
+          return true;
+        }
+        paramMotionEvent = this.u;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.a = true;
+        }
+        return true;
       }
     }
-    else if ((i == 1) || (i == 3))
+    else if ((i1 == 1) || (i1 == 3))
     {
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_Boolean))
+      if ((this.h != null) && (this.k))
       {
-        Object localObject = a(this.jdField_b_of_type_AndroidGraphicsPoint.y, this.jdField_b_of_type_AndroidGraphicsPoint.x);
+        localObject = b(this.r.y, this.r.x);
         if (localObject != null)
         {
           View localView = (View)((View)localObject).getParent();
-          i = localView.getLeft();
-          int j = ((View)localObject).getLeft();
-          int k = localView.getTop();
-          int m = ((View)localObject).getTop();
-          int n = this.jdField_a_of_type_ComTencentWidgetListView.getScrollY();
-          localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-          localObject = new TranslateAnimation(0, 0.0F, 0, i + j - ((FrameLayout.LayoutParams)localObject).leftMargin, 0, 0.0F, 0, k + m - n - ((FrameLayout.LayoutParams)localObject).topMargin);
+          i1 = localView.getLeft();
+          int i2 = ((View)localObject).getLeft();
+          int i3 = localView.getTop();
+          int i4 = ((View)localObject).getTop();
+          int i5 = this.c.getScrollY();
+          localObject = (FrameLayout.LayoutParams)this.h.getLayoutParams();
+          localObject = new TranslateAnimation(0, 0.0F, 0, i1 + i2 - ((FrameLayout.LayoutParams)localObject).leftMargin, 0, 0.0F, 0, i3 + i4 - i5 - ((FrameLayout.LayoutParams)localObject).topMargin);
           ((TranslateAnimation)localObject).setDuration(300L);
-          ((TranslateAnimation)localObject).setAnimationListener(new bepc(this, null));
-          this.jdField_a_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
+          ((TranslateAnimation)localObject).setAnimationListener(new DraggableGridView.DragEndAnimationListener(this, null));
+          this.h.startAnimation((Animation)localObject);
         }
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_d_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView$ScrollThread != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView$ScrollThread.jdField_a_of_type_Boolean = true;
+      this.j = false;
+      this.t = false;
+      Object localObject = this.u;
+      if (localObject != null) {
+        ((DraggableGridView.ScrollThread)localObject).a = true;
       }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setAdapter(beni parambeni)
+  public BaseDraggableGridViewAdapter getAdapter()
   {
-    this.jdField_a_of_type_Beni = parambeni;
-    this.jdField_a_of_type_Beni.a = this;
-    this.jdField_a_of_type_Bepe = new bepe(this);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bepe);
+    return this.e;
+  }
+  
+  Adapter getInnerAdapter()
+  {
+    return this.d;
+  }
+  
+  public void setAdapter(BaseDraggableGridViewAdapter paramBaseDraggableGridViewAdapter)
+  {
+    this.e = paramBaseDraggableGridViewAdapter;
+    this.e.b = this;
+    this.d = new DraggableGridView.GridListViewAdapter(this);
+    this.c.setAdapter(this.d);
   }
   
   public void setDraggable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
-  public void setOnGridItemClickListener(beph parambeph)
+  public void setOnGridItemClickListener(DraggableGridView.OnGridItemClickListener paramOnGridItemClickListener)
   {
-    this.jdField_a_of_type_Beph = parambeph;
+    this.f = paramOnGridItemClickListener;
   }
   
-  public void setOnGridItemLongClickListener(bepi parambepi)
+  public void setOnGridItemLongClickListener(DraggableGridView.OnGridItemLongClickListener paramOnGridItemLongClickListener)
   {
-    this.jdField_a_of_type_Bepi = parambepi;
+    this.g = paramOnGridItemLongClickListener;
   }
   
   public void setVerticalScrollBarEnabled(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetListView.setVerticalScrollBarEnabled(paramBoolean);
+    this.c.setVerticalScrollBarEnabled(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView
  * JD-Core Version:    0.7.0.1
  */

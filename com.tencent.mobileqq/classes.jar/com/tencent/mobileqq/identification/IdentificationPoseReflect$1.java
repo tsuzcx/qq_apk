@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.identification;
 
-import android.app.Activity;
-import asxr;
-import com.tencent.youtu.ytcommon.YTCommonExInterface;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class IdentificationPoseReflect$1
+class IdentificationPoseReflect$1
   implements Runnable
 {
-  public IdentificationPoseReflect$1(asxr paramasxr, Activity paramActivity) {}
+  IdentificationPoseReflect$1(IdentificationPoseReflect paramIdentificationPoseReflect, QQIdentiferActivity paramQQIdentiferActivity, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    YTCommonExInterface.setAppBrightness(this.a, 255);
+    this.a.showYTInitFinish(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationPoseReflect.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,83 +5,83 @@ import a.a.a.b;
 public final class ag
   extends com.tencent.mm.d.a
 {
-  public String VN;
-  public String Vr;
-  public String Vt;
-  public int Ws;
-  public String Wt;
+  public String XI;
+  public String Xm;
+  public String Xo;
+  public int Yn;
+  public String Yo;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VN == null) {
+      if (this.XI == null) {
         throw new b("Not all required fields were included: Talker");
       }
-      if (this.Wt == null) {
+      if (this.Yo == null) {
         throw new b("Not all required fields were included: Text");
       }
-      if (this.Vr == null) {
+      if (this.Xm == null) {
         throw new b("Not all required fields were included: MD5");
       }
-      if (this.Vt == null) {
+      if (this.Xo == null) {
         throw new b("Not all required fields were included: ProductId");
       }
-      if (this.VN != null) {
-        paramVarArgs.d(1, this.VN);
+      if (this.XI != null) {
+        paramVarArgs.d(1, this.XI);
       }
-      if (this.Wt != null) {
-        paramVarArgs.d(2, this.Wt);
+      if (this.Yo != null) {
+        paramVarArgs.d(2, this.Yo);
       }
-      if (this.Vr != null) {
-        paramVarArgs.d(3, this.Vr);
+      if (this.Xm != null) {
+        paramVarArgs.d(3, this.Xm);
       }
-      if (this.Vt != null) {
-        paramVarArgs.d(4, this.Vt);
+      if (this.Xo != null) {
+        paramVarArgs.d(4, this.Xo);
       }
-      paramVarArgs.aq(5, this.Ws);
+      paramVarArgs.at(5, this.Yn);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.VN == null) {
+      if (this.XI == null) {
         break label496;
       }
     }
     label496:
-    for (int i = a.a.a.b.b.a.e(1, this.VN) + 0;; i = 0)
+    for (int i = a.a.a.b.b.a.e(1, this.XI) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.Wt != null) {
-        paramInt = i + a.a.a.b.b.a.e(2, this.Wt);
+      if (this.Yo != null) {
+        paramInt = i + a.a.a.b.b.a.e(2, this.Yo);
       }
       i = paramInt;
-      if (this.Vr != null) {
-        i = paramInt + a.a.a.b.b.a.e(3, this.Vr);
+      if (this.Xm != null) {
+        i = paramInt + a.a.a.b.b.a.e(3, this.Xm);
       }
       paramInt = i;
-      if (this.Vt != null) {
-        paramInt = i + a.a.a.b.b.a.e(4, this.Vt);
+      if (this.Xo != null) {
+        paramInt = i + a.a.a.b.b.a.e(4, this.Xo);
       }
-      return paramInt + a.a.a.a.ak(5, this.Ws);
+      return paramInt + a.a.a.a.an(5, this.Yn);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.VN == null) {
+        if (this.XI == null) {
           throw new b("Not all required fields were included: Talker");
         }
-        if (this.Wt == null) {
+        if (this.Yo == null) {
           throw new b("Not all required fields were included: Text");
         }
-        if (this.Vr == null) {
+        if (this.Xm == null) {
           throw new b("Not all required fields were included: MD5");
         }
-        if (this.Vt != null) {
+        if (this.Xo != null) {
           break;
         }
         throw new b("Not all required fields were included: ProductId");
@@ -95,19 +95,19 @@ public final class ag
         default: 
           return -1;
         case 1: 
-          localag.VN = locala.ou();
+          localag.XI = locala.ph();
           return 0;
         case 2: 
-          localag.Wt = locala.ou();
+          localag.Yo = locala.ph();
           return 0;
         case 3: 
-          localag.Vr = locala.ou();
+          localag.Xm = locala.ph();
           return 0;
         case 4: 
-          localag.Vt = locala.ou();
+          localag.Xo = locala.ph();
           return 0;
         }
-        localag.Ws = locala.ot();
+        localag.Yn = locala.pg();
         return 0;
       }
       return -1;

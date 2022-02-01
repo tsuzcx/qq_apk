@@ -1,0 +1,15 @@
+package com.tencent.mobileqq.kandian.repo.video;
+
+public class RIJWeChatVideoSeeLaterModule$WeChatVideoArticleItem
+{
+  public String a;
+  public long b;
+  public int c;
+  public int d;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
+ * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.RIJWeChatVideoSeeLaterModule.WeChatVideoArticleItem
+ * JD-Core Version:    0.7.0.1
+ */

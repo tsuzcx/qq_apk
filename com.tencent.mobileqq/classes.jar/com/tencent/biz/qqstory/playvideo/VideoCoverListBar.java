@@ -8,36 +8,32 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewConfiguration;
 import android.widget.ListView;
-import apkp;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.drawable.EmptyDrawable;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import uvx;
-import uwa;
-import voq;
-import vor;
-import vos;
-import vov;
-import wxe;
-import wxj;
-import xsm;
 
 public class VideoCoverListBar
   extends ListView
 {
-  private int jdField_a_of_type_Int;
-  private apkp jdField_a_of_type_Apkp;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private uvx jdField_a_of_type_Uvx;
-  private vor jdField_a_of_type_Vor;
-  private vos jdField_a_of_type_Vos;
-  private vov jdField_a_of_type_Vov;
-  private int jdField_b_of_type_Int;
-  private apkp jdField_b_of_type_Apkp;
-  private int c;
-  private int d;
+  private VideoCoverListBar.VideoCoverListBarAdapter a;
+  private VideoCoverListBar.OnVideoClickListener b;
+  private VideoCoverListBar.VideoCoverListDataProvider c;
+  private List<String> d = new ArrayList();
+  private String e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private EmptyDrawable j;
+  private EmptyDrawable k;
+  private StoryManager l;
   
   public VideoCoverListBar(Context paramContext)
   {
@@ -53,97 +49,98 @@ public class VideoCoverListBar
   
   private void a(int paramInt, List<String> paramList)
   {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      ThreadManager.getUIHandler().post(new VideoCoverListBar.2(this, paramInt, paramList));
-    }
-    do
+    if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
+      ThreadManager.getUIHandler().post(new VideoCoverListBar.2(this, paramInt, paramList));
       return;
-      if (paramList == null) {}
-      for (this.jdField_a_of_type_JavaUtilList = new ArrayList();; this.jdField_a_of_type_JavaUtilList = paramList)
-      {
-        this.jdField_a_of_type_Vos.notifyDataSetChanged();
-        if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-          break;
-        }
-        setVisibility(8);
-        wxe.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
-        return;
-      }
-      setVisibility(0);
-      if (paramInt >= 0) {
-        ThreadManager.getUIHandler().postDelayed(new VideoCoverListBar.3(this, paramInt), 30L);
-      }
-    } while ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()));
-    wxj.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+    }
+    if (paramList == null) {
+      this.d = new ArrayList();
+    } else {
+      this.d = paramList;
+    }
+    this.a.notifyDataSetChanged();
+    if (this.d.size() <= 1)
+    {
+      setVisibility(8);
+      SLog.b("Q.qqstory.player:VideoCoverListBar", "video list too small, hide");
+      return;
+    }
+    setVisibility(0);
+    if (paramInt >= 0) {
+      ThreadManager.getUIHandler().postDelayed(new VideoCoverListBar.3(this, paramInt), 30L);
+    }
+    if ((paramInt >= 0) && (paramInt < this.d.size())) {
+      StoryReportor.a("play_video", "exp_mini", 0, 0, new String[] { "2", "", "", (String)this.d.get(paramInt) });
+    }
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Uvx = ((uvx)uwa.a(5));
-    int i = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.jdField_a_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298808);
-    this.jdField_b_of_type_Int = getContext().getResources().getDimensionPixelOffset(2131298807);
-    this.c = getContext().getResources().getDimensionPixelOffset(2131298805);
-    this.d = xsm.a(paramContext, 11.0F);
-    this.jdField_a_of_type_Apkp = new apkp(-2631721, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_Apkp = new apkp(0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Vos = new vos(this, null);
+    this.l = ((StoryManager)SuperManager.a(5));
+    int m = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.f = getContext().getResources().getDimensionPixelOffset(2131299793);
+    this.g = getContext().getResources().getDimensionPixelOffset(2131299792);
+    this.h = getContext().getResources().getDimensionPixelOffset(2131299790);
+    this.i = UIUtils.a(paramContext, 11.0F);
+    this.j = new EmptyDrawable(-2631721, this.f, this.g);
+    this.k = new EmptyDrawable(0, this.f, this.g);
+    this.a = new VideoCoverListBar.VideoCoverListBarAdapter(this, null);
     setOverScrollMode(2);
     setDivider(new ColorDrawable(0));
-    setDividerHeight(this.d);
+    setDividerHeight(this.i);
     setHeaderDividersEnabled(false);
     setFooterDividersEnabled(false);
     setVerticalScrollBarEnabled(false);
-    setAdapter(this.jdField_a_of_type_Vos);
-    setOnTouchListener(new voq(this, i));
+    setAdapter(this.a);
+    setOnTouchListener(new VideoCoverListBar.1(this, m));
   }
   
   public void a()
   {
-    a(this.jdField_a_of_type_JavaLangString);
+    a(this.e);
+  }
+  
+  public void a(VideoCoverListBar.VideoCoverListDataProvider paramVideoCoverListDataProvider)
+  {
+    this.c = paramVideoCoverListDataProvider;
   }
   
   public void a(String paramString)
   {
-    List localList = this.jdField_a_of_type_Vov.a();
+    List localList = this.c.a();
     if (localList != null)
     {
-      int i = 0;
-      while (i < localList.size())
+      int m = 0;
+      while (m < localList.size())
       {
-        if (TextUtils.equals((CharSequence)localList.get(i), paramString))
+        if (TextUtils.equals((CharSequence)localList.get(m), paramString))
         {
-          this.jdField_a_of_type_JavaLangString = paramString;
-          wxe.a("Q.qqstory.player:VideoCoverListBar", "notify ! vid = %s , index = %d", paramString, Integer.valueOf(i));
-          a(i, localList);
+          this.e = paramString;
+          SLog.a("Q.qqstory.player:VideoCoverListBar", "notify ! vid = %s , index = %d", paramString, Integer.valueOf(m));
+          a(m, localList);
           return;
         }
-        i += 1;
+        m += 1;
       }
     }
     a(-1, localList);
-    wxe.d("Q.qqstory.player:VideoCoverListBar", "vid not found ! vid = %s", new Object[] { paramString });
-  }
-  
-  public void a(vov paramvov)
-  {
-    this.jdField_a_of_type_Vov = paramvov;
+    SLog.d("Q.qqstory.player:VideoCoverListBar", "vid not found ! vid = %s", new Object[] { paramString });
   }
   
   public void b()
   {
-    a(-1, this.jdField_a_of_type_Vov.a());
+    a(-1, this.c.a());
   }
   
-  public void setOnVideoClickListener(vor paramvor)
+  public void setOnVideoClickListener(VideoCoverListBar.OnVideoClickListener paramOnVideoClickListener)
   {
-    this.jdField_a_of_type_Vor = paramvor;
+    this.b = paramOnVideoClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar
  * JD-Core Version:    0.7.0.1
  */

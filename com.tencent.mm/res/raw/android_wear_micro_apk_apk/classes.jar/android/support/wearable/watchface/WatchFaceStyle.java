@@ -12,37 +12,37 @@ public class WatchFaceStyle
   implements Parcelable
 {
   public static final Parcelable.Creator<WatchFaceStyle> CREATOR = new Parcelable.Creator() {};
-  private final ComponentName FA;
-  private final int FB;
-  private final int FC;
-  private final int FD;
-  private final int FE;
-  private final int FF;
-  private final int FG;
-  private final int FH;
-  private final boolean FI;
-  private final int FJ;
-  private final boolean FK;
-  private final boolean FL;
-  private final boolean FM;
-  private final boolean FN;
+  private final boolean HA;
+  private final boolean HB;
+  private final boolean HC;
+  private final ComponentName Hp;
+  private final int Hq;
+  private final int Hr;
+  private final int Hs;
+  private final int Ht;
+  private final int Hu;
+  private final int Hv;
+  private final int Hw;
+  private final boolean Hx;
+  private final int Hy;
+  private final boolean Hz;
   
   public WatchFaceStyle(Bundle paramBundle)
   {
-    this.FA = ((ComponentName)paramBundle.getParcelable("component"));
-    this.FJ = paramBundle.getInt("ambientPeekMode", 0);
-    this.FH = paramBundle.getInt("backgroundVisibility", 0);
-    this.FB = paramBundle.getInt("cardPeekMode", 0);
-    this.FC = paramBundle.getInt("cardProgressMode", 0);
-    this.FG = paramBundle.getInt("hotwordIndicatorGravity");
-    this.FD = paramBundle.getInt("peekOpacityMode", 0);
-    this.FI = paramBundle.getBoolean("showSystemUiTime");
-    this.FK = paramBundle.getBoolean("showUnreadIndicator");
-    this.FF = paramBundle.getInt("statusBarGravity");
-    this.FE = paramBundle.getInt("viewProtectionMode");
-    this.FL = paramBundle.getBoolean("acceptsTapEvents");
-    this.FM = paramBundle.getBoolean("hideHotwordIndicator");
-    this.FN = paramBundle.getBoolean("hideStatusBar");
+    this.Hp = ((ComponentName)paramBundle.getParcelable("component"));
+    this.Hy = paramBundle.getInt("ambientPeekMode", 0);
+    this.Hw = paramBundle.getInt("backgroundVisibility", 0);
+    this.Hq = paramBundle.getInt("cardPeekMode", 0);
+    this.Hr = paramBundle.getInt("cardProgressMode", 0);
+    this.Hv = paramBundle.getInt("hotwordIndicatorGravity");
+    this.Hs = paramBundle.getInt("peekOpacityMode", 0);
+    this.Hx = paramBundle.getBoolean("showSystemUiTime");
+    this.Hz = paramBundle.getBoolean("showUnreadIndicator");
+    this.Hu = paramBundle.getInt("statusBarGravity");
+    this.Ht = paramBundle.getInt("viewProtectionMode");
+    this.HA = paramBundle.getBoolean("acceptsTapEvents");
+    this.HB = paramBundle.getBoolean("hideHotwordIndicator");
+    this.HC = paramBundle.getBoolean("hideStatusBar");
   }
   
   public int describeContents()
@@ -57,17 +57,17 @@ public class WatchFaceStyle
     {
       return false;
       paramObject = (WatchFaceStyle)paramObject;
-    } while ((!this.FA.equals(paramObject.FA)) || (this.FB != paramObject.FB) || (this.FC != paramObject.FC) || (this.FH != paramObject.FH) || (this.FI != paramObject.FI) || (this.FJ != paramObject.FJ) || (this.FD != paramObject.FD) || (this.FE != paramObject.FE) || (this.FF != paramObject.FF) || (this.FG != paramObject.FG) || (this.FK != paramObject.FK) || (this.FL != paramObject.FL) || (this.FM != paramObject.FM) || (this.FN != paramObject.FN));
+    } while ((!this.Hp.equals(paramObject.Hp)) || (this.Hq != paramObject.Hq) || (this.Hr != paramObject.Hr) || (this.Hw != paramObject.Hw) || (this.Hx != paramObject.Hx) || (this.Hy != paramObject.Hy) || (this.Hs != paramObject.Hs) || (this.Ht != paramObject.Ht) || (this.Hu != paramObject.Hu) || (this.Hv != paramObject.Hv) || (this.Hz != paramObject.Hz) || (this.HA != paramObject.HA) || (this.HB != paramObject.HB) || (this.HC != paramObject.HC));
     return true;
   }
   
   public int hashCode()
   {
     int n = 1;
-    int i1 = this.FA.hashCode();
-    int i2 = this.FB;
-    int i3 = this.FC;
-    int i4 = this.FH;
+    int i1 = this.Hp.hashCode();
+    int i2 = this.Hq;
+    int i3 = this.Hr;
+    int i4 = this.Hw;
     int i;
     int i5;
     int i6;
@@ -79,28 +79,28 @@ public class WatchFaceStyle
     int k;
     label87:
     int m;
-    if (this.FI)
+    if (this.Hx)
     {
       i = 1;
-      i5 = this.FJ;
-      i6 = this.FD;
-      i7 = this.FE;
-      i8 = this.FF;
-      i9 = this.FG;
-      if (!this.FK) {
+      i5 = this.Hy;
+      i6 = this.Hs;
+      i7 = this.Ht;
+      i8 = this.Hu;
+      i9 = this.Hv;
+      if (!this.Hz) {
         break label190;
       }
       j = 1;
-      if (!this.FL) {
+      if (!this.HA) {
         break label195;
       }
       k = 1;
-      if (!this.FM) {
+      if (!this.HB) {
         break label200;
       }
       m = 1;
       label97:
-      if (!this.FN) {
+      if (!this.HC) {
         break label206;
       }
     }
@@ -125,29 +125,29 @@ public class WatchFaceStyle
   
   public String toString()
   {
-    if (this.FA == null) {}
-    for (String str = "default";; str = this.FA.getShortClassName()) {
-      return String.format("watch face %s (card %d/%d bg %d time %s ambientPeek %d peekOpacityMode %d viewProtectionMode %d statusBarGravity %d hotwordIndicatorGravity %d showUnreadCountIndicator %s acceptsTapEvents %s hideHotwordIndicator %s hideStatusBar %s)", new Object[] { str, Integer.valueOf(this.FB), Integer.valueOf(this.FC), Integer.valueOf(this.FH), Boolean.valueOf(this.FI), Integer.valueOf(this.FJ), Integer.valueOf(this.FD), Integer.valueOf(this.FE), Integer.valueOf(this.FF), Integer.valueOf(this.FG), Boolean.valueOf(this.FK), Boolean.valueOf(this.FL), Boolean.valueOf(this.FM), Boolean.valueOf(this.FN) });
+    if (this.Hp == null) {}
+    for (String str = "default";; str = this.Hp.getShortClassName()) {
+      return String.format("watch face %s (card %d/%d bg %d time %s ambientPeek %d peekOpacityMode %d viewProtectionMode %d statusBarGravity %d hotwordIndicatorGravity %d showUnreadCountIndicator %s acceptsTapEvents %s hideHotwordIndicator %s hideStatusBar %s)", new Object[] { str, Integer.valueOf(this.Hq), Integer.valueOf(this.Hr), Integer.valueOf(this.Hw), Boolean.valueOf(this.Hx), Integer.valueOf(this.Hy), Integer.valueOf(this.Hs), Integer.valueOf(this.Ht), Integer.valueOf(this.Hu), Integer.valueOf(this.Hv), Boolean.valueOf(this.Hz), Boolean.valueOf(this.HA), Boolean.valueOf(this.HB), Boolean.valueOf(this.HC) });
     }
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putParcelable("component", this.FA);
-    localBundle.putInt("ambientPeekMode", this.FJ);
-    localBundle.putInt("backgroundVisibility", this.FH);
-    localBundle.putInt("cardPeekMode", this.FB);
-    localBundle.putInt("cardProgressMode", this.FC);
-    localBundle.putInt("hotwordIndicatorGravity", this.FG);
-    localBundle.putInt("peekOpacityMode", this.FD);
-    localBundle.putBoolean("showSystemUiTime", this.FI);
-    localBundle.putBoolean("showUnreadIndicator", this.FK);
-    localBundle.putInt("statusBarGravity", this.FF);
-    localBundle.putInt("viewProtectionMode", this.FE);
-    localBundle.putBoolean("acceptsTapEvents", this.FL);
-    localBundle.putBoolean("hideHotwordIndicator", this.FM);
-    localBundle.putBoolean("hideStatusBar", this.FN);
+    localBundle.putParcelable("component", this.Hp);
+    localBundle.putInt("ambientPeekMode", this.Hy);
+    localBundle.putInt("backgroundVisibility", this.Hw);
+    localBundle.putInt("cardPeekMode", this.Hq);
+    localBundle.putInt("cardProgressMode", this.Hr);
+    localBundle.putInt("hotwordIndicatorGravity", this.Hv);
+    localBundle.putInt("peekOpacityMode", this.Hs);
+    localBundle.putBoolean("showSystemUiTime", this.Hx);
+    localBundle.putBoolean("showUnreadIndicator", this.Hz);
+    localBundle.putInt("statusBarGravity", this.Hu);
+    localBundle.putInt("viewProtectionMode", this.Ht);
+    localBundle.putBoolean("acceptsTapEvents", this.HA);
+    localBundle.putBoolean("hideHotwordIndicator", this.HB);
+    localBundle.putBoolean("hideStatusBar", this.HC);
     paramParcel.writeBundle(localBundle);
   }
 }

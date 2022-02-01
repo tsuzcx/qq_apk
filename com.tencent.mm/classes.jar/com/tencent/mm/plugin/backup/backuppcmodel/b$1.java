@@ -4,7 +4,8 @@ import android.content.Context;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class b$1
   implements Runnable
@@ -13,29 +14,33 @@ final class b$1
   
   public final void run()
   {
-    AppMethodBeat.i(17488);
+    AppMethodBeat.i(21547);
     try
     {
-      if (b.a(this.jDZ) == null)
+      Object localObject1;
+      if (b.a(this.vbv) == null)
       {
-        PowerManager localPowerManager = (PowerManager)ah.getContext().getSystemService("power");
-        b.a(this.jDZ, localPowerManager.newWakeLock(26, "BackupPc Lock"));
+        localObject1 = (PowerManager)MMApplicationContext.getContext().getSystemService("power");
+        b.a(this.vbv, ((PowerManager)localObject1).newWakeLock(26, "BackupPc Lock"));
       }
-      if (!b.a(this.jDZ).isHeld()) {
-        b.a(this.jDZ).acquire();
+      if (!b.a(this.vbv).isHeld())
+      {
+        localObject1 = b.a(this.vbv);
+        a.b(localObject1, "com/tencent/mm/plugin/backup/backuppcmodel/BackupPcModel$1", "run", "()V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
+        ((PowerManager.WakeLock)localObject1).acquire();
+        a.c(localObject1, "com/tencent/mm/plugin/backup/backuppcmodel/BackupPcModel$1", "run", "()V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
       }
-      AppMethodBeat.o(17488);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(17488);
+      AppMethodBeat.o(21547);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcmodel.b.1
  * JD-Core Version:    0.7.0.1
  */

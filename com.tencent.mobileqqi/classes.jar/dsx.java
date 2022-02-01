@@ -1,19 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 public class dsx
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public dsx(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent != null) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-    this.a.finish();
+    return false;
   }
 }
 

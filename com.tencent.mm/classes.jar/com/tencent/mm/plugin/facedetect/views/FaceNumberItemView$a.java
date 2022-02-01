@@ -1,39 +1,38 @@
 package com.tencent.mm.plugin.facedetect.views;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.lang.ref.WeakReference;
-import java.util.TimerTask;
 
 final class FaceNumberItemView$a
-  extends TimerTask
+  implements MTimerHandler.CallBack
 {
-  private WeakReference<Runnable> mpp;
+  private final WeakReference<Runnable> zYE;
   
-  private FaceNumberItemView$a(FaceNumberItemView paramFaceNumberItemView, Runnable paramRunnable)
+  public FaceNumberItemView$a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(643);
-    this.mpp = null;
-    this.mpp = new WeakReference(paramRunnable);
-    AppMethodBeat.o(643);
+    AppMethodBeat.i(271913);
+    this.zYE = new WeakReference(paramRunnable);
+    AppMethodBeat.o(271913);
   }
   
-  public final void run()
+  public final boolean onTimerExpired()
   {
-    AppMethodBeat.i(644);
-    if ((this.mpp != null) && (this.mpp.get() != null))
+    AppMethodBeat.i(271914);
+    Runnable localRunnable = (Runnable)this.zYE.get();
+    if (localRunnable == null)
     {
-      al.d((Runnable)this.mpp.get());
-      AppMethodBeat.o(644);
-      return;
+      AppMethodBeat.o(271914);
+      return false;
     }
-    cancel();
-    AppMethodBeat.o(644);
+    localRunnable.run();
+    AppMethodBeat.o(271914);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberItemView.a
  * JD-Core Version:    0.7.0.1
  */

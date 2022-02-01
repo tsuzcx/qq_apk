@@ -44,23 +44,26 @@ public final class PushRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.UID != null) {
-      paramJceOutputStream.write(this.UID, 0);
+    Object localObject = this.UID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
     paramJceOutputStream.write(this.ptime, 1);
-    if (this.Mark != null) {
-      paramJceOutputStream.write(this.Mark, 3);
+    localObject = this.Mark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.is_bgd, 4);
-    if (this.sUID != null) {
-      paramJceOutputStream.write(this.sUID, 5);
+    localObject = this.sUID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.flag, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PUSHAPI.PushRsp
  * JD-Core Version:    0.7.0.1
  */

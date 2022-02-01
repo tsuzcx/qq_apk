@@ -35,18 +35,18 @@ public final class IndexedValue<T>
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof IndexedValue))
       {
         paramObject = (IndexedValue)paramObject;
-        if ((this.index != paramObject.index) || (!Intrinsics.areEqual(this.value, paramObject.value))) {}
+        if ((this.index == paramObject.index) && (Intrinsics.areEqual(this.value, paramObject.value))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final int getIndex()
@@ -63,21 +63,30 @@ public final class IndexedValue<T>
   {
     int j = this.index;
     Object localObject = this.value;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0) {
-      return i + j * 31;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    return j * 31 + i;
   }
   
   @NotNull
   public String toString()
   {
-    return "IndexedValue(index=" + this.index + ", value=" + this.value + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IndexedValue(index=");
+    localStringBuilder.append(this.index);
+    localStringBuilder.append(", value=");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.IndexedValue
  * JD-Core Version:    0.7.0.1
  */

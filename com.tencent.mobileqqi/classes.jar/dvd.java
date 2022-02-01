@@ -1,30 +1,36 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.widget.GridListView;
 
 public class dvd
-  implements Runnable
+  extends Handler
 {
-  public dvd(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public dvd(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
+    default: 
+    case 1: 
+    case 2: 
+      do
       {
-        VerifyPhoneNumActivity.a(this.a).dismiss();
-        VerifyPhoneNumActivity.a(this.a).cancel();
-      }
-      VerifyPhoneNumActivity.a(this.a, null);
+        return;
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
+        return;
+        VisitorsActivity.a(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
+        this.a.a(1, this.a.getString(2131562097));
+      } while (!dvj.a(this.a.jdField_a_of_type_Dvj));
+      dvj.a(this.a.jdField_a_of_type_Dvj, false);
+      this.a.jdField_a_of_type_Dvj.notifyDataSetChanged();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.jdField_a_of_type_Dvj.notifyDataSetChanged();
+    this.a.d = SystemClock.uptimeMillis();
   }
 }
 

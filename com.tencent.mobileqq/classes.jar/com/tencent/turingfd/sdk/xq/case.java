@@ -1,93 +1,389 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-import android.text.TextUtils;
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class case
 {
-  public Context l;
-  public String m = "";
-  public int n = 3000;
-  public int o = 3;
-  public String p = "";
-  public boolean q = true;
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public int u = 0;
-  public String v = "";
+  public ByteBuffer a;
+  public String b = "GBK";
   
-  public final String e()
+  public case(int paramInt)
   {
-    if (TextUtils.isEmpty(this.p)) {
-      return "";
+    this.a = ByteBuffer.allocate(paramInt);
+  }
+  
+  public void a(byte paramByte, int paramInt)
+  {
+    a(3);
+    if (paramByte == 0)
+    {
+      b((byte)12, paramInt);
+      return;
     }
-    return this.p;
+    b((byte)0, paramInt);
+    this.a.put(paramByte);
   }
   
-  public int f()
+  public void a(double paramDouble, int paramInt)
   {
-    return this.u;
+    a(10);
+    b((byte)5, paramInt);
+    this.a.putDouble(paramDouble);
   }
   
-  public String g()
+  public void a(float paramFloat, int paramInt)
   {
-    return this.s;
+    a(6);
+    b((byte)4, paramInt);
+    this.a.putFloat(paramFloat);
   }
   
-  public final Context getContext()
+  public void a(int paramInt)
   {
-    return this.l;
-  }
-  
-  public final int getTimeout()
-  {
-    return this.n;
-  }
-  
-  public final String getUserId()
-  {
-    if (TextUtils.isEmpty(this.m)) {
-      return "";
+    if (this.a.remaining() < paramInt)
+    {
+      ByteBuffer localByteBuffer = ByteBuffer.allocate((this.a.capacity() + paramInt) * 2);
+      localByteBuffer.put(this.a.array(), 0, this.a.position());
+      this.a = localByteBuffer;
     }
-    return this.m;
   }
   
-  public String h()
+  public void a(int paramInt1, int paramInt2)
   {
-    return this.v;
+    a(6);
+    if ((paramInt1 >= -32768) && (paramInt1 <= 32767))
+    {
+      a((short)paramInt1, paramInt2);
+      return;
+    }
+    b((byte)2, paramInt2);
+    this.a.putInt(paramInt1);
   }
   
-  public String i()
+  public void a(long paramLong, int paramInt)
   {
-    return this.t;
+    a(10);
+    if ((paramLong >= -2147483648L) && (paramLong <= 2147483647L))
+    {
+      a((int)paramLong, paramInt);
+      return;
+    }
+    b((byte)3, paramInt);
+    this.a.putLong(paramLong);
   }
   
-  public final int j()
+  public void a(else paramelse, int paramInt)
   {
-    return this.o;
+    a(2);
+    b((byte)10, paramInt);
+    paramelse.a(this);
+    a(2);
+    b((byte)11, 0);
   }
   
-  public String k()
+  public void a(Object paramObject, int paramInt)
   {
-    return this.r;
+    if ((paramObject instanceof Byte))
+    {
+      a(((Byte)paramObject).byteValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Boolean))
+    {
+      a((byte)((Boolean)paramObject).booleanValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Short))
+    {
+      a(((Short)paramObject).shortValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Integer))
+    {
+      a(((Integer)paramObject).intValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Long))
+    {
+      a(((Long)paramObject).longValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Float))
+    {
+      a(((Float)paramObject).floatValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Double))
+    {
+      a(((Double)paramObject).doubleValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof String))
+    {
+      a((String)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof Map))
+    {
+      a((Map)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof List))
+    {
+      a((List)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof else))
+    {
+      a((else)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof byte[]))
+    {
+      a((byte[])paramObject, paramInt);
+      return;
+    }
+    int i;
+    if ((paramObject instanceof boolean[]))
+    {
+      paramObject = (boolean[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a((byte)paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof short[]))
+    {
+      paramObject = (short[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof int[]))
+    {
+      paramObject = (int[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof long[]))
+    {
+      paramObject = (long[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof float[]))
+    {
+      paramObject = (float[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof double[]))
+    {
+      paramObject = (double[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if (paramObject.getClass().isArray())
+    {
+      paramObject = (Object[])paramObject;
+      a(8);
+      b((byte)9, paramInt);
+      a(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
+      }
+    }
+    if ((paramObject instanceof Collection))
+    {
+      a((Collection)paramObject, paramInt);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("write object error: unsupport type. ");
+    localStringBuilder.append(paramObject.getClass());
+    paramObject = new new(localStringBuilder.toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
-  public final void l() {}
-  
-  public goto m()
+  public void a(String paramString, int paramInt)
   {
-    return new super("https://tdid.m.qq.com?mc=2");
+    try
+    {
+      byte[] arrayOfByte = paramString.getBytes(this.b);
+      paramString = arrayOfByte;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      label14:
+      break label14;
+    }
+    paramString = paramString.getBytes();
+    a(paramString.length + 10);
+    if (paramString.length > 255)
+    {
+      b((byte)7, paramInt);
+      this.a.putInt(paramString.length);
+      this.a.put(paramString);
+      return;
+    }
+    b((byte)6, paramInt);
+    this.a.put((byte)paramString.length);
+    this.a.put(paramString);
   }
   
-  public final boolean n()
+  public <T> void a(Collection<T> paramCollection, int paramInt)
   {
-    return this.q;
+    a(8);
+    b((byte)9, paramInt);
+    if (paramCollection == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramCollection.size();
+    }
+    a(paramInt, 0);
+    if (paramCollection != null)
+    {
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext()) {
+        a(paramCollection.next(), 0);
+      }
+    }
+  }
+  
+  public <K, V> void a(Map<K, V> paramMap, int paramInt)
+  {
+    a(8);
+    b((byte)8, paramInt);
+    if (paramMap == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramMap.size();
+    }
+    a(paramInt, 0);
+    if (paramMap != null)
+    {
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        a(localEntry.getKey(), 0);
+        a(localEntry.getValue(), 1);
+      }
+    }
+  }
+  
+  public void a(short paramShort, int paramInt)
+  {
+    a(4);
+    if ((paramShort >= -128) && (paramShort <= 127))
+    {
+      a((byte)paramShort, paramInt);
+      return;
+    }
+    b((byte)1, paramInt);
+    this.a.putShort(paramShort);
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    a(paramArrayOfByte.length + 8);
+    b((byte)13, paramInt);
+    b((byte)0, 0);
+    a(paramArrayOfByte.length, 0);
+    this.a.put(paramArrayOfByte);
+  }
+  
+  public byte[] a()
+  {
+    byte[] arrayOfByte = new byte[this.a.position()];
+    System.arraycopy(this.a.array(), 0, arrayOfByte, 0, this.a.position());
+    return arrayOfByte;
+  }
+  
+  public void b(byte paramByte, int paramInt)
+  {
+    byte b1;
+    if (paramInt < 15)
+    {
+      b1 = (byte)(paramByte | paramInt << 4);
+      this.a.put(b1);
+      return;
+    }
+    if (paramInt < 256)
+    {
+      b1 = (byte)(paramByte | 0xF0);
+      this.a.put(b1);
+      this.a.put((byte)paramInt);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tag is too large: ");
+    localStringBuilder.append(paramInt);
+    throw new new(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.case
  * JD-Core Version:    0.7.0.1
  */

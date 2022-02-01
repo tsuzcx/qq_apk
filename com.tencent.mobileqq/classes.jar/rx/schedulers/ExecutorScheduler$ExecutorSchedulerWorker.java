@@ -55,29 +55,26 @@ final class ExecutorScheduler$ExecutorSchedulerWorker
   public Subscription schedule(Action0 paramAction0)
   {
     if (isUnsubscribed()) {
-      paramAction0 = Subscriptions.unsubscribed();
+      return Subscriptions.unsubscribed();
     }
-    ScheduledAction localScheduledAction;
-    do
-    {
-      return paramAction0;
-      localScheduledAction = new ScheduledAction(paramAction0, this.tasks);
-      this.tasks.add(localScheduledAction);
-      this.queue.offer(localScheduledAction);
-      paramAction0 = localScheduledAction;
-    } while (this.wip.getAndIncrement() != 0);
-    try
-    {
-      this.executor.execute(this);
-      return localScheduledAction;
+    paramAction0 = new ScheduledAction(paramAction0, this.tasks);
+    this.tasks.add(paramAction0);
+    this.queue.offer(paramAction0);
+    if (this.wip.getAndIncrement() == 0) {
+      try
+      {
+        this.executor.execute(this);
+        return paramAction0;
+      }
+      catch (RejectedExecutionException localRejectedExecutionException)
+      {
+        this.tasks.remove(paramAction0);
+        this.wip.decrementAndGet();
+        RxJavaPlugins.getInstance().getErrorHandler().handleError(localRejectedExecutionException);
+        throw localRejectedExecutionException;
+      }
     }
-    catch (RejectedExecutionException paramAction0)
-    {
-      this.tasks.remove(localScheduledAction);
-      this.wip.decrementAndGet();
-      RxJavaPlugins.getInstance().getErrorHandler().handleError(paramAction0);
-      throw paramAction0;
-    }
+    return paramAction0;
   }
   
   public Subscription schedule(Action0 paramAction0, long paramLong, TimeUnit paramTimeUnit)
@@ -114,7 +111,7 @@ final class ExecutorScheduler$ExecutorSchedulerWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.schedulers.ExecutorScheduler.ExecutorSchedulerWorker
  * JD-Core Version:    0.7.0.1
  */

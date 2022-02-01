@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.text.TextUtils;
-import awge;
-import awhs;
-import ulj;
+import com.tencent.biz.qqstory.base.Copyable;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class MemoryInfoEntry
-  extends awge
-  implements ulj
+  extends Entity
+  implements Copyable
 {
   public String cookie = "";
   public int isEnd = -1;
@@ -15,7 +15,7 @@ public class MemoryInfoEntry
   public long maxCollectionIndex = -1L;
   public long seq = -1L;
   public int timeZone = -1;
-  @awhs
+  @unique
   public String unionId = "";
   
   public MemoryInfoEntry() {}
@@ -38,30 +38,35 @@ public class MemoryInfoEntry
       if (!TextUtils.isEmpty(paramObject.unionId)) {
         this.unionId = paramObject.unionId;
       }
-      if (paramObject.maxCollectionIndex != -1L) {
-        this.maxCollectionIndex = paramObject.maxCollectionIndex;
+      long l = paramObject.maxCollectionIndex;
+      if (l != -1L) {
+        this.maxCollectionIndex = l;
       }
-      if (paramObject.seq != -1L) {
-        this.seq = paramObject.seq;
+      l = paramObject.seq;
+      if (l != -1L) {
+        this.seq = l;
       }
-      if (paramObject.timeZone != -1) {
-        this.timeZone = paramObject.timeZone;
+      int i = paramObject.timeZone;
+      if (i != -1) {
+        this.timeZone = i;
       }
       if (!TextUtils.isEmpty(paramObject.cookie)) {
         this.cookie = paramObject.cookie;
       }
-      if (paramObject.isEnd != -1) {
-        this.isEnd = paramObject.isEnd;
+      i = paramObject.isEnd;
+      if (i != -1) {
+        this.isEnd = i;
       }
-      if (paramObject.isFriend != -1) {
-        this.isFriend = paramObject.isFriend;
+      i = paramObject.isFriend;
+      if (i != -1) {
+        this.isFriend = i;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.MemoryInfoEntry
  * JD-Core Version:    0.7.0.1
  */

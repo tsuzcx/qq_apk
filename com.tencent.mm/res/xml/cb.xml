@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.voiceprint.ui.VoiceHeaderPreference android:key="settings_voiceprint_header" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:summary="@string/eh3" android:title="@string/eh2" android:key="settings_voiceprint_title" />
-    <SummaryBelowPreference android:summary="@string/eh0" android:title="@string/egz" android:key="settings_voiceprint_create" />
-    <Preference android:title="@string/eh1" android:key="settings_voiceprint_reset" android:layout="@layout/afi" />
-    <Preference android:title="@string/eh4" android:key="settings_voiceprint_unlock" android:layout="@layout/afi" />
-    <PreferenceCategory />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_voice_play_mode" android:title="@string/j1w" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_enter_button_send" android:title="@string/irt" />
+    <Preference android:key="settings_chatting_bg" android:layout="@layout/bdi" android:title="@string/ir9" />
+    <Preference android:key="settings_emoji_manager" android:layout="@layout/bdi" android:title="@string/irp" />
+    <PreferenceTitleCategory android:title="@string/ir5" />
+    <Preference android:key="settings_bak_chat" android:layout="@layout/bdi" android:title="@string/aei" />
+    <Preference android:key="settings_reset" android:layout="@layout/bdi" android:title="@string/ixx" />
+    <Preference android:key="settings_recovery" android:layout="@layout/bdi" android:title="@string/bwx" />
 </PreferenceScreen>

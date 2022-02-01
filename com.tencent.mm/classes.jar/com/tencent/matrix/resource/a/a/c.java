@@ -10,7 +10,43 @@ import java.util.zip.ZipFile;
 
 public final class c
 {
-  public static void V(Object paramObject)
+  public static void a(File paramFile, OutputStream paramOutputStream)
+  {
+    byte[] arrayOfByte = new byte[4096];
+    try
+    {
+      paramFile = new BufferedInputStream(new FileInputStream(paramFile));
+      try
+      {
+        for (;;)
+        {
+          int i = paramFile.read(arrayOfByte);
+          if (i <= 0) {
+            break;
+          }
+          paramOutputStream.write(arrayOfByte, 0, i);
+        }
+        closeQuietly(paramOutputStream);
+      }
+      finally
+      {
+        paramOutputStream = paramFile;
+        paramFile = localObject;
+      }
+    }
+    finally
+    {
+      for (;;)
+      {
+        paramOutputStream = null;
+      }
+    }
+    throw paramFile;
+    paramOutputStream.flush();
+    closeQuietly(paramFile);
+  }
+  
+  public static void closeQuietly(Object paramObject)
   {
     if (paramObject == null) {}
     for (;;)
@@ -29,49 +65,13 @@ public final class c
           return;
         }
       }
-      catch (Throwable paramObject) {}
+      finally {}
     }
-  }
-  
-  public static void a(File paramFile, OutputStream paramOutputStream)
-  {
-    byte[] arrayOfByte = new byte[4096];
-    try
-    {
-      paramFile = new BufferedInputStream(new FileInputStream(paramFile));
-      try
-      {
-        for (;;)
-        {
-          int i = paramFile.read(arrayOfByte);
-          if (i <= 0) {
-            break;
-          }
-          paramOutputStream.write(arrayOfByte, 0, i);
-        }
-        V(paramOutputStream);
-      }
-      finally
-      {
-        paramOutputStream = paramFile;
-        paramFile = localObject;
-      }
-    }
-    finally
-    {
-      for (;;)
-      {
-        paramOutputStream = null;
-      }
-    }
-    throw paramFile;
-    paramOutputStream.flush();
-    V(paramFile);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.a.a.c
  * JD-Core Version:    0.7.0.1
  */

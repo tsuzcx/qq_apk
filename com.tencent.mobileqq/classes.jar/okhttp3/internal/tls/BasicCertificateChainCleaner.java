@@ -38,56 +38,65 @@ public final class BasicCertificateChainCleaner
   
   public List<Certificate> clean(List<Certificate> paramList, String paramString)
   {
-    paramList = new ArrayDeque(paramList);
-    paramString = new ArrayList();
-    paramString.add(paramList.removeFirst());
-    int j = 0;
+    ArrayDeque localArrayDeque = new ArrayDeque(paramList);
+    paramList = new ArrayList();
+    paramList.add(localArrayDeque.removeFirst());
     int i = 0;
-    if (j < 9)
+    int j = 0;
+    while (i < 9)
     {
-      X509Certificate localX509Certificate1 = (X509Certificate)paramString.get(paramString.size() - 1);
-      Object localObject = this.trustRootIndex.findByIssuerAndSignature(localX509Certificate1);
+      paramString = (X509Certificate)paramList.get(paramList.size() - 1);
+      Object localObject = this.trustRootIndex.findByIssuerAndSignature(paramString);
       if (localObject != null)
       {
-        if ((paramString.size() > 1) || (!localX509Certificate1.equals(localObject))) {
-          paramString.add(localObject);
+        if ((paramList.size() > 1) || (!paramString.equals(localObject))) {
+          paramList.add(localObject);
         }
         if (verifySignature((X509Certificate)localObject, (X509Certificate)localObject)) {
-          return paramString;
+          return paramList;
         }
-        i = 1;
+        j = 1;
       }
-      for (;;)
+      else
       {
-        j += 1;
-        break;
-        localObject = paramList.iterator();
-        X509Certificate localX509Certificate2;
+        localObject = localArrayDeque.iterator();
+        X509Certificate localX509Certificate;
         do
         {
           if (!((Iterator)localObject).hasNext()) {
             break;
           }
-          localX509Certificate2 = (X509Certificate)((Iterator)localObject).next();
-        } while (!verifySignature(localX509Certificate1, localX509Certificate2));
+          localX509Certificate = (X509Certificate)((Iterator)localObject).next();
+        } while (!verifySignature(paramString, localX509Certificate));
         ((Iterator)localObject).remove();
-        paramString.add(localX509Certificate2);
+        paramList.add(localX509Certificate);
       }
-      if (i != 0) {
-        return paramString;
+      i += 1;
+      continue;
+      if (j != 0) {
+        return paramList;
       }
-      throw new SSLPeerUnverifiedException("Failed to find a trusted cert that signed " + localX509Certificate1);
+      paramList = new StringBuilder();
+      paramList.append("Failed to find a trusted cert that signed ");
+      paramList.append(paramString);
+      throw new SSLPeerUnverifiedException(paramList.toString());
     }
-    throw new SSLPeerUnverifiedException("Certificate chain too long: " + paramString);
+    paramString = new StringBuilder();
+    paramString.append("Certificate chain too long: ");
+    paramString.append(paramList);
+    paramList = new SSLPeerUnverifiedException(paramString.toString());
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    while (((paramObject instanceof BasicCertificateChainCleaner)) && (((BasicCertificateChainCleaner)paramObject).trustRootIndex.equals(this.trustRootIndex))) {
+    if (paramObject == this) {
       return true;
     }
-    return false;
+    return ((paramObject instanceof BasicCertificateChainCleaner)) && (((BasicCertificateChainCleaner)paramObject).trustRootIndex.equals(this.trustRootIndex));
   }
   
   public int hashCode()
@@ -97,7 +106,7 @@ public final class BasicCertificateChainCleaner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.tls.BasicCertificateChainCleaner
  * JD-Core Version:    0.7.0.1
  */

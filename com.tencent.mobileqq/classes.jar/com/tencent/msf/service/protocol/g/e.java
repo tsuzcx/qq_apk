@@ -37,14 +37,15 @@ public final class e
   {
     paramJceOutputStream.write(this.a, 1);
     paramJceOutputStream.write(this.b, 2);
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 3);
+    byte[] arrayOfByte = this.c;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.g.e
  * JD-Core Version:    0.7.0.1
  */

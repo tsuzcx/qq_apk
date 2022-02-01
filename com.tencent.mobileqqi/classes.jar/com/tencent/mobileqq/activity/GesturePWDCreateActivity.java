@@ -9,8 +9,8 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.gesturelock.LockPatternView;
 import com.tencent.mobileqq.gesturelock.LockPatternView.Cell;
 import com.tencent.mobileqq.widget.QQToast;
+import coq;
 import cor;
-import cos;
 import java.util.Iterator;
 import java.util.List;
 
@@ -54,12 +54,12 @@ public class GesturePWDCreateActivity
   private void e()
   {
     setTitle(2131562889);
-    a(2131561746, new cor(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231737));
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131231739));
+    a(2131561746, new coq(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231736));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131231738));
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setFillInGapCell(false);
     this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setTactileFeedbackEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new cos(this));
+    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(new cor(this));
     if (this.jdField_c_of_type_Float <= 1.0D)
     {
       ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.getLayoutParams();
@@ -67,15 +67,15 @@ public class GesturePWDCreateActivity
       localLayoutParams.width = ((int)(this.jdField_c_of_type_Float * 240.0F));
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231727);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231728);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131231729);
-    this.d = findViewById(2131231730);
-    this.e = findViewById(2131231731);
-    this.f = findViewById(2131231732);
-    this.g = findViewById(2131231733);
-    this.h = findViewById(2131231734);
-    this.i = findViewById(2131231735);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231726);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231727);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131231728);
+    this.d = findViewById(2131231729);
+    this.e = findViewById(2131231730);
+    this.f = findViewById(2131231731);
+    this.g = findViewById(2131231732);
+    this.h = findViewById(2131231733);
+    this.i = findViewById(2131231734);
   }
   
   private void f()

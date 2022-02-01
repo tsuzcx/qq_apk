@@ -19,7 +19,7 @@ public class c
   public static Context b;
   public static Handler c;
   private static boolean d = false;
-  private static HwBastet e = null;
+  private static HwBastet e;
   private static ConcurrentHashMap f = new ConcurrentHashMap();
   private static ConcurrentHashMap g = new ConcurrentHashMap();
   private static boolean h = false;
@@ -68,100 +68,162 @@ public class c
   
   public String a(int paramInt)
   {
-    switch (paramInt)
+    int i2;
+    if (paramInt != 156)
     {
-    default: 
-    case 513: 
-    case 516: 
-    case 514: 
-    case 515: 
-      for (;;)
+      i2 = 0;
+      i1 = 0;
+      switch (paramInt)
       {
+      default: 
         return null;
-        try
+      }
+    }
+    long l2;
+    try
+    {
+      if (g == null)
+      {
+        QLog.d("HwSocketAdaptor", 1, "exclude timeout packet is null");
+        return null;
+      }
+      localStringBuilder = new StringBuilder();
+      localObject = g.entrySet().iterator();
+      l1 = 0L;
+      if (((Iterator)localObject).hasNext())
+      {
+        localEntry = (Map.Entry)((Iterator)localObject).next();
+        l2 = l1;
+        i2 = i1;
+        if (((Long)localEntry.getValue()).longValue() > 45000L) {
+          break label951;
+        }
+        if (((Long)localEntry.getValue()).longValue() < 0L)
         {
-          localStringBuilder = new StringBuilder();
-          localIterator = f.entrySet().iterator();
-          l1 = 0L;
-          i2 = 0;
-          i1 = 0;
-          while (localIterator.hasNext())
+          l2 = l1;
+          i2 = i1;
+          break label951;
+        }
+        localStringBuilder.append("seq_");
+        localStringBuilder.append(localEntry.getKey());
+        localStringBuilder.append("+");
+        localStringBuilder.append("consume_");
+        localStringBuilder.append(localEntry.getValue());
+        localStringBuilder.append("|");
+        l2 = l1 + ((Long)localEntry.getValue()).longValue();
+        i2 = i1 + 1;
+        break label951;
+      }
+      if (i1 > 0)
+      {
+        localStringBuilder.append("count_");
+        localStringBuilder.append(i1);
+        localStringBuilder.append("+");
+        localStringBuilder.append("sumcount_");
+        localStringBuilder.append(l1);
+        localStringBuilder.append("+average_");
+        localStringBuilder.append(l1 / i1);
+      }
+      g.clear();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("report consume exclude timeout: ");
+      ((StringBuilder)localObject).append(localStringBuilder.toString());
+      QLog.d("HwSocketAdaptor", 1, ((StringBuilder)localObject).toString());
+      return localStringBuilder.toString();
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder;
+      Map.Entry localEntry;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get config ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" failed ");
+      ((StringBuilder)localObject).append(localThrowable.toString());
+      QLog.d("HwSocketAdaptor", 1, ((StringBuilder)localObject).toString(), localThrowable);
+      return null;
+    }
+    localStringBuilder = new StringBuilder();
+    localObject = o.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localStringBuilder.append((String)((Iterator)localObject).next());
+      localStringBuilder.append("#");
+    }
+    o.clear();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("report heartbeat: ");
+    ((StringBuilder)localObject).append(localStringBuilder.toString());
+    QLog.d("HwSocketAdaptor", 2, ((StringBuilder)localObject).toString());
+    return localStringBuilder.toString();
+    if ((k == 0) && (l == 0)) {
+      return null;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("send_except:");
+    localStringBuilder.append(k);
+    localStringBuilder.append("+");
+    localStringBuilder.append("hb_except:");
+    localStringBuilder.append(l);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("report hrt except: ");
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(", hb except");
+      ((StringBuilder)localObject).append(l);
+      QLog.d("HwSocketAdaptor", 2, ((StringBuilder)localObject).toString());
+    }
+    return localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localObject = f.entrySet().iterator();
+    long l1 = 0L;
+    int i1 = i2;
+    for (;;)
+    {
+      if (((Iterator)localObject).hasNext())
+      {
+        localEntry = (Map.Entry)((Iterator)localObject).next();
+        if (((Long)localEntry.getValue()).longValue() <= 60000L) {
+          if (((Long)localEntry.getValue()).longValue() >= 0L)
           {
-            localEntry = (Map.Entry)localIterator.next();
-            if ((((Long)localEntry.getValue()).longValue() <= 60000L) && (((Long)localEntry.getValue()).longValue() >= 0L))
-            {
-              localStringBuilder.append("seq_").append(localEntry.getKey()).append("+").append("consume_").append(localEntry.getValue()).append("|");
-              l1 += ((Long)localEntry.getValue()).longValue();
-              i2 += 1;
-              i1 += 1;
-            }
-          }
-          if (i2 > 0) {
-            localStringBuilder.append("count_").append(i2).append("+").append("sumcount_").append(l1).append("+average_").append(l1 / i2);
-          }
-          f.clear();
-          QLog.d("HwSocketAdaptor", 1, "report consume: " + localStringBuilder.toString());
-          return localStringBuilder.toString();
-        }
-        catch (Throwable localThrowable)
-        {
-          StringBuilder localStringBuilder;
-          Iterator localIterator;
-          long l1;
-          int i2;
-          int i1;
-          Map.Entry localEntry;
-          QLog.d("HwSocketAdaptor", 1, "get config " + paramInt + " failed " + localThrowable.toString(), localThrowable);
-        }
-        if (g == null)
-        {
-          QLog.d("HwSocketAdaptor", 1, "exclude timeout packet is null");
-          return null;
-        }
-        localStringBuilder = new StringBuilder();
-        localIterator = g.entrySet().iterator();
-        l1 = 0L;
-        i2 = 0;
-        i1 = 0;
-        while (localIterator.hasNext())
-        {
-          localEntry = (Map.Entry)localIterator.next();
-          if ((((Long)localEntry.getValue()).longValue() <= 45000L) && (((Long)localEntry.getValue()).longValue() >= 0L))
-          {
-            localStringBuilder.append("seq_").append(localEntry.getKey()).append("+").append("consume_").append(localEntry.getValue()).append("|");
+            localStringBuilder.append("seq_");
+            localStringBuilder.append(localEntry.getKey());
+            localStringBuilder.append("+");
+            localStringBuilder.append("consume_");
+            localStringBuilder.append(localEntry.getValue());
+            localStringBuilder.append("|");
             l1 += ((Long)localEntry.getValue()).longValue();
-            i2 += 1;
             i1 += 1;
           }
         }
-        if (i2 > 0) {
-          localStringBuilder.append("count_").append(i2).append("+").append("sumcount_").append(l1).append("+average_").append(l1 / i2);
-        }
-        g.clear();
-        QLog.d("HwSocketAdaptor", 1, "report consume exclude timeout: " + localStringBuilder.toString());
-        return localStringBuilder.toString();
-        if ((k == 0) && (l == 0)) {
-          return null;
-        }
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("send_except:").append(k).append("+");
-        localStringBuilder.append("hb_except:").append(l);
-        if (QLog.isColorLevel()) {
-          QLog.d("HwSocketAdaptor", 2, "report hrt except: " + k + ", hb except" + l);
-        }
-        return localStringBuilder.toString();
-        localStringBuilder = new StringBuilder();
-        localIterator = o.iterator();
-        while (localIterator.hasNext()) {
-          localStringBuilder.append((String)localIterator.next()).append("#");
-        }
       }
-      o.clear();
-      QLog.d("HwSocketAdaptor", 2, "report heartbeat: " + localThrowable.toString());
-      return localThrowable.toString();
+      else
+      {
+        if (i1 > 0)
+        {
+          localStringBuilder.append("count_");
+          localStringBuilder.append(i1);
+          localStringBuilder.append("+");
+          localStringBuilder.append("sumcount_");
+          localStringBuilder.append(l1);
+          localStringBuilder.append("+average_");
+          localStringBuilder.append(l1 / i1);
+        }
+        f.clear();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("report consume: ");
+        ((StringBuilder)localObject).append(localStringBuilder.toString());
+        QLog.d("HwSocketAdaptor", 1, ((StringBuilder)localObject).toString());
+        return localStringBuilder.toString();
+        boolean bool = s;
+        return String.valueOf(bool);
+        label951:
+        l1 = l2;
+        i1 = i2;
+        break;
+      }
     }
-    boolean bool = s;
-    return String.valueOf(bool);
   }
   
   public void a()
@@ -170,47 +232,60 @@ public class c
     try
     {
       a.f();
-      StringBuilder localStringBuilder;
-      long l1;
       if (b.e)
       {
         QLog.d("HwSocketAdaptor", 1, "connection closed, proxy pause");
         b.e = false;
         b(153, true);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("begin_").append(m).append(":");
-        localStringBuilder.append("end_").append(n).append(":");
-        localStringBuilder.append("last_").append(n - m).append(":");
-        localStringBuilder.append("quality_").append(e.inquireNetworkQuality()).append(":");
-        localStringBuilder.append("net_").append(NetConnInfoCenter.isWifiOrMobileConn()).append(":");
-        l1 = n - m;
-        QLog.d("HwSocketAdaptor", 1, "connection last:" + l1);
-        if ((600000L <= l1) || (240000L >= l1) || (!NetConnInfoCenter.isWifiOrMobileConn())) {
-          break label283;
-        }
-        QLog.d("HwSocketAdaptor", 1, "heartbeatUnexpectCount:" + r);
-        r += 1;
-        if (r >= com.tencent.mobileqq.msf.core.a.a.aN())
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("begin_");
+        localStringBuilder1.append(m);
+        localStringBuilder1.append(":");
+        localStringBuilder1.append("end_");
+        localStringBuilder1.append(n);
+        localStringBuilder1.append(":");
+        localStringBuilder1.append("last_");
+        localStringBuilder1.append(n - m);
+        localStringBuilder1.append(":");
+        localStringBuilder1.append("quality_");
+        localStringBuilder1.append(e.inquireNetworkQuality());
+        localStringBuilder1.append(":");
+        localStringBuilder1.append("net_");
+        localStringBuilder1.append(NetConnInfoCenter.isWifiOrMobileConn());
+        localStringBuilder1.append(":");
+        long l1 = n - m;
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("connection last:");
+        localStringBuilder2.append(l1);
+        QLog.d("HwSocketAdaptor", 1, localStringBuilder2.toString());
+        if ((600000L > l1) && (240000L < l1) && (NetConnInfoCenter.isWifiOrMobileConn()))
         {
-          QLog.d("HwSocketAdaptor", 1, "close heartbeat proxy switch");
-          b(156, false);
-          r = 0;
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("heartbeatUnexpectCount:");
+          localStringBuilder1.append(r);
+          QLog.d("HwSocketAdaptor", 1, localStringBuilder1.toString());
+          r += 1;
+          if (r >= com.tencent.mobileqq.msf.core.a.a.aN())
+          {
+            QLog.d("HwSocketAdaptor", 1, "close heartbeat proxy switch");
+            b(156, false);
+            r = 0;
+          }
+        }
+        else if (l1 > 600000L)
+        {
+          o.add(localStringBuilder1.toString());
         }
       }
-      for (;;)
-      {
-        c.removeMessages(153);
-        return;
-        label283:
-        if (l1 > 600000L) {
-          o.add(localStringBuilder.toString());
-        }
-      }
+      c.removeMessages(153);
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.d("HwSocketAdaptor", 1, "failed to disconnect " + localThrowable.toString(), localThrowable);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("failed to disconnect ");
+      localStringBuilder2.append(localThrowable.toString());
+      QLog.d("HwSocketAdaptor", 1, localStringBuilder2.toString(), localThrowable);
     }
   }
   
@@ -231,28 +306,32 @@ public class c
       l2 = ((Long)g.get(Integer.valueOf(paramInt))).longValue();
       g.put(Integer.valueOf(paramInt), Long.valueOf(l1 - l2));
     }
-    if (paramBoolean) {
-      if ((e.inquireNetworkQuality() != 0) && (NetConnInfoCenter.isWifiOrMobileConn())) {}
-    }
-    while (!h)
+    if (paramBoolean)
     {
-      do
+      if (e.inquireNetworkQuality() != 0)
       {
-        return;
+        if (!NetConnInfoCenter.isWifiOrMobileConn()) {
+          return;
+        }
         if (!h)
         {
           h = true;
           i = 0;
         }
         i += 1;
-      } while (i <= com.tencent.mobileqq.msf.core.a.a.aK());
-      t = true;
-      a.j();
-      i = 0;
-      return;
+        if (i <= com.tencent.mobileqq.msf.core.a.a.aK()) {
+          return;
+        }
+        t = true;
+        a.j();
+        i = 0;
+      }
     }
-    h = false;
-    i = 0;
+    else if (h)
+    {
+      h = false;
+      i = 0;
+    }
   }
   
   public void a(Socket paramSocket)
@@ -266,21 +345,19 @@ public class c
       }
       if (e.inquireNetworkQuality() == 1) {
         QLog.d("HwSocketAdaptor", 1, "bastet detect network quality low");
+      } else if (e.inquireNetworkQuality() == 0) {
+        QLog.d("HwSocketAdaptor", 1, "bastet detect network quality none");
       }
-      for (;;)
-      {
-        a.e();
-        return;
-        if (e.inquireNetworkQuality() == 0) {
-          QLog.d("HwSocketAdaptor", 1, "bastet detect network quality none");
-        }
-      }
+      a.e();
       return;
     }
     catch (Throwable paramSocket)
     {
       paramSocket.printStackTrace();
-      QLog.d("HwSocketAdaptor", 1, "failed to construct HwBastet instance " + paramSocket.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to construct HwBastet instance ");
+      localStringBuilder.append(paramSocket.toString());
+      QLog.d("HwSocketAdaptor", 1, localStringBuilder.toString());
       j += 1;
       d = false;
       if (j > com.tencent.mobileqq.msf.core.a.a.aL())
@@ -308,100 +385,117 @@ public class c
     }
     catch (Throwable paramArrayOfByte)
     {
-      do
+      paramArrayOfByte.printStackTrace();
+      paramSocket = new StringBuilder();
+      paramSocket.append("failed to send in huawei channel ");
+      paramSocket.append(paramArrayOfByte.toString());
+      QLog.d("HwSocketAdaptor", 1, paramSocket.toString());
+      j += 1;
+      d = false;
+      if (j > com.tencent.mobileqq.msf.core.a.a.aL())
       {
-        paramArrayOfByte.printStackTrace();
-        QLog.d("HwSocketAdaptor", 1, "failed to send in huawei channel " + paramArrayOfByte.toString());
-        j += 1;
-        d = false;
-      } while (j <= com.tencent.mobileqq.msf.core.a.a.aL());
-      a.j();
-      j = 0;
-      k += 1;
+        a.j();
+        j = 0;
+        k += 1;
+      }
     }
   }
   
   public boolean b(int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    case 154: 
-    case 155: 
-    default: 
-    case 151: 
-      try
+    if (paramInt != 156) {
+      switch (paramInt)
       {
-        QLog.d("HwSocketAdaptor", 1, "unknown config " + paramInt);
-        return false;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.d("HwSocketAdaptor", 1, "set config " + paramInt + " failed " + localThrowable.toString(), localThrowable);
-        return false;
-      }
-      try
-      {
-        if (!e.isBastetAvailable())
+      default: 
+      case 153: 
+        for (;;)
         {
-          QLog.d("HwSocketAdaptor", 1, "bastet is not available ");
+          try
+          {
+            StringBuilder localStringBuilder1 = new StringBuilder();
+            localStringBuilder1.append("unknown config ");
+            localStringBuilder1.append(paramInt);
+            QLog.d("HwSocketAdaptor", 1, localStringBuilder1.toString());
+            return false;
+          }
+          catch (Throwable localThrowable)
+          {
+            try
+            {
+              if (!e.isBastetAvailable())
+              {
+                QLog.d("HwSocketAdaptor", 1, "bastet is not available ");
+                return false;
+              }
+              if ((b.b != null) && (b.c != null))
+              {
+                e.setAolHeartbeat(1, b.b, b.c);
+                m = System.currentTimeMillis();
+                x = false;
+                c.sendEmptyMessageDelayed(153, 2700000L);
+                return true;
+              }
+              QLog.d("HwSocketAdaptor", 1, "request or response null");
+              return false;
+            }
+            catch (Exception localException3)
+            {
+              l += 1;
+              localStringBuilder2 = new StringBuilder();
+              localStringBuilder2.append("failed to init heartbeat content ");
+              localStringBuilder2.append(localException3.toString());
+              QLog.d("HwSocketAdaptor", 1, localStringBuilder2.toString(), localException3);
+              return false;
+            }
+            localThrowable = localThrowable;
+          }
+          try
+          {
+            c.removeMessages(153);
+            e.pauseHeartbeat();
+            n = System.currentTimeMillis();
+            return true;
+          }
+          catch (Exception localException1)
+          {
+            l += 1;
+            QLog.d("HwSocketAdaptor", 1, "failed to pause heartbeat", localException1);
+            return false;
+          }
+        }
+      case 152: 
+        try
+        {
+          if (!e.isBastetAvailable())
+          {
+            QLog.d("HwSocketAdaptor", 1, "bastet is not available for resume");
+            return false;
+          }
+          e.resumeHeartbeat();
+          return true;
+        }
+        catch (Exception localException2)
+        {
+          l += 1;
+          QLog.d("HwSocketAdaptor", 1, "failed to resume heartbeat", localException2);
           return false;
         }
       }
-      catch (Exception localException1)
-      {
-        l += 1;
-        QLog.d("HwSocketAdaptor", 1, "failed to init heartbeat content " + localException1.toString(), localException1);
-        return false;
-      }
-      if ((b.b == null) || (b.c == null))
-      {
-        QLog.d("HwSocketAdaptor", 1, "request or response null");
-        return false;
-      }
-      e.setAolHeartbeat(1, b.b, b.c);
-      m = System.currentTimeMillis();
-      x = false;
-      c.sendEmptyMessageDelayed(153, 2700000L);
-      return true;
-    case 153: 
-      try
-      {
-        c.removeMessages(153);
-        e.pauseHeartbeat();
-        n = System.currentTimeMillis();
-        return true;
-      }
-      catch (Exception localException2)
-      {
-        l += 1;
-        QLog.d("HwSocketAdaptor", 1, "failed to pause heartbeat", localException2);
-        return false;
-      }
-    case 152: 
-      try
-      {
-        if (!e.isBastetAvailable())
-        {
-          QLog.d("HwSocketAdaptor", 1, "bastet is not available for resume");
-          return false;
-        }
-      }
-      catch (Exception localException3)
-      {
-        l += 1;
-        QLog.d("HwSocketAdaptor", 1, "failed to resume heartbeat", localException3);
-        return false;
-      }
-      e.resumeHeartbeat();
-      return true;
     }
     s = paramBoolean;
+    return false;
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("set config ");
+    localStringBuilder2.append(paramInt);
+    localStringBuilder2.append(" failed ");
+    localStringBuilder2.append(localException3.toString());
+    QLog.d("HwSocketAdaptor", 1, localStringBuilder2.toString(), localException3);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.a.c
  * JD-Core Version:    0.7.0.1
  */

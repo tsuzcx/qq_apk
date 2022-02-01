@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rl_hongbao_content" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rl_hongbao" android:layout_width="280.0dip" android:layout_height="280.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/iv_aperture_bg" android:background="@drawable/aio_bg_hongbao_aperture" android:visibility="invisible" android:layout_width="280.0dip" android:layout_height="280.0dip" android:layout_centerInParent="true" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/iv_hongbao_bg" android:layout_width="183.0dip" android:layout_height="247.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/iv_hongbao_logo" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginBottom="82.0dip" android:scaleType="fitCenter" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <TextView android:textSize="24.0sp" android:textColor="#fffee646" android:gravity="center" android:id="@id/tv_hongbao_hint" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="" android:maxLines="2" android:layout_above="@id/rl_hongbao" android:layout_centerHorizontal="true" />
+</RelativeLayout>

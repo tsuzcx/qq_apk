@@ -1,79 +1,79 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.b.a.a;
-import com.tencent.mm.wallet_core.c.i;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.xi;
+import com.tencent.mm.protocal.protobuf.xj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.r;
+import java.net.URLDecoder;
 
 public final class q
-  extends a
-  implements i
+  extends r
 {
-  public String qjt;
+  public xj Ojd;
+  private final String TAG;
   
-  public q(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
+  public q(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(44760);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("amount", String.valueOf(paramLong));
-    localHashMap.put("recv_username", paramString1);
-    localHashMap.put("recv_nickname", paramString2);
-    localHashMap.put("qrcodeid", paramString5);
-    try
-    {
-      if (!bo.isNullOrNil(paramString3)) {
-        localHashMap.put("desc", URLEncoder.encode(paramString3, "UTF-8"));
-      }
-      if (!bo.isNullOrNil(paramString4)) {
-        localHashMap.put("message", URLEncoder.encode(paramString4, "UTF-8"));
-      }
-    }
-    catch (UnsupportedEncodingException paramString5)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferPay", paramString5, "", new Object[0]);
-      }
-    }
-    localHashMap.put("currency", String.valueOf(paramInt1));
-    localHashMap.put("set_amount", String.valueOf(paramInt2));
-    setRequestData(localHashMap);
-    ab.i("MicroMsg.NetSceneH5F2fTransferPay", "username: %s, nickname: %s, amount: %s, desc: %s, msg: %s, currency: %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString3, paramString4, Integer.valueOf(paramInt1) });
-    AppMethodBeat.o(44760);
+    AppMethodBeat.i(67863);
+    this.TAG = "MicroMsg.NetSceneF2fDynamicCode";
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new xi();
+    ((c.a)localObject).otF = new xj();
+    ((c.a)localObject).funcId = 2736;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/f2fdynamiccode";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (xi)c.b.b(this.rr.otB);
+    ((xi)localObject).amount = paramInt;
+    ((xi)localObject).wwH = paramString1;
+    ((xi)localObject).Oiw = paramString2;
+    ((xi)localObject).ZfW = URLDecoder.decode(paramString3);
+    ((xi)localObject).OjW = paramString4;
+    ((xi)localObject).OjX = paramString5;
+    ((xi)localObject).Okp = paramString6;
+    ((xi)localObject).nickname = paramString7;
+    ((xi)localObject).OiN = paramString8;
+    Log.i("MicroMsg.NetSceneF2fDynamicCode", "amount: %s, username: %s, transfer_code_id: %s", new Object[] { Integer.valueOf(paramInt), paramString1, URLDecoder.decode(paramString3) });
+    AppMethodBeat.o(67863);
   }
   
-  public final String bhG()
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
-    return "/cgi-bin/mmpay-bin/h5f2ftransferpay";
+    AppMethodBeat.i(67864);
+    Log.i("MicroMsg.NetSceneF2fDynamicCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.Ojd = ((xj)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneF2fDynamicCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.Ojd.hAV), this.Ojd.wYI });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    }
+    AppMethodBeat.o(67864);
   }
   
-  public final int bhH()
+  public final void f(s params)
   {
-    return 1529;
+    AppMethodBeat.i(288843);
+    params = (xj)c.c.b(((c)params).otC);
+    this.agTs = params.hAV;
+    this.agTt = params.wYI;
+    AppMethodBeat.o(288843);
   }
   
   public final int getType()
   {
-    return 1529;
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(44761);
-    this.qjt = paramJSONObject.optString("payurl", "");
-    ab.i("MicroMsg.NetSceneH5F2fTransferPay", "payurl: %s", new Object[] { this.qjt });
-    AppMethodBeat.o(44761);
+    return 2736;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.q
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/qvip_pay_recommend_service_frame" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/qvip_pay_recommend_service_layout" android:background="#fff5f5f5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/qvip_pay_recommend_icon_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/qvip_pay_recommend_service_image_layout" android:layout_width="43.0dip" android:layout_height="43.0dip">
+                    <ImageView android:id="@id/qvip_pay_recommend_service_icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/qvip_pay_recommend_service_default_icon" android:scaleType="fitCenter" android:layout_centerInParent="true" android:contentDescription="@null" />
+                    <ImageView android:id="@id/qvip_pay_recommend_service_red_point" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_tips_dot" android:scaleType="center" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@null" />
+                </RelativeLayout>
+                <TextView android:textSize="13.0sp" android:textColor="#ff222222" android:layout_gravity="center_horizontal" android:id="@id/qvip_pay_recommend_service_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="5.0dip" android:singleLine="true" />
+            </LinearLayout>
+            <ImageView android:id="@id/qvip_pay_recommend_service_tag" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0px" android:scaleType="fitStart" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@null" />
+            <TextView android:textSize="11.0sp" android:textColor="#ff999999" android:gravity="center_horizontal" android:id="@id/qvip_pay_recommend_service_market_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="5.0dip" android:layout_below="@id/qvip_pay_recommend_icon_layout" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/qvip_pay_recommend_service_folder_tag" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qvip_pay_folder_tag" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@null" />
+        </RelativeLayout>
+        <FrameLayout android:id="@id/qvip_pay_recommend_service_rotate_layout" android:background="#ffe6e6e6" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/qvip_pay_recommend_service_rotate_text" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:layout_gravity="center" android:id="@id/qvip_pay_recommend_service_rotate_image" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="fitCenter" android:contentDescription="@null" />
+            <View android:id="@id/qvip_pay_recommend_service_rotate_cover" android:background="#00333333" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </FrameLayout>
+    <View android:id="@id/qvip_pay_recommend_service_cover" android:background="@drawable/qvip_pay_wallet_grid_item_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

@@ -49,7 +49,8 @@ public final class ed<T>
   
   public final void a(fg paramfg, T paramT)
   {
-    if (this.a == null)
+    ea localea = this.a;
+    if (localea == null)
     {
       a().a(paramfg, paramT);
       return;
@@ -59,7 +60,7 @@ public final class ed<T>
       paramfg.e();
       return;
     }
-    ep.a(this.a.a(paramT), paramfg);
+    ep.a(localea.a(paramT), paramfg);
   }
 }
 

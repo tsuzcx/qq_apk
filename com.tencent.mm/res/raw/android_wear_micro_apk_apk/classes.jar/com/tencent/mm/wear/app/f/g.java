@@ -2,7 +2,7 @@ package com.tencent.mm.wear.app.f;
 
 public abstract interface g
 {
-  public abstract void mV();
+  public abstract void nH();
 }
 
 

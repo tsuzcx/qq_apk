@@ -10,26 +10,16 @@ public final class VideoCallMsg
 {
   static byte[] cache_errMsg;
   static byte[] cache_vMsg;
-  public byte cVerifyType;
-  public byte[] errMsg;
-  public long lPeerUin;
-  public long lUin;
-  public byte type;
-  public int uDateTime;
-  public int uSeqId;
-  public int uSessionId;
-  public byte[] vMsg;
-  public byte ver;
-  
-  static
-  {
-    if (!VideoCallMsg.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public byte cVerifyType = 0;
+  public byte[] errMsg = null;
+  public long lPeerUin = 0L;
+  public long lUin = 0L;
+  public byte type = 0;
+  public int uDateTime = 0;
+  public int uSeqId = 0;
+  public int uSessionId = 0;
+  public byte[] vMsg = null;
+  public byte ver = 0;
   
   public VideoCallMsg() {}
   
@@ -49,18 +39,17 @@ public final class VideoCallMsg
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public int hashCode()
@@ -113,14 +102,15 @@ public final class VideoCallMsg
     paramJceOutputStream.write(this.uSeqId, 6);
     paramJceOutputStream.write(this.uSessionId, 7);
     paramJceOutputStream.write(this.vMsg, 8);
-    if (this.errMsg != null) {
-      paramJceOutputStream.write(this.errMsg, 9);
+    byte[] arrayOfByte = this.errMsg;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VideoSvrPack.VideoCallMsg
  * JD-Core Version:    0.7.0.1
  */

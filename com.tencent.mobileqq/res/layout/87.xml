@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/ngs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.flashshow.widgets.FSViewPager android:id="@id/ngx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="44.0dip">
+        <ImageView android:id="@id/ncs" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/joh" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/ngr" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/joa" android:scaleType="fitCenter" android:layout_toRightOf="@id/ncs" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/nh5" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/job" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.tencent.biz.qqcircle.richframework.widget.TabLayoutCompat android:id="@id/ngt" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" app:tabCompatMinWidth="56.0dip" />
+    </RelativeLayout>
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44.0dip">
+        <include layout="@layout/9h" />
+    </FrameLayout>
+    <FrameLayout android:gravity="center" android:id="@id/nh6" android:background="@drawable/f8o" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="80.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="96.0dip">
+        <com.tencent.mobileqq.flashshow.view.RoundCornerImageView android:layout_gravity="center" android:id="@id/nh7" android:layout_width="60.0dip" android:layout_height="80.0dip" android:scaleType="centerCrop" />
+        <View android:layout_gravity="center" android:id="@id/nh8" android:background="@drawable/f8c" android:layout_width="58.0dip" android:layout_height="78.0dip" />
+        <com.tencent.mobileqq.flashshow.widgets.RoundProgressBar android:layout_gravity="center" android:id="@id/nhb" android:layout_width="35.0dip" android:layout_height="35.0dip" app:bgColorRound="#73ffffff" app:circleWidthRound="3.0dip" app:currentColorRound="#ccffffff" app:loadSpeedRound="10" app:textColorRound="#ffffffff" app:textSizeRound="11.0sp" />
+    </FrameLayout>
+    <ViewStub android:id="@id/ndc" android:visibility="gone" android:layout="@layout/7f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

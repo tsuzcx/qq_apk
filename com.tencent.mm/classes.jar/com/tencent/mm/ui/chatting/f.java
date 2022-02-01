@@ -1,710 +1,215 @@
 package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.a.vo;
-import com.tencent.mm.g.a.vo.b;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.br.c;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.transmit.SelectConversationUI;
 
 public final class f
 {
-  private static int zwT = 1;
-  private static int zwU = 2;
-  private static int zwV = 3;
-  
-  public static int a(j.b paramb, boolean paramBoolean)
+  public static boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
   {
-    AppMethodBeat.i(30458);
-    f.a locala = d(paramb);
-    switch (paramb.fiq)
+    AppMethodBeat.i(34306);
+    if (Util.isNullOrNil(paramString1))
     {
+      AppMethodBeat.o(34306);
+      return false;
     }
-    for (;;)
+    Object localObject = null;
+    if (paramString1.startsWith("weixin://openNativeUrl/weixinHB")) {
+      localObject = new a();
+    }
+    while ((localObject != null) && (((c)localObject).a(paramString1, paramContext, paramMMFragment, paramString2)))
     {
-      AppMethodBeat.o(30458);
-      return 2131231051;
-      if ((paramBoolean) || (locala.wkh == 1))
-      {
-        if ((locala.zwW <= 0) || (locala.zwX < 0) || (locala.zwY < 0)) {}
-      }
-      else {
-        switch (locala.zwW)
-        {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          AppMethodBeat.o(30458);
-          return 2131231053;
-        case 3: 
-          AppMethodBeat.o(30458);
-          return 2131231051;
-        case 4: 
-          AppMethodBeat.o(30458);
-          return 2131231052;
-          if (locala.wkh != 2) {
-            break label230;
-          }
-          if ((locala.zwW > 0) && (locala.zwZ >= 0L)) {
-            switch (locala.zwW)
-            {
-            }
-          }
-          break;
-        }
+      AppMethodBeat.o(34306);
+      return true;
+      if (b.bAz(paramString1)) {
+        localObject = new b();
+      } else if (d.bAz(paramString1)) {
+        localObject = new d();
       }
     }
-    AppMethodBeat.o(30458);
-    return 2131231053;
-    AppMethodBeat.o(30458);
-    return 2131231051;
-    AppMethodBeat.o(30458);
-    return 2131231052;
-    label230:
-    AppMethodBeat.o(30458);
-    return 2131231051;
+    AppMethodBeat.o(34306);
+    return false;
   }
   
-  public static String a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
+  static final class a
+    implements f.c
   {
-    AppMethodBeat.i(30460);
-    Object localObject = ah.getContext();
-    ab.d("MicroMsg.C2CAppMsgUtil", "getC2CLuckyMoneyDescByHbStatus() hbType:%s hbStatus:%s receiveStatus:%s isGroupChat:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean2) });
-    if (paramInt2 == 5)
+    public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
-      localObject = ((Context)localObject).getString(2131301200);
-      AppMethodBeat.o(30460);
-      return localObject;
-    }
-    if (paramInt1 == 1)
-    {
-      if (paramInt2 == 4)
+      AppMethodBeat.i(34301);
+      if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startsendnormalhbrequest"))
       {
-        if (paramInt3 == 2)
-        {
-          localObject = ((Context)localObject).getString(2131301201);
-          AppMethodBeat.o(30460);
-          return localObject;
-        }
-        localObject = ((Context)localObject).getString(2131301199);
-        AppMethodBeat.o(30460);
-        return localObject;
+        paramString1 = new Intent();
+        paramString1.putExtra("key_type", 0);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyPrepareUI", paramString1);
+        AppMethodBeat.o(34301);
+        return true;
       }
-      if (paramInt2 == 3)
+      if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startsendrandomhbrequest"))
       {
-        if (paramInt3 == 2)
-        {
-          localObject = ((Context)localObject).getString(2131301201);
-          AppMethodBeat.o(30460);
-          return localObject;
-        }
-        AppMethodBeat.o(30460);
-        return "";
+        paramString1 = new Intent();
+        paramString1.putExtra("key_type", 1);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyPrepareUI", paramString1);
+        AppMethodBeat.o(34301);
+        return true;
       }
-    }
-    else if (paramInt1 == 0)
-    {
-      if (paramInt2 == 4)
+      if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startsendhblistrequest"))
       {
-        if (paramBoolean1)
-        {
-          localObject = ((Context)localObject).getString(2131301199);
-          AppMethodBeat.o(30460);
-          return localObject;
-        }
-        if (paramBoolean2)
-        {
-          if (paramInt3 == 2)
-          {
-            localObject = ((Context)localObject).getString(2131301201);
-            AppMethodBeat.o(30460);
-            return localObject;
-          }
-          localObject = ((Context)localObject).getString(2131301199);
-          AppMethodBeat.o(30460);
-          return localObject;
-        }
-        localObject = ((Context)localObject).getString(2131301201);
-        AppMethodBeat.o(30460);
-        return localObject;
+        paramString1 = new Intent();
+        paramString1.putExtra("key_type", 1);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyMyRecordUI", paramString1);
+        AppMethodBeat.o(34301);
+        return true;
       }
-      if (paramInt2 == 3)
+      if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startreceivehblistrequest"))
       {
-        if (paramBoolean1)
-        {
-          AppMethodBeat.o(30460);
-          return "";
-        }
-        if (paramInt3 == 2)
-        {
-          localObject = ((Context)localObject).getString(2131301201);
-          AppMethodBeat.o(30460);
-          return localObject;
-        }
-        AppMethodBeat.o(30460);
-        return "";
+        paramString1 = new Intent();
+        paramString1.putExtra("key_type", 2);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyMyRecordUI", paramString1);
+        AppMethodBeat.o(34301);
+        return true;
       }
-    }
-    else
-    {
-      if (paramInt2 == 4)
+      if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/openDetail"))
       {
-        if ((!paramBoolean2) || ((paramBoolean1) && (paramInt3 == 2)))
-        {
-          localObject = ((Context)localObject).getString(2131301201);
-          AppMethodBeat.o(30460);
-          return localObject;
-        }
-        localObject = ((Context)localObject).getString(2131301199);
-        AppMethodBeat.o(30460);
-        return localObject;
+        paramMMFragment = new Intent();
+        paramMMFragment.putExtra("key_native_url", paramString1);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyBeforeDetailUI", paramMMFragment);
+        AppMethodBeat.o(34301);
+        return true;
       }
-      if (paramInt2 == 3)
+      if (paramString1.startsWith("weixin://openNativeUrl/weixinHB/startreceivebizhbrequest"))
       {
-        if (paramInt3 == 2)
-        {
-          if (paramBoolean1)
-          {
-            AppMethodBeat.o(30460);
-            return "";
-          }
-          localObject = ((Context)localObject).getString(2131301201);
-          AppMethodBeat.o(30460);
-          return localObject;
-        }
-        AppMethodBeat.o(30460);
-        return "";
+        paramMMFragment = new Intent();
+        paramMMFragment.putExtra("key_way", 5);
+        paramMMFragment.putExtra("key_native_url", paramString1);
+        paramMMFragment.putExtra("key_static_from_scene", 1);
+        c.b(paramContext, "luckymoney", ".ui.LuckyMoneyBusiReceiveUI", paramMMFragment);
+        AppMethodBeat.o(34301);
+        return true;
       }
-    }
-    AppMethodBeat.o(30460);
-    return "";
-  }
-  
-  public static String b(j.b paramb, boolean paramBoolean)
-  {
-    AppMethodBeat.i(30459);
-    for (;;)
-    {
-      int i1;
-      int i7;
-      long l;
-      int i3;
-      int i2;
-      int n;
-      int i;
-      int j;
-      int k;
-      int m;
-      try
-      {
-        str1 = r.Zn();
-        if (paramb.fiq <= 0)
-        {
-          if (paramBoolean)
-          {
-            str1 = paramb.fic;
-            AppMethodBeat.o(30459);
-            return str1;
-          }
-          str1 = paramb.fid;
-          AppMethodBeat.o(30459);
-          return str1;
-        }
-        i1 = 0;
-        int i8 = 0;
-        int i4 = -1;
-        int i5 = -1;
-        int i6 = -1;
-        i7 = 0;
-        l = -1L;
-        Object localObject = paramb.fip;
-        vo localvo = new vo();
-        localvo.cMJ.cML = ((String)localObject);
-        a.ymk.l(localvo);
-        if (paramb.fiq != 2)
-        {
-          i3 = i6;
-          i2 = i5;
-          n = i4;
-          if (paramb.fiq != 3) {
-            break label891;
-          }
-        }
-        i = i6;
-        j = i5;
-        k = i4;
-        m = i8;
-        if (!bo.es(paramb.fiu))
-        {
-          localObject = paramb.fiu.iterator();
-          i = i6;
-          j = i5;
-          k = i4;
-          m = i8;
-          if (((Iterator)localObject).hasNext())
-          {
-            arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-            if ((arrayOfString.length != 4) || (!arrayOfString[0].equals(str1))) {
-              continue;
-            }
-            k = bo.getInt(arrayOfString[1], -1);
-            j = bo.getInt(arrayOfString[2], -1);
-            i = bo.getInt(arrayOfString[3], -1);
-            m = 1;
-          }
-        }
-        i3 = i;
-        i2 = j;
-        n = k;
-        i1 = m;
-        if (bo.es(paramb.fiw)) {
-          break label891;
-        }
-        localObject = paramb.fiw.iterator();
-        i3 = i;
-        i2 = j;
-        n = k;
-        i1 = m;
-        if (!((Iterator)localObject).hasNext()) {
-          break label891;
-        }
-        String[] arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-        if ((arrayOfString.length != 3) || (!arrayOfString[0].equals(str1))) {
-          continue;
-        }
-        l = bo.getLong(arrayOfString[1], -1L);
-        n = bo.getInt(arrayOfString[2], -1);
-        i1 = 1;
-        i2 = j;
-        i3 = i;
-        j = i1;
-        i = n;
-        if (localvo.cMK.status == zwV)
-        {
-          str1 = ah.getContext().getString(2131296373);
-          AppMethodBeat.o(30459);
-          return str1;
-        }
-        if (localvo.cMK.status == zwU)
-        {
-          str1 = ah.getContext().getString(2131296366);
-          AppMethodBeat.o(30459);
-          return str1;
-        }
-        n = paramb.fiq;
-        switch (n)
-        {
-        }
-      }
-      catch (Exception localException)
-      {
-        String str1;
-        ab.e("MicroMsg.C2CAppMsgUtil", "getC2CDescFromAppMsgContent, error: %s", new Object[] { localException.getMessage() });
-        continue;
-        str2 = paramb.fid;
-        AppMethodBeat.o(30459);
-        return str2;
-      }
-      if (paramBoolean)
-      {
-        paramb = paramb.fic;
-        AppMethodBeat.o(30459);
-        return paramb;
-        if (paramBoolean)
-        {
-          str1 = paramb.fic;
-          AppMethodBeat.o(30459);
-          return str1;
-        }
-        String str2;
-        if ((!str2.equals(paramb.fiz)) && (!paramBoolean)) {
-          if (m != 0)
-          {
-            break label907;
-            str2 = ah.getContext().getString(2131296374);
-            AppMethodBeat.o(30459);
-            return str2;
-            str2 = ah.getContext().getString(2131296372, new Object[] { Integer.valueOf(i2 - i3) });
-            AppMethodBeat.o(30459);
-            return str2;
-            str2 = ah.getContext().getString(2131296371);
-            AppMethodBeat.o(30459);
-            return str2;
-            str2 = ah.getContext().getString(2131296373);
-            AppMethodBeat.o(30459);
-            return str2;
-          }
-          else
-          {
-            if (j != 0)
-            {
-              if ((i <= 0) || (l < 0L)) {
-                continue;
-              }
-              switch (i)
-              {
-              default: 
-                break;
-              case 1: 
-                str2 = ah.getContext().getString(2131296368, new Object[] { Float.valueOf((float)l / 100.0F) });
-                AppMethodBeat.o(30459);
-                return str2;
-              case 2: 
-                str2 = ah.getContext().getString(2131296367, new Object[] { Float.valueOf((float)l / 100.0F) });
-                AppMethodBeat.o(30459);
-                return str2;
-              case 3: 
-                str2 = ah.getContext().getString(2131296370, new Object[] { Float.valueOf((float)l / 100.0F) });
-                AppMethodBeat.o(30459);
-                return str2;
-              case 4: 
-                str2 = ah.getContext().getString(2131296369);
-                AppMethodBeat.o(30459);
-                return str2;
-              }
-            }
-            str2 = ah.getContext().getString(2131296369);
-            AppMethodBeat.o(30459);
-            return str2;
-          }
-        }
-      }
-      else
-      {
-        paramb = paramb.fid;
-        AppMethodBeat.o(30459);
-        return paramb;
-        label891:
-        i = -1;
-        j = i7;
-        k = n;
-        m = i1;
-        continue;
-      }
-      label907:
-      if ((k > 0) && (i2 >= 0) && (i3 >= 0)) {
-        switch (k)
-        {
-        }
-      }
+      AppMethodBeat.o(34301);
+      return false;
     }
   }
   
-  public static int c(j.b paramb, boolean paramBoolean)
+  static final class b
+    implements f.c
   {
-    AppMethodBeat.i(30461);
-    if (paramb == null)
+    public static boolean bAz(String paramString)
     {
-      if (paramBoolean)
+      AppMethodBeat.i(34302);
+      if ((paramString != null) && ((paramString.startsWith("weixin://openNativeUrl/myDeviceList")) || (paramString.startsWith("weixin://openNativeUrl/bindMyDevice"))))
       {
-        AppMethodBeat.o(30461);
-        return 2130837510;
+        AppMethodBeat.o(34302);
+        return true;
       }
-      AppMethodBeat.o(30461);
-      return 2130837504;
+      AppMethodBeat.o(34302);
+      return false;
     }
-    Object localObject = paramb.fip;
-    vo localvo = new vo();
-    localvo.cMJ.cML = ((String)localObject);
-    a.ymk.l(localvo);
-    if ((localvo.cMK.status == zwV) || (localvo.cMK.status == zwU))
+    
+    public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
-      if (paramBoolean)
+      AppMethodBeat.i(34303);
+      if (Util.isNullOrNil(paramString1))
       {
-        AppMethodBeat.o(30461);
-        return 2130837515;
+        AppMethodBeat.o(34303);
+        return false;
       }
-      AppMethodBeat.o(30461);
-      return 2130837509;
+      if (paramString1.startsWith("weixin://openNativeUrl/myDeviceList"))
+      {
+        paramString1 = new Intent();
+        paramString1.putExtra("device_brand_name", paramString2);
+        c.b(paramContext, "exdevice", ".ui.ExdeviceManageDeviceUI", paramString1);
+        AppMethodBeat.o(34303);
+        return true;
+      }
+      if (paramString1.startsWith("weixin://openNativeUrl/bindMyDevice"))
+      {
+        AppMethodBeat.o(34303);
+        return false;
+      }
+      AppMethodBeat.o(34303);
+      return false;
     }
-    localObject = d(paramb);
-    switch (paramb.fiq)
+  }
+  
+  public static abstract interface c
+  {
+    public abstract boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2);
+  }
+  
+  static final class d
+    implements f.c
+  {
+    public static boolean bAz(String paramString)
     {
+      AppMethodBeat.i(34304);
+      if ((paramString != null) && ((paramString.startsWith("weixin://wesport/recommend")) || (paramString.startsWith("weixin://openNativeUrl/rankMyHomepage")) || (paramString.startsWith("weixin://openNativeUrl/rankSetting"))))
+      {
+        AppMethodBeat.o(34304);
+        return true;
+      }
+      AppMethodBeat.o(34304);
+      return false;
     }
-    while (paramBoolean)
+    
+    public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
-      AppMethodBeat.o(30461);
-      return 2130837510;
-      if ((paramBoolean) || (((f.a)localObject).wkh == 1)) {
-        if ((((f.a)localObject).zwW <= 0) || (((f.a)localObject).zwX < 0) || (((f.a)localObject).zwY < 0)) {
-          break;
-        }
-      } else {
-        switch (((f.a)localObject).zwW)
+      AppMethodBeat.i(34305);
+      if (Util.isNullOrNil(paramString1))
+      {
+        Log.d("MicroMsg.BizNativeUrlDispatcher", "nativeUrl is null.");
+        AppMethodBeat.o(34305);
+        return false;
+      }
+      if ((paramString1.startsWith("weixin://wesport/recommend")) && (paramMMFragment != null))
+      {
+        paramString1 = new Intent(paramContext, SelectConversationUI.class);
+        paramString1.putExtra("Select_Talker_Name", paramString2);
+        paramString1.putExtra("Select_block_List", paramString2);
+        paramString1.putExtra("Select_Conv_Type", 3);
+        paramString1.putExtra("Select_Send_Card", true);
+        paramMMFragment.startActivityForResult(paramString1, 224);
+        AppMethodBeat.o(34305);
+        return true;
+      }
+      if (paramString1.startsWith("weixin://openNativeUrl/rankMyHomepage"))
+      {
+        paramString1 = z.bAM();
+        if (Util.isNullOrNil(paramString1))
         {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          if (paramBoolean)
-          {
-            AppMethodBeat.o(30461);
-            return 2130837510;
-          }
-          AppMethodBeat.o(30461);
-          return 2130837504;
-        case 3: 
-        case 4: 
-          if (paramBoolean)
-          {
-            AppMethodBeat.o(30461);
-            return 2130837515;
-          }
-          AppMethodBeat.o(30461);
-          return 2130837509;
-          if (((f.a)localObject).wkh == 2)
-          {
-            if ((((f.a)localObject).zwW > 0) && (((f.a)localObject).zwZ >= 0L)) {
-              switch (((f.a)localObject).zwW)
-              {
-              default: 
-                break;
-              case 1: 
-                if (paramBoolean)
-                {
-                  AppMethodBeat.o(30461);
-                  return 2130837510;
-                }
-                AppMethodBeat.o(30461);
-                return 2130837504;
-              case 2: 
-              case 3: 
-              case 4: 
-                if (paramBoolean)
-                {
-                  AppMethodBeat.o(30461);
-                  return 2130837515;
-                }
-                AppMethodBeat.o(30461);
-                return 2130837509;
-              }
-            }
-          }
-          else
-          {
-            if (paramBoolean)
-            {
-              AppMethodBeat.o(30461);
-              return 2130837510;
-            }
-            AppMethodBeat.o(30461);
-            return 2130837504;
-          }
-          break;
+          Log.e("MicroMsg.BizNativeUrlDispatcher", "Get username from UserInfo return null or nil.");
+          AppMethodBeat.o(34305);
+          return false;
         }
+        paramMMFragment = new Intent();
+        paramMMFragment.putExtra("username", paramString1);
+        c.b(paramContext, "exdevice", ".ui.ExdeviceProfileUI", paramMMFragment);
+        Log.i("MicroMsg.BizNativeUrlDispatcher", "Jump to ExdeviceProfileUI.");
+        AppMethodBeat.o(34305);
+        return true;
       }
-    }
-    AppMethodBeat.o(30461);
-    return 2130837504;
-  }
-  
-  public static int d(j.b paramb, boolean paramBoolean)
-  {
-    AppMethodBeat.i(30462);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(30462);
-      return -12479656;
-    }
-    Object localObject = paramb.fip;
-    vo localvo = new vo();
-    localvo.cMJ.cML = ((String)localObject);
-    a.ymk.l(localvo);
-    if ((localvo.cMK.status == zwV) || (localvo.cMK.status == zwU))
-    {
-      AppMethodBeat.o(30462);
-      return -8868722;
-    }
-    localObject = d(paramb);
-    switch (paramb.fiq)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(30462);
-      return -12479656;
-      if ((paramBoolean) || (((f.a)localObject).wkh == 1))
+      if (paramString1.startsWith("weixin://openNativeUrl/rankSetting"))
       {
-        if ((((f.a)localObject).zwW <= 0) || (((f.a)localObject).zwX < 0) || (((f.a)localObject).zwY < 0)) {}
+        c.ai(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
+        AppMethodBeat.o(34305);
+        return true;
       }
-      else {
-        switch (((f.a)localObject).zwW)
-        {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          AppMethodBeat.o(30462);
-          return -12479656;
-        case 3: 
-        case 4: 
-          AppMethodBeat.o(30462);
-          return -8868722;
-          if (((f.a)localObject).wkh != 2) {
-            break label293;
-          }
-          if ((((f.a)localObject).zwW > 0) && (((f.a)localObject).zwZ >= 0L)) {
-            switch (((f.a)localObject).zwW)
-            {
-            }
-          }
-          break;
-        }
-      }
+      AppMethodBeat.o(34305);
+      return false;
     }
-    AppMethodBeat.o(30462);
-    return -12479656;
-    AppMethodBeat.o(30462);
-    return -8868722;
-    label293:
-    AppMethodBeat.o(30462);
-    return -12479656;
-  }
-  
-  public static f.a d(j.b paramb)
-  {
-    AppMethodBeat.i(30457);
-    String str = r.Zn();
-    if ((paramb.fiq == 2) || (paramb.fiq == 3))
-    {
-      Object localObject;
-      if (!bo.es(paramb.fiu))
-      {
-        localObject = paramb.fiu.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String[] arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-          if ((arrayOfString.length == 4) && (arrayOfString[0].equals(str)))
-          {
-            paramb = new f.a(bo.getInt(arrayOfString[1], -1), bo.getInt(arrayOfString[2], -1), bo.getInt(arrayOfString[3], -1));
-            AppMethodBeat.o(30457);
-            return paramb;
-          }
-        }
-      }
-      if (!bo.es(paramb.fiw))
-      {
-        paramb = paramb.fiw.iterator();
-        while (paramb.hasNext())
-        {
-          localObject = ((String)paramb.next()).split(",");
-          if ((localObject.length == 3) && (localObject[0].equals(str)))
-          {
-            long l = bo.getLong(localObject[1], -1L);
-            paramb = new f.a(bo.getInt(localObject[2], -1), l);
-            AppMethodBeat.o(30457);
-            return paramb;
-          }
-        }
-      }
-    }
-    paramb = new f.a();
-    AppMethodBeat.o(30457);
-    return paramb;
-  }
-  
-  public static int u(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (paramInt1 == 5) {
-      if (!paramBoolean) {}
-    }
-    do
-    {
-      do
-      {
-        return 2130838070;
-        return 2130838064;
-        if (paramInt1 != 4) {
-          break;
-        }
-      } while (paramBoolean);
-      return 2130838064;
-      if (paramInt1 != 3) {
-        break label54;
-      }
-      if (paramInt2 != 2) {
-        break;
-      }
-    } while (paramBoolean);
-    return 2130838064;
-    if (paramBoolean) {
-      return 2130838065;
-    }
-    return 2130838059;
-    label54:
-    if (paramBoolean) {
-      return 2130838065;
-    }
-    return 2130838059;
-  }
-  
-  public static int v(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (paramInt1 == 5) {}
-    do
-    {
-      do
-      {
-        return 2130839488;
-      } while (paramInt1 == 4);
-      if (paramInt1 != 3) {
-        break label31;
-      }
-      if (paramInt2 != 2) {
-        break;
-      }
-    } while (!paramBoolean);
-    return -1;
-    return -1;
-    label31:
-    return -1;
-  }
-  
-  public static int w(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (paramInt1 == 5) {
-      if (!paramBoolean) {}
-    }
-    do
-    {
-      do
-      {
-        return 2130839524;
-        return 2130839409;
-        if (paramInt1 != 4) {
-          break;
-        }
-      } while (paramBoolean);
-      return 2130839409;
-      if (paramInt1 != 3) {
-        break label55;
-      }
-      if (paramInt2 != 2) {
-        break;
-      }
-    } while (paramBoolean);
-    return 2130839409;
-    if (paramBoolean) {
-      return 2130839523;
-    }
-    return 2130839408;
-    label55:
-    if (paramBoolean) {
-      return 2130839523;
-    }
-    return 2130839408;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.f
  * JD-Core Version:    0.7.0.1
  */

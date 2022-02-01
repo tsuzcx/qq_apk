@@ -7,14 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class IconWidgetPreference
   extends Preference
 {
-  private ImageView pAP;
-  private int pAQ;
-  private Bitmap pAR;
+  private ImageView MXY;
+  private int MXZ;
+  private Bitmap MYa;
   
   public IconWidgetPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,63 +26,63 @@ public class IconWidgetPreference
   public IconWidgetPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23643);
-    this.pAP = null;
-    this.pAQ = -1;
-    this.pAR = null;
-    setLayoutResource(2130970179);
-    setWidgetLayoutResource(0);
-    AppMethodBeat.o(23643);
+    AppMethodBeat.i(27256);
+    this.MXY = null;
+    this.MXZ = -1;
+    this.MYa = null;
+    setLayoutResource(R.i.mm_preference);
+    aBp(0);
+    AppMethodBeat.o(27256);
   }
   
-  public final void M(Bitmap paramBitmap)
+  public final void av(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(23645);
-    this.pAR = paramBitmap;
-    if (this.pAP != null) {
-      this.pAP.setImageBitmap(paramBitmap);
+    AppMethodBeat.i(27258);
+    this.MYa = paramBitmap;
+    if (this.MXY != null) {
+      this.MXY.setImageBitmap(paramBitmap);
     }
-    AppMethodBeat.o(23645);
+    AppMethodBeat.o(27258);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23646);
+    AppMethodBeat.i(27259);
     super.onBindView(paramView);
-    this.pAP = ((ImageView)paramView.findViewById(2131826262));
-    if (this.pAP != null)
+    this.MXY = ((ImageView)paramView.findViewById(R.h.fTo));
+    if (this.MXY != null)
     {
-      this.pAP.setVisibility(8);
-      if (this.pAQ != -1)
+      this.MXY.setVisibility(8);
+      if (this.MXZ != -1)
       {
-        this.pAP.setImageResource(this.pAQ);
-        this.pAP.setVisibility(0);
-        AppMethodBeat.o(23646);
+        this.MXY.setImageResource(this.MXZ);
+        this.MXY.setVisibility(0);
+        AppMethodBeat.o(27259);
         return;
       }
-      if (this.pAR != null)
+      if (this.MYa != null)
       {
-        this.pAP.setImageBitmap(this.pAR);
-        this.pAP.setVisibility(0);
+        this.MXY.setImageBitmap(this.MYa);
+        this.MXY.setVisibility(0);
       }
     }
-    AppMethodBeat.o(23646);
+    AppMethodBeat.o(27259);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23644);
+    AppMethodBeat.i(27257);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970264, localViewGroup);
-    AppMethodBeat.o(23644);
+    View.inflate(this.mContext, R.i.gmh, localViewGroup);
+    AppMethodBeat.o(27257);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.IconWidgetPreference
  * JD-Core Version:    0.7.0.1
  */

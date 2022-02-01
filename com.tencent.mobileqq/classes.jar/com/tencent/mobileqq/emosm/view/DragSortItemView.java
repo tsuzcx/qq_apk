@@ -52,20 +52,16 @@ public class DragSortItemView
       super.measureChild(localView, paramInt1, View.MeasureSpec.makeMeasureSpec(0, 0));
     }
     paramInt1 = i;
-    ViewGroup.LayoutParams localLayoutParams;
     if (paramInt2 == 0)
     {
-      localLayoutParams = super.getLayoutParams();
-      if (localLayoutParams.height <= 0) {
-        break label90;
+      ViewGroup.LayoutParams localLayoutParams = super.getLayoutParams();
+      if (localLayoutParams.height > 0) {
+        paramInt1 = localLayoutParams.height;
+      } else {
+        paramInt1 = localView.getMeasuredHeight();
       }
     }
-    label90:
-    for (paramInt1 = localLayoutParams.height;; paramInt1 = localView.getMeasuredHeight())
-    {
-      super.setMeasuredDimension(j, paramInt1);
-      return;
-    }
+    super.setMeasuredDimension(j, paramInt1);
   }
   
   public void setGravity(int paramInt)

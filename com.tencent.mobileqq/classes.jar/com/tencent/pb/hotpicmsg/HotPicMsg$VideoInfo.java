@@ -32,7 +32,9 @@ public final class HotPicMsg$VideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
@@ -41,12 +43,12 @@ public final class HotPicMsg$VideoInfo
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 58, 66, 74, 82, 88, 96, 104, 114, 122, 130, 136 }, new String[] { "bytes_preview_md5", "uint64_preview_size", "uint32_preview_width", "uint32_preview_height", "bytes_preview_uuid", "uint32_video_index", "bytes_jump_icon", "bytes_jump_url", "bytes_video_name", "bytes_video_source", "uint64_video_length", "uint32_video_width", "uint32_video_height", "bytes_video_uuid", "bytes_video_md5", "bytes_certificated_icon", "uint64_video_size" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Long.valueOf(0L) }, VideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 58, 66, 74, 82, 88, 96, 104, 114, 122, 130, 136 }, new String[] { "bytes_preview_md5", "uint64_preview_size", "uint32_preview_width", "uint32_preview_height", "bytes_preview_uuid", "uint32_video_index", "bytes_jump_icon", "bytes_jump_url", "bytes_video_name", "bytes_video_source", "uint64_video_length", "uint32_video_width", "uint32_video_height", "bytes_video_uuid", "bytes_video_md5", "bytes_certificated_icon", "uint64_video_size" }, new Object[] { localByteStringMicro1, localLong, localInteger, localInteger, localByteStringMicro2, localInteger, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localLong, localInteger, localInteger, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localLong }, VideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.hotpicmsg.HotPicMsg.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

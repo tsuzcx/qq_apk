@@ -3,30 +3,30 @@ package com.tencent.viola.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-final class ColorParseUtils$2
+class ColorParseUtils$2
   implements SingleFunctionParser.NonUniformMapper<Number>
 {
   public List<Number> map(List<String> paramList)
   {
     ArrayList localArrayList = new ArrayList(4);
     int j = 0;
-    if (j < 3)
+    while (j < 3)
     {
       int k = ViolaUtils.parseUnitOrPercent((String)paramList.get(j), 255);
       int i;
-      if (k < 0) {
+      if (k < 0)
+      {
         i = 0;
       }
-      for (;;)
+      else
       {
-        localArrayList.add(Integer.valueOf(i));
-        j += 1;
-        break;
         i = k;
         if (k > 255) {
           i = 255;
         }
       }
+      localArrayList.add(Integer.valueOf(i));
+      j += 1;
     }
     localArrayList.add(Float.valueOf((String)paramList.get(j)));
     return localArrayList;
@@ -34,7 +34,7 @@ final class ColorParseUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.ColorParseUtils.2
  * JD-Core Version:    0.7.0.1
  */

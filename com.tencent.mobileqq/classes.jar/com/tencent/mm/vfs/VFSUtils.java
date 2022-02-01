@@ -1,8 +1,10 @@
 package com.tencent.mm.vfs;
 
+import android.database.Cursor;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.Parcel;
+import android.os.ParcelFileDescriptor;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Closeable;
 import java.io.IOException;
@@ -10,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,27 +22,78 @@ public final class VFSUtils
   
   public static void checkFileSystemVersion(Parcel paramParcel, Class<? extends FileSystem> paramClass, int paramInt)
   {
-    paramInt = paramClass.getName().hashCode() ^ paramInt;
+    paramInt ^= paramClass.getName().hashCode();
     int i = paramParcel.readInt();
-    if (i != paramInt) {
-      throw new VFSUtils.FileSystemVersionException(paramClass, i, paramInt);
+    if (i == paramInt) {
+      return;
+    }
+    throw new VFSUtils.FileSystemVersionException(paramClass, i, paramInt);
+  }
+  
+  public static void closeQuietly(Cursor paramCursor)
+  {
+    if (paramCursor == null) {
+      return;
+    }
+    try
+    {
+      paramCursor.close();
+      return;
+    }
+    catch (Exception paramCursor)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Failed to close object: ");
+        localStringBuilder.append(paramCursor.toString());
+        QLog.w("VFS.Utils", 2, localStringBuilder.toString());
+      }
+    }
+  }
+  
+  public static void closeQuietly(ParcelFileDescriptor paramParcelFileDescriptor)
+  {
+    if (paramParcelFileDescriptor == null) {
+      return;
+    }
+    try
+    {
+      paramParcelFileDescriptor.close();
+      return;
+    }
+    catch (Exception paramParcelFileDescriptor)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Failed to close object: ");
+        localStringBuilder.append(paramParcelFileDescriptor.toString());
+        QLog.w("VFS.Utils", 2, localStringBuilder.toString());
+      }
     }
   }
   
   public static void closeQuietly(Closeable paramCloseable)
   {
-    if (paramCloseable == null) {}
-    do
-    {
+    if (paramCloseable == null) {
       return;
-      try
+    }
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable)
+    {
+      if (QLog.isColorLevel())
       {
-        paramCloseable.close();
-        return;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Failed to close object: ");
+        localStringBuilder.append(paramCloseable.toString());
+        QLog.w("VFS.Utils", 2, localStringBuilder.toString());
       }
-      catch (IOException paramCloseable) {}
-    } while (!QLog.isColorLevel());
-    QLog.w("VFS.Utils", 2, "Failed to close object: " + paramCloseable.toString());
+    }
   }
   
   static String getParentPath(String paramString)
@@ -71,178 +123,136 @@ public final class VFSUtils
   
   static String macroResolve(String paramString, Map<String, String> paramMap)
   {
-    if (paramString == null)
-    {
-      paramMap = null;
-      return paramMap;
+    if (paramString == null) {
+      return null;
     }
     Matcher localMatcher = MACRO_PATTERN.matcher(paramString);
-    StringBuilder localStringBuilder;
-    int i;
     if (localMatcher.find())
     {
-      localStringBuilder = new StringBuilder(paramString.length());
-      i = 0;
+      StringBuilder localStringBuilder = new StringBuilder(paramString.length());
+      int i = 0;
+      Object localObject;
+      int j;
+      do
+      {
+        localObject = localMatcher.group(1);
+        String str = (String)paramMap.get(localObject);
+        if (str == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramMap = new StringBuilder();
+            paramMap.append("Macro resolve: ");
+            paramMap.append(paramString);
+            paramMap.append(" cannot resolve ${");
+            paramMap.append((String)localObject);
+            paramMap.append("}.");
+            QLog.d("VFS.Utils", 2, paramMap.toString());
+          }
+          return null;
+        }
+        localStringBuilder.append(paramString.substring(i, localMatcher.start()));
+        localStringBuilder.append(str);
+        j = localMatcher.end();
+        i = j;
+      } while (localMatcher.find());
+      localStringBuilder.append(paramString.substring(j));
+      paramMap = localStringBuilder.toString();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Macro resolve: ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" => ");
+        ((StringBuilder)localObject).append(paramMap);
+        QLog.d("VFS.Utils", 2, ((StringBuilder)localObject).toString());
+      }
+      return paramMap;
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      String str1 = localMatcher.group(1);
-      String str2 = (String)paramMap.get(str1);
-      if (str2 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VFS.Utils", 2, "Macro resolve: " + paramString + " cannot resolve ${" + str1 + "}.");
-        }
-        return null;
-      }
-      localStringBuilder.append(paramString.substring(i, localMatcher.start())).append(str2);
-      i = localMatcher.end();
-      if (!localMatcher.find())
-      {
-        paramMap = paramString.substring(i);
-        if (QLog.isColorLevel()) {
-          QLog.d("VFS.Utils", 2, "Macro resolve: " + paramString + " => " + paramMap);
-        }
-        return paramMap;
-        paramMap = paramString;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("VFS.Utils", 2, "Macro resolve: " + paramString + " contains no macros.");
-        return paramString;
-      }
+      paramMap = new StringBuilder();
+      paramMap.append("Macro resolve: ");
+      paramMap.append(paramString);
+      paramMap.append(" contains no macros.");
+      QLog.d("VFS.Utils", 2, paramMap.toString());
     }
+    return paramString;
   }
   
   static String normalizePath(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 1;
-    if (paramString.isEmpty()) {}
-    int j;
-    label184:
-    do
-    {
-      return paramString;
-      StringTokenizer localStringTokenizer;
-      if (paramString.startsWith("/"))
-      {
-        j = 1;
-        localObject = paramString;
-        if (paramString.endsWith("/"))
-        {
-          localObject = paramString;
-          if (paramString.length() > 1) {
-            localObject = paramString.substring(0, paramString.length() - 1);
-          }
-        }
-        localStringTokenizer = new StringTokenizer(((String)localObject).substring(j), "/");
-        paramString = new ArrayList();
-      }
-      for (;;)
-      {
-        if (!localStringTokenizer.hasMoreTokens()) {
-          break label184;
-        }
-        String str = localStringTokenizer.nextToken();
-        if ((paramBoolean1) && ("..".equals(str)))
-        {
-          if (paramString.isEmpty())
-          {
-            return null;
-            j = 0;
-            break;
-          }
-          paramString.remove(paramString.size() - 1);
-          i = 0;
-          continue;
-        }
-        if (((paramBoolean1) && (".".equals(str))) || ("".equals(str))) {
-          i = 0;
-        } else {
-          paramString.add(str);
-        }
-      }
-      if (i == 0) {
-        break;
-      }
-      paramString = (String)localObject;
-    } while (!paramBoolean2);
-    return ((String)localObject).substring(j);
-    Object localObject = new StringBuilder();
-    if ((!paramBoolean2) && (j > 0)) {
-      ((StringBuilder)localObject).append('/');
-    }
-    paramString = paramString.iterator();
-    if (paramString.hasNext())
-    {
-      ((StringBuilder)localObject).append(paramString.next());
-      while (paramString.hasNext())
-      {
-        ((StringBuilder)localObject).append('/');
-        ((StringBuilder)localObject).append(paramString.next());
-      }
-    }
-    return ((StringBuilder)localObject).toString();
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   static String normalizePathSimple(String paramString)
   {
-    if (paramString.isEmpty()) {}
-    for (;;)
-    {
+    if (paramString.isEmpty()) {
       return paramString;
-      if (paramString.startsWith("/")) {}
-      for (int i = 1; (paramString.endsWith("/")) && (paramString.length() > 1); i = 0) {
-        return paramString.substring(i, paramString.length() - 1);
+    }
+    String str = paramString;
+    if (paramString.endsWith("/"))
+    {
+      str = paramString;
+      if (paramString.length() > 1) {
+        str = paramString.substring(0, paramString.length() - 1);
       }
     }
+    return str;
   }
   
   static Uri parseUri(String paramString)
   {
     Uri.Builder localBuilder = new Uri.Builder();
-    if ((paramString.isEmpty()) || (paramString.charAt(0) == '/')) {
-      return localBuilder.path(paramString).build();
-    }
-    int j = paramString.indexOf(':');
-    if (j < 0) {
-      localBuilder.path(paramString);
-    }
-    for (;;)
+    if ((!paramString.isEmpty()) && (paramString.charAt(0) != '/'))
     {
-      return localBuilder.build();
-      localBuilder.scheme(paramString.substring(0, j));
-      int k = paramString.length();
-      if ((k > j + 2) && (paramString.charAt(j + 1) == '/') && (paramString.charAt(j + 2) == '/'))
+      int i = paramString.indexOf(':');
+      if (i < 0)
       {
-        int i = j + 3;
-        while (i < k) {
-          switch (paramString.charAt(i))
-          {
-          default: 
-            i += 1;
-          }
-        }
-        localBuilder.authority(paramString.substring(j + 3, i));
-        if (i < k) {
-          localBuilder.path(paramString.substring(i + 1));
-        }
+        localBuilder.path(paramString);
       }
       else
       {
-        localBuilder.path(paramString.substring(j + 1));
+        localBuilder.scheme(paramString.substring(0, i));
+        int k = paramString.length();
+        int j = i + 2;
+        if ((k > j) && (paramString.charAt(i + 1) == '/') && (paramString.charAt(j) == '/'))
+        {
+          j = i + 3;
+          i = j;
+          while (i < k)
+          {
+            int m = paramString.charAt(i);
+            if ((m == 35) || (m == 47) || (m == 63)) {
+              break;
+            }
+            i += 1;
+          }
+          localBuilder.authority(paramString.substring(j, i));
+          if (i < k) {
+            localBuilder.path(paramString.substring(i + 1));
+          }
+        }
+        else
+        {
+          localBuilder.path(paramString.substring(i + 1));
+        }
       }
+      return localBuilder.build();
     }
+    return localBuilder.path(paramString).build();
   }
   
   static String resolveRealPath(Uri paramUri, boolean paramBoolean)
   {
     paramUri = FileSystemManager.instance().resolve(paramUri);
-    if (!paramUri.valid()) {}
-    while ((paramUri.fileSystem.capabilityFlags() & 0x2) == 0) {
+    if (!paramUri.valid()) {
       return null;
     }
-    return paramUri.fileSystem.realPath(paramUri.path, paramBoolean);
+    if ((paramUri.fileSystem.capabilityFlags() & 0x2) != 0) {
+      return paramUri.fileSystem.realPath(paramUri.path, paramBoolean);
+    }
+    return null;
   }
   
   /* Error */
@@ -250,32 +260,32 @@ public final class VFSUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 8
+    //   1: astore 7
     //   3: aconst_null
-    //   4: astore 7
-    //   6: lconst_0
-    //   7: lstore 5
-    //   9: aload_0
-    //   10: aload_1
-    //   11: invokeinterface 284 2 0
-    //   16: astore_1
-    //   17: aload 8
-    //   19: astore_0
-    //   20: aload_2
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: invokeinterface 288 3 0
-    //   28: astore_2
-    //   29: aload_2
-    //   30: astore_0
-    //   31: sipush 2048
-    //   34: newarray byte
-    //   36: astore_3
+    //   4: astore 8
+    //   6: aload_0
+    //   7: aload_1
+    //   8: invokeinterface 266 2 0
+    //   13: astore_1
+    //   14: aload 8
+    //   16: astore_0
+    //   17: aload_2
+    //   18: aload_3
+    //   19: iconst_0
+    //   20: invokeinterface 270 3 0
+    //   25: astore_2
+    //   26: aload_2
+    //   27: astore_0
+    //   28: sipush 2048
+    //   31: newarray byte
+    //   33: astore_3
+    //   34: lconst_0
+    //   35: lstore 5
     //   37: aload_2
     //   38: astore_0
     //   39: aload_1
     //   40: aload_3
-    //   41: invokevirtual 294	java/io/InputStream:read	([B)I
+    //   41: invokevirtual 276	java/io/InputStream:read	([B)I
     //   44: istore 4
     //   46: iload 4
     //   48: iconst_m1
@@ -286,7 +296,7 @@ public final class VFSUtils
     //   55: aload_3
     //   56: iconst_0
     //   57: iload 4
-    //   59: invokevirtual 300	java/io/OutputStream:write	([BII)V
+    //   59: invokevirtual 282	java/io/OutputStream:write	([BII)V
     //   62: lload 5
     //   64: iload 4
     //   66: i2l
@@ -294,53 +304,59 @@ public final class VFSUtils
     //   68: lstore 5
     //   70: goto -33 -> 37
     //   73: aload_1
-    //   74: invokestatic 302	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   74: invokestatic 284	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   77: aload_2
-    //   78: invokestatic 302	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   78: invokestatic 284	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   81: lload 5
     //   83: lreturn
     //   84: astore_2
-    //   85: aconst_null
-    //   86: astore_1
-    //   87: aload 7
-    //   89: astore_0
-    //   90: aload_1
-    //   91: invokestatic 302	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
-    //   94: aload_0
-    //   95: invokestatic 302	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
-    //   98: aload_2
-    //   99: athrow
-    //   100: astore_2
-    //   101: goto -11 -> 90
+    //   85: goto +9 -> 94
+    //   88: astore_2
+    //   89: aconst_null
+    //   90: astore_1
+    //   91: aload 7
+    //   93: astore_0
+    //   94: aload_1
+    //   95: invokestatic 284	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   98: aload_0
+    //   99: invokestatic 284	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   102: goto +5 -> 107
+    //   105: aload_2
+    //   106: athrow
+    //   107: goto -2 -> 105
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	104	0	paramFileSystem1	FileSystem
-    //   0	104	1	paramString1	String
-    //   0	104	2	paramFileSystem2	FileSystem
-    //   0	104	3	paramString2	String
+    //   0	110	0	paramFileSystem1	FileSystem
+    //   0	110	1	paramString1	String
+    //   0	110	2	paramFileSystem2	FileSystem
+    //   0	110	3	paramString2	String
     //   44	21	4	i	int
-    //   7	75	5	l	long
-    //   4	84	7	localObject1	Object
-    //   1	17	8	localObject2	Object
+    //   35	47	5	l	long
+    //   1	91	7	localObject1	Object
+    //   4	11	8	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   9	17	84	finally
-    //   20	29	100	finally
-    //   31	37	100	finally
-    //   39	46	100	finally
-    //   54	62	100	finally
+    //   17	26	84	finally
+    //   28	34	84	finally
+    //   39	46	84	finally
+    //   54	62	84	finally
+    //   6	14	88	finally
   }
   
   static String uriToString(Uri paramUri)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     String str = paramUri.getScheme();
-    if ((str != null) && (!str.isEmpty())) {
-      localStringBuilder.append(str).append(':');
+    if ((str != null) && (!str.isEmpty()))
+    {
+      localStringBuilder.append(str);
+      localStringBuilder.append(':');
     }
     str = paramUri.getAuthority();
-    if ((str != null) && (!str.isEmpty())) {
-      localStringBuilder.append("//").append(str);
+    if ((str != null) && (!str.isEmpty()))
+    {
+      localStringBuilder.append("//");
+      localStringBuilder.append(str);
     }
     paramUri = paramUri.getPath();
     if (paramUri != null) {
@@ -356,7 +372,7 @@ public final class VFSUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -37,12 +37,13 @@ public class Mp4MaterialLoader
   {
     synchronized (this.mWaitRelease)
     {
-      if ((this.mMaterialCache == null) || (!this.mCacheAvailable)) {
-        return -1;
+      if ((this.mMaterialCache != null) && (this.mCacheAvailable))
+      {
+        this.mCacheRef += 1;
+        int i = this.mMaterialCache.getTexId();
+        return i;
       }
-      this.mCacheRef += 1;
-      int i = this.mMaterialCache.getTexId();
-      return i;
+      return -1;
     }
   }
   
@@ -65,71 +66,73 @@ public class Mp4MaterialLoader
     //   21: putfield 70	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mMaterialCache	Lcom/tencent/ttpic/openapi/filter/RenderBuffer;
     //   24: aload_0
     //   25: getfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
-    //   28: ifnull +11 -> 39
-    //   31: aload_0
-    //   32: getfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
-    //   35: invokevirtual 101	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:quitSafely	()Z
-    //   38: pop
-    //   39: aload_0
-    //   40: new 97	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx
-    //   43: dup
-    //   44: ldc 103
-    //   46: invokestatic 109	android/opengl/EGL14:eglGetCurrentContext	()Landroid/opengl/EGLContext;
-    //   49: aload_0
-    //   50: invokespecial 112	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:<init>	(Ljava/lang/String;Landroid/opengl/EGLContext;Ljava/lang/Object;)V
-    //   53: putfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
-    //   56: aload_0
-    //   57: getfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
-    //   60: invokevirtual 115	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:start	()V
-    //   63: aload_0
-    //   64: monitorenter
+    //   28: astore 4
+    //   30: aload 4
+    //   32: ifnull +9 -> 41
+    //   35: aload 4
+    //   37: invokevirtual 101	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:quitSafely	()Z
+    //   40: pop
+    //   41: aload_0
+    //   42: new 97	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx
+    //   45: dup
+    //   46: ldc 103
+    //   48: invokestatic 109	android/opengl/EGL14:eglGetCurrentContext	()Landroid/opengl/EGLContext;
+    //   51: aload_0
+    //   52: invokespecial 112	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:<init>	(Ljava/lang/String;Landroid/opengl/EGLContext;Ljava/lang/Object;)V
+    //   55: putfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
+    //   58: aload_0
+    //   59: getfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
+    //   62: invokevirtual 115	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:start	()V
     //   65: aload_0
-    //   66: getfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
-    //   69: invokevirtual 118	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:isInitSuccess	()Z
-    //   72: istore_3
-    //   73: iload_3
-    //   74: ifne +10 -> 84
-    //   77: aload_0
-    //   78: ldc2_w 119
-    //   81: invokevirtual 124	java/lang/Object:wait	(J)V
-    //   84: aload_0
-    //   85: monitorexit
+    //   66: monitorenter
+    //   67: aload_0
+    //   68: getfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
+    //   71: invokevirtual 118	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:isInitSuccess	()Z
+    //   74: istore_3
+    //   75: iload_3
+    //   76: ifne +10 -> 86
+    //   79: aload_0
+    //   80: ldc2_w 119
+    //   83: invokevirtual 124	java/lang/Object:wait	(J)V
     //   86: aload_0
-    //   87: new 126	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$DecodeHandler
-    //   90: dup
-    //   91: aload_0
-    //   92: getfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
-    //   95: invokevirtual 130	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:getLooper	()Landroid/os/Looper;
-    //   98: aload_0
-    //   99: getfield 55	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mDecoder	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder;
-    //   102: invokespecial 133	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$DecodeHandler:<init>	(Landroid/os/Looper;Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder;)V
-    //   105: putfield 135	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mDecodeHandler	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$DecodeHandler;
-    //   108: aload_0
-    //   109: iconst_1
-    //   110: putfield 50	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mInited	Z
-    //   113: return
-    //   114: astore 4
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: aload 4
-    //   120: athrow
-    //   121: astore 4
-    //   123: goto -39 -> 84
+    //   87: monitorexit
+    //   88: aload_0
+    //   89: new 126	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$DecodeHandler
+    //   92: dup
+    //   93: aload_0
+    //   94: getfield 95	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mHandlerThread	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx;
+    //   97: invokevirtual 130	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$EglHandlerThreadEx:getLooper	()Landroid/os/Looper;
+    //   100: aload_0
+    //   101: getfield 55	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mDecoder	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder;
+    //   104: invokespecial 133	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$DecodeHandler:<init>	(Landroid/os/Looper;Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder;)V
+    //   107: putfield 135	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mDecodeHandler	Lcom/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader$DecodeHandler;
+    //   110: aload_0
+    //   111: iconst_1
+    //   112: putfield 50	com/tencent/mobileqq/shortvideo/mtveffects/Mp4MaterialLoader:mInited	Z
+    //   115: return
+    //   116: astore 4
+    //   118: aload_0
+    //   119: monitorexit
+    //   120: aload 4
+    //   122: athrow
+    //   123: astore 4
+    //   125: goto -39 -> 86
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	126	0	this	Mp4MaterialLoader
-    //   0	126	1	paramInt1	int
-    //   0	126	2	paramInt2	int
-    //   72	2	3	bool	boolean
-    //   114	5	4	localObject	Object
-    //   121	1	4	localInterruptedException	java.lang.InterruptedException
+    //   0	128	0	this	Mp4MaterialLoader
+    //   0	128	1	paramInt1	int
+    //   0	128	2	paramInt2	int
+    //   74	2	3	bool	boolean
+    //   28	8	4	localEglHandlerThreadEx	Mp4MaterialLoader.EglHandlerThreadEx
+    //   116	5	4	localObject	Object
+    //   123	1	4	localInterruptedException	java.lang.InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   65	73	114	finally
-    //   77	84	114	finally
-    //   84	86	114	finally
-    //   116	118	114	finally
-    //   77	84	121	java/lang/InterruptedException
+    //   67	75	116	finally
+    //   79	86	116	finally
+    //   86	88	116	finally
+    //   118	120	116	finally
+    //   79	86	123	java/lang/InterruptedException
   }
   
   public boolean isInited()
@@ -294,13 +297,15 @@ public class Mp4MaterialLoader
   
   public void resume()
   {
-    if (!this.mPause) {}
-    while (this.mDecodeHandler == null) {
+    if (!this.mPause) {
       return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 4;
-    this.mDecodeHandler.sendMessage(localMessage);
+    if (this.mDecodeHandler != null)
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 4;
+      this.mDecodeHandler.sendMessage(localMessage);
+    }
   }
   
   public void seekTo(long paramLong) {}
@@ -331,19 +336,22 @@ public class Mp4MaterialLoader
   public void unInit()
   {
     stop();
-    if (this.mHandlerThread != null)
+    Object localObject = this.mHandlerThread;
+    if (localObject != null)
     {
-      this.mHandlerThread.quitSafely();
+      ((Mp4MaterialLoader.EglHandlerThreadEx)localObject).quitSafely();
       this.mHandlerThread = null;
     }
     this.mDecodeHandler = null;
     this.mInited = false;
-    if (this.mTextureID >= 0)
+    int i = this.mTextureID;
+    if (i >= 0)
     {
-      GlUtil.deleteTexture(this.mTextureID);
+      GlUtil.deleteTexture(i);
       this.mTextureID = -1;
     }
-    if ((this.mMaterialCache != null) && (this.mMaterialCache.getTexId() >= 0))
+    localObject = this.mMaterialCache;
+    if ((localObject != null) && (((RenderBuffer)localObject).getTexId() >= 0))
     {
       GlUtil.deleteTexture(this.mMaterialCache.getTexId());
       this.mMaterialCache.destroy();
@@ -351,16 +359,17 @@ public class Mp4MaterialLoader
       this.mCacheRef = 0;
       this.mCacheAvailable = false;
     }
-    if (this.mEncodeGPUOESFilter != null)
+    localObject = this.mEncodeGPUOESFilter;
+    if (localObject != null)
     {
-      this.mEncodeGPUOESFilter.destroy();
+      ((GPUOESBaseFilter)localObject).destroy();
       this.mEncodeGPUOESFilter = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.Mp4MaterialLoader
  * JD-Core Version:    0.7.0.1
  */

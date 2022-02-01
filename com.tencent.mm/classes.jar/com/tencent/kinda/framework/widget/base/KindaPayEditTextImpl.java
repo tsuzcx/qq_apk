@@ -2,8 +2,12 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.widget.LinearLayout;
 import com.tencent.kinda.gen.ClearButtonMode;
+import com.tencent.kinda.gen.DynamicColor;
+import com.tencent.kinda.gen.EditTextRestrictType;
+import com.tencent.kinda.gen.KEditTextOnEditorActionCallback;
 import com.tencent.kinda.gen.KEditTextOnTextBeginChangeCallback;
 import com.tencent.kinda.gen.KEditTextOnTextChangedCallback;
+import com.tencent.kinda.gen.KEditTextOnTextEndEditingCallback;
 import com.tencent.kinda.gen.KPayEditText;
 import com.tencent.kinda.gen.KeyboardType;
 import com.tencent.kinda.gen.PayEditState;
@@ -13,6 +17,8 @@ public class KindaPayEditTextImpl
   extends MMKView<LinearLayout>
   implements KPayEditText
 {
+  public void enableConfirmBtn(boolean paramBoolean) {}
+  
   public String encryptWith3Des()
   {
     return "";
@@ -43,9 +49,9 @@ public class KindaPayEditTextImpl
     return null;
   }
   
-  public long getHintColor()
+  public DynamicColor getHintColor()
   {
-    return 0L;
+    return null;
   }
   
   public String getInputText()
@@ -61,6 +67,11 @@ public class KindaPayEditTextImpl
   public int getMaxLength()
   {
     return 0;
+  }
+  
+  public EditTextRestrictType getRestrictType()
+  {
+    return null;
   }
   
   public String getSalt()
@@ -83,9 +94,9 @@ public class KindaPayEditTextImpl
     return null;
   }
   
-  public long getTextColor()
+  public DynamicColor getTextColor()
   {
-    return 0L;
+    return null;
   }
   
   public String getTextFont()
@@ -98,9 +109,9 @@ public class KindaPayEditTextImpl
     return 0.0F;
   }
   
-  public long getTintColor()
+  public DynamicColor getTintColor()
   {
-    return 0L;
+    return null;
   }
   
   public void setClearButtonMode(ClearButtonMode paramClearButtonMode) {}
@@ -113,15 +124,21 @@ public class KindaPayEditTextImpl
   
   public void setHint(String paramString) {}
   
-  public void setHintColor(long paramLong) {}
+  public void setHintColor(DynamicColor paramDynamicColor) {}
   
   public void setKeyboardType(KeyboardType paramKeyboardType) {}
   
   public void setMaxLength(int paramInt) {}
   
+  public void setOnEditorActionCallback(KEditTextOnEditorActionCallback paramKEditTextOnEditorActionCallback) {}
+  
   public void setOnTextBeginChangeCallback(KEditTextOnTextBeginChangeCallback paramKEditTextOnTextBeginChangeCallback) {}
   
   public void setOnTextChangedCallback(KEditTextOnTextChangedCallback paramKEditTextOnTextChangedCallback) {}
+  
+  public void setOnTextEndEditingCallback(KEditTextOnTextEndEditingCallback paramKEditTextOnTextEndEditingCallback) {}
+  
+  public void setRestrictType(EditTextRestrictType paramEditTextRestrictType) {}
   
   public void setSalt(String paramString) {}
   
@@ -131,17 +148,17 @@ public class KindaPayEditTextImpl
   
   public void setTextAlign(TextAlign paramTextAlign) {}
   
-  public void setTextColor(long paramLong) {}
+  public void setTextColor(DynamicColor paramDynamicColor) {}
   
   public void setTextFont(String paramString) {}
   
   public void setTextSize(float paramFloat) {}
   
-  public void setTintColor(long paramLong) {}
+  public void setTintColor(DynamicColor paramDynamicColor) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaPayEditTextImpl
  * JD-Core Version:    0.7.0.1
  */

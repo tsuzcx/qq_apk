@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
 
-class ekx
-  implements Runnable
+public class ekx
 {
-  ekx(ekw paramekw) {}
-  
-  public void run()
-  {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e();
-    this.a.a.jdField_a_of_type_Ekz.sendEmptyMessage(3);
-  }
+  public int a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContact a;
+  public String a;
+  public Button b;
 }
 
 

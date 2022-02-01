@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class stRecommandUpload
   extends JceStruct
 {
-  static int cache_type = 0;
-  public long begin;
-  public long end;
-  public long left_days;
+  static int cache_type;
+  public long begin = 0L;
+  public long end = 0L;
+  public long left_days = 0L;
   public int type = 1;
   
   public stRecommandUpload() {}
@@ -41,7 +41,7 @@ public final class stRecommandUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.stRecommandUpload
  * JD-Core Version:    0.7.0.1
  */

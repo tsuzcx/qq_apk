@@ -3,21 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.c;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a;
 
 public final class b
 {
-  private Context context;
-  public c hGa;
-  public a hGb;
+  public final c rMr;
+  public final com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.b rMs;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(94219);
-    this.context = paramContext;
-    this.hGa = new c(paramContext);
-    this.hGb = new a(paramContext);
-    AppMethodBeat.o(94219);
+    AppMethodBeat.i(144531);
+    this.rMr = new c(paramContext);
+    this.rMs = new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.b(paramContext);
+    AppMethodBeat.o(144531);
   }
 }
 

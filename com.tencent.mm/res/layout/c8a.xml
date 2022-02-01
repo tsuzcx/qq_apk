@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.msgsubscription.ui.NotClickableRelativeLayout android:gravity="center_horizontal" android:id="@id/iwl" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:gravity="center_horizontal" android:id="@id/c6z" android:background="@drawable/aw9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/c6y" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ScrollView android:orientation="vertical" android:id="@id/j4h" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" android:overScrollMode="never">
+                <LinearLayout android:orientation="vertical" android:id="@id/c6x" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:paddingBottom="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <RelativeLayout android:gravity="center_vertical" android:id="@id/ko8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="21.0dip" android:layout_marginBottom="16.0dip">
+                        <ImageView android:id="@id/f2i" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                        <com.tencent.mm.ui.widget.EllipsizeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="31.0dip" android:layout_toRightOf="@id/f2i" android:layout_centerVertical="true">
+                            <TextView android:textSize="16.0dip" android:textColor="@color/a7a" android:ellipsize="end" android:id="@id/w4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+                            <TextView android:textSize="16.0dip" android:textColor="@color/a7b" android:id="@id/dd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:maxLines="1" />
+                        </com.tencent.mm.ui.widget.EllipsizeLayout>
+                        <FrameLayout android:id="@id/ks2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                            <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="@dimen/m9" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icon_info" android:cropToPadding="true" app:iconColor="@color/BW_0_Alpha_0_3" />
+                        </FrameLayout> ` </RelativeLayout>
+                    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/c21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@android:string/unknownName" android:layout_below="@id/ko8" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/kmf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/c21" />
+                    <FrameLayout android:id="@id/fb8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_weight="1.0" android:layout_below="@id/kmf" />
+                    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/aoi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_below="@id/fb8" android:layout_centerHorizontal="true">
+                        <Button android:textSize="17.0dip" android:textStyle="bold" android:id="@id/c6g" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@android:string/unknownName" style="@style/op" />
+                        <View android:layout_width="18.0dip" android:layout_height="fill_parent" />
+                        <Button android:textSize="17.0dip" android:id="@id/c6t" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@android:string/unknownName" style="@style/oh" />
+                    </LinearLayout>
+                    <FrameLayout android:id="@id/ag3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/aoi">
+                        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/hm7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
+                            <CheckBox android:id="@id/p0" android:focusable="false" android:clickable="false" android:layout_width="13.199982dip" android:layout_height="13.199982dip" android:layout_marginRight="6.399994dip" android:button="@null" style="@style/lq" />
+                            <TextView android:textSize="14.0dip" android:textColor="@color/xo" android:id="@id/p1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@android:string/unknownName" />
+                        </LinearLayout>
+                        <TextView android:textSize="17.0dip" android:textColor="@color/Link" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/p2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@android:string/unknownName" />
+                    </FrameLayout>
+                </LinearLayout>
+            </ScrollView>
+        </FrameLayout>
+        <include android:visibility="gone" layout="@layout/bzy" />
+    </FrameLayout>
+</com.tencent.mm.msgsubscription.ui.NotClickableRelativeLayout>

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import com.tencent.ark.ark;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -28,10 +28,11 @@ public class MessageForArkFlashChat
   
   public String getSummery()
   {
-    if (this.ark_app_message != null) {
-      return this.ark_app_message.getSummery();
+    ArkFlashChatMessage localArkFlashChatMessage = this.ark_app_message;
+    if (localArkFlashChatMessage != null) {
+      return localArkFlashChatMessage.getSummery();
     }
-    return alud.a(2131707010);
+    return HardCodeUtil.a(2131904502);
   }
   
   public boolean isSupportReply()
@@ -43,32 +44,41 @@ public class MessageForArkFlashChat
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashChat", 2, "testMyStopAnimLogic play " + this.ark_app_message.getMeta(this.uniseq, true));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("testMyStopAnimLogic play ");
+        localStringBuilder.append(this.ark_app_message.getMeta(this.uniseq, true));
+        QLog.d("FlashChat", 2, localStringBuilder.toString());
       }
       ark.arkNotify(this.ark_app_message.appName, "UpdateAnimContent", this.ark_app_message.getMeta(this.uniseq, true), "json");
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      while (!QLog.isColorLevel()) {}
+      label76:
+      break label76;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "arkNotify failed, .so not loaded");
     }
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    byte[] arrayOfByte = null;
-    if (this.ark_app_message != null) {
-      arrayOfByte = this.ark_app_message.toBytes();
+    Object localObject = this.ark_app_message;
+    if (localObject != null) {
+      localObject = ((ArkFlashChatMessage)localObject).toBytes();
+    } else {
+      localObject = null;
     }
     this.msg = getSummery();
-    this.msgData = arrayOfByte;
+    this.msgData = ((byte[])localObject);
   }
   
   public void setParsed()
@@ -91,15 +101,22 @@ public class MessageForArkFlashChat
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashChat", 2, "testMyStopAnimLogic stopAnim" + this.ark_app_message.getMeta(this.uniseq, false));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("testMyStopAnimLogic stopAnim");
+        localStringBuilder.append(this.ark_app_message.getMeta(this.uniseq, false));
+        QLog.d("FlashChat", 2, localStringBuilder.toString());
       }
       ark.arkNotify(this.ark_app_message.appName, "UpdateAnimContent", this.ark_app_message.getMeta(this.uniseq, false), "json");
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      while (!QLog.isColorLevel()) {}
+      label76:
+      break label76;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("FlashChat", 2, "arkNotify failed, .so not loaded");
     }
   }

@@ -22,7 +22,7 @@ public class tlv_t183
     byte[] arrayOfByte = new byte[8];
     util.int64_to_buf(arrayOfByte, 0, paramLong);
     fill_head(this._cmd);
-    fill_body(arrayOfByte, arrayOfByte.length);
+    fill_body(arrayOfByte, 8);
     set_length();
     return get_buf();
   }
@@ -30,10 +30,10 @@ public class tlv_t183
   public Boolean verify()
   {
     if (this._body_len < 8) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._msalt = util.buf_to_int64(this._buf, this._head_len);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

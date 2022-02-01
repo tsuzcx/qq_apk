@@ -2,52 +2,54 @@ package cooperation.smartdevice.ipc;
 
 import android.os.Bundle;
 import android.os.RemoteException;
-import bkch;
-import bkck;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-public class SmartDeviceIPCHost$4
+class SmartDeviceIPCHost$4
   implements Runnable
 {
-  public SmartDeviceIPCHost$4(bkck parambkck) {}
+  SmartDeviceIPCHost$4(SmartDeviceIPCHost paramSmartDeviceIPCHost) {}
   
   public void run()
   {
-    for (;;)
+    while (!this.this$0.d.isEmpty())
     {
-      Bundle localBundle;
-      if (!this.this$0.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-      {
-        localBundle = (Bundle)this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        if (localBundle != null) {}
-      }
-      else
-      {
+      Bundle localBundle = (Bundle)this.this$0.d.remove(0);
+      if (localBundle == null) {
         return;
       }
       String str = localBundle.getString("notify_cmd");
       try
       {
         localBundle.setClassLoader(getClass().getClassLoader());
-        if (QLog.isColorLevel()) {
-          QLog.d("SmartDeviceIPCHost", 2, "qq->plugin post to main thread doPostCachedMsg strNotifyCmd:" + str + " thread:" + Thread.currentThread());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("qq->plugin post to main thread doPostCachedMsg strNotifyCmd:");
+          localStringBuilder2.append(str);
+          localStringBuilder2.append(" thread:");
+          localStringBuilder2.append(Thread.currentThread());
+          QLog.d("SmartDeviceIPCHost", 2, localStringBuilder2.toString());
         }
-        this.this$0.jdField_a_of_type_Bkch.a("com.qqsmartdevice.action.notify", localBundle);
+        this.this$0.b.b("com.qqsmartdevice.action.notify", localBundle);
       }
       catch (RemoteException localRemoteException)
       {
         localRemoteException.printStackTrace();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("SmartDeviceIPCHost", 2, "mSmartDeviceService.transfer failed strNotifyCmd:" + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("mSmartDeviceService.transfer failed strNotifyCmd:");
+        localStringBuilder1.append(str);
+        QLog.d("SmartDeviceIPCHost", 2, localStringBuilder1.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.ipc.SmartDeviceIPCHost.4
  * JD-Core Version:    0.7.0.1
  */

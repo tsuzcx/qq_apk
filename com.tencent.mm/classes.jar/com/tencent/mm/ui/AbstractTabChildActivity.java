@@ -1,7 +1,6 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class AbstractTabChildActivity
@@ -15,7 +14,7 @@ public abstract class AbstractTabChildActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.AbstractTabChildActivity
  * JD-Core Version:    0.7.0.1
  */

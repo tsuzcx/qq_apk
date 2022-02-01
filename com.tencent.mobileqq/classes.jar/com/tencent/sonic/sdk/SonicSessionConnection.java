@@ -37,13 +37,10 @@ public abstract class SonicSessionConnection
   public SonicSessionConnection(SonicSession paramSonicSession, Intent paramIntent)
   {
     this.session = paramSonicSession;
-    if (paramIntent != null) {}
-    for (;;)
-    {
-      this.intent = paramIntent;
-      return;
+    if (paramIntent == null) {
       paramIntent = new Intent();
     }
+    this.intent = paramIntent;
   }
   
   public int connect()
@@ -87,7 +84,7 @@ public abstract class SonicSessionConnection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionConnection
  * JD-Core Version:    0.7.0.1
  */

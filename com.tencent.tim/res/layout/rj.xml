@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/p9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/est" android:background="@drawable/czj" style="@style/pb" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:id="@id/esu" android:text="@string/o5u" style="@style/pc" />
+        <TextView android:id="@id/esr" android:text="95折" style="@style/p7" />
+        <TextView android:id="@id/esv" android:text="@string/o5v" style="@style/pe" />
+    </LinearLayout>
+    <TextView android:id="@id/esw" android:text="@string/o5w" style="@style/pf" />
+    <TextView android:id="@id/ess" android:text="@string/o5r" style="@style/p8" />
+    <ImageView style="@style/p_" />
+</LinearLayout>

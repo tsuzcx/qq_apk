@@ -5,12 +5,6 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,30 +12,25 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="FieldMappingDictionaryCreator")
 public class FieldMappingDictionary
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<FieldMappingDictionary> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
   private final HashMap<String, Map<String, FastJsonResponse.Field<?, ?>>> zzxk;
-  @SafeParcelable.Field(getter="getSerializedDictionary", id=2)
-  private final ArrayList<FieldMappingDictionary.Entry> zzxl;
-  @SafeParcelable.Field(getter="getRootClassName", id=3)
+  private final ArrayList<Entry> zzxl;
   private final String zzxm;
   
   static
   {
-    AppMethodBeat.i(61574);
+    AppMethodBeat.i(12066);
     CREATOR = new FieldMappingDictionaryCreator();
-    AppMethodBeat.o(61574);
+    AppMethodBeat.o(12066);
   }
   
-  @SafeParcelable.Constructor
-  FieldMappingDictionary(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) ArrayList<FieldMappingDictionary.Entry> paramArrayList, @SafeParcelable.Param(id=3) String paramString)
+  FieldMappingDictionary(int paramInt, ArrayList<Entry> paramArrayList, String paramString)
   {
-    AppMethodBeat.i(61564);
+    AppMethodBeat.i(12056);
     this.zzal = paramInt;
     this.zzxl = null;
     HashMap localHashMap1 = new HashMap();
@@ -49,14 +38,14 @@ public class FieldMappingDictionary
     paramInt = 0;
     while (paramInt < j)
     {
-      FieldMappingDictionary.Entry localEntry = (FieldMappingDictionary.Entry)paramArrayList.get(paramInt);
+      Entry localEntry = (Entry)paramArrayList.get(paramInt);
       String str = localEntry.className;
       HashMap localHashMap2 = new HashMap();
       int k = localEntry.zzxn.size();
       int i = 0;
       while (i < k)
       {
-        FieldMappingDictionary.FieldMapPair localFieldMapPair = (FieldMappingDictionary.FieldMapPair)localEntry.zzxn.get(i);
+        FieldMapPair localFieldMapPair = (FieldMapPair)localEntry.zzxn.get(i);
         localHashMap2.put(localFieldMapPair.zzxo, localFieldMapPair.zzxp);
         i += 1;
       }
@@ -66,22 +55,22 @@ public class FieldMappingDictionary
     this.zzxk = localHashMap1;
     this.zzxm = ((String)Preconditions.checkNotNull(paramString));
     linkFields();
-    AppMethodBeat.o(61564);
+    AppMethodBeat.o(12056);
   }
   
   public FieldMappingDictionary(Class<? extends FastJsonResponse> paramClass)
   {
-    AppMethodBeat.i(61567);
+    AppMethodBeat.i(12059);
     this.zzal = 1;
     this.zzxl = null;
     this.zzxk = new HashMap();
     this.zzxm = paramClass.getCanonicalName();
-    AppMethodBeat.o(61567);
+    AppMethodBeat.o(12059);
   }
   
   public void copyInternalFieldMappings()
   {
-    AppMethodBeat.i(61566);
+    AppMethodBeat.i(12058);
     Iterator localIterator1 = this.zzxk.keySet().iterator();
     while (localIterator1.hasNext())
     {
@@ -96,23 +85,22 @@ public class FieldMappingDictionary
       }
       this.zzxk.put(str1, localHashMap);
     }
-    AppMethodBeat.o(61566);
+    AppMethodBeat.o(12058);
   }
   
-  @VisibleForTesting
   public Map<String, FastJsonResponse.Field<?, ?>> getFieldMapping(Class<? extends FastJsonResponse> paramClass)
   {
-    AppMethodBeat.i(61569);
+    AppMethodBeat.i(12061);
     paramClass = (Map)this.zzxk.get(paramClass.getCanonicalName());
-    AppMethodBeat.o(61569);
+    AppMethodBeat.o(12061);
     return paramClass;
   }
   
   public Map<String, FastJsonResponse.Field<?, ?>> getFieldMapping(String paramString)
   {
-    AppMethodBeat.i(61570);
+    AppMethodBeat.i(12062);
     paramString = (Map)this.zzxk.get(paramString);
-    AppMethodBeat.o(61570);
+    AppMethodBeat.o(12062);
     return paramString;
   }
   
@@ -123,15 +111,15 @@ public class FieldMappingDictionary
   
   public boolean hasFieldMappingForClass(Class<? extends FastJsonResponse> paramClass)
   {
-    AppMethodBeat.i(61571);
+    AppMethodBeat.i(12063);
     boolean bool = this.zzxk.containsKey(paramClass.getCanonicalName());
-    AppMethodBeat.o(61571);
+    AppMethodBeat.o(12063);
     return bool;
   }
   
   public void linkFields()
   {
-    AppMethodBeat.i(61565);
+    AppMethodBeat.i(12057);
     Iterator localIterator1 = this.zzxk.keySet().iterator();
     while (localIterator1.hasNext())
     {
@@ -142,19 +130,19 @@ public class FieldMappingDictionary
         ((FastJsonResponse.Field)((Map)localObject).get((String)localIterator2.next())).setFieldMappingDictionary(this);
       }
     }
-    AppMethodBeat.o(61565);
+    AppMethodBeat.o(12057);
   }
   
   public void put(Class<? extends FastJsonResponse> paramClass, Map<String, FastJsonResponse.Field<?, ?>> paramMap)
   {
-    AppMethodBeat.i(61568);
+    AppMethodBeat.i(12060);
     this.zzxk.put(paramClass.getCanonicalName(), paramMap);
-    AppMethodBeat.o(61568);
+    AppMethodBeat.o(12060);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(61572);
+    AppMethodBeat.i(12064);
     Object localObject1 = new StringBuilder();
     Iterator localIterator1 = this.zzxk.keySet().iterator();
     while (localIterator1.hasNext())
@@ -171,13 +159,13 @@ public class FieldMappingDictionary
       }
     }
     localObject1 = ((StringBuilder)localObject1).toString();
-    AppMethodBeat.o(61572);
+    AppMethodBeat.o(12064);
     return localObject1;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61573);
+    AppMethodBeat.i(12065);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     ArrayList localArrayList = new ArrayList();
@@ -185,17 +173,115 @@ public class FieldMappingDictionary
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localArrayList.add(new FieldMappingDictionary.Entry(str, (Map)this.zzxk.get(str)));
+      localArrayList.add(new Entry(str, (Map)this.zzxk.get(str)));
     }
     SafeParcelWriter.writeTypedList(paramParcel, 2, localArrayList, false);
     SafeParcelWriter.writeString(paramParcel, 3, getRootClassName(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(61573);
+    AppMethodBeat.o(12065);
+  }
+  
+  public static class Entry
+    extends AbstractSafeParcelable
+  {
+    public static final Parcelable.Creator<Entry> CREATOR;
+    final String className;
+    private final int versionCode;
+    final ArrayList<FieldMappingDictionary.FieldMapPair> zzxn;
+    
+    static
+    {
+      AppMethodBeat.i(12053);
+      CREATOR = new FieldMappingDictionaryEntryCreator();
+      AppMethodBeat.o(12053);
+    }
+    
+    Entry(int paramInt, String paramString, ArrayList<FieldMappingDictionary.FieldMapPair> paramArrayList)
+    {
+      this.versionCode = paramInt;
+      this.className = paramString;
+      this.zzxn = paramArrayList;
+    }
+    
+    Entry(String paramString, Map<String, FastJsonResponse.Field<?, ?>> paramMap)
+    {
+      AppMethodBeat.i(12051);
+      this.versionCode = 1;
+      this.className = paramString;
+      if (paramMap == null) {
+        paramString = null;
+      }
+      for (;;)
+      {
+        this.zzxn = paramString;
+        AppMethodBeat.o(12051);
+        return;
+        paramString = new ArrayList();
+        Iterator localIterator = paramMap.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          paramString.add(new FieldMappingDictionary.FieldMapPair(str, (FastJsonResponse.Field)paramMap.get(str)));
+        }
+      }
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(12052);
+      paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
+      SafeParcelWriter.writeInt(paramParcel, 1, this.versionCode);
+      SafeParcelWriter.writeString(paramParcel, 2, this.className, false);
+      SafeParcelWriter.writeTypedList(paramParcel, 3, this.zzxn, false);
+      SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
+      AppMethodBeat.o(12052);
+    }
+  }
+  
+  public static class FieldMapPair
+    extends AbstractSafeParcelable
+  {
+    public static final Parcelable.Creator<FieldMapPair> CREATOR;
+    private final int versionCode;
+    final String zzxo;
+    final FastJsonResponse.Field<?, ?> zzxp;
+    
+    static
+    {
+      AppMethodBeat.i(12055);
+      CREATOR = new FieldMapPairCreator();
+      AppMethodBeat.o(12055);
+    }
+    
+    FieldMapPair(int paramInt, String paramString, FastJsonResponse.Field<?, ?> paramField)
+    {
+      this.versionCode = paramInt;
+      this.zzxo = paramString;
+      this.zzxp = paramField;
+    }
+    
+    FieldMapPair(String paramString, FastJsonResponse.Field<?, ?> paramField)
+    {
+      this.versionCode = 1;
+      this.zzxo = paramString;
+      this.zzxp = paramField;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(12054);
+      int i = SafeParcelWriter.beginObjectHeader(paramParcel);
+      SafeParcelWriter.writeInt(paramParcel, 1, this.versionCode);
+      SafeParcelWriter.writeString(paramParcel, 2, this.zzxo, false);
+      SafeParcelWriter.writeParcelable(paramParcel, 3, this.zzxp, paramInt, false);
+      SafeParcelWriter.finishObjectHeader(paramParcel, i);
+      AppMethodBeat.o(12054);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.FieldMappingDictionary
  * JD-Core Version:    0.7.0.1
  */

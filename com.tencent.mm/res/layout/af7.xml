@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/cz" style="@style/ls" />
-    <com.tencent.mm.ui.base.MMClearEditText android:id="@id/lh" android:imeOptions="actionDone" style="@style/lq" />
-</merge>
+<RelativeLayout android:id="@id/dff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:id="@id/des" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.0">
+        <RelativeLayout android:id="@id/deq" android:layout_width="0.0dip" android:layout_height="@dimen/d6" android:layout_weight="1.0" android:layout_marginEnd="@dimen/a7j">
+            <com.tencent.mm.plugin.finder.live.view.FinderLiveSkewView android:id="@id/der" android:layout_width="fill_parent" android:layout_height="fill_parent" app:skewX="-0.2" app:srcDrawable="@drawable/xz" />
+            <TextView android:textSize="16.0dip" android:textStyle="bold|italic" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/det" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dhb" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/deu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dh_" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/bv" android:layout_toStartOf="@id/det" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/dej" android:layout_width="0.0dip" android:layout_height="@dimen/d6" android:layout_weight="1.0" android:layout_marginStart="@dimen/a7j">
+            <com.tencent.mm.plugin.finder.live.view.FinderLiveSkewView android:id="@id/dek" android:layout_width="fill_parent" android:layout_height="fill_parent" app:skewX="0.2" app:srcDrawable="@drawable/xy" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/dep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dh_" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/bv" />
+            <TextView android:textSize="16.0dip" android:textStyle="bold|italic" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/deo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dhb" android:layout_centerVertical="true" android:layout_toEndOf="@id/dep" />
+            <RelativeLayout android:id="@id/dem" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/a76" android:layout_toEndOf="@id/deo">
+                <TextView android:textSize="14.0dip" android:textColor="#ff38b9f9" android:gravity="center" android:id="@id/del" android:background="@drawable/a1k" android:layout_width="wrap_content" android:layout_height="@dimen/cw" android:text="@string/dh4" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+                <ProgressBar android:id="@id/den" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_centerInParent="true" style="@style/a86" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

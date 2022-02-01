@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/iew" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/dgu" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/lnt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/lnr" android:layout_width="195.0dip" android:layout_height="106.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="事项开始时将通过QQ消息进行提醒" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/lnu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/lnv" android:layout_width="86.0dip" android:layout_height="86.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lnw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="事项开始时将通过QQ消息进行提醒" />
+        </LinearLayout>
+    </FrameLayout>
+    <View android:id="@id/lpr" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="20.0dip" android:layout_below="@id/dgu" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ly9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/lpr">
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/ql1" android:includeFontPadding="false" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/mdh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="21.0dip" android:includeFontPadding="false" />
+    </LinearLayout>
+    <View android:id="@id/e_3" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:layout_below="@id/ly9" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ly_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/e_3">
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/ql0" android:includeFontPadding="false" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/mdi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="21.0dip" android:text="" android:includeFontPadding="false" />
+    </LinearLayout>
+    <View android:id="@id/e_4" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="20.0dip" android:layout_below="@id/ly_" />
+    <Button android:enabled="false" android:textSize="17.0sp" android:textColor="@color/wn" android:gravity="center" android:id="@id/ak4" android:tag="0" android:background="@drawable/qvip_pay_common_btn_blue" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="20.0dip" android:text="@string/qkz" android:layout_below="@id/e_4" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:layout_gravity="bottom|center" android:id="@id/k73" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/qky" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

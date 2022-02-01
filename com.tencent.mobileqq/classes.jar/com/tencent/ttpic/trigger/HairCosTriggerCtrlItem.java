@@ -38,12 +38,13 @@ public class HairCosTriggerCtrlItem
   
   public void hitCharmRange(double paramDouble)
   {
-    if (this.stickerItems != null)
+    Object localObject = this.stickerItems;
+    if (localObject != null)
     {
-      Iterator localIterator = this.stickerItems.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        StickerItem localStickerItem = (StickerItem)localIterator.next();
+        StickerItem localStickerItem = (StickerItem)((Iterator)localObject).next();
         if (localStickerItem.charmRange != null) {
           localStickerItem.charmRange.hit(paramDouble);
         }
@@ -54,27 +55,26 @@ public class HairCosTriggerCtrlItem
   
   public boolean isTriggered()
   {
-    return (this.renderHairItem != null) && (this.renderHairItem.size() > 0);
+    Map localMap = this.renderHairItem;
+    return (localMap != null) && (localMap.size() > 0);
   }
   
   public void updateTriggerStatus(PTDetectInfo paramPTDetectInfo)
   {
-    if (paramPTDetectInfo == null) {}
-    for (;;)
-    {
+    if (paramPTDetectInfo == null) {
       return;
-      this.renderHairItem = null;
-      Iterator localIterator = this.hairCosInfos.iterator();
-      while (localIterator.hasNext())
+    }
+    this.renderHairItem = null;
+    Iterator localIterator = this.hairCosInfos.iterator();
+    while (localIterator.hasNext())
+    {
+      HairCosTriggerCtrlItem.HairCosInfo localHairCosInfo = (HairCosTriggerCtrlItem.HairCosInfo)localIterator.next();
+      if (localHairCosInfo.updateTriggerStatus(paramPTDetectInfo, this.mvPartIndex))
       {
-        HairCosTriggerCtrlItem.HairCosInfo localHairCosInfo = (HairCosTriggerCtrlItem.HairCosInfo)localIterator.next();
-        if (localHairCosInfo.updateTriggerStatus(paramPTDetectInfo, this.mvPartIndex))
-        {
-          if (this.renderHairItem == null) {
-            this.renderHairItem = new HashMap();
-          }
-          this.renderHairItem.put(localHairCosInfo.id, Integer.valueOf(localHairCosInfo.getFrameIndex()));
+        if (this.renderHairItem == null) {
+          this.renderHairItem = new HashMap();
         }
+        this.renderHairItem.put(localHairCosInfo.id, Integer.valueOf(localHairCosInfo.getFrameIndex()));
       }
     }
   }
@@ -88,7 +88,7 @@ public class HairCosTriggerCtrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.trigger.HairCosTriggerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

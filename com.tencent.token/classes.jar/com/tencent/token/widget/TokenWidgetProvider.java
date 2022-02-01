@@ -7,8 +7,8 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.ch;
-import com.tencent.token.global.h;
+import com.tencent.token.so;
+import com.tencent.token.xv;
 
 public class TokenWidgetProvider
   extends AppWidgetProvider
@@ -16,23 +16,25 @@ public class TokenWidgetProvider
   public void onDeleted(Context paramContext, int[] paramArrayOfInt)
   {
     paramArrayOfInt = AppWidgetManager.getInstance(paramContext).getAppWidgetIds(new ComponentName(paramContext, TokenWidgetProvider.class));
-    h.a("widget_big num=" + paramArrayOfInt.length);
-    ch.a().a(System.currentTimeMillis(), 13);
-    ch.a().a(paramContext);
+    Object localObject = new StringBuilder("widget_big num=");
+    ((StringBuilder)localObject).append(paramArrayOfInt.length);
+    xv.a(((StringBuilder)localObject).toString());
+    so.a().a(System.currentTimeMillis(), 13);
+    so.a().a(paramContext);
     if (paramArrayOfInt.length <= 0)
     {
       paramArrayOfInt = new Intent(paramContext, TokenService.class);
-      PendingIntent localPendingIntent = PendingIntent.getService(paramContext, 0, paramArrayOfInt, 0);
-      ((AlarmManager)paramContext.getSystemService("alarm")).cancel(localPendingIntent);
+      localObject = PendingIntent.getService(paramContext, 0, paramArrayOfInt, 0);
+      ((AlarmManager)paramContext.getSystemService("alarm")).cancel((PendingIntent)localObject);
       paramContext.stopService(paramArrayOfInt);
     }
   }
   
   public void onEnabled(Context paramContext)
   {
-    h.a("widget enabled");
-    ch.a().a(System.currentTimeMillis(), 7);
-    ch.a().a(paramContext);
+    xv.a("widget enabled");
+    so.a().a(System.currentTimeMillis(), 7);
+    so.a().a(paramContext);
     super.onEnabled(paramContext);
   }
   

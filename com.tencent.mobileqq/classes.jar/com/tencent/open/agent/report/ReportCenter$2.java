@@ -7,88 +7,116 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings.Secure;
-import bfbm;
-import bfhz;
-import bfib;
-import bflk;
-import bfmw;
-import bfmx;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.business.base.MobileInfoUtil;
+import com.tencent.open.business.base.OpenConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.TimeZone;
 
-public class ReportCenter$2
+class ReportCenter$2
   implements Runnable
 {
-  public ReportCenter$2(bfhz parambfhz, String paramString, Bundle paramBundle, boolean paramBoolean) {}
+  ReportCenter$2(ReportCenter paramReportCenter, String paramString, boolean paramBoolean1, Bundle paramBundle, boolean paramBoolean2) {}
   
   public void run()
   {
-    int i;
-    do
+    try
     {
-      try
-      {
-        ??? = new Bundle();
-        ((Bundle)???).putString("uin", this.jdField_a_of_type_JavaLangString);
-        ((Bundle)???).putString("imei", bfmw.c());
-        ((Bundle)???).putString("imsi", bfmw.d());
-        ((Bundle)???).putString("android_id", Settings.Secure.getString(bfbm.a().a().getContentResolver(), "android_id"));
-        ((Bundle)???).putString("mac", bfmw.a());
-        ((Bundle)???).putString("platform", "4");
-        ((Bundle)???).putString("os_ver", Build.VERSION.RELEASE);
-        ((Bundle)???).putString("position", bfmw.f());
-        ((Bundle)???).putString("network", bflk.a(bfbm.a().a()));
-        ((Bundle)???).putString("language", bfmw.b());
-        ((Bundle)???).putString("resolution", bfmw.e());
-        ((Bundle)???).putString("apn", bflk.b(bfbm.a().a()));
-        ((Bundle)???).putString("model_name", Build.MODEL);
-        ((Bundle)???).putString("timezone", TimeZone.getDefault().getID());
-        ((Bundle)???).putString("qq_ver", bfbm.a().c());
-        ((Bundle)???).putString("qua", bfbm.a().f());
-        ((Bundle)???).putString("via", "2");
-        ((Bundle)???).putString("result", "0");
-        if (this.jdField_a_of_type_AndroidOsBundle != null) {
-          ((Bundle)???).putAll(this.jdField_a_of_type_AndroidOsBundle);
-        }
-        localBaseData = new BaseData((Bundle)???);
+      Object localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("uin", this.a);
+      if (this.b) {
+        ??? = "";
+      } else {
+        ??? = MobileInfoUtil.getImei();
       }
-      catch (Exception localException)
-      {
-        BaseData localBaseData;
-        int k;
-        int m;
-        int j;
-        while (!QLog.isColorLevel()) {}
-        QLog.d("ReportCenter", 2, "-->reportVia, exception in sub thread.", localException);
-        return;
+      ((Bundle)localObject2).putString("imei", (String)???);
+      if (this.b) {
+        ??? = "";
+      } else {
+        ??? = MobileInfoUtil.getImsi();
       }
+      ((Bundle)localObject2).putString("imsi", (String)???);
+      if (this.b) {
+        ??? = "";
+      } else {
+        ??? = Settings.Secure.getString(CommonDataAdapter.a().b().getContentResolver(), "android_id");
+      }
+      ((Bundle)localObject2).putString("android_id", (String)???);
+      if (this.b) {
+        ??? = "";
+      } else {
+        ??? = MobileInfoUtil.getLocalMacAddress();
+      }
+      ((Bundle)localObject2).putString("mac", (String)???);
+      ((Bundle)localObject2).putString("platform", "4");
+      ((Bundle)localObject2).putString("os_ver", Build.VERSION.RELEASE);
+      if (this.b) {
+        ??? = "";
+      } else {
+        ??? = MobileInfoUtil.getLocation();
+      }
+      ((Bundle)localObject2).putString("position", (String)???);
+      ((Bundle)localObject2).putString("network", APNUtil.a(CommonDataAdapter.a().b()));
+      ((Bundle)localObject2).putString("language", MobileInfoUtil.getLanguage());
+      ((Bundle)localObject2).putString("resolution", MobileInfoUtil.getResolution());
+      if (this.b) {
+        ??? = "";
+      } else {
+        ??? = APNUtil.b(CommonDataAdapter.a().b());
+      }
+      ((Bundle)localObject2).putString("apn", (String)???);
+      ((Bundle)localObject2).putString("model_name", Build.MODEL);
+      ((Bundle)localObject2).putString("timezone", TimeZone.getDefault().getID());
+      ((Bundle)localObject2).putString("qq_ver", CommonDataAdapter.a().g());
+      ((Bundle)localObject2).putString("qua", CommonDataAdapter.a().l());
+      ((Bundle)localObject2).putString("via", "2");
+      ((Bundle)localObject2).putString("result", "0");
+      if (this.c != null) {
+        ((Bundle)localObject2).putAll(this.c);
+      }
+      localObject2 = new BaseData((Bundle)localObject2);
       synchronized (this.this$0)
       {
-        this.this$0.b.add(localBaseData);
-        k = this.this$0.b.size();
-        m = bfib.a().a("report_via");
-        j = bfmx.a(bfbm.a().a(), null).a("Agent_ReportTimeInterval");
-        i = j;
+        this.this$0.d.add(localObject2);
+        int k = this.this$0.d.size();
+        int m = ReportDatabaseHelper.a().b("report_via");
+        int j = OpenConfig.a(CommonDataAdapter.a().b(), null).d("Agent_ReportTimeInterval");
+        int i = j;
         if (j == 0) {
           i = 10000;
         }
-        if ((this.this$0.a("report_via", m + k)) || (this.jdField_a_of_type_Boolean))
+        if ((!this.this$0.a("report_via", k + m)) && (!this.d))
         {
-          this.this$0.a();
-          this.this$0.a.removeMessages(1001);
+          if (!this.this$0.h.hasMessages(1001))
+          {
+            ??? = Message.obtain();
+            ((Message)???).what = 1001;
+            ((Message)???).obj = Boolean.valueOf(this.b);
+            this.this$0.h.sendMessageDelayed((Message)???, i);
+          }
+        }
+        else
+        {
+          this.this$0.a(this.b);
+          this.this$0.h.removeMessages(1001);
           return;
         }
       }
-    } while (this.this$0.a.hasMessages(1001));
-    Message localMessage = Message.obtain();
-    localMessage.what = 1001;
-    this.this$0.a.sendMessageDelayed(localMessage, i);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportCenter", 2, "-->reportVia, exception in sub thread.", localException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,202 +1,190 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public final class adf
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String canvasPageXml;
-  public String desc;
-  public int fgB;
-  public String thumbUrl;
-  public String title;
-  public boolean wSv = false;
-  public boolean wSw = false;
-  public boolean wTH = false;
-  public boolean wUX = false;
-  public String wVF;
-  public boolean wVG = false;
-  public int wVH;
-  public boolean wVI = false;
-  public boolean wVJ = false;
+  public int ZlK;
+  public String ZlL;
+  public long ZlM;
+  public int ZlN;
+  public long ZlO;
   
-  public final adf MS(int paramInt)
+  private JSONObject toJSON()
   {
-    this.wVH = paramInt;
-    this.wVI = true;
-    return this;
-  }
-  
-  public final adf MT(int paramInt)
-  {
-    this.fgB = paramInt;
-    this.wVJ = true;
-    return this;
-  }
-  
-  public final adf aoA(String paramString)
-  {
-    this.title = paramString;
-    this.wSv = true;
-    return this;
-  }
-  
-  public final adf aoB(String paramString)
-  {
-    this.desc = paramString;
-    this.wSw = true;
-    return this;
-  }
-  
-  public final adf aoC(String paramString)
-  {
-    this.wVF = paramString;
-    this.wVG = true;
-    return this;
-  }
-  
-  public final adf aoD(String paramString)
-  {
-    this.thumbUrl = paramString;
-    this.wUX = true;
-    return this;
-  }
-  
-  public final adf aoE(String paramString)
-  {
-    this.canvasPageXml = paramString;
-    this.wTH = true;
-    return this;
+    AppMethodBeat.i(257666);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "expose_count", Integer.valueOf(this.ZlK), true);
+      com.tencent.mm.bk.a.a(localJSONObject, "oob", this.ZlL, true);
+      com.tencent.mm.bk.a.a(localJSONObject, "first_expose_time", Long.valueOf(this.ZlM), true);
+      com.tencent.mm.bk.a.a(localJSONObject, "had_sync_for_cold_time", Integer.valueOf(this.ZlN), true);
+      com.tencent.mm.bk.a.a(localJSONObject, "last_expose_time", Long.valueOf(this.ZlO), true);
+      label80:
+      AppMethodBeat.o(257666);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label80;
+    }
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51424);
+    AppMethodBeat.i(257671);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.e(1, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.ZlK);
+      if (this.ZlL != null) {
+        paramVarArgs.g(2, this.ZlL);
       }
-      if (this.desc != null) {
-        paramVarArgs.e(2, this.desc);
-      }
-      if (this.wVF != null) {
-        paramVarArgs.e(3, this.wVF);
-      }
-      if (this.thumbUrl != null) {
-        paramVarArgs.e(4, this.thumbUrl);
-      }
-      if (this.wVI == true) {
-        paramVarArgs.aO(5, this.wVH);
-      }
-      if (this.wVJ == true) {
-        paramVarArgs.aO(6, this.fgB);
-      }
-      if (this.canvasPageXml != null) {
-        paramVarArgs.e(7, this.canvasPageXml);
-      }
-      AppMethodBeat.o(51424);
+      paramVarArgs.bv(3, this.ZlM);
+      paramVarArgs.bS(100, this.ZlN);
+      paramVarArgs.bv(101, this.ZlO);
+      AppMethodBeat.o(257671);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.title == null) {
-        break label624;
-      }
-    }
-    label624:
-    for (int i = e.a.a.b.b.a.f(1, this.title) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = i.a.a.b.b.a.cJ(1, this.ZlK) + 0;
       paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.desc);
+      if (this.ZlL != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.ZlL);
       }
-      i = paramInt;
-      if (this.wVF != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.wVF);
+      i = i.a.a.b.b.a.q(3, this.ZlM);
+      int j = i.a.a.b.b.a.cJ(100, this.ZlN);
+      int k = i.a.a.b.b.a.q(101, this.ZlO);
+      AppMethodBeat.o(257671);
+      return paramInt + i + j + k;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
       }
-      paramInt = i;
-      if (this.thumbUrl != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.thumbUrl);
-      }
-      i = paramInt;
-      if (this.wVI == true) {
-        i = paramInt + e.a.a.b.b.a.bl(5, this.wVH);
-      }
-      paramInt = i;
-      if (this.wVJ == true) {
-        paramInt = i + e.a.a.b.b.a.bl(6, this.fgB);
-      }
-      i = paramInt;
-      if (this.canvasPageXml != null) {
-        i = paramInt + e.a.a.b.b.a.f(7, this.canvasPageXml);
-      }
-      AppMethodBeat.o(51424);
-      return i;
-      if (paramInt == 2)
+      AppMethodBeat.o(257671);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      adf localadf = (adf)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+      default: 
+        AppMethodBeat.o(257671);
+        return -1;
+      case 1: 
+        localadf.ZlK = locala.ajGk.aar();
+        AppMethodBeat.o(257671);
+        return 0;
+      case 2: 
+        localadf.ZlL = locala.ajGk.readString();
+        AppMethodBeat.o(257671);
+        return 0;
+      case 3: 
+        localadf.ZlM = locala.ajGk.aaw();
+        AppMethodBeat.o(257671);
+        return 0;
+      case 100: 
+        localadf.ZlN = locala.ajGk.aar();
+        AppMethodBeat.o(257671);
+        return 0;
+      }
+      localadf.ZlO = locala.ajGk.aaw();
+      AppMethodBeat.o(257671);
+      return 0;
+    }
+    AppMethodBeat.o(257671);
+    return -1;
+  }
+  
+  public final com.tencent.mm.bx.a toPb(String paramString)
+  {
+    AppMethodBeat.i(257674);
+    if ((paramString == null) || ("" == paramString))
+    {
+      AppMethodBeat.o(257674);
+      return this;
+    }
+    for (;;)
+    {
+      String str;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        if (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          i = -1;
+        }
+        switch (str.hashCode())
+        {
+        case 785900756: 
+          this.ZlK = ((Integer)paramString.opt(str)).intValue();
+          continue;
+          if (!str.equals("expose_count")) {
+            break label299;
           }
         }
-        AppMethodBeat.o(51424);
-        return 0;
       }
-      if (paramInt == 3)
+      catch (Exception paramString)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        adf localadf = (adf)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(51424);
-          return -1;
-        case 1: 
-          localadf.title = locala.CLY.readString();
-          localadf.wSv = true;
-          AppMethodBeat.o(51424);
-          return 0;
-        case 2: 
-          localadf.desc = locala.CLY.readString();
-          localadf.wSw = true;
-          AppMethodBeat.o(51424);
-          return 0;
-        case 3: 
-          localadf.wVF = locala.CLY.readString();
-          localadf.wVG = true;
-          AppMethodBeat.o(51424);
-          return 0;
-        case 4: 
-          localadf.thumbUrl = locala.CLY.readString();
-          localadf.wUX = true;
-          AppMethodBeat.o(51424);
-          return 0;
-        case 5: 
-          localadf.wVH = locala.CLY.sl();
-          localadf.wVI = true;
-          AppMethodBeat.o(51424);
-          return 0;
-        case 6: 
-          localadf.fgB = locala.CLY.sl();
-          localadf.wVJ = true;
-          AppMethodBeat.o(51424);
-          return 0;
-        }
-        localadf.canvasPageXml = locala.CLY.readString();
-        localadf.wTH = true;
-        AppMethodBeat.o(51424);
-        return 0;
+        Log.printErrStackTrace("ClientStatsInfo", paramString, "", new Object[0]);
+        AppMethodBeat.o(257674);
+        return this;
       }
-      AppMethodBeat.o(51424);
-      return -1;
+      int i = 0;
+      break label299;
+      if (str.equals("oob"))
+      {
+        i = 1;
+        break label299;
+        if (str.equals("first_expose_time"))
+        {
+          i = 2;
+          break label299;
+          if (str.equals("had_sync_for_cold_time"))
+          {
+            i = 3;
+            break label299;
+            if (str.equals("last_expose_time"))
+            {
+              i = 4;
+              break label299;
+              this.ZlL = ((String)paramString.opt(str));
+              continue;
+              this.ZlM = ((Long)paramString.opt(str)).longValue();
+              continue;
+              this.ZlN = ((Integer)paramString.opt(str)).intValue();
+              continue;
+              this.ZlO = ((Long)paramString.opt(str)).longValue();
+              continue;
+            }
+          }
+        }
+      }
+      label299:
+      switch (i)
+      {
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.adf
  * JD-Core Version:    0.7.0.1
  */

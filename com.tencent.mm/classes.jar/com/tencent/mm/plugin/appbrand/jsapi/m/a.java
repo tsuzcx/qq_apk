@@ -1,71 +1,95 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
-import android.content.Intent;
+import android.app.Activity;
+import com.tencent.luggage.l.e;
+import com.tencent.luggage.l.e.f;
+import com.tencent.luggage.l.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
-import com.tencent.mm.pluginsdk.wallet.h;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
-public enum a
-  implements b
+abstract class a<CONTEXT extends f>
+  extends c<CONTEXT>
 {
-  static
+  boolean rZS;
+  
+  static boolean u(CONTEXT paramCONTEXT)
   {
-    AppMethodBeat.i(131410);
-    hWj = new a("INSTANCE");
-    hWk = new a[] { hWj };
-    AppMethodBeat.o(131410);
+    return i.a(paramCONTEXT.getContext(), paramCONTEXT, "android.permission.ACCESS_FINE_LOCATION");
   }
   
-  private a() {}
-  
-  public final void a(MMActivity paramMMActivity, JSONObject paramJSONObject, b.b paramb)
+  public void a(final CONTEXT paramCONTEXT, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(131409);
-    paramb = new a.5(this, paramb);
-    paramJSONObject = new WalletJsapiData(paramJSONObject);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("appId", paramJSONObject.appId);
-    localIntent.putExtra("timeStamp", paramJSONObject.timeStamp);
-    localIntent.putExtra("nonceStr", paramJSONObject.nonceStr);
-    localIntent.putExtra("packageExt", paramJSONObject.packageExt);
-    localIntent.putExtra("signtype", paramJSONObject.signType);
-    localIntent.putExtra("paySignature", paramJSONObject.cCB);
-    localIntent.putExtra("url", paramJSONObject.url);
-    localIntent.putExtra("scene", 1);
-    paramMMActivity.mmSetOnActivityResultCallback(paramb);
-    d.a(paramMMActivity, "wallet_core", ".ui.WalletCheckPwdUI", localIntent, 0xFFFF & hashCode(), false);
-    AppMethodBeat.o(131409);
-  }
-  
-  public final boolean a(MMActivity paramMMActivity, AppBrandStatObject paramAppBrandStatObject, JSONObject paramJSONObject, b.a parama, PString paramPString)
-  {
-    AppMethodBeat.i(131408);
-    paramJSONObject = new WalletJsapiData(paramJSONObject);
-    if (paramAppBrandStatObject != null)
+    Activity localActivity;
+    boolean bool;
+    if ((paramCONTEXT.getContext() instanceof Activity))
     {
-      paramJSONObject.cqj = WalletJsapiData.hi(paramAppBrandStatObject.scene, paramAppBrandStatObject.cIZ);
-      paramJSONObject.wgH = WalletJsapiData.hh(paramAppBrandStatObject.scene, paramAppBrandStatObject.cIZ);
+      localActivity = (Activity)paramCONTEXT.getContext();
+      if (localActivity != null) {
+        break label81;
+      }
+      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "operateRecorder, pageContext is null");
+      paramCONTEXT.callback(paramInt, ZP("fail:internal error invalid android context"));
+      bool = false;
     }
-    paramJSONObject.cCD = 46;
-    paramPString.value = paramJSONObject.packageExt;
-    paramAppBrandStatObject = new a.1(this, parama);
-    boolean bool = h.a(paramMMActivity, paramJSONObject, hashCode() & 0xFFFF, paramAppBrandStatObject);
-    AppMethodBeat.o(131408);
-    return bool;
+    for (;;)
+    {
+      if (bool) {
+        break label147;
+      }
+      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s requestPermission fail", new Object[] { getName() });
+      return;
+      localActivity = null;
+      break;
+      label81:
+      if (u(paramCONTEXT))
+      {
+        bool = true;
+      }
+      else if (this.rZS)
+      {
+        paramCONTEXT.callback(paramInt, ZP("fail:system permission denied"));
+        bool = false;
+      }
+      else
+      {
+        bool = e.bt(localActivity).a(paramCONTEXT, "android.permission.ACCESS_FINE_LOCATION", new e.f()
+        {
+          public final void onResult(String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
+          {
+            AppMethodBeat.i(329209);
+            if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
+            {
+              Log.i("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "PERMISSION_GRANTED, do invoke again");
+              a.this.a(paramCONTEXT, paramJSONObject, paramInt);
+              AppMethodBeat.o(329209);
+              return;
+            }
+            Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "SYS_PERM_DENIED");
+            a.this.rZS = true;
+            paramCONTEXT.callback(paramInt, a.this.ZP("fail:system permission denied"));
+            AppMethodBeat.o(329209);
+          }
+        });
+      }
+    }
+    label147:
+    if (paramJSONObject == null)
+    {
+      Log.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s invalid data", new Object[] { getName() });
+      paramCONTEXT.callback(paramInt, ZP("fail:invalid data"));
+      return;
+    }
+    d(paramCONTEXT, paramJSONObject, paramInt);
   }
+  
+  protected abstract void d(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.a
  * JD-Core Version:    0.7.0.1
  */

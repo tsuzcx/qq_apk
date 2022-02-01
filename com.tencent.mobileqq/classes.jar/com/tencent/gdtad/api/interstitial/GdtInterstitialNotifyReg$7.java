@@ -1,39 +1,24 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaor;
-import aase;
 import android.text.TextUtils;
+import com.tencent.gdtad.log.GdtLog;
 import java.lang.ref.WeakReference;
 
-public class GdtInterstitialNotifyReg$7
+class GdtInterstitialNotifyReg$7
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$7(aaor paramaaor, String paramString) {}
+  GdtInterstitialNotifyReg$7(GdtInterstitialNotifyReg paramGdtInterstitialNotifyReg, String paramString) {}
   
   public void run()
   {
-    String str = aaor.a(this.a);
-    WeakReference localWeakReference = aaor.a(this.a);
-    if ((TextUtils.isEmpty(str)) || (localWeakReference == null) || (localWeakReference.get() == null))
+    String str = GdtInterstitialNotifyReg.a(this.a);
+    WeakReference localWeakReference = GdtInterstitialNotifyReg.b(this.a);
+    if ((!TextUtils.isEmpty(str)) && (localWeakReference != null) && (localWeakReference.get() != null))
     {
-      aase.d("GdtInterstitialNotifyReg", "receiveReport");
-      return;
-    }
-    int i;
-    if ("ark_interstitial_video_onprogress".equals(str)) {
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != -2147483648) {
-        ((GdtInterstitialFragment)localWeakReference.get()).a(i);
-      }
-      if (!"ark_interstitial_onexposure".equals(str)) {
-        break;
-      }
-      ((GdtInterstitialFragment)localWeakReference.get()).b();
-      return;
-      if ("ark_interstitial_video_onload".equals(str)) {
+      int i;
+      if ("ark_interstitial_video_onprogress".equals(str)) {
+        i = 1;
+      } else if ("ark_interstitial_video_onload".equals(str)) {
         i = 2;
       } else if ("ark_interstitial_video_onplaying".equals(str)) {
         i = 3;
@@ -46,12 +31,20 @@ public class GdtInterstitialNotifyReg$7
       } else {
         i = -2147483648;
       }
+      if (i != -2147483648) {
+        ((GdtInterstitialFragment)localWeakReference.get()).a(i);
+      }
+      if ("ark_interstitial_onexposure".equals(str)) {
+        ((GdtInterstitialFragment)localWeakReference.get()).b();
+      }
+      return;
     }
+    GdtLog.d("GdtInterstitialNotifyReg", "receiveReport");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialNotifyReg.7
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ public class DalvikInternals
   
   public static boolean loadLib(Context paramContext)
   {
-    if ((Build.CPU_ABI.toLowerCase(Locale.US).contains("x86")) || (SoLoadUtil.b()))
+    if ((!Build.CPU_ABI.toLowerCase(Locale.US).contains("x86")) && (!SoLoadUtil.b()))
     {
-      Log.d("qq_la", "x86");
-      return SoLoadUtil.a(paramContext, "qq_la", 0, false, false);
+      Log.d("qq_la", "arm");
+      return SoLoadUtilNew.loadSoByName(paramContext, "qq_la");
     }
-    Log.d("qq_la", "arm");
-    return SoLoadUtilNew.loadSoByName(paramContext, "qq_la");
+    Log.d("qq_la", "x86");
+    return SoLoadUtil.a(paramContext, "qq_la", 0, false, false);
   }
   
   public static native int modArtHeap(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3);
@@ -32,7 +32,7 @@ public class DalvikInternals
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dalvik.DalvikInternals
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,28 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amsu;
-import amvj;
-import amwa;
+import com.tencent.mobileqq.ar.ARMusicController;
 
-public class Interactive3DRenderable$1
+class Interactive3DRenderable$1
   implements Runnable
 {
-  public Interactive3DRenderable$1(amwa paramamwa) {}
+  Interactive3DRenderable$1(Interactive3DRenderable paramInteractive3DRenderable) {}
   
   public void run()
   {
-    if (amwa.a(this.this$0) != 9) {}
-    do
-    {
+    if (Interactive3DRenderable.a(this.this$0) != 9) {
       return;
-      if (amwa.a(this.this$0) != null) {
-        amwa.a(this.this$0).b(0, 2);
-      }
-    } while (amwa.a(this.this$0) == null);
-    amwa.a(this.this$0).a(true);
+    }
+    if (Interactive3DRenderable.b(this.this$0) != null) {
+      Interactive3DRenderable.b(this.this$0).b(0, 2);
+    }
+    if (Interactive3DRenderable.c(this.this$0) != null) {
+      Interactive3DRenderable.c(this.this$0).a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.1
  * JD-Core Version:    0.7.0.1
  */

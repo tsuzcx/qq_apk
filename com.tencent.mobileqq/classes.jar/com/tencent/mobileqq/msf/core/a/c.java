@@ -10,11 +10,10 @@ import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.b.a;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
-import com.tencent.mobileqq.msf.core.t;
+import com.tencent.mobileqq.msf.core.o;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.msf.boot.config.NativeConfigStore;
@@ -26,6 +25,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.log.a.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -36,21 +36,21 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class c
 {
-  private static final byte[] B = { -16, 68, 31, 95, -12, 45, -91, -113, -36, -9, -108, -102, -70, 98, -44, 17 };
-  private static final String[] C = { "socket://msfxg.3g.qq.com:8080#46000_46002_46007_46001_46003:0:1", "socket://113.96.12.224:80#46003:0:1", "socket://183.232.94.44:14000#46000_46002_46007:0:1", "socket://120.232.18.27:8080#46000_46002_46007:0:1", "socket://157.255.13.77:443#46001:0:1", "socket://203.205.255.224:8080#46000_46002_46007_46001_46003:0:1" };
-  private static final String[] D = { "socket://120.232.18.27:14000#46000_46002_46007:0:1", "socket://msfxg.3g.qq.com:80#46000_46002_46007:0:1", "socket://111.30.178.75:443#46000_46002_46007:0:1", "socket://36.155.240.38:8080#46000_46002_46007:0:1", "socket://183.232.94.44:8080#46000_46002_46007:0:1", "socket://111.30.138.152:443#46000_46002_46007:0:1", "socket://117.144.244.33:443#46000_46002_46007:0:1", "socket://111.30.138.152:443#46000_46002_46007:0:1" };
-  private static final String[] E = { "socket://163.177.89.195:14000#46001:0:1", "socket://msfxg.3g.qq.com:80#46001:0:1", "socket://157.255.13.77:8080#46001:0:1", "socket://221.198.69.96:8080#46001:0:1", "socket://153.3.149.61:14000#46001:0:1", "socket://111.206.25.142:443#46001:0:1", "socket://140.207.123.177:8080#46001:0:1" };
-  private static final String[] F = { "socket://113.96.12.224:14000#46003:0:1", "socket://msfxg.3g.qq.com:80#46003:0:1", "socket://183.3.235.162:443#46003:0:1", "socket://42.81.169.100:8080#46003:0:1", "socket://114.221.144.89:443#46003:0:1", "socket://123.150.76.143:80#46003:0:1", "socket://61.129.6.101:14000#46003:0:1" };
-  private static final String[] G = { "socket://203.205.255.224:443#46000_46002_46007_46001_46003:0:1", "socket://msfxg.3g.qq.com:80#46000_46002_46007_46001_46003:0:1", "socket://203.205.255.221:443#46000_46002_46007_46001_46003:0:1", "socket://183.3.235.162:8080#46000_46002_46007_46001_46003:0:1", "socket://163.177.89.195:8080#46000_46002_46007_46001_46003:0:1", "socket://183.232.94.44:443#46000_46002_46007_46001_46003:0:1" };
-  private static final String[] H = { "socket://msfwifi.3g.qq.com:8080#00000:0:1", "socket://14.215.138.110:8080#00000:0:1", "socket://113.96.12.224:8080#00000:0:1", "socket://157.255.13.77:14000#00000:0:1", "socket://120.232.18.27:443#00000:0:1", "socket://183.3.235.162:14000#00000:0:1", "socket://163.177.89.195:443#00000:0:1", "socket://183.232.94.44:80#00000:0:1", "socket://203.205.255.224:8080#00000:0:1", "socket://203.205.255.221:8080#00000:0:1" };
-  private static final String[] I = { "http://msfhttp.3g.qq.com:80#00000:0:1" };
-  private static final String[] J = { "quic://58.251.106.174:443#00000:0:1" };
-  private static final String[] K = { "socket://msfwifiv6.3g.qq.com:8080#00000:0:1", "socket://[240e:ff:f101:10::109]:14000" };
-  private static final String[] L = { "socket://msfxgv6.3g.qq.com:8080#00000:0:1", "socket://[240e:ff:f101:10::109]:14000" };
+  private static final String B = "https://configsvr.sparta.html5.qq.com/configsvr/";
+  private static final byte[] C = { -16, 68, 31, 95, -12, 45, -91, -113, -36, -9, -108, -102, -70, 98, -44, 17 };
+  private static final String[] D = { "socket://msfxg.3g.qq.com:8080#46000_46002_46007_46001_46003:0:1", "socket://113.96.12.224:80#46003:0:1", "socket://183.232.94.44:14000#46000_46002_46007:0:1", "socket://120.232.18.27:8080#46000_46002_46007:0:1", "socket://157.255.13.77:443#46001:0:1", "socket://203.205.255.224:8080#46000_46002_46007_46001_46003:0:1" };
+  private static final String[] E = { "socket://120.232.18.27:14000#46000_46002_46007:0:1", "socket://msfxg.3g.qq.com:80#46000_46002_46007:0:1", "socket://111.30.178.75:443#46000_46002_46007:0:1", "socket://36.155.240.38:8080#46000_46002_46007:0:1", "socket://183.232.94.44:8080#46000_46002_46007:0:1", "socket://111.30.138.152:443#46000_46002_46007:0:1", "socket://117.144.244.33:443#46000_46002_46007:0:1", "socket://111.30.138.152:443#46000_46002_46007:0:1" };
+  private static final String[] F = { "socket://163.177.89.195:14000#46001:0:1", "socket://msfxg.3g.qq.com:80#46001:0:1", "socket://157.255.13.77:8080#46001:0:1", "socket://221.198.69.96:8080#46001:0:1", "socket://153.3.149.61:14000#46001:0:1", "socket://111.206.25.142:443#46001:0:1", "socket://153.3.50.58:8080#46001:0:1" };
+  private static final String[] G = { "socket://113.96.12.224:14000#46003:0:1", "socket://msfxg.3g.qq.com:80#46003:0:1", "socket://183.3.235.162:443#46003:0:1", "socket://42.81.169.100:8080#46003:0:1", "socket://114.221.144.89:443#46003:0:1", "socket://123.150.76.143:80#46003:0:1", "socket://61.129.6.101:14000#46003:0:1" };
+  private static final String[] H = { "socket://203.205.255.224:443#46000_46002_46007_46001_46003:0:1", "socket://msfxg.3g.qq.com:80#46000_46002_46007_46001_46003:0:1", "socket://203.205.255.221:443#46000_46002_46007_46001_46003:0:1", "socket://183.3.235.162:8080#46000_46002_46007_46001_46003:0:1", "socket://163.177.89.195:8080#46000_46002_46007_46001_46003:0:1", "socket://183.232.94.44:443#46000_46002_46007_46001_46003:0:1" };
+  private static final String[] I = { "socket://msfwifi.3g.qq.com:8080#00000:0:1", "socket://14.215.138.110:8080#00000:0:1", "socket://113.96.12.224:8080#00000:0:1", "socket://157.255.13.77:14000#00000:0:1", "socket://120.232.18.27:443#00000:0:1", "socket://183.3.235.162:14000#00000:0:1", "socket://163.177.89.195:443#00000:0:1", "socket://183.232.94.44:80#00000:0:1", "socket://203.205.255.224:8080#00000:0:1", "socket://203.205.255.221:8080#00000:0:1" };
+  private static final String[] J = { "https://msfhttp.3g.qq.com:80#00000:0:1" };
+  private static final String[] K = { "quic://58.251.106.174:443#00000:0:1" };
+  private static final String[] L = { "socket://msfwifiv6.3g.qq.com:8080#00000:0:1", "socket://[240e:ff:f101:10::109]:14000" };
+  private static final String[] M = { "socket://msfxgv6.3g.qq.com:8080#00000:0:1", "socket://[240e:ff:f101:10::109]:14000" };
   public static final String a = "MSF.C.SsoListManager";
   public static final String b = "sso";
   public static final String c = "Socket";
@@ -77,12 +77,12 @@ public class c
   private static final String y = "wifiUsedCount";
   private static final int z = 10;
   private boolean A = false;
-  private ConcurrentHashMap M = new ConcurrentHashMap();
   private ConcurrentHashMap N = new ConcurrentHashMap();
   private ConcurrentHashMap O = new ConcurrentHashMap();
-  private LinkedBlockingDeque P = new LinkedBlockingDeque(1000);
-  private Handler Q = null;
-  private Thread R = null;
+  private ConcurrentHashMap P = new ConcurrentHashMap();
+  private LinkedBlockingDeque Q = new LinkedBlockingDeque(1000);
+  private Handler R = null;
+  private Thread S = null;
   MsfCore n;
   
   public c(MsfCore paramMsfCore)
@@ -92,11 +92,11 @@ public class c
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return null;
-    case 2: 
+      if (paramInt != 2) {
+        return null;
+      }
       return "Ipv6";
     }
     return "Ipv4";
@@ -117,275 +117,412 @@ public class c
   
   private void a(FromServiceMsg paramFromServiceMsg, com.tencent.msf.service.protocol.serverconfig.f paramf)
   {
-    if (this.Q == null)
+    if (this.R == null)
     {
       HandlerThread localHandlerThread = new HandlerThread("logUploadHandle");
       localHandlerThread.start();
-      this.Q = new Handler(localHandlerThread.getLooper());
+      this.R = new Handler(localHandlerThread.getLooper());
     }
-    this.Q.post(new d(this, paramf, paramFromServiceMsg));
+    this.R.post(new d(this, paramf, paramFromServiceMsg));
   }
   
   private void a(String paramString)
   {
-    label701:
-    label704:
-    label707:
-    label710:
+    try
+    {
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool) {
+        return;
+      }
+      long l1;
+      Object localObject2;
+      Object localObject3;
+      if (this.P.containsKey(paramString))
+      {
+        l1 = System.currentTimeMillis();
+        this.P.put(paramString, Long.valueOf(l1));
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("find ssid: ");
+          ((StringBuilder)localObject1).append(paramString);
+          ((StringBuilder)localObject1).append(" update time = ");
+          ((StringBuilder)localObject1).append(l1);
+          QLog.d("MSF.C.SsoListManager", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
+      else
+      {
+        if (this.P.size() >= 10)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MSF.C.SsoListManager", 2, "too much ssid need to delete one find Least Recently Used now...");
+          }
+          l1 = System.currentTimeMillis();
+          localObject1 = null;
+          localObject2 = this.P.entrySet().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (Map.Entry)((Iterator)localObject2).next();
+            if (localObject3 != null)
+            {
+              long l2 = ((Long)((Map.Entry)localObject3).getValue()).longValue();
+              if (l2 < l1)
+              {
+                localObject1 = (String)((Map.Entry)localObject3).getKey();
+                l1 = l2;
+              }
+            }
+          }
+          if (localObject1 != null)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("Least Recently Used ssid find delete now: ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("MSF.C.SsoListManager", 2, ((StringBuilder)localObject2).toString());
+            }
+            this.P.remove(localObject1);
+            localObject2 = MsfStore.getNativeConfigStore();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("__loginSdk_ssoWifilist_");
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((NativeConfigStore)localObject2).n_removeConfig(((StringBuilder)localObject3).toString());
+            localObject2 = MsfStore.getNativeConfigStore();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(c.a.a("Socket", "Wifi", "Ipv4").a());
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((NativeConfigStore)localObject2).n_removeConfig(((StringBuilder)localObject3).toString());
+            localObject2 = MsfStore.getNativeConfigStore();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(c.a.a("Http", "Wifi", "Ipv4").a());
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((NativeConfigStore)localObject2).n_removeConfig(((StringBuilder)localObject3).toString());
+            localObject2 = MsfStore.getNativeConfigStore();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(c.a.a("Quic", "Wifi", "Ipv4").a());
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((NativeConfigStore)localObject2).n_removeConfig(((StringBuilder)localObject3).toString());
+            localObject2 = MsfStore.getNativeConfigStore();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(c.a.a("Socket", "Wifi", "Ipv6").a());
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((NativeConfigStore)localObject2).n_removeConfig(((StringBuilder)localObject3).toString());
+            localObject2 = MsfStore.getNativeConfigStore();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(c.a.a("Http", "Wifi", "Ipv6").a());
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((NativeConfigStore)localObject2).n_removeConfig(((StringBuilder)localObject3).toString());
+            localObject2 = MsfStore.getNativeConfigStore();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(c.a.a("Quic", "Wifi", "Ipv6").a());
+            ((StringBuilder)localObject3).append((String)localObject1);
+            ((NativeConfigStore)localObject2).n_removeConfig(((StringBuilder)localObject3).toString());
+          }
+        }
+        this.P.put(paramString, Long.valueOf(System.currentTimeMillis()));
+      }
+      paramString = BaseApplication.getContext();
+      int i1 = 0;
+      paramString = paramString.getSharedPreferences("wifiused", 0).edit();
+      paramString.putInt("wifiUsedCount", this.P.size());
+      Object localObject1 = this.P.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        if (localObject2 != null)
+        {
+          l1 = ((Long)((Map.Entry)localObject2).getValue()).longValue();
+          localObject2 = (String)((Map.Entry)localObject2).getKey();
+          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("wifiname");
+            ((StringBuilder)localObject3).append(i1);
+            paramString.putString(((StringBuilder)localObject3).toString(), (String)localObject2);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("wifitime");
+            ((StringBuilder)localObject2).append(i1);
+            paramString.putLong(((StringBuilder)localObject2).toString(), l1);
+            i1 += 1;
+          }
+        }
+      }
+      paramString.commit();
+      return;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        boolean bool = TextUtils.isEmpty(paramString);
-        if (bool) {
-          return;
-        }
-        long l1;
-        Object localObject1;
-        Object localObject2;
-        if (this.O.containsKey(paramString))
-        {
-          l1 = System.currentTimeMillis();
-          this.O.put(paramString, Long.valueOf(l1));
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.SsoListManager", 2, "find ssid: " + paramString + " update time = " + l1);
-          }
-          paramString = BaseApplication.getContext().getSharedPreferences("wifiused", 0).edit();
-          paramString.putInt("wifiUsedCount", this.O.size());
-          localObject1 = this.O.entrySet().iterator();
-          int i1 = 0;
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (Map.Entry)((Iterator)localObject1).next();
-            if (localObject2 == null) {
-              break label701;
-            }
-            l1 = ((Long)((Map.Entry)localObject2).getValue()).longValue();
-            localObject2 = (String)((Map.Entry)localObject2).getKey();
-            if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label701;
-            }
-            paramString.putString("wifiname" + i1, (String)localObject2);
-            paramString.putLong("wifitime" + i1, l1);
-            i1 += 1;
-            break label707;
-          }
-        }
-        else
-        {
-          if (this.O.size() >= 10)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.C.SsoListManager", 2, "too much ssid need to delete one find Least Recently Used now...");
-            }
-            l1 = System.currentTimeMillis();
-            localObject1 = null;
-            localObject2 = this.O.entrySet().iterator();
-            if (((Iterator)localObject2).hasNext())
-            {
-              Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-              if (localEntry == null) {
-                break label704;
-              }
-              long l2 = ((Long)localEntry.getValue()).longValue();
-              if (l2 >= l1) {
-                break label704;
-              }
-              localObject1 = (String)localEntry.getKey();
-              l1 = l2;
-              break label710;
-            }
-            if (localObject1 != null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("MSF.C.SsoListManager", 2, "Least Recently Used ssid find delete now: " + (String)localObject1);
-              }
-              this.O.remove(localObject1);
-              MsfStore.getNativeConfigStore().n_removeConfig("__loginSdk_ssoWifilist_" + (String)localObject1);
-              MsfStore.getNativeConfigStore().n_removeConfig(c.a.a("Socket", "Wifi", "Ipv4").a() + (String)localObject1);
-              MsfStore.getNativeConfigStore().n_removeConfig(c.a.a("Http", "Wifi", "Ipv4").a() + (String)localObject1);
-              MsfStore.getNativeConfigStore().n_removeConfig(c.a.a("Quic", "Wifi", "Ipv4").a() + (String)localObject1);
-              MsfStore.getNativeConfigStore().n_removeConfig(c.a.a("Socket", "Wifi", "Ipv6").a() + (String)localObject1);
-              MsfStore.getNativeConfigStore().n_removeConfig(c.a.a("Http", "Wifi", "Ipv6").a() + (String)localObject1);
-              MsfStore.getNativeConfigStore().n_removeConfig(c.a.a("Quic", "Wifi", "Ipv6").a() + (String)localObject1);
-            }
-          }
-          this.O.put(paramString, Long.valueOf(System.currentTimeMillis()));
-          continue;
-        }
-        paramString.commit();
-      }
-      finally {}
-      continue;
-      break label707;
-      break label710;
+      throw paramString;
     }
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
-    c.a locala = c.a.a("Socket", "Wifi", "Ipv4");
-    String str = locala.a() + paramString;
-    if (TextUtils.isEmpty(paramString)) {}
-    for (Object localObject = "__loginSdk_ssoWifilist";; localObject = "__loginSdk_ssoWifilist_" + paramString)
+    Object localObject2 = c.a.a("Socket", "Wifi", "Ipv4");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(((c.a)localObject2).a());
+    ((StringBuilder)localObject1).append(paramString);
+    String str = ((StringBuilder)localObject1).toString();
+    if (TextUtils.isEmpty(paramString))
     {
-      a(locala, str, (String)localObject, paramBoolean);
-      localObject = c.a.a("Http", "Wifi", "Ipv4");
-      a((c.a)localObject, ((c.a)localObject).a() + paramString, "__loginSdk_ssoHttpWifilist", paramBoolean);
-      localObject = c.a.a("Quic", "Wifi", "Ipv4");
-      a((c.a)localObject, ((c.a)localObject).a() + paramString, "__loginSdk_ssoQuicHttpList", paramBoolean);
-      localObject = c.a.a("Socket", "Wifi", "Ipv6");
-      boolean bool = this.A;
-      this.A = (a((c.a)localObject, ((c.a)localObject).a() + paramString, null, paramBoolean) | bool);
-      localObject = c.a.a("Http", "Wifi", "Ipv6");
-      bool = this.A;
-      this.A = (a((c.a)localObject, ((c.a)localObject).a() + paramString, null, paramBoolean) | bool);
-      localObject = c.a.a("Quic", "Wifi", "Ipv6");
-      bool = this.A;
-      this.A = (a((c.a)localObject, ((c.a)localObject).a() + paramString, null, paramBoolean) | bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.SsoListManager", 2, "loadWifiSsoListMapFromStore mCurSsoListMap=" + this.N.size());
-      }
-      return;
+      localObject1 = "__loginSdk_ssoWifilist";
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("__loginSdk_ssoWifilist_");
+      ((StringBuilder)localObject1).append(paramString);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    a((c.a)localObject2, str, (String)localObject1, paramBoolean);
+    localObject1 = c.a.a("Http", "Wifi", "Ipv4");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    a((c.a)localObject1, ((StringBuilder)localObject2).toString(), "__loginSdk_ssoHttpWifilist", paramBoolean);
+    localObject1 = c.a.a("Quic", "Wifi", "Ipv4");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    a((c.a)localObject1, ((StringBuilder)localObject2).toString(), "__loginSdk_ssoQuicHttpList", paramBoolean);
+    localObject1 = c.a.a("Socket", "Wifi", "Ipv6");
+    boolean bool = this.A;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    this.A = (a((c.a)localObject1, ((StringBuilder)localObject2).toString(), null, paramBoolean) | bool);
+    localObject1 = c.a.a("Http", "Wifi", "Ipv6");
+    bool = this.A;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    this.A = (a((c.a)localObject1, ((StringBuilder)localObject2).toString(), null, paramBoolean) | bool);
+    localObject1 = c.a.a("Quic", "Wifi", "Ipv6");
+    bool = this.A;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    this.A = (a((c.a)localObject1, ((StringBuilder)localObject2).toString(), null, paramBoolean) | bool);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("loadWifiSsoListMapFromStore mCurSsoListMap=");
+      paramString.append(this.O.size());
+      QLog.d("MSF.C.SsoListManager", 2, paramString.toString());
     }
   }
   
   private boolean a(c.a parama, String paramString1, String paramString2, boolean paramBoolean)
   {
-    Object localObject = null;
-    String str = MsfStore.getNativeConfigStore().getConfig(paramString1);
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.SsoListManager", 2, "loadSsoListMapFromStore ssoTypeKey=" + parama + ", storeKey=" + paramString1 + ", oldStoreKey=" + paramString2 + ", isChange=" + paramBoolean);
+    Object localObject1 = MsfStore.getNativeConfigStore().getConfig(paramString1);
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("loadSsoListMapFromStore ssoTypeKey=");
+      ((StringBuilder)localObject2).append(parama);
+      ((StringBuilder)localObject2).append(", storeKey=");
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append(", oldStoreKey=");
+      ((StringBuilder)localObject2).append(paramString2);
+      ((StringBuilder)localObject2).append(", isChange=");
+      ((StringBuilder)localObject2).append(paramBoolean);
+      QLog.d("MSF.C.SsoListManager", 2, ((StringBuilder)localObject2).toString());
     }
-    if (TextUtils.isEmpty(str))
+    boolean bool1 = TextUtils.isEmpty((CharSequence)localObject1);
+    boolean bool2 = false;
+    if (bool1)
     {
       if (!TextUtils.isEmpty(paramString2))
       {
         paramString2 = MsfStore.getNativeConfigStore().getConfig(paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.SsoListManager", 2, "loadSsoListMapFromStore oldSsoListStr=" + paramString2);
-        }
-        localObject = b(paramString2);
-      }
-      if ((!paramBoolean) || (this.M.get(parama) == null) || (((CopyOnWriteArrayList)this.M.get(parama)).size() <= 0)) {
-        break label350;
-      }
-      paramString2 = (String)localObject;
-      if (localObject == null) {
-        paramString2 = new ArrayList();
-      }
-      if (!paramString2.isEmpty()) {
-        break label347;
-      }
-      paramString2.addAll((Collection)this.M.get(parama));
-    }
-    for (;;)
-    {
-      if ((paramString2 != null) && (!paramString2.isEmpty())) {
-        this.N.put(parama, new CopyOnWriteArrayList(paramString2));
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        if (paramBoolean)
+        if (QLog.isColorLevel())
         {
-          parama = new StringBuffer();
-          if (paramString2 != null)
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("loadSsoListMapFromStore oldSsoListStr=");
+          ((StringBuilder)localObject1).append(paramString2);
+          QLog.d("MSF.C.SsoListManager", 2, ((StringBuilder)localObject1).toString());
+        }
+        paramString2 = b(paramString2);
+      }
+      else
+      {
+        paramString2 = null;
+      }
+      localObject1 = paramString2;
+      bool1 = paramBoolean;
+      if (paramBoolean)
+      {
+        localObject1 = paramString2;
+        bool1 = paramBoolean;
+        if (this.N.get(parama) != null)
+        {
+          localObject1 = paramString2;
+          bool1 = paramBoolean;
+          if (((CopyOnWriteArrayList)this.N.get(parama)).size() > 0)
           {
-            paramString2 = paramString2.iterator();
-            for (;;)
+            localObject2 = paramString2;
+            if (paramString2 == null) {
+              localObject2 = new ArrayList();
+            }
+            localObject1 = localObject2;
+            bool1 = paramBoolean;
+            if (((ArrayList)localObject2).isEmpty())
             {
-              if (paramString2.hasNext())
-              {
-                localObject = (com.tencent.mobileqq.msf.core.d)paramString2.next();
-                parama.append(((com.tencent.mobileqq.msf.core.d)localObject).toString() + ";");
-                continue;
-                paramString2 = b(str);
-                paramBoolean = false;
-                break;
-              }
+              ((ArrayList)localObject2).addAll((Collection)this.N.get(parama));
+              localObject1 = localObject2;
+              bool1 = paramBoolean;
             }
           }
-          MsfStore.getNativeConfigStore().n_setConfig(paramString1, parama.toString());
         }
-        return bool;
       }
-      label347:
-      continue;
-      label350:
-      paramString2 = (String)localObject;
     }
+    else
+    {
+      localObject1 = b((String)localObject1);
+      bool1 = false;
+    }
+    paramBoolean = bool2;
+    if (localObject1 != null)
+    {
+      paramBoolean = bool2;
+      if (!((ArrayList)localObject1).isEmpty())
+      {
+        this.O.put(parama, new CopyOnWriteArrayList((Collection)localObject1));
+        paramBoolean = true;
+      }
+    }
+    if (bool1)
+    {
+      parama = new StringBuffer();
+      if (localObject1 != null)
+      {
+        paramString2 = ((ArrayList)localObject1).iterator();
+        while (paramString2.hasNext())
+        {
+          localObject1 = (com.tencent.mobileqq.msf.core.d)paramString2.next();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(((com.tencent.mobileqq.msf.core.d)localObject1).toString());
+          ((StringBuilder)localObject2).append(";");
+          parama.append(((StringBuilder)localObject2).toString());
+        }
+      }
+      MsfStore.getNativeConfigStore().n_setConfig(paramString1, parama.toString());
+    }
+    return paramBoolean;
   }
   
   private boolean a(c.a parama, String paramString1, ArrayList paramArrayList, boolean paramBoolean, String paramString2)
   {
-    for (;;)
+    try
     {
-      Object localObject1;
-      try
+      Object localObject2;
+      if (QLog.isColorLevel())
       {
-        Object localObject2;
-        if (QLog.isColorLevel())
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("updateSsoListAndStore ssoTypeKey=");
+        ((StringBuilder)localObject2).append(parama.toString());
+        ((StringBuilder)localObject2).append(", keyPostfix=");
+        ((StringBuilder)localObject2).append(paramString1);
+        ((StringBuilder)localObject2).append(", ssoList size=");
+        if (paramArrayList == null) {
+          localObject1 = "null";
+        } else {
+          localObject1 = Integer.valueOf(paramArrayList.size());
+        }
+        ((StringBuilder)localObject2).append(localObject1);
+        ((StringBuilder)localObject2).append(", isPush=");
+        ((StringBuilder)localObject2).append(paramBoolean);
+        QLog.d("MSF.C.SsoListManager", 2, ((StringBuilder)localObject2).toString());
+      }
+      boolean bool1;
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        this.O.put(parama, new CopyOnWriteArrayList(paramArrayList));
+        bool1 = true;
+      }
+      else
+      {
+        this.O.remove(parama);
+        bool1 = false;
+      }
+      boolean bool2 = TextUtils.isEmpty(paramString1);
+      if (bool2) {
+        return bool1;
+      }
+      Object localObject1 = new StringBuffer();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        localObject2 = (com.tencent.mobileqq.msf.core.d)paramArrayList.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((com.tencent.mobileqq.msf.core.d)localObject2).toString());
+        localStringBuilder.append(";");
+        ((StringBuffer)localObject1).append(localStringBuilder.toString());
+      }
+      paramArrayList = new StringBuilder();
+      paramArrayList.append(parama.a());
+      paramArrayList.append(paramString1);
+      paramString1 = paramArrayList.toString();
+      MsfStore.getNativeConfigStore().n_setConfig(paramString1, ((StringBuffer)localObject1).toString());
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramArrayList = MsfStore.getNativeConfigStore();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("policyId");
+        ((StringBuilder)localObject2).append(paramString1);
+        paramArrayList.n_setConfig(((StringBuilder)localObject2).toString(), paramString2);
+      }
+      if (QLog.isColorLevel()) {
+        if (paramBoolean)
         {
-          localObject2 = new StringBuilder().append("updateSsoListAndStore ssoTypeKey=").append(parama.toString()).append(", keyPostfix=").append(paramString1).append(", ssoList size=");
-          if (paramArrayList == null)
-          {
-            localObject1 = "null";
-            QLog.d("MSF.C.SsoListManager", 2, localObject1 + ", isPush=" + paramBoolean);
-          }
+          paramString1 = new StringBuilder();
+          paramString1.append("save push sso for ");
+          paramString1.append(parama.toString());
+          paramString1.append(" ");
+          paramString1.append(((StringBuffer)localObject1).toString());
+          QLog.d("MSF.C.SsoListManager", 2, paramString1.toString());
         }
         else
         {
-          if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-            continue;
-          }
-          this.N.put(parama, new CopyOnWriteArrayList(paramArrayList));
-          bool1 = true;
-          boolean bool2 = TextUtils.isEmpty(paramString1);
-          if (!bool2) {
-            continue;
-          }
-          return bool1;
-        }
-        localObject1 = Integer.valueOf(paramArrayList.size());
-        continue;
-        this.N.remove(parama);
-        boolean bool1 = false;
-        continue;
-        localObject1 = new StringBuffer();
-        paramArrayList = paramArrayList.iterator();
-        if (paramArrayList.hasNext())
-        {
-          localObject2 = (com.tencent.mobileqq.msf.core.d)paramArrayList.next();
-          ((StringBuffer)localObject1).append(((com.tencent.mobileqq.msf.core.d)localObject2).toString() + ";");
-          continue;
-        }
-        paramString1 = parama.a() + paramString1;
-      }
-      finally {}
-      MsfStore.getNativeConfigStore().n_setConfig(paramString1, ((StringBuffer)localObject1).toString());
-      if (!TextUtils.isEmpty(paramString2)) {
-        MsfStore.getNativeConfigStore().n_setConfig("policyId" + paramString1, paramString2);
-      }
-      if (QLog.isColorLevel()) {
-        if (paramBoolean) {
-          QLog.d("MSF.C.SsoListManager", 2, "save push sso for " + parama.toString() + " " + ((StringBuffer)localObject1).toString());
-        } else {
-          QLog.d("MSF.C.SsoListManager", 2, "save http get sso for " + parama.toString() + " " + ((StringBuffer)localObject1).toString());
+          paramString1 = new StringBuilder();
+          paramString1.append("save http get sso for ");
+          paramString1.append(parama.toString());
+          paramString1.append(" ");
+          paramString1.append(((StringBuffer)localObject1).toString());
+          QLog.d("MSF.C.SsoListManager", 2, paramString1.toString());
         }
       }
+      return bool1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw parama;
     }
   }
   
   private boolean a(com.tencent.mobileqq.msf.core.d paramd, c.a parama)
   {
-    parama = (CopyOnWriteArrayList)this.N.get(parama);
+    parama = (CopyOnWriteArrayList)this.O.get(parama);
     if ((parama != null) && (parama.remove(paramd)))
     {
       parama.add(paramd);
-      QLog.d("MSF.C.SsoListManager", 1, " set " + paramd + " at ssoList last.");
+      parama = new StringBuilder();
+      parama.append(" set ");
+      parama.append(paramd);
+      parama.append(" at ssoList last.");
+      QLog.d("MSF.C.SsoListManager", 1, parama.toString());
       return true;
     }
-    QLog.d("MSF.C.SsoListManager", 1, " not found " + paramd + " at ssoList.");
+    parama = new StringBuilder();
+    parama.append(" not found ");
+    parama.append(paramd);
+    parama.append(" at ssoList.");
+    QLog.d("MSF.C.SsoListManager", 1, parama.toString());
     return false;
   }
   
@@ -395,21 +532,22 @@ public class c
     if (paramList != null)
     {
       paramList = paramList.iterator();
-      if (paramList.hasNext())
+      while (paramList.hasNext())
       {
         Object localObject = (k)paramList.next();
-        if ("Ipv6".equals(paramString3)) {}
-        for (int i1 = 2;; i1 = 1)
+        int i1;
+        if ("Ipv6".equals(paramString3)) {
+          i1 = 2;
+        } else {
+          i1 = 1;
+        }
+        localObject = com.tencent.mobileqq.msf.core.d.a((k)localObject, paramString2, i1);
+        if ((localObject != null) && (((com.tencent.mobileqq.msf.core.d)localObject).k()))
         {
-          localObject = com.tencent.mobileqq.msf.core.d.a((k)localObject, paramString2, i1);
-          if ((localObject == null) || (!((com.tencent.mobileqq.msf.core.d)localObject).k())) {
-            break;
-          }
           if ("Quic".equals(paramString1)) {
             ((com.tencent.mobileqq.msf.core.d)localObject).b("quic");
           }
           localArrayList.add(localObject);
-          break;
         }
       }
     }
@@ -418,53 +556,56 @@ public class c
   
   private ArrayList b(String paramString)
   {
-    int i1 = 0;
-    for (;;)
+    try
     {
-      ArrayList localArrayList;
-      Object localObject;
-      try
+      ArrayList localArrayList = new ArrayList();
+      if (!TextUtils.isEmpty(paramString))
       {
-        localArrayList = new ArrayList();
-        if (TextUtils.isEmpty(paramString)) {
-          break label189;
-        }
         paramString = paramString.split(";");
         int i2 = paramString.length;
-        if (i1 >= i2) {
-          break label189;
-        }
-        localObject = paramString[i1];
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label194;
-        }
-        localObject = com.tencent.mobileqq.msf.core.d.a((String)localObject);
-        if ((localObject != null) && (((com.tencent.mobileqq.msf.core.d)localObject).k()))
+        int i1 = 0;
+        while (i1 < i2)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.SsoListManager", 2, "add valid endpoint=" + ((com.tencent.mobileqq.msf.core.d)localObject).toString());
+          Object localObject = paramString[i1];
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = com.tencent.mobileqq.msf.core.d.a((String)localObject);
+            StringBuilder localStringBuilder;
+            if ((localObject != null) && (((com.tencent.mobileqq.msf.core.d)localObject).k()))
+            {
+              if (QLog.isColorLevel())
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("add valid endpoint=");
+                localStringBuilder.append(((com.tencent.mobileqq.msf.core.d)localObject).toString());
+                QLog.d("MSF.C.SsoListManager", 2, localStringBuilder.toString());
+              }
+              ((com.tencent.mobileqq.msf.core.d)localObject).a(false);
+              localArrayList.add(localObject);
+            }
+            else if (localObject == null)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("MSF.C.SsoListManager", 2, "found invalid endpoint: null");
+              }
+            }
+            else if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("found invalid endpoint: ");
+              localStringBuilder.append(((com.tencent.mobileqq.msf.core.d)localObject).toString());
+              QLog.d("MSF.C.SsoListManager", 2, localStringBuilder.toString());
+            }
           }
-          ((com.tencent.mobileqq.msf.core.d)localObject).a(false);
-          localArrayList.add(localObject);
-        }
-        else if (localObject == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break label194;
-          }
-          QLog.d("MSF.C.SsoListManager", 2, "found invalid endpoint: null");
+          i1 += 1;
         }
       }
-      finally {}
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MSF.C.SsoListManager", 2, "found invalid endpoint: " + ((com.tencent.mobileqq.msf.core.d)localObject).toString());
-        break label194;
-        label189:
-        return localArrayList;
-      }
-      label194:
-      i1 += 1;
+      return localArrayList;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -494,46 +635,81 @@ public class c
     }
     catch (Exception paramFromServiceMsg)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("MSF.C.SsoListManager", 2, "send push sso resp error " + paramFromServiceMsg, paramFromServiceMsg);
+      if (QLog.isColorLevel())
+      {
+        paramf = new StringBuilder();
+        paramf.append("send push sso resp error ");
+        paramf.append(paramFromServiceMsg);
+        QLog.i("MSF.C.SsoListManager", 2, paramf.toString(), paramFromServiceMsg);
+      }
     }
   }
   
   private void b(String paramString, boolean paramBoolean)
   {
-    c.a locala = c.a.a("Socket", "Mobile", "Ipv4");
-    String str = locala.a() + paramString;
+    Object localObject2 = c.a.a("Socket", "Mobile", "Ipv4");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(((c.a)localObject2).a());
+    ((StringBuilder)localObject1).append(paramString);
+    String str = ((StringBuilder)localObject1).toString();
     if (TextUtils.isEmpty(paramString))
     {
-      localObject = "__loginSdk_ssoMobilelist";
-      a(locala, str, (String)localObject, paramBoolean);
-      locala = c.a.a("Http", "Mobile", "Ipv4");
-      str = locala.a() + paramString;
-      if (!TextUtils.isEmpty(paramString)) {
-        break label379;
-      }
+      localObject1 = "__loginSdk_ssoMobilelist";
     }
-    label379:
-    for (Object localObject = "__loginSdk_ssoHttpMobilelist";; localObject = "__loginSdk_ssoHttpMobilelist_" + paramString)
+    else
     {
-      a(locala, str, (String)localObject, paramBoolean);
-      localObject = c.a.a("Quic", "Mobile", "Ipv4");
-      a((c.a)localObject, ((c.a)localObject).a() + paramString, "__loginSdk_ssoQuicHttpList", paramBoolean);
-      localObject = c.a.a("Socket", "Mobile", "Ipv6");
-      boolean bool = this.A;
-      this.A = (a((c.a)localObject, ((c.a)localObject).a() + paramString, null, paramBoolean) | bool);
-      localObject = c.a.a("Http", "Mobile", "Ipv6");
-      bool = this.A;
-      this.A = (a((c.a)localObject, ((c.a)localObject).a() + paramString, null, paramBoolean) | bool);
-      localObject = c.a.a("Quic", "Mobile", "Ipv6");
-      bool = this.A;
-      this.A = (a((c.a)localObject, ((c.a)localObject).a() + paramString, null, paramBoolean) | bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.SsoListManager", 2, "loadMobileSsoListMapFromStore mCurSsoListMap=" + this.N.size());
-      }
-      return;
-      localObject = "__loginSdk_ssoMobilelist_" + paramString;
-      break;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("__loginSdk_ssoMobilelist_");
+      ((StringBuilder)localObject1).append(paramString);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    a((c.a)localObject2, str, (String)localObject1, paramBoolean);
+    localObject2 = c.a.a("Http", "Mobile", "Ipv4");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(((c.a)localObject2).a());
+    ((StringBuilder)localObject1).append(paramString);
+    str = ((StringBuilder)localObject1).toString();
+    if (TextUtils.isEmpty(paramString))
+    {
+      localObject1 = "__loginSdk_ssoHttpMobilelist";
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("__loginSdk_ssoHttpMobilelist_");
+      ((StringBuilder)localObject1).append(paramString);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    a((c.a)localObject2, str, (String)localObject1, paramBoolean);
+    localObject1 = c.a.a("Quic", "Mobile", "Ipv4");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    a((c.a)localObject1, ((StringBuilder)localObject2).toString(), "__loginSdk_ssoQuicHttpList", paramBoolean);
+    localObject1 = c.a.a("Socket", "Mobile", "Ipv6");
+    boolean bool = this.A;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    this.A = (a((c.a)localObject1, ((StringBuilder)localObject2).toString(), null, paramBoolean) | bool);
+    localObject1 = c.a.a("Http", "Mobile", "Ipv6");
+    bool = this.A;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    this.A = (a((c.a)localObject1, ((StringBuilder)localObject2).toString(), null, paramBoolean) | bool);
+    localObject1 = c.a.a("Quic", "Mobile", "Ipv6");
+    bool = this.A;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((c.a)localObject1).a());
+    ((StringBuilder)localObject2).append(paramString);
+    this.A = (a((c.a)localObject1, ((StringBuilder)localObject2).toString(), null, paramBoolean) | bool);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("loadMobileSsoListMapFromStore mCurSsoListMap=");
+      paramString.append(this.O.size());
+      QLog.d("MSF.C.SsoListManager", 2, paramString.toString());
     }
   }
   
@@ -543,21 +719,22 @@ public class c
     if (paramList != null)
     {
       paramList = paramList.iterator();
-      if (paramList.hasNext())
+      while (paramList.hasNext())
       {
         Object localObject = (i)paramList.next();
-        if ("Ipv6".equals(paramString3)) {}
-        for (int i1 = 2;; i1 = 1)
+        int i1;
+        if ("Ipv6".equals(paramString3)) {
+          i1 = 2;
+        } else {
+          i1 = 1;
+        }
+        localObject = com.tencent.mobileqq.msf.core.d.a((i)localObject, paramString2, i1);
+        if ((localObject != null) && (((com.tencent.mobileqq.msf.core.d)localObject).k()))
         {
-          localObject = com.tencent.mobileqq.msf.core.d.a((i)localObject, paramString2, i1);
-          if ((localObject == null) || (!((com.tencent.mobileqq.msf.core.d)localObject).k())) {
-            break;
-          }
           if ("Quic".equals(paramString1)) {
             ((com.tencent.mobileqq.msf.core.d)localObject).b("quic");
           }
           localArrayList.add(localObject);
-          break;
         }
       }
     }
@@ -566,90 +743,85 @@ public class c
   
   private void h()
   {
-    this.M.clear();
-    Object localObject = t.e();
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.SsoListManager", 2, "getIMSI " + (String)localObject);
+    this.N.clear();
+    Object localObject2 = o.e();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getIMSI ");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      QLog.d("MSF.C.SsoListManager", 2, ((StringBuilder)localObject1).toString());
     }
     int i1 = 0;
-    CopyOnWriteArrayList localCopyOnWriteArrayList = null;
-    if ((localObject == null) || (localObject == ""))
+    Object localObject1 = null;
+    if ((localObject2 != null) && (localObject2 != ""))
     {
-      i1 = 1;
-      if (i1 == 0) {
-        break label526;
-      }
-      localCopyOnWriteArrayList = a(C);
-    }
-    label526:
-    for (;;)
-    {
-      if (QLog.isColorLevel())
+      if ((!((String)localObject2).startsWith("460")) && (!((String)localObject2).startsWith("461")))
       {
-        QLog.d("MSF.C.SsoListManager", 2, "init default mobile sso list result:");
-        localObject = localCopyOnWriteArrayList.iterator();
-        for (;;)
+        localObject1 = a(H);
+        break label189;
+      }
+      if ((!((String)localObject2).startsWith("46000")) && (!((String)localObject2).startsWith("46002")) && (!((String)localObject2).startsWith("46007")))
+      {
+        if (((String)localObject2).startsWith("46001"))
         {
-          if (((Iterator)localObject).hasNext())
-          {
-            QLog.d("MSF.C.SsoListManager", 2, ((com.tencent.mobileqq.msf.core.d)((Iterator)localObject).next()).a());
-            continue;
-            if ((((String)localObject).startsWith("460")) || (((String)localObject).startsWith("461")))
-            {
-              if ((((String)localObject).startsWith("46000")) || (((String)localObject).startsWith("46002")) || (((String)localObject).startsWith("46007")))
-              {
-                localCopyOnWriteArrayList = a(D);
-                break;
-              }
-              if (((String)localObject).startsWith("46001"))
-              {
-                localCopyOnWriteArrayList = a(E);
-                break;
-              }
-              if (((String)localObject).startsWith("46003"))
-              {
-                localCopyOnWriteArrayList = a(F);
-                break;
-              }
-              i1 = 1;
-              break;
-            }
-            localCopyOnWriteArrayList = a(G);
-            break;
-          }
+          localObject1 = a(F);
+          break label189;
+        }
+        if (((String)localObject2).startsWith("46003"))
+        {
+          localObject1 = a(G);
+          break label189;
         }
       }
-      this.M.put(c.a.a("Socket", "Mobile", "Ipv4"), localCopyOnWriteArrayList);
-      localCopyOnWriteArrayList = a(H);
-      this.M.put(c.a.a("Socket", "Wifi", "Ipv4"), localCopyOnWriteArrayList);
-      localCopyOnWriteArrayList = a(I);
-      this.M.put(c.a.a("Http", "Mobile", "Ipv4"), localCopyOnWriteArrayList);
-      this.M.put(c.a.a("Http", "Wifi", "Ipv4"), localCopyOnWriteArrayList);
-      localCopyOnWriteArrayList = a(J);
-      this.M.put(c.a.a("Quic", "Mobile", "Ipv4"), localCopyOnWriteArrayList);
-      this.M.put(c.a.a("Quic", "Wifi", "Ipv4"), localCopyOnWriteArrayList);
-      localCopyOnWriteArrayList = a(K);
-      if (QLog.isColorLevel())
+      else
       {
-        QLog.d("MSF.C.SsoListManager", 2, "init default mobile WIFI sso list result: ");
-        localObject = localCopyOnWriteArrayList.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          QLog.d("MSF.C.SsoListManager", 2, ((com.tencent.mobileqq.msf.core.d)((Iterator)localObject).next()).a());
-        }
+        localObject1 = a(E);
+        break label189;
       }
-      this.M.put(c.a.a("Socket", "Wifi", "Ipv6"), localCopyOnWriteArrayList);
-      localCopyOnWriteArrayList = a(L);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MSF.C.SsoListManager", 2, "init default mobile IPV6 sso list result: ");
-        localObject = localCopyOnWriteArrayList.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          QLog.d("MSF.C.SsoListManager", 2, ((com.tencent.mobileqq.msf.core.d)((Iterator)localObject).next()).a());
-        }
-      }
-      this.M.put(c.a.a("Socket", "Mobile", "Ipv6"), localCopyOnWriteArrayList);
-      return;
     }
+    i1 = 1;
+    label189:
+    if (i1 != 0) {
+      localObject1 = a(D);
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("MSF.C.SsoListManager", 2, "init default mobile sso list result:");
+      localObject2 = ((CopyOnWriteArrayList)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        QLog.d("MSF.C.SsoListManager", 2, ((com.tencent.mobileqq.msf.core.d)((Iterator)localObject2).next()).a());
+      }
+    }
+    this.N.put(c.a.a("Socket", "Mobile", "Ipv4"), localObject1);
+    localObject1 = a(I);
+    this.N.put(c.a.a("Socket", "Wifi", "Ipv4"), localObject1);
+    localObject1 = a(J);
+    this.N.put(c.a.a("Http", "Mobile", "Ipv4"), localObject1);
+    this.N.put(c.a.a("Http", "Wifi", "Ipv4"), localObject1);
+    localObject1 = a(K);
+    this.N.put(c.a.a("Quic", "Mobile", "Ipv4"), localObject1);
+    this.N.put(c.a.a("Quic", "Wifi", "Ipv4"), localObject1);
+    localObject1 = a(L);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("MSF.C.SsoListManager", 2, "init default mobile WIFI sso list result: ");
+      localObject2 = ((CopyOnWriteArrayList)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        QLog.d("MSF.C.SsoListManager", 2, ((com.tencent.mobileqq.msf.core.d)((Iterator)localObject2).next()).a());
+      }
+    }
+    this.N.put(c.a.a("Socket", "Wifi", "Ipv6"), localObject1);
+    localObject1 = a(M);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("MSF.C.SsoListManager", 2, "init default mobile IPV6 sso list result: ");
+      localObject2 = ((CopyOnWriteArrayList)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        QLog.d("MSF.C.SsoListManager", 2, ((com.tencent.mobileqq.msf.core.d)((Iterator)localObject2).next()).a());
+      }
+    }
+    this.N.put(c.a.a("Socket", "Mobile", "Ipv6"), localObject1);
   }
   
   private void i()
@@ -665,7 +837,12 @@ public class c
       if (!TextUtils.isEmpty(str2)) {
         b(str2, false);
       }
-      QLog.d("MSF.C.SsoListManager", 2, "loadAllSsoListMapFromStore strSSID = " + str1 + ", strApn" + str2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadAllSsoListMapFromStore strSSID = ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(", strApn");
+      localStringBuilder.append(str2);
+      QLog.d("MSF.C.SsoListManager", 2, localStringBuilder.toString());
       return;
     }
     finally {}
@@ -673,20 +850,33 @@ public class c
   
   private void j()
   {
-    int i1 = 0;
     try
     {
-      SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("wifiused", 0);
-      int i2 = localSharedPreferences.getInt("wifiUsedCount", 0);
+      Object localObject1 = BaseApplication.getContext();
+      int i1 = 0;
+      localObject1 = ((BaseApplication)localObject1).getSharedPreferences("wifiused", 0);
+      int i2 = ((SharedPreferences)localObject1).getInt("wifiUsedCount", 0);
       while (i1 < i2)
       {
-        String str = localSharedPreferences.getString("wifiname" + i1, "");
-        long l1 = localSharedPreferences.getLong("wifitime" + i1, 0L);
-        if ((!TextUtils.isEmpty(str)) && (l1 > 0L))
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("wifiname");
+        ((StringBuilder)localObject3).append(i1);
+        localObject3 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject3).toString(), "");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("wifitime");
+        localStringBuilder.append(i1);
+        long l1 = ((SharedPreferences)localObject1).getLong(localStringBuilder.toString(), 0L);
+        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (l1 > 0L))
         {
-          this.O.put(str, Long.valueOf(l1));
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.SsoListManager", 2, "get a ssid " + str + " time = " + l1);
+          this.P.put(localObject3, Long.valueOf(l1));
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("get a ssid ");
+            localStringBuilder.append((String)localObject3);
+            localStringBuilder.append(" time = ");
+            localStringBuilder.append(l1);
+            QLog.d("MSF.C.SsoListManager", 2, localStringBuilder.toString());
           }
         }
         i1 += 1;
@@ -694,66 +884,79 @@ public class c
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public long a(String paramString1, String paramString2)
   {
+    boolean bool = NetConnInfoCenter.isWifiConn();
     long l2 = 0L;
     String str;
-    long l1;
-    if (NetConnInfoCenter.isWifiConn())
+    if (bool)
     {
       str = NetConnInfoCenter.getCurrentSSID();
       l1 = l2;
-      if (TextUtils.isEmpty(str)) {}
+      if (TextUtils.isEmpty(str)) {
+        break label174;
+      }
     }
-    for (;;)
+    NativeConfigStore localNativeConfigStore;
+    StringBuilder localStringBuilder;
+    try
     {
-      try
-      {
-        l1 = Long.parseLong(MsfStore.getNativeConfigStore().getConfig("DualConnTime" + c.a.a(paramString1, "Wifi", paramString2) + str));
-        return l1;
-      }
-      catch (NumberFormatException paramString1) {}
+      localNativeConfigStore = MsfStore.getNativeConfigStore();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DualConnTime");
+      localStringBuilder.append(c.a.a(paramString1, "Wifi", paramString2));
+      localStringBuilder.append(str);
+      l1 = Long.parseLong(localNativeConfigStore.getConfig(localStringBuilder.toString()));
+      return l1;
+    }
+    catch (NumberFormatException paramString1) {}
+    long l1 = l2;
+    if (NetConnInfoCenter.isMobileConn())
+    {
+      str = NetConnInfoCenter.getCurrentAPN();
       l1 = l2;
-      if (NetConnInfoCenter.isMobileConn())
+      if (!TextUtils.isEmpty(str))
       {
-        str = NetConnInfoCenter.getCurrentAPN();
-        l1 = l2;
-        if (!TextUtils.isEmpty(str)) {
-          try
-          {
-            l1 = Long.parseLong(MsfStore.getNativeConfigStore().getConfig("DualConnTime" + c.a.a(paramString1, "Mobile", paramString2) + str));
-            return l1;
-          }
-          catch (NumberFormatException paramString1)
-          {
-            return 0L;
-          }
-        }
+        localNativeConfigStore = MsfStore.getNativeConfigStore();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("DualConnTime");
+        localStringBuilder.append(c.a.a(paramString1, "Mobile", paramString2));
+        localStringBuilder.append(str);
+        l1 = Long.parseLong(localNativeConfigStore.getConfig(localStringBuilder.toString()));
       }
     }
+    label174:
+    return l1;
     return 0L;
   }
   
   public CopyOnWriteArrayList a(c.a parama, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(" getAvailableSsoList ssoTypeKey = ").append(parama).append(", curr size ");
-    if (this.N.get(parama) == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(((CopyOnWriteArrayList)this.N.get(parama)).size()))
-    {
-      QLog.d("MSF.C.SsoListManager", 1, localObject);
-      if ((this.N.containsKey(parama)) && (this.N.get(parama) != null) && (((CopyOnWriteArrayList)this.N.get(parama)).size() > 0)) {
-        break label133;
-      }
-      if (!paramBoolean) {
-        break;
-      }
-      return (CopyOnWriteArrayList)this.M.get(parama);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" getAvailableSsoList ssoTypeKey = ");
+    localStringBuilder.append(parama);
+    localStringBuilder.append(", curr size ");
+    Object localObject;
+    if (this.O.get(parama) == null) {
+      localObject = "null";
+    } else {
+      localObject = Integer.valueOf(((CopyOnWriteArrayList)this.O.get(parama)).size());
+    }
+    localStringBuilder.append(localObject);
+    QLog.d("MSF.C.SsoListManager", 1, localStringBuilder.toString());
+    if ((this.O.containsKey(parama)) && (this.O.get(parama) != null) && (((CopyOnWriteArrayList)this.O.get(parama)).size() > 0)) {
+      return (CopyOnWriteArrayList)this.O.get(parama);
+    }
+    if (paramBoolean) {
+      return (CopyOnWriteArrayList)this.N.get(parama);
     }
     return null;
-    label133:
-    return (CopyOnWriteArrayList)this.N.get(parama);
   }
   
   public void a()
@@ -774,236 +977,200 @@ public class c
   
   public void a(com.tencent.mobileqq.msf.core.d paramd)
   {
-    for (;;)
+    try
     {
-      try
+      if (NetConnInfoCenter.isWifiConn())
       {
-        if (NetConnInfoCenter.isWifiConn())
-        {
-          if (!a(paramd, c.a.a("Socket", "Wifi", "Ipv4"))) {
-            a(paramd, c.a.a("Socket", "Mobile", "Ipv4"));
-          }
-          return;
+        if (!a(paramd, c.a.a("Socket", "Wifi", "Ipv4"))) {
+          a(paramd, c.a.a("Socket", "Mobile", "Ipv4"));
         }
-        if (NetConnInfoCenter.isMobileConn())
-        {
-          if (a(paramd, c.a.a("Socket", "Mobile", "Ipv4"))) {
-            continue;
-          }
-          a(paramd, c.a.a("Socket", "Wifi", "Ipv4"));
-          continue;
-        }
-        a(paramd, c.a.a("Socket", "Wifi", "Ipv4"));
       }
-      finally {}
-      a(paramd, c.a.a("Socket", "Mobile", "Ipv4"));
+      else if (NetConnInfoCenter.isMobileConn())
+      {
+        if (!a(paramd, c.a.a("Socket", "Mobile", "Ipv4"))) {
+          a(paramd, c.a.a("Socket", "Wifi", "Ipv4"));
+        }
+      }
+      else
+      {
+        a(paramd, c.a.a("Socket", "Wifi", "Ipv4"));
+        a(paramd, c.a.a("Socket", "Mobile", "Ipv4"));
+      }
+      return;
     }
+    finally {}
   }
   
   public void a(com.tencent.msf.service.protocol.serverconfig.f paramf)
   {
-    if ((paramf.b == null) || (paramf.b.length <= 0)) {
-      return;
-    }
-    Object localObject = new JceInputStream(paramf.b);
-    paramf = new j();
-    paramf.readFrom((JceInputStream)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.SsoListManager", 2, "recv ssoList Push nettype=" + paramf.m + ", he_threshold=" + paramf.n + ", policy_id=" + paramf.o);
-    }
-    boolean bool1;
-    boolean bool2;
-    if (NetConnInfoCenter.isWifiConn())
+    if (paramf.b != null)
     {
-      localObject = NetConnInfoCenter.getCurrentSSID();
-      a(paramf.b, "Socket", "Wifi", "Ipv4", (String)localObject, paramf.o);
-      a(paramf.h, "Http", "Wifi", "Ipv4", (String)localObject, paramf.o);
-      a(paramf.i, "Quic", "Wifi", "Ipv4", (String)localObject, paramf.o);
-      if ((paramf.m & 0x1) != 1) {
-        break label492;
-      }
-      bool1 = a(paramf.j, "Socket", "Wifi", "Ipv6", (String)localObject, paramf.o);
-      bool2 = a(paramf.k, "Http", "Wifi", "Ipv6", (String)localObject, paramf.o);
-      bool1 = a(paramf.l, "Quic", "Wifi", "Ipv6", (String)localObject, paramf.o) | false | bool1 | bool2;
-    }
-    for (;;)
-    {
-      label257:
-      this.A = bool1;
-      localObject = this.n.delayIpRace;
-      if ((paramf.n >= -1000) && (paramf.n <= 1000)) {}
-      for (long l1 = paramf.n;; l1 = 100L)
-      {
-        ((AtomicLong)localObject).set(l1);
-        if (paramf.c != 1) {
-          break;
-        }
-        QLog.w("MSF.C.SsoListManager", 1, "set sso reconnect is true.");
-        this.n.isReconnectSso.set(true);
+      if (paramf.b.length <= 0) {
         return;
+      }
+      boolean bool2 = false;
+      Object localObject = new JceInputStream(paramf.b);
+      paramf = new j();
+      paramf.readFrom((JceInputStream)localObject);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("recv ssoList Push nettype=");
+        ((StringBuilder)localObject).append(paramf.m);
+        ((StringBuilder)localObject).append(", he_threshold=");
+        ((StringBuilder)localObject).append(paramf.n);
+        ((StringBuilder)localObject).append(", policy_id=");
+        ((StringBuilder)localObject).append(paramf.o);
+        QLog.d("MSF.C.SsoListManager", 2, ((StringBuilder)localObject).toString());
+      }
+      boolean bool1;
+      if (NetConnInfoCenter.isWifiConn())
+      {
+        localObject = NetConnInfoCenter.getCurrentSSID();
+        a(paramf.b, "Socket", "Wifi", "Ipv4", (String)localObject, paramf.o);
+        a(paramf.h, "Http", "Wifi", "Ipv4", (String)localObject, paramf.o);
+        a(paramf.i, "Quic", "Wifi", "Ipv4", (String)localObject, paramf.o);
+        if ((paramf.m & 0x1) != 1) {
+          break label427;
+        }
+        bool1 = false | a(paramf.j, "Socket", "Wifi", "Ipv6", (String)localObject, paramf.o) | a(paramf.k, "Http", "Wifi", "Ipv6", (String)localObject, paramf.o);
+        bool2 = a(paramf.l, "Quic", "Wifi", "Ipv6", (String)localObject, paramf.o);
+      }
+      else
+      {
         localObject = NetConnInfoCenter.getCurrentAPN();
         a(paramf.a, "Socket", "Mobile", "Ipv4", (String)localObject, paramf.o);
         a(paramf.g, "Http", "Mobile", "Ipv4", (String)localObject, paramf.o);
         a(paramf.i, "Quic", "Mobile", "Ipv4", (String)localObject, paramf.o);
         if ((paramf.m & 0x2) != 2) {
-          break label492;
+          break label427;
         }
-        bool1 = a(paramf.j, "Socket", "Mobile", "Ipv6", (String)localObject, paramf.o);
-        bool2 = a(paramf.k, "Http", "Mobile", "Ipv6", (String)localObject, paramf.o);
-        bool1 = a(paramf.l, "Quic", "Mobile", "Ipv6", (String)localObject, paramf.o) | false | bool1 | bool2;
-        break label257;
+        bool1 = false | a(paramf.j, "Socket", "Mobile", "Ipv6", (String)localObject, paramf.o) | a(paramf.k, "Http", "Mobile", "Ipv6", (String)localObject, paramf.o);
+        bool2 = a(paramf.l, "Quic", "Mobile", "Ipv6", (String)localObject, paramf.o);
       }
-      label492:
-      bool1 = false;
+      bool2 = bool1 | bool2;
+      label427:
+      this.A = bool2;
+      this.n.setDelayIpRace(paramf.n);
+      if (paramf.c == 1)
+      {
+        QLog.w("MSF.C.SsoListManager", 1, "set sso reconnect is true.");
+        this.n.isReconnectSso.set(true);
+      }
     }
   }
   
   public void a(FromServiceMsg paramFromServiceMsg)
   {
-    for (;;)
+    try
     {
-      try
+      localObject = new UniPacket(true);
+      ((UniPacket)localObject).setEncodeName("utf-8");
+      ((UniPacket)localObject).decode(paramFromServiceMsg.getWupBuffer());
+      localObject = (com.tencent.msf.service.protocol.serverconfig.f)((UniPacket)localObject).getByClass("PushReq", new com.tencent.msf.service.protocol.serverconfig.f());
+      if (QLog.isColorLevel())
       {
-        localObject = new UniPacket(true);
-        ((UniPacket)localObject).setEncodeName("utf-8");
-        ((UniPacket)localObject).decode(paramFromServiceMsg.getWupBuffer());
-        localObject = (com.tencent.msf.service.protocol.serverconfig.f)((UniPacket)localObject).getByClass("PushReq", new com.tencent.msf.service.protocol.serverconfig.f());
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.SsoListManager", 2, "onRecvSsoPush req.type: " + ((com.tencent.msf.service.protocol.serverconfig.f)localObject).a);
-        }
-        if (((com.tencent.msf.service.protocol.serverconfig.f)localObject).a != 1) {
-          continue;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onRecvSsoPush req.type: ");
+        localStringBuilder.append(((com.tencent.msf.service.protocol.serverconfig.f)localObject).a);
+        QLog.d("MSF.C.SsoListManager", 2, localStringBuilder.toString());
+      }
+      if (((com.tencent.msf.service.protocol.serverconfig.f)localObject).a == 1)
+      {
         a((com.tencent.msf.service.protocol.serverconfig.f)localObject);
       }
-      catch (Exception paramFromServiceMsg)
+      else if (((com.tencent.msf.service.protocol.serverconfig.f)localObject).a == 2)
       {
-        Object localObject;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.i("MSF.C.SsoListManager", 2, "onRecvSsoPush error " + paramFromServiceMsg, paramFromServiceMsg);
-        return;
-        if (((com.tencent.msf.service.protocol.serverconfig.f)localObject).a != 3) {
-          continue;
-        }
+        MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
+        paramFromServiceMsg.setMsfCommand(MsfCommand.onRecvConfigPush);
+        this.n.addRespToQuque(null, paramFromServiceMsg);
+      }
+      else if (((com.tencent.msf.service.protocol.serverconfig.f)localObject).a == 3)
+      {
         a(paramFromServiceMsg, (com.tencent.msf.service.protocol.serverconfig.f)localObject);
-        continue;
       }
       b(paramFromServiceMsg, (com.tencent.msf.service.protocol.serverconfig.f)localObject);
       return;
-      if (((com.tencent.msf.service.protocol.serverconfig.f)localObject).a != 2) {
-        continue;
+    }
+    catch (Exception paramFromServiceMsg)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onRecvSsoPush error ");
+        ((StringBuilder)localObject).append(paramFromServiceMsg);
+        QLog.i("MSF.C.SsoListManager", 2, ((StringBuilder)localObject).toString(), paramFromServiceMsg);
       }
-      MsfSdkUtils.addFromMsgProcessName("*", paramFromServiceMsg);
-      paramFromServiceMsg.setMsfCommand(MsfCommand.onRecvConfigPush);
-      this.n.addRespToQuque(null, paramFromServiceMsg);
     }
   }
   
   public void a(String paramString, int paramInt, long paramLong)
   {
     String str1 = a(this.n.sender.b.d(paramInt).j());
-    String str2;
     if (!TextUtils.isEmpty(str1))
     {
-      if (!NetConnInfoCenter.isWifiConn()) {
-        break label91;
+      String str2;
+      NativeConfigStore localNativeConfigStore;
+      StringBuilder localStringBuilder;
+      if (NetConnInfoCenter.isWifiConn())
+      {
+        str2 = NetConnInfoCenter.getCurrentSSID();
+        if (!TextUtils.isEmpty(str2))
+        {
+          localNativeConfigStore = MsfStore.getNativeConfigStore();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DualConnTime");
+          localStringBuilder.append(c.a.a(paramString, "Wifi", str1));
+          localStringBuilder.append(str2);
+          localNativeConfigStore.n_setConfig(localStringBuilder.toString(), String.valueOf(paramLong));
+        }
       }
-      str2 = NetConnInfoCenter.getCurrentSSID();
-      if (!TextUtils.isEmpty(str2)) {
-        MsfStore.getNativeConfigStore().n_setConfig("DualConnTime" + c.a.a(paramString, "Wifi", str1) + str2, String.valueOf(paramLong));
+      else if (NetConnInfoCenter.isMobileConn())
+      {
+        str2 = NetConnInfoCenter.getCurrentAPN();
+        if (!TextUtils.isEmpty(str2))
+        {
+          localNativeConfigStore = MsfStore.getNativeConfigStore();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DualConnTime");
+          localStringBuilder.append(c.a.a(paramString, "Mobile", str1));
+          localStringBuilder.append(str2);
+          localNativeConfigStore.n_setConfig(localStringBuilder.toString(), String.valueOf(paramLong));
+        }
       }
     }
-    label91:
-    do
-    {
-      do
-      {
-        return;
-      } while (!NetConnInfoCenter.isMobileConn());
-      str2 = NetConnInfoCenter.getCurrentAPN();
-    } while (TextUtils.isEmpty(str2));
-    MsfStore.getNativeConfigStore().n_setConfig("DualConnTime" + c.a.a(paramString, "Mobile", str1) + str2, String.valueOf(paramLong));
   }
   
-  /* Error */
   public void b()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 795	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getCurrentAPN	()Ljava/lang/String;
-    //   5: astore_2
-    //   6: aload_2
-    //   7: invokestatic 324	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10: istore_1
-    //   11: iload_1
-    //   12: ifeq +6 -> 18
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: return
-    //   18: aload_0
-    //   19: aload_2
-    //   20: iconst_1
-    //   21: invokespecial 758	com/tencent/mobileqq/msf/core/a/c:b	(Ljava/lang/String;Z)V
-    //   24: goto -9 -> 15
-    //   27: astore_2
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_2
-    //   31: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	32	0	this	c
-    //   10	2	1	bool	boolean
-    //   5	15	2	str	String
-    //   27	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	27	finally
-    //   18	24	27	finally
+    try
+    {
+      String str = NetConnInfoCenter.getCurrentAPN();
+      boolean bool = TextUtils.isEmpty(str);
+      if (bool) {
+        return;
+      }
+      b(str, true);
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   public void c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 786	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getCurrentSSID	()Ljava/lang/String;
-    //   5: astore_2
-    //   6: aload_2
-    //   7: invokestatic 324	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10: istore_1
-    //   11: iload_1
-    //   12: ifeq +6 -> 18
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: return
-    //   18: aload_0
-    //   19: aload_2
-    //   20: iconst_1
-    //   21: invokespecial 753	com/tencent/mobileqq/msf/core/a/c:a	(Ljava/lang/String;Z)V
-    //   24: aload_0
-    //   25: aload_2
-    //   26: invokespecial 808	com/tencent/mobileqq/msf/core/a/c:a	(Ljava/lang/String;)V
-    //   29: goto -14 -> 15
-    //   32: astore_2
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_2
-    //   36: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	37	0	this	c
-    //   10	2	1	bool	boolean
-    //   5	21	2	str	String
-    //   32	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	32	finally
-    //   18	29	32	finally
+    try
+    {
+      String str = NetConnInfoCenter.getCurrentSSID();
+      boolean bool = TextUtils.isEmpty(str);
+      if (bool) {
+        return;
+      }
+      a(str, true);
+      a(str);
+      return;
+    }
+    finally {}
   }
   
   public boolean d()
@@ -1024,44 +1191,56 @@ public class c
   
   public String f()
   {
-    Object localObject2 = null;
     com.tencent.mobileqq.msf.core.d locald = this.n.sender.b.l().b();
-    Object localObject1 = localObject2;
-    String str1;
-    String str2;
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
     if (locald != null)
     {
-      str1 = a(locald.d());
-      localObject1 = localObject2;
+      String str1 = a(locald.d());
+      localObject = localStringBuilder;
       if (!TextUtils.isEmpty(str1))
       {
-        if (!NetConnInfoCenter.isWifiConn()) {
-          break label108;
+        String str2;
+        if (NetConnInfoCenter.isWifiConn())
+        {
+          str2 = NetConnInfoCenter.getCurrentSSID();
+          localObject = localStringBuilder;
+          if (!TextUtils.isEmpty(str2))
+          {
+            localObject = MsfStore.getNativeConfigStore();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("policyId");
+            localStringBuilder.append(c.a.a(locald.b(), "Wifi", str1));
+            localStringBuilder.append(str2);
+            return ((NativeConfigStore)localObject).getConfig(localStringBuilder.toString());
+          }
         }
-        str2 = NetConnInfoCenter.getCurrentSSID();
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(str2)) {
-          localObject1 = MsfStore.getNativeConfigStore().getConfig("policyId" + c.a.a(locald.b(), "Wifi", str1) + str2);
+        else
+        {
+          localObject = localStringBuilder;
+          if (NetConnInfoCenter.isMobileConn())
+          {
+            str2 = NetConnInfoCenter.getCurrentAPN();
+            localObject = localStringBuilder;
+            if (!TextUtils.isEmpty(str2))
+            {
+              localObject = MsfStore.getNativeConfigStore();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("policyId");
+              localStringBuilder.append(c.a.a(locald.b(), "Mobile", str1));
+              localStringBuilder.append(str2);
+              localObject = ((NativeConfigStore)localObject).getConfig(localStringBuilder.toString());
+            }
+          }
         }
       }
     }
-    label108:
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (!NetConnInfoCenter.isMobileConn());
-      str2 = NetConnInfoCenter.getCurrentAPN();
-      localObject1 = localObject2;
-    } while (TextUtils.isEmpty(str2));
-    return MsfStore.getNativeConfigStore().getConfig("policyId" + c.a.a(locald.b(), "Mobile", str1) + str2);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,91 +1,31 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.view.KeyEvent;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.inputmethod.InputConnection;
-import android.widget.Button;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.b;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.widget.MMEditText;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.pluginsdk.ui.tools.tips.TipsPopupWindow;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class ChatFooter$14
-  implements ChatFooterPanel.a
+  implements Runnable
 {
   ChatFooter$14(ChatFooter paramChatFooter) {}
   
-  public final void aRo()
+  public final void run()
   {
-    AppMethodBeat.i(155422);
-    ChatFooter.ad(this.vXU);
-    ChatFooter.ae(this.vXU).setVisibility(0);
-    ChatFooter.u(this.vXU).setVisibility(8);
-    ChatFooter.a(this.vXU, true);
-    ChatFooter.af(this.vXU);
-    InputConnection localInputConnection = ChatFooter.a(this.vXU).getInputConnection();
-    if (localInputConnection != null)
-    {
-      localInputConnection.sendKeyEvent(new KeyEvent(0, 67));
-      localInputConnection.sendKeyEvent(new KeyEvent(1, 67));
-    }
-    this.vXU.vWI.cOn -= 1L;
-    AppMethodBeat.o(155422);
-  }
-  
-  public final void append(String paramString)
-  {
-    AppMethodBeat.i(155423);
-    ChatFooter.ad(this.vXU);
-    ChatFooter.ae(this.vXU).setVisibility(0);
-    ChatFooter.u(this.vXU).setVisibility(8);
-    ChatFooter.a(this.vXU, true);
-    ChatFooter.af(this.vXU);
-    try
-    {
-      ChatFooter.a(this.vXU).avk(paramString);
-      this.vXU.vWI.cOn += 1L;
-      AppMethodBeat.o(155423);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.ChatFooter", paramString, "", new Object[0]);
-      }
-    }
-  }
-  
-  public final void bag()
-  {
-    AppMethodBeat.i(155420);
-    ChatFooter.ad(this.vXU);
-    ChatFooter.ae(this.vXU).setVisibility(0);
-    ChatFooter.u(this.vXU).setVisibility(8);
-    ChatFooter.a(this.vXU, true);
-    ChatFooter.af(this.vXU);
-    if (ChatFooter.h(this.vXU) != null) {
-      ChatFooter.h(this.vXU).performClick();
-    }
-    AppMethodBeat.o(155420);
-  }
-  
-  public final void fT(boolean paramBoolean)
-  {
-    AppMethodBeat.i(155421);
-    ab.i("MicroMsg.ChatFooter", "onToSendTextEnable: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (ChatFooter.m(this.vXU) == 2)
-    {
-      ChatFooter.ad(this.vXU);
-      ChatFooter.ae(this.vXU).setVisibility(0);
-      ChatFooter.u(this.vXU).setVisibility(8);
-      ChatFooter.af(this.vXU);
-      if (ChatFooter.a(this.vXU) != null) {
-        this.vXU.setToSendTextColor(paramBoolean);
-      }
-    }
-    AppMethodBeat.o(155421);
+    AppMethodBeat.i(245386);
+    Object localObject1 = new int[2];
+    Object localObject2 = ChatFooter.t(this.YiY).getContentView();
+    ((View)localObject2).getLocationOnScreen((int[])localObject1);
+    localObject1 = ((View)localObject2).findViewById(R.h.tip_triangle_iv);
+    localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject2).leftMargin = MMApplicationContext.getResources().getDimensionPixelSize(R.f.Edge_2A);
+    ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    AppMethodBeat.o(245386);
   }
 }
 

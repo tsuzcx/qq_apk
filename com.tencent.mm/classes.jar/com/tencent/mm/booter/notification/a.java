@@ -7,20 +7,20 @@ public class a
 {
   public int a(NotificationItem paramNotificationItem, g paramg)
   {
-    AppMethodBeat.i(15891);
+    AppMethodBeat.i(19925);
     if (paramNotificationItem == null)
     {
-      AppMethodBeat.o(15891);
+      AppMethodBeat.o(19925);
       return -1;
     }
     int i = paramNotificationItem.a(paramg);
-    AppMethodBeat.o(15891);
+    AppMethodBeat.o(19925);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a
  * JD-Core Version:    0.7.0.1
  */

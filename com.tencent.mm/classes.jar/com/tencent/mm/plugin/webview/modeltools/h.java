@@ -1,47 +1,66 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import android.os.Looper;
+import android.net.Uri;
+import android.webkit.CookieManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ak.a;
-import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class h
 {
-  ak iMP;
-  MMWebView uYh;
-  public String uYi;
-  h.c uYj;
-  private ak.a uYk;
+  public static ArrayList<String> WNp;
   
-  public h()
+  public static void a(String paramString, List<String> paramList, CookieManager paramCookieManager)
   {
-    AppMethodBeat.i(7011);
-    this.uYk = new h.1(this);
-    this.iMP = new ak(Looper.getMainLooper(), this.uYk);
-    AppMethodBeat.o(7011);
+    AppMethodBeat.i(295811);
+    if (!Util.isNullOrNil(paramList))
+    {
+      String str = Uri.parse(paramString).getHost();
+      Object localObject = str.split("\\.");
+      if (localObject.length <= 1) {}
+      for (localObject = "";; localObject = localObject[(localObject.length - 2)] + "." + localObject[(localObject.length - 1)])
+      {
+        Log.d("MicroMsg.WebView.SysWebViewDataCleanHelper", "host(%s)", new Object[] { str });
+        Log.d("MicroMsg.WebView.SysWebViewDataCleanHelper", "domain(%s)", new Object[] { localObject });
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          str = (String)paramList.next();
+          if (!Util.isNullOrNil(str))
+          {
+            paramCookieManager.setCookie(paramString, str + "=");
+            paramCookieManager.setCookie(paramString, str + "=;path=/");
+            if (!Util.isNullOrNil((String)localObject)) {
+              paramCookieManager.setCookie((String)localObject, str + "=;domain=." + (String)localObject + ";path=/");
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(295811);
   }
   
-  public final void a(MMWebView paramMMWebView, h.c paramc)
+  public static void bkP(String paramString)
   {
-    AppMethodBeat.i(7012);
-    this.uYh = paramMMWebView;
-    this.uYj = paramc;
-    this.iMP.sendEmptyMessage(1);
-    AppMethodBeat.o(7012);
-  }
-  
-  public final void dcJ()
-  {
-    AppMethodBeat.i(7013);
-    d.post(new h.a(this, (byte)0), "ViewCaptureHelper_DeleteBitmap");
-    AppMethodBeat.o(7013);
+    AppMethodBeat.i(295815);
+    if (WNp == null) {
+      WNp = new ArrayList();
+    }
+    if (WNp.contains(paramString))
+    {
+      AppMethodBeat.o(295815);
+      return;
+    }
+    WNp.add(paramString);
+    AppMethodBeat.o(295815);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.h
  * JD-Core Version:    0.7.0.1
  */

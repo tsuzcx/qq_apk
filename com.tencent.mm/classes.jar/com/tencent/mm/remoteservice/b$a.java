@@ -6,6 +6,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class b$a
   extends Binder
@@ -25,7 +26,25 @@ public abstract class b$a
     if ((localIInterface != null) && ((localIInterface instanceof b))) {
       return (b)localIInterface;
     }
-    return new b.a.a(paramIBinder);
+    return new a(paramIBinder);
+  }
+  
+  public static b getDefaultImpl()
+  {
+    return a.ackW;
+  }
+  
+  public static boolean setDefaultImpl(b paramb)
+  {
+    if (a.ackW != null) {
+      throw new IllegalStateException("setDefaultImpl() called twice");
+    }
+    if (paramb != null)
+    {
+      a.ackW = paramb;
+      return true;
+    }
+    return false;
   }
   
   public IBinder asBinder()
@@ -71,10 +90,77 @@ public abstract class b$a
     paramParcel2.writeInt(0);
     return true;
   }
+  
+  static final class a
+    implements b
+  {
+    public static b ackW;
+    private IBinder mRemote;
+    
+    a(IBinder paramIBinder)
+    {
+      this.mRemote = paramIBinder;
+    }
+    
+    public final IBinder asBinder()
+    {
+      return this.mRemote;
+    }
+    
+    public final void onCallback(String paramString, Bundle paramBundle, boolean paramBoolean)
+    {
+      int i = 1;
+      AppMethodBeat.i(152739);
+      Parcel localParcel1 = Parcel.obtain();
+      Parcel localParcel2 = Parcel.obtain();
+      for (;;)
+      {
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.remoteservice.ICommClientCallback");
+          localParcel1.writeString(paramString);
+          if (paramBundle != null)
+          {
+            localParcel1.writeInt(1);
+            paramBundle.writeToParcel(localParcel1, 0);
+            break label177;
+            localParcel1.writeInt(i);
+            if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.getDefaultImpl() != null)) {
+              b.a.getDefaultImpl().onCallback(paramString, paramBundle, paramBoolean);
+            }
+          }
+          else
+          {
+            localParcel1.writeInt(0);
+          }
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(152739);
+        }
+        label177:
+        do
+        {
+          i = 0;
+          break;
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0) {
+            paramBundle.readFromParcel(localParcel2);
+          }
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(152739);
+          return;
+        } while (!paramBoolean);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.remoteservice.b.a
  * JD-Core Version:    0.7.0.1
  */

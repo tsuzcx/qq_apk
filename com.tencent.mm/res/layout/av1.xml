@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@null" android:paddingTop="@dimen/ll" android:paddingBottom="@dimen/ll" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/rx" android:gravity="center|left" android:id="@id/bel" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="@dimen/lz" android:text="@string/eu6" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:ellipsize="end" android:gravity="center|right" android:id="@id/dzq" android:paddingLeft="@dimen/ng" android:layout_width="wrap_content" android:layout_height="@dimen/lz" android:text="@string/eqd" android:singleLine="true" android:layout_toRightOf="@id/bel" />
-</RelativeLayout>
+    <com.tencent.mm.plugin.game.ui.GameBestSellingTitle android:orientation="vertical" android:padding="@dimen/gm" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/gw" android:textColor="@color/w3" android:id="@id/eib" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </com.tencent.mm.plugin.game.ui.GameBestSellingTitle>
+</FrameLayout>

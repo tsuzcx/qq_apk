@@ -6,13 +6,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
 import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.dinifly.utils.Logger;
+import com.tencent.mobileqq.dinifly.utils.Utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -28,17 +29,42 @@ public class ImageAssetManager
   @Nullable
   private ImageAssetDelegate delegate;
   private final Map<String, LottieImageAsset> imageAssets;
-  private String imagesFolder;
+  private final String imagesFolder;
+  
+  public ImageAssetManager(Context paramContext, String paramString, ImageAssetDelegate paramImageAssetDelegate, Map<String, LottieImageAsset> paramMap)
+  {
+    this.context = paramContext;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.charAt(paramString.length() - 1) != '/'))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(paramString);
+      paramContext.append('/');
+      this.imagesFolder = paramContext.toString();
+    }
+    else
+    {
+      this.imagesFolder = paramString;
+    }
+    this.imageAssets = paramMap;
+    setDelegate(paramImageAssetDelegate);
+  }
   
   public ImageAssetManager(Drawable.Callback paramCallback, String paramString, ImageAssetDelegate paramImageAssetDelegate, Map<String, LottieImageAsset> paramMap)
   {
-    this.imagesFolder = paramString;
-    if ((!TextUtils.isEmpty(paramString)) && (this.imagesFolder.charAt(this.imagesFolder.length() - 1) != '/')) {
-      this.imagesFolder += '/';
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.charAt(paramString.length() - 1) != '/'))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append('/');
+      this.imagesFolder = localStringBuilder.toString();
+    }
+    else
+    {
+      this.imagesFolder = paramString;
     }
     if (!(paramCallback instanceof View))
     {
-      Log.w("LOTTIE", "LottieDrawable must be inside of a view for images to work.");
+      Logger.warning("LottieDrawable must be inside of a view for images to work.");
       this.imageAssets = new HashMap();
       this.context = null;
       return;
@@ -62,68 +88,77 @@ public class ImageAssetManager
   {
     Object localObject1 = (LottieImageAsset)this.imageAssets.get(paramString);
     if (localObject1 == null) {
-      localObject1 = null;
+      return null;
     }
-    do
+    Object localObject2 = ((LottieImageAsset)localObject1).getBitmap();
+    if (localObject2 != null) {
+      return localObject2;
+    }
+    if (this.delegate != null)
     {
-      return localObject1;
-      localObject2 = ((LottieImageAsset)localObject1).getBitmap();
-      if (localObject2 != null) {
-        return localObject2;
-      }
-      if (this.delegate == null) {
-        break;
-      }
       if (((LottieImageAsset)localObject1).hasCache()) {
         return this.delegate.fetchBitmap((LottieImageAsset)localObject1);
       }
-      localObject2 = this.delegate.fetchBitmap((LottieImageAsset)localObject1);
-      localObject1 = localObject2;
-    } while (localObject2 == null);
-    putBitmap(paramString, (Bitmap)localObject2);
-    return localObject2;
-    Object localObject2 = ((LottieImageAsset)localObject1).getFileName();
-    localObject1 = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject1).inScaled = true;
-    ((BitmapFactory.Options)localObject1).inDensity = 320;
-    if ((((String)localObject2).startsWith("data:")) && (((String)localObject2).indexOf("base64,") > 0)) {
+      localObject1 = this.delegate.fetchBitmap((LottieImageAsset)localObject1);
+      if (localObject1 != null) {
+        putBitmap(paramString, (Bitmap)localObject1);
+      }
+      return localObject1;
+    }
+    Object localObject3 = ((LottieImageAsset)localObject1).getFileName();
+    localObject2 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject2).inScaled = true;
+    ((BitmapFactory.Options)localObject2).inDensity = 320;
+    if ((((String)localObject3).startsWith("data:")) && (((String)localObject3).indexOf("base64,") > 0)) {
       try
       {
-        localObject2 = Base64.decode(((String)localObject2).substring(((String)localObject2).indexOf(',') + 1), 0);
-        return putBitmap(paramString, BitmapFactory.decodeByteArray((byte[])localObject2, 0, localObject2.length, (BitmapFactory.Options)localObject1));
+        localObject1 = Base64.decode(((String)localObject3).substring(((String)localObject3).indexOf(',') + 1), 0);
+        return putBitmap(paramString, BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2));
       }
       catch (IllegalArgumentException paramString)
       {
-        Log.w("LOTTIE", "data URL did not have correct base64 format.", paramString);
+        Logger.warning("data URL did not have correct base64 format.", paramString);
         return null;
       }
     }
     try
     {
-      if (TextUtils.isEmpty(this.imagesFolder)) {
-        throw new IllegalStateException("You must set an images folder before loading an image. Set it with LottieComposition#setImagesFolder or LottieDrawable#setImagesFolder");
+      if (!TextUtils.isEmpty(this.imagesFolder))
+      {
+        AssetManager localAssetManager = this.context.getAssets();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.imagesFolder);
+        localStringBuilder.append((String)localObject3);
+        localObject3 = localAssetManager.open(localStringBuilder.toString());
+        try
+        {
+          localObject2 = BitmapFactory.decodeStream((InputStream)localObject3, null, (BitmapFactory.Options)localObject2);
+          localObject1 = Utils.resizeBitmapIfNeeded((Bitmap)localObject2, ((LottieImageAsset)localObject1).getWidth(), ((LottieImageAsset)localObject1).getHeight());
+          if (localObject3 != null) {
+            try
+            {
+              ((InputStream)localObject3).close();
+            }
+            catch (IOException localIOException)
+            {
+              localIOException.printStackTrace();
+            }
+          }
+          return putBitmap(paramString, (Bitmap)localObject1);
+        }
+        catch (IllegalArgumentException paramString)
+        {
+          Logger.warning("Unable to decode image.", paramString);
+          return null;
+        }
       }
+      throw new IllegalStateException("You must set an images folder before loading an image. Set it with LottieComposition#setImagesFolder or LottieDrawable#setImagesFolder");
     }
     catch (IOException paramString)
     {
-      Log.w("LOTTIE", "Unable to open asset.", paramString);
-      return null;
+      Logger.warning("Unable to open asset.", paramString);
     }
-    localObject2 = this.context.getAssets().open(this.imagesFolder + (String)localObject2);
-    localObject1 = BitmapFactory.decodeStream((InputStream)localObject2, null, (BitmapFactory.Options)localObject1);
-    if (localObject2 != null) {}
-    try
-    {
-      ((InputStream)localObject2).close();
-      return putBitmap(paramString, (Bitmap)localObject1);
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
-    }
+    return null;
   }
   
   public boolean hasSameContext(Context paramContext)

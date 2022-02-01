@@ -1,22 +1,21 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
+import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import uwm;
-import was;
 
-public class DetailVideoInfoWidget$SubscribeStatusReceiver$1
+class DetailVideoInfoWidget$SubscribeStatusReceiver$1
   implements Runnable
 {
-  public DetailVideoInfoWidget$SubscribeStatusReceiver$1(was paramwas, uwm paramuwm, QQUserUIItem paramQQUserUIItem) {}
+  DetailVideoInfoWidget$SubscribeStatusReceiver$1(DetailVideoInfoWidget.SubscribeStatusReceiver paramSubscribeStatusReceiver, UserManager paramUserManager, QQUserUIItem paramQQUserUIItem) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Uwm.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    this.a.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.DetailVideoInfoWidget.SubscribeStatusReceiver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import java.lang.ref.WeakReference;
@@ -11,89 +12,112 @@ import java.lang.ref.WeakReference;
 class ArkFlashChatContainerWrapper$TouchRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private ark.Container jdField_a_of_type_ComTencentArkArk$Container;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private float[] b;
+  private int a;
+  private ark.Container b;
+  private int[] c;
+  private float[] d;
+  private float[] e;
   
   public ArkFlashChatContainerWrapper$TouchRunnable(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper, MotionEvent paramMotionEvent, ark.Container paramContainer, float paramFloat)
   {
-    this.jdField_a_of_type_Int = paramMotionEvent.getActionMasked();
-    this.jdField_a_of_type_ComTencentArkArk$Container = paramContainer;
-    int i;
-    if ((this.jdField_a_of_type_Int != 5) && (this.jdField_a_of_type_Int != 6))
+    this.a = paramMotionEvent.getActionMasked();
+    this.b = paramContainer;
+    int i = this.a;
+    int j = 0;
+    if ((i != 5) && (i != 6))
     {
       int k = paramMotionEvent.getPointerCount();
       i = k;
       if (k > ark.arkGetMaxTouchPoints()) {
         i = ark.arkGetMaxTouchPoints();
       }
-      this.jdField_a_of_type_ArrayOfInt = new int[i];
-      this.jdField_a_of_type_ArrayOfFloat = new float[i];
-      this.b = new float[i];
+      this.c = new int[i];
+      this.d = new float[i];
+      this.e = new float[i];
     }
     while (j < i)
     {
-      this.jdField_a_of_type_ArrayOfInt[j] = paramMotionEvent.getPointerId(j);
-      this.jdField_a_of_type_ArrayOfFloat[j] = (paramMotionEvent.getX(j) / paramFloat);
-      this.b[j] = (paramMotionEvent.getY(j) / paramFloat);
+      this.c[j] = paramMotionEvent.getPointerId(j);
+      this.d[j] = (paramMotionEvent.getX(j) / paramFloat);
+      this.e[j] = (paramMotionEvent.getY(j) / paramFloat);
       j += 1;
       continue;
-      this.jdField_a_of_type_ArrayOfInt = new int[1];
-      this.jdField_a_of_type_ArrayOfFloat = new float[1];
-      this.b = new float[1];
+      this.c = new int[1];
+      this.d = new float[1];
+      this.e = new float[1];
       i = paramMotionEvent.getActionIndex();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramMotionEvent.getPointerId(i);
-      this.jdField_a_of_type_ArrayOfFloat[0] = (paramMotionEvent.getX(i) / paramFloat);
-      this.b[0] = (paramMotionEvent.getY(i) / paramFloat);
+      this.c[0] = paramMotionEvent.getPointerId(i);
+      this.d[0] = (paramMotionEvent.getX(i) / paramFloat);
+      this.e[0] = (paramMotionEvent.getY(i) / paramFloat);
     }
   }
   
   public void run()
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.a;
+    if (i != 0)
     {
-    case 4: 
-    default: 
-      return;
-    case 0: 
-    case 5: 
-      this.jdField_a_of_type_ComTencentArkArk$Container.TouchStart(this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfInt.length);
-      return;
-    case 1: 
-    case 6: 
-      Object localObject = (QQAppInterface)this.this$0.a.get();
-      MessageForArkFlashChat localMessageForArkFlashChat;
-      if (localObject != null)
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i == 5) {
+              break label219;
+            }
+            if (i == 6) {}
+          }
+          else
+          {
+            localObject1 = this.b;
+            localObject2 = this.d;
+            arrayOfFloat = this.e;
+            arrayOfInt = this.c;
+            ((ark.Container)localObject1).TouchCancel((float[])localObject2, arrayOfFloat, arrayOfInt, arrayOfInt.length);
+          }
+        }
+        else
+        {
+          localObject1 = this.b;
+          localObject2 = this.d;
+          arrayOfFloat = this.e;
+          arrayOfInt = this.c;
+          ((ark.Container)localObject1).TouchMove((float[])localObject2, arrayOfFloat, arrayOfInt, arrayOfInt.length);
+          return;
+        }
+      }
+      localObject1 = (QQAppInterface)this.this$0.c.get();
+      if (localObject1 != null)
       {
-        localObject = (FlashChatManager)((QQAppInterface)localObject).getManager(217);
+        localObject1 = (FlashChatManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FLASH_CHAT_MANAGER);
         if (ArkFlashChatContainerWrapper.a(this.this$0) != null)
         {
-          localMessageForArkFlashChat = (MessageForArkFlashChat)ArkFlashChatContainerWrapper.a(this.this$0).get();
-          if ((localMessageForArkFlashChat != null) && (!((FlashChatManager)localObject).c(localMessageForArkFlashChat))) {
-            break label164;
+          localObject2 = (MessageForArkFlashChat)ArkFlashChatContainerWrapper.a(this.this$0).get();
+          if ((localObject2 != null) && (!((FlashChatManager)localObject1).d((MessageForArkFlashChat)localObject2)))
+          {
+            ((FlashChatManager)localObject1).a(null);
+            ((FlashChatManager)localObject1).e((MessageForArkFlashChat)localObject2);
           }
         }
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentArkArk$Container.TouchEnd(this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfInt.length);
-        return;
-        ((FlashChatManager)localObject).a(null);
-        ((FlashChatManager)localObject).b(localMessageForArkFlashChat);
-      }
-    case 2: 
-      label164:
-      this.jdField_a_of_type_ComTencentArkArk$Container.TouchMove(this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfInt.length);
+      localObject1 = this.b;
+      localObject2 = this.d;
+      arrayOfFloat = this.e;
+      arrayOfInt = this.c;
+      ((ark.Container)localObject1).TouchEnd((float[])localObject2, arrayOfFloat, arrayOfInt, arrayOfInt.length);
       return;
     }
-    this.jdField_a_of_type_ComTencentArkArk$Container.TouchCancel(this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfInt.length);
+    label219:
+    Object localObject1 = this.b;
+    Object localObject2 = this.d;
+    float[] arrayOfFloat = this.e;
+    int[] arrayOfInt = this.c;
+    ((ark.Container)localObject1).TouchStart((float[])localObject2, arrayOfFloat, arrayOfInt, arrayOfInt.length);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.TouchRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package io.flutter.embedding.android;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.embedding.engine.FlutterEngine;
 
 public abstract interface FlutterEngineProvider
@@ -12,7 +12,7 @@ public abstract interface FlutterEngineProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterEngineProvider
  * JD-Core Version:    0.7.0.1
  */

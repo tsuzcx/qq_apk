@@ -13,39 +13,32 @@ class JalphaTextureView$4
     JalphaTextureView.access$1200(this.this$0);
     JalphaTextureView.access$400(this.this$0).post(new JalphaTextureView.4.1(this));
     long l = System.currentTimeMillis();
-    for (;;)
+    while (this.this$0.getVisibility() != 8)
     {
-      if (this.this$0.getVisibility() != 8) {
-        Logger.v(JalphaTextureView.access$000(this.this$0), "==============PlayView wait set GONE");
-      }
+      Logger.v(JalphaTextureView.access$000(this.this$0), "==============PlayView wait set GONE");
       try
       {
         Thread.sleep(50L);
-        if (System.currentTimeMillis() - l <= 3000L) {
-          continue;
-        }
-        Logger.v(JalphaTextureView.access$000(this.this$0), "==============PlayView set GONE time out");
-        Logger.v(JalphaTextureView.access$000(this.this$0), "==============PlayView set GONE over");
-        JalphaTextureView.access$1302(this.this$0, false);
-        JalphaTextureView.access$1402(this.this$0, false);
-        if (JalphaTextureView.access$1500(this.this$0)) {
-          JalphaTextureView.access$400(this.this$0).post(new JalphaTextureView.4.2(this));
-        }
-        return;
       }
       catch (InterruptedException localInterruptedException)
       {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-        }
+        localInterruptedException.printStackTrace();
       }
+      if (System.currentTimeMillis() - l > 3000L) {
+        Logger.v(JalphaTextureView.access$000(this.this$0), "==============PlayView set GONE time out");
+      }
+    }
+    Logger.v(JalphaTextureView.access$000(this.this$0), "==============PlayView set GONE over");
+    JalphaTextureView.access$1302(this.this$0, false);
+    JalphaTextureView.access$1402(this.this$0, false);
+    if (JalphaTextureView.access$1500(this.this$0)) {
+      JalphaTextureView.access$400(this.this$0).post(new JalphaTextureView.4.2(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.view.JalphaTextureView.4
  * JD-Core Version:    0.7.0.1
  */

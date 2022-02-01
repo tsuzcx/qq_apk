@@ -6,8 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.util.AttributeSet;
-import bewr;
-import bews;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -18,9 +16,9 @@ public class DatePickerView
   extends RecyclerView
 {
   protected Context a;
-  private TypedArray a;
-  protected bewr a;
-  protected bews a;
+  protected SimpleMonthAdapter b;
+  protected DatePickerController c;
+  private TypedArray d;
   
   public DatePickerView(Context paramContext)
   {
@@ -37,7 +35,7 @@ public class DatePickerView
     super(paramContext, paramAttributeSet, paramInt);
     if (!isInEditMode())
     {
-      this.jdField_a_of_type_AndroidContentResTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.DatePickerView);
+      this.d = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.DatePickerView);
       setLayoutParams(new RecyclerView.LayoutParams(-1, -1));
       a(paramContext);
     }
@@ -45,46 +43,60 @@ public class DatePickerView
   
   public void a(int paramInt1, int paramInt2, ArrayList<MessageRecord> paramArrayList)
   {
-    if (this.jdField_a_of_type_Bews != null)
+    Object localObject = this.b;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Bews.a(paramInt1, paramInt2, paramArrayList);
-      this.jdField_a_of_type_Bews.notifyDataSetChanged();
+      ((SimpleMonthAdapter)localObject).a(paramInt1, paramInt2, paramArrayList);
+      this.b.notifyDataSetChanged();
     }
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
+      localObject = new StringBuilder();
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
         MessageRecord localMessageRecord = (MessageRecord)paramArrayList.next();
-        localStringBuilder.append("[shmsgseq:").append(localMessageRecord.shmsgseq).append(", time:").append(localMessageRecord.time).append(", senderUin").append(localMessageRecord.senderuin).append("], ");
+        ((StringBuilder)localObject).append("[shmsgseq:");
+        ((StringBuilder)localObject).append(localMessageRecord.shmsgseq);
+        ((StringBuilder)localObject).append(", time:");
+        ((StringBuilder)localObject).append(localMessageRecord.time);
+        ((StringBuilder)localObject).append(", senderUin");
+        ((StringBuilder)localObject).append(localMessageRecord.senderuin);
+        ((StringBuilder)localObject).append("], ");
       }
-      QLog.d("DatePickerView", 2, "addOrUpdateMsgData:" + paramInt1 + "-" + (paramInt2 + 1) + " | MessageRecordList: " + localStringBuilder.toString());
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("addOrUpdateMsgData:");
+      paramArrayList.append(paramInt1);
+      paramArrayList.append("-");
+      paramArrayList.append(paramInt2 + 1);
+      paramArrayList.append(" | MessageRecordList: ");
+      paramArrayList.append(((StringBuilder)localObject).toString());
+      QLog.d("DatePickerView", 2, paramArrayList.toString());
     }
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     setLayoutManager(new LinearLayoutManager(paramContext));
     setVerticalScrollBarEnabled(false);
     setFadingEdgeLength(0);
   }
   
-  public void setController(bewr parambewr)
+  public void setController(DatePickerController paramDatePickerController)
   {
-    this.jdField_a_of_type_Bewr = parambewr;
-    if (this.jdField_a_of_type_Bews == null) {
-      this.jdField_a_of_type_Bews = new bews(getContext(), parambewr, this.jdField_a_of_type_AndroidContentResTypedArray);
+    this.c = paramDatePickerController;
+    if (this.b == null) {
+      this.b = new SimpleMonthAdapter(getContext(), paramDatePickerController, this.d);
     }
-    this.jdField_a_of_type_Bews.notifyDataSetChanged();
-    setAdapter(this.jdField_a_of_type_Bews);
-    scrollToPosition(this.jdField_a_of_type_Bews.getItemCount() - 1);
+    this.b.notifyDataSetChanged();
+    setAdapter(this.b);
+    scrollToPosition(this.b.getItemCount() - 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.datepicker.DatePickerView
  * JD-Core Version:    0.7.0.1
  */

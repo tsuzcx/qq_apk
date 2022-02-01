@@ -40,14 +40,15 @@ public final class SCFileUpdateRsp
   public final void writeTo(l paraml)
   {
     paraml.a(this.iRet, 0);
-    if (this.vItems != null) {
-      paraml.a(this.vItems, 1);
+    ArrayList localArrayList = this.vItems;
+    if (localArrayList != null) {
+      paraml.a(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.conf.SCFileUpdateRsp
  * JD-Core Version:    0.7.0.1
  */

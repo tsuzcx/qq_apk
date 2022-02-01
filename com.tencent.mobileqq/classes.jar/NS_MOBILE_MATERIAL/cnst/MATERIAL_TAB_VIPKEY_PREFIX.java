@@ -6,7 +6,7 @@ public abstract interface MATERIAL_TAB_VIPKEY_PREFIX
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.cnst.MATERIAL_TAB_VIPKEY_PREFIX
  * JD-Core Version:    0.7.0.1
  */

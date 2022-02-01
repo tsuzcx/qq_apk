@@ -10,26 +10,26 @@ public class WidgetData$MoreFooter
   implements Parcelable
 {
   public static final Parcelable.Creator<MoreFooter> CREATOR;
+  public String Wqv;
+  public String Wqw;
   public String title;
-  public String uKN;
-  public String uKO;
   
   static
   {
-    AppMethodBeat.i(124271);
-    CREATOR = new WidgetData.MoreFooter.1();
-    AppMethodBeat.o(124271);
+    AppMethodBeat.i(117819);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(117819);
   }
   
   public WidgetData$MoreFooter() {}
   
   protected WidgetData$MoreFooter(Parcel paramParcel)
   {
-    AppMethodBeat.i(124268);
+    AppMethodBeat.i(117816);
     this.title = paramParcel.readString();
-    this.uKN = paramParcel.readString();
-    this.uKO = paramParcel.readString();
-    AppMethodBeat.o(124268);
+    this.Wqv = paramParcel.readString();
+    this.Wqw = paramParcel.readString();
+    AppMethodBeat.o(117816);
   }
   
   public int describeContents()
@@ -39,47 +39,47 @@ public class WidgetData$MoreFooter
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(124269);
+    AppMethodBeat.i(117817);
     if (this == paramObject)
     {
-      AppMethodBeat.o(124269);
+      AppMethodBeat.o(117817);
       return true;
     }
     if (!(paramObject instanceof MoreFooter))
     {
-      AppMethodBeat.o(124269);
+      AppMethodBeat.o(117817);
       return false;
     }
     paramObject = (MoreFooter)paramObject;
-    if ((Objects.equals(this.title, paramObject.title)) && (Objects.equals(this.uKN, paramObject.uKN)) && (Objects.equals(this.uKO, paramObject.uKO)))
+    if ((Objects.equals(this.title, paramObject.title)) && (Objects.equals(this.Wqv, paramObject.Wqv)) && (Objects.equals(this.Wqw, paramObject.Wqw)))
     {
-      AppMethodBeat.o(124269);
+      AppMethodBeat.o(117817);
       return true;
     }
-    AppMethodBeat.o(124269);
+    AppMethodBeat.o(117817);
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(124270);
-    int i = Objects.hash(new Object[] { this.title, this.uKN, this.uKO });
-    AppMethodBeat.o(124270);
+    AppMethodBeat.i(117818);
+    int i = Objects.hash(new Object[] { this.title, this.Wqv, this.Wqw });
+    AppMethodBeat.o(117818);
     return i;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(124267);
+    AppMethodBeat.i(117815);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.uKN);
-    paramParcel.writeString(this.uKO);
-    AppMethodBeat.o(124267);
+    paramParcel.writeString(this.Wqv);
+    paramParcel.writeString(this.Wqw);
+    AppMethodBeat.o(117815);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.WidgetData.MoreFooter
  * JD-Core Version:    0.7.0.1
  */

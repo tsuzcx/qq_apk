@@ -24,9 +24,7 @@ public abstract class Subscriber$LooperSubscriber
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     paramMessage = paramMessage.obj;
@@ -36,7 +34,7 @@ public abstract class Subscriber$LooperSubscriber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.dispatch.Subscriber.LooperSubscriber
  * JD-Core Version:    0.7.0.1
  */

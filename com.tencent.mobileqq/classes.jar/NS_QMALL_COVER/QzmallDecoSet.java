@@ -9,8 +9,8 @@ public final class QzmallDecoSet
 {
   static QzmallCustomPraise cache_stCustomPraise = new QzmallCustomPraise();
   static PolymorphicPraise cache_stPolymorphicPraise = new PolymorphicPraise();
-  public QzmallCustomPraise stCustomPraise;
-  public PolymorphicPraise stPolymorphicPraise;
+  public QzmallCustomPraise stCustomPraise = null;
+  public PolymorphicPraise stPolymorphicPraise = null;
   
   public QzmallDecoSet() {}
   
@@ -28,17 +28,19 @@ public final class QzmallDecoSet
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stCustomPraise != null) {
-      paramJceOutputStream.write(this.stCustomPraise, 0);
+    Object localObject = this.stCustomPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stPolymorphicPraise != null) {
-      paramJceOutputStream.write(this.stPolymorphicPraise, 1);
+    localObject = this.stPolymorphicPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallDecoSet
  * JD-Core Version:    0.7.0.1
  */

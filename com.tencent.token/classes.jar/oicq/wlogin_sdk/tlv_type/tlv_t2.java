@@ -30,9 +30,7 @@ public class tlv_t2
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, 4, arrayOfByte.length);
     int i = arrayOfByte.length + 4;
     util.int16_to_buf(paramArrayOfByte2, i, paramArrayOfByte1.length);
-    i += 2;
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, i, paramArrayOfByte1.length);
-    i = paramArrayOfByte1.length;
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, i + 2, paramArrayOfByte1.length);
     fill_head(this._cmd);
     fill_body(paramArrayOfByte2, this._t2_body_len);
     set_length();

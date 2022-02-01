@@ -6,57 +6,70 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
-import android.support.v4.content.WakefulBroadcastReceiver;
-import android.support.v4.e.m;
 import android.util.Log;
+import androidx.b.g;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayDeque;
 import java.util.Queue;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class o
 {
-  private static o bfA;
-  @GuardedBy("serviceClassNames")
-  private final m<String, String> bfB;
-  private Boolean bfC;
-  final Queue<Intent> bfD;
-  public final Queue<Intent> bfE;
+  private static o dCY;
+  private final g<String, String> dCZ;
+  private Boolean dDa;
+  final Queue<Intent> dDb;
+  public final Queue<Intent> dDc;
   
   private o()
   {
-    AppMethodBeat.i(108745);
-    this.bfB = new m();
-    this.bfC = null;
-    this.bfD = new ArrayDeque();
-    this.bfE = new ArrayDeque();
-    AppMethodBeat.o(108745);
+    AppMethodBeat.i(4181);
+    this.dCZ = new g();
+    this.dDa = null;
+    this.dDb = new ArrayDeque();
+    this.dDc = new ArrayDeque();
+    AppMethodBeat.o(4181);
+  }
+  
+  public static o Yw()
+  {
+    try
+    {
+      AppMethodBeat.i(4180);
+      if (dCY == null) {
+        dCY = new o();
+      }
+      o localo = dCY;
+      AppMethodBeat.o(4180);
+      return localo;
+    }
+    finally {}
   }
   
   public static PendingIntent a(Context paramContext, int paramInt, Intent paramIntent)
   {
-    AppMethodBeat.i(108746);
+    AppMethodBeat.i(4182);
     Intent localIntent = new Intent(paramContext, FirebaseInstanceIdReceiver.class);
     localIntent.setAction("com.google.firebase.MESSAGING_EVENT");
     localIntent.putExtra("wrapped_intent", paramIntent);
     paramContext = PendingIntent.getBroadcast(paramContext, paramInt, localIntent, 1073741824);
-    AppMethodBeat.o(108746);
+    AppMethodBeat.o(4182);
     return paramContext;
   }
   
-  private final int c(Context paramContext, Intent paramIntent)
+  private final int b(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(108748);
-    synchronized (this.bfB)
+    AppMethodBeat.i(4184);
+    synchronized (this.dCZ)
     {
-      ??? = (String)this.bfB.get(paramIntent.getAction());
+      ??? = (String)this.dCZ.get(paramIntent.getAction());
       ??? = ???;
       if (??? == null)
       {
         ??? = paramContext.getPackageManager().resolveService(paramIntent, 0);
         if (??? != null) {
           if (((ResolveInfo)???).serviceInfo != null) {
-            break label132;
+            break label135;
           }
         }
       }
@@ -64,56 +77,56 @@ public final class o
     try
     {
       boolean bool;
-      if (this.bfC == null)
+      if (this.dDa == null)
       {
         if (paramContext.checkCallingOrSelfPermission("android.permission.WAKE_LOCK") == 0)
         {
           bool = true;
-          label84:
-          this.bfC = Boolean.valueOf(bool);
+          label85:
+          this.dDa = Boolean.valueOf(bool);
         }
       }
       else {
-        if (!this.bfC.booleanValue()) {
-          break label396;
+        if (!this.dDa.booleanValue()) {
+          break label400;
         }
       }
-      label132:
-      label396:
+      label135:
+      label400:
       for (paramContext = WakefulBroadcastReceiver.startWakefulService(paramContext, paramIntent);; paramContext = paramContext.startService(paramIntent))
       {
-        if (paramContext != null) {
-          break label405;
-        }
-        AppMethodBeat.o(108748);
-        return 404;
-        paramContext = finally;
-        AppMethodBeat.o(108748);
-        throw paramContext;
-        ??? = ((ResolveInfo)???).serviceInfo;
-        if ((!paramContext.getPackageName().equals(((ServiceInfo)???).packageName)) || (((ServiceInfo)???).name == null))
-        {
-          ??? = ((ServiceInfo)???).packageName;
-          ??? = ((ServiceInfo)???).name;
-          new StringBuilder(String.valueOf(???).length() + 94 + String.valueOf(???).length()).append("Error resolving target intent service, skipping classname enforcement. Resolved service was: ").append((String)???).append("/").append((String)???);
-          break;
-        }
-        ??? = ((ServiceInfo)???).name;
-        ??? = ???;
-        if (((String)???).startsWith("."))
-        {
-          ??? = String.valueOf(paramContext.getPackageName());
-          ??? = String.valueOf(???);
-          if (((String)???).length() == 0) {
-            break label353;
-          }
-          ??? = ((String)???).concat((String)???);
-        }
         for (;;)
         {
-          synchronized (this.bfB)
+          if (paramContext != null) {
+            break label409;
+          }
+          AppMethodBeat.o(4184);
+          return 404;
+          paramContext = finally;
+          AppMethodBeat.o(4184);
+          throw paramContext;
+          ??? = ((ResolveInfo)???).serviceInfo;
+          if ((!paramContext.getPackageName().equals(((ServiceInfo)???).packageName)) || (((ServiceInfo)???).name == null))
           {
-            this.bfB.put(paramIntent.getAction(), ???);
+            ??? = ((ServiceInfo)???).packageName;
+            ??? = ((ServiceInfo)???).name;
+            new StringBuilder(String.valueOf(???).length() + 94 + String.valueOf(???).length()).append("Error resolving target intent service, skipping classname enforcement. Resolved service was: ").append((String)???).append("/").append((String)???);
+            break;
+          }
+          ??? = ((ServiceInfo)???).name;
+          ??? = ???;
+          if (((String)???).startsWith("."))
+          {
+            ??? = String.valueOf(paramContext.getPackageName());
+            ??? = String.valueOf(???);
+            if (((String)???).length() == 0) {
+              break label356;
+            }
+            ??? = ((String)???).concat((String)???);
+          }
+          synchronized (this.dCZ)
+          {
+            this.dCZ.put(paramIntent.getAction(), ???);
             if (Log.isLoggable("FirebaseInstanceId", 3))
             {
               ??? = String.valueOf(???);
@@ -125,51 +138,35 @@ public final class o
             {
               paramIntent.setClassName(paramContext.getPackageName(), (String)???);
               break;
-              label353:
+              label356:
               ??? = new String((String)???);
             }
           }
-          new String("Restricting intent to a specific service: ");
         }
         bool = false;
-        break label84;
+        break label85;
       }
-      label405:
-      AppMethodBeat.o(108748);
+      label409:
+      AppMethodBeat.o(4184);
       return -1;
     }
     catch (SecurityException paramContext)
     {
-      AppMethodBeat.o(108748);
+      AppMethodBeat.o(4184);
       return 401;
     }
     catch (IllegalStateException paramContext)
     {
       paramContext = String.valueOf(paramContext);
       new StringBuilder(String.valueOf(paramContext).length() + 45).append("Failed to start service while in background: ").append(paramContext);
-      AppMethodBeat.o(108748);
+      AppMethodBeat.o(4184);
     }
     return 402;
   }
   
-  public static o sa()
-  {
-    try
-    {
-      AppMethodBeat.i(108744);
-      if (bfA == null) {
-        bfA = new o();
-      }
-      o localo = bfA;
-      AppMethodBeat.o(108744);
-      return localo;
-    }
-    finally {}
-  }
-  
   public final int a(Context paramContext, String paramString, Intent paramIntent)
   {
-    AppMethodBeat.i(108747);
+    AppMethodBeat.i(4183);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -187,7 +184,7 @@ public final class o
     }
     for (;;)
     {
-      AppMethodBeat.o(108747);
+      AppMethodBeat.o(4183);
       return 500;
       if (!paramString.equals("com.google.firebase.INSTANCE_ID_EVENT")) {
         break;
@@ -199,15 +196,15 @@ public final class o
       }
       i = 1;
       break;
-      this.bfD.offer(paramIntent);
+      this.dDb.offer(paramIntent);
       for (;;)
       {
         paramString = new Intent(paramString);
         paramString.setPackage(paramContext.getPackageName());
-        i = c(paramContext, paramString);
-        AppMethodBeat.o(108747);
+        i = b(paramContext, paramString);
+        AppMethodBeat.o(4183);
         return i;
-        this.bfE.offer(paramIntent);
+        this.dDc.offer(paramIntent);
       }
       new String("Unknown service action: ");
     }
@@ -215,7 +212,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.o
  * JD-Core Version:    0.7.0.1
  */

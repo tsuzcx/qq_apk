@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/eoo" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="20.0dip" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_toRightOf="@id/eoo">
+        <TextView android:textColor="@color/mb" android:id="@id/eos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q7m" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/f24" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/q7n" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <com.tencent.mobileqq.troop.widget.LimitTextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/f23" android:paddingRight="34.0dip" android:paddingBottom="20.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/q7k" android:maxLines="4" android:layout_below="@id/eos" />
+        <View android:background="#ff777777" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

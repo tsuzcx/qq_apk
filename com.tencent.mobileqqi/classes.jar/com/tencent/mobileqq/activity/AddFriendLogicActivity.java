@@ -309,7 +309,7 @@ public class AddFriendLogicActivity
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton((String)localObject2, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(str1, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
         if ((this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null) || (this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131231484).setVisibility(8);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131231483).setVisibility(8);
         }
         return;
         i1 = 2131561391;

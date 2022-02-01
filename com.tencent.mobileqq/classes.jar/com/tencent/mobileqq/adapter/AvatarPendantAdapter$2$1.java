@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.adapter;
 
-import akhh;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-public class AvatarPendantAdapter$2$1
+class AvatarPendantAdapter$2$1
   implements Runnable
 {
-  public AvatarPendantAdapter$2$1(akhh paramakhh, TextView paramTextView, int paramInt) {}
+  AvatarPendantAdapter$2$1(AvatarPendantAdapter.2 param2, TextView paramTextView, int paramInt) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    int j = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new LinearLayout.LayoutParams(i - j, -2));
+    int i = this.a.getWidth();
+    int j = this.b;
+    this.a.setLayoutParams(new LinearLayout.LayoutParams(i - j, -2));
   }
 }
 

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="0.5dip" android:color="@color/f2" />
-    <solid android:color="@color/f0" />
-    <corners android:radius="@dimen/qr" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/bs" />
+</selector>

@@ -1,23 +1,20 @@
 package android.support.v4.app;
 
+import android.app.Notification;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 
 public final class aq
-  extends bc
 {
-  private CharSequence eB;
-  
-  public final aq a(CharSequence paramCharSequence)
+  public static Bundle a(Notification paramNotification)
   {
-    this.eB = ar.e(paramCharSequence);
-    return this;
-  }
-  
-  public final void a(an paraman)
-  {
-    if (Build.VERSION.SDK_INT >= 16) {
-      bo.a(paraman, this.fp, this.fr, this.fq, this.eB);
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramNotification.extras;
     }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return ay.a(paramNotification);
+    }
+    return null;
   }
 }
 

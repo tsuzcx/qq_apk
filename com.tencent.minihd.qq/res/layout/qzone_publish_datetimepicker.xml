@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="#ffe8e8e8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="200.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="left" android:orientation="vertical" android:id="@id/content" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_marginBottom="15.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="@color/black" android:gravity="left" android:layout_gravity="left" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginBottom="10.0dip" android:text="选择日期" android:singleLine="true" />
+        <DatePicker android:layout_gravity="left" android:id="@id/date_picker" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/black" android:gravity="left" android:layout_gravity="left" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginBottom="10.0dip" android:text="选择时间" android:singleLine="true" />
+        <TimePicker android:layout_gravity="left" android:id="@id/time_picker" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/content" android:layout_alignLeft="@id/content" android:layout_alignRight="@id/content">
+        <Button android:textSize="16.0sp" android:textColor="@color/black" android:id="@id/negativeButton" android:layout_width="0.0dip" android:layout_height="42.0dip" android:text="取消" android:layout_weight="1.0" />
+        <Button android:textSize="16.0sp" android:textColor="@color/black" android:id="@id/positiveButton" android:layout_width="0.0dip" android:layout_height="42.0dip" android:text="确定" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

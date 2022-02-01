@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/news_image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/widget_shadow_margin" android:layout_marginTop="@dimen/widget_shadow_margin" android:layout_marginRight="@dimen/widget_shadow_margin" android:layout_marginBottom="@dimen/widget_shadow_margin_bottom" android:src="@drawable/widget_news_default" android:scaleType="centerCrop" android:contentDescription="@string/widget_news" />
+    <ImageView android:id="@id/widget_mask" android:background="@drawable/news_mask_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/widget_shadow_margin" android:layout_marginTop="@dimen/widget_shadow_margin" android:layout_marginRight="@dimen/widget_shadow_margin" android:layout_marginBottom="@dimen/widget_shadow_margin_bottom" />
+    <TextView android:textSize="@dimen/widget_item_font_size" android:textColor="#ffffffff" android:ellipsize="marquee" android:gravity="bottom|center" android:id="@id/news_text" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="20.0dip" android:text="" android:singleLine="true" />
+    <ImageView android:background="@drawable/widget_shadow_layer" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

@@ -6,14 +6,14 @@ import com.tencent.aekit.openrender.UniformParam.Float1sParam;
 import com.tencent.aekit.openrender.UniformParam.Float2fParam;
 import com.tencent.aekit.openrender.UniformParam.Float4fParam;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
-import com.tencent.filter.BaseFilter;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.List;
 
 public class FacePointsFilter
-  extends BaseFilter
+  extends VideoFilterBase
 {
   private static final String FRAGMENT_SHADER = FileUtils.loadAssetsString(AEModule.getContext(), "DrawPoints.glsl");
   
@@ -53,7 +53,7 @@ public class FacePointsFilter
     if (CollectionUtils.isEmpty(paramList)) {
       return;
     }
-    updatePoints(VideoMaterialUtil.toFlatArray((List)paramList.get(0)));
+    updatePoints(VideoMaterial.toFlatArray((List)paramList.get(0)));
   }
   
   public void updatePointColor(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -68,7 +68,7 @@ public class FacePointsFilter
   
   public void updatePoints(List<PointF> paramList)
   {
-    updatePoints(VideoMaterialUtil.toFlatArray(paramList));
+    updatePoints(VideoMaterial.toFlatArray(paramList));
   }
   
   public void updatePoints(float[] paramArrayOfFloat)
@@ -80,11 +80,12 @@ public class FacePointsFilter
   
   public void updatePointsVis(List<Float[]> paramList, int paramInt)
   {
-    if (CollectionUtils.isEmpty(paramList)) {}
-    while (paramList.size() <= paramInt) {
+    if (CollectionUtils.isEmpty(paramList)) {
       return;
     }
-    updatePointsVis(toFlatArray((Float[])paramList.get(paramInt)));
+    if (paramList.size() > paramInt) {
+      updatePointsVis(toFlatArray((Float[])paramList.get(paramInt)));
+    }
   }
   
   public void updatePointsVis(float[] paramArrayOfFloat)
@@ -97,12 +98,17 @@ public class FacePointsFilter
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
     addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
-    addParam(new UniformParam.Float2fParam("faceDetectImageSize", (float)(paramInt1 * paramDouble), (float)(paramInt2 * paramDouble)));
+    double d = paramInt1;
+    Double.isNaN(d);
+    float f = (float)(d * paramDouble);
+    d = paramInt2;
+    Double.isNaN(d);
+    addParam(new UniformParam.Float2fParam("faceDetectImageSize", f, (float)(d * paramDouble)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FacePointsFilter
  * JD-Core Version:    0.7.0.1
  */

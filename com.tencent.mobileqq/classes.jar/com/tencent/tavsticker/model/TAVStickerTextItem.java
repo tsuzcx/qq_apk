@@ -14,7 +14,7 @@ public class TAVStickerTextItem
   implements Parcelable
 {
   public static final Parcelable.Creator<TAVStickerTextItem> CREATOR = new TAVStickerTextItem.1();
-  private static final String TAG = TAVStickerTextItem.class.getSimpleName();
+  private static final String TAG = "TAVStickerTextItem";
   private String assetFontPath = "";
   private int defaultColor = -16777216;
   private String defaultText = "";
@@ -56,14 +56,13 @@ public class TAVStickerTextItem
   
   private PAGFont getPagFont()
   {
-    PAGFont localPAGFont = null;
     if (!TextUtils.isEmpty(this.fontPath)) {
-      localPAGFont = TAVFontManager.getInstance().fontWithPath(this.fontPath);
+      return TAVFontManager.getInstance().fontWithPath(this.fontPath);
     }
-    while (TextUtils.isEmpty(this.assetFontPath)) {
-      return localPAGFont;
+    if (!TextUtils.isEmpty(this.assetFontPath)) {
+      return TAVFontManager.getInstance().fontWithAssetPath(TAVStickerHelper.getContext(), this.assetFontPath);
     }
-    return TAVFontManager.getInstance().fontWithAssetPath(TAVStickerHelper.getContext(), this.assetFontPath);
+    return null;
   }
   
   private void init()
@@ -182,7 +181,33 @@ public class TAVStickerTextItem
   
   public String toString()
   {
-    return "TAVStickerTextItem {layerIndex : " + this.layerIndex + ", layerName : " + this.layerName + ", layerType : " + this.layerType + ", text : " + this.text + ", defaultText : " + this.defaultText + ", maxLength : " + this.maxLength + ", textColor : " + this.textColor + ", defaultColor : " + this.defaultColor + ", fontPath : " + this.fontPath + ", assetFontPath : " + this.assetFontPath + ", fontFamily : " + this.fontFamily + ", fontStyle : " + this.fontStyle + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVStickerTextItem {layerIndex : ");
+    localStringBuilder.append(this.layerIndex);
+    localStringBuilder.append(", layerName : ");
+    localStringBuilder.append(this.layerName);
+    localStringBuilder.append(", layerType : ");
+    localStringBuilder.append(this.layerType);
+    localStringBuilder.append(", text : ");
+    localStringBuilder.append(this.text);
+    localStringBuilder.append(", defaultText : ");
+    localStringBuilder.append(this.defaultText);
+    localStringBuilder.append(", maxLength : ");
+    localStringBuilder.append(this.maxLength);
+    localStringBuilder.append(", textColor : ");
+    localStringBuilder.append(this.textColor);
+    localStringBuilder.append(", defaultColor : ");
+    localStringBuilder.append(this.defaultColor);
+    localStringBuilder.append(", fontPath : ");
+    localStringBuilder.append(this.fontPath);
+    localStringBuilder.append(", assetFontPath : ");
+    localStringBuilder.append(this.assetFontPath);
+    localStringBuilder.append(", fontFamily : ");
+    localStringBuilder.append(this.fontFamily);
+    localStringBuilder.append(", fontStyle : ");
+    localStringBuilder.append(this.fontStyle);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public TAVStickerTextItem updateData(TAVStickerTextItem paramTAVStickerTextItem)
@@ -205,58 +230,45 @@ public class TAVStickerTextItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.layerIndex);
-    if (this.layerName == null)
-    {
-      str = "";
-      paramParcel.writeString(str);
-      paramParcel.writeInt(this.layerType);
-      if (this.text != null) {
-        break label124;
-      }
-      str = "";
-      label41:
-      paramParcel.writeString(str);
-      if (this.defaultText != null) {
-        break label132;
-      }
-      str = "";
-      label56:
-      paramParcel.writeString(str);
-      paramParcel.writeInt(this.maxLength);
-      paramParcel.writeInt(this.textColor);
-      paramParcel.writeInt(this.defaultColor);
-      if (this.fontPath != null) {
-        break label140;
-      }
-      str = "";
-      label95:
-      paramParcel.writeString(str);
-      if (this.assetFontPath != null) {
-        break label148;
-      }
+    if (this.layerName == null) {
+      localObject = "";
+    } else {
+      localObject = this.layerName;
     }
-    label132:
-    label140:
-    label148:
-    for (String str = "";; str = this.assetFontPath)
-    {
-      paramParcel.writeString(str);
-      return;
-      str = this.layerName;
-      break;
-      label124:
-      str = this.text;
-      break label41;
-      str = this.defaultText;
-      break label56;
-      str = this.fontPath;
-      break label95;
+    paramParcel.writeString((String)localObject);
+    paramParcel.writeInt(this.layerType);
+    String str = this.text;
+    Object localObject = str;
+    if (str == null) {
+      localObject = "";
     }
+    paramParcel.writeString((String)localObject);
+    str = this.defaultText;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    paramParcel.writeString((String)localObject);
+    paramParcel.writeInt(this.maxLength);
+    paramParcel.writeInt(this.textColor);
+    paramParcel.writeInt(this.defaultColor);
+    str = this.fontPath;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    paramParcel.writeString((String)localObject);
+    str = this.assetFontPath;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    paramParcel.writeString((String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerTextItem
  * JD-Core Version:    0.7.0.1
  */

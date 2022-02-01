@@ -10,59 +10,60 @@ public class AEKitDownSetting
   
   private static boolean compareArr(int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayOfInt1 == null) || (paramArrayOfInt2 == null)) {
-      bool1 = true;
-    }
-    do
+    if (paramArrayOfInt1 != null)
     {
-      return bool1;
-      bool1 = bool2;
-    } while (paramArrayOfInt1.length != paramArrayOfInt2.length);
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramArrayOfInt1.length) {
-        break label82;
-      }
-      if (paramBoolean)
-      {
-        bool1 = bool2;
-        if (paramArrayOfInt1[i] < paramArrayOfInt2[i]) {
-          break;
-        }
-      }
-      while (paramArrayOfInt1[i] != paramArrayOfInt2[i])
-      {
+      if (paramArrayOfInt2 == null) {
         return true;
-        if (paramArrayOfInt1[i] > paramArrayOfInt2[i]) {
+      }
+      if (paramArrayOfInt1.length != paramArrayOfInt2.length) {
+        return false;
+      }
+      int i = 0;
+      while (i < paramArrayOfInt1.length)
+      {
+        if (paramBoolean)
+        {
+          if (paramArrayOfInt1[i] < paramArrayOfInt2[i]) {
+            return false;
+          }
+        }
+        else if (paramArrayOfInt1[i] > paramArrayOfInt2[i]) {
           return false;
         }
+        if (paramArrayOfInt1[i] != paramArrayOfInt2[i]) {
+          return true;
+        }
+        i += 1;
       }
-      i += 1;
     }
-    label82:
     return true;
   }
   
   private static boolean needUpdate(String paramString, AEKitDownSetting.DownResInfo paramDownResInfo)
   {
-    boolean bool = true;
-    if ((paramDownResInfo == null) || (paramString == null)) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramDownResInfo != null)
     {
-      return false;
+      if (paramString == null) {
+        return false;
+      }
       paramString = parseVer(paramString);
-    } while (paramString == null);
-    int[] arrayOfInt = parseVer(paramDownResInfo.minAppVer);
-    paramDownResInfo = parseVer(paramDownResInfo.maxAppVer);
-    if ((compareArr(paramString, arrayOfInt, true)) && (compareArr(paramString, paramDownResInfo, false))) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+      if (paramString == null) {
+        return false;
+      }
+      int[] arrayOfInt = parseVer(paramDownResInfo.minAppVer);
+      paramDownResInfo = parseVer(paramDownResInfo.maxAppVer);
+      bool1 = bool2;
+      if (compareArr(paramString, arrayOfInt, true))
+      {
+        bool1 = bool2;
+        if (compareArr(paramString, paramDownResInfo, false)) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
   
   private static int[] parseVer(String paramString)
@@ -70,51 +71,70 @@ public class AEKitDownSetting
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    paramString = paramString.split("\\.");
-    if ((paramString == null) || (paramString.length != 3)) {
-      return null;
-    }
-    int[] arrayOfInt = new int[3];
-    int i = 0;
-    while (i < paramString.length) {
-      try
-      {
-        arrayOfInt[i] = Integer.parseInt(paramString[i]);
-        i += 1;
-      }
-      catch (Throwable paramString)
-      {
+    String[] arrayOfString = paramString.split("\\.");
+    int i;
+    if (arrayOfString != null)
+    {
+      if (arrayOfString.length < 3) {
         return null;
       }
+      paramString = new int[arrayOfString.length];
+      i = 0;
     }
-    return arrayOfInt;
+    for (;;)
+    {
+      if (i < paramString.length) {
+        if (i >= arrayOfString.length) {
+          return paramString;
+        }
+      }
+      try
+      {
+        paramString[i] = Integer.parseInt(arrayOfString[i]);
+        i += 1;
+      }
+      catch (Throwable localThrowable) {}
+    }
+    return paramString;
+    return null;
+    return paramString;
   }
   
   public AEKitDownSetting.DownResInfo getDownResInfo(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (this.AEKitSDKSetting == null)) {}
-    for (;;)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramString1 != null)
     {
-      return null;
-      Iterator localIterator = this.AEKitSDKSetting.iterator();
-      AEKitDownSetting.DownResInfo localDownResInfo;
-      do
+      localObject1 = localObject2;
+      if (paramString2 != null)
       {
-        if (!localIterator.hasNext()) {
-          break;
+        localObject1 = this.AEKitSDKSetting;
+        if (localObject1 == null) {
+          return null;
         }
-        localDownResInfo = (AEKitDownSetting.DownResInfo)localIterator.next();
-      } while ((localDownResInfo == null) || (!paramString1.equals(localDownResInfo.res_id)));
-      for (paramString1 = localDownResInfo; needUpdate(paramString2, paramString1); paramString1 = null)
-      {
-        if (needUpdate(paramString2, paramString1)) {}
-        for (;;)
+        Iterator localIterator = ((List)localObject1).iterator();
+        while (localIterator.hasNext())
         {
-          return paramString1;
-          paramString1 = null;
+          localObject1 = (AEKitDownSetting.DownResInfo)localIterator.next();
+          if ((localObject1 != null) && (paramString1.equals(((AEKitDownSetting.DownResInfo)localObject1).res_id)))
+          {
+            paramString1 = (String)localObject1;
+            break label79;
+          }
+        }
+        paramString1 = null;
+        label79:
+        if (!needUpdate(paramString2, paramString1)) {
+          return null;
+        }
+        localObject1 = localObject2;
+        if (needUpdate(paramString2, paramString1)) {
+          localObject1 = paramString1;
         }
       }
     }
+    return localObject1;
   }
   
   public String getResInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -128,7 +148,7 @@ public class AEKitDownSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.offlineset.beans.AEKitDownSetting
  * JD-Core Version:    0.7.0.1
  */

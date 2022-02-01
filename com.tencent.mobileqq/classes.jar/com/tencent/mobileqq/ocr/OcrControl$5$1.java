@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.ocr;
 
-import anbq;
-import anbr;
-import avxb;
-import avxc;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
 import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-public class OcrControl$5$1
+class OcrControl$5$1
   implements Runnable
 {
-  public OcrControl$5$1(avxc paramavxc, OcrRecogResult paramOcrRecogResult, anbr paramanbr) {}
+  OcrControl$5$1(OcrControl.5 param5, OcrRecogResult paramOcrRecogResult, ARCloudReqInfo paramARCloudReqInfo) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Avxc.a.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult.filename = this.jdField_a_of_type_Anbr.a.b;
+    if (this.c.a.d != null) {
+      this.a.filename = this.b.b.e;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.5.1
  * JD-Core Version:    0.7.0.1
  */

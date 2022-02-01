@@ -16,17 +16,23 @@ public final class bankcode_info$BankcodeCtrlInfo
   public static final int MSGTAIL_CONF_FILE_URL_FIELD_NUMBER = 4;
   public static final int MSGTAIL_ID_FIELD_NUMBER = 2;
   public static final int MSGTAIL_VER_FIELD_NUMBER = 3;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50 }, new String[] { "bankcode_elems", "msgtail_id", "msgtail_ver", "msgtail_conf_file_url", "msgtail_conf_file_md5", "fromuin_phonenum" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), "", "", "" }, BankcodeCtrlInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatMessageField<bankcode_info.BankcodeElem> bankcode_elems = PBField.initRepeatMessage(bankcode_info.BankcodeElem.class);
   public final PBStringField fromuin_phonenum = PBField.initString("");
   public final PBStringField msgtail_conf_file_md5 = PBField.initString("");
   public final PBStringField msgtail_conf_file_url = PBField.initString("");
   public final PBUInt32Field msgtail_id = PBField.initUInt32(0);
   public final PBUInt32Field msgtail_ver = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50 }, new String[] { "bankcode_elems", "msgtail_id", "msgtail_ver", "msgtail_conf_file_url", "msgtail_conf_file_md5", "fromuin_phonenum" }, new Object[] { null, localInteger, localInteger, "", "", "" }, BankcodeCtrlInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.bankcode_info.BankcodeCtrlInfo
  * JD-Core Version:    0.7.0.1
  */

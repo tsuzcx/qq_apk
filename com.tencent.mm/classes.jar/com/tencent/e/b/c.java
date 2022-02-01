@@ -1,55 +1,55 @@
 package com.tencent.e.b;
 
 import android.content.Context;
-import android.os.Build;
 import com.tencent.e.f.d;
 import com.tencent.e.f.d.a;
 import com.tencent.e.f.i;
 import com.tencent.e.f.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
 
 public final class c
 {
-  private int BiS;
-  private com.tencent.e.c.a.c BiU;
+  private int ahsm;
+  private com.tencent.e.c.a.c ahso;
   private Context mContext;
   private String mVersionName;
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(114475);
-    this.BiU = null;
+    AppMethodBeat.i(138316);
+    this.ahso = null;
     this.mVersionName = null;
-    this.BiS = -1;
+    this.ahsm = -1;
     this.mContext = paramContext;
-    paramContext = i.cc(paramContext, paramContext.getPackageName());
+    paramContext = i.jdMethod_do(paramContext, paramContext.getPackageName());
     this.mVersionName = paramContext.versionName;
-    this.BiS = paramContext.versionCode;
-    AppMethodBeat.o(114475);
+    this.ahsm = paramContext.versionCode;
+    AppMethodBeat.o(138316);
   }
   
   private com.tencent.e.c.a.c a(com.tencent.e.e.a.b.a parama)
   {
-    AppMethodBeat.i(114477);
-    if (this.BiU == null)
+    AppMethodBeat.i(138318);
+    if (this.ahso == null)
     {
-      this.BiU = new com.tencent.e.c.a.c();
-      this.BiU.Bjf = 82;
-      this.BiU.Bjk = this.BiS;
-      this.BiU.Bjc = parama.cCy;
-      this.BiU.Bjb = parama.Bjb;
+      this.ahso = new com.tencent.e.c.a.c();
+      this.ahso.ahsy = 82;
+      this.ahso.ahsD = this.ahsm;
+      this.ahso.ahsw = parama.channel;
+      this.ahso.ahsv = parama.ahsv;
     }
     try
     {
-      String[] arrayOfString = this.mVersionName.trim().split("[\\.]");
-      if ((arrayOfString == null) || (arrayOfString.length < 3)) {
-        break label334;
+      parama = this.mVersionName.trim().split("[\\.]");
+      if ((parama == null) || (parama.length < 3)) {
+        break label294;
       }
-      k = Integer.parseInt(arrayOfString[0]);
-      j = Integer.parseInt(arrayOfString[1]);
-      i = Integer.parseInt(arrayOfString[2]);
+      k = Integer.parseInt(parama[0]);
+      j = Integer.parseInt(parama[1]);
+      i = Integer.parseInt(parama[2]);
     }
-    catch (Exception localException)
+    catch (Exception parama)
     {
       for (;;)
       {
@@ -59,27 +59,27 @@ public final class c
         int k = 0;
       }
     }
-    this.BiU.Bjg = new com.tencent.e.c.a.b();
-    this.BiU.Bjg.BiY = k;
-    this.BiU.Bjg.BiZ = j;
-    this.BiU.Bjg.Bja = i;
-    this.BiU.Bjh = 0;
-    this.BiU.Bjj = d.dUQ();
-    this.BiU.imei = awy(parama.imei);
-    this.BiU.imsi = awy(parama.imsi);
-    this.BiU.Bjd = awy(Build.MODEL);
-    this.BiU.rpv = awy(d.jc(this.mContext));
-    this.BiU.Bjp = awy(d.rU(true));
-    this.BiU.Bjq = awy(d.rU(false));
-    this.BiU.Bji = 0;
-    this.BiU.Bje = getNetworkType();
-    this.BiU.guid = awy(d.je(this.mContext));
-    parama = this.BiU;
-    AppMethodBeat.o(114477);
+    this.ahso.ahsz = new com.tencent.e.c.a.b();
+    this.ahso.ahsz.ahss = k;
+    this.ahso.ahsz.ahst = j;
+    this.ahso.ahsz.ahsu = i;
+    this.ahso.ahsA = 0;
+    this.ahso.ahsC = d.getSDKVersion();
+    this.ahso.imei = "1234567890ABCDEF";
+    this.ahso.imsi = "";
+    this.ahso.YDY = bFv(q.aPo());
+    this.ahso.aid = "";
+    this.ahso.ahsI = "";
+    this.ahso.ahsJ = "";
+    this.ahso.ahsB = 0;
+    this.ahso.ahsx = getNetworkType();
+    this.ahso.guid = bFv("");
+    parama = this.ahso;
+    AppMethodBeat.o(138318);
     return parama;
   }
   
-  private static String awy(String paramString)
+  private static String bFv(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -90,42 +90,39 @@ public final class c
   
   private int getNetworkType()
   {
-    AppMethodBeat.i(114478);
+    AppMethodBeat.i(138319);
     try
     {
-      if (d.jd(this.mContext) == d.a.BlC)
-      {
-        AppMethodBeat.o(114478);
+      if (d.od(this.mContext) == d.a.ahvl) {
         return 2;
       }
-      AppMethodBeat.o(114478);
       return 1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(114478);
+      AppMethodBeat.o(138319);
     }
     return 2;
   }
   
   public final byte[] c(String paramString1, String paramString2, com.tencent.e.e.a.b.a parama)
   {
-    AppMethodBeat.i(114476);
+    AppMethodBeat.i(138317);
     Object localObject = null;
     try
     {
       l locall = new l();
-      locall.dUW();
-      locall.awH(paramString1);
-      locall.awI(paramString2);
-      locall.awG("UTF-8");
-      locall.put("userInfo", a(parama));
-      locall.put("req", parama);
-      paramString1 = com.tencent.e.f.b.compress(locall.AJ());
+      locall.ako();
+      locall.em(paramString1);
+      locall.en(paramString2);
+      locall.bFC("UTF-8");
+      locall.j("userInfo", a(parama));
+      locall.j("req", parama);
+      paramString1 = com.tencent.e.f.b.compress(locall.akn());
       if (paramString1 == null)
       {
         paramString1 = new RuntimeException("compress data fail");
-        AppMethodBeat.o(114476);
+        AppMethodBeat.o(138317);
         throw paramString1;
       }
     }
@@ -135,9 +132,9 @@ public final class c
     }
     for (;;)
     {
-      AppMethodBeat.o(114476);
+      AppMethodBeat.o(138317);
       return paramString1;
-      paramString1 = com.tencent.e.f.c.m(paramString1, com.tencent.e.f.c.dUP());
+      paramString1 = com.tencent.e.f.c.q(paramString1, com.tencent.e.f.c.jXz());
     }
   }
 }

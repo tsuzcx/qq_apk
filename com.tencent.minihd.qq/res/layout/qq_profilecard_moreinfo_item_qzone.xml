@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">"
+<TextView android:gravity="right" android:layout_gravity="right" android:id="@id/title" style="@style/CardInfoItemTitle" />
+    <TextView android:ellipsize="end" android:id="@id/info" android:layout_marginRight="15.0dip" android:maxLines="2" style="@style/CardInfoItemInfo" />
+    <ImageView android:id="@id/arrow" style="@style/CardInfoItemArrow" />
+</LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/a0e" android:background="@color/a6q" style="@style/q1"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:padding="@dimen/gm" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/aak" android:id="@id/en9" android:background="@color/w4" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/eoa" android:paddingStart="@dimen/dv" android:paddingEnd="@dimen/dv" />
-    <GridView android:id="@id/en_" android:background="@color/vy" android:paddingLeft="@dimen/la" android:paddingTop="@dimen/ll" android:paddingRight="@dimen/la" android:paddingBottom="@dimen/ll" android:scrollbars="vertical" android:numColumns="5" style="@style/mn" />
+    <ProgressBar android:layout_width="16.0dip" android:layout_height="16.0dip" android:indeterminateDrawable="@drawable/a7c" />
+    <TextView android:textSize="@dimen/gw" android:textColor="@color/f_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/gx" android:text="@string/f9_" />
 </LinearLayout>

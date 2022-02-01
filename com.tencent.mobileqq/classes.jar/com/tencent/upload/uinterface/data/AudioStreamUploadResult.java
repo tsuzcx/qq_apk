@@ -28,17 +28,19 @@ public class AudioStreamUploadResult
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.rsp != null) {
-      paramJceOutputStream.write(this.rsp, 0);
+    Object localObject = this.rsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.filePath != null) {
-      paramJceOutputStream.write(this.filePath, 1);
+    localObject = this.filePath;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.AudioStreamUploadResult
  * JD-Core Version:    0.7.0.1
  */

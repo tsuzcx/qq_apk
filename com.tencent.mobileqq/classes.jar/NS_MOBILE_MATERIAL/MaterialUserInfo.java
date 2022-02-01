@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MaterialUserInfo
   extends JceStruct
@@ -12,10 +13,10 @@ public final class MaterialUserInfo
   static MaterialUserItem cache_stCurrentItem = new MaterialUserItem();
   static ArrayList<MaterialUserItem> cache_vecHistoryItem;
   static ArrayList<MaterialUserItem> cache_vecUserItem = new ArrayList();
-  public int iSwitchState;
-  public MaterialUserItem stCurrentItem;
-  public ArrayList<MaterialUserItem> vecHistoryItem;
-  public ArrayList<MaterialUserItem> vecUserItem;
+  public int iSwitchState = 0;
+  public MaterialUserItem stCurrentItem = null;
+  public ArrayList<MaterialUserItem> vecHistoryItem = null;
+  public ArrayList<MaterialUserItem> vecUserItem = null;
   
   static
   {
@@ -46,21 +47,24 @@ public final class MaterialUserInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecUserItem != null) {
-      paramJceOutputStream.write(this.vecUserItem, 0);
+    Object localObject = this.vecUserItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.vecHistoryItem != null) {
-      paramJceOutputStream.write(this.vecHistoryItem, 1);
+    localObject = this.vecHistoryItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.iSwitchState, 2);
-    if (this.stCurrentItem != null) {
-      paramJceOutputStream.write(this.stCurrentItem, 3);
+    localObject = this.stCurrentItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.MaterialUserInfo
  * JD-Core Version:    0.7.0.1
  */

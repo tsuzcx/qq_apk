@@ -109,9 +109,9 @@ public class HornAnimationView
       }
       HornDetail localHornDetail = (HornDetail)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
       ImageView localImageView1 = (ImageView)paramView.findViewById(2131230940);
-      ImageView localImageView2 = (ImageView)paramView.findViewById(2131231983);
+      ImageView localImageView2 = (ImageView)paramView.findViewById(2131231982);
       TextView localTextView = (TextView)paramView.findViewById(2131230989);
-      AnimationTextView localAnimationTextView = (AnimationTextView)paramView.findViewById(2131233357);
+      AnimationTextView localAnimationTextView = (AnimationTextView)paramView.findViewById(2131233356);
       localAnimationTextView.setSpannableFactory(QQText.a);
       a(localHornDetail.uin, 0, localImageView1);
       localTextView.setText(localHornDetail.nickName);

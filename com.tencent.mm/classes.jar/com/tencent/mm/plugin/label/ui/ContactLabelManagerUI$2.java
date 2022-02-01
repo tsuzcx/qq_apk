@@ -1,34 +1,30 @@
 package com.tencent.mm.plugin.label.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class ContactLabelManagerUI$2
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  ContactLabelManagerUI$2(ContactLabelManagerUI paramContactLabelManagerUI, af paramaf) {}
+  ContactLabelManagerUI$2(ContactLabelManagerUI paramContactLabelManagerUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(22585);
-    if (this.nYJ != null)
-    {
-      if (this.nYJ.field_isTemporary)
-      {
-        ContactLabelManagerUI.a(this.nYI, this.nYJ.field_labelID);
-        AppMethodBeat.o(22585);
-        return;
-      }
-      ContactLabelManagerUI.a(this.nYI, this.nYJ);
-    }
-    AppMethodBeat.o(22585);
+    AppMethodBeat.i(268729);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/label/ui/ContactLabelManagerUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    ContactLabelManagerUI.i(this.JVF);
+    a.a(this, "com/tencent/mm/plugin/label/ui/ContactLabelManagerUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(268729);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelManagerUI.2
  * JD-Core Version:    0.7.0.1
  */

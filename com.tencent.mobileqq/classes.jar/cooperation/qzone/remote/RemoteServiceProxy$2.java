@@ -19,7 +19,11 @@ class RemoteServiceProxy$2
         }
         catch (Exception localException)
         {
-          RecvMsg localRecvMsg = this.this$0.createWaiteRespTimeout(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
+          RemoteServiceProxy localRemoteServiceProxy = this.this$0;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("sendMsgToServiceFailed，");
+          localStringBuilder.append(localException.toString());
+          RecvMsg localRecvMsg = localRemoteServiceProxy.createWaiteRespTimeout(localSendMsg, localStringBuilder.toString());
           this.this$0.sendFailedRespToApp(localSendMsg, localRecvMsg);
         }
       }
@@ -28,7 +32,7 @@ class RemoteServiceProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.remote.RemoteServiceProxy.2
  * JD-Core Version:    0.7.0.1
  */

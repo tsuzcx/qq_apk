@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
 import android.graphics.Bitmap;
-import bdnl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.StackBlur;
 
 class ShowExternalTroopListActivity$2
   implements Runnable
@@ -11,20 +11,19 @@ class ShowExternalTroopListActivity$2
   
   public void run()
   {
-    Bitmap localBitmap = this.this$0.a(this.this$0.app.a(this.this$0.a, (byte)1, true));
-    if (localBitmap != null) {}
-    try
+    Object localObject = this.this$0;
+    localObject = ((ShowExternalTroopListActivity)localObject).a(((ShowExternalTroopListActivity)localObject).app.getFaceBitmap(this.this$0.n, (byte)1, true));
+    if (localObject != null)
     {
-      bdnl.a(localBitmap, 10);
-      this.this$0.runOnUiThread(new ShowExternalTroopListActivity.2.1(this, localBitmap));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
+      try
+      {
+        StackBlur.a((Bitmap)localObject, 10);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
       {
         localOutOfMemoryError.printStackTrace();
       }
+      this.this$0.runOnUiThread(new ShowExternalTroopListActivity.2.1(this, (Bitmap)localObject));
     }
   }
 }

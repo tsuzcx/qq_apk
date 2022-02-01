@@ -7,12 +7,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
-import beqz;
 
 public class MonitorSizeChangeHSV
   extends HorizontalScrollView
 {
-  private beqz a;
+  private MonitorSizeChangeHSV.IOnSizeChangeCallback a;
   
   public MonitorSizeChangeHSV(Context paramContext)
   {
@@ -42,22 +41,17 @@ public class MonitorSizeChangeHSV
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    ViewGroup localViewGroup;
     if (a())
     {
-      if (paramMotionEvent.getAction() != 0) {
-        break label37;
+      ViewGroup localViewGroup;
+      if (paramMotionEvent.getAction() == 0)
+      {
+        localViewGroup = (ViewGroup)getParent();
+        if (localViewGroup != null) {
+          localViewGroup.requestDisallowInterceptTouchEvent(true);
+        }
       }
-      localViewGroup = (ViewGroup)getParent();
-      if (localViewGroup != null) {
-        localViewGroup.requestDisallowInterceptTouchEvent(true);
-      }
-    }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      label37:
-      if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1))
+      else if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1))
       {
         localViewGroup = (ViewGroup)getParent();
         if (localViewGroup != null) {
@@ -65,19 +59,21 @@ public class MonitorSizeChangeHSV
         }
       }
     }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    MonitorSizeChangeHSV.IOnSizeChangeCallback localIOnSizeChangeCallback = this.a;
+    if (localIOnSizeChangeCallback != null) {
+      localIOnSizeChangeCallback.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
-  public void setOnSizeChangeCallback(beqz parambeqz)
+  public void setOnSizeChangeCallback(MonitorSizeChangeHSV.IOnSizeChangeCallback paramIOnSizeChangeCallback)
   {
-    this.a = parambeqz;
+    this.a = paramIOnSizeChangeCallback;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -89,7 +85,7 @@ public class MonitorSizeChangeHSV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MonitorSizeChangeHSV
  * JD-Core Version:    0.7.0.1
  */

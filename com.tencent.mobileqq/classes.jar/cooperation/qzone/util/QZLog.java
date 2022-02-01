@@ -1,7 +1,6 @@
 package cooperation.qzone.util;
 
 import android.util.Log;
-import bjus;
 import com.tencent.qphone.base.util.QLog;
 
 public class QZLog
@@ -34,27 +33,32 @@ public class QZLog
   
   public static void d(String paramString, int paramInt, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int i = 0;
-    int j = getNewLevel(paramInt);
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
-    while (!needPrintLog(j)) {
-      return;
-    }
-    if ((paramVarArgs.length == 1) && (paramVarArgs[0] != null))
+    int i = getNewLevel(paramInt);
+    if (paramVarArgs != null)
     {
-      d(paramString, j, paramVarArgs[0].toString());
-      return;
+      if (paramVarArgs.length <= 0) {
+        return;
+      }
+      if (needPrintLog(i))
+      {
+        int j = paramVarArgs.length;
+        paramInt = 0;
+        if ((j == 1) && (paramVarArgs[0] != null))
+        {
+          d(paramString, i, paramVarArgs[0].toString());
+          return;
+        }
+        QZLog.LogBuilder localLogBuilder = QZLog.LogBuilder.obtain();
+        j = paramVarArgs.length;
+        while (paramInt < j)
+        {
+          localLogBuilder.append(paramVarArgs[paramInt]);
+          paramInt += 1;
+        }
+        QLog.d(paramString, i, localLogBuilder.toString(), paramThrowable);
+        localLogBuilder.recycle();
+      }
     }
-    bjus localbjus = bjus.a();
-    int k = paramVarArgs.length;
-    paramInt = i;
-    while (paramInt < k)
-    {
-      localbjus.a(paramVarArgs[paramInt]);
-      paramInt += 1;
-    }
-    QLog.d(paramString, j, localbjus.toString(), paramThrowable);
-    localbjus.a();
   }
   
   public static void d(String paramString, int paramInt, Object... paramVarArgs)
@@ -64,27 +68,32 @@ public class QZLog
   
   public static void e(String paramString, int paramInt, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int i = 0;
-    int j = getNewLevel(paramInt);
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
-    while (!needPrintLog(j)) {
-      return;
-    }
-    if ((paramVarArgs.length == 1) && (paramVarArgs[0] != null))
+    int i = getNewLevel(paramInt);
+    if (paramVarArgs != null)
     {
-      QLog.e(paramString, j, paramVarArgs[0].toString(), paramThrowable);
-      return;
+      if (paramVarArgs.length <= 0) {
+        return;
+      }
+      if (needPrintLog(i))
+      {
+        int j = paramVarArgs.length;
+        paramInt = 0;
+        if ((j == 1) && (paramVarArgs[0] != null))
+        {
+          QLog.e(paramString, i, paramVarArgs[0].toString(), paramThrowable);
+          return;
+        }
+        QZLog.LogBuilder localLogBuilder = QZLog.LogBuilder.obtain();
+        j = paramVarArgs.length;
+        while (paramInt < j)
+        {
+          localLogBuilder.append(paramVarArgs[paramInt]);
+          paramInt += 1;
+        }
+        QLog.e(paramString, i, localLogBuilder.toString(), paramThrowable);
+        localLogBuilder.recycle();
+      }
     }
-    bjus localbjus = bjus.a();
-    int k = paramVarArgs.length;
-    paramInt = i;
-    while (paramInt < k)
-    {
-      localbjus.a(paramVarArgs[paramInt]);
-      paramInt += 1;
-    }
-    QLog.e(paramString, j, localbjus.toString(), paramThrowable);
-    localbjus.a();
   }
   
   public static void e(String paramString, int paramInt, Object... paramVarArgs)
@@ -104,9 +113,6 @@ public class QZLog
   
   public static int getNewLevel(int paramInt)
   {
-    if (isForceOpenColor()) {
-      paramInt = 1;
-    }
     return paramInt;
   }
   
@@ -127,27 +133,32 @@ public class QZLog
   
   public static void i(String paramString, int paramInt, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int i = 0;
-    int j = getNewLevel(paramInt);
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
-    while (!needPrintLog(j)) {
-      return;
-    }
-    if ((paramVarArgs.length == 1) && (paramVarArgs[0] != null))
+    int i = getNewLevel(paramInt);
+    if (paramVarArgs != null)
     {
-      i(paramString, j, paramVarArgs[0].toString());
-      return;
+      if (paramVarArgs.length <= 0) {
+        return;
+      }
+      if (needPrintLog(i))
+      {
+        int j = paramVarArgs.length;
+        paramInt = 0;
+        if ((j == 1) && (paramVarArgs[0] != null))
+        {
+          i(paramString, i, paramVarArgs[0].toString());
+          return;
+        }
+        QZLog.LogBuilder localLogBuilder = QZLog.LogBuilder.obtain();
+        j = paramVarArgs.length;
+        while (paramInt < j)
+        {
+          localLogBuilder.append(paramVarArgs[paramInt]);
+          paramInt += 1;
+        }
+        QLog.i(paramString, i, localLogBuilder.toString(), paramThrowable);
+        localLogBuilder.recycle();
+      }
     }
-    bjus localbjus = bjus.a();
-    int k = paramVarArgs.length;
-    paramInt = i;
-    while (paramInt < k)
-    {
-      localbjus.a(paramVarArgs[paramInt]);
-      paramInt += 1;
-    }
-    QLog.i(paramString, j, localbjus.toString(), paramThrowable);
-    localbjus.a();
   }
   
   public static void i(String paramString, int paramInt, Object... paramVarArgs)
@@ -162,9 +173,6 @@ public class QZLog
   
   public static boolean isColorLevel()
   {
-    if (isForceOpenColor()) {
-      return true;
-    }
     return QLog.isColorLevel();
   }
   
@@ -173,52 +181,47 @@ public class QZLog
     return QLog.isDevelopLevel();
   }
   
-  public static boolean isForceOpenColor()
-  {
-    return false;
-  }
-  
   private static boolean needPrintLog(int paramInt)
   {
     int i;
     if (QLog.isDevelopLevel()) {
       i = 4;
+    } else if (QLog.isColorLevel()) {
+      i = 2;
+    } else {
+      i = 1;
     }
-    while (i >= paramInt)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        i = 2;
-      } else {
-        i = 1;
-      }
-    }
-    return false;
+    return i >= paramInt;
   }
   
   public static void w(String paramString, int paramInt, Throwable paramThrowable, Object... paramVarArgs)
   {
-    int i = 0;
-    int j = getNewLevel(paramInt);
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
-    while (!needPrintLog(j)) {
-      return;
-    }
-    if ((paramVarArgs.length == 1) && (paramVarArgs[0] != null))
+    int i = getNewLevel(paramInt);
+    if (paramVarArgs != null)
     {
-      QLog.w(paramString, j, paramVarArgs[0].toString());
-      return;
+      if (paramVarArgs.length <= 0) {
+        return;
+      }
+      if (needPrintLog(i))
+      {
+        int j = paramVarArgs.length;
+        paramInt = 0;
+        if ((j == 1) && (paramVarArgs[0] != null))
+        {
+          QLog.w(paramString, i, paramVarArgs[0].toString());
+          return;
+        }
+        QZLog.LogBuilder localLogBuilder = QZLog.LogBuilder.obtain();
+        j = paramVarArgs.length;
+        while (paramInt < j)
+        {
+          localLogBuilder.append(paramVarArgs[paramInt]);
+          paramInt += 1;
+        }
+        QLog.w(paramString, i, localLogBuilder.toString(), paramThrowable);
+        localLogBuilder.recycle();
+      }
     }
-    bjus localbjus = bjus.a();
-    int k = paramVarArgs.length;
-    paramInt = i;
-    while (paramInt < k)
-    {
-      localbjus.a(paramVarArgs[paramInt]);
-      paramInt += 1;
-    }
-    QLog.w(paramString, j, localbjus.toString(), paramThrowable);
-    localbjus.a();
   }
   
   public static void w(String paramString, int paramInt, Object... paramVarArgs)
@@ -243,7 +246,7 @@ public class QZLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.QZLog
  * JD-Core Version:    0.7.0.1
  */

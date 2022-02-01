@@ -11,10 +11,10 @@ import android.widget.FrameLayout.LayoutParams;
 public class BoxShadowLayout
   extends FrameLayout
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  BoxShadow jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow;
-  int b;
+  BoxShadow a;
+  View b;
+  int c;
+  int d;
   
   public BoxShadowLayout(@NonNull Context paramContext)
   {
@@ -33,52 +33,53 @@ public class BoxShadowLayout
   
   public void a(int paramInt)
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow.getLayoutParams();
-    localLayoutParams.leftMargin = (paramInt - (int)(this.b * 0.5F));
-    localLayoutParams.rightMargin = (paramInt - (int)(this.b * 0.5F));
-    localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.a.getLayoutParams();
+    int i = this.d;
+    localLayoutParams.leftMargin = (paramInt - (int)(i * 0.5F));
+    localLayoutParams.rightMargin = (paramInt - (int)(i * 0.5F));
+    localLayoutParams = (FrameLayout.LayoutParams)this.b.getLayoutParams();
     localLayoutParams.leftMargin = paramInt;
     localLayoutParams.rightMargin = paramInt;
-    localLayoutParams.bottomMargin = ((int)(this.b * 0.75F));
-    this.jdField_a_of_type_AndroidViewView.setMinimumHeight(0);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    localLayoutParams.bottomMargin = ((int)(this.d * 0.75F));
+    this.b.setMinimumHeight(0);
+    this.b.setLayoutParams(localLayoutParams);
   }
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow = new BoxShadow(getContext(), paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramInt1;
-    paramInt2 = (int)(0.5F * paramInt1);
+    this.a = new BoxShadow(getContext(), paramInt1, paramInt2, paramInt3);
+    this.b = paramView;
+    this.d = paramInt1;
+    paramInt2 = (int)(paramInt1 * 0.5F);
     paramView = new FrameLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow, paramView);
+    addView(this.a, paramView);
     paramView = new FrameLayout.LayoutParams(-1, -2);
     paramView.leftMargin = paramInt2;
     paramView.topMargin = 0;
     paramView.rightMargin = paramInt2;
     paramView.bottomMargin = paramInt1;
-    addView(this.jdField_a_of_type_AndroidViewView, paramView);
+    addView(this.b, paramView);
   }
   
   public void setScrolling(boolean paramBoolean) {}
   
   public void setShadowColor(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow.setShadowColor(paramInt);
+    this.a.setShadowColor(paramInt);
   }
   
   public void setYOffset(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadow.getLayoutParams();
+    this.c = paramInt;
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.a.getLayoutParams();
     localLayoutParams.topMargin += paramInt;
-    localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams = (FrameLayout.LayoutParams)this.b.getLayoutParams();
     localLayoutParams.topMargin += paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.BoxShadowLayout
  * JD-Core Version:    0.7.0.1
  */

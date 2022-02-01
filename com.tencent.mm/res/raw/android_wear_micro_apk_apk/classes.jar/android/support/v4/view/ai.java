@@ -2,9 +2,9 @@ package android.support.v4.view;
 
 final class ai
 {
-  boolean lX;
-  float lY;
-  float lZ;
+  boolean nT;
+  float nU;
+  float nV;
   int position;
 }
 

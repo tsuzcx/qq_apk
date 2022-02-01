@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/cdd" android:background="@drawable/ap9" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/cde" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@raw/default_avatar" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/a6q" android:layout_gravity="center_vertical" android:id="@id/cdf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/e0z" android:singleLine="true" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/qc" android:id="@id/cvw" android:paddingLeft="@dimen/f5" android:paddingTop="@dimen/f5" android:paddingRight="@dimen/f5" android:paddingBottom="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/cws" android:paddingBottom="@dimen/f5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/f5" android:layout_marginRight="@dimen/f5" flowlayout:horizontalSpacing="@dimen/f5" flowlayout:verticalSpacing="@dimen/f5" />
 </LinearLayout>

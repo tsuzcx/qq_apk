@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView android:id="@id/ebs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@android:color/transparent" android:divider="@drawable/jq" android:dividerHeight="1.0px" android:footerDividersEnabled="false" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ikj" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/ikk" android:background="@drawable/bg_texture" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="150.0dip" android:text="@string/r8u" android:drawableTop="@drawable/e3n" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    </LinearLayout>
+</LinearLayout>

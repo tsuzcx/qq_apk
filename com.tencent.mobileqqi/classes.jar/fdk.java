@@ -1,47 +1,47 @@
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.annotation.SuppressLint;
+import android.app.DownloadManager;
+import android.app.DownloadManager.Query;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import com.tencent.mobileqq.app.MQPIntChkHandler;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class fdk
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public fdk(MQPIntChkHandler paramMQPIntChkHandler, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, String paramString3, String paramString4, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public fdk(MQPIntChkHandler paramMQPIntChkHandler, DownloadManager paramDownloadManager) {}
   
-  public void run()
+  @SuppressLint({"NewApi"})
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    long l = paramIntent.getLongExtra("extra_download_id", -1L);
+    if (MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler) == l)
     {
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.a, 230, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-      if (localQQCustomDialog == null)
-      {
-        if (!QLog.isDevelopLevel()) {
-          return;
-        }
-        QLog.d("IntChk", 4, "create toast failed.");
-        return;
-      }
       if (QLog.isDevelopLevel()) {
-        QLog.d("IntChk", 4, "create toast succeed.");
+        QLog.d("IntChk", 4, "download complete.");
       }
-      localQQCustomDialog.setNegativeButton(this.c, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.setPositiveButton(this.d, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-      localQQCustomDialog.setCancelable(false);
-      localQQCustomDialog.show();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      paramIntent = "";
+      Object localObject = new DownloadManager.Query();
+      ((DownloadManager.Query)localObject).setFilterById(new long[] { l });
+      localObject = this.jdField_a_of_type_AndroidAppDownloadManager.query((DownloadManager.Query)localObject);
+      if (((Cursor)localObject).moveToFirst()) {
+        paramIntent = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("local_filename"));
+      }
+      ((Cursor)localObject).close();
+      if ((paramIntent != null) && (paramIntent != ""))
       {
-        localException.printStackTrace();
+        if (QLog.isDevelopLevel()) {
+          QLog.d("IntChk", 4, "install downloaded package:" + paramIntent);
+        }
+        localObject = new Intent("android.intent.action.VIEW");
+        ((Intent)localObject).setDataAndType(Uri.parse("file://" + paramIntent), "application/vnd.android.package-archive");
+        ((Intent)localObject).setFlags(268435456);
+        paramContext.startActivity((Intent)localObject);
       }
     }
-    MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler, true);
-    return;
   }
 }
 

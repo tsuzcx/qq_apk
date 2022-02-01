@@ -8,21 +8,23 @@ public final class ReportItem
   extends JceStruct
   implements Cloneable, Comparable<ReportItem>
 {
-  public long costTime;
-  public long createTime;
+  public long costTime = 0L;
+  public long createTime = 0L;
   public String failReason = "";
-  public boolean isNormalEnd;
+  public boolean isNormalEnd = false;
   public String params = "";
-  public int result;
-  public long seqno;
+  public int result = 0;
+  public long seqno = 0L;
   public String step = "";
   
   public int compareTo(ReportItem paramReportItem)
   {
-    if (this.createTime < paramReportItem.createTime) {
+    long l1 = this.createTime;
+    long l2 = paramReportItem.createTime;
+    if (l1 < l2) {
       return -1;
     }
-    if (this.createTime == paramReportItem.createTime) {
+    if (l1 == l2) {
       return 0;
     }
     return 1;
@@ -40,28 +42,43 @@ public final class ReportItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.step).append("|").append(this.result).append("|").append(this.createTime).append("|").append(this.costTime).append("|").append(this.isNormalEnd).append("|").append(this.params).append("|").append(this.failReason);
+    localStringBuilder.append(this.step);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.result);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.createTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.costTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.isNormalEnd);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.params);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.failReason);
     return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.step != null) {
-      paramJceOutputStream.write(this.step, 0);
+    String str = this.step;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.costTime, 1);
-    if (this.params != null) {
-      paramJceOutputStream.write(this.params, 2);
+    str = this.params;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.result, 3);
-    if (this.failReason != null) {
-      paramJceOutputStream.write(this.failReason, 4);
+    str = this.failReason;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VACDReport.ReportItem
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ public final class a$1
   
   public final void run()
   {
-    AppMethodBeat.i(10935);
-    this.hqu.adl();
-    AppMethodBeat.o(10935);
+    AppMethodBeat.i(121416);
+    this.rnn.bFJ();
+    AppMethodBeat.o(121416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.g.a.1
  * JD-Core Version:    0.7.0.1
  */

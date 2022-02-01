@@ -69,30 +69,31 @@ public final class SpscExactAtomicArrayQueue<T>
   
   public boolean offer(T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    if (paramT != null)
+    {
+      long l = this.producerIndex;
+      int i = this.mask;
+      if (get((int)(this.capacitySkip + l) & i) != null) {
+        return false;
+      }
+      int j = (int)l;
+      PRODUCER_INDEX.lazySet(this, l + 1L);
+      lazySet(i & j, paramT);
+      return true;
     }
-    long l = this.producerIndex;
-    int i = this.mask;
-    if (get((int)(this.capacitySkip + l) & i) != null) {
-      return false;
-    }
-    int j = (int)l;
-    PRODUCER_INDEX.lazySet(this, l + 1L);
-    lazySet(i & j, paramT);
-    return true;
+    throw new NullPointerException();
   }
   
   public T peek()
   {
-    return get((int)this.consumerIndex & this.mask);
+    int i = (int)this.consumerIndex;
+    return get(this.mask & i);
   }
   
   public T poll()
   {
     long l = this.consumerIndex;
-    int i = (int)l;
-    i = this.mask & i;
+    int i = (int)l & this.mask;
     Object localObject = get(i);
     if (localObject == null) {
       return null;
@@ -147,7 +148,7 @@ public final class SpscExactAtomicArrayQueue<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.atomic.SpscExactAtomicArrayQueue
  * JD-Core Version:    0.7.0.1
  */

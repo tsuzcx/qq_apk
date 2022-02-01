@@ -28,16 +28,12 @@ final class OperatorZip$Zip$InnerSubscriber
     try
     {
       this.items.onNext(paramObject);
-      this.this$0.tick();
-      return;
     }
     catch (MissingBackpressureException paramObject)
     {
-      for (;;)
-      {
-        onError(paramObject);
-      }
+      onError(paramObject);
     }
+    this.this$0.tick();
   }
   
   public void onStart()
@@ -52,7 +48,7 @@ final class OperatorZip$Zip$InnerSubscriber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorZip.Zip.InnerSubscriber
  * JD-Core Version:    0.7.0.1
  */

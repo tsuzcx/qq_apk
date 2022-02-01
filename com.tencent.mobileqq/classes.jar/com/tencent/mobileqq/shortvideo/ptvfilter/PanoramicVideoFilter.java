@@ -8,7 +8,7 @@ import com.tencent.mobileqq.shortvideo.panoramicvideo.GL.FBO;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.GroupRenderObj;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.SphereTo2DRenderObj;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Utils.PanoramicLogUtil;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.utils.PanoramicLogUtil;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.resource.SensorResource;
 import com.tencent.sveffects.SdkContext;
@@ -17,8 +17,8 @@ import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.filter.StaticStickerFilter;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import java.io.File;
 
 public class PanoramicVideoFilter
@@ -38,47 +38,18 @@ public class PanoramicVideoFilter
     super(paramStickerItem, paramString);
   }
   
-  private int getNextFrame(int paramInt)
-  {
-    int i = 0;
-    this.isImageReady = false;
-    if (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
-    {
-      PanoramicLogUtil.performanceLog("begin decodeFrame");
-      this.mVideoDecoder.decodeFrame(paramInt);
-      PanoramicLogUtil.performanceLog("begin updateFrame");
-      this.mVideoDecoder.updateFrame();
-      this.isImageReady = true;
-    }
-    for (;;)
-    {
-      return getTextureId();
-      Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-      Object localObject = localBitmap;
-      if (localBitmap == null)
-      {
-        localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
-        i = 1;
-      }
-      if (BitmapUtils.isLegal((Bitmap)localObject))
-      {
-        GlUtil.loadTexture(getTextureId(), (Bitmap)localObject);
-        if (i != 0) {
-          ((Bitmap)localObject).recycle();
-        }
-        this.isImageReady = true;
-      }
-    }
-  }
-  
   private void initFBO(int paramInt1, int paramInt2)
   {
     if ((this.mWidth < 0) && (this.renderObjGroup != null))
     {
       this.fbo = FBO.newInstance().create(paramInt1, paramInt2);
       this.renderObjGroup.onRenderObjChanged(paramInt1, paramInt2);
-      PanoramicLogUtil.Log("FBO.newInstance().create width=" + paramInt1 + "  |height=" + paramInt2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("FBO.newInstance().create width=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("  |height=");
+      localStringBuilder.append(paramInt2);
+      PanoramicLogUtil.Log(localStringBuilder.toString());
       if (paramInt1 > 0)
       {
         this.mWidth = paramInt1;
@@ -99,15 +70,59 @@ public class PanoramicVideoFilter
       PanoramicLogUtil.Log("PanoramicVideoFilter clearGLSLSelf");
       this.mHeight = -1;
       this.mWidth = -1;
-      if (this.fbo != null)
+      FBO localFBO = this.fbo;
+      if (localFBO != null)
       {
-        this.fbo.destroy();
+        localFBO.destroy();
         this.fbo = null;
       }
       super.clearGLSLSelf();
       this.renderObjGroup.destroy();
       this.renderObjGroup = null;
     }
+  }
+  
+  protected int getNextFrame(int paramInt)
+  {
+    int i = 0;
+    this.isImageReady = false;
+    if (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE)
+    {
+      PanoramicLogUtil.performanceLog("begin decodeFrame");
+      this.mVideoDecoder.decodeFrame(paramInt);
+      PanoramicLogUtil.performanceLog("begin updateFrame");
+      this.mVideoDecoder.updateFrame();
+      this.isImageReady = true;
+    }
+    else
+    {
+      Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+      Object localObject = localBitmap;
+      if (localBitmap == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.dataPath);
+        ((StringBuilder)localObject).append(File.separator);
+        ((StringBuilder)localObject).append(this.item.subFolder);
+        ((StringBuilder)localObject).append(File.separator);
+        ((StringBuilder)localObject).append(this.item.id);
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(".png");
+        localObject = ((StringBuilder)localObject).toString();
+        localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+        i = 1;
+      }
+      if (BitmapUtils.isLegal((Bitmap)localObject))
+      {
+        GlUtil.loadTexture(getTextureId(), (Bitmap)localObject);
+        if (i != 0) {
+          ((Bitmap)localObject).recycle();
+        }
+        this.isImageReady = true;
+      }
+    }
+    return getTextureId();
   }
   
   public void initParams()
@@ -133,36 +148,35 @@ public class PanoramicVideoFilter
   
   public void onCameraChanged(boolean paramBoolean)
   {
-    PanoramicLogUtil.Log("onCameraChanged isFront=" + paramBoolean);
-    if (this.sphereTo2DRenderObj != null) {
-      this.sphereTo2DRenderObj.UpdateCameraOrientation(paramBoolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onCameraChanged isFront=");
+    ((StringBuilder)localObject).append(paramBoolean);
+    PanoramicLogUtil.Log(((StringBuilder)localObject).toString());
+    localObject = this.sphereTo2DRenderObj;
+    if (localObject != null) {
+      ((SphereTo2DRenderObj)localObject).UpdateCameraOrientation(paramBoolean);
     }
   }
   
-  public void updateTextureParam(int paramInt, long paramLong)
+  protected void updateTextureParam(int paramInt, long paramLong)
   {
-    int i;
     if (paramInt != getLastFrameIndex())
     {
       if ((getLastFrameIndex() > paramInt) && (this.mVideoDecoder != null)) {
         this.mVideoDecoder.reset();
       }
-      if (this.fbo == null) {}
-      i = getNextFrame(paramInt);
+      FBO localFBO = this.fbo;
+      int i = getNextFrame(paramInt);
       PanoramicLogUtil.performanceLog("begin drawToFBO");
       this.renderObjGroup.drawToFBO(i, this.fbo);
-      if (this.fbo == null) {
-        break label106;
+      localFBO = this.fbo;
+      if (localFBO != null) {
+        addParam(new UniformParam.TextureParam("inputImageTexture2", localFBO.getFrameBufferTextureId(), 33986));
+      } else {
+        addParam(new UniformParam.TextureParam("inputImageTexture2", i, 33986));
       }
-      addParam(new UniformParam.TextureParam("inputImageTexture2", this.fbo.getFrameBufferTextureId(), 33986));
-    }
-    for (;;)
-    {
       PanoramicLogUtil.performanceLog("end drawToFBO");
       setLastFrameIndex(paramInt);
-      return;
-      label106:
-      addParam(new UniformParam.TextureParam("inputImageTexture2", i, 33986));
     }
   }
   
@@ -175,7 +189,7 @@ public class PanoramicVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.PanoramicVideoFilter
  * JD-Core Version:    0.7.0.1
  */

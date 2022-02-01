@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.model.layer;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableTextFrame;
@@ -190,30 +190,47 @@ public class Layer
   public String toString(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString).append(getName()).append("\n");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(getName());
+    localStringBuilder.append("\n");
     Object localObject1 = this.composition.layerModelForId(getParentId());
     if (localObject1 != null)
     {
-      localStringBuilder.append("\t\tParents: ").append(((Layer)localObject1).getName());
-      for (localObject1 = this.composition.layerModelForId(((Layer)localObject1).getParentId()); localObject1 != null; localObject1 = this.composition.layerModelForId(((Layer)localObject1).getParentId())) {
-        localStringBuilder.append("->").append(((Layer)localObject1).getName());
+      localStringBuilder.append("\t\tParents: ");
+      localStringBuilder.append(((Layer)localObject1).getName());
+      for (localObject1 = this.composition.layerModelForId(((Layer)localObject1).getParentId()); localObject1 != null; localObject1 = this.composition.layerModelForId(((Layer)localObject1).getParentId()))
+      {
+        localStringBuilder.append("->");
+        localStringBuilder.append(((Layer)localObject1).getName());
       }
-      localStringBuilder.append(paramString).append("\n");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\n");
     }
-    if (!getMasks().isEmpty()) {
-      localStringBuilder.append(paramString).append("\tMasks: ").append(getMasks().size()).append("\n");
+    if (!getMasks().isEmpty())
+    {
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tMasks: ");
+      localStringBuilder.append(getMasks().size());
+      localStringBuilder.append("\n");
     }
-    if ((getSolidWidth() != 0) && (getSolidHeight() != 0)) {
-      localStringBuilder.append(paramString).append("\tBackground: ").append(String.format(Locale.US, "%dx%d %X\n", new Object[] { Integer.valueOf(getSolidWidth()), Integer.valueOf(getSolidHeight()), Integer.valueOf(getSolidColor()) }));
+    if ((getSolidWidth() != 0) && (getSolidHeight() != 0))
+    {
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tBackground: ");
+      localStringBuilder.append(String.format(Locale.US, "%dx%d %X\n", new Object[] { Integer.valueOf(getSolidWidth()), Integer.valueOf(getSolidHeight()), Integer.valueOf(getSolidColor()) }));
     }
     if (!this.shapes.isEmpty())
     {
-      localStringBuilder.append(paramString).append("\tShapes:\n");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\tShapes:\n");
       localObject1 = this.shapes.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = ((Iterator)localObject1).next();
-        localStringBuilder.append(paramString).append("\t\t").append(localObject2).append("\n");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("\t\t");
+        localStringBuilder.append(localObject2);
+        localStringBuilder.append("\n");
       }
     }
     return localStringBuilder.toString();

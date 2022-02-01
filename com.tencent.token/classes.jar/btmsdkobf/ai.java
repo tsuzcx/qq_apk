@@ -9,20 +9,21 @@ public final class ai
 {
   public int validEndTime = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ai();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.validEndTime = paramJceInputStream.read(this.validEndTime, 0, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.validEndTime != 0) {
-      paramJceOutputStream.write(this.validEndTime, 0);
+    int i = this.validEndTime;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
   }
 }

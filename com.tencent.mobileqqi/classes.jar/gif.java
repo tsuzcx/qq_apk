@@ -1,15 +1,20 @@
-import PersonalState.UserProfile;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.search.ISearchable;
 import java.util.Comparator;
 
-public class gif
+public final class gif
   implements Comparator
 {
-  public gif(StatusManager paramStatusManager) {}
-  
-  public int a(UserProfile paramUserProfile1, UserProfile paramUserProfile2)
+  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
   {
-    return (int)(paramUserProfile2.richTime - paramUserProfile1.richTime);
+    long l1 = paramISearchable1.a();
+    long l2 = paramISearchable2.a();
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 > l2) {
+      return -1;
+    }
+    return 0;
   }
 }
 

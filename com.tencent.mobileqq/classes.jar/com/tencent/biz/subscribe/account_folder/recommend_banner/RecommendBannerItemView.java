@@ -11,38 +11,36 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azqs;
-import bdaq;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
+import com.tencent.biz.subscribe.SubscribeLaucher;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
 import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.biz.videostory.support.VSReporter;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.widget.SquareImageView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import ybt;
-import ych;
-import ycp;
-import ycs;
-import yiw;
-import yiy;
-import zaj;
 
 public class RecommendBannerItemView
   extends RelativeLayout
-  implements View.OnClickListener, yiy
+  implements View.OnClickListener, SimpleEventReceiver
 {
-  private int jdField_a_of_type_Int;
-  private CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FollowTextView jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView;
-  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
-  private ych jdField_a_of_type_Ych;
-  private boolean jdField_a_of_type_Boolean;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private SquareImageView a;
+  private TextView b;
+  private FollowTextView c;
+  private TextView d;
+  private CertifiedAccountMeta.StUser e;
+  private int f;
+  private boolean g;
+  private IRecommendBannerFlowListener h;
+  private boolean i;
+  private boolean j;
   
   public RecommendBannerItemView(Context paramContext)
   {
@@ -64,29 +62,29 @@ public class RecommendBannerItemView
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    azqs.b(null, "dc00898", "", paramString3, paramString1, paramString2, 0, 0, paramString4, paramString5, paramString6, paramString7);
+    ReportController.b(null, "dc00898", "", paramString3, paramString1, paramString2, 0, 0, paramString4, paramString5, paramString6, paramString7);
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser != null) {
-      ybt.a(getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+    if (this.e != null) {
+      SubscribeLaucher.a(getContext(), this.e);
     }
   }
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131558730, this);
-    setMinimumHeight(bdaq.a(paramContext, 183.0F));
-    setPadding(bdaq.a(paramContext, 6.0F), bdaq.a(paramContext, 10.0F), bdaq.a(paramContext, 6.0F), bdaq.a(paramContext, 20.0F));
+    inflate(paramContext, 2131624385, this);
+    setMinimumHeight(DisplayUtil.a(paramContext, 183.0F));
+    setPadding(DisplayUtil.a(paramContext, 6.0F), DisplayUtil.a(paramContext, 10.0F), DisplayUtil.a(paramContext, 6.0F), DisplayUtil.a(paramContext, 20.0F));
     setWillNotDraw(false);
     setLayerType(1, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131362973));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365103));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371146));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView = ((FollowTextView)findViewById(2131361895));
+    this.a = ((SquareImageView)findViewById(2131428988));
+    this.d = ((TextView)findViewById(2131431732));
+    this.b = ((TextView)findViewById(2131439303));
+    this.c = ((FollowTextView)findViewById(2131427517));
     setOnClickListener(this);
-    setOnLongClickListener(new ycp(this));
+    setOnLongClickListener(new RecommendBannerItemView.1(this));
   }
   
   public ArrayList<Class> getEventClass()
@@ -98,135 +96,140 @@ public class RecommendBannerItemView
   
   protected void onAttachedToWindow()
   {
-    yiw.a().a(this);
+    SimpleEventBus.getInstance().registerReceiver(this);
     super.onAttachedToWindow();
   }
   
   public void onClick(View paramView)
   {
     a();
-    if (this.c) {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser != null) {
-        zaj.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_discover", "reco_head_clk", 0, 0, new String[] { "", String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.desc.get() });
+    CertifiedAccountMeta.StUser localStUser;
+    if (this.j)
+    {
+      localStUser = this.e;
+      if (localStUser != null) {
+        VSReporter.a(localStUser.id.get(), "auth_discover", "reco_head_clk", 0, 0, new String[] { "", String.valueOf(this.f), this.e.nick.get(), this.e.desc.get() });
       }
     }
-    while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
-      return;
+    else
+    {
+      localStUser = this.e;
+      if (localStUser != null) {
+        a("auth_page", "recom_head", localStUser.id.get(), "", "", String.valueOf(this.f), this.e.nick.get());
+      }
     }
-    a("auth_page", "recom_head", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "", "", String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onDetachedFromWindow()
   {
-    yiw.a().b(this);
+    SimpleEventBus.getInstance().unRegisterReceiver(this);
     super.onDetachedFromWindow();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int i = getPaddingLeft();
-    int j = getPaddingTop();
-    int k = getWidth();
-    int m = getPaddingRight();
-    int n = getHeight();
-    int i1 = getPaddingBottom();
+    int k = getPaddingLeft();
+    int m = getPaddingTop();
+    int n = getWidth();
+    int i1 = getPaddingRight();
+    int i2 = getHeight();
+    int i3 = getPaddingBottom();
     Paint localPaint = new Paint();
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.g) {
       localPaint.setColor(-15263977);
-    }
-    for (;;)
-    {
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        i2 = bdaq.a(getContext(), 5.0F);
-        localPaint.setShadowLayer(bdaq.a(getContext(), 15.0F), 0, i2, 436207616);
-      }
-      int i2 = bdaq.a(getContext(), 6.0F);
-      paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
-      super.onDraw(paramCanvas);
-      return;
+    } else {
       localPaint.setColor(-1);
     }
+    if (!this.i)
+    {
+      i4 = DisplayUtil.a(getContext(), 5.0F);
+      localPaint.setShadowLayer(DisplayUtil.a(getContext(), 15.0F), 0, i4, 436207616);
+    }
+    int i4 = DisplayUtil.a(getContext(), 6.0F);
+    RectF localRectF = new RectF(k, m, n - i1, i2 - i3);
+    float f1 = i4;
+    paramCanvas.drawRoundRect(localRectF, f1, f1, localPaint);
+    super.onDraw(paramCanvas);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    ych localych;
-    if (((paramSimpleBaseEvent instanceof FollowUpdateEvent)) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser != null) && (TextUtils.equals(((FollowUpdateEvent)paramSimpleBaseEvent).useId, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get())))
+    if (((paramSimpleBaseEvent instanceof FollowUpdateEvent)) && (this.e != null))
     {
-      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.followState.set(((FollowUpdateEvent)paramSimpleBaseEvent).followStatus);
-      if (this.jdField_a_of_type_Ych != null)
+      paramSimpleBaseEvent = (FollowUpdateEvent)paramSimpleBaseEvent;
+      if (TextUtils.equals(paramSimpleBaseEvent.useId, this.e.id.get()))
       {
-        localych = this.jdField_a_of_type_Ych;
-        if (((FollowUpdateEvent)paramSimpleBaseEvent).followStatus != 1) {
-          break label91;
+        this.e.followState.set(paramSimpleBaseEvent.followStatus);
+        IRecommendBannerFlowListener localIRecommendBannerFlowListener = this.h;
+        if (localIRecommendBannerFlowListener != null)
+        {
+          int k = paramSimpleBaseEvent.followStatus;
+          boolean bool = true;
+          if (k != 1) {
+            bool = false;
+          }
+          localIRecommendBannerFlowListener.a(bool, this.f);
         }
       }
-    }
-    label91:
-    for (boolean bool = true;; bool = false)
-    {
-      localych.a(bool, this.jdField_a_of_type_Int);
-      return;
     }
   }
   
   public void setData(CertifiedAccountMeta.StUser paramStUser, int paramInt)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramStUser;
+    this.f = paramInt;
     if (paramStUser != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStUser.nick.get());
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramStUser.desc.get());
-      a("auth_page", "recom_exp", paramStUser.id.get(), "", "", String.valueOf(this.jdField_a_of_type_Int), paramStUser.nick.get());
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageURL(paramStUser.icon.get());
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setUserData(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setFollowStateChangeListener(new ycs(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      this.b.setText(paramStUser.nick.get());
+      this.d.setText(paramStUser.desc.get());
+      a("auth_page", "recom_exp", paramStUser.id.get(), "", "", String.valueOf(this.f), paramStUser.nick.get());
+      try
       {
-        QLog.e("RecommendBannerItemView", 2, "setData() set icon url error! url: " + paramStUser.icon.get(), localThrowable);
+        this.a.setImageURL(paramStUser.icon.get());
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setData() set icon url error! url: ");
+        localStringBuilder.append(paramStUser.icon.get());
+        QLog.e("RecommendBannerItemView", 2, localStringBuilder.toString(), localThrowable);
       }
     }
+    this.c.setUserData(this.e);
+    this.c.setFollowStateChangeListener(new RecommendBannerItemView.2(this));
   }
   
   public void setInNewFolderPage(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void setInNightMode(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean)
+    this.g = paramBoolean;
+    if (this.g)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(1711276032);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-9079435);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setIsInNightMode(paramBoolean);
+      this.a.setFilterColor(1711276032);
+      this.d.setTextColor(-9079435);
+      this.b.setTextColor(-5723992);
+      this.c.setIsInNightMode(paramBoolean);
     }
   }
   
   public void setIsCloseShadow(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
-  public void setRecommendBannerFolwListener(ych paramych)
+  public void setRecommendBannerFolwListener(IRecommendBannerFlowListener paramIRecommendBannerFlowListener)
   {
-    this.jdField_a_of_type_Ych = paramych;
+    this.h = paramIRecommendBannerFlowListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView
  * JD-Core Version:    0.7.0.1
  */

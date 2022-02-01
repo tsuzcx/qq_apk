@@ -13,9 +13,9 @@ public class SQLiteAsyncQuery
   public SQLiteAsyncQuery(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal)
   {
     super(paramSQLiteDatabase, paramString, paramArrayOfObject, paramCancellationSignal);
-    AppMethodBeat.i(12264);
+    AppMethodBeat.i(2945);
     this.mResultColumns = getColumnNames().length;
-    AppMethodBeat.o(12264);
+    AppMethodBeat.o(2945);
   }
   
   private static native int nativeCount(long paramLong);
@@ -24,18 +24,18 @@ public class SQLiteAsyncQuery
   
   void acquire()
   {
-    AppMethodBeat.i(12265);
+    AppMethodBeat.i(2946);
     if (this.mPreparedStatement == null)
     {
       acquirePreparedStatement(true);
       this.mPreparedStatement.bindArguments(getBindArgs());
     }
-    AppMethodBeat.o(12265);
+    AppMethodBeat.o(2946);
   }
   
   int fillRows(ChunkedCursorWindow paramChunkedCursorWindow, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12267);
+    AppMethodBeat.i(2948);
     acquire();
     if (paramChunkedCursorWindow.getNumColumns() != this.mResultColumns) {
       paramChunkedCursorWindow.setNumColumns(this.mResultColumns);
@@ -43,56 +43,56 @@ public class SQLiteAsyncQuery
     try
     {
       paramInt1 = nativeFillRows(this.mPreparedStatement.getPtr(), paramChunkedCursorWindow.mWindowPtr, paramInt1, paramInt2);
-      AppMethodBeat.o(12267);
+      AppMethodBeat.o(2948);
       return paramInt1;
     }
     catch (SQLiteException paramChunkedCursorWindow)
     {
       Log.e("WCDB.SQLiteAsyncQuery", "Got exception on fillRows: " + paramChunkedCursorWindow.getMessage() + ", SQL: " + getSql());
       checkCorruption(paramChunkedCursorWindow);
-      AppMethodBeat.o(12267);
+      AppMethodBeat.o(2948);
       throw paramChunkedCursorWindow;
     }
   }
   
   int getCount()
   {
-    AppMethodBeat.i(12268);
+    AppMethodBeat.i(2949);
     acquire();
     try
     {
       int i = nativeCount(this.mPreparedStatement.getPtr());
-      AppMethodBeat.o(12268);
+      AppMethodBeat.o(2949);
       return i;
     }
     catch (SQLiteException localSQLiteException)
     {
       Log.e("WCDB.SQLiteAsyncQuery", "Got exception on getCount: " + localSQLiteException.getMessage() + ", SQL: " + getSql());
       checkCorruption(localSQLiteException);
-      AppMethodBeat.o(12268);
+      AppMethodBeat.o(2949);
       throw localSQLiteException;
     }
   }
   
   void release()
   {
-    AppMethodBeat.i(12266);
+    AppMethodBeat.i(2947);
     releasePreparedStatement();
-    AppMethodBeat.o(12266);
+    AppMethodBeat.o(2947);
   }
   
   void reset()
   {
-    AppMethodBeat.i(12269);
+    AppMethodBeat.i(2950);
     if (this.mPreparedStatement != null) {
       this.mPreparedStatement.reset(false);
     }
-    AppMethodBeat.o(12269);
+    AppMethodBeat.o(2950);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteAsyncQuery
  * JD-Core Version:    0.7.0.1
  */

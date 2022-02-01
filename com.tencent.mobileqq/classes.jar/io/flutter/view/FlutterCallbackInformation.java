@@ -1,8 +1,10 @@
 package io.flutter.view;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.FlutterJNI;
 
+@Keep
 public final class FlutterCallbackInformation
 {
   public final String callbackClassName;
@@ -24,7 +26,7 @@ public final class FlutterCallbackInformation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.view.FlutterCallbackInformation
  * JD-Core Version:    0.7.0.1
  */

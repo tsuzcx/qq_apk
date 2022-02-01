@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import akbx;
-
-public class TroopListBaseAdapter$2
+class TroopListBaseAdapter$2
   implements Runnable
 {
-  public TroopListBaseAdapter$2(akbx paramakbx) {}
+  TroopListBaseAdapter$2(TroopListBaseAdapter paramTroopListBaseAdapter) {}
   
   public void run()
   {
-    akbx.a(this.this$0);
+    TroopListBaseAdapter.a(this.this$0);
   }
 }
 

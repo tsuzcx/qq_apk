@@ -21,13 +21,17 @@ public final class KClasses
   public static final <T> T cast(@NotNull KClass<T> paramKClass, @Nullable Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramKClass, "$this$cast");
-    if (!paramKClass.isInstance(paramObject)) {
-      throw ((Throwable)new ClassCastException("Value cannot be cast to " + paramKClass.getQualifiedName()));
-    }
-    if (paramObject == null) {
+    if (paramKClass.isInstance(paramObject))
+    {
+      if (paramObject != null) {
+        return paramObject;
+      }
       throw new TypeCastException("null cannot be cast to non-null type T");
     }
-    return paramObject;
+    paramObject = new StringBuilder();
+    paramObject.append("Value cannot be cast to ");
+    paramObject.append(paramKClass.getQualifiedName());
+    throw ((Throwable)new ClassCastException(paramObject.toString()));
   }
   
   @ExperimentalStdlibApi
@@ -39,21 +43,17 @@ public final class KClasses
     Intrinsics.checkParameterIsNotNull(paramKClass, "$this$safeCast");
     if (paramKClass.isInstance(paramObject))
     {
-      paramKClass = paramObject;
-      if (paramObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type T");
+      if (paramObject != null) {
+        return paramObject;
       }
+      throw new TypeCastException("null cannot be cast to non-null type T");
     }
-    else
-    {
-      paramKClass = null;
-    }
-    return paramKClass;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.reflect.KClasses
  * JD-Core Version:    0.7.0.1
  */

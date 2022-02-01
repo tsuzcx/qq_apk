@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <com.tencent.av.opengl.ui.GLRootView android:id="@id/a2b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/a2a" android:background="#20ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <View android:id="@id/a2c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.av.widget.RotateLayout android:id="@id/a1y" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/a25" android:layout_width="wrap_content" android:layout_height="wrap_content" tencent:layout_angle="0">
+            <TextView android:textSize="10.0dip" android:textColor="@color/s4" android:ellipsize="end" android:id="@id/a27" android:layout_width="@dimen/a5i" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" />
+            <TextView android:textSize="@dimen/c0" android:textColor="@color/skin_chat_buble" android:ellipsize="end" android:id="@id/a26" android:background="@drawable/skin_aio_friend_bubble_nor" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="44.0dip" android:text="@null" />
+        </LinearLayout>
+    </com.tencent.av.widget.RotateLayout>
+</RelativeLayout>

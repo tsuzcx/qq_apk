@@ -8,18 +8,18 @@ import com.qq.taf.jce.JceStruct;
 public final class GetResourceRespInfo
   extends JceStruct
 {
-  public int iResult;
-  public short sLanType;
-  public short sPriority;
-  public short sResType;
+  public int iResult = 0;
+  public short sLanType = 0;
+  public short sPriority = 0;
+  public short sResType = 0;
   public String strPkgName = "";
   public String strResConf = "";
   public String strResDesc = "";
   public String strResName = "";
   public String strResURL_big = "";
   public String strResURL_small = "";
-  public long uiNewVer;
-  public long uiResID;
+  public long uiNewVer = 0L;
+  public long uiResID = 0L;
   
   public GetResourceRespInfo() {}
   
@@ -80,14 +80,15 @@ public final class GetResourceRespInfo
     paramJceOutputStream.write(this.strResDesc, 9);
     paramJceOutputStream.write(this.strResURL_big, 10);
     paramJceOutputStream.write(this.strResURL_small, 11);
-    if (this.strResConf != null) {
-      paramJceOutputStream.write(this.strResConf, 12);
+    String str = this.strResConf;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceRespInfo
  * JD-Core Version:    0.7.0.1
  */

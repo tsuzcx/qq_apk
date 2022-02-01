@@ -1,109 +1,269 @@
 package com.tencent.qbar;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.m;
-import java.io.File;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public final class a
+public class a
 {
-  private static List<String> BhA;
-  private static List<String> BhB;
+  protected int ahqv;
+  protected QbarNative ahqw;
   
-  static
+  public a()
   {
-    AppMethodBeat.i(108291);
-    ArrayList localArrayList = new ArrayList();
-    BhA = localArrayList;
-    localArrayList.add("weixin://wxpay/");
-    BhA.add("wxp://");
-    BhA.add("https://wx.tenpay.com/");
-    BhA.add("https://payapp.weixin.qq.com/");
-    BhA.add("https://action.weixin.qq.com/");
-    localArrayList = new ArrayList();
-    BhB = localArrayList;
-    localArrayList.add("https://qr.alipay.com/");
-    AppMethodBeat.o(108291);
+    AppMethodBeat.i(88393);
+    this.ahqv = -1;
+    this.ahqw = new QbarNative();
+    AppMethodBeat.o(88393);
   }
   
-  public static void a(QbarNative paramQbarNative)
+  public static int a(byte[] paramArrayOfByte, int[] paramArrayOfInt, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    AppMethodBeat.i(108290);
-    if (paramQbarNative == null)
-    {
-      ab.w("MicroMsg.QBarAIModHelper", "config qbarNative is null");
-      AppMethodBeat.o(108290);
-      return;
-    }
-    Iterator localIterator = BhA.iterator();
-    while (localIterator.hasNext()) {
-      paramQbarNative.AddWhiteList((String)localIterator.next(), paramQbarNative.BhG);
-    }
-    localIterator = BhB.iterator();
-    while (localIterator.hasNext()) {
-      paramQbarNative.AddBlackList((String)localIterator.next(), paramQbarNative.BhG);
-    }
-    paramQbarNative.AddBlackInternal(6, paramQbarNative.BhG);
-    AppMethodBeat.o(108290);
+    AppMethodBeat.i(88402);
+    paramInt1 = QbarNative.Encode(paramArrayOfByte, paramArrayOfInt, paramString1, paramInt1, paramInt2, paramString2, -1);
+    AppMethodBeat.o(88402);
+    return paramInt1;
   }
   
-  public static QbarNative.QbarAiModelParam iQ(Context paramContext)
+  public static String getVersion()
   {
-    AppMethodBeat.i(108289);
+    AppMethodBeat.i(88394);
+    String str = QbarNative.GetVersion();
+    AppMethodBeat.o(88394);
+    return str;
+  }
+  
+  public int R(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(88397);
     try
     {
-      Object localObject = new File(com.tencent.mm.compatible.util.e.eQu.replace("/data/user/0", "/data/data") + "files/", "qbar");
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
+      if (this.ahqv < 0) {
+        return -1;
       }
-      String str3 = ((File)localObject).getAbsolutePath();
-      localObject = str3 + "/detect_model.bin";
-      String str1 = str3 + "/detect_model.param";
-      String str2 = str3 + "/srnet.bin";
-      str3 = str3 + "/srnet.param";
-      SharedPreferences localSharedPreferences = ah.dsQ();
-      boolean bool = localSharedPreferences.getBoolean("qbar_ai_mode_version_1", false);
-      if (!bool)
-      {
-        com.tencent.mm.a.e.deleteFile((String)localObject);
-        com.tencent.mm.a.e.deleteFile(str1);
-        com.tencent.mm.a.e.deleteFile(str2);
-        com.tencent.mm.a.e.deleteFile(str3);
-        localSharedPreferences.edit().putBoolean("qbar_ai_mode_version_1", true).apply();
-      }
-      if ((!bool) || (!com.tencent.mm.a.e.cN((String)localObject)))
-      {
-        m.copyAssets(paramContext, "qbar/detect_model.bin", (String)localObject);
-        m.copyAssets(paramContext, "qbar/detect_model.param", str1);
-        m.copyAssets(paramContext, "qbar/srnet.bin", str2);
-        m.copyAssets(paramContext, "qbar/srnet.param", str3);
-      }
-      paramContext = new QbarNative.QbarAiModelParam();
-      paramContext.detect_model_bin_path_ = ((String)localObject);
-      paramContext.detect_model_param_path_ = str1;
-      paramContext.superresolution_model_bin_path_ = str2;
-      paramContext.superresolution_model_param_path_ = str3;
-      AppMethodBeat.o(108289);
-      return paramContext;
+      paramInt1 = this.ahqw.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.ahqv);
+      return paramInt1;
     }
-    catch (Exception paramContext)
+    finally
     {
-      ab.w("MicroMsg.QBarAIModHelper", "getAiModeParam err %s", new Object[] { paramContext.getMessage() });
-      AppMethodBeat.o(108289);
+      AppMethodBeat.o(88397);
     }
-    return null;
+  }
+  
+  public final int Y(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  {
+    int k = 0;
+    AppMethodBeat.i(88401);
+    for (;;)
+    {
+      int i;
+      int j;
+      try
+      {
+        if (this.ahqv < 0) {
+          return 0;
+        }
+        QbarNative.QBarCodeDetectInfo[] arrayOfQBarCodeDetectInfo = new QbarNative.QBarCodeDetectInfo[3];
+        QbarNative.QBarPoint[] arrayOfQBarPoint = new QbarNative.QBarPoint[3];
+        i = 0;
+        if (i < 3)
+        {
+          arrayOfQBarCodeDetectInfo[i] = new QbarNative.QBarCodeDetectInfo();
+          arrayOfQBarPoint[i] = new QbarNative.QBarPoint();
+          i += 1;
+          continue;
+        }
+        paramList.clear();
+        paramList1.clear();
+        this.ahqw.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.ahqv);
+        i = 0;
+        j = k;
+        if (i < 3)
+        {
+          QbarNative.QBarCodeDetectInfo localQBarCodeDetectInfo = arrayOfQBarCodeDetectInfo[i];
+          if (localQBarCodeDetectInfo.readerId > 0) {
+            paramList.add(localQBarCodeDetectInfo);
+          }
+        }
+        else
+        {
+          if (j < 3)
+          {
+            arrayOfQBarCodeDetectInfo = arrayOfQBarPoint[j];
+            if (arrayOfQBarCodeDetectInfo.point_cnt == 0) {
+              break label205;
+            }
+            paramList1.add(arrayOfQBarCodeDetectInfo);
+            break label205;
+          }
+          i = paramList.size();
+          return i;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(88401);
+      }
+      i += 1;
+      continue;
+      label205:
+      j += 1;
+    }
+  }
+  
+  public final int a(int paramInt1, int paramInt2, String paramString1, String paramString2, QbarNative.QbarAiModelParam paramQbarAiModelParam)
+  {
+    AppMethodBeat.i(226804);
+    try
+    {
+      if (this.ahqv < 0) {
+        this.ahqv = this.ahqw.Init(paramInt1, 1, paramInt2, paramString1, paramString2, paramQbarAiModelParam);
+      }
+      System.out.println("qbarId:" + this.ahqv);
+      if (this.ahqv < 0) {
+        return -1;
+      }
+      return 0;
+    }
+    finally
+    {
+      AppMethodBeat.o(226804);
+    }
+  }
+  
+  public final List<a> jWG()
+  {
+    int j = 0;
+    AppMethodBeat.i(88399);
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if (this.ahqv < 0) {
+          return null;
+        }
+        QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[3];
+        i = 0;
+        if (i < 3)
+        {
+          arrayOfQBarResultJNI[i] = new QbarNative.QBarResultJNI();
+          arrayOfQBarResultJNI[i].charset = new String();
+          arrayOfQBarResultJNI[i].data = new byte[1024];
+          arrayOfQBarResultJNI[i].typeName = new String();
+          i += 1;
+          continue;
+        }
+        this.ahqw.GetResults(arrayOfQBarResultJNI, this.ahqv);
+        ArrayList localArrayList = new ArrayList();
+        i = j;
+        if (i < 3)
+        {
+          QbarNative.QBarResultJNI localQBarResultJNI = arrayOfQBarResultJNI[i];
+          try
+          {
+            if ((localQBarResultJNI.typeName == null) || (localQBarResultJNI.typeName.isEmpty())) {
+              break label289;
+            }
+            a locala = new a();
+            locala.charset = localQBarResultJNI.charset;
+            locala.typeID = localQBarResultJNI.typeID;
+            locala.typeName = localQBarResultJNI.typeName;
+            locala.rawData = localQBarResultJNI.data;
+            if (locala.charset.equals("ANY"))
+            {
+              locala.data = new String(localQBarResultJNI.data, "UTF-8");
+              localArrayList.add(locala);
+              break label289;
+            }
+            locala.data = new String(localQBarResultJNI.data, locala.charset);
+            continue;
+          }
+          catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+        }
+        else
+        {
+          AppMethodBeat.o(88399);
+          return localArrayList;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(88399);
+      }
+      label289:
+      i += 1;
+    }
+  }
+  
+  public final QbarNative.QBarZoomInfo jWH()
+  {
+    AppMethodBeat.i(88400);
+    try
+    {
+      if (this.ahqv < 0) {
+        return null;
+      }
+      QbarNative.QBarZoomInfo localQBarZoomInfo = new QbarNative.QBarZoomInfo();
+      this.ahqw.GetZoomInfo(localQBarZoomInfo, this.ahqv);
+      return localQBarZoomInfo;
+    }
+    finally
+    {
+      AppMethodBeat.o(88400);
+    }
+  }
+  
+  public final int release()
+  {
+    AppMethodBeat.i(88398);
+    try
+    {
+      if (this.ahqv < 0) {
+        return 0;
+      }
+      int i = this.ahqw.Release(this.ahqv);
+      this.ahqv = -1;
+      return i;
+    }
+    finally
+    {
+      AppMethodBeat.o(88398);
+    }
+  }
+  
+  public final int y(int[] paramArrayOfInt, int paramInt)
+  {
+    AppMethodBeat.i(88396);
+    try
+    {
+      if (this.ahqv < 0) {
+        return -1;
+      }
+      paramInt = this.ahqw.SetReaders(paramArrayOfInt, paramInt, this.ahqv);
+      return paramInt;
+    }
+    finally
+    {
+      AppMethodBeat.o(88396);
+    }
+  }
+  
+  public static class a
+  {
+    public String charset;
+    public String data;
+    public int priorityLevel;
+    public byte[] rawData;
+    public int typeID;
+    public String typeName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.qbar.a
  * JD-Core Version:    0.7.0.1
  */

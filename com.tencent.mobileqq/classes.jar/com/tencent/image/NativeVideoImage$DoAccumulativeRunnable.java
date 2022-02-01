@@ -32,20 +32,24 @@ public class NativeVideoImage$DoAccumulativeRunnable
   protected void submit()
   {
     long l1 = SystemClock.uptimeMillis();
-    if ((this.lastRefreshTime == 0L) || (l1 - this.lastRefreshTime >= this.delay))
+    long l2 = this.lastRefreshTime;
+    if (l2 != 0L)
     {
-      run();
-      this.lastRefreshTime = l1;
-      return;
+      int i = this.delay;
+      if (l1 - l2 < i)
+      {
+        long l3 = i;
+        NativeVideoImage.sUIHandler.postDelayed(this, l3 - (l1 - l2));
+        return;
+      }
     }
-    long l2 = this.delay;
-    long l3 = this.lastRefreshTime;
-    NativeVideoImage.sUIHandler.postDelayed(this, l2 - (l1 - l3));
+    run();
+    this.lastRefreshTime = l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.NativeVideoImage.DoAccumulativeRunnable
  * JD-Core Version:    0.7.0.1
  */

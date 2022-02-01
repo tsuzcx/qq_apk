@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/ml0" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:layout_width="fill_parent" android:layout_height="47.0dip" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/loc" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/f8c" android:layout_alignParentLeft="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:id="@id/mga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wgu" android:layout_toRightOf="@id/loc" />
-        <TextView android:textSize="14.0dip" android:textColor="#ff989eb4" android:id="@id/mtd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wgv" android:drawableRight="@drawable/eez" android:drawablePadding="3.0dip" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <com.tencent.biz.qqcircle.widgets.QCircleMultiPicViewPager android:id="@id/ml1" android:layout_width="fill_parent" android:layout_height="220.0dip" android:layout_below="@id/ml0" />
-    <LinearLayout android:orientation="vertical" android:id="@id/mkz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-16.0dip" android:layout_below="@id/ml1" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ns0" android:background="@drawable/dox" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip">
+        <RelativeLayout android:id="@id/nsy" android:background="@drawable/dy9" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="56.0dip">
+            <TextView android:textSize="17.0sp" android:textColor="@color/aqt" android:id="@id/ntw" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:minWidth="24.0dip" android:text="@string/x69" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/nq_" android:background="@drawable/ic8" android:padding="0.0dip" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <LinearLayout android:id="@id/nq4" android:background="@drawable/dy9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
+            <TextView android:textSize="16.0dip" android:textColor="@color/aqm" android:layout_gravity="center_vertical" android:id="@id/mw1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:text="@string/x6b" android:layout_weight="1.0" />
+            <com.tencent.mobileqq.guild.widget.GuildSwitchButton android:layout_gravity="center|right" android:id="@id/nq5" android:focusable="true" android:layout_width="52.0dip" android:layout_height="32.0dip" android:layout_marginRight="22.0dip" app:isChecked="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:textSize="16.0sp" android:textColor="#ffff596a" android:id="@id/p2k" android:background="@drawable/dy9" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="@dimen/n2" android:text="@string/wyf" />
+</LinearLayout>

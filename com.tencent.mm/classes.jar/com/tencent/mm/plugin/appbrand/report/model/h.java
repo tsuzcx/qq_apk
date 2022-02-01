@@ -1,39 +1,35 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.page.z;
+import android.content.Intent;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.appbrand.page.cb;
 
 public abstract interface h
-  extends g
+  extends i
 {
-  public static final h iGQ = new h.1();
+  public abstract void M(Intent paramIntent);
   
-  public abstract boolean EH(String paramString);
+  public abstract void a(long paramLong, cb paramcb);
   
-  public abstract a aLj();
+  public abstract void aqI();
   
-  public abstract a h(z paramz);
+  public abstract void cBj();
   
-  public static final class a
-  {
-    int iGR;
-    public h.c iGS;
-    public h.b iGT;
-    public String path;
-    
-    a(z paramz)
-    {
-      AppMethodBeat.i(132614);
-      this.iGR = paramz.hashCode();
-      this.path = paramz.iuB;
-      AppMethodBeat.o(132614);
-    }
-  }
+  public abstract j cBk();
+  
+  public abstract Intent cBl();
+  
+  public abstract s cBm();
+  
+  public abstract t cBn();
+  
+  public abstract void cBo();
+  
+  public abstract void d(ah paramah);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.h
  * JD-Core Version:    0.7.0.1
  */

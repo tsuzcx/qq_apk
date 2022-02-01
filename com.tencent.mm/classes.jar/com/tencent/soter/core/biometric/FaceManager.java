@@ -3,6 +3,9 @@ package com.tencent.soter.core.biometric;
 import android.content.Context;
 import android.os.CancellationSignal;
 import android.os.Handler;
+import java.security.Signature;
+import javax.crypto.Cipher;
+import javax.crypto.Mac;
 
 public abstract class FaceManager
 {
@@ -36,17 +39,87 @@ public abstract class FaceManager
   public static final int FACE_WITH_EYES_CLOSED = 1117;
   private static final String TAG = "Soter.FaceManager";
   
-  public abstract void authenticate(FaceManager.CryptoObject paramCryptoObject, CancellationSignal paramCancellationSignal, int paramInt, FaceManager.AuthenticationCallback paramAuthenticationCallback, Handler paramHandler);
+  public abstract void authenticate(CryptoObject paramCryptoObject, CancellationSignal paramCancellationSignal, int paramInt, AuthenticationCallback paramAuthenticationCallback, Handler paramHandler);
   
   public abstract String getBiometricName(Context paramContext);
   
   public abstract boolean hasEnrolledFaces();
   
   public abstract boolean isHardwareDetected();
+  
+  public static abstract class AuthenticationCallback
+  {
+    public void onAuthenticationError(int paramInt, CharSequence paramCharSequence) {}
+    
+    public void onAuthenticationFailed() {}
+    
+    public void onAuthenticationHelp(int paramInt, CharSequence paramCharSequence) {}
+    
+    public void onAuthenticationSucceeded(FaceManager.AuthenticationResult paramAuthenticationResult) {}
+  }
+  
+  public static class AuthenticationResult
+  {
+    private FaceManager.CryptoObject mCryptoObject;
+    
+    public AuthenticationResult(FaceManager.CryptoObject paramCryptoObject)
+    {
+      this.mCryptoObject = paramCryptoObject;
+    }
+    
+    public FaceManager.CryptoObject getCryptoObject()
+    {
+      return this.mCryptoObject;
+    }
+  }
+  
+  public static final class CryptoObject
+  {
+    private final Object mCrypto;
+    
+    public CryptoObject(Signature paramSignature)
+    {
+      this.mCrypto = paramSignature;
+    }
+    
+    public CryptoObject(Cipher paramCipher)
+    {
+      this.mCrypto = paramCipher;
+    }
+    
+    public CryptoObject(Mac paramMac)
+    {
+      this.mCrypto = paramMac;
+    }
+    
+    public final Cipher getCipher()
+    {
+      if ((this.mCrypto instanceof Cipher)) {
+        return (Cipher)this.mCrypto;
+      }
+      return null;
+    }
+    
+    public final Mac getMac()
+    {
+      if ((this.mCrypto instanceof Mac)) {
+        return (Mac)this.mCrypto;
+      }
+      return null;
+    }
+    
+    public final Signature getSignature()
+    {
+      if ((this.mCrypto instanceof Signature)) {
+        return (Signature)this.mCrypto;
+      }
+      return null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.core.biometric.FaceManager
  * JD-Core Version:    0.7.0.1
  */

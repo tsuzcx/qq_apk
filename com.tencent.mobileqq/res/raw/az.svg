@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="39px" height="21px" viewBox="0 0 39 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch Beta 50.1 (55040) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow_up</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="arrow_up" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.327411709">
+        <g id="箭头" transform="translate(36.000000, 36.000000) rotate(-180.000000) translate(-36.000000, -36.000000) translate(0.000000, 0.000000)" fill="#000000">
+            <path d="M63,77.8107978 L59.8775469,81 L42.8834538,63.6426218 C41.7248834,62.4592845 41.7194412,60.5462741 42.8834538,59.3573782 L59.8775469,42 L63,45.1892022 L47.0305826,61.5 L63,77.8107978 Z" id="Combined-Shape" transform="translate(52.500000, 61.500000) rotate(-90.000000) translate(-52.500000, -61.500000) "></path>
+        </g>
+    </g>
+</svg>

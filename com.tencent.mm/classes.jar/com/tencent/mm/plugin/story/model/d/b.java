@@ -1,18 +1,15 @@
 package com.tencent.mm.plugin.story.model.d;
 
-import a.l;
-import com.tencent.mm.plugin.story.api.o;
-import java.util.List;
+import com.tencent.mm.plugin.story.api.p;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/model/gallery/ChatStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "userList", "", "", "(JLjava/util/List;)V", "getUserList", "()Ljava/util/List;", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/model/gallery/ChatStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "userList", "", "", "queryCondition", "", "(JLjava/util/List;I)V", "getUserList", "()Ljava/util/List;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends o
-{
-  final List<String> fxt;
-}
+  extends p
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.model.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,12 @@ final class fc$21
   
   public final String toString()
   {
-    return "Factory[type=" + this.a.getName() + ",adapter=" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder("Factory[type=");
+    localStringBuilder.append(this.a.getName());
+    localStringBuilder.append(",adapter=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

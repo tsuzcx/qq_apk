@@ -1,39 +1,28 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.kernel.api.b;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 final class c$3
-  implements com.tencent.mm.kernel.api.f
+  implements b
 {
   c$3(c paramc) {}
   
-  public final void RS()
+  public final List<String> baM()
   {
-    AppMethodBeat.i(16201);
-    aw.aay();
-    AppMethodBeat.o(16201);
-  }
-  
-  public final void mE(String paramString)
-  {
-    AppMethodBeat.i(16202);
-    if (com.tencent.mm.compatible.util.f.Mi())
-    {
-      g.RM();
-      if (g.RL().eHQ.equals(com.tencent.mm.compatible.util.e.eQz))
-      {
-        g.RM();
-        d.post(new c.b(g.RL().cachePath, paramString), "AccountStorage_moveDataFiles");
-      }
-    }
-    AppMethodBeat.o(16202);
+    AppMethodBeat.i(20243);
+    LinkedList localLinkedList = new LinkedList();
+    Collections.addAll(localLinkedList, new String[] { "image/shakeTranImg/", "emoji/", "mailapp/", "favoffline/", "voice2/", "video/", "attachment/" });
+    AppMethodBeat.o(20243);
+    return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.c.3
  * JD-Core Version:    0.7.0.1
  */

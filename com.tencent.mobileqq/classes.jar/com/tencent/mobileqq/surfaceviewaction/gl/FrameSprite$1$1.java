@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import baei;
-import baev;
 import java.util.LinkedList;
 
 class FrameSprite$1$1
@@ -11,44 +9,38 @@ class FrameSprite$1$1
   
   public void run()
   {
-    for (;;)
+    int i;
+    synchronized (this.a.this$0)
     {
-      int j;
-      synchronized (this.a.this$0)
+      Texture[] arrayOfTexture = FrameSprite.f(this.a.this$0);
+      if ((arrayOfTexture != null) && (!FrameSprite.b(this.a.this$0)))
       {
-        baev[] arrayOfbaev = baei.a(this.a.this$0);
-        if ((arrayOfbaev == null) || (baei.a(this.a.this$0))) {
-          return;
-        }
-        baei.a(this.a.this$0, new baev[baei.a(this.a.this$0).length / 2]);
-        j = 0;
-        int i = 0;
-        if (j < baei.a(this.a.this$0).length)
-        {
-          if (j % 2 == 0)
+        FrameSprite.a(this.a.this$0, new Texture[FrameSprite.a(this.a.this$0).length / 2]);
+        i = 0;
+        int j = 0;
+        if (i < FrameSprite.a(this.a.this$0).length) {
+          if (i % 2 == 0)
           {
-            baei localbaei2 = this.a.this$0;
-            int k = i + 1;
-            baei.a(localbaei2, i, arrayOfbaev[j]);
-            i = k;
+            FrameSprite.a(this.a.this$0, j, arrayOfTexture[i]);
+            j += 1;
           }
           else
           {
-            baei.a(this.a.this$0).remove(arrayOfbaev[j]);
-            arrayOfbaev[j].c();
+            FrameSprite.g(this.a.this$0).remove(arrayOfTexture[i]);
+            arrayOfTexture[i].c();
           }
         }
-        else {
-          return;
-        }
       }
-      j += 1;
+      else
+      {
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.1.1
  * JD-Core Version:    0.7.0.1
  */

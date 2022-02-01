@@ -2,127 +2,168 @@ package com.tencent.mm.plugin.sns.ui.item;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.text.SpannableString;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.TextView.BufferType;
+import androidx.constraintlayout.widget.Guideline;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.plugin.sns.ui.TagImageView;
-import com.tencent.mm.plugin.sns.ui.av;
-import com.tencent.mm.plugin.sns.ui.aw;
-import com.tencent.mm.plugin.sns.ui.bd;
-import com.tencent.mm.plugin.sns.ui.d.b;
-import com.tencent.mm.plugin.sns.ui.q;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelsns.o;
+import com.tencent.mm.plugin.findersdk.a.ae;
+import com.tencent.mm.plugin.findersdk.a.bq;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.ui.bn;
+import com.tencent.mm.plugin.sns.ui.bo;
+import com.tencent.mm.plugin.sns.ui.bv;
+import com.tencent.mm.plugin.sns.ui.listener.c;
+import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.protocal.protobuf.bvj;
+import com.tencent.mm.protocal.protobuf.bvl;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.widget.b.a;
+import com.tencent.mm.view.e.b;
+import com.tencent.mm.view.f;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 public final class e
   extends BaseTimeLineItem
 {
-  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, aw paramaw, TimeLineObject paramTimeLineObject, int paramInt2, av paramav)
+  private Map<String, Boolean> RMy;
+  
+  public e()
   {
-    AppMethodBeat.i(40150);
-    String str = paramaw.rGx;
-    if (!paramTimeLineObject.xTS.wOa.isEmpty())
+    AppMethodBeat.i(309015);
+    this.RMy = new HashMap();
+    AppMethodBeat.o(309015);
+  }
+  
+  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bo parambo, TimeLineObject paramTimeLineObject, int paramInt2, bn parambn)
+  {
+    AppMethodBeat.i(309023);
+    final a locala;
+    final bvl localbvl;
+    Object localObject;
+    if ((paramTimeLineObject != null) && (paramTimeLineObject.ContentObj != null) && (paramTimeLineObject.ContentObj.hKU != null))
     {
-      paramBaseViewHolder.sgW.setPosition(paramInt1);
-      paramBaseViewHolder.rUS.setVisibility(0);
-      paramaw = (bcs)paramTimeLineObject.xTS.wOa.get(0);
-      Object localObject1 = ag.cpc();
-      Object localObject2 = paramBaseViewHolder.sgW;
-      paramInt1 = this.mActivity.hashCode();
-      az localaz = az.dxB();
-      localaz.oLs = paramTimeLineObject.CreateTime;
-      ((g)localObject1).a(paramaw, (View)localObject2, 2131230809, paramInt1, localaz);
-      paramBaseViewHolder.rFb.setPressed(false);
-      localObject1 = paramTimeLineObject.Id;
-      if (com.tencent.mm.aw.a.aiw())
+      locala = (a)paramBaseViewHolder;
+      localbvl = paramTimeLineObject.ContentObj.hKU;
+      localObject = parambo.PJQ;
+      if ((((SnsInfo)localObject).getSnsId() == null) || (this.RMy.get(((SnsInfo)localObject).getSnsId()) == null))
       {
-        localObject2 = com.tencent.mm.aw.a.aiz();
-        if ((localObject2 != null) && (com.tencent.mm.aw.a.d((com.tencent.mm.aw.e)localObject2)) && (((String)localObject1).equals(((com.tencent.mm.aw.e)localObject2).fKj)))
+        f.a(paramBaseViewHolder.convertView, new e.b()
         {
-          paramInt1 = 1;
-          if (paramInt1 == 0) {
-            break label347;
+          public final void a(View paramAnonymousView, long paramAnonymousLong1, long paramAnonymousLong2, boolean paramAnonymousBoolean)
+          {
+            AppMethodBeat.i(308965);
+            if (paramAnonymousBoolean)
+            {
+              ((bq)h.ax(bq.class)).a(d.FK(localbvl.objectId), localbvl.objectNonceId, 37, null, locala.RMo.getContext(), false, null);
+              paramAnonymousView = this.PNW.getUserName();
+              ((ae)h.ax(ae.class)).E(3, paramAnonymousView, localbvl.objectId);
+            }
+            AppMethodBeat.o(308965);
           }
-          paramBaseViewHolder.rFb.setImageResource(2130839751);
-          label171:
-          paramBaseViewHolder.sgW.setTag(new q(paramTimeLineObject, str));
-          paramBaseViewHolder.sgW.setOnClickListener(paramav.rON.scE);
-          paramBaseViewHolder.rUS.setTag(new q(paramTimeLineObject, str));
-          paramav.jVd.c(paramBaseViewHolder.rUS, paramav.rks.sjG, paramav.rks.sjr);
-          paramBaseViewHolder.rUS.setOnClickListener(paramav.rON.rUE);
-          paramTimeLineObject = paramaw.Desc;
-          if (bo.isNullOrNil(paramTimeLineObject)) {
-            break label359;
+          
+          public final long fq(View paramAnonymousView)
+          {
+            AppMethodBeat.i(308970);
+            long l = this.PNW.getSnsId().hashCode() + paramAnonymousView.hashCode();
+            AppMethodBeat.o(308970);
+            return l;
           }
-          paramBaseViewHolder.sgX.setVisibility(0);
-          paramBaseViewHolder.sgX.setText(paramTimeLineObject);
+        });
+        if (((SnsInfo)localObject).getSnsId() != null) {
+          this.RMy.put(((SnsInfo)localObject).getSnsId(), Boolean.TRUE);
         }
       }
-      for (;;)
+      if (!Util.isNullOrNil(localbvl.mediaList))
       {
-        paramaw = paramaw.Title;
-        if (bo.isNullOrNil(paramaw)) {
-          break label370;
+        paramBaseViewHolder = (bvj)localbvl.mediaList.get(0);
+        if (paramBaseViewHolder != null)
+        {
+          if (localbvl.GfT != 4) {
+            break label404;
+          }
+          locala.RcO.setVisibility(0);
+          locala.RMC.setVisibility(8);
+          locala.RMB.setGuidelineEnd(0);
+          localObject = o.a((int)paramBaseViewHolder.width, (int)paramBaseViewHolder.height, locala.RMo.getContext(), false);
+          paramInt1 = ((Integer)((Pair)localObject).first).intValue();
+          paramInt2 = ((Integer)((Pair)localObject).second).intValue();
+          locala.RMo.getLayoutParams().width = paramInt1;
+          locala.RMo.getLayoutParams().height = paramInt2;
+          locala.RMo.requestLayout();
         }
-        paramBaseViewHolder.titleTv.setVisibility(0);
-        paramaw = new SpannableString(paramaw);
-        paramBaseViewHolder.titleTv.setText(paramaw, TextView.BufferType.SPANNABLE);
-        AppMethodBeat.o(40150);
-        return;
-        paramInt1 = 0;
-        break;
-        label347:
-        paramBaseViewHolder.rFb.setImageResource(2130839753);
-        break label171;
-        label359:
-        paramBaseViewHolder.sgX.setVisibility(4);
       }
-      label370:
-      paramBaseViewHolder.titleTv.setVisibility(8);
-      AppMethodBeat.o(40150);
-      return;
     }
-    paramBaseViewHolder.rUS.setVisibility(8);
-    AppMethodBeat.o(40150);
+    for (;;)
+    {
+      locala.desc = String.format(this.mActivity.getResources().getString(b.j.sns_finder_who_video), new Object[] { t.e(localbvl) });
+      locala.AlJ.setContentDescription(locala.desc);
+      ((cn)h.az(cn.class)).loadImage(paramBaseViewHolder.thumbUrl, locala.AlJ);
+      locala.RMo.setTag(paramTimeLineObject);
+      locala.RMo.setOnClickListener(parambn.RoS.RFr);
+      parambn.hpB().c(locala.RMo, parambn.QBf.RQq, parambn.QBf.RPU);
+      a(parambo, 1);
+      AppMethodBeat.o(309023);
+      return;
+      label404:
+      locala.RcO.setVisibility(8);
+      locala.RMC.setVisibility(8);
+      locala.RMC.RVj = localbvl.hGP;
+      locala.RMB.setGuidelineEnd(0);
+      localObject = o.a((int)paramBaseViewHolder.width, (int)paramBaseViewHolder.height, locala.RMo.getContext());
+      paramInt1 = ((Integer)((Pair)localObject).first).intValue();
+      paramInt2 = ((Integer)((Pair)localObject).second).intValue();
+      locala.RMo.getLayoutParams().width = paramInt1;
+      locala.RMo.getLayoutParams().height = paramInt2;
+      locala.RMo.requestLayout();
+    }
   }
   
   public final void d(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(40149);
-    if (paramBaseViewHolder.sgT != null)
+    AppMethodBeat.i(309018);
+    a locala = (a)paramBaseViewHolder;
+    if ((paramBaseViewHolder.RKG != null) && (paramBaseViewHolder.RKG.getParent() != null))
     {
-      paramBaseViewHolder.sgT.setLayoutResource(2130970844);
-      paramBaseViewHolder.shC = ((ViewStub)paramBaseViewHolder.ngZ.findViewById(2131827945));
-      if ((!paramBaseViewHolder.shD) && (paramBaseViewHolder.shC != null)) {
-        paramBaseViewHolder.shE = paramBaseViewHolder.shC.inflate();
+      paramBaseViewHolder.RKG.setLayoutResource(b.g.sns_finder_media_item);
+      if (!locala.RMn) {
+        locala.RMo = paramBaseViewHolder.RKG.inflate();
       }
     }
-    for (paramBaseViewHolder.shD = true;; paramBaseViewHolder.shD = true)
+    for (locala.RMn = true;; locala.RMn = true)
     {
-      paramBaseViewHolder.rUS = paramBaseViewHolder.shE;
-      paramBaseViewHolder.rUS.findViewById(2131824765).setOnTouchListener(this.rkX.rGO);
-      paramBaseViewHolder.sgW = ((TagImageView)paramBaseViewHolder.rUS.findViewById(2131825855));
-      paramBaseViewHolder.rFb = ((ImageView)paramBaseViewHolder.rUS.findViewById(2131824765));
-      paramBaseViewHolder.sgX = ((TextView)paramBaseViewHolder.rUS.findViewById(2131825858));
-      paramBaseViewHolder.titleTv = ((TextView)paramBaseViewHolder.rUS.findViewById(2131825857));
-      paramBaseViewHolder.titleTv.setTextColor(this.mActivity.getResources().getColor(2131690489));
-      paramBaseViewHolder.titleTv.setMaxLines(1);
-      i.b(paramBaseViewHolder.sgW, this.mActivity);
-      AppMethodBeat.o(40149);
+      locala.RcO = ((ImageView)locala.RMo.findViewById(b.f.sns_finder_media_status_icon));
+      locala.RMC = ((ImageIndicatorView)locala.RMo.findViewById(b.f.sns_finder_media_image_count_indicator));
+      locala.AlJ = ((ImageView)locala.RMo.findViewById(b.f.sns_finder_media_thumb));
+      locala.RMB = ((Guideline)locala.RMo.findViewById(b.f.sns_finder_media_image_count_indicator_guide_line));
+      AppMethodBeat.o(309018);
       return;
-      paramBaseViewHolder.shE = paramBaseViewHolder.ngZ.findViewById(2131828028);
+      locala.RMo = paramBaseViewHolder.convertView.findViewById(b.f.sns_finder_media_content_rl);
     }
+  }
+  
+  public static class a
+    extends BaseTimeLineItem.BaseViewHolder
+  {
+    ImageView AlJ;
+    Guideline RMB;
+    ImageIndicatorView RMC;
+    boolean RMn = false;
+    View RMo;
+    ImageView RcO;
   }
 }
 

@@ -17,26 +17,27 @@ public class TrackInfo
   
   public CompositionTrackSegment getCompositionTrackSegment(CMTimeRange paramCMTimeRange)
   {
-    return new CompositionTrackSegment(this.compositionTrackSegment.getSourcePath(), this.compositionTrackSegment.getSourceTrackID(), this.compositionTrackSegment.getTimeMapping().getSource(), paramCMTimeRange, this.compositionTrackSegment.getSourceType());
+    paramCMTimeRange = new CompositionTrackSegment(this.compositionTrackSegment.getSourcePath(), this.compositionTrackSegment.getSourceTrackID(), this.compositionTrackSegment.getTimeMapping().getSource(), paramCMTimeRange, this.compositionTrackSegment.getSourceType());
+    paramCMTimeRange.setExtraInfo(this.compositionTrackSegment.getExtraInfo());
+    return paramCMTimeRange;
   }
   
   public int getMediaType()
   {
-    int i;
-    if (this.track != null) {
-      i = this.track.getMediaType();
+    Object localObject = this.track;
+    if (localObject != null) {
+      return ((AssetTrack)localObject).getMediaType();
     }
-    int j;
-    do
+    localObject = this.compositionTrackSegment;
+    if (localObject != null)
     {
-      return i;
-      if (this.compositionTrackSegment == null) {
-        break;
+      int j = ((CompositionTrackSegment)localObject).getSourceType();
+      int i = j;
+      if (j == 3) {
+        i = 1;
       }
-      j = this.compositionTrackSegment.getSourceType();
-      i = j;
-    } while (j != 3);
-    return 1;
+      return i;
+    }
     return 0;
   }
   
@@ -78,7 +79,7 @@ public class TrackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TrackInfo
  * JD-Core Version:    0.7.0.1
  */

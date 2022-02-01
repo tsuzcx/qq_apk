@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/c7n" android:background="@color/ng" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/avl" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
+            <TextView android:textSize="@dimen/afa" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/fn4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="下载更新" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/afa" android:textColor="@color/Link" android:id="@id/iug" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView>
+</LinearLayout>

@@ -31,7 +31,10 @@ final class eh$a
   
   public final String toString()
   {
-    return eh.c(this.a) + "[]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(eh.c(this.a));
+    localStringBuilder.append("[]");
+    return localStringBuilder.toString();
   }
 }
 

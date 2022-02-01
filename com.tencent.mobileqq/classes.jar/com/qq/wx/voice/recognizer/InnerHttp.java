@@ -9,8 +9,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,134 +47,120 @@ public class InnerHttp
   
   private int a(String paramString, int paramInt)
   {
-    int i1 = -203;
     try
     {
       paramString = new JSONObject(paramString);
-      if (paramInt != 1) {
-        break label129;
-      }
-    }
-    catch (JSONException paramString)
-    {
+      int i1 = -203;
       try
       {
         if (paramString.has("ret"))
         {
           i1 = paramString.getInt("ret");
-          if (i1 == 0) {
-            break label77;
+          if (i1 != 0) {
+            return i1;
           }
+          if (paramInt == 1)
+          {
+            if (!a(paramString)) {
+              return -205;
+            }
+            mIsAuthorized = true;
+            StringBuilder localStringBuilder1 = new StringBuilder("mDeltaTime = ");
+            localStringBuilder1.append(mDeltaTime);
+            localStringBuilder1.append(" mIsAuthorized = ");
+            localStringBuilder1.append(mIsAuthorized);
+            LogTool.d(localStringBuilder1.toString());
+          }
+          if (paramInt == 6)
+          {
+            if (!b(paramString)) {
+              return -206;
+            }
+            if (((InfoHttp.f == 0) && (this.j == 1)) || (InfoHttp.f == 1))
+            {
+              paramString = c(paramString);
+              if (paramString == null) {
+                return -206;
+              }
+              if (!this.b)
+              {
+                if (InfoRecognizer.g) {
+                  paramString.voiceRecordPCMData = InfoRecognizer.l.toByteArray();
+                }
+                if (InfoRecognizer.g) {
+                  paramString.voiceSpeexData = InfoRecognizer.m.toByteArray();
+                }
+                double d1 = this.l;
+                Double.isNaN(d1);
+                d1 /= 32.0D;
+                double d2 = InfoRecorder.f;
+                Double.isNaN(d2);
+                paramString.startTime = ((d1 - d2) / 1000.0D);
+                if (this.j == 1)
+                {
+                  d1 = this.m;
+                  Double.isNaN(d1);
+                  d1 /= 32.0D;
+                  d2 = InfoRecorder.c;
+                  Double.isNaN(d2);
+                  paramString.stopTime = ((d1 - d2) / 1000.0D);
+                }
+                if (this.k == 1) {
+                  paramString.isAllEnd = true;
+                }
+                InfoRecognizer.b.a(paramString);
+              }
+            }
+          }
+          i1 = 0;
         }
         return i1;
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
-        LogTool.d("json = " + paramString.toString());
+        StringBuilder localStringBuilder2 = new StringBuilder("json = ");
+        localStringBuilder2.append(paramString.toString());
+        LogTool.d(localStringBuilder2.toString());
         return -203;
       }
-      paramString = paramString;
-      paramString.printStackTrace();
       return -202;
     }
-    label77:
-    if (!a(paramString)) {
-      return -205;
-    }
-    mIsAuthorized = true;
-    LogTool.d("mDeltaTime = " + mDeltaTime + " mIsAuthorized = " + mIsAuthorized);
-    label129:
-    if (paramInt == 6)
+    catch (JSONException paramString)
     {
-      if (!b(paramString)) {
-        return -206;
-      }
-      if (((InfoHttp.f == 0) && (this.j == 1)) || (InfoHttp.f == 1))
-      {
-        paramString = c(paramString);
-        if (paramString == null) {
-          return -206;
-        }
-        if (!this.b)
-        {
-          if (InfoRecognizer.g) {
-            paramString.voiceRecordPCMData = InfoRecognizer.l.toByteArray();
-          }
-          if (InfoRecognizer.g) {
-            paramString.voiceSpeexData = InfoRecognizer.m.toByteArray();
-          }
-          paramString.startTime = ((this.l / 32.0D - InfoRecorder.f) / 1000.0D);
-          if (this.j == 1) {
-            paramString.stopTime = ((this.m / 32.0D - InfoRecorder.c) / 1000.0D);
-          }
-          if (this.k == 1) {
-            paramString.isAllEnd = true;
-          }
-          InfoRecognizer.b.a(paramString);
-        }
-      }
+      paramString.printStackTrace();
     }
-    return 0;
   }
   
-  /* Error */
   private String a(String paramString, byte[] paramArrayOfByte)
   {
-    // Byte code:
-    //   0: new 204	org/apache/http/client/methods/HttpPost
-    //   3: dup
-    //   4: aload_1
-    //   5: invokespecial 205	org/apache/http/client/methods/HttpPost:<init>	(Ljava/lang/String;)V
-    //   8: astore_1
-    //   9: aload_1
-    //   10: new 207	org/apache/http/entity/ByteArrayEntity
-    //   13: dup
-    //   14: aload_2
-    //   15: invokespecial 210	org/apache/http/entity/ByteArrayEntity:<init>	([B)V
-    //   18: invokevirtual 214	org/apache/http/client/methods/HttpPost:setEntity	(Lorg/apache/http/HttpEntity;)V
-    //   21: aload_0
-    //   22: getfield 79	com/qq/wx/voice/recognizer/InnerHttp:n	Lorg/apache/http/impl/client/DefaultHttpClient;
-    //   25: aload_1
-    //   26: invokevirtual 218	org/apache/http/impl/client/DefaultHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
-    //   29: astore_1
-    //   30: aload_1
-    //   31: invokeinterface 224 1 0
-    //   36: invokeinterface 230 1 0
-    //   41: sipush 200
-    //   44: if_icmpne +37 -> 81
-    //   47: new 232	java/lang/String
-    //   50: dup
-    //   51: aload_1
-    //   52: invokeinterface 236 1 0
-    //   57: invokestatic 241	org/apache/http/util/EntityUtils:toByteArray	(Lorg/apache/http/HttpEntity;)[B
-    //   60: ldc 243
-    //   62: invokespecial 246	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   65: astore_1
-    //   66: aload_1
-    //   67: invokestatic 128	com/qq/wx/voice/util/LogTool:d	(Ljava/lang/String;)V
-    //   70: aload_1
-    //   71: areturn
-    //   72: astore_2
-    //   73: aconst_null
-    //   74: astore_1
-    //   75: aload_2
-    //   76: invokevirtual 247	java/lang/Exception:printStackTrace	()V
-    //   79: aload_1
-    //   80: areturn
-    //   81: aconst_null
-    //   82: areturn
-    //   83: astore_2
-    //   84: goto -9 -> 75
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	this	InnerHttp
-    //   0	87	1	paramString	String
-    //   0	87	2	paramArrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   0	66	72	java/lang/Exception
-    //   66	70	83	java/lang/Exception
+    Object localObject = null;
+    try
+    {
+      paramString = new HttpPost(paramString);
+      paramString.setEntity(new ByteArrayEntity(paramArrayOfByte));
+      paramString = this.n.execute(paramString);
+      if (paramString.getStatusLine().getStatusCode() == 200)
+      {
+        paramString = new String(EntityUtils.toByteArray(paramString.getEntity()), "UTF-8");
+        try
+        {
+          LogTool.d(paramString);
+          return paramString;
+        }
+        catch (Exception paramArrayOfByte) {}
+      }
+      else
+      {
+        return null;
+      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramString = localObject;
+      paramArrayOfByte.printStackTrace();
+    }
+    return paramString;
   }
   
   private void a(byte[] paramArrayOfByte, String paramString)
@@ -182,7 +173,6 @@ public class InnerHttp
   
   private static boolean a(JSONObject paramJSONObject)
   {
-    boolean bool = false;
     try
     {
       if (paramJSONObject.has("timestamp"))
@@ -190,14 +180,16 @@ public class InnerHttp
         long l1 = paramJSONObject.getLong("timestamp");
         mDeltaTime = System.currentTimeMillis() / 1000L - l1;
         InfoRecognizer.d.setDeltaTime(mDeltaTime);
-        bool = true;
+        return true;
       }
-      return bool;
+      return false;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      LogTool.d("json = " + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder("json = ");
+      localStringBuilder.append(paramJSONObject.toString());
+      LogTool.d(localStringBuilder.toString());
     }
     return false;
   }
@@ -214,124 +206,143 @@ public class InnerHttp
         int i1 = paramJSONObject.getInt("ack_offset");
         if (i1 <= this.h)
         {
-          LogTool.d("seq = " + this.h + " len = " + this.e + " ack_offset = " + i1);
+          StringBuilder localStringBuilder1 = new StringBuilder("seq = ");
+          localStringBuilder1.append(this.h);
+          localStringBuilder1.append(" len = ");
+          localStringBuilder1.append(this.e);
+          localStringBuilder1.append(" ack_offset = ");
+          localStringBuilder1.append(i1);
+          LogTool.d(localStringBuilder1.toString());
           return false;
         }
       }
+      return true;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      LogTool.d("json = " + paramJSONObject.toString());
-      return false;
+      StringBuilder localStringBuilder2 = new StringBuilder("json = ");
+      localStringBuilder2.append(paramJSONObject.toString());
+      LogTool.d(localStringBuilder2.toString());
     }
-    return true;
+    return false;
   }
   
   private VoiceRecognizerResult c(JSONObject paramJSONObject)
   {
-    int i1 = 0;
     boolean bool;
     if (this.j == 1) {
       bool = true;
+    } else {
+      bool = false;
     }
-    for (;;)
+    VoiceRecognizerResult localVoiceRecognizerResult = new VoiceRecognizerResult(bool);
+    try
     {
-      VoiceRecognizerResult localVoiceRecognizerResult = new VoiceRecognizerResult(bool);
-      try
-      {
-        localVoiceRecognizerResult.httpRes = paramJSONObject.toString().getBytes("UTF-8");
-        if (InfoRecognizer.p)
-        {
-          localVoiceRecognizerResult.type = 1;
-          return localVoiceRecognizerResult;
-          bool = false;
-        }
+      localVoiceRecognizerResult.httpRes = paramJSONObject.toString().getBytes("UTF-8");
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      localUnsupportedEncodingException.printStackTrace();
+    }
+    if (InfoRecognizer.p)
+    {
+      localVoiceRecognizerResult.type = 1;
+      return localVoiceRecognizerResult;
+    }
+    try
+    {
+      if (!paramJSONObject.has("res")) {
+        return null;
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      Object localObject = paramJSONObject.getJSONObject("res");
+      if (!((JSONObject)localObject).has("sentences")) {
+        return null;
+      }
+      localObject = ((JSONObject)localObject).getJSONArray("sentences");
+      int i2 = ((JSONArray)localObject).length();
+      if (i2 > 0)
       {
+        localVoiceRecognizerResult.words = new ArrayList();
+        int i1 = 0;
         for (;;)
         {
-          localUnsupportedEncodingException.printStackTrace();
-        }
-        try
-        {
-          if (!paramJSONObject.has("res")) {
-            return null;
-          }
-          Object localObject = paramJSONObject.getJSONObject("res");
-          if (!((JSONObject)localObject).has("sentences")) {
-            return null;
-          }
-          localObject = ((JSONObject)localObject).getJSONArray("sentences");
-          int i2 = ((JSONArray)localObject).length();
-          if (i2 > 0)
+          if (i1 >= i2)
           {
-            localVoiceRecognizerResult.words = new ArrayList();
-            for (;;)
-            {
-              if (i1 >= i2)
-              {
-                if (localVoiceRecognizerResult.words.isEmpty()) {
-                  break;
-                }
-                localVoiceRecognizerResult.text = ((VoiceRecognizerResult.Word)localVoiceRecognizerResult.words.get(0)).text;
-                break;
-              }
-              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i1);
-              if (localJSONObject != null)
-              {
-                VoiceRecognizerResult.Word localWord = new VoiceRecognizerResult.Word();
-                localWord.text = localJSONObject.getString("text");
-                if (localJSONObject.has("semantic")) {
-                  localWord.semanticJsonObject = localJSONObject.getJSONObject("semantic");
-                }
-                localVoiceRecognizerResult.words.add(localWord);
-              }
-              i1 += 1;
+            if (localVoiceRecognizerResult.words.isEmpty()) {
+              break;
             }
+            localVoiceRecognizerResult.text = ((VoiceRecognizerResult.Word)localVoiceRecognizerResult.words.get(0)).text;
+            return localVoiceRecognizerResult;
           }
-          return localJSONException;
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-          LogTool.d("json = " + paramJSONObject.toString());
-          return null;
+          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i1);
+          if (localJSONObject != null)
+          {
+            VoiceRecognizerResult.Word localWord = new VoiceRecognizerResult.Word();
+            localWord.text = localJSONObject.getString("text");
+            if (localJSONObject.has("semantic")) {
+              localWord.semanticJsonObject = localJSONObject.getJSONObject("semantic");
+            }
+            localVoiceRecognizerResult.words.add(localWord);
+          }
+          i1 += 1;
         }
       }
+      return localVoiceRecognizerResult;
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder("json = ");
+      localStringBuilder.append(paramJSONObject.toString());
+      LogTool.d(localStringBuilder.toString());
+    }
+    return null;
   }
   
   private String c(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (!InfoRecognizer.n) {
-      localStringBuilder.append("http://" + InfoSender.Domain + InfoSender.Uri + "?");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    if (!InfoRecognizer.n)
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder("http://");
+      localStringBuilder2.append(InfoSender.Domain);
+      localStringBuilder2.append(InfoSender.Uri);
+      localStringBuilder2.append("?");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
     if (paramInt == 1)
     {
-      localStringBuilder.append("cmd=").append(paramInt);
-      localStringBuilder.append("&appid=").append(InfoRecognizer.a);
+      localStringBuilder1.append("cmd=");
+      localStringBuilder1.append(paramInt);
+      localStringBuilder1.append("&appid=");
+      localStringBuilder1.append(InfoRecognizer.a);
     }
     if (paramInt == 6)
     {
-      localStringBuilder.append("version=2.0");
-      localStringBuilder.append("&cmd=").append(paramInt);
-      localStringBuilder.append("&appid=").append(InfoRecognizer.a);
-      localStringBuilder.append("&voice_id=").append(this.g);
-      localStringBuilder.append("&os=").append(InfoRecognizer.c.getOs());
-      localStringBuilder.append("&sdk_src=0");
-      localStringBuilder.append("&osver=").append(InfoRecognizer.c.getOsver());
-      localStringBuilder.append("&net=").append(InfoRecognizer.c.getNetTypeNum());
-      localStringBuilder.append("&sdk_ver=1.17");
-      localStringBuilder.append("&voice_end=").append(this.j);
-      localStringBuilder.append("&encrypt_aes_mode=CBC");
+      localStringBuilder1.append("version=2.0");
+      localStringBuilder1.append("&cmd=");
+      localStringBuilder1.append(paramInt);
+      localStringBuilder1.append("&appid=");
+      localStringBuilder1.append(InfoRecognizer.a);
+      localStringBuilder1.append("&voice_id=");
+      localStringBuilder1.append(this.g);
+      localStringBuilder1.append("&os=");
+      localStringBuilder1.append(InfoRecognizer.c.getOs());
+      localStringBuilder1.append("&sdk_src=0");
+      localStringBuilder1.append("&osver=");
+      localStringBuilder1.append(InfoRecognizer.c.getOsver());
+      localStringBuilder1.append("&net=");
+      localStringBuilder1.append(InfoRecognizer.c.getNetTypeNum());
+      localStringBuilder1.append("&sdk_ver=1.17");
+      localStringBuilder1.append("&voice_end=");
+      localStringBuilder1.append(this.j);
+      localStringBuilder1.append("&encrypt_aes_mode=CBC");
       if (InfoRecognizer.o != null) {
-        localStringBuilder.append(InfoRecognizer.o);
+        localStringBuilder1.append(InfoRecognizer.o);
       }
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
   
   private void d(int paramInt)
@@ -344,54 +355,88 @@ public class InnerHttp
   
   private byte[] f()
   {
-    int i2 = 6;
-    try
+    for (;;)
     {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      Object localObject1 = new StringBuilder();
-      Object localObject2 = ((StringBuilder)localObject1).append("&appid=").append(InfoRecognizer.a).append("&timestamp=").append(System.currentTimeMillis() / 1000L - mDeltaTime).append("&seq=").append(this.h).append("&len=").append(this.e).append("&samples_per_sec=").append(InfoRecorder.a).append("&bits_per_sample=16&result_type=").append(InfoHttp.c).append("&max_result_count=").append(InfoHttp.b).append("&end=").append(String.valueOf(this.j)).append("&device_info=").append(InfoRecognizer.c.getDeviceInfo()).append("&guid=").append(InfoRecognizer.c.getGuid()).append("&android_signature=").append(InfoRecognizer.c.getAndroid_signature()).append("&android_package_name=").append(InfoRecognizer.c.getAndroid_package_name()).append("&vr_domain=").append(InfoHttp.e).append("&cont_res=").append(InfoHttp.f).append("&language_type=0&voice_file_type=");
-      if (InfoRecognizer.k)
+      try
       {
-        i1 = 6;
-        localObject2 = ((StringBuilder)localObject2).append(i1).append("&voice_encode_type=");
-        if (!InfoRecognizer.k) {
-          break label420;
-        }
-      }
-      label420:
-      for (int i1 = i2;; i1 = 1)
-      {
-        ((StringBuilder)localObject2).append(i1);
-        if ((InfoHttp.c & 0x4) > 0) {
-          ((StringBuilder)localObject1).append("&semantic_category=").append(InfoHttp.d);
-        }
-        if ((InfoRecognizer.e.isNeedUpdate()) && (this.j == 1) && (InfoHttp.g))
+        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("&appid=");
+        ((StringBuilder)localObject).append(InfoRecognizer.a);
+        ((StringBuilder)localObject).append("&timestamp=");
+        ((StringBuilder)localObject).append(System.currentTimeMillis() / 1000L - mDeltaTime);
+        ((StringBuilder)localObject).append("&seq=");
+        ((StringBuilder)localObject).append(this.h);
+        ((StringBuilder)localObject).append("&len=");
+        ((StringBuilder)localObject).append(this.e);
+        ((StringBuilder)localObject).append("&samples_per_sec=");
+        ((StringBuilder)localObject).append(InfoRecorder.a);
+        ((StringBuilder)localObject).append("&bits_per_sample=16&result_type=");
+        ((StringBuilder)localObject).append(InfoHttp.c);
+        ((StringBuilder)localObject).append("&max_result_count=");
+        ((StringBuilder)localObject).append(InfoHttp.b);
+        ((StringBuilder)localObject).append("&end=");
+        ((StringBuilder)localObject).append(String.valueOf(this.j));
+        ((StringBuilder)localObject).append("&device_info=");
+        ((StringBuilder)localObject).append(InfoRecognizer.c.getDeviceInfo());
+        ((StringBuilder)localObject).append("&guid=");
+        ((StringBuilder)localObject).append(InfoRecognizer.c.getGuid());
+        ((StringBuilder)localObject).append("&android_signature=");
+        ((StringBuilder)localObject).append(InfoRecognizer.c.getAndroid_signature());
+        ((StringBuilder)localObject).append("&android_package_name=");
+        ((StringBuilder)localObject).append(InfoRecognizer.c.getAndroid_package_name());
+        ((StringBuilder)localObject).append("&vr_domain=");
+        ((StringBuilder)localObject).append(InfoHttp.e);
+        ((StringBuilder)localObject).append("&cont_res=");
+        ((StringBuilder)localObject).append(InfoHttp.f);
+        ((StringBuilder)localObject).append("&language_type=0&voice_file_type=");
+        boolean bool = InfoRecognizer.k;
+        int i2 = 6;
+        if (bool)
         {
-          ((StringBuilder)localObject1).append(InfoRecognizer.e.getRecordStr());
-          this.c = true;
+          i1 = 6;
+          ((StringBuilder)localObject).append(i1);
+          ((StringBuilder)localObject).append("&voice_encode_type=");
+          if (!InfoRecognizer.k) {
+            break label539;
+          }
+          i1 = i2;
+          ((StringBuilder)localObject).append(i1);
+          if ((InfoHttp.c & 0x4) > 0)
+          {
+            ((StringBuilder)localObject).append("&semantic_category=");
+            ((StringBuilder)localObject).append(InfoHttp.d);
+          }
+          if ((InfoRecognizer.e.isNeedUpdate()) && (this.j == 1) && (InfoHttp.g))
+          {
+            ((StringBuilder)localObject).append(InfoRecognizer.e.getRecordStr());
+            this.c = true;
+          }
+          LogTool.d(((StringBuilder)localObject).toString());
+          localByteArrayOutputStream.write(((StringBuilder)localObject).toString().getBytes());
+          localByteArrayOutputStream.write(0);
+          localByteArrayOutputStream.write(this.d);
+          localByteArrayOutputStream.flush();
+          localObject = new ByteArrayOutputStream();
+          ((ByteArrayOutputStream)localObject).write(InfoHttp.a);
+          ((ByteArrayOutputStream)localObject).write(Common.AES(localByteArrayOutputStream.toByteArray()));
+          ((ByteArrayOutputStream)localObject).flush();
+          byte[] arrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
+          ((ByteArrayOutputStream)localObject).close();
+          localByteArrayOutputStream.close();
+          return arrayOfByte;
         }
-        LogTool.d(((StringBuilder)localObject1).toString());
-        localByteArrayOutputStream.write(((StringBuilder)localObject1).toString().getBytes());
-        localByteArrayOutputStream.write(0);
-        localByteArrayOutputStream.write(this.d);
-        localByteArrayOutputStream.flush();
-        localObject1 = new ByteArrayOutputStream();
-        ((ByteArrayOutputStream)localObject1).write(InfoHttp.a);
-        ((ByteArrayOutputStream)localObject1).write(Common.AES(localByteArrayOutputStream.toByteArray()));
-        ((ByteArrayOutputStream)localObject1).flush();
-        localObject2 = ((ByteArrayOutputStream)localObject1).toByteArray();
-        ((ByteArrayOutputStream)localObject1).close();
-        localByteArrayOutputStream.close();
-        return localObject2;
-        i1 = 1;
-        break;
       }
-      return null;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      d(-204);
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        d(-204);
+        return null;
+      }
+      int i1 = 1;
+      continue;
+      label539:
+      i1 = 1;
     }
   }
   
@@ -404,7 +449,11 @@ public class InnerHttp
     if (l1 != ManagerDataStore.NULLNUM) {
       mIsAuthorized = true;
     }
-    LogTool.d("mDeltaTime = " + mDeltaTime + " mIsAuthorized = " + mIsAuthorized);
+    StringBuilder localStringBuilder = new StringBuilder("mDeltaTime = ");
+    localStringBuilder.append(mDeltaTime);
+    localStringBuilder.append(" mIsAuthorized = ");
+    localStringBuilder.append(mIsAuthorized);
+    LogTool.d(localStringBuilder.toString());
     this.a = false;
     this.b = false;
     this.c = false;
@@ -424,57 +473,53 @@ public class InnerHttp
   
   protected final void a(byte[] paramArrayOfByte)
   {
-    int i1;
-    do
+    try
     {
-      try
+      paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      paramArrayOfByte = null;
+    }
+    if (paramArrayOfByte == null)
+    {
+      paramArrayOfByte = InfoRecognizer.c.getNetType();
+      InfoRecognizer.e.add(false, paramArrayOfByte);
+      if ((this.f == 1) && (this.r >= this.q))
       {
-        paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = InfoRecognizer.c.getNetType();
-          InfoRecognizer.e.add(false, paramArrayOfByte);
-          if ((this.f == 1) && (this.r >= this.q))
-          {
-            d(-201);
-            return;
-          }
-        }
-      }
-      catch (UnsupportedEncodingException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-        }
-        if ((this.f == 6) && (this.s >= this.q))
-        {
-          d(-201);
-          return;
-        }
-        e();
+        d(-201);
         return;
       }
-      if (this.c)
+      if ((this.f == 6) && (this.s >= this.q))
       {
-        InfoRecognizer.e.clear();
-        this.c = false;
+        d(-201);
+        return;
       }
-      String str = InfoRecognizer.c.getNetType();
-      InfoRecognizer.e.add(true, str);
-      i1 = a(paramArrayOfByte, this.f);
-      if (i1 != 0) {
-        break;
-      }
-      if (this.f == 1)
+      e();
+      return;
+    }
+    if (this.c)
+    {
+      InfoRecognizer.e.clear();
+      this.c = false;
+    }
+    String str = InfoRecognizer.c.getNetType();
+    InfoRecognizer.e.add(true, str);
+    int i1 = a(paramArrayOfByte, this.f);
+    if (i1 == 0)
+    {
+      i1 = this.f;
+      if (i1 == 1)
       {
         e();
         return;
       }
-    } while (this.f != 6);
-    this.a = false;
-    return;
+      if (i1 == 6) {
+        this.a = false;
+      }
+      return;
+    }
     if ((this.f == 6) && (i1 == 20105))
     {
       mIsAuthorized = false;
@@ -548,96 +593,100 @@ public class InnerHttp
   public void run()
   {
     int i1 = 0;
+    int i2;
     for (;;)
     {
-      int i2 = i1;
-      if (!this.b)
+      i2 = i1;
+      if (this.b) {
+        break label344;
+      }
+      int i3 = this.r;
+      int i4 = this.q;
+      i2 = i1;
+      if (i3 >= i4) {
+        break label344;
+      }
+      if (this.s >= i4)
       {
         i2 = i1;
-        if (this.r < this.q)
-        {
-          if (this.s < this.q) {
-            break label47;
-          }
-          i2 = i1;
-        }
+        break label344;
       }
-      for (;;)
+      Object localObject;
+      if (!mIsAuthorized)
       {
-        if (i2 != 0)
+        this.f = 1;
+        str = c(1);
+        localObject = new byte[0];
+        this.r += 1;
+      }
+      else
+      {
+        this.f = 6;
+        str = c(6);
+        localObject = f();
+        this.s += 1;
+      }
+      LogTool.d(str);
+      StringBuilder localStringBuilder = new StringBuilder("post data length = ");
+      localStringBuilder.append(localObject.length);
+      localStringBuilder.append(" seq = ");
+      localStringBuilder.append(this.h);
+      localStringBuilder.append(" isEnd = ");
+      localStringBuilder.append(this.j);
+      localStringBuilder.append(" post times = ");
+      localStringBuilder.append(this.s);
+      LogTool.d(localStringBuilder.toString());
+      String str = a(str, (byte[])localObject);
+      if (str == null)
+      {
+        i1 = -201;
+        str = InfoRecognizer.c.getNetType();
+        InfoRecognizer.e.add(false, str);
+      }
+      else
+      {
+        if (this.c)
         {
-          d(i2);
-          return;
-          label47:
-          Object localObject;
-          if (!mIsAuthorized)
-          {
-            this.f = 1;
-            str = c(1);
-            localObject = new byte[0];
-            this.r += 1;
-          }
-          for (;;)
-          {
-            LogTool.d(str);
-            LogTool.d("post data length = " + localObject.length + " seq = " + this.h + " isEnd = " + this.j + " post times = " + this.s);
-            localObject = a(str, (byte[])localObject);
-            if (localObject != null) {
-              break label210;
-            }
-            i1 = -201;
-            localObject = InfoRecognizer.c.getNetType();
-            InfoRecognizer.e.add(false, (String)localObject);
+          InfoRecognizer.e.clear();
+          this.c = false;
+        }
+        localObject = InfoRecognizer.c.getNetType();
+        InfoRecognizer.e.add(true, (String)localObject);
+        i2 = a(str, this.f);
+        if (i2 == 0)
+        {
+          if (this.f != 6) {
             break;
-            this.f = 6;
-            str = c(6);
-            localObject = f();
-            this.s += 1;
           }
-          label210:
-          if (this.c)
+          i2 = 0;
+          break label344;
+        }
+        i1 = i2;
+        if (this.f == 6)
+        {
+          i1 = i2;
+          if (i2 == 20105)
           {
-            InfoRecognizer.e.clear();
-            this.c = false;
-          }
-          String str = InfoRecognizer.c.getNetType();
-          InfoRecognizer.e.add(true, str);
-          i2 = a((String)localObject, this.f);
-          if (i2 == 0)
-          {
-            if (this.f != 6) {
-              break label319;
-            }
-            i2 = 0;
-          }
-          else
-          {
-            i1 = i2;
-            if (this.f != 6) {
-              break;
-            }
-            i1 = i2;
-            if (i2 != 20105) {
-              break;
-            }
             mIsAuthorized = false;
             mDeltaTime = ManagerDataStore.NULLNUM;
             this.s = 0;
             i1 = i2;
-            break;
           }
         }
       }
-      this.a = false;
-      return;
-      label319:
-      i1 = 0;
     }
+    label344:
+    if (i2 != 0)
+    {
+      d(i2);
+      return;
+    }
+    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.recognizer.InnerHttp
  * JD-Core Version:    0.7.0.1
  */

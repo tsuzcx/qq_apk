@@ -8,12 +8,15 @@ public final class og$a
   
   public final String toString()
   {
-    return "Options{mMaxCacheSize=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder("Options{mMaxCacheSize=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.og.a
  * JD-Core Version:    0.7.0.1
  */

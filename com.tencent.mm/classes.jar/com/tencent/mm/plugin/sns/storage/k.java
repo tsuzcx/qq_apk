@@ -1,204 +1,180 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.plugin.sns.b.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.b.g;
+import com.tencent.mm.modelsns.o;
+import com.tencent.mm.protocal.protobuf.dmz;
+import com.tencent.mm.protocal.protobuf.dnb;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.d;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sns/storage/MediaObjParser;", "", "()V", "fillContentMediaSize", "Lcom/tencent/mm/protocal/protobuf/MediaSize;", "maps", "", "", "SIZE_TAG", "parseMedia", "Lcom/tencent/mm/protocal/protobuf/MediaObj;", "prefTag", "values", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
-  extends com.tencent.mm.sdk.e.j<j>
-  implements d
 {
-  public static final String[] SQL_CREATE;
-  public h fnw;
+  public static final k QYy;
   
   static
   {
-    AppMethodBeat.i(37854);
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "SnsComment") };
-    AppMethodBeat.o(37854);
+    AppMethodBeat.i(306591);
+    QYy = new k();
+    AppMethodBeat.o(306591);
   }
   
-  public k(h paramh)
+  public static dmz W(String paramString, Map<String, String> paramMap)
   {
-    super(paramh, j.info, "SnsComment", eo.INDEX_CREATE);
-    this.fnw = paramh;
-  }
-  
-  public static String csr()
-  {
-    return "select *, rowid from SnsComment";
-  }
-  
-  public final Cursor Ew(int paramInt)
-  {
-    AppMethodBeat.i(37844);
-    Object localObject = "select *, rowid from SnsComment where isSend = 0 order by createTime desc LIMIT ".concat(String.valueOf(paramInt));
-    ab.v("MicroMsg.SnsCommentStorage", "getCursor sql:".concat(String.valueOf(localObject)));
-    localObject = this.fnw.a((String)localObject, null, 0);
-    AppMethodBeat.o(37844);
-    return localObject;
-  }
-  
-  public final boolean a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(37846);
-    if (bo.isNullOrNil(paramString2)) {}
-    for (paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and createTime = " + paramInt + " and talker = '" + paramString1 + "'";; paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and clientId = '" + paramString2 + "'")
+    AppMethodBeat.i(306584);
+    if (paramString == null)
     {
-      paramString1 = rawQuery(paramString1, new String[0]);
-      if (paramString1 == null) {
-        break label144;
-      }
-      paramString1.moveToFirst();
-      paramInt = paramString1.getInt(0);
-      paramString1.close();
-      if (paramInt <= 0) {
-        break;
-      }
-      AppMethodBeat.o(37846);
-      return true;
+      AppMethodBeat.o(306584);
+      return null;
     }
-    AppMethodBeat.o(37846);
-    return false;
-    label144:
-    AppMethodBeat.o(37846);
-    return false;
-  }
-  
-  public final int bbZ()
-  {
-    int i = 0;
-    AppMethodBeat.i(37843);
-    Cursor localCursor = this.fnw.a(" select count(*) from SnsComment where isRead = ? and isSilence != ? ", new String[] { "0", "1" }, 2);
-    if (localCursor == null)
+    if (paramMap == null)
     {
-      AppMethodBeat.o(37843);
-      return 0;
+      AppMethodBeat.o(306584);
+      return null;
     }
-    if (localCursor.moveToFirst()) {
-      i = localCursor.getInt(0);
+    String str7 = s.X(paramString, ".id");
+    String str9 = s.X(paramString, ".type");
+    String str12 = s.X(paramString, ".title");
+    String str14 = s.X(paramString, ".description");
+    String str16 = s.X(paramString, ".url");
+    String str23 = s.X(paramString, ".url.$videomd5");
+    String str21 = s.X(paramString, ".thumb");
+    String str25 = s.X(paramString, ".url.$type");
+    String str27 = s.X(paramString, ".thumb.$type");
+    String str19 = s.X(paramString, ".private");
+    String str24 = s.X(paramString, ".subType");
+    String str22 = s.X(paramString, ".userData");
+    String str29 = s.X(paramString, ".lowBandUrl");
+    String str30 = s.X(paramString, ".lowBandUrl.$type");
+    String str28 = s.X(paramString, ".songalbumurl");
+    String str26 = s.X(paramString, ".songlyric");
+    String str20 = s.X(paramString, ".attachUrl");
+    String str18 = s.X(paramString, ".attachUrl.$md5");
+    String str17 = s.X(paramString, ".url.$md5");
+    String str15 = s.X(paramString, ".videosize.$attachTotalTime");
+    String str13 = s.X(paramString, ".attachThumbUrl");
+    String str11 = s.X(paramString, ".attachShareTitle");
+    String str8 = s.X(paramString, ".enc");
+    String str6 = s.X(paramString, ".enc.$key");
+    String str5 = s.X(paramString, ".url.$token");
+    String str4 = s.X(paramString, ".url.$enc_idx");
+    String str3 = s.X(paramString, ".url.$key");
+    String str2 = s.X(paramString, ".thumb.$token");
+    String str1 = s.X(paramString, ".thumb.$enc_idx");
+    Object localObject = s.X(paramString, ".thumb.$key");
+    String str10 = s.X(paramString, ".videoDuration");
+    String str31 = s.X(paramString, ".size.$width");
+    String str32 = s.X(paramString, ".size.$height");
+    paramString = s.X(paramString, ".size.$totalSize");
+    str31 = (String)paramMap.get(str31);
+    str32 = (String)paramMap.get(str32);
+    String str33 = (String)paramMap.get(paramString);
+    paramString = new dnb();
+    paramString.aaUc = 0.0F;
+    paramString.aaUb = 0.0F;
+    paramString.aaUd = 0.0F;
+    if (str31 != null) {
+      paramString.aaUb = o.Pk(str31);
     }
-    localCursor.close();
-    AppMethodBeat.o(37843);
-    return i;
-  }
-  
-  public final boolean bca()
-  {
-    AppMethodBeat.i(37851);
-    boolean bool = this.fnw.execSQL("SnsComment", " update SnsComment set isRead = 1 where isRead = 0");
-    AppMethodBeat.o(37851);
-    return bool;
-  }
-  
-  public final Cursor css()
-  {
-    AppMethodBeat.i(37845);
-    Cursor localCursor = this.fnw.a("select *, rowid from SnsComment where isRead = ?  and isSilence != ?  order by createTime desc", new String[] { "0", "1" }, 0);
-    AppMethodBeat.o(37845);
-    return localCursor;
-  }
-  
-  public final int cst()
-  {
-    AppMethodBeat.i(37847);
-    Cursor localCursor = rawQuery("select count(*) from SnsComment where isSend = 0", new String[0]);
-    if (localCursor != null)
+    if (str32 != null) {
+      paramString.aaUc = o.Pk(str32);
+    }
+    if (str33 != null) {
+      paramString.aaUd = o.Pk(str33);
+    }
+    str7 = (String)paramMap.get(str7);
+    str9 = (String)paramMap.get(str9);
+    str12 = (String)paramMap.get(str12);
+    str14 = (String)paramMap.get(str14);
+    str16 = (String)paramMap.get(str16);
+    str10 = (String)paramMap.get(str10);
+    str19 = (String)paramMap.get(str19);
+    str21 = (String)paramMap.get(str21);
+    str23 = (String)paramMap.get(str23);
+    str25 = (String)paramMap.get(str25);
+    str27 = (String)paramMap.get(str27);
+    str29 = (String)paramMap.get(str29);
+    str30 = (String)paramMap.get(str30);
+    str28 = (String)paramMap.get(str28);
+    str26 = (String)paramMap.get(str26);
+    str24 = (String)paramMap.get(str24);
+    str22 = (String)paramMap.get(str22);
+    str20 = (String)paramMap.get(str20);
+    str18 = (String)paramMap.get(str18);
+    str17 = (String)paramMap.get(str17);
+    str15 = (String)paramMap.get(str15);
+    str13 = (String)paramMap.get(str13);
+    str11 = (String)paramMap.get(str11);
+    str8 = (String)paramMap.get(str8);
+    str6 = (String)paramMap.get(str6);
+    str5 = (String)paramMap.get(str5);
+    str4 = (String)paramMap.get(str4);
+    str3 = (String)paramMap.get(str3);
+    str2 = (String)paramMap.get(str2);
+    str1 = (String)paramMap.get(str1);
+    paramMap = (String)paramMap.get(localObject);
+    if ((str9 == null) || (Util.isNullOrNil(str7)))
     {
-      localCursor.moveToFirst();
-      int i = localCursor.getInt(0);
-      localCursor.close();
-      AppMethodBeat.o(37847);
-      return i;
+      AppMethodBeat.o(306584);
+      return null;
     }
-    AppMethodBeat.o(37847);
-    return 0;
-  }
-  
-  public final void csu()
-  {
-    AppMethodBeat.i(37853);
-    this.fnw.ate("SnsComment");
-    AppMethodBeat.o(37853);
-  }
-  
-  public final j f(long paramLong1, long paramLong2, int paramInt)
-  {
-    AppMethodBeat.i(37848);
-    Object localObject1 = "";
-    if (paramInt == 9) {
-      localObject1 = "" + "(2)";
-    }
-    Object localObject2 = localObject1;
-    if (paramInt == 10) {
-      localObject2 = (String)localObject1 + "(8,16)";
-    }
-    localObject2 = rawQuery("select *, rowid from SnsComment where snsID = " + paramLong1 + " and commentSvrID = " + paramLong2 + " and type in " + (String)localObject2, new String[0]);
-    if (localObject2 != null) {
-      if (((Cursor)localObject2).moveToFirst())
-      {
-        localObject1 = new j();
-        ((j)localObject1).convertFrom((Cursor)localObject2);
-        ((Cursor)localObject2).close();
-      }
+    localObject = new dmz();
+    ((dmz)localObject).Id = o.Pl(str7);
+    ((dmz)localObject).vhJ = Util.getInt(str9, 0);
+    ((dmz)localObject).hAP = o.Pl(str12);
+    ((dmz)localObject).IGG = o.Pl(str14);
+    ((dmz)localObject).Url = o.Pl(str16);
+    ((dmz)localObject).aazR = Util.getInt(str25, 0);
+    ((dmz)localObject).aaTl = o.Pl(str21);
+    ((dmz)localObject).aaTm = Util.getInt(str27, 0);
+    ((dmz)localObject).Privated = Util.getInt(str19, 0);
+    ((dmz)localObject).aaTn = paramString;
+    ((dmz)localObject).aaTo = o.Pl(str29);
+    ((dmz)localObject).aaTp = Util.getInt(str30, 0);
+    ((dmz)localObject).songAlbumUrl = str28;
+    ((dmz)localObject).songLyric = str26;
+    ((dmz)localObject).RcB = o.Pl(str22);
+    ((dmz)localObject).subType = Util.getInt(str24, 0);
+    ((dmz)localObject).aaTr = o.Pl(str20);
+    ((dmz)localObject).aaTt = o.Pl(str18);
+    ((dmz)localObject).aaTs = o.Pl(str17);
+    ((dmz)localObject).aaTE = o.Pl(str23);
+    ((dmz)localObject).RGm = Util.getInt(str15, 0);
+    ((dmz)localObject).aaTu = o.Pl(str13);
+    ((dmz)localObject).aaTv = o.Pl(str11);
+    ((dmz)localObject).aaTw = Util.getInt(str8, 0);
+    ((dmz)localObject).aaTx = Util.getLong(str6, 0L);
+    if (((dmz)localObject).Url == null)
+    {
+      paramString = "".getBytes(d.UTF_8);
+      s.s(paramString, "(this as java.lang.String).getBytes(charset)");
     }
     for (;;)
     {
-      AppMethodBeat.o(37848);
-      return localObject1;
-      localObject1 = null;
-      break;
-      localObject1 = null;
-    }
-  }
-  
-  public final boolean g(long paramLong1, long paramLong2, int paramInt)
-  {
-    AppMethodBeat.i(37850);
-    String str1 = "";
-    if (paramInt == 9) {
-      str1 = "" + "(2)";
-    }
-    String str2 = str1;
-    if (paramInt == 10) {
-      str2 = str1 + "(8,16)";
-    }
-    str1 = "delete from SnsComment where snsID = " + paramLong1 + " and commentSvrID = " + paramLong2 + " and type in " + str2;
-    boolean bool = this.fnw.execSQL("SnsComment", str1);
-    AppMethodBeat.o(37850);
-    return bool;
-  }
-  
-  public final boolean lU(long paramLong)
-  {
-    AppMethodBeat.i(37849);
-    String str = "delete from SnsComment where snsID = ".concat(String.valueOf(paramLong));
-    boolean bool = this.fnw.execSQL("SnsComment", str);
-    AppMethodBeat.o(37849);
-    return bool;
-  }
-  
-  public final boolean z(long paramLong, boolean paramBoolean)
-  {
-    AppMethodBeat.i(37852);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      String str = " update SnsComment set isSilence = " + i + " where isSilence != " + i + " and  snsID = " + paramLong;
-      ab.i("MicroMsg.SnsCommentStorage", "updateIsSilence ".concat(String.valueOf(str)));
-      paramBoolean = this.fnw.execSQL("SnsComment", str);
-      AppMethodBeat.o(37852);
-      return paramBoolean;
+      ((dmz)localObject).aaTy = g.getMessageDigest(paramString);
+      ((dmz)localObject).msf = str5;
+      ((dmz)localObject).aaTz = Util.getInt(str4, 0);
+      ((dmz)localObject).aaTA = str3;
+      ((dmz)localObject).aaTB = str2;
+      ((dmz)localObject).aaTC = Util.getInt(str1, 0);
+      ((dmz)localObject).aaTD = paramMap;
+      ((dmz)localObject).aaTF = o.Pk(str10);
+      AppMethodBeat.o(306584);
+      return localObject;
+      paramString = ((dmz)localObject).Url;
+      s.s(paramString, "mediaObj.Url");
+      paramString = paramString.getBytes(d.UTF_8);
+      s.s(paramString, "(this as java.lang.String).getBytes(charset)");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/qzone_widget_detail" android:background="#fff9f9f9" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/constellation_layout" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_marginTop="56.0dip">
+            <com.qzone.widget.AsyncImageView android:id="@id/constellation_icon" android:layout_width="75.0dip" android:layout_height="75.0dip" android:src="@drawable/widget_constellation_virgo" android:layout_alignParentLeft="true" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="22.0dip" android:layout_toRightOf="@id/constellation_icon">
+                <TextView android:textSize="18.0sp" android:textColor="@color/qzone_widget_constellation_text" android:gravity="left" android:id="@id/constellation_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="处女座" android:layout_alignParentTop="true" style="@style/QzoneWidgetText" />
+                <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_bai" android:gravity="left" android:id="@id/constellation_interval" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="8/22 ~ 9/22" android:layout_below="@id/constellation_name" style="@style/QzoneWidgetText" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
+            <TextView android:textSize="17.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11/7" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/QzoneWidgetText" />
+            <TextView android:textSize="17.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_today" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="今日运势" android:layout_toRightOf="@id/constellation_date" android:layout_centerVertical="true" style="@style/QzoneWidgetText" />
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/constellation_today" android:layout_centerVertical="true">
+                <ImageView android:layout_gravity="center" android:id="@id/lucky_star_one" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                <ImageView android:layout_gravity="center" android:id="@id/lucky_star_two" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                <ImageView android:layout_gravity="center" android:id="@id/lucky_star_three" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                <ImageView android:layout_gravity="center" android:id="@id/lucky_star_four" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                <ImageView android:layout_gravity="center" android:id="@id/lucky_star_five" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5">
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_love" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="爱情运势:" style="@style/QzoneWidgetText" />
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_toRightOf="@id/constellation_love" android:layout_centerVertical="true">
+                    <ImageView android:layout_gravity="center" android:id="@id/love_star_one" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/love_star_two" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/love_star_three" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/love_star_four" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/love_star_five" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5">
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_work" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="工作状况:" style="@style/QzoneWidgetText" />
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_toRightOf="@id/constellation_work" android:layout_centerVertical="true">
+                    <ImageView android:layout_gravity="center" android:id="@id/work_star_one" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/work_star_two" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/work_star_three" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/work_star_four" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/work_star_five" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5">
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_money" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="投资理财:" style="@style/QzoneWidgetText" />
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_toRightOf="@id/constellation_money" android:layout_centerVertical="true">
+                    <ImageView android:layout_gravity="center" android:id="@id/money_star_one" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/money_star_two" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/money_star_three" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/money_star_four" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/money_star_five" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5">
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_health" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="健康指数:" style="@style/QzoneWidgetText" />
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_toRightOf="@id/constellation_health" android:layout_centerVertical="true">
+                    <ImageView android:layout_gravity="center" android:id="@id/health_star_one" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/health_star_two" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/health_star_three" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/health_star_four" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                    <ImageView android:layout_gravity="center" android:id="@id/health_star_five" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/qzone_cover_constellation_star" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5">
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_color_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="幸运颜色:" style="@style/QzoneWidgetText" />
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_widget_constellation_text" android:gravity="center|left" android:id="@id/constellation_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="粉红色" android:layout_toRightOf="@id/constellation_color_title" style="@style/QzoneWidgetText" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5">
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_number_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="幸运数字:" style="@style/QzoneWidgetText" />
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_widget_constellation_text" android:gravity="center|left" android:id="@id/constellation_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="8" android:layout_toRightOf="@id/constellation_number_title" style="@style/QzoneWidgetText" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5">
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_good_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="契合星座:" style="@style/QzoneWidgetText" />
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_widget_constellation_text" android:gravity="center|left" android:id="@id/constellation_good" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="处女座" android:layout_toRightOf="@id/constellation_good_title" style="@style/QzoneWidgetText" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5">
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_bad_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="提防星座:" style="@style/QzoneWidgetText" />
+                <TextView android:textSize="13.0sp" android:textColor="@color/qzone_widget_constellation_text" android:gravity="center|left" android:id="@id/constellation_bad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="处女座" android:layout_toRightOf="@id/constellation_bad_title" style="@style/QzoneWidgetText" />
+            </RelativeLayout>
+        </LinearLayout>
+        <View android:background="@color/qzone_widget_constellation_line" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="56.0dip" android:layout_marginBottom="56.0dip" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" android:text="运势描述:" style="@style/QzoneWidgetText" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/qzone_color_bai" android:gravity="center|left" android:id="@id/constellation_desc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="运势描述内容运势描述内容运势描述内容运势描述内容运势描述内容运势描述内容运势描述内容运势描述内容运势描述内容运势描述内容运势描述内容运势描述内容" android:lineSpacingExtra="10.0dip" style="@style/QzoneWidgetText" />
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+</ScrollView>

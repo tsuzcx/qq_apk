@@ -34,37 +34,37 @@ public final class ob<D extends nz>
   
   public final D a(String paramString, Class<D> paramClass)
   {
-    Object localObject1 = null;
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.a.iterator();
-    Object localObject2 = localObject1;
-    if (localIterator.hasNext())
+    Object localObject1 = null;
+    Object localObject2;
+    for (;;)
     {
-      ny localny = (ny)localIterator.next();
       localObject2 = localObject1;
-      if (localny != null) {
-        if (!(localny instanceof oh)) {
-          break label115;
-        }
+      if (!localIterator.hasNext()) {
+        break;
       }
-      label115:
-      for (localObject1 = ((oh)localny).f().b(paramString, paramClass);; localObject1 = localny.a(paramString, paramClass))
+      ny localny = (ny)localIterator.next();
+      if (localny != null)
       {
-        localObject2 = localObject1;
-        if (localObject1 != null) {
-          break label128;
+        nz localnz;
+        if ((localny instanceof oh)) {
+          localnz = ((oh)localny).f().b(paramString, paramClass);
+        } else {
+          localnz = localny.a(paramString, paramClass);
         }
-        localObject2 = localObject1;
+        localObject2 = localnz;
+        if (localnz != null) {
+          break;
+        }
+        localObject1 = localnz;
         if (this.b)
         {
           localArrayList.add(localny);
-          localObject2 = localObject1;
+          localObject1 = localnz;
         }
-        localObject1 = localObject2;
-        break;
       }
     }
-    label128:
     if ((localObject2 != null) && (!localArrayList.isEmpty())) {
       a(paramString, localObject2, localArrayList);
     }
@@ -105,7 +105,7 @@ public final class ob<D extends nz>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ob
  * JD-Core Version:    0.7.0.1
  */

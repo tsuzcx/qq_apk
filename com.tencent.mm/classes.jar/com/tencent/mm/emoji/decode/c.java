@@ -1,77 +1,107 @@
 package com.tencent.mm.emoji.decode;
 
-import a.f.b.j;
-import a.l;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/decode/MMBitmapDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "lastValidFrame", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/decode/FramePicker;", "", "frameCount", "", "(I)V", "TAG", "", "allFrameValid", "", "getAllFrameValid", "()Z", "setAllFrameValid", "(Z)V", "getFrameCount", "()I", "<set-?>", "frameSum", "getFrameSum", "frameTimeList", "", "getFrameTimeList", "()[I", "findFrameIndex", "time", "setFrameTime", "", "index", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  implements b
 {
-  private Bitmap evb;
+  private final String TAG;
+  private final int frameCount;
+  private final int[] mfl;
+  boolean mfm;
+  private int mfn;
   
-  public c(Bitmap paramBitmap)
+  public c(int paramInt)
   {
-    AppMethodBeat.i(63139);
-    Bitmap localBitmap = paramBitmap;
-    if (paramBitmap == null)
-    {
-      localBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-      j.p(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
+    AppMethodBeat.i(242223);
+    this.frameCount = paramInt;
+    this.TAG = "MicroMsg.FramePicker";
+    this.mfl = new int[this.frameCount];
+    AppMethodBeat.o(242223);
+  }
+  
+  public final void dG(int paramInt1, int paramInt2)
+  {
+    boolean bool = false;
+    AppMethodBeat.i(242224);
+    int i;
+    if (paramInt1 >= 0) {
+      if (paramInt1 < this.frameCount)
+      {
+        i = 1;
+        if (i == 0) {
+          Log.i(this.TAG, s.X("setFrameTime: invalid index ", Integer.valueOf(paramInt1)));
+        }
+        this.mfn -= this.mfl[paramInt1];
+        this.mfl[paramInt1] = paramInt2;
+        this.mfn += this.mfl[paramInt1];
+        int[] arrayOfInt = this.mfl;
+        i = arrayOfInt.length;
+        paramInt1 = 0;
+        label91:
+        if (paramInt1 >= i) {
+          break label143;
+        }
+        if (arrayOfInt[paramInt1] <= 0) {
+          break label131;
+        }
+        paramInt2 = 1;
+        label105:
+        if (paramInt2 != 0) {
+          break label136;
+        }
+      }
     }
-    this.evb = localBitmap;
-    this.evb.setDensity(320);
-    AppMethodBeat.o(63139);
+    for (;;)
+    {
+      this.mfm = bool;
+      AppMethodBeat.o(242224);
+      return;
+      i = 0;
+      break;
+      i = 0;
+      break;
+      label131:
+      paramInt2 = 0;
+      break label105;
+      label136:
+      paramInt1 += 1;
+      break label91;
+      label143:
+      bool = true;
+    }
   }
   
-  public c(byte[] paramArrayOfByte)
+  public final int rz(int paramInt)
   {
-    this(d.bT(paramArrayOfByte));
-    AppMethodBeat.i(63140);
-    AppMethodBeat.o(63140);
+    int k = -1;
+    if (this.frameCount <= 0) {}
+    while ((!this.mfm) && (paramInt > this.mfn)) {
+      return k;
+    }
+    int i = paramInt;
+    if (this.mfm) {
+      i = paramInt % this.mfn;
+    }
+    int j = this.mfl[0];
+    paramInt = 0;
+    for (;;)
+    {
+      k = paramInt;
+      if (j >= i) {
+        break;
+      }
+      paramInt += 1;
+      j += this.mfl[paramInt];
+    }
   }
-  
-  public final void Om() {}
-  
-  public final Bitmap On()
-  {
-    return this.evb;
-  }
-  
-  public final int Oo()
-  {
-    return 1;
-  }
-  
-  public final int Op()
-  {
-    return 2147483647;
-  }
-  
-  public final int Oq()
-  {
-    AppMethodBeat.i(63137);
-    int i = this.evb.getWidth();
-    AppMethodBeat.o(63137);
-    return i;
-  }
-  
-  public final int Or()
-  {
-    AppMethodBeat.i(63138);
-    int i = this.evb.getHeight();
-    AppMethodBeat.o(63138);
-    return i;
-  }
-  
-  public final void destroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.c
  * JD-Core Version:    0.7.0.1
  */

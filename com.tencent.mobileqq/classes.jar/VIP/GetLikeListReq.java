@@ -8,10 +8,10 @@ public final class GetLikeListReq
   extends JceStruct
 {
   static SourceInfo cache_stSource = new SourceInfo();
-  public long iNum;
-  public long iUin;
+  public long iNum = 0L;
+  public long iUin = 0L;
   public String sCookie = "";
-  public SourceInfo stSource;
+  public SourceInfo stSource = null;
   
   public GetLikeListReq() {}
   
@@ -34,18 +34,20 @@ public final class GetLikeListReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iUin, 0);
-    if (this.sCookie != null) {
-      paramJceOutputStream.write(this.sCookie, 1);
+    Object localObject = this.sCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.iNum, 2);
-    if (this.stSource != null) {
-      paramJceOutputStream.write(this.stSource, 3);
+    localObject = this.stSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.GetLikeListReq
  * JD-Core Version:    0.7.0.1
  */

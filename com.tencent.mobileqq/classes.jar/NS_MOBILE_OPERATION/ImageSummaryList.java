@@ -31,14 +31,15 @@ public final class ImageSummaryList
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecImageSummary != null) {
-      paramJceOutputStream.write(this.vecImageSummary, 0);
+    ArrayList localArrayList = this.vecImageSummary;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.ImageSummaryList
  * JD-Core Version:    0.7.0.1
  */

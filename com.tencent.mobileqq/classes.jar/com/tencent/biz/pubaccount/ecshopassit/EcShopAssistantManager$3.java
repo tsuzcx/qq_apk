@@ -1,27 +1,26 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ntw;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
-public class EcShopAssistantManager$3
+class EcShopAssistantManager$3
   implements Runnable
 {
-  public EcShopAssistantManager$3(ntw paramntw, String paramString) {}
+  EcShopAssistantManager$3(EcShopAssistantManager paramEcShopAssistantManager, String paramString) {}
   
   public void run()
   {
-    awgf localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (ntw.a(this.this$0, localawgf, this.a)) {
-      ntw.a(this.this$0, this.a);
+    EntityManager localEntityManager = this.this$0.c.getEntityManagerFactory().createEntityManager();
+    if (EcShopAssistantManager.a(this.this$0, localEntityManager, this.a)) {
+      EcShopAssistantManager.a(this.this$0, this.a);
     }
-    localawgf.a();
+    localEntityManager.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager.3
  * JD-Core Version:    0.7.0.1
  */

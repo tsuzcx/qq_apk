@@ -55,10 +55,10 @@ public class PluginTabHost
   
   public TabHost.TabSpec getTabAt(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mTabSpecs.size())) {
-      return null;
+    if ((paramInt >= 0) && (paramInt < this.mTabSpecs.size())) {
+      return ((PluginTabHost.TabSpecWrapper)this.mTabSpecs.get(paramInt)).mTabSpec;
     }
-    return ((PluginTabHost.TabSpecWrapper)this.mTabSpecs.get(paramInt)).mTabSpec;
+    return null;
   }
   
   public int getTabCount()
@@ -70,7 +70,7 @@ public class PluginTabHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginTabHost
  * JD-Core Version:    0.7.0.1
  */

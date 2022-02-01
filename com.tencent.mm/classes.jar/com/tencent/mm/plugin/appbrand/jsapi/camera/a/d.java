@@ -1,35 +1,36 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.qbar.QbarNative.QBarPoint;
 
 public final class d
   extends c
   implements b.a
 {
-  private a hJC;
+  private a rRe;
   
   public d()
   {
-    AppMethodBeat.i(130980);
-    this.hJC = new a(this, "barcode|qrcode");
-    AppMethodBeat.o(130980);
+    AppMethodBeat.i(46236);
+    this.rRe = new a(this, "barcode|qrcode");
+    AppMethodBeat.o(46236);
   }
   
-  protected final b aCQ()
+  public final void a(int paramInt1, String paramString, int paramInt2, byte[] paramArrayOfByte, QbarNative.QBarPoint paramQBarPoint)
   {
-    return this.hJC;
+    AppMethodBeat.i(326011);
+    this.rRd.a(paramInt1, paramInt2, paramString, paramArrayOfByte, paramQBarPoint);
+    AppMethodBeat.o(326011);
   }
   
-  public final void c(int paramInt, String paramString, byte[] paramArrayOfByte)
+  protected final b crQ()
   {
-    AppMethodBeat.i(130981);
-    this.hJB.b(paramInt, paramString, paramArrayOfByte);
-    AppMethodBeat.o(130981);
+    return this.rRe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.a.d
  * JD-Core Version:    0.7.0.1
  */

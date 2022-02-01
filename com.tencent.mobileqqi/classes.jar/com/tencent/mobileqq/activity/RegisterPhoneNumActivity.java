@@ -33,6 +33,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.EUCountryUtils;
 import com.tencent.widget.TimePickerView;
+import dfi;
 import dfj;
 import dfk;
 import dfl;
@@ -42,14 +43,13 @@ import dfo;
 import dfp;
 import dfq;
 import dfr;
-import dfs;
-import dfu;
-import dfw;
+import dft;
+import dfv;
+import dfx;
 import dfy;
 import dfz;
 import dga;
-import dgb;
-import dge;
+import dgd;
 import mqq.manager.AccountManager;
 import mqq.observer.AccountObserver;
 
@@ -65,13 +65,13 @@ public class RegisterPhoneNumActivity
   private static final String j = "openDevLockText";
   private static final String k = "openDevLockHelpText";
   private static final String l = "openDevLockHelpURL";
-  private Handler jdField_a_of_type_AndroidOsHandler = new dfj(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new dfi(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dfl(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dfk(this);
   private boolean jdField_a_of_type_Boolean = true;
   private Dialog jdField_b_of_type_AndroidAppDialog;
   private CheckBox jdField_b_of_type_AndroidWidgetCheckBox;
@@ -234,7 +234,7 @@ public class RegisterPhoneNumActivity
   {
     try
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new dfk(this, paramString));
+      this.jdField_b_of_type_AndroidOsHandler.post(new dfj(this, paramString));
       return;
     }
     catch (Exception paramString)
@@ -280,7 +280,7 @@ public class RegisterPhoneNumActivity
   {
     try
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new dgb(this, paramString2));
+      this.jdField_b_of_type_AndroidOsHandler.post(new dga(this, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -298,7 +298,7 @@ public class RegisterPhoneNumActivity
   {
     try
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new dge(this, paramString1, paramString2));
+      this.jdField_b_of_type_AndroidOsHandler.post(new dgd(this, paramString1, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -310,30 +310,30 @@ public class RegisterPhoneNumActivity
   private void f()
   {
     i();
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233287));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233288));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233286));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233287));
     this.jdField_e_of_type_AndroidWidgetTextView.getPaint().setFlags(8);
-    this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new dfs(this));
-    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233286));
+    this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new dfr(this));
+    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233285));
     this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233285));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233284));
     if (getResources().getDisplayMetrics().heightPixels >= 480) {
       new RegisterPhoneNumActivity.RegDevLockCfgDownloadTask(this).execute(new Void[0]);
     }
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233281));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233280));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233283));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new dfu(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233284));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new dfw(this));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232997));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233282));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new dft(this));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233283));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new dfv(this));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232996));
     this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131561809) + "+" + this.jdField_d_of_type_JavaLangString);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232017));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232016));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232998));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232997));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233289)).setOnClickListener(this);
+    ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233288)).setOnClickListener(this);
   }
   
   private boolean f()
@@ -351,12 +351,12 @@ public class RegisterPhoneNumActivity
   
   private void i()
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233277));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233279));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233278));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233276));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233278));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233277));
     this.jdField_g_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233282).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131233281).setOnClickListener(this);
     if (this.jdField_g_of_type_Int <= 0) {
       this.jdField_g_of_type_Int = 131072257;
     }
@@ -380,7 +380,7 @@ public class RegisterPhoneNumActivity
   
   private void j()
   {
-    new TimePickerView(this, ProfileUtil.b(this.jdField_g_of_type_Int), ProfileUtil.c(this.jdField_g_of_type_Int), ProfileUtil.d(this.jdField_g_of_type_Int), new dfy(this)).b();
+    new TimePickerView(this, ProfileUtil.b(this.jdField_g_of_type_Int), ProfileUtil.c(this.jdField_g_of_type_Int), ProfileUtil.d(this.jdField_g_of_type_Int), new dfx(this)).b();
   }
   
   private void k()
@@ -411,7 +411,7 @@ public class RegisterPhoneNumActivity
     }
     if (EUCountryUtils.c((String)localObject))
     {
-      localObject = new dfz(this);
+      localObject = new dfy(this);
       a(null, getString(2131563361), getString(2131561692), (DialogInterface.OnClickListener)localObject);
       return;
     }
@@ -420,7 +420,7 @@ public class RegisterPhoneNumActivity
     localBundle.putInt("key_privacy_type", 2);
     localBundle.putBoolean("key_privacy_underage", bool);
     localBundle.putString("key_privacy_uin", (String)localObject);
-    PrivacyDeclareHelper.a(this, localBundle, new dga(this, bool, (String)localObject));
+    PrivacyDeclareHelper.a(this, localBundle, new dfz(this, bool, (String)localObject));
   }
   
   private void m()
@@ -469,7 +469,7 @@ public class RegisterPhoneNumActivity
     e();
     Dialog localDialog = new Dialog(this, 2131624405);
     localDialog.setContentView(2130903162);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131231469);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131231468);
     if (localTextView1 != null) {
       localTextView1.setText(getString(2131562928));
     }
@@ -477,29 +477,29 @@ public class RegisterPhoneNumActivity
     if (localTextView1 != null) {
       localTextView1.setText(getString(2131559803));
     }
-    localTextView1 = (TextView)localDialog.findViewById(2131231468);
+    localTextView1 = (TextView)localDialog.findViewById(2131231467);
     if (localTextView1 != null)
     {
       localTextView1.setVisibility(0);
       localTextView1.setText(Html.fromHtml(getString(2131558612)));
       localTextView1.getPaint().setFlags(8);
     }
-    localTextView1.setOnClickListener(new dfn(this));
-    localTextView1 = (TextView)localDialog.findViewById(2131231472);
+    localTextView1.setOnClickListener(new dfm(this));
+    localTextView1 = (TextView)localDialog.findViewById(2131231471);
     if (localTextView1 != null) {
       localTextView1.setText(2131561746);
     }
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131231473);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131231472);
     if (localTextView2 != null) {
       localTextView2.setText(2131561578);
     }
-    localDialog.setOnDismissListener(new dfo(this));
-    localDialog.setOnKeyListener(new dfp(this));
+    localDialog.setOnDismissListener(new dfn(this));
+    localDialog.setOnKeyListener(new dfo(this));
     if (localTextView2 != null) {
-      localTextView2.setOnClickListener(new dfq(this));
+      localTextView2.setOnClickListener(new dfp(this));
     }
     if (localTextView1 != null) {
-      localTextView1.setOnClickListener(new dfr(this));
+      localTextView1.setOnClickListener(new dfq(this));
     }
     this.jdField_b_of_type_AndroidAppDialog = localDialog;
     this.jdField_b_of_type_AndroidAppDialog.show();
@@ -507,7 +507,7 @@ public class RegisterPhoneNumActivity
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new dfm(this, paramBundle));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new dfl(this, paramBundle));
   }
   
   protected boolean a()
@@ -582,7 +582,7 @@ public class RegisterPhoneNumActivity
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton.getId() == 2131233286)
+    if (paramCompoundButton.getId() == 2131233285)
     {
       this.jdField_b_of_type_Boolean = paramBoolean;
       return;

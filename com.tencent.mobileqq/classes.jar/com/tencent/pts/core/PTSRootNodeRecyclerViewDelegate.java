@@ -34,21 +34,37 @@ public class PTSRootNodeRecyclerViewDelegate
   
   public boolean animation(PTSNodeInfo paramPTSNodeInfo, PTSAnimationUtil.AnimationInfo paramAnimationInfo)
   {
-    PTSLog.d("PTSRootNodeRecyclerViewDelegate", "[animation] nodeInfo = " + paramPTSNodeInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[animation] nodeInfo = ");
+    localStringBuilder.append(paramPTSNodeInfo);
+    PTSLog.d("PTSRootNodeRecyclerViewDelegate", localStringBuilder.toString());
     this.mAdapter.animation(paramPTSNodeInfo, paramAnimationInfo);
     return true;
   }
   
+  public View getRootView()
+  {
+    return this.mRecyclerView;
+  }
+  
   public boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
   {
-    PTSLog.d("PTSRootNodeRecyclerViewDelegate", "[insert] insertIndex = " + paramInt + ", nodeInfo = " + paramPTSNodeInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[insert] insertIndex = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", nodeInfo = ");
+    localStringBuilder.append(paramPTSNodeInfo);
+    PTSLog.d("PTSRootNodeRecyclerViewDelegate", localStringBuilder.toString());
     this.mAdapter.insert(paramPTSNodeInfo, paramInt);
     return true;
   }
   
   public boolean modify(PTSNodeInfo paramPTSNodeInfo)
   {
-    PTSLog.d("PTSRootNodeRecyclerViewDelegate", "[modify] nodeInfo = " + paramPTSNodeInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[modify] nodeInfo = ");
+    localStringBuilder.append(paramPTSNodeInfo);
+    PTSLog.d("PTSRootNodeRecyclerViewDelegate", localStringBuilder.toString());
     this.mAdapter.modify(paramPTSNodeInfo);
     return true;
   }
@@ -78,12 +94,19 @@ public class PTSRootNodeRecyclerViewDelegate
     this.mAdapter.setData(this.mDataList);
     if (PTSLog.isDebug())
     {
-      PTSLog.d("PTSRootNodeRecyclerViewDelegate", "refreshNodeList, list count = " + this.mDataList.size());
+      paramList = new StringBuilder();
+      paramList.append("refreshNodeList, list count = ");
+      paramList.append(this.mDataList.size());
+      PTSLog.d("PTSRootNodeRecyclerViewDelegate", paramList.toString());
       paramList = new StringBuilder();
       int i = 0;
       while (i < this.mDataList.size())
       {
-        paramList.append("mDataList [").append(i).append("] = ").append(this.mDataList.get(i)).append("\n");
+        paramList.append("mDataList [");
+        paramList.append(i);
+        paramList.append("] = ");
+        paramList.append(this.mDataList.get(i));
+        paramList.append("\n");
         i += 1;
       }
       PTSLog.d("PTSRootNodeRecyclerViewDelegate", paramList.toString());
@@ -93,7 +116,10 @@ public class PTSRootNodeRecyclerViewDelegate
   
   public boolean remove(int paramInt)
   {
-    PTSLog.d("PTSRootNodeRecyclerViewDelegate", "[remove] nodeUniqueID = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[remove] nodeUniqueID = ");
+    localStringBuilder.append(paramInt);
+    PTSLog.d("PTSRootNodeRecyclerViewDelegate", localStringBuilder.toString());
     this.mAdapter.remove(paramInt);
     return true;
   }
@@ -102,7 +128,7 @@ public class PTSRootNodeRecyclerViewDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.PTSRootNodeRecyclerViewDelegate
  * JD-Core Version:    0.7.0.1
  */

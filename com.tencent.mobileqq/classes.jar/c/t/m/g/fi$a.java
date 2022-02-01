@@ -1,6 +1,7 @@
 package c.t.m.g;
 
 import android.location.Location;
+import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.internal.TencentExtraKeys;
 import org.json.JSONException;
 
@@ -21,27 +22,27 @@ public final class fi$a
   
   public final fi a()
   {
-    if (this.a != null) {}
-    for (;;)
+    Object localObject = this.a;
+    if (localObject != null) {}
+    try
     {
-      try
-      {
-        fi localfi1 = new fi(this.a, (byte)0);
-        fi.a(fi.c(fi.b(fi.b(localfi1, this.c), this.d), this.e), this.f);
-        TencentExtraKeys.setRawGps(localfi1, this.f);
-        return localfi1;
-      }
-      catch (JSONException localJSONException)
-      {
-        return fi.a;
-      }
-      fi localfi2 = fi.c(this.b);
+      localObject = new fi((String)localObject, (byte)0);
     }
+    catch (JSONException localJSONException)
+    {
+      label22:
+      break label22;
+    }
+    return fi.a;
+    localObject = fi.c(this.b);
+    fi.a(fi.c(fi.b(fi.b((fi)localObject, this.c), this.d), this.e), this.f);
+    TencentExtraKeys.setRawGps((TencentLocation)localObject, this.f);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.fi.a
  * JD-Core Version:    0.7.0.1
  */

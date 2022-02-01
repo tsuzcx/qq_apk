@@ -7,47 +7,74 @@ import android.view.ViewGroup;
 import android.webkit.ValueCallback;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i.h;
-import com.tencent.mm.plugin.appbrand.i.j;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.page.ah;
-import com.tencent.mm.plugin.appbrand.page.aj;
-import com.tencent.mm.plugin.appbrand.page.ap;
-import com.tencent.mm.plugin.appbrand.page.d;
+import com.tencent.mm.plugin.appbrand.n.h;
+import com.tencent.mm.plugin.appbrand.n.j;
+import com.tencent.mm.plugin.appbrand.page.aq;
+import com.tencent.mm.plugin.appbrand.page.ar;
+import com.tencent.mm.plugin.appbrand.page.au;
+import com.tencent.mm.plugin.appbrand.page.aw;
+import com.tencent.mm.plugin.appbrand.page.bd;
+import com.tencent.mm.plugin.appbrand.platform.window.d;
 import java.net.URL;
+import java.util.Map;
 
 public final class a
-  implements ap
+  implements bd
 {
-  private ViewGroup bBI;
-  private ViewGroup bBJ;
+  private ViewGroup enj;
+  private ViewGroup enk;
+  
+  public final void G(String paramString1, String paramString2) {}
+  
+  public final <T extends j> T Z(Class<T> paramClass)
+  {
+    return null;
+  }
   
   public final void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback) {}
   
-  public final void a(URL paramURL, String paramString1, String paramString2, String paramString3, ValueCallback<String> paramValueCallback) {}
+  public final void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, ValueCallback<String> paramValueCallback) {}
   
-  public final boolean a(Canvas paramCanvas)
+  public final void addJavascriptInterface(Object paramObject, String paramString) {}
+  
+  public final void apO() {}
+  
+  public final boolean apP()
   {
     return false;
   }
   
-  public final void addJavascriptInterface(Object paramObject, String paramString) {}
-  
-  public final void ap(Context paramContext)
+  public final boolean apQ()
   {
-    AppMethodBeat.i(140484);
-    if (this.bBI == null) {
-      this.bBI = new FrameLayout(paramContext);
-    }
-    if (this.bBJ == null) {
-      this.bBJ = new FrameLayout(paramContext);
-    }
-    AppMethodBeat.o(140484);
+    return false;
   }
   
-  public final void destroy() {}
+  public final void bm(Context paramContext)
+  {
+    AppMethodBeat.i(130625);
+    if (this.enj == null) {
+      this.enj = new FrameLayout(paramContext);
+    }
+    if (this.enk == null) {
+      this.enk = new FrameLayout(paramContext);
+    }
+    AppMethodBeat.o(130625);
+  }
+  
+  public final void cZ(int paramInt1, int paramInt2) {}
+  
+  public final void destroy()
+  {
+    this.enj = null;
+    this.enk = null;
+  }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback) {}
+  
+  public final boolean g(Canvas paramCanvas)
+  {
+    return false;
+  }
   
   public final int getContentHeight()
   {
@@ -56,7 +83,7 @@ public final class a
   
   public final View getContentView()
   {
-    return this.bBJ;
+    return this.enk;
   }
   
   public final d getFullscreenImpl()
@@ -91,46 +118,45 @@ public final class a
   
   public final View getWrapperView()
   {
-    return this.bBI;
+    return this.enj;
   }
   
-  public final void h(Runnable paramRunnable) {}
+  public final void k(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(220155);
+    if (paramRunnable != null) {
+      paramRunnable.run();
+    }
+    AppMethodBeat.o(220155);
+  }
   
   public final void onBackground() {}
   
   public final void onForeground() {}
   
-  public final void q(int paramInt, long paramLong) {}
+  public final void setAppBrandInfo(Map<String, String> paramMap) {}
+  
+  public final void setBackgroundColor(int paramInt) {}
   
   public final void setFullscreenImpl(d paramd) {}
   
   public final void setJsExceptionHandler(h paramh) {}
   
-  public final void setOnScrollChangedListener(aj paramaj) {}
+  public final void setOnScrollChangedListener(au paramau) {}
   
-  public final void setOnTrimListener(ah paramah) {}
+  public final void setOnTrimListener(ar paramar) {}
   
   public final void setVerticalScrollBarEnabled(boolean paramBoolean) {}
   
-  public final void setWebViewLayoutListener(ag paramag) {}
+  public final void setWebViewLayoutListener(aq paramaq) {}
   
-  public final void t(String paramString1, String paramString2) {}
+  public final void setXWebKeyboardImpl(aw paramaw) {}
   
-  public final <T extends j> T v(Class<T> paramClass)
-  {
-    return null;
-  }
-  
-  public final void vp() {}
-  
-  public final boolean vq()
-  {
-    return false;
-  }
+  public final void w(int paramInt, long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.game.page.a
  * JD-Core Version:    0.7.0.1
  */

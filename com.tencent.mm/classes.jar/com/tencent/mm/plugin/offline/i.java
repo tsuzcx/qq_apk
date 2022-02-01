@@ -3,86 +3,77 @@ package com.tencent.mm.plugin.offline;
 import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.offline.a.l;
-import com.tencent.mm.plugin.offline.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.plugin.offline.a.j;
+import com.tencent.mm.plugin.offline.a.n;
+import com.tencent.mm.plugin.offline.a.o;
+import com.tencent.mm.plugin.offline.c.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.ArrayList;
 
 public final class i
-  implements com.tencent.mm.ai.f
+  implements com.tencent.mm.am.h
 {
-  public ak mHandler;
-  i.a pkA;
-  private com.tencent.mm.plugin.offline.a.m pkB;
-  public i.b pkC;
-  int pkD;
-  ap pkE;
-  private boolean pkv;
-  private boolean pkw;
-  private int pkx;
-  private int pky;
-  private String pkz;
+  private boolean MxW;
+  private int MxX;
+  private int MxY;
+  private String MxZ;
+  a Mya;
+  private o Myb;
+  public b Myc;
+  private int Myd;
+  private MTimerHandler Mye;
+  public MMHandler mHandler;
+  private boolean vWk;
   
   public i()
   {
-    AppMethodBeat.i(43340);
-    this.pkv = false;
-    this.pkw = false;
-    this.pkx = 10;
-    this.pky = 0;
-    this.pkz = "";
-    this.mHandler = new ak();
-    this.pkC = new i.b(this, (byte)0);
-    this.pkD = 14400000;
-    this.pkE = new ap(new ap.a()
+    AppMethodBeat.i(66242);
+    this.vWk = false;
+    this.MxW = false;
+    this.MxX = 10;
+    this.MxY = 0;
+    this.MxZ = "";
+    this.mHandler = new MMHandler();
+    this.Myc = new b((byte)0);
+    this.Myd = 14400000;
+    this.Mye = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(43337);
-        if (!g.RG())
+        AppMethodBeat.i(66239);
+        if (!com.tencent.mm.kernel.h.baz())
         {
-          localap = i.this.pkE;
-          l = i.this.pkD;
-          localap.ag(l, l);
-          AppMethodBeat.o(43337);
+          i.b(i.this).startTimer(i.a(i.this));
+          AppMethodBeat.o(66239);
           return false;
         }
-        i.this.eX(5, 5);
-        ap localap = i.this.pkE;
-        i locali = i.this;
-        long l = a.bZR();
-        if (l <= 0L) {}
-        for (l = locali.pkD;; l = 1000L * l)
-        {
-          localap.ag(l, l);
-          AppMethodBeat.o(43337);
-          return false;
-          ab.i("MicroMsg.OfflineTokensMgr", "OfflineTokensMgr updateInterval:".concat(String.valueOf(l)));
-        }
+        i.this.kp(5, 5);
+        i.b(i.this).startTimer(i.c(i.this));
+        AppMethodBeat.o(66239);
+        return false;
       }
     }, false);
     try
     {
-      com.tencent.mm.wallet_core.c.b.dSi().init(ah.getContext());
-      g.RM();
-      g.RK().eHt.a(385, this);
-      k.bYF();
-      Object localObject = k.AY(196649);
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!a.isNumeric((String)localObject)))
+      com.tencent.mm.wallet_core.model.b.jOG().init(MMApplicationContext.getContext());
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.a(385, this);
+      k.gvj();
+      String str1 = k.afd(196649);
+      if ((TextUtils.isEmpty(str1)) || (!d.isNumeric(str1)))
       {
-        ab.i("MicroMsg.OfflineTokensMgr", "genInitInterval: update_interval is empty or is not number,update token");
-        ab.i("MicroMsg.OfflineTokensMgr", "autoPusher startTimer interval=".concat(String.valueOf(l1)));
-        localObject = this.pkE;
-        l1 *= 1000L;
-        ((ap)localObject).ag(l1, l1);
-        AppMethodBeat.o(43340);
+        Log.i("MicroMsg.OfflineTokensMgr", "genInitInterval: update_interval is empty or is not number,update token");
+        Log.i("MicroMsg.OfflineTokensMgr", "autoPusher startTimer interval=".concat(String.valueOf(l1)));
+        this.Mye.startTimer(l1 * 1000L);
+        AppMethodBeat.o(66242);
         return;
       }
     }
@@ -90,148 +81,149 @@ public final class i
     {
       for (;;)
       {
-        ab.e("MicroMsg.OfflineTokensMgr", "NO MPERMISSION for READ_PHONE_STATE:%s.", new Object[] { localException });
+        Log.e("MicroMsg.OfflineTokensMgr", "NO MPERMISSION for READ_PHONE_STATE:%s.", new Object[] { localException });
         continue;
-        String str = a.bZF();
-        ab.i("MicroMsg.OfflineTokensMgr", "genInitInterval: token is not over update interval,lastUpdate is ".concat(String.valueOf(str)));
+        String str2 = d.gwJ();
+        Log.i("MicroMsg.OfflineTokensMgr", "genInitInterval: token is not over update interval,lastUpdate is ".concat(String.valueOf(str2)));
         long l2 = Long.valueOf(localException).longValue();
-        if (TextUtils.isEmpty(str))
+        if (TextUtils.isEmpty(str2))
         {
-          ab.i("MicroMsg.OfflineTokensMgr", "genInitInterval lastUpdate is empty, update token");
+          Log.i("MicroMsg.OfflineTokensMgr", "genInitInterval lastUpdate is empty, update token");
         }
         else
         {
-          l1 = Long.valueOf(str).longValue();
+          l1 = Long.valueOf(str2).longValue();
           long l3 = System.currentTimeMillis() / 1000L;
-          ab.i("MicroMsg.OfflineTokensMgr", "genInitInterval token is not over update interval,curTime = " + l3 + ";");
+          Log.i("MicroMsg.OfflineTokensMgr", "genInitInterval token is not over update interval,curTime = " + l3 + ";");
           l1 = l2 - (l3 - l1);
         }
       }
     }
   }
   
-  private static void AX(int paramInt)
+  private static void afc(int paramInt)
   {
     int k = 0;
-    AppMethodBeat.i(43347);
-    boolean bool1 = a.eD(ah.getContext());
-    boolean bool2 = at.isNetworkConnected(ah.getContext());
-    Object localObject = com.tencent.mm.plugin.report.service.h.qsU;
+    AppMethodBeat.i(66249);
+    MMApplicationContext.getContext();
+    boolean bool1 = d.gwX();
+    boolean bool2 = NetStatusUtil.isNetworkConnected(MMApplicationContext.getContext());
+    Object localObject = com.tencent.mm.plugin.report.service.h.OAn;
     int i;
     int j;
     if (bool1)
     {
       i = 0;
       if (!bool2) {
-        break label411;
+        break label412;
       }
       j = 1;
-      label42:
-      if (k.pkO) {
+      label43:
+      if (k.Myo) {
         k = 1;
       }
-      ((com.tencent.mm.plugin.report.service.h)localObject).e(14163, new Object[] { Integer.valueOf(4), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(k) });
+      ((com.tencent.mm.plugin.report.service.h)localObject).b(14163, new Object[] { Integer.valueOf(4), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(k) });
       localObject = new ArrayList();
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
       if (!bool2) {
-        break label416;
+        break label417;
       }
       i = 36;
-      label145:
+      label146:
       localIDKey.SetKey(i);
       ((ArrayList)localObject).add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
       if (!bool1) {
-        break label422;
+        break label423;
       }
       i = 38;
-      label190:
+      label191:
       localIDKey.SetKey(i);
       ((ArrayList)localObject).add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
-      if (!k.pkO) {
-        break label428;
+      if (!k.Myo) {
+        break label429;
       }
       i = 40;
-      label236:
+      label237:
       localIDKey.SetKey(i);
       ((ArrayList)localObject).add(localIDKey);
       if (paramInt != 2) {
-        break label452;
+        break label453;
       }
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
-      if (!k.pkO) {
-        break label434;
+      if (!k.Myo) {
+        break label435;
       }
       paramInt = 42;
-      label287:
+      label288:
       localIDKey.SetKey(paramInt);
       ((ArrayList)localObject).add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
       if (!bool1) {
-        break label440;
+        break label441;
       }
       paramInt = 44;
-      label332:
+      label333:
       localIDKey.SetKey(paramInt);
       ((ArrayList)localObject).add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
       if (!bool2) {
-        break label446;
+        break label447;
       }
       paramInt = 46;
-      label377:
+      label378:
       localIDKey.SetKey(paramInt);
       ((ArrayList)localObject).add(localIDKey);
     }
-    label411:
-    label416:
-    label422:
-    label428:
-    label434:
-    label440:
-    label446:
-    label452:
-    label490:
+    label412:
+    label417:
+    label423:
+    label429:
+    label435:
+    label441:
+    label447:
+    label453:
+    label491:
     do
     {
-      com.tencent.mm.plugin.report.service.h.qsU.b((ArrayList)localObject, true);
-      AppMethodBeat.o(43347);
+      com.tencent.mm.plugin.report.service.h.OAn.b((ArrayList)localObject, true);
+      AppMethodBeat.o(66249);
       return;
       i = 1;
       break;
       j = 0;
-      break label42;
+      break label43;
       i = 37;
-      break label145;
+      break label146;
       i = 39;
-      break label190;
+      break label191;
       i = 41;
-      break label236;
+      break label237;
       paramInt = 43;
-      break label287;
+      break label288;
       paramInt = 45;
-      break label332;
+      break label333;
       paramInt = 47;
-      break label377;
+      break label378;
       if (paramInt == 6)
       {
         localIDKey = new IDKey();
         localIDKey.SetID(135);
         localIDKey.SetValue(1L);
-        if (k.pkO)
+        if (k.Myo)
         {
           paramInt = 48;
           localIDKey.SetKey(paramInt);
@@ -240,7 +232,7 @@ public final class i
           localIDKey.SetID(135);
           localIDKey.SetValue(1L);
           if (!bool1) {
-            break label603;
+            break label604;
           }
           paramInt = 50;
           localIDKey.SetKey(paramInt);
@@ -249,7 +241,7 @@ public final class i
           localIDKey.SetID(135);
           localIDKey.SetValue(1L);
           if (!bool2) {
-            break label609;
+            break label610;
           }
         }
         for (paramInt = 52;; paramInt = 53)
@@ -258,15 +250,15 @@ public final class i
           ((ArrayList)localObject).add(localIDKey);
           break;
           paramInt = 49;
-          break label490;
+          break label491;
           paramInt = 51;
-          break label535;
+          break label536;
         }
       }
     } while (paramInt != 6);
-    label535:
-    label603:
-    label609:
+    label536:
+    label604:
+    label610:
     IDKey localIDKey = new IDKey();
     localIDKey.SetID(135);
     localIDKey.SetValue(1L);
@@ -279,132 +271,157 @@ public final class i
     }
   }
   
-  public static int bYE()
+  public static void dgR()
   {
-    AppMethodBeat.i(43341);
-    k.bYF();
-    String str = k.AY(196617);
-    com.tencent.mm.wallet_core.c.b.dSi();
-    int i = com.tencent.mm.wallet_core.c.b.avW(str);
-    ab.i("MicroMsg.OfflineTokensMgr", "offline tokens count:".concat(String.valueOf(i)));
-    AppMethodBeat.o(43341);
+    AppMethodBeat.i(269108);
+    k.gvj();
+    String str = k.afd(196617);
+    com.tencent.mm.wallet_core.model.b.jOG();
+    com.tencent.mm.wallet_core.model.b.clearToken(str);
+    AppMethodBeat.o(269108);
+  }
+  
+  public static int gvi()
+  {
+    AppMethodBeat.i(66243);
+    k.gvj();
+    String str = k.afd(196617);
+    com.tencent.mm.wallet_core.model.b.jOG();
+    int i = com.tencent.mm.wallet_core.model.b.bED(str);
+    Log.i("MicroMsg.OfflineTokensMgr", "offline tokens count:".concat(String.valueOf(i)));
+    AppMethodBeat.o(66243);
     return i;
   }
   
-  public final void AW(int paramInt)
+  public final boolean Ah(boolean paramBoolean)
   {
-    AppMethodBeat.i(43344);
-    if (bYE() > 2)
+    AppMethodBeat.i(66245);
+    if (!d.gwA())
     {
-      this.mHandler.postDelayed(new i.2(this, paramInt), 3000L);
-      AppMethodBeat.o(43344);
-      return;
-    }
-    eY(2, paramInt);
-    AppMethodBeat.o(43344);
-  }
-  
-  public final void eX(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(43342);
-    if ((at.isNetworkConnected(ah.getContext())) && (a.bZw()))
-    {
-      ab.i("MicroMsg.OfflineTokensMgr", "onNotify return false, token is invalid, do doNetSceneToken");
-      eY(paramInt1, paramInt2);
-      AppMethodBeat.o(43342);
-      return;
-    }
-    AppMethodBeat.o(43342);
-  }
-  
-  public final void eY(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(43345);
-    if (this.pkv)
-    {
-      AppMethodBeat.o(43345);
-      return;
-    }
-    this.pkv = true;
-    com.tencent.mm.plugin.offline.a.m localm = new com.tencent.mm.plugin.offline.a.m(System.currentTimeMillis() / 1000L, paramInt1, paramInt2);
-    g.RM();
-    g.RK().eHt.a(localm, 0);
-    AX(paramInt1);
-    AppMethodBeat.o(43345);
-  }
-  
-  public final boolean jV(boolean paramBoolean)
-  {
-    AppMethodBeat.i(43343);
-    if (!a.bZw())
-    {
-      ab.e("MicroMsg.OfflineTokensMgr", "offline is not create!");
-      AppMethodBeat.o(43343);
+      Log.e("MicroMsg.OfflineTokensMgr", "offline is not create!");
+      AppMethodBeat.o(66245);
       return false;
     }
-    if (bYE() < k.pkP)
+    if (gvi() < k.Myp)
     {
-      ab.i("MicroMsg.OfflineTokensMgr", "getTokenCount < %s, do doNetSceneToken", new Object[] { Integer.valueOf(k.pkP) });
-      com.tencent.mm.wallet_core.c.b.dSi();
-      int i = com.tencent.mm.wallet_core.c.b.getLastError();
+      Log.i("MicroMsg.OfflineTokensMgr", "getTokenCount < %s, do doNetSceneToken", new Object[] { Integer.valueOf(k.Myp) });
+      com.tencent.mm.wallet_core.model.b.jOG();
+      int i = com.tencent.mm.wallet_core.model.b.getLastError();
       if (i != 0)
       {
-        ab.e("MicroMsg.OfflineTokensMgr", "getTokenCount occurs error, the error is " + i + ", don't  doNetSceneToken");
-        AppMethodBeat.o(43343);
+        Log.e("MicroMsg.OfflineTokensMgr", "getTokenCount occurs error, the error is " + i + ", don't  doNetSceneToken");
+        AppMethodBeat.o(66245);
         return false;
       }
-      ab.i("MicroMsg.OfflineTokensMgr", "getTokenCount is success! do doNetSceneToken");
+      Log.i("MicroMsg.OfflineTokensMgr", "getTokenCount is success! do doNetSceneToken");
       if (paramBoolean) {
-        AW(9);
+        afb(9);
       }
       for (;;)
       {
-        AppMethodBeat.o(43343);
+        AppMethodBeat.o(66245);
         return true;
-        AW(2);
+        afb(2);
       }
     }
-    if (a.bZS())
+    if (d.gwW())
     {
-      ab.i("MicroMsg.OfflineTokensMgr", "WalletOfflineUtil.isTokenOverUpdateInterval() return false, token is over update_interval, do doNetSceneToken");
+      Log.i("MicroMsg.OfflineTokensMgr", "WalletOfflineUtil.isTokenOverUpdateInterval() return false, token is over update_interval, do doNetSceneToken");
       if (paramBoolean) {
-        eY(5, 9);
+        kq(5, 9);
       }
       for (;;)
       {
-        AppMethodBeat.o(43343);
+        AppMethodBeat.o(66245);
         return true;
-        eY(5, 5);
+        kq(5, 5);
       }
     }
-    if (!a.bZP())
+    if (!d.gwT())
     {
-      ab.i("MicroMsg.OfflineTokensMgr", "WalletOfflineUtil.isSameMD5ForBindSerial() return false, bindserial is change, do doNetSceneToken");
+      Log.i("MicroMsg.OfflineTokensMgr", "WalletOfflineUtil.isSameMD5ForBindSerial() return false, bindserial is change, do doNetSceneToken");
       if (paramBoolean) {
-        eY(3, 9);
+        kq(3, 9);
       }
       for (;;)
       {
-        AppMethodBeat.o(43343);
+        AppMethodBeat.o(66245);
         return true;
-        eY(3, 3);
+        kq(3, 3);
       }
     }
-    AppMethodBeat.o(43343);
+    AppMethodBeat.o(66245);
     return false;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public final void afb(final int paramInt)
+  {
+    AppMethodBeat.i(66246);
+    if (gvi() > 2)
+    {
+      this.mHandler.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(66240);
+          i.this.kq(this.Myg, paramInt);
+          AppMethodBeat.o(66240);
+        }
+      }, 3000L);
+      AppMethodBeat.o(66246);
+      return;
+    }
+    kq(2, paramInt);
+    AppMethodBeat.o(66246);
+  }
+  
+  public final void kp(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(66244);
+    if ((NetStatusUtil.isNetworkConnected(MMApplicationContext.getContext())) && (d.gwA()))
+    {
+      Log.i("MicroMsg.OfflineTokensMgr", "onNotify return false, token is invalid, do doNetSceneToken");
+      kq(paramInt1, paramInt2);
+      AppMethodBeat.o(66244);
+      return;
+    }
+    AppMethodBeat.o(66244);
+  }
+  
+  public final void kq(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(66247);
+    if (this.vWk)
+    {
+      AppMethodBeat.o(66247);
+      return;
+    }
+    Object localObject = com.tencent.mm.plugin.offline.a.b.MyA;
+    if (com.tencent.mm.plugin.offline.a.b.gvo())
+    {
+      Log.w("MicroMsg.OfflineTokensMgr", "is doing setofflinepayment");
+      AppMethodBeat.o(66247);
+      return;
+    }
+    this.vWk = true;
+    localObject = new o(System.currentTimeMillis() / 1000L, paramInt1, paramInt2);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a((p)localObject, 0);
+    afc(paramInt1);
+    AppMethodBeat.o(66247);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     int i = 6;
-    AppMethodBeat.i(43346);
-    if ((!(paramm instanceof com.tencent.mm.plugin.offline.a.h)) && (!(paramm instanceof com.tencent.mm.plugin.offline.a.f)))
+    AppMethodBeat.i(66248);
+    if ((!(paramp instanceof j)) && (!(paramp instanceof com.tencent.mm.plugin.offline.a.h)))
     {
-      AppMethodBeat.o(43346);
+      AppMethodBeat.o(66248);
       return;
     }
     paramString = new ArrayList();
-    if ((paramm instanceof com.tencent.mm.plugin.offline.a.m))
+    if ((paramp instanceof o))
     {
       IDKey localIDKey = new IDKey();
       localIDKey.SetID(135);
@@ -419,96 +436,113 @@ public final class i
         localIDKey.SetKey(3);
         paramString.add(localIDKey);
       }
-      com.tencent.mm.plugin.report.service.h.qsU.b(paramString, true);
+      com.tencent.mm.plugin.report.service.h.OAn.b(paramString, true);
     }
-    if (((paramm instanceof com.tencent.mm.plugin.offline.a.f)) && (((paramInt1 == 0) && (paramInt2 == 0)) || (paramInt1 != 0)))
+    if (((paramp instanceof com.tencent.mm.plugin.offline.a.h)) && (((paramInt1 == 0) && (paramInt2 == 0)) || (paramInt1 != 0)))
     {
-      ab.i("MicroMsg.OfflineTokensMgr", "onSceneEnd NetSceneOfflineVerifyToken errType %d errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (this.pkB != null)
+      Log.i("MicroMsg.OfflineTokensMgr", "onSceneEnd NetSceneOfflineVerifyToken errType %d errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (this.Myb != null)
       {
-        boolean bool = this.pkB.bYK();
-        this.pkB = null;
-        if ((bool) && (this.pkA != null)) {
-          this.pkA.bYy();
+        boolean bool = this.Myb.gvp();
+        this.Myb = null;
+        if ((bool) && (this.Mya != null)) {
+          this.Mya.gvc();
         }
       }
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramm instanceof com.tencent.mm.plugin.offline.a.m))
+      if ((paramp instanceof o))
       {
-        this.pky = 0;
-        this.pkv = false;
-        this.mHandler.removeCallbacks(this.pkC);
-        this.pkB = ((com.tencent.mm.plugin.offline.a.m)paramm);
-        paramString = this.pkB.plD;
-        k.bYF();
-        paramString = new com.tencent.mm.plugin.offline.a.f(paramString, k.AY(196617));
-        g.RM();
-        g.RK().eHt.a(paramString, 0);
-        AppMethodBeat.o(43346);
-        return;
-      }
-      if ((paramm instanceof l))
-      {
-        this.pkw = false;
-        this.pkz = ((l)paramm).pkz;
-        if (this.pkA != null) {
-          this.pkA.bYy();
+        this.MxY = 0;
+        this.vWk = false;
+        this.mHandler.removeCallbacks(this.Myc);
+        this.Myb = ((o)paramp);
+        if ((((o)paramp).gvp()) && (this.Mya != null)) {
+          this.Mya.gvc();
         }
-        AppMethodBeat.o(43346);
+        AppMethodBeat.o(66248);
         return;
       }
-      if ((paramm instanceof com.tencent.mm.plugin.offline.a.f)) {
-        AppMethodBeat.o(43346);
+      if ((paramp instanceof n))
+      {
+        this.MxW = false;
+        AppMethodBeat.o(66248);
+        throw null;
+      }
+      if ((paramp instanceof com.tencent.mm.plugin.offline.a.h)) {
+        AppMethodBeat.o(66248);
       }
     }
-    else if ((paramm instanceof com.tencent.mm.plugin.offline.a.m))
+    else if ((paramp instanceof o))
     {
-      ab.e("MicroMsg.OfflineTokensMgr", "gettoken is failed!");
-      this.pky += 1;
-      this.pkv = false;
+      Log.e("MicroMsg.OfflineTokensMgr", "gettoken is failed!");
+      this.MxY += 1;
+      this.vWk = false;
       if (paramInt2 == 411)
       {
-        ab.i("MicroMsg.OfflineTokensMgr", "errcode is  411, do clearAllOfflineData");
-        a.bZH();
-        AppMethodBeat.o(43346);
+        Log.i("MicroMsg.OfflineTokensMgr", "errcode is  411, do clearAllOfflineData");
+        d.gwM();
+        AppMethodBeat.o(66248);
         return;
       }
-      if (this.pky < this.pkx)
+      if (paramInt2 == 268465326) {
+        break label493;
+      }
+      if (this.MxY < this.MxX)
       {
-        this.mHandler.removeCallbacks(this.pkC);
-        paramInt1 = this.pky - 1;
+        this.mHandler.removeCallbacks(this.Myc);
+        paramInt1 = this.MxY - 1;
         if (paramInt1 <= 6) {
-          break label556;
+          break label500;
         }
         paramInt1 = i;
       }
     }
-    label556:
+    label493:
+    label500:
     for (;;)
     {
       paramInt1 = (int)Math.pow(2.0D, paramInt1);
-      this.mHandler.postDelayed(this.pkC, paramInt1 * 60 * 1000);
-      AppMethodBeat.o(43346);
+      this.mHandler.postDelayed(this.Myc, paramInt1 * 60 * 1000);
+      AppMethodBeat.o(66248);
       return;
-      if ((paramm instanceof l))
+      if ((paramp instanceof n)) {
+        this.MxW = false;
+      }
+      AppMethodBeat.o(66248);
+      return;
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void gvc();
+  }
+  
+  final class b
+    implements Runnable
+  {
+    private b() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(66241);
+      Log.i("MicroMsg.OfflineTokensMgr", "mUpdateTokenRunnable, do doNetSceneToken");
+      if (!com.tencent.mm.kernel.h.baC().aZN())
       {
-        this.pkw = false;
-        AppMethodBeat.o(43346);
+        Log.w("MicroMsg.OfflineTokensMgr", "account not init.");
+        AppMethodBeat.o(66241);
         return;
       }
-      if ((paramm instanceof com.tencent.mm.plugin.offline.a.f)) {
-        this.pkB = null;
-      }
-      AppMethodBeat.o(43346);
-      return;
+      i.this.kq(6, 6);
+      AppMethodBeat.o(66241);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.i
  * JD-Core Version:    0.7.0.1
  */

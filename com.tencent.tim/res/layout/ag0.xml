@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@color/vu" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/adk" />
+    <TextView android:textSize="16.0sp" android:id="@id/fgg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/eaa" />
+    <TextView android:textSize="16.0sp" android:gravity="center" android:id="@id/ju0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_marginTop="20.0sp" android:text="@string/q3o" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+        <TextView android:textSize="30.0sp" android:textStyle="bold" android:textColor="@color/tr" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/eyv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="¥" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="50.0sp" android:textStyle="bold" android:textColor="@color/tr" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="800.00" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/eyv" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="center" android:id="@id/h1g" android:background="#ffefefef" android:layout_width="200.0dip" android:layout_height="200.0dip" />
+    <TextView android:textSize="16.0sp" android:gravity="center" android:id="@id/jtz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_marginTop="20.0sp" android:text="@string/q2b" />
+    <Button android:id="@id/b7s" android:layout_margin="10.0dip" android:text="@string/ea_" style="@style/sv" />
+</LinearLayout>

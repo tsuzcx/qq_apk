@@ -11,16 +11,15 @@ class OnSubscribeRedo$RetryWithPredicate$1
   public Notification<Integer> call(Notification<Integer> paramNotification, Notification<?> paramNotification1)
   {
     int i = ((Integer)paramNotification.getValue()).intValue();
-    paramNotification = paramNotification1;
     if (((Boolean)this.this$0.predicate.call(Integer.valueOf(i), paramNotification1.getThrowable())).booleanValue()) {
-      paramNotification = Notification.createOnNext(Integer.valueOf(i + 1));
+      return Notification.createOnNext(Integer.valueOf(i + 1));
     }
-    return paramNotification;
+    return paramNotification1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeRedo.RetryWithPredicate.1
  * JD-Core Version:    0.7.0.1
  */

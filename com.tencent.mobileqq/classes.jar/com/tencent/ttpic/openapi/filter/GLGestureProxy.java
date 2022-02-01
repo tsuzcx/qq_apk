@@ -24,23 +24,31 @@ public final class GLGestureProxy
   
   public static String getPointAction(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (i != 0)
     {
-    case 4: 
-    default: 
-      return "";
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 5)
+            {
+              if (i != 6) {
+                return "";
+              }
+              return "MotionEvent.ACTION_POINTER_UP";
+            }
+            return "MotionEvent.ACTION_POINTER_DOWN";
+          }
+          return "MotionEvent.ACTION_CANCEL";
+        }
+        return "MotionEvent.ACTION_MOVE";
+      }
       return "MotionEvent.ACTION_UP";
-    case 0: 
-      return "MotionEvent.ACTION_DOWN";
-    case 2: 
-      return "MotionEvent.ACTION_MOVE";
-    case 6: 
-      return "MotionEvent.ACTION_POINTER_UP";
-    case 5: 
-      return "MotionEvent.ACTION_POINTER_DOWN";
     }
-    return "MotionEvent.ACTION_CANCEL";
+    return "MotionEvent.ACTION_DOWN";
   }
   
   public void addListener(GLGestureListener paramGLGestureListener)
@@ -60,7 +68,7 @@ public final class GLGestureProxy
     while ((i < m) && (k >= ((GLGestureListener)this.mGLGestureList.get(i)).onGetPriority()))
     {
       j = i + 1;
-      i += 1;
+      i = j;
     }
     if (j == -1)
     {
@@ -72,10 +80,11 @@ public final class GLGestureProxy
   
   public boolean checkDownPointerInRecorderView(float paramFloat1, float paramFloat2)
   {
-    if (this.mRecorderView != null)
+    View localView = this.mRecorderView;
+    if (localView != null)
     {
       int[] arrayOfInt = new int[2];
-      this.mRecorderView.getLocationOnScreen(arrayOfInt);
+      localView.getLocationOnScreen(arrayOfInt);
       if ((paramFloat1 >= arrayOfInt[0]) && (paramFloat1 <= arrayOfInt[0] + this.mRecorderView.getWidth()) && (paramFloat2 >= arrayOfInt[1]) && (paramFloat2 <= arrayOfInt[1] + this.mRecorderView.getHeight())) {
         return true;
       }
@@ -85,17 +94,28 @@ public final class GLGestureProxy
   
   public boolean checkSecendFinger(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    int i = paramMotionEvent.getAction();
-    if (paramMotionEvent.getPointerCount() == 2) {}
-    switch (i & 0xFF)
+    int i = paramMotionEvent.getAction() & 0xFF;
+    int j = paramMotionEvent.getPointerCount();
+    boolean bool2 = true;
+    boolean bool1;
+    if (j == 2)
     {
-    case 3: 
-    case 4: 
-    default: 
-      bool = false;
+      bool1 = bool2;
+      if (i != 2)
+      {
+        bool1 = bool2;
+        if (i != 5)
+        {
+          bool1 = bool2;
+          if (i == 6) {}
+        }
+      }
     }
-    return bool;
+    else
+    {
+      bool1 = false;
+    }
+    return bool1;
   }
   
   public GLSurfaceView getGLSurfaceView()
@@ -118,11 +138,12 @@ public final class GLGestureProxy
     float f = paramFloat;
     if (this.mIsRecorder)
     {
+      View localView = this.mRecorderView;
       f = paramFloat;
-      if (this.mRecorderView != null)
+      if (localView != null)
       {
         int[] arrayOfInt = new int[2];
-        this.mRecorderView.getLocationOnScreen(arrayOfInt);
+        localView.getLocationOnScreen(arrayOfInt);
         f = paramFloat + arrayOfInt[0];
       }
     }
@@ -134,11 +155,12 @@ public final class GLGestureProxy
     float f = paramFloat;
     if (this.mIsRecorder)
     {
+      View localView = this.mRecorderView;
       f = paramFloat;
-      if (this.mRecorderView != null)
+      if (localView != null)
       {
         int[] arrayOfInt = new int[2];
-        this.mRecorderView.getLocationOnScreen(arrayOfInt);
+        localView.getLocationOnScreen(arrayOfInt);
         f = paramFloat + arrayOfInt[1];
       }
     }
@@ -147,29 +169,33 @@ public final class GLGestureProxy
   
   public MotionEvent getSecendFingerMotionEvent(MotionEvent paramMotionEvent)
   {
-    int i = 1;
     int[] arrayOfInt = new int[2];
-    if (this.mRecorderView != null) {
-      this.mRecorderView.getLocationOnScreen(arrayOfInt);
+    View localView = this.mRecorderView;
+    if (localView != null) {
+      localView.getLocationOnScreen(arrayOfInt);
     }
-    int m = paramMotionEvent.getAction();
+    int i = paramMotionEvent.getAction() & 0xFF;
     int j = (int)(arrayOfInt[0] + paramMotionEvent.getX(1));
     int k = (int)(arrayOfInt[1] + paramMotionEvent.getY(1));
     long l = SystemClock.uptimeMillis();
-    switch (m & 0xFF)
+    if (i != 2)
     {
-    case 3: 
-    case 4: 
-    default: 
-      i = -1;
+      if (i != 5)
+      {
+        if (i != 6) {
+          i = -1;
+        } else {
+          i = 1;
+        }
+      }
+      else {
+        i = 0;
+      }
     }
-    for (;;)
-    {
-      return MotionEvent.obtain(l, l, i, j, k, 0);
-      i = 0;
-      continue;
+    else {
       i = 2;
     }
+    return MotionEvent.obtain(l, l, i, j, k, 0);
   }
   
   public int getWidth()
@@ -185,9 +211,10 @@ public final class GLGestureProxy
   public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean, View paramView, GLSurfaceView paramGLSurfaceView)
   {
     this.mGLSurfaceView = paramGLSurfaceView;
-    if (this.mGLSurfaceView != null)
+    paramGLSurfaceView = this.mGLSurfaceView;
+    if (paramGLSurfaceView != null)
     {
-      this.width = this.mGLSurfaceView.getWidth();
+      this.width = paramGLSurfaceView.getWidth();
       this.height = this.mGLSurfaceView.getHeight();
     }
     this.mRecorderView = paramView;
@@ -219,7 +246,7 @@ public final class GLGestureProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.GLGestureProxy
  * JD-Core Version:    0.7.0.1
  */

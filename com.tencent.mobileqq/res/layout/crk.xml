@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/b4v" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/aav" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/bak" android:background="@drawable/eo0" android:paddingLeft="15.0dip" android:paddingTop="@dimen/mp" android:paddingRight="15.0dip" android:paddingBottom="@dimen/mp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="60.0dip">
+            <com.tencent.biz.subscribe.comment.CommentEditText android:textSize="@dimen/aze" android:textColor="@color/ahl" android:textColorHint="@color/aho" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jha" android:background="@drawable/epm" android:paddingLeft="@dimen/mw" android:paddingTop="3.5dip" android:paddingRight="15.0dip" android:paddingBottom="3.5dip" android:scrollbars="none" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:maxHeight="120.0dip" android:minHeight="40.0dip" android:maxLines="5" android:maxLength="143" android:layout_weight="1.0" android:inputType="textMultiLine" android:imeOptions="actionDone" android:fadeScrollbars="false" android:textCursorDrawable="@null" />
+            <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/mo6" android:background="@android:color/transparent" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/jk8" android:scaleType="fitXY" android:contentDescription="@string/a78" />
+            <ImageButton android:layout_gravity="center_vertical" android:id="@id/ah5" android:background="@android:color/transparent" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/jkb" android:scaleType="fitXY" android:contentDescription="@string/a78" />
+            <ImageButton android:layout_gravity="center_vertical" android:id="@id/aiz" android:background="@android:color/transparent" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/jl9" android:scaleType="fitXY" android:contentDescription="@string/a78" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/ezu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

@@ -1,17 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.widget.XListView;
-
 class dop
   implements Runnable
 {
-  dop(doo paramdoo) {}
+  dop(don paramdon, String paramString) {}
   
   public void run()
   {
-    if ((this.a.a.a.a() instanceof BaseAdapter)) {
-      ((BaseAdapter)this.a.a.a.a()).notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_Don.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

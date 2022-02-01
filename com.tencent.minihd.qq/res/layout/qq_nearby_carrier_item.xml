@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/carrier_item_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/left_img" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginLeft="28.0dip" android:src="@drawable/h001" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/left_img_frame" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginLeft="28.0dip" android:src="@drawable/qq_nearby_shape_circle" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+    <com.tencent.image.URLImageView android:id="@id/logo_icon" android:layout_width="85.0dip" android:layout_height="85.0dip" android:src="@drawable/qq_nearby_date_icon_bg" android:scaleType="fitEnd" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/title_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="11.5dip" android:layout_toRightOf="@id/left_img_frame" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/title_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearby_date_title_dine_icon" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/white" android:ellipsize="end" android:id="@id/str_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="约人看电影" android:maxLines="1" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/content_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.5dip" android:layout_marginRight="5.0dip" android:layout_toRightOf="@id/left_img_frame" android:layout_below="@id/title_line">
+        <TextView android:textSize="14.0dip" android:textColor="@color/white" android:ellipsize="end" android:id="@id/str_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="05-24 19:00" android:maxLines="1" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/white" android:ellipsize="end" android:id="@id/str_sub_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:text="保利影城 （南山区海岸城）" android:maxLines="1" android:includeFontPadding="false" />
+    </LinearLayout>
+    <ImageView android:id="@id/carriermask" android:background="@drawable/avatar_bg_selector" android:layout_width="fill_parent" android:layout_height="85.0dip" />
+</RelativeLayout>

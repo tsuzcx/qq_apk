@@ -36,22 +36,20 @@ public class ep
       while (i < j)
       {
         x localx = (x)paramd.nE.get(i);
-        if (localx == null)
-        {
-          i += 1;
-        }
-        else
+        if (localx != null)
         {
           el localel = el.cP();
           int k = localx.bH;
           int m = localx.bZ;
-          if (paramInt3 > 0) {}
-          for (String str = String.format("%d/%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(j) });; str = null)
-          {
-            localel.a("SharkWharf", k, m, localx, paramInt1, paramInt2, str);
-            break;
+          String str;
+          if (paramInt3 > 0) {
+            str = String.format("%d/%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(j) });
+          } else {
+            str = null;
           }
+          localel.a("SharkWharf", k, m, localx, paramInt1, paramInt2, str);
         }
+        i += 1;
       }
     }
   }
@@ -60,36 +58,34 @@ public class ep
   {
     try
     {
-      if (!this.pc) {
-        throw new RuntimeException("sendData(), not in sending process!");
+      boolean bool = this.pc;
+      if (bool)
+      {
+        if (paramd == null) {
+          return;
+        }
+        if (paramd.cX())
+        {
+          if (paramd.nz)
+          {
+            this.ni.b(true, -30000007, paramd);
+            return;
+          }
+          this.ni.b(true, -30001400, paramd);
+          return;
+        }
+        paramd.ny = false;
+        byte[] arrayOfByte = ee.a(paramd, false, this.lT.cC(), this.mC);
+        if (arrayOfByte == null) {
+          return;
+        }
+        a(paramd, 15, 0, arrayOfByte.length);
+        this.pd.a(paramd, arrayOfByte, new ep.1(this, paramd));
+        return;
       }
+      throw new RuntimeException("sendData(), not in sending process!");
     }
     finally {}
-    if (paramd == null) {}
-    for (;;)
-    {
-      return;
-      if (!paramd.cX()) {
-        break;
-      }
-      if (paramd.nz) {
-        this.ni.b(true, -30000007, paramd);
-      } else {
-        this.ni.b(true, -30001400, paramd);
-      }
-    }
-    for (;;)
-    {
-      paramd.ny = false;
-      byte[] arrayOfByte = ee.a(paramd, false, this.lT.cC(), this.mC);
-      if (arrayOfByte == null) {
-        break;
-      }
-      a(paramd, 15, 0, arrayOfByte.length);
-      this.pd.a(paramd, arrayOfByte, new ep.1(this, paramd));
-      break;
-      if (1 == 0) {}
-    }
   }
   
   public eu dc()
@@ -99,7 +95,7 @@ public class ep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ep
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ class DownloaderProxyDefault$DownloadTask$PositionFixedInputStream
   extends InputStream
 {
   private int markPosition = -1;
-  private int position;
+  private int position = 0;
   private InputStream proxiedStream;
   
   public DownloaderProxyDefault$DownloadTask$PositionFixedInputStream(DownloaderProxyDefault.DownloadTask paramDownloadTask, InputStream paramInputStream)
@@ -89,7 +89,7 @@ class DownloaderProxyDefault$DownloadTask$PositionFixedInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.DownloaderProxyDefault.DownloadTask.PositionFixedInputStream
  * JD-Core Version:    0.7.0.1
  */

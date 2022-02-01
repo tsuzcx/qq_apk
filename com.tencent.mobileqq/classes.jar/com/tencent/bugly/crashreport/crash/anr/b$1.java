@@ -16,7 +16,9 @@ final class b$1
     if (paramString == null) {
       return;
     }
-    paramString = "/data/anr/" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder("/data/anr/");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
     if (!paramString.contains("trace"))
     {
       x.d("not anr file %s", new Object[] { paramString });
@@ -27,7 +29,7 @@ final class b$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.crash.anr.b.1
  * JD-Core Version:    0.7.0.1
  */

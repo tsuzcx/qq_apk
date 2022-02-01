@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.topstory.ui.video;
 import android.content.Context;
 import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class i
   extends OrientationEventListener
 {
-  private int oGO = -1;
-  private int oGP = -1;
-  private long oGQ = 0L;
-  private long oGR = 0L;
+  private int KUR = -1;
+  private long KUS = 0L;
+  private long KUT = 0L;
+  a TMF;
+  private int lastOrientation = -1;
   private int orientation = -1;
-  i.a tiZ;
   
   public i(Context paramContext)
   {
@@ -23,28 +23,28 @@ public final class i
   
   public final void enable()
   {
-    AppMethodBeat.i(1731);
+    AppMethodBeat.i(126096);
     super.enable();
-    this.oGR = bo.yB();
-    AppMethodBeat.o(1731);
+    this.KUT = Util.currentTicks();
+    AppMethodBeat.o(126096);
   }
   
   public final void onOrientationChanged(int paramInt)
   {
-    AppMethodBeat.i(1730);
-    if (bo.av(this.oGR) < 2000L)
+    AppMethodBeat.i(126095);
+    if (Util.ticksToNow(this.KUT) < 2000L)
     {
-      ab.v("MicroMsg.TopStory.TopStoryDeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
-      AppMethodBeat.o(1730);
+      Log.v("MicroMsg.TopStory.TopStoryDeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
+      AppMethodBeat.o(126095);
       return;
     }
-    ab.d("MicroMsg.TopStory.TopStoryDeviceOrientationListener", "onOrientationChanged: %s", new Object[] { Integer.valueOf(paramInt) });
-    if ((Math.abs(this.oGO - paramInt) >= 60) && (bo.av(this.oGQ) >= 1000L))
+    Log.d("MicroMsg.TopStory.TopStoryDeviceOrientationListener", "onOrientationChanged: %s", new Object[] { Integer.valueOf(paramInt) });
+    if ((Math.abs(this.KUR - paramInt) >= 60) && (Util.ticksToNow(this.KUS) >= 1000L))
     {
-      this.oGO = paramInt;
-      this.oGQ = bo.yB();
+      this.KUR = paramInt;
+      this.KUS = Util.currentTicks();
       if ((paramInt > 60) && (paramInt < 300)) {
-        break label150;
+        break label147;
       }
       if ((paramInt <= 30) || (paramInt >= 330)) {
         this.orientation = 0;
@@ -52,12 +52,12 @@ public final class i
     }
     for (;;)
     {
-      if (this.tiZ != null) {
-        this.tiZ.zr(this.orientation);
+      if (this.TMF != null) {
+        this.TMF.onOrientationChange(this.orientation);
       }
-      AppMethodBeat.o(1730);
+      AppMethodBeat.o(126095);
       return;
-      label150:
+      label147:
       if ((paramInt >= 30) && (paramInt <= 150))
       {
         if ((paramInt >= 60) && (paramInt <= 120)) {
@@ -75,10 +75,15 @@ public final class i
       }
     }
   }
+  
+  public static abstract interface a
+  {
+    public abstract void onOrientationChange(int paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.i
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,12 @@ public class cvn
   {
     try
     {
-      if ((LoginVerifyCodeActivity2.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (LoginVerifyCodeActivity2.a(this.a).isShowing()))
       {
-        LoginVerifyCodeActivity2.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
-        LoginVerifyCodeActivity2.a(this.a).b(2131562645);
+        LoginVerifyCodeActivity2.a(this.a).dismiss();
+        LoginVerifyCodeActivity2.a(this.a).cancel();
       }
-      if ((LoginVerifyCodeActivity2.a(this.a) != null) && (!LoginVerifyCodeActivity2.a(this.a).isShowing())) {
-        LoginVerifyCodeActivity2.a(this.a).show();
-      }
+      LoginVerifyCodeActivity2.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

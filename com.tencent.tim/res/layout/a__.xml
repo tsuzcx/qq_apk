@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/a0j" android:layout_width="252.0dip" android:layout_height="176.0dip" android:layout_margin="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="#d9000000" android:id="@id/cyo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="@string/pwt" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/cy0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="41.0dip">
+        <include android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/a_a" />
+        <include android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/a_a" />
+        <include android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/a_a" />
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.presseffect.PressEffectLinearLayout android:gravity="center" android:id="@id/ch8" android:background="@drawable/b21" android:layout_width="fill_parent" android:layout_height="27.0dip" android:layout_margin="12.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/chf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="0.0dip" android:text="@string/pxf" android:drawablePadding="3.0dip" />
+    </com.tencent.mobileqq.widget.presseffect.PressEffectLinearLayout>
+</RelativeLayout>

@@ -11,15 +11,15 @@ public final class CommHeader
 {
   static Map<String, String> cache_map_ext = new HashMap();
   public String auth_key = "";
-  public long auth_type;
-  public long client_ip;
-  public Map<String, String> map_ext;
-  public long platform;
-  public long ptlogin_id;
+  public long auth_type = 0L;
+  public long client_ip = 0L;
+  public Map<String, String> map_ext = null;
+  public long platform = 0L;
+  public long ptlogin_id = 0L;
   public String qqver = "";
   public String qua = "";
-  public long server_ip;
-  public long uin;
+  public long server_ip = 0L;
+  public long uin = 0L;
   
   static
   {
@@ -60,27 +60,31 @@ public final class CommHeader
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.auth_type, 1);
-    if (this.auth_key != null) {
-      paramJceOutputStream.write(this.auth_key, 2);
+    Object localObject = this.auth_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.ptlogin_id, 3);
     paramJceOutputStream.write(this.client_ip, 4);
     paramJceOutputStream.write(this.server_ip, 5);
-    if (this.qua != null) {
-      paramJceOutputStream.write(this.qua, 6);
+    localObject = this.qua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.qqver != null) {
-      paramJceOutputStream.write(this.qqver, 7);
+    localObject = this.qqver;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.platform, 8);
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 9);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VA_PROFILE_COMM_TASK.CommHeader
  * JD-Core Version:    0.7.0.1
  */

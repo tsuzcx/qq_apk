@@ -11,14 +11,14 @@ final class MallIndexBaseUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(43169);
-    MallIndexBaseUI.a(this.ozC);
-    AppMethodBeat.o(43169);
+    AppMethodBeat.i(66067);
+    MallIndexBaseUI.a(this.KLg);
+    AppMethodBeat.o(66067);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallIndexBaseUI.4
  * JD-Core Version:    0.7.0.1
  */

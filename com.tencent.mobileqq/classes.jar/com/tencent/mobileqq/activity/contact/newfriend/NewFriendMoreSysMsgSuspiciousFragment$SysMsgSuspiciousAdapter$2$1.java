@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahma;
 import android.view.View;
 import java.util.List;
 
@@ -11,20 +10,17 @@ class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2$1
   
   public void run()
   {
-    ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0, this.jdField_a_of_type_JavaUtilList);
-    if ((ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) == null) || (ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).isEmpty())) {
-      if (ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) {
-        ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).setVisibility(0);
-      }
-    }
-    for (;;)
+    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.a(this.b.this$0, this.a);
+    if ((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.e(this.b.this$0) != null) && (!NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.e(this.b.this$0).isEmpty()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0.notifyDataSetChanged();
-      return;
-      if (ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0) != null) {
-        ahma.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2.this$0).setVisibility(8);
+      if (NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.f(this.b.this$0) != null) {
+        NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.f(this.b.this$0).setVisibility(8);
       }
     }
+    else if (NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.f(this.b.this$0) != null) {
+      NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.f(this.b.this$0).setVisibility(0);
+    }
+    this.b.this$0.notifyDataSetChanged();
   }
 }
 

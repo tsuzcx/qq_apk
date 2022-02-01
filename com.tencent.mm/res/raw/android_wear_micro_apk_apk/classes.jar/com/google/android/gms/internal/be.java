@@ -2,9 +2,9 @@ package com.google.android.gms.internal;
 
 public abstract interface be<L>
 {
-  public abstract void jc();
+  public abstract void H(L paramL);
   
-  public abstract void y(L paramL);
+  public abstract void jl();
 }
 
 

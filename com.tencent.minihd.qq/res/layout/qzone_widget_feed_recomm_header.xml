@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="horizontal" android:id="@id/recomm_header_root" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="35.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/feed_item_margin_left" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/hot_star" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/qzone_hotbar_icon_star" />
+        <com.qzone.proxy.feedcomponent.model.SafeTextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/qzone_color_content" android:layout_gravity="center_vertical" android:id="@id/recomm_header_left_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="热点推荐" />
+    </LinearLayout>
+    <com.qzone.proxy.feedcomponent.model.SafeTextView android:textSize="@dimen/feed_item_left_thumb_text_size" android:textColor="@color/qzone_color_hint" android:layout_gravity="center|right" android:id="@id/recomm_header_right_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="26.0dip" android:text="查看更多" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/head_button_arrow" android:background="@drawable/qzone_icon_forward" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/feed_item_margin_right" />
+    <View android:layout_gravity="center|right" android:id="@id/head_button_shield" android:background="@drawable/qzone_icon_feed_recomm__shield" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/feed_item_margin_right" />
+    <FrameLayout android:layout_gravity="right" android:id="@id/head_button_minus_report" android:layout_width="40.0dip" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:background="@drawable/qzone_feed_icon_feedback_delete" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <com.qzone.widget.CommonLine android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" />
+</FrameLayout>

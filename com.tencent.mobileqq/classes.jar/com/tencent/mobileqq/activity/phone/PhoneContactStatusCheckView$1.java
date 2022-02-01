@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
-import bdhj;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class PhoneContactStatusCheckView$1
@@ -14,30 +14,31 @@ class PhoneContactStatusCheckView$1
   
   public void run()
   {
-    Object localObject2 = this.this$0.getResources();
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    BitmapFactory.decodeResource(this.this$0.getResources(), 2130844612, localOptions);
-    localOptions.inSampleSize = bdhj.a(localOptions, ((Resources)localObject2).getDimensionPixelSize(2131297062), ((Resources)localObject2).getDimensionPixelSize(2131297060));
-    localOptions.inJustDecodeBounds = false;
-    Object localObject1 = null;
+    Object localObject1 = this.this$0.getResources();
+    Object localObject3 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject3).inJustDecodeBounds = true;
+    BitmapFactory.decodeResource(this.this$0.getResources(), 2130846450, (BitmapFactory.Options)localObject3);
+    ((BitmapFactory.Options)localObject3).inSampleSize = ImageUtil.a((BitmapFactory.Options)localObject3, ((Resources)localObject1).getDimensionPixelSize(2131297573), ((Resources)localObject1).getDimensionPixelSize(2131297571));
+    ((BitmapFactory.Options)localObject3).inJustDecodeBounds = false;
+    Object localObject2;
     try
     {
-      localObject2 = BitmapFactory.decodeResource((Resources)localObject2, 2130844612, localOptions);
-      localObject1 = localObject2;
+      localObject1 = BitmapFactory.decodeResource((Resources)localObject1, 2130846450, (BitmapFactory.Options)localObject3);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-        QLog.i("PhoneContactStatusCheckView", 1, "");
-      }
+      localOutOfMemoryError.printStackTrace();
+      QLog.i("PhoneContactStatusCheckView", 1, "");
+      localObject2 = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("PhoneContactStatusCheckView", 2, "loadIcon bmg: " + localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("loadIcon bmg: ");
+      ((StringBuilder)localObject3).append(localObject2);
+      QLog.i("PhoneContactStatusCheckView", 2, ((StringBuilder)localObject3).toString());
     }
-    PhoneContactStatusCheckView.a(this.this$0).post(new PhoneContactStatusCheckView.1.1(this, localObject1));
+    PhoneContactStatusCheckView.b(this.this$0).post(new PhoneContactStatusCheckView.1.1(this, localObject2));
   }
 }
 

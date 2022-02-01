@@ -6,33 +6,33 @@ import java.util.List;
 
 public abstract class a<T>
 {
-  protected List<WeakReference<T>> pjT = new ArrayList();
+  protected List<WeakReference<T>> Mxv = new ArrayList();
   
-  public final void ce(T paramT)
+  public final void gj(T paramT)
   {
-    if (this.pjT != null) {
-      this.pjT = new ArrayList();
+    if (this.Mxv != null) {
+      this.Mxv = new ArrayList();
     }
-    this.pjT.add(new WeakReference(paramT));
+    this.Mxv.add(new WeakReference(paramT));
   }
   
-  public final void cf(T paramT)
+  public final void gk(T paramT)
   {
-    if (this.pjT == null) {}
+    if (this.Mxv == null) {}
     for (;;)
     {
       return;
       int i = 0;
-      while (i < this.pjT.size())
+      while (i < this.Mxv.size())
       {
-        WeakReference localWeakReference = (WeakReference)this.pjT.get(i);
+        WeakReference localWeakReference = (WeakReference)this.Mxv.get(i);
         if (localWeakReference != null)
         {
           Object localObject = localWeakReference.get();
           if ((localObject != null) && (localObject.equals(paramT)))
           {
             localWeakReference.clear();
-            this.pjT.remove(localWeakReference);
+            this.Mxv.remove(localWeakReference);
           }
         }
         i += 1;
@@ -42,7 +42,7 @@ public abstract class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-class ctb
-  implements Animation.AnimationListener
+public class ctb
+  implements Runnable
 {
-  ctb(cta paramcta) {}
+  public ctb(LoginActivity paramLoginActivity, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.a.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.invalidate();
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.runOnUiThread(new ctc(this, localBitmap));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

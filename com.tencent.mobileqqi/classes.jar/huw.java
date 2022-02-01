@@ -1,8 +1,9 @@
 import android.view.View;
+import android.widget.ListAdapter;
 import com.tencent.widget.AbsListView;
 
 public class huw
-  extends hvh
+  extends hvg
   implements Runnable
 {
   private huw(AbsListView paramAbsListView)
@@ -12,34 +13,28 @@ public class huw
   
   public void run()
   {
-    View localView;
-    if ((this.a.isPressed()) && (this.a.aA >= 0))
+    int i = this.a.W;
+    View localView = this.a.getChildAt(i - this.a.ap);
+    long l;
+    if (localView != null)
     {
-      int i = this.a.aA;
-      int j = this.a.ap;
-      localView = this.a.getChildAt(i - j);
-      if (this.a.p) {
-        break label108;
-      }
-      if (!a()) {
-        break label128;
+      i = this.a.W;
+      l = this.a.a.getItemId(this.a.W);
+      if ((!a()) || (this.a.p)) {
+        break label126;
       }
     }
-    label128:
-    for (boolean bool = this.a.b(localView, this.a.aA, this.a.d);; bool = false)
+    label126:
+    for (boolean bool = this.a.b(localView, i, l);; bool = false)
     {
       if (bool)
       {
+        this.a.ab = -1;
         this.a.setPressed(false);
         localView.setPressed(false);
-      }
-      label108:
-      do
-      {
         return;
-        this.a.setPressed(false);
-      } while (localView == null);
-      localView.setPressed(false);
+      }
+      this.a.ab = 2;
       return;
     }
   }

@@ -12,7 +12,7 @@ public abstract interface WtTicketPromise
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WtTicketPromise
  * JD-Core Version:    0.7.0.1
  */

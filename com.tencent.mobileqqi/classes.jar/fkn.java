@@ -1,36 +1,23 @@
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class fkn
-  implements Runnable
+  implements Comparator
 {
-  public fkn(ProxyManager paramProxyManager) {}
+  public fkn(RecentUserProxy paramRecentUserProxy) {}
   
-  public void run()
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    ProxyManager.a(this.a, System.currentTimeMillis());
-    while (!this.a.jdField_a_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilVector)
-      {
-        try
-        {
-          this.a.jdField_a_of_type_JavaUtilVector.wait(10000L);
-          if ((!this.a.jdField_a_of_type_JavaUtilVector.isEmpty()) && (ProxyManager.a(this.a))) {
-            this.a.c();
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("Q.msg.MsgProxy", 2, "writeRunable Exception:" + localException);
-            }
-          }
-        }
-      }
+    long l1 = Math.max(paramRecentUser1.lastmsgtime, paramRecentUser1.lastmsgdrafttime);
+    long l2 = Math.max(paramRecentUser2.lastmsgtime, paramRecentUser2.lastmsgdrafttime);
+    if (l1 < l2) {
+      return 1;
     }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

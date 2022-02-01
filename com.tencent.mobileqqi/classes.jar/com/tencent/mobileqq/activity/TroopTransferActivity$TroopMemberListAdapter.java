@@ -11,8 +11,8 @@ import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
 import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ImageUtil;
-import dtq;
-import dts;
+import dtp;
+import dtr;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -93,7 +93,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
       this.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList);
       this.jdField_a_of_type_JavaUtilArrayList.addAll(paramContext);
     }
-    new dtq(this, paramTroopTransferActivity).start();
+    new dtp(this, paramTroopTransferActivity).start();
   }
   
   public TroopTransferActivity.TroopMemberItem a(String paramString)
@@ -176,7 +176,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
       if (paramView == null)
       {
         paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903270, paramViewGroup, false);
-        paramView = new dts(null);
+        paramView = new dtr(null);
         paramView.c = null;
         paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup);
         paramViewGroup.setTag(paramView);
@@ -194,7 +194,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
         paramViewGroup.setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
       return paramViewGroup;
-      Object localObject = (dts)paramView.getTag();
+      Object localObject = (dtr)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
       break;
@@ -212,11 +212,11 @@ public class TroopTransferActivity$TroopMemberListAdapter
           if (paramView == null)
           {
             paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130904038, paramViewGroup, false);
+            paramView.findViewById(2131234626).setVisibility(8);
             paramView.findViewById(2131234627).setVisibility(8);
-            paramView.findViewById(2131234628).setVisibility(8);
-            paramViewGroup = new dts(null);
-            paramViewGroup.c = ((ImageView)paramView.findViewById(2131231568));
-            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231411));
+            paramViewGroup = new dtr(null);
+            paramViewGroup.c = ((ImageView)paramView.findViewById(2131231567));
+            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231410));
             paramView.setTag(paramViewGroup);
             paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
             if (localTroopMemberItem == null) {
@@ -243,7 +243,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
             paramView = paramViewGroup;
             paramViewGroup = (ViewGroup)localObject;
             break;
-            paramViewGroup = (dts)paramView.getTag();
+            paramViewGroup = (dtr)paramView.getTag();
             break label256;
             localObject = null;
             break label274;

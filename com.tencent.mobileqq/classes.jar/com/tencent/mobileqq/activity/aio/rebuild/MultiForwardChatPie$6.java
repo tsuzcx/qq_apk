@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeqo;
-import agso;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class MultiForwardChatPie$6
+class MultiForwardChatPie$6
   implements Runnable
 {
-  public MultiForwardChatPie$6(agso paramagso, CharSequence paramCharSequence) {}
+  MultiForwardChatPie$6(MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    agso.a(this.this$0).setVisibility(8);
-    agso.a(this.this$0).setVisibility(0);
-    agso.a(this.this$0).setVisibility(0);
-    this.this$0.e.setText(this.this$0.h);
-    agso.a(this.this$0).a(agso.a(this.this$0), this.a);
-    this.this$0.F();
+    MultiForwardChatPie.d(this.this$0).setVisibility(8);
+    MultiForwardChatPie.a(this.this$0).setVisibility(0);
+    MultiForwardChatPie.e(this.this$0).setVisibility(0);
+    this.this$0.C.setText(this.this$0.bm);
+    MultiForwardChatPie.f(this.this$0).a(MultiForwardChatPie.b(this.this$0), this.a);
+    this.this$0.bz();
   }
 }
 

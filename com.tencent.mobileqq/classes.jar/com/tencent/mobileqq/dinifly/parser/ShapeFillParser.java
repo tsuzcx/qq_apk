@@ -1,84 +1,80 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.Path.FillType;
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableColorValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableIntegerValue;
 import com.tencent.mobileqq.dinifly.model.content.ShapeFill;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
+import java.util.Collections;
 
 class ShapeFillParser
 {
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "c", "o", "fillEnabled", "r", "hd" });
+  
   static ShapeFill parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    String str1 = null;
-    boolean bool1 = false;
-    int j = 1;
     AnimatableIntegerValue localAnimatableIntegerValue = null;
+    String str = null;
+    Object localObject = str;
+    int i = 1;
     boolean bool2 = false;
-    AnimatableColorValue localAnimatableColorValue = null;
-    label17:
+    boolean bool1 = false;
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+      int j = paramJsonReader.selectName(NAMES);
+      if (j != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (j != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label17;
-          if (str2.equals("nm"))
+          if (j != 2)
           {
-            i = 0;
-            continue;
-            if (str2.equals("c"))
+            if (j != 3)
             {
-              i = 1;
-              continue;
-              if (str2.equals("o"))
+              if (j != 4)
               {
-                i = 2;
-                continue;
-                if (str2.equals("fillEnabled"))
+                if (j != 5)
                 {
-                  i = 3;
-                  continue;
-                  if (str2.equals("r"))
-                  {
-                    i = 4;
-                    continue;
-                    if (str2.equals("hd")) {
-                      i = 5;
-                    }
-                  }
+                  paramJsonReader.skipName();
+                  paramJsonReader.skipValue();
+                }
+                else
+                {
+                  bool1 = paramJsonReader.nextBoolean();
                 }
               }
+              else {
+                i = paramJsonReader.nextInt();
+              }
+            }
+            else {
+              bool2 = paramJsonReader.nextBoolean();
             }
           }
-          break;
+          else {
+            localAnimatableIntegerValue = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          localObject = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localAnimatableColorValue = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableIntegerValue = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
-      continue;
-      bool2 = paramJsonReader.nextBoolean();
-      continue;
-      j = paramJsonReader.nextInt();
-      continue;
-      bool1 = paramJsonReader.nextBoolean();
+      else {
+        str = paramJsonReader.nextString();
+      }
     }
-    if (j == 1) {}
-    for (paramJsonReader = Path.FillType.WINDING;; paramJsonReader = Path.FillType.EVEN_ODD) {
-      return new ShapeFill(str1, bool2, paramJsonReader, localAnimatableColorValue, localAnimatableIntegerValue, bool1);
+    paramJsonReader = localAnimatableIntegerValue;
+    if (localAnimatableIntegerValue == null) {
+      paramJsonReader = new AnimatableIntegerValue(Collections.singletonList(new Keyframe(Integer.valueOf(100))));
     }
+    if (i == 1) {
+      paramLottieComposition = Path.FillType.WINDING;
+    } else {
+      paramLottieComposition = Path.FillType.EVEN_ODD;
+    }
+    return new ShapeFill(str, bool2, paramLottieComposition, (AnimatableColorValue)localObject, paramJsonReader, bool1);
   }
 }
 

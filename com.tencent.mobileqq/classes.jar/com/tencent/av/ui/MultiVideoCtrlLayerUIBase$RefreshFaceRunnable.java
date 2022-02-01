@@ -10,15 +10,15 @@ class MultiVideoCtrlLayerUIBase$RefreshFaceRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a();
+    if (this.this$0.t != null) {
+      this.this$0.t.a();
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 2000L);
+    this.this$0.al.a().postDelayed(this, 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.RefreshFaceRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ public final class GrpAlterInfo
   extends JceStruct
 {
   static ArrayList<GrpInfoItem> cache_AlterInfo;
-  public ArrayList<GrpInfoItem> AlterInfo;
-  public long GrpId;
+  public ArrayList<GrpInfoItem> AlterInfo = null;
+  public long GrpId = 0L;
   
   public GrpAlterInfo() {}
   
@@ -40,7 +40,7 @@ public final class GrpAlterInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.GrpAlterInfo
  * JD-Core Version:    0.7.0.1
  */

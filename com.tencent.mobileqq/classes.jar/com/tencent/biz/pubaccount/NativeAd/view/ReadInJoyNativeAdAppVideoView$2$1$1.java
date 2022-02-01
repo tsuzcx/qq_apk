@@ -1,11 +1,9 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import npi;
-
-public class ReadInJoyNativeAdAppVideoView$2$1$1
+class ReadInJoyNativeAdAppVideoView$2$1$1
   implements Runnable
 {
-  public ReadInJoyNativeAdAppVideoView$2$1$1(npi paramnpi) {}
+  ReadInJoyNativeAdAppVideoView$2$1$1(ReadInJoyNativeAdAppVideoView.2.1 param1) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ReadInJoyNativeAdAppVideoView$2$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2.1.1
  * JD-Core Version:    0.7.0.1
  */

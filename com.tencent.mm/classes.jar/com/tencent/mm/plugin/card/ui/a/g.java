@@ -1,79 +1,81 @@
 package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.ui.e.a;
+import com.tencent.mm.plugin.card.ui.e.b;
 
 public abstract interface g
 {
-  public abstract void a(b paramb, e.a parama);
+  public abstract void a(b paramb, e.b paramb1);
   
-  public abstract boolean bdT();
+  public abstract boolean dmH();
   
-  public abstract boolean beD();
+  public abstract boolean dnA();
   
-  public abstract boolean beE();
+  public abstract boolean dnB();
   
-  public abstract boolean beF();
+  public abstract boolean dnC();
   
-  public abstract boolean beG();
+  public abstract boolean dnD();
   
-  public abstract boolean beH();
+  public abstract boolean dnE();
   
-  public abstract boolean beI();
+  public abstract boolean dnF();
   
-  public abstract boolean beJ();
+  public abstract boolean dnG();
   
-  public abstract boolean beK();
+  public abstract boolean dnH();
   
-  public abstract boolean beL();
+  public abstract boolean dnI();
   
-  public abstract boolean beM();
+  public abstract boolean dnJ();
   
-  public abstract boolean beN();
+  public abstract boolean dnK();
   
-  public abstract boolean beO();
+  public abstract boolean dnL();
   
-  public abstract boolean beP();
+  public abstract boolean dnM();
   
-  public abstract boolean beQ();
+  public abstract boolean dnN();
   
-  public abstract boolean beR();
+  public abstract boolean dnO();
   
-  public abstract boolean beS();
+  public abstract void dnP();
   
-  public abstract boolean beT();
+  public abstract String dnh();
   
-  public abstract boolean beU();
+  public abstract boolean dni();
   
-  public abstract boolean beV();
+  public abstract boolean dnj();
   
-  public abstract boolean beW();
+  public abstract boolean dno();
   
-  public abstract boolean beX();
+  public abstract boolean dnp();
   
-  public abstract boolean beY();
+  public abstract boolean dnq();
   
-  public abstract boolean beZ();
+  public abstract boolean dnr();
   
-  public abstract String bew();
+  public abstract boolean dns();
   
-  public abstract boolean bex();
+  public abstract boolean dnt();
   
-  public abstract boolean bey();
+  public abstract boolean dnu();
   
-  public abstract boolean bfa();
+  public abstract boolean dnv();
   
-  public abstract boolean bfb();
+  public abstract boolean dnw();
   
-  public abstract boolean bfc();
+  public abstract boolean dnx();
   
-  public abstract void bfd();
+  public abstract boolean dny();
+  
+  public abstract boolean dnz();
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.g
  * JD-Core Version:    0.7.0.1
  */

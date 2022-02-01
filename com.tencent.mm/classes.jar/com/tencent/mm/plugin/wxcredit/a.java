@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.wxcredit;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.be;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements at
+  implements be
 {
   static
   {
-    AppMethodBeat.i(48599);
-    com.tencent.mm.wallet_core.a.h("WXCreditOpenProcess", e.class);
-    com.tencent.mm.wallet_core.a.h("WXCreditManagerProcess", d.class);
-    AppMethodBeat.o(48599);
+    AppMethodBeat.i(72241);
+    com.tencent.mm.wallet_core.a.n("WXCreditOpenProcess", e.class);
+    com.tencent.mm.wallet_core.a.n("WXCreditManagerProcess", d.class);
+    AppMethodBeat.o(72241);
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
@@ -31,7 +31,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a
  * JD-Core Version:    0.7.0.1
  */

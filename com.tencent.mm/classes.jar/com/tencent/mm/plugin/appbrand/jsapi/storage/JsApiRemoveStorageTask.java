@@ -3,7 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.storage;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 public class JsApiRemoveStorageTask
@@ -11,50 +13,50 @@ public class JsApiRemoveStorageTask
 {
   public static final Parcelable.Creator<JsApiRemoveStorageTask> CREATOR;
   public String appId;
-  public int ias;
   public String key;
+  public int svX;
   
   static
   {
-    AppMethodBeat.i(102071);
+    AppMethodBeat.i(147277);
     CREATOR = new JsApiRemoveStorageTask.1();
-    AppMethodBeat.o(102071);
+    AppMethodBeat.o(147277);
   }
   
-  public final void ata()
+  public final void asn()
   {
-    AppMethodBeat.i(102068);
-    if (e.q(com.tencent.luggage.sdk.customize.b.class) == null) {}
-    for (com.tencent.mm.plugin.appbrand.appstorage.b localb = null; localb == null; localb = ((com.tencent.luggage.sdk.customize.b)e.q(com.tencent.luggage.sdk.customize.b.class)).wf())
+    AppMethodBeat.i(147274);
+    if (e.T(a.class) == null) {}
+    for (g localg = null; localg == null; localg = ((a)e.T(a.class)).aqR())
     {
-      AppMethodBeat.o(102068);
+      AppMethodBeat.o(147274);
       return;
     }
-    localb.l(this.ias, this.appId, this.key);
-    AppMethodBeat.o(102068);
+    localg.o(this.svX, this.appId, this.key);
+    AppMethodBeat.o(147274);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(102070);
+    AppMethodBeat.i(147276);
     this.appId = paramParcel.readString();
-    this.ias = paramParcel.readInt();
+    this.svX = paramParcel.readInt();
     this.key = paramParcel.readString();
-    AppMethodBeat.o(102070);
+    AppMethodBeat.o(147276);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(102069);
+    AppMethodBeat.i(147275);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.ias);
+    paramParcel.writeInt(this.svX);
     paramParcel.writeString(this.key);
-    AppMethodBeat.o(102069);
+    AppMethodBeat.o(147275);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiRemoveStorageTask
  * JD-Core Version:    0.7.0.1
  */

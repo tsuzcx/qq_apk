@@ -11,19 +11,27 @@ public final class qqwalletaio_resv$qqwalletaio_body_resv
   extends MessageMicro<qqwalletaio_body_resv>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField bytes_client_extend = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_feeds_id = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_poem_rule = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_rareword_rule = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field uint32_pay_flag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_pfa_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_subchannel = PBField.initUInt32(0);
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_pfa_type", "bytes_feeds_id", "uint32_subchannel" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, qqwalletaio_body_resv.class);
+    Integer localInteger = Integer.valueOf(0);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 56 }, new String[] { "uint32_pfa_type", "bytes_feeds_id", "uint32_subchannel", "bytes_poem_rule", "bytes_client_extend", "bytes_rareword_rule", "uint32_pay_flag" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger }, qqwalletaio_body_resv.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.qqwallet.qqwalletaio_resv.qqwalletaio_body_resv
  * JD-Core Version:    0.7.0.1
  */

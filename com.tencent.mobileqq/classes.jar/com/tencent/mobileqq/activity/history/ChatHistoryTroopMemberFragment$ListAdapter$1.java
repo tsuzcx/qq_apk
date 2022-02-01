@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.history;
 
-import aidh;
-
-public class ChatHistoryTroopMemberFragment$ListAdapter$1
+class ChatHistoryTroopMemberFragment$ListAdapter$1
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$ListAdapter$1(aidh paramaidh) {}
+  ChatHistoryTroopMemberFragment$ListAdapter$1(ChatHistoryTroopMemberFragment.ListAdapter paramListAdapter) {}
   
   public void run()
   {

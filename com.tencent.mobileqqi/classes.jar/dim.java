@@ -9,7 +9,7 @@ public class dim
   
   public void onClick(View paramView)
   {
-    this.a.a.a(false);
+    this.a.a.a(true);
   }
 }
 

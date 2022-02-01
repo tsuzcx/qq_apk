@@ -8,17 +8,12 @@ public final class JoinShareAlbumReq
   extends JceStruct
 {
   static AllowJoinShareAlbum cache_allow_data = new AllowJoinShareAlbum();
-  static ApplyJoinShareAlbum cache_apply_data;
-  static int cache_mode = 0;
-  public AllowJoinShareAlbum allow_data;
-  public ApplyJoinShareAlbum apply_data;
+  static ApplyJoinShareAlbum cache_apply_data = new ApplyJoinShareAlbum();
+  static int cache_mode;
+  public AllowJoinShareAlbum allow_data = null;
+  public ApplyJoinShareAlbum apply_data = null;
   public int mode = 0;
-  public long op_uin;
-  
-  static
-  {
-    cache_apply_data = new ApplyJoinShareAlbum();
-  }
+  public long op_uin = 0L;
   
   public JoinShareAlbumReq() {}
   
@@ -42,17 +37,19 @@ public final class JoinShareAlbumReq
   {
     paramJceOutputStream.write(this.op_uin, 0);
     paramJceOutputStream.write(this.mode, 1);
-    if (this.apply_data != null) {
-      paramJceOutputStream.write(this.apply_data, 2);
+    Object localObject = this.apply_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.allow_data != null) {
-      paramJceOutputStream.write(this.allow_data, 3);
+    localObject = this.allow_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.JoinShareAlbumReq
  * JD-Core Version:    0.7.0.1
  */

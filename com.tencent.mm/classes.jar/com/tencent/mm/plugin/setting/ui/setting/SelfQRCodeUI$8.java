@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
 
 final class SelfQRCodeUI$8
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   SelfQRCodeUI$8(SelfQRCodeUI paramSelfQRCodeUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(154168);
-    d.H(this.qGz, "setting", ".ui.setting.SettingsAddMeUI");
-    AppMethodBeat.o(154168);
+    AppMethodBeat.i(73955);
+    SelfQRCodeUI.c(this.PpF);
+    AppMethodBeat.o(73955);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SelfQRCodeUI.8
  * JD-Core Version:    0.7.0.1
  */

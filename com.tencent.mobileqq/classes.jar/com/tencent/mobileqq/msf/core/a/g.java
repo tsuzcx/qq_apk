@@ -4,16 +4,6 @@ public class g
 {
   private static final String b = "WeakNetworkConfig";
   
-  static
-  {
-    if (!g.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
-    }
-  }
-  
   public static boolean a()
   {
     return a.bt() != 0;
@@ -21,18 +11,25 @@ public class g
   
   public static g.a b()
   {
+    int i = a.bt();
     g.a locala;
-    switch ()
+    if (i != 1)
     {
-    default: 
+      if (i != 2) {
+        locala = c();
+      } else {
+        locala = new g.a(2, false, 2000, 2000, 2, 1, 2000, 20, 1000, 2000, 1000);
+      }
+    }
+    else {
       locala = c();
     }
-    while ((!a) && (locala == null))
+    if (!a)
     {
+      if (locala != null) {
+        return locala;
+      }
       throw new AssertionError();
-      locala = c();
-      continue;
-      locala = new g.a(2, false, 2000, 2000, 2, 1, 2000, 20, 1000, 2000, 1000);
     }
     return locala;
   }
@@ -44,7 +41,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,25 @@
 package com.tencent.biz.authorize;
 
 import java.io.File;
-import nbj;
 
-public class FlatBuffersConfig$1
+class FlatBuffersConfig$1
   implements Runnable
 {
-  public FlatBuffersConfig$1(nbj paramnbj) {}
+  FlatBuffersConfig$1(FlatBuffersConfig paramFlatBuffersConfig) {}
   
   public void run()
   {
-    if (this.this$0.a().exists())
+    if (this.this$0.i().exists())
     {
-      this.this$0.a();
+      this.this$0.f();
       return;
     }
-    this.this$0.c();
+    this.this$0.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.FlatBuffersConfig.1
  * JD-Core Version:    0.7.0.1
  */

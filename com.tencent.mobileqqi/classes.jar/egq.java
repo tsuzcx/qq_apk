@@ -1,19 +1,35 @@
+import android.content.Context;
+import com.tencent.mobileqq.activity.ForwardOperations;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.search.ContactSearchableTroop;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class egq
-  extends SlideDetectListView.OnScrollGroupFloatingListener
+  extends SearchResultDialog
 {
-  public egq(TroopView paramTroopView) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public egq(TroopView paramTroopView, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, ForwardOperations paramForwardOperations)
   {
-    if (this.a.a != null) {
-      TroopView.a(this.a, paramInt1);
+    super(paramContext, paramQQAppInterface, paramInt, paramForwardOperations);
+  }
+  
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    Object localObject = this.a.a.a();
+    ArrayList localArrayList = new ArrayList();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(new ContactSearchableTroop(paramContext, paramQQAppInterface, (TroopInfo)((Iterator)localObject).next(), 0L, 0L));
+      }
     }
+    return localArrayList;
   }
 }
 

@@ -27,22 +27,23 @@ public class CrazyFaceDataTemplate
   
   private static RectF wrapPointsWithRectF(List<Double> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    RectF localRectF = new RectF(3.4028235E+38F, 3.4028235E+38F, 1.4E-45F, 1.4E-45F);
-    int i = 0;
-    while (i < paramList.size() - 1)
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      double d1 = ((Double)paramList.get(i)).doubleValue();
-      double d2 = ((Double)paramList.get(i + 1)).doubleValue();
-      localRectF.left = ((float)Math.min(d1, localRectF.left));
-      localRectF.right = ((float)Math.max(d1, localRectF.right));
-      localRectF.top = ((float)Math.min(d2, localRectF.top));
-      localRectF.bottom = ((float)Math.max(d2, localRectF.bottom));
-      i += 2;
+      RectF localRectF = new RectF(3.4028235E+38F, 3.4028235E+38F, 1.4E-45F, 1.4E-45F);
+      int i = 0;
+      while (i < paramList.size() - 1)
+      {
+        double d1 = ((Double)paramList.get(i)).doubleValue();
+        double d2 = ((Double)paramList.get(i + 1)).doubleValue();
+        localRectF.left = ((float)Math.min(d1, localRectF.left));
+        localRectF.right = ((float)Math.max(d1, localRectF.right));
+        localRectF.top = ((float)Math.min(d2, localRectF.top));
+        localRectF.bottom = ((float)Math.max(d2, localRectF.bottom));
+        i += 2;
+      }
+      return localRectF;
     }
-    return localRectF;
+    return null;
   }
   
   public FaceImageLayer getFaceLayer(int paramInt)
@@ -74,7 +75,7 @@ public class CrazyFaceDataTemplate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.CrazyFaceDataTemplate
  * JD-Core Version:    0.7.0.1
  */

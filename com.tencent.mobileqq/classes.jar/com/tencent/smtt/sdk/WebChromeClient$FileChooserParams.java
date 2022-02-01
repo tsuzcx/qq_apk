@@ -14,21 +14,24 @@ public abstract class WebChromeClient$FileChooserParams
   
   public static Uri[] parseResult(int paramInt, Intent paramIntent)
   {
+    Object localObject = null;
     try
     {
-      X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-      if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-        return localX5CoreEngine.wizard().parseFileChooserResult(paramInt, paramIntent);
+      x localx = x.a();
+      if ((localx != null) && (localx.b())) {
+        return localx.c().a(paramInt, paramIntent);
       }
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        paramIntent = android.webkit.WebChromeClient.FileChooserParams.parseResult(paramInt, paramIntent);
-        return paramIntent;
+      if (Build.VERSION.SDK_INT >= 21) {
+        localObject = android.webkit.WebChromeClient.FileChooserParams.parseResult(paramInt, paramIntent);
       }
+      return localObject;
     }
     catch (Exception paramIntent)
     {
-      TbsLog.i("WebChromeClient", "parseResult:" + paramIntent.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseResult:");
+      ((StringBuilder)localObject).append(paramIntent.toString());
+      TbsLog.i("WebChromeClient", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -47,7 +50,7 @@ public abstract class WebChromeClient$FileChooserParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebChromeClient.FileChooserParams
  * JD-Core Version:    0.7.0.1
  */

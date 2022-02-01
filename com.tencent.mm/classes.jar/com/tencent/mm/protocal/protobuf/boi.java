@@ -1,102 +1,164 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public final class boi
-  extends buy
+public class boi
+  extends com.tencent.mm.bx.a
 {
-  public int wQP;
-  public long wQQ;
-  public long xCm;
+  public String ReU;
+  public int ReW;
+  public String ZWG;
+  public String city;
+  public String country;
+  public float latitude;
+  public float longitude;
+  public String poiName;
+  public String province;
+  public String region;
+  public int source;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28586);
+    AppMethodBeat.i(169004);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.l(1, this.longitude);
+      paramVarArgs.l(2, this.latitude);
+      if (this.city != null) {
+        paramVarArgs.g(3, this.city);
       }
-      paramVarArgs.aO(2, this.wQP);
-      paramVarArgs.am(3, this.wQQ);
-      paramVarArgs.am(4, this.xCm);
-      AppMethodBeat.o(28586);
+      if (this.poiName != null) {
+        paramVarArgs.g(4, this.poiName);
+      }
+      if (this.ReU != null) {
+        paramVarArgs.g(5, this.ReU);
+      }
+      if (this.ZWG != null) {
+        paramVarArgs.g(6, this.ZWG);
+      }
+      paramVarArgs.bS(7, this.ReW);
+      if (this.province != null) {
+        paramVarArgs.g(8, this.province);
+      }
+      if (this.region != null) {
+        paramVarArgs.g(9, this.region);
+      }
+      if (this.country != null) {
+        paramVarArgs.g(10, this.country);
+      }
+      paramVarArgs.bS(11, this.source);
+      AppMethodBeat.o(169004);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label456;
-      }
-    }
-    label456:
-    for (paramInt = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(2, this.wQP);
-      int j = e.a.a.b.b.a.p(3, this.wQQ);
-      int k = e.a.a.b.b.a.p(4, this.xCm);
-      AppMethodBeat.o(28586);
-      return paramInt + i + j + k;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(28586);
-        return 0;
+      int i = i.a.a.b.b.a.ko(1) + 4 + 0 + (i.a.a.b.b.a.ko(2) + 4);
+      paramInt = i;
+      if (this.city != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.city);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-        boi localboi = (boi)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(28586);
-          return -1;
-        case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localboi.BaseRequest = ((hq)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(28586);
-          return 0;
-        case 2: 
-          localboi.wQP = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(28586);
-          return 0;
-        case 3: 
-          localboi.wQQ = ((e.a.a.a.a)localObject1).CLY.sm();
-          AppMethodBeat.o(28586);
-          return 0;
-        }
-        localboi.xCm = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(28586);
-        return 0;
+      i = paramInt;
+      if (this.poiName != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.poiName);
       }
-      AppMethodBeat.o(28586);
-      return -1;
+      paramInt = i;
+      if (this.ReU != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.ReU);
+      }
+      i = paramInt;
+      if (this.ZWG != null) {
+        i = paramInt + i.a.a.b.b.a.h(6, this.ZWG);
+      }
+      i += i.a.a.b.b.a.cJ(7, this.ReW);
+      paramInt = i;
+      if (this.province != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.province);
+      }
+      i = paramInt;
+      if (this.region != null) {
+        i = paramInt + i.a.a.b.b.a.h(9, this.region);
+      }
+      paramInt = i;
+      if (this.country != null) {
+        paramInt = i + i.a.a.b.b.a.h(10, this.country);
+      }
+      i = i.a.a.b.b.a.cJ(11, this.source);
+      AppMethodBeat.o(169004);
+      return paramInt + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(169004);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      boi localboi = (boi)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(169004);
+        return -1;
+      case 1: 
+        localboi.longitude = Float.intBitsToFloat(locala.ajGk.aax());
+        AppMethodBeat.o(169004);
+        return 0;
+      case 2: 
+        localboi.latitude = Float.intBitsToFloat(locala.ajGk.aax());
+        AppMethodBeat.o(169004);
+        return 0;
+      case 3: 
+        localboi.city = locala.ajGk.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 4: 
+        localboi.poiName = locala.ajGk.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 5: 
+        localboi.ReU = locala.ajGk.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 6: 
+        localboi.ZWG = locala.ajGk.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 7: 
+        localboi.ReW = locala.ajGk.aar();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 8: 
+        localboi.province = locala.ajGk.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 9: 
+        localboi.region = locala.ajGk.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 10: 
+        localboi.country = locala.ajGk.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      }
+      localboi.source = locala.ajGk.aar();
+      AppMethodBeat.o(169004);
+      return 0;
+    }
+    AppMethodBeat.o(169004);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.boi
  * JD-Core Version:    0.7.0.1
  */

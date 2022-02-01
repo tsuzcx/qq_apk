@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/i9s" android:background="@color/g0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/i9u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/jbd" android:background="@drawable/f63" android:layout_width="135.0dip" android:layout_height="135.0dip" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/i9v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/i9p" android:background="@drawable/f64" android:layout_width="187.0dip" android:layout_height="108.0dip" android:layout_marginTop="-36.0dip" android:layout_below="@id/hvu" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/hvu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+            <View android:id="@id/hvt" android:background="@drawable/f67" android:layout_width="200.0dip" android:layout_height="139.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/i9t" android:layout_width="220.0dip" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/i9q" android:layout_width="75.0dip" android:layout_height="65.0dip" android:layout_marginTop="40.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/hvv" android:background="@drawable/f65" android:layout_width="187.0dip" android:layout_height="90.0dip" android:layout_marginBottom="43.0dip" android:layout_alignBottom="@id/i9p" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/i9r" android:background="@drawable/iq" android:layout_width="220.0dip" android:layout_height="40.0dip" android:layout_marginTop="35.0dip" android:text="@string/r1w" android:layout_below="@id/i9p" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/az7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginRight="40.0dip" android:src="@drawable/f66" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

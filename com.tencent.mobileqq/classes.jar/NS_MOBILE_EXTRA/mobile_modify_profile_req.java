@@ -31,14 +31,15 @@ public final class mobile_modify_profile_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.profile != null) {
-      paramJceOutputStream.write(this.profile, 1);
+    s_profile_for_set locals_profile_for_set = this.profile;
+    if (locals_profile_for_set != null) {
+      paramJceOutputStream.write(locals_profile_for_set, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.mobile_modify_profile_req
  * JD-Core Version:    0.7.0.1
  */

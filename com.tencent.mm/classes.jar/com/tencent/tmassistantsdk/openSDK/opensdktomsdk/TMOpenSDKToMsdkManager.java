@@ -7,19 +7,24 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.pluginsdk.model.app.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import com.tencent.tmassistantsdk.channel.TMAssistantSDKChannel;
 import com.tencent.tmassistantsdk.channel.TMAssistantSDKChannelDataItem;
 import com.tencent.tmassistantsdk.downloadclient.ITMAssistantDownloadSDKClientListener;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKManager;
+import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 import com.tencent.tmassistantsdk.logreport.TipsInfoReportManager;
 import com.tencent.tmassistantsdk.network.GetAuthorizedHttpRequest;
 import com.tencent.tmassistantsdk.network.IGetAuthorizedHttpRequestListenner;
@@ -31,7 +36,6 @@ import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.TipsInfo;
 import com.tencent.tmassistantsdk.protocol.jce.TipsInfoLog;
 import com.tencent.tmassistantsdk.util.Res;
 import com.tencent.tmassistantsdk.util.TMLog;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -51,10 +55,10 @@ public class TMOpenSDKToMsdkManager
   protected ITMAssistantDownloadSDKClientListener mDownloadSDKListener;
   protected String mDownloadUrl;
   protected GetAuthorizedHttpRequest mHttpRequest;
-  protected ak mMainMessageHandler;
+  protected MMHandler mMainMessageHandler;
   protected TMQQDownloaderOpenSDK mOpenSDK;
   protected IGetAuthorizedHttpRequestListenner mRequestListener;
-  protected ak mSubMessageHandler;
+  protected MMHandler mSubMessageHandler;
   protected HandlerThread mSubMessagehandlerThread;
   protected int mSupportVersionCode;
   protected ITMOpenSDKToMsdkListener mToMsdkListener;
@@ -65,7 +69,7 @@ public class TMOpenSDKToMsdkManager
   
   private TMOpenSDKToMsdkManager(Context paramContext)
   {
-    AppMethodBeat.i(75931);
+    AppMethodBeat.i(102177);
     this.mContext = null;
     this.mHttpRequest = null;
     this.mToMsdkListener = null;
@@ -83,53 +87,148 @@ public class TMOpenSDKToMsdkManager
     this.mSubMessageHandler = null;
     this.mMainMessageHandler = null;
     this.mClient = null;
-    this.mRequestListener = new TMOpenSDKToMsdkManager.2(this);
-    this.retryBtnListener = new TMOpenSDKToMsdkManager.4(this);
-    this.negativeBtnListenner = new TMOpenSDKToMsdkManager.5(this);
-    this.positiveBtnListener = new TMOpenSDKToMsdkManager.6(this);
-    this.mDownloadSDKListener = new ITMAssistantDownloadSDKClientListener()
+    this.mRequestListener = new IGetAuthorizedHttpRequestListenner()
     {
-      public void OnDownloadSDKTaskProgressChanged(TMAssistantDownloadSDKClient paramAnonymousTMAssistantDownloadSDKClient, String paramAnonymousString, long paramAnonymousLong1, long paramAnonymousLong2)
+      public void onGetAuthorizedRequestFinished(AuthorizedResult paramAnonymousAuthorizedResult, int paramAnonymousInt)
       {
-        AppMethodBeat.i(75930);
-        paramAnonymousTMAssistantDownloadSDKClient = new Message();
-        paramAnonymousTMAssistantDownloadSDKClient.what = 1;
-        paramAnonymousString = new Bundle();
-        paramAnonymousString.putLong("receiveDataLen", paramAnonymousLong1);
-        paramAnonymousString.putLong("totalDataLen", paramAnonymousLong2);
-        paramAnonymousTMAssistantDownloadSDKClient.setData(paramAnonymousString);
-        TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(paramAnonymousTMAssistantDownloadSDKClient);
-        AppMethodBeat.o(75930);
-      }
-      
-      public void OnDownloadSDKTaskStateChanged(TMAssistantDownloadSDKClient paramAnonymousTMAssistantDownloadSDKClient, String paramAnonymousString1, int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString2, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
-      {
-        AppMethodBeat.i(75929);
-        TMLog.i("OpensdkToMsdkManager", "OnDownloadSDKTaskStateChanged client:" + paramAnonymousTMAssistantDownloadSDKClient + " | state:" + paramAnonymousInt1 + " | errorcode:" + paramAnonymousInt2 + " | errorMsg:" + paramAnonymousString2);
-        if ((paramAnonymousTMAssistantDownloadSDKClient == null) || (TextUtils.isEmpty(paramAnonymousString1)))
+        AppMethodBeat.i(102167);
+        Message localMessage = new Message();
+        if (paramAnonymousInt == 0)
         {
-          AppMethodBeat.o(75929);
+          if (paramAnonymousAuthorizedResult == null)
+          {
+            AppMethodBeat.o(102167);
+            return;
+          }
+          localMessage.what = 4;
+        }
+        for (localMessage.obj = paramAnonymousAuthorizedResult;; localMessage.obj = Integer.valueOf(paramAnonymousInt))
+        {
+          TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(localMessage);
+          AppMethodBeat.o(102167);
           return;
+          localMessage.what = 5;
         }
-        if (4 == paramAnonymousInt1)
-        {
-          TMOpenSDKToMsdkManager.this.mSubMessageHandler.post(new TMOpenSDKToMsdkManager.9.1(this, paramAnonymousTMAssistantDownloadSDKClient, paramAnonymousString1));
-          AppMethodBeat.o(75929);
-          return;
-        }
-        if (5 == paramAnonymousInt1)
-        {
-          paramAnonymousTMAssistantDownloadSDKClient = new Message();
-          paramAnonymousTMAssistantDownloadSDKClient.what = 3;
-          TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(paramAnonymousTMAssistantDownloadSDKClient);
-        }
-        AppMethodBeat.o(75929);
       }
-      
-      public void OnDwonloadSDKServiceInvalid(TMAssistantDownloadSDKClient paramAnonymousTMAssistantDownloadSDKClient) {}
     };
+    this.retryBtnListener = new View.OnClickListener()
+    {
+      private byte _hellAccFlag_;
+      
+      public void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(102169);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (TMOpenSDKToMsdkManager.this.mAuthorizedInfo == null)
+        {
+          a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(102169);
+          return;
+        }
+        if (TMOpenSDKToMsdkManager.this.mContext != null) {
+          TMOpenSDKToMsdkManager.this.getUserAuthorizedInfo(TMOpenSDKToMsdkManager.this.mAuthorizedInfo, TMOpenSDKToMsdkManager.this.mContext);
+        }
+        TMOpenSDKToMsdkManager.this.dialog.dismiss();
+        a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(102169);
+      }
+    };
+    this.negativeBtnListenner = new View.OnClickListener()
+    {
+      private byte _hellAccFlag_;
+      
+      public void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(102170);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (TMOpenSDKToMsdkManager.this.dialog.isShowing())
+        {
+          TMOpenSDKToMsdkManager.this.dialog.dismiss();
+          TMOpenSDKToMsdkManager.this.mHttpRequest = null;
+        }
+        paramAnonymousView = TipsInfoReportManager.getInstance().createTipsInfoLog(TMOpenSDKToMsdkManager.this.mAuthorizedInfo);
+        paramAnonymousView.cancelBtnClickCount += 1;
+        TipsInfoReportManager.getInstance().addLogData(paramAnonymousView);
+        try
+        {
+          if (TMOpenSDKToMsdkManager.this.mClient != null) {
+            TMOpenSDKToMsdkManager.this.pauseDownloadTask(TMOpenSDKToMsdkManager.this.mDownloadUrl);
+          }
+          if (TMOpenSDKToMsdkManager.this.authorizedState == 2)
+          {
+            TMOpenSDKToMsdkManager.this.notifyAuthorizedFinished(true, TMOpenSDKToMsdkManager.this.mAuthorizedInfo);
+            a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(102170);
+            return;
+          }
+        }
+        catch (Exception paramAnonymousView)
+        {
+          for (;;)
+          {
+            Log.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
+            continue;
+            TMOpenSDKToMsdkManager.this.notifyAuthorizedFinished(false, TMOpenSDKToMsdkManager.this.mAuthorizedInfo);
+          }
+        }
+      }
+    };
+    this.positiveBtnListener = new View.OnClickListener()
+    {
+      private byte _hellAccFlag_;
+      
+      public void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(102171);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (TMOpenSDKToMsdkManager.this.mContext == null)
+        {
+          a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(102171);
+          return;
+        }
+        paramAnonymousView = (ActionButton)paramAnonymousView.getTag();
+        for (;;)
+        {
+          try
+          {
+            int i = TMOpenSDKToMsdkManager.this.mOpenSDK.checkQQDownloaderInstalled(TMOpenSDKToMsdkManager.this.mSupportVersionCode);
+            switch (i)
+            {
+            }
+          }
+          catch (Exception paramAnonymousView)
+          {
+            Log.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
+            continue;
+            TMOpenSDKToMsdkManager.this.startDownloadTask(TMOpenSDKToMsdkManager.this.mDownloadUrl, paramAnonymousView.jumpUrl);
+            continue;
+            TMOpenSDKToMsdkManager.this.startDownloadTask(TMOpenSDKToMsdkManager.this.mDownloadUrl, paramAnonymousView.jumpUrl);
+            continue;
+          }
+          a.a(this, "com/tencent/tmassistantsdk/openSDK/opensdktomsdk/TMOpenSDKToMsdkManager$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(102171);
+          return;
+          try
+          {
+            TMOpenSDKToMsdkManager.this.startToQQDownloaderAuthorized(paramAnonymousView.jumpUrl);
+          }
+          catch (Exception paramAnonymousView)
+          {
+            Log.printErrStackTrace("OpensdkToMsdkManager", paramAnonymousView, "", new Object[0]);
+          }
+        }
+      }
+    };
+    this.mDownloadSDKListener = new TMOpenSDKToMsdkManager.9(this);
     this.mContext = paramContext;
-    AppMethodBeat.o(75931);
+    AppMethodBeat.o(102177);
   }
   
   public static String about()
@@ -141,12 +240,12 @@ public class TMOpenSDKToMsdkManager
   {
     try
     {
-      AppMethodBeat.i(75932);
+      AppMethodBeat.i(102178);
       if (mInstance == null) {
         mInstance = new TMOpenSDKToMsdkManager(paramContext);
       }
       paramContext = mInstance;
-      AppMethodBeat.o(75932);
+      AppMethodBeat.o(102178);
       return paramContext;
     }
     finally {}
@@ -154,14 +253,66 @@ public class TMOpenSDKToMsdkManager
   
   protected void continueDownload()
   {
-    AppMethodBeat.i(75943);
-    this.mSubMessageHandler.post(new TMOpenSDKToMsdkManager.3(this));
-    AppMethodBeat.o(75943);
+    AppMethodBeat.i(102189);
+    this.mSubMessageHandler.post(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(102168);
+        try
+        {
+          Object localObject = TMOpenSDKToMsdkManager.this.getClient().getDownloadTaskState(TMOpenSDKToMsdkManager.this.mDownloadUrl);
+          Message localMessage;
+          if (localObject != null)
+          {
+            if (((TMAssistantDownloadTaskInfo)localObject).mState != 3) {
+              break label143;
+            }
+            localMessage = new Message();
+            localMessage.what = 6;
+            Bundle localBundle = new Bundle();
+            localBundle.putLong("receiveDataLen", ((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen);
+            localBundle.putLong("totalDataLen", ((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen);
+            localMessage.setData(localBundle);
+            TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(localMessage);
+          }
+          while ((localObject != null) && (((TMAssistantDownloadTaskInfo)localObject).mState == 4))
+          {
+            localObject = TipsInfoReportManager.getInstance().createTipsInfoLog(TMOpenSDKToMsdkManager.this.mAuthorizedInfo);
+            ((TipsInfoLog)localObject).installTipsCount += 1;
+            TipsInfoReportManager.getInstance().addLogData((JceStruct)localObject);
+            AppMethodBeat.o(102168);
+            return;
+            label143:
+            if (((TMAssistantDownloadTaskInfo)localObject).mState == 4)
+            {
+              localMessage = new Message();
+              localMessage.what = 0;
+              localMessage.arg1 = 1;
+              localMessage.obj = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
+              TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(localMessage);
+            }
+          }
+          localTipsInfoLog = TipsInfoReportManager.getInstance().createTipsInfoLog(TMOpenSDKToMsdkManager.this.mAuthorizedInfo);
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+          AppMethodBeat.o(102168);
+          return;
+        }
+        TipsInfoLog localTipsInfoLog;
+        localTipsInfoLog.downloadTipsCount += 1;
+        TipsInfoReportManager.getInstance().addLogData(localTipsInfoLog);
+        AppMethodBeat.o(102168);
+      }
+    });
+    AppMethodBeat.o(102189);
   }
   
   protected TMAssistantDownloadSDKClient getClient()
   {
-    AppMethodBeat.i(75953);
+    AppMethodBeat.i(102199);
     if (this.mContext != null)
     {
       TMAssistantDownloadSDKClient localTMAssistantDownloadSDKClient;
@@ -173,18 +324,18 @@ public class TMOpenSDKToMsdkManager
       }
       for (;;)
       {
-        AppMethodBeat.o(75953);
+        AppMethodBeat.o(102199);
         return localTMAssistantDownloadSDKClient;
         localTMAssistantDownloadSDKClient = this.mClient;
       }
     }
-    AppMethodBeat.o(75953);
+    AppMethodBeat.o(102199);
     return null;
   }
   
   public void getUserAuthorizedInfo(TMOpenSDKAuthorizedInfo paramTMOpenSDKAuthorizedInfo, Context paramContext)
   {
-    AppMethodBeat.i(75936);
+    AppMethodBeat.i(102182);
     if (paramContext != null) {
       this.mContext = paramContext;
     }
@@ -193,7 +344,7 @@ public class TMOpenSDKToMsdkManager
     if (this.mHttpRequest != null)
     {
       TMLog.i("OpensdkToMsdkManager", "mHttpRequest != null, request didn't finish!");
-      AppMethodBeat.o(75936);
+      AppMethodBeat.o(102182);
       return;
     }
     if (paramTMOpenSDKAuthorizedInfo != null)
@@ -205,23 +356,23 @@ public class TMOpenSDKToMsdkManager
         this.mHttpRequest = new GetAuthorizedHttpRequest();
         this.mHttpRequest.setListenner(this.mRequestListener);
         this.mHttpRequest.sendRequest(paramTMOpenSDKAuthorizedInfo);
-        AppMethodBeat.o(75936);
+        AppMethodBeat.o(102182);
       }
     }
     else
     {
       TMLog.i("OpensdkToMsdkManager", "AuthorizedInfo object is null!");
     }
-    AppMethodBeat.o(75936);
+    AppMethodBeat.o(102182);
   }
   
   protected void handleDownloadContinue(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75949);
+    AppMethodBeat.i(102195);
     if (this.mContext == null)
     {
       TMLog.i("OpensdkToMsdkManager", "handleDownloading context = null!");
-      AppMethodBeat.o(75949);
+      AppMethodBeat.o(102195);
       return;
     }
     Res localRes = new Res(this.mContext);
@@ -232,16 +383,16 @@ public class TMOpenSDKToMsdkManager
     if (this.dialog.downloadProgressBar.getProgress() > 0) {
       this.dialog.setPositiveBtnBgResource(localRes.drawable("com_tencent_tmassistant_sdk_button_bg"));
     }
-    AppMethodBeat.o(75949);
+    AppMethodBeat.o(102195);
   }
   
   protected void handleDownloadFailed()
   {
-    AppMethodBeat.i(75947);
+    AppMethodBeat.i(102193);
     if (this.mContext == null)
     {
       TMLog.i("OpensdkToMsdkManager", "handleDownloading context = null!");
-      AppMethodBeat.o(75947);
+      AppMethodBeat.o(102193);
       return;
     }
     Res localRes = new Res(this.mContext);
@@ -250,16 +401,16 @@ public class TMOpenSDKToMsdkManager
     if (this.dialog.downloadProgressBar.getProgress() > 0) {
       this.dialog.setPositiveBtnBgResource(localRes.drawable("com_tencent_tmassistant_sdk_button_bg"));
     }
-    AppMethodBeat.o(75947);
+    AppMethodBeat.o(102193);
   }
   
   protected void handleDownloading(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75948);
+    AppMethodBeat.i(102194);
     if (this.mContext == null)
     {
       TMLog.i("OpensdkToMsdkManager", "handleDownloading context = null!");
-      AppMethodBeat.o(75948);
+      AppMethodBeat.o(102194);
       return;
     }
     Object localObject = new Res(this.mContext);
@@ -268,15 +419,15 @@ public class TMOpenSDKToMsdkManager
     this.dialog.downloadText.setText((String)localObject + str);
     this.dialog.downloadProgressBar.setProgress((int)(((float)paramLong1 + 0.0F) / (float)paramLong2 * this.dialog.downloadProgressBar.getMax()));
     TMLog.i("OpensdkToMsdkManager", "handleDownloading : receivedlen:" + paramLong1 + " | totalLen:" + paramLong2);
-    AppMethodBeat.o(75948);
+    AppMethodBeat.o(102194);
   }
   
   protected void handleInstall(String paramString, int paramInt)
   {
-    AppMethodBeat.i(75946);
+    AppMethodBeat.i(102192);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(75946);
+      AppMethodBeat.o(102192);
       return;
     }
     Res localRes = new Res(this.mContext);
@@ -285,44 +436,82 @@ public class TMOpenSDKToMsdkManager
     if (this.mContext == null)
     {
       TMLog.i("OpensdkToMsdkManager", "handleDownloading context = null!");
-      AppMethodBeat.o(75946);
+      AppMethodBeat.o(102192);
       return;
     }
     this.isInstallFinished = true;
     if (paramInt == 1)
     {
-      AppMethodBeat.o(75946);
+      AppMethodBeat.o(102192);
       return;
     }
-    q.a(this.mContext, new File(paramString), null, false);
-    AppMethodBeat.o(75946);
+    v.b(this.mContext, paramString, null, false);
+    AppMethodBeat.o(102192);
   }
   
   public void initOpenSDK(ITMOpenSDKToMsdkListener paramITMOpenSDKToMsdkListener)
   {
-    AppMethodBeat.i(75933);
+    AppMethodBeat.i(102179);
     this.mOpenSDK = TMQQDownloaderOpenSDK.getInstance();
     this.mOpenSDK.initQQDownloaderOpenSDK(this.mContext);
     this.mToMsdkListener = paramITMOpenSDKToMsdkListener;
     this.sdkChannel = new TMAssistantSDKChannel();
-    this.mSubMessagehandlerThread = new HandlerThread("OpenSDKToMsdkManager");
-    this.mSubMessagehandlerThread.start();
-    this.mSubMessageHandler = new ak(this.mSubMessagehandlerThread.getLooper());
-    this.mMainMessageHandler = new ak(Looper.getMainLooper(), new TMOpenSDKToMsdkManager.1(this));
-    AppMethodBeat.o(75933);
+    this.mSubMessageHandler = new MMHandler("OpenSDKToMsdkManager");
+    this.mMainMessageHandler = new MMHandler(Looper.getMainLooper(), new MMHandler.Callback()
+    {
+      public boolean handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(102166);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(102166);
+          return false;
+          paramAnonymousMessage = (AuthorizedResult)paramAnonymousMessage.obj;
+          if (paramAnonymousMessage != null)
+          {
+            TMOpenSDKToMsdkManager.this.onNetworkFinishedSuccess(paramAnonymousMessage);
+            continue;
+            int i = ((Integer)paramAnonymousMessage.obj).intValue();
+            TMOpenSDKToMsdkManager.this.onNetworkFinishedFailed(i);
+            continue;
+            i = paramAnonymousMessage.arg1;
+            paramAnonymousMessage = paramAnonymousMessage.obj.toString();
+            TMOpenSDKToMsdkManager.this.handleInstall(paramAnonymousMessage, i);
+            continue;
+            paramAnonymousMessage = paramAnonymousMessage.getData();
+            if (paramAnonymousMessage != null)
+            {
+              TMOpenSDKToMsdkManager.this.handleDownloading(paramAnonymousMessage.getLong("receiveDataLen"), paramAnonymousMessage.getLong("totalDataLen"));
+              continue;
+              paramAnonymousMessage = paramAnonymousMessage.getData();
+              if (paramAnonymousMessage != null)
+              {
+                TMOpenSDKToMsdkManager.this.handleDownloadContinue(paramAnonymousMessage.getLong("receiveDataLen"), paramAnonymousMessage.getLong("totalDataLen"));
+                continue;
+                TMOpenSDKToMsdkManager.this.handleDownloadFailed();
+              }
+            }
+          }
+        }
+      }
+    });
+    AppMethodBeat.o(102179);
   }
   
   protected boolean isExitsAction(long paramLong)
   {
-    AppMethodBeat.i(75945);
+    AppMethodBeat.i(102191);
     if (paramLong < 0L)
     {
-      AppMethodBeat.o(75945);
+      AppMethodBeat.o(102191);
       return false;
     }
     if (this.sdkChannel == null)
     {
-      AppMethodBeat.o(75945);
+      AppMethodBeat.o(102191);
       return false;
     }
     Iterator localIterator = this.sdkChannel.getChannelDataItemList().iterator();
@@ -331,17 +520,17 @@ public class TMOpenSDKToMsdkManager
       TMAssistantSDKChannelDataItem localTMAssistantSDKChannelDataItem = (TMAssistantSDKChannelDataItem)localIterator.next();
       if ((localTMAssistantSDKChannelDataItem.mDBIdentity == paramLong) && (localTMAssistantSDKChannelDataItem.mDataItemEndTime - localTMAssistantSDKChannelDataItem.mDataItemStartTime <= 300000L))
       {
-        AppMethodBeat.o(75945);
+        AppMethodBeat.o(102191);
         return true;
       }
     }
-    AppMethodBeat.o(75945);
+    AppMethodBeat.o(102191);
     return false;
   }
   
   protected void notifyAuthorizedFinished(boolean paramBoolean, TMOpenSDKAuthorizedInfo paramTMOpenSDKAuthorizedInfo)
   {
-    AppMethodBeat.i(75941);
+    AppMethodBeat.i(102187);
     TMLog.i("OpensdkToMsdkManager", "before realy notifyAuthorizedFinished: TMOpenSDKAuthorizedInfo:" + this.mAuthorizedInfo);
     if (this.mToMsdkListener == null) {
       TMLog.i("OpensdkToMsdkManager", "before notifyAuthorizedFinished: mToMsdkListener = null !");
@@ -353,12 +542,12 @@ public class TMOpenSDKToMsdkManager
       this.mHttpRequest = null;
       this.hasNotify = true;
     }
-    AppMethodBeat.o(75941);
+    AppMethodBeat.o(102187);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(75934);
+    AppMethodBeat.i(102180);
     if ((this.dialog != null) && (this.dialog.isShowing())) {
       this.dialog.dismiss();
     }
@@ -377,15 +566,15 @@ public class TMOpenSDKToMsdkManager
       TMAssistantDownloadSDKManager.closeAllService(this.mContext);
     }
     this.mClient = null;
-    AppMethodBeat.o(75934);
+    AppMethodBeat.o(102180);
   }
   
   protected void onNetworkException(int paramInt)
   {
-    AppMethodBeat.i(75940);
+    AppMethodBeat.i(102186);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(75940);
+      AppMethodBeat.o(102186);
       return;
     }
     Object localObject2 = new Res(this.mContext);
@@ -411,27 +600,27 @@ public class TMOpenSDKToMsdkManager
       localObject1 = TipsInfoReportManager.getInstance().createTipsInfoLog(this.mAuthorizedInfo);
       ((TipsInfoLog)localObject1).networkErrorTipsCount += 1;
       TipsInfoReportManager.getInstance().addLogData((JceStruct)localObject1);
-      AppMethodBeat.o(75940);
+      AppMethodBeat.o(102186);
       return;
     }
   }
   
   protected void onNetworkFinishedFailed(int paramInt)
   {
-    AppMethodBeat.i(75938);
+    AppMethodBeat.i(102184);
     if ((paramInt == 606) || (paramInt == 602) || (paramInt == 601) || (paramInt == 704))
     {
       onServerException(paramInt);
-      AppMethodBeat.o(75938);
+      AppMethodBeat.o(102184);
       return;
     }
     onNetworkException(paramInt);
-    AppMethodBeat.o(75938);
+    AppMethodBeat.o(102184);
   }
   
   protected void onNetworkFinishedSuccess(AuthorizedResult paramAuthorizedResult)
   {
-    AppMethodBeat.i(75937);
+    AppMethodBeat.i(102183);
     this.mDownloadUrl = paramAuthorizedResult.downloadUrl;
     this.mSupportVersionCode = paramAuthorizedResult.versionCode;
     this.mHttpRequest = null;
@@ -442,51 +631,51 @@ public class TMOpenSDKToMsdkManager
       if (paramAuthorizedResult.tipsInfo != null)
       {
         showDialog(paramAuthorizedResult.tipsInfo);
-        AppMethodBeat.o(75937);
+        AppMethodBeat.o(102183);
         return;
       }
       notifyAuthorizedFinished(true, this.mAuthorizedInfo);
-      AppMethodBeat.o(75937);
+      AppMethodBeat.o(102183);
       return;
     }
     this.authorizedState = 3;
     if (paramAuthorizedResult.tipsInfo != null)
     {
       showDialog(paramAuthorizedResult.tipsInfo);
-      AppMethodBeat.o(75937);
+      AppMethodBeat.o(102183);
       return;
     }
     onServerException(paramAuthorizedResult.errorCode);
     TMLog.i("OpensdkToMsdkManager", "not in white list and no tips!");
-    AppMethodBeat.o(75937);
+    AppMethodBeat.o(102183);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(75935);
+    AppMethodBeat.i(102181);
     tryToCloseDialog();
     if (this.hasNotify)
     {
-      AppMethodBeat.o(75935);
+      AppMethodBeat.o(102181);
       return;
     }
     if (this.authorizedState == 2)
     {
-      AppMethodBeat.o(75935);
+      AppMethodBeat.o(102181);
       return;
     }
     if (((this.authorizedState == 3) || (this.authorizedState == 0)) && (this.mContext != null)) {
       getUserAuthorizedInfo(this.mAuthorizedInfo, this.mContext);
     }
-    AppMethodBeat.o(75935);
+    AppMethodBeat.o(102181);
   }
   
   protected void onServerException(int paramInt)
   {
-    AppMethodBeat.i(75939);
+    AppMethodBeat.i(102185);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(75939);
+      AppMethodBeat.o(102185);
       return;
     }
     Object localObject2 = new Res(this.mContext);
@@ -516,45 +705,45 @@ public class TMOpenSDKToMsdkManager
       localObject1 = TipsInfoReportManager.getInstance().createTipsInfoLog(this.mAuthorizedInfo);
       ((TipsInfoLog)localObject1).networkErrorTipsCount += 1;
       TipsInfoReportManager.getInstance().addLogData((JceStruct)localObject1);
-      AppMethodBeat.o(75939);
+      AppMethodBeat.o(102185);
       return;
     }
   }
   
   protected void pauseDownloadTask(String paramString)
   {
-    AppMethodBeat.i(75952);
+    AppMethodBeat.i(102198);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(75952);
+      AppMethodBeat.o(102198);
       return;
     }
     if (this.mAuthorizedInfo == null)
     {
-      AppMethodBeat.o(75952);
+      AppMethodBeat.o(102198);
       return;
     }
     this.mSubMessageHandler.post(new TMOpenSDKToMsdkManager.8(this, paramString));
-    AppMethodBeat.o(75952);
+    AppMethodBeat.o(102198);
   }
   
   protected void showDialog(TipsInfo paramTipsInfo)
   {
-    AppMethodBeat.i(75942);
+    AppMethodBeat.i(102188);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(75942);
+      AppMethodBeat.o(102188);
       return;
     }
     if ((this.dialog != null) && (this.dialog.isShowing()))
     {
-      AppMethodBeat.o(75942);
+      AppMethodBeat.o(102188);
       return;
     }
     if (((this.mContext instanceof Activity)) && (((Activity)this.mContext).isFinishing()))
     {
       TMLog.i("OpensdkToMsdkManager", "context is finishing!  context" + this.mContext);
-      AppMethodBeat.o(75942);
+      AppMethodBeat.o(102188);
       return;
     }
     Res localRes = new Res(this.mContext);
@@ -599,7 +788,7 @@ public class TMOpenSDKToMsdkManager
             catch (Exception localException)
             {
               TipsInfoLog localTipsInfoLog;
-              ab.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+              Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
               continue;
               this.dialog.setPositiveBtnText(this.mContext.getString(localRes.string("white_list_positive_update")));
               continueDownload();
@@ -619,25 +808,91 @@ public class TMOpenSDKToMsdkManager
         }
       }
     }
-    AppMethodBeat.o(75942);
+    AppMethodBeat.o(102188);
   }
   
-  protected void startDownloadTask(String paramString1, String paramString2)
+  protected void startDownloadTask(final String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(75951);
+    AppMethodBeat.i(102197);
     if (TextUtils.isEmpty(paramString1))
     {
-      AppMethodBeat.o(75951);
+      AppMethodBeat.o(102197);
       return;
     }
     this.dialog.setPositiveBtnEnable(false);
-    this.mSubMessageHandler.post(new TMOpenSDKToMsdkManager.7(this, paramString2, paramString1));
-    AppMethodBeat.o(75951);
+    this.mSubMessageHandler.post(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(102172);
+        if ((TMOpenSDKToMsdkManager.this.mContext != null) && (TMOpenSDKToMsdkManager.this.mOpenSDK != null) && (!TextUtils.isEmpty(paramString2))) {
+          TMOpenSDKToMsdkManager.this.insertActionId = TMOpenSDKToMsdkManager.this.mOpenSDK.addDownloadTaskFromAuthorize(paramString2);
+        }
+        Object localObject1 = TMOpenSDKToMsdkManager.this.getClient();
+        if (localObject1 == null)
+        {
+          AppMethodBeat.o(102172);
+          return;
+        }
+        for (;;)
+        {
+          int i;
+          try
+          {
+            i = ((TMAssistantDownloadSDKClient)localObject1).startDownloadTask(paramString1, "application/vnd.android.package-archive");
+            if (4 == i)
+            {
+              localObject1 = ((TMAssistantDownloadSDKClient)localObject1).getDownloadTaskState(paramString1).mSavePath;
+              Message localMessage = new Message();
+              localMessage.what = 0;
+              localMessage.obj = localObject1;
+              TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage(localMessage);
+              if (i != 4) {
+                break;
+              }
+              localObject1 = TipsInfoReportManager.getInstance().createTipsInfoLog(TMOpenSDKToMsdkManager.this.mAuthorizedInfo);
+              ((TipsInfoLog)localObject1).installBtnClickCount += 1;
+              TipsInfoReportManager.getInstance().addLogData((JceStruct)localObject1);
+              AppMethodBeat.o(102172);
+              return;
+            }
+          }
+          catch (Exception localException)
+          {
+            Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+            AppMethodBeat.o(102172);
+            return;
+          }
+          if (i == 0)
+          {
+            TMLog.i("OpensdkToMsdkManager", "start success!");
+          }
+          else if (1 == i)
+          {
+            localObject2 = new Message();
+            ((Message)localObject2).what = 5;
+            ((Message)localObject2).obj = Integer.valueOf(1);
+            TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage((Message)localObject2);
+          }
+          else
+          {
+            localObject2 = new Message();
+            ((Message)localObject2).what = 3;
+            TMOpenSDKToMsdkManager.this.mMainMessageHandler.sendMessage((Message)localObject2);
+          }
+        }
+        Object localObject2 = TipsInfoReportManager.getInstance().createTipsInfoLog(TMOpenSDKToMsdkManager.this.mAuthorizedInfo);
+        ((TipsInfoLog)localObject2).downloadBtnClickCount += 1;
+        TipsInfoReportManager.getInstance().addLogData((JceStruct)localObject2);
+        AppMethodBeat.o(102172);
+      }
+    });
+    AppMethodBeat.o(102197);
   }
   
   protected void startToQQDownloaderAuthorized(String paramString)
   {
-    AppMethodBeat.i(75950);
+    AppMethodBeat.i(102196);
     if (this.dialog.isShowing()) {
       this.dialog.dismiss();
     }
@@ -645,7 +900,7 @@ public class TMOpenSDKToMsdkManager
     this.isInstallFinished = false;
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(75950);
+      AppMethodBeat.o(102196);
       return;
     }
     TipsInfoLog localTipsInfoLog = TipsInfoReportManager.getInstance().createTipsInfoLog(this.mAuthorizedInfo);
@@ -654,20 +909,20 @@ public class TMOpenSDKToMsdkManager
     if ((this.mContext != null) && (this.mOpenSDK != null)) {
       this.mOpenSDK.startToAuthorized(this.mContext, paramString);
     }
-    AppMethodBeat.o(75950);
+    AppMethodBeat.o(102196);
   }
   
   protected void tryToCloseDialog()
   {
-    AppMethodBeat.i(75944);
+    AppMethodBeat.i(102190);
     if (this.mOpenSDK == null)
     {
-      AppMethodBeat.o(75944);
+      AppMethodBeat.o(102190);
       return;
     }
     if (this.mContext == null)
     {
-      AppMethodBeat.o(75944);
+      AppMethodBeat.o(102190);
       return;
     }
     try
@@ -687,13 +942,13 @@ public class TMOpenSDKToMsdkManager
           this.mOpenSDK.startQQDownloader(this.mContext);
         }
       }
-      AppMethodBeat.o(75944);
+      AppMethodBeat.o(102190);
       return;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
-      AppMethodBeat.o(75944);
+      Log.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+      AppMethodBeat.o(102190);
     }
   }
 }

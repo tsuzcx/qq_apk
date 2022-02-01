@@ -15,12 +15,13 @@ class AsyncTask$2
   {
     AsyncTask.access$200(this.this$0).set(true);
     Process.setThreadPriority(10);
-    return AsyncTask.access$300(this.this$0, this.this$0.doInBackground(this.mParams));
+    AsyncTask localAsyncTask = this.this$0;
+    return AsyncTask.access$300(localAsyncTask, localAsyncTask.doInBackground(this.mParams));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.AsyncTask.2
  * JD-Core Version:    0.7.0.1
  */

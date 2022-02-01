@@ -21,29 +21,28 @@ public final class aq$b
   public final void run()
   {
     aq.b(this.d).decrementAndGet();
-    if (TextUtils.isEmpty(this.a)) {}
-    int i;
-    do
-    {
+    if (TextUtils.isEmpty(this.a)) {
       return;
-      i = x.a.a("report_new_record_num", 1, 50, 10);
-      if (ba.a(this.d.b()).b(this.a) == -1L) {
-        break;
-      }
+    }
+    int i = x.a.a("report_new_record_num", 1, 50, 10);
+    if (ba.a(this.d.b()).b(this.a) != -1L)
+    {
       if (aq.c(this.d))
       {
         aq.a(this.d, false);
         aq.b(this.d, false);
       }
-    } while (aq.d(this.d).incrementAndGet() < i);
-    aq.a(this.d, false, this.c);
-    return;
+      if (aq.d(this.d).incrementAndGet() >= i) {
+        aq.a(this.d, false, this.c);
+      }
+      return;
+    }
     aq.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.aq.b
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gfu;
+import gft;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -77,7 +77,7 @@ public class QCallProxy
     if (paramList == null) {
       return null;
     }
-    Collections.sort(paramList, new gfu(this));
+    Collections.sort(paramList, new gft(this));
     SparseIntArray localSparseIntArray = new SparseIntArray();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();

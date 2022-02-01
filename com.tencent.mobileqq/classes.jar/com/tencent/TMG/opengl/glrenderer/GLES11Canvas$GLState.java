@@ -43,16 +43,17 @@ class GLES11Canvas$GLState
   
   public void setColorMode(int paramInt, float paramFloat)
   {
-    if ((!Utils.isOpaque(paramInt)) || (paramFloat < 0.95F)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setBlendEnabled(bool);
-      this.mTextureAlpha = -1.0F;
-      setTextureTarget(0);
-      paramFloat = (paramInt >>> 24) * paramFloat * 65535.0F / 255.0F / 255.0F;
-      this.mGL.glColor4x(Math.round((paramInt >> 16 & 0xFF) * paramFloat), Math.round((paramInt >> 8 & 0xFF) * paramFloat), Math.round((paramInt & 0xFF) * paramFloat), Math.round(paramFloat * 255.0F));
-      return;
+    boolean bool;
+    if ((Utils.isOpaque(paramInt)) && (paramFloat >= 0.95F)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    setBlendEnabled(bool);
+    this.mTextureAlpha = -1.0F;
+    setTextureTarget(0);
+    paramFloat = (paramInt >>> 24) * paramFloat * 65535.0F / 255.0F / 255.0F;
+    this.mGL.glColor4x(Math.round((paramInt >> 16 & 0xFF) * paramFloat), Math.round((paramInt >> 8 & 0xFF) * paramFloat), Math.round((paramInt & 0xFF) * paramFloat), Math.round(paramFloat * 255.0F));
   }
   
   public void setLineWidth(float paramFloat)
@@ -91,21 +92,23 @@ class GLES11Canvas$GLState
   
   public void setTextureTarget(int paramInt)
   {
-    if (this.mTextureTarget == paramInt) {}
-    do
-    {
+    int i = this.mTextureTarget;
+    if (i == paramInt) {
       return;
-      if (this.mTextureTarget != 0) {
-        this.mGL.glDisable(this.mTextureTarget);
-      }
-      this.mTextureTarget = paramInt;
-    } while (this.mTextureTarget == 0);
-    this.mGL.glEnable(this.mTextureTarget);
+    }
+    if (i != 0) {
+      this.mGL.glDisable(i);
+    }
+    this.mTextureTarget = paramInt;
+    paramInt = this.mTextureTarget;
+    if (paramInt != 0) {
+      this.mGL.glEnable(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.glrenderer.GLES11Canvas.GLState
  * JD-Core Version:    0.7.0.1
  */

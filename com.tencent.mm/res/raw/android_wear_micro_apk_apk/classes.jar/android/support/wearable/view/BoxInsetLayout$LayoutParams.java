@@ -10,13 +10,13 @@ import android.widget.FrameLayout.LayoutParams;
 public class BoxInsetLayout$LayoutParams
   extends FrameLayout.LayoutParams
 {
-  public int Av = 0;
+  public int Ck = 0;
   
   public BoxInsetLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.xq, 0, 0);
-    this.Av = paramContext.getInt(k.xr, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.zf, 0, 0);
+    this.Ck = paramContext.getInt(k.zg, 0);
     paramContext.recycle();
   }
   

@@ -15,47 +15,57 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ah.a.c;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.m;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.af;
 import java.util.List;
 
 public class Preference
   implements Comparable<Preference>
 {
-  private CharSequence Cv;
-  private int[] GC;
-  protected int UM;
-  private int bdv;
-  public int kCA;
-  protected Drawable la;
+  private CharSequence Naa;
+  private ImageView QNl;
+  private int Yvv;
+  private Preference.a adZN;
+  public Preference.b adZO;
+  public Preference.c adZP;
+  private int adZQ;
+  private int adZR;
+  private String adZS;
+  boolean adZT;
+  private boolean adZU;
+  public boolean adZV;
+  String adZW;
+  private boolean adZX;
+  private int adZY;
+  private boolean adZZ;
+  public boolean aeaa;
+  public boolean aeab;
+  public boolean aeac;
+  private boolean aead;
+  private int aeae;
+  public int aeaf;
+  private boolean aeag;
+  private List<Preference> aeah;
+  public boolean aeai;
+  private CharSequence cZ;
+  private int dmU;
+  private Drawable fM;
+  private int lR;
   public final Context mContext;
   private Object mDefaultValue;
   private boolean mEnabled;
   private Bundle mExtras;
   public String mKey;
-  private CharSequence pCy;
-  private ImageView ruQ;
-  private a zsb;
-  public b zsc;
-  public Preference.c zsd;
-  private int zse;
-  private int zsf;
-  int zsg;
-  private String zsh;
-  boolean zsi;
-  private boolean zsj;
-  public boolean zsk;
-  String zsl;
-  private boolean zsm;
-  private int zsn;
-  private boolean zso;
-  private int zsp;
-  public int zsq;
-  private boolean zsr;
-  private List<Preference> zss;
+  private int[] pD;
+  public int wKL;
   
   public Preference(Context paramContext)
   {
@@ -69,184 +79,114 @@ public class Preference
   
   public Preference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(107255);
-    this.GC = new int[] { 2130772054, 2130772051 };
-    this.bdv = 2147483647;
-    this.zsg = 0;
+    AppMethodBeat.i(142632);
+    this.pD = new int[] { a.c.title, a.c.summary };
+    this.dmU = 2147483647;
+    this.Yvv = 0;
     this.mEnabled = true;
-    this.zsi = true;
-    this.zsk = true;
-    this.zsm = true;
-    this.kCA = -1;
-    this.ruQ = null;
-    this.zsn = 0;
-    this.zso = true;
-    this.zsp = 2130970179;
-    this.zsr = false;
+    this.adZT = true;
+    this.adZV = true;
+    this.adZX = true;
+    this.wKL = -1;
+    this.QNl = null;
+    this.adZY = 0;
+    this.adZZ = false;
+    this.aeaa = false;
+    this.aeab = false;
+    this.aeac = false;
+    this.aead = true;
+    this.aeae = a.h.mm_preference;
+    this.aeag = false;
+    this.aeai = false;
     this.mContext = paramContext;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.Preference, paramInt, 0);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.Preference, paramInt, 0);
     paramInt = paramAttributeSet.getIndexCount();
     if (paramInt >= 0)
     {
       int i = paramAttributeSet.getIndex(paramInt);
-      if (i == 5) {
-        this.UM = paramAttributeSet.getResourceId(i, 0);
+      if (i == a.m.Preference_icon) {
+        this.lR = paramAttributeSet.getResourceId(i, 0);
       }
       for (;;)
       {
         paramInt -= 1;
         break;
-        if (i == 6)
+        if (i == a.m.Preference_iconColor)
         {
-          this.zsg = paramAttributeSet.getColor(i, 0);
+          this.Yvv = paramAttributeSet.getColor(i, 0);
         }
-        else if (i == 7)
+        else if (i == a.m.Preference_key)
         {
           this.mKey = paramAttributeSet.getString(i);
         }
-        else if (i == 4)
+        else if (i == a.m.Preference_title)
         {
-          this.zse = paramAttributeSet.getResourceId(i, 0);
-          this.Cv = paramAttributeSet.getString(i);
-          if (this.zse != 0) {
-            this.Cv = paramContext.getString(this.zse);
+          this.adZQ = paramAttributeSet.getResourceId(i, 0);
+          this.cZ = paramAttributeSet.getString(i);
+          if (this.adZQ != 0) {
+            this.cZ = paramContext.getString(this.adZQ);
           }
         }
-        else if (i == 3)
+        else if (i == a.m.Preference_summary)
         {
-          this.pCy = paramAttributeSet.getString(i);
-          this.zsf = paramAttributeSet.getResourceId(i, 0);
-          if (this.zsf != 0) {
-            this.pCy = paramContext.getString(this.zsf);
+          this.Naa = paramAttributeSet.getString(i);
+          this.adZR = paramAttributeSet.getResourceId(i, 0);
+          if (this.adZR != 0) {
+            this.Naa = paramContext.getString(this.adZR);
           }
         }
-        else if (i == 8)
+        else if (i == a.m.Preference_order)
         {
-          this.bdv = paramAttributeSet.getInt(i, this.bdv);
+          this.dmU = paramAttributeSet.getInt(i, this.dmU);
         }
-        else if (i == 1)
+        else if (i == a.m.Preference_fragment)
         {
-          this.zsh = paramAttributeSet.getString(i);
+          this.adZS = paramAttributeSet.getString(i);
         }
-        else if (i == 14)
+        else if (i == a.m.Preference_layout)
         {
-          this.zsp = paramAttributeSet.getResourceId(i, this.zsp);
+          this.aeae = paramAttributeSet.getResourceId(i, this.aeae);
         }
-        else if (i == 9)
+        else if (i == a.m.Preference_widgetLayout)
         {
-          this.zsq = paramAttributeSet.getResourceId(i, this.zsq);
+          this.aeaf = paramAttributeSet.getResourceId(i, this.aeaf);
         }
-        else if (i == 0)
+        else if (i == a.m.Preference_enabled)
         {
           this.mEnabled = paramAttributeSet.getBoolean(i, true);
         }
-        else if (i == 10)
+        else if (i == a.m.Preference_selectable)
         {
-          this.zsi = paramAttributeSet.getBoolean(i, true);
+          this.adZT = paramAttributeSet.getBoolean(i, true);
         }
-        else if (i == 2)
+        else if (i == a.m.Preference_persistent)
         {
-          this.zsk = paramAttributeSet.getBoolean(i, this.zsk);
+          this.adZV = paramAttributeSet.getBoolean(i, this.adZV);
         }
-        else if (i == 11)
+        else if (i == a.m.Preference_dependency)
         {
-          this.zsl = paramAttributeSet.getString(i);
+          this.adZW = paramAttributeSet.getString(i);
         }
-        else if (i == 12)
+        else if (i == a.m.Preference_defaultValue)
         {
           this.mDefaultValue = null;
         }
-        else if (i == 13)
+        else if (i == a.m.Preference_shouldDisableView)
         {
-          this.zso = paramAttributeSet.getBoolean(i, this.zso);
+          this.aead = paramAttributeSet.getBoolean(i, this.aead);
         }
       }
     }
     paramAttributeSet.recycle();
     if (!getClass().getName().startsWith("android.preference")) {
-      this.zsr = true;
+      this.aeag = true;
     }
-    AppMethodBeat.o(107255);
+    AppMethodBeat.o(142632);
   }
   
-  private void dEQ()
+  private void H(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(107269);
-    if (this.mKey == null)
-    {
-      IllegalStateException localIllegalStateException = new IllegalStateException("Preference does not have a key assigned.");
-      AppMethodBeat.o(107269);
-      throw localIllegalStateException;
-    }
-    this.zsj = true;
-    AppMethodBeat.o(107269);
-  }
-  
-  private boolean hasKey()
-  {
-    AppMethodBeat.i(107270);
-    if (!TextUtils.isEmpty(this.mKey))
-    {
-      AppMethodBeat.o(107270);
-      return true;
-    }
-    AppMethodBeat.o(107270);
-    return false;
-  }
-  
-  private void notifyDependencyChange(boolean paramBoolean)
-  {
-    AppMethodBeat.i(107272);
-    List localList = this.zss;
-    if (localList == null)
-    {
-      AppMethodBeat.o(107272);
-      return;
-    }
-    int j = localList.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((Preference)localList.get(i)).qK(paramBoolean);
-      i += 1;
-    }
-    AppMethodBeat.o(107272);
-  }
-  
-  private void qK(boolean paramBoolean)
-  {
-    AppMethodBeat.i(107273);
-    if (this.zsm == paramBoolean) {
-      if (paramBoolean) {
-        break label42;
-      }
-    }
-    label42:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.zsm = paramBoolean;
-      notifyDependencyChange(shouldDisableDependents());
-      notifyChanged();
-      AppMethodBeat.o(107273);
-      return;
-    }
-  }
-  
-  private boolean shouldDisableDependents()
-  {
-    AppMethodBeat.i(107274);
-    if (!isEnabled())
-    {
-      AppMethodBeat.o(107274);
-      return true;
-    }
-    AppMethodBeat.o(107274);
-    return false;
-  }
-  
-  private void x(View paramView, boolean paramBoolean)
-  {
-    AppMethodBeat.i(107260);
+    AppMethodBeat.i(142637);
     paramView.setEnabled(paramBoolean);
     if ((paramView instanceof ViewGroup))
     {
@@ -254,205 +194,334 @@ public class Preference
       int i = paramView.getChildCount() - 1;
       while (i >= 0)
       {
-        x(paramView.getChildAt(i), paramBoolean);
+        H(paramView.getChildAt(i), paramBoolean);
         i -= 1;
       }
     }
-    AppMethodBeat.o(107260);
+    AppMethodBeat.o(142637);
   }
   
-  public final void OW(int paramInt)
+  private void LI(boolean paramBoolean)
   {
-    AppMethodBeat.i(107275);
-    this.zsn = paramInt;
-    if (this.ruQ != null) {
-      this.ruQ.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(107275);
-  }
-  
-  public void a(a parama)
-  {
-    this.zsb = parama;
-  }
-  
-  protected final boolean callChangeListener(Object paramObject)
-  {
-    AppMethodBeat.i(107271);
-    if (this.zsb == null)
+    AppMethodBeat.i(142649);
+    List localList = this.aeah;
+    if (localList == null)
     {
-      AppMethodBeat.o(107271);
+      AppMethodBeat.o(142649);
+      return;
+    }
+    int j = localList.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((Preference)localList.get(i)).LJ(paramBoolean);
+      i += 1;
+    }
+    AppMethodBeat.o(142649);
+  }
+  
+  private void LJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142650);
+    if (this.adZX == paramBoolean) {
+      if (paramBoolean) {
+        break label44;
+      }
+    }
+    label44:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.adZX = paramBoolean;
+      LI(jnE());
+      notifyChanged();
+      AppMethodBeat.o(142650);
+      return;
+    }
+  }
+  
+  private void jnC()
+  {
+    AppMethodBeat.i(142646);
+    if (this.mKey == null)
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("Preference does not have a key assigned.");
+      AppMethodBeat.o(142646);
+      throw localIllegalStateException;
+    }
+    this.adZU = true;
+    AppMethodBeat.o(142646);
+  }
+  
+  private boolean jnD()
+  {
+    AppMethodBeat.i(142647);
+    if (!TextUtils.isEmpty(this.mKey))
+    {
+      AppMethodBeat.o(142647);
       return true;
     }
-    boolean bool = this.zsb.a(this, paramObject);
-    AppMethodBeat.o(107271);
-    return bool;
+    AppMethodBeat.o(142647);
+    return false;
   }
   
-  public void es()
+  private boolean jnE()
   {
-    AppMethodBeat.i(107263);
-    this.UM = 2131230766;
-    Drawable localDrawable = this.mContext.getResources().getDrawable(2131230766);
-    if (((localDrawable == null) && (this.la != null)) || ((localDrawable != null) && (this.la != localDrawable)))
+    AppMethodBeat.i(142651);
+    if (!isEnabled())
     {
-      this.la = localDrawable;
+      AppMethodBeat.o(142651);
+      return true;
+    }
+    AppMethodBeat.o(142651);
+    return false;
+  }
+  
+  public final void LH(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142644);
+    if (this.adZT != paramBoolean)
+    {
+      this.adZT = paramBoolean;
       notifyChanged();
     }
-    AppMethodBeat.o(107263);
+    AppMethodBeat.o(142644);
   }
   
-  public final Context getContext()
+  public void a(Preference.a parama)
   {
-    return this.mContext;
+    this.adZN = parama;
   }
   
-  public final Bundle getExtras()
+  public void aBk(int paramInt)
   {
-    AppMethodBeat.i(107256);
-    if (this.mExtras == null) {
-      this.mExtras = new Bundle();
+    AppMethodBeat.i(142642);
+    aS(this.mContext.getString(paramInt));
+    AppMethodBeat.o(142642);
+  }
+  
+  public final void aBp(int paramInt)
+  {
+    if (paramInt != this.aeaf) {
+      this.aeag = true;
     }
-    Bundle localBundle = this.mExtras;
-    AppMethodBeat.o(107256);
-    return localBundle;
+    this.aeaf = paramInt;
   }
   
-  public int getLayoutResource()
+  public final void aBq(int paramInt)
   {
-    return this.zsp;
+    AppMethodBeat.i(142652);
+    this.adZY = paramInt;
+    if (this.QNl != null) {
+      this.QNl.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(142652);
   }
   
-  public CharSequence getSummary()
+  public void aS(CharSequence paramCharSequence)
   {
-    return this.pCy;
+    AppMethodBeat.i(142641);
+    if (((paramCharSequence == null) && (this.Naa != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.Naa))))
+    {
+      this.Naa = paramCharSequence;
+      notifyChanged();
+    }
+    AppMethodBeat.o(142641);
   }
   
-  public CharSequence getTitle()
+  public View b(View paramView, ViewGroup paramViewGroup)
   {
-    return this.Cv;
-  }
-  
-  public View getView(View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(107257);
+    AppMethodBeat.i(142634);
     View localView = paramView;
     if (paramView == null) {
       localView = onCreateView(paramViewGroup);
     }
     onBindView(localView);
-    AppMethodBeat.o(107257);
+    AppMethodBeat.o(142634);
     return localView;
+  }
+  
+  public final int dqA()
+  {
+    return this.lR;
+  }
+  
+  public CharSequence gBR()
+  {
+    return this.Naa;
+  }
+  
+  public final boolean gH(Object paramObject)
+  {
+    AppMethodBeat.i(142648);
+    if (this.adZN == null)
+    {
+      AppMethodBeat.o(142648);
+      return true;
+    }
+    boolean bool = this.adZN.a(this, paramObject);
+    AppMethodBeat.o(142648);
+    return bool;
+  }
+  
+  public final Bundle getExtras()
+  {
+    AppMethodBeat.i(142633);
+    if (this.mExtras == null) {
+      this.mExtras = new Bundle();
+    }
+    Bundle localBundle = this.mExtras;
+    AppMethodBeat.o(142633);
+    return localBundle;
+  }
+  
+  public final Drawable getIcon()
+  {
+    return this.fM;
+  }
+  
+  public final int getIconColor()
+  {
+    return this.Yvv;
+  }
+  
+  public int getLayoutResource()
+  {
+    return this.aeae;
+  }
+  
+  public CharSequence getTitle()
+  {
+    return this.cZ;
   }
   
   public final boolean isEnabled()
   {
-    return (this.mEnabled) && (this.zsm);
+    return (this.mEnabled) && (this.adZX);
   }
   
   protected void notifyChanged() {}
   
   protected void onBindView(View paramView)
   {
-    int i = 0;
-    AppMethodBeat.i(107259);
-    Object localObject = paramView.findViewById(2131820946);
-    if (localObject != null)
+    AppMethodBeat.i(142636);
+    Object localObject1 = paramView.findViewById(a.g.content);
+    if (localObject1 != null)
     {
-      ((View)localObject).setMinimumHeight((int)(this.mContext.getResources().getDimensionPixelSize(2131427780) * a.gs(this.mContext)));
-      ab.d("dancy test", "resource:%s, height:%s, scale:%s", new Object[] { this.mContext.getResources(), Integer.valueOf(this.mContext.getResources().getDimensionPixelSize(2131427780)), Float.valueOf(a.gs(this.mContext)) });
+      ((View)localObject1).setMinimumHeight((int)(this.mContext.getResources().getDimensionPixelSize(a.e.ListItemHeight) * a.mo(this.mContext)));
+      Log.d("dancy test", "resource:%s, height:%s, scale:%s", new Object[] { this.mContext.getResources(), Integer.valueOf(this.mContext.getResources().getDimensionPixelSize(a.e.ListItemHeight)), Float.valueOf(a.mo(this.mContext)) });
+      if (this.aeai) {
+        ((View)localObject1).setPadding(0, ((View)localObject1).getPaddingTop(), ((View)localObject1).getPaddingRight(), ((View)localObject1).getPaddingBottom());
+      }
     }
-    localObject = (TextView)paramView.findViewById(16908310);
-    if (localObject != null)
+    localObject1 = (TextView)paramView.findViewById(16908310);
+    Object localObject2;
+    if (localObject1 != null)
     {
-      CharSequence localCharSequence = getTitle();
-      if ((localCharSequence != null) && ((localCharSequence instanceof Spannable)))
+      localObject2 = getTitle();
+      if ((localObject2 != null) && ((localObject2 instanceof Spannable)))
       {
-        if (((TextView)localObject).isClickable()) {
-          ((TextView)localObject).setMovementMethod(LinkMovementMethod.getInstance());
+        if (this.aeab) {
+          ((TextView)localObject1).setClickable(true);
         }
-        ((TextView)localObject).setText(localCharSequence);
+        if (((TextView)localObject1).isClickable()) {
+          ((TextView)localObject1).setMovementMethod(LinkMovementMethod.getInstance());
+        }
+        ((TextView)localObject1).setText((CharSequence)localObject2);
       }
     }
     else
     {
-      localObject = (TextView)paramView.findViewById(16908304);
-      if (localObject != null)
+      localObject2 = (TextView)paramView.findViewById(16908304);
+      if (localObject2 != null)
       {
-        if (TextUtils.isEmpty(getSummary())) {
-          break label382;
+        if (TextUtils.isEmpty(gBR())) {
+          break label500;
         }
-        if (((TextView)localObject).getVisibility() != 0) {
-          ((TextView)localObject).setVisibility(0);
+        if (((TextView)localObject2).getVisibility() != 0) {
+          ((TextView)localObject2).setVisibility(0);
         }
-        ((TextView)localObject).setText(getSummary());
-        if (this.kCA != -1) {
-          ((TextView)localObject).setTextColor(this.kCA);
+        if (!this.aeaa) {
+          break label488;
+        }
+        ((TextView)localObject2).setMovementMethod(LinkMovementMethod.getInstance());
+        ((TextView)localObject2).setClickable(true);
+        ((TextView)localObject2).setText(gBR(), TextView.BufferType.SPANNABLE);
+        label264:
+        if (this.wKL != -1) {
+          ((TextView)localObject2).setTextColor(this.wKL);
+        }
+        if (this.aeac) {
+          ((TextView)localObject2).setSingleLine();
+        }
+        if ((localObject1 != null) && (this.adZZ)) {
+          ((TextView)localObject2).post(new Preference.1(this, (TextView)localObject2, (TextView)localObject1));
         }
       }
-      label217:
-      localObject = (ImageView)paramView.findViewById(16908294);
-      if (localObject != null)
+      label321:
+      localObject1 = (ImageView)paramView.findViewById(16908294);
+      if (localObject1 != null)
       {
-        if ((this.UM != 0) || (this.la != null))
+        if ((this.lR != 0) || (this.fM != null))
         {
-          if (this.la == null) {
-            this.la = this.mContext.getResources().getDrawable(this.UM);
+          if (this.fM == null) {
+            this.fM = this.mContext.getResources().getDrawable(this.lR);
           }
-          if (this.la != null)
+          if (this.fM != null)
           {
-            ((ImageView)localObject).setImageDrawable(this.la);
-            if (this.zsg != 0) {
-              ((ImageView)localObject).getDrawable().setColorFilter(this.zsg, PorterDuff.Mode.SRC_ATOP);
+            ((ImageView)localObject1).setImageDrawable(this.fM);
+            if (this.Yvv != 0) {
+              ((ImageView)localObject1).getDrawable().setColorFilter(this.Yvv, PorterDuff.Mode.SRC_ATOP);
             }
           }
         }
-        if (this.la == null) {
-          break label400;
+        if (this.fM == null) {
+          break label520;
         }
       }
     }
-    for (;;)
+    label520:
+    for (int i = 0;; i = 8)
     {
-      ((ImageView)localObject).setVisibility(i);
-      this.ruQ = ((ImageView)paramView.findViewById(2131821555));
-      if (this.ruQ != null) {
-        this.ruQ.setVisibility(this.zsn);
+      ((ImageView)localObject1).setVisibility(i);
+      this.QNl = ((ImageView)paramView.findViewById(a.g.right_arrow));
+      if (this.QNl != null) {
+        this.QNl.setVisibility(this.adZY);
       }
-      if (this.zso) {
-        x(paramView, isEnabled());
+      if (this.aead) {
+        H(paramView, isEnabled());
       }
-      AppMethodBeat.o(107259);
+      AppMethodBeat.o(142636);
       return;
-      ((TextView)localObject).setMovementMethod(null);
+      ((TextView)localObject1).setMovementMethod(null);
       break;
-      label382:
-      if (((TextView)localObject).getVisibility() == 8) {
-        break label217;
+      label488:
+      ((TextView)localObject2).setText(gBR());
+      break label264;
+      label500:
+      if (((TextView)localObject2).getVisibility() == 8) {
+        break label321;
       }
-      ((TextView)localObject).setVisibility(8);
-      break label217;
-      label400:
-      i = 8;
+      ((TextView)localObject2).setVisibility(8);
+      break label321;
     }
   }
   
   protected View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107258);
-    LayoutInflater localLayoutInflater = w.hM(this.mContext);
-    paramViewGroup = localLayoutInflater.inflate(this.zsp, paramViewGroup, false);
+    AppMethodBeat.i(142635);
+    LayoutInflater localLayoutInflater = af.mU(this.mContext);
+    paramViewGroup = localLayoutInflater.inflate(this.aeae, paramViewGroup, false);
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(16908312);
     if (localViewGroup != null)
     {
-      if (this.zsq == 0) {
+      if (this.aeaf == 0) {
         break label65;
       }
-      localLayoutInflater.inflate(this.zsq, localViewGroup);
+      localLayoutInflater.inflate(this.aeaf, localViewGroup);
     }
     for (;;)
     {
-      AppMethodBeat.o(107258);
+      AppMethodBeat.o(142635);
       return paramViewGroup;
       label65:
       localViewGroup.setVisibility(8);
@@ -461,100 +530,76 @@ public class Preference
   
   public final void setEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(107266);
+    AppMethodBeat.i(142643);
     if (this.mEnabled != paramBoolean)
     {
       this.mEnabled = paramBoolean;
-      notifyDependencyChange(shouldDisableDependents());
+      LI(jnE());
       notifyChanged();
     }
-    AppMethodBeat.o(107266);
+    AppMethodBeat.o(142643);
+  }
+  
+  public void setIcon(int paramInt)
+  {
+    AppMethodBeat.i(251514);
+    this.lR = paramInt;
+    Drawable localDrawable = this.mContext.getResources().getDrawable(paramInt);
+    if (((localDrawable == null) && (this.fM != null)) || ((localDrawable != null) && (this.fM != localDrawable)))
+    {
+      this.fM = localDrawable;
+      notifyChanged();
+    }
+    AppMethodBeat.o(251514);
   }
   
   public final void setKey(String paramString)
   {
-    AppMethodBeat.i(107268);
+    AppMethodBeat.i(142645);
     this.mKey = paramString;
-    if ((this.zsj) && (!hasKey())) {
-      dEQ();
+    if ((this.adZU) && (!jnD())) {
+      jnC();
     }
-    AppMethodBeat.o(107268);
+    AppMethodBeat.o(142645);
   }
   
   public final void setLayoutResource(int paramInt)
   {
-    if (paramInt != this.zsp) {
-      this.zsr = true;
+    if (paramInt != this.aeae) {
+      this.aeag = true;
     }
-    this.zsp = paramInt;
-  }
-  
-  public final void setSelectable(boolean paramBoolean)
-  {
-    AppMethodBeat.i(107267);
-    if (this.zsi != paramBoolean)
-    {
-      this.zsi = paramBoolean;
-      notifyChanged();
-    }
-    AppMethodBeat.o(107267);
-  }
-  
-  public void setSummary(int paramInt)
-  {
-    AppMethodBeat.i(107265);
-    setSummary(this.mContext.getString(paramInt));
-    AppMethodBeat.o(107265);
-  }
-  
-  public void setSummary(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(107264);
-    if (((paramCharSequence == null) && (this.pCy != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.pCy))))
-    {
-      this.pCy = paramCharSequence;
-      notifyChanged();
-    }
-    AppMethodBeat.o(107264);
+    this.aeae = paramInt;
   }
   
   public void setTitle(int paramInt)
   {
-    AppMethodBeat.i(107262);
+    AppMethodBeat.i(142639);
     setTitle(this.mContext.getString(paramInt));
-    this.zse = paramInt;
-    AppMethodBeat.o(107262);
+    this.adZQ = paramInt;
+    AppMethodBeat.o(142639);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(107261);
-    if (((paramCharSequence == null) && (this.Cv != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.Cv))))
+    AppMethodBeat.i(142638);
+    if (((paramCharSequence == null) && (this.cZ != null)) || ((paramCharSequence != null) && (!paramCharSequence.equals(this.cZ))))
     {
-      this.zse = 0;
-      this.Cv = paramCharSequence;
+      this.adZQ = 0;
+      this.cZ = paramCharSequence;
       notifyChanged();
     }
-    AppMethodBeat.o(107261);
-  }
-  
-  public final void setWidgetLayoutResource(int paramInt)
-  {
-    if (paramInt != this.zsq) {
-      this.zsr = true;
-    }
-    this.zsq = paramInt;
+    AppMethodBeat.o(142638);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(107276);
+    AppMethodBeat.i(142653);
     Object localObject = new StringBuilder();
     CharSequence localCharSequence = getTitle();
     if (!TextUtils.isEmpty(localCharSequence)) {
       ((StringBuilder)localObject).append(localCharSequence).append(' ');
     }
-    localCharSequence = getSummary();
+    localCharSequence = gBR();
     if (!TextUtils.isEmpty(localCharSequence)) {
       ((StringBuilder)localObject).append(localCharSequence).append(' ');
     }
@@ -562,23 +607,13 @@ public class Preference
       ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 1);
     }
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(107276);
+    AppMethodBeat.o(142653);
     return localObject;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract boolean a(Preference paramPreference, Object paramObject);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract boolean cbH();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.Preference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,120 @@
 package com.tencent.mm.plugin.label;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.mv;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.storage.ay;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storagebase.h.b;
+import java.util.HashMap;
 
-public final class d
-  extends com.tencent.mm.sdk.b.c<mv>
+public class d
+  implements be
 {
-  public d()
+  private static HashMap<Integer, h.b> baseDBFactories;
+  private az JUf;
+  private PostTaskGetContactLabelListListener JUg;
+  
+  static
   {
-    AppMethodBeat.i(22511);
-    this.__eventId = mv.class.getName().hashCode();
-    AppMethodBeat.o(22511);
+    AppMethodBeat.i(26141);
+    HashMap localHashMap = new HashMap();
+    baseDBFactories = localHashMap;
+    localHashMap.put(Integer.valueOf("CONTACT_LABEL_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return az.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("CONTACT_LABEL_CACHE_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return ay.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(26141);
   }
   
-  private static boolean aiN()
+  public d()
   {
-    AppMethodBeat.i(22512);
-    aw.aaz();
-    long l = ((Long)com.tencent.mm.model.c.Ru().get(209408, Long.valueOf(0L))).longValue();
-    if (System.currentTimeMillis() - l > 86400000L) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(26136);
+    this.JUg = new PostTaskGetContactLabelListListener();
+    AppMethodBeat.o(26136);
+  }
+  
+  private static d fSZ()
+  {
+    AppMethodBeat.i(26137);
+    bh.bCt();
+    d locald2 = (d)ci.Ka("plugin.label");
+    d locald1 = locald2;
+    if (locald2 == null)
     {
-      if (i != 0)
-      {
-        ab.i("MicroMsg.Label.PostTaskGetContactLabelListener", "cpan[callback] get contact label list.");
-        aw.Rc().a(new com.tencent.mm.plugin.label.b.c(), 0);
-        aw.aaz();
-        com.tencent.mm.model.c.Ru().set(209408, Long.valueOf(System.currentTimeMillis() - 86400000L + 1800000L));
-      }
-      AppMethodBeat.o(22512);
-      return false;
+      locald1 = locald2;
+      if (locald2 != null) {}
+    }
+    try
+    {
+      locald1 = new d();
+      bh.bCt().a("plugin.label", locald1);
+      return locald1;
+    }
+    finally
+    {
+      AppMethodBeat.o(26137);
     }
   }
+  
+  public static az fTa()
+  {
+    AppMethodBeat.i(26140);
+    h.baC().aZJ();
+    if (fSZ().JUf == null)
+    {
+      localObject = fSZ();
+      bh.bCz();
+      ((d)localObject).JUf = new az(c.getDataDB());
+    }
+    Object localObject = fSZ().JUf;
+    AppMethodBeat.o(26140);
+    return localObject;
+  }
+  
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.b> getBaseDBFactories()
+  {
+    return baseDBFactories;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(26138);
+    b localb = new b();
+    com.tencent.mm.plugin.label.a.a.JUh = localb;
+    com.tencent.mm.av.b.oLo = localb;
+    this.JUg.alive();
+    AppMethodBeat.o(26138);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(26139);
+    com.tencent.mm.plugin.label.a.a.JUh = null;
+    this.JUg.dead();
+    AppMethodBeat.o(26139);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.label.d
  * JD-Core Version:    0.7.0.1
  */

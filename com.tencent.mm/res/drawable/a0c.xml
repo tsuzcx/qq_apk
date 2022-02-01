@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_checked="true" android:drawable="@raw/radio_default_on" />
-    <item android:state_enabled="false" android:state_checked="false" android:drawable="@raw/radio_off" />
-    <item android:state_checked="true" android:drawable="@raw/radio_on" />
-    <item android:drawable="@raw/radio_off" />
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <solid android:color="@color/sb" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/s8" />
+        </shape>
+    </item>
 </selector>

@@ -1,77 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.a;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.c;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.o;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.r;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class b
-  extends a
+  extends c
 {
-  private static final int CTRL_INDEX = 623;
-  public static final String NAME = "insertVoIPView";
+  private static final int CTRL_INDEX = 223;
+  private static final String NAME = "getBeacons";
   
-  public final View a(e parame, JSONObject paramJSONObject)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(143422);
-    ab.i("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflateView," + paramJSONObject.toString());
-    parame = parame.getContext();
-    if (parame == null)
+    AppMethodBeat.i(144674);
+    Log.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
+    paramJSONObject = new JSONArray();
+    Object localObject = a.aaz(paramf.getAppId());
+    if (localObject != null)
     {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, context is null, %s", new Object[] { getName() });
-      AppMethodBeat.o(143422);
-      return null;
+      localObject = ((a.a)localObject).rZj;
+      Log.d("MicroMsg.JsApiGetBeacons", "getBeaconInfo, beaconInfos: ".concat(String.valueOf(localObject)));
+      if ((localObject != null) && (((Map)localObject).size() > 0))
+      {
+        localObject = ((Map)localObject).values().iterator();
+        while (((Iterator)localObject).hasNext()) {
+          paramJSONObject.put((JSONObject)((Iterator)localObject).next());
+        }
+      }
     }
-    if (o.kKN.kKW == 2)
+    else
     {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, newView failed, %s, audio room", new Object[] { getName() });
-      AppMethodBeat.o(143422);
-      return null;
+      Log.e("MicroMsg.JsApiGetBeacons", "not found device");
     }
-    paramJSONObject = o.kKN.kKR.a(parame, paramJSONObject);
-    if (paramJSONObject == null)
-    {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, newView failed, %s", new Object[] { getName() });
-      AppMethodBeat.o(143422);
-      return null;
-    }
-    parame = new CoverViewContainer(parame, (View)paramJSONObject);
-    AppMethodBeat.o(143422);
-    return parame;
-  }
-  
-  public final void a(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(143424);
-    parame = (c)((CoverViewContainer)paramView).aa(View.class);
-    if (parame == null)
-    {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "onInsertView failed, view is null, viewId:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(143424);
-      return;
-    }
-    ab.i("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "onInsertView, viewId:[" + paramInt + "," + parame.getViewId() + "],data:" + paramJSONObject.toString());
-    parame.V(paramJSONObject);
-    AppMethodBeat.o(143424);
-  }
-  
-  public final int w(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(143423);
-    int i = paramJSONObject.optInt("viewId");
-    AppMethodBeat.o(143423);
-    return i;
+    localObject = new HashMap();
+    ((Map)localObject).put("beacons", paramJSONObject);
+    paramf.callback(paramInt, m("ok", (Map)localObject));
+    AppMethodBeat.o(144674);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.b
  * JD-Core Version:    0.7.0.1
  */

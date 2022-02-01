@@ -2,104 +2,113 @@ package com.tencent.mm.plugin.music.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.e;
+import com.tencent.mm.aw.f;
 import com.tencent.mm.plugin.music.cache.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ag;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 
 public final class b
 {
-  public static String K(e parame)
+  public static String Y(f paramf)
   {
-    AppMethodBeat.i(137692);
-    if (parame.fKh == 6)
+    AppMethodBeat.i(137444);
+    if (paramf.oOt == 6)
     {
-      parame = "6_" + L(parame);
-      AppMethodBeat.o(137692);
-      return parame;
+      paramf = "6_" + Z(paramf);
+      AppMethodBeat.o(137444);
+      return paramf;
     }
-    parame = "0_" + L(parame);
-    AppMethodBeat.o(137692);
-    return parame;
+    paramf = "0_" + Z(paramf);
+    AppMethodBeat.o(137444);
+    return paramf;
   }
   
-  private static String L(e parame)
+  private static String Z(f paramf)
   {
-    AppMethodBeat.i(141843);
-    if (TextUtils.isEmpty(parame.fKj))
+    AppMethodBeat.i(137445);
+    if (TextUtils.isEmpty(paramf.oOv))
     {
-      AppMethodBeat.o(141843);
+      AppMethodBeat.o(137445);
       return "";
     }
-    parame = ag.cE(parame.fKj);
-    AppMethodBeat.o(141843);
-    return parame;
+    paramf = MD5Util.getMD5String(paramf.oOv);
+    AppMethodBeat.o(137445);
+    return paramf;
   }
   
-  public static String VH(String paramString)
+  public static String aPn(String paramString)
   {
-    AppMethodBeat.i(137690);
-    paramString = "piece" + ag.cE(new StringBuilder().append(paramString.hashCode()).toString());
-    AppMethodBeat.o(137690);
+    AppMethodBeat.i(137442);
+    paramString = "piece" + MD5Util.getMD5String(new StringBuilder().append(paramString.hashCode()).toString());
+    AppMethodBeat.o(137442);
     return paramString;
   }
   
-  public static String VI(String paramString)
+  public static String aPo(String paramString)
   {
-    AppMethodBeat.i(137691);
-    File localFile = new File(g.getAccPath(), "music");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    AppMethodBeat.i(137443);
+    u localu = new u(g.getAccPath(), "music");
+    if (!localu.jKS()) {
+      localu.jKY();
     }
-    paramString = VH(paramString);
-    localFile = new File(localFile, paramString);
-    ab.d("MicroMsg.Music.MusicFileUtil", "getMusicPieceFilePath music name %s path %s", new Object[] { paramString, localFile.getAbsoluteFile() });
-    paramString = localFile.getAbsolutePath();
-    AppMethodBeat.o(137691);
+    paramString = aPn(paramString);
+    localu = new u(localu, paramString);
+    Log.d("MicroMsg.Music.MusicFileUtil", "getMusicPieceFilePath music name %s path %s", new Object[] { paramString, localu.jKU() });
+    paramString = ah.v(localu.jKT());
+    AppMethodBeat.o(137443);
     return paramString;
   }
   
-  public static String bc(String paramString, boolean paramBoolean)
+  public static String aPp(String paramString)
   {
-    AppMethodBeat.i(137693);
-    File localFile = new File(g.getAccPath(), "music");
-    if (!localFile.exists()) {
-      ab.i("MicroMsg.Music.MusicFileUtil", "create file folder:%b for path:%s", new Object[] { Boolean.valueOf(localFile.mkdirs()), localFile.getAbsolutePath() });
+    AppMethodBeat.i(270846);
+    paramString = cy(paramString.hashCode(), false);
+    AppMethodBeat.o(270846);
+    return paramString;
+  }
+  
+  public static String cA(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(137448);
+    paramString = cy(paramString, false) + "-thumb-" + paramBoolean;
+    AppMethodBeat.o(137448);
+    return paramString;
+  }
+  
+  public static String cy(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(137446);
+    u localu = new u(g.getAccPath(), "music");
+    if (!localu.jKS()) {
+      Log.i("MicroMsg.Music.MusicFileUtil", "create file folder:%b for path:%s", new Object[] { Boolean.valueOf(localu.jKY()), ah.v(localu.jKT()) });
     }
-    paramString = bd(paramString, paramBoolean);
-    localFile = new File(localFile, paramString);
-    ab.d("MicroMsg.Music.MusicFileUtil", "music name %s path %s", new Object[] { paramString, localFile.getAbsoluteFile() });
-    paramString = localFile.getAbsolutePath();
-    AppMethodBeat.o(137693);
+    paramString = cz(paramString, paramBoolean);
+    localu = new u(localu, paramString);
+    Log.d("MicroMsg.Music.MusicFileUtil", "music name %s path %s", new Object[] { paramString, localu.jKU() });
+    paramString = ah.v(localu.jKT());
+    AppMethodBeat.o(137446);
     return paramString;
   }
   
-  private static String bd(String paramString, boolean paramBoolean)
+  private static String cz(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(137694);
+    AppMethodBeat.i(137447);
     if (paramBoolean)
     {
-      paramString = ag.cE(new StringBuilder().append(paramString).append("temp").toString()) + "-wifi";
-      AppMethodBeat.o(137694);
+      paramString = MD5Util.getMD5String(new StringBuilder().append(paramString).append("temp").toString()) + "-wifi";
+      AppMethodBeat.o(137447);
       return paramString;
     }
-    paramString = ag.cE(paramString + "temp");
-    AppMethodBeat.o(137694);
-    return paramString;
-  }
-  
-  public static String be(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(137695);
-    paramString = bc(paramString, false) + "-thumb-" + paramBoolean;
-    AppMethodBeat.o(137695);
+    paramString = MD5Util.getMD5String(paramString + "temp");
+    AppMethodBeat.o(137447);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.b
  * JD-Core Version:    0.7.0.1
  */

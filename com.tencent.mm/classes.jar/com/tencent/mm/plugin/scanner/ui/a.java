@@ -7,89 +7,103 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.platformtools.x.a;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
 import com.tencent.mm.plugin.scanner.util.s;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
 public final class a
   extends Preference
-  implements x.a
+  implements r.a
 {
-  private ImageView iCl;
-  private f iLA;
-  String lix;
+  private TextView OXd;
+  String OXe;
   private View mView;
-  private TextView qvv;
-  String qvw;
+  private f pkD;
+  private ImageView rIe;
+  String xOn;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(80899);
+    AppMethodBeat.i(51673);
     this.mView = null;
-    this.qvv = null;
-    this.qvw = null;
-    setLayoutResource(2130970609);
-    x.a(this);
-    AppMethodBeat.o(80899);
+    this.OXd = null;
+    this.OXe = null;
+    setLayoutResource(l.g.OKz);
+    r.a(this);
+    AppMethodBeat.o(51673);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(80900);
+    AppMethodBeat.i(51674);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
     paramView = this.mView;
-    AppMethodBeat.o(80900);
+    AppMethodBeat.o(51674);
     return paramView;
   }
   
-  public final void m(String paramString, Bitmap paramBitmap)
+  public final void k(String paramString, final Bitmap paramBitmap)
   {
-    AppMethodBeat.i(80902);
-    if ((!bo.isNullOrNil(paramString)) && (paramString.equals(this.lix)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.iCl != null)) {
-      al.d(new a.1(this, paramBitmap));
+    AppMethodBeat.i(51676);
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.xOn)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.rIe != null)) {
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(51672);
+          a.a(a.this).setImageBitmap(paramBitmap);
+          a.a(a.this).setVisibility(0);
+          if (a.b(a.this) != null) {
+            a.b(a.this).notifyDataSetChanged();
+          }
+          AppMethodBeat.o(51672);
+        }
+      });
     }
-    AppMethodBeat.o(80902);
+    AppMethodBeat.o(51676);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(80901);
+    AppMethodBeat.i(51675);
     super.onBindView(paramView);
-    this.qvv = ((TextView)paramView.findViewById(2131822523));
-    this.iCl = ((ImageView)paramView.findViewById(2131827436));
-    if (!bo.isNullOrNil(this.qvw))
+    this.OXd = ((TextView)paramView.findViewById(l.f.fFQ));
+    this.rIe = ((ImageView)paramView.findViewById(l.f.OIv));
+    if (!Util.isNullOrNil(this.OXe))
     {
-      this.qvv.setText(this.qvw);
-      this.qvv.setVisibility(0);
+      this.OXd.setText(this.OXe);
+      this.OXd.setVisibility(0);
     }
     for (;;)
     {
-      if (!bo.isNullOrNil(this.lix))
+      if (!Util.isNullOrNil(this.xOn))
       {
-        paramView = x.a(new s(this.lix));
+        paramView = r.a(new s(this.xOn));
         if ((paramView != null) && (!paramView.isRecycled()))
         {
-          this.iCl.setImageBitmap(paramView);
-          this.iCl.setVisibility(0);
+          this.rIe.setImageBitmap(paramView);
+          this.rIe.setVisibility(0);
         }
       }
-      AppMethodBeat.o(80901);
+      AppMethodBeat.o(51675);
       return;
-      this.qvv.setVisibility(8);
+      this.OXd.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.a
  * JD-Core Version:    0.7.0.1
  */

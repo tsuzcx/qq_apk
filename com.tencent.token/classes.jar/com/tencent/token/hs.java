@@ -1,87 +1,175 @@
 package com.tencent.token;
 
-import java.net.ProtocolException;
-import java.util.concurrent.TimeUnit;
-import okhttp3.af;
-import okhttp3.ak;
-import okio.f;
-import okio.i;
+import android.content.Context;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import java.util.ArrayList;
 
-class hs
-  extends hq
+public final class hs
+  extends ActionMode
 {
-  private final af f;
-  private long g = -1L;
-  private boolean h = true;
+  final Context a;
+  final ho b;
   
-  hs(ho paramho, af paramaf)
+  public hs(Context paramContext, ho paramho)
   {
-    super(paramho, null);
-    this.f = paramaf;
+    this.a = paramContext;
+    this.b = paramho;
   }
   
-  private void b()
+  public final void finish()
   {
-    if (this.g != -1L) {
-      this.e.c.p();
-    }
-    try
+    this.b.c();
+  }
+  
+  public final View getCustomView()
+  {
+    return this.b.i();
+  }
+  
+  public final Menu getMenu()
+  {
+    return im.a(this.a, (ee)this.b.b());
+  }
+  
+  public final MenuInflater getMenuInflater()
+  {
+    return this.b.a();
+  }
+  
+  public final CharSequence getSubtitle()
+  {
+    return this.b.g();
+  }
+  
+  public final Object getTag()
+  {
+    return this.b.c;
+  }
+  
+  public final CharSequence getTitle()
+  {
+    return this.b.f();
+  }
+  
+  public final boolean getTitleOptionalHint()
+  {
+    return this.b.d;
+  }
+  
+  public final void invalidate()
+  {
+    this.b.d();
+  }
+  
+  public final boolean isTitleOptional()
+  {
+    return this.b.h();
+  }
+  
+  public final void setCustomView(View paramView)
+  {
+    this.b.a(paramView);
+  }
+  
+  public final void setSubtitle(int paramInt)
+  {
+    this.b.b(paramInt);
+  }
+  
+  public final void setSubtitle(CharSequence paramCharSequence)
+  {
+    this.b.a(paramCharSequence);
+  }
+  
+  public final void setTag(Object paramObject)
+  {
+    this.b.c = paramObject;
+  }
+  
+  public final void setTitle(int paramInt)
+  {
+    this.b.a(paramInt);
+  }
+  
+  public final void setTitle(CharSequence paramCharSequence)
+  {
+    this.b.b(paramCharSequence);
+  }
+  
+  public final void setTitleOptionalHint(boolean paramBoolean)
+  {
+    this.b.a(paramBoolean);
+  }
+  
+  public static final class a
+    implements ho.a
+  {
+    final ActionMode.Callback a;
+    final Context b;
+    final ArrayList<hs> c;
+    final ex<Menu, Menu> d;
+    
+    public a(Context paramContext, ActionMode.Callback paramCallback)
     {
-      this.g = this.e.c.m();
-      String str = this.e.c.p().trim();
-      if ((this.g < 0L) || ((!str.isEmpty()) && (!str.startsWith(";")))) {
-        throw new ProtocolException("expected chunk size and optional extensions but was \"" + this.g + str + "\"");
+      this.b = paramContext;
+      this.a = paramCallback;
+      this.c = new ArrayList();
+      this.d = new ex();
+    }
+    
+    private Menu a(Menu paramMenu)
+    {
+      Menu localMenu2 = (Menu)this.d.get(paramMenu);
+      Menu localMenu1 = localMenu2;
+      if (localMenu2 == null)
+      {
+        localMenu1 = im.a(this.b, (ee)paramMenu);
+        this.d.put(paramMenu, localMenu1);
       }
+      return localMenu1;
     }
-    catch (NumberFormatException localNumberFormatException)
+    
+    public final void a(ho paramho)
     {
-      throw new ProtocolException(localNumberFormatException.getMessage());
+      this.a.onDestroyActionMode(b(paramho));
     }
-    if (this.g == 0L)
+    
+    public final boolean a(ho paramho, Menu paramMenu)
     {
-      this.h = false;
-      hg.a(this.e.a.g(), this.f, this.e.c());
-      a(true, null);
+      return this.a.onCreateActionMode(b(paramho), a(paramMenu));
     }
-  }
-  
-  public long a(f paramf, long paramLong)
-  {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (this.b) {
-      throw new IllegalStateException("closed");
-    }
-    if (!this.h) {}
-    do
+    
+    public final boolean a(ho paramho, MenuItem paramMenuItem)
     {
-      return -1L;
-      if ((this.g != 0L) && (this.g != -1L)) {
-        break;
+      return this.a.onActionItemClicked(b(paramho), im.a(this.b, (ef)paramMenuItem));
+    }
+    
+    public final ActionMode b(ho paramho)
+    {
+      int j = this.c.size();
+      int i = 0;
+      while (i < j)
+      {
+        hs localhs = (hs)this.c.get(i);
+        if ((localhs != null) && (localhs.b == paramho)) {
+          return localhs;
+        }
+        i += 1;
       }
-      b();
-    } while (!this.h);
-    paramLong = super.a(paramf, Math.min(paramLong, this.g));
-    if (paramLong == -1L)
+      paramho = new hs(this.b, paramho);
+      this.c.add(paramho);
+      return paramho;
+    }
+    
+    public final boolean b(ho paramho, Menu paramMenu)
     {
-      paramf = new ProtocolException("unexpected end of stream");
-      a(false, paramf);
-      throw paramf;
+      return this.a.onPrepareActionMode(b(paramho), a(paramMenu));
     }
-    this.g -= paramLong;
-    return paramLong;
-  }
-  
-  public void close()
-  {
-    if (this.b) {
-      return;
-    }
-    if ((this.h) && (!gn.a(this, 100, TimeUnit.MILLISECONDS))) {
-      a(false, null);
-    }
-    this.b = true;
   }
 }
 

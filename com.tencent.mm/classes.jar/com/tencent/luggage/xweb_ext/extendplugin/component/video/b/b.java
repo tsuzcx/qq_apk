@@ -1,60 +1,65 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.video.b;
 
-import android.view.Surface;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.c.j.b;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.g;
 
 public abstract interface b
 {
-  public abstract boolean Y(float paramFloat);
+  public abstract com.tencent.mm.plugin.appbrand.jsapi.al.e.b a(a parama, com.tencent.luggage.xweb_ext.extendplugin.a parama1);
   
-  public abstract void a(b.a parama);
+  public abstract g a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Handler paramHandler);
   
-  public abstract void a(b.b paramb);
+  public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Bitmap paramBitmap);
   
-  public abstract void a(b.c paramc);
+  public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, g paramg);
   
-  public abstract void a(b.d paramd);
+  public abstract void a(j.b paramb);
   
-  public abstract void a(b.e parame);
+  public abstract void a(g paramg);
   
-  public abstract void a(b.f paramf);
+  public abstract void a(g paramg, int paramInt1, int paramInt2, String paramString);
   
-  public abstract void a(b.g paramg);
+  public abstract void a(g paramg, long paramLong);
   
-  public abstract int getCurrentPosition();
+  public abstract void a(g paramg, String paramString);
   
-  public abstract int getDuration();
+  public abstract f auM();
   
-  public abstract int getState();
+  public abstract e auN();
   
-  public abstract int getVideoHeight();
+  public abstract c auO();
   
-  public abstract int getVideoWidth();
+  public abstract d auP();
   
-  public abstract boolean isPlaying();
+  public abstract a auQ();
   
-  public abstract void pause();
+  public abstract String b(com.tencent.luggage.xweb_ext.extendplugin.a parama, String paramString);
   
-  public abstract void prepareAsync();
+  public abstract void b(com.tencent.luggage.xweb_ext.extendplugin.a parama, g paramg);
   
-  public abstract void release();
+  public abstract void b(g paramg);
   
-  public abstract void reset();
+  public abstract void c(g paramg);
   
-  public abstract void seekTo(long paramLong);
+  public abstract boolean j(com.tencent.luggage.xweb_ext.extendplugin.a parama);
   
-  public abstract void setDataSource(String paramString);
+  public abstract boolean k(com.tencent.luggage.xweb_ext.extendplugin.a parama);
   
-  public abstract void setMute(boolean paramBoolean);
+  public abstract void m(com.tencent.luggage.xweb_ext.extendplugin.component.video.c paramc);
   
-  public abstract void setSurface(Surface paramSurface);
+  public abstract boolean u(com.tencent.luggage.xweb_ext.extendplugin.a parama);
   
-  public abstract void start();
+  public abstract void v(com.tencent.luggage.xweb_ext.extendplugin.a parama);
   
-  public abstract void stop();
+  public abstract void w(com.tencent.luggage.xweb_ext.extendplugin.a parama);
+  
+  public abstract void x(com.tencent.luggage.xweb_ext.extendplugin.a parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.utils.RoamSettingController;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import java.util.List;
 
 public class hec
   implements Runnable
 {
-  public hec(RoamSettingController paramRoamSettingController) {}
+  public hec(SendMessageHandler paramSendMessageHandler, long paramLong, String paramString) {}
   
   public void run()
   {
-    RoamSettingController.a(this.a);
+    if (SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler) >= SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).size()) {
+      return;
+    }
+    int i = SendMessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler);
+    SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).get(i);
+    localSendMessageRunnable.jdField_a_of_type_Int = i;
+    localSendMessageRunnable.i = System.currentTimeMillis();
+    localSendMessageRunnable.e = this.jdField_a_of_type_Long;
+    localSendMessageRunnable.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localSendMessageRunnable.run();
   }
 }
 

@@ -10,14 +10,14 @@ public final class material_tab_get_req
   extends JceStruct
 {
   static Map<String, String> cache_mapExtInfo = new HashMap();
-  public int iAppid;
-  public long lUin;
-  public Map<String, String> mapExtInfo;
+  public int iAppid = 0;
+  public long lUin = 0L;
+  public Map<String, String> mapExtInfo = null;
   public String strAttachInfo = "";
   public String strQua = "";
   public String strTabKey = "";
   public String strTraceInfo = "";
-  public long uiSettleTime;
+  public long uiSettleTime = 0L;
   
   static
   {
@@ -54,27 +54,32 @@ public final class material_tab_get_req
   {
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.iAppid, 1);
-    if (this.strTabKey != null) {
-      paramJceOutputStream.write(this.strTabKey, 2);
+    Object localObject = this.strTabKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.strAttachInfo != null) {
-      paramJceOutputStream.write(this.strAttachInfo, 3);
+    localObject = this.strAttachInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.uiSettleTime, 4);
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 5);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 6);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
-    if (this.strQua != null) {
-      paramJceOutputStream.write(this.strQua, 7);
+    localObject = this.strQua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_tab_get_req
  * JD-Core Version:    0.7.0.1
  */

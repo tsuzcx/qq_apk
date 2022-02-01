@@ -1,49 +1,29 @@
 package com.tencent.mm.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.v.a;
-import com.tencent.mm.protocal.v.b;
-
-public final class az
-  extends k
+@Deprecated
+public abstract interface az
 {
-  private final v.a fmi;
-  private final v.b fmj;
-  
-  public az()
+  public static abstract interface c
   {
-    AppMethodBeat.i(58106);
-    this.fmi = new v.a();
-    this.fmj = new v.b();
-    AppMethodBeat.o(58106);
+    public abstract String V(int paramInt, boolean paramBoolean);
+    
+    public abstract void bCl();
+    
+    public abstract String vd(int paramInt);
+    
+    public abstract String ve(int paramInt);
+    
+    public abstract boolean vf(int paramInt);
   }
   
-  public final l.d getReqObjImp()
+  public static abstract interface e
   {
-    return this.fmi;
-  }
-  
-  public final l.e getRespObj()
-  {
-    return this.fmj;
-  }
-  
-  public final int getType()
-  {
-    return 126;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/micromsg-bin/newreg";
+    public abstract void eB(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.az
  * JD-Core Version:    0.7.0.1
  */

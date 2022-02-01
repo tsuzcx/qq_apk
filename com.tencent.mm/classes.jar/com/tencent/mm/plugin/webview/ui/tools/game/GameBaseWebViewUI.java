@@ -1,82 +1,103 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
+import com.tencent.mm.plugin.webview.core.h;
+import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
+import com.tencent.xweb.WebView;
 
 public class GameBaseWebViewUI
   extends WebViewUI
 {
-  private c nkG;
-  protected a vmg;
+  private d IwT;
+  protected b Xft;
   
   public GameBaseWebViewUI()
   {
-    AppMethodBeat.i(8637);
-    this.nkG = new GameBaseWebViewUI.1(this);
-    AppMethodBeat.o(8637);
+    AppMethodBeat.i(80808);
+    this.IwT = new d()
+    {
+      protected final void az(Bundle paramAnonymousBundle)
+      {
+        AppMethodBeat.i(80805);
+        try
+        {
+          if ((GameBaseWebViewUI.this.sLC != null) && (paramAnonymousBundle != null)) {
+            GameBaseWebViewUI.this.sLC.m(96, paramAnonymousBundle);
+          }
+          AppMethodBeat.o(80805);
+          return;
+        }
+        catch (RemoteException paramAnonymousBundle)
+        {
+          AppMethodBeat.o(80805);
+        }
+      }
+    };
+    AppMethodBeat.o(80808);
   }
   
-  public final boolean aMh()
+  public final void bA(Bundle paramBundle)
+  {
+    AppMethodBeat.i(80809);
+    this.IwT.XfS.bP(paramBundle);
+    AppMethodBeat.o(80809);
+  }
+  
+  public final boolean cKZ()
   {
     return true;
   }
   
-  public final void ak(Bundle paramBundle)
-  {
-    AppMethodBeat.i(8638);
-    this.nkG.vmB.ax(paramBundle);
-    AppMethodBeat.o(8638);
-  }
-  
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(8639);
+    AppMethodBeat.i(80810);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(8639);
+    AppMethodBeat.o(80810);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(8642);
-    c.a(this.nkG.vmB.vmC);
-    if (this.vmg != null) {
-      this.vmg.onDestroy();
+    AppMethodBeat.i(80813);
+    d.a(this.IwT.XfS.XfT);
+    if (this.Xft != null) {
+      this.Xft.onDestroy();
     }
     super.onDestroy();
-    AppMethodBeat.o(8642);
+    AppMethodBeat.o(80813);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(8641);
+    AppMethodBeat.i(80812);
     super.onPause();
-    this.nkG.vmB.onPause();
-    if (this.vmg != null)
+    this.IwT.XfS.onPause();
+    if (this.Xft != null)
     {
-      a locala = this.vmg;
-      locala.nkG.vmB.onPause();
-      GameWebPerformanceInfo localGameWebPerformanceInfo = locala.nkv;
-      localGameWebPerformanceInfo.eAp += System.currentTimeMillis() - locala.nkH;
-      locala.nkH = System.currentTimeMillis();
+      b localb = this.Xft;
+      localb.IwT.XfS.onPause();
+      GameWebPerformanceInfo localGameWebPerformanceInfo = localb.IwE;
+      localGameWebPerformanceInfo.muk += System.currentTimeMillis() - localb.IwU;
+      localb.IwU = System.currentTimeMillis();
     }
-    AppMethodBeat.o(8641);
+    AppMethodBeat.o(80812);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(8640);
-    this.nkG.vmB.onResume();
-    if (this.vmg != null)
+    AppMethodBeat.i(80811);
+    this.IwT.XfS.onResume();
+    if (this.Xft != null)
     {
-      a locala = this.vmg;
-      locala.nkG.vmB.onResume();
-      locala.nkH = System.currentTimeMillis();
+      b localb = this.Xft;
+      localb.IwT.XfS.onResume();
+      localb.IwU = System.currentTimeMillis();
     }
     super.onResume();
-    AppMethodBeat.o(8640);
+    AppMethodBeat.o(80811);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -84,10 +105,30 @@ public class GameBaseWebViewUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  protected class a
+    extends h
+  {
+    protected a() {}
+    
+    public void b(WebView paramWebView, String paramString)
+    {
+      AppMethodBeat.i(297051);
+      GameBaseWebViewUI.a(GameBaseWebViewUI.this).XfS.aoZ();
+      AppMethodBeat.o(297051);
+    }
+    
+    public void h(WebView paramWebView, String paramString)
+    {
+      AppMethodBeat.i(297047);
+      GameBaseWebViewUI.a(GameBaseWebViewUI.this).XfS.iAL();
+      AppMethodBeat.o(297047);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.GameBaseWebViewUI
  * JD-Core Version:    0.7.0.1
  */

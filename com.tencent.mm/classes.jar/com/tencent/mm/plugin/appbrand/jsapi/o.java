@@ -1,48 +1,121 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.r;
-import java.util.Map;
-import org.json.JSONObject;
+import android.webkit.JavascriptInterface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONArray;
 
-public abstract class o
+public final class o
 {
-  private int hry;
-  private m hrz;
-  protected r hxb;
-  protected v hxc;
-  protected JSONObject hxd;
+  volatile g rwv;
   
-  public o(m paramm, r paramr, v paramv, JSONObject paramJSONObject, int paramInt)
+  public o(g paramg)
   {
-    if ((paramm == null) || (paramr == null) || (paramJSONObject == null)) {
-      throw new IllegalArgumentException("JsApiAsyncRequest");
+    this.rwv = paramg;
+  }
+  
+  private static int[] Yh(String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(140639);
+    localObject2 = new int[0];
+    Object localObject1 = localObject2;
+    try
+    {
+      JSONArray localJSONArray = new JSONArray(paramString);
+      localObject1 = localObject2;
+      paramString = new int[localJSONArray.length()];
+      for (;;)
+      {
+        localObject1 = paramString;
+        localObject2 = paramString;
+        if (i >= localJSONArray.length()) {
+          break;
+        }
+        localObject1 = paramString;
+        paramString[i] = localJSONArray.getInt(i);
+        i += 1;
+      }
+      return localObject2;
     }
-    this.hrz = paramm;
-    this.hxb = paramr;
-    this.hxc = paramv;
-    this.hry = paramInt;
-    this.hxd = paramJSONObject;
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.AppBrandJSInterface", paramString.getMessage());
+      localObject2 = localObject1;
+      AppMethodBeat.o(140639);
+    }
   }
   
-  public final JSONObject aBw()
+  @JavascriptInterface
+  public final String invokeHandler(String paramString1, String paramString2, int paramInt)
   {
-    return this.hxd;
+    AppMethodBeat.i(140637);
+    try
+    {
+      g localg = this.rwv;
+      if (localg == null)
+      {
+        AppMethodBeat.o(140637);
+        return "";
+      }
+      paramString1 = localg.d(paramString1, paramString2, "", paramInt);
+      AppMethodBeat.o(140637);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "invokeHandler", new Object[0]);
+      AppMethodBeat.o(140637);
+      throw paramString1;
+    }
   }
   
-  protected final void k(String paramString, Map<String, ? extends Object> paramMap)
+  @JavascriptInterface
+  public final String invokeHandler2(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.hxb.h(this.hry, this.hrz.j(paramString, paramMap));
+    AppMethodBeat.i(325673);
+    try
+    {
+      g localg = this.rwv;
+      if (localg == null)
+      {
+        AppMethodBeat.o(325673);
+        return "";
+      }
+      paramString1 = localg.d(paramString1, paramString2, paramString3, paramInt);
+      AppMethodBeat.o(325673);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "invokeHandler", new Object[0]);
+      AppMethodBeat.o(325673);
+      throw paramString1;
+    }
   }
   
-  protected final void v(Map<String, ? extends Object> paramMap)
+  @JavascriptInterface
+  public final void publishHandler(String paramString1, String paramString2, String paramString3)
   {
-    this.hxb.h(this.hry, this.hrz.j("ok", paramMap));
-  }
-  
-  public final r ws()
-  {
-    return this.hxb;
+    AppMethodBeat.i(140636);
+    try
+    {
+      g localg = this.rwv;
+      if (localg == null)
+      {
+        AppMethodBeat.o(140636);
+        return;
+      }
+      localg.b(paramString1, paramString2, Yh(paramString3));
+      AppMethodBeat.o(140636);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "publishHandler", new Object[0]);
+      AppMethodBeat.o(140636);
+      throw paramString1;
+    }
   }
 }
 

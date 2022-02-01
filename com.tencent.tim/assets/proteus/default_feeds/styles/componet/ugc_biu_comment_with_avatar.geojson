@@ -1,0 +1,68 @@
+{
+  "view_type": "container",
+  "view_id":"id_ugc_biu_comment_with_avatar",
+  "layout_type": "layout_relative",
+  "height": {
+    "type": "wrap_content"
+  },
+  "width": {
+    "type": "wrap_content"
+  },
+  "subviews": [
+      {
+          "view_type":"UIImageView",
+          "default_visible":"YES",
+          "view_id":"id_background_imageView",
+          "height": {
+              "type": "match_parent"
+          },
+          "width":{
+              "type":"match_parent"
+          },
+          "attributes" :{
+              "setAlphaString:":"0",
+              "loadImageWithPath:":"rij_commentBiu_backgroundColor"
+          }
+      },
+    {
+      "view_type": "ReadInJoyBiuCommentView",
+      "view_id": "id_biu_comment",
+      "attributes": {
+        "setArticleModel:": "-1",
+        "setPreBlankNum:": "7",
+        "setPreAccountUin:": "$pre_account_uin",
+        "showCommentText:": "1"
+      },
+      "margin_left": "12",
+      "margin_top": "12",
+      "margin_right": "12",
+      "margin_bottom": "6",
+      "height": {
+        "type": "wrap_content"
+      },
+      "width": {
+        "type": "relative",
+        "value": "351"
+      }
+    },
+    {
+      "view_type": "ReadInJoyAvatarView",
+      "view_id": "id_info_avator",
+      "event_type": "cmd_avatar_click",
+      "margin_top": "8.5",
+      "margin_left": "8.5",
+      "height": {
+        "type": "absolutely",
+        "value": "31"
+      },
+      "width": {
+        "type": "absolutely",
+        "value": "31"
+      },
+      "attributes": {
+        "setArticleModel:": "$article_model",
+        "loadAvatarByUin:": "$info_avator_uin"
+      }
+    }
+  ]
+}

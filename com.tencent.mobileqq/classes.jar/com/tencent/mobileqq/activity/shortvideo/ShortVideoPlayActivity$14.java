@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import akdc;
-import bdgm;
-import bdjz;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ShortVideoPlayActivity$14
+class ShortVideoPlayActivity$14
   implements Runnable
 {
   ShortVideoPlayActivity$14(ShortVideoPlayActivity paramShortVideoPlayActivity, String paramString) {}
   
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.this$0, 232, null, this.a, new akdc(this), null);
-    ShortVideoPlayActivity.a(this.this$0, localbdjz);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.this$0, 232, null, this.a, new ShortVideoPlayActivity.14.1(this), null);
+    ShortVideoPlayActivity.access$000(this.this$0, localQQCustomDialog);
   }
 }
 

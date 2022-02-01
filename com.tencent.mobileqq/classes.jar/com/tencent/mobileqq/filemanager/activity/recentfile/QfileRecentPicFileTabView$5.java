@@ -8,12 +8,12 @@ class QfileRecentPicFileTabView$5
   public void run()
   {
     QfileRecentPicFileTabView.a(this.this$0);
-    this.this$0.g();
+    this.this$0.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView.5
  * JD-Core Version:    0.7.0.1
  */

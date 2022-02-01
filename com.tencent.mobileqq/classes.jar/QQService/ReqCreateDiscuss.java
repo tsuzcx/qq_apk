@@ -11,10 +11,10 @@ public final class ReqCreateDiscuss
   static int cache_DiscussType;
   static ArrayList<AddDiscussMemberInfo> cache_Members;
   public int DiscussType = 0;
-  public ArrayList<AddDiscussMemberInfo> Members;
+  public ArrayList<AddDiscussMemberInfo> Members = null;
   public String Name = "";
   public String Nick = "";
-  public int Refer;
+  public int Refer = 0;
   
   public ReqCreateDiscuss() {}
   
@@ -47,15 +47,16 @@ public final class ReqCreateDiscuss
     paramJceOutputStream.write(this.Name, 0);
     paramJceOutputStream.write(this.Members, 1);
     paramJceOutputStream.write(this.DiscussType, 2);
-    if (this.Nick != null) {
-      paramJceOutputStream.write(this.Nick, 3);
+    String str = this.Nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.Refer, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqCreateDiscuss
  * JD-Core Version:    0.7.0.1
  */

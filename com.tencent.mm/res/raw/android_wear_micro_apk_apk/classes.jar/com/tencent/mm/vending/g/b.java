@@ -1,31 +1,12 @@
 package com.tencent.mm.vending.g;
 
-import android.os.Handler;
-import android.os.Looper;
-
 public final class b
-  implements a
 {
-  private Handler ZZ;
+  private static final a adz = new a();
   
-  public b(Handler paramHandler)
+  public static <$1> com.tencent.mm.vending.j.b<$1> Y($1 param$1)
   {
-    this.ZZ = paramHandler;
-  }
-  
-  public final void b(Runnable paramRunnable, long paramLong)
-  {
-    this.ZZ.postDelayed(paramRunnable, paramLong);
-  }
-  
-  public final void d(Runnable paramRunnable)
-  {
-    this.ZZ.post(paramRunnable);
-  }
-  
-  public final Looper getLooper()
-  {
-    return this.ZZ.getLooper();
+    return com.tencent.mm.vending.j.a.Z(param$1);
   }
 }
 

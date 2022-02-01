@@ -2,79 +2,60 @@ package com.tencent.mobileqq.bubble;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
-import anwi;
-import anxd;
-import anxk;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class BubbleNewAIOAnim$7
+class BubbleNewAIOAnim$7
   implements Runnable
 {
-  public BubbleNewAIOAnim$7(anxd paramanxd) {}
+  BubbleNewAIOAnim$7(BubbleNewAIOAnim paramBubbleNewAIOAnim) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_JavaUtilArrayList != null) && (this.this$0.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((this.this$0.j != null) && (this.this$0.j.size() > 0))
     {
-      Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (localIterator.hasNext())
+      Iterator localIterator = this.this$0.j.iterator();
+      while (localIterator.hasNext())
       {
-        anxk localanxk = (anxk)localIterator.next();
-        File localFile = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.this$0.jdField_b_of_type_Int, false), this.this$0.jdField_a_of_type_Anwi.a);
+        BubbleNewAnimConf localBubbleNewAnimConf = (BubbleNewAnimConf)localIterator.next();
+        File localFile = new File(this.this$0.i.d(this.this$0.f, false), this.this$0.h.a);
         int i = 0;
-        label93:
-        Object localObject1;
-        String str;
-        if (i < localanxk.jdField_b_of_type_Int)
+        while (i < localBubbleNewAnimConf.d)
         {
-          localObject1 = localFile.getAbsolutePath() + File.separatorChar + localanxk.jdField_b_of_type_JavaLangString + String.format("%04d.png", new Object[] { Integer.valueOf(i + 1) });
-          str = localanxk.a + (String)localObject1;
-          if (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-            break label310;
+          Object localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(localFile.getAbsolutePath());
+          ((StringBuilder)localObject1).append(File.separatorChar);
+          ((StringBuilder)localObject1).append(localBubbleNewAnimConf.e);
+          int j = i + 1;
+          ((StringBuilder)localObject1).append(String.format("%04d.png", new Object[] { Integer.valueOf(j) }));
+          localObject1 = ((StringBuilder)localObject1).toString();
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(localBubbleNewAnimConf.a);
+          ((StringBuilder)localObject2).append((String)localObject1);
+          localObject2 = ((StringBuilder)localObject2).toString();
+          if (!this.this$0.x.containsKey(localObject2))
+          {
+            Object localObject3 = GlobalImageCache.a.get(localObject2);
+            if ((localObject3 != null) && ((localObject3 instanceof Bitmap))) {
+              localObject1 = (Bitmap)localObject3;
+            } else {
+              localObject1 = BubbleNewAIOAnim.a(this.this$0, (String)localObject1, null);
+            }
           }
-          Object localObject3 = BaseApplicationImpl.sImageCache.get(str);
-          if ((localObject3 == null) || (!(localObject3 instanceof Bitmap))) {
-            break label259;
+          else
+          {
+            localObject1 = (Bitmap)this.this$0.x.get(localObject2);
           }
-          localObject1 = (Bitmap)localObject3;
-        }
-        for (;;)
-        {
+          i = j;
           if (localObject1 != null)
           {
-            BaseApplicationImpl.sImageCache.put(str, localObject1);
-            this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject1);
+            GlobalImageCache.a.put(localObject2, localObject1);
+            this.this$0.x.put(localObject2, localObject1);
+            i = j;
           }
-          i += 1;
-          break label93;
-          break;
-          try
-          {
-            label259:
-            localObject1 = BubbleManager.a((String)localObject1, null);
-          }
-          catch (Exception localException)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("BubbleNewAIOAnim", 4, "decode error!", localException);
-            }
-            Object localObject2 = null;
-          }
-          catch (OutOfMemoryError localOutOfMemoryError)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("BubbleNewAIOAnim", 4, "decode error!", localOutOfMemoryError);
-            }
-            localBitmap = null;
-          }
-          continue;
-          label310:
-          Bitmap localBitmap = (Bitmap)this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
         }
       }
     }
@@ -82,7 +63,7 @@ public class BubbleNewAIOAnim$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleNewAIOAnim.7
  * JD-Core Version:    0.7.0.1
  */

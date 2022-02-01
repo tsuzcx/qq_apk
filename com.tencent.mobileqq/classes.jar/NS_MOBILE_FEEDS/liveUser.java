@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class liveUser
   extends JceStruct
 {
-  public long uin;
+  public long uin = 0L;
   
   public liveUser() {}
   
@@ -28,7 +28,7 @@ public final class liveUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.liveUser
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/al2" android:padding="@dimen/m2" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/c7z" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
-</LinearLayout>
+    <ImageView android:id="@id/cm1" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:src="@drawable/b__" android:layout_centerVertical="true" />
+    <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center|left" android:id="@id/cms" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_toRightOf="@id/cm1" android:layout_centerVertical="true" style="@style/n7" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:id="@id/cml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/n7" />
+</RelativeLayout>

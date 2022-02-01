@@ -1,24 +1,37 @@
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView.INewFriendContext;
 import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.service.circle.ISwitchObserver;
 
-class eei
-  implements Runnable
+public class eei
+  implements ISwitchObserver
 {
-  eei(eeg parameeg) {}
+  public eei(NewFriendActivity paramNewFriendActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (NewFriendActivity.a(this.a.a) != null) {
-      NewFriendActivity.a(this.a.a).k();
-    }
-    for (;;)
+    if ((!this.a.isFinishing()) && (NewFriendActivity.a(this.a) != null))
     {
-      ReportController.b(this.a.a.b, "CliOper", "", "", "frd_recommend", "clean_apply", 0, 0, "", "", "", "");
-      return;
-      SystemMsgListView.a(this.a.a.b);
+      if (!paramBoolean1) {
+        break label92;
+      }
+      this.a.c = paramBoolean2;
+      if (!paramBoolean2) {
+        break label79;
+      }
     }
+    label79:
+    for (String str = this.a.getString(2131561652);; str = this.a.getString(2131562507))
+    {
+      str = this.a.getString(2131562212, new Object[] { str });
+      NewFriendActivity.a(this.a).a(str, 2);
+      return;
+    }
+    label92:
+    NewFriendActivity.a(this.a).a(this.a.getResources().getString(2131562080), 1);
   }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
 }
 
 

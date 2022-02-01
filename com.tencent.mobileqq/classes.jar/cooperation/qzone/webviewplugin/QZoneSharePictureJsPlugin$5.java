@@ -1,24 +1,23 @@
 package cooperation.qzone.webviewplugin;
 
-import alud;
-import begz;
-import bjxe;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class QZoneSharePictureJsPlugin$5
+class QZoneSharePictureJsPlugin$5
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$5(bjxe parambjxe, begz parambegz) {}
+  QZoneSharePictureJsPlugin$5(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime) {}
   
   public void run()
   {
-    QQToast.a(this.a.a().getContext(), alud.a(2131712736), 0).a();
+    QQToast.makeText(this.val$runtime.a().getContext(), HardCodeUtil.a(2131909893), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.av.smallscreen.SmallScreenRelativeLayout android:id="@id/qav_smallscreen" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/qav_smallscreen_description"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/av_video_layer_ui" android:background="#ff767676" android:padding="2.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/qav_smallscreen_description"
+      xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.qqlite">
+        <com.tencent.av.opengl.ui.GLRootView android:id="@id/av_video_glview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/qav_smallscreen_description" />
+    </RelativeLayout>
+</com.tencent.av.smallscreen.SmallScreenRelativeLayout>

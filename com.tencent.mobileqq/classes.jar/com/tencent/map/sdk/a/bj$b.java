@@ -22,46 +22,47 @@ public final class bj$b
   public final void run()
   {
     bj.b(this.d).decrementAndGet();
-    if (TextUtils.isEmpty(this.a)) {}
-    label125:
-    do
+    if (TextUtils.isEmpty(this.a)) {
+      return;
+    }
+    int i = as.a("report_new_record_num", 1, 50, 10);
+    if (!this.b)
     {
-      int i;
-      do
+      if (bs.a(this.d.b()).b(this.a) != -1L)
       {
-        return;
-        i = as.a("report_new_record_num", 1, 50, 10);
-        if (this.b) {
-          break label125;
-        }
-        if (bs.a(this.d.b()).b(this.a) == -1L) {
-          break;
-        }
         if (bj.c(this.d))
         {
           bj.a(this.d, false);
           bj.b(this.d, false);
         }
-      } while (bj.d(this.d).incrementAndGet() < i);
-      bj.a(this.d, this.b, this.c);
-      return;
+        if (bj.d(this.d).incrementAndGet() >= i) {
+          bj.a(this.d, this.b, this.c);
+        }
+        return;
+      }
       bj.c();
       return;
-      bj.e(this.d).add(this.a);
-      if (!this.c) {
-        break;
-      }
+    }
+    bj.e(this.d).add(this.a);
+    boolean bool = this.c;
+    if (bool)
+    {
       if (bj.e(this.d).size() >= i)
       {
         bj.f(this.d).set(1);
         bj.a(this.d, this.b, this.c);
         return;
       }
-    } while (bj.f(this.d).get() != 0);
-    bj.f(this.d).set(1);
-    bj.b(this.d, true);
-    return;
-    bj.a(this.d, this.b, this.c);
+      if (bj.f(this.d).get() == 0)
+      {
+        bj.f(this.d).set(1);
+        bj.b(this.d, true);
+      }
+    }
+    else
+    {
+      bj.a(this.d, this.b, bool);
+    }
   }
 }
 

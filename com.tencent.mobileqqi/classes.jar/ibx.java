@@ -1,20 +1,16 @@
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
-import cooperation.qzone.QZoneStatisticsSettingActivity;
-import cooperation.qzone.widget.RadioPreference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class ibx
-  implements Preference.OnPreferenceClickListener
+public final class ibx
+  implements DialogInterface.OnDismissListener
 {
-  public ibx(QZoneStatisticsSettingActivity paramQZoneStatisticsSettingActivity) {}
+  public ibx(DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public boolean onPreferenceClick(Preference paramPreference)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QZoneStatisticsSettingActivity.a(this.a, 1);
-    ((RadioPreference)paramPreference).a(true);
-    paramPreference = ((RadioPreference)paramPreference).getKey();
-    QZoneStatisticsSettingActivity.a(this.a, paramPreference, 1);
-    return false;
+    if (this.a != null) {
+      this.a.onDismiss(paramDialogInterface);
+    }
   }
 }
 

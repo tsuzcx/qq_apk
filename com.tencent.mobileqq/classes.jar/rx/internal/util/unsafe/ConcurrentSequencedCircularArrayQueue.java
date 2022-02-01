@@ -32,7 +32,7 @@ public abstract class ConcurrentSequencedCircularArrayQueue<E>
   
   protected final long calcSequenceOffset(long paramLong)
   {
-    return ARRAY_BASE + ((this.mask & paramLong) << ELEMENT_SHIFT);
+    return ARRAY_BASE + ((paramLong & this.mask) << ELEMENT_SHIFT);
   }
   
   protected final long lvSequence(long[] paramArrayOfLong, long paramLong)
@@ -47,7 +47,7 @@ public abstract class ConcurrentSequencedCircularArrayQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.unsafe.ConcurrentSequencedCircularArrayQueue
  * JD-Core Version:    0.7.0.1
  */

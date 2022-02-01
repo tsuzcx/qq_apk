@@ -14,7 +14,7 @@ public class SignInResponseCreator
   
   public SignInResponse createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61705);
+    AppMethodBeat.i(12197);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     ResolveAccountResponse localResolveAccountResponse = null;
@@ -39,7 +39,7 @@ public class SignInResponseCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new SignInResponse(i, localConnectionResult, localResolveAccountResponse);
-    AppMethodBeat.o(61705);
+    AppMethodBeat.o(12197);
     return paramParcel;
   }
   
@@ -50,7 +50,7 @@ public class SignInResponseCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.signin.internal.SignInResponseCreator
  * JD-Core Version:    0.7.0.1
  */

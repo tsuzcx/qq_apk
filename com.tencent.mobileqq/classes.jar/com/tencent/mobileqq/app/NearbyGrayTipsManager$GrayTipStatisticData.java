@@ -17,8 +17,12 @@ public class NearbyGrayTipsManager$GrayTipStatisticData
   
   public NearbyGrayTipsManager$GrayTipStatisticData(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("nearby_aio_operation_gray_tips", 4, "GreetTipStaticData, " + paramInt);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GreetTipStaticData, ");
+      localStringBuilder.append(paramInt);
+      QLog.i("nearby_aio_operation_gray_tips", 4, localStringBuilder.toString());
     }
     this.mId = paramInt;
     this.mTotalCount = 0;
@@ -28,66 +32,97 @@ public class NearbyGrayTipsManager$GrayTipStatisticData
   
   public static String getPath(String paramString, int paramInt)
   {
-    paramString = MD5.toMD5(paramString + "_" + paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NearbyGrayTipsManager.a()).append(GrayTipStatisticData.class.getSimpleName()).append("_").append(paramString);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    paramString = MD5.toMD5(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(NearbyGrayTipsManager.d());
+    localStringBuilder.append(GrayTipStatisticData.class.getSimpleName());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
     return localStringBuilder.toString();
   }
   
   public void increase(long paramLong)
   {
     this.mTotalCount += 1;
-    if (NearbyGrayTipsManager.a(paramLong, this.mLastMarkDay)) {}
-    for (this.mOneDayCount += 1;; this.mOneDayCount = 1)
+    if (NearbyGrayTipsManager.a(paramLong, this.mLastMarkDay))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("nearby_aio_operation_gray_tips", 4, "increase, " + toString());
-      }
-      return;
+      this.mOneDayCount += 1;
+    }
+    else
+    {
       this.mLastMarkDay = paramLong;
+      this.mOneDayCount = 1;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("increase, ");
+      localStringBuilder.append(toString());
+      QLog.i("nearby_aio_operation_gray_tips", 4, localStringBuilder.toString());
     }
   }
   
   public boolean isLimit(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig, long paramLong)
   {
-    boolean bool2 = true;
     boolean bool1;
-    if (paramGrayTipsConfig.singleTask_maxTipsCount > 0) {
-      if (this.mTotalCount >= paramGrayTipsConfig.singleTask_maxTipsCount) {
-        bool1 = true;
-      }
-    }
-    for (;;)
-    {
-      if ((!bool1) && (paramGrayTipsConfig.singleTask_MaxTipsCountPerDay > 0) && (NearbyGrayTipsManager.a(paramLong, this.mLastMarkDay))) {
-        if (this.mOneDayCount >= paramGrayTipsConfig.singleTask_MaxTipsCountPerDay) {
-          bool1 = bool2;
-        }
-      }
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("nearby_aio_operation_gray_tips", 4, "isLimit = " + bool1 + "," + paramGrayTipsConfig.toString() + "," + toString());
-        }
-        return bool1;
-        bool1 = false;
-        break;
-        bool1 = false;
-      }
+    if ((paramGrayTipsConfig.singleTaskMaxTipsCount > 0) && (this.mTotalCount >= paramGrayTipsConfig.singleTaskMaxTipsCount)) {
+      bool1 = true;
+    } else {
       bool1 = false;
     }
+    boolean bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (paramGrayTipsConfig.singleTaskMaxTipsCountPerDay > 0)
+      {
+        bool2 = bool1;
+        if (NearbyGrayTipsManager.a(paramLong, this.mLastMarkDay)) {
+          if (this.mOneDayCount >= paramGrayTipsConfig.singleTaskMaxTipsCountPerDay) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+        }
+      }
+    }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isLimit = ");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramGrayTipsConfig.toString());
+      localStringBuilder.append(",");
+      localStringBuilder.append(toString());
+      QLog.i("nearby_aio_operation_gray_tips", 4, localStringBuilder.toString());
+    }
+    return bool2;
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append('[').append(this.mId).append(',').append(this.mTotalCount).append(',').append(this.mOneDayCount).append(',').append(this.mLastMarkDay).append(',').append(']');
+    localStringBuffer.append('[');
+    localStringBuffer.append(this.mId);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.mTotalCount);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.mOneDayCount);
+    localStringBuffer.append(',');
+    localStringBuffer.append(this.mLastMarkDay);
+    localStringBuffer.append(',');
+    localStringBuffer.append(']');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager.GrayTipStatisticData
  * JD-Core Version:    0.7.0.1
  */

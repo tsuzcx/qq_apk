@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/u4" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/d0u" android:background="@drawable/ba5" android:padding="0.0dip" android:layout_width="300.0dip" android:layout_height="400.0dip" android:layout_centerInParent="true">
-        <RelativeLayout android:id="@id/d0v" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-            <ImageView android:id="@id/d0p" android:layout_width="fill_parent" android:layout_height="267.0dip" android:src="@drawable/ba6" android:scaleType="fitXY" android:layout_alignParentTop="true" />
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a5g">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m7">
-                    <ImageView android:layout_gravity="center" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/tj" />
-                    <ImageView android:layout_gravity="center" android:id="@id/d0q" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@drawable/aex" />
-                </FrameLayout>
-                <TextView android:textSize="@dimen/a58" android:textColor="@color/u1" android:ellipsize="end" android:id="@id/d0r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginTop="9.0dip" android:layout_marginRight="@dimen/m1" android:singleLine="true" android:includeFontPadding="false" />
-                <TextView android:textSize="12.0dip" android:textColor="@color/u1" android:ellipsize="end" android:id="@id/d0w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginTop="4.0dip" android:layout_marginRight="@dimen/m1" android:singleLine="true" android:includeFontPadding="false" />
-            </LinearLayout>
-        </RelativeLayout>
-        <ImageView android:id="@id/d0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a65" android:src="@drawable/bam" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/d0y" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/kk" />
-    </RelativeLayout>
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/c8l" android:background="@color/a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/df" app:layout_constraintTop_toTopOf="hr_" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d_3" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_error" app:iconColor="@color/FG_1" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_1" android:id="@id/d_2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="true" app:layout_constraintBottom_toBottomOf="@id/d_3" app:layout_constraintStart_toEndOf="@id/d_3" app:layout_constraintTop_toTopOf="@id/d_3" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/d_4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:includeFontPadding="true" android:layout_marginStart="@dimen/d0" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="@id/d_2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View android:background="@color/BW_0_Alpha_0_1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" app:layout_constraintBottom_toBottomOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

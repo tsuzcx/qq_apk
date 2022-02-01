@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.value;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
 
 public class LottieValueCallback<T>
@@ -26,13 +26,13 @@ public class LottieValueCallback<T>
   }
   
   @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public final T getValueInternal(float paramFloat1, float paramFloat2, T paramT1, T paramT2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
     return getValue(this.frameInfo.set(paramFloat1, paramFloat2, paramT1, paramT2, paramFloat3, paramFloat4, paramFloat5));
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public final void setAnimation(@Nullable BaseKeyframeAnimation<?, ?> paramBaseKeyframeAnimation)
   {
     this.animation = paramBaseKeyframeAnimation;
@@ -41,8 +41,9 @@ public class LottieValueCallback<T>
   public final void setValue(@Nullable T paramT)
   {
     this.value = paramT;
-    if (this.animation != null) {
-      this.animation.notifyListeners();
+    paramT = this.animation;
+    if (paramT != null) {
+      paramT.notifyListeners();
     }
   }
 }

@@ -34,36 +34,48 @@ public final class SpliceInfoDecoder
     this.sectionData.reset(arrayOfByte, i);
     this.sectionHeader.reset(arrayOfByte, i);
     this.sectionHeader.skipBits(39);
-    long l = this.sectionHeader.readBits(1);
-    l = this.sectionHeader.readBits(32) | l << 32;
+    long l = this.sectionHeader.readBits(1) << 32 | this.sectionHeader.readBits(32);
     this.sectionHeader.skipBits(20);
     i = this.sectionHeader.readBits(12);
     int j = this.sectionHeader.readBits(8);
+    paramMetadataInputBuffer = null;
     this.sectionData.skipBytes(14);
-    switch (j)
+    if (j != 0)
     {
-    default: 
-      paramMetadataInputBuffer = null;
+      if (j != 255)
+      {
+        if (j != 4)
+        {
+          if (j != 5)
+          {
+            if (j == 6) {
+              paramMetadataInputBuffer = TimeSignalCommand.parseFromSection(this.sectionData, l, this.timestampAdjuster);
+            }
+          }
+          else {
+            paramMetadataInputBuffer = SpliceInsertCommand.parseFromSection(this.sectionData, l, this.timestampAdjuster);
+          }
+        }
+        else {
+          paramMetadataInputBuffer = SpliceScheduleCommand.parseFromSection(this.sectionData);
+        }
+      }
+      else {
+        paramMetadataInputBuffer = PrivateCommand.parseFromSection(this.sectionData, i, l);
+      }
     }
-    while (paramMetadataInputBuffer == null)
-    {
-      return new Metadata(new Metadata.Entry[0]);
+    else {
       paramMetadataInputBuffer = new SpliceNullCommand();
-      continue;
-      paramMetadataInputBuffer = SpliceScheduleCommand.parseFromSection(this.sectionData);
-      continue;
-      paramMetadataInputBuffer = SpliceInsertCommand.parseFromSection(this.sectionData, l, this.timestampAdjuster);
-      continue;
-      paramMetadataInputBuffer = TimeSignalCommand.parseFromSection(this.sectionData, l, this.timestampAdjuster);
-      continue;
-      paramMetadataInputBuffer = PrivateCommand.parseFromSection(this.sectionData, i, l);
+    }
+    if (paramMetadataInputBuffer == null) {
+      return new Metadata(new Metadata.Entry[0]);
     }
     return new Metadata(new Metadata.Entry[] { paramMetadataInputBuffer });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.scte35.SpliceInfoDecoder
  * JD-Core Version:    0.7.0.1
  */

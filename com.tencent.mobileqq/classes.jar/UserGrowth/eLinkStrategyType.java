@@ -7,13 +7,12 @@ public final class eLinkStrategyType
 {
   public static final int _eLinkStrategyTypeATest = 1;
   public static final int _eLinkStrategyTypeBTest = 2;
-  public static final int _eLinkStrategyTypeCTest = 3;
   public static final int _eLinkStrategyTypeDTest = 4;
-  public static final int _eLinkStrategyTypeETest = 7;
+  public static final int _eLinkStrategyTypeGTest = 7;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.eLinkStrategyType
  * JD-Core Version:    0.7.0.1
  */

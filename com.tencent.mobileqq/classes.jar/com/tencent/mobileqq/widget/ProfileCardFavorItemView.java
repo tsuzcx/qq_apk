@@ -12,75 +12,81 @@ import android.widget.TextView;
 public class ProfileCardFavorItemView
   extends LinearLayout
 {
-  private Context a;
-  public View a;
-  public ImageView a;
-  public LinearLayout a;
   public TextView a;
-  private View jdField_b_of_type_AndroidViewView;
   public ImageView b;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  public LinearLayout c;
+  public ImageView d;
+  public View e;
+  private Context f;
+  private View g;
+  private LinearLayout h;
   
   public ProfileCardFavorItemView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.f = paramContext;
     a();
   }
   
   public ProfileCardFavorItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.f = paramContext;
     a();
   }
   
   private void a()
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559394, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368577));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166903));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131362823));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131372315));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131372318));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131372316));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131372317);
+    this.g = LayoutInflater.from(this.f).inflate(2131625521, this, true);
+    this.a = ((TextView)this.g.findViewById(2131436136));
+    this.a.setTextColor(getResources().getColorStateList(2131167993));
+    this.b = ((ImageView)this.g.findViewById(2131428774));
+    this.h = ((LinearLayout)this.g.findViewById(2131440706));
+    this.c = ((LinearLayout)this.g.findViewById(2131440709));
+    this.d = ((ImageView)this.g.findViewById(2131440707));
+    this.e = this.g.findViewById(2131440708);
   }
   
   public void addView(View paramView)
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(paramView);
+    this.h.addView(paramView);
   }
   
   public void addView(View paramView, int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt);
+    this.h.addView(paramView, paramInt);
+  }
+  
+  public View getArrow()
+  {
+    return this.b;
   }
   
   public void removeViewAt(int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.removeViewAt(paramInt);
+    this.h.removeViewAt(paramInt);
   }
   
   public void setArrowVisiale(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    ImageView localImageView = this.b;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localImageView.setVisibility(i);
   }
   
   public void setTitle(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.a.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardFavorItemView
  * JD-Core Version:    0.7.0.1
  */

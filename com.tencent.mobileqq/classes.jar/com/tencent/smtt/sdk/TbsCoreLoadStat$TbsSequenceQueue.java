@@ -4,73 +4,76 @@ import java.util.Arrays;
 
 public class TbsCoreLoadStat$TbsSequenceQueue
 {
-  private int DEFAULT_SIZE = 10;
-  private int capacity;
-  private int[] elementData;
-  private int front = 0;
-  private int rear = 0;
+  private int b = 10;
+  private int c;
+  private int[] d;
+  private int e = 0;
+  private int f = 0;
   
   public TbsCoreLoadStat$TbsSequenceQueue(TbsCoreLoadStat paramTbsCoreLoadStat)
   {
-    this.capacity = this.DEFAULT_SIZE;
-    this.elementData = new int[this.capacity];
+    this.c = this.b;
+    this.d = new int[this.c];
   }
   
   public TbsCoreLoadStat$TbsSequenceQueue(TbsCoreLoadStat paramTbsCoreLoadStat, int paramInt1, int paramInt2)
   {
-    this.capacity = paramInt2;
-    this.elementData = new int[this.capacity];
-    this.elementData[0] = paramInt1;
-    this.rear += 1;
+    this.c = paramInt2;
+    this.d = new int[this.c];
+    this.d[0] = paramInt1;
+    this.f += 1;
   }
   
   public void add(int paramInt)
   {
-    if (this.rear > this.capacity - 1) {
-      throw new IndexOutOfBoundsException("sequeue is full");
+    int i = this.f;
+    if (i <= this.c - 1)
+    {
+      int[] arrayOfInt = this.d;
+      this.f = (i + 1);
+      arrayOfInt[i] = paramInt;
+      return;
     }
-    int[] arrayOfInt = this.elementData;
-    int i = this.rear;
-    this.rear = (i + 1);
-    arrayOfInt[i] = paramInt;
+    throw new IndexOutOfBoundsException("sequeue is full");
   }
   
   public void clear()
   {
-    Arrays.fill(this.elementData, 0);
-    this.front = 0;
-    this.rear = 0;
+    Arrays.fill(this.d, 0);
+    this.e = 0;
+    this.f = 0;
   }
   
   public int element()
   {
-    if (empty()) {
-      throw new IndexOutOfBoundsException("sequeue is null");
+    if (!empty()) {
+      return this.d[this.e];
     }
-    return this.elementData[this.front];
+    throw new IndexOutOfBoundsException("sequeue is null");
   }
   
   public boolean empty()
   {
-    return this.rear == this.front;
+    return this.f == this.e;
   }
   
   public int length()
   {
-    return this.rear - this.front;
+    return this.f - this.e;
   }
   
   public int remove()
   {
-    if (empty()) {
-      throw new IndexOutOfBoundsException("sequeue is null");
+    if (!empty())
+    {
+      int[] arrayOfInt = this.d;
+      int i = this.e;
+      int j = arrayOfInt[i];
+      this.e = (i + 1);
+      arrayOfInt[i] = 0;
+      return j;
     }
-    int i = this.elementData[this.front];
-    int[] arrayOfInt = this.elementData;
-    int j = this.front;
-    this.front = (j + 1);
-    arrayOfInt[j] = 0;
-    return i;
+    throw new IndexOutOfBoundsException("sequeue is null");
   }
   
   public String toString()
@@ -78,20 +81,25 @@ public class TbsCoreLoadStat$TbsSequenceQueue
     if (empty()) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder("[");
-    int i = this.front;
-    while (i < this.rear)
+    StringBuilder localStringBuilder1 = new StringBuilder("[");
+    int i = this.e;
+    while (i < this.f)
     {
-      localStringBuilder.append(String.valueOf(this.elementData[i]) + ",");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(String.valueOf(this.d[i]));
+      localStringBuilder2.append(",");
+      localStringBuilder1.append(localStringBuilder2.toString());
       i += 1;
     }
-    i = localStringBuilder.length();
-    return "]";
+    i = localStringBuilder1.length();
+    localStringBuilder1 = localStringBuilder1.delete(i - 1, i);
+    localStringBuilder1.append("]");
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsCoreLoadStat.TbsSequenceQueue
  * JD-Core Version:    0.7.0.1
  */

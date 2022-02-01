@@ -1,42 +1,54 @@
 package com.tencent.biz.qqstory.settings;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.utils.ChnToSpell;
 
 public class QQStoryUserInfo
-  extends awge
+  extends Entity
   implements Comparable<QQStoryUserInfo>
 {
-  public int isAllowed;
-  public int isInterested;
+  public int isAllowed = 0;
+  public int isInterested = 0;
   public String mPinying;
   public String nick;
-  @awhs
+  @unique
   public String uin;
   
   public int compareTo(QQStoryUserInfo paramQQStoryUserInfo)
   {
-    if (paramQQStoryUserInfo == null) {}
-    while ((this.mPinying == null) && (paramQQStoryUserInfo.mPinying == null)) {
+    if (paramQQStoryUserInfo == null) {
+      return 0;
+    }
+    if ((this.mPinying == null) && (paramQQStoryUserInfo.mPinying == null)) {
       return 0;
     }
     if ((this.mPinying != null) && (paramQQStoryUserInfo.mPinying == null)) {
       return 1;
     }
-    if (this.mPinying == null) {
+    String str = this.mPinying;
+    if (str == null) {
       return -1;
     }
-    return this.mPinying.compareTo(paramQQStoryUserInfo.mPinying);
+    return str.compareTo(paramQQStoryUserInfo.mPinying);
   }
   
   public boolean equals(Object paramObject)
   {
-    QQStoryUserInfo localQQStoryUserInfo = null;
+    QQStoryUserInfo localQQStoryUserInfo;
     if ((paramObject instanceof QQStoryUserInfo)) {
       localQQStoryUserInfo = (QQStoryUserInfo)paramObject;
+    } else {
+      localQQStoryUserInfo = null;
     }
-    return (paramObject == this) || ((this.uin != null) && (localQQStoryUserInfo != null) && (this.uin.equals(localQQStoryUserInfo.uin)));
+    if (paramObject != this)
+    {
+      paramObject = this.uin;
+      if ((paramObject == null) || (localQQStoryUserInfo == null) || (!paramObject.equals(localQQStoryUserInfo.uin))) {
+        return false;
+      }
+    }
+    return true;
   }
   
   public void setNick(String paramString)
@@ -44,7 +56,7 @@ public class QQStoryUserInfo
     this.nick = paramString;
     if (paramString != null)
     {
-      this.mPinying = ChnToSpell.a(paramString, 1);
+      this.mPinying = ChnToSpell.b(paramString, 1);
       return;
     }
     this.mPinying = "";
@@ -52,7 +64,7 @@ public class QQStoryUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryUserInfo
  * JD-Core Version:    0.7.0.1
  */

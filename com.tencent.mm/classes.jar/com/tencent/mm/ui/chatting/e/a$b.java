@@ -6,25 +6,25 @@ import com.tencent.mm.ui.chatting.view.a;
 public abstract interface a$b
   extends a<a.a>
 {
-  public abstract void PO(int paramInt);
+  public abstract void F(boolean paramBoolean, int paramInt);
   
-  public abstract void byi();
+  public abstract void ML(int paramInt);
   
-  public abstract void dJL();
+  public abstract void aCs(int paramInt);
   
-  public abstract void dJM();
-  
-  public abstract void dJN();
-  
-  public abstract boolean dJO();
+  public abstract void dSG();
   
   public abstract View getChildAt(int paramInt);
   
-  public abstract void gf(boolean paramBoolean);
+  public abstract void juL();
   
-  public abstract void s(boolean paramBoolean, int paramInt);
+  public abstract void juM();
   
-  public abstract void wa(int paramInt);
+  public abstract void juN();
+  
+  public abstract boolean juO();
+  
+  public abstract void nm(boolean paramBoolean);
 }
 
 

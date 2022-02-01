@@ -1,18 +1,27 @@
 package com.tencent.litetransfersdk;
 
-import alqo;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import arri;
-import arrr;
-import arsx;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
 import com.tencent.image.GifDrawable;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.api.IFileIPv6StrateyController;
+import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController;
+import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.DomainInfo;
+import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.IPInfo;
+import com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.IPListInfo;
+import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -61,7 +70,6 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MpFileNot
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.NFCNotify;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.RNFCNotify;
-import ztp;
 
 public class ProtocolHelper
 {
@@ -73,6 +81,10 @@ public class ProtocolHelper
   static final int DEVICETYPE_UNK5 = 5;
   public static final int TYPE_TINYID = 1;
   public static final int TYPE_UIN = 0;
+  public static int V6SelectType_DomainV6 = 3;
+  public static int V6SelectType_IPv4 = 1;
+  public static int V6SelectType_IPv6 = 2;
+  public static int V6SelectType_Unkown = 0;
   public static int mDstAppId = 1;
   public static int mDstInstId = 1;
   public static int mDstType = 1;
@@ -86,28 +98,234 @@ public class ProtocolHelper
     this.mUinType = paramInt;
   }
   
-  public static String FixImageFileExtName(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  private void FillIPv6InfoForDownloadResp(MsgSCBody paramMsgSCBody, cmd0x346.RspBody paramRspBody)
   {
-    String str = paramString1;
-    if (paramInt == 1)
+    Object localObject1 = this.mApp;
+    if (localObject1 != null)
     {
-      str = paramString1;
-      if (arrr.a(paramString1) != 0)
+      if (!(localObject1 instanceof QQAppInterface)) {
+        return;
+      }
+      localObject1 = (QQAppInterface)localObject1;
+      if (FileIPv6StrateyController.b().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
       {
-        str = paramString1;
-        if (!paramBoolean) {
-          if (!GifDrawable.isGifFile(new File(paramString2))) {
-            break label65;
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.v6_select_type = V6SelectType_IPv4;
+        paramRspBody = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_dns.get();
+        if (!TextUtils.isEmpty(paramRspBody))
+        {
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_dns = paramRspBody;
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[IPv6-File] recv dataline file. is config enable IPv6. domain[");
+          ((StringBuilder)localObject2).append(paramRspBody);
+          ((StringBuilder)localObject2).append("]");
+          QLog.i("Dataline", 1, ((StringBuilder)localObject2).toString());
+          int i = 0;
+          paramRspBody = new FileIPv6StrateyController.DomainInfo(paramRspBody, 0);
+          localObject1 = FileIPv6StrateyController.b().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
+          if ((localObject1 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject1).a()))
+          {
+            boolean bool = FileIPv6StrateyController.a();
+            paramRspBody = "";
+            if (bool)
+            {
+              QLog.d("Dataline", 1, "[IPv6-File] recv dataline file. debugIsDisableIPv4OnDoubleStack");
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_ip = "";
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadip_list = null;
+            }
+            if (((FileIPv6StrateyController.IPListInfo)localObject1).a == 2)
+            {
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.v6_select_type = V6SelectType_IPv6;
+              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).b.size();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadipv6_list = new String[j];
+              while (i < j)
+              {
+                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).b.get(i);
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadipv6_list[i] = ((FileIPv6StrateyController.IPInfo)localObject2).a();
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(paramRspBody);
+                localStringBuilder.append(" ");
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).a());
+                localStringBuilder.append(":");
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).b);
+                paramRspBody = localStringBuilder.toString();
+                i += 1;
+              }
+              paramMsgSCBody = new StringBuilder();
+              paramMsgSCBody.append("[IPv6-File] recv dataline file use IPv6. iplist:");
+              paramMsgSCBody.append(paramRspBody);
+              QLog.i("Dataline", 1, paramMsgSCBody.toString());
+              return;
+            }
+            paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.v6_select_type = V6SelectType_DomainV6;
+            QLog.i("Dataline", 1, "[IPv6-File] recv dataline file use IPv6. domain");
+            return;
           }
+          QLog.i("Dataline", 1, "[IPv6-File] recv dataline file use IPv4");
         }
       }
     }
-    label65:
-    for (paramString2 = ".gif";; paramString2 = ".jpg")
+  }
+  
+  private void FillIPv6InfoForUploadRspV2(MsgSCBody paramMsgSCBody, cmd0x346.RspBody paramRspBody)
+  {
+    Object localObject1 = this.mApp;
+    if (localObject1 != null)
     {
-      str = paramString1 + paramString2;
-      return str;
+      if (!(localObject1 instanceof QQAppInterface)) {
+        return;
+      }
+      localObject1 = (QQAppInterface)localObject1;
+      if (FileIPv6StrateyController.b().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
+      {
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv4;
+        paramRspBody = paramRspBody.msg_apply_upload_rsp_v2.str_upload_dns.get();
+        if (!TextUtils.isEmpty(paramRspBody))
+        {
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[IPv6-File] v2 send dataline file. is config enable IPv6. domain[");
+          ((StringBuilder)localObject2).append(paramRspBody);
+          ((StringBuilder)localObject2).append("]");
+          QLog.i("Dataline", 1, ((StringBuilder)localObject2).toString());
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody;
+          int i = 0;
+          paramRspBody = new FileIPv6StrateyController.DomainInfo(paramRspBody, 0);
+          localObject1 = FileIPv6StrateyController.b().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
+          if ((localObject1 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject1).a()))
+          {
+            boolean bool = FileIPv6StrateyController.a();
+            paramRspBody = "";
+            if (bool)
+            {
+              QLog.d("Dataline", 1, "[IPv6-File] v2 send dataline file. debugIsDisableIPv4OnDoubleStack");
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = "";
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = null;
+            }
+            if (((FileIPv6StrateyController.IPListInfo)localObject1).a == 2)
+            {
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv6;
+              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).b.size();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list = new String[j];
+              while (i < j)
+              {
+                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).b.get(i);
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list[i] = ((FileIPv6StrateyController.IPInfo)localObject2).a();
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(paramRspBody);
+                localStringBuilder.append(" ");
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).a());
+                localStringBuilder.append(":");
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).b);
+                paramRspBody = localStringBuilder.toString();
+                i += 1;
+              }
+              paramMsgSCBody = new StringBuilder();
+              paramMsgSCBody.append("[IPv6-File] v2 send dataline file use IPv6. iplist:");
+              paramMsgSCBody.append(paramRspBody);
+              QLog.i("Dataline", 1, paramMsgSCBody.toString());
+              return;
+            }
+            paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_DomainV6;
+            QLog.i("Dataline", 1, "[IPv6-File] v2 send dataline file use IPv6. domain");
+            return;
+          }
+          QLog.i("Dataline", 1, "[IPv6-File] v2 send dataline file use IPv4");
+        }
+      }
     }
+  }
+  
+  private void FillIPv6InfoForUploadRspV3(MsgSCBody paramMsgSCBody, cmd0x346.RspBody paramRspBody)
+  {
+    Object localObject1 = this.mApp;
+    if (localObject1 != null)
+    {
+      if (!(localObject1 instanceof QQAppInterface)) {
+        return;
+      }
+      localObject1 = (QQAppInterface)localObject1;
+      if (FileIPv6StrateyController.b().isConfigEnableIPV6((BaseQQAppInterface)localObject1, 7))
+      {
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv4;
+        paramRspBody = paramRspBody.msg_apply_upload_rsp_v3.str_upload_dns.get();
+        if (!TextUtils.isEmpty(paramRspBody))
+        {
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[IPv6-File] v3 send dataline file. is config enable IPv6. domain[");
+          ((StringBuilder)localObject2).append(paramRspBody);
+          ((StringBuilder)localObject2).append("]");
+          QLog.i("Dataline", 1, ((StringBuilder)localObject2).toString());
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody;
+          int i = 0;
+          paramRspBody = new FileIPv6StrateyController.DomainInfo(paramRspBody, 0);
+          localObject1 = FileIPv6StrateyController.b().getIPlistForV6Domain((BaseQQAppInterface)localObject1, paramRspBody, 7);
+          if ((localObject1 != null) && (!((FileIPv6StrateyController.IPListInfo)localObject1).a()))
+          {
+            boolean bool = FileIPv6StrateyController.a();
+            paramRspBody = "";
+            if (bool)
+            {
+              QLog.d("Dataline", 1, "[IPv6-File] v3 send dataline file. debugIsDisableIPv4OnDoubleStack");
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = "";
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = null;
+            }
+            if (((FileIPv6StrateyController.IPListInfo)localObject1).a == 2)
+            {
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_IPv6;
+              int j = ((FileIPv6StrateyController.IPListInfo)localObject1).b.size();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list = new String[j];
+              while (i < j)
+              {
+                localObject2 = (FileIPv6StrateyController.IPInfo)((FileIPv6StrateyController.IPListInfo)localObject1).b.get(i);
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadipv6_list[i] = ((FileIPv6StrateyController.IPInfo)localObject2).a();
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(paramRspBody);
+                localStringBuilder.append(" ");
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).a());
+                localStringBuilder.append(":");
+                localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject2).b);
+                paramRspBody = localStringBuilder.toString();
+                i += 1;
+              }
+              paramMsgSCBody = new StringBuilder();
+              paramMsgSCBody.append("[IPv6-File] v3 send dataline file use IPv6. iplist:");
+              paramMsgSCBody.append(paramRspBody);
+              QLog.i("Dataline", 1, paramMsgSCBody.toString());
+              return;
+            }
+            paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.v6_select_type = V6SelectType_DomainV6;
+            QLog.i("Dataline", 1, "[IPv6-File] v3 send dataline file use IPv6. domain");
+            return;
+          }
+          QLog.i("Dataline", 1, "[IPv6-File] v3 send dataline file use IPv4");
+        }
+      }
+    }
+  }
+  
+  public static String FixImageFileExtName(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  {
+    Object localObject = paramString1;
+    if (paramInt == 1)
+    {
+      localObject = paramString1;
+      if (FileManagerUtil.c(paramString1) != 0)
+      {
+        localObject = paramString1;
+        if (!paramBoolean)
+        {
+          if (GifDrawable.isGifFile(new File(paramString2))) {
+            paramString2 = ".gif";
+          } else {
+            paramString2 = ".jpg";
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append(paramString2);
+          localObject = ((StringBuilder)localObject).toString();
+        }
+      }
+    }
+    return localObject;
   }
   
   public static void GetTypeInfo(int paramInt)
@@ -153,7 +371,7 @@ public class ProtocolHelper
   
   public static void fillMsgHeader(SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, long paramLong1, long paramLong2, int paramInt)
   {
-    int i = AppSetting.a();
+    int i = AppSetting.d();
     paramMsgHeader.uint32_src_app_id.set(1001);
     paramMsgHeader.uint32_src_inst_id.set(i);
     paramMsgHeader.uint64_dst_uin.set(paramLong1);
@@ -186,200 +404,303 @@ public class ProtocolHelper
   {
     paramMsgSCBody.msgBody0x346 = new MsgSCBody0x346();
     paramMsgSCBody.msgBody0x346.uMsgSubType = paramInt;
-    List localList;
-    switch (paramInt)
+    if (paramInt != 810)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("dataline.ProtocolHelper", 2, "PBToMsgSCBody : msgtype is not cmd0x346");
-      }
-    case 1610: 
-    case 1710: 
-      do
+      if (paramInt != 910)
       {
-        do
+        Object localObject;
+        if (paramInt != 1210)
         {
-          return;
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v2.int32_ret_code.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v2.str_ret_msg.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_total_space.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_used_space.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v2.uint64_uploaded_size.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v2.str_upload_ip.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v2.str_upload_domain.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v2.uint32_upload_port.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v2.bytes_uuid.get().toStringUtf8();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v2.bytes_upload_key.get().toByteArray();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v2.bool_file_exist.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v2.uint32_pack_size.get();
-          localList = paramRspBody.msg_apply_upload_rsp_v2.rpt_str_uploadip_list.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_httpsvr_api_ver = paramRspBody.msg_apply_upload_rsp_v2.uint32_httpsvr_api_ver.get();
-          paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_sha = paramRspBody.msg_apply_upload_rsp_v2.bytes_sha.get().toByteArray();
-        } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!arsx.b((QQAppInterface)this.mApp)));
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody.msg_apply_upload_rsp_v2.str_upload_dns.get();
-        return;
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v3.int32_ret_code.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v3.str_ret_msg.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_total_space.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_used_space.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v3.uint64_uploaded_size.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v3.str_upload_ip.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v3.str_upload_domain.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v3.uint32_upload_port.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v3.bytes_uuid.get().toStringUtf8();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v3.bytes_upload_key.get().toByteArray();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v3.bool_file_exist.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v3.uint32_pack_size.get();
-        localList = paramRspBody.msg_apply_upload_rsp_v3.rpt_str_uploadip_list.get();
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
-      } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!arsx.b((QQAppInterface)this.mApp)));
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody.msg_apply_upload_rsp_v3.str_upload_dns.get();
-      return;
-    case 1810: 
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810 = new ApplyUploadHitRsp();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.int32_ret_code = paramRspBody.msg_apply_upload_hit_rsp_v2.int32_ret_code.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.str_ret_msg = paramRspBody.msg_apply_upload_hit_rsp_v2.str_ret_msg.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.str_upload_ip = paramRspBody.msg_apply_upload_hit_rsp_v2.str_upload_ip.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.str_upload_domain = paramRspBody.msg_apply_upload_hit_rsp_v2.str_upload_domain.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.bytes_uuid = paramRspBody.msg_apply_upload_hit_rsp_v2.bytes_uuid.get().toByteArray();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.bytes_upload_key = paramRspBody.msg_apply_upload_hit_rsp_v2.bytes_upload_key.get().toByteArray();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.uint64_total_space = paramRspBody.msg_apply_upload_hit_rsp_v2.uint64_total_space.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.uint64_used_space = paramRspBody.msg_apply_upload_hit_rsp_v2.uint64_used_space.get();
-      return;
-    case 1210: 
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210 = new ApplyDownloadRsp();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.int32_ret_code = paramRspBody.msg_apply_download_rsp.int32_ret_code.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.str_ret_msg = paramRspBody.msg_apply_download_rsp.str_ret_msg.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info = new DownloadInfo();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.bytes_download_key = paramRspBody.msg_apply_download_rsp.msg_download_info.bytes_download_key.get().toByteArray();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_ip = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_ip.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_domain = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_domain.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.uint32_port = paramRspBody.msg_apply_download_rsp.msg_download_info.uint32_port.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_url = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_url.get();
-      localList = paramRspBody.msg_apply_download_rsp.msg_download_info.rpt_str_downloadip_list.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadip_list = ((String[])localList.toArray(new String[localList.size()]));
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_cookie = paramRspBody.msg_apply_download_rsp.msg_download_info.str_cookie.get();
-      if ((this.mApp != null) && ((this.mApp instanceof QQAppInterface)) && (arsx.b((QQAppInterface)this.mApp))) {
-        paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_dns = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_dns.get();
+          if (paramInt != 1410)
+          {
+            if (paramInt != 1610)
+            {
+              if (paramInt != 1710)
+              {
+                if (paramInt != 1810)
+                {
+                  if (paramInt != 60110)
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.e("dataline.ProtocolHelper", 2, "PBToMsgSCBody : msgtype is not cmd0x346");
+                    }
+                  }
+                  else
+                  {
+                    paramMsgSCBody.msgBody0x346.applyCopyToRsp = new ApplyCopyToRsp();
+                    paramMsgSCBody.msgBody0x346.applyCopyToRsp.int32_ret_code = paramRspBody.msg_apply_copy_to_rsp.int32_ret_code.get();
+                    paramMsgSCBody.msgBody0x346.applyCopyToRsp.str_ret_msg = paramRspBody.msg_apply_copy_to_rsp.str_ret_msg.get();
+                    paramMsgSCBody.msgBody0x346.applyCopyToRsp.str_file_key = paramRspBody.msg_apply_copy_to_rsp.str_file_key.get();
+                  }
+                }
+                else
+                {
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810 = new ApplyUploadHitRsp();
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.int32_ret_code = paramRspBody.msg_apply_upload_hit_rsp_v2.int32_ret_code.get();
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.str_ret_msg = paramRspBody.msg_apply_upload_hit_rsp_v2.str_ret_msg.get();
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.str_upload_ip = paramRspBody.msg_apply_upload_hit_rsp_v2.str_upload_ip.get();
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.str_upload_domain = paramRspBody.msg_apply_upload_hit_rsp_v2.str_upload_domain.get();
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.bytes_uuid = paramRspBody.msg_apply_upload_hit_rsp_v2.bytes_uuid.get().toByteArray();
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.bytes_upload_key = paramRspBody.msg_apply_upload_hit_rsp_v2.bytes_upload_key.get().toByteArray();
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.uint64_total_space = paramRspBody.msg_apply_upload_hit_rsp_v2.uint64_total_space.get();
+                  paramMsgSCBody.msgBody0x346.pMsgBody0x346_1810.uint64_used_space = paramRspBody.msg_apply_upload_hit_rsp_v2.uint64_used_space.get();
+                }
+              }
+              else
+              {
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v3.int32_ret_code.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v3.str_ret_msg.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_total_space.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v3.uint64_used_space.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v3.uint64_uploaded_size.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v3.str_upload_ip.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v3.str_upload_domain.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v3.uint32_upload_port.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v3.bytes_uuid.get().toStringUtf8();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v3.bytes_upload_key.get().toByteArray();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v3.bool_file_exist.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v3.uint32_pack_size.get();
+                localObject = paramRspBody.msg_apply_upload_rsp_v3.rpt_str_uploadip_list.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])((List)localObject).toArray(new String[((List)localObject).size()]));
+                FillIPv6InfoForUploadRspV3(paramMsgSCBody, paramRspBody);
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_https_port = paramRspBody.msg_apply_upload_rsp_v3.uint32_upload_https_port.get();
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_https_domain = paramRspBody.msg_apply_upload_rsp_v3.str_upload_https_domain.get();
+                paramRspBody = this.mApp.getApp();
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("dataline_config_");
+                ((StringBuilder)localObject).append(this.mApp.getCurrentAccountUin());
+                paramRspBody = paramRspBody.getSharedPreferences(((StringBuilder)localObject).toString(), 0);
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_new_httpclient = paramRspBody.getBoolean("use_new_httpclient", false);
+                paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_https = paramRspBody.getBoolean("use_https_connect", false);
+                paramRspBody = new StringBuilder();
+                paramRspBody.append("FillMsgSCBody use_new_httpclient[");
+                paramRspBody.append(paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_new_httpclient);
+                paramRspBody.append("], bool_use_https[");
+                paramRspBody.append(paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_https);
+                paramRspBody.append("]");
+                QLog.d("dataline.ProtocolHelper", 1, paramRspBody.toString());
+              }
+            }
+            else
+            {
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.int32_ret_code = paramRspBody.msg_apply_upload_rsp_v2.int32_ret_code.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_ret_msg = paramRspBody.msg_apply_upload_rsp_v2.str_ret_msg.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_total_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_total_space.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_used_space = paramRspBody.msg_apply_upload_rsp_v2.uint64_used_space.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint64_uploaded_size = paramRspBody.msg_apply_upload_rsp_v2.uint64_uploaded_size.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_ip = paramRspBody.msg_apply_upload_rsp_v2.str_upload_ip.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_domain = paramRspBody.msg_apply_upload_rsp_v2.str_upload_domain.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_port = paramRspBody.msg_apply_upload_rsp_v2.uint32_upload_port.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_uuid = paramRspBody.msg_apply_upload_rsp_v2.bytes_uuid.get().toStringUtf8();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_upload_key = paramRspBody.msg_apply_upload_rsp_v2.bytes_upload_key.get().toByteArray();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_file_exist = paramRspBody.msg_apply_upload_rsp_v2.bool_file_exist.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v2.uint32_pack_size.get();
+              localObject = paramRspBody.msg_apply_upload_rsp_v2.rpt_str_uploadip_list.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])((List)localObject).toArray(new String[((List)localObject).size()]));
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_httpsvr_api_ver = paramRspBody.msg_apply_upload_rsp_v2.uint32_httpsvr_api_ver.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_sha = paramRspBody.msg_apply_upload_rsp_v2.bytes_sha.get().toByteArray();
+              FillIPv6InfoForUploadRspV2(paramMsgSCBody, paramRspBody);
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_upload_https_port = paramRspBody.msg_apply_upload_rsp_v2.uint32_upload_https_port.get();
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_https_domain = paramRspBody.msg_apply_upload_rsp_v2.str_upload_https_domain.get();
+              paramRspBody = this.mApp.getApp();
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("dataline_config_");
+              ((StringBuilder)localObject).append(this.mApp.getCurrentAccountUin());
+              paramRspBody = paramRspBody.getSharedPreferences(((StringBuilder)localObject).toString(), 0);
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_new_httpclient = paramRspBody.getBoolean("use_new_httpclient", false);
+              paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_https = paramRspBody.getBoolean("use_https_connect", false);
+              paramRspBody = new StringBuilder();
+              paramRspBody.append("FillMsgSCBody use_new_httpclient[");
+              paramRspBody.append(paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_new_httpclient);
+              paramRspBody.append("], bool_use_https[");
+              paramRspBody.append(paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bool_use_https);
+              paramRspBody.append("]");
+              QLog.d("dataline.ProtocolHelper", 1, paramRspBody.toString());
+            }
+          }
+          else
+          {
+            paramMsgSCBody.msgBody0x346.fileQueryRsp = new FileQueryRsp();
+            paramMsgSCBody.msgBody0x346.fileQueryRsp.int32_ret_code = paramRspBody.msg_file_query_rsp.int32_ret_code.get();
+            paramMsgSCBody.msgBody0x346.fileQueryRsp.str_ret_msg = paramRspBody.msg_file_query_rsp.str_ret_msg.get();
+            paramMsgSCBody.msgBody0x346.fileQueryRsp.msg_file_info = createFileInfo(paramRspBody.msg_file_query_rsp.msg_file_info);
+          }
+        }
+        else
+        {
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210 = new ApplyDownloadRsp();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.int32_ret_code = paramRspBody.msg_apply_download_rsp.int32_ret_code.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.str_ret_msg = paramRspBody.msg_apply_download_rsp.str_ret_msg.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info = new DownloadInfo();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.bytes_download_key = paramRspBody.msg_apply_download_rsp.msg_download_info.bytes_download_key.get().toByteArray();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_ip = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_ip.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_domain = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_domain.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.uint32_port = paramRspBody.msg_apply_download_rsp.msg_download_info.uint32_port.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_url = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_url.get();
+          localObject = paramRspBody.msg_apply_download_rsp.msg_download_info.rpt_str_downloadip_list.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadip_list = ((String[])((List)localObject).toArray(new String[((List)localObject).size()]));
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_cookie = paramRspBody.msg_apply_download_rsp.msg_download_info.str_cookie.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_file_info = createFileInfo(paramRspBody.msg_apply_download_rsp.msg_file_info);
+          FillIPv6InfoForDownloadResp(paramMsgSCBody, paramRspBody);
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.uint32_https_port = paramRspBody.msg_apply_download_rsp.msg_download_info.uint32_https_port.get();
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_https_download_domain = paramRspBody.msg_apply_download_rsp.msg_download_info.str_https_download_domain.get();
+          paramRspBody = this.mApp.getApp();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("dataline_config_");
+          ((StringBuilder)localObject).append(this.mApp.getCurrentAccountUin());
+          paramRspBody = paramRspBody.getSharedPreferences(((StringBuilder)localObject).toString(), 0);
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.bool_use_new_httpclient = paramRspBody.getBoolean("use_new_httpclient", false);
+          paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.bool_use_https = paramRspBody.getBoolean("use_https_connect", false);
+          paramRspBody = new StringBuilder();
+          paramRspBody.append("FillMsgSCBody use_new_httpclient[");
+          paramRspBody.append(paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.bool_use_new_httpclient);
+          paramRspBody.append("], bool_use_https[");
+          paramRspBody.append(paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.bool_use_https);
+          paramRspBody.append("]");
+          QLog.d("dataline.ProtocolHelper", 1, paramRspBody.toString());
+        }
       }
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_file_info = createFileInfo(paramRspBody.msg_apply_download_rsp.msg_file_info);
-      return;
-    case 810: 
+      else
+      {
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_910 = new DeleteFileRsp();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_910.int32_ret_code = paramRspBody.msg_delete_file_rsp.int32_ret_code.get();
+        paramMsgSCBody.msgBody0x346.pMsgBody0x346_910.str_ret_msg = paramRspBody.msg_delete_file_rsp.str_ret_msg.get();
+      }
+    }
+    else
+    {
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_810 = new UploadSuccRsp();
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_810.int32_ret_code = paramRspBody.msg_upload_succ_rsp.int32_ret_code.get();
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_810.str_ret_msg = paramRspBody.msg_upload_succ_rsp.str_ret_msg.get();
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_810.msg_file_info = createFileInfo(paramRspBody.msg_upload_succ_rsp.msg_file_info);
-      return;
-    case 910: 
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_910 = new DeleteFileRsp();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_910.int32_ret_code = paramRspBody.msg_delete_file_rsp.int32_ret_code.get();
-      paramMsgSCBody.msgBody0x346.pMsgBody0x346_910.str_ret_msg = paramRspBody.msg_delete_file_rsp.str_ret_msg.get();
-      return;
-    case 1410: 
-      paramMsgSCBody.msgBody0x346.fileQueryRsp = new FileQueryRsp();
-      paramMsgSCBody.msgBody0x346.fileQueryRsp.int32_ret_code = paramRspBody.msg_file_query_rsp.int32_ret_code.get();
-      paramMsgSCBody.msgBody0x346.fileQueryRsp.str_ret_msg = paramRspBody.msg_file_query_rsp.str_ret_msg.get();
-      paramMsgSCBody.msgBody0x346.fileQueryRsp.msg_file_info = createFileInfo(paramRspBody.msg_file_query_rsp.msg_file_info);
-      return;
     }
-    paramMsgSCBody.msgBody0x346.applyCopyToRsp = new ApplyCopyToRsp();
-    paramMsgSCBody.msgBody0x346.applyCopyToRsp.int32_ret_code = paramRspBody.msg_apply_copy_to_rsp.int32_ret_code.get();
-    paramMsgSCBody.msgBody0x346.applyCopyToRsp.str_ret_msg = paramRspBody.msg_apply_copy_to_rsp.str_ret_msg.get();
-    paramMsgSCBody.msgBody0x346.applyCopyToRsp.str_file_key = paramRspBody.msg_apply_copy_to_rsp.str_file_key.get();
   }
   
   public boolean FillReqBody(MsgCSBody0x346 paramMsgCSBody0x346, cmd0x346.ReqBody paramReqBody)
   {
-    Object localObject;
-    switch (paramMsgCSBody0x346.uMsgSubType)
+    int i = paramMsgCSBody0x346.uMsgSubType;
+    if (i != 800)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.ProtocolHelper", 2, "send0x346Req, unknwon nCmdType:" + paramMsgCSBody0x346.uMsgSubType);
-      }
-    case 1600: 
-      do
+      if (i != 900)
       {
-        return false;
-        localObject = new cmd0x346.ApplyUploadReqV2();
-        paramMsgCSBody0x346 = paramMsgCSBody0x346.pMsgBody0x346_uploadReq;
-      } while (paramMsgCSBody0x346 == null);
-      ((cmd0x346.ApplyUploadReqV2)localObject).uint64_sender_uin.set(paramMsgCSBody0x346.uint64_sender_uin);
-      ((cmd0x346.ApplyUploadReqV2)localObject).uint64_recver_uin.set(paramMsgCSBody0x346.uint64_recver_uin);
-      ((cmd0x346.ApplyUploadReqV2)localObject).uint64_file_size.set(paramMsgCSBody0x346.uint64_file_size);
-      ((cmd0x346.ApplyUploadReqV2)localObject).str_file_name.set(paramMsgCSBody0x346.str_file_name);
-      ((cmd0x346.ApplyUploadReqV2)localObject).bytes_10m_md5.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_10m_md5));
-      ((cmd0x346.ApplyUploadReqV2)localObject).bytes_3sha.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_sha));
-      ((cmd0x346.ApplyUploadReqV2)localObject).str_local_filepath.set(paramMsgCSBody0x346.str_local_filepath);
-      ((cmd0x346.ApplyUploadReqV2)localObject).uint32_danger_level.set(paramMsgCSBody0x346.uint32_danger_level);
-      ((cmd0x346.ApplyUploadReqV2)localObject).uint64_total_space.set(paramMsgCSBody0x346.uint64_total_space);
-      paramReqBody.msg_apply_upload_req_v2.set((MessageMicro)localObject);
-    }
-    for (;;)
-    {
-      return true;
-      localObject = new cmd0x346.ApplyUploadReqV3();
-      paramMsgCSBody0x346 = paramMsgCSBody0x346.pMsgBody0x346_uploadReq;
-      if (paramMsgCSBody0x346 == null) {
-        break;
+        Object localObject;
+        if (i != 1200)
+        {
+          if (i != 1400)
+          {
+            if (i != 1600)
+            {
+              if (i != 1700)
+              {
+                if (i != 1800)
+                {
+                  if (i != 60100)
+                  {
+                    if (QLog.isColorLevel())
+                    {
+                      paramReqBody = new StringBuilder();
+                      paramReqBody.append("send0x346Req, unknwon nCmdType:");
+                      paramReqBody.append(paramMsgCSBody0x346.uMsgSubType);
+                      QLog.d("dataline.ProtocolHelper", 2, paramReqBody.toString());
+                    }
+                    return false;
+                  }
+                  paramReqBody.msg_apply_copy_to_req.setHasFlag(true);
+                  paramReqBody.msg_apply_copy_to_req.uint64_dst_id.set(paramMsgCSBody0x346.applyCopyToReq.uint64_dst_id);
+                  paramReqBody.msg_apply_copy_to_req.uint64_dst_uin.set(paramMsgCSBody0x346.applyCopyToReq.uint64_dst_uin);
+                  paramReqBody.msg_apply_copy_to_req.uint32_dst_svcid.set(paramMsgCSBody0x346.applyCopyToReq.uint32_dst_svcid);
+                  paramReqBody.msg_apply_copy_to_req.uint64_src_uin.set(paramMsgCSBody0x346.applyCopyToReq.uint64_src_uin);
+                  paramReqBody.msg_apply_copy_to_req.uint64_file_size.set(paramMsgCSBody0x346.applyCopyToReq.uint64_file_size);
+                  paramReqBody.msg_apply_copy_to_req.str_file_name.set(paramMsgCSBody0x346.applyCopyToReq.str_file_name);
+                  paramReqBody.msg_apply_copy_to_req.str_local_filepath.set(paramMsgCSBody0x346.applyCopyToReq.str_local_filepath);
+                  paramReqBody.msg_apply_copy_to_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.applyCopyToReq.bytes_uuid));
+                  return true;
+                }
+                localObject = new cmd0x346.ApplyUploadHitReqV2();
+                paramMsgCSBody0x346 = paramMsgCSBody0x346.pMsgBody0x346_1800;
+                if (paramMsgCSBody0x346 == null) {
+                  return false;
+                }
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).uint64_sender_uin.set(paramMsgCSBody0x346.uint64_sender_uin);
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).uint64_recver_uin.set(paramMsgCSBody0x346.uint64_recver_uin);
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).uint64_file_size.set(paramMsgCSBody0x346.uint64_file_size);
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).str_file_name.set(paramMsgCSBody0x346.str_file_name);
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).bytes_10m_md5.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_10m_md5));
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).bytes_3sha.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_3sha));
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_sha));
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).str_local_filepath.set(paramMsgCSBody0x346.str_local_filepath);
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).uint32_danger_level.set(paramMsgCSBody0x346.uint32_danger_level);
+                ((cmd0x346.ApplyUploadHitReqV2)localObject).uint64_total_space.set(paramMsgCSBody0x346.uint64_total_space);
+                paramReqBody.msg_apply_upload_hit_req_v2.set((MessageMicro)localObject);
+                return true;
+              }
+              localObject = new cmd0x346.ApplyUploadReqV3();
+              paramMsgCSBody0x346 = paramMsgCSBody0x346.pMsgBody0x346_uploadReq;
+              if (paramMsgCSBody0x346 == null) {
+                return false;
+              }
+              ((cmd0x346.ApplyUploadReqV3)localObject).uint64_sender_uin.set(paramMsgCSBody0x346.uint64_sender_uin);
+              ((cmd0x346.ApplyUploadReqV3)localObject).uint64_recver_uin.set(paramMsgCSBody0x346.uint64_recver_uin);
+              ((cmd0x346.ApplyUploadReqV3)localObject).uint64_file_size.set(paramMsgCSBody0x346.uint64_file_size);
+              ((cmd0x346.ApplyUploadReqV3)localObject).str_file_name.set(paramMsgCSBody0x346.str_file_name);
+              ((cmd0x346.ApplyUploadReqV3)localObject).bytes_10m_md5.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_10m_md5));
+              ((cmd0x346.ApplyUploadReqV3)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_sha));
+              ((cmd0x346.ApplyUploadReqV3)localObject).str_local_filepath.set(paramMsgCSBody0x346.str_local_filepath);
+              ((cmd0x346.ApplyUploadReqV3)localObject).uint32_danger_level.set(paramMsgCSBody0x346.uint32_danger_level);
+              ((cmd0x346.ApplyUploadReqV3)localObject).uint64_total_space.set(paramMsgCSBody0x346.uint64_total_space);
+              paramReqBody.msg_apply_upload_req_v3.set((MessageMicro)localObject);
+              return true;
+            }
+            localObject = new cmd0x346.ApplyUploadReqV2();
+            paramMsgCSBody0x346 = paramMsgCSBody0x346.pMsgBody0x346_uploadReq;
+            if (paramMsgCSBody0x346 == null) {
+              return false;
+            }
+            ((cmd0x346.ApplyUploadReqV2)localObject).uint64_sender_uin.set(paramMsgCSBody0x346.uint64_sender_uin);
+            ((cmd0x346.ApplyUploadReqV2)localObject).uint64_recver_uin.set(paramMsgCSBody0x346.uint64_recver_uin);
+            ((cmd0x346.ApplyUploadReqV2)localObject).uint64_file_size.set(paramMsgCSBody0x346.uint64_file_size);
+            ((cmd0x346.ApplyUploadReqV2)localObject).str_file_name.set(paramMsgCSBody0x346.str_file_name);
+            ((cmd0x346.ApplyUploadReqV2)localObject).bytes_10m_md5.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_10m_md5));
+            ((cmd0x346.ApplyUploadReqV2)localObject).bytes_3sha.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_sha));
+            ((cmd0x346.ApplyUploadReqV2)localObject).str_local_filepath.set(paramMsgCSBody0x346.str_local_filepath);
+            ((cmd0x346.ApplyUploadReqV2)localObject).uint32_danger_level.set(paramMsgCSBody0x346.uint32_danger_level);
+            ((cmd0x346.ApplyUploadReqV2)localObject).uint64_total_space.set(paramMsgCSBody0x346.uint64_total_space);
+            paramReqBody.msg_apply_upload_req_v2.set((MessageMicro)localObject);
+            return true;
+          }
+          paramReqBody.msg_file_query_req.setHasFlag(true);
+          paramReqBody.msg_file_query_req.uint64_uin.set(paramMsgCSBody0x346.fileQueryReq.uint64_uin);
+          if (paramMsgCSBody0x346.fileQueryReq.bytes_uuid != null)
+          {
+            paramReqBody.msg_file_query_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.fileQueryReq.bytes_uuid));
+            return true;
+          }
+        }
+        else
+        {
+          localObject = new cmd0x346.ApplyDownloadReq();
+          paramMsgCSBody0x346 = paramMsgCSBody0x346.pMsgBody0x346_1200;
+          if (paramMsgCSBody0x346 == null) {
+            return false;
+          }
+          ((cmd0x346.ApplyDownloadReq)localObject).uint64_uin.set(paramMsgCSBody0x346.uint64_uin);
+          ((cmd0x346.ApplyDownloadReq)localObject).bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_uuid));
+          if (paramMsgCSBody0x346.uint32_ext_uintype != 0) {
+            ((cmd0x346.ApplyDownloadReq)localObject).uint32_ext_uintype.set(paramMsgCSBody0x346.uint32_ext_uintype);
+          }
+          if (paramMsgCSBody0x346.uint32_ext_uintype == 1) {
+            ((cmd0x346.ApplyDownloadReq)localObject).uint32_owner_type.set(1);
+          } else {
+            ((cmd0x346.ApplyDownloadReq)localObject).uint32_owner_type.set(2);
+          }
+          paramReqBody.msg_apply_download_req.set((MessageMicro)localObject);
+          return true;
+        }
       }
-      ((cmd0x346.ApplyUploadReqV3)localObject).uint64_sender_uin.set(paramMsgCSBody0x346.uint64_sender_uin);
-      ((cmd0x346.ApplyUploadReqV3)localObject).uint64_recver_uin.set(paramMsgCSBody0x346.uint64_recver_uin);
-      ((cmd0x346.ApplyUploadReqV3)localObject).uint64_file_size.set(paramMsgCSBody0x346.uint64_file_size);
-      ((cmd0x346.ApplyUploadReqV3)localObject).str_file_name.set(paramMsgCSBody0x346.str_file_name);
-      ((cmd0x346.ApplyUploadReqV3)localObject).bytes_10m_md5.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_10m_md5));
-      ((cmd0x346.ApplyUploadReqV3)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_sha));
-      ((cmd0x346.ApplyUploadReqV3)localObject).str_local_filepath.set(paramMsgCSBody0x346.str_local_filepath);
-      ((cmd0x346.ApplyUploadReqV3)localObject).uint32_danger_level.set(paramMsgCSBody0x346.uint32_danger_level);
-      ((cmd0x346.ApplyUploadReqV3)localObject).uint64_total_space.set(paramMsgCSBody0x346.uint64_total_space);
-      paramReqBody.msg_apply_upload_req_v3.set((MessageMicro)localObject);
-      continue;
-      localObject = new cmd0x346.ApplyUploadHitReqV2();
-      paramMsgCSBody0x346 = paramMsgCSBody0x346.pMsgBody0x346_1800;
-      if (paramMsgCSBody0x346 == null) {
-        break;
-      }
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).uint64_sender_uin.set(paramMsgCSBody0x346.uint64_sender_uin);
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).uint64_recver_uin.set(paramMsgCSBody0x346.uint64_recver_uin);
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).uint64_file_size.set(paramMsgCSBody0x346.uint64_file_size);
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).str_file_name.set(paramMsgCSBody0x346.str_file_name);
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).bytes_10m_md5.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_10m_md5));
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).bytes_3sha.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_3sha));
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_sha));
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).str_local_filepath.set(paramMsgCSBody0x346.str_local_filepath);
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).uint32_danger_level.set(paramMsgCSBody0x346.uint32_danger_level);
-      ((cmd0x346.ApplyUploadHitReqV2)localObject).uint64_total_space.set(paramMsgCSBody0x346.uint64_total_space);
-      paramReqBody.msg_apply_upload_hit_req_v2.set((MessageMicro)localObject);
-      continue;
-      localObject = new cmd0x346.ApplyDownloadReq();
-      paramMsgCSBody0x346 = paramMsgCSBody0x346.pMsgBody0x346_1200;
-      if (paramMsgCSBody0x346 == null) {
-        break;
-      }
-      ((cmd0x346.ApplyDownloadReq)localObject).uint64_uin.set(paramMsgCSBody0x346.uint64_uin);
-      ((cmd0x346.ApplyDownloadReq)localObject).bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.bytes_uuid));
-      if (paramMsgCSBody0x346.uint32_ext_uintype != 0) {
-        ((cmd0x346.ApplyDownloadReq)localObject).uint32_ext_uintype.set(paramMsgCSBody0x346.uint32_ext_uintype);
-      }
-      if (paramMsgCSBody0x346.uint32_ext_uintype == 1) {
-        ((cmd0x346.ApplyDownloadReq)localObject).uint32_owner_type.set(1);
-      }
-      for (;;)
+      else
       {
-        paramReqBody.msg_apply_download_req.set((MessageMicro)localObject);
-        break;
-        ((cmd0x346.ApplyDownloadReq)localObject).uint32_owner_type.set(2);
-      }
-      paramReqBody.msg_upload_succ_req.setHasFlag(true);
-      paramReqBody.msg_upload_succ_req.uint64_sender_uin.set(paramMsgCSBody0x346.pMsgBody0x346_800.uint64_sender_uin);
-      paramReqBody.msg_upload_succ_req.uint64_recver_uin.set(paramMsgCSBody0x346.pMsgBody0x346_800.uint64_recver_uin);
-      if (paramMsgCSBody0x346.pMsgBody0x346_800.bytes_uuid != null)
-      {
-        paramReqBody.msg_upload_succ_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.pMsgBody0x346_800.bytes_uuid.getBytes()));
-        continue;
         paramReqBody.msg_delete_file_req.setHasFlag(true);
         paramReqBody.msg_delete_file_req.uint64_uin.set(paramMsgCSBody0x346.pMsgBody0x346_900.uint64_uin);
         paramReqBody.msg_delete_file_req.uint64_peer_uin.set(paramMsgCSBody0x346.pMsgBody0x346_900.uint64_peer_uin);
@@ -387,47 +708,43 @@ public class ProtocolHelper
         if (paramMsgCSBody0x346.pMsgBody0x346_900.bytes_uuid != null)
         {
           paramReqBody.msg_delete_file_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.pMsgBody0x346_900.bytes_uuid.getBytes()));
-          continue;
-          paramReqBody.msg_file_query_req.setHasFlag(true);
-          paramReqBody.msg_file_query_req.uint64_uin.set(paramMsgCSBody0x346.fileQueryReq.uint64_uin);
-          if (paramMsgCSBody0x346.fileQueryReq.bytes_uuid != null)
-          {
-            paramReqBody.msg_file_query_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.fileQueryReq.bytes_uuid));
-            continue;
-            paramReqBody.msg_apply_copy_to_req.setHasFlag(true);
-            paramReqBody.msg_apply_copy_to_req.uint64_dst_id.set(paramMsgCSBody0x346.applyCopyToReq.uint64_dst_id);
-            paramReqBody.msg_apply_copy_to_req.uint64_dst_uin.set(paramMsgCSBody0x346.applyCopyToReq.uint64_dst_uin);
-            paramReqBody.msg_apply_copy_to_req.uint32_dst_svcid.set(paramMsgCSBody0x346.applyCopyToReq.uint32_dst_svcid);
-            paramReqBody.msg_apply_copy_to_req.uint64_src_uin.set(paramMsgCSBody0x346.applyCopyToReq.uint64_src_uin);
-            paramReqBody.msg_apply_copy_to_req.uint64_file_size.set(paramMsgCSBody0x346.applyCopyToReq.uint64_file_size);
-            paramReqBody.msg_apply_copy_to_req.str_file_name.set(paramMsgCSBody0x346.applyCopyToReq.str_file_name);
-            paramReqBody.msg_apply_copy_to_req.str_local_filepath.set(paramMsgCSBody0x346.applyCopyToReq.str_local_filepath);
-            paramReqBody.msg_apply_copy_to_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.applyCopyToReq.bytes_uuid));
-          }
+          return true;
         }
       }
     }
+    else
+    {
+      paramReqBody.msg_upload_succ_req.setHasFlag(true);
+      paramReqBody.msg_upload_succ_req.uint64_sender_uin.set(paramMsgCSBody0x346.pMsgBody0x346_800.uint64_sender_uin);
+      paramReqBody.msg_upload_succ_req.uint64_recver_uin.set(paramMsgCSBody0x346.pMsgBody0x346_800.uint64_recver_uin);
+      if (paramMsgCSBody0x346.pMsgBody0x346_800.bytes_uuid != null) {
+        paramReqBody.msg_upload_succ_req.bytes_uuid.set(ByteStringMicro.copyFrom(paramMsgCSBody0x346.pMsgBody0x346_800.bytes_uuid.getBytes()));
+      }
+    }
+    return true;
   }
   
   public long GenSessionIdFromDev(long paramLong, int paramInt)
   {
-    switch (paramInt)
+    long l = paramLong;
+    if (paramInt != 1)
     {
-    case 1: 
-    case 2: 
-    default: 
-      return paramLong;
+      if (paramInt != 3) {
+        return paramLong;
+      }
+      l = paramLong | 0x0;
     }
-    return paramLong | 0x0;
+    return l;
   }
   
   public long GetSelfUin()
   {
-    if (this.mUinType == 0) {
+    int i = this.mUinType;
+    if (i == 0) {
       return Long.valueOf(this.mApp.getCurrentAccountUin()).longValue();
     }
-    if (this.mUinType == 1) {
-      return ((ztp)((QQAppInterface)this.mApp).a(51)).a();
+    if (i == 1) {
+      return ((SmartDeviceProxyMgr)((QQAppInterface)this.mApp).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).i();
     }
     return 0L;
   }
@@ -469,13 +786,11 @@ public class ProtocolHelper
     localFTNNotify.setHasFlag(true);
     if (1 == paramInt) {
       paramString.rpt_msg_subcmd_0x1_ftn_notify.add(localFTNNotify);
-    }
-    for (;;)
-    {
-      paramString.setHasFlag(true);
-      return paramString;
+    } else {
       paramString.rpt_msg_subcmd_0x9_ftn_thumb_notify.add(localFTNNotify);
     }
+    paramString.setHasFlag(true);
+    return paramString;
   }
   
   public SubMsgType0x7.MsgBody MsgBodyFromFileControl(FileControl paramFileControl, long paramLong, String paramString, int paramInt)
@@ -536,10 +851,7 @@ public class ProtocolHelper
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     paramString = localJSONObject.toString();
     if (paramString != null) {
@@ -557,59 +869,55 @@ public class ProtocolHelper
     Object localObject1 = paramNFCNotify.str_file_name;
     int i = paramNFCNotify.uint32_originfiletype;
     boolean bool;
-    if (paramNFCNotify.bytes_originfile_md5 == null)
-    {
+    if (paramNFCNotify.bytes_originfile_md5 == null) {
       bool = true;
-      Object localObject2 = FixImageFileExtName(paramString, (String)localObject1, i, bool);
-      paramString = new SubMsgType0x7.MsgBody();
-      i = DataLineMsgRecord.getDevTypeBySeId(paramNFCNotify.uint64_sessionid);
-      paramString.uint32_sub_cmd.set(paramInt);
-      fillMsgHeader(paramString.msg_header, paramLong, i);
-      localObject1 = new SubMsgType0x7.MsgBody.NFCNotify();
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint64_sessionid.set(paramNFCNotify.uint64_sessionid);
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).str_file_name.set((String)localObject2);
-      if (paramNFCNotify.bytes_file_md5 != null) {
-        ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bytes_file_md5.set(ByteStringMicro.copyFrom(paramNFCNotify.bytes_file_md5));
-      }
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).fixed32_ip.set(paramNFCNotify.fixed32_ip);
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_port.set(paramNFCNotify.uint32_port);
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bytes_url_notify.set(ByteStringMicro.copyFrom(paramNFCNotify.bytes_url_notify));
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bytes_tokenkey.set(ByteStringMicro.copyFrom("1234567890123456".getBytes()));
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint64_file_len.set(paramNFCNotify.uint64_file_len);
-      if (paramNFCNotify.bytes_originfile_md5 != null) {
-        ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bytes_originfile_md5.set(ByteStringMicro.copyFrom(paramNFCNotify.bytes_originfile_md5));
-      }
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_originfiletype.set(paramNFCNotify.uint32_originfiletype);
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_batchID.set(paramNFCNotify.uint32_batchID);
-      if (paramNFCNotify.uint32_group_size > 1)
-      {
-        ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_group_id.set(paramNFCNotify.uint32_group_id);
-        ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_group_size.set(paramNFCNotify.uint32_group_size);
-        ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_group_curindex.set(paramNFCNotify.uint32_group_curindex);
-        ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_groupflag.set(paramNFCNotify.uint32_groupflag);
-      }
-      localObject2 = new SubMsgType0x7.MsgBody.ActionInfo();
-      ((SubMsgType0x7.MsgBody.ActionInfo)localObject2).str_service_name.set(paramNFCNotify.msg_ActionInfo.strServiceName);
-      if (paramNFCNotify.msg_ActionInfo.vServiceInfo != null) {
-        ((SubMsgType0x7.MsgBody.ActionInfo)localObject2).bytes_buf.set(ByteStringMicro.copyFrom(paramNFCNotify.msg_ActionInfo.vServiceInfo));
-      }
-      ((SubMsgType0x7.MsgBody.ActionInfo)localObject2).setHasFlag(true);
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).msg_ActionInfo.set((MessageMicro)localObject2);
-      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).setHasFlag(true);
-      if (2 != paramInt) {
-        break label409;
-      }
-      paramString.rpt_msg_subcmd_0x2_nfc_notify.add((MessageMicro)localObject1);
-    }
-    for (;;)
-    {
-      paramString.setHasFlag(true);
-      return paramString;
+    } else {
       bool = false;
-      break;
-      label409:
+    }
+    Object localObject2 = FixImageFileExtName(paramString, (String)localObject1, i, bool);
+    paramString = new SubMsgType0x7.MsgBody();
+    i = DataLineMsgRecord.getDevTypeBySeId(paramNFCNotify.uint64_sessionid);
+    paramString.uint32_sub_cmd.set(paramInt);
+    fillMsgHeader(paramString.msg_header, paramLong, i);
+    localObject1 = new SubMsgType0x7.MsgBody.NFCNotify();
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint64_sessionid.set(paramNFCNotify.uint64_sessionid);
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).str_file_name.set((String)localObject2);
+    if (paramNFCNotify.bytes_file_md5 != null) {
+      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bytes_file_md5.set(ByteStringMicro.copyFrom(paramNFCNotify.bytes_file_md5));
+    }
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).fixed32_ip.set(paramNFCNotify.fixed32_ip);
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_port.set(paramNFCNotify.uint32_port);
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bytes_url_notify.set(ByteStringMicro.copyFrom(paramNFCNotify.bytes_url_notify));
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bytes_tokenkey.set(ByteStringMicro.copyFrom("1234567890123456".getBytes()));
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint64_file_len.set(paramNFCNotify.uint64_file_len);
+    if (paramNFCNotify.bytes_originfile_md5 != null) {
+      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bytes_originfile_md5.set(ByteStringMicro.copyFrom(paramNFCNotify.bytes_originfile_md5));
+    }
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_originfiletype.set(paramNFCNotify.uint32_originfiletype);
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_batchID.set(paramNFCNotify.uint32_batchID);
+    if (paramNFCNotify.uint32_group_size > 1)
+    {
+      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_group_id.set(paramNFCNotify.uint32_group_id);
+      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_group_size.set(paramNFCNotify.uint32_group_size);
+      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_group_curindex.set(paramNFCNotify.uint32_group_curindex);
+      ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).uint32_groupflag.set(paramNFCNotify.uint32_groupflag);
+    }
+    localObject2 = new SubMsgType0x7.MsgBody.ActionInfo();
+    ((SubMsgType0x7.MsgBody.ActionInfo)localObject2).str_service_name.set(paramNFCNotify.msg_ActionInfo.strServiceName);
+    if (paramNFCNotify.msg_ActionInfo.vServiceInfo != null) {
+      ((SubMsgType0x7.MsgBody.ActionInfo)localObject2).bytes_buf.set(ByteStringMicro.copyFrom(paramNFCNotify.msg_ActionInfo.vServiceInfo));
+    }
+    ((SubMsgType0x7.MsgBody.ActionInfo)localObject2).setHasFlag(true);
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).msg_ActionInfo.set((MessageMicro)localObject2);
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).bool_file_assist.set(paramNFCNotify.bool_file_assist);
+    ((SubMsgType0x7.MsgBody.NFCNotify)localObject1).setHasFlag(true);
+    if (2 == paramInt) {
+      paramString.rpt_msg_subcmd_0x2_nfc_notify.add((MessageMicro)localObject1);
+    } else {
       paramString.rpt_msg_subcmd_0xa_nfc_thumb_notify.add((MessageMicro)localObject1);
     }
+    paramString.setHasFlag(true);
+    return paramString;
   }
   
   public MsgCSBody MsgCSBodyFromFTNNotify(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.FTNNotify> paramList, boolean paramBoolean)
@@ -628,127 +936,101 @@ public class ProtocolHelper
     localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint64_dst_uin = paramMsgHeader.uint64_dst_uin.get();
     Object localObject = localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader;
     long l;
-    label280:
-    SubMsgType0x7.MsgBody.FTNNotify localFTNNotify;
-    label328:
-    FTNNotify localFTNNotify1;
-    if (paramMsgHeader.uint64_src_uin.has())
-    {
+    if (paramMsgHeader.uint64_src_uin.has()) {
       l = paramMsgHeader.uint64_src_uin.get();
-      ((MsgHeader)localObject).uint64_src_uin = l;
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_ter_type = paramMsgHeader.uint32_dst_ter_type.get();
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type = paramMsgHeader.uint32_src_ter_type.get();
-      localObject = new ArrayList();
-      paramList = paramList.iterator();
-      do
-      {
-        if (!paramList.hasNext()) {
-          break;
-        }
-        localFTNNotify = (SubMsgType0x7.MsgBody.FTNNotify)paramList.next();
-      } while (!localFTNNotify.uint64_sessionid.has());
-      paramMsgHeader = localMsgCSBody.msgBody0x211.msgBody0x211_0x7;
-      if (!paramBoolean) {
-        break label702;
-      }
-      paramInt = 9;
-      paramMsgHeader.uMsgSubCmd = paramInt;
-      localFTNNotify1 = new FTNNotify();
-      localFTNNotify1.uint64_sessionid = GenSessionIdFromDev(localFTNNotify.uint64_sessionid.get(), localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type);
-      localFTNNotify1.str_file_name = localFTNNotify.str_file_name.get();
-      localFTNNotify1.str_file_index = localFTNNotify.str_file_index.get();
-      localFTNNotify1.bytes_file_md5 = localFTNNotify.bytes_file_md5.get().toByteArray();
-      localFTNNotify1.uint64_file_len = localFTNNotify.uint64_file_len.get();
-      if (!paramBoolean) {
-        break label707;
-      }
-      paramMsgHeader = null;
-      label435:
-      localFTNNotify1.bytes_originfile_md5 = paramMsgHeader;
-      localFTNNotify1.uint32_originfiletype = localFTNNotify.uint32_originfiletype.get();
-      if (!localFTNNotify.uint32_group_id.has()) {
-        break label722;
-      }
-      paramInt = localFTNNotify.uint32_group_id.get();
-      label474:
-      localFTNNotify1.uint32_group_id = paramInt;
-      if (!localFTNNotify.uint32_group_size.has()) {
-        break label727;
-      }
-      paramInt = localFTNNotify.uint32_group_size.get();
-      label500:
-      localFTNNotify1.uint32_group_size = paramInt;
-      if (!localFTNNotify.uint32_group_curindex.has()) {
-        break label732;
-      }
-      paramInt = localFTNNotify.uint32_group_curindex.get();
-      label526:
-      localFTNNotify1.uint32_group_curindex = paramInt;
-      localFTNNotify1.msg_ActionInfo = new ActionInfo();
-      ActionInfo localActionInfo = localFTNNotify1.msg_ActionInfo;
-      if (!localFTNNotify.msg_ActionInfo.has()) {
-        break label737;
-      }
-      paramMsgHeader = ((SubMsgType0x7.MsgBody.ActionInfo)localFTNNotify.msg_ActionInfo.get()).str_service_name.get();
-      label580:
-      localActionInfo.strServiceName = paramMsgHeader;
-      localActionInfo = localFTNNotify1.msg_ActionInfo;
-      if (!localFTNNotify.msg_ActionInfo.has()) {
-        break label742;
-      }
-      paramMsgHeader = ((SubMsgType0x7.MsgBody.ActionInfo)localFTNNotify.msg_ActionInfo.get()).bytes_buf.get().toByteArray();
-      label625:
-      localActionInfo.vServiceInfo = paramMsgHeader;
-      if (!localFTNNotify.uint32_batchID.has()) {
-        break label747;
-      }
-      paramInt = localFTNNotify.uint32_batchID.get();
-      label651:
-      localFTNNotify1.uint32_batchID = paramInt;
-      if (!localFTNNotify.uint32_groupflag.has()) {
-        break label752;
-      }
-    }
-    label702:
-    label707:
-    label722:
-    label727:
-    label732:
-    label737:
-    label742:
-    label747:
-    label752:
-    for (paramInt = localFTNNotify.uint32_groupflag.get();; paramInt = 0)
-    {
-      localFTNNotify1.uint32_groupflag = paramInt;
-      ((List)localObject).add(localFTNNotify1);
-      break label280;
+    } else {
       l = 0L;
-      break;
+    }
+    ((MsgHeader)localObject).uint64_src_uin = l;
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_ter_type = paramMsgHeader.uint32_dst_ter_type.get();
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type = paramMsgHeader.uint32_src_ter_type.get();
+    localObject = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    for (;;)
+    {
+      boolean bool = localIterator.hasNext();
       paramInt = 1;
-      break label328;
-      paramMsgHeader = localFTNNotify.bytes_originfile_md5.get().toByteArray();
-      break label435;
-      paramInt = 0;
-      break label474;
-      paramInt = 0;
-      break label500;
-      paramInt = 0;
-      break label526;
-      paramMsgHeader = null;
-      break label580;
-      paramMsgHeader = null;
-      break label625;
-      paramInt = 0;
-      break label651;
+      if (!bool) {
+        break;
+      }
+      SubMsgType0x7.MsgBody.FTNNotify localFTNNotify = (SubMsgType0x7.MsgBody.FTNNotify)localIterator.next();
+      if (localFTNNotify.uint64_sessionid.has())
+      {
+        paramMsgHeader = localMsgCSBody.msgBody0x211.msgBody0x211_0x7;
+        if (paramBoolean) {
+          paramInt = 9;
+        }
+        paramMsgHeader.uMsgSubCmd = paramInt;
+        FTNNotify localFTNNotify1 = new FTNNotify();
+        localFTNNotify1.uint64_sessionid = GenSessionIdFromDev(localFTNNotify.uint64_sessionid.get(), localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type);
+        localFTNNotify1.str_file_name = localFTNNotify.str_file_name.get();
+        localFTNNotify1.str_file_index = localFTNNotify.str_file_index.get();
+        localFTNNotify1.bytes_file_md5 = localFTNNotify.bytes_file_md5.get().toByteArray();
+        localFTNNotify1.uint64_file_len = localFTNNotify.uint64_file_len.get();
+        paramList = null;
+        if (paramBoolean) {
+          paramMsgHeader = null;
+        } else {
+          paramMsgHeader = localFTNNotify.bytes_originfile_md5.get().toByteArray();
+        }
+        localFTNNotify1.bytes_originfile_md5 = paramMsgHeader;
+        localFTNNotify1.uint32_originfiletype = localFTNNotify.uint32_originfiletype.get();
+        bool = localFTNNotify.uint32_group_id.has();
+        int i = 0;
+        if (bool) {
+          paramInt = localFTNNotify.uint32_group_id.get();
+        } else {
+          paramInt = 0;
+        }
+        localFTNNotify1.uint32_group_id = paramInt;
+        if (localFTNNotify.uint32_group_size.has()) {
+          paramInt = localFTNNotify.uint32_group_size.get();
+        } else {
+          paramInt = 0;
+        }
+        localFTNNotify1.uint32_group_size = paramInt;
+        if (localFTNNotify.uint32_group_curindex.has()) {
+          paramInt = localFTNNotify.uint32_group_curindex.get();
+        } else {
+          paramInt = 0;
+        }
+        localFTNNotify1.uint32_group_curindex = paramInt;
+        localFTNNotify1.msg_ActionInfo = new ActionInfo();
+        ActionInfo localActionInfo = localFTNNotify1.msg_ActionInfo;
+        if (localFTNNotify.msg_ActionInfo.has()) {
+          paramMsgHeader = ((SubMsgType0x7.MsgBody.ActionInfo)localFTNNotify.msg_ActionInfo.get()).str_service_name.get();
+        } else {
+          paramMsgHeader = null;
+        }
+        localActionInfo.strServiceName = paramMsgHeader;
+        localActionInfo = localFTNNotify1.msg_ActionInfo;
+        paramMsgHeader = paramList;
+        if (localFTNNotify.msg_ActionInfo.has()) {
+          paramMsgHeader = ((SubMsgType0x7.MsgBody.ActionInfo)localFTNNotify.msg_ActionInfo.get()).bytes_buf.get().toByteArray();
+        }
+        localActionInfo.vServiceInfo = paramMsgHeader;
+        if (localFTNNotify.uint32_batchID.has()) {
+          paramInt = localFTNNotify.uint32_batchID.get();
+        } else {
+          paramInt = 0;
+        }
+        localFTNNotify1.uint32_batchID = paramInt;
+        paramInt = i;
+        if (localFTNNotify.uint32_groupflag.has()) {
+          paramInt = localFTNNotify.uint32_groupflag.get();
+        }
+        localFTNNotify1.uint32_groupflag = paramInt;
+        ((List)localObject).add(localFTNNotify1);
+      }
     }
-    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 9) {
+    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 9)
+    {
       localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb = ((FTNNotify[])((List)localObject).toArray(new FTNNotify[((List)localObject).size()]));
-    }
-    while (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd != 1) {
       return localMsgCSBody;
     }
-    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x1_FTNNotifySrc = ((FTNNotify[])((List)localObject).toArray(new FTNNotify[((List)localObject).size()]));
+    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 1) {
+      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x1_FTNNotifySrc = ((FTNNotify[])((List)localObject).toArray(new FTNNotify[((List)localObject).size()]));
+    }
     return localMsgCSBody;
   }
   
@@ -763,37 +1045,34 @@ public class ProtocolHelper
     ArrayList localArrayList = new ArrayList();
     Object localObject = localMsgCSBody.msgBody0x211.msgBody0x211_0x7;
     int i;
-    if (paramArrayOfByte2 == null)
-    {
+    if (paramArrayOfByte2 == null) {
       i = 9;
-      ((MsgCSBody0x211_0x7)localObject).uMsgSubCmd = i;
-      localObject = new FTNNotify();
-      ((FTNNotify)localObject).uint64_sessionid = paramLong1;
-      ((FTNNotify)localObject).str_file_name = paramString1;
-      ((FTNNotify)localObject).str_file_index = paramString2;
-      ((FTNNotify)localObject).bytes_file_md5 = paramArrayOfByte1;
-      ((FTNNotify)localObject).uint64_file_len = paramLong4;
-      ((FTNNotify)localObject).bytes_originfile_md5 = paramArrayOfByte2;
-      ((FTNNotify)localObject).uint32_originfiletype = ((int)paramLong2);
-      ((FTNNotify)localObject).uint32_group_id = paramInt1;
-      ((FTNNotify)localObject).uint32_group_size = paramInt2;
-      ((FTNNotify)localObject).uint32_group_curindex = paramInt3;
-      ((FTNNotify)localObject).uint32_batchID = paramInt4;
-      ((FTNNotify)localObject).msg_ActionInfo = new ActionInfo();
-      localArrayList.add(localObject);
-      if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd != 9) {
-        break label274;
-      }
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb = ((FTNNotify[])localArrayList.toArray(new FTNNotify[localArrayList.size()]));
-    }
-    label274:
-    while (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd != 1)
-    {
-      return localMsgCSBody;
+    } else {
       i = 1;
-      break;
     }
-    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x1_FTNNotifySrc = ((FTNNotify[])localArrayList.toArray(new FTNNotify[localArrayList.size()]));
+    ((MsgCSBody0x211_0x7)localObject).uMsgSubCmd = i;
+    localObject = new FTNNotify();
+    ((FTNNotify)localObject).uint64_sessionid = paramLong1;
+    ((FTNNotify)localObject).str_file_name = paramString1;
+    ((FTNNotify)localObject).str_file_index = paramString2;
+    ((FTNNotify)localObject).bytes_file_md5 = paramArrayOfByte1;
+    ((FTNNotify)localObject).uint64_file_len = paramLong4;
+    ((FTNNotify)localObject).bytes_originfile_md5 = paramArrayOfByte2;
+    ((FTNNotify)localObject).uint32_originfiletype = ((int)paramLong2);
+    ((FTNNotify)localObject).uint32_group_id = paramInt1;
+    ((FTNNotify)localObject).uint32_group_size = paramInt2;
+    ((FTNNotify)localObject).uint32_group_curindex = paramInt3;
+    ((FTNNotify)localObject).uint32_batchID = paramInt4;
+    ((FTNNotify)localObject).msg_ActionInfo = new ActionInfo();
+    localArrayList.add(localObject);
+    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 9)
+    {
+      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x9_FTNNotifyThumb = ((FTNNotify[])localArrayList.toArray(new FTNNotify[localArrayList.size()]));
+      return localMsgCSBody;
+    }
+    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 1) {
+      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x1_FTNNotifySrc = ((FTNNotify[])localArrayList.toArray(new FTNNotify[localArrayList.size()]));
+    }
     return localMsgCSBody;
   }
   
@@ -813,88 +1092,80 @@ public class ProtocolHelper
     localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint64_dst_uin = paramMsgHeader.uint64_dst_uin.get();
     Object localObject = localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader;
     long l;
-    label286:
-    SubMsgType0x7.MsgBody.FileControl localFileControl;
-    FileControl localFileControl1;
-    if (paramMsgHeader.uint64_src_uin.has())
-    {
+    if (paramMsgHeader.uint64_src_uin.has()) {
       l = paramMsgHeader.uint64_src_uin.get();
-      ((MsgHeader)localObject).uint64_src_uin = l;
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_ter_type = paramMsgHeader.uint32_dst_ter_type.get();
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type = paramMsgHeader.uint32_src_ter_type.get();
-      localObject = new ArrayList();
-      paramList = paramList.iterator();
-      do
-      {
-        if (!paramList.hasNext()) {
-          break;
-        }
-        localFileControl = (SubMsgType0x7.MsgBody.FileControl)paramList.next();
-      } while ((!localFileControl.uint64_sessionid.has()) || (!localFileControl.uint32_operate.has()));
-      localFileControl1 = new FileControl();
-      localFileControl1.uint64_sessionid = GenSessionIdFromDev(localFileControl.uint64_sessionid.get(), localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type);
-      localFileControl1.uint32_operate = localFileControl.uint32_operate.get();
-      if (!localFileControl.uint32_seq.has()) {
-        break label654;
-      }
-      i = localFileControl.uint32_seq.get();
-      label401:
-      localFileControl1.uint32_seq = i;
-      if (!localFileControl.uint32_code.has()) {
-        break label659;
-      }
-      i = localFileControl.uint32_code.get();
-      label427:
-      localFileControl1.uint32_code = i;
-      if (!localFileControl.str_msg.has()) {
-        break label664;
-      }
-      paramMsgHeader = localFileControl.str_msg.get();
-      label453:
-      localFileControl1.str_msg = paramMsgHeader;
-      if (!localFileControl.uint32_group_id.has()) {
-        break label669;
-      }
-      i = localFileControl.uint32_group_id.get();
-      label479:
-      localFileControl1.uint32_group_id = i;
-      if (!localFileControl.uint32_group_curindex.has()) {
-        break label674;
-      }
-      i = localFileControl.uint32_group_curindex.get();
-      label505:
-      localFileControl1.uint32_group_curindex = i;
-      if (!localFileControl.uint32_batchID.has()) {
-        break label679;
-      }
-    }
-    label654:
-    label659:
-    label664:
-    label669:
-    label674:
-    label679:
-    for (int i = localFileControl.uint32_batchID.get();; i = 0)
-    {
-      localFileControl1.uint32_batchID = i;
-      ((List)localObject).add(localFileControl1);
-      if (!QLog.isColorLevel()) {
-        break label286;
-      }
-      QLog.d("dataline.ProtocolHelper", 2, "onFileOperate0x211, 控制信令, sessionid[" + localFileControl1.uint64_sessionid + "]; curindex[" + localFileControl1.uint32_group_curindex + "]; group_id[" + localFileControl1.uint32_group_id + "]; batchID[" + localFileControl1.uint32_batchID + "]; operate[" + localFileControl1.uint32_operate + "];");
-      break label286;
+    } else {
       l = 0L;
-      break;
-      i = 0;
-      break label401;
-      i = 0;
-      break label427;
-      paramMsgHeader = null;
-      break label453;
-      i = 0;
-      break label479;
-      i = 0;
-      break label505;
+    }
+    ((MsgHeader)localObject).uint64_src_uin = l;
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_ter_type = paramMsgHeader.uint32_dst_ter_type.get();
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type = paramMsgHeader.uint32_src_ter_type.get();
+    localObject = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      SubMsgType0x7.MsgBody.FileControl localFileControl1 = (SubMsgType0x7.MsgBody.FileControl)paramList.next();
+      if ((localFileControl1.uint64_sessionid.has()) && (localFileControl1.uint32_operate.has()))
+      {
+        FileControl localFileControl = new FileControl();
+        localFileControl.uint64_sessionid = GenSessionIdFromDev(localFileControl1.uint64_sessionid.get(), localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type);
+        localFileControl.uint32_operate = localFileControl1.uint32_operate.get();
+        boolean bool = localFileControl1.uint32_seq.has();
+        int j = 0;
+        if (bool) {
+          i = localFileControl1.uint32_seq.get();
+        } else {
+          i = 0;
+        }
+        localFileControl.uint32_seq = i;
+        if (localFileControl1.uint32_code.has()) {
+          i = localFileControl1.uint32_code.get();
+        } else {
+          i = 0;
+        }
+        localFileControl.uint32_code = i;
+        if (localFileControl1.str_msg.has()) {
+          paramMsgHeader = localFileControl1.str_msg.get();
+        } else {
+          paramMsgHeader = null;
+        }
+        localFileControl.str_msg = paramMsgHeader;
+        if (localFileControl1.uint32_group_id.has()) {
+          i = localFileControl1.uint32_group_id.get();
+        } else {
+          i = 0;
+        }
+        localFileControl.uint32_group_id = i;
+        if (localFileControl1.uint32_group_curindex.has()) {
+          i = localFileControl1.uint32_group_curindex.get();
+        } else {
+          i = 0;
+        }
+        localFileControl.uint32_group_curindex = i;
+        int i = j;
+        if (localFileControl1.uint32_batchID.has()) {
+          i = localFileControl1.uint32_batchID.get();
+        }
+        localFileControl.uint32_batchID = i;
+        localFileControl.bool_file_assist = localFileControl1.bool_file_assist.get();
+        ((List)localObject).add(localFileControl);
+        if (QLog.isColorLevel())
+        {
+          paramMsgHeader = new StringBuilder();
+          paramMsgHeader.append("onFileOperate0x211, 控制信令, sessionid[");
+          paramMsgHeader.append(localFileControl.uint64_sessionid);
+          paramMsgHeader.append("]; curindex[");
+          paramMsgHeader.append(localFileControl.uint32_group_curindex);
+          paramMsgHeader.append("]; group_id[");
+          paramMsgHeader.append(localFileControl.uint32_group_id);
+          paramMsgHeader.append("]; batchID[");
+          paramMsgHeader.append(localFileControl.uint32_batchID);
+          paramMsgHeader.append("]; operate[");
+          paramMsgHeader.append(localFileControl.uint32_operate);
+          paramMsgHeader.append("];");
+          QLog.d("dataline.ProtocolHelper", 2, paramMsgHeader.toString());
+        }
+      }
     }
     localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x3_FileControl = ((FileControl[])((List)localObject).toArray(new FileControl[((List)localObject).size()]));
     return localMsgCSBody;
@@ -902,16 +1173,22 @@ public class ProtocolHelper
   
   public MsgCSBody MsgCSBodyFromFileControl_0x210(long paramLong1, long paramLong2, int paramInt1, int paramInt2, short paramShort)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.ProtocolHelper", 2, "uSessionID[" + paramLong1 + "]onFileOpdrate: 210  operate = " + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("uSessionID[");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append("]onFileOpdrate: 210  operate = ");
+      ((StringBuilder)localObject).append(paramLong2);
+      QLog.d("dataline.ProtocolHelper", 2, ((StringBuilder)localObject).toString());
     }
-    MsgCSBody localMsgCSBody = new MsgCSBody();
-    localMsgCSBody.uMsgType = 529;
-    localMsgCSBody.msgBody0x211 = new MsgCSBody0x211();
-    localMsgCSBody.msgBody0x211.uMsgSubType = 7;
-    localMsgCSBody.msgBody0x211.msgBody0x211_0x7 = new MsgCSBody0x211_0x7();
-    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader = msgHeader(GetSelfUin());
-    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd = 3;
+    Object localObject = new MsgCSBody();
+    ((MsgCSBody)localObject).uMsgType = 529;
+    ((MsgCSBody)localObject).msgBody0x211 = new MsgCSBody0x211();
+    ((MsgCSBody)localObject).msgBody0x211.uMsgSubType = 7;
+    ((MsgCSBody)localObject).msgBody0x211.msgBody0x211_0x7 = new MsgCSBody0x211_0x7();
+    ((MsgCSBody)localObject).msgBody0x211.msgBody0x211_0x7.msgHeader = msgHeader(GetSelfUin());
+    ((MsgCSBody)localObject).msgBody0x211.msgBody0x211_0x7.uMsgSubCmd = 3;
     ArrayList localArrayList = new ArrayList();
     FileControl localFileControl = new FileControl();
     localFileControl.uint64_sessionid = paramLong1;
@@ -922,9 +1199,10 @@ public class ProtocolHelper
     localFileControl.uint32_group_id = paramInt2;
     localFileControl.uint32_group_curindex = 0;
     localFileControl.uint32_batchID = 0;
+    localFileControl.bool_file_assist = false;
     localArrayList.add(localFileControl);
-    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x3_FileControl = ((FileControl[])localArrayList.toArray(new FileControl[localArrayList.size()]));
-    return localMsgCSBody;
+    ((MsgCSBody)localObject).msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x3_FileControl = ((FileControl[])localArrayList.toArray(new FileControl[localArrayList.size()]));
+    return localObject;
   }
   
   public MsgCSBody MsgCSBodyFromNFCNotify(int paramInt, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List<SubMsgType0x7.MsgBody.NFCNotify> paramList, boolean paramBoolean)
@@ -943,136 +1221,130 @@ public class ProtocolHelper
     localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint64_dst_uin = paramMsgHeader.uint64_dst_uin.get();
     Object localObject = localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader;
     long l;
-    label295:
-    SubMsgType0x7.MsgBody.NFCNotify localNFCNotify;
-    label371:
-    NFCNotify localNFCNotify1;
-    if (paramMsgHeader.uint64_src_uin.has())
-    {
+    if (paramMsgHeader.uint64_src_uin.has()) {
       l = paramMsgHeader.uint64_src_uin.get();
-      ((MsgHeader)localObject).uint64_src_uin = l;
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_uin_type = 0;
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_ter_type = paramMsgHeader.uint32_dst_ter_type.get();
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type = paramMsgHeader.uint32_src_ter_type.get();
-      localObject = new ArrayList();
-      paramList = paramList.iterator();
-      do
-      {
-        if (!paramList.hasNext()) {
-          break;
-        }
-        localNFCNotify = (SubMsgType0x7.MsgBody.NFCNotify)paramList.next();
-      } while (!localNFCNotify.uint64_sessionid.has());
-      l = GenSessionIdFromDev(localNFCNotify.uint64_sessionid.get(), localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type);
-      paramMsgHeader = localMsgCSBody.msgBody0x211.msgBody0x211_0x7;
-      if (!paramBoolean) {
-        break label917;
-      }
-      paramInt = 10;
-      paramMsgHeader.uMsgSubCmd = paramInt;
-      localNFCNotify1 = new NFCNotify();
-      localNFCNotify1.uint64_sessionid = l;
-      localNFCNotify1.str_file_name = localNFCNotify.str_file_name.get();
-      localNFCNotify1.bytes_file_md5 = localNFCNotify.bytes_file_md5.get().toByteArray();
-      localNFCNotify1.fixed32_ip = localNFCNotify.fixed32_ip.get();
-      localNFCNotify1.uint32_port = localNFCNotify.uint32_port.get();
-      localNFCNotify1.bytes_url_notify = localNFCNotify.bytes_url_notify.get().toByteArray();
-      localNFCNotify1.bytes_tokenkey = localNFCNotify.bytes_tokenkey.get().toByteArray();
-      localNFCNotify1.uint64_file_len = localNFCNotify.uint64_file_len.get();
-      if (!paramBoolean) {
-        break label922;
-      }
-      paramMsgHeader = null;
-      label499:
-      localNFCNotify1.bytes_originfile_md5 = paramMsgHeader;
-      localNFCNotify1.uint32_originfiletype = localNFCNotify.uint32_originfiletype.get();
-      if (!localNFCNotify.uint32_group_id.has()) {
-        break label937;
-      }
-      paramInt = localNFCNotify.uint32_group_id.get();
-      label538:
-      localNFCNotify1.uint32_group_id = paramInt;
-      if (!localNFCNotify.uint32_group_size.has()) {
-        break label942;
-      }
-      paramInt = localNFCNotify.uint32_group_size.get();
-      label564:
-      localNFCNotify1.uint32_group_size = paramInt;
-      if (!localNFCNotify.uint32_group_curindex.has()) {
-        break label947;
-      }
-      paramInt = localNFCNotify.uint32_group_curindex.get();
-      label590:
-      localNFCNotify1.uint32_group_curindex = paramInt;
-      localNFCNotify1.msg_ActionInfo = new ActionInfo();
-      ActionInfo localActionInfo = localNFCNotify1.msg_ActionInfo;
-      if (!localNFCNotify.msg_ActionInfo.has()) {
-        break label952;
-      }
-      paramMsgHeader = ((SubMsgType0x7.MsgBody.ActionInfo)localNFCNotify.msg_ActionInfo.get()).str_service_name.get();
-      label644:
-      localActionInfo.strServiceName = paramMsgHeader;
-      localActionInfo = localNFCNotify1.msg_ActionInfo;
-      if (!localNFCNotify.msg_ActionInfo.has()) {
-        break label957;
-      }
-      paramMsgHeader = ((SubMsgType0x7.MsgBody.ActionInfo)localNFCNotify.msg_ActionInfo.get()).bytes_buf.get().toByteArray();
-      label689:
-      localActionInfo.vServiceInfo = paramMsgHeader;
-      if (!localNFCNotify.uint32_batchID.has()) {
-        break label962;
-      }
-      paramInt = localNFCNotify.uint32_batchID.get();
-      label715:
-      localNFCNotify1.uint32_batchID = paramInt;
-      if (!localNFCNotify.uint32_groupflag.has()) {
-        break label967;
-      }
-    }
-    label917:
-    label922:
-    label937:
-    label942:
-    label947:
-    label952:
-    label957:
-    label962:
-    label967:
-    for (paramInt = localNFCNotify.uint32_groupflag.get();; paramInt = 0)
-    {
-      localNFCNotify1.uint32_groupflag = paramInt;
-      ((List)localObject).add(localNFCNotify1);
-      if (!QLog.isColorLevel()) {
-        break label295;
-      }
-      QLog.d("dataline.ProtocolHelper", 2, "onFileComing0x211_0xa_0x2, 近场信令[" + paramBoolean + "]; sessionid[" + localNFCNotify1.uint64_sessionid + "]; curindex[" + localNFCNotify1.uint32_group_curindex + "]; group_id[" + localNFCNotify1.uint32_group_id + "]; group_size[" + localNFCNotify1.uint32_group_size + "]; batchID[" + localNFCNotify1.uint32_batchID + "]; groupflag[" + localNFCNotify1.uint32_groupflag + "]; file_name[" + localNFCNotify1.str_file_name + "]; file_len[" + localNFCNotify1.uint64_file_len + "];");
-      break label295;
+    } else {
       l = 0L;
-      break;
-      paramInt = 2;
-      break label371;
-      paramMsgHeader = localNFCNotify.bytes_originfile_md5.get().toByteArray();
-      break label499;
-      paramInt = 0;
-      break label538;
-      paramInt = 0;
-      break label564;
-      paramInt = 0;
-      break label590;
-      paramMsgHeader = null;
-      break label644;
-      paramMsgHeader = null;
-      break label689;
-      paramInt = 0;
-      break label715;
     }
-    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 10) {
+    ((MsgHeader)localObject).uint64_src_uin = l;
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_uin_type = 0;
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_ter_type = paramMsgHeader.uint32_dst_ter_type.get();
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type = paramMsgHeader.uint32_src_ter_type.get();
+    localObject = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    for (;;)
+    {
+      boolean bool = localIterator.hasNext();
+      paramInt = 10;
+      if (!bool) {
+        break;
+      }
+      SubMsgType0x7.MsgBody.NFCNotify localNFCNotify = (SubMsgType0x7.MsgBody.NFCNotify)localIterator.next();
+      if (localNFCNotify.uint64_sessionid.has())
+      {
+        l = GenSessionIdFromDev(localNFCNotify.uint64_sessionid.get(), localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type);
+        paramMsgHeader = localMsgCSBody.msgBody0x211.msgBody0x211_0x7;
+        if (!paramBoolean) {
+          paramInt = 2;
+        }
+        paramMsgHeader.uMsgSubCmd = paramInt;
+        NFCNotify localNFCNotify1 = new NFCNotify();
+        localNFCNotify1.uint64_sessionid = l;
+        localNFCNotify1.str_file_name = localNFCNotify.str_file_name.get();
+        localNFCNotify1.bytes_file_md5 = localNFCNotify.bytes_file_md5.get().toByteArray();
+        localNFCNotify1.fixed32_ip = localNFCNotify.fixed32_ip.get();
+        localNFCNotify1.uint32_port = localNFCNotify.uint32_port.get();
+        localNFCNotify1.bytes_url_notify = localNFCNotify.bytes_url_notify.get().toByteArray();
+        localNFCNotify1.bytes_tokenkey = localNFCNotify.bytes_tokenkey.get().toByteArray();
+        localNFCNotify1.uint64_file_len = localNFCNotify.uint64_file_len.get();
+        paramList = null;
+        if (paramBoolean) {
+          paramMsgHeader = null;
+        } else {
+          paramMsgHeader = localNFCNotify.bytes_originfile_md5.get().toByteArray();
+        }
+        localNFCNotify1.bytes_originfile_md5 = paramMsgHeader;
+        localNFCNotify1.uint32_originfiletype = localNFCNotify.uint32_originfiletype.get();
+        if (localNFCNotify.uint32_group_id.has()) {
+          paramInt = localNFCNotify.uint32_group_id.get();
+        } else {
+          paramInt = 0;
+        }
+        localNFCNotify1.uint32_group_id = paramInt;
+        if (localNFCNotify.uint32_group_size.has()) {
+          paramInt = localNFCNotify.uint32_group_size.get();
+        } else {
+          paramInt = 0;
+        }
+        localNFCNotify1.uint32_group_size = paramInt;
+        if (localNFCNotify.uint32_group_curindex.has()) {
+          paramInt = localNFCNotify.uint32_group_curindex.get();
+        } else {
+          paramInt = 0;
+        }
+        localNFCNotify1.uint32_group_curindex = paramInt;
+        localNFCNotify1.msg_ActionInfo = new ActionInfo();
+        ActionInfo localActionInfo = localNFCNotify1.msg_ActionInfo;
+        if (localNFCNotify.msg_ActionInfo.has()) {
+          paramMsgHeader = ((SubMsgType0x7.MsgBody.ActionInfo)localNFCNotify.msg_ActionInfo.get()).str_service_name.get();
+        } else {
+          paramMsgHeader = null;
+        }
+        localActionInfo.strServiceName = paramMsgHeader;
+        localActionInfo = localNFCNotify1.msg_ActionInfo;
+        paramMsgHeader = paramList;
+        if (localNFCNotify.msg_ActionInfo.has()) {
+          paramMsgHeader = ((SubMsgType0x7.MsgBody.ActionInfo)localNFCNotify.msg_ActionInfo.get()).bytes_buf.get().toByteArray();
+        }
+        localActionInfo.vServiceInfo = paramMsgHeader;
+        if (localNFCNotify.uint32_batchID.has()) {
+          paramInt = localNFCNotify.uint32_batchID.get();
+        } else {
+          paramInt = 0;
+        }
+        localNFCNotify1.uint32_batchID = paramInt;
+        if (localNFCNotify.uint32_groupflag.has()) {
+          paramInt = localNFCNotify.uint32_groupflag.get();
+        } else {
+          paramInt = 0;
+        }
+        localNFCNotify1.uint32_groupflag = paramInt;
+        localNFCNotify1.bool_file_assist = localNFCNotify.bool_file_assist.get();
+        ((List)localObject).add(localNFCNotify1);
+        if (QLog.isColorLevel())
+        {
+          paramMsgHeader = new StringBuilder();
+          paramMsgHeader.append("onFileComing0x211_0xa_0x2, 近场信令[");
+          paramMsgHeader.append(paramBoolean);
+          paramMsgHeader.append("]; sessionid[");
+          paramMsgHeader.append(localNFCNotify1.uint64_sessionid);
+          paramMsgHeader.append("]; curindex[");
+          paramMsgHeader.append(localNFCNotify1.uint32_group_curindex);
+          paramMsgHeader.append("]; group_id[");
+          paramMsgHeader.append(localNFCNotify1.uint32_group_id);
+          paramMsgHeader.append("]; group_size[");
+          paramMsgHeader.append(localNFCNotify1.uint32_group_size);
+          paramMsgHeader.append("]; batchID[");
+          paramMsgHeader.append(localNFCNotify1.uint32_batchID);
+          paramMsgHeader.append("]; groupflag[");
+          paramMsgHeader.append(localNFCNotify1.uint32_groupflag);
+          paramMsgHeader.append("]; file_name[");
+          paramMsgHeader.append(localNFCNotify1.str_file_name);
+          paramMsgHeader.append("]; file_len[");
+          paramMsgHeader.append(localNFCNotify1.uint64_file_len);
+          paramMsgHeader.append("];");
+          QLog.d("dataline.ProtocolHelper", 2, paramMsgHeader.toString());
+        }
+      }
+    }
+    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 10)
+    {
       localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb = ((NFCNotify[])((List)localObject).toArray(new NFCNotify[((List)localObject).size()]));
-    }
-    while (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd != 2) {
       return localMsgCSBody;
     }
-    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x2_NFCNotifySrc = ((NFCNotify[])((List)localObject).toArray(new NFCNotify[((List)localObject).size()]));
+    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 2) {
+      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x2_NFCNotifySrc = ((NFCNotify[])((List)localObject).toArray(new NFCNotify[((List)localObject).size()]));
+    }
     return localMsgCSBody;
   }
   
@@ -1088,40 +1360,37 @@ public class ProtocolHelper
     ArrayList localArrayList = new ArrayList();
     Object localObject = localMsgCSBody.msgBody0x211.msgBody0x211_0x7;
     int i;
-    if (paramArrayOfByte4 == null)
-    {
+    if (paramArrayOfByte4 == null) {
       i = 10;
-      ((MsgCSBody0x211_0x7)localObject).uMsgSubCmd = i;
-      localObject = new NFCNotify();
-      ((NFCNotify)localObject).uint64_sessionid = paramLong1;
-      ((NFCNotify)localObject).str_file_name = paramString;
-      ((NFCNotify)localObject).bytes_file_md5 = paramArrayOfByte1;
-      ((NFCNotify)localObject).fixed32_ip = ((int)paramLong5);
-      ((NFCNotify)localObject).uint32_port = ((int)paramLong6);
-      ((NFCNotify)localObject).bytes_url_notify = paramArrayOfByte2;
-      ((NFCNotify)localObject).bytes_tokenkey = paramArrayOfByte3;
-      ((NFCNotify)localObject).uint64_file_len = paramLong4;
-      ((NFCNotify)localObject).bytes_originfile_md5 = paramArrayOfByte4;
-      ((NFCNotify)localObject).uint32_originfiletype = ((int)paramLong2);
-      ((NFCNotify)localObject).uint32_group_id = paramInt1;
-      ((NFCNotify)localObject).uint32_group_size = paramInt2;
-      ((NFCNotify)localObject).uint32_group_curindex = paramInt3;
-      ((NFCNotify)localObject).uint32_batchID = paramInt4;
-      ((NFCNotify)localObject).msg_ActionInfo = new ActionInfo();
-      localArrayList.add(localObject);
-      if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd != 10) {
-        break label315;
-      }
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb = ((NFCNotify[])localArrayList.toArray(new NFCNotify[localArrayList.size()]));
-    }
-    label315:
-    while (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd != 2)
-    {
-      return localMsgCSBody;
+    } else {
       i = 2;
-      break;
     }
-    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x2_NFCNotifySrc = ((NFCNotify[])localArrayList.toArray(new NFCNotify[localArrayList.size()]));
+    ((MsgCSBody0x211_0x7)localObject).uMsgSubCmd = i;
+    localObject = new NFCNotify();
+    ((NFCNotify)localObject).uint64_sessionid = paramLong1;
+    ((NFCNotify)localObject).str_file_name = paramString;
+    ((NFCNotify)localObject).bytes_file_md5 = paramArrayOfByte1;
+    ((NFCNotify)localObject).fixed32_ip = ((int)paramLong5);
+    ((NFCNotify)localObject).uint32_port = ((int)paramLong6);
+    ((NFCNotify)localObject).bytes_url_notify = paramArrayOfByte2;
+    ((NFCNotify)localObject).bytes_tokenkey = paramArrayOfByte3;
+    ((NFCNotify)localObject).uint64_file_len = paramLong4;
+    ((NFCNotify)localObject).bytes_originfile_md5 = paramArrayOfByte4;
+    ((NFCNotify)localObject).uint32_originfiletype = ((int)paramLong2);
+    ((NFCNotify)localObject).uint32_group_id = paramInt1;
+    ((NFCNotify)localObject).uint32_group_size = paramInt2;
+    ((NFCNotify)localObject).uint32_group_curindex = paramInt3;
+    ((NFCNotify)localObject).uint32_batchID = paramInt4;
+    ((NFCNotify)localObject).msg_ActionInfo = new ActionInfo();
+    localArrayList.add(localObject);
+    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 10)
+    {
+      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0xa_NFCNotifyThumb = ((NFCNotify[])localArrayList.toArray(new NFCNotify[localArrayList.size()]));
+      return localMsgCSBody;
+    }
+    if (localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd == 2) {
+      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x2_NFCNotifySrc = ((NFCNotify[])localArrayList.toArray(new NFCNotify[localArrayList.size()]));
+    }
     return localMsgCSBody;
   }
   
@@ -1140,28 +1409,31 @@ public class ProtocolHelper
     localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_inst_id = paramMsgHeader.uint32_dst_inst_id.get();
     localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint64_dst_uin = paramMsgHeader.uint64_dst_uin.get();
     Object localObject = localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader;
-    if (paramMsgHeader.uint64_src_uin.has()) {}
-    for (long l = paramMsgHeader.uint64_src_uin.get();; l = 0L)
+    long l;
+    if (paramMsgHeader.uint64_src_uin.has()) {
+      l = paramMsgHeader.uint64_src_uin.get();
+    } else {
+      l = 0L;
+    }
+    ((MsgHeader)localObject).uint64_src_uin = l;
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_uin_type = 0;
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd = 8;
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_ter_type = paramMsgHeader.uint32_dst_ter_type.get();
+    localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type = paramMsgHeader.uint32_src_ter_type.get();
+    paramMsgHeader = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      ((MsgHeader)localObject).uint64_src_uin = l;
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_uin_type = 0;
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.uMsgSubCmd = 8;
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_dst_ter_type = paramMsgHeader.uint32_dst_ter_type.get();
-      localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type = paramMsgHeader.uint32_src_ter_type.get();
-      paramMsgHeader = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localObject = (SubMsgType0x7.MsgBody.RNFCNotify)paramList.next();
-        l = GenSessionIdFromDev(((SubMsgType0x7.MsgBody.RNFCNotify)localObject).uint64_sessionid.get(), localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type);
-        RFCInfoNotify localRFCInfoNotify = new RFCInfoNotify();
-        localRFCInfoNotify.uSessionId = l;
-        localRFCInfoNotify.uServerIp = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).fixed32_ip.get();
-        localRFCInfoNotify.uSvrPort = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).uint32_port.get();
-        localRFCInfoNotify.vTokenKey = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).bytes_token.get().toByteArray();
-        localRFCInfoNotify.uSvrTaskId = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).uint64_svrTaskId.get();
-        paramMsgHeader.add(localRFCInfoNotify);
-      }
+      localObject = (SubMsgType0x7.MsgBody.RNFCNotify)paramList.next();
+      l = GenSessionIdFromDev(((SubMsgType0x7.MsgBody.RNFCNotify)localObject).uint64_sessionid.get(), localMsgCSBody.msgBody0x211.msgBody0x211_0x7.msgHeader.uint32_src_ter_type);
+      RFCInfoNotify localRFCInfoNotify = new RFCInfoNotify();
+      localRFCInfoNotify.uSessionId = l;
+      localRFCInfoNotify.uServerIp = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).fixed32_ip.get();
+      localRFCInfoNotify.uSvrPort = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).uint32_port.get();
+      localRFCInfoNotify.vTokenKey = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).bytes_token.get().toByteArray();
+      localRFCInfoNotify.uSvrTaskId = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).uint64_svrTaskId.get();
+      localRFCInfoNotify.bool_file_assist = ((SubMsgType0x7.MsgBody.RNFCNotify)localObject).bool_file_assist.get();
+      paramMsgHeader.add(localRFCInfoNotify);
     }
     localMsgCSBody.msgBody0x211.msgBody0x211_0x7.pMsgBody0x211_0x7_0x8_RFCInfoNotiy = ((RFCInfoNotify[])paramMsgHeader.toArray(new RFCInfoNotify[paramMsgHeader.size()]));
     return localMsgCSBody;
@@ -1194,29 +1466,40 @@ public class ProtocolHelper
   
   public Session genSession(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, long paramLong, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("dataline.ProtocolHelper", 2, "--->>sendFile sPath[" + paramString1 + "], sPathThumb[" + paramString2 + "], type[" + paramInt2 + "], fileFrom[" + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("--->>sendFile sPath[");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("], sPathThumb[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("], type[");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("], fileFrom[");
+      ((StringBuilder)localObject).append(paramInt1);
+      QLog.d("dataline.ProtocolHelper", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramInt1 == 0) && (paramString1 != null) && (!paramString1.equals("")))
     {
       localObject = new File(paramString1);
       if (!((File)localObject).exists())
       {
-        showFileNotExistDialog(((File)localObject).getName());
+        showFileNotExistDialog(paramString3);
         return null;
       }
       if (((File)localObject).length() == 0L)
       {
-        showFileIsEmptyDialog(((File)localObject).getName());
+        showFileIsEmptyDialog(paramString3);
         return null;
       }
-      if (((File)localObject).length() > 2147483648L)
+      if ((!QFileAssistantUtils.b()) && (((File)localObject).length() > 2147483648L))
       {
-        showFileTooLargeDialog(((File)localObject).getName());
+        showFileTooLargeDialog(paramString3);
         return null;
       }
     }
     Object localObject = new Session();
+    ((Session)localObject).uFileSizeSrc = FileManagerUtil.h(paramString1);
     ((Session)localObject).uSessionID = paramLong;
     ((Session)localObject).emFileFrom = paramInt1;
     ((Session)localObject).bSend = true;
@@ -1234,7 +1517,7 @@ public class ProtocolHelper
   
   public Session genSession(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, alqo.b(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
+    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, DataLineHandler.c(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
     if (localSession != null)
     {
       localSession.uFileSizeSrc = paramDataLineMsgRecord.filesize;
@@ -1273,6 +1556,7 @@ public class ProtocolHelper
     localRNFCNotify.fixed32_ip.set(paramRFCInfoNotify.uServerIp);
     localRNFCNotify.uint32_port.set(paramRFCInfoNotify.uSvrPort);
     localRNFCNotify.uint64_svrTaskId.set(paramRFCInfoNotify.uSvrTaskId);
+    localRNFCNotify.bool_file_assist.set(paramRFCInfoNotify.bool_file_assist);
     paramString.rpt_msg_subcmd_0x8_rnfc_notify.add(localRNFCNotify);
     return paramString;
   }
@@ -1284,7 +1568,7 @@ public class ProtocolHelper
   
   public MsgHeader msgHeader(long paramLong, int paramInt)
   {
-    int i = AppSetting.a();
+    int i = AppSetting.d();
     MsgHeader localMsgHeader = new MsgHeader();
     localMsgHeader.uint32_src_app_id = 1001;
     localMsgHeader.uint32_src_inst_id = i;
@@ -1300,35 +1584,50 @@ public class ProtocolHelper
   
   public void showFileIsEmptyDialog(String paramString)
   {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() == ((Looper)localObject).getThread())
     {
-      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694022));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("'");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("'");
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131891293));
+      FMToastUtil.a(((StringBuilder)localObject).toString());
       return;
     }
-    new Handler(localLooper).post(new ProtocolHelper.1(this, paramString));
+    new Handler((Looper)localObject).post(new ProtocolHelper.1(this, paramString));
   }
   
   public void showFileNotExistDialog(String paramString)
   {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() == ((Looper)localObject).getThread())
     {
-      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694026));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("'");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("'");
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131891297));
+      FMToastUtil.a(((StringBuilder)localObject).toString());
       return;
     }
-    new Handler(localLooper).post(new ProtocolHelper.3(this, paramString));
+    new Handler((Looper)localObject).post(new ProtocolHelper.3(this, paramString));
   }
   
   public void showFileTooLargeDialog(String paramString)
   {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() == ((Looper)localObject).getThread())
     {
-      arri.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694024));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("'");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("'");
+      ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131891295));
+      FMToastUtil.a(((StringBuilder)localObject).toString());
       return;
     }
-    new Handler(localLooper).post(new ProtocolHelper.2(this, paramString));
+    new Handler((Looper)localObject).post(new ProtocolHelper.2(this, paramString));
   }
   
   public void showNoNetworkDialog()
@@ -1336,7 +1635,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      arri.a(2131694063);
+      FMToastUtil.a(2131891334);
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.5(this));
@@ -1347,7 +1646,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      arri.a(2131694062);
+      FMToastUtil.a(2131891333);
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.4(this));
@@ -1355,7 +1654,7 @@ public class ProtocolHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper
  * JD-Core Version:    0.7.0.1
  */

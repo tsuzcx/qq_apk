@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/ChattingItemTo"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.wear.app.ui.widget.WearTextView android:id="@id/content_tv" android:background="@drawable/message_to_bg" android:layout_marginLeft="30.0dip" android:text="{content}" style="@style/MessageHistoryContent" />
+</LinearLayout>

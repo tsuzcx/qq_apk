@@ -20,12 +20,12 @@ import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
 import com.tencent.mobileqq.transfile.TransfileUtile;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fun;
 import fuo;
 import fup;
 import fuq;
 import fur;
 import fus;
-import fut;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -47,8 +47,8 @@ public class OnlineFileSessionCenter
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   public Handler a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fup(this);
-  private fut jdField_a_of_type_Fut = null;
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fuo(this);
+  private fus jdField_a_of_type_Fus = null;
   LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private LinkedHashMap b = new LinkedHashMap();
   
@@ -57,7 +57,7 @@ public class OnlineFileSessionCenter
     this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     paramQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fuo(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new fun(this);
     try
     {
       IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.intent.logout");
@@ -248,7 +248,7 @@ public class OnlineFileSessionCenter
         }
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderCancelUpload");
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong));
-      a(paramString, paramLong, new fus(this, 10));
+      a(paramString, paramLong, new fur(this, 10));
       return;
       localOnlineFileSessionWorker.e();
     } while (!localOnlineFileSessionWorker.c());
@@ -272,7 +272,7 @@ public class OnlineFileSessionCenter
         }
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onFileRequestBeHandledByPC");
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramLong));
-      a(paramString, paramLong, new fus(this, paramInt));
+      a(paramString, paramLong, new fur(this, paramInt));
       return;
       localOnlineFileSessionWorker.a(paramInt);
     } while (!localOnlineFileSessionWorker.c());
@@ -315,10 +315,10 @@ public class OnlineFileSessionCenter
         }
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.onSenderUploadException");
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramLong));
-      localObject = new fus(this, 12);
-      ((fus)localObject).jdField_b_of_type_Int = paramInt;
-      ((fus)localObject).jdField_a_of_type_JavaLangString = paramString2;
-      a(paramString1, paramLong, (fus)localObject);
+      localObject = new fur(this, 12);
+      ((fur)localObject).jdField_b_of_type_Int = paramInt;
+      ((fur)localObject).jdField_a_of_type_JavaLangString = paramString2;
+      a(paramString1, paramLong, (fur)localObject);
       return;
       ((OnlineFileSessionWorker)localObject).a(paramInt, paramString2);
     } while (!((OnlineFileSessionWorker)localObject).c());
@@ -342,11 +342,11 @@ public class OnlineFileSessionCenter
         }
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "]. not find worker.onSenderUploadCompleted");
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1, paramLong1));
-      localObject = new fus(this, 11);
-      ((fus)localObject).jdField_b_of_type_Int = paramInt;
-      ((fus)localObject).jdField_a_of_type_JavaLangString = paramString2;
-      ((fus)localObject).jdField_b_of_type_Long = paramLong2;
-      a(paramString1, paramLong1, (fus)localObject);
+      localObject = new fur(this, 11);
+      ((fur)localObject).jdField_b_of_type_Int = paramInt;
+      ((fur)localObject).jdField_a_of_type_JavaLangString = paramString2;
+      ((fur)localObject).jdField_b_of_type_Long = paramLong2;
+      a(paramString1, paramLong1, (fur)localObject);
       return;
       if (!((OnlineFileSessionWorker)localObject).a(paramInt, paramString2, paramLong2)) {
         QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong1 + "] upload competed. but onlineworker handle failed!!!!");
@@ -355,21 +355,21 @@ public class OnlineFileSessionCenter
     c(((OnlineFileSessionWorker)localObject).h);
   }
   
-  void a(String paramString, long paramLong, fus paramfus)
+  void a(String paramString, long paramLong, fur paramfur)
   {
-    if ((paramString == null) || (paramLong <= 0L) || (paramfus == null)) {
+    if ((paramString == null) || (paramLong <= 0L) || (paramfur == null)) {
       return;
     }
-    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  cacheHandleBeforeRequest handleType:" + paramfus.jdField_a_of_type_Int + " info_1:" + paramfus.jdField_b_of_type_Int + " info_2:" + paramfus.jdField_a_of_type_JavaLangString + " info_3:" + paramfus.jdField_b_of_type_Long);
+    QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  cacheHandleBeforeRequest handleType:" + paramfur.jdField_a_of_type_Int + " info_1:" + paramfur.jdField_b_of_type_Int + " info_2:" + paramfur.jdField_a_of_type_JavaLangString + " info_3:" + paramfur.jdField_b_of_type_Long);
     LinkedHashMap localLinkedHashMap = (LinkedHashMap)this.b.get(paramString);
     if (localLinkedHashMap == null)
     {
       localLinkedHashMap = new LinkedHashMap();
-      localLinkedHashMap.put(Long.valueOf(paramLong), paramfus);
+      localLinkedHashMap.put(Long.valueOf(paramLong), paramfur);
       this.b.put(paramString, localLinkedHashMap);
       return;
     }
-    localLinkedHashMap.put(Long.valueOf(paramLong), paramfus);
+    localLinkedHashMap.put(Long.valueOf(paramLong), paramfur);
   }
   
   public void a(String paramString, long paramLong, boolean paramBoolean)
@@ -539,11 +539,11 @@ public class OnlineFileSessionCenter
     boolean bool1;
     if (localLinkedHashMap != null)
     {
-      localObject = (fus)localLinkedHashMap.get(Long.valueOf(paramLong));
+      localObject = (fur)localLinkedHashMap.get(Long.valueOf(paramLong));
       if (localObject != null)
       {
-        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  isBeHandledBeforeRequest handleType:" + ((fus)localObject).jdField_a_of_type_Int + " info_1:" + ((fus)localObject).jdField_b_of_type_Int + " info_2:" + ((fus)localObject).jdField_a_of_type_JavaLangString + " info_3:" + ((fus)localObject).jdField_b_of_type_Long);
-        switch (((fus)localObject).jdField_a_of_type_Int)
+        QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]  isBeHandledBeforeRequest handleType:" + ((fur)localObject).jdField_a_of_type_Int + " info_1:" + ((fur)localObject).jdField_b_of_type_Int + " info_2:" + ((fur)localObject).jdField_a_of_type_JavaLangString + " info_3:" + ((fur)localObject).jdField_b_of_type_Long);
+        switch (((fur)localObject).jdField_a_of_type_Int)
         {
         case 6: 
         case 7: 
@@ -589,26 +589,26 @@ public class OnlineFileSessionCenter
               break label597;
             }
             Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-            fus localfus = (fus)localEntry.getValue();
+            fur localfur = (fur)localEntry.getValue();
             long l = ((Long)localEntry.getKey()).longValue();
-            if (localfus != null)
+            if (localfur != null)
             {
-              if (paramLong - localfus.jdField_a_of_type_Long < 7200L) {
+              if (paramLong - localfur.jdField_a_of_type_Long < 7200L) {
                 continue;
               }
-              QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l + "]  isBeHandledBeforeRequest and clear it.handleType:" + localfus.jdField_a_of_type_Int + " info_1:" + localfus.jdField_b_of_type_Int + " info_2:" + localfus.jdField_a_of_type_JavaLangString + " info_3:" + localfus.jdField_b_of_type_Long);
+              QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + l + "]  isBeHandledBeforeRequest and clear it.handleType:" + localfur.jdField_a_of_type_Int + " info_1:" + localfur.jdField_b_of_type_Int + " info_2:" + localfur.jdField_a_of_type_JavaLangString + " info_3:" + localfur.jdField_b_of_type_Long);
               ((Iterator)localObject).remove();
               continue;
-              a(paramString, paramLong, ((fus)localObject).jdField_a_of_type_Int);
+              a(paramString, paramLong, ((fur)localObject).jdField_a_of_type_Int);
               bool1 = true;
               break;
               a(paramString, paramLong);
               bool1 = true;
               break;
-              a(paramString, paramLong, ((fus)localObject).jdField_b_of_type_Int, ((fus)localObject).jdField_a_of_type_JavaLangString, ((fus)localObject).jdField_b_of_type_Long);
+              a(paramString, paramLong, ((fur)localObject).jdField_b_of_type_Int, ((fur)localObject).jdField_a_of_type_JavaLangString, ((fur)localObject).jdField_b_of_type_Long);
               bool1 = true;
               break;
-              a(paramString, paramLong, ((fus)localObject).jdField_b_of_type_Int, ((fus)localObject).jdField_a_of_type_JavaLangString);
+              a(paramString, paramLong, ((fur)localObject).jdField_b_of_type_Int, ((fur)localObject).jdField_a_of_type_JavaLangString);
               bool1 = true;
               break;
             }
@@ -631,12 +631,12 @@ public class OnlineFileSessionCenter
   void b()
   {
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new fur(this, Looper.getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new fuq(this, Looper.getMainLooper());
     }
-    if (this.jdField_a_of_type_Fut == null)
+    if (this.jdField_a_of_type_Fus == null)
     {
-      this.jdField_a_of_type_Fut = new fut(this, null);
-      this.jdField_a_of_type_Fut.a();
+      this.jdField_a_of_type_Fus = new fus(this, null);
+      this.jdField_a_of_type_Fus.a();
       QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] start progress make pump thread!!!");
     }
   }
@@ -647,7 +647,7 @@ public class OnlineFileSessionCenter
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new fuq(this, paramInt));
+      new Handler(localLooper).post(new fup(this, paramInt));
       return;
     }
     a(paramInt);
@@ -713,10 +713,10 @@ public class OnlineFileSessionCenter
   
   void c()
   {
-    if (this.jdField_a_of_type_Fut != null)
+    if (this.jdField_a_of_type_Fus != null)
     {
-      this.jdField_a_of_type_Fut.b();
-      this.jdField_a_of_type_Fut = null;
+      this.jdField_a_of_type_Fus.b();
+      this.jdField_a_of_type_Fus = null;
       QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[] stop progress make pump thread!!!");
     }
   }

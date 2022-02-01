@@ -1,96 +1,111 @@
 package com.tencent.mm.pluginsdk.permission;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.plugin.comm.c.h;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.k;
 
 public class PermissionActivity
   extends AppCompatActivity
 {
+  private String[] XUi;
+  private boolean XUj;
+  private String XUk;
+  private String XUl;
+  private int hPm;
   private Intent intent;
   private String key;
-  private int requestCode;
   private int scene;
-  private String[] vMt;
-  private boolean vMu;
-  private String vMv;
-  private String vMw;
+  
+  public Resources getResources()
+  {
+    AppMethodBeat.i(244620);
+    Resources localResources = MMApplicationContext.getResources();
+    AppMethodBeat.o(244620);
+    return localResources;
+  }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(79434);
-    ab.i("MicroMsg.PermissionActivity", "onActivityResult(),  scene=%d, requestCode=%d, resultCode=%d", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(151874);
+    Log.i("MicroMsg.PermissionActivity", "onActivityResult(),  scene=%d, requestCode=%d, resultCode=%d", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (this.scene == 2)
     {
-      paramIntent = b.alC(this.key);
+      paramIntent = b.bqb(this.key);
       if (paramIntent != null) {
-        paramIntent.De(paramInt2);
+        paramIntent.aiW(paramInt2);
       }
       finish();
-      AppMethodBeat.o(79434);
+      AppMethodBeat.o(151874);
       return;
     }
     if (this.scene == 3)
     {
-      if (paramInt2 == -1) {
-        startActivity(this.intent);
+      if (paramInt2 == -1)
+      {
+        paramIntent = this.intent;
+        paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramIntent.aYi(), "com/tencent/mm/pluginsdk/permission/PermissionActivity", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramIntent.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/pluginsdk/permission/PermissionActivity", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       for (;;)
       {
         finish();
-        AppMethodBeat.o(79434);
+        AppMethodBeat.o(151874);
         return;
-        Toast.makeText(ah.getContext(), 2131301860, 1).show();
+        Toast.makeText(MMApplicationContext.getContext(), c.h.no_install_unknow_app_permission, 1).show();
       }
     }
     if (this.scene == 4)
     {
       if (Build.VERSION.SDK_INT >= 23)
       {
-        boolean bool = com.tencent.mm.booter.c.bs(this);
+        boolean bool = com.tencent.mm.booter.c.cN(this);
         if (bool)
         {
-          if (as.apq("service_launch_way").getBoolean("954_84_first", true))
+          if (MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("954_84_first", true))
           {
-            e.qrI.idkeyStat(954L, 84L, 1L, false);
-            as.apq("service_launch_way").edit().putBoolean("954_84_first", false);
+            f.Ozc.idkeyStat(954L, 84L, 1L, false);
+            MultiProcessMMKV.getMMKV("service_launch_way").edit().putBoolean("954_84_first", false);
           }
-          com.tencent.mm.booter.c.bD(true);
+          com.tencent.mm.booter.c.es(true);
         }
-        ab.i("MicroMsg.PermissionActivity", "onActivityResult ADD_IGNORING_BATTERY_OPTIMIZATIONS result=%s", new Object[] { Boolean.valueOf(bool) });
+        Log.i("MicroMsg.PermissionActivity", "onActivityResult ADD_IGNORING_BATTERY_OPTIMIZATIONS result=%s", new Object[] { Boolean.valueOf(bool) });
       }
     }
     else {
       finish();
     }
-    AppMethodBeat.o(79434);
+    AppMethodBeat.o(151874);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(79431);
+    AppMethodBeat.i(151871);
     super.onCreate(paramBundle);
     if ((getIntent() == null) || (!getIntent().hasExtra("scene")))
     {
       finish();
-      AppMethodBeat.o(79431);
+      AppMethodBeat.o(151871);
       return;
     }
     getWindow().addFlags(67108864);
@@ -102,28 +117,28 @@ public class PermissionActivity
     localLayoutParams.height = 1;
     localLayoutParams.width = 1;
     paramBundle.setAttributes(localLayoutParams);
-    this.vMu = true;
+    this.XUj = true;
     this.scene = getIntent().getIntExtra("scene", 1);
     this.key = getIntent().getStringExtra("key");
     if (this.scene == 1)
     {
-      this.vMt = getIntent().getStringArrayExtra("permission");
-      this.requestCode = getIntent().getIntExtra("requestCode", 0);
-      if (!bo.Q(this.vMt))
+      this.XUi = getIntent().getStringArrayExtra("permission");
+      this.hPm = getIntent().getIntExtra("requestCode", 0);
+      if (!Util.isNullOrNil(this.XUi))
       {
-        ab.i("MicroMsg.PermissionActivity", "scene: %d, permission: %s, requestCode: %d", new Object[] { Integer.valueOf(this.scene), this.vMt.toString(), Integer.valueOf(this.requestCode) });
-        AppMethodBeat.o(79431);
+        Log.i("MicroMsg.PermissionActivity", "scene: %d, permission: %s, requestCode: %d", new Object[] { Integer.valueOf(this.scene), this.XUi.toString(), Integer.valueOf(this.hPm) });
+        AppMethodBeat.o(151871);
       }
     }
     else if (this.scene == 2)
     {
       this.intent = getIntent().getSelector();
-      this.vMv = getIntent().getStringExtra("reasonTitle");
-      this.vMw = getIntent().getStringExtra("reasonMsg");
-      if ((!bo.isNullOrNil(this.vMv)) && (!bo.isNullOrNil(this.vMw)))
+      this.XUk = getIntent().getStringExtra("reasonTitle");
+      this.XUl = getIntent().getStringExtra("reasonMsg");
+      if ((!Util.isNullOrNil(this.XUk)) && (!Util.isNullOrNil(this.XUl)))
       {
-        ab.i("MicroMsg.PermissionActivity", "scene: %d, reasonTitle: %s, reasonMsg: %s", new Object[] { Integer.valueOf(this.scene), this.vMv, this.vMw });
-        AppMethodBeat.o(79431);
+        Log.i("MicroMsg.PermissionActivity", "scene: %d, reasonTitle: %s, reasonMsg: %s", new Object[] { Integer.valueOf(this.scene), this.XUk, this.XUl });
+        AppMethodBeat.o(151871);
       }
     }
     else if (this.scene == 3)
@@ -131,82 +146,109 @@ public class PermissionActivity
       this.intent = getIntent().getSelector();
       if (this.intent != null)
       {
-        ab.i("MicroMsg.PermissionActivity", "scene: %d, intent: %s", new Object[] { Integer.valueOf(this.scene), this.intent.toString() });
-        AppMethodBeat.o(79431);
+        Log.i("MicroMsg.PermissionActivity", "scene: %d, intent: %s", new Object[] { Integer.valueOf(this.scene), this.intent.toString() });
+        AppMethodBeat.o(151871);
       }
     }
     else if (this.scene == 4)
     {
-      ab.i("MicroMsg.PermissionActivity", "scene: %d", new Object[] { Integer.valueOf(this.scene) });
+      Log.i("MicroMsg.PermissionActivity", "scene: %d", new Object[] { Integer.valueOf(this.scene) });
     }
-    AppMethodBeat.o(79431);
+    AppMethodBeat.o(151871);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(79435);
-    ab.i("MicroMsg.PermissionActivity", "onDestroy(), scene=%d", new Object[] { Integer.valueOf(this.scene) });
+    AppMethodBeat.i(151875);
+    Log.i("MicroMsg.PermissionActivity", "onDestroy(), scene=%d", new Object[] { Integer.valueOf(this.scene) });
     if (this.scene == 1) {
-      b.alB(this.key);
+      b.bqa(this.key);
     }
     for (;;)
     {
       super.onDestroy();
-      AppMethodBeat.o(79435);
+      AppMethodBeat.o(151875);
       return;
       if (this.scene == 2) {
-        b.alC(this.key);
+        b.bqb(this.key);
       }
     }
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(79433);
-    ab.i("MicroMsg.PermissionActivity", "onRequestPermissionsResult(),  scene=%d, requestCode=%d, permissions=%s, grantResults=%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(paramInt), paramArrayOfString.toString(), paramArrayOfInt.toString() });
+    AppMethodBeat.i(151873);
+    Log.i("MicroMsg.PermissionActivity", "onRequestPermissionsResult(),  scene=%d, requestCode=%d, permissions=%s, grantResults=%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(paramInt), paramArrayOfString.toString(), paramArrayOfInt.toString() });
     if (this.scene == 1)
     {
-      paramArrayOfString = b.alB(this.key);
-      if (paramArrayOfString != null) {
-        paramArrayOfString.t(paramArrayOfInt);
+      c localc = b.bqa(this.key);
+      if (localc != null) {
+        localc.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
       }
     }
     finish();
-    AppMethodBeat.o(79433);
+    AppMethodBeat.o(151873);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(79432);
-    ab.i("MicroMsg.PermissionActivity", "onResume(), scene=%d", new Object[] { Integer.valueOf(this.scene) });
+    AppMethodBeat.i(151872);
+    Log.i("MicroMsg.PermissionActivity", "onResume(), scene=%d", new Object[] { Integer.valueOf(this.scene) });
     super.onResume();
-    if (this.vMu)
+    if (this.XUj)
     {
       if (this.scene == 1) {
-        b.a(this, this.vMt, this.requestCode);
+        b.a(this, this.XUi, this.hPm);
       }
       for (;;)
       {
-        this.vMu = false;
-        AppMethodBeat.o(79432);
+        this.XUj = false;
+        AppMethodBeat.o(151872);
         return;
         if (this.scene == 2)
         {
-          if ((bo.isNullOrNil(this.vMw)) && (bo.isNullOrNil(this.vMv))) {
+          if ((Util.isNullOrNil(this.XUl)) && (Util.isNullOrNil(this.XUk))) {
             try
             {
               startActivityForResult(this.intent, 1);
             }
             catch (Exception localException1)
             {
-              ab.e("MicroMsg.PermissionActivity", "onResume scene = %d startActivityForResult() Exception = %s ", new Object[] { Integer.valueOf(this.scene), localException1.getMessage() });
+              Log.e("MicroMsg.PermissionActivity", "onResume scene = %d startActivityForResult() Exception = %s ", new Object[] { Integer.valueOf(this.scene), localException1.getMessage() });
             }
           } else {
-            h.a(this, false, this.vMw, this.vMv, getString(2131300996), getString(2131296888), new PermissionActivity.1(this), new PermissionActivity.2(this));
+            k.a(this, false, this.XUl, this.XUk, MMApplicationContext.getContext().getString(c.h.jump_to_settings), MMApplicationContext.getContext().getString(c.h.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            {
+              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+              {
+                AppMethodBeat.i(151867);
+                try
+                {
+                  Log.i("MicroMsg.PermissionActivity", "START_SETTINGS_REQUEST click ok");
+                  PermissionActivity.this.startActivityForResult(PermissionActivity.a(PermissionActivity.this), 1);
+                  AppMethodBeat.o(151867);
+                  return;
+                }
+                catch (Exception paramAnonymousDialogInterface)
+                {
+                  Log.e("MicroMsg.PermissionActivity", "onResume scene = %d startActivityForResult() Exception = %s ", new Object[] { Integer.valueOf(PermissionActivity.b(PermissionActivity.this)), paramAnonymousDialogInterface.getMessage() });
+                  AppMethodBeat.o(151867);
+                }
+              }
+            }, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+              {
+                AppMethodBeat.i(151868);
+                PermissionActivity.this.finish();
+                AppMethodBeat.o(151868);
+              }
+            });
           }
         }
         else if (this.scene == 3)
         {
+          Object localObject;
           if (Build.VERSION.SDK_INT >= 26)
           {
             if (!getPackageManager().canRequestPackageInstalls())
@@ -218,41 +260,59 @@ public class PermissionActivity
               }
               catch (Exception localException2)
               {
-                ab.e("MicroMsg.PermissionActivity", "onResume scene = %d startActivityForResult() Exception = %s ", new Object[] { Integer.valueOf(this.scene), localException2.getMessage() });
+                Log.e("MicroMsg.PermissionActivity", "onResume scene = %d startActivityForResult() Exception = %s ", new Object[] { Integer.valueOf(this.scene), localException2.getMessage() });
               }
             }
             else
             {
-              startActivity(this.intent);
+              localObject = this.intent;
+              localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+              com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/pluginsdk/permission/PermissionActivity", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+              com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/pluginsdk/permission/PermissionActivity", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             }
           }
-          else {
-            startActivity(this.intent);
+          else
+          {
+            localObject = this.intent;
+            localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+            com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/pluginsdk/permission/PermissionActivity", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+            com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/pluginsdk/permission/PermissionActivity", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
         }
         else if (this.scene == 4)
         {
-          if (as.apq("service_launch_way").getBoolean("954_95_first", true))
+          if (MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("954_95_first", true))
           {
-            e.qrI.idkeyStat(954L, 95L, 1L, false);
-            as.apq("service_launch_way").edit().putBoolean("954_95_first", false);
+            f.Ozc.idkeyStat(954L, 95L, 1L, false);
+            MultiProcessMMKV.getMMKV("service_launch_way").edit().putBoolean("954_95_first", false);
           }
-          e.qrI.idkeyStat(954L, 96L, 1L, false);
-          h.a(this, false, getString(2131302072), getString(2131302083), getString(2131300996), getString(2131296888), new PermissionActivity.3(this), new DialogInterface.OnClickListener()
+          f.Ozc.idkeyStat(954L, 96L, 1L, false);
+          k.a(this, false, MMApplicationContext.getContext().getString(c.h.permission_ignore_battery_optimizations_again_msg), MMApplicationContext.getContext().getString(c.h.permission_tips_title), MMApplicationContext.getContext().getString(c.h.jump_to_settings), MMApplicationContext.getContext().getString(c.h.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(79430);
-              ab.i("MicroMsg.PermissionActivity", "onResume() goIgnoreBatteryOptimizations app_cancel");
+              AppMethodBeat.i(151869);
+              Log.i("MicroMsg.PermissionActivity", "onResume() goIgnoreBatteryOptimizations ");
+              PermissionActivity.c(PermissionActivity.this);
+              AppMethodBeat.o(151869);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(151870);
+              Log.i("MicroMsg.PermissionActivity", "onResume() goIgnoreBatteryOptimizations app_cancel");
               PermissionActivity.this.finish();
-              AppMethodBeat.o(79430);
+              AppMethodBeat.o(151870);
             }
           });
         }
       }
     }
-    this.vMu = true;
-    AppMethodBeat.o(79432);
+    this.XUj = true;
+    AppMethodBeat.o(151872);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -263,7 +323,7 @@ public class PermissionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.permission.PermissionActivity
  * JD-Core Version:    0.7.0.1
  */

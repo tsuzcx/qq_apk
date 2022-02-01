@@ -16,33 +16,45 @@ public final class TsPayloadReader$TrackIdGenerator
   
   public TsPayloadReader$TrackIdGenerator(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt1 != -2147483648) {}
-    for (String str = paramInt1 + "/";; str = "")
+    Object localObject;
+    if (paramInt1 != -2147483648)
     {
-      this.formatIdPrefix = str;
-      this.firstTrackId = paramInt2;
-      this.trackIdIncrement = paramInt3;
-      this.trackId = -2147483648;
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("/");
+      localObject = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = "";
+    }
+    this.formatIdPrefix = ((String)localObject);
+    this.firstTrackId = paramInt2;
+    this.trackIdIncrement = paramInt3;
+    this.trackId = -2147483648;
   }
   
   private void maybeThrowUninitializedError()
   {
-    if (this.trackId == -2147483648) {
-      throw new IllegalStateException("generateNewId() must be called before retrieving ids.");
+    if (this.trackId != -2147483648) {
+      return;
     }
+    throw new IllegalStateException("generateNewId() must be called before retrieving ids.");
   }
   
   public void generateNewId()
   {
-    if (this.trackId == -2147483648) {}
-    for (int i = this.firstTrackId;; i = this.trackId + this.trackIdIncrement)
-    {
-      this.trackId = i;
-      this.formatId = (this.formatIdPrefix + this.trackId);
-      return;
+    int i = this.trackId;
+    if (i == -2147483648) {
+      i = this.firstTrackId;
+    } else {
+      i += this.trackIdIncrement;
     }
+    this.trackId = i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.formatIdPrefix);
+    localStringBuilder.append(this.trackId);
+    this.formatId = localStringBuilder.toString();
   }
   
   public String getFormatId()
@@ -59,7 +71,7 @@ public final class TsPayloadReader$TrackIdGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.TsPayloadReader.TrackIdGenerator
  * JD-Core Version:    0.7.0.1
  */

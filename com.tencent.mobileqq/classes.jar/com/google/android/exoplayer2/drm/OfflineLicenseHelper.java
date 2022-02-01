@@ -30,10 +30,10 @@ public final class OfflineLicenseHelper<T extends ExoMediaCrypto>
     paramDrmInitData = paramArrayOfByte.getError();
     byte[] arrayOfByte = paramArrayOfByte.getOfflineLicenseKeySetId();
     this.drmSessionManager.releaseSession(paramArrayOfByte);
-    if (paramDrmInitData != null) {
-      throw paramDrmInitData;
+    if (paramDrmInitData == null) {
+      return arrayOfByte;
     }
-    return arrayOfByte;
+    throw paramDrmInitData;
   }
   
   public static OfflineLicenseHelper<FrameworkMediaCrypto> newWidevineInstance(String paramString, HttpDataSource.Factory paramFactory)
@@ -62,15 +62,22 @@ public final class OfflineLicenseHelper<T extends ExoMediaCrypto>
   
   public byte[] downloadLicense(DrmInitData paramDrmInitData)
   {
-    if (paramDrmInitData != null) {}
-    for (boolean bool = true;; bool = false) {
-      try
-      {
-        Assertions.checkArgument(bool);
-        paramDrmInitData = blockingKeyRequest(2, null, paramDrmInitData);
-        return paramDrmInitData;
-      }
-      finally {}
+    boolean bool;
+    if (paramDrmInitData != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    try
+    {
+      Assertions.checkArgument(bool);
+      paramDrmInitData = blockingKeyRequest(2, null, paramDrmInitData);
+      return paramDrmInitData;
+    }
+    finally
+    {
+      paramDrmInitData = finally;
+      throw paramDrmInitData;
     }
   }
   
@@ -79,20 +86,20 @@ public final class OfflineLicenseHelper<T extends ExoMediaCrypto>
     try
     {
       Assertions.checkNotNull(paramArrayOfByte);
-      DrmSession localDrmSession = openBlockingKeyRequest(1, paramArrayOfByte, null);
-      DrmSession.DrmSessionException localDrmSessionException = localDrmSession.getError();
-      paramArrayOfByte = WidevineUtil.getLicenseDurationRemainingSec(localDrmSession);
-      this.drmSessionManager.releaseSession(localDrmSession);
+      paramArrayOfByte = openBlockingKeyRequest(1, paramArrayOfByte, null);
+      DrmSession.DrmSessionException localDrmSessionException = paramArrayOfByte.getError();
+      Pair localPair = WidevineUtil.getLicenseDurationRemainingSec(paramArrayOfByte);
+      this.drmSessionManager.releaseSession(paramArrayOfByte);
       if (localDrmSessionException != null)
       {
-        if ((localDrmSessionException.getCause() instanceof KeysExpiredException)) {
+        if ((localDrmSessionException.getCause() instanceof KeysExpiredException))
+        {
           paramArrayOfByte = Pair.create(Long.valueOf(0L), Long.valueOf(0L));
+          return paramArrayOfByte;
         }
+        throw localDrmSessionException;
       }
-      else {
-        return paramArrayOfByte;
-      }
-      throw localDrmSessionException;
+      return localPair;
     }
     finally {}
   }
@@ -190,7 +197,7 @@ public final class OfflineLicenseHelper<T extends ExoMediaCrypto>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.OfflineLicenseHelper
  * JD-Core Version:    0.7.0.1
  */

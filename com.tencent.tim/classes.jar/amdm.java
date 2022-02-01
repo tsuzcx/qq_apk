@@ -1,0 +1,71 @@
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class amdm
+{
+  private static int bXe = 900000;
+  public ConcurrentHashMap<Long, amdm.b> cX = new ConcurrentHashMap();
+  
+  public static final amdm a()
+  {
+    return amdm.a.b();
+  }
+  
+  public amdm.b a(long paramLong)
+  {
+    if (this.cX.containsKey(Long.valueOf(paramLong))) {
+      return (amdm.b)this.cX.get(Long.valueOf(paramLong));
+    }
+    return null;
+  }
+  
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  {
+    this.cX.put(Long.valueOf(paramLong1), new amdm.b(paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+  }
+  
+  public void clearCache()
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
+    this.cX.clear();
+  }
+  
+  static class a
+  {
+    private static final amdm a = new amdm(null);
+  }
+  
+  public class b
+  {
+    public long JA;
+    String domain;
+    public int fileType;
+    public MessageForShortVideo l;
+    public String[] mUrls;
+    
+    public b(String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+    {
+      this.mUrls = paramArrayOfString;
+      this.JA = paramLong;
+      this.l = paramMessageForShortVideo;
+      this.fileType = paramInt;
+      this.domain = paramString;
+    }
+    
+    public boolean isValid()
+    {
+      long l1 = System.currentTimeMillis();
+      long l2 = l1 - this.JA;
+      BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.JA + " diff=" + l2 + " urlTimeValidDiff=" + amdm.bXe);
+      return l2 < amdm.bXe;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes3.jar
+ * Qualified Name:     amdm
+ * JD-Core Version:    0.7.0.1
+ */

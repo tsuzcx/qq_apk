@@ -1,42 +1,20 @@
 package com.tencent.mobileqq.app;
 
-import alwd;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.studymode.StudyModeChangeListener;
 
-public class MayknowRecommendManager$5
-  implements Runnable
+class MayknowRecommendManager$5
+  implements StudyModeChangeListener
 {
-  public MayknowRecommendManager$5(alwd paramalwd, int paramInt1, int paramInt2, Bundle paramBundle) {}
+  MayknowRecommendManager$5(MayknowRecommendManager paramMayknowRecommendManager) {}
   
-  public void run()
+  public void onChange(boolean paramBoolean)
   {
-    alwd.b(this.this$0, this.jdField_a_of_type_Int);
-    byte[] arrayOfByte = (byte[])alwd.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if ((arrayOfByte != null) && (arrayOfByte.length > 0))
-    {
-      localBoolean = (Boolean)alwd.b(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
-      if ((localBoolean != null) && (localBoolean.booleanValue() == true)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("MayknowRecommendManager", 2, "getConnectionsPersonRemoteNextPage requesting " + this.jdField_a_of_type_Int);
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      Boolean localBoolean;
-      return;
-      alwd.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(true));
-      ((FriendListHandler)alwd.a(this.this$0).a(1)).a(this.b, this.jdField_a_of_type_Int, arrayOfByte, false, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    QLog.d("MayknowRecommendManager", 2, "getConnectionsPersonRemoteNextPage no cookie! no need to request");
+    ((FriendListHandler)MayknowRecommendManager.c(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(105, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MayknowRecommendManager.5
  * JD-Core Version:    0.7.0.1
  */

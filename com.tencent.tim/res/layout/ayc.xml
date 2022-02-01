@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="38.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.SingleLineTextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:gravity="center|left" android:id="@id/kzm" android:layout_width="wrap_content" android:layout_height="38.0dip" android:layout_marginLeft="10.0dip" android:includeFontPadding="false" />
+    <ImageView android:layout_gravity="bottom" android:id="@id/kzl" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+</FrameLayout>

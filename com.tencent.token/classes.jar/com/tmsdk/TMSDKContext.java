@@ -1,10 +1,25 @@
 package com.tmsdk;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.token.aaw;
+import com.tencent.token.aay;
+import com.tencent.token.ael;
+import com.tencent.token.agn;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.xr;
+import com.tencent.token.yc;
+import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.ISharkCallBackOut;
 import com.tmsdk.base.TMSDKBaseContext;
+import com.tmsdk.common.util.ReleaseSetting;
 import com.tmsdk.common.util.TmsLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class TMSDKContext
 {
@@ -14,7 +29,7 @@ public class TMSDKContext
   public static final int ELANG_NONE = 0;
   private static final int EP_QQMobileToken = 115;
   private static final boolean IS_IPLIST = true;
-  private static final String LC = "QQTOKEN20190910";
+  public static final String LC = "C1D4CD9B6187E99C";
   private static final String LIB_TMS_COMMON = "Tcc-1.0.1";
   private static final int PRODUCT_ID = 115;
   private static final String SDK_VERSION = "2.0.0";
@@ -30,26 +45,60 @@ public class TMSDKContext
   private static final String TCP_SERVER = "mazu.3g.qq.com";
   private static final String TCP_SERVER_TEST = "mazutest.3g.qq.com";
   static AbsTMSConfig sAbsTMSConfig = null;
+  static final List<Pair<Integer, String>> waitingList = Collections.synchronizedList(new ArrayList());
   
   public static void SaveStringData(int paramInt, String paramString)
   {
-    TmsLog.d("TMSDKContext", "SaveStringData, modelId:[" + paramInt + "]msg:[" + paramString + "]");
-    String str;
+    Object localObject = new StringBuilder("SaveStringData, modelId:[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]msg:[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("]");
+    TmsLog.d("TMSDKContext", ((StringBuilder)localObject).toString());
     if (paramString != null)
     {
-      str = paramString;
+      localObject = paramString;
       if (paramString.length() != 0) {}
     }
     else
     {
-      str = " ";
+      localObject = " ";
     }
-    TMSDKBaseContext.SaveStringData(paramInt, str);
+    if (!isInitialized())
+    {
+      waitingList.add(new Pair(Integer.valueOf(paramInt), localObject));
+      return;
+    }
+    TMSDKBaseContext.SaveStringData(paramInt, (String)localObject);
+    checkFlushWaitingList();
   }
   
   public static void c_c(int paramInt)
   {
-    TmsLog.d("TMSDKContext", "c_c, arg:[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder("c_c, arg:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    TmsLog.d("TMSDKContext", localStringBuilder.toString());
+  }
+  
+  static void checkFlushWaitingList()
+  {
+    if (waitingList.size() > 0) {
+      synchronized (waitingList)
+      {
+        Iterator localIterator = waitingList.iterator();
+        while (localIterator.hasNext())
+        {
+          Pair localPair = (Pair)localIterator.next();
+          if (localPair.second == null) {
+            TMSDKBaseContext.saveActionData(((Integer)localPair.first).intValue());
+          } else {
+            TMSDKBaseContext.SaveStringData(((Integer)localPair.first).intValue(), (String)localPair.second);
+          }
+        }
+        return;
+      }
+    }
   }
   
   public static boolean checkLicence()
@@ -72,73 +121,162 @@ public class TMSDKContext
     return "2.0.0 20190827163200";
   }
   
-  /* Error */
   public static boolean init(Context paramContext, AbsTMSConfig paramAbsTMSConfig)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 47
-    //   5: new 67	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 121
-    //   14: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_0
-    //   18: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   21: ldc 126
-    //   23: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: aload_1
-    //   27: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   30: ldc 81
-    //   32: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokestatic 91	com/tmsdk/common/util/TmsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   41: aload_0
-    //   42: ifnonnull +17 -> 59
-    //   45: ldc 47
-    //   47: ldc 128
-    //   49: invokestatic 131	com/tmsdk/common/util/TmsLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   52: iconst_0
-    //   53: istore_2
-    //   54: ldc 2
-    //   56: monitorexit
-    //   57: iload_2
-    //   58: ireturn
-    //   59: aload_1
-    //   60: ifnull +23 -> 83
-    //   63: aload_1
-    //   64: putstatic 59	com/tmsdk/TMSDKContext:sAbsTMSConfig	Lcom/tmsdk/AbsTMSConfig;
-    //   67: aload_0
-    //   68: new 133	com/tmsdk/TMSDKContext$2
-    //   71: dup
-    //   72: aload_0
-    //   73: invokespecial 136	com/tmsdk/TMSDKContext$2:<init>	(Landroid/content/Context;)V
-    //   76: invokestatic 139	com/tmsdk/base/TMSDKBaseContext:init	(Landroid/content/Context;Lcom/tmsdk/base/AbsTMSBaseConfig;)Z
-    //   79: istore_2
-    //   80: goto -26 -> 54
-    //   83: new 141	com/tmsdk/TMSDKContext$1
-    //   86: dup
-    //   87: invokespecial 142	com/tmsdk/TMSDKContext$1:<init>	()V
-    //   90: putstatic 59	com/tmsdk/TMSDKContext:sAbsTMSConfig	Lcom/tmsdk/AbsTMSConfig;
-    //   93: goto -26 -> 67
-    //   96: astore_0
-    //   97: ldc 2
-    //   99: monitorexit
-    //   100: aload_0
-    //   101: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	paramContext	Context
-    //   0	102	1	paramAbsTMSConfig	AbsTMSConfig
-    //   53	27	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	41	96	finally
-    //   45	52	96	finally
-    //   63	67	96	finally
-    //   67	80	96	finally
-    //   83	93	96	finally
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder("init, aContext:[");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("]aConfig:[");
+      localStringBuilder.append(paramAbsTMSConfig);
+      localStringBuilder.append("]");
+      TmsLog.d("TMSDKContext", localStringBuilder.toString());
+      if (paramContext == null)
+      {
+        TmsLog.w("TMSDKContext", "aContext is null");
+        return false;
+      }
+      if (paramAbsTMSConfig != null) {
+        sAbsTMSConfig = paramAbsTMSConfig;
+      } else {
+        sAbsTMSConfig = new AbsTMSConfig() {};
+      }
+      boolean bool = TMSDKBaseContext.init(paramContext, new AbsTMSBaseConfig()
+      {
+        public final int getBuildNo()
+        {
+          return xr.d();
+        }
+        
+        public final String getChannel()
+        {
+          String str = aay.k();
+          if ("0000".equals(str)) {
+            return "999001";
+          }
+          return str;
+        }
+        
+        public final String getDeviceId1()
+        {
+          return aay.l();
+        }
+        
+        public final String getDeviceId2()
+        {
+          return aay.c(this.val$aContext);
+        }
+        
+        public final String getDeviceId3()
+        {
+          return TMSDKContext.sAbsTMSConfig.getDeviceId3();
+        }
+        
+        public final String getDeviceId4()
+        {
+          
+          if (!yc.a) {
+            return "";
+          }
+          long l = System.currentTimeMillis();
+          Object localObject2 = agn.a(RqdApplication.n());
+          Object localObject1 = "";
+          if (((ael)localObject2).a() == 0)
+          {
+            localObject2 = ((ael)localObject2).c();
+            localObject1 = localObject2;
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              localObject1 = "";
+            }
+          }
+          localObject2 = new StringBuilder("getOAID : ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append("  time=");
+          ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+          return localObject1;
+        }
+        
+        public final String getLC()
+        {
+          return "C1D4CD9B6187E99C";
+        }
+        
+        public final String getOpenIdTicket()
+        {
+          return yc.b();
+        }
+        
+        public final int getProductId()
+        {
+          return 115;
+        }
+        
+        public final String getTCPServerAdd()
+        {
+          String str2 = TMSDKContext.sAbsTMSConfig.getServerAddress();
+          String str1 = str2;
+          if (TextUtils.isEmpty(str2)) {
+            str1 = "mazu.3g.qq.com";
+          }
+          return str1;
+        }
+        
+        public final String getTccSoName()
+        {
+          return "Tcc-1.0.1";
+        }
+        
+        public final String getVersion()
+        {
+          return aaw.b;
+        }
+        
+        public final boolean isAllowAndroidID()
+        {
+          return ReleaseSetting.isAllowAndroidID();
+        }
+        
+        public final boolean isAllowImei()
+        {
+          if (TextUtils.isEmpty(getDeviceId1())) {
+            return true;
+          }
+          return ReleaseSetting.isAllowImei();
+        }
+        
+        public final boolean isAllowImsi()
+        {
+          return ReleaseSetting.isAllowImsi();
+        }
+        
+        public final boolean isAllowMac()
+        {
+          return ReleaseSetting.isAllowMac();
+        }
+        
+        public final boolean isAllowOther()
+        {
+          return ReleaseSetting.isAllowOther();
+        }
+        
+        public final boolean isCheckLicence()
+        {
+          return ReleaseSetting.isCheckLicence();
+        }
+        
+        public final boolean isJavaTCC()
+        {
+          return ReleaseSetting.isJavaTCC();
+        }
+        
+        public final boolean isUseIPList()
+        {
+          return TMSDKContext.sAbsTMSConfig.isUseIPList();
+        }
+      });
+      return bool;
+    }
+    finally {}
   }
   
   public static boolean isInitialized()
@@ -148,8 +286,17 @@ public class TMSDKContext
   
   public static void saveActionData(int paramInt)
   {
-    TmsLog.d("TMSDKContext", "saveActionData, modelId:[" + paramInt + "])");
+    StringBuilder localStringBuilder = new StringBuilder("saveActionData, modelId:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("])");
+    TmsLog.d("TMSDKContext", localStringBuilder.toString());
+    if (!isInitialized())
+    {
+      waitingList.add(new Pair(Integer.valueOf(paramInt), null));
+      return;
+    }
     TMSDKBaseContext.saveActionData(paramInt);
+    checkFlushWaitingList();
   }
   
   public static void sendShark(int paramInt, JceStruct paramJceStruct1, JceStruct paramJceStruct2, ISharkCallBackOut paramISharkCallBackOut)
@@ -159,7 +306,12 @@ public class TMSDKContext
   
   public static void setAutoConnectionSwitch(Context paramContext, boolean paramBoolean)
   {
-    TmsLog.d("TMSDKContext", "setAutoConnectionSwitch, aContext[" + paramContext + "]aAutoConnection:[" + paramBoolean + "]");
+    StringBuilder localStringBuilder = new StringBuilder("setAutoConnectionSwitch, aContext[");
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("]aAutoConnection:[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    TmsLog.d("TMSDKContext", localStringBuilder.toString());
     TMSDKBaseContext.setAutoConnectionSwitch(paramContext, paramBoolean);
   }
   

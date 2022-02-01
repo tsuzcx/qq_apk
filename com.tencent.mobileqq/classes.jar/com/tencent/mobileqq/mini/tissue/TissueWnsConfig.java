@@ -13,7 +13,10 @@ public class TissueWnsConfig
   public static BaseLibInfo getBaseLibInfo()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "tissue_baselib_url", QzoneConfig.DEFAULT_TISSUE_BASELIB_URL);
-    QLog.i("TissueWnsConfig", 1, "getBaseLibInfo " + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getBaseLibInfo ");
+    localStringBuilder.append((String)localObject);
+    QLog.i("TissueWnsConfig", 1, localStringBuilder.toString());
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       try
       {
@@ -31,7 +34,10 @@ public class TissueWnsConfig
   public static BaseLibInfo getQFlutterSoInfo()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "tissue_qflutter_url", QzoneConfig.DEFAULT_QFLUTTER_URL);
-    QLog.i("TissueWnsConfig", 1, "getQFlutterSoInfo " + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getQFlutterSoInfo ");
+    localStringBuilder.append((String)localObject);
+    QLog.i("TissueWnsConfig", 1, localStringBuilder.toString());
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       try
       {
@@ -48,7 +54,7 @@ public class TissueWnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tissue.TissueWnsConfig
  * JD-Core Version:    0.7.0.1
  */

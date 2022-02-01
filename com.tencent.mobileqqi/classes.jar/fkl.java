@@ -1,4 +1,6 @@
+import android.content.ContentValues;
 import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class fkl
   implements Runnable
@@ -7,7 +9,14 @@ public class fkl
   
   public void run()
   {
-    DataLineMsgProxy.b(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
+    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
+    if (localDataLineMsgRecord != null)
+    {
+      localDataLineMsgRecord.issuc = false;
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("issuc", Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(DataLineMsgRecord.tableName(), localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    }
   }
 }
 

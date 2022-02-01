@@ -111,80 +111,100 @@ public final class cell_goods
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.goods_type, 0);
-    if (this.goods_desc != null) {
-      paramJceOutputStream.write(this.goods_desc, 1);
+    String str = this.goods_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.price != null) {
-      paramJceOutputStream.write(this.price, 2);
+    str = this.price;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.dis_price != null) {
-      paramJceOutputStream.write(this.dis_price, 3);
+    str = this.dis_price;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.btn_title != null) {
-      paramJceOutputStream.write(this.btn_title, 4);
+    str = this.btn_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.btn_color, 5);
     paramJceOutputStream.write(this.btn_actiontype, 6);
-    if (this.btn_url != null) {
-      paramJceOutputStream.write(this.btn_url, 7);
+    str = this.btn_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.upper_price_desc != null) {
-      paramJceOutputStream.write(this.upper_price_desc, 8);
+    str = this.upper_price_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.under_price_desc != null) {
-      paramJceOutputStream.write(this.under_price_desc, 9);
+    str = this.under_price_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.left_price_desc != null) {
-      paramJceOutputStream.write(this.left_price_desc, 10);
+    str = this.left_price_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.right_price_desc != null) {
-      paramJceOutputStream.write(this.right_price_desc, 11);
+    str = this.right_price_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.payremark != null) {
-      paramJceOutputStream.write(this.payremark, 12);
+    str = this.payremark;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.payofferid != null) {
-      paramJceOutputStream.write(this.payofferid, 13);
+    str = this.payofferid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
     paramJceOutputStream.write(this.iOpenMonth, 14);
     paramJceOutputStream.write(this.isCanChange, 15);
-    if (this.popup_title != null) {
-      paramJceOutputStream.write(this.popup_title, 16);
+    str = this.popup_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 16);
     }
-    if (this.popup_desc != null) {
-      paramJceOutputStream.write(this.popup_desc, 17);
+    str = this.popup_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 17);
     }
-    if (this.product_id != null) {
-      paramJceOutputStream.write(this.product_id, 18);
+    str = this.product_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
     paramJceOutputStream.write(this.iQuantity, 19);
     paramJceOutputStream.write(this.iProductType, 20);
-    if (this.product_name != null) {
-      paramJceOutputStream.write(this.product_name, 21);
+    str = this.product_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 21);
     }
     paramJceOutputStream.write(this.isDepositGameCoin, 22);
-    if (this.pf != null) {
-      paramJceOutputStream.write(this.pf, 23);
+    str = this.pf;
+    if (str != null) {
+      paramJceOutputStream.write(str, 23);
     }
-    if (this.pfkey != null) {
-      paramJceOutputStream.write(this.pfkey, 24);
+    str = this.pfkey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 24);
     }
-    if (this.zoneid != null) {
-      paramJceOutputStream.write(this.zoneid, 25);
+    str = this.zoneid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 25);
     }
-    if (this.strItemId != null) {
-      paramJceOutputStream.write(this.strItemId, 26);
+    str = this.strItemId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 26);
     }
     paramJceOutputStream.write(this.iBuyCount, 27);
-    if (this.goods_name != null) {
-      paramJceOutputStream.write(this.goods_name, 28);
+    str = this.goods_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 28);
     }
     paramJceOutputStream.write(this.layout_type, 29);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_goods
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:paddingTop="@dimen/cv" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/UN_BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="center" android:id="@id/m6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:text="@string/lu1" android:maxLines="1" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/UN_BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="center" android:id="@id/biu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cp" android:text="@string/lu2" android:maxLines="1" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

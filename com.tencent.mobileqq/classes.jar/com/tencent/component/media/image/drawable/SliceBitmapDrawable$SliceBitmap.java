@@ -33,41 +33,41 @@ public class SliceBitmapDrawable$SliceBitmap
       this.mRowCount = ((this.mWidth + 2048 - 1) / 2048);
       this.mColumnCount = ((this.mHeight + 2048 - 1) / 2048);
       Bitmap[] arrayOfBitmap = new Bitmap[this.mRowCount * this.mColumnCount];
-      int i = 0;
       int j = 0;
-      while (i < this.mRowCount)
+      int i = 0;
+      while (j < this.mRowCount)
       {
         int k = 0;
-        if (k < this.mColumnCount)
+        while (k < this.mColumnCount)
         {
-          int i1 = i * 2048;
+          int i1 = j * 2048;
           int i2 = k * 2048;
-          int m;
-          if (i1 + 2048 > this.mWidth)
-          {
-            m = this.mWidth - i1;
-            label154:
-            if (i2 + 2048 <= this.mHeight) {
-              break label213;
-            }
-          }
-          label213:
-          for (int n = this.mHeight - i2;; n = 2048)
-          {
-            arrayOfBitmap[j] = Bitmap.createBitmap(paramBitmap, i1, i2, m, n);
-            k += 1;
-            j += 1;
-            break;
+          int m = this.mWidth;
+          if (i1 + 2048 > m) {
+            m -= i1;
+          } else {
             m = 2048;
-            break label154;
           }
+          int n = this.mHeight;
+          if (i2 + 2048 > n) {
+            n -= i2;
+          } else {
+            n = 2048;
+          }
+          arrayOfBitmap[i] = Bitmap.createBitmap(paramBitmap, i1, i2, m, n);
+          i += 1;
+          k += 1;
         }
-        i += 1;
+        j += 1;
       }
       this.mBitmaps = arrayOfBitmap;
       return;
     }
-    throw new IllegalArgumentException("the bitmap no need to Slice");
+    paramBitmap = new IllegalArgumentException("the bitmap no need to Slice");
+    for (;;)
+    {
+      throw paramBitmap;
+    }
   }
   
   @SuppressLint({"NewApi"})
@@ -79,7 +79,8 @@ public class SliceBitmapDrawable$SliceBitmap
     if (Build.VERSION.SDK_INT >= 12) {
       return paramBitmap.getByteCount();
     }
-    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+    int i = paramBitmap.getRowBytes();
+    return paramBitmap.getHeight() * i;
   }
   
   public static boolean needSlice(Bitmap paramBitmap)
@@ -89,10 +90,15 @@ public class SliceBitmapDrawable$SliceBitmap
   
   public static int scaleFromDensity(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt2 == 0) || (paramInt2 == paramInt3)) {
-      return paramInt1;
+    int i = paramInt1;
+    if (paramInt2 != 0)
+    {
+      if (paramInt2 == paramInt3) {
+        return paramInt1;
+      }
+      i = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
     }
-    return (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+    return i;
   }
   
   @TargetApi(11)
@@ -108,21 +114,21 @@ public class SliceBitmapDrawable$SliceBitmap
     if (!bool) {
       paramCanvas.setDensity(this.mDensity);
     }
-    int i = 0;
     int j = 0;
-    while (i < this.mRowCount)
+    int i = 0;
+    while (j < this.mRowCount)
     {
       int k = 0;
       while (k < this.mColumnCount)
       {
-        paramRect = this.mBitmaps[j];
+        paramRect = this.mBitmaps[i];
         if (paramRect != null) {
-          paramCanvas.drawBitmap(paramRect, i * 2048, k * 2048, paramPaint);
+          paramCanvas.drawBitmap(paramRect, j * 2048, k * 2048, paramPaint);
         }
+        i += 1;
         k += 1;
-        j += 1;
       }
-      i += 1;
+      j += 1;
     }
     if (!bool) {
       paramCanvas.setDensity(n);
@@ -132,17 +138,18 @@ public class SliceBitmapDrawable$SliceBitmap
   
   public Bitmap getBitmap(int paramInt)
   {
-    if ((this.mBitmaps != null) && (this.mBitmaps.length > paramInt)) {
-      return this.mBitmaps[paramInt];
+    Bitmap[] arrayOfBitmap = this.mBitmaps;
+    if ((arrayOfBitmap != null) && (arrayOfBitmap.length > paramInt)) {
+      return arrayOfBitmap[paramInt];
     }
     return null;
   }
   
   public final int getByteCount()
   {
-    int i = 0;
     Bitmap[] arrayOfBitmap = this.mBitmaps;
     int k = arrayOfBitmap.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -224,7 +231,7 @@ public class SliceBitmapDrawable$SliceBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.SliceBitmapDrawable.SliceBitmap
  * JD-Core Version:    0.7.0.1
  */

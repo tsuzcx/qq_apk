@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/bqz" android:padding="@dimen/asc" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/a8t" android:layout_width="@dimen/asd" android:layout_height="@dimen/asb" />
+    <ImageView android:id="@id/fce" android:duplicateParentState="true" android:layout_width="@dimen/asd" android:layout_height="@dimen/asb" android:scaleType="centerCrop" />
+</FrameLayout>

@@ -24,17 +24,18 @@ public final class ArkSearchMsg$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58, 66, 72, 80 }, new String[] { "bytes_extra_info", "bytes_msg_id", "uint32_type", "uint32_scene", "uint32_action", "bytes_card_type", "bytes_card_view", "bytes_text", "uint32_flag", "uint32_first_report" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58, 66, 72, 80 }, new String[] { "bytes_extra_info", "bytes_msg_id", "uint32_type", "uint32_scene", "uint32_action", "bytes_card_type", "bytes_card_view", "bytes_text", "uint32_flag", "uint32_first_report" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localInteger, localInteger }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkSearchMsg.ReqBody
  * JD-Core Version:    0.7.0.1
  */

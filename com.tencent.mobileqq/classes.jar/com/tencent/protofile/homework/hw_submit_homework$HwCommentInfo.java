@@ -21,12 +21,13 @@ public final class hw_submit_homework$HwCommentInfo
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 32, 40, 48 }, new String[] { "id", "text", "createts", "modifyts", "uin" }, new Object[] { "", localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, HwCommentInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 32, 40, 48 }, new String[] { "id", "text", "createts", "modifyts", "uin" }, new Object[] { "", localByteStringMicro, localLong, localLong, localLong }, HwCommentInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.homework.hw_submit_homework.HwCommentInfo
  * JD-Core Version:    0.7.0.1
  */

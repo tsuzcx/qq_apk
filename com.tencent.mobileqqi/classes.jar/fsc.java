@@ -1,35 +1,35 @@
-import android.content.Context;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
 import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import java.util.ArrayList;
 
-public class fsc
-  implements View.OnLongClickListener
+class fsc
+  implements View.OnClickListener
 {
-  public fsc(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  fsc(fsb paramfsb, View paramView) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (paramView == null) {
-      return false;
+    if ((LocalFileBrowserActivity.a(this.jdField_a_of_type_Fsb.a) != null) && (LocalFileBrowserActivity.a(this.jdField_a_of_type_Fsb.a).isShowing())) {
+      LocalFileBrowserActivity.a(this.jdField_a_of_type_Fsb.a).dismiss();
     }
-    if (!this.a.f())
+    paramView = (LocalFileAdapter.LocalFileItemHolder)this.jdField_a_of_type_AndroidViewView.getTag();
+    this.jdField_a_of_type_Fsb.a.jdField_a_of_type_Int = paramView.jdField_a_of_type_Int;
+    paramView = (FileInfo)this.jdField_a_of_type_Fsb.a.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Fsb.a.jdField_a_of_type_Int);
+    if ((!FileUtil.a(paramView.c())) || (FileUtil.c(paramView.c())))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-      return false;
+      FileManagerUtil.d(paramView.c());
+      this.jdField_a_of_type_Fsb.a.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Fsb.a.jdField_a_of_type_Int);
+      LocalFileBrowserActivity.a(this.jdField_a_of_type_Fsb.a);
+      return;
     }
-    FileInfo localFileInfo = ((LocalFileAdapter.LocalFileItemHolder)paramView.getTag()).a;
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131230986, paramView.getContext().getString(2131561917));
-    LocalFileBrowserActivity.a(this.a, BubbleContextMenu.a(paramView, localQQCustomMenu, new fsd(this, paramView), localFileInfo.d()));
-    return true;
+    FMToastUtil.a(2131558716);
   }
 }
 

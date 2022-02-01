@@ -26,23 +26,28 @@ public class SendMessageToWX$Req
   
   public boolean checkArgs()
   {
-    if (this.message == null)
-    {
-      Log.e("MicroMsg.SDK.SendMessageToWX.Req", "checkArgs fail ,message is null");
-      return false;
+    Object localObject = this.message;
+    if (localObject == null) {
+      localObject = "checkArgs fail ,message is null";
     }
-    if ((this.message.mediaObject.type() == 6) && (this.scene == 2)) {
-      ((WXFileObject)this.message.mediaObject).setContentLengthLimit(26214400);
-    }
-    if ((this.scene == 3) && (this.userOpenId == null))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.SendMessageToWX.Req", "Send specifiedContact userOpenId can not be null.");
+      Log.e("MicroMsg.SDK.SendMessageToWX.Req", (String)localObject);
       return false;
-    }
-    if ((this.scene == 3) && (this.openId == null))
-    {
-      Log.e("MicroMsg.SDK.SendMessageToWX.Req", "Send specifiedContact openid can not be null.");
-      return false;
+      if ((((WXMediaMessage)localObject).mediaObject.type() == 6) && (this.scene == 2)) {
+        ((WXFileObject)this.message.mediaObject).setContentLengthLimit(26214400);
+      }
+      if ((this.scene == 3) && (this.userOpenId == null))
+      {
+        localObject = "Send specifiedContact userOpenId can not be null.";
+      }
+      else
+      {
+        if ((this.scene != 3) || (this.openId != null)) {
+          break;
+        }
+        localObject = "Send specifiedContact openid can not be null.";
+      }
     }
     return this.message.checkArgs();
   }
@@ -71,7 +76,7 @@ public class SendMessageToWX$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req
  * JD-Core Version:    0.7.0.1
  */

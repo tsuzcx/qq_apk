@@ -13,294 +13,274 @@ public abstract class b
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_0
-    //   3: aload_0
-    //   4: getfield 23	com/tencent/analysis/c/a/b:c	I
-    //   7: iconst_1
-    //   8: iadd
-    //   9: putfield 23	com/tencent/analysis/c/a/b:c	I
-    //   12: aload_0
-    //   13: getfield 19	com/tencent/analysis/c/a/b:a	Ljava/lang/String;
-    //   16: ifnull +15 -> 31
-    //   19: aload_0
-    //   20: getfield 19	com/tencent/analysis/c/a/b:a	Ljava/lang/String;
-    //   23: ldc 17
-    //   25: invokevirtual 36	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   28: ifeq +4 -> 32
-    //   31: return
-    //   32: ldc 38
-    //   34: aload_0
-    //   35: getfield 19	com/tencent/analysis/c/a/b:a	Ljava/lang/String;
-    //   38: invokestatic 43	com/tencent/analysis/b/a:a	(Ljava/lang/String;Ljava/lang/String;)Lorg/apache/http/HttpResponse;
-    //   41: astore 5
-    //   43: aload 5
-    //   45: ifnonnull +51 -> 96
-    //   48: aload 5
-    //   50: invokeinterface 49 1 0
-    //   55: invokeinterface 54 1 0
-    //   60: aload_0
-    //   61: getfield 25	com/tencent/analysis/c/a/b:d	Z
-    //   64: ifeq -33 -> 31
-    //   67: aload_0
-    //   68: getfield 23	com/tencent/analysis/c/a/b:c	I
-    //   71: aload_0
-    //   72: getfield 21	com/tencent/analysis/c/a/b:b	I
-    //   75: if_icmpgt +16 -> 91
-    //   78: aload_0
-    //   79: invokevirtual 56	com/tencent/analysis/c/a/b:a	()V
-    //   82: return
-    //   83: astore_3
-    //   84: aload_3
-    //   85: invokevirtual 59	java/io/IOException:printStackTrace	()V
-    //   88: goto -28 -> 60
-    //   91: aload_0
-    //   92: invokevirtual 61	com/tencent/analysis/c/a/b:b	()V
-    //   95: return
-    //   96: aload 5
-    //   98: astore_3
-    //   99: aload 5
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: aload_0
+    //   7: aload_0
+    //   8: getfield 23	com/tencent/analysis/c/a/b:c	I
+    //   11: iconst_1
+    //   12: iadd
+    //   13: putfield 23	com/tencent/analysis/c/a/b:c	I
+    //   16: aload_0
+    //   17: getfield 19	com/tencent/analysis/c/a/b:a	Ljava/lang/String;
+    //   20: astore 6
+    //   22: aload 6
+    //   24: ifnull +447 -> 471
+    //   27: aload 6
+    //   29: ldc 17
+    //   31: invokevirtual 36	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   34: ifeq +4 -> 38
+    //   37: return
+    //   38: ldc 38
+    //   40: aload_0
+    //   41: getfield 19	com/tencent/analysis/c/a/b:a	Ljava/lang/String;
+    //   44: invokestatic 43	com/tencent/analysis/b/a:a	(Ljava/lang/String;Ljava/lang/String;)Lorg/apache/http/HttpResponse;
+    //   47: astore 6
+    //   49: aload 6
+    //   51: ifnonnull +48 -> 99
+    //   54: aload 6
+    //   56: invokeinterface 49 1 0
+    //   61: invokeinterface 54 1 0
+    //   66: goto +10 -> 76
+    //   69: astore 4
+    //   71: aload 4
+    //   73: invokevirtual 57	java/io/IOException:printStackTrace	()V
+    //   76: aload_0
+    //   77: getfield 25	com/tencent/analysis/c/a/b:d	Z
+    //   80: ifeq +18 -> 98
+    //   83: aload_0
+    //   84: getfield 23	com/tencent/analysis/c/a/b:c	I
+    //   87: aload_0
+    //   88: getfield 21	com/tencent/analysis/c/a/b:b	I
+    //   91: if_icmple -91 -> 0
+    //   94: aload_0
+    //   95: invokevirtual 59	com/tencent/analysis/c/a/b:b	()V
+    //   98: return
+    //   99: aload 6
     //   101: astore 4
-    //   103: aload 5
-    //   105: invokeinterface 65 1 0
-    //   110: invokeinterface 71 1 0
-    //   115: istore_1
-    //   116: iload_1
-    //   117: sipush 200
-    //   120: if_icmpne +183 -> 303
-    //   123: aload 5
-    //   125: astore_3
-    //   126: aload 5
-    //   128: astore 4
-    //   130: aload 5
-    //   132: ldc 73
-    //   134: invokeinterface 77 2 0
-    //   139: astore 6
-    //   141: aload 6
-    //   143: ifnull +95 -> 238
-    //   146: aload 5
-    //   148: astore_3
-    //   149: aload 5
-    //   151: astore 4
-    //   153: aload 6
-    //   155: arraylength
-    //   156: istore_2
-    //   157: iconst_0
-    //   158: istore_1
-    //   159: iload_1
-    //   160: iload_2
-    //   161: if_icmpge +77 -> 238
-    //   164: aload 5
-    //   166: astore_3
-    //   167: aload 5
-    //   169: astore 4
-    //   171: aload 6
-    //   173: iload_1
-    //   174: aaload
-    //   175: invokeinterface 83 1 0
-    //   180: astore 7
-    //   182: aload 7
-    //   184: ifnull +306 -> 490
-    //   187: aload 5
-    //   189: astore_3
-    //   190: aload 5
-    //   192: astore 4
-    //   194: aload 7
-    //   196: ldc 85
-    //   198: invokevirtual 89	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   201: iconst_m1
-    //   202: if_icmpne +21 -> 223
-    //   205: aload 5
-    //   207: astore_3
-    //   208: aload 5
-    //   210: astore 4
-    //   212: aload 7
-    //   214: ldc 91
-    //   216: invokevirtual 89	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   219: iconst_m1
-    //   220: if_icmpeq +270 -> 490
-    //   223: aload 5
-    //   225: astore_3
-    //   226: aload 5
-    //   228: astore 4
-    //   230: aload_0
-    //   231: iconst_1
-    //   232: putfield 25	com/tencent/analysis/c/a/b:d	Z
-    //   235: goto +255 -> 490
-    //   238: aload 5
-    //   240: astore_3
-    //   241: aload 5
-    //   243: astore 4
-    //   245: aload_0
-    //   246: getfield 25	com/tencent/analysis/c/a/b:d	Z
-    //   249: ifne +19 -> 268
-    //   252: aload 5
-    //   254: astore_3
-    //   255: aload 5
-    //   257: astore 4
-    //   259: aload_0
-    //   260: aload 5
-    //   262: invokestatic 94	com/tencent/analysis/b/a:a	(Lorg/apache/http/HttpResponse;)Ljava/lang/String;
-    //   265: invokevirtual 97	com/tencent/analysis/c/a/b:b	(Ljava/lang/String;)V
-    //   268: aload 5
-    //   270: invokeinterface 49 1 0
-    //   275: invokeinterface 54 1 0
-    //   280: aload_0
-    //   281: getfield 25	com/tencent/analysis/c/a/b:d	Z
-    //   284: ifeq -253 -> 31
-    //   287: aload_0
-    //   288: getfield 23	com/tencent/analysis/c/a/b:c	I
-    //   291: aload_0
-    //   292: getfield 21	com/tencent/analysis/c/a/b:b	I
-    //   295: if_icmpgt +116 -> 411
-    //   298: aload_0
-    //   299: invokevirtual 56	com/tencent/analysis/c/a/b:a	()V
-    //   302: return
-    //   303: aload 5
-    //   305: astore_3
-    //   306: aload 5
-    //   308: astore 4
-    //   310: new 99	java/lang/StringBuilder
-    //   313: dup
-    //   314: ldc 101
-    //   316: invokespecial 103	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   319: iload_1
-    //   320: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   323: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   326: astore 6
-    //   328: aload 5
-    //   330: astore_3
-    //   331: aload 5
-    //   333: astore 4
-    //   335: getstatic 114	com/tencent/analysis/b:c	Z
-    //   338: ifeq -70 -> 268
-    //   341: aload 5
-    //   343: astore_3
-    //   344: aload 5
-    //   346: astore 4
-    //   348: ldc 116
-    //   350: aload 6
-    //   352: invokestatic 122	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   355: pop
-    //   356: goto -88 -> 268
-    //   359: astore 4
-    //   361: aload_3
-    //   362: astore 4
-    //   364: aload_0
-    //   365: iconst_1
-    //   366: putfield 25	com/tencent/analysis/c/a/b:d	Z
-    //   369: aload_3
-    //   370: invokeinterface 49 1 0
-    //   375: invokeinterface 54 1 0
-    //   380: aload_0
-    //   381: getfield 25	com/tencent/analysis/c/a/b:d	Z
-    //   384: ifeq -353 -> 31
-    //   387: aload_0
-    //   388: getfield 23	com/tencent/analysis/c/a/b:c	I
-    //   391: aload_0
-    //   392: getfield 21	com/tencent/analysis/c/a/b:b	I
-    //   395: if_icmpgt +29 -> 424
-    //   398: aload_0
-    //   399: invokevirtual 56	com/tencent/analysis/c/a/b:a	()V
-    //   402: return
-    //   403: astore_3
-    //   404: aload_3
-    //   405: invokevirtual 59	java/io/IOException:printStackTrace	()V
-    //   408: goto -128 -> 280
-    //   411: aload_0
-    //   412: invokevirtual 61	com/tencent/analysis/c/a/b:b	()V
-    //   415: return
-    //   416: astore_3
-    //   417: aload_3
-    //   418: invokevirtual 59	java/io/IOException:printStackTrace	()V
-    //   421: goto -41 -> 380
-    //   424: aload_0
-    //   425: invokevirtual 61	com/tencent/analysis/c/a/b:b	()V
-    //   428: return
-    //   429: astore_3
-    //   430: aconst_null
-    //   431: astore 4
-    //   433: aload 4
-    //   435: invokeinterface 49 1 0
-    //   440: invokeinterface 54 1 0
-    //   445: aload_0
-    //   446: getfield 25	com/tencent/analysis/c/a/b:d	Z
-    //   449: ifeq +18 -> 467
-    //   452: aload_0
-    //   453: getfield 23	com/tencent/analysis/c/a/b:c	I
-    //   456: aload_0
-    //   457: getfield 21	com/tencent/analysis/c/a/b:b	I
-    //   460: if_icmpgt +19 -> 479
-    //   463: aload_0
-    //   464: invokevirtual 56	com/tencent/analysis/c/a/b:a	()V
-    //   467: aload_3
-    //   468: athrow
-    //   469: astore 4
-    //   471: aload 4
-    //   473: invokevirtual 59	java/io/IOException:printStackTrace	()V
-    //   476: goto -31 -> 445
-    //   479: aload_0
-    //   480: invokevirtual 61	com/tencent/analysis/c/a/b:b	()V
-    //   483: goto -16 -> 467
-    //   486: astore_3
-    //   487: goto -54 -> 433
-    //   490: iload_1
-    //   491: iconst_1
-    //   492: iadd
-    //   493: istore_1
-    //   494: goto -335 -> 159
+    //   103: aload 6
+    //   105: astore 5
+    //   107: aload 6
+    //   109: invokeinterface 63 1 0
+    //   114: invokeinterface 69 1 0
+    //   119: istore_1
+    //   120: iload_1
+    //   121: sipush 200
+    //   124: if_icmpne +159 -> 283
+    //   127: aload 6
+    //   129: astore 4
+    //   131: aload 6
+    //   133: astore 5
+    //   135: aload 6
+    //   137: ldc 71
+    //   139: invokeinterface 75 2 0
+    //   144: astore 7
+    //   146: aload 7
+    //   148: ifnull +100 -> 248
+    //   151: aload 6
+    //   153: astore 4
+    //   155: aload 6
+    //   157: astore 5
+    //   159: aload 7
+    //   161: arraylength
+    //   162: istore_2
+    //   163: iconst_0
+    //   164: istore_1
+    //   165: iload_1
+    //   166: iload_2
+    //   167: if_icmpge +81 -> 248
+    //   170: aload 6
+    //   172: astore 4
+    //   174: aload 6
+    //   176: astore 5
+    //   178: aload 7
+    //   180: iload_1
+    //   181: aaload
+    //   182: invokeinterface 81 1 0
+    //   187: astore 8
+    //   189: aload 8
+    //   191: ifnull +286 -> 477
+    //   194: aload 6
+    //   196: astore 4
+    //   198: aload 6
+    //   200: astore 5
+    //   202: aload 8
+    //   204: ldc 83
+    //   206: invokevirtual 87	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   209: iconst_m1
+    //   210: if_icmpne +22 -> 232
+    //   213: aload 6
+    //   215: astore 4
+    //   217: aload 6
+    //   219: astore 5
+    //   221: aload 8
+    //   223: ldc 89
+    //   225: invokevirtual 87	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   228: iconst_m1
+    //   229: if_icmpeq +248 -> 477
+    //   232: aload 6
+    //   234: astore 4
+    //   236: aload 6
+    //   238: astore 5
+    //   240: aload_0
+    //   241: iconst_1
+    //   242: putfield 25	com/tencent/analysis/c/a/b:d	Z
+    //   245: goto +232 -> 477
+    //   248: aload 6
+    //   250: astore 4
+    //   252: aload 6
+    //   254: astore 5
+    //   256: aload_0
+    //   257: getfield 25	com/tencent/analysis/c/a/b:d	Z
+    //   260: ifne +53 -> 313
+    //   263: aload 6
+    //   265: astore 4
+    //   267: aload 6
+    //   269: astore 5
+    //   271: aload_0
+    //   272: aload 6
+    //   274: invokestatic 92	com/tencent/analysis/b/a:a	(Lorg/apache/http/HttpResponse;)Ljava/lang/String;
+    //   277: invokevirtual 95	com/tencent/analysis/c/a/b:b	(Ljava/lang/String;)V
+    //   280: goto +33 -> 313
+    //   283: aload 6
+    //   285: astore 4
+    //   287: aload 6
+    //   289: astore 5
+    //   291: ldc 97
+    //   293: iload_1
+    //   294: invokestatic 101	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   297: invokevirtual 105	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   300: pop
+    //   301: aload 6
+    //   303: astore 4
+    //   305: aload 6
+    //   307: astore 5
+    //   309: getstatic 109	com/tencent/analysis/b:c	Z
+    //   312: istore_3
+    //   313: aload 6
+    //   315: invokeinterface 49 1 0
+    //   320: invokeinterface 54 1 0
+    //   325: goto +10 -> 335
+    //   328: astore 4
+    //   330: aload 4
+    //   332: invokevirtual 57	java/io/IOException:printStackTrace	()V
+    //   335: aload_0
+    //   336: getfield 25	com/tencent/analysis/c/a/b:d	Z
+    //   339: ifeq +77 -> 416
+    //   342: aload_0
+    //   343: getfield 23	com/tencent/analysis/c/a/b:c	I
+    //   346: aload_0
+    //   347: getfield 21	com/tencent/analysis/c/a/b:b	I
+    //   350: if_icmple -350 -> 0
+    //   353: aload_0
+    //   354: invokevirtual 59	com/tencent/analysis/c/a/b:b	()V
+    //   357: return
+    //   358: astore 5
+    //   360: goto +57 -> 417
+    //   363: aload 5
+    //   365: astore 4
+    //   367: aload_0
+    //   368: iconst_1
+    //   369: putfield 25	com/tencent/analysis/c/a/b:d	Z
+    //   372: aload 5
+    //   374: invokeinterface 49 1 0
+    //   379: invokeinterface 54 1 0
+    //   384: goto +10 -> 394
+    //   387: astore 4
+    //   389: aload 4
+    //   391: invokevirtual 57	java/io/IOException:printStackTrace	()V
+    //   394: aload_0
+    //   395: getfield 25	com/tencent/analysis/c/a/b:d	Z
+    //   398: ifeq +18 -> 416
+    //   401: aload_0
+    //   402: getfield 23	com/tencent/analysis/c/a/b:c	I
+    //   405: aload_0
+    //   406: getfield 21	com/tencent/analysis/c/a/b:b	I
+    //   409: if_icmple -409 -> 0
+    //   412: aload_0
+    //   413: invokevirtual 59	com/tencent/analysis/c/a/b:b	()V
+    //   416: return
+    //   417: aload 4
+    //   419: invokeinterface 49 1 0
+    //   424: invokeinterface 54 1 0
+    //   429: goto +10 -> 439
+    //   432: astore 4
+    //   434: aload 4
+    //   436: invokevirtual 57	java/io/IOException:printStackTrace	()V
+    //   439: aload_0
+    //   440: getfield 25	com/tencent/analysis/c/a/b:d	Z
+    //   443: ifeq +25 -> 468
+    //   446: aload_0
+    //   447: getfield 23	com/tencent/analysis/c/a/b:c	I
+    //   450: aload_0
+    //   451: getfield 21	com/tencent/analysis/c/a/b:b	I
+    //   454: if_icmpgt +10 -> 464
+    //   457: aload_0
+    //   458: invokevirtual 111	com/tencent/analysis/c/a/b:a	()V
+    //   461: goto +7 -> 468
+    //   464: aload_0
+    //   465: invokevirtual 59	com/tencent/analysis/c/a/b:b	()V
+    //   468: aload 5
+    //   470: athrow
+    //   471: return
+    //   472: astore 4
+    //   474: goto -111 -> 363
+    //   477: iload_1
+    //   478: iconst_1
+    //   479: iadd
+    //   480: istore_1
+    //   481: goto -316 -> 165
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	497	0	this	b
-    //   115	379	1	i	int
-    //   156	6	2	j	int
-    //   1	1	3	localObject1	java.lang.Object
-    //   83	2	3	localIOException1	java.io.IOException
-    //   98	272	3	localObject2	java.lang.Object
-    //   403	2	3	localIOException2	java.io.IOException
-    //   416	2	3	localIOException3	java.io.IOException
-    //   429	39	3	localObject3	java.lang.Object
-    //   486	1	3	localObject4	java.lang.Object
-    //   101	246	4	localHttpResponse1	org.apache.http.HttpResponse
-    //   359	1	4	localException	java.lang.Exception
-    //   362	72	4	localObject5	java.lang.Object
-    //   469	3	4	localIOException4	java.io.IOException
-    //   41	304	5	localHttpResponse2	org.apache.http.HttpResponse
-    //   139	212	6	localObject6	java.lang.Object
-    //   180	33	7	str	String
+    //   0	484	0	this	b
+    //   119	362	1	i	int
+    //   162	6	2	j	int
+    //   312	1	3	bool	boolean
+    //   4	1	4	localObject1	java.lang.Object
+    //   69	3	4	localIOException1	java.io.IOException
+    //   101	203	4	localObject2	java.lang.Object
+    //   328	3	4	localIOException2	java.io.IOException
+    //   365	1	4	localObject3	java.lang.Object
+    //   387	31	4	localIOException3	java.io.IOException
+    //   432	3	4	localIOException4	java.io.IOException
+    //   472	1	4	localException	java.lang.Exception
+    //   1	307	5	localObject4	java.lang.Object
+    //   358	111	5	localObject5	java.lang.Object
+    //   20	294	6	localObject6	java.lang.Object
+    //   144	35	7	arrayOfHeader	org.apache.http.Header[]
+    //   187	35	8	str	String
     // Exception table:
     //   from	to	target	type
-    //   48	60	83	java/io/IOException
-    //   32	43	359	java/lang/Exception
-    //   103	116	359	java/lang/Exception
-    //   130	141	359	java/lang/Exception
-    //   153	157	359	java/lang/Exception
-    //   171	182	359	java/lang/Exception
-    //   194	205	359	java/lang/Exception
-    //   212	223	359	java/lang/Exception
-    //   230	235	359	java/lang/Exception
-    //   245	252	359	java/lang/Exception
-    //   259	268	359	java/lang/Exception
-    //   310	328	359	java/lang/Exception
-    //   335	341	359	java/lang/Exception
-    //   348	356	359	java/lang/Exception
-    //   268	280	403	java/io/IOException
-    //   369	380	416	java/io/IOException
-    //   32	43	429	finally
-    //   433	445	469	java/io/IOException
-    //   103	116	486	finally
-    //   130	141	486	finally
-    //   153	157	486	finally
-    //   171	182	486	finally
-    //   194	205	486	finally
-    //   212	223	486	finally
-    //   230	235	486	finally
-    //   245	252	486	finally
-    //   259	268	486	finally
-    //   310	328	486	finally
-    //   335	341	486	finally
-    //   348	356	486	finally
-    //   364	369	486	finally
+    //   54	66	69	java/io/IOException
+    //   313	325	328	java/io/IOException
+    //   38	49	358	finally
+    //   107	120	358	finally
+    //   135	146	358	finally
+    //   159	163	358	finally
+    //   178	189	358	finally
+    //   202	213	358	finally
+    //   221	232	358	finally
+    //   240	245	358	finally
+    //   256	263	358	finally
+    //   271	280	358	finally
+    //   291	301	358	finally
+    //   309	313	358	finally
+    //   367	372	358	finally
+    //   372	384	387	java/io/IOException
+    //   417	429	432	java/io/IOException
+    //   38	49	472	java/lang/Exception
+    //   107	120	472	java/lang/Exception
+    //   135	146	472	java/lang/Exception
+    //   159	163	472	java/lang/Exception
+    //   178	189	472	java/lang/Exception
+    //   202	213	472	java/lang/Exception
+    //   221	232	472	java/lang/Exception
+    //   240	245	472	java/lang/Exception
+    //   256	263	472	java/lang/Exception
+    //   271	280	472	java/lang/Exception
+    //   291	301	472	java/lang/Exception
+    //   309	313	472	java/lang/Exception
   }
   
   public final void a(String paramString)

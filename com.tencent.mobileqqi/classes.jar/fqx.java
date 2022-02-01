@@ -1,36 +1,13 @@
 import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 
-public class fqx
-  extends FMObserver
+class fqx
+  implements Runnable
 {
-  public fqx(FMRecentFileActivity paramFMRecentFileActivity) {}
+  fqx(fqw paramfqw) {}
   
-  protected void a()
+  public void run()
   {
-    super.a();
-    this.a.runOnUiThread(new frc(this));
-  }
-  
-  protected void a(ThumbnailInfo paramThumbnailInfo)
-  {
-    this.a.runOnUiThread(new fra(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new fqy(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.runOnUiThread(new fqz(this, paramLong2));
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.runOnUiThread(new frb(this));
+    FMRecentFileActivity.a(this.a.a);
   }
 }
 

@@ -1,53 +1,57 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import alud;
-import amsk;
-import amwq;
-import amxf;
-import anam;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import avvi;
-import bety;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARGlobalConfigManager;
+import com.tencent.mobileqq.ar.ArCloudNativeSoLoader;
+import com.tencent.mobileqq.ar.ArNativeSoManager;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl;
+import com.tencent.mobileqq.ocr.api.IOCRService;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 
 public class ScanBaseActivity
-  extends FragmentActivity
+  extends BaseActivity
 {
   protected TextView a;
-  private bety a;
-  public AppInterface a;
-  public QQAppInterface a;
-  public OcrConfig a;
-  public boolean a;
   protected TextView b;
+  public OcrConfig c;
+  public AppInterface d;
+  public QQAppInterface e;
+  public boolean f = false;
+  private QQProgressDialog g;
   
-  private boolean a()
+  private boolean d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig == null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig = a();
+    if (this.c == null) {
+      this.c = a();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig == null)
+    if (this.c == null)
     {
       QLog.d("ScanBaseActivity", 1, "checkOcrEnable config is null");
       return false;
     }
-    boolean bool1 = avvi.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = ((IOCRService)this.d.getRuntimeService(IOCRService.class, "")).isSupportOcr(this.d.getCurrentAccountUin(), 0);
     if (bool1)
     {
-      boolean bool2 = anam.a();
+      boolean bool2 = ARCloudControl.a();
       if (!bool2)
       {
         QLog.d("ScanBaseActivity", 1, "checkOcrEnable load so failed!");
@@ -55,16 +59,16 @@ public class ScanBaseActivity
       }
       return bool1 & bool2;
     }
-    Object localObject = ((amsk)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(220)).a(true);
+    Object localObject = ((ARGlobalConfigManager)this.d.getManager(QQManagerFactory.AR_CLOBAL_CONFIG_MANAGER)).a(true);
     if ((localObject != null) && (((ARCommonConfigInfo)localObject).nativeSoResList != null) && (((ARCommonConfigInfo)localObject).nativeSoResList.size() > 0))
     {
       new ArrayList();
       new ArrayList();
       ArrayList localArrayList = ((ARCommonConfigInfo)localObject).nativeSoResList;
       localObject = ((ARCommonConfigInfo)localObject).nativeSoResList;
-      amxf localamxf = new amxf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!amwq.a()) {
-        localamxf.a(localArrayList, (ArrayList)localObject, "arcloud");
+      ArNativeSoManager localArNativeSoManager = new ArNativeSoManager(this.e);
+      if (!ArCloudNativeSoLoader.b()) {
+        localArNativeSoManager.a(localArrayList, (ArrayList)localObject, "arcloud");
       }
     }
     return bool1;
@@ -72,73 +76,93 @@ public class ScanBaseActivity
   
   public OcrConfig a()
   {
-    OcrConfig localOcrConfig = null;
-    Object localObject = getIntent().getExtras();
-    if (localObject != null) {
-      localOcrConfig = (OcrConfig)((Bundle)localObject).get("key_ocr_config");
+    Object localObject1 = getIntent().getExtras();
+    if (localObject1 != null) {
+      localObject1 = (OcrConfig)((Bundle)localObject1).get("key_ocr_config");
+    } else {
+      localObject1 = null;
     }
-    localObject = localOcrConfig;
-    if (localOcrConfig == null)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localObject = localOcrConfig;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localObject = ((avvi)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(228)).a(false);
+      AppInterface localAppInterface = this.d;
+      localObject2 = localObject1;
+      if ((localAppInterface instanceof QQAppInterface)) {
+        localObject2 = ((IOCRService)localAppInterface.getRuntimeService(IOCRService.class, "")).getOCRConfig(false);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanBaseActivity", 2, "getOcrConfig:" + localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getOcrConfig:");
+      ((StringBuilder)localObject1).append(localObject2);
+      QLog.d("ScanBaseActivity", 2, ((StringBuilder)localObject1).toString());
     }
-    return localObject;
+    return localObject2;
   }
   
-  public void a()
+  public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368624));
-    this.b = ((TextView)findViewById(2131368670));
+    this.a = ((TextView)findViewById(2131436180));
+    this.b = ((TextView)findViewById(2131436227));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int i = ImmersiveUtils.getStatusBarHeight(this);
-      View localView = findViewById(2131377952);
+      View localView = findViewById(2131447479);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localView.setLayoutParams(localLayoutParams);
     }
-    if (AppSetting.c) {
-      findViewById(2131368624).setContentDescription(alud.a(2131713899));
+    if (AppSetting.e) {
+      findViewById(2131436180).setContentDescription(HardCodeUtil.a(2131910981));
     }
   }
   
-  public void b() {}
+  public void c() {}
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    boolean bool = a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanBaseActivity", 2, "checkOcrEnable:" + bool);
+    boolean bool = d();
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("checkOcrEnable:");
+      paramBundle.append(bool);
+      QLog.d("ScanBaseActivity", 2, paramBundle.toString());
     }
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bety != null) {
-      this.jdField_a_of_type_Bety.dismiss();
+    QQProgressDialog localQQProgressDialog = this.g;
+    if (localQQProgressDialog != null) {
+      localQQProgressDialog.dismiss();
     }
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
   }
   
-  public String getModuleId()
+  protected String getModuleId()
   {
     if ("ScanTorchActivity".equals(getClass().getSimpleName())) {
       return "module_olympic";
@@ -146,15 +170,22 @@ public class ScanBaseActivity
     return super.getModuleId();
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void updateAppRuntime()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getAppRuntime());
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.e = ((QQAppInterface)getAppRuntime());
+    this.d = this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanBaseActivity
  * JD-Core Version:    0.7.0.1
  */

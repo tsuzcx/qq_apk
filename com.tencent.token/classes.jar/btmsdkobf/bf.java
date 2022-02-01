@@ -20,25 +20,33 @@ public class bf
     int i1 = this.fG;
     localObject = new int[100];
     double d = Math.sqrt(i1);
-    int i = (int)d - 1;
-    while ((i + 1) * (i + 1) <= i1) {
-      i += 1;
+    int j;
+    for (int i = (int)d - 1;; i = j)
+    {
+      j = i + 1;
+      if (j * j > i1) {
+        break;
+      }
     }
     localObject[0] = i;
     if (i * i == i1) {
       return;
     }
-    int k = 1;
     int[] arrayOfInt1 = new int[5];
     arrayOfInt1[1] = 1;
     arrayOfInt1[2] = 0;
     arrayOfInt1[3] = (-localObject[0]);
     arrayOfInt1[4] = 1;
     int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { 100, 5 });
+    int k = 1;
+    int m = 0;
     i = 0;
-    int j = 0;
-    if (k < 100)
+    for (;;)
     {
+      j = i;
+      if (k >= 100) {
+        break;
+      }
       if (arrayOfInt1[1] < 0)
       {
         arrayOfInt1[1] = (-arrayOfInt1[1]);
@@ -55,85 +63,105 @@ public class bf
         arrayOfInt1[4] /= i;
       }
       i = 0;
-      label305:
-      if (i < j)
+      while (i < m)
       {
         int[] arrayOfInt2 = arrayOfInt[i];
-        if ((arrayOfInt2[1] != arrayOfInt1[1]) || (arrayOfInt2[2] != arrayOfInt1[2]) || (arrayOfInt2[3] != arrayOfInt1[3]) || (arrayOfInt2[4] != arrayOfInt1[4])) {}
+        if ((arrayOfInt2[1] == arrayOfInt1[1]) && (arrayOfInt2[2] == arrayOfInt1[2]) && (arrayOfInt2[3] == arrayOfInt1[3]) && (arrayOfInt2[4] == arrayOfInt1[4])) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        if (i >= j) {
-          break label484;
-        }
-      }
-    }
-    for (j = i;; j = i)
-    {
-      int i2 = k - 1;
-      long l1 = 0L;
-      long l2 = 1L;
-      k = 1;
-      i = 0;
-      int n;
-      if ((l1 < 200L) || (i == 0))
-      {
-        n = k + 1;
-        l1 = 0L;
-        l2 = 1L;
-        k = n - 1;
-        label424:
-        if (k >= 0)
-        {
-          if (n <= i2) {}
-          for (int m = localObject[k];; m = localObject[((k - j) % i2 + j)])
-          {
-            l4 = m;
-            k -= 1;
-            l3 = l1;
-            l1 = l2 + l4 * l1;
-            l2 = l3;
-            break label424;
-            i += 1;
-            break label305;
-            label484:
-            arrayOfInt[j][1] = arrayOfInt1[1];
-            arrayOfInt[j][2] = arrayOfInt1[2];
-            arrayOfInt[j][3] = arrayOfInt1[3];
-            arrayOfInt[j][4] = arrayOfInt1[4];
-            j += 1;
-            localObject[k] = ((int)Math.floor(a(d, arrayOfInt1)));
-            a(i1, arrayOfInt1, localObject[k]);
-            k += 1;
-            break;
-          }
-        }
-        if (l1 >= 1000000L) {
-          throw new RuntimeException();
-        }
-        long l3 = l1 * l1;
-        long l4 = l2 * l2;
-        long l5 = i1 * l4;
-        long l6 = 1000L * l3;
-        if ((l1 < 200L) || (999L * l5 >= l6) || (l6 >= l5 * 1001L) || (i != 0) || (((!paramBoolean) || (l3 >= i1 * l4)) && ((paramBoolean) || (l3 <= l4 * i1)))) {
-          break label725;
-        }
-        i = 1;
-      }
-      label725:
-      for (;;)
-      {
-        k = n;
+      j = i;
+      if (i < m) {
         break;
+      }
+      arrayOfInt[m][1] = arrayOfInt1[1];
+      arrayOfInt[m][2] = arrayOfInt1[2];
+      arrayOfInt[m][3] = arrayOfInt1[3];
+      arrayOfInt[m][4] = arrayOfInt1[4];
+      m += 1;
+      localObject[k] = ((int)Math.floor(a(d, arrayOfInt1)));
+      a(i1, arrayOfInt1, localObject[k]);
+      k += 1;
+    }
+    int i2 = k - 1;
+    m = 1;
+    long l2 = 1L;
+    long l1 = 0L;
+    for (i = 0;; i = k)
+    {
+      if ((l1 >= 200L) && (i != 0))
+      {
         a(l1, l2);
         return;
       }
+      int n = m + 1;
+      k = n - 1;
+      l2 = 1L;
+      l1 = 0L;
+      while (k >= 0)
+      {
+        if (n <= i2) {
+          m = localObject[k];
+        } else {
+          m = localObject[((k - j) % i2 + j)];
+        }
+        l4 = m;
+        k -= 1;
+        l3 = l1;
+        l1 = l2 + l4 * l1;
+        l2 = l3;
+      }
+      if (l1 >= 1000000L) {
+        break;
+      }
+      long l3 = l1 * l1;
+      long l4 = i1 * (l2 * l2);
+      long l5 = 1000L * l3;
+      k = i;
+      if (l1 >= 200L)
+      {
+        k = i;
+        if (999L * l4 < l5)
+        {
+          k = i;
+          if (l5 < 1001L * l4)
+          {
+            k = i;
+            if (i == 0) {
+              if ((!paramBoolean) || (l3 >= l4))
+              {
+                k = i;
+                if (!paramBoolean)
+                {
+                  k = i;
+                  if (l3 <= l4) {}
+                }
+              }
+              else
+              {
+                k = 1;
+              }
+            }
+          }
+        }
+      }
+      m = n;
     }
+    throw new RuntimeException();
   }
   
   private static final double a(double paramDouble, int[] paramArrayOfInt)
   {
-    return (paramArrayOfInt[1] + paramArrayOfInt[2] * paramDouble) / (paramArrayOfInt[3] + paramArrayOfInt[4] * paramDouble);
+    double d1 = paramArrayOfInt[1];
+    double d2 = paramArrayOfInt[2];
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    double d3 = paramArrayOfInt[3];
+    double d4 = paramArrayOfInt[4];
+    Double.isNaN(d4);
+    Double.isNaN(d3);
+    return (d1 + d2 * paramDouble) / (d3 + d4 * paramDouble);
   }
   
   private static final void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
@@ -160,32 +188,45 @@ public class bf
   
   private static final int c(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == 0) {
-      return paramInt2;
-    }
-    if (paramInt2 == 0) {
-      return paramInt1;
-    }
-    int j = paramInt1;
-    int i = paramInt2;
-    if (paramInt1 < paramInt2) {
-      return c(paramInt2, paramInt1);
-    }
-    do
+    int j;
+    int i;
+    for (;;)
     {
-      paramInt1 = i;
-      i = paramInt2;
+      if (paramInt1 == 0) {
+        return paramInt2;
+      }
+      if (paramInt2 == 0) {
+        return paramInt1;
+      }
       j = paramInt1;
-      paramInt2 = j % i;
-    } while (paramInt2 != 0);
-    return i;
+      i = paramInt2;
+      if (paramInt1 >= paramInt2) {
+        break;
+      }
+      i = paramInt1;
+      paramInt1 = paramInt2;
+      paramInt2 = i;
+    }
+    for (;;)
+    {
+      paramInt1 = j % i;
+      if (paramInt1 == 0) {
+        return i;
+      }
+      j = i;
+      i = paramInt1;
+    }
   }
   
   private static final boolean g(int paramInt)
   {
-    int i = (int)Math.sqrt(paramInt) - 1;
-    while ((i + 1) * (i + 1) <= paramInt) {
-      i += 1;
+    int j;
+    for (int i = (int)Math.sqrt(paramInt) - 1;; i = j)
+    {
+      j = i + 1;
+      if (j * j > paramInt) {
+        break;
+      }
     }
     return i * i == paramInt;
   }
@@ -195,15 +236,17 @@ public class bf
     long l2 = this.fG;
     long l1 = this.fH;
     long l3 = this.fI;
-    if (l1 < 200L) {
+    if (l1 >= 200L)
+    {
+      l2 *= l3 * l3;
+      l3 = l2 * 1000L;
+      l1 = l1 * l1 * 1000L;
+      if ((l1 > l3 - l2) && (l1 < l3 + l2)) {
+        return;
+      }
       throw new RuntimeException();
     }
-    l2 *= l3 * l3;
-    l3 = l2 * 1000L;
-    l1 = l1 * l1 * 1000L;
-    if ((l1 <= l3 - l2) || (l1 >= l2 + l3)) {
-      throw new RuntimeException();
-    }
+    throw new RuntimeException();
   }
   
   final void a(long paramLong1, long paramLong2)

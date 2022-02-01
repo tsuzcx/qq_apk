@@ -9,15 +9,15 @@ final class MaskImageView$1
   
   public final void run()
   {
-    AppMethodBeat.i(38307);
-    this.rIq.setPressed(false);
-    this.rIq.invalidate();
-    AppMethodBeat.o(38307);
+    AppMethodBeat.i(97959);
+    this.RfA.setPressed(false);
+    this.RfA.invalidate();
+    AppMethodBeat.o(97959);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.MaskImageView.1
  * JD-Core Version:    0.7.0.1
  */

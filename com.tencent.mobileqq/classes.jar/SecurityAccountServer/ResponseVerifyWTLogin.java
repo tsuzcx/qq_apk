@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ResponseVerifyWTLogin
   extends JceStruct
 {
-  public long preBindUin;
+  public long preBindUin = 0L;
   
   public ResponseVerifyWTLogin() {}
   
@@ -28,7 +28,7 @@ public final class ResponseVerifyWTLogin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponseVerifyWTLogin
  * JD-Core Version:    0.7.0.1
  */

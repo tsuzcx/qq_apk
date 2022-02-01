@@ -10,7 +10,6 @@ public class ChatFontUiPlugin
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (8589934593L == paramLong) {}
     return false;
   }
   
@@ -18,10 +17,15 @@ public class ChatFontUiPlugin
   {
     return 4096L;
   }
+  
+  public long getWebViewEventByNameSpace(String paramString)
+  {
+    return 3L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatFontUiPlugin
  * JD-Core Version:    0.7.0.1
  */

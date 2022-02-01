@@ -1,53 +1,40 @@
 package com.tencent.mm.plugin.mall.ui;
 
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.a;
-import com.tencent.mm.plugin.wallet_core.model.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.plugin.wxpay.a.f;
 
-final class MallWalletUI$a
-  extends a
+public class MallWalletUI$a
+  extends MMBaseAccessibilityConfig
 {
-  public TextView oAW;
-  public TextView oAX;
-  public ProgressBar oAY;
-  public ProgressBar oAZ;
-  boolean oBa = false;
-  
-  private MallWalletUI$a(MallWalletUI paramMallWalletUI) {}
-  
-  public final void a(a.a parama)
+  public MallWalletUI$a(AppCompatActivity paramAppCompatActivity)
   {
-    this.oBa = false;
+    super(paramAppCompatActivity);
   }
   
-  public final void bOR()
+  public void initConfig()
   {
-    AppMethodBeat.i(142112);
-    ab.i("MicroMsg.MallWalletUI", "time expired: %s", new Object[] { Boolean.valueOf(this.oBa) });
-    if (!this.oBa)
-    {
-      if (this.oAW != null) {
-        this.oAW.setVisibility(8);
-      }
-      if (this.oAX != null) {
-        this.oAX.setVisibility(8);
-      }
-      if (this.oAY != null) {
-        this.oAY.setVisibility(0);
-      }
-      if (this.oAZ != null) {
-        this.oAZ.setVisibility(0);
-      }
-    }
-    AppMethodBeat.o(142112);
+    AppMethodBeat.i(262433);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(a.f.mwui_root_scrollview);
+    localConfigHelper.disable(a.f.mwui_root_scrollview);
+    localConfigHelper.disable(a.f.mwui_root_relativelayout);
+    localConfigHelper.disable(a.f.mwui_root_layout);
+    localConfigHelper.disable(a.f.mwui_bottom_layout);
+    AppMethodBeat.o(262433);
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(262434);
+    super.onResume();
+    AppMethodBeat.o(262434);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallWalletUI.a
  * JD-Core Version:    0.7.0.1
  */

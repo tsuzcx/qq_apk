@@ -5,44 +5,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public b ebB;
-  public c ebC;
-  public d ebD;
-  public h ebE;
-  private f ebF;
-  public a ebG;
-  public int ebH;
-  public int ebI;
-  public int ebJ;
-  public int ebK;
-  public boolean ebL;
-  private int ebM;
-  private int ebN;
-  public boolean ebO;
-  public boolean ebP;
+  public b luP;
+  public c luQ;
+  public d luR;
+  public h luS;
+  private f luT;
+  public a luU;
+  public int luV;
+  public int luW;
+  public int luX;
+  public int luY;
+  public boolean luZ;
+  private int lva;
+  private int lvb;
+  public boolean lvc;
+  public boolean lvd;
   public Context mContext;
   
   public g(Context paramContext)
   {
-    AppMethodBeat.i(16035);
-    this.ebM = -1;
-    this.ebN = -1;
+    AppMethodBeat.i(20067);
+    this.lva = -1;
+    this.lvb = -1;
     this.mContext = paramContext;
-    this.ebB = new b();
-    this.ebC = new c();
-    this.ebD = new d();
-    this.ebE = new h();
-    this.ebG = new a();
-    this.ebF = f.a.IY();
-    AppMethodBeat.o(16035);
+    this.luP = new b();
+    this.luQ = new c();
+    this.luR = new d();
+    this.luS = new h();
+    this.luU = new a();
+    this.luT = f.a.aLo();
+    AppMethodBeat.o(20067);
   }
   
-  public static String b(long[] paramArrayOfLong)
+  public static String c(long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(16037);
+    AppMethodBeat.i(20069);
     if (paramArrayOfLong == null)
     {
-      AppMethodBeat.o(16037);
+      AppMethodBeat.o(20069);
       return null;
     }
     String str = "";
@@ -56,19 +56,41 @@ public final class g
     }
     if (str.isEmpty())
     {
-      AppMethodBeat.o(16037);
+      AppMethodBeat.o(20069);
       return str;
     }
     paramArrayOfLong = str.substring(0, str.length() - 1);
-    AppMethodBeat.o(16037);
+    AppMethodBeat.o(20069);
     return paramArrayOfLong;
   }
   
-  public final void kJ(String paramString)
+  public final int aLp()
   {
-    AppMethodBeat.i(16036);
-    this.ebF.kI(paramString);
-    AppMethodBeat.o(16036);
+    AppMethodBeat.i(238927);
+    if (this.luW == -1) {
+      this.luW = com.tencent.mm.k.h.aRy();
+    }
+    int i = this.luW;
+    AppMethodBeat.o(238927);
+    return i;
+  }
+  
+  public final int aLq()
+  {
+    AppMethodBeat.i(238928);
+    if (this.luX == -1) {
+      this.luX = com.tencent.mm.k.h.aRz();
+    }
+    int i = this.luX;
+    AppMethodBeat.o(238928);
+    return i;
+  }
+  
+  public final void t(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(238929);
+    this.luT.s(paramString, paramBoolean);
+    AppMethodBeat.o(238929);
   }
 }
 

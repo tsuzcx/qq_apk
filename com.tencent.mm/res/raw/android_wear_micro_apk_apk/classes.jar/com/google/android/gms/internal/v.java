@@ -16,22 +16,22 @@ final class v
 {
   public final void a(b<Void> paramb)
   {
-    t.a(this.Nl).lock();
+    t.a(this.Pa).lock();
     Object localObject;
     try
     {
-      boolean bool = t.b(this.Nl);
+      boolean bool = t.b(this.Pa);
       if (!bool) {
         return;
       }
-      if (paramb.km())
+      if (paramb.kv())
       {
-        t.b(this.Nl, new android.support.v4.b.a(t.n(this.Nl).size()));
-        paramb = t.n(this.Nl).values().iterator();
+        t.b(this.Pa, new android.support.v4.b.a(t.n(this.Pa).size()));
+        paramb = t.n(this.Pa).values().iterator();
         while (paramb.hasNext())
         {
           localObject = (s)paramb.next();
-          t.g(this.Nl).put(((s)localObject).gJ(), ConnectionResult.Hb);
+          t.g(this.Pa).put(((s)localObject).gT(), ConnectionResult.IQ);
         }
       }
       if (!(paramb.getException() instanceof ac)) {
@@ -40,43 +40,43 @@ final class v
     }
     finally
     {
-      t.a(this.Nl).unlock();
+      t.a(this.Pa).unlock();
     }
     paramb = (ac)paramb.getException();
-    if (t.e(this.Nl))
+    if (t.e(this.Pa))
     {
-      t.b(this.Nl, new android.support.v4.b.a(t.n(this.Nl).size()));
-      localObject = t.n(this.Nl).values().iterator();
+      t.b(this.Pa, new android.support.v4.b.a(t.n(this.Pa).size()));
+      localObject = t.n(this.Pa).values().iterator();
       while (((Iterator)localObject).hasNext())
       {
         s locals = (s)((Iterator)localObject).next();
-        ef localef = locals.gJ();
+        ef localef = locals.gT();
         ConnectionResult localConnectionResult = paramb.a(locals);
-        if (t.a(this.Nl, locals, localConnectionResult)) {
-          t.g(this.Nl).put(localef, new ConnectionResult(16));
+        if (t.a(this.Pa, locals, localConnectionResult)) {
+          t.g(this.Pa).put(localef, new ConnectionResult(16));
         } else {
-          t.g(this.Nl).put(localef, localConnectionResult);
+          t.g(this.Pa).put(localef, localConnectionResult);
         }
       }
     }
-    t.b(this.Nl, paramb.gH());
+    t.b(this.Pa, paramb.gR());
     for (;;)
     {
-      if (this.Nl.isConnected())
+      if (this.Pa.isConnected())
       {
-        t.d(this.Nl).putAll(t.g(this.Nl));
-        if (t.f(this.Nl) == null)
+        t.d(this.Pa).putAll(t.g(this.Pa));
+        if (t.f(this.Pa) == null)
         {
-          t.i(this.Nl);
-          t.j(this.Nl);
-          t.m(this.Nl).signalAll();
+          t.i(this.Pa);
+          t.j(this.Pa);
+          t.m(this.Pa).signalAll();
         }
       }
-      t.a(this.Nl).unlock();
+      t.a(this.Pa).unlock();
       return;
       label405:
       Log.e("ConnectionlessGAC", "Unexpected availability exception", paramb.getException());
-      t.b(this.Nl, Collections.emptyMap());
+      t.b(this.Pa, Collections.emptyMap());
     }
   }
 }

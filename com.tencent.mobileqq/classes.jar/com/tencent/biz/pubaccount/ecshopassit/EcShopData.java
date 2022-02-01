@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class EcShopData
-  extends awge
+  extends Entity
 {
   public static final String TABLE_NAME = "EcShopData";
   public long bindUin;
@@ -12,13 +12,13 @@ public class EcShopData
   public String mImgInfo = "";
   public long mLastDraftTime;
   public long mLastMsgTime;
-  @awhs
+  @unique
   public String mUin;
   public String msgId;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopData
  * JD-Core Version:    0.7.0.1
  */

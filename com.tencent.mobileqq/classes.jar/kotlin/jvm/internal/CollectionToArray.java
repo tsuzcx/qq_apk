@@ -27,49 +27,49 @@ public final class CollectionToArray
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "collection");
     int i = paramCollection.size();
-    Object localObject;
-    if (i == 0) {
-      localObject = EMPTY;
-    }
+    if (i == 0) {}
     Iterator localIterator;
-    int j;
     do
     {
-      return localObject;
+      return EMPTY;
       localIterator = paramCollection.iterator();
-      if (!localIterator.hasNext()) {
-        return EMPTY;
-      }
-      paramCollection = new Object[i];
-      i = 0;
-      j = i + 1;
-      paramCollection[i] = localIterator.next();
-      if (j < paramCollection.length) {
-        break;
-      }
-      localObject = paramCollection;
     } while (!localIterator.hasNext());
-    int k = j * 3 + 1 >>> 1;
-    i = k;
-    if (k <= j)
-    {
-      if (j >= 2147483645) {
-        throw ((Throwable)new OutOfMemoryError());
-      }
-      i = 2147483645;
-    }
-    paramCollection = Arrays.copyOf(paramCollection, i);
-    Intrinsics.checkExpressionValueIsNotNull(paramCollection, "Arrays.copyOf(result, newSize)");
+    paramCollection = new Object[i];
+    i = 0;
     for (;;)
     {
-      i = j;
-      break;
-      if (!localIterator.hasNext())
+      int j = i + 1;
+      paramCollection[i] = localIterator.next();
+      Object localObject;
+      if (j >= paramCollection.length)
       {
-        paramCollection = Arrays.copyOf(paramCollection, j);
-        Intrinsics.checkExpressionValueIsNotNull(paramCollection, "Arrays.copyOf(result, size)");
-        return paramCollection;
+        if (!localIterator.hasNext()) {
+          return paramCollection;
+        }
+        int k = j * 3 + 1 >>> 1;
+        i = k;
+        if (k <= j) {
+          if (j < 2147483645) {
+            i = 2147483645;
+          } else {
+            throw ((Throwable)new OutOfMemoryError());
+          }
+        }
+        localObject = Arrays.copyOf(paramCollection, i);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "Arrays.copyOf(result, newSize)");
       }
+      else
+      {
+        localObject = paramCollection;
+        if (!localIterator.hasNext())
+        {
+          paramCollection = Arrays.copyOf(paramCollection, j);
+          Intrinsics.checkExpressionValueIsNotNull(paramCollection, "Arrays.copyOf(result, size)");
+          return paramCollection;
+        }
+      }
+      i = j;
+      paramCollection = (Collection<?>)localObject;
     }
   }
   
@@ -77,72 +77,92 @@ public final class CollectionToArray
   @NotNull
   public static final Object[] toArray(@NotNull Collection<?> paramCollection, @Nullable Object[] paramArrayOfObject)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramCollection, "collection");
-    if (paramArrayOfObject == null) {
-      throw ((Throwable)new NullPointerException());
-    }
-    int j = paramCollection.size();
-    if (j == 0) {
-      if (paramArrayOfObject.length > 0) {
-        paramArrayOfObject[0] = null;
-      }
-    }
-    Iterator localIterator;
-    do
+    if (paramArrayOfObject != null)
     {
-      return paramArrayOfObject;
-      localIterator = paramCollection.iterator();
-      if (localIterator.hasNext()) {
-        break;
+      int j = paramCollection.size();
+      int i = 0;
+      Iterator localIterator;
+      if (j == 0)
+      {
+        paramCollection = paramArrayOfObject;
+        if (paramArrayOfObject.length > 0)
+        {
+          paramArrayOfObject[0] = null;
+          return paramArrayOfObject;
+        }
       }
-    } while (paramArrayOfObject.length <= 0);
-    paramArrayOfObject[0] = null;
-    return paramArrayOfObject;
-    if (j <= paramArrayOfObject.length) {}
-    for (paramCollection = paramArrayOfObject;; paramCollection = (Object[])paramCollection)
-    {
-      j = i + 1;
-      paramCollection[i] = localIterator.next();
-      if (j < paramCollection.length) {
-        break label208;
+      else
+      {
+        localIterator = paramCollection.iterator();
+        if (!localIterator.hasNext())
+        {
+          paramCollection = paramArrayOfObject;
+          if (paramArrayOfObject.length > 0)
+          {
+            paramArrayOfObject[0] = null;
+            return paramArrayOfObject;
+          }
+        }
+        else if (j <= paramArrayOfObject.length)
+        {
+          paramCollection = paramArrayOfObject;
+        }
+        else
+        {
+          paramCollection = Array.newInstance(paramArrayOfObject.getClass().getComponentType(), j);
+          if (paramCollection == null) {
+            break label235;
+          }
+        }
       }
-      if (localIterator.hasNext()) {
-        break;
+      Object localObject;
+      for (paramCollection = (Object[])paramCollection;; paramCollection = (Collection<?>)localObject)
+      {
+        j = i + 1;
+        paramCollection[i] = localIterator.next();
+        if (j >= paramCollection.length)
+        {
+          if (!localIterator.hasNext()) {
+            return paramCollection;
+          }
+          int k = j * 3 + 1 >>> 1;
+          i = k;
+          if (k <= j) {
+            if (j < 2147483645) {
+              i = 2147483645;
+            } else {
+              throw ((Throwable)new OutOfMemoryError());
+            }
+          }
+          localObject = Arrays.copyOf(paramCollection, i);
+          Intrinsics.checkExpressionValueIsNotNull(localObject, "Arrays.copyOf(result, newSize)");
+        }
+        else
+        {
+          localObject = paramCollection;
+          if (!localIterator.hasNext())
+          {
+            if (paramCollection == paramArrayOfObject)
+            {
+              paramArrayOfObject[j] = null;
+              return paramArrayOfObject;
+            }
+            paramCollection = Arrays.copyOf(paramCollection, j);
+            Intrinsics.checkExpressionValueIsNotNull(paramCollection, "Arrays.copyOf(result, size)");
+            return paramCollection;
+          }
+        }
+        i = j;
       }
-      return paramCollection;
-      paramCollection = Array.newInstance(paramArrayOfObject.getClass().getComponentType(), j);
-      if (paramCollection == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
-      }
+      label235:
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
     }
-    int k = j * 3 + 1 >>> 1;
-    i = k;
-    if (k <= j)
+    paramCollection = (Throwable)new NullPointerException();
+    for (;;)
     {
-      if (j >= 2147483645) {
-        throw ((Throwable)new OutOfMemoryError());
-      }
-      i = 2147483645;
+      throw paramCollection;
     }
-    Object localObject = Arrays.copyOf(paramCollection, i);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "Arrays.copyOf(result, newSize)");
-    label208:
-    do
-    {
-      i = j;
-      paramCollection = (Collection<?>)localObject;
-      break;
-      localObject = paramCollection;
-    } while (localIterator.hasNext());
-    if (paramCollection == paramArrayOfObject)
-    {
-      paramArrayOfObject[j] = null;
-      return paramArrayOfObject;
-    }
-    paramCollection = Arrays.copyOf(paramCollection, j);
-    Intrinsics.checkExpressionValueIsNotNull(paramCollection, "Arrays.copyOf(result, size)");
-    return paramCollection;
   }
   
   private static final Object[] toArrayImpl(Collection<?> paramCollection, Function0<Object[]> paramFunction0, Function1<? super Integer, Object[]> paramFunction1, Function2<? super Object[], ? super Integer, Object[]> paramFunction2)
@@ -157,38 +177,42 @@ public final class CollectionToArray
     }
     paramCollection = (Object[])paramFunction1.invoke(Integer.valueOf(i));
     i = 0;
-    int j = i + 1;
-    paramCollection[i] = localIterator.next();
-    if (j >= paramCollection.length)
-    {
-      if (!localIterator.hasNext()) {
-        return paramCollection;
-      }
-      int k = j * 3 + 1 >>> 1;
-      i = k;
-      if (k <= j)
-      {
-        if (j >= 2147483645) {
-          throw ((Throwable)new OutOfMemoryError());
-        }
-        i = 2147483645;
-      }
-      paramCollection = Arrays.copyOf(paramCollection, i);
-      Intrinsics.checkExpressionValueIsNotNull(paramCollection, "Arrays.copyOf(result, newSize)");
-    }
     for (;;)
     {
-      i = j;
-      break;
-      if (!localIterator.hasNext()) {
-        return (Object[])paramFunction2.invoke(paramCollection, Integer.valueOf(j));
+      int j = i + 1;
+      paramCollection[i] = localIterator.next();
+      if (j >= paramCollection.length)
+      {
+        if (!localIterator.hasNext()) {
+          return paramCollection;
+        }
+        int k = j * 3 + 1 >>> 1;
+        i = k;
+        if (k <= j) {
+          if (j < 2147483645) {
+            i = 2147483645;
+          } else {
+            throw ((Throwable)new OutOfMemoryError());
+          }
+        }
+        paramFunction0 = Arrays.copyOf(paramCollection, i);
+        Intrinsics.checkExpressionValueIsNotNull(paramFunction0, "Arrays.copyOf(result, newSize)");
       }
+      else
+      {
+        paramFunction0 = paramCollection;
+        if (!localIterator.hasNext()) {
+          return (Object[])paramFunction2.invoke(paramCollection, Integer.valueOf(j));
+        }
+      }
+      i = j;
+      paramCollection = paramFunction0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.internal.CollectionToArray
  * JD-Core Version:    0.7.0.1
  */

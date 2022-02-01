@@ -1,140 +1,110 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 import java.util.LinkedList;
+import org.json.JSONObject;
 
 public final class adx
-  extends bvk
+  extends com.tencent.mm.bx.a
 {
-  public int koj;
-  public String kok;
-  public vj wKE;
+  public int vgN;
+  public LinkedList<adw> vgO;
+  
+  public adx()
+  {
+    AppMethodBeat.i(133167);
+    this.vgO = new LinkedList();
+    AppMethodBeat.o(133167);
+  }
+  
+  private JSONObject toJSON()
+  {
+    AppMethodBeat.i(257514);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "Count", Integer.valueOf(this.vgN), false);
+      com.tencent.mm.bk.a.a(localJSONObject, "List", this.vgO, false);
+      label38:
+      AppMethodBeat.o(257514);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label38;
+    }
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(141131);
+    AppMethodBeat.i(133168);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(141131);
-        throw paramVarArgs;
-      }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.iQ(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aO(2, this.koj);
-      if (this.kok != null) {
-        paramVarArgs.e(3, this.kok);
-      }
-      if (this.wKE != null)
-      {
-        paramVarArgs.iQ(4, this.wKE.computeSize());
-        this.wKE.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(141131);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.vgN);
+      paramVarArgs.e(2, 8, this.vgO);
+      AppMethodBeat.o(133168);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label618;
-      }
-    }
-    label618:
-    for (paramInt = e.a.a.a.iP(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.koj);
-      paramInt = i;
-      if (this.kok != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.kok);
-      }
-      i = paramInt;
-      if (this.wKE != null) {
-        i = paramInt + e.a.a.a.iP(4, this.wKE.computeSize());
-      }
-      AppMethodBeat.o(141131);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = bvk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = bvk.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(141131);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(141131);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-        adx localadx = (adx)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(141131);
-          return -1;
-        case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, bvk.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localadx.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(141131);
-          return 0;
-        case 2: 
-          localadx.koj = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(141131);
-          return 0;
-        case 3: 
-          localadx.kok = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(141131);
-          return 0;
-        }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new vj();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((vj)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, bvk.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localadx.wKE = ((vj)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(141131);
-        return 0;
-      }
-      AppMethodBeat.o(141131);
-      return -1;
+      paramInt = i.a.a.b.b.a.cJ(1, this.vgN);
+      i = i.a.a.a.c(2, 8, this.vgO);
+      AppMethodBeat.o(133168);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.vgO.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(133168);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      adx localadx = (adx)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(133168);
+        return -1;
+      case 1: 
+        localadx.vgN = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(133168);
+        return 0;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        adw localadw = new adw();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localadw.parseFrom((byte[])localObject);
+        }
+        localadx.vgO.add(localadw);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(133168);
+      return 0;
+    }
+    AppMethodBeat.o(133168);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.adx
  * JD-Core Version:    0.7.0.1
  */

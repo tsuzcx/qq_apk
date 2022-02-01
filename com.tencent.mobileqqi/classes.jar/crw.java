@@ -1,55 +1,47 @@
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.config.DownloadIconsListener;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
 import com.tencent.mobileqq.config.struct.LebaViewItem;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.widget.XListView;
 
-public class crw
-  extends DownloadIconsListener
+class crw
+  implements Runnable
 {
-  public crw(Leba paramLeba) {}
+  crw(crv paramcrv, String paramString, Bitmap paramBitmap, boolean paramBoolean) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    int j = this.a.a.getCount();
-    int i = 0;
-    boolean bool1;
-    for (boolean bool2 = false; i < j; bool2 = bool1)
+    if (this.jdField_a_of_type_Crv.a.a == null) {}
+    Object localObject;
+    do
     {
-      Object localObject = (LebaViewItem)this.a.a.getItem(i);
-      bool1 = bool2;
-      if (((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null)
+      do
       {
-        bool1 = bool2;
-        if (paramString.equals(((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName))
+        return;
+        int j = this.jdField_a_of_type_Crv.a.a.getChildCount();
+        int i = 0;
+        if (i < j)
         {
-          ((LebaViewItem)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(paramBitmap);
-          bool2 = true;
-          localObject = LebaShowListManager.a(this.a.a(), paramString, ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName);
-          bool1 = bool2;
-          if (localObject != null)
+          localObject = this.jdField_a_of_type_Crv.a.a.getChildAt(i);
+          LebaListViewAdapter.CornerListItemHolder localCornerListItemHolder = (LebaListViewAdapter.CornerListItemHolder)((View)localObject).getTag();
+          if ((localCornerListItemHolder == null) || (localCornerListItemHolder.a == null) || (localCornerListItemHolder.a.a == null) || (!this.jdField_a_of_type_JavaLangString.equals(localCornerListItemHolder.a.a.strPkgName))) {}
+          for (;;)
           {
-            bool1 = bool2;
-            if (paramBitmap != null)
-            {
-              bool1 = bool2;
-              if (!LebaShowListManager.a().a.containsKey(((File)localObject).getAbsolutePath()))
-              {
-                LebaShowListManager.a().a.put(((File)localObject).getAbsolutePath(), paramBitmap);
-                bool1 = bool2;
-              }
+            i += 1;
+            break;
+            localObject = (ImageView)((View)localObject).findViewById(2131231555);
+            if (localObject != null) {
+              ((ImageView)localObject).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
             }
           }
         }
-      }
-      i += 1;
-    }
-    this.a.b(new crx(this, paramString, paramBitmap, bool2));
+      } while (this.jdField_a_of_type_Boolean);
+      localObject = this.jdField_a_of_type_Crv.a.a.findViewWithTag(this.jdField_a_of_type_JavaLangString);
+    } while ((localObject == null) || (!(localObject instanceof ImageView)));
+    ((ImageView)localObject).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

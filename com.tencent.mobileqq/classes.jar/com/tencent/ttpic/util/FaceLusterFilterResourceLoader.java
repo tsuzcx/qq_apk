@@ -24,24 +24,25 @@ public class FaceLusterFilterResourceLoader
   
   public static FaceLusterData getFaceLusterData()
   {
-    if (async) {}
-    for (;;)
+    if (async)
     {
       try
       {
         lock.await();
-        return faceLusterData;
       }
       catch (InterruptedException localInterruptedException)
       {
         localInterruptedException.printStackTrace();
-        continue;
       }
+    }
+    else
+    {
       loadIndices(AEModule.getContext(), "assets://realtimeBeauty", "model_indices");
       loadTexCoords(AEModule.getContext(), "assets://realtimeBeauty", "model_texes");
       loadNormals(AEModule.getContext(), "assets://realtimeBeauty", "model_normals");
       loadMask1();
     }
+    return faceLusterData;
   }
   
   public static void load()
@@ -55,19 +56,20 @@ public class FaceLusterFilterResourceLoader
   private static void loadIndices(Context paramContext, String paramString1, String paramString2)
   {
     paramContext = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      paramContext = GsonUtils.optJsonArray(paramContext, "indices");
-      if ((paramContext != null) && (paramContext.size() != 0))
+    }
+    paramContext = GsonUtils.optJsonArray(paramContext, "indices");
+    if (paramContext != null)
+    {
+      if (paramContext.size() == 0) {
+        return;
+      }
+      int i = 0;
+      while (i < paramContext.size())
       {
-        int i = 0;
-        while (i < paramContext.size())
-        {
-          faceLusterData.indices[i] = GsonUtils.optInt(paramContext, i, 0);
-          i += 1;
-        }
+        faceLusterData.indices[i] = GsonUtils.optInt(paramContext, i, 0);
+        i += 1;
       }
     }
   }
@@ -79,45 +81,53 @@ public class FaceLusterFilterResourceLoader
   
   private static void loadNormals(Context paramContext, String paramString1, String paramString2)
   {
-    int i = 0;
     BenchUtil.benchStart("loadNormals");
-    paramContext = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
-    if (paramContext == null) {}
-    do
-    {
+    paramContext = VideoTemplateParser.decryptListener;
+    int i = 0;
+    paramContext = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, paramContext);
+    if (paramContext == null) {
       return;
-      paramContext = GsonUtils.optJsonArray(paramContext, "normals");
-    } while ((paramContext == null) || (paramContext.size() == 0));
-    while (i < paramContext.size())
-    {
-      faceLusterData.normals[i] = ((float)GsonUtils.optDouble(paramContext, i, 0.0D));
-      i += 1;
     }
-    BenchUtil.benchEnd("loadNormals");
+    paramContext = GsonUtils.optJsonArray(paramContext, "normals");
+    if (paramContext != null)
+    {
+      if (paramContext.size() == 0) {
+        return;
+      }
+      while (i < paramContext.size())
+      {
+        faceLusterData.normals[i] = ((float)GsonUtils.optDouble(paramContext, i, 0.0D));
+        i += 1;
+      }
+      BenchUtil.benchEnd("loadNormals");
+    }
   }
   
   private static void loadTexCoords(Context paramContext, String paramString1, String paramString2)
   {
+    paramContext = VideoTemplateParser.decryptListener;
     int i = 0;
-    paramContext = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
-    if (paramContext == null) {}
-    for (;;)
-    {
+    paramContext = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, paramContext);
+    if (paramContext == null) {
       return;
-      paramContext = GsonUtils.optJsonArray(paramContext, "texes");
-      if ((paramContext != null) && (paramContext.size() != 0)) {
-        while (i < paramContext.size())
-        {
-          faceLusterData.texCoord[i] = ((float)GsonUtils.optDouble(paramContext, i, 0.0D));
-          i += 1;
-        }
+    }
+    paramContext = GsonUtils.optJsonArray(paramContext, "texes");
+    if (paramContext != null)
+    {
+      if (paramContext.size() == 0) {
+        return;
+      }
+      while (i < paramContext.size())
+      {
+        faceLusterData.texCoord[i] = ((float)GsonUtils.optDouble(paramContext, i, 0.0D));
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.FaceLusterFilterResourceLoader
  * JD-Core Version:    0.7.0.1
  */

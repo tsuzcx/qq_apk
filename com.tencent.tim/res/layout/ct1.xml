@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/at9" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/ms6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/ct2" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/nl_" android:visibility="visible" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/id9" android:scaleType="fitCenter" />
+    <ViewStub android:layout_gravity="bottom" android:id="@id/nm6" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView android:id="@id/nnq" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/nm5" android:layout="@layout/crv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/no7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/csj" />
+</FrameLayout>

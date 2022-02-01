@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.location.ui;
 
-import atro;
-
 class LocationPickFragment$12
   implements Runnable
 {
@@ -9,22 +7,22 @@ class LocationPickFragment$12
   
   public void run()
   {
-    if (LocationPickFragment.a(this.this$0) != null)
+    if (LocationPickFragment.f(this.this$0) != null)
     {
-      LocationPickFragment.a(this.this$0).onStop();
-      LocationPickFragment.a(this.this$0).onDestroy();
+      LocationPickFragment.f(this.this$0).onStop();
+      LocationPickFragment.f(this.this$0).onDestroy();
       LocationPickFragment.a(this.this$0, null);
     }
-    if (LocationPickFragment.a(this.this$0) != null)
+    if (LocationPickFragment.b(this.this$0) != null)
     {
-      LocationPickFragment.a(this.this$0).a();
+      LocationPickFragment.b(this.this$0).g();
       LocationPickFragment.a(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.12
  * JD-Core Version:    0.7.0.1
  */

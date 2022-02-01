@@ -1,30 +1,12 @@
 package com.tencent.mm.plugin.story.f;
 
-import a.l;
-import android.content.Context;
-import android.graphics.Matrix;
-import android.view.ViewGroup;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.chf;
-import com.tencent.mm.protocal.protobuf.cjv;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run", "com/tencent/mm/plugin/story/presenter/StoryDataProtoUtil$reshowStoryDataEditorItem$1$1$2", "com/tencent/mm/plugin/story/presenter/StoryDataProtoUtil$$special$$inlined$let$lambda$1"})
-final class k$a
-  implements Runnable
-{
-  k$a(cjv paramcjv, Matrix paramMatrix, Context paramContext, ViewGroup paramViewGroup, chf paramchf) {}
-  
-  public final void run()
-  {
-    AppMethodBeat.i(109666);
-    k localk = k.sCp;
-    k.a((CharSequence)this.sCq.text, this.sCq.textColor, this.sCq.eTj, this.sCr, this.faP, this.sCs);
-    AppMethodBeat.o(109666);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/presenter/StoryFavAlbumPresenter$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class k$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.k.a
  * JD-Core Version:    0.7.0.1
  */

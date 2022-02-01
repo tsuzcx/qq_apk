@@ -16,9 +16,9 @@ public class UserRecoverableException
   
   public Intent getIntent()
   {
-    AppMethodBeat.i(89440);
+    AppMethodBeat.i(4462);
     Intent localIntent = new Intent(this.mIntent);
-    AppMethodBeat.o(89440);
+    AppMethodBeat.o(4462);
     return localIntent;
   }
 }

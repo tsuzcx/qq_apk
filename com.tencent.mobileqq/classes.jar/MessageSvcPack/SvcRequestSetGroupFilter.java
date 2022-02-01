@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestSetGroupFilter
   extends JceStruct
 {
-  public byte cOp;
-  public byte cVerifyType;
-  public long lGroupCode;
-  public long lUin;
+  public byte cOp = 0;
+  public byte cVerifyType = 0;
+  public long lGroupCode = 0L;
+  public long lUin = 0L;
   
   public SvcRequestSetGroupFilter() {}
   
@@ -40,7 +40,7 @@ public final class SvcRequestSetGroupFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestSetGroupFilter
  * JD-Core Version:    0.7.0.1
  */

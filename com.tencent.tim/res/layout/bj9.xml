@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/a3w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.preview.view.NestedScrollView android:id="@id/hee" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/d4t" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/ha4" android:layout_width="fill_parent" android:layout_height="3.0dip" />
+            <com.qzone.preview.view.NestedScrollWebView android:id="@id/hir" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </com.qzone.preview.view.NestedScrollView>
+    <RelativeLayout android:id="@id/jtv" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentTop="true">
+        <TextView android:id="@id/jt3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/jt1" android:layout_width="15.0dip" android:layout_height="25.0dip" android:layout_marginLeft="@dimen/ni" android:src="@drawable/fxh" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textStyle="bold" android:ellipsize="end" android:gravity="center" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="@dimen/b3w" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+        <Button android:textSize="@dimen/ayk" android:textColor="#ff333333" android:gravity="center" android:id="@id/l29" android:background="@drawable/arv" android:visibility="gone" android:layout_width="47.0dip" android:layout_height="26.0dip" android:layout_marginRight="@dimen/mp" android:text="@string/rp5" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

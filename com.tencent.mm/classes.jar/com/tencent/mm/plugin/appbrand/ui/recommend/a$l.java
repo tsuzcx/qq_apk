@@ -1,35 +1,34 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import a.f.b.j;
-import a.l;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.protocal.protobuf.enb;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.m;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$onBindViewHolder$1$1"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class a$l
-  implements View.OnClickListener
+  extends u
+  implements m<enb, Integer, ah>
 {
-  a$l(a.c paramc, a parama, bsi parambsi, WxaAttributes paramWxaAttributes, int paramInt, Context paramContext) {}
+  public static final l uoI;
   
-  public final void onClick(View paramView)
+  static
   {
-    AppMethodBeat.i(135162);
-    paramView = this.iVT;
-    Object localObject = this.iWf.aku;
-    j.p(localObject, "baseViewHolder.itemView");
-    localObject = ((View)localObject).getContext();
-    j.p(localObject, "baseViewHolder.itemView.context");
-    paramView.a((Context)localObject, this.iWh, this.iWg, this.iWi, true);
-    AppMethodBeat.o(135162);
+    AppMethodBeat.i(51333);
+    uoI = new l();
+    AppMethodBeat.o(51333);
+  }
+  
+  a$l()
+  {
+    super(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.a.l
  * JD-Core Version:    0.7.0.1
  */

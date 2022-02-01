@@ -1,79 +1,33 @@
 package com.tencent.mm.plugin.story.e;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.story.model.audio.AudioCacheInfo;
-import java.io.Serializable;
-import java.util.ArrayList;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/data/StoryCaptureInfo;", "Ljava/io/Serializable;", "()V", "audioInfo", "Lcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;", "getAudioInfo", "()Lcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;", "setAudioInfo", "(Lcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;)V", "audioMixType", "", "getAudioMixType", "()I", "setAudioMixType", "(I)V", "fakeVideoImageList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getFakeVideoImageList", "()Ljava/util/ArrayList;", "setFakeVideoImageList", "(Ljava/util/ArrayList;)V", "isCaptureVideo", "", "()Z", "setCaptureVideo", "(Z)V", "isPhotoToVideo", "setPhotoToVideo", "recordThumb", "getRecordThumb", "()Ljava/lang/String;", "setRecordThumb", "(Ljava/lang/String;)V", "recordVideo", "getRecordVideo", "setRecordVideo", "remuxEnd", "", "getRemuxEnd", "()J", "setRemuxEnd", "(J)V", "remuxStart", "getRemuxStart", "setRemuxStart", "videoRotate", "getVideoRotate", "setVideoRotate", "reset", "", "toString", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/data/StoryTimeUtil;", "", "()V", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements Serializable
 {
-  public int eWL;
-  public boolean fbp;
-  public String ssl;
-  public String ssm;
-  public long ssn;
-  public long sso;
-  public boolean ssp;
-  public int ssq;
-  public AudioCacheInfo ssr;
-  public ArrayList<String> sss;
+  private static final long MILLSECONDS_OF_DAY;
+  private static final long MILLSECONDS_OF_HOUR;
+  private static final long MILLSECONDS_OF_MINUTE;
+  private static final long MILLSECONDS_OF_SECOND;
+  public static final a.a Sjk;
+  private static final String TAG;
   
-  public a()
+  static
   {
-    AppMethodBeat.i(150991);
-    this.ssl = "";
-    this.ssm = "";
-    this.sss = new ArrayList();
-    AppMethodBeat.o(150991);
-  }
-  
-  public final void acH(String paramString)
-  {
-    AppMethodBeat.i(108986);
-    j.q(paramString, "<set-?>");
-    this.ssl = paramString;
-    AppMethodBeat.o(108986);
-  }
-  
-  public final void acI(String paramString)
-  {
-    AppMethodBeat.i(108987);
-    j.q(paramString, "<set-?>");
-    this.ssm = paramString;
-    AppMethodBeat.o(108987);
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(150989);
-    this.ssq = 0;
-    this.ssr = null;
-    this.ssl = "";
-    this.ssm = "";
-    this.ssn = 0L;
-    this.sso = 0L;
-    this.eWL = 0;
-    this.fbp = false;
-    this.ssp = false;
-    this.sss.clear();
-    AppMethodBeat.o(150989);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(150990);
-    String str = "StoryCaptureInfo(sourceVideoPath='" + this.ssl + "', sourceThumb='" + this.ssm + "', remuxStart=" + this.ssn + ", remuxEnd=" + this.sso + ", isCaptureVideo=" + this.fbp + ", audioMixType=" + this.ssq + ", audioInfo=" + this.ssr + ", videoRotate=" + this.eWL + ')';
-    AppMethodBeat.o(150990);
-    return str;
+    AppMethodBeat.i(118623);
+    Sjk = new a.a((byte)0);
+    TAG = "MicroMsg.StoryTimeUtil";
+    MILLSECONDS_OF_SECOND = 1000L;
+    MILLSECONDS_OF_MINUTE = MILLSECONDS_OF_SECOND * 60L;
+    MILLSECONDS_OF_HOUR = MILLSECONDS_OF_MINUTE * 60L;
+    MILLSECONDS_OF_DAY = 24L * MILLSECONDS_OF_HOUR;
+    AppMethodBeat.o(118623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.e.a
  * JD-Core Version:    0.7.0.1
  */

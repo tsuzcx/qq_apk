@@ -8,37 +8,37 @@ public final class ZeroField
     super(paramInt);
   }
   
-  public byte byteValue()
+  public final byte byteValue()
   {
     return 0;
   }
   
-  public double doubleValue()
+  public final double doubleValue()
   {
     return 0.0D;
   }
   
-  public float floatValue()
+  public final float floatValue()
   {
     return 0.0F;
   }
   
-  public Number getNumber()
+  public final Number getNumber()
   {
     return Integer.valueOf(0);
   }
   
-  public int intValue()
+  public final int intValue()
   {
     return 0;
   }
   
-  public long longValue()
+  public final long longValue()
   {
     return 0L;
   }
   
-  public short shortValue()
+  public final short shortValue()
   {
     return 0;
   }

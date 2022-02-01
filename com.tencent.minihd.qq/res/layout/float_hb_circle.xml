@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="right" android:id="@id/hb_circle_container" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginRight="-11.0dip">
+        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/float_hb_circile" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffbb252c" android:gravity="center" android:id="@id/hb_count" android:background="@drawable/float_hb_count_bg" android:layout_width="16.0dip" android:layout_height="16.0dip" android:text="9" />
+    </FrameLayout>
+</FrameLayout>

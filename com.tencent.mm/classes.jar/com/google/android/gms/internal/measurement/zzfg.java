@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.measurement.AppMeasurement;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -27,7 +26,7 @@ public final class zzfg
   zzfg(zzgl paramzzgl)
   {
     super(paramzzgl);
-    AppMethodBeat.i(68870);
+    AppMethodBeat.i(1393);
     this.zzaim = '\000';
     this.zzadu = -1L;
     this.zzaio = new zzfi(this, 6, false, false);
@@ -39,16 +38,15 @@ public final class zzfg
     this.zzaiu = new zzfi(this, 4, false, false);
     this.zzaiv = new zzfi(this, 3, false, false);
     this.zzaiw = new zzfi(this, 2, false, false);
-    AppMethodBeat.o(68870);
+    AppMethodBeat.o(1393);
   }
   
-  @VisibleForTesting
   private static String zza(boolean paramBoolean, Object paramObject)
   {
-    AppMethodBeat.i(68877);
+    AppMethodBeat.i(1400);
     if (paramObject == null)
     {
-      AppMethodBeat.o(68877);
+      AppMethodBeat.o(1400);
       return "";
     }
     if ((paramObject instanceof Integer)) {
@@ -62,13 +60,13 @@ public final class zzfg
         if (!paramBoolean)
         {
           paramObject = String.valueOf(paramObject);
-          AppMethodBeat.o(68877);
+          AppMethodBeat.o(1400);
           return paramObject;
         }
         if (Math.abs(((Long)paramObject).longValue()) < 100L)
         {
           paramObject = String.valueOf(paramObject);
-          AppMethodBeat.o(68877);
+          AppMethodBeat.o(1400);
           return paramObject;
         }
         if (String.valueOf(paramObject).charAt(0) == '-') {}
@@ -78,14 +76,14 @@ public final class zzfg
           long l1 = Math.round(Math.pow(10.0D, paramObject.length() - 1));
           long l2 = Math.round(Math.pow(10.0D, paramObject.length()) - 1.0D);
           paramObject = String.valueOf(str1).length() + 43 + String.valueOf(str1).length() + str1 + l1 + "..." + str1 + l2;
-          AppMethodBeat.o(68877);
+          AppMethodBeat.o(1400);
           return paramObject;
         }
       }
       if ((paramObject instanceof Boolean))
       {
         paramObject = String.valueOf(paramObject);
-        AppMethodBeat.o(68877);
+        AppMethodBeat.o(1400);
         return paramObject;
       }
       if ((paramObject instanceof Throwable))
@@ -126,7 +124,7 @@ public final class zzfg
           else
           {
             paramObject = paramObject.toString();
-            AppMethodBeat.o(68877);
+            AppMethodBeat.o(1400);
             return paramObject;
             paramObject = ((Throwable)localObject1).toString();
             break;
@@ -137,23 +135,23 @@ public final class zzfg
       if ((paramObject instanceof zzfj))
       {
         paramObject = zzfj.zza((zzfj)paramObject);
-        AppMethodBeat.o(68877);
+        AppMethodBeat.o(1400);
         return paramObject;
       }
       if (paramBoolean)
       {
-        AppMethodBeat.o(68877);
+        AppMethodBeat.o(1400);
         return "-";
       }
       paramObject = String.valueOf(paramObject);
-      AppMethodBeat.o(68877);
+      AppMethodBeat.o(1400);
       return paramObject;
     }
   }
   
   static String zza(boolean paramBoolean, String paramString, Object paramObject1, Object paramObject2, Object paramObject3)
   {
-    AppMethodBeat.i(68876);
+    AppMethodBeat.i(1399);
     String str1 = paramString;
     if (paramString == null) {
       str1 = "";
@@ -188,45 +186,45 @@ public final class zzfg
       localStringBuilder.append(paramObject3);
     }
     paramString = localStringBuilder.toString();
-    AppMethodBeat.o(68876);
+    AppMethodBeat.o(1399);
     return paramString;
   }
   
   protected static Object zzbm(String paramString)
   {
-    AppMethodBeat.i(68871);
+    AppMethodBeat.i(1394);
     if (paramString == null)
     {
-      AppMethodBeat.o(68871);
+      AppMethodBeat.o(1394);
       return null;
     }
     paramString = new zzfj(paramString);
-    AppMethodBeat.o(68871);
+    AppMethodBeat.o(1394);
     return paramString;
   }
   
   private static String zzbn(String paramString)
   {
-    AppMethodBeat.i(68878);
+    AppMethodBeat.i(1401);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(68878);
+      AppMethodBeat.o(1401);
       return "";
     }
     int i = paramString.lastIndexOf('.');
     if (i == -1)
     {
-      AppMethodBeat.o(68878);
+      AppMethodBeat.o(1401);
       return paramString;
     }
     paramString = paramString.substring(0, i);
-    AppMethodBeat.o(68878);
+    AppMethodBeat.o(1401);
     return paramString;
   }
   
   private final String zziu()
   {
-    AppMethodBeat.i(68875);
+    AppMethodBeat.i(1398);
     try
     {
       if (this.zzain == null) {
@@ -237,30 +235,28 @@ public final class zzfg
     }
     finally
     {
-      AppMethodBeat.o(68875);
+      AppMethodBeat.o(1398);
     }
   }
   
-  @VisibleForTesting
   protected final boolean isLoggable(int paramInt)
   {
-    AppMethodBeat.i(68873);
+    AppMethodBeat.i(1396);
     boolean bool = Log.isLoggable(zziu(), paramInt);
-    AppMethodBeat.o(68873);
+    AppMethodBeat.o(1396);
     return bool;
   }
   
-  @VisibleForTesting
   protected final void zza(int paramInt, String paramString)
   {
-    AppMethodBeat.i(68874);
+    AppMethodBeat.i(1397);
     Log.println(paramInt, zziu(), paramString);
-    AppMethodBeat.o(68874);
+    AppMethodBeat.o(1397);
   }
   
   protected final void zza(int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString, Object paramObject1, Object paramObject2, Object paramObject3)
   {
-    AppMethodBeat.i(68872);
+    AppMethodBeat.i(1395);
     if ((!paramBoolean1) && (isLoggable(paramInt))) {
       zza(paramInt, zza(false, paramString, paramObject1, paramObject2, paramObject3));
     }
@@ -272,13 +268,13 @@ public final class zzfg
       if (localzzgg == null)
       {
         zza(6, "Scheduler not set. Not logging error/warn");
-        AppMethodBeat.o(68872);
+        AppMethodBeat.o(1395);
         return;
       }
       if (!localzzgg.isInitialized())
       {
         zza(6, "Scheduler not initialized. Not logging error/warn");
-        AppMethodBeat.o(68872);
+        AppMethodBeat.o(1395);
         return;
       }
       if (paramInt >= 0) {
@@ -294,7 +290,7 @@ public final class zzfg
         i = 8;
       }
       localzzgg.zzc(new zzfh(this, i, paramString, paramObject1, paramObject2, paramObject3));
-      AppMethodBeat.o(68872);
+      AppMethodBeat.o(1395);
       return;
     }
   }
@@ -346,23 +342,23 @@ public final class zzfg
   
   public final String zziv()
   {
-    AppMethodBeat.i(68879);
+    AppMethodBeat.i(1402);
     Object localObject = zzgf().zzajt.zzfi();
     if ((localObject == null) || (localObject == zzfr.zzajs))
     {
-      AppMethodBeat.o(68879);
+      AppMethodBeat.o(1402);
       return null;
     }
     String str = String.valueOf(((Pair)localObject).second);
     localObject = (String)((Pair)localObject).first;
     str = String.valueOf(str).length() + 1 + String.valueOf(localObject).length() + str + ":" + (String)localObject;
-    AppMethodBeat.o(68879);
+    AppMethodBeat.o(1402);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfg
  * JD-Core Version:    0.7.0.1
  */

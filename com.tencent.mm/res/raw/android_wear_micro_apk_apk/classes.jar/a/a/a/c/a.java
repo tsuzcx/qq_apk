@@ -6,25 +6,25 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private final byte[] amU;
-  private final OutputStream amV;
-  private final a.a.a.b.b.a amW;
+  private final byte[] aqw;
+  private final OutputStream aqx;
+  private final a.a.a.b.b.a aqy;
   
   public a(byte[] paramArrayOfByte)
   {
-    this.amU = paramArrayOfByte;
-    this.amV = null;
-    this.amW = a.a.a.b.b.a.r(paramArrayOfByte);
+    this.aqw = paramArrayOfByte;
+    this.aqx = null;
+    this.aqy = a.a.a.b.b.a.r(paramArrayOfByte);
   }
   
-  private void ap(int paramInt1, int paramInt2)
+  private void as(int paramInt1, int paramInt2)
   {
-    this.amW.am(paramInt1, paramInt2);
+    this.aqy.ap(paramInt1, paramInt2);
   }
   
-  public final void aq(int paramInt1, int paramInt2)
+  public final void at(int paramInt1, int paramInt2)
   {
-    ap(paramInt1, paramInt2);
+    as(paramInt1, paramInt2);
   }
   
   public final void b(int paramInt1, int paramInt2, LinkedList<?> paramLinkedList)
@@ -33,7 +33,7 @@ public final class a
       switch (paramInt2)
       {
       default: 
-        throw new IllegalArgumentException("The data type was not found, the id used was " + paramInt2);
+        throw new IllegalArgumentException("The data type was not found, the id used was ".concat(String.valueOf(paramInt2)));
       case 6: 
         paramInt2 = 0;
         if (paramInt2 < paramLinkedList.size()) {
@@ -51,7 +51,7 @@ public final class a
       while (paramInt2 < paramLinkedList.size())
       {
         double d = ((Double)paramLinkedList.get(paramInt2)).doubleValue();
-        this.amW.a(paramInt1, d);
+        this.aqy.a(paramInt1, d);
         paramInt2 += 1;
       }
       continue;
@@ -59,14 +59,14 @@ public final class a
       while (paramInt2 < paramLinkedList.size())
       {
         float f = ((Float)paramLinkedList.get(paramInt2)).floatValue();
-        this.amW.c(paramInt1, f);
+        this.aqy.d(paramInt1, f);
         paramInt2 += 1;
       }
       continue;
       paramInt2 = 0;
       while (paramInt2 < paramLinkedList.size())
       {
-        ap(paramInt1, ((Integer)paramLinkedList.get(paramInt2)).intValue());
+        as(paramInt1, ((Integer)paramLinkedList.get(paramInt2)).intValue());
         paramInt2 += 1;
       }
       continue;
@@ -87,7 +87,7 @@ public final class a
       paramInt2 = 0;
       while (paramInt2 < paramLinkedList.size())
       {
-        g(paramInt1, ((Boolean)paramLinkedList.get(paramInt2)).booleanValue());
+        h(paramInt1, ((Boolean)paramLinkedList.get(paramInt2)).booleanValue());
         paramInt2 += 1;
       }
       continue;
@@ -95,8 +95,8 @@ public final class a
       while (paramInt2 < paramLinkedList.size())
       {
         com.tencent.mm.d.a locala = (com.tencent.mm.d.a)paramLinkedList.get(paramInt2);
-        int i = locala.la();
-        this.amW.an(paramInt1, i);
+        int i = locala.lk();
+        this.aqy.aq(paramInt1, i);
         locala.a(this);
         paramInt2 += 1;
       }
@@ -105,30 +105,30 @@ public final class a
   
   public final void c(int paramInt, b paramb)
   {
-    this.amW.b(paramInt, paramb);
+    this.aqy.a(paramInt, paramb);
   }
   
   public final void d(int paramInt, String paramString)
   {
-    this.amW.d(paramInt, paramString);
+    this.aqy.d(paramInt, paramString);
   }
   
   public final void g(int paramInt, long paramLong)
   {
-    this.amW.f(paramInt, paramLong);
+    this.aqy.e(paramInt, paramLong);
   }
   
-  public final void g(int paramInt, boolean paramBoolean)
+  public final void h(int paramInt, boolean paramBoolean)
   {
-    this.amW.f(paramInt, paramBoolean);
+    this.aqy.g(paramInt, paramBoolean);
   }
   
-  public final void oN()
+  public final void pB()
   {
-    if (this.amV != null)
+    if (this.aqx != null)
     {
-      this.amV.write(this.amU);
-      this.amV.flush();
+      this.aqx.write(this.aqw);
+      this.aqx.flush();
     }
   }
 }

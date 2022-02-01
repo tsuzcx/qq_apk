@@ -1,50 +1,49 @@
 package cooperation.qzone.font;
 
-import bjhz;
-import bjjp;
-import bjjs;
+import cooperation.qzone.cache.FileCacheService;
 import java.io.File;
 
-public class FontManager$3
+class FontManager$3
   implements Runnable
 {
-  public FontManager$3(bjjs parambjjs, int paramInt1, int paramInt2, bjjp parambjjp, String paramString1, String paramString2) {}
+  FontManager$3(FontManager paramFontManager, int paramInt1, int paramInt2, FontInterface.FontResult paramFontResult, String paramString1, String paramString2) {}
   
   public void run()
   {
-    File localFile = new File(bjjs.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-    if (localFile.exists())
+    Object localObject = new File(FontManager.access$000(this.this$0, this.val$fontID, this.val$fontType));
+    if (((File)localObject).exists())
     {
-      if (this.jdField_a_of_type_Bjjp == null) {
-        break label152;
-      }
-      bjjs.a().a(localFile.getAbsolutePath(), true);
-      this.jdField_a_of_type_Bjjp.a(this.jdField_a_of_type_Int, localFile.getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
-    }
-    label152:
-    while ((bjjs.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bjjp)) || (this.jdField_a_of_type_Bjjp == null))
-    {
-      return;
-      if (this.jdField_b_of_type_Int == 1)
+      if (this.val$result != null)
       {
-        localFile = new File(bjjs.a(this.this$0, this.jdField_a_of_type_Int, 0));
-        if (localFile.exists())
+        FontManager.access$100().updateLruFile(((File)localObject).getAbsolutePath(), true);
+        this.val$result.result(this.val$fontID, ((File)localObject).getAbsolutePath(), this.val$extend);
+      }
+    }
+    else if (this.val$fontType == 1)
+    {
+      localObject = new File(FontManager.access$000(this.this$0, this.val$fontID, 0));
+      if (((File)localObject).exists())
+      {
+        String str = FontManager.access$000(this.this$0, this.val$fontID, 1);
+        if (FontManager.access$200(this.this$0, ((File)localObject).getAbsolutePath(), str))
         {
-          String str = bjjs.a(this.this$0, this.jdField_a_of_type_Int, 1);
-          if (bjjs.a(this.this$0, localFile.getAbsolutePath(), str))
-          {
-            this.jdField_a_of_type_Bjjp.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaLangString);
-            return;
-          }
+          this.val$result.result(this.val$fontID, str, this.val$extend);
+          return;
         }
       }
     }
-    this.jdField_a_of_type_Bjjp.a(this.jdField_a_of_type_Int, null, this.jdField_a_of_type_JavaLangString);
+    if (!FontManager.access$300(this.this$0, this.val$fontID, this.val$fontUrl, this.val$fontType, this.val$extend, this.val$result))
+    {
+      localObject = this.val$result;
+      if (localObject != null) {
+        ((FontInterface.FontResult)localObject).result(this.val$fontID, null, this.val$extend);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.font.FontManager.3
  * JD-Core Version:    0.7.0.1
  */

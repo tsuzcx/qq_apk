@@ -11,52 +11,53 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.MotionEvent;
+import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import azqs;
-import bdne;
+import com.tencent.av.AVLog;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import lek;
-import mbo;
-import mbp;
-import mbt;
 
 public class SmallScreenRelativeLayout
   extends RelativeLayout
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  final int jdField_a_of_type_Int;
-  ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  Display jdField_a_of_type_AndroidViewDisplay;
-  mbo jdField_a_of_type_Mbo;
-  mbp jdField_a_of_type_Mbp = null;
-  boolean jdField_a_of_type_Boolean = false;
-  final int jdField_b_of_type_Int;
-  ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int;
-  boolean jdField_d_of_type_Boolean = true;
-  final int e;
-  final int f;
-  int g;
-  final int h;
-  int i = -1;
-  int j = -1;
-  int k = -1;
-  int l = -1;
-  int m = -1;
-  int n = -1;
-  int o = 6;
-  int p = 0;
-  int q = 0;
-  int r = 0;
-  int s = 7;
+  SmallScreenRelativeLayout.SmallScreenOrientationEventListener A = null;
+  int B = 7;
+  RectF C;
+  View.OnClickListener D;
+  SmallScreenRelativeLayout.FloatListener a;
+  ValueAnimator b;
+  ValueAnimator c;
+  Display d;
+  boolean e = false;
+  boolean f = false;
+  boolean g = false;
+  boolean h = true;
+  final int i;
+  final int j;
+  int k;
+  int l;
+  final int m;
+  final int n;
+  int o;
+  final int p;
+  int q = -1;
+  int r = -1;
+  int s = -1;
+  int t = -1;
+  int u = -1;
+  int v = -1;
+  int w = 6;
+  int x = 0;
+  int y = 0;
+  int z = 0;
   
   public SmallScreenRelativeLayout(Context paramContext)
   {
@@ -74,397 +75,326 @@ public class SmallScreenRelativeLayout
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenRelativeLayout", 2, "SmallScreenRelativeLayout");
     }
-    this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.e = getResources().getDimensionPixelSize(2131297757);
-    this.f = getResources().getDimensionPixelSize(2131297758);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131297765);
-    this.g = getResources().getDimensionPixelSize(2131298914);
-    this.h = getResources().getDimensionPixelSize(2131297755);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(this);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.p = b();
-    this.jdField_a_of_type_Mbp = new mbp(this, getContext(), 2);
+    this.j = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.m = getResources().getDimensionPixelSize(2131298637);
+    this.n = getResources().getDimensionPixelSize(2131298638);
+    this.i = getResources().getDimensionPixelSize(2131298647);
+    this.o = getResources().getDimensionPixelSize(2131299920);
+    this.p = getResources().getDimensionPixelSize(2131298633);
+    this.b = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.b.setDuration(200L);
+    this.b.addListener(this);
+    this.b.addUpdateListener(this);
+    this.c = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.c.setDuration(400L);
+    this.c.addListener(this);
+    this.b.addUpdateListener(this);
+    this.d = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    this.x = getSysRotation();
+    this.A = new SmallScreenRelativeLayout.SmallScreenOrientationEventListener(this, getContext(), 2);
   }
   
-  private int b()
+  private int getSysRotation()
   {
     try
     {
-      int i1 = this.jdField_a_of_type_AndroidViewDisplay.getRotation();
+      int i1 = this.d.getRotation();
       return i1;
     }
     catch (Exception localException)
     {
-      lek.e("SmallScreenRelativeLayout", localException.getMessage());
+      AVLog.printErrorLog("SmallScreenRelativeLayout", localException.getMessage());
     }
     return 0;
   }
   
-  public int a()
-  {
-    int i2;
-    if ((this.q != 0) && (this.r != 0))
-    {
-      if (this.jdField_a_of_type_Mbo == null) {
-        break label60;
-      }
-      i2 = this.jdField_a_of_type_Mbo.a(this);
-    }
-    for (int i1 = this.jdField_a_of_type_Mbo.b(this);; i1 = getTop())
-    {
-      this.s = a(i2, i1, i2, i1);
-      return this.s;
-      label60:
-      i2 = getLeft();
-    }
-  }
-  
   int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt2 = 2147483647;
-    int i1 = 0;
     paramInt1 = 1;
-    if (paramInt1 < 14)
+    paramInt2 = 2147483647;
+    int i2 = 0;
+    while (paramInt1 < 14)
     {
       Point localPoint = a(paramInt1);
-      int i2 = localPoint.x;
-      int i3 = localPoint.x;
-      int i4 = localPoint.y;
-      i2 = (paramInt4 - localPoint.y) * (paramInt4 - i4) + (paramInt3 - i2) * (paramInt3 - i3);
-      if (i2 >= paramInt2) {
-        break label90;
+      int i3 = (paramInt3 - localPoint.x) * (paramInt3 - localPoint.x) + (paramInt4 - localPoint.y) * (paramInt4 - localPoint.y);
+      int i1 = paramInt2;
+      if (i3 < paramInt2)
+      {
+        i2 = paramInt1;
+        i1 = i3;
       }
-      i1 = paramInt1;
-      paramInt2 = i2;
-    }
-    label90:
-    for (;;)
-    {
       paramInt1 += 1;
-      break;
-      return i1;
+      paramInt2 = i1;
     }
+    return i2;
   }
   
   int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     int i2 = 1;
     int i1;
-    label31:
-    SharedPreferences.Editor localEditor;
-    if ((paramInt1 < paramInt2) && (paramInt3 > paramInt4))
-    {
+    if ((paramInt1 < paramInt2) && (paramInt3 > paramInt4)) {
       i1 = 1;
-      if ((paramInt1 <= paramInt2) || (paramInt3 >= paramInt4)) {
-        break label94;
-      }
+    } else {
+      i1 = 0;
+    }
+    if ((paramInt1 > paramInt2) && (paramInt3 < paramInt4)) {
       paramInt2 = i2;
-      if (i1 == 0)
+    } else {
+      paramInt2 = 0;
+    }
+    if (i1 == 0)
+    {
+      paramInt1 = paramInt5;
+      if (paramInt2 == 0) {}
+    }
+    else
+    {
+      SharedPreferences localSharedPreferences = SharedPreUtils.B(getContext());
+      SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+      if (i1 != 0)
       {
-        paramInt1 = paramInt5;
-        if (paramInt2 == 0) {}
+        paramInt1 = localSharedPreferences.getInt("small_window_position_land", 12);
       }
       else
       {
-        SharedPreferences localSharedPreferences = bdne.a(getContext());
-        localEditor = localSharedPreferences.edit();
-        if (i1 == 0) {
-          break label99;
+        paramInt1 = paramInt5;
+        if (paramInt2 != 0)
+        {
+          localEditor.putInt("small_window_position_land", paramInt5);
+          paramInt1 = 7;
         }
-        paramInt1 = localSharedPreferences.getInt("small_window_position_land", 12);
       }
-    }
-    for (;;)
-    {
       localEditor.commit();
-      return paramInt1;
-      i1 = 0;
-      break;
-      label94:
-      paramInt2 = 0;
-      break label31;
-      label99:
-      paramInt1 = paramInt5;
-      if (paramInt2 != 0)
-      {
-        localEditor.putInt("small_window_position_land", paramInt5);
-        paramInt1 = 7;
-      }
     }
+    return paramInt1;
   }
   
   Point a(int paramInt)
   {
-    Rect localRect = a();
+    Rect localRect = getPositionRect();
     Point localPoint = new Point();
     switch (paramInt)
     {
     default: 
       return localPoint;
-    case 0: 
-      localPoint.x = localRect.centerX();
-      localPoint.y = localRect.centerY();
-      return localPoint;
-    case 1: 
-      localPoint.x = localRect.left;
-      localPoint.y = localRect.top;
-      return localPoint;
-    case 2: 
-      localPoint.x = localRect.left;
-      localPoint.y = (localRect.top + this.g);
-      return localPoint;
-    case 3: 
-      localPoint.x = localRect.left;
-      localPoint.y = localRect.centerY();
-      return localPoint;
-    case 4: 
-      localPoint.x = localRect.left;
-      localPoint.y = (localRect.bottom - this.h);
-      return localPoint;
-    case 5: 
-      localPoint.x = localRect.left;
-      localPoint.y = localRect.bottom;
-      return localPoint;
-    case 6: 
-      localPoint.x = localRect.right;
-      localPoint.y = localRect.top;
-      return localPoint;
-    case 7: 
-      localPoint.x = localRect.right;
-      localPoint.y = (localRect.top + this.g);
-      return localPoint;
-    case 8: 
-      localPoint.x = localRect.right;
-      localPoint.y = localRect.centerY();
-      return localPoint;
-    case 9: 
-      localPoint.x = localRect.right;
-      localPoint.y = (localRect.bottom - this.h);
-      return localPoint;
-    case 10: 
-      localPoint.x = localRect.right;
-      localPoint.y = localRect.bottom;
-      return localPoint;
-    case 11: 
-      localPoint.x = (localRect.centerX() / 2);
+    case 13: 
+      localPoint.x = (localRect.centerX() * 3 / 2);
       localPoint.y = localRect.top;
       return localPoint;
     case 12: 
       localPoint.x = localRect.centerX();
       localPoint.y = localRect.top;
       return localPoint;
+    case 11: 
+      localPoint.x = (localRect.centerX() / 2);
+      localPoint.y = localRect.top;
+      return localPoint;
+    case 10: 
+      localPoint.x = localRect.right;
+      localPoint.y = localRect.bottom;
+      return localPoint;
+    case 9: 
+      localPoint.x = localRect.right;
+      localPoint.y = (localRect.bottom - this.p);
+      return localPoint;
+    case 8: 
+      localPoint.x = localRect.right;
+      localPoint.y = localRect.centerY();
+      return localPoint;
+    case 7: 
+      localPoint.x = localRect.right;
+      localPoint.y = (localRect.top + this.o);
+      return localPoint;
+    case 6: 
+      localPoint.x = localRect.right;
+      localPoint.y = localRect.top;
+      return localPoint;
+    case 5: 
+      localPoint.x = localRect.left;
+      localPoint.y = localRect.bottom;
+      return localPoint;
+    case 4: 
+      localPoint.x = localRect.left;
+      localPoint.y = (localRect.bottom - this.p);
+      return localPoint;
+    case 3: 
+      localPoint.x = localRect.left;
+      localPoint.y = localRect.centerY();
+      return localPoint;
+    case 2: 
+      localPoint.x = localRect.left;
+      localPoint.y = (localRect.top + this.o);
+      return localPoint;
+    case 1: 
+      localPoint.x = localRect.left;
+      localPoint.y = localRect.top;
+      return localPoint;
     }
-    localPoint.x = (localRect.centerX() * 3 / 2);
-    localPoint.y = localRect.top;
+    localPoint.x = localRect.centerX();
+    localPoint.y = localRect.centerY();
     return localPoint;
-  }
-  
-  Rect a()
-  {
-    int i3;
-    int i1;
-    label20:
-    int i2;
-    label29:
-    Rect localRect;
-    int i4;
-    if (b() % 2 == 0)
-    {
-      i3 = 1;
-      if (i3 == 0) {
-        break label121;
-      }
-      i1 = this.e;
-      if (i3 == 0) {
-        break label129;
-      }
-      i2 = this.f;
-      localRect = new Rect();
-      localRect.left = i1;
-      localRect.top = i2;
-      if ((i3 == 0) && (this.jdField_a_of_type_Boolean)) {
-        break label137;
-      }
-      i4 = this.jdField_c_of_type_Int;
-      i3 = this.jdField_d_of_type_Int;
-      label72:
-      if ((this.q == 0) || (this.r == 0)) {
-        break label151;
-      }
-      localRect.right = (this.q - i4 - i1);
-      localRect.bottom = (this.r - i3 - i2);
-    }
-    label121:
-    do
-    {
-      return localRect;
-      i3 = 0;
-      break;
-      i1 = this.f;
-      break label20;
-      i2 = this.e;
-      break label29;
-      i4 = this.jdField_d_of_type_Int;
-      i3 = this.jdField_c_of_type_Int;
-      break label72;
-      try
-      {
-        localRect.right = (this.jdField_a_of_type_AndroidViewDisplay.getWidth() - i4 - i1);
-        localRect.bottom = (this.jdField_a_of_type_AndroidViewDisplay.getHeight() - i3 - i2);
-        return localRect;
-      }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    label129:
-    label137:
-    label151:
-    QLog.e("SmallScreenRelativeLayout", 2, "getPositionRect e = " + localException);
-    return localRect;
   }
   
   public void a()
   {
-    int i3 = b();
-    Rect localRect = new Rect();
+    int i3 = getSysRotation();
+    Object localObject = new Rect();
     try
     {
-      getWindowVisibleDisplayFrame(localRect);
-      boolean bool = mbt.i();
-      int i4 = localRect.width();
-      int i2 = localRect.height();
-      i1 = i2;
-      if (bool) {
-        i1 = i2 - this.jdField_a_of_type_Int;
-      }
-      i2 = this.p;
-      this.s = a(this.q, this.r, i4, i1, this.s);
-      if ((this.p != i3) || (i4 != this.q) || ((i3 == 0) && (this.r < i1)) || ((i3 != 0) && (this.r != i1)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("SmallScreenRelativeLayout", 1, "onOrientationChangedInner, mPosition[" + i2 + "->" + this.s + "], mRotation[" + this.p + "->" + i3 + "], mScreenWidth[" + this.q + "->" + i4 + "], mScreenHeight[" + this.r + "->" + i1 + "], mIsInit[" + this.jdField_d_of_type_Boolean + "]");
-        }
-        if ((this.jdField_d_of_type_Boolean) && (i3 != 0)) {
-          this.jdField_d_of_type_Boolean = false;
-        }
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-        this.p = i3;
-        this.q = i4;
-        this.r = i1;
-        setCurPosition(this.s);
-        if (this.jdField_a_of_type_Mbo == null) {
-          break label386;
-        }
-        i1 = this.jdField_a_of_type_Mbo.a(this);
-        this.m = i1;
-        this.i = i1;
-        i1 = this.jdField_a_of_type_Mbo.b(this);
-        this.n = i1;
-        this.j = i1;
-        if (!this.jdField_d_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-        }
-      }
-      return;
+      getWindowVisibleDisplayFrame((Rect)localObject);
     }
     catch (Exception localException)
     {
-      for (;;)
+      label23:
+      boolean bool;
+      int i4;
+      int i2;
+      int i1;
+      break label23;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("SmallScreenRelativeLayout", 2, "Can not getWindowVisibleDisplayFrame");
+    }
+    bool = SmallScreenUtils.j();
+    i4 = ((Rect)localObject).width();
+    i2 = ((Rect)localObject).height();
+    i1 = i2;
+    if (bool) {
+      i1 = i2 - this.i;
+    }
+    i2 = this.x;
+    this.B = a(this.y, this.z, i4, i1, this.B);
+    if ((this.x != i3) || (i4 != this.y) || ((i3 == 0) && (this.z < i1)) || ((i3 != 0) && (this.z != i1)))
+    {
+      if (QLog.isColorLevel())
       {
-        int i1;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("SmallScreenRelativeLayout", 2, "Can not getWindowVisibleDisplayFrame");
-          continue;
-          label386:
-          i1 = getLeft();
-          this.m = i1;
-          this.i = i1;
-          i1 = getTop();
-          this.n = i1;
-          this.j = i1;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onOrientationChangedInner, mPosition[");
+        ((StringBuilder)localObject).append(i2);
+        ((StringBuilder)localObject).append("->");
+        ((StringBuilder)localObject).append(this.B);
+        ((StringBuilder)localObject).append("], mRotation[");
+        ((StringBuilder)localObject).append(this.x);
+        ((StringBuilder)localObject).append("->");
+        ((StringBuilder)localObject).append(i3);
+        ((StringBuilder)localObject).append("], mScreenWidth[");
+        ((StringBuilder)localObject).append(this.y);
+        ((StringBuilder)localObject).append("->");
+        ((StringBuilder)localObject).append(i4);
+        ((StringBuilder)localObject).append("], mScreenHeight[");
+        ((StringBuilder)localObject).append(this.z);
+        ((StringBuilder)localObject).append("->");
+        ((StringBuilder)localObject).append(i1);
+        ((StringBuilder)localObject).append("], mIsInit[");
+        ((StringBuilder)localObject).append(this.h);
+        ((StringBuilder)localObject).append("]");
+        QLog.w("SmallScreenRelativeLayout", 1, ((StringBuilder)localObject).toString());
+      }
+      if ((this.h) && (i3 != 0)) {
+        this.h = false;
+      }
+      this.b.cancel();
+      this.x = i3;
+      this.y = i4;
+      this.z = i1;
+      setCurPosition(this.B);
+      localObject = this.a;
+      if (localObject != null)
+      {
+        i1 = ((SmallScreenRelativeLayout.FloatListener)localObject).a(this);
+        this.u = i1;
+        this.q = i1;
+        i1 = this.a.b(this);
+        this.v = i1;
+        this.r = i1;
+      }
+      else
+      {
+        i1 = getLeft();
+        this.u = i1;
+        this.q = i1;
+        i1 = getTop();
+        this.v = i1;
+        this.r = i1;
+      }
+      if (!this.h) {
+        this.b.start();
       }
     }
   }
   
   void a(int paramInt1, int paramInt2)
   {
-    paramInt1 = this.i + paramInt1 - this.k;
-    int i3 = this.j + paramInt2 - this.l;
+    int i2 = this.q + paramInt1 - this.s;
+    int i3 = this.r + paramInt2 - this.t;
     int i1;
-    int i2;
-    int i4;
-    if ((this.p % 2 == 0) || (!this.jdField_a_of_type_Boolean))
+    if ((this.x % 2 != 0) && (this.e))
     {
-      i1 = this.jdField_c_of_type_Int;
-      paramInt2 = this.jdField_d_of_type_Int;
-      i2 = this.q - i1;
-      i4 = this.r - paramInt2;
-      if (paramInt1 >= 0) {
-        break label166;
-      }
+      i1 = this.l;
+      paramInt2 = this.k;
+    }
+    else
+    {
+      i1 = this.k;
+      paramInt2 = this.l;
+    }
+    int i5 = this.y - i1;
+    int i4 = this.z - paramInt2;
+    paramInt1 = i2;
+    if (i2 < 0) {
       paramInt1 = 0;
     }
-    label166:
-    for (;;)
-    {
-      if (paramInt1 > i2) {}
-      for (;;)
-      {
-        if (i3 < 0) {}
-        for (paramInt1 = 0;; paramInt1 = i3)
-        {
-          if (paramInt1 > i4) {
-            paramInt1 = i4;
-          }
-          for (;;)
-          {
-            if (this.jdField_a_of_type_Mbo != null)
-            {
-              this.jdField_a_of_type_Mbo.a(this, i2, paramInt1, i1 + i2, paramInt1 + paramInt2);
-              return;
-              i1 = this.jdField_d_of_type_Int;
-              paramInt2 = this.jdField_c_of_type_Int;
-              break;
-            }
-            layout(i2, paramInt1, i2 + i1, paramInt2 + paramInt1);
-            return;
-          }
-        }
-        i2 = paramInt1;
-      }
+    if (paramInt1 > i5) {
+      i2 = i5;
+    } else {
+      i2 = paramInt1;
     }
+    paramInt1 = i3;
+    if (i3 < 0) {
+      paramInt1 = 0;
+    }
+    if (paramInt1 > i4) {
+      paramInt1 = i4;
+    }
+    SmallScreenRelativeLayout.FloatListener localFloatListener = this.a;
+    if (localFloatListener != null)
+    {
+      localFloatListener.a(this, i2, paramInt1, i2 + i1, paramInt1 + paramInt2);
+      return;
+    }
+    layout(i2, paramInt1, i1 + i2, paramInt2 + paramInt1);
   }
   
   void a(boolean paramBoolean)
   {
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      QLog.d("SmallScreenRelativeLayout", 2, "startShowHideAnimation mIsShow = " + this.jdField_b_of_type_Boolean);
-      QLog.d("SmallScreenRelativeLayout", 2, "startShowHideAnimation isShow = " + paramBoolean);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startShowHideAnimation mIsShow = ");
+      ((StringBuilder)localObject).append(this.f);
+      QLog.d("SmallScreenRelativeLayout", 2, ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startShowHideAnimation isShow = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("SmallScreenRelativeLayout", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (int i1 = 0;; i1 = 8)
+    this.f = paramBoolean;
+    int i1;
+    if (paramBoolean) {
+      i1 = 0;
+    } else {
+      i1 = 8;
+    }
+    setVisibility(i1);
+    if (!paramBoolean)
     {
-      setVisibility(i1);
-      if ((!paramBoolean) && (this.jdField_a_of_type_Mbo != null)) {
-        this.jdField_a_of_type_Mbo.a(this);
+      localObject = this.a;
+      if (localObject != null) {
+        ((SmallScreenRelativeLayout.FloatListener)localObject).c(this);
       }
-      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
   }
   
   public void b()
@@ -472,8 +402,8 @@ public class SmallScreenRelativeLayout
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenRelativeLayout", 2, "onCreate");
     }
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Mbp.enable();
+    this.h = true;
+    this.A.enable();
   }
   
   public void c()
@@ -481,8 +411,8 @@ public class SmallScreenRelativeLayout
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenRelativeLayout", 2, "onDestroy");
     }
-    this.jdField_a_of_type_Mbo = null;
-    this.jdField_a_of_type_Mbp.disable();
+    this.a = null;
+    this.A.disable();
   }
   
   public void d()
@@ -492,72 +422,116 @@ public class SmallScreenRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
     int i1 = (int)paramMotionEvent.getRawX();
     int i2 = (int)paramMotionEvent.getRawY();
-    switch (paramMotionEvent.getAction())
+    int i3 = paramMotionEvent.getAction();
+    boolean bool2 = false;
+    if (i3 != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
+      if (i3 != 1)
       {
-        return true;
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-        this.k = i1;
-        this.l = i2;
-        if (this.jdField_a_of_type_Mbo != null) {
-          this.i = this.jdField_a_of_type_Mbo.a(this);
-        }
-        for (this.j = this.jdField_a_of_type_Mbo.b(this);; this.j = getTop())
+        if (i3 != 2)
         {
-          this.jdField_c_of_type_Boolean = false;
+          if (i3 != 3) {
+            return true;
+          }
+          if (this.g) {
+            a(i1, i2);
+          }
+          paramMotionEvent = this.a;
+          if (paramMotionEvent != null)
+          {
+            this.u = paramMotionEvent.a(this);
+            this.v = this.a.b(this);
+          }
+          else
+          {
+            this.u = getLeft();
+            this.v = getTop();
+          }
+          this.b.start();
           return true;
-          this.i = getLeft();
         }
-        if (this.jdField_c_of_type_Boolean)
+        if (this.g)
         {
           a(i1, i2);
           return true;
         }
-      } while ((Math.abs(i1 - this.k) <= this.jdField_b_of_type_Int) && (Math.abs(i2 - this.l) <= this.jdField_b_of_type_Int));
-      this.jdField_c_of_type_Boolean = true;
-      return true;
-    case 1: 
-      if (this.jdField_c_of_type_Boolean)
-      {
-        a(i1, i2);
-        label195:
-        if (this.jdField_a_of_type_Mbo == null) {
-          break label266;
+        if ((Math.abs(i1 - this.s) > this.j) || (Math.abs(i2 - this.t) > this.j))
+        {
+          this.g = true;
+          return true;
         }
-        this.m = this.jdField_a_of_type_Mbo.a(this);
       }
-      for (this.n = this.jdField_a_of_type_Mbo.b(this); !bool; this.n = getTop())
+      else
       {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-        return true;
-        if (this.jdField_a_of_type_Mbo == null) {
-          break label195;
+        boolean bool1;
+        if (this.g)
+        {
+          a(i1, i2);
+          bool1 = bool2;
         }
-        bool = this.jdField_a_of_type_Mbo.a(this);
-        break label195;
-        label266:
-        this.m = getLeft();
+        else
+        {
+          RectF localRectF = this.C;
+          if ((localRectF != null) && (localRectF.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))) {
+            i1 = 1;
+          } else {
+            i1 = 0;
+          }
+          paramMotionEvent = this.a;
+          if ((paramMotionEvent != null) && (i1 == 0))
+          {
+            bool1 = paramMotionEvent.d(this);
+          }
+          else
+          {
+            paramMotionEvent = this.D;
+            bool1 = bool2;
+            if (paramMotionEvent != null)
+            {
+              paramMotionEvent.onClick(this);
+              bool1 = bool2;
+            }
+          }
+        }
+        paramMotionEvent = this.a;
+        if (paramMotionEvent != null)
+        {
+          this.u = paramMotionEvent.a(this);
+          this.v = this.a.b(this);
+        }
+        else
+        {
+          this.u = getLeft();
+          this.v = getTop();
+        }
+        if (!bool1)
+        {
+          this.b.start();
+          return true;
+        }
       }
     }
-    if (this.jdField_c_of_type_Boolean) {
-      a(i1, i2);
-    }
-    if (this.jdField_a_of_type_Mbo != null) {
-      this.m = this.jdField_a_of_type_Mbo.a(this);
-    }
-    for (this.n = this.jdField_a_of_type_Mbo.b(this);; this.n = getTop())
+    else
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-      return true;
-      this.m = getLeft();
+      this.b.cancel();
+      this.s = i1;
+      this.t = i2;
+      paramMotionEvent = this.a;
+      if (paramMotionEvent != null)
+      {
+        this.q = paramMotionEvent.a(this);
+        this.r = this.a.b(this);
+      }
+      else
+      {
+        this.q = getLeft();
+        this.r = getTop();
+      }
+      this.g = false;
     }
+    return true;
   }
   
   public void e()
@@ -567,140 +541,236 @@ public class SmallScreenRelativeLayout
   
   public void f()
   {
-    Point localPoint;
-    int i1;
-    if ((this.q != 0) && (this.r != 0))
+    if ((this.y != 0) && (this.z != 0))
     {
-      localPoint = a(this.s);
-      if ((this.p % 2 != 0) && (this.jdField_a_of_type_Boolean)) {
-        break label87;
+      Point localPoint = a(this.B);
+      int i1;
+      int i2;
+      if ((this.x % 2 != 0) && (this.e))
+      {
+        i1 = this.l;
+        i2 = this.k;
       }
-      i1 = this.jdField_c_of_type_Int;
+      else
+      {
+        i1 = this.k;
+        i2 = this.l;
+      }
+      SmallScreenRelativeLayout.FloatListener localFloatListener = this.a;
+      if (localFloatListener != null)
+      {
+        localFloatListener.a(this, localPoint.x, localPoint.y, localPoint.x + i1, localPoint.y + i2);
+        return;
+      }
+      layout(localPoint.x, localPoint.y, localPoint.x + i1, localPoint.y + i2);
     }
-    for (int i2 = this.jdField_d_of_type_Int; this.jdField_a_of_type_Mbo != null; i2 = this.jdField_c_of_type_Int)
+  }
+  
+  public int getCurPosition()
+  {
+    if ((this.y != 0) && (this.z != 0))
     {
-      this.jdField_a_of_type_Mbo.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
-      return;
-      label87:
-      i1 = this.jdField_d_of_type_Int;
+      SmallScreenRelativeLayout.FloatListener localFloatListener = this.a;
+      int i1;
+      int i2;
+      if (localFloatListener != null)
+      {
+        i1 = localFloatListener.a(this);
+        i2 = this.a.b(this);
+      }
+      else
+      {
+        i1 = getLeft();
+        i2 = getTop();
+      }
+      this.B = a(i1, i2, i1, i2);
     }
-    layout(localPoint.x, localPoint.y, localPoint.x + i1, i2 + localPoint.y);
+    return this.B;
+  }
+  
+  public boolean getIsShow()
+  {
+    return this.f;
+  }
+  
+  Rect getPositionRect()
+  {
+    int i3;
+    if (getSysRotation() % 2 == 0) {
+      i3 = 1;
+    } else {
+      i3 = 0;
+    }
+    int i1;
+    if (i3 != 0) {
+      i1 = this.m;
+    } else {
+      i1 = this.n;
+    }
+    int i2;
+    if (i3 != 0) {
+      i2 = this.n;
+    } else {
+      i2 = this.m;
+    }
+    Rect localRect = new Rect();
+    localRect.left = i1;
+    localRect.top = i2;
+    int i4;
+    if ((i3 == 0) && (this.e))
+    {
+      i3 = this.l;
+      i4 = this.k;
+    }
+    else
+    {
+      i3 = this.k;
+      i4 = this.l;
+    }
+    int i5 = this.y;
+    if (i5 != 0)
+    {
+      int i6 = this.z;
+      if (i6 != 0)
+      {
+        localRect.right = (i5 - i3 - i1);
+        localRect.bottom = (i6 - i4 - i2);
+        return localRect;
+      }
+    }
+    try
+    {
+      localRect.right = (this.d.getWidth() - i3 - i1);
+      localRect.bottom = (this.d.getHeight() - i4 - i2);
+      return localRect;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getPositionRect e = ");
+        localStringBuilder.append(localException);
+        QLog.e("SmallScreenRelativeLayout", 2, localStringBuilder.toString());
+      }
+    }
+    return localRect;
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    Point localPoint;
-    int i1;
-    int i2;
-    if (paramAnimator == this.jdField_a_of_type_AndroidAnimationValueAnimator)
+    if (paramAnimator == this.b)
     {
-      localPoint = a(this.o);
-      switch (this.o)
-      {
-      default: 
-        paramAnimator = null;
-        if ((this.p % 2 == 0) || (!this.jdField_a_of_type_Boolean))
-        {
-          i1 = this.jdField_c_of_type_Int;
-          i2 = this.jdField_d_of_type_Int;
-          label92:
-          if (this.jdField_a_of_type_Mbo == null) {
-            break label221;
-          }
-          this.jdField_a_of_type_Mbo.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
-          label133:
-          this.jdField_d_of_type_Boolean = false;
-          this.s = this.o;
-          if (paramAnimator != null) {
-            azqs.b(null, "CliOper", "", "", paramAnimator, paramAnimator, 0, 0, "", "", "", "");
+      Point localPoint = a(this.w);
+      paramAnimator = null;
+      int i1 = this.w;
+      if (i1 != 1) {
+        if (i1 != 10) {
+          if (i1 != 5) {
+            if (i1 != 6) {
+              break label78;
+            }
           }
         }
-        break;
+      }
+      for (;;)
+      {
+        paramAnimator = "0X80057E2";
+        continue;
+        paramAnimator = "0X80057E3";
+        continue;
+        paramAnimator = "0X80057E4";
+        continue;
+        paramAnimator = "0X80057E1";
+      }
+      label78:
+      int i2;
+      if ((this.x % 2 != 0) && (this.e))
+      {
+        i1 = this.l;
+        i2 = this.k;
+      }
+      else
+      {
+        i1 = this.k;
+        i2 = this.l;
+      }
+      SmallScreenRelativeLayout.FloatListener localFloatListener = this.a;
+      if (localFloatListener != null) {
+        localFloatListener.a(this, localPoint.x, localPoint.y, localPoint.x + i1, localPoint.y + i2);
+      } else {
+        layout(localPoint.x, localPoint.y, localPoint.x + i1, localPoint.y + i2);
+      }
+      this.h = false;
+      this.B = this.w;
+      if (paramAnimator != null) {
+        ReportController.b(null, "CliOper", "", "", paramAnimator, paramAnimator, 0, 0, "", "", "", "");
       }
     }
-    label221:
-    do
+    else if ((paramAnimator == this.c) && (!this.f))
     {
-      do
-      {
-        return;
-        paramAnimator = "0X80057E1";
-        break;
-        paramAnimator = "0X80057E3";
-        break;
-        paramAnimator = "0X80057E2";
-        break;
-        paramAnimator = "0X80057E4";
-        break;
-        i1 = this.jdField_d_of_type_Int;
-        i2 = this.jdField_c_of_type_Int;
-        break label92;
-        layout(localPoint.x, localPoint.y, localPoint.x + i1, i2 + localPoint.y);
-        break label133;
-      } while ((paramAnimator != this.jdField_b_of_type_AndroidAnimationValueAnimator) || (this.jdField_b_of_type_Boolean));
       setVisibility(8);
       if (QLog.isColorLevel()) {
         QLog.d("SmallScreenRelativeLayout", 2, "onAnimationEnd setVisibility(GONE)");
       }
-    } while (this.jdField_a_of_type_Mbo == null);
-    this.jdField_a_of_type_Mbo.a(this);
+      paramAnimator = this.a;
+      if (paramAnimator != null) {
+        paramAnimator.c(this);
+      }
+    }
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (paramAnimator == this.jdField_a_of_type_AndroidAnimationValueAnimator) {
-      this.o = a(this.i, this.j, this.m, this.n);
-    }
-    do
+    if (paramAnimator == this.b)
     {
-      do
-      {
-        return;
-      } while ((paramAnimator != this.jdField_b_of_type_AndroidAnimationValueAnimator) || (!this.jdField_b_of_type_Boolean));
+      this.w = a(this.q, this.r, this.u, this.v);
+      return;
+    }
+    if ((paramAnimator == this.c) && (this.f))
+    {
       setVisibility(0);
-    } while (!QLog.isColorLevel());
-    QLog.d("SmallScreenRelativeLayout", 2, "onAnimationStart setVisibility(VISIBLE)");
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenRelativeLayout", 2, "onAnimationStart setVisibility(VISIBLE)");
+      }
+    }
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (paramValueAnimator == this.jdField_a_of_type_AndroidAnimationValueAnimator)
+    if (paramValueAnimator == this.b)
     {
-      paramValueAnimator = a(this.o);
-      i3 = (int)(this.m + (paramValueAnimator.x - this.m) * f1);
-      f2 = this.n;
-      i4 = (int)(f1 * (paramValueAnimator.y - this.n) + f2);
-      if ((this.p % 2 == 0) || (!this.jdField_a_of_type_Boolean))
-      {
-        i1 = this.jdField_c_of_type_Int;
-        i2 = this.jdField_d_of_type_Int;
-        if (this.jdField_a_of_type_Mbo == null) {
-          break label147;
-        }
-        this.jdField_a_of_type_Mbo.a(this, i3, i4, i1 + i3, i4 + i2);
-      }
-    }
-    label147:
-    while ((paramValueAnimator != this.jdField_b_of_type_AndroidAnimationValueAnimator) || (this.jdField_b_of_type_Boolean))
-    {
-      int i3;
-      int i4;
-      int i1;
+      paramValueAnimator = a(this.w);
+      int i3 = (int)(this.u + (paramValueAnimator.x - this.u) * f1);
+      int i4 = (int)(this.v + (paramValueAnimator.y - this.v) * f1);
       int i2;
-      for (;;)
+      int i1;
+      if ((this.x % 2 != 0) && (this.e))
       {
-        float f2;
-        return;
-        i1 = this.jdField_d_of_type_Int;
-        i2 = this.jdField_c_of_type_Int;
+        i2 = this.l;
+        i1 = this.k;
       }
-      layout(i3, i4, i3 + i1, i2 + i4);
+      else
+      {
+        i2 = this.k;
+        i1 = this.l;
+      }
+      paramValueAnimator = this.a;
+      if (paramValueAnimator != null)
+      {
+        paramValueAnimator.a(this, i3, i4, i3 + i2, i4 + i1);
+        return;
+      }
+      layout(i3, i4, i2 + i3, i1 + i4);
       return;
+    }
+    if (paramValueAnimator == this.c) {
+      boolean bool = this.f;
     }
   }
   
@@ -712,70 +782,91 @@ public class SmallScreenRelativeLayout
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.q == 0) || (this.r == 0))
+    if ((this.y == 0) || (this.z == 0))
     {
       Rect localRect = new Rect();
       getWindowVisibleDisplayFrame(localRect);
-      this.q = localRect.width();
-      if (this.r < localRect.height()) {
-        this.r = localRect.height();
+      this.y = localRect.width();
+      if (this.z < localRect.height()) {
+        this.z = localRect.height();
       }
-      setCurPosition(this.s);
+      setCurPosition(this.B);
     }
   }
   
   public void setCurPosition(int paramInt)
   {
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      QLog.d("SmallScreenRelativeLayout", 2, "setCurPosition position = " + paramInt);
-      QLog.d("SmallScreenRelativeLayout", 2, "setCurPosition mScreenWidth = " + this.q);
-      QLog.d("SmallScreenRelativeLayout", 2, "setCurPosition mScreenHeight = " + this.r);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setCurPosition position = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("SmallScreenRelativeLayout", 2, ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setCurPosition mScreenWidth = ");
+      ((StringBuilder)localObject).append(this.y);
+      QLog.d("SmallScreenRelativeLayout", 2, ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setCurPosition mScreenHeight = ");
+      ((StringBuilder)localObject).append(this.z);
+      QLog.d("SmallScreenRelativeLayout", 2, ((StringBuilder)localObject).toString());
     }
-    this.s = paramInt;
-    Point localPoint;
-    if ((this.q != 0) && (this.r != 0))
+    this.B = paramInt;
+    if ((this.y != 0) && (this.z != 0))
     {
-      localPoint = a(paramInt);
-      if ((this.p % 2 != 0) && (this.jdField_a_of_type_Boolean)) {
-        break label179;
+      localObject = a(paramInt);
+      int i1;
+      if ((this.x % 2 != 0) && (this.e))
+      {
+        paramInt = this.l;
+        i1 = this.k;
       }
-      paramInt = this.jdField_c_of_type_Int;
+      else
+      {
+        paramInt = this.k;
+        i1 = this.l;
+      }
+      SmallScreenRelativeLayout.FloatListener localFloatListener = this.a;
+      if (localFloatListener != null)
+      {
+        localFloatListener.a(this, ((Point)localObject).x, ((Point)localObject).y, ((Point)localObject).x + paramInt, ((Point)localObject).y + i1);
+        return;
+      }
+      layout(((Point)localObject).x, ((Point)localObject).y, ((Point)localObject).x + paramInt, ((Point)localObject).y + i1);
     }
-    for (int i1 = this.jdField_d_of_type_Int; this.jdField_a_of_type_Mbo != null; i1 = this.jdField_c_of_type_Int)
-    {
-      this.jdField_a_of_type_Mbo.a(this, localPoint.x, localPoint.y, paramInt + localPoint.x, localPoint.y + i1);
-      return;
-      label179:
-      paramInt = this.jdField_d_of_type_Int;
-    }
-    layout(localPoint.x, localPoint.y, localPoint.x + paramInt, i1 + localPoint.y);
   }
   
-  public void setFloatListener(mbo parammbo)
+  public void setFloatListener(SmallScreenRelativeLayout.FloatListener paramFloatListener)
   {
-    this.jdField_a_of_type_Mbo = parammbo;
+    this.a = paramFloatListener;
+  }
+  
+  public void setIntercetRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View.OnClickListener paramOnClickListener)
+  {
+    this.C = new RectF(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.D = paramOnClickListener;
   }
   
   public void setIsRotateSize(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setSize(int paramInt1, int paramInt2)
   {
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
+    this.k = paramInt1;
+    this.l = paramInt2;
   }
   
   public void setTitleHeight(int paramInt)
   {
-    this.g = paramInt;
+    this.o = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -256,10 +256,12 @@ public final class CipherSuite
   
   private CipherSuite(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException();
+    if (paramString != null)
+    {
+      this.javaName = paramString;
+      return;
     }
-    this.javaName = paramString;
+    throw new NullPointerException();
   }
   
   public static CipherSuite forJavaName(String paramString)
@@ -304,16 +306,22 @@ public final class CipherSuite
   
   private static String secondaryName(String paramString)
   {
-    String str;
-    if (paramString.startsWith("TLS_")) {
-      str = "SSL_" + paramString.substring(4);
-    }
-    do
+    if (paramString.startsWith("TLS_"))
     {
-      return str;
-      str = paramString;
-    } while (!paramString.startsWith("SSL_"));
-    return "TLS_" + paramString.substring(4);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SSL_");
+      ((StringBuilder)localObject).append(paramString.substring(4));
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = paramString;
+    if (paramString.startsWith("SSL_"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("TLS_");
+      ((StringBuilder)localObject).append(paramString.substring(4));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   public String javaName()
@@ -328,7 +336,7 @@ public final class CipherSuite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.CipherSuite
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
 package com.tencent.open.business.viareport;
 
-import bflp;
-import bfnm;
+import com.tencent.open.base.LogUtility;
 
-public class ReportManager$2
+class ReportManager$2
   implements Runnable
 {
-  public ReportManager$2(bfnm parambfnm, String paramString) {}
+  ReportManager$2(ReportManager paramReportManager, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.this$0.a) {
-      bflp.b("viareport", "isUploading ---return");
-    }
-    while (!this.this$0.a(this.a)) {
+    if (this.this$0.e)
+    {
+      LogUtility.b("viareport", "isUploading ---return");
       return;
     }
-    this.this$0.a(this.a, null, true);
+    if (this.this$0.a(this.a)) {
+      this.this$0.a(this.a, null, true, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.viareport.ReportManager.2
  * JD-Core Version:    0.7.0.1
  */

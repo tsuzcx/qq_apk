@@ -8,9 +8,9 @@ public final class SetUserInfoReq
   extends JceStruct
 {
   static byte[] cache_vecTLVValue;
-  public long dwToUin;
-  public byte[] vecTLVValue;
-  public int wTLVCount;
+  public long dwToUin = 0L;
+  public byte[] vecTLVValue = null;
+  public int wTLVCount = 0;
   
   public SetUserInfoReq() {}
   
@@ -42,7 +42,7 @@ public final class SetUserInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SetUserInfoReq
  * JD-Core Version:    0.7.0.1
  */

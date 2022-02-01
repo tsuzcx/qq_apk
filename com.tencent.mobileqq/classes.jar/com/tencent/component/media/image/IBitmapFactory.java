@@ -11,41 +11,63 @@ public abstract class IBitmapFactory
   
   public static void arraycopy(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
   {
-    if (paramArrayOfByte1 == null) {
-      throw new NullPointerException("src == null");
-    }
-    if (paramArrayOfByte2 == null) {
+    if (paramArrayOfByte1 != null)
+    {
+      if (paramArrayOfByte2 != null)
+      {
+        if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt3 >= 0) && (paramInt1 <= paramArrayOfByte1.length - paramInt3) && (paramInt2 <= paramArrayOfByte2.length - paramInt3))
+        {
+          if ((paramArrayOfByte1 == paramArrayOfByte2) && (paramInt1 < paramInt2) && (paramInt2 < paramInt1 + paramInt3)) {
+            paramInt3 -= 1;
+          }
+          while (paramInt3 >= 0)
+          {
+            paramArrayOfByte2[(paramInt2 + paramInt3)] = paramArrayOfByte1[(paramInt1 + paramInt3)];
+            paramInt3 -= 1;
+            continue;
+            int i = 0;
+            while (i < paramInt3)
+            {
+              paramArrayOfByte2[(paramInt2 + i)] = paramArrayOfByte1[(paramInt1 + i)];
+              i += 1;
+            }
+          }
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("src.length=");
+        localStringBuilder.append(paramArrayOfByte1.length);
+        localStringBuilder.append(" srcPos=");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(" dst.length=");
+        localStringBuilder.append(paramArrayOfByte2.length);
+        localStringBuilder.append(" dstPos=");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append(" length=");
+        localStringBuilder.append(paramInt3);
+        throw new ArrayIndexOutOfBoundsException(localStringBuilder.toString());
+      }
       throw new NullPointerException("dst == null");
     }
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0) || (paramInt1 > paramArrayOfByte1.length - paramInt3) || (paramInt2 > paramArrayOfByte2.length - paramInt3)) {
-      throw new ArrayIndexOutOfBoundsException("src.length=" + paramArrayOfByte1.length + " srcPos=" + paramInt1 + " dst.length=" + paramArrayOfByte2.length + " dstPos=" + paramInt2 + " length=" + paramInt3);
-    }
-    if ((paramArrayOfByte1 == paramArrayOfByte2) && (paramInt1 < paramInt2) && (paramInt2 < paramInt1 + paramInt3)) {
-      paramInt3 -= 1;
-    }
-    while (paramInt3 >= 0)
+    paramArrayOfByte1 = new NullPointerException("src == null");
+    for (;;)
     {
-      paramArrayOfByte2[(paramInt2 + paramInt3)] = paramArrayOfByte1[(paramInt1 + paramInt3)];
-      paramInt3 -= 1;
-      continue;
-      int i = 0;
-      while (i < paramInt3)
-      {
-        paramArrayOfByte2[(paramInt2 + i)] = paramArrayOfByte1[(paramInt1 + i)];
-        i += 1;
-      }
+      throw paramArrayOfByte1;
     }
   }
   
   static byte[] generate(short paramShort1, short paramShort2, ByteArrayPool paramByteArrayPool)
   {
     paramByteArrayPool = (byte[])paramByteArrayPool.get(sEmptyByteSize);
-    arraycopy(EMPTY_JPEG_PREFIX, 0, paramByteArrayPool, 0, EMPTY_JPEG_PREFIX.length);
-    paramByteArrayPool[EMPTY_JPEG_PREFIX.length] = ((byte)(paramShort2 >> 8));
-    paramByteArrayPool[(EMPTY_JPEG_PREFIX.length + 1)] = ((byte)(paramShort2 & 0xFF));
-    paramByteArrayPool[(EMPTY_JPEG_PREFIX.length + 2)] = ((byte)(paramShort1 >> 8));
-    paramByteArrayPool[(EMPTY_JPEG_PREFIX.length + 3)] = ((byte)(paramShort1 & 0xFF));
-    arraycopy(EMPTY_JPEG_SUFFIX, 0, paramByteArrayPool, EMPTY_JPEG_PREFIX.length + 4, EMPTY_JPEG_SUFFIX.length);
+    byte[] arrayOfByte1 = EMPTY_JPEG_PREFIX;
+    arraycopy(arrayOfByte1, 0, paramByteArrayPool, 0, arrayOfByte1.length);
+    arrayOfByte1 = EMPTY_JPEG_PREFIX;
+    paramByteArrayPool[arrayOfByte1.length] = ((byte)(paramShort2 >> 8));
+    paramByteArrayPool[(arrayOfByte1.length + 1)] = ((byte)(paramShort2 & 0xFF));
+    paramByteArrayPool[(arrayOfByte1.length + 2)] = ((byte)(paramShort1 >> 8));
+    paramByteArrayPool[(arrayOfByte1.length + 3)] = ((byte)(paramShort1 & 0xFF));
+    byte[] arrayOfByte2 = EMPTY_JPEG_SUFFIX;
+    arraycopy(arrayOfByte2, 0, paramByteArrayPool, arrayOfByte1.length + 4, arrayOfByte2.length);
     return paramByteArrayPool;
   }
   
@@ -53,7 +75,7 @@ public abstract class IBitmapFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.IBitmapFactory
  * JD-Core Version:    0.7.0.1
  */

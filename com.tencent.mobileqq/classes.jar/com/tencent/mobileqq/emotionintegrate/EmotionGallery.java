@@ -7,70 +7,72 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import aqal;
-import bnsm;
 import com.tencent.mobileqq.activity.photo.DragGallery;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class EmotionGallery
   extends DragGallery
 {
-  private aqal a;
+  private EmotionGallery.OnScaleChangeListener a;
   
   public EmotionGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public float a()
+  protected float customScale(View paramView, float paramFloat, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return super.a(this.jdField_a_of_type_AndroidViewView);
+    paramFloat = getResources().getDisplayMetrics().density * 135.0F * 1.5F;
+    float f = paramInt;
+    if (f > paramFloat) {
+      paramFloat /= f;
+    } else {
+      paramFloat = Math.min(1.5F, paramFloat / f);
+    }
+    setMaxScale((float)ScreenUtil.SCREEN_WIDTH / f);
+    return paramFloat;
+  }
+  
+  public float getSelectChildScale()
+  {
+    if (this.mSelectedChild != null) {
+      return super.getChildScale(this.mSelectedChild);
     }
     return 1.0F;
   }
   
-  public float a(View paramView, float paramFloat, int paramInt)
-  {
-    paramFloat = getResources().getDisplayMetrics().density * 135.0F * 1.5F;
-    if (paramInt > paramFloat) {}
-    for (paramFloat /= paramInt;; paramFloat = Math.min(1.5F, paramFloat / paramInt))
-    {
-      setMaxScale((float)bnsm.a / paramInt);
-      return paramFloat;
-    }
-  }
-  
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Aqal != null)
+    if (this.a != null)
     {
-      float f = a();
-      this.jdField_a_of_type_Aqal.c(f);
+      float f = getSelectChildScale();
+      this.a.b(f);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Aqal != null) {
-      this.jdField_a_of_type_Aqal.b();
+    EmotionGallery.OnScaleChangeListener localOnScaleChangeListener = this.a;
+    if (localOnScaleChangeListener != null) {
+      localOnScaleChangeListener.d();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Aqal != null)
+    if (this.a != null)
     {
-      float f = a();
-      this.jdField_a_of_type_Aqal.b(f);
+      float f = getSelectChildScale();
+      this.a.a(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
   }
   
-  public void setOnScaleChangeListener(aqal paramaqal)
+  public void setOnScaleChangeListener(EmotionGallery.OnScaleChangeListener paramOnScaleChangeListener)
   {
-    this.jdField_a_of_type_Aqal = paramaqal;
+    this.a = paramOnScaleChangeListener;
   }
 }
 

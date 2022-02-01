@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/h6" android:id="@id/nv" android:background="@null" android:layout_width="wrap_content" style="@style/mo" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="?a0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageButton android:id="@id/et" android:background="@color/ahb" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/c9" android:gravity="center" android:id="@id/eq" android:background="@drawable/b9" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="send" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/nh" android:background="@drawable/aqz" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/df">
+        <ImageView android:layout_gravity="center" android:layout_width="@dimen/qk" android:layout_height="@dimen/qk" android:src="@raw/actionbar_icon_light_search" />
+    </LinearLayout>
+    <Button android:id="@id/em" android:visibility="gone" android:layout_marginRight="@dimen/br" android:text="send" style="@style/oi" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/en" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:visibility="gone" android:layout_width="@dimen/d_" android:layout_height="fill_parent" app:iconColor="@color/FG_0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/eo" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/df" android:visibility="gone" android:layout_width="@dimen/d6" android:layout_height="fill_parent" app:iconColor="@color/FG_0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ep" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/cp" android:visibility="gone" android:layout_width="@dimen/d6" android:layout_height="fill_parent" app:iconColor="@color/FG_0" />
+        <ImageView android:id="@id/c96" android:visibility="gone" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignTop="@id/en" android:layout_alignRight="@id/en" style="@style/zi" />
+        <ImageView android:id="@id/c97" android:visibility="gone" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignTop="@id/eo" android:layout_alignRight="@id/eo" style="@style/zi" />
+        <ImageView android:id="@id/c98" android:visibility="gone" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignTop="@id/ep" android:layout_alignRight="@id/ep" style="@style/zi" />
+    </RelativeLayout>
 </LinearLayout>

@@ -12,21 +12,21 @@ public final class GoogleSignInStatusCodes
   
   public static String getStatusCodeString(int paramInt)
   {
-    AppMethodBeat.i(50397);
+    AppMethodBeat.i(88292);
     switch (paramInt)
     {
     default: 
       String str = CommonStatusCodes.getStatusCodeString(paramInt);
-      AppMethodBeat.o(50397);
+      AppMethodBeat.o(88292);
       return str;
     case 12500: 
-      AppMethodBeat.o(50397);
+      AppMethodBeat.o(88292);
       return "A non-recoverable sign in failure occurred";
     case 12501: 
-      AppMethodBeat.o(50397);
+      AppMethodBeat.o(88292);
       return "Sign in action cancelled";
     }
-    AppMethodBeat.o(50397);
+    AppMethodBeat.o(88292);
     return "Sign-in in progress";
   }
 }

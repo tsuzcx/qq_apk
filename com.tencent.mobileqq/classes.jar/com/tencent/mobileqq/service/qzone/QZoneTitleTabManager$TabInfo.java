@@ -3,7 +3,6 @@ package com.tencent.mobileqq.service.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import azav;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,63 +10,61 @@ import org.json.JSONObject;
 public class QZoneTitleTabManager$TabInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TabInfo> CREATOR = new azav();
+  public static final Parcelable.Creator<TabInfo> CREATOR = new QZoneTitleTabManager.TabInfo.1();
   public int a;
-  public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public int c;
+  public boolean c;
+  public int d;
+  public int e;
+  public String f;
   
   public QZoneTitleTabManager$TabInfo()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
   }
   
   public QZoneTitleTabManager$TabInfo(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = true;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
-  public QZoneTitleTabManager$TabInfo(Parcel paramParcel)
+  protected QZoneTitleTabManager$TabInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readInt();
-    if (paramParcel.readByte() != 0) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      return;
+    boolean bool = true;
+    this.c = true;
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
+    if (paramParcel.readByte() == 0) {
       bool = false;
     }
+    this.c = bool;
+    this.f = paramParcel.readString();
   }
   
   public JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("id", this.jdField_a_of_type_Int);
-    localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-    localJSONObject.put("actionType", this.jdField_b_of_type_Int);
-    localJSONObject.put("subActionType", this.c);
-    localJSONObject.put("rememberAnchor", this.jdField_a_of_type_Boolean);
-    localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+    localJSONObject.put("id", this.a);
+    localJSONObject.put("name", this.b);
+    localJSONObject.put("actionType", this.d);
+    localJSONObject.put("subActionType", this.e);
+    localJSONObject.put("rememberAnchor", this.c);
+    localJSONObject.put("url", this.f);
     return localJSONObject;
   }
   
   public void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("id");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("actionType", -1);
-    this.c = paramJSONObject.optInt("subActionType", -1);
-    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("rememberAnchor", false);
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("url");
+    this.a = paramJSONObject.optInt("id");
+    this.b = paramJSONObject.optString("name");
+    this.d = paramJSONObject.optInt("actionType", -1);
+    this.e = paramJSONObject.optInt("subActionType", -1);
+    this.c = paramJSONObject.optBoolean("rememberAnchor", false);
+    this.f = paramJSONObject.optString("url");
   }
   
   public int describeContents()
@@ -93,22 +90,17 @@ public class QZoneTitleTabManager$TabInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.c);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-      return;
-    }
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeByte((byte)this.c);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo
  * JD-Core Version:    0.7.0.1
  */

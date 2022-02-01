@@ -1,128 +1,198 @@
 package com.tencent.mm.modelsimple;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dbx;
-import com.tencent.mm.protocal.protobuf.dby;
-import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.fwh;
+import com.tencent.mm.protocal.protobuf.fwi;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class ae
-  extends m
-  implements k
+  extends com.tencent.mm.am.p
+  implements m
 {
-  private f callback;
-  private final com.tencent.mm.ai.b fnd;
-  private int retryCount;
+  private com.tencent.mm.am.h callback;
+  public long oTt;
+  public c rr;
   
-  public ae(String paramString, int paramInt)
+  public ae(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, int paramInt2)
   {
-    AppMethodBeat.i(78615);
-    this.retryCount = 3;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new dbx();
-    ((b.a)localObject).fsY = new dby();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/yybgetpkgsig";
-    ((b.a)localObject).funcId = 729;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.fnd = ((b.a)localObject).ado();
-    localObject = (dbx)this.fnd.fsV.fta;
-    ((dbx)localObject).lGH = aa.dsG();
-    ((dbx)localObject).wsn = com.tencent.mm.plugin.normsg.a.b.pgQ.AP(0);
-    ((dbx)localObject).yie = paramString;
-    ((dbx)localObject).nqd = paramInt;
-    ab.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig Language[%s], PkgName[%s], versionCode[%d], stack[%s]", new Object[] { ((dbx)localObject).lGH, paramString, Integer.valueOf(paramInt), bo.dtY() });
-    AppMethodBeat.o(78615);
+    this(paramInt1, paramString1, paramString2, paramString3, paramString4, paramBoolean, paramInt2, true);
   }
   
-  public final int doScene(e parame, f paramf)
+  public ae(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
-    AppMethodBeat.i(78616);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fnd, this);
-    AppMethodBeat.o(78616);
+    AppMethodBeat.i(43059);
+    this.oTt = 0L;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fwh();
+    ((c.a)localObject).otF = new fwi();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/newverifypasswd";
+    ((c.a)localObject).funcId = 384;
+    ((c.a)localObject).otG = 182;
+    ((c.a)localObject).respCmdId = 1000000182;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fwh)c.b.b(this.rr.otB);
+    ((fwh)localObject).YIq = paramInt1;
+    ((fwh)localObject).abAU = paramInt2;
+    ((fwh)localObject).abUf = Util.getFullPasswordMD5(paramString1);
+    ((fwh)localObject).YOL = Util.getCutPasswordMD5(paramString1);
+    ((fwh)localObject).aaAR = new etl().btH(paramString2);
+    ((fwh)localObject).abUg = new etl().btH(paramString3);
+    ((fwh)localObject).YOP = new etl().btH(paramString4);
+    if ((paramInt1 == 5) || (paramInt1 == 2))
+    {
+      this.oTt = new com.tencent.mm.b.p(z.bAL()).longValue();
+      if (paramBoolean1)
+      {
+        paramString1 = com.tencent.mm.kernel.h.baC().aZE().g(this.oTt, paramString3);
+        ((fwh)localObject).YMf = new gol().df(paramString1);
+      }
+    }
+    else
+    {
+      paramString1 = Util.nullAsNil((String)com.tencent.mm.kernel.h.baE().ban().d(47, null));
+      ((fwh)localObject).YOQ = new gol().df(Util.decodeHexString(paramString1));
+      paramInt2 = ((fwh)localObject).YIq;
+      if (((fwh)localObject).YMf != null) {
+        break label387;
+      }
+      paramInt1 = -1;
+      label301:
+      if (((fwh)localObject).YMf != null) {
+        break label399;
+      }
+    }
+    label387:
+    label399:
+    for (paramString1 = "null";; paramString1 = Util.secPrint(Util.dumpHex(((fwh)localObject).YMf.aaxD.Op)))
+    {
+      Log.i("MicroMsg.NetSceneVerifyPswd", "summerauth opCode[%d], hasSecCode[%b], isManualAuth[%b], len:%d, content:[%s]", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt1), paramString1 });
+      AppMethodBeat.o(43059);
+      return;
+      paramString1 = com.tencent.mm.kernel.h.baC().aZE().a(this.oTt, Util.getFullPasswordMD5(paramString1), paramBoolean2);
+      break;
+      paramInt1 = ((fwh)localObject).YMf.abwJ;
+      break label301;
+    }
+  }
+  
+  public ae(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    this(1, paramString1, paramString2, paramString3, paramString4, false, 0);
+  }
+  
+  public final String bIQ()
+  {
+    AppMethodBeat.i(43061);
+    try
+    {
+      String str = ((fwi)c.c.b(this.rr.otC)).Njp;
+      AppMethodBeat.o(43061);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.NetSceneVerifyPswd", localException, "", new Object[0]);
+      AppMethodBeat.o(43061);
+    }
+    return null;
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(43060);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(43060);
     return i;
   }
   
   public final int getType()
   {
-    return 729;
+    return 384;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(78617);
-    paramq = (dbx)this.fnd.fsV.fta;
-    paramArrayOfByte = (dby)this.fnd.fsW.fta;
-    ab.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig onGYNetEnd netId[%d], errType[%d], errCode[%d], errMsg[%s], ret[%d], sig[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(paramArrayOfByte.yif), paramArrayOfByte.yig });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
+    AppMethodBeat.i(43062);
+    updateDispatchId(paramInt1);
+    paramArrayOfByte = (fwh)c.b.b(this.rr.otB);
+    params = (fwi)c.c.b(this.rr.otC);
+    if ((params.YJl != null) && (params.YJl.abwJ > 0))
     {
-      ab.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig err and return!");
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 1L, 1L, false);
-      com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4001), String.format("%s,%d,%d,%d", new Object[] { paramq.yie, Integer.valueOf(paramq.nqd), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }) });
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(78617);
-      return;
-    }
-    if ((paramArrayOfByte.yif == 2) || (paramArrayOfByte.yif == 3))
-    {
-      this.retryCount -= 1;
-      if (this.retryCount <= 0)
-      {
-        ab.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken err and return with no try!");
-        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 2L, 1L, false);
-        com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4002), String.format("%s,%d", new Object[] { paramq.yie, Integer.valueOf(paramq.nqd) }) });
-        this.callback.onSceneEnd(3, -1, "", this);
-        AppMethodBeat.o(78617);
-        return;
+      Log.i("MicroMsg.NetSceneVerifyPswd", "summerauth parseRet[%b], len[%d]", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.h.baC().aZE().b(this.oTt, w.a(params.YJl))), Integer.valueOf(params.YJl.abwJ) });
+      if (com.tencent.mm.kernel.h.baz()) {
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.adgT, Boolean.TRUE);
       }
-      ab.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken do scene again retryCount:%d", new Object[] { Integer.valueOf(this.retryCount) });
-      doScene(dispatcher(), this.callback);
+    }
+    int i;
+    label290:
+    int j;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      com.tencent.mm.kernel.h.baE().ban().B(77830, params.Njp);
+      com.tencent.mm.kernel.h.baE().ban().B(32, paramArrayOfByte.abUf);
+      com.tencent.mm.kernel.h.baE().ban().B(33, paramArrayOfByte.YOL);
+      com.tencent.mm.kernel.h.baE().ban().B(46, Util.encodeHexString(w.a(params.YJr)));
+      paramArrayOfByte = Util.encodeHexString(w.a(paramArrayOfByte.YOQ));
+      com.tencent.mm.kernel.h.baE().ban().B(47, paramArrayOfByte);
+      com.tencent.mm.kernel.h.baE().mCE.B(18, paramArrayOfByte);
+      com.tencent.mm.kernel.h.baE().ban().B(-1535680990, params.YJq);
+      if (params.YJr == null)
+      {
+        paramInt1 = 0;
+        if (params.YJq != null) {
+          break label369;
+        }
+        i = 0;
+        if (params.Njp != null) {
+          break label382;
+        }
+        j = 0;
+        label301:
+        Log.i("MicroMsg.NetSceneVerifyPswd", "A2Key.len %d, authKey.len: %d, ticketLen:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(j) });
+      }
     }
     for (;;)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(78617);
+      AppMethodBeat.o(43062);
       return;
-      if (paramArrayOfByte.yif == 1)
+      paramInt1 = params.YJr.abwJ;
+      break;
+      label369:
+      i = params.YJq.length();
+      break label290;
+      label382:
+      j = params.Njp.length();
+      break label301;
+      if (paramInt2 == 4)
       {
-        MultiProcessSharedPreferences.getSharedPreferences(ah.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.h.Mp()).edit().remove(paramq.yie).commit();
-        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 5L, 1L, false);
-        com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4005), String.format("%s,%d", new Object[] { paramq.yie, Integer.valueOf(paramq.nqd) }) });
-        ab.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret no sig[%s] and remove", new Object[] { paramArrayOfByte.yig });
-      }
-      else if (paramArrayOfByte.yif == 4)
-      {
-        ab.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret no need try and revise");
-        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 4L, 1L, false);
-        com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4004), String.format("%s,%d", new Object[] { paramq.yie, Integer.valueOf(paramq.nqd) }) });
-      }
-      else
-      {
-        ab.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret sig[%s]", new Object[] { paramArrayOfByte.yig });
-        MultiProcessSharedPreferences.getSharedPreferences(ah.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.h.Mp()).edit().putString(paramq.yie, paramArrayOfByte.yig).commit();
-        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(322L, 3L, 1L, false);
-        com.tencent.mm.plugin.report.service.h.qsU.e(11098, new Object[] { Integer.valueOf(4003), String.format("%s,%d,%s", new Object[] { paramq.yie, Integer.valueOf(paramq.nqd), paramArrayOfByte.yig }) });
+        com.tencent.mm.kernel.h.baE().ban().B(32, "");
+        com.tencent.mm.kernel.h.baE().ban().B(33, "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.ae
  * JD-Core Version:    0.7.0.1
  */

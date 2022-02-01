@@ -20,9 +20,9 @@ public final class ShortField
   
   public final Number getNumber()
   {
-    AppMethodBeat.i(117008);
+    AppMethodBeat.i(109562);
     short s = this.data;
-    AppMethodBeat.o(117008);
+    AppMethodBeat.o(109562);
     return Short.valueOf(s);
   }
   
@@ -33,7 +33,7 @@ public final class ShortField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.ShortField
  * JD-Core Version:    0.7.0.1
  */

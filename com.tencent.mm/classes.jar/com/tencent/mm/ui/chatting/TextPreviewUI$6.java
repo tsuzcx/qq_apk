@@ -1,24 +1,25 @@
 package com.tencent.mm.ui.chatting;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.cc;
 
 final class TextPreviewUI$6
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  TextPreviewUI$6(TextPreviewUI paramTextPreviewUI) {}
+  TextPreviewUI$6(TextPreviewUI paramTextPreviewUI, cc paramcc) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(31049);
-    TextPreviewUI.l(this.zCJ);
-    AppMethodBeat.o(31049);
+    AppMethodBeat.i(253691);
+    TextPreviewUI.a(this.aemj, this.oiL);
+    AppMethodBeat.o(253691);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.TextPreviewUI.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ofc" android:background="@drawable/qcircle_skin_topic_bg_card_shadow_radius16px" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.richframework.widget.RoundCorneredRelativeLayout android:id="@id/ifh" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.image.URLImageView android:id="@id/qrq" android:layout_width="200.0dip" android:layout_height="250.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="10.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/k_3" android:background="@drawable/f90" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="8.0dip" android:layout_alignTop="@id/qrq" android:layout_alignRight="@id/qrq" />
+        <ImageView android:id="@id/dyt" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/isx" android:scaleType="centerCrop" android:layout_alignTop="@id/qrq" android:layout_alignRight="@id/qrq" />
+        <FrameLayout android:orientation="horizontal" android:id="@id/ncc" android:background="@drawable/f91" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignBottom="@id/qrq">
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="6.0dip">
+                <com.tencent.image.URLImageView android:id="@id/o8j" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/qcircle_skin_icon_general_location_ghost" android:scaleType="fitCenter" />
+                <TextView android:textSize="11.0sp" android:textColor="@color/qcircle_skin_color_text_ghost" android:id="@id/qoa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+        </FrameLayout>
+        <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="14.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:ellipsize="end" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:maxLines="2" android:layout_below="@id/qrq" android:layout_alignLeft="@id/qrq" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ogz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/kbs" android:layout_alignRight="@id/qrq">
+            <com.tencent.biz.qqcircle.richframework.widget.SquareImageView android:id="@id/q3p" android:layout_width="20.0dip" android:layout_height="20.0dip" android:scaleType="fitXY" app:round_radius="35.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/qcircle_skin_color_text_primary" android:ellipsize="end" android:id="@id/qqg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:maxLines="1" android:singleLine="true" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/of2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@id/o6q" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="1.0dip" android:src="@drawable/qcircle_skin_icon_general_rocket_vertical_primary" android:scaleType="fitCenter" />
+                <TextView android:textSize="11.0sp" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/qle" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/ofu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.image.URLImageView android:id="@id/o7o" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/qcircle_skin_icon_general_location_primary" android:scaleType="fitCenter" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/qmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.tencent.biz.qqcircle.richframework.widget.RoundCorneredRelativeLayout>
+</LinearLayout>

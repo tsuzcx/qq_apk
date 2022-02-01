@@ -1,30 +1,36 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.res.Resources;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 class FriendProfileImageActivity$15
-  implements Runnable
+  implements View.OnClickListener
 {
   FriendProfileImageActivity$15(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.this$0.f = false;
-    if (!this.this$0.jdField_c_of_type_Boolean) {
-      this.this$0.b.setVisibility(0);
+    if (paramView.getId() == 2131431689)
+    {
+      FriendProfileImageModel.ProfileImageInfo localProfileImageInfo = this.a.c.c();
+      if ((!this.a.m) && (this.a.l) && (localProfileImageInfo != null))
+      {
+        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.a, null);
+        localActionSheet.addButton(2131890801, 3);
+        localActionSheet.addCancelButton(2131887648);
+        localActionSheet.setOnButtonClickListener(new FriendProfileImageActivity.15.1(this, localProfileImageInfo, localActionSheet));
+        localActionSheet.show();
+      }
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.this$0.getResources().getDimension(2131297404), 0.0F);
-    localTranslateAnimation.setDuration(300L);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.this$0.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.15
  * JD-Core Version:    0.7.0.1
  */

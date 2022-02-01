@@ -20,24 +20,24 @@ public final class ServiceFreeActionResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76011);
+    AppMethodBeat.i(102257);
     if (cache_revertField == null)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = new byte[1];
       cache_revertField = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      arrayOfByte[0] = 0;
     }
-    this.revertField = ((byte[])paramJceInputStream.read(cache_revertField, 0, false));
-    AppMethodBeat.o(76011);
+    this.revertField = paramJceInputStream.read(cache_revertField, 0, false);
+    AppMethodBeat.o(102257);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76010);
+    AppMethodBeat.i(102256);
     if (this.revertField != null) {
       paramJceOutputStream.write(this.revertField, 0);
     }
-    AppMethodBeat.o(76010);
+    AppMethodBeat.o(102256);
   }
 }
 

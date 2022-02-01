@@ -8,34 +8,34 @@ import android.os.IBinder;
 public final class t
   implements ServiceConnection
 {
-  private final int JO;
+  private final int LD;
   
   public t(l paraml, int paramInt)
   {
-    this.JO = paramInt;
+    this.LD = paramInt;
   }
   
   public final void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
   {
     if (paramIBinder == null)
     {
-      this.JK.Y(8, this.JO);
+      this.Lz.aa(8, this.LD);
       return;
     }
-    synchronized (l.a(this.JK))
+    synchronized (l.a(this.Lz))
     {
-      l.a(this.JK, au.g(paramIBinder));
-      this.JK.Y(0, this.JO);
+      l.a(this.Lz, au.g(paramIBinder));
+      this.Lz.aa(0, this.LD);
       return;
     }
   }
   
   public final void onServiceDisconnected(ComponentName arg1)
   {
-    synchronized (l.a(this.JK))
+    synchronized (l.a(this.Lz))
     {
-      l.a(this.JK, null);
-      this.JK.mHandler.sendMessage(this.JK.mHandler.obtainMessage(4, this.JO, 1));
+      l.a(this.Lz, null);
+      this.Lz.dG.sendMessage(this.Lz.dG.obtainMessage(4, this.LD, 1));
       return;
     }
   }

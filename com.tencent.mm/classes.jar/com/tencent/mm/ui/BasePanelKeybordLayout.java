@@ -6,16 +6,16 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class BasePanelKeybordLayout
   extends KeyboardLinearLayout
 {
-  private int vYw = -1;
-  private BasePanelKeybordLayout.a yUC = null;
+  private int YjR = -1;
+  private a advD = null;
   
   public BasePanelKeybordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,13 +33,13 @@ public abstract class BasePanelKeybordLayout
   {
     int i = View.MeasureSpec.getSize(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt2);
-    ab.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
+    Log.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
     if (m >= 0)
     {
-      if (this.vYw >= 0) {
+      if (this.YjR >= 0) {
         break label62;
       }
-      this.vYw = m;
+      this.YjR = m;
     }
     label62:
     int n;
@@ -54,8 +54,8 @@ public abstract class BasePanelKeybordLayout
         {
           super.onMeasure(paramInt1, paramInt2);
           return;
-          n = this.vYw - m;
-          this.vYw = m;
+          n = this.YjR - m;
+          this.YjR = m;
         } while (n == 0);
         localObject = getPanelView();
       } while (localObject == null);
@@ -73,13 +73,13 @@ public abstract class BasePanelKeybordLayout
       if (i < 0) {
         j = 0;
       }
-      int i1 = j.gJ(ah.getContext());
-      i = j.gL(getContext());
+      int i1 = j.getKeyBordHeightPx(MMApplicationContext.getContext(), true);
+      i = j.getValidPanelHeight(getContext());
       int k = j;
-      if (j.Mq() > 0)
+      if (j.aQj() > 0)
       {
         k = j;
-        if (m >= j.Mq()) {
+        if (m >= j.aQj()) {
           k = i;
         }
       }
@@ -107,7 +107,7 @@ public abstract class BasePanelKeybordLayout
           j = i;
         }
       }
-      ab.d("MicroMsg.BasePanelKeybordLayout", "oldHeight: %d, offset: %d newHeight: %d, validPanelHeight: %d", new Object[] { Integer.valueOf(localLayoutParams.height), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i) });
+      Log.d("MicroMsg.BasePanelKeybordLayout", "oldHeight: %d, offset: %d newHeight: %d, validPanelHeight: %d", new Object[] { Integer.valueOf(localLayoutParams.height), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i) });
       localLayoutParams.height = j;
       localView.setLayoutParams(localLayoutParams);
       break label102;
@@ -115,10 +115,12 @@ public abstract class BasePanelKeybordLayout
     }
   }
   
-  public void setOnMeasureListener(BasePanelKeybordLayout.a parama)
+  public void setOnMeasureListener(a parama)
   {
-    this.yUC = parama;
+    this.advD = parama;
   }
+  
+  public static abstract interface a {}
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import apob;
-import apod;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.api.IEmoticonFromGroupDBManagerService;
+import com.tencent.mobileqq.emosm.favroaming.IEmoticonFromGroupManager;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -13,38 +13,43 @@ class EmoticonGroupStoreFragment$5
   
   public void run()
   {
-    Object localObject = (apob)EmoticonGroupStoreFragment.a(this.this$0).getManager(259);
+    Object localObject = (IEmoticonFromGroupDBManagerService)EmoticonGroupStoreFragment.a(this.this$0).getRuntimeService(IEmoticonFromGroupDBManagerService.class);
     if (localObject != null) {
-      ((apob)localObject).b();
+      ((IEmoticonFromGroupDBManagerService)localObject).loadDB();
     }
-    localObject = new CopyOnWriteArrayList(EmoticonGroupStoreFragment.a(this.this$0).a());
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    localObject = new CopyOnWriteArrayList(EmoticonGroupStoreFragment.j(this.this$0).b());
+    if (!((List)localObject).isEmpty())
     {
       int i = ((List)localObject).size();
       if (i < 50)
       {
         EmoticonGroupStoreFragment.a(this.this$0, (List)localObject);
-        EmoticonGroupStoreFragment.b(this.this$0, EmoticonGroupStoreFragment.c(this.this$0));
-        EmoticonGroupStoreFragment.a(this.this$0);
-        EmoticonGroupStoreFragment.b(this.this$0);
+        localObject = this.this$0;
+        EmoticonGroupStoreFragment.b((EmoticonGroupStoreFragment)localObject, EmoticonGroupStoreFragment.k((EmoticonGroupStoreFragment)localObject));
+        EmoticonGroupStoreFragment.l(this.this$0);
+        EmoticonGroupStoreFragment.m(this.this$0);
       }
-      for (;;)
+      else
       {
-        if (EmoticonGroupStoreFragment.b(this.this$0) != null) {
-          EmoticonGroupStoreFragment.c(this.this$0);
-        }
-        return;
         EmoticonGroupStoreFragment.a(this.this$0, ((List)localObject).subList(0, 50));
-        int j = EmoticonGroupStoreFragment.c(this.this$0).size();
-        EmoticonGroupStoreFragment.b(this.this$0, EmoticonGroupStoreFragment.c(this.this$0));
-        EmoticonGroupStoreFragment.b(this.this$0);
+        int j = EmoticonGroupStoreFragment.k(this.this$0).size();
+        EmoticonGroupStoreFragment localEmoticonGroupStoreFragment = this.this$0;
+        EmoticonGroupStoreFragment.b(localEmoticonGroupStoreFragment, EmoticonGroupStoreFragment.k(localEmoticonGroupStoreFragment));
+        EmoticonGroupStoreFragment.m(this.this$0);
         EmoticonGroupStoreFragment.a(this.this$0, ((List)localObject).subList(50, i));
-        EmoticonGroupStoreFragment.a(this.this$0);
-        EmoticonGroupStoreFragment.b(this.this$0, EmoticonGroupStoreFragment.c(this.this$0).subList(j, EmoticonGroupStoreFragment.c(this.this$0).size()));
-        EmoticonGroupStoreFragment.b(this.this$0);
+        EmoticonGroupStoreFragment.l(this.this$0);
+        localObject = this.this$0;
+        EmoticonGroupStoreFragment.b((EmoticonGroupStoreFragment)localObject, EmoticonGroupStoreFragment.k((EmoticonGroupStoreFragment)localObject).subList(j, EmoticonGroupStoreFragment.k(this.this$0).size()));
+        EmoticonGroupStoreFragment.m(this.this$0);
+      }
+      if (EmoticonGroupStoreFragment.f(this.this$0) != null) {
+        EmoticonGroupStoreFragment.n(this.this$0);
       }
     }
-    EmoticonGroupStoreFragment.d(this.this$0);
+    else
+    {
+      EmoticonGroupStoreFragment.o(this.this$0);
+    }
   }
 }
 

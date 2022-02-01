@@ -35,8 +35,8 @@ public class MusicItemInfo
   public static final int TYPE_ORIGIN = 2;
   public static final int TYPE_QQ_MUSIC = 5;
   public static final int TYPE_WS_BANNER = 10;
-  public int downLv = 0;
-  public long fileSize = 0L;
+  public int downLv;
+  public long fileSize;
   public String jumpWs;
   public int mAccuracy;
   public String mAlbumUrl;
@@ -49,16 +49,31 @@ public class MusicItemInfo
   public String mSingername;
   public String mSongMid;
   public String mTagName;
-  public int mType = 1;
+  public int mType;
   public String mUrl;
-  public int musicDuration = 0;
-  public int musicEnd = 0;
-  public int musicStart = 0;
+  public int musicDuration;
+  public int musicEnd;
+  public int musicStart;
   
-  public MusicItemInfo() {}
+  public MusicItemInfo()
+  {
+    this.mType = 1;
+    this.musicStart = 0;
+    this.musicEnd = 0;
+    this.musicDuration = 0;
+    this.fileSize = 0L;
+    this.downLv = 0;
+  }
   
   public MusicItemInfo(Parcel paramParcel)
   {
+    boolean bool = true;
+    this.mType = 1;
+    this.musicStart = 0;
+    this.musicEnd = 0;
+    this.musicDuration = 0;
+    this.fileSize = 0L;
+    this.downLv = 0;
     this.mMusicName = paramParcel.readString();
     this.mSingername = paramParcel.readString();
     this.mUrl = paramParcel.readString();
@@ -70,38 +85,47 @@ public class MusicItemInfo
     this.musicDuration = paramParcel.readInt();
     this.mSongMid = paramParcel.readString();
     this.mRecognitionOffset = paramParcel.readFloat();
-    if (paramParcel.readByte() != 0) {}
-    for (;;)
-    {
-      this.mHasCopyright = bool;
-      this.mAccuracy = paramParcel.readInt();
-      this.jumpWs = paramParcel.readString();
-      this.downLv = paramParcel.readInt();
-      this.mAlbumUrl = paramParcel.readString();
-      return;
+    if (paramParcel.readByte() == 0) {
       bool = false;
     }
+    this.mHasCopyright = bool;
+    this.mAccuracy = paramParcel.readInt();
+    this.jumpWs = paramParcel.readString();
+    this.downLv = paramParcel.readInt();
+    this.mAlbumUrl = paramParcel.readString();
   }
   
   public MusicItemInfo(String paramString)
   {
+    this.mType = 1;
+    this.musicStart = 0;
+    this.musicEnd = 0;
+    this.musicDuration = 0;
+    this.fileSize = 0L;
+    this.downLv = 0;
     paramString = new JSONObject(paramString);
     this.mMusicName = paramString.optString("title");
     this.mUrl = paramString.optString("audio_url");
     this.mSingername = paramString.optString("author");
     this.mItemId = paramString.optInt("item_id");
-    if (paramString.has("type")) {}
-    for (this.mType = paramString.optInt("type");; this.mType = 1)
-    {
-      this.jumpWs = paramString.optString("jump_ws");
-      this.downLv = paramString.optInt("downLv", 0);
-      this.mAlbumUrl = paramString.optString("image_url");
-      return;
+    if (paramString.has("type")) {
+      this.mType = paramString.optInt("type");
+    } else {
+      this.mType = 1;
     }
+    this.jumpWs = paramString.optString("jump_ws");
+    this.downLv = paramString.optInt("downLv", 0);
+    this.mAlbumUrl = paramString.optString("image_url");
   }
   
   public MusicItemInfo(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
+    this.mType = 1;
+    this.musicStart = 0;
+    this.musicEnd = 0;
+    this.musicDuration = 0;
+    this.fileSize = 0L;
+    this.downLv = 0;
     this.mType = 5;
     this.mMusicName = paramString1;
     this.mUrl = paramString2;
@@ -116,6 +140,12 @@ public class MusicItemInfo
   
   public MusicItemInfo(JSONObject paramJSONObject)
   {
+    this.mType = 1;
+    this.musicStart = 0;
+    this.musicEnd = 0;
+    this.musicDuration = 0;
+    this.fileSize = 0L;
+    this.downLv = 0;
     try
     {
       if (paramJSONObject.has("mMusicName")) {
@@ -155,45 +185,61 @@ public class MusicItemInfo
   
   private String getMusicSuffix()
   {
-    if (this.mType == 5) {
-      for (String str1 = ".mp3";; str2 = ".mp3")
+    int i = this.mType;
+    Object localObject2 = ".mp3";
+    Object localObject3 = localObject2;
+    Object localObject4;
+    if (i == 5)
+    {
+      i = -1;
+      int k;
+      Object localObject1;
+      try
       {
-        try
+        int j = this.mUrl.indexOf(".m4a");
+        k = j;
+        localObject1 = localObject2;
+        if (j >= 0)
         {
-          int i = this.mUrl.indexOf(".m4a");
-          if (i >= 0) {}
-          if (!SLog.isEnable()) {
-            break label114;
-          }
-        }
-        catch (Exception localException1)
-        {
-          try
-          {
-            str1 = this.mUrl.substring(i, i + 4);
-            if (SLog.isEnable()) {
-              SLog.d("MusicItemInfo", "getMusicSuffix " + str1 + " vIndex=" + i);
-            }
-            return str1;
-          }
-          catch (Exception localException2)
-          {
-            String str2;
-            break label81;
-          }
-          localException1 = localException1;
-          i = -1;
-        }
-        label81:
-        SLog.d("MusicItemInfo", "getMusicSuffix e:" + localException1.toString());
-        label114:
-        if (SLog.isEnable()) {
-          SLog.d("MusicItemInfo", "getMusicSuffix e:" + localException1.toString());
+          i = j;
+          localObject1 = this.mUrl.substring(j, j + 4);
+          k = j;
         }
       }
-    } else {
-      return ".mp3";
+      catch (Exception localException)
+      {
+        if (SLog.isEnable())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getMusicSuffix e:");
+          ((StringBuilder)localObject1).append(localException.toString());
+          SLog.d("MusicItemInfo", ((StringBuilder)localObject1).toString());
+        }
+        k = i;
+        localObject1 = localObject2;
+        if (SLog.isEnable())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getMusicSuffix e:");
+          ((StringBuilder)localObject1).append(localException.toString());
+          SLog.d("MusicItemInfo", ((StringBuilder)localObject1).toString());
+          localObject1 = localObject2;
+          k = i;
+        }
+      }
+      localObject4 = localObject1;
+      if (SLog.isEnable())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getMusicSuffix ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" vIndex=");
+        ((StringBuilder)localObject2).append(k);
+        SLog.d("MusicItemInfo", ((StringBuilder)localObject2).toString());
+        localObject4 = localObject1;
+      }
     }
+    return localObject4;
   }
   
   public static MusicItemInfo mock()
@@ -238,7 +284,11 @@ public class MusicItemInfo
       localJSONObject.put("downLv", this.downLv);
       return localJSONObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label218:
+      break label218;
+    }
     return null;
   }
   
@@ -270,15 +320,47 @@ public class MusicItemInfo
   
   public boolean equals(MusicItemInfo paramMusicItemInfo)
   {
-    if ((paramMusicItemInfo != null) && (paramMusicItemInfo.mType != 1) && (paramMusicItemInfo.mType != 5)) {
-      if (this.mType != paramMusicItemInfo.mType) {}
-    }
-    while ((paramMusicItemInfo != null) && (paramMusicItemInfo.mItemId == this.mItemId) && (paramMusicItemInfo.mType == this.mType) && ((paramMusicItemInfo.mMusicName == this.mMusicName) || ((paramMusicItemInfo.mMusicName != null) && (paramMusicItemInfo.mMusicName.equals(this.mMusicName)))))
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramMusicItemInfo != null)
     {
-      return true;
-      return false;
+      int i = paramMusicItemInfo.mType;
+      if ((i != 1) && (i != 5))
+      {
+        if (this.mType == i) {
+          bool1 = true;
+        }
+        return bool1;
+      }
     }
-    return false;
+    bool1 = bool2;
+    if (paramMusicItemInfo != null)
+    {
+      bool1 = bool2;
+      if (paramMusicItemInfo.mItemId == this.mItemId)
+      {
+        bool1 = bool2;
+        if (paramMusicItemInfo.mType == this.mType)
+        {
+          paramMusicItemInfo = paramMusicItemInfo.mMusicName;
+          String str = this.mMusicName;
+          if (paramMusicItemInfo != str)
+          {
+            bool1 = bool2;
+            if (paramMusicItemInfo != null)
+            {
+              bool1 = bool2;
+              if (!paramMusicItemInfo.equals(str)) {}
+            }
+          }
+          else
+          {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String getLocalPath()
@@ -293,36 +375,47 @@ public class MusicItemInfo
           this.mPath = null;
           return this.mPath;
         }
-        if ((!TextUtils.isEmpty(this.mUrl)) && (!TextUtils.isEmpty(this.mMusicName))) {
-          localStringBuilder.append(Utils.Crc64String(this.mUrl)).append("_").append(this.mMusicName.hashCode()).append(getMusicSuffix());
+        if ((!TextUtils.isEmpty(this.mUrl)) && (!TextUtils.isEmpty(this.mMusicName)))
+        {
+          localStringBuilder.append(Utils.Crc64String(this.mUrl));
+          localStringBuilder.append("_");
+          localStringBuilder.append(this.mMusicName.hashCode());
+          localStringBuilder.append(getMusicSuffix());
         }
         this.mPath = localStringBuilder.toString();
       }
     }
     catch (Exception localException)
     {
-      label125:
-      break label125;
+      label131:
+      break label131;
     }
     return this.mPath;
   }
   
   public int hashCode()
   {
+    int i;
     if ((!TextUtils.isEmpty(this.mMusicName)) && (!TextUtils.isEmpty(this.mSongMid))) {
-      return this.mMusicName.hashCode() + this.mSongMid.hashCode() + this.mItemId + this.mType;
+      i = this.mMusicName.hashCode() + this.mSongMid.hashCode() + this.mItemId;
     }
-    return this.mItemId + this.mType;
+    for (int j = this.mType;; j = this.mType)
+    {
+      return i + j;
+      i = this.mItemId;
+    }
   }
   
   public boolean isDownloading()
   {
-    return (this.mProgress > -1) && (this.mProgress < 100);
+    int i = this.mProgress;
+    return (i > -1) && (i < 100);
   }
   
   public boolean isFileExist()
   {
-    return ((this.mType == 5) || (this.mType == 1)) && (FileUtil.fileExistsAndNotEmpty(getLocalPath()));
+    int i = this.mType;
+    return ((i == 5) || (i == 1)) && (FileUtil.fileExistsAndNotEmpty(getLocalPath()));
   }
   
   public boolean isMute()
@@ -337,12 +430,22 @@ public class MusicItemInfo
   
   public boolean isWsBanner()
   {
-    return (this.mType == 10) || (this.mType == 11);
+    int i = this.mType;
+    return (i == 10) || (i == 11);
   }
   
   public boolean needPlay()
   {
-    return (this.mType == 1) || (this.mType == 5);
+    int i = this.mType;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (i == 5) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void setPath(String paramString)
@@ -355,7 +458,13 @@ public class MusicItemInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MusicItemInfo: ").append(this.mSingername).append(" - ").append(this.mMusicName).append(" - ").append("mRecognitionOffset=").append(this.mRecognitionOffset);
+    localStringBuilder.append("MusicItemInfo: ");
+    localStringBuilder.append(this.mSingername);
+    localStringBuilder.append(" - ");
+    localStringBuilder.append(this.mMusicName);
+    localStringBuilder.append(" - ");
+    localStringBuilder.append("mRecognitionOffset=");
+    localStringBuilder.append(this.mRecognitionOffset);
     return localStringBuilder.toString();
   }
   
@@ -372,21 +481,16 @@ public class MusicItemInfo
     paramParcel.writeInt(this.musicDuration);
     paramParcel.writeString(this.mSongMid);
     paramParcel.writeFloat(this.mRecognitionOffset);
-    if (this.mHasCopyright) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.mAccuracy);
-      paramParcel.writeString(this.jumpWs);
-      paramParcel.writeInt(this.downLv);
-      paramParcel.writeString(this.mAlbumUrl);
-      return;
-    }
+    paramParcel.writeByte((byte)this.mHasCopyright);
+    paramParcel.writeInt(this.mAccuracy);
+    paramParcel.writeString(this.jumpWs);
+    paramParcel.writeInt(this.downLv);
+    paramParcel.writeString(this.mAlbumUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo
  * JD-Core Version:    0.7.0.1
  */

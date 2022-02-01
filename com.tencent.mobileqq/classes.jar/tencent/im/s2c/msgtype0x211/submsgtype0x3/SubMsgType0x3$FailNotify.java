@@ -20,13 +20,14 @@ public final class SubMsgType0x3$FailNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_sessionid", "uint32_retCode", "bytes_reason" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, FailNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_sessionid", "uint32_retCode", "bytes_reason" }, new Object[] { localInteger, localInteger, localByteStringMicro }, FailNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x3.SubMsgType0x3.FailNotify
  * JD-Core Version:    0.7.0.1
  */

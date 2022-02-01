@@ -9,32 +9,32 @@ public class MsgFile
   implements Parcelable
 {
   public static final Parcelable.Creator<MsgFile> CREATOR;
-  public String elt;
   public String fileName;
   public String filePath;
   public int fileSize;
+  public String lPJ;
   public long timeStamp;
   public String type;
   
   static
   {
-    AppMethodBeat.i(125787);
-    CREATOR = new MsgFile.1();
-    AppMethodBeat.o(125787);
+    AppMethodBeat.i(127511);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(127511);
   }
   
   public MsgFile() {}
   
   protected MsgFile(Parcel paramParcel)
   {
-    AppMethodBeat.i(125786);
+    AppMethodBeat.i(127510);
     this.fileSize = paramParcel.readInt();
     this.filePath = paramParcel.readString();
     this.fileName = paramParcel.readString();
     this.timeStamp = paramParcel.readLong();
     this.type = paramParcel.readString();
-    this.elt = paramParcel.readString();
-    AppMethodBeat.o(125786);
+    this.lPJ = paramParcel.readString();
+    AppMethodBeat.o(127510);
   }
   
   public int describeContents()
@@ -44,27 +44,27 @@ public class MsgFile
   
   public String toString()
   {
-    AppMethodBeat.i(125784);
-    String str = "MsgFile{fileSize=" + this.fileSize + ", filePath='" + this.filePath + '\'' + ", fileName='" + this.fileName + '\'' + ", timeStamp=" + this.timeStamp + ", type='" + this.type + '\'' + ", fileExt='" + this.elt + '\'' + '}';
-    AppMethodBeat.o(125784);
+    AppMethodBeat.i(127508);
+    String str = "MsgFile{fileSize=" + this.fileSize + ", filePath='" + this.filePath + '\'' + ", fileName='" + this.fileName + '\'' + ", timeStamp=" + this.timeStamp + ", type='" + this.type + '\'' + ", fileExt='" + this.lPJ + '\'' + '}';
+    AppMethodBeat.o(127508);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(125785);
+    AppMethodBeat.i(127509);
     paramParcel.writeInt(this.fileSize);
     paramParcel.writeString(this.filePath);
     paramParcel.writeString(this.fileName);
     paramParcel.writeLong(this.timeStamp);
     paramParcel.writeString(this.type);
-    paramParcel.writeString(this.elt);
-    AppMethodBeat.o(125785);
+    paramParcel.writeString(this.lPJ);
+    AppMethodBeat.o(127509);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.choosemsgfile.compat.MsgFile
  * JD-Core Version:    0.7.0.1
  */

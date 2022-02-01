@@ -22,7 +22,11 @@ public final class cf
       {
         localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
       }
-      catch (Exception localException) {}
+      catch (Exception localException)
+      {
+        label65:
+        break label65;
+      }
     }
     return localJSONObject.toString().getBytes();
   }

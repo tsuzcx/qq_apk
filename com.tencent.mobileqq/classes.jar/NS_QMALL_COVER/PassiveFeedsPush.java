@@ -8,7 +8,7 @@ public final class PassiveFeedsPush
   extends JceStruct
 {
   static QzmallCustomBubbleSkin cache_stBubbleSkin = new QzmallCustomBubbleSkin();
-  public QzmallCustomBubbleSkin stBubbleSkin;
+  public QzmallCustomBubbleSkin stBubbleSkin = null;
   
   public PassiveFeedsPush() {}
   
@@ -24,14 +24,15 @@ public final class PassiveFeedsPush
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stBubbleSkin != null) {
-      paramJceOutputStream.write(this.stBubbleSkin, 0);
+    QzmallCustomBubbleSkin localQzmallCustomBubbleSkin = this.stBubbleSkin;
+    if (localQzmallCustomBubbleSkin != null) {
+      paramJceOutputStream.write(localQzmallCustomBubbleSkin, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.PassiveFeedsPush
  * JD-Core Version:    0.7.0.1
  */

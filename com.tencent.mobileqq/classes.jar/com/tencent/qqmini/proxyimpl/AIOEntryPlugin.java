@@ -1,37 +1,40 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bgok;
-import bgor;
-import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@JsPlugin
 public class AIOEntryPlugin
   extends BaseJsPlugin
 {
-  private static final String TAG = "AIOEntryPlugin";
-  
-  public void hideMiniAIOEntrance(bgok parambgok)
+  @JsEvent({"hideMiniAIOEntrance"})
+  public void hideMiniAIOEntrance(RequestEvent paramRequestEvent)
   {
-    bgor.a(new AIOEntryPlugin.2(this, parambgok));
+    AppBrandTask.runTaskOnUiThread(new AIOEntryPlugin.2(this, paramRequestEvent));
   }
   
-  public void showMiniAIOEntrance(bgok parambgok)
+  @JsEvent({"showMiniAIOEntrance"})
+  public void showMiniAIOEntrance(RequestEvent paramRequestEvent)
   {
     try
     {
-      bgor.a(new AIOEntryPlugin.1(this, new JSONObject(parambgok.b), parambgok));
+      AppBrandTask.runTaskOnUiThread(new AIOEntryPlugin.1(this, new JSONObject(paramRequestEvent.jsonParams), paramRequestEvent));
       return;
     }
-    catch (JSONException parambgok)
+    catch (JSONException paramRequestEvent)
     {
-      parambgok.printStackTrace();
+      paramRequestEvent.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AIOEntryPlugin
  * JD-Core Version:    0.7.0.1
  */

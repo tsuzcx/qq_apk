@@ -28,15 +28,15 @@ public final class TestRecorder
   
   public final String toString()
   {
-    AppMethodBeat.i(141469);
+    AppMethodBeat.i(135989);
     String str = "TestRecorder{mX=" + this.mX + ",mValues=" + this.mValues + "}";
-    AppMethodBeat.o(141469);
+    AppMethodBeat.o(135989);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.gen.TestRecorder
  * JD-Core Version:    0.7.0.1
  */

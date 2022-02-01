@@ -1,25 +1,24 @@
 package cooperation.qqpim;
 
-import alud;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
+import android.view.MotionEvent;
 import android.view.Window;
-import bety;
-import bhsl;
-import biye;
-import biyf;
-import biyg;
-import biyn;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,10 +27,10 @@ public class QQPimBridgeActivity
   implements Handler.Callback
 {
   public static long a;
-  private bety jdField_a_of_type_Bety;
-  private bhsl jdField_a_of_type_Bhsl;
-  biyn jdField_a_of_type_Biyn = new biyf(this);
-  private QQPimPluginLoadRunnable jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
+  QQPimPluginLoadRunnable.IPluginLoadListener b = new QQPimBridgeActivity.2(this);
+  private QQProgressDialog c;
+  private MqqWeakReferenceHandler d;
+  private QQPimPluginLoadRunnable e;
   
   public static boolean a(Context paramContext)
   {
@@ -51,109 +50,136 @@ public class QQPimBridgeActivity
     return false;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167140);
-    if (System.currentTimeMillis() - jdField_a_of_type_Long < 800L)
+    getWindow().setBackgroundDrawableResource(2131168376);
+    if (System.currentTimeMillis() - a < 800L)
     {
       finish();
       return true;
     }
-    this.jdField_a_of_type_Bhsl = new bhsl(this);
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Bety = new bety(this, super.getResources().getDimensionPixelSize(2131298914));
-    this.jdField_a_of_type_Bety.a(alud.a(2131711012));
-    this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bety.setOnDismissListener(new biye(this));
-    if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null) {
-      this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
+    this.d = new MqqWeakReferenceHandler(this);
+    a = System.currentTimeMillis();
+    this.c = new QQProgressDialog(this, super.getResources().getDimensionPixelSize(2131299920));
+    this.c.a(HardCodeUtil.a(2131908256));
+    this.c.setCanceledOnTouchOutside(false);
+    this.c.setOnDismissListener(new QQPimBridgeActivity.1(this));
+    paramBundle = this.e;
+    if (paramBundle != null) {
+      paramBundle.a();
     }
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Biyn);
-    ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
+    this.e = new QQPimPluginLoadRunnable(this.b);
+    ThreadManager.postImmediately(this.e, null, true);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()))
+    QQProgressDialog localQQProgressDialog = this.c;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing()))
     {
-      this.jdField_a_of_type_Bety.dismiss();
-      this.jdField_a_of_type_Bety = null;
+      this.c.dismiss();
+      this.c = null;
     }
     sTopActivity = null;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    }
-    Bundle localBundle;
-    do
-    {
-      do
+      if (i != 1)
       {
-        do
-        {
-          do
-          {
-            return false;
-          } while ((isFinishing()) || (this.jdField_a_of_type_Bety == null));
-          this.jdField_a_of_type_Bety.a(alud.a(2131711014));
-          this.jdField_a_of_type_Bety.show();
+        if (i != 2) {
           return false;
-        } while (isFinishing());
-        int i = paramMessage.arg1;
-        int j = super.getResources().getDimensionPixelSize(2131298914);
-        paramMessage = alud.a(2131711015);
-        if (-4 == i) {
-          paramMessage = alud.a(2131711016);
         }
-        for (;;)
+        if (!isFinishing())
         {
-          QQToast.a(this.app.getApp(), 1, paramMessage, 0).b(j);
+          i = paramMessage.arg1;
+          int j = super.getResources().getDimensionPixelSize(2131299920);
+          paramMessage = HardCodeUtil.a(2131908259);
+          if (-4 == i) {
+            paramMessage = HardCodeUtil.a(2131908260);
+          } else if ((-5 != i) && (-1 != i) && (-3 != i) && (-2 != i))
+          {
+            if (-6 == i) {
+              paramMessage = HardCodeUtil.a(2131908257);
+            }
+          }
+          else {
+            paramMessage = HardCodeUtil.a(2131908255);
+          }
+          QQToast.makeText(this.app.getApp(), 1, paramMessage, 0).show(j);
           finish();
           return false;
-          if ((-5 == i) || (-1 == i) || (-3 == i) || (-2 == i)) {
-            paramMessage = alud.a(2131711011);
-          } else if (-6 == i) {
-            paramMessage = alud.a(2131711013);
-          }
         }
-      } while (isFinishing());
-      localBundle = getIntent().getExtras();
-      if (biyg.i.equals(localBundle.getString(biyg.o)))
-      {
-        paramMessage = localObject1;
-        if (!a(getApplicationContext())) {
-          paramMessage = this.jdField_a_of_type_Bety;
-        }
-        QQPimPluginProxyActivity.a(this, localBundle, paramMessage);
-        finish();
-        return false;
       }
-    } while (!biyg.j.equals(localBundle.getString(biyg.o)));
-    paramMessage = localObject2;
-    if (!a(getApplicationContext())) {
-      paramMessage = this.jdField_a_of_type_Bety;
+      else if (!isFinishing())
+      {
+        Bundle localBundle = getIntent().getExtras();
+        boolean bool = QQPimDefineList.j.equals(localBundle.getString(QQPimDefineList.p));
+        Object localObject = null;
+        paramMessage = null;
+        if (bool)
+        {
+          if (!a(getApplicationContext())) {
+            paramMessage = this.c;
+          }
+          QQPimPluginProxyActivity.a(this, localBundle, paramMessage);
+          finish();
+          return false;
+        }
+        if (QQPimDefineList.k.equals(localBundle.getString(QQPimDefineList.p)))
+        {
+          paramMessage = localObject;
+          if (!a(getApplicationContext())) {
+            paramMessage = this.c;
+          }
+          QQPimPluginProxyActivity.b(this, localBundle, paramMessage);
+          finish();
+          return false;
+        }
+      }
     }
-    QQPimPluginProxyActivity.b(this, localBundle, paramMessage);
-    finish();
+    else if (!isFinishing())
+    {
+      paramMessage = this.c;
+      if (paramMessage != null)
+      {
+        paramMessage.a(HardCodeUtil.a(2131908258));
+        this.c.show();
+      }
+    }
     return false;
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void requestWindowFeature(Intent paramIntent)
   {
     super.requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

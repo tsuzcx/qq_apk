@@ -24,76 +24,74 @@ final class OnSubscribeRange$RangeProducer
   {
     long l2 = this.endOfRange;
     Subscriber localSubscriber = this.childSubscriber;
-    long l1 = this.currentIndex;
-    if (l1 != l2 + 1L) {
-      if (!localSubscriber.isUnsubscribed()) {}
-    }
-    while (localSubscriber.isUnsubscribed())
+    for (long l1 = this.currentIndex; l1 != l2 + 1L; l1 += 1L)
     {
-      return;
+      if (localSubscriber.isUnsubscribed()) {
+        return;
+      }
       localSubscriber.onNext(Integer.valueOf((int)l1));
-      l1 += 1L;
-      break;
     }
-    localSubscriber.onCompleted();
+    if (!localSubscriber.isUnsubscribed()) {
+      localSubscriber.onCompleted();
+    }
   }
   
   public void request(long paramLong)
   {
-    if (get() == 9223372036854775807L) {}
-    do
-    {
+    if (get() == 9223372036854775807L) {
       return;
-      if ((paramLong == 9223372036854775807L) && (compareAndSet(0L, 9223372036854775807L)))
-      {
-        fastpath();
-        return;
-      }
-    } while ((paramLong <= 0L) || (BackpressureUtils.getAndAddRequest(this, paramLong) != 0L));
-    slowpath(paramLong);
+    }
+    if ((paramLong == 9223372036854775807L) && (compareAndSet(0L, 9223372036854775807L)))
+    {
+      fastpath();
+      return;
+    }
+    if ((paramLong > 0L) && (BackpressureUtils.getAndAddRequest(this, paramLong) == 0L)) {
+      slowpath(paramLong);
+    }
   }
   
   void slowpath(long paramLong)
   {
     long l4 = this.endOfRange + 1L;
-    long l2 = this.currentIndex;
+    long l1 = this.currentIndex;
     Subscriber localSubscriber = this.childSubscriber;
-    long l1 = 0L;
-    for (;;)
+    long l2;
+    do
     {
-      if ((l1 != paramLong) && (l2 != l4)) {
-        if (!localSubscriber.isUnsubscribed()) {}
-      }
+      l2 = 0L;
+      long l3;
       do
       {
-        do
+        while ((l2 != paramLong) && (l1 != l4))
         {
-          return;
-          localSubscriber.onNext(Integer.valueOf((int)l2));
-          l2 += 1L;
+          if (localSubscriber.isUnsubscribed()) {
+            return;
+          }
+          localSubscriber.onNext(Integer.valueOf((int)l1));
           l1 += 1L;
-          break;
-        } while (localSubscriber.isUnsubscribed());
-        if (l2 == l4)
+          l2 += 1L;
+        }
+        if (localSubscriber.isUnsubscribed()) {
+          return;
+        }
+        if (l1 == l4)
         {
           localSubscriber.onCompleted();
           return;
         }
-        long l3 = get();
+        l3 = get();
         paramLong = l3;
-        if (l3 != l1) {
-          break;
-        }
-        this.currentIndex = l2;
-        paramLong = addAndGet(-l1);
-      } while (paramLong == 0L);
-      l1 = 0L;
-    }
+      } while (l3 != l2);
+      this.currentIndex = l1;
+      l2 = addAndGet(-l2);
+      paramLong = l2;
+    } while (l2 != 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeRange.RangeProducer
  * JD-Core Version:    0.7.0.1
  */

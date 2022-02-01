@@ -35,7 +35,7 @@ class MyZipEntry
   {
     Streams.readFully(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
     paramArrayOfByte = HeapBufferIterator.iterator(paramArrayOfByte, 0, paramArrayOfByte.length, ByteOrder.LITTLE_ENDIAN);
-    if (paramArrayOfByte.readInt() != 33639248L) {}
+    paramArrayOfByte.readInt();
     this.version = paramArrayOfByte.readShort();
     this.versionMinimum = paramArrayOfByte.readShort();
     this.flags = paramArrayOfByte.readShort();
@@ -53,18 +53,22 @@ class MyZipEntry
     this.externalFileAttri = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     this.mLocalHeaderRelOffset = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     this.nameBytes = new byte[this.nameLength];
-    Streams.readFully(paramInputStream, this.nameBytes, 0, this.nameBytes.length);
-    this.name = new String(this.nameBytes, 0, this.nameBytes.length, "UTF-8");
-    if (this.commentLength > 0)
+    paramArrayOfByte = this.nameBytes;
+    Streams.readFully(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
+    paramArrayOfByte = this.nameBytes;
+    this.name = new String(paramArrayOfByte, 0, paramArrayOfByte.length, "UTF-8");
+    int i = this.commentLength;
+    if (i > 0)
     {
-      paramArrayOfByte = new byte[this.commentLength];
-      Streams.readFully(paramInputStream, paramArrayOfByte, 0, this.commentLength);
+      paramArrayOfByte = new byte[i];
+      Streams.readFully(paramInputStream, paramArrayOfByte, 0, i);
       this.comment = new String(paramArrayOfByte, 0, paramArrayOfByte.length, "UTF-8");
     }
-    if (this.extraLength > 0)
+    i = this.extraLength;
+    if (i > 0)
     {
-      this.extra = new byte[this.extraLength];
-      Streams.readFully(paramInputStream, this.extra, 0, this.extraLength);
+      this.extra = new byte[i];
+      Streams.readFully(paramInputStream, this.extra, 0, i);
     }
   }
   
@@ -85,7 +89,7 @@ class MyZipEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.commonsdk.soload.MyZipEntry
  * JD-Core Version:    0.7.0.1
  */

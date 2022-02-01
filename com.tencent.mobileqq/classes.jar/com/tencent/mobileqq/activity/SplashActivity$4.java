@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import azqs;
-import bdms;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.agent.OpenSdkIMBlockFragment;
+import com.tencent.open.data.SharedPrefs;
 
 class SplashActivity$4
   implements Runnable
@@ -12,25 +10,12 @@ class SplashActivity$4
   
   public void run()
   {
-    long l = SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_low_shreshold", 104857600L);
-    if (SpaceLowNoticeActiviy.a(SpaceLowNoticeActiviy.a(this.this$0.app, "conf_space_check_interval", 259200000L)))
-    {
-      if (bdms.b(this.this$0) + bdms.b() < l)
-      {
-        QLog.i("SplashActivity", 1, "qqclean conf did notice");
-        SpaceLowNoticeActiviy.a(this.this$0);
-        azqs.b(this.this$0.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.this$0.app.getCurrentAccountUin(), "", "", "");
-      }
-    }
-    else {
-      return;
-    }
-    QLog.i("SplashActivity", 1, "qqclean conf not need notice");
+    OpenSdkIMBlockFragment.a(this.this$0, SharedPrefs.c(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SplashActivity.4
  * JD-Core Version:    0.7.0.1
  */

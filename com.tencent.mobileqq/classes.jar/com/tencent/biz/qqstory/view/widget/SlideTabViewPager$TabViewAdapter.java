@@ -1,28 +1,34 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 
 public class SlideTabViewPager$TabViewAdapter
   extends PagerAdapter
 {
-  private ArrayList<View> a;
+  private ArrayList<View> b = new ArrayList();
+  
+  public SlideTabViewPager$TabViewAdapter(ArrayList<View> paramArrayList)
+  {
+    Object localObject;
+    this.b = localObject;
+  }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup.removeView((View)this.a.get(paramInt));
+    paramViewGroup.removeView((View)this.b.get(paramInt));
   }
   
   public int getCount()
   {
-    return this.a.size();
+    return this.b.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = (View)this.a.get(paramInt);
+    View localView = (View)this.b.get(paramInt);
     paramViewGroup.addView(localView);
     return localView;
   }
@@ -34,7 +40,7 @@ public class SlideTabViewPager$TabViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.SlideTabViewPager.TabViewAdapter
  * JD-Core Version:    0.7.0.1
  */

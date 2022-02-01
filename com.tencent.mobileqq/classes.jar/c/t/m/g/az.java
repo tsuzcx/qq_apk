@@ -32,10 +32,19 @@ public final class az
     paramMap.put("A19", localObject);
     localbb.a(paramMap);
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(cn.a(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss.SSS") + "|");
+    paramString = new StringBuilder();
+    paramString.append(cn.a(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss.SSS"));
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append("INFO|");
-    ((StringBuilder)localObject).append(x.a.a + "|");
-    ((StringBuilder)localObject).append(ay.b + "|");
+    paramString = new StringBuilder();
+    paramString.append(x.a.a);
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append(ay.b);
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append("beacon|");
     ((StringBuilder)localObject).append("1.8.1|");
     paramString = localbb.b;
@@ -46,23 +55,38 @@ public final class az
     }
     catch (UnsupportedEncodingException paramMap)
     {
-      for (;;)
-      {
-        paramMap.printStackTrace();
-      }
+      paramMap.printStackTrace();
     }
-    ((StringBuilder)localObject).append(paramString + "|");
+    paramMap = new StringBuilder();
+    paramMap.append(paramString);
+    paramMap.append("|");
+    ((StringBuilder)localObject).append(paramMap.toString());
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append("upload_ip|");
     ((StringBuilder)localObject).append("|");
-    ((StringBuilder)localObject).append(localbb.c + "|");
-    ((StringBuilder)localObject).append(localbb.a() + "|");
-    ((StringBuilder)localObject).append(paramBoolean + "|");
+    paramString = new StringBuilder();
+    paramString.append(localbb.c);
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append(localbb.a());
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append(paramBoolean);
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append("0|");
     ((StringBuilder)localObject).append("0|");
     paramString = a(localbb.b());
-    ((StringBuilder)localObject).append(paramString + "|");
-    ((StringBuilder)localObject).append(cn.a(localbb.a, "yyyy-MM-dd HH:mm:ss") + "|");
+    paramMap = new StringBuilder();
+    paramMap.append(paramString);
+    paramMap.append("|");
+    ((StringBuilder)localObject).append(paramMap.toString());
+    paramString = new StringBuilder();
+    paramString.append(cn.a(localbb.a, "yyyy-MM-dd HH:mm:ss"));
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append("upload_time");
     return ((StringBuilder)localObject).toString();
   }
@@ -108,7 +132,7 @@ public final class az
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.az
  * JD-Core Version:    0.7.0.1
  */

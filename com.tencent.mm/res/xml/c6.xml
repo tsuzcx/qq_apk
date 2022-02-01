@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.setting.ui.widget.HeadImgNewPreference mm:title="@string/e9y" mm:key="settings_change_avatar" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/ec4" mm:key="settings_name" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/egt" mm:key="settings_username" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/edq" mm:key="settings_qrcode" mm:widgetLayout="@layout/agy" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/s_" mm:key="settings_more_info" mm:layout="@layout/afi" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_privacy_sys_permission" android:title="@string/ixe" />
+    <Preference android:key="settings_privacy_app_permission" android:title="@string/ix7" />
     <PreferenceSmallCategory />
-    <Preference mm:title="@string/e9p" mm:key="settings_address" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/eap" mm:key="settings_invoice" mm:layout="@layout/afi" />
+    <Preference android:key="setting_privacy_personal_ad_mgr" android:title="@string/ixb" />
+    <PreferenceSmallCategory />
+    <Preference android:key="setting_privacy_personal_info_export" android:title="@string/ixc" />
+    <Preference android:key="setting_wechat_personal_info_export" android:title="@string/irk" />
+    <PreferenceCategory />
 </PreferenceScreen>

@@ -1,37 +1,33 @@
 package cooperation.qzone.webviewplugin;
 
-import alud;
 import android.app.Activity;
 import android.content.Context;
-import bdgm;
-import bdjz;
-import begz;
-import bjyj;
-import bjyl;
-import bjym;
-import bjyn;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
-public class QzoneQunFeedJsPlugin$2$1
+class QzoneQunFeedJsPlugin$2$1
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$2$1(bjyl parambjyl) {}
+  QzoneQunFeedJsPlugin$2$1(QzoneQunFeedJsPlugin.2 param2) {}
   
   public void run()
   {
-    bjyj.a(this.a.jdField_a_of_type_Bjyj, this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
-    Activity localActivity = this.a.jdField_a_of_type_Bjyj.a.mRuntime.a();
-    if (bjyj.a(this.a.jdField_a_of_type_Bjyj) == null) {
-      bjyj.a(this.a.jdField_a_of_type_Bjyj, bdgm.a(localActivity, 230).setTitle(alud.a(2131712670)).setMessage(alud.a(2131712674)).setPositiveButton(alud.a(2131712671), new bjyn(this)).setNegativeButton(localActivity.getString(2131718535), new bjym(this)));
+    QzoneQunFeedJsPlugin.access$102(this.this$1.this$0, this.this$1.val$args[0]);
+    Activity localActivity = this.this$1.this$0.parentPlugin.mRuntime.d();
+    if (QzoneQunFeedJsPlugin.access$200(this.this$1.this$0) == null) {
+      QzoneQunFeedJsPlugin.access$202(this.this$1.this$0, DialogUtil.a(localActivity, 230).setTitle(HardCodeUtil.a(2131909830)).setMessage(HardCodeUtil.a(2131909833)).setPositiveButton(HardCodeUtil.a(2131899883), new QzoneQunFeedJsPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131915033), new QzoneQunFeedJsPlugin.2.1.1(this)));
     }
-    if (!bjyj.a(this.a.jdField_a_of_type_Bjyj).isShowing()) {
-      bjyj.a(this.a.jdField_a_of_type_Bjyj).show();
+    if (!QzoneQunFeedJsPlugin.access$200(this.this$1.this$0).isShowing()) {
+      QzoneQunFeedJsPlugin.access$200(this.this$1.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import java.util.List;
 public final class e
   implements v.c
 {
-  private final List<Format> aKl;
+  private final List<Format> cUd;
   private final int flags;
   
   public e()
@@ -21,38 +21,38 @@ public final class e
   public e(int paramInt)
   {
     this(paramInt, Collections.emptyList());
-    AppMethodBeat.i(95098);
-    AppMethodBeat.o(95098);
+    AppMethodBeat.i(92220);
+    AppMethodBeat.o(92220);
   }
   
   public e(int paramInt, List<Format> paramList)
   {
-    AppMethodBeat.i(95099);
+    AppMethodBeat.i(92221);
     this.flags = paramInt;
     Object localObject = paramList;
-    if (!isSet(32))
+    if (!hT(32))
     {
       localObject = paramList;
       if (paramList.isEmpty()) {
-        localObject = Collections.singletonList(Format.al("application/cea-608"));
+        localObject = Collections.singletonList(Format.cF("application/cea-608"));
       }
     }
-    this.aKl = ((List)localObject);
-    AppMethodBeat.o(95099);
+    this.cUd = ((List)localObject);
+    AppMethodBeat.o(92221);
   }
   
   private s a(v.b paramb)
   {
-    AppMethodBeat.i(95102);
-    if (isSet(32))
+    AppMethodBeat.i(92224);
+    if (hT(32))
     {
-      paramb = new s(this.aKl);
-      AppMethodBeat.o(95102);
+      paramb = new s(this.cUd);
+      AppMethodBeat.o(92224);
       return paramb;
     }
-    com.google.android.exoplayer2.i.m localm = new com.google.android.exoplayer2.i.m(paramb.aMr);
-    paramb = this.aKl;
-    while (localm.qM() > 0)
+    com.google.android.exoplayer2.i.m localm = new com.google.android.exoplayer2.i.m(paramb.cWi);
+    paramb = this.cUd;
+    while (localm.UF() > 0)
     {
       int i = localm.readUnsignedByte();
       int k = localm.readUnsignedByte();
@@ -78,7 +78,7 @@ public final class e
           for (int j = i1 & 0x3F;; j = 1)
           {
             localArrayList.add(Format.a(null, paramb, 0, str, j));
-            localm.en(2);
+            localm.iH(2);
             i += 1;
             break;
             j = 0;
@@ -92,94 +92,94 @@ public final class e
       localm.setPosition(m + k);
     }
     paramb = new s(paramb);
-    AppMethodBeat.o(95102);
+    AppMethodBeat.o(92224);
     return paramb;
   }
   
-  private boolean isSet(int paramInt)
+  private boolean hT(int paramInt)
   {
     return (this.flags & paramInt) != 0;
   }
   
+  public final SparseArray<v> Sq()
+  {
+    AppMethodBeat.i(92222);
+    SparseArray localSparseArray = new SparseArray();
+    AppMethodBeat.o(92222);
+    return localSparseArray;
+  }
+  
   public final v a(int paramInt, v.b paramb)
   {
-    AppMethodBeat.i(95101);
+    AppMethodBeat.i(92223);
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(95101);
+      AppMethodBeat.o(92223);
       return null;
     case 3: 
     case 4: 
-      paramb = new o(new m(paramb.axa));
-      AppMethodBeat.o(95101);
+      paramb = new o(new m(paramb.language));
+      AppMethodBeat.o(92223);
       return paramb;
     case 15: 
-      if (isSet(2))
+      if (hT(2))
       {
-        AppMethodBeat.o(95101);
+        AppMethodBeat.o(92223);
         return null;
       }
-      paramb = new o(new d(false, paramb.axa));
-      AppMethodBeat.o(95101);
+      paramb = new o(new d(false, paramb.language));
+      AppMethodBeat.o(92223);
       return paramb;
     case 129: 
     case 135: 
-      paramb = new o(new b(paramb.axa));
-      AppMethodBeat.o(95101);
+      paramb = new o(new b(paramb.language));
+      AppMethodBeat.o(92223);
       return paramb;
     case 130: 
     case 138: 
-      paramb = new o(new f(paramb.axa));
-      AppMethodBeat.o(95101);
+      paramb = new o(new f(paramb.language));
+      AppMethodBeat.o(92223);
       return paramb;
     case 2: 
       paramb = new o(new i());
-      AppMethodBeat.o(95101);
+      AppMethodBeat.o(92223);
       return paramb;
     case 27: 
-      if (isSet(4))
+      if (hT(4))
       {
-        AppMethodBeat.o(95101);
+        AppMethodBeat.o(92223);
         return null;
       }
-      paramb = new o(new j(a(paramb), isSet(1), isSet(8)));
-      AppMethodBeat.o(95101);
+      paramb = new o(new j(a(paramb), hT(1), hT(8)));
+      AppMethodBeat.o(92223);
       return paramb;
     case 36: 
       paramb = new o(new k(a(paramb)));
-      AppMethodBeat.o(95101);
+      AppMethodBeat.o(92223);
       return paramb;
     case 134: 
-      if (isSet(16))
+      if (hT(16))
       {
-        AppMethodBeat.o(95101);
+        AppMethodBeat.o(92223);
         return null;
       }
       paramb = new r(new t());
-      AppMethodBeat.o(95101);
+      AppMethodBeat.o(92223);
       return paramb;
     case 21: 
       paramb = new o(new l());
-      AppMethodBeat.o(95101);
+      AppMethodBeat.o(92223);
       return paramb;
     }
-    paramb = new o(new g(paramb.aMq));
-    AppMethodBeat.o(95101);
+    paramb = new o(new g(paramb.cWh));
+    AppMethodBeat.o(92223);
     return paramb;
-  }
-  
-  public final SparseArray<v> ot()
-  {
-    AppMethodBeat.i(95100);
-    SparseArray localSparseArray = new SparseArray();
-    AppMethodBeat.o(95100);
-    return localSparseArray;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.e
  * JD-Core Version:    0.7.0.1
  */

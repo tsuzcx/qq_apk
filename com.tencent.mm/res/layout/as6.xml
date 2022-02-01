@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textAppearance="?fl" android:textColor="?g4" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@android:id/text1" android:paddingLeft="?ff" android:paddingRight="?fg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?fd"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/jyk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="get challenge" />
+    <Button android:id="@id/ikp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="regen and upload ask" />
+    <Button android:id="@id/ikq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="regen and upload pay auth key" />
+</LinearLayout>

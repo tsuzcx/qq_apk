@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/root" android:background="@color/text_white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@color/text_white" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/main_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@drawable/download_main_img" android:layout_centerHorizontal="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/wording1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="30.0dip" android:layout_below="@id/main_img">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dl_tip_ico_a" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/font_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="全新升级QQ安全，帐号不再丢失" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/wording2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/wording1">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dl_tip_ico_b" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/font_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="QQ官方指定清理，节省手机空间" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/wording3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/wording2">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dl_tip_ico_c" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/font_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="多项安全黑科技，全面保护手机安全" />
-    </LinearLayout>
-    <Button android:id="@id/process_btn" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="立即体验" android:layout_alignParentBottom="true" style="@style/text_view_white" />
-</RelativeLayout>
+    <FrameLayout android:id="@id/qqpim_back_new" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:background="@drawable/arrow_back" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="13.5dip" android:layout_marginBottom="10.0dip" />
+    </FrameLayout>
+    <ScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/main_img" android:layout_width="300.0dip" android:layout_height="wrap_content" android:src="@drawable/download_main_img" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/wording1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="30.0dip">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dl_tip_ico_a" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/font_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="一站检测预警，跨设备安全保护" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/wording2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="15.0dip">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dl_tip_ico_b" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/font_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="强力清理加速，释放空间告别卡顿" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/wording3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="15.0dip">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dl_tip_ico_c" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/font_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="骚扰欺诈拦截，远离各种诈骗骚扰" />
+            </LinearLayout>
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bottom_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
+                <Button android:id="@id/process_btn" android:background="@drawable/blue_btn_bg" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="立即下载" style="@style/text_view_white" />
+                <com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo android:id="@id/soft_detail_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

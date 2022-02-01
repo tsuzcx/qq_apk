@@ -10,64 +10,71 @@ import com.tencent.mm.ui.base.MMTagPanelScrollView;
 public class LabelContainerView
   extends MMTagPanelScrollView
 {
-  boolean Adb;
-  boolean Adc;
-  boolean Add;
-  float Ade;
-  float Adf;
-  float Adg;
-  float Adh;
-  private LabelContainerView.a Adi;
-  boolean FF;
-  float FK;
-  float FL;
-  float FM;
-  float FN;
-  private int Ft;
+  boolean afeo;
+  boolean afep;
+  boolean afeq;
+  float afer;
+  float afes;
+  float afet;
+  float afeu;
+  private a afev;
+  private int bsL;
+  boolean bsW;
+  float btb;
+  float btc;
+  float btd;
+  float bte;
   
   public LabelContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(105209);
-    this.FF = true;
-    this.Adb = false;
-    this.Adc = true;
-    this.Add = false;
-    dLV();
-    AppMethodBeat.o(105209);
+    AppMethodBeat.i(102845);
+    this.bsW = true;
+    this.afeo = false;
+    this.afep = true;
+    this.afeq = false;
+    initConfig();
+    AppMethodBeat.o(102845);
   }
   
   public LabelContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(105208);
-    this.FF = true;
-    this.Adb = false;
-    this.Adc = true;
-    this.Add = false;
-    dLV();
-    AppMethodBeat.o(105208);
+    AppMethodBeat.i(102844);
+    this.bsW = true;
+    this.afeo = false;
+    this.afep = true;
+    this.afeq = false;
+    initConfig();
+    AppMethodBeat.o(102844);
   }
   
-  private void dLV()
+  private void initConfig()
   {
-    AppMethodBeat.i(105211);
+    AppMethodBeat.i(102847);
     int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.Ft = (i * i);
-    AppMethodBeat.o(105211);
+    this.bsL = (i * i);
+    AppMethodBeat.o(102847);
+  }
+  
+  public final void dCv()
+  {
+    AppMethodBeat.i(102850);
+    this.afev.dCv();
+    AppMethodBeat.o(102850);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(105212);
+    AppMethodBeat.i(102848);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(105212);
+    AppMethodBeat.o(102848);
     return bool;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(105210);
+    AppMethodBeat.i(102846);
     int n = paramMotionEvent.getAction();
     int i;
     if ((n & 0xFF) == 6)
@@ -114,33 +121,33 @@ public class LabelContainerView
     for (;;)
     {
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(105210);
+      AppMethodBeat.o(102846);
       return bool;
       i = m;
       break;
-      this.Adc = true;
-      this.Adf = f2;
-      this.Ade = f2;
-      this.Adh = f1;
-      this.Adg = f1;
-      this.Add = true;
+      this.afep = true;
+      this.afes = f2;
+      this.afer = f2;
+      this.afeu = f1;
+      this.afet = f1;
+      this.afeq = true;
       continue;
-      i = (int)(f2 - this.Ade);
-      j = (int)(f1 - this.Adg);
-      if (j * j + i * i > this.Ft)
+      i = (int)(f2 - this.afer);
+      j = (int)(f1 - this.afet);
+      if (j * j + i * i > this.bsL)
       {
-        this.Adc = false;
-        AppMethodBeat.o(105210);
+        this.afep = false;
+        AppMethodBeat.o(102846);
         return true;
-        this.Adc = true;
-        this.Add = false;
+        this.afep = true;
+        this.afeq = false;
       }
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(105213);
+    AppMethodBeat.i(102849);
     int n = paramMotionEvent.getAction();
     int i;
     if ((n & 0xFF) == 6)
@@ -187,47 +194,54 @@ public class LabelContainerView
     for (;;)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(105213);
+      AppMethodBeat.o(102849);
       return bool;
       i = m;
       break;
-      this.FF = true;
-      this.FK = f2;
-      this.FM = f2;
-      this.FL = f1;
-      this.FN = f1;
-      this.Adb = true;
+      this.bsW = true;
+      this.btb = f2;
+      this.btd = f2;
+      this.btc = f1;
+      this.bte = f1;
+      this.afeo = true;
       continue;
-      if (!this.Adb)
+      if (!this.afeo)
       {
-        this.FF = true;
-        this.FK = f2;
-        this.FM = f2;
-        this.FL = f1;
-        this.FN = f1;
-        this.Adb = true;
+        this.bsW = true;
+        this.btb = f2;
+        this.btd = f2;
+        this.btc = f1;
+        this.bte = f1;
+        this.afeo = true;
       }
-      if (this.Adi != null) {
-        this.Adi.bnp();
+      if (this.afev != null) {
+        this.afev.dCw();
       }
-      i = (int)(f2 - this.FM);
-      j = (int)(f1 - this.FN);
-      if (j * j + i * i > this.Ft)
+      i = (int)(f2 - this.btd);
+      j = (int)(f1 - this.bte);
+      if (j * j + i * i > this.bsL)
       {
-        this.FF = false;
+        this.bsW = false;
         continue;
-        if (((this.FF) || (!this.Adb)) && (this.Adi != null)) {
-          this.Adi.bno();
+        if (((this.bsW) || (!this.afeo)) && (this.afev != null)) {
+          this.afev.dCv();
         }
-        this.FF = true;
-        this.Adb = false;
+        this.bsW = true;
+        this.afeo = false;
       }
     }
   }
   
-  public void setOnLabelContainerListener(LabelContainerView.a parama)
+  public void setOnLabelContainerListener(a parama)
   {
-    this.Adi = parama;
+    this.afev = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void dCv();
+    
+    public abstract void dCw();
   }
 }
 

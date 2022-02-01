@@ -12,15 +12,21 @@ public final class hd_video_comm$NetAddr
 {
   public static final int PT_TCP = 1;
   public static final int PT_UDP = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 16, 24, 37 }, new String[] { "fixed32_IP", "uint32_port", "enum_proto_type", "fixed32_inner_IP" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) }, NetAddr.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField enum_proto_type = PBField.initEnum(1);
   public final PBFixed32Field fixed32_IP = PBField.initFixed32(0);
   public final PBFixed32Field fixed32_inner_IP = PBField.initFixed32(0);
   public final PBUInt32Field uint32_port = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 16, 24, 37 }, new String[] { "fixed32_IP", "uint32_port", "enum_proto_type", "fixed32_inner_IP" }, new Object[] { localInteger, localInteger, Integer.valueOf(1), localInteger }, NetAddr.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.NetAddr
  * JD-Core Version:    0.7.0.1
  */

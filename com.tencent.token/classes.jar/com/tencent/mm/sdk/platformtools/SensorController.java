@@ -6,39 +6,17 @@ import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import com.tencent.token.qk;
 
 public class SensorController
   extends BroadcastReceiver
   implements SensorEventListener
 {
-  private static float aX = 4.294967E+009F;
-  private static float ba = 0.5F;
-  private SensorManager aY;
-  private float aZ;
-  private SensorController.SensorEventCallBack bb;
-  private Sensor bc;
-  private final boolean bd;
-  private boolean be = false;
-  private boolean bf = false;
-  
-  public SensorController(Context paramContext)
-  {
-    this.aY = ((SensorManager)paramContext.getSystemService("sensor"));
-    this.bc = this.aY.getDefaultSensor(8);
-    if (this.bc != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.bd = bool;
-      this.aZ = (ba + 1.0F);
-      return;
-    }
-  }
-  
-  public boolean isSensorEnable()
-  {
-    return this.bd;
-  }
+  private static float a = 4.294967E+009F;
+  private static float c = 0.5F;
+  private float b;
+  private a d;
+  private boolean e;
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
@@ -48,68 +26,50 @@ public class SensorController
     {
       int i = paramIntent.getIntExtra("state", 0);
       if (i == 1) {
-        this.be = true;
+        this.e = true;
       }
       if (i == 0) {
-        this.be = false;
+        this.e = false;
       }
     }
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (this.be) {
+    if (this.e) {
       return;
     }
-    float f = paramSensorEvent.values[0];
-    switch (paramSensorEvent.sensor.getType())
-    {
-    default: 
+    float f1 = paramSensorEvent.values[0];
+    if (paramSensorEvent.sensor.getType() != 8) {
       return;
     }
-    if (f < aX)
+    if (f1 < a)
     {
-      aX = f;
-      ba = 0.5F + f;
+      a = f1;
+      c = 0.5F + f1;
     }
-    if ((this.aZ >= ba) && (f < ba)) {
-      if (this.bb != null)
+    float f2 = this.b;
+    float f3 = c;
+    if ((f2 >= f3) && (f1 < f3))
+    {
+      if (this.d == null) {}
+    }
+    else {
+      for (paramSensorEvent = "sensor event false";; paramSensorEvent = "sensor event true")
       {
-        Log.v("MicroMsg.SensorController", "sensor event false");
-        this.bb.onSensorEvent(false);
+        qk.d("MicroMsg.SensorController", paramSensorEvent);
+        break;
+        f2 = this.b;
+        f3 = c;
+        if ((f2 > f3) || (f1 <= f3) || (this.d == null)) {
+          break;
+        }
       }
     }
-    for (;;)
-    {
-      this.aZ = f;
-      return;
-      if ((this.aZ <= ba) && (f > ba) && (this.bb != null))
-      {
-        Log.v("MicroMsg.SensorController", "sensor event true");
-        this.bb.onSensorEvent(true);
-      }
-    }
+    this.b = f1;
   }
   
-  public void removeSensorCallBack()
-  {
-    Log.v("MicroMsg.SensorController", "sensor callback removed");
-    this.aY.unregisterListener(this, this.bc);
-    this.aY.unregisterListener(this);
-    this.bf = false;
-    this.bb = null;
-  }
-  
-  public void setSensorCallBack(SensorController.SensorEventCallBack paramSensorEventCallBack)
-  {
-    Log.v("MicroMsg.SensorController", "sensor callback set");
-    if (!this.bf)
-    {
-      this.aY.registerListener(this, this.bc, 2);
-      this.bf = true;
-    }
-    this.bb = paramSensorEventCallBack;
-  }
+  public static abstract interface a {}
 }
 
 

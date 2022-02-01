@@ -33,19 +33,19 @@ public class Stsc
   
   public void parse(Parsable paramParsable, Box paramBox)
   {
-    AppMethodBeat.i(128485);
+    AppMethodBeat.i(114266);
     super.parse(paramParsable, paramBox);
     this.entryCount = paramParsable.readInt();
     this.firstChunk = new int[this.entryCount];
     this.samplesPerChunk = new int[this.entryCount];
     this.sampleDescIndex = new int[this.entryCount];
     paramParsable.readIntArrayInterleaved(this.entryCount, new int[][] { this.firstChunk, this.samplesPerChunk, this.sampleDescIndex });
-    AppMethodBeat.o(128485);
+    AppMethodBeat.o(114266);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mpeg4.boxes.Stsc
  * JD-Core Version:    0.7.0.1
  */

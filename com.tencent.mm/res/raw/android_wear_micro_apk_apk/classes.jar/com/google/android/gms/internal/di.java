@@ -5,13 +5,13 @@ import java.util.List;
 
 public final class di
 {
-  public final dj QM;
-  public final List<Asset> QN;
+  public final dj SB;
+  public final List<Asset> SC;
   
   public di(dj paramdj, List<Asset> paramList)
   {
-    this.QM = paramdj;
-    this.QN = paramList;
+    this.SB = paramdj;
+    this.SC = paramList;
   }
 }
 

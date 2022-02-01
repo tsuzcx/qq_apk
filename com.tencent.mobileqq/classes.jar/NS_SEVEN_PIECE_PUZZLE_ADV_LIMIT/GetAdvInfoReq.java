@@ -4,13 +4,14 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetAdvInfoReq
   extends JceStruct
 {
   static ArrayList<String> cache_vecAdvIdList = new ArrayList();
   public String strUid = "";
-  public ArrayList<String> vecAdvIdList;
+  public ArrayList<String> vecAdvIdList = null;
   
   static
   {
@@ -33,17 +34,19 @@ public final class GetAdvInfoReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecAdvIdList != null) {
-      paramJceOutputStream.write(this.vecAdvIdList, 0);
+    Object localObject = this.vecAdvIdList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.strUid != null) {
-      paramJceOutputStream.write(this.strUid, 1);
+    localObject = this.strUid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.GetAdvInfoReq
  * JD-Core Version:    0.7.0.1
  */

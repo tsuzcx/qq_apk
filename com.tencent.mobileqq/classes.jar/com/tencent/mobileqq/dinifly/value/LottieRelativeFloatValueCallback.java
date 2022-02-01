@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.value;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
 
 public class LottieRelativeFloatValueCallback
@@ -15,10 +15,10 @@ public class LottieRelativeFloatValueCallback
   
   public Float getOffset(LottieFrameInfo<Float> paramLottieFrameInfo)
   {
-    if (this.value == null) {
-      throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
+    if (this.value != null) {
+      return (Float)this.value;
     }
-    return (Float)this.value;
+    throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
   }
   
   public Float getValue(LottieFrameInfo<Float> paramLottieFrameInfo)

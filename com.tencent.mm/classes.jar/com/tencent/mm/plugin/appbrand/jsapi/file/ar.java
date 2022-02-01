@@ -1,44 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.j;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p.a;
 import org.json.JSONObject;
 
-final class ar
-  extends f
+public final class ar
+  extends ab
 {
-  final h.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  private static final int CTRL_INDEX = 396;
+  private static final String NAME = "saveFileSync";
+  
+  public final String a(f paramf, JSONObject paramJSONObject)
   {
-    boolean bool = true;
-    AppMethodBeat.i(102821);
-    paramc = paramc.wX().ze(paramString);
-    switch (ar.1.hMg[paramc.ordinal()])
-    {
-    default: 
-      paramc = new h.a("fail " + paramc.name(), new Object[0]);
-      AppMethodBeat.o(102821);
-      return paramc;
-    case 1: 
-      paramc = new h.a("fail no such file or directory \"%s\"", new Object[] { paramString });
-      AppMethodBeat.o(102821);
-      return paramc;
-    }
-    paramString = new h.a("ok", new Object[0]);
-    if (paramc == j.gZA) {}
-    for (;;)
-    {
-      paramc = paramString.n("result", Boolean.valueOf(bool));
-      AppMethodBeat.o(102821);
-      return paramc;
-      bool = false;
-    }
+    AppMethodBeat.i(128901);
+    paramf = aq.e(paramf, paramJSONObject);
+    paramf = m(paramf.errMsg, paramf.values);
+    AppMethodBeat.o(128901);
+    return paramf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ar
  * JD-Core Version:    0.7.0.1
  */

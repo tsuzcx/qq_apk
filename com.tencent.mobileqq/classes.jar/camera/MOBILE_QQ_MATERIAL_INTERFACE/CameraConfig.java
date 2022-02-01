@@ -26,17 +26,19 @@ public final class CameraConfig
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ExpId != null) {
-      paramJceOutputStream.write(this.ExpId, 0);
+    String str = this.ExpId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.ConfigContent != null) {
-      paramJceOutputStream.write(this.ConfigContent, 1);
+    str = this.ConfigContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.CameraConfig
  * JD-Core Version:    0.7.0.1
  */

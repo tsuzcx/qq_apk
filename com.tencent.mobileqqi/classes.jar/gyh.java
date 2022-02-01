@@ -1,36 +1,50 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
-import com.tencent.tencentmap.mapsdk.map.Projection;
+import android.os.Handler;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
+import java.util.Observable;
+import java.util.Observer;
 
 public class gyh
-  extends Overlay
+  implements Observer
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private GeoPoint jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint;
+  public gyh(AvatarWallAdapter paramAvatarWallAdapter) {}
   
-  public gyh(Bitmap paramBitmap, GeoPoint paramGeoPoint)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = paramGeoPoint;
-  }
-  
-  public void draw(Canvas paramCanvas, MapView paramMapView)
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint != null))
+    if (paramObject == null) {}
+    label4:
+    do
     {
-      Point localPoint = paramMapView.getProjection().toPixels(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint, null);
-      localPoint.x -= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      localPoint.y -= this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      Paint localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localPoint.x, localPoint.y, localPaint);
-    }
-    super.draw(paramCanvas, paramMapView);
+      int i;
+      do
+      {
+        do
+        {
+          break label4;
+          do
+          {
+            return;
+          } while (!(paramObject instanceof TroopUploadingThread.UploadState));
+          i = this.a.b - this.a.j;
+        } while (i >= 8);
+        paramObservable = (TroopUploadingThread.UploadState)paramObject;
+        if (paramObservable.a == 0)
+        {
+          this.a.a(paramObservable.b, i);
+          return;
+        }
+        this.a.a.post(new gyi(this, paramObject));
+      } while ((paramObservable.a != 1) || (paramObservable.c < 0));
+      paramObject = (AvatarWallAdapter.AvatarInfo)this.a.getItem(i);
+    } while ((paramObject == null) || (paramObject.a == null));
+    paramObject = paramObject.a;
+    String str = AbsDownloader.d(AvatarTroopUtil.b(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.g, 1)));
+    this.a.a(paramObject, str);
+    paramObservable = AbsDownloader.d(AvatarTroopUtil.a(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.g, 1)));
+    this.a.a(paramObject, paramObservable);
   }
 }
 

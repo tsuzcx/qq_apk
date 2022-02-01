@@ -1,76 +1,41 @@
 package com.tencent.mm.plugin.emojicapture.b;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/config/EmojiCameraElementConfig$CameraPreviewConfig;", "", "resolution", "", "useCpuCrop", "", "previewSize", "stickerSampleSize", "(IZII)V", "getPreviewSize", "()I", "setPreviewSize", "(I)V", "getResolution", "setResolution", "getStickerSampleSize", "setStickerSampleSize", "getUseCpuCrop", "()Z", "setUseCpuCrop", "(Z)V", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/config/EmojiCameraElementConfig$CameraPreviewConfig;", "", "resolution", "", "useCpuCrop", "", "previewSize", "stickerSampleSize", "useCameraApi2", "(IZIIZ)V", "getPreviewSize", "()I", "setPreviewSize", "(I)V", "getResolution", "setResolution", "getStickerSampleSize", "setStickerSampleSize", "getUseCameraApi2", "()Z", "setUseCameraApi2", "(Z)V", "getUseCpuCrop", "setUseCpuCrop", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$a
 {
-  public boolean eZM = false;
-  public int ltb = 1080;
-  public int ltc = 640;
-  public int ltd = 1;
+  public int mNl = 1080;
+  public boolean nFT = false;
+  public int ygw = 640;
+  int ygx = 1;
+  private boolean ygy = false;
   
   public final boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this != paramObject)
+    if (this == paramObject) {}
+    do
     {
-      bool1 = bool2;
+      return true;
       if (!(paramObject instanceof a)) {
-        break label105;
+        return false;
       }
       paramObject = (a)paramObject;
-      if (this.ltb != paramObject.ltb) {
-        break label107;
+      if (this.mNl != paramObject.mNl) {
+        return false;
       }
-      i = 1;
-      bool1 = bool2;
-      if (i == 0) {
-        break label105;
+      if (this.nFT != paramObject.nFT) {
+        return false;
       }
-      if (this.eZM != paramObject.eZM) {
-        break label112;
+      if (this.ygw != paramObject.ygw) {
+        return false;
       }
-      i = 1;
-      label56:
-      bool1 = bool2;
-      if (i == 0) {
-        break label105;
+      if (this.ygx != paramObject.ygx) {
+        return false;
       }
-      if (this.ltc != paramObject.ltc) {
-        break label117;
-      }
-      i = 1;
-      label76:
-      bool1 = bool2;
-      if (i == 0) {
-        break label105;
-      }
-      if (this.ltd != paramObject.ltd) {
-        break label122;
-      }
-    }
-    label105:
-    label107:
-    label112:
-    label117:
-    label122:
-    for (int i = 1;; i = 0)
-    {
-      bool1 = bool2;
-      if (i != 0) {
-        bool1 = true;
-      }
-      return bool1;
-      i = 0;
-      break;
-      i = 0;
-      break label56;
-      i = 0;
-      break label76;
-    }
+    } while (this.ygy == paramObject.ygy);
+    return false;
   }
   
   public final int hashCode()
@@ -80,15 +45,15 @@ public final class a$a
   
   public final String toString()
   {
-    AppMethodBeat.i(2569);
-    String str = "CameraPreviewConfig(resolution=" + this.ltb + ", useCpuCrop=" + this.eZM + ", previewSize=" + this.ltc + ", stickerSampleSize=" + this.ltd + ")";
-    AppMethodBeat.o(2569);
+    AppMethodBeat.i(129);
+    String str = "CameraPreviewConfig(resolution=" + this.mNl + ", useCpuCrop=" + this.nFT + ", previewSize=" + this.ygw + ", stickerSampleSize=" + this.ygx + ", useCameraApi2=" + this.ygy + ')';
+    AppMethodBeat.o(129);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.b.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public final class zzdc
   
   public zzdc(DataItem paramDataItem)
   {
-    AppMethodBeat.i(71191);
+    AppMethodBeat.i(101174);
     this.uri = paramDataItem.getUri();
     this.data = paramDataItem.getData();
     HashMap localHashMap = new HashMap();
@@ -34,7 +34,7 @@ public final class zzdc
       }
     }
     this.zzdo = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(71191);
+    AppMethodBeat.o(101174);
   }
   
   public final Map<String, DataItemAsset> getAssets()
@@ -59,15 +59,15 @@ public final class zzdc
   
   public final DataItem setData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(71192);
+    AppMethodBeat.i(101175);
     paramArrayOfByte = new UnsupportedOperationException();
-    AppMethodBeat.o(71192);
+    AppMethodBeat.o(101175);
     throw paramArrayOfByte;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(71193);
+    AppMethodBeat.i(101176);
     boolean bool = Log.isLoggable("DataItem", 3);
     StringBuilder localStringBuilder = new StringBuilder("DataItemEntity{ ");
     Object localObject1 = String.valueOf(this.uri);
@@ -96,13 +96,13 @@ public final class zzdc
     label334:
     localStringBuilder.append(" }");
     localObject1 = localStringBuilder.toString();
-    AppMethodBeat.o(71193);
+    AppMethodBeat.o(101176);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzdc
  * JD-Core Version:    0.7.0.1
  */

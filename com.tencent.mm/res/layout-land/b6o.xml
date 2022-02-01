@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextureView android:id="@id/fr7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fr8" android:background="@raw/shadow_up" android:paddingTop="54.0dip" android:paddingBottom="54.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/fr0" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginStart="@dimen/cp" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/al2" android:id="@id/fr9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/fr1" android:background="@raw/shadow_down" android:paddingBottom="56.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar android:id="@id/fr3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+    </RelativeLayout>
+</RelativeLayout>

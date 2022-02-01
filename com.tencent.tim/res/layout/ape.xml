@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqstory.widget.IgnoreParentRelativeLayout android:orientation="vertical" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/hvj" android:background="@drawable/ehm" android:layout_width="238.0dip" android:layout_height="84.0dip">
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ff212226" android:textColorHint="#ffbbbbbb" android:id="@id/k_t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginTop="23.0dip" android:hint="@string/qe1" android:singleLine="true" />
+        <dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar android:id="@id/hvn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" app:enableRate="true" app:rating="0" app:starEmptyDrawable="@drawable/ehl" app:starFillDrawable="@drawable/ehk" app:starImageHeight="37.0dip" app:starImageMarginRight="4.0dip" app:starImagePadding="0.0dip" app:starImageWidth="37.0dip" app:starNum="5" />
+    </LinearLayout>
+</com.tencent.biz.qqstory.widget.IgnoreParentRelativeLayout>

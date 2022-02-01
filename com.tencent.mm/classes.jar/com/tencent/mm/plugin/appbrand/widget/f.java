@@ -1,55 +1,86 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
+import android.content.Context;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.az;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.c.a;
+import com.tencent.mm.plugin.appbrand.widget.j.a;
 
-public final class f
-  extends az
+public class f
+  extends TextView
+  implements c.a, com.tencent.mm.plugin.appbrand.jsapi.base.f
 {
-  public static c.a fkk;
+  private a rTm;
+  private boolean tfE;
   
-  static
+  public f(Context paramContext)
   {
-    AppMethodBeat.i(70649);
-    c.a locala = new c.a();
-    locala.yrK = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "id";
-    locala.yrM.put("id", "TEXT");
-    localStringBuilder.append(" id TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "cacheKey";
-    locala.yrM.put("cacheKey", "TEXT");
-    localStringBuilder.append(" cacheKey TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "appId";
-    locala.yrM.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "data";
-    locala.yrM.put("data", "TEXT");
-    localStringBuilder.append(" data TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "interval";
-    locala.yrM.put("interval", "INTEGER");
-    localStringBuilder.append(" interval INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "updateTime";
-    locala.yrM.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    fkk = locala;
-    AppMethodBeat.o(70649);
+    super(paramContext);
+    AppMethodBeat.i(137936);
+    super.setIncludeFontPadding(false);
+    super.setLineSpacing(0.0F, 1.0F);
+    super.setSpannableFactory(new Spannable.Factory()
+    {
+      public final Spannable newSpannable(CharSequence paramAnonymousCharSequence)
+      {
+        AppMethodBeat.i(137935);
+        paramAnonymousCharSequence = super.newSpannable(paramAnonymousCharSequence);
+        if ((f.a(f.this) != null) && (!TextUtils.isEmpty(paramAnonymousCharSequence))) {
+          paramAnonymousCharSequence.setSpan(f.a(f.this), 0, paramAnonymousCharSequence.length(), 18);
+        }
+        AppMethodBeat.o(137935);
+        return paramAnonymousCharSequence;
+      }
+    });
+    AppMethodBeat.o(137936);
   }
   
-  public final c.a getDBInfo()
+  public final boolean cqz()
   {
-    return fkk;
+    return this.tfE;
+  }
+  
+  public void setFakeBoldText(boolean paramBoolean)
+  {
+    AppMethodBeat.i(323939);
+    getPaint().setFakeBoldText(paramBoolean);
+    AppMethodBeat.o(323939);
+  }
+  
+  public void setInterceptEvent(boolean paramBoolean)
+  {
+    this.tfE = paramBoolean;
+  }
+  
+  public void setLineHeight(int paramInt)
+  {
+    AppMethodBeat.i(137937);
+    if (this.rTm == null) {
+      this.rTm = new a(paramInt, 17);
+    }
+    if (!this.rTm.cb(paramInt))
+    {
+      AppMethodBeat.o(137937);
+      return;
+    }
+    invalidate();
+    AppMethodBeat.o(137937);
+  }
+  
+  public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
+  {
+    AppMethodBeat.i(137938);
+    TextView.BufferType localBufferType = paramBufferType;
+    if (paramBufferType == TextView.BufferType.NORMAL) {
+      localBufferType = TextView.BufferType.SPANNABLE;
+    }
+    super.setText(paramCharSequence, localBufferType);
+    AppMethodBeat.o(137938);
   }
 }
 

@@ -2,110 +2,141 @@ package com.tencent.mm.plugin.sns;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.sns.b.i;
-import com.tencent.mm.plugin.sns.b.m;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.autogen.a.dc;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.y;
+import com.tencent.mm.plugin.sns.c.l;
+import com.tencent.mm.plugin.sns.c.p;
+import com.tencent.mm.plugin.sns.c.r;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.plugin.sns.ui.album.SnsAlbumUI;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.vfs.af;
 
 public class PluginSns
-  extends f
-  implements com.tencent.mm.plugin.sns.b.b
+  extends com.tencent.mm.kernel.b.f
+  implements com.tencent.mm.plugin.sns.c.c
 {
-  l qXu;
-  a qXv;
-  o qXw;
-  com.tencent.mm.plugin.sns.a.a qXx;
+  c PJV;
+  a PJW;
+  d PJX;
+  com.tencent.mm.plugin.sns.ad.b PJY;
+  com.tencent.mm.plugin.sns.ad.c PJZ;
+  private IListener PKa;
   
   public PluginSns()
   {
-    AppMethodBeat.i(35613);
-    this.qXu = new l();
-    this.qXv = new a();
-    this.qXw = new o();
-    this.qXx = new com.tencent.mm.plugin.sns.a.a();
-    AppMethodBeat.o(35613);
+    AppMethodBeat.i(94896);
+    this.PJV = new c();
+    this.PJW = new a();
+    this.PJX = new d();
+    this.PJY = new com.tencent.mm.plugin.sns.ad.b();
+    this.PJZ = new com.tencent.mm.plugin.sns.ad.c();
+    this.PKa = new IListener(com.tencent.mm.app.f.hfK) {};
+    AppMethodBeat.o(94896);
   }
   
-  public void configure(com.tencent.mm.kernel.b.g paramg)
+  public void configure(g paramg)
   {
-    AppMethodBeat.i(35615);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.b(i.class, this.qXu);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.sns.b.c.class, this.qXx);
-    com.tencent.mm.plugin.sns.a.a locala = this.qXx;
-    locala.a(new com.tencent.mm.plugin.sns.a.a.e());
-    locala.a(new com.tencent.mm.plugin.sns.a.a.d());
-    locala.a(new com.tencent.mm.plugin.sns.a.a.b());
-    locala.a(new com.tencent.mm.plugin.sns.a.a.c());
-    if (paramg.SD())
+    AppMethodBeat.i(94898);
+    h.baF();
+    h.b(l.class, this.PJV);
+    h.baF();
+    h.b(com.tencent.mm.plugin.sns.c.d.class, this.PJY);
+    h.baF();
+    h.b(com.tencent.mm.plugin.sns.c.e.class, this.PJZ);
+    com.tencent.mm.plugin.sns.ad.b localb = this.PJY;
+    localb.a(new com.tencent.mm.plugin.sns.ad.e.e());
+    localb.a(new com.tencent.mm.plugin.sns.ad.e.d());
+    localb.a(new com.tencent.mm.plugin.sns.ad.e.b());
+    localb.a(new com.tencent.mm.plugin.sns.ad.e.c());
+    if (paramg.bbA())
     {
-      ab.i("MicroMsg.PluginSns", "PluginSns configure");
-      pin(new q(ag.class));
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.sns.b.a.class, this.qXv);
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.b(m.class, this.qXw);
+      Log.i("MicroMsg.PluginSns", "PluginSns configure");
+      af.qt("sns", "sns");
+      af.a("sns_ad_landingpages", "sns_ad_landingpages", 2592000000L, 101);
+      pin(new y(al.class));
+      h.baF();
+      h.b(com.tencent.mm.plugin.sns.c.a.class, this.PJW);
+      h.baF();
+      h.b(p.class, this.PJX);
     }
-    AppMethodBeat.o(35615);
+    AppMethodBeat.o(94898);
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(35614);
-    dependsOn(com.tencent.mm.plugin.emoji.b.d.class);
+    AppMethodBeat.i(94897);
+    dependsOn(com.tencent.mm.plugin.emoji.c.d.class);
     dependsOn(com.tencent.mm.plugin.normsg.a.class);
-    AppMethodBeat.o(35614);
+    AppMethodBeat.o(94897);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
-    AppMethodBeat.i(35616);
-    com.tencent.mm.bq.c.anb("sns");
-    AppMethodBeat.o(35616);
+    AppMethodBeat.i(94899);
+    com.tencent.mm.br.b.bsa("sns");
+    this.PKa.alive();
+    AppMethodBeat.o(94899);
   }
   
   public String getAccSnsPath()
   {
-    AppMethodBeat.i(35617);
-    String str = com.tencent.mm.kernel.g.RL().eHR + "sns/";
-    AppMethodBeat.o(35617);
+    AppMethodBeat.i(179063);
+    String str = h.baE().mCJ + "sns/";
+    AppMethodBeat.o(179063);
     return str;
   }
   
   public String getAccSnsTmpPath()
   {
-    AppMethodBeat.i(35618);
-    String str = com.tencent.mm.kernel.g.RL().eHR + "sns/temp/";
-    AppMethodBeat.o(35618);
+    AppMethodBeat.i(179064);
+    String str = h.baE().mCJ + "sns/temp/";
+    AppMethodBeat.o(179064);
     return str;
   }
   
   public String getSnsAdPath()
   {
-    AppMethodBeat.i(145237);
-    String str = com.tencent.mm.loader.j.b.eQz + "sns_ad/";
-    AppMethodBeat.o(145237);
+    AppMethodBeat.i(179065);
+    String str = h.baE().mCJ + "sns/sns_ad//";
+    AppMethodBeat.o(179065);
     return str;
+  }
+  
+  public r getUIManager()
+  {
+    AppMethodBeat.i(94901);
+    e locale = e.gZq();
+    AppMethodBeat.o(94901);
+    return locale;
   }
   
   public MMFragment instantiateAlbumFragment(Context paramContext, Bundle paramBundle)
   {
-    AppMethodBeat.i(35619);
+    AppMethodBeat.i(94900);
     paramContext = (MMFragment)Fragment.instantiate(paramContext, SnsAlbumUI.class.getName(), paramBundle);
-    AppMethodBeat.o(35619);
+    AppMethodBeat.o(94900);
     return paramContext;
+  }
+  
+  public void uninstalled()
+  {
+    AppMethodBeat.i(306302);
+    super.uninstalled();
+    this.PKa.dead();
+    AppMethodBeat.o(306302);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.PluginSns
  * JD-Core Version:    0.7.0.1
  */

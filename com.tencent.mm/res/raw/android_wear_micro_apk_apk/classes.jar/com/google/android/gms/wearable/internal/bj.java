@@ -5,13 +5,13 @@ import com.google.android.gms.common.api.o;
 
 public final class bj
 {
-  public static Status bF(int paramInt)
+  public static Status ca(int paramInt)
   {
     String str;
     switch (paramInt)
     {
     default: 
-      str = o.bc(paramInt);
+      str = o.bw(paramInt);
     }
     for (;;)
     {

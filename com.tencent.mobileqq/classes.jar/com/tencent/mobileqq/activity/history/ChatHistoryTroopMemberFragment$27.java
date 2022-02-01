@@ -9,10 +9,11 @@ class ChatHistoryTroopMemberFragment$27
   
   public void run()
   {
-    if ((this.this$0.d == 1) || (this.this$0.d == 11) || (this.this$0.d == 16))
+    if ((this.this$0.az == 1) || (this.this$0.az == 11) || (this.this$0.az == 16))
     {
-      Object[] arrayOfObject = this.this$0.a(this.this$0.c);
-      this.this$0.b.sendMessage(this.this$0.b.obtainMessage(1, arrayOfObject));
+      Object localObject = this.this$0;
+      localObject = ((ChatHistoryTroopMemberFragment)localObject).f(((ChatHistoryTroopMemberFragment)localObject).w);
+      this.this$0.bn.sendMessage(this.this$0.bn.obtainMessage(1, localObject));
     }
   }
 }

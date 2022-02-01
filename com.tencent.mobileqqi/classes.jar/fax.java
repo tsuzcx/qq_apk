@@ -1,28 +1,27 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
+import wifiphoto.WifiPhotoDataCenter;
+import wifiphoto.WifiPhotoStatusMgr;
 
 public class fax
-  extends MessageObserver
+  extends TimerTask
 {
   public fax(DataLineHandler paramDataLineHandler) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == 1) {
-      if (this.a.b())
-      {
-        this.a.a(true);
-        DataLineHandler.a(this.a, MessageCache.a());
-        this.a.a.a().f();
+    if (QLog.isColorLevel()) {
+      QLog.d("wifiphoto", 2, "wifiphoto heart beat check");
+    }
+    long l = System.currentTimeMillis();
+    if ((DataLineHandler.a.jdField_a_of_type_WifiphotoWifiPhotoStatusMgr.b()) && (l > DataLineHandler.a.jdField_a_of_type_Long) && (l - DataLineHandler.a.jdField_a_of_type_Long > 45000L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("wifiphoto", 2, "wifiphoto heart beat timer out");
       }
+      this.a.b(false);
     }
-    while (paramInt1 != 0) {
-      return;
-    }
-    this.a.b(false);
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.mp.publicaccount_recommend.BusinessRecommend;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class PublicRecommendAccountInfo
-  extends awge
+  extends Entity
 {
   private static final String TAG = "PublicRecommendAccountInfo";
   public int accountflag = -1;
@@ -23,7 +23,7 @@ public class PublicRecommendAccountInfo
   public int mFilter;
   public String mIconLinkAddr;
   public String mIsVerified;
-  @awhs
+  @unique
   public int mListid;
   public String mPublicaccount;
   public String mPublicdesc;
@@ -84,21 +84,21 @@ public class PublicRecommendAccountInfo
   
   public static List<PublicRecommendAccountInfo> createPublicRecommendAccountInfoList(List<publicaccount_recommend.BusinessRecommend> paramList)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramList != null)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      localObject1 = localObject2;
-      if (paramList.size() > 0)
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      Iterator localIterator = paramList.iterator();
+      for (;;)
       {
-        localObject1 = new ArrayList(paramList.size());
-        paramList = paramList.iterator();
-        while (paramList.hasNext()) {
-          ((List)localObject1).add(createPublicRecommendAccountInfo((publicaccount_recommend.BusinessRecommend)paramList.next()));
+        paramList = localArrayList;
+        if (!localIterator.hasNext()) {
+          break;
         }
+        localArrayList.add(createPublicRecommendAccountInfo((publicaccount_recommend.BusinessRecommend)localIterator.next()));
       }
     }
-    return localObject1;
+    paramList = null;
+    return paramList;
   }
 }
 

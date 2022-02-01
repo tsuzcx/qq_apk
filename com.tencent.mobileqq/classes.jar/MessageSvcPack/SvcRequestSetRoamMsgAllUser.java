@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestSetRoamMsgAllUser
   extends JceStruct
 {
-  public byte cValue;
-  public byte cVerifyType;
-  public long lUin;
-  public short shType;
+  public byte cValue = 0;
+  public byte cVerifyType = 0;
+  public long lUin = 0L;
+  public short shType = 0;
   
   public SvcRequestSetRoamMsgAllUser() {}
   
@@ -40,7 +40,7 @@ public final class SvcRequestSetRoamMsgAllUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestSetRoamMsgAllUser
  * JD-Core Version:    0.7.0.1
  */

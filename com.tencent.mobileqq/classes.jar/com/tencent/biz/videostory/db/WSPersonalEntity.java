@@ -1,27 +1,30 @@
 package com.tencent.biz.videostory.db;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class WSPersonalEntity
-  extends awge
+  extends Entity
 {
-  @awhs
+  @unique
   public String uin;
-  public byte[] weiShiPersonalRsp;
+  public byte[] weiShiPersonalRsp = null;
   
   public void updateWeiShiFeedListEntity(String paramString, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return;
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length == 0) {
+        return;
+      }
+      this.uin = paramString;
+      this.weiShiPersonalRsp = paramArrayOfByte;
     }
-    this.uin = paramString;
-    this.weiShiPersonalRsp = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.db.WSPersonalEntity
  * JD-Core Version:    0.7.0.1
  */

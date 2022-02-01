@@ -1,23 +1,21 @@
-import android.database.ContentObserver;
-import android.os.Handler;
+import android.database.DataSetObserver;
 import com.tencent.widget.XCursorAdapter;
 
 public class hxf
-  extends ContentObserver
+  extends DataSetObserver
 {
-  public hxf(XCursorAdapter paramXCursorAdapter)
+  private hxf(XCursorAdapter paramXCursorAdapter) {}
+  
+  public void onChanged()
   {
-    super(new Handler());
+    this.a.a = true;
+    this.a.notifyDataSetChanged();
   }
   
-  public boolean deliverSelfNotifications()
+  public void onInvalidated()
   {
-    return true;
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    this.a.a();
+    this.a.a = false;
+    this.a.notifyDataSetInvalidated();
   }
 }
 

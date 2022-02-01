@@ -8,7 +8,7 @@ public final class RespDeleteBlackList
   extends JceStruct
 {
   static RespHeader cache_stHeader;
-  public RespHeader stHeader;
+  public RespHeader stHeader = null;
   
   public RespDeleteBlackList() {}
   
@@ -32,7 +32,7 @@ public final class RespDeleteBlackList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.RespDeleteBlackList
  * JD-Core Version:    0.7.0.1
  */

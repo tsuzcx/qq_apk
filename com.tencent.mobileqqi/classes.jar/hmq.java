@@ -1,17 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.downloadnew.DownloadApi;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public final class hmq
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator
 {
-  public hmq(Bundle paramBundle, int paramInt, ApkUpdateDetail paramApkUpdateDetail) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public DownloadInfo a(Parcel paramParcel)
   {
-    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.d = paramParcel.readString();
+    localDownloadInfo.e = paramParcel.readString();
+    localDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.a = paramParcel.readInt();
+    localDownloadInfo.g = paramParcel.readString();
+    localDownloadInfo.h = paramParcel.readString();
+    localDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localDownloadInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
+    localDownloadInfo.j = paramParcel.readInt();
+    localDownloadInfo.jdField_k_of_type_Int = paramParcel.readInt();
+    localDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    if (paramParcel.readByte() != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDownloadInfo.jdField_c_of_type_Boolean = bool;
+      return localDownloadInfo;
+    }
+  }
+  
+  public DownloadInfo[] a(int paramInt)
+  {
+    return new DownloadInfo[paramInt];
   }
 }
 

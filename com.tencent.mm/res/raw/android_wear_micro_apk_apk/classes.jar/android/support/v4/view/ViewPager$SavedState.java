@@ -9,8 +9,8 @@ public class ViewPager$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-  Parcelable md;
-  ClassLoader me;
+  Parcelable nZ;
+  ClassLoader oa;
   int position;
   
   ViewPager$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
@@ -21,8 +21,8 @@ public class ViewPager$SavedState
       localClassLoader = getClass().getClassLoader();
     }
     this.position = paramParcel.readInt();
-    this.md = paramParcel.readParcelable(localClassLoader);
-    this.me = localClassLoader;
+    this.nZ = paramParcel.readParcelable(localClassLoader);
+    this.oa = localClassLoader;
   }
   
   public ViewPager$SavedState(Parcelable paramParcelable)
@@ -39,7 +39,7 @@ public class ViewPager$SavedState
   {
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.position);
-    paramParcel.writeParcelable(this.md, paramInt);
+    paramParcel.writeParcelable(this.nZ, paramInt);
   }
 }
 

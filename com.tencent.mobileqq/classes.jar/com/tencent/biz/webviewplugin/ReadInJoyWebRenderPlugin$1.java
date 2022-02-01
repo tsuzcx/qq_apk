@@ -1,24 +1,23 @@
 package com.tencent.biz.webviewplugin;
 
 import android.text.TextUtils;
-import bejv;
-import zfr;
+import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
 
-public class ReadInJoyWebRenderPlugin$1
+class ReadInJoyWebRenderPlugin$1
   implements Runnable
 {
-  public ReadInJoyWebRenderPlugin$1(zfr paramzfr) {}
+  ReadInJoyWebRenderPlugin$1(ReadInJoyWebRenderPlugin paramReadInJoyWebRenderPlugin) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(zfr.a(this.this$0))) {
-      bejv.a(zfr.a(this.this$0));
+    if (!TextUtils.isEmpty(ReadInJoyWebRenderPlugin.a(this.this$0))) {
+      SwiftOfflineDataUtils.a(ReadInJoyWebRenderPlugin.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.ReadInJoyWebRenderPlugin.1
  * JD-Core Version:    0.7.0.1
  */

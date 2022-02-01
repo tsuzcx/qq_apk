@@ -19,11 +19,16 @@ public class cs
     synchronized (this.ia)
     {
       List localList = bb();
-      if (localList.size() == 0) {}
+      localList.size();
       ??? = localList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((c)((Iterator)???).next()).a(paramIntent);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramIntent;
     }
   }
   
@@ -32,11 +37,16 @@ public class cs
     synchronized (this.ia)
     {
       List localList = bb();
-      if (localList.size() == 0) {}
+      localList.size();
       ??? = localList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((c)((Iterator)???).next()).b(paramIntent);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramIntent;
     }
   }
   
@@ -54,11 +64,16 @@ public class cs
     synchronized (this.ia)
     {
       List localList = bb();
-      if (localList.size() == 0) {}
+      localList.size();
       ??? = localList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((c)((Iterator)???).next()).c(paramIntent);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramIntent;
     }
   }
   
@@ -90,7 +105,7 @@ public class cs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cs
  * JD-Core Version:    0.7.0.1
  */

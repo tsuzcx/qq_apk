@@ -1,67 +1,60 @@
 package com.tencent.biz.qqstory.network.handler;
 
-import alud;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tribe.async.dispatch.Dispatcher;
 import org.json.JSONException;
 import org.json.JSONObject;
-import umc;
-import vdw;
-import vdx;
-import wxj;
 
-public class ReportEvilToXinanHandler$2
+class ReportEvilToXinanHandler$2
   implements Runnable
 {
-  public ReportEvilToXinanHandler$2(vdw paramvdw, String paramString1, boolean paramBoolean, String paramString2, String paramString3, String paramString4) {}
+  ReportEvilToXinanHandler$2(ReportEvilToXinanHandler paramReportEvilToXinanHandler, String paramString1, boolean paramBoolean, String paramString2, String paramString3, String paramString4) {}
   
   public void run()
   {
-    int i = -1;
+    int i;
     try
     {
-      j = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
-      i = j;
+      i = new JSONObject(this.a).getInt("rtn_code");
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        vdx localvdx;
-        localJSONException.printStackTrace();
-        continue;
-        j = 2;
-      }
-      QQToast.a(BaseApplication.getContext(), alud.a(2131713806), 0).a();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label205;
-      }
+      localJSONException.printStackTrace();
+      i = -1;
     }
+    int j;
     if (i == 0)
     {
-      QQToast.a(BaseApplication.getContext(), alud.a(2131713805), 0).a();
-      if (this.jdField_a_of_type_Boolean)
-      {
+      QQToast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131910889), 0).show();
+      if (this.b) {
         j = 1;
-        wxj.a("play_video", "report_suc", j, 0, new String[] { this.b, "", "", this.c });
-        localvdx = new vdx(new ErrorMessage(i, ""), this.c, this.d, this.b);
-        umc.a().dispatch(localvdx);
-        return;
+      } else {
+        j = 2;
       }
+      StoryReportor.a("play_video", "report_suc", j, 0, new String[] { this.c, "", "", this.d });
     }
-    label205:
-    for (int j = 1;; j = 2)
+    else
     {
-      wxj.a("play_video", "report_fail", j, 0, new String[] { this.b, "", "", this.c });
-      break;
+      QQToast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131910890), 0).show();
+      if (this.b) {
+        j = 1;
+      } else {
+        j = 2;
+      }
+      StoryReportor.a("play_video", "report_fail", j, 0, new String[] { this.c, "", "", this.d });
     }
+    ReportEvilToXinanHandler.ReportToXinanEvent localReportToXinanEvent = new ReportEvilToXinanHandler.ReportToXinanEvent(new ErrorMessage(i, ""), this.d, this.e, this.c);
+    StoryDispatcher.a().dispatch(localReportToXinanEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler.2
  * JD-Core Version:    0.7.0.1
  */

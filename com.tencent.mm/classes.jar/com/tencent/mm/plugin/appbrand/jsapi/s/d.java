@@ -1,126 +1,118 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.e;
-import com.tencent.mm.plugin.appbrand.s.l;
-import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.t.a;
+import com.tencent.mm.plugin.appbrand.t.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class d
+  extends c
 {
-  public static void a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(91079);
-    int j = paramViewGroup.getChildCount();
-    int i = paramMotionEvent.getActionIndex();
-    if (paramViewGroup.isMotionEventSplittingEnabled())
-    {
-      i = 1 << paramMotionEvent.getPointerId(i);
-      j -= 1;
-    }
-    for (;;)
-    {
-      if (j < 0) {
-        break label142;
-      }
-      View localView = paramViewGroup.getChildAt(j);
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((AppBrandViewMotionCompat.cG(localView)) && (AppBrandViewMotionCompat.a(paramViewGroup, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
-      {
-        a(paramViewGroup, paramMotionEvent, localView, i);
-        if (((localView instanceof e)) && (((e)localView).aCe()))
-        {
-          AppMethodBeat.o(91079);
-          return;
-          i = -1;
-          break;
-        }
-      }
-      j -= 1;
-    }
-    label142:
-    AppMethodBeat.o(91079);
-  }
+  public static final int CTRL_INDEX = 615;
+  public static final String NAME = "checkNetworkAPIURL";
   
-  public static boolean a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent, View paramView, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(91080);
-    if (paramView == null)
+    AppMethodBeat.i(144185);
+    if (paramJSONObject == null)
     {
-      ab.v("MicroMsg.ViewMotionHelper", "child is null.");
-      AppMethodBeat.o(91080);
-      return false;
+      paramf.callback(paramInt, ZP("fail:data nil"));
+      Log.w("MicroMsg.JsApiCheckNetworkAPIURL", "data is null");
+      AppMethodBeat.o(144185);
+      return;
     }
-    int i = paramMotionEvent.getAction();
-    if (i == 3)
+    HashMap localHashMap = new HashMap();
+    String str = paramJSONObject.optString("api", "");
+    paramJSONObject = paramJSONObject.optString("url", "");
+    if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramJSONObject)))
     {
-      paramMotionEvent.setAction(3);
-      bool = paramView.dispatchTouchEvent(paramMotionEvent);
-      paramMotionEvent.setAction(i);
-      AppMethodBeat.o(91080);
-      return bool;
+      Log.w("MicroMsg.JsApiCheckNetworkAPIURL", "invalid api:%s,url:%s", new Object[] { str, paramJSONObject });
+      localHashMap.put("isValid", Boolean.FALSE);
+      paramf.callback(paramInt, m("fail:api or url invalid", localHashMap));
+      AppMethodBeat.o(144185);
+      return;
     }
-    i = ((Integer)l.a(MotionEvent.class, "getPointerIdBits", paramMotionEvent, new Class[0], new Object[0], Integer.valueOf(0))).intValue();
-    paramInt = i & paramInt;
-    if (paramInt == 0)
+    Object localObject = (a)paramf.aN(a.class);
+    boolean bool;
+    if (str.equalsIgnoreCase("request"))
     {
-      ab.v("MicroMsg.ViewMotionHelper", "newPointerIdBits is 0.");
-      AppMethodBeat.o(91080);
-      return false;
+      bool = i.b(((a)localObject).epU, paramJSONObject, false);
+      localObject = (String)i.aed(paramJSONObject).get("host");
+      if (Util.isNullOrNil((String)localObject)) {
+        break label599;
+      }
+      Log.i("MicroMsg.JsApiCheckNetworkAPIURL", "ipHost:%s", new Object[] { localObject });
     }
-    Object localObject = Boolean.FALSE;
-    boolean bool = ((Boolean)l.a(View.class, "hasIdentityMatrix", paramView, new Class[0], new Object[0], localObject)).booleanValue();
-    if (paramInt == i)
+    label266:
+    label599:
+    for (int i = i.aef((String)localObject);; i = 0)
     {
+      Log.i("MicroMsg.JsApiCheckNetworkAPIURL", "checkRet:%b,ipCheckRet:%d,api:%s,url:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), str, paramJSONObject });
       if (bool)
       {
-        float f1 = paramViewGroup.getScrollX() - paramView.getLeft();
-        float f2 = paramViewGroup.getScrollY() - paramView.getTop();
-        paramMotionEvent.offsetLocation(f1, f2);
-        bool = paramView.dispatchTouchEvent(paramMotionEvent);
-        paramMotionEvent.offsetLocation(-f1, -f2);
-        AppMethodBeat.o(91080);
-        return bool;
+        localHashMap.put("isInDomainList", Boolean.TRUE);
+        switch (i)
+        {
+        }
       }
-      paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      for (;;)
+      {
+        paramf.callback(paramInt, m("ok", localHashMap));
+        AppMethodBeat.o(144185);
+        return;
+        if (str.equalsIgnoreCase("websocket"))
+        {
+          bool = i.b(((a)localObject).epV, paramJSONObject, ((a)localObject).epM);
+          break;
+        }
+        if (str.equalsIgnoreCase("downloadFile"))
+        {
+          bool = i.b(((a)localObject).epX, paramJSONObject, false);
+          break;
+        }
+        if (str.equalsIgnoreCase("uploadFile"))
+        {
+          bool = i.b(((a)localObject).epW, paramJSONObject, false);
+          break;
+        }
+        if (str.equalsIgnoreCase("udp"))
+        {
+          bool = i.b(((a)localObject).epY, paramJSONObject, false);
+          break;
+        }
+        if (str.equalsIgnoreCase("tcp"))
+        {
+          bool = i.b(((a)localObject).epZ, paramJSONObject, false);
+          break;
+        }
+        Log.w("MicroMsg.JsApiCheckNetworkAPIURL", "hy: unknown api: %s", new Object[] { str });
+        localHashMap.put("isValid", Boolean.FALSE);
+        paramf.callback(paramInt, m("fail:unknow api", localHashMap));
+        AppMethodBeat.o(144185);
+        return;
+        localHashMap.put("isInDomainList", Boolean.FALSE);
+        break label266;
+        localHashMap.put("isInLAN", Boolean.FALSE);
+        localHashMap.put("isLocalHost", Boolean.FALSE);
+        continue;
+        localHashMap.put("isInLAN", Boolean.TRUE);
+        localHashMap.put("isLocalHost", Boolean.TRUE);
+        continue;
+        localHashMap.put("isInLAN", Boolean.TRUE);
+        localHashMap.put("isLocalHost", Boolean.FALSE);
+      }
     }
-    for (;;)
-    {
-      paramMotionEvent.offsetLocation(paramViewGroup.getScrollX() - paramView.getLeft(), paramViewGroup.getScrollY() - paramView.getTop());
-      if (!bool) {
-        paramMotionEvent.transform((Matrix)l.a(View.class, "getInverseMatrix", paramView, new Class[0], new Object[0], null));
-      }
-      bool = paramView.dispatchTouchEvent(paramMotionEvent);
-      paramMotionEvent.recycle();
-      AppMethodBeat.o(91080);
-      return bool;
-      localObject = (MotionEvent)l.a("split", paramMotionEvent, new Class[] { Integer.class }, new Object[] { Integer.valueOf(paramInt) });
-      if (localObject == null) {
-        paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      } else {
-        paramMotionEvent = (MotionEvent)localObject;
-      }
-    }
-  }
-  
-  public static d.f cr(View paramView)
-  {
-    AppMethodBeat.i(91078);
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    paramView = new d.f(0, arrayOfInt[0], arrayOfInt[1]);
-    AppMethodBeat.o(91078);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s.d
  * JD-Core Version:    0.7.0.1
  */

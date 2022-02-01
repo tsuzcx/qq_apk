@@ -2,19 +2,22 @@ package com.tencent.neattextview.textview.layout;
 
 import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.neattextview.textview.a.a;
 import java.util.ArrayList;
 
 public class NeatLayout
   extends c
 {
-  private int BbY = 0;
+  private int ahbO = 0;
   
   static
   {
-    AppMethodBeat.i(3257);
-    System.loadLibrary("linebreak");
-    AppMethodBeat.o(3257);
+    AppMethodBeat.i(39759);
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("linebreak");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/neattextview/textview/layout/NeatLayout", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/neattextview/textview/layout/NeatLayout", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    AppMethodBeat.o(39759);
   }
   
   public NeatLayout(CharSequence paramCharSequence, float[] paramArrayOfFloat)
@@ -22,71 +25,89 @@ public class NeatLayout
     super(paramCharSequence, paramArrayOfFloat);
   }
   
-  private native int nComputeBreak(String paramString, float[] paramArrayOfFloat1, float paramFloat1, float paramFloat2, int[] paramArrayOfInt, float[] paramArrayOfFloat2, float paramFloat3, boolean[] paramArrayOfBoolean1, char[] paramArrayOfChar1, float[] paramArrayOfFloat3, char[] paramArrayOfChar2, float[] paramArrayOfFloat4, boolean[] paramArrayOfBoolean2);
+  private native int nComputeBreak(String paramString, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat1, int[] paramArrayOfInt, float[] paramArrayOfFloat3, float paramFloat2, boolean[] paramArrayOfBoolean1, char[] paramArrayOfChar1, float[] paramArrayOfFloat4, char[] paramArrayOfChar2, float[] paramArrayOfFloat5, boolean[] paramArrayOfBoolean2);
   
-  public final void a(TextPaint paramTextPaint, float paramFloat, int paramInt, boolean paramBoolean)
+  public final void a(TextPaint paramTextPaint, float[] paramArrayOfFloat, float paramFloat, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(3256);
-    float f6 = paramTextPaint.getTextSize() / 2.0F;
-    float f2;
-    int i;
+    AppMethodBeat.i(210443);
+    float f6 = Math.round(paramTextPaint.getTextSize() / 2.0F);
+    if (paramBoolean) {}
     float[] arrayOfFloat1;
     boolean[] arrayOfBoolean;
-    int i3;
-    float f1;
-    label110:
-    float f3;
-    if (paramBoolean)
+    for (float f3 = paramTextPaint.getTextSize() / 6.0F;; f3 = 0.0F)
     {
-      f2 = paramTextPaint.getTextSize() / 6.0F;
-      i = this.Bbm.length();
+      i = this.ahaW.length();
       paramTextPaint = new int[i];
       arrayOfFloat1 = new float[i];
       arrayOfBoolean = new boolean[i];
-      i3 = nComputeBreak(this.Bbm, this.Bbo, 0.0F, paramFloat + f6, paramTextPaint, arrayOfFloat1, f2, arrayOfBoolean, a.Bbh, this.Bbr, a.Bbg, this.Bbq, this.BbJ);
-      this.BbY = i3;
-      f1 = 0.0F;
       i = 0;
-      if ((i >= i3) || (i >= paramInt)) {
-        break label157;
+      while (i < paramArrayOfFloat.length)
+      {
+        paramArrayOfFloat[i] += f6;
+        i += 1;
       }
-      f3 = arrayOfFloat1[i];
-      if (f1 >= f3) {
-        break label450;
-      }
-      f1 = f3;
     }
-    label157:
-    label436:
-    label450:
+    int i3 = nComputeBreak(this.ahaW, this.ahaY, paramArrayOfFloat, paramFloat + f6, paramTextPaint, arrayOfFloat1, f3, arrayOfBoolean, com.tencent.neattextview.textview.a.a.ahaR, this.ahbb, com.tencent.neattextview.textview.a.a.ahaQ, this.ahba, this.ahbw);
+    this.ahbO = i3;
+    float f2 = 0.0F;
+    int i = 0;
+    float f5;
+    float f1;
+    float f4;
+    if ((i < i3) && (i < paramInt))
+    {
+      f5 = arrayOfFloat1[i];
+      if (i < paramArrayOfFloat.length) {}
+      for (f1 = paramArrayOfFloat[i];; f1 = paramFloat)
+      {
+        f4 = f2;
+        if (f2 < f5) {
+          f4 = Math.min(f5, f1);
+        }
+        i += 1;
+        f2 = f4;
+        break;
+      }
+    }
+    i = 0;
+    int k = 0;
+    int i2;
+    int n;
+    if ((k < i3) && (k < paramInt))
+    {
+      i2 = paramTextPaint[k];
+      paramBoolean = arrayOfBoolean[k];
+      n = i2 - i;
+      if (k < paramArrayOfFloat.length)
+      {
+        f1 = paramArrayOfFloat[k] - f6;
+        f4 = 0.0F;
+        f5 = f1 - arrayOfFloat1[k];
+        if (f5 <= 0.0F) {
+          break label551;
+        }
+        f5 -= 2.0F;
+      }
+    }
+    label538:
+    label551:
     for (;;)
     {
-      i += 1;
-      break label110;
-      f2 = 0.0F;
-      break;
-      float f5 = Math.min(f1, paramFloat);
-      i = 0;
-      int k = 0;
-      if ((k < i3) && (k < paramInt))
+      int m;
+      if ((f5 < 0.0F) || (Math.abs(f5) - 1.0F <= f6)) {
+        m = 1;
+      }
+      label328:
+      int j;
+      for (;;)
       {
-        int i2 = paramTextPaint[k];
-        paramBoolean = arrayOfBoolean[k];
-        int n = i2 - i;
-        f1 = 0.0F;
-        f3 = paramFloat - arrayOfFloat1[k];
-        int m;
-        if (Math.abs(f3) <= f6) {
-          m = 1;
-        }
-        int j;
-        while (m != 0)
+        if (m != 0)
         {
           j = n;
           if (i2 - 1 >= 0)
           {
             j = n;
-            if (this.Bbn[(i2 - 1)] == '\n') {
+            if (this.ahaX[(i2 - 1)] == '\n') {
               j = n - 1;
             }
           }
@@ -96,58 +117,61 @@ public class NeatLayout
             if (n < i2)
             {
               int i1 = j;
-              if (this.Bbn[n] != '\n')
+              if (this.ahaX[n] != '\n')
               {
                 i1 = j;
-                if (this.Bbo[n] == 0.0F) {
+                if (this.ahaY[n] == 0.0F) {
                   i1 = j - 1;
                 }
               }
               n += 1;
               j = i1;
               continue;
-              m = 0;
+              f1 = paramFloat;
               break;
+              m = 0;
+              break label328;
             }
           }
-          f1 = f3 / (Math.max(2, j) - 1);
-        }
-        label360:
-        char[] arrayOfChar;
-        float[] arrayOfFloat2;
-        if (m != 0)
-        {
-          f3 = paramFloat;
-          arrayOfChar = this.Bbn;
-          arrayOfFloat2 = this.Bbo;
-          j = this.Bbt.size();
-          if (m == 0) {
-            break label436;
-          }
-        }
-        for (float f4 = paramFloat;; f4 = f5)
-        {
-          a(arrayOfChar, i, i2, f3, arrayOfFloat2, j, f1, paramBoolean, f2, f4);
-          k += 1;
-          i = i2;
-          break;
-          f3 = arrayOfFloat1[k];
-          break label360;
+          f4 = f5 / (Math.max(2, j) - 1);
         }
       }
-      AppMethodBeat.o(3256);
+      label465:
+      char[] arrayOfChar;
+      float[] arrayOfFloat2;
+      if (m != 0)
+      {
+        f5 = f1;
+        arrayOfChar = this.ahaX;
+        arrayOfFloat2 = this.ahaY;
+        j = this.ahbd.size();
+        if (m == 0) {
+          break label538;
+        }
+      }
+      for (;;)
+      {
+        a(arrayOfChar, i, i2, f5, arrayOfFloat2, j, f4, paramBoolean, f3, f1);
+        k += 1;
+        i = i2;
+        break;
+        f5 = arrayOfFloat1[k];
+        break label465;
+        f1 = f2;
+      }
+      AppMethodBeat.o(210443);
       return;
     }
   }
   
-  public final int dTo()
+  public final int jQH()
   {
-    return this.BbY;
+    return this.ahbO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.NeatLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,132 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.o;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.am.p;
+import com.tencent.mm.k.f;
+import com.tencent.mm.k.i;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.p.a;
-import com.tencent.mm.protocal.p.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.List;
-import junit.framework.Assert;
+import com.tencent.mm.network.g;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.m.a;
+import com.tencent.mm.protocal.m.b;
+import com.tencent.mm.protocal.protobuf.mk;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.systemservicecache.NetworkCache;
 
 public final class h
-  extends m
-  implements k
+  extends p
+  implements com.tencent.mm.network.m
 {
-  private f callback;
-  public byte[] content;
-  public String fOJ;
-  private q ftU;
+  private com.tencent.mm.am.h callback;
+  private com.tencent.mm.network.s ouH;
   
-  public h(l.e parame)
+  private h(boolean paramBoolean)
   {
-    AppMethodBeat.i(16569);
-    this.fOJ = "";
-    parame = (p.b)parame;
-    this.fOJ = parame.fOJ;
-    this.content = parame.content;
-    AppMethodBeat.o(16569);
+    AppMethodBeat.i(20601);
+    this.ouH = new h.a();
+    m.a locala = (m.a)this.ouH.getReqObj();
+    locala.netType = com.tencent.mm.protocal.m.getNetType(NetworkCache.INSTANCE.getActiveNetworkInfoFromCache(MMApplicationContext.getContext()));
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      locala.YxZ = i;
+      AppMethodBeat.o(20601);
+      return;
+    }
   }
   
-  public h(List<String> paramList, byte[] paramArrayOfByte)
+  private static boolean bLS()
   {
-    AppMethodBeat.i(16568);
-    this.fOJ = "";
-    if ((paramList.size() > 0) && (paramArrayOfByte != null)) {}
-    int j;
-    String str;
-    for (boolean bool1 = true;; bool1 = false)
+    AppMethodBeat.i(20600);
+    int i;
+    boolean bool;
+    if (z.pCU != -1)
     {
-      Assert.assertTrue(bool1);
-      j = (int)(System.currentTimeMillis() / 1000L);
-      str = (String)paramList.get(0);
-      int i = 1;
-      while (i < paramList.size())
+      i = z.pCU;
+      bool = CrashReportFactory.foreground;
+      Log.i("MicroMsg.NetSceneBgFg", "somr DynamicConfig checkBit:%d TestMuteRoomEnable:%d muteRoomDisable:%d fg:%b", new Object[] { Integer.valueOf(1), Integer.valueOf(z.pCU), Integer.valueOf(i), Boolean.valueOf(bool) });
+      if ((i & 0x1) == 0) {
+        break label112;
+      }
+      bool = true;
+    }
+    label112:
+    for (;;)
+    {
+      for (;;)
       {
-        str = str + "," + ((String)paramList.get(i)).trim();
-        i += 1;
+        AppMethodBeat.o(20600);
+        return bool;
+        try
+        {
+          i = Util.getInt(i.aRC().getValue("MuteRoomDisable"), 0);
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("MicroMsg.NetSceneBgFg", localException, "", new Object[0]);
+          i = 0;
+        }
       }
-    }
-    this.ftU = new h.a();
-    paramList = (p.a)this.ftU.getReqObj();
-    paramList.cut = 111;
-    paramList.bsY = 0;
-    paramList.fQD = j;
-    if (str != null)
-    {
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      paramList.wiC = str;
-      if (paramArrayOfByte == null) {
-        break label269;
-      }
-    }
-    label269:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      Assert.assertTrue(bool1);
-      paramList.wiD = paramArrayOfByte;
-      ab.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: cmdId=111 seq=".concat(String.valueOf(j)));
-      ab.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: lstReceiver=" + str + " status = " + o.r(paramArrayOfByte, 0));
-      AppMethodBeat.o(16568);
-      return;
-      bool1 = false;
       break;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public static void hl(boolean paramBoolean)
   {
-    AppMethodBeat.i(16570);
-    this.callback = paramf;
-    int i = dispatch(parame, this.ftU, this);
-    AppMethodBeat.o(16570);
+    AppMethodBeat.i(20599);
+    Log.i("MicroMsg.NetSceneBgFg", "summerbgfg setBgFgForMuteRoom isFg[%s], accHasReady[%s] stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bh.baz()), Util.getStack() });
+    if (!bh.baz())
+    {
+      AppMethodBeat.o(20599);
+      return;
+    }
+    if ((bh.aZW() == null) || (bh.aZW().oun == null) || (bh.aZW().oun.bGg() == null))
+    {
+      Log.i("MicroMsg.NetSceneBgFg", "summerbgfg setBgFgForMuteRoom push not rready");
+      AppMethodBeat.o(20599);
+      return;
+    }
+    bh.aZW().oun.bGg().setForeground(paramBoolean);
+    if (paramBoolean)
+    {
+      bh.aZW().a(new h(true), 0);
+      AppMethodBeat.o(20599);
+      return;
+    }
+    h localh = new h(bLS());
+    bh.aZW().a(localh, 0);
+    AppMethodBeat.o(20599);
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(20602);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.ouH, this);
+    AppMethodBeat.o(20602);
     return i;
   }
   
   public final int getType()
   {
-    return 10;
+    return 0;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(16571);
+    AppMethodBeat.i(20603);
+    Log.d("MicroMsg.NetSceneBgFg", " ret[%d]", new Object[] { Integer.valueOf(((m.b)params.getRespObj()).Yya.hAV) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(16571);
-  }
-  
-  public final boolean uniqueInNetsceneQueue()
-  {
-    return true;
+    AppMethodBeat.o(20603);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.h
  * JD-Core Version:    0.7.0.1
  */

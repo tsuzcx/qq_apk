@@ -1,147 +1,117 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
-import com.tencent.mm.sdk.e.h;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
-public abstract interface bd
-  extends h
+public final class bd
+  extends com.tencent.mm.bx.a
 {
-  public abstract int F(String paramString, byte[] paramArrayOfByte);
-  
-  public abstract void V(ad paramad);
-  
-  public abstract boolean W(ad paramad);
-  
-  public abstract boolean X(ad paramad);
-  
-  public abstract boolean Y(ad paramad);
-  
-  public abstract int Z(ad paramad);
-  
-  public abstract Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract Cursor a(List<String> paramList1, String paramString, List<String> paramList2);
-  
-  public abstract Cursor a(String[] paramArrayOfString, String paramString1, String paramString2, List<String> paramList1, List<String> paramList2);
-  
-  public abstract Cursor a(String[] paramArrayOfString, String paramString, List<String> paramList);
-  
-  public abstract void a(a parama);
-  
-  public abstract String aeK();
-  
-  public abstract byte[] arA(String paramString);
-  
-  public abstract int arB(String paramString);
-  
-  public abstract int arC(String paramString);
-  
-  public abstract String arD(String paramString);
-  
-  public abstract ad arq(String paramString);
-  
-  public abstract boolean arr(String paramString);
-  
-  public abstract ad ars(String paramString);
-  
-  public abstract Cursor art(String paramString);
-  
-  public abstract ad aru(String paramString);
-  
-  public abstract ad arv(String paramString);
-  
-  public abstract ad arw(String paramString);
-  
-  public abstract long arx(String paramString);
-  
-  public abstract boolean ary(String paramString);
-  
-  public abstract boolean arz(String paramString);
-  
-  public abstract int b(String paramString, ad paramad);
-  
-  public abstract int b(String[] paramArrayOfString1, String... paramVarArgs);
-  
-  public abstract Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract Cursor b(List<String> paramList1, String paramString, List<String> paramList2);
-  
-  public abstract void b(a parama);
-  
-  public abstract int[] b(String paramString1, String paramString2, String[] paramArrayOfString, List<String> paramList);
-  
-  public abstract int c(String paramString, ad paramad);
-  
-  public abstract int c(String[] paramArrayOfString1, String... paramVarArgs);
-  
-  public abstract Cursor c(String paramString1, String paramString2, List<String> paramList);
-  
-  public abstract Cursor c(List<String> paramList1, String paramString, List<String> paramList2);
-  
-  public abstract int[] c(String paramString1, String paramString2, String paramString3, List<String> paramList);
-  
-  public abstract int[] c(String paramString1, String paramString2, String[] paramArrayOfString, List<String> paramList);
-  
-  public abstract Cursor d(String paramString1, String paramString2, List<String> paramList);
-  
-  public abstract void d(String paramString, ad paramad);
-  
-  public abstract int[] d(String paramString1, String paramString2, String paramString3, List<String> paramList);
-  
-  public abstract List<String> dwK();
-  
-  public abstract List<String> dwL();
-  
-  public abstract Cursor dwM();
-  
-  public abstract Cursor dwN();
-  
-  public abstract Cursor dwO();
-  
-  public abstract Cursor dwP();
-  
-  public abstract int dwQ();
-  
-  public abstract Cursor dwZ();
-  
-  public abstract Cursor dxa();
-  
-  public abstract Cursor dxb();
-  
-  public abstract Cursor e(String paramString1, String paramString2, List<String> paramList);
-  
-  public abstract Cursor eC(List<String> paramList);
-  
-  public abstract Cursor eD(List<String> paramList);
-  
-  public abstract Cursor eE(List<String> paramList);
-  
-  public abstract Cursor eF(List<String> paramList);
-  
-  public abstract Cursor eI(List<String> paramList);
-  
-  public abstract Cursor eJ(List<String> paramList);
-  
-  public abstract Cursor eK(List<String> paramList);
-  
-  public abstract Cursor eL(List<String> paramList);
-  
-  public abstract List<String> eM(List<String> paramList);
-  
-  public abstract int[] eN(List<String> paramList);
-  
-  public abstract int[] eO(List<String> paramList);
-  
-  public abstract String f(String paramString1, String paramString2, List<String> paramList);
-  
-  public abstract Cursor m(List<String> paramList, boolean paramBoolean);
-  
-  public abstract ad on(long paramLong);
-  
-  public static abstract interface a
+  public int adiE;
+  public LinkedList<Integer> adiF;
+  public LinkedList<Integer> adiG;
+  public LinkedList<Integer> adiH;
+  public LinkedList<Long> adiI;
+  public LinkedList<Long> adiJ;
+  public LinkedList<Long> adiK;
+  
+  public bd()
   {
-    public abstract void a(bd parambd, ad paramad);
+    AppMethodBeat.i(43195);
+    this.adiF = new LinkedList();
+    this.adiG = new LinkedList();
+    this.adiH = new LinkedList();
+    this.adiI = new LinkedList();
+    this.adiJ = new LinkedList();
+    this.adiK = new LinkedList();
+    AppMethodBeat.o(43195);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(43196);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.adiE);
+      paramVarArgs.e(2, 2, this.adiF);
+      paramVarArgs.e(3, 2, this.adiG);
+      paramVarArgs.e(4, 2, this.adiH);
+      paramVarArgs.e(5, 3, this.adiI);
+      paramVarArgs.e(6, 3, this.adiJ);
+      paramVarArgs.e(7, 3, this.adiK);
+      AppMethodBeat.o(43196);
+      return 0;
+    }
+    if (paramInt == 1)
+    {
+      paramInt = i.a.a.b.b.a.cJ(1, this.adiE);
+      int i = i.a.a.a.c(2, 2, this.adiF);
+      int j = i.a.a.a.c(3, 2, this.adiG);
+      int k = i.a.a.a.c(4, 2, this.adiH);
+      int m = i.a.a.a.c(5, 3, this.adiI);
+      int n = i.a.a.a.c(6, 3, this.adiJ);
+      int i1 = i.a.a.a.c(7, 3, this.adiK);
+      AppMethodBeat.o(43196);
+      return paramInt + 0 + i + j + k + m + n + i1;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.adiF.clear();
+      this.adiG.clear();
+      this.adiH.clear();
+      this.adiI.clear();
+      this.adiJ.clear();
+      this.adiK.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(43196);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      bd localbd = (bd)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(43196);
+        return -1;
+      case 1: 
+        localbd.adiE = locala.ajGk.aar();
+        AppMethodBeat.o(43196);
+        return 0;
+      case 2: 
+        localbd.adiF.add(Integer.valueOf(locala.ajGk.aar()));
+        AppMethodBeat.o(43196);
+        return 0;
+      case 3: 
+        localbd.adiG.add(Integer.valueOf(locala.ajGk.aar()));
+        AppMethodBeat.o(43196);
+        return 0;
+      case 4: 
+        localbd.adiH.add(Integer.valueOf(locala.ajGk.aar()));
+        AppMethodBeat.o(43196);
+        return 0;
+      case 5: 
+        localbd.adiI.add(Long.valueOf(locala.ajGk.aaw()));
+        AppMethodBeat.o(43196);
+        return 0;
+      case 6: 
+        localbd.adiJ.add(Long.valueOf(locala.ajGk.aaw()));
+        AppMethodBeat.o(43196);
+        return 0;
+      }
+      localbd.adiK.add(Long.valueOf(locala.ajGk.aaw()));
+      AppMethodBeat.o(43196);
+      return 0;
+    }
+    AppMethodBeat.o(43196);
+    return -1;
   }
 }
 

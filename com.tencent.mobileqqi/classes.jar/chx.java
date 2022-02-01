@@ -1,18 +1,16 @@
 import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-class chx
-  implements Runnable
+public class chx
+  implements View.OnClickListener
 {
-  chx(chw paramchw) {}
+  public chx(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getWindow().peekDecorView().getWindowToken(), 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.a.a.setText("");
   }
 }
 

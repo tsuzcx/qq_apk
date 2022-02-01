@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"buildMap", "", "K", "V", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptyMap", "hashMapOf", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "pairs", "", "Lkotlin/Pair;", "([Lkotlin/Pair;)Ljava/util/HashMap;", "linkedMapOf", "Ljava/util/LinkedHashMap;", "Lkotlin/collections/LinkedHashMap;", "([Lkotlin/Pair;)Ljava/util/LinkedHashMap;", "mapOf", "([Lkotlin/Pair;)Ljava/util/Map;", "mutableMapOf", "component1", "", "(Ljava/util/Map$Entry;)Ljava/lang/Object;", "component2", "contains", "", "Lkotlin/internal/OnlyInputTypes;", "key", "(Ljava/util/Map;Ljava/lang/Object;)Z", "containsKey", "containsValue", "value", "filter", "predicate", "filterKeys", "filterNot", "filterNotTo", "M", "destination", "(Ljava/util/Map;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "filterTo", "filterValues", "get", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;", "getOrElse", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/Map;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "getOrElseNullable", "getOrPut", "getValue", "ifEmpty", "R", "(Ljava/util/Map;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "isNotEmpty", "isNullOrEmpty", "iterator", "", "", "", "mutableIterator", "mapKeys", "transform", "mapKeysTo", "mapValues", "mapValuesTo", "minus", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/util/Map;", "keys", "(Ljava/util/Map;[Ljava/lang/Object;)Ljava/util/Map;", "", "Lkotlin/sequences/Sequence;", "minusAssign", "(Ljava/util/Map;Ljava/lang/Object;)V", "(Ljava/util/Map;[Ljava/lang/Object;)V", "optimizeReadOnlyMap", "orEmpty", "plus", "(Ljava/util/Map;[Lkotlin/Pair;)Ljava/util/Map;", "pair", "map", "plusAssign", "(Ljava/util/Map;[Lkotlin/Pair;)V", "putAll", "remove", "set", "(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)V", "toMap", "([Lkotlin/Pair;Ljava/util/Map;)Ljava/util/Map;", "(Ljava/lang/Iterable;Ljava/util/Map;)Ljava/util/Map;", "(Ljava/util/Map;Ljava/util/Map;)Ljava/util/Map;", "(Lkotlin/sequences/Sequence;Ljava/util/Map;)Ljava/util/Map;", "toMutableMap", "toPair", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/MapsKt")
-public class MapsKt__MapsKt
+class MapsKt__MapsKt
   extends MapsKt__MapsJVMKt
 {
   @ExperimentalStdlibApi
@@ -73,10 +73,10 @@ public class MapsKt__MapsKt
   @InlineOnly
   private static final <K> boolean containsKey(@NotNull Map<? extends K, ?> paramMap, K paramK)
   {
-    if (paramMap == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
+    if (paramMap != null) {
+      return paramMap.containsKey(paramK);
     }
-    return paramMap.containsKey(paramK);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.Map<K, *>");
   }
   
   @InlineOnly
@@ -89,10 +89,10 @@ public class MapsKt__MapsKt
   public static final <K, V> Map<K, V> emptyMap()
   {
     EmptyMap localEmptyMap = EmptyMap.INSTANCE;
-    if (localEmptyMap == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.Map<K, V>");
+    if (localEmptyMap != null) {
+      return (Map)localEmptyMap;
     }
-    return (Map)localEmptyMap;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.Map<K, V>");
   }
   
   @NotNull
@@ -218,16 +218,11 @@ public class MapsKt__MapsKt
   {
     Intrinsics.checkParameterIsNotNull(paramMap, "$this$getOrElseNullable");
     Intrinsics.checkParameterIsNotNull(paramFunction0, "defaultValue");
-    Object localObject2 = paramMap.get(paramK);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = localObject2;
-      if (!paramMap.containsKey(paramK)) {
-        localObject1 = paramFunction0.invoke();
-      }
+    Object localObject = paramMap.get(paramK);
+    if ((localObject == null) && (!paramMap.containsKey(paramK))) {
+      return paramFunction0.invoke();
     }
-    return localObject1;
+    return localObject;
   }
   
   public static final <K, V> V getOrPut(@NotNull Map<K, V> paramMap, K paramK, @NotNull Function0<? extends V> paramFunction0)
@@ -281,7 +276,7 @@ public class MapsKt__MapsKt
   @InlineOnly
   private static final <K, V> boolean isNotEmpty(@NotNull Map<? extends K, ? extends V> paramMap)
   {
-    return !paramMap.isEmpty();
+    return paramMap.isEmpty() ^ true;
   }
   
   @SinceKotlin(version="1.3")
@@ -482,23 +477,24 @@ public class MapsKt__MapsKt
   public static final <K, V> Map<K, V> mutableMapOf(@NotNull Pair<? extends K, ? extends V>... paramVarArgs)
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "pairs");
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap(MapsKt.mapCapacity(paramVarArgs.length));
-    MapsKt.putAll((Map)localLinkedHashMap, paramVarArgs);
-    return (Map)localLinkedHashMap;
+    Map localMap = (Map)new LinkedHashMap(MapsKt.mapCapacity(paramVarArgs.length));
+    MapsKt.putAll(localMap, paramVarArgs);
+    return localMap;
   }
   
   @NotNull
   public static final <K, V> Map<K, V> optimizeReadOnlyMap(@NotNull Map<K, ? extends V> paramMap)
   {
     Intrinsics.checkParameterIsNotNull(paramMap, "$this$optimizeReadOnlyMap");
-    switch (paramMap.size())
+    int i = paramMap.size();
+    if (i != 0)
     {
-    default: 
-      return paramMap;
-    case 0: 
-      return MapsKt.emptyMap();
+      if (i != 1) {
+        return paramMap;
+      }
+      return MapsKt.toSingletonMap(paramMap);
     }
-    return MapsKt.toSingletonMap(paramMap);
+    return MapsKt.emptyMap();
   }
   
   @InlineOnly
@@ -518,9 +514,9 @@ public class MapsKt__MapsKt
     if (paramMap.isEmpty()) {
       return MapsKt.toMap(paramIterable);
     }
-    paramMap = new LinkedHashMap(paramMap);
-    MapsKt.putAll((Map)paramMap, paramIterable);
-    return (Map)paramMap;
+    paramMap = (Map)new LinkedHashMap(paramMap);
+    MapsKt.putAll(paramMap, paramIterable);
+    return paramMap;
   }
   
   @NotNull
@@ -551,9 +547,9 @@ public class MapsKt__MapsKt
   {
     Intrinsics.checkParameterIsNotNull(paramMap, "$this$plus");
     Intrinsics.checkParameterIsNotNull(paramSequence, "pairs");
-    paramMap = new LinkedHashMap(paramMap);
-    MapsKt.putAll((Map)paramMap, paramSequence);
-    return MapsKt.optimizeReadOnlyMap((Map)paramMap);
+    paramMap = (Map)new LinkedHashMap(paramMap);
+    MapsKt.putAll(paramMap, paramSequence);
+    return MapsKt.optimizeReadOnlyMap(paramMap);
   }
   
   @NotNull
@@ -564,9 +560,9 @@ public class MapsKt__MapsKt
     if (paramMap.isEmpty()) {
       return MapsKt.toMap(paramArrayOfPair);
     }
-    paramMap = new LinkedHashMap(paramMap);
-    MapsKt.putAll((Map)paramMap, paramArrayOfPair);
-    return (Map)paramMap;
+    paramMap = (Map)new LinkedHashMap(paramMap);
+    MapsKt.putAll(paramMap, paramArrayOfPair);
+    return paramMap;
   }
   
   @InlineOnly
@@ -645,10 +641,10 @@ public class MapsKt__MapsKt
   @InlineOnly
   private static final <K, V> V remove(@NotNull Map<? extends K, V> paramMap, K paramK)
   {
-    if (paramMap == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
+    if (paramMap != null) {
+      return TypeIntrinsics.asMutableMap(paramMap).remove(paramK);
     }
-    return TypeIntrinsics.asMutableMap(paramMap).remove(paramK);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
   }
   
   @InlineOnly
@@ -664,17 +660,21 @@ public class MapsKt__MapsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$toMap");
     if ((paramIterable instanceof Collection))
     {
-      switch (((Collection)paramIterable).size())
+      Collection localCollection = (Collection)paramIterable;
+      int i = localCollection.size();
+      if (i != 0)
       {
-      default: 
-        return MapsKt.toMap(paramIterable, (Map)new LinkedHashMap(MapsKt.mapCapacity(((Collection)paramIterable).size())));
-      case 0: 
-        return MapsKt.emptyMap();
+        if (i != 1) {
+          return MapsKt.toMap(paramIterable, (Map)new LinkedHashMap(MapsKt.mapCapacity(localCollection.size())));
+        }
+        if ((paramIterable instanceof List)) {
+          paramIterable = ((List)paramIterable).get(0);
+        } else {
+          paramIterable = paramIterable.iterator().next();
+        }
+        return MapsKt.mapOf((Pair)paramIterable);
       }
-      if ((paramIterable instanceof List)) {}
-      for (paramIterable = (Pair)((List)paramIterable).get(0);; paramIterable = (Pair)paramIterable.iterator().next()) {
-        return MapsKt.mapOf(paramIterable);
-      }
+      return MapsKt.emptyMap();
     }
     return MapsKt.optimizeReadOnlyMap(MapsKt.toMap(paramIterable, (Map)new LinkedHashMap()));
   }
@@ -693,14 +693,15 @@ public class MapsKt__MapsKt
   public static final <K, V> Map<K, V> toMap(@NotNull Map<? extends K, ? extends V> paramMap)
   {
     Intrinsics.checkParameterIsNotNull(paramMap, "$this$toMap");
-    switch (paramMap.size())
+    int i = paramMap.size();
+    if (i != 0)
     {
-    default: 
-      return MapsKt.toMutableMap(paramMap);
-    case 0: 
-      return MapsKt.emptyMap();
+      if (i != 1) {
+        return MapsKt.toMutableMap(paramMap);
+      }
+      return MapsKt.toSingletonMap(paramMap);
     }
-    return MapsKt.toSingletonMap(paramMap);
+    return MapsKt.emptyMap();
   }
   
   @SinceKotlin(version="1.1")
@@ -733,14 +734,15 @@ public class MapsKt__MapsKt
   public static final <K, V> Map<K, V> toMap(@NotNull Pair<? extends K, ? extends V>[] paramArrayOfPair)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfPair, "$this$toMap");
-    switch (paramArrayOfPair.length)
+    int i = paramArrayOfPair.length;
+    if (i != 0)
     {
-    default: 
-      return MapsKt.toMap(paramArrayOfPair, (Map)new LinkedHashMap(MapsKt.mapCapacity(paramArrayOfPair.length)));
-    case 0: 
-      return MapsKt.emptyMap();
+      if (i != 1) {
+        return MapsKt.toMap(paramArrayOfPair, (Map)new LinkedHashMap(MapsKt.mapCapacity(paramArrayOfPair.length)));
+      }
+      return MapsKt.mapOf(paramArrayOfPair[0]);
     }
-    return MapsKt.mapOf(paramArrayOfPair[0]);
+    return MapsKt.emptyMap();
   }
   
   @NotNull
@@ -768,7 +770,7 @@ public class MapsKt__MapsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.MapsKt__MapsKt
  * JD-Core Version:    0.7.0.1
  */

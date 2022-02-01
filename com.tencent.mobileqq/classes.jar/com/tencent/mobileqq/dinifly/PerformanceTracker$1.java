@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.util.Pair;
+import androidx.core.util.Pair;
 import java.util.Comparator;
 
 class PerformanceTracker$1

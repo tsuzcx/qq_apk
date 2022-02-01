@@ -1,392 +1,247 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.PointF;
-import android.util.JsonReader;
-import android.util.JsonToken;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
+import com.tencent.mobileqq.dinifly.model.animatable.AnimatableIntegerValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePathValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableScaleValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableSplitDimensionPathValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableTransform;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
 import com.tencent.mobileqq.dinifly.value.ScaleXY;
 import java.util.List;
 
 public class AnimatableTransformParser
 {
+  private static final JsonReader.Options ANIMATABLE_NAMES = JsonReader.Options.of(new String[] { "k" });
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "a", "p", "s", "rz", "r", "o", "so", "eo", "sk", "sa" });
+  
   private static boolean isAnchorPointIdentity(AnimatablePathValue paramAnimatablePathValue)
   {
-    return (paramAnimatablePathValue == null) || ((paramAnimatablePathValue.isStatic()) && (((PointF)((Keyframe)paramAnimatablePathValue.getKeyframes().get(0)).startValue).equals(0.0F, 0.0F)));
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramAnimatablePathValue != null)
+    {
+      bool1 = bool2;
+      if (paramAnimatablePathValue.isStatic())
+      {
+        bool1 = bool2;
+        if (!((PointF)((Keyframe)paramAnimatablePathValue.getKeyframes().get(0)).startValue).equals(0.0F, 0.0F)) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static boolean isPositionIdentity(AnimatableValue<PointF, PointF> paramAnimatableValue)
   {
-    return (paramAnimatableValue == null) || ((!(paramAnimatableValue instanceof AnimatableSplitDimensionPathValue)) && (paramAnimatableValue.isStatic()) && (((PointF)((Keyframe)paramAnimatableValue.getKeyframes().get(0)).startValue).equals(0.0F, 0.0F)));
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramAnimatableValue != null)
+    {
+      bool1 = bool2;
+      if (!(paramAnimatableValue instanceof AnimatableSplitDimensionPathValue))
+      {
+        bool1 = bool2;
+        if (paramAnimatableValue.isStatic())
+        {
+          bool1 = bool2;
+          if (!((PointF)((Keyframe)paramAnimatableValue.getKeyframes().get(0)).startValue).equals(0.0F, 0.0F)) {}
+        }
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static boolean isRotationIdentity(AnimatableFloatValue paramAnimatableFloatValue)
   {
-    return (paramAnimatableFloatValue == null) || ((paramAnimatableFloatValue.isStatic()) && (((Float)((Keyframe)paramAnimatableFloatValue.getKeyframes().get(0)).startValue).floatValue() == 0.0F));
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramAnimatableFloatValue != null)
+    {
+      bool1 = bool2;
+      if (paramAnimatableFloatValue.isStatic())
+      {
+        bool1 = bool2;
+        if (((Float)((Keyframe)paramAnimatableFloatValue.getKeyframes().get(0)).startValue).floatValue() != 0.0F) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static boolean isScaleIdentity(AnimatableScaleValue paramAnimatableScaleValue)
   {
-    return (paramAnimatableScaleValue == null) || ((paramAnimatableScaleValue.isStatic()) && (((ScaleXY)((Keyframe)paramAnimatableScaleValue.getKeyframes().get(0)).startValue).equals(1.0F, 1.0F)));
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramAnimatableScaleValue != null)
+    {
+      bool1 = bool2;
+      if (paramAnimatableScaleValue.isStatic())
+      {
+        bool1 = bool2;
+        if (!((ScaleXY)((Keyframe)paramAnimatableScaleValue.getKeyframes().get(0)).startValue).equals(1.0F, 1.0F)) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static boolean isSkewAngleIdentity(AnimatableFloatValue paramAnimatableFloatValue)
   {
-    return (paramAnimatableFloatValue == null) || ((paramAnimatableFloatValue.isStatic()) && (((Float)((Keyframe)paramAnimatableFloatValue.getKeyframes().get(0)).startValue).floatValue() == 0.0F));
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramAnimatableFloatValue != null)
+    {
+      bool1 = bool2;
+      if (paramAnimatableFloatValue.isStatic())
+      {
+        bool1 = bool2;
+        if (((Float)((Keyframe)paramAnimatableFloatValue.getKeyframes().get(0)).startValue).floatValue() != 0.0F) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static boolean isSkewIdentity(AnimatableFloatValue paramAnimatableFloatValue)
   {
-    return (paramAnimatableFloatValue == null) || ((paramAnimatableFloatValue.isStatic()) && (((Float)((Keyframe)paramAnimatableFloatValue.getKeyframes().get(0)).startValue).floatValue() == 0.0F));
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramAnimatableFloatValue != null)
+    {
+      bool1 = bool2;
+      if (paramAnimatableFloatValue.isStatic())
+      {
+        bool1 = bool2;
+        if (((Float)((Keyframe)paramAnimatableFloatValue.getKeyframes().get(0)).startValue).floatValue() != 0.0F) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static AnimatableTransform parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    Object localObject10 = null;
-    Object localObject11 = null;
-    Object localObject12 = null;
-    Object localObject13 = null;
-    Object localObject14 = null;
-    Object localObject15 = null;
-    Object localObject16 = null;
-    Object localObject17 = null;
-    Object localObject18 = null;
-    int j;
-    Object localObject8;
-    Object localObject9;
-    Object localObject5;
-    Object localObject2;
-    Object localObject7;
-    Object localObject6;
-    Object localObject4;
-    Object localObject3;
-    Object localObject1;
-    label119:
     int i;
-    if (paramJsonReader.peek() == JsonToken.BEGIN_OBJECT)
+    if (paramJsonReader.peek() == JsonReader.Token.BEGIN_OBJECT) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      paramJsonReader.beginObject();
+    }
+    Object localObject2 = null;
+    Object localObject1 = null;
+    AnimatableValue localAnimatableValue = null;
+    AnimatableScaleValue localAnimatableScaleValue = null;
+    AnimatableFloatValue localAnimatableFloatValue2 = null;
+    AnimatableFloatValue localAnimatableFloatValue1 = null;
+    AnimatableIntegerValue localAnimatableIntegerValue = null;
+    AnimatableFloatValue localAnimatableFloatValue4 = null;
+    AnimatableFloatValue localAnimatableFloatValue3 = null;
+    if (paramJsonReader.hasNext())
     {
-      j = 1;
-      localObject8 = localObject13;
-      localObject9 = localObject16;
-      localObject5 = localObject17;
-      localObject2 = localObject18;
-      localObject7 = localObject15;
-      localObject6 = localObject14;
-      localObject4 = localObject12;
-      localObject3 = localObject11;
-      localObject1 = localObject10;
-      if (j != 0)
-      {
-        paramJsonReader.beginObject();
-        localObject1 = localObject10;
-        localObject3 = localObject11;
-        localObject4 = localObject12;
-        localObject6 = localObject14;
-        localObject7 = localObject15;
-        localObject2 = localObject18;
-        localObject5 = localObject17;
-        localObject9 = localObject16;
-        localObject8 = localObject13;
-      }
-      if (!paramJsonReader.hasNext()) {
-        break label1265;
-      }
-      localObject10 = paramJsonReader.nextName();
-      i = -1;
-      switch (((String)localObject10).hashCode())
+      switch (paramJsonReader.selectName(NAMES))
       {
       default: 
-        switch (i)
-        {
-        default: 
-          label228:
-          paramJsonReader.skipValue();
-          localObject10 = localObject2;
-          localObject2 = localObject5;
-          localObject11 = localObject7;
-          localObject5 = localObject8;
-          localObject7 = localObject3;
-          localObject3 = localObject6;
-          localObject8 = localObject1;
-          localObject6 = localObject4;
-          localObject4 = localObject3;
-          localObject3 = localObject11;
-          localObject1 = localObject10;
-        }
+        paramJsonReader.skipName();
+        paramJsonReader.skipValue();
+      }
+      for (;;)
+      {
         break;
-      }
-    }
-    for (;;)
-    {
-      localObject10 = localObject6;
-      localObject11 = localObject7;
-      localObject12 = localObject8;
-      localObject8 = localObject5;
-      localObject5 = localObject2;
-      localObject2 = localObject1;
-      localObject7 = localObject3;
-      localObject6 = localObject4;
-      localObject4 = localObject10;
-      localObject3 = localObject11;
-      localObject1 = localObject12;
-      break label119;
-      j = 0;
-      break;
-      if (!((String)localObject10).equals("a")) {
-        break label228;
-      }
-      i = 0;
-      break label228;
-      if (!((String)localObject10).equals("p")) {
-        break label228;
-      }
-      i = 1;
-      break label228;
-      if (!((String)localObject10).equals("s")) {
-        break label228;
-      }
-      i = 2;
-      break label228;
-      if (!((String)localObject10).equals("rz")) {
-        break label228;
-      }
-      i = 3;
-      break label228;
-      if (!((String)localObject10).equals("r")) {
-        break label228;
-      }
-      i = 4;
-      break label228;
-      if (!((String)localObject10).equals("o")) {
-        break label228;
-      }
-      i = 5;
-      break label228;
-      if (!((String)localObject10).equals("so")) {
-        break label228;
-      }
-      i = 6;
-      break label228;
-      if (!((String)localObject10).equals("eo")) {
-        break label228;
-      }
-      i = 7;
-      break label228;
-      if (!((String)localObject10).equals("sk")) {
-        break label228;
-      }
-      i = 8;
-      break label228;
-      if (!((String)localObject10).equals("sa")) {
-        break label228;
-      }
-      i = 9;
-      break label228;
-      paramJsonReader.beginObject();
-      while (paramJsonReader.hasNext()) {
-        if (paramJsonReader.nextName().equals("k")) {
-          localObject1 = AnimatablePathValueParser.parse(paramJsonReader, paramLottieComposition);
-        } else {
-          paramJsonReader.skipValue();
+        localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+        localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+        localAnimatableFloatValue3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+        localAnimatableFloatValue4 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+        localAnimatableIntegerValue = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
+        break;
+        paramLottieComposition.addWarning("Lottie doesn't support 3D layers.");
+        localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        if (((AnimatableFloatValue)localObject2).getKeyframes().isEmpty()) {
+          ((AnimatableFloatValue)localObject2).getKeyframes().add(new Keyframe(paramLottieComposition, Float.valueOf(0.0F), Float.valueOf(0.0F), null, 0.0F, Float.valueOf(paramLottieComposition.getEndFrame())));
+        } else if (((Keyframe)((AnimatableFloatValue)localObject2).getKeyframes().get(0)).startValue == null) {
+          ((AnimatableFloatValue)localObject2).getKeyframes().set(0, new Keyframe(paramLottieComposition, Float.valueOf(0.0F), Float.valueOf(0.0F), null, 0.0F, Float.valueOf(paramLottieComposition.getEndFrame())));
         }
-      }
-      paramJsonReader.endObject();
-      localObject11 = localObject5;
-      localObject12 = localObject7;
-      localObject5 = localObject8;
-      localObject7 = localObject4;
-      localObject8 = localObject3;
-      localObject4 = localObject6;
-      localObject10 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject11;
-      localObject3 = localObject12;
-      localObject6 = localObject7;
-      localObject7 = localObject8;
-      localObject8 = localObject10;
-      continue;
-      localObject11 = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
-      localObject3 = localObject5;
-      localObject10 = localObject7;
-      localObject5 = localObject8;
-      localObject7 = localObject4;
-      localObject8 = localObject11;
-      localObject4 = localObject6;
-      localObject11 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      localObject3 = localObject10;
-      localObject6 = localObject7;
-      localObject7 = localObject8;
-      localObject8 = localObject11;
-      continue;
-      localObject11 = AnimatableValueParser.parseScale(paramJsonReader, paramLottieComposition);
-      localObject4 = localObject5;
-      localObject10 = localObject7;
-      localObject5 = localObject8;
-      localObject7 = localObject11;
-      localObject8 = localObject3;
-      localObject11 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject4;
-      localObject3 = localObject10;
-      localObject4 = localObject6;
-      localObject6 = localObject7;
-      localObject7 = localObject8;
-      localObject8 = localObject11;
-      continue;
-      paramLottieComposition.addWarning("Lottie doesn't support 3D layers.");
-      localObject8 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      if (((AnimatableFloatValue)localObject8).getKeyframes().isEmpty())
-      {
-        ((AnimatableFloatValue)localObject8).getKeyframes().add(new Keyframe(paramLottieComposition, Float.valueOf(0.0F), Float.valueOf(0.0F), null, 0.0F, Float.valueOf(paramLottieComposition.getEndFrame())));
-        localObject10 = localObject8;
-        localObject11 = localObject4;
-        localObject12 = localObject3;
-        localObject8 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject5;
-        localObject3 = localObject7;
-        localObject4 = localObject6;
-        localObject5 = localObject10;
-        localObject6 = localObject11;
-        localObject7 = localObject12;
-      }
-      else if (((Keyframe)((AnimatableFloatValue)localObject8).getKeyframes().get(0)).startValue == null)
-      {
-        ((AnimatableFloatValue)localObject8).getKeyframes().set(0, new Keyframe(paramLottieComposition, Float.valueOf(0.0F), Float.valueOf(0.0F), null, 0.0F, Float.valueOf(paramLottieComposition.getEndFrame())));
-        localObject10 = localObject8;
-        localObject11 = localObject4;
-        localObject12 = localObject3;
-        localObject8 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject5;
-        localObject3 = localObject7;
-        localObject4 = localObject6;
-        localObject5 = localObject10;
-        localObject6 = localObject11;
-        localObject7 = localObject12;
         continue;
-        localObject12 = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
-        localObject10 = localObject5;
-        localObject11 = localObject7;
-        localObject5 = localObject8;
-        localObject6 = localObject4;
-        localObject7 = localObject3;
-        localObject4 = localObject12;
-        localObject8 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject10;
-        localObject3 = localObject11;
+        localAnimatableScaleValue = AnimatableValueParser.parseScale(paramJsonReader, paramLottieComposition);
         continue;
-        localObject11 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-        localObject10 = localObject5;
-        localObject5 = localObject8;
-        localObject7 = localObject4;
-        localObject8 = localObject3;
-        localObject4 = localObject6;
-        localObject12 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject10;
-        localObject3 = localObject11;
-        localObject6 = localObject7;
-        localObject7 = localObject8;
-        localObject8 = localObject12;
+        localAnimatableValue = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
         continue;
-        localObject12 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-        localObject9 = localObject5;
-        localObject11 = localObject7;
-        localObject5 = localObject8;
-        localObject7 = localObject4;
-        localObject8 = localObject3;
-        localObject4 = localObject6;
-        localObject10 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject9;
-        localObject3 = localObject11;
-        localObject6 = localObject7;
-        localObject7 = localObject8;
-        localObject9 = localObject12;
-        localObject8 = localObject10;
-        continue;
-        localObject12 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-        localObject11 = localObject7;
-        localObject5 = localObject8;
-        localObject7 = localObject4;
-        localObject10 = localObject3;
-        localObject8 = localObject1;
-        localObject1 = localObject2;
-        localObject4 = localObject6;
-        localObject2 = localObject12;
-        localObject3 = localObject11;
-        localObject6 = localObject7;
-        localObject7 = localObject10;
-        continue;
-        localObject12 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-        localObject2 = localObject5;
-        localObject11 = localObject7;
-        localObject5 = localObject8;
-        localObject7 = localObject4;
-        localObject8 = localObject3;
-        localObject4 = localObject6;
-        localObject10 = localObject1;
-        localObject1 = localObject12;
-        localObject3 = localObject11;
-        localObject6 = localObject7;
-        localObject7 = localObject8;
-        localObject8 = localObject10;
-        continue;
-        label1265:
-        if (j != 0) {
-          paramJsonReader.endObject();
-        }
-        if (isAnchorPointIdentity((AnimatablePathValue)localObject1)) {}
-        for (paramJsonReader = null;; paramJsonReader = (JsonReader)localObject1)
-        {
-          if (isPositionIdentity(localObject3)) {}
-          for (paramLottieComposition = null;; paramLottieComposition = localObject3)
+        paramJsonReader.beginObject();
+        while (paramJsonReader.hasNext()) {
+          if (paramJsonReader.selectName(ANIMATABLE_NAMES) != 0)
           {
-            if (isRotationIdentity((AnimatableFloatValue)localObject8)) {}
-            for (localObject1 = null;; localObject1 = localObject8)
-            {
-              if (isScaleIdentity(localObject4)) {}
-              for (localObject3 = null;; localObject3 = localObject4)
-              {
-                localObject4 = localObject5;
-                if (isSkewIdentity(localObject5)) {
-                  localObject4 = null;
-                }
-                localObject5 = localObject2;
-                if (isSkewAngleIdentity(localObject2)) {
-                  localObject5 = null;
-                }
-                return new AnimatableTransform(paramJsonReader, paramLottieComposition, localObject3, (AnimatableFloatValue)localObject1, localObject6, localObject7, localObject9, localObject4, localObject5);
-              }
-            }
+            paramJsonReader.skipName();
+            paramJsonReader.skipValue();
+          }
+          else
+          {
+            localObject1 = AnimatablePathValueParser.parse(paramJsonReader, paramLottieComposition);
           }
         }
-      }
-      else
-      {
-        localObject10 = localObject8;
-        localObject11 = localObject4;
-        localObject12 = localObject3;
-        localObject8 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject5;
-        localObject3 = localObject7;
-        localObject4 = localObject6;
-        localObject5 = localObject10;
-        localObject6 = localObject11;
-        localObject7 = localObject12;
+        paramJsonReader.endObject();
       }
     }
+    if (i != 0) {
+      paramJsonReader.endObject();
+    }
+    if (isAnchorPointIdentity((AnimatablePathValue)localObject1)) {
+      paramJsonReader = null;
+    } else {
+      paramJsonReader = (JsonReader)localObject1;
+    }
+    if (isPositionIdentity(localAnimatableValue)) {
+      paramLottieComposition = null;
+    } else {
+      paramLottieComposition = localAnimatableValue;
+    }
+    if (isRotationIdentity((AnimatableFloatValue)localObject2)) {
+      localObject1 = null;
+    } else {
+      localObject1 = localObject2;
+    }
+    localObject2 = localAnimatableScaleValue;
+    if (isScaleIdentity(localAnimatableScaleValue)) {
+      localObject2 = null;
+    }
+    if (isSkewIdentity(localAnimatableFloatValue2)) {
+      localAnimatableFloatValue2 = null;
+    }
+    if (isSkewAngleIdentity(localAnimatableFloatValue1)) {
+      localAnimatableFloatValue1 = null;
+    }
+    return new AnimatableTransform(paramJsonReader, paramLottieComposition, (AnimatableScaleValue)localObject2, (AnimatableFloatValue)localObject1, localAnimatableIntegerValue, localAnimatableFloatValue4, localAnimatableFloatValue3, localAnimatableFloatValue2, localAnimatableFloatValue1);
   }
 }
 

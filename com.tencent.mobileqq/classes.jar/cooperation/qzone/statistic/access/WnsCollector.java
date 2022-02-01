@@ -1,84 +1,82 @@
 package cooperation.qzone.statistic.access;
 
 import android.content.Context;
-import bill;
-import bjsn;
-import bjso;
-import bjss;
-import bjst;
-import bjsu;
-import bjsv;
-import bjtc;
-import bjtd;
+import common.config.service.QZoneConfigHelper;
 import cooperation.qzone.statistic.access.concept.Collector;
+import cooperation.qzone.statistic.access.concept.Global;
 import cooperation.qzone.statistic.access.concept.Key;
+import cooperation.qzone.statistic.access.concept.Sampler;
 import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.Random;
 
 public class WnsCollector
   extends Collector
 {
-  public static WnsCollector a;
-  protected Statistic a;
-  
-  static
-  {
-    jdField_a_of_type_CooperationQzoneStatisticAccessWnsCollector = new WnsCollector();
-  }
+  private static Context context;
+  public static WnsCollector instance = new WnsCollector();
+  protected Statistic publicShareInfo = new Statistic(WnsKeys.PublicKeys);
+  protected Random sampleRandom;
   
   public WnsCollector()
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic = new Statistic(WnsKeys.PublicKeys);
-    bjsv localbjsv = new bjsv(bill.d(), bill.c(), true);
-    bjst localbjst = new bjst(bill.a());
-    bjsn localbjsn = new bjsn();
-    localbjsn.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
-    bjsu localbjsu = new bjsu("https://wspeed.qq.com/w.cgi");
-    localbjsu.a(true);
-    localbjsu.a().a(true);
-    a(localbjsv);
-    a(localbjst);
-    a(localbjsn);
-    a(localbjsu);
+    WnsCondition localWnsCondition = new WnsCondition(QZoneConfigHelper.f(), QZoneConfigHelper.c(), true);
+    LinearSampler localLinearSampler = new LinearSampler(QZoneConfigHelper.a());
+    HttpAssembler localHttpAssembler = new HttpAssembler();
+    localHttpAssembler.setPublicField(this.publicShareInfo);
+    WapProxyHttpDeliverer localWapProxyHttpDeliverer = new WapProxyHttpDeliverer("https://wspeed.qq.com/w.cgi");
+    localWapProxyHttpDeliverer.setGZipEnabled(true);
+    localWapProxyHttpDeliverer.getServers().setOptionalEnabled(true);
+    setCondition(localWnsCondition);
+    setSampler(localLinearSampler);
+    setAssembler(localHttpAssembler);
+    setDeliverer(localWapProxyHttpDeliverer);
   }
   
-  public static WnsCollector a()
+  public static WnsCollector Instance()
   {
-    if (jdField_a_of_type_CooperationQzoneStatisticAccessWnsCollector == null) {
-      jdField_a_of_type_CooperationQzoneStatisticAccessWnsCollector = new WnsCollector();
+    if (instance == null) {
+      instance = new WnsCollector();
     }
-    return jdField_a_of_type_CooperationQzoneStatisticAccessWnsCollector;
+    return instance;
   }
   
-  public Statistic a()
+  public Statistic createStatistic()
   {
     Statistic localStatistic = new Statistic(WnsKeys.PrivateKeys);
     localStatistic.setValue(WnsKeys.DType, Integer.valueOf(0));
     localStatistic.setValue(WnsKeys.ODetails, "");
     localStatistic.setValue(WnsKeys.Timestamp, Long.valueOf(System.currentTimeMillis() / 1000L));
     Key localKey = WnsKeys.Frequency;
-    if (a() == null) {}
-    for (int i = 1;; i = a().a())
-    {
-      localStatistic.setValue(localKey, Integer.valueOf(i));
-      return localStatistic;
+    int i;
+    if (getSampler() == null) {
+      i = 1;
+    } else {
+      i = getSampler().getFrequency();
     }
+    localStatistic.setValue(localKey, Integer.valueOf(i));
+    return localStatistic;
   }
   
-  public void a(Context paramContext)
+  public Statistic getPublicShareInfo()
   {
-    bjtc.a(paramContext);
+    return this.publicShareInfo;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void init(Context paramContext)
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic.setValue(WnsKeys.Device, paramString1);
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic.setValue(WnsKeys.SDKVersion, paramString2);
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic.setValue(WnsKeys.DeviceInfo, paramString3);
+    Global.setContext(paramContext);
+  }
+  
+  public void setPublicShareInfo(String paramString1, String paramString2, String paramString3)
+  {
+    this.publicShareInfo.setValue(WnsKeys.Device, paramString1);
+    this.publicShareInfo.setValue(WnsKeys.SDKVersion, paramString2);
+    this.publicShareInfo.setValue(WnsKeys.DeviceInfo, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.statistic.access.WnsCollector
  * JD-Core Version:    0.7.0.1
  */

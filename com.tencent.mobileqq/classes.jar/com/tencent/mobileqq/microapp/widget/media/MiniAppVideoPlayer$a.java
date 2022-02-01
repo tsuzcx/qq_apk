@@ -14,33 +14,33 @@ public final class MiniAppVideoPlayer$a
   {
     if ((paramObject instanceof String))
     {
-      if (!"resetPlayer".equals((String)paramObject)) {
-        break label34;
-      }
-      this.a.g();
-      this.a.a();
-    }
-    label34:
-    do
-    {
-      do
+      paramObservable = (String)paramObject;
+      if ("resetPlayer".equals(paramObservable))
       {
+        this.a.g();
+        this.a.a();
         return;
-      } while (!"resumePlayer".equals((String)paramObject));
-      paramObservable = this.a.n.appBrandRuntime;
-    } while (paramObservable == null);
-    if (paramObservable.j)
-    {
-      this.a.g();
-      this.a.a();
-      return;
+      }
+      if ("resumePlayer".equals(paramObservable))
+      {
+        paramObservable = this.a.n.appBrandRuntime;
+        if (paramObservable == null) {
+          return;
+        }
+        if (paramObservable.j)
+        {
+          this.a.g();
+          this.a.a();
+          return;
+        }
+        this.a.b();
+      }
     }
-    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.MiniAppVideoPlayer.a
  * JD-Core Version:    0.7.0.1
  */

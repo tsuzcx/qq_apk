@@ -11,32 +11,35 @@ import android.text.Spanned;
 import android.text.style.LeadingMarginSpan;
 import android.view.MotionEvent;
 import android.widget.TextView;
+import androidx.core.content.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
 import com.tencent.mm.plugin.wenote.model.a.i;
+import com.tencent.mm.plugin.wenote.model.nativenote.a.b;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.ref.WeakReference;
 
 public class k
   implements LeadingMarginSpan, f<Boolean>, g<Boolean>
 {
-  private int vAX;
-  public boolean vAY;
-  public boolean vBb;
-  public boolean vBc;
-  public boolean vBd;
-  public boolean vBe;
-  private WeakReference<Drawable> vBf;
+  private int xBG;
+  public boolean xBH;
+  public boolean xBN;
+  public boolean xBO;
+  public boolean xCj;
+  public boolean xCk;
+  private WeakReference<Drawable> xCl;
   
   public k(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(26947);
-    this.vBb = false;
-    this.vBc = false;
-    this.vBd = false;
-    this.vBe = false;
-    this.vAX = paramInt;
+    AppMethodBeat.i(30641);
+    this.xBN = false;
+    this.xBO = false;
+    this.xCj = false;
+    this.xCk = false;
+    this.xBG = paramInt;
     boolean bool1 = bool2;
     if (paramBoolean2)
     {
@@ -49,56 +52,56 @@ public class k
         }
       }
     }
-    this.vAY = bool1;
-    this.vBe = paramBoolean1;
-    this.vBb = paramBoolean3;
-    this.vBc = paramBoolean4;
-    this.vBd = paramBoolean2;
-    AppMethodBeat.o(26947);
+    this.xBH = bool1;
+    this.xCk = paramBoolean1;
+    this.xBN = paramBoolean3;
+    this.xBO = paramBoolean4;
+    this.xCj = paramBoolean2;
+    AppMethodBeat.o(30641);
   }
   
-  private k djF()
+  private k iEw()
   {
-    AppMethodBeat.i(26949);
-    k localk = new k(this.vBe, this.vAX, this.vBd, this.vBb, this.vBc);
-    AppMethodBeat.o(26949);
+    AppMethodBeat.i(30643);
+    k localk = new k(this.xCk, this.xBG, this.xCj, this.xBN, this.xBO);
+    AppMethodBeat.o(30643);
     return localk;
   }
   
   public final void a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent, k paramk)
   {
-    AppMethodBeat.i(26950);
-    if (paramMotionEvent.getX() > this.vAX)
+    AppMethodBeat.i(30644);
+    if (paramMotionEvent.getX() > this.xBG)
     {
-      ab.e("MicroMsg.NoteTodoSpan", "x > mGapWidth");
-      AppMethodBeat.o(26950);
+      Log.e("MicroMsg.NoteTodoSpan", "x > mGapWidth");
+      AppMethodBeat.o(30644);
       return;
     }
     int i = paramSpannable.getSpanStart(paramk);
     int j = paramSpannable.getSpanEnd(paramk);
-    if (this.vBe)
+    if (this.xCk)
     {
       paramMotionEvent = "true";
-      ab.i("MicroMsg.NoteTodoSpan", "current mIsTodoCheck: %s", new Object[] { paramMotionEvent });
+      Log.i("MicroMsg.NoteTodoSpan", "current mIsTodoCheck: %s", new Object[] { paramMotionEvent });
       paramSpannable.removeSpan(this);
-      if (this.vBe) {
+      if (this.xCk) {
         break label176;
       }
     }
     label176:
     for (boolean bool = true;; bool = false)
     {
-      this.vBe = bool;
-      paramSpannable.setSpan(djF(), i, j, 33);
+      this.xCk = bool;
+      paramSpannable.setSpan(iEw(), i, j, 33);
       paramTextView = (WXRTEditText)paramTextView;
       if (paramTextView.getEditTextType() == 0)
       {
-        paramTextView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(paramTextView.getRecyclerItemPosition());
+        paramTextView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.iEg().avf(paramTextView.getRecyclerItemPosition());
         if ((paramTextView != null) && (paramTextView.getType() == 1)) {
-          ((i)paramTextView).content = com.tencent.mm.plugin.wenote.model.nativenote.a.b.a(paramSpannable);
+          ((i)paramTextView).content = b.a(paramSpannable);
         }
       }
-      AppMethodBeat.o(26950);
+      AppMethodBeat.o(30644);
       return;
       paramMotionEvent = "false";
       break;
@@ -107,30 +110,30 @@ public class k
   
   public void drawLeadingMargin(Canvas paramCanvas, Paint paramPaint, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, CharSequence paramCharSequence, int paramInt6, int paramInt7, boolean paramBoolean, Layout paramLayout)
   {
-    AppMethodBeat.i(26948);
+    AppMethodBeat.i(30642);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.vAY) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.xBH) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
-      paramLayout = this.vBf;
+      paramLayout = this.xCl;
       paramCharSequence = null;
       if (paramLayout != null) {
         paramCharSequence = (Drawable)paramLayout.get();
       }
       paramLayout = paramCharSequence;
       if (paramCharSequence == null) {
-        if (!this.vBe) {
-          break label112;
+        if (!this.xCk) {
+          break label113;
         }
       }
-      label112:
-      for (paramCharSequence = android.support.v4.content.b.k(ah.getContext(), 2130839833);; paramCharSequence = android.support.v4.content.b.k(ah.getContext(), 2130839834))
+      label113:
+      for (paramCharSequence = a.m(MMApplicationContext.getContext(), R.g.foJ);; paramCharSequence = a.m(MMApplicationContext.getContext(), R.g.foK))
       {
-        this.vBf = new WeakReference(paramCharSequence);
+        this.xCl = new WeakReference(paramCharSequence);
         paramLayout = paramCharSequence;
         if (paramLayout != null) {
           break;
         }
-        AppMethodBeat.o(26948);
+        AppMethodBeat.o(30642);
         return;
       }
       paramLayout.setBounds(0, 0, paramLayout.getIntrinsicWidth(), paramLayout.getIntrinsicHeight());
@@ -141,15 +144,15 @@ public class k
       paramLayout.draw(paramCanvas);
       paramCanvas.restore();
     }
-    AppMethodBeat.o(26948);
+    AppMethodBeat.o(30642);
   }
   
   public int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.vAY) {
+    if (this.xBH) {
       return 0;
     }
-    return this.vAX;
+    return this.xBG;
   }
 }
 

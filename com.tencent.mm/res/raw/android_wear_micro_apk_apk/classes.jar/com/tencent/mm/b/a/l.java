@@ -2,7 +2,7 @@ package com.tencent.mm.b.a;
 
 public final class l
 {
-  public boolean Vg;
+  public boolean WW;
 }
 
 

@@ -1,67 +1,49 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.xj;
-import com.tencent.mm.protocal.protobuf.xk;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.n;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.z.a;
+import com.tencent.mm.protocal.z.b;
 
-public final class g
-  extends m
-  implements k
+final class g
+  extends n
 {
-  private f callback;
-  private final com.tencent.mm.ai.b rr;
+  private final z.a oSd;
+  private final z.b oSe;
   
-  public g(String paramString)
+  g()
   {
-    AppMethodBeat.i(16564);
-    ab.i("MicroMsg.NetSceneDelTempSession", "NetSceneDelTempSession %s", new Object[] { paramString });
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new xj();
-    ((b.a)localObject).fsY = new xk();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/deltempsession";
-    ((b.a)localObject).funcId = 1067;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (xj)this.rr.fsV.fta;
-    ((xj)localObject).wxM = paramString;
-    ((xj)localObject).wPb = com.tencent.mm.bv.b.bL(new byte[0]);
-    AppMethodBeat.o(16564);
+    AppMethodBeat.i(150912);
+    this.oSd = new z.a();
+    this.oSe = new z.b();
+    AppMethodBeat.o(150912);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final l.d getReqObjImp()
   {
-    AppMethodBeat.i(16565);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(16565);
-    return i;
+    return this.oSd;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.oSe;
   }
   
   public final int getType()
   {
-    return 1067;
+    return 26;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final String getUri()
   {
-    AppMethodBeat.i(16566);
-    ab.i("MicroMsg.NetSceneDelTempSession", "onGYNetEnd: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(16566);
+    return "/cgi-bin/micromsg-bin/sendcard";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.g
  * JD-Core Version:    0.7.0.1
  */

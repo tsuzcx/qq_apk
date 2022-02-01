@@ -1,39 +1,58 @@
 package com.tencent.mm.plugin.welab;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cv;
-import com.tencent.mm.plugin.welab.a.a.b;
-import com.tencent.mm.plugin.welab.a.a.d;
-import java.util.Map;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.model.cl.a;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class c
-  implements d
+  implements cl.a
 {
-  public final void a(b paramb)
+  public final void a(g.a parama)
   {
-    AppMethodBeat.i(80538);
-    a.dhl().vuV = paramb;
-    AppMethodBeat.o(80538);
+    AppMethodBeat.i(146209);
+    if ((parama == null) || (parama.mpN == null) || (parama.mpN.YFG == null))
+    {
+      Log.i("MicroMsg.WelabNewMsgLsn", "recv null msg");
+      AppMethodBeat.o(146209);
+      return;
+    }
+    parama = w.a(parama.mpN.YFG);
+    Log.i("MicroMsg.WelabNewMsgLsn", "recv addMsg ".concat(String.valueOf(parama)));
+    parama = f.bnp(parama);
+    if ((parama != null) && (parama.isValid()))
+    {
+      if (parama.field_status != 1) {
+        break label124;
+      }
+      b.iDA().XyB.delete(parama, new String[] { "expId" });
+    }
+    for (;;)
+    {
+      e.E(parama.field_LabsAppId, 6, false);
+      AppMethodBeat.o(146209);
+      return;
+      label124:
+      b.iDA().XyB.c(parama);
+      com.tencent.mm.plugin.welab.e.b.iDO().f(parama);
+      parama.reportIdkey();
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(parama);
+      b.iDA();
+      b.mo(localArrayList);
+    }
   }
   
-  public final void a(String paramString, b paramb)
-  {
-    AppMethodBeat.i(80537);
-    a.dhl().vuU.put(paramString, paramb);
-    AppMethodBeat.o(80537);
-  }
-  
-  public final cv ajt(String paramString)
-  {
-    AppMethodBeat.i(80539);
-    paramString = a.dhl().ajs(paramString);
-    AppMethodBeat.o(80539);
-    return paramString;
-  }
+  public final void a(g.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.c
  * JD-Core Version:    0.7.0.1
  */

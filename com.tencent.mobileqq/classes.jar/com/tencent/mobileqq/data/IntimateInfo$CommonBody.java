@@ -15,27 +15,23 @@ public class IntimateInfo$CommonBody
   
   public static CommonBody copyFrom(oidb_0xcf4.CommonBody paramCommonBody)
   {
+    byte[] arrayOfByte = null;
     if (paramCommonBody == null) {
       return null;
     }
     CommonBody localCommonBody = new CommonBody();
     int i;
-    if (paramCommonBody.uint32_oidb_cmd.has())
-    {
+    if (paramCommonBody.uint32_oidb_cmd.has()) {
       i = paramCommonBody.uint32_oidb_cmd.get();
-      localCommonBody.cmd = i;
-      if (!paramCommonBody.string_oidb_body.has()) {
-        break label70;
-      }
-    }
-    label70:
-    for (paramCommonBody = paramCommonBody.string_oidb_body.get().toByteArray();; paramCommonBody = null)
-    {
-      localCommonBody.rspBodyContent = paramCommonBody;
-      return localCommonBody;
+    } else {
       i = 0;
-      break;
     }
+    localCommonBody.cmd = i;
+    if (paramCommonBody.string_oidb_body.has()) {
+      arrayOfByte = paramCommonBody.string_oidb_body.get().toByteArray();
+    }
+    localCommonBody.rspBodyContent = arrayOfByte;
+    return localCommonBody;
   }
   
   public static CommonBody copyFromJson(JSONObject paramJSONObject)
@@ -64,7 +60,12 @@ public class IntimateInfo$CommonBody
   
   public String toString()
   {
-    return "CommonBody{cmd=" + this.cmd + ", rspBodyContent=" + this.rspBodyContent.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommonBody{cmd=");
+    localStringBuilder.append(this.cmd);
+    localStringBuilder.append(", rspBodyContent=");
+    localStringBuilder.append(this.rspBodyContent.toString());
+    return localStringBuilder.toString();
   }
 }
 

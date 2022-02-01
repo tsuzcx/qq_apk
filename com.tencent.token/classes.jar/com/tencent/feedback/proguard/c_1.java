@@ -8,31 +8,34 @@ import java.util.Set;
 public class c
   extends a
 {
-  protected HashMap d = null;
-  private HashMap e = new HashMap();
+  protected HashMap<String, byte[]> d = null;
+  private HashMap<String, Object> e = new HashMap();
   private h f = new h();
   
-  public void a(String paramString, Object paramObject)
+  public <T> void a(String paramString, T paramT)
   {
     if (this.d != null)
     {
-      if (paramString == null) {
-        throw new IllegalArgumentException("put key can not is null");
-      }
-      if (paramObject == null) {
+      if (paramString != null)
+      {
+        if (paramT != null)
+        {
+          if (!(paramT instanceof Set))
+          {
+            i locali = new i();
+            locali.a(this.b);
+            locali.a(paramT, 0);
+            paramT = k.a(locali.a());
+            this.d.put(paramString, paramT);
+            return;
+          }
+          throw new IllegalArgumentException("can not support Set");
+        }
         throw new IllegalArgumentException("put value can not is null");
       }
-      if ((paramObject instanceof Set)) {
-        throw new IllegalArgumentException("can not support Set");
-      }
-      i locali = new i();
-      locali.a(this.b);
-      locali.a(paramObject, 0);
-      paramObject = k.a(locali.a());
-      this.d.put(paramString, paramObject);
-      return;
+      throw new IllegalArgumentException("put key can not is null");
     }
-    super.a(paramString, paramObject);
+    super.a(paramString, paramT);
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -44,12 +47,14 @@ public class c
     }
     catch (Exception localException)
     {
-      this.f.a(paramArrayOfByte);
-      this.f.a(this.b);
-      paramArrayOfByte = new HashMap(1);
-      paramArrayOfByte.put("", new byte[0]);
-      this.d = this.f.a(paramArrayOfByte, 0, false);
+      label6:
+      break label6;
     }
+    this.f.a(paramArrayOfByte);
+    this.f.a(this.b);
+    paramArrayOfByte = new HashMap(1);
+    paramArrayOfByte.put("", new byte[0]);
+    this.d = this.f.a(paramArrayOfByte, 0, false);
   }
   
   public byte[] a()
@@ -64,60 +69,59 @@ public class c
     return super.a();
   }
   
-  public final Object b(String paramString, Object paramObject)
+  public final <T> T b(String paramString, T paramT)
   {
-    Object localObject = null;
-    if (this.d != null) {
-      if (this.d.containsKey(paramString)) {}
-    }
-    while (!this.a.containsKey(paramString)) {
-      for (;;)
-      {
-        return localObject;
-        if (this.e.containsKey(paramString)) {
-          return this.e.get(paramString);
-        }
-        localObject = (byte[])this.d.get(paramString);
-        try
-        {
-          this.f.a((byte[])localObject);
-          this.f.a(this.b);
-          paramObject = this.f.a(paramObject, 0, true);
-          localObject = paramObject;
-          if (paramObject != null)
-          {
-            this.e.put(paramString, paramObject);
-            return paramObject;
-          }
-        }
-        catch (Exception paramString)
-        {
-          throw new b(paramString);
-        }
-      }
-    }
-    if (this.e.containsKey(paramString)) {
-      return this.e.get(paramString);
-    }
-    localObject = ((HashMap)this.a.get(paramString)).entrySet().iterator();
-    if (((Iterator)localObject).hasNext())
+    Object localObject1 = this.d;
+    if (localObject1 != null)
     {
-      localObject = (Map.Entry)((Iterator)localObject).next();
-      ((Map.Entry)localObject).getKey();
-    }
-    for (localObject = (byte[])((Map.Entry)localObject).getValue();; localObject = new byte[0]) {
+      if (!((HashMap)localObject1).containsKey(paramString)) {
+        return null;
+      }
+      if (this.e.containsKey(paramString)) {
+        return this.e.get(paramString);
+      }
+      localObject1 = (byte[])this.d.get(paramString);
       try
       {
-        this.f.a((byte[])localObject);
+        this.f.a((byte[])localObject1);
         this.f.a(this.b);
-        paramObject = this.f.a(paramObject, 0, true);
-        this.e.put(paramString, paramObject);
-        return paramObject;
+        paramT = this.f.a(paramT, 0, true);
+        if (paramT != null) {
+          this.e.put(paramString, paramT);
+        }
+        return paramT;
       }
       catch (Exception paramString)
       {
         throw new b(paramString);
       }
+    }
+    if (!this.a.containsKey(paramString)) {
+      return null;
+    }
+    if (this.e.containsKey(paramString)) {
+      return this.e.get(paramString);
+    }
+    Object localObject2 = (HashMap)this.a.get(paramString);
+    localObject1 = new byte[0];
+    localObject2 = ((HashMap)localObject2).entrySet().iterator();
+    if (((Iterator)localObject2).hasNext())
+    {
+      localObject1 = (Map.Entry)((Iterator)localObject2).next();
+      ((Map.Entry)localObject1).getKey();
+      localObject1 = (byte[])((Map.Entry)localObject1).getValue();
+    }
+    try
+    {
+      this.f.a((byte[])localObject1);
+      this.f.a(this.b);
+      paramT = this.f.a(paramT, 0, true);
+      this.e.put(paramString, paramT);
+      return paramT;
+    }
+    catch (Exception paramString)
+    {
+      throw new b(paramString);
     }
   }
   

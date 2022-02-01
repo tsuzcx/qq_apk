@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 public class ShareBsDiffPatchInfo
 {
-  public String BuO;
-  public String bWN;
-  public String cqq;
+  public String md5;
   public String name;
+  public String patchMd5;
   public String path;
+  public String rawCrc;
   
-  private ShareBsDiffPatchInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public ShareBsDiffPatchInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     this.name = paramString1;
-    this.cqq = paramString2;
-    this.BuO = paramString4;
-    this.bWN = paramString5;
+    this.md5 = paramString2;
+    this.rawCrc = paramString4;
+    this.patchMd5 = paramString5;
     this.path = paramString3;
   }
   
-  public static boolean a(ShareBsDiffPatchInfo paramShareBsDiffPatchInfo)
+  public static boolean checkDiffPatchInfo(ShareBsDiffPatchInfo paramShareBsDiffPatchInfo)
   {
     if (paramShareBsDiffPatchInfo == null) {}
     String str;
@@ -27,12 +27,12 @@ public class ShareBsDiffPatchInfo
     {
       return false;
       str = paramShareBsDiffPatchInfo.name;
-      paramShareBsDiffPatchInfo = paramShareBsDiffPatchInfo.cqq;
+      paramShareBsDiffPatchInfo = paramShareBsDiffPatchInfo.md5;
     } while ((str == null) || (str.length() <= 0) || (paramShareBsDiffPatchInfo == null) || (paramShareBsDiffPatchInfo.length() != 32));
     return true;
   }
   
-  public static void n(String paramString, ArrayList<ShareBsDiffPatchInfo> paramArrayList)
+  public static void parseDiffPatchInfo(String paramString, ArrayList<ShareBsDiffPatchInfo> paramArrayList)
   {
     if ((paramString == null) || (paramString.length() == 0)) {}
     for (;;)
@@ -66,17 +66,17 @@ public class ShareBsDiffPatchInfo
     localStringBuffer.append(",");
     localStringBuffer.append(this.path);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.cqq);
+    localStringBuffer.append(this.md5);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.BuO);
+    localStringBuffer.append(this.rawCrc);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.bWN);
+    localStringBuffer.append(this.patchMd5);
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareBsDiffPatchInfo
  * JD-Core Version:    0.7.0.1
  */

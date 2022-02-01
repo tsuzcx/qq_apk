@@ -1,33 +1,25 @@
 package com.tencent.mobileqq.mutualmark.oldlogic;
 
-import alto;
-import autp;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.HashSet;
+import com.tencent.mobileqq.mutualmark.MutualMarkIconProxyDrawable;
 
-public final class OldMutualMarkLogicHelper$2
+final class OldMutualMarkLogicHelper$2
   implements Runnable
 {
-  public OldMutualMarkLogicHelper$2(QQAppInterface paramQQAppInterface) {}
+  OldMutualMarkLogicHelper$2(MutualMarkIconProxyDrawable paramMutualMarkIconProxyDrawable, AioAnimationDetector paramAioAnimationDetector, QQAppInterface paramQQAppInterface, AIOAnimationConatiner paramAIOAnimationConatiner) {}
   
   public void run()
   {
-    alto localalto = (alto)this.a.getManager(51);
-    if (localalto != null)
-    {
-      HashSet localHashSet = autp.a();
-      if ((localHashSet != null) && (localHashSet.size() > 0))
-      {
-        localalto.b(new ArrayList(localHashSet));
-        localHashSet.clear();
-      }
+    if (this.a.a()) {
+      this.b.a(this.c, false, true, this.d, 0, this.a, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.2
  * JD-Core Version:    0.7.0.1
  */

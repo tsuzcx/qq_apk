@@ -1,69 +1,75 @@
 package com.tencent.mobileqq.service;
 
 import android.os.Bundle;
-import aohc;
-import ayyb;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
-public class MobileQQServiceBase$1
+class MobileQQServiceBase$1
   implements Runnable
 {
-  public MobileQQServiceBase$1(ayyb paramayyb, ToServiceMsg paramToServiceMsg, aohc paramaohc, Class paramClass) {}
+  MobileQQServiceBase$1(MobileQQServiceBase paramMobileQQServiceBase, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == null) {}
-    for (Object localObject = "";; localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd())
+    localObject = this.val$request.getServiceCmd();
+    StringBuilder localStringBuilder1;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileQQServiceBase", 2, "req cmd: " + (String)localObject);
-      }
-      if ((this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null) && ("MessageSvc.PbSendMsg".equalsIgnoreCase((String)localObject)))
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("req cmd: ");
+      localStringBuilder1.append((String)localObject);
+      QLog.d("MobileQQServiceBase", 2, localStringBuilder1.toString());
+    }
+    if ("MessageSvc.PbSendMsg".equalsIgnoreCase((String)localObject))
+    {
+      long l1 = this.val$request.extraData.getLong("msg_send_time", 0L);
+      if (l1 != 0L)
       {
-        long l1 = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("msg_send_time", 0L);
-        if (l1 != 0L)
-        {
-          long l2 = System.currentTimeMillis();
-          this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("msg_request_time", l2);
-          this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("msg_send_to_request_cost", l2 - l1);
-        }
-      }
-      try
-      {
-        this.this$0.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_Aohc, this.jdField_a_of_type_JavaLangClass);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("MobileQQServiceBase", 2, "handleRequest Exception. cmd = " + (String)localObject, localException);
-        localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
-        ((FromServiceMsg)localObject).setMsgFail();
-        this.this$0.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, localException);
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        if (!QLog.isColorLevel()) {
-          break label259;
-        }
-        QLog.d("MobileQQServiceBase", 2, "handleRequest OutOfMemoryError. cmd = " + (String)localObject);
-        localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
-        ((FromServiceMsg)localObject).setMsgFail();
-        this.this$0.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, null);
+        long l2 = System.currentTimeMillis();
+        this.val$request.extraData.putLong("msg_request_time", l2);
+        this.val$request.extraData.putLong("msg_send_to_request_cost", l2 - l1);
       }
     }
-    label259:
+    try
+    {
+      this.this$0.realHandleRequest(this.val$request, this.this$0.getServlet());
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (!QLog.isColorLevel()) {
+        break label259;
+      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("handleRequest Exception. cmd = ");
+      localStringBuilder2.append((String)localObject);
+      QLog.e("MobileQQServiceBase", 2, localStringBuilder2.toString(), localException);
+      localObject = new FromServiceMsg(this.val$request.getUin(), (String)localObject);
+      ((FromServiceMsg)localObject).setMsgFail();
+      this.this$0.handleResponse(false, this.val$request, (FromServiceMsg)localObject, localException);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label132:
+      break label132;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("handleRequest OutOfMemoryError. cmd = ");
+      localStringBuilder1.append((String)localObject);
+      QLog.d("MobileQQServiceBase", 2, localStringBuilder1.toString());
+    }
+    localObject = new FromServiceMsg(this.val$request.getUin(), (String)localObject);
+    ((FromServiceMsg)localObject).setMsgFail();
+    this.this$0.handleResponse(false, this.val$request, (FromServiceMsg)localObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.MobileQQServiceBase.1
  * JD-Core Version:    0.7.0.1
  */

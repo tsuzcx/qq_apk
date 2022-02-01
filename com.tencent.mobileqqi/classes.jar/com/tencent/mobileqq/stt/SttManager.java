@@ -23,8 +23,8 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import glg;
 import glh;
-import gli;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -129,7 +129,7 @@ public class SttManager
           continue;
         }
         localObject = paramQQAppInterface.a().getResources().getDisplayMetrics();
-        localObject = new gli(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
+        localObject = new glh(((DisplayMetrics)localObject).widthPixels, ((DisplayMetrics)localObject).heightPixels);
       }
       catch (MalformedURLException paramQQAppInterface)
       {
@@ -153,7 +153,7 @@ public class SttManager
       try
       {
         SAXParserFactory.newInstance().newSAXParser().parse(localFile, (DefaultHandler)localObject);
-        if (TextUtils.isEmpty(((gli)localObject).a)) {
+        if (TextUtils.isEmpty(((glh)localObject).a)) {
           bool = HttpDownloadUtil.a(paramQQAppInterface, new URL(paramString), localFile);
         }
         if (!bool) {
@@ -172,7 +172,7 @@ public class SttManager
       localFile.delete();
       return;
       if (QLog.isColorLevel()) {
-        QLog.d("Q.stt", 2, "updateGuide download image failed: " + ((gli)localObject).a);
+        QLog.d("Q.stt", 2, "updateGuide download image failed: " + ((glh)localObject).a);
       }
     }
   }
@@ -277,11 +277,11 @@ public class SttManager
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
         }
-        localObject = (glh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localLong);
+        localObject = (glg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localLong);
         paramArrayOfByte = (byte[])localObject;
         if (localObject == null)
         {
-          paramArrayOfByte = new glh(null);
+          paramArrayOfByte = new glg(null);
           paramArrayOfByte.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(k);
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(1, localLong);
           localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, localLong);

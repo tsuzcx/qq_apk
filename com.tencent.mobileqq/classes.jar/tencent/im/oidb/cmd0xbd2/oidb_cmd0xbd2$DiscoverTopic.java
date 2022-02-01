@@ -27,18 +27,19 @@ public final class oidb_cmd0xbd2$DiscoverTopic
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 64, 72, 82, 162 }, new String[] { "uint64_topic_id", "bytes_title", "bytes_cover_url", "bytes_subtitle", "uint64_play_count", "bytes_url", "uint32_has_recomment", "uint32_effective_time", "uint32_expiation_time", "bytes_common_data", "rpt_video_card_list" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro6, null }, DiscoverTopic.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 64, 72, 82, 162 }, new String[] { "uint64_topic_id", "bytes_title", "bytes_cover_url", "bytes_subtitle", "uint64_play_count", "bytes_url", "uint32_has_recomment", "uint32_effective_time", "uint32_expiation_time", "bytes_common_data", "rpt_video_card_list" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localInteger, localInteger, localInteger, localByteStringMicro6, null }, DiscoverTopic.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbd2.oidb_cmd0xbd2.DiscoverTopic
  * JD-Core Version:    0.7.0.1
  */

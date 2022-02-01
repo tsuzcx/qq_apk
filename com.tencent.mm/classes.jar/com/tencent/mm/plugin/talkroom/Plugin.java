@@ -1,42 +1,87 @@
 package com.tencent.mm.plugin.talkroom;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.aap;
+import com.tencent.mm.autogen.a.aaq;
+import com.tencent.mm.autogen.a.aas;
+import com.tencent.mm.autogen.a.ny;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.talkroom.model.b;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.event.IListener;
 
 public class Plugin
-  implements c
+  implements d
 {
   public Plugin()
   {
-    AppMethodBeat.i(25689);
-    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.1(this));
-    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.b((byte)0));
-    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.a(this, (byte)0));
-    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.c(this, (byte)0));
-    AppMethodBeat.o(25689);
+    AppMethodBeat.i(29370);
+    new IListener(f.hfK) {}.alive();
+    new TalkRoomServerListener().alive();
+    new TalkRoomReportMgrListener().alive();
+    new TalkRoomeStatusBarHideListener().alive();
+    AppMethodBeat.o(29370);
   }
   
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(25690);
+    AppMethodBeat.i(29371);
     a locala = new a();
-    AppMethodBeat.o(25690);
+    AppMethodBeat.o(29371);
     return locala;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(25691);
-    com.tencent.mm.plugin.talkroom.model.b localb = new com.tencent.mm.plugin.talkroom.model.b();
-    AppMethodBeat.o(25691);
+    AppMethodBeat.i(29372);
+    b localb = new b();
+    AppMethodBeat.o(29372);
     return localb;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
+  }
+  
+  class TalkRoomReportMgrListener
+    extends IListener<aap>
+  {
+    public TalkRoomReportMgrListener()
+    {
+      super();
+      AppMethodBeat.i(161452);
+      this.__eventId = aap.class.getName().hashCode();
+      AppMethodBeat.o(161452);
+    }
+  }
+  
+  static class TalkRoomServerListener
+    extends IListener<aaq>
+  {
+    public TalkRoomServerListener()
+    {
+      super();
+      AppMethodBeat.i(161454);
+      this.__eventId = aaq.class.getName().hashCode();
+      AppMethodBeat.o(161454);
+    }
+  }
+  
+  class TalkRoomeStatusBarHideListener
+    extends IListener<aas>
+  {
+    public TalkRoomeStatusBarHideListener()
+    {
+      super();
+      AppMethodBeat.i(161456);
+      this.__eventId = aas.class.getName().hashCode();
+      AppMethodBeat.o(161456);
+    }
   }
 }
 

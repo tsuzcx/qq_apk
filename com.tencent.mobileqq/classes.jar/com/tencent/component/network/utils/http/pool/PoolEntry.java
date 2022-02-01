@@ -20,25 +20,29 @@ public abstract class PoolEntry<T, C>
   
   public PoolEntry(String paramString, T paramT, C paramC, long paramLong, TimeUnit paramTimeUnit)
   {
-    if (paramT == null) {
-      throw new IllegalArgumentException("Route may not be null");
-    }
-    if (paramC == null) {
+    if (paramT != null)
+    {
+      if (paramC != null)
+      {
+        if (paramTimeUnit != null)
+        {
+          this.id = paramString;
+          this.route = paramT;
+          this.conn = paramC;
+          this.created = System.currentTimeMillis();
+          if (paramLong > 0L) {
+            this.validUnit = (this.created + paramTimeUnit.toMillis(paramLong));
+          } else {
+            this.validUnit = 9223372036854775807L;
+          }
+          this.expiry = this.validUnit;
+          return;
+        }
+        throw new IllegalArgumentException("Time unit may not be null");
+      }
       throw new IllegalArgumentException("Connection may not be null");
     }
-    if (paramTimeUnit == null) {
-      throw new IllegalArgumentException("Time unit may not be null");
-    }
-    this.id = paramString;
-    this.route = paramT;
-    this.conn = paramC;
-    this.created = System.currentTimeMillis();
-    if (paramLong > 0L) {}
-    for (this.validUnit = (this.created + paramTimeUnit.toMillis(paramLong));; this.validUnit = 9223372036854775807L)
-    {
-      this.expiry = this.validUnit;
-      return;
-    }
+    throw new IllegalArgumentException("Route may not be null");
   }
   
   public abstract void close();
@@ -103,43 +107,24 @@ public abstract class PoolEntry<T, C>
   
   public abstract boolean isClosed();
   
-  /* Error */
   public boolean isExpired(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 68	com/tencent/component/network/utils/http/pool/PoolEntry:expiry	J
-    //   6: lstore_3
-    //   7: lload_1
-    //   8: lload_3
-    //   9: lcmp
-    //   10: iflt +11 -> 21
-    //   13: iconst_1
-    //   14: istore 5
-    //   16: aload_0
-    //   17: monitorexit
-    //   18: iload 5
-    //   20: ireturn
-    //   21: iconst_0
-    //   22: istore 5
-    //   24: goto -8 -> 16
-    //   27: astore 6
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload 6
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	PoolEntry
-    //   0	34	1	paramLong	long
-    //   6	3	3	l	long
-    //   14	9	5	bool	boolean
-    //   27	5	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	27	finally
+    try
+    {
+      long l = this.expiry;
+      boolean bool;
+      if (paramLong >= l) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void setState(Object paramObject)
@@ -162,25 +147,34 @@ public abstract class PoolEntry<T, C>
   
   public void updateExpiry(long paramLong, TimeUnit paramTimeUnit)
   {
-    if (paramTimeUnit == null) {
+    if (paramTimeUnit != null) {}
+    for (;;)
+    {
       try
       {
-        throw new IllegalArgumentException("Time unit may not be null");
+        this.updated = System.currentTimeMillis();
+        if (paramLong <= 0L) {
+          break label66;
+        }
+        paramLong = this.updated + paramTimeUnit.toMillis(paramLong);
+        this.expiry = Math.min(paramLong, this.validUnit);
+        return;
       }
-      finally {}
-    }
-    this.updated = System.currentTimeMillis();
-    if (paramLong > 0L) {}
-    for (paramLong = this.updated + paramTimeUnit.toMillis(paramLong);; paramLong = 9223372036854775807L)
-    {
-      this.expiry = Math.min(paramLong, this.validUnit);
-      return;
+      finally
+      {
+        break label62;
+      }
+      throw new IllegalArgumentException("Time unit may not be null");
+      label62:
+      throw paramTimeUnit;
+      label66:
+      paramLong = 9223372036854775807L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.http.pool.PoolEntry
  * JD-Core Version:    0.7.0.1
  */

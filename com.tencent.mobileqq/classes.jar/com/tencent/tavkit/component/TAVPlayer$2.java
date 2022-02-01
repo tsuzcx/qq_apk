@@ -1,32 +1,36 @@
 package com.tencent.tavkit.component;
 
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.player.IPlayer.PlayerListener;
-import com.tencent.tav.player.IPlayer.PlayerStatus;
-import com.tencent.tav.player.Player;
+import android.graphics.SurfaceTexture;
+import android.view.Surface;
+import android.view.TextureView.SurfaceTextureListener;
 
 class TAVPlayer$2
-  implements IPlayer.PlayerListener
+  implements TextureView.SurfaceTextureListener
 {
-  TAVPlayer$2(TAVPlayer paramTAVPlayer, TAVPlayer.PlayerListener paramPlayerListener) {}
+  TAVPlayer$2(TAVPlayer paramTAVPlayer) {}
   
-  public void onPositionChanged(CMTime paramCMTime)
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if ((this.val$playerListener != null) && (TAVPlayer.access$000(this.this$0) != null)) {
-      this.val$playerListener.onPositionChanged(paramCMTime, TAVPlayer.access$000(this.this$0).duration());
-    }
+    paramSurfaceTexture = new Surface(paramSurfaceTexture);
+    this.this$0.onSurfaceCreate(paramSurfaceTexture, paramInt1, paramInt2);
   }
   
-  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    if ((this.val$playerListener != null) && (TAVPlayer.access$000(this.this$0) != null)) {
-      this.val$playerListener.onStatusChanged(paramPlayerStatus, TAVPlayer.access$000(this.this$0));
-    }
+    this.this$0.onSurfaceDestory();
+    return false;
   }
+  
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  {
+    this.this$0.onSurfaceSizeChanged(paramInt1, paramInt2);
+  }
+  
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer.2
  * JD-Core Version:    0.7.0.1
  */

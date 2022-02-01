@@ -34,7 +34,7 @@ public final class DeviceAttrs
   public static final int DEGREE_270 = 270;
   public static final int DEGREE_90 = 90;
   public static final int DEGREE_INVALIDATE = -1;
-  public static final Boolean ENABLE_LOG = Boolean.valueOf(false);
+  public static final Boolean ENABLE_LOG;
   public static final int ENABLE_PERFORMANCE_MONITOR_THRESHOLD = 604800000;
   private static final DeviceAttrs INSTANCE = new DeviceAttrs();
   public static final String KEY_CAMERASDK_DISABLE = "pref_camerasdk_disable";
@@ -44,9 +44,9 @@ public final class DeviceAttrs
   public static final String KEY_PARSE_RESULT = "parse_result";
   public static final String KEY_URL_VALUE = "black_list_url";
   public static final String KEY_VERSION = "xml_version";
-  public static final Boolean PARSE_XML_DEBUG_MODE = Boolean.valueOf(false);
+  public static final Boolean PARSE_XML_DEBUG_MODE;
   private static final String TAG;
-  private static final Boolean TEST_URL = Boolean.valueOf(false);
+  private static final Boolean TEST_URL;
   private static final String XML_FILE_NAME = "phone_attrs_config.dat";
   private static final String ZIP_FILE_NAME = "phone_attrs_config.zip";
   private static final String backCamCannotRotateKey = "backCamCannotRotate";
@@ -104,8 +104,8 @@ public final class DeviceAttrs
   private static final String readCamNumExceptionKey = "readCamNumException";
   private static final String readMaxNumFocusAreasAbnormalKey = "readMaxNumFocusAreasAbnormal";
   private static final String readMaxNumMeteringAreasAbnormalKey = "readMaxNumMeteringAreasAbnormal";
-  private static final String sReleaseURL = "http://xiangji.qq.com/services/cameraCoreSvr.php";
-  private static final String sTestURL = "http://test.xiangji.qq.com/services/cameraCoreSvr.php";
+  private static final String sReleaseURL = "https://xiangji.qq.com/services/cameraCoreSvr.php";
+  private static final String sTestURL = "https://test.xiangji.qq.com/services/cameraCoreSvr.php";
   private static final String str_backPictureSize169Key = "str_backPictureSize169";
   private static final String str_backPictureSize43Key = "str_backPictureSize43";
   private static final String str_backPreviewSize169Key = "str_backPreviewSize169";
@@ -195,33 +195,46 @@ public final class DeviceAttrs
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    ENABLE_LOG = localBoolean;
+    PARSE_XML_DEBUG_MODE = localBoolean;
+    TEST_URL = localBoolean;
     TAG = DeviceAttrs.class.getSimpleName();
   }
   
   private DeviceAttrs()
   {
-    if (TEST_URL.booleanValue()) {}
-    for (String str = "http://test.xiangji.qq.com/services/cameraCoreSvr.php";; str = "http://xiangji.qq.com/services/cameraCoreSvr.php")
-    {
-      this.mRequestUrl = str;
-      this.mFastCaptureKeys = new ArrayList();
-      this.mFastCaptureOnValues = new ArrayList();
-      return;
+    String str;
+    if (TEST_URL.booleanValue()) {
+      str = "https://test.xiangji.qq.com/services/cameraCoreSvr.php";
+    } else {
+      str = "https://xiangji.qq.com/services/cameraCoreSvr.php";
     }
+    this.mRequestUrl = str;
+    this.mFastCaptureKeys = new ArrayList();
+    this.mFastCaptureOnValues = new ArrayList();
   }
   
   private String editKey(Set<String> paramSet, String paramString1, String paramString2)
   {
     String str = paramString1;
-    if (paramSet.contains(paramString1)) {
-      str = paramString1 + "_" + paramString2;
+    if (paramSet.contains(paramString1))
+    {
+      paramSet = new StringBuilder();
+      paramSet.append(paramString1);
+      paramSet.append("_");
+      paramSet.append(paramString2);
+      str = paramSet.toString();
     }
     return str;
   }
   
   private String getCameraPrefName(Context paramContext)
   {
-    return paramContext.getPackageName() + "_preferences_camera_adapter";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append("_preferences_camera_adapter");
+    return localStringBuilder.toString();
   }
   
   public static DeviceAttrs getInstance()
@@ -231,17 +244,18 @@ public final class DeviceAttrs
   
   private void initFastCaptureKeyValue()
   {
-    int j = 0;
-    if ((this.mFastCaptureKeys != null) && (this.mFastCaptureOnValues != null) && (this.mFastCaptureKeys.isEmpty()) && (this.mFastCaptureOnValues.isEmpty()))
+    Object localObject = this.mFastCaptureKeys;
+    if ((localObject != null) && (this.mFastCaptureOnValues != null) && (((List)localObject).isEmpty()) && (this.mFastCaptureOnValues.isEmpty()))
     {
       this.mFastCaptureKeys.clear();
       this.mFastCaptureOnValues.clear();
       try
       {
-        Object localObject = parseFastCaptureFile();
+        localObject = parseFastCaptureFile();
         if (localObject != null)
         {
           JsonArray localJsonArray = ((JsonObject)localObject).getAsJsonArray("key");
+          int j = 0;
           int i;
           if (localJsonArray != null)
           {
@@ -356,75 +370,328 @@ public final class DeviceAttrs
   private void logAttrsValues()
   {
     LogUtils.i(TAG, "DeviceAttrs start-------------------------------------------------------------");
-    LogUtils.i(TAG, "DeviceAttrs str_deviceSocInfo = " + this.str_deviceSocInfo);
-    LogUtils.d(TAG, "DeviceAttrs str_deviceSocInfo = " + this.str_deviceSocInfo);
-    LogUtils.i(TAG, "DeviceAttrs disableCameraSDK = " + this.disableCameraSDK);
-    LogUtils.i(TAG, "DeviceAttrs disableCameraVideo = " + this.disableCameraVideo);
-    LogUtils.i(TAG, "DeviceAttrs enablePerformanceMonitor = " + this.enablePerformanceMonitor);
-    LogUtils.i(TAG, "DeviceAttrs disableLiteEditor = " + this.disableLiteEditor);
-    LogUtils.i(TAG, "DeviceAttrs readCamNumException = " + this.readCamNumException);
-    LogUtils.i(TAG, "DeviceAttrs disableFrontCamera = " + this.disableFrontCamera);
-    LogUtils.i(TAG, "DeviceAttrs beBlurredPreviewAfterTakePic = " + this.beBlurredPreviewAfterTakePic);
-    LogUtils.i(TAG, "DeviceAttrs beBlurredPicAfterTakePic = " + this.beBlurredPicAfterTakePic);
-    LogUtils.i(TAG, "DeviceAttrs enableFastCapture4FrontCamera = " + this.enableFastCapture4FrontCamera);
-    LogUtils.i(TAG, "DeviceAttrs enableFastCapture4BackCamera = " + this.enableFastCapture4BackCamera);
-    LogUtils.i(TAG, "DeviceAttrs str_videoPreview720Fps = " + this.str_videoPreview720Fps);
-    LogUtils.i(TAG, "DeviceAttrs str_frontPreviewSize43 = " + this.str_frontPreviewSize43);
-    LogUtils.i(TAG, "DeviceAttrs str_frontPreviewSize169 = " + this.str_frontPreviewSize169);
-    LogUtils.i(TAG, "DeviceAttrs str_backPreviewSize43 = " + this.str_backPreviewSize43);
-    LogUtils.i(TAG, "DeviceAttrs str_backPreviewSize169 = " + this.str_backPreviewSize169);
-    LogUtils.i(TAG, "DeviceAttrs str_frontPictureSize43 = " + this.str_frontPictureSize43);
-    LogUtils.i(TAG, "DeviceAttrs str_backPictureSize43 = " + this.str_backPictureSize43);
-    LogUtils.i(TAG, "DeviceAttrs str_recordVideoSize = " + this.str_recordVideoSize);
-    LogUtils.i(TAG, "DeviceAttrs disableBackFlashMode = " + this.disableBackFlashMode);
-    LogUtils.i(TAG, "DeviceAttrs frontFlashModeException = " + this.frontFlashModeException);
-    LogUtils.i(TAG, "DeviceAttrs backFlashModeException = " + this.backFlashModeException);
-    LogUtils.i(TAG, "DeviceAttrs backFlashNoOn = " + this.backFlashNoOn);
-    LogUtils.i(TAG, "DeviceAttrs backFlashNoAuto = " + this.backFlashNoAuto);
-    LogUtils.i(TAG, "DeviceAttrs backFlashNoTorch = " + this.backFlashNoTorch);
-    LogUtils.i(TAG, "DeviceAttrs frontFlashNoAuto = " + this.frontFlashNoAuto);
-    LogUtils.i(TAG, "DeviceAttrs disableFocusMode = " + this.disableFocusMode);
-    LogUtils.i(TAG, "DeviceAttrs disableFocusModeContinuousPicture = " + this.disableFocusModeContinuousPicture);
-    LogUtils.i(TAG, "DeviceAttrs disableAutoFocusDouble = " + this.disableAutoFocusDouble);
-    LogUtils.i(TAG, "DeviceAttrs disableFaceDetection = " + this.disableFaceDetection);
-    LogUtils.i(TAG, "DeviceAttrs int_frontCamRotate0 = " + this.int_frontCamRotate0);
-    LogUtils.i(TAG, "DeviceAttrs int_frontCamRotate90 = " + this.int_frontCamRotate90);
-    LogUtils.i(TAG, "DeviceAttrs int_frontCamRotate180 = " + this.int_frontCamRotate180);
-    LogUtils.i(TAG, "DeviceAttrs int_frontCamRotate270 = " + this.int_frontCamRotate270);
-    LogUtils.i(TAG, "DeviceAttrs int_backCamRotate0 = " + this.int_backCamRotate0);
-    LogUtils.i(TAG, "DeviceAttrs int_backCamRotate90 = " + this.int_backCamRotate90);
-    LogUtils.i(TAG, "DeviceAttrs int_backCamRotate180 = " + this.int_backCamRotate180);
-    LogUtils.i(TAG, "DeviceAttrs int_backCamRotate270 = " + this.int_backCamRotate270);
-    LogUtils.i(TAG, "DeviceAttrs int_frontExifRotate0 = " + this.int_frontExifRotate0);
-    LogUtils.i(TAG, "DeviceAttrs int_frontExifRotate90 = " + this.int_frontExifRotate90);
-    LogUtils.i(TAG, "DeviceAttrs int_frontExifRotate180 = " + this.int_frontExifRotate180);
-    LogUtils.i(TAG, "DeviceAttrs int_frontExifRotate270 = " + this.int_frontExifRotate270);
-    LogUtils.i(TAG, "DeviceAttrs int_backExifRotate0 = " + this.int_backExifRotate0);
-    LogUtils.i(TAG, "DeviceAttrs int_backExifRotate90 = " + this.int_backExifRotate90);
-    LogUtils.i(TAG, "DeviceAttrs int_backExifRotate180 = " + this.int_backExifRotate180);
-    LogUtils.i(TAG, "DeviceAttrs int_backExifRotate270 = " + this.int_backExifRotate270);
-    LogUtils.i(TAG, "DeviceAttrs frontCamFlipH = " + this.frontCamFlipH);
-    LogUtils.i(TAG, "DeviceAttrs disableFrontExposure = " + this.disableFrontExposure);
-    LogUtils.i(TAG, "DeviceAttrs disableBackExposure = " + this.disableBackExposure);
-    LogUtils.i(TAG, "DeviceAttrs frontExposureStepOne = " + this.frontExposureStepOne);
-    LogUtils.i(TAG, "DeviceAttrs backExposureStepOne = " + this.backExposureStepOne);
-    LogUtils.i(TAG, "DeviceAttrs serverJpegEnable = " + this.serverJpegEnable);
-    LogUtils.i(TAG, "DeviceAttrs deviceJpegDisable = " + this.deviceJpegDisable);
-    LogUtils.i(TAG, "DeviceAttrs es_GL_EXT_shader_framebuffer_fetch = " + this.es_GL_EXT_shader_framebuffer_fetch);
-    LogUtils.i(TAG, "DeviceAttrs gpuProcessNeedBackTexture = " + this.gpuProcessNeedBackTexture);
-    LogUtils.i(TAG, "DeviceAttrs cannotFlashWhileAutoFocus = " + this.cannotFlashWhileAutoFocus);
-    LogUtils.i(TAG, "DeviceAttrs frontCamCannotRotate = " + this.frontCamCannotRotate);
-    LogUtils.i(TAG, "DeviceAttrs readMaxNumMeteringAreasAbnormal = " + this.readMaxNumMeteringAreasAbnormal);
-    LogUtils.i(TAG, "DeviceAttrs readMaxNumFocusAreasAbnormal = " + this.readMaxNumFocusAreasAbnormal);
-    LogUtils.i(TAG, "DeviceAttrs cannotRotatePreview = " + this.cannotRotatePreview);
-    LogUtils.i(TAG, "DeviceAttrs cannotFlashWhileFlashOn = " + this.cannotFlashWhileFlashOn);
-    LogUtils.i(TAG, "DeviceAttrs backCamCannotRotate = " + this.backCamCannotRotate);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_deviceSocInfo = ");
+    localStringBuilder.append(this.str_deviceSocInfo);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_deviceSocInfo = ");
+    localStringBuilder.append(this.str_deviceSocInfo);
+    LogUtils.d(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableCameraSDK = ");
+    localStringBuilder.append(this.disableCameraSDK);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableCameraVideo = ");
+    localStringBuilder.append(this.disableCameraVideo);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs enablePerformanceMonitor = ");
+    localStringBuilder.append(this.enablePerformanceMonitor);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableLiteEditor = ");
+    localStringBuilder.append(this.disableLiteEditor);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs readCamNumException = ");
+    localStringBuilder.append(this.readCamNumException);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableFrontCamera = ");
+    localStringBuilder.append(this.disableFrontCamera);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs beBlurredPreviewAfterTakePic = ");
+    localStringBuilder.append(this.beBlurredPreviewAfterTakePic);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs beBlurredPicAfterTakePic = ");
+    localStringBuilder.append(this.beBlurredPicAfterTakePic);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs enableFastCapture4FrontCamera = ");
+    localStringBuilder.append(this.enableFastCapture4FrontCamera);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs enableFastCapture4BackCamera = ");
+    localStringBuilder.append(this.enableFastCapture4BackCamera);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_videoPreview720Fps = ");
+    localStringBuilder.append(this.str_videoPreview720Fps);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_frontPreviewSize43 = ");
+    localStringBuilder.append(this.str_frontPreviewSize43);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_frontPreviewSize169 = ");
+    localStringBuilder.append(this.str_frontPreviewSize169);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_backPreviewSize43 = ");
+    localStringBuilder.append(this.str_backPreviewSize43);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_backPreviewSize169 = ");
+    localStringBuilder.append(this.str_backPreviewSize169);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_frontPictureSize43 = ");
+    localStringBuilder.append(this.str_frontPictureSize43);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_backPictureSize43 = ");
+    localStringBuilder.append(this.str_backPictureSize43);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs str_recordVideoSize = ");
+    localStringBuilder.append(this.str_recordVideoSize);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableBackFlashMode = ");
+    localStringBuilder.append(this.disableBackFlashMode);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs frontFlashModeException = ");
+    localStringBuilder.append(this.frontFlashModeException);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs backFlashModeException = ");
+    localStringBuilder.append(this.backFlashModeException);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs backFlashNoOn = ");
+    localStringBuilder.append(this.backFlashNoOn);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs backFlashNoAuto = ");
+    localStringBuilder.append(this.backFlashNoAuto);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs backFlashNoTorch = ");
+    localStringBuilder.append(this.backFlashNoTorch);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs frontFlashNoAuto = ");
+    localStringBuilder.append(this.frontFlashNoAuto);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableFocusMode = ");
+    localStringBuilder.append(this.disableFocusMode);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableFocusModeContinuousPicture = ");
+    localStringBuilder.append(this.disableFocusModeContinuousPicture);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableAutoFocusDouble = ");
+    localStringBuilder.append(this.disableAutoFocusDouble);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableFaceDetection = ");
+    localStringBuilder.append(this.disableFaceDetection);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_frontCamRotate0 = ");
+    localStringBuilder.append(this.int_frontCamRotate0);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_frontCamRotate90 = ");
+    localStringBuilder.append(this.int_frontCamRotate90);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_frontCamRotate180 = ");
+    localStringBuilder.append(this.int_frontCamRotate180);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_frontCamRotate270 = ");
+    localStringBuilder.append(this.int_frontCamRotate270);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_backCamRotate0 = ");
+    localStringBuilder.append(this.int_backCamRotate0);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_backCamRotate90 = ");
+    localStringBuilder.append(this.int_backCamRotate90);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_backCamRotate180 = ");
+    localStringBuilder.append(this.int_backCamRotate180);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_backCamRotate270 = ");
+    localStringBuilder.append(this.int_backCamRotate270);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_frontExifRotate0 = ");
+    localStringBuilder.append(this.int_frontExifRotate0);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_frontExifRotate90 = ");
+    localStringBuilder.append(this.int_frontExifRotate90);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_frontExifRotate180 = ");
+    localStringBuilder.append(this.int_frontExifRotate180);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_frontExifRotate270 = ");
+    localStringBuilder.append(this.int_frontExifRotate270);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_backExifRotate0 = ");
+    localStringBuilder.append(this.int_backExifRotate0);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_backExifRotate90 = ");
+    localStringBuilder.append(this.int_backExifRotate90);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_backExifRotate180 = ");
+    localStringBuilder.append(this.int_backExifRotate180);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs int_backExifRotate270 = ");
+    localStringBuilder.append(this.int_backExifRotate270);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs frontCamFlipH = ");
+    localStringBuilder.append(this.frontCamFlipH);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableFrontExposure = ");
+    localStringBuilder.append(this.disableFrontExposure);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs disableBackExposure = ");
+    localStringBuilder.append(this.disableBackExposure);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs frontExposureStepOne = ");
+    localStringBuilder.append(this.frontExposureStepOne);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs backExposureStepOne = ");
+    localStringBuilder.append(this.backExposureStepOne);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs serverJpegEnable = ");
+    localStringBuilder.append(this.serverJpegEnable);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs deviceJpegDisable = ");
+    localStringBuilder.append(this.deviceJpegDisable);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs es_GL_EXT_shader_framebuffer_fetch = ");
+    localStringBuilder.append(this.es_GL_EXT_shader_framebuffer_fetch);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs gpuProcessNeedBackTexture = ");
+    localStringBuilder.append(this.gpuProcessNeedBackTexture);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs cannotFlashWhileAutoFocus = ");
+    localStringBuilder.append(this.cannotFlashWhileAutoFocus);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs frontCamCannotRotate = ");
+    localStringBuilder.append(this.frontCamCannotRotate);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs readMaxNumMeteringAreasAbnormal = ");
+    localStringBuilder.append(this.readMaxNumMeteringAreasAbnormal);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs readMaxNumFocusAreasAbnormal = ");
+    localStringBuilder.append(this.readMaxNumFocusAreasAbnormal);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs cannotRotatePreview = ");
+    localStringBuilder.append(this.cannotRotatePreview);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs cannotFlashWhileFlashOn = ");
+    localStringBuilder.append(this.cannotFlashWhileFlashOn);
+    LogUtils.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeviceAttrs backCamCannotRotate = ");
+    localStringBuilder.append(this.backCamCannotRotate);
+    LogUtils.i(str, localStringBuilder.toString());
     LogUtils.i(TAG, "DeviceAttrs end-------------------------------------------------------------");
   }
   
   private boolean openFastCaptureMode(Camera.Parameters paramParameters)
   {
     boolean bool2 = false;
+    int i = 0;
     boolean bool1 = bool2;
     if (paramParameters != null)
     {
@@ -434,7 +701,6 @@ public final class DeviceAttrs
         bool1 = bool2;
         if (this.mFastCaptureOnValues != null)
         {
-          int i = 0;
           bool1 = false;
           while ((i < this.mFastCaptureKeys.size()) && (i < this.mFastCaptureOnValues.size()))
           {
@@ -460,6 +726,7 @@ public final class DeviceAttrs
       LogUtils.e(TAG, "[parseCurrentAttrsXML] sourceString is empty");
       return;
     }
+    int i;
     try
     {
       localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
@@ -468,154 +735,204 @@ public final class DeviceAttrs
       localEditor = this.mCameraMatchPref.edit();
       paramString = Boolean.valueOf(false);
     }
-    catch (XmlPullParserException paramString)
-    {
-      for (;;)
-      {
-        LogUtils.e(paramString);
-        LogUtils.i(TAG, "[parseCurrentAttrsXML] + END");
-        return;
-        localEditor.putBoolean(paramString, Boolean.valueOf(Boolean.parseBoolean(str2)).booleanValue());
-      }
-    }
     catch (IOException paramString)
     {
-      for (;;)
+      XmlPullParser localXmlPullParser;
+      SharedPreferences.Editor localEditor;
+      Object localObject3;
+      Object localObject2;
+      Object localObject4;
+      Object localObject5;
+      boolean bool;
+      int j;
+      LogUtils.e(paramString);
+      break label1206;
+    }
+    catch (XmlPullParserException paramString)
+    {
+      LogUtils.e(paramString);
+    }
+    localObject3 = localXmlPullParser.getName();
+    Object localObject1 = "default_defalut";
+    try
+    {
+      String str1 = DeviceInstance.getInstance().getDeviceName();
+      localObject1 = str1;
+    }
+    catch (NoClassDefFoundError localNoClassDefFoundError)
+    {
+      LogUtils.e(localNoClassDefFoundError);
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("_");
+    ((StringBuilder)localObject2).append(Build.DISPLAY.replace(" ", "_").toUpperCase());
+    localObject4 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("_Condition");
+    localObject5 = ((StringBuilder)localObject2).toString();
+    bool = ((String)localObject3).equals(localObject1);
+    localObject2 = "str_";
+    if (bool)
+    {
+      paramString = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("parseCurrentAttrsXML myPhoneType = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(", subTagName = ");
+      ((StringBuilder)localObject2).append((String)localObject4);
+      LogUtils.d(paramString, ((StringBuilder)localObject2).toString());
+      j = localXmlPullParser.getAttributeCount();
+      i = 0;
+      while (i < j)
       {
-        XmlPullParser localXmlPullParser;
-        int i;
-        SharedPreferences.Editor localEditor;
-        String str3;
-        Object localObject;
-        String str4;
-        int j;
-        String str2;
-        LogUtils.e(paramString);
-        continue;
-        paramString = Boolean.valueOf(true);
-        continue;
-        if (((String)localObject).startsWith(str3))
-        {
-          LogUtils.d(TAG, "parseCurrentAttrsXML myPhoneType = " + str2 + ", subTagName = " + (String)localObject);
-          j = localXmlPullParser.getAttributeCount();
-          i = 0;
-          if (i < j)
-          {
-            str2 = localXmlPullParser.getAttributeName(i);
-            str3 = localXmlPullParser.getAttributeValue(i);
-            if (str2.startsWith("int_")) {
-              localEditor.putInt(str2, Integer.valueOf(Integer.parseInt(str3)).intValue());
-            }
-            for (;;)
-            {
-              LogUtils.i(TAG, "parseCurrentAttrsXML(subNode) item[" + (i + 1) + "] name = " + str2 + ", value = " + str3);
-              i += 1;
-              break;
-              if (str2.startsWith("str_")) {
-                localEditor.putString(str2, String.valueOf(str3));
-              } else {
-                localEditor.putBoolean(str2, Boolean.valueOf(Boolean.parseBoolean(str3)).booleanValue());
-              }
-            }
-          }
+        paramString = localXmlPullParser.getAttributeName(i);
+        localObject1 = localXmlPullParser.getAttributeValue(i);
+        if (paramString.startsWith("int_")) {
+          localEditor.putInt(paramString, Integer.valueOf(Integer.parseInt((String)localObject1)).intValue());
+        } else if (paramString.startsWith("str_")) {
+          localEditor.putString(paramString, String.valueOf(localObject1));
+        } else {
+          localEditor.putBoolean(paramString, Boolean.valueOf(Boolean.parseBoolean((String)localObject1)).booleanValue());
         }
-        else if (str3.equals(str4))
+        localObject2 = TAG;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("parseCurrentAttrsXML item[");
+        i += 1;
+        ((StringBuilder)localObject3).append(i);
+        ((StringBuilder)localObject3).append("] name = ");
+        ((StringBuilder)localObject3).append(paramString);
+        ((StringBuilder)localObject3).append(", value = ");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        LogUtils.i((String)localObject2, ((StringBuilder)localObject3).toString());
+      }
+      localObject1 = Boolean.valueOf(true);
+    }
+    else
+    {
+      j = 1;
+      if (((String)localObject4).startsWith((String)localObject3))
+      {
+        localObject2 = TAG;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("parseCurrentAttrsXML myPhoneType = ");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(", subTagName = ");
+        ((StringBuilder)localObject3).append((String)localObject4);
+        LogUtils.d((String)localObject2, ((StringBuilder)localObject3).toString());
+        j = localXmlPullParser.getAttributeCount();
+        i = 0;
+        for (;;)
         {
-          j = localXmlPullParser.getAttributeCount();
-          if (j != 0)
-          {
-            str2 = localXmlPullParser.getAttributeName(0);
-            str3 = localXmlPullParser.getAttributeValue(0);
-            if (str2.startsWith("condition"))
-            {
-              localObject = new HashSet();
-              i = 1;
-              if (i < j)
-              {
-                str4 = localXmlPullParser.getAttributeName(i) + "_" + str2 + "_" + str3;
-                String str5 = localXmlPullParser.getAttributeValue(i);
-                if (str4.startsWith("int_")) {
-                  localEditor.putInt(str4, Integer.valueOf(Integer.parseInt(str5)).intValue());
-                }
-                for (;;)
-                {
-                  ((Set)localObject).add(localXmlPullParser.getAttributeName(i));
-                  LogUtils.i(TAG, "parseCurrentAttrsXML(condition) item[" + (i + 1) + "] name = " + str4 + ", value = " + str5);
-                  i += 1;
-                  break;
-                  if (str4.startsWith("str_")) {
-                    localEditor.putString(str4, String.valueOf(str5));
-                  } else {
-                    localEditor.putBoolean(str4, Boolean.valueOf(Boolean.parseBoolean(str5)).booleanValue());
-                  }
-                }
-              }
-              localEditor.putStringSet(str2 + "_" + str3, (Set)localObject);
-              localEditor.apply();
-              continue;
-              do
-              {
-                if (!paramString.booleanValue()) {
-                  break;
-                }
-                localEditor.putBoolean("is_need_parse_xml", false);
-                localEditor.apply();
-                break;
-              } while (i == 1);
-            }
+          localObject1 = paramString;
+          if (i >= j) {
+            break;
           }
+          localObject1 = localXmlPullParser.getAttributeName(i);
+          localObject2 = localXmlPullParser.getAttributeValue(i);
+          if (((String)localObject1).startsWith("int_")) {
+            localEditor.putInt((String)localObject1, Integer.valueOf(Integer.parseInt((String)localObject2)).intValue());
+          } else if (((String)localObject1).startsWith("str_")) {
+            localEditor.putString((String)localObject1, String.valueOf(localObject2));
+          } else {
+            localEditor.putBoolean((String)localObject1, Boolean.valueOf(Boolean.parseBoolean((String)localObject2)).booleanValue());
+          }
+          localObject3 = TAG;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("parseCurrentAttrsXML(subNode) item[");
+          i += 1;
+          ((StringBuilder)localObject4).append(i);
+          ((StringBuilder)localObject4).append("] name = ");
+          ((StringBuilder)localObject4).append((String)localObject1);
+          ((StringBuilder)localObject4).append(", value = ");
+          ((StringBuilder)localObject4).append((String)localObject2);
+          LogUtils.i((String)localObject3, ((StringBuilder)localObject4).toString());
+        }
+      }
+      localObject1 = paramString;
+      if (((String)localObject3).equals(localObject5))
+      {
+        i = localXmlPullParser.getAttributeCount();
+        if (i == 0)
+        {
+          localObject1 = paramString;
         }
         else
         {
-          switch (i)
+          localObject3 = localXmlPullParser.getAttributeName(0);
+          localObject4 = localXmlPullParser.getAttributeValue(0);
+          if (!((String)localObject3).startsWith("condition"))
           {
-          case 2: 
-          case 1: 
-          default: 
-            break;
+            localObject1 = paramString;
+          }
+          else
+          {
+            localObject5 = new HashSet();
+            localObject1 = localObject2;
+            while (j < i)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append(localXmlPullParser.getAttributeName(j));
+              ((StringBuilder)localObject2).append("_");
+              ((StringBuilder)localObject2).append((String)localObject3);
+              ((StringBuilder)localObject2).append("_");
+              ((StringBuilder)localObject2).append((String)localObject4);
+              localObject2 = ((StringBuilder)localObject2).toString();
+              String str2 = localXmlPullParser.getAttributeValue(j);
+              if (((String)localObject2).startsWith("int_")) {
+                localEditor.putInt((String)localObject2, Integer.valueOf(Integer.parseInt(str2)).intValue());
+              } else if (((String)localObject2).startsWith((String)localObject1)) {
+                localEditor.putString((String)localObject2, String.valueOf(str2));
+              } else {
+                localEditor.putBoolean((String)localObject2, Boolean.valueOf(Boolean.parseBoolean(str2)).booleanValue());
+              }
+              ((Set)localObject5).add(localXmlPullParser.getAttributeName(j));
+              String str3 = TAG;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("parseCurrentAttrsXML(condition) item[");
+              j += 1;
+              localStringBuilder.append(j);
+              localStringBuilder.append("] name = ");
+              localStringBuilder.append((String)localObject2);
+              localStringBuilder.append(", value = ");
+              localStringBuilder.append(str2);
+              LogUtils.i(str3, localStringBuilder.toString());
+            }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append((String)localObject3);
+            ((StringBuilder)localObject1).append("_");
+            ((StringBuilder)localObject1).append((String)localObject4);
+            localEditor.putStringSet(((StringBuilder)localObject1).toString(), (Set)localObject5);
+            localEditor.apply();
+            localObject1 = paramString;
           }
         }
       }
     }
-    i = localXmlPullParser.next();
-    break label1019;
-    str3 = localXmlPullParser.getName();
     for (;;)
     {
-      try
+      i = localXmlPullParser.next();
+      paramString = (String)localObject1;
+      label1206:
+      while (i == 1)
       {
-        String str1 = DeviceInstance.getInstance().getDeviceName();
-        localObject = str1 + "_" + Build.DISPLAY.replace(" ", "_").toUpperCase();
-        str4 = str1 + "_Condition";
-        if (!str3.equals(str1)) {
-          break label432;
-        }
-        LogUtils.d(TAG, "parseCurrentAttrsXML myPhoneType = " + str1 + ", subTagName = " + (String)localObject);
-        j = localXmlPullParser.getAttributeCount();
-        i = 0;
-        if (i >= j) {
-          break label424;
-        }
-        paramString = localXmlPullParser.getAttributeName(i);
-        str1 = localXmlPullParser.getAttributeValue(i);
-        if (paramString.startsWith("int_"))
+        if (paramString.booleanValue())
         {
-          localEditor.putInt(paramString, Integer.valueOf(Integer.parseInt(str1)).intValue());
-          LogUtils.i(TAG, "parseCurrentAttrsXML item[" + (i + 1) + "] name = " + paramString + ", value = " + str1);
-          i += 1;
-          continue;
+          localEditor.putBoolean("is_need_parse_xml", false);
+          localEditor.apply();
         }
+        LogUtils.i(TAG, "[parseCurrentAttrsXML] + END");
+        return;
       }
-      catch (NoClassDefFoundError localNoClassDefFoundError)
+      localObject1 = paramString;
+      if (i != 0)
       {
-        LogUtils.e(localNoClassDefFoundError);
-        str2 = "default_defalut";
-        continue;
+        if (i == 2) {
+          break;
+        }
+        localObject1 = paramString;
       }
-      if (!paramString.startsWith("str_")) {
-        break;
-      }
-      localEditor.putString(paramString, String.valueOf(str2));
     }
   }
   
@@ -625,158 +942,186 @@ public final class DeviceAttrs
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc_w 413
-    //   5: astore 4
-    //   7: getstatic 292	com/tencent/ttpic/baseutils/device/DeviceAttrs:PARSE_XML_DEBUG_MODE	Ljava/lang/Boolean;
-    //   10: invokevirtual 419	java/lang/Boolean:booleanValue	()Z
-    //   13: ifne +48 -> 61
-    //   16: aload_0
-    //   17: getfield 442	com/tencent/ttpic/baseutils/device/DeviceAttrs:mContext	Landroid/content/Context;
-    //   20: ldc_w 912
-    //   23: aload_0
-    //   24: getfield 445	com/tencent/ttpic/baseutils/device/DeviceAttrs:mSignature	Ljava/lang/String;
-    //   27: invokestatic 917	com/tencent/ttpic/baseutils/device/DeviceParser:parseFastCaptureFile	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   30: astore_1
-    //   31: aload_1
-    //   32: astore_2
-    //   33: aconst_null
-    //   34: astore_1
-    //   35: aload_2
-    //   36: astore_3
-    //   37: aload_1
-    //   38: ifnull +9 -> 47
-    //   41: aload_1
-    //   42: invokestatic 923	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   45: aload_2
-    //   46: astore_3
-    //   47: aload_3
-    //   48: invokestatic 774	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   51: ifne +78 -> 129
-    //   54: aload_3
-    //   55: invokestatic 927	com/tencent/ttpic/util/GsonUtils:json2JsonObject	(Ljava/lang/String;)Lcom/google/gson/JsonObject;
-    //   58: astore_1
-    //   59: aload_1
-    //   60: areturn
-    //   61: aload_0
-    //   62: getfield 442	com/tencent/ttpic/baseutils/device/DeviceAttrs:mContext	Landroid/content/Context;
-    //   65: invokevirtual 931	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   68: ldc_w 933
-    //   71: invokevirtual 939	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   74: astore_1
-    //   75: aload_1
-    //   76: astore_2
-    //   77: aload_1
-    //   78: invokestatic 942	com/tencent/ttpic/baseutils/io/IOUtils:toString	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   81: astore_3
-    //   82: aload_3
+    //   2: getstatic 292	com/tencent/ttpic/baseutils/device/DeviceAttrs:PARSE_XML_DEBUG_MODE	Ljava/lang/Boolean;
+    //   5: invokevirtual 419	java/lang/Boolean:booleanValue	()Z
+    //   8: ifne +25 -> 33
+    //   11: aload_0
+    //   12: getfield 442	com/tencent/ttpic/baseutils/device/DeviceAttrs:mContext	Landroid/content/Context;
+    //   15: ldc_w 912
+    //   18: aload_0
+    //   19: getfield 445	com/tencent/ttpic/baseutils/device/DeviceAttrs:mSignature	Ljava/lang/String;
+    //   22: invokestatic 917	com/tencent/ttpic/baseutils/device/DeviceParser:parseFastCaptureFile	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   25: astore_3
+    //   26: aconst_null
+    //   27: astore_1
+    //   28: aload_3
+    //   29: astore_2
+    //   30: goto +22 -> 52
+    //   33: aload_0
+    //   34: getfield 442	com/tencent/ttpic/baseutils/device/DeviceAttrs:mContext	Landroid/content/Context;
+    //   37: invokevirtual 921	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   40: ldc_w 923
+    //   43: invokevirtual 929	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   46: astore_1
+    //   47: aload_1
+    //   48: invokestatic 934	com/tencent/ttpic/baseutils/io/IOUtils:toString	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   51: astore_2
+    //   52: aload_2
+    //   53: astore_3
+    //   54: aload_1
+    //   55: ifnull +47 -> 102
+    //   58: aload_1
+    //   59: invokestatic 938	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   62: aload_2
+    //   63: astore_3
+    //   64: goto +38 -> 102
+    //   67: astore_2
+    //   68: goto +56 -> 124
+    //   71: astore_2
+    //   72: goto +14 -> 86
+    //   75: astore_3
+    //   76: aload_2
+    //   77: astore_1
+    //   78: aload_3
+    //   79: astore_2
+    //   80: goto +44 -> 124
     //   83: astore_2
-    //   84: goto -49 -> 35
-    //   87: astore_3
-    //   88: aconst_null
-    //   89: astore_1
+    //   84: aconst_null
+    //   85: astore_1
+    //   86: aload_2
+    //   87: invokestatic 818	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
     //   90: aload_1
-    //   91: astore_2
-    //   92: aload_3
-    //   93: invokestatic 880	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/Throwable;)V
-    //   96: aload 4
-    //   98: astore_3
-    //   99: aload_1
-    //   100: ifnull -53 -> 47
-    //   103: aload_1
-    //   104: invokestatic 923	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   107: aload 4
-    //   109: astore_3
-    //   110: goto -63 -> 47
+    //   91: ifnull +7 -> 98
+    //   94: aload_1
+    //   95: invokestatic 938	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   98: ldc_w 413
+    //   101: astore_3
+    //   102: aload_3
+    //   103: invokestatic 774	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   106: ifne +15 -> 121
+    //   109: aload_3
+    //   110: invokestatic 942	com/tencent/ttpic/util/GsonUtils:json2JsonObject	(Ljava/lang/String;)Lcom/google/gson/JsonObject;
     //   113: astore_1
-    //   114: aload_2
-    //   115: ifnull +7 -> 122
-    //   118: aload_2
-    //   119: invokestatic 923	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
-    //   122: aload_1
-    //   123: athrow
-    //   124: astore_1
-    //   125: aload_1
-    //   126: invokevirtual 536	java/lang/Exception:printStackTrace	()V
-    //   129: aconst_null
-    //   130: areturn
-    //   131: astore_1
-    //   132: goto -18 -> 114
-    //   135: astore_3
-    //   136: goto -46 -> 90
+    //   114: aload_1
+    //   115: areturn
+    //   116: astore_1
+    //   117: aload_1
+    //   118: invokevirtual 536	java/lang/Exception:printStackTrace	()V
+    //   121: aconst_null
+    //   122: areturn
+    //   123: astore_2
+    //   124: aload_1
+    //   125: ifnull +7 -> 132
+    //   128: aload_1
+    //   129: invokestatic 938	com/tencent/ttpic/baseutils/io/IOUtils:closeQuietly	(Ljava/io/InputStream;)V
+    //   132: aload_2
+    //   133: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	139	0	this	DeviceAttrs
-    //   30	74	1	localObject1	Object
-    //   113	10	1	localObject2	Object
-    //   124	2	1	localException1	Exception
-    //   131	1	1	localObject3	Object
-    //   1	118	2	localObject4	Object
-    //   36	47	3	localObject5	Object
-    //   87	6	3	localException2	Exception
-    //   98	12	3	str1	String
-    //   135	1	3	localException3	Exception
-    //   5	103	4	str2	String
+    //   0	134	0	this	DeviceAttrs
+    //   27	88	1	localObject1	Object
+    //   116	13	1	localException1	Exception
+    //   1	62	2	localObject2	Object
+    //   67	1	2	localObject3	Object
+    //   71	6	2	localException2	Exception
+    //   79	1	2	localObject4	Object
+    //   83	4	2	localException3	Exception
+    //   123	10	2	localObject5	Object
+    //   25	39	3	localObject6	Object
+    //   75	4	3	localObject7	Object
+    //   101	9	3	str	String
     // Exception table:
     //   from	to	target	type
-    //   7	31	87	java/lang/Exception
-    //   61	75	87	java/lang/Exception
-    //   7	31	113	finally
-    //   61	75	113	finally
-    //   54	59	124	java/lang/Exception
-    //   77	82	131	finally
-    //   92	96	131	finally
-    //   77	82	135	java/lang/Exception
+    //   47	52	67	finally
+    //   47	52	71	java/lang/Exception
+    //   2	26	75	finally
+    //   33	47	75	finally
+    //   2	26	83	java/lang/Exception
+    //   33	47	83	java/lang/Exception
+    //   109	114	116	java/lang/Exception
+    //   86	90	123	finally
   }
   
   public void checkOnlineUpdate(String paramString, DeviceAttrs.UpdateListener paramUpdateListener)
   {
-    LogUtils.i(TAG, "[checkOnlineUpdate] + BEGIN, downloadUrl = " + paramString);
-    Object localObject = this.mBuildInFileDir + "phone_attrs_config.zip";
-    String str = this.mCameraMatchPref.getString("black_list_url", null);
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equalsIgnoreCase(str))) {
-      if (DeviceUpdate.httpDownloadFile(paramString, (String)localObject))
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[checkOnlineUpdate] + BEGIN, downloadUrl = ");
+    ((StringBuilder)localObject2).append(paramString);
+    LogUtils.i((String)localObject1, ((StringBuilder)localObject2).toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.mBuildInFileDir);
+    ((StringBuilder)localObject1).append("phone_attrs_config.zip");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    localObject2 = this.mCameraMatchPref.getString("black_list_url", null);
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equalsIgnoreCase((String)localObject2)))
+    {
+      if (DeviceUpdate.httpDownloadFile(paramString, (String)localObject1))
       {
-        str = DeviceUpdate.unZip((String)localObject, this.mBuildInFileDir);
-        if (!TextUtils.isEmpty(str))
+        localObject2 = DeviceUpdate.unZip((String)localObject1, this.mBuildInFileDir);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          LogUtils.d(TAG, "[checkOnlineUpdate] storageName = " + (String)localObject + ", mBuildInFileDir = " + this.mBuildInFileDir);
-          localObject = this.mCameraMatchPref.edit();
-          ((SharedPreferences.Editor)localObject).putString("black_list_url", paramString);
-          ((SharedPreferences.Editor)localObject).apply();
-          localObject = DeviceParser.parseCameraAttrsFile(this.mContext, str, DeviceInstance.getInstance().getDeviceName(), this.mSignature);
-          LogUtils.d(TAG, "[checkOnlineUpdate] source = " + (String)localObject);
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            parseCurrentAttrsXML((String)localObject);
+          Object localObject3 = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[checkOnlineUpdate] storageName = ");
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(", mBuildInFileDir = ");
+          localStringBuilder.append(this.mBuildInFileDir);
+          LogUtils.d((String)localObject3, localStringBuilder.toString());
+          localObject1 = this.mCameraMatchPref.edit();
+          ((SharedPreferences.Editor)localObject1).putString("black_list_url", paramString);
+          ((SharedPreferences.Editor)localObject1).apply();
+          localObject1 = DeviceParser.parseCameraAttrsFile(this.mContext, (String)localObject2, DeviceInstance.getInstance().getDeviceName(), this.mSignature);
+          localObject2 = TAG;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("[checkOnlineUpdate] source = ");
+          ((StringBuilder)localObject3).append((String)localObject1);
+          LogUtils.d((String)localObject2, ((StringBuilder)localObject3).toString());
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            parseCurrentAttrsXML((String)localObject1);
           }
-          if (paramUpdateListener != null) {
-            paramUpdateListener.onSuccess(paramString + ", download and parse success");
+          if (paramUpdateListener != null)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(paramString);
+            ((StringBuilder)localObject2).append(", download and parse success");
+            paramUpdateListener.onSuccess(((StringBuilder)localObject2).toString());
           }
           loadAttrsFromPref();
           logAttrsValues();
           paramString = new Intent();
           paramString.setAction("action_check_online_update_finish");
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
             paramString.putExtra("parse_result", true);
-            this.mContext.sendBroadcast(paramString);
+          } else {
+            paramString.putExtra("parse_result", false);
           }
+          this.mContext.sendBroadcast(paramString);
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramString);
+          ((StringBuilder)localObject1).append(", download success, but unZip failed");
+          paramUpdateListener.onFailed(((StringBuilder)localObject1).toString());
         }
       }
-    }
-    for (;;)
-    {
-      LogUtils.i(TAG, "[checkOnlineUpdate] + END");
-      return;
-      paramString.putExtra("parse_result", false);
-      break;
-      paramUpdateListener.onFailed(paramString + ", download success, but unZip failed");
-      continue;
-      paramUpdateListener.onFailed(paramString + ", download failed!");
-      continue;
-      if (paramUpdateListener != null) {
-        paramUpdateListener.onFailed(paramString + ", this url has been downloaded, no need check update!");
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(", download failed!");
+        paramUpdateListener.onFailed(((StringBuilder)localObject1).toString());
       }
     }
+    else if (paramUpdateListener != null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(", this url has been downloaded, no need check update!");
+      paramUpdateListener.onFailed(((StringBuilder)localObject1).toString());
+    }
+    LogUtils.i(TAG, "[checkOnlineUpdate] + END");
   }
   
   public void checkVersion(String paramString1, String paramString2, String paramString3, DeviceAttrs.UpdateListener paramUpdateListener)
@@ -788,25 +1133,28 @@ public final class DeviceAttrs
   
   public void clearAllPreference()
   {
-    if (this.mCameraMatchPref != null) {
-      this.mCameraMatchPref.edit().clear().apply();
+    SharedPreferences localSharedPreferences = this.mCameraMatchPref;
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().clear().apply();
     }
   }
   
   public long getMonitorEnableTime()
   {
+    SharedPreferences localSharedPreferences = this.mCameraMatchPref;
     long l = 0L;
-    if (this.mCameraMatchPref != null) {
-      l = this.mCameraMatchPref.getLong("enable_performance_monitor_begin_time", 0L);
+    if (localSharedPreferences != null) {
+      l = localSharedPreferences.getLong("enable_performance_monitor_begin_time", 0L);
     }
     return l;
   }
   
   public String getPreviousUrl()
   {
+    SharedPreferences localSharedPreferences = this.mCameraMatchPref;
     String str = "";
-    if (this.mCameraMatchPref != null) {
-      str = this.mCameraMatchPref.getString("black_list_url", "");
+    if (localSharedPreferences != null) {
+      str = localSharedPreferences.getString("black_list_url", "");
     }
     return str;
   }
@@ -818,22 +1166,20 @@ public final class DeviceAttrs
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = ((String)localObject).split("\\*");
-      if (localObject.length >= 2) {}
-    }
-    else
-    {
-      return localSizeI;
-    }
-    try
-    {
-      paramInt1 = Integer.parseInt(localObject[0]);
-      localObject = new SizeI(Integer.parseInt(localObject[1]), paramInt1);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      LogUtils.e(TAG, "Parse record size error!");
-      localException.printStackTrace();
+      if (localObject.length < 2) {
+        return localSizeI;
+      }
+      try
+      {
+        paramInt1 = Integer.parseInt(localObject[0]);
+        localObject = new SizeI(Integer.parseInt(localObject[1]), paramInt1);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        LogUtils.e(TAG, "Parse record size error!");
+        localException.printStackTrace();
+      }
     }
     return localSizeI;
   }
@@ -844,56 +1190,68 @@ public final class DeviceAttrs
     long l = System.currentTimeMillis();
     this.mContext = paramContext;
     this.mSignature = paramString;
-    if (paramContext.getFilesDir() != null) {
-      this.mBuildInFileDir = (paramContext.getFilesDir().toString() + "/");
-    }
-    this.mCameraMatchPref = this.mContext.getSharedPreferences(getCameraPrefName(this.mContext), 0);
-    boolean bool;
-    if (this.mCameraMatchPref != null)
+    if (paramContext.getFilesDir() != null)
     {
-      bool = this.mCameraMatchPref.getBoolean("is_need_parse_xml", true);
-      paramContext = "default_defalut";
+      paramString = new StringBuilder();
+      paramString.append(paramContext.getFilesDir().toString());
+      paramString.append("/");
+      this.mBuildInFileDir = paramString.toString();
     }
-    try
+    paramContext = this.mContext;
+    this.mCameraMatchPref = paramContext.getSharedPreferences(getCameraPrefName(paramContext), 0);
+    paramContext = this.mCameraMatchPref;
+    if (paramContext != null)
     {
-      paramString = DeviceInstance.getInstance().getDeviceName();
-      paramContext = paramString;
-    }
-    catch (NoClassDefFoundError paramString)
-    {
-      for (;;)
+      boolean bool = paramContext.getBoolean("is_need_parse_xml", true);
+      try
       {
-        LogUtils.e(paramString);
-        continue;
-        LogUtils.d(TAG, "本地适配文件解密并解析 [失败]");
+        paramContext = DeviceInstance.getInstance().getDeviceName();
       }
-    }
-    LogUtils.d(TAG, "[init] deviceName = " + paramContext);
-    if (bool)
-    {
-      paramContext = DeviceParser.parseCameraAttrsFile(this.mContext, "phone_attrs_config.dat", paramContext, this.mSignature);
-      LogUtils.d(TAG, "[init] source: " + paramContext);
-      if (!TextUtils.isEmpty(paramContext)) {
-        parseCurrentAttrsXML(paramContext);
-      }
-      if (LogUtils.isEnabled())
+      catch (NoClassDefFoundError paramContext)
       {
-        if (TextUtils.isEmpty(paramContext)) {
-          break label267;
+        LogUtils.e(paramContext);
+        paramContext = "default_defalut";
+      }
+      paramString = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[init] deviceName = ");
+      localStringBuilder.append(paramContext);
+      LogUtils.d(paramString, localStringBuilder.toString());
+      if (bool)
+      {
+        paramContext = DeviceParser.parseCameraAttrsFile(this.mContext, "phone_attrs_config.dat", paramContext, this.mSignature);
+        paramString = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[init] source: ");
+        localStringBuilder.append(paramContext);
+        LogUtils.d(paramString, localStringBuilder.toString());
+        if (!TextUtils.isEmpty(paramContext)) {
+          parseCurrentAttrsXML(paramContext);
         }
-        LogUtils.d(TAG, "本地适配文件解密并解析 [成功]");
+        if (LogUtils.isEnabled()) {
+          if (!TextUtils.isEmpty(paramContext)) {
+            LogUtils.d(TAG, "本地适配文件解密并解析 [成功]");
+          } else {
+            LogUtils.d(TAG, "本地适配文件解密并解析 [失败]");
+          }
+        }
       }
+      loadAttrsFromPref();
+      logAttrsValues();
     }
-    loadAttrsFromPref();
-    logAttrsValues();
-    LogUtils.i(TAG, "[init] + END, time cost = " + (System.currentTimeMillis() - l));
+    paramContext = TAG;
+    paramString = new StringBuilder();
+    paramString.append("[init] + END, time cost = ");
+    paramString.append(System.currentTimeMillis() - l);
+    LogUtils.i(paramContext, paramString.toString());
   }
   
   public boolean isCameraSDKDisable()
   {
+    SharedPreferences localSharedPreferences = this.mCameraMatchPref;
     boolean bool = false;
-    if (this.mCameraMatchPref != null) {
-      bool = this.mCameraMatchPref.getBoolean("pref_camerasdk_disable", false);
+    if (localSharedPreferences != null) {
+      bool = localSharedPreferences.getBoolean("pref_camerasdk_disable", false);
     }
     return bool;
   }
@@ -910,48 +1268,65 @@ public final class DeviceAttrs
   
   public void setMonitorEnableTime(long paramLong)
   {
-    if (this.mCameraMatchPref != null) {
-      this.mCameraMatchPref.edit().putLong("enable_performance_monitor_begin_time", paramLong).apply();
+    SharedPreferences localSharedPreferences = this.mCameraMatchPref;
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putLong("enable_performance_monitor_begin_time", paramLong).apply();
     }
   }
   
   public void setRecordVideoSize(int paramInt1, int paramInt2)
   {
-    if (this.mCameraMatchPref != null) {
-      this.mCameraMatchPref.edit().putString("str_recordVideoSize", paramInt2 + "*" + paramInt1).apply();
+    Object localObject = this.mCameraMatchPref;
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("*");
+      localStringBuilder.append(paramInt1);
+      ((SharedPreferences.Editor)localObject).putString("str_recordVideoSize", localStringBuilder.toString()).apply();
     }
   }
   
   public void update(String paramString, DeviceAttrs.UpdateListener paramUpdateListener)
   {
-    Object localObject = "default_defalut";
     try
     {
-      String str = DeviceInstance.getInstance().getDeviceName();
-      localObject = str;
+      String str1 = DeviceInstance.getInstance().getDeviceName();
     }
     catch (NoClassDefFoundError localNoClassDefFoundError)
     {
-      for (;;)
-      {
-        LogUtils.e(localNoClassDefFoundError);
-      }
+      LogUtils.e(localNoClassDefFoundError);
+      localObject = "default_defalut";
     }
-    LogUtils.d(TAG, "[update] deviceName = " + (String)localObject);
-    localObject = DeviceParser.parseCameraAttrsFile(this.mContext, paramString, (String)localObject, this.mSignature);
-    LogUtils.d(TAG, "[update] source: " + (String)localObject);
+    String str2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[update] deviceName = ");
+    localStringBuilder.append((String)localObject);
+    LogUtils.d(str2, localStringBuilder.toString());
+    Object localObject = DeviceParser.parseCameraAttrsFile(this.mContext, paramString, (String)localObject, this.mSignature);
+    str2 = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[update] source: ");
+    localStringBuilder.append((String)localObject);
+    LogUtils.d(str2, localStringBuilder.toString());
     if (localObject != null) {
       parseCurrentAttrsXML((String)localObject);
     }
     loadAttrsFromPref();
     logAttrsValues();
-    if (paramUpdateListener != null) {
-      paramUpdateListener.onSuccess(paramString + ", parse and reload success");
+    if (paramUpdateListener != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", parse and reload success");
+      paramUpdateListener.onSuccess(((StringBuilder)localObject).toString());
     }
     paramString = new Intent();
     paramString.setAction("action_check_online_update_finish");
-    if (this.mContext != null) {
-      this.mContext.sendBroadcast(paramString);
+    paramUpdateListener = this.mContext;
+    if (paramUpdateListener != null) {
+      paramUpdateListener.sendBroadcast(paramString);
     }
   }
   
@@ -961,10 +1336,20 @@ public final class DeviceAttrs
     {
       initFastCaptureKeyValue();
       boolean bool = openFastCaptureMode(paramParameters);
-      LogUtils.d(TAG, "[updateCameraParametersFastCapture] this camera id in white list YES, OPEN fast mode, isFrontCamera = " + paramBoolean + ", updated = " + bool);
+      paramParameters = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[updateCameraParametersFastCapture] this camera id in white list YES, OPEN fast mode, isFrontCamera = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", updated = ");
+      localStringBuilder.append(bool);
+      LogUtils.d(paramParameters, localStringBuilder.toString());
       return bool;
     }
-    LogUtils.d(TAG, "[updateCameraParametersFastCapture] this camera id in white list NO, do NOTHING, isFrontCamera = " + paramBoolean);
+    paramParameters = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[updateCameraParametersFastCapture] this camera id in white list NO, do NOTHING, isFrontCamera = ");
+    localStringBuilder.append(paramBoolean);
+    LogUtils.d(paramParameters, localStringBuilder.toString());
     return false;
   }
   
@@ -973,29 +1358,35 @@ public final class DeviceAttrs
     if (this.mCameraMatchPref == null) {
       return;
     }
-    String str = "conditionPreviewSize" + "_" + paramInt1 + "*" + paramInt2;
-    Set localSet = this.mCameraMatchPref.getStringSet(str, new HashSet());
-    this.int_frontCamRotate0 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontCamRotate0", str), -1);
-    this.int_frontCamRotate90 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontCamRotate90", str), -1);
-    this.int_frontCamRotate180 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontCamRotate180", str), -1);
-    this.int_frontCamRotate270 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontCamRotate270", str), -1);
-    this.int_backCamRotate0 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backCamRotate0", str), -1);
-    this.int_backCamRotate90 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backCamRotate90", str), -1);
-    this.int_backCamRotate180 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backCamRotate180", str), -1);
-    this.int_backCamRotate270 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backCamRotate270", str), -1);
-    this.int_frontExifRotate0 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontExifRotate0", str), -1);
-    this.int_frontExifRotate90 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontExifRotate90", str), -1);
-    this.int_frontExifRotate180 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontExifRotate180", str), -1);
-    this.int_frontExifRotate270 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontExifRotate270", str), -1);
-    this.int_backExifRotate0 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backExifRotate0", str), -1);
-    this.int_backExifRotate90 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backExifRotate90", str), -1);
-    this.int_backExifRotate180 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backExifRotate180", str), -1);
-    this.int_backExifRotate270 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backExifRotate270", str), -1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("conditionPreviewSize");
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("*");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    Set localSet = this.mCameraMatchPref.getStringSet((String)localObject, new HashSet());
+    this.int_frontCamRotate0 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontCamRotate0", (String)localObject), -1);
+    this.int_frontCamRotate90 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontCamRotate90", (String)localObject), -1);
+    this.int_frontCamRotate180 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontCamRotate180", (String)localObject), -1);
+    this.int_frontCamRotate270 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontCamRotate270", (String)localObject), -1);
+    this.int_backCamRotate0 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backCamRotate0", (String)localObject), -1);
+    this.int_backCamRotate90 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backCamRotate90", (String)localObject), -1);
+    this.int_backCamRotate180 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backCamRotate180", (String)localObject), -1);
+    this.int_backCamRotate270 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backCamRotate270", (String)localObject), -1);
+    this.int_frontExifRotate0 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontExifRotate0", (String)localObject), -1);
+    this.int_frontExifRotate90 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontExifRotate90", (String)localObject), -1);
+    this.int_frontExifRotate180 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontExifRotate180", (String)localObject), -1);
+    this.int_frontExifRotate270 = this.mCameraMatchPref.getInt(editKey(localSet, "int_frontExifRotate270", (String)localObject), -1);
+    this.int_backExifRotate0 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backExifRotate0", (String)localObject), -1);
+    this.int_backExifRotate90 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backExifRotate90", (String)localObject), -1);
+    this.int_backExifRotate180 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backExifRotate180", (String)localObject), -1);
+    this.int_backExifRotate270 = this.mCameraMatchPref.getInt(editKey(localSet, "int_backExifRotate270", (String)localObject), -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.device.DeviceAttrs
  * JD-Core Version:    0.7.0.1
  */

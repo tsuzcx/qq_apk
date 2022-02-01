@@ -1,6 +1,10 @@
+import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.open.appcenter.QZoneAppCenterActivity;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class hjz
   implements View.OnClickListener
@@ -9,7 +13,17 @@ public class hjz
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    LogUtility.b("AppViewBaseActivity", "button onClick!!!");
+    if (TextUtils.isEmpty(QZoneAppCenterActivity.a(this.a)))
+    {
+      this.a.d();
+      this.a.e = "";
+      this.a.f = "";
+      QZoneAppCenterActivity.a(this.a);
+      QZoneAppCenterActivity.a(this.a).sendEmptyMessage(3);
+      return;
+    }
+    this.a.a.loadUrl("javascript:JsBridge.callback(\"" + QZoneAppCenterActivity.b(this.a) + "\");void(0);");
   }
 }
 

@@ -1,24 +1,27 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import alud;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.SparseArray;
+import android.view.MotionEvent;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchTypeDetailActivity
   extends IphoneTitleBarActivity
 {
-  private int jdField_a_of_type_Int;
-  private SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
+  private int a;
+  private String b;
+  private SparseArray<String> c = new SparseArray();
+  private List<Integer> d;
   
   public static void a(Context paramContext, int paramInt, String paramString, List<Integer> paramList)
   {
@@ -31,34 +34,50 @@ public class SearchTypeDetailActivity
     paramContext.startActivity(localIntent);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Int = super.getIntent().getIntExtra("qfile_search_param_type", -1);
-    this.jdField_a_of_type_JavaLangString = super.getIntent().getStringExtra("qfile_search_param_uin");
-    this.jdField_a_of_type_JavaUtilList = super.getIntent().getBundleExtra("qfile_search_param_others").getIntegerArrayList("qfile_search_param_others");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, alud.a(2131714059));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, alud.a(2131714063));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, alud.a(2131714062));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, alud.a(2131714061));
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, alud.a(2131714060));
-    super.setContentView(2131558857);
-    super.setTitle((CharSequence)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int));
+    this.a = super.getIntent().getIntExtra("qfile_search_param_type", -1);
+    this.b = super.getIntent().getStringExtra("qfile_search_param_uin");
+    this.d = super.getIntent().getBundleExtra("qfile_search_param_others").getIntegerArrayList("qfile_search_param_others");
+    this.c.put(3, HardCodeUtil.a(2131911134));
+    this.c.put(2, HardCodeUtil.a(2131911138));
+    this.c.put(0, HardCodeUtil.a(2131911137));
+    this.c.put(1, HardCodeUtil.a(2131911136));
+    this.c.put(11, HardCodeUtil.a(2131911135));
+    super.setContentView(2131624520);
+    super.setTitle((CharSequence)this.c.get(this.a));
     paramBundle = getSupportFragmentManager().beginTransaction();
     ChatFileSearchFragment localChatFileSearchFragment = new ChatFileSearchFragment();
-    localChatFileSearchFragment.c = 2;
-    localChatFileSearchFragment.jdField_a_of_type_Int = 2;
-    localChatFileSearchFragment.b = this.jdField_a_of_type_Int;
-    localChatFileSearchFragment.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    localChatFileSearchFragment.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramBundle.replace(2131364785, localChatFileSearchFragment);
+    localChatFileSearchFragment.i = 2;
+    localChatFileSearchFragment.b = 2;
+    localChatFileSearchFragment.c = this.a;
+    localChatFileSearchFragment.d = this.d;
+    localChatFileSearchFragment.a = this.b;
+    paramBundle.replace(2131431345, localChatFileSearchFragment);
     paramBundle.commit();
     return true;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.SearchTypeDetailActivity
  * JD-Core Version:    0.7.0.1
  */

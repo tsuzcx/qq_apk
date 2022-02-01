@@ -1,6 +1,5 @@
 package com.tencent.luggage.game.page;
 
-import android.annotation.SuppressLint;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -8,7 +7,6 @@ import android.view.View.OnTouchListener;
 final class b$a
   implements View.OnTouchListener
 {
-  @SuppressLint({"ClickableViewAccessibility"})
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     return true;
@@ -16,7 +14,7 @@ final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.page.b.a
  * JD-Core Version:    0.7.0.1
  */

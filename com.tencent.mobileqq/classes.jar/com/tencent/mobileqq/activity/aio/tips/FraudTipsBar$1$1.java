@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agzm;
-import ahap;
-
 class FraudTipsBar$1$1
   implements Runnable
 {
@@ -10,8 +7,8 @@ class FraudTipsBar$1$1
   
   public void run()
   {
-    agzm.a(this.a.this$0, 2);
-    agzm.a(this.a.this$0).a();
+    FraudTipsBar.a(this.a.this$0, 2);
+    FraudTipsBar.a(this.a.this$0).c();
   }
 }
 

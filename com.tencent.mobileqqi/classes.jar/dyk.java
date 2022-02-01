@@ -1,37 +1,35 @@
-import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dyk
-  implements FMDialogUtil.FMDialogInterface
+  implements ActionSheet.OnButtonClickListener
 {
-  public dyk(FileItemBuilder paramFileItemBuilder, Context paramContext, MessageForFile paramMessageForFile, FileManagerEntity paramFileManagerEntity) {}
+  public dyk(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, BaseChatItemLayout paramBaseChatItemLayout, dyn paramdyn, ActionSheet paramActionSheet) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    FMToastUtil.b(this.jdField_a_of_type_AndroidContentContext.getString(2131558738, new Object[] { FileManagerUtil.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.fileName) }));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = FileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath, null, FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).getAccount(), 0, false);
+    if (FileItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).jdField_a_of_type_JavaLangString, FileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).jdField_a_of_type_Int, -1L) != -1) {
+      FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).post(new dyl(this));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nRelatedSessionId = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      FileItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      QLog.i("@-@", 1, "mEntity[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "]'s relateId[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nRelatedSessionId) + "] reInit");
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
       return;
-      FileItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder).a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+      FileManagerUtil.a(FileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder), paramView, FileItemBuilder.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder), true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Dyn, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status, false);
     }
   }
-  
-  public void b() {}
 }
 
 

@@ -2,19 +2,19 @@ package com.tencent.mm.wear.app.service;
 
 final class a
 {
-  public int ael = 0;
-  public int aem = 0;
+  public int ahN = 0;
+  public int ahO = 0;
   public long lastUpdateTime = System.currentTimeMillis();
   
-  public final void M(String paramString)
+  public final void T(String paramString)
   {
     paramString = paramString.split("@");
     if (paramString.length == 3) {}
     try
     {
       this.lastUpdateTime = Long.valueOf(paramString[0]).longValue();
-      this.ael = Integer.valueOf(paramString[1]).intValue();
-      this.aem = Integer.valueOf(paramString[2]).intValue();
+      this.ahN = Integer.valueOf(paramString[1]).intValue();
+      this.ahO = Integer.valueOf(paramString[2]).intValue();
       return;
     }
     catch (NumberFormatException paramString) {}
@@ -22,7 +22,7 @@ final class a
   
   public final String toString()
   {
-    return this.lastUpdateTime + "@" + this.ael + "@" + this.aem;
+    return this.lastUpdateTime + "@" + this.ahN + "@" + this.ahO;
   }
 }
 

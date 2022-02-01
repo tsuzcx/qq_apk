@@ -92,13 +92,13 @@ public class ListenPanel
     this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup1;
     this.e = paramInt;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateView = ((VolumeIndicateView)findViewById(2131232855));
-    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateView = ((VolumeIndicateView)findViewById(2131232857));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232856));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateView = ((VolumeIndicateView)findViewById(2131232854));
+    this.jdField_b_of_type_ComTencentMobileqqActivityAioAudiopanelVolumeIndicateView = ((VolumeIndicateView)findViewById(2131232856));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232855));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(AudioPanel.a(0.0D));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView = ((CircleProgressView)findViewById(2131232858));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232860));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232861));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView = ((CircleProgressView)findViewById(2131232857));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232859));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232860));
     paramChatActivity = paramChatActivity.getResources();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -151,7 +151,7 @@ public class ListenPanel
     if (this.e == 1)
     {
       setVisibility(8);
-      localObject = (PressToSpeakPanel)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131232862);
+      localObject = (PressToSpeakPanel)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131232861);
       ((PressToSpeakPanel)localObject).c();
       ((PressToSpeakPanel)localObject).setVisibility(0);
     }
@@ -175,7 +175,7 @@ public class ListenPanel
     if (this.e == 1)
     {
       setVisibility(8);
-      localObject = (PressToSpeakPanel)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131232862);
+      localObject = (PressToSpeakPanel)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131232861);
       ((PressToSpeakPanel)localObject).c();
       ((PressToSpeakPanel)localObject).setVisibility(0);
     }
@@ -195,7 +195,7 @@ public class ListenPanel
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131232858)
+    if (i == 2131232857)
     {
       if (!this.jdField_a_of_type_Boolean)
       {
@@ -232,7 +232,7 @@ public class ListenPanel
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setProgress(0);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCircleProgressView.setImageResource(2130838668);
       return;
-      if (i == 2131232860)
+      if (i == 2131232859)
       {
         c();
         paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivity;
@@ -246,13 +246,13 @@ public class ListenPanel
             break;
           }
           setVisibility(8);
-          paramView = (PressToSpeakPanel)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131232862);
+          paramView = (PressToSpeakPanel)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131232861);
           paramView.c();
           paramView.setVisibility(0);
           return;
         }
       }
-    } while (i != 2131232861);
+    } while (i != 2131232860);
     c();
     if (this.e == 2) {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Voice_record", "Record_attribute", 0, 0, String.valueOf(this.jdField_a_of_type_Double), "", "", "");
@@ -273,7 +273,7 @@ public class ListenPanel
         break;
       }
       setVisibility(8);
-      paramView = (PressToSpeakPanel)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131232862);
+      paramView = (PressToSpeakPanel)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131232861);
       paramView.c();
       paramView.setVisibility(0);
       return;

@@ -2,7 +2,7 @@ package com.tencent.mm.a;
 
 public abstract interface b<K, O>
 {
-  public abstract void C(O paramO);
+  public abstract void L(O paramO);
 }
 
 

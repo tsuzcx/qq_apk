@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import anem;
-import anen;
-import java.util.List;
+import com.tencent.mobileqq.ar.arengine.MiniSaveImgListener;
 
-public class MiniRecog$1
+class MiniRecog$1
   implements Runnable
 {
-  public MiniRecog$1(anem paramanem, List paramList, long paramLong) {}
+  MiniRecog$1(MiniRecog paramMiniRecog, long paramLong) {}
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
+    if (this.this$0.b != null) {
+      this.this$0.b.a(this.a);
     }
-    this.this$0.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.MiniRecog.1
  * JD-Core Version:    0.7.0.1
  */

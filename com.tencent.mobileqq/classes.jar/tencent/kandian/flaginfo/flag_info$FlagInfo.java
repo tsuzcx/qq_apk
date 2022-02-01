@@ -10,15 +10,21 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class flag_info$FlagInfo
   extends MessageMicro<FlagInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 88, 96 }, new String[] { "uint64_uin", "int64_update_time", "uint64_private_flag", "uint32_teenager_flag" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, FlagInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt64Field int64_update_time = PBField.initInt64(0L);
   public final PBUInt32Field uint32_teenager_flag = PBField.initUInt32(0);
   public final PBUInt64Field uint64_private_flag = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 88, 96 }, new String[] { "uint64_uin", "int64_update_time", "uint64_private_flag", "uint32_teenager_flag" }, new Object[] { localLong, localLong, localLong, Integer.valueOf(0) }, FlagInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.kandian.flaginfo.flag_info.FlagInfo
  * JD-Core Version:    0.7.0.1
  */

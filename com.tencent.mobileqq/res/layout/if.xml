@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cg_" android:background="@color/dw" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.appcompat.widget.FitWindowsLinearLayout android:orientation="vertical" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.ae.view.TabLayout android:id="@id/mqx" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" />
-    <dov.com.qq.im.ae.view.NoScrollViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mqx" />
-</RelativeLayout>
+    <TextView android:ellipsize="end" android:layout_gravity="start" android:id="@id/title" android:paddingLeft="?a04" android:paddingTop="@dimen/54" android:paddingRight="?a04" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="?android:windowTitleStyle" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/01" />
+</androidx.appcompat.widget.FitWindowsLinearLayout>

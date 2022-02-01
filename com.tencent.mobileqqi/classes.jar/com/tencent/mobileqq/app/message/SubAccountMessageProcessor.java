@@ -38,7 +38,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fjt;
+import fjs;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -558,7 +558,7 @@ public class SubAccountMessageProcessor
                               }
                               localDecodeProtoPkgContext = new DecodeProtoPkgContext(l1, l5, false, false, false, true);
                             } while ((paramObject == null) || (paramObject.size() <= 0));
-                            Collections.sort(paramObject, new fjt(this));
+                            Collections.sort(paramObject, new fjs(this));
                             msg_comm.MsgHead localMsgHead;
                             if ((paramFromServiceMsg.msg_completed.has()) && (paramFromServiceMsg.msg_completed.get() != 0))
                             {

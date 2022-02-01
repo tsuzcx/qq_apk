@@ -1,36 +1,32 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajjy;
-import alof;
-import auul;
-import azqx;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForNearbyLiveTip;
+import com.tencent.mobileqq.nearby.INearbyCardManager;
+import com.tencent.mobileqq.statistics.ReportTask;
 
-public class RecentLiveTipItemBuilder$1
+class RecentLiveTipItemBuilder$1
   implements Runnable
 {
-  public RecentLiveTipItemBuilder$1(ajjy paramajjy, QQAppInterface paramQQAppInterface, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, auul paramauul) {}
+  RecentLiveTipItemBuilder$1(RecentLiveTipItemBuilder paramRecentLiveTipItemBuilder, QQAppInterface paramQQAppInterface, MessageForNearbyLiveTip paramMessageForNearbyLiveTip, INearbyCardManager paramINearbyCardManager) {}
   
   public void run()
   {
-    azqx localazqx = new azqx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("msg_box");
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving)
-    {
-      str = "exp_livepush";
-      localazqx = localazqx.d(str).e(String.valueOf(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.senderuin).longValue() - alof.l));
-      if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.isLiving) {
-        break label125;
-      }
+    ReportTask localReportTask = new ReportTask(this.a).a("dc00899").b("grp_lbs").c("msg_box");
+    if (this.b.isLiving) {
+      localObject = "exp_livepush";
+    } else {
+      localObject = "exp_relivepush";
     }
-    label125:
-    for (String str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.startLiveWordingType);; str = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForNearbyLiveTip.endLiveWordingType))
-    {
-      localazqx.a(new String[] { str, String.valueOf(this.jdField_a_of_type_Auul.b()) }).a();
-      return;
-      str = "exp_relivepush";
-      break;
+    Object localObject = localReportTask.d((String)localObject).e(String.valueOf(Long.valueOf(this.b.senderuin).longValue() - AppConstants.NOW_LIVE_TIP_UIN_BASE));
+    int i;
+    if (this.b.isLiving) {
+      i = this.b.startLiveWordingType;
+    } else {
+      i = this.b.endLiveWordingType;
     }
+    ((ReportTask)localObject).a(new String[] { String.valueOf(i), String.valueOf(this.c.c()) }).a();
   }
 }
 

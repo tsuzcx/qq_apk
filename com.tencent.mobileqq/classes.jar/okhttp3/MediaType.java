@@ -29,55 +29,86 @@ public final class MediaType
   public static MediaType get(String paramString)
   {
     Object localObject1 = TYPE_SUBTYPE.matcher(paramString);
-    if (!((Matcher)localObject1).lookingAt()) {
-      throw new IllegalArgumentException("No subtype found for: \"" + paramString + '"');
-    }
-    String str2 = ((Matcher)localObject1).group(1).toLowerCase(Locale.US);
-    String str3 = ((Matcher)localObject1).group(2).toLowerCase(Locale.US);
-    Matcher localMatcher = PARAMETER.matcher(paramString);
-    int i = ((Matcher)localObject1).end();
-    Object localObject2 = null;
-    if (i < paramString.length())
+    if (((Matcher)localObject1).lookingAt())
     {
-      localMatcher.region(i, paramString.length());
-      if (!localMatcher.lookingAt()) {
-        throw new IllegalArgumentException("Parameter is not formatted correctly: \"" + paramString.substring(i) + "\" for: \"" + paramString + '"');
-      }
-      String str1 = localMatcher.group(1);
-      localObject1 = localObject2;
-      if (str1 != null)
+      String str1 = ((Matcher)localObject1).group(1).toLowerCase(Locale.US);
+      String str2 = ((Matcher)localObject1).group(2).toLowerCase(Locale.US);
+      Object localObject2 = null;
+      Matcher localMatcher = PARAMETER.matcher(paramString);
+      int i = ((Matcher)localObject1).end();
+      while (i < paramString.length())
       {
-        if (str1.equalsIgnoreCase("charset")) {
-          break label199;
-        }
-        localObject1 = localObject2;
-      }
-      for (;;)
-      {
-        i = localMatcher.end();
-        localObject2 = localObject1;
-        break;
-        label199:
-        str1 = localMatcher.group(2);
-        if (str1 != null)
+        localMatcher.region(i, paramString.length());
+        if (localMatcher.lookingAt())
         {
-          localObject1 = str1;
-          if (str1.startsWith("'"))
-          {
-            localObject1 = str1;
-            if (str1.endsWith("'"))
+          Object localObject3 = localMatcher.group(1);
+          localObject1 = localObject2;
+          if (localObject3 != null) {
+            if (!((String)localObject3).equalsIgnoreCase("charset"))
             {
-              localObject1 = str1;
-              if (str1.length() <= 2) {}
+              localObject1 = localObject2;
+            }
+            else
+            {
+              localObject3 = localMatcher.group(2);
+              if (localObject3 != null)
+              {
+                localObject1 = localObject3;
+                if (((String)localObject3).startsWith("'"))
+                {
+                  localObject1 = localObject3;
+                  if (((String)localObject3).endsWith("'"))
+                  {
+                    localObject1 = localObject3;
+                    if (((String)localObject3).length() > 2) {
+                      localObject1 = ((String)localObject3).substring(1, ((String)localObject3).length() - 1);
+                    }
+                  }
+                }
+              }
+              else
+              {
+                localObject1 = localMatcher.group(3);
+              }
+              if ((localObject2 != null) && (!((String)localObject1).equalsIgnoreCase((String)localObject2)))
+              {
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("Multiple charsets defined: \"");
+                ((StringBuilder)localObject3).append((String)localObject2);
+                ((StringBuilder)localObject3).append("\" and: \"");
+                ((StringBuilder)localObject3).append((String)localObject1);
+                ((StringBuilder)localObject3).append("\" for: \"");
+                ((StringBuilder)localObject3).append(paramString);
+                ((StringBuilder)localObject3).append('"');
+                throw new IllegalArgumentException(((StringBuilder)localObject3).toString());
+              }
             }
           }
+          i = localMatcher.end();
+          localObject2 = localObject1;
         }
-        for (localObject1 = str1.substring(1, str1.length() - 1); (localObject2 != null) && (!((String)localObject1).equalsIgnoreCase(localObject2)); localObject1 = localMatcher.group(3)) {
-          throw new IllegalArgumentException("Multiple charsets defined: \"" + localObject2 + "\" and: \"" + (String)localObject1 + "\" for: \"" + paramString + '"');
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Parameter is not formatted correctly: \"");
+          ((StringBuilder)localObject1).append(paramString.substring(i));
+          ((StringBuilder)localObject1).append("\" for: \"");
+          ((StringBuilder)localObject1).append(paramString);
+          ((StringBuilder)localObject1).append('"');
+          throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
         }
       }
+      return new MediaType(paramString, str1, str2, (String)localObject2);
     }
-    return new MediaType(paramString, str2, str3, localObject2);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("No subtype found for: \"");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append('"');
+    paramString = new IllegalArgumentException(((StringBuilder)localObject1).toString());
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   @Nullable
@@ -88,7 +119,11 @@ public final class MediaType
       paramString = get(paramString);
       return paramString;
     }
-    catch (IllegalArgumentException paramString) {}
+    catch (IllegalArgumentException paramString)
+    {
+      label7:
+      break label7;
+    }
     return null;
   }
   
@@ -140,7 +175,7 @@ public final class MediaType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.MediaType
  * JD-Core Version:    0.7.0.1
  */

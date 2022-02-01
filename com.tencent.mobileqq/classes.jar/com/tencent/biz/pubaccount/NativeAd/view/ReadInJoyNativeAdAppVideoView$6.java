@@ -10,13 +10,13 @@ class ReadInJoyNativeAdAppVideoView$6
   public void run()
   {
     ReadInJoyNativeAdAppVideoView.e(this.this$0, 6);
-    ReadInJoyNativeAdAppVideoView.a(this.this$0).pause();
-    ReadInJoyNativeAdAppVideoView.a(this.this$0);
+    ReadInJoyNativeAdAppVideoView.f(this.this$0).pause();
+    ReadInJoyNativeAdAppVideoView.e(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,256 +1,104 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.io.StreamCorruptedException;
-import java.lang.ref.SoftReference;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class ei
-  implements eg
+public abstract interface ei
+  extends IInterface
 {
-  private static final Comparator a = new ek();
-  private static final FilenameFilter b = new el();
-  private static final Object f = new Object();
-  private final Context c;
-  private final Map d;
-  private int e;
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public ei(Context paramContext)
+  public static abstract class a
+    extends Binder
+    implements ei
   {
-    this.c = paramContext;
-    this.d = new HashMap();
-    this.e = -1;
-  }
-  
-  public eh a(em paramem)
-  {
-    return a(paramem, 0L);
-  }
-  
-  public eh a(em paramem, long paramLong)
-  {
-    for (;;)
+    public a()
     {
-      Object localObject1;
-      synchronized (f)
-      {
-        localObject1 = b(paramem);
-        if (localObject1 != null) {
-          break label109;
-        }
-        paramem = c(paramem);
-        if (paramem == null) {
-          break label107;
-        }
-        localObject1 = new eh();
-        long l = System.currentTimeMillis();
-        if ((paramLong > 0L) && (l - paramem.a > paramLong))
-        {
-          ((eh)localObject1).a = true;
-          return localObject1;
-        }
-      }
-      ((eh)localObject1).a = false;
-      ((eh)localObject1).b = paramem.b;
-      ((eh)localObject1).c = paramem.c;
-      return localObject1;
-      label107:
-      return null;
-      label109:
-      paramem = (em)localObject1;
+      attachInterface(this, "android.support.v4.os.IResultReceiver");
     }
-  }
-  
-  void a()
-  {
-    File[] arrayOfFile;
-    if ((this.e < 0) || (this.e > 100))
+    
+    public static ei a(IBinder paramIBinder)
     {
-      arrayOfFile = this.c.getCacheDir().listFiles(b);
-      if (arrayOfFile != null) {
-        break label35;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label35:
-      int j = arrayOfFile.length;
-      this.e = j;
-      if (j >= 100)
-      {
-        Arrays.sort(arrayOfFile, a);
-        int i = 0;
-        while ((i < j) && (this.e > 75))
-        {
-          if (arrayOfFile[i].delete()) {
-            this.e -= 1;
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  void a(em paramem, ej paramej)
-  {
-    paramem = paramem.d();
-    paramej = new SoftReference(paramej);
-    this.d.put(paramem, paramej);
-  }
-  
-  public void a(em paramem, ew paramew, Serializable paramSerializable)
-  {
-    synchronized (f)
-    {
-      ej localej = new ej(this);
-      localej.b = paramew;
-      localej.c = paramSerializable;
-      localej.a = System.currentTimeMillis();
-      a(paramem, localej);
-      b(paramem, localej);
-      return;
-    }
-  }
-  
-  ej b(em paramem)
-  {
-    paramem = paramem.d();
-    Object localObject = (SoftReference)this.d.get(paramem);
-    if (localObject != null)
-    {
-      localObject = (ej)((SoftReference)localObject).get();
-      if (localObject == null) {
-        this.d.remove(paramem);
-      }
-      return localObject;
-    }
-    return null;
-  }
-  
-  void b(em paramem, ej paramej)
-  {
-    a();
-    File localFile = d(paramem);
-    ObjectOutputStream localObjectOutputStream;
-    try
-    {
-      localObjectOutputStream = new ObjectOutputStream(new FileOutputStream(localFile));
-      localObjectOutputStream.writeInt(1);
-      localObjectOutputStream.writeLong(paramej.a);
-      if (paramej.b == null) {
-        break label145;
-      }
-      Serializable localSerializable = paramem.a(paramej.b);
-      if (localSerializable == null) {
-        break label107;
-      }
-      localObjectOutputStream.writeBoolean(true);
-      localObjectOutputStream.writeObject(localSerializable);
-    }
-    catch (FileNotFoundException paramej)
-    {
-      for (;;)
-      {
-        h.c(paramem.d() + ": can't open cache file to write");
-        return;
-        localObjectOutputStream.writeBoolean(false);
-      }
-    }
-    catch (IOException paramej)
-    {
-      paramej.printStackTrace();
-      localFile.delete();
-      h.c(paramem.d() + ": writting error:" + paramej);
-      return;
-    }
-    if (paramej.c != null)
-    {
-      localObjectOutputStream.writeBoolean(true);
-      localObjectOutputStream.writeObject(paramej.c);
-    }
-    for (;;)
-    {
-      localObjectOutputStream.flush();
-      return;
-      label107:
-      localObjectOutputStream.writeBoolean(false);
-      break;
-      label145:
-      localObjectOutputStream.writeBoolean(false);
-    }
-  }
-  
-  ej c(em paramem)
-  {
-    Object localObject = d(paramem);
-    if (!((File)localObject).exists()) {
-      return null;
-    }
-    try
-    {
-      ObjectInputStream localObjectInputStream = new ObjectInputStream(new FileInputStream((File)localObject));
-      if (localObjectInputStream.readInt() != 1)
-      {
-        ((File)localObject).delete();
+      if (paramIBinder == null) {
         return null;
       }
-      localObject = new ej(this);
-      ((ej)localObject).a = localObjectInputStream.readLong();
-      if (localObjectInputStream.readBoolean()) {
-        ((ej)localObject).b = paramem.a((Serializable)localObjectInputStream.readObject());
+      IInterface localIInterface = paramIBinder.queryLocalInterface("android.support.v4.os.IResultReceiver");
+      if ((localIInterface != null) && ((localIInterface instanceof ei))) {
+        return (ei)localIInterface;
       }
-      if (localObjectInputStream.readBoolean()) {
-        ((ej)localObject).c = ((Serializable)localObjectInputStream.readObject());
-      }
-      return localObject;
+      return new a(paramIBinder);
     }
-    catch (StreamCorruptedException paramem)
+    
+    public IBinder asBinder()
     {
-      paramem.printStackTrace();
-      return null;
+      return this;
     }
-    catch (FileNotFoundException paramem)
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
     {
-      for (;;)
+      if (paramInt1 != 1)
       {
-        paramem.printStackTrace();
+        if (paramInt1 != 1598968902) {
+          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+        }
+        paramParcel2.writeString("android.support.v4.os.IResultReceiver");
+        return true;
       }
+      paramParcel1.enforceInterface("android.support.v4.os.IResultReceiver");
+      paramInt1 = paramParcel1.readInt();
+      if (paramParcel1.readInt() != 0) {
+        paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+      } else {
+        paramParcel1 = null;
+      }
+      a(paramInt1, paramParcel1);
+      return true;
     }
-    catch (IOException paramem)
+    
+    static final class a
+      implements ei
     {
-      for (;;)
+      private IBinder a;
+      
+      a(IBinder paramIBinder)
       {
-        paramem.printStackTrace();
+        this.a = paramIBinder;
+      }
+      
+      public final void a(int paramInt, Bundle paramBundle)
+      {
+        Parcel localParcel = Parcel.obtain();
+        try
+        {
+          localParcel.writeInterfaceToken("android.support.v4.os.IResultReceiver");
+          localParcel.writeInt(paramInt);
+          if (paramBundle != null)
+          {
+            localParcel.writeInt(1);
+            paramBundle.writeToParcel(localParcel, 0);
+          }
+          else
+          {
+            localParcel.writeInt(0);
+          }
+          this.a.transact(1, localParcel, null, 1);
+          return;
+        }
+        finally
+        {
+          localParcel.recycle();
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.a;
       }
     }
-    catch (ClassNotFoundException paramem)
-    {
-      for (;;)
-      {
-        paramem.printStackTrace();
-      }
-    }
-  }
-  
-  File d(em paramem)
-  {
-    paramem = w.b(paramem.d());
-    return new File(this.c.getCacheDir(), "TOKEN_" + paramem);
   }
 }
 

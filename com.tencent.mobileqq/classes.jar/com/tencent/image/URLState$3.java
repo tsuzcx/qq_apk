@@ -1,7 +1,8 @@
 package com.tencent.image;
 
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.net.URL;
 import org.apache.http.HttpException;
 
@@ -14,14 +15,18 @@ class URLState$3
   {
     super.onFileDownloadFailed(paramInt);
     this.val$handler.onFileDownloadFailed(paramInt);
-    URLState.access$300(this.this$0, new HttpException(" http error code " + paramInt));
+    URLState localURLState = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" http error code ");
+    localStringBuilder.append(paramInt);
+    URLState.access$000(localURLState, new HttpException(localStringBuilder.toString()));
   }
   
   public void onFileDownloadSucceed(long paramLong)
   {
     super.onFileDownloadSucceed(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.i("URLDrawable_", 2, "async onFileDownloadSucceed.");
+    if (URLDrawable.depImp.mLog.isColorLevel()) {
+      URLDrawable.depImp.mLog.i("URLDrawable_", 2, "async onFileDownloadSucceed.");
     }
     try
     {
@@ -34,7 +39,7 @@ class URLState$3
         }
         Object localObject = this.this$0.loadImage(this.val$url, this.val$handler);
         this.val$handler.onFileDownloadSucceed(paramLong);
-        URLState.access$200().post(new URLState.3.1(this, localObject));
+        URLState.access$100().post(new URLState.3.1(this, localObject));
         return;
       }
     }
@@ -46,7 +51,7 @@ class URLState$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.URLState.3
  * JD-Core Version:    0.7.0.1
  */

@@ -43,8 +43,9 @@ public class UploadDataSource$ByteDataSource
   
   public long getDataLength()
   {
-    if (this.mData != null) {
-      return this.mData.length;
+    byte[] arrayOfByte = this.mData;
+    if (arrayOfByte != null) {
+      return arrayOfByte.length;
     }
     return 0L;
   }
@@ -57,7 +58,11 @@ public class UploadDataSource$ByteDataSource
   
   public String toString()
   {
-    return "[Byte:,Size:" + getDataLength() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Byte:,Size:");
+    localStringBuilder.append(getDataLength());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -68,7 +73,7 @@ public class UploadDataSource$ByteDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.task.data.UploadDataSource.ByteDataSource
  * JD-Core Version:    0.7.0.1
  */

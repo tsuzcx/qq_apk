@@ -17,7 +17,7 @@ public final class content_vidurl_svr$GetVid2UrlsRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsRsp
  * JD-Core Version:    0.7.0.1
  */

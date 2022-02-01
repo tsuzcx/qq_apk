@@ -1,13 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.Leba;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class csa
-  implements Runnable
+public class csa
+  implements View.OnClickListener
 {
-  csa(crz paramcrz) {}
+  public csa(Leba paramLeba) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Leba.b(this.a.a);
+    this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener.a(this.a.jdField_a_of_type_ComTencentWidgetXListView, paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
   }
 }
 

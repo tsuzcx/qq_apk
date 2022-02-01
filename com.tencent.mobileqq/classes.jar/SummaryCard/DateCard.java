@@ -12,24 +12,24 @@ public final class DateCard
   static byte[] cache_vFaces = (byte[])new byte[1];
   static byte[] cache_vGroupList;
   static byte[] cache_vNearbyInfo;
-  public byte bConstellation;
-  public byte bMarriage;
-  public long lTinyId;
+  public byte bConstellation = 0;
+  public byte bMarriage = 0;
+  public long lTinyId = 0L;
   public String strCompany = "";
   public String strDistance = "";
   public String strElapse = "";
   public String strSchool = "";
-  public long uHomeCity;
-  public long uHomeCountry;
-  public long uHomeProvince;
-  public long uHomeZone;
-  public long uProfession;
-  public long uSchoolId;
-  public byte[] vActivityList;
-  public byte[] vDateInfo;
-  public byte[] vFaces;
-  public byte[] vGroupList;
-  public byte[] vNearbyInfo;
+  public long uHomeCity = 0L;
+  public long uHomeCountry = 0L;
+  public long uHomeProvince = 0L;
+  public long uHomeZone = 0L;
+  public long uProfession = 0L;
+  public long uSchoolId = 0L;
+  public byte[] vActivityList = null;
+  public byte[] vDateInfo = null;
+  public byte[] vFaces = null;
+  public byte[] vGroupList = null;
+  public byte[] vNearbyInfo = null;
   
   static
   {
@@ -92,47 +92,56 @@ public final class DateCard
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vFaces != null) {
-      paramJceOutputStream.write(this.vFaces, 0);
+    Object localObject = this.vFaces;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
     paramJceOutputStream.write(this.bConstellation, 1);
     paramJceOutputStream.write(this.uProfession, 2);
-    if (this.strCompany != null) {
-      paramJceOutputStream.write(this.strCompany, 3);
+    localObject = this.strCompany;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.strSchool != null) {
-      paramJceOutputStream.write(this.strSchool, 4);
+    localObject = this.strSchool;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.uHomeCountry, 5);
     paramJceOutputStream.write(this.uHomeProvince, 6);
     paramJceOutputStream.write(this.uHomeCity, 7);
-    if (this.vDateInfo != null) {
-      paramJceOutputStream.write(this.vDateInfo, 8);
+    localObject = this.vDateInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
-    if (this.strDistance != null) {
-      paramJceOutputStream.write(this.strDistance, 9);
+    localObject = this.strDistance;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strElapse != null) {
-      paramJceOutputStream.write(this.strElapse, 10);
+    localObject = this.strElapse;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.bMarriage, 11);
     paramJceOutputStream.write(this.uHomeZone, 12);
     paramJceOutputStream.write(this.lTinyId, 13);
     paramJceOutputStream.write(this.uSchoolId, 14);
-    if (this.vGroupList != null) {
-      paramJceOutputStream.write(this.vGroupList, 15);
+    localObject = this.vGroupList;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 15);
     }
-    if (this.vNearbyInfo != null) {
-      paramJceOutputStream.write(this.vNearbyInfo, 16);
+    localObject = this.vNearbyInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
-    if (this.vActivityList != null) {
-      paramJceOutputStream.write(this.vActivityList, 17);
+    localObject = this.vActivityList;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.DateCard
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ public class TAVStickerOverlayEffect
   implements TAVVideoEffect
 {
   private static final String TAG = "TAVStickerOverlayEffect";
-  private int count = 0;
-  private boolean realTimeReleaseEachSticker;
-  private boolean realTimeReleaseStickerContext;
+  protected int count = 0;
+  protected boolean realTimeReleaseEachSticker;
+  protected boolean realTimeReleaseStickerContext;
   protected String reportKey = "TAVStickerOverlayEffect";
-  private TAVStickerRenderContext stickerContext;
+  protected TAVStickerRenderContext stickerContext;
   @Nullable
-  private List<TAVSticker> stickers;
+  protected List<TAVSticker> stickers;
   
   public TAVStickerOverlayEffect(TAVStickerRenderContext paramTAVStickerRenderContext)
   {
@@ -27,9 +27,10 @@ public class TAVStickerOverlayEffect
   
   public TAVVideoEffect.Filter createFilter()
   {
-    if (this.count == 0)
+    int i = this.count;
+    if (i == 0)
     {
-      this.count += 1;
+      this.count = (i + 1);
       return new TAVStickerOverlayEffect.MyVideoCompositionEffect(this, this.stickerContext, null);
     }
     return new TAVStickerOverlayEffect.MyVideoCompositionEffect(this, this.stickerContext.copy(), null);
@@ -60,7 +61,7 @@ public class TAVStickerOverlayEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.filter.TAVStickerOverlayEffect
  * JD-Core Version:    0.7.0.1
  */

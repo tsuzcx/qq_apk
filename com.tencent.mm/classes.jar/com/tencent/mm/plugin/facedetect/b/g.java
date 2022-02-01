@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k;
+import com.tencent.mm.am.n;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 final class g
-  extends k
+  extends n
 {
-  k.a mgI;
-  k.b mgJ;
+  k.a zRA;
+  k.b zRB;
   
   g()
   {
-    AppMethodBeat.i(64);
-    this.mgI = new k.a();
-    this.mgJ = new k.b();
-    AppMethodBeat.o(64);
+    AppMethodBeat.i(103588);
+    this.zRA = new k.a();
+    this.zRB = new k.b();
+    AppMethodBeat.o(103588);
   }
   
   public final int getOptions()
@@ -26,22 +26,22 @@ final class g
   
   public final l.d getReqObjImp()
   {
-    return this.mgI;
+    return this.zRA;
   }
   
   public final l.e getRespObj()
   {
-    return this.mgJ;
+    return this.zRB;
   }
   
   public final int getType()
   {
-    return 930;
+    return 931;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/micromsg-bin/verifyfacersa";
+    return "/cgi-bin/micromsg-bin/registerfacersa";
   }
 }
 

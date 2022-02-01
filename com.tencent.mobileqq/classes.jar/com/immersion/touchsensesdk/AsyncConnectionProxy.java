@@ -13,8 +13,9 @@ public abstract class AsyncConnectionProxy
   
   public void setConnection(IConnection paramIConnection)
   {
-    if (this.mListener != null) {
-      this.mListener.notifyConnection(paramIConnection);
+    IConnectionListener localIConnectionListener = this.mListener;
+    if (localIConnectionListener != null) {
+      localIConnectionListener.notifyConnection(paramIConnection);
     }
   }
   
@@ -25,7 +26,7 @@ public abstract class AsyncConnectionProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.immersion.touchsensesdk.AsyncConnectionProxy
  * JD-Core Version:    0.7.0.1
  */

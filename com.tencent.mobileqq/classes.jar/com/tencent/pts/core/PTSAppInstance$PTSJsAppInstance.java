@@ -33,6 +33,7 @@ public class PTSAppInstance$PTSJsAppInstance
   {
     super.onDestroy();
     PTSJsJniHandler.destroy(this, this.ptsJsBridge.getJsEnvID());
+    this.ptsJsBridge = null;
   }
   
   public void setItemData(PTSItemData paramPTSItemData)
@@ -43,7 +44,7 @@ public class PTSAppInstance$PTSJsAppInstance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.PTSAppInstance.PTSJsAppInstance
  * JD-Core Version:    0.7.0.1
  */

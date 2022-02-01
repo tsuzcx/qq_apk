@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_gravity="bottom" android:id="@id/eah" android:clickable="true" android:layout_width="fill_parent" android:layout_height="72.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/eaj" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/eai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_weight="0.0">
+            <ImageView android:id="@id/eao" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/eaq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffececec" android:ellipsize="end" android:id="@id/ean" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/eak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="20.0dip" android:layout_weight="0.0" />
+    </LinearLayout>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nw" android:background="@null" android:layout_width="@dimen/acq" android:layout_height="@dimen/acq"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fts" android:background="@drawable/a8g" android:layout_width="@dimen/acr" android:layout_height="@dimen/acr" android:layout_centerInParent="true" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/k6" android:paddingLeft="@dimen/acp" android:paddingTop="@dimen/acp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-        <ImageView android:id="@id/jp" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@raw/webview_bag_indicator_icon_normal" />
-        <TextView android:textSize="12.0dip" android:textColor="#7fffffff" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/g5r" />
-    </LinearLayout>
-</RelativeLayout>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/b20" android:layout_width="fill_parent" android:layout_height="@dimen/da" android:minHeight="56.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g9e" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:src="@raw/icons_outlined_add" app:iconColor="@color/BW_70" />
+    <TextView android:textSize="@dimen/lx" android:textColor="@color/a7b" android:id="@id/g9f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/kw4" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/cp" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/BW_70" />
+</LinearLayout>

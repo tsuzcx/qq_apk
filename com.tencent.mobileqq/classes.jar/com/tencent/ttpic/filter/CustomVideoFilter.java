@@ -19,7 +19,7 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.filter.RenderItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.io.File;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +27,7 @@ import java.util.Set;
 public class CustomVideoFilter
   extends VideoFilterBase
 {
-  private static final String TAG = CustomVideoFilter.class.getSimpleName();
+  private static final String TAG = "CustomVideoFilter";
   private long frameStartTime;
   private List<RenderItem> normalRenderItems;
   private PTFaceAttr.PTExpression triggerType;
@@ -50,31 +50,27 @@ public class CustomVideoFilter
       return;
     }
     int i = 0;
-    label10:
-    Object localObject;
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
-      localObject = (String)paramList.get(i);
-      localObject = this.dataPath + File.separator + (String)localObject;
-      if (!((String)localObject).startsWith("assets://")) {
-        break label99;
+      Object localObject = (String)paramList.get(i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.dataPath);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append((String)localObject);
+      localObject = localStringBuilder.toString();
+      if (((String)localObject).startsWith("assets://")) {
+        localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
+      } else {
+        localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
       }
-      localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
-      label85:
-      if (BitmapUtils.isLegal((Bitmap)localObject)) {
-        break label113;
+      if (BitmapUtils.isLegal((Bitmap)localObject))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("inputImageTexture");
+        localStringBuilder.append(i + 1);
+        addParam(new UniformParam.TextureBitmapParam(localStringBuilder.toString(), (Bitmap)localObject, 33985 + i, true));
       }
-    }
-    for (;;)
-    {
       i += 1;
-      break label10;
-      break;
-      label99:
-      localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
-      break label85;
-      label113:
-      addParam(new UniformParam.TextureBitmapParam("inputImageTexture" + (i + 1), (Bitmap)localObject, 33985 + i, true));
     }
   }
   
@@ -87,11 +83,12 @@ public class CustomVideoFilter
   
   public float[] getElementDurations(long paramLong)
   {
-    if (CollectionUtils.isEmpty(this.normalRenderItems)) {
+    boolean bool = CollectionUtils.isEmpty(this.normalRenderItems);
+    int i = 0;
+    if (bool) {
       return new float[0];
     }
     float[] arrayOfFloat = new float[this.normalRenderItems.size()];
-    int i = 0;
     while (i < this.normalRenderItems.size())
     {
       AEFilterI localAEFilterI = ((RenderItem)this.normalRenderItems.get(i)).filter;
@@ -121,39 +118,36 @@ public class CustomVideoFilter
   
   public void updatePreview(Object paramObject)
   {
-    int j = 0;
-    int i;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      if (!paramObject.triggeredExpression.contains(Integer.valueOf(this.triggerType.value))) {
-        break label199;
+      boolean bool = paramObject.triggeredExpression.contains(Integer.valueOf(this.triggerType.value));
+      int j = 0;
+      int i;
+      if (bool) {
+        i = this.triggerType.value;
+      } else if (paramObject.triggeredExpression.contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value))) {
+        i = PTFaceAttr.PTExpression.FACE_DETECT.value;
+      } else {
+        i = 0;
       }
-      i = this.triggerType.value;
-    }
-    for (;;)
-    {
       addParam(new UniformParam.IntParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FACE_ACTION_TYPE), i));
       addParam(new UniformParam.FloatParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FRAME_DURATION), (float)(System.currentTimeMillis() - this.frameStartTime) / 1000.0F));
       float[] arrayOfFloat;
       if (paramObject.facePoints != null)
       {
-        arrayOfFloat = VideoMaterialUtil.toFlatArray(paramObject.facePoints);
-        if (arrayOfFloat != null) {
-          addParam(new UniformParam.Float1sParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FACE_POINT), VideoMaterialUtil.flipYPoints(arrayOfFloat, (int)(this.height * this.mFaceDetScale))));
+        arrayOfFloat = VideoMaterial.toFlatArray(paramObject.facePoints);
+        if (arrayOfFloat != null)
+        {
+          String str = CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FACE_POINT);
+          double d1 = this.height;
+          double d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          addParam(new UniformParam.Float1sParam(str, VideoMaterial.flipYPoints(arrayOfFloat, (int)(d1 * d2))));
         }
       }
-      for (;;)
+      else
       {
-        addParam(new UniformParam.Float1sParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.ELEMENT_DURATIONS), getElementDurations(paramObject.timestamp)));
-        addParam(new UniformParam.FloatParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.AUDIO_POWER_SCALE), AudioDataManager.getInstance().getDecibel() / 120.0F));
-        return;
-        label199:
-        if (!paramObject.triggeredExpression.contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value))) {
-          break label280;
-        }
-        i = PTFaceAttr.PTExpression.FACE_DETECT.value;
-        break;
         arrayOfFloat = new float['´'];
         i = j;
         while (i < arrayOfFloat.length)
@@ -163,8 +157,8 @@ public class CustomVideoFilter
         }
         addParam(new UniformParam.Float1sParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FACE_POINT), arrayOfFloat));
       }
-      label280:
-      i = 0;
+      addParam(new UniformParam.Float1sParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.ELEMENT_DURATIONS), getElementDurations(paramObject.timestamp)));
+      addParam(new UniformParam.FloatParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.AUDIO_POWER_SCALE), AudioDataManager.getInstance().getDecibel() / 120.0F));
     }
   }
   
@@ -172,12 +166,20 @@ public class CustomVideoFilter
   {
     super.updateVideoSize(paramInt1, paramInt2, paramDouble);
     addParam(new UniformParam.Float2fParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.CANVAS_SIZE), paramInt1, paramInt2));
-    addParam(new UniformParam.Float2fParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FACE_DETECT_IMAGE_SIZE), (float)(this.width * this.mFaceDetScale), (float)(this.height * this.mFaceDetScale)));
+    String str = CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.FACE_DETECT_IMAGE_SIZE);
+    paramDouble = this.width;
+    double d = this.mFaceDetScale;
+    Double.isNaN(paramDouble);
+    float f = (float)(paramDouble * d);
+    paramDouble = this.height;
+    d = this.mFaceDetScale;
+    Double.isNaN(paramDouble);
+    addParam(new UniformParam.Float2fParam(str, f, (float)(paramDouble * d)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.CustomVideoFilter
  * JD-Core Version:    0.7.0.1
  */

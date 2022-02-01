@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.plugin.game.d.ad;
+import com.tencent.mm.plugin.game.protobuf.aq;
 
-public final class d
+public class d
 {
-  public String nmq;
-  public ad nmr;
-  public int nms;
-  public boolean nmt = false;
+  public String ICA;
+  public aq ICB;
+  public int ICC;
+  public boolean ICD = false;
   public int position;
   public int type;
 }

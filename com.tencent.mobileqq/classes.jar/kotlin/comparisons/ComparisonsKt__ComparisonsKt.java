@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"compareBy", "Ljava/util/Comparator;", "T", "Lkotlin/Comparator;", "selector", "Lkotlin/Function1;", "", "selectors", "", "([Lkotlin/jvm/functions/Function1;)Ljava/util/Comparator;", "K", "comparator", "compareByDescending", "compareValues", "", "a", "b", "(Ljava/lang/Comparable;Ljava/lang/Comparable;)I", "compareValuesBy", "(Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)I", "(Ljava/lang/Object;Ljava/lang/Object;[Lkotlin/jvm/functions/Function1;)I", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Comparator;Lkotlin/jvm/functions/Function1;)I", "compareValuesByImpl", "compareValuesByImpl$ComparisonsKt__ComparisonsKt", "naturalOrder", "nullsFirst", "", "nullsLast", "reverseOrder", "reversed", "then", "thenBy", "thenByDescending", "thenComparator", "comparison", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "thenDescending", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/comparisons/ComparisonsKt")
-public class ComparisonsKt__ComparisonsKt
+class ComparisonsKt__ComparisonsKt
 {
   @InlineOnly
   private static final <T, K> Comparator<T> compareBy(Comparator<? super K> paramComparator, Function1<? super T, ? extends K> paramFunction1)
@@ -29,11 +29,16 @@ public class ComparisonsKt__ComparisonsKt
   public static final <T> Comparator<T> compareBy(@NotNull Function1<? super T, ? extends Comparable<?>>... paramVarArgs)
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "selectors");
-    if (paramVarArgs.length > 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
+    int i;
+    if (paramVarArgs.length > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return (Comparator)new ComparisonsKt__ComparisonsKt.compareBy.1(paramVarArgs);
+    if (i != 0) {
+      return (Comparator)new ComparisonsKt__ComparisonsKt.compareBy.1(paramVarArgs);
+    }
+    throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
   }
   
   @InlineOnly
@@ -77,11 +82,16 @@ public class ComparisonsKt__ComparisonsKt
   public static final <T> int compareValuesBy(T paramT1, T paramT2, @NotNull Function1<? super T, ? extends Comparable<?>>... paramVarArgs)
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "selectors");
-    if (paramVarArgs.length > 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
+    int i;
+    if (paramVarArgs.length > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return compareValuesByImpl$ComparisonsKt__ComparisonsKt(paramT1, paramT2, paramVarArgs);
+    if (i != 0) {
+      return compareValuesByImpl$ComparisonsKt__ComparisonsKt(paramT1, paramT2, paramVarArgs);
+    }
+    throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
   }
   
   private static final <T> int compareValuesByImpl$ComparisonsKt__ComparisonsKt(T paramT1, T paramT2, Function1<? super T, ? extends Comparable<?>>[] paramArrayOfFunction1)
@@ -104,10 +114,10 @@ public class ComparisonsKt__ComparisonsKt
   public static final <T extends Comparable<? super T>> Comparator<T> naturalOrder()
   {
     NaturalOrderComparator localNaturalOrderComparator = NaturalOrderComparator.INSTANCE;
-    if (localNaturalOrderComparator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
+    if (localNaturalOrderComparator != null) {
+      return (Comparator)localNaturalOrderComparator;
     }
-    return (Comparator)localNaturalOrderComparator;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
   }
   
   @InlineOnly
@@ -140,10 +150,10 @@ public class ComparisonsKt__ComparisonsKt
   public static final <T extends Comparable<? super T>> Comparator<T> reverseOrder()
   {
     ReverseOrderComparator localReverseOrderComparator = ReverseOrderComparator.INSTANCE;
-    if (localReverseOrderComparator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
+    if (localReverseOrderComparator != null) {
+      return (Comparator)localReverseOrderComparator;
     }
-    return (Comparator)localReverseOrderComparator;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
   }
   
   @NotNull
@@ -156,18 +166,18 @@ public class ComparisonsKt__ComparisonsKt
     if (Intrinsics.areEqual(paramComparator, NaturalOrderComparator.INSTANCE))
     {
       paramComparator = ReverseOrderComparator.INSTANCE;
-      if (paramComparator == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
+      if (paramComparator != null) {
+        return (Comparator)paramComparator;
       }
-      return (Comparator)paramComparator;
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
     }
     if (Intrinsics.areEqual(paramComparator, ReverseOrderComparator.INSTANCE))
     {
       paramComparator = NaturalOrderComparator.INSTANCE;
-      if (paramComparator == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
+      if (paramComparator != null) {
+        return (Comparator)paramComparator;
       }
-      return (Comparator)paramComparator;
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Comparator<T> /* = java.util.Comparator<T> */");
     }
     return (Comparator)new ReversedComparator(paramComparator);
   }
@@ -220,7 +230,7 @@ public class ComparisonsKt__ComparisonsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.comparisons.ComparisonsKt__ComparisonsKt
  * JD-Core Version:    0.7.0.1
  */

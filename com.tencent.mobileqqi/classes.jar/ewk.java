@@ -8,7 +8,7 @@ public class ewk
   
   public void run()
   {
-    this.a.a.show();
+    this.a.a.hide();
   }
 }
 

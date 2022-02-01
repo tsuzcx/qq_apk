@@ -2,17 +2,21 @@ package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.a.c;
-import com.tencent.mm.sdk.e.g;
+import com.tencent.mm.plugin.appbrand.api.c;
+import com.tencent.mm.sdk.storage.IStorage;
 import java.util.List;
 
-@e(c.class)
+@e(Dr=c.class)
 public abstract interface ag
-  extends a, g
+  extends a, IStorage
 {
-  public abstract boolean aF(String paramString, int paramInt);
+  public abstract boolean bT(String paramString, int paramInt);
   
-  public abstract List<LocalUsageInfo> nu(int paramInt);
+  public abstract List<LocalUsageInfo> fg(int paramInt1, int paramInt2);
+  
+  public abstract List<LocalUsageInfo> r(long paramLong, int paramInt);
+  
+  public abstract List<LocalUsageInfo> zu(int paramInt);
 }
 
 

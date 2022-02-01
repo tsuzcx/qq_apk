@@ -5,59 +5,70 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import zzg;
-import zzp;
 
-public class QFindBLEScanMgr$3$1
+class QFindBLEScanMgr$3$1
   implements Runnable
 {
-  public QFindBLEScanMgr$3$1(zzp paramzzp, BluetoothDevice paramBluetoothDevice, byte[] paramArrayOfByte) {}
+  QFindBLEScanMgr$3$1(QFindBLEScanMgr.3 param3, BluetoothDevice paramBluetoothDevice, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    zzg localzzg = new zzg();
-    localzzg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getName();
-    localzzg.b = this.jdField_a_of_type_AndroidBluetoothBluetoothDevice.getAddress();
-    localzzg.jdField_a_of_type_Boolean = false;
-    zzg.a(this.jdField_a_of_type_ArrayOfByte, localzzg);
-    if ((localzzg.jdField_a_of_type_JavaUtilList != null) && (localzzg.jdField_a_of_type_JavaUtilList.contains("0000feba-0000-1000-8000-00805f9b34fb")))
+    BlePeerInfo localBlePeerInfo = new BlePeerInfo();
+    localBlePeerInfo.a = this.a.getName();
+    localBlePeerInfo.b = this.a.getAddress();
+    localBlePeerInfo.m = false;
+    BlePeerInfo.a(this.b, localBlePeerInfo);
+    StringBuilder localStringBuilder;
+    if ((localBlePeerInfo.c != null) && (localBlePeerInfo.c.contains("0000feba-0000-1000-8000-00805f9b34fb")))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QFindBLE_ex", 2, "onLeScan name=" + localzzg.jdField_a_of_type_JavaLangString + " pid:" + localzzg.jdField_a_of_type_Int + " address:" + localzzg.b + " ; blePeerInfo.ble_id = " + localzzg.c);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onLeScan name=");
+        localStringBuilder.append(localBlePeerInfo.a);
+        localStringBuilder.append(" pid:");
+        localStringBuilder.append(localBlePeerInfo.e);
+        localStringBuilder.append(" address:");
+        localStringBuilder.append(localBlePeerInfo.b);
+        localStringBuilder.append(" ; blePeerInfo.ble_id = ");
+        localStringBuilder.append(localBlePeerInfo.i);
+        QLog.i("QFindBLE_ex", 2, localStringBuilder.toString());
       }
-      if ((localzzg.jdField_a_of_type_Int == 0) || (localzzg.jdField_a_of_type_ArrayOfByte == null) || (!this.jdField_a_of_type_Zzp.a.b.contains(new Long(localzzg.jdField_a_of_type_Int)))) {}
+      if ((localBlePeerInfo.e == 0) || (localBlePeerInfo.d == null) || (!this.c.a.q.contains(new Long(localBlePeerInfo.e)))) {}
     }
-    for (;;)
+    try
     {
-      try
+      QFindBLEScanMgr.c(this.c.a);
+      boolean bool1 = QFindBLEScanMgr.a(this.c.a, localBlePeerInfo);
+      boolean bool2 = QFindBLEScanMgr.a(this.c.a, localBlePeerInfo, bool1);
+      if (QLog.isColorLevel())
       {
-        QFindBLEScanMgr.b(this.jdField_a_of_type_Zzp.a);
-        boolean bool1 = QFindBLEScanMgr.a(this.jdField_a_of_type_Zzp.a, localzzg);
-        bool2 = QFindBLEScanMgr.a(this.jdField_a_of_type_Zzp.a, localzzg, bool1);
-        if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE_ex", 2, "onLeScan blePeerInfo.ble_id = " + localzzg.c + " ; needReportLoc = " + bool1 + " ; needReport = " + bool2);
-        }
-        if ((!bool2) || (!bool1)) {
-          continue;
-        }
-        QFindBLEScanMgr.a(this.jdField_a_of_type_Zzp.a, localzzg.jdField_a_of_type_Int, localzzg.a());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onLeScan blePeerInfo.ble_id = ");
+        localStringBuilder.append(localBlePeerInfo.i);
+        localStringBuilder.append(" ; needReportLoc = ");
+        localStringBuilder.append(bool1);
+        localStringBuilder.append(" ; needReport = ");
+        localStringBuilder.append(bool2);
+        QLog.i("QFindBLE_ex", 2, localStringBuilder.toString());
       }
-      catch (Exception localException)
-      {
-        boolean bool2;
-        continue;
-      }
-      this.jdField_a_of_type_Zzp.a.a.postDelayed(new QFindBLEScanMgr.3.1.1(this), this.jdField_a_of_type_Zzp.a.i);
-      return;
-      if (bool2) {
-        QFindBLEScanMgr.a(this.jdField_a_of_type_Zzp.a, localzzg, null, false);
+      if ((bool2) && (bool1)) {
+        QFindBLEScanMgr.a(this.c.a, localBlePeerInfo.e, localBlePeerInfo.a());
+      } else if (bool2) {
+        QFindBLEScanMgr.a(this.c.a, localBlePeerInfo, null, false);
       }
     }
+    catch (Exception localException)
+    {
+      label359:
+      break label359;
+    }
+    this.c.a.w.postDelayed(new QFindBLEScanMgr.3.1.1(this), this.c.a.n);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr.3.1
  * JD-Core Version:    0.7.0.1
  */

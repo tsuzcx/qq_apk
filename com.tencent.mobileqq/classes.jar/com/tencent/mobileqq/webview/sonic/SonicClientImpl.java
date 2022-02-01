@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.webview.sonic;
 
-import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import bdin;
-import begc;
-import beho;
-import behu;
-import beiy;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasBaseWebviewUtil;
+import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebBackForwardList;
@@ -41,119 +40,119 @@ public class SonicClientImpl
   
   public void clearHistory()
   {
-    if (this.webView != null) {}
-    try
-    {
-      WebBackForwardList localWebBackForwardList = this.webView.copyBackForwardList();
-      int i;
-      Object localObject1;
-      long l;
-      if ((localWebBackForwardList != null) && (localWebBackForwardList.getSize() > 1))
+    Object localObject1 = this.webView;
+    if (localObject1 != null) {
+      try
       {
-        i = localWebBackForwardList.getSize();
-        localObject1 = null;
-        l = this.session.sId;
-        i -= 1;
-      }
-      for (;;)
-      {
-        if (i > -1)
+        WebBackForwardList localWebBackForwardList = ((CustomWebView)localObject1).copyBackForwardList();
+        Object localObject2;
+        if ((localWebBackForwardList != null) && (localWebBackForwardList.getSize() > 1))
         {
-          localObject2 = Uri.parse(localWebBackForwardList.getItemAtIndex(i).getOriginalUrl());
-          if ((localObject2 != null) && (((Uri)localObject2).isHierarchical()))
+          int i = localWebBackForwardList.getSize() - 1;
+          localObject1 = null;
+          long l = this.session.sId;
+          while (i > -1)
           {
-            String str = ((Uri)localObject2).getQueryParameter("_sonic_id");
-            localObject2 = str;
-            if (!String.valueOf(l).equals(localObject1)) {
-              break label134;
+            Uri localUri = Uri.parse(localWebBackForwardList.getItemAtIndex(i).getOriginalUrl());
+            localObject2 = localObject1;
+            if (localUri != null)
+            {
+              localObject2 = localObject1;
+              if (localUri.isHierarchical())
+              {
+                localObject2 = localUri.getQueryParameter("_sonic_id");
+                if ((String.valueOf(l).equals(localObject1)) && (((String)localObject1).equals(localObject2)))
+                {
+                  this.webView.clearHistory();
+                  return;
+                }
+              }
             }
-            localObject2 = str;
-            if (!localObject1.equals(str)) {
-              break label134;
-            }
-            this.webView.clearHistory();
+            i -= 1;
+            localObject1 = localObject2;
           }
         }
-        else
-        {
-          return;
-        }
-        Object localObject2 = localObject1;
-        label134:
-        i -= 1;
-        localObject1 = localObject2;
+        return;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.e("sonicSdkImpl_SonicClientImpl", 1, "clearHistory error:" + localException.getMessage());
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("clearHistory error:");
+        ((StringBuilder)localObject2).append(localException.getMessage());
+        QLog.e("sonicSdkImpl_SonicClientImpl", 1, ((StringBuilder)localObject2).toString());
+      }
     }
   }
   
   public void destroy()
   {
-    if (QLog.isColorLevel()) {
+    boolean bool = QLog.isColorLevel();
+    int i = 2;
+    if (bool) {
       QLog.d("sonicSdkImpl_SonicClientImpl", 2, "destroy");
     }
-    int i = bdin.a(BaseApplication.getContext());
-    int j = i;
-    if (i == 0) {
+    int j = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    if (j == 0) {
       j = -1;
     }
-    int k = 0;
-    i = k;
-    Object localObject;
-    if (this.webView != null)
+    Object localObject1 = this.webView;
+    if (localObject1 != null)
     {
-      Context localContext = this.webView.getContext();
-      localObject = localContext;
-      if ((localContext instanceof MutableContextWrapper)) {
-        localObject = ((MutableContextWrapper)localContext).getBaseContext();
+      localObject2 = ((CustomWebView)localObject1).getContext();
+      localObject1 = localObject2;
+      if ((localObject2 instanceof MutableContextWrapper)) {
+        localObject1 = ((MutableContextWrapper)localObject2).getBaseContext();
       }
-      if (!(localObject instanceof behu)) {
-        break label226;
-      }
-      localObject = (beiy)((behu)localObject).b().a(-2);
-    }
-    for (;;)
-    {
-      i = k;
-      if (localObject != null)
+      if ((localObject1 instanceof SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter))
       {
-        if (!((beiy)localObject).w) {
-          break label269;
-        }
-        i = 2;
+        localObject1 = (SwiftBrowserStatistics)((SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)localObject1).getComponentProvider().a(-2);
       }
-      for (;;)
+      else
       {
-        localObject = this.session.getStatistics();
-        VasWebviewUtil.doSonicSpeedReport("SonicReport", "SonicSpeed", ((SonicSessionStatistics)localObject).srcUrl, ((SonicSessionStatistics)localObject).finalMode, ((SonicSessionStatistics)localObject).originalMode, ((SonicSessionStatistics)localObject).sonicStartTime, ((SonicSessionStatistics)localObject).sonicFlowStartTime, ((SonicSessionStatistics)localObject).cacheVerifyTime, ((SonicSessionStatistics)localObject).connectionFlowStartTime, ((SonicSessionStatistics)localObject).connectionConnectTime, ((SonicSessionStatistics)localObject).connectionRespondTime, ((SonicSessionStatistics)localObject).connectionFlowFinishTime, 0L, 0L, 0L, 0L, j, i, ((SonicSessionStatistics)localObject).isDirectAddress + "", "");
-        this.session.destroy();
-        this.webView = null;
-        return;
-        label226:
-        if (!(localObject instanceof begc)) {
-          break label285;
+        if ((localObject1 instanceof SwiftWebViewFragmentSupporter))
+        {
+          localObject1 = ((SwiftWebViewFragmentSupporter)localObject1).getCurrentWebViewFragment();
+          if (localObject1 != null)
+          {
+            localObject1 = (SwiftBrowserStatistics)((WebViewFragment)localObject1).getComponentProvider().a(-2);
+            break label153;
+          }
         }
-        localObject = ((begc)localObject).b();
-        if (localObject == null) {
-          break label285;
-        }
-        localObject = (beiy)((WebViewFragment)localObject).b().a(-2);
-        break;
-        label269:
-        if (beiy.s) {
-          i = 1;
-        } else {
-          i = 0;
-        }
+        localObject1 = null;
       }
-      label285:
-      localObject = null;
+      label153:
+      if (localObject1 != null)
+      {
+        if (!((SwiftBrowserStatistics)localObject1).aH) {
+          if (SwiftBrowserStatistics.aD) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+        }
+        break label187;
+      }
     }
+    i = 0;
+    label187:
+    localObject1 = this.session.getStatistics();
+    Object localObject2 = ((SonicSessionStatistics)localObject1).srcUrl;
+    int k = ((SonicSessionStatistics)localObject1).finalMode;
+    int m = ((SonicSessionStatistics)localObject1).originalMode;
+    long l1 = ((SonicSessionStatistics)localObject1).sonicStartTime;
+    long l2 = ((SonicSessionStatistics)localObject1).sonicFlowStartTime;
+    long l3 = ((SonicSessionStatistics)localObject1).cacheVerifyTime;
+    long l4 = ((SonicSessionStatistics)localObject1).connectionFlowStartTime;
+    long l5 = ((SonicSessionStatistics)localObject1).connectionConnectTime;
+    long l6 = ((SonicSessionStatistics)localObject1).connectionRespondTime;
+    long l7 = ((SonicSessionStatistics)localObject1).connectionFlowFinishTime;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((SonicSessionStatistics)localObject1).isDirectAddress);
+    localStringBuilder.append("");
+    VasBaseWebviewUtil.doSonicSpeedReport("SonicReport", "SonicSpeed", (String)localObject2, k, m, l1, l2, l3, l4, l5, l6, l7, 0L, 0L, 0L, 0L, j, i, localStringBuilder.toString(), "");
+    this.session.destroy();
+    this.webView = null;
   }
   
   public SonicSession getSession()
@@ -163,23 +162,26 @@ public class SonicClientImpl
   
   public void loadDataWithBaseUrl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.webView != null) {
-      this.webView.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
+    CustomWebView localCustomWebView = this.webView;
+    if (localCustomWebView != null) {
+      localCustomWebView.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
     }
   }
   
   public void loadDataWithBaseUrlAndHeader(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, HashMap<String, String> paramHashMap)
   {
-    if (this.webView != null) {
-      this.webView.loadDataWithBaseURLAndHeader(paramString1, paramString2, paramString3, paramString4, paramString5, paramHashMap);
+    CustomWebView localCustomWebView = this.webView;
+    if (localCustomWebView != null) {
+      localCustomWebView.loadDataWithBaseURLAndHeader(paramString1, paramString2, paramString3, paramString4, paramString5, paramHashMap);
     }
   }
   
   public void loadUrl(String paramString, Bundle paramBundle)
   {
-    if (this.webView != null)
+    paramBundle = this.webView;
+    if (paramBundle != null)
     {
-      this.webView.setForceLoadUrl(true);
+      paramBundle.setForceLoadUrl(true);
       this.webView.loadUrlOriginal(paramString);
       this.webView.setForceLoadUrl(false);
     }
@@ -187,7 +189,7 @@ public class SonicClientImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicClientImpl
  * JD-Core Version:    0.7.0.1
  */

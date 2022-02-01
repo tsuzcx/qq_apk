@@ -4,7 +4,10 @@ public final class pa
 {
   public static int a(byte[] paramArrayOfByte)
   {
-    return paramArrayOfByte[0] & 0xFF | 0xFF00 & paramArrayOfByte[1] << 8 | 0xFF0000 & paramArrayOfByte[2] << 16 | 0xFF000000 & paramArrayOfByte[3] << 24;
+    int i = paramArrayOfByte[0];
+    int j = paramArrayOfByte[1];
+    int k = paramArrayOfByte[2];
+    return paramArrayOfByte[3] << 24 & 0xFF000000 | i & 0xFF | j << 8 & 0xFF00 | k << 16 & 0xFF0000;
   }
   
   public static String a(byte[] paramArrayOfByte, String paramString)
@@ -14,7 +17,11 @@ public final class pa
       paramArrayOfByte = new String(paramArrayOfByte, paramString).trim();
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
   
@@ -25,13 +32,16 @@ public final class pa
   
   public static byte[] a(String paramString)
   {
-    if (paramString != null) {
-      try
-      {
-        paramString = paramString.getBytes("UTF-16LE");
-        return paramString;
-      }
-      catch (Exception paramString) {}
+    if (paramString != null) {}
+    try
+    {
+      paramString = paramString.getBytes("UTF-16LE");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      label13:
+      break label13;
     }
     return new byte[0];
   }
@@ -43,13 +53,17 @@ public final class pa
       paramArrayOfByte = new String(paramArrayOfByte, "UTF-16LE").trim();
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label16:
+      break label16;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pa
  * JD-Core Version:    0.7.0.1
  */

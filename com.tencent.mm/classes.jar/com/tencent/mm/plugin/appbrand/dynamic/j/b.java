@@ -3,42 +3,49 @@ package com.tencent.mm.plugin.appbrand.dynamic.j;
 import android.content.ContentValues;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.i;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.widget.h;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  public static com.tencent.mm.plugin.appbrand.widget.f Bp(String paramString)
+  public static h Zo(String paramString)
   {
-    AppMethodBeat.i(10995);
+    AppMethodBeat.i(121476);
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
-    paramString = a((ContentValues)com.tencent.mm.ipcinvoker.f.a("com.tencent.mm", localBundle, a.class));
-    AppMethodBeat.o(10995);
+    paramString = a((ContentValues)j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.class));
+    AppMethodBeat.o(121476);
     return paramString;
   }
   
-  static com.tencent.mm.plugin.appbrand.widget.f a(ContentValues paramContentValues)
+  static h a(ContentValues paramContentValues)
   {
-    AppMethodBeat.i(10996);
+    AppMethodBeat.i(121477);
     if (paramContentValues != null)
     {
-      com.tencent.mm.plugin.appbrand.widget.f localf = new com.tencent.mm.plugin.appbrand.widget.f();
-      localf.field_id = paramContentValues.getAsString("id");
-      localf.field_appId = paramContentValues.getAsString("appId");
-      localf.field_cacheKey = paramContentValues.getAsString("cacheKey");
-      localf.field_updateTime = bo.c(paramContentValues.getAsLong("updateTime"));
-      localf.field_interval = bo.g(paramContentValues.getAsInteger("interval"));
-      localf.systemRowid = bo.c(paramContentValues.getAsLong("rowid"));
-      AppMethodBeat.o(10996);
-      return localf;
+      h localh = new h();
+      localh.field_id = paramContentValues.getAsString("id");
+      localh.field_appId = paramContentValues.getAsString("appId");
+      localh.field_cacheKey = paramContentValues.getAsString("cacheKey");
+      localh.field_updateTime = Util.nullAsNil(paramContentValues.getAsLong("updateTime"));
+      localh.field_interval = Util.nullAsNil(paramContentValues.getAsInteger("interval"));
+      localh.systemRowid = Util.nullAsNil(paramContentValues.getAsLong("rowid"));
+      AppMethodBeat.o(121477);
+      return localh;
     }
-    AppMethodBeat.o(10996);
+    AppMethodBeat.o(121477);
     return null;
   }
   
   static class a
-    implements i<Bundle, ContentValues>
+    implements m<Bundle, ContentValues>
+  {}
+  
+  public static class b
+    implements m<ContentValues, Bundle>
   {}
 }
 

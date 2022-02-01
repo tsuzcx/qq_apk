@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.model.e;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ar;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.plugin.emoji.model.m;
+import com.tencent.mm.plugin.emoji.model.s;
+import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,43 +18,46 @@ public final class d
 {
   private final String TAG = "MicroMsg.emoji.EmojiListMineData";
   
-  public d(e parame)
+  public d(m paramm)
   {
-    super(parame);
+    super(paramm);
   }
-  
-  public final void bkJ() {}
   
   public final void clear()
   {
-    AppMethodBeat.i(52796);
+    AppMethodBeat.i(108372);
     super.clear();
-    AppMethodBeat.o(52796);
+    AppMethodBeat.o(108372);
   }
+  
+  public final void dyn() {}
   
   public final void notifyDataSetChanged()
   {
     try
     {
-      AppMethodBeat.i(52795);
-      Object localObject1 = i.getEmojiStorageMgr().yNo.dzh();
-      boolean bool = com.tencent.mm.plugin.emoji.h.a.bmI();
-      this.mItemList = new ArrayList();
-      ab.v("MicroMsg.emoji.EmojiListMineData", "============= refresh Data By DB");
+      AppMethodBeat.i(108371);
+      Object localObject1 = s.getEmojiStorageMgr().adjv.jdi();
+      boolean bool = com.tencent.mm.plugin.emoji.g.c.dBJ();
+      this.xHy = new ArrayList();
+      Log.v("MicroMsg.emoji.EmojiListMineData", "============= refresh Data By DB");
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        EmotionSummary localEmotionSummary = ((EmojiGroupInfo)((Iterator)localObject1).next()).dzm();
-        f localf = new f(localEmotionSummary);
-        if ((com.tencent.mm.plugin.emoji.h.a.g(localEmotionSummary)) && (bool))
+        cjb localcjb = ((EmojiGroupInfo)((Iterator)localObject1).next()).kLX();
+        f localf = new f(localcjb);
+        if (localcjb != null)
         {
-          ar localar = new ar(localEmotionSummary.ProductID);
-          this.leW.put(localEmotionSummary.ProductID, localar);
+          if ((com.tencent.mm.plugin.emoji.g.c.i(localcjb)) && (bool))
+          {
+            bj localbj = new bj(localcjb.ProductID);
+            this.xHA.put(localcjb.ProductID, localbj);
+          }
+          localf.setStatus(9);
+          this.xHy.add(localf);
         }
-        localf.setStatus(9);
-        this.mItemList.add(localf);
       }
-      AppMethodBeat.o(52795);
+      AppMethodBeat.o(108371);
     }
     finally {}
   }

@@ -1,61 +1,48 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
-import android.util.JsonToken;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframe;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.ArrayList;
 import java.util.List;
 
 class KeyframesParser
 {
-  static <T> List<Keyframe<T>> parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition, float paramFloat, ValueParser<T> paramValueParser)
+  static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "k" });
+  
+  static <T> List<Keyframe<T>> parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition, float paramFloat, ValueParser<T> paramValueParser, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramJsonReader.peek() == JsonToken.STRING)
+    if (paramJsonReader.peek() == JsonReader.Token.STRING)
     {
       paramLottieComposition.addWarning("Lottie doesn't support expressions.");
       return localArrayList;
     }
     paramJsonReader.beginObject();
-    label32:
-    while (paramJsonReader.hasNext())
-    {
-      String str = paramJsonReader.nextName();
-      int i = -1;
-      switch (str.hashCode())
+    while (paramJsonReader.hasNext()) {
+      if (paramJsonReader.selectName(NAMES) != 0)
       {
+        paramJsonReader.skipValue();
       }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          break label32;
-          if (str.equals("k")) {
-            i = 0;
-          }
-          break;
-        }
-      }
-      if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY)
+      else if (paramJsonReader.peek() == JsonReader.Token.BEGIN_ARRAY)
       {
         paramJsonReader.beginArray();
-        if (paramJsonReader.peek() == JsonToken.NUMBER) {
-          localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false));
-        }
-        for (;;)
-        {
-          paramJsonReader.endArray();
-          break;
+        if (paramJsonReader.peek() == JsonReader.Token.NUMBER) {
+          localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false, paramBoolean));
+        } else {
           while (paramJsonReader.hasNext()) {
-            localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, true));
+            localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, true, paramBoolean));
           }
         }
+        paramJsonReader.endArray();
       }
-      localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false));
+      else
+      {
+        localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false, paramBoolean));
+      }
     }
     paramJsonReader.endObject();
     setEndFrames(localArrayList);
@@ -64,23 +51,36 @@ class KeyframesParser
   
   public static <T> void setEndFrames(List<? extends Keyframe<T>> paramList)
   {
-    int j = paramList.size();
+    int k = paramList.size();
     int i = 0;
-    while (i < j - 1)
+    int j;
+    for (;;)
     {
+      j = k - 1;
+      if (i >= j) {
+        break;
+      }
       localKeyframe1 = (Keyframe)paramList.get(i);
-      Keyframe localKeyframe2 = (Keyframe)paramList.get(i + 1);
+      j = i + 1;
+      Keyframe localKeyframe2 = (Keyframe)paramList.get(j);
       localKeyframe1.endFrame = Float.valueOf(localKeyframe2.startFrame);
-      if ((localKeyframe1.endValue == null) && (localKeyframe2.startValue != null))
+      i = j;
+      if (localKeyframe1.endValue == null)
       {
-        localKeyframe1.endValue = localKeyframe2.startValue;
-        if ((localKeyframe1 instanceof PathKeyframe)) {
-          ((PathKeyframe)localKeyframe1).createPath();
+        i = j;
+        if (localKeyframe2.startValue != null)
+        {
+          localKeyframe1.endValue = localKeyframe2.startValue;
+          i = j;
+          if ((localKeyframe1 instanceof PathKeyframe))
+          {
+            ((PathKeyframe)localKeyframe1).createPath();
+            i = j;
+          }
         }
       }
-      i += 1;
     }
-    Keyframe localKeyframe1 = (Keyframe)paramList.get(j - 1);
+    Keyframe localKeyframe1 = (Keyframe)paramList.get(j);
     if (((localKeyframe1.startValue == null) || (localKeyframe1.endValue == null)) && (paramList.size() > 1)) {
       paramList.remove(localKeyframe1);
     }

@@ -17,13 +17,14 @@ public final class HotPicMsg$TagInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_tag_id", "bytes_tag_name", "uint32_tag_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, TagInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_tag_id", "bytes_tag_name", "uint32_tag_type" }, new Object[] { localInteger, localByteStringMicro, localInteger }, TagInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.hotpicmsg.HotPicMsg.TagInfo
  * JD-Core Version:    0.7.0.1
  */

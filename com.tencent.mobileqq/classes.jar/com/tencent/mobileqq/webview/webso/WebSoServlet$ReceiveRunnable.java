@@ -1,30 +1,29 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.os.Bundle;
-import beko;
 
 class WebSoServlet$ReceiveRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private boolean jdField_a_of_type_Boolean;
+  private int a;
+  private boolean b;
+  private Bundle c;
   
   public WebSoServlet$ReceiveRunnable(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.a = paramInt;
+    this.b = paramBoolean;
+    this.c = paramBundle;
   }
   
   public void run()
   {
-    beko.a().onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    WebSoCgiService.a().onReceive(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoServlet.ReceiveRunnable
  * JD-Core Version:    0.7.0.1
  */

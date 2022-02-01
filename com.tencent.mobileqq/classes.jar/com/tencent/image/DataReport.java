@@ -1,7 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.beacon.event.UserAction;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -16,14 +16,13 @@ public class DataReport
   private void doReport(LinkedList<Integer> paramLinkedList)
   {
     long l1 = System.currentTimeMillis();
-    if ((paramLinkedList == null) || (paramLinkedList.size() < 5)) {}
-    int i;
-    long l2;
-    do
+    if (paramLinkedList != null)
     {
-      return;
+      if (paramLinkedList.size() < 5) {
+        return;
+      }
       int k = paramLinkedList.size();
-      i = 0;
+      int i = 0;
       int j = 0;
       while (i < k)
       {
@@ -31,12 +30,19 @@ public class DataReport
         i += 1;
       }
       i = (int)(j / k);
-      paramLinkedList = new HashMap();
-      paramLinkedList.put("param_framDelayTime", String.valueOf(i));
-      UserAction.onUserAction("ShortVideo.Play", true, -1L, -1L, paramLinkedList, false);
-      l2 = System.currentTimeMillis();
-    } while (!QLog.isColorLevel());
-    QLog.d("URLDrawable_DataReport", 2, "doReport(), cost:" + (l2 - l1) + "ms, averageTime=" + i);
+      new HashMap().put("param_framDelayTime", String.valueOf(i));
+      long l2 = System.currentTimeMillis();
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        paramLinkedList = URLDrawable.depImp.mLog;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doReport(), cost:");
+        localStringBuilder.append(l2 - l1);
+        localStringBuilder.append("ms, averageTime=");
+        localStringBuilder.append(i);
+        paramLinkedList.d("URLDrawable_DataReport", 2, localStringBuilder.toString());
+      }
+    }
   }
   
   public void onVideoFrameDroped(boolean paramBoolean, int paramInt)
@@ -50,20 +56,22 @@ public class DataReport
         doReport(this.mList);
         this.mList.clear();
       }
-      return;
     }
-    if (i < 5)
+    else
     {
+      if (i < 5)
+      {
+        this.mList.clear();
+        return;
+      }
+      doReport(this.mList);
       this.mList.clear();
-      return;
     }
-    doReport(this.mList);
-    this.mList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.DataReport
  * JD-Core Version:    0.7.0.1
  */

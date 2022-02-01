@@ -9,12 +9,13 @@ class ArkModel$2
   {
     this.this$0.mExtraTimerRecord.getAppFromLocal = true;
     this.this$0.mExtraTimerRecord.endOfGetApp = System.currentTimeMillis();
-    ArkModel.access$200(this.this$0, this.val$appPath, 0, null);
+    ArkModel localArkModel = this.this$0;
+    ArkModel.access$100(localArkModel, this.val$appPath, ArkModel.access$000(localArkModel), 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.ArkModel.2
  * JD-Core Version:    0.7.0.1
  */

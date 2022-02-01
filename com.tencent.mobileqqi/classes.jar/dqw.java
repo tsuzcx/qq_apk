@@ -1,18 +1,18 @@
-import android.view.View;
+import android.app.Dialog;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class dqw
   implements Animation.AnimationListener
 {
-  public dqw(TroopMemberListActivity paramTroopMemberListActivity, View paramView) {}
+  public dqw(TroopMemberListActivity paramTroopMemberListActivity, TranslateAnimation paramTranslateAnimation, Dialog paramDialog) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation) {
+      this.jdField_a_of_type_AndroidAppDialog.show();
     }
   }
   

@@ -1,104 +1,134 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class cvk
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public b ydO;
-  public b ydP;
-  public b ydQ;
-  public b ydR;
+  public erw aaAU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56997);
+    AppMethodBeat.i(32290);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.ydO != null) {
-        paramVarArgs.c(1, this.ydO);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(32290);
+        throw paramVarArgs;
       }
-      if (this.ydP != null) {
-        paramVarArgs.c(2, this.ydP);
+      if (this.aaAU == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ResourceData");
+        AppMethodBeat.o(32290);
+        throw paramVarArgs;
       }
-      if (this.ydQ != null) {
-        paramVarArgs.c(3, this.ydQ);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.ydR != null) {
-        paramVarArgs.c(4, this.ydR);
+      if (this.aaAU != null)
+      {
+        paramVarArgs.qD(2, this.aaAU.computeSize());
+        this.aaAU.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(56997);
+      AppMethodBeat.o(32290);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ydO == null) {
-        break label394;
+      if (this.BaseResponse == null) {
+        break label526;
       }
     }
-    label394:
-    for (int i = e.a.a.b.b.a.b(1, this.ydO) + 0;; i = 0)
+    label526:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.ydP != null) {
-        paramInt = i + e.a.a.b.b.a.b(2, this.ydP);
+      int i = paramInt;
+      if (this.aaAU != null) {
+        i = paramInt + i.a.a.a.qC(2, this.aaAU.computeSize());
       }
-      i = paramInt;
-      if (this.ydQ != null) {
-        i = paramInt + e.a.a.b.b.a.b(3, this.ydQ);
-      }
-      paramInt = i;
-      if (this.ydR != null) {
-        paramInt = i + e.a.a.b.b.a.b(4, this.ydR);
-      }
-      AppMethodBeat.o(56997);
-      return paramInt;
+      AppMethodBeat.o(32290);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(56997);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(32290);
+          throw paramVarArgs;
+        }
+        if (this.aaAU == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ResourceData");
+          AppMethodBeat.o(32290);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32290);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         cvk localcvk = (cvk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(56997);
+          AppMethodBeat.o(32290);
           return -1;
         case 1: 
-          localcvk.ydO = locala.CLY.eqS();
-          AppMethodBeat.o(56997);
-          return 0;
-        case 2: 
-          localcvk.ydP = locala.CLY.eqS();
-          AppMethodBeat.o(56997);
-          return 0;
-        case 3: 
-          localcvk.ydQ = locala.CLY.eqS();
-          AppMethodBeat.o(56997);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kd();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kd)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcvk.BaseResponse = ((kd)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32290);
           return 0;
         }
-        localcvk.ydR = locala.CLY.eqS();
-        AppMethodBeat.o(56997);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new erw();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((erw)localObject2).parseFrom((byte[])localObject1);
+          }
+          localcvk.aaAU = ((erw)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(32290);
         return 0;
       }
-      AppMethodBeat.o(56997);
+      AppMethodBeat.o(32290);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cvk
  * JD-Core Version:    0.7.0.1
  */

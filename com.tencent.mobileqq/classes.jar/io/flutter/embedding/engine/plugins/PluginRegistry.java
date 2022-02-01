@@ -1,7 +1,7 @@
 package io.flutter.embedding.engine.plugins;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import java.util.Set;
 
 public abstract interface PluginRegistry
@@ -23,7 +23,7 @@ public abstract interface PluginRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.PluginRegistry
  * JD-Core Version:    0.7.0.1
  */

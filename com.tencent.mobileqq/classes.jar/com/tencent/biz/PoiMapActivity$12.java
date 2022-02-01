@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mzq;
 
 class PoiMapActivity$12
   implements Runnable
@@ -14,59 +13,59 @@ class PoiMapActivity$12
   
   public void run()
   {
-    label118:
+    boolean bool2 = this.this$0.Z;
+    boolean bool1 = true;
     PoiMapActivity localPoiMapActivity;
-    String str;
-    ArrayList localArrayList;
-    if (this.this$0.i) {
-      if (this.jdField_a_of_type_Boolean)
+    if (bool2)
+    {
+      if (this.a)
       {
         this.this$0.a("rec_locate", "call_foursquare", "", "", "", "");
         QLog.d("PoiMapActivity", 1, "hasPoiListForFoursquareFinal: true");
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        if (this.this$0.jdField_b_of_type_AndroidWidgetLinearLayout != null) {
-          this.this$0.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-        if (!this.jdField_a_of_type_JavaLangString.equals(this.this$0.jdField_b_of_type_ArrayOfJavaLangString[0]))
-        {
-          this.this$0.l = 0;
-          this.this$0.jdField_a_of_type_ArrayOfMzq[0].b(true);
-        }
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          break label235;
-        }
-        if (this.jdField_b_of_type_JavaLangString.equals(this.this$0.c))
-        {
-          localPoiMapActivity = this.this$0;
-          str = this.jdField_b_of_type_JavaLangString;
-          localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-          if (this.jdField_a_of_type_Int <= 0) {
-            break label230;
-          }
-        }
+        this.this$0.X.setVisibility(8);
+      }
+      else
+      {
+        this.this$0.X.setVisibility(8);
+      }
+      if (this.this$0.an != null) {
+        this.this$0.an.setVisibility(8);
+      }
+      if (!this.b.equals(this.this$0.am[0]))
+      {
+        localPoiMapActivity = this.this$0;
+        localPoiMapActivity.r = 0;
+        localPoiMapActivity.d[0].b(true);
       }
     }
-    label230:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      localPoiMapActivity.a(str, localArrayList, bool);
-      return;
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      break;
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (this.this$0.jdField_b_of_type_AndroidWidgetLinearLayout == null) {
-        break label118;
+      this.this$0.X.setVisibility(8);
+      if (this.this$0.an != null) {
+        this.this$0.an.setVisibility(0);
       }
-      this.this$0.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      break label118;
     }
-    label235:
-    this.this$0.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.d, this.jdField_b_of_type_Boolean);
+    if (!TextUtils.isEmpty(this.c))
+    {
+      if (this.c.equals(this.this$0.F))
+      {
+        localPoiMapActivity = this.this$0;
+        String str = this.c;
+        ArrayList localArrayList = this.d;
+        if (this.e <= 0) {
+          bool1 = false;
+        }
+        localPoiMapActivity.a(str, localArrayList, bool1);
+      }
+    }
+    else {
+      this.this$0.a(this.d, this.f, this.g, this.b, this.e, this.h, this.i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.12
  * JD-Core Version:    0.7.0.1
  */

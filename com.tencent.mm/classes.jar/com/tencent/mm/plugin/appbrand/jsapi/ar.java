@@ -1,166 +1,124 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.location.LocationManager;
-import android.net.wifi.WifiManager;
-import com.tencent.luggage.sdk.b.a.c.c;
-import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
-import com.tencent.luggage.sdk.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.e;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.ui.af;
-import com.tencent.mm.ui.statusbar.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.e;
+import com.tencent.mm.plugin.messenger.foundation.a.e.b;
 import java.util.HashMap;
 import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONObject;
 
-public class ar<C extends c>
-  extends com.tencent.mm.plugin.appbrand.jsapi.r.g<C>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppBindGroup;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class ar
+  extends c<f>
 {
-  public static final int CTRL_INDEX = 40;
-  public static final String NAME = "getSystemInfo";
-  float hxY = -1.0F;
+  public static final int CTRL_INDEX = 875;
+  public static final String NAME = "bindGroup";
+  public static final a rxx;
   
-  protected Map<String, Object> a(C paramC)
+  static
   {
-    AppMethodBeat.i(140831);
-    Map localMap = super.a(paramC);
-    Object localObject1 = com.tencent.mm.plugin.appbrand.t.v.n(paramC);
-    localMap.put("windowWidth", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pM(localObject1[0])));
-    localMap.put("windowHeight", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pM(localObject1[1])));
-    localObject1 = com.tencent.mm.plugin.appbrand.t.v.d(paramC);
-    int i = localObject1[0];
-    int j = localObject1[1];
-    localMap.put("screenWidth", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pM(i)));
-    localMap.put("screenHeight", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pM(j)));
-    localMap.put("statusBarHeight", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pM(a.aG(paramC.X(Activity.class)))));
-    localMap.put("language", aa.gP(paramC.getContext()));
-    localMap.put("version", com.tencent.mm.sdk.platformtools.g.au(null, f.ymG));
-    localMap.put("benchmarkLevel", Integer.valueOf(paramC.wj().wR().bDF));
-    int k = paramC.getContext().getResources().getConfiguration().orientation;
-    label254:
-    Object localObject2;
-    if (2 == k)
+    AppMethodBeat.i(325555);
+    rxx = new a((byte)0);
+    AppMethodBeat.o(325555);
+  }
+  
+  private static final void a(f paramf, int paramInt, ar paramar, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(325554);
+    s.u(paramar, "this$0");
+    if (paramBoolean)
     {
-      localMap.put("deviceOrientation", "landscape");
-      if (this.hxY == -1.0F) {
-        break label540;
+      paramString1 = (CharSequence)paramString2;
+      if ((paramString1 == null) || (paramString1.length() == 0)) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        paramString1 = new HashMap();
+        ((Map)paramString1).put("openId", paramString2);
+        if (paramf == null) {
+          break label120;
+        }
+        paramf.callback(paramInt, paramar.m("ok", (Map)paramString1));
+        AppMethodBeat.o(325554);
+        return;
       }
-      localMap.put("fontSizeSetting", Integer.valueOf((int)(this.hxY * 16.0F)));
-      localObject1 = new HashMap();
-      localObject2 = paramC.getContext();
-      if (localObject2 == null) {
-        break label678;
-      }
-      Object localObject3 = (WifiManager)((Context)localObject2).getApplicationContext().getSystemService("wifi");
-      if (localObject3 == null) {
-        break label585;
-      }
-      ((Map)localObject1).put("wifiEnabled", Boolean.valueOf(((WifiManager)localObject3).isWifiEnabled()));
-      label312:
-      ((Map)localObject1).put("notificationAuthorized", Boolean.valueOf(android.support.v4.app.v.K((Context)localObject2).areNotificationsEnabled()));
-      localObject3 = (LocationManager)((Context)localObject2).getSystemService("location");
-      if (localObject3 == null) {
-        break label601;
-      }
-      ((Map)localObject1).put("locationEnabled", Boolean.valueOf(((LocationManager)localObject3).isProviderEnabled("gps")));
     }
-    for (;;)
+    if (paramf != null) {
+      paramf.callback(paramInt, paramar.ZP("fail"));
+    }
+    label120:
+    AppMethodBeat.o(325554);
+  }
+  
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  {
+    e.b localb = null;
+    AppMethodBeat.i(325561);
+    String str1;
+    Object localObject;
+    if (paramf == null)
     {
-      try
-      {
-        ((Map)localObject1).put("locationAuthorized", Boolean.valueOf(com.tencent.luggage.g.g.o((Context)localObject2, "android.permission.ACCESS_FINE_LOCATION")));
-        ((Map)localObject1).put("cameraAuthorized", Boolean.valueOf(com.tencent.luggage.g.g.o((Context)localObject2, "android.permission.CAMERA")));
-        ((Map)localObject1).put("microphoneAuthorized", Boolean.valueOf(com.tencent.luggage.g.g.o((Context)localObject2, "android.permission.RECORD_AUDIO")));
-        localObject2 = BluetoothAdapter.getDefaultAdapter();
-        if (localObject2 == null) {
-          break label759;
-        }
-        ((Map)localObject1).put("bluetoothEnabled", Boolean.valueOf(((BluetoothAdapter)localObject2).isEnabled()));
-        ab.i("MicroMsg.JsApiGetSystemInfo", "check permissions:%s", new Object[] { localObject1 });
-        localMap.putAll((Map)localObject1);
-        localObject1 = new HashMap(6);
-        if (paramC.X(Activity.class) != null) {
-          break label775;
-        }
-        ab.w("MicroMsg.JsApiGetSystemInfo", "hy: can not retrieve UI!");
-        AppMethodBeat.o(140831);
-        return localMap;
-        if (1 != k) {
-          break;
-        }
-        localMap.put("deviceOrientation", "portrait");
-        break;
-        label540:
-        j(paramC);
-        localMap.put("fontSizeSetting", Integer.valueOf((int)(this.hxY * 16.0F)));
-        e.a(paramC.getAppId(), new ar.1(this, paramC));
-        break label254;
-        label585:
-        ((Map)localObject1).put("wifiEnabled", Boolean.FALSE);
-        break label312;
-        label601:
-        ((Map)localObject1).put("locationEnabled", Boolean.FALSE);
-        continue;
+      str1 = null;
+      localObject = (CharSequence)str1;
+      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+        break label79;
       }
-      catch (Exception localException)
-      {
-        ab.e("MicroMsg.JsApiGetSystemInfo", "check permissions exception", new Object[] { localException });
-        ((Map)localObject1).put("locationAuthorized", Boolean.FALSE);
-        ((Map)localObject1).put("cameraAuthorized", Boolean.FALSE);
-        ((Map)localObject1).put("microphoneAuthorized", Boolean.FALSE);
-        continue;
+    }
+    label79:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label85;
       }
-      label678:
-      ((Map)localObject1).put("wifiEnabled", Boolean.FALSE);
-      ((Map)localObject1).put("notificationAuthorized", Boolean.FALSE);
-      ((Map)localObject1).put("locationEnabled", Boolean.FALSE);
-      ((Map)localObject1).put("locationAuthorized", Boolean.FALSE);
-      ((Map)localObject1).put("cameraAuthorized", Boolean.FALSE);
-      ((Map)localObject1).put("microphoneAuthorized", Boolean.FALSE);
-      continue;
-      label759:
-      ((Map)localObject1).put("bluetoothEnabled", Boolean.FALSE);
-      continue;
-      label775:
-      paramC = af.d(paramC.X(Activity.class), i, j);
-      if (paramC != null)
-      {
-        i = com.tencent.mm.plugin.appbrand.s.g.pM(paramC.left);
-        j = com.tencent.mm.plugin.appbrand.s.g.pM(paramC.top);
-        k = com.tencent.mm.plugin.appbrand.s.g.pM(paramC.right);
-        int m = com.tencent.mm.plugin.appbrand.s.g.pM(paramC.bottom);
-        ((Map)localObject1).put("left", Integer.valueOf(i));
-        ((Map)localObject1).put("top", Integer.valueOf(j));
-        ((Map)localObject1).put("right", Integer.valueOf(k));
-        ((Map)localObject1).put("bottom", Integer.valueOf(m));
-        ((Map)localObject1).put("width", Integer.valueOf(k - i));
-        ((Map)localObject1).put("height", Integer.valueOf(m - j));
-        localMap.put("safeArea", localObject1);
+      if (paramf != null) {
+        paramf.callback(paramInt, ZP("fail:appId is null"));
       }
+      AppMethodBeat.o(325561);
+      return;
+      str1 = paramf.getAppId();
+      break;
+    }
+    label85:
+    String str2;
+    if (paramJSONObject == null)
+    {
+      localObject = null;
+      if (paramJSONObject != null) {
+        break label190;
+      }
+      str2 = null;
+      label99:
+      if (paramJSONObject != null) {
+        break label201;
+      }
+    }
+    label190:
+    label201:
+    for (paramJSONObject = localb;; paramJSONObject = paramJSONObject.optString("nonceStr"))
+    {
+      localb = new e.b();
+      localb.appId = str1;
+      localb.signature = ((String)localObject);
+      localb.KQX = str2;
+      localb.KQY = paramJSONObject;
+      ((e)h.ax(e.class)).a(paramf.getContext(), localb, new ar..ExternalSyntheticLambda0(paramf, paramInt, this));
+      AppMethodBeat.o(325561);
+      return;
+      localObject = paramJSONObject.optString("signature");
+      break;
+      str2 = paramJSONObject.optString("groupId");
+      break label99;
     }
   }
   
-  final void j(r paramr)
-  {
-    AppMethodBeat.i(140832);
-    this.hxY = paramr.getContext().getSharedPreferences(ah.dsP(), 4).getFloat("text_size_scale_key", 1.0F);
-    AppMethodBeat.o(140832);
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAppBindGroup$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ar
  * JD-Core Version:    0.7.0.1
  */

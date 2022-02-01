@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class cell_frdlike_container
   extends JceStruct
 {
-  public int blank_actiontype;
+  public int blank_actiontype = 0;
   public String right_desc = "";
-  public int right_desc_actiontype;
+  public int right_desc_actiontype = 0;
   
   public cell_frdlike_container() {}
   
@@ -30,15 +30,16 @@ public final class cell_frdlike_container
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.blank_actiontype, 0);
-    if (this.right_desc != null) {
-      paramJceOutputStream.write(this.right_desc, 1);
+    String str = this.right_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.right_desc_actiontype, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_frdlike_container
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class c
-  implements Parcelable.Creator
+  implements Parcelable.Creator<DevlockInfo>
 {
-  public DevlockInfo a(Parcel paramParcel)
+  public final DevlockInfo a(Parcel paramParcel)
   {
     return new DevlockInfo(paramParcel, null);
   }
   
-  public DevlockInfo[] a(int paramInt)
+  public final DevlockInfo[] a(int paramInt)
   {
     return new DevlockInfo[paramInt];
   }

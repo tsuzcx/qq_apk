@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ba
   extends JceStruct
 {
-  static byte[] dj = (byte[])new byte[1];
+  static byte[] dj;
   static az dt = new az();
   public int bM = 0;
   public byte[] data = null;
@@ -20,15 +20,17 @@ public final class ba
   
   static
   {
-    ((byte[])dj)[0] = 0;
+    byte[] arrayOfByte = (byte[])new byte[1];
+    dj = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ba();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bM = paramJceInputStream.read(this.bM, 0, true);
     this.dc = paramJceInputStream.read(this.dc, 1, false);
@@ -40,27 +42,33 @@ public final class ba
     this.di = paramJceInputStream.read(this.di, 7, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bM, 0);
-    if (this.dc != 0) {
-      paramJceOutputStream.write(this.dc, 1);
+    int i = this.dc;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.dd != 0) {
-      paramJceOutputStream.write(this.dd, 2);
+    i = this.dd;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
     paramJceOutputStream.write(this.df, 3);
-    if (this.dg != 0) {
-      paramJceOutputStream.write(this.dg, 4);
+    i = this.dg;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 5);
+    Object localObject = this.data;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
-    if (this.ds != null) {
-      paramJceOutputStream.write(this.ds, 6);
+    localObject = this.ds;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.di != 0) {
-      paramJceOutputStream.write(this.di, 7);
+    i = this.di;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
   }
 }

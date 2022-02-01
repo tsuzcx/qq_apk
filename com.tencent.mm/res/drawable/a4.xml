@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="16.0dip" android:insetRight="16.0dip" android:insetTop="16.0dip" android:insetBottom="16.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_window_focused="false" android:drawable="@android:color/transparent" />
-    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/aad" />
-    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/aad" />
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/a2" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/a2" />
-    <item android:state_focused="true" android:drawable="@drawable/aa_" />
-</selector>
+    <shape android:shape="rectangle">
+        <corners android:radius="?ja" />
+        <solid android:color="@android:color/white" />
+    </shape>
+</inset>

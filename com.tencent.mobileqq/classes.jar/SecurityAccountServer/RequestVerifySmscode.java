@@ -9,9 +9,9 @@ public final class RequestVerifySmscode
 {
   static byte[] cache_sessionSid;
   static int cache_type;
-  public boolean isFromChangeBind;
-  public boolean isFromUni;
-  public byte[] sessionSid;
+  public boolean isFromChangeBind = false;
+  public boolean isFromUni = false;
+  public byte[] sessionSid = null;
   public String smsCode = "";
   public int type = 0;
   
@@ -51,7 +51,7 @@ public final class RequestVerifySmscode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestVerifySmscode
  * JD-Core Version:    0.7.0.1
  */

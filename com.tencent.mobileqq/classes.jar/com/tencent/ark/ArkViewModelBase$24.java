@@ -12,13 +12,16 @@ class ArkViewModelBase$24
     if ((this.this$0.mContainer != null) && (!TextUtils.isEmpty(this.val$metaData)))
     {
       this.this$0.mContainer.SetMetadata(this.val$metaData, "json");
-      ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "arkAsyncShare updateMetaData = " + this.val$metaData);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("arkAsyncShare updateMetaData = ");
+      localStringBuilder.append(this.val$metaData);
+      Logger.logI("ArkApp.ViewModel", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkViewModelBase.24
  * JD-Core Version:    0.7.0.1
  */

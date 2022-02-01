@@ -46,10 +46,16 @@ public class QLog
   {
     if (useAvsdkLogger)
     {
-      writeLog(1, paramString1, paramString2 + Log.getStackTraceString(paramException));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(Log.getStackTraceString(paramException));
+      writeLog(1, paramString1, localStringBuilder.toString());
       return;
     }
-    Log.e(paramString1, paramString2 + Log.getStackTraceString(paramException));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(Log.getStackTraceString(paramException));
+    Log.e(paramString1, localStringBuilder.toString());
   }
   
   public static void i(String paramString1, int paramInt, String paramString2)
@@ -126,7 +132,7 @@ public class QLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.utils.QLog
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,14 @@ public final class ilive_feeds_read$ReadMediaDetailRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "media_list", "err_code", "err_msg", "is_end", "total" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, ReadMediaDetailRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "media_list", "err_code", "err_msg", "is_end", "total" }, new Object[] { null, localInteger, localByteStringMicro, localInteger, localInteger }, ReadMediaDetailRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.ReadMediaDetailRsp
  * JD-Core Version:    0.7.0.1
  */

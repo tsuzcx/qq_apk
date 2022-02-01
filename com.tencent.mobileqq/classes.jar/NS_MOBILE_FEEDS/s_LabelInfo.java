@@ -10,8 +10,8 @@ public final class s_LabelInfo
 {
   static ArrayList<String> cache_client_groupid;
   static ArrayList<String> cache_labels = new ArrayList();
-  public ArrayList<String> client_groupid;
-  public ArrayList<String> labels;
+  public ArrayList<String> client_groupid = null;
+  public ArrayList<String> labels = null;
   
   static
   {
@@ -36,17 +36,19 @@ public final class s_LabelInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.labels != null) {
-      paramJceOutputStream.write(this.labels, 0);
+    ArrayList localArrayList = this.labels;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
-    if (this.client_groupid != null) {
-      paramJceOutputStream.write(this.client_groupid, 1);
+    localArrayList = this.client_groupid;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_LabelInfo
  * JD-Core Version:    0.7.0.1
  */

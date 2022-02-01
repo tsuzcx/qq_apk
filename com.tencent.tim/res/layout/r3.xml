@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/p0">
+        <include layout="@layout/rm" />
+        <include layout="@layout/rn" />
+        <LinearLayout style="@style/pa">
+            <include android:id="@id/erw" layout="@layout/rj" />
+        </LinearLayout>
+        <Button android:id="@id/erx" android:layout_marginTop="30.0dip" android:text="@string/o4p" style="@style/oy" />
+    </LinearLayout>
+</RelativeLayout>

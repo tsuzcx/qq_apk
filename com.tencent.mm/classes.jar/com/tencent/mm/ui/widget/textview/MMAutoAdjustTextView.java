@@ -7,40 +7,40 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a.a;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.ck.a.k;
+import com.tencent.mm.ui.bd;
 
 public class MMAutoAdjustTextView
   extends TextView
 {
-  private Paint oU;
+  private Paint cjv;
   private float scale;
   private float textSize;
   
   public MMAutoAdjustTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(113111);
-    c(paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMAutoAdjustTextView));
+    AppMethodBeat.i(159842);
+    d(paramContext.obtainStyledAttributes(paramAttributeSet, a.k.MMAutoAdjustTextView));
     init();
-    AppMethodBeat.o(113111);
+    AppMethodBeat.o(159842);
   }
   
   public MMAutoAdjustTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(113112);
-    c(paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMAutoAdjustTextView));
+    AppMethodBeat.i(159843);
+    d(paramContext.obtainStyledAttributes(paramAttributeSet, a.k.MMAutoAdjustTextView));
     init();
-    AppMethodBeat.o(113112);
+    AppMethodBeat.o(159843);
   }
   
-  private void RD(int paramInt)
+  private void aFD(int paramInt)
   {
-    AppMethodBeat.i(113115);
+    AppMethodBeat.i(159846);
     if (paramInt <= 0)
     {
-      AppMethodBeat.o(113115);
+      AppMethodBeat.o(159846);
       return;
     }
     for (;;)
@@ -49,55 +49,55 @@ public class MMAutoAdjustTextView
       if (getMeasuredWidth() <= paramInt) {
         break;
       }
-      this.textSize -= al.getDensity(getContext());
+      this.textSize -= bd.getDensity(getContext());
       setTextSize(0, this.textSize * this.scale);
     }
-    AppMethodBeat.o(113115);
+    AppMethodBeat.o(159846);
   }
   
-  private static void c(TypedArray paramTypedArray)
+  private static void d(TypedArray paramTypedArray)
   {
-    AppMethodBeat.i(113114);
+    AppMethodBeat.i(159845);
     if (paramTypedArray != null) {
       paramTypedArray.recycle();
     }
-    AppMethodBeat.o(113114);
+    AppMethodBeat.o(159845);
   }
   
   private void init()
   {
-    AppMethodBeat.i(113113);
+    AppMethodBeat.i(159844);
     this.textSize = getTextSize();
-    this.scale = al.dr(getContext());
-    this.oU = new Paint();
-    this.oU.set(getPaint());
-    AppMethodBeat.o(113113);
+    this.scale = bd.getScaleSize(getContext());
+    this.cjv = new Paint();
+    this.cjv.set(getPaint());
+    AppMethodBeat.o(159844);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(113117);
+    AppMethodBeat.i(159848);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt1 != paramInt3)
     {
       getText().toString();
-      RD(paramInt1);
+      aFD(paramInt1);
     }
-    AppMethodBeat.o(113117);
+    AppMethodBeat.o(159848);
   }
   
   protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(113116);
+    AppMethodBeat.i(159847);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     paramCharSequence.toString();
-    RD(getWidth());
-    AppMethodBeat.o(113116);
+    aFD(getWidth());
+    AppMethodBeat.o(159847);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView
  * JD-Core Version:    0.7.0.1
  */

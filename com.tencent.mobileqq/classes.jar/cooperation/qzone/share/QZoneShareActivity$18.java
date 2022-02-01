@@ -11,12 +11,13 @@ class QZoneShareActivity$18
   
   public void run()
   {
-    QQToast.a(this.this$0, this.this$0.a.msg.get(), 0).a();
+    QZoneShareActivity localQZoneShareActivity = this.this$0;
+    QQToast.makeText(localQZoneShareActivity, localQZoneShareActivity.mGetAppinfoResponse.msg.get(), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.18
  * JD-Core Version:    0.7.0.1
  */

@@ -1,91 +1,103 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.plugin.appbrand.r.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.loader.a;
+import com.tencent.mm.plugin.appbrand.appstorage.t;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public class af
-  extends c<ae>
+public final class af
 {
-  public static final String[] fkl;
-  private final e gVl;
+  private static final String[] qFC = { "__APP__", "__WITHOUT_PLUGINCODE__", "__WITHOUT_MULTI_PLUGINCODE__", "__PLUGINCODE__" };
+  private final String appId;
+  private final String esT;
+  private volatile String qFB;
   
-  static
+  public af(String paramString)
   {
-    AppMethodBeat.i(59450);
-    fkl = new String[] { j.getCreateSQLs(ae.fkk, "PredownloadEncryptPkgInfo") };
-    AppMethodBeat.o(59450);
+    this.appId = paramString;
+    this.esT = null;
   }
   
-  public af(e parame)
+  public af(String paramString1, String paramString2)
   {
-    super(parame, ae.fkk, "PredownloadEncryptPkgInfo", ae.INDEX_CREATE);
-    this.gVl = parame;
+    AppMethodBeat.i(146000);
+    this.appId = paramString1;
+    this.esT = Vm(paramString2);
+    AppMethodBeat.o(146000);
   }
   
-  static boolean a(ae paramae)
+  public af(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(59449);
-    if (bo.isNullOrNil(paramae.field_pkgPath))
+    AppMethodBeat.i(146002);
+    switch (paramInt)
     {
-      ab.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s path nil", new Object[] { paramae.toShortString() });
-      AppMethodBeat.o(59449);
-      return false;
+    default: 
+      this.esT = Vm(paramString2);
     }
-    if (bo.isNullOrNil(paramae.field_pkgMd5))
+    for (;;)
     {
-      ab.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s record md5 nil", new Object[] { paramae.toShortString() });
-      AppMethodBeat.o(59449);
-      return false;
+      this.appId = paramString1;
+      AppMethodBeat.o(146002);
+      return;
+      this.esT = "";
+      continue;
+      this.esT = (Vm(paramString2) + '$' + "__WITHOUT_PLUGINCODE__");
+      continue;
+      this.esT = (Vm(paramString2) + '$' + "__WITHOUT_MULTI_PLUGINCODE__");
+      continue;
+      this.esT = "__PLUGINCODE__";
+      continue;
+      this.esT = "__WITHOUT_PLUGINCODE__";
+      continue;
+      this.esT = "__WITHOUT_MULTI_PLUGINCODE__";
     }
-    String str = g.getMD5(paramae.field_pkgPath);
-    ab.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity with %s, file_md5(%s), record_md5(%s)", new Object[] { paramae.toShortString(), str, paramae.field_pkgMd5 });
-    boolean bool = paramae.field_pkgMd5.equals(str);
-    AppMethodBeat.o(59449);
+  }
+  
+  private static String Vm(String paramString)
+  {
+    AppMethodBeat.i(146001);
+    if ((Util.isNullOrNil(paramString)) || (a.contains(qFC, paramString)))
+    {
+      AppMethodBeat.o(146001);
+      return paramString;
+    }
+    paramString = t.as(paramString, true);
+    AppMethodBeat.o(146001);
+    return paramString;
+  }
+  
+  public final boolean cgr()
+  {
+    AppMethodBeat.i(320257);
+    boolean bool = toString().endsWith("$__PLUGINCODE__");
+    AppMethodBeat.o(320257);
     return bool;
   }
   
-  public final ae B(String paramString, int paramInt1, int paramInt2)
+  public final String toString()
   {
-    AppMethodBeat.i(59447);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(146003);
+    StringBuilder localStringBuilder;
+    if (Util.isNullOrNil(this.qFB))
     {
-      AppMethodBeat.o(59447);
-      return null;
+      localStringBuilder = new StringBuilder().append(this.appId);
+      if (!Util.isNullOrNil(this.esT)) {
+        break label67;
+      }
     }
-    ae localae = new ae();
-    localae.field_appId = paramString;
-    localae.field_type = paramInt1;
-    localae.field_version = paramInt2;
-    if (get(localae, ae.gUa))
+    label67:
+    for (String str = "";; str = "$" + this.esT)
     {
-      AppMethodBeat.o(59447);
-      return localae;
+      this.qFB = str;
+      str = this.qFB;
+      AppMethodBeat.o(146003);
+      return str;
     }
-    AppMethodBeat.o(59447);
-    return null;
-  }
-  
-  public final ae C(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(59448);
-    paramString = B(paramString, paramInt1, paramInt2);
-    if ((paramString != null) && (a(paramString)))
-    {
-      AppMethodBeat.o(59448);
-      return paramString;
-    }
-    AppMethodBeat.o(59448);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.af
  * JD-Core Version:    0.7.0.1
  */

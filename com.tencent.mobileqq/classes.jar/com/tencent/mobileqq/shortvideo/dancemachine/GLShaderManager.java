@@ -33,66 +33,62 @@ public class GLShaderManager
     if (localGLProgram2 == null)
     {
       localGLProgram1 = createProgramInit(paramString);
-      if (localGLProgram1 == null) {
-        break label44;
+      if (localGLProgram1 != null) {
+        sShaderMgr.put(paramString, localGLProgram1);
+      } else {
+        DanceLog.printFrameQueue("GLShaderManager", "createProgram[Init]program=null");
       }
-      sShaderMgr.put(paramString, localGLProgram1);
     }
-    for (;;)
-    {
-      DanceLog.printFrameQueue("GLShaderManager", "createProgram");
-      return localGLProgram1;
-      label44:
-      DanceLog.printFrameQueue("GLShaderManager", "createProgram[Init]program=null");
-    }
+    DanceLog.printFrameQueue("GLShaderManager", "createProgram");
+    return localGLProgram1;
   }
   
   private static GLShaderManager.GLProgram createProgramInit(String paramString)
   {
     int i = buildProgram(paramString);
-    DanceLog.printFrameQueue("GLShaderManager", "createProgramInit program=" + i);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("createProgramInit program=");
+    ((StringBuilder)localObject).append(i);
+    DanceLog.printFrameQueue("GLShaderManager", ((StringBuilder)localObject).toString());
     if (i != 0)
     {
-      GLShaderManager.GLProgram localGLProgram = new GLShaderManager.GLProgram();
-      localGLProgram.programId = i;
+      localObject = new GLShaderManager.GLProgram();
+      ((GLShaderManager.GLProgram)localObject).programId = i;
       GLES20.glUseProgram(i);
       if (paramString.equals("GL_VIEW_VERTEX_GL_VIEW_FRAGMENT"))
       {
-        localGLProgram.attribute.put("a_position", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_position")));
-        localGLProgram.attribute.put("a_texCoord", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoord")));
-        localGLProgram.attribute.put("a_color", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_color")));
-        localGLProgram.uniform.put("u_projectionMatrix", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_projectionMatrix")));
-        localGLProgram.uniform.put("u_texture", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture")));
-        localGLProgram.vertexSize = 3;
-        localGLProgram.textureSize = 2;
-        localGLProgram.colorSize = 4;
+        ((GLShaderManager.GLProgram)localObject).attribute.put("a_position", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_position")));
+        ((GLShaderManager.GLProgram)localObject).attribute.put("a_texCoord", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoord")));
+        ((GLShaderManager.GLProgram)localObject).attribute.put("a_color", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_color")));
+        ((GLShaderManager.GLProgram)localObject).uniform.put("u_projectionMatrix", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_projectionMatrix")));
+        ((GLShaderManager.GLProgram)localObject).uniform.put("u_texture", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture")));
+        ((GLShaderManager.GLProgram)localObject).vertexSize = 3;
+        ((GLShaderManager.GLProgram)localObject).textureSize = 2;
+        ((GLShaderManager.GLProgram)localObject).colorSize = 4;
       }
-      for (;;)
+      else if (paramString.equals("GL_VIEW_VERTEX_MASK_GL_VIEW_FRAGMENT_MASK"))
       {
-        GLES20.glUseProgram(0);
-        return localGLProgram;
-        if (paramString.equals("GL_VIEW_VERTEX_MASK_GL_VIEW_FRAGMENT_MASK"))
-        {
-          localGLProgram.attribute.put("a_position", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_position")));
-          localGLProgram.attribute.put("a_texCoord", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoord")));
-          localGLProgram.attribute.put("a_color", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_color")));
-          localGLProgram.attribute.put("a_texCoordMask", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoordMask")));
-          localGLProgram.uniform.put("u_projectionMatrix", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_projectionMatrix")));
-          localGLProgram.uniform.put("u_texture", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture")));
-          localGLProgram.uniform.put("u_texture_mask", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture_mask")));
-          localGLProgram.vertexSize = 3;
-          localGLProgram.textureSize = 2;
-          localGLProgram.colorSize = 4;
-          localGLProgram.textureMaskSize = 2;
-        }
+        ((GLShaderManager.GLProgram)localObject).attribute.put("a_position", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_position")));
+        ((GLShaderManager.GLProgram)localObject).attribute.put("a_texCoord", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoord")));
+        ((GLShaderManager.GLProgram)localObject).attribute.put("a_color", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_color")));
+        ((GLShaderManager.GLProgram)localObject).attribute.put("a_texCoordMask", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoordMask")));
+        ((GLShaderManager.GLProgram)localObject).uniform.put("u_projectionMatrix", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_projectionMatrix")));
+        ((GLShaderManager.GLProgram)localObject).uniform.put("u_texture", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture")));
+        ((GLShaderManager.GLProgram)localObject).uniform.put("u_texture_mask", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture_mask")));
+        ((GLShaderManager.GLProgram)localObject).vertexSize = 3;
+        ((GLShaderManager.GLProgram)localObject).textureSize = 2;
+        ((GLShaderManager.GLProgram)localObject).colorSize = 4;
+        ((GLShaderManager.GLProgram)localObject).textureMaskSize = 2;
       }
+      GLES20.glUseProgram(0);
+      return localObject;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLShaderManager
  * JD-Core Version:    0.7.0.1
  */

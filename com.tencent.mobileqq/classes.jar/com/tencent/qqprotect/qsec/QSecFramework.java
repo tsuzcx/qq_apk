@@ -1,68 +1,54 @@
 package com.tencent.qqprotect.qsec;
 
 import android.os.Handler;
-import bhms;
-import bhmz;
-import bhne;
-import bhnq;
-import bhoj;
-import bhoo;
-import bhop;
-import bhoq;
-import bhor;
-import bhos;
-import bhot;
-import bhou;
-import bhpd;
-import bhpg;
-import bhpi;
-import bhpx;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqprotect.common.QPDirUtils;
+import com.tencent.qqprotect.singleupdate.VerifyFileUtil;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class QSecFramework
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper());
-  private static volatile QSecFramework jdField_a_of_type_ComTencentQqprotectQsecQSecFramework;
-  private static ConcurrentHashMap<Long, bhot> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private static boolean jdField_a_of_type_Boolean;
-  private int jdField_a_of_type_Int = -1;
-  private bhoj jdField_a_of_type_Bhoj;
-  private bhou jdField_a_of_type_Bhou;
-  private bhpd jdField_a_of_type_Bhpd;
-  private bhpg jdField_a_of_type_Bhpg = new bhpg();
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private static boolean a = false;
+  private static ConcurrentHashMap<Long, QSecFramework.IGoingUpHandler> b = new ConcurrentHashMap();
+  private static Handler c = new Handler(ThreadManager.getFileThreadLooper());
+  private static volatile QSecFramework l = null;
+  private int d = -1;
+  private boolean e = false;
+  private boolean f = false;
+  private Handler g = null;
+  private QSecRuntimeImpl h = null;
+  private QSecLibMgr i = null;
+  private QSecPushServiceMgr j = null;
+  private QSecCbMgr k = null;
   
   static
   {
-    new bhnq("QSec", 86400000L).a(new bhoo());
+    new CrashProtector("QSec", 86400000L).a(new QSecFramework.1());
   }
   
   private QSecFramework()
   {
-    this.jdField_a_of_type_Bhpg.a(bhne.a());
-    this.jdField_a_of_type_Bhpg.a(bhpi.a());
-    this.jdField_a_of_type_Bhpg.a(bhmz.a());
-    new bhnq("QSec", 86400000L).a(new bhop(this));
-    this.jdField_a_of_type_Bhoj = new bhoj();
-    this.jdField_a_of_type_Bhou = new bhou(this.jdField_a_of_type_Bhoj);
-    this.jdField_a_of_type_Bhpd = new bhpd(this.jdField_a_of_type_Bhou, this.jdField_a_of_type_Bhoj);
-    this.jdField_b_of_type_AndroidOsHandler = new bhoq(this, ThreadManager.getFileThreadLooper());
-    a(2L, new bhor(this));
+    this.h.a(CloudAVEngineImpl.a());
+    this.h.a(RptImpl.a());
+    this.h.a(CSProcessorImpl.a());
+    new CrashProtector("QSec", 86400000L).a(new QSecFramework.2(this));
+    this.k = new QSecCbMgr();
+    this.i = new QSecLibMgr(this.k);
+    this.j = new QSecPushServiceMgr(this.i, this.k);
+    this.g = new QSecFramework.3(this, ThreadManager.getFileThreadLooper());
+    a(2L, new QSecFramework.4(this));
   }
   
   public static int a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       return 27;
     }
     try
     {
-      int i = goingDownInternal(paramLong1, paramLong2, paramLong3, paramLong4, paramObject1, paramObject2, paramArrayOfObject1, paramArrayOfObject2);
-      return i;
+      int m = goingDownInternal(paramLong1, paramLong2, paramLong3, paramLong4, paramObject1, paramObject2, paramArrayOfObject1, paramArrayOfObject2);
+      return m;
     }
     catch (UnsatisfiedLinkError paramObject1)
     {
@@ -73,40 +59,56 @@ public final class QSecFramework
   
   public static Handler a()
   {
-    return jdField_a_of_type_AndroidOsHandler;
+    return c;
   }
   
-  public static QSecFramework a()
+  public static void a(long paramLong, QSecFramework.IGoingUpHandler paramIGoingUpHandler)
   {
-    if (jdField_a_of_type_ComTencentQqprotectQsecQSecFramework == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQqprotectQsecQSecFramework == null) {
-        jdField_a_of_type_ComTencentQqprotectQsecQSecFramework = new QSecFramework();
-      }
-      return jdField_a_of_type_ComTencentQqprotectQsecQSecFramework;
-    }
-    finally {}
-  }
-  
-  public static void a(long paramLong, bhot parambhot)
-  {
-    if (parambhot != null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), parambhot);
+    if (paramIGoingUpHandler != null) {
+      b.put(Long.valueOf(paramLong), paramIGoingUpHandler);
     }
   }
   
-  private static boolean c()
+  public static QSecFramework c()
   {
-    if (jdField_a_of_type_Boolean) {
-      return true;
-    }
-    String str = bhms.b() + File.separator + "libQSec.so";
-    File localFile = new File(str);
-    if ((localFile.exists()) && (bhpx.a(localFile, null))) {
+    if (l == null) {
       try
       {
-        System.load(str);
+        if (l == null) {
+          l = new QSecFramework();
+        }
+      }
+      finally {}
+    }
+    return l;
+  }
+  
+  private static native int goingDownInternal(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
+  
+  private static int goingUp(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  {
+    QSecFramework.IGoingUpHandler localIGoingUpHandler = (QSecFramework.IGoingUpHandler)b.get(Long.valueOf(paramLong1));
+    if (localIGoingUpHandler != null) {
+      return localIGoingUpHandler.a(paramLong2, paramLong3, paramLong4, paramObject1, paramObject2, paramArrayOfObject1, paramArrayOfObject2);
+    }
+    return 30;
+  }
+  
+  private static boolean h()
+  {
+    if (a) {
+      return true;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(QPDirUtils.b());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("libQSec.so");
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if ((localFile.exists()) && (VerifyFileUtil.a(localFile, null))) {
+      try
+      {
+        System.load((String)localObject);
         return true;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -117,63 +119,55 @@ public final class QSecFramework
     return false;
   }
   
-  private static native int goingDownInternal(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
-  
-  private static int goingUp(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
-  {
-    bhot localbhot = (bhot)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong1));
-    if (localbhot != null) {
-      return localbhot.a(paramLong2, paramLong3, paramLong4, paramObject1, paramObject2, paramArrayOfObject1, paramArrayOfObject2);
-    }
-    return 30;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public int a(int paramInt1, int paramInt2, int paramInt3, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    return this.jdField_a_of_type_Bhou.a(paramInt1, paramInt2, paramInt3, paramArrayOfObject1, paramArrayOfObject2);
+    return this.i.a(paramInt1, paramInt2, paramInt3, paramArrayOfObject1, paramArrayOfObject2);
   }
   
   public Boolean a(int paramInt)
   {
     Byte localByte = Byte.valueOf();
-    if (this.jdField_a_of_type_Bhoj != null) {
-      localByte = Byte.valueOf(this.jdField_a_of_type_Bhoj.a(paramInt));
+    QSecCbMgr localQSecCbMgr = this.k;
+    if (localQSecCbMgr != null) {
+      localByte = Byte.valueOf(localQSecCbMgr.a(paramInt));
     }
-    if (1 == localByte.byteValue()) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    paramInt = localByte.byteValue();
+    boolean bool = true;
+    if (1 != paramInt) {
+      bool = false;
     }
-  }
-  
-  public void a()
-  {
-    if (!this.c) {
-      this.c = true;
-    }
-    this.jdField_a_of_type_Bhoj.a(false);
-    this.jdField_a_of_type_Bhou.a(new bhos(this));
-    this.jdField_a_of_type_Bhou.b();
-    jdField_a_of_type_AndroidOsHandler.postDelayed(new QSecFramework.6(this), 0L);
+    return Boolean.valueOf(bool);
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Bhpd.a(paramArrayOfByte);
+    this.j.a(paramArrayOfByte);
   }
   
-  public void b()
+  public int b()
   {
-    this.jdField_a_of_type_Bhou.a();
+    return this.d;
+  }
+  
+  public void d()
+  {
+    if (!this.f) {
+      this.f = true;
+    }
+    this.k.a(false);
+    this.i.a(new QSecFramework.5(this));
+    this.i.b();
+    c.postDelayed(new QSecFramework.6(this), 0L);
+  }
+  
+  public void e()
+  {
+    this.i.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecFramework
  * JD-Core Version:    0.7.0.1
  */

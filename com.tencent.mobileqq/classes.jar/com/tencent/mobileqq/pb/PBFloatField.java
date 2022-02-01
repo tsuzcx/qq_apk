@@ -13,12 +13,14 @@ public final class PBFloatField
   
   public void clear(Object paramObject)
   {
-    if ((paramObject instanceof Float)) {}
-    for (this.value = ((Float)paramObject).floatValue();; this.value = 0.0F)
-    {
-      setHasFlag(false);
-      return;
+    float f;
+    if ((paramObject instanceof Float)) {
+      f = ((Float)paramObject).floatValue();
+    } else {
+      f = 0.0F;
     }
+    this.value = f;
+    setHasFlag(false);
   }
   
   public int computeSize(int paramInt)
@@ -81,7 +83,7 @@ public final class PBFloatField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBFloatField
  * JD-Core Version:    0.7.0.1
  */

@@ -3,33 +3,33 @@ package com.google.android.gms.internal;
 public final class dl
   extends dq<dl>
 {
-  private static volatile dl[] QR;
-  public dm QS = null;
+  private static volatile dl[] SG;
+  public dm SH = null;
   public int type = 1;
   
   public dl()
   {
-    this.Rr = null;
-    this.RB = -1;
+    this.Tg = null;
+    this.Tq = -1;
   }
   
-  public static dl[] jP()
+  public static dl[] jY()
   {
-    if (QR == null) {}
-    synchronized (du.RA)
+    if (SG == null) {}
+    synchronized (du.Tp)
     {
-      if (QR == null) {
-        QR = new dl[0];
+      if (SG == null) {
+        SG = new dl[0];
       }
-      return QR;
+      return SG;
     }
   }
   
   public final void a(do paramdo)
   {
-    paramdo.aa(1, this.type);
-    if (this.QS != null) {
-      paramdo.a(2, this.QS);
+    paramdo.ac(1, this.type);
+    if (this.SH != null) {
+      paramdo.a(2, this.SH);
     }
     super.a(paramdo);
   }
@@ -47,21 +47,21 @@ public final class dl
       if (this.type != paramObject.type) {
         return false;
       }
-      if (this.QS == null)
+      if (this.SH == null)
       {
-        if (paramObject.QS != null) {
+        if (paramObject.SH != null) {
           return false;
         }
       }
-      else if (!this.QS.equals(paramObject.QS)) {
+      else if (!this.SH.equals(paramObject.SH)) {
         return false;
       }
-      if ((this.Rr != null) && (!this.Rr.isEmpty())) {
+      if ((this.Tg != null) && (!this.Tg.isEmpty())) {
         break;
       }
-    } while ((paramObject.Rr == null) || (paramObject.Rr.isEmpty()));
+    } while ((paramObject.Tg == null) || (paramObject.Tg.isEmpty()));
     return false;
-    return this.Rr.equals(paramObject.Rr);
+    return this.Tg.equals(paramObject.Tg);
   }
   
   public final int hashCode()
@@ -70,31 +70,31 @@ public final class dl
     int m = getClass().getName().hashCode();
     int n = this.type;
     int i;
-    if (this.QS == null)
+    if (this.SH == null)
     {
       i = 0;
       j = k;
-      if (this.Rr != null) {
-        if (!this.Rr.isEmpty()) {
+      if (this.Tg != null) {
+        if (!this.Tg.isEmpty()) {
           break label84;
         }
       }
     }
     label84:
-    for (int j = k;; j = this.Rr.hashCode())
+    for (int j = k;; j = this.Tg.hashCode())
     {
       return (i + ((m + 527) * 31 + n) * 31) * 31 + j;
-      i = this.QS.hashCode();
+      i = this.SH.hashCode();
       break;
     }
   }
   
-  protected final int jN()
+  protected final int jW()
   {
-    int j = super.jN() + do.ab(1, this.type);
+    int j = super.jW() + do.ad(1, this.type);
     int i = j;
-    if (this.QS != null) {
-      i = j + do.b(2, this.QS);
+    if (this.SH != null) {
+      i = j + do.c(2, this.SH);
     }
     return i;
   }

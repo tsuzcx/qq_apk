@@ -17,119 +17,106 @@ public final class ac
     try
     {
       localCountDownLatch.await(5L, TimeUnit.SECONDS);
-      return arrayOfBoolean[0];
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      localInterruptedException.printStackTrace();
     }
+    return arrayOfBoolean[0];
   }
   
   /* Error */
   private static boolean a(String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: iconst_0
-    //   3: istore_1
-    //   4: new 63	java/net/Socket
-    //   7: dup
-    //   8: invokespecial 65	java/net/Socket:<init>	()V
-    //   11: astore 5
-    //   13: aload 5
-    //   15: astore 4
-    //   17: aload 5
-    //   19: new 67	java/net/InetSocketAddress
-    //   22: dup
-    //   23: aload_0
-    //   24: bipush 80
-    //   26: invokespecial 70	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
-    //   29: sipush 5000
-    //   32: invokevirtual 74	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
-    //   35: aload 5
-    //   37: astore 4
-    //   39: aload 5
-    //   41: invokevirtual 77	java/net/Socket:isConnected	()Z
-    //   44: istore_3
-    //   45: iload_3
-    //   46: ifeq +5 -> 51
-    //   49: iconst_1
-    //   50: istore_1
-    //   51: aload 5
-    //   53: invokevirtual 80	java/net/Socket:close	()V
-    //   56: iload_1
-    //   57: ireturn
-    //   58: astore_0
-    //   59: aload_0
-    //   60: invokevirtual 81	java/lang/Throwable:printStackTrace	()V
-    //   63: iload_1
-    //   64: ireturn
-    //   65: astore 6
-    //   67: aconst_null
-    //   68: astore_0
-    //   69: aload_0
-    //   70: astore 4
-    //   72: aload 6
-    //   74: invokevirtual 81	java/lang/Throwable:printStackTrace	()V
-    //   77: iload_2
-    //   78: istore_1
-    //   79: aload_0
-    //   80: ifnull -24 -> 56
-    //   83: aload_0
-    //   84: invokevirtual 80	java/net/Socket:close	()V
-    //   87: iconst_0
-    //   88: ireturn
-    //   89: astore_0
-    //   90: aload_0
-    //   91: invokevirtual 81	java/lang/Throwable:printStackTrace	()V
-    //   94: iconst_0
-    //   95: ireturn
-    //   96: astore_0
-    //   97: aconst_null
-    //   98: astore 4
-    //   100: aload 4
-    //   102: ifnull +8 -> 110
-    //   105: aload 4
-    //   107: invokevirtual 80	java/net/Socket:close	()V
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_2
+    //   5: new 61	java/net/Socket
+    //   8: dup
+    //   9: invokespecial 63	java/net/Socket:<init>	()V
+    //   12: astore_3
+    //   13: aload_3
+    //   14: new 65	java/net/InetSocketAddress
+    //   17: dup
+    //   18: aload_0
+    //   19: bipush 80
+    //   21: invokespecial 68	java/net/InetSocketAddress:<init>	(Ljava/lang/String;I)V
+    //   24: sipush 5000
+    //   27: invokevirtual 72	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
+    //   30: aload_3
+    //   31: invokevirtual 75	java/net/Socket:isConnected	()Z
+    //   34: istore_1
+    //   35: aload_3
+    //   36: invokevirtual 78	java/net/Socket:close	()V
+    //   39: iload_1
+    //   40: ireturn
+    //   41: astore_0
+    //   42: aload_0
+    //   43: invokevirtual 79	java/lang/Throwable:printStackTrace	()V
+    //   46: iload_1
+    //   47: ireturn
+    //   48: astore_0
+    //   49: goto +45 -> 94
+    //   52: astore_2
+    //   53: aload_3
+    //   54: astore_0
+    //   55: aload_2
+    //   56: astore_3
+    //   57: goto +13 -> 70
+    //   60: astore_0
+    //   61: aload_2
+    //   62: astore_3
+    //   63: goto +31 -> 94
+    //   66: astore_3
+    //   67: aload 4
+    //   69: astore_0
+    //   70: aload_0
+    //   71: astore_2
+    //   72: aload_3
+    //   73: invokevirtual 79	java/lang/Throwable:printStackTrace	()V
+    //   76: aload_0
+    //   77: ifnull +15 -> 92
+    //   80: aload_0
+    //   81: invokevirtual 78	java/net/Socket:close	()V
+    //   84: goto +8 -> 92
+    //   87: astore_0
+    //   88: aload_0
+    //   89: invokevirtual 79	java/lang/Throwable:printStackTrace	()V
+    //   92: iconst_0
+    //   93: ireturn
+    //   94: aload_3
+    //   95: ifnull +15 -> 110
+    //   98: aload_3
+    //   99: invokevirtual 78	java/net/Socket:close	()V
+    //   102: goto +8 -> 110
+    //   105: astore_2
+    //   106: aload_2
+    //   107: invokevirtual 79	java/lang/Throwable:printStackTrace	()V
     //   110: aload_0
     //   111: athrow
-    //   112: astore 4
-    //   114: aload 4
-    //   116: invokevirtual 81	java/lang/Throwable:printStackTrace	()V
-    //   119: goto -9 -> 110
-    //   122: astore_0
-    //   123: goto -23 -> 100
-    //   126: astore 6
-    //   128: aload 5
-    //   130: astore_0
-    //   131: goto -62 -> 69
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	134	0	paramString	String
-    //   3	76	1	bool1	boolean
-    //   1	77	2	bool2	boolean
-    //   44	2	3	bool3	boolean
-    //   15	91	4	localObject	Object
-    //   112	3	4	localThrowable1	java.lang.Throwable
-    //   11	118	5	localSocket	java.net.Socket
-    //   65	8	6	localThrowable2	java.lang.Throwable
-    //   126	1	6	localThrowable3	java.lang.Throwable
+    //   0	112	0	paramString	String
+    //   34	13	1	bool	boolean
+    //   4	1	2	localObject1	Object
+    //   52	10	2	localThrowable1	java.lang.Throwable
+    //   71	1	2	str	String
+    //   105	2	2	localThrowable2	java.lang.Throwable
+    //   12	51	3	localObject2	Object
+    //   66	33	3	localThrowable3	java.lang.Throwable
+    //   1	67	4	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   51	56	58	java/lang/Throwable
-    //   4	13	65	java/lang/Throwable
-    //   83	87	89	java/lang/Throwable
-    //   4	13	96	finally
-    //   105	110	112	java/lang/Throwable
-    //   17	35	122	finally
-    //   39	45	122	finally
-    //   72	77	122	finally
-    //   17	35	126	java/lang/Throwable
-    //   39	45	126	java/lang/Throwable
+    //   35	39	41	java/lang/Throwable
+    //   13	35	48	finally
+    //   13	35	52	java/lang/Throwable
+    //   5	13	60	finally
+    //   72	76	60	finally
+    //   5	13	66	java/lang/Throwable
+    //   80	84	87	java/lang/Throwable
+    //   98	102	105	java/lang/Throwable
   }
   
   public static boolean b()
@@ -139,7 +126,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ac
  * JD-Core Version:    0.7.0.1
  */

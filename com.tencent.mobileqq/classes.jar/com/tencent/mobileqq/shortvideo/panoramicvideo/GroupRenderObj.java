@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.panoramicvideo;
 
 import android.opengl.GLES20;
 import com.tencent.mobileqq.shortvideo.panoramicvideo.GL.FBO;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Utils.PanoramicLogUtil;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.utils.PanoramicLogUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -42,13 +42,11 @@ public class GroupRenderObj
   
   public void addFilterList(List<BaseRenderObj> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      if (this.isRunning) {
-        break;
-      }
+    }
+    if (!this.isRunning)
+    {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -72,49 +70,54 @@ public class GroupRenderObj
   public void drawToFBO(int paramInt, FBO paramFBO)
   {
     runPreDrawTasks();
-    if ((this.fboList == null) || (paramFBO == null)) {
-      return;
-    }
-    int j = this.renderObjLists.size();
-    int i = 0;
-    label29:
-    BaseRenderObj localBaseRenderObj;
-    if (i < j)
+    if (this.fboList != null)
     {
-      localBaseRenderObj = (BaseRenderObj)this.renderObjLists.get(i);
-      PanoramicLogUtil.Log("onDrawFrame: " + i + " / " + j + " " + localBaseRenderObj.getClass().getSimpleName() + " |previousTexture=" + paramInt);
-      if (i >= j - 1) {
-        break label194;
+      if (paramFBO == null) {
+        return;
       }
-      localBaseRenderObj.setViewport();
-      this.fboList[i].bind();
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-      if (!(localBaseRenderObj instanceof GroupRenderObj)) {
-        break label185;
+      int k = this.renderObjLists.size();
+      int j = 0;
+      int i = paramInt;
+      paramInt = j;
+      while (paramInt < k)
+      {
+        BaseRenderObj localBaseRenderObj = (BaseRenderObj)this.renderObjLists.get(paramInt);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDrawFrame: ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" / ");
+        localStringBuilder.append(k);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(localBaseRenderObj.getClass().getSimpleName());
+        localStringBuilder.append(" |previousTexture=");
+        localStringBuilder.append(i);
+        PanoramicLogUtil.Log(localStringBuilder.toString());
+        if (paramInt < k - 1)
+        {
+          localBaseRenderObj.setViewport();
+          this.fboList[paramInt].bind();
+          GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+          if ((localBaseRenderObj instanceof GroupRenderObj)) {
+            ((GroupRenderObj)localBaseRenderObj).drawToFBO(i, this.fboList[paramInt]);
+          } else {
+            localBaseRenderObj.onDrawFrame(i);
+          }
+          this.fboList[paramInt].unbind();
+          i = this.fboList[paramInt].getFrameBufferTextureId();
+        }
+        else
+        {
+          paramFBO.bind();
+          localBaseRenderObj.setViewport();
+          if ((localBaseRenderObj instanceof GroupRenderObj)) {
+            ((GroupRenderObj)localBaseRenderObj).drawToFBO(i, paramFBO);
+          } else {
+            localBaseRenderObj.onDrawFrame(i);
+          }
+          paramFBO.unbind();
+        }
+        paramInt += 1;
       }
-      ((GroupRenderObj)localBaseRenderObj).drawToFBO(paramInt, this.fboList[i]);
-    }
-    for (;;)
-    {
-      this.fboList[i].unbind();
-      paramInt = this.fboList[i].getFrameBufferTextureId();
-      i += 1;
-      break label29;
-      break;
-      label185:
-      localBaseRenderObj.onDrawFrame(paramInt);
-    }
-    label194:
-    paramFBO.bind();
-    localBaseRenderObj.setViewport();
-    if ((localBaseRenderObj instanceof GroupRenderObj)) {
-      ((GroupRenderObj)localBaseRenderObj).drawToFBO(paramInt, paramFBO);
-    }
-    for (;;)
-    {
-      paramFBO.unbind();
-      break;
-      localBaseRenderObj.onDrawFrame(paramInt);
     }
   }
   
@@ -134,9 +137,9 @@ public class GroupRenderObj
   
   public void onRenderObjChanged(int paramInt1, int paramInt2)
   {
-    int j = 0;
     super.onRenderObjChanged(paramInt1, paramInt2);
     int k = this.renderObjLists.size();
+    int j = 0;
     int i = 0;
     while (i < k)
     {
@@ -150,9 +153,10 @@ public class GroupRenderObj
     }
     if (this.fboList == null)
     {
-      this.fboList = new FBO[k - 1];
+      paramInt2 = k - 1;
+      this.fboList = new FBO[paramInt2];
       paramInt1 = j;
-      while (paramInt1 < k - 1)
+      while (paramInt1 < paramInt2)
       {
         BaseRenderObj localBaseRenderObj = (BaseRenderObj)this.renderObjLists.get(paramInt1);
         this.fboList[paramInt1] = localBaseRenderObj.createFBO();
@@ -163,10 +167,13 @@ public class GroupRenderObj
   
   public void switchFilterAt(BaseRenderObj paramBaseRenderObj, int paramInt)
   {
-    if ((paramBaseRenderObj == null) || (paramInt >= this.renderObjLists.size())) {
-      return;
+    if (paramBaseRenderObj != null)
+    {
+      if (paramInt >= this.renderObjLists.size()) {
+        return;
+      }
+      addPreDrawTask(new GroupRenderObj.4(this, paramBaseRenderObj, paramInt));
     }
-    addPreDrawTask(new GroupRenderObj.4(this, paramBaseRenderObj, paramInt));
   }
   
   public void switchLastFilter(BaseRenderObj paramBaseRenderObj)
@@ -176,8 +183,10 @@ public class GroupRenderObj
     }
     if (!this.isRunning)
     {
-      if (this.renderObjLists.size() > 0) {
-        ((BaseRenderObj)this.renderObjLists.remove(this.renderObjLists.size() - 1)).destroy();
+      if (this.renderObjLists.size() > 0)
+      {
+        List localList = this.renderObjLists;
+        ((BaseRenderObj)localList.remove(localList.size() - 1)).destroy();
       }
       this.renderObjLists.add(paramBaseRenderObj);
       return;
@@ -187,7 +196,7 @@ public class GroupRenderObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.GroupRenderObj
  * JD-Core Version:    0.7.0.1
  */

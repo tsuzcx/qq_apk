@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class stSoftInfo
   extends JceStruct
 {
-  public long end_time;
-  public long soft_type;
-  public long start_time;
+  public long end_time = 0L;
+  public long soft_type = 0L;
+  public long start_time = 0L;
   
   public stSoftInfo() {}
   
@@ -36,7 +36,7 @@ public final class stSoftInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.stSoftInfo
  * JD-Core Version:    0.7.0.1
  */

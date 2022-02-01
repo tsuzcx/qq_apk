@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelbiz;
 import android.os.Bundle;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public final class WXInvoiceAuthInsert$Req
   extends BaseReq
@@ -12,9 +12,9 @@ public final class WXInvoiceAuthInsert$Req
   private static final int URL_LENGTH_LIMIT = 10240;
   public String url;
   
-  public final boolean checkArgs()
+  public boolean checkArgs()
   {
-    if (d.b(this.url))
+    if (b.b(this.url))
     {
       Log.i("MicroMsg.SDK.WXInvoiceAuthInsert.Req", "url should not be empty");
       return false;
@@ -27,18 +27,18 @@ public final class WXInvoiceAuthInsert$Req
     return true;
   }
   
-  public final void fromBundle(Bundle paramBundle)
+  public void fromBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
     this.url = paramBundle.getString("_wxapi_invoice_auth_insert_req_url");
   }
   
-  public final int getType()
+  public int getType()
   {
     return 20;
   }
   
-  public final void toBundle(Bundle paramBundle)
+  public void toBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
     paramBundle.putString("_wxapi_invoice_auth_insert_req_url", this.url);
@@ -46,7 +46,7 @@ public final class WXInvoiceAuthInsert$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.WXInvoiceAuthInsert.Req
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,50 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
-import android.app.Activity;
-import com.tencent.luggage.g.e;
-import com.tencent.luggage.g.e.d;
-import com.tencent.luggage.g.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.y;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-abstract class a<CONTEXT extends c>
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<CONTEXT>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/customer_service/JsApiOpenCustomerServiceChat;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "()V", "getCurrentPageId", "", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "onCallback", "service", "errCode", "errMsg", "openCustomerServiceChat", "extInfo", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class a
+  extends c<y>
 {
-  boolean hMV;
+  private static final int CTRL_INDEX = 1040;
+  private static final String NAME = "openCustomerServiceChat";
+  public static final a.a rUg;
   
-  static boolean q(CONTEXT paramCONTEXT)
+  static
   {
-    return g.o(paramCONTEXT.getContext(), "android.permission.ACCESS_FINE_LOCATION");
+    AppMethodBeat.i(325639);
+    rUg = new a.a((byte)0);
+    AppMethodBeat.o(325639);
   }
   
-  public void a(final CONTEXT paramCONTEXT, final JSONObject paramJSONObject, final int paramInt)
+  private final void a(y paramy, int paramInt1, int paramInt2, String paramString)
   {
-    Activity localActivity;
-    boolean bool;
-    if ((paramCONTEXT.getContext() instanceof Activity))
+    AppMethodBeat.i(325632);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errCode", Integer.valueOf(paramInt2));
+    if (paramInt2 != 0)
     {
-      localActivity = (Activity)paramCONTEXT.getContext();
-      if (localActivity != null) {
-        break label82;
-      }
-      ab.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "operateRecorder, pageContext is null");
-      paramCONTEXT.h(paramInt, j("fail:internal error invalid android context", null));
-      bool = false;
-    }
-    for (;;)
-    {
-      if (bool) {
-        break label148;
-      }
-      ab.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s requestPermission fail", new Object[] { getName() });
-      return;
-      localActivity = null;
-      break;
-      label82:
-      if (q(paramCONTEXT))
+      if (paramy != null)
       {
-        bool = true;
-      }
-      else if (this.hMV)
-      {
-        paramCONTEXT.h(paramInt, j("fail:system permission denied", null));
-        bool = false;
-      }
-      else
-      {
-        bool = e.at(localActivity).a("android.permission.ACCESS_FINE_LOCATION", new e.d()
-        {
-          public final void n(int[] paramAnonymousArrayOfInt)
-          {
-            AppMethodBeat.i(93820);
-            if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
-            {
-              ab.i("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "PERMISSION_GRANTED, do invoke again");
-              a.this.a(paramCONTEXT, paramJSONObject, paramInt);
-              AppMethodBeat.o(93820);
-              return;
-            }
-            ab.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "SYS_PERM_DENIED");
-            a.this.hMV = true;
-            paramCONTEXT.h(paramInt, a.this.j("fail:system permission denied", null));
-            AppMethodBeat.o(93820);
-          }
-        });
+        paramy.callback(paramInt1, m(s.X("fail ", paramString), (Map)localHashMap));
+        AppMethodBeat.o(325632);
       }
     }
-    label148:
-    if (paramJSONObject == null)
-    {
-      ab.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s invalid data", new Object[] { getName() });
-      paramCONTEXT.h(paramInt, j("fail:invalid data", null));
-      return;
+    else if (paramy != null) {
+      paramy.callback(paramInt1, m("ok", (Map)localHashMap));
     }
-    c(paramCONTEXT, paramJSONObject, paramInt);
+    AppMethodBeat.o(325632);
   }
-  
-  protected abstract void c(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.e.a
  * JD-Core Version:    0.7.0.1
  */

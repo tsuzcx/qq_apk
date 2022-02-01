@@ -45,14 +45,16 @@ public final class DatalineMsgData$MsgData
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 72, 85, 88, 98, 106, 112, 120, 130, 136, 144, 152, 160, 168, 176, 186, 194, 200, 210, 218 }, new String[] { "str_msg", "uint64_filemsgstatus", "uint64_weiyunsessionid", "str_molokey", "str_moloiconurl", "str_molosource", "str_molosrcurl", "str_reserve1", "uint32_isapkfile", "fixed32_ip", "uint32_port", "bytes_url_notify", "bytes_tokenkey", "uint32_ismoloimage", "uint32_fileFrom", "str_fileUuid", "uint32_nOpType", "uint64_entityID", "uint64_OwnerUin", "uint32_busId", "uint32_forwardTroopFileEntranc", "bool_sended", "str_weiyunid", "str_weiyundirkey", "uint32_weiyunsrctype", "str_weiyunmd5", "str_weiyunsha" }, new Object[] { "", Long.valueOf(0L), Long.valueOf(0L), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), "", "", Integer.valueOf(0), "", "" }, MsgData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 72, 85, 88, 98, 106, 112, 120, 130, 136, 144, 152, 160, 168, 176, 186, 194, 200, 210, 218 }, new String[] { "str_msg", "uint64_filemsgstatus", "uint64_weiyunsessionid", "str_molokey", "str_moloiconurl", "str_molosource", "str_molosrcurl", "str_reserve1", "uint32_isapkfile", "fixed32_ip", "uint32_port", "bytes_url_notify", "bytes_tokenkey", "uint32_ismoloimage", "uint32_fileFrom", "str_fileUuid", "uint32_nOpType", "uint64_entityID", "uint64_OwnerUin", "uint32_busId", "uint32_forwardTroopFileEntranc", "bool_sended", "str_weiyunid", "str_weiyundirkey", "uint32_weiyunsrctype", "str_weiyunmd5", "str_weiyunsha" }, new Object[] { "", localLong, localLong, "", "", "", "", "", localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, "", localInteger, localLong, localLong, localInteger, localInteger, Boolean.valueOf(false), "", "", localInteger, "", "" }, MsgData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     localpb.dataline.DatalineMsgData.MsgData
  * JD-Core Version:    0.7.0.1
  */

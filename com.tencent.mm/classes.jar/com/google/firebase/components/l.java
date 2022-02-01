@@ -16,42 +16,42 @@ import java.util.Set;
 final class l
   implements m
 {
-  private static Bundle ah(Context paramContext)
+  private static Bundle aX(Context paramContext)
   {
-    AppMethodBeat.i(10618);
+    AppMethodBeat.i(4085);
     try
     {
       PackageManager localPackageManager = paramContext.getPackageManager();
       if (localPackageManager == null)
       {
-        AppMethodBeat.o(10618);
+        AppMethodBeat.o(4085);
         return null;
       }
       paramContext = localPackageManager.getServiceInfo(new ComponentName(paramContext, ComponentDiscoveryService.class), 128);
       if (paramContext == null)
       {
-        AppMethodBeat.o(10618);
+        AppMethodBeat.o(4085);
         return null;
       }
       paramContext = paramContext.metaData;
-      AppMethodBeat.o(10618);
+      AppMethodBeat.o(4085);
       return paramContext;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(10618);
+      AppMethodBeat.o(4085);
     }
     return null;
   }
   
-  public final List<String> ag(Context paramContext)
+  public final List<String> aW(Context paramContext)
   {
-    AppMethodBeat.i(10617);
-    paramContext = ah(paramContext);
+    AppMethodBeat.i(4084);
+    paramContext = aX(paramContext);
     if (paramContext == null)
     {
       paramContext = Collections.emptyList();
-      AppMethodBeat.o(10617);
+      AppMethodBeat.o(4084);
       return paramContext;
     }
     ArrayList localArrayList = new ArrayList();
@@ -63,13 +63,13 @@ final class l
         localArrayList.add(str.substring(31));
       }
     }
-    AppMethodBeat.o(10617);
+    AppMethodBeat.o(4084);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.firebase.components.l
  * JD-Core Version:    0.7.0.1
  */

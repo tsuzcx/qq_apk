@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WalletForgotPwdBindNewUI
@@ -8,9 +7,9 @@ public class WalletForgotPwdBindNewUI
 {
   public void initView()
   {
-    AppMethodBeat.i(46264);
+    AppMethodBeat.i(69643);
     super.initView();
-    AppMethodBeat.o(46264);
+    AppMethodBeat.o(69643);
   }
   
   public boolean needConfirmFinish()
@@ -26,7 +25,7 @@ public class WalletForgotPwdBindNewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletForgotPwdBindNewUI
  * JD-Core Version:    0.7.0.1
  */

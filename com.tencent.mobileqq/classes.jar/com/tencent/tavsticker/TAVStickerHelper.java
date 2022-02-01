@@ -7,9 +7,9 @@ import java.lang.reflect.Method;
 
 public class TAVStickerHelper
 {
-  private static final String TAG = TAVStickerHelper.class.getSimpleName();
-  private static boolean isDebug = false;
-  private static Context sContext = null;
+  private static final String TAG = "TAVStickerHelper";
+  private static Context sContext;
+  private static boolean sIsDebug = false;
   
   private static Application getApplication()
   {
@@ -35,7 +35,7 @@ public class TAVStickerHelper
   
   public static String getVersion()
   {
-    return "1.2.70";
+    return "1.0.0";
   }
   
   public static void init(Context paramContext)
@@ -45,18 +45,22 @@ public class TAVStickerHelper
   
   public static boolean isDebug()
   {
-    return isDebug;
+    return sIsDebug;
   }
   
   public static void setDebugMode(boolean paramBoolean)
   {
-    TLog.d(TAG, "setDebugMode -> isDebug : " + paramBoolean);
-    isDebug = paramBoolean;
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDebugMode -> sIsDebug : ");
+    localStringBuilder.append(paramBoolean);
+    TLog.d(str, localStringBuilder.toString());
+    sIsDebug = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.TAVStickerHelper
  * JD-Core Version:    0.7.0.1
  */

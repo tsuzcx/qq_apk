@@ -18,17 +18,16 @@ final class TrampolineScheduler$TimedAction
   
   public int compareTo(TimedAction paramTimedAction)
   {
-    int j = this.execTime.compareTo(paramTimedAction.execTime);
-    int i = j;
-    if (j == 0) {
-      i = TrampolineScheduler.compare(this.count, paramTimedAction.count);
+    int i = this.execTime.compareTo(paramTimedAction.execTime);
+    if (i == 0) {
+      return TrampolineScheduler.compare(this.count, paramTimedAction.count);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.schedulers.TrampolineScheduler.TimedAction
  * JD-Core Version:    0.7.0.1
  */

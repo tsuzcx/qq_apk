@@ -10,14 +10,14 @@ public final class UserClientShowInfo
   extends JceStruct
 {
   static Map<String, IconInfo> cache_mapIconInfo = new HashMap();
-  public int iIsUseVipIcon;
-  public int iKeepVipDays;
-  public int iLevel;
-  public int iScore;
-  public int iSpeed;
-  public int iVip;
-  public int iVipRatio;
-  public Map<String, IconInfo> mapIconInfo;
+  public int iIsUseVipIcon = 0;
+  public int iKeepVipDays = 0;
+  public int iLevel = 0;
+  public int iScore = 0;
+  public int iSpeed = 0;
+  public int iVip = 0;
+  public int iVipRatio = 0;
+  public Map<String, IconInfo> mapIconInfo = null;
   public String strUid = "";
   
   static
@@ -56,8 +56,9 @@ public final class UserClientShowInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strUid != null) {
-      paramJceOutputStream.write(this.strUid, 0);
+    Object localObject = this.strUid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.iVipRatio, 1);
     paramJceOutputStream.write(this.iKeepVipDays, 2);
@@ -66,14 +67,15 @@ public final class UserClientShowInfo
     paramJceOutputStream.write(this.iSpeed, 5);
     paramJceOutputStream.write(this.iScore, 6);
     paramJceOutputStream.write(this.iIsUseVipIcon, 7);
-    if (this.mapIconInfo != null) {
-      paramJceOutputStream.write(this.mapIconInfo, 8);
+    localObject = this.mapIconInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_COMM_VIP_GROWTH.UserClientShowInfo
  * JD-Core Version:    0.7.0.1
  */

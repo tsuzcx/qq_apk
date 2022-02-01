@@ -20,14 +20,15 @@ public final class qqstory_service$RspGetShareGroupMemList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "result", "union_id_list", "total_count", "next_cookie", "is_end" }, new Object[] { null, localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0) }, RspGetShareGroupMemList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "result", "union_id_list", "total_count", "next_cookie", "is_end" }, new Object[] { null, localByteStringMicro1, localInteger, localByteStringMicro2, localInteger }, RspGetShareGroupMemList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupMemList
  * JD-Core Version:    0.7.0.1
  */

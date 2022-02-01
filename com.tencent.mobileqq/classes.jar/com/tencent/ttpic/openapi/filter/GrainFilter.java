@@ -43,16 +43,15 @@ public class GrainFilter
       this.mFilter.setTexCords(AlgoUtils.calTexCoords(512, 512, paramFloat2 / paramFloat1));
       this.mPostRotateFilter.setRotationAndFlip(-90, 0, 0);
     }
-    for (;;)
+    else
     {
-      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-      return;
       setNextFilter(this.mFilter, null);
       this.mFilter.setNextFilter(this.mPostRotateFilter, null);
       setRotationAndFlip(0, 0, 0);
       this.mFilter.setTexCords(AlgoUtils.calTexCoords(512, 512, paramFloat1 / paramFloat2));
       this.mPostRotateFilter.setRotationAndFlip(0, 0, 0);
     }
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
   
   public Frame render(Frame paramFrame)
@@ -72,7 +71,7 @@ public class GrainFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.GrainFilter
  * JD-Core Version:    0.7.0.1
  */

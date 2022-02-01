@@ -1,16 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import tencent.im.kqq.searchgroup.SearchGroup.GroupInfo;
+import com.tencent.mobileqq.activity.SecurityProtectActivity;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 
 public class dhl
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public SearchGroup.GroupInfo a;
-  public TextView b;
-  public TextView c;
+  public dhl(SecurityProtectActivity paramSecurityProtectActivity) {}
+  
+  public void run()
+  {
+    HttpDownloadUtil.a(this.a.b, this.a.a, this.a);
+  }
 }
 
 

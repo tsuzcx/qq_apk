@@ -73,24 +73,20 @@ public class RegionDrawable
     if (paramString != paramRegionState.mPath) {
       paramRegionState.mPath = paramString;
     }
-    if (paramResources != null)
-    {
+    if (paramResources != null) {
       this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
-      if (paramRegionState == null) {
-        break label119;
-      }
-    }
-    label119:
-    for (paramRegionState = paramRegionState.mBitmap;; paramRegionState = null)
-    {
-      setBitmap(paramRegionState);
-      paramRegionState = new RegionBitmap(paramString);
-      paramRegionState.setOnUpdateCallback(this);
-      this.mRegionBitmap = paramRegionState;
-      return;
+    } else {
       this.mTargetDensity = paramRegionState.mTargetDensity;
-      break;
     }
+    if (paramRegionState != null) {
+      paramRegionState = paramRegionState.mBitmap;
+    } else {
+      paramRegionState = null;
+    }
+    setBitmap(paramRegionState);
+    paramRegionState = new RegionBitmap(paramString);
+    paramRegionState.setOnUpdateCallback(this);
+    this.mRegionBitmap = paramRegionState;
   }
   
   private Rect calcCachedArea(Rect paramRect1, Rect paramRect2)
@@ -111,88 +107,87 @@ public class RegionDrawable
     if (paramBitmap != this.mBitmap)
     {
       this.mBitmap = paramBitmap;
-      if (paramBitmap == null) {
-        break label62;
+      if (paramBitmap != null)
+      {
+        computeBitmapSize();
       }
-      computeBitmapSize();
-    }
-    for (;;)
-    {
+      else
+      {
+        this.mBitmapHeight = -1;
+        this.mBitmapWidth = -1;
+      }
       invalidateSelf();
       paramBitmap = this.mBitmap.getNinePatchChunk();
-      if ((paramBitmap == null) || (!NinePatch.isNinePatchChunk(paramBitmap))) {
-        break;
+      if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap)))
+      {
+        this.mNinePatch = new NinePatch(this.mBitmap, paramBitmap, null);
+        return;
       }
-      this.mNinePatch = new NinePatch(this.mBitmap, paramBitmap, null);
-      return;
-      label62:
-      this.mBitmapHeight = -1;
-      this.mBitmapWidth = -1;
+      this.mNinePatch = null;
     }
-    this.mNinePatch = null;
   }
   
   public void draw(Canvas paramCanvas)
   {
     Bitmap localBitmap = this.mBitmap;
-    RegionDrawable.RegionState localRegionState;
-    Object localObject2;
-    Shader.TileMode localTileMode;
     if (localBitmap != null)
     {
-      localRegionState = this.mRegionState;
+      RegionDrawable.RegionState localRegionState = this.mRegionState;
+      Object localObject1;
       if (localRegionState.mRebuildShader)
       {
-        localObject2 = localRegionState.mTileModeX;
-        localTileMode = localRegionState.mTileModeY;
-        if ((localObject2 != null) || (localTileMode != null)) {
-          break label165;
+        Object localObject2 = localRegionState.mTileModeX;
+        Shader.TileMode localTileMode = localRegionState.mTileModeY;
+        if ((localObject2 == null) && (localTileMode == null))
+        {
+          localRegionState.mPaint.setShader(null);
         }
-        localRegionState.mPaint.setShader(null);
+        else
+        {
+          Paint localPaint = localRegionState.mPaint;
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = Shader.TileMode.CLAMP;
+          }
+          localObject2 = localTileMode;
+          if (localTileMode == null) {
+            localObject2 = Shader.TileMode.CLAMP;
+          }
+          localPaint.setShader(new BitmapShader(localBitmap, (Shader.TileMode)localObject1, (Shader.TileMode)localObject2));
+        }
         localRegionState.mRebuildShader = false;
         copyBounds(this.mDstRect);
       }
-      if (localRegionState.mPaint.getShader() != null) {
-        break label233;
-      }
-      if (this.mApplyGravity)
+      if (localRegionState.mPaint.getShader() == null)
       {
-        Gravity.apply(localRegionState.mGravity, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.mDstRect);
-        this.mApplyGravity = false;
+        if (this.mApplyGravity)
+        {
+          Gravity.apply(localRegionState.mGravity, this.mBitmapWidth, this.mBitmapHeight, getBounds(), this.mDstRect);
+          this.mApplyGravity = false;
+        }
+        localObject1 = this.mNinePatch;
+        if (localObject1 != null) {
+          ((NinePatch)localObject1).draw(paramCanvas, this.mDstRect);
+        } else {
+          paramCanvas.drawBitmap(localBitmap, null, this.mDstRect, localRegionState.mPaint);
+        }
       }
-      if (this.mNinePatch == null) {
-        break label214;
-      }
-      this.mNinePatch.draw(paramCanvas, this.mDstRect);
-    }
-    for (;;)
-    {
-      if ((this.mShowRegion) && (this.mRegionBitmap != null)) {
-        this.mRegionBitmap.draw(paramCanvas, localRegionState.mPaint);
-      }
-      return;
-      label165:
-      Paint localPaint = localRegionState.mPaint;
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = Shader.TileMode.CLAMP;
-      }
-      localObject2 = localTileMode;
-      if (localTileMode == null) {
-        localObject2 = Shader.TileMode.CLAMP;
-      }
-      localPaint.setShader(new BitmapShader(localBitmap, (Shader.TileMode)localObject1, (Shader.TileMode)localObject2));
-      break;
-      label214:
-      paramCanvas.drawBitmap(localBitmap, null, this.mDstRect, localRegionState.mPaint);
-      continue;
-      label233:
-      if (this.mApplyGravity)
+      else
       {
-        copyBounds(this.mDstRect);
-        this.mApplyGravity = false;
+        if (this.mApplyGravity)
+        {
+          copyBounds(this.mDstRect);
+          this.mApplyGravity = false;
+        }
+        paramCanvas.drawRect(this.mDstRect, localRegionState.mPaint);
       }
-      paramCanvas.drawRect(this.mDstRect, localRegionState.mPaint);
+      if (this.mShowRegion)
+      {
+        localObject1 = this.mRegionBitmap;
+        if (localObject1 != null) {
+          ((RegionBitmap)localObject1).draw(paramCanvas, localRegionState.mPaint);
+        }
+      }
     }
   }
   
@@ -234,14 +229,25 @@ public class RegionDrawable
   
   public int getOpacity()
   {
-    if (this.mRegionState.mGravity != 119) {}
-    Bitmap localBitmap;
-    do
-    {
+    int i = this.mRegionState.mGravity;
+    int j = -3;
+    if (i != 119) {
       return -3;
-      localBitmap = this.mBitmap;
-    } while ((localBitmap == null) || (localBitmap.hasAlpha()) || (this.mRegionState.mPaint.getAlpha() < 255));
-    return -1;
+    }
+    Bitmap localBitmap = this.mBitmap;
+    i = j;
+    if (localBitmap != null)
+    {
+      i = j;
+      if (!localBitmap.hasAlpha())
+      {
+        if (this.mRegionState.mPaint.getAlpha() < 255) {
+          return -3;
+        }
+        i = -1;
+      }
+    }
+    return i;
   }
   
   public final Paint getPaint()
@@ -294,7 +300,8 @@ public class RegionDrawable
       invalidateSelf();
       return;
     }
-    this.mMainHandler.sendMessage(this.mMainHandler.obtainMessage(0));
+    Handler localHandler = this.mMainHandler;
+    localHandler.sendMessage(localHandler.obtainMessage(0));
   }
   
   public void setAlpha(int paramInt)
@@ -413,13 +420,13 @@ public class RegionDrawable
       this.mShowRegion = paramRegionDrawableData.mShowRegion;
       invalidateSelf();
     }
-    if (!paramRegionDrawableData.mShowRegion) {}
-    Rect localRect;
-    do
-    {
+    if (!paramRegionDrawableData.mShowRegion) {
       return;
-      localRect = calcCachedArea(paramRegionDrawableData.mImageArea, paramRegionDrawableData.mShowArea);
-    } while ((localRect.equals(this.mUpdateRect)) && (this.mRegionDrawableState == paramRegionDrawableData.mState));
+    }
+    Rect localRect = calcCachedArea(paramRegionDrawableData.mImageArea, paramRegionDrawableData.mShowArea);
+    if ((localRect.equals(this.mUpdateRect)) && (this.mRegionDrawableState == paramRegionDrawableData.mState)) {
+      return;
+    }
     this.mUpdateRect.set(localRect);
     paramRegionDrawableData.mShowArea.set(localRect);
     paramRegionDrawableData.mTargetDensity = this.mTargetDensity;
@@ -430,7 +437,7 @@ public class RegionDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.RegionDrawable
  * JD-Core Version:    0.7.0.1
  */

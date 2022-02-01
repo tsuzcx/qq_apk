@@ -138,73 +138,75 @@ public abstract class AbsSessionInputBuffer
       }
     }
     int i = this.bufferlen - this.bufferpos;
-    if (i > paramInt2) {}
-    for (;;)
-    {
-      System.arraycopy(this.buffer, this.bufferpos, paramArrayOfByte, paramInt1, paramInt2);
-      this.bufferpos += paramInt2;
-      return paramInt2;
+    if (i <= paramInt2) {
       paramInt2 = i;
     }
+    System.arraycopy(this.buffer, this.bufferpos, paramArrayOfByte, paramInt1, paramInt2);
+    this.bufferpos += paramInt2;
+    return paramInt2;
   }
   
   public int readLine(CharArrayBuffer paramCharArrayBuffer)
   {
-    if (paramCharArrayBuffer == null) {
-      throw new IllegalArgumentException("Char array buffer may not be null");
-    }
-    this.linebuffer.clear();
-    int j = 1;
-    int k = 0;
-    if (j != 0)
+    if (paramCharArrayBuffer != null)
     {
-      int i = locateLF();
-      int m;
-      if (i != -1)
+      this.linebuffer.clear();
+      int k = 1;
+      int i = 0;
+      while (k != 0)
       {
-        if (this.linebuffer.isEmpty()) {
-          return lineFromReadBuffer(paramCharArrayBuffer, i);
-        }
-        j = this.bufferpos;
-        this.linebuffer.append(this.buffer, this.bufferpos, i + 1 - j);
-        this.bufferpos = (i + 1);
-        i = 0;
-        m = k;
-      }
-      for (;;)
-      {
-        j = i;
-        k = m;
-        if (this.maxLineLen <= 0) {
-          break;
-        }
-        j = i;
-        k = m;
-        if (this.linebuffer.length() < this.maxLineLen) {
-          break;
-        }
-        throw new IOException("Maximum line length limit exceeded");
-        if (hasBufferedData())
+        int j = locateLF();
+        if (j != -1)
         {
-          i = this.bufferlen;
+          if (this.linebuffer.isEmpty()) {
+            return lineFromReadBuffer(paramCharArrayBuffer, j);
+          }
+          j += 1;
           k = this.bufferpos;
-          this.linebuffer.append(this.buffer, this.bufferpos, i - k);
-          this.bufferpos = this.bufferlen;
+          this.linebuffer.append(this.buffer, k, j - k);
+          this.bufferpos = j;
         }
-        k = fillBuffer();
-        i = j;
-        m = k;
-        if (k == -1)
+        int m;
+        do
         {
-          i = 0;
+          m = 0;
+          j = i;
+          break;
+          if (hasBufferedData())
+          {
+            i = this.bufferlen;
+            j = this.bufferpos;
+            this.linebuffer.append(this.buffer, j, i - j);
+            this.bufferpos = this.bufferlen;
+          }
+          i = fillBuffer();
           m = k;
+          j = i;
+        } while (i == -1);
+        k = m;
+        i = j;
+        if (this.maxLineLen > 0) {
+          if (this.linebuffer.length() < this.maxLineLen)
+          {
+            k = m;
+            i = j;
+          }
+          else
+          {
+            throw new IOException("Maximum line length limit exceeded");
+          }
         }
       }
+      if ((i == -1) && (this.linebuffer.isEmpty())) {
+        return -1;
+      }
+      return lineFromLineBuffer(paramCharArrayBuffer);
     }
-    if ((k == -1) && (this.linebuffer.isEmpty())) {
-      return -1;
+    paramCharArrayBuffer = new IllegalArgumentException("Char array buffer may not be null");
+    for (;;)
+    {
+      throw paramCharArrayBuffer;
     }
-    return lineFromLineBuffer(paramCharArrayBuffer);
   }
   
   public String readLine()
@@ -218,7 +220,7 @@ public abstract class AbsSessionInputBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.util.AbsSessionInputBuffer
  * JD-Core Version:    0.7.0.1
  */

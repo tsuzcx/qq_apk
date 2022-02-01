@@ -1,34 +1,33 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
-import abta;
-import ajlb;
+import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ssp;
 
-public class ServiceAccountFolderManager$5
+class ServiceAccountFolderManager$5
   implements Runnable
 {
-  public ServiceAccountFolderManager$5(ssp paramssp, ArrayList paramArrayList, QQAppInterface paramQQAppInterface) {}
+  ServiceAccountFolderManager$5(ServiceAccountFolderManager paramServiceAccountFolderManager, ArrayList paramArrayList, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      ajlb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 1008);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(str, 1008);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, 1008, true);
+      RecentUtil.b(this.b, str, 1008);
+      this.b.getMessageFacade().a(str, 1008);
+      this.b.getConversationFacade().a(str, 1008, true);
     }
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.this$0.b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.5
  * JD-Core Version:    0.7.0.1
  */

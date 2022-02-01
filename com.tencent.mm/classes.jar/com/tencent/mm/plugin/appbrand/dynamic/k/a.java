@@ -2,60 +2,77 @@ package com.tencent.mm.plugin.appbrand.dynamic.k;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.api.g;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.i;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.CountDownLatch;
 
 public final class a
 {
-  public static <T extends com.tencent.mm.kernel.c.a> T Z(Class<T> paramClass)
+  public static <T extends com.tencent.mm.kernel.c.a> T aS(Class<T> paramClass)
   {
-    AppMethodBeat.i(11036);
-    Object localObject = com.tencent.mm.kernel.g.E(paramClass);
+    AppMethodBeat.i(121518);
+    Object localObject = h.ax(paramClass);
     if (localObject != null)
     {
-      AppMethodBeat.o(11036);
+      AppMethodBeat.o(121518);
       return localObject;
     }
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      AppMethodBeat.o(11036);
+      AppMethodBeat.o(121518);
       return null;
     }
-    if (!com.tencent.mm.kernel.g.RM().eIn.eIH)
+    if (!h.baF().mDl.mDG)
     {
       CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      localObject = new a.1(localCountDownLatch);
-      com.tencent.mm.kernel.g.RM().a((com.tencent.mm.kernel.api.g)localObject);
+      localObject = new g()
+      {
+        public final void aDv()
+        {
+          AppMethodBeat.i(121516);
+          a.this.countDown();
+          AppMethodBeat.o(121516);
+        }
+        
+        public final void dZ(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(121517);
+          a.this.countDown();
+          AppMethodBeat.o(121517);
+        }
+      };
+      h.baF().a((g)localObject);
       try
       {
         localCountDownLatch.await();
-        com.tencent.mm.kernel.g.RM().b((com.tencent.mm.kernel.api.g)localObject);
+        h.baF().b((g)localObject);
       }
       catch (InterruptedException localInterruptedException)
       {
         for (;;)
         {
-          ab.printErrStackTrace("MicroMsg.SyncGetter", localInterruptedException, "", new Object[0]);
-          com.tencent.mm.kernel.g.RM().b((com.tencent.mm.kernel.api.g)localObject);
+          Log.printErrStackTrace("MicroMsg.SyncGetter", localInterruptedException, "", new Object[0]);
+          h.baF().b((g)localObject);
         }
       }
       finally
       {
-        com.tencent.mm.kernel.g.RM().b((com.tencent.mm.kernel.api.g)localObject);
-        AppMethodBeat.o(11036);
+        h.baF().b((g)localObject);
+        AppMethodBeat.o(121518);
       }
-      paramClass = com.tencent.mm.kernel.g.E(paramClass);
-      AppMethodBeat.o(11036);
+      paramClass = h.ax(paramClass);
+      AppMethodBeat.o(121518);
       return paramClass;
     }
-    AppMethodBeat.o(11036);
+    AppMethodBeat.o(121518);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.k.a
  * JD-Core Version:    0.7.0.1
  */

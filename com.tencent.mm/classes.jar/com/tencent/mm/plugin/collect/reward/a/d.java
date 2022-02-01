@@ -1,69 +1,69 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.qk;
-import com.tencent.mm.protocal.protobuf.ql;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.yd;
+import com.tencent.mm.protocal.protobuf.ye;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
   extends a
 {
   private final String TAG;
-  private f callback;
-  private ql kOI;
-  private b rr;
+  private h callback;
+  private c rr;
+  private ye wZV;
   
   public d(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(41039);
+    AppMethodBeat.i(63899);
     this.TAG = "MicroMsg.NetSceneQrRewardPayCheck";
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new qk();
-    ((b.a)localObject).fsY = new ql();
-    ((b.a)localObject).funcId = 1960;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/rewardqrcodepaycheck";
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (qk)this.rr.fsV.fta;
-    ((qk)localObject).cwk = paramString1;
-    ((qk)localObject).wIM = paramString2;
-    ((qk)localObject).wpq = paramString3;
-    ((qk)localObject).okH = paramInt;
-    ((qk)localObject).wIK = paramString4;
-    ((qk)localObject).wIJ = paramString5;
-    ab.i("MicroMsg.NetSceneQrRewardPayCheck", "rewardid: %s, amt: %s", new Object[] { paramString2, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(41039);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new yd();
+    ((c.a)localObject).otF = new ye();
+    ((c.a)localObject).funcId = 1960;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/rewardqrcodepaycheck";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (yd)c.b.b(this.rr.otB);
+    ((yd)localObject).hMy = paramString1;
+    ((yd)localObject).ZgU = paramString2;
+    ((yd)localObject).Oln = paramString3;
+    ((yd)localObject).amount = paramInt;
+    ((yd)localObject).ZgT = paramString4;
+    ((yd)localObject).ZgS = paramString5;
+    Log.i("MicroMsg.NetSceneQrRewardPayCheck", "rewardid: %s, amt: %s", new Object[] { paramString2, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(63899);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
-    AppMethodBeat.i(41041);
-    ab.i("MicroMsg.NetSceneQrRewardPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.kOI = ((ql)((b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneQrRewardPayCheck", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.kOI.cnK), this.kOI.kNv });
-    if ((!this.kOC) && (this.kOI.cnK != 0)) {
-      this.kOD = true;
+    AppMethodBeat.i(63901);
+    Log.i("MicroMsg.NetSceneQrRewardPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.wZV = ((ye)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneQrRewardPayCheck", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.wZV.hAV), this.wZV.wYI });
+    if ((!this.oaK) && (this.wZV.hAV != 0)) {
+      this.wZR = true;
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    AppMethodBeat.o(41041);
+    AppMethodBeat.o(63901);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(41040);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(41040);
+    AppMethodBeat.i(63900);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(63900);
     return i;
   }
   
@@ -74,7 +74,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.a.d
  * JD-Core Version:    0.7.0.1
  */

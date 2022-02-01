@@ -13,11 +13,11 @@ final class TopStoryCommentFloatDialog$5
   
   protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    AppMethodBeat.i(2247);
-    paramTransformation = (RelativeLayout.LayoutParams)this.tmJ.tmE.getLayoutParams();
-    paramTransformation.bottomMargin = ((int)(this.jmM * paramFloat));
-    this.tmJ.tmE.setLayoutParams(paramTransformation);
-    AppMethodBeat.o(2247);
+    AppMethodBeat.i(126654);
+    paramTransformation = (RelativeLayout.LayoutParams)this.TQC.TQy.getLayoutParams();
+    paramTransformation.bottomMargin = ((int)(this.val$keyboardHeight * paramFloat));
+    this.TQC.TQy.setLayoutParams(paramTransformation);
+    AppMethodBeat.o(126654);
   }
 }
 

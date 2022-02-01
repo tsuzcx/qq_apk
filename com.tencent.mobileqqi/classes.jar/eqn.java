@@ -1,23 +1,45 @@
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.selectmember.RenMaiQuanTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.service.circle.IGroupObserver;
+import com.tencent.mobileqq.data.CircleGroup;
+import java.util.ArrayList;
 
 public class eqn
-  implements IGroupObserver
+  extends BaseAdapter
 {
-  public eqn(RenMaiQuanTeamListInnerFrame paramRenMaiQuanTeamListInnerFrame) {}
+  private eqn(RenMaiQuanTeamListInnerFrame paramRenMaiQuanTeamListInnerFrame) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public int getCount()
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-      RenMaiQuanTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return (CircleGroup)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    if (paramInt == 2) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.k();
-    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = (CircleGroup)getItem(paramInt);
+    paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903972, RenMaiQuanTeamListInnerFrame.a(this.a), false);
+    ((ImageView)paramViewGroup.findViewById(2131230985)).setImageResource(this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(paramView.groupId));
+    ((TextView)paramViewGroup.findViewById(2131232317)).setText(paramView.groupName);
+    paramViewGroup.setOnClickListener(new eqo(this, paramView));
+    return paramViewGroup;
   }
 }
 

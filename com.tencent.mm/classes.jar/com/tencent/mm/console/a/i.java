@@ -15,18 +15,18 @@ public final class i
 {
   static
   {
-    AppMethodBeat.i(16141);
-    b.a(new i(), new String[] { "//assert", "//netassert", "//jniassert", "//jnipushassert", "//pushassert" });
-    AppMethodBeat.o(16141);
+    AppMethodBeat.i(20186);
+    b.a(new i(), new String[] { "//assert", "//netassert", "//jniassert", "//jnipushassert", "//pushassert", "//anrassert" });
+    AppMethodBeat.o(20186);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(16140);
+    AppMethodBeat.i(20185);
     paramContext = paramArrayOfString[0];
-    label64:
+    label72:
     int i;
     switch (paramContext.hashCode())
     {
@@ -38,54 +38,70 @@ public final class i
       switch (i)
       {
       default: 
-        AppMethodBeat.o(16140);
+        AppMethodBeat.o(20185);
         return false;
         if (!paramContext.equals("//assert")) {
-          break label64;
+          break label72;
         }
         i = 0;
         continue;
         if (!paramContext.equals("//netassert")) {
-          break label64;
+          break label72;
         }
         i = 1;
         continue;
         if (!paramContext.equals("//jniassert")) {
-          break label64;
+          break label72;
         }
         i = 2;
         continue;
         if (!paramContext.equals("//jnipushassert")) {
-          break label64;
+          break label72;
         }
         i = 3;
         continue;
         if (!paramContext.equals("//pushassert")) {
-          break label64;
+          break label72;
         }
         i = 4;
+        continue;
+        if (!paramContext.equals("//anrassert")) {
+          break label72;
+        }
+        i = 5;
       }
     }
     Assert.assertTrue("test errlog " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), false);
-    AppMethodBeat.o(16140);
+    AppMethodBeat.o(20185);
     return true;
     Assert.assertTrue("NetsceneQueue forbid in ", false);
-    AppMethodBeat.o(16140);
+    AppMethodBeat.o(20185);
     return true;
     MMProtocalJni.setClientPackVersion(-1);
-    AppMethodBeat.o(16140);
+    AppMethodBeat.o(20185);
     return true;
-    WatchDogPushReceiver.mg(2);
-    AppMethodBeat.o(16140);
+    WatchDogPushReceiver.wY(2);
+    AppMethodBeat.o(20185);
     return true;
-    WatchDogPushReceiver.mg(1);
-    AppMethodBeat.o(16140);
+    WatchDogPushReceiver.wY(1);
+    AppMethodBeat.o(20185);
     return true;
+    try
+    {
+      Thread.sleep(10000L);
+      label317:
+      AppMethodBeat.o(20185);
+      return true;
+    }
+    catch (InterruptedException paramContext)
+    {
+      break label317;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.i
  * JD-Core Version:    0.7.0.1
  */

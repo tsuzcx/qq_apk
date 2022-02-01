@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 
 class PhoneLaunchActivity$1$2
   implements Runnable
@@ -9,7 +9,7 @@ class PhoneLaunchActivity$1$2
   
   public void run()
   {
-    this.a.this$0.a.g();
+    this.a.this$0.mPhoneContactService.uploadPhoneContact();
   }
 }
 

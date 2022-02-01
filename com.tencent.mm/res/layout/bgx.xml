@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/gxh" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:id="@id/iwz" android:background="@color/al2" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ah7" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
+            <RelativeLayout android:id="@id/ai4" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/gxg" android:background="@drawable/ahn" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true">
+                    <TextView android:textSize="@dimen/hq" android:textColor="@color/al2" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/a7l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:lineSpacingExtra="2.0dip" />
+                </LinearLayout>
+                <ImageView android:id="@id/gxa" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="54.0dip" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+                <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/gx_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="37.0dip" android:layout_marginRight="24.0dip" android:layout_below="@id/gxa">
+                    <TextView android:textSize="@dimen/t" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/gx9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+                    <TextView android:textSize="@dimen/t" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/gxb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+                </LinearLayout>
+                <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="48.0dip" android:textColor="@color/a7b" android:id="@id/gxc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:includeFontPadding="false" android:layout_below="@id/gx_" android:layout_centerHorizontal="true" />
+                <View android:id="@id/gxe" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="32.0dip" android:layout_marginTop="55.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/gxc" android:layout_centerHorizontal="true" />
+                <LinearLayout android:orientation="vertical" android:id="@id/gxf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/gxe" />
+            </RelativeLayout>
+            <LinearLayout android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:id="@id/agw" android:paddingBottom="96.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ai4" android:layout_centerHorizontal="true">
+                <Button android:textSize="17.0dip" android:textStyle="bold" android:gravity="center" android:id="@id/gxd" android:layout_width="184.0dip" android:layout_height="40.0dip" android:text="@string/km1" style="@style/on" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

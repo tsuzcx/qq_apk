@@ -18,6 +18,7 @@ public final class cmd0x383$ApplyFileSearchReqBody
   public static final int PICTURE = 4;
   public static final int SEARCH_BY_FILE_TYPE = 2;
   public static final int SEARCH_BY_KEY_WORD = 0;
+  public static final int SEARCH_BY_KEY_WORD_AND_VIDEO = 3;
   public static final int VIDEO = 2;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_key_word = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -30,14 +31,16 @@ public final class cmd0x383$ApplyFileSearchReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 80, 88 }, new String[] { "uint64_group_code_list", "uint64_uin_list", "bytes_key_word", "bytes_sync_cookie", "uint32_count", "uint32_search_type", "uint32_file_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ApplyFileSearchReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 80, 88 }, new String[] { "uint64_group_code_list", "uint64_uin_list", "bytes_key_word", "bytes_sync_cookie", "uint32_count", "uint32_search_type", "uint32_file_type" }, new Object[] { localLong, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger }, ApplyFileSearchReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchReqBody
  * JD-Core Version:    0.7.0.1
  */

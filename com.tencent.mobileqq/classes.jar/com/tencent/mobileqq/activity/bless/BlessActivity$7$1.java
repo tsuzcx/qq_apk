@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahck;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.widget.QQVideoView;
 import com.tencent.qphone.base.util.QLog;
 
-public class BlessActivity$7$1
+class BlessActivity$7$1
   implements Runnable
 {
-  public BlessActivity$7$1(ahck paramahck) {}
+  BlessActivity$7$1(BlessActivity.7 param7) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a.a), 2, "videoview bring to top");
+      QLog.d(BlessActivity.f(this.a.a), 2, "videoview bring to top");
     }
-    if (BlessActivity.b(this.a.a) != null) {
-      BlessActivity.b(this.a.a).setVisibility(8);
+    if (BlessActivity.h(this.a.a) != null) {
+      BlessActivity.h(this.a.a).setVisibility(8);
     }
-    if (BlessActivity.a(this.a.a) != null) {
-      BlessActivity.a(this.a.a).bringToFront();
+    if (BlessActivity.g(this.a.a) != null) {
+      BlessActivity.g(this.a.a).bringToFront();
     }
-    this.a.a.findViewById(2131368670).bringToFront();
-    this.a.a.findViewById(2131377938).bringToFront();
+    this.a.a.findViewById(2131436227).bringToFront();
+    this.a.a.findViewById(2131447463).bringToFront();
   }
 }
 

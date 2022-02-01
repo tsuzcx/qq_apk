@@ -7,20 +7,20 @@ public class bn$b
 {
   public int a(bn parambn1, bn parambn2)
   {
-    if ((parambn1.ad().I() != -1) && (parambn2.ad().I() != -1)) {
-      if (parambn1.ad().K() <= parambn2.ad().K()) {}
-    }
-    int i;
-    int j;
-    do
+    if ((parambn1.ad().I() != -1) && (parambn2.ad().I() != -1))
     {
-      return -1;
+      if (parambn1.ad().K() > parambn2.ad().K()) {
+        return -1;
+      }
       if (parambn1.ad().K() < parambn2.ad().K()) {
         return 1;
       }
-      i = parambn1.ac().getLevel();
-      j = parambn2.ac().getLevel();
-    } while (i > j);
+    }
+    int i = parambn1.ac().getLevel();
+    int j = parambn2.ac().getLevel();
+    if (i > j) {
+      return -1;
+    }
     if (i < j) {
       return 1;
     }
@@ -29,7 +29,7 @@ public class bn$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.bn.b
  * JD-Core Version:    0.7.0.1
  */

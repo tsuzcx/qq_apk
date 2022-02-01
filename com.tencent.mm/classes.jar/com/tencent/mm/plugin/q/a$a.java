@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.q;
 
-public abstract interface a$a
+import com.tencent.mm.protocal.protobuf.gol;
+
+public final class a$a
 {
-  public abstract void a(d paramd, String paramString, int paramInt);
-  
-  public abstract void onCancel();
+  public int Klv;
+  public gol Klw;
+  public String sWX;
 }
 
 

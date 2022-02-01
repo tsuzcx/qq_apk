@@ -7,7 +7,7 @@ import okio.ByteString;
 public final class Http2
 {
   static final String[] BINARY;
-  static final ByteString CONNECTION_PREFACE;
+  static final ByteString CONNECTION_PREFACE = ByteString.encodeUtf8("PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n");
   static final String[] FLAGS;
   static final byte FLAG_ACK = 1;
   static final byte FLAG_COMPRESSED = 32;
@@ -33,41 +33,51 @@ public final class Http2
   static
   {
     int k = 0;
-    CONNECTION_PREFACE = ByteString.encodeUtf8("PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n");
     FRAME_NAMES = new String[] { "DATA", "HEADERS", "PRIORITY", "RST_STREAM", "SETTINGS", "PUSH_PROMISE", "PING", "GOAWAY", "WINDOW_UPDATE", "CONTINUATION" };
     FLAGS = new String[64];
     BINARY = new String[256];
     int i = 0;
-    while (i < BINARY.length)
+    for (;;)
     {
-      BINARY[i] = Util.format("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
+      localObject1 = BINARY;
+      if (i >= localObject1.length) {
+        break;
+      }
+      localObject1[i] = Util.format("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
       i += 1;
     }
-    FLAGS[0] = "";
-    FLAGS[1] = "END_STREAM";
-    int[] arrayOfInt1 = new int[1];
-    arrayOfInt1[0] = 1;
-    FLAGS[8] = "PADDED";
-    int j = arrayOfInt1.length;
+    Object localObject2 = FLAGS;
+    localObject2[0] = "";
+    localObject2[1] = "END_STREAM";
+    Object localObject1 = new int[1];
+    localObject1[0] = 1;
+    localObject2[8] = "PADDED";
+    int j = localObject1.length;
     i = 0;
+    Object localObject3;
     while (i < j)
     {
-      m = arrayOfInt1[i];
-      FLAGS[(m | 0x8)] = (FLAGS[m] + "|PADDED");
+      m = localObject1[i];
+      localObject2 = FLAGS;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(FLAGS[m]);
+      ((StringBuilder)localObject3).append("|PADDED");
+      localObject2[(m | 0x8)] = ((StringBuilder)localObject3).toString();
       i += 1;
     }
-    FLAGS[4] = "END_HEADERS";
-    FLAGS[32] = "PRIORITY";
-    FLAGS[36] = "END_HEADERS|PRIORITY";
-    int[] arrayOfInt2 = new int[3];
-    int[] tmp250_248 = arrayOfInt2;
-    tmp250_248[0] = 4;
-    int[] tmp254_250 = tmp250_248;
-    tmp254_250[1] = 32;
-    int[] tmp259_254 = tmp254_250;
-    tmp259_254[2] = 36;
-    tmp259_254;
-    int m = arrayOfInt2.length;
+    localObject2 = FLAGS;
+    localObject2[4] = "END_HEADERS";
+    localObject2[32] = "PRIORITY";
+    localObject2[36] = "END_HEADERS|PRIORITY";
+    localObject2 = new int[3];
+    Object tmp271_269 = localObject2;
+    tmp271_269[0] = 4;
+    Object tmp275_271 = tmp271_269;
+    tmp275_271[1] = 32;
+    Object tmp280_275 = tmp275_271;
+    tmp280_275[2] = 36;
+    tmp280_275;
+    int m = localObject2.length;
     i = 0;
     for (;;)
     {
@@ -75,22 +85,38 @@ public final class Http2
       if (i >= m) {
         break;
       }
-      int n = arrayOfInt2[i];
-      int i1 = arrayOfInt1.length;
+      int n = localObject2[i];
+      int i1 = localObject1.length;
       j = 0;
       while (j < i1)
       {
-        int i2 = arrayOfInt1[j];
-        FLAGS[(i2 | n)] = (FLAGS[i2] + '|' + FLAGS[n]);
-        FLAGS[(i2 | n | 0x8)] = (FLAGS[i2] + '|' + FLAGS[n] + "|PADDED");
+        int i2 = localObject1[j];
+        localObject3 = FLAGS;
+        int i3 = i2 | n;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(FLAGS[i2]);
+        localStringBuilder.append('|');
+        localStringBuilder.append(FLAGS[n]);
+        localObject3[i3] = localStringBuilder.toString();
+        localObject3 = FLAGS;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(FLAGS[i2]);
+        localStringBuilder.append('|');
+        localStringBuilder.append(FLAGS[n]);
+        localStringBuilder.append("|PADDED");
+        localObject3[(i3 | 0x8)] = localStringBuilder.toString();
         j += 1;
       }
       i += 1;
     }
-    while (j < FLAGS.length)
+    for (;;)
     {
-      if (FLAGS[j] == null) {
-        FLAGS[j] = BINARY[j];
+      localObject1 = FLAGS;
+      if (j >= localObject1.length) {
+        break;
+      }
+      if (localObject1[j] == null) {
+        localObject1[j] = BINARY[j];
       }
       j += 1;
     }
@@ -98,59 +124,56 @@ public final class Http2
   
   static String formatFlags(byte paramByte1, byte paramByte2)
   {
-    Object localObject;
     if (paramByte2 == 0) {
-      localObject = "";
+      return "";
     }
-    String str;
-    do
-    {
-      do
+    if ((paramByte1 != 2) && (paramByte1 != 3)) {
+      if ((paramByte1 != 4) && (paramByte1 != 6))
       {
-        return localObject;
-        switch (paramByte1)
+        if ((paramByte1 != 7) && (paramByte1 != 8))
         {
-        case 5: 
-        default: 
-          if (paramByte2 >= FLAGS.length) {
-            break;
+          Object localObject = FLAGS;
+          if (paramByte2 < localObject.length) {
+            localObject = localObject[paramByte2];
+          } else {
+            localObject = BINARY[paramByte2];
           }
-        }
-        for (str = FLAGS[paramByte2]; (paramByte1 == 5) && ((paramByte2 & 0x4) != 0); str = BINARY[paramByte2])
-        {
-          return str.replace("HEADERS", "PUSH_PROMISE");
-          if (paramByte2 == 1) {
-            return "ACK";
+          if ((paramByte1 == 5) && ((paramByte2 & 0x4) != 0)) {
+            return ((String)localObject).replace("HEADERS", "PUSH_PROMISE");
           }
-          return BINARY[paramByte2];
-          return BINARY[paramByte2];
+          if ((paramByte1 == 0) && ((paramByte2 & 0x20) != 0)) {
+            return ((String)localObject).replace("PRIORITY", "COMPRESSED");
+          }
+          return localObject;
         }
-        localObject = str;
-      } while (paramByte1 != 0);
-      localObject = str;
-    } while ((paramByte2 & 0x20) == 0);
-    return str.replace("PRIORITY", "COMPRESSED");
+      }
+      else
+      {
+        if (paramByte2 == 1) {
+          return "ACK";
+        }
+        return BINARY[paramByte2];
+      }
+    }
+    return BINARY[paramByte2];
   }
   
   static String frameLog(boolean paramBoolean, int paramInt1, int paramInt2, byte paramByte1, byte paramByte2)
   {
+    Object localObject = FRAME_NAMES;
+    if (paramByte1 < localObject.length) {
+      localObject = localObject[paramByte1];
+    } else {
+      localObject = Util.format("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
+    }
+    String str2 = formatFlags(paramByte1, paramByte2);
     String str1;
-    String str3;
-    if (paramByte1 < FRAME_NAMES.length)
-    {
-      str1 = FRAME_NAMES[paramByte1];
-      str3 = formatFlags(paramByte1, paramByte2);
-      if (!paramBoolean) {
-        break label91;
-      }
+    if (paramBoolean) {
+      str1 = "<<";
+    } else {
+      str1 = ">>";
     }
-    label91:
-    for (String str2 = "<<";; str2 = ">>")
-    {
-      return Util.format("%s 0x%08x %5d %-13s %s", new Object[] { str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, str3 });
-      str1 = Util.format("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
-      break;
-    }
+    return Util.format("%s 0x%08x %5d %-13s %s", new Object[] { str1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localObject, str2 });
   }
   
   static IllegalArgumentException illegalArgument(String paramString, Object... paramVarArgs)
@@ -165,7 +188,7 @@ public final class Http2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http2.Http2
  * JD-Core Version:    0.7.0.1
  */

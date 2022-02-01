@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class INTERFACE$StSetUserAppTopReq
   extends MessageMicro<StSetUserAppTopReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56 }, new String[] { "extInfo", "appId", "putTop", "verType", "oldIdx", "newIdx", "fromNewDownload" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, StSetUserAppTopReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appId = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBInt32Field fromNewDownload = PBField.initInt32(0);
@@ -20,10 +20,16 @@ public final class INTERFACE$StSetUserAppTopReq
   public final PBInt32Field oldIdx = PBField.initInt32(0);
   public final PBUInt32Field putTop = PBField.initUInt32(0);
   public final PBEnumField verType = PBField.initEnum(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56 }, new String[] { "extInfo", "appId", "putTop", "verType", "oldIdx", "newIdx", "fromNewDownload" }, new Object[] { null, "", localInteger, localInteger, localInteger, localInteger, localInteger }, StSetUserAppTopReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StSetUserAppTopReq
  * JD-Core Version:    0.7.0.1
  */

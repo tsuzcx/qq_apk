@@ -23,18 +23,13 @@ public final class Polygon
   public final boolean contains(LatLng paramLatLng)
   {
     List localList = getPoints();
-    boolean bool;
-    if ((localList == null) || (localList.size() < 3) || (paramLatLng == null)) {
-      bool = false;
-    }
-    int j;
-    int i;
-    int k;
-    do
+    if ((localList != null) && (localList.size() >= 3))
     {
-      return bool;
-      j = localList.size();
-      i = 0;
+      if (paramLatLng == null) {
+        return false;
+      }
+      int j = localList.size();
+      int i = 0;
       while (i < localList.size())
       {
         if (((LatLng)localList.get(i)).equals(paramLatLng)) {
@@ -42,27 +37,40 @@ public final class Polygon
         }
         i += 1;
       }
-      k = 0;
       j -= 1;
       i = 0;
-      bool = k;
-    } while (i >= localList.size());
-    if (((((LatLng)localList.get(i)).latitude < paramLatLng.latitude) && (((LatLng)localList.get(j)).latitude >= paramLatLng.latitude)) || ((((LatLng)localList.get(j)).latitude < paramLatLng.latitude) && (((LatLng)localList.get(i)).latitude >= paramLatLng.latitude) && ((((LatLng)localList.get(i)).longitude <= paramLatLng.longitude) || (((LatLng)localList.get(j)).longitude <= paramLatLng.longitude)))) {
-      if (((LatLng)localList.get(i)).longitude + (paramLatLng.latitude - ((LatLng)localList.get(i)).latitude) / (((LatLng)localList.get(j)).latitude - ((LatLng)localList.get(i)).latitude) * (((LatLng)localList.get(j)).longitude - ((LatLng)localList.get(i)).longitude) <= paramLatLng.longitude)
+      int m;
+      for (int k = 0; i < localList.size(); k = m)
       {
-        j = 1;
-        label340:
-        k ^= j;
+        if ((((LatLng)localList.get(i)).latitude >= paramLatLng.latitude) || (((LatLng)localList.get(j)).latitude < paramLatLng.latitude))
+        {
+          m = k;
+          if (((LatLng)localList.get(j)).latitude < paramLatLng.latitude)
+          {
+            m = k;
+            if (((LatLng)localList.get(i)).latitude < paramLatLng.latitude) {}
+          }
+        }
+        else if (((LatLng)localList.get(i)).longitude > paramLatLng.longitude)
+        {
+          m = k;
+          if (((LatLng)localList.get(j)).longitude > paramLatLng.longitude) {}
+        }
+        else
+        {
+          if (((LatLng)localList.get(i)).longitude + (paramLatLng.latitude - ((LatLng)localList.get(i)).latitude) / (((LatLng)localList.get(j)).latitude - ((LatLng)localList.get(i)).latitude) * (((LatLng)localList.get(j)).longitude - ((LatLng)localList.get(i)).longitude) <= paramLatLng.longitude) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          m = k ^ j;
+        }
+        j = i;
+        i += 1;
       }
+      return k;
     }
-    for (;;)
-    {
-      j = i;
-      i += 1;
-      break;
-      j = 0;
-      break label340;
-    }
+    return false;
   }
   
   public final boolean equals(Object paramObject)
@@ -91,19 +99,16 @@ public final class Polygon
   
   public final List<gg> getMapElements()
   {
-    kp localkp;
-    String str;
-    if (this.c != null)
+    kp localkp = this.c;
+    if (localkp != null)
     {
-      localkp = this.c;
-      str = this.b;
-      if (localkp.a != null) {}
+      String str = this.b;
+      if (localkp.a == null) {
+        return null;
+      }
+      return localkp.a.b(str);
     }
-    else
-    {
-      return null;
-    }
-    return localkp.a.b(str);
+    return null;
   }
   
   public final List<LatLng> getPoints()
@@ -138,8 +143,9 @@ public final class Polygon
   
   public final boolean isClickable()
   {
-    if (this.a != null) {
-      return this.a.isClickable();
+    PolygonOptions localPolygonOptions = this.a;
+    if (localPolygonOptions != null) {
+      return localPolygonOptions.isClickable();
     }
     return false;
   }
@@ -151,16 +157,14 @@ public final class Polygon
   
   public final void remove()
   {
-    if (this.c == null) {}
-    kp localkp;
-    String str;
-    do
-    {
+    kp localkp = this.c;
+    if (localkp == null) {
       return;
-      localkp = this.c;
-      str = this.b;
-    } while (localkp.a == null);
-    localkp.a.a(str);
+    }
+    String str = this.b;
+    if (localkp.a != null) {
+      localkp.a.a(str);
+    }
   }
   
   public final void setClickable(boolean paramBoolean)
@@ -180,15 +184,18 @@ public final class Polygon
   
   public final void setLevel(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
-      return;
+    if (paramInt >= OverlayLevel.OverlayLevelAboveRoads)
+    {
+      if (paramInt > OverlayLevel.OverlayLevelAboveLabels) {
+        return;
+      }
+      kp localkp = this.c;
+      String str = this.b;
+      if (localkp.a != null) {
+        localkp.a.c(str, paramInt);
+      }
+      this.a.level(paramInt);
     }
-    kp localkp = this.c;
-    String str = this.b;
-    if (localkp.a != null) {
-      localkp.a.c(str, paramInt);
-    }
-    this.a.level(paramInt);
   }
   
   public final void setOptions(PolygonOptions paramPolygonOptions)
@@ -203,10 +210,10 @@ public final class Polygon
   
   public final void setPoints(List<LatLng> paramList)
   {
-    if (this.c == null) {
+    kp localkp = this.c;
+    if (localkp == null) {
       return;
     }
-    kp localkp = this.c;
     String str = this.b;
     if (localkp.a != null) {
       localkp.a.a(str, paramList);
@@ -262,7 +269,7 @@ public final class Polygon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Polygon
  * JD-Core Version:    0.7.0.1
  */

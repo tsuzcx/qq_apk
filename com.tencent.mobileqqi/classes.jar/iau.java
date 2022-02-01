@@ -1,31 +1,28 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.IQlinkService.Stub;
 import cooperation.qlink.QlinkServiceProxy;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import cooperation.qlink.SendMsg;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class iau
-  implements ServiceConnection
+  extends Thread
 {
   public iau(QlinkServiceProxy paramQlinkServiceProxy) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void run()
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    QlinkServiceProxy.a(this.a, IQlinkService.Stub.a(paramIBinder));
-    QlinkServiceProxy.a(this.a, false);
-    QlinkServiceProxy.a(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
-    QlinkServiceProxy.a(this.a).getApplication().unbindService(QlinkServiceProxy.a(this.a));
-    QlinkServiceProxy.a(this.a, null);
-    QlinkServiceProxy.a(this.a, false);
+    while (!QlinkServiceProxy.a(this.a).isEmpty())
+    {
+      SendMsg localSendMsg = (SendMsg)QlinkServiceProxy.a(this.a).poll();
+      if (localSendMsg != null) {
+        try
+        {
+          QlinkServiceProxy.a(this.a, localSendMsg);
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

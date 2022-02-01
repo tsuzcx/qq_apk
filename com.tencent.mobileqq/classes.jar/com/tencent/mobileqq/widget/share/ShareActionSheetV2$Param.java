@@ -10,12 +10,13 @@ public class ShareActionSheetV2$Param
   public float dimAmount = 0.5F;
   public boolean flagNotTouchModal;
   public boolean fullScreen;
+  public boolean isNotShowMyPc;
   public ViewGroup.LayoutParams lp;
   public int reportDataR2;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param
  * JD-Core Version:    0.7.0.1
  */

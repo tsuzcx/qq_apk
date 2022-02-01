@@ -11,13 +11,13 @@ public final class qun_add_comment_req
 {
   static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumId = "";
-  public Map<Integer, String> busi_param;
-  public int comment_type;
+  public Map<Integer, String> busi_param = null;
+  public int comment_type = 0;
   public String content = "";
-  public long ownuin;
+  public long ownuin = 0L;
   public String qunid = "";
   public String srcid = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {
@@ -55,24 +55,28 @@ public final class qun_add_comment_req
     paramJceOutputStream.write(this.qunid, 0);
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.ownuin, 2);
-    if (this.srcid != null) {
-      paramJceOutputStream.write(this.srcid, 3);
+    Object localObject = this.srcid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 4);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.comment_type, 5);
-    if (this.albumId != null) {
-      paramJceOutputStream.write(this.albumId, 6);
+    localObject = this.albumId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 7);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_add_comment_req
  * JD-Core Version:    0.7.0.1
  */

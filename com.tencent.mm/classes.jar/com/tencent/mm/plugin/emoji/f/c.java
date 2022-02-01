@@ -1,115 +1,158 @@
 package com.tencent.mm.plugin.emoji.f;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.gp;
-import com.tencent.mm.protocal.protobuf.gq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.aa.a;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cl.a;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.emoji.e.l;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.Map;
 
 public final class c
-  extends m
-  implements k
+  implements cl.a
 {
-  private f callback;
-  public int gxQ;
-  private int lii;
-  private List<String> lij;
-  public final b rr;
-  
-  public c(int paramInt1, int paramInt2, List<String> paramList)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(53096);
-    b.a locala = new b.a();
-    locala.fsX = new gp();
-    locala.fsY = new gq();
-    locala.uri = "/cgi-bin/micromsg-bin/mmbackupemojioperate";
-    locala.funcId = 698;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    this.lii = paramInt1;
-    this.gxQ = paramInt2;
-    this.lij = paramList;
-    AppMethodBeat.o(53096);
+    AppMethodBeat.i(108734);
+    if (parama == null)
+    {
+      Log.w("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "xml is null.");
+      AppMethodBeat.o(108734);
+      return;
+    }
+    if (parama.xPa > 0)
+    {
+      h.baE().ban().B(208899, Boolean.TRUE);
+      com.tencent.mm.aa.c.aYo().Q(262147, true);
+    }
+    if (parama.xPb > 0)
+    {
+      h.baE().ban().B(208913, Boolean.TRUE);
+      com.tencent.mm.aa.c.aYo().Q(262149, true);
+    }
+    if (!Util.isNullOrNil(parama.thumburl))
+    {
+      Log.d("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "Thumb URL %s", new Object[] { parama.thumburl });
+      h.baE().ban().B(229633, parama.thumburl);
+      h.baE().ban().B(229634, System.currentTimeMillis());
+      AppMethodBeat.o(108734);
+      return;
+    }
+    h.baE().ban().B(229633, "");
+    h.baE().ban().B(229634, "");
+    AppMethodBeat.o(108734);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final void a(g.a parama)
   {
-    AppMethodBeat.i(53098);
-    this.callback = paramf;
-    paramf = (gp)this.rr.fsV.fta;
-    paramf.wsW = this.gxQ;
-    paramf.wsV = new LinkedList(this.lij);
-    paramf.wsX = this.lii;
-    if ((paramf.wsV != null) && (paramf.wsV.size() > 0))
+    AppMethodBeat.i(108733);
+    parama = parama.mpN;
+    Object localObject1;
+    if (parama.IIs == 10002)
     {
-      ab.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "do scene delte md5 list size:%s", new Object[] { Integer.valueOf(paramf.wsV.size()) });
-      i = 0;
-    }
-    while (i < paramf.wsV.size())
-    {
-      ab.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "do scene delte md5:%s", new Object[] { paramf.wsV.get(i) });
-      i += 1;
-      continue;
-      ab.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "empty md5 list.");
-    }
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(53098);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 698;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(53097);
-    ab.i("MicroMsg.emoji.NetSceneBackupEmojiOperate", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (paramInt3 == -434)
-    {
-      ab.w("MicroMsg.emoji.NetSceneBackupEmojiOperate", "[cpan] batch backup emoji failed. over size.");
-      g.RL().Ru().set(ac.a.yxM, Boolean.TRUE);
-      h.qsU.idkeyStat(164L, 7L, 1L, false);
-    }
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      g.RL().Ru().set(ac.a.yxM, Boolean.FALSE);
-      if ((this.gxQ == 1) || (this.gxQ == 4)) {
-        h.qsU.idkeyStat(164L, 5L, 1L, false);
+      parama = w.a(parama.YFG);
+      if (Util.isNullOrNil(parama))
+      {
+        Log.w("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "msg content is null");
+        AppMethodBeat.o(108733);
+        return;
+      }
+      parama = XmlParser.parseXml(parama, "sysmsg", null);
+      if ((parama != null) && (parama.size() > 0))
+      {
+        localObject1 = (String)parama.get(".sysmsg.$type");
+        if ((Util.isNullOrNil((String)localObject1)) || (!((String)localObject1).equalsIgnoreCase("emotionstore"))) {}
       }
     }
     for (;;)
     {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(53097);
-      return;
-      h.qsU.idkeyStat(164L, 8L, 1L, false);
-      continue;
-      if ((this.gxQ == 1) || (this.gxQ == 4)) {
-        h.qsU.idkeyStat(164L, 6L, 1L, false);
-      } else {
-        h.qsU.idkeyStat(164L, 9L, 1L, false);
+      try
+      {
+        localObject1 = (String)parama.get(".sysmsg.emotionstore.productid");
+        Object localObject2 = (String)parama.get(".sysmsg.emotionstore.newcount");
+        String str1 = (String)parama.get(".sysmsg.emotionstore.freecount");
+        String str2 = (String)parama.get(".sysmsg.emotionstore.thumburl");
+        if (Util.isNullOrNil((String)localObject2)) {
+          break label436;
+        }
+        i = Integer.valueOf((String)localObject2).intValue();
+        if (TextUtils.isEmpty(str1)) {
+          break label431;
+        }
+        j = Integer.valueOf(str1).intValue();
+        localObject2 = new a(i, j, str2, (String)localObject1);
+        if (!Util.isNullOrNil((String)localObject1))
+        {
+          Log.i("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "new xml productid is %s. now try to get download flag", new Object[] { localObject1 });
+          localObject1 = new l((String)localObject1, (a)localObject2);
+          h.baD().mCm.a((p)localObject1, 0);
+          localObject1 = (String)parama.get(".sysmsg.personalemotion.newcount");
+          if ((!Util.isNullOrNil((String)localObject1)) && (Integer.valueOf((String)localObject1).intValue() > 0)) {
+            h.baE().ban().set(at.a.acIc, Boolean.TRUE);
+          }
+          parama = (String)parama.get(".sysmsg.personalemoji.emojicount");
+          if ((!Util.isNullOrNil(parama)) && (Integer.valueOf(parama).intValue() > 0)) {
+            h.baE().ban().set(at.a.acIh, Boolean.TRUE);
+          }
+          AppMethodBeat.o(108733);
+          return;
+        }
+        a((a)localObject2);
+        continue;
+        Log.e("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "not emoji message type :".concat(String.valueOf(localObject1)));
       }
+      catch (Exception parama)
+      {
+        Log.e("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "onRecieveMsg:%s", new Object[] { Util.stackTraceToString(parama) });
+        AppMethodBeat.o(108733);
+        return;
+      }
+      AppMethodBeat.o(108733);
+      return;
+      Log.i("MicroMsg.emoji.EmojiNewFreeSysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(parama.IIs) });
+      AppMethodBeat.o(108733);
+      return;
+      label431:
+      int j = 0;
+      continue;
+      label436:
+      int i = 0;
+    }
+  }
+  
+  public final void a(g.c paramc) {}
+  
+  public final class a
+  {
+    private String hBT;
+    String thumburl;
+    int xPa;
+    int xPb;
+    
+    public a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+    {
+      this.xPa = paramInt1;
+      this.xPb = paramInt2;
+      this.thumburl = paramString1;
+      this.hBT = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.c
  * JD-Core Version:    0.7.0.1
  */

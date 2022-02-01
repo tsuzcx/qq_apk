@@ -1,14 +1,17 @@
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.downloadnew.DownloadApi;
 
 public final class hmp
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public hmp(DownloadListener paramDownloadListener) {}
+  public hmp(Bundle paramBundle, int paramInt, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DownloadManager.a().b(this.a);
+    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 

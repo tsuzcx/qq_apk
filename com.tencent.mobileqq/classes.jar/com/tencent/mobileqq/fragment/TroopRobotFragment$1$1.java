@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.fragment;
 
-import ashv;
-import bcpe;
+import com.tencent.mobileqq.troop.robot.TroopRobotData;
 
-public class TroopRobotFragment$1$1
+class TroopRobotFragment$1$1
   implements Runnable
 {
-  public TroopRobotFragment$1$1(ashv paramashv, bcpe parambcpe) {}
+  TroopRobotFragment$1$1(TroopRobotFragment.1 param1, TroopRobotData paramTroopRobotData) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ashv.a.a(this.jdField_a_of_type_Bcpe.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Bcpe.b, this.jdField_a_of_type_Bcpe.jdField_a_of_type_Int);
+    this.b.a.a(this.a.a, this.a.b, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TroopRobotFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

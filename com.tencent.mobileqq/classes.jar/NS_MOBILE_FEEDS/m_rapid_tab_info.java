@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,23 +51,27 @@ public final class m_rapid_tab_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.tab_id, 0);
-    if (this.rapid_emotions != null) {
-      paramJceOutputStream.write(this.rapid_emotions, 1);
+    Object localObject = this.rapid_emotions;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.zip_url != null) {
-      paramJceOutputStream.write(this.zip_url, 2);
+    localObject = this.zip_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.zip_md5_value != null) {
-      paramJceOutputStream.write(this.zip_md5_value, 3);
+    localObject = this.zip_md5_value;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 4);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.m_rapid_tab_info
  * JD-Core Version:    0.7.0.1
  */

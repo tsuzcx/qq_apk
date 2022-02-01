@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class structmsg$FlagInfo
   extends MessageMicro<FlagInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136 }, new String[] { "GrpMsg_Kick_Admin", "GrpMsg_HiddenGrp", "GrpMsg_WordingDown", "FrdMsg_GetBusiCard", "GrpMsg_GetOfficialAccount", "GrpMsg_GetPayInGroup", "FrdMsg_Discuss2ManyChat", "GrpMsg_NotAllowJoinGrp_InviteNotFrd", "FrdMsg_NeedWaitingMsg", "FrdMsg_uint32_need_all_unread_msg", "GrpMsg_NeedAutoAdminWording", "GrpMsg_get_transfer_group_msg_flag", "GrpMsg_get_quit_pay_group_msg_flag", "GrpMsg_support_invite_auto_join", "GrpMsg_mask_invite_auto_join", "GrpMsg_GetDisbandedByAdmin", "GrpMsg_GetC2cInviteJoinGroup" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, FlagInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field FrdMsg_Discuss2ManyChat = PBField.initUInt32(0);
   public final PBUInt32Field FrdMsg_GetBusiCard = PBField.initUInt32(0);
   public final PBUInt32Field FrdMsg_NeedWaitingMsg = PBField.initUInt32(0);
@@ -26,10 +26,16 @@ public final class structmsg$FlagInfo
   public final PBUInt32Field GrpMsg_get_transfer_group_msg_flag = PBField.initUInt32(0);
   public final PBUInt32Field GrpMsg_mask_invite_auto_join = PBField.initUInt32(0);
   public final PBUInt32Field GrpMsg_support_invite_auto_join = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136 }, new String[] { "GrpMsg_Kick_Admin", "GrpMsg_HiddenGrp", "GrpMsg_WordingDown", "FrdMsg_GetBusiCard", "GrpMsg_GetOfficialAccount", "GrpMsg_GetPayInGroup", "FrdMsg_Discuss2ManyChat", "GrpMsg_NotAllowJoinGrp_InviteNotFrd", "FrdMsg_NeedWaitingMsg", "FrdMsg_uint32_need_all_unread_msg", "GrpMsg_NeedAutoAdminWording", "GrpMsg_get_transfer_group_msg_flag", "GrpMsg_get_quit_pay_group_msg_flag", "GrpMsg_support_invite_auto_join", "GrpMsg_mask_invite_auto_join", "GrpMsg_GetDisbandedByAdmin", "GrpMsg_GetC2cInviteJoinGroup" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger }, FlagInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.mobileim.structmsg.structmsg.FlagInfo
  * JD-Core Version:    0.7.0.1
  */

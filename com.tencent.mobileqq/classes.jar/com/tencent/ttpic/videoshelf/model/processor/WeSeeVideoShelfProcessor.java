@@ -51,60 +51,69 @@ public class WeSeeVideoShelfProcessor
       localBitmap1 = TTPicFilterFactoryLocal.getBitmapFromEncryptedFile(paramString);
     }
     this.mEffectFilter = TTPicFilterFactoryLocal.lutFilterWithBitmap(localBitmap1);
-    if (this.mEffectFilter == null) {
+    paramString = this.mEffectFilter;
+    if (paramString == null) {
       return;
     }
-    this.mEffectFilter.needFlipBlend = true;
-    this.mEffectFilter.setSrcFilterIndex(-1);
+    paramString.needFlipBlend = true;
+    paramString.setSrcFilterIndex(-1);
     this.mEffectFilter.applyFilterChain(true, 1.0F, 1.0F);
   }
   
   public void clear()
   {
-    if (this.mVideoDecoder != null)
+    Object localObject = this.mVideoDecoder;
+    if (localObject != null)
     {
-      this.mVideoDecoder.release();
+      ((AEDecoder)localObject).release();
       this.mVideoDecoder = null;
     }
-    if (this.alphaFilter != null)
+    localObject = this.alphaFilter;
+    if (localObject != null)
     {
-      this.alphaFilter.clearGLSLSelf();
+      ((VideoShelfAlphaFilter)localObject).clearGLSLSelf();
       this.alphaFilter = null;
     }
-    if (this.mergeFilter != null)
+    localObject = this.mergeFilter;
+    if (localObject != null)
     {
-      this.mergeFilter.clearGLSLSelf();
+      ((VideoShelfMergeFilter)localObject).clearGLSLSelf();
       this.mergeFilter = null;
     }
-    if (this.mEffectFilter != null) {
-      this.mEffectFilter.clearGLSLSelf();
+    localObject = this.mEffectFilter;
+    if (localObject != null) {
+      ((BaseFilter)localObject).clearGLSLSelf();
     }
     this.effectFilterFrame.clear();
     this.mAlphaFrame.clear();
-    if (this.mergeFrame != null) {
-      this.mergeFrame.clear();
+    localObject = this.mergeFrame;
+    if (localObject != null) {
+      ((Frame)localObject).clear();
     }
   }
   
   public Frame draw()
   {
-    if ((this.alphaFilter == null) || (this.mergeFilter == null)) {
-      return null;
-    }
-    this.alphaFilter.updateVideoTemplateType(this.mVideoTemplateType);
-    this.alphaFilter.RenderProcess(this.mDecodeTexture, this.canvasW, this.canvasH, -1, 0.0D, this.mAlphaFrame);
-    Object localObject = this.mAlphaFrame;
-    this.mergeFilter.update(this.mFrameIndex);
-    this.mergeFrame = this.mergeFilter.updateAndRender(((Frame)localObject).getTextureId(), this.canvasW, this.canvasH);
-    Frame localFrame = this.mergeFrame;
-    localObject = localFrame;
-    if (this.mEffectFilter != null)
+    Object localObject = this.alphaFilter;
+    if ((localObject != null) && (this.mergeFilter != null))
     {
-      this.mEffectFilter.RenderProcess(localFrame.getTextureId(), this.canvasW, this.canvasH, -1, 0.0D, this.effectFilterFrame);
-      localObject = this.effectFilterFrame;
+      ((VideoShelfAlphaFilter)localObject).updateVideoTemplateType(this.mVideoTemplateType);
+      this.alphaFilter.RenderProcess(this.mDecodeTexture, this.canvasW, this.canvasH, -1, 0.0D, this.mAlphaFrame);
+      localObject = this.mAlphaFrame;
+      this.mergeFilter.update(this.mFrameIndex);
+      this.mergeFrame = this.mergeFilter.updateAndRender(((Frame)localObject).getTextureId(), this.canvasW, this.canvasH);
+      Frame localFrame = this.mergeFrame;
+      BaseFilter localBaseFilter = this.mEffectFilter;
+      localObject = localFrame;
+      if (localBaseFilter != null)
+      {
+        localBaseFilter.RenderProcess(localFrame.getTextureId(), this.canvasW, this.canvasH, -1, 0.0D, this.effectFilterFrame);
+        localObject = this.effectFilterFrame;
+      }
+      GLES20.glFinish();
+      return localObject;
     }
-    GLES20.glFinish();
-    return localObject;
+    return null;
   }
   
   public long getCurFrameTimeStamp()
@@ -117,7 +126,9 @@ public class WeSeeVideoShelfProcessor
   
   public int getProgress()
   {
-    int i = (int)(100L * ((Long)this.mFrameStamps.get(this.mFrameIndex)).longValue() / ((Long)this.mFrameStamps.get(this.mFrameStamps.size() - 1)).longValue());
+    long l = ((Long)this.mFrameStamps.get(this.mFrameIndex)).longValue();
+    List localList = this.mFrameStamps;
+    int i = (int)(l * 100L / ((Long)localList.get(localList.size() - 1)).longValue());
     if (i > 1) {
       return i;
     }
@@ -135,8 +146,9 @@ public class WeSeeVideoShelfProcessor
     this.mergeFilter = new VideoShelfMergeFilter(paramList, paramList1);
     this.mergeFilter.ApplyGLSLFilter();
     this.mFrameStamps = VideoUtil.getFramestamps(this.mInputVideo);
-    if (this.mFrameStamps != null) {
-      Collections.sort(this.mFrameStamps);
+    paramArrayOfInt = this.mFrameStamps;
+    if (paramArrayOfInt != null) {
+      Collections.sort(paramArrayOfInt);
     }
     this.mVideoDecoder = AECoderFactory.createDecoder(this.mInputVideo);
     this.mVideoDecoder.setTexture(this.mDecodeTexture);
@@ -154,65 +166,76 @@ public class WeSeeVideoShelfProcessor
   
   public int parseFrame()
   {
-    if (this.mVideoDecoder != null) {
-      return this.mVideoDecoder.getNextFrameTexture();
+    AEDecoder localAEDecoder = this.mVideoDecoder;
+    if (localAEDecoder != null) {
+      return localAEDecoder.getNextFrameTexture();
     }
     return -1;
   }
   
   public void setParam(String paramString, Object paramObject)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != -1549738368)
     {
-    default: 
       switch (i)
       {
+      default: 
+        break;
+      case -825523118: 
+        if (!paramString.equals("WeSeeVideoShelfProcessor_3")) {
+          break;
+        }
+        i = 3;
+        break;
+      case -825523119: 
+        if (!paramString.equals("WeSeeVideoShelfProcessor_2")) {
+          break;
+        }
+        i = 1;
+        break;
+      case -825523120: 
+        if (!paramString.equals("WeSeeVideoShelfProcessor_1")) {
+          break;
+        }
+        i = 0;
+        break;
       }
-      break;
     }
-    do
+    else if (paramString.equals("outVideoWidthHeight"))
     {
-      do
+      i = 2;
+      break label101;
+    }
+    i = -1;
+    label101:
+    if (i != 0)
+    {
+      if (i != 1)
       {
-        do
+        if (i != 2)
         {
-          do
-          {
+          if (i != 3) {
             return;
-            if (!paramString.equals("WeSeeVideoShelfProcessor_1")) {
-              break;
-            }
-            i = 0;
-            break;
-            if (!paramString.equals("WeSeeVideoShelfProcessor_2")) {
-              break;
-            }
-            i = 1;
-            break;
-            if (!paramString.equals("outVideoWidthHeight")) {
-              break;
-            }
-            i = 2;
-            break;
-            if (!paramString.equals("WeSeeVideoShelfProcessor_3")) {
-              break;
-            }
-            i = 3;
-            break;
-          } while ((paramObject == null) || (!(paramObject instanceof String)));
-          this.mInputVideo = ((String)paramObject);
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof String)));
+          }
+          if ((paramObject != null) && ((paramObject instanceof Integer))) {
+            this.mVideoTemplateType = ((Integer)paramObject).intValue();
+          }
+        }
+        else if ((paramObject != null) && ((paramObject instanceof int[])))
+        {
+          paramString = (int[])paramObject;
+          this.canvasW = paramString[0];
+          this.canvasH = paramString[1];
+        }
+      }
+      else if ((paramObject != null) && ((paramObject instanceof String))) {
         this.mLutPath = ((String)paramObject);
-        return;
-      } while ((paramObject == null) || (!(paramObject instanceof int[])));
-      paramString = (int[])paramObject;
-      this.canvasW = paramString[0];
-      this.canvasH = paramString[1];
-      return;
-    } while ((paramObject == null) || (!(paramObject instanceof Integer)));
-    this.mVideoTemplateType = ((Integer)paramObject).intValue();
+      }
+    }
+    else if ((paramObject != null) && ((paramObject instanceof String))) {
+      this.mInputVideo = ((String)paramObject);
+    }
   }
   
   public boolean updateFrameCursor()
@@ -227,7 +250,7 @@ public class WeSeeVideoShelfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.processor.WeSeeVideoShelfProcessor
  * JD-Core Version:    0.7.0.1
  */

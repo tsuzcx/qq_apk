@@ -14,7 +14,7 @@ public class MiniAppSendArkMsgRequest
   private static final String unikey = "MiniAppSendArkMsgRequest";
   private MiniProgramShare.StSendArkMsgReq req = new MiniProgramShare.StSendArkMsgReq();
   
-  public MiniAppSendArkMsgRequest(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3)
+  public MiniAppSendArkMsgRequest(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt);
@@ -22,20 +22,25 @@ public class MiniAppSendArkMsgRequest
     this.req.appId.set(paramString1);
     this.req.openId.set(paramString2);
     this.req.arkJson.set(paramString3);
+    this.req.apiName.set(paramString4);
   }
   
   public static MiniProgramShare.StSendArkMsgRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniProgramShare.StSendArkMsgRsp localStSendArkMsgRsp = new MiniProgramShare.StSendArkMsgRsp();
+    Object localObject = new MiniProgramShare.StSendArkMsgRsp();
     try
     {
-      localStSendArkMsgRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStSendArkMsgRsp;
+      ((MiniProgramShare.StSendArkMsgRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppSendArkMsgRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("MiniAppSendArkMsgRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -48,7 +53,7 @@ public class MiniAppSendArkMsgRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSendArkMsgRequest
  * JD-Core Version:    0.7.0.1
  */

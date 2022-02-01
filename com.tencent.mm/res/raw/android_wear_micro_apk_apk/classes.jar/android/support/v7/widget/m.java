@@ -4,33 +4,33 @@ import android.view.View;
 
 final class m
 {
-  int sx;
-  int sy;
-  boolean sz;
+  int un;
+  int uo;
+  boolean up;
   
-  public final void ac(View paramView)
+  public final void ai(View paramView)
   {
-    if (this.sz) {}
-    for (this.sy = (this.sw.sl.af(paramView) + this.sw.sl.cZ());; this.sy = this.sw.sl.ae(paramView))
+    if (this.up) {}
+    for (this.uo = (this.um.ub.am(paramView) + this.um.ub.di());; this.uo = this.um.ub.al(paramView))
     {
-      this.sx = LinearLayoutManager.ao(paramView);
+      this.un = LinearLayoutManager.av(paramView);
       return;
     }
   }
   
-  final void cW()
+  final void de()
   {
-    if (this.sz) {}
-    for (int i = this.sw.sl.db();; i = this.sw.sl.da())
+    if (this.up) {}
+    for (int i = this.um.ub.dk();; i = this.um.ub.dj())
     {
-      this.sy = i;
+      this.uo = i;
       return;
     }
   }
   
   public final String toString()
   {
-    return "AnchorInfo{mPosition=" + this.sx + ", mCoordinate=" + this.sy + ", mLayoutFromEnd=" + this.sz + '}';
+    return "AnchorInfo{mPosition=" + this.un + ", mCoordinate=" + this.uo + ", mLayoutFromEnd=" + this.up + '}';
   }
 }
 

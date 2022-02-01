@@ -20,21 +20,27 @@ public final class SerialSubscription
   
   public void set(Subscription paramSubscription)
   {
-    if (paramSubscription == null) {
-      throw new IllegalArgumentException("Subscription can not be null");
-    }
-    AtomicReference localAtomicReference = this.state;
-    SerialSubscription.State localState;
-    do
+    if (paramSubscription != null)
     {
-      localState = (SerialSubscription.State)localAtomicReference.get();
-      if (localState.isUnsubscribed)
+      AtomicReference localAtomicReference = this.state;
+      SerialSubscription.State localState;
+      do
       {
-        paramSubscription.unsubscribe();
-        return;
-      }
-    } while (!localAtomicReference.compareAndSet(localState, localState.set(paramSubscription)));
-    localState.subscription.unsubscribe();
+        localState = (SerialSubscription.State)localAtomicReference.get();
+        if (localState.isUnsubscribed)
+        {
+          paramSubscription.unsubscribe();
+          return;
+        }
+      } while (!localAtomicReference.compareAndSet(localState, localState.set(paramSubscription)));
+      localState.subscription.unsubscribe();
+      return;
+    }
+    paramSubscription = new IllegalArgumentException("Subscription can not be null");
+    for (;;)
+    {
+      throw paramSubscription;
+    }
   }
   
   public void unsubscribe()
@@ -53,7 +59,7 @@ public final class SerialSubscription
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.subscriptions.SerialSubscription
  * JD-Core Version:    0.7.0.1
  */

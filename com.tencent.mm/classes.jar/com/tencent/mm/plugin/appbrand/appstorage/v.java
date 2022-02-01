@@ -1,34 +1,22 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-public class v
-  implements o.a
+public abstract interface v
 {
-  public String ctV;
-  public String elt;
-  public String fod;
-  public boolean gZm;
-  public long gZn;
-  public long gmb;
-  public String mimeType;
+  public abstract int VT(String paramString);
   
-  public final long awE()
-  {
-    return this.gmb;
-  }
+  public abstract void ai(int paramInt, String paramString);
   
-  public final String getFileName()
-  {
-    return this.ctV;
-  }
+  public abstract Object[] aj(int paramInt, String paramString);
   
-  public final long lastModified()
-  {
-    return this.gZn;
-  }
+  public abstract v.a d(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract v.a o(int paramInt, String paramString1, String paramString2);
+  
+  public abstract Object[] p(int paramInt, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.v
  * JD-Core Version:    0.7.0.1
  */

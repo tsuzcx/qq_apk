@@ -6,37 +6,40 @@ import com.tmsdk.base.AbsTMSBaseConfig;
 public class bx
 {
   public static String TAG = "SharkNetServiceProxy";
-  private static volatile bx gT = null;
+  private static volatile bx gT;
   private dd gS = null;
   private boolean gU = false;
   
   public static bx ar()
   {
-    if (gT == null) {}
-    try
-    {
-      if (gT == null) {
-        gT = new bx();
+    if (gT == null) {
+      try
+      {
+        if (gT == null) {
+          gT = new bx();
+        }
       }
-      return gT;
+      finally {}
     }
-    finally {}
+    return gT;
   }
   
   public void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, cm paramcm)
   {
-    if (this.gS == null) {
+    dd localdd = this.gS;
+    if (localdd == null) {
       return;
     }
-    this.gS.a(paramInt1, paramJceStruct, paramInt2, paramcm);
+    localdd.a(paramInt1, paramJceStruct, paramInt2, paramcm);
   }
   
   public void a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong)
   {
-    if (this.gS == null) {
+    dd localdd = this.gS;
+    if (localdd == null) {
       return;
     }
-    this.gS.b(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramcj, paramLong);
+    localdd.b(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramcj, paramLong);
   }
   
   public void as()
@@ -69,13 +72,20 @@ public class bx
       if ((cx.bD()) && (!cx.iS)) {
         throw new RuntimeException("must call initSync() before initAsync()!");
       }
+      if (!this.gU)
+      {
+        this.gU = true;
+        ee.cT().addUrgentTask(new Runnable()
+        {
+          public final void run()
+          {
+            db.bZ().at();
+          }
+        }, "init SharkProtocolQueue async");
+      }
+      return;
     }
     finally {}
-    if (!this.gU)
-    {
-      this.gU = true;
-      ee.cT().addUrgentTask(new fk(this), "init SharkProtocolQueue async");
-    }
   }
   
   public void au()

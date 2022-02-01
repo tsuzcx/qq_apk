@@ -11,15 +11,15 @@ final class SnsLuckyMoneyPrepareUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(42508);
-    this.oqN.finish();
-    AppMethodBeat.o(42508);
+    AppMethodBeat.i(65363);
+    this.Kwc.finish();
+    AppMethodBeat.o(65363);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.sns.SnsLuckyMoneyPrepareUI.1
  * JD-Core Version:    0.7.0.1
  */

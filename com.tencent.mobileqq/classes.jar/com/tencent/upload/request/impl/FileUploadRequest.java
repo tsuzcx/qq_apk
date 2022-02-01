@@ -36,83 +36,81 @@ public class FileUploadRequest
     this.mFileLength = this.mDataSource.getDataLength();
   }
   
-  public JceStruct createJceRequest()
+  protected JceStruct createJceRequest()
   {
     FileUploadReq localFileUploadReq = new FileUploadReq();
     localFileUploadReq.uin = this.mUin;
     localFileUploadReq.appid = this.mAppid;
-    localFileUploadReq.offset = this.mOffset;
+    long l1 = this.mOffset;
+    localFileUploadReq.offset = l1;
     localFileUploadReq.session = this.mSession;
     localFileUploadReq.check_type = 1;
     if (this.mNeedCheckSha1)
     {
-      localObject = new byte[(int)this.mDataLength];
-      this.mDataSource.readData(this.mOffset, (int)this.mDataLength, (byte[])localObject, 0);
-      this.mTempFileData = ((byte[])localObject);
+      long l2 = this.mDataLength;
+      arrayOfByte1 = new byte[(int)l2];
+      this.mDataSource.readData(l1, (int)l2, arrayOfByte1, 0);
+      this.mTempFileData = arrayOfByte1;
       localFileUploadReq.check_type = this.mCheckType.value();
       localFileUploadReq.checksum = FileUtils.getFileSha1(localFileUploadReq.data);
     }
-    Object localObject = null;
-    for (long l1 = 0L;; l1 = l2)
+    try
     {
       try
       {
-        arrayOfByte2 = new byte[(int)this.mDataLength];
-        localObject = arrayOfByte2;
-        if (this.mTempFileData == null) {
-          break label210;
-        }
-        localObject = arrayOfByte2;
-        if (this.mTempFileData.length <= 0) {
-          break label210;
-        }
-        localObject = arrayOfByte2;
-        System.arraycopy(this.mTempFileData, 0, arrayOfByte2, 0, (int)this.mDataLength);
-        localObject = arrayOfByte2;
-        this.mTempFileData = null;
-        l1 = 0L;
-        localObject = arrayOfByte2;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
+        arrayOfByte1 = new byte[(int)this.mDataLength];
+        try
         {
-          byte[] arrayOfByte2;
-          long l2;
-          UploadLog.e("FileUploadRequest", "encode request OOM. gc, then retry");
-          System.gc();
-          arrayOfByte1 = new byte[(int)this.mDataLength];
           if ((this.mTempFileData != null) && (this.mTempFileData.length > 0))
           {
             System.arraycopy(this.mTempFileData, 0, arrayOfByte1, 0, (int)this.mDataLength);
             this.mTempFileData = null;
+            break label238;
           }
-          else
-          {
-            l1 = this.mDataSource.readData((int)this.mOffset, (int)this.mDataLength, arrayOfByte1, 0);
-          }
+          l1 = this.mDataSource.readData((int)this.mOffset, (int)this.mDataLength, arrayOfByte1, 0);
         }
+        catch (Throwable localThrowable1) {}
+        localStringBuilder = new StringBuilder();
       }
-      catch (Throwable localThrowable)
+      catch (Throwable localThrowable2)
       {
-        label210:
-        byte[] arrayOfByte1;
-        for (;;)
-        {
-          UploadLog.e("FileUploadRequest", "encode exception. reqId=" + getRequestId(), localThrowable);
-        }
-        localFileUploadReq.data = arrayOfByte1;
+        arrayOfByte1 = null;
       }
-      if ((localObject != null) && (l1 != 0L)) {
-        break label360;
-      }
-      UploadLog.e("FileUploadRequest", "encode data == null");
-      return null;
-      localObject = arrayOfByte2;
-      l2 = this.mDataSource.readData((int)this.mOffset, (int)this.mDataLength, arrayOfByte2, 0);
+      StringBuilder localStringBuilder;
+      localStringBuilder.append("encode exception. reqId=");
+      localStringBuilder.append(getRequestId());
+      UploadLog.e("FileUploadRequest", localStringBuilder.toString(), localThrowable2);
+      label238:
+      l1 = 0L;
     }
-    label360:
-    return localFileUploadReq;
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label243:
+      byte[] arrayOfByte2;
+      break label243;
+    }
+    UploadLog.e("FileUploadRequest", "encode request OOM. gc, then retry");
+    System.gc();
+    l1 = this.mDataLength;
+    byte[] arrayOfByte1 = new byte[(int)l1];
+    arrayOfByte2 = this.mTempFileData;
+    if ((arrayOfByte2 != null) && (arrayOfByte2.length > 0))
+    {
+      System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, (int)l1);
+      this.mTempFileData = null;
+      l1 = 0L;
+    }
+    else
+    {
+      l1 = this.mDataSource.readData((int)this.mOffset, (int)this.mDataLength, arrayOfByte1, 0);
+    }
+    if ((arrayOfByte1 != null) && (l1 != 0L))
+    {
+      localFileUploadReq.data = arrayOfByte1;
+      return localFileUploadReq;
+    }
+    UploadLog.e("FileUploadRequest", "encode data == null");
+    return null;
   }
   
   public int getCmdId()
@@ -133,13 +131,22 @@ public class FileUploadRequest
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("taskId=").append(getTaskId()).append(" reqId=").append(getRequestId()).append(" cmd=").append(getCmdId()).append(" offset=").append(this.mOffset).append(" dataSize=").append(this.mDataLength);
+    localStringBuilder.append("taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" reqId=");
+    localStringBuilder.append(getRequestId());
+    localStringBuilder.append(" cmd=");
+    localStringBuilder.append(getCmdId());
+    localStringBuilder.append(" offset=");
+    localStringBuilder.append(this.mOffset);
+    localStringBuilder.append(" dataSize=");
+    localStringBuilder.append(this.mDataLength);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.request.impl.FileUploadRequest
  * JD-Core Version:    0.7.0.1
  */

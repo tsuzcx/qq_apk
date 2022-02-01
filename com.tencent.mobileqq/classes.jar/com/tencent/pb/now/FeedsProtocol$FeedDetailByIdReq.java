@@ -19,13 +19,14 @@ public final class FeedsProtocol$FeedDetailByIdReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "feed_id", "type", "follow_type", "follow_uid" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, FeedDetailByIdReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "feed_id", "type", "follow_type", "follow_uid" }, new Object[] { localByteStringMicro, localInteger, localInteger, Long.valueOf(0L) }, FeedDetailByIdReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.FeedDetailByIdReq
  * JD-Core Version:    0.7.0.1
  */

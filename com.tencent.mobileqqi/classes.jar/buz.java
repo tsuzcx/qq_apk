@@ -12,20 +12,15 @@ public class buz
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AssistantSettingActivity.a(this.a).setContentDescription("摇动手机截屏");
+    AssistantSettingActivity.a(this.a).setContentDescription("2G/3G/4G下自动接收图片");
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563451), "qqsetting_auto_receive_pic_key", paramBoolean);
     paramCompoundButton = this.a.b;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563437), "qqsetting_screenshot_key", paramBoolean);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.y();
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
       return;
     }
-    this.a.z();
   }
 }
 

@@ -1,22 +1,63 @@
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SecurityProtectActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class dhn
-  implements Runnable
+  extends TransProcessorHandler
 {
-  public dhn(SecurityProtectActivity paramSecurityProtectActivity) {}
+  public dhn(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    SecurityProtectActivity.a(this.a, false);
-    SecurityProtectActivity.a(this.a).setText(2131558466);
-    SecurityProtectActivity.b(this.a).setVisibility(0);
-    SecurityProtectActivity.a(this.a).setVisibility(0);
-    ((LinearLayout)this.a.findViewById(2131234418)).setVisibility(8);
-    FMToastUtil.a(2131562488);
+    int i = paramMessage.what;
+    paramMessage = (FileMsg)paramMessage.obj;
+    if (paramMessage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SendMultiPictureHelper", 2, "file is null");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramMessage.m, paramMessage.k, paramMessage.c);
+      } while (this.a.d);
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        if (paramMessage.u == 1005)
+        {
+          this.a.jdField_c_of_type_Boolean = true;
+          return;
+        }
+        if (paramMessage.u == 1003)
+        {
+          this.a.a();
+          return;
+        }
+        SendMultiPictureHelper.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_c_of_type_JavaLangString, paramMessage.c);
+        return;
+      }
+      if (paramMessage.u == 1003)
+      {
+        this.a.a();
+        return;
+      }
+      if (paramMessage.u == 1005)
+      {
+        this.a.a();
+        return;
+      }
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.f, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
   }
 }
 

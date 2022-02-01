@@ -5,4 +5,5 @@
     <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/iig" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jqb">
         <include layout="@layout/m0" />
     </com.tencent.mobileqq.widget.BounceScrollView>
+    <com.tencent.mobileqq.activity.aio.intimate.view.LoveTreeView android:id="@id/oi_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="17.0dip" android:layout_marginBottom="18.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </com.tencent.mobileqq.multicard.MultiCardCustomLayout>

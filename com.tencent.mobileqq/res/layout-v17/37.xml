@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/nhm" android:background="@drawable/2z" android:layout_width="fill_parent" android:layout_height="@dimen/b6c" android:layout_alignParentTop="true" android:paddingStart="@dimen/9w" android:paddingEnd="@dimen/9w">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/n_8" android:layout_width="@dimen/b90" android:layout_height="@dimen/b90" android:src="@drawable/i76" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/3c" android:textColor="@color/b79" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" android:layout_marginStart="@dimen/b6a" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center" android:id="@id/mt7" android:visibility="gone" android:layout_width="@dimen/9q" android:layout_height="@dimen/9q" android:src="@drawable/i7b" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/root" android:background="@drawable/2x" android:layout_width="fill_parent" android:layout_height="@dimen/9v" android:layout_alignParentBottom="true" android:paddingEnd="@dimen/9w">
+        <ImageView android:gravity="center_vertical" android:id="@id/fuz" android:layout_width="@dimen/b90" android:layout_height="@dimen/b90" android:src="@drawable/i7b" android:scaleType="fitCenter" android:layout_marginStart="@dimen/9t" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/p02" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/9t">
+            <TextView android:textSize="@dimen/9z" android:textColor="@color/b79" android:id="@id/ozm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+            <FrameLayout android:gravity="center_vertical" android:id="@id/p07" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:id="@id/p03" android:background="#33ffffff" style="@style/zb" />
+                <ImageView android:id="@id/p05" android:background="#80ffffff" style="@style/zb" />
+                <ImageView android:id="@id/p04" android:background="@color/al3" style="@style/zb" />
+                <ImageView android:id="@id/p06" android:paddingLeft="@dimen/4" android:paddingTop="@dimen/4" android:paddingRight="@dimen/4" android:paddingBottom="@dimen/4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/idz" android:layout_marginStart="@dimen/3q" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/9z" android:textColor="@color/b79" android:id="@id/ozo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+        </LinearLayout>
+        <ImageView android:gravity="center_vertical" android:id="@id/n1z" android:layout_width="@dimen/b6_" android:layout_height="@dimen/b90" android:src="@drawable/i74" android:scaleType="fitCenter" android:layout_marginStart="@dimen/9t" />
+        <ImageView android:gravity="center_vertical" android:id="@id/f42" android:layout_width="@dimen/b90" android:layout_height="@dimen/b90" android:src="@drawable/i79" android:scaleType="fitCenter" android:layout_marginStart="@dimen/9t" />
+        <ImageView android:gravity="center_vertical" android:id="@id/nhl" android:layout_width="@dimen/b90" android:layout_height="@dimen/b90" android:src="@drawable/i77" android:scaleType="fitCenter" android:layout_marginStart="@dimen/9t" />
+    </LinearLayout>
+</RelativeLayout>

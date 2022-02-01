@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:gravity="center" android:orientation="vertical" android:id="@id/pnk" android:background="@drawable/gnn" android:layout_width="140.0dip" android:layout_height="120.0dip" android:elevation="3.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.wink.view.RoundCornerImageView android:layout_gravity="center" android:id="@id/pgx" android:layout_width="140.0dip" android:layout_height="120.0dip" android:scaleType="centerCrop" />
+    <View android:layout_gravity="center" android:id="@id/pgy" android:background="@drawable/gnm" android:layout_width="138.0dip" android:layout_height="118.0dip" />
+    <com.tencent.mobileqq.wink.view.RoundProgressBar android:layout_gravity="center" android:id="@id/ph0" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginBottom="15.0dip" app:bgColorRound="#73ffffff" app:circleWidthRound="3.0dip" app:currentColorRound="#ccffffff" app:loadSpeedRound="10" app:textColorRound="#ffffffff" app:textSizeRound="11.0sp" />
+    <com.tencent.mobileqq.vas.ui.VasPagView android:layout_gravity="bottom|center" android:id="@id/qzj" android:layout_width="140.0dip" android:layout_height="40.0dip" android:layout_marginBottom="10.0dip" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/aes" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/j67" />
+</FrameLayout>

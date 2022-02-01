@@ -7,7 +7,7 @@ public class ViewUtils
 {
   public static int dip2px(float paramFloat)
   {
-    return (int)(Resources.getSystem().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * Resources.getSystem().getDisplayMetrics().density + 0.5F);
   }
   
   public static int px2dip(float paramFloat)
@@ -17,7 +17,7 @@ public class ViewUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.utils.ViewUtils
  * JD-Core Version:    0.7.0.1
  */

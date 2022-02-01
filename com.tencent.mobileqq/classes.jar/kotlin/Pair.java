@@ -36,18 +36,18 @@ public final class Pair<A, B>
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof Pair))
       {
         paramObject = (Pair)paramObject;
-        if ((!Intrinsics.areEqual(this.first, paramObject.first)) || (!Intrinsics.areEqual(this.second, paramObject.second))) {}
+        if ((Intrinsics.areEqual(this.first, paramObject.first)) && (Intrinsics.areEqual(this.second, paramObject.second))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final A getFirst()
@@ -62,28 +62,36 @@ public final class Pair<A, B>
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.first;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.second;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.second;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return '(' + this.first + ", " + this.second + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('(');
+    localStringBuilder.append(this.first);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.second);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.Pair
  * JD-Core Version:    0.7.0.1
  */

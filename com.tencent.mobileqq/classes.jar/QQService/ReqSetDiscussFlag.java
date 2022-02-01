@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqSetDiscussFlag
   extends JceStruct
 {
-  public long DiscussUin;
-  public byte Flag;
+  public long DiscussUin = 0L;
+  public byte Flag = 0;
   
   public ReqSetDiscussFlag() {}
   
@@ -32,7 +32,7 @@ public final class ReqSetDiscussFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqSetDiscussFlag
  * JD-Core Version:    0.7.0.1
  */

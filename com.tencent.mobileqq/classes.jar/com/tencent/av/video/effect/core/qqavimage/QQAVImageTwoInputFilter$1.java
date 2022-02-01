@@ -11,16 +11,23 @@ class QQAVImageTwoInputFilter$1
   
   public void run()
   {
-    if ((this.this$0.mFilterSourceTexture2 != -1) || (this.val$bitmap == null) || (this.val$bitmap.isRecycled())) {
-      return;
+    if (this.this$0.mFilterSourceTexture2 == -1)
+    {
+      Bitmap localBitmap = this.val$bitmap;
+      if (localBitmap != null)
+      {
+        if (localBitmap.isRecycled()) {
+          return;
+        }
+        GLES20.glActiveTexture(33987);
+        this.this$0.mFilterSourceTexture2 = OpenGlUtils.loadTexture(this.val$bitmap, -1, false);
+      }
     }
-    GLES20.glActiveTexture(33987);
-    this.this$0.mFilterSourceTexture2 = OpenGlUtils.loadTexture(this.val$bitmap, -1, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageTwoInputFilter.1
  * JD-Core Version:    0.7.0.1
  */

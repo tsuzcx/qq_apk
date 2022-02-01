@@ -16,7 +16,11 @@ class SCameraCaptureProcessor$PreviewCaptureCallback
   
   public void onCaptureBufferLost(CameraCaptureSession paramCameraCaptureSession, CaptureRequest paramCaptureRequest, Surface paramSurface, long paramLong)
   {
-    Log.i(SCameraCaptureProcessor.access$600(), "onCaptureBufferLost: frameNumber " + paramLong);
+    ??? = SCameraCaptureProcessor.access$600();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCaptureBufferLost: frameNumber ");
+    localStringBuilder.append(paramLong);
+    Log.i((String)???, localStringBuilder.toString());
     synchronized (this.this$0)
     {
       if (SCameraCaptureProcessor.access$500(this.this$0) != null) {
@@ -40,7 +44,13 @@ class SCameraCaptureProcessor$PreviewCaptureCallback
   
   public void onCaptureFailed(CameraCaptureSession paramCameraCaptureSession, CaptureRequest paramCaptureRequest, CaptureFailure paramCaptureFailure)
   {
-    Log.i(SCameraCaptureProcessor.access$600(), "onCaptureFailed: failure " + paramCaptureFailure.getReason() + "  mAppPreviewCaptureCallback: " + SCameraCaptureProcessor.access$500(this.this$0));
+    ??? = SCameraCaptureProcessor.access$600();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCaptureFailed: failure ");
+    localStringBuilder.append(paramCaptureFailure.getReason());
+    localStringBuilder.append("  mAppPreviewCaptureCallback: ");
+    localStringBuilder.append(SCameraCaptureProcessor.access$500(this.this$0));
+    Log.i((String)???, localStringBuilder.toString());
     synchronized (this.this$0)
     {
       if (SCameraCaptureProcessor.access$500(this.this$0) != null) {
@@ -63,7 +73,11 @@ class SCameraCaptureProcessor$PreviewCaptureCallback
   
   public void onCaptureSequenceAborted(CameraCaptureSession paramCameraCaptureSession, int paramInt)
   {
-    Log.i(SCameraCaptureProcessor.access$600(), "onCaptureSequenceAborted: sequenceId " + paramInt);
+    ??? = SCameraCaptureProcessor.access$600();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCaptureSequenceAborted: sequenceId ");
+    localStringBuilder.append(paramInt);
+    Log.i((String)???, localStringBuilder.toString());
     synchronized (this.this$0)
     {
       if (SCameraCaptureProcessor.access$500(this.this$0) != null) {
@@ -97,7 +111,7 @@ class SCameraCaptureProcessor$PreviewCaptureCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.samsung.android.sdk.camera.SCameraCaptureProcessor.PreviewCaptureCallback
  * JD-Core Version:    0.7.0.1
  */

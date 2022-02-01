@@ -1,165 +1,85 @@
 package com.tencent.mm.plugin.mmsight.model;
 
-import android.content.Context;
-import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
-  extends OrientationEventListener
 {
-  private int oGO = -1;
-  private int oGP = -1;
-  private long oGQ = 0L;
-  private long oGR = 0L;
-  public c.a oGS;
-  private int orientation = -1;
+  long KUQ;
+  long count;
+  private String tag;
+  long value;
+  long wYC;
   
-  public c(Context paramContext)
+  public c(String paramString)
   {
-    super(paramContext, 2);
+    AppMethodBeat.i(89352);
+    this.tag = "default";
+    this.wYC = Util.currentTicks();
+    this.KUQ = Util.currentTicks();
+    this.value = 0L;
+    this.count = 0L;
+    this.tag = paramString;
+    AppMethodBeat.o(89352);
   }
   
-  public final void a(c.a parama)
+  public final String gbV()
   {
-    this.oGS = parama;
+    AppMethodBeat.i(89355);
+    if (this.count == 0L)
+    {
+      AppMethodBeat.o(89355);
+      return "";
+    }
+    double d2 = (this.KUQ - this.wYC) / 1000.0D;
+    double d1 = d2;
+    if (d2 == 0.0D) {
+      d1 = 1.0D;
+    }
+    String str = 1.0D * this.count / d1;
+    AppMethodBeat.o(89355);
+    return str;
   }
   
-  public final int bQJ()
+  public final String getValue()
   {
-    AppMethodBeat.i(154470);
-    int i = getOrientation();
-    if ((i <= 60) || (i >= 300)) {
-      i = 0;
-    }
-    for (;;)
+    AppMethodBeat.i(89354);
+    if (this.count == 0L)
     {
-      AppMethodBeat.o(154470);
-      return i;
-      if (i <= 120) {
-        i = 90;
-      } else if (i <= 210) {
-        i = 180;
-      } else {
-        i = 270;
-      }
+      AppMethodBeat.o(89354);
+      return "";
     }
-  }
-  
-  public final void enable()
-  {
-    AppMethodBeat.i(76465);
-    ab.i("MicroMsg.DeviceOrientationListener", "enable, config isEnableLandscapeMode: %s", new Object[] { Boolean.valueOf(j.oHD) });
-    if (j.oHD)
-    {
-      super.enable();
-      this.oGR = bo.yB();
+    double d2 = (this.KUQ - this.wYC) / 1000.0D;
+    double d1 = d2;
+    if (d2 == 0.0D) {
+      d1 = 1.0D;
     }
-    AppMethodBeat.o(76465);
-  }
-  
-  public final int getOrientation()
-  {
-    if (!j.oHD) {
-      return 0;
-    }
-    return this.orientation;
-  }
-  
-  public final boolean isLandscape()
-  {
-    AppMethodBeat.i(76466);
-    if (!j.oHD)
-    {
-      AppMethodBeat.o(76466);
-      return false;
-    }
-    long l = bo.av(this.oGR);
-    ab.i("MicroMsg.DeviceOrientationListener", "isLandscape, tickToNow: %s, orientation: %s", new Object[] { Long.valueOf(l), Integer.valueOf(this.orientation) });
-    if (l < 2000L)
-    {
-      AppMethodBeat.o(76466);
-      return false;
-    }
-    if (this.orientation < 0)
-    {
-      AppMethodBeat.o(76466);
-      return false;
-    }
-    if ((this.orientation == 90) || (this.orientation == 270))
-    {
-      AppMethodBeat.o(76466);
-      return true;
-    }
-    AppMethodBeat.o(76466);
-    return false;
-  }
-  
-  public final void onOrientationChanged(int paramInt)
-  {
-    AppMethodBeat.i(76464);
-    if (!j.oHD)
-    {
-      AppMethodBeat.o(76464);
-      return;
-    }
-    if (bo.av(this.oGR) < 2000L)
-    {
-      ab.v("MicroMsg.DeviceOrientationListener", "onOrientationChanged, not reach DETECT_THRESHOLD");
-      AppMethodBeat.o(76464);
-      return;
-    }
-    if ((Math.abs(this.oGO - paramInt) >= 30) || (bo.av(this.oGQ) >= 300L))
-    {
-      this.oGO = paramInt;
-      this.oGQ = bo.yB();
-      if ((paramInt > 60) && (paramInt < 300)) {
-        break label141;
-      }
-      if ((paramInt <= 30) || (paramInt >= 330)) {
-        this.orientation = 0;
-      }
-    }
-    for (;;)
-    {
-      if (this.oGS != null) {
-        this.oGS.zr(this.orientation);
-      }
-      AppMethodBeat.o(76464);
-      return;
-      label141:
-      if ((paramInt >= 30) && (paramInt <= 150))
-      {
-        if ((paramInt >= 60) && (paramInt <= 120)) {
-          this.orientation = 90;
-        }
-      }
-      else if ((paramInt >= 120) && (paramInt <= 240))
-      {
-        if ((paramInt >= 150) && (paramInt <= 210)) {
-          this.orientation = 180;
-        }
-      }
-      else if ((paramInt >= 210) && (paramInt <= 330) && (paramInt >= 240) && (paramInt <= 300)) {
-        this.orientation = 270;
-      }
-    }
+    String str = String.format("CounterUtil %s tag %s count %s passed %.3f perValue %.3f/count counttime %.3f/s valuetime %.3f/s st:%s ed:%s diff%s", new Object[] { "", this.tag, Long.valueOf(this.count), Double.valueOf(d1), Double.valueOf(this.value * 1.0D / this.count), Double.valueOf(this.count * 1.0D / d1), Double.valueOf(1.0D * this.value / d1), Long.valueOf(this.wYC), Long.valueOf(this.KUQ), Long.valueOf(this.KUQ - this.wYC) });
+    AppMethodBeat.o(89354);
+    return str;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(76467);
-    ab.i("MicroMsg.DeviceOrientationListener", "reset");
-    this.oGP = -1;
-    this.orientation = -1;
-    this.oGO = -1;
-    AppMethodBeat.o(76467);
+    this.value = 0L;
+    this.count = 0L;
+  }
+  
+  public final void ss(long paramLong)
+  {
+    AppMethodBeat.i(89353);
+    if (this.count == 0L) {
+      this.wYC = Util.currentTicks();
+    }
+    this.value += paramLong;
+    this.count += 1L;
+    this.KUQ = Util.currentTicks();
+    AppMethodBeat.o(89353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.c
  * JD-Core Version:    0.7.0.1
  */

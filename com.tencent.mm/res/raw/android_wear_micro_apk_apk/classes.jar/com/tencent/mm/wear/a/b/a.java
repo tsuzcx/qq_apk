@@ -8,7 +8,7 @@ import com.tencent.mm.wear.a.c.d;
 public class a
   extends Handler
 {
-  public static final a aiT = new a(Looper.getMainLooper());
+  public static final a amv = new a(Looper.getMainLooper());
   
   public a()
   {
@@ -18,7 +18,7 @@ public class a
   public a(Looper paramLooper)
   {
     super(paramLooper);
-    d.c("MicroMsg.MMHandler", "Create MMHandler: looper=%s", new Object[] { q.F(paramLooper) });
+    d.c("MicroMsg.MMHandler", "Create MMHandler: looper=%s", new Object[] { q.O(paramLooper) });
   }
 }
 

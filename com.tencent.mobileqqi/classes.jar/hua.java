@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.Button;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
 
 public class hua
   implements Runnable
 {
-  public hua(AuthDevVerifyCodeActivity2 paramAuthDevVerifyCodeActivity2) {}
+  public hua(AuthDevVerifyCodeActivity2 paramAuthDevVerifyCodeActivity2, String paramString1, String paramString2) {}
   
   public void run()
   {
-    try
+    String str = Utils.d(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (AuthDevVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentQqconnectWtloginAuthDevVerifyCodeActivity2) != null))
     {
-      if ((AuthDevVerifyCodeActivity2.a(this.a) != null) && (AuthDevVerifyCodeActivity2.a(this.a).isShowing()))
-      {
-        AuthDevVerifyCodeActivity2.a(this.a).dismiss();
-        AuthDevVerifyCodeActivity2.a(this.a).cancel();
-      }
-      AuthDevVerifyCodeActivity2.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      AuthDevVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentQqconnectWtloginAuthDevVerifyCodeActivity2).setText(str);
+      AuthDevVerifyCodeActivity2.a(this.jdField_a_of_type_ComTencentQqconnectWtloginAuthDevVerifyCodeActivity2).setEnabled(true);
     }
   }
 }

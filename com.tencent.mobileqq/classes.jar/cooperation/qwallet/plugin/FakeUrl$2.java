@@ -16,12 +16,13 @@ class FakeUrl$2
       QLog.i("FakeUrl", 2, "bl has handled fake url...");
       return;
     }
-    this.this$0.parseFakeUrl(this.this$0.fakeInfo.retUrl);
+    paramDialogInterface = this.this$0;
+    paramDialogInterface.parseFakeUrl(paramDialogInterface.fakeInfo.retUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.FakeUrl.2
  * JD-Core Version:    0.7.0.1
  */

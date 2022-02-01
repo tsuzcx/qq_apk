@@ -1,75 +1,84 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.plugin.gif.b;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.b.g;
+import com.tencent.mm.graphics.MMBitmapFactory;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.plugin.gif.c;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.y;
-import com.tencent.mm.ui.q.b;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.ui.base.ag;
+import com.tencent.mm.ui.base.k.d;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.widget.a.f;
+import com.tencent.mm.ui.y.b;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i.d;
 import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.util.Timer;
 import junit.framework.Assert;
 
+@Deprecated
 public class CropImageNewUI
   extends MMActivity
 {
-  private final int AqH = 1;
-  private final int AqI = 0;
-  private int AqJ;
-  private int AqK = 0;
-  private FilterImageView AqL;
-  private LinearLayout AqM;
-  private CropImageView AqN;
-  private ImageView AqO;
-  private View AqP;
-  private int AqQ = 0;
-  private boolean AqR = false;
-  private boolean AqS = false;
-  private boolean AqT = false;
-  private int ejF = 0;
+  private int HKy = 0;
+  private final int afDY = 1;
+  private final int afDZ = 0;
+  private int afEa;
+  private int afEb = 0;
+  private FilterImageView afEc;
+  private LinearLayout afEd;
+  private CropImageView afEe;
+  private ImageView afEf;
+  private View afEg;
+  private boolean afEh = false;
+  private boolean afEi = false;
+  private boolean afEj = false;
   private String filePath;
+  private int lCR = 0;
   
   private static Bitmap a(float[][] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, CropImageView paramCropImageView)
   {
-    AppMethodBeat.i(34852);
+    AppMethodBeat.i(39041);
     if (paramCropImageView == null)
     {
-      AppMethodBeat.o(34852);
+      AppMethodBeat.o(39041);
       return null;
     }
     float[] arrayOfFloat = n.c(paramArrayOfFloat, new float[] { paramFloat1, paramFloat2, 1.0F });
@@ -101,9 +110,9 @@ public class CropImageNewUI
       if (j + n > paramCropImageView.getHeight()) {
         m = paramCropImageView.getHeight() - j;
       }
-      ab.i("MicroMsg.CropImageUI", "rawWidth:%d, rawHeigth:%d, originalLX:%d, originalTY:%d, realWidth:%d, realHeight:%d", new Object[] { Integer.valueOf(paramCropImageView.getWidth()), Integer.valueOf(paramCropImageView.getHeight()), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+      Log.i("MicroMsg.CropImageUI", "rawWidth:%d, rawHeigth:%d, originalLX:%d, originalTY:%d, realWidth:%d, realHeight:%d", new Object[] { Integer.valueOf(paramCropImageView.getWidth()), Integer.valueOf(paramCropImageView.getHeight()), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
       paramArrayOfFloat = Bitmap.createBitmap(paramCropImageView, i, j, k, m, paramArrayOfFloat, true);
-      AppMethodBeat.o(34852);
+      AppMethodBeat.o(39041);
       return paramArrayOfFloat;
       paramArrayOfFloat.setRotate(0.0F, m / 2, n / 2);
       continue;
@@ -117,122 +126,106 @@ public class CropImageNewUI
   
   private boolean a(Bitmap paramBitmap, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(34853);
-    if ((paramString != null) && (!paramString.equals(""))) {
+    AppMethodBeat.i(39042);
+    if ((paramString != null) && (!paramString.equals(""))) {}
+    for (;;)
+    {
       try
       {
-        if (this.ejF == 1) {
-          com.tencent.mm.sdk.platformtools.d.a(paramBitmap, 30, Bitmap.CompressFormat.JPEG, paramString, paramBoolean);
-        }
-        for (;;)
+        if (this.lCR == 1)
         {
-          AppMethodBeat.o(34853);
+          BitmapUtil.saveBitmapToImage(paramBitmap, 30, Bitmap.CompressFormat.JPEG, paramString, paramBoolean);
+          AppMethodBeat.o(39042);
           return true;
-          com.tencent.mm.sdk.platformtools.d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, paramString, paramBoolean);
         }
-        AppMethodBeat.o(34853);
+        if (this.lCR != 2) {
+          break label118;
+        }
+        BitmapUtil.saveBitmapToImage(paramBitmap, 80, Bitmap.CompressFormat.JPEG, paramString, paramBoolean);
+        continue;
+        AppMethodBeat.o(39042);
       }
       catch (Exception paramBitmap)
       {
-        ab.printErrStackTrace("MicroMsg.CropImageUI", paramBitmap, "", new Object[0]);
-        ab.e("MicroMsg.CropImageUI", "saveBitmapToImage failed:" + paramBitmap.toString());
+        Log.printErrStackTrace("MicroMsg.CropImageUI", paramBitmap, "", new Object[0]);
+        Log.e("MicroMsg.CropImageUI", "saveBitmapToImage failed:" + paramBitmap.toString());
       }
-    }
-    return false;
-  }
-  
-  private void b(Runnable paramRunnable1, Runnable paramRunnable2)
-  {
-    AppMethodBeat.i(34845);
-    this.AqL = ((FilterImageView)findViewById(2131823288));
-    com.tencent.mm.platformtools.r.cn(this.AqL);
-    this.AqL.setOnConfirmImp(paramRunnable1);
-    this.AqL.setOnExitImp(paramRunnable2);
-    AppMethodBeat.o(34845);
-  }
-  
-  private static float[][] c(Matrix paramMatrix)
-  {
-    AppMethodBeat.i(34854);
-    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 });
-    float[] arrayOfFloat1 = new float[9];
-    paramMatrix.getValues(arrayOfFloat1);
-    int i = 0;
-    while (i < 3)
-    {
-      int j = 0;
-      while (j < 3)
-      {
-        arrayOfFloat[i][j] = arrayOfFloat1[(i * 3 + j)];
-        j += 1;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(34854);
-    return arrayOfFloat;
-  }
-  
-  private boolean dNH()
-  {
-    AppMethodBeat.i(34844);
-    Object localObject1;
-    if (1 == this.AqJ) {
-      if (this.AqL != null) {
-        localObject1 = this.AqL.getCropAreaView();
-      }
-    }
-    int n;
-    int i1;
-    for (;;)
-    {
-      n = ((View)localObject1).getWidth();
-      i1 = ((View)localObject1).getHeight();
-      ab.v("MicroMsg.CropImageUI", "scrWidth:" + n + " scrHeight:" + i1);
-      this.filePath = getIntent().getStringExtra("CropImage_ImgPath");
-      if (e.cN(this.filePath)) {
-        break;
-      }
-      finish();
-      AppMethodBeat.o(34844);
       return false;
-      localObject1 = findViewById(2131823276);
+      label118:
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.JPEG, paramString, paramBoolean);
+    }
+  }
+  
+  private void c(Runnable paramRunnable1, Runnable paramRunnable2)
+  {
+    AppMethodBeat.i(39038);
+    this.afEc = ((FilterImageView)findViewById(R.h.fEi));
+    this.afEc.setOnConfirmImp(paramRunnable1);
+    this.afEc.setOnExitImp(paramRunnable2);
+    AppMethodBeat.o(39038);
+  }
+  
+  private boolean jCV()
+  {
+    AppMethodBeat.i(39037);
+    Object localObject1;
+    if (1 == this.afEa) {
+      if (this.afEc != null) {
+        localObject1 = this.afEc.getCropAreaView();
+      }
+    }
+    while (localObject1 == null)
+    {
+      AppMethodBeat.o(39037);
+      return false;
+      localObject1 = findViewById(R.h.cropimage_frame);
       continue;
-      localObject1 = findViewById(2131823279);
+      localObject1 = findViewById(R.h.cropimage_fl);
+    }
+    int n = ((View)localObject1).getWidth();
+    int i1 = ((View)localObject1).getHeight();
+    Log.v("MicroMsg.CropImageUI", "scrWidth:" + n + " scrHeight:" + i1);
+    this.filePath = getIntent().getStringExtra("CropImage_ImgPath");
+    if (!y.ZC(this.filePath))
+    {
+      finish();
+      AppMethodBeat.o(39037);
+      return false;
     }
     int k = 960;
     int m = 960;
     boolean bool;
     int j;
     int i;
-    if (this.AqJ == 2)
+    if (this.afEa == 2)
     {
       bool = true;
       j = i1;
       i = n;
-      this.AqQ = BackwardSupportUtil.ExifHelper.bY(this.filePath);
-      if ((this.AqQ != 90) && (this.AqQ != 270)) {
-        break label2260;
+      this.HKy = BackwardSupportUtil.ExifHelper.getExifOrientation(this.filePath);
+      if ((this.HKy != 90) && (this.HKy != 270)) {
+        break label2275;
       }
     }
     for (;;)
     {
-      Object localObject3 = com.tencent.mm.sdk.platformtools.d.d(this.filePath, i, j, bool);
-      Object localObject2 = e.i(this.filePath, 0, 10);
-      if (com.tencent.mm.sdk.platformtools.r.bV((byte[])localObject2)) {}
+      Object localObject3 = BitmapUtil.extractThumbNail(this.filePath, i, j, bool);
+      Object localObject2 = y.bi(this.filePath, 0, 10);
+      if (ImgUtil.isGif((byte[])localObject2)) {}
       float f1;
-      for (this.AqK = 1;; this.AqK = 0)
+      for (this.afEb = 1;; this.afEb = 0)
       {
         if (localObject3 != null) {
-          break label893;
+          break label908;
         }
         finish();
-        AppMethodBeat.o(34844);
+        AppMethodBeat.o(39037);
         return false;
-        if (this.AqJ == 3)
+        if (this.afEa == 3)
         {
           localObject2 = new BitmapFactory.Options();
           ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-          localObject3 = BitmapFactory.decodeFile(this.filePath, (BitmapFactory.Options)localObject2);
+          localObject3 = MMBitmapFactory.decodeFile(this.filePath, (BitmapFactory.Options)localObject2);
           if (localObject3 != null) {
             ((Bitmap)localObject3).recycle();
           }
@@ -249,8 +242,8 @@ public class CropImageNewUI
           }
           for (;;)
           {
-            ab.d("MicroMsg.CropImageUI", "w:%d h:%d width:%d height:%d scale:%f", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(i), Float.valueOf(f1) });
-            localObject2 = (Button)findViewById(2131823287);
+            Log.d("MicroMsg.CropImageUI", "w:%d h:%d width:%d height:%d scale:%f", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(i), Float.valueOf(f1) });
+            localObject2 = (Button)findViewById(R.h.fEk);
             if (localObject2 != null) {
               ((Button)localObject2).setVisibility(8);
             }
@@ -267,14 +260,14 @@ public class CropImageNewUI
             j = k;
           }
         }
-        if (this.AqJ == 1)
+        if (this.afEa == 1)
         {
           localObject2 = new BitmapFactory.Options();
           ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-          localObject3 = BitmapFactory.decodeFile(this.filePath, (BitmapFactory.Options)localObject2);
+          localObject3 = MMBitmapFactory.decodeFile(this.filePath, (BitmapFactory.Options)localObject2);
           if (localObject3 != null)
           {
-            ab.i("MicroMsg.CropImageUI", "recycle bitmap:%s", new Object[] { localObject3.toString() });
+            Log.i("MicroMsg.CropImageUI", "recycle bitmap:%s", new Object[] { localObject3.toString() });
             ((Bitmap)localObject3).recycle();
           }
           if (((BitmapFactory.Options)localObject2).outWidth > ((BitmapFactory.Options)localObject2).outHeight)
@@ -304,52 +297,52 @@ public class CropImageNewUI
         }
         localObject2 = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
-        com.tencent.mm.sdk.platformtools.d.dsm();
-        localObject3 = BitmapFactory.decodeFile(this.filePath, (BitmapFactory.Options)localObject2);
+        BitmapUtil.bindlowMemeryOption((BitmapFactory.Options)localObject2);
+        localObject3 = MMBitmapFactory.decodeFile(this.filePath, (BitmapFactory.Options)localObject2);
         if (localObject3 != null)
         {
-          ab.i("MicroMsg.CropImageUI", "recycle bitmap:%s", new Object[] { localObject3.toString() });
+          Log.i("MicroMsg.CropImageUI", "recycle bitmap:%s", new Object[] { localObject3.toString() });
           ((Bitmap)localObject3).recycle();
         }
-        if ((ah.cO(((BitmapFactory.Options)localObject2).outWidth, ((BitmapFactory.Options)localObject2).outHeight)) && (((BitmapFactory.Options)localObject2).outWidth > 480))
+        if ((ab.isLongHorizontal(((BitmapFactory.Options)localObject2).outWidth, ((BitmapFactory.Options)localObject2).outHeight)) && (((BitmapFactory.Options)localObject2).outWidth > 480))
         {
           bool = true;
-          label755:
-          this.AqR = bool;
-          if ((!ah.cN(((BitmapFactory.Options)localObject2).outWidth, ((BitmapFactory.Options)localObject2).outHeight)) || (((BitmapFactory.Options)localObject2).outHeight <= 480)) {
-            break label879;
+          label770:
+          this.afEh = bool;
+          if ((!ab.isLongVertical(((BitmapFactory.Options)localObject2).outWidth, ((BitmapFactory.Options)localObject2).outHeight)) || (((BitmapFactory.Options)localObject2).outHeight <= 480)) {
+            break label894;
           }
         }
-        label879:
+        label894:
         for (bool = true;; bool = false)
         {
-          this.AqS = bool;
-          if (!this.AqR)
+          this.afEi = bool;
+          if (!this.afEh)
           {
             j = m;
             i = k;
-            if (!this.AqS) {}
+            if (!this.afEi) {}
           }
           else
           {
             j = ((BitmapFactory.Options)localObject2).outHeight;
             i = ((BitmapFactory.Options)localObject2).outWidth;
           }
-          ab.e("MicroMsg.CropImageUI", "width is " + i + " height is " + j);
+          Log.e("MicroMsg.CropImageUI", "width is " + i + " height is " + j);
           bool = false;
           break;
           bool = false;
-          break label755;
+          break label770;
         }
       }
-      label893:
-      ab.d("temBmp crop", "h:" + ((Bitmap)localObject3).getHeight() + "w: " + ((Bitmap)localObject3).getWidth());
-      Bitmap localBitmap = com.tencent.mm.sdk.platformtools.d.b((Bitmap)localObject3, this.AqQ);
+      label908:
+      Log.d("temBmp crop", "h:" + ((Bitmap)localObject3).getHeight() + "w: " + ((Bitmap)localObject3).getWidth());
+      Bitmap localBitmap = BitmapUtil.rotate((Bitmap)localObject3, this.HKy);
       localObject3 = new Matrix();
       ((Matrix)localObject3).reset();
       float f4 = 1.0F;
       float f2;
-      label1007:
+      label1022:
       float f3;
       if (bool)
       {
@@ -358,7 +351,7 @@ public class CropImageNewUI
         if (f1 < f2)
         {
           if (n <= i1) {
-            break label1265;
+            break label1280;
           }
           f2 = i1;
           f3 = f2 / localBitmap.getWidth();
@@ -374,73 +367,73 @@ public class CropImageNewUI
       }
       for (;;)
       {
-        if (1 == this.AqJ)
+        if (1 == this.afEa)
         {
-          if (this.AqL != null)
+          if (this.afEc != null)
           {
-            this.AqL.setMatrix((Matrix)localObject3);
-            this.AqL.setImage(localBitmap);
+            this.afEc.setMatrix((Matrix)localObject3);
+            this.afEc.setImage(localBitmap);
           }
-          label1086:
-          if (this.AqJ != 3) {
-            break label2195;
+          label1101:
+          if (this.afEa != 3) {
+            break label2210;
           }
-          if (!com.tencent.mm.sdk.platformtools.r.bV((byte[])localObject2)) {
-            break label2187;
+          if (!ImgUtil.isGif((byte[])localObject2)) {
+            break label2202;
           }
-          this.AqK = 1;
+          this.afEb = 1;
         }
         try
         {
-          localObject1 = c.bHK().eK(this.filePath, this.filePath);
-          this.AqN.setImageDrawable((Drawable)localObject1);
-          ((b)localObject1).start();
+          localObject1 = c.fJa().jj(this.filePath, this.filePath);
+          this.afEe.setImageDrawable((Drawable)localObject1);
+          ((com.tencent.mm.plugin.gif.b)localObject1).start();
           ((Matrix)localObject3).reset();
-          i = ((b)localObject1).getIntrinsicWidth();
-          j = ((b)localObject1).getIntrinsicHeight();
+          i = ((com.tencent.mm.plugin.gif.b)localObject1).getIntrinsicWidth();
+          j = ((com.tencent.mm.plugin.gif.b)localObject1).getIntrinsicHeight();
           f1 = n / i;
           f2 = i1 / j;
           if (f1 >= f2) {
-            break label2137;
+            break label2152;
           }
-          label1178:
+          label1193:
           f2 = i / n;
           f3 = j / i1;
           if (f2 <= f3) {
-            break label2142;
+            break label2157;
           }
-          label1200:
+          label1215:
           if (f2 <= 1.0D) {
-            break label2147;
+            break label2162;
           }
           ((Matrix)localObject3).postScale(f1, f1);
           ((Matrix)localObject3).postTranslate((n - i * f1) / 2.0F, (i1 - f1 * j) / 2.0F);
-          label1243:
-          this.AqN.setImageMatrix((Matrix)localObject3);
+          label1258:
+          this.afEe.setImageMatrix((Matrix)localObject3);
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            label1252:
-            ab.e("MicroMsg.CropImageUI", bo.l(localException));
+            label1267:
+            Log.e("MicroMsg.CropImageUI", Util.stackTraceToString(localException));
           }
         }
-        AppMethodBeat.o(34844);
+        AppMethodBeat.o(39037);
         return true;
         f1 = f2;
         break;
-        label1265:
+        label1280:
         f2 = n;
-        break label1007;
+        break label1022;
         f1 = localBitmap.getWidth() / localBitmap.getHeight();
         f2 = localBitmap.getHeight() / localBitmap.getWidth();
-        ab.v("MicroMsg.CropImageUI", "whDiv is " + f1 + " hwDiv is " + f2);
+        Log.v("MicroMsg.CropImageUI", "whDiv is " + f1 + " hwDiv is " + f2);
         if ((f2 >= 2.0F) && (localBitmap.getHeight() >= 480))
         {
           f2 = localBitmap.getWidth() / n;
           f1 = n / localBitmap.getWidth();
-          if (1 == this.AqJ)
+          if (1 == this.afEa)
           {
             f2 = i1 / localBitmap.getHeight();
             if (f1 > f2) {}
@@ -461,7 +454,7 @@ public class CropImageNewUI
           else
           {
             ((Matrix)localObject3).postScale(1.0F, 1.0F);
-            if (3 == this.AqJ) {
+            if (3 == this.afEa) {
               ((Matrix)localObject3).postTranslate((n - localBitmap.getWidth()) / 2, (i1 - localBitmap.getHeight()) / 2);
             } else {
               ((Matrix)localObject3).postTranslate((n - localBitmap.getWidth()) / 2, 0.0F);
@@ -470,13 +463,13 @@ public class CropImageNewUI
         }
         else
         {
-          label1807:
-          label1957:
+          label1822:
+          label1972:
           if ((f1 >= 2.0F) && (localBitmap.getWidth() >= 480))
           {
             f1 = localBitmap.getHeight() / 480.0F;
             f2 = 480.0F / localBitmap.getHeight();
-            if (1 == this.AqJ)
+            if (1 == this.afEa)
             {
               f1 = n / localBitmap.getWidth();
               f2 = i1 / localBitmap.getHeight();
@@ -498,7 +491,7 @@ public class CropImageNewUI
             {
               ((Matrix)localObject3).postScale(1.0F, 1.0F);
               f1 = (i1 - localBitmap.getHeight()) / 2;
-              ab.d("MicroMsg.CropImageUI", " offsety ".concat(String.valueOf(f1)));
+              Log.d("MicroMsg.CropImageUI", " offsety ".concat(String.valueOf(f1)));
               ((Matrix)localObject3).postTranslate(0.0F, f1);
             }
           }
@@ -510,34 +503,34 @@ public class CropImageNewUI
             {
               f1 = f2;
               if (f2 <= f3) {
-                break label1885;
+                break label1900;
               }
             }
             for (;;)
             {
-              if (1 != this.AqJ) {
-                break label1890;
+              if (1 != this.afEa) {
+                break label1905;
               }
               ((Matrix)localObject3).postScale(f2, f2);
               ((Matrix)localObject3).postTranslate((n - localBitmap.getWidth() * f2) / 2.0F + ((View)localObject1).getLeft(), (i1 - f2 * localBitmap.getHeight()) / 2.0F + ((View)localObject1).getTop());
               break;
               f1 = f3;
-              break label1807;
-              label1885:
+              break label1822;
+              label1900:
               f2 = f3;
             }
-            label1890:
-            if (this.AqK == 1)
+            label1905:
+            if (this.afEb == 1)
             {
-              this.AqN.setGifPath(this.filePath);
-              this.AqN.getGifWidth();
-              this.AqN.getGifHeight();
-              f1 = this.AqN.getGifWidth() / n;
-              f2 = this.AqN.getGifHeight() / i1;
+              this.afEe.setGifPath(this.filePath);
+              this.afEe.getGifWidth();
+              this.afEe.getGifHeight();
+              f1 = this.afEe.getGifWidth() / n;
+              f2 = this.afEe.getGifHeight() / i1;
               if (f1 > f2)
               {
                 if (f1 <= 1.0D) {
-                  break label2255;
+                  break label2270;
                 }
                 ((Matrix)localObject3).postScale(f1, f1);
               }
@@ -547,10 +540,10 @@ public class CropImageNewUI
       }
       for (;;)
       {
-        ((Matrix)localObject3).postTranslate((n - this.AqN.getGifWidth() * f1) / 2.0F, (i1 - f1 * this.AqN.getGifHeight()) / 2.0F);
+        ((Matrix)localObject3).postTranslate((n - this.afEe.getGifWidth() * f1) / 2.0F, (i1 - f1 * this.afEe.getGifHeight()) / 2.0F);
         break;
         f1 = f2;
-        break label1957;
+        break label1972;
         f2 = localBitmap.getWidth() / n;
         f3 = localBitmap.getHeight() / i1;
         if (f2 > f3) {}
@@ -566,199 +559,325 @@ public class CropImageNewUI
           break;
           f2 = f3;
         }
-        if (this.AqK == 1) {
-          break label1086;
+        if (this.afEb == 1) {
+          break label1101;
         }
-        this.AqN.setImageMatrix((Matrix)localObject3);
-        this.AqN.setImageBitmap(localBitmap);
-        break label1086;
-        label2137:
+        this.afEe.setImageMatrix((Matrix)localObject3);
+        this.afEe.setImageBitmap(localBitmap);
+        break label1101;
+        label2152:
         f1 = f2;
-        break label1178;
-        label2142:
+        break label1193;
+        label2157:
         f2 = f3;
-        break label1200;
-        label2147:
+        break label1215;
+        label2162:
         ((Matrix)localObject3).postTranslate((n - i) / 2, (i1 - j) / 2);
-        break label1243;
-        label2187:
-        this.AqK = 0;
-        break label1252;
-        label2195:
-        if ((this.AqR) || (this.AqS)) {
-          findViewById(2131823283).setVisibility(8);
+        break label1258;
+        label2202:
+        this.afEb = 0;
+        break label1267;
+        label2210:
+        if ((this.afEh) || (this.afEi)) {
+          findViewById(R.h.fEp).setVisibility(8);
         }
         if (getIntent().getBooleanExtra("CropImage_DirectlyIntoFilter", false)) {
-          findViewById(2131823286).setVisibility(8);
+          findViewById(R.h.cropimage_function_bar).setVisibility(8);
         }
-        AppMethodBeat.o(34844);
+        AppMethodBeat.o(39037);
         return true;
-        label2255:
+        label2270:
         f1 = 1.0F;
       }
-      label2260:
+      label2275:
       k = i;
       i = j;
       j = k;
     }
   }
   
-  private int[] dNI()
+  private static float[][] l(Matrix paramMatrix)
   {
-    AppMethodBeat.i(34850);
-    Object localObject1 = new Rect();
-    getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
-    int j = ((Rect)localObject1).top;
-    ab.e("MicroMsg.CropImageUI", "window TitleBar.h:".concat(String.valueOf(j)));
-    int i = j;
-    if (j == 0) {
-      i = j;
-    }
-    label296:
-    for (;;)
+    AppMethodBeat.i(39043);
+    float[][] arrayOfFloat = (float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 });
+    float[] arrayOfFloat1 = new float[9];
+    paramMatrix.getValues(arrayOfFloat1);
+    int i = 0;
+    while (i < 3)
     {
-      try
+      int j = 0;
+      while (j < 3)
       {
-        localObject1 = Class.forName("com.android.internal.R$dimen");
-        i = j;
-        Object localObject2 = ((Class)localObject1).newInstance();
-        i = j;
-        int k = ah.getInt(((Class)localObject1).getField("status_bar_height").get(localObject2).toString(), 0);
-        i = j;
-        j = getResources().getDimensionPixelSize(k);
-        i = j;
-        ab.e("MicroMsg.CropImageUI", "sbar:".concat(String.valueOf(j)));
-        i = j;
-        localObject1 = new DisplayMetrics();
-        ((WindowManager)getSystemService("window")).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
-        int m = (int)(67.0F * ((DisplayMetrics)localObject1).density / 1.5D);
-        j = Math.min(this.AqP.getWidth(), this.AqP.getHeight());
-        int n = Math.max(this.AqP.getWidth(), this.AqP.getHeight());
-        k = j - m * 2 - i;
-        if (this.AqQ != 0) {
-          break label296;
-        }
-        j += i + m * 2;
-        k += m;
-        AppMethodBeat.o(34850);
-        return new int[] { j, n - m * 2, k, n + i + m };
+        arrayOfFloat[i][j] = arrayOfFloat1[(i * 3 + j)];
+        j += 1;
       }
-      catch (Exception localException)
-      {
-        ab.printErrStackTrace("MicroMsg.CropImageUI", localException, "", new Object[0]);
-      }
+      i += 1;
     }
+    AppMethodBeat.o(39043);
+    return arrayOfFloat;
   }
   
-  private Bitmap hN(int paramInt1, int paramInt2)
+  private Bitmap oB(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(34851);
-    Bitmap localBitmap = com.tencent.mm.sdk.platformtools.d.d(this.filePath, paramInt2, paramInt1, true);
+    AppMethodBeat.i(39040);
+    Bitmap localBitmap = BitmapUtil.extractThumbNail(this.filePath, paramInt2, paramInt1, true);
     Object localObject = localBitmap;
-    if (this.AqQ != 0)
+    if (this.HKy != 0)
     {
       localObject = new Matrix();
       ((Matrix)localObject).reset();
-      ((Matrix)localObject).setRotate(this.AqQ, localBitmap.getWidth() / 2, localBitmap.getHeight() / 2);
+      ((Matrix)localObject).setRotate(this.HKy, localBitmap.getWidth() / 2, localBitmap.getHeight() / 2);
       localObject = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), (Matrix)localObject, true);
       if (localBitmap != localObject)
       {
-        ab.i("MicroMsg.CropImageUI", "recycle bitmap:%s", new Object[] { localBitmap.toString() });
+        Log.i("MicroMsg.CropImageUI", "recycle bitmap:%s", new Object[] { localBitmap.toString() });
         localBitmap.recycle();
       }
     }
-    ab.d("MicroMsg.CropImageUI", "getcrop degree:" + this.AqQ);
-    AppMethodBeat.o(34851);
+    Log.d("MicroMsg.CropImageUI", "getcrop degree:" + this.HKy);
+    AppMethodBeat.o(39040);
     return localObject;
   }
   
   public void activateBroadcast(boolean paramBoolean)
   {
-    AppMethodBeat.i(154012);
+    AppMethodBeat.i(39032);
     if (paramBoolean)
     {
-      y.d(paramBoolean, new Intent().putExtra("classname", getClass().getName()).putExtra("main_process", false));
-      AppMethodBeat.o(154012);
+      ag.d(paramBoolean, new Intent().putExtra("classname", getClass().getName()).putExtra("main_process", false));
+      AppMethodBeat.o(39032);
       return;
     }
     super.activateBroadcast(paramBoolean);
-    AppMethodBeat.o(154012);
+    AppMethodBeat.o(39032);
   }
   
   public int getLayoutId()
   {
-    return 2130969288;
+    return R.i.giO;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(34842);
+    AppMethodBeat.i(39035);
     setMMTitle("");
-    this.AqM = ((LinearLayout)findViewById(2131823281));
-    this.AqO = ((ImageView)findViewById(2131823277));
-    com.tencent.mm.platformtools.r.cn(this.AqO);
-    this.AqP = findViewById(2131823276);
-    this.AqJ = getIntent().getIntExtra("CropImageMode", 0);
+    this.afEd = ((LinearLayout)findViewById(R.h.cropimage_operator_ll));
+    this.afEf = ((ImageView)findViewById(R.h.cropimage_iv));
+    this.afEg = findViewById(R.h.cropimage_frame);
+    this.afEa = getIntent().getIntExtra("CropImageMode", 0);
     final boolean bool1;
     final boolean bool2;
     Object localObject;
     Button localButton;
-    if (this.AqJ != 0)
+    int i;
+    if (this.afEa != 0)
     {
       bool1 = true;
       Assert.assertTrue("the image mode must be set", bool1);
-      this.ejF = getIntent().getIntExtra("CropImage_from_scene", 0);
+      this.lCR = getIntent().getIntExtra("CropImage_from_scene", 0);
       bool1 = getIntent().getBooleanExtra("CropImage_Filter", false);
       bool2 = getIntent().getBooleanExtra("CropImage_DirectlyIntoFilter", false);
       if (bool1) {
-        b(new CropImageNewUI.22(this), new CropImageNewUI.23(this));
-      }
-      this.AqT = false;
-      this.AqN = ((CropImageView)findViewById(2131823280));
-      com.tencent.mm.platformtools.r.cn(this.AqN);
-      this.AqN.post(new CropImageNewUI.1(this));
-      this.AqN.setOnShortClick(new CropImageNewUI.12(this));
-      ((Button)findViewById(2131823283)).setOnClickListener(new CropImageNewUI.4(this));
-      localObject = (Button)findViewById(2131823285);
-      ((Button)localObject).setOnClickListener(new CropImageNewUI.5(this));
-      localButton = (Button)findViewById(2131823284);
-      localButton.setOnClickListener(new CropImageNewUI.6(this));
-      final ap localap1 = new ap(new CropImageNewUI.7(this), true);
-      ap localap2 = new ap(new CropImageNewUI.8(this), true);
-      ((Button)localObject).setOnTouchListener(new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        c(new Runnable()new Runnable
         {
-          AppMethodBeat.i(34822);
-          switch (paramAnonymousMotionEvent.getAction())
+          public final void run()
           {
+            boolean bool = false;
+            AppMethodBeat.i(39028);
+            if (CropImageNewUI.e(CropImageNewUI.this) == null)
+            {
+              AppMethodBeat.o(39028);
+              return;
+            }
+            if (CropImageNewUI.this.getIntent().getBooleanExtra("CropImage_DirectlyIntoFilter", false))
+            {
+              localObject1 = CropImageNewUI.this.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit();
+              if (CropImageNewUI.e(CropImageNewUI.this).findViewById(R.h.cropimage_filter_gallery).getVisibility() == 0) {
+                bool = true;
+              }
+              ((SharedPreferences.Editor)localObject1).putBoolean("CropImage_Filter_Show", bool);
+              ((SharedPreferences.Editor)localObject1).commit();
+            }
+            Object localObject2 = CropImageNewUI.this.getIntent().getStringExtra("CropImage_OutputPath");
+            Object localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = com.tencent.mm.loader.i.b.bmL() + g.getMessageDigest(new StringBuilder().append(CropImageNewUI.o(CropImageNewUI.this)).append(System.currentTimeMillis()).toString().getBytes()) + "_fiter.jpg";
+            }
+            localObject2 = new Intent();
+            ((Intent)localObject2).putExtra("CropImage_Compress_Img", true);
+            if (CropImageNewUI.e(CropImageNewUI.this) != null) {
+              ((Intent)localObject2).putExtra("CropImage_filterId", CropImageNewUI.e(CropImageNewUI.this).getFilterId());
+            }
+            if (CropImageNewUI.e(CropImageNewUI.this).getFilterId() == 0)
+            {
+              ((Intent)localObject2).putExtra("CropImage_OutputPath", CropImageNewUI.o(CropImageNewUI.this));
+              CropImageNewUI.this.setResult(-1, (Intent)localObject2);
+            }
+            for (;;)
+            {
+              CropImageNewUI.this.finish();
+              AppMethodBeat.o(39028);
+              return;
+              if (CropImageNewUI.a(CropImageNewUI.this, CropImageNewUI.e(CropImageNewUI.this).getFilterBmp(), (String)localObject1))
+              {
+                ((Intent)localObject2).putExtra("CropImage_OutputPath", (String)localObject1);
+                CropImageNewUI.this.setResult(-1, (Intent)localObject2);
+              }
+              else
+              {
+                CropImageNewUI.this.setResult(-1);
+              }
+            }
+          }
+        }, new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(39029);
+            if (CropImageNewUI.this.getIntent().getBooleanExtra("CropImage_DirectlyIntoFilter", false))
+            {
+              CropImageNewUI.this.finish();
+              AppMethodBeat.o(39029);
+              return;
+            }
+            CropImageNewUI.e(CropImageNewUI.this).setVisibility(8);
+            CropImageNewUI.p(CropImageNewUI.this).setVisibility(0);
+            CropImageNewUI.q(CropImageNewUI.this).setVisibility(((Integer)CropImageNewUI.q(CropImageNewUI.this).getTag()).intValue());
+            CropImageNewUI.j(CropImageNewUI.this).setVisibility(0);
+            AppMethodBeat.o(39029);
+          }
+        });
+      }
+      this.afEj = false;
+      this.afEe = ((CropImageView)findViewById(R.h.fEo));
+      this.afEe.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(39006);
+          if (!CropImageNewUI.a(CropImageNewUI.this))
+          {
+            AppMethodBeat.o(39006);
+            return;
+          }
+          if ((!CropImageNewUI.b(CropImageNewUI.this)) && (!CropImageNewUI.c(CropImageNewUI.this)) && (CropImageNewUI.this.getIntent().getBooleanExtra("CropImage_DirectlyIntoFilter", false)))
+          {
+            CropImageNewUI.d(CropImageNewUI.this);
+            if (!CropImageNewUI.this.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getBoolean("CropImage_Filter_Show", true)) {
+              CropImageNewUI.e(CropImageNewUI.this).findViewById(R.h.cropimage_filter_gallery).setVisibility(4);
+            }
+            AppMethodBeat.o(39006);
+            return;
+          }
+          if (1 == CropImageNewUI.f(CropImageNewUI.this)) {
+            CropImageNewUI.g(CropImageNewUI.this);
+          }
+          AppMethodBeat.o(39006);
+        }
+      });
+      this.afEe.setOnShortClick(new CropImageView.a()
+      {
+        public final void jCW()
+        {
+          AppMethodBeat.i(39017);
+          CropImageNewUI.h(CropImageNewUI.this);
+          AppMethodBeat.o(39017);
+        }
+      });
+      ((Button)findViewById(R.h.fEp)).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(39009);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+          a.c("com/tencent/mm/ui/tools/CropImageNewUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+          paramAnonymousView = CropImageNewUI.j(CropImageNewUI.this);
+          if (paramAnonymousView.wNk == null) {
+            Log.w("MicroMsg.CropImageView", "rotate not done! cause: btmp is null!");
           }
           for (;;)
           {
-            AppMethodBeat.o(34822);
-            return false;
-            localap1.ag(200L, 200L);
-            continue;
-            localap1.stopTimer();
+            a.a(this, "com/tencent/mm/ui/tools/CropImageNewUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(39009);
+            return;
+            localObject = new float[2];
+            localObject[0] = (paramAnonymousView.wNk.getWidth() / 2);
+            localObject[1] = (paramAnonymousView.wNk.getHeight() / 2);
+            paramAnonymousView.getImageMatrix().mapPoints((float[])localObject);
+            paramAnonymousView.getImageMatrix().postRotate(90.0F, localObject[0], localObject[1]);
+            paramAnonymousView.setImageBitmap(paramAnonymousView.wNk);
+            paramAnonymousView.invalidate();
+            paramAnonymousView.hOX += 1;
           }
         }
       });
-      localButton.setOnTouchListener(new CropImageNewUI.10(this, localap2));
-      switch (this.AqJ)
+      localObject = (Button)findViewById(R.h.fEq);
+      ((Button)localObject).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(39010);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/ui/tools/CropImageNewUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          CropImageNewUI.j(CropImageNewUI.this).zoomIn();
+          a.a(this, "com/tencent/mm/ui/tools/CropImageNewUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(39010);
+        }
+      });
+      localButton = (Button)findViewById(R.h.fEr);
+      localButton.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(39011);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/ui/tools/CropImageNewUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          CropImageNewUI.j(CropImageNewUI.this).zoomOut();
+          a.a(this, "com/tencent/mm/ui/tools/CropImageNewUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(39011);
+        }
+      });
+      MTimerHandler localMTimerHandler1 = new MTimerHandler(new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(39012);
+          CropImageNewUI.j(CropImageNewUI.this).zoomIn();
+          AppMethodBeat.o(39012);
+          return true;
+        }
+      }, true);
+      MTimerHandler localMTimerHandler2 = new MTimerHandler(new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(39013);
+          CropImageNewUI.j(CropImageNewUI.this).zoomOut();
+          AppMethodBeat.o(39013);
+          return true;
+        }
+      }, true);
+      ((Button)localObject).setOnTouchListener(new CropImageNewUI.9(this, localMTimerHandler1));
+      localButton.setOnTouchListener(new CropImageNewUI.10(this, localMTimerHandler2));
+      i = R.l.gDC;
+      switch (this.afEa)
       {
       case 4: 
       default: 
-        label384:
-        ab.d("MicroMsg.CropImageUI", "mode is  " + this.AqJ);
+        label376:
+        Log.d("MicroMsg.CropImageUI", "mode is  " + this.afEa);
         localObject = new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
-            AppMethodBeat.i(34829);
+            AppMethodBeat.i(39021);
             if ((bool1) && (bool2))
             {
               CropImageNewUI.a(CropImageNewUI.this, true);
-              AppMethodBeat.o(34829);
+              AppMethodBeat.o(39021);
               return true;
             }
             switch (CropImageNewUI.f(CropImageNewUI.this))
@@ -766,7 +885,7 @@ public class CropImageNewUI
             }
             for (;;)
             {
-              AppMethodBeat.o(34829);
+              AppMethodBeat.o(39021);
               return true;
               if (CropImageNewUI.e(CropImageNewUI.this) != null)
               {
@@ -787,8 +906,8 @@ public class CropImageNewUI
             }
           }
         };
-        if (this.AqJ == 5) {
-          addIconOptionMenu(0, 2130839668, (MenuItem.OnMenuItemClickListener)localObject);
+        if (this.afEa == 5) {
+          addIconOptionMenu(0, R.k.icons_outlined_more, (MenuItem.OnMenuItemClickListener)localObject);
         }
         break;
       }
@@ -796,183 +915,218 @@ public class CropImageNewUI
     for (;;)
     {
       if ((bool1) && (bool2)) {
-        addTextOptionMenu(0, getString(2131298887), (MenuItem.OnMenuItemClickListener)localObject, null, q.b.zby);
+        addTextOptionMenu(0, getString(R.l.gDz), (MenuItem.OnMenuItemClickListener)localObject, null, y.b.adEJ);
       }
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(34831);
+          AppMethodBeat.i(39023);
           CropImageNewUI.this.finish();
-          AppMethodBeat.o(34831);
+          AppMethodBeat.o(39023);
           return true;
         }
       });
-      if (this.AqJ == 6)
+      if (this.afEa == 6)
       {
-        findViewById(2131823286).setVisibility(8);
-        addTextOptionMenu(0, getString(2131298891), new MenuItem.OnMenuItemClickListener()
+        findViewById(R.h.cropimage_function_bar).setVisibility(8);
+        addTextOptionMenu(0, getString(R.l.gDC), new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
-            AppMethodBeat.i(34834);
-            paramAnonymousMenuItem = new com.tencent.mm.ui.widget.b.d(CropImageNewUI.this, 1, false);
-            paramAnonymousMenuItem.sao = new CropImageNewUI.20.1(this);
-            paramAnonymousMenuItem.sap = new CropImageNewUI.20.2(this);
-            paramAnonymousMenuItem.crd();
-            AppMethodBeat.o(34834);
+            AppMethodBeat.i(39026);
+            paramAnonymousMenuItem = new f(CropImageNewUI.this, 1, false);
+            paramAnonymousMenuItem.Vtg = new u.g()
+            {
+              public final void onCreateMMMenu(s paramAnonymous2s)
+              {
+                AppMethodBeat.i(39024);
+                paramAnonymous2s.oh(0, R.l.gDF);
+                paramAnonymous2s.oh(1, R.l.gDJ);
+                AppMethodBeat.o(39024);
+              }
+            };
+            paramAnonymousMenuItem.GAC = new u.i()
+            {
+              public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(39025);
+                switch (paramAnonymous2MenuItem.getItemId())
+                {
+                }
+                for (;;)
+                {
+                  AppMethodBeat.o(39025);
+                  return;
+                  paramAnonymous2MenuItem = new Intent();
+                  paramAnonymous2MenuItem.putExtra("CropImage_OutputPath", CropImageNewUI.this.getIntent().getStringExtra("CropImage_OutputPath"));
+                  paramAnonymous2MenuItem.putExtra("OP_CODE", 1);
+                  CropImageNewUI.this.setResult(-1, paramAnonymous2MenuItem);
+                  CropImageNewUI.this.finish();
+                  AppMethodBeat.o(39025);
+                  return;
+                  paramAnonymous2MenuItem = new Intent();
+                  paramAnonymous2MenuItem.putExtra("CropImage_OutputPath", CropImageNewUI.this.getIntent().getStringExtra("CropImage_OutputPath"));
+                  paramAnonymous2MenuItem.putExtra("OP_CODE", 2);
+                  CropImageNewUI.this.setResult(-1, paramAnonymous2MenuItem);
+                  CropImageNewUI.this.finish();
+                }
+              }
+            };
+            paramAnonymousMenuItem.dDn();
+            AppMethodBeat.o(39026);
             return true;
           }
-        }, null, q.b.zby);
+        }, null, y.b.adEJ);
       }
-      AppMethodBeat.o(34842);
+      AppMethodBeat.o(39035);
       return;
       bool1 = false;
       break;
-      b(new Runnable()new Runnable
+      c(new Runnable()new Runnable
       {
         public final void run()
         {
-          AppMethodBeat.i(34815);
+          AppMethodBeat.i(39007);
           CropImageNewUI.a(CropImageNewUI.this, CropImageNewUI.e(CropImageNewUI.this).getCropImageIV(), CropImageNewUI.e(CropImageNewUI.this).getCropAreaView());
           CropImageNewUI.this.finish();
-          AppMethodBeat.o(34815);
+          AppMethodBeat.o(39007);
         }
       }, new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(34816);
+          AppMethodBeat.i(39008);
           CropImageNewUI.this.finish();
-          AppMethodBeat.o(34816);
+          AppMethodBeat.o(39008);
         }
       });
-      this.AqL.setLimitZoomIn(false);
-      localObject = this.AqL;
-      if (((FilterImageView)localObject).ArK != null)
+      this.afEc.setLimitZoomIn(false);
+      localObject = this.afEc;
+      if (((FilterImageView)localObject).afFa != null)
       {
-        ((FilterImageView)localObject).ArK.setScaleType(ImageView.ScaleType.MATRIX);
-        ((FilterImageView)localObject).ArK.dNK();
+        ((FilterImageView)localObject).afFa.setScaleType(ImageView.ScaleType.MATRIX);
+        ((FilterImageView)localObject).afFa.jCX();
       }
-      this.AqL.setCropMaskVisible(0);
-      if (this.ejF != 1) {
-        break label384;
+      this.afEc.setCropMaskVisible(0);
+      if (this.lCR != 1) {
+        break label376;
       }
-      this.AqL.setCropMaskBackground(2130839788);
-      break label384;
-      this.AqN.setEnableOprate(false);
-      findViewById(2131823282).setVisibility(8);
-      findViewById(2131823286).setVisibility(8);
-      break label384;
-      this.AqM.setVisibility(8);
-      break label384;
-      int i = getIntent().getIntExtra("CropImage_CompressType", 1);
+      this.afEc.setCropMaskBackground(R.g.new_year_capture);
+      break label376;
+      this.afEe.setEnableOprate(false);
+      findViewById(R.h.fEh).setVisibility(8);
+      findViewById(R.h.cropimage_function_bar).setVisibility(8);
+      break label376;
+      this.afEd.setVisibility(8);
+      break label376;
+      int j = getIntent().getIntExtra("CropImage_CompressType", 1);
       boolean bool3 = getIntent().getBooleanExtra("CropImage_BHasHD", false);
-      if ((i != 1) && (bool3))
+      if ((j != 1) && (bool3))
       {
-        findViewById(2131823286).setVisibility(0);
-        localObject = (Button)findViewById(2131823287);
-        ((Button)localObject).setBackgroundResource(2130838052);
+        findViewById(R.h.cropimage_function_bar).setVisibility(0);
+        localObject = (Button)findViewById(R.h.fEk);
+        ((Button)localObject).setBackgroundResource(R.g.btn_style_black);
         ((Button)localObject).setPadding(25, 8, 25, 8);
         ((Button)localObject).setOnClickListener(new CropImageNewUI.11(this));
-        break label384;
+        break label376;
       }
-      findViewById(2131823286).setVisibility(8);
-      break label384;
-      if (this.AqJ == 4)
+      findViewById(R.h.cropimage_function_bar).setVisibility(8);
+      break label376;
+      if (this.afEa == 4)
       {
-        addIconOptionMenu(0, 2130839668, (MenuItem.OnMenuItemClickListener)localObject);
-        findViewById(2131823286).setVisibility(0);
-        localButton = (Button)findViewById(2131823287);
-        localButton.setText(2131298887);
+        addIconOptionMenu(0, R.k.icons_outlined_more, (MenuItem.OnMenuItemClickListener)localObject);
+        findViewById(R.h.cropimage_function_bar).setVisibility(0);
+        localButton = (Button)findViewById(R.h.fEk);
+        localButton.setText(R.l.gDz);
         localButton.setOnClickListener(new CropImageNewUI.18(this));
       }
       else
       {
-        addTextOptionMenu(0, getString(2131298891), (MenuItem.OnMenuItemClickListener)localObject, null, q.b.zby);
+        addTextOptionMenu(0, getString(i), (MenuItem.OnMenuItemClickListener)localObject, null, y.b.adEJ);
       }
     }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(34843);
-    ab.d("MicroMsg.CropImageUI", "onConfigurationChanged, config.orientation = " + paramConfiguration.orientation);
+    AppMethodBeat.i(39036);
+    Log.d("MicroMsg.CropImageUI", "onConfigurationChanged, config.orientation = " + paramConfiguration.orientation);
     if ((paramConfiguration.orientation == 1) || (paramConfiguration.orientation == 2))
     {
-      ab.v("MicroMsg.CropImageUI", "onConfigurationChanged");
-      this.AqN.post(new Runnable()
+      Log.v("MicroMsg.CropImageUI", "onConfigurationChanged");
+      this.afEe.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(34835);
+          AppMethodBeat.i(39027);
           CropImageNewUI.a(CropImageNewUI.this);
-          AppMethodBeat.o(34835);
+          AppMethodBeat.o(39027);
         }
       });
     }
     super.onConfigurationChanged(paramConfiguration);
-    AppMethodBeat.o(34843);
+    AppMethodBeat.o(39036);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(34838);
+    AppMethodBeat.i(39030);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(34838);
+    AppMethodBeat.o(39030);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(34841);
+    AppMethodBeat.i(39034);
     Object localObject;
-    if (this.AqN != null)
+    if (this.afEe != null)
     {
-      localObject = this.AqN;
-      if ((((CropImageView)localObject).nfX != null) && (!((CropImageView)localObject).nfX.isRecycled()))
+      localObject = this.afEe;
+      if ((((CropImageView)localObject).wNk != null) && (!((CropImageView)localObject).wNk.isRecycled()))
       {
-        ab.i("MicroMsg.CropImageView", "recycle bitmap:%s", new Object[] { ((CropImageView)localObject).nfX.toString() });
-        ((CropImageView)localObject).nfX.recycle();
+        Log.i("MicroMsg.CropImageView", "recycle bitmap:%s", new Object[] { ((CropImageView)localObject).wNk.toString() });
+        ((CropImageView)localObject).wNk.recycle();
       }
-      if (((CropImageView)localObject).Arq != null)
+      if (((CropImageView)localObject).afEI != null)
       {
-        ((CropImageView)localObject).Arq.cancel();
-        ((CropImageView)localObject).Arq = null;
+        ((CropImageView)localObject).afEI.cancel(false);
+        ((CropImageView)localObject).afEI = null;
       }
-      ((CropImageView)localObject).Arr.removeCallbacksAndMessages(null);
-      ((CropImageView)localObject).Art.removeCallbacksAndMessages(null);
+      ((CropImageView)localObject).afEJ.removeCallbacksAndMessages(null);
+      ((CropImageView)localObject).afEL.removeCallbacksAndMessages(null);
     }
-    if (this.AqL != null)
+    if (this.afEc != null)
     {
-      localObject = this.AqL;
-      ((FilterImageView)localObject).ArH = null;
-      if ((((FilterImageView)localObject).ArL != null) && (!((FilterImageView)localObject).ArL.isRecycled()))
+      localObject = this.afEc;
+      ((FilterImageView)localObject).afEX = null;
+      if ((((FilterImageView)localObject).afFb != null) && (!((FilterImageView)localObject).afFb.isRecycled()))
       {
-        ab.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { ((FilterImageView)localObject).ArL.toString() });
-        ((FilterImageView)localObject).ArL.recycle();
+        Log.i("MicroMsg.FilterView", "recycle bitmap:%s", new Object[] { ((FilterImageView)localObject).afFb.toString() });
+        ((FilterImageView)localObject).afFb.recycle();
       }
-      ((FilterImageView)localObject).ArL = null;
+      ((FilterImageView)localObject).afFb = null;
     }
     super.onDestroy();
-    AppMethodBeat.o(34841);
+    AppMethodBeat.o(39034);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(34839);
+    AppMethodBeat.i(39031);
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
     initView();
-    AppMethodBeat.o(34839);
+    AppMethodBeat.o(39031);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(34840);
+    AppMethodBeat.i(39033);
     super.onResume();
     setRequestedOrientation(1);
-    AppMethodBeat.o(34840);
+    AppMethodBeat.o(39033);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -983,7 +1137,7 @@ public class CropImageNewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CropImageNewUI
  * JD-Core Version:    0.7.0.1
  */

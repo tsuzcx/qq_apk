@@ -11,13 +11,15 @@ final class w$1
   public final Thread newThread(Runnable paramRunnable)
   {
     paramRunnable = new Thread(paramRunnable);
-    paramRunnable.setName("BuglyThread-" + w.c().getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder("BuglyThread-");
+    localStringBuilder.append(w.c().getAndIncrement());
+    paramRunnable.setName(localStringBuilder.toString());
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.w.1
  * JD-Core Version:    0.7.0.1
  */

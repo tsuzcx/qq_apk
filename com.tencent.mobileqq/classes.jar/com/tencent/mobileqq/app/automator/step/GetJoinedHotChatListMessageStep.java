@@ -2,6 +2,7 @@ package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.data.HotChatInfo;
@@ -12,19 +13,21 @@ import java.util.List;
 public class GetJoinedHotChatListMessageStep
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    if (HotChatManager.a(this.a.app))
+    if (HotChatManager.a(this.mAutomator.k))
     {
-      HotChatManager localHotChatManager = (HotChatManager)this.a.app.getManager(60);
-      Object localObject = localHotChatManager.b();
+      HotChatManager localHotChatManager = (HotChatManager)this.mAutomator.k.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      Object localObject = localHotChatManager.d();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder(50);
         localStringBuilder.append("troopUin: ");
         Iterator localIterator = ((List)localObject).iterator();
-        while (localIterator.hasNext()) {
-          localStringBuilder.append(((HotChatInfo)localIterator.next()).troopUin).append("  ");
+        while (localIterator.hasNext())
+        {
+          localStringBuilder.append(((HotChatInfo)localIterator.next()).troopUin);
+          localStringBuilder.append("  ");
         }
         QLog.d("GetJoinedHotChatListMessage", 2, localStringBuilder.toString());
       }
@@ -36,13 +39,13 @@ public class GetJoinedHotChatListMessageStep
     return 7;
   }
   
-  public void a() {}
+  public void onCreate() {}
   
-  public void d() {}
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListMessageStep
  * JD-Core Version:    0.7.0.1
  */

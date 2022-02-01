@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
 class ebq
-  extends IAIOImageProviderCallBack.Stub
+  implements Runnable
 {
-  ebq(ebp paramebp) {}
+  ebq(ebp paramebp, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
+  public void run()
   {
-    this.a.a.runOnUiThread(new ebs(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2));
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    this.a.a.runOnUiThread(new ebr(this, paramLong, paramInt1, paramInt2, paramInt3, paramString));
-  }
-  
-  public void a(AIOImageData[] paramArrayOfAIOImageData, int paramInt)
-  {
-    this.a.a.runOnUiThread(new ebt(this, paramArrayOfAIOImageData, paramInt));
+    if (ebo.a(this.jdField_a_of_type_Ebp.a) != null) {
+      ((AIOGalleryScene)ebo.b(this.jdField_a_of_type_Ebp.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    }
+    if (ebo.a(this.jdField_a_of_type_Ebp.a) != null) {
+      ((AIOImageListScene)ebo.b(this.jdField_a_of_type_Ebp.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

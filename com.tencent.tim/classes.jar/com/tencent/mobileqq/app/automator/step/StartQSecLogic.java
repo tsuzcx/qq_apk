@@ -1,0 +1,22 @@
+package com.tencent.mobileqq.app.automator.step;
+
+import com.tencent.mobileqq.app.automator.AsyncStep;
+import com.tencent.qqprotect.qsec.QSecFramework;
+
+public class StartQSecLogic
+  extends AsyncStep
+{
+  public int od()
+  {
+    if (this.cyx == 103) {
+      QSecFramework.a().esA();
+    }
+    return 7;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.app.automator.step.StartQSecLogic
+ * JD-Core Version:    0.7.0.1
+ */

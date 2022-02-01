@@ -1,13 +1,14 @@
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class czo
   implements Runnable
 {
-  public czo(PortraitImageview paramPortraitImageview) {}
+  public czo(PortraitImageview paramPortraitImageview, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.a.postInvalidate();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

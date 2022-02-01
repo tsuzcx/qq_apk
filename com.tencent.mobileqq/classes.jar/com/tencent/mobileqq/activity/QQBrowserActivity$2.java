@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bazo;
+import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
 
 class QQBrowserActivity$2
   implements Runnable
@@ -9,12 +9,12 @@ class QQBrowserActivity$2
   
   public void run()
   {
-    bazo.a();
+    BaseInnerDns.getInstance();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,36 @@
 package com.tencent.mm.plugin.multitalk.a;
 
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.df;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.a.f;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/agingOptimize/MultiTalkSelectAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends df
+  extends MMBaseAccessibilityConfig
 {
-  protected static c.a info;
-  
-  static
+  public b(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(54110);
-    c.a locala = new c.a();
-    locala.yrK = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "memberUuid";
-    locala.yrM.put("memberUuid", "LONG");
-    localStringBuilder.append(" memberUuid LONG");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "wxGroupId";
-    locala.yrM.put("wxGroupId", "TEXT");
-    localStringBuilder.append(" wxGroupId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "userName";
-    locala.yrM.put("userName", "TEXT");
-    localStringBuilder.append(" userName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "inviteUserName";
-    locala.yrM.put("inviteUserName", "TEXT");
-    localStringBuilder.append(" inviteUserName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "memberId";
-    locala.yrM.put("memberId", "LONG");
-    localStringBuilder.append(" memberId LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "status";
-    locala.yrM.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "createTime";
-    locala.yrM.put("createTime", "LONG");
-    localStringBuilder.append(" createTime LONG");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(54110);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(284632);
+    AppMethodBeat.o(284632);
   }
   
-  public final c.a getDBInfo()
+  public final void initConfig()
   {
-    return info;
+    AppMethodBeat.i(284642);
+    root(a.f.small_avatar_list).view(a.e.avatar).disable();
+    root(a.f.multitalk_select_contact_ui).view(a.e.root).disable();
+    AppMethodBeat.o(284642);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.a.b
  * JD-Core Version:    0.7.0.1
  */

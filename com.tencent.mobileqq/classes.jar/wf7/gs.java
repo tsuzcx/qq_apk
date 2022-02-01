@@ -48,55 +48,49 @@ public class gs
   {
     if (paramClass != null) {}
     Object localObject2;
-    label168:
-    label173:
     do
     {
-      for (;;)
+      try
       {
-        try
-        {
-          if (TextUtils.isEmpty(paramString)) {
-            break;
-          }
-          localObject1 = new StringBuffer(paramString);
-          if (paramVarArgs != null)
-          {
-            int i = 0;
-            if (i < paramVarArgs.length)
-            {
-              localObject2 = paramVarArgs[i];
-              ((StringBuffer)localObject1).append("+");
-              ((StringBuffer)localObject1).append(((Class)localObject2).getName());
-              i += 1;
-              continue;
-            }
-          }
-          str = ((StringBuffer)localObject1).toString();
-          localObject1 = (HashMap)sA.get(paramClass);
-          if (localObject1 != null) {
-            break label168;
-          }
-          localObject1 = new HashMap();
-          sA.put(paramClass, localObject1);
-          Method localMethod = (Method)((HashMap)localObject1).get(str);
-          localObject2 = localMethod;
-          if (localMethod != null) {
-            break label173;
-          }
-          localObject2 = paramClass.getDeclaredMethod(paramString, paramVarArgs);
-        }
-        catch (Throwable paramClass)
-        {
-          Object localObject1;
-          String str;
-          paramClass.printStackTrace();
+        if (TextUtils.isEmpty(paramString)) {
           return null;
         }
-        ((Method)localObject2).setAccessible(true);
-        ((HashMap)localObject1).put(str, localObject2);
-        return localObject2;
+        localObject1 = new StringBuffer(paramString);
+        if (paramVarArgs != null)
+        {
+          int i = 0;
+          while (i < paramVarArgs.length)
+          {
+            localObject2 = paramVarArgs[i];
+            ((StringBuffer)localObject1).append("+");
+            ((StringBuffer)localObject1).append(((Class)localObject2).getName());
+            i += 1;
+          }
+        }
+        str = ((StringBuffer)localObject1).toString();
+        localObject2 = (HashMap)sA.get(paramClass);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = new HashMap();
+          sA.put(paramClass, localObject1);
+        }
+        Method localMethod = (Method)((HashMap)localObject1).get(str);
+        localObject2 = localMethod;
+        if (localMethod != null) {
+          continue;
+        }
+        localObject2 = paramClass.getDeclaredMethod(paramString, paramVarArgs);
       }
+      catch (Throwable paramClass)
+      {
+        Object localObject1;
+        String str;
+        paramClass.printStackTrace();
+      }
+      ((Method)localObject2).setAccessible(true);
+      ((HashMap)localObject1).put(str, localObject2);
+      return localObject2;
       return null;
     } while (localObject2 != null);
     return null;
@@ -133,7 +127,7 @@ public class gs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gs
  * JD-Core Version:    0.7.0.1
  */

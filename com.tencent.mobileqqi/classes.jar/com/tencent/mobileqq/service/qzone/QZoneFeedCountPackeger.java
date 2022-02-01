@@ -22,7 +22,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneVipInfoManager;
 import cooperation.qzone.WNSStream;
-import gjd;
+import gjc;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -89,7 +89,7 @@ public class QZoneFeedCountPackeger
         ((UniAttribute)localObject2).setEncodeName("utf-8");
         ((UniAttribute)localObject2).decode(((QmfDownstream)localObject1).BusiBuff);
         localObject1 = (JceStruct)((UniAttribute)localObject2).get(a());
-        ThreadManager.b(new gjd(paramArrayOfByte, paramQQAppInterface));
+        ThreadManager.b(new gjc(paramArrayOfByte, paramQQAppInterface));
         return localObject1;
       }
       if (localObject1 != null)

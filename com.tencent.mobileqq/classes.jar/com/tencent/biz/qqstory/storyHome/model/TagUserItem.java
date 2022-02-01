@@ -1,26 +1,26 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
 import com.tencent.biz.qqstory.model.BaseUIItem;
+import com.tencent.biz.qqstory.model.item.IFeedOwner;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
-import uxe;
-import xoe;
-import xof;
+import com.tencent.biz.qqstory.takevideo.tag.TagItem;
+import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
 
 public class TagUserItem
   extends BaseUIItem
-  implements uxe
+  implements IFeedOwner
 {
   public long tagId;
-  public xoe tagItem;
+  public TagItem tagItem;
   public String tagName;
   
   public void convertFrom(qqstory_struct.TagItem paramTagItem)
   {
     if (paramTagItem.has())
     {
-      this.tagItem = new xoe(paramTagItem);
-      this.tagId = this.tagItem.a.jdField_a_of_type_Long;
-      this.tagName = this.tagItem.a.jdField_a_of_type_JavaLangString;
+      this.tagItem = new TagItem(paramTagItem);
+      this.tagId = this.tagItem.a.a;
+      this.tagName = this.tagItem.a.b;
     }
   }
   
@@ -71,7 +71,7 @@ public class TagUserItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.TagUserItem
  * JD-Core Version:    0.7.0.1
  */

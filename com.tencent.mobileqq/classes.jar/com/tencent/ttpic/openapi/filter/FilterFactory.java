@@ -26,77 +26,102 @@ public class FilterFactory
 {
   public static BaseFilter createFilter(int paramInt)
   {
-    Object localObject;
-    switch (paramInt)
+    if (paramInt != 80)
     {
-    default: 
-      return CameraFilterFactory.createFilterById4Local(paramInt);
-    case 0: 
-      return new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
-    case 125: 
-      return new DpiLensFilter();
-    case 1: 
-      return new AlphaAdjustFilter(3);
-    case 117: 
-      return new AlphaAdjustFilter(4);
-    case 2: 
-      return new BeautysFilter(0, 1);
-    case 3: 
-      return new Curve2D("rise.png");
-    case 4: 
-      return new BeautysFilter(0, 0);
-    case 5: 
-      return new QingYiFilter();
-    case 6: 
-      return new Curve2D("hudson.png");
-    case 7: 
-      return new BaibianFilter(0, null, 0.3F, 0.5F, 0.0F, 0.12F, 0.02F);
-    case 8: 
-      return new FlaresFilter(0);
-    case 9: 
-      return new Curve2D("xpro2.png");
-    case 80: 
-      return new HDRHSVFilter();
-    case 81: 
+      if (paramInt != 81)
+      {
+        if (paramInt != 87)
+        {
+          if (paramInt != 117)
+          {
+            if (paramInt != 125)
+            {
+              if (paramInt != 150)
+              {
+                if (paramInt != 202)
+                {
+                  if (paramInt != 214)
+                  {
+                    if (paramInt != 127)
+                    {
+                      if (paramInt != 128)
+                      {
+                        switch (paramInt)
+                        {
+                        default: 
+                          switch (paramInt)
+                          {
+                          default: 
+                            switch (paramInt)
+                            {
+                            default: 
+                              return CameraFilterFactory.createFilterById4Local(paramInt);
+                            case 122: 
+                              return new FrameMontageFilter(0);
+                            case 121: 
+                              return new MangaFilter(0);
+                            }
+                            return new PosterFilter(0);
+                          case 96: 
+                            return new CartoonFilter(2);
+                          case 95: 
+                            return new CartoonFilter(1);
+                          }
+                          return new CartoonFilter(0);
+                        case 12: 
+                          localObject = new Curve2D("danya.png");
+                          ((Curve2D)localObject).setMatrix(new float[] { 0.825F, 0.075F, 0.075F, 0.0F, 0.147F, 0.897F, 0.147F, 0.0F, 0.029F, 0.029F, 0.779F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F });
+                          return localObject;
+                        case 11: 
+                          localObject = new Curve2D("jingdianheibai.png");
+                          ((Curve2D)localObject).setMatrix(new float[] { 0.299F, 0.299F, 0.299F, 0.0F, 0.587F, 0.587F, 0.587F, 0.0F, 0.114F, 0.114F, 0.114F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F });
+                          return localObject;
+                        case 10: 
+                          return new Curve2D("qiurisiyu.png");
+                        case 9: 
+                          return new Curve2D("xpro2.png");
+                        case 8: 
+                          return new FlaresFilter(0);
+                        case 7: 
+                          return new BaibianFilter(0, null, 0.3F, 0.5F, 0.0F, 0.12F, 0.02F);
+                        case 6: 
+                          return new Curve2D("hudson.png");
+                        case 5: 
+                          return new QingYiFilter();
+                        case 4: 
+                          return new BeautysFilter(0, 0);
+                        case 3: 
+                          return new Curve2D("rise.png");
+                        case 2: 
+                          return new BeautysFilter(0, 1);
+                        case 1: 
+                          return new AlphaAdjustFilter(3);
+                        }
+                        return new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+                      }
+                      localObject = new BaseFilter(BaseFilter.getFragmentShader(67));
+                      ((BaseFilter)localObject).addParam(new TextureResParam("inputImageTexture2", "sketch.png", 33986));
+                      return localObject;
+                    }
+                    return new BaseFilter(BaseFilter.getFragmentShader(66));
+                  }
+                  return new ShareFilm_1();
+                }
+                return new ColorFilterSH();
+              }
+              return new FilterWraper("Curve2D/amaro");
+            }
+            return new DpiLensFilter();
+          }
+          return new AlphaAdjustFilter(4);
+        }
+        Object localObject = new BaseFilter(BaseFilter.getFragmentShader(10));
+        ((BaseFilter)localObject).addParam(new TextureResParam("inputImageTexture2", "sketch.png", 33986));
+        return localObject;
+      }
       return new NightRGBStretchFilter();
-    case 10: 
-      return new Curve2D("qiurisiyu.png");
-    case 11: 
-      localObject = new Curve2D("jingdianheibai.png");
-      ((Curve2D)localObject).setMatrix(new float[] { 0.299F, 0.299F, 0.299F, 0.0F, 0.587F, 0.587F, 0.587F, 0.0F, 0.114F, 0.114F, 0.114F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F });
-      return localObject;
-    case 12: 
-      localObject = new Curve2D("danya.png");
-      ((Curve2D)localObject).setMatrix(new float[] { 0.825F, 0.075F, 0.075F, 0.0F, 0.147F, 0.897F, 0.147F, 0.0F, 0.029F, 0.029F, 0.779F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F });
-      return localObject;
-    case 87: 
-      localObject = new BaseFilter(BaseFilter.getFragmentShader(10));
-      ((BaseFilter)localObject).addParam(new TextureResParam("inputImageTexture2", "sketch.png", 33986));
-      return localObject;
-    case 128: 
-      localObject = new BaseFilter(BaseFilter.getFragmentShader(67));
-      ((BaseFilter)localObject).addParam(new TextureResParam("inputImageTexture2", "sketch.png", 33986));
-      return localObject;
-    case 127: 
-      return new BaseFilter(BaseFilter.getFragmentShader(66));
-    case 94: 
-      return new CartoonFilter(0);
-    case 95: 
-      return new CartoonFilter(1);
-    case 96: 
-      return new CartoonFilter(2);
-    case 120: 
-      return new PosterFilter(0);
-    case 121: 
-      return new MangaFilter(0);
-    case 122: 
-      return new FrameMontageFilter(0);
-    case 202: 
-      return new ColorFilterSH();
-    case 214: 
-      return new ShareFilm_1();
     }
-    return new FilterWraper("Curve2D/amaro");
+    return new HDRHSVFilter();
   }
   
   public static BaseFilter createFilter(String paramString, int paramInt)
@@ -116,201 +141,185 @@ public class FilterFactory
   
   public static int filterIdFromString(String paramString, int paramInt)
   {
-    int i = 80;
+    paramInt = 0;
     if (paramString == null) {
       return 0;
     }
-    if (paramString.equals("MIC_Montage")) {
+    if (paramString.equals("MIC_Montage"))
+    {
       paramInt = 122;
     }
-    for (;;)
+    else
     {
-      if (paramString.equals("MIC_PTU_SNOW"))
+      if (paramString.equals("MIC_GLOW")) {}
+      do
       {
-        return 222;
-        paramInt = i;
-        if (paramString.equals("MIC_GLOW")) {
-          continue;
-        }
+        paramInt = 80;
+        break label374;
         if (paramString.equals("MIC_AVG_ROUND"))
         {
           paramInt = 119;
-          continue;
+          break label374;
         }
         if (paramString.equals("MIC_OILPAINTING"))
         {
           paramInt = 99;
-          continue;
+          break label374;
         }
         if (paramString.equals("MIC_MANGASAVE"))
         {
           paramInt = 121;
-          continue;
+          break label374;
         }
         if (paramString.equals("MIC_Poster"))
         {
           paramInt = 120;
-          continue;
+          break label374;
         }
-        if ((paramString.equals("MR_COLORPENCIL")) || (paramString.equals("MIC_COLORPENCIL")))
-        {
-          paramInt = 87;
-          continue;
+        if ((paramString.equals("MR_COLORPENCIL")) || (paramString.equals("MIC_COLORPENCIL"))) {
+          break;
         }
         if (paramString.equals("MIC_MARK"))
         {
           paramInt = 127;
-          continue;
+          break label374;
         }
         if (paramString.equals("MIC_NEWSKETCH"))
         {
           paramInt = 128;
-          continue;
+          break label374;
         }
         if (paramString.equals("MIC_CartoonRomantic"))
         {
           paramInt = 96;
-          continue;
+          break label374;
         }
-        if (paramString.equals("MIC_GLOW_CPU_FILTER"))
+        if (paramString.equals("MIC_GLOW_CPU_FILTER")) {}
+        while (paramString.equals("MIC_GLOW_FORG_FILTER"))
         {
           paramInt = 126;
-          continue;
-        }
-        if (paramString.equals("MIC_GLOW_FORG_FILTER"))
-        {
-          paramInt = 126;
-          continue;
+          break;
         }
         if (paramString.equals("MIC_Portait"))
         {
           paramInt = 2;
-          continue;
+          break label374;
         }
-        paramInt = i;
-        if (paramString.equals("MIC_GLOW")) {
-          continue;
-        }
-        if (paramString.equals("MIC_Flares"))
-        {
-          paramInt = 8;
-          continue;
-        }
-        if (paramString.equals("MIC_Portait_NB"))
-        {
-          paramInt = 4;
-          continue;
-        }
-        if (paramString.equals("MIC_LENS"))
-        {
-          paramInt = 0;
-          continue;
-        }
+      } while (paramString.equals("MIC_GLOW"));
+      if (paramString.equals("MIC_Flares")) {
+        paramInt = 8;
+      } else if (paramString.equals("MIC_Portait_NB")) {
+        paramInt = 4;
+      } else if (!paramString.equals("MIC_LENS")) {
         if (paramString.equals("MIC_SHARE_FILM"))
         {
           paramInt = 214;
-          continue;
         }
-        if (paramString.equals("MIC_ABAO"))
+        else if (paramString.equals("MIC_ABAO"))
         {
           paramInt = 83;
-          continue;
         }
-        if ((paramString.equals("MIC_COLOR_SH")) || (paramString.equals("MIC_PTU_COLOR_SH")))
+        else if ((!paramString.equals("MIC_COLOR_SH")) && (!paramString.equals("MIC_PTU_COLOR_SH")))
+        {
+          if ((!paramString.equals("MIC_SHISHANG_SH")) && (!paramString.equals("MIC_PTU_SHISHANG_SH")))
+          {
+            if ((paramString.equals("MIC_FUGU_SH")) || (paramString.equals("MIC_PTU_FUGU_SH"))) {
+              paramInt = 201;
+            }
+          }
+          else {
+            paramInt = 200;
+          }
+        }
+        else
         {
           paramInt = 202;
-          continue;
-        }
-        if ((paramString.equals("MIC_SHISHANG_SH")) || (paramString.equals("MIC_PTU_SHISHANG_SH")))
-        {
-          paramInt = 200;
-          continue;
-        }
-        if ((paramString.equals("MIC_FUGU_SH")) || (paramString.equals("MIC_PTU_FUGU_SH"))) {
-          paramInt = 201;
+          break label374;
+          paramInt = 87;
         }
       }
-      else
-      {
-        if (paramString.equals("MIC_PTU_GAOLENG")) {
-          return 223;
-        }
-        if (paramString.equals("MIC_PTU_FEN")) {
-          return 204;
-        }
-        if (paramString.equals("MIC_PTU_FUGUHUANG")) {
-          return 205;
-        }
-        if (paramString.equals("MIC_PTU_GOGUANGLANZI")) {
-          return 206;
-        }
-        if (paramString.equals("MIC_PTU_HEIBAI")) {
-          return 207;
-        }
-        if (paramString.equals("MIC_PTU_HUAIJIU")) {
-          return 208;
-        }
-        if (paramString.equals("MIC_PTU_JIAOPIAN")) {
-          return 209;
-        }
-        if (paramString.equals("MIC_PTU_LAN")) {
-          return 210;
-        }
-        if (paramString.equals("MIC_PTU_LANTUISE")) {
-          return 211;
-        }
-        if (paramString.equals("MIC_PTU_MOLV")) {
-          return 212;
-        }
-        if (paramString.equals("MIC_PTU_NUANHUANG")) {
-          return 213;
-        }
-        if (paramString.equals("MIC_PTU_FEN2")) {
-          return 215;
-        }
-        if (paramString.equals("MIC_PTU_HEIBAI2")) {
-          return 216;
-        }
-        if (paramString.equals("MIC_PTU_DRAMA")) {
-          return 217;
-        }
-        if (paramString.equals("MIC_PTU_NIGHT")) {
-          return 218;
-        }
-        if (paramString.equals("MIC_PTU_FUGU")) {
-          return 219;
-        }
-        if (paramString.equals("MIC_PTU_HEIBAI3")) {
-          return 220;
-        }
-        if (paramString.equals("MIC_AMARO")) {
-          return 5;
-        }
-        if (paramString.equals("MIC_EARLYBIRD")) {
-          return 10;
-        }
-        if (paramString.equals("MIC_HUDSON")) {
-          return 6;
-        }
-        if (paramString.equals("MIC_RISE")) {
-          return 3;
-        }
-        if ((paramString.equals("MIC_XPRO2")) || (paramString.equals("MIC_XPRO"))) {
-          return 9;
-        }
-        if (paramString.equals("WEICO_FILM")) {
-          return 12;
-        }
-        if (paramString.equals("WEICO_BW")) {
-          return 11;
-        }
-        if (paramString.equals("MIC_TEST")) {
-          return 150;
-        }
-        return paramInt;
-      }
-      paramInt = 0;
     }
+    label374:
+    if (paramString.equals("MIC_PTU_SNOW")) {
+      return 222;
+    }
+    if (paramString.equals("MIC_PTU_GAOLENG")) {
+      return 223;
+    }
+    if (paramString.equals("MIC_PTU_FEN")) {
+      return 204;
+    }
+    if (paramString.equals("MIC_PTU_FUGUHUANG")) {
+      return 205;
+    }
+    if (paramString.equals("MIC_PTU_GOGUANGLANZI")) {
+      return 206;
+    }
+    if (paramString.equals("MIC_PTU_HEIBAI")) {
+      return 207;
+    }
+    if (paramString.equals("MIC_PTU_HUAIJIU")) {
+      return 208;
+    }
+    if (paramString.equals("MIC_PTU_JIAOPIAN")) {
+      return 209;
+    }
+    if (paramString.equals("MIC_PTU_LAN")) {
+      return 210;
+    }
+    if (paramString.equals("MIC_PTU_LANTUISE")) {
+      return 211;
+    }
+    if (paramString.equals("MIC_PTU_MOLV")) {
+      return 212;
+    }
+    if (paramString.equals("MIC_PTU_NUANHUANG")) {
+      return 213;
+    }
+    if (paramString.equals("MIC_PTU_FEN2")) {
+      return 215;
+    }
+    if (paramString.equals("MIC_PTU_HEIBAI2")) {
+      return 216;
+    }
+    if (paramString.equals("MIC_PTU_DRAMA")) {
+      return 217;
+    }
+    if (paramString.equals("MIC_PTU_NIGHT")) {
+      return 218;
+    }
+    if (paramString.equals("MIC_PTU_FUGU")) {
+      return 219;
+    }
+    if (paramString.equals("MIC_PTU_HEIBAI3")) {
+      return 220;
+    }
+    if (paramString.equals("MIC_AMARO")) {
+      return 5;
+    }
+    if (paramString.equals("MIC_EARLYBIRD")) {
+      return 10;
+    }
+    if (paramString.equals("MIC_HUDSON")) {
+      return 6;
+    }
+    if (paramString.equals("MIC_RISE")) {
+      return 3;
+    }
+    if ((!paramString.equals("MIC_XPRO2")) && (!paramString.equals("MIC_XPRO")))
+    {
+      if (paramString.equals("WEICO_FILM")) {
+        return 12;
+      }
+      if (paramString.equals("WEICO_BW")) {
+        return 11;
+      }
+      if (paramString.equals("MIC_TEST")) {
+        return 150;
+      }
+      return paramInt;
+    }
+    return 9;
   }
   
   public static int initMagicEngine(int paramInt1, int paramInt2)
@@ -332,7 +341,7 @@ public class FilterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FilterFactory
  * JD-Core Version:    0.7.0.1
  */

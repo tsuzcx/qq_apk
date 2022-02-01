@@ -11,20 +11,20 @@ public class HexUtil
   
   public static String byte2HexStr(byte paramByte)
   {
-    AppMethodBeat.i(117183);
+    AppMethodBeat.i(109737);
     int i = digits[(paramByte & 0xF)];
     paramByte = (byte)(paramByte >>> 4);
     String str = new String(new char[] { digits[(paramByte & 0xF)], i });
-    AppMethodBeat.o(117183);
+    AppMethodBeat.o(109737);
     return str;
   }
   
   public static String bytes2HexStr(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(117184);
+    AppMethodBeat.i(109738);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      AppMethodBeat.o(117184);
+      AppMethodBeat.o(109738);
       return null;
     }
     char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
@@ -34,7 +34,7 @@ public class HexUtil
       if (i >= paramArrayOfByte.length)
       {
         paramArrayOfByte = new String(arrayOfChar);
-        AppMethodBeat.o(117184);
+        AppMethodBeat.o(109738);
         return paramArrayOfByte;
       }
       int j = paramArrayOfByte[i];
@@ -61,24 +61,24 @@ public class HexUtil
   
   public static byte hexStr2Byte(String paramString)
   {
-    AppMethodBeat.i(117185);
+    AppMethodBeat.i(109739);
     if ((paramString != null) && (paramString.length() == 1))
     {
       byte b = char2Byte(paramString.charAt(0));
-      AppMethodBeat.o(117185);
+      AppMethodBeat.o(109739);
       return b;
     }
-    AppMethodBeat.o(117185);
+    AppMethodBeat.o(109739);
     return 0;
   }
   
   public static byte[] hexStr2Bytes(String paramString)
   {
-    AppMethodBeat.i(117186);
+    AppMethodBeat.i(109740);
     if ((paramString == null) || (paramString.equals("")))
     {
       paramString = emptybytes;
-      AppMethodBeat.o(117186);
+      AppMethodBeat.o(109740);
       return paramString;
     }
     byte[] arrayOfByte = new byte[paramString.length() / 2];
@@ -87,7 +87,7 @@ public class HexUtil
     {
       if (i >= arrayOfByte.length)
       {
-        AppMethodBeat.o(117186);
+        AppMethodBeat.o(109740);
         return arrayOfByte;
       }
       char c1 = paramString.charAt(i * 2);
@@ -99,17 +99,17 @@ public class HexUtil
   
   public static void main(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(117187);
+    AppMethodBeat.i(109741);
     try
     {
       paramArrayOfString = "Hello WebSocket World?".getBytes("gbk");
       System.out.println(bytes2HexStr(paramArrayOfString));
-      AppMethodBeat.o(117187);
+      AppMethodBeat.o(109741);
       return;
     }
     catch (UnsupportedEncodingException paramArrayOfString)
     {
-      AppMethodBeat.o(117187);
+      AppMethodBeat.o(109741);
     }
   }
 }

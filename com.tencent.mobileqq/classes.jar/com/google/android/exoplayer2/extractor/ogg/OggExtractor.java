@@ -27,30 +27,31 @@ public class OggExtractor
   private boolean sniffInternal(ExtractorInput paramExtractorInput)
   {
     Object localObject = new OggPageHeader();
-    if ((!((OggPageHeader)localObject).populate(paramExtractorInput, true)) || ((((OggPageHeader)localObject).type & 0x2) != 2)) {
-      return false;
-    }
-    int i = Math.min(((OggPageHeader)localObject).bodySize, 8);
-    localObject = new ParsableByteArray(i);
-    paramExtractorInput.peekFully(((ParsableByteArray)localObject).data, 0, i);
-    if (FlacReader.verifyBitstreamType(resetPosition((ParsableByteArray)localObject))) {
-      this.streamReader = new FlacReader();
-    }
-    for (;;)
+    if (((OggPageHeader)localObject).populate(paramExtractorInput, true))
     {
-      return true;
+      if ((((OggPageHeader)localObject).type & 0x2) != 2) {
+        return false;
+      }
+      int i = Math.min(((OggPageHeader)localObject).bodySize, 8);
+      localObject = new ParsableByteArray(i);
+      paramExtractorInput.peekFully(((ParsableByteArray)localObject).data, 0, i);
+      if (FlacReader.verifyBitstreamType(resetPosition((ParsableByteArray)localObject)))
+      {
+        this.streamReader = new FlacReader();
+        return true;
+      }
       if (VorbisReader.verifyBitstreamType(resetPosition((ParsableByteArray)localObject)))
       {
         this.streamReader = new VorbisReader();
+        return true;
       }
-      else
+      if (OpusReader.verifyBitstreamType(resetPosition((ParsableByteArray)localObject)))
       {
-        if (!OpusReader.verifyBitstreamType(resetPosition((ParsableByteArray)localObject))) {
-          break;
-        }
         this.streamReader = new OpusReader();
+        return true;
       }
     }
+    return false;
   }
   
   public void init(ExtractorOutput paramExtractorOutput)
@@ -60,12 +61,12 @@ public class OggExtractor
   
   public int read(ExtractorInput paramExtractorInput, PositionHolder paramPositionHolder)
   {
-    if (this.streamReader == null)
-    {
-      if (!sniffInternal(paramExtractorInput)) {
+    if (this.streamReader == null) {
+      if (sniffInternal(paramExtractorInput)) {
+        paramExtractorInput.resetPeekPosition();
+      } else {
         throw new ParserException("Failed to determine bitstream type");
       }
-      paramExtractorInput.resetPeekPosition();
     }
     if (!this.streamReaderInitialized)
     {
@@ -81,8 +82,9 @@ public class OggExtractor
   
   public void seek(long paramLong1, long paramLong2)
   {
-    if (this.streamReader != null) {
-      this.streamReader.seek(paramLong1, paramLong2);
+    StreamReader localStreamReader = this.streamReader;
+    if (localStreamReader != null) {
+      localStreamReader.seek(paramLong1, paramLong2);
     }
   }
   
@@ -93,13 +95,17 @@ public class OggExtractor
       boolean bool = sniffInternal(paramExtractorInput);
       return bool;
     }
-    catch (ParserException paramExtractorInput) {}
+    catch (ParserException paramExtractorInput)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.OggExtractor
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,11 @@ import java.util.List;
 
 public class FlingAllowProvider
 {
-  private static List<String> a = new ArrayList();
+  private static List<String> sWhiteList = new ArrayList();
   
   public static boolean contain(String paramString)
   {
-    return a.contains(paramString);
+    return sWhiteList.contains(paramString);
   }
 }
 

@@ -30,14 +30,20 @@ public class DomObjectFactory
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e(TAG, "DomObjectFactory Exception type:[" + paramString + "] message:" + localException.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DomObjectFactory Exception type:[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("] message:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e(str, localStringBuilder.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectFactory
  * JD-Core Version:    0.7.0.1
  */

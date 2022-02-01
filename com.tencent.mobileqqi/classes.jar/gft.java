@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.data.QCallRecord;
+import com.tencent.mobileqq.qcall.QCallProxy;
+import java.util.Comparator;
 
 public class gft
-  extends DiscussionObserver
+  implements Comparator
 {
-  public gft(QCallFacade paramQCallFacade) {}
+  public gft(QCallProxy paramQCallProxy) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
   {
-    this.a.a(paramString, 3000);
+    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
+      return 0;
+    }
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
   }
 }
 

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/b" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:gravity="center" android:id="@id/cl" android:layout_width="120.0dip" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" />
-        <android.support.wearable.view.DelayedConfirmationView android:id="@id/cm" android:layout_width="60.0dip" android:layout_height="60.0dip" />
-    </LinearLayout>
-</RelativeLayout>

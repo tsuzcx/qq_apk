@@ -1,18 +1,8 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.DatabaseErrorHandler;
-import com.tencent.wcdb.DefaultDatabaseErrorHandler;
-import com.tencent.wcdb.database.SQLiteDatabase;
-
-public final class fu
-  implements DatabaseErrorHandler
+public abstract interface fu
 {
-  private DefaultDatabaseErrorHandler a = new DefaultDatabaseErrorHandler();
-  
-  public void onCorruption(SQLiteDatabase paramSQLiteDatabase)
-  {
-    this.a.onCorruption(paramSQLiteDatabase);
-  }
+  public abstract void a();
 }
 
 

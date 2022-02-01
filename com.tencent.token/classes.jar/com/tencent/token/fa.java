@@ -1,141 +1,78 @@
 package com.tencent.token;
 
-abstract class fa
-  extends fb
+import android.content.Context;
+import android.view.MenuItem;
+import android.view.SubMenu;
+import android.view.View;
+
+public abstract class fa
 {
-  static final byte[] c = new byte[''];
-  final byte[] a;
-  long b;
-  private final String d;
-  private final int e;
-  private final int f;
-  private int g;
+  public a a;
+  public b b;
+  private final Context c;
   
-  static
+  public fa(Context paramContext)
   {
-    c[0] = -128;
+    this.c = paramContext;
   }
   
-  fa(fa paramfa)
+  public abstract View a();
+  
+  public View a(MenuItem paramMenuItem)
   {
-    this.d = paramfa.d;
-    this.e = paramfa.e;
-    this.f = paramfa.f;
-    if (paramfa.a == null) {
-      this.a = null;
-    }
-    for (;;)
+    return a();
+  }
+  
+  public void a(SubMenu paramSubMenu) {}
+  
+  public void a(b paramb)
+  {
+    if (this.b != null)
     {
-      this.g = paramfa.g;
-      this.b = paramfa.b;
-      return;
-      this.a = new byte[paramfa.a.length];
-      System.arraycopy(paramfa.a, 0, this.a, 0, this.a.length);
+      StringBuilder localStringBuilder = new StringBuilder("setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this ");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" instance while it is still in use somewhere else?");
+    }
+    this.b = paramb;
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    a locala = this.a;
+    if (locala != null) {
+      locala.a(paramBoolean);
     }
   }
   
-  fa(String paramString, int paramInt1, int paramInt2)
+  public boolean b()
   {
-    this.d = paramString;
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.a = new byte[paramInt2];
+    return false;
   }
   
-  protected final void a()
+  public boolean c()
   {
-    if (this.b == 0L) {
-      return;
-    }
-    c();
-    this.g = 0;
-    this.b = 0L;
+    return true;
   }
   
-  abstract void a(byte[] paramArrayOfByte, int paramInt);
-  
-  protected final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public boolean d()
   {
-    if (paramInt2 == 0) {}
-    int i;
-    int j;
-    do
-    {
-      return;
-      if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > paramArrayOfByte.length - paramInt2)) {
-        throw new ArrayIndexOutOfBoundsException();
-      }
-      if (this.b < 0L) {
-        a();
-      }
-      this.b += paramInt2;
-      i = paramInt1;
-      j = paramInt2;
-      if (this.g != 0)
-      {
-        i = Math.min(paramInt2, this.f - this.g);
-        System.arraycopy(paramArrayOfByte, paramInt1, this.a, this.g, i);
-        this.g += i;
-        paramInt1 += i;
-        paramInt2 -= i;
-        i = paramInt1;
-        j = paramInt2;
-        if (this.g >= this.f)
-        {
-          a(this.a, 0);
-          this.g = 0;
-          j = paramInt2;
-          i = paramInt1;
-        }
-      }
-      while (j >= this.f)
-      {
-        a(paramArrayOfByte, i);
-        j -= this.f;
-        i += this.f;
-      }
-    } while (j <= 0);
-    System.arraycopy(paramArrayOfByte, i, this.a, 0, j);
-    this.g = j;
+    return false;
   }
   
-  public byte[] a(byte[] paramArrayOfByte)
+  public boolean e()
   {
-    a(paramArrayOfByte, 0, paramArrayOfByte.length);
-    return b();
+    return false;
   }
   
-  protected final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static abstract interface a
   {
-    if (paramInt2 < this.e) {
-      throw new Exception("Length must be at least " + this.e + " for " + this.d + "digests");
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > paramArrayOfByte.length - paramInt2)) {
-      throw new Exception("Buffer too short to store digest");
-    }
-    if (this.b < 0L) {
-      a();
-    }
-    b(paramArrayOfByte, paramInt1);
-    this.b = -1L;
-    return this.e;
+    public abstract void a(boolean paramBoolean);
   }
   
-  abstract void b(byte[] paramArrayOfByte, int paramInt);
-  
-  protected final byte[] b()
+  public static abstract interface b
   {
-    byte[] arrayOfByte = new byte[this.e];
-    try
-    {
-      b(arrayOfByte, 0, arrayOfByte.length);
-      return arrayOfByte;
-    }
-    catch (Exception localException) {}
-    return null;
+    public abstract void a();
   }
-  
-  abstract void c();
 }
 
 

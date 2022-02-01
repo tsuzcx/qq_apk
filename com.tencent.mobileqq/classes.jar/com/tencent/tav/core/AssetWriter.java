@@ -1,14 +1,15 @@
 package com.tencent.tav.core;
 
-import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
-import android.view.Surface;
+import android.support.annotation.RequiresApi;
 import com.tencent.tav.asset.MetadataItem;
 import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.decoder.CodecHelper;
+import com.tencent.tav.decoder.AssetWriterVideoEncoder;
 import com.tencent.tav.decoder.EncoderWriter;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.RenderContextParams;
+import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tav.decoder.muxer.MediaMuxerFactory.MediaMuxerCreator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,6 +22,7 @@ public class AssetWriter
   private static final String TAG = "AssetWriter";
   private List<Integer> availableMediaTypes;
   private String directoryForTemporaryFiles;
+  private ExportConfig encodeOption;
   private EncoderWriter encoderWriter;
   private CMTime endTime = new CMTime(9223372036854775807L);
   private int errCode;
@@ -28,11 +30,10 @@ public class AssetWriter
   private List<AssetWriterInput> inputs = new ArrayList();
   private List<MetadataItem> metadata;
   private String outputFileType;
-  private Surface rendSurface;
   private RenderContext renderContext;
   private RenderContextParams renderContextParams;
   private boolean shouldOptimizeForNetworkUse;
-  private CMTime startTime = new CMTime(0L);
+  CMTime startTime = new CMTime(0L);
   private AssetWriter.AssetWriterStatus status;
   private String videoOutputPath;
   
@@ -46,58 +47,61 @@ public class AssetWriter
   {
     Iterator localIterator = this.inputs.iterator();
     int i = 1;
-    AssetWriterInput localAssetWriterInput;
     int j;
-    if (localIterator.hasNext())
+    AssetWriterInput localAssetWriterInput;
+    for (;;)
     {
-      localAssetWriterInput = (AssetWriterInput)localIterator.next();
-      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusCompleted) {}
-      for (j = 1;; j = 0)
-      {
-        i = j & i;
+      boolean bool = localIterator.hasNext();
+      j = 0;
+      if (!bool) {
         break;
       }
-    }
-    if (i != 0) {
-      this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
-    }
-    do
-    {
-      return;
-      while (!localIterator.hasNext())
-      {
-        localIterator = this.inputs.iterator();
-        i = 1;
-        if (localIterator.hasNext())
-        {
-          localAssetWriterInput = (AssetWriterInput)localIterator.next();
-          if ((this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusWriting) || (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusCompleted)) {}
-          for (j = 1;; j = 0)
-          {
-            i = j & i;
-            break;
-          }
-        }
-        if (i != 0)
-        {
-          this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusWriting;
-          return;
-        }
-        localIterator = this.inputs.iterator();
-        while (localIterator.hasNext())
-        {
-          localAssetWriterInput = (AssetWriterInput)localIterator.next();
-          if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusFailed)
-          {
-            this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusFailed;
-            return;
-          }
-        }
-        localIterator = this.inputs.iterator();
-      }
       localAssetWriterInput = (AssetWriterInput)localIterator.next();
-    } while (this.inputStatusHashMap.get(localAssetWriterInput) != AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled);
-    this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
+      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusCompleted) {
+        j = 1;
+      }
+      i &= j;
+    }
+    if (i != 0)
+    {
+      this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
+      return;
+    }
+    localIterator = this.inputs.iterator();
+    i = 1;
+    while (localIterator.hasNext())
+    {
+      localAssetWriterInput = (AssetWriterInput)localIterator.next();
+      if ((this.inputStatusHashMap.get(localAssetWriterInput) != AssetWriter.AssetWriterStatus.AssetWriterStatusWriting) && (this.inputStatusHashMap.get(localAssetWriterInput) != AssetWriter.AssetWriterStatus.AssetWriterStatusCompleted)) {
+        j = 0;
+      } else {
+        j = 1;
+      }
+      i &= j;
+    }
+    if (i != 0)
+    {
+      this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusWriting;
+      return;
+    }
+    localIterator = this.inputs.iterator();
+    while (localIterator.hasNext())
+    {
+      localAssetWriterInput = (AssetWriterInput)localIterator.next();
+      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusFailed)
+      {
+        this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusFailed;
+        return;
+      }
+    }
+    localIterator = this.inputs.iterator();
+    while (localIterator.hasNext())
+    {
+      localAssetWriterInput = (AssetWriterInput)localIterator.next();
+      if (this.inputStatusHashMap.get(localAssetWriterInput) == AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled) {
+        this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
+      }
+    }
   }
   
   public void addInput(@NonNull AssetWriterInput paramAssetWriterInput)
@@ -120,126 +124,21 @@ public class AssetWriter
     return true;
   }
   
-  public boolean canApplyOutputSettings(HashMap<String, Object> paramHashMap, int paramInt)
-  {
-    int j = 2;
-    int i = -1;
-    boolean bool = true;
-    String str;
-    label55:
-    label100:
-    int k;
-    if (paramInt == 1)
-    {
-      if (paramHashMap.containsKey("mime"))
-      {
-        str = (String)paramHashMap.get("mime");
-        if (!paramHashMap.containsKey("width")) {
-          break label150;
-        }
-        paramInt = ((Integer)paramHashMap.get("width")).intValue();
-        if (paramHashMap.containsKey("height")) {
-          i = ((Integer)paramHashMap.get("height")).intValue();
-        }
-        if (!paramHashMap.containsKey("frame-rate")) {
-          break label155;
-        }
-        j = ((Integer)paramHashMap.get("frame-rate")).intValue();
-        if (!paramHashMap.containsKey("bitrate")) {
-          break label162;
-        }
-      }
-      label150:
-      label155:
-      label162:
-      for (k = ((Integer)paramHashMap.get("bitrate")).intValue();; k = 8000000)
-      {
-        if (Build.VERSION.SDK_INT < 21) {
-          break label169;
-        }
-        return CodecHelper.checkVideoOutSupported(paramInt, i, j, k, str);
-        str = "video/avc";
-        break;
-        paramInt = -1;
-        break label55;
-        j = 30;
-        break label100;
-      }
-      label169:
-      return (paramInt > 0) && (i > 0);
-    }
-    if (paramInt == 2)
-    {
-      if (paramHashMap.containsKey("mime"))
-      {
-        str = (String)paramHashMap.get("mime");
-        paramInt = j;
-        if (paramHashMap.containsKey("aac-profile")) {
-          paramInt = ((Integer)paramHashMap.get("aac-profile")).intValue();
-        }
-        if (!paramHashMap.containsKey("bitrate")) {
-          break label325;
-        }
-        i = ((Integer)paramHashMap.get("bitrate")).intValue();
-        label253:
-        if (!paramHashMap.containsKey("channel-count")) {
-          break label331;
-        }
-        j = ((Integer)paramHashMap.get("channel-count")).intValue();
-        label276:
-        if (!paramHashMap.containsKey("sample-rate")) {
-          break label337;
-        }
-      }
-      label325:
-      label331:
-      label337:
-      for (k = ((Integer)paramHashMap.get("sample-rate")).intValue();; k = 44100)
-      {
-        if (Build.VERSION.SDK_INT < 21) {
-          break label344;
-        }
-        return CodecHelper.checkAudioOutSupported(i, j, k, str);
-        str = "audio/mp4a-latm";
-        break;
-        i = 8000000;
-        break label253;
-        j = 1;
-        break label276;
-      }
-      label344:
-      if ((paramInt > 0) && (i > 0) && (j > 0) && (k > 0)) {}
-      for (;;)
-      {
-        return bool;
-        bool = false;
-      }
-    }
-    return false;
-  }
-  
   public void cancelWriting()
   {
-    if (this.encoderWriter != null)
+    Object localObject = this.encoderWriter;
+    if (localObject != null)
     {
-      this.encoderWriter.stop();
+      ((EncoderWriter)localObject).stop();
       this.encoderWriter = null;
     }
-    Iterator localIterator = this.inputs.iterator();
-    while (localIterator.hasNext())
+    localObject = this.inputs.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      AssetWriterInput localAssetWriterInput = (AssetWriterInput)localIterator.next();
+      AssetWriterInput localAssetWriterInput = (AssetWriterInput)((Iterator)localObject).next();
       this.inputStatusHashMap.put(localAssetWriterInput, AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled);
     }
     this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
-  }
-  
-  public Surface createInputSurface()
-  {
-    if (this.encoderWriter != null) {
-      return this.encoderWriter.createInputSurface();
-    }
-    return null;
   }
   
   public EncoderWriter encoderWriter()
@@ -254,21 +153,18 @@ public class AssetWriter
   
   public boolean finishWriting()
   {
-    if (this.encoderWriter != null)
+    Object localObject = this.encoderWriter;
+    if (localObject != null)
     {
-      this.encoderWriter.stop();
+      ((EncoderWriter)localObject).stop();
       this.encoderWriter = null;
     }
     this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCompleted;
-    if (this.renderContext != null)
+    localObject = this.renderContext;
+    if (localObject != null)
     {
-      this.renderContext.release();
+      ((RenderContext)localObject).release();
       this.renderContext = null;
-    }
-    if (this.rendSurface != null)
-    {
-      this.rendSurface.release();
-      this.rendSurface = null;
     }
     return true;
   }
@@ -323,13 +219,17 @@ public class AssetWriter
     return this.shouldOptimizeForNetworkUse;
   }
   
+  @RequiresApi(api=18)
   public RenderContext renderContext()
   {
-    if ((this.renderContext == null) && (this.encoderWriter != null))
+    if (this.renderContext == null)
     {
-      this.rendSurface = this.encoderWriter.createInputSurface();
-      this.renderContext = new RenderContext(this.encoderWriter.getOutWidth(), this.encoderWriter.getOutHeight(), this.rendSurface);
-      this.renderContext.setParams(this.renderContextParams);
+      EncoderWriter localEncoderWriter = this.encoderWriter;
+      if (localEncoderWriter != null)
+      {
+        this.renderContext = localEncoderWriter.createRenderContext(localEncoderWriter.getOutWidth(), this.encoderWriter.getOutHeight());
+        this.renderContext.setParams(this.renderContextParams);
+      }
     }
     return this.renderContext;
   }
@@ -337,6 +237,11 @@ public class AssetWriter
   public void setDirectoryForTemporaryFiles(String paramString)
   {
     this.directoryForTemporaryFiles = paramString;
+  }
+  
+  public void setEncodeOption(ExportConfig paramExportConfig)
+  {
+    this.encodeOption = paramExportConfig;
   }
   
   public void setMetadata(List<MetadataItem> paramList)
@@ -347,8 +252,9 @@ public class AssetWriter
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
     this.renderContextParams = paramRenderContextParams;
-    if (this.renderContext != null) {
-      this.renderContext.setParams(paramRenderContextParams);
+    RenderContext localRenderContext = this.renderContext;
+    if (localRenderContext != null) {
+      localRenderContext.setParams(paramRenderContextParams);
     }
   }
   
@@ -362,7 +268,8 @@ public class AssetWriter
     this.startTime = paramCMTime;
   }
   
-  public boolean startWriting()
+  @RequiresApi(api=18)
+  public boolean startWriting(AssetWriterVideoEncoder paramAssetWriterVideoEncoder, MediaMuxerFactory.MediaMuxerCreator paramMediaMuxerCreator)
   {
     if (this.videoOutputPath == null) {
       return false;
@@ -370,24 +277,26 @@ public class AssetWriter
     cancelWriting();
     try
     {
-      this.encoderWriter = new EncoderWriter(this.videoOutputPath);
-      Iterator localIterator = this.inputs.iterator();
-      while (localIterator.hasNext()) {
-        ((AssetWriterInput)localIterator.next()).initConfig(this);
+      this.encoderWriter = new EncoderWriter(this.videoOutputPath, paramAssetWriterVideoEncoder, paramMediaMuxerCreator);
+      this.encoderWriter.setEncodeOption(this.encodeOption);
+      paramAssetWriterVideoEncoder = this.inputs.iterator();
+      while (paramAssetWriterVideoEncoder.hasNext()) {
+        ((AssetWriterInput)paramAssetWriterVideoEncoder.next()).initConfig(this);
       }
       return true;
     }
-    catch (Exception localException)
+    catch (Exception paramAssetWriterVideoEncoder)
     {
-      localException.printStackTrace();
+      Logger.e("AssetWriter", "startWriting: ", paramAssetWriterVideoEncoder);
       this.inputStatusHashMap.clear();
-      if (this.encoderWriter != null)
+      paramAssetWriterVideoEncoder = this.encoderWriter;
+      if (paramAssetWriterVideoEncoder != null)
       {
-        this.encoderWriter.stop();
+        paramAssetWriterVideoEncoder.stop();
         this.encoderWriter = null;
       }
-      return false;
     }
+    return false;
   }
   
   public void statusChanged(AssetWriterInput paramAssetWriterInput, AssetWriter.AssetWriterStatus paramAssetWriterStatus)
@@ -395,7 +304,8 @@ public class AssetWriter
     this.inputStatusHashMap.put(paramAssetWriterInput, paramAssetWriterStatus);
     paramAssetWriterInput = this.status;
     updateAssetStatus();
-    if ((paramAssetWriterInput != this.status) && (this.status == AssetWriter.AssetWriterStatus.AssetWriterStatusWriting))
+    paramAssetWriterStatus = this.status;
+    if ((paramAssetWriterInput != paramAssetWriterStatus) && (paramAssetWriterStatus == AssetWriter.AssetWriterStatus.AssetWriterStatusWriting))
     {
       paramAssetWriterInput = this.inputs.iterator();
       while (paramAssetWriterInput.hasNext()) {
@@ -406,7 +316,7 @@ public class AssetWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,13 @@ class WebpDrawable$1
   
   public void run()
   {
-    this.this$0.setBounds(0, 0, WebpDrawable.access$000(this.this$0).getCanvasWidth(), WebpDrawable.access$000(this.this$0).getCanvasHeight());
+    WebpDrawable localWebpDrawable = this.this$0;
+    localWebpDrawable.setBounds(0, 0, WebpDrawable.access$000(localWebpDrawable).getCanvasWidth(), WebpDrawable.access$000(this.this$0).getCanvasHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.animwebp.WebpDrawable.1
  * JD-Core Version:    0.7.0.1
  */

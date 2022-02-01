@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import com.tencent.plato.mqq.network.ProgressListener;
-import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.UploaderProxy.UploadListener;
 
 final class HttpUtil$1
   implements ProgressListener
@@ -10,12 +10,17 @@ final class HttpUtil$1
   
   public void onProgress(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    this.val$listener.onUploadProgress((int)(100.0D * paramLong1 / paramLong2), (int)paramLong1, (int)paramLong2);
+    UploaderProxy.UploadListener localUploadListener = this.a;
+    double d1 = paramLong1;
+    Double.isNaN(d1);
+    double d2 = paramLong2;
+    Double.isNaN(d2);
+    localUploadListener.onUploadProgress((int)(d1 * 100.0D / d2), (int)paramLong1, (int)paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.HttpUtil.1
  * JD-Core Version:    0.7.0.1
  */

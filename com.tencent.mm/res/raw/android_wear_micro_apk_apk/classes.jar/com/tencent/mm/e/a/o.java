@@ -6,48 +6,48 @@ import java.util.LinkedList;
 public final class o
   extends com.tencent.mm.d.a
 {
-  public long VO;
-  public long VP;
-  public String VQ;
-  public LinkedList<p> VR = new LinkedList();
+  public long XJ;
+  public long XK;
+  public String XL;
+  public LinkedList<p> XM = new LinkedList();
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VQ == null) {
+      if (this.XL == null) {
         throw new b("Not all required fields were included: TotalMsg");
       }
-      paramVarArgs.g(1, this.VP);
-      paramVarArgs.g(2, this.VO);
-      if (this.VQ != null) {
-        paramVarArgs.d(3, this.VQ);
+      paramVarArgs.g(1, this.XK);
+      paramVarArgs.g(2, this.XJ);
+      if (this.XL != null) {
+        paramVarArgs.d(3, this.XL);
       }
-      paramVarArgs.b(4, 8, this.VR);
+      paramVarArgs.b(4, 8, this.XM);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = a.a.a.a.e(1, this.VP) + 0 + a.a.a.a.e(2, this.VO);
+      i = a.a.a.b.b.a.f(1, this.XK) + 0 + a.a.a.b.b.a.f(2, this.XJ);
       paramInt = i;
-      if (this.VQ != null) {
-        paramInt = i + a.a.a.b.b.a.e(3, this.VQ);
+      if (this.XL != null) {
+        paramInt = i + a.a.a.b.b.a.e(3, this.XL);
       }
-      return paramInt + a.a.a.a.a(4, 8, this.VR);
+      return paramInt + a.a.a.a.a(4, 8, this.XM);
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.VR.clear();
-      paramVarArgs = new a.a.a.a.a(paramVarArgs, Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      this.XM.clear();
+      paramVarArgs = new a.a.a.a.a(paramVarArgs, Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
-      if (this.VQ == null) {
+      if (this.XL == null) {
         throw new b("Not all required fields were included: TotalMsg");
       }
       return 0;
@@ -62,25 +62,25 @@ public final class o
       default: 
         return -1;
       case 1: 
-        localo.VP = ((a.a.a.a.a)localObject1).ow();
+        localo.XK = ((a.a.a.a.a)localObject1).pj();
         return 0;
       case 2: 
-        localo.VO = ((a.a.a.a.a)localObject1).ow();
+        localo.XJ = ((a.a.a.a.a)localObject1).pj();
         return 0;
       case 3: 
-        localo.VQ = ((a.a.a.a.a)localObject1).ou();
+        localo.XL = ((a.a.a.a.a)localObject1).ph();
         return 0;
       }
-      paramVarArgs = ((a.a.a.a.a)localObject1).ci(paramInt);
+      paramVarArgs = ((a.a.a.a.a)localObject1).cE(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
         Object localObject2 = (byte[])paramVarArgs.get(paramInt);
         localObject1 = new p();
-        localObject2 = new a.a.a.a.a((byte[])localObject2, Vj);
-        for (boolean bool = true; bool; bool = ((p)localObject1).a((a.a.a.a.a)localObject2, (com.tencent.mm.d.a)localObject1, ((a.a.a.a.a)localObject2).oy())) {}
-        localo.VR.add(localObject1);
+        localObject2 = new a.a.a.a.a((byte[])localObject2, Xe);
+        for (boolean bool = true; bool; bool = ((p)localObject1).a((a.a.a.a.a)localObject2, (com.tencent.mm.d.a)localObject1, ((a.a.a.a.a)localObject2).pl())) {}
+        localo.XM.add(localObject1);
         paramInt += 1;
       }
       return 0;

@@ -10,32 +10,44 @@ class IPluginProxyComponent$AccountReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    String str;
-    do
+    if (paramIntent != null)
     {
-      do
+      if (paramIntent.getAction() == null) {
+        return;
+      }
+      String str = paramIntent.getAction();
+      if (DebugHelper.sDebug)
       {
-        do
-        {
-          return;
-          str = paramIntent.getAction();
-          if (DebugHelper.sDebug) {
-            DebugHelper.log("PluginRuntime.AccountReceiver.onReceive: " + str);
-          }
-        } while (paramContext.getPackageName().equals(MobileQQ.processName));
-        if (!"mqq.intent.action.ACCOUNT_CHANGED".equals(str)) {
-          break;
-        }
-      } while (paramIntent.getStringExtra("account") == null);
-      return;
-    } while ((!"mqq.intent.action.LOGOUT".equals(str)) && (!("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName()).equals(str)));
-    IPluginProxyComponent.exitProcess(paramIntent.getStringExtra("K_EXCEP"));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PluginRuntime.AccountReceiver.onReceive: ");
+        localStringBuilder.append(str);
+        DebugHelper.log(localStringBuilder.toString());
+      }
+      if (paramContext.getPackageName().equals(MobileQQ.processName)) {
+        return;
+      }
+      if ("mqq.intent.action.ACCOUNT_CHANGED".equals(str))
+      {
+        paramIntent.getStringExtra("account");
+        return;
+      }
+      if (!"mqq.intent.action.LOGOUT".equals(str))
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("mqq.intent.action.EXIT_");
+        paramContext.append(MobileQQ.getMobileQQ().getPackageName());
+        if (!paramContext.toString().equals(str)) {}
+      }
+      else
+      {
+        IPluginProxyComponent.exitProcess(paramIntent.getStringExtra("K_EXCEP"));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.IPluginProxyComponent.AccountReceiver
  * JD-Core Version:    0.7.0.1
  */

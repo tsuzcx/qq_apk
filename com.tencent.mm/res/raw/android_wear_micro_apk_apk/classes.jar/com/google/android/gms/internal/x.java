@@ -6,36 +6,36 @@ import com.google.android.gms.common.util.a;
 public final class x
   extends i
 {
-  private aq HZ;
-  private final a<ef<?>> Nq;
+  private aq JO;
+  private final a<ef<?>> Pf;
   
   protected final void a(ConnectionResult paramConnectionResult, int paramInt)
   {
-    this.HZ.a(paramConnectionResult, paramInt);
+    this.JO.a(paramConnectionResult, paramInt);
   }
   
-  protected final void hY()
+  final a<ef<?>> iA()
   {
-    this.HZ.hY();
+    return this.Pf;
   }
   
-  final a<ef<?>> is()
+  protected final void ig()
   {
-    return this.Nq;
+    this.JO.ig();
   }
   
   public final void onStart()
   {
     super.onStart();
-    if (!this.Nq.isEmpty()) {
-      this.HZ.a(this);
+    if (!this.Pf.isEmpty()) {
+      this.JO.a(this);
     }
   }
   
   public final void onStop()
   {
     super.onStop();
-    this.HZ.b(this);
+    this.JO.b(this);
   }
 }
 

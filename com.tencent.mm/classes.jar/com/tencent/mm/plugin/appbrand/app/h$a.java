@@ -1,67 +1,72 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.luggage.g.d.a;
-import com.tencent.mars.xlog.Xlog;
+import android.app.ActivityManager.AppTask;
+import android.app.ActivityManager.RecentTaskInfo;
+import android.content.ComponentName;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandZombieTaskKiller$AppBrandTaskPredicate;", "", "()V", "isAppBrandTask", "", "appTask", "Landroid/app/ActivityManager$AppTask;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class h$a
-  implements d.a
 {
-  private final Xlog gTK;
+  public static final a qBY;
   
-  private h$a()
+  static
   {
-    AppMethodBeat.i(129304);
-    this.gTK = new Xlog();
-    AppMethodBeat.o(129304);
+    AppMethodBeat.i(317782);
+    qBY = new a();
+    AppMethodBeat.o(317782);
   }
   
-  public final int getLogLevel()
+  public static boolean a(ActivityManager.AppTask paramAppTask)
   {
-    AppMethodBeat.i(129310);
-    int i = this.gTK.getLogLevel();
-    AppMethodBeat.o(129310);
-    return i;
-  }
-  
-  public final void logD(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    AppMethodBeat.i(129307);
-    this.gTK.logD(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(129307);
-  }
-  
-  public final void logE(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    AppMethodBeat.i(129309);
-    this.gTK.logE(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(129309);
-  }
-  
-  public final void logI(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    AppMethodBeat.i(129306);
-    this.gTK.logI(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(129306);
-  }
-  
-  public final void logV(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    AppMethodBeat.i(129305);
-    this.gTK.logV(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(129305);
-  }
-  
-  public final void logW(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    AppMethodBeat.i(129308);
-    this.gTK.logW(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(129308);
+    int i = 1;
+    AppMethodBeat.i(317777);
+    s.u(paramAppTask, "appTask");
+    paramAppTask = paramAppTask.getTaskInfo();
+    if (paramAppTask == null) {}
+    for (paramAppTask = null; paramAppTask == null; paramAppTask = paramAppTask.baseIntent)
+    {
+      AppMethodBeat.o(317777);
+      return false;
+    }
+    if (!s.p(paramAppTask.getAction(), "android.intent.action.MAIN"))
+    {
+      localObject = paramAppTask.getCategories();
+      if ((localObject == null) || (((Set)localObject).contains("android.intent.category.LAUNCHER") != true)) {
+        break label87;
+      }
+    }
+    while (i != 0)
+    {
+      AppMethodBeat.o(317777);
+      return false;
+      label87:
+      i = 0;
+    }
+    paramAppTask = paramAppTask.getComponent();
+    if (paramAppTask == null)
+    {
+      AppMethodBeat.o(317777);
+      return false;
+    }
+    paramAppTask = paramAppTask.getClassName();
+    s.s(paramAppTask, "cmp.className");
+    Object localObject = AppBrandUI.class.getName();
+    s.s(localObject, "AppBrandUI::class.java.name");
+    boolean bool = n.U(paramAppTask, (String)localObject, false);
+    AppMethodBeat.o(317777);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.h.a
  * JD-Core Version:    0.7.0.1
  */

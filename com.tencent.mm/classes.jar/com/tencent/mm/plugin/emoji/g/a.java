@@ -1,252 +1,111 @@
 package com.tencent.mm.plugin.emoji.g;
 
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.plugin.emoji.sync.BKGLoaderManager;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.protocal.protobuf.zg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.d;
-import com.tencent.mm.storage.z;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import com.tencent.mm.plugin.emoji.h.a;
+import com.tencent.mm.plugin.emoji.h.g;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.plugin.emoji.mgr.j;
+import com.tencent.mm.plugin.emoji.model.EmojiLogic;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/utils/EmojiStoreV3UIUtil;", "", "()V", "createRadiusRectangleDrawable", "Landroid/graphics/drawable/GradientDrawable;", "colorInt", "", "leftTopRadiusPx", "", "rightTopRadiusPx", "leftBottomRadiusPx", "rightBottomRadiusPx", "createSelectorRectangleDrawable", "Landroid/graphics/drawable/Drawable;", "normalColor", "pressColor", "getSingleProductEmotionDialogIntent", "Landroid/content/Intent;", "context", "Landroid/content/Context;", "info", "Lcom/tencent/mm/protocal/protobuf/EmojiInfo;", "userName", "", "scene", "searchId", "entranceScene", "showNormalShareMenu", "", "Landroid/app/Activity;", "setId", "setTitle", "setDesc", "setIconURL", "setAdURL", "pageType", "request_code_select_contact_shared", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements bz.a
 {
-  private static void c(int paramInt, ArrayList<zg> paramArrayList)
+  public static final a ydF;
+  
+  static
   {
-    AppMethodBeat.i(53157);
-    paramArrayList = paramArrayList.iterator();
-    if (paramArrayList.hasNext())
-    {
-      zg localzg = (zg)paramArrayList.next();
-      EmojiInfo localEmojiInfo = at.dxt().yNn.asP(localzg.Md5);
-      if (localEmojiInfo == null)
-      {
-        localEmojiInfo = new EmojiInfo();
-        com.tencent.mm.plugin.emoji.h.b.a(localzg, localEmojiInfo);
-        if (paramInt == 1) {
-          localEmojiInfo.field_groupId = "capture";
-        }
-        for (;;)
-        {
-          at.dxt().yNn.I(localEmojiInfo);
-          break;
-          localEmojiInfo.field_catalog = EmojiInfo.yPm;
-        }
-      }
-      if (paramInt == 1) {
-        localEmojiInfo.field_groupId = "capture";
-      }
-      for (;;)
-      {
-        at.dxt().yNn.J(localEmojiInfo);
-        break;
-        localEmojiInfo.field_catalog = EmojiInfo.yPm;
-      }
-    }
-    AppMethodBeat.o(53157);
+    AppMethodBeat.i(269819);
+    ydF = new a();
+    AppMethodBeat.o(269819);
   }
   
-  public final void a(e.a parama)
+  public static Drawable a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    int i = 0;
-    AppMethodBeat.i(53156);
-    parama = parama.eyJ;
-    if (parama.nqW == 10002)
+    AppMethodBeat.i(269772);
+    Object localObject = new StateListDrawable();
+    Drawable localDrawable = (Drawable)a(paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    ((StateListDrawable)localObject).addState(new int[] { 16842919 }, localDrawable);
+    localDrawable = (Drawable)a(paramInt1, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    ((StateListDrawable)localObject).addState(new int[0], localDrawable);
+    localObject = (Drawable)localObject;
+    AppMethodBeat.o(269772);
+    return localObject;
+  }
+  
+  private static GradientDrawable a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    AppMethodBeat.i(269778);
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setColor(paramInt);
+    localGradientDrawable.setCornerRadii(new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat4, paramFloat4, paramFloat3, paramFloat3 });
+    AppMethodBeat.o(269778);
+    return localGradientDrawable;
+  }
+  
+  private static final void a(int paramInt1, Activity paramActivity, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt5, MenuItem paramMenuItem, int paramInt6)
+  {
+    AppMethodBeat.i(269811);
+    kotlin.g.b.s.u(paramActivity, "$context");
+    kotlin.g.b.s.u(paramString1, "$setTitle");
+    kotlin.g.b.s.u(paramString2, "$setDesc");
+    kotlin.g.b.s.u(paramString3, "$setIconURL");
+    kotlin.g.b.s.u(paramString4, "$setAdURL");
+    paramInt6 = paramMenuItem.getItemId();
+    if (paramInt6 == paramInt1)
     {
-      parama = aa.a(parama.woR);
-      if (bo.isNullOrNil(parama))
-      {
-        ab.w("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "msg content is null");
-        AppMethodBeat.o(53156);
-        return;
-      }
-      Object localObject2 = br.F(parama, "sysmsg");
-      if ((localObject2 != null) && (((Map)localObject2).size() > 0))
-      {
-        String str = (String)((Map)localObject2).get(".sysmsg.$type");
-        if (bo.isNullOrNil(str))
-        {
-          ab.w("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "empty type");
-          AppMethodBeat.o(53156);
-          return;
-        }
-        Object localObject1 = bo.cg(com.tencent.mm.bv.b.bL(q.LK().getBytes()).Mz(16).pW);
-        if (str.equalsIgnoreCase("EmojiBackup"))
-        {
-          i = bo.apV((String)((Map)localObject2).get(".sysmsg.EmojiBackup.OpCode"));
-          localObject2 = (String)((Map)localObject2).get(".sysmsg.EmojiBackup.DeviceID");
-          ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "client devicesID:%s server devicesID:%s", new Object[] { localObject1, localObject2 });
-          if ((!bo.isNullOrNil((String)localObject2)) && (((String)localObject2).equalsIgnoreCase((String)localObject1)))
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "same devices operate ignore.");
-            AppMethodBeat.o(53156);
-            return;
-          }
-          localObject1 = b.KU(parama);
-          if (i == 1)
-          {
-            if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0))
-            {
-              ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "xml syn list is null.");
-              AppMethodBeat.o(53156);
-              return;
-            }
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "try to sync emoji from newxml. buckupList:%d", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
-            c(0, (ArrayList)localObject1);
-            AppMethodBeat.o(53156);
-            return;
-          }
-          if (i == 2)
-          {
-            if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0))
-            {
-              ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "xml syn list is null.");
-              AppMethodBeat.o(53156);
-              return;
-            }
-            parama = new ArrayList();
-            if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
-            {
-              localObject1 = ((ArrayList)localObject1).iterator();
-              while (((Iterator)localObject1).hasNext())
-              {
-                localObject2 = (zg)((Iterator)localObject1).next();
-                if (localObject2 != null) {
-                  parama.add(((zg)localObject2).Md5);
-                }
-              }
-            }
-            i.getEmojiStorageMgr().yNn.eR(parama);
-            g.RL().Ru().set(ac.a.yxM, Boolean.FALSE);
-            AppMethodBeat.o(53156);
-            return;
-          }
-          if (i == 3)
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "set batch emoji download time to 0. ");
-            g.RL().Ru().set(ac.a.yxU, Boolean.TRUE);
-          }
-          AppMethodBeat.o(53156);
-          return;
-        }
-        if (str.equalsIgnoreCase("EmotionBackup"))
-        {
-          int j = Integer.valueOf((String)((Map)localObject2).get(".sysmsg.EmotionBackup.OpCode")).intValue();
-          localObject2 = (String)((Map)localObject2).get(".sysmsg.EmotionBackup.DeviceID");
-          if ((!bo.isNullOrNil((String)localObject2)) && (((String)localObject2).equalsIgnoreCase((String)localObject1)))
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "same devices operate ignore.");
-            AppMethodBeat.o(53156);
-            return;
-          }
-          parama = b.KV(parama);
-          if ((parama == null) || (parama.size() <= 0))
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "xml syn list is null.");
-            AppMethodBeat.o(53156);
-            return;
-          }
-          if (j == 1)
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "try to sync emoji from newxml. add buckupList:%d", new Object[] { Integer.valueOf(parama.size()) });
-            localObject1 = new ArrayList();
-            j = parama.size();
-            while (i < j)
-            {
-              ((ArrayList)localObject1).add(new com.tencent.mm.plugin.emoji.sync.a.b((String)parama.get(i)));
-              i += 1;
-            }
-            i.blq().z((ArrayList)localObject1);
-            i.blq().lje.blM();
-            AppMethodBeat.o(53156);
-            return;
-          }
-          if (j == 2)
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "try to sync emoji from newxml. delete buckupList:%d", new Object[] { Integer.valueOf(parama.size()) });
-            i.getEmojiStorageMgr().yNo.ak(parama);
-          }
-          AppMethodBeat.o(53156);
-          return;
-        }
-        if (str.equalsIgnoreCase("SelfieEmojiBackup"))
-        {
-          str = (String)((Map)localObject2).get(".sysmsg.SelfieEmojiBackup.DeviceID");
-          ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture client devicesID:%s server devicesID:%s", new Object[] { localObject1, str });
-          if ((!bo.isNullOrNil(str)) && (str.equalsIgnoreCase((String)localObject1)))
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "same devices operate ignore.");
-            AppMethodBeat.o(53156);
-            return;
-          }
-          i = bo.apV((String)((Map)localObject2).get(".sysmsg.SelfieEmojiBackup.OpCode"));
-          localObject1 = b.KU(parama);
-          if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0))
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: empty list opCode %s", new Object[] { Integer.valueOf(i) });
-            AppMethodBeat.o(53156);
-            return;
-          }
-          ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: opCode %s, size %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((ArrayList)localObject1).size()) });
-          if (i == 1)
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: add capture %s", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
-            c(1, (ArrayList)localObject1);
-            AppMethodBeat.o(53156);
-            return;
-          }
-          if (i == 2)
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: delete capture %s", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
-            parama = new ArrayList();
-            localObject1 = ((ArrayList)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (zg)((Iterator)localObject1).next();
-              if (localObject2 != null) {
-                parama.add(((zg)localObject2).Md5);
-              }
-            }
-            i.getEmojiStorageMgr().yNn.eS(parama);
-            g.RL().Ru().set(ac.a.yxM, Boolean.FALSE);
-            AppMethodBeat.o(53156);
-            return;
-          }
-          if (i == 3)
-          {
-            ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: move to top %s ", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
-            g.RL().Ru().set(ac.a.yxV, Boolean.TRUE);
-          }
-          AppMethodBeat.o(53156);
-          return;
-        }
-        ab.e("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "not emoji message type :".concat(String.valueOf(str)));
-      }
-      AppMethodBeat.o(53156);
+      j.ai((Context)paramActivity, paramInt2);
+      paramActivity.overridePendingTransition(h.a.push_up_in, h.a.fast_faded_out);
+      h.OAn.b(13224, new Object[] { Integer.valueOf(2), Integer.valueOf(2), "", Integer.valueOf(paramInt3) });
+      AppMethodBeat.o(269811);
       return;
     }
-    ab.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(parama.nqW) });
-    AppMethodBeat.o(53156);
+    if (paramInt6 == paramInt4)
+    {
+      paramActivity = (Context)paramActivity;
+      com.tencent.mm.plugin.emoji.model.s.dAl();
+      j.a(paramActivity, paramString1, paramString2, paramString3, com.tencent.mm.plugin.emoji.mgr.f.dzu(), EmojiLogic.b(paramInt3, paramString1, paramString2, paramString3, paramString4, paramInt5), 12);
+      h.OAn.b(13224, new Object[] { Integer.valueOf(2), Integer.valueOf(1), "", Integer.valueOf(paramInt3) });
+    }
+    AppMethodBeat.o(269811);
+  }
+  
+  private static final void a(int paramInt1, Activity paramActivity, int paramInt2, com.tencent.mm.ui.base.s params)
+  {
+    AppMethodBeat.i(269805);
+    kotlin.g.b.s.u(paramActivity, "$context");
+    params.a(paramInt1, (CharSequence)paramActivity.getString(h.h.emoji_share_to_friend), h.g.bottomsheet_icon_transmit);
+    params.a(paramInt2, (CharSequence)paramActivity.getString(h.h.emoji_share_to_timeline), h.g.bottomsheet_icon_moment);
+    AppMethodBeat.o(269805);
+  }
+  
+  public static void a(Activity paramActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(269798);
+    kotlin.g.b.s.u(paramActivity, "context");
+    kotlin.g.b.s.u(paramString1, "setTitle");
+    kotlin.g.b.s.u(paramString2, "setDesc");
+    kotlin.g.b.s.u(paramString3, "setIconURL");
+    kotlin.g.b.s.u(paramString4, "setAdURL");
+    com.tencent.mm.ui.widget.a.f localf = new com.tencent.mm.ui.widget.a.f((Context)paramActivity, 1, false);
+    localf.Vtg = new a..ExternalSyntheticLambda0(1001, paramActivity, 1000);
+    localf.GAC = new a..ExternalSyntheticLambda1(1001, paramActivity, paramInt3, paramInt1, 1000, paramString1, paramString2, paramString3, paramString4, paramInt2);
+    localf.dDn();
+    h.OAn.b(13224, new Object[] { Integer.valueOf(2), Integer.valueOf(0), "", Integer.valueOf(paramInt1) });
+    AppMethodBeat.o(269798);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.g.a
  * JD-Core Version:    0.7.0.1
  */

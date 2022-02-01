@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.gridviewheaders.GridHeadersGridView android:scrollbarStyle="outsideOverlay" android:id="@id/ay1" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="60.0dip" android:horizontalSpacing="1.0dip" android:verticalSpacing="1.0dip" android:stretchMode="columnWidth" android:columnWidth="100.0dip" android:numColumns="auto_fit" android:animateLayoutChanges="true" />
-    <RelativeLayout android:background="@color/dv" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
-        <Button android:textSize="@dimen/ko" android:id="@id/ay2" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:minWidth="60.0dip" android:text="@string/b6u" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/nt" />
-        <CheckBox android:id="@id/a2t" android:background="@drawable/vn" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" android:layout_marginLeft="12.0dip" android:layout_centerVertical="true" />
-        <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="#ffaaaaaa" android:id="@id/a2u" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/fx" android:maxLines="1" android:layout_toRightOf="@id/a2t" android:layout_centerVertical="true" />
-        <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="#ffaaaaaa" android:gravity="center" android:id="@id/ay3" android:layout_width="155.0dip" android:layout_height="wrap_content" android:maxLines="1" android:layout_toRightOf="@id/a2u" android:layout_centerVertical="true" />
-        <View android:id="@id/a2v" android:layout_width="72.0dip" android:layout_height="fill_parent" />
+<LinearLayout android:orientation="vertical" android:background="@color/a8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ImageView android:id="@id/fp_" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/cag" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fau" android:layout_centerInParent="true" />
     </RelativeLayout>
-</RelativeLayout>
+    <com.tencent.mm.plugin.game.chatroom.view.ChatRoomListCard android:id="@id/b0g" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:overScrollMode="never" />
+</LinearLayout>

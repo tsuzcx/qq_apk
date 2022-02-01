@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ff949494" android:gravity="left" android:id="@id/rc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="123123" android:maxLines="1" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff949494" android:gravity="right" android:id="@id/lt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="123123" android:layout_weight="1.0" />
-</LinearLayout>
+<RelativeLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <ListView android:id="@id/bp8" android:background="@color/a6w" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/na" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="center" android:id="@id/cif" android:paddingTop="0.0dip" android:paddingBottom="60.0dip" android:visibility="gone" android:text="@string/g25" android:layout_centerInParent="true" style="@style/m3" />
+</RelativeLayout>

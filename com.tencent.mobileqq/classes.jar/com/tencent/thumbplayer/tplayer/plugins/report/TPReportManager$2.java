@@ -11,22 +11,26 @@ class TPReportManager$2
   
   public void onEvent(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    TPLogUtil.i("TPReportManager", "OnGlobalEventChangeListener eventId: " + paramInt1);
+    paramObject = new StringBuilder();
+    paramObject.append("OnGlobalEventChangeListener eventId: ");
+    paramObject.append(paramInt1);
+    TPLogUtil.i("TPReportManager", paramObject.toString());
     switch (paramInt1)
     {
     default: 
       return;
+    case 100002: 
+      paramInt1 = 2101;
+      break;
+    case 100001: 
+      paramInt1 = 2100;
     }
-    for (paramInt1 = 2100;; paramInt1 = 2101)
-    {
-      TPReportManager.access$3500(this.this$0).obtainMessage(paramInt1, null).sendToTarget();
-      return;
-    }
+    TPReportManager.access$3900(this.this$0).obtainMessage(paramInt1, null).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.2
  * JD-Core Version:    0.7.0.1
  */

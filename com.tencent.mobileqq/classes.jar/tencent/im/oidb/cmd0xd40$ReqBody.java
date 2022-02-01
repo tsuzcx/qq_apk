@@ -8,15 +8,21 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class cmd0xd40$ReqBody
   extends MessageMicro<ReqBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "dev", "src", "event", "redtype" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public cmd0xd40.DeviceInfo dev = new cmd0xd40.DeviceInfo();
   public final PBUInt32Field event = PBField.initUInt32(0);
   public final PBUInt32Field redtype = PBField.initUInt32(0);
   public final PBUInt32Field src = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "dev", "src", "event", "redtype" }, new Object[] { null, localInteger, localInteger, localInteger }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd40.ReqBody
  * JD-Core Version:    0.7.0.1
  */

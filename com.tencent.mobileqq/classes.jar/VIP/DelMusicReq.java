@@ -8,9 +8,9 @@ public final class DelMusicReq
   extends JceStruct
 {
   static SourceInfo cache_stSource = new SourceInfo();
-  public long iUin;
+  public long iUin = 0L;
   public String sSongId = "";
-  public SourceInfo stSource;
+  public SourceInfo stSource = null;
   
   public DelMusicReq() {}
   
@@ -31,17 +31,19 @@ public final class DelMusicReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iUin, 0);
-    if (this.sSongId != null) {
-      paramJceOutputStream.write(this.sSongId, 1);
+    Object localObject = this.sSongId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.stSource != null) {
-      paramJceOutputStream.write(this.stSource, 2);
+    localObject = this.stSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.DelMusicReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dnw" android:background="@color/a6q" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/dnx" layout="@layout/akm" />
-    <android.support.v7.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/dny" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/dnx" android:layout_alignParentTop="true" android:windowSoftInputMode="adjustResize" />
-    <RelativeLayout android:orientation="horizontal" android:id="@id/dnz" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
-        <RelativeLayout android:orientation="horizontal" android:background="#86222222" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" />
-    </RelativeLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:id="@id/dzr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dzo" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_done" app:iconColor="@color/s8" />
+    </LinearLayout>
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dzq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cp" android:layout_toStartOf="@id/dzr" android:layout_alignParentStart="true" />
+    <View android:id="@id/dzp" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_marginTop="@dimen/cp" android:layout_below="@id/dzq" android:layout_marginStart="@dimen/cp" />
 </RelativeLayout>

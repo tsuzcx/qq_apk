@@ -3,30 +3,29 @@ package com.tencent.biz.subscribe.utils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
-import bdfz;
+import com.tencent.mobileqq.utils.CommonImageCacheHelper;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import ylv;
 
-public final class MergeBitmapBlurUtil$1
+final class MergeBitmapBlurUtil$1
   implements Runnable
 {
-  public MergeBitmapBlurUtil$1(String paramString, ImageView paramImageView) {}
+  MergeBitmapBlurUtil$1(String paramString, ImageView paramImageView) {}
   
   public void run()
   {
     try
     {
-      Object localObject = bdfz.a(this.jdField_a_of_type_JavaLangString);
+      Object localObject = CommonImageCacheHelper.a(this.a);
       if (localObject != null)
       {
-        ylv.a((Bitmap)localObject, this.jdField_a_of_type_AndroidWidgetImageView);
+        MergeBitmapBlurUtil.a((Bitmap)localObject, this.b);
         return;
       }
-      localObject = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
+      localObject = new URL(this.a).openConnection();
       int i = ((HttpURLConnection)localObject).getContentLength();
       ((URLConnection)localObject).connect();
       localObject = ((URLConnection)localObject).getInputStream();
@@ -34,7 +33,7 @@ public final class MergeBitmapBlurUtil$1
       Bitmap localBitmap = BitmapFactory.decodeStream(localBufferedInputStream);
       localBufferedInputStream.close();
       ((InputStream)localObject).close();
-      ylv.a(this.jdField_a_of_type_JavaLangString, localBitmap, this.jdField_a_of_type_AndroidWidgetImageView);
+      MergeBitmapBlurUtil.a(this.a, localBitmap, this.b);
       return;
     }
     catch (Exception localException)
@@ -45,7 +44,7 @@ public final class MergeBitmapBlurUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.1
  * JD-Core Version:    0.7.0.1
  */

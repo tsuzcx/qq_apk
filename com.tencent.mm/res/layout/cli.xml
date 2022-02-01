@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/m1n" android:background="#8c000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/hb6" android:background="@drawable/b6r" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="350.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/m38" android:layout_width="fill_parent" android:layout_height="64.0dip">
+            <FrameLayout android:id="@id/m0j" android:background="@drawable/a1i" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_centerVertical="true" android:layout_alignParentStart="true">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/dtr" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_8" />
+            </FrameLayout>
+            <com.tencent.mm.plugin.finder.live.olympic.widget.OlympicTextView android:textSize="15.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lt3" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <View android:id="@id/lyh" android:background="@color/y8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/m38" />
+        <RelativeLayout android:id="@id/m3c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_below="@id/lyh">
+            <com.tencent.mm.plugin.finder.live.olympic.widget.OlympicTextView android:textSize="17.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lt8" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/fhr" android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/BW_100_Alpha_0_3" />
+            <com.tencent.mm.plugin.finder.live.olympic.widget.OlympicTextView android:textSize="17.0dip" android:textColor="@color/yc" android:id="@id/m3d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:text="@string/lt8" android:layout_toLeftOf="@id/fhr" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <View android:id="@id/lyi" android:background="@color/y8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/m3c" />
+        <RelativeLayout android:id="@id/m3a" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_below="@id/lyi">
+            <com.tencent.mm.plugin.finder.live.olympic.widget.OlympicTextView android:textSize="17.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lt7" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/m45" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:on_color="@color/s8" />
+        </RelativeLayout>
+        <View android:id="@id/lyj" android:background="@color/y8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/m3a" />
+        <RelativeLayout android:id="@id/m3f" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_below="@id/lyj">
+            <com.tencent.mm.plugin.finder.live.olympic.widget.OlympicTextView android:textSize="17.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lt9" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/m7v" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:on_color="@color/s8" />
+        </RelativeLayout>
+        <View android:background="@color/y8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/m3f" />
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</RelativeLayout>

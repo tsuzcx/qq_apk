@@ -17,31 +17,33 @@ public class HybridIdleTaskHelper
   private void doAddIdleTask(HybridIdleTaskHelper.IdleTask paramIdleTask)
   {
     int i = 0;
-    if (i < this.sIdleTasks.size()) {
-      if (((HybridIdleTaskHelper.IdleTask)this.sIdleTasks.get(i)).taskId != paramIdleTask.taskId) {}
-    }
-    do
+    while (i < this.sIdleTasks.size())
     {
-      return;
+      if (((HybridIdleTaskHelper.IdleTask)this.sIdleTasks.get(i)).taskId == paramIdleTask.taskId) {
+        return;
+      }
       i += 1;
-      break;
-      this.sIdleTasks.add(paramIdleTask);
-    } while ((this.sIdleTasks.isEmpty()) || (this.sIsIdleHandlerInQueue));
-    this.sIsIdleHandlerInQueue = true;
-    Looper.myQueue().addIdleHandler(this.sIdleHandler);
+    }
+    this.sIdleTasks.add(paramIdleTask);
+    if ((!this.sIdleTasks.isEmpty()) && (!this.sIsIdleHandlerInQueue))
+    {
+      this.sIsIdleHandlerInQueue = true;
+      Looper.myQueue().addIdleHandler(this.sIdleHandler);
+    }
   }
   
   public static HybridIdleTaskHelper getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new HybridIdleTaskHelper();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new HybridIdleTaskHelper();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   public void addIdleTask(HybridIdleTaskHelper.IdleTask paramIdleTask)
@@ -56,29 +58,22 @@ public class HybridIdleTaskHelper
   
   public boolean removeIdleTask(int paramInt)
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < this.sIdleTasks.size())
     {
-      boolean bool1 = bool2;
-      if (i < this.sIdleTasks.size())
+      if (((HybridIdleTaskHelper.IdleTask)this.sIdleTasks.get(i)).taskId == paramInt)
       {
-        if (((HybridIdleTaskHelper.IdleTask)this.sIdleTasks.get(i)).taskId == paramInt)
-        {
-          this.sIdleTasks.remove(i);
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+        this.sIdleTasks.remove(i);
+        return true;
       }
       i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.webbundle.sdk.HybridIdleTaskHelper
  * JD-Core Version:    0.7.0.1
  */

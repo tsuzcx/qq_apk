@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/no_more" android:visibility="gone" layout="@layout/qq_nearpeople_no_more" />
+    <include android:id="@id/has_more" android:visibility="gone" layout="@layout/morebtn_footer" />
+</FrameLayout>

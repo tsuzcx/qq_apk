@@ -6,30 +6,30 @@ import org.json.JSONObject;
 
 abstract class a
 {
-  protected b bxJ;
-  protected JSONObject bxK;
+  protected b eie;
+  protected JSONObject eif;
   
-  final b tR()
+  final b anY()
   {
-    return this.bxJ;
+    return this.eie;
   }
   
-  final JSONObject tS()
+  final JSONObject anZ()
   {
-    return this.bxK;
+    return this.eif;
   }
   
   public String toString()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("type", this.bxJ.name());
-    localHashMap.put("data", this.bxK);
+    localHashMap.put("type", this.eie.name());
+    localHashMap.put("data", this.eif);
     return new JSONObject(localHashMap).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.bridge.a
  * JD-Core Version:    0.7.0.1
  */

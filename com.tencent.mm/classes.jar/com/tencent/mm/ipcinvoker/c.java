@@ -1,12 +1,14 @@
 package com.tencent.mm.ipcinvoker;
 
-public abstract interface c<T>
-{
-  public abstract void ad(T paramT);
-}
+import com.tencent.mm.ipcinvoker.c.a;
+
+@a
+public abstract interface c<InputType, ResultType>
+  extends d<InputType, ResultType>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.c
  * JD-Core Version:    0.7.0.1
  */

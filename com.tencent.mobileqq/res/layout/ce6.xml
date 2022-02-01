@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/lri" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/i5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:drawablePadding="3.0dip" android:layout_centerInParent="true" />
-    <com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshEyeView android:id="@id/m5j" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/i2e" android:layout_centerInParent="true" />
+    <com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.RefreshEyeView android:id="@id/m5j" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/i2e" android:layout_centerInParent="true" />
 </RelativeLayout>

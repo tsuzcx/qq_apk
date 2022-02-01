@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LbsReportInfo
-  extends awge
+  extends Entity
 {
   public float accuracy;
   public double alt;
@@ -23,24 +23,24 @@ public class LbsReportInfo
   
   public static ArrayList<String> convert2StrList(ArrayList<LbsReportInfo> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      LbsReportInfo localLbsReportInfo = (LbsReportInfo)paramArrayList.next();
-      if ((localLbsReportInfo != null) && (!TextUtils.isEmpty(localLbsReportInfo.content))) {
-        localArrayList.add(localLbsReportInfo.content);
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        LbsReportInfo localLbsReportInfo = (LbsReportInfo)paramArrayList.next();
+        if ((localLbsReportInfo != null) && (!TextUtils.isEmpty(localLbsReportInfo.content))) {
+          localArrayList.add(localLbsReportInfo.content);
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public void compatible()
   {
-    String[] arrayOfString;
     if (TextUtils.isEmpty(this.businessTag))
     {
       if (QLog.isColorLevel()) {
@@ -48,30 +48,46 @@ public class LbsReportInfo
       }
       if (!TextUtils.isEmpty(this.content))
       {
-        arrayOfString = this.content.split("\\|");
-        if (arrayOfString.length != 7) {}
+        String[] arrayOfString = this.content.split("\\|");
+        if (arrayOfString.length == 7) {
+          try
+          {
+            this.operTime = Long.parseLong(arrayOfString[0]);
+            this.lat = Double.parseDouble(arrayOfString[1]);
+            this.lng = Double.parseDouble(arrayOfString[2]);
+            this.alt = Double.parseDouble(arrayOfString[3]);
+            this.accuracy = Float.parseFloat(arrayOfString[4]);
+            this.businessTag = arrayOfString[5];
+            return;
+          }
+          catch (Exception localException)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("LbsReportInfo", 2, localException, new Object[0]);
+            }
+          }
+        }
       }
-    }
-    try
-    {
-      this.operTime = Long.parseLong(arrayOfString[0]);
-      this.lat = Double.parseDouble(arrayOfString[1]);
-      this.lng = Double.parseDouble(arrayOfString[2]);
-      this.alt = Double.parseDouble(arrayOfString[3]);
-      this.accuracy = Float.parseFloat(arrayOfString[4]);
-      this.businessTag = arrayOfString[5];
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("LbsReportInfo", 2, localException, new Object[0]);
     }
   }
   
   public void createContent()
   {
-    this.content = (this.operTime + "|" + this.lat + "|" + this.lng + "|" + this.alt + "|" + this.accuracy + "|" + this.businessTag + "|" + "android");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.operTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.lat);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.lng);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.alt);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.accuracy);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.businessTag);
+    localStringBuilder.append("|");
+    localStringBuilder.append("android");
+    this.content = localStringBuilder.toString();
   }
 }
 

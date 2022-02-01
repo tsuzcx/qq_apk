@@ -19,8 +19,9 @@ class PluginCommunicationHandler$PluginCommunicationChannelImpl$TransferRunnable
     this.mCmd = paramString;
     this.mCb = paramRemoteCallback;
     this.mParams = paramBundle;
-    if (this.mParams != null) {
-      this.mParams.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+    paramString = this.mParams;
+    if (paramString != null) {
+      paramString.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
     }
     if (this.mCb != null) {
       this.mListener = new PluginCommunicationHandler.PluginCommunicationChannelImpl.TransferRunnable.1(this, paramPluginCommunicationChannelImpl);
@@ -29,43 +30,53 @@ class PluginCommunicationHandler$PluginCommunicationChannelImpl$TransferRunnable
   
   public void run()
   {
-    do
+    synchronized (PluginCommunicationHandler.access$100(this.this$1.this$0))
     {
-      synchronized (PluginCommunicationHandler.access$100(this.this$1.this$0))
+      RemoteCommand localRemoteCommand = (RemoteCommand)PluginCommunicationHandler.access$100(this.this$1.this$0).get(this.mCmd);
+      if (QLog.isColorLevel())
       {
-        RemoteCommand localRemoteCommand = (RemoteCommand)PluginCommunicationHandler.access$100(this.this$1.this$0).get(this.mCmd);
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("tranferAsync,");
+        ((StringBuilder)???).append(localRemoteCommand);
+        QLog.d("plugin_tag", 2, ((StringBuilder)???).toString());
+      }
+      if (localRemoteCommand == null)
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "tranferAsync," + localRemoteCommand);
+          QLog.i("plugin_tag", 2, "no cmd found to invoke, have you already register?");
         }
-        if (localRemoteCommand == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("plugin_tag", 2, "no cmd found to invoke, have you already register?");
-          }
-          return;
-        }
-      }
-      if (!localObject2.isSynchronized()) {
-        break;
-      }
-      ??? = PluginCommunicationHandler.PluginCommunicationChannelImpl.access$300(this.this$1, this.mCmd, this.mParams);
-      if (??? != null) {}
-      try
-      {
-        ((Bundle)???).setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
-        this.mCb.onRemoteCallback((Bundle)???);
         return;
       }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.w("plugin_tag", 2, "tranferAsync ", localRemoteException);
-    return;
-    localObject2.invoke(this.mParams, this.mListener);
+      if (localRemoteCommand.isSynchronized())
+      {
+        ??? = PluginCommunicationHandler.PluginCommunicationChannelImpl.access$300(this.this$1, this.mCmd, this.mParams);
+        if (??? != null) {}
+        try
+        {
+          ((Bundle)???).setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+          this.mCb.onRemoteCallback((Bundle)???);
+          return;
+        }
+        catch (RemoteException localRemoteException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label170;
+          }
+        }
+        QLog.w("plugin_tag", 2, "tranferAsync ", localRemoteException);
+      }
+      else
+      {
+        localRemoteCommand.invoke(this.mParams, this.mListener);
+      }
+      label170:
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler.PluginCommunicationChannelImpl.TransferRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,19 @@ public final class RespNeighborInfo
   static byte[] cache_vFaceID;
   static byte[] cache_vIntroContent;
   static VipBaseInfo cache_vipBaseInfo;
-  public byte bIsSingle;
+  public byte bIsSingle = 0;
   public byte cAge = -1;
-  public byte cGroupId;
+  public byte cGroupId = 0;
   public byte cSex = -1;
   public int eMerchantType = MerchantType.MerchantType_Nomal.value();
-  public int iDistance;
-  public int iRank;
+  public int iDistance = 0;
+  public int iRank = 0;
   public int iVoteIncrement = -1;
-  public long lNBID;
-  public int lTime;
-  public long lTotalVisitorsNum;
-  public int nFaceNum;
-  public short shIntroType;
+  public long lNBID = 0L;
+  public int lTime = 0;
+  public long lTotalVisitorsNum = 0L;
+  public int nFaceNum = 0;
+  public short shIntroType = 0;
   public String strCertification = "";
   public String strCompanyName = "";
   public String strDescription = "";
@@ -33,9 +33,9 @@ public final class RespNeighborInfo
   public String strPYFaceUrl = "";
   public String strPYName = "";
   public String strSchoolName = "";
-  public byte[] vFaceID;
-  public byte[] vIntroContent;
-  public VipBaseInfo vipBaseInfo;
+  public byte[] vFaceID = null;
+  public byte[] vIntroContent = null;
+  public VipBaseInfo vipBaseInfo = null;
   
   public RespNeighborInfo() {}
   
@@ -111,51 +111,61 @@ public final class RespNeighborInfo
     paramJceOutputStream.write(this.lNBID, 0);
     paramJceOutputStream.write(this.iDistance, 1);
     paramJceOutputStream.write(this.lTime, 2);
-    if (this.strDescription != null) {
-      paramJceOutputStream.write(this.strDescription, 3);
+    Object localObject = this.strDescription;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.cGroupId, 4);
     paramJceOutputStream.write(this.cSex, 5);
     paramJceOutputStream.write(this.cAge, 6);
-    if (this.strPYFaceUrl != null) {
-      paramJceOutputStream.write(this.strPYFaceUrl, 7);
+    localObject = this.strPYFaceUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strSchoolName != null) {
-      paramJceOutputStream.write(this.strSchoolName, 8);
+    localObject = this.strSchoolName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.strCompanyName != null) {
-      paramJceOutputStream.write(this.strCompanyName, 9);
+    localObject = this.strCompanyName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strPYName != null) {
-      paramJceOutputStream.write(this.strPYName, 10);
+    localObject = this.strPYName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.eMerchantType, 11);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 12);
+    localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.nFaceNum, 13);
-    if (this.strCertification != null) {
-      paramJceOutputStream.write(this.strCertification, 14);
+    localObject = this.strCertification;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.shIntroType, 15);
-    if (this.vIntroContent != null) {
-      paramJceOutputStream.write(this.vIntroContent, 16);
+    localObject = this.vIntroContent;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
-    if (this.vFaceID != null) {
-      paramJceOutputStream.write(this.vFaceID, 17);
+    localObject = this.vFaceID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
     paramJceOutputStream.write(this.iVoteIncrement, 18);
     paramJceOutputStream.write(this.bIsSingle, 19);
     paramJceOutputStream.write(this.iRank, 20);
     paramJceOutputStream.write(this.lTotalVisitorsNum, 21);
-    if (this.vipBaseInfo != null) {
-      paramJceOutputStream.write(this.vipBaseInfo, 22);
+    localObject = this.vipBaseInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 22);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.RespNeighborInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ final class zza
 {
   public final ScheduledExecutorService newSingleThreadScheduledExecutor()
   {
-    AppMethodBeat.i(89934);
+    AppMethodBeat.i(4956);
     ScheduledExecutorService localScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-    AppMethodBeat.o(89934);
+    AppMethodBeat.o(4956);
     return localScheduledExecutorService;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.providers.zza
  * JD-Core Version:    0.7.0.1
  */

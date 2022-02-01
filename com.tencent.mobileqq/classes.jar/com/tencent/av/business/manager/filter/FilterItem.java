@@ -1,17 +1,19 @@
 package com.tencent.av.business.manager.filter;
 
-import ljo;
+import com.tencent.av.business.manager.pendant.ItemBase;
 
 public class FilterItem
-  extends ljo
+  extends ItemBase
 {
   private String desc;
+  private String displayName;
   private String filterid;
   private int filtertype;
   private String iconmd5;
   private String iconurl;
   private String md5;
   private String name = "";
+  private String newIcon;
   private int predownload;
   private String resurl;
   private boolean usable;
@@ -19,6 +21,11 @@ public class FilterItem
   public String getDesc()
   {
     return this.desc;
+  }
+  
+  public String getDisplayName()
+  {
+    return this.displayName;
   }
   
   public String getFilterId()
@@ -36,7 +43,7 @@ public class FilterItem
     return this.iconmd5;
   }
   
-  public String getIconurl()
+  public String getIconUrl()
   {
     return this.iconurl;
   }
@@ -51,6 +58,11 @@ public class FilterItem
     return this.md5;
   }
   
+  public String getNewIcon()
+  {
+    return this.newIcon;
+  }
+  
   public int getPlatform()
   {
     return 660;
@@ -61,21 +73,24 @@ public class FilterItem
     return this.predownload;
   }
   
-  public String getResurl()
+  public String getResUrl()
   {
     return this.resurl;
   }
   
+  public String getVersion()
+  {
+    return "";
+  }
+  
   public boolean isEmptyFilter()
   {
-    boolean bool = false;
     try
     {
       int i = Integer.valueOf(getFilterId()).intValue();
       if ((i == -1) || (i == 0)) {
-        bool = true;
+        return true;
       }
-      return bool;
     }
     catch (Exception localException)
     {
@@ -96,12 +111,24 @@ public class FilterItem
   
   public String toString()
   {
-    return "filterid[" + this.filterid + "], desc[" + this.desc + "], name[" + this.name + "], isDownloading[" + this.isDownloading + "], filtertype[" + this.filtertype + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("filterid[");
+    localStringBuilder.append(this.filterid);
+    localStringBuilder.append("], desc[");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append("], name[");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("], isDownloading[");
+    localStringBuilder.append(this.isDownloading);
+    localStringBuilder.append("], filtertype[");
+    localStringBuilder.append(this.filtertype);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.filter.FilterItem
  * JD-Core Version:    0.7.0.1
  */

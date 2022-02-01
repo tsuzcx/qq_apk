@@ -5,16 +5,15 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.HorizontalScrollView;
-import awuy;
 
 public class HScrollView
   extends HorizontalScrollView
   implements Runnable
 {
-  private int jdField_a_of_type_Int = -9999999;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private awuy jdField_a_of_type_Awuy;
-  private int b = 1;
+  private Handler a = new Handler();
+  private HScrollView.ScrollViewListener b;
+  private int c = -9999999;
+  private int d = 1;
   
   public HScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,47 +22,51 @@ public class HScrollView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 1)
     {
+      if (i == 2)
+      {
+        this.d = 2;
+        this.b.a(this.d);
+        this.a.removeCallbacks(this);
+      }
     }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      this.b = 2;
-      this.jdField_a_of_type_Awuy.a(this.b);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
-      continue;
-      this.jdField_a_of_type_AndroidOsHandler.post(this);
+    else {
+      this.a.post(this);
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void run()
   {
-    if (getScrollX() == this.jdField_a_of_type_Int)
+    if (getScrollX() == this.c)
     {
-      this.b = 1;
-      if (this.jdField_a_of_type_Awuy != null) {
-        this.jdField_a_of_type_Awuy.a(this.b);
+      this.d = 1;
+      localScrollViewListener = this.b;
+      if (localScrollViewListener != null) {
+        localScrollViewListener.a(this.d);
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
+      this.a.removeCallbacks(this);
       return;
     }
-    this.b = 3;
-    if (this.jdField_a_of_type_Awuy != null) {
-      this.jdField_a_of_type_Awuy.a(this.b);
+    this.d = 3;
+    HScrollView.ScrollViewListener localScrollViewListener = this.b;
+    if (localScrollViewListener != null) {
+      localScrollViewListener.a(this.d);
     }
-    this.jdField_a_of_type_Int = getScrollX();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
+    this.c = getScrollX();
+    this.a.postDelayed(this, 50L);
   }
   
-  public void setOnScrollListener(awuy paramawuy)
+  public void setOnScrollListener(HScrollView.ScrollViewListener paramScrollViewListener)
   {
-    this.jdField_a_of_type_Awuy = paramawuy;
+    this.b = paramScrollViewListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.HScrollView
  * JD-Core Version:    0.7.0.1
  */

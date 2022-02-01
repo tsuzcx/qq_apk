@@ -1,22 +1,28 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agsy;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import avue;
-import azqs;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public class NearbyChatPie$8
-  implements Runnable
+class NearbyChatPie$8
+  extends FriendListObserver
 {
-  public NearbyChatPie$8(agsy paramagsy) {}
+  NearbyChatPie$8(NearbyChatPie paramNearbyChatPie) {}
   
-  public void run()
+  protected void onAddFriend(String paramString)
   {
-    String[] arrayOfString = avue.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    String str = this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    azqs.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
-    this.this$0.T = false;
+    if ((this.a.ah.b.equals(paramString)) && (QLog.isColorLevel()))
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.a.c);
+      ((StringBuilder)localObject).append("Q.nearby.follow");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAddFriend, addUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("|updateSession");
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
   }
 }
 

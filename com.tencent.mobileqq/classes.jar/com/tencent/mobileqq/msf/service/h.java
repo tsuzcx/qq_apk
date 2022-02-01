@@ -1,100 +1,49 @@
 package com.tencent.mobileqq.msf.service;
 
-import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.d.j;
+import java.util.HashMap;
 
 public class h
 {
-  private static final String a = "MSF.S.IPCTransportUtil";
-  private static final int[] b = { 716800, 655360, 409600, 204800, 102400 };
-  private static int c = b[0];
-  private static boolean d = false;
+  private static final int a = 0;
+  private static final int b = 1;
+  private int c = f.a().b() / 1024;
   
-  static int a()
+  public static h a()
   {
-    b();
-    return c;
+    return h.a.a();
   }
   
-  static void b()
+  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
   {
-    int i = 0;
-    if (d) {}
-    label180:
-    for (;;)
+    if (MsfService.getCore().getStatReporter() != null)
     {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("resultCode", String.valueOf(paramBoolean ^ true));
+      localHashMap.put("failReason", paramString1);
+      localHashMap.put("fromMsgLen", String.valueOf(paramInt2 / 1024));
+      localHashMap.put("totalLen", String.valueOf((paramInt1 + paramInt2) / 1024));
+      localHashMap.put("packageLen", String.valueOf(this.c));
+      localHashMap.put("cmd", paramString2);
+      localHashMap.put("sleepByIPCBlockTime", String.valueOf(paramLong));
+      MsfService.getCore().getStatReporter().a("EvtIPCTransport", paramBoolean, 0L, 0L, localHashMap, false, false);
       return;
-      c localc = c();
-      if (localc == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.IPCTransportUtil", 2, "adjustTransPackageLenIfNeed, but appProcessInfo = null");
-        }
-      }
-      else
-      {
-        d = true;
-        FromServiceMsg localFromServiceMsg = new FromServiceMsg();
-        localFromServiceMsg.setServiceCmd("test_ipc_package_length");
-        localFromServiceMsg.setBusinessFail(-2);
-        localFromServiceMsg.setRequestSsoSeq(-1);
-        MsfMessagePair localMsfMessagePair = new MsfMessagePair(null, localFromServiceMsg);
-        for (;;)
-        {
-          for (;;)
-          {
-            if (i >= b.length) {
-              break label180;
-            }
-            int j = b[i];
-            localFromServiceMsg.putWupBuffer(new byte[j]);
-            try
-            {
-              b.a(localMsfMessagePair, 0, j, j, localc.c());
-              c = j;
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("MSF.S.IPCTransportUtil", 2, "adjustTransPackageLenIfNeed suc, len = " + c);
-              return;
-            }
-            catch (Throwable localThrowable)
-            {
-              if (i == b.length - 1) {
-                c = j;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("MSF.S.IPCTransportUtil", 2, "adjustTransPackageLenIfNeed throw e: ", localThrowable);
-              }
-              i += 1;
-            }
-          }
-        }
-      }
     }
   }
   
-  private static c c()
+  public void b()
   {
-    Iterator localIterator = e.c.keySet().iterator();
-    while (localIterator.hasNext())
+    if (MsfService.getCore().getStatReporter() != null)
     {
-      Object localObject = (String)localIterator.next();
-      localObject = (c)e.c.get(localObject);
-      if ((localObject != null) && (((c)localObject).c() != null)) {
-        return localObject;
-      }
+      HashMap localHashMap = new HashMap();
+      MsfService.getCore().getStatReporter().a("EvtIPC", true, 0L, 0L, localHashMap, false, false);
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.h
  * JD-Core Version:    0.7.0.1
  */

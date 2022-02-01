@@ -1,58 +1,73 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.modelappbrand.LaunchParamsOptional;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.appcache.ay;
-import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.launching.m;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.task.h;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.appcache.bj;
+import com.tencent.mm.plugin.appbrand.appcache.bj.c;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyTestExportApiImpl;", "Lcom/tencent/mm/plugin/appbrand/debugger/IAppBrandMonkeyTestExportApi;", "()V", "handleReceiverAction", "", "context", "Landroid/content/Context;", "xml", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  implements o
+  implements f
 {
-  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, e.a parama)
+  private static final void Yd(String paramString)
   {
-    AppMethodBeat.i(129946);
-    if (paramMap != null)
+    AppMethodBeat.i(319686);
+    Toast.makeText(MMApplicationContext.getContext(), (CharSequence)s.X("小程序monkey test: xml 解析出错，请检查内容及格式是否正确\n\n", paramString), 1).show();
+    AppMethodBeat.o(319686);
+  }
+  
+  public final void Yc(String paramString)
+  {
+    AppMethodBeat.i(319691);
+    if (((CharSequence)paramString).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramString = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.AppID");
-      parama = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.UserName");
-      String str1 = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.Path");
-      Object localObject = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.URL");
-      String str2 = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.MD5");
-      paramMap = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.ExtInfo");
-      ab.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "onNewXmlReceived appId %s, userName %s, path %s, url %s, md5 %s, extInfo %s", new Object[] { paramString, parama, str1, localObject, str2, paramMap });
-      if ((bo.isNullOrNil(paramString)) || (bo.isNullOrNil(parama)) || (bo.isNullOrNil((String)localObject)))
+      AppMethodBeat.o(319691);
+      return;
+    }
+    try
+    {
+      Map localMap1 = XmlParser.parseXml(paramString, "sysmsg", null);
+      if (localMap1 == null)
       {
-        ab.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "appId = %s, username = %s, codeURL = %s, invalid, return", new Object[] { paramString, parama, localObject });
-        AppMethodBeat.o(129946);
+        h.ahAA.bk(new j..ExternalSyntheticLambda0(paramString));
+        AppMethodBeat.o(319691);
         return;
       }
-      if (g.auM().a(paramString, 1, (String)localObject, str2, 0L, bo.aox() + 7200L)) {
-        h.bt(paramString, 1);
-      }
-      localObject = new LaunchParamsOptional();
-      ((LaunchParamsOptional)localObject).fpV = paramMap;
-      ((m)g.w(m.class)).n(paramString, 1, paramMap);
-      paramMap = new AppBrandStatObject();
-      paramMap.scene = 1101;
-      paramMap.cmF = (paramString + ":" + parama);
-      AppBrandLaunchProxyUI.a(ah.getContext(), parama, str1, 1, -1, paramMap, null, (LaunchParamsOptional)localObject);
     }
-    AppMethodBeat.o(129946);
+    catch (Exception localException)
+    {
+      Map localMap2;
+      for (;;)
+      {
+        localMap2 = null;
+      }
+      Object localObject = (String)localMap2.get(".sysmsg.$type");
+      CharSequence localCharSequence = (CharSequence)localObject;
+      if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(319691);
+        return;
+      }
+      localObject = (bj.c)bj.qHi.get(localObject);
+      if (localObject != null) {
+        ((bj.c)localObject).k(paramString, localMap2);
+      }
+      AppMethodBeat.o(319691);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.j
  * JD-Core Version:    0.7.0.1
  */

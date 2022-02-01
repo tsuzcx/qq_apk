@@ -10,14 +10,14 @@ class ScanOcrActivity$3$1
   
   public void run()
   {
-    ScanOcrActivity.a(this.a.this$0).setVisibility(4);
     ScanOcrActivity.b(this.a.this$0).setVisibility(4);
-    ScanOcrActivity.b(this.a.this$0).setAlpha(255);
+    ScanOcrActivity.c(this.a.this$0).setVisibility(4);
+    ScanOcrActivity.c(this.a.this$0).setAlpha(255);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

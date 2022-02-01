@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.ar;
 
-import amwu;
-
-public class ArConfigService$4$3
+class ArConfigService$4$3
   implements Runnable
 {
-  public ArConfigService$4$3(amwu paramamwu) {}
+  ArConfigService$4$3(ArConfigService.4 param4) {}
   
   public void run()
   {
-    ArConfigService.g(this.a.a);
+    ArConfigService.F(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.4.3
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,14 @@ public final class im_msg_body$PubGroup
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "bytes_nickname", "uint32_gender", "uint32_age", "uint32_distance" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, PubGroup.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "bytes_nickname", "uint32_gender", "uint32_age", "uint32_distance" }, new Object[] { localByteStringMicro, localInteger, localInteger, localInteger }, PubGroup.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.im_msg_body.PubGroup
  * JD-Core Version:    0.7.0.1
  */

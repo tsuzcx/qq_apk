@@ -14,6 +14,7 @@ public abstract class FetchFileListCallback
   {
     if (paramInt2 == 0)
     {
+      int i = 0;
       if (paramLong == 0L)
       {
         onSuccess(new ArrayList(0), new ArrayList(0), paramInt1, paramBoolean);
@@ -22,46 +23,39 @@ public abstract class FetchFileListCallback
       long l1 = CBundleReader.getLong(paramLong, "add_list", 0L);
       long l2 = CBundleReader.getLong(paramLong, "delete_list", 0L);
       CBundleReader.deleteBundle(paramLong);
-      long[] arrayOfLong;
-      label77:
-      label109:
-      ArrayList localArrayList1;
-      if (l1 == 0L)
-      {
+      long[] arrayOfLong = null;
+      if (l1 == 0L) {
         paramString = null;
-        if (l2 != 0L) {
-          break label213;
-        }
-        arrayOfLong = null;
-        if (l1 != 0L) {
-          CBundleReader.deleteBundle(l1);
-        }
-        if (l2 != 0L) {
-          CBundleReader.deleteBundle(l2);
-        }
-        if (paramString != null) {
-          break label225;
-        }
-        paramInt2 = 0;
-        localArrayList1 = new ArrayList(paramInt2);
-        if (arrayOfLong != null) {
-          break label233;
-        }
+      } else {
+        paramString = CBundleReader.getLongArray(l1, "file_list");
       }
-      ArrayList localArrayList2;
-      int i;
-      label213:
-      label225:
-      label233:
-      for (paramInt2 = 0;; paramInt2 = arrayOfLong.length)
-      {
-        localArrayList2 = new ArrayList(paramInt2);
-        if (paramString == null) {
-          break label241;
-        }
-        i = paramString.length;
+      if (l2 != 0L) {
+        arrayOfLong = CBundleReader.getLongArray(l2, "file_list");
+      }
+      if (l1 != 0L) {
+        CBundleReader.deleteBundle(l1);
+      }
+      if (l2 != 0L) {
+        CBundleReader.deleteBundle(l2);
+      }
+      if (paramString == null) {
         paramInt2 = 0;
-        while (paramInt2 < i)
+      } else {
+        paramInt2 = paramString.length;
+      }
+      ArrayList localArrayList1 = new ArrayList(paramInt2);
+      if (arrayOfLong == null) {
+        paramInt2 = 0;
+      } else {
+        paramInt2 = arrayOfLong.length;
+      }
+      ArrayList localArrayList2 = new ArrayList(paramInt2);
+      int j;
+      if (paramString != null)
+      {
+        j = paramString.length;
+        paramInt2 = 0;
+        while (paramInt2 < j)
         {
           paramLong = paramString[paramInt2];
           if (paramLong != 0L)
@@ -73,19 +67,12 @@ public abstract class FetchFileListCallback
           }
           paramInt2 += 1;
         }
-        paramString = CBundleReader.getLongArray(l1, "file_list");
-        break;
-        arrayOfLong = CBundleReader.getLongArray(l2, "file_list");
-        break label77;
-        paramInt2 = paramString.length;
-        break label109;
       }
-      label241:
       if (arrayOfLong != null)
       {
-        i = arrayOfLong.length;
-        paramInt2 = 0;
-        while (paramInt2 < i)
+        j = arrayOfLong.length;
+        paramInt2 = i;
+        while (paramInt2 < j)
         {
           paramLong = arrayOfLong[paramInt2];
           if (paramLong != 0L)
@@ -108,7 +95,7 @@ public abstract class FetchFileListCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.callback.FetchFileListCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,22 @@
+package com.tencent.luggage.wxa.fl;
+
+import android.content.Intent;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/luggage/wxa/standalone_open_runtime/test_kit/DebuggerBroadcastAction;", "", "name", "", "onAction", "", "intent", "Landroid/content/Intent;", "xml", "DebuggerBroadcastReceiver", "Registry", "luggage-standalone-open-runtime-sdk_release"}, k=1, mv={1, 1, 16})
+public abstract interface a
+{
+  public static final a.b b = a.b.a;
+  
+  @NotNull
+  public abstract String a();
+  
+  public abstract void a(@NotNull Intent paramIntent, @NotNull String paramString);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.luggage.wxa.fl.a
+ * JD-Core Version:    0.7.0.1
+ */

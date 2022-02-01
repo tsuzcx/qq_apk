@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.history;
 
-import aidn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,20 +7,20 @@ import android.os.Parcelable.Creator;
 public class ChatHistoryTroopMemberFragment$TroopAdmin
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopAdmin> CREATOR = new aidn();
+  public static final Parcelable.Creator<TroopAdmin> CREATOR = new ChatHistoryTroopMemberFragment.TroopAdmin.1();
   public String a;
-  public short a;
-  public String b;
+  public short b;
   public String c;
+  public String d;
   
   public ChatHistoryTroopMemberFragment$TroopAdmin() {}
   
   private ChatHistoryTroopMemberFragment$TroopAdmin(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Short = ((short)paramParcel.readInt());
-    this.b = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = ((short)paramParcel.readInt());
     this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
   }
   
   public int describeContents()
@@ -34,8 +33,9 @@ public class ChatHistoryTroopMemberFragment$TroopAdmin
     if ((paramObject instanceof TroopAdmin))
     {
       paramObject = (TroopAdmin)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+      String str = this.a;
+      if (str != null) {
+        return str.equals(paramObject.a);
       }
     }
     return false;
@@ -43,10 +43,10 @@ public class ChatHistoryTroopMemberFragment$TroopAdmin
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Short);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.a);
+    paramParcel.writeInt(this.b);
     paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
   }
 }
 

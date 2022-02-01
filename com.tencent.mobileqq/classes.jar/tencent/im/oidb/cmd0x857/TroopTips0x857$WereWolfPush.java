@@ -34,14 +34,16 @@ public final class TroopTips0x857$WereWolfPush
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 66, 72, 80, 88, 96, 104, 112, 120, 130, 136 }, new String[] { "uint32_push_type", "uint64_game_room", "enum_game_state", "uint32_game_round", "rpt_roles", "uint64_speaker", "uint64_judge_uin", "bytes_judge_words", "enum_operation", "uint64_src_user", "uint64_dst_user", "rpt_dead_users", "uint32_game_result", "uint32_timeout_sec", "uint32_kill_confirmed", "bytes_judge_nickname", "rpt_voted_tie_users" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Long.valueOf(0L) }, WereWolfPush.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 66, 72, 80, 88, 96, 104, 112, 120, 130, 136 }, new String[] { "uint32_push_type", "uint64_game_room", "enum_game_state", "uint32_game_round", "rpt_roles", "uint64_speaker", "uint64_judge_uin", "bytes_judge_words", "enum_operation", "uint64_src_user", "uint64_dst_user", "rpt_dead_users", "uint32_game_result", "uint32_timeout_sec", "uint32_kill_confirmed", "bytes_judge_nickname", "rpt_voted_tie_users" }, new Object[] { localInteger, localLong, localInteger, localInteger, null, localLong, localLong, localByteStringMicro1, localInteger, localLong, localLong, localLong, localInteger, localInteger, localInteger, localByteStringMicro2, localLong }, WereWolfPush.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.WereWolfPush
  * JD-Core Version:    0.7.0.1
  */

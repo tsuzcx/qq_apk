@@ -8,7 +8,7 @@ public final class GetImgValidStatusReq
   extends JceStruct
 {
   static byte[] cache_Rawdata = (byte[])new byte[1];
-  public byte[] Rawdata;
+  public byte[] Rawdata = null;
   
   static
   {
@@ -29,14 +29,15 @@ public final class GetImgValidStatusReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.Rawdata != null) {
-      paramJceOutputStream.write(this.Rawdata, 0);
+    byte[] arrayOfByte = this.Rawdata;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetImgValidStatusReq
  * JD-Core Version:    0.7.0.1
  */

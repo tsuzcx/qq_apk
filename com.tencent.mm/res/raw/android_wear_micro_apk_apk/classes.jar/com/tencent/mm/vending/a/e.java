@@ -3,21 +3,22 @@ package com.tencent.mm.vending.a;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.mm.vending.f.a;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class e<_Index>
 {
-  private Handler YX;
-  HashMap<_Index, g> Zm = new HashMap();
-  private f<_Index> Zn = null;
-  private AtomicBoolean Zo = new AtomicBoolean(false);
-  byte[] Zp = new byte[0];
+  HashMap<_Index, g> acM = new HashMap();
+  private f<_Index> acN = null;
+  private AtomicBoolean acO = new AtomicBoolean(false);
+  byte[] acP = new byte[0];
+  private Handler acx;
   
   protected e(Looper paramLooper, f<_Index> paramf)
   {
-    this.Zn = paramf;
-    this.YX = new Handler(paramLooper)
+    this.acN = paramf;
+    this.acx = new Handler(paramLooper)
     {
       public final void handleMessage(Message arg1)
       {
@@ -27,43 +28,44 @@ public final class e<_Index>
           return;
         }
         Object localObject1 = ???.obj;
-        e.b(e.this).K(localObject1);
-        synchronized (e.this.Zp)
+        e.b(e.this).T(localObject1);
+        synchronized (e.this.acP)
         {
-          e.this.Zm.put(localObject1, g.Zt);
+          e.this.acM.put(localObject1, g.acT);
           return;
         }
       }
     };
   }
   
-  protected final void L(_Index param_Index)
+  protected final void U(_Index param_Index)
   {
-    if (this.Zo.get()) {
+    if (this.acO.get()) {
       return;
     }
-    synchronized (this.Zp)
+    synchronized (this.acP)
     {
-      this.Zm.put(param_Index, g.Zs);
-      this.YX.sendMessageAtFrontOfQueue(this.YX.obtainMessage(0, param_Index));
+      this.acM.put(param_Index, g.acS);
+      this.acx.sendMessageAtFrontOfQueue(this.acx.obtainMessage(0, param_Index));
       return;
     }
   }
   
-  protected final void lB()
+  protected final void mi()
   {
-    this.YX.removeCallbacksAndMessages(null);
-    synchronized (this.Zp)
+    this.acx.removeCallbacksAndMessages(null);
+    a.mq();
+    synchronized (this.acP)
     {
-      this.Zm.clear();
-      this.Zn.cancel();
+      this.acM.clear();
+      this.acN.cancel();
       return;
     }
   }
   
   protected final void stop()
   {
-    this.Zo.set(true);
+    this.acO.set(true);
   }
 }
 

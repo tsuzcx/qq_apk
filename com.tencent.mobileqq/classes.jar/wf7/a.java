@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class a
   extends JceStruct
@@ -53,42 +54,52 @@ public final class a
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.a != null) {
-      paramJceOutputStream.write(this.a, 0);
+    Object localObject = this.a;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.b != 0L) {
-      paramJceOutputStream.write(this.b, 1);
+    long l1 = this.b;
+    if (l1 != 0L) {
+      paramJceOutputStream.write(l1, 1);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.e, 4);
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 5);
+    localObject = this.f;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.g != 0) {
-      paramJceOutputStream.write(this.g, 6);
+    int n = this.g;
+    if (n != 0) {
+      paramJceOutputStream.write(n, 6);
     }
-    if (this.h != null) {
-      paramJceOutputStream.write(this.h, 7);
+    localObject = this.h;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.i != 0L) {
-      paramJceOutputStream.write(this.i, 8);
+    l1 = this.i;
+    if (l1 != 0L) {
+      paramJceOutputStream.write(l1, 8);
     }
-    if (-1 != this.j) {
-      paramJceOutputStream.write(this.j, 9);
+    n = this.j;
+    if (-1 != n) {
+      paramJceOutputStream.write(n, 9);
     }
-    if (this.k != null) {
-      paramJceOutputStream.write(this.k, 14);
+    localObject = this.k;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.a
  * JD-Core Version:    0.7.0.1
  */

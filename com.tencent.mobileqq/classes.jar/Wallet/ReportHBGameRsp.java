@@ -8,7 +8,7 @@ public final class ReportHBGameRsp
   extends JceStruct
   implements Cloneable
 {
-  public int result;
+  public int result = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -22,7 +22,7 @@ public final class ReportHBGameRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.ReportHBGameRsp
  * JD-Core Version:    0.7.0.1
  */

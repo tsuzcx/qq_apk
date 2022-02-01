@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.maproam.Utils;
 
 public final class gbi
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (paramDialogInterface == Utils.a) {
-      Utils.a = null;
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

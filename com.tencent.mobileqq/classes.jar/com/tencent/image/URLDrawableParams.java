@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap.Config;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
 import com.tencent.image.downloader.IllegalURLDownloader;
 import java.util.HashMap;
@@ -17,14 +16,11 @@ public abstract class URLDrawableParams
   public static final int TASK_TYPE_ASYNC_TASK = 0;
   public static final int TASK_TYPE_SWING_WORKER = 1;
   public boolean mAutoScaleByDensity = true;
-  public Handler mBatchHandler;
   public Bitmap.Config mConfig = Bitmap.Config.ARGB_8888;
   int mDeviceDensity = 160;
   private Hashtable<String, ProtocolDownloader> mDownLoaderMap = new Hashtable();
   public boolean mFadeInImage = true;
-  public Handler mFileHandler;
   HashMap<String, String> mLocalFileMap = new HashMap();
-  public MQLruCache<String, Object> mMemoryCache = null;
   int mMemoryCacheSize = 5242880;
   public int mReqHeight;
   public int mReqWidth;
@@ -57,36 +53,31 @@ public abstract class URLDrawableParams
     {
       localObject = doGetDownloader(paramString, paramObject);
       paramObject = localObject;
-      if (localObject == null)
-      {
-        if (!"file".equalsIgnoreCase(paramString)) {
-          break label71;
+      if (localObject == null) {
+        if ("file".equalsIgnoreCase(paramString))
+        {
+          paramObject = new LocaleFileDownloader();
         }
-        paramObject = new LocaleFileDownloader();
+        else if ("qqlive".equalsIgnoreCase(paramString))
+        {
+          paramObject = new QQLiveDownloader();
+        }
+        else
+        {
+          paramObject = localObject;
+          if ("illegalurl".equals(paramString)) {
+            paramObject = new IllegalURLDownloader();
+          }
+        }
       }
-    }
-    for (;;)
-    {
       localObject = paramObject;
       if (paramObject != null)
       {
         this.mDownLoaderMap.put(paramString, paramObject);
         localObject = paramObject;
       }
-      return localObject;
-      label71:
-      if ("qqlive".equalsIgnoreCase(paramString))
-      {
-        paramObject = new QQLiveDownloader();
-      }
-      else
-      {
-        paramObject = localObject;
-        if ("illegalurl".equals(paramString)) {
-          paramObject = new IllegalURLDownloader();
-        }
-      }
     }
+    return localObject;
   }
   
   String getLocalFilePath(String paramString)
@@ -108,7 +99,7 @@ public abstract class URLDrawableParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.URLDrawableParams
  * JD-Core Version:    0.7.0.1
  */

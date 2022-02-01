@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.PointF;
-import android.util.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
 
 public class PathParser
   implements ValueParser<PointF>

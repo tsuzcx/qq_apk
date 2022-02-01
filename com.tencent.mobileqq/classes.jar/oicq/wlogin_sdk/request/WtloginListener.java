@@ -1,5 +1,6 @@
 package oicq.wlogin_sdk.request;
 
+import java.util.HashMap;
 import java.util.List;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import oicq.wlogin_sdk.tools.ErrMsg;
@@ -66,6 +67,10 @@ public class WtloginListener
   
   public void OnRegCheckDownloadMsg(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
   
+  public void OnRegCheckError(int paramInt, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, Object paramObject) {}
+  
+  public void OnRegCheckIframe(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, Object paramObject) {}
+  
   public void OnRegCheckUploadMsg(WUserSigInfo paramWUserSigInfo, String paramString) {}
   
   public void OnRegCheckValidUrl(WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte) {}
@@ -98,6 +103,8 @@ public class WtloginListener
   
   public void onGetStWithQrSig(String paramString, long paramLong1, int paramInt1, long paramLong2, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg) {}
   
+  public void onLoginByGateway(int paramInt, WUserSigInfo paramWUserSigInfo, String paramString, ErrMsg paramErrMsg, HashMap<String, Object> paramHashMap) {}
+  
   public void onLoginByWeChat(long paramLong, byte[] paramArrayOfByte, WtloginHelper.QuickLoginParam paramQuickLoginParam, int paramInt1, int paramInt2, ErrMsg paramErrMsg) {}
   
   public void onModifyQIMPassword(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
@@ -106,7 +113,7 @@ public class WtloginListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WtloginListener
  * JD-Core Version:    0.7.0.1
  */

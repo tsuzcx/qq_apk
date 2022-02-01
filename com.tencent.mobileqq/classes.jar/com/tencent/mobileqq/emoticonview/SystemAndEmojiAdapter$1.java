@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apyy;
-
-public class SystemAndEmojiAdapter$1
+class SystemAndEmojiAdapter$1
   implements Runnable
 {
-  public SystemAndEmojiAdapter$1(apyy paramapyy, int paramInt) {}
+  SystemAndEmojiAdapter$1(SystemAndEmojiAdapter paramSystemAndEmojiAdapter, int paramInt) {}
   
   public void run()
   {
-    this.this$0.a(this.a);
+    this.this$0.setSelectionToEmoticon(this.val$locEmoticonRow);
   }
 }
 

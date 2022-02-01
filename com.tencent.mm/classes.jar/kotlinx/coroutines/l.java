@@ -1,51 +1,23 @@
 package kotlinx.coroutines;
 
-import a.c.c;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.d.d;
+import kotlin.d.f;
+import kotlin.g.a.m;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/ChildContinuation;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/Job;", "parent", "child", "Lkotlinx/coroutines/AbstractContinuation;", "(Lkotlinx/coroutines/Job;Lkotlinx/coroutines/AbstractContinuation;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"RESUMED", "", "SUSPENDED", "UNDECIDED", "withContext", "T", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "async", "Lkotlinx/coroutines/Deferred;", "start", "Lkotlinx/coroutines/CoroutineStart;", "(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/Deferred;", "invoke", "Lkotlinx/coroutines/CoroutineDispatcher;", "(Lkotlinx/coroutines/CoroutineDispatcher;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "launch", "Lkotlinx/coroutines/Job;", "", "(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function2;)Lkotlinx/coroutines/Job;", "kotlinx-coroutines-core"}, k=5, mv={1, 5, 1}, xi=48, xs="kotlinx/coroutines/BuildersKt")
 public final class l
-  extends be<bc>
 {
-  public final a<?> CHn;
+  public static final <T> Object a(f arg0, m<? super aq, ? super d<? super T>, ? extends Object> arg1, d<? super T> arg2) {}
   
-  public l(bc parambc, a<?> parama)
-  {
-    super(parambc);
-    AppMethodBeat.i(118542);
-    this.CHn = parama;
-    AppMethodBeat.o(118542);
-  }
+  public static final <T> ay<T> a(aq arg0, f arg1, as arg2, m<? super aq, ? super d<? super T>, ? extends Object> arg3) {}
   
-  public final String toString()
-  {
-    AppMethodBeat.i(118541);
-    String str = "ChildContinuation[" + this.CHn + ']';
-    AppMethodBeat.o(118541);
-    return str;
-  }
-  
-  public final void v(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118539);
-    paramThrowable = this.CHn;
-    Throwable localThrowable = a.a(this.CIm);
-    Object localObject;
-    k localk;
-    do
-    {
-      localObject = paramThrowable.CHh;
-      if (!(localObject instanceof bm)) {
-        break;
-      }
-      localk = new k((c)paramThrowable, localThrowable);
-    } while (!paramThrowable.a((bm)localObject, localk, 0));
-    AppMethodBeat.o(118539);
-  }
+  public static final cb b(aq arg0, f arg1, as arg2, m<? super aq, ? super d<? super ah>, ? extends Object> arg3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
 import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class gmm
-  implements DialogInterface.OnClickListener
+public class gmm
+  implements Runnable
 {
-  gmm(gmk paramgmk) {}
+  public gmm(ShareAppLogActivity paramShareAppLogActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ShareAppLogActivity.a(this.a.a).a(true);
+    try
+    {
+      if (ShareAppLogActivity.a(this.a) == null)
+      {
+        ShareAppLogActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+        ShareAppLogActivity.a(this.a).b(2131562645);
+      }
+      ShareAppLogActivity.a(this.a).show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

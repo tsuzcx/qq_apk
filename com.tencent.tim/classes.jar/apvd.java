@@ -1,0 +1,21 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+
+public class apvd
+  implements ValueAnimator.AnimatorUpdateListener
+{
+  public apvd(RedDotAnimateView paramRedDotAnimateView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.b.Ay = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.b.viewWidth / 2.0F);
+    this.b.invalidate();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes4.jar
+ * Qualified Name:     apvd
+ * JD-Core Version:    0.7.0.1
+ */

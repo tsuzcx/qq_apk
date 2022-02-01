@@ -1,19 +1,31 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PhoneUnityVerifyActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
   private String a;
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -24,16 +36,16 @@ public class PhoneUnityVerifyActivity
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561146);
-    super.setTitle(getString(2131695183));
+    super.setContentView(2131627634);
+    super.setTitle(getString(2131892487));
     this.leftView.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131693339);
+    this.rightViewText.setText(2131890215);
     this.rightViewText.setOnClickListener(this);
-    paramBundle = (Button)super.findViewById(2131371794);
+    paramBundle = (Button)super.findViewById(2131440086);
     if (paramBundle != null) {
       paramBundle.setOnClickListener(this);
     }
@@ -48,37 +60,48 @@ public class PhoneUnityVerifyActivity
   {
     super.setResult(-1, new Intent());
     super.finish();
-    super.overridePendingTransition(0, 2130772001);
+    super.overridePendingTransition(0, 2130772018);
     return false;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131436211)
     {
-    default: 
-      return;
-    case 2131371794: 
-      paramView = new Intent(this, QQBrowserActivity.class);
-      paramView.putExtra("uin", this.app.getCurrentAccountUin());
-      paramView.putExtra("url", this.a);
-      paramView.putExtra("hide_operation_bar", true);
-      paramView.putExtra("hide_more_button", true);
-      paramView.putExtra("portraitOnly", true);
-      paramView.putExtra("isShowAd", false);
-      paramView.putExtra("needResult", true);
-      paramView.putExtra("business", 16384L);
-      super.startActivityForResult(paramView, 1001);
-      return;
+      if (i == 2131440086)
+      {
+        Intent localIntent = new Intent(this, QQBrowserActivity.class);
+        localIntent.putExtra("uin", this.app.getCurrentAccountUin());
+        localIntent.putExtra("url", this.a);
+        localIntent.putExtra("hide_operation_bar", true);
+        localIntent.putExtra("hide_more_button", true);
+        localIntent.putExtra("portraitOnly", true);
+        localIntent.putExtra("isShowAd", false);
+        localIntent.putExtra("needResult", true);
+        localIntent.putExtra("business", 16384L);
+        super.startActivityForResult(localIntent, 1001);
+      }
     }
-    super.setResult(-1, new Intent());
-    super.finish();
-    super.overridePendingTransition(0, 2130772001);
+    else
+    {
+      super.setResult(-1, new Intent());
+      super.finish();
+      super.overridePendingTransition(0, 2130772018);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityVerifyActivity
  * JD-Core Version:    0.7.0.1
  */

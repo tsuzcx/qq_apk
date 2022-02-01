@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/k7e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/at6" android:src="@drawable/bll" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="@dimen/i3" android:textColor="@color/afc" android:id="@id/k7g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ata" android:text="@string/jqt" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/k7c" android:background="@drawable/avv" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/at5" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:paddingStart="@dimen/i6" android:paddingEnd="@dimen/i6">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/k7b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m2" android:contentDescription="@string/jqq" />
+        <TextView android:textSize="@dimen/io" android:textColor="@color/afl" android:id="@id/k7d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jqq" />
+    </LinearLayout>
+</merge>

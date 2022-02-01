@@ -13,12 +13,12 @@ public class WXEnterpriseCardObject
   
   public boolean checkArgs()
   {
-    if ((this.cardInfo == null) || (this.cardInfo.length() == 0))
-    {
-      Log.e("MicroMsg.SDK.WXEnterpriseCardObject", "checkArgs fail, cardInfo is invalid");
-      return false;
+    String str = this.cardInfo;
+    if ((str != null) && (str.length() != 0)) {
+      return true;
     }
-    return true;
+    Log.e("MicroMsg.SDK.WXEnterpriseCardObject", "checkArgs fail, cardInfo is invalid");
+    return false;
   }
   
   public void serialize(Bundle paramBundle)
@@ -40,7 +40,7 @@ public class WXEnterpriseCardObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEnterpriseCardObject
  * JD-Core Version:    0.7.0.1
  */

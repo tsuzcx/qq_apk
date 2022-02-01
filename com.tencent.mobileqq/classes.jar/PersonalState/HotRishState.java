@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class HotRishState
   extends JceStruct
 {
-  public int iActId;
-  public int iDataId;
+  public int iActId = 0;
+  public int iDataId = 0;
   
   public HotRishState() {}
   
@@ -32,7 +32,7 @@ public final class HotRishState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PersonalState.HotRishState
  * JD-Core Version:    0.7.0.1
  */

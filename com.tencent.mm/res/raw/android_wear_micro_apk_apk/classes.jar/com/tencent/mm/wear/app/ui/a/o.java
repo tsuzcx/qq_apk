@@ -21,8 +21,8 @@ public final class o
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903073, paramViewGroup, false);
     paramViewGroup = new p(this);
-    paramViewGroup.afL = ((TextView)paramContext.findViewById(2131558443));
-    paramViewGroup.ahm = ((TextView)paramContext.findViewById(2131558461));
+    paramViewGroup.ajn = ((TextView)paramContext.findViewById(2131558444));
+    paramViewGroup.akO = ((TextView)paramContext.findViewById(2131558462));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
@@ -30,20 +30,20 @@ public final class o
   public final void a(Context paramContext, b paramb)
   {
     paramb = (p)paramb;
-    if (nx())
+    if (ok())
     {
-      paramb.afL.setVisibility(0);
-      TextView localTextView = paramb.afL;
-      e.mB();
-      localTextView.setText(e.a(paramContext, this.ahe.afg.VT, 24));
+      paramb.ajn.setVisibility(0);
+      TextView localTextView = paramb.ajn;
+      e.nn();
+      localTextView.setText(e.a(paramContext, this.akG.aiI.XO, 24));
     }
     for (;;)
     {
-      paramb = paramb.ahm;
-      e.mB();
-      paramb.setText(e.a(paramContext, this.ahe.afg.Vx, 21));
+      paramb = paramb.akO;
+      e.nn();
+      paramb.setText(e.a(paramContext, this.akG.aiI.Xs, 21));
       return;
-      paramb.afL.setVisibility(8);
+      paramb.ajn.setVisibility(8);
     }
   }
   

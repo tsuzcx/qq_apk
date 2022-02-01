@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.weishi;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.aw;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.bq;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/weishi/AppBrandWeishiStatusBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/weishi/AppBrandWeishiStatusBarExtensionImpl;", "Lcom/tencent/mm/plugin/appbrand/page/MPPageViewStatusBarExtensionImpl;", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends aw
+  extends bq
 {
-  public d(v paramv)
+  public d(ad paramad)
   {
-    super(paramv, (com.tencent.mm.plugin.appbrand.page.c.c)new c(paramv));
-    AppMethodBeat.i(143997);
-    AppMethodBeat.o(143997);
+    super(paramad, (com.tencent.mm.plugin.appbrand.page.c.c)new c(paramad));
+    AppMethodBeat.i(51404);
+    AppMethodBeat.o(51404);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.weishi.d
  * JD-Core Version:    0.7.0.1
  */

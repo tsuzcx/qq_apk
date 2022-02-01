@@ -13,7 +13,7 @@ public class WakeLockEventCreator
   
   public WakeLockEvent createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(89981);
+    AppMethodBeat.i(5003);
     int n = SafeParcelReader.validateObjectHeader(paramParcel);
     int m = 0;
     long l3 = 0L;
@@ -85,7 +85,7 @@ public class WakeLockEventCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, n);
     paramParcel = new WakeLockEvent(m, l3, k, str5, j, localArrayList, str4, l2, i, str3, str2, f, l1, str1);
-    AppMethodBeat.o(89981);
+    AppMethodBeat.o(5003);
     return paramParcel;
   }
   
@@ -96,7 +96,7 @@ public class WakeLockEventCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.WakeLockEventCreator
  * JD-Core Version:    0.7.0.1
  */

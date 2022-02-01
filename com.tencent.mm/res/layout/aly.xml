@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="right" android:id="@id/ds8" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="32.0dip" android:layout_above="@id/ds9" android:layout_alignParentRight="true" />
-    <GridView android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/ds9" android:layout_width="fill_parent" android:layout_height="25.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:numColumns="9" />
-</LinearLayout>
+<com.tencent.mm.view.TouchableLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.finder.megavideo.ui.OverScrollRecyclerView android:id="@id/g79" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <FrameLayout android:id="@id/cyg" android:background="@color/BW_93" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/a7v" />
+    </FrameLayout>
+    <TextView android:textColor="#4dffffff" android:gravity="center_horizontal" android:id="@id/isi" android:paddingTop="144.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/est" style="@style/zo" />
+</com.tencent.mm.view.TouchableLayout>

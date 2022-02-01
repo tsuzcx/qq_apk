@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acog;
-import agjh;
-import agjx;
 import android.os.SystemClock;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,52 +15,51 @@ class ChatHistoryImageView$2
   public void run()
   {
     Object localObject;
-    long l;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("[onImageListLoad]: ");
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData == null)
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onImageListLoad]: ");
+      localObject = this.a;
+      if (localObject == null) {
         localObject = "null";
-        QLog.d("ChatHistoryImageView", 2, localObject);
+      } else {
+        localObject = Integer.valueOf(localObject.length);
       }
+      localStringBuilder.append(localObject);
+      QLog.d("ChatHistoryImageView", 2, localStringBuilder.toString());
     }
-    else
-    {
-      l = SystemClock.uptimeMillis();
-      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (!this.this$0.jdField_a_of_type_Agjh.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int))) {
-        this.this$0.jdField_a_of_type_Agjh.b();
-      }
-      if (this.this$0.jdField_a_of_type_Agjh.a() != 0) {
-        break label231;
-      }
-      this.this$0.b.setVisibility(0);
+    long l = SystemClock.uptimeMillis();
+    if ((this.a != null) && (!this.this$0.d.a(this.a, this.b))) {
+      this.this$0.d.h();
     }
-    for (;;)
+    if (this.this$0.d.a() == 0) {
+      this.this$0.i.setVisibility(0);
+    } else {
+      this.this$0.i.setVisibility(4);
+    }
+    if (!this.this$0.l.b(false)) {
+      this.this$0.l.notifyDataSetChanged();
+    }
+    if (this.this$0.e != null)
     {
-      if (!this.this$0.jdField_a_of_type_Agjx.a(false)) {
-        this.this$0.jdField_a_of_type_Agjx.notifyDataSetChanged();
-      }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData != null) {
-        this.this$0.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData, false);
-      }
-      if (this.this$0.jdField_a_of_type_Acog != null) {
-        this.this$0.jdField_a_of_type_Acog.a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatHistoryImageView", 2, "[onImageListLoad] cost: " + (SystemClock.uptimeMillis() - l));
-      }
-      return;
-      localObject = Integer.valueOf(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData.length);
-      break;
-      label231:
-      this.this$0.b.setVisibility(4);
+      localObject = this.this$0;
+      ((ChatHistoryImageView)localObject).a(((ChatHistoryImageView)localObject).e, false);
+    }
+    if (this.this$0.B != null) {
+      this.this$0.B.b();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onImageListLoad] cost: ");
+      ((StringBuilder)localObject).append(SystemClock.uptimeMillis() - l);
+      QLog.d("ChatHistoryImageView", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.2
  * JD-Core Version:    0.7.0.1
  */

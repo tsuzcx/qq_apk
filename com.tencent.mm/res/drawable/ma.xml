@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="@dimen/as" />
-    <solid android:color="@color/lw" />
-</shape>
+    <item android:state_focused="true" android:drawable="@drawable/mc" />
+    <item android:state_pressed="true" android:drawable="@drawable/mc" />
+    <item android:drawable="@drawable/mb" />
+</selector>

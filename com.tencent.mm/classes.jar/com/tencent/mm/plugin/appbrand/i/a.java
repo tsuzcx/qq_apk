@@ -1,137 +1,107 @@
 package com.tencent.mm.plugin.appbrand.i;
 
-import android.util.SparseArray;
-import com.tencent.mm.d.a.c;
-import com.tencent.mm.d.a.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
+import android.view.Surface;
+import com.tencent.luggage.xweb_ext.extendplugin.component.video.c;
+import com.tencent.luggage.xweb_ext.extendplugin.component.video.c.12;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.xweb.skia_canvas.external_texture.ISkiaCanvasExternalTextureHandler;
+import com.tencent.xweb.skia_canvas.external_texture.SkiaCanvasExternalTexturePlugin.PluginLoadResult;
+import com.tencent.xweb.skia_canvas.external_texture.SkiaCanvasExternalTexturePluginWithSurfaceTextureDelegate;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class a
-  extends d
-  implements i, k, m, q, r, s
+public class a
+  extends SkiaCanvasExternalTexturePluginWithSurfaceTextureDelegate
 {
-  private final c cbT = r(paramString, paramArrayOfByte);
-  final l ijd = a(this.cbT, e.aGE());
-  private final e ije = new e(new a.1(this));
-  private ArrayList<m.a> ijf = new ArrayList();
+  private static a roA;
+  private Map<Integer, c> roB;
   
-  public a(String paramString, byte[] paramArrayOfByte)
+  private a()
   {
-    paramString = this.ije;
-    ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "setMainContext id:%d", new Object[] { Integer.valueOf(1) });
-    paramString.ijl.put(1, this);
+    AppMethodBeat.i(139394);
+    this.roB = new ConcurrentHashMap();
+    AppMethodBeat.o(139394);
   }
   
-  protected abstract l a(c paramc, int paramInt);
-  
-  public final void a(m.a parama)
+  public static a coh()
   {
+    AppMethodBeat.i(139395);
+    if (roA == null) {}
     try
     {
-      this.ijf.add(parama);
-      return;
+      if (roA == null) {
+        roA = new a();
+      }
+      a locala = roA;
+      AppMethodBeat.o(139395);
+      return locala;
     }
     finally
     {
-      parama = finally;
-      throw parama;
+      AppMethodBeat.o(139395);
     }
   }
   
-  public final int aGA()
+  public final void a(int paramInt1, c paramc, Surface paramSurface, int paramInt2, int paramInt3, String paramString)
   {
-    return e.aGE();
-  }
-  
-  public final g aGB()
-  {
-    return this.ije.ow(1);
-  }
-  
-  public final g aGC()
-  {
-    return this.ije.aGC();
-  }
-  
-  protected final c aGx()
-  {
-    return this.cbT;
-  }
-  
-  protected final l aGy()
-  {
-    return this.ijd;
-  }
-  
-  public final boolean aGz()
-  {
-    return true;
-  }
-  
-  public void destroy()
-  {
-    this.ijd.cbC.l(new a.2(this));
-    e locale = this.ije;
-    SparseArray localSparseArray = locale.ijl;
-    int i = 0;
-    for (;;)
+    AppMethodBeat.i(316944);
+    if ((paramSurface != null) && ((paramInt2 != 0) || (paramInt3 != 0)))
     {
-      try
-      {
-        if (i < locale.ijl.size())
-        {
-          int j = locale.ijl.keyAt(i);
-          if (j == 1) {
-            break label163;
-          }
-          ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d", new Object[] { Integer.valueOf(j) });
-          if (locale.ijl.get(j) == null) {
-            ab.w("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d null", new Object[] { Integer.valueOf(j) });
-          } else {
-            ((d)locale.ijl.get(j)).destroy();
-          }
-        }
-      }
-      finally {}
-      localObject.ijl.clear();
-      super.destroy();
-      this.cbT.quit();
-      return;
-      label163:
-      i += 1;
+      Log.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "registerMediaPlayer, id:%s, width:%s, height:%s, surface:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramSurface.hashCode()) });
+      this.roB.put(Integer.valueOf(paramInt1), paramc);
+      registerInstance(paramInt1, paramString, paramInt2, paramInt3, paramSurface);
     }
+    AppMethodBeat.o(316944);
   }
   
-  public final g ow(int paramInt)
+  public void onPluginInstanceDestroy(ISkiaCanvasExternalTextureHandler paramISkiaCanvasExternalTextureHandler, int paramInt, String paramString)
   {
-    return this.ije.ow(paramInt);
+    AppMethodBeat.i(177198);
+    Log.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "onPluginInstanceDestroy, id:%s appTag:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    super.onPluginInstanceDestroy(paramISkiaCanvasExternalTextureHandler, paramInt, paramString);
+    AppMethodBeat.o(177198);
   }
   
-  public final void ox(int paramInt)
+  public SkiaCanvasExternalTexturePlugin.PluginLoadResult onPluginInstanceLoad(ISkiaCanvasExternalTextureHandler paramISkiaCanvasExternalTextureHandler, String paramString1, int paramInt, String paramString2)
   {
-    e locale = this.ije;
-    ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyJsContext id:%d", new Object[] { Integer.valueOf(paramInt) });
-    synchronized (locale.ijl)
+    AppMethodBeat.i(177197);
+    Log.i("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "onPluginInstanceLoad, type:%s, id:%s appTag:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    paramISkiaCanvasExternalTextureHandler = super.onPluginInstanceLoad(paramISkiaCanvasExternalTextureHandler, paramString1, paramInt, paramString2);
+    AppMethodBeat.o(177197);
+    return paramISkiaCanvasExternalTextureHandler;
+  }
+  
+  public void replaceDisplaySurface(int paramInt, String paramString, Surface paramSurface)
+  {
+    AppMethodBeat.i(316947);
+    paramString = (c)this.roB.get(Integer.valueOf(paramInt));
+    if ((paramString != null) && (paramSurface != null))
     {
-      d locald = (d)locale.ijl.get(paramInt);
-      locale.ijl.delete(paramInt);
-      if (locald != null) {
-        locald.destroy();
-      }
+      Log.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, surface:%s", new Object[] { Integer.valueOf(paramSurface.hashCode()) });
+      paramString.o(new c.12(paramString, paramSurface));
+      AppMethodBeat.o(316947);
       return;
     }
+    Log.w("MicroMsg.AppBrand.VideoCanvas.VideoCanvasExternalTexturePlugin", "replaceDisplaySurface, video plugin handler or surface texture is null");
+    AppMethodBeat.o(316947);
   }
   
-  protected abstract c r(String paramString, byte[] paramArrayOfByte);
-  
-  public void setJsExceptionHandler(h paramh)
+  public boolean supportType(String paramString)
   {
-    this.ijd.a(e.aGE(), paramh);
+    AppMethodBeat.i(139398);
+    if (paramString.equals("video"))
+    {
+      AppMethodBeat.o(139398);
+      return true;
+    }
+    AppMethodBeat.o(139398);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.a
  * JD-Core Version:    0.7.0.1
  */

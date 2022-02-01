@@ -4,12 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
-import bexd;
 
 public class PressEffectLinearLayout
   extends LinearLayout
 {
-  private boolean a;
+  private boolean a = false;
   
   public PressEffectLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,20 +17,21 @@ public class PressEffectLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!isClickable()) || (!isEnabled()) || (this.a)) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    switch (paramMotionEvent.getAction())
+    if ((isClickable()) && (isEnabled()) && (!this.a))
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      bexd.a(this);
+      int i = paramMotionEvent.getAction();
+      if (i != 0)
+      {
+        if ((i == 1) || (i == 3)) {
+          PressEffectHelper.b(this);
+        }
+        return super.onTouchEvent(paramMotionEvent);
+      }
+      PressEffectHelper.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bexd.b(this);
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setDisableEffect(boolean paramBoolean)
@@ -41,7 +41,7 @@ public class PressEffectLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.presseffect.PressEffectLinearLayout
  * JD-Core Version:    0.7.0.1
  */

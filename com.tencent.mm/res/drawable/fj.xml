@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:color="@color/gu" />
-    <item android:state_selected="true" android:color="@color/gu" />
-    <item android:state_pressed="true" android:color="@color/gu" />
-    <item android:color="@color/gv" />
-</selector>
+    <corners android:topLeftRadius="12.0dip" android:topRightRadius="12.0dip" />
+    <solid android:color="#ff232323" />
+</shape>

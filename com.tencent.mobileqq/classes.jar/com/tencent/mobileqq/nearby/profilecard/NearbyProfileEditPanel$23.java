@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import android.os.Bundle;
-import auxh;
-import avnl;
+import com.tencent.mobileqq.nearby.business.INearbyCardHandler;
 import java.util.ArrayList;
 
-public class NearbyProfileEditPanel$23
+class NearbyProfileEditPanel$23
   implements Runnable
 {
-  public NearbyProfileEditPanel$23(avnl paramavnl, auxh paramauxh, Bundle paramBundle, ArrayList paramArrayList) {}
+  NearbyProfileEditPanel$23(NearbyProfileEditPanel paramNearbyProfileEditPanel, INearbyCardHandler paramINearbyCardHandler, Bundle paramBundle, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Auxh.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_ArrayOfAvau, this.this$0.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d, this.this$0.b(), false, false);
+    this.a.a(this.b, this.c, this.this$0.T, this.this$0.F.mLostGodFlag, this.this$0.j(), false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.23
  * JD-Core Version:    0.7.0.1
  */

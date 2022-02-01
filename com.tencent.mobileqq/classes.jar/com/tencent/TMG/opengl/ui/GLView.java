@@ -53,8 +53,12 @@ public class GLView
   
   protected boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((getVisibility() == 0) && (this.mOnTouchListener != null) && (this.mOnTouchListener.onTouch(this, paramMotionEvent))) {
-      return true;
+    if (getVisibility() == 0)
+    {
+      GLView.OnTouchListener localOnTouchListener = this.mOnTouchListener;
+      if ((localOnTouchListener != null) && (localOnTouchListener.onTouch(this, paramMotionEvent))) {
+        return true;
+      }
     }
     return onTouchEvent(paramMotionEvent);
   }
@@ -82,8 +86,8 @@ public class GLView
   public boolean getBoundsOf(GLView paramGLView, Rect paramRect)
   {
     GLView localGLView = paramGLView;
-    int i = 0;
     int j = 0;
+    int i = 0;
     while (localGLView != this)
     {
       if (localGLView == null) {
@@ -125,10 +129,12 @@ public class GLView
   
   public int getVisibility()
   {
-    if ((this.mViewFlags & 0x1) == 0) {
-      return 0;
+    int j = this.mViewFlags;
+    int i = 1;
+    if ((j & 0x1) == 0) {
+      i = 0;
     }
-    return 1;
+    return i;
   }
   
   public int getWidth()
@@ -159,24 +165,29 @@ public class GLView
   
   public void lockRendering()
   {
-    if (this.mRootView != null) {
-      this.mRootView.lockRenderThread();
+    GLRootView localGLRootView = this.mRootView;
+    if (localGLRootView != null) {
+      localGLRootView.lockRenderThread();
     }
   }
   
   @SuppressLint({"WrongCall"})
   public void measure(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == this.mLastWidthSpec) && (paramInt2 == this.mLastHeightSpec) && ((this.mViewFlags & 0x4) == 0)) {}
-    do
-    {
+    if ((paramInt1 == this.mLastWidthSpec) && (paramInt2 == this.mLastHeightSpec) && ((this.mViewFlags & 0x4) == 0)) {
       return;
-      this.mLastWidthSpec = paramInt1;
-      this.mLastHeightSpec = paramInt2;
-      this.mViewFlags &= 0xFFFFFFFD;
-      onMeasure(paramInt1, paramInt2);
-    } while ((this.mViewFlags & 0x2) != 0);
-    throw new IllegalStateException(getClass().getName() + " should call setMeasuredSize() in onMeasure()");
+    }
+    this.mLastWidthSpec = paramInt1;
+    this.mLastHeightSpec = paramInt2;
+    this.mViewFlags &= 0xFFFFFFFD;
+    onMeasure(paramInt1, paramInt2);
+    if ((this.mViewFlags & 0x2) != 0) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getName());
+    localStringBuilder.append(" should call setMeasuredSize() in onMeasure()");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   protected void onAttachToRoot(GLRootView paramGLRootView)
@@ -226,48 +237,48 @@ public class GLView
     this.mViewFlags |= 0x4;
     this.mLastHeightSpec = -1;
     this.mLastWidthSpec = -1;
-    if (this.mParent != null) {
-      this.mParent.requestLayout();
-    }
-    GLRootView localGLRootView;
-    do
+    Object localObject = this.mParent;
+    if (localObject != null)
     {
+      ((GLView)localObject).requestLayout();
       return;
-      localGLRootView = getGLRootView();
-    } while (localGLRootView == null);
-    localGLRootView.requestLayoutContentPane();
+    }
+    localObject = getGLRootView();
+    if (localObject != null) {
+      ((GLRootView)localObject).requestLayoutContentPane();
+    }
   }
   
   public void setBackground(int paramInt)
   {
-    Object localObject1 = null;
-    Object localObject3 = this.mBackgroundBitmapLock;
+    Object localObject2 = this.mBackgroundBitmapLock;
     if (paramInt != 0) {}
     try
     {
       if (paramInt == this.mBackgroundResource) {
         return;
       }
-      localObject4 = getGLRootView();
-      if (localObject4 == null) {
-        throw new RuntimeException("Cannot set resource background before attach to GLRootView!");
+      Object localObject3 = getGLRootView();
+      if (localObject3 != null)
+      {
+        BasicTexture localBasicTexture = this.mBackground;
+        ResourceTexture localResourceTexture = null;
+        if (localBasicTexture != null)
+        {
+          this.mBackground.recycle();
+          this.mBackground = null;
+        }
+        localObject3 = ((GLRootView)localObject3).getContext();
+        if (paramInt != 0) {
+          localResourceTexture = new ResourceTexture((Context)localObject3, paramInt);
+        }
+        this.mBackground = localResourceTexture;
+        this.mBackgroundResource = paramInt;
+        return;
       }
+      throw new RuntimeException("Cannot set resource background before attach to GLRootView!");
     }
     finally {}
-    if (this.mBackground != null)
-    {
-      this.mBackground.recycle();
-      this.mBackground = null;
-    }
-    Object localObject4 = ((GLRootView)localObject4).getContext();
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      this.mBackground = localObject2;
-      this.mBackgroundResource = paramInt;
-      return;
-      ResourceTexture localResourceTexture = new ResourceTexture((Context)localObject4, paramInt);
-    }
   }
   
   /* Error */
@@ -289,7 +300,7 @@ public class GLView
     //   18: ifnull +15 -> 33
     //   21: aload_0
     //   22: getfield 121	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
-    //   25: invokevirtual 249	com/tencent/TMG/opengl/texture/BasicTexture:recycle	()V
+    //   25: invokevirtual 244	com/tencent/TMG/opengl/texture/BasicTexture:recycle	()V
     //   28: aload_0
     //   29: aconst_null
     //   30: putfield 121	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
@@ -330,12 +341,14 @@ public class GLView
   
   public boolean setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt3 - paramInt1 != this.mBounds.right - this.mBounds.left) || (paramInt4 - paramInt2 != this.mBounds.bottom - this.mBounds.top)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mBounds.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      return bool;
+    boolean bool;
+    if ((paramInt3 - paramInt1 == this.mBounds.right - this.mBounds.left) && (paramInt4 - paramInt2 == this.mBounds.bottom - this.mBounds.top)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    this.mBounds.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    return bool;
   }
   
   protected void setMeasuredSize(int paramInt1, int paramInt2)
@@ -367,49 +380,54 @@ public class GLView
     if (paramInt == getVisibility()) {
       return;
     }
-    if (paramInt == 0) {}
-    for (this.mViewFlags &= 0xFFFFFFFE;; this.mViewFlags |= 0x1)
-    {
-      onVisibilityChanged(paramInt);
-      invalidate();
-      return;
+    if (paramInt == 0) {
+      this.mViewFlags &= 0xFFFFFFFE;
+    } else {
+      this.mViewFlags |= 0x1;
     }
+    onVisibilityChanged(paramInt);
+    invalidate();
   }
   
   public void setZOrder(int paramInt)
   {
-    if (this.mZOrder != paramInt)
+    int i = this.mZOrder;
+    if (i != paramInt)
     {
-      int i = this.mZOrder;
       this.mZOrder = paramInt;
-      if (this.mOnZOrderChangedListener != null) {
-        this.mOnZOrderChangedListener.OnZOrderChanged(this, paramInt, i);
+      GLView.OnZOrderChangedListener localOnZOrderChangedListener = this.mOnZOrderChangedListener;
+      if (localOnZOrderChangedListener != null) {
+        localOnZOrderChangedListener.OnZOrderChanged(this, paramInt, i);
       }
     }
   }
   
   public void startAnimation(Animation paramAnimation)
   {
-    if (getGLRootView() == null) {
-      throw new IllegalStateException();
+    if (getGLRootView() != null)
+    {
+      this.mAnimation = paramAnimation;
+      paramAnimation = this.mAnimation;
+      if (paramAnimation != null) {
+        paramAnimation.start();
+      }
+      invalidate();
+      return;
     }
-    this.mAnimation = paramAnimation;
-    if (this.mAnimation != null) {
-      this.mAnimation.start();
-    }
-    invalidate();
+    throw new IllegalStateException();
   }
   
   public void unlockRendering()
   {
-    if (this.mRootView != null) {
-      this.mRootView.unlockRenderThread();
+    GLRootView localGLRootView = this.mRootView;
+    if (localGLRootView != null) {
+      localGLRootView.unlockRenderThread();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.ui.GLView
  * JD-Core Version:    0.7.0.1
  */

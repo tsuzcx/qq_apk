@@ -1,21 +1,19 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.r;
+import com.tencent.mm.sdk.event.IListener;
 
-final class AppBrandAuthorizeUI$1
-  implements MenuItem.OnMenuItemClickListener
+class AppBrandAuthorizeUI$1
+  extends IListener<r>
 {
-  AppBrandAuthorizeUI$1(AppBrandAuthorizeUI paramAppBrandAuthorizeUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  AppBrandAuthorizeUI$1(AppBrandAuthorizeUI paramAppBrandAuthorizeUI, q paramq)
   {
-    AppMethodBeat.i(132892);
-    AppBrandAuthorizeUI.a(this.iLF);
-    this.iLF.finish();
-    AppMethodBeat.o(132892);
-    return false;
+    super(paramq);
+    AppMethodBeat.i(321899);
+    this.__eventId = r.class.getName().hashCode();
+    AppMethodBeat.o(321899);
   }
 }
 

@@ -11,16 +11,16 @@ public final class ch
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 2, paramzzk.getId());
-    c.a(paramParcel, 3, paramzzk.kP());
-    c.a(paramParcel, 4, paramzzk.kQ());
-    c.a(paramParcel, 5, paramzzk.kR());
+    c.a(paramParcel, 3, paramzzk.kY());
+    c.a(paramParcel, 4, paramzzk.kZ());
+    c.a(paramParcel, 5, paramzzk.la());
     c.a(paramParcel, 6, paramzzk.getTitle());
-    c.a(paramParcel, 7, paramzzk.kS());
+    c.a(paramParcel, 7, paramzzk.lb());
     c.a(paramParcel, 8, paramzzk.getDisplayName());
-    c.a(paramParcel, 9, paramzzk.kT());
-    c.a(paramParcel, 10, paramzzk.kU());
-    c.a(paramParcel, 11, paramzzk.kV());
-    c.a(paramParcel, 12, paramzzk.kW());
+    c.a(paramParcel, 9, paramzzk.lc());
+    c.a(paramParcel, 10, paramzzk.ld());
+    c.a(paramParcel, 11, paramzzk.le());
+    c.a(paramParcel, 12, paramzzk.lf());
     c.a(paramParcel, 13, paramzzk.getPackageName());
     c.v(paramParcel, i);
   }

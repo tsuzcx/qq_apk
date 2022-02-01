@@ -1,26 +1,38 @@
 package com.tencent.mm.plugin.sight.draft.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.widget.Toast;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.l;
+import com.tencent.mm.modelvideo.q;
+import com.tencent.mm.modelvideo.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.vfs.y;
 import java.util.LinkedList;
 
 public class SightDraftUI
   extends MMActivity
 {
-  private int qVq;
-  SightDraftContainerView qVr;
-  private LinkedList<String> qVs;
+  private int PHR;
+  SightDraftContainerView PHS;
+  private LinkedList<String> PHT;
   
   public SightDraftUI()
   {
-    AppMethodBeat.i(25028);
-    this.qVq = 1;
-    this.qVs = new LinkedList();
-    AppMethodBeat.o(25028);
+    AppMethodBeat.i(28699);
+    this.PHR = 1;
+    this.PHT = new LinkedList();
+    AppMethodBeat.o(28699);
   }
   
   public int getLayoutId()
@@ -30,16 +42,40 @@ public class SightDraftUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(25029);
+    AppMethodBeat.i(28700);
     super.onCreate(paramBundle);
-    setMMTitle(2131303725);
-    getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(2131689763));
-    this.qVr = new SightDraftContainerView(this);
-    setContentView(this.qVr);
-    this.qVr.cmX();
+    setMMTitle(R.l.sight_old_draft_title);
+    getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.e.black));
+    this.PHS = new SightDraftContainerView(this);
+    setContentView(this.PHS);
+    this.PHS.gYS();
     setBackBtn(new SightDraftUI.1(this));
-    this.qVr.setSightDraftCallback(new SightDraftUI.2(this));
-    AppMethodBeat.o(25029);
+    this.PHS.setSightDraftCallback(new a()
+    {
+      public final void gYP()
+      {
+        AppMethodBeat.i(28697);
+        SightDraftUI.this.addTextOptionMenu(SightDraftUI.a(SightDraftUI.this), SightDraftUI.this.getString(R.l.sight_draft_save), new MenuItem.OnMenuItemClickListener()
+        {
+          public final boolean onMenuItemClick(MenuItem paramAnonymous2MenuItem)
+          {
+            AppMethodBeat.i(28696);
+            SightDraftUI.b(SightDraftUI.this);
+            AppMethodBeat.o(28696);
+            return true;
+          }
+        });
+        AppMethodBeat.o(28697);
+      }
+      
+      public final void gYQ()
+      {
+        AppMethodBeat.i(28698);
+        SightDraftUI.this.removeOptionMenu(SightDraftUI.a(SightDraftUI.this));
+        AppMethodBeat.o(28698);
+      }
+    });
+    AppMethodBeat.o(28700);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

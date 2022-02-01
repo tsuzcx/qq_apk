@@ -1,89 +1,99 @@
 package com.tencent.mobileqq.app;
 
-import alxa;
 import android.database.SQLException;
 import android.os.SystemClock;
 import android.util.Pair;
-import awgg;
-import awgn;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class MessageRoamManager$2
+class MessageRoamManager$2
   implements Runnable
 {
-  public MessageRoamManager$2(alxa paramalxa, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
+  MessageRoamManager$2(MessageRoamManager paramMessageRoamManager, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {}
-    for (long l1 = SystemClock.uptimeMillis();; l1 = 0L)
+    long l1;
+    if (QLog.isColorLevel()) {
+      l1 = SystemClock.uptimeMillis();
+    } else {
+      l1 = 0L;
+    }
+    this.this$0.b.getProxyManager().transSaveToDatabase();
+    try
     {
-      this.this$0.a.a().d();
-      Object localObject2;
       try
       {
-        List localList1 = this.this$0.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, ((Long)this.jdField_a_of_type_AndroidUtilPair.first).longValue(), this.jdField_a_of_type_Long);
-        if (localList1 == null) {
-          break label269;
-        }
-        localObject2 = new ArrayList(localList1.size());
-        Iterator localIterator = localList1.iterator();
-        while (localIterator.hasNext()) {
-          ((List)localObject2).add((ChatMessage)localIterator.next());
-        }
-      }
-      catch (SQLException localSQLException)
-      {
-        for (;;)
-        {
-          List localList2 = ((awgn)this.this$0.a.getEntityManagerFactory().createMessageRecordEntityManager()).a(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("Q.roammsg.MessageRoamManager", 1, "getMessageByDay: ", localException);
-          Object localObject1 = null;
-        }
+        List localList1 = this.this$0.a(this.a, this.b, this.c, ((Long)this.d.first).longValue(), this.e);
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        QLog.e("Q.roammsg.MessageRoamManager", 1, "handlePBGetRoamMsg OutOfMemoryError ! ", localOutOfMemoryError);
+        break label119;
       }
-      return;
-      this.this$0.a(23, localObject2);
-      label209:
-      if (QLog.isColorLevel())
+      catch (Exception localException)
       {
-        long l2 = SystemClock.uptimeMillis();
-        localObject2 = new StringBuilder().append("queryMessageByDayFromDB: costTime: ").append(l2 - l1).append(",records num: ");
-        if (localOutOfMemoryError != null) {
-          break label282;
-        }
+        break label130;
       }
-      label269:
-      label282:
-      for (int i = 0;; i = localOutOfMemoryError.size())
-      {
-        QLog.d("Q.roammsg.MessageRoamManager", 2, i);
-        return;
-        this.this$0.a(22, null);
-        break label209;
-        break;
+    }
+    catch (SQLException localSQLException)
+    {
+      label79:
+      List localList2;
+      Object localObject;
+      Iterator localIterator;
+      long l2;
+      int i;
+      break label79;
+    }
+    localList2 = ((MessageRecordEntityManager)this.this$0.b.getEntityManagerFactory().b()).query(MessageRecord.class, this.a, false, this.c, null, null, null, null, null);
+    break label143;
+    label119:
+    QLog.e("Q.roammsg.MessageRoamManager", 1, "handlePBGetRoamMsg OutOfMemoryError ! ", localList2);
+    return;
+    label130:
+    QLog.e("Q.roammsg.MessageRoamManager", 1, "getMessageByDay: ", localList2);
+    localList2 = null;
+    label143:
+    if (localList2 != null)
+    {
+      localObject = new ArrayList(localList2.size());
+      localIterator = localList2.iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add((ChatMessage)localIterator.next());
       }
+      this.this$0.a(23, localObject);
+    }
+    else
+    {
+      this.this$0.a(22, null);
+    }
+    if (QLog.isColorLevel())
+    {
+      l2 = SystemClock.uptimeMillis();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("queryMessageByDayFromDB: costTime: ");
+      ((StringBuilder)localObject).append(l2 - l1);
+      ((StringBuilder)localObject).append(",records num: ");
+      if (localList2 == null) {
+        i = 0;
+      } else {
+        i = localList2.size();
+      }
+      ((StringBuilder)localObject).append(i);
+      QLog.d("Q.roammsg.MessageRoamManager", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.2
  * JD-Core Version:    0.7.0.1
  */

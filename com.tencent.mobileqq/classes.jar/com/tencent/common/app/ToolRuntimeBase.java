@@ -4,14 +4,12 @@ import android.annotation.TargetApi;
 import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.os.Build.VERSION;
-import android.os.Bundle;
 import android.support.v4.util.MQLruCache;
+import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import qhu;
-import zhz;
 
 public class ToolRuntimeBase
   extends PluginRuntime
@@ -27,48 +25,117 @@ public class ToolRuntimeBase
   void clearCache(int paramInt)
   {
     long l = System.currentTimeMillis();
-    if (Math.abs(l - this.mLastTrimTime) < 2000L) {}
-    MQLruCache localMQLruCache;
-    do
-    {
-      return;
-      this.mLastTrimTime = l;
-      if (QLog.isColorLevel()) {
-        QLog.d("ToolRuntimeBase", 2, "clearCache, " + paramInt);
-      }
-      localMQLruCache = BaseApplicationImpl.sImageCache;
-    } while (localMQLruCache == null);
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      localMQLruCache.releaseLargeCache();
-      return;
-    case 2: 
-      localMQLruCache.evictAll();
+    if (Math.abs(l - this.mLastTrimTime) < 2000L) {
       return;
     }
-    localMQLruCache.evictAll();
+    this.mLastTrimTime = l;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("clearCache, ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ToolRuntimeBase", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = GlobalImageCache.a;
+    if (localObject == null) {
+      return;
+    }
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return;
+          }
+          ((MQLruCache)localObject).evictAll();
+          return;
+        }
+        ((MQLruCache)localObject).evictAll();
+        return;
+      }
+      ((MQLruCache)localObject).releaseLargeCache();
+    }
   }
   
   @TargetApi(14)
-  public void exitToolProc()
+  protected void exitToolProc()
   {
     QIPCClientHelper.getInstance().disconnect();
-    if (Build.VERSION.SDK_INT >= 14) {}
-    try
-    {
-      if (this.componentCallbacks != null) {
-        getApplication().unregisterComponentCallbacks(this.componentCallbacks);
+    if (Build.VERSION.SDK_INT >= 14) {
+      try
+      {
+        if (this.componentCallbacks != null) {
+          getApplication().unregisterComponentCallbacks(this.componentCallbacks);
+        }
       }
-      super.exitToolProc();
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ToolRuntimeBase", 2, "", localThrowable);
+        }
+      }
+    }
+    super.exitToolProc();
+  }
+  
+  @TargetApi(14)
+  public void onTrimMemory(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onTrimMemory, ");
+      localStringBuilder.append(paramInt);
+      QLog.d("ToolRuntimeBase", 2, localStringBuilder.toString());
+    }
+    if (paramInt != 5)
+    {
+      if (paramInt != 10)
+      {
+        if (paramInt != 15)
+        {
+          if (paramInt != 20)
+          {
+            if ((paramInt != 40) && (paramInt != 60))
+            {
+              if (paramInt != 80) {
+                return;
+              }
+              clearCache(3);
+              return;
+            }
+            clearCache(2);
+            return;
+          }
+          clearCache(1);
+          return;
+        }
+        clearCache(0);
+        return;
+      }
+      clearCache(0);
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+    clearCache(0);
+  }
+  
+  @TargetApi(14)
+  public void setAsToolRuntime()
+  {
+    super.setAsToolRuntime();
+    if (Build.VERSION.SDK_INT >= 14) {
+      try
+      {
+        if (this.componentCallbacks == null)
+        {
+          this.componentCallbacks = new ToolRuntimeBase.1(this);
+          BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.componentCallbacks);
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ToolRuntimeBase", 2, "", localThrowable);
@@ -76,67 +143,10 @@ public class ToolRuntimeBase
       }
     }
   }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    qhu.a().a(getApplication());
-  }
-  
-  @TargetApi(14)
-  public void onTrimMemory(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ToolRuntimeBase", 2, "onTrimMemory, " + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 5: 
-      clearCache(0);
-      return;
-    case 10: 
-      clearCache(0);
-      return;
-    case 15: 
-      clearCache(0);
-      return;
-    case 20: 
-      clearCache(1);
-      return;
-    case 40: 
-    case 60: 
-      clearCache(2);
-      return;
-    }
-    clearCache(3);
-  }
-  
-  @TargetApi(14)
-  public void setAsToolRuntime()
-  {
-    super.setAsToolRuntime();
-    if (Build.VERSION.SDK_INT >= 14) {}
-    try
-    {
-      if (this.componentCallbacks == null)
-      {
-        this.componentCallbacks = new zhz(this);
-        BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.componentCallbacks);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ToolRuntimeBase", 2, "", localThrowable);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.ToolRuntimeBase
  * JD-Core Version:    0.7.0.1
  */

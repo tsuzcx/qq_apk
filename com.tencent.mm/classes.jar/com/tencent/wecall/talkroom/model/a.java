@@ -1,63 +1,63 @@
 package com.tencent.wecall.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.c.c;
+import com.tencent.pb.common.c.b;
 
 public class a
 {
-  private static a BzV = null;
-  private f BzW = null;
+  private static a ahZA = null;
+  private f ahZB = null;
   
-  public static a dXf()
+  public static a kdO()
   {
-    AppMethodBeat.i(127764);
-    if (BzV == null) {}
+    AppMethodBeat.i(62656);
+    if (ahZA == null) {}
     try
     {
-      if (BzV == null) {
-        BzV = new a();
+      if (ahZA == null) {
+        ahZA = new a();
       }
-      a locala = BzV;
-      AppMethodBeat.o(127764);
+      a locala = ahZA;
+      AppMethodBeat.o(62656);
       return locala;
     }
     finally
     {
-      AppMethodBeat.o(127764);
+      AppMethodBeat.o(62656);
     }
   }
   
-  public static f dXg()
+  public static f kdP()
   {
-    AppMethodBeat.i(127765);
-    Object localObject1 = dXf();
-    if (((a)localObject1).BzW == null) {}
+    AppMethodBeat.i(62657);
+    Object localObject1 = kdO();
+    if (((a)localObject1).ahZB == null) {}
     try
     {
-      if (((a)localObject1).BzW == null) {
-        ((a)localObject1).BzW = new f();
+      if (((a)localObject1).ahZB == null) {
+        ((a)localObject1).ahZB = new f();
       }
-      localObject1 = ((a)localObject1).BzW;
-      AppMethodBeat.o(127765);
+      localObject1 = ((a)localObject1).ahZB;
+      AppMethodBeat.o(62657);
       return localObject1;
     }
     finally
     {
-      AppMethodBeat.o(127765);
+      AppMethodBeat.o(62657);
     }
   }
   
-  public static void dXh()
+  public static void kdQ()
   {
-    AppMethodBeat.i(127766);
-    c.d("MicroMsg.Voip", new Object[] { "registerEvents" });
-    dXg();
-    AppMethodBeat.o(127766);
+    AppMethodBeat.i(62658);
+    b.d("MicroMsg.Voip", new Object[] { "registerEvents" });
+    kdP();
+    AppMethodBeat.o(62658);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fileitemlayout" android:background="@drawable/qlink_com_btn_selector" android:layout_width="fill_parent" android:layout_height="76.0dip">
+        <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/fileIcon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="18.0dip" android:scaleType="centerCrop" />
+        <RelativeLayout android:id="@id/filestatulayout" android:layout_width="64.0dip" android:layout_height="wrap_content" android:layout_marginRight="14.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textSize="15.0dip" android:textColor="@color/gray" android:ellipsize="end" android:gravity="right" android:id="@id/filestatustext" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="发" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/filestatus" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/black" android:ellipsize="middle" android:id="@id/filedesp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginRight="5.0dip" android:text="文件名" android:singleLine="true" android:layout_toLeftOf="@id/filestatulayout" android:layout_toRightOf="@id/fileIcon" android:layout_alignTop="@id/fileIcon" />
+        <TextView android:textSize="11.0dip" android:textColor="#ff808080" android:ellipsize="end" android:id="@id/fileszie" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="5.0dip" android:text="大小" android:singleLine="true" android:layout_toRightOf="@id/fileIcon" android:layout_below="@id/filedesp" android:layout_alignBottom="@id/fileIcon" />
+        <ProgressBar android:id="@id/fileProgressBar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:maxHeight="3.0dip" android:max="100" android:progress="30" android:progressDrawable="@drawable/aio_file_progress_layerlist" android:minHeight="3.0dip" android:layout_below="@id/fileIcon" android:layout_alignLeft="@id/fileIcon" style="?android:attr/progressBarStyleHorizontal" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.5dip">
+        <TextView android:id="@id/space" android:background="#fff8f8f8" android:layout_width="48.0dip" android:layout_height="fill_parent" />
+        <TextView android:id="@id/space" android:background="#ffdfdfdf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+</LinearLayout>

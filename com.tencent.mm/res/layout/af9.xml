@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:id="@id/dex" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/cz" style="@style/ls" />
-    <com.tencent.mm.ui.base.MMClearEditText android:id="@id/lh" android:layout_width="wrap_content" android:layout_marginRight="@dimen/n_" android:layout_weight="1.0" android:imeOptions="actionDone" style="@style/lr" />
-    <Button android:id="@id/dd6" style="@style/pg" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:id="@id/dd7" android:visibility="gone" style="@style/ls" />
-</merge>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/af7" />
+    <include layout="@layout/af8" />
+</RelativeLayout>

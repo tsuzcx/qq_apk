@@ -7,36 +7,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
-import ashm;
-import ashn;
-import azmk;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.simpleui.SimpleUIProtocolUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
+import com.tencent.qzonehub.api.IQZoneApiProxy;
 
 public class SimpleDebugFragment
   extends IphoneTitleBarFragment
 {
+  void a()
+  {
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131446685);
+    localFormSwitchItem.setChecked(((IQZoneApiProxy)QRoute.api(IQZoneApiProxy.class)).getShowQzoneInSimpleUI());
+    localFormSwitchItem.setOnCheckedChangeListener(new SimpleDebugFragment.3(this));
+  }
+  
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    int j = 2131380210;
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = (RadioGroup)this.mContentView.findViewById(2131369285);
+    a();
+    paramLayoutInflater = (RadioGroup)this.mContentView.findViewById(2131437002);
+    int k = SimpleUIProtocolUtil.a();
+    int j = 2131450128;
     int i = j;
-    switch (azmk.e())
-    {
+    if (k != 0) {
+      if (k != 1) {
+        i = j;
+      } else {
+        i = 2131434356;
+      }
     }
-    for (i = j;; i = 2131367286)
-    {
-      paramLayoutInflater.check(i);
-      this.vg.setRightButton("");
-      paramLayoutInflater.setOnCheckedChangeListener(new ashm(this, paramLayoutInflater));
-      this.vg.setOnItemSelectListener(new ashn(this, paramLayoutInflater));
-      return;
-    }
+    paramLayoutInflater.check(i);
+    this.vg.setRightButton("");
+    paramLayoutInflater.setOnCheckedChangeListener(new SimpleDebugFragment.1(this, paramLayoutInflater));
+    this.vg.setOnItemSelectListener(new SimpleDebugFragment.2(this, paramLayoutInflater));
   }
   
   protected int getContentLayoutId()
   {
-    return 2131558455;
+    return 2131624042;
   }
   
   public boolean onBackEvent()
@@ -48,7 +58,7 @@ public class SimpleDebugFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SimpleDebugFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,280 @@
+{
+  "version": "20200617-01",
+  "stickerGroups": [
+    {
+      "stickerGroupID": "default",
+      "stickerGroupName": "默认",
+      "stickers": [
+        {
+          "stickerID":"qiukuolie",
+          "stickerName":"qiukuolie",
+          "thumbURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_qiukuolie.png",
+          "preDownload":1,
+          "resourceMD5":"ee77879e3d4b48159da30ed6530f623e",
+          "resourceURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/qiukuolie.zip",
+          "badgeURL":"https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/855/editor_sticker_badge/editor_sticker_badge_interaction.png",
+          "backgroundColorAdjustable":0,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID":"blur",
+          "stickerName":"blur",
+          "thumbURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_blur.png",
+          "preDownload":1,
+          "resourceMD5":"8ff52bcd99b305e109a5f88f559b427d",
+          "resourceURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/blur.zip",
+          "backgroundColorAdjustable":0
+        },
+        {
+          "stickerID": "fenxiang",
+          "stickerName": "fenxiang",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_fenxiang.png",
+          "preDownload": 0,
+          "resourceMD5": "420c2da515d09221e9a147b1170e7690",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/fenxiang0629.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_shangya"
+        },
+        {
+          "stickerID": "anshi",
+          "stickerName": "anshi",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_anshi.png",
+          "preDownload": 0,
+          "resourceMD5": "0c62b978b0ac423d1d6010232158c4da",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/anshi0623.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID": "vlog",
+          "stickerName": "vlog",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_vlog.png",
+          "preDownload": 1,
+          "resourceMD5": "34457123328f595323e6eb46b75a5f6e",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/vlog0720.zip",
+          "backgroundColorAdjustable": 1,
+          "fontID": "font_lanting"
+        },
+        {
+          "stickerID": "xiangwang",
+          "stickerName": "xiangwang",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_xiangwang.png",
+          "preDownload": 1,
+          "resourceMD5": "13b2cf71dd434cdcf7f9604b622e7210",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/xiangwang0629.zip",
+          "backgroundColorAdjustable": 1,
+          "fontID": "font_huangyou"
+        },
+        {
+          "stickerID": "sundayline",
+          "stickerName": "sundayline",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_sundayline.png",
+          "preDownload": 1,
+          "resourceMD5": "687e22c31f4d1a975a8ee8e294a0c541",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/sundayline0629.zip",
+          "backgroundColorAdjustable": 1,
+          "fontID": "font_shangya"
+        },
+        {
+          "stickerID": "cestlavie",
+          "stickerName": "cestlavie",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_cestlavie.png",
+          "preDownload": 1,
+          "resourceMD5": "ee3749923faf53c6f33d51b717b005bc",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/cestlavie0702.zip",
+          "backgroundColorAdjustable": 1,
+          "fontID": "font_shangya"
+        },
+        {
+          "stickerID": "chanshi",
+          "stickerName": "chanshi",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_chanshi.png",
+          "preDownload": 1,
+          "resourceMD5": "c981466d21f89edb2a542cf1665b2dfe",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/chanshi0623.zip",
+          "backgroundColorAdjustable": 1,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID": "meiri",
+          "stickerName": "meiri",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_meiri.png",
+          "preDownload": 1,
+          "resourceMD5": "e5186760ec8ec0f8db87a5ec62f09ead",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/meiri0623.zip",
+          "backgroundColorAdjustable": 1,
+          "fontID": "font_shangya"
+        },
+        {
+          "stickerID": "wanwu",
+          "stickerName": "wanwu",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_wanwu.png",
+          "preDownload": 1,
+          "resourceMD5": "701d7714521bd3bb3456ac7fc7a511f8",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/wanwu0623.zip",
+          "backgroundColorAdjustable": 1,
+          "fontID": "font_lanting"
+        },
+        {
+          "stickerID": "yuanqi",
+          "stickerName": "yuanqi",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_yuanqi.png",
+          "preDownload": 1,
+          "resourceMD5": "89a2333b9db5e0976ec5b1c780c58f19",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/yuanqi0629.zip",
+          "backgroundColorAdjustable": 1,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID": "bozi",
+          "stickerName": "bozi",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_bozi.png",
+          "preDownload": 0,
+          "resourceMD5": "146bca4a6d9353d43602eb4fe00f09b0",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/bozi.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_lanting"
+        },
+        {
+          "stickerID": "juzi",
+          "stickerName": "juzi",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_juzi.png",
+          "preDownload": 0,
+          "resourceMD5": "b11d9c7c4210132c8cd6467327cbb367",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/juzi.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_lanting"
+        },
+        {
+          "stickerID": "taozi",
+          "stickerName": "taozi",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_taozi.png",
+          "preDownload": 0,
+          "resourceMD5": "80459aff71db6d372db492bf4cff2295",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/taozi.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_lanting"
+        },
+        {
+          "stickerID": "chengtuan",
+          "stickerName": "chengtuan",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_chengtuan.png",
+          "preDownload": 0,
+          "resourceMD5": "aeee669be59f5cc2e503d6a3ea860d9c",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/chengtuan.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_lanting"
+        },
+        {
+          "stickerID": "jintian",
+          "stickerName": "jintian",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_jintian.png",
+          "preDownload": 0,
+          "resourceMD5": "c837995404886a52f8ec41a3aec1a727",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/jintian0629.zip",
+          "backgroundColorAdjustable": 0
+        },
+        {
+          "stickerID": "chihe",
+          "stickerName": "chihe",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_chihe.png",
+          "preDownload": 0,
+          "resourceMD5": "8a155ae8bb957691aac6d1e5acf133ec",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/chihe0629.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID": "xuexi",
+          "stickerName": "xuexi",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_xuexi.png",
+          "preDownload": 0,
+          "resourceMD5": "506eaafaea2943813d9eff0ecee7193b",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/xuexi0629.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID": "sunday",
+          "stickerName": "sunday",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_sunday.png",
+          "preDownload": 0,
+          "resourceMD5": "61bdfe40c331b6444c4f51574f8b9b0e",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/sunday0623.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_lanting"
+        },
+        {
+          "stickerID": "xiaoshijie",
+          "stickerName": "xiaoshijie",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_xiaoshijie.png",
+          "preDownload": 0,
+          "resourceMD5": "2becfe1ebf1cdac613c38888d8f04a04",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/xiaoshijie0623.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID": "wurou",
+          "stickerName": "wurou",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_wurou.png",
+          "preDownload": 0,
+          "resourceMD5": "38515aeb4e768a92bddb3ee466f56eb7",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/wurou0623.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID": "zhiqingchun",
+          "stickerName": "zhiqingchun",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_zhiqingchun.png",
+          "preDownload": 0,
+          "resourceMD5": "b1b725bb974f021f873cf46e620d031c",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/zhiqingchun0629.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_huangyou"
+        },
+        {
+          "stickerID": "kanzheli",
+          "stickerName": "kanzheli",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_kanzheli.png",
+          "preDownload": 0,
+          "resourceMD5": "f8808f71cfb2b01988551d5f36662549",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/kanzheli0623.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_huangyou"
+        },
+        {
+          "stickerID": "xiari",
+          "stickerName": "xiari",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_xiari.png",
+          "preDownload": 0,
+          "resourceMD5": "a186864a1039e5147b27bddbc56bf560",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/xiari0629.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_huangyou"
+        },
+        {
+          "stickerID": "naicha",
+          "stickerName": "naicha",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_naicha.png",
+          "preDownload": 0,
+          "resourceMD5": "85c6c58df689eeeb33875a1560e69c53",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/naicha0623.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_miaowu"
+        },
+        {
+          "stickerID": "jingshen",
+          "stickerName": "jingshen",
+          "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_jingshen.png",
+          "preDownload": 0,
+          "resourceMD5": "517c35b1d134c470869c22e9cb1f4995",
+          "resourceURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/jingshen0623.zip",
+          "backgroundColorAdjustable": 0,
+          "fontID": "font_miaowu"
+        }
+      ]
+    }
+  ]
+}

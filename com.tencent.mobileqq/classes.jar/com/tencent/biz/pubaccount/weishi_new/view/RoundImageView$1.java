@@ -22,13 +22,13 @@ class RoundImageView$1
     }
     Message localMessage = RoundImageView.a(this.this$0).obtainMessage();
     localMessage.what = 101;
-    localMessage.obj = localBitmap;
+    localMessage.obj = new RoundImageView.MsgBody(localBitmap, this.a);
     RoundImageView.a(this.this$0).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RoundImageView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,32 +4,32 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import apwj;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.EmotionKeywordLayout;
+import com.tencent.mobileqq.emotionintegrate.EmotionKeywordLayout;
 import com.tencent.widget.HorizontalListView;
 
 public class EmotionKeywordHorizonListView
   extends HorizontalListView
 {
-  public int a;
-  private apwj a;
+  public static final int TYPE_EMOTION_KEYWORD = 0;
+  public static final int TYPE_ZHITU = 1;
+  public int mType = 0;
+  private EmotionKeywordHorizonListView.HorizonListViewTouchListener touchListener;
   
   public EmotionKeywordHorizonListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public EmotionKeywordHorizonListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Apwj != null) {
-      this.jdField_a_of_type_Apwj.a(paramMotionEvent.getAction());
+    EmotionKeywordHorizonListView.HorizonListViewTouchListener localHorizonListViewTouchListener = this.touchListener;
+    if (localHorizonListViewTouchListener != null) {
+      localHorizonListViewTouchListener.touchEventActionChanged(paramMotionEvent.getAction());
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -41,7 +41,7 @@ public class EmotionKeywordHorizonListView
     while (i < j)
     {
       View localView = getChildAt(i);
-      if (((localView instanceof EmojiStickerManager.EmotionKeywordLayout)) && (((EmojiStickerManager.EmotionKeywordLayout)localView).a)) {
+      if (((localView instanceof EmotionKeywordLayout)) && (((EmotionKeywordLayout)localView).c)) {
         return localView.onTouchEvent(paramMotionEvent);
       }
       i += 1;
@@ -55,14 +55,14 @@ public class EmotionKeywordHorizonListView
     invalidate();
   }
   
-  public void setTouchListener(apwj paramapwj)
+  public void setTouchListener(EmotionKeywordHorizonListView.HorizonListViewTouchListener paramHorizonListViewTouchListener)
   {
-    this.jdField_a_of_type_Apwj = paramapwj;
+    this.touchListener = paramHorizonListViewTouchListener;
   }
   
   public void setType(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mType = paramInt;
   }
 }
 

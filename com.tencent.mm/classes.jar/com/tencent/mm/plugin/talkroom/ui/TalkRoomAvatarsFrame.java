@@ -4,154 +4,187 @@ import android.content.Context;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMHorList;
+import com.tencent.mm.ui.base.MMHorList.a;
 import java.util.List;
 
 public class TalkRoomAvatarsFrame
   extends FrameLayout
 {
-  private ak mHandler;
-  private final int odb;
-  private String odp;
-  private final int tdv;
-  private final int tdw;
-  private MMHorList tdx;
-  private TalkRoomAvatarsFrame.a tdy;
-  private ap tdz;
+  private final int Kfm;
+  private String Kfz;
+  private final int SOs;
+  private final int SOt;
+  private MMHorList SOu;
+  private TalkRoomAvatarsFrame.a SOv;
+  private MTimerHandler SOw;
+  private MMHandler mHandler;
   
   public TalkRoomAvatarsFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(25900);
-    this.tdv = 2000;
-    this.tdw = 5;
-    this.odb = a.fromDPToPix(null, 58);
+    AppMethodBeat.i(29582);
+    this.SOs = 2000;
+    this.SOt = 5;
+    this.Kfm = a.fromDPToPix(null, 58);
     initView();
-    AppMethodBeat.o(25900);
+    AppMethodBeat.o(29582);
   }
   
   public TalkRoomAvatarsFrame(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(25901);
-    this.tdv = 2000;
-    this.tdw = 5;
-    this.odb = a.fromDPToPix(null, 58);
+    AppMethodBeat.i(29583);
+    this.SOs = 2000;
+    this.SOt = 5;
+    this.Kfm = a.fromDPToPix(null, 58);
     initView();
-    AppMethodBeat.o(25901);
+    AppMethodBeat.o(29583);
   }
   
-  private void bLd()
+  private void fTt()
   {
-    AppMethodBeat.i(25905);
-    this.tdy.odp = this.odp;
-    if (bo.isNullOrNil(this.odp))
+    AppMethodBeat.i(29587);
+    this.SOv.Kfz = this.Kfz;
+    if (Util.isNullOrNil(this.Kfz))
     {
-      this.tdy.notifyDataSetChanged();
-      AppMethodBeat.o(25905);
+      this.SOv.notifyDataSetChanged();
+      AppMethodBeat.o(29587);
       return;
     }
-    if (this.tdx.getIsTouching())
+    if (this.SOu.getIsTouching())
     {
-      AppMethodBeat.o(25905);
+      AppMethodBeat.o(29587);
       return;
     }
-    int i = this.tdy.indexOf(this.odp) * this.odb;
-    int j = this.tdx.getCurrentPosition();
+    int i = this.SOv.cs(this.Kfz) * this.Kfm;
+    int j = this.SOu.getCurrentPosition();
     if (i < j)
     {
-      this.tdx.OI(i);
-      AppMethodBeat.o(25905);
+      this.SOu.Wa(i);
+      AppMethodBeat.o(29587);
       return;
     }
-    if (i > j + this.odb * 4)
+    if (i > j + this.Kfm * 4)
     {
-      this.tdx.OI(i - this.odb * 4);
-      AppMethodBeat.o(25905);
+      this.SOu.Wa(i - this.Kfm * 4);
+      AppMethodBeat.o(29587);
       return;
     }
-    this.tdy.notifyDataSetChanged();
-    AppMethodBeat.o(25905);
+    this.SOv.notifyDataSetChanged();
+    AppMethodBeat.o(29587);
   }
   
   private void initView()
   {
-    AppMethodBeat.i(25902);
-    inflate(getContext(), 2130970985, this);
-    this.tdx = ((MMHorList)findViewById(2131828476));
-    this.tdx.setOverScrollEnabled(true);
-    this.tdx.setCenterInParent(true);
-    this.tdx.setItemWidth(this.odb);
-    this.tdy = new TalkRoomAvatarsFrame.a(getContext());
-    this.tdx.setAdapter(this.tdy);
-    this.mHandler = new ak(Looper.getMainLooper());
-    this.tdx.setHorListLitener(new TalkRoomAvatarsFrame.1(this));
-    this.tdz = new ap(new TalkRoomAvatarsFrame.2(this), false);
-    AppMethodBeat.o(25902);
+    AppMethodBeat.i(29584);
+    inflate(getContext(), R.i.goz, this);
+    this.SOu = ((MMHorList)findViewById(R.h.fJO));
+    this.SOu.setOverScrollEnabled(true);
+    this.SOu.setCenterInParent(true);
+    this.SOu.setItemWidth(this.Kfm);
+    this.SOv = new TalkRoomAvatarsFrame.a(getContext());
+    this.SOu.setAdapter(this.SOv);
+    this.mHandler = new MMHandler(Looper.getMainLooper());
+    this.SOu.setHorListLitener(new MMHorList.a()
+    {
+      public final void fYb()
+      {
+        AppMethodBeat.i(29575);
+        TalkRoomAvatarsFrame.c(TalkRoomAvatarsFrame.this).post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(29572);
+            TalkRoomAvatarsFrame.b(TalkRoomAvatarsFrame.this).notifyDataSetChanged();
+            AppMethodBeat.o(29572);
+          }
+        });
+        AppMethodBeat.o(29575);
+      }
+      
+      public final void hjF()
+      {
+        AppMethodBeat.i(29574);
+        TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).startTimer(2000L);
+        AppMethodBeat.o(29574);
+      }
+      
+      public final void hpY()
+      {
+        AppMethodBeat.i(29573);
+        TalkRoomAvatarsFrame.a(TalkRoomAvatarsFrame.this).stopTimer();
+        AppMethodBeat.o(29573);
+      }
+    });
+    this.SOw = new MTimerHandler(new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(29576);
+        TalkRoomAvatarsFrame.d(TalkRoomAvatarsFrame.this);
+        AppMethodBeat.o(29576);
+        return false;
+      }
+    }, false);
+    AppMethodBeat.o(29584);
   }
   
   public void setCurMemeber(String paramString)
   {
-    AppMethodBeat.i(25904);
-    if (this.tdx == null)
+    AppMethodBeat.i(29586);
+    if (this.SOu == null)
     {
-      AppMethodBeat.o(25904);
+      AppMethodBeat.o(29586);
       return;
     }
-    if ((bo.isNullOrNil(this.odp)) && (bo.isNullOrNil(paramString)))
+    if ((Util.isNullOrNil(this.Kfz)) && (Util.isNullOrNil(paramString)))
     {
-      AppMethodBeat.o(25904);
+      AppMethodBeat.o(29586);
       return;
     }
-    if ((!bo.isNullOrNil(this.odp)) && (this.odp.equals(paramString)))
+    if ((!Util.isNullOrNil(this.Kfz)) && (this.Kfz.equals(paramString)))
     {
-      AppMethodBeat.o(25904);
+      AppMethodBeat.o(29586);
       return;
     }
-    this.odp = paramString;
-    bLd();
-    AppMethodBeat.o(25904);
+    this.Kfz = paramString;
+    fTt();
+    AppMethodBeat.o(29586);
   }
   
   public void setMembersList(List<String> paramList)
   {
-    AppMethodBeat.i(25903);
-    if (this.tdy == null)
+    AppMethodBeat.i(29585);
+    if (this.SOv == null)
     {
-      AppMethodBeat.o(25903);
+      AppMethodBeat.o(29585);
       return;
     }
-    TalkRoomAvatarsFrame.a locala = this.tdy;
+    TalkRoomAvatarsFrame.a locala = this.SOv;
     if (paramList == null) {
-      locala.tdC.clear();
+      locala.SOz.clear();
     }
     for (;;)
     {
       locala.notifyDataSetChanged();
-      AppMethodBeat.o(25903);
+      AppMethodBeat.o(29585);
       return;
-      locala.tdC = paramList;
+      locala.SOz = paramList;
     }
-  }
-  
-  final class a$a
-  {
-    public ImageView egq;
-    public TextView egr;
-    
-    a$a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomAvatarsFrame
  * JD-Core Version:    0.7.0.1
  */

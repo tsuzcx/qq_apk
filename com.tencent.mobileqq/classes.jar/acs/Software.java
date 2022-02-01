@@ -10,13 +10,13 @@ public final class Software
   public String category = "";
   public String cpname = "";
   public String downloadCountDesc = "";
-  public int nCommentCount;
-  public int nDownloadCount;
-  public int nFileId;
-  public int nFileSize;
-  public int nProductId;
-  public byte nScore;
-  public int nSoftId;
+  public int nCommentCount = 0;
+  public int nDownloadCount = 0;
+  public int nFileId = 0;
+  public int nFileSize = 0;
+  public int nProductId = 0;
+  public byte nScore = 0;
+  public int nSoftId = 0;
   public String sFee = "";
   public String sFeedesc = "";
   public String sFileuid = "";
@@ -28,7 +28,7 @@ public final class Software
   public String sPublishTime = "";
   public String sSoftName = "";
   public String sSoftVersion = "";
-  public int supportdevice;
+  public int supportdevice = 0;
   
   public Software() {}
   
@@ -105,18 +105,20 @@ public final class Software
     paramJceOutputStream.write(this.sPrefix, 16);
     paramJceOutputStream.write(this.sFeedesc, 17);
     paramJceOutputStream.write(this.category, 18);
-    if (this.cpname != null) {
-      paramJceOutputStream.write(this.cpname, 19);
+    String str = this.cpname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 19);
     }
     paramJceOutputStream.write(this.supportdevice, 20);
-    if (this.downloadCountDesc != null) {
-      paramJceOutputStream.write(this.downloadCountDesc, 21);
+    str = this.downloadCountDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 21);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acs.Software
  * JD-Core Version:    0.7.0.1
  */

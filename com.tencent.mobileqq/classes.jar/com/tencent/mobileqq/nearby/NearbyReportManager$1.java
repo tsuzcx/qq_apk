@@ -1,31 +1,29 @@
 package com.tencent.mobileqq.nearby;
 
-import alxp;
-import auwo;
-import auwp;
-import bhsk;
+import com.tencent.mobileqq.app.NearbyHandler;
+import com.tencent.util.LongSparseArray;
 import java.util.ArrayList;
 
-public class NearbyReportManager$1
+class NearbyReportManager$1
   implements Runnable
 {
-  public NearbyReportManager$1(auwo paramauwo, bhsk parambhsk, alxp paramalxp, boolean paramBoolean) {}
+  NearbyReportManager$1(NearbyReportManager paramNearbyReportManager, LongSparseArray paramLongSparseArray, NearbyHandler paramNearbyHandler, boolean paramBoolean) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.jdField_a_of_type_Bhsk.a())
+    while (i < this.a.b())
     {
-      localArrayList.add((auwp)this.jdField_a_of_type_Bhsk.a(i));
+      localArrayList.add((ReportRecord)this.a.c(i));
       i += 1;
     }
-    this.jdField_a_of_type_Alxp.a(localArrayList, this.jdField_a_of_type_Boolean);
+    this.b.a(localArrayList, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyReportManager.1
  * JD-Core Version:    0.7.0.1
  */

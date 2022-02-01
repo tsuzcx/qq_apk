@@ -32,14 +32,15 @@ public final class cell_detail_content
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.detail_content != null) {
-      paramJceOutputStream.write(this.detail_content, 0);
+    ArrayList localArrayList = this.detail_content;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_detail_content
  * JD-Core Version:    0.7.0.1
  */

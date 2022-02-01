@@ -7,11 +7,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import apmh;
-import apml;
-import begz;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
+import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import org.json.JSONException;
@@ -19,6 +20,7 @@ import org.json.JSONObject;
 
 public class MessageRoamJsPlugin
   extends VasWebviewJsPlugin
+  implements IPreCreatePluginChecker
 {
   public static final String ACTION = "action";
   public static final String DATA = "data";
@@ -39,7 +41,7 @@ public class MessageRoamJsPlugin
   Activity browserActivity = null;
   BrowserAppInterface browserAppInterface = null;
   Context context = null;
-  public String listenCallback;
+  public String listenCallback = null;
   
   public MessageRoamJsPlugin()
   {
@@ -54,71 +56,80 @@ public class MessageRoamJsPlugin
   
   private boolean handleGetRoam(String paramString)
   {
-    sendRemoteReq(apml.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
+    sendRemoteReq(DataFactory.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
     return true;
   }
   
   private boolean handleRemoveListenPswEvent(String paramString)
   {
     JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
-      {
-        localJSONObject.put("result", "0");
-        localJSONObject.put("errorMessage", "success");
-        callJs(paramString, new String[] { localJSONObject.toString() });
-        return true;
-      }
-      catch (JSONException localJSONException1) {}
+      localJSONObject.put("result", "0");
+      localJSONObject.put("errorMessage", "success");
+    }
+    catch (JSONException localJSONException1)
+    {
       try
       {
         localJSONObject.put("result", "-1");
         localJSONObject.put("errorMessage", "handleRemoveListenPswEvent , JSONException,encode json is error");
-        localJSONException1.printStackTrace();
       }
       catch (JSONException localJSONException2)
       {
-        for (;;)
-        {
-          localJSONException2.printStackTrace();
-        }
+        localJSONException2.printStackTrace();
       }
+      localJSONException1.printStackTrace();
     }
+    callJs(paramString, new String[] { localJSONObject.toString() });
+    return true;
   }
   
   private boolean handleSetRoam(int paramInt, String paramString)
   {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageRoamJsPlugin", 2, "handleSetRoam messageRoamType: " + paramInt);
-    }
-    String str = "success";
-    Object localObject;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5))
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      localObject = this.context.getSharedPreferences("vip_message_roam_banner_file", 4);
-      if (localObject != null)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleSetRoam messageRoamType: ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("MessageRoamJsPlugin", 2, ((StringBuilder)localObject1).toString());
+    }
+    int i = -1;
+    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("messageRoamType is error , = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      log(((StringBuilder)localObject1).toString());
+      localObject1 = "messageRoamType is error";
+      paramInt = i;
+    }
+    else
+    {
+      localObject1 = this.context.getSharedPreferences("vip_message_roam_banner_file", 4);
+      if (localObject1 != null)
       {
-        ((SharedPreferences)localObject).edit().putInt("message_roam_flag" + this.browserAppInterface.getCurrentAccountUin(), paramInt).commit();
+        localObject1 = ((SharedPreferences)localObject1).edit();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("message_roam_flag");
+        ((StringBuilder)localObject2).append(this.browserAppInterface.getCurrentAccountUin());
+        ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), paramInt).commit();
+        localObject1 = "success";
         paramInt = 0;
       }
+      else
+      {
+        log("SharedPreferences is null");
+        localObject1 = "SharedPreferences is null";
+        paramInt = i;
+      }
     }
-    for (;;)
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("result", paramInt);
-      ((JSONObject)localObject).put("errorMessage", str);
-      callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
-      return true;
-      log("SharedPreferences is null");
-      str = "SharedPreferences is null";
-      paramInt = i;
-      continue;
-      log("messageRoamType is error , = " + paramInt);
-      str = "messageRoamType is error";
-      paramInt = i;
-    }
+    Object localObject2 = new JSONObject();
+    ((JSONObject)localObject2).put("result", paramInt);
+    ((JSONObject)localObject2).put("errorMessage", localObject1);
+    callJs(paramString, new String[] { ((JSONObject)localObject2).toString() });
+    return true;
   }
   
   private void log(String paramString)
@@ -130,26 +141,33 @@ public class MessageRoamJsPlugin
   
   private void setAuthMode(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageRoamJsPlugin", 2, "setAuthMode mode: " + paramInt);
-    }
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("result", -1);
-    if ((paramInt == 1) || (paramInt == 0))
+    if (QLog.isColorLevel())
     {
-      SharedPreferences localSharedPreferences = this.context.getSharedPreferences("vip_message_roam_banner_file", 4);
-      if (localSharedPreferences != null)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setAuthMode mode: ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("MessageRoamJsPlugin", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new JSONObject();
+    ((JSONObject)localObject1).put("result", -1);
+    if ((paramInt != 1) && (paramInt != 0))
+    {
+      ((JSONObject)localObject1).put("errorMessage", "authmode illeage");
+    }
+    else
+    {
+      Object localObject2 = this.context.getSharedPreferences("vip_message_roam_banner_file", 4);
+      if (localObject2 != null)
       {
-        localSharedPreferences.edit().putInt("auth_mode_" + this.browserAppInterface.getCurrentAccountUin(), paramInt).commit();
-        localJSONObject.put("result", 0);
+        localObject2 = ((SharedPreferences)localObject2).edit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("auth_mode_");
+        localStringBuilder.append(this.browserAppInterface.getCurrentAccountUin());
+        ((SharedPreferences.Editor)localObject2).putInt(localStringBuilder.toString(), paramInt).commit();
+        ((JSONObject)localObject1).put("result", 0);
       }
     }
-    for (;;)
-    {
-      callJs(paramString, new String[] { localJSONObject.toString() });
-      return;
-      localJSONObject.put("errorMessage", "authmode illeage");
-    }
+    callJs(paramString, new String[] { ((JSONObject)localObject1).toString() });
   }
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -165,13 +183,18 @@ public class MessageRoamJsPlugin
           if (paramString == null) {
             return false;
           }
-          log("listenCallback = " + this.listenCallback + "result = " + paramString.toString());
+          paramMap = new StringBuilder();
+          paramMap.append("listenCallback = ");
+          paramMap.append(this.listenCallback);
+          paramMap.append("result = ");
+          paramMap.append(paramString.toString());
+          log(paramMap.toString());
           callJs(this.listenCallback, new String[] { paramString.toString().trim() });
           return true;
         }
       }
     }
-    else if ((paramLong == 8589934601L) && ((paramString.startsWith("http://mapp.3g.qq.com/touch/psw/verify.jsp")) || (paramString.startsWith("http://mapp.3g.qq.com/touch/psw/create.jsp"))))
+    else if ((paramLong == 8589934601L) && ((paramString.contains("mapp.3g.qq.com/touch/psw/create.jsp")) || (paramString.contains("mapp.3g.qq.com/touch/psw/verify.jsp"))))
     {
       this.browserActivity.setResult(3000);
       this.browserActivity.finish();
@@ -180,187 +203,250 @@ public class MessageRoamJsPlugin
     return false;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public long getWebViewSchemaByNameSpace(String paramString)
   {
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("msgRoam"))) {
-      log("handleJsRequest returned, pkgName=" + paramString2);
-    }
-    for (;;)
+    return 1L;
+  }
+  
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((paramString2 != null) && (paramString2.equalsIgnoreCase("msgRoam")))
     {
-      return false;
+      paramJsBridgeListener = null;
       try
       {
         paramString1 = new JSONObject(paramVarArgs[0]);
-        if (paramString1 == null) {}
       }
-      catch (JSONException paramJsBridgeListener)
+      catch (JSONException paramString1)
       {
-        try
+        paramString2 = new StringBuilder();
+        paramString2.append("failed to parse json str,json=");
+        paramString2.append(null);
+        log(paramString2.toString());
+        paramString1.printStackTrace();
+        paramString1 = null;
+      }
+      if (paramString1 == null) {
+        return false;
+      }
+      try
+      {
+        paramString2 = paramString1.optString("callback");
+        paramJsBridgeListener = paramString2;
+        paramVarArgs = new StringBuilder();
+        paramJsBridgeListener = paramString2;
+        paramVarArgs.append("handleJsRequest:method:");
+        paramJsBridgeListener = paramString2;
+        paramVarArgs.append(paramString3);
+        paramJsBridgeListener = paramString2;
+        paramVarArgs.append(",callback");
+        paramJsBridgeListener = paramString2;
+        paramVarArgs.append(paramString2);
+        paramJsBridgeListener = paramString2;
+        paramVarArgs.append(", json:");
+        paramJsBridgeListener = paramString2;
+        paramVarArgs.append(paramString1.toString());
+        paramJsBridgeListener = paramString2;
+        log(paramVarArgs.toString());
+        paramJsBridgeListener = paramString2;
+        if (paramString3.equals("setRoam"))
         {
-          for (;;)
+          paramJsBridgeListener = paramString2;
+          return handleSetRoam(paramString1.getInt("type"), paramString2);
+        }
+        paramJsBridgeListener = paramString2;
+        if (paramString3.equals("getRoam"))
+        {
+          paramJsBridgeListener = paramString2;
+          handleGetRoam(paramString2);
+          return true;
+        }
+        paramJsBridgeListener = paramString2;
+        if (paramString3.equals("addListenPswEvent"))
+        {
+          paramJsBridgeListener = paramString2;
+          handleAddListenPswEvent(paramString2);
+          return true;
+        }
+        paramJsBridgeListener = paramString2;
+        if (paramString3.equals("removeListenPswEvent"))
+        {
+          paramJsBridgeListener = paramString2;
+          handleRemoveListenPswEvent(paramString2);
+          return true;
+        }
+        paramJsBridgeListener = paramString2;
+        if ("setAuthMode".equals(paramString3))
+        {
+          paramJsBridgeListener = paramString2;
+          paramString1 = paramString1.getString("authMode");
+          paramJsBridgeListener = paramString2;
+          if ("devlock".equals(paramString1))
           {
-            paramJsBridgeListener = paramString1.optString("callback");
-            try
-            {
-              log("handleJsRequest:method:" + paramString3 + ",callback" + paramJsBridgeListener + ", json:" + paramString1.toString());
-              if (paramString3.equals("setRoam"))
-              {
-                boolean bool = handleSetRoam(paramString1.getInt("type"), paramJsBridgeListener);
-                return bool;
-                paramJsBridgeListener = paramJsBridgeListener;
-                log("failed to parse json str,json=" + null);
-                paramJsBridgeListener.printStackTrace();
-                paramString1 = null;
-              }
-              else if (paramString3.equals("getRoam"))
-              {
-                handleGetRoam(paramJsBridgeListener);
-              }
-              else if (paramString3.equals("addListenPswEvent"))
-              {
-                handleAddListenPswEvent(paramJsBridgeListener);
-              }
-            }
-            catch (Exception paramString1) {}
+            paramJsBridgeListener = paramString2;
+            setAuthMode(paramString2, 1);
+            return true;
+          }
+          paramJsBridgeListener = paramString2;
+          if ("password".equals(paramString1))
+          {
+            paramJsBridgeListener = paramString2;
+            setAuthMode(paramString2, 0);
+            return true;
           }
         }
-        catch (Exception paramString1)
+        else
         {
-          for (;;)
-          {
-            paramJsBridgeListener = null;
-          }
+          paramJsBridgeListener = paramString2;
+          paramString1 = new StringBuilder();
+          paramJsBridgeListener = paramString2;
+          paramString1.append("unimplement method");
+          paramJsBridgeListener = paramString2;
+          paramString1.append(paramString3);
+          paramJsBridgeListener = paramString2;
+          log(paramString1.toString());
+          return true;
         }
-        log("handleJsRequest exception:" + paramString1.toString());
+      }
+      catch (Exception paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("handleJsRequest exception:");
+        paramString2.append(paramString1.toString());
+        log(paramString2.toString());
         try
         {
           paramString1 = new JSONObject();
           paramString1.put("result", -1);
           paramString1.put("errorMessage", "exception");
           callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+          return true;
         }
         catch (Exception paramJsBridgeListener)
         {
           paramJsBridgeListener.printStackTrace();
         }
-        if (paramString3.equals("removeListenPswEvent"))
-        {
-          handleRemoveListenPswEvent(paramJsBridgeListener);
-        }
-        else if ("setAuthMode".equals(paramString3))
-        {
-          paramString1 = paramString1.getString("authMode");
-          if ("devlock".equals(paramString1)) {
-            setAuthMode(paramJsBridgeListener, 1);
-          } else if ("password".equals(paramString1)) {
-            setAuthMode(paramJsBridgeListener, 0);
-          }
-        }
-        else
-        {
-          log("unimplement method" + paramString3);
-        }
       }
+      return true;
     }
-    return true;
+    paramJsBridgeListener = new StringBuilder();
+    paramJsBridgeListener.append("handleJsRequest returned, pkgName=");
+    paramJsBridgeListener.append(paramString2);
+    log(paramJsBridgeListener.toString());
+    return false;
   }
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  protected boolean handleSchemaRequest(String paramString1, String paramString2)
   {
-    paramString2 = null;
-    if (!paramString1.startsWith("http://clientui.3g.qq.com/mqqapi/im/roam")) {}
-    do
-    {
+    boolean bool = paramString1.startsWith("http://clientui.3g.qq.com/mqqapi/im/roam");
+    int i = 0;
+    if (!bool) {
       return false;
-      try
-      {
-        paramString1 = Uri.parse(paramString1);
-        localObject2 = paramString1.getQueryParameter("src_type");
-        localObject1 = paramString1.getQueryParameter("version");
-        str = paramString1.getQueryParameter("action");
-        paramString1 = paramString1.getQueryParameter("pwd");
-        paramString2 = str;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          try
-          {
-            ((JSONObject)localObject2).put("action", paramString2);
-            ((JSONObject)localObject1).putOpt("data", localObject2);
-            ((JSONObject)localObject1).put("result", i);
-            ((JSONObject)localObject1).put("errorMessage", paramString1);
-            paramString1 = new Intent();
-            paramString1.putExtra("result", ((JSONObject)localObject1).toString());
-            this.browserActivity.setResult(2000, paramString1);
-            this.browserActivity.finish();
-            return true;
-          }
-          catch (JSONException paramString1) {}
-          paramString1 = paramString1;
-          paramString1.printStackTrace();
-          String str = null;
-          Object localObject1 = null;
-          Object localObject2 = null;
-          paramString1 = paramString2;
-          paramString2 = str;
-          continue;
-          int i = -1;
-          paramString1 = "action is not open,reset,close";
-          log("action is not open,reset,close");
-          continue;
-          try
-          {
-            ((JSONObject)localObject1).put("result", "-1");
-            ((JSONObject)localObject1).put("errorMessage", "JSONException,encode json is error");
-            paramString1.printStackTrace();
-          }
-          catch (JSONException paramString2)
-          {
-            for (;;)
-            {
-              paramString2.printStackTrace();
-            }
-          }
-          paramString1 = "success";
-          i = 0;
-        }
-      }
-      log("srcType = " + (String)localObject2 + " , version = " + (String)localObject1 + " , action = " + paramString2);
-    } while ((localObject2 == null) || (localObject1 == null) || (paramString2 == null));
-    if ((paramString2.equals("open")) || (paramString2.equals("reset")) || (paramString2.equals("close")) || (paramString2.equals("history")))
+    }
+    Object localObject1 = null;
+    String str;
+    Object localObject2;
+    try
     {
-      notifyGetMsgRoam(paramString1);
-      if (!paramString2.equals("reset")) {
-        break label398;
+      paramString1 = Uri.parse(paramString1);
+      str = paramString1.getQueryParameter("src_type");
+      localObject2 = paramString1.getQueryParameter("version");
+      paramString2 = paramString1.getQueryParameter("action");
+      paramString1 = paramString1.getQueryParameter("pwd");
+      localObject1 = str;
+      str = paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      paramString1.printStackTrace();
+      str = null;
+      paramString1 = str;
+      paramString2 = paramString1;
+      localObject2 = paramString1;
+    }
+    paramString1 = new StringBuilder();
+    paramString1.append("srcType = ");
+    paramString1.append((String)localObject1);
+    paramString1.append(" , version = ");
+    paramString1.append((String)localObject2);
+    paramString1.append(" , action = ");
+    paramString1.append(paramString2);
+    log(paramString1.toString());
+    if ((localObject1 != null) && (localObject2 != null) && (paramString2 != null))
+    {
+      if ((!paramString2.equals("open")) && (!paramString2.equals("reset")) && (!paramString2.equals("close")) && (!paramString2.equals("history")))
+      {
+        i = -1;
+        paramString1 = "action is not open,reset,close";
+        log("action is not open,reset,close");
       }
-      this.context.getSharedPreferences("vip_message_roam_banner_file", 4).edit().putInt("message_roam_is_set_password" + this.browserAppInterface.getCurrentAccountUin(), 1).commit();
-      paramString1 = "success";
-      i = 0;
+      else
+      {
+        notifyGetMsgRoam(str);
+        if (paramString2.equals("reset"))
+        {
+          paramString1 = this.context.getSharedPreferences("vip_message_roam_banner_file", 4).edit();
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("message_roam_is_set_password");
+          ((StringBuilder)localObject1).append(this.browserAppInterface.getCurrentAccountUin());
+          paramString1.putInt(((StringBuilder)localObject1).toString(), 1).commit();
+        }
+        paramString1 = "success";
+      }
       localObject1 = new JSONObject();
       localObject2 = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject2).put("action", paramString2);
+        ((JSONObject)localObject1).putOpt("data", localObject2);
+        ((JSONObject)localObject1).put("result", i);
+        ((JSONObject)localObject1).put("errorMessage", paramString1);
+      }
+      catch (JSONException paramString1)
+      {
+        try
+        {
+          ((JSONObject)localObject1).put("result", "-1");
+          ((JSONObject)localObject1).put("errorMessage", "JSONException,encode json is error");
+        }
+        catch (JSONException paramString2)
+        {
+          paramString2.printStackTrace();
+        }
+        paramString1.printStackTrace();
+      }
+      paramString1 = new Intent();
+      paramString1.putExtra("result", ((JSONObject)localObject1).toString());
+      this.browserActivity.setResult(2000, paramString1);
+      this.browserActivity.finish();
+      return true;
     }
+    return false;
+  }
+  
+  public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
+  {
+    return (paramString1.startsWith("http://clientui.3g.qq.com/mqqapi/im/roam")) || (paramString1.startsWith("https://mapp.3g.qq.com/touch/psw/verify.jsp")) || (paramString1.startsWith("https://mapp.3g.qq.com/touch/psw/create.jsp"));
   }
   
   public void notifyGetMsgRoam(String paramString)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("pwd", paramString);
-    sendRemoteReq(apml.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
+    sendRemoteReq(DataFactory.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
-    if ((this.mRuntime.a() != null) && ((this.mRuntime.a() instanceof BrowserAppInterface))) {
-      this.browserAppInterface = ((BrowserAppInterface)this.mRuntime.a());
+    if ((this.mRuntime.b() != null) && ((this.mRuntime.b() instanceof BrowserAppInterface))) {
+      this.browserAppInterface = ((BrowserAppInterface)this.mRuntime.b());
     }
-    this.browserActivity = this.mRuntime.a();
-    this.context = this.mRuntime.a().getApplicationContext();
+    this.browserActivity = this.mRuntime.d();
+    this.context = this.mRuntime.d().getApplicationContext();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     this.context = null;
@@ -375,37 +461,46 @@ public class MessageRoamJsPlugin
       {
         if (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key)
         {
-          Object localObject = paramBundle.getString("cmd");
+          Object localObject1 = paramBundle.getString("cmd");
           String str = paramBundle.getString("callbackid");
           paramBundle = paramBundle.getBundle("response");
-          log("onResponse,callback=" + str + ",cmd=" + (String)localObject + ",respbundle=" + paramBundle);
-          if ((localObject != null) && ("getRoam".equals(localObject)))
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("onResponse,callback=");
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append(",cmd=");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(",respbundle=");
+          ((StringBuilder)localObject2).append(paramBundle);
+          log(((StringBuilder)localObject2).toString());
+          if ((localObject1 != null) && ("getRoam".equals(localObject1)))
           {
-            localObject = new JSONObject();
-            JSONObject localJSONObject = new JSONObject();
+            localObject1 = new JSONObject();
+            localObject2 = new JSONObject();
             if (paramBundle == null)
             {
-              ((JSONObject)localObject).put("result", -1);
-              ((JSONObject)localObject).put("errorMessage", "invalid data, response data is null");
+              ((JSONObject)localObject1).put("result", -1);
+              ((JSONObject)localObject1).put("errorMessage", "invalid data, response data is null");
             }
-            for (;;)
+            else
             {
-              log("onResponse, callJs: " + ((JSONObject)localObject).toString());
-              callJs(str, new String[] { ((JSONObject)localObject).toString() });
-              return;
-              localJSONObject.put("type", paramBundle.getInt("type"));
-              localJSONObject.put("userType", paramBundle.getInt("userType"));
-              localJSONObject.put("isSetPassword", paramBundle.getInt("isSetPassword"));
-              localJSONObject.put("devlockIsOpen", paramBundle.getBoolean("devlockIsOpen"));
-              localJSONObject.put("verification", paramBundle.getString("verification"));
-              localJSONObject.put("hasSecurityPhoneNumber", paramBundle.getBoolean("hasSecurityPhoneNumber"));
-              ((JSONObject)localObject).putOpt("data", localJSONObject);
-              ((JSONObject)localObject).put("result", paramBundle.getInt("result"));
-              ((JSONObject)localObject).put("errorMessage", paramBundle.getString("errorMessage"));
+              ((JSONObject)localObject2).put("type", paramBundle.getInt("type"));
+              ((JSONObject)localObject2).put("userType", paramBundle.getInt("userType"));
+              ((JSONObject)localObject2).put("isSetPassword", paramBundle.getInt("isSetPassword"));
+              ((JSONObject)localObject2).put("devlockIsOpen", paramBundle.getBoolean("devlockIsOpen"));
+              ((JSONObject)localObject2).put("verification", paramBundle.getString("verification"));
+              ((JSONObject)localObject2).put("hasSecurityPhoneNumber", paramBundle.getBoolean("hasSecurityPhoneNumber"));
+              ((JSONObject)localObject1).putOpt("data", localObject2);
+              ((JSONObject)localObject1).put("result", paramBundle.getInt("result"));
+              ((JSONObject)localObject1).put("errorMessage", paramBundle.getString("errorMessage"));
             }
+            paramBundle = new StringBuilder();
+            paramBundle.append("onResponse, callJs: ");
+            paramBundle.append(((JSONObject)localObject1).toString());
+            log(paramBundle.toString());
+            callJs(str, new String[] { ((JSONObject)localObject1).toString() });
+            return;
           }
         }
-        return;
       }
       catch (Exception paramBundle)
       {
@@ -416,7 +511,7 @@ public class MessageRoamJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MessageRoamJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,50 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public final class gki
   extends AsyncTask
 {
-  public gki(Context paramContext, long paramLong, String paramString) {}
+  public gki(String paramString) {}
   
   protected Void a(Void... paramVarArgs)
   {
-    paramVarArgs = MainAcitivityReportHelper.b(this.jdField_a_of_type_AndroidContentContext);
-    HashMap localHashMap = new HashMap();
-    int i;
-    if (this.jdField_a_of_type_Long < 500L) {
-      i = MainAcitivityReportHelper.a();
+    paramVarArgs = BaseApplicationImpl.getContext();
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(paramVarArgs);
+    if (((SharedPreferences)localObject).getBoolean("hasReportDeviceProfile", false)) {
+      return null;
+    }
+    ((SharedPreferences)localObject).edit().putBoolean("hasReportDeviceProfile", true);
+    localObject = new HashMap();
+    int i = MainAcitivityReportHelper.a(paramVarArgs);
+    int j = DeviceInfoUtil.b() * 100 + MainAcitivityReportHelper.b();
+    if (i <= 240) {
+      i = j + 1;
     }
     for (;;)
     {
-      localHashMap.put("param_FailCode", String.valueOf(i));
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, paramVarArgs, false, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      ((HashMap)localObject).put("param_FailCode", String.valueOf(i));
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a, "reportDeviceProfile", false, 0L, 0L, (HashMap)localObject, "");
       return null;
-      if (this.jdField_a_of_type_Long < 1000L) {
-        i = MainAcitivityReportHelper.a() + 1;
-      } else if (this.jdField_a_of_type_Long < 2000L) {
-        i = MainAcitivityReportHelper.a() + 2;
-      } else if (this.jdField_a_of_type_Long < 3000L) {
-        i = MainAcitivityReportHelper.a() + 3;
-      } else if (this.jdField_a_of_type_Long < 5000L) {
-        i = MainAcitivityReportHelper.a() + 4;
-      } else if (this.jdField_a_of_type_Long < 7000L) {
-        i = MainAcitivityReportHelper.a() + 5;
-      } else if (this.jdField_a_of_type_Long < 10000L) {
-        i = MainAcitivityReportHelper.a() + 6;
+      if (i <= 320) {
+        i = j + 2;
+      } else if (i <= 480) {
+        i = j + 3;
+      } else if (i <= 640) {
+        i = j + 4;
+      } else if (i <= 720) {
+        i = j + 5;
+      } else if (i <= 1080) {
+        i = j + 6;
       } else {
-        i = MainAcitivityReportHelper.a() + 7;
+        i = j + 7;
       }
     }
   }

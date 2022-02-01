@@ -1,26 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class fzx
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
   public fzx(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    do
-    {
-      return;
-      if (paramInt == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 1})");
-        return;
-      }
-    } while (paramInt != 1);
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: 0})");
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
   }
 }
 

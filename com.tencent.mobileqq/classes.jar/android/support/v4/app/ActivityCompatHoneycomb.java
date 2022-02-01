@@ -4,14 +4,14 @@ import android.app.Activity;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-class ActivityCompatHoneycomb
+public class ActivityCompatHoneycomb
 {
-  static void dump(Activity paramActivity, String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
+  public static void dump(Activity paramActivity, String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
     paramActivity.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
   }
   
-  static void invalidateOptionsMenu(Activity paramActivity)
+  public static void invalidateOptionsMenu(Activity paramActivity)
   {
     paramActivity.invalidateOptionsMenu();
   }

@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import aozn;
-import bkbq;
 import com.tencent.qphone.base.util.QLog;
 
-public class KandianConfigServlet$1
+class KandianConfigServlet$1
   implements Runnable
 {
-  public KandianConfigServlet$1(aozn paramaozn) {}
+  KandianConfigServlet$1(KandianConfigServlet paramKandianConfigServlet) {}
   
   public void run()
   {
-    bkbq.a("remote_kd_tab_switch");
     QLog.i("KandianConfigServlet", 1, "preload sp file finish!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.KandianConfigServlet.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class ReSortGroup
 {
   static byte[] cache_cGroupId;
   static byte[] cache_cSortId;
-  public byte[] cGroupId;
-  public byte cNum;
-  public byte[] cSortId;
+  public byte[] cGroupId = null;
+  public byte cNum = 0;
+  public byte[] cSortId = null;
   
   public ReSortGroup() {}
   
@@ -48,7 +48,7 @@ public final class ReSortGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.ReSortGroup
  * JD-Core Version:    0.7.0.1
  */

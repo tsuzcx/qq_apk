@@ -8,18 +8,18 @@ final class m
 {
   m(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(90729);
-    this.bxJ = b.valueOf(paramJSONObject.getString("type"));
-    this.bxK = paramJSONObject.optJSONObject("data");
-    if (this.bxK == null) {
-      this.bxK = new JSONObject();
+    AppMethodBeat.i(140329);
+    this.eie = b.valueOf(paramJSONObject.getString("type"));
+    this.eif = paramJSONObject.optJSONObject("data");
+    if (this.eif == null) {
+      this.eif = new JSONObject();
     }
-    AppMethodBeat.o(90729);
+    AppMethodBeat.o(140329);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.bridge.m
  * JD-Core Version:    0.7.0.1
  */

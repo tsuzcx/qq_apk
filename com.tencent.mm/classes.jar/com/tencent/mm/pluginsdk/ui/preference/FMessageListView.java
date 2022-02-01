@@ -3,36 +3,48 @@ package com.tencent.mm.pluginsdk.ui.preference;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bi.d;
-import com.tencent.mm.g.a.je;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.a.nl;
+import com.tencent.mm.autogen.a.nl.a;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.ay;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bu;
+import com.tencent.mm.pluginsdk.event.IListenerMStorage;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cq;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
 
 public class FMessageListView
   extends LinearLayout
 {
-  private boolean cKc;
+  private final LinearLayout.LayoutParams IRX;
+  private a.b MYn;
+  private a.a Ymg;
+  private IListenerMStorage Ymn;
+  private MStorage.IOnStorageChange Ymo;
+  private MStorage.IOnStorageChange Ymp;
+  private FMessageListView.a Ymq;
+  private a Ymr;
+  private TextView Yms;
+  private boolean Ymt;
   private Context context;
-  private final LinearLayout.LayoutParams nAm;
-  private a.a waB;
-  private com.tencent.mm.pluginsdk.c.a waI;
-  private k.a waJ;
-  private k.a waK;
-  private FMessageListView.a waL;
-  private a waM;
-  private TextView waN;
+  private boolean iep;
   
   public FMessageListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,29 +54,60 @@ public class FMessageListView
   public FMessageListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(28043);
-    this.waI = new FMessageListView.1(this);
-    this.waJ = new FMessageListView.2(this);
-    this.waK = new FMessageListView.3(this);
-    this.nAm = new LinearLayout.LayoutParams(-1, -2);
-    this.cKc = false;
+    AppMethodBeat.i(31829);
+    this.Ymn = new IListenerMStorage()
+    {
+      public final void g(IEvent paramAnonymousIEvent)
+      {
+        AppMethodBeat.i(31822);
+        if (((paramAnonymousIEvent instanceof nl)) && (!FMessageListView.a(FMessageListView.this))) {
+          FMessageListView.a(FMessageListView.this, ((nl)paramAnonymousIEvent).hPO.event);
+        }
+        AppMethodBeat.o(31822);
+      }
+    };
+    this.Ymo = new MStorage.IOnStorageChange()
+    {
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
+      {
+        AppMethodBeat.i(31823);
+        if (!FMessageListView.a(FMessageListView.this)) {
+          FMessageListView.b(FMessageListView.this, paramAnonymousString);
+        }
+        AppMethodBeat.o(31823);
+      }
+    };
+    this.Ymp = new MStorage.IOnStorageChange()
+    {
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
+      {
+        AppMethodBeat.i(31824);
+        if (!FMessageListView.a(FMessageListView.this)) {
+          FMessageListView.c(FMessageListView.this, paramAnonymousString);
+        }
+        AppMethodBeat.o(31824);
+      }
+    };
+    this.IRX = new LinearLayout.LayoutParams(-1, -2);
+    this.iep = false;
+    this.Ymt = false;
     this.context = paramContext;
-    AppMethodBeat.o(28043);
+    AppMethodBeat.o(31829);
   }
   
-  public final void a(b paramb)
+  public final void a(final b paramb)
   {
-    AppMethodBeat.i(28048);
+    AppMethodBeat.i(31834);
     if (paramb == null)
     {
-      ab.e("MicroMsg.FMessageListView", "addItem fail, provider is null");
-      AppMethodBeat.o(28048);
+      Log.e("MicroMsg.FMessageListView", "addItem fail, provider is null");
+      AppMethodBeat.o(31834);
       return;
     }
     if (paramb.id <= 0L)
     {
-      ab.e("MicroMsg.FMessageListView", "addItem fail, systemRowId invalid = " + paramb.id);
-      AppMethodBeat.o(28048);
+      Log.e("MicroMsg.FMessageListView", "addItem fail, systemRowId invalid = " + paramb.id);
+      AppMethodBeat.o(31834);
       return;
     }
     int j = getChildCount();
@@ -75,81 +118,125 @@ public class FMessageListView
       localObject1 = getChildAt(i);
       if (((localObject1 instanceof a)) && (((View)localObject1).getTag() != null) && (((View)localObject1).getTag().equals(Long.valueOf(paramb.id))))
       {
-        ab.w("MicroMsg.FMessageListView", "addItem, item repeated, sysRowId = " + paramb.id);
-        AppMethodBeat.o(28048);
+        Log.w("MicroMsg.FMessageListView", "addItem, item repeated, sysRowId = " + paramb.id);
+        AppMethodBeat.o(31834);
         return;
       }
       i += 1;
     }
-    if (paramb.waR != null)
+    if (paramb.Ymx != null)
     {
-      if (this.waN == null) {
-        this.waN = ((TextView)findViewById(2131823133));
+      if (this.Yms == null) {
+        this.Yms = ((TextView)findViewById(R.h.contact_info_fmessage_listview_safewarning_tv));
       }
-      this.waN.setText(paramb.waR);
-      this.waN.setVisibility(0);
+      this.Yms.setText(paramb.Ymx);
+      this.Yms.setVisibility(0);
     }
-    ab.d("MicroMsg.FMessageListView", "addItem, current child count = ".concat(String.valueOf(j)));
+    Log.d("MicroMsg.FMessageListView", "addItem, current child count = ".concat(String.valueOf(j)));
     if (j == 6)
     {
-      ab.i("MicroMsg.FMessageListView", "addItem, most 3 FMessageItemView, remove earliest");
+      Log.i("MicroMsg.FMessageListView", "addItem, most 3 FMessageItemView, remove earliest");
       removeViewAt(1);
     }
     if (j == 1)
     {
-      ab.d("MicroMsg.FMessageListView", "addItem, current child count is 0, add two child view");
-      this.waL = new FMessageListView.a(this.context);
-      addView(this.waL);
-      this.waM = new a(this.context);
-      this.waM.setContentText("");
-      this.waM.setBtnVisibility(0);
-      addView(this.waM, this.nAm);
-      aw.aaz();
-      localObject1 = c.YA().arw(paramb.username);
-      if ((localObject1 != null) && (com.tencent.mm.n.a.je(((aq)localObject1).field_type))) {
-        break label505;
+      Log.d("MicroMsg.FMessageListView", "addItem, current child count is 0, add two child view");
+      this.Ymq = new FMessageListView.a(this.context);
+      addView(this.Ymq);
+      this.Ymr = new a(this.context);
+      this.Ymr.setGotoSayHiCallBack(this.MYn);
+      this.Ymr.setContentText("");
+      Log.i("MicroMsg.FMessageListView", "addItem, isForceHideReply = %s.", new Object[] { Boolean.valueOf(this.Ymt) });
+      if (!this.Ymt) {
+        break label546;
       }
-      ab.d("MicroMsg.FMessageListView", "addItem, reply btn visible, talker = " + paramb.username);
-      this.waL.setVisibility(0);
-      this.waM.setVisibility(0);
+      this.Ymr.setBtnVisibility(8);
+      addView(this.Ymr, this.IRX);
+      bh.bCz();
+      localObject1 = c.bzA().JE(paramb.username);
+      if ((localObject1 != null) && (com.tencent.mm.contact.d.rs(((az)localObject1).field_type))) {
+        break label557;
+      }
+      Log.d("MicroMsg.FMessageListView", "addItem, reply btn visible, talker = " + paramb.username);
+      this.Ymq.setVisibility(0);
+      this.Ymr.setVisibility(0);
     }
     Object localObject2;
-    while (paramb.cMU)
+    for (;;)
     {
-      localObject1 = this.context.getString(2131300012, new Object[] { paramb.fjL });
+      if (!paramb.ihD) {
+        break label603;
+      }
+      localObject1 = this.context.getString(R.l.gIi, new Object[] { paramb.nUO });
       i = 0;
       localObject2 = new a(this.context);
       ((a)localObject2).setTag(Long.valueOf(paramb.id));
       ((a)localObject2).setContentText((String)localObject1);
       ((a)localObject2).setBtnVisibility(8);
       if (i != 0) {
-        ((a)localObject2).setOnLongClickListener(new FMessageListView.4(this, paramb));
+        ((a)localObject2).setOnLongClickListener(new View.OnLongClickListener()
+        {
+          public final boolean onLongClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(31826);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/preference/FMessageListView$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+            Log.d("MicroMsg.FMessageListView", "jacks long click digest");
+            paramAnonymousView = FMessageListView.this.getContext();
+            localObject = FMessageListView.this.getContext().getString(R.l.gxg);
+            k.d local1 = new k.d()
+            {
+              public final void qz(int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(31825);
+                switch (paramAnonymous2Int)
+                {
+                }
+                for (;;)
+                {
+                  AppMethodBeat.o(31825);
+                  return;
+                  ClipboardHelper.setText(FMessageListView.4.this.Ymv.nUO);
+                }
+              }
+            };
+            k.a(paramAnonymousView, null, new String[] { localObject }, local1);
+            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/pluginsdk/ui/preference/FMessageListView$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+            AppMethodBeat.o(31826);
+            return true;
+          }
+        });
       }
-      addView((View)localObject2, getChildCount() - 2, this.nAm);
-      AppMethodBeat.o(28048);
+      addView((View)localObject2, getChildCount() - 2, this.IRX);
+      AppMethodBeat.o(31834);
       return;
-      label505:
-      ab.d("MicroMsg.FMessageListView", "addItem, reply btn gone, talker = " + paramb.username);
-      this.waL.setVisibility(8);
-      this.waM.setVisibility(8);
+      label546:
+      this.Ymr.setBtnVisibility(0);
+      break;
+      label557:
+      Log.d("MicroMsg.FMessageListView", "addItem, reply btn gone, talker = " + paramb.username);
+      this.Ymq.setVisibility(8);
+      this.Ymr.setVisibility(8);
     }
+    label603:
     if ((paramb.nickname != null) && (paramb.nickname.length() > 0)) {
       localObject1 = paramb.nickname;
     }
     for (;;)
     {
-      localObject1 = (String)localObject1 + ": " + paramb.fjL;
+      localObject1 = (String)localObject1 + ": " + paramb.nUO;
       i = 1;
       break;
       localObject2 = paramb.username;
-      aw.aaz();
-      ad localad = c.YA().arw(paramb.username);
+      bh.bCz();
+      au localau = c.bzA().JE(paramb.username);
       localObject1 = localObject2;
-      if (localad != null)
+      if (localau != null)
       {
         localObject1 = localObject2;
-        if ((int)localad.euF > 0) {
-          localObject1 = localad.Of();
+        if ((int)localau.maN > 0) {
+          localObject1 = localau.aSV();
         }
       }
     }
@@ -157,11 +244,11 @@ public class FMessageListView
   
   public final void detach()
   {
-    AppMethodBeat.i(28047);
-    d.alh().remove(this.waJ);
-    d.alj().remove(this.waJ);
-    com.tencent.mm.pluginsdk.c.a.b(je.class.getName(), this.waI);
-    d.alk().remove(this.waK);
+    AppMethodBeat.i(31833);
+    com.tencent.mm.modelverify.d.bNH().remove(this.Ymo);
+    com.tencent.mm.modelverify.d.bNJ().remove(this.Ymo);
+    IListenerMStorage.b(nl.class.getName(), this.Ymn);
+    com.tencent.mm.modelverify.d.bNK().remove(this.Ymp);
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -172,68 +259,81 @@ public class FMessageListView
       }
       i += 1;
     }
-    this.waL = null;
-    this.waM = null;
-    AppMethodBeat.o(28047);
+    this.Ymq = null;
+    this.Ymr = null;
+    AppMethodBeat.o(31833);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(28046);
+    AppMethodBeat.i(31832);
     super.onAttachedToWindow();
-    d.alh().add(this.waJ);
-    com.tencent.mm.pluginsdk.c.a.a(je.class.getName(), this.waI);
-    d.alj().add(this.waJ);
-    d.alk().add(this.waK);
-    AppMethodBeat.o(28046);
+    com.tencent.mm.modelverify.d.bNH().add(this.Ymo);
+    IListenerMStorage.a(nl.class.getName(), this.Ymn);
+    com.tencent.mm.modelverify.d.bNJ().add(this.Ymo);
+    com.tencent.mm.modelverify.d.bNK().add(this.Ymp);
+    AppMethodBeat.o(31832);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(28045);
+    AppMethodBeat.i(31831);
     super.onDetachedFromWindow();
     detach();
-    AppMethodBeat.o(28045);
+    AppMethodBeat.o(31831);
   }
   
   public void setFMessageArgs(a.a parama)
   {
-    AppMethodBeat.i(28044);
-    this.waB = parama;
+    AppMethodBeat.i(31830);
+    this.Ymg = parama;
     a.setFMessageArgs(parama);
-    AppMethodBeat.o(28044);
+    AppMethodBeat.o(31830);
+  }
+  
+  public void setForceHideReply(boolean paramBoolean)
+  {
+    AppMethodBeat.i(245121);
+    this.Ymt = paramBoolean;
+    Log.i("MicroMsg.FMessageListView", "setForceHideReply = %s, stack = ", new Object[] { Boolean.valueOf(paramBoolean), Util.getStack() });
+    AppMethodBeat.o(245121);
+  }
+  
+  public void setGotoSayHiCallBack(a.b paramb)
+  {
+    this.MYn = paramb;
   }
   
   public void setHide(boolean paramBoolean)
   {
-    this.cKc = paramBoolean;
+    this.iep = paramBoolean;
   }
   
   public void setReplyBtnVisible(boolean paramBoolean)
   {
     int j = 0;
-    AppMethodBeat.i(28049);
+    AppMethodBeat.i(31835);
     int i = getChildCount();
-    ab.d("MicroMsg.FMessageListView", "setReplyBtnVisible, visible = " + paramBoolean + ", current child count = " + i);
+    Log.d("MicroMsg.FMessageListView", "setReplyBtnVisible, visible = " + paramBoolean + ", current child count = " + i);
     if (i <= 2)
     {
-      ab.e("MicroMsg.FMessageListView", "setReplyBtnVisible fail, childCount invalid = ".concat(String.valueOf(i)));
-      AppMethodBeat.o(28049);
+      Log.e("MicroMsg.FMessageListView", "setReplyBtnVisible fail, childCount invalid = ".concat(String.valueOf(i)));
+      AppMethodBeat.o(31835);
       return;
     }
     Object localObject;
-    if (this.waL != null)
+    if (this.Ymq != null)
     {
-      localObject = this.waL;
+      localObject = this.Ymq;
       if (paramBoolean)
       {
         i = 0;
         ((FMessageListView.a)localObject).setVisibility(i);
       }
     }
-    else if (this.waM != null)
+    else if (this.Ymr != null)
     {
-      localObject = this.waM;
+      localObject = this.Ymr;
       if (!paramBoolean) {
         break label135;
       }
@@ -242,7 +342,7 @@ public class FMessageListView
     for (i = j;; i = 8)
     {
       ((a)localObject).setVisibility(i);
-      AppMethodBeat.o(28049);
+      AppMethodBeat.o(31835);
       return;
       i = 8;
       break;
@@ -251,7 +351,7 @@ public class FMessageListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.FMessageListView
  * JD-Core Version:    0.7.0.1
  */

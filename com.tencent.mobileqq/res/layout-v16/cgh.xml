@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/dqq" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:background="@color/al3" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="12.0dip">
+        <TextView android:textSize="17.0dip" android:textColor="#ff222222" android:layout_gravity="center_vertical" android:id="@id/mw1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:fontFamily="PingFangSC-Regular" />
+        <com.tencent.mobileqq.guild.widget.GuildSwitchButton android:layout_gravity="center|right" android:id="@id/mm6" android:focusable="true" android:layout_width="52.0dip" android:layout_height="32.0dip" app:isChecked="false" />
+    </LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ff8d9aad" android:id="@id/px8" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/x6n" android:fontFamily="PingFangSC-Regular" />
+    <LinearLayout android:background="@color/al3" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="16.0dip">
+        <TextView android:textSize="17.0dip" android:textColor="#ff222222" android:layout_gravity="center_vertical" android:id="@id/q38" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x7b" android:layout_weight="1.0" android:fontFamily="PingFangSC-Regular" />
+        <com.tencent.mobileqq.guild.widget.GuildSwitchButton android:layout_gravity="center|right" android:id="@id/q37" android:layout_width="52.0dip" android:layout_height="32.0dip" app:isChecked="false" />
+    </LinearLayout>
+    <View android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="18.0dip" />
+    <LinearLayout android:background="@color/al3" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <TextView android:textSize="17.0dip" android:textColor="#ff222222" android:layout_gravity="center_vertical" android:id="@id/q3d" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/x7c" android:layout_weight="1.0" android:fontFamily="PingFangSC-Regular" />
+        <com.tencent.mobileqq.guild.widget.GuildSwitchButton android:layout_gravity="center|right" android:id="@id/q3c" android:focusable="true" android:layout_width="52.0dip" android:layout_height="32.0dip" app:isChecked="false" />
+    </LinearLayout>
+</LinearLayout>

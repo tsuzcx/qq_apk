@@ -9,6 +9,6 @@
             <ImageButton android:layout_gravity="center_vertical" android:id="@id/ai3" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/cce" android:scaleType="fitXY" android:contentDescription="@string/a78" />
             <Button android:textSize="@dimen/aze" android:textStyle="bold" android:textColor="@color/ahm" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/aiz" android:background="@null" android:layout_width="40.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/a7_" android:singleLine="true" android:imeOptions="actionSend" />
         </LinearLayout>
-        <include android:id="@id/bul" android:visibility="gone" layout="@layout/n0" />
+        <include android:id="@id/bul" android:visibility="gone" layout="@layout/emoticon_aio_panel" />
     </LinearLayout>
 </ScrollView>

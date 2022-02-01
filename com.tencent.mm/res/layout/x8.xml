@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_height="100.0dip" style="@style/ht"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bmt" android:layout_width="fill_parent" android:layout_height="@dimen/l5" />
-    <ImageView android:textColor="@color/ni" android:id="@id/bmu" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_marginBottom="@dimen/n_" android:src="@raw/device_profile_the_end" android:layout_below="@id/bmt" android:layout_centerInParent="true" />
-    <Button android:id="@id/bmv" android:background="@drawable/gr" android:visibility="invisible" android:layout_marginTop="@dimen/l5" android:layout_marginBottom="@dimen/n_" android:text="@string/bj7" style="@style/mi" />
-</RelativeLayout>
+<Space android:layout_width="fill_parent" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

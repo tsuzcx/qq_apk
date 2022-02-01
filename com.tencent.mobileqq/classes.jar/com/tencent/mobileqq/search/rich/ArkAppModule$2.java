@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.search.rich;
 
-import ayse;
-import aysf;
 import java.lang.ref.WeakReference;
 
-public class ArkAppModule$2
+class ArkAppModule$2
   implements Runnable
 {
-  public ArkAppModule$2(ayse paramayse, long paramLong, String paramString1, String paramString2) {}
+  ArkAppModule$2(ArkAppModule paramArkAppModule, long paramLong, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (ayse.a(this.this$0) != null)
+    if (ArkAppModule.a(this.this$0) != null)
     {
-      aysf localaysf = (aysf)ayse.a(this.this$0).get();
-      if (localaysf != null) {
-        localaysf.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+      ArkAppModule.ArkAppModuleEvent localArkAppModuleEvent = (ArkAppModule.ArkAppModuleEvent)ArkAppModule.a(this.this$0).get();
+      if (localArkAppModuleEvent != null) {
+        localArkAppModuleEvent.a(this.a, this.b, this.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkAppModule.2
  * JD-Core Version:    0.7.0.1
  */

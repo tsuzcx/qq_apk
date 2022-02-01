@@ -65,74 +65,95 @@ public final class al
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.d, 0);
-    if (this.cY != null) {
-      paramJceOutputStream.write(this.cY, 1);
+    Object localObject = this.cY;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.cZ != null) {
-      paramJceOutputStream.write(this.cZ, 2);
+    localObject = this.cZ;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.da != null) {
-      paramJceOutputStream.write(this.da, 3);
+    localObject = this.da;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.db != null) {
-      paramJceOutputStream.write(this.db, 4);
+    localObject = this.db;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.h != null) {
-      paramJceOutputStream.write(this.h, 5);
+    localObject = this.h;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.dc != null) {
-      paramJceOutputStream.write(this.dc, 6);
+    localObject = this.dc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.dd != 0) {
-      paramJceOutputStream.write(this.dd, 7);
+    int i = this.dd;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.cA != 0) {
-      paramJceOutputStream.write(this.cA, 8);
+    i = this.cA;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.de != null) {
-      paramJceOutputStream.write(this.de, 9);
+    localObject = this.de;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.aX != null) {
-      paramJceOutputStream.write(this.aX, 10);
+    localObject = this.aX;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.df != null) {
-      paramJceOutputStream.write(this.df, 11);
+    localObject = this.df;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.cB != 0) {
-      paramJceOutputStream.write(this.cB, 12);
+    i = this.cB;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 12);
     }
-    if (this.dg != 0) {
-      paramJceOutputStream.write(this.dg, 13);
+    i = this.dg;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 13);
     }
-    if (this.dh != 0) {
-      paramJceOutputStream.write(this.dh, 14);
+    i = this.dh;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 14);
     }
-    if (this.ba != 0) {
-      paramJceOutputStream.write(this.ba, 15);
+    i = this.ba;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 15);
     }
-    if (this.di != null) {
-      paramJceOutputStream.write(this.di, 16);
+    localObject = this.di;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.dj != 0) {
-      paramJceOutputStream.write(this.dj, 17);
+    short s = this.dj;
+    if (s != 0) {
+      paramJceOutputStream.write(s, 17);
     }
-    if (this.dk != 0.0D) {
-      paramJceOutputStream.write(this.dk, 18);
+    double d1 = this.dk;
+    if (d1 != 0.0D) {
+      paramJceOutputStream.write(d1, 18);
     }
-    if (this.dl != 0.0D) {
-      paramJceOutputStream.write(this.dl, 19);
+    d1 = this.dl;
+    if (d1 != 0.0D) {
+      paramJceOutputStream.write(d1, 19);
     }
-    if (this.dm != null) {
-      paramJceOutputStream.write(this.dm, 20);
+    localObject = this.dm;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.dn != 0) {
-      paramJceOutputStream.write(this.dn, 21);
+    i = this.dn;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 21);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.al
  * JD-Core Version:    0.7.0.1
  */

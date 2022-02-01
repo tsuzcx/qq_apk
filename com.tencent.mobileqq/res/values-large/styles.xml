@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="1b" parent="@style/1_" />
+    <style name="1i" parent="@style/1g" />
+    <style name="1r" parent="@style/1p" />
+    <style name="21" parent="@style/1z" />
+</resources>

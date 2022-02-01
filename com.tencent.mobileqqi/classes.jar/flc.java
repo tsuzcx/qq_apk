@@ -1,36 +1,32 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import android.os.Process;
-import android.os.SystemClock;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import java.util.concurrent.Callable;
+import android.content.res.Resources;
+import android.graphics.NinePatch;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import com.tencent.mobileqq.bubble.VipBubbleDrawable;
 
-public class flc
-  implements Callable
+public final class flc
+  extends Drawable.ConstantState
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  public final NinePatch a;
   
-  public flc(QQAnimationDrawable paramQQAnimationDrawable, int paramInt, long paramLong)
+  public flc(NinePatch paramNinePatch)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramNinePatch;
   }
   
-  public Bitmap a()
+  public int getChangingConfigurations()
   {
-    Process.setThreadPriority(10);
-    QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, false, this.jdField_a_of_type_Int));
-    QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, this.jdField_a_of_type_Int);
-    if ((QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable) == null) && (this.jdField_a_of_type_Int == 0)) {
-      QQAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, QQAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable));
-    }
-    long l1 = SystemClock.uptimeMillis();
-    Message localMessage = QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable).obtainMessage();
-    long l2 = SystemClock.uptimeMillis();
-    localMessage.obj = Long.valueOf(Long.valueOf(Math.max(this.jdField_a_of_type_Long - l1, 0L)).longValue() + l2);
-    localMessage.sendToTarget();
-    return QQAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
+    return 0;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new VipBubbleDrawable(null, this);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new VipBubbleDrawable(paramResources, this);
   }
 }
 

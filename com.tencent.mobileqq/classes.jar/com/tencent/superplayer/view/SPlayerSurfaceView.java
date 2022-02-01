@@ -10,13 +10,13 @@ public class SPlayerSurfaceView
   extends SurfaceView
   implements ISPlayerViewBase
 {
-  private static final String TAG = SPlayerSurfaceView.class.getSimpleName();
+  private static final String TAG = "SPlayerSurfaceView";
   private float mScale = 1.0F;
   private SurfaceHolder.Callback mSurfaceCallback = new SPlayerSurfaceView.1(this);
   private int mType = 0;
   private int mVideoHeight;
   private int mVideoWidth;
-  private ISPlayerViewBase.viewCreateCallBack mViewCallBack;
+  private ISPlayerViewBase.ViewCreateCallBack mViewCallBack;
   private int radioHeight = 0;
   private int radioWidth = 0;
   
@@ -36,101 +36,108 @@ public class SPlayerSurfaceView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i = getDefaultSize(this.mVideoWidth, paramInt1);
-    int j = getDefaultSize(this.mVideoHeight, paramInt2);
+    int k = getDefaultSize(this.mVideoWidth, paramInt1);
+    int m = getDefaultSize(this.mVideoHeight, paramInt2);
     if ((this.mVideoWidth > 0) && (this.mVideoHeight > 0)) {}
-    for (;;)
+    try
     {
-      try
+      ((FrameLayout.LayoutParams)getLayoutParams()).topMargin = 0;
+      ((FrameLayout.LayoutParams)getLayoutParams()).bottomMargin = 0;
+      int i = this.mType;
+      float f2 = 1.0F;
+      int j;
+      float f1;
+      if (i == 2)
       {
-        ((FrameLayout.LayoutParams)getLayoutParams()).topMargin = 0;
-        ((FrameLayout.LayoutParams)getLayoutParams()).bottomMargin = 0;
-        if (this.mType == 2)
+        if (this.mVideoWidth * m > this.mVideoHeight * k)
         {
-          if (this.mVideoWidth * j > this.mVideoHeight * i)
-          {
-            k = this.mVideoWidth * j / this.mVideoHeight;
-            i = j;
-            j = k;
-            f = 1.0F;
-            setMeasuredDimension((int)(j * this.mScale * f), (int)(f * (i * this.mScale)));
-            return;
-          }
-          if (this.mVideoWidth * j >= this.mVideoHeight * i) {
-            break label455;
-          }
-          k = this.mVideoHeight * i / this.mVideoWidth;
-          j = i;
-          f = 1.0F;
+          i = this.mVideoWidth * m / this.mVideoHeight;
+          j = m;
+          f1 = f2;
+        }
+        else
+        {
           i = k;
-          continue;
-        }
-        if (this.mType == 1)
-        {
-          f = 1.0F;
-          k = i;
-          i = j;
-          j = k;
-          continue;
-        }
-        if (this.mType == 3)
-        {
-          if (this.mVideoWidth * j > this.mVideoHeight * i)
+          j = m;
+          f1 = f2;
+          if (this.mVideoWidth * m < this.mVideoHeight * k)
           {
-            k = this.mVideoHeight * i / this.mVideoWidth;
-            j = i;
-            f = 1.0F;
+            j = this.mVideoHeight * k / this.mVideoWidth;
             i = k;
-            continue;
+            f1 = f2;
           }
-          if (this.mVideoWidth * j >= this.mVideoHeight * i) {
-            break label455;
-          }
-          k = this.mVideoWidth * j / this.mVideoHeight;
-          f = j / (this.mVideoWidth / this.mVideoHeight * j);
-          i = j;
-          j = k;
-          continue;
         }
-        int m = this.mVideoWidth;
-        k = m;
+      }
+      else if (this.mType == 1)
+      {
+        i = k;
+        j = m;
+        f1 = f2;
+      }
+      else if (this.mType == 3)
+      {
+        if (this.mVideoWidth * m > this.mVideoHeight * k)
+        {
+          j = this.mVideoHeight * k / this.mVideoWidth;
+          i = k;
+          f1 = f2;
+        }
+        else
+        {
+          i = k;
+          j = m;
+          f1 = f2;
+          if (this.mVideoWidth * m < this.mVideoHeight * k)
+          {
+            i = this.mVideoWidth * m / this.mVideoHeight;
+            f1 = m;
+            f1 /= this.mVideoWidth / this.mVideoHeight * f1;
+            j = m;
+          }
+        }
+      }
+      else
+      {
+        j = this.mVideoWidth;
+        i = j;
         if (this.radioWidth != 0)
         {
-          k = m;
+          i = j;
           if (this.radioHeight != 0) {
-            k = this.mVideoWidth * this.radioWidth / this.radioHeight;
+            i = this.mVideoWidth * this.radioWidth / this.radioHeight;
           }
         }
-        if (k * j > this.mVideoHeight * i)
+        int n = i * m;
+        if (n > this.mVideoHeight * k)
         {
-          k = this.mVideoHeight * i / k;
-          j = i;
-          f = 1.0F;
+          j = this.mVideoHeight * k / i;
           i = k;
-          continue;
+          f1 = f2;
         }
-        if (k * j >= this.mVideoHeight * i) {
-          break label455;
+        else
+        {
+          i = k;
+          j = m;
+          f1 = f2;
+          if (n < this.mVideoHeight * k)
+          {
+            i = n / this.mVideoHeight;
+            f1 = f2;
+            j = m;
+          }
         }
-        k = k * j / this.mVideoHeight;
-        i = j;
-        j = k;
-        f = 1.0F;
-        continue;
-        super.onMeasure(paramInt1, paramInt2);
       }
-      catch (Exception localException)
-      {
-        super.onMeasure(paramInt1, paramInt2);
-        return;
-      }
+      setMeasuredDimension((int)(i * this.mScale * f1), (int)(j * this.mScale * f1));
       return;
-      label455:
-      float f = 1.0F;
-      int k = i;
-      i = j;
-      j = k;
     }
+    catch (Exception localException)
+    {
+      label455:
+      break label455;
+    }
+    super.onMeasure(paramInt1, paramInt2);
+    return;
+    super.onMeasure(paramInt1, paramInt2);
   }
   
   public boolean setDegree(int paramInt)
@@ -147,15 +154,17 @@ public class SPlayerSurfaceView
     }
   }
   
+  public void setVideoViewTagId(String paramString) {}
+  
   public void setVideoWidthAndHeight(int paramInt1, int paramInt2)
   {
     this.mVideoWidth = paramInt1;
     this.mVideoHeight = paramInt2;
   }
   
-  public void setViewCallBack(ISPlayerViewBase.viewCreateCallBack paramviewCreateCallBack)
+  public void setViewCallBack(ISPlayerViewBase.ViewCreateCallBack paramViewCreateCallBack)
   {
-    this.mViewCallBack = paramviewCreateCallBack;
+    this.mViewCallBack = paramViewCreateCallBack;
   }
   
   public void setXYaxis(int paramInt)
@@ -166,7 +175,7 @@ public class SPlayerSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.view.SPlayerSurfaceView
  * JD-Core Version:    0.7.0.1
  */

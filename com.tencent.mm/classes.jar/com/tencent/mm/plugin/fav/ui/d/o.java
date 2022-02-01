@@ -3,132 +3,96 @@ package com.tencent.mm.plugin.fav.ui.d;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.y;
-import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.pluginsdk.d;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.aci;
-import com.tencent.mm.protocal.protobuf.acj;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acs;
-import com.tencent.mm.protocal.protobuf.adf;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.z;
+import com.tencent.mm.plugin.fav.ui.FavoriteImageServer;
+import com.tencent.mm.plugin.fav.ui.q.c;
+import com.tencent.mm.plugin.fav.ui.q.e;
+import com.tencent.mm.plugin.fav.ui.q.f;
+import com.tencent.mm.plugin.fav.ui.q.h;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.arx;
+import com.tencent.mm.protocal.protobuf.asb;
+import com.tencent.mm.protocal.protobuf.ase;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMImageView;
 
 public final class o
-  extends a
+  extends b
 {
-  private final int mDa;
+  private final String AoN;
+  private final int Aod;
   
-  public o(l paraml)
+  public o(FavoriteImageServer paramFavoriteImageServer)
   {
-    super(paraml);
-    AppMethodBeat.i(74655);
-    this.mDa = com.tencent.mm.cb.a.ao(paraml.context, 2131427652);
-    AppMethodBeat.o(74655);
+    super(paramFavoriteImageServer);
+    AppMethodBeat.i(107486);
+    this.Aod = a.br(paramFavoriteImageServer.context, q.c.FavIconSize);
+    this.AoN = "";
+    AppMethodBeat.o(107486);
   }
   
-  public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
+  public final View a(View paramView, ViewGroup paramViewGroup, g paramg)
   {
-    AppMethodBeat.i(74656);
-    Object localObject1 = paramViewGroup.getContext();
-    Object localObject2;
-    TextView localTextView;
+    AppMethodBeat.i(107487);
+    Context localContext = paramViewGroup.getContext();
     if (paramView == null)
     {
-      paramViewGroup = new o.a();
-      localObject1 = a(View.inflate((Context)localObject1, 2130969539, null), paramViewGroup, paramg);
-      paramViewGroup.ivs = ((ImageView)((View)localObject1).findViewById(2131821517));
-      paramViewGroup.mDg = ((ImageView)((View)localObject1).findViewById(2131821518));
-      paramViewGroup.gpL = ((TextView)((View)localObject1).findViewById(2131820619));
-      paramViewGroup.gpL.setMaxLines(2);
+      paramViewGroup = new a();
+      paramView = a(View.inflate(localContext, q.f.fav_listitem_appmsg, null), paramViewGroup, paramg);
+      paramViewGroup.AkD = ((MMImageView)paramView.findViewById(q.e.fav_icon));
+      paramViewGroup.pJJ = ((TextView)paramView.findViewById(q.e.fav_title));
+      paramViewGroup.plr = ((TextView)paramView.findViewById(q.e.fav_desc));
+      paramViewGroup.Aoo = ((TextView)paramView.findViewById(q.e.fav_source));
+      paramViewGroup.Aoo.setVisibility(0);
+      b(paramViewGroup.pJJ, paramg);
       a(paramViewGroup, paramg);
-      aca localaca1 = b.c(paramg);
-      localObject2 = paramg.field_favProto.wUf;
-      localTextView = paramViewGroup.gpL;
-      aca localaca2 = b.c(paramg);
-      paramView = "";
-      if (localObject2 != null) {
-        paramView = ((adf)localObject2).title;
+      ase localase = paramg.field_favProto.ZAn;
+      if (localase == null) {
+        break label233;
       }
-      localObject2 = paramView;
-      if (bo.isNullOrNil(paramView))
-      {
-        localObject2 = paramView;
-        if (localaca2 != null) {
-          localObject2 = localaca2.title;
-        }
-      }
-      if (!bo.isNullOrNil((String)localObject2)) {
-        break label295;
-      }
-      localTextView.setVisibility(8);
-      label176:
-      int j = d.akU(localaca1.wSR);
-      paramView = this.mvC;
-      localObject2 = paramViewGroup.ivs;
-      int i = j;
-      if (j == d.dkP()) {
-        i = 2131230829;
-      }
-      paramView.a((ImageView)localObject2, localaca1, paramg, i, this.mDa, this.mDa);
-      if ((paramg.field_favProto.uVl == null) || (paramg.field_favProto.uVl.fgh != 5)) {
-        break label311;
-      }
-      paramViewGroup.mDg.setImageResource(2130838836);
-      paramViewGroup.mDg.setVisibility(0);
+      paramViewGroup.pJJ.setText(Util.nullAsNil(localase.title));
+      paramViewGroup.plr.setText(Util.nullAsNil(localase.desc));
     }
     for (;;)
     {
-      AppMethodBeat.o(74656);
-      return localObject1;
-      paramViewGroup = (o.a)paramView.getTag();
-      localObject1 = paramView;
+      paramViewGroup.Aoo.setText(Util.nullAs(com.tencent.mm.plugin.fav.a.b.getAppName(localContext, paramg.field_favProto.ZBt.appId), this.AoN));
+      this.AfM.a(paramViewGroup.AkD, null, paramg, q.h.app_attach_file_icon_unknow, this.Aod, this.Aod);
+      AppMethodBeat.o(107487);
+      return paramView;
+      paramViewGroup = (a)paramView.getTag();
       break;
-      label295:
-      localTextView.setText((CharSequence)localObject2);
-      localTextView.setVisibility(0);
-      break label176;
-      label311:
-      paramViewGroup.mDg.setVisibility(8);
+      label233:
+      paramViewGroup.pJJ.setText("");
+      paramViewGroup.plr.setText("");
     }
   }
   
-  public final void a(View paramView, acs paramacs)
+  public final void a(View paramView, arx paramarx)
   {
-    AppMethodBeat.i(74657);
-    o.a locala = (o.a)paramView.getTag();
+    AppMethodBeat.i(107488);
+    a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    Object localObject = locala.ivs;
-    com.tencent.mm.plugin.fav.a.g localg = locala.muk;
-    if ((localg.field_favProto == null) || (localg.field_favProto.uVl == null) || (localg.field_favProto.uVl.fgh < 0)) {}
-    for (;;)
-    {
-      ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
-      AppMethodBeat.o(74657);
-      return;
-      int[] arrayOfInt = new int[2];
-      if (localObject != null)
-      {
-        int i = ((View)localObject).getWidth();
-        int j = ((View)localObject).getHeight();
-        ((View)localObject).getLocationInWindow(arrayOfInt);
-        localObject = localg.field_favProto.uVl;
-        ((aci)localObject).wUS = new acj();
-        ((aci)localObject).wUS.left = arrayOfInt[0];
-        ((aci)localObject).wUS.top = arrayOfInt[1];
-        ((aci)localObject).wUS.width = i;
-        ((aci)localObject).wUS.height = j;
-      }
-    }
+    ((z)h.ax(z.class)).a(paramView, locala.AdF, paramarx);
+    AppMethodBeat.o(107488);
+  }
+  
+  public static final class a
+    extends b.b
+  {
+    MMImageView AkD;
+    TextView Aoo;
+    TextView pJJ;
+    TextView plr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.o
  * JD-Core Version:    0.7.0.1
  */

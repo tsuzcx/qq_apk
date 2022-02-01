@@ -28,21 +28,56 @@ public class YTAuthJNIInterface
   
   static
   {
-    AppMethodBeat.i(118077);
+    AppMethodBeat.i(73364);
     handle = 0L;
     isReportStarted = false;
     licenceStr = "";
     VERSION = "1.2";
-    mListener = new YTAuthJNIInterface.3();
-    AppMethodBeat.o(118077);
+    mListener = new HttpUtil.HttpResponseListener()
+    {
+      public final void onFail(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(73353);
+        try
+        {
+          YTLogger.d("log_print_java", "http request error : ".concat(String.valueOf(paramAnonymousInt)));
+          YTLogger.d("log_print_java", "handle: " + YTAuthJNIInterface.handle);
+          YTAuthJNIInterface.access$300(YTAuthJNIInterface.handle, null);
+          AppMethodBeat.o(73353);
+          return;
+        }
+        catch (Exception localException)
+        {
+          AppMethodBeat.o(73353);
+        }
+      }
+      
+      public final void onSuccess(String paramAnonymousString)
+      {
+        AppMethodBeat.i(73352);
+        try
+        {
+          YTLogger.d("log_print_java", "response: ".concat(String.valueOf(paramAnonymousString)));
+          YTLogger.d("log_print_java", "handle: " + YTAuthJNIInterface.handle);
+          YTAuthJNIInterface.access$300(YTAuthJNIInterface.handle, paramAnonymousString);
+          AppMethodBeat.o(73352);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          AppMethodBeat.o(73352);
+        }
+      }
+    };
+    AppMethodBeat.o(73364);
   }
   
   public static boolean check()
   {
-    AppMethodBeat.i(118071);
+    AppMethodBeat.i(73358);
     boolean bool = nativeCheck(handle);
     YTLogger.d("sdk", "--------------check");
-    AppMethodBeat.o(118071);
+    AppMethodBeat.o(73358);
     return bool;
   }
   
@@ -59,7 +94,7 @@ public class YTAuthJNIInterface
   
   public static int init(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(118070);
+    AppMethodBeat.i(73357);
     YTLogger.d("log_print_java", "start init");
     String str = paramContext.getFilesDir().getPath() + "/YTYoutuFaceTrackSDK.dat";
     YTLogger.d("log_print_java", "path: ".concat(String.valueOf(str)));
@@ -71,7 +106,7 @@ public class YTAuthJNIInterface
     for (;;)
     {
       paramInt = getCurrentAuthStatus(handle);
-      AppMethodBeat.o(118070);
+      AppMethodBeat.o(73357);
       return paramInt;
       YTLogger.d("log_print_java", "need report");
       startTimer();
@@ -80,13 +115,13 @@ public class YTAuthJNIInterface
   
   private static boolean isInMainThread()
   {
-    AppMethodBeat.i(118072);
+    AppMethodBeat.i(73359);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      AppMethodBeat.o(118072);
+      AppMethodBeat.o(73359);
       return true;
     }
-    AppMethodBeat.o(118072);
+    AppMethodBeat.o(73359);
     return false;
   }
   
@@ -102,7 +137,7 @@ public class YTAuthJNIInterface
   
   public static int preCheckAndInitWithLicenceStr(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(118068);
+    AppMethodBeat.i(73355);
     licenceStr = paramString;
     int i = -1;
     int j;
@@ -113,14 +148,14 @@ public class YTAuthJNIInterface
       if (j <= 0)
       {
         paramContext = new IOException("licence error");
-        AppMethodBeat.o(118068);
+        AppMethodBeat.o(73355);
         throw paramContext;
       }
     }
     catch (IOException paramContext) {}
     for (;;)
     {
-      AppMethodBeat.o(118068);
+      AppMethodBeat.o(73355);
       return i;
       String str1 = paramContext.getFilesDir().getPath() + "/YTYoutuFaceTrackSDK.dat";
       String str2 = paramContext.getPackageName();
@@ -134,65 +169,85 @@ public class YTAuthJNIInterface
   
   public static void report(String paramString)
   {
-    AppMethodBeat.i(118073);
+    AppMethodBeat.i(73360);
     if (isInMainThread())
     {
       new Thread(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(118067);
+          AppMethodBeat.i(73354);
           try
           {
             HttpUtil.post("https://api.youtu.qq.com/auth/report", this.val$data, YTAuthJNIInterface.mListener);
-            AppMethodBeat.o(118067);
+            AppMethodBeat.o(73354);
             return;
           }
           catch (IOException localIOException)
           {
-            AppMethodBeat.o(118067);
+            AppMethodBeat.o(73354);
           }
         }
       }).start();
-      AppMethodBeat.o(118073);
+      AppMethodBeat.o(73360);
       return;
     }
     try
     {
       HttpUtil.post("https://api.youtu.qq.com/auth/report", paramString, mListener);
-      AppMethodBeat.o(118073);
+      AppMethodBeat.o(73360);
       return;
     }
     catch (IOException paramString)
     {
-      AppMethodBeat.o(118073);
+      AppMethodBeat.o(73360);
     }
   }
   
   private static void startTimer()
   {
-    AppMethodBeat.i(118069);
+    AppMethodBeat.i(73356);
     YTLogger.d("log_print_java", "start timer");
     if (isReportStarted)
     {
-      AppMethodBeat.o(118069);
+      AppMethodBeat.o(73356);
       return;
     }
-    Object localObject = new YTAuthJNIInterface.1();
+    Object localObject = new TimerTask()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(73350);
+        String str = YTAuthJNIInterface.access$000();
+        if (str != "") {
+          YTAuthJNIInterface.report(str);
+        }
+        AppMethodBeat.o(73350);
+      }
+    };
     Timer localTimer = new Timer(true);
     timerReport = localTimer;
     localTimer.schedule((TimerTask)localObject, 600000L, 600000L);
-    localObject = new YTAuthJNIInterface.2();
+    localObject = new TimerTask()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(73351);
+        YTLogger.d("log_print_java", "flush in java ");
+        YTAuthJNIInterface.access$100();
+        AppMethodBeat.o(73351);
+      }
+    };
     localTimer = new Timer(true);
     timerFlush = localTimer;
     localTimer.schedule((TimerTask)localObject, 600000L, 600000L);
     isReportStarted = true;
-    AppMethodBeat.o(118069);
+    AppMethodBeat.o(73356);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.auth.YTAuthJNIInterface
  * JD-Core Version:    0.7.0.1
  */

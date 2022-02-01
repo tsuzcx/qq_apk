@@ -25,10 +25,13 @@ final class DynamicConcatenatingMediaSource$DeferredTimeline
   
   public DeferredTimeline cloneWithNewTimeline(Timeline paramTimeline)
   {
-    if ((this.replacedId == null) && (paramTimeline.getPeriodCount() > 0)) {}
-    for (Object localObject = paramTimeline.getPeriod(0, period, true).uid;; localObject = this.replacedId) {
-      return new DeferredTimeline(paramTimeline, localObject);
+    Object localObject;
+    if ((this.replacedId == null) && (paramTimeline.getPeriodCount() > 0)) {
+      localObject = paramTimeline.getPeriod(0, period, true).uid;
+    } else {
+      localObject = this.replacedId;
     }
+    return new DeferredTimeline(paramTimeline, localObject);
   }
   
   public int getIndexOfPeriod(Object paramObject)
@@ -57,7 +60,7 @@ final class DynamicConcatenatingMediaSource$DeferredTimeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.DynamicConcatenatingMediaSource.DeferredTimeline
  * JD-Core Version:    0.7.0.1
  */

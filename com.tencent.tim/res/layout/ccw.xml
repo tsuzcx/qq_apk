@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="19.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/lzw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="center" app:scale="1.452" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/lzx" android:layout_width="24.0dip" android:layout_height="24.0dip" android:indeterminateDrawable="@drawable/jr" />
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:id="@id/lzv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/lzt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
+    </LinearLayout>
+</LinearLayout>

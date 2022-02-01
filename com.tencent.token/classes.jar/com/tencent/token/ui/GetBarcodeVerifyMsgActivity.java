@@ -1,34 +1,46 @@
 package com.tencent.token.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.global.h;
 import com.tencent.token.ui.base.DualMsgShowDialog;
+import com.tencent.token.ui.base.DualMsgView;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
+import com.tencent.token.xt;
+import com.tencent.token.xv;
 
 public class GetBarcodeVerifyMsgActivity
   extends BaseActivity
 {
   private String mAqVerifyBarcodeContent;
-  private DialogInterface.OnDismissListener mDismissListener = new kx(this);
+  private DialogInterface.OnDismissListener mDismissListener = new DialogInterface.OnDismissListener()
+  {
+    public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+    {
+      GetBarcodeVerifyMsgActivity.this.finish();
+    }
+  };
   private DualMsgShowDialog mDualMsgShowDialog = null;
-  private UserTask mGetDualMsgTask = null;
+  private UserTask<String, String, xt> mGetDualMsgTask = null;
   private ProgressBar mPreparePro;
   private TextView mPrepareText;
   private boolean mQueryingDualMsg = false;
   
   private void dismissDualDialog()
   {
-    if (this.mDualMsgShowDialog != null)
+    DualMsgShowDialog localDualMsgShowDialog = this.mDualMsgShowDialog;
+    if (localDualMsgShowDialog != null)
     {
-      if (this.mDualMsgShowDialog.isShowing()) {
+      if (localDualMsgShowDialog.isShowing()) {
         this.mDualMsgShowDialog.cancel();
       }
-      this.mDualMsgShowDialog.b();
+      this.mDualMsgShowDialog.a.a();
       this.mDualMsgShowDialog = null;
     }
   }
@@ -39,37 +51,53 @@ public class GetBarcodeVerifyMsgActivity
       return;
     }
     this.mQueryingDualMsg = true;
-    this.mGetDualMsgTask = new kq(this);
-    this.mGetDualMsgTask.c(new String[] { "" });
+    this.mGetDualMsgTask = new UserTask()
+    {
+      public final void a()
+      {
+        super.a();
+        GetBarcodeVerifyMsgActivity.access$102(GetBarcodeVerifyMsgActivity.this, false);
+      }
+    };
+    this.mGetDualMsgTask.a(new String[] { "" });
   }
   
   private void showDualMsgExpireDlg()
   {
-    showUserDialog(2131230843, getString(2131230949), 2131230897, new ky(this));
+    showUserDialog(2131492987, getString(2131493094), 2131493041, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        GetBarcodeVerifyMsgActivity.this.finish();
+      }
+    });
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968672);
-    this.mPreparePro = ((ProgressBar)findViewById(2131558941));
-    this.mPrepareText = ((TextView)findViewById(2131558940));
-    this.mPrepareText.setText(2131230953);
-    if ((getIntent() == null) || (getIntent().getBundleExtra("com.tencent.input_param") == null))
+    setContentView(2131296358);
+    this.mPreparePro = ((ProgressBar)findViewById(2131165842));
+    this.mPrepareText = ((TextView)findViewById(2131165843));
+    this.mPrepareText.setText(2131493098);
+    if ((getIntent() != null) && (getIntent().getBundleExtra("com.tencent.input_param") != null))
     {
-      finish();
+      this.mAqVerifyBarcodeContent = getIntent().getBundleExtra("com.tencent.input_param").getString("barcode_result");
+      paramBundle = new StringBuilder(", aq verify: ");
+      paramBundle.append(this.mAqVerifyBarcodeContent);
+      xv.a(paramBundle.toString());
+      hideTitle();
       return;
     }
-    this.mAqVerifyBarcodeContent = getIntent().getBundleExtra("com.tencent.input_param").getString("barcode_result");
-    h.a(", aq verify: " + this.mAqVerifyBarcodeContent);
-    hideTitle();
+    finish();
   }
   
   protected void onDestroy()
   {
-    if (this.mDualMsgShowDialog != null)
+    DualMsgShowDialog localDualMsgShowDialog = this.mDualMsgShowDialog;
+    if (localDualMsgShowDialog != null)
     {
-      this.mDualMsgShowDialog.b();
+      localDualMsgShowDialog.a.a();
       this.mDualMsgShowDialog = null;
     }
     super.onDestroy();
@@ -77,8 +105,9 @@ public class GetBarcodeVerifyMsgActivity
   
   public void onPause()
   {
-    if ((this.mGetDualMsgTask != null) && (this.mGetDualMsgTask.b() != UserTask.Status.FINISHED)) {
-      this.mGetDualMsgTask.a(true);
+    UserTask localUserTask = this.mGetDualMsgTask;
+    if ((localUserTask != null) && (localUserTask.e != UserTask.Status.FINISHED)) {
+      this.mGetDualMsgTask.c();
     }
     super.onPause();
   }
@@ -86,7 +115,8 @@ public class GetBarcodeVerifyMsgActivity
   public void onResume()
   {
     super.onResume();
-    if ((this.mDualMsgShowDialog != null) && (this.mDualMsgShowDialog.isShowing())) {
+    DualMsgShowDialog localDualMsgShowDialog = this.mDualMsgShowDialog;
+    if ((localDualMsgShowDialog != null) && (localDualMsgShowDialog.isShowing())) {
       return;
     }
     queryDualMsg();

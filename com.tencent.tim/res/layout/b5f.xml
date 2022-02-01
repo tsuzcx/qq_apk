@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/gvl" android:layout_width="fill_parent" android:layout_height="38.0dip">
+        <RelativeLayout android:id="@id/head_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip">
+            <ImageView android:id="@id/d3a" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/ak3" />
+            <com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView android:id="@id/glu" android:visibility="gone" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginLeft="23.0dip" android:layout_alignBottom="@id/d3a" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:gravity="center" android:id="@id/j6u" android:background="@drawable/akt" android:paddingLeft="13.0dip" android:paddingTop="3.0dip" android:paddingRight="13.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/r5b" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:orientation="vertical" android:id="@id/f9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="25.0dip" android:layout_toLeftOf="@id/j6u" android:layout_toRightOf="@id/head_layout" android:layout_centerVertical="true">
+            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f97" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r51" android:maxLines="1" android:singleLine="true" />
+            <com.tencent.biz.qqstory.view.widget.StoryUserBadgeView android:id="@id/kyg" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="-14.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/btl" android:layout_toRightOf="@id/f97" android:layout_alignBottom="@id/f97" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/skin_gray_group_item" android:ellipsize="end" android:id="@id/gwa" android:paddingRight="50.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/r58" android:maxLines="1" android:singleLine="true" android:layout_below="@id/f97" android:layout_alignLeft="@id/f97" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/skin_gray_group_item" android:id="@id/gwb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-50.0dip" android:text="@string/r56" android:maxLines="1" android:layout_toRightOf="@id/gwa" android:layout_below="@id/f97" android:layout_alignTop="@id/gwa" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/gw3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <ImageView android:id="@id/dch" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/fgv" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffff4222" android:layout_gravity="center" android:id="@id/gw4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/r54" />
+    </LinearLayout>
+    <RelativeLayout android:orientation="vertical" android:id="@id/gw_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView android:id="@id/gw7" android:layout_width="205.0dip" android:layout_height="332.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="7.0dip" />
+        <TextView android:textSize="12.0sp" android:id="@id/gw9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="23:46" android:layout_below="@id/gw7" android:layout_alignLeft="@id/gw7" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray_group_item" android:ellipsize="end" android:id="@id/gw8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:maxWidth="180.0dip" android:text="vianhuang" android:maxLines="1" android:singleLine="true" android:layout_toRightOf="@id/gw9" android:layout_below="@id/gw7" />
+    </RelativeLayout>
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView android:id="@id/ks1" android:paddingLeft="@dimen/amm" android:paddingRight="@dimen/amn" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
+</LinearLayout>

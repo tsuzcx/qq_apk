@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_video_nagative_feedback
   extends JceStruct
@@ -12,7 +13,7 @@ public final class cell_video_nagative_feedback
   public String buttonTxt = "";
   public String leftTitle = "";
   public String toastTxt = "";
-  public ArrayList<nagative_fb_info> vecNagFbInfo;
+  public ArrayList<nagative_fb_info> vecNagFbInfo = null;
   
   static
   {
@@ -40,23 +41,27 @@ public final class cell_video_nagative_feedback
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecNagFbInfo != null) {
-      paramJceOutputStream.write(this.vecNagFbInfo, 0);
+    Object localObject = this.vecNagFbInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.leftTitle != null) {
-      paramJceOutputStream.write(this.leftTitle, 1);
+    localObject = this.leftTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.buttonTxt != null) {
-      paramJceOutputStream.write(this.buttonTxt, 2);
+    localObject = this.buttonTxt;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.toastTxt != null) {
-      paramJceOutputStream.write(this.toastTxt, 3);
+    localObject = this.toastTxt;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_video_nagative_feedback
  * JD-Core Version:    0.7.0.1
  */

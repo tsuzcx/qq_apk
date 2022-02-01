@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import aepi;
-import alud;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -12,35 +10,36 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import augd;
-import augo;
-import augu;
-import auhc;
-import auhi;
-import auin;
-import aujh;
-import aujo;
-import aujq;
-import bdin;
-import bdoo;
+import androidx.fragment.app.FragmentActivity;
 import com.google.zxing.EncodeHintType;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupRequest;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupGetQrRsp;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupQryStateRsp;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
+import com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupReporter;
+import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
-import gs;
-import gw;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
@@ -50,379 +49,373 @@ import mqq.os.MqqHandler;
 public class MsgBackupQRFragment
   extends MsgBackupBaseFragment
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private auhc jdField_a_of_type_Auhc;
-  private Runnable d;
-  private Runnable jdField_e_of_type_JavaLangRunnable = new MsgBackupQRFragment.6(this);
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f;
-  private boolean g;
-  private boolean h;
+  private Runnable aa;
+  private Bitmap ab;
+  private boolean ac;
+  private MsgBackupGetQrRsp ad;
+  private boolean ae;
+  private boolean af;
+  private boolean ag = false;
+  private Runnable ah = new MsgBackupQRFragment.6(this);
   
   private void a(Bitmap paramBitmap)
   {
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10006);
+    Message localMessage = this.I.obtainMessage(10006);
     localMessage.obj = paramBitmap;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    this.I.sendMessage(localMessage);
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      this.jdField_b_of_type_MqqOsMqqHandler.post(new MsgBackupQRFragment.4(this, paramBoolean2, paramBoolean1));
-    }
-    for (;;)
+    if (Looper.myLooper() == Looper.getMainLooper())
     {
-      aujo.a("0X800A241", 1);
-      return;
-      a(a(null));
+      this.J.post(new MsgBackupQRFragment.4(this, paramBoolean2, paramBoolean1));
+    }
+    else
+    {
+      a(b(null));
       if (paramBoolean2) {
-        l();
+        u();
       } else {
         d(paramBoolean1);
       }
     }
+    MsgBackupReporter.a("0X800A241", 1);
   }
   
   private void b(Bitmap paramBitmap)
   {
-    int i = 1;
-    boolean bool;
-    Message localMessage;
-    if (bdin.a(getActivity()) == 1)
-    {
-      bool = true;
-      d(bool);
-      localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10004);
-      if (!bool) {
-        break label64;
-      }
-    }
-    for (;;)
-    {
-      localMessage.arg1 = i;
-      localMessage.obj = paramBitmap;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-      return;
-      bool = false;
-      break;
-      label64:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  private void b(auhc paramauhc)
+  private void c(MsgBackupGetQrRsp paramMsgBackupGetQrRsp)
   {
-    if (paramauhc == null)
+    if (paramMsgBackupGetQrRsp == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupQRFragment", 2, "refreshQRLayout QRCode fail, data is null!");
       }
       return;
     }
-    String str1 = paramauhc.b();
-    String str2 = paramauhc.a();
-    String str3 = paramauhc.c();
-    int i = paramauhc.a();
-    augo localaugo = augo.a();
-    aujh localaujh = localaugo.a();
-    localaujh.b(str3);
-    localaugo.a().b(str1);
-    localaugo.a().a(str2);
-    localaugo.a().a(i);
-    localaujh.c(2);
-    this.jdField_b_of_type_MqqOsMqqHandler.postDelayed(this.jdField_e_of_type_JavaLangRunnable, 800L);
+    String str1 = paramMsgBackupGetQrRsp.b();
+    String str2 = paramMsgBackupGetQrRsp.a();
+    String str3 = paramMsgBackupGetQrRsp.c();
+    int i = paramMsgBackupGetQrRsp.d();
+    MsgBackupManager localMsgBackupManager = MsgBackupManager.a();
+    MsgBackupTransportProcessor localMsgBackupTransportProcessor = localMsgBackupManager.d();
+    localMsgBackupTransportProcessor.d(str3);
+    localMsgBackupManager.e().b(str1);
+    localMsgBackupManager.e().a(str2);
+    localMsgBackupManager.e().a(i);
+    localMsgBackupTransportProcessor.g(2);
+    this.J.postDelayed(this.ah, 800L);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      this.jdField_b_of_type_MqqOsMqqHandler.post(new MsgBackupQRFragment.5(this, paramauhc));
+      this.J.post(new MsgBackupQRFragment.5(this, paramMsgBackupGetQrRsp));
       return;
     }
-    b(a(paramauhc));
+    b(b(paramMsgBackupGetQrRsp));
   }
   
   private void d(boolean paramBoolean)
   {
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10005);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localMessage.arg1 = i;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  private void k()
+  private void t()
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      this.jdField_b_of_type_MqqOsMqqHandler.post(new MsgBackupQRFragment.3(this));
+      this.J.post(new MsgBackupQRFragment.3(this));
       return;
     }
-    a(a(null));
+    a(b(null));
   }
   
-  private void l()
+  private void u()
   {
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10015);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    Message localMessage = this.I.obtainMessage(10015);
+    this.I.sendMessage(localMessage);
   }
   
-  public Bitmap a(auhc paramauhc)
+  protected void a(MsgBackupGetQrRsp paramMsgBackupGetQrRsp)
   {
-    Object localObject;
-    if (paramauhc == null)
-    {
-      paramauhc = "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate&qr_sig=1";
-      localObject = new Hashtable();
-      ((Hashtable)localObject).put(EncodeHintType.MARGIN, Integer.valueOf(0));
-      ((Hashtable)localObject).put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-    }
-    for (;;)
-    {
-      int i;
-      int m;
-      int j;
-      try
+    super.a(paramMsgBackupGetQrRsp);
+    this.ag = false;
+    c(paramMsgBackupGetQrRsp);
+    MsgBackupManager.a().u();
+  }
+  
+  protected void a(MsgBackupQryStateRsp paramMsgBackupQryStateRsp)
+  {
+    super.a(paramMsgBackupQryStateRsp);
+    if (paramMsgBackupQryStateRsp != null) {
+      if (paramMsgBackupQryStateRsp.a() == 2)
       {
-        i = aepi.a(200.0F, getResources());
-        paramauhc = new gw().a(paramauhc, i, i, (Map)localObject);
-        k = paramauhc.a();
-        m = paramauhc.b();
-        localObject = new int[k * m];
-        i = 0;
-      }
-      catch (Exception paramauhc)
-      {
-        int k;
-        boolean bool;
-        QLog.e("MsgBackup.MsgBackupQRFragment", 1, "Create QRCode fail", paramauhc);
-        return null;
-      }
-      if (j < k)
-      {
-        if (paramauhc.a(j, i)) {
-          localObject[(i * k + j)] = -16777216;
+        if (this.aa != null) {
+          this.J.removeCallbacks(this.aa);
         }
-        j += 1;
-        continue;
-        paramauhc = "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate&qr_sig=" + paramauhc.a();
-        break;
-      }
-      i += 1;
-      break label254;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        bool = true;
-        aujq.b("MsgBackup.MsgBackupQRFragment", "create qr bitmap is called! bitmap is not null!   -----> %b", new Object[] { Boolean.valueOf(bool) });
-        this.jdField_a_of_type_AndroidGraphicsBitmap.setPixels((int[])localObject, 0, k, 0, 0, k, m);
-        paramauhc = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        return paramauhc;
-      }
-      bool = false;
-      continue;
-      label254:
-      if (i < m) {
-        j = 0;
-      }
-    }
-  }
-  
-  protected void a()
-  {
-    super.a();
-    aujq.b("MsgBackup.MsgBackupQRFragment-bindData ..start MsgBackupQRFragment", new Object[0]);
-    if (this.jdField_a_of_type_Auge != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Auge);
-    }
-    Object localObject = new HashSet(augo.a().jdField_a_of_type_JavaUtilHashSet.size());
-    ((HashSet)localObject).addAll(augo.a().jdField_a_of_type_JavaUtilHashSet);
-    augo.b = augo.a().jdField_a_of_type_JavaUtilHashSet.size();
-    aujo.a();
-    aujo.a.b = augo.b;
-    augu localaugu = new augu();
-    aujq.b("MsgBackup.MsgBackupQRFragment-loadData ..start toPage TO_QRCODE dataSize = %d", new Object[] { Integer.valueOf(((HashSet)localObject).size()) });
-    localaugu.jdField_a_of_type_JavaUtilHashSet = ((HashSet)localObject);
-    localaugu.jdField_a_of_type_Int = 0;
-    long l3 = 0L;
-    long l4 = 0L;
-    int j = 1;
-    int i = j;
-    long l2 = l4;
-    long l1 = l3;
-    if (getActivity() != null)
-    {
-      localObject = getActivity().getIntent();
-      i = j;
-      l2 = l4;
-      l1 = l3;
-      if (localObject != null)
-      {
-        l1 = ((Intent)localObject).getLongExtra("session_start_time", 0L);
-        l2 = ((Intent)localObject).getLongExtra("session_end_time", 0L);
-        i = ((Intent)localObject).getIntExtra("session_content_type", 1);
-        this.f = ((Intent)localObject).getBooleanExtra("session_net_status", true);
-      }
-    }
-    aujq.b("MsgBackup.MsgBackupQRFragment", "select params startTime = %d ,endTime = %d,contentType = %d isNetStatusForSelectPage = %b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Boolean.valueOf(this.f) });
-    if ((l1 != 0L) && (l2 != 0L) && (l1 < l2))
-    {
-      localaugu.jdField_a_of_type_Long = l1;
-      localaugu.b = l2;
-      if (i == 2)
-      {
-        bool = true;
-        localaugu.jdField_a_of_type_Boolean = bool;
-        getActivity().app.addObserver(this.jdField_a_of_type_Auge);
-        augo.a().i();
-        augo.a().a(localaugu);
-        if (bdin.a(getActivity()) != 1) {
-          break label541;
-        }
-      }
-    }
-    label541:
-    for (boolean bool = true;; bool = false)
-    {
-      if ((!this.f) && (bool))
-      {
-        augo.a().a(false);
-        this.g = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.MsgBackupQRFragment", 2, "bindData startServerProxy is called!");
-        }
-      }
-      this.jdField_e_of_type_Boolean = bool;
-      aujq.b("MsgBackup.MsgBackupQRFragment", "bindData net state = %b", new Object[] { Boolean.valueOf(this.jdField_e_of_type_Boolean) });
-      if (!bool) {
-        a(bool, false);
-      }
-      this.jdField_a_of_type_Auhc = augo.a().a();
-      if ((this.jdField_a_of_type_Auhc != null) && (bool))
-      {
-        aujq.b("MsgBackup.MsgBackupQRFragment", "manager msgBackupGetQrRsp is existed!", new Object[0]);
-        this.h = false;
-        b(this.jdField_a_of_type_Auhc);
-      }
-      this.jdField_b_of_type_MqqOsMqqHandler.post(this.d);
-      return;
-      bool = false;
-      break;
-      localaugu.jdField_a_of_type_Long = 0L;
-      localaugu.b = 9223372036854775807L;
-      if (i == 2) {}
-      for (bool = true;; bool = false)
-      {
-        localaugu.jdField_a_of_type_Boolean = bool;
-        break;
-      }
-    }
-  }
-  
-  protected void a(auhc paramauhc)
-  {
-    super.a(paramauhc);
-    this.h = false;
-    b(paramauhc);
-    augo.a().o();
-  }
-  
-  protected void a(auhi paramauhi)
-  {
-    super.a(paramauhi);
-    if (paramauhi != null)
-    {
-      if (paramauhi.a() != 2) {
-        break label334;
-      }
-      if (this.d != null) {
-        this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.d);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: " + paramauhi);
-      }
-      if (!augo.d) {
-        break label83;
-      }
-      QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: has been started link page!");
-    }
-    label83:
-    while ((paramauhi.a() == 1) || (paramauhi.a() == 3) || (paramauhi.a() != 4))
-    {
-      do
-      {
-        return;
-        this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_e_of_type_JavaLangRunnable);
-        String str1 = paramauhi.b();
-        String str2 = paramauhi.a();
-        int i = paramauhi.b();
-        MsgBackupEndPoint localMsgBackupEndPoint1 = new MsgBackupEndPoint();
-        MsgBackupEndPoint localMsgBackupEndPoint2 = new MsgBackupEndPoint();
-        int j = aujq.a(paramauhi.a().a());
-        localMsgBackupEndPoint1.ipv4 = j;
-        localMsgBackupEndPoint2.ipv4 = j;
-        paramauhi = paramauhi.a().a();
-        if (paramauhi.size() == 2)
+        if (QLog.isColorLevel())
         {
-          localMsgBackupEndPoint2.port = ((Integer)paramauhi.get(0)).intValue();
-          localMsgBackupEndPoint1.port = ((Integer)paramauhi.get(1)).intValue();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("processQueryStateRsp: ");
+          ((StringBuilder)localObject).append(paramMsgBackupQryStateRsp);
+          QLog.d("MsgBackup.MsgBackupQRFragment", 2, ((StringBuilder)localObject).toString());
         }
-        paramauhi = augo.a();
-        aujh localaujh = paramauhi.a();
-        localaujh.b(str1);
-        localaujh.b(localMsgBackupEndPoint2);
-        localaujh.a(localMsgBackupEndPoint1);
-        paramauhi.a().a(i);
-        paramauhi.a().b(str2);
-        localaujh.c(2);
-        localaujh.b(2);
-        augo.d = true;
-      } while ((getActivity() == null) || (getActivity().isFinishing()));
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp has deal, so app will start transport page!");
+        if (MsgBackupManager.t)
+        {
+          QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: has been started link page!");
+          return;
+        }
+        this.J.removeCallbacks(this.ah);
+        Object localObject = paramMsgBackupQryStateRsp.c();
+        String str1 = paramMsgBackupQryStateRsp.b();
+        int k = paramMsgBackupQryStateRsp.e();
+        String str2 = paramMsgBackupQryStateRsp.d().a();
+        paramMsgBackupQryStateRsp = paramMsgBackupQryStateRsp.d().b();
+        int j = paramMsgBackupQryStateRsp.size();
+        int i = 0;
+        if (j == 2)
+        {
+          i = ((Integer)paramMsgBackupQryStateRsp.get(0)).intValue();
+          j = ((Integer)paramMsgBackupQryStateRsp.get(1)).intValue();
+        }
+        else
+        {
+          j = 0;
+        }
+        if (QLog.isColorLevel())
+        {
+          paramMsgBackupQryStateRsp = new StringBuilder();
+          paramMsgBackupQryStateRsp.append("processQueryStateRsp: client ip = ");
+          paramMsgBackupQryStateRsp.append(str2);
+          paramMsgBackupQryStateRsp.append(", udpport = ");
+          paramMsgBackupQryStateRsp.append(j);
+          paramMsgBackupQryStateRsp.append(", tcpport = ");
+          paramMsgBackupQryStateRsp.append(i);
+          QLog.d("MsgBackup.MsgBackupQRFragment", 2, paramMsgBackupQryStateRsp.toString());
+        }
+        paramMsgBackupQryStateRsp = MsgBackupManager.a();
+        MsgBackupTransportProcessor localMsgBackupTransportProcessor = paramMsgBackupQryStateRsp.d();
+        localMsgBackupTransportProcessor.d((String)localObject);
+        localMsgBackupTransportProcessor.b(str2);
+        localMsgBackupTransportProcessor.b(i);
+        localMsgBackupTransportProcessor.a(j);
+        paramMsgBackupQryStateRsp.e().a(k);
+        paramMsgBackupQryStateRsp.e().b(str1);
+        localMsgBackupTransportProcessor.g(2);
+        localMsgBackupTransportProcessor.f(2);
+        MsgBackupManager.t = true;
+        if ((getActivity() != null) && (!getActivity().isFinishing()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgBackup.MsgBackupQRFragment", 2, "processQueryStateRsp: has deal, so app will start transport page!");
+          }
+          paramMsgBackupQryStateRsp = new Intent();
+          paramMsgBackupQryStateRsp.putExtra("param_start", 4);
+          QPublicFragmentActivity.startForResult(getActivity(), paramMsgBackupQryStateRsp, MsgBackupTransportFragment.class, 1000);
+        }
       }
-      paramauhi = new Intent();
-      paramauhi.putExtra("param_start", 4);
-      PublicFragmentActivity.a(getActivity(), paramauhi, MsgBackupTransportFragment.class, 1000);
-      return;
+      else
+      {
+        if (paramMsgBackupQryStateRsp.a() == 1) {
+          return;
+        }
+        if (paramMsgBackupQryStateRsp.a() == 3) {
+          return;
+        }
+        paramMsgBackupQryStateRsp.a();
+      }
     }
-    label334:
   }
   
   protected void a(Integer paramInteger)
   {
     super.a(paramInteger);
-    this.h = false;
+    this.ag = false;
     a(false, true);
+  }
+  
+  public Bitmap b(MsgBackupGetQrRsp paramMsgBackupGetQrRsp)
+  {
+    if (paramMsgBackupGetQrRsp == null)
+    {
+      paramMsgBackupGetQrRsp = "https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate&qr_sig=1";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("https://qzs.qzone.qq.com/qzone/qzact/act/external/qzone-platform/qq-web/low_app_version_chat_recored.html?flag=chatmigrate&qr_sig=");
+      ((StringBuilder)localObject).append(paramMsgBackupGetQrRsp.a());
+      paramMsgBackupGetQrRsp = ((StringBuilder)localObject).toString();
+    }
+    Object localObject = new Hashtable();
+    ((Hashtable)localObject).put(EncodeHintType.MARGIN, Integer.valueOf(0));
+    ((Hashtable)localObject).put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+    int i;
+    int m;
+    int j;
+    label158:
+    boolean bool;
+    try
+    {
+      i = ViewUtils.dip2px(200.0F);
+      paramMsgBackupGetQrRsp = new QRCodeWriter().a(paramMsgBackupGetQrRsp, i, i, (Map)localObject);
+      k = paramMsgBackupGetQrRsp.a();
+      m = paramMsgBackupGetQrRsp.b();
+      localObject = new int[k * m];
+      i = 0;
+    }
+    catch (Exception paramMsgBackupGetQrRsp)
+    {
+      int k;
+      QLog.e("MsgBackup.MsgBackupQRFragment", 1, "Create QRCode fail", paramMsgBackupGetQrRsp);
+      return null;
+    }
+    if (j < k) {
+      if (paramMsgBackupGetQrRsp.a(j, i))
+      {
+        localObject[(i * k + j)] = -16777216;
+        break label261;
+        if (this.ab == null) {
+          this.ab = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+        }
+        if (this.ab == null) {
+          break label275;
+        }
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      MsgBackupUtil.b("MsgBackup.MsgBackupQRFragment", "create qr bitmap is called! bitmap is not null!   -----> %b", new Object[] { Boolean.valueOf(bool) });
+      this.ab.setPixels((int[])localObject, 0, k, 0, 0, k, m);
+      paramMsgBackupGetQrRsp = this.ab;
+      return paramMsgBackupGetQrRsp;
+      for (;;)
+      {
+        if (i >= m) {
+          break label273;
+        }
+        j = 0;
+        break;
+        label261:
+        j += 1;
+        break;
+        i += 1;
+      }
+      label273:
+      break label158;
+      label275:
+      bool = false;
+    }
   }
   
   protected void b()
   {
     super.b();
-    setTitle(getActivity().getString(2131690414));
+    MsgBackupUtil.b("MsgBackup.MsgBackupQRFragment-bindData ..start MsgBackupQRFragment", new Object[0]);
+    if (this.O != null) {
+      getQBaseActivity().removeObserver(this.O);
+    }
+    Object localObject = new HashSet(MsgBackupManager.a().h.size());
+    ((HashSet)localObject).addAll(MsgBackupManager.a().h);
+    MsgBackupManager.i = MsgBackupManager.a().h.size();
+    MsgBackupReporter.a();
+    MsgBackupReporter.a.g = MsgBackupManager.i;
+    MsgBackupRequest localMsgBackupRequest = new MsgBackupRequest();
+    MsgBackupUtil.b("MsgBackup.MsgBackupQRFragment-loadData ..start toPage TO_QRCODE dataSize = %d", new Object[] { Integer.valueOf(((HashSet)localObject).size()) });
+    localMsgBackupRequest.a = ((HashSet)localObject);
+    localMsgBackupRequest.b = 0;
+    if (getActivity() != null)
+    {
+      localObject = getActivity().getIntent();
+      if (localObject != null)
+      {
+        l1 = ((Intent)localObject).getLongExtra("session_start_time", 0L);
+        l2 = ((Intent)localObject).getLongExtra("session_end_time", 0L);
+        i = ((Intent)localObject).getIntExtra("session_content_type", 1);
+        this.ae = ((Intent)localObject).getBooleanExtra("session_net_status", true);
+        break label205;
+      }
+    }
+    long l1 = 0L;
+    long l2 = l1;
+    int i = 1;
+    label205:
+    MsgBackupUtil.b("MsgBackup.MsgBackupQRFragment", "select params startTime = %d ,endTime = %d,contentType = %d isNetStatusForSelectPage = %b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Boolean.valueOf(this.ae) });
+    boolean bool;
+    if ((l1 != 0L) && (l2 != 0L) && (l1 < l2))
+    {
+      localMsgBackupRequest.c = l1;
+      localMsgBackupRequest.d = l2;
+      if (i == 2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localMsgBackupRequest.e = bool;
+    }
+    else
+    {
+      localMsgBackupRequest.c = 0L;
+      localMsgBackupRequest.d = 9223372036854775807L;
+      if (i == 2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localMsgBackupRequest.e = bool;
+    }
+    getQBaseActivity().addObserver(this.O);
+    MsgBackupManager.a().l();
+    MsgBackupManager.a().a(localMsgBackupRequest);
+    if (NetworkUtil.getSystemNetwork(getActivity()) == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if ((!this.ae) && (bool))
+    {
+      MsgBackupManager.a().a(false);
+      this.af = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup.MsgBackupQRFragment", 2, "bindData startServerProxy is called!");
+      }
+    }
+    this.ac = bool;
+    MsgBackupUtil.b("MsgBackup.MsgBackupQRFragment", "bindData net state = %b", new Object[] { Boolean.valueOf(this.ac) });
+    if (!bool) {
+      a(bool, false);
+    }
+    this.ad = MsgBackupManager.a().m();
+    if ((this.ad != null) && (bool))
+    {
+      MsgBackupUtil.b("MsgBackup.MsgBackupQRFragment", "manager msgBackupGetQrRsp is existed!", new Object[0]);
+      this.ag = false;
+      c(this.ad);
+    }
+    this.J.post(this.aa);
   }
   
   protected void c()
   {
     super.c();
-    if (AppSetting.c) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131707314));
-    }
-    this.c.setText(getResources().getString(2131690481));
-    this.c.setTextColor(getResources().getColor(2131166903));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.d = new MsgBackupQRFragment.2(this);
+    a(getActivity().getString(2131887465));
   }
   
   protected void d()
   {
     super.d();
-    this.vg.setOnItemSelectListener(new auin(this));
+    if (AppSetting.e) {
+      this.A.setContentDescription(HardCodeUtil.a(2131904800));
+    }
+    this.D.setText(getResources().getString(2131887519));
+    this.D.setTextColor(getResources().getColor(2131167993));
+    this.c.setVisibility(0);
+    this.B.setVisibility(0);
+    this.A.setOnClickListener(this);
+    this.aa = new MsgBackupQRFragment.2(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -432,136 +425,162 @@ public class MsgBackupQRFragment
       if (QLog.isColorLevel()) {
         QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click KEYCODE_BACK");
       }
-      augo.a().d();
+      MsgBackupManager.a().g();
       onBackEvent();
       return true;
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
+  protected void e()
+  {
+    super.e();
+    this.p.setOnItemSelectListener(new MsgBackupQRFragment.1(this));
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int j = paramMessage.what;
+    if (j != 10013)
     {
-    }
-    for (;;)
-    {
-      return super.handleMessage(paramMessage);
-      if (paramMessage.arg1 == 1) {}
-      for (int i = 1;; i = 0)
+      if (j != 10015)
       {
-        if (i == 0) {
-          break label136;
-        }
-        if (this.jdField_b_of_type_AndroidWidgetImageView == null) {
+        int i = 1;
+        Object localObject;
+        switch (j)
+        {
+        default: 
+          break;
+        case 10006: 
+          localObject = new BitmapDrawable((Bitmap)paramMessage.obj);
+          ((BitmapDrawable)localObject).setColorFilter(872415231, PorterDuff.Mode.MULTIPLY);
+          if (this.A != null)
+          {
+            this.A.setImageDrawable((Drawable)localObject);
+            if ((this.B != null) && (!this.ag)) {
+              this.B.setVisibility(8);
+            }
+            MsgBackupManager.a().o();
+          }
+          MsgBackupReporter.a("0X800A239", 2);
+          break;
+        case 10005: 
+          if (paramMessage.arg1 != 1) {
+            i = 0;
+          }
+          if (i != 0)
+          {
+            ViewUtils.setViewVisibility(this.C, 0);
+            ViewUtils.setViewVisibility(this.D, 8);
+          }
+          else
+          {
+            ViewUtils.setViewVisibility(this.C, 8);
+            this.D.setText(getResources().getString(2131887519));
+            this.D.setTextColor(getResources().getColor(2131167993));
+            ViewUtils.setViewVisibility(this.D, 0);
+          }
+          break;
+        case 10004: 
+          if (paramMessage.arg1 == 1) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if (i != 0)
+          {
+            if (this.A != null)
+            {
+              localObject = (Bitmap)paramMessage.obj;
+              this.A.setImageBitmap((Bitmap)localObject);
+              if (this.B != null) {
+                this.B.setVisibility(8);
+              }
+              MsgBackupManager.a().o();
+              MsgBackupReporter.a("0X800A239", 1);
+            }
+          }
+          else
+          {
+            t();
+            MsgBackupUtil.b("MsgBackup.MsgBackupQRFragment", "handleMessage MSG_WHAT_QR_SOURCE net state is XG!!!", new Object[0]);
+          }
           break;
         }
-        localObject = (Bitmap)paramMessage.obj;
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-        if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-          this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        }
-        augo.a().k();
-        aujo.a("0X800A239", 1);
-        break;
       }
-      label136:
-      k();
-      aujq.b("MsgBackup.MsgBackupQRFragment", "handleMessage MSG_WHAT_QR_SOURCE net state is XG!!!", new Object[0]);
-      continue;
-      if (paramMessage.arg1 == 1) {}
-      for (i = 1;; i = 0)
+      else
       {
-        if (i == 0) {
-          break label196;
-        }
-        bdoo.a(this.jdField_e_of_type_AndroidWidgetLinearLayout, 0);
-        bdoo.a(this.c, 8);
-        break;
+        ViewUtils.setViewVisibility(this.C, 8);
+        this.D.setText(getResources().getString(2131887520));
+        this.D.setTextColor(getResources().getColor(2131166523));
+        ViewUtils.setViewVisibility(this.D, 0);
       }
-      label196:
-      bdoo.a(this.jdField_e_of_type_AndroidWidgetLinearLayout, 8);
-      this.c.setText(getResources().getString(2131690481));
-      this.c.setTextColor(getResources().getColor(2131166903));
-      bdoo.a(this.c, 0);
-      continue;
-      bdoo.a(this.jdField_e_of_type_AndroidWidgetLinearLayout, 8);
-      this.c.setText(getResources().getString(2131690482));
-      this.c.setTextColor(getResources().getColor(2131165798));
-      bdoo.a(this.c, 0);
-      continue;
-      Object localObject = new BitmapDrawable((Bitmap)paramMessage.obj);
-      ((BitmapDrawable)localObject).setColorFilter(872415231, PorterDuff.Mode.MULTIPLY);
-      if (this.jdField_b_of_type_AndroidWidgetImageView != null)
-      {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        if ((this.jdField_a_of_type_AndroidWidgetProgressBar != null) && (!this.h)) {
-          this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        }
-        augo.a().k();
-      }
-      aujo.a("0X800A239", 2);
-      continue;
-      bdoo.b(this.jdField_a_of_type_AndroidWidgetProgressBar, 0);
     }
+    else {
+      ViewUtils.setVisible(this.B, 0);
+    }
+    return super.handleMessage(paramMessage);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131442821)
     {
-    default: 
-      return;
+      this.ag = true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("qr_code_src request qr onclick, isWaitingQrRsp = ");
+        ((StringBuilder)localObject).append(this.ag);
+        QLog.d("MsgBackup.MsgBackupQRFragment", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = this.I.obtainMessage(10013);
+      this.I.sendMessage((Message)localObject);
+      this.J.post(new MsgBackupQRFragment.7(this));
+      MsgBackupReporter.a("0X800A23C");
     }
-    this.h = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupQRFragment", 2, "qr_code_src request qr onclick, isWaitingQrRsp = " + this.h);
-    }
-    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10013);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
-    this.jdField_b_of_type_MqqOsMqqHandler.post(new MsgBackupQRFragment.7(this));
-    aujo.a("0X800A23C");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.g = false;
+    this.af = false;
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_Auge != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Auge);
+    if (this.O != null) {
+      ((BaseQQAppInterface)getQBaseActivity().getAppRuntime()).removeObserver(this.O);
     }
-    this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_e_of_type_JavaLangRunnable);
-    this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.d);
-    augo.a().l();
+    this.J.removeCallbacks(this.ah);
+    this.J.removeCallbacks(this.aa);
+    MsgBackupManager.a().p();
   }
   
   public void onPause()
   {
     super.onPause();
-    augo.a().b(getActivity());
+    MsgBackupManager.a().b(getActivity());
   }
   
   public void onResume()
   {
     super.onResume();
-    augo.a().a(getActivity());
-    augo.f = false;
+    MsgBackupManager.a().a(getActivity());
+    MsgBackupManager.v = false;
   }
   
   public void onStop()
   {
-    j();
+    s();
     super.onStop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment
  * JD-Core Version:    0.7.0.1
  */

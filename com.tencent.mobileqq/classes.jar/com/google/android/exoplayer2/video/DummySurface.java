@@ -35,95 +35,75 @@ public final class DummySurface
   
   private static void assertApiLevel17OrHigher()
   {
-    if (Util.SDK_INT < 17) {
-      throw new UnsupportedOperationException("Unsupported prior to API level 17");
+    if (Util.SDK_INT >= 17) {
+      return;
     }
+    throw new UnsupportedOperationException("Unsupported prior to API level 17");
   }
   
   @TargetApi(24)
   private static int getSecureModeV24(Context paramContext)
   {
-    if ((Util.SDK_INT < 26) && (("samsung".equals(Util.MANUFACTURER)) || ("XT1650".equals(Util.MODEL)))) {}
-    do
-    {
-      do
-      {
-        return 0;
-      } while ((Util.SDK_INT < 26) && (!paramContext.getPackageManager().hasSystemFeature("android.hardware.vr.high_performance")));
-      paramContext = EGL14.eglQueryString(EGL14.eglGetDisplay(0), 12373);
-    } while ((paramContext == null) || (!paramContext.contains("EGL_EXT_protected_content")));
+    if ((Util.SDK_INT < 26) && (("samsung".equals(Util.MANUFACTURER)) || ("XT1650".equals(Util.MODEL)))) {
+      return 0;
+    }
+    if ((Util.SDK_INT < 26) && (!paramContext.getPackageManager().hasSystemFeature("android.hardware.vr.high_performance"))) {
+      return 0;
+    }
+    paramContext = EGL14.eglQueryString(EGL14.eglGetDisplay(0), 12373);
+    if (paramContext == null) {
+      return 0;
+    }
+    if (!paramContext.contains("EGL_EXT_protected_content")) {
+      return 0;
+    }
     if (paramContext.contains("EGL_KHR_surfaceless_context")) {
       return 1;
     }
     return 2;
   }
   
-  /* Error */
   public static boolean isSecureSupported(Context paramContext)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: getstatic 112	com/google/android/exoplayer2/video/DummySurface:secureModeInitialized	Z
-    //   8: ifne +21 -> 29
-    //   11: getstatic 53	com/google/android/exoplayer2/util/Util:SDK_INT	I
-    //   14: bipush 24
-    //   16: if_icmpge +26 -> 42
-    //   19: iconst_0
-    //   20: istore_1
-    //   21: iload_1
-    //   22: putstatic 114	com/google/android/exoplayer2/video/DummySurface:secureMode	I
-    //   25: iconst_1
-    //   26: putstatic 112	com/google/android/exoplayer2/video/DummySurface:secureModeInitialized	Z
-    //   29: getstatic 114	com/google/android/exoplayer2/video/DummySurface:secureMode	I
-    //   32: istore_1
-    //   33: iload_1
-    //   34: ifeq +16 -> 50
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: iload_2
-    //   41: ireturn
-    //   42: aload_0
-    //   43: invokestatic 116	com/google/android/exoplayer2/video/DummySurface:getSecureModeV24	(Landroid/content/Context;)I
-    //   46: istore_1
-    //   47: goto -26 -> 21
-    //   50: iconst_0
-    //   51: istore_2
-    //   52: goto -15 -> 37
-    //   55: astore_0
-    //   56: ldc 2
-    //   58: monitorexit
-    //   59: aload_0
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	61	0	paramContext	Context
-    //   20	27	1	i	int
-    //   1	51	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   5	19	55	finally
-    //   21	29	55	finally
-    //   29	33	55	finally
-    //   42	47	55	finally
+    try
+    {
+      boolean bool2 = secureModeInitialized;
+      boolean bool1 = true;
+      if (!bool2)
+      {
+        if (Util.SDK_INT < 24) {
+          i = 0;
+        } else {
+          i = getSecureModeV24(paramContext);
+        }
+        secureMode = i;
+        secureModeInitialized = true;
+      }
+      int i = secureMode;
+      if (i == 0) {
+        bool1 = false;
+      }
+      return bool1;
+    }
+    finally {}
   }
   
   public static DummySurface newInstanceV17(Context paramContext, boolean paramBoolean)
   {
-    int i = 0;
     assertApiLevel17OrHigher();
-    if ((!paramBoolean) || (isSecureSupported(paramContext))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      paramContext = new DummySurface.DummySurfaceThread();
-      if (paramBoolean) {
-        i = secureMode;
-      }
-      return paramContext.init(i);
+    int i = 0;
+    boolean bool;
+    if ((paramBoolean) && (!isSecureSupported(paramContext))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    Assertions.checkState(bool);
+    paramContext = new DummySurface.DummySurfaceThread();
+    if (paramBoolean) {
+      i = secureMode;
+    }
+    return paramContext.init(i);
   }
   
   public void release()
@@ -142,7 +122,7 @@ public final class DummySurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.video.DummySurface
  * JD-Core Version:    0.7.0.1
  */

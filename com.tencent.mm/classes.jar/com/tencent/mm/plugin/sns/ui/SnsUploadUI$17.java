@@ -1,30 +1,24 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.storage.s;
 
 final class SnsUploadUI$17
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   SnsUploadUI$17(SnsUploadUI paramSnsUploadUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(39753);
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    this.sbR.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    ag.coU();
-    s.fF(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    AppMethodBeat.o(39753);
+    AppMethodBeat.i(369910);
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(369910);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.17
  * JD-Core Version:    0.7.0.1
  */

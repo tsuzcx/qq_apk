@@ -22,28 +22,36 @@ public final class DtsUtil
   
   public static int getDtsFrameSize(byte[] paramArrayOfByte)
   {
-    int j = 0;
-    int i;
-    switch (paramArrayOfByte[0])
-    {
-    default: 
-      i = ((paramArrayOfByte[5] & 0x3) << 12 | (paramArrayOfByte[6] & 0xFF) << 4 | (paramArrayOfByte[7] & 0xF0) >> 4) + 1;
-    }
-    for (;;)
-    {
-      int k = i;
-      if (j != 0) {
-        k = i * 16 / 14;
+    int k = 0;
+    int i = paramArrayOfByte[0];
+    if (i != -2) {
+      if (i != -1) {
+        if (i != 31) {
+          i = (paramArrayOfByte[5] & 0x3) << 12 | (paramArrayOfByte[6] & 0xFF) << 4;
+        }
       }
-      return k;
-      i = ((paramArrayOfByte[6] & 0x3) << 12 | (paramArrayOfByte[7] & 0xFF) << 4 | (paramArrayOfByte[8] & 0x3C) >> 2) + 1;
-      j = 1;
-      continue;
-      i = ((paramArrayOfByte[4] & 0x3) << 12 | (paramArrayOfByte[7] & 0xFF) << 4 | (paramArrayOfByte[6] & 0xF0) >> 4) + 1;
-      continue;
-      i = ((paramArrayOfByte[7] & 0x3) << 12 | (paramArrayOfByte[6] & 0xFF) << 4 | (paramArrayOfByte[9] & 0x3C) >> 2) + 1;
-      j = 1;
     }
+    for (int j = paramArrayOfByte[7];; j = paramArrayOfByte[6])
+    {
+      i = ((j & 0xF0) >> 4 | i) + 1;
+      j = k;
+      break;
+      i = (paramArrayOfByte[6] & 0x3) << 12 | (paramArrayOfByte[7] & 0xFF) << 4;
+      j = paramArrayOfByte[8];
+      break label120;
+      i = (paramArrayOfByte[7] & 0x3) << 12 | (paramArrayOfByte[6] & 0xFF) << 4;
+      j = paramArrayOfByte[9];
+      label120:
+      i = ((j & 0x3C) >> 2 | i) + 1;
+      j = 1;
+      break;
+      i = (paramArrayOfByte[4] & 0x3) << 12 | (paramArrayOfByte[7] & 0xFF) << 4;
+    }
+    k = i;
+    if (j != 0) {
+      k = i * 16 / 14;
+    }
+    return k;
   }
   
   private static ParsableBitArray getNormalizedFrameHeader(byte[] paramArrayOfByte)
@@ -58,8 +66,9 @@ public final class DtsUtil
       while (j < paramArrayOfByte.length - 1)
       {
         int i = paramArrayOfByte[j];
-        paramArrayOfByte[j] = paramArrayOfByte[(j + 1)];
-        paramArrayOfByte[(j + 1)] = i;
+        int k = j + 1;
+        paramArrayOfByte[j] = paramArrayOfByte[k];
+        paramArrayOfByte[k] = i;
         j += 2;
       }
     }
@@ -93,45 +102,61 @@ public final class DtsUtil
   
   public static int parseDtsAudioSampleCount(ByteBuffer paramByteBuffer)
   {
-    int i = paramByteBuffer.position();
-    int j;
-    switch (paramByteBuffer.get(i))
-    {
-    default: 
-      j = paramByteBuffer.get(i + 4);
-      i = (paramByteBuffer.get(i + 5) & 0xFC) >> 2 | (j & 0x1) << 6;
+    int j = paramByteBuffer.position();
+    int i = paramByteBuffer.get(j);
+    if (i != -2) {
+      if (i != -1) {
+        if (i != 31) {
+          i = (paramByteBuffer.get(j + 4) & 0x1) << 6;
+        }
+      }
     }
-    for (;;)
+    for (j = paramByteBuffer.get(j + 5);; j = paramByteBuffer.get(j + 4))
     {
-      return (i + 1) * 32;
-      j = paramByteBuffer.get(i + 5);
-      i = (paramByteBuffer.get(i + 4) & 0xFC) >> 2 | (j & 0x1) << 6;
-      continue;
-      j = paramByteBuffer.get(i + 4);
-      i = (paramByteBuffer.get(i + 7) & 0x3C) >> 2 | (j & 0x7) << 4;
-      continue;
-      j = paramByteBuffer.get(i + 5);
-      i = (paramByteBuffer.get(i + 6) & 0x3C) >> 2 | (j & 0x7) << 4;
+      j &= 0xFC;
+      for (;;)
+      {
+        break;
+        i = (paramByteBuffer.get(j + 5) & 0x7) << 4;
+        j = paramByteBuffer.get(j + 6);
+        break label105;
+        i = (paramByteBuffer.get(j + 4) & 0x7) << 4;
+        j = paramByteBuffer.get(j + 7);
+        label105:
+        j &= 0x3C;
+      }
+      i = (paramByteBuffer.get(j + 5) & 0x1) << 6;
     }
+    return ((j >> 2 | i) + 1) * 32;
   }
   
   public static int parseDtsAudioSampleCount(byte[] paramArrayOfByte)
   {
-    int i;
-    switch (paramArrayOfByte[0])
-    {
-    default: 
-      i = (paramArrayOfByte[4] & 0x1) << 6 | (paramArrayOfByte[5] & 0xFC) >> 2;
+    int i = paramArrayOfByte[0];
+    if (i != -2) {
+      if (i != -1) {
+        if (i != 31) {
+          i = (paramArrayOfByte[4] & 0x1) << 6;
+        }
+      }
     }
-    for (;;)
+    for (int j = paramArrayOfByte[5];; j = paramArrayOfByte[4])
     {
-      return (i + 1) * 32;
-      i = (paramArrayOfByte[5] & 0x1) << 6 | (paramArrayOfByte[4] & 0xFC) >> 2;
-      continue;
-      i = (paramArrayOfByte[4] & 0x7) << 4 | (paramArrayOfByte[7] & 0x3C) >> 2;
-      continue;
-      i = (paramArrayOfByte[5] & 0x7) << 4 | (paramArrayOfByte[6] & 0x3C) >> 2;
+      j &= 0xFC;
+      for (;;)
+      {
+        break;
+        i = (paramArrayOfByte[5] & 0x7) << 4;
+        j = paramArrayOfByte[6];
+        break label74;
+        i = (paramArrayOfByte[4] & 0x7) << 4;
+        j = paramArrayOfByte[7];
+        label74:
+        j &= 0x3C;
+      }
+      i = (paramArrayOfByte[5] & 0x1) << 6;
     }
+    return ((j >> 2 | i) + 1) * 32;
   }
   
   public static Format parseDtsFormat(byte[] paramArrayOfByte, String paramString1, String paramString2, DrmInitData paramDrmInitData)
@@ -143,26 +168,25 @@ public final class DtsUtil
     i = paramArrayOfByte.readBits(4);
     int m = SAMPLE_RATE_BY_SFREQ[i];
     i = paramArrayOfByte.readBits(5);
-    if (i >= TWICE_BITRATE_KBPS_BY_RATE.length)
-    {
+    int[] arrayOfInt = TWICE_BITRATE_KBPS_BY_RATE;
+    if (i >= arrayOfInt.length) {
       i = -1;
-      paramArrayOfByte.skipBits(10);
-      if (paramArrayOfByte.readBits(2) <= 0) {
-        break label117;
-      }
+    } else {
+      i = arrayOfInt[i] * 1000 / 2;
     }
-    label117:
-    for (int j = 1;; j = 0)
-    {
-      return Format.createAudioSampleFormat(paramString1, "audio/vnd.dts", null, i, -1, k + j, m, null, paramDrmInitData, 0, paramString2);
-      i = TWICE_BITRATE_KBPS_BY_RATE[i] * 1000 / 2;
-      break;
+    paramArrayOfByte.skipBits(10);
+    int j;
+    if (paramArrayOfByte.readBits(2) > 0) {
+      j = 1;
+    } else {
+      j = 0;
     }
+    return Format.createAudioSampleFormat(paramString1, "audio/vnd.dts", null, i, -1, k + j, m, null, paramDrmInitData, 0, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.DtsUtil
  * JD-Core Version:    0.7.0.1
  */

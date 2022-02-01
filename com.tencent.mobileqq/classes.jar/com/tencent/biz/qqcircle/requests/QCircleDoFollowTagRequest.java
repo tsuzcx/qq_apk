@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -24,7 +25,15 @@ public class QCircleDoFollowTagRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     QQCircleWrite.DoFollowTagRsp localDoFollowTagRsp = new QQCircleWrite.DoFollowTagRsp();
-    localDoFollowTagRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localDoFollowTagRsp.mergeFrom(paramArrayOfByte);
+      return localDoFollowTagRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localDoFollowTagRsp;
   }
   
@@ -33,14 +42,14 @@ public class QCircleDoFollowTagRequest
     return "FeedCloudSvr.trpc.videocircle.circlewrite.CircleWriter.DoFollowTag";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mRequest.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDoFollowTagRequest
  * JD-Core Version:    0.7.0.1
  */

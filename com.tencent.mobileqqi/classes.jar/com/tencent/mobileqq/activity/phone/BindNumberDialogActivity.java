@@ -11,7 +11,7 @@ import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import ekk;
+import ekj;
 
 public class BindNumberDialogActivity
   extends DialogBaseActivity
@@ -50,7 +50,7 @@ public class BindNumberDialogActivity
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ekk(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new ekj(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.a(this.jdField_b_of_type_JavaLangString, this.c, 1);

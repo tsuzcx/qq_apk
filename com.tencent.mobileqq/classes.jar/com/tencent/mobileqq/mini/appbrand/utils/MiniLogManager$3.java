@@ -9,96 +9,94 @@ final class MiniLogManager$3
 {
   public void run()
   {
-    for (;;)
+    try
     {
-      int i;
-      int j;
-      int k;
-      try
+      Object localObject = new File(MiniLog.getMiniLogFolderPath());
+      if (((File)localObject).exists())
       {
-        Object localObject = new File(MiniLog.getMiniLogFolderPath());
-        if (((File)localObject).exists())
+        localObject = ((File)localObject).listFiles();
+        if (localObject != null)
         {
-          localObject = ((File)localObject).listFiles();
-          if (localObject != null)
+          if (localObject.length == 0) {
+            return;
+          }
+          int m = localObject.length;
+          int i = 0;
+          while (i < m)
           {
-            if (localObject.length == 0) {
-              return;
-            }
-            int m = localObject.length;
-            i = 0;
-            if (i < m)
+            File[] arrayOfFile1 = localObject[i].listFiles();
+            if ((arrayOfFile1 != null) && (arrayOfFile1.length != 0))
             {
-              File[] arrayOfFile1 = localObject[i].listFiles();
-              if ((arrayOfFile1 == null) || (arrayOfFile1.length == 0)) {
-                break label354;
-              }
               int n = arrayOfFile1.length;
-              j = 0;
-              if (j >= n) {
-                break label354;
-              }
-              File[] arrayOfFile2 = arrayOfFile1[j].listFiles();
-              if ((arrayOfFile2 == null) || (arrayOfFile2.length == 0)) {
-                break label361;
-              }
-              Arrays.sort(arrayOfFile2, MiniLogManager.access$300());
-              long l = MiniLogManager.access$400();
-              str = MiniLogManager.access$500();
-              int i1 = arrayOfFile2.length;
-              k = 0;
-              if (k >= i1) {
-                break label361;
-              }
-              localFile = arrayOfFile2[k];
-              if (localFile.getName().contains("log")) {
-                break label368;
-              }
-              if ((l > localFile.lastModified()) || (localFile.lastModified() > System.currentTimeMillis() + 3600000L))
+              int j = 0;
+              while (j < n)
               {
-                localFile.delete();
-                if (!QLog.isColorLevel()) {
-                  break label368;
+                File[] arrayOfFile2 = arrayOfFile1[j].listFiles();
+                if ((arrayOfFile2 != null) && (arrayOfFile2.length != 0))
+                {
+                  Arrays.sort(arrayOfFile2, MiniLogManager.access$300());
+                  long l = MiniLogManager.access$400();
+                  String str1 = MiniLogManager.access$500();
+                  int i1 = arrayOfFile2.length;
+                  int k = 0;
+                  while (k < i1)
+                  {
+                    File localFile = arrayOfFile2[k];
+                    if (!localFile.getName().contains("log"))
+                    {
+                      String str2;
+                      StringBuilder localStringBuilder;
+                      if ((l <= localFile.lastModified()) && (localFile.lastModified() <= System.currentTimeMillis() + 3600000L))
+                      {
+                        if ((localFile.getName().endsWith(".log")) && ((localFile.lastModified() < System.currentTimeMillis() - 3600000L) || (localFile.getName().contains(str1))) && (MiniLogManager.access$600(localFile)))
+                        {
+                          localFile.delete();
+                          if (QLog.isColorLevel())
+                          {
+                            str2 = MiniLogManager.access$100();
+                            localStringBuilder = new StringBuilder();
+                            localStringBuilder.append("compress log success ");
+                            localStringBuilder.append(localFile.getName());
+                            QLog.d(str2, 2, localStringBuilder.toString());
+                          }
+                        }
+                      }
+                      else
+                      {
+                        localFile.delete();
+                        if (QLog.isColorLevel())
+                        {
+                          str2 = MiniLogManager.access$100();
+                          localStringBuilder = new StringBuilder();
+                          localStringBuilder.append("del expires log ");
+                          localStringBuilder.append(localFile.getName());
+                          QLog.d(str2, 2, localStringBuilder.toString());
+                        }
+                      }
+                    }
+                    k += 1;
+                  }
                 }
-                QLog.d(MiniLogManager.access$100(), 2, "del expires log " + localFile.getName());
+                j += 1;
               }
             }
+            i += 1;
           }
         }
+        return;
       }
-      catch (Exception localException)
-      {
-        String str;
-        File localFile;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(MiniLogManager.access$100(), 2, localException, new Object[0]);
-          return;
-          if ((!localFile.getName().endsWith(".log")) || ((localFile.lastModified() >= System.currentTimeMillis() - 3600000L) && (!localFile.getName().contains(str))) || (!MiniLogManager.access$600(localFile))) {
-            break label368;
-          }
-          localFile.delete();
-          if (!QLog.isColorLevel()) {
-            break label368;
-          }
-          QLog.d(MiniLogManager.access$100(), 2, "compress log success " + localFile.getName());
-        }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(MiniLogManager.access$100(), 2, localException, new Object[0]);
       }
-      return;
-      label354:
-      i += 1;
-      continue;
-      label361:
-      j += 1;
-      continue;
-      label368:
-      k += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLogManager.3
  * JD-Core Version:    0.7.0.1
  */

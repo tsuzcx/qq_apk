@@ -19,7 +19,7 @@ class NumbersKt__NumbersKt
   @InlineOnly
   private static final int countLeadingZeroBits(short paramShort)
   {
-    return Integer.numberOfLeadingZeros(0xFFFF & paramShort) - 16;
+    return Integer.numberOfLeadingZeros(paramShort & 0xFFFF) - 16;
   }
   
   @ExperimentalStdlibApi
@@ -35,7 +35,7 @@ class NumbersKt__NumbersKt
   @InlineOnly
   private static final int countOneBits(short paramShort)
   {
-    return Integer.bitCount(0xFFFF & paramShort);
+    return Integer.bitCount(paramShort & 0xFFFF);
   }
   
   @ExperimentalStdlibApi
@@ -51,35 +51,39 @@ class NumbersKt__NumbersKt
   @InlineOnly
   private static final int countTrailingZeroBits(short paramShort)
   {
-    return Integer.numberOfTrailingZeros(0x10000 | paramShort);
+    return Integer.numberOfTrailingZeros(paramShort | 0x10000);
   }
   
   @ExperimentalStdlibApi
   @SinceKotlin(version="1.3")
   public static final byte rotateLeft(byte paramByte, int paramInt)
   {
-    return (byte)(paramByte << (paramInt & 0x7) | (paramByte & 0xFF) >>> 8 - (paramInt & 0x7));
+    paramInt &= 0x7;
+    return (byte)((paramByte & 0xFF) >>> 8 - paramInt | paramByte << paramInt);
   }
   
   @ExperimentalStdlibApi
   @SinceKotlin(version="1.3")
   public static final short rotateLeft(short paramShort, int paramInt)
   {
-    return (short)(paramShort << (paramInt & 0xF) | (0xFFFF & paramShort) >>> 16 - (paramInt & 0xF));
+    paramInt &= 0xF;
+    return (short)((paramShort & 0xFFFF) >>> 16 - paramInt | paramShort << paramInt);
   }
   
   @ExperimentalStdlibApi
   @SinceKotlin(version="1.3")
   public static final byte rotateRight(byte paramByte, int paramInt)
   {
-    return (byte)(paramByte << 8 - (paramInt & 0x7) | (paramByte & 0xFF) >>> (paramInt & 0x7));
+    paramInt &= 0x7;
+    return (byte)((paramByte & 0xFF) >>> paramInt | paramByte << 8 - paramInt);
   }
   
   @ExperimentalStdlibApi
   @SinceKotlin(version="1.3")
   public static final short rotateRight(short paramShort, int paramInt)
   {
-    return (short)(paramShort << 16 - (paramInt & 0xF) | (0xFFFF & paramShort) >>> (paramInt & 0xF));
+    paramInt &= 0xF;
+    return (short)((paramShort & 0xFFFF) >>> paramInt | paramShort << 16 - paramInt);
   }
   
   @ExperimentalStdlibApi
@@ -95,7 +99,7 @@ class NumbersKt__NumbersKt
   @InlineOnly
   private static final short takeHighestOneBit(short paramShort)
   {
-    return (short)Integer.highestOneBit(0xFFFF & paramShort);
+    return (short)Integer.highestOneBit(paramShort & 0xFFFF);
   }
   
   @ExperimentalStdlibApi
@@ -116,7 +120,7 @@ class NumbersKt__NumbersKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.NumbersKt__NumbersKt
  * JD-Core Version:    0.7.0.1
  */

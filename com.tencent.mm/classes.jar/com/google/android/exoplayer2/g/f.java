@@ -1,37 +1,42 @@
 package com.google.android.exoplayer2.g;
 
 import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.source.o;
+import com.google.android.exoplayer2.source.q;
 
 public abstract interface f
 {
-  public abstract void Y(long paramLong);
+  public abstract int Tq();
   
-  public abstract Format eg(int paramInt);
+  public abstract Object Tr();
   
-  public abstract int eh(int paramInt);
+  public abstract q Uc();
   
-  public abstract boolean ei(int paramInt);
+  public abstract Format Ud();
   
-  public abstract int indexOf(int paramInt);
+  public abstract int Ue();
+  
+  public abstract void cw(long paramLong);
+  
+  public abstract int es(int paramInt);
+  
+  public abstract int getSelectedIndex();
+  
+  public abstract Format iB(int paramInt);
+  
+  public abstract int iC(int paramInt);
+  
+  public abstract boolean k(int paramInt, long paramLong);
   
   public abstract int length();
   
-  public abstract int pv();
-  
-  public abstract int pw();
-  
-  public abstract Object px();
-  
-  public abstract o qg();
-  
-  public abstract Format qh();
-  
-  public abstract int qi();
+  public static abstract interface a
+  {
+    public abstract f a(q paramq, int... paramVarArgs);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="75.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.activateFriend.GiftRoundCornerFrameLayout android:id="@id/cv2" android:background="@drawable/aa0" android:layout_width="75.0dip" android:layout_height="75.0dip">
+        <com.tencent.image.URLImageView android:id="@id/cv9" android:layout_width="75.0dip" android:layout_height="75.0dip" />
+        <TextView android:textSize="@dimen/ayj" android:textColor="@color/gg" android:layout_gravity="bottom" android:id="@id/cvh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginBottom="2.0dip" android:text="1元" />
+        <ImageView android:id="@id/cvi" android:visibility="gone" android:clickable="false" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="57.0dip" android:layout_marginTop="3.0dip" android:src="@drawable/ekx" android:contentDescription="@null" />
+    </com.tencent.mobileqq.activity.activateFriend.GiftRoundCornerFrameLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+        <TextView android:textSize="@dimen/ayj" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center" android:id="@id/cve" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="giftname" android:singleLine="true" android:includeFontPadding="false" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/cva" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:src="@drawable/ekw" />
+    </LinearLayout>
+</LinearLayout>

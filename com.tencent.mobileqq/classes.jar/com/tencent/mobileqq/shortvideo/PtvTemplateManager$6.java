@@ -1,85 +1,46 @@
 package com.tencent.mobileqq.shortvideo;
 
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import lew;
-import lex;
-import mww;
 
 class PtvTemplateManager$6
   implements Runnable
 {
-  PtvTemplateManager$6(PtvTemplateManager paramPtvTemplateManager, Runnable paramRunnable) {}
-  
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, String.format("双人挂件加载 start, rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PtvTemplateManager", 4, String.format("rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
     }
-    Object localObject1 = lex.b(106).a;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
-    {
-      return;
-      ??? = PtvTemplateManager.a(this.this$0, (String)localObject1);
-      if ((??? == null) || (((List)???).isEmpty())) {
-        continue;
-      }
-      localObject1 = new ArrayList();
-      int i = mww.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvTemplateManager", 2, "cur version:" + i);
-      }
-      ??? = ((List)???).iterator();
-      while (((Iterator)???).hasNext())
+    List localList = this.this$0.a(this.a, this.b, null);
+    if (localList != null) {
+      synchronized (this.this$0.n)
       {
-        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)???).next();
-        if (QLog.isColorLevel()) {
-          QLog.d("PtvTemplateManager", 2, String.format("the pandent[%s], platform[%s]", new Object[] { localPtvTemplateInfo.id, Integer.valueOf(localPtvTemplateInfo.platform) }));
+        if (this.this$0.x) {
+          return;
         }
-        if ((localPtvTemplateInfo.platform == 0) || (i >= localPtvTemplateInfo.platform))
+        this.this$0.i.clear();
+        this.this$0.i.addAll(localList);
+        this.this$0.z = true;
+        ??? = this.a;
+        if ((??? != null) && ((??? instanceof QQAppInterface)) && (PtvFilterSoLoad.a()))
         {
-          localPtvTemplateInfo.usable = this.this$0.a(localPtvTemplateInfo);
-          ((List)localObject1).add(localPtvTemplateInfo);
+          ??? = this.this$0;
+          ((PtvTemplateManager)???).a(((PtvTemplateManager)???).i);
         }
-        else if (QLog.isDevelopLevel())
-        {
-          QLog.d("PtvTemplateManager", 4, String.format("双人挂件加载, platform不符合, %s", new Object[] { localPtvTemplateInfo }));
-        }
+        PtvTemplateManager.a(this.this$0);
       }
-      boolean bool;
-      if (QLog.isDevelopLevel())
-      {
-        i = ((List)localObject1).size();
-        if (this.a == null) {
-          break label427;
-        }
-        bool = true;
-        QLog.d("PtvTemplateManager", 2, String.format("双人挂件加载 size[%s], onInitFinishSink[%s], mVersion[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), this.this$0.f }));
-      }
-      synchronized (this.this$0.c)
-      {
-        QLog.w("PtvTemplateManager", 1, "initLocalTemplateConfigInfoWithExtra, isEmpty[" + this.this$0.c.isEmpty() + "], size[" + ((List)localObject1).size() + "]");
-        this.this$0.c.clear();
-        this.this$0.c.addAll((Collection)localObject1);
-        if (this.a == null) {
-          continue;
-        }
-        this.a.run();
-        return;
-        label427:
-        bool = false;
-      }
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PtvTemplateManager", 4, String.format("rebuildTemplateInfos, [%s] finished", new Object[] { Integer.valueOf(hashCode()) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.6
  * JD-Core Version:    0.7.0.1
  */

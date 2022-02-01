@@ -6,18 +6,18 @@ import com.google.android.gms.wearable.l;
 public final class f
   implements com.google.android.gms.wearable.f
 {
-  private final Status HS;
-  private final l Tf;
+  private final Status JH;
+  private final l UU;
   
   public f(Status paramStatus, l paraml)
   {
-    this.HS = paramStatus;
-    this.Tf = paraml;
+    this.JH = paramStatus;
+    this.UU = paraml;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    return this.HS;
+    return this.JH;
   }
 }
 

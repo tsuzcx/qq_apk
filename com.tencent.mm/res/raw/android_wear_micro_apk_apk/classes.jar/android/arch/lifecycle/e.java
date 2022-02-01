@@ -1,8 +1,12 @@
 package android.arch.lifecycle;
 
-public abstract interface e
+public abstract class e
 {
-  public abstract b d();
+  public abstract void a(h paramh);
+  
+  public abstract void b(h paramh);
+  
+  public abstract g g();
 }
 
 

@@ -1,121 +1,168 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.os.Build.VERSION;
-import android.support.v4.view.t;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
-import com.tencent.luggage.a.e;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.af;
-import com.tencent.mm.ui.aj;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.page.k;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/AppBrandExternalCoverWidgetManager;", "Lcom/tencent/mm/plugin/appbrand/widget/IAppBrandExternalCoverWidgetManager;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;)V", "capsuleBarLayoutListener", "Lkotlin/Function0;", "", "hasInstallCapsuleBarLayoutListener", "", "adjustExternalWidgetContainer", "configExternalCoverWidget", "initConfigWC", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "destory", "installExternalCoverWidget", "onAppBrandInit", "initConfig", "onInitConfigUpdated", "removeCapsuleBarLayoutListener", "removeExternalCoverWidget", "setupCapsuleBarLayoutListener", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends FrameLayout
 {
-  private final com.tencent.mm.plugin.appbrand.o.a jal;
-  public final Set<Runnable> jam;
+  public static final d.a uwc;
+  public final w qxC;
+  private boolean uwd;
+  private final a<ah> uwe;
   
-  public d(Context paramContext)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(87440);
-    this.jam = new HashSet();
-    setWillNotDraw(false);
-    this.jal = ((com.tencent.mm.plugin.appbrand.o.a)e.s(com.tencent.mm.plugin.appbrand.o.a.class));
-    AppMethodBeat.o(87440);
+    AppMethodBeat.i(323954);
+    uwc = new d.a((byte)0);
+    AppMethodBeat.o(323954);
   }
   
-  protected final void dispatchDraw(Canvas paramCanvas)
+  public d(w paramw)
   {
-    AppMethodBeat.i(87441);
-    if (willNotDraw())
+    AppMethodBeat.i(323933);
+    this.qxC = paramw;
+    this.uwe = ((a)new b(this));
+    AppMethodBeat.o(323933);
+  }
+  
+  private static final void aA(a parama)
+  {
+    AppMethodBeat.i(323948);
+    s.u(parama, "$tmp0");
+    parama.invoke();
+    AppMethodBeat.o(323948);
+  }
+  
+  private static final void az(a parama)
+  {
+    AppMethodBeat.i(323944);
+    s.u(parama, "$tmp0");
+    parama.invoke();
+    AppMethodBeat.o(323944);
+  }
+  
+  private final void cOD()
+  {
+    AppMethodBeat.i(323936);
+    if (!this.uwd)
     {
-      AppMethodBeat.o(87441);
+      this.qxC.qsP.dU(1).getViewTreeObserver().addOnGlobalLayoutListener(new d..ExternalSyntheticLambda0(this.uwe));
+      this.uwd = true;
+    }
+    AppMethodBeat.o(323936);
+  }
+  
+  private final void cOF()
+  {
+    AppMethodBeat.i(323940);
+    View localView1 = this.qxC.qsP.dU(1);
+    View localView2 = this.qxC.qsP.dU(2);
+    if ((localView1 != null) && (localView2 != null))
+    {
+      if (localView2.getTop() == localView1.getMeasuredHeight())
+      {
+        AppMethodBeat.o(323940);
+        return;
+      }
+      localView2.setY(localView1.getMeasuredHeight());
+      Log.i("MicroMsg.AppBrandExternalCoverWidgetManager", "set widgetContainer setY[" + localView2.getTop() + ']');
+    }
+    AppMethodBeat.o(323940);
+  }
+  
+  public final void cOE()
+  {
+    AppMethodBeat.i(323969);
+    if (this.uwd)
+    {
+      this.qxC.qsP.dU(1).getViewTreeObserver().removeOnGlobalLayoutListener(new d..ExternalSyntheticLambda1(this.uwe));
+      this.uwd = false;
+    }
+    AppMethodBeat.o(323969);
+  }
+  
+  public final void n(AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  {
+    AppMethodBeat.i(323964);
+    Object localObject2 = AndroidContextUtil.castActivityOrNull(this.qxC.mContext);
+    if (localObject2 == null)
+    {
+      AppMethodBeat.o(323964);
       return;
     }
     try
     {
-      super.dispatchDraw(paramCanvas);
-      AppMethodBeat.o(87441);
-      return;
-    }
-    catch (Exception paramCanvas)
-    {
-      com.tencent.luggage.g.d.printErrStackTrace("Luggage.WXA.AppBrandRuntimeFrameLayout", paramCanvas, "", new Object[0]);
-      if (!(paramCanvas instanceof NullPointerException)) {
-        break label71;
-      }
-    }
-    this.jal.idkeyStat(1088L, 0L, 1L, false);
-    for (;;)
-    {
-      AppMethodBeat.o(87441);
-      throw paramCanvas;
-      label71:
-      this.jal.idkeyStat(1088L, 1L, 1L, false);
-    }
-  }
-  
-  public final void dispatchSystemUiVisibilityChanged(int paramInt)
-  {
-    AppMethodBeat.i(141713);
-    super.dispatchSystemUiVisibilityChanged(paramInt);
-    Object localObject;
-    if ((isShown()) && (t.aw(this)) && (Build.VERSION.SDK_INT >= 26) && ((getWindowSystemUiVisibility() & 0x2) == 0))
-    {
-      localObject = com.tencent.mm.sdk.f.a.hr(getContext());
-      if ((localObject != null) && (((Activity)localObject).getWindow() != null))
+      if (!TextUtils.isEmpty((CharSequence)paramAppBrandInitConfigWC.qYy))
       {
-        bool = aj.Ow(((Activity)localObject).getWindow().getNavigationBarColor());
-        localObject = ((Activity)localObject).getWindow();
-        if (bool) {
-          break label93;
+        localObject1 = Class.forName(paramAppBrandInitConfigWC.qYy);
+        if (localObject1 == null)
+        {
+          paramAppBrandInitConfigWC = new NullPointerException("null cannot be cast to non-null type java.lang.Class<out com.tencent.mm.plugin.appbrand.widget.IAppBrandExternalCoverWidget>");
+          AppMethodBeat.o(323964);
+          throw paramAppBrandInitConfigWC;
         }
       }
     }
-    label93:
-    for (boolean bool = true;; bool = false)
+    catch (ClassNotFoundException paramAppBrandInitConfigWC)
     {
-      af.d((Window)localObject, bool);
-      AppMethodBeat.o(141713);
+      Log.printErrStackTrace("MicroMsg.AppBrandExternalCoverWidgetManager", (Throwable)paramAppBrandInitConfigWC, "", new Object[] { "" });
+      AppMethodBeat.o(323964);
+      return;
+      Object localObject1 = (j)((Class)localObject1).newInstance();
+      localObject2 = (Context)localObject2;
+      paramAppBrandInitConfigWC = paramAppBrandInitConfigWC.qBa;
+      s.s(paramAppBrandInitConfigWC, "initConfigWC.coverWidgetBuildData");
+      paramAppBrandInitConfigWC = ((j)localObject1).ah((Context)localObject2, paramAppBrandInitConfigWC);
+      paramAppBrandInitConfigWC.setLayoutParams((ViewGroup.LayoutParams)((j)localObject1).cON());
+      this.qxC.qsP.cDQ();
+      this.qxC.qsP.V(paramAppBrandInitConfigWC, ((j)localObject1).cOO());
+      cOF();
+      cOD();
+      AppMethodBeat.o(323964);
       return;
     }
-  }
-  
-  protected final void onAnimationEnd()
-  {
-    AppMethodBeat.i(87442);
-    super.onAnimationEnd();
-    Iterator localIterator = this.jam.iterator();
-    while (localIterator.hasNext()) {
-      ((Runnable)localIterator.next()).run();
+    catch (IllegalAccessException paramAppBrandInitConfigWC)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandExternalCoverWidgetManager", (Throwable)paramAppBrandInitConfigWC, "", new Object[] { "" });
+      AppMethodBeat.o(323964);
+      return;
+      this.qxC.qsP.cDQ();
+      cOE();
+      AppMethodBeat.o(323964);
+      return;
     }
-    this.jam.clear();
-    AppMethodBeat.o(87442);
+    catch (InstantiationException paramAppBrandInitConfigWC)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandExternalCoverWidgetManager", (Throwable)paramAppBrandInitConfigWC, "", new Object[] { "" });
+      AppMethodBeat.o(323964);
+    }
   }
   
-  public final void onViewRemoved(View paramView)
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements a<ah>
   {
-    AppMethodBeat.i(155596);
-    super.onViewRemoved(paramView);
-    com.tencent.luggage.g.d.i("Luggage.WXA.AppBrandRuntimeFrameLayout", "onViewRemoved %s", new Object[] { paramView });
-    AppMethodBeat.o(155596);
-  }
-  
-  public final void removeAllViews()
-  {
-    AppMethodBeat.i(141712);
-    com.tencent.luggage.g.d.d("Luggage.WXA.AppBrandRuntimeFrameLayout", "removeAllViews stack = %s", new Object[] { Log.getStackTraceString(new Throwable()) });
-    super.removeAllViews();
-    AppMethodBeat.o(141712);
+    b(d paramd)
+    {
+      super();
+    }
   }
 }
 

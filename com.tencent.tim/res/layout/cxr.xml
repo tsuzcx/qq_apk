@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/o5z" android:background="@drawable/ks" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="84.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.lottieNew.LottieAnimationView android:id="@id/dpo" android:layout_width="58.0dip" android:layout_height="58.0dip" android:layout_alignParentLeft="true" />
+    <RelativeLayout android:id="@id/o5y" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-21.0dip" android:layout_marginTop="18.0dip" android:layout_toRightOf="@id/dpo">
+        <com.tencent.tim.todo.widget.StrikeThruTextView android:textSize="18.0dip" android:textColor="@color/fl" android:ellipsize="end" android:id="@id/o61" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="注册域名京东方思考解放大道杀戮空间斐林试剂方法里的手空间" android:maxLines="2" android:includeFontPadding="false" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/o5v" android:paddingTop="16.0dip" android:paddingBottom="18.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="-11.0dip" android:layout_toRightOf="@id/dpo" android:layout_below="@id/o5y">
+        <TextView android:textSize="14.0dip" android:textColor="@color/e7" android:gravity="center_vertical" android:id="@id/o60" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="今天 10:00" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/ilx" android:drawablePadding="6.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/e7" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/o5x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="来自：TIM创新小分队" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/i76" android:drawablePadding="6.0dip" />
+    </LinearLayout>
+    <View android:id="@id/o5w" android:background="@color/e8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/o5v" android:layout_alignLeft="@id/o5v" />
+</RelativeLayout>

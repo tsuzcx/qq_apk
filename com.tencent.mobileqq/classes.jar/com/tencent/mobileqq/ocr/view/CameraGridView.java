@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ocr.view;
 
-import aepi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class CameraGridView
   extends View
 {
-  private int jdField_a_of_type_Int = 2;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private int a = 2;
   private int b = 2;
   private int c;
   private int d;
+  private Paint e = null;
   
   public CameraGridView(Context paramContext)
   {
@@ -35,32 +35,36 @@ public class CameraGridView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(aepi.a(0.5F, getResources()));
+    this.e = new Paint();
+    this.e.setColor(-1);
+    this.e.setStyle(Paint.Style.FILL);
+    this.e.setStrokeWidth(DisplayUtil.a(getContext(), 0.5F));
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int k = 1;
     super.onDraw(paramCanvas);
-    int n = this.c / (this.jdField_a_of_type_Int + 1);
+    int i = this.c;
+    int j = this.a;
+    int k = 1;
+    int n = i / (j + 1);
     int m = this.d / (this.b + 1);
-    int i = 1;
-    int j;
+    i = 1;
+    float f;
     for (;;)
     {
       j = k;
-      if (i > this.jdField_a_of_type_Int) {
+      if (i > this.a) {
         break;
       }
-      paramCanvas.drawLine(n * i, 0.0F, n * i, this.d, this.jdField_a_of_type_AndroidGraphicsPaint);
+      f = n * i;
+      paramCanvas.drawLine(f, 0.0F, f, this.d, this.e);
       i += 1;
     }
     while (j <= this.b)
     {
-      paramCanvas.drawLine(0.0F, m * j, this.c, m * j, this.jdField_a_of_type_AndroidGraphicsPaint);
+      f = m * j;
+      paramCanvas.drawLine(0.0F, f, this.c, f, this.e);
       j += 1;
     }
   }
@@ -74,7 +78,7 @@ public class CameraGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.CameraGridView
  * JD-Core Version:    0.7.0.1
  */

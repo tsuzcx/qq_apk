@@ -53,7 +53,10 @@ public final class a
   public a(String paramString)
   {
     this.b = paramString;
-    this.n = ("" + c.e(BaseApplication.getContext()));
+    paramString = new StringBuilder();
+    paramString.append("");
+    paramString.append(c.e(BaseApplication.getContext()));
+    this.n = paramString.toString();
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -93,29 +96,35 @@ public final class a
     paramJceOutputStream.write(this.f, 6);
     paramJceOutputStream.write(this.g, 7);
     paramJceOutputStream.write(this.h, 8);
-    if (this.i != null) {
-      paramJceOutputStream.write(this.i, 9);
+    Object localObject = this.i;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.j != null) {
-      paramJceOutputStream.write(this.j, 10);
+    localObject = this.j;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.k != null) {
-      paramJceOutputStream.write(this.k, 11);
+    localObject = this.k;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.l != null) {
-      paramJceOutputStream.write(this.l, 12);
+    localObject = this.l;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.m != null) {
-      paramJceOutputStream.write(this.m, 13);
+    localObject = this.m;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.n != null) {
-      paramJceOutputStream.write(this.n, 14);
+    localObject = this.n;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.a
  * JD-Core Version:    0.7.0.1
  */

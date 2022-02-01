@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class SearchHistory
-  extends awge
+  extends Entity
 {
   public int count;
   public String displayName;
   public String extralInfo;
-  @awhs
+  @unique
   public String key;
   public long time;
   public String troopUin;

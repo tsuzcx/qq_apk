@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.view.MagicfaceView.SurfaceCreateListener;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class gbc
-  implements Runnable
+  implements MagicfaceView.SurfaceCreateListener
 {
-  public gbc(MagicfaceViewController paramMagicfaceViewController) {}
+  public gbc(MagicfaceViewController paramMagicfaceViewController, Emoticon paramEmoticon, int paramInt, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    MagicfaceViewController.a(this.a).p();
+    MagicfaceViewController.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

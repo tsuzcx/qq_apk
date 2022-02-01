@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import aepi;
 import android.content.Context;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
@@ -14,11 +13,8 @@ import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
-import apkp;
-import azqs;
-import azzv;
-import baac;
-import bdew;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.image.QQLiveDrawable.ErrorInfo;
@@ -27,171 +23,242 @@ import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
 import com.tencent.image.QQLiveImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.drawable.EmptyDrawable;
+import com.tencent.mobileqq.ecshop.ad.IEcshopAdHandler;
+import com.tencent.mobileqq.ecshop.ad.IEcshopAdHandler.ReportInfo;
+import com.tencent.mobileqq.ecshop.ad.api.IEcshopAdApi;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.video.api.IThirdDataSourceAdapterFactory;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.api.IVideoReporter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo.Holder;
+import com.tencent.mobileqq.utils.AIOSingleReporter;
 import com.tencent.qphone.base.util.QLog;
-import nrt;
-import ntd;
-import nud;
-import nug;
 import org.json.JSONObject;
-import osd;
-import rjm;
-import syb;
 
 public class PAVideoView
   extends BubbleVideoView
   implements QQLiveDrawable.OnStateListener
 {
-  public static apkp a;
-  public static int c;
-  public static int d;
-  public static int e;
-  public long a;
-  public Handler a;
-  RotateAnimation a;
-  public azzv a;
-  public baac a;
-  public String a;
-  public int b;
-  private long jdField_b_of_type_Long;
-  private Shader jdField_b_of_type_AndroidGraphicsShader;
-  public String b;
-  private long jdField_c_of_type_Long = -1L;
-  public String c;
-  public boolean c;
-  private float[] jdField_c_of_type_ArrayOfFloat = new float[jdField_e_of_type_Int + 1];
-  public String d;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public int h;
-  public int i;
-  public boolean i;
-  public int j;
-  private boolean j;
-  private boolean k = true;
+  public static int A = 0;
+  public static int B = A + 1;
+  public static int C = B + 1;
+  public static EmptyDrawable V = new EmptyDrawable(-2236446, 100, 100);
+  public int D = A;
+  public boolean E = false;
+  public boolean F = false;
+  public boolean G;
+  RotateAnimation H;
+  public int I;
+  public int J;
+  public String K;
+  public String L;
+  public long M;
+  public String N;
+  public int O;
+  public int P;
+  public String Q = "";
+  public String R;
+  public String S;
+  public StructMsgItemVideo.Holder T;
+  public Handler U = new Handler(Looper.getMainLooper());
+  public StructMsgItemVideo W;
+  private boolean Z;
+  public int a = (int)(Math.random() * 1000.0D);
+  private float[] aa = new float[C + 1];
+  private Shader ab;
+  private long ac;
+  private long ad = -1L;
+  private boolean ae = true;
   
   static
   {
     QQLiveImage.setDebugEnable(false);
-    jdField_d_of_type_Int = jdField_c_of_type_Int + 1;
-    jdField_e_of_type_Int = jdField_d_of_type_Int + 1;
-    jdField_a_of_type_Apkp = new apkp(-2236446, 100, 100);
   }
   
   public PAVideoView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = ((int)(Math.random() * 1000.0D));
-    this.jdField_f_of_type_Int = jdField_c_of_type_Int;
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_c_of_type_ArrayOfFloat[jdField_c_of_type_Int] = 1.777F;
-    this.jdField_c_of_type_ArrayOfFloat[jdField_d_of_type_Int] = 0.83F;
-    this.jdField_c_of_type_ArrayOfFloat[jdField_e_of_type_Int] = 1.0F;
+    paramContext = this.aa;
+    paramContext[A] = 1.777F;
+    paramContext[B] = 0.83F;
+    paramContext[C] = 1.0F;
   }
   
   public static String a(long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("qqlive://msgId=").append(paramLong);
+    localStringBuilder.append("qqlive://msgId=");
+    localStringBuilder.append(paramLong);
     return localStringBuilder.toString();
-  }
-  
-  public Shader a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsShader;
   }
   
   public Drawable a(String paramString)
   {
-    apkp localapkp = jdField_a_of_type_Apkp;
-    if (!TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    Object localObject = V;
+    StringBuilder localStringBuilder;
+    if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        paramString = URLDrawable.getDrawable(paramString, jdField_a_of_type_Apkp, jdField_a_of_type_Apkp);
+        paramString = URLDrawable.getDrawable(paramString, V, V);
         return paramString;
       }
       catch (Exception paramString)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("PAVideoView" + this.jdField_b_of_type_Int, 2, "getCoverDrawable():  getDrawable Exception, mCoverUrl=" + this.jdField_a_of_type_JavaLangString, paramString);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("PAVideoView");
+          ((StringBuilder)localObject).append(this.a);
+          localObject = ((StringBuilder)localObject).toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getCoverDrawable():  getDrawable Exception, mCoverUrl=");
+          localStringBuilder.append(this.K);
+          QLog.e((String)localObject, 2, localStringBuilder.toString(), paramString);
         }
-        return jdField_a_of_type_Apkp;
+        return V;
       }
-      paramString = localapkp;
-    } while (!QLog.isColorLevel());
-    QLog.e("PAVideoView" + this.jdField_b_of_type_Int, 2, "getCoverDrawable():  mCoverUrl=" + this.jdField_a_of_type_JavaLangString);
-    return localapkp;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("PAVideoView");
+      paramString.append(this.a);
+      paramString = paramString.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCoverDrawable():  mCoverUrl=");
+      localStringBuilder.append(this.K);
+      QLog.e(paramString, 2, localStringBuilder.toString());
+    }
+    return localObject;
   }
   
-  QQLiveDrawable.QQLiveDrawableParams a(boolean paramBoolean)
+  public void a(StructMsgItemVideo paramStructMsgItemVideo, StructMsgItemVideo.Holder paramHolder)
+  {
+    this.I = paramStructMsgItemVideo.aE;
+    this.J = paramStructMsgItemVideo.aF;
+    this.K = paramStructMsgItemVideo.au;
+    this.L = paramStructMsgItemVideo.az;
+    long l;
+    if (paramStructMsgItemVideo.as.message == null) {
+      l = 0L;
+    } else {
+      l = paramStructMsgItemVideo.as.message.uniseq;
+    }
+    this.M = l;
+    this.O = paramStructMsgItemVideo.as.uinType;
+    this.N = paramStructMsgItemVideo.as.uin;
+    this.P = paramStructMsgItemVideo.aR;
+    this.R = paramStructMsgItemVideo.aO;
+    if ((paramStructMsgItemVideo.as instanceof AbsShareMsg)) {
+      this.S = ((AbsShareMsg)paramStructMsgItemVideo.as).mSourceName;
+    }
+    this.W = paramStructMsgItemVideo;
+    this.Q = paramStructMsgItemVideo.av;
+    this.T = paramHolder;
+    this.G = "1".equals(paramStructMsgItemVideo.be);
+  }
+  
+  QQLiveDrawable.QQLiveDrawableParams d(boolean paramBoolean)
   {
     QQLiveDrawable.QQLiveDrawableParams localQQLiveDrawableParams = new QQLiveDrawable.QQLiveDrawableParams();
-    int m;
-    if (this.g == 0)
+    int j = this.I;
+    int i = j;
+    if (j == 0) {
+      i = 400;
+    }
+    localQQLiveDrawableParams.mPreviewWidth = i;
+    j = this.J;
+    i = j;
+    if (j == 0) {
+      i = 200;
+    }
+    localQQLiveDrawableParams.mPreviewHeight = i;
+    localQQLiveDrawableParams.mPlayPause = paramBoolean;
+    localQQLiveDrawableParams.mListener = this;
+    localQQLiveDrawableParams.mServerType = "20160519";
+    i = this.P;
+    if ((i != 2) && (i != 4) && (i != 6))
     {
-      m = 400;
-      localQQLiveDrawableParams.mPreviewWidth = m;
-      if (this.h != 0) {
-        break label269;
-      }
-      m = 200;
-      label35:
-      localQQLiveDrawableParams.mPreviewHeight = m;
-      localQQLiveDrawableParams.mPlayPause = paramBoolean;
-      localQQLiveDrawableParams.mListener = this;
-      localQQLiveDrawableParams.mServerType = rjm.jdField_a_of_type_JavaLangString;
-      if ((this.jdField_j_of_type_Int != 2) && (this.jdField_j_of_type_Int != 4) && (this.jdField_j_of_type_Int != 6)) {
-        break label277;
-      }
+      localQQLiveDrawableParams.mDataSourceType = 0;
+    }
+    else
+    {
       localQQLiveDrawableParams.mDataSourceType = 2;
-      localQQLiveDrawableParams.mDataSourceAdapter = new osd(this.jdField_j_of_type_Int);
+      localQQLiveDrawableParams.mDataSourceAdapter = ((IThirdDataSourceAdapterFactory)QRoute.api(IThirdDataSourceAdapterFactory.class)).create(this.P);
       localQQLiveDrawableParams.mPlayType = 3;
     }
-    for (;;)
+    localQQLiveDrawableParams.mDataSource = this.L;
+    if ((this.P == 4) && (!TextUtils.isEmpty(this.Q)))
     {
-      localQQLiveDrawableParams.mDataSource = this.jdField_b_of_type_JavaLangString;
-      if ((this.jdField_j_of_type_Int == 4) && (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)))
+      localQQLiveDrawableParams.mDataSourceType = 1;
+      localQQLiveDrawableParams.mDataSource = this.Q;
+    }
+    localQQLiveDrawableParams.mCoverUrl = this.K;
+    localQQLiveDrawableParams.mCoverLoadingDrawable = V;
+    i = this.P;
+    if (((i >= 1) && (i <= 3)) || (this.P == 6))
+    {
+      if ((this.W.aD == 0) || (this.W.aD > 8))
       {
-        localQQLiveDrawableParams.mDataSourceType = 1;
-        localQQLiveDrawableParams.mDataSource = this.jdField_d_of_type_JavaLangString;
+        localQQLiveDrawableParams.mMaxPlayTimeMs = 8000;
+        localQQLiveDrawableParams.mStartPosi = this.W.aC;
       }
-      localQQLiveDrawableParams.mCoverUrl = this.jdField_a_of_type_JavaLangString;
-      localQQLiveDrawableParams.mCoverLoadingDrawable = jdField_a_of_type_Apkp;
-      if (((this.jdField_j_of_type_Int >= 1) && (this.jdField_j_of_type_Int <= 3)) || (this.jdField_j_of_type_Int == 6))
+      localQQLiveDrawableParams.mLoopback = false;
+    }
+    if (this.P == 4)
+    {
+      localQQLiveDrawableParams.mMaxPlayTimeMs = (this.W.aD * 1000);
+      localQQLiveDrawableParams.mLoopback = true;
+    }
+    return localQQLiveDrawableParams;
+  }
+  
+  public void d()
+  {
+    this.ae = true;
+    Object localObject = f();
+    if (localObject != null)
+    {
+      ((QQLiveDrawable)localObject).recyleAndKeepPostion();
+      if (QLog.isColorLevel())
       {
-        if ((this.jdField_a_of_type_Azzv.m == 0) || (this.jdField_a_of_type_Azzv.m > 8))
-        {
-          localQQLiveDrawableParams.mMaxPlayTimeMs = 8000;
-          localQQLiveDrawableParams.mStartPosi = this.jdField_a_of_type_Azzv.l;
-        }
-        localQQLiveDrawableParams.mLoopback = false;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("PAVideoView");
+        ((StringBuilder)localObject).append(this.a);
+        QLog.i(((StringBuilder)localObject).toString(), 2, "onMoveToScrapHeap(): recyleAndKeepPostion ");
       }
-      if (this.jdField_j_of_type_Int == 4)
-      {
-        localQQLiveDrawableParams.mMaxPlayTimeMs = (this.jdField_a_of_type_Azzv.m * 1000);
-        localQQLiveDrawableParams.mLoopback = true;
-      }
-      return localQQLiveDrawableParams;
-      m = this.g;
-      break;
-      label269:
-      m = this.h;
-      break label35;
-      label277:
-      localQQLiveDrawableParams.mDataSourceType = 0;
     }
   }
   
-  public QQLiveDrawable a()
+  public void e()
+  {
+    this.T.d.setVisibility(0);
+    setImageDrawable(a(this.K));
+    if (QLog.isColorLevel())
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PAVideoView");
+      ((StringBuilder)localObject).append(this.a);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showCover():  mVid=");
+      localStringBuilder.append(this.L);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+  }
+  
+  public QQLiveDrawable f()
   {
     if ((getDrawable() != null) && ((getDrawable() instanceof URLDrawable)))
     {
@@ -203,391 +270,424 @@ public class PAVideoView
     return null;
   }
   
-  public void a(azzv paramazzv, baac parambaac)
+  public void g()
   {
-    this.g = paramazzv.n;
-    this.h = paramazzv.o;
-    this.jdField_a_of_type_JavaLangString = paramazzv.S;
-    this.jdField_b_of_type_JavaLangString = paramazzv.U;
-    if (paramazzv.a.message == null) {}
-    for (long l = 0L;; l = paramazzv.a.message.uniseq)
+    this.ad = -1L;
+    this.T.d.clearAnimation();
+    this.T.d.setVisibility(0);
+    this.T.d.setImageResource(2130844327);
+    Object localObject1 = f();
+    StringBuilder localStringBuilder;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_i_of_type_Int = paramazzv.a.uinType;
-      this.jdField_c_of_type_JavaLangString = paramazzv.a.uin;
-      this.jdField_j_of_type_Int = paramazzv.r;
-      this.jdField_e_of_type_JavaLangString = paramazzv.Z;
-      if ((paramazzv.a instanceof AbsShareMsg)) {
-        this.jdField_f_of_type_JavaLangString = ((AbsShareMsg)paramazzv.a).mSourceName;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("PAVideoView");
+        ((StringBuilder)localObject2).append(this.a);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pausePlay(): 1. cur video pause, mVid=");
+        localStringBuilder.append(this.L);
+        QLog.d((String)localObject2, 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Azzv = paramazzv;
-      this.jdField_d_of_type_JavaLangString = paramazzv.T;
-      this.jdField_a_of_type_Baac = parambaac;
+      ((QQLiveDrawable)localObject1).pause();
       return;
     }
-  }
-  
-  public void c()
-  {
-    this.k = true;
-    QQLiveDrawable localQQLiveDrawable = a();
-    if (localQQLiveDrawable != null)
+    localObject1 = d(true);
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject2).mExtraInfo = localObject1;
+    localObject1 = URLDrawable.getDrawable(a(this.M), (URLDrawable.URLDrawableOptions)localObject2);
+    if (((URLDrawable)localObject1).getStatus() == 1)
     {
-      localQQLiveDrawable.recyleAndKeepPostion();
-      if (QLog.isColorLevel()) {
-        QLog.i("PAVideoView" + this.jdField_b_of_type_Int, 2, "onMoveToScrapHeap(): recyleAndKeepPostion ");
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("PAVideoView");
+        ((StringBuilder)localObject2).append(this.a);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pausePlay(): 2. cache video Pause , mVid=");
+        localStringBuilder.append(this.L);
+        QLog.d((String)localObject2, 2, localStringBuilder.toString());
       }
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    setImageDrawable(a(this.jdField_a_of_type_JavaLangString));
-    if (QLog.isColorLevel()) {
-      QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "showCover():  mVid=" + this.jdField_b_of_type_JavaLangString);
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842836);
-    Object localObject = a();
-    if (localObject != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "pausePlay(): 1. cur video pause, mVid=" + this.jdField_b_of_type_JavaLangString);
-      }
-      ((QQLiveDrawable)localObject).pause();
+      setImageDrawable((Drawable)localObject1);
       return;
     }
-    localObject = a(true);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = localObject;
-    localObject = URLDrawable.getDrawable(a(this.jdField_a_of_type_Long), localURLDrawableOptions);
-    if (((URLDrawable)localObject).getStatus() == 1)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "pausePlay(): 2. cache video Pause , mVid=" + this.jdField_b_of_type_JavaLangString);
-      }
-      setImageDrawable((Drawable)localObject);
-      return;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("PAVideoView");
+      ((StringBuilder)localObject1).append(this.a);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("pausePlay(): 3. set cover, mVid=");
+      ((StringBuilder)localObject2).append(this.L);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "pausePlay(): 3. set cover, mVid=" + this.jdField_b_of_type_JavaLangString);
-    }
-    setImageDrawable(a(this.jdField_a_of_type_JavaLangString));
+    setImageDrawable(a(this.K));
   }
   
-  public void f()
+  public int getReportVideoType()
   {
-    if (this.jdField_j_of_type_Int != 4) {
-      this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    return ((IVideoReporter)QRoute.api(IVideoReporter.class)).getReportVideoType(this.P, this.S);
+  }
+  
+  public Shader getShadowMaskShader()
+  {
+    return this.ab;
+  }
+  
+  public void h()
+  {
+    if (this.P != 4) {
+      this.T.d.setVisibility(8);
     }
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    syb.a(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, 0);
-    if ((!this.jdField_a_of_type_Azzv.b) && (this.jdField_a_of_type_Azzv.a.message != null))
+    this.ad = System.currentTimeMillis();
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).videoPlayRealtimeReport(this.R, this.L, 0, 0);
+    if ((!this.W.aX) && (this.W.as.message != null))
     {
-      azqs.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_Azzv.a.message.frienduin, "0X800682E", "0X800682E", 0, 0, this.jdField_b_of_type_JavaLangString, "" + this.jdField_j_of_type_Int, "" + this.jdField_a_of_type_Azzv.a.msgId, "");
-      this.jdField_a_of_type_Azzv.b = true;
+      localObject1 = this.W.as.message.frienduin;
+      localObject2 = this.L;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("");
+      ((StringBuilder)localObject3).append(this.P);
+      localObject3 = ((StringBuilder)localObject3).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.W.as.msgId);
+      ReportController.b(null, "dc00899", "Pb_account_lifeservice", (String)localObject1, "0X800682E", "0X800682E", 0, 0, (String)localObject2, (String)localObject3, localStringBuilder.toString(), "");
+      this.W.aX = true;
     }
-    int m;
-    Object localObject2;
-    if ((this.jdField_a_of_type_Azzv.a.message != null) && (!bdew.a().a(this.jdField_a_of_type_Azzv.a.message, "0X80077D9")))
+    if ((this.W.as.message != null) && (!AIOSingleReporter.a().a(this.W.as.message, "0X80077D9")))
     {
-      m = ntd.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Int);
+      localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      i = ((IVideoReporter)QRoute.api(IVideoReporter.class)).getUinMemberNum((AppInterface)localObject1, this.N, this.O);
       localObject2 = new JSONObject();
     }
     try
     {
-      ((JSONObject)localObject2).put("uin", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject2).put("memNum", m);
-      ((JSONObject)localObject2).put("msg_uniseq", this.jdField_a_of_type_Azzv.a.message.uniseq);
-      label264:
-      if (this.jdField_e_of_type_JavaLangString != null) {}
-      for (Object localObject1 = this.jdField_e_of_type_JavaLangString;; localObject1 = "0")
-      {
-        nrt.a(null, "", "0X80077D9", "0X80077D9", 0, 0, "1", "", (String)localObject1, ntd.a(null, null, this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, (JSONObject)localObject2), false);
-        bdew.a().a(this.jdField_a_of_type_Azzv.a.message, "0X80077D9");
-        localObject1 = a(false);
-        localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mExtraInfo = localObject1;
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = jdField_a_of_type_Apkp;
-        localObject1 = URLDrawable.getDrawable(a(this.jdField_a_of_type_Long), (URLDrawable.URLDrawableOptions)localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "startPlay(): new or reuse cache, mVid=" + this.jdField_b_of_type_JavaLangString);
-        }
-        if ((((URLDrawable)localObject1).getStatus() == 1) && ((((URLDrawable)localObject1).getCurrDrawable() instanceof QQLiveDrawable)) && (((QQLiveDrawable)((URLDrawable)localObject1).getCurrDrawable()).getPlayState() == 6))
-        {
-          this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          if (QLog.isColorLevel()) {
-            QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "startPlay():reuse cache playCompleted, show play btn" + this.jdField_b_of_type_JavaLangString);
-          }
-        }
-        setImageDrawable((Drawable)localObject1);
-        return;
+      ((JSONObject)localObject2).put("uin", this.N);
+      ((JSONObject)localObject2).put("memNum", i);
+      ((JSONObject)localObject2).put("msg_uniseq", this.W.as.message.uniseq);
+      ((JSONObject)localObject2).put("rowkey", this.R);
+      if (!((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).isStructMsgJumpForUG(this.W.as)) {
+        break label695;
       }
+      i = 1;
     }
     catch (Exception localException)
     {
-      break label264;
+      for (;;)
+      {
+        continue;
+        i = 0;
+      }
     }
+    ((JSONObject)localObject2).put("UG", i);
+    Object localObject3 = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    Object localObject1 = this.R;
+    if (localObject1 == null) {
+      localObject1 = "0";
+    }
+    ((IPublicAccountReportUtils)localObject3).publicAccountReportClickEvent(null, "", "0X80077D9", "0X80077D9", 0, 0, "1", "", (String)localObject1, ((IVideoReporter)QRoute.api(IVideoReporter.class)).videoReportBaseR5(null, null, this.L, this.R, (JSONObject)localObject2), false);
+    AIOSingleReporter.a().b(this.W.as.message, "0X80077D9");
+    localObject1 = d(false);
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject2).mExtraInfo = localObject1;
+    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = V;
+    localObject1 = URLDrawable.getDrawable(a(this.M), (URLDrawable.URLDrawableOptions)localObject2);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("PAVideoView");
+      ((StringBuilder)localObject2).append(this.a);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("startPlay(): new or reuse cache, mVid=");
+      ((StringBuilder)localObject3).append(this.L);
+      QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+    }
+    if ((((URLDrawable)localObject1).getStatus() == 1) && ((((URLDrawable)localObject1).getCurrDrawable() instanceof QQLiveDrawable)) && (((QQLiveDrawable)((URLDrawable)localObject1).getCurrDrawable()).getPlayState() == 6))
+    {
+      this.T.d.setVisibility(0);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("PAVideoView");
+        ((StringBuilder)localObject2).append(this.a);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("startPlay():reuse cache playCompleted, show play btn");
+        ((StringBuilder)localObject3).append(this.L);
+        QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+      }
+    }
+    setImageDrawable((Drawable)localObject1);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    QQLiveDrawable localQQLiveDrawable = a();
-    if (localQQLiveDrawable != null) {
-      localQQLiveDrawable.onDetachedFromWindow();
+    Object localObject = f();
+    if (localObject != null) {
+      ((QQLiveDrawable)localObject).onDetachedFromWindow();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("PAVideoView" + this.jdField_b_of_type_Int, 2, "onDetachedFromWindow(): ");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PAVideoView");
+      ((StringBuilder)localObject).append(this.a);
+      QLog.i(((StringBuilder)localObject).toString(), 2, "onDetachedFromWindow(): ");
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.U.removeCallbacksAndMessages(null);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int m = paramInt1;
-    int n;
-    float f1;
-    if (this.jdField_i_of_type_Boolean)
+    int i = paramInt1;
+    if (this.F)
     {
       paramInt2 = View.MeasureSpec.getSize(paramInt1);
-      m = getPaddingLeft();
-      n = getPaddingRight();
-      f1 = this.jdField_c_of_type_ArrayOfFloat[this.jdField_f_of_type_Int];
-      if (!this.jdField_c_of_type_Boolean) {
-        break label118;
+      i = getPaddingLeft();
+      int j = getPaddingRight();
+      float[] arrayOfFloat = this.aa;
+      int k = this.D;
+      float f = arrayOfFloat[k];
+      if (this.E)
+      {
+        if (k == A)
+        {
+          paramInt2 = BaseChatItemLayout.e - BaseChatItemLayout.getBubblePaddingAlignError();
+          paramInt1 = (int)(paramInt2 / f + 0.5F);
+        }
+        else
+        {
+          paramInt1 = BaseChatItemLayout.e - BaseChatItemLayout.getBubblePaddingAlignError();
+          paramInt2 = (int)(paramInt1 * f + 0.5F);
+        }
+        i = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
+        paramInt2 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
       }
-      if (this.jdField_f_of_type_Int != jdField_c_of_type_Int) {
-        break label97;
+      else
+      {
+        paramInt2 = View.MeasureSpec.makeMeasureSpec((int)((paramInt2 - i - j) / f + 0.5F), 1073741824);
+        i = paramInt1;
       }
-      paramInt2 = BaseChatItemLayout.jdField_d_of_type_Int - BaseChatItemLayout.jdField_j_of_type_Int;
-      paramInt1 = (int)(paramInt2 / f1 + 0.5F);
-      m = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
     }
-    for (;;)
-    {
-      super.onMeasure(m, paramInt2);
-      return;
-      label97:
-      paramInt1 = BaseChatItemLayout.jdField_d_of_type_Int - BaseChatItemLayout.jdField_j_of_type_Int;
-      paramInt2 = (int)(paramInt1 * f1 + 0.5F);
-      break;
-      label118:
-      paramInt2 = View.MeasureSpec.makeMeasureSpec((int)((paramInt2 - m - n) / f1 + 0.5F), 1073741824);
-      m = paramInt1;
-    }
+    super.onMeasure(i, paramInt2);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_b_of_type_AndroidGraphicsShader == null)
+    if (this.ab == null)
     {
-      paramInt1 = aepi.a(55.0F, getResources());
-      if (!this.jdField_c_of_type_Boolean) {
-        break label138;
+      paramInt1 = AIOUtils.b(55.0F, getResources());
+      if (this.E)
+      {
+        paramInt3 = this.D;
+        if (paramInt3 == A) {
+          paramInt1 = AIOUtils.b(55.0F, getResources());
+        } else if (paramInt3 == B) {
+          paramInt1 = AIOUtils.b(75.0F, getResources());
+        }
       }
-      if (this.jdField_f_of_type_Int != jdField_c_of_type_Int) {
-        break label114;
+      else
+      {
+        paramInt1 = (int)(paramInt2 * 0.6F);
       }
-      paramInt1 = aepi.a(55.0F, getResources());
-    }
-    label138:
-    for (;;)
-    {
       float f1 = paramInt2 - paramInt1;
       float f2 = paramInt2;
       Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-      this.jdField_b_of_type_AndroidGraphicsShader = new LinearGradient(0.0F, f1, 0.0F, f2, new int[] { 0, -1728053248 }, new float[] { 0.0F, 1.0F }, localTileMode);
-      return;
-      label114:
-      if (this.jdField_f_of_type_Int == jdField_d_of_type_Int)
-      {
-        paramInt1 = aepi.a(75.0F, getResources());
-        continue;
-        paramInt1 = (int)(paramInt2 * 0.6F);
-      }
+      this.ab = new LinearGradient(0.0F, f1, 0.0F, f2, new int[] { 0, -1728053248 }, new float[] { 0.0F, 1.0F }, localTileMode);
     }
   }
   
   public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
   {
-    boolean bool2 = true;
-    paramQQLiveDrawableParams = this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidWidgetImageView;
+    paramQQLiveDrawableParams = this.T.d;
     if (paramQQLiveDrawableParams != null)
     {
       if (paramInt == 3)
       {
-        if (this.jdField_a_of_type_AndroidViewAnimationRotateAnimation == null)
+        if (this.H == null)
         {
-          this.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-          this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(500L);
-          this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatCount(-1);
-          this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatMode(1);
-          this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setStartTime(-1L);
+          this.H = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
+          this.H.setDuration(500L);
+          this.H.setRepeatCount(-1);
+          this.H.setRepeatMode(1);
+          this.H.setStartTime(-1L);
           paramString = new LinearInterpolator();
-          this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(paramString);
+          this.H.setInterpolator(paramString);
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PAVideoView.1(this, paramQQLiveDrawableParams), 1200L);
-      }
-      do
-      {
+        this.U.postDelayed(new PAVideoView.1(this, paramQQLiveDrawableParams), 1200L);
         return;
-        if (paramInt != 2) {
-          break;
-        }
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      paramString = null;
+      boolean bool2 = false;
+      if (paramInt == 2)
+      {
+        this.ac = System.currentTimeMillis();
+        this.U.removeCallbacksAndMessages(null);
         paramQQLiveDrawableParams.clearAnimation();
         paramQQLiveDrawableParams.setVisibility(8);
-      } while (this.jdField_j_of_type_Int != 4);
-      b(false);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PAVideoView.2(this), 5000L);
-      return;
-      if (paramInt == 5) {
-        if (!(paramObject instanceof QQLiveDrawable.ErrorInfo)) {
-          break label822;
+        if (this.P != 4) {
+          break label903;
         }
+        a(false);
+        this.U.postDelayed(new PAVideoView.2(this), 5000L);
+        return;
       }
-    }
-    label659:
-    label816:
-    label822:
-    for (paramString = (QQLiveDrawable.ErrorInfo)paramObject;; paramString = null)
-    {
-      paramQQLiveDrawableParams.setVisibility(0);
-      paramQQLiveDrawableParams.setImageResource(2130842832);
-      this.jdField_a_of_type_Baac.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      b(true);
-      this.jdField_a_of_type_AndroidOsHandler.post(new PAVideoView.3(this, paramQQLiveDrawableParams));
-      if (paramString == null) {
-        break;
+      if (paramInt == 5)
+      {
+        if ((paramObject instanceof QQLiveDrawable.ErrorInfo)) {
+          paramString = (QQLiveDrawable.ErrorInfo)paramObject;
+        }
+        paramQQLiveDrawableParams.setVisibility(0);
+        paramQQLiveDrawableParams.setImageResource(2130844323);
+        this.T.b.setVisibility(0);
+        a(true);
+        this.U.post(new PAVideoView.3(this, paramQQLiveDrawableParams));
+        if (paramString == null) {
+          break label903;
+        }
+        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).videoPlayRealtimeReport(this.R, this.L, 1, paramString.what);
+        return;
       }
-      syb.a(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 1, paramString.what);
-      return;
       if (paramInt == 8)
       {
-        if (!(paramObject instanceof Long)) {
-          break label816;
-        }
-        long l = ((Long)paramObject).longValue();
-        bool1 = bool2;
-        if (l < 300L) {
-          if (l != -1L) {
-            break label816;
-          }
-        }
-      }
-      for (boolean bool1 = bool2;; bool1 = false) {
-        for (;;)
+        boolean bool1 = bool2;
+        if ((paramObject instanceof Long))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("PAVideoView" + this.jdField_b_of_type_Int, 2, "state_init, extra = " + paramObject + " , needReport= " + bool1);
-          }
-          if (!bool1) {
-            break;
-          }
-          paramInt = ntd.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Int);
-          paramQQLiveDrawableParams = new JSONObject();
-          try
+          long l = ((Long)paramObject).longValue();
+          if (l < 300L)
           {
-            for (;;)
-            {
-              paramQQLiveDrawableParams.put("uin", this.jdField_c_of_type_JavaLangString);
-              paramQQLiveDrawableParams.put("memNum", paramInt);
-              paramQQLiveDrawableParams.put("msg_uniseq", this.jdField_a_of_type_Azzv.a.message.uniseq);
-              label461:
-              if (this.jdField_e_of_type_JavaLangString != null) {}
-              for (paramString = this.jdField_e_of_type_JavaLangString;; paramString = "0")
-              {
-                nrt.a(null, "", "0X8007414", "0X8007414", 0, 0, "1", "", paramString, ntd.a(null, null, this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, paramQQLiveDrawableParams), false);
-                return;
-              }
-              if (paramInt == 4)
-              {
-                if ((this.jdField_j_of_type_Int != 4) || (this.jdField_b_of_type_Long == 0L)) {
-                  break;
-                }
-                paramString = new nug();
-                paramString.a = 4;
-              }
-              try
-              {
-                paramInt = (int)((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
-                paramQQLiveDrawableParams = new JSONObject();
-                paramQQLiveDrawableParams.put("bt", "0");
-                paramQQLiveDrawableParams.put("et", String.valueOf(paramInt));
-                paramQQLiveDrawableParams.put("bf", "1");
-                paramQQLiveDrawableParams.put("ef", "0");
-                paramQQLiveDrawableParams.put("pp", "1");
-                paramQQLiveDrawableParams.put("pa", "1");
-                paramQQLiveDrawableParams.put("pb", "1");
-                paramString.h = paramQQLiveDrawableParams.toString();
-                paramString = nud.a(paramString, this.jdField_a_of_type_Azzv.a.message);
-                ((nud)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(paramString, null);
-                this.jdField_b_of_type_Long = 0L;
-                return;
-                if (paramInt != 6) {
-                  break;
-                }
-                paramQQLiveDrawableParams.setVisibility(0);
-                paramQQLiveDrawableParams.setImageResource(2130842836);
-                this.jdField_a_of_type_AndroidOsHandler.post(new PAVideoView.4(this, paramQQLiveDrawableParams));
-                return;
-                if (!QLog.isColorLevel()) {
-                  break;
-                }
-                QLog.e("PAVideoView" + this.jdField_b_of_type_Int, 2, "onStateChange(): onStateChange = " + QQLiveImage.getStateStr(paramInt) + ", stateIv == null,mVid=" + this.jdField_b_of_type_JavaLangString);
-                return;
-              }
-              catch (Exception paramQQLiveDrawableParams)
-              {
-                break label659;
-              }
-            }
+            bool1 = bool2;
+            if (l != -1L) {}
           }
-          catch (Exception paramString)
+          else
           {
-            break label461;
+            bool1 = true;
           }
         }
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("PAVideoView");
+          paramString.append(this.a);
+          paramString = paramString.toString();
+          paramQQLiveDrawableParams = new StringBuilder();
+          paramQQLiveDrawableParams.append("state_init, extra = ");
+          paramQQLiveDrawableParams.append(paramObject);
+          paramQQLiveDrawableParams.append(" , needReport= ");
+          paramQQLiveDrawableParams.append(bool1);
+          QLog.d(paramString, 2, paramQQLiveDrawableParams.toString());
+        }
+        if (!bool1) {
+          break label903;
+        }
+        paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        paramInt = ((IVideoReporter)QRoute.api(IVideoReporter.class)).getUinMemberNum(paramString, this.N, this.O);
+        paramQQLiveDrawableParams = new JSONObject();
+      }
+    }
+    try
+    {
+      paramQQLiveDrawableParams.put("uin", this.N);
+      paramQQLiveDrawableParams.put("memNum", paramInt);
+      paramQQLiveDrawableParams.put("msg_uniseq", this.W.as.message.uniseq);
+      paramObject = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+      paramString = this.R;
+      if (paramString == null) {
+        paramString = "0";
+      }
+      paramObject.publicAccountReportClickEvent(null, "", "0X8007414", "0X8007414", 0, 0, "1", "", paramString, ((IVideoReporter)QRoute.api(IVideoReporter.class)).videoReportBaseR5(null, null, this.L, this.R, paramQQLiveDrawableParams), false);
+      return;
+      if (paramInt == 4)
+      {
+        if ((this.P != 4) || (this.ac == 0L)) {
+          break label903;
+        }
+        paramString = new IEcshopAdHandler.ReportInfo();
+        paramString.a = 4;
+      }
+    }
+    catch (Exception paramString)
+    {
+      try
+      {
+        paramInt = (int)((System.currentTimeMillis() - this.ac) / 1000L);
+        paramQQLiveDrawableParams = new JSONObject();
+        paramQQLiveDrawableParams.put("bt", "0");
+        paramQQLiveDrawableParams.put("et", String.valueOf(paramInt));
+        paramQQLiveDrawableParams.put("bf", "1");
+        paramQQLiveDrawableParams.put("ef", "0");
+        paramQQLiveDrawableParams.put("pp", "1");
+        paramQQLiveDrawableParams.put("pa", "1");
+        paramQQLiveDrawableParams.put("pb", "1");
+        paramString.l = paramQQLiveDrawableParams.toString();
+        label724:
+        paramString = ((IEcshopAdApi)QRoute.api(IEcshopAdApi.class)).rebuildReportParam(paramString, this.W.as.message);
+        ((IEcshopAdHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.ESHOP_AD_HANDLER)).a(paramString, null);
+        this.ac = 0L;
+        return;
+        if (paramInt == 6)
+        {
+          paramQQLiveDrawableParams.setVisibility(0);
+          paramQQLiveDrawableParams.setImageResource(2130844327);
+          this.U.post(new PAVideoView.4(this, paramQQLiveDrawableParams));
+          return;
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("PAVideoView");
+            paramString.append(this.a);
+            paramString = paramString.toString();
+            paramQQLiveDrawableParams = new StringBuilder();
+            paramQQLiveDrawableParams.append("onStateChange(): onStateChange = ");
+            paramQQLiveDrawableParams.append(QQLiveImage.getStateStr(paramInt));
+            paramQQLiveDrawableParams.append(", stateIv == null,mVid=");
+            paramQQLiveDrawableParams.append(this.L);
+            QLog.e(paramString, 2, paramQQLiveDrawableParams.toString());
+          }
+        }
+        label903:
+        return;
+        paramString = paramString;
+      }
+      catch (Exception paramQQLiveDrawableParams)
+      {
+        break label724;
       }
     }
   }
   
   public void requestLayout()
   {
-    if (!this.jdField_j_of_type_Boolean) {
+    if (!this.Z) {
       super.requestLayout();
     }
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    this.jdField_j_of_type_Boolean = true;
+    this.Z = true;
     super.setImageDrawable(null);
     super.setImageDrawable(paramDrawable);
-    this.jdField_j_of_type_Boolean = false;
+    this.Z = false;
   }
   
   public void setRatioByMode(int paramInt, float paramFloat)
   {
-    if ((paramInt == jdField_e_of_type_Int) || (paramInt == jdField_c_of_type_Int) || (paramInt == jdField_d_of_type_Int)) {
-      this.jdField_c_of_type_ArrayOfFloat[paramInt] = paramFloat;
+    if ((paramInt == C) || (paramInt == A) || (paramInt == B)) {
+      this.aa[paramInt] = paramFloat;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PAVideoView
  * JD-Core Version:    0.7.0.1
  */

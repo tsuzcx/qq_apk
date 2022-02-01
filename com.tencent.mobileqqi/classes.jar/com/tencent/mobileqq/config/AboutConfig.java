@@ -15,9 +15,9 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
+import fmi;
 import fmj;
 import fmk;
-import fml;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
@@ -38,7 +38,7 @@ public class AboutConfig
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Hashtable jdField_a_of_type_JavaUtilHashtable;
   private List jdField_a_of_type_JavaUtilList;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new fmk(this);
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new fmj(this);
   private boolean b = true;
   
   public AboutConfig(QQAppInterface paramQQAppInterface)
@@ -105,10 +105,10 @@ public class AboutConfig
   {
     AboutConfig localAboutConfig = paramQQAppInterface.a();
     String str = paramResourcePluginInfo.strGotoUrl;
-    Object localObject2 = "&version=6.0.2.6602&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a() + "&sid=" + paramQQAppInterface.getSid();
+    Object localObject2 = "&version=6.0.3.6604&appid=" + AppSetting.a + "&QUA=" + QZoneHelper.a() + "&sid=" + paramQQAppInterface.getSid();
     Object localObject1 = localObject2;
     if (paramResourcePluginInfo.strPkgName.equals("com.tx.abouthelp")) {
-      localObject1 = (String)localObject2 + "&adtag=6602";
+      localObject1 = (String)localObject2 + "&adtag=6604";
     }
     str = str + (String)localObject1;
     if (paramResourcePluginInfo.strPkgName.equals("com.tx.abouthelp"))
@@ -151,7 +151,7 @@ public class AboutConfig
           if (paramResourcePluginInfo.isNew == 0)
           {
             paramResourcePluginInfo.isNew = 1;
-            ThreadManager.b(new fml(localAboutConfig, paramResourcePluginInfo));
+            ThreadManager.b(new fmk(localAboutConfig, paramResourcePluginInfo));
           }
           return;
           localObject1 = "";
@@ -324,7 +324,7 @@ public class AboutConfig
     QLog.d("AboutConfig", 2, "there has about data in memory cache, do not need load from DB");
     return;
     this.jdField_a_of_type_JavaUtilHashtable = a();
-    ThreadManager.b(new fmj(this));
+    ThreadManager.b(new fmi(this));
   }
   
   public boolean a()

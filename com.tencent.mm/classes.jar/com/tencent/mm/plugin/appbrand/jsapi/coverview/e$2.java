@@ -1,28 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v.b;
 
 final class e$2
-  implements View.OnTouchListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  e$2(e parame, v.b paramb, com.tencent.mm.plugin.appbrand.jsapi.e parame1) {}
+  e$2(e parame, View paramView) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(126304);
-    boolean bool = "webview".equals(this.hBX.getString("sendTo", null));
-    a.a(this.hEL, paramMotionEvent, this.hBX.getString("data", ""), bool);
-    AppMethodBeat.o(126304);
-    return true;
+    AppMethodBeat.i(327303);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.val$view.getLayoutParams().width = paramValueAnimator.intValue();
+    this.val$view.requestLayout();
+    AppMethodBeat.o(327303);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.e.2
  * JD-Core Version:    0.7.0.1
  */

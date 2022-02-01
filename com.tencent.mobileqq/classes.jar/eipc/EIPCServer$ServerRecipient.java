@@ -20,8 +20,12 @@ public class EIPCServer$ServerRecipient
         this.eipcServer.notifyUnbind(this.connection);
       }
       this.binder.unlinkToDeath(this, 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("EIPCConst", 2, "ServerRecipient " + this.connection);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("ServerRecipient ");
+        ((StringBuilder)???).append(this.connection);
+        QLog.d("EIPCConst", 2, ((StringBuilder)???).toString());
       }
       return;
     }
@@ -29,7 +33,7 @@ public class EIPCServer$ServerRecipient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     eipc.EIPCServer.ServerRecipient
  * JD-Core Version:    0.7.0.1
  */

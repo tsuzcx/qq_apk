@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,80 +24,82 @@ public final class cell_video
   static s_videoremark cache_videoremark;
   static Map<Integer, s_videourl> cache_videourls;
   static s_weishi cache_weishi;
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public int adv_delay_time;
+  public int adv_delay_time = 0;
   public String albumid = "";
-  public int anonymity;
-  public int auto_refresh_second;
-  public s_button bottom_button;
+  public int anonymity = 0;
+  public int auto_refresh_second = 0;
+  public s_button bottom_button = null;
   public String clientkey = "";
-  public Map<Integer, s_picurl> coverurl;
-  public int cur_video_rate;
-  public Map<String, String> extendinfo;
-  public int filetype;
-  public Map<Integer, s_picurl> gaussPicUrl;
+  public Map<Integer, s_picurl> coverurl = null;
+  public int cur_video_rate = 0;
+  public Map<String, String> extendinfo = null;
+  public int filetype = 0;
+  public Map<Integer, s_picurl> gaussPicUrl = null;
   public String header_desc = "";
-  public boolean isHadSetPlayOnWifi;
-  public boolean isOnWifiPlay;
-  public boolean isPanorama;
-  public boolean is_share;
+  public boolean isHadSetPlayOnWifi = false;
+  public boolean isOnWifiPlay = false;
+  public boolean isPanorama = false;
+  public boolean is_share = false;
   public String lloc = "";
-  public byte playtype;
-  public int report_video_feeds_type;
+  public int needShowFollowGuideAnimation = 0;
+  public byte playtype = 0;
+  public int report_video_feeds_type = 0;
   public String sloc = "";
-  public s_kingcard stKingCard;
+  public s_kingcard stKingCard = null;
   public String toast = "";
-  public ArrayList<Map<Integer, s_picurl>> vcCovers;
-  public int video_click_type;
+  public ArrayList<Map<Integer, s_picurl>> vcCovers = null;
+  public int video_click_type = 0;
   public String video_desc = "";
-  public int video_form;
-  public long video_max_playtime;
-  public ArrayList<s_videourl> video_rate_list;
-  public int video_show_type;
-  public int video_source;
+  public int video_form = 0;
+  public long video_max_playtime = 0L;
+  public ArrayList<s_videourl> video_rate_list = null;
+  public int video_show_type = 0;
+  public int video_source = 0;
   public String video_webview_url = "";
   public String videoid = "";
-  public int videoplaycnt;
-  public s_videoremark videoremark;
-  public int videostatus;
-  public long videotime;
-  public byte videotype;
+  public int videoplaycnt = 0;
+  public s_videoremark videoremark = null;
+  public int videostatus = 0;
+  public long videotime = 0L;
+  public byte videotype = 0;
   public String videourl = "";
-  public Map<Integer, s_videourl> videourls;
-  public s_weishi weishi;
+  public Map<Integer, s_videourl> videourls = null;
+  public s_weishi weishi = null;
   
   static
   {
-    Object localObject = new s_picurl();
-    cache_coverurl.put(Integer.valueOf(0), localObject);
+    Object localObject1 = Integer.valueOf(0);
+    Object localObject2 = new s_picurl();
+    cache_coverurl.put(localObject1, localObject2);
     cache_videourls = new HashMap();
-    localObject = new s_videourl();
-    cache_videourls.put(Integer.valueOf(0), localObject);
+    localObject2 = new s_videourl();
+    cache_videourls.put(localObject1, localObject2);
     cache_extendinfo = new HashMap();
     cache_extendinfo.put("", "");
     cache_videoremark = new s_videoremark();
     cache_video_show_type = 0;
     cache_video_source = 0;
     cache_vcCovers = new ArrayList();
-    localObject = new HashMap();
-    ((Map)localObject).put(Integer.valueOf(0), new s_picurl());
-    cache_vcCovers.add(localObject);
+    localObject2 = new HashMap();
+    ((Map)localObject2).put(localObject1, new s_picurl());
+    cache_vcCovers.add(localObject2);
     cache_gaussPicUrl = new HashMap();
-    localObject = new s_picurl();
-    cache_gaussPicUrl.put(Integer.valueOf(0), localObject);
+    localObject2 = new s_picurl();
+    cache_gaussPicUrl.put(localObject1, localObject2);
     cache_weishi = new s_weishi();
     cache_stKingCard = new s_kingcard();
     cache_bottom_button = new s_button();
     cache_video_click_type = 0;
     cache_video_rate_list = new ArrayList();
-    localObject = new s_videourl();
-    cache_video_rate_list.add(localObject);
+    localObject1 = new s_videourl();
+    cache_video_rate_list.add(localObject1);
   }
   
   public cell_video() {}
   
-  public cell_video(String paramString1, String paramString2, Map<Integer, s_picurl> paramMap1, int paramInt1, String paramString3, String paramString4, int paramInt2, byte paramByte1, long paramLong1, Map<Integer, s_videourl> paramMap, byte paramByte2, int paramInt3, String paramString5, Map<String, String> paramMap2, s_videoremark params_videoremark, int paramInt4, boolean paramBoolean1, int paramInt5, String paramString6, String paramString7, int paramInt6, int paramInt7, boolean paramBoolean2, int paramInt8, String paramString8, boolean paramBoolean3, boolean paramBoolean4, int paramInt9, ArrayList<Map<Integer, s_picurl>> paramArrayList, int paramInt10, Map<Integer, s_picurl> paramMap3, s_weishi params_weishi, s_kingcard params_kingcard, s_button params_button, int paramInt11, String paramString9, ArrayList<s_videourl> paramArrayList1, int paramInt12, String paramString10, int paramInt13, String paramString11, long paramLong2)
+  public cell_video(String paramString1, String paramString2, Map<Integer, s_picurl> paramMap1, int paramInt1, String paramString3, String paramString4, int paramInt2, byte paramByte1, long paramLong1, Map<Integer, s_videourl> paramMap, byte paramByte2, int paramInt3, String paramString5, Map<String, String> paramMap2, s_videoremark params_videoremark, int paramInt4, boolean paramBoolean1, int paramInt5, String paramString6, String paramString7, int paramInt6, int paramInt7, boolean paramBoolean2, int paramInt8, String paramString8, boolean paramBoolean3, boolean paramBoolean4, int paramInt9, ArrayList<Map<Integer, s_picurl>> paramArrayList, int paramInt10, Map<Integer, s_picurl> paramMap3, s_weishi params_weishi, s_kingcard params_kingcard, s_button params_button, int paramInt11, String paramString9, ArrayList<s_videourl> paramArrayList1, int paramInt12, String paramString10, int paramInt13, String paramString11, long paramLong2, int paramInt14)
   {
     this.videoid = paramString1;
     this.videourl = paramString2;
@@ -140,6 +143,7 @@ public final class cell_video
     this.anonymity = paramInt13;
     this.video_desc = paramString11;
     this.video_max_playtime = paramLong2;
+    this.needShowFollowGuideAnimation = paramInt14;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -186,99 +190,122 @@ public final class cell_video
     this.anonymity = paramJceInputStream.read(this.anonymity, 39, false);
     this.video_desc = paramJceInputStream.readString(40, false);
     this.video_max_playtime = paramJceInputStream.read(this.video_max_playtime, 41, false);
+    this.needShowFollowGuideAnimation = paramJceInputStream.read(this.needShowFollowGuideAnimation, 42, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.videoid != null) {
-      paramJceOutputStream.write(this.videoid, 0);
+    Object localObject = this.videoid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.videourl != null) {
-      paramJceOutputStream.write(this.videourl, 1);
+    localObject = this.videourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.coverurl != null) {
-      paramJceOutputStream.write(this.coverurl, 2);
+    localObject = this.coverurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.actiontype, 3);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 4);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 5);
+    localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.filetype, 6);
     paramJceOutputStream.write(this.videotype, 7);
     paramJceOutputStream.write(this.videotime, 8);
-    if (this.videourls != null) {
-      paramJceOutputStream.write(this.videourls, 9);
+    localObject = this.videourls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
     paramJceOutputStream.write(this.playtype, 10);
     paramJceOutputStream.write(this.videostatus, 11);
-    if (this.toast != null) {
-      paramJceOutputStream.write(this.toast, 12);
+    localObject = this.toast;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 13);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
-    if (this.videoremark != null) {
-      paramJceOutputStream.write(this.videoremark, 14);
+    localObject = this.videoremark;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
     paramJceOutputStream.write(this.video_show_type, 15);
     paramJceOutputStream.write(this.isPanorama, 16);
     paramJceOutputStream.write(this.video_source, 17);
-    if (this.sloc != null) {
-      paramJceOutputStream.write(this.sloc, 18);
+    localObject = this.sloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.lloc != null) {
-      paramJceOutputStream.write(this.lloc, 19);
+    localObject = this.lloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
     paramJceOutputStream.write(this.report_video_feeds_type, 20);
     paramJceOutputStream.write(this.videoplaycnt, 21);
     paramJceOutputStream.write(this.is_share, 22);
     paramJceOutputStream.write(this.adv_delay_time, 23);
-    if (this.video_webview_url != null) {
-      paramJceOutputStream.write(this.video_webview_url, 24);
+    localObject = this.video_webview_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
     paramJceOutputStream.write(this.isOnWifiPlay, 25);
     paramJceOutputStream.write(this.isHadSetPlayOnWifi, 26);
     paramJceOutputStream.write(this.auto_refresh_second, 27);
-    if (this.vcCovers != null) {
-      paramJceOutputStream.write(this.vcCovers, 28);
+    localObject = this.vcCovers;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 28);
     }
     paramJceOutputStream.write(this.video_form, 29);
-    if (this.gaussPicUrl != null) {
-      paramJceOutputStream.write(this.gaussPicUrl, 30);
+    localObject = this.gaussPicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 30);
     }
-    if (this.weishi != null) {
-      paramJceOutputStream.write(this.weishi, 31);
+    localObject = this.weishi;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 31);
     }
-    if (this.stKingCard != null) {
-      paramJceOutputStream.write(this.stKingCard, 32);
+    localObject = this.stKingCard;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 32);
     }
-    if (this.bottom_button != null) {
-      paramJceOutputStream.write(this.bottom_button, 33);
+    localObject = this.bottom_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 33);
     }
     paramJceOutputStream.write(this.video_click_type, 34);
-    if (this.header_desc != null) {
-      paramJceOutputStream.write(this.header_desc, 35);
+    localObject = this.header_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 35);
     }
-    if (this.video_rate_list != null) {
-      paramJceOutputStream.write(this.video_rate_list, 36);
+    localObject = this.video_rate_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 36);
     }
     paramJceOutputStream.write(this.cur_video_rate, 37);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 38);
+    localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 38);
     }
     paramJceOutputStream.write(this.anonymity, 39);
-    if (this.video_desc != null) {
-      paramJceOutputStream.write(this.video_desc, 40);
+    localObject = this.video_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 40);
     }
     paramJceOutputStream.write(this.video_max_playtime, 41);
+    paramJceOutputStream.write(this.needShowFollowGuideAnimation, 42);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_video
  * JD-Core Version:    0.7.0.1
  */

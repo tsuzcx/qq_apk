@@ -7,22 +7,18 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class TriangleView
   extends View
 {
-  private int a;
-  private int b;
+  private int direction;
+  private int drawColor = getResources().getColor(2131165855);
   
   public TriangleView(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramContext);
-    BaseApplicationImpl.getApplication();
-    this.b = BaseApplicationImpl.getContext().getResources().getColor(2131165501);
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.direction = paramInt1;
+    this.drawColor = paramInt2;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -31,31 +27,32 @@ public class TriangleView
     paramCanvas.drawColor(0);
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
-    localPaint.setColor(this.b);
+    localPaint.setColor(this.drawColor);
     localPaint.setStyle(Paint.Style.FILL);
     Path localPath = new Path();
     int i = getMeasuredWidth();
     int j = getMeasuredHeight();
-    if (this.a == 1)
+    if (this.direction == 1)
     {
       localPath.moveTo(i / 2, 0.0F);
-      localPath.lineTo(i, j);
-      localPath.lineTo(0.0F, j);
+      float f1 = i;
+      float f2 = j;
+      localPath.lineTo(f1, f2);
+      localPath.lineTo(0.0F, f2);
     }
-    for (;;)
+    else
     {
-      localPath.close();
-      paramCanvas.drawPath(localPath, localPaint);
-      return;
       localPath.moveTo(i / 2, j);
       localPath.lineTo(i, 0.0F);
       localPath.lineTo(0.0F, 0.0F);
     }
+    localPath.close();
+    paramCanvas.drawPath(localPath, localPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.widget.TriangleView
  * JD-Core Version:    0.7.0.1
  */

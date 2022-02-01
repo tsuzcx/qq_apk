@@ -2,23 +2,23 @@ package com.tencent.mm.wear.a;
 
 public final class a
 {
-  public static String nH()
+  public static String ov()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("[tag ] %s\n", new Object[] { "MicroMessenger_Android_GIT_RELEASE_GRADLE #7898" }));
-    localStringBuilder.append(String.format("[by  ] %s\n", new Object[] { "amm_code_helper" }));
-    localStringBuilder.append(String.format("[host] %s\n", new Object[] { "c39127bbe61f" }));
-    localStringBuilder.append(String.format("[time] %s\n", new Object[] { "2018-09-29 00:16:37" }));
+    localStringBuilder.append(String.format("[tag ] %s\n", new Object[] { "MicroMessenger_Android_Wear #16" }));
+    localStringBuilder.append(String.format("[by  ] %s\n", new Object[] { "jiaminchen" }));
+    localStringBuilder.append(String.format("[host] %s\n", new Object[] { "VM_10_240_centos" }));
+    localStringBuilder.append(String.format("[time] %s\n", new Object[] { "2019-09-11 20:25:40" }));
     localStringBuilder.append(String.format("[cmd ] %s\n", new Object[] { "null" }));
-    localStringBuilder.append(String.format("[rev ] %s\n", new Object[] { "9583be09a035314bcc371f0780e1d8bd46a0b1d1" }));
-    String str = "origin/RB-2018-AUG@git";
-    int i = "origin/RB-2018-AUG@git".indexOf("MicroMsg_proj");
+    localStringBuilder.append(String.format("[rev ] %s\n", new Object[] { "c90af65aa3928d1a6d107bf09a666643f02347d3" }));
+    String str = "origin/unstable/RB-2019-MAY/wear_apk@git";
+    int i = "origin/unstable/RB-2019-MAY/wear_apk@git".indexOf("MicroMsg_proj");
     if (i < 0) {}
     for (;;)
     {
       localStringBuilder.append(String.format("[path] %s\n", new Object[] { str }));
       return localStringBuilder.toString();
-      str = "origin/RB-2018-AUG@git".substring(i);
+      str = "origin/unstable/RB-2019-MAY/wear_apk@git".substring(i);
     }
   }
 }

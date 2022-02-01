@@ -18,7 +18,7 @@ public class PubAccountAssistantGuideBuilder
     if (paramView == null) {
       paramObject = View.inflate(paramContext, 2130903433, null);
     }
-    paramDrawable = paramObject.findViewById(2131232575);
+    paramDrawable = paramObject.findViewById(2131232574);
     paramDrawable.setTag(-1, Integer.valueOf(paramInt));
     paramDrawable.setOnClickListener(paramOnClickListener);
     paramObject.setTag(-1, Integer.valueOf(paramInt));

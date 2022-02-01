@@ -11,88 +11,88 @@ public final class zzh
   
   static
   {
-    AppMethodBeat.i(108680);
-    for (localObject2 = null;; localObject2 = localObject3)
+    AppMethodBeat.i(4116);
+    for (localObject3 = null;; localObject3 = localObject4)
     {
       try
       {
-        localObject3 = zza();
-        if (localObject3 == null) {
-          break label58;
+        localObject4 = zza();
+        if (localObject4 == null) {
+          break label60;
         }
-        localObject2 = localObject3;
-        if (((Integer)localObject3).intValue() < 19) {
-          break label58;
+        localObject3 = localObject4;
+        if (((Integer)localObject4).intValue() < 19) {
+          break label60;
         }
-        localObject2 = localObject3;
+        localObject3 = localObject4;
         localObject1 = new zzm();
-        localObject2 = localObject3;
+        localObject3 = localObject4;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         for (;;)
         {
           Object localObject1;
-          label58:
-          Object localObject3 = System.err;
+          label60:
+          Object localObject4 = System.err;
           String str = zza.class.getName();
-          ((PrintStream)localObject3).println(String.valueOf(str).length() + 132 + "An error has occured when initializing the try-with-resources desuguring strategy. The default strategy " + str + "will be used. The error is: ");
-          localThrowable.printStackTrace(System.err);
+          ((PrintStream)localObject4).println(String.valueOf(str).length() + 132 + "An error has occured when initializing the try-with-resources desuguring strategy. The default strategy " + str + "will be used. The error is: ");
+          localObject2.printStackTrace(System.err);
           zza localzza = new zza();
           continue;
           int i = 0;
           continue;
-          localObject2 = localObject3;
+          localObject3 = localObject4;
           localzza = new zza();
-          localObject2 = localObject3;
+          localObject3 = localObject4;
           continue;
-          i = localObject2.intValue();
+          i = localObject3.intValue();
         }
       }
       zze = (zzi)localObject1;
-      if (localObject2 != null) {
-        break label180;
+      if (localObject3 != null) {
+        break label182;
       }
       i = 1;
       zzf = i;
-      AppMethodBeat.o(108680);
+      AppMethodBeat.o(4116);
       return;
-      localObject2 = localObject3;
+      localObject3 = localObject4;
       if (Boolean.getBoolean("com.google.devtools.build.android.desugar.runtime.twr_disable_mimic")) {
         break;
       }
       i = 1;
       if (i == 0) {
-        break label165;
+        break label167;
       }
-      localObject2 = localObject3;
+      localObject3 = localObject4;
       localObject1 = new zzl();
     }
   }
   
   private static Integer zza()
   {
-    AppMethodBeat.i(108679);
+    AppMethodBeat.i(4115);
     try
     {
       Integer localInteger = (Integer)Class.forName("android.os.Build$VERSION").getField("SDK_INT").get(null);
-      AppMethodBeat.o(108679);
+      AppMethodBeat.o(4115);
       return localInteger;
     }
     catch (Exception localException)
     {
       System.err.println("Failed to retrieve value from android.os.Build$VERSION.SDK_INT due to the following exception.");
       localException.printStackTrace(System.err);
-      AppMethodBeat.o(108679);
+      AppMethodBeat.o(4115);
     }
     return null;
   }
   
   public static void zza(Throwable paramThrowable1, Throwable paramThrowable2)
   {
-    AppMethodBeat.i(108678);
+    AppMethodBeat.i(4114);
     zze.zza(paramThrowable1, paramThrowable2);
-    AppMethodBeat.o(108678);
+    AppMethodBeat.o(4114);
   }
   
   static final class zza
@@ -103,7 +103,7 @@ public final class zzh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.firebase_messaging.zzh
  * JD-Core Version:    0.7.0.1
  */

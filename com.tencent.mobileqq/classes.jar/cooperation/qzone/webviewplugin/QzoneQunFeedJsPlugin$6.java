@@ -1,20 +1,19 @@
 package cooperation.qzone.webviewplugin;
 
-import bjyj;
-
-public class QzoneQunFeedJsPlugin$6
+class QzoneQunFeedJsPlugin$6
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$6(bjyj parambjyj) {}
+  QzoneQunFeedJsPlugin$6(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
   
   public void run()
   {
-    bjyj.a(this.this$0, bjyj.a(this.this$0));
+    QzoneQunFeedJsPlugin localQzoneQunFeedJsPlugin = this.this$0;
+    QzoneQunFeedJsPlugin.access$500(localQzoneQunFeedJsPlugin, QzoneQunFeedJsPlugin.access$100(localQzoneQunFeedJsPlugin));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

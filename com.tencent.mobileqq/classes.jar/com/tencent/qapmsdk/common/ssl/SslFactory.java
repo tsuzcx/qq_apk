@@ -15,19 +15,32 @@ public final class SslFactory
   @NotNull
   public static final ISslContextBuilder DEFAULT_SSL_CONTEXT = (ISslContextBuilder)new DefaultSslContextBuilder();
   public static final SslFactory INSTANCE = new SslFactory();
-  @Nullable
   private static ISslContextBuilder sslBuilder = DEFAULT_SSL_CONTEXT;
   @Nullable
   private static final SSLSocketFactory sslSocketFactory;
   
-  @Nullable
-  public final ISslContextBuilder getSslBuilder()
+  private final ISslContextBuilder getSslBuilder()
   {
     ISslContextBuilder localISslContextBuilder = sslBuilder;
     if (localISslContextBuilder != null) {
       return localISslContextBuilder;
     }
     return DEFAULT_SSL_CONTEXT;
+  }
+  
+  private final void setSslBuilder(ISslContextBuilder paramISslContextBuilder)
+  {
+    try
+    {
+      sslBuilder = paramISslContextBuilder;
+      paramISslContextBuilder = Unit.INSTANCE;
+      return;
+    }
+    finally
+    {
+      paramISslContextBuilder = finally;
+      throw paramISslContextBuilder;
+    }
   }
   
   @Nullable
@@ -47,25 +60,10 @@ public final class SslFactory
     }
     return null;
   }
-  
-  public final void setSslBuilder(@Nullable ISslContextBuilder paramISslContextBuilder)
-  {
-    try
-    {
-      sslBuilder = paramISslContextBuilder;
-      paramISslContextBuilder = Unit.INSTANCE;
-      return;
-    }
-    finally
-    {
-      paramISslContextBuilder = finally;
-      throw paramISslContextBuilder;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.ssl.SslFactory
  * JD-Core Version:    0.7.0.1
  */

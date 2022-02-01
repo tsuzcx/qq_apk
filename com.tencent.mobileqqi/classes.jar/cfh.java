@@ -1,31 +1,15 @@
 import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
 
-public class cfh
+class cfh
   implements Runnable
 {
-  public cfh(Conversation paramConversation) {}
+  cfh(cfg paramcfg, Drawable paramDrawable) {}
   
   public void run()
   {
-    Object localObject = this.a.a.a();
-    localObject = this.a.a.b((String)localObject);
-    if ((localObject != ImageUtil.a()) && (this.a.X == 4096))
-    {
-      if (!Conversation.d(this.a)) {
-        break label80;
-      }
-      this.a.b(3500L);
-    }
-    for (;;)
-    {
-      this.a.b(new cfi(this, (Drawable)localObject));
-      return;
-      label80:
-      this.a.b(4500L);
-    }
+    Conversation.a(this.jdField_a_of_type_Cfg.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

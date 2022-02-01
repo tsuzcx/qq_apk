@@ -1,91 +1,39 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import bhuf;
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import java.io.File;
-import java.net.URL;
-import ndi;
-import ndq;
-import yak;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.viewmodel.PictureShowViewModel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TroopAvatarWallPreviewActivity$8
-  implements Runnable
+  implements View.OnClickListener
 {
-  TroopAvatarWallPreviewActivity$8(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, bhuf parambhuf) {}
+  TroopAvatarWallPreviewActivity$8(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    int i = paramView.getId();
+    if (i != 2131446133)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "QR Check Start!");
-      }
-      Object localObject = new Bundle();
-      String str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-      if (this.this$0.a == null)
+      if (i != 2131446135)
       {
-        CookieSyncManager.createInstance(this.this$0.getApplicationContext());
-        this.this$0.a = CookieManager.getInstance();
-      }
-      String str2 = this.this$0.a.getCookie(str1);
-      if (str2 != null)
-      {
-        ((Bundle)localObject).putString("Cookie", str2);
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopAvatarWallPreviewActivity", 2, "Get cookie: " + ndq.c(str2, new String[0]) + " from " + ndq.b(str1, new String[0]));
+        if (i == 2131446138) {
+          TroopAvatarWallPreviewActivity.access$100(this.a).g();
         }
       }
-      localObject = ndi.a(BaseApplication.getContext(), str1, (Bundle)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "saveTmpImage path = " + (String)localObject);
-      }
-      this.this$0.d = ((String)localObject);
-      bfwb.a = ndq.b(str1, new String[0]);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (yak.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAvatarWallPreviewActivity", 2, "has QRCode ");
-          }
-          this.this$0.runOnUiThread(new TroopAvatarWallPreviewActivity.8.1(this));
-        }
-      }
-      for (;;)
-      {
-        bfwb.a = null;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopAvatarWallPreviewActivity", 2, "no QRCode ");
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("TroopAvatarWallPreviewActivity", 2, "showActionSheet error : " + localException.getMessage());
-        return;
+      else {
+        TroopAvatarWallPreviewActivity.access$100(this.a).f();
       }
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAvatarWallPreviewActivity", 2, "showActionSheet error : " + localUnsatisfiedLinkError.getMessage());
-      }
+    else {
+      TroopAvatarWallPreviewActivity.access$100(this.a).e();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

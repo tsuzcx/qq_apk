@@ -27,14 +27,15 @@ public final class FacadeDIY
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iEnable, 0);
-    if (this.strChecksum != null) {
-      paramJceOutputStream.write(this.strChecksum, 1);
+    String str = this.strChecksum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.FacadeDIY
  * JD-Core Version:    0.7.0.1
  */

@@ -1,102 +1,95 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ard;
-import com.tencent.mm.protocal.protobuf.are;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ccn;
+import com.tencent.mm.protocal.protobuf.cco;
+import com.tencent.mm.protocal.protobuf.ccp;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
 import java.util.LinkedList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.Set;
 
 public final class g
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private b rr;
+  public String PnD;
+  private h callback;
+  private c rr;
   
-  public g()
+  public g(String paramString)
   {
-    AppMethodBeat.i(126851);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ard();
-    ((b.a)localObject).fsY = new are();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo";
-    ((b.a)localObject).funcId = 1191;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (ard)this.rr.fsV.fta;
-    ((ard)localObject).cpt = 2;
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add("invoice_info.title");
-    localLinkedList.add("invoice_info.tax_number");
-    localLinkedList.add("invoice_info.bank_number");
-    localLinkedList.add("invoice_info.bank_name");
-    localLinkedList.add("invoice_info.type");
-    localLinkedList.add("invoice_info.email");
-    localLinkedList.add("invoice_info.company_address");
-    localLinkedList.add("invoice_info.company_address_detail");
-    localLinkedList.add("invoice_info.company_address_postcode");
-    localLinkedList.add("invoice_info.phone");
-    ((ard)localObject).xgt = localLinkedList;
-    ((ard)localObject).xgs = false;
-    AppMethodBeat.o(126851);
+    this(paramString, null);
+    AppMethodBeat.i(73766);
+    AppMethodBeat.o(73766);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public g(String paramString, Map<Integer, String> paramMap)
   {
-    AppMethodBeat.i(126853);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(126853);
+    AppMethodBeat.i(298541);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ccn();
+    ((c.a)localObject).otF = new cco();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/generalset";
+    ((c.a)localObject).funcId = 177;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    this.PnD = paramString;
+    localObject = (ccn)c.b.b(this.rr.otB);
+    ((ccn)localObject).Zue = 1;
+    ((ccn)localObject).aalW = paramString;
+    if (paramMap != null)
+    {
+      ((ccn)localObject).aalX = paramMap.size();
+      ((ccn)localObject).aalY = new LinkedList();
+      paramString = paramMap.keySet().iterator();
+      while (paramString.hasNext())
+      {
+        Integer localInteger = (Integer)paramString.next();
+        ccp localccp = new ccp();
+        localccp.vhJ = localInteger.intValue();
+        localccp.Njp = ((String)paramMap.get(localInteger));
+        ((ccn)localObject).aalY.add(localccp);
+      }
+    }
+    AppMethodBeat.o(298541);
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
+  {
+    AppMethodBeat.i(73767);
+    Log.d("MicroMsg.NetSceneGeneralSet", "doScene");
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(73767);
     return i;
   }
   
   public final int getType()
   {
-    return 1191;
+    return 177;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(126852);
-    ab.d("MicroMsg.NetSceneGetUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      ab.i("MicroMsg.NetSceneGetUserAutoFillInfo", "return is 0.now we parse the json and resetList..");
-      paramq = (are)((b)paramq).fsW.fta;
-      if (paramq.xgu == null) {}
-    }
-    try
-    {
-      boolean bool = new JSONObject(paramq.xgu).getBoolean("has_invoice_info");
-      ab.i("MicroMsg.NetSceneGetUserAutoFillInfo", "has_invoice_info is ..".concat(String.valueOf(bool)));
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yFF, Boolean.valueOf(bool));
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(126852);
-      return;
-    }
-    catch (JSONException paramq)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.NetSceneGetUserAutoFillInfo", "error parse this json");
-      }
-    }
+    AppMethodBeat.i(73768);
+    Log.d("MicroMsg.NetSceneGeneralSet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(73768);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.g
  * JD-Core Version:    0.7.0.1
  */

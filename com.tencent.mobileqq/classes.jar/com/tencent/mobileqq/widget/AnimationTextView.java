@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import agda;
-import ajyb;
-import ajyd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -12,7 +9,6 @@ import android.graphics.Path;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Handler.Callback;
-import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
@@ -27,46 +23,50 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView.BufferType;
-import anwo;
-import anyh;
-import bamp;
-import bamw;
-import bamy;
-import bemz;
-import bena;
-import bhtd;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.activity.selectable.SelectableComponent;
+import com.tencent.mobileqq.activity.selectable.SelectableDelegate;
+import com.tencent.mobileqq.bubble.BubbleInfo;
+import com.tencent.mobileqq.bubble.VipBubbleDrawable;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.text.style.EmoticonSpan;
+import com.tencent.mobileqq.text.style.ISmallEmojiSpan;
+import com.tencent.qav.thread.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
 public class AnimationTextView
   extends PatchedTextView
-  implements ajyb, Handler.Callback
+  implements Handler.Callback, SelectableComponent
 {
   private static final int MSG_INVALIDATE = 1;
   private static final String TAG = "AnimationTextView";
-  public boolean doublleClicked;
+  public boolean doublleClicked = false;
   private boolean hasStroke;
   private Drawable[] hold;
   private Drawable[] hold2;
   public boolean isSingleClick = true;
-  private boolean mBlockRelayout;
+  private boolean mBlockRelayout = false;
   private MotionEvent mCurrentDownEvent;
-  private final Handler mHandler = new bhtd(Looper.myLooper(), this);
-  private boolean mHasSelected;
+  private final Handler mHandler = new WeakReferenceHandler(ThreadManager.a().getLooper(), this);
+  private boolean mHasSelected = false;
   private int mHighlightBackgroundColor = -5250572;
   private Paint mHighlightPaint;
   private Path mHighlightPath;
-  private boolean mIsHighlight;
+  private boolean mIsHighlight = false;
   private boolean mIsSelectable = true;
   private MotionEvent mPreviousUpEvent;
-  protected ajyd mSelectDelegate;
+  protected SelectableDelegate mSelectDelegate;
   private int mSelectEnd;
   private int mSelectStart;
   private int mStrokeColor;
   private final int[] mTempLocation = new int[2];
   Runnable mTimerForSecondClick = new AnimationTextView.1(this);
-  public bemz onDoubleClick;
-  public bena onSingleClick;
+  public AnimationTextView.OnDoubleClick onDoubleClick;
+  public AnimationTextView.OnSingleClick onSingleClick;
   public float touchL;
   public float touchT;
   
@@ -87,9 +87,10 @@ public class AnimationTextView
   
   private void checkDelegateBound()
   {
-    if (this.mSelectDelegate == null) {
-      throw new RuntimeException("Select delegate has not bound.");
+    if (this.mSelectDelegate != null) {
+      return;
     }
+    throw new RuntimeException("Select delegate has not bound.");
   }
   
   private void checkHighlightPaintAvailable()
@@ -111,77 +112,77 @@ public class AnimationTextView
   
   private void dealSmallEmojiClick()
   {
+    float f1 = this.touchL - BaseChatItemLayout.getTextBubblePaddingAlignHead();
+    float f2 = this.touchT - TextItemBuilder.y;
+    BubbleInfo localBubbleInfo = (BubbleInfo)getTag(2131430083);
+    Object localObject = (ChatMessage)getTag(2131430627);
     int i = 0;
-    float f1 = this.touchL;
-    float f3 = agda.e;
-    float f2 = this.touchT - agda.c;
-    anwo localanwo = (anwo)getTag(2131363765);
-    Object localObject = (ChatMessage)getTag(2131364216);
-    if (localObject != null) {}
-    for (boolean bool = ((ChatMessage)localObject).isSend();; bool = false)
+    boolean bool;
+    if (localObject != null) {
+      bool = ((ChatMessage)localObject).isSend();
+    } else {
+      bool = false;
+    }
+    if (bool) {
+      f1 = this.touchL - BaseChatItemLayout.getTextBubblePaddingAlignError();
+    }
+    localObject = getText();
+    if ((localObject instanceof QQText))
     {
-      if (bool) {}
-      for (f1 = this.touchL - agda.f;; f1 -= f3)
+      localObject = (QQText)localObject;
+      localObject = (EmoticonSpan[])((QQText)localObject).getSpans(0, ((QQText)localObject).length(), EmoticonSpan.class);
+      int k;
+      for (int j = 0; i < localObject.length; j = k)
       {
-        localObject = getText();
-        if ((localObject instanceof bamp))
+        ISmallEmojiSpan localISmallEmojiSpan = localObject[i];
+        k = j;
+        if ((localISmallEmojiSpan instanceof ISmallEmojiSpan))
         {
-          localObject = (bamp)localObject;
-          localObject = (bamw[])((bamp)localObject).getSpans(0, ((bamp)localObject).length(), bamw.class);
-          int k;
-          for (int j = 0; i < localObject.length; j = k)
+          localISmallEmojiSpan = (ISmallEmojiSpan)localISmallEmojiSpan;
+          float f3 = localISmallEmojiSpan.getLeft();
+          float f4 = localISmallEmojiSpan.getTop();
+          float f5 = localISmallEmojiSpan.getRight();
+          float f6 = localISmallEmojiSpan.getBottom();
+          k = j;
+          if (f1 >= f3)
           {
-            bamy localbamy = localObject[i];
             k = j;
-            if ((localbamy instanceof bamy))
+            if (f1 <= f5)
             {
-              localbamy = (bamy)localbamy;
-              f3 = localbamy.a;
-              float f4 = localbamy.b;
-              float f5 = localbamy.c;
-              float f6 = localbamy.d;
               k = j;
-              if (f1 >= f3)
+              if (f2 >= f4)
               {
                 k = j;
-                if (f1 <= f5)
+                if (f2 <= f6)
                 {
                   k = j;
-                  if (f2 >= f4)
-                  {
-                    k = j;
-                    if (f2 <= f6)
-                    {
-                      k = j;
-                      if (j == 0) {
-                        k = 1;
-                      }
-                    }
+                  if (j == 0) {
+                    k = 1;
                   }
                 }
               }
             }
-            i += 1;
-          }
-          if (j != 0)
-          {
-            localObject = getBackground();
-            if ((localObject == null) || (!(localObject instanceof anyh))) {
-              break label277;
-            }
-            ((anyh)localObject).a = true;
           }
         }
-        label277:
-        while ((localObject == null) || (localanwo == null)) {
-          return;
-        }
-        localObject = getResources();
-        if (bool) {}
-        for (i = 2130849438;; i = 2130849262)
+        i += 1;
+      }
+      if (j != 0)
+      {
+        localObject = getBackground();
+        if ((localObject != null) && ((localObject instanceof VipBubbleDrawable)))
         {
-          localanwo.a(this, ((Resources)localObject).getDrawable(i));
+          ((VipBubbleDrawable)localObject).a = true;
           return;
+        }
+        if ((localObject != null) && (localBubbleInfo != null))
+        {
+          localObject = getResources();
+          if (bool) {
+            i = 2130852126;
+          } else {
+            i = 2130851944;
+          }
+          localBubbleInfo.a(this, ((Resources)localObject).getDrawable(i));
         }
       }
     }
@@ -204,35 +205,33 @@ public class AnimationTextView
   
   private int detectIndexByOffsetSpring(int paramInt1, int paramInt2)
   {
-    int i = -1;
     checkDelegateBound();
-    int j = this.mSelectDelegate.d();
-    if (j == -1)
+    int i = this.mSelectDelegate.g();
+    if (i == -1)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AnimationTextView", 2, "detectIndexByOffsetSpring backport to detectIndexByOffset");
       }
-      i = detectIndexByOffset(paramInt1, paramInt2);
+      return detectIndexByOffset(paramInt1, paramInt2);
     }
-    Layout localLayout;
-    do
+    Layout localLayout = getLayout();
+    if (localLayout != null)
     {
-      return i;
-      localLayout = getLayout();
-    } while (localLayout == null);
-    int k;
-    if (j == 1)
-    {
-      i = this.mSelectDelegate.b();
-      k = localLayout.getLineForVertical(paramInt2);
-      j = i;
+      if (i == 1) {
+        i = this.mSelectDelegate.e();
+      } else {
+        i = this.mSelectDelegate.f();
+      }
+      int k = localLayout.getLineForVertical(paramInt2);
+      int j = i;
       if (isFirstIndexOnEndLine(i))
       {
-        m = (int)localLayout.getPrimaryHorizontal(i - 1);
-        n = (int)localLayout.getLineRight(k);
+        m = i - 1;
+        n = (int)localLayout.getPrimaryHorizontal(m);
+        i1 = (int)localLayout.getLineRight(k);
         j = i;
-        if (paramInt1 > n - (n - m) / 2) {
-          j = i - 1;
+        if (paramInt1 > i1 - (i1 - n) / 2) {
+          j = m;
         }
       }
       j = localLayout.getLineForOffset(j);
@@ -244,30 +243,33 @@ public class AnimationTextView
         i = j;
         if (paramInt2 - n < i1) {}
       }
+      else if ((k == j - 1) && (m - paramInt2 < i1))
+      {
+        i = j;
+      }
       else
       {
-        if ((k != j - 1) || (m - paramInt2 >= i1)) {
-          break label290;
-        }
+        i = k;
       }
-    }
-    label290:
-    for (i = j;; i = k)
-    {
-      paramInt2 = localLayout.getOffsetForHorizontal(i, paramInt1);
-      if ((paramInt2 < contentLength() - 1) && (isFirstIndexOnEndLine(paramInt2 + 1)))
+      j = localLayout.getOffsetForHorizontal(i, paramInt1);
+      paramInt2 = j;
+      if (j < contentLength() - 1)
       {
-        j = (int)localLayout.getPrimaryHorizontal(paramInt2);
-        i = (int)localLayout.getLineRight(i);
-        if (paramInt1 > i - (i - j) / 2)
+        k = j + 1;
+        paramInt2 = j;
+        if (isFirstIndexOnEndLine(k))
         {
-          return paramInt2 + 1;
-          i = this.mSelectDelegate.c();
-          break;
+          m = (int)localLayout.getPrimaryHorizontal(j);
+          i = (int)localLayout.getLineRight(i);
+          paramInt2 = j;
+          if (paramInt1 > i - (i - m) / 2) {
+            paramInt2 = k;
+          }
         }
       }
       return paramInt2;
     }
+    return -1;
   }
   
   private void invlidateSpan(Object paramObject)
@@ -283,26 +285,24 @@ public class AnimationTextView
       {
         int m = arrayOfSpanWatcher.length;
         int i = 0;
-        for (;;)
+        while (i < m)
         {
-          if (i < m)
+          SpanWatcher localSpanWatcher = arrayOfSpanWatcher[i];
+          try
           {
-            SpanWatcher localSpanWatcher = arrayOfSpanWatcher[i];
-            try
+            localSpanWatcher.onSpanChanged((Spannable)localObject, paramObject, j, k, j, k);
+          }
+          catch (Exception localException)
+          {
+            if (QLog.isColorLevel())
             {
-              localSpanWatcher.onSpanChanged((Spannable)localObject, paramObject, j, k, j, k);
-              i += 1;
-            }
-            catch (Exception localException)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.e("AnimationTextView", 2, "Exception: " + localException.getMessage());
-                }
-              }
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("Exception: ");
+              localStringBuilder.append(localException.getMessage());
+              QLog.e("AnimationTextView", 2, localStringBuilder.toString());
             }
           }
+          i += 1;
         }
       }
     }
@@ -310,30 +310,32 @@ public class AnimationTextView
   
   public static boolean isConsideredDoubleTap(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
   {
-    if (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > 200L) {}
-    int i;
-    int j;
-    do
-    {
+    long l1 = paramMotionEvent3.getEventTime();
+    long l2 = paramMotionEvent2.getEventTime();
+    boolean bool = false;
+    if (l1 - l2 > 200L) {
       return false;
-      i = (int)paramMotionEvent2.getX() - (int)paramMotionEvent3.getX();
-      j = (int)paramMotionEvent2.getY() - (int)paramMotionEvent3.getY();
-    } while (i * i + j * j >= 10000);
-    return true;
+    }
+    int i = (int)paramMotionEvent2.getX() - (int)paramMotionEvent3.getX();
+    int j = (int)paramMotionEvent2.getY() - (int)paramMotionEvent3.getY();
+    if (i * i + j * j < 10000) {
+      bool = true;
+    }
+    return bool;
   }
   
   private boolean isFirstIndexOnEndLine(int paramInt)
   {
     Layout localLayout = getLayout();
-    if (localLayout == null) {
-      throw new RuntimeException("Has no layout.");
+    if (localLayout != null) {
+      return (paramInt > 0) && (localLayout.getLineForOffset(paramInt) == localLayout.getLineForOffset(paramInt - 1) + 1);
     }
-    return (paramInt > 0) && (localLayout.getLineForOffset(paramInt) == localLayout.getLineForOffset(paramInt - 1) + 1);
+    throw new RuntimeException("Has no layout.");
   }
   
-  public void bind(@Nullable ajyd paramajyd)
+  public void bind(@Nullable SelectableDelegate paramSelectableDelegate)
   {
-    this.mSelectDelegate = paramajyd;
+    this.mSelectDelegate = paramSelectableDelegate;
   }
   
   public void clearHighlightContent()
@@ -358,17 +360,21 @@ public class AnimationTextView
   }
   
   @Nullable
-  public ajyd delegate()
+  public SelectableDelegate delegate()
   {
     return this.mSelectDelegate;
   }
   
   public void doSelecting(ChatMessage paramChatMessage)
   {
-    if (this.mSelectDelegate == null) {
-      throw new IllegalStateException("Has no bound delegate!");
+    SelectableDelegate localSelectableDelegate = this.mSelectDelegate;
+    if (localSelectableDelegate != null)
+    {
+      localSelectableDelegate.a(paramChatMessage);
+      ReportController.b(null, "dc00898", "", "", "0X800AE7A", "0X800AE7A", 1, 0, "", "", "", "");
+      return;
     }
-    this.mSelectDelegate.a(paramChatMessage);
+    throw new IllegalStateException("Has no bound delegate!");
   }
   
   public int endIndex()
@@ -378,32 +384,30 @@ public class AnimationTextView
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
+    if (paramMessage.what != 1) {
+      return true;
     }
-    Object localObject1;
-    do
+    Object localObject1 = getText();
+    if ((localObject1 instanceof Spannable))
     {
-      do
-      {
-        return true;
-        localObject1 = getText();
-      } while (!(localObject1 instanceof Spannable));
       localObject1 = (Spannable)localObject1;
-      localObject1 = (bamw[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), bamw.class);
-    } while ((localObject1 == null) || (localObject1.length <= 0));
-    this.mBlockRelayout = true;
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject2 = localObject1[i];
-      if (localObject2.a() == paramMessage.obj) {
-        invlidateSpan(localObject2);
+      localObject1 = (EmoticonSpan[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), EmoticonSpan.class);
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        this.mBlockRelayout = true;
+        int j = localObject1.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          if (localObject2.getDrawable() == paramMessage.obj) {
+            invlidateSpan(localObject2);
+          }
+          i += 1;
+        }
+        this.mBlockRelayout = false;
       }
-      i += 1;
     }
-    this.mBlockRelayout = false;
     return true;
   }
   
@@ -412,6 +416,11 @@ public class AnimationTextView
   public boolean hasSelected()
   {
     return this.mHasSelected;
+  }
+  
+  public boolean hasTouchSelectableArea(int paramInt1, int paramInt2)
+  {
+    return true;
   }
   
   public int highlightBackgroundColor()
@@ -472,8 +481,7 @@ public class AnimationTextView
     }
     getLocationInWindow(paramArrayOfInt);
     paramArrayOfInt[0] = (paramArrayOfInt[0] + (int)localLayout.getPrimaryHorizontal(paramInt) + getPaddingLeft());
-    int i = paramArrayOfInt[1];
-    paramArrayOfInt[1] = (localLayout.getLineBottom(localLayout.getLineForOffset(paramInt)) + i + getPaddingTop());
+    paramArrayOfInt[1] = (paramArrayOfInt[1] + localLayout.getLineBottom(localLayout.getLineForOffset(paramInt)) + getPaddingTop());
   }
   
   protected void onDetachedFromWindow()
@@ -514,27 +522,30 @@ public class AnimationTextView
         this.touchT = paramMotionEvent.getY();
         dealSmallEmojiClick();
         this.mCurrentDownEvent = MotionEvent.obtain(paramMotionEvent);
-        if ((this.mPreviousUpEvent != null) && (this.mCurrentDownEvent != null) && (isConsideredDoubleTap(this.mCurrentDownEvent, this.mPreviousUpEvent, paramMotionEvent)))
+        Object localObject = this.mPreviousUpEvent;
+        if (localObject != null)
         {
-          this.isSingleClick = false;
-          this.mCurrentDownEvent = null;
-          this.mPreviousUpEvent = null;
-          if (this.onDoubleClick != null)
+          MotionEvent localMotionEvent = this.mCurrentDownEvent;
+          if ((localMotionEvent != null) && (isConsideredDoubleTap(localMotionEvent, (MotionEvent)localObject, paramMotionEvent)))
           {
-            this.onDoubleClick.a(this);
-            this.doublleClicked = true;
-            if (QLog.isColorLevel()) {
-              QLog.d("AnimationTextView", 2, "DoubleClick invoked");
+            this.isSingleClick = false;
+            this.mCurrentDownEvent = null;
+            this.mPreviousUpEvent = null;
+            localObject = this.onDoubleClick;
+            if (localObject != null)
+            {
+              ((AnimationTextView.OnDoubleClick)localObject).a(this);
+              this.doublleClicked = true;
+              if (QLog.isColorLevel()) {
+                QLog.d("AnimationTextView", 2, "DoubleClick invoked");
+              }
+              return true;
             }
-            return true;
           }
         }
       }
-      else
+      else if ((this.mPreviousUpEvent == null) && (paramMotionEvent.getAction() == 0))
       {
-        if ((this.mPreviousUpEvent != null) || (paramMotionEvent.getAction() != 0)) {
-          break label192;
-        }
         this.isSingleClick = true;
         this.touchL = paramMotionEvent.getX();
         this.touchT = paramMotionEvent.getY();
@@ -543,12 +554,7 @@ public class AnimationTextView
           QLog.d("AnimationTextView", 2, "reserve to initial status");
         }
       }
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      label192:
-      if (paramMotionEvent.getAction() == 1)
+      else if (paramMotionEvent.getAction() == 1)
       {
         if (QLog.isColorLevel()) {
           QLog.d("AnimationTextView", 2, "action up");
@@ -565,6 +571,7 @@ public class AnimationTextView
         postDelayed(this.mTimerForSecondClick, 200L);
       }
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void requestLayout()
@@ -586,24 +593,27 @@ public class AnimationTextView
   
   public void selectContent(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == -1) || (paramInt2 == -1))
+    if ((paramInt1 != -1) && (paramInt2 != -1))
+    {
+      if (paramInt1 > paramInt2)
+      {
+        this.mSelectStart = paramInt2;
+        this.mSelectEnd = paramInt1;
+      }
+      else
+      {
+        this.mSelectStart = paramInt1;
+        this.mSelectEnd = paramInt2;
+      }
+      if (this.mSelectEnd - this.mSelectStart > 0) {
+        this.mHasSelected = true;
+      }
+    }
+    else
     {
       this.mSelectStart = -1;
       this.mSelectEnd = -1;
       this.mHasSelected = false;
-    }
-    for (;;)
-    {
-      return;
-      if (paramInt1 > paramInt2) {
-        this.mSelectStart = paramInt2;
-      }
-      for (this.mSelectEnd = paramInt1; this.mSelectEnd - this.mSelectStart > 0; this.mSelectEnd = paramInt2)
-      {
-        this.mHasSelected = true;
-        return;
-        this.mSelectStart = paramInt1;
-      }
     }
   }
   
@@ -615,7 +625,6 @@ public class AnimationTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    int j = 0;
     Object localObject = getText();
     super.setText(paramCharSequence, paramBufferType);
     this.hold = null;
@@ -623,12 +632,14 @@ public class AnimationTextView
     if ((localObject != paramCharSequence) && ((getText() instanceof Spanned)))
     {
       paramCharSequence = (Spanned)getText();
-      paramBufferType = (bamw[])paramCharSequence.getSpans(0, paramCharSequence.length(), bamw.class);
+      int i = paramCharSequence.length();
+      int j = 0;
+      paramBufferType = (EmoticonSpan[])paramCharSequence.getSpans(0, i, EmoticonSpan.class);
       localObject = new Drawable[paramBufferType.length];
-      int i = 0;
+      i = 0;
       while (i < paramBufferType.length)
       {
-        localObject[i] = paramBufferType[i].a();
+        localObject[i] = paramBufferType[i].getDrawable();
         if (localObject[i] != null) {
           localObject[i].setCallback(this);
         }
@@ -679,7 +690,7 @@ public class AnimationTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationTextView
  * JD-Core Version:    0.7.0.1
  */

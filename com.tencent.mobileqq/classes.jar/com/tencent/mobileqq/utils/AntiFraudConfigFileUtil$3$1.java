@@ -1,28 +1,25 @@
 package com.tencent.mobileqq.utils;
 
-import bdfc;
-import bdfd;
-
-public class AntiFraudConfigFileUtil$3$1
+class AntiFraudConfigFileUtil$3$1
   implements Runnable
 {
-  public AntiFraudConfigFileUtil$3$1(bdfd parambdfd, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  AntiFraudConfigFileUtil$3$1(AntiFraudConfigFileUtil.3 param3, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bdfd.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    String str = SecUtil.getFileMd5(this.jdField_a_of_type_Bdfd.a.a(this.jdField_a_of_type_JavaLangString));
-    if (!this.b.equalsIgnoreCase(str))
+    this.e.a.b(this.a, this.b);
+    String str = SecUtil.getFileMd5(this.e.a.a(this.a));
+    if (!this.c.equalsIgnoreCase(str))
     {
-      this.jdField_a_of_type_Bdfd.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      this.e.a.a(this.a, this.c, this.d);
       return;
     }
-    this.jdField_a_of_type_Bdfd.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+    this.e.a.a(this.a, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AntiFraudConfigFileUtil.3.1
  * JD-Core Version:    0.7.0.1
  */

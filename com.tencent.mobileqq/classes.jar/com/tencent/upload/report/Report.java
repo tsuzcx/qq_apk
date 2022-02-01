@@ -58,12 +58,44 @@ public class Report
   
   public String toString()
   {
-    return "UploadReportObj [retCode=" + this.retCode + ",errMsg=" + this.errMsg + ",flowId=" + this.flowId + ",filePath=" + this.filePath + ",uploadType=" + this.uploadType + ",uppAppId=" + this.uppAppId + ",fileSize=" + this.fileSize + ",startTime=" + this.startTime + ",endTime=" + this.endTime + ",serverIp=" + this.serverIp + ",ipsrctype=" + this.ipsrctype + ",networkType=" + this.networkType + ",retry=" + this.retry + ",source=" + this.source + ",reportType=" + this.reportType + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UploadReportObj [retCode=");
+    localStringBuilder.append(this.retCode);
+    localStringBuilder.append(",errMsg=");
+    localStringBuilder.append(this.errMsg);
+    localStringBuilder.append(",flowId=");
+    localStringBuilder.append(this.flowId);
+    localStringBuilder.append(",filePath=");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append(",uploadType=");
+    localStringBuilder.append(this.uploadType);
+    localStringBuilder.append(",uppAppId=");
+    localStringBuilder.append(this.uppAppId);
+    localStringBuilder.append(",fileSize=");
+    localStringBuilder.append(this.fileSize);
+    localStringBuilder.append(",startTime=");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append(",endTime=");
+    localStringBuilder.append(this.endTime);
+    localStringBuilder.append(",serverIp=");
+    localStringBuilder.append(this.serverIp);
+    localStringBuilder.append(",ipsrctype=");
+    localStringBuilder.append(this.ipsrctype);
+    localStringBuilder.append(",networkType=");
+    localStringBuilder.append(this.networkType);
+    localStringBuilder.append(",retry=");
+    localStringBuilder.append(this.retry);
+    localStringBuilder.append(",source=");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append(",reportType=");
+    localStringBuilder.append(this.reportType);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.report.Report
  * JD-Core Version:    0.7.0.1
  */

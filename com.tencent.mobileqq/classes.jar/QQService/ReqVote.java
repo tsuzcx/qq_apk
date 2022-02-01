@@ -8,8 +8,8 @@ public final class ReqVote
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public long lMID;
-  public ReqHead stHeader;
+  public long lMID = 0L;
+  public ReqHead stHeader = null;
   
   public ReqVote() {}
   
@@ -36,7 +36,7 @@ public final class ReqVote
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqVote
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,8 @@ final class em$a
   
   public final Iterator<Map.Entry<K, V>> iterator()
   {
-    return new em.b(this.a, em.a(this.a), (byte)0);
+    em localem = this.a;
+    return new em.b(localem, em.a(localem), (byte)0);
   }
   
   public final int size()

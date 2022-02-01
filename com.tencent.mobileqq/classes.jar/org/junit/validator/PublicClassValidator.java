@@ -14,12 +14,16 @@ public class PublicClassValidator
     if (paramTestClass.isPublic()) {
       return NO_VALIDATION_ERRORS;
     }
-    return Collections.singletonList(new Exception("The class " + paramTestClass.getName() + " is not public."));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("The class ");
+    localStringBuilder.append(paramTestClass.getName());
+    localStringBuilder.append(" is not public.");
+    return Collections.singletonList(new Exception(localStringBuilder.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.validator.PublicClassValidator
  * JD-Core Version:    0.7.0.1
  */

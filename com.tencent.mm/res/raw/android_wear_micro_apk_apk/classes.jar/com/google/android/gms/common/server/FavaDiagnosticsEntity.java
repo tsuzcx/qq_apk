@@ -10,15 +10,15 @@ public class FavaDiagnosticsEntity
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<FavaDiagnosticsEntity> CREATOR = new a();
-  final int Hc;
-  public final String KJ;
-  public final int KK;
+  final int IR;
+  public final String My;
+  public final int Mz;
   
   public FavaDiagnosticsEntity(int paramInt1, String paramString, int paramInt2)
   {
-    this.Hc = paramInt1;
-    this.KJ = paramString;
-    this.KK = paramInt2;
+    this.IR = paramInt1;
+    this.My = paramString;
+    this.Mz = paramInt2;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

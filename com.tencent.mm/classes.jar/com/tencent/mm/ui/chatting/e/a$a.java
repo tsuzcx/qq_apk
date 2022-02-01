@@ -1,39 +1,40 @@
 package com.tencent.mm.ui.chatting.e;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.i;
-import com.tencent.mm.ui.chatting.i.c;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.h;
+import com.tencent.mm.ui.chatting.a.b;
+import com.tencent.mm.ui.chatting.presenter.c;
 
 public abstract interface a$a
   extends c<a.b>
 {
-  public abstract String apc();
+  public abstract void I(boolean paramBoolean, int paramInt);
   
-  public abstract <T extends RecyclerView.i> T bgA();
+  public abstract void MN(int paramInt);
   
-  public abstract RecyclerView.a bi(String paramString, long paramLong);
+  public abstract String bVz();
   
-  public abstract void byh();
+  public abstract b cA(String paramString, long paramLong);
   
-  public abstract void byi();
+  public abstract boolean dSE();
   
-  public abstract <T extends RecyclerView.a> T byo();
+  public abstract void dSF();
   
-  public abstract boolean byp();
+  public abstract void dSG();
   
-  public abstract int dJK();
+  public abstract <T extends RecyclerView.a> T dSN();
   
-  public abstract void dJL();
+  public abstract <T extends RecyclerView.LayoutManager> T fT(Context paramContext);
   
-  public abstract RecyclerView.h dR(Context paramContext);
+  public abstract RecyclerView.h gl(Context paramContext);
+  
+  public abstract int juK();
+  
+  public abstract void juL();
   
   public abstract void onResume();
-  
-  public abstract void v(boolean paramBoolean, int paramInt);
-  
-  public abstract void wc(int paramInt);
 }
 
 

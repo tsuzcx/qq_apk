@@ -1,20 +1,24 @@
 package kotlinx.coroutines;
 
-import a.c.e;
-import a.c.e.b;
-import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.CancellationException;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/ThreadContextElement;", "S", "Lkotlin/coroutines/CoroutineContext$Element;", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;)V", "updateThreadContext", "(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public abstract interface bq<S>
-  extends e.b
+@Metadata(d1={""}, d2={"CancellationException", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "message", "", "cause", "", "addSuppressedThrowable", "", "other", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
+public final class bq
 {
-  public abstract void a(e parame, S paramS);
-  
-  public abstract S c(e parame);
+  public static final CancellationException i(String paramString, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(188803);
+    paramString = new CancellationException(paramString);
+    paramString.initCause(paramThrowable);
+    AppMethodBeat.o(188803);
+    return paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bq
  * JD-Core Version:    0.7.0.1
  */

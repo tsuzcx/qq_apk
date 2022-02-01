@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import affg;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class MultiFavoriteHelper$1
+class MultiFavoriteHelper$1
   implements Runnable
 {
-  public MultiFavoriteHelper$1(affg paramaffg) {}
+  MultiFavoriteHelper$1(MultiFavoriteHelper paramMultiFavoriteHelper) {}
   
   public void run()
   {
-    QQToast.a(affg.a(this.this$0).getApp(), 2131694594, 0).b(affg.a(this.this$0).a());
+    QQToast.makeText(MultiFavoriteHelper.b(this.this$0).getApp(), 2131891968, 0).show(MultiFavoriteHelper.a(this.this$0).A());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiFavoriteHelper.1
  * JD-Core Version:    0.7.0.1
  */

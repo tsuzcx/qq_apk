@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqGetCooperateCms
   extends JceStruct
 {
-  public int cmsType;
-  public long preTime;
+  public int cmsType = 0;
+  public long preTime = 0L;
   
   public ReqGetCooperateCms() {}
   
@@ -32,7 +32,7 @@ public final class ReqGetCooperateCms
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acs.ReqGetCooperateCms
  * JD-Core Version:    0.7.0.1
  */

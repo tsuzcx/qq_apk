@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class be
-  extends a<r>
+  extends c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  public static final int CTRL_INDEX = 201;
-  public static final String NAME = "openUrl";
+  public static final int CTRL_INDEX = 101;
+  public static final String NAME = "getAppConfig";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.be
  * JD-Core Version:    0.7.0.1
  */

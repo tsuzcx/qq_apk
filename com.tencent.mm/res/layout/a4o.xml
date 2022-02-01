@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/cd" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/rz" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/xb" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/ce" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/df" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/df" android:layout_marginStart="@dimen/cp">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/wx" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/icons_filled_album" />
+            <TextView android:textSize="@dimen/cd" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/x3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:maxLines="1" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

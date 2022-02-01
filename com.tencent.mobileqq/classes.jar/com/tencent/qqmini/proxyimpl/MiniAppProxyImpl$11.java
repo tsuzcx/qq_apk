@@ -1,63 +1,57 @@
 package com.tencent.qqmini.proxyimpl;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import bgnk;
-import bgnl;
+import com.tencent.open.base.MD5;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONException;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class MiniAppProxyImpl$11
-  implements bgnl
+  extends BroadcastReceiver
 {
   MiniAppProxyImpl$11(MiniAppProxyImpl paramMiniAppProxyImpl, AsyncResult paramAsyncResult) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
-    if (paramInt1 == 3)
+    String str = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData");
+    paramIntent = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("scanResult: ");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("----scan_type: ");
+    ((StringBuilder)localObject).append(paramIntent);
+    QLog.d("MiniAppProxyImpl", 2, ((StringBuilder)localObject).toString());
+    try
     {
-      String str1;
-      String str2;
-      double d1;
-      double d2;
-      if ((paramInt2 == -1) && (paramIntent != null))
-      {
-        str1 = paramIntent.getStringExtra("name");
-        str2 = paramIntent.getStringExtra("address");
-        d1 = paramIntent.getIntExtra("latitude", 0) / 1000000.0D;
-        d2 = paramIntent.getIntExtra("longitude", 0) / 1000000.0D;
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult name=" + str1 + ",address=" + str2 + ",latitude=" + d1 + ",longitude=" + d2);
-        }
-        paramIntent = new JSONObject();
-      }
-      try
-      {
-        paramIntent.put("name", str1);
-        paramIntent.put("address", str2);
-        paramIntent.put("latitude", d1);
-        paramIntent.put("longitude", d2);
-        this.val$asyncResult.onReceiveResult(true, paramIntent);
-        bgnk.a().b(this);
-        return true;
-      }
-      catch (JSONException paramIntent)
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
-          this.val$asyncResult.onReceiveResult(false, new JSONObject());
-        }
-      }
+      localObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", str);
+      localJSONObject.put("scanType", paramIntent);
+      localJSONObject.put("rawData", MD5.b(str));
+      localJSONObject.put("charSet", "utf-8");
+      ((JSONObject)localObject).put("detail", localJSONObject);
+      ((JSONObject)localObject).put("result", str);
+      ((JSONObject)localObject).put("scanType", paramIntent);
+      ((JSONObject)localObject).put("rawData", MD5.b(str));
+      ((JSONObject)localObject).put("charSet", "utf-8");
+      this.a.onReceiveResult(true, (JSONObject)localObject);
+      paramContext.unregisterReceiver(MiniAppProxyImpl.d(this.b));
     }
-    return false;
+    catch (Exception paramContext)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("scan result error.");
+      paramIntent.append(paramContext);
+      QLog.e("MiniAppProxyImpl", 1, paramIntent.toString());
+    }
+    MiniAppProxyImpl.a(this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.11
  * JD-Core Version:    0.7.0.1
  */

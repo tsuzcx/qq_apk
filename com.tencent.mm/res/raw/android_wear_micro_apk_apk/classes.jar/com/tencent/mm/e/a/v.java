@@ -5,29 +5,29 @@ import java.util.LinkedList;
 public final class v
   extends com.tencent.mm.d.a
 {
-  public LinkedList<Integer> Wc = new LinkedList();
-  public boolean Wd;
+  public LinkedList<Integer> XX = new LinkedList();
+  public boolean XY;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.b(1, 2, this.Wc);
-      paramVarArgs.g(2, this.Wd);
+      paramVarArgs.b(1, 2, this.XX);
+      paramVarArgs.h(2, this.XY);
       return 0;
     }
     if (paramInt == 1) {
-      return a.a.a.a.a(1, 2, this.Wc) + 0 + (a.a.a.b.b.a.cp(2) + 1);
+      return a.a.a.a.a(1, 2, this.XX) + 0 + (a.a.a.b.b.a.cK(2) + 1);
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.Wc.clear();
-      paramVarArgs = new a.a.a.a.a(paramVarArgs, Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      this.XX.clear();
+      paramVarArgs = new a.a.a.a.a(paramVarArgs, Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
       return 0;
@@ -41,10 +41,10 @@ public final class v
       default: 
         return -1;
       case 1: 
-        localv.Wc.add(Integer.valueOf(locala.ot()));
+        localv.XX.add(Integer.valueOf(locala.pg()));
         return 0;
       }
-      localv.Wd = locala.ov();
+      localv.XY = locala.pi();
       return 0;
     }
     return -1;

@@ -1,29 +1,37 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.ContextMenu;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.model.app.l;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.s.n;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.plugin.finder.api.e;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.ui.chatting.component.api.m;
 
 public final class r$b
   extends c
-  implements s.n
 {
-  private r.c zUs;
-  private a zzP;
+  private com.tencent.mm.ui.chatting.d.a aeiK;
   
   public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    AppMethodBeat.i(33013);
+    AppMethodBeat.i(163330);
     Object localObject;
     if (paramView != null)
     {
@@ -32,84 +40,94 @@ public final class r$b
     }
     else
     {
-      localObject = new w(paramLayoutInflater, 2130969128);
-      ((View)localObject).setTag(new r.d().fi((View)localObject));
+      localObject = new ap(paramLayoutInflater, R.i.gfE);
+      ((View)localObject).setTag(new r.a().U((View)localObject, false));
     }
-    AppMethodBeat.o(33013);
+    AppMethodBeat.o(163330);
     return localObject;
   }
   
-  public final void a(a parama, bi parambi)
+  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, cc paramcc, String paramString)
   {
-    AppMethodBeat.i(33017);
-    if (parambi.bCn())
+    AppMethodBeat.i(163331);
+    this.aeiK = parama1;
+    paramString = (r.a)parama;
+    parama = paramcc.field_content;
+    if (parama != null) {}
+    for (parama = k.b.aP(parama, paramcc.field_reserved);; parama = null)
     {
-      l.al(parambi);
-      bf.gw(parambi.field_msgId);
-      parama.qT(true);
-    }
-    AppMethodBeat.o(33017);
-  }
-  
-  public final void a(c.a parama, int paramInt, a parama1, bi parambi, String paramString)
-  {
-    AppMethodBeat.i(33014);
-    this.zzP = parama1;
-    parama = (r.d)parama;
-    if (this.zUs == null) {
-      this.zUs = new r.c(this.zzP, this);
-    }
-    r.d.a(parama, paramInt, parama1, parambi, true, this.zUs, c(parama1));
-    a(paramInt, parama, parambi, parama1.dJD(), parama1.dJG(), parama1, this);
-    AppMethodBeat.o(33014);
-  }
-  
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bi parambi)
-  {
-    AppMethodBeat.i(33015);
-    boolean bool = r.a(this.zzP, paramContextMenu, paramView, parambi);
-    AppMethodBeat.o(33015);
-    return bool;
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, a parama, bi parambi)
-  {
-    AppMethodBeat.i(33016);
-    if (paramMenuItem.getItemId() == 111)
-    {
-      paramMenuItem = j.b.mY(bf.b(parama.dJG(), parambi.field_content, parambi.field_isSend));
-      if (paramMenuItem != null) {
-        h.qsU.e(16979, new Object[] { paramMenuItem.fiY, paramMenuItem.fiW, Integer.valueOf(0), Integer.valueOf(2) });
+      if (parama != null)
+      {
+        parama = (e)parama.aK(e.class);
+        if (parama != null)
+        {
+          paramString.aeQb.setImageDrawable(bb.m(parama1.aezO.getContext(), R.k.icons_outlined_finder_guarantee, parama1.aezO.getContext().getResources().getColor(R.e.Orange_100)));
+          paramString.aeQc.setText(R.l.finder_endorsement_type);
+          if (!Util.isNullOrNil(parama.desc)) {
+            break label227;
+          }
+          paramString.aeQd.setVisibility(8);
+        }
       }
-      d.b.a(parama, parambi, b(parama, parambi));
+      for (;;)
+      {
+        paramString.lBD.setText(p.b(parama1.aezO.getContext(), parama.title));
+        paramString.clickArea.setOnClickListener(d(parama1));
+        paramString.clickArea.setOnLongClickListener(c(parama1));
+        paramString.clickArea.setOnTouchListener(((m)parama1.cm(m.class)).jqv());
+        parama = new bz(paramcc, this.aeiK.juG(), paramInt, null, '\000');
+        paramString.clickArea.setTag(parama);
+        AppMethodBeat.o(163331);
+        return;
+        label227:
+        paramString.aeQd.setVisibility(0);
+        paramString.aeQd.setText(p.b(parama1.aezO.getContext(), parama.desc));
+      }
     }
-    AppMethodBeat.o(33016);
+  }
+  
+  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.d.a parama, cc paramcc)
+  {
     return false;
   }
   
-  public final boolean aK(int paramInt, boolean paramBoolean)
-  {
-    return (paramBoolean) && (paramInt == 687865905);
-  }
-  
-  public final boolean b(View paramView, a parama, bi parambi)
+  public final boolean a(s params, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo, cc paramcc)
   {
     return true;
   }
   
-  final boolean dLp()
+  public final boolean c(View paramView, com.tencent.mm.ui.chatting.d.a parama, cc paramcc)
   {
-    return true;
+    AppMethodBeat.i(163332);
+    String str = paramcc.field_content;
+    paramView = null;
+    if (str != null) {
+      paramView = k.b.aP(str, paramcc.field_reserved);
+    }
+    if (paramView != null)
+    {
+      paramView = (e)paramView.aK(e.class);
+      if (paramView != null) {
+        com.tencent.mm.plugin.finder.utils.a.GfO.a(parama.aezO.getContext(), paramView.appid, paramView.Axg, 1201, "");
+      }
+    }
+    AppMethodBeat.o(163332);
+    return false;
   }
   
-  final boolean dLq()
+  public final boolean cM(int paramInt, boolean paramBoolean)
+  {
+    return (!paramBoolean) && (paramInt == 1076887601);
+  }
+  
+  public final boolean fXn()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.r.b
  * JD-Core Version:    0.7.0.1
  */

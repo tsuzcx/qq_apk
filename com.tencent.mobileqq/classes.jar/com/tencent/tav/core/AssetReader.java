@@ -27,58 +27,61 @@ public class AssetReader
   {
     Iterator localIterator = this.outputs.iterator();
     int i = 1;
-    AssetReaderOutput localAssetReaderOutput;
     int j;
-    if (localIterator.hasNext())
+    AssetReaderOutput localAssetReaderOutput;
+    for (;;)
     {
-      localAssetReaderOutput = (AssetReaderOutput)localIterator.next();
-      if (this.outputStatusHashMap.get(localAssetReaderOutput) == AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted) {}
-      for (j = 1;; j = 0)
-      {
-        i = j & i;
+      boolean bool = localIterator.hasNext();
+      j = 0;
+      if (!bool) {
         break;
       }
-    }
-    if (i != 0) {
-      this.status = AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted;
-    }
-    do
-    {
-      return;
-      while (!localIterator.hasNext())
-      {
-        localIterator = this.outputs.iterator();
-        i = 1;
-        if (localIterator.hasNext())
-        {
-          localAssetReaderOutput = (AssetReaderOutput)localIterator.next();
-          if ((this.outputStatusHashMap.get(localAssetReaderOutput) == AssetReader.AVAssetReaderStatus.AssetReaderStatusReading) || (this.outputStatusHashMap.get(localAssetReaderOutput) == AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted)) {}
-          for (j = 1;; j = 0)
-          {
-            i = j & i;
-            break;
-          }
-        }
-        if (i != 0)
-        {
-          this.status = AssetReader.AVAssetReaderStatus.AssetReaderStatusReading;
-          return;
-        }
-        localIterator = this.outputs.iterator();
-        while (localIterator.hasNext())
-        {
-          localAssetReaderOutput = (AssetReaderOutput)localIterator.next();
-          if (this.outputStatusHashMap.get(localAssetReaderOutput) == AssetReader.AVAssetReaderStatus.AssetReaderStatusFailed)
-          {
-            this.status = AssetReader.AVAssetReaderStatus.AssetReaderStatusFailed;
-            return;
-          }
-        }
-        localIterator = this.outputs.iterator();
-      }
       localAssetReaderOutput = (AssetReaderOutput)localIterator.next();
-    } while (this.outputStatusHashMap.get(localAssetReaderOutput) != AssetReader.AVAssetReaderStatus.AssetReaderStatusCancelled);
-    this.status = AssetReader.AVAssetReaderStatus.AssetReaderStatusCancelled;
+      if (this.outputStatusHashMap.get(localAssetReaderOutput) == AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted) {
+        j = 1;
+      }
+      i &= j;
+    }
+    if (i != 0)
+    {
+      this.status = AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted;
+      return;
+    }
+    localIterator = this.outputs.iterator();
+    i = 1;
+    while (localIterator.hasNext())
+    {
+      localAssetReaderOutput = (AssetReaderOutput)localIterator.next();
+      if ((this.outputStatusHashMap.get(localAssetReaderOutput) != AssetReader.AVAssetReaderStatus.AssetReaderStatusReading) && (this.outputStatusHashMap.get(localAssetReaderOutput) != AssetReader.AVAssetReaderStatus.AssetReaderStatusCompleted)) {
+        j = 0;
+      } else {
+        j = 1;
+      }
+      i &= j;
+    }
+    if (i != 0)
+    {
+      this.status = AssetReader.AVAssetReaderStatus.AssetReaderStatusReading;
+      return;
+    }
+    localIterator = this.outputs.iterator();
+    while (localIterator.hasNext())
+    {
+      localAssetReaderOutput = (AssetReaderOutput)localIterator.next();
+      if (this.outputStatusHashMap.get(localAssetReaderOutput) == AssetReader.AVAssetReaderStatus.AssetReaderStatusFailed)
+      {
+        this.status = AssetReader.AVAssetReaderStatus.AssetReaderStatusFailed;
+        return;
+      }
+    }
+    localIterator = this.outputs.iterator();
+    while (localIterator.hasNext())
+    {
+      localAssetReaderOutput = (AssetReaderOutput)localIterator.next();
+      if (this.outputStatusHashMap.get(localAssetReaderOutput) == AssetReader.AVAssetReaderStatus.AssetReaderStatusCancelled) {
+        this.status = AssetReader.AVAssetReaderStatus.AssetReaderStatusCancelled;
+      }
+    }
   }
   
   public void addOutput(AssetReaderOutput paramAssetReaderOutput)
@@ -139,19 +142,16 @@ public class AssetReader
   {
     this.contextCreate = paramIContextCreate;
     Iterator localIterator = this.outputs.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       AssetReaderOutput localAssetReaderOutput = (AssetReaderOutput)localIterator.next();
       this.outputStatusHashMap.put(localAssetReaderOutput, AssetReader.AVAssetReaderStatus.AssetReaderStatusReading);
       if (localAssetReaderOutput.mediaType == 1) {
         localAssetReaderOutput.start(paramIContextCreate, this);
-      }
-      for (;;)
-      {
-        localAssetReaderOutput.addStatusListener(this);
-        break;
+      } else {
         localAssetReaderOutput.start(null, this);
       }
+      localAssetReaderOutput.addStatusListener(this);
     }
     updateAssetStatus();
     return this.outputs.size() > 0;
@@ -165,7 +165,7 @@ public class AssetReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetReader
  * JD-Core Version:    0.7.0.1
  */

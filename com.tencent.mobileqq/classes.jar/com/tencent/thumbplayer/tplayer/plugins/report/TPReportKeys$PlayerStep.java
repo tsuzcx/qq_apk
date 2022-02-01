@@ -12,6 +12,8 @@ public final class TPReportKeys$PlayerStep
   public static final String PLAYER_CGI_PROXY_IP = "ip";
   public static final String PLAYER_END_TIME = "etime";
   public static final String PLAYER_ERROR_CODE = "code";
+  public static final String PLAYER_FIRST_OPEN_TIME = "fileopenedtime";
+  public static final String PLAYER_FIRST_PACKET_READ_TIME = "firstpacketreadtime";
   public static final String PLAYER_FORMAT = "format";
   public static final String PLAYER_PLAY_DURATION = "playduration";
   public static final String PLAYER_PRESENT_TIME = "ptime";
@@ -26,12 +28,13 @@ public final class TPReportKeys$PlayerStep
   public static final String PLAYER_SELECT_TRACK_TYPE = "tracktype";
   public static final String PLAYER_START_TIME = "stime";
   public static final String PLAYER_T302 = "t302";
+  public static final String PLAYER_TRACK_NAME = "name";
   public static final String PLAYER_URL = "url";
   public static final String PLAYER_URL_INDEX = "urlindex";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportKeys.PlayerStep
  * JD-Core Version:    0.7.0.1
  */

@@ -48,23 +48,19 @@ public class CanyingEffect
   
   protected void afterDraw(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (this.currFrameIndex % 4 == 0) {
+    int i = this.currFrameIndex;
+    if (i % 4 == 0) {
       cacheTexture(paramTAVTextureInfo, 4);
+    } else if (i % 4 == 1) {
+      cacheTexture(paramTAVTextureInfo, 3);
+    } else if (i % 4 == 2) {
+      cacheTexture(paramTAVTextureInfo, 2);
+    } else {
+      cacheTexture(paramTAVTextureInfo, 1);
     }
-    for (;;)
-    {
-      this.currFrameIndex += 1;
-      if (this.currFrameIndex > 3) {
-        this.currFrameIndex = 0;
-      }
-      return;
-      if (this.currFrameIndex % 4 == 1) {
-        cacheTexture(paramTAVTextureInfo, 3);
-      } else if (this.currFrameIndex % 4 == 2) {
-        cacheTexture(paramTAVTextureInfo, 2);
-      } else {
-        cacheTexture(paramTAVTextureInfo, 1);
-      }
+    this.currFrameIndex += 1;
+    if (this.currFrameIndex > 3) {
+      this.currFrameIndex = 0;
     }
   }
   
@@ -116,15 +112,18 @@ public class CanyingEffect
   
   public void release()
   {
-    if (this.cacheTextureFilter != null) {
-      this.cacheTextureFilter.release();
+    Object localObject = this.cacheTextureFilter;
+    if (localObject != null) {
+      ((CacheTextureFilter)localObject).release();
     }
-    if (this.cacheTexture[0] != 0) {
-      GLES20.glDeleteTextures(this.cacheTexture.length, this.cacheTexture, 0);
+    localObject = this.cacheTexture;
+    if (localObject[0] != 0) {
+      GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
     }
-    if (this.frameBuffer[0] != 0)
+    localObject = this.frameBuffer;
+    if (localObject[0] != 0)
     {
-      GLES20.glDeleteFramebuffers(1, this.frameBuffer, 0);
+      GLES20.glDeleteFramebuffers(1, (int[])localObject, 0);
       this.frameBuffer[0] = 0;
     }
     super.release();
@@ -132,7 +131,7 @@ public class CanyingEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.effects.CanyingEffect
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,19 @@ public final class Utils
   
   public static String bytes2HexStr(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      localStringBuilder.append(String.format("%02X", new Object[] { Byte.valueOf(paramArrayOfByte[i]) }));
-      i += 1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      int j = paramArrayOfByte.length;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(String.format("%02X", new Object[] { Byte.valueOf(paramArrayOfByte[i]) }));
+        i += 1;
+      }
+      return localStringBuilder.toString();
     }
-    return localStringBuilder.toString();
+    return "";
   }
   
   private static String getSpString(Context paramContext, String paramString1, String paramString2)
@@ -37,22 +38,26 @@ public final class Utils
   
   public static byte[] hexStr2Bytes(String paramString)
   {
-    int j = 0;
     int k = paramString.length();
-    if ((k & 0x1) != 0) {
-      throw new RuntimeException("Odd number of characters.");
-    }
-    byte[] arrayOfByte = new byte[k >> 1];
-    int i = 0;
-    while (j < k)
+    if ((k & 0x1) == 0)
     {
-      int m = j + 1;
-      int n = Character.digit(paramString.charAt(j), 16);
-      j = m + 1;
-      arrayOfByte[i] = ((byte)((Character.digit(paramString.charAt(m), 16) | n << 4) & 0xFF));
-      i += 1;
+      byte[] arrayOfByte = new byte[k >> 1];
+      int i = 0;
+      int j = 0;
+      while (i < k)
+      {
+        int m = i + 1;
+        arrayOfByte[j] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4 | Character.digit(paramString.charAt(m), 16)) & 0xFF));
+        j += 1;
+        i = m + 1;
+      }
+      return arrayOfByte;
     }
-    return arrayOfByte;
+    paramString = new RuntimeException("Odd number of characters.");
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public static String makeStringWithLength(String paramString, int paramInt)
@@ -87,13 +92,17 @@ public final class Utils
       localObject = ((MessageDigest)localObject).digest();
       return localObject;
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {}
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      label21:
+      break label21;
+    }
     return paramString.getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

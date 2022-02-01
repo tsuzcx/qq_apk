@@ -1,36 +1,36 @@
 package com.google.android.gms.common.stats;
 
 import android.os.SystemClock;
-import android.support.v4.e.m;
+import androidx.b.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PassiveTimedConnectionMatcher
 {
   private final long zzym;
   private final int zzyn;
-  private final m<String, Long> zzyo;
+  private final g<String, Long> zzyo;
   
   public PassiveTimedConnectionMatcher()
   {
-    AppMethodBeat.i(89961);
+    AppMethodBeat.i(4983);
     this.zzym = 60000L;
     this.zzyn = 10;
-    this.zzyo = new m(10);
-    AppMethodBeat.o(89961);
+    this.zzyo = new g(10);
+    AppMethodBeat.o(4983);
   }
   
   public PassiveTimedConnectionMatcher(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(89962);
+    AppMethodBeat.i(4984);
     this.zzym = paramLong;
     this.zzyn = paramInt;
-    this.zzyo = new m();
-    AppMethodBeat.o(89962);
+    this.zzyo = new g();
+    AppMethodBeat.o(4984);
   }
   
   public Long get(String paramString)
   {
-    AppMethodBeat.i(89963);
+    AppMethodBeat.i(4985);
     try
     {
       paramString = (Long)this.zzyo.get(paramString);
@@ -38,13 +38,13 @@ public class PassiveTimedConnectionMatcher
     }
     finally
     {
-      AppMethodBeat.o(89963);
+      AppMethodBeat.o(4985);
     }
   }
   
   public Long put(String paramString)
   {
-    AppMethodBeat.i(89964);
+    AppMethodBeat.i(4986);
     long l2 = SystemClock.elapsedRealtime();
     long l1 = this.zzym;
     for (;;)
@@ -57,7 +57,7 @@ public class PassiveTimedConnectionMatcher
           i = this.zzyo.size() - 1;
           if (i >= 0)
           {
-            if (l2 - ((Long)this.zzyo.valueAt(i)).longValue() > l1) {
+            if (l2 - ((Long)this.zzyo.bl(i)).longValue() > l1) {
               this.zzyo.removeAt(i);
             }
           }
@@ -76,7 +76,7 @@ public class PassiveTimedConnectionMatcher
       }
       finally
       {
-        AppMethodBeat.o(89964);
+        AppMethodBeat.o(4986);
       }
       i -= 1;
     }
@@ -86,48 +86,47 @@ public class PassiveTimedConnectionMatcher
   public boolean remove(String paramString)
   {
     // Byte code:
-    //   0: ldc 100
-    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: aload_0
-    //   8: getfield 34	com/google/android/gms/common/stats/PassiveTimedConnectionMatcher:zzyo	Landroid/support/v4/e/m;
-    //   11: aload_1
-    //   12: invokevirtual 102	android/support/v4/e/m:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   15: ifnull +14 -> 29
-    //   18: iconst_1
-    //   19: istore_2
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: ldc 100
-    //   24: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   27: iload_2
-    //   28: ireturn
-    //   29: iconst_0
-    //   30: istore_2
-    //   31: goto -11 -> 20
-    //   34: astore_1
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: ldc 100
-    //   39: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   42: aload_1
-    //   43: athrow
+    //   0: sipush 4987
+    //   3: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: monitorenter
+    //   8: aload_0
+    //   9: getfield 33	com/google/android/gms/common/stats/PassiveTimedConnectionMatcher:zzyo	Landroidx/b/g;
+    //   12: aload_1
+    //   13: invokevirtual 97	androidx/b/g:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   16: ifnull +15 -> 31
+    //   19: iconst_1
+    //   20: istore_2
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: sipush 4987
+    //   26: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: iload_2
+    //   30: ireturn
+    //   31: iconst_0
+    //   32: istore_2
+    //   33: goto -12 -> 21
+    //   36: astore_1
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: sipush 4987
+    //   42: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: aload_1
+    //   46: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	44	0	this	PassiveTimedConnectionMatcher
-    //   0	44	1	paramString	String
-    //   19	12	2	bool	boolean
+    //   0	47	0	this	PassiveTimedConnectionMatcher
+    //   0	47	1	paramString	String
+    //   20	13	2	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   7	18	34	finally
-    //   20	22	34	finally
-    //   35	37	34	finally
+    //   8	19	36	finally
+    //   21	23	36	finally
   }
   
   public boolean removeByPrefix(String paramString)
   {
-    AppMethodBeat.i(89966);
+    AppMethodBeat.i(4988);
     int i = 0;
     boolean bool = false;
     for (;;)
@@ -136,7 +135,7 @@ public class PassiveTimedConnectionMatcher
       {
         if (i < size())
         {
-          String str = (String)this.zzyo.keyAt(i);
+          String str = (String)this.zzyo.bn(i);
           if ((str != null) && (str.startsWith(paramString)))
           {
             this.zzyo.remove(str);
@@ -150,7 +149,7 @@ public class PassiveTimedConnectionMatcher
       }
       finally
       {
-        AppMethodBeat.o(89966);
+        AppMethodBeat.o(4988);
       }
       i += 1;
     }
@@ -158,7 +157,7 @@ public class PassiveTimedConnectionMatcher
   
   public int size()
   {
-    AppMethodBeat.i(89967);
+    AppMethodBeat.i(4989);
     try
     {
       int i = this.zzyo.size();
@@ -166,13 +165,13 @@ public class PassiveTimedConnectionMatcher
     }
     finally
     {
-      AppMethodBeat.o(89967);
+      AppMethodBeat.o(4989);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.PassiveTimedConnectionMatcher
  * JD-Core Version:    0.7.0.1
  */

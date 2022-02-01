@@ -1,20 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQVideoView;
 
-public class enu
-  implements MediaPlayer.OnPreparedListener
+class enu
+  implements Runnable
 {
-  public enu(UserguideVideoFragment paramUserguideVideoFragment) {}
+  enu(ent parament) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new env(this), 200L);
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "fight............onPrepared .== ...........");
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.isPlaying())
+    {
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      return;
     }
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.postDelayed(this, 200L);
   }
 }
 

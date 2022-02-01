@@ -1,62 +1,83 @@
 package com.tencent.mm.plugin.subapp.ui.openapi;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.model.t;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.b.z;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.pluginsdk.model.app.as;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
+import com.tencent.mm.ui.base.preference.f;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceAppUI
   extends MMPreference
-  implements com.tencent.mm.ai.f
+  implements h
 {
-  private ServicePreference sYW;
-  private ServicePreference sYX;
-  private PreferenceTitleCategory sYY;
-  private PreferenceTitleCategory sYZ;
-  private List<com.tencent.mm.pluginsdk.model.app.f> sZa;
-  private List<com.tencent.mm.pluginsdk.model.app.f> sZb;
-  private AdapterView.OnItemClickListener sZc;
-  private AdapterView.OnItemClickListener sZd;
-  private com.tencent.mm.ui.base.preference.f screen;
+  private ServicePreference SHZ;
+  private ServicePreference SIa;
+  private PreferenceTitleCategory SIb;
+  private PreferenceTitleCategory SIc;
+  private List<g> SId;
+  private List<g> SIe;
+  private AdapterView.OnItemClickListener SIf;
+  private AdapterView.OnItemClickListener SIg;
+  private f screen;
   private String talker;
   
   public ServiceAppUI()
   {
-    AppMethodBeat.i(25474);
-    this.sZa = new ArrayList();
-    this.sZb = new ArrayList();
-    AppMethodBeat.o(25474);
+    AppMethodBeat.i(29168);
+    this.SId = new ArrayList();
+    this.SIe = new ArrayList();
+    AppMethodBeat.o(29168);
   }
   
   public int getResourceId()
   {
-    return 2131165269;
+    return R.o.hbp;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(25479);
-    setMMTitle(2131303133);
+    AppMethodBeat.i(29172);
+    setMMTitle(R.l.gUX);
     this.talker = getIntent().getStringExtra("service_app_talker_user");
-    setBackBtn(new ServiceAppUI.1(this));
-    this.sZa.clear();
-    this.sZb.clear();
-    Cursor localCursor;
-    if (t.lA(this.talker))
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      localCursor = al.cac().eZ(0, 2);
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(29165);
+        ServiceAppUI.this.finish();
+        AppMethodBeat.o(29165);
+        return true;
+      }
+    });
+    this.SId.clear();
+    this.SIe.clear();
+    Cursor localCursor;
+    if (au.bwE(this.talker))
+    {
+      localCursor = as.gxn().kr(0, 2);
       if (localCursor != null) {
         if (!localCursor.moveToFirst()) {}
       }
@@ -64,10 +85,10 @@ public class ServiceAppUI
     label510:
     for (;;)
     {
-      com.tencent.mm.pluginsdk.model.app.f localf = new com.tencent.mm.pluginsdk.model.app.f();
-      localf.convertFrom(localCursor);
-      if (localf.field_serviceAppType == 1) {
-        this.sZa.add(localf);
+      g localg = new g();
+      localg.convertFrom(localCursor);
+      if (localg.field_serviceAppType == 1) {
+        this.SId.add(localg);
       }
       for (;;)
       {
@@ -75,56 +96,118 @@ public class ServiceAppUI
           break label510;
         }
         localCursor.close();
-        ab.i("MicroMsg.ServiceAppUI", "initAppList: wxServiceList size %s, bizServiceList size %s", new Object[] { Integer.valueOf(this.sZa.size()), Integer.valueOf(this.sZb.size()) });
-        if (this.sZc == null) {
-          this.sZc = new ServiceAppUI.2(this);
+        Log.i("MicroMsg.ServiceAppUI", "initAppList: wxServiceList size %s, bizServiceList size %s", new Object[] { Integer.valueOf(this.SId.size()), Integer.valueOf(this.SIe.size()) });
+        if (this.SIf == null) {
+          this.SIf = new AdapterView.OnItemClickListener()
+          {
+            public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+            {
+              AppMethodBeat.i(29166);
+              b localb = new b();
+              localb.cH(paramAnonymousAdapterView);
+              localb.cH(paramAnonymousView);
+              localb.sc(paramAnonymousInt);
+              localb.hB(paramAnonymousLong);
+              a.c("com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+              if (ServiceAppUI.a(ServiceAppUI.this) == null)
+              {
+                Log.e("MicroMsg.ServiceAppUI", "wx onItemClick wxServicePref null");
+                a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                AppMethodBeat.o(29166);
+                return;
+              }
+              paramAnonymousAdapterView = ServiceAppUI.a(ServiceAppUI.this).anJ(paramAnonymousInt);
+              if (paramAnonymousAdapterView == null)
+              {
+                Log.e("MicroMsg.ServiceAppUI", "wx onItemClick app is null");
+                a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                AppMethodBeat.o(29166);
+                return;
+              }
+              Log.i("MicroMsg.ServiceAppUI", "onItemClick, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramAnonymousAdapterView.jOL), paramAnonymousAdapterView.field_packageName, paramAnonymousAdapterView.field_appId });
+              ServiceAppUI.a(ServiceAppUI.this, paramAnonymousAdapterView);
+              a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              AppMethodBeat.o(29166);
+            }
+          };
         }
-        if (this.sZd == null) {
-          this.sZd = new ServiceAppUI.3(this);
+        if (this.SIg == null) {
+          this.SIg = new AdapterView.OnItemClickListener()
+          {
+            public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+            {
+              AppMethodBeat.i(29167);
+              b localb = new b();
+              localb.cH(paramAnonymousAdapterView);
+              localb.cH(paramAnonymousView);
+              localb.sc(paramAnonymousInt);
+              localb.hB(paramAnonymousLong);
+              a.c("com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+              if (ServiceAppUI.b(ServiceAppUI.this) == null)
+              {
+                Log.e("MicroMsg.ServiceAppUI", "biz onItemClick bizServicePref null");
+                a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                AppMethodBeat.o(29167);
+                return;
+              }
+              paramAnonymousAdapterView = ServiceAppUI.b(ServiceAppUI.this).anJ(paramAnonymousInt);
+              if (paramAnonymousAdapterView == null)
+              {
+                Log.e("MicroMsg.ServiceAppUI", "biz onItemClick app is null");
+                a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                AppMethodBeat.o(29167);
+                return;
+              }
+              Log.i("MicroMsg.ServiceAppUI", "onItemClick, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramAnonymousAdapterView.jOL), paramAnonymousAdapterView.field_packageName, paramAnonymousAdapterView.field_appId });
+              ServiceAppUI.a(ServiceAppUI.this, paramAnonymousAdapterView);
+              a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/ServiceAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+              AppMethodBeat.o(29167);
+            }
+          };
         }
         this.screen = getPreferenceScreen();
         this.screen.removeAll();
-        if (this.sZa.size() > 0)
+        if (this.SId.size() > 0)
         {
-          this.sYW = new ServicePreference(this);
-          this.sYW.qIG = this.sZa;
-          if (this.sZc != null) {
-            this.sYW.sYO = this.sZc;
+          this.SHZ = new ServicePreference(this);
+          this.SHZ.PtA = this.SId;
+          if (this.SIf != null) {
+            this.SHZ.SHR = this.SIf;
           }
-          if (this.sYY == null)
+          if (this.SIb == null)
           {
-            this.sYY = new PreferenceTitleCategory(this);
-            this.sYY.setTitle(2131306049);
+            this.SIb = new PreferenceTitleCategory(this);
+            this.SIb.setTitle(R.l.gZq);
           }
-          this.screen.b(this.sYY);
-          this.screen.b(this.sYW);
+          this.screen.c(this.SIb);
+          this.screen.c(this.SHZ);
         }
-        if (this.sZb.size() > 0)
+        if (this.SIe.size() > 0)
         {
-          this.sYX = new ServicePreference(this);
-          this.sYX.qIG = this.sZb;
-          if (this.sZd != null) {
-            this.sYX.sYO = this.sZd;
+          this.SIa = new ServicePreference(this);
+          this.SIa.PtA = this.SIe;
+          if (this.SIg != null) {
+            this.SIa.SHR = this.SIg;
           }
-          if (this.sYZ == null)
+          if (this.SIc == null)
           {
-            this.sYZ = new PreferenceTitleCategory(this);
-            this.sYZ.setTitle(2131297685);
+            this.SIc = new PreferenceTitleCategory(this);
+            this.SIc.setTitle(R.l.gvK);
           }
-          this.screen.b(this.sYZ);
-          this.screen.b(this.sYX);
+          this.screen.c(this.SIc);
+          this.screen.c(this.SIa);
         }
-        AppMethodBeat.o(25479);
+        AppMethodBeat.o(29172);
         return;
-        if (t.nU(this.talker))
+        if (ab.IS(this.talker))
         {
-          localCursor = al.cac().eZ(0, 4);
+          localCursor = as.gxn().kr(0, 4);
           break;
         }
-        localCursor = al.cac().eZ(0, 1);
+        localCursor = as.gxn().kr(0, 1);
         break;
-        if (localf.field_serviceAppType == 2) {
-          this.sZb.add(localf);
+        if (localg.field_serviceAppType == 2) {
+          this.SIe.add(localg);
         }
       }
     }
@@ -132,54 +215,54 @@ public class ServiceAppUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(25475);
+    AppMethodBeat.i(29169);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(25475);
+    AppMethodBeat.o(29169);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(25477);
+    AppMethodBeat.i(29171);
     super.onPause();
-    if (this.sYW != null) {
-      this.sYW.onPause();
+    if (this.SHZ != null) {
+      this.SHZ.onPause();
     }
-    if (this.sYX != null) {
-      this.sYX.onPause();
+    if (this.SIa != null) {
+      this.SIa.onPause();
     }
-    AppMethodBeat.o(25477);
+    AppMethodBeat.o(29171);
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     return false;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(25476);
+    AppMethodBeat.i(29170);
     super.onResume();
     initView();
-    if (this.sYW != null) {
-      this.sYW.onResume();
+    if (this.SHZ != null) {
+      this.SHZ.onResume();
     }
-    if (this.sYX != null) {
-      this.sYX.onResume();
+    if (this.SIa != null) {
+      this.SIa.onResume();
     }
-    AppMethodBeat.o(25476);
+    AppMethodBeat.o(29170);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(25480);
-    ab.d("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    AppMethodBeat.i(29173);
+    Log.d("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      AppMethodBeat.o(25480);
+      AppMethodBeat.o(29173);
       return;
     }
-    ab.e("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    AppMethodBeat.o(25480);
+    Log.e("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    AppMethodBeat.o(29173);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -190,7 +273,7 @@ public class ServiceAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.ServiceAppUI
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ public final class SSummaryCardLikeIt
 {
   static int cache_cmd;
   public int cmd = 3;
-  public long label;
-  public long likeuin;
-  public long platform;
-  public long uin;
+  public long label = 0L;
+  public long likeuin = 0L;
+  public long platform = 0L;
+  public long uin = 0L;
   public String version = "4.7.0";
   
   public SSummaryCardLikeIt() {}
@@ -42,8 +42,9 @@ public final class SSummaryCardLikeIt
     paramJceOutputStream.write(this.cmd, 0);
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.likeuin, 2);
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 3);
+    String str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.platform, 4);
     paramJceOutputStream.write(this.label, 5);
@@ -51,7 +52,7 @@ public final class SSummaryCardLikeIt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardLikeIt
  * JD-Core Version:    0.7.0.1
  */

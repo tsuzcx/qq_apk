@@ -8,20 +8,21 @@ import java.io.File;
 @Deprecated
 public class fm
 {
-  private static final String TAG = fm.class.getSimpleName();
-  private static fm qt = null;
+  private static final String TAG = "fm";
+  private static fm qt;
   
   public static fm dL()
   {
-    if (qt == null) {}
-    try
-    {
-      if (qt == null) {
-        qt = new fm();
+    if (qt == null) {
+      try
+      {
+        if (qt == null) {
+          qt = new fm();
+        }
       }
-      return qt;
+      finally {}
     }
-    finally {}
+    return qt;
   }
   
   public void J(String paramString)
@@ -51,21 +52,27 @@ public class fm
   
   public fm.a dO()
   {
-    if (hl.ad("com.tencent.wifimanager")) {}
-    String str;
-    do
+    if (hl.ad("com.tencent.wifimanager")) {
+      return null;
+    }
+    Object localObject = dM().getString("ncdk111");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (hl.ab((String)localObject) == 1)) {
+      return new fm.a((String)localObject, false);
+    }
+    if (dj.f(fq.cr()))
     {
-      do
-      {
-        return null;
-        str = dM().getString("ncdk111");
-        if ((!TextUtils.isEmpty(str)) && (hl.ab(str) == 1)) {
-          return new fm.a(str, false);
-        }
-      } while (!dj.f(fq.cr()));
-      str = Environment.getExternalStorageDirectory().getPath() + File.separator + hc.sF + "com.tencent.wifimanager" + ".apk";
-    } while (!new File(str).exists());
-    return new fm.a(str, true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getPath());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(hc.sF);
+      ((StringBuilder)localObject).append("com.tencent.wifimanager");
+      ((StringBuilder)localObject).append(".apk");
+      localObject = ((StringBuilder)localObject).toString();
+      if (new File((String)localObject).exists()) {
+        return new fm.a((String)localObject, true);
+      }
+    }
+    return null;
   }
   
   public long dP()
@@ -95,7 +102,7 @@ public class fm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.fm
  * JD-Core Version:    0.7.0.1
  */

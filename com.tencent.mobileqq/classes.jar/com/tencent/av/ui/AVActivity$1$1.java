@@ -1,25 +1,30 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.abtest.QavUIABTestUtils;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import lid;
-import mdk;
 
-public class AVActivity$1$1
+class AVActivity$1$1
   implements Runnable
 {
-  public AVActivity$1$1(mdk parammdk) {}
+  AVActivity$1$1(AVActivity.1 param1) {}
   
   public void run()
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
-      this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().a(this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.a.c));
+    VideoAppInterface localVideoAppInterface = this.a.a.H;
+    if (localVideoAppInterface == null) {
+      return;
     }
+    if ((this.a.a.I != null) && (this.a.a.I.k() != null)) {
+      this.a.a.I.k().a(localVideoAppInterface.h(this.a.a.j));
+    }
+    QavUIABTestUtils.a(localVideoAppInterface.getCurrentAccountUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

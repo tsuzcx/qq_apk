@@ -1,41 +1,35 @@
 package com.tencent.mm.plugin.base.stub;
 
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.pluginsdk.e.a;
-import com.tencent.mm.protocal.protobuf.clr;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.R.h;
 
 final class WXBizEntryActivity$3
-  implements e.a
+  implements Runnable
 {
-  WXBizEntryActivity$3(WXBizEntryActivity paramWXBizEntryActivity) {}
+  WXBizEntryActivity$3(WXBizEntryActivity paramWXBizEntryActivity, boolean paramBoolean) {}
   
-  public final void a(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean)
+  public final void run()
   {
-    AppMethodBeat.i(18138);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WXBizEntryActivity", "DeepLinkHelper.DeepLinkCallback, %d, %d, %s, %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean) });
-    if ((paramm != null) && (paramInt1 != 0) && (paramInt2 != 0) && ((paramm instanceof com.tencent.mm.modelsimple.ab)))
-    {
-      paramString = ((com.tencent.mm.modelsimple.ab)paramm).ajY();
-      if ((paramString != null) && (!this.jLI.isFinishing()))
-      {
-        h.a(this.jLI, bo.nullAsNil(paramString.xVH), this.jLI.getString(2131297087), this.jLI.getString(2131297018), false, new WXBizEntryActivity.3.1(this));
-        AppMethodBeat.o(18138);
-        return;
+    AppMethodBeat.i(269048);
+    View localView = this.vru.findViewById(R.h.fOj);
+    if (localView != null) {
+      if (!this.txz) {
+        break label40;
       }
-      this.jLI.finish();
-      AppMethodBeat.o(18138);
+    }
+    label40:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      AppMethodBeat.o(269048);
       return;
     }
-    this.jLI.finish();
-    AppMethodBeat.o(18138);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.WXBizEntryActivity.3
  * JD-Core Version:    0.7.0.1
  */

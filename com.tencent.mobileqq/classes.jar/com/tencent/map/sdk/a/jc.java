@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class jc
 {
-  private static int a = 0;
+  private static int a;
   
   public static int a()
   {

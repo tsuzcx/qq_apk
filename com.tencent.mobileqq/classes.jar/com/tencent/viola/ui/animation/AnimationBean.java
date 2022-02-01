@@ -2,6 +2,7 @@ package com.tencent.viola.ui.animation;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.viola.utils.ViolaUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,6 +15,7 @@ public class AnimationBean
   @Nullable
   public AnimationBean.Style styles;
   public String timingFunction;
+  public boolean topIndex;
   
   public AnimationBean(@NonNull JSONObject paramJSONObject)
   {
@@ -23,6 +25,7 @@ public class AnimationBean
       this.duration = paramJSONObject.optLong("duration", 16L);
       this.timingFunction = paramJSONObject.optString("timingFunction", "ease");
       this.needLayout = paramJSONObject.optBoolean("needLayout", false);
+      this.topIndex = ViolaUtils.getBoolean(paramJSONObject.optString("topIndex"));
     }
     try
     {
@@ -34,7 +37,7 @@ public class AnimationBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.animation.AnimationBean
  * JD-Core Version:    0.7.0.1
  */

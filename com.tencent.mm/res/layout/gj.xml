@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/q1"
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMWebView android:id="@id/a6k" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/a6l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ca8" />
-</FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="64.0dip" android:layout_height="64.0dip">
+            <ImageView android:id="@id/bmw" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <View android:layout_width="@dimen/j6" style="@style/ot" />
+        <TextView android:textStyle="bold" android:id="@id/bo8" android:layout_weight="1.0" style="@style/m5" />
+    </LinearLayout>
+    <TextView android:id="@id/bnu" android:background="@drawable/c3t" android:padding="6.0dip" android:minHeight="@dimen/m1" android:singleLine="false" style="@style/lk" />
+</LinearLayout>

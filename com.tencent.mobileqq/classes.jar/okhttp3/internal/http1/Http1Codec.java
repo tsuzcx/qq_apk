@@ -106,51 +106,73 @@ public final class Http1Codec
   
   public Sink newChunkedSink()
   {
-    if (this.state != 1) {
-      throw new IllegalStateException("state: " + this.state);
+    if (this.state == 1)
+    {
+      this.state = 2;
+      return new Http1Codec.ChunkedSink(this);
     }
-    this.state = 2;
-    return new Http1Codec.ChunkedSink(this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state: ");
+    localStringBuilder.append(this.state);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public Source newChunkedSource(HttpUrl paramHttpUrl)
   {
-    if (this.state != 4) {
-      throw new IllegalStateException("state: " + this.state);
+    if (this.state == 4)
+    {
+      this.state = 5;
+      return new Http1Codec.ChunkedSource(this, paramHttpUrl);
     }
-    this.state = 5;
-    return new Http1Codec.ChunkedSource(this, paramHttpUrl);
+    paramHttpUrl = new StringBuilder();
+    paramHttpUrl.append("state: ");
+    paramHttpUrl.append(this.state);
+    throw new IllegalStateException(paramHttpUrl.toString());
   }
   
   public Sink newFixedLengthSink(long paramLong)
   {
-    if (this.state != 1) {
-      throw new IllegalStateException("state: " + this.state);
+    if (this.state == 1)
+    {
+      this.state = 2;
+      return new Http1Codec.FixedLengthSink(this, paramLong);
     }
-    this.state = 2;
-    return new Http1Codec.FixedLengthSink(this, paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state: ");
+    localStringBuilder.append(this.state);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public Source newFixedLengthSource(long paramLong)
   {
-    if (this.state != 4) {
-      throw new IllegalStateException("state: " + this.state);
+    if (this.state == 4)
+    {
+      this.state = 5;
+      return new Http1Codec.FixedLengthSource(this, paramLong);
     }
-    this.state = 5;
-    return new Http1Codec.FixedLengthSource(this, paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state: ");
+    localStringBuilder.append(this.state);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public Source newUnknownLengthSource()
   {
-    if (this.state != 4) {
-      throw new IllegalStateException("state: " + this.state);
-    }
-    if (this.streamAllocation == null) {
+    if (this.state == 4)
+    {
+      localObject = this.streamAllocation;
+      if (localObject != null)
+      {
+        this.state = 5;
+        ((StreamAllocation)localObject).noNewStreams();
+        return new Http1Codec.UnknownLengthSource(this);
+      }
       throw new IllegalStateException("streamAllocation == null");
     }
-    this.state = 5;
-    this.streamAllocation.noNewStreams();
-    return new Http1Codec.UnknownLengthSource(this);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("state: ");
+    ((StringBuilder)localObject).append(this.state);
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public ResponseBody openResponseBody(Response paramResponse)
@@ -186,48 +208,65 @@ public final class Http1Codec
   
   public Response.Builder readResponseHeaders(boolean paramBoolean)
   {
-    if ((this.state != 1) && (this.state != 3)) {
-      throw new IllegalStateException("state: " + this.state);
+    int i = this.state;
+    Object localObject1;
+    if ((i != 1) && (i != 3))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("state: ");
+      ((StringBuilder)localObject1).append(this.state);
+      throw new IllegalStateException(((StringBuilder)localObject1).toString());
     }
-    Object localObject;
     try
     {
-      StatusLine localStatusLine = StatusLine.parse(readHeaderLine());
-      localObject = new Response.Builder().protocol(localStatusLine.protocol).code(localStatusLine.code).message(localStatusLine.message).headers(readHeaders());
-      if ((paramBoolean) && (localStatusLine.code == 100)) {
+      localObject1 = StatusLine.parse(readHeaderLine());
+      localObject2 = new Response.Builder().protocol(((StatusLine)localObject1).protocol).code(((StatusLine)localObject1).code).message(((StatusLine)localObject1).message).headers(readHeaders());
+      if ((paramBoolean) && (((StatusLine)localObject1).code == 100)) {
         return null;
       }
-      if (localStatusLine.code == 100)
+      if (((StatusLine)localObject1).code == 100)
       {
         this.state = 3;
-        return localObject;
+        return localObject2;
       }
+      this.state = 4;
+      return localObject2;
     }
     catch (EOFException localEOFException)
     {
-      localObject = new IOException("unexpected end of stream on " + this.streamAllocation);
-      ((IOException)localObject).initCause(localEOFException);
-      throw ((Throwable)localObject);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("unexpected end of stream on ");
+      ((StringBuilder)localObject2).append(this.streamAllocation);
+      localObject2 = new IOException(((StringBuilder)localObject2).toString());
+      ((IOException)localObject2).initCause(localEOFException);
+      throw ((Throwable)localObject2);
     }
-    this.state = 4;
-    return localObject;
   }
   
   public void writeRequest(Headers paramHeaders, String paramString)
   {
-    if (this.state != 0) {
-      throw new IllegalStateException("state: " + this.state);
-    }
-    this.sink.writeUtf8(paramString).writeUtf8("\r\n");
-    int i = 0;
-    int j = paramHeaders.size();
-    while (i < j)
+    if (this.state == 0)
     {
-      this.sink.writeUtf8(paramHeaders.name(i)).writeUtf8(": ").writeUtf8(paramHeaders.value(i)).writeUtf8("\r\n");
-      i += 1;
+      this.sink.writeUtf8(paramString).writeUtf8("\r\n");
+      int i = 0;
+      int j = paramHeaders.size();
+      while (i < j)
+      {
+        this.sink.writeUtf8(paramHeaders.name(i)).writeUtf8(": ").writeUtf8(paramHeaders.value(i)).writeUtf8("\r\n");
+        i += 1;
+      }
+      this.sink.writeUtf8("\r\n");
+      this.state = 1;
+      return;
     }
-    this.sink.writeUtf8("\r\n");
-    this.state = 1;
+    paramHeaders = new StringBuilder();
+    paramHeaders.append("state: ");
+    paramHeaders.append(this.state);
+    paramHeaders = new IllegalStateException(paramHeaders.toString());
+    for (;;)
+    {
+      throw paramHeaders;
+    }
   }
   
   public void writeRequestHeaders(Request paramRequest)
@@ -238,7 +277,7 @@ public final class Http1Codec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http1.Http1Codec
  * JD-Core Version:    0.7.0.1
  */

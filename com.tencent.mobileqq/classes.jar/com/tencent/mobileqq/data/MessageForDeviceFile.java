@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import amrf;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 
 public class MessageForDeviceFile
   extends ChatMessage
@@ -64,79 +64,76 @@ public class MessageForDeviceFile
   
   protected void doParse()
   {
+    Object localObject;
     try
     {
-      MessageForDeviceFile.DeviceFileMsgSerial localDeviceFileMsgSerial = (MessageForDeviceFile.DeviceFileMsgSerial)amrf.a(this.msgData);
-      if (localDeviceFileMsgSerial != null)
-      {
-        this.strServiceName = localDeviceFileMsgSerial.strServiceName;
-        this.nFileMsgType = localDeviceFileMsgSerial.nFileMsgType;
-        this.filePath = localDeviceFileMsgSerial.filePath;
-        this.srcFileName = localDeviceFileMsgSerial.srcFileName;
-        this.fileSize = localDeviceFileMsgSerial.fileSize;
-        this.nFileStatus = localDeviceFileMsgSerial.nFileStatus;
-        this.progress = localDeviceFileMsgSerial.progress;
-        this.uSessionID = localDeviceFileMsgSerial.uSessionID;
-        this.msgStatus = localDeviceFileMsgSerial.msgStatus;
-        this.msg = localDeviceFileMsgSerial.strRecentMsg;
-        this.strCoverKey = localDeviceFileMsgSerial.strCoverKey;
-        this.strCoverKey2 = localDeviceFileMsgSerial.strCoverKey2;
-        this.strMediaKey = localDeviceFileMsgSerial.strMediaKey;
-        this.strFileKey2 = localDeviceFileMsgSerial.strFileKey2;
-        this.groupId = localDeviceFileMsgSerial.groupId;
-        this.groupIndex = localDeviceFileMsgSerial.groupIndex;
-        this.groupSize = localDeviceFileMsgSerial.groupSize;
-        this.nServerIp = localDeviceFileMsgSerial.nServerIp;
-        this.nServerPort = localDeviceFileMsgSerial.nServerPort;
-        this.vUrlNotify = localDeviceFileMsgSerial.vUrlNotify;
-        this.vTokenKey = localDeviceFileMsgSerial.vTokenKey;
-        this.serverPath = localDeviceFileMsgSerial.serverPath;
-        this.fileFrom = localDeviceFileMsgSerial.fileFrom;
-        this.fileUuid = localDeviceFileMsgSerial.fileUuid;
-        this.thumbPath = localDeviceFileMsgSerial.thumbPath;
-        this.md5 = localDeviceFileMsgSerial.md5;
-        this.uOwnerUin = localDeviceFileMsgSerial.uOwnerUin;
-        this.vOfflineFileUUID = localDeviceFileMsgSerial.vOfflineFileUUID;
-        this.uChannelType = localDeviceFileMsgSerial.uChannelType;
-        this.uint32_src_app_id = localDeviceFileMsgSerial.uint32_src_app_id;
-        this.uint32_src_inst_id = localDeviceFileMsgSerial.uint32_src_inst_id;
-        this.uint32_dst_app_id = localDeviceFileMsgSerial.uint32_dst_app_id;
-        this.uint32_dst_inst_id = localDeviceFileMsgSerial.uint32_dst_inst_id;
-        this.uint64_dst_uin = localDeviceFileMsgSerial.uint64_dst_uin;
-        this.uint64_src_uin = localDeviceFileMsgSerial.uint64_src_uin;
-        this.uint32_src_uin_type = localDeviceFileMsgSerial.uint32_src_uin_type;
-        this.uint32_dst_uin_type = localDeviceFileMsgSerial.uint32_dst_uin_type;
-        this.uint32_src_ter_type = localDeviceFileMsgSerial.uint32_src_ter_type;
-        this.uint32_dst_ter_type = localDeviceFileMsgSerial.uint32_dst_ter_type;
-        this.vServiceInfo = localDeviceFileMsgSerial.vServiceInfo;
-        this.nOpType = localDeviceFileMsgSerial.nOpType;
-        this.copies = localDeviceFileMsgSerial.copies;
-        this.duplexMode = localDeviceFileMsgSerial.duplexMode;
-        this.mediaSize = localDeviceFileMsgSerial.mediaSize;
-        this.mediaType = localDeviceFileMsgSerial.mediaType;
-        this.scaling = localDeviceFileMsgSerial.scaling;
-        this.orientation = localDeviceFileMsgSerial.orientation;
-        this.color = localDeviceFileMsgSerial.color;
-        this.quality = localDeviceFileMsgSerial.quality;
-      }
-      return;
+      MessageForDeviceFile.DeviceFileMsgSerial localDeviceFileMsgSerial = (MessageForDeviceFile.DeviceFileMsgSerial)MessagePkgUtils.a(this.msgData);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-      }
+      localException.printStackTrace();
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      this.strServiceName = localObject.strServiceName;
+      this.nFileMsgType = localObject.nFileMsgType;
+      this.filePath = localObject.filePath;
+      this.srcFileName = localObject.srcFileName;
+      this.fileSize = localObject.fileSize;
+      this.nFileStatus = localObject.nFileStatus;
+      this.progress = localObject.progress;
+      this.uSessionID = localObject.uSessionID;
+      this.msgStatus = localObject.msgStatus;
+      this.msg = localObject.strRecentMsg;
+      this.strCoverKey = localObject.strCoverKey;
+      this.strCoverKey2 = localObject.strCoverKey2;
+      this.strMediaKey = localObject.strMediaKey;
+      this.strFileKey2 = localObject.strFileKey2;
+      this.groupId = localObject.groupId;
+      this.groupIndex = localObject.groupIndex;
+      this.groupSize = localObject.groupSize;
+      this.nServerIp = localObject.nServerIp;
+      this.nServerPort = localObject.nServerPort;
+      this.vUrlNotify = localObject.vUrlNotify;
+      this.vTokenKey = localObject.vTokenKey;
+      this.serverPath = localObject.serverPath;
+      this.fileFrom = localObject.fileFrom;
+      this.fileUuid = localObject.fileUuid;
+      this.thumbPath = localObject.thumbPath;
+      this.md5 = localObject.md5;
+      this.uOwnerUin = localObject.uOwnerUin;
+      this.vOfflineFileUUID = localObject.vOfflineFileUUID;
+      this.uChannelType = localObject.uChannelType;
+      this.uint32_src_app_id = localObject.uint32_src_app_id;
+      this.uint32_src_inst_id = localObject.uint32_src_inst_id;
+      this.uint32_dst_app_id = localObject.uint32_dst_app_id;
+      this.uint32_dst_inst_id = localObject.uint32_dst_inst_id;
+      this.uint64_dst_uin = localObject.uint64_dst_uin;
+      this.uint64_src_uin = localObject.uint64_src_uin;
+      this.uint32_src_uin_type = localObject.uint32_src_uin_type;
+      this.uint32_dst_uin_type = localObject.uint32_dst_uin_type;
+      this.uint32_src_ter_type = localObject.uint32_src_ter_type;
+      this.uint32_dst_ter_type = localObject.uint32_dst_ter_type;
+      this.vServiceInfo = localObject.vServiceInfo;
+      this.nOpType = localObject.nOpType;
+      this.copies = localObject.copies;
+      this.duplexMode = localObject.duplexMode;
+      this.mediaSize = localObject.mediaSize;
+      this.mediaType = localObject.mediaType;
+      this.scaling = localObject.scaling;
+      this.orientation = localObject.orientation;
+      this.color = localObject.color;
+      this.quality = localObject.quality;
     }
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
   }
@@ -195,7 +192,7 @@ public class MessageForDeviceFile
     localDeviceFileMsgSerial.quality = this.quality;
     try
     {
-      this.msgData = amrf.a(localDeviceFileMsgSerial);
+      this.msgData = MessagePkgUtils.a(localDeviceFileMsgSerial);
       return;
     }
     catch (Exception localException)

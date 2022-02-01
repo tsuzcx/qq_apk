@@ -12,27 +12,19 @@ public final class stMetaExternPlatformInfo
   extends JceStruct
   implements Cloneable
 {
-  static stAction cache_action;
-  static Map<Integer, String> cache_reserve;
-  public stAction action;
-  public int count;
+  static stAction cache_action = new stAction();
+  static Map<Integer, String> cache_reserve = new HashMap();
+  public stAction action = null;
+  public int count = 0;
   public String icon = "";
   public String infoName = "";
   public String name = "";
-  public Map<Integer, String> reserve;
-  public int show;
+  public Map<Integer, String> reserve = null;
+  public int show = 0;
   
   static
   {
-    if (!stMetaExternPlatformInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_action = new stAction();
-      cache_reserve = new HashMap();
-      cache_reserve.put(Integer.valueOf(0), "");
-      return;
-    }
+    cache_reserve.put(Integer.valueOf(0), "");
   }
   
   public stMetaExternPlatformInfo() {}
@@ -55,18 +47,17 @@ public final class stMetaExternPlatformInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -95,13 +86,40 @@ public final class stMetaExternPlatformInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stMetaExternPlatformInfo)paramObject;
-    } while ((!JceUtil.equals(this.name, paramObject.name)) || (!JceUtil.equals(this.icon, paramObject.icon)) || (!JceUtil.equals(this.infoName, paramObject.infoName)) || (!JceUtil.equals(this.action, paramObject.action)) || (!JceUtil.equals(this.count, paramObject.count)) || (!JceUtil.equals(this.show, paramObject.show)) || (!JceUtil.equals(this.reserve, paramObject.reserve)));
-    return true;
+    }
+    paramObject = (stMetaExternPlatformInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.name, paramObject.name))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.icon, paramObject.icon))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.infoName, paramObject.infoName))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.action, paramObject.action))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.count, paramObject.count))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.show, paramObject.show))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.reserve, paramObject.reserve)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -205,28 +223,33 @@ public final class stMetaExternPlatformInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 0);
+    Object localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 1);
+    localObject = this.icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.infoName != null) {
-      paramJceOutputStream.write(this.infoName, 2);
+    localObject = this.infoName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.action != null) {
-      paramJceOutputStream.write(this.action, 3);
+    localObject = this.action;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.count, 4);
     paramJceOutputStream.write(this.show, 5);
-    if (this.reserve != null) {
-      paramJceOutputStream.write(this.reserve, 6);
+    localObject = this.reserve;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stMetaExternPlatformInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 class URLState$2
   extends URLDrawableHandler.Adapter
@@ -18,20 +19,21 @@ class URLState$2
     try
     {
       Object localObject = this.this$0.loadImage(this.this$0.mUrl, this.val$handler);
-      if (localObject != URLState.DOWNLOAD_ASYNC) {
-        URLState.access$300(this.this$0, localObject);
+      if (localObject != URLState.DOWNLOAD_ASYNC)
+      {
+        URLState.access$000(this.this$0, localObject);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("URLDrawable_", 1, "ApngSoLoader error: ", localThrowable);
+      URLDrawable.depImp.mLog.e("URLDrawable_", 1, "ApngSoLoader error: ", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.URLState.2
  * JD-Core Version:    0.7.0.1
  */

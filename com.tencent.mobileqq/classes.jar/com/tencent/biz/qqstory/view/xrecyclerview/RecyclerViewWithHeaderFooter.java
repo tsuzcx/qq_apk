@@ -10,16 +10,14 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xwy;
-import xxc;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
-  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private xxc jdField_a_of_type_Xxc;
-  public boolean a;
+  public boolean a = false;
   private final List<View> b = new ArrayList();
+  private final List<View> c = new ArrayList();
+  private RecyclerViewHeaderViewAdapter.ContentDataObserver d;
   
   public RecyclerViewWithHeaderFooter(Context paramContext)
   {
@@ -38,12 +36,17 @@ public class RecyclerViewWithHeaderFooter
   
   public void a(View paramView)
   {
-    this.b.add(paramView);
+    this.c.add(paramView);
+  }
+  
+  public RecyclerViewHeaderViewAdapter.ContentDataObserver getContentDataObserver()
+  {
+    return this.d;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       super.onInterceptTouchEvent(paramMotionEvent);
       return true;
@@ -53,10 +56,10 @@ public class RecyclerViewWithHeaderFooter
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       if (paramMotionEvent.getAction() == 1) {
-        this.jdField_a_of_type_Boolean = false;
+        this.a = false;
       }
       return true;
     }
@@ -66,24 +69,25 @@ public class RecyclerViewWithHeaderFooter
   public void setAdapter(RecyclerView.Adapter paramAdapter)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0)
+    if (this.b.size() <= 0)
     {
       localObject = paramAdapter;
-      if (this.b.size() <= 0) {}
+      if (this.c.size() <= 0) {}
     }
     else
     {
-      localObject = new xwy(paramAdapter);
-      paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramAdapter.hasNext()) {
-        ((xwy)localObject).a((View)paramAdapter.next());
-      }
+      localObject = new RecyclerViewHeaderViewAdapter(paramAdapter);
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((xwy)localObject).b((View)paramAdapter.next());
+        ((RecyclerViewHeaderViewAdapter)localObject).a((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_Xxc != null) {
-        ((xwy)localObject).a(this.jdField_a_of_type_Xxc);
+      paramAdapter = this.c.iterator();
+      while (paramAdapter.hasNext()) {
+        ((RecyclerViewHeaderViewAdapter)localObject).b((View)paramAdapter.next());
+      }
+      paramAdapter = this.d;
+      if (paramAdapter != null) {
+        ((RecyclerViewHeaderViewAdapter)localObject).a(paramAdapter);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -91,7 +95,7 @@ public class RecyclerViewWithHeaderFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewWithHeaderFooter
  * JD-Core Version:    0.7.0.1
  */

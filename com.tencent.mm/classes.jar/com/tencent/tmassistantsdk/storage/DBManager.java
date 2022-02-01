@@ -15,12 +15,12 @@ public class DBManager
   {
     try
     {
-      AppMethodBeat.i(76160);
+      AppMethodBeat.i(102406);
       if (mInstance == null) {
         mInstance = new DBManager();
       }
       DBManager localDBManager = mInstance;
-      AppMethodBeat.o(76160);
+      AppMethodBeat.o(102406);
       return localDBManager;
     }
     finally {}
@@ -28,60 +28,60 @@ public class DBManager
   
   public void addDownloadInfo(DownloadInfo paramDownloadInfo)
   {
-    AppMethodBeat.i(76163);
+    AppMethodBeat.i(102409);
     DownloadInfoTable.add(paramDownloadInfo);
-    AppMethodBeat.o(76163);
+    AppMethodBeat.o(102409);
   }
   
   public void deleteDownloadInfo(String paramString)
   {
-    AppMethodBeat.i(76164);
+    AppMethodBeat.i(102410);
     DownloadInfoTable.del(paramString);
     ClientInfoTable.deleteItemsByURL(paramString);
-    AppMethodBeat.o(76164);
+    AppMethodBeat.o(102410);
   }
   
   public DownloadInfo queryDownloadInfoByUrl(String paramString)
   {
-    AppMethodBeat.i(76165);
+    AppMethodBeat.i(102411);
     paramString = DownloadInfoTable.query(paramString);
-    AppMethodBeat.o(76165);
+    AppMethodBeat.o(102411);
     return paramString;
   }
   
   public ArrayList<DownloadInfo> queryDownloadInfoList()
   {
-    AppMethodBeat.i(76161);
+    AppMethodBeat.i(102407);
     ArrayList localArrayList = DownloadInfoTable.load();
-    AppMethodBeat.o(76161);
+    AppMethodBeat.o(102407);
     return localArrayList;
   }
   
   public ArrayList<ServiceDownloadTask> queryWaitingAndDownloadingTaskList()
   {
-    AppMethodBeat.i(76166);
+    AppMethodBeat.i(102412);
     ArrayList localArrayList = DownloadInfoTable.query();
-    AppMethodBeat.o(76166);
+    AppMethodBeat.o(102412);
     return localArrayList;
   }
   
   public void saveClientInfo(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76167);
+    AppMethodBeat.i(102413);
     ClientInfoTable.save(paramString1, paramString2);
-    AppMethodBeat.o(76167);
+    AppMethodBeat.o(102413);
   }
   
   public void saveDownloadInfoList(ArrayList<DownloadInfo> paramArrayList)
   {
-    AppMethodBeat.i(76162);
+    AppMethodBeat.i(102408);
     DownloadInfoTable.save(paramArrayList);
-    AppMethodBeat.o(76162);
+    AppMethodBeat.o(102408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.DBManager
  * JD-Core Version:    0.7.0.1
  */

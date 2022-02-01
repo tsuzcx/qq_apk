@@ -39,40 +39,46 @@ public class QQAVImageGhostFilter
   
   public void onDraw2(int paramInt1, int paramInt2)
   {
-    if (this.mTime < 1000000.0F)
+    float f = this.mTime;
+    if (f < 1000000.0F)
     {
-      this.mTime += 1.0F;
+      this.mTime = (f + 1.0F);
       setFloat(this.mTimeLocation, this.mTime);
-      float f = this.mRandom.nextInt() % 4 / 10.0F;
-      setFloat(this.mAlphaLocation, f);
-      int i = this.mRandom.nextInt(16);
-      setInteger(this.mUpOrDownLocation, i);
-      setFloat(this.mScaleRateLocation, getRandomDis());
-      if (!this.mDecreaseBrightness) {
-        break label151;
-      }
-      if (this.mBrightness <= -0.5F) {
-        break label143;
-      }
-      this.mBrightness -= 0.02F;
     }
-    for (;;)
+    else
     {
-      setFloat(this.mBrightnessLocation, this.mBrightness);
-      super.onDraw2(paramInt1, paramInt2);
-      return;
       this.mTime = 0.0F;
-      break;
-      label143:
-      this.mDecreaseBrightness = false;
-      continue;
-      label151:
-      if (this.mBrightness < 0.5F) {
-        this.mBrightness = ((float)(this.mBrightness + 0.02D));
+    }
+    f = this.mRandom.nextInt() % 4 / 10.0F;
+    setFloat(this.mAlphaLocation, f);
+    int i = this.mRandom.nextInt(16);
+    setInteger(this.mUpOrDownLocation, i);
+    setFloat(this.mScaleRateLocation, getRandomDis());
+    if (this.mDecreaseBrightness)
+    {
+      f = this.mBrightness;
+      if (f > -0.5F) {
+        this.mBrightness = (f - 0.02F);
       } else {
+        this.mDecreaseBrightness = false;
+      }
+    }
+    else
+    {
+      f = this.mBrightness;
+      if (f < 0.5F)
+      {
+        double d = f;
+        Double.isNaN(d);
+        this.mBrightness = ((float)(d + 0.02D));
+      }
+      else
+      {
         this.mDecreaseBrightness = true;
       }
     }
+    setFloat(this.mBrightnessLocation, this.mBrightness);
+    super.onDraw2(paramInt1, paramInt2);
   }
   
   public void onInit()
@@ -96,7 +102,7 @@ public class QQAVImageGhostFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.filter.qqavimage.specialeffects.QQAVImageGhostFilter
  * JD-Core Version:    0.7.0.1
  */

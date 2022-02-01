@@ -10,37 +10,37 @@ import android.graphics.drawable.shapes.OvalShape;
 final class b
   extends OvalShape
 {
-  private RadialGradient no;
-  private Paint np = new Paint();
+  private RadialGradient pc;
+  private Paint pd = new Paint();
   
   b(a parama, int paramInt)
   {
-    parama.nn = paramInt;
-    G((int)rect().width());
+    parama.pb = paramInt;
+    R((int)rect().width());
   }
   
-  private void G(int paramInt)
+  private void R(int paramInt)
   {
     float f1 = paramInt / 2;
     float f2 = paramInt / 2;
-    float f3 = this.nq.nn;
+    float f3 = this.pe.pb;
     Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    this.no = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
-    this.np.setShader(this.no);
+    this.pc = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
+    this.pd.setShader(this.pc);
   }
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    int i = this.nq.getWidth();
-    int j = this.nq.getHeight();
-    paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.np);
-    paramCanvas.drawCircle(i / 2, j / 2, i / 2 - this.nq.nn, paramPaint);
+    int i = this.pe.getWidth();
+    int j = this.pe.getHeight();
+    paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.pd);
+    paramCanvas.drawCircle(i / 2, j / 2, i / 2 - this.pe.pb, paramPaint);
   }
   
   protected final void onResize(float paramFloat1, float paramFloat2)
   {
     super.onResize(paramFloat1, paramFloat2);
-    G((int)paramFloat1);
+    R((int)paramFloat1);
   }
 }
 

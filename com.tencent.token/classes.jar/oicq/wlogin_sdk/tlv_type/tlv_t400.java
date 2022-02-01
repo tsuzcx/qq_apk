@@ -45,9 +45,7 @@ public class tlv_t400
     util.int32_to_buf(paramArrayOfByte4, i, (int)paramLong3);
     i += 4;
     util.int64_to_buf32(paramArrayOfByte4, i, util.get_server_cur_time());
-    i += 4;
-    System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte4, i, paramArrayOfByte3.length);
-    i = paramArrayOfByte3.length;
+    System.arraycopy(paramArrayOfByte3, 0, paramArrayOfByte4, i + 4, paramArrayOfByte3.length);
     paramArrayOfByte1 = cryptor.encrypt(paramArrayOfByte4, 0, paramArrayOfByte4.length, arrayOfByte);
     this._t400_body_len = paramArrayOfByte1.length;
     fill_head(this._cmd);

@@ -37,6 +37,11 @@ public class ThreadUtil
     sThreadMgr.removeCallbackOnSubHandler(paramRunnable);
   }
   
+  public static void removeCallbacksOnUIHandler(Runnable paramRunnable)
+  {
+    sThreadMgr.removeCallbackOnUIHandler(paramRunnable);
+  }
+  
   public static void setThreadImp(IThreadMgr paramIThreadMgr)
   {
     sThreadMgr = paramIThreadMgr;
@@ -44,7 +49,7 @@ public class ThreadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.util.ThreadUtil
  * JD-Core Version:    0.7.0.1
  */

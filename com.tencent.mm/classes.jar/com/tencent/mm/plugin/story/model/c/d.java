@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.story.model.c;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.h.a.c;
-import com.tencent.mm.protocal.protobuf.chl;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.loader.g.a.c;
+import com.tencent.mm.protocal.protobuf.fis;
+import com.tencent.mm.storage.br;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/model/download/StoryImage;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "username", "", "fromscene", "Lcom/tencent/mm/storage/FROM_SCENE;", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;Ljava/lang/String;Lcom/tencent/mm/storage/FROM_SCENE;)V", "getFromscene", "()Lcom/tencent/mm/storage/FROM_SCENE;", "setFromscene", "(Lcom/tencent/mm/storage/FROM_SCENE;)V", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "setMediaObj", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;)V", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "uniqueValue", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/model/download/StoryImage;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "username", "", "fromscene", "Lcom/tencent/mm/storage/FROM_SCENE;", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;Ljava/lang/String;Lcom/tencent/mm/storage/FROM_SCENE;)V", "getFromscene", "()Lcom/tencent/mm/storage/FROM_SCENE;", "setFromscene", "(Lcom/tencent/mm/storage/FROM_SCENE;)V", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "setMediaObj", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;)V", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "isLegal", "", "uniqueValue", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements c
 {
-  private az rjD;
-  chl syh;
+  private br QzO;
+  fis SlY;
   String username;
   
-  public d(chl paramchl, String paramString, az paramaz)
+  public d(fis paramfis, String paramString, br parambr)
   {
-    AppMethodBeat.i(109300);
-    this.syh = paramchl;
+    AppMethodBeat.i(118903);
+    this.SlY = paramfis;
     this.username = paramString;
-    this.rjD = paramaz;
-    AppMethodBeat.o(109300);
+    this.QzO = parambr;
+    AppMethodBeat.o(118903);
   }
   
-  public final String Ug()
+  public final String aUt()
   {
-    AppMethodBeat.i(109299);
-    Object localObject = (CharSequence)this.syh.xrS;
+    AppMethodBeat.i(118902);
+    Object localObject = (CharSequence)this.SlY.aaTl;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      localObject = this.syh.Id + '_' + this.rjD.tag;
-      AppMethodBeat.o(109299);
+      localObject = this.SlY.Id + '_' + this.QzO.tag;
+      AppMethodBeat.o(118902);
       return localObject;
     }
-    localObject = this.syh.xrS + '_' + this.rjD.tag;
-    AppMethodBeat.o(109299);
+    localObject = this.SlY.aaTl + '_' + this.QzO.tag;
+    AppMethodBeat.o(118902);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.model.c.d
  * JD-Core Version:    0.7.0.1
  */

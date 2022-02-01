@@ -1,9 +1,12 @@
 package com.tencent.mm.wear.app.d.a.a;
 
+import com.tencent.mm.wear.app.b.h;
+import java.io.File;
+
 public final class g
 {
   /* Error */
-  public static boolean J(java.lang.String paramString)
+  private static boolean Q(java.lang.String paramString)
   {
     // Byte code:
     //   0: new 12	java/io/RandomAccessFile
@@ -82,7 +85,7 @@ public final class g
     //   118: ldc 51
     //   120: iconst_0
     //   121: anewarray 4	java/lang/Object
-    //   124: invokestatic 54	com/tencent/mm/wear/a/c/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: invokestatic 54	com/tencent/mm/wear/a/c/d:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   127: aload_2
     //   128: ifnull -79 -> 49
     //   131: aload_2
@@ -142,154 +145,161 @@ public final class g
   }
   
   /* Error */
-  public static boolean K(java.lang.String paramString)
+  private static boolean R(java.lang.String paramString)
   {
     // Byte code:
     //   0: ldc 24
-    //   2: new 58	java/lang/StringBuilder
-    //   5: dup
-    //   6: ldc 60
-    //   8: invokespecial 63	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   11: aload_0
-    //   12: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   18: iconst_0
-    //   19: anewarray 4	java/lang/Object
-    //   22: invokestatic 54	com/tencent/mm/wear/a/c/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   25: new 12	java/io/RandomAccessFile
-    //   28: dup
-    //   29: aload_0
-    //   30: ldc 14
-    //   32: invokespecial 18	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: astore_3
-    //   36: aload_3
-    //   37: astore_0
-    //   38: bipush 9
-    //   40: newarray byte
-    //   42: astore 4
+    //   2: ldc 58
+    //   4: aload_0
+    //   5: invokestatic 62	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   8: invokevirtual 66	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   11: iconst_0
+    //   12: anewarray 4	java/lang/Object
+    //   15: invokestatic 54	com/tencent/mm/wear/a/c/d:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   18: new 12	java/io/RandomAccessFile
+    //   21: dup
+    //   22: aload_0
+    //   23: ldc 14
+    //   25: invokespecial 18	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: astore_3
+    //   29: aload_3
+    //   30: astore_0
+    //   31: bipush 9
+    //   33: newarray byte
+    //   35: astore 4
+    //   37: aload_3
+    //   38: astore_0
+    //   39: aload_3
+    //   40: lconst_1
+    //   41: invokevirtual 70	java/io/RandomAccessFile:seek	(J)V
     //   44: aload_3
     //   45: astore_0
     //   46: aload_3
-    //   47: lconst_1
-    //   48: invokevirtual 75	java/io/RandomAccessFile:seek	(J)V
-    //   51: aload_3
-    //   52: astore_0
-    //   53: aload_3
-    //   54: aload 4
-    //   56: iconst_0
-    //   57: bipush 9
-    //   59: invokevirtual 22	java/io/RandomAccessFile:read	([BII)I
-    //   62: istore_1
-    //   63: iload_1
-    //   64: iconst_m1
-    //   65: if_icmpne +18 -> 83
-    //   68: aload_3
-    //   69: invokevirtual 36	java/io/RandomAccessFile:close	()V
-    //   72: iconst_0
-    //   73: ireturn
-    //   74: astore_0
-    //   75: ldc 24
-    //   77: aload_0
-    //   78: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   81: iconst_0
-    //   82: ireturn
-    //   83: aload_3
-    //   84: astore_0
-    //   85: new 41	java/lang/String
-    //   88: dup
-    //   89: aload 4
-    //   91: invokespecial 44	java/lang/String:<init>	([B)V
-    //   94: ldc 77
-    //   96: invokevirtual 49	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   99: istore_2
-    //   100: iload_2
-    //   101: ifeq +19 -> 120
-    //   104: aload_3
-    //   105: invokevirtual 36	java/io/RandomAccessFile:close	()V
-    //   108: iconst_1
-    //   109: ireturn
-    //   110: astore_0
-    //   111: ldc 24
-    //   113: aload_0
-    //   114: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   117: goto -9 -> 108
-    //   120: aload_3
-    //   121: invokevirtual 36	java/io/RandomAccessFile:close	()V
-    //   124: iconst_0
-    //   125: ireturn
-    //   126: astore_0
-    //   127: ldc 24
-    //   129: aload_0
-    //   130: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   133: iconst_0
-    //   134: ireturn
-    //   135: astore_0
-    //   136: aconst_null
-    //   137: astore_3
-    //   138: aload_3
-    //   139: astore_0
-    //   140: ldc 24
-    //   142: ldc 79
-    //   144: iconst_0
-    //   145: anewarray 4	java/lang/Object
-    //   148: invokestatic 54	com/tencent/mm/wear/a/c/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   151: aload_3
-    //   152: ifnull -80 -> 72
-    //   155: aload_3
-    //   156: invokevirtual 36	java/io/RandomAccessFile:close	()V
-    //   159: iconst_0
-    //   160: ireturn
-    //   161: astore_0
-    //   162: ldc 24
-    //   164: aload_0
-    //   165: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   168: iconst_0
-    //   169: ireturn
-    //   170: astore_3
-    //   171: aconst_null
-    //   172: astore_0
-    //   173: aload_0
-    //   174: ifnull +7 -> 181
-    //   177: aload_0
-    //   178: invokevirtual 36	java/io/RandomAccessFile:close	()V
-    //   181: aload_3
-    //   182: athrow
-    //   183: astore_0
-    //   184: ldc 24
-    //   186: aload_0
-    //   187: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   190: goto -9 -> 181
-    //   193: astore_3
-    //   194: goto -21 -> 173
-    //   197: astore_0
-    //   198: goto -60 -> 138
+    //   47: aload 4
+    //   49: iconst_0
+    //   50: bipush 9
+    //   52: invokevirtual 22	java/io/RandomAccessFile:read	([BII)I
+    //   55: istore_1
+    //   56: iload_1
+    //   57: iconst_m1
+    //   58: if_icmpne +18 -> 76
+    //   61: aload_3
+    //   62: invokevirtual 36	java/io/RandomAccessFile:close	()V
+    //   65: iconst_0
+    //   66: ireturn
+    //   67: astore_0
+    //   68: ldc 24
+    //   70: aload_0
+    //   71: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   74: iconst_0
+    //   75: ireturn
+    //   76: aload_3
+    //   77: astore_0
+    //   78: new 41	java/lang/String
+    //   81: dup
+    //   82: aload 4
+    //   84: invokespecial 44	java/lang/String:<init>	([B)V
+    //   87: ldc 72
+    //   89: invokevirtual 49	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   92: istore_2
+    //   93: iload_2
+    //   94: ifeq +19 -> 113
+    //   97: aload_3
+    //   98: invokevirtual 36	java/io/RandomAccessFile:close	()V
+    //   101: iconst_1
+    //   102: ireturn
+    //   103: astore_0
+    //   104: ldc 24
+    //   106: aload_0
+    //   107: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   110: goto -9 -> 101
+    //   113: aload_3
+    //   114: invokevirtual 36	java/io/RandomAccessFile:close	()V
+    //   117: iconst_0
+    //   118: ireturn
+    //   119: astore_0
+    //   120: ldc 24
+    //   122: aload_0
+    //   123: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   126: iconst_0
+    //   127: ireturn
+    //   128: astore_0
+    //   129: aconst_null
+    //   130: astore_3
+    //   131: aload_3
+    //   132: astore_0
+    //   133: ldc 24
+    //   135: ldc 74
+    //   137: iconst_0
+    //   138: anewarray 4	java/lang/Object
+    //   141: invokestatic 54	com/tencent/mm/wear/a/c/d:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   144: aload_3
+    //   145: ifnull -80 -> 65
+    //   148: aload_3
+    //   149: invokevirtual 36	java/io/RandomAccessFile:close	()V
+    //   152: iconst_0
+    //   153: ireturn
+    //   154: astore_0
+    //   155: ldc 24
+    //   157: aload_0
+    //   158: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   161: iconst_0
+    //   162: ireturn
+    //   163: astore_3
+    //   164: aconst_null
+    //   165: astore_0
+    //   166: aload_0
+    //   167: ifnull +7 -> 174
+    //   170: aload_0
+    //   171: invokevirtual 36	java/io/RandomAccessFile:close	()V
+    //   174: aload_3
+    //   175: athrow
+    //   176: astore_0
+    //   177: ldc 24
+    //   179: aload_0
+    //   180: invokestatic 39	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   183: goto -9 -> 174
+    //   186: astore_3
+    //   187: goto -21 -> 166
+    //   190: astore_0
+    //   191: goto -60 -> 131
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	201	0	paramString	java.lang.String
-    //   62	4	1	i	int
-    //   99	2	2	bool	boolean
-    //   35	121	3	localRandomAccessFile	java.io.RandomAccessFile
-    //   170	12	3	localObject1	Object
-    //   193	1	3	localObject2	Object
-    //   42	48	4	arrayOfByte	byte[]
+    //   0	194	0	paramString	java.lang.String
+    //   55	4	1	i	int
+    //   92	2	2	bool	boolean
+    //   28	121	3	localRandomAccessFile	java.io.RandomAccessFile
+    //   163	12	3	localObject1	Object
+    //   186	1	3	localObject2	Object
+    //   35	48	4	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   68	72	74	java/io/IOException
-    //   104	108	110	java/io/IOException
-    //   120	124	126	java/io/IOException
-    //   25	36	135	java/lang/Exception
-    //   155	159	161	java/io/IOException
-    //   25	36	170	finally
-    //   177	181	183	java/io/IOException
-    //   38	44	193	finally
-    //   46	51	193	finally
-    //   53	63	193	finally
-    //   85	100	193	finally
-    //   140	151	193	finally
-    //   38	44	197	java/lang/Exception
-    //   46	51	197	java/lang/Exception
-    //   53	63	197	java/lang/Exception
-    //   85	100	197	java/lang/Exception
+    //   61	65	67	java/io/IOException
+    //   97	101	103	java/io/IOException
+    //   113	117	119	java/io/IOException
+    //   18	29	128	java/lang/Exception
+    //   148	152	154	java/io/IOException
+    //   18	29	163	finally
+    //   170	174	176	java/io/IOException
+    //   31	37	186	finally
+    //   39	44	186	finally
+    //   46	56	186	finally
+    //   78	93	186	finally
+    //   133	144	186	finally
+    //   31	37	190	java/lang/Exception
+    //   39	44	190	java/lang/Exception
+    //   46	56	190	java/lang/Exception
+    //   78	93	190	java/lang/Exception
+  }
+  
+  public static boolean i(long paramLong)
+  {
+    return Q(new File(h.mU(), paramLong + ".amr").getAbsolutePath());
+  }
+  
+  public static boolean j(long paramLong)
+  {
+    return R(new File(h.mU(), paramLong + ".amr").getAbsolutePath());
   }
 }
 

@@ -4,42 +4,109 @@ import java.io.InputStream;
 
 public abstract class dq
 {
-  public static byte[] a(InputStream paramInputStream, int paramInt1, int paramInt2, dq.a parama)
+  public static byte[] a(InputStream paramInputStream, int paramInt1, int paramInt2, a parama)
   {
     byte[] arrayOfByte = new byte[paramInt2];
+    int i = paramInt1;
     int j = paramInt2;
-    int i = 0;
-    for (;;)
+    paramInt1 = 0;
+    while ((paramInt1 < paramInt2) && (j > 0))
     {
-      if ((i < paramInt2) && (j > 0))
+      int n = paramInputStream.read(arrayOfByte, i, j);
+      if (n <= 0)
       {
-        n = paramInputStream.read(arrayOfByte, paramInt1, j);
-        if (n > 0) {
-          break label65;
+        if (parama == null) {
+          break;
         }
-        if (parama != null) {
-          parama.a(true, i, paramInt2);
-        }
+        parama.a(true, paramInt1, paramInt2);
+        break;
       }
-      paramInputStream = arrayOfByte;
-      if (i != paramInt2) {
-        paramInputStream = null;
-      }
-      return paramInputStream;
-      label65:
-      int k = i + n;
-      int m = paramInt1 + n;
-      int n = j - n;
+      int k = paramInt1 + n;
+      int m = i + n;
+      n = j - n;
       j = n;
-      i = k;
-      paramInt1 = m;
+      i = m;
+      paramInt1 = k;
       if (parama != null)
       {
         parama.a(false, k, paramInt2);
         j = n;
-        i = k;
-        paramInt1 = m;
+        i = m;
+        paramInt1 = k;
       }
+    }
+    if (paramInt1 != paramInt2) {
+      return null;
+    }
+    return arrayOfByte;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  }
+  
+  public static class b
+  {
+    private int ng;
+    private int nh;
+    private String ni;
+    
+    public b() {}
+    
+    public b(String paramString, int paramInt)
+    {
+      this.ni = paramString;
+      this.nh = paramInt;
+    }
+    
+    public b(String paramString, int paramInt1, int paramInt2)
+    {
+      this.ng = paramInt2;
+      this.ni = paramString;
+      this.nh = paramInt1;
+    }
+    
+    protected Object clone()
+    {
+      return new b(this.ni, this.nh, this.ng);
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      if (paramObject == null) {
+        return false;
+      }
+      paramObject = (b)paramObject;
+      return (paramObject.ni.equals(this.ni)) && (paramObject.nh == this.nh);
+    }
+    
+    public String getIp()
+    {
+      return this.ni;
+    }
+    
+    public int getPort()
+    {
+      return this.nh;
+    }
+    
+    public int hashCode()
+    {
+      return super.hashCode();
+    }
+    
+    public String toString()
+    {
+      if (this.nh >= 0)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.ni);
+        localStringBuilder.append(":");
+        localStringBuilder.append(this.nh);
+        return localStringBuilder.toString();
+      }
+      return this.ni;
     }
   }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rlCommenTitle" android:background="@drawable/skin_header_bar_bg_local_albums" style="@style/title_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/skin_bar_text_local_albums" android:id="@id/ivTitleName" style="@style/title_bar_title" />
+    <com.tencent.widget.EmptyTextView android:textColor="@color/skin_bar_btn_local_albums" android:id="@id/ivTitleBtnLeft" android:background="@drawable/qq_pic_top_back_left_local_albums_selector" style="@style/title_bar_left_btn" />
+    <TextView android:textColor="@color/skin_bar_btn_local_albums" android:id="@id/ivTitleBtnRightText" android:background="@drawable/top_button_right_local_albums_selector" style="@style/title_bar_right_btn" />
+</RelativeLayout>

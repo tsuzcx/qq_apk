@@ -99,7 +99,7 @@ public class LoverImageUploadTask
     return TaskTypeConfig.LoverImageUploadTaskType;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
@@ -107,13 +107,18 @@ public class LoverImageUploadTask
     CacheUtil.deleteSessionId(this, this.mSessionId);
   }
   
-  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     SWUploadPicRsp localSWUploadPicRsp = new SWUploadPicRsp();
-    localSWUploadPicRsp.iCode = this.iRetCode;
-    if (this.iRetCode != 0)
+    int i = this.iRetCode;
+    localSWUploadPicRsp.iCode = i;
+    if (i != 0)
     {
-      onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), "iRetCode = " + this.iRetCode);
+      i = Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode();
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("iRetCode = ");
+      paramArrayOfByte.append(this.iRetCode);
+      onError(i, paramArrayOfByte.toString());
       return;
     }
     LoverImageUploadResult localLoverImageUploadResult = new LoverImageUploadResult();
@@ -134,7 +139,7 @@ public class LoverImageUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.LoverImageUploadTask
  * JD-Core Version:    0.7.0.1
  */

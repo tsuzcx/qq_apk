@@ -1,119 +1,109 @@
-package com.tencent.biz.pubaccount.AccountDetail.adapter;
+package com.tencent.biz.pubaccount.accountdetail.adapter;
 
 import android.util.Pair;
+import com.tencent.biz.pubaccount.accountdetail.bean.DynamicInfo;
+import com.tencent.biz.pubaccount.accountdetail.bean.MsgAttr;
+import com.tencent.biz.pubaccount.accountdetail.bean.PictureAttr;
+import com.tencent.biz.pubaccount.accountdetail.bean.VideoAttr;
+import com.tencent.mobileqq.kandian.base.image.ImageRequest;
+import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
+import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyDisplayUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import ngw;
-import nhn;
-import nhq;
-import nhr;
-import nhs;
-import nht;
-import orc;
-import sff;
-import sfg;
 
-public class AccountDetailBaseAdapter$14
+class AccountDetailBaseAdapter$14
   implements Runnable
 {
-  public AccountDetailBaseAdapter$14(ngw paramngw, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
+  AccountDetailBaseAdapter$14(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
   
   public void run()
   {
-    if (ngw.a(this.this$0) != this.jdField_a_of_type_Long) {}
-    label25:
-    LinkedList localLinkedList;
-    label38:
-    label80:
-    label232:
-    do
+    if (AccountDetailBaseAdapter.c(this.this$0) != this.a) {
+      return;
+    }
+    Object localObject1 = this.b;
+    int i;
+    if (localObject1 == null) {
+      i = 0;
+    } else {
+      i = ((List)localObject1).size();
+    }
+    localObject1 = new LinkedList();
+    int j = this.c;
+    while (j < this.c + this.d)
     {
-      do
+      if ((j < i) && (j >= 0))
       {
-        return;
-        int i;
-        int j;
-        if (this.jdField_a_of_type_JavaUtilList == null)
-        {
-          i = 0;
-          localLinkedList = new LinkedList();
-          j = this.jdField_a_of_type_Int;
-          if (j >= this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) {
-            continue;
-          }
-          if ((j < i) && (j >= 0)) {
-            break label80;
-          }
+        if (AccountDetailBaseAdapter.c(this.this$0) != this.a) {
+          return;
         }
-        for (;;)
+        try
         {
-          j += 1;
-          break label38;
-          i = this.jdField_a_of_type_JavaUtilList.size();
-          break label25;
-          if (ngw.a(this.this$0) != this.jdField_a_of_type_Long) {
-            break;
-          }
-          try
-          {
-            nhq localnhq = (nhq)this.jdField_a_of_type_JavaUtilList.get(j);
-            if (localnhq == null) {
-              continue;
+          DynamicInfo localDynamicInfo = (DynamicInfo)this.b.get(j);
+          if (localDynamicInfo != null) {
+            if (localDynamicInfo.d.d == 2)
+            {
+              if (localDynamicInfo.f != null) {
+                if (localDynamicInfo.f.h == 1) {
+                  ((List)localObject1).add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.f.i), ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getReadinjoyFeedsBigPictureSize()));
+                } else {
+                  ((List)localObject1).add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.f.b), ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getReadinjoyFeedsSmallPictureSize()));
+                }
+              }
             }
-            if (localnhq.jdField_a_of_type_Nhr.jdField_a_of_type_Int != 2) {
-              break label232;
-            }
-            if (localnhq.jdField_a_of_type_Nht == null) {
-              continue;
-            }
-            if (localnhq.jdField_a_of_type_Nht.e != 1) {
-              break label201;
-            }
-            localLinkedList.add(nhn.a(new URL(localnhq.jdField_a_of_type_Nht.d), orc.e()));
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-          if (ngw.a(this.this$0) != this.jdField_a_of_type_Long)
-          {
-            return;
-            localLinkedList.add(nhn.a(new URL(localException.jdField_a_of_type_Nht.jdField_a_of_type_JavaLangString), orc.a()));
-            continue;
-            if (localException.jdField_a_of_type_Nhs != null) {
-              if (localException.jdField_a_of_type_Nhs.jdField_a_of_type_Int == 1) {
-                localLinkedList.add(nhn.a(new URL(localException.jdField_a_of_type_Nhs.b), orc.e()));
+            else if (localDynamicInfo.e != null) {
+              if (localDynamicInfo.e.b == 1) {
+                ((List)localObject1).add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.e.c), ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getReadinjoyFeedsBigPictureSize()));
               } else {
-                localLinkedList.add(nhn.a(new URL(localException.jdField_a_of_type_Nhs.jdField_a_of_type_JavaLangString), orc.a()));
+                ((List)localObject1).add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.e.a), ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getReadinjoyFeedsSmallPictureSize()));
               }
             }
           }
         }
-      } while (ngw.a(this.this$0) != this.jdField_a_of_type_Long);
-      Iterator localIterator = localLinkedList.iterator();
-      while (localIterator.hasNext())
-      {
-        nhn localnhn = (nhn)localIterator.next();
-        if ((localnhn != null) && (localnhn.jdField_a_of_type_JavaNetURL != null))
+        catch (Exception localException)
         {
-          sfg localsfg = new sfg();
-          localsfg.jdField_a_of_type_JavaNetURL = localnhn.jdField_a_of_type_JavaNetURL;
-          localsfg.jdField_a_of_type_Int = ((Integer)localnhn.jdField_a_of_type_AndroidUtilPair.first).intValue();
-          localsfg.jdField_b_of_type_Int = ((Integer)localnhn.jdField_a_of_type_AndroidUtilPair.second).intValue();
-          sff.a().a(localsfg, null);
+          localException.printStackTrace();
+          if (AccountDetailBaseAdapter.c(this.this$0) != this.a) {
+            return;
+          }
         }
       }
-    } while (!QLog.isColorLevel());
-    label201:
-    QLog.d("AccountDetailBaseAdapter", 2, "preloadImg size:" + localLinkedList.size() + " cost:" + (System.currentTimeMillis() - this.jdField_b_of_type_Long));
+      j += 1;
+    }
+    if (AccountDetailBaseAdapter.c(this.this$0) != this.a) {
+      return;
+    }
+    Object localObject2 = ((List)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      AccountDetailBaseAdapter.PreloadImgInfo localPreloadImgInfo = (AccountDetailBaseAdapter.PreloadImgInfo)((Iterator)localObject2).next();
+      if ((localPreloadImgInfo != null) && (localPreloadImgInfo.a != null))
+      {
+        ImageRequest localImageRequest = new ImageRequest();
+        localImageRequest.a = localPreloadImgInfo.a;
+        localImageRequest.b = ((Integer)localPreloadImgInfo.b.first).intValue();
+        localImageRequest.c = ((Integer)localPreloadImgInfo.b.second).intValue();
+        ((IImageManager)QRoute.api(IImageManager.class)).loadImage(localImageRequest, null);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("preloadImg size:");
+      ((StringBuilder)localObject2).append(((List)localObject1).size());
+      ((StringBuilder)localObject2).append(" cost:");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.e);
+      QLog.d("AccountDetailBaseAdapter", 2, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.14
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.14
  * JD-Core Version:    0.7.0.1
  */

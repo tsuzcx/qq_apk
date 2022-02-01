@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.radar;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/Plugin;", "Lcom/tencent/mm/pluginsdk/deprecated/IPlugin;", "()V", "createApplication", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "createSubCore", "Lcom/tencent/mm/model/ISubCore;", "getContactWidgetFactory", "Lcom/tencent/mm/pluginsdk/deprecated/IContactWidgetFactory;", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/Plugin;", "Lcom/tencent/mm/pluginsdk/deprecated/IPlugin;", "()V", "createApplication", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "createSubCore", "Lcom/tencent/mm/model/ISubCore;", "getContactWidgetFactory", "Lcom/tencent/mm/pluginsdk/deprecated/IContactWidgetFactory;", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final n createApplication()
   {
-    AppMethodBeat.i(102844);
-    o localo = (o)new a();
-    AppMethodBeat.o(102844);
-    return localo;
+    AppMethodBeat.i(138488);
+    n localn = (n)new b();
+    AppMethodBeat.o(138488);
+    return localn;
   }
   
-  public final at createSubCore()
+  public final be createSubCore()
   {
-    AppMethodBeat.i(102845);
-    at localat = (at)new b();
-    AppMethodBeat.o(102845);
-    return localat;
+    AppMethodBeat.i(138489);
+    be localbe = (be)new c();
+    AppMethodBeat.o(138489);
+    return localbe;
   }
   
-  public final com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public final com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,183 +1,98 @@
 package com.tencent.magicbrush.handler.glfont;
 
-import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
+import java.nio.FloatBuffer;
+import java.util.Iterator;
+import java.util.List;
 
 final class k
-  implements c
 {
-  private int bKA;
-  private c.c bKB;
-  private c.a bKz;
-  private int mHeight;
-  private ArrayList<c.b> mNodes;
-  private int mWidth;
+  static final k eJO;
+  float eJP;
+  float eJQ;
+  float eJR;
+  float eJS;
+  float eJT;
+  float eJU;
+  boolean eJV;
+  int eJW = 1;
+  float height;
+  float width;
   
-  k()
+  static
   {
-    AppMethodBeat.i(115956);
-    this.mNodes = new ArrayList();
-    this.bKz = new c.a();
-    this.bKB = new c.c();
-    AppMethodBeat.o(115956);
+    AppMethodBeat.i(140056);
+    k localk = new k();
+    eJO = localk;
+    localk.avQ();
+    AppMethodBeat.o(140056);
   }
   
-  public final void a(int paramInt1, int paramInt2, Rect paramRect)
+  static void a(FloatBuffer paramFloatBuffer, List<k> paramList)
   {
-    AppMethodBeat.i(115958);
-    if (paramRect == null)
+    AppMethodBeat.i(140054);
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(115958);
+      AppMethodBeat.o(140054);
       return;
     }
-    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramRect.setEmpty();
-      AppMethodBeat.o(115958);
-      return;
-    }
-    c.c localc = this.bKB;
-    localc.x = 0;
-    localc.y = 0;
-    localc.width = paramInt1;
-    localc.height = paramInt2;
-    int k = -1;
-    int i = 0;
-    int j = 2147483647;
-    int n = 2147483647;
-    c.b localb1;
-    int m;
-    if (i < this.mNodes.size())
-    {
-      localb1 = (c.b)this.mNodes.get(i);
-      if (localb1.x + paramInt1 > this.mWidth - 1)
+      k localk = (k)paramList.next();
+      if (localk != null)
       {
-        m = -1;
-        label122:
-        if (m < 0) {
-          break label758;
-        }
-        localb1 = (c.b)this.mNodes.get(i);
-        if ((m + paramInt2 >= n) && ((m + paramInt2 != n) || (localb1.z <= 0) || (localb1.z >= j))) {
-          break label758;
-        }
-        j = localb1.z;
-        localc.x = localb1.x;
-        localc.y = m;
-        k = i;
-        n = m + paramInt2;
-      }
-    }
-    label316:
-    label758:
-    for (;;)
-    {
-      i += 1;
-      break;
-      m = localb1.y;
-      int i1 = i;
-      int i2 = paramInt1;
-      for (;;)
-      {
-        if (i2 <= 0) {
-          break label316;
-        }
-        localb1 = (c.b)this.mNodes.get(i1);
-        int i3 = m;
-        if (localb1.y > m) {
-          i3 = localb1.y;
-        }
-        if (i3 + paramInt2 > this.mHeight - 1)
+        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localk.eJP).put(localk.eJQ).put(localk.width).put(localk.height).put(localk.eJR).put(localk.eJS).put(localk.eJT).put(localk.eJU);
+        if (localk.eJV) {}
+        for (float f = 1.0F;; f = 0.0F)
         {
-          m = -1;
+          localFloatBuffer.put(f).put(localk.eJW);
           break;
         }
-        i2 -= localb1.z;
-        i1 += 1;
-        m = i3;
       }
-      break label122;
-      if (k == -1)
-      {
-        localc.x = -1;
-        localc.y = -1;
-        localc.width = 0;
-        localc.height = 0;
-      }
-      while ((localc.x < 0) || (localc.y < 0))
-      {
-        paramRect.setEmpty();
-        AppMethodBeat.o(115958);
-        return;
-        localb1 = this.bKz.yt();
-        localb1.x = localc.x;
-        localb1.y = (localc.y + paramInt2);
-        localb1.z = paramInt1;
-        this.mNodes.add(k, localb1);
-        c.b localb2;
-        for (i = k + 1; i < this.mNodes.size(); i = i - 1 + 1)
-        {
-          localb1 = (c.b)this.mNodes.get(i);
-          localb2 = (c.b)this.mNodes.get(i - 1);
-          if (localb1.x >= localb2.x + localb2.z) {
-            break;
-          }
-          j = localb2.x;
-          j = localb2.z + j - localb1.x;
-          localb1.x += j;
-          localb1.z -= j;
-          if (localb1.z > 0) {
-            break;
-          }
-          localb1 = (c.b)this.mNodes.remove(i);
-          this.bKz.a(localb1);
-        }
-        for (i = 0; i < this.mNodes.size() - 1; i = j + 1)
-        {
-          localb1 = (c.b)this.mNodes.get(i);
-          localb2 = (c.b)this.mNodes.get(i + 1);
-          j = i;
-          if (localb1.y == localb2.y)
-          {
-            j = localb1.z;
-            localb2.z += j;
-            localb1 = (c.b)this.mNodes.remove(i + 1);
-            this.bKz.a(localb1);
-            j = i - 1;
-          }
-        }
-        this.bKA += paramInt1 * paramInt2;
-      }
-      paramRect.set(localc.x, localc.y, localc.x + paramInt1 - 1, localc.y + paramInt2 - 1);
-      AppMethodBeat.o(115958);
-      return;
     }
+    AppMethodBeat.o(140054);
   }
   
-  public final void init(int paramInt1, int paramInt2)
+  public final void ac(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(115957);
-    this.mWidth = paramInt1;
-    this.mHeight = paramInt2;
-    reset();
-    AppMethodBeat.o(115957);
+    this.width = paramFloat1;
+    this.height = paramFloat2;
   }
   
-  public final void reset()
+  public final void avQ()
   {
-    AppMethodBeat.i(115959);
-    this.bKA = 0;
-    this.bKz.c(this.mNodes);
-    c.b localb = this.bKz.yt();
-    localb.fK(this.mWidth - 2);
-    this.mNodes.add(localb);
-    AppMethodBeat.o(115959);
+    this.height = 0.0F;
+    this.width = 0.0F;
+    this.eJQ = 0.0F;
+    this.eJP = 0.0F;
+    this.eJU = 0.0F;
+    this.eJT = 0.0F;
+    this.eJS = 0.0F;
+    this.eJR = 0.0F;
+    this.eJW = 1;
+    this.eJV = false;
+  }
+  
+  public final void n(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.eJR = paramFloat1;
+    this.eJS = paramFloat2;
+    this.eJT = paramFloat3;
+    this.eJU = paramFloat4;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(140055);
+    String str = "glyph(" + this.eJP + ", " + this.eJQ + ", [" + this.width + ", " + this.height + "], [" + this.eJR + ", " + this.eJS + ", " + this.eJT + ", " + this.eJU + ", " + this.eJV + "])";
+    AppMethodBeat.o(140055);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.k
  * JD-Core Version:    0.7.0.1
  */

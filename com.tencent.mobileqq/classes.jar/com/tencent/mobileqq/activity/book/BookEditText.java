@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.book;
 
-import ahdo;
-import ahdp;
 import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
@@ -11,10 +9,10 @@ import java.io.UnsupportedEncodingException;
 public class BookEditText
   extends EditText
 {
-  private int jdField_a_of_type_Int = 80;
-  private ahdp jdField_a_of_type_Ahdp;
-  private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new ahdo(this) };
+  private int a = 80;
+  private boolean b = false;
+  private InputFilter[] c = { new BookEditText.1(this) };
+  private BookEditText.BookEditTextInputListener d;
   
   public BookEditText(Context paramContext)
   {
@@ -27,7 +25,7 @@ public class BookEditText
     setInputType(131072);
     setSingleLine(false);
     setHorizontallyScrolling(false);
-    setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
+    setFilters(this.c);
   }
   
   public int a(String paramString)
@@ -49,17 +47,17 @@ public class BookEditText
   
   public void setCanInputWhenLenghtLimit(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
-  public void setInputListener(ahdp paramahdp)
+  public void setInputListener(BookEditText.BookEditTextInputListener paramBookEditTextInputListener)
   {
-    this.jdField_a_of_type_Ahdp = paramahdp;
+    this.d = paramBookEditTextInputListener;
   }
   
   public void setTextLengthLimit(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
 }
 

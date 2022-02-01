@@ -9,18 +9,22 @@ public final class AcsDelMsgReq
 {
   static AcsHead cache_head = new AcsHead();
   public String domain = "";
-  public AcsHead head;
+  public AcsHead head = null;
+  public long mn_appid = 0L;
   public String msg_id = "";
-  public long uin;
+  public int source = 0;
+  public long uin = 0L;
   
   public AcsDelMsgReq() {}
   
-  public AcsDelMsgReq(AcsHead paramAcsHead, long paramLong, String paramString1, String paramString2)
+  public AcsDelMsgReq(AcsHead paramAcsHead, long paramLong1, String paramString1, String paramString2, int paramInt, long paramLong2)
   {
     this.head = paramAcsHead;
-    this.uin = paramLong;
+    this.uin = paramLong1;
     this.msg_id = paramString1;
     this.domain = paramString2;
+    this.source = paramInt;
+    this.mn_appid = paramLong2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -29,25 +33,32 @@ public final class AcsDelMsgReq
     this.uin = paramJceInputStream.read(this.uin, 1, false);
     this.msg_id = paramJceInputStream.readString(2, false);
     this.domain = paramJceInputStream.readString(3, false);
+    this.source = paramJceInputStream.read(this.source, 4, false);
+    this.mn_appid = paramJceInputStream.read(this.mn_appid, 5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.head != null) {
-      paramJceOutputStream.write(this.head, 0);
+    Object localObject = this.head;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
-    if (this.msg_id != null) {
-      paramJceOutputStream.write(this.msg_id, 2);
+    localObject = this.msg_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.domain != null) {
-      paramJceOutputStream.write(this.domain, 3);
+    localObject = this.domain;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
+    paramJceOutputStream.write(this.source, 4);
+    paramJceOutputStream.write(this.mn_appid, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsDelMsgReq
  * JD-Core Version:    0.7.0.1
  */

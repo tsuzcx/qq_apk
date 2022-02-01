@@ -30,9 +30,10 @@ public class DittoBridgeArea
   public DittoBridgeArea(DittoHost paramDittoHost, LayoutAttrSet paramLayoutAttrSet)
   {
     super(paramDittoHost, paramLayoutAttrSet);
-    paramDittoHost = localObject;
     if (paramLayoutAttrSet.hasAttr("view")) {
       paramDittoHost = paramLayoutAttrSet.getAttr("view", null);
+    } else {
+      paramDittoHost = null;
     }
     try
     {
@@ -42,22 +43,27 @@ public class DittoBridgeArea
         this.mViewClass = DittoAreaEnv.findAreaClass(paramDittoHost);
         this.mContainedView = ((View)this.mViewClass.getConstructor(new Class[] { Context.class, AttributeSet.class }).newInstance(new Object[] { DittoUIEngine.g().getContext(), null }));
         this.mContainedView.setLayoutParams(paramLayoutAttrSet);
-        if ((this.mContainedView instanceof DittoAreaView)) {
+        if ((this.mContainedView instanceof DittoAreaView))
+        {
           ((DittoAreaView)this.mContainedView).setHost(this);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramDittoHost)
     {
-      DittoLog.i("DittoBridgeArea:" + paramDittoHost.getMessage());
+      paramLayoutAttrSet = new StringBuilder();
+      paramLayoutAttrSet.append("DittoBridgeArea:");
+      paramLayoutAttrSet.append(paramDittoHost.getMessage());
+      DittoLog.i(paramLayoutAttrSet.toString());
       this.mContainedView = new View(DittoUIEngine.g().getContext());
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.mContainedView != null) && (this.mContainedView.dispatchTouchEvent(paramMotionEvent))) {
+    View localView = this.mContainedView;
+    if ((localView != null) && (localView.dispatchTouchEvent(paramMotionEvent))) {
       return true;
     }
     return super.dispatchTouchEvent(paramMotionEvent);
@@ -179,7 +185,7 @@ public class DittoBridgeArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.widget.DittoBridgeArea
  * JD-Core Version:    0.7.0.1
  */

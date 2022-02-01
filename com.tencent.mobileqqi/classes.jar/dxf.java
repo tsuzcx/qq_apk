@@ -1,23 +1,13 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
 import com.tencent.mobileqq.activity.aio.anim.BubbleAnimation;
 
-public class dxf
-  extends View
+class dxf
+  implements Runnable
 {
-  public dxf(BubbleAnimation paramBubbleAnimation, Context paramContext)
-  {
-    super(paramContext);
-  }
+  dxf(dxe paramdxe) {}
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public void run()
   {
-    if ((BubbleAnimation.a(this.a).a()) && (BubbleAnimation.b(this.a).a())) {
-      BubbleAnimation.a(this.a).post(new dxg(this));
-    }
-    return true;
+    this.a.a.d();
   }
 }
 

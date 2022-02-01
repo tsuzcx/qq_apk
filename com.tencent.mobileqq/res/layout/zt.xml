@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/kzv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/kzv" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/a48">
-        <com.tencent.av.funchat.AVListImageView android:id="@id/g81" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47" android:src="@drawable/c4k" android:layout_centerVertical="true" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/a47">
+        <com.tencent.av.ui.effect.view.EffectMaterialImageView android:id="@id/g81" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47" android:src="@drawable/c4k" android:layout_centerVertical="true" />
         <ImageView android:id="@id/kzx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/dem" />
     </RelativeLayout>
 </LinearLayout>

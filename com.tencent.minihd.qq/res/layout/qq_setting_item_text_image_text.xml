@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center_vertical" android:id="@id/qqsetting_item_text" android:paddingLeft="@dimen/qq_form_item_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="10.0dip" android:layout_centerVertical="true" style="@style/table_neirong_16sp_black_for_redesign" />
+    <ImageView android:id="@id/qqsetting_item_center_image" android:background="@drawable/qq_new_xman_logo_off" android:layout_width="47.0dip" android:layout_height="18.0dip" android:layout_marginRight="7.0dip" android:layout_toLeftOf="@id/qqsetting_item_right_text" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/skin_gray3" android:id="@id/qqsetting_item_right_text" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="13.0dip" android:text="" android:layout_toLeftOf="@id/imageView" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/imageView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/qq_form_item_padding" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+</RelativeLayout>

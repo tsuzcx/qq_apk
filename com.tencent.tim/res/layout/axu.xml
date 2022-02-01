@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/fbp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.nearby.widget.AutoScrollImageView android:id="@id/fbs" android:layout_width="fill_parent" android:layout_height="60.0dip" />
+    <ImageView android:id="@id/fbn" android:layout_width="fill_parent" android:layout_height="60.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/fbq" android:background="@drawable/ezq" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="10.0dip" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:layout_gravity="center_vertical" android:id="@id/fbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/fbo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/fbu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:text="@string/qx3" android:layout_toLeftOf="@id/fbo" android:layout_centerVertical="true" />
+        <com.tencent.mobileqq.nearby.widget.GradientAnimTextView android:textSize="14.0dip" android:id="@id/fbt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:text="@string/qw1" android:layout_toLeftOf="@id/fbo" android:layout_centerVertical="true" app:gradientAnimEndColor="#ff2700ff" app:gradientAnimStartColor="#ffff0c0c" />
+    </RelativeLayout>
+</FrameLayout>

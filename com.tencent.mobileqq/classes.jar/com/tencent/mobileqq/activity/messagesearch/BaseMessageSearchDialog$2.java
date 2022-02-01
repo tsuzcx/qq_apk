@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import aepi;
-import aigc;
+import com.tencent.mobileqq.activity.aio.BaseAIOUtils;
 
-public class BaseMessageSearchDialog$2
+class BaseMessageSearchDialog$2
   implements Runnable
 {
-  public BaseMessageSearchDialog$2(aigc paramaigc) {}
+  BaseMessageSearchDialog$2(BaseMessageSearchDialog paramBaseMessageSearchDialog) {}
   
   public void run()
   {
-    aepi.a(this.this$0.findViewById(2131365851));
+    BaseAIOUtils.c(this.this$0.findViewById(2131432634));
   }
 }
 

@@ -13,18 +13,19 @@ final class f
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
       QLog.d("MSF.C.PushManager:PushCoder", 1, "onReceive action null");
-    }
-    while (!paramContext.equals("com.tencent.mobileqq.msf.WatchdogForInfoLogin")) {
       return;
     }
-    MsfService.getCore().pushManager.j.b();
+    if (paramContext.equals("com.tencent.mobileqq.msf.WatchdogForInfoLogin")) {
+      MsfService.getCore().pushManager.j.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.f
  * JD-Core Version:    0.7.0.1
  */

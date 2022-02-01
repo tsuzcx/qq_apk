@@ -1,49 +1,13 @@
 package com.tencent.mobileqq.activity;
 
 import ActionMsg.MsgBody;
-import abti;
-import acls;
-import aclu;
-import aclv;
-import aclw;
-import aclx;
-import acly;
-import aclz;
-import acma;
-import acmb;
-import acmc;
-import acmd;
-import acme;
-import acmf;
-import acmg;
-import acmh;
-import acmi;
-import acmj;
-import acmk;
-import acmm;
-import acmn;
-import acmo;
-import acmp;
-import acmq;
-import acmr;
-import acms;
-import acnb;
-import acnd;
-import aepi;
-import aepr;
-import aihl;
-import alof;
-import alto;
-import alwx;
-import alxa;
-import alzl;
-import amny;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -62,6 +26,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -73,60 +38,89 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import apxv;
-import aqwl;
-import awgf;
-import awgg;
-import awhr;
-import azqs;
-import bays;
-import bdck;
-import bdco;
-import bdex;
-import bdfi;
-import bdgc;
-import bdgm;
-import bdgz;
-import bdhb;
-import bdih;
-import bdil;
-import bdin;
-import bdjz;
-import bety;
-import bhsj;
-import bhsl;
-import bhtv;
-import bhuf;
-import bhus;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.imcore.message.UinTypeUtil;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.apollo.utils.api.IApolloMessageUtil;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import com.tencent.mobileqq.banner.TipsBar;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.emoticonview.EmotionUtils;
+import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
+import com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayer;
+import com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerBase.AudioPlayerListener;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.transfile.TransfileUtile;
+import com.tencent.mobileqq.util.ImageCache;
+import com.tencent.mobileqq.util.ImageWorker;
+import com.tencent.mobileqq.utils.ActionMsgUtil;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.MessageDBUtils;
+import com.tencent.mobileqq.utils.MsgUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.InputMethodUtil;
+import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.XListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import localpb.richMsg.MixedMsg.Elem;
+import localpb.richMsg.MixedMsg.Msg;
+import localpb.richMsg.RichMsg.PicRec;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
@@ -134,144 +128,123 @@ public class ChatHistory
   extends IphoneTitleBarActivity
   implements SensorEventListener
 {
-  protected static Toast a;
-  public float a;
-  public int a;
-  protected long a;
-  public acms a;
-  public acnb a;
-  public acnd a;
-  protected aepr a;
-  public aihl a;
-  protected alwx a;
-  protected amny a;
-  public Dialog a;
-  public AnimationDrawable a;
-  protected Sensor a;
-  public SensorManager a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new acls(this);
-  public Handler a;
-  View jdField_a_of_type_AndroidViewView;
-  protected Button a;
-  public EditText a;
-  public ImageView a;
-  public TextView a;
-  protected awgf a;
-  public awhr a;
-  bdco jdField_a_of_type_Bdco;
-  public bety a;
-  bhtv jdField_a_of_type_Bhtv = new acmj(this);
-  protected AudioPlayer a;
-  public SessionInfo a;
-  public TipsBar a;
-  public XListView a;
-  protected Object a;
-  final String jdField_a_of_type_JavaLangString = "ChatHistory";
-  protected StringBuffer a;
-  public MqqHandler a;
-  protected boolean a;
-  protected float b;
-  protected int b;
-  public long b;
-  public Dialog b;
-  public AnimationDrawable b;
-  protected Button b;
-  public ImageView b;
-  TextView b;
-  protected bety b;
-  public String b;
-  protected boolean b;
-  public int c;
-  public Dialog c;
-  protected AnimationDrawable c;
-  public TextView c;
-  public String c;
-  protected boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public int e;
-  protected boolean e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  final int j = 60;
-  public int k = 999;
-  int l = 0;
-  public int m;
-  
-  public ChatHistory()
-  {
-    this.jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-    this.jdField_d_of_type_Int = 1;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
-    this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Awhr = null;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bhsl(this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_AndroidOsHandler = new acme(this);
-    this.jdField_a_of_type_Acnb = new acnb(this);
-    this.jdField_a_of_type_Alwx = new acmg(this);
-    this.jdField_a_of_type_Amny = new acmh(this);
-    this.jdField_a_of_type_Aepr = new acmi(this);
-  }
+  protected static Toast u;
+  int A;
+  final int B = 60;
+  TextView C;
+  AnimationDrawable D = null;
+  AnimationDrawable E = null;
+  protected AnimationDrawable F;
+  ImageView G;
+  ImageView H;
+  MessageSearchDialog I;
+  long J = 0L;
+  protected SessionInfo K;
+  protected int L = 999;
+  protected boolean M = false;
+  ImageWorker N;
+  protected EntityManager O;
+  protected Object P = new Object();
+  QSlowTableManager Q = null;
+  boolean R = false;
+  int S = 0;
+  Handler.Callback T = new ChatHistory.1(this);
+  MqqHandler U = new MqqWeakReferenceHandler(this.T);
+  QQProgressDialog V;
+  protected Handler W = new ChatHistory.2(this);
+  ChatHistory.HistoryItemOnlongClickListener X = new ChatHistory.HistoryItemOnlongClickListener(this);
+  TipsBar Y;
+  View Z;
+  final String a = "ChatHistory";
+  Dialog aa;
+  Dialog ab;
+  protected MessageObserver ac = new ChatHistory.23(this);
+  protected ProxyObserver ad = new ChatHistory.24(this);
+  protected AudioPlayer ae = null;
+  protected AudioPlayerBase.AudioPlayerListener af = new ChatHistory.25(this);
+  protected SensorManager ag;
+  protected Sensor ah;
+  protected float ai;
+  protected boolean aj;
+  protected QQProgressDialog ak;
+  protected ChatHistory.PlayingPttHistoryInfo al;
+  int am;
+  AbsListView.OnScrollListener an = new ChatHistory.26(this);
+  protected boolean b = false;
+  protected long c;
+  protected boolean d = false;
+  String e;
+  int f;
+  public String g;
+  public String h;
+  protected XListView i;
+  ChatHistory.ChatHistoryAdapter j;
+  protected Button k;
+  protected Button l;
+  TextView m;
+  protected StringBuffer n = new StringBuffer();
+  EditText o;
+  TextView p;
+  protected int q;
+  int r;
+  int s = 1;
+  int t = 0;
+  float v;
+  Dialog w;
+  int x;
+  int y;
+  int z;
   
   public static final int a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, StringBuilder paramStringBuilder)
   {
     if (paramQQAppInterface == null) {
       return 0;
     }
-    SQLiteDatabase localSQLiteDatabase = paramQQAppInterface.b();
+    SQLiteDatabase localSQLiteDatabase = paramQQAppInterface.getReadableDatabase();
     if (localSQLiteDatabase == null) {
       return 0;
     }
     if (paramInt == 0)
     {
       paramQQAppInterface = new StringBuilder(" msgtype ");
-      paramQQAppInterface.append(abti.b());
+      paramQQAppInterface.append(UinTypeUtil.a());
       paramQQAppInterface.append(" and isValid=1 ");
+      paramQQAppInterface = MessageDBUtils.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), localSQLiteDatabase, "", paramQQAppInterface.toString(), "");
     }
-    for (paramQQAppInterface = bdih.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), localSQLiteDatabase, "", paramQQAppInterface.toString(), ""); paramQQAppInterface == null; paramQQAppInterface = bdih.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), localSQLiteDatabase, paramQQAppInterface.toString()))
+    else
     {
-      return 0;
       paramQQAppInterface = new StringBuilder(" where msgtype ");
-      paramQQAppInterface.append(abti.b());
+      paramQQAppInterface.append(UinTypeUtil.a());
       paramQQAppInterface.append(" and isValid=1 ");
+      paramQQAppInterface = MessageDBUtils.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), localSQLiteDatabase, paramQQAppInterface.toString());
     }
-    paramQQAppInterface = localSQLiteDatabase.a(paramQQAppInterface.toString(), null);
     if (paramQQAppInterface == null) {
       return 0;
     }
-    long l1;
+    paramQQAppInterface = localSQLiteDatabase.rawQuery(paramQQAppInterface.toString(), null);
+    if (paramQQAppInterface == null) {
+      return 0;
+    }
     if ((paramQQAppInterface.getCount() > 0) && (paramStringBuilder != null))
     {
       paramQQAppInterface.moveToLast();
-      if (paramInt != 3000) {
-        break label218;
-      }
-      l1 = paramQQAppInterface.getLong(paramQQAppInterface.getColumnIndex("shmsgseq"));
-    }
-    for (;;)
-    {
-      if (l1 > 0L) {
-        paramStringBuilder.append(String.valueOf(l1));
-      }
-      paramInt = paramQQAppInterface.getCount();
-      paramQQAppInterface.close();
-      return paramInt;
-      label218:
-      if (paramInt == 0) {
+      long l1;
+      if (paramInt == 3000) {
+        l1 = paramQQAppInterface.getLong(paramQQAppInterface.getColumnIndex("shmsgseq"));
+      } else if (paramInt == 0) {
         l1 = paramQQAppInterface.getLong(paramQQAppInterface.getColumnIndex("time"));
       } else if (paramInt == 1) {
         l1 = paramQQAppInterface.getLong(paramQQAppInterface.getColumnIndex("shmsgseq"));
       } else {
         l1 = 0L;
       }
+      if (l1 > 0L) {
+        paramStringBuilder.append(String.valueOf(l1));
+      }
     }
+    paramInt = paramQQAppInterface.getCount();
+    paramQQAppInterface.close();
+    return paramInt;
   }
   
   public static final Object a(View paramView)
@@ -279,193 +252,210 @@ public class ChatHistory
     if (paramView == null) {
       return null;
     }
-    if ((paramView.getParent() == null) || ((paramView.getParent() instanceof XListView))) {
-      return paramView.getTag();
+    if ((paramView.getParent() != null) && (!(paramView.getParent() instanceof XListView))) {
+      return a((View)paramView.getParent());
     }
-    return a((View)paramView.getParent());
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool = true;
-    if ((paramString == null) || (paramString.trim().equals("")) || (paramString.contains("\n"))) {
-      bool = false;
-    }
-    while (!Pattern.compile("^[*+,./\\\"=_-]+").matcher(paramString.substring(0, 1)).matches()) {
-      return bool;
-    }
-    return false;
+    return paramView.getTag();
   }
   
   private void b(MessageRecord paramMessageRecord)
   {
-    c(this.app.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, paramMessageRecord));
+    d(this.app.getMessageFacade().c(this.e, this.f, paramMessageRecord));
   }
   
-  private void c(int paramInt)
+  public static boolean b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "recordCount : " + paramInt);
-    }
-    paramInt = this.l + paramInt;
-    if (paramInt <= 0) {}
-    int n;
-    do
+    if ((paramString != null) && (!paramString.trim().equals("")))
     {
-      return;
-      n = (paramInt - 1) / 8 + 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatHistory", 2, "pageIndex = " + n);
+      if (paramString.contains("\n")) {
+        return false;
       }
-    } while (n < 0);
-    this.jdField_a_of_type_Acms.jdField_c_of_type_Int = ((paramInt - 1) % 8);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(n));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      return Pattern.compile("^[*+,./\\\"=_-]+").matcher(paramString.substring(0, 1)).matches() ^ true;
+    }
+    return false;
   }
   
-  public MsgBody a(int paramInt1, int paramInt2, String paramString, int paramInt3)
+  private void d(int paramInt)
   {
-    if (((paramInt2 != -1003) && (paramInt2 != -1032) && (paramInt2 != -1031) && (paramInt2 != 201)) || ((paramInt1 == 1001) || (paramInt1 == 10002) || (bdex.a(paramInt2)) || (paramInt2 == -3001) || (paramInt2 == -30002) || (paramInt2 == -30003))) {
-      return bdex.a(paramString);
-    }
-    if (paramInt2 == -2009)
+    if (QLog.isColorLevel())
     {
-      localMsgBody = new MsgBody();
-      boolean bool = bdil.b(paramInt3);
-      localMsgBody.msg = bdil.a(bays.a(paramString), this, bool, false);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("recordCount : ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("ChatHistory", 2, ((StringBuilder)localObject).toString());
+    }
+    paramInt += this.S;
+    if (paramInt <= 0) {
+      return;
+    }
+    paramInt -= 1;
+    int i1 = paramInt / 8 + 1;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pageIndex = ");
+      ((StringBuilder)localObject).append(i1);
+      QLog.i("ChatHistory", 2, ((StringBuilder)localObject).toString());
+    }
+    if (i1 < 0) {
+      return;
+    }
+    this.j.e = (paramInt % 8);
+    this.o.setText(String.valueOf(i1));
+    Object localObject = this.o;
+    ((EditText)localObject).setSelection(((EditText)localObject).getText().length());
+  }
+  
+  protected MsgBody a(int paramInt1, int paramInt2, String paramString, int paramInt3)
+  {
+    if (((paramInt2 != -1003) && (paramInt2 != -1032) && (paramInt2 != -1031) && (paramInt2 != 201)) || ((paramInt1 != 1001) && (paramInt1 != 10002) && (!ActionMsgUtil.a(paramInt2)) && (paramInt2 != -3001) && (paramInt2 != -30002) && (paramInt2 != -30003)))
+    {
+      if (paramInt2 == -2009)
+      {
+        localMsgBody = new MsgBody();
+        boolean bool = MessageRecordInfo.c(paramInt3);
+        localMsgBody.msg = MsgUtils.a(TransfileUtile.analysisTransFileProtocolData(paramString), this, bool, false);
+        localMsgBody.action = null;
+        return localMsgBody;
+      }
+      if (paramInt2 == -2016)
+      {
+        localMsgBody = new MsgBody();
+        localMsgBody.msg = MsgUtils.a(this.app, TransfileUtile.analysisTransFileProtocolData(paramString), this, this.e, null, this.f);
+        localMsgBody.action = null;
+        return localMsgBody;
+      }
+      MsgBody localMsgBody = new MsgBody();
+      localMsgBody.msg = paramString;
       localMsgBody.action = null;
       return localMsgBody;
     }
-    if (paramInt2 == -2016)
-    {
-      localMsgBody = new MsgBody();
-      localMsgBody.msg = bdil.a(this.app, bays.a(paramString), this, this.jdField_b_of_type_JavaLangString, null, this.jdField_a_of_type_Int);
-      localMsgBody.action = null;
-      return localMsgBody;
-    }
-    MsgBody localMsgBody = new MsgBody();
-    localMsgBody.msg = paramString;
-    localMsgBody.action = null;
-    return localMsgBody;
+    return ActionMsgUtil.a(paramString);
   }
   
   public Cursor a(String paramString1, String paramString2, String paramString3)
   {
-    SQLiteDatabase localSQLiteDatabase = this.app.b();
-    if (localSQLiteDatabase == null) {
+    SQLiteDatabase localSQLiteDatabase = this.app.getReadableDatabase();
+    StringBuilder localStringBuilder1 = null;
+    if (localSQLiteDatabase == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.e("ChatHistory", 2, "MessageProvide getDB null!");
       }
-    }
-    do
-    {
       return null;
-      if (paramString1.indexOf("mr_troop_") == -1) {
-        break;
-      }
-      paramString3 = " where " + paramString3;
-      paramString2 = bdih.b(paramString2, paramString1, localSQLiteDatabase, paramString3);
-    } while (paramString2 == null);
-    paramString2.append(" t left join TroopMemberInfo m on t.senderuin=m.memberuin and t.frienduin=m.troopuin");
-    for (;;)
+    }
+    if (paramString1.indexOf("mr_troop_") != -1)
     {
-      try
-      {
-        paramString2 = localSQLiteDatabase.a(paramString2.toString(), null);
-        paramString1 = paramString2;
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(" where ");
+      localStringBuilder1.append(paramString3);
+      paramString3 = localStringBuilder1.toString();
+      paramString2 = MessageDBUtils.b(paramString2, paramString1, localSQLiteDatabase, paramString3);
+      if (paramString2 == null) {
+        return null;
       }
-      catch (SQLException paramString2)
+      paramString2.append(" t left join TroopMemberInfo m on t.senderuin=m.memberuin and t.frienduin=m.troopuin");
+    }
+    label206:
+    label342:
+    try
+    {
+      paramString2 = localSQLiteDatabase.rawQuery(paramString2.toString(), null);
+      paramString1 = paramString2;
+    }
+    catch (SQLException paramString2)
+    {
+      label115:
+      break label115;
+    }
+    for (paramString1 = localSQLiteDatabase.query(paramString1, null, paramString3, null, null, null);; paramString1 = localSQLiteDatabase.query(paramString1, null, paramString3, null, null, null)) {
+      for (;;)
       {
-        paramString1 = localSQLiteDatabase.a(paramString1, null, paramString3, null, null, null);
-        continue;
-      }
-      return paramString1;
-      if (paramString1.indexOf("mr_grp_") != -1)
-      {
-        paramString2 = new StringBuilder("select * from ");
-        paramString2.append(paramString1);
-        paramString2.append(" t left join GrpMemberInfo m on t.senderuin=m.mId and t.frienduin=m.grpID left join friends l on m.mId =l.uin ");
-        if ((paramString3 != null) && (paramString3.length() > 0))
+        return paramString1;
+        if (paramString1.indexOf("mr_grp_") != -1)
         {
-          paramString2.append(" where ");
-          paramString2.append(paramString3);
+          paramString2 = new StringBuilder("select * from ");
+          paramString2.append(paramString1);
+          paramString2.append(" t left join GrpMemberInfo m on t.senderuin=m.mId and t.frienduin=m.grpID left join friends l on m.mId =l.uin ");
+          if ((paramString3 != null) && (paramString3.length() > 0))
+          {
+            paramString2.append(" where ");
+            paramString2.append(paramString3);
+          }
         }
         try
         {
-          paramString2 = localSQLiteDatabase.a(paramString2.toString(), null);
-          paramString1 = paramString2;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("gene", 2, "cursor: " + paramString2);
+          paramString2 = localSQLiteDatabase.rawQuery(paramString2.toString(), null);
           paramString1 = paramString2;
         }
         catch (SQLException paramString2)
         {
-          for (;;)
-          {
-            paramString2 = localSQLiteDatabase.a(paramString1, null, paramString3, null, null, null);
-          }
+          break label206;
         }
-      }
-      else
-      {
-        if (paramString1.indexOf("mr_discusssion_") != -1)
+        paramString1 = localSQLiteDatabase.query(paramString1, null, paramString3, null, null, null);
+        paramString2 = paramString1;
+        if (!QLog.isColorLevel()) {
+          break label402;
+        }
+        paramString2 = new StringBuilder();
+        paramString2.append("cursor: ");
+        paramString2.append(paramString1);
+        QLog.d("gene", 2, paramString2.toString());
+        return paramString1;
+        if (paramString1.indexOf("mr_discusssion_") == -1) {
+          break label357;
+        }
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append(" where ");
+        localStringBuilder1.append(paramString3);
+        paramString3 = localStringBuilder1.toString();
+        paramString2 = MessageDBUtils.b(paramString2, paramString1, localSQLiteDatabase, paramString3);
+        if (paramString2 == null) {
+          return null;
+        }
+        paramString2.append(" t left join DiscussionMemberInfo m on t.senderuin=m.memberUin and t.frienduin=m.discussionUin");
+        try
         {
-          paramString3 = " where " + paramString3;
-          paramString2 = bdih.b(paramString2, paramString1, localSQLiteDatabase, paramString3);
-          if (paramString2 == null) {
-            break;
-          }
-          paramString2.append(" t left join DiscussionMemberInfo m on t.senderuin=m.memberUin and t.frienduin=m.discussionUin");
-          try
-          {
-            paramString2 = localSQLiteDatabase.a(paramString2.toString(), null);
-            paramString1 = paramString2;
-          }
-          catch (SQLException paramString2)
-          {
-            paramString1 = localSQLiteDatabase.a(paramString1, null, paramString3, null, null, null);
-          }
-          continue;
+          paramString2 = localSQLiteDatabase.rawQuery(paramString2.toString(), null);
+          paramString1 = paramString2;
         }
-        paramString2 = bdih.a(paramString2, paramString1, localSQLiteDatabase, paramString3, null);
-        if (paramString2 != null) {
-          try
-          {
-            paramString2 = localSQLiteDatabase.a(paramString2.toString(), null);
-            paramString1 = paramString2;
-          }
-          catch (SQLException paramString2)
-          {
-            paramString1 = localSQLiteDatabase.a(paramString1, null, paramString3, null, null, null);
-          }
-        } else {
-          paramString1 = null;
+        catch (SQLException paramString2)
+        {
+          StringBuilder localStringBuilder2;
+          break label342;
         }
       }
     }
-  }
-  
-  public awgf a()
-  {
-    if ((this.jdField_a_of_type_Awgf == null) || (!this.jdField_a_of_type_Awgf.a())) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    label357:
+    localStringBuilder2 = MessageDBUtils.a(paramString2, paramString1, localSQLiteDatabase, paramString3, null);
+    paramString2 = localStringBuilder1;
+    if (localStringBuilder2 != null) {}
+    try
     {
-      if ((this.jdField_a_of_type_Awgf == null) || (!this.jdField_a_of_type_Awgf.a())) {
-        this.jdField_a_of_type_Awgf = this.app.getEntityManagerFactory().createMessageRecordEntityManager();
-      }
-      return this.jdField_a_of_type_Awgf;
+      paramString2 = localSQLiteDatabase.rawQuery(localStringBuilder2.toString(), null);
+      return paramString2;
     }
+    catch (SQLException paramString2)
+    {
+      label390:
+      break label390;
+    }
+    paramString2 = localSQLiteDatabase.query(paramString1, null, paramString3, null, null, null);
+    label402:
+    return paramString2;
   }
   
-  protected String a()
+  protected EntityManager a()
   {
-    String str = bdgc.h(this.app, this.app.getCurrentAccountUin());
-    if ((str != null) && (!str.trim().equals(""))) {
-      return str;
+    ??? = this.O;
+    if ((??? == null) || (!((EntityManager)???).isOpen())) {}
+    synchronized (this.P)
+    {
+      if ((this.O == null) || (!this.O.isOpen())) {
+        this.O = this.app.getEntityManagerFactory().b();
+      }
+      return this.O;
     }
-    return this.app.getCurrentAccountUin();
   }
   
   protected String a(long paramLong)
@@ -475,913 +465,553 @@ public class ChatHistory
     return localSimpleDateFormat.format(Long.valueOf(paramLong));
   }
   
-  public String a(AbsStructMsg paramAbsStructMsg)
+  protected String a(AbsStructMsg paramAbsStructMsg)
   {
-    if ((paramAbsStructMsg == null) || (!AbsShareMsg.class.isInstance(paramAbsStructMsg))) {
-      return null;
-    }
-    paramAbsStructMsg = (AbsShareMsg)paramAbsStructMsg;
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramAbsStructMsg.mMsgServiceID == 80)
+    if ((paramAbsStructMsg != null) && (AbsShareMsg.class.isInstance(paramAbsStructMsg)))
     {
-      localStringBuffer.append("[");
-      localStringBuffer.append(paramAbsStructMsg.mSourceName);
-      localStringBuffer.append("]");
-      localStringBuffer.append(paramAbsStructMsg.mMsgBrief);
-      return localStringBuffer.toString();
-    }
-    if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgBrief)) {
-      localStringBuffer.append(paramAbsStructMsg.mMsgBrief);
-    }
-    for (;;)
-    {
-      return localStringBuffer.toString();
-      if (!TextUtils.isEmpty(paramAbsStructMsg.mSourceName))
+      paramAbsStructMsg = (AbsShareMsg)paramAbsStructMsg;
+      StringBuffer localStringBuffer = new StringBuffer();
+      if (paramAbsStructMsg.mMsgServiceID == 80)
+      {
+        localStringBuffer.append("[");
+        localStringBuffer.append(paramAbsStructMsg.mSourceName);
+        localStringBuffer.append("]");
+        localStringBuffer.append(paramAbsStructMsg.mMsgBrief);
+        return localStringBuffer.toString();
+      }
+      if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgBrief))
+      {
+        localStringBuffer.append(paramAbsStructMsg.mMsgBrief);
+      }
+      else if (!TextUtils.isEmpty(paramAbsStructMsg.mSourceName))
       {
         localStringBuffer.append(paramAbsStructMsg.mSourceName);
-        localStringBuffer.append(" " + getString(2131720351) + " ");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" ");
+        localStringBuilder.append(getString(2131916811));
+        localStringBuilder.append(" ");
+        localStringBuffer.append(localStringBuilder.toString());
         if (!TextUtils.isEmpty(paramAbsStructMsg.mContentTitle)) {
           localStringBuffer.append(paramAbsStructMsg.mContentTitle);
         }
       }
+      return localStringBuffer.toString();
     }
+    return null;
   }
   
-  protected void a()
+  void a(int paramInt1, int paramInt2)
   {
-    RelativeLayout localRelativeLayout = new RelativeLayout(getActivity());
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar = new TipsBar(getActivity());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setBarType(4);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setTipsIcon(getActivity().getResources().getDrawable(2130838158));
-    localRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar, localLayoutParams);
-    this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(localRelativeLayout);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setOnClickListener(new acmm(this));
-    this.jdField_c_of_type_AndroidWidgetTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt > 0)
-    {
-      Cursor localCursor = this.jdField_a_of_type_Acms.getCursor();
-      if (localCursor != null) {
-        localCursor.requery();
-      }
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (((CheckBox)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131365063)).isChecked()))
-    {
-      j();
-      this.app.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
+    this.q = paramInt1;
+    int i1 = 1;
     if (paramInt2 > 0)
     {
-      if (paramInt2 < 8)
-      {
+      if (paramInt2 < 8) {
         paramInt2 = 1;
-        if (paramInt1 >= 8) {
-          break label79;
-        }
-        paramInt1 = 1;
+      } else if (paramInt2 % 8 == 0) {
+        paramInt2 /= 8;
+      } else {
+        paramInt2 = paramInt2 / 8 + 1;
       }
-      for (;;)
-      {
-        this.jdField_c_of_type_Int = (paramInt1 + paramInt2);
-        this.l = (paramInt2 * 8);
-        this.jdField_b_of_type_Int += this.l;
-        return;
-        if (paramInt2 % 8 == 0) {
-          paramInt2 /= 8;
-        }
-        for (;;)
-        {
-          break;
-          paramInt2 = paramInt2 / 8 + 1;
-        }
-        label79:
-        if (paramInt1 % 8 == 0) {
-          paramInt1 /= 8;
-        } else {
-          paramInt1 = paramInt1 / 8 + 1;
-        }
+      if (paramInt1 < 8) {
+        paramInt1 = i1;
+      } else if (paramInt1 % 8 == 0) {
+        paramInt1 /= 8;
+      } else {
+        paramInt1 = paramInt1 / 8 + 1;
       }
-    }
-    if (this.jdField_b_of_type_Int < 8)
-    {
-      this.jdField_c_of_type_Int = 1;
+      this.r = (paramInt1 + paramInt2);
+      this.S = (paramInt2 * 8);
+      this.q += this.S;
       return;
     }
-    if (this.jdField_b_of_type_Int % 8 == 0) {}
-    for (paramInt1 = this.jdField_b_of_type_Int / 8;; paramInt1 = this.jdField_b_of_type_Int / 8 + 1)
+    paramInt1 = this.q;
+    if (paramInt1 < 8)
     {
-      this.jdField_c_of_type_Int = paramInt1;
+      this.r = 1;
       return;
     }
+    if (paramInt1 % 8 == 0) {
+      paramInt1 /= 8;
+    } else {
+      paramInt1 = paramInt1 / 8 + 1;
+    }
+    this.r = paramInt1;
   }
   
-  public void a(int paramInt, String paramString)
+  void a(int paramInt, String paramString)
   {
-    QQToast.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+    QQToast.makeText(this, paramInt, paramString, 0).show(getTitleBarHeight());
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  void a(int paramInt, boolean paramBoolean)
   {
     ThreadManager.getSubThreadHandler().post(new ChatHistory.8(this, paramBoolean, paramInt));
   }
   
   protected void a(Bundle paramBundle)
   {
-    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramBundle));
     startActivity(localIntent);
   }
   
-  public void a(Message paramMessage)
+  void a(Message paramMessage)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramMessage, 0L);
+    this.U.sendMessageDelayed(paramMessage, 0L);
   }
   
-  public void a(ImageView paramImageView)
+  protected void a(ImageView paramImageView)
   {
     if (paramImageView != null)
     {
-      this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.setBounds(0, 0, this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getMinimumWidth(), this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.getMinimumHeight());
-      paramImageView.setImageDrawable(this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable);
-      this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-      this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+      AnimationDrawable localAnimationDrawable = this.F;
+      localAnimationDrawable.setBounds(0, 0, localAnimationDrawable.getMinimumWidth(), this.F.getMinimumHeight());
+      paramImageView.setImageDrawable(this.F);
+      this.F.stop();
+      this.F.start();
     }
   }
   
-  public void a(ImageView paramImageView, apxv paramapxv)
+  protected void a(ImageView paramImageView, IPicEmoticonInfo paramIPicEmoticonInfo)
   {
-    if ((paramImageView != null) && (paramapxv != null) && (paramapxv.b()))
+    if ((paramImageView != null) && (paramIPicEmoticonInfo != null) && (paramIPicEmoticonInfo.isSound()))
     {
-      paramapxv = paramapxv.a("fromAIO", true);
+      paramIPicEmoticonInfo = paramIPicEmoticonInfo.getLoadingDrawable("fromAIO", true);
       Drawable localDrawable = paramImageView.getDrawable();
       if ((localDrawable instanceof URLDrawable)) {
-        apxv.b((URLDrawable)localDrawable);
+        EmotionUtils.stopSoundDrawablePlay((URLDrawable)localDrawable);
       }
-      paramImageView.setImageDrawable(paramapxv);
+      paramImageView.setImageDrawable(paramIPicEmoticonInfo);
     }
   }
   
-  public void a(MessageRecord paramMessageRecord)
+  void a(MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel())
-    {
-      if (paramMessageRecord == null) {
-        break label110;
+    if (QLog.isColorLevel()) {
+      if (paramMessageRecord != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("startDelMsg is called,mr uniseq is:");
+        ((StringBuilder)localObject).append(paramMessageRecord.uniseq);
+        ((StringBuilder)localObject).append(",id is:");
+        ((StringBuilder)localObject).append(paramMessageRecord.getId());
+        QLog.d("Q.msg.delmsg", 2, ((StringBuilder)localObject).toString());
       }
-      QLog.d("Q.msg.delmsg", 2, "startDelMsg is called,mr uniseq is:" + paramMessageRecord.uniseq + ",id is:" + paramMessageRecord.getId());
+      else
+      {
+        QLog.d("Q.msg.delmsg", 2, "startDelMsg is called,mr is null");
+      }
     }
-    for (;;)
-    {
-      bhuf localbhuf = (bhuf)bhus.a(this, null);
-      localbhuf.a(getResources().getString(2131696570));
-      localbhuf.a(2131691562, 3);
-      localbhuf.c(2131690648);
-      localbhuf.a(new acmk(this, paramMessageRecord, localbhuf));
-      localbhuf.show();
-      return;
-      label110:
-      QLog.d("Q.msg.delmsg", 2, "startDelMsg is called,mr is null");
-    }
+    Object localObject = (ActionSheet)ActionSheetHelper.b(this, null);
+    ((ActionSheet)localObject).setMainTitle(getResources().getString(2131893858));
+    ((ActionSheet)localObject).addButton(2131888438, 3);
+    ((ActionSheet)localObject).addCancelButton(2131887648);
+    ((ActionSheet)localObject).setOnButtonClickListener(new ChatHistory.27(this, paramMessageRecord, (ActionSheet)localObject));
+    ((ActionSheet)localObject).show();
   }
   
-  public void a(String paramString)
+  void a(String paramString)
   {
-    View localView = getLayoutInflater().inflate(2131559016, null);
-    if (1 == this.jdField_a_of_type_Int)
+    View localView = getLayoutInflater().inflate(2131624707, null);
+    int i1 = this.f;
+    if (1 == i1)
     {
-      ((TextView)localView.findViewById(2131377621)).setText(2131691095);
-      localView.findViewById(2131365063).setVisibility(8);
+      ((TextView)localView.findViewById(2131447090)).setText(2131888014);
+      localView.findViewById(2131431687).setVisibility(8);
     }
-    for (;;)
+    else if (3000 == i1)
     {
-      if (!isFinishing())
-      {
-        this.jdField_b_of_type_AndroidAppDialog = bdgm.a(this, 230).setTitle(getString(2131691578)).setPositiveButton(getString(2131691562), new acma(this, paramString)).setNegativeButton(getString(2131690624), new aclz(this)).addView(localView);
-        this.jdField_b_of_type_AndroidAppDialog.show();
-      }
-      return;
-      if (3000 == this.jdField_a_of_type_Int)
-      {
-        ((TextView)localView.findViewById(2131377621)).setText(2131691094);
-        localView.findViewById(2131365063).setVisibility(8);
-      }
-      else if ((1001 == this.jdField_a_of_type_Int) || (10002 == this.jdField_a_of_type_Int) || (1000 == this.jdField_a_of_type_Int) || (10004 == this.jdField_a_of_type_Int) || (1020 == this.jdField_a_of_type_Int) || (1004 == this.jdField_a_of_type_Int))
-      {
-        localView.findViewById(2131365063).setVisibility(8);
-      }
+      ((TextView)localView.findViewById(2131447090)).setText(2131888013);
+      localView.findViewById(2131431687).setVisibility(8);
+    }
+    else if ((1001 == i1) || (10002 == i1) || (1000 == i1) || (10004 == i1) || (1020 == i1) || (1004 == i1) || (10010 == i1))
+    {
+      localView.findViewById(2131431687).setVisibility(8);
+    }
+    if (!isFinishing())
+    {
+      this.aa = DialogUtil.a(this, 230).setTitle(getString(2131888454)).setPositiveButton(getString(2131888438), new ChatHistory.16(this, paramString)).setNegativeButton(getString(2131887626), new ChatHistory.15(this)).addView(localView);
+      this.aa.show();
     }
   }
   
   @SuppressLint({"NewApi"})
   protected void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131369528));
-    c();
-    a();
-    this.jdField_a_of_type_Acms = new acms(this, this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Acms);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Bhtv);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setEdgeEffectEnabled(false);
+    this.i = ((XListView)findViewById(2131437282));
+    d();
+    b();
+    this.j = new ChatHistory.ChatHistoryAdapter(this, this, null);
+    this.i.setAdapter(this.j);
+    this.i.setOnScrollListener(this.an);
+    this.i.setEdgeEffectEnabled(false);
     if (Build.VERSION.SDK_INT >= 9) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollFooter(null);
+      this.i.setOverscrollFooter(null);
     }
-    this.jdField_a_of_type_Acms.a(paramString, paramInt, this.jdField_e_of_type_Int);
+    this.j.a(paramString, paramInt, this.t);
   }
   
   boolean a(int paramInt)
   {
-    if ((paramInt <= 0) || (paramInt > this.jdField_c_of_type_Int * 8)) {
-      return false;
+    if ((paramInt > 0) && (paramInt <= this.r * 8))
+    {
+      this.d = true;
+      paramInt -= 1;
+      int i1 = paramInt / 8;
+      this.j.e = (paramInt % 8);
+      this.o.setText(String.valueOf(i1 + 1));
+      EditText localEditText = this.o;
+      localEditText.setSelection(localEditText.getText().length());
+      return true;
     }
-    this.jdField_b_of_type_Boolean = true;
-    int n = (paramInt - 1) / 8;
-    this.jdField_a_of_type_Acms.jdField_c_of_type_Int = ((paramInt - 1) % 8);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(n + 1));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-    return true;
+    return false;
   }
   
-  public void b()
+  protected void b()
   {
-    View localView1 = findViewById(2131378041);
-    View localView2 = findViewById(2131376034);
-    int n = localView1.getHeight();
-    this.jdField_a_of_type_Aihl = new aihl(this, this.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -n);
-    localTranslateAnimation1.setDuration(200L);
-    localTranslateAnimation1.setFillAfter(true);
-    TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -n, 0.0F);
-    localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new acmn(this, localView2, localView1));
-    localTranslateAnimation2.setAnimationListener(new acmo(this, localView2, n));
-    this.jdField_a_of_type_Aihl.setOnDismissListener(new acmp(this, localView2, n, localView1, localTranslateAnimation2));
-    localView2.startAnimation(localTranslateAnimation1);
+    RelativeLayout localRelativeLayout = new RelativeLayout(getActivity());
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    this.Y = new TipsBar(getActivity());
+    this.Y.setBarType(4);
+    this.Y.setTipsIcon(getActivity().getResources().getDrawable(2130838283));
+    localRelativeLayout.addView(this.Y, localLayoutParams);
+    this.i.addHeaderView(localRelativeLayout);
+    this.Y.setOnClickListener(new ChatHistory.3(this));
+    this.C = this.Y.getTextView();
+    this.Y.setVisibility(8);
   }
   
-  public void b(int paramInt)
+  void b(int paramInt)
   {
-    QQToast.a(getActivity(), paramInt, 0).b(getResources().getDimensionPixelSize(2131298914));
+    if (paramInt > 0)
+    {
+      Cursor localCursor = this.j.getCursor();
+      if (localCursor != null) {
+        localCursor.requery();
+      }
+    }
+    if ((this.f == 0) && (((CheckBox)this.aa.findViewById(2131431687)).isChecked()))
+    {
+      l();
+      this.app.getFileManagerDataCenter().a(this.e, this.f);
+    }
   }
   
-  public void b(ImageView paramImageView)
+  protected void b(ImageView paramImageView)
   {
     if (paramImageView != null)
     {
-      this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-      paramImageView.setImageDrawable(getResources().getDrawable(2130846675));
+      this.F.stop();
+      paramImageView.setImageDrawable(getResources().getDrawable(2130849016));
     }
   }
   
-  public void b(ImageView paramImageView, apxv paramapxv)
+  protected void b(ImageView paramImageView, IPicEmoticonInfo paramIPicEmoticonInfo)
   {
-    if ((paramImageView != null) && (paramapxv != null) && (paramapxv.b()))
+    if ((paramImageView != null) && (paramIPicEmoticonInfo != null) && (paramIPicEmoticonInfo.isSound()))
     {
-      paramapxv = paramapxv.a("fromAIO", true);
-      if ((paramapxv instanceof URLDrawable)) {
-        apxv.a((URLDrawable)paramapxv);
+      paramIPicEmoticonInfo = paramIPicEmoticonInfo.getLoadingDrawable("fromAIO", true);
+      if ((paramIPicEmoticonInfo instanceof URLDrawable)) {
+        EmotionUtils.startSoundDrawablePlay((URLDrawable)paramIPicEmoticonInfo);
       }
-      paramImageView.setImageDrawable(paramapxv);
+      paramImageView.setImageDrawable(paramIPicEmoticonInfo);
     }
   }
   
-  public void b(String paramString)
+  protected void b(String paramString, int paramInt)
   {
-    if (jdField_a_of_type_AndroidWidgetToast == null) {
-      jdField_a_of_type_AndroidWidgetToast = Toast.makeText(this, paramString, 0);
+    StringBuffer localStringBuffer = new StringBuffer();
+    Object localObject1;
+    if ((paramInt != 1) && (paramInt != 3000))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("( isValid=1 and msgtype ");
+      ((StringBuilder)localObject1).append(UinTypeUtil.a());
+      ((StringBuilder)localObject1).append(" ) ORDER BY time asc , longMsgIndex asc");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject1 = MessageDBUtils.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), this.app.getReadableDatabase(), (String)localObject1, null);
+    }
+    else
+    {
+      localObject1 = MessageDBUtils.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), this.app.getReadableDatabase());
+    }
+    Cursor localCursor;
+    if (localObject1 != null) {
+      localCursor = this.app.getReadableDatabase().rawQuery(((StringBuilder)localObject1).toString(), null);
+    } else {
+      localCursor = null;
+    }
+    if (paramInt == 1)
+    {
+      paramString = ContactUtils.a(this.app, paramString, 1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(getString(2131917584));
+      ((StringBuilder)localObject1).append(":");
+      localStringBuffer.append(((StringBuilder)localObject1).toString());
+      localStringBuffer.append(paramString);
+      localStringBuffer.append("\r\n===========================================\r\n");
+    }
+    int i2;
+    int i1;
+    int i3;
+    Object localObject2;
+    if ((localCursor != null) && (localCursor.moveToFirst()))
+    {
+      localObject1 = "";
+      i2 = localCursor.getInt(localCursor.getColumnIndex("time"));
+      paramString = localCursor.getString(localCursor.getColumnIndex("senderuin"));
+      i1 = 0;
+      if (1 == paramInt)
+      {
+        if (((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).Z(this.e)) {
+          paramString = ContactUtils.b(this.app, this.e, paramString);
+        } else {
+          paramString = String.format("%s(%s)", new Object[] { ContactUtils.b(this.app, this.e, paramString), paramString });
+        }
+      }
+      else if (3000 == paramInt) {
+        paramString = String.format("%s(%s)", new Object[] { ContactUtils.a(this.app, paramString, 0), paramString });
+      } else {
+        paramString = this.g;
+      }
+      i3 = localCursor.getInt(localCursor.getColumnIndex("issend"));
+      localObject2 = paramString;
+      if (MessageRecordInfo.b(i3)) {
+        localObject2 = e();
+      }
+      if ((localCursor.getColumnIndex("versionCode") >= 0) && (localCursor.getInt(localCursor.getColumnIndex("versionCode")) > 0))
+      {
+        int i4 = localCursor.getInt(localCursor.getColumnIndex("msgtype"));
+        if (i4 == -2007)
+        {
+          paramString = getString(2131888889);
+          break label1062;
+        }
+        if (i4 == -2058)
+        {
+          paramString = getString(2131916786);
+          break label1062;
+        }
+        if (i4 == -8018)
+        {
+          paramString = getString(2131886651);
+          break label1062;
+        }
+        if (i4 == -2039)
+        {
+          paramString = localCursor.getBlob(localCursor.getColumnIndex("msgData"));
+          paramString = ((IApolloMessageUtil)QRoute.api(IApolloMessageUtil.class)).getApolloDescMsg(paramString);
+          break label1062;
+        }
+        if (i4 == -2011)
+        {
+          paramString = a(StructMsgFactory.a(localCursor.getBlob(localCursor.getColumnIndex("msgData"))));
+          break label1062;
+        }
+        if (i4 == -2020)
+        {
+          if (MessageRecordInfo.b(i3))
+          {
+            paramString = this.app.getApp().getString(2131916395, new Object[] { this.K.e });
+            break label1062;
+          }
+          paramString = this.app.getApp().getString(2131916394);
+          break label1062;
+        }
+        if (i4 == -2006)
+        {
+          paramString = (String)localObject1;
+          break label1367;
+        }
+        if (i4 == -2000)
+        {
+          paramString = HardCodeUtil.a(2131899831);
+          break label1062;
+        }
+        if (i4 == -2002)
+        {
+          paramString = HardCodeUtil.a(2131899819);
+          break label1062;
+        }
+        if (i4 == -2022)
+        {
+          paramString = HardCodeUtil.a(2131899829);
+          break label1062;
+        }
+        if (i4 == -2071)
+        {
+          paramString = getString(2131888234);
+          break label1062;
+        }
+        if (i4 == -7001)
+        {
+          paramString = getString(2131891967);
+          break label1062;
+        }
+        if (i4 == -1035) {
+          paramString = new StringBuilder();
+        }
+      }
+    }
+    try
+    {
+      byte[] arrayOfByte = localCursor.getBlob(localCursor.getColumnIndex("msgData"));
+      localObject1 = new MixedMsg.Msg();
+      try
+      {
+        ((MixedMsg.Msg)localObject1).mergeFrom(arrayOfByte);
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
+      if (((MixedMsg.Msg)localObject1).elems.get().size() <= 0)
+      {
+        if (localCursor == null) {
+          break label1434;
+        }
+        localCursor.close();
+        return;
+      }
+      i3 = ((MixedMsg.Msg)localObject1).elems.get().size();
+      while (i1 < i3)
+      {
+        localObject3 = (MixedMsg.Elem)((MixedMsg.Msg)localObject1).elems.get().get(i1);
+        if (((MixedMsg.Elem)localObject3).textMsg.has()) {
+          paramString.append(((MixedMsg.Elem)localObject3).textMsg.get());
+        } else if (((MixedMsg.Elem)localObject3).picMsg.has()) {
+          paramString.append("[图片]");
+        }
+        i1 += 1;
+      }
+    }
+    catch (Exception localException1)
+    {
+      Object localObject3;
+      label979:
+      break label979;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ChatHistory", 2, "Parse mix message error");
+    }
+    paramString = paramString.toString();
+    break label1062;
+    try
+    {
+      paramString = new String(localCursor.getBlob(localCursor.getColumnIndex("msgData")), "UTF-8");
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      paramString = (String)localObject1;
+    }
+    paramString = localCursor.getString(localCursor.getColumnIndex("msg"));
+    label1062:
+    if (paramString != null) {
+      localObject1 = new QQText(paramString, 3).toPlainText();
+    } else {
+      localObject1 = null;
+    }
+    localObject3 = localObject1;
+    if (localObject1 != null)
+    {
+      localObject3 = localObject1;
+      if (((String)localObject1).length() > 0)
+      {
+        localObject3 = localObject1;
+        if (c((String)localObject1))
+        {
+          localObject3 = localObject1.split("\026")[1].split("\\|");
+          try
+          {
+            if (localObject3.length < 2) {
+              i1 = 1;
+            } else {
+              i1 = Integer.valueOf(localObject3[2]).intValue();
+            }
+          }
+          catch (Exception localException2)
+          {
+            label1164:
+            QLog.d("ChatHistory", 1, "", localException2);
+            localObject4 = localObject1;
+          }
+          localObject3 = localObject1;
+          if (i1 == 2)
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("[");
+            ((StringBuilder)localObject3).append(getString(2131917347));
+            ((StringBuilder)localObject3).append("]");
+            localObject3 = ((StringBuilder)localObject3).toString();
+            localObject1 = localObject3;
+          }
+        }
+      }
     }
     for (;;)
     {
-      jdField_a_of_type_AndroidWidgetToast.show();
+      localObject3 = getString(2131915898);
+      localObject1 = localObject3;
+      localObject3 = localObject1;
+      Object localObject4;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(a(i2 * 1000L));
+      ((StringBuilder)localObject1).append("  ");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("\r\n");
+      ((StringBuilder)localObject1).append(localObject4);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("\r\n\r\n");
+      localStringBuffer.append(((StringBuilder)localObject2).toString());
+      label1367:
+      if (localCursor.moveToNext())
+      {
+        localObject1 = paramString;
+        break;
+      }
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      runOnUiThread(new ChatHistory.21(this, FileUtils.writeFile(AppConstants.SDCARD_PATH_CHATRECORD, this.n.toString(), localStringBuffer.toString())));
       return;
-      jdField_a_of_type_AndroidWidgetToast.setText(paramString);
+      label1434:
+      return;
+      if (i1 != 1) {
+        if (i1 != 65538) {
+          break label1164;
+        }
+      }
     }
   }
   
-  /* Error */
-  protected void b(String paramString, int paramInt)
+  void c()
   {
-    // Byte code:
-    //   0: ldc 173
-    //   2: astore 7
-    //   4: new 65	java/lang/StringBuffer
-    //   7: dup
-    //   8: invokespecial 66	java/lang/StringBuffer:<init>	()V
-    //   11: astore 10
-    //   13: iload_2
-    //   14: iconst_1
-    //   15: if_icmpeq +10 -> 25
-    //   18: iload_2
-    //   19: sipush 3000
-    //   22: if_icmpne +505 -> 527
-    //   25: aload_1
-    //   26: iload_2
-    //   27: invokestatic 168	com/tencent/mobileqq/data/MessageRecord:getOldTableName	(Ljava/lang/String;I)Ljava/lang/String;
-    //   30: aload_1
-    //   31: iload_2
-    //   32: invokestatic 171	com/tencent/mobileqq/data/MessageRecord:getTableName	(Ljava/lang/String;I)Ljava/lang/String;
-    //   35: aload_0
-    //   36: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   39: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   42: invokestatic 927	bdih:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/app/SQLiteDatabase;)Ljava/lang/StringBuilder;
-    //   45: astore 6
-    //   47: aload 6
-    //   49: ifnull +1262 -> 1311
-    //   52: aload_0
-    //   53: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   56: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   59: aload 6
-    //   61: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: aconst_null
-    //   65: invokevirtual 191	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   68: astore 8
-    //   70: iload_2
-    //   71: iconst_1
-    //   72: if_icmpne +61 -> 133
-    //   75: aload_0
-    //   76: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   79: aload_1
-    //   80: iconst_1
-    //   81: invokestatic 930	bdgc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
-    //   84: astore_1
-    //   85: aload 10
-    //   87: new 146	java/lang/StringBuilder
-    //   90: dup
-    //   91: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   94: aload_0
-    //   95: ldc_w 931
-    //   98: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   101: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: ldc_w 933
-    //   107: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokevirtual 480	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   116: pop
-    //   117: aload 10
-    //   119: aload_1
-    //   120: invokevirtual 480	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   123: pop
-    //   124: aload 10
-    //   126: ldc_w 935
-    //   129: invokevirtual 480	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   132: pop
-    //   133: aload 8
-    //   135: ifnull +349 -> 484
-    //   138: aload 8
-    //   140: invokeinterface 938 1 0
-    //   145: ifeq +339 -> 484
-    //   148: aload 7
-    //   150: astore 6
-    //   152: aload 8
-    //   154: aload 8
-    //   156: ldc 222
-    //   158: invokeinterface 207 2 0
-    //   163: invokeinterface 941 2 0
-    //   168: istore 4
-    //   170: aload 8
-    //   172: aload 8
-    //   174: ldc_w 943
-    //   177: invokeinterface 207 2 0
-    //   182: invokeinterface 944 2 0
-    //   187: astore_1
-    //   188: iconst_1
-    //   189: iload_2
-    //   190: if_icmpne +428 -> 618
-    //   193: aload_0
-    //   194: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   197: aload_0
-    //   198: getfield 286	com/tencent/mobileqq/activity/ChatHistory:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   201: invokestatic 950	com/tencent/mobileqq/data/TroopInfo:isQidianPrivateTroop	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
-    //   204: ifeq +381 -> 585
-    //   207: aload_0
-    //   208: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   211: aload_0
-    //   212: getfield 286	com/tencent/mobileqq/activity/ChatHistory:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   215: aload_1
-    //   216: invokestatic 953	bdgc:h	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   219: astore_1
-    //   220: aload 8
-    //   222: aload 8
-    //   224: ldc_w 955
-    //   227: invokeinterface 207 2 0
-    //   232: invokeinterface 941 2 0
-    //   237: istore_3
-    //   238: iload_3
-    //   239: invokestatic 956	bdil:a	(I)Z
-    //   242: ifeq +421 -> 663
-    //   245: aload_0
-    //   246: invokevirtual 958	com/tencent/mobileqq/activity/ChatHistory:a	()Ljava/lang/String;
-    //   249: astore 9
-    //   251: aload 8
-    //   253: ldc_w 960
-    //   256: invokeinterface 207 2 0
-    //   261: iflt +23 -> 284
-    //   264: aload 8
-    //   266: aload 8
-    //   268: ldc_w 960
-    //   271: invokeinterface 207 2 0
-    //   276: invokeinterface 941 2 0
-    //   281: ifgt +388 -> 669
-    //   284: aload 8
-    //   286: aload 8
-    //   288: ldc_w 961
-    //   291: invokeinterface 207 2 0
-    //   296: invokeinterface 944 2 0
-    //   301: astore_1
-    //   302: aconst_null
-    //   303: astore 6
-    //   305: aload_1
-    //   306: ifnull +17 -> 323
-    //   309: new 963	bamp
-    //   312: dup
-    //   313: aload_1
-    //   314: iconst_3
-    //   315: invokespecial 966	bamp:<init>	(Ljava/lang/CharSequence;I)V
-    //   318: invokevirtual 967	bamp:a	()Ljava/lang/String;
-    //   321: astore 6
-    //   323: aload 6
-    //   325: astore 7
-    //   327: aload 6
-    //   329: ifnull +67 -> 396
-    //   332: aload 6
-    //   334: astore 7
-    //   336: aload 6
-    //   338: invokevirtual 399	java/lang/String:length	()I
-    //   341: ifle +55 -> 396
-    //   344: aload 6
-    //   346: astore 7
-    //   348: aload_0
-    //   349: aload 6
-    //   351: invokevirtual 969	com/tencent/mobileqq/activity/ChatHistory:b	(Ljava/lang/String;)Z
-    //   354: ifeq +42 -> 396
-    //   357: aload 6
-    //   359: ldc_w 971
-    //   362: invokevirtual 974	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   365: iconst_1
-    //   366: aaload
-    //   367: ldc_w 976
-    //   370: invokevirtual 974	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   373: astore 7
-    //   375: aload 7
-    //   377: arraylength
-    //   378: iconst_2
-    //   379: if_icmpge +853 -> 1232
-    //   382: iconst_1
-    //   383: istore_3
-    //   384: goto +933 -> 1317
-    //   387: aload_0
-    //   388: ldc_w 977
-    //   391: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   394: astore 7
-    //   396: new 146	java/lang/StringBuilder
-    //   399: dup
-    //   400: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   403: aload_0
-    //   404: iload 4
-    //   406: i2l
-    //   407: ldc2_w 978
-    //   410: lmul
-    //   411: invokevirtual 981	com/tencent/mobileqq/activity/ChatHistory:a	(J)Ljava/lang/String;
-    //   414: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   417: ldc_w 983
-    //   420: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: aload 9
-    //   425: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   428: ldc_w 985
-    //   431: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   434: aload 7
-    //   436: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   439: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   442: astore 6
-    //   444: aload 10
-    //   446: new 146	java/lang/StringBuilder
-    //   449: dup
-    //   450: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   453: aload 6
-    //   455: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: ldc_w 987
-    //   461: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   464: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   467: invokevirtual 480	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   470: pop
-    //   471: aload_1
-    //   472: astore 6
-    //   474: aload 8
-    //   476: invokeinterface 990 1 0
-    //   481: ifne -329 -> 152
-    //   484: aload 8
-    //   486: ifnull +10 -> 496
-    //   489: aload 8
-    //   491: invokeinterface 220 1 0
-    //   496: aload_0
-    //   497: new 992	com/tencent/mobileqq/activity/ChatHistory$21
-    //   500: dup
-    //   501: aload_0
-    //   502: getstatic 997	alof:aY	Ljava/lang/String;
-    //   505: aload_0
-    //   506: getfield 68	com/tencent/mobileqq/activity/ChatHistory:jdField_a_of_type_JavaLangStringBuffer	Ljava/lang/StringBuffer;
-    //   509: invokevirtual 489	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   512: aload 10
-    //   514: invokevirtual 489	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   517: invokestatic 1002	bdhb:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
-    //   520: invokespecial 1005	com/tencent/mobileqq/activity/ChatHistory$21:<init>	(Lcom/tencent/mobileqq/activity/ChatHistory;Z)V
-    //   523: invokevirtual 1009	com/tencent/mobileqq/activity/ChatHistory:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   526: return
-    //   527: new 146	java/lang/StringBuilder
-    //   530: dup
-    //   531: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   534: ldc_w 1011
-    //   537: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   540: invokestatic 156	abti:b	()Ljava/lang/String;
-    //   543: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   546: ldc_w 1013
-    //   549: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   552: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   555: astore 6
-    //   557: aload_1
-    //   558: iload_2
-    //   559: invokestatic 168	com/tencent/mobileqq/data/MessageRecord:getOldTableName	(Ljava/lang/String;I)Ljava/lang/String;
-    //   562: aload_1
-    //   563: iload_2
-    //   564: invokestatic 171	com/tencent/mobileqq/data/MessageRecord:getTableName	(Ljava/lang/String;I)Ljava/lang/String;
-    //   567: aload_0
-    //   568: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   571: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   574: aload 6
-    //   576: aconst_null
-    //   577: invokestatic 415	bdih:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/app/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   580: astore 6
-    //   582: goto -535 -> 47
-    //   585: ldc_w 1015
-    //   588: iconst_2
-    //   589: anewarray 84	java/lang/Object
-    //   592: dup
-    //   593: iconst_0
-    //   594: aload_0
-    //   595: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   598: aload_0
-    //   599: getfield 286	com/tencent/mobileqq/activity/ChatHistory:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   602: aload_1
-    //   603: invokestatic 953	bdgc:h	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   606: aastore
-    //   607: dup
-    //   608: iconst_1
-    //   609: aload_1
-    //   610: aastore
-    //   611: invokestatic 1018	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   614: astore_1
-    //   615: goto -395 -> 220
-    //   618: sipush 3000
-    //   621: iload_2
-    //   622: if_icmpne +33 -> 655
-    //   625: ldc_w 1015
-    //   628: iconst_2
-    //   629: anewarray 84	java/lang/Object
-    //   632: dup
-    //   633: iconst_0
-    //   634: aload_0
-    //   635: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   638: aload_1
-    //   639: iconst_0
-    //   640: invokestatic 930	bdgc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
-    //   643: aastore
-    //   644: dup
-    //   645: iconst_1
-    //   646: aload_1
-    //   647: aastore
-    //   648: invokestatic 1018	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   651: astore_1
-    //   652: goto -432 -> 220
-    //   655: aload_0
-    //   656: getfield 1020	com/tencent/mobileqq/activity/ChatHistory:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   659: astore_1
-    //   660: goto -440 -> 220
-    //   663: aload_1
-    //   664: astore 9
-    //   666: goto -415 -> 251
-    //   669: aload 8
-    //   671: aload 8
-    //   673: ldc_w 1022
-    //   676: invokeinterface 207 2 0
-    //   681: invokeinterface 941 2 0
-    //   686: istore 5
-    //   688: iload 5
-    //   690: sipush -2007
-    //   693: if_icmpne +14 -> 707
-    //   696: aload_0
-    //   697: ldc_w 1023
-    //   700: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   703: astore_1
-    //   704: goto -402 -> 302
-    //   707: iload 5
-    //   709: sipush -2058
-    //   712: if_icmpne +14 -> 726
-    //   715: aload_0
-    //   716: ldc_w 1024
-    //   719: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   722: astore_1
-    //   723: goto -421 -> 302
-    //   726: iload 5
-    //   728: sipush -2039
-    //   731: if_icmpne +50 -> 781
-    //   734: aload 8
-    //   736: aload 8
-    //   738: ldc_w 1026
-    //   741: invokeinterface 207 2 0
-    //   746: invokeinterface 1030 2 0
-    //   751: astore_1
-    //   752: new 1032	com/tencent/mobileqq/data/MessageForApollo
-    //   755: dup
-    //   756: invokespecial 1033	com/tencent/mobileqq/data/MessageForApollo:<init>	()V
-    //   759: astore 6
-    //   761: aload 6
-    //   763: aload_1
-    //   764: putfield 1036	com/tencent/mobileqq/data/MessageForApollo:msgData	[B
-    //   767: aload 6
-    //   769: invokevirtual 1039	com/tencent/mobileqq/data/MessageForApollo:parse	()V
-    //   772: aload 6
-    //   774: invokestatic 1044	com/tencent/mobileqq/apollo/utils/ApolloUtil:a	(Lcom/tencent/mobileqq/data/MessageForApollo;)Ljava/lang/String;
-    //   777: astore_1
-    //   778: goto -476 -> 302
-    //   781: iload 5
-    //   783: sipush -2011
-    //   786: if_icmpne +31 -> 817
-    //   789: aload_0
-    //   790: aload 8
-    //   792: aload 8
-    //   794: ldc_w 1026
-    //   797: invokeinterface 207 2 0
-    //   802: invokeinterface 1030 2 0
-    //   807: invokestatic 1049	azvd:a	([B)Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   810: invokevirtual 1051	com/tencent/mobileqq/activity/ChatHistory:a	(Lcom/tencent/mobileqq/structmsg/AbsStructMsg;)Ljava/lang/String;
-    //   813: astore_1
-    //   814: goto -512 -> 302
-    //   817: iload 5
-    //   819: sipush -2020
-    //   822: if_icmpne +58 -> 880
-    //   825: iload_3
-    //   826: invokestatic 956	bdil:a	(I)Z
-    //   829: ifeq +34 -> 863
-    //   832: aload_0
-    //   833: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   836: invokevirtual 1055	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   839: ldc_w 1056
-    //   842: iconst_1
-    //   843: anewarray 84	java/lang/Object
-    //   846: dup
-    //   847: iconst_0
-    //   848: aload_0
-    //   849: getfield 853	com/tencent/mobileqq/activity/ChatHistory:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
-    //   852: getfield 1060	com/tencent/mobileqq/activity/aio/SessionInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   855: aastore
-    //   856: invokevirtual 1065	com/tencent/qphone/base/util/BaseApplication:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
-    //   859: astore_1
-    //   860: goto -558 -> 302
-    //   863: aload_0
-    //   864: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   867: invokevirtual 1055	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   870: ldc_w 1066
-    //   873: invokevirtual 1067	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   876: astore_1
-    //   877: goto -575 -> 302
-    //   880: aload 6
-    //   882: astore_1
-    //   883: iload 5
-    //   885: sipush -2006
-    //   888: if_icmpeq -417 -> 471
-    //   891: iload 5
-    //   893: sipush -2000
-    //   896: if_icmpne +13 -> 909
-    //   899: ldc_w 1068
-    //   902: invokestatic 1072	alud:a	(I)Ljava/lang/String;
-    //   905: astore_1
-    //   906: goto -604 -> 302
-    //   909: iload 5
-    //   911: sipush -2002
-    //   914: if_icmpne +13 -> 927
-    //   917: ldc_w 1073
-    //   920: invokestatic 1072	alud:a	(I)Ljava/lang/String;
-    //   923: astore_1
-    //   924: goto -622 -> 302
-    //   927: iload 5
-    //   929: sipush -2022
-    //   932: if_icmpne +13 -> 945
-    //   935: ldc_w 1074
-    //   938: invokestatic 1072	alud:a	(I)Ljava/lang/String;
-    //   941: astore_1
-    //   942: goto -640 -> 302
-    //   945: iload 5
-    //   947: sipush -2071
-    //   950: if_icmpne +14 -> 964
-    //   953: aload_0
-    //   954: ldc_w 1075
-    //   957: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   960: astore_1
-    //   961: goto -659 -> 302
-    //   964: iload 5
-    //   966: sipush -7001
-    //   969: if_icmpne +14 -> 983
-    //   972: aload_0
-    //   973: ldc_w 1076
-    //   976: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   979: astore_1
-    //   980: goto -678 -> 302
-    //   983: iload 5
-    //   985: sipush -1035
-    //   988: if_icmpne +202 -> 1190
-    //   991: new 146	java/lang/StringBuilder
-    //   994: dup
-    //   995: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   998: astore_1
-    //   999: aload 8
-    //   1001: aload 8
-    //   1003: ldc_w 1026
-    //   1006: invokeinterface 207 2 0
-    //   1011: invokeinterface 1030 2 0
-    //   1016: astore 7
-    //   1018: new 1078	localpb/richMsg/MixedMsg$Msg
-    //   1021: dup
-    //   1022: invokespecial 1079	localpb/richMsg/MixedMsg$Msg:<init>	()V
-    //   1025: astore 6
-    //   1027: aload 6
-    //   1029: aload 7
-    //   1031: invokevirtual 1083	localpb/richMsg/MixedMsg$Msg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   1034: pop
-    //   1035: aload 6
-    //   1037: getfield 1087	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1040: invokevirtual 1093	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   1043: invokeinterface 1098 1 0
-    //   1048: ifgt +51 -> 1099
-    //   1051: aload 8
-    //   1053: ifnull -527 -> 526
-    //   1056: aload 8
-    //   1058: invokeinterface 220 1 0
-    //   1063: return
-    //   1064: astore 6
-    //   1066: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1069: ifeq +12 -> 1081
-    //   1072: ldc 61
-    //   1074: iconst_2
-    //   1075: ldc_w 1100
-    //   1078: invokestatic 307	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1081: aload_1
-    //   1082: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1085: astore_1
-    //   1086: goto -784 -> 302
-    //   1089: astore 7
-    //   1091: aload 7
-    //   1093: invokevirtual 1103	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
-    //   1096: goto -61 -> 1035
-    //   1099: aload 6
-    //   1101: getfield 1087	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1104: invokevirtual 1093	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   1107: invokeinterface 1098 1 0
-    //   1112: istore 5
-    //   1114: iconst_0
-    //   1115: istore_3
-    //   1116: iload_3
-    //   1117: iload 5
-    //   1119: if_icmpge -38 -> 1081
-    //   1122: aload 6
-    //   1124: getfield 1087	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1127: invokevirtual 1093	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   1130: iload_3
-    //   1131: invokeinterface 1106 2 0
-    //   1136: checkcast 1108	localpb/richMsg/MixedMsg$Elem
-    //   1139: astore 7
-    //   1141: aload 7
-    //   1143: getfield 1112	localpb/richMsg/MixedMsg$Elem:textMsg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1146: invokevirtual 1117	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   1149: ifeq +19 -> 1168
-    //   1152: aload_1
-    //   1153: aload 7
-    //   1155: getfield 1112	localpb/richMsg/MixedMsg$Elem:textMsg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1158: invokevirtual 1119	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1161: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1164: pop
-    //   1165: goto +167 -> 1332
-    //   1168: aload 7
-    //   1170: getfield 1123	localpb/richMsg/MixedMsg$Elem:picMsg	Llocalpb/richMsg/RichMsg$PicRec;
-    //   1173: invokevirtual 1126	localpb/richMsg/RichMsg$PicRec:has	()Z
-    //   1176: ifeq +156 -> 1332
-    //   1179: aload_1
-    //   1180: ldc_w 1128
-    //   1183: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1186: pop
-    //   1187: goto +145 -> 1332
-    //   1190: new 213	java/lang/String
-    //   1193: dup
-    //   1194: aload 8
-    //   1196: aload 8
-    //   1198: ldc_w 1026
-    //   1201: invokeinterface 207 2 0
-    //   1206: invokeinterface 1030 2 0
-    //   1211: ldc_w 1130
-    //   1214: invokespecial 1133	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   1217: astore_1
-    //   1218: goto -916 -> 302
-    //   1221: astore_1
-    //   1222: aload_1
-    //   1223: invokevirtual 1134	java/lang/Exception:printStackTrace	()V
-    //   1226: aload 6
-    //   1228: astore_1
-    //   1229: goto -927 -> 302
-    //   1232: aload 7
-    //   1234: iconst_2
-    //   1235: aaload
-    //   1236: invokestatic 1139	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   1239: invokevirtual 1142	java/lang/Integer:intValue	()I
-    //   1242: istore_3
-    //   1243: goto +74 -> 1317
-    //   1246: aload 6
-    //   1248: astore 7
-    //   1250: iload_3
-    //   1251: iconst_2
-    //   1252: if_icmpne -856 -> 396
-    //   1255: new 146	java/lang/StringBuilder
-    //   1258: dup
-    //   1259: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   1262: ldc_w 477
-    //   1265: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1268: aload_0
-    //   1269: ldc_w 1143
-    //   1272: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   1275: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1278: ldc_w 485
-    //   1281: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1284: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1287: astore 7
-    //   1289: goto -893 -> 396
-    //   1292: astore 7
-    //   1294: ldc 61
-    //   1296: iconst_1
-    //   1297: ldc 173
-    //   1299: aload 7
-    //   1301: invokestatic 1146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1304: aload 6
-    //   1306: astore 7
-    //   1308: goto -912 -> 396
-    //   1311: aconst_null
-    //   1312: astore 8
-    //   1314: goto -1244 -> 70
-    //   1317: iload_3
-    //   1318: iconst_1
-    //   1319: if_icmpeq -932 -> 387
-    //   1322: iload_3
-    //   1323: ldc_w 1147
-    //   1326: if_icmpne -80 -> 1246
-    //   1329: goto -942 -> 387
-    //   1332: iload_3
-    //   1333: iconst_1
-    //   1334: iadd
-    //   1335: istore_3
-    //   1336: goto -220 -> 1116
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	1339	0	this	ChatHistory
-    //   0	1339	1	paramString	String
-    //   0	1339	2	paramInt	int
-    //   237	1099	3	n	int
-    //   168	237	4	i1	int
-    //   686	434	5	i2	int
-    //   45	991	6	localObject1	Object
-    //   1064	241	6	localException1	Exception
-    //   2	1028	7	localObject2	Object
-    //   1089	3	7	localInvalidProtocolBufferMicroException	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   1139	149	7	localObject3	Object
-    //   1292	8	7	localException2	Exception
-    //   1306	1	7	localObject4	Object
-    //   68	1245	8	localCursor	Cursor
-    //   249	416	9	str	String
-    //   11	502	10	localStringBuffer	StringBuffer
-    // Exception table:
-    //   from	to	target	type
-    //   999	1027	1064	java/lang/Exception
-    //   1027	1035	1064	java/lang/Exception
-    //   1035	1051	1064	java/lang/Exception
-    //   1056	1063	1064	java/lang/Exception
-    //   1091	1096	1064	java/lang/Exception
-    //   1099	1114	1064	java/lang/Exception
-    //   1122	1165	1064	java/lang/Exception
-    //   1168	1187	1064	java/lang/Exception
-    //   1027	1035	1089	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   1190	1218	1221	java/lang/Exception
-    //   375	382	1292	java/lang/Exception
-    //   387	396	1292	java/lang/Exception
-    //   1232	1243	1292	java/lang/Exception
-    //   1255	1289	1292	java/lang/Exception
+    View localView1 = findViewById(2131447593);
+    View localView2 = findViewById(2131445137);
+    int i1 = localView1.getHeight();
+    this.I = new MessageSearchDialog(this, this.app, this.K);
+    float f1 = -i1;
+    TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, f1);
+    localTranslateAnimation1.setDuration(200L);
+    localTranslateAnimation1.setFillAfter(true);
+    TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, f1, 0.0F);
+    localTranslateAnimation2.setDuration(200L);
+    localTranslateAnimation1.setAnimationListener(new ChatHistory.4(this, localView2, localView1));
+    localTranslateAnimation2.setAnimationListener(new ChatHistory.5(this, localView2, i1));
+    this.I.setOnDismissListener(new ChatHistory.6(this, localView2, i1, localView1, localTranslateAnimation2));
+    localView2.startAnimation(localTranslateAnimation1);
   }
   
-  public boolean b(String paramString)
+  void c(int paramInt)
+  {
+    QQToast.makeText(getActivity(), paramInt, 0).show(getResources().getDimensionPixelSize(2131299920));
+  }
+  
+  boolean c(String paramString)
   {
     if (paramString.charAt(0) == '\026')
     {
@@ -1389,237 +1019,187 @@ public class ChatHistory
       if (paramString.length < 2) {
         return true;
       }
-      if (paramString.length > 3) {
-        try
-        {
-          Long.valueOf(paramString[1]);
-          Integer.valueOf(paramString[2]);
-          Boolean.valueOf(paramString[3]);
-          return true;
-        }
-        catch (NumberFormatException paramString)
-        {
-          return false;
-        }
-      }
-      return false;
+      if (paramString.length <= 3) {}
     }
+    try
+    {
+      Long.valueOf(paramString[1]);
+      Integer.valueOf(paramString[2]);
+      Boolean.valueOf(paramString[3]);
+      return true;
+    }
+    catch (NumberFormatException paramString) {}
+    return false;
     return false;
   }
   
-  void c()
+  void d()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = ((RelativeLayout)View.inflate(this, 2131562582, null));
-    int n = (int)bdgz.a(this, 6.0F);
+    this.Z = ((RelativeLayout)View.inflate(this, 2131629215, null));
+    int i1 = (int)DisplayUtils.a(this, 6.0F);
     Object localObject = new RelativeLayout(this);
-    ((RelativeLayout)localObject).setPadding(0, n, 0, n);
-    ((RelativeLayout)localObject).setBackgroundResource(2130849732);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298634));
-    ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-    this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView((View)localObject);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131363522).setVisibility(8);
-    localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365851);
+    ((RelativeLayout)localObject).setPadding(0, i1, 0, i1);
+    ((RelativeLayout)localObject).setBackgroundResource(2130852485);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131299611));
+    ((RelativeLayout)localObject).addView(this.Z, localLayoutParams);
+    this.i.addHeaderView((View)localObject);
+    this.Z.findViewById(2131429816).setVisibility(8);
+    localObject = (EditText)this.Z.findViewById(2131432634);
     ((EditText)localObject).setFocusableInTouchMode(false);
     ((EditText)localObject).setCursorVisible(false);
-    ((EditText)localObject).setOnClickListener(new acmq(this));
-    setLayerType(this.jdField_a_of_type_AndroidViewView);
+    ((EditText)localObject).setOnClickListener(new ChatHistory.7(this));
+    setLayerType(this.Z);
   }
   
-  protected void c(String paramString)
+  void d(String paramString)
   {
-    if (this.jdField_b_of_type_Bety == null) {
-      this.jdField_b_of_type_Bety = new bety(this, getTitleBarHeight());
+    Toast localToast = u;
+    if (localToast == null) {
+      u = Toast.makeText(this, paramString, 0);
+    } else {
+      localToast.setText(paramString);
     }
-    this.jdField_b_of_type_Bety.setCancelable(true);
-    this.jdField_b_of_type_Bety.a(paramString);
-    this.jdField_b_of_type_Bety.show();
+    u.show();
   }
   
-  public boolean c(String paramString)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    o();
-    MediaPlayerManager.a(this.app).a(true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(this, this.jdField_a_of_type_Aepr);
-    }
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "playSource|bRet = " + bool);
-    }
-    if ((bool) && (this.jdField_a_of_type_AndroidHardwareSensor != null)) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_a_of_type_AndroidHardwareSensor, 2);
-    }
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367951));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367952));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131690778));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131690777));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new acmr(this));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new aclu(this));
-    this.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849050);
-    if (this.jdField_c_of_type_Int == 1)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840288);
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377629));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_c_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365552));
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.jdField_d_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length());
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aclv(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363804));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aclw(this));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363803));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new aclx(this));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    if ((this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002) || (this.jdField_a_of_type_Int == 10004) || (this.jdField_a_of_type_Int == 1000) || (this.jdField_a_of_type_Int == 1020) || (this.jdField_a_of_type_Int == 1005) || (this.jdField_a_of_type_Int == 1004) || (this.jdField_a_of_type_Int == 1009) || (this.jdField_a_of_type_Int == 1010) || (this.jdField_a_of_type_Int == 1023) || (this.jdField_a_of_type_Int == 1024)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new acly(this));
-      return;
-      if ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 3000))
-      {
-        alto localalto = (alto)this.app.getManager(51);
-        if ((localalto == null) || (!localalto.b(String.valueOf(this.jdField_b_of_type_JavaLangString))))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ChatHistory", 2, "--mSyncHistory button: fm is null or the uin is not my friend: fm:" + localalto);
-          }
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-        }
-      }
-    }
-  }
-  
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    switch (paramInt1)
+    if (paramInt1 != 21)
     {
+      if (paramInt1 != 200) {
+        return;
+      }
+      this.j.getCursor().requery();
+      return;
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Acms.getCursor().requery();
-      return;
-    } while (-1 != paramInt2);
-    a(paramIntent.getExtras());
+    if (-1 == paramInt2) {
+      a(paramIntent.getExtras());
+    }
   }
   
   @TargetApi(14)
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    addObserver(this.jdField_a_of_type_Alwx);
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772337));
-    this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772338));
-    this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772260));
+    addObserver(this.ac);
+    this.v = getResources().getDisplayMetrics().density;
+    this.D = ((AnimationDrawable)getResources().getDrawable(2130772493));
+    this.E = ((AnimationDrawable)getResources().getDrawable(2130772494));
+    this.F = ((AnimationDrawable)getResources().getDrawable(2130772400));
     paramBundle = getIntent().getExtras();
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("uin");
-    this.jdField_a_of_type_Int = paramBundle.getInt("uintype");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString = paramBundle.getString("troop_uin");
-    setContentViewNoTitle(2131558806);
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131376034);
+    this.e = paramBundle.getString("uin");
+    this.f = paramBundle.getInt("uintype");
+    this.K = new SessionInfo();
+    Object localObject = this.K;
+    ((SessionInfo)localObject).b = this.e;
+    ((SessionInfo)localObject).a = this.f;
+    ((SessionInfo)localObject).e = this.g;
+    ((SessionInfo)localObject).c = paramBundle.getString("troop_uin");
+    setContentViewNoTitle(2131624471);
+    localObject = (LinearLayout)findViewById(2131445137);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      localLinearLayout.setFitsSystemWindows(true);
-      localLinearLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
+      ((LinearLayout)localObject).setFitsSystemWindows(true);
+      ((LinearLayout)localObject).setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
     boolean bool = paramBundle.getBoolean("from_RecentSaidActivity", false);
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
     if (bool) {
-      this.jdField_a_of_type_Long = paramBundle.getLong("target_shmsgseq");
+      this.c = paramBundle.getLong("target_shmsgseq");
     }
     init(getIntent());
-    this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-    this.jdField_a_of_type_Awhr = ((awhr)this.app.getManager(201));
+    this.app.setHandler(getClass(), this.U);
+    this.Q = ((QSlowTableManager)this.app.getManager(QQManagerFactory.SLOW_TABLE_MANAGER));
     a(9, false);
-    m();
-    a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    q();
-    if (this.app.a() != null) {
-      this.app.a().a(this.jdField_a_of_type_Amny);
-    }
-    this.app.a().f();
-    this.jdField_a_of_type_Bdco = new bdco(this);
-    this.jdField_a_of_type_Bdco.a((int)(150.0F * this.jdField_a_of_type_Float), (int)(100.0F * this.jdField_a_of_type_Float));
+    o();
+    a(this.e, this.f);
     s();
+    if (this.app.getProxyManager() != null) {
+      this.app.getProxyManager().addProxyObserver(this.ad);
+    }
+    this.app.getProxyManager().saveNotify();
+    this.N = new ImageWorker(this);
+    paramBundle = this.N;
+    float f1 = this.v;
+    paramBundle.a((int)(150.0F * f1), (int)(f1 * 100.0F));
+    u();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Acms != null) {
-      this.jdField_a_of_type_Acms.a();
+    Object localObject = this.j;
+    if (localObject != null) {
+      ((ChatHistory.ChatHistoryAdapter)localObject).a();
     }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
+    localObject = this.ag;
+    if (localObject != null) {
+      ((SensorManager)localObject).unregisterListener(this);
     }
-    if ((this.jdField_a_of_type_Awgf != null) && (this.jdField_a_of_type_Awgf.a()))
+    localObject = this.O;
+    if ((localObject != null) && (((EntityManager)localObject).isOpen()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistory", 2, "ChatHistory : close entityManager.");
       }
-      this.jdField_a_of_type_Awgf.a();
-      this.jdField_a_of_type_Awgf = null;
+      this.O.close();
+      this.O = null;
     }
-    n();
-    r();
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "onDestroy() mCurPlayingPttInfo = " + this.jdField_a_of_type_Acnd);
-    }
-    if ((this.jdField_a_of_type_Acnd != null) && (!this.jdField_a_of_type_Acnd.jdField_a_of_type_Boolean))
+    p();
+    t();
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Acnd.d();
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
-      this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-      this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
-      this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-      this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDestroy() mCurPlayingPttInfo = ");
+      ((StringBuilder)localObject).append(this.al);
+      QLog.i("ChatHistory", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    localObject = this.al;
+    if ((localObject != null) && (!((ChatHistory.PlayingPttHistoryInfo)localObject).d))
+    {
+      this.al.d();
+      this.D.stop();
+      this.D = null;
+      this.E.stop();
+      this.E = null;
+      this.F.stop();
+      this.F = null;
+    }
+    this.U.removeCallbacksAndMessages(null);
     this.app.removeHandler(getClass());
-    removeObserver(this.jdField_a_of_type_Alwx);
-    if (this.app.a() != null) {
-      this.app.a().b(this.jdField_a_of_type_Amny);
+    removeObserver(this.ac);
+    if (this.app.getProxyManager() != null) {
+      this.app.getProxyManager().removeProxyObserver(this.ad);
     }
-    this.app.a().f();
+    this.app.getProxyManager().saveNotify();
     try
     {
-      this.jdField_a_of_type_Bdco.a().a();
-      label251:
-      findViewById(2131376034).clearAnimation();
+      this.N.a().a();
+      label253:
+      findViewById(2131445137).clearAnimation();
       return;
     }
     catch (Exception localException)
     {
-      break label251;
+      break label253;
     }
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     paramIntent = ChatHistoryC2CAllFragment.a(paramIntent);
@@ -1628,44 +1208,139 @@ public class ChatHistory
     }
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "onPause() mCurPlayingPttInfo = " + this.jdField_a_of_type_Acnd);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPause() mCurPlayingPttInfo = ");
+      ((StringBuilder)localObject).append(this.al);
+      QLog.i("ChatHistory", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_Acnd != null) && (!this.jdField_a_of_type_Acnd.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Acnd.d();
+    Object localObject = this.al;
+    if ((localObject != null) && (!((ChatHistory.PlayingPttHistoryInfo)localObject).d)) {
+      this.al.d();
     }
     ApngImage.pauseByTag(0);
     ApngImage.pauseAll();
     super.doOnPause();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     ApngImage.playByTag(0);
     ApngImage.resumeAll();
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_MqqOsMqqHandler != null))
+    if ((this.b) && (!this.d))
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new ChatHistory.22(this), 300L);
+      MqqHandler localMqqHandler = this.U;
+      if (localMqqHandler != null)
+      {
+        this.d = true;
+        localMqqHandler.postDelayed(new ChatHistory.22(this), 300L);
+      }
     }
   }
   
-  public void e()
+  protected String e()
   {
-    f();
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.jdField_d_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_c_of_type_Int));
-    this.jdField_a_of_type_Acms.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_e_of_type_Int);
+    String str = ContactUtils.f(this.app, this.app.getCurrentAccountUin());
+    if ((str != null) && (!str.trim().equals(""))) {
+      return str;
+    }
+    return this.app.getCurrentAccountUin();
   }
   
-  public void f()
+  protected boolean e(String paramString)
   {
-    this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
-    this.jdField_e_of_type_Int = ((this.jdField_d_of_type_Int - 1) * 8);
+    q();
+    MediaPlayerManager.a(this.app).a(true);
+    if (this.ae == null) {
+      this.ae = new AudioPlayer(this, this.af);
+    }
+    this.ae.a(3);
+    boolean bool = this.ae.a(paramString);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("playSource|bRet = ");
+      paramString.append(bool);
+      QLog.i("ChatHistory", 2, paramString.toString());
+    }
+    if (bool)
+    {
+      paramString = this.ah;
+      if (paramString != null) {
+        this.ag.registerListener(this, paramString, 2);
+      }
+    }
+    return bool;
+  }
+  
+  protected void f()
+  {
+    this.G = ((ImageView)findViewById(2131435394));
+    this.H = ((ImageView)findViewById(2131435395));
+    this.G.setContentDescription(getString(2131887733));
+    this.H.setContentDescription(getString(2131887732));
+    this.G.setOnClickListener(new ChatHistory.9(this));
+    this.H.setOnClickListener(new ChatHistory.10(this));
+    this.H.setEnabled(false);
+    this.H.setImageResource(2130851647);
+    if (this.r == 1)
+    {
+      this.G.setEnabled(false);
+      this.G.setImageResource(2130841331);
+    }
+    this.p = ((TextView)findViewById(2131447098));
+    this.p.setText(String.valueOf(this.r));
+    this.o = ((EditText)findViewById(2131432319));
+    this.o.setText(String.valueOf(this.s));
+    Object localObject = this.o;
+    ((EditText)localObject).setSelection(((EditText)localObject).getText().toString().length());
+    this.o.addTextChangedListener(new ChatHistory.11(this));
+    this.k = ((Button)findViewById(2131430126));
+    this.k.setOnClickListener(new ChatHistory.12(this));
+    this.l = ((Button)findViewById(2131430125));
+    this.l.setOnClickListener(new ChatHistory.13(this));
+    if (this.b)
+    {
+      this.k.setVisibility(8);
+      this.l.setVisibility(8);
+    }
+    int i1 = this.f;
+    if ((i1 != 1001) && (i1 != 10002) && (i1 != 10004) && (i1 != 1000) && (i1 != 1020) && (i1 != 1005) && (i1 != 1004) && (i1 != 1009) && (i1 != 1010) && (i1 != 1023) && (i1 != 1024) && (i1 != 10010))
+    {
+      if ((i1 != 1) && (i1 != 3000))
+      {
+        localObject = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if ((localObject == null) || (!((FriendsManager)localObject).n(String.valueOf(this.e))))
+        {
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("--mSyncHistory button: fm is null or the uin is not my friend: fm:");
+            localStringBuilder.append(localObject);
+            QLog.e("ChatHistory", 2, localStringBuilder.toString());
+          }
+          this.m.setVisibility(4);
+        }
+      }
+    }
+    else {
+      this.m.setVisibility(4);
+    }
+    this.m.setOnClickListener(new ChatHistory.14(this));
+  }
+  
+  protected void f(String paramString)
+  {
+    if (this.ak == null) {
+      this.ak = new QQProgressDialog(this, getTitleBarHeight());
+    }
+    this.ak.setCancelable(true);
+    this.ak.a(paramString);
+    this.ak.show();
   }
   
   public void finish()
@@ -1673,277 +1348,311 @@ public class ChatHistory
     super.finish();
   }
   
-  public void g()
+  void g()
   {
-    if ((getActivity() == null) || (getActivity().isFinishing())) {
-      return;
-    }
-    if (this.jdField_d_of_type_Int > this.jdField_c_of_type_Int)
+    h();
+    this.o.setText(String.valueOf(this.s));
+    EditText localEditText = this.o;
+    localEditText.setSelection(localEditText.getText().length());
+    this.p.setText(String.valueOf(this.r));
+    this.j.a(this.e, this.f, this.t);
+  }
+  
+  protected void h()
+  {
+    this.s = this.r;
+    this.t = ((this.s - 1) * 8);
+  }
+  
+  void i()
+  {
+    if (getActivity() != null)
     {
-      this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
-      this.jdField_e_of_type_Int = ((this.jdField_d_of_type_Int - 1) * 8);
+      if (getActivity().isFinishing()) {
+        return;
+      }
+      int i1 = this.s;
+      int i2 = this.r;
+      if (i1 > i2)
+      {
+        this.s = i2;
+        this.t = ((this.s - 1) * 8);
+      }
+      this.o.setText(String.valueOf(this.s));
+      EditText localEditText = this.o;
+      localEditText.setSelection(localEditText.getText().length());
+      this.p.setText(String.valueOf(this.r));
+      this.j.a(this.e, this.f, this.t);
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.jdField_d_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_c_of_type_Int));
-    this.jdField_a_of_type_Acms.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_e_of_type_Int);
   }
   
-  public void h()
+  void j()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(4, getResources().getString(2131720345)).sendToTarget();
-    this.app.a().a((short)1, (byte)1);
+    this.U.obtainMessage(4, getResources().getString(2131916807)).sendToTarget();
+    this.app.getMsgHandler().a((short)1, (byte)1);
   }
   
-  public void i()
+  void k()
   {
-    alxa localalxa = (alxa)this.app.getManager(92);
-    if (localalxa != null)
+    MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.app.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    if (localMessageRoamManager != null)
     {
       long l1 = NetConnInfoCenter.getServerTime();
-      this.app.a().a(this.jdField_b_of_type_JavaLangString, l1 - 604800L, 0L, l1, (short)0, 0L, 1, null, localalxa.b(), false, 0, false);
+      this.app.getMsgHandler().a(this.e, l1 - 604800L, 0L, l1, (short)0, 0L, 1, null, localMessageRoamManager.z(), false, 0, false);
     }
   }
   
-  protected void j()
+  protected void l()
   {
-    if (!bdin.d(this.app.getApplication().getApplicationContext()))
+    if (!NetworkUtil.isNetSupport(this.app.getApplication().getApplicationContext()))
     {
-      QQToast.a(getApplicationContext(), 2131691582, 1).a();
+      QQToast.makeText(getApplicationContext(), 2131888455, 1).show();
       return;
     }
-    c(getApplication().getResources().getString(2131691583));
-    this.app.a().c(this.jdField_b_of_type_JavaLangString);
+    f(getApplication().getResources().getString(2131888456));
+    this.app.getMsgHandler().h(this.e);
   }
   
-  public void k()
+  void m()
   {
-    this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
-    String str;
-    if (this.jdField_c_of_type_JavaLangString.compareTo(this.jdField_b_of_type_JavaLangString) == 0)
-    {
-      str = this.jdField_c_of_type_JavaLangString;
-      if (!a(str)) {
-        break label196;
-      }
-      str = str.replaceAll("[\\\\/:*?\"<>|]", "");
-      this.jdField_a_of_type_JavaLangStringBuffer.append(str + ".txt");
+    this.n.setLength(0);
+    if (this.g.compareTo(this.e) == 0) {
+      localObject1 = this.g;
+    } else {
+      localObject1 = String.format("%s(%s)", new Object[] { this.g, this.e });
     }
-    for (;;)
+    if (b((String)localObject1))
     {
-      boolean bool = bdhb.a(alof.aY, this.jdField_a_of_type_JavaLangStringBuffer, ".txt");
-      this.jdField_c_of_type_AndroidAppDialog = bdgm.a(this, 230, getString(2131691099), getString(2131691099) + alof.aY + this.jdField_a_of_type_JavaLangStringBuffer.toString(), new acmb(this), new acmc(this));
-      if (!bool) {
-        break label230;
-      }
-      this.jdField_c_of_type_AndroidAppDialog.show();
+      localObject1 = ((String)localObject1).replaceAll("[\\\\/:*?\"<>|]", "");
+      localObject2 = this.n;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(".txt");
+      ((StringBuffer)localObject2).append(localStringBuilder.toString());
+    }
+    else
+    {
+      localObject1 = this.n;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.e);
+      ((StringBuilder)localObject2).append(".txt");
+      ((StringBuffer)localObject1).append(((StringBuilder)localObject2).toString());
+    }
+    boolean bool = FileUtils.justOnExistFileAndAddSuffix(AppConstants.SDCARD_PATH_CHATRECORD, this.n, ".txt");
+    Object localObject1 = getString(2131888018);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(getString(2131888018));
+    ((StringBuilder)localObject2).append(AppConstants.SDCARD_PATH_CHATRECORD);
+    ((StringBuilder)localObject2).append(this.n.toString());
+    this.ab = DialogUtil.a(this, 230, (String)localObject1, ((StringBuilder)localObject2).toString(), new ChatHistory.17(this), new ChatHistory.18(this));
+    if (bool)
+    {
+      this.ab.show();
       return;
-      str = String.format("%s(%s)", new Object[] { this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString });
-      break;
-      label196:
-      this.jdField_a_of_type_JavaLangStringBuffer.append(this.jdField_b_of_type_JavaLangString + ".txt");
     }
-    label230:
-    b(getString(2131692294));
+    d(getString(2131889070));
   }
   
-  public void l()
+  void n()
   {
-    this.jdField_c_of_type_AndroidAppDialog = bdgm.a(this, 230, getString(2131720347), getString(2131720831), new acmd(this), new acmf(this));
-    this.jdField_c_of_type_AndroidAppDialog.show();
+    this.ab = DialogUtil.a(this, 230, getString(2131916808), getString(2131917245), new ChatHistory.19(this), new ChatHistory.20(this));
+    this.ab.show();
   }
   
-  protected void m()
+  protected void o()
   {
-    String str = getResources().getString(2131690766);
-    if (this.jdField_a_of_type_Int == 0) {
-      if (this.jdField_b_of_type_JavaLangString.equals(String.valueOf(alof.G)))
+    String str2 = getResources().getString(2131887723);
+    int i1 = this.f;
+    String str1;
+    if (i1 == 0)
+    {
+      if (this.e.equals(String.valueOf(AppConstants.SYSTEM_MSG_UIN))) {
+        this.g = getResources().getString(2131916963);
+      } else {
+        this.g = ContactUtils.a(this.app, this.K.b, this.K.c, ContactUtils.c(this.K.a), 3);
+      }
+      str1 = str2;
+      if (this.e.equals(String.valueOf(AppConstants.SYSTEM_MSG_UIN))) {
+        str1 = getResources().getString(2131916963);
+      }
+    }
+    else if (i1 == 1)
+    {
+      this.g = ((TroopManager)this.app.getManager(QQManagerFactory.TROOP_MANAGER)).i(this.e);
+      str1 = str2;
+    }
+    else if ((i1 != 1000) && (i1 != 1020) && (i1 != 1001) && (i1 != 10002) && (i1 != 10004) && (i1 != 1004) && (i1 != 10010))
+    {
+      if (i1 == 3000)
       {
-        this.jdField_c_of_type_JavaLangString = getResources().getString(2131720532);
-        if (!this.jdField_b_of_type_JavaLangString.equals(String.valueOf(alof.G))) {
-          break label365;
+        this.g = ContactUtils.a(this.app, this.e);
+        str1 = str2;
+      }
+      else
+      {
+        str1 = str2;
+        if (i1 == 1024)
+        {
+          PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((IPublicAccountDataManager)this.app.getRuntimeService(IPublicAccountDataManager.class, "all")).findPublicAccountInfo(this.e);
+          str1 = str2;
+          if (localPublicAccountInfo != null)
+          {
+            this.g = localPublicAccountInfo.name;
+            str1 = str2;
+          }
         }
-        str = getResources().getString(2131720532);
       }
     }
-    label365:
-    for (;;)
+    else
     {
-      if ((this.jdField_c_of_type_JavaLangString == null) || (this.jdField_c_of_type_JavaLangString.trim().equals(""))) {
-        this.jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      }
-      setTitle(str);
-      this.jdField_d_of_type_JavaLangString = a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      this.leftView = ((TextView)findViewById(2131368624));
-      return;
-      this.jdField_c_of_type_JavaLangString = bdgc.a(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString, bdgc.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 3);
-      break;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_c_of_type_JavaLangString = ((TroopManager)this.app.getManager(52)).a(this.jdField_b_of_type_JavaLangString);
-      }
-      else if ((this.jdField_a_of_type_Int == 1000) || (this.jdField_a_of_type_Int == 1020) || (this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002) || (this.jdField_a_of_type_Int == 10004) || (this.jdField_a_of_type_Int == 1004))
-      {
-        this.jdField_c_of_type_JavaLangString = bdgc.i(this.app, this.jdField_b_of_type_JavaLangString);
-      }
-      else if (this.jdField_a_of_type_Int == 3000)
-      {
-        this.jdField_c_of_type_JavaLangString = bdgc.d(this.app, this.jdField_b_of_type_JavaLangString);
-      }
-      else if (this.jdField_a_of_type_Int == 1024)
-      {
-        PublicAccountInfo localPublicAccountInfo = ((alzl)this.app.getManager(56)).b(this.jdField_b_of_type_JavaLangString);
-        if (localPublicAccountInfo != null) {
-          this.jdField_c_of_type_JavaLangString = localPublicAccountInfo.name;
-        }
-      }
+      this.g = ContactUtils.c(this.app, this.e);
+      str1 = str2;
     }
-  }
-  
-  protected void n()
-  {
-    if (jdField_a_of_type_AndroidWidgetToast != null)
-    {
-      jdField_a_of_type_AndroidWidgetToast.cancel();
-      jdField_a_of_type_AndroidWidgetToast = null;
+    str2 = this.g;
+    if ((str2 == null) || (str2.trim().equals(""))) {
+      this.g = this.e;
     }
-  }
-  
-  public void o()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.c();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = null;
-    }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
-    }
-    setVolumeControlStream(3);
+    setTitle(str1);
+    this.h = e();
+    this.K.e = this.g;
+    this.leftView = ((TextView)findViewById(2131436180));
   }
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-        bhsj.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      }
-      setResult(-1);
-      if ((this.jdField_a_of_type_Aihl != null) && (this.jdField_a_of_type_Aihl.a()))
-      {
-        this.jdField_a_of_type_Aihl.show();
-        this.jdField_a_of_type_Aihl.a(false);
-        return true;
+      if (this.o != null) {
+        InputMethodUtil.b(this.o);
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
+    }
+    setResult(-1);
+    MessageSearchDialog localMessageSearchDialog = this.I;
+    if ((localMessageSearchDialog != null) && (localMessageSearchDialog.f()))
+    {
+      this.I.show();
+      this.I.a(false);
+      return true;
     }
     return super.onBackEvent();
   }
   
-  public View onCreateRightView()
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected View onCreateRightView()
   {
     super.onCreateRightView();
     TextView localTextView = this.rightViewText;
-    if ((3000 == this.jdField_a_of_type_Int) || (1 == this.jdField_a_of_type_Int)) {
+    int i1 = this.f;
+    if ((3000 != i1) && (1 != i1)) {
+      this.rightViewText.setVisibility(0);
+    } else {
       this.rightViewText.setVisibility(8);
     }
-    for (;;)
-    {
-      localTextView.setText(2131719290);
-      this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
-      return localTextView;
-      this.rightViewText.setVisibility(0);
-    }
+    localTextView.setText(2131915847);
+    this.m = localTextView;
+    return localTextView;
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    boolean bool2 = true;
-    if (aepi.b()) {}
-    boolean bool1;
-    label26:
-    label61:
-    do
-    {
+    if (DeviceInfoUtil.W()) {
       return;
-      if (paramSensorEvent.values[0] >= this.jdField_b_of_type_Float) {
-        break;
+    }
+    paramSensorEvent = paramSensorEvent.values;
+    boolean bool = false;
+    if (paramSensorEvent[0] < this.ai) {
+      bool = true;
+    }
+    if (this.aj != bool)
+    {
+      this.aj = bool;
+      paramSensorEvent = this.ae;
+      if (paramSensorEvent != null) {
+        paramSensorEvent.a(this.aj ^ true);
       }
-      bool1 = true;
-      if (this.jdField_e_of_type_Boolean == bool1) {
-        break label93;
-      }
-      this.jdField_e_of_type_Boolean = bool1;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
+      if (!AppSetting.e)
       {
-        paramSensorEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
-        if (this.jdField_e_of_type_Boolean) {
-          break label95;
+        int i1;
+        if (this.aj) {
+          i1 = 2131916796;
+        } else {
+          i1 = 2131916798;
         }
-        bool1 = bool2;
-        paramSensorEvent.a(bool1);
+        c(i1);
       }
-    } while (AppSetting.jdField_c_of_type_Boolean);
-    if (this.jdField_e_of_type_Boolean) {}
-    for (int n = 2131720333;; n = 2131720336)
-    {
-      b(n);
-      return;
-      bool1 = false;
-      break label26;
-      label93:
-      break;
-      label95:
-      bool1 = false;
-      break label61;
     }
   }
   
-  public void p()
+  protected void p()
   {
-    bdfi.b(2131230731, false);
+    Toast localToast = u;
+    if (localToast != null)
+    {
+      localToast.cancel();
+      u = null;
+    }
   }
   
   protected void q()
   {
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.app.getApplication().getSystemService("sensor"));
-    this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
-    if (this.jdField_a_of_type_AndroidHardwareSensor != null)
+    Object localObject = this.ae;
+    if ((localObject != null) && (((AudioPlayer)localObject).m()))
     {
-      this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidHardwareSensor.getMaximumRange();
-      if (this.jdField_b_of_type_Float <= 10.0F) {
-        break label72;
-      }
+      this.ae.d();
+      this.ae = null;
     }
-    label72:
-    for (float f1 = 10.0F;; f1 = this.jdField_b_of_type_Float)
+    localObject = this.ag;
+    if (localObject != null) {
+      ((SensorManager)localObject).unregisterListener(this);
+    }
+    setVolumeControlStream(3);
+  }
+  
+  void r()
+  {
+    AudioUtil.b(2131230803, false);
+  }
+  
+  protected void s()
+  {
+    this.ag = ((SensorManager)this.app.getApplication().getSystemService("sensor"));
+    this.ah = this.ag.getDefaultSensor(8);
+    Sensor localSensor = this.ah;
+    if (localSensor != null)
     {
-      this.jdField_b_of_type_Float = f1;
-      return;
+      this.ai = localSensor.getMaximumRange();
+      float f2 = this.ai;
+      float f1 = f2;
+      if (f2 > 10.0F) {
+        f1 = 10.0F;
+      }
+      this.ai = f1;
     }
   }
   
-  public void r()
+  void t()
   {
     try
     {
-      if (this.jdField_b_of_type_Bety != null)
+      if (this.ak != null)
       {
-        this.jdField_b_of_type_Bety.dismiss();
-        this.jdField_b_of_type_Bety.cancel();
-        this.jdField_b_of_type_Bety = null;
+        this.ak.dismiss();
+        this.ak.cancel();
+        this.ak = null;
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -1951,40 +1660,52 @@ public class ChatHistory
     }
   }
   
-  protected void s()
+  protected void u()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      switch (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
-      {
-      }
-    }
-    for (;;)
+    Object localObject = this.K;
+    if (localObject != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatHistory", 2, "AIO_chatlog arg:" + this.k);
+      int i1 = ((SessionInfo)localObject).a;
+      if (i1 != 0)
+      {
+        if (i1 != 1)
+        {
+          if (i1 == 3000) {
+            this.L = 2;
+          }
+        }
+        else {
+          this.L = 3;
+        }
       }
-      azqs.b(this.app, "CliOper", "", "", "AIO", "AIO_chatlog", this.k, 0, String.valueOf(this.k), "", "", "");
-      return;
-      this.k = 0;
-      continue;
-      this.k = 3;
-      continue;
-      this.k = 2;
+      else {
+        this.L = 0;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("AIO_chatlog arg:");
+        ((StringBuilder)localObject).append(this.L);
+        QLog.d("ChatHistory", 2, ((StringBuilder)localObject).toString());
+      }
+      localObject = this.app;
+      i1 = this.L;
+      ReportController.b((AppRuntime)localObject, "CliOper", "", "", "AIO", "AIO_chatlog", i1, 0, String.valueOf(i1), "", "", "");
     }
   }
   
-  public void t()
+  public void v()
   {
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.M) {
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
-    azqs.b(this.app, "CliOper", "", "", "0X8005690", "0X8005690", this.k, 0, "", "", "", "");
+    this.M = true;
+    ReportController.b(this.app, "CliOper", "", "", "0X8005690", "0X8005690", this.L, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory
  * JD-Core Version:    0.7.0.1
  */

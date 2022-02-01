@@ -52,14 +52,18 @@ public class VsGuidInfo
   
   public String getVsGuid()
   {
-    String str = this.androidId + "-" + this.imei;
-    VsLog.debug("[vsguid] get guid info %s", new Object[] { str });
-    return str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.androidId);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(this.imei);
+    localObject = ((StringBuilder)localObject).toString();
+    VsLog.debug("[vsguid] get guid info %s", new Object[] { localObject });
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsGuidInfo
  * JD-Core Version:    0.7.0.1
  */

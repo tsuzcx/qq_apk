@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class s_campus_info
   extends JceStruct
 {
-  static int cache_eVerfyStatus = 0;
-  public int eVerfyStatus;
-  public long iSchoolIdx;
+  static int cache_eVerfyStatus;
+  public int eVerfyStatus = 0;
+  public long iSchoolIdx = 0L;
   public String strSchoolID = "";
   public String strSchoolName = "";
   
@@ -33,19 +33,21 @@ public final class s_campus_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strSchoolName != null) {
-      paramJceOutputStream.write(this.strSchoolName, 0);
+    String str = this.strSchoolName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.eVerfyStatus, 1);
     paramJceOutputStream.write(this.iSchoolIdx, 2);
-    if (this.strSchoolID != null) {
-      paramJceOutputStream.write(this.strSchoolID, 3);
+    str = this.strSchoolID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_campus_info
  * JD-Core Version:    0.7.0.1
  */

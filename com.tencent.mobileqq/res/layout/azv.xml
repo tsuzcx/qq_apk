@@ -2,12 +2,10 @@
 <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:orientation="vertical" android:id="@id/dk_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/dk2" android:background="@drawable/ah5" android:layout_width="fill_parent" android:layout_height="@dimen/a0m" android:layout_marginBottom="@dimen/ub" android:src="@drawable/common_loading2" android:scaleType="center" />
+        <ImageView android:id="@id/dk2" android:background="@drawable/g_n" android:layout_width="fill_parent" android:layout_height="@dimen/a0m" android:layout_marginBottom="@dimen/ub" android:src="@drawable/common_loading2" android:scaleType="center" />
     </FrameLayout>
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.widget.ProfileCardMoreInfoView android:orientation="vertical" android:id="@id/dkh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ub" />
-        <TextView android:gravity="center" android:id="@id/lx6" android:background="@drawable/hw1" android:paddingLeft="4.0dip" android:paddingTop="4.0dip" android:paddingRight="4.0dip" android:paddingBottom="11.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="QQ等级图标可以自定义啦~" android:layout_centerHorizontal="true" />
+        <com.tencent.mobileqq.profilecard.base.view.ProfileContentView android:orientation="vertical" android:id="@id/dkh" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ub" />
+        <TextView android:gravity="center" android:id="@id/lx6" android:background="@drawable/j1v" android:paddingLeft="4.0dip" android:paddingTop="4.0dip" android:paddingRight="4.0dip" android:paddingBottom="11.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="QQ等级图标可以自定义啦~" android:layout_centerHorizontal="true" />
     </RelativeLayout>
-    <ImageView android:id="@id/c2g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <View android:id="@id/dko" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

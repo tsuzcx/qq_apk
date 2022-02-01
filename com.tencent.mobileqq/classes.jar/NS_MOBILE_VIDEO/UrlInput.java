@@ -27,14 +27,15 @@ public final class UrlInput
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.url_type, 0);
-    if (this.url_detail != null) {
-      paramJceOutputStream.write(this.url_detail, 1);
+    String str = this.url_detail;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.UrlInput
  * JD-Core Version:    0.7.0.1
  */

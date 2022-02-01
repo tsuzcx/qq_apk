@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@drawable/l8" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/m1" android:paddingRight="@dimen/gt" android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/bl_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:src="@raw/mm_submenu_normal" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/q5" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/bl9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lf" android:text="@string/bgf" android:layout_toLeftOf="@id/bl_" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingLeft="@dimen/g" android:paddingRight="@dimen/g" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="@dimen/i6" android:layout_marginBottom="@dimen/i6">
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="24.0dip" android:layout_height="0.30000007dip" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/aaw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/v4" android:layout_marginRight="@dimen/v4" android:text="@string/ap_" />
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="24.0dip" android:layout_height="0.30000007dip" />
+    </LinearLayout>
+</FrameLayout>

@@ -7,7 +7,7 @@ class SplashDialogWrapper$InternalHandler
   extends Handler
 {
   public static final int MSG_DISMISS = 0;
-  private SplashDialogWrapper mWrapper;
+  private SplashDialogWrapper mWrapper = null;
   
   public SplashDialogWrapper$InternalHandler(SplashDialogWrapper paramSplashDialogWrapper)
   {
@@ -16,9 +16,7 @@ class SplashDialogWrapper$InternalHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 0) {
       return;
     }
     this.mWrapper.dismiss();
@@ -26,7 +24,7 @@ class SplashDialogWrapper$InternalHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.SplashDialogWrapper.InternalHandler
  * JD-Core Version:    0.7.0.1
  */

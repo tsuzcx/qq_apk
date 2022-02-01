@@ -19,7 +19,8 @@ class PagerSnapHelper$TouchEventProcessor
   {
     if ((paramInt == 0) || (paramInt == 2))
     {
-      PagerSnapHelper.access$202(this.this$0, this.this$0.findCenterView(PagerSnapHelper.access$000(this.this$0)));
+      PagerSnapHelper localPagerSnapHelper = this.this$0;
+      PagerSnapHelper.access$202(localPagerSnapHelper, localPagerSnapHelper.findCenterView(PagerSnapHelper.access$000(localPagerSnapHelper)));
       if ((PagerSnapHelper.access$700(this.this$0) != -1) && (PagerSnapHelper.access$000(this.this$0).findViewByPosition(PagerSnapHelper.access$700(this.this$0)) == null)) {
         this.reset = true;
       }
@@ -28,67 +29,51 @@ class PagerSnapHelper$TouchEventProcessor
   
   private void onIdle()
   {
-    int k = 1;
-    int i;
-    if (this.scrolled)
+    boolean bool2 = this.scrolled;
+    int j = 1;
+    boolean bool1;
+    if (bool2)
     {
       this.scrolled = false;
-      if (!this.this$0.snapToCenterPosition()) {
-        i = 1;
-      }
+      bool1 = this.this$0.snapToCenterPosition() ^ true;
     }
-    for (;;)
+    else
     {
-      if (i != 0) {
-        PagerSnapHelper.access$402(this.this$0, false);
-      }
-      int n = PagerSnapHelper.access$500(this.this$0);
-      int i1 = PagerSnapHelper.access$600(this.this$0, PagerSnapHelper.access$000(this.this$0));
-      int j;
-      label85:
-      label104:
-      View localView;
-      int m;
-      if ((PagerSnapHelper.access$700(this.this$0) == i1) && (!this.reset))
-      {
-        j = 1;
-        if ((PagerSnapHelper.access$700(this.this$0) != n) || (this.reset)) {
-          break label192;
-        }
-        localView = this.this$0.findCenterView(PagerSnapHelper.access$000(this.this$0));
-        if (localView == null) {
-          break label197;
-        }
-        m = PagerSnapHelper.access$000(this.this$0).getPosition(localView);
-        label139:
-        if ((m < i1) || (j == 0)) {
-          break label203;
-        }
-        if ((i != 0) && (PagerSnapHelper.access$800(this.this$0) != null)) {
-          PagerSnapHelper.access$800(this.this$0).onFooterRebound();
-        }
-      }
-      for (;;)
-      {
-        this.reset = false;
-        return;
-        i = 0;
-        break;
-        j = 0;
-        break label85;
-        label192:
-        k = 0;
-        break label104;
-        label197:
-        m = -1;
-        break label139;
-        label203:
-        if ((m > n) || (k == 0)) {
-          PagerSnapHelper.access$900(this.this$0, localView, this.reset);
-        }
-      }
-      i = 1;
+      bool1 = true;
     }
+    if (bool1) {
+      PagerSnapHelper.access$402(this.this$0, false);
+    }
+    int m = PagerSnapHelper.access$500(this.this$0);
+    Object localObject = this.this$0;
+    int n = PagerSnapHelper.access$600((PagerSnapHelper)localObject, PagerSnapHelper.access$000((PagerSnapHelper)localObject));
+    int i;
+    if ((PagerSnapHelper.access$700(this.this$0) == n) && (!this.reset)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((PagerSnapHelper.access$700(this.this$0) != m) || (this.reset)) {
+      j = 0;
+    }
+    localObject = this.this$0;
+    localObject = ((PagerSnapHelper)localObject).findCenterView(PagerSnapHelper.access$000((PagerSnapHelper)localObject));
+    int k;
+    if (localObject != null) {
+      k = PagerSnapHelper.access$000(this.this$0).getPosition((View)localObject);
+    } else {
+      k = -1;
+    }
+    if ((k >= n) && (i != 0))
+    {
+      if ((bool1) && (PagerSnapHelper.access$800(this.this$0) != null)) {
+        PagerSnapHelper.access$800(this.this$0).onFooterRebound();
+      }
+    }
+    else if ((k > m) || (j == 0)) {
+      PagerSnapHelper.access$900(this.this$0, (View)localObject, this.reset);
+    }
+    this.reset = false;
   }
   
   public boolean onFling(float paramFloat1, float paramFloat2)
@@ -100,24 +85,33 @@ class PagerSnapHelper$TouchEventProcessor
       return false;
     }
     int j = PagerSnapHelper.access$100(this.this$0).getMinFlingVelocity();
-    if (PagerSnapHelper.access$200(this.this$0) != null) {}
-    for (int i = PagerSnapHelper.access$000(this.this$0).getPosition(PagerSnapHelper.access$200(this.this$0)); (Math.abs(paramFloat2) > j) || (Math.abs(paramFloat1) > j); i = -1) {
-      return PagerSnapHelper.access$300(this.this$0, PagerSnapHelper.access$000(this.this$0), paramFloat1, paramFloat2, i);
+    int i;
+    if (PagerSnapHelper.access$200(this.this$0) != null) {
+      i = PagerSnapHelper.access$000(this.this$0).getPosition(PagerSnapHelper.access$200(this.this$0));
+    } else {
+      i = -1;
     }
-    return false;
+    float f1 = Math.abs(paramFloat2);
+    float f2 = j;
+    if ((f1 <= f2) && (Math.abs(paramFloat1) <= f2)) {
+      return false;
+    }
+    PagerSnapHelper localPagerSnapHelper = this.this$0;
+    return PagerSnapHelper.access$300(localPagerSnapHelper, PagerSnapHelper.access$000(localPagerSnapHelper), paramFloat1, paramFloat2, i);
   }
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
     int i = this.currentScrollState;
     this.currentScrollState = paramInt;
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       onIdle();
-    }
-    while (paramInt != 1) {
       return;
     }
-    onDragging(i);
+    if (paramInt == 1) {
+      onDragging(i);
+    }
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
@@ -129,7 +123,7 @@ class PagerSnapHelper$TouchEventProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.support.PagerSnapHelper.TouchEventProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.transfile;
 
-import barp;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class C2CPicUploadProcessor$1
+class C2CPicUploadProcessor$1
   implements Runnable
 {
-  public C2CPicUploadProcessor$1(barp parambarp) {}
+  C2CPicUploadProcessor$1(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.sApplication, 2131689986, 1).a();
+    QQToast.makeText(BaseApplication.getContext(), 2131886529, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicUploadProcessor.1
  * JD-Core Version:    0.7.0.1
  */

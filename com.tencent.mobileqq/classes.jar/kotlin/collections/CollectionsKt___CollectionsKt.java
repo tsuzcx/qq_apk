@@ -43,7 +43,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"all", "", "T", "", "predicate", "Lkotlin/Function1;", "any", "asIterable", "asSequence", "Lkotlin/sequences/Sequence;", "associate", "", "K", "V", "transform", "Lkotlin/Pair;", "associateBy", "keySelector", "valueTransform", "associateByTo", "M", "", "destination", "(Ljava/lang/Iterable;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "(Ljava/lang/Iterable;Ljava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "associateTo", "associateWith", "valueSelector", "associateWithTo", "average", "", "", "averageOfByte", "averageOfDouble", "", "averageOfFloat", "", "averageOfInt", "", "averageOfLong", "", "averageOfShort", "chunked", "", "size", "R", "component1", "(Ljava/util/List;)Ljava/lang/Object;", "component2", "component3", "component4", "component5", "contains", "Lkotlin/internal/OnlyInputTypes;", "element", "(Ljava/lang/Iterable;Ljava/lang/Object;)Z", "count", "", "distinct", "distinctBy", "selector", "drop", "n", "dropLast", "dropLastWhile", "dropWhile", "elementAt", "index", "(Ljava/lang/Iterable;I)Ljava/lang/Object;", "(Ljava/util/List;I)Ljava/lang/Object;", "elementAtOrElse", "defaultValue", "(Ljava/lang/Iterable;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "(Ljava/util/List;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "elementAtOrNull", "filter", "filterIndexed", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "filterIndexedTo", "C", "", "(Ljava/lang/Iterable;Ljava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterIsInstance", "Lkotlin/internal/NoInfer;", "filterIsInstanceTo", "(Ljava/lang/Iterable;Ljava/util/Collection;)Ljava/util/Collection;", "filterNot", "filterNotNull", "", "filterNotNullTo", "filterNotTo", "(Ljava/lang/Iterable;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterTo", "find", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "findLast", "(Ljava/util/List;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "first", "(Ljava/lang/Iterable;)Ljava/lang/Object;", "firstOrNull", "flatMap", "flatMapTo", "fold", "initial", "operation", "acc", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldIndexed", "Lkotlin/Function3;", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "foldRight", "(Ljava/util/List;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldRightIndexed", "(Ljava/util/List;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "forEach", "", "action", "forEachIndexed", "getOrElse", "getOrNull", "groupBy", "groupByTo", "", "groupingBy", "Lkotlin/collections/Grouping;", "indexOf", "(Ljava/lang/Iterable;Ljava/lang/Object;)I", "(Ljava/util/List;Ljava/lang/Object;)I", "indexOfFirst", "indexOfLast", "intersect", "", "other", "joinTo", "A", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "buffer", "separator", "", "prefix", "postfix", "limit", "truncated", "(Ljava/lang/Iterable;Ljava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "joinToString", "", "last", "lastIndexOf", "lastOrNull", "map", "mapIndexed", "mapIndexedNotNull", "mapIndexedNotNullTo", "mapIndexedTo", "mapNotNull", "mapNotNullTo", "mapTo", "max", "", "(Ljava/lang/Iterable;)Ljava/lang/Comparable;", "(Ljava/lang/Iterable;)Ljava/lang/Double;", "(Ljava/lang/Iterable;)Ljava/lang/Float;", "maxBy", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "(Ljava/lang/Iterable;Ljava/util/Comparator;)Ljava/lang/Object;", "min", "minBy", "minWith", "minus", "(Ljava/lang/Iterable;Ljava/lang/Object;)Ljava/util/List;", "elements", "", "(Ljava/lang/Iterable;[Ljava/lang/Object;)Ljava/util/List;", "minusElement", "none", "onEach", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Iterable;", "partition", "plus", "(Ljava/util/Collection;Ljava/lang/Object;)Ljava/util/List;", "(Ljava/util/Collection;[Ljava/lang/Object;)Ljava/util/List;", "plusElement", "random", "(Ljava/util/Collection;)Ljava/lang/Object;", "Lkotlin/random/Random;", "(Ljava/util/Collection;Lkotlin/random/Random;)Ljava/lang/Object;", "randomOrNull", "reduce", "S", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "reduceIndexed", "(Ljava/lang/Iterable;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "reduceOrNull", "reduceRight", "(Ljava/util/List;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "reduceRightIndexed", "(Ljava/util/List;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "reduceRightOrNull", "requireNoNulls", "reversed", "scan", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "scanIndexed", "(Ljava/lang/Iterable;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanReduce", "scanReduceIndexed", "single", "singleOrNull", "slice", "indices", "Lkotlin/ranges/IntRange;", "sortBy", "sortByDescending", "sortDescending", "sorted", "sortedBy", "sortedByDescending", "sortedDescending", "sortedWith", "subtract", "sum", "sumOfByte", "sumOfDouble", "sumOfFloat", "sumOfInt", "sumOfLong", "sumOfShort", "sumBy", "sumByDouble", "take", "takeLast", "takeLastWhile", "takeWhile", "toBooleanArray", "", "toByteArray", "", "toCharArray", "", "", "toCollection", "toDoubleArray", "", "toFloatArray", "", "toHashSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "toIntArray", "", "toList", "toLongArray", "", "toMutableList", "toMutableSet", "", "toSet", "toShortArray", "", "union", "windowed", "step", "partialWindows", "withIndex", "Lkotlin/collections/IndexedValue;", "zip", "a", "b", "(Ljava/lang/Iterable;[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "zipWithNext", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/CollectionsKt")
-public class CollectionsKt___CollectionsKt
+class CollectionsKt___CollectionsKt
   extends CollectionsKt___CollectionsJvmKt
 {
   public static final <T> boolean all(@NotNull Iterable<? extends T> paramIterable, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -66,7 +66,7 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$any");
     if ((paramIterable instanceof Collection)) {
-      return !((Collection)paramIterable).isEmpty();
+      return ((Collection)paramIterable).isEmpty() ^ true;
     }
     return paramIterable.iterator().hasNext();
   }
@@ -228,126 +228,178 @@ public class CollectionsKt___CollectionsKt
   public static final double averageOfByte(@NotNull Iterable<Byte> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$average");
-    double d = 0.0D;
     paramIterable = paramIterable.iterator();
+    double d1 = 0.0D;
     int i = 0;
     while (paramIterable.hasNext())
     {
-      d += ((Number)paramIterable.next()).byteValue();
-      i += 1;
-      if (i < 0) {
+      d2 = ((Number)paramIterable.next()).byteValue();
+      Double.isNaN(d2);
+      d2 = d1 + d2;
+      int j = i + 1;
+      d1 = d2;
+      i = j;
+      if (j < 0)
+      {
         CollectionsKt.throwCountOverflow();
+        d1 = d2;
+        i = j;
       }
     }
     if (i == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / i;
+    double d2 = i;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfDouble")
   public static final double averageOfDouble(@NotNull Iterable<Double> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$average");
-    double d = 0.0D;
     paramIterable = paramIterable.iterator();
+    double d1 = 0.0D;
     int i = 0;
     while (paramIterable.hasNext())
     {
-      d += ((Number)paramIterable.next()).doubleValue();
-      i += 1;
-      if (i < 0) {
+      d2 = d1 + ((Number)paramIterable.next()).doubleValue();
+      int j = i + 1;
+      d1 = d2;
+      i = j;
+      if (j < 0)
+      {
         CollectionsKt.throwCountOverflow();
+        d1 = d2;
+        i = j;
       }
     }
     if (i == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / i;
+    double d2 = i;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfFloat")
   public static final double averageOfFloat(@NotNull Iterable<Float> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$average");
-    double d = 0.0D;
     paramIterable = paramIterable.iterator();
+    double d1 = 0.0D;
     int i = 0;
     while (paramIterable.hasNext())
     {
-      d += ((Number)paramIterable.next()).floatValue();
-      i += 1;
-      if (i < 0) {
+      d2 = ((Number)paramIterable.next()).floatValue();
+      Double.isNaN(d2);
+      d2 = d1 + d2;
+      int j = i + 1;
+      d1 = d2;
+      i = j;
+      if (j < 0)
+      {
         CollectionsKt.throwCountOverflow();
+        d1 = d2;
+        i = j;
       }
     }
     if (i == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / i;
+    double d2 = i;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfInt")
   public static final double averageOfInt(@NotNull Iterable<Integer> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$average");
-    double d = 0.0D;
     paramIterable = paramIterable.iterator();
+    double d1 = 0.0D;
     int i = 0;
     while (paramIterable.hasNext())
     {
-      d += ((Number)paramIterable.next()).intValue();
-      i += 1;
-      if (i < 0) {
+      d2 = ((Number)paramIterable.next()).intValue();
+      Double.isNaN(d2);
+      d2 = d1 + d2;
+      int j = i + 1;
+      d1 = d2;
+      i = j;
+      if (j < 0)
+      {
         CollectionsKt.throwCountOverflow();
+        d1 = d2;
+        i = j;
       }
     }
     if (i == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / i;
+    double d2 = i;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfLong")
   public static final double averageOfLong(@NotNull Iterable<Long> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$average");
-    double d = 0.0D;
     paramIterable = paramIterable.iterator();
+    double d1 = 0.0D;
     int i = 0;
     while (paramIterable.hasNext())
     {
-      d += ((Number)paramIterable.next()).longValue();
-      i += 1;
-      if (i < 0) {
+      d2 = ((Number)paramIterable.next()).longValue();
+      Double.isNaN(d2);
+      d2 = d1 + d2;
+      int j = i + 1;
+      d1 = d2;
+      i = j;
+      if (j < 0)
+      {
         CollectionsKt.throwCountOverflow();
+        d1 = d2;
+        i = j;
       }
     }
     if (i == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / i;
+    double d2 = i;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfShort")
   public static final double averageOfShort(@NotNull Iterable<Short> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$average");
-    double d = 0.0D;
     paramIterable = paramIterable.iterator();
+    double d1 = 0.0D;
     int i = 0;
     while (paramIterable.hasNext())
     {
-      d += ((Number)paramIterable.next()).shortValue();
-      i += 1;
-      if (i < 0) {
+      d2 = ((Number)paramIterable.next()).shortValue();
+      Double.isNaN(d2);
+      d2 = d1 + d2;
+      int j = i + 1;
+      d1 = d2;
+      i = j;
+      if (j < 0)
+      {
         CollectionsKt.throwCountOverflow();
+        d1 = d2;
+        i = j;
       }
     }
     if (i == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / i;
+    double d2 = i;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @SinceKotlin(version="1.2")
@@ -414,22 +466,15 @@ public class CollectionsKt___CollectionsKt
   public static final <T> int count(@NotNull Iterable<? extends T> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$count");
-    int j;
-    if ((paramIterable instanceof Collection))
-    {
-      j = ((Collection)paramIterable).size();
-      return j;
+    if ((paramIterable instanceof Collection)) {
+      return ((Collection)paramIterable).size();
     }
     int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    while (paramIterable.hasNext())
     {
-      j = i;
-      if (!paramIterable.hasNext()) {
-        break;
-      }
       paramIterable.next();
-      j = i + 1;
+      int j = i + 1;
       i = j;
       if (j < 0)
       {
@@ -437,6 +482,7 @@ public class CollectionsKt___CollectionsKt
         i = j;
       }
     }
+    return i;
   }
   
   public static final <T> int count(@NotNull Iterable<? extends T> paramIterable, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -448,30 +494,25 @@ public class CollectionsKt___CollectionsKt
     }
     paramIterable = paramIterable.iterator();
     int i = 0;
-    if (paramIterable.hasNext())
-    {
-      if (!((Boolean)paramFunction1.invoke(paramIterable.next())).booleanValue()) {
-        break label117;
-      }
-      int j = i + 1;
-      i = j;
-      if (j < 0)
+    while (paramIterable.hasNext()) {
+      if (((Boolean)paramFunction1.invoke(paramIterable.next())).booleanValue())
       {
-        if (!PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
-          break label101;
-        }
-        CollectionsKt.throwCountOverflow();
+        int j = i + 1;
         i = j;
+        if (j < 0) {
+          if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0))
+          {
+            CollectionsKt.throwCountOverflow();
+            i = j;
+          }
+          else
+          {
+            throw ((Throwable)new ArithmeticException("Count overflow has happened."));
+          }
+        }
       }
     }
-    label101:
-    label117:
-    for (;;)
-    {
-      break;
-      throw ((Throwable)new ArithmeticException("Count overflow has happened."));
-      return i;
-    }
+    return i;
   }
   
   @InlineOnly
@@ -509,60 +550,75 @@ public class CollectionsKt___CollectionsKt
   public static final <T> List<T> drop(@NotNull Iterable<? extends T> paramIterable, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
-    }
-    if (paramInt == 0) {
-      return CollectionsKt.toList(paramIterable);
-    }
-    ArrayList localArrayList;
-    if ((paramIterable instanceof Collection))
-    {
-      i = ((Collection)paramIterable).size() - paramInt;
-      if (i <= 0) {
-        return CollectionsKt.emptyList();
-      }
-      if (i == 1) {
-        return CollectionsKt.listOf(CollectionsKt.last(paramIterable));
-      }
-      localArrayList = new ArrayList(i);
-      if ((paramIterable instanceof List))
-      {
-        if ((paramIterable instanceof RandomAccess))
-        {
-          i = ((Collection)paramIterable).size();
-          while (paramInt < i)
-          {
-            localArrayList.add(((List)paramIterable).get(paramInt));
-            paramInt += 1;
-          }
-        }
-        paramIterable = (Iterator)((List)paramIterable).listIterator(paramInt);
-        while (paramIterable.hasNext()) {
-          localArrayList.add(paramIterable.next());
-        }
-        return (List)localArrayList;
-      }
-    }
-    else
-    {
-      localArrayList = new ArrayList();
-    }
-    for (;;)
-    {
-      paramIterable = paramIterable.iterator();
+    int j = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
       i = 0;
+    }
+    if (i != 0)
+    {
+      if (paramInt == 0) {
+        return CollectionsKt.toList(paramIterable);
+      }
+      Object localObject2;
+      Object localObject1;
+      if ((paramIterable instanceof Collection))
+      {
+        Collection localCollection = (Collection)paramIterable;
+        i = localCollection.size() - paramInt;
+        if (i <= 0) {
+          return CollectionsKt.emptyList();
+        }
+        if (i == 1) {
+          return CollectionsKt.listOf(CollectionsKt.last(paramIterable));
+        }
+        localObject2 = new ArrayList(i);
+        localObject1 = localObject2;
+        if ((paramIterable instanceof List))
+        {
+          if ((paramIterable instanceof RandomAccess))
+          {
+            i = localCollection.size();
+            while (paramInt < i)
+            {
+              ((ArrayList)localObject2).add(((List)paramIterable).get(paramInt));
+              paramInt += 1;
+            }
+          }
+          paramIterable = (Iterator)((List)paramIterable).listIterator(paramInt);
+          while (paramIterable.hasNext()) {
+            ((ArrayList)localObject2).add(paramIterable.next());
+          }
+          return (List)localObject2;
+        }
+      }
+      else
+      {
+        localObject1 = new ArrayList();
+      }
+      paramIterable = paramIterable.iterator();
+      i = j;
       while (paramIterable.hasNext())
       {
-        Object localObject = paramIterable.next();
+        localObject2 = paramIterable.next();
         if (i >= paramInt) {
-          localArrayList.add(localObject);
+          ((ArrayList)localObject1).add(localObject2);
         } else {
           i += 1;
         }
       }
-      return CollectionsKt.optimizeReadOnlyList((List)localArrayList);
+      return CollectionsKt.optimizeReadOnlyList((List)localObject1);
+    }
+    paramIterable = new StringBuilder();
+    paramIterable.append("Requested element count ");
+    paramIterable.append(paramInt);
+    paramIterable.append(" is less than zero.");
+    paramIterable = (Throwable)new IllegalArgumentException(paramIterable.toString().toString());
+    for (;;)
+    {
+      throw paramIterable;
     }
   }
   
@@ -570,11 +626,20 @@ public class CollectionsKt___CollectionsKt
   public static final <T> List<T> dropLast(@NotNull List<? extends T> paramList, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return CollectionsKt.take((Iterable)paramList, RangesKt.coerceAtLeast(paramList.size() - paramInt, 0));
+    if (i != 0) {
+      return CollectionsKt.take((Iterable)paramList, RangesKt.coerceAtLeast(paramList.size() - paramInt, 0));
+    }
+    paramList = new StringBuilder();
+    paramList.append("Requested element count ");
+    paramList.append(paramInt);
+    paramList.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramList.toString().toString()));
   }
   
   @NotNull
@@ -602,25 +667,20 @@ public class CollectionsKt___CollectionsKt
     ArrayList localArrayList = new ArrayList();
     paramIterable = paramIterable.iterator();
     int i = 0;
-    Object localObject;
-    if (paramIterable.hasNext())
+    while (paramIterable.hasNext())
     {
-      localObject = paramIterable.next();
-      if (i != 0) {
+      Object localObject = paramIterable.next();
+      if (i != 0)
+      {
         localArrayList.add(localObject);
       }
-    }
-    for (;;)
-    {
-      break;
-      if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue())
+      else if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue())
       {
         localArrayList.add(localObject);
         i = 1;
-        continue;
-        return (List)localArrayList;
       }
     }
+    return (List)localArrayList;
   }
   
   public static final <T> T elementAt(@NotNull Iterable<? extends T> paramIterable, int paramInt)
@@ -732,21 +792,17 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        if (((Boolean)paramFunction2.invoke(Integer.valueOf(i), localObject)).booleanValue()) {
-          localCollection.add(localObject);
-        }
-        i += 1;
-        continue;
+      if (((Boolean)paramFunction2.invoke(Integer.valueOf(i), localObject)).booleanValue()) {
+        localCollection.add(localObject);
       }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      i += 1;
     }
     return (List)localCollection;
   }
@@ -762,21 +818,17 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        if (((Boolean)paramFunction2.invoke(Integer.valueOf(i), localObject)).booleanValue()) {
-          paramC.add(localObject);
-        }
-        i += 1;
-        continue;
+      if (((Boolean)paramFunction2.invoke(Integer.valueOf(i), localObject)).booleanValue()) {
+        paramC.add(localObject);
       }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      i += 1;
     }
     return paramC;
   }
@@ -872,23 +924,16 @@ public class CollectionsKt___CollectionsKt
   @InlineOnly
   private static final <T> T findLast(@NotNull Iterable<? extends T> paramIterable, Function1<? super T, Boolean> paramFunction1)
   {
-    Object localObject = null;
     Iterator localIterator = paramIterable.iterator();
-    paramIterable = localObject;
-    if (localIterator.hasNext())
+    paramIterable = null;
+    while (localIterator.hasNext())
     {
-      localObject = localIterator.next();
-      if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
-        break label50;
+      Object localObject = localIterator.next();
+      if (((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
+        paramIterable = localObject;
       }
-      paramIterable = localObject;
     }
-    label50:
-    for (;;)
-    {
-      break;
-      return paramIterable;
-    }
+    return paramIterable;
   }
   
   @InlineOnly
@@ -912,10 +957,10 @@ public class CollectionsKt___CollectionsKt
       return CollectionsKt.first((List)paramIterable);
     }
     paramIterable = paramIterable.iterator();
-    if (!paramIterable.hasNext()) {
-      throw ((Throwable)new NoSuchElementException("Collection is empty."));
+    if (paramIterable.hasNext()) {
+      return paramIterable.next();
     }
-    return paramIterable.next();
+    throw ((Throwable)new NoSuchElementException("Collection is empty."));
   }
   
   public static final <T> T first(@NotNull Iterable<? extends T> paramIterable, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -930,16 +975,20 @@ public class CollectionsKt___CollectionsKt
         return localObject;
       }
     }
-    throw ((Throwable)new NoSuchElementException("Collection contains no element matching the predicate."));
+    paramIterable = (Throwable)new NoSuchElementException("Collection contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramIterable;
+    }
   }
   
   public static final <T> T first(@NotNull List<? extends T> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$first");
-    if (paramList.isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("List is empty."));
+    if (!paramList.isEmpty()) {
+      return paramList.get(0);
     }
-    return paramList.get(0);
+    throw ((Throwable)new NoSuchElementException("List is empty."));
   }
   
   @Nullable
@@ -948,10 +997,11 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$firstOrNull");
     if ((paramIterable instanceof List))
     {
-      if (((List)paramIterable).isEmpty()) {
+      paramIterable = (List)paramIterable;
+      if (paramIterable.isEmpty()) {
         return null;
       }
-      return ((List)paramIterable).get(0);
+      return paramIterable.get(0);
     }
     paramIterable = paramIterable.iterator();
     if (!paramIterable.hasNext()) {
@@ -1032,19 +1082,15 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        paramR = paramFunction3.invoke(Integer.valueOf(i), paramR, localObject);
-        i += 1;
-        continue;
-      }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      paramR = paramFunction3.invoke(Integer.valueOf(i), paramR, localObject);
+      i += 1;
     }
     return paramR;
   }
@@ -1109,19 +1155,15 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        paramFunction2.invoke(Integer.valueOf(i), localObject);
-        i += 1;
-        continue;
-      }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      paramFunction2.invoke(Integer.valueOf(i), localObject);
+      i += 1;
     }
   }
   
@@ -1151,21 +1193,18 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     Map localMap = (Map)new LinkedHashMap();
     Iterator localIterator = paramIterable.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      Object localObject1 = localIterator.next();
-      Object localObject2 = paramFunction1.invoke(localObject1);
-      paramIterable = localMap.get(localObject2);
-      if (paramIterable == null)
+      Object localObject2 = localIterator.next();
+      Object localObject3 = paramFunction1.invoke(localObject2);
+      Object localObject1 = localMap.get(localObject3);
+      paramIterable = localObject1;
+      if (localObject1 == null)
       {
         paramIterable = new ArrayList();
-        localMap.put(localObject2, paramIterable);
+        localMap.put(localObject3, paramIterable);
       }
-      for (;;)
-      {
-        ((List)paramIterable).add(localObject1);
-        break;
-      }
+      ((List)paramIterable).add(localObject2);
     }
     return localMap;
   }
@@ -1178,21 +1217,18 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     Map localMap = (Map)new LinkedHashMap();
     Iterator localIterator = paramIterable.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      Object localObject1 = localIterator.next();
-      Object localObject2 = paramFunction1.invoke(localObject1);
-      paramIterable = localMap.get(localObject2);
-      if (paramIterable == null)
+      Object localObject2 = localIterator.next();
+      Object localObject3 = paramFunction1.invoke(localObject2);
+      Object localObject1 = localMap.get(localObject3);
+      paramIterable = localObject1;
+      if (localObject1 == null)
       {
         paramIterable = new ArrayList();
-        localMap.put(localObject2, paramIterable);
+        localMap.put(localObject3, paramIterable);
       }
-      for (;;)
-      {
-        ((List)paramIterable).add(paramFunction11.invoke(localObject1));
-        break;
-      }
+      ((List)paramIterable).add(paramFunction11.invoke(localObject2));
     }
     return localMap;
   }
@@ -1204,21 +1240,18 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramM, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     Iterator localIterator = paramIterable.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      Object localObject1 = localIterator.next();
-      Object localObject2 = paramFunction1.invoke(localObject1);
-      paramIterable = paramM.get(localObject2);
-      if (paramIterable == null)
+      Object localObject2 = localIterator.next();
+      Object localObject3 = paramFunction1.invoke(localObject2);
+      Object localObject1 = paramM.get(localObject3);
+      paramIterable = localObject1;
+      if (localObject1 == null)
       {
         paramIterable = new ArrayList();
-        paramM.put(localObject2, paramIterable);
+        paramM.put(localObject3, paramIterable);
       }
-      for (;;)
-      {
-        ((List)paramIterable).add(localObject1);
-        break;
-      }
+      ((List)paramIterable).add(localObject2);
     }
     return paramM;
   }
@@ -1231,21 +1264,18 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     Iterator localIterator = paramIterable.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      Object localObject1 = localIterator.next();
-      Object localObject2 = paramFunction1.invoke(localObject1);
-      paramIterable = paramM.get(localObject2);
-      if (paramIterable == null)
+      Object localObject2 = localIterator.next();
+      Object localObject3 = paramFunction1.invoke(localObject2);
+      Object localObject1 = paramM.get(localObject3);
+      paramIterable = localObject1;
+      if (localObject1 == null)
       {
         paramIterable = new ArrayList();
-        paramM.put(localObject2, paramIterable);
+        paramM.put(localObject3, paramIterable);
       }
-      for (;;)
-      {
-        ((List)paramIterable).add(paramFunction11.invoke(localObject1));
-        break;
-      }
+      ((List)paramIterable).add(paramFunction11.invoke(localObject2));
     }
     return paramM;
   }
@@ -1262,30 +1292,22 @@ public class CollectionsKt___CollectionsKt
   public static final <T> int indexOf(@NotNull Iterable<? extends T> paramIterable, T paramT)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$indexOf");
-    int j;
-    if ((paramIterable instanceof List))
-    {
-      j = ((List)paramIterable).indexOf(paramT);
-      return j;
+    if ((paramIterable instanceof List)) {
+      return ((List)paramIterable).indexOf(paramT);
     }
     int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    while (paramIterable.hasNext())
     {
-      if (!paramIterable.hasNext()) {
-        break label78;
-      }
       Object localObject = paramIterable.next();
       if (i < 0) {
         CollectionsKt.throwIndexOverflow();
       }
-      j = i;
       if (Intrinsics.areEqual(paramT, localObject)) {
-        break;
+        return i;
       }
       i += 1;
     }
-    label78:
     return -1;
   }
   
@@ -1304,21 +1326,16 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
-          break label87;
-        }
+      if (((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
         return i;
       }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
-      label87:
       i += 1;
     }
     return -1;
@@ -1345,26 +1362,22 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$indexOfLast");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     paramIterable = paramIterable.iterator();
-    int i = 0;
     int j = -1;
+    int i = 0;
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        if (((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
-          j = i;
-        }
-        i += 1;
-        continue;
+      if (((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
+        j = i;
       }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      i += 1;
     }
     return j;
   }
@@ -1402,8 +1415,8 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramCharSequence3, "postfix");
     Intrinsics.checkParameterIsNotNull(paramCharSequence4, "truncated");
     paramA.append(paramCharSequence2);
-    int i = 0;
     paramIterable = paramIterable.iterator();
+    int i = 0;
     int j;
     for (;;)
     {
@@ -1449,16 +1462,18 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$last");
     if ((paramIterable instanceof List)) {
-      paramIterable = CollectionsKt.last((List)paramIterable);
+      return CollectionsKt.last((List)paramIterable);
     }
+    Iterator localIterator = paramIterable.iterator();
+    if (localIterator.hasNext())
+    {
+      for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = localIterator.next()) {}
+      return paramIterable;
+    }
+    paramIterable = (Throwable)new NoSuchElementException("Collection is empty.");
     for (;;)
     {
-      return paramIterable;
-      Iterator localIterator = paramIterable.iterator();
-      if (!localIterator.hasNext()) {
-        throw ((Throwable)new NoSuchElementException("Collection is empty."));
-      }
-      for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = localIterator.next()) {}
+      throw paramIterable;
     }
   }
   
@@ -1466,37 +1481,35 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    Object localObject = null;
-    int i = 0;
     Iterator localIterator = paramIterable.iterator();
-    paramIterable = localObject;
-    if (localIterator.hasNext())
+    paramIterable = null;
+    int i = 0;
+    while (localIterator.hasNext())
     {
-      localObject = localIterator.next();
-      if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
-        break label89;
+      Object localObject = localIterator.next();
+      if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
+      {
+        paramIterable = localObject;
+        i = 1;
       }
-      i = 1;
-      paramIterable = localObject;
     }
-    label89:
+    if (i != 0) {
+      return paramIterable;
+    }
+    paramIterable = (Throwable)new NoSuchElementException("Collection contains no element matching the predicate.");
     for (;;)
     {
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Collection contains no element matching the predicate."));
-      }
-      return paramIterable;
+      throw paramIterable;
     }
   }
   
   public static final <T> T last(@NotNull List<? extends T> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$last");
-    if (paramList.isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("List is empty."));
+    if (!paramList.isEmpty()) {
+      return paramList.get(CollectionsKt.getLastIndex(paramList));
     }
-    return paramList.get(CollectionsKt.getLastIndex(paramList));
+    throw ((Throwable)new NoSuchElementException("List is empty."));
   }
   
   public static final <T> T last(@NotNull List<? extends T> paramList, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -1511,27 +1524,24 @@ public class CollectionsKt___CollectionsKt
         return localObject;
       }
     }
-    throw ((Throwable)new NoSuchElementException("List contains no element matching the predicate."));
+    paramList = (Throwable)new NoSuchElementException("List contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public static final <T> int lastIndexOf(@NotNull Iterable<? extends T> paramIterable, T paramT)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$lastIndexOf");
-    int k;
-    if ((paramIterable instanceof List))
-    {
-      k = ((List)paramIterable).lastIndexOf(paramT);
-      return k;
+    if ((paramIterable instanceof List)) {
+      return ((List)paramIterable).lastIndexOf(paramT);
     }
     int j = -1;
     int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    while (paramIterable.hasNext())
     {
-      k = j;
-      if (!paramIterable.hasNext()) {
-        break;
-      }
       Object localObject = paramIterable.next();
       if (i < 0) {
         CollectionsKt.throwIndexOverflow();
@@ -1541,6 +1551,7 @@ public class CollectionsKt___CollectionsKt
       }
       i += 1;
     }
+    return j;
   }
   
   public static final <T> int lastIndexOf(@NotNull List<? extends T> paramList, T paramT)
@@ -1553,21 +1564,20 @@ public class CollectionsKt___CollectionsKt
   public static final <T> T lastOrNull(@NotNull Iterable<? extends T> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$lastOrNull");
-    if ((paramIterable instanceof List)) {
-      if (((List)paramIterable).isEmpty()) {
-        paramIterable = null;
-      }
-    }
-    for (;;)
+    if ((paramIterable instanceof List))
     {
-      return paramIterable;
-      return ((List)paramIterable).get(((List)paramIterable).size() - 1);
-      Iterator localIterator = paramIterable.iterator();
-      if (!localIterator.hasNext()) {
+      paramIterable = (List)paramIterable;
+      if (paramIterable.isEmpty()) {
         return null;
       }
-      for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = localIterator.next()) {}
+      return paramIterable.get(paramIterable.size() - 1);
     }
+    Iterator localIterator = paramIterable.iterator();
+    if (!localIterator.hasNext()) {
+      return null;
+    }
+    for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = localIterator.next()) {}
+    return paramIterable;
   }
   
   @Nullable
@@ -1575,23 +1585,16 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    Object localObject = null;
     Iterator localIterator = paramIterable.iterator();
-    paramIterable = localObject;
-    if (localIterator.hasNext())
+    paramIterable = null;
+    while (localIterator.hasNext())
     {
-      localObject = localIterator.next();
-      if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
-        break label64;
+      Object localObject = localIterator.next();
+      if (((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
+        paramIterable = localObject;
       }
-      paramIterable = localObject;
     }
-    label64:
-    for (;;)
-    {
-      break;
-      return paramIterable;
-    }
+    return paramIterable;
   }
   
   @Nullable
@@ -1644,19 +1647,15 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        localCollection.add(paramFunction2.invoke(Integer.valueOf(i), localObject));
-        i += 1;
-        continue;
-      }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      localCollection.add(paramFunction2.invoke(Integer.valueOf(i), localObject));
+      i += 1;
     }
     return (List)localCollection;
   }
@@ -1672,22 +1671,18 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        localObject = paramFunction2.invoke(Integer.valueOf(i), localObject);
-        if (localObject != null) {
-          localCollection.add(localObject);
-        }
-        i += 1;
-        continue;
+      localObject = paramFunction2.invoke(Integer.valueOf(i), localObject);
+      if (localObject != null) {
+        localCollection.add(localObject);
       }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      i += 1;
     }
     return (List)localCollection;
   }
@@ -1703,22 +1698,18 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        localObject = paramFunction2.invoke(Integer.valueOf(i), localObject);
-        if (localObject != null) {
-          paramC.add(localObject);
-        }
-        i += 1;
-        continue;
+      localObject = paramFunction2.invoke(Integer.valueOf(i), localObject);
+      if (localObject != null) {
+        paramC.add(localObject);
       }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      i += 1;
     }
     return paramC;
   }
@@ -1734,19 +1725,15 @@ public class CollectionsKt___CollectionsKt
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (i < 0)
-      {
+      if (i < 0) {
         if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
           CollectionsKt.throwIndexOverflow();
+        } else {
+          throw ((Throwable)new ArithmeticException("Index overflow has happened."));
         }
       }
-      else
-      {
-        paramC.add(paramFunction2.invoke(Integer.valueOf(i), localObject));
-        i += 1;
-        continue;
-      }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      paramC.add(paramFunction2.invoke(Integer.valueOf(i), localObject));
+      i += 1;
     }
     return paramC;
   }
@@ -1804,22 +1791,17 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$max");
     Iterator localIterator = paramIterable.iterator();
     if (!localIterator.hasNext()) {
-      localObject = null;
+      return null;
     }
-    do
+    paramIterable = (Comparable)localIterator.next();
+    while (localIterator.hasNext())
     {
-      return localObject;
-      paramIterable = (Comparable)localIterator.next();
-      localObject = paramIterable;
-    } while (!localIterator.hasNext());
-    Object localObject = (Comparable)localIterator.next();
-    if (paramIterable.compareTo(localObject) < 0) {
-      paramIterable = (Iterable<? extends T>)localObject;
+      Comparable localComparable = (Comparable)localIterator.next();
+      if (paramIterable.compareTo(localComparable) < 0) {
+        paramIterable = localComparable;
+      }
     }
-    for (;;)
-    {
-      break;
-    }
+    return paramIterable;
   }
   
   @SinceKotlin(version="1.1")
@@ -1833,27 +1815,20 @@ public class CollectionsKt___CollectionsKt
     }
     double d2 = ((Number)paramIterable.next()).doubleValue();
     double d1 = d2;
-    if (Double.isNaN(d2))
-    {
+    if (Double.isNaN(d2)) {
       return Double.valueOf(d2);
-      if (d1 >= d2) {
-        break label99;
-      }
-      d1 = d2;
     }
-    label99:
-    for (;;)
+    while (paramIterable.hasNext())
     {
-      if (paramIterable.hasNext())
-      {
-        d2 = ((Number)paramIterable.next()).doubleValue();
-        if (!Double.isNaN(d2)) {
-          break;
-        }
+      d2 = ((Number)paramIterable.next()).doubleValue();
+      if (Double.isNaN(d2)) {
         return Double.valueOf(d2);
       }
-      return Double.valueOf(d1);
+      if (d1 < d2) {
+        d1 = d2;
+      }
     }
+    return Double.valueOf(d1);
   }
   
   @SinceKotlin(version="1.1")
@@ -1867,27 +1842,20 @@ public class CollectionsKt___CollectionsKt
     }
     float f2 = ((Number)paramIterable.next()).floatValue();
     float f1 = f2;
-    if (Float.isNaN(f2))
-    {
+    if (Float.isNaN(f2)) {
       return Float.valueOf(f2);
-      if (f1 >= f2) {
-        break label99;
-      }
-      f1 = f2;
     }
-    label99:
-    for (;;)
+    while (paramIterable.hasNext())
     {
-      if (paramIterable.hasNext())
-      {
-        f2 = ((Number)paramIterable.next()).floatValue();
-        if (!Float.isNaN(f2)) {
-          break;
-        }
+      f2 = ((Number)paramIterable.next()).floatValue();
+      if (Float.isNaN(f2)) {
         return Float.valueOf(f2);
       }
-      return Float.valueOf(f1);
+      if (f1 < f2) {
+        f1 = f2;
+      }
     }
+    return Float.valueOf(f1);
   }
   
   @Nullable
@@ -1897,31 +1865,29 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
     Iterator localIterator = paramIterable.iterator();
     if (!localIterator.hasNext()) {
-      localObject2 = null;
+      return null;
     }
+    Object localObject2 = localIterator.next();
+    if (!localIterator.hasNext()) {
+      return localObject2;
+    }
+    paramIterable = (Comparable)paramFunction1.invoke(localObject2);
+    Object localObject3;
     do
     {
-      return localObject2;
-      paramIterable = localIterator.next();
-      localObject2 = paramIterable;
-    } while (!localIterator.hasNext());
-    Object localObject1 = (Comparable)paramFunction1.invoke(paramIterable);
-    label67:
-    Object localObject3 = localIterator.next();
-    Object localObject2 = (Comparable)paramFunction1.invoke(localObject3);
-    if (((Comparable)localObject1).compareTo(localObject2) < 0)
-    {
-      paramIterable = localObject3;
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
-      localObject2 = paramIterable;
-      if (!localIterator.hasNext()) {
-        break;
+      Object localObject4 = localIterator.next();
+      Comparable localComparable = (Comparable)paramFunction1.invoke(localObject4);
+      localObject3 = localObject2;
+      Object localObject1 = paramIterable;
+      if (paramIterable.compareTo(localComparable) < 0)
+      {
+        localObject3 = localObject4;
+        localObject1 = localComparable;
       }
-      break label67;
-    }
+      localObject2 = localObject3;
+      paramIterable = (Iterable<? extends T>)localObject1;
+    } while (localIterator.hasNext());
+    return localObject3;
   }
   
   @Nullable
@@ -1930,24 +1896,18 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
     Iterator localIterator = paramIterable.iterator();
-    Object localObject;
-    if (!localIterator.hasNext())
-    {
-      localObject = null;
-      return localObject;
+    if (!localIterator.hasNext()) {
+      return null;
     }
     paramIterable = localIterator.next();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      localObject = paramIterable;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = localIterator.next();
+      Object localObject = localIterator.next();
       if (paramComparator.compare(paramIterable, localObject) < 0) {
-        paramIterable = (Iterable<? extends T>)localObject;
+        paramIterable = localObject;
       }
     }
+    return paramIterable;
   }
   
   @Nullable
@@ -1956,22 +1916,17 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$min");
     Iterator localIterator = paramIterable.iterator();
     if (!localIterator.hasNext()) {
-      localObject = null;
+      return null;
     }
-    do
+    paramIterable = (Comparable)localIterator.next();
+    while (localIterator.hasNext())
     {
-      return localObject;
-      paramIterable = (Comparable)localIterator.next();
-      localObject = paramIterable;
-    } while (!localIterator.hasNext());
-    Object localObject = (Comparable)localIterator.next();
-    if (paramIterable.compareTo(localObject) > 0) {
-      paramIterable = (Iterable<? extends T>)localObject;
+      Comparable localComparable = (Comparable)localIterator.next();
+      if (paramIterable.compareTo(localComparable) > 0) {
+        paramIterable = localComparable;
+      }
     }
-    for (;;)
-    {
-      break;
-    }
+    return paramIterable;
   }
   
   @SinceKotlin(version="1.1")
@@ -1985,27 +1940,20 @@ public class CollectionsKt___CollectionsKt
     }
     double d2 = ((Number)paramIterable.next()).doubleValue();
     double d1 = d2;
-    if (Double.isNaN(d2))
-    {
+    if (Double.isNaN(d2)) {
       return Double.valueOf(d2);
-      if (d1 <= d2) {
-        break label99;
-      }
-      d1 = d2;
     }
-    label99:
-    for (;;)
+    while (paramIterable.hasNext())
     {
-      if (paramIterable.hasNext())
-      {
-        d2 = ((Number)paramIterable.next()).doubleValue();
-        if (!Double.isNaN(d2)) {
-          break;
-        }
+      d2 = ((Number)paramIterable.next()).doubleValue();
+      if (Double.isNaN(d2)) {
         return Double.valueOf(d2);
       }
-      return Double.valueOf(d1);
+      if (d1 > d2) {
+        d1 = d2;
+      }
     }
+    return Double.valueOf(d1);
   }
   
   @SinceKotlin(version="1.1")
@@ -2019,27 +1967,20 @@ public class CollectionsKt___CollectionsKt
     }
     float f2 = ((Number)paramIterable.next()).floatValue();
     float f1 = f2;
-    if (Float.isNaN(f2))
-    {
+    if (Float.isNaN(f2)) {
       return Float.valueOf(f2);
-      if (f1 <= f2) {
-        break label99;
-      }
-      f1 = f2;
     }
-    label99:
-    for (;;)
+    while (paramIterable.hasNext())
     {
-      if (paramIterable.hasNext())
-      {
-        f2 = ((Number)paramIterable.next()).floatValue();
-        if (!Float.isNaN(f2)) {
-          break;
-        }
+      f2 = ((Number)paramIterable.next()).floatValue();
+      if (Float.isNaN(f2)) {
         return Float.valueOf(f2);
       }
-      return Float.valueOf(f1);
+      if (f1 > f2) {
+        f1 = f2;
+      }
     }
+    return Float.valueOf(f1);
   }
   
   @Nullable
@@ -2049,31 +1990,29 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
     Iterator localIterator = paramIterable.iterator();
     if (!localIterator.hasNext()) {
-      localObject2 = null;
+      return null;
     }
+    Object localObject2 = localIterator.next();
+    if (!localIterator.hasNext()) {
+      return localObject2;
+    }
+    paramIterable = (Comparable)paramFunction1.invoke(localObject2);
+    Object localObject3;
     do
     {
-      return localObject2;
-      paramIterable = localIterator.next();
-      localObject2 = paramIterable;
-    } while (!localIterator.hasNext());
-    Object localObject1 = (Comparable)paramFunction1.invoke(paramIterable);
-    label67:
-    Object localObject3 = localIterator.next();
-    Object localObject2 = (Comparable)paramFunction1.invoke(localObject3);
-    if (((Comparable)localObject1).compareTo(localObject2) > 0)
-    {
-      paramIterable = localObject3;
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
-      localObject2 = paramIterable;
-      if (!localIterator.hasNext()) {
-        break;
+      Object localObject4 = localIterator.next();
+      Comparable localComparable = (Comparable)paramFunction1.invoke(localObject4);
+      localObject3 = localObject2;
+      Object localObject1 = paramIterable;
+      if (paramIterable.compareTo(localComparable) > 0)
+      {
+        localObject3 = localObject4;
+        localObject1 = localComparable;
       }
-      break label67;
-    }
+      localObject2 = localObject3;
+      paramIterable = (Iterable<? extends T>)localObject1;
+    } while (localIterator.hasNext());
+    return localObject3;
   }
   
   @Nullable
@@ -2082,24 +2021,18 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
     Iterator localIterator = paramIterable.iterator();
-    Object localObject;
-    if (!localIterator.hasNext())
-    {
-      localObject = null;
-      return localObject;
+    if (!localIterator.hasNext()) {
+      return null;
     }
     paramIterable = localIterator.next();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      localObject = paramIterable;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = localIterator.next();
+      Object localObject = localIterator.next();
       if (paramComparator.compare(paramIterable, localObject) > 0) {
-        paramIterable = (Iterable<? extends T>)localObject;
+        paramIterable = localObject;
       }
     }
+    return paramIterable;
   }
   
   @NotNull
@@ -2129,31 +2062,31 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$minus");
     ArrayList localArrayList = new ArrayList(CollectionsKt.collectionSizeOrDefault(paramIterable, 10));
     paramIterable = paramIterable.iterator();
-    int i = 0;
-    label99:
-    for (;;)
+    int j = 0;
+    while (paramIterable.hasNext())
     {
-      if (paramIterable.hasNext())
+      Object localObject = paramIterable.next();
+      int m = 1;
+      int k = j;
+      int i = m;
+      if (j == 0)
       {
-        Object localObject = paramIterable.next();
-        int j;
-        if ((i == 0) && (Intrinsics.areEqual(localObject, paramT)))
+        k = j;
+        i = m;
+        if (Intrinsics.areEqual(localObject, paramT))
         {
-          j = 0;
-          i = 1;
-        }
-        for (;;)
-        {
-          if (j == 0) {
-            break label99;
-          }
-          ((Collection)localArrayList).add(localObject);
-          break;
-          j = 1;
+          k = 1;
+          i = 0;
         }
       }
-      return (List)localArrayList;
+      j = k;
+      if (i != 0)
+      {
+        ((Collection)localArrayList).add(localObject);
+        j = k;
+      }
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -2182,8 +2115,13 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$minus");
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "elements");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.toList(paramIterable);
     }
     paramArrayOfT = ArraysKt.toHashSet(paramArrayOfT);
@@ -2211,7 +2149,7 @@ public class CollectionsKt___CollectionsKt
     if ((paramIterable instanceof Collection)) {
       return ((Collection)paramIterable).isEmpty();
     }
-    return !paramIterable.iterator().hasNext();
+    return paramIterable.iterator().hasNext() ^ true;
   }
   
   public static final <T> boolean none(@NotNull Iterable<? extends T> paramIterable, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -2272,8 +2210,9 @@ public class CollectionsKt___CollectionsKt
       return CollectionsKt.plus((Collection)paramIterable1, paramIterable2);
     }
     ArrayList localArrayList = new ArrayList();
-    CollectionsKt.addAll((Collection)localArrayList, paramIterable1);
-    CollectionsKt.addAll((Collection)localArrayList, paramIterable2);
+    Collection localCollection = (Collection)localArrayList;
+    CollectionsKt.addAll(localCollection, paramIterable1);
+    CollectionsKt.addAll(localCollection, paramIterable2);
     return (List)localArrayList;
   }
   
@@ -2296,8 +2235,9 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$plus");
     Intrinsics.checkParameterIsNotNull(paramSequence, "elements");
     ArrayList localArrayList = new ArrayList();
-    CollectionsKt.addAll((Collection)localArrayList, paramIterable);
-    CollectionsKt.addAll((Collection)localArrayList, paramSequence);
+    Collection localCollection = (Collection)localArrayList;
+    CollectionsKt.addAll(localCollection, paramIterable);
+    CollectionsKt.addAll(localCollection, paramSequence);
     return (List)localArrayList;
   }
   
@@ -2310,8 +2250,9 @@ public class CollectionsKt___CollectionsKt
       return CollectionsKt.plus((Collection)paramIterable, paramArrayOfT);
     }
     ArrayList localArrayList = new ArrayList();
-    CollectionsKt.addAll((Collection)localArrayList, paramIterable);
-    CollectionsKt.addAll((Collection)localArrayList, paramArrayOfT);
+    Collection localCollection = (Collection)localArrayList;
+    CollectionsKt.addAll(localCollection, paramIterable);
+    CollectionsKt.addAll(localCollection, paramArrayOfT);
     return (List)localArrayList;
   }
   
@@ -2323,10 +2264,11 @@ public class CollectionsKt___CollectionsKt
     if ((paramIterable instanceof Collection))
     {
       int i = paramCollection.size();
-      ArrayList localArrayList = new ArrayList(((Collection)paramIterable).size() + i);
-      localArrayList.addAll(paramCollection);
-      localArrayList.addAll((Collection)paramIterable);
-      return (List)localArrayList;
+      Collection localCollection = (Collection)paramIterable;
+      paramIterable = new ArrayList(i + localCollection.size());
+      paramIterable.addAll(paramCollection);
+      paramIterable.addAll(localCollection);
+      return (List)paramIterable;
     }
     paramCollection = new ArrayList(paramCollection);
     CollectionsKt.addAll((Collection)paramCollection, paramIterable);
@@ -2389,10 +2331,10 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramCollection.isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("Collection is empty."));
+    if (!paramCollection.isEmpty()) {
+      return CollectionsKt.elementAt((Iterable)paramCollection, paramRandom.nextInt(paramCollection.size()));
     }
-    return CollectionsKt.elementAt((Iterable)paramCollection, paramRandom.nextInt(paramCollection.size()));
+    throw ((Throwable)new NoSuchElementException("Collection is empty."));
   }
   
   @ExperimentalStdlibApi
@@ -2421,11 +2363,16 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$reduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     Iterator localIterator = paramIterable.iterator();
-    if (!localIterator.hasNext()) {
-      throw ((Throwable)new UnsupportedOperationException("Empty collection can't be reduced."));
+    if (localIterator.hasNext())
+    {
+      for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = paramFunction2.invoke(paramIterable, localIterator.next())) {}
+      return paramIterable;
     }
-    for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = paramFunction2.invoke(paramIterable, localIterator.next())) {}
-    return paramIterable;
+    paramIterable = (Throwable)new UnsupportedOperationException("Empty collection can't be reduced.");
+    for (;;)
+    {
+      throw paramIterable;
+    }
   }
   
   public static final <S, T extends S> S reduceIndexed(@NotNull Iterable<? extends T> paramIterable, @NotNull Function3<? super Integer, ? super S, ? super T, ? extends S> paramFunction3)
@@ -2433,28 +2380,29 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$reduceIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     Iterator localIterator = paramIterable.iterator();
-    if (!localIterator.hasNext()) {
-      throw ((Throwable)new UnsupportedOperationException("Empty collection can't be reduced."));
-    }
-    paramIterable = localIterator.next();
-    int i = 1;
-    while (localIterator.hasNext())
+    if (localIterator.hasNext())
     {
-      if (i < 0)
+      paramIterable = localIterator.next();
+      int i = 1;
+      while (localIterator.hasNext())
       {
-        if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
-          CollectionsKt.throwIndexOverflow();
+        if (i < 0) {
+          if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
+            CollectionsKt.throwIndexOverflow();
+          } else {
+            throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+          }
         }
-      }
-      else
-      {
         paramIterable = paramFunction3.invoke(Integer.valueOf(i), paramIterable, localIterator.next());
         i += 1;
-        continue;
       }
-      throw ((Throwable)new ArithmeticException("Index overflow has happened."));
+      return paramIterable;
     }
-    return paramIterable;
+    paramIterable = (Throwable)new UnsupportedOperationException("Empty collection can't be reduced.");
+    for (;;)
+    {
+      throw paramIterable;
+    }
   }
   
   @ExperimentalStdlibApi
@@ -2465,19 +2413,11 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$reduceOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     Iterator localIterator = paramIterable.iterator();
-    Object localObject;
-    if (!localIterator.hasNext())
-    {
-      localObject = null;
-      return localObject;
+    if (!localIterator.hasNext()) {
+      return null;
     }
-    for (paramIterable = localIterator.next();; paramIterable = paramFunction2.invoke(paramIterable, localIterator.next()))
-    {
-      localObject = paramIterable;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    }
+    for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = paramFunction2.invoke(paramIterable, localIterator.next())) {}
+    return paramIterable;
   }
   
   public static final <S, T extends S> S reduceRight(@NotNull List<? extends T> paramList, @NotNull Function2<? super T, ? super S, ? extends S> paramFunction2)
@@ -2485,11 +2425,16 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramList, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     ListIterator localListIterator = paramList.listIterator(paramList.size());
-    if (!localListIterator.hasPrevious()) {
-      throw ((Throwable)new UnsupportedOperationException("Empty list can't be reduced."));
+    if (localListIterator.hasPrevious())
+    {
+      for (paramList = localListIterator.previous(); localListIterator.hasPrevious(); paramList = paramFunction2.invoke(localListIterator.previous(), paramList)) {}
+      return paramList;
     }
-    for (paramList = localListIterator.previous(); localListIterator.hasPrevious(); paramList = paramFunction2.invoke(localListIterator.previous(), paramList)) {}
-    return paramList;
+    paramList = (Throwable)new UnsupportedOperationException("Empty list can't be reduced.");
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public static final <S, T extends S> S reduceRightIndexed(@NotNull List<? extends T> paramList, @NotNull Function3<? super Integer, ? super T, ? super S, ? extends S> paramFunction3)
@@ -2497,11 +2442,16 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramList, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     ListIterator localListIterator = paramList.listIterator(paramList.size());
-    if (!localListIterator.hasPrevious()) {
-      throw ((Throwable)new UnsupportedOperationException("Empty list can't be reduced."));
+    if (localListIterator.hasPrevious())
+    {
+      for (paramList = localListIterator.previous(); localListIterator.hasPrevious(); paramList = paramFunction3.invoke(Integer.valueOf(localListIterator.previousIndex()), localListIterator.previous(), paramList)) {}
+      return paramList;
     }
-    for (paramList = localListIterator.previous(); localListIterator.hasPrevious(); paramList = paramFunction3.invoke(Integer.valueOf(localListIterator.previousIndex()), localListIterator.previous(), paramList)) {}
-    return paramList;
+    paramList = (Throwable)new UnsupportedOperationException("Empty list can't be reduced.");
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   @ExperimentalStdlibApi
@@ -2512,29 +2462,26 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramList, "$this$reduceRightOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     ListIterator localListIterator = paramList.listIterator(paramList.size());
-    Object localObject;
-    if (!localListIterator.hasPrevious())
-    {
-      localObject = null;
-      return localObject;
+    if (!localListIterator.hasPrevious()) {
+      return null;
     }
-    for (paramList = localListIterator.previous();; paramList = paramFunction2.invoke(localListIterator.previous(), paramList))
-    {
-      localObject = paramList;
-      if (!localListIterator.hasPrevious()) {
-        break;
-      }
-    }
+    for (paramList = localListIterator.previous(); localListIterator.hasPrevious(); paramList = paramFunction2.invoke(localListIterator.previous(), paramList)) {}
+    return paramList;
   }
   
   @NotNull
   public static final <T> Iterable<T> requireNoNulls(@NotNull Iterable<? extends T> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$requireNoNulls");
-    Iterator localIterator = paramIterable.iterator();
-    while (localIterator.hasNext()) {
-      if (localIterator.next() == null) {
-        throw ((Throwable)new IllegalArgumentException("null element found in " + paramIterable + '.'));
+    Object localObject = paramIterable.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((Iterator)localObject).next() == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("null element found in ");
+        ((StringBuilder)localObject).append(paramIterable);
+        ((StringBuilder)localObject).append('.');
+        throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString()));
       }
     }
     return paramIterable;
@@ -2544,10 +2491,15 @@ public class CollectionsKt___CollectionsKt
   public static final <T> List<T> requireNoNulls(@NotNull List<? extends T> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$requireNoNulls");
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      if (localIterator.next() == null) {
-        throw ((Throwable)new IllegalArgumentException("null element found in " + paramList + '.'));
+    Object localObject = paramList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((Iterator)localObject).next() == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("null element found in ");
+        ((StringBuilder)localObject).append(paramList);
+        ((StringBuilder)localObject).append('.');
+        throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString()));
       }
     }
     return paramList;
@@ -2650,14 +2602,13 @@ public class CollectionsKt___CollectionsKt
     Object localObject = localIterator.next();
     ArrayList localArrayList = new ArrayList(CollectionsKt.collectionSizeOrDefault(paramIterable, 10));
     localArrayList.add(localObject);
-    int i = 1;
     paramIterable = localObject;
-    while (localIterator.hasNext())
+    int j;
+    for (int i = 1; localIterator.hasNext(); i = j)
     {
-      int j = i + 1;
+      j = i + 1;
       paramIterable = paramFunction3.invoke(Integer.valueOf(i), paramIterable, localIterator.next());
       localArrayList.add(paramIterable);
-      i = j;
     }
     return (List)localArrayList;
   }
@@ -2666,93 +2617,90 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$single");
     if ((paramIterable instanceof List)) {
-      paramIterable = CollectionsKt.single((List)paramIterable);
+      return CollectionsKt.single((List)paramIterable);
     }
-    Iterator localIterator;
-    do
+    paramIterable = paramIterable.iterator();
+    if (paramIterable.hasNext())
     {
-      return paramIterable;
-      localIterator = paramIterable.iterator();
-      if (!localIterator.hasNext()) {
-        throw ((Throwable)new NoSuchElementException("Collection is empty."));
+      Object localObject = paramIterable.next();
+      if (!paramIterable.hasNext()) {
+        return localObject;
       }
-      paramIterable = localIterator.next();
-    } while (!localIterator.hasNext());
-    throw ((Throwable)new IllegalArgumentException("Collection has more than one element."));
+      throw ((Throwable)new IllegalArgumentException("Collection has more than one element."));
+    }
+    throw ((Throwable)new NoSuchElementException("Collection is empty."));
   }
   
   public static final <T> T single(@NotNull Iterable<? extends T> paramIterable, @NotNull Function1<? super T, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    Object localObject = null;
-    int i = 0;
     Iterator localIterator = paramIterable.iterator();
-    paramIterable = localObject;
-    if (localIterator.hasNext())
+    paramIterable = null;
+    int i = 0;
+    while (localIterator.hasNext())
     {
-      localObject = localIterator.next();
-      if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
-        break label107;
+      Object localObject = localIterator.next();
+      if (((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
+        if (i == 0)
+        {
+          paramIterable = localObject;
+          i = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Collection contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Collection contains more than one matching element."));
-      }
-      i = 1;
-      paramIterable = localObject;
     }
-    label107:
+    if (i != 0) {
+      return paramIterable;
+    }
+    paramIterable = (Throwable)new NoSuchElementException("Collection contains no element matching the predicate.");
     for (;;)
     {
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Collection contains no element matching the predicate."));
-      }
-      return paramIterable;
+      throw paramIterable;
     }
   }
   
   public static final <T> T single(@NotNull List<? extends T> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$single");
-    switch (paramList.size())
+    int i = paramList.size();
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramList.get(0);
+      }
       throw ((Throwable)new IllegalArgumentException("List has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("List is empty."));
     }
-    return paramList.get(0);
+    throw ((Throwable)new NoSuchElementException("List is empty."));
   }
   
   @Nullable
   public static final <T> T singleOrNull(@NotNull Iterable<? extends T> paramIterable)
   {
-    Object localObject1 = null;
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$singleOrNull");
-    if ((paramIterable instanceof List)) {
-      if (((List)paramIterable).size() == 1) {
-        paramIterable = ((List)paramIterable).get(0);
-      }
-    }
-    Iterator localIterator;
-    Object localObject2;
-    do
+    boolean bool = paramIterable instanceof List;
+    Object localObject = null;
+    if (bool)
     {
-      do
-      {
-        for (;;)
-        {
-          return paramIterable;
-          paramIterable = null;
-        }
-        localIterator = paramIterable.iterator();
-        paramIterable = localObject1;
-      } while (!localIterator.hasNext());
-      localObject2 = localIterator.next();
-      paramIterable = localObject1;
-    } while (localIterator.hasNext());
-    return localObject2;
+      List localList = (List)paramIterable;
+      paramIterable = localObject;
+      if (localList.size() == 1) {
+        paramIterable = localList.get(0);
+      }
+      return paramIterable;
+    }
+    paramIterable = paramIterable.iterator();
+    if (!paramIterable.hasNext()) {
+      return null;
+    }
+    localObject = paramIterable.next();
+    if (paramIterable.hasNext()) {
+      return null;
+    }
+    return localObject;
   }
   
   @Nullable
@@ -2760,34 +2708,25 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     Iterator localIterator = paramIterable.iterator();
+    int i = 0;
     paramIterable = null;
-    Object localObject;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      localObject = localIterator.next();
-      if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
-        break label79;
-      }
-      if (i == 0) {}
-    }
-    label79:
-    label80:
-    for (;;)
-    {
-      return null;
-      i = 1;
-      paramIterable = localObject;
-      for (;;)
+      Object localObject = localIterator.next();
+      if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
       {
-        break;
-        if (i == 0) {
-          break label80;
+        if (i != 0) {
+          return null;
         }
-        return paramIterable;
+        i = 1;
+        paramIterable = localObject;
       }
     }
+    if (i == 0) {
+      return null;
+    }
+    return paramIterable;
   }
   
   @Nullable
@@ -2858,22 +2797,27 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sorted");
     if ((paramIterable instanceof Collection))
     {
-      if (((Collection)paramIterable).size() <= 1) {
+      Collection localCollection = (Collection)paramIterable;
+      if (localCollection.size() <= 1) {
         return CollectionsKt.toList(paramIterable);
       }
-      paramIterable = ((Collection)paramIterable).toArray(new Comparable[0]);
-      if (paramIterable == null) {
+      paramIterable = localCollection.toArray(new Comparable[0]);
+      if (paramIterable != null)
+      {
+        if (paramIterable != null)
+        {
+          paramIterable = (Comparable[])paramIterable;
+          if (paramIterable != null)
+          {
+            paramIterable = (Object[])paramIterable;
+            ArraysKt.sort(paramIterable);
+            return ArraysKt.asList(paramIterable);
+          }
+          throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+        }
         throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
       }
-      if (paramIterable == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
-      }
-      paramIterable = (Comparable[])paramIterable;
-      if (paramIterable == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
-      }
-      ArraysKt.sort((Object[])paramIterable);
-      return ArraysKt.asList((Object[])paramIterable);
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
     }
     paramIterable = CollectionsKt.toMutableList(paramIterable);
     CollectionsKt.sort(paramIterable);
@@ -2910,18 +2854,21 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
     if ((paramIterable instanceof Collection))
     {
-      if (((Collection)paramIterable).size() <= 1) {
+      Collection localCollection = (Collection)paramIterable;
+      if (localCollection.size() <= 1) {
         return CollectionsKt.toList(paramIterable);
       }
-      paramIterable = ((Collection)paramIterable).toArray(new Object[0]);
-      if (paramIterable == null) {
+      paramIterable = localCollection.toArray(new Object[0]);
+      if (paramIterable != null)
+      {
+        if (paramIterable != null)
+        {
+          ArraysKt.sortWith(paramIterable, paramComparator);
+          return ArraysKt.asList(paramIterable);
+        }
         throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
       }
-      if (paramIterable == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
-      }
-      ArraysKt.sortWith(paramIterable, paramComparator);
-      return ArraysKt.asList(paramIterable);
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
     }
     paramIterable = CollectionsKt.toMutableList(paramIterable);
     CollectionsKt.sortWith(paramIterable, paramComparator);
@@ -2943,7 +2890,10 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sumBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
     paramIterable = paramIterable.iterator();
-    for (int i = 0; paramIterable.hasNext(); i = ((Number)paramFunction1.invoke(paramIterable.next())).intValue() + i) {}
+    int i = 0;
+    while (paramIterable.hasNext()) {
+      i += ((Number)paramFunction1.invoke(paramIterable.next())).intValue();
+    }
     return i;
   }
   
@@ -2952,7 +2902,7 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
     paramIterable = paramIterable.iterator();
-    for (double d = 0.0D; paramIterable.hasNext(); d = ((Number)paramFunction1.invoke(paramIterable.next())).doubleValue() + d) {}
+    for (double d = 0.0D; paramIterable.hasNext(); d += ((Number)paramFunction1.invoke(paramIterable.next())).doubleValue()) {}
     return d;
   }
   
@@ -2961,7 +2911,10 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (int i = 0; paramIterable.hasNext(); i = ((Number)paramIterable.next()).byteValue() + i) {}
+    int i = 0;
+    while (paramIterable.hasNext()) {
+      i += ((Number)paramIterable.next()).byteValue();
+    }
     return i;
   }
   
@@ -2970,7 +2923,7 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (double d = 0.0D; paramIterable.hasNext(); d = ((Number)paramIterable.next()).doubleValue() + d) {}
+    for (double d = 0.0D; paramIterable.hasNext(); d += ((Number)paramIterable.next()).doubleValue()) {}
     return d;
   }
   
@@ -2979,7 +2932,7 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (float f = 0.0F; paramIterable.hasNext(); f = ((Number)paramIterable.next()).floatValue() + f) {}
+    for (float f = 0.0F; paramIterable.hasNext(); f += ((Number)paramIterable.next()).floatValue()) {}
     return f;
   }
   
@@ -2988,7 +2941,10 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (int i = 0; paramIterable.hasNext(); i = ((Number)paramIterable.next()).intValue() + i) {}
+    int i = 0;
+    while (paramIterable.hasNext()) {
+      i += ((Number)paramIterable.next()).intValue();
+    }
     return i;
   }
   
@@ -2997,7 +2953,7 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (long l = 0L; paramIterable.hasNext(); l = ((Number)paramIterable.next()).longValue() + l) {}
+    for (long l = 0L; paramIterable.hasNext(); l += ((Number)paramIterable.next()).longValue()) {}
     return l;
   }
   
@@ -3006,79 +2962,110 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$sum");
     paramIterable = paramIterable.iterator();
-    for (int i = 0; paramIterable.hasNext(); i = ((Number)paramIterable.next()).shortValue() + i) {}
+    int i = 0;
+    while (paramIterable.hasNext()) {
+      i += ((Number)paramIterable.next()).shortValue();
+    }
     return i;
   }
   
   @NotNull
   public static final <T> List<T> take(@NotNull Iterable<? extends T> paramIterable, int paramInt)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int j = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if ((paramIterable instanceof Collection))
+    if (i != 0)
     {
-      if (paramInt >= ((Collection)paramIterable).size()) {
-        return CollectionsKt.toList(paramIterable);
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
       }
-      if (paramInt == 1) {
-        return CollectionsKt.listOf(CollectionsKt.first(paramIterable));
+      if ((paramIterable instanceof Collection))
+      {
+        if (paramInt >= ((Collection)paramIterable).size()) {
+          return CollectionsKt.toList(paramIterable);
+        }
+        if (paramInt == 1) {
+          return CollectionsKt.listOf(CollectionsKt.first(paramIterable));
+        }
       }
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramIterable = paramIterable.iterator();
-    i = j;
-    do
-    {
-      if (!paramIterable.hasNext()) {
-        break;
-      }
-      localArrayList.add(paramIterable.next());
-      j = i + 1;
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramIterable = paramIterable.iterator();
       i = j;
-    } while (j != paramInt);
-    return CollectionsKt.optimizeReadOnlyList((List)localArrayList);
+      do
+      {
+        if (!paramIterable.hasNext()) {
+          break;
+        }
+        localArrayList.add(paramIterable.next());
+        j = i + 1;
+        i = j;
+      } while (j != paramInt);
+      return CollectionsKt.optimizeReadOnlyList((List)localArrayList);
+    }
+    paramIterable = new StringBuilder();
+    paramIterable.append("Requested element count ");
+    paramIterable.append(paramInt);
+    paramIterable.append(" is less than zero.");
+    paramIterable = (Throwable)new IllegalArgumentException(paramIterable.toString().toString());
+    for (;;)
+    {
+      throw paramIterable;
+    }
   }
   
   @NotNull
   public static final <T> List<T> takeLast(@NotNull List<? extends T> paramList, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramList.size();
-    if (paramInt >= i) {
-      return CollectionsKt.toList((Iterable)paramList);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(CollectionsKt.last(paramList));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    if ((paramList instanceof RandomAccess))
+    if (i != 0)
     {
-      paramInt = i - paramInt;
-      while (paramInt < i)
-      {
-        localArrayList.add(paramList.get(paramInt));
-        paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
       }
+      i = paramList.size();
+      if (paramInt >= i) {
+        return CollectionsKt.toList((Iterable)paramList);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(CollectionsKt.last(paramList));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      if ((paramList instanceof RandomAccess))
+      {
+        paramInt = i - paramInt;
+        while (paramInt < i)
+        {
+          localArrayList.add(paramList.get(paramInt));
+          paramInt += 1;
+        }
+      }
+      paramList = (Iterator)paramList.listIterator(i - paramInt);
+      while (paramList.hasNext()) {
+        localArrayList.add(paramList.next());
+      }
+      return (List)localArrayList;
     }
-    paramList = (Iterator)paramList.listIterator(i - paramInt);
-    while (paramList.hasNext()) {
-      localArrayList.add(paramList.next());
+    paramList = new StringBuilder();
+    paramList.append("Requested element count ");
+    paramList.append(paramInt);
+    paramList.append(" is less than zero.");
+    paramList = (Throwable)new IllegalArgumentException(paramList.toString().toString());
+    for (;;)
+    {
+      throw paramList;
     }
-    return (List)localArrayList;
   }
   
   @NotNull
@@ -3115,20 +3102,15 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     paramIterable = paramIterable.iterator();
-    for (;;)
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (!((Boolean)paramFunction1.invoke(localObject)).booleanValue()) {
+        break;
       }
       localArrayList.add(localObject);
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3246,17 +3228,21 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$toList");
     if ((paramIterable instanceof Collection))
     {
-      switch (((Collection)paramIterable).size())
+      Collection localCollection = (Collection)paramIterable;
+      int i = localCollection.size();
+      if (i != 0)
       {
-      default: 
-        return CollectionsKt.toMutableList((Collection)paramIterable);
-      case 0: 
-        return CollectionsKt.emptyList();
-      }
-      if ((paramIterable instanceof List)) {}
-      for (paramIterable = ((List)paramIterable).get(0);; paramIterable = paramIterable.iterator().next()) {
+        if (i != 1) {
+          return CollectionsKt.toMutableList(localCollection);
+        }
+        if ((paramIterable instanceof List)) {
+          paramIterable = ((List)paramIterable).get(0);
+        } else {
+          paramIterable = paramIterable.iterator().next();
+        }
         return CollectionsKt.listOf(paramIterable);
       }
+      return CollectionsKt.emptyList();
     }
     return CollectionsKt.optimizeReadOnlyList(CollectionsKt.toMutableList(paramIterable));
   }
@@ -3309,17 +3295,21 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$toSet");
     if ((paramIterable instanceof Collection))
     {
-      switch (((Collection)paramIterable).size())
+      Collection localCollection = (Collection)paramIterable;
+      int i = localCollection.size();
+      if (i != 0)
       {
-      default: 
-        return (Set)CollectionsKt.toCollection(paramIterable, (Collection)new LinkedHashSet(MapsKt.mapCapacity(((Collection)paramIterable).size())));
-      case 0: 
-        return SetsKt.emptySet();
-      }
-      if ((paramIterable instanceof List)) {}
-      for (paramIterable = ((List)paramIterable).get(0);; paramIterable = paramIterable.iterator().next()) {
+        if (i != 1) {
+          return (Set)CollectionsKt.toCollection(paramIterable, (Collection)new LinkedHashSet(MapsKt.mapCapacity(localCollection.size())));
+        }
+        if ((paramIterable instanceof List)) {
+          paramIterable = ((List)paramIterable).get(0);
+        } else {
+          paramIterable = paramIterable.iterator().next();
+        }
         return SetsKt.setOf(paramIterable);
       }
+      return SetsKt.emptySet();
     }
     return SetsKt.optimizeReadOnlySet((Set)CollectionsKt.toCollection(paramIterable, (Collection)new LinkedHashSet()));
   }
@@ -3357,39 +3347,33 @@ public class CollectionsKt___CollectionsKt
     SlidingWindowKt.checkWindowSizeStep(paramInt1, paramInt2);
     if (((paramIterable instanceof RandomAccess)) && ((paramIterable instanceof List)))
     {
-      int k = ((List)paramIterable).size();
+      paramIterable = (List)paramIterable;
+      int k = paramIterable.size();
       int j = k / paramInt2;
-      int i;
-      if (k % paramInt2 == 0)
-      {
+      if (k % paramInt2 == 0) {
         i = 0;
-        localArrayList1 = new ArrayList(i + j);
-        i = 0;
+      } else {
+        i = 1;
       }
-      for (;;)
+      localArrayList1 = new ArrayList(j + i);
+      int i = 0;
+      while ((i >= 0) && (k > i))
       {
-        if (i < 0) {}
-        int m;
-        do
-        {
-          do
-          {
-            return (List)localArrayList1;
-            i = 1;
-            break;
-          } while (k <= i);
-          m = RangesKt.coerceAtMost(paramInt1, k - i);
-        } while ((m < paramInt1) && (!paramBoolean));
+        int m = RangesKt.coerceAtMost(paramInt1, k - i);
+        if ((m < paramInt1) && (!paramBoolean)) {
+          break;
+        }
         ArrayList localArrayList2 = new ArrayList(m);
         j = 0;
         while (j < m)
         {
-          localArrayList2.add(((List)paramIterable).get(j + i));
+          localArrayList2.add(paramIterable.get(j + i));
           j += 1;
         }
         localArrayList1.add((List)localArrayList2);
         i += paramInt2;
       }
+      return (List)localArrayList1;
     }
     ArrayList localArrayList1 = new ArrayList();
     paramIterable = SlidingWindowKt.windowedIterator(paramIterable.iterator(), paramInt1, paramInt2, paramBoolean, false);
@@ -3403,46 +3387,41 @@ public class CollectionsKt___CollectionsKt
   @NotNull
   public static final <T, R> List<R> windowed(@NotNull Iterable<? extends T> paramIterable, int paramInt1, int paramInt2, boolean paramBoolean, @NotNull Function1<? super List<? extends T>, ? extends R> paramFunction1)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$windowed");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "transform");
     SlidingWindowKt.checkWindowSizeStep(paramInt1, paramInt2);
-    if (((paramIterable instanceof RandomAccess)) && ((paramIterable instanceof List)))
+    boolean bool = paramIterable instanceof RandomAccess;
+    int i = 1;
+    if ((bool) && ((paramIterable instanceof List)))
     {
-      int k = ((List)paramIterable).size();
+      localObject = (List)paramIterable;
+      int k = ((List)localObject).size();
       int m = k / paramInt2;
-      int i;
-      if (k % paramInt2 == 0)
-      {
+      int j = 0;
+      if (k % paramInt2 == 0) {
         i = 0;
-        localArrayList = new ArrayList(m + i);
-        paramIterable = new MovingSubList((List)paramIterable);
-        i = j;
       }
-      for (;;)
+      paramIterable = new ArrayList(m + i);
+      localObject = new MovingSubList((List)localObject);
+      i = j;
+      while ((i >= 0) && (k > i))
       {
-        if (i < 0) {}
-        do
-        {
-          do
-          {
-            return (List)localArrayList;
-            i = 1;
-            break;
-          } while (k <= i);
-          j = RangesKt.coerceAtMost(paramInt1, k - i);
-        } while ((!paramBoolean) && (j < paramInt1));
-        paramIterable.move(i, j + i);
-        localArrayList.add(paramFunction1.invoke(paramIterable));
+        j = RangesKt.coerceAtMost(paramInt1, k - i);
+        if ((!paramBoolean) && (j < paramInt1)) {
+          break;
+        }
+        ((MovingSubList)localObject).move(i, j + i);
+        paramIterable.add(paramFunction1.invoke(localObject));
         i += paramInt2;
       }
+      return (List)paramIterable;
     }
-    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
     paramIterable = SlidingWindowKt.windowedIterator(paramIterable.iterator(), paramInt1, paramInt2, paramBoolean, true);
     while (paramIterable.hasNext()) {
-      localArrayList.add(paramFunction1.invoke((List)paramIterable.next()));
+      ((ArrayList)localObject).add(paramFunction1.invoke((List)paramIterable.next()));
     }
-    return (List)localArrayList;
+    return (List)localObject;
   }
   
   @NotNull
@@ -3488,23 +3467,18 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfR, "other");
     int j = paramArrayOfR.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(localObject, paramArrayOfR[i]));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3515,23 +3489,18 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfR.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(localObject, paramArrayOfR[i]));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @SinceKotlin(version="1.2")
@@ -3540,22 +3509,17 @@ public class CollectionsKt___CollectionsKt
   {
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$zipWithNext");
     Iterator localIterator = paramIterable.iterator();
-    Object localObject;
-    if (!localIterator.hasNext())
-    {
-      localObject = CollectionsKt.emptyList();
-      return localObject;
+    if (!localIterator.hasNext()) {
+      return CollectionsKt.emptyList();
     }
     List localList = (List)new ArrayList();
-    for (paramIterable = localIterator.next();; paramIterable = (Iterable<? extends T>)localObject)
+    Object localObject;
+    for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = localObject)
     {
-      localObject = localList;
-      if (!localIterator.hasNext()) {
-        break;
-      }
       localObject = localIterator.next();
       localList.add(TuplesKt.to(paramIterable, localObject));
     }
+    return localList;
   }
   
   @SinceKotlin(version="1.2")
@@ -3565,27 +3529,22 @@ public class CollectionsKt___CollectionsKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "$this$zipWithNext");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Iterator localIterator = paramIterable.iterator();
-    Object localObject;
-    if (!localIterator.hasNext())
-    {
-      localObject = CollectionsKt.emptyList();
-      return localObject;
+    if (!localIterator.hasNext()) {
+      return CollectionsKt.emptyList();
     }
     List localList = (List)new ArrayList();
-    for (paramIterable = localIterator.next();; paramIterable = (Iterable<? extends T>)localObject)
+    Object localObject;
+    for (paramIterable = localIterator.next(); localIterator.hasNext(); paramIterable = localObject)
     {
-      localObject = localList;
-      if (!localIterator.hasNext()) {
-        break;
-      }
       localObject = localIterator.next();
       localList.add(paramFunction2.invoke(paramIterable, localObject));
     }
+    return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.CollectionsKt___CollectionsKt
  * JD-Core Version:    0.7.0.1
  */

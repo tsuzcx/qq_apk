@@ -9,12 +9,13 @@ class ClickedWaveView$MovingRadiusRunnable
   
   public void run()
   {
-    if ((this.this$0.a.computeScrollOffset()) || (this.this$0.d > 0))
+    if ((this.this$0.e.computeScrollOffset()) || (this.this$0.d > 0))
     {
-      this.this$0.c = this.this$0.a.getCurrX();
+      ClickedWaveView localClickedWaveView = this.this$0;
+      localClickedWaveView.c = localClickedWaveView.e.getCurrX();
       if (this.this$0.d > 0)
       {
-        ClickedWaveView localClickedWaveView = this.this$0;
+        localClickedWaveView = this.this$0;
         localClickedWaveView.d -= 3;
       }
       if (this.this$0.d < 0) {
@@ -27,7 +28,7 @@ class ClickedWaveView$MovingRadiusRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ClickedWaveView.MovingRadiusRunnable
  * JD-Core Version:    0.7.0.1
  */

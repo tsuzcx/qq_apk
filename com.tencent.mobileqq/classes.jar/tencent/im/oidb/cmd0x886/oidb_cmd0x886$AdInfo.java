@@ -53,7 +53,9 @@ public final class oidb_cmd0x886$AdInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
@@ -72,12 +74,12 @@ public final class oidb_cmd0x886$AdInfo
     ByteStringMicro localByteStringMicro17 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro18 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro19 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 56, 64, 72, 80, 90, 96, 106, 112, 120, 130, 138, 146, 154, 162, 168, 178, 186, 192, 200, 210, 218, 226, 234, 240, 248, 258, 264, 274, 282, 288 }, new String[] { "bytes_trace_id", "uint64_pull_time", "enum_report_type", "bytes_apurl", "bytes_rl", "bytes_view_id", "uint64_neg_fb_type_id", "uint64_pos_id", "uint64_channel_id", "int32_kd_pos", "bytes_cl", "enum_pos_layout", "bytes_product_id", "int32_product_type", "uint32_ad_type", "bytes_price", "bytes_customized_invoke_url", "bytes_corporation_name", "bytes_corporate_image_name", "bytes_corporate_logo", "uint64_ad_uin", "bytes_ext", "bytes_video_url", "uint32_cost_type", "uint64_aid", "bytes_img", "bytes_img_s", "bytes_txt", "bytes_desc", "enum_ad_layout", "uint32_ad_material_id", "bytes_via", "uint32_dis_channel", "bytes_button_url", "msg_video_play_info", "uint32_duration" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(1), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro5, Integer.valueOf(0), localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localByteStringMicro11, Long.valueOf(0L), localByteStringMicro12, localByteStringMicro13, Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro14, localByteStringMicro15, localByteStringMicro16, localByteStringMicro17, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro18, Integer.valueOf(0), localByteStringMicro19, null, Integer.valueOf(0) }, AdInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 56, 64, 72, 80, 90, 96, 106, 112, 120, 130, 138, 146, 154, 162, 168, 178, 186, 192, 200, 210, 218, 226, 234, 240, 248, 258, 264, 274, 282, 288 }, new String[] { "bytes_trace_id", "uint64_pull_time", "enum_report_type", "bytes_apurl", "bytes_rl", "bytes_view_id", "uint64_neg_fb_type_id", "uint64_pos_id", "uint64_channel_id", "int32_kd_pos", "bytes_cl", "enum_pos_layout", "bytes_product_id", "int32_product_type", "uint32_ad_type", "bytes_price", "bytes_customized_invoke_url", "bytes_corporation_name", "bytes_corporate_image_name", "bytes_corporate_logo", "uint64_ad_uin", "bytes_ext", "bytes_video_url", "uint32_cost_type", "uint64_aid", "bytes_img", "bytes_img_s", "bytes_txt", "bytes_desc", "enum_ad_layout", "uint32_ad_material_id", "bytes_via", "uint32_dis_channel", "bytes_button_url", "msg_video_play_info", "uint32_duration" }, new Object[] { localByteStringMicro1, localLong, Integer.valueOf(1), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localLong, localLong, localLong, localInteger, localByteStringMicro5, localInteger, localByteStringMicro6, localInteger, localInteger, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localByteStringMicro11, localLong, localByteStringMicro12, localByteStringMicro13, localInteger, localLong, localByteStringMicro14, localByteStringMicro15, localByteStringMicro16, localByteStringMicro17, localInteger, localInteger, localByteStringMicro18, localInteger, localByteStringMicro19, null, localInteger }, AdInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo
  * JD-Core Version:    0.7.0.1
  */

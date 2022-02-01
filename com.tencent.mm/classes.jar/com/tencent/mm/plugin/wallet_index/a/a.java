@@ -1,51 +1,52 @@
 package com.tencent.mm.plugin.wallet_index.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.wallet_index.c.l;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.wallet_index.model.WalletGetA8KeyRedirectListener;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements at
+  implements be
 {
-  private l uzS;
+  private WalletGetA8KeyRedirectListener VZW;
   
   public a()
   {
-    AppMethodBeat.i(48162);
-    this.uzS = new l();
-    AppMethodBeat.o(48162);
+    AppMethodBeat.i(71797);
+    this.VZW = new WalletGetA8KeyRedirectListener();
+    AppMethodBeat.o(71797);
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(48163);
-    com.tencent.mm.sdk.b.a.ymk.c(this.uzS.uAn);
-    com.tencent.mm.sdk.b.a.ymk.c(this.uzS.uAo);
-    AppMethodBeat.o(48163);
+    AppMethodBeat.i(71798);
+    this.VZW.Way.alive();
+    this.VZW.Waz.alive();
+    AppMethodBeat.o(71798);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(48164);
-    com.tencent.mm.sdk.b.a.ymk.d(this.uzS.uAn);
-    com.tencent.mm.sdk.b.a.ymk.d(this.uzS.uAo);
-    AppMethodBeat.o(48164);
+    AppMethodBeat.i(71799);
+    this.VZW.Way.dead();
+    this.VZW.Waz.dead();
+    AppMethodBeat.o(71799);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.a.a
  * JD-Core Version:    0.7.0.1
  */

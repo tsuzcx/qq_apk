@@ -9,7 +9,7 @@ public class eul
   
   public void onClick(View paramView)
   {
-    this.a.h();
+    VoipDialInterfaceActivity.a(this.a);
   }
 }
 

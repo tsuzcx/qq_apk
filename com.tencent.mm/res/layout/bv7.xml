@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <GridView android:orientation="horizontal" android:id="@id/bio" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_marginBottom="18.0dip" android:listSelector="@android:color/transparent" android:numColumns="7" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="22.0dip" android:layout_toStartOf="@id/iff" />
+    <ImageView android:id="@id/iff" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_alignParentRight="true" android:layout_marginEnd="22.0dip" />
+</RelativeLayout>

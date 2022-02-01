@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import beko;
-import beks;
-import belc;
-import bjdt;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IVasDepTemp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -22,8 +20,8 @@ import wns_proxy.HttpReq;
 public class WebSoServlet
   extends MSFServlet
 {
-  private long jdField_a_of_type_Long;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
+  private ToServiceMsg a;
+  private long b = 0L;
   
   public static Intent a(Intent paramIntent, long paramLong, String paramString1, HttpReq paramHttpReq, String paramString2)
   {
@@ -53,81 +51,43 @@ public class WebSoServlet
     return paramIntent;
   }
   
+  private void a(FromServiceMsg paramFromServiceMsg, Bundle paramBundle, String paramString)
+  {
+    if (paramFromServiceMsg != null)
+    {
+      paramString = paramFromServiceMsg.getAttribute("_tag_socket");
+      paramFromServiceMsg = new String[2];
+      if (paramString != null)
+      {
+        paramString = paramString.toString().split(":");
+        paramFromServiceMsg = paramString;
+        if (paramString != null)
+        {
+          paramFromServiceMsg = paramString;
+          if (paramString.length > 1)
+          {
+            paramBundle.putString("key_server_ip", paramString[0]);
+            paramBundle.putString("key_server_port", paramString[1]);
+            paramFromServiceMsg = paramString;
+          }
+        }
+      }
+      paramBundle.putString("key_user_ip", "");
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.length > 0)) {
+        paramBundle.putString("key_dns_result", paramFromServiceMsg[0]);
+      }
+      paramBundle.putInt("key_time_cost", (int)(System.currentTimeMillis() - this.b));
+    }
+  }
+  
   private static boolean a()
   {
     return 1 == QzoneConfig.getInstance().getConfig("QZoneSetting", "enableWnsCgiOptimization", 1);
   }
   
-  public static String[] a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      return null;
-    }
-    String[] arrayOfString = new String[5];
-    long l1 = paramToServiceMsg.extraData.getLong("sendTime", 0L);
-    long l6 = paramFromServiceMsg.extraData.getLong("timestamp_app2msf_atAppSite", 0L);
-    long l5 = paramFromServiceMsg.extraData.getLong("timestamp_app2msf_atMsfSite", 0L);
-    long l8 = paramFromServiceMsg.extraData.getLong("timestamp_msf2net_atMsfSite", 0L);
-    long l3 = paramFromServiceMsg.extraData.getLong("timestamp_net2msf_atMsfSite", 0L);
-    long l4 = paramFromServiceMsg.extraData.getLong("timestamp_msf2app_atMsfSite", 0L);
-    long l2 = paramFromServiceMsg.extraData.getLong("timestamp_msf2app_atAppSite", 0L);
-    long l7 = System.currentTimeMillis();
-    arrayOfString[1] = String.valueOf(l7 - l1);
-    arrayOfString[2] = String.valueOf(l7 - l3);
-    paramToServiceMsg = new StringBuilder();
-    paramToServiceMsg.append("handler");
-    if (l6 != 0L)
-    {
-      paramToServiceMsg.append("|").append(String.valueOf(l6 - l1)).append("|app");
-      l1 = l6;
-    }
-    for (;;)
-    {
-      if (l5 != 0L)
-      {
-        paramToServiceMsg.append("|").append(String.valueOf(l5 - l1)).append("|msf");
-        l1 = l5;
-      }
-      for (;;)
-      {
-        if (l8 != 0L) {
-          paramToServiceMsg.append("|").append(String.valueOf(l8 - l1)).append("|net");
-        }
-        arrayOfString[3] = paramToServiceMsg.toString();
-        paramToServiceMsg = new StringBuilder();
-        paramToServiceMsg.append("net");
-        if (l4 != 0L) {
-          paramToServiceMsg.append("|").append(String.valueOf(l4 - l3)).append("|msf");
-        }
-        for (l1 = l4;; l1 = l3)
-        {
-          if (l2 != 0L)
-          {
-            paramToServiceMsg.append("|").append(String.valueOf(l2 - l1)).append("|app");
-            l1 = l2;
-          }
-          for (;;)
-          {
-            paramToServiceMsg.append("|").append(String.valueOf(l7 - l1)).append("|handler");
-            arrayOfString[4] = paramToServiceMsg.toString();
-            paramToServiceMsg = new StringBuilder();
-            paramToServiceMsg.append("{");
-            paramToServiceMsg.append("total:").append(arrayOfString[1]).append(",");
-            paramToServiceMsg.append("recv:").append(arrayOfString[2]).append(",");
-            paramToServiceMsg.append("sendDetail:").append(arrayOfString[3]).append(",");
-            paramToServiceMsg.append("recvDetail:").append(arrayOfString[4]);
-            paramToServiceMsg.append("}");
-            arrayOfString[0] = paramToServiceMsg.toString();
-            return arrayOfString;
-          }
-        }
-      }
-    }
-  }
-  
   public void notifyObserver(Intent paramIntent, int paramInt, boolean paramBoolean, Bundle paramBundle, Class<? extends BusinessObserver> paramClass)
   {
-    if ((paramClass == beko.class) && (a()))
+    if ((paramClass == WebSoCgiService.class) && (a()))
     {
       paramIntent = new WebSoServlet.ReceiveRunnable(paramInt, paramBoolean, paramBundle);
       QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").getHandler().post(paramIntent);
@@ -138,104 +98,60 @@ public class WebSoServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramIntent == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("WebSoServlet", 2, "onReceive, request is null");
-      }
-    }
-    Bundle localBundle;
-    String str;
-    int j;
-    Class localClass;
-    do
+    if (paramIntent == null)
     {
+      QLog.e("WebSoServlet", 2, "onReceive, request is null");
       return;
-      localBundle = new Bundle();
-      str = paramIntent.getStringExtra("url");
-      localBundle.putString("url", str);
-      if (paramFromServiceMsg != null)
-      {
-        localBundle.putInt("rsp_code", paramFromServiceMsg.getResultCode());
-        localBundle.putString("rsp_message", paramFromServiceMsg.getBusinessFailMsg());
-      }
-      j = paramIntent.getIntExtra("key_request_code", 100);
-      localClass = (Class)paramIntent.getSerializableExtra("key_receive_class");
-    } while (localClass == null);
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("receive url: ").append(str).append(", code: ");
-      if (paramFromServiceMsg == null) {
-        break label425;
-      }
     }
-    label425:
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    Bundle localBundle = new Bundle();
+    String str = paramIntent.getStringExtra("url");
+    localBundle.putString("url", str);
+    if (paramFromServiceMsg != null)
     {
-      QLog.d("WebSoServlet", 2, i);
-      localBundle.putString("key_uni_key", paramIntent.getStringExtra("key_uni_key"));
-      if (paramFromServiceMsg != null)
-      {
-        localObject = paramFromServiceMsg.getAttribute("_tag_socket");
-        paramIntent = new String[2];
-        if (localObject != null)
-        {
-          localObject = localObject.toString().split(":");
-          paramIntent = (Intent)localObject;
-          if (localObject != null)
-          {
-            paramIntent = (Intent)localObject;
-            if (localObject.length > 1)
-            {
-              localBundle.putString("key_server_ip", localObject[0]);
-              localBundle.putString("key_server_port", localObject[1]);
-              paramIntent = (Intent)localObject;
-            }
-          }
-        }
-        localBundle.putString("key_user_ip", "");
-        if ((paramIntent != null) && (paramIntent.length > 0)) {
-          localBundle.putString("key_dns_result", paramIntent[0]);
-        }
-        localBundle.putInt("key_time_cost", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      }
-      if (paramFromServiceMsg != null)
-      {
-        paramIntent = a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramFromServiceMsg);
-        bjdt.a(null, belc.f(str), paramFromServiceMsg.getResultCode(), paramIntent[0], 1, System.currentTimeMillis());
-        if (QLog.isColorLevel()) {
-          QLog.d("WebSoServlet", 2, "WebSo url: " + str + ", req time cost: " + paramIntent[0]);
-        }
-        localBundle.putString("key_detail_info", paramIntent[0]);
-      }
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
-        break label498;
-      }
+      localBundle.putInt("rsp_code", paramFromServiceMsg.getResultCode());
+      localBundle.putString("rsp_message", paramFromServiceMsg.getBusinessFailMsg());
+    }
+    int j = paramIntent.getIntExtra("key_request_code", 100);
+    Class localClass = (Class)paramIntent.getSerializableExtra("key_receive_class");
+    if (localClass == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receive url: ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(", code: ");
+    int i;
+    if (paramFromServiceMsg != null) {
+      i = paramFromServiceMsg.getResultCode();
+    } else {
+      i = -1;
+    }
+    localStringBuilder.append(i);
+    QLog.d("WebSoServlet", 2, localStringBuilder.toString());
+    localBundle.putString("key_uni_key", paramIntent.getStringExtra("key_uni_key"));
+    a(paramFromServiceMsg, localBundle, str);
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    {
       paramIntent = paramFromServiceMsg.getWupBuffer();
-      paramFromServiceMsg = beks.a(belc.e(str));
-      if (!TextUtils.isEmpty(paramFromServiceMsg)) {
-        break;
+      paramFromServiceMsg = WebSoUtils.n(WebSoUtils.j(str));
+      if (TextUtils.isEmpty(paramFromServiceMsg))
+      {
+        QLog.w("WebSoServlet", 1, "uniKey is EMPTY OR NULL !!!");
+        return;
       }
-      QLog.w("WebSoServlet", 1, "uniKey is EMPTY OR NULL !!!");
-      return;
-    }
-    localBundle.putInt("rsp_code", 0);
-    paramIntent = beks.a(paramIntent, paramFromServiceMsg);
-    if (paramIntent != null)
-    {
-      localBundle.putSerializable("rsp_data", paramIntent);
-      notifyObserver(null, j, true, localBundle, localClass);
-      return;
-    }
-    if (QLog.isColorLevel()) {
+      localBundle.putInt("rsp_code", 0);
+      paramIntent = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).websoOnResponse(paramIntent, paramFromServiceMsg);
+      if (paramIntent != null)
+      {
+        localBundle.putSerializable("rsp_data", paramIntent);
+        notifyObserver(null, j, true, localBundle, localClass);
+        return;
+      }
       QLog.d("WebSoServlet", 2, "inform WebSoServlet isSuccess false");
+      notifyObserver(null, j, false, localBundle, localClass);
+      return;
     }
-    notifyObserver(null, j, false, localBundle, localClass);
-    return;
-    label498:
-    if (QLog.isColorLevel()) {
-      QLog.d("WebSoServlet", 2, "inform WebSoServlet resultcode fail.");
-    }
+    QLog.d("WebSoServlet", 2, "inform WebSoServlet resultcode fail.");
     notifyObserver(null, j, false, localBundle, localClass);
   }
   
@@ -245,40 +161,42 @@ public class WebSoServlet
       return;
     }
     long l = paramIntent.getLongExtra("hostUin", 0L);
-    HttpReq localHttpReq = (HttpReq)paramIntent.getSerializableExtra("key_req");
+    Object localObject = (HttpReq)paramIntent.getSerializableExtra("key_req");
     String str2 = paramIntent.getStringExtra("refer");
     String str1 = paramIntent.getStringExtra("url");
     int i = paramIntent.getIntExtra("key_time_out", 60000);
-    paramIntent = new beks(belc.e(str1), l, localHttpReq, str2).encode();
-    if (paramIntent == null) {
+    localObject = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).websoEncode(WebSoUtils.j(str1), l, (HttpReq)localObject, str2);
+    paramIntent = (Intent)localObject;
+    if (localObject == null) {
       paramIntent = new byte[4];
     }
-    for (;;)
-    {
-      if (i <= 0) {}
-      for (l = 60000L;; l = i)
-      {
-        paramPacket.setTimeout(l);
-        paramPacket.setSSOCommand(belc.f(str1));
-        paramPacket.putSendData(paramIntent);
-        if (QLog.isColorLevel()) {
-          QLog.d("WebSoServlet", 2, "send req url: " + str1);
-        }
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        return;
-      }
+    if (i <= 0) {
+      l = 60000L;
+    } else {
+      l = i;
     }
+    paramPacket.setTimeout(l);
+    paramPacket.setSSOCommand(WebSoUtils.k(str1));
+    paramPacket.putSendData(paramIntent);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("send req url: ");
+      paramIntent.append(str1);
+      QLog.d("WebSoServlet", 2, paramIntent.toString());
+    }
+    this.b = System.currentTimeMillis();
   }
   
-  public void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
+  protected void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.a = paramToServiceMsg;
     super.sendToMSF(paramIntent, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.WebSoServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class dfp
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
   public dfp(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
-    {
-      this.a.e();
-      this.a.finish();
-    }
-    return false;
+    this.a.e();
   }
 }
 

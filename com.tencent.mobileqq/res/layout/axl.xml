@@ -13,15 +13,15 @@
         <TextView android:textSize="12.0dip" android:textColor="#b0ffffff" android:ellipsize="end" android:id="@id/c0j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="160.0dip" android:text="" android:singleLine="true" />
     </LinearLayout>
     <FrameLayout android:id="@id/che" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/eeo" android:layout_alignTop="@id/eeo" android:layout_centerVertical="true">
-        <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/chb" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_centerVertical="true" />
+        <com.tencent.widget.RoundRelativeLayout android:id="@id/chb" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_centerVertical="true" />
         <RelativeLayout android:id="@id/chc" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_centerVertical="true">
             <TextView android:textSize="20.0dip" android:id="@id/chd" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="0.0dip" android:text="+" android:layout_alignParentLeft="true" />
-            <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/cgp" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="20.0dip" android:text="@string/qxj" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/cgp" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="20.0dip" android:text="@string/ka2" android:layout_centerVertical="true" />
             <View android:id="@id/chi" android:background="@drawable/eyg" android:visibility="gone" android:layout_width="22.0dip" android:layout_height="16.0dip" android:layout_centerInParent="true" />
         </RelativeLayout>
-        <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/cha" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_centerVertical="true">
+        <com.tencent.widget.RoundRelativeLayout android:id="@id/cha" android:layout_width="55.0dip" android:layout_height="28.0dip" android:layout_centerVertical="true">
             <View android:id="@id/ch9" android:background="@drawable/ezo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-        </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+        </com.tencent.widget.RoundRelativeLayout>
     </FrameLayout>
     <FrameLayout android:id="@id/azb" android:background="@color/ajr" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="4.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
         <ImageView android:id="@id/azc" android:background="@drawable/eyy" android:layout_width="fill_parent" android:layout_height="fill_parent" />

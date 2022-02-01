@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
-import ssp;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class PublicAccountChatPie$9
+class PublicAccountChatPie$9
   implements Runnable
 {
-  public PublicAccountChatPie$9(agti paramagti) {}
+  PublicAccountChatPie$9(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    ssp.a().b(this.this$0.a);
+    int i = UIUtils.a(this.this$0.e, 80.0F);
+    this.this$0.U.setPadding(this.this$0.U.getPaddingLeft(), this.this$0.U.getPaddingTop(), this.this$0.U.getPaddingRight(), i);
   }
 }
 

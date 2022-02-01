@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/bg_texture" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.widget.OverScrollRecyclerView android:id="@id/kar" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<ImageView android:layout_gravity="center" android:id="@id/mph" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/idj" android:scaleType="centerCrop"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

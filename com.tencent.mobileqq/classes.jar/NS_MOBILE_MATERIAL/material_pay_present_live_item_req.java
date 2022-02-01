@@ -8,10 +8,10 @@ public final class material_pay_present_live_item_req
   extends JceStruct
 {
   static LiveInfo cache_stLiveInfo = new LiveInfo();
-  public int iAppid;
-  public long lPayUin;
-  public long lPresentUin;
-  public LiveInfo stLiveInfo;
+  public int iAppid = 0;
+  public long lPayUin = 0L;
+  public long lPresentUin = 0L;
+  public LiveInfo stLiveInfo = null;
   public String strItemId = "";
   public String strQua = "";
   public String strSerialNo = "";
@@ -46,20 +46,23 @@ public final class material_pay_present_live_item_req
     paramJceOutputStream.write(this.lPresentUin, 1);
     paramJceOutputStream.write(this.iAppid, 2);
     paramJceOutputStream.write(this.strItemId, 3);
-    if (this.strSerialNo != null) {
-      paramJceOutputStream.write(this.strSerialNo, 4);
+    Object localObject = this.strSerialNo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.strQua != null) {
-      paramJceOutputStream.write(this.strQua, 5);
+    localObject = this.strQua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.stLiveInfo != null) {
-      paramJceOutputStream.write(this.stLiveInfo, 6);
+    localObject = this.stLiveInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_pay_present_live_item_req
  * JD-Core Version:    0.7.0.1
  */

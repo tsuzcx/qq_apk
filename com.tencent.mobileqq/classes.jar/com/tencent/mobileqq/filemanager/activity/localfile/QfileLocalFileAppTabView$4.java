@@ -11,14 +11,14 @@ class QfileLocalFileAppTabView$4
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = this.this$0.a.getSharedPreferences("qfile_permission", 0).edit();
+    SharedPreferences.Editor localEditor = this.this$0.C.getSharedPreferences("qfile_permission", 0).edit();
     localEditor.putBoolean("qfile_permission_access_apps", this.a);
     localEditor.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.4
  * JD-Core Version:    0.7.0.1
  */

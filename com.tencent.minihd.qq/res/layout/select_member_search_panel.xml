@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/search_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/search_result_list" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" />
+    <TextView android:textSize="15.0sp" android:gravity="center_horizontal" android:id="@id/no_result" android:paddingTop="120.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/no_search_local_friend" />
+</RelativeLayout>

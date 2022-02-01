@@ -5,17 +5,17 @@ import com.tencent.mm.d.b;
 public final class r
   extends com.tencent.mm.d.a
 {
-  public long Vl;
-  public b Vn;
+  public long Xg;
+  public b Xi;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.g(1, this.Vl);
-      if (this.Vn != null) {
-        paramVarArgs.c(2, this.Vn);
+      paramVarArgs.g(1, this.Xg);
+      if (this.Xi != null) {
+        paramVarArgs.c(2, this.Xi);
       }
       paramInt = 0;
     }
@@ -26,16 +26,16 @@ public final class r
       if (paramInt != 1) {
         break;
       }
-      i = a.a.a.a.e(1, this.Vl) + 0;
+      i = a.a.a.b.b.a.f(1, this.Xg) + 0;
       paramInt = i;
-    } while (this.Vn == null);
-    return i + a.a.a.a.a(2, this.Vn);
+    } while (this.Xi == null);
+    return i + a.a.a.b.b.a.b(2, this.Xi);
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
       return 0;
@@ -49,10 +49,10 @@ public final class r
       default: 
         return -1;
       case 1: 
-        localr.Vl = locala.ow();
+        localr.Xg = locala.pj();
         return 0;
       }
-      localr.Vn = locala.ox();
+      localr.Xi = locala.pk();
       return 0;
     }
     return -1;

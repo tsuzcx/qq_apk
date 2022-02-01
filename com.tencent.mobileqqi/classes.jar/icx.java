@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Handler;
+import cooperation.qzone.music.RemoteMusicManager;
+import cooperation.qzone.remote.IActionListener.Stub;
+import cooperation.qzone.remote.RecvMsg;
 
 public class icx
-  implements DialogInterface.OnClickListener
+  extends IActionListener.Stub
 {
-  public icx(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public icx(RemoteMusicManager paramRemoteMusicManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onRecvFromMsg(RecvMsg paramRecvMsg)
   {
-    this.a.stopPlay();
-    QzoneWebMusicJsPlugin.access$200(this.a, "cancel");
-    paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$302(this.a, false);
+    if (RemoteMusicManager.access$000(this.a) != null) {
+      RemoteMusicManager.access$100(this.a).post(new icy(this, paramRecvMsg));
+    }
   }
 }
 

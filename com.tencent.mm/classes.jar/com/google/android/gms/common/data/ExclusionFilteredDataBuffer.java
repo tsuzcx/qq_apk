@@ -1,13 +1,11 @@
 package com.google.android.gms.common.data;
 
 import android.text.TextUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
-@VisibleForTesting
 public final class ExclusionFilteredDataBuffer<T>
   extends FilteredDataBuffer<T>
   implements DataBufferObserver.Observable, ExclusionFilterable
@@ -20,17 +18,17 @@ public final class ExclusionFilteredDataBuffer<T>
   public ExclusionFilteredDataBuffer(AbstractDataBuffer<T> paramAbstractDataBuffer, String paramString)
   {
     super(paramAbstractDataBuffer);
-    AppMethodBeat.i(61126);
+    AppMethodBeat.i(11618);
     this.zzoe = new HashSet();
     this.zzoc = paramAbstractDataBuffer;
     this.zzod = paramString;
     this.zzof = new DataBufferObserverSet();
-    AppMethodBeat.o(61126);
+    AppMethodBeat.o(11618);
   }
   
   private final ArrayList<Integer> zza(String paramString, ArrayList<Integer> paramArrayList)
   {
-    AppMethodBeat.i(61135);
+    AppMethodBeat.i(11627);
     ArrayList localArrayList = new ArrayList();
     if (paramArrayList != null) {
       paramArrayList.clear();
@@ -42,7 +40,7 @@ public final class ExclusionFilteredDataBuffer<T>
     int j = 0;
     int i = 0;
     int k;
-    label86:
+    label87:
     String str2;
     if (j < n) {
       if (bool)
@@ -50,10 +48,10 @@ public final class ExclusionFilteredDataBuffer<T>
         k = ((EntityBuffer)this.zzoc).zzi(j);
         str2 = localDataHolder.getString(str1, k, localDataHolder.getWindowIndex(k));
         if (paramArrayList == null) {
-          break label209;
+          break label211;
         }
         if (!this.zzoe.contains(Integer.valueOf(j))) {
-          break label187;
+          break label188;
         }
         k = -i - 1;
       }
@@ -70,33 +68,33 @@ public final class ExclusionFilteredDataBuffer<T>
       j += 1;
       break;
       k = j;
-      break label86;
-      label187:
+      break label87;
+      label188:
       int m = i + 1;
       k = i;
       i = m;
       continue;
-      AppMethodBeat.o(61135);
+      AppMethodBeat.o(11627);
       return localArrayList;
-      label209:
+      label211:
       k = i;
     }
   }
   
   public final void addObserver(DataBufferObserver paramDataBufferObserver)
   {
-    AppMethodBeat.i(61127);
+    AppMethodBeat.i(11619);
     this.zzof.addObserver(paramDataBufferObserver);
-    AppMethodBeat.o(61127);
+    AppMethodBeat.o(11619);
   }
   
   public final void clearFilters()
   {
-    AppMethodBeat.i(61134);
+    AppMethodBeat.i(11626);
     if (!this.zzof.hasObservers())
     {
       this.zzoe.clear();
-      AppMethodBeat.o(61134);
+      AppMethodBeat.o(11626);
       return;
     }
     int n = this.zzoe.size();
@@ -139,21 +137,21 @@ public final class ExclusionFilteredDataBuffer<T>
     if (j > 0) {
       this.zzof.onDataRangeRemoved(i, j);
     }
-    AppMethodBeat.o(61134);
+    AppMethodBeat.o(11626);
   }
   
   public final int computeRealPosition(int paramInt)
   {
-    AppMethodBeat.i(61130);
+    AppMethodBeat.i(11622);
     if (this.zzoe.isEmpty())
     {
-      AppMethodBeat.o(61130);
+      AppMethodBeat.o(11622);
       return paramInt;
     }
     if ((paramInt < 0) || (paramInt >= getCount()))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException(53 + "Position " + paramInt + " is out of bounds for this buffer");
-      AppMethodBeat.o(61130);
+      AppMethodBeat.o(11622);
       throw localIllegalArgumentException;
     }
     int m = this.mDataBuffer.getCount();
@@ -166,23 +164,23 @@ public final class ExclusionFilteredDataBuffer<T>
       {
         if (j == paramInt)
         {
-          AppMethodBeat.o(61130);
+          AppMethodBeat.o(11622);
           return i;
         }
         k = j + 1;
       }
       i += 1;
     }
-    AppMethodBeat.o(61130);
+    AppMethodBeat.o(11622);
     return -1;
   }
   
   public final void filterOut(String paramString)
   {
-    AppMethodBeat.i(61132);
+    AppMethodBeat.i(11624);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(61132);
+      AppMethodBeat.o(11624);
       return;
     }
     if (this.zzof.hasObservers()) {}
@@ -205,28 +203,28 @@ public final class ExclusionFilteredDataBuffer<T>
           if (n < 0)
           {
             m = 1;
-            label95:
+            label97:
             if (m != 0) {
-              break label221;
+              break label225;
             }
             m = ((Integer)paramString.get(k)).intValue();
             this.zzoe.add(Integer.valueOf(m));
             if (i != 0) {
-              break label151;
+              break label153;
             }
             i = 1;
             j = n;
           }
         }
       }
-      label151:
-      label221:
+      label153:
+      label225:
       for (;;)
       {
         k -= 1;
         break;
         m = 0;
-        break label95;
+        break label97;
         if (n == j - 1)
         {
           j -= 1;
@@ -241,10 +239,10 @@ public final class ExclusionFilteredDataBuffer<T>
           if (i > 0) {
             this.zzof.onDataRangeRemoved(j, i);
           }
-          AppMethodBeat.o(61132);
+          AppMethodBeat.o(11624);
           return;
           this.zzoe.addAll(paramString);
-          AppMethodBeat.o(61132);
+          AppMethodBeat.o(11624);
           return;
         }
       }
@@ -253,34 +251,34 @@ public final class ExclusionFilteredDataBuffer<T>
   
   public final int getCount()
   {
-    AppMethodBeat.i(61129);
+    AppMethodBeat.i(11621);
     int i = this.mDataBuffer.getCount();
     int j = this.zzoe.size();
-    AppMethodBeat.o(61129);
+    AppMethodBeat.o(11621);
     return i - j;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(61131);
+    AppMethodBeat.i(11623);
     super.release();
     this.zzof.clear();
-    AppMethodBeat.o(61131);
+    AppMethodBeat.o(11623);
   }
   
   public final void removeObserver(DataBufferObserver paramDataBufferObserver)
   {
-    AppMethodBeat.i(61128);
+    AppMethodBeat.i(11620);
     this.zzof.removeObserver(paramDataBufferObserver);
-    AppMethodBeat.o(61128);
+    AppMethodBeat.o(11620);
   }
   
   public final void unfilter(String paramString)
   {
-    AppMethodBeat.i(61133);
+    AppMethodBeat.i(11625);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(61133);
+      AppMethodBeat.o(11625);
       return;
     }
     if (this.zzof.hasObservers()) {}
@@ -302,15 +300,15 @@ public final class ExclusionFilteredDataBuffer<T>
           if (n < 0)
           {
             m = 1;
-            label95:
+            label97:
             if (m == 0) {
-              break label240;
+              break label244;
             }
             m = ((Integer)paramString.get(k)).intValue();
             this.zzoe.remove(Integer.valueOf(m));
             m = -n - 1;
             if (j != 0) {
-              break label170;
+              break label172;
             }
             i = 1;
             j = m;
@@ -326,8 +324,8 @@ public final class ExclusionFilteredDataBuffer<T>
         k = m;
         break;
         m = 0;
-        break label95;
-        label170:
+        break label97;
+        label172:
         if (m == i)
         {
           m = j + 1;
@@ -343,12 +341,12 @@ public final class ExclusionFilteredDataBuffer<T>
           if (j > 0) {
             this.zzof.onDataRangeInserted(i, j);
           }
-          AppMethodBeat.o(61133);
+          AppMethodBeat.o(11625);
           return;
           this.zzoe.removeAll(paramString);
-          AppMethodBeat.o(61133);
+          AppMethodBeat.o(11625);
           return;
-          label240:
+          label244:
           m = i;
           i = j;
           j = m;
@@ -359,7 +357,7 @@ public final class ExclusionFilteredDataBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.ExclusionFilteredDataBuffer
  * JD-Core Version:    0.7.0.1
  */

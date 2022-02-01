@@ -11,25 +11,25 @@ import java.util.concurrent.locks.Lock;
 final class ab
   implements r
 {
-  private final a<?> HU;
-  private final boolean MH;
-  private final WeakReference<aa> NI;
+  private final a<?> JJ;
+  private final boolean Ow;
+  private final WeakReference<aa> Px;
   
   public ab(aa paramaa, a<?> parama, boolean paramBoolean)
   {
-    this.NI = new WeakReference(paramaa);
-    this.HU = parama;
-    this.MH = paramBoolean;
+    this.Px = new WeakReference(paramaa);
+    this.JJ = parama;
+    this.Ow = paramBoolean;
   }
   
   public final void c(ConnectionResult paramConnectionResult)
   {
-    aa localaa = (aa)this.NI.get();
+    aa localaa = (aa)this.Px.get();
     if (localaa == null) {
       return;
     }
     boolean bool;
-    if (Looper.myLooper() == aa.d(localaa).MJ.getLooper()) {
+    if (Looper.myLooper() == aa.d(localaa).Oy.getLooper()) {
       bool = true;
     }
     for (;;)
@@ -45,8 +45,8 @@ final class ab
           bool = false;
           continue;
         }
-        if (!paramConnectionResult.gm()) {
-          aa.a(localaa, paramConnectionResult, this.HU, this.MH);
+        if (!paramConnectionResult.gw()) {
+          aa.a(localaa, paramConnectionResult, this.JJ, this.Ow);
         }
         if (aa.l(localaa)) {
           aa.j(localaa);

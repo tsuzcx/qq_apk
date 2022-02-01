@@ -4,8 +4,8 @@ import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import android.os.Build.VERSION;
-import com.tencent.d.a.a.a;
+import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -26,24 +26,25 @@ public class AudioDecoder
   private MediaExtractor mediaExtractor = null;
   int nFirstThreeFrameInfo = 3;
   int nFrameSize = 3840;
-  private a onCompleteListener = null;
-  private b onProgressListener = null;
+  private AudioDecoder.OnCompleteListener onCompleteListener = null;
+  private AudioDecoder.OnProgressListener onProgressListener = null;
   int sampleRate = 0;
   private String srcPath;
   
   private int initMediaDecode(int paramInt)
   {
-    AppMethodBeat.i(146908);
+    AppMethodBeat.i(13905);
     try
     {
       this.mediaExtractor = new MediaExtractor();
       this.mediaExtractor.setDataSource(this.srcPath);
       if (this.mediaExtractor.getTrackCount() > 1)
       {
-        a.dUd();
-        a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " initMediaDecode mediaExtractor container video, getTrackCount: " + this.mediaExtractor.getTrackCount());
+        if (QLog.isColorLevel()) {
+          QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " initMediaDecode mediaExtractor container video, getTrackCount: " + this.mediaExtractor.getTrackCount());
+        }
         this.codeOver = true;
-        AppMethodBeat.o(146908);
+        AppMethodBeat.o(13905);
         return -2;
       }
       int i = 0;
@@ -53,49 +54,50 @@ public class AudioDecoder
         {
           MediaFormat localMediaFormat = this.mediaExtractor.getTrackFormat(i);
           String str = localMediaFormat.getString("mime");
-          a.dUd();
-          a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " initMediaDecode mediaExtractor audio type:" + str);
-          if (str.startsWith("audio/mpeg"))
-          {
-            this.mediaExtractor.selectTrack(i);
-            this.mediaDecode = MediaCodec.createDecoderByType(str);
-            this.mediaDecode.configure(localMediaFormat, null, null, 0);
-            this.sampleRate = localMediaFormat.getInteger("sample-rate");
-            this.channels = localMediaFormat.getInteger("channel-count");
-            this.fileTotalMs = (localMediaFormat.getLong("durationUs") / 1000L);
-            this.nFrameSize = (this.sampleRate * this.channels * 2 * 20 / 1000);
-            this.decRingBuffer = new RingBuffer(this.nFrameSize * paramInt);
-            a.dUd();
-            a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " initMediaDecode open succeed, mp3 format:(" + this.sampleRate + "," + this.channels + "), fileTotalMs:" + this.fileTotalMs + "ms RingBufferFrame:" + paramInt);
+          if (QLog.isColorLevel()) {
+            QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " initMediaDecode mediaExtractor audio type:" + str);
+          }
+          if (!str.startsWith("audio/mpeg")) {
+            break label399;
+          }
+          this.mediaExtractor.selectTrack(i);
+          this.mediaDecode = MediaCodec.createDecoderByType(str);
+          this.mediaDecode.configure(localMediaFormat, null, null, 0);
+          this.sampleRate = localMediaFormat.getInteger("sample-rate");
+          this.channels = localMediaFormat.getInteger("channel-count");
+          this.fileTotalMs = (localMediaFormat.getLong("durationUs") / 1000L);
+          this.nFrameSize = (this.sampleRate * this.channels * 2 * 20 / 1000);
+          this.decRingBuffer = new RingBuffer(this.nFrameSize * paramInt);
+          if (QLog.isColorLevel()) {
+            QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " initMediaDecode open succeed, mp3 format:(" + this.sampleRate + "," + this.channels + "), fileTotalMs:" + this.fileTotalMs + "ms RingBufferFrame:" + paramInt);
           }
         }
-        else
-        {
-          if (this.mediaDecode != null) {
-            break;
-          }
-          new StringBuilder("m_nIndex: ").append(this.m_nIndex).append(" initMediaDecode create mediaDecode failed");
-          this.codeOver = true;
-          AppMethodBeat.o(146908);
-          return -1;
+        if (this.mediaDecode != null) {
+          break;
         }
+        new StringBuilder("m_nIndex: ").append(this.m_nIndex).append(" initMediaDecode create mediaDecode failed");
+        this.codeOver = true;
+        AppMethodBeat.o(13905);
+        return -1;
+        label399:
         i += 1;
       }
       if (this.decRingBuffer != null) {
-        break label448;
+        break label470;
       }
     }
     catch (IOException localIOException)
     {
+      TXCLog.e("AudioDecoder", "init media decode failed.", localIOException);
       this.codeOver = true;
-      AppMethodBeat.o(146908);
+      AppMethodBeat.o(13905);
       return -1;
     }
     new StringBuilder("m_nIndex: ").append(this.m_nIndex).append(" initMediaDecode create decRingBuffer failed");
     this.codeOver = true;
-    AppMethodBeat.o(146908);
+    AppMethodBeat.o(13905);
     return -1;
-    label448:
+    label470:
     this.mediaDecode.start();
     this.decodeInputBuffers = this.mediaDecode.getInputBuffers();
     this.decodeOutputBuffers = this.mediaDecode.getOutputBuffers();
@@ -103,7 +105,7 @@ public class AudioDecoder
     this.codeOver = false;
     this.IsTenFramesReady = false;
     this.nFirstThreeFrameInfo = 3;
-    AppMethodBeat.o(146908);
+    AppMethodBeat.o(13905);
     return 0;
   }
   
@@ -111,25 +113,27 @@ public class AudioDecoder
   
   private void srcAudioFormatToPCM()
   {
-    AppMethodBeat.i(146909);
+    AppMethodBeat.i(13906);
     if (this.decodeInputBuffers.length <= 1)
     {
-      a.dUd();
-      a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM decodeInputBuffers.length to small," + this.decodeInputBuffers.length);
+      if (QLog.isColorLevel()) {
+        QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM decodeInputBuffers.length to small," + this.decodeInputBuffers.length);
+      }
       this.codeOver = true;
-      AppMethodBeat.o(146909);
+      AppMethodBeat.o(13906);
       return;
     }
     int i = this.mediaDecode.dequeueInputBuffer(-1L);
     if (i < 0)
     {
-      a.dUd();
-      a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM decodeInputBuffers.inputIndex <0");
+      if (QLog.isColorLevel()) {
+        QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM decodeInputBuffers.inputIndex <0");
+      }
       this.codeOver = true;
-      AppMethodBeat.o(146909);
+      AppMethodBeat.o(13906);
       return;
     }
-    int j = Build.VERSION.SDK_INT;
+    int j = TXCBuild.VersionInt();
     int k;
     if (j >= 21)
     {
@@ -137,18 +141,19 @@ public class AudioDecoder
       localByteBuffer.clear();
       k = this.mediaExtractor.readSampleData(localByteBuffer, 0);
       if (k >= 0) {
-        break label426;
+        break label442;
       }
-      a.dUd();
-      a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM readSampleData over,end");
+      if (QLog.isColorLevel()) {
+        QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM readSampleData over,end");
+      }
       this.codeOver = true;
-      label204:
+      label217:
       i = this.mediaDecode.dequeueOutputBuffer(this.decodeBufferInfo, 10000L);
       if (i < 0) {
-        break label511;
+        break label531;
       }
       if (j < 21) {
-        break label449;
+        break label465;
       }
     }
     for (ByteBuffer localByteBuffer = this.mediaDecode.getOutputBuffer(i);; localByteBuffer = this.decodeOutputBuffers[i])
@@ -165,10 +170,8 @@ public class AudioDecoder
             this.decRingBuffer.Push(arrayOfByte, this.decodeBufferInfo.size);
             k = this.nFirstThreeFrameInfo;
             this.nFirstThreeFrameInfo = (k - 1);
-            if (k > 0)
-            {
-              a.dUd();
-              a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " DecodeOneFrame size: " + this.decodeBufferInfo.size + " Remain: " + this.decRingBuffer.RemainRead() / this.nFrameSize);
+            if ((k > 0) && (QLog.isColorLevel())) {
+              QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " DecodeOneFrame size: " + this.decodeBufferInfo.size + " Remain: " + this.decRingBuffer.RemainRead() / this.nFrameSize);
             }
           }
           this.mediaDecode.releaseOutputBuffer(i, false);
@@ -179,12 +182,14 @@ public class AudioDecoder
         }
         catch (Exception localException)
         {
-          label426:
-          label449:
-          a.dUd();
-          a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM wrong outputIndex: " + i);
+          label442:
+          label465:
+          if (!QLog.isColorLevel()) {
+            break label519;
+          }
+          QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM wrong outputIndex: " + i);
           this.codeOver = true;
-          AppMethodBeat.o(146909);
+          AppMethodBeat.o(13906);
           return;
         }
       }
@@ -192,16 +197,17 @@ public class AudioDecoder
       break;
       this.mediaDecode.queueInputBuffer(i, 0, k, 0L, 0);
       this.mediaExtractor.advance();
-      break label204;
+      break label217;
     }
-    label511:
-    AppMethodBeat.o(146909);
+    label519:
+    label531:
+    AppMethodBeat.o(13906);
   }
   
   public int ReadOneFrame(byte[] paramArrayOfByte, int paramInt)
   {
     int j = 20;
-    AppMethodBeat.i(146911);
+    AppMethodBeat.i(13908);
     int i = j;
     if (!this.IsTenFramesReady)
     {
@@ -211,8 +217,9 @@ public class AudioDecoder
         srcAudioFormatToPCM();
         i -= 1;
       }
-      a.dUd();
-      a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " 10 FramesReady Remain frame: " + this.decRingBuffer.RemainRead() / this.nFrameSize);
+      if (QLog.isColorLevel()) {
+        QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " 10 FramesReady Remain frame: " + this.decRingBuffer.RemainRead() / this.nFrameSize);
+      }
       this.IsTenFramesReady = true;
       i = j;
     }
@@ -226,7 +233,7 @@ public class AudioDecoder
     }
     for (;;)
     {
-      AppMethodBeat.o(146911);
+      AppMethodBeat.o(13908);
       return paramInt;
       paramInt = -1;
     }
@@ -234,22 +241,24 @@ public class AudioDecoder
   
   public int SeekTo(int paramInt)
   {
-    AppMethodBeat.i(146910);
+    AppMethodBeat.i(13907);
     if (this.mediaExtractor != null)
     {
       long l1 = this.mediaExtractor.getSampleTime();
       paramInt = this.decRingBuffer.RemainRead() * 20 / this.nFrameSize + paramInt;
-      a.dUd();
-      a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " current PlayMs: " + l1 / 1000L + " SeekTo: " + paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " current PlayMs: " + l1 / 1000L + " SeekTo: " + paramInt);
+      }
       this.mediaExtractor.seekTo(paramInt * 1000, 2);
       long l2 = this.mediaExtractor.getSampleTime();
       paramInt = (int)((l2 - l1) / 1000L);
-      a.dUd();
-      a.iP("TRAE", "m_nIndex: " + this.m_nIndex + " total SeekTo time: " + paramInt + " t2:" + l2 / 1000L);
-      AppMethodBeat.o(146910);
+      if (QLog.isColorLevel()) {
+        QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " total SeekTo time: " + paramInt + " t2:" + l2 / 1000L);
+      }
+      AppMethodBeat.o(13907);
       return paramInt;
     }
-    AppMethodBeat.o(146910);
+    AppMethodBeat.o(13907);
     return 0;
   }
   
@@ -275,20 +284,20 @@ public class AudioDecoder
   
   public int prepare(int paramInt)
   {
-    AppMethodBeat.i(146907);
+    AppMethodBeat.i(13904);
     if (this.srcPath == null)
     {
-      AppMethodBeat.o(146907);
+      AppMethodBeat.o(13904);
       return -1;
     }
     paramInt = initMediaDecode(paramInt);
-    AppMethodBeat.o(146907);
+    AppMethodBeat.o(13904);
     return paramInt;
   }
   
   public void release()
   {
-    AppMethodBeat.i(146912);
+    AppMethodBeat.i(13909);
     if (this.mediaDecode != null)
     {
       this.mediaDecode.stop();
@@ -307,7 +316,7 @@ public class AudioDecoder
       this.onProgressListener = null;
     }
     showLog("release");
-    AppMethodBeat.o(146912);
+    AppMethodBeat.o(13909);
   }
   
   public void setIOPath(String paramString)
@@ -320,23 +329,19 @@ public class AudioDecoder
     this.m_nIndex = paramInt;
   }
   
-  public void setOnCompleteListener(a parama)
+  public void setOnCompleteListener(AudioDecoder.OnCompleteListener paramOnCompleteListener)
   {
-    this.onCompleteListener = parama;
+    this.onCompleteListener = paramOnCompleteListener;
   }
   
-  public void setOnProgressListener(b paramb)
+  public void setOnProgressListener(AudioDecoder.OnProgressListener paramOnProgressListener)
   {
-    this.onProgressListener = paramb;
+    this.onProgressListener = paramOnProgressListener;
   }
-  
-  public static abstract interface a {}
-  
-  public static abstract interface b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.AudioDecoder
  * JD-Core Version:    0.7.0.1
  */

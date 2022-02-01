@@ -1,70 +1,112 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.l;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
+import com.tencent.luggage.m.a.d;
+import com.tencent.luggage.m.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter$ViewHolder;", "appId", "", "context", "Landroid/content/Context;", "phoneItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lkotlin/collections/ArrayList;", "(Ljava/lang/String;Landroid/content/Context;Ljava/util/ArrayList;)V", "getAppId", "()Ljava/lang/String;", "getContext", "()Landroid/content/Context;", "getPhoneItems", "()Ljava/util/ArrayList;", "setPhoneItems", "(Ljava/util/ArrayList;)V", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "resetPhoneItems", "ViewHolder", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DeleteItemAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/DeleteItemAdapter$ViewHolder;", "context", "Landroid/content/Context;", "phoneItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lkotlin/collections/ArrayList;", "onPhoneItemRemove", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "phoneItem", "", "(Landroid/content/Context;Ljava/util/ArrayList;Lkotlin/jvm/functions/Function1;)V", "getContext", "()Landroid/content/Context;", "getOnPhoneItemRemove", "()Lkotlin/jvm/functions/Function1;", "setOnPhoneItemRemove", "(Lkotlin/jvm/functions/Function1;)V", "getPhoneItems", "()Ljava/util/ArrayList;", "setPhoneItems", "(Ljava/util/ArrayList;)V", "showDelete", "", "getShowDelete", "()Z", "setShowDelete", "(Z)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updatePhoneItems", "", "ViewHolder", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
   extends RecyclerView.a<a>
 {
-  private final String appId;
   final Context context;
-  ArrayList<PhoneItem> iDe;
+  ArrayList<PhoneItem> rIF;
+  kotlin.g.a.b<? super PhoneItem, ah> tGx;
+  boolean tGy;
   
-  public j(String paramString, Context paramContext, ArrayList<PhoneItem> paramArrayList)
+  public j(Context paramContext, ArrayList<PhoneItem> paramArrayList, kotlin.g.a.b<? super PhoneItem, ah> paramb)
   {
-    AppMethodBeat.i(134797);
-    this.appId = paramString;
+    AppMethodBeat.i(148059);
     this.context = paramContext;
-    this.iDe = paramArrayList;
-    AppMethodBeat.o(134797);
+    this.rIF = paramArrayList;
+    this.tGx = paramb;
+    AppMethodBeat.o(148059);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(134795);
-    int i = this.iDe.size();
-    AppMethodBeat.o(134795);
+    AppMethodBeat.i(148057);
+    int i = this.rIF.size();
+    AppMethodBeat.o(148057);
     return i;
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter$ViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "adapter", "Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;", "view", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;Landroid/view/View;)V", "getAdapter", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;", "checkIv", "Landroid/widget/ImageView;", "phoneTv", "Landroid/widget/TextView;", "remarkTv", "fillItem", "", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DeleteItemAdapter$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "adapter", "Lcom/tencent/mm/plugin/appbrand/phonenumber/DeleteItemAdapter;", "view", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/DeleteItemAdapter;Landroid/view/View;)V", "getAdapter", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/DeleteItemAdapter;", "deleteIv", "Landroid/widget/ImageView;", "phoneTv", "Landroid/widget/TextView;", "remarkTv", "fillItem", "", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     extends RecyclerView.v
   {
-    final TextView iDg;
-    final TextView iDh;
-    final ImageView iDl;
-    final j iDm;
+    private final ImageView tGA;
+    private final TextView tGB;
+    private final TextView tGC;
+    private final j tGz;
     
     public a(j paramj, View paramView)
     {
       super();
-      AppMethodBeat.i(134792);
-      this.iDm = paramj;
-      paramj = paramView.findViewById(2131821285);
-      a.f.b.j.p(paramj, "view.findViewById(R.id.p…anager_dialog_item_phone)");
-      this.iDg = ((TextView)paramj);
-      paramj = paramView.findViewById(2131821286);
-      a.f.b.j.p(paramj, "view.findViewById(R.id.p…nager_dialog_item_remark)");
-      this.iDh = ((TextView)paramj);
-      paramj = paramView.findViewById(2131821287);
-      a.f.b.j.p(paramj, "view.findViewById(R.id.p…anager_dialog_item_check)");
-      this.iDl = ((ImageView)paramj);
-      AppMethodBeat.o(134792);
+      AppMethodBeat.i(148055);
+      this.tGz = paramj;
+      paramj = paramView.findViewById(a.d.phone_number_manager_dialog_item_delete);
+      s.s(paramj, "view.findViewById(R.id.p…nager_dialog_item_delete)");
+      this.tGA = ((ImageView)paramj);
+      paramj = paramView.findViewById(a.d.phone_number_manager_dialog_item_phone);
+      s.s(paramj, "view.findViewById(R.id.p…anager_dialog_item_phone)");
+      this.tGB = ((TextView)paramj);
+      paramj = paramView.findViewById(a.d.phone_number_manager_dialog_item_remark);
+      s.s(paramj, "view.findViewById(R.id.p…nager_dialog_item_remark)");
+      this.tGC = ((TextView)paramj);
+      AppMethodBeat.o(148055);
+    }
+    
+    private static final void a(a parama, PhoneItem paramPhoneItem, View paramView)
+    {
+      AppMethodBeat.i(318867);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(parama);
+      localb.cH(paramPhoneItem);
+      localb.cH(paramView);
+      a.c("com/tencent/mm/plugin/appbrand/phonenumber/DeleteItemAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(parama, "this$0");
+      s.u(paramPhoneItem, "$phoneItem");
+      parama.tGz.tGx.invoke(paramPhoneItem);
+      a.a(new Object(), "com/tencent/mm/plugin/appbrand/phonenumber/DeleteItemAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(318867);
+    }
+    
+    public final void a(PhoneItem paramPhoneItem)
+    {
+      AppMethodBeat.i(318874);
+      s.u(paramPhoneItem, "phoneItem");
+      this.tGB.setText((CharSequence)paramPhoneItem.tGJ);
+      if (paramPhoneItem.tGO) {
+        this.tGC.setText((CharSequence)this.tGz.context.getString(a.g.appbrand_phone_number_wechat_phone_number));
+      }
+      while ((this.tGz.tGy) && (!paramPhoneItem.tGO))
+      {
+        this.tGA.setVisibility(0);
+        this.tGA.setOnClickListener(new j.a..ExternalSyntheticLambda0(this, paramPhoneItem));
+        AppMethodBeat.o(318874);
+        return;
+        this.tGC.setText((CharSequence)"");
+      }
+      this.tGA.setVisibility(8);
+      AppMethodBeat.o(318874);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.j
  * JD-Core Version:    0.7.0.1
  */

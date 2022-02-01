@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.activity.history.link;
 
-import aiee;
-import aief;
 import java.util.List;
 
-public class TroopLinkHandler$1
+class TroopLinkHandler$1
   implements Runnable
 {
-  public TroopLinkHandler$1(aief paramaief, boolean paramBoolean, List paramList) {}
+  TroopLinkHandler$1(TroopLinkHandler paramTroopLinkHandler, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
-    aief.a(this.this$0).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
+    TroopLinkHandler.a(this.this$0).a(this.a, this.b);
   }
 }
 

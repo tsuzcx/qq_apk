@@ -1,8 +1,29 @@
 package android.support.v4.app;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+
 final class y
+  extends AnimatorListenerAdapter
 {
-  public static final int[] dd = { 16842755, 16842960, 16842961 };
+  View cZ;
+  
+  y(View paramView)
+  {
+    this.cZ = paramView;
+  }
+  
+  public final void onAnimationEnd(Animator paramAnimator)
+  {
+    this.cZ.setLayerType(0, null);
+    paramAnimator.removeListener(this);
+  }
+  
+  public final void onAnimationStart(Animator paramAnimator)
+  {
+    this.cZ.setLayerType(2, null);
+  }
 }
 
 

@@ -4,46 +4,46 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SSummaryCardRsp
   extends JceStruct
 {
   static ArrayList<Integer> cache_bgtype;
-  static SUserLabel cache_label;
-  static int cache_res = 0;
+  static SUserLabel cache_label = new SUserLabel();
+  static int cache_res;
   static cardDiyComplicatedInfo cache_stDiyComplicated = new cardDiyComplicatedInfo();
   static cardDiyTextInfo cache_stDiyText;
   static STRecommendInfo cache_stRecom;
   static ArrayList<summaryCardWzryInfo> cache_wzryInfo;
   public String aid = "";
-  public long bgid;
-  public ArrayList<Integer> bgtype;
+  public long bgid = 0L;
+  public ArrayList<Integer> bgtype = null;
   public String bgurl = "";
-  public int cardType;
-  public long cardid;
-  public long color;
-  public int dynamicCardFlag;
+  public int cardType = 0;
+  public long cardid = 0L;
+  public long color = 0L;
+  public int dynamicCardFlag = 0;
   public String emsg = "";
   public String extInfo = "";
-  public SUserLabel label;
-  public int payType;
-  public int profileid;
-  public int res;
-  public cardDiyComplicatedInfo stDiyComplicated;
-  public cardDiyTextInfo stDiyText;
-  public STRecommendInfo stRecom;
+  public SUserLabel label = null;
+  public int payType = 0;
+  public int profileid = 0;
+  public int res = 0;
+  public cardDiyComplicatedInfo stDiyComplicated = null;
+  public cardDiyTextInfo stDiyText = null;
+  public STRecommendInfo stRecom = null;
   public String strActiveCardUrl = "";
   public String strDiyDefaultText = "";
   public String strDrawerCard = "";
   public String strWzryHeroUrl = "";
   public String strZipUrl = "";
-  public long styleid;
+  public long styleid = 0L;
   public String urlprefix = "";
-  public ArrayList<summaryCardWzryInfo> wzryInfo;
+  public ArrayList<summaryCardWzryInfo> wzryInfo = null;
   
   static
   {
-    cache_label = new SUserLabel();
     cache_bgtype = new ArrayList();
     cache_bgtype.add(Integer.valueOf(0));
     cache_stRecom = new STRecommendInfo();
@@ -118,65 +118,81 @@ public final class SSummaryCardRsp
     paramJceOutputStream.write(this.res, 0);
     paramJceOutputStream.write(this.cardid, 1);
     paramJceOutputStream.write(this.styleid, 2);
-    if (this.bgurl != null) {
-      paramJceOutputStream.write(this.bgurl, 3);
+    Object localObject = this.bgurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.bgid, 4);
     paramJceOutputStream.write(this.color, 5);
-    if (this.label != null) {
-      paramJceOutputStream.write(this.label, 6);
+    localObject = this.label;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.emsg != null) {
-      paramJceOutputStream.write(this.emsg, 7);
+    localObject = this.emsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.bgtype != null) {
-      paramJceOutputStream.write(this.bgtype, 8);
+    localObject = this.bgtype;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
     paramJceOutputStream.write(this.dynamicCardFlag, 9);
-    if (this.strZipUrl != null) {
-      paramJceOutputStream.write(this.strZipUrl, 10);
+    localObject = this.strZipUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.stRecom != null) {
-      paramJceOutputStream.write(this.stRecom, 11);
+    localObject = this.stRecom;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.strActiveCardUrl != null) {
-      paramJceOutputStream.write(this.strActiveCardUrl, 12);
+    localObject = this.strActiveCardUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strDrawerCard != null) {
-      paramJceOutputStream.write(this.strDrawerCard, 13);
+    localObject = this.strDrawerCard;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.strWzryHeroUrl != null) {
-      paramJceOutputStream.write(this.strWzryHeroUrl, 14);
+    localObject = this.strWzryHeroUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.wzryInfo != null) {
-      paramJceOutputStream.write(this.wzryInfo, 15);
+    localObject = this.wzryInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 15);
     }
-    if (this.stDiyText != null) {
-      paramJceOutputStream.write(this.stDiyText, 16);
+    localObject = this.stDiyText;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 16);
     }
     paramJceOutputStream.write(this.cardType, 17);
-    if (this.strDiyDefaultText != null) {
-      paramJceOutputStream.write(this.strDiyDefaultText, 18);
+    localObject = this.strDiyDefaultText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.extInfo != null) {
-      paramJceOutputStream.write(this.extInfo, 19);
+    localObject = this.extInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
     paramJceOutputStream.write(this.profileid, 20);
-    if (this.urlprefix != null) {
-      paramJceOutputStream.write(this.urlprefix, 21);
+    localObject = this.urlprefix;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
-    if (this.stDiyComplicated != null) {
-      paramJceOutputStream.write(this.stDiyComplicated, 22);
+    localObject = this.stDiyComplicated;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 22);
     }
-    if (this.aid != null) {
-      paramJceOutputStream.write(this.aid, 23);
+    localObject = this.aid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
     paramJceOutputStream.write(this.payType, 24);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardRsp
  * JD-Core Version:    0.7.0.1
  */

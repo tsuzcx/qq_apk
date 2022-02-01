@@ -11,9 +11,9 @@ final class LoginIndepPass$10
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(124976);
-    LoginIndepPass.b(this.gEE);
-    AppMethodBeat.o(124976);
+    AppMethodBeat.i(128154);
+    LoginIndepPass.b(this.qbg);
+    AppMethodBeat.o(128154);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -22,7 +22,7 @@ final class LoginIndepPass$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginIndepPass.10
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ class USequencesKt___USequencesKt
   {
     Intrinsics.checkParameterIsNotNull(paramSequence, "$this$sum");
     paramSequence = paramSequence.iterator();
-    for (int i = 0; paramSequence.hasNext(); i = UInt.constructor-impl(UInt.constructor-impl(((UByte)paramSequence.next()).unbox-impl() & 0xFF) + i)) {}
+    for (int i = 0; paramSequence.hasNext(); i = UInt.constructor-impl(i + UInt.constructor-impl(((UByte)paramSequence.next()).unbox-impl() & 0xFF))) {}
     return i;
   }
   
@@ -33,7 +33,7 @@ class USequencesKt___USequencesKt
   {
     Intrinsics.checkParameterIsNotNull(paramSequence, "$this$sum");
     paramSequence = paramSequence.iterator();
-    for (int i = 0; paramSequence.hasNext(); i = UInt.constructor-impl(((UInt)paramSequence.next()).unbox-impl() + i)) {}
+    for (int i = 0; paramSequence.hasNext(); i = UInt.constructor-impl(i + ((UInt)paramSequence.next()).unbox-impl())) {}
     return i;
   }
   
@@ -44,7 +44,7 @@ class USequencesKt___USequencesKt
   {
     Intrinsics.checkParameterIsNotNull(paramSequence, "$this$sum");
     paramSequence = paramSequence.iterator();
-    for (long l = 0L; paramSequence.hasNext(); l = ULong.constructor-impl(((ULong)paramSequence.next()).unbox-impl() + l)) {}
+    for (long l = 0L; paramSequence.hasNext(); l = ULong.constructor-impl(l + ((ULong)paramSequence.next()).unbox-impl())) {}
     return l;
   }
   
@@ -55,13 +55,13 @@ class USequencesKt___USequencesKt
   {
     Intrinsics.checkParameterIsNotNull(paramSequence, "$this$sum");
     paramSequence = paramSequence.iterator();
-    for (int i = 0; paramSequence.hasNext(); i = UInt.constructor-impl(UInt.constructor-impl(((UShort)paramSequence.next()).unbox-impl() & 0xFFFF) + i)) {}
+    for (int i = 0; paramSequence.hasNext(); i = UInt.constructor-impl(i + UInt.constructor-impl(((UShort)paramSequence.next()).unbox-impl() & 0xFFFF))) {}
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.sequences.USequencesKt___USequencesKt
  * JD-Core Version:    0.7.0.1
  */

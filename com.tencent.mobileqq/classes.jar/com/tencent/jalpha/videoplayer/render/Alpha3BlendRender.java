@@ -35,9 +35,10 @@ public class Alpha3BlendRender
   
   private void releaseSurface()
   {
-    if (this.mVideoSurface != null)
+    Surface localSurface = this.mVideoSurface;
+    if (localSurface != null)
     {
-      this.mVideoSurface.release();
+      localSurface.release();
       this.mVideoSurface = null;
       Logger.v("VideoPlayer|Alpha3BlendRender", " release  surface");
     }
@@ -45,9 +46,10 @@ public class Alpha3BlendRender
   
   private void releaseSurfaceTexture()
   {
-    if (this.videoTexture != null)
+    SurfaceTexture localSurfaceTexture = this.videoTexture;
+    if (localSurfaceTexture != null)
     {
-      this.videoTexture.release();
+      localSurfaceTexture.release();
       this.videoTexture = null;
       Logger.v("VideoPlayer|Alpha3BlendRender", " release  surface texture");
     }
@@ -197,14 +199,21 @@ public class Alpha3BlendRender
     while ((paramInt1 * 4 + 2) / 3 > paramInt3) {
       paramInt1 -= 1;
     }
-    Logger.e("VideoPlayer|Alpha3BlendRender", "updateSize:" + paramInt3 + ", originWidth:" + paramInt1);
-    this.mXFactor = (paramInt1 / paramInt3);
-    this.mTextureWidth = paramInt3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSize:");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(", originWidth:");
+    localStringBuilder.append(paramInt1);
+    Logger.e("VideoPlayer|Alpha3BlendRender", localStringBuilder.toString());
+    float f1 = paramInt1;
+    float f2 = paramInt3;
+    this.mXFactor = (f1 / f2);
+    this.mTextureWidth = f2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.render.Alpha3BlendRender
  * JD-Core Version:    0.7.0.1
  */

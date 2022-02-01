@@ -62,9 +62,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
+import ezc;
 import ezd;
 import eze;
-import ezf;
 import java.io.File;
 import java.lang.reflect.Field;
 import mqq.app.AppActivity;
@@ -238,7 +238,7 @@ public class BaseActivity
     }
     startActivity(new Intent(a(), GesturePWDUnlockActivity.class));
     s = true;
-    new Handler().postDelayed(new eze(this), 1000L);
+    new Handler().postDelayed(new ezd(this), 1000L);
   }
   
   @Deprecated
@@ -442,7 +442,7 @@ public class BaseActivity
     }
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ezf(this, null);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new eze(this, null);
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     paramBundle = getIntent().getExtras();
     if (paramBundle != null)
@@ -663,25 +663,25 @@ public class BaseActivity
     {
     default: 
       return super.findViewById(paramInt);
+    case 2131231455: 
+      localObject = new FakeTextView(this);
+      ((TextView)localObject).setId(2131231455);
+      return localObject;
     case 2131231456: 
       localObject = new FakeTextView(this);
       ((TextView)localObject).setId(2131231456);
       return localObject;
-    case 2131231457: 
+    case 2131231375: 
       localObject = new FakeTextView(this);
-      ((TextView)localObject).setId(2131231457);
+      ((TextView)localObject).setId(2131231375);
       return localObject;
-    case 2131231376: 
+    case 2131231379: 
       localObject = new FakeTextView(this);
-      ((TextView)localObject).setId(2131231376);
-      return localObject;
-    case 2131231380: 
-      localObject = new FakeTextView(this);
-      ((TextView)localObject).setId(2131231380);
+      ((TextView)localObject).setId(2131231379);
       return localObject;
     }
     Object localObject = new FakeImageView(this);
-    ((ImageView)localObject).setId(2131231461);
+    ((ImageView)localObject).setId(2131231460);
     return localObject;
   }
   
@@ -787,7 +787,7 @@ public class BaseActivity
   
   public void y()
   {
-    ThreadManager.b().post(new ezd(this));
+    ThreadManager.b().post(new ezc(this));
   }
   
   public void z()

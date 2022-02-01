@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="38.0dip" android:layout_height="38.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="center" android:layout_gravity="center" android:background="@drawable/igf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.now.widget.CircleImageView android:layout_gravity="center" android:id="@id/nf9" android:layout_width="34.0dip" android:layout_height="34.0dip" android:src="@drawable/account_panel_add_icon" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="bottom|center|right" android:background="@drawable/igf" android:layout_width="14.0dip" android:layout_height="14.0dip">
+        <com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView android:layout_gravity="center" android:id="@id/nfa" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</FrameLayout>

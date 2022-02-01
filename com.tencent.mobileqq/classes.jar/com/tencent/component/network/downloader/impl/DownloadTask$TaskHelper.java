@@ -10,42 +10,40 @@ final class DownloadTask$TaskHelper
   
   public static boolean ensureFile(File paramFile, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1;
+    boolean bool1 = false;
     if (paramFile == null) {
-      bool1 = bool2;
+      return false;
     }
-    for (;;)
+    try
     {
-      return bool1;
-      try
-      {
-        File localFile = paramFile.getParentFile();
-        if ((localFile.exists()) && (localFile.isFile())) {
-          FileUtils.delete(localFile);
-        }
-        if (!localFile.exists())
-        {
-          bool1 = bool2;
-          if (!localFile.mkdirs()) {
-            continue;
-          }
-        }
-        if ((paramBoolean) && (paramFile.exists())) {
-          FileUtils.delete(paramFile);
-        }
-        if (!paramFile.exists())
-        {
-          paramBoolean = paramFile.createNewFile();
-          bool1 = bool2;
-          if (!paramBoolean) {
-            continue;
-          }
-        }
-        bool1 = true;
+      File localFile = paramFile.getParentFile();
+      if ((localFile.exists()) && (localFile.isFile())) {
+        FileUtils.delete(localFile);
       }
-      finally {}
+      boolean bool2;
+      if (!localFile.exists())
+      {
+        bool2 = localFile.mkdirs();
+        if (!bool2) {
+          return false;
+        }
+      }
+      if ((paramBoolean) && (paramFile.exists())) {
+        FileUtils.delete(paramFile);
+      }
+      if (!paramFile.exists())
+      {
+        bool2 = paramFile.createNewFile();
+        paramBoolean = bool1;
+        if (!bool2) {}
+      }
+      else
+      {
+        paramBoolean = true;
+      }
+      return paramBoolean;
     }
+    finally {}
   }
   
   public static int generateRandomId(Object... paramVarArgs)
@@ -56,17 +54,17 @@ final class DownloadTask$TaskHelper
     {
       int m = paramVarArgs.length;
       int j = 0;
-      k = i;
-      if (j < m)
+      for (;;)
       {
-        Object localObject = paramVarArgs[j];
-        if (localObject == null) {}
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (j >= m) {
           break;
+        }
+        Object localObject = paramVarArgs[j];
+        if (localObject != null) {
           i = i * 31 + localObject.hashCode();
         }
+        j += 1;
       }
     }
     return k * 31 + sRandom.nextInt();
@@ -74,7 +72,7 @@ final class DownloadTask$TaskHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.DownloadTask.TaskHelper
  * JD-Core Version:    0.7.0.1
  */

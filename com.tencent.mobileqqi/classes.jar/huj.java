@@ -1,43 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qqconnect.wtlogin.Login;
 
 public class huj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   public huj(Login paramLogin) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton) {
-      this.a.e();
-    }
-    do
-    {
-      return;
-      if (paramView == Login.a(this.a))
-      {
-        this.a.setResult(0);
-        this.a.finish();
-        return;
-      }
-      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-        return;
-      }
-      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
-        return;
-      }
-    } while (paramView != this.a.jdField_a_of_type_AndroidWidgetTextView);
-    paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
-    paramView.putExtra("key_req_src", this.a.i);
-    this.a.startActivityForResult(paramView, 10000);
+    paramDialogInterface.dismiss();
   }
 }
 

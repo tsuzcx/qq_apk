@@ -1,16 +1,5 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Message;
-import auxh;
-import awgf;
-import awgg;
-import bdin;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.List;
-
 class ChooseInterestTagActivity$1
   implements Runnable
 {
@@ -18,58 +7,12 @@ class ChooseInterestTagActivity$1
   
   public void run()
   {
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    Object localObject2 = this.this$0.getSharedPreferences("dating_pref" + this.this$0.app.getCurrentAccountUin(), 0);
-    int j;
-    int k;
-    int i;
-    if ((l - ((SharedPreferences)localObject2).getLong("list_last_update_time_" + ChooseInterestTagActivity.a(this.this$0), -1L) >= 3600000L) || (ChooseInterestTagActivity.a(this.this$0)))
-    {
-      if (bdin.d(this.this$0))
-      {
-        localObject1 = ChooseInterestTagActivity.a(this.this$0);
-        j = ChooseInterestTagActivity.a(this.this$0);
-        k = ChooseInterestTagActivity.b(this.this$0);
-        if (ChooseInterestTagActivity.a(this.this$0)) {}
-        for (i = 1;; i = 0)
-        {
-          ((auxh)localObject1).a("", j, k, 30, 0, i);
-          return;
-        }
-      }
-      ChooseInterestTagActivity.a(this.this$0).sendEmptyMessage(4099);
-      return;
-    }
-    awgf localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    Object localObject1 = localawgf.a(InterestTagInfo.class, true, "tagType = ?", new String[] { String.valueOf(ChooseInterestTagActivity.a(this.this$0)) }, null, null, null, String.valueOf(30));
-    localawgf.a();
-    if ((localObject1 == null) || (((List)localObject1).isEmpty()))
-    {
-      if (bdin.d(this.this$0))
-      {
-        localObject1 = ChooseInterestTagActivity.a(this.this$0);
-        j = ChooseInterestTagActivity.a(this.this$0);
-        k = ChooseInterestTagActivity.b(this.this$0);
-        if (ChooseInterestTagActivity.a(this.this$0)) {}
-        for (i = 1;; i = 0)
-        {
-          ((auxh)localObject1).a("", j, k, 30, 0, i);
-          return;
-        }
-      }
-      ChooseInterestTagActivity.a(this.this$0).sendEmptyMessage(4099);
-      return;
-    }
-    ChooseInterestTagActivity.a(this.this$0, ((SharedPreferences)localObject2).getInt("list_fetch_pos_" + ChooseInterestTagActivity.a(this.this$0), ((List)localObject1).size()));
-    localObject2 = Message.obtain();
-    ((Message)localObject2).what = 4098;
-    ((Message)localObject2).obj = localObject1;
-    ChooseInterestTagActivity.a(this.this$0).sendMessage((Message)localObject2);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.1
  * JD-Core Version:    0.7.0.1
  */

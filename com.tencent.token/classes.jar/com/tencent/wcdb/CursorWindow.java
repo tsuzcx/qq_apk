@@ -5,63 +5,62 @@ import android.database.CharArrayBuffer;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.wcdb.database.SQLiteClosable;
+import com.tencent.token.aiq;
 
 public class CursorWindow
-  extends SQLiteClosable
+  extends aiq
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
-  private static final String STATS_TAG = "WCDB.CursorWindowStats";
-  private static int sCursorWindowSize;
-  private final String mName;
-  private int mStartPos;
-  public long mWindowPtr;
+  public static final Parcelable.Creator<CursorWindow> CREATOR = new Parcelable.Creator() {};
+  private static int c;
+  public long a;
+  public int b;
+  private final String d;
   
   static
   {
     int i = Resources.getSystem().getIdentifier("config_cursorWindowSize", "integer", "android");
-    if (i != 0) {}
-    for (sCursorWindowSize = Resources.getSystem().getInteger(i) * 1024;; sCursorWindowSize = 2097152)
-    {
-      CREATOR = new CursorWindow.1();
-      return;
+    if (i != 0) {
+      c = Resources.getSystem().getInteger(i) * 1024;
+    } else {
+      c = 2097152;
     }
   }
   
-  private CursorWindow(Parcel paramParcel)
+  private CursorWindow()
   {
     throw new UnsupportedOperationException();
   }
   
   public CursorWindow(String paramString)
   {
-    this.mStartPos = 0;
-    if ((paramString != null) && (paramString.length() != 0)) {}
-    for (;;)
-    {
-      this.mName = paramString;
-      this.mWindowPtr = nativeCreate(this.mName, sCursorWindowSize);
-      if (this.mWindowPtr != 0L) {
-        break;
-      }
-      throw new CursorWindowAllocationException("Cursor window allocation of " + sCursorWindowSize / 1024 + " kb failed. ");
+    this.b = 0;
+    if ((paramString == null) || (paramString.length() == 0)) {
       paramString = "<unnamed>";
     }
+    this.d = paramString;
+    this.a = nativeCreate(this.d, c);
+    if (this.a != 0L) {
+      return;
+    }
+    paramString = new StringBuilder("Cursor window allocation of ");
+    paramString.append(c / 1024);
+    paramString.append(" kb failed. ");
+    throw new CursorWindowAllocationException(paramString.toString());
   }
   
-  @Deprecated
-  public CursorWindow(boolean paramBoolean)
+  public static CursorWindow a(Parcel paramParcel)
   {
-    this((String)null);
+    return (CursorWindow)CREATOR.createFromParcel(paramParcel);
   }
   
-  private void dispose()
+  private void f()
   {
-    if (this.mWindowPtr != 0L)
+    long l = this.a;
+    if (l != 0L)
     {
-      nativeDispose(this.mWindowPtr);
-      this.mWindowPtr = 0L;
+      nativeDispose(l);
+      this.a = 0L;
     }
   }
   
@@ -69,7 +68,7 @@ public class CursorWindow
   
   private static native void nativeClear(long paramLong);
   
-  private static native void nativeCopyStringToBuffer(long paramLong, int paramInt1, int paramInt2, CharArrayBuffer paramCharArrayBuffer);
+  public static native void nativeCopyStringToBuffer(long paramLong, int paramInt1, int paramInt2, CharArrayBuffer paramCharArrayBuffer);
   
   private static native long nativeCreate(String paramString, int paramInt);
   
@@ -101,63 +100,93 @@ public class CursorWindow
   
   private static native boolean nativeSetNumColumns(long paramLong, int paramInt);
   
-  public static CursorWindow newFromParcel(Parcel paramParcel)
+  public final int a(int paramInt1, int paramInt2)
   {
-    return (CursorWindow)CREATOR.createFromParcel(paramParcel);
-  }
-  
-  public static int windowSize(int paramInt)
-  {
-    int i = sCursorWindowSize;
-    if (paramInt > 0) {
-      sCursorWindowSize = paramInt;
-    }
-    return i;
-  }
-  
-  public boolean allocRow()
-  {
-    acquireReference();
+    d();
     try
     {
-      boolean bool = nativeAllocRow(this.mWindowPtr);
-      return bool;
+      paramInt1 = nativeGetType(this.a, paramInt1 - this.b, paramInt2);
+      return paramInt1;
     }
     finally
     {
-      releaseReference();
+      e();
     }
   }
   
-  public void clear()
+  public final void a()
   {
-    acquireReference();
+    d();
     try
     {
-      this.mStartPos = 0;
-      nativeClear(this.mWindowPtr);
+      this.b = 0;
+      nativeClear(this.a);
       return;
     }
     finally
     {
-      releaseReference();
+      e();
     }
   }
   
-  public void copyStringToBuffer(int paramInt1, int paramInt2, CharArrayBuffer paramCharArrayBuffer)
+  public final int b()
   {
-    if (paramCharArrayBuffer == null) {
-      throw new IllegalArgumentException("CharArrayBuffer should not be null");
-    }
-    acquireReference();
+    d();
     try
     {
-      nativeCopyStringToBuffer(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2, paramCharArrayBuffer);
-      return;
+      int i = nativeGetNumRows(this.a);
+      return i;
     }
     finally
     {
-      releaseReference();
+      e();
+    }
+  }
+  
+  public final byte[] b(int paramInt1, int paramInt2)
+  {
+    d();
+    try
+    {
+      byte[] arrayOfByte = nativeGetBlob(this.a, paramInt1 - this.b, paramInt2);
+      return arrayOfByte;
+    }
+    finally
+    {
+      e();
+    }
+  }
+  
+  public final String c(int paramInt1, int paramInt2)
+  {
+    d();
+    try
+    {
+      String str = nativeGetString(this.a, paramInt1 - this.b, paramInt2);
+      return str;
+    }
+    finally
+    {
+      e();
+    }
+  }
+  
+  public final void c()
+  {
+    f();
+  }
+  
+  public final long d(int paramInt1, int paramInt2)
+  {
+    d();
+    try
+    {
+      long l = nativeGetLong(this.a, paramInt1 - this.b, paramInt2);
+      return l;
+    }
+    finally
+    {
+      e();
     }
   }
   
@@ -166,11 +195,25 @@ public class CursorWindow
     return 0;
   }
   
+  public final double e(int paramInt1, int paramInt2)
+  {
+    d();
+    try
+    {
+      double d1 = nativeGetDouble(this.a, paramInt1 - this.b, paramInt2);
+      return d1;
+    }
+    finally
+    {
+      e();
+    }
+  }
+  
   protected void finalize()
   {
     try
     {
-      dispose();
+      f();
       return;
     }
     finally
@@ -179,258 +222,14 @@ public class CursorWindow
     }
   }
   
-  public void freeLastRow()
-  {
-    acquireReference();
-    try
-    {
-      nativeFreeLastRow(this.mWindowPtr);
-      return;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public byte[] getBlob(int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      byte[] arrayOfByte = nativeGetBlob(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2);
-      return arrayOfByte;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public double getDouble(int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      double d = nativeGetDouble(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2);
-      return d;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public float getFloat(int paramInt1, int paramInt2)
-  {
-    return (float)getDouble(paramInt1, paramInt2);
-  }
-  
-  public int getInt(int paramInt1, int paramInt2)
-  {
-    return (int)getLong(paramInt1, paramInt2);
-  }
-  
-  public long getLong(int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      long l = nativeGetLong(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2);
-      return l;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public String getName()
-  {
-    return this.mName;
-  }
-  
-  public int getNumRows()
-  {
-    acquireReference();
-    try
-    {
-      int i = nativeGetNumRows(this.mWindowPtr);
-      return i;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public short getShort(int paramInt1, int paramInt2)
-  {
-    return (short)(int)getLong(paramInt1, paramInt2);
-  }
-  
-  public int getStartPosition()
-  {
-    return this.mStartPos;
-  }
-  
-  public String getString(int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      String str = nativeGetString(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2);
-      return str;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public int getType(int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      paramInt1 = nativeGetType(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2);
-      return paramInt1;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  @Deprecated
-  public boolean isBlob(int paramInt1, int paramInt2)
-  {
-    paramInt1 = getType(paramInt1, paramInt2);
-    return (paramInt1 == 4) || (paramInt1 == 0);
-  }
-  
-  @Deprecated
-  public boolean isFloat(int paramInt1, int paramInt2)
-  {
-    return getType(paramInt1, paramInt2) == 2;
-  }
-  
-  @Deprecated
-  public boolean isLong(int paramInt1, int paramInt2)
-  {
-    return getType(paramInt1, paramInt2) == 1;
-  }
-  
-  @Deprecated
-  public boolean isNull(int paramInt1, int paramInt2)
-  {
-    return getType(paramInt1, paramInt2) == 0;
-  }
-  
-  @Deprecated
-  public boolean isString(int paramInt1, int paramInt2)
-  {
-    paramInt1 = getType(paramInt1, paramInt2);
-    return (paramInt1 == 3) || (paramInt1 == 0);
-  }
-  
-  protected void onAllReferencesReleased()
-  {
-    dispose();
-  }
-  
-  public boolean putBlob(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      boolean bool = nativePutBlob(this.mWindowPtr, paramArrayOfByte, paramInt1 - this.mStartPos, paramInt2);
-      return bool;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public boolean putDouble(double paramDouble, int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      boolean bool = nativePutDouble(this.mWindowPtr, paramDouble, paramInt1 - this.mStartPos, paramInt2);
-      return bool;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public boolean putLong(long paramLong, int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      boolean bool = nativePutLong(this.mWindowPtr, paramLong, paramInt1 - this.mStartPos, paramInt2);
-      return bool;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public boolean putNull(int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      boolean bool = nativePutNull(this.mWindowPtr, paramInt1 - this.mStartPos, paramInt2);
-      return bool;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public boolean putString(String paramString, int paramInt1, int paramInt2)
-  {
-    acquireReference();
-    try
-    {
-      boolean bool = nativePutString(this.mWindowPtr, paramString, paramInt1 - this.mStartPos, paramInt2);
-      return bool;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public boolean setNumColumns(int paramInt)
-  {
-    acquireReference();
-    try
-    {
-      boolean bool = nativeSetNumColumns(this.mWindowPtr, paramInt);
-      return bool;
-    }
-    finally
-    {
-      releaseReference();
-    }
-  }
-  
-  public void setStartPosition(int paramInt)
-  {
-    this.mStartPos = paramInt;
-  }
-  
   public String toString()
   {
-    return getName() + " {" + Long.toHexString(this.mWindowPtr) + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" {");
+    localStringBuilder.append(Long.toHexString(this.a));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

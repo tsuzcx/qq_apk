@@ -6,7 +6,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import iae;
+import iad;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -276,7 +276,7 @@ public class PluginInfoUtil
   
   public static File[] a(File paramFile)
   {
-    return paramFile.listFiles(new iae());
+    return paramFile.listFiles(new iad());
   }
 }
 

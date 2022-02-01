@@ -10,9 +10,9 @@ public final class LastLoginInfo
   public static final long TYPE_LONG_OFFLINE = 20L;
   public static final long TYPE_OFFLINE = 10L;
   public static final long TYPE_OFFLINE_TO_LEAVE_MSG = 1L;
-  public long dwClient;
-  public long dwFriendUin;
-  public long dwLastLoginType;
+  public long dwClient = 0L;
+  public long dwFriendUin = 0L;
+  public long dwLastLoginType = 0L;
   
   public LastLoginInfo() {}
   
@@ -39,7 +39,7 @@ public final class LastLoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.LastLoginInfo
  * JD-Core Version:    0.7.0.1
  */

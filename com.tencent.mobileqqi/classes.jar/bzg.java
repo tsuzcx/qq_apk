@@ -1,3 +1,4 @@
+import android.os.Handler;
 import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bzg
@@ -7,7 +8,8 @@ public class bzg
   
   public void run()
   {
-    this.a.v();
+    ChatActivity.a(this.a);
+    this.a.a.postDelayed(new bzh(this), 10L);
   }
 }
 

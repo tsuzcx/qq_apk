@@ -23,16 +23,14 @@ public final class l
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof l)) {
-        return false;
-      }
-      paramObject = (l)paramObject;
-    } while ((this.a.equals(paramObject.a)) && (this.b == paramObject.b) && (this.c == paramObject.c));
-    return false;
+    }
+    if (!(paramObject instanceof l)) {
+      return false;
+    }
+    paramObject = (l)paramObject;
+    return (this.a.equals(paramObject.a)) && (this.b == paramObject.b) && (this.c == paramObject.c);
   }
   
   public final int hashCode()
@@ -53,7 +51,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.a.l
  * JD-Core Version:    0.7.0.1
  */

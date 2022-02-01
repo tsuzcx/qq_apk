@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.data.nativemonitor;
 
-import atgw;
+import com.tencent.mobileqq.jsonconverter.Alias;
 
 public class NativeMonitorConfig
 {
-  @atgw(a="androidVersionBlackList")
-  private String androidVersionBlackList;
-  @atgw(a="countLimted")
+  @Alias(a="androidVersionBlackList")
+  private String androidVersionBlackList = null;
+  @Alias(a="countLimted")
   private long countLimted = 1000L;
-  @atgw(a="memoryLimited")
+  @Alias(a="memoryLimited")
   private long memoryLimited = 5242880L;
-  @atgw(a="nativeMonitorOpened")
-  private int nativeMonitorOpened;
-  @atgw(a="processBlackList")
-  private String processBlackList;
-  @atgw(a="soHook")
-  public int soHook;
-  @atgw(a="soWhiteList")
-  private String soWhiteList;
-  @atgw(a="switchFlag")
-  private long switchFlag;
-  @atgw(a="timeLimited")
+  @Alias(a="nativeMonitorOpened")
+  private int nativeMonitorOpened = 0;
+  @Alias(a="processBlackList")
+  private String processBlackList = null;
+  @Alias(a="soHook")
+  public int soHook = 0;
+  @Alias(a="soWhiteList")
+  private String soWhiteList = null;
+  @Alias(a="switchFlag")
+  private long switchFlag = 0L;
+  @Alias(a="timeLimited")
   private long timeLimited = 1000000L;
-  @atgw(a="tmChance")
-  private long tmChance;
+  @Alias(a="tmChance")
+  private long tmChance = 0L;
   
   public String getAndroidVersionBlackList()
   {
@@ -93,15 +93,24 @@ public class NativeMonitorConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("nativeMonitorOpened:").append(this.nativeMonitorOpened);
-    localStringBuilder.append("|switchFlag:").append(this.switchFlag);
-    localStringBuilder.append("|soWhiteList:").append(this.soWhiteList);
-    localStringBuilder.append("|androidVersionBlackList:").append(this.androidVersionBlackList);
-    localStringBuilder.append("|timeLimited:").append(this.timeLimited);
-    localStringBuilder.append("|countLimited:").append(this.countLimted);
-    localStringBuilder.append("|memoryLimited:").append(this.memoryLimited);
-    localStringBuilder.append("|processBlackList:").append(this.processBlackList);
-    localStringBuilder.append("|tmChance:").append(this.tmChance);
+    localStringBuilder.append("nativeMonitorOpened:");
+    localStringBuilder.append(this.nativeMonitorOpened);
+    localStringBuilder.append("|switchFlag:");
+    localStringBuilder.append(this.switchFlag);
+    localStringBuilder.append("|soWhiteList:");
+    localStringBuilder.append(this.soWhiteList);
+    localStringBuilder.append("|androidVersionBlackList:");
+    localStringBuilder.append(this.androidVersionBlackList);
+    localStringBuilder.append("|timeLimited:");
+    localStringBuilder.append(this.timeLimited);
+    localStringBuilder.append("|countLimited:");
+    localStringBuilder.append(this.countLimted);
+    localStringBuilder.append("|memoryLimited:");
+    localStringBuilder.append(this.memoryLimited);
+    localStringBuilder.append("|processBlackList:");
+    localStringBuilder.append(this.processBlackList);
+    localStringBuilder.append("|tmChance:");
+    localStringBuilder.append(this.tmChance);
     return localStringBuilder.toString();
   }
   

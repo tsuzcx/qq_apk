@@ -10,10 +10,10 @@ import android.widget.ListView;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.upload.uinterface.Utility;
+import icb;
 import icc;
 import icd;
 import ice;
-import icf;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -108,15 +108,15 @@ public class UploadServerSetting
   {
     paramContext = new QQCustomDialog(paramContext, 2131624405);
     paramContext.setContentView(2130903912);
-    EditText localEditText1 = (EditText)paramContext.findViewById(2131234307);
-    EditText localEditText2 = (EditText)paramContext.findViewById(2131234308);
+    EditText localEditText1 = (EditText)paramContext.findViewById(2131234306);
+    EditText localEditText2 = (EditText)paramContext.findViewById(2131234307);
     if (!TextUtils.isEmpty(this.e))
     {
       localEditText1.setText(this.e);
       localEditText2.setText(this.i + "");
     }
-    paramContext.setNegativeButton(paramInt1, new icd(this, paramContext));
-    paramContext.setPositiveButton(paramInt2, new ice(this, localEditText1, localEditText2, paramContext));
+    paramContext.setNegativeButton(paramInt1, new icc(this, paramContext));
+    paramContext.setPositiveButton(paramInt2, new icd(this, localEditText1, localEditText2, paramContext));
     paramContext.setCanceledOnTouchOutside(true);
     return paramContext;
   }
@@ -149,11 +149,11 @@ public class UploadServerSetting
     super.onCreate(paramBundle);
     b();
     c();
-    paramBundle = new icf(this, this.jdField_a_of_type_JavaUtilArrayList);
+    paramBundle = new ice(this, this.jdField_a_of_type_JavaUtilArrayList);
     setContentView(2130903909);
-    ListView localListView = (ListView)findViewById(2131234284);
+    ListView localListView = (ListView)findViewById(2131234283);
     localListView.setAdapter(paramBundle);
-    localListView.setOnItemClickListener(new icc(this));
+    localListView.setOnItemClickListener(new icb(this));
   }
 }
 

@@ -9,10 +9,10 @@ public final class sweet_pair_check_req
   extends JceStruct
 {
   static sweet_req_comm cache_req_comm = new sweet_req_comm();
-  public boolean check_qqfriend;
-  public boolean need_check_visit_right;
-  public boolean need_get_invite_lst;
-  public sweet_req_comm req_comm;
+  public boolean check_qqfriend = false;
+  public boolean need_check_visit_right = false;
+  public boolean need_get_invite_lst = false;
+  public sweet_req_comm req_comm = null;
   
   public sweet_pair_check_req() {}
   
@@ -42,7 +42,7 @@ public final class sweet_pair_check_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_PAIR.sweet_pair_check_req
  * JD-Core Version:    0.7.0.1
  */

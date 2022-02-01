@@ -1,16 +1,29 @@
-import com.tencent.mobileqq.startup.director.StartupDirector;
-import mqq.app.AppActivity;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import android.util.Pair;
 
 public class gjy
-  implements Runnable
+  extends MQLruCache
 {
-  public gjy(StartupDirector paramStartupDirector, AppActivity paramAppActivity) {}
-  
-  public void run()
+  public gjy(Integer paramInteger)
   {
-    this.jdField_a_of_type_MqqAppAppActivity.superFinish();
-    System.exit(0);
+    super(paramInteger.intValue());
   }
+  
+  protected int a(String paramString, Object paramObject)
+  {
+    if ((paramObject instanceof Pair)) {
+      return ((Integer)((Pair)paramObject).second).intValue();
+    }
+    if ((paramObject instanceof Bitmap))
+    {
+      paramString = (Bitmap)paramObject;
+      return paramString.getRowBytes() * paramString.getHeight();
+    }
+    return 12;
+  }
+  
+  public void a(String paramString, int paramInt) {}
 }
 
 

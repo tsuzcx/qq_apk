@@ -1,80 +1,89 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.os.Looper;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.memory.b.a;
+import com.tencent.mm.memory.m;
+import com.tencent.mm.plugin.sns.data.t;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class ao
+  extends a
 {
-  private static final Map<String, String> ril;
+  private Map<String, Boolean> Qwq;
+  int alpha;
+  boolean animating;
+  long cmk;
   
-  static
+  public ao(String paramString, m paramm, long paramLong)
   {
-    AppMethodBeat.i(36599);
-    ril = new HashMap();
-    AppMethodBeat.o(36599);
-  }
-  
-  public static String gl(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(36597);
-    if (paramString2 == null)
+    super(paramString, paramm);
+    AppMethodBeat.i(95854);
+    this.animating = false;
+    this.alpha = 255;
+    this.Qwq = new HashMap();
+    if (paramLong != 0L)
     {
-      AppMethodBeat.o(36597);
-      return "";
-    }
-    boolean bool = Looper.getMainLooper().equals(Looper.myLooper());
-    if ((bool) && (ril.containsKey(paramString1 + paramString2)))
-    {
-      str = (String)ril.get(paramString1 + paramString2);
-      if (!bo.isNullOrNil(str))
-      {
-        AppMethodBeat.o(36597);
-        return str;
-      }
-    }
-    String str = g.w(paramString2.getBytes());
-    StringBuffer localStringBuffer = new StringBuffer(paramString1);
-    if (str.length() > 0)
-    {
-      localStringBuffer.append(str.charAt(0));
-      localStringBuffer.append("/");
-    }
-    if (str.length() >= 2)
-    {
-      localStringBuffer.append(str.charAt(1));
-      localStringBuffer.append("/");
-    }
-    if (bool) {
-      ril.put(paramString1 + paramString2, localStringBuffer.toString());
-    }
-    paramString1 = localStringBuffer.toString();
-    AppMethodBeat.o(36597);
-    return paramString1;
-  }
-  
-  public static void release()
-  {
-    try
-    {
-      AppMethodBeat.i(36598);
-      ril.clear();
-      AppMethodBeat.o(36598);
+      this.cmk = paramLong;
+      this.Qwq.put(paramString, Boolean.TRUE);
+      this.animating = true;
+      AppMethodBeat.o(95854);
       return;
     }
-    finally
+    if (!this.Qwq.containsKey(paramString))
     {
-      localObject = finally;
-      throw localObject;
+      this.cmk = SystemClock.uptimeMillis();
+      this.Qwq.put(paramString, Boolean.TRUE);
+      this.animating = true;
     }
+    AppMethodBeat.o(95854);
+  }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(95855);
+    Rect localRect = getBounds();
+    Bitmap localBitmap = this.nOC.bvR();
+    if (!t.S(localBitmap))
+    {
+      paramCanvas.drawColor(-1118482);
+      this.cmk = 0L;
+      AppMethodBeat.o(95855);
+      return;
+    }
+    float f;
+    if (this.animating)
+    {
+      f = (float)(SystemClock.uptimeMillis() - this.cmk) / 150.0F;
+      if (this.cmk == 0L) {
+        f = 0.0F;
+      }
+      if (f >= 1.0F) {
+        this.animating = false;
+      }
+    }
+    else
+    {
+      this.nOA.setAlpha(this.alpha);
+      paramCanvas.drawBitmap(localBitmap, null, localRect, this.nOA);
+      AppMethodBeat.o(95855);
+      return;
+    }
+    int i = (int)(f * this.alpha);
+    this.nOA.setAlpha(i);
+    paramCanvas.drawBitmap(localBitmap, null, localRect, this.nOA);
+    invalidateSelf();
+    AppMethodBeat.o(95855);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ao
  * JD-Core Version:    0.7.0.1
  */

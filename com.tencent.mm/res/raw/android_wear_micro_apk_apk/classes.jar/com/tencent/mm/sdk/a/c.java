@@ -9,28 +9,28 @@ import java.util.LinkedList;
 final class c
   extends com.tencent.mm.vending.b.a<e>
 {
-  public final void a(com.tencent.mm.vending.i.a parama)
+  public final void a(com.tencent.mm.vending.j.a parama)
   {
-    LinkedList localLinkedList = lD();
-    parama = (d)parama.lK();
+    LinkedList localLinkedList = mk();
+    parama = (d)parama.mx();
     if (parama == null) {
       f.c("MicroMsg.EventCenter", "event is null! fatal!");
     }
     do
     {
       return;
-      if (parama.lc()) {
+      if (parama.lo()) {
         Collections.sort(localLinkedList, new Comparator() {});
       }
       b[] arrayOfb = new b[localLinkedList.size()];
       localLinkedList.toArray(arrayOfb);
       int j = arrayOfb.length;
       int i = 0;
-      while ((i < j) && ((!((e)arrayOfb[i].get()).b(parama)) || (!parama.lc()))) {
+      while ((i < j) && ((!((e)arrayOfb[i].get()).b(parama)) || (!parama.lo()))) {
         i += 1;
       }
-    } while (parama.WP == null);
-    parama.WP.run();
+    } while (parama.YK == null);
+    parama.YK.run();
   }
   
   public final void c(e parame)

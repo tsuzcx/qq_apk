@@ -1,54 +1,62 @@
 package com.tencent.mobileqq.ocr;
 
-import anbq;
-import avxb;
-import avxd;
-import avxe;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ocr.api.IOCR;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class OcrControl$1
+class OcrControl$1
   implements Runnable
 {
-  public OcrControl$1(avxb paramavxb, String paramString1, boolean paramBoolean, String paramString2) {}
+  OcrControl$1(OcrControl paramOcrControl, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    if (avxe.a(this.jdField_a_of_type_JavaLangString))
+    if (((IOCR)QRoute.api(IOCR.class)).checkImageFormat(this.a))
     {
-      localObject = avxe.a(new File(this.jdField_a_of_type_JavaLangString).getName(), false);
-      if ((this.jdField_a_of_type_Boolean) && (avxe.a(this.jdField_a_of_type_JavaLangString, (String)localObject)))
+      Object localObject1 = ((IOCR)QRoute.api(IOCR.class)).getImagePath(new File(this.a).getName(), false);
+      if ((this.b) && (((IOCR)QRoute.api(IOCR.class)).compressImage(this.a, (String)localObject1)))
       {
-        localanbq = new anbq();
-        localanbq.jdField_a_of_type_JavaLangString = ((String)localObject);
-        localanbq.jdField_a_of_type_Int = 0;
-        localanbq.b = this.jdField_a_of_type_JavaLangString;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.ocr.control", 2, "upload pic size:" + new File((String)localObject).length() / 1024L + "KB");
+        localObject2 = new ARCloudReqFileInfo();
+        ((ARCloudReqFileInfo)localObject2).a = ((String)localObject1);
+        ((ARCloudReqFileInfo)localObject2).b = 0;
+        ((ARCloudReqFileInfo)localObject2).e = this.a;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("upload pic size:");
+          localStringBuilder.append(new File((String)localObject1).length() / 1024L);
+          localStringBuilder.append("KB");
+          QLog.d("Q.ocr.control", 2, localStringBuilder.toString());
         }
-        this.this$0.a(localanbq, this.b);
+        this.this$0.a((ARCloudReqFileInfo)localObject2, this.c);
+        return;
       }
-    }
-    while (avxb.a(this.this$0) == null)
-    {
-      anbq localanbq;
-      return;
-      Object localObject = new anbq();
-      ((anbq)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((anbq)localObject).jdField_a_of_type_Int = 0;
-      ((anbq)localObject).b = this.jdField_a_of_type_JavaLangString;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.ocr.control", 2, "upload pic size:" + new File(this.jdField_a_of_type_JavaLangString).length() / 1024L + "KB");
+      localObject1 = new ARCloudReqFileInfo();
+      Object localObject2 = this.a;
+      ((ARCloudReqFileInfo)localObject1).a = ((String)localObject2);
+      ((ARCloudReqFileInfo)localObject1).b = 0;
+      ((ARCloudReqFileInfo)localObject1).e = ((String)localObject2);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("upload pic size:");
+        ((StringBuilder)localObject2).append(new File(this.a).length() / 1024L);
+        ((StringBuilder)localObject2).append("KB");
+        QLog.d("Q.ocr.control", 2, ((StringBuilder)localObject2).toString());
       }
-      this.this$0.a((anbq)localObject, this.b);
+      this.this$0.a((ARCloudReqFileInfo)localObject1, this.c);
       return;
     }
-    avxb.a(this.this$0).a(1, null, this.jdField_a_of_type_JavaLangString, 0L);
+    if (OcrControl.a(this.this$0) != null) {
+      OcrControl.a(this.this$0).a(1, null, this.a, 0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.1
  * JD-Core Version:    0.7.0.1
  */

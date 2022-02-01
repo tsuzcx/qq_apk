@@ -2,35 +2,45 @@ package com.tencent.mobileqq.webview.swift.component;
 
 import android.graphics.Bitmap;
 import android.os.Environment;
-import bddt;
-import bdzf;
-import beie;
-import beig;
+import com.tencent.mobileqq.util.ScreenShotUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import java.io.File;
 
-public class SwiftBrowserMiscHandler$3
+class SwiftBrowserMiscHandler$3
   implements Runnable
 {
-  public SwiftBrowserMiscHandler$3(beie parambeie, Bitmap paramBitmap, beig parambeig) {}
+  SwiftBrowserMiscHandler$3(SwiftBrowserMiscHandler paramSwiftBrowserMiscHandler, Bitmap paramBitmap, SwiftBrowserMiscHandler.ScreenShotCallback paramScreenShotCallback) {}
   
   public void run()
   {
-    Object localObject = "";
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Object localObject1;
+    if (this.a != null)
     {
-      localObject = new File(bdzf.a(Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/ShareScreenShots"));
-      String str = "ShareScreenShot_" + System.currentTimeMillis() + ".jpg";
-      localObject = bddt.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject, str);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory());
+      ((StringBuilder)localObject1).append("/tencent/MobileQQ/ShareScreenShots");
+      localObject1 = new File(VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString()));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ShareScreenShot_");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis());
+      ((StringBuilder)localObject2).append(".jpg");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = ScreenShotUtil.a(this.a, (File)localObject1, (String)localObject2);
       this.this$0.a = true;
     }
-    if (this.jdField_a_of_type_Beig != null) {
-      this.jdField_a_of_type_Beig.a((String)localObject);
+    else
+    {
+      localObject1 = "";
+    }
+    Object localObject2 = this.b;
+    if (localObject2 != null) {
+      ((SwiftBrowserMiscHandler.ScreenShotCallback)localObject2).a((String)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:id="@id/d0" android:layout_width="fill_parent" android:layout_height="@dimen/hz" style="@style/action_sheet_secondary_title_style" />
+    <View android:background="#ffd2d4d9" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

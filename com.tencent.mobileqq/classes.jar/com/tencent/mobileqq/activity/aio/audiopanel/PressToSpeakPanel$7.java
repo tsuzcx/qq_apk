@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import alud;
 import android.widget.TextView;
-import awxo;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.ptt.IPttAudioDataManager;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class PressToSpeakPanel$7
   implements Runnable
@@ -11,30 +12,30 @@ class PressToSpeakPanel$7
   
   public void run()
   {
-    if (PressToSpeakPanel.a(this.this$0).a()) {
-      this.this$0.b(this.jdField_a_of_type_Int);
+    if (PressToSpeakPanel.f(this.this$0).a()) {
+      this.this$0.a(this.a);
     }
-    if (PressToSpeakPanel.c(this.this$0) == 1)
+    if (PressToSpeakPanel.g(this.this$0) == 1)
     {
-      if (this.this$0.b())
+      if (this.this$0.i())
       {
-        PressToSpeakPanel.a(this.this$0).setText(alud.a(2131708801));
+        PressToSpeakPanel.h(this.this$0).setText(HardCodeUtil.a(2131906189));
         return;
       }
-      PressToSpeakPanel.a(this.this$0).setText(alud.a(2131708799));
+      PressToSpeakPanel.h(this.this$0).setText(HardCodeUtil.a(2131906187));
       return;
     }
-    if (PressToSpeakPanel.c(this.this$0) == 2)
+    if (PressToSpeakPanel.g(this.this$0) == 2)
     {
-      PressToSpeakPanel.a(this.this$0).setText(alud.a(2131708796));
+      PressToSpeakPanel.h(this.this$0).setText(HardCodeUtil.a(2131906184));
       return;
     }
-    PressToSpeakPanel.a(this.this$0).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+    PressToSpeakPanel.h(this.this$0).setText(((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getTimeStrByMillis(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.7
  * JD-Core Version:    0.7.0.1
  */

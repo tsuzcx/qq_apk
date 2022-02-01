@@ -15,24 +15,23 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdnn;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager.a;
-import com.tencent.mobileqq.microapp.apkg.f;
-import com.tencent.mobileqq.microapp.apkg.r;
-import com.tencent.mobileqq.microapp.apkg.t;
-import com.tencent.mobileqq.microapp.app.b;
-import com.tencent.mobileqq.microapp.appbrand.utils.p;
-import com.tencent.mobileqq.microapp.c.c;
+import com.tencent.mobileqq.microapp.apkg.j;
+import com.tencent.mobileqq.microapp.apkg.l;
+import com.tencent.mobileqq.microapp.appbrand.a;
+import com.tencent.mobileqq.microapp.appbrand.b.h;
 import com.tencent.mobileqq.microapp.util.DisplayUtil;
 import com.tencent.mobileqq.microapp.widget.CanvasView;
 import com.tencent.mobileqq.microapp.widget.CoverImageView;
 import com.tencent.mobileqq.microapp.widget.CoverView;
 import com.tencent.mobileqq.microapp.widget.MapContext;
 import com.tencent.mobileqq.microapp.widget.MiniAppTextArea;
-import com.tencent.mobileqq.microapp.widget.d;
+import com.tencent.mobileqq.microapp.widget.g;
 import com.tencent.mobileqq.microapp.widget.media.MiniAppCamera;
 import com.tencent.mobileqq.microapp.widget.media.MiniAppVideoPlayer;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQMapView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -45,8 +44,8 @@ public class WebviewContainer
   implements SwipeRefreshLayout.OnRefreshListener, PageWebview.OnWebviewScrollListener
 {
   public static final String TAG = "WebViewContainer";
-  protected f apkgInfo;
-  public com.tencent.mobileqq.microapp.appbrand.a appBrandRuntime;
+  protected c apkgInfo$5475ea27;
+  public a appBrandRuntime;
   private SparseArray appTextAreaSparseArray = new SparseArray();
   private SparseArray cameraViewSparseArray = new SparseArray();
   private SparseArray canvasSparseArray = new SparseArray();
@@ -58,23 +57,23 @@ public class WebviewContainer
   private CanvasView mCurrCanvas;
   private SparseArray mTextViewSparseArray = new SparseArray();
   private SparseArray mapContextArray;
-  private d miniAppFileView;
-  protected r pageInfo;
+  private com.tencent.mobileqq.microapp.widget.b miniAppFileView;
+  protected j pageInfo;
   private PageWebview pageWebview;
   public SwipeRefreshLayout swipeRefreshLayout;
   private SparseArray videoPlayerSparseArray = new SparseArray();
   
-  public WebviewContainer(Context paramContext, com.tencent.mobileqq.microapp.appbrand.a parama, f paramf, String paramString)
+  public WebviewContainer(Context paramContext, a parama, c paramc, String paramString)
   {
     super(paramContext);
     this.density = DisplayUtil.getDensity(paramContext);
     this.appBrandRuntime = parama;
-    this.apkgInfo = paramf;
-    this.pageInfo = paramf.b.d(paramString);
+    this.apkgInfo$5475ea27 = paramc;
+    this.pageInfo = paramc.b.b(paramString);
     this.componentLayout = new FrameLayout(getContext());
     this.mapContextArray = new SparseArray();
     this.swipeRefreshLayout = new SwipeRefreshLayout(getContext());
-    this.swipeRefreshLayout.setEnabled(this.pageInfo.a.d);
+    this.swipeRefreshLayout.setEnabled(this.pageInfo.a.b);
     this.swipeRefreshLayout.setOnRefreshListener(this);
     addView(this.swipeRefreshLayout, new FrameLayout.LayoutParams(-1, -1));
     notifyChangePullDownRefreshStyle();
@@ -82,12 +81,16 @@ public class WebviewContainer
   
   private String getActualColor(String paramString)
   {
-    if (bdnn.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
     paramString = paramString.substring(1, paramString.length() - 2);
-    return "#" + str + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("#");
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   private FrameLayout.LayoutParams getLayoutParams(int paramInt)
@@ -162,12 +165,9 @@ public class WebviewContainer
     int m = ((JSONObject)localObject).optInt("height");
     float f = this.density;
     j = (int)(j * f + 0.5F);
-    f = this.density;
     m = (int)(m * f + 0.5F);
-    f = this.density;
     k = (int)(k * f + 0.5F);
-    f = this.density;
-    i = (int)(i * f + 0.5F);
+    i = (int)(f * i + 0.5F);
     localObject = new FrameLayout.LayoutParams(j, m);
     ((FrameLayout.LayoutParams)localObject).leftMargin = k;
     ((FrameLayout.LayoutParams)localObject).topMargin = i;
@@ -178,16 +178,13 @@ public class WebviewContainer
   {
     if (this.pageWebview != null)
     {
-      paramString = com.tencent.mobileqq.microapp.b.a.b(paramString, paramJSONObject);
-      if (paramString == null) {
-        break label32;
+      paramString = c.b(paramString, paramJSONObject);
+      if (paramString != null) {
+        paramString = paramString.toString();
+      } else {
+        paramString = "";
       }
-    }
-    label32:
-    for (paramString = paramString.toString();; paramString = "")
-    {
       this.pageWebview.evaluateCallbackJs(paramInt, paramString);
-      return;
     }
   }
   
@@ -195,32 +192,29 @@ public class WebviewContainer
   {
     if (this.pageWebview != null)
     {
-      paramString = com.tencent.mobileqq.microapp.b.a.a(paramString, paramJSONObject);
-      if (paramString == null) {
-        break label32;
+      paramString = c.a(paramString, paramJSONObject);
+      if (paramString != null) {
+        paramString = paramString.toString();
+      } else {
+        paramString = "";
       }
-    }
-    label32:
-    for (paramString = paramString.toString();; paramString = "")
-    {
       this.pageWebview.evaluateCallbackJs(paramInt, paramString);
-      return;
     }
   }
   
   public void destroy()
   {
-    int j = 0;
     if (QLog.isDevelopLevel()) {
       QLog.i("WebViewContainer", 2, "-----destroy----");
     }
-    if (this.pageWebview != null)
+    Object localObject = this.pageWebview;
+    if (localObject != null)
     {
-      this.swipeRefreshLayout.removeView(this.pageWebview);
+      this.swipeRefreshLayout.removeView((View)localObject);
       this.pageWebview.destroy();
     }
+    int j = 0;
     int i = 0;
-    Object localObject;
     while (i < this.videoPlayerSparseArray.size())
     {
       localObject = (MiniAppVideoPlayer)this.videoPlayerSparseArray.valueAt(i);
@@ -228,7 +222,7 @@ public class WebviewContainer
       {
         ((MiniAppVideoPlayer)localObject).a();
         ((MiniAppVideoPlayer)localObject).d();
-        b.a().deleteObserver(((MiniAppVideoPlayer)localObject).q);
+        com.tencent.mobileqq.microapp.app.b.a().deleteObserver(((MiniAppVideoPlayer)localObject).q);
         this.componentLayout.removeView((View)localObject);
       }
       i += 1;
@@ -248,10 +242,11 @@ public class WebviewContainer
     this.cameraViewSparseArray.clear();
     this.imageViewSparseArray.clear();
     this.mapContextArray.clear();
-    if (this.innerWebView != null)
+    localObject = this.innerWebView;
+    if (localObject != null)
     {
-      this.componentLayout.removeView(this.innerWebView);
-      p.a().a(this.innerWebView, getContext());
+      this.componentLayout.removeView((View)localObject);
+      h.a().a(this.innerWebView, getContext());
     }
   }
   
@@ -280,34 +275,35 @@ public class WebviewContainer
   
   public boolean handleBackPressed()
   {
-    boolean bool = false;
-    if ((this.innerWebView != null) && (this.innerWebView.canGoBack()))
+    Object localObject = this.innerWebView;
+    if ((localObject != null) && (((ProgressWebView)localObject).canGoBack()))
     {
       this.innerWebView.goBack();
-      bool = true;
+      return true;
     }
-    do
+    int i = 0;
+    while (i < this.videoPlayerSparseArray.size())
     {
-      return bool;
-      int i = 0;
-      while (i < this.videoPlayerSparseArray.size())
+      localObject = (MiniAppVideoPlayer)this.videoPlayerSparseArray.valueAt(i);
+      if (((MiniAppVideoPlayer)localObject).p)
       {
-        MiniAppVideoPlayer localMiniAppVideoPlayer = (MiniAppVideoPlayer)this.videoPlayerSparseArray.valueAt(i);
-        if (localMiniAppVideoPlayer.p)
-        {
-          localMiniAppVideoPlayer.g();
-          return true;
-        }
-        i += 1;
+        ((MiniAppVideoPlayer)localObject).g();
+        return true;
       }
-    } while (this.miniAppFileView == null);
-    this.miniAppFileView.a();
-    this.miniAppFileView.a(this.componentLayout);
-    this.miniAppFileView = null;
-    return true;
+      i += 1;
+    }
+    localObject = this.miniAppFileView;
+    if (localObject != null)
+    {
+      ((com.tencent.mobileqq.microapp.widget.b)localObject).a();
+      this.miniAppFileView.a(this.componentLayout);
+      this.miniAppFileView = null;
+      return true;
+    }
+    return false;
   }
   
-  public void insertCamera$6f1019db$e44775(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ApkgConfigManager.a parama)
+  public void insertCamera$6f1019db(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ApkgConfigManager.a parama)
   {
     MiniAppCamera localMiniAppCamera2 = (MiniAppCamera)this.cameraViewSparseArray.get(paramInt1);
     MiniAppCamera localMiniAppCamera1 = localMiniAppCamera2;
@@ -318,10 +314,11 @@ public class WebviewContainer
     }
     localMiniAppCamera1.a(parama);
     localMiniAppCamera1.c();
-    paramInt1 = (int)(this.density * paramInt4 + 0.5F);
-    paramInt4 = (int)(this.density * paramInt5 + 0.5F);
-    paramInt2 = (int)(this.density * paramInt2 + 0.5F);
-    paramInt3 = (int)(this.density * paramInt3 + 0.5F);
+    float f = this.density;
+    paramInt1 = (int)(paramInt4 * f + 0.5F);
+    paramInt4 = (int)(paramInt5 * f + 0.5F);
+    paramInt2 = (int)(paramInt2 * f + 0.5F);
+    paramInt3 = (int)(f * paramInt3 + 0.5F);
     MiniAppCamera.h = paramInt1;
     MiniAppCamera.i = paramInt4;
     parama = new FrameLayout.LayoutParams(paramInt1, paramInt4);
@@ -335,14 +332,21 @@ public class WebviewContainer
     int i = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
     int j = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
     int k = this.pageWebview.getMeasuredHeight();
-    if (QLog.isColorLevel()) {
-      QLog.i("WebViewContainer", 2, "insertCanvas currentWebview.getMeasuredHeight: " + k + "---canvas height----" + paramJSONObject.optInt("height") + "---" + j);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("insertCanvas currentWebview.getMeasuredHeight: ");
+      localStringBuilder.append(k);
+      localStringBuilder.append("---canvas height----");
+      localStringBuilder.append(paramJSONObject.optInt("height"));
+      localStringBuilder.append("---");
+      localStringBuilder.append(j);
+      QLog.i("WebViewContainer", 2, localStringBuilder.toString());
     }
     k = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
     int m = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
-    CanvasView localCanvasView = (CanvasView)this.canvasSparseArray.get(paramInt);
-    paramJSONObject = localCanvasView;
-    if (localCanvasView == null)
+    paramJSONObject = (CanvasView)this.canvasSparseArray.get(paramInt);
+    if (paramJSONObject == null)
     {
       paramJSONObject = new CanvasView(getContext(), this, this.appBrandRuntime.c, paramString, paramInt, paramBoolean2);
       this.canvasSparseArray.put(paramInt, paramJSONObject);
@@ -361,7 +365,7 @@ public class WebviewContainer
   {
     if (this.miniAppFileView == null)
     {
-      this.miniAppFileView = new d(getContext());
+      this.miniAppFileView = new com.tencent.mobileqq.microapp.widget.b(getContext());
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(getPageWebview().getWidth(), getPageWebview().getHeight());
       localLayoutParams.leftMargin = 0;
       localLayoutParams.topMargin = 0;
@@ -372,25 +376,44 @@ public class WebviewContainer
   
   public void insertHTMLWebView(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewContainer", 2, "insertHTMLWebView htmlId=" + paramInt1 + ",innerWebView=" + this.innerWebView);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("insertHTMLWebView htmlId=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(",innerWebView=");
+      ((StringBuilder)localObject).append(this.innerWebView);
+      QLog.d("WebViewContainer", 2, ((StringBuilder)localObject).toString());
     }
     if (this.innerWebView != null) {
       return;
     }
-    paramInt4 = (int)(this.density * paramInt4 + 0.5F);
-    paramInt5 = (int)(this.density * paramInt5 + 0.5F);
-    paramInt2 = (int)(this.density * paramInt2 + 0.5F);
-    paramInt3 = (int)(this.density * paramInt3 + 0.5F);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewContainer", 2, "insertHTMLWebView htmlId=" + paramInt1 + ",left=" + paramInt2 + ",top=" + paramInt3 + ",w=" + paramInt4 + ",h=" + paramInt5);
+    float f = this.density;
+    paramInt4 = (int)(paramInt4 * f + 0.5F);
+    paramInt5 = (int)(paramInt5 * f + 0.5F);
+    paramInt2 = (int)(paramInt2 * f + 0.5F);
+    paramInt3 = (int)(f * paramInt3 + 0.5F);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("insertHTMLWebView htmlId=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(",left=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(",top=");
+      ((StringBuilder)localObject).append(paramInt3);
+      ((StringBuilder)localObject).append(",w=");
+      ((StringBuilder)localObject).append(paramInt4);
+      ((StringBuilder)localObject).append(",h=");
+      ((StringBuilder)localObject).append(paramInt5);
+      QLog.d("WebViewContainer", 2, ((StringBuilder)localObject).toString());
     }
-    this.innerWebView = p.a().a(this.apkgInfo.d, paramInt1);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramInt4, paramInt5);
-    localLayoutParams.leftMargin = paramInt2;
-    localLayoutParams.topMargin = paramInt3;
+    this.innerWebView = h.a().a(this.apkgInfo$5475ea27.d, paramInt1);
+    Object localObject = new FrameLayout.LayoutParams(paramInt4, paramInt5);
+    ((FrameLayout.LayoutParams)localObject).leftMargin = paramInt2;
+    ((FrameLayout.LayoutParams)localObject).topMargin = paramInt3;
     this.innerWebView.setVisibility(8);
-    this.componentLayout.addView(this.innerWebView, localLayoutParams);
+    this.componentLayout.addView(this.innerWebView, (ViewGroup.LayoutParams)localObject);
   }
   
   public void insertImageView(JSONObject paramJSONObject, String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean)
@@ -408,82 +431,85 @@ public class WebviewContainer
     if (localLayoutParams == null) {
       localObject2 = new FrameLayout.LayoutParams(-2, -2);
     }
-    if ((bdnn.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https")))) {}
-    for (;;)
-    {
-      try
+    if (!StringUtil.isEmpty(paramString2)) {
+      if ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))
       {
-        paramString2 = URLDrawable.getDrawable(paramString2, null);
-        if (paramString2 != null) {
-          ((CoverImageView)localObject1).setImageDrawable(paramString2);
+        paramString2 = this.appBrandRuntime.c.j(paramString2);
+        if (!StringUtil.isEmpty(paramString2)) {
+          ((CoverImageView)localObject1).setImageBitmap(c.q(paramString2));
         }
       }
-      catch (OutOfMemoryError paramString2)
+      else
       {
-        int i;
-        int j;
-        paramString2.printStackTrace();
-        continue;
-      }
-      ((CoverImageView)localObject1).setClickable(true);
-      ((CoverImageView)localObject1).setOnClickListener(new WebviewContainer.2(this, paramString1));
-      paramInt1 = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
-      paramInt2 = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
-      i = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
-      j = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
-      paramJSONObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
-      paramJSONObject.leftMargin = (((FrameLayout.LayoutParams)localObject2).leftMargin + i);
-      paramJSONObject.topMargin = (((FrameLayout.LayoutParams)localObject2).topMargin + j);
-      this.componentLayout.addView((View)localObject1, paramJSONObject);
-      return;
-      paramString2 = this.appBrandRuntime.c.j(paramString2);
-      if (!bdnn.a(paramString2)) {
-        ((CoverImageView)localObject1).setImageBitmap(com.tencent.mobileqq.microapp.b.a.i(paramString2));
+        try
+        {
+          paramString2 = URLDrawable.getDrawable(paramString2, null);
+          if (paramString2 != null) {
+            ((CoverImageView)localObject1).setImageDrawable(paramString2);
+          }
+        }
+        catch (OutOfMemoryError paramString2)
+        {
+          paramString2.printStackTrace();
+        }
       }
     }
+    ((CoverImageView)localObject1).setClickable(true);
+    ((CoverImageView)localObject1).setOnClickListener(new WebviewContainer.2(this, paramString1));
+    paramInt1 = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
+    paramInt2 = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
+    int i = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
+    int j = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
+    paramJSONObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
+    paramJSONObject.leftMargin = (((FrameLayout.LayoutParams)localObject2).leftMargin + i);
+    paramJSONObject.topMargin = (((FrameLayout.LayoutParams)localObject2).topMargin + j);
+    this.componentLayout.addView((View)localObject1, paramJSONObject);
   }
   
   public void insertMap(int paramInt)
   {
     Object localObject = (MapContext)this.mapContextArray.get(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewContainer", 2, "insertMapView mapId=" + paramInt + ",mapContext=" + localObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("insertMapView mapId=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",mapContext=");
+      localStringBuilder.append(localObject);
+      QLog.d("WebViewContainer", 2, localStringBuilder.toString());
     }
     if (localObject != null) {
       return;
     }
     localObject = new QQMapView(getContext(), null);
     this.componentLayout.addView((View)localObject);
-    localObject = new MapContext(this.pageWebview, this.appBrandRuntime.i, (QQMapView)localObject, paramInt, this.apkgInfo);
+    localObject = new MapContext(this.pageWebview, this.appBrandRuntime.i, (QQMapView)localObject, paramInt, this.apkgInfo$5475ea27);
     this.mapContextArray.put(paramInt, localObject);
   }
   
   public void insertTextArea(int paramInt1, String paramString, int paramInt2, JSONObject paramJSONObject)
   {
     paramString = paramJSONObject.optJSONObject("style");
-    int i = (int)(this.density * paramString.optInt("width") + 0.5F);
-    paramInt2 = (int)(this.density * paramString.optInt("height", paramString.optInt("minHeight")) + 0.5F);
-    if (paramInt2 == 0) {
+    int j = (int)(this.density * paramString.optInt("width") + 0.5F);
+    int i = (int)(this.density * paramString.optInt("height", paramString.optInt("minHeight")) + 0.5F);
+    paramInt2 = i;
+    if (i == 0) {
       paramInt2 = -2;
     }
-    for (;;)
+    i = (int)(this.density * paramString.optInt("left") + 0.5F);
+    int k = (int)(this.density * paramString.optInt("top") + 0.5F);
+    MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt1);
+    paramString = localMiniAppTextArea;
+    if (localMiniAppTextArea == null)
     {
-      int j = (int)(this.density * paramString.optInt("left") + 0.5F);
-      int k = (int)(this.density * paramString.optInt("top") + 0.5F);
-      MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.get(paramInt1);
-      paramString = localMiniAppTextArea;
-      if (localMiniAppTextArea == null)
-      {
-        paramString = new MiniAppTextArea(getContext());
-        this.appTextAreaSparseArray.put(paramInt1, paramString);
-      }
-      paramString.a(paramInt1, paramJSONObject, this);
-      paramJSONObject = new FrameLayout.LayoutParams(i, paramInt2);
-      paramJSONObject.leftMargin = j;
-      paramJSONObject.topMargin = (k - getPageWebview().scrollY);
-      this.componentLayout.addView(paramString, paramJSONObject);
-      return;
+      paramString = new MiniAppTextArea(getContext());
+      this.appTextAreaSparseArray.put(paramInt1, paramString);
     }
+    paramString.a(paramInt1, paramJSONObject, this);
+    paramJSONObject = new FrameLayout.LayoutParams(j, paramInt2);
+    paramJSONObject.leftMargin = i;
+    paramJSONObject.topMargin = (k - getPageWebview().scrollY);
+    this.componentLayout.addView(paramString, paramJSONObject);
   }
   
   public void insertTextView(JSONObject paramJSONObject)
@@ -500,13 +526,16 @@ public class WebviewContainer
       this.mTextViewSparseArray.put(i, localObject1);
     }
     Object localObject3 = getLayoutParams(paramJSONObject.optInt("parentId"));
-    QLog.i("WebViewContainer", 2, "insertTextView layoutParams: " + localObject3);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("insertTextView layoutParams: ");
+    ((StringBuilder)localObject2).append(localObject3);
+    QLog.i("WebViewContainer", 2, ((StringBuilder)localObject2).toString());
     localObject2 = localObject3;
     if (localObject3 == null) {
       localObject2 = new FrameLayout.LayoutParams(-2, -2);
     }
     localObject3 = paramJSONObject.optJSONObject("style");
-    if ((localObject3 != null) && (!bdnn.a(getActualColor(((JSONObject)localObject3).optString("bgColor")))))
+    if ((localObject3 != null) && (!StringUtil.isEmpty(getActualColor(((JSONObject)localObject3).optString("bgColor")))))
     {
       ((CoverView)localObject1).setBackgroundColor(Color.parseColor(getActualColor(((JSONObject)localObject3).optString("bgColor"))));
       ((CoverView)localObject1).setScaleX(Float.parseFloat(((JSONObject)localObject3).optString("scaleX")));
@@ -520,43 +549,35 @@ public class WebviewContainer
     localObject3 = paramJSONObject.optJSONObject("label");
     if (localObject3 != null)
     {
-      if (!bdnn.a(((JSONObject)localObject3).optString("color"))) {
+      if (!StringUtil.isEmpty(((JSONObject)localObject3).optString("color"))) {
         ((CoverView)localObject1).setTextColor(Color.parseColor(getActualColor(((JSONObject)localObject3).optString("color"))));
       }
       ((CoverView)localObject1).setTextSize(1, ((JSONObject)localObject3).optInt("fontSize"));
-      if (!"left".equals(((JSONObject)localObject3).optString("textAlign"))) {
-        break label634;
+      if ("left".equals(((JSONObject)localObject3).optString("textAlign"))) {
+        ((CoverView)localObject1).setGravity(3);
+      } else if ("center".equals(((JSONObject)localObject3).optString("textAlign"))) {
+        ((CoverView)localObject1).setGravity(17);
       }
-      ((CoverView)localObject1).setGravity(3);
-    }
-    for (;;)
-    {
-      if (!bdnn.a(((JSONObject)localObject3).optString("content"))) {
+      if (!StringUtil.isEmpty(((JSONObject)localObject3).optString("content"))) {
         ((CoverView)localObject1).setText(((JSONObject)localObject3).optString("content"));
       }
       if ("bold".equals(((JSONObject)localObject3).optString("fontWeight"))) {
         ((CoverView)localObject1).setTypeface(Typeface.defaultFromStyle(1));
       }
-      ((CoverView)localObject1).setClickable(paramJSONObject.optBoolean("clickable"));
-      ((CoverView)localObject1).setOnClickListener(new WebviewContainer.1(this, paramJSONObject));
-      paramJSONObject = paramJSONObject.optJSONObject("position");
-      if (paramJSONObject != null)
-      {
-        i = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
-        j = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
-        int k = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
-        float f = this.density;
-        int m = (int)(paramJSONObject.optInt("top") * f + 0.5F);
-        paramJSONObject = new FrameLayout.LayoutParams(i, j);
-        paramJSONObject.leftMargin = (((FrameLayout.LayoutParams)localObject2).leftMargin + k);
-        paramJSONObject.topMargin = (((FrameLayout.LayoutParams)localObject2).topMargin + m);
-        this.componentLayout.addView((View)localObject1, paramJSONObject);
-      }
-      return;
-      label634:
-      if ("center".equals(((JSONObject)localObject3).optString("textAlign"))) {
-        ((CoverView)localObject1).setGravity(17);
-      }
+    }
+    ((CoverView)localObject1).setClickable(paramJSONObject.optBoolean("clickable"));
+    ((CoverView)localObject1).setOnClickListener(new WebviewContainer.1(this, paramJSONObject));
+    paramJSONObject = paramJSONObject.optJSONObject("position");
+    if (paramJSONObject != null)
+    {
+      i = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
+      j = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
+      int k = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
+      int m = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
+      paramJSONObject = new FrameLayout.LayoutParams(i, j);
+      paramJSONObject.leftMargin = (((FrameLayout.LayoutParams)localObject2).leftMargin + k);
+      paramJSONObject.topMargin = (((FrameLayout.LayoutParams)localObject2).topMargin + m);
+      this.componentLayout.addView((View)localObject1, paramJSONObject);
     }
   }
   
@@ -571,7 +592,7 @@ public class WebviewContainer
       localMiniAppVideoPlayer1.b = paramJSONObject.optString("data");
       localMiniAppVideoPlayer1.c = this.appBrandRuntime.i;
       localMiniAppVideoPlayer1.d = this.pageWebview.pageWebviewId;
-      b.a().addObserver(localMiniAppVideoPlayer1.q);
+      com.tencent.mobileqq.microapp.app.b.a().addObserver(localMiniAppVideoPlayer1.q);
       this.videoPlayerSparseArray.put(paramInt, localMiniAppVideoPlayer1);
     }
     localMiniAppVideoPlayer1.b(paramJSONObject);
@@ -585,10 +606,11 @@ public class WebviewContainer
   
   public float measureText(String paramString, int paramInt, JSONObject paramJSONObject)
   {
-    if (this.mCurrCanvas == null) {
+    paramString = this.mCurrCanvas;
+    if (paramString == null) {
       return -1.0F;
     }
-    return this.mCurrCanvas.a(paramJSONObject);
+    return paramString.a(paramJSONObject);
   }
   
   public void notifyChangePullDownRefreshStyle()
@@ -620,8 +642,12 @@ public class WebviewContainer
   
   public void onVerticalScroll(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewContainer", 2, "onVerticalScroll scrollY=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onVerticalScroll scrollY=");
+      localStringBuilder.append(paramInt);
+      QLog.d("WebViewContainer", 2, localStringBuilder.toString());
     }
     this.componentLayout.scrollTo(0, paramInt);
   }
@@ -650,48 +676,47 @@ public class WebviewContainer
   {
     int i = paramJSONObject.optInt("cameraId");
     MiniAppCamera localMiniAppCamera = (MiniAppCamera)this.cameraViewSparseArray.get(i);
-    if (localMiniAppCamera == null) {
-      callbackJsEventFail(paramString, null, paramInt);
-    }
-    String str;
-    do
+    if (localMiniAppCamera == null)
     {
+      callbackJsEventFail(paramString, null, paramInt);
       return;
-      this.currentCamera = localMiniAppCamera;
-      str = paramJSONObject.optString("type");
-      if ("takePhoto".equals(str))
-      {
-        localMiniAppCamera.a(this, paramString, paramInt, paramJSONObject.optString("quality"));
-        return;
-      }
-      if ("startRecord".equals(str))
-      {
-        localMiniAppCamera.a(this, paramString, paramInt);
-        return;
-      }
-    } while (!"stopRecord".equals(str));
-    localMiniAppCamera.b(this, paramString, paramInt);
+    }
+    this.currentCamera = localMiniAppCamera;
+    String str = paramJSONObject.optString("type");
+    if ("takePhoto".equals(str))
+    {
+      localMiniAppCamera.a(this, paramString, paramInt, paramJSONObject.optString("quality"));
+      return;
+    }
+    if ("startRecord".equals(str))
+    {
+      localMiniAppCamera.a(this, paramString, paramInt);
+      return;
+    }
+    if ("stopRecord".equals(str)) {
+      localMiniAppCamera.b(this, paramString, paramInt);
+    }
   }
   
   public void operateVideoPlayer(int paramInt, String paramString)
   {
     MiniAppVideoPlayer localMiniAppVideoPlayer = (MiniAppVideoPlayer)this.videoPlayerSparseArray.get(paramInt);
-    if (localMiniAppVideoPlayer == null) {}
-    do
-    {
+    if (localMiniAppVideoPlayer == null) {
       return;
-      if ("play".equals(paramString))
-      {
-        localMiniAppVideoPlayer.f();
-        return;
-      }
-      if ("pause".equals(paramString))
-      {
-        localMiniAppVideoPlayer.c();
-        return;
-      }
-    } while (!"sendDanmu".equals(paramString));
-    localMiniAppVideoPlayer.b("aaaaa");
+    }
+    if ("play".equals(paramString))
+    {
+      localMiniAppVideoPlayer.f();
+      return;
+    }
+    if ("pause".equals(paramString))
+    {
+      localMiniAppVideoPlayer.c();
+      return;
+    }
+    if ("sendDanmu".equals(paramString)) {
+      localMiniAppVideoPlayer.b("aaaaa");
+    }
   }
   
   public void removeCanvas(int paramInt)
@@ -776,72 +801,88 @@ public class WebviewContainer
   public void updateCanvas(int paramInt, JSONObject paramJSONObject, boolean paramBoolean)
   {
     CanvasView localCanvasView = (CanvasView)this.canvasSparseArray.get(paramInt);
-    if (localCanvasView == null) {}
-    do
-    {
+    if (localCanvasView == null) {
       return;
-      if (paramJSONObject != null) {
-        break;
+    }
+    if (paramJSONObject == null)
+    {
+      if (paramBoolean) {
+        localCanvasView.setVisibility(8);
       }
-    } while (!paramBoolean);
-    localCanvasView.setVisibility(8);
-    return;
-    paramInt = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
-    int i = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
-    int j = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
-    int k = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
-    paramJSONObject = new FrameLayout.LayoutParams(paramInt, i);
-    paramJSONObject.leftMargin = j;
-    paramJSONObject.topMargin = k;
-    localCanvasView.setLayoutParams(paramJSONObject);
+    }
+    else
+    {
+      paramInt = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
+      int i = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
+      int j = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
+      int k = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
+      paramJSONObject = new FrameLayout.LayoutParams(paramInt, i);
+      paramJSONObject.leftMargin = j;
+      paramJSONObject.topMargin = k;
+      localCanvasView.setLayoutParams(paramJSONObject);
+    }
   }
   
   public void updateHTMLWebView(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewContainer", 2, "updateHTMLWebView htmlId=" + paramInt + ",innerWebView=" + this.innerWebView + ",src=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateHTMLWebView htmlId=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",innerWebView=");
+      ((StringBuilder)localObject).append(this.innerWebView);
+      ((StringBuilder)localObject).append(",src=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("WebViewContainer", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.innerWebView == null) || (this.innerWebView.htmlId != paramInt) || (TextUtils.isEmpty(paramString))) {
-      return;
+    Object localObject = this.innerWebView;
+    if ((localObject != null) && (((ProgressWebView)localObject).htmlId == paramInt))
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      this.innerWebView.setVisibility(0);
+      this.innerWebView.loadUrl(paramString);
     }
-    this.innerWebView.setVisibility(0);
-    this.innerWebView.loadUrl(paramString);
   }
   
   public void updateImageView(JSONObject paramJSONObject, int paramInt, String paramString, boolean paramBoolean)
   {
     CoverImageView localCoverImageView = (CoverImageView)this.imageViewSparseArray.get(paramInt);
-    if ((localCoverImageView == null) || ((bdnn.a(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https"))))) {}
-    for (;;)
+    if (localCoverImageView != null)
     {
-      try
-      {
-        paramString = URLDrawable.getDrawable(paramString, null);
-        if (paramString != null) {
-          localCoverImageView.setImageDrawable(paramString);
+      if (!StringUtil.isEmpty(paramString)) {
+        if ((!paramString.startsWith("http")) && (!paramString.startsWith("https")))
+        {
+          paramString = this.appBrandRuntime.c.j(paramString);
+          if (!StringUtil.isEmpty(paramString)) {
+            localCoverImageView.setImageBitmap(c.q(paramString));
+          }
+        }
+        else
+        {
+          try
+          {
+            paramString = URLDrawable.getDrawable(paramString, null);
+            if (paramString != null) {
+              localCoverImageView.setImageDrawable(paramString);
+            }
+          }
+          catch (OutOfMemoryError paramString)
+          {
+            paramString.printStackTrace();
+          }
         }
       }
-      catch (OutOfMemoryError paramString)
-      {
-        int i;
-        int j;
-        int k;
-        paramString.printStackTrace();
-        continue;
-      }
       paramInt = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
-      i = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
-      j = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
-      k = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
+      int i = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
+      int j = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
+      int k = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
       paramJSONObject = new FrameLayout.LayoutParams(paramInt, i);
       paramJSONObject.leftMargin = j;
       paramJSONObject.topMargin = k;
       localCoverImageView.setLayoutParams(paramJSONObject);
-      return;
-      paramString = this.appBrandRuntime.c.j(paramString);
-      if (!bdnn.a(paramString)) {
-        localCoverImageView.setImageBitmap(com.tencent.mobileqq.microapp.b.a.i(paramString));
-      }
     }
   }
   
@@ -890,10 +931,9 @@ public class WebviewContainer
         int k = ((JSONObject)localObject).optInt("height");
         float f = this.density;
         i = (int)(i * f + 0.5F);
-        f = this.density;
         k = (int)(k * f + 0.5F);
-        j = (int)(this.density * j + 0.5F);
-        paramInt = (int)(this.density * paramInt + 0.5F);
+        j = (int)(j * f + 0.5F);
+        paramInt = (int)(f * paramInt + 0.5F);
         localObject = (FrameLayout.LayoutParams)localMiniAppVideoPlayer.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).width = i;
         ((FrameLayout.LayoutParams)localObject).height = k;
@@ -901,7 +941,7 @@ public class WebviewContainer
         ((FrameLayout.LayoutParams)localObject).topMargin = paramInt;
       }
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!bdnn.a(paramJSONObject))
+      if (!StringUtil.isEmpty(paramJSONObject))
       {
         localMiniAppVideoPlayer.a(paramJSONObject.replace("https:", "http:"));
         if (localMiniAppVideoPlayer.i) {
@@ -913,7 +953,7 @@ public class WebviewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer
  * JD-Core Version:    0.7.0.1
  */

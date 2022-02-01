@@ -1,31 +1,33 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletSetPasswordUI$1
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   WalletSetPasswordUI$1(WalletSetPasswordUI paramWalletSetPasswordUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(47664);
-    if (this.utK.needConfirmFinish())
+    AppMethodBeat.i(301282);
+    if (this.VTd.needConfirmFinish())
     {
-      this.utK.hideVKB();
-      this.utK.showDialog(1000);
-      AppMethodBeat.o(47664);
-      return;
+      this.VTd.hideVKB();
+      this.VTd.showDialog(1000);
     }
-    this.utK.finish();
-    AppMethodBeat.o(47664);
+    for (;;)
+    {
+      AppMethodBeat.o(301282);
+      return false;
+      this.VTd.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI.1
  * JD-Core Version:    0.7.0.1
  */

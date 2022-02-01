@@ -2,8 +2,8 @@ package com.tencent.mm.audio.mix.e;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.c.f;
 import com.tencent.mm.audio.mix.c.g;
+import com.tencent.mm.audio.mix.c.h;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,109 +12,41 @@ import java.util.List;
 
 public final class e
 {
-  public static int cgP = 18432;
-  private int cgH;
-  private int cgI;
-  private int cgJ;
-  private int cgK;
-  private ArrayList<String> cgL;
-  private HashMap<String, g> cgM;
-  private HashMap<String, byte[]> cgN;
-  private HashMap<String, Integer> cgO;
-  private i cgg;
+  public static int htD = 18432;
+  private i hsV;
+  private HashMap<String, h> htA;
+  public HashMap<String, byte[]> htB;
+  public HashMap<String, Integer> htC;
+  public int htv;
+  public int htw;
+  public int htx;
+  public int hty;
+  public ArrayList<String> htz;
   
   public e()
   {
-    AppMethodBeat.i(137117);
-    this.cgK = 0;
-    this.cgL = new ArrayList();
-    this.cgM = new HashMap();
-    this.cgN = new HashMap();
-    this.cgO = new HashMap();
-    this.cgg = new d();
-    this.cgg.init();
-    AppMethodBeat.o(137117);
+    AppMethodBeat.i(136866);
+    this.hty = 0;
+    this.htz = new ArrayList();
+    this.htA = new HashMap();
+    this.htB = new HashMap();
+    this.htC = new HashMap();
+    this.hsV = new d();
+    this.hsV.init();
+    AppMethodBeat.o(136866);
   }
   
-  private byte[] I(List<com.tencent.mm.audio.mix.a.d> paramList)
+  public final byte[] bn(List<com.tencent.mm.audio.mix.a.e> paramList)
   {
-    AppMethodBeat.i(137122);
+    AppMethodBeat.i(136868);
     if (paramList.isEmpty())
     {
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioSyncMixController", "list is invalid");
-      AppMethodBeat.o(137122);
-      return null;
-    }
-    if (paramList.size() == 1)
-    {
-      paramList = ((com.tencent.mm.audio.mix.a.d)paramList.get(0)).cem;
-      AppMethodBeat.o(137122);
-      return paramList;
-    }
-    if (this.cgg == null)
-    {
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioSyncMixController", "mixer is null");
-      AppMethodBeat.o(137122);
-      return null;
-    }
-    paramList = this.cgg.G(paramList);
-    if (paramList != null)
-    {
-      paramList = paramList.cem;
-      AppMethodBeat.o(137122);
-      return paramList;
-    }
-    AppMethodBeat.o(137122);
-    return null;
-  }
-  
-  public final byte[] DU()
-  {
-    AppMethodBeat.i(137120);
-    Object localObject = new ArrayList();
-    Iterator localIterator = this.cgL.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (this.cgN.containsKey(str))
-      {
-        byte[] arrayOfByte1 = (byte[])this.cgN.get(str);
-        int i = ((Integer)this.cgO.get(str)).intValue();
-        com.tencent.mm.audio.mix.a.d locald = new com.tencent.mm.audio.mix.a.d();
-        byte[] arrayOfByte2 = new byte[this.cgK];
-        if ((i > 0) && (i <= this.cgK)) {
-          System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
-        }
-        for (;;)
-        {
-          locald.cem = arrayOfByte2;
-          ((List)localObject).add(locald);
-          this.cgO.put(str, Integer.valueOf(0));
-          Arrays.fill(arrayOfByte1, 0, cgP, (byte)0);
-          this.cgN.put(str, arrayOfByte1);
-          break;
-          if (arrayOfByte1 != null) {
-            System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, this.cgK);
-          }
-        }
-      }
-    }
-    localObject = I((List)localObject);
-    AppMethodBeat.o(137120);
-    return localObject;
-  }
-  
-  public final byte[] H(List<com.tencent.mm.audio.mix.a.d> paramList)
-  {
-    AppMethodBeat.i(137119);
-    if (paramList.isEmpty())
-    {
-      AppMethodBeat.o(137119);
+      AppMethodBeat.o(136868);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
     if (paramList.size() > 1) {}
-    com.tencent.mm.audio.mix.a.d locald1;
+    com.tencent.mm.audio.mix.a.e locale1;
     for (int i = 1;; i = 0)
     {
       Iterator localIterator = paramList.iterator();
@@ -123,184 +55,194 @@ public final class e
         if (!localIterator.hasNext()) {
           break label823;
         }
-        locald1 = (com.tencent.mm.audio.mix.a.d)localIterator.next();
-        if ((locald1 != null) && (locald1.cem != null) && (!TextUtils.isEmpty(locald1.ceu))) {
+        locale1 = (com.tencent.mm.audio.mix.a.e)localIterator.next();
+        if ((locale1 != null) && (locale1.hqJ != null) && (!TextUtils.isEmpty(locale1.hqQ))) {
           break;
         }
         com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioSyncMixController", "track or pcmData is null, or audioId is empty");
-        paramList = locald1;
+        paramList = locale1;
         localArrayList.add(paramList);
       }
     }
     label154:
-    com.tencent.mm.audio.mix.a.d locald2;
+    com.tencent.mm.audio.mix.a.e locale2;
     byte[] arrayOfByte1;
-    if (this.cgM.containsKey(locald1.ceu))
+    if (this.htA.containsKey(locale1.hqQ))
     {
-      paramList = (g)this.cgM.get(locald1.ceu);
-      locald2 = new com.tencent.mm.audio.mix.a.d();
-      locald2.cem = paramList.E(locald1.cem);
-      locald2.ceu = locald1.ceu;
-      locald2.cex = locald1.cex;
-      locald2.channels = locald1.channels;
-      locald2.sampleRate = locald1.sampleRate;
-      locald2.cel = locald1.cel;
+      paramList = (h)this.htA.get(locale1.hqQ);
+      locale2 = new com.tencent.mm.audio.mix.a.e();
+      locale2.hqJ = paramList.ae(locale1.hqJ);
+      locale2.hqQ = locale1.hqQ;
+      locale2.hqT = locale1.hqT;
+      locale2.channels = locale1.channels;
+      locale2.sampleRate = locale1.sampleRate;
+      locale2.hqI = locale1.hqI;
       if (i != 0)
       {
-        arrayOfByte1 = locald2.cem;
+        arrayOfByte1 = locale2.hqJ;
         if ((arrayOfByte1 != null) && (arrayOfByte1.length != 0))
         {
           paramList = null;
-          if (!this.cgN.containsKey(locald2.ceu)) {
+          if (!this.htB.containsKey(locale2.hqQ)) {
             break label840;
           }
-          paramList = (byte[])this.cgN.get(locald2.ceu);
+          paramList = (byte[])this.htB.get(locale2.hqQ);
         }
       }
     }
     label416:
     label582:
     label840:
-    for (int j = ((Integer)this.cgO.get(locald2.ceu)).intValue();; j = 0)
+    for (int j = ((Integer)this.htC.get(locale2.hqQ)).intValue();; j = 0)
     {
       if ((j > 0) && (paramList != null)) {
-        if (arrayOfByte1.length <= cgP - j)
+        if (arrayOfByte1.length <= htD - j)
         {
           System.arraycopy(arrayOfByte1, 0, paramList, j, arrayOfByte1.length);
           j = arrayOfByte1.length + j;
           label339:
-          if (j <= this.cgK) {
+          if (j <= this.hty) {
             break label582;
           }
-          j -= this.cgK;
-          arrayOfByte1 = new byte[this.cgK];
-          System.arraycopy(paramList, 0, arrayOfByte1, 0, this.cgK);
-          locald2.cem = arrayOfByte1;
+          j -= this.hty;
+          arrayOfByte1 = new byte[this.hty];
+          System.arraycopy(paramList, 0, arrayOfByte1, 0, this.hty);
+          locale2.hqJ = arrayOfByte1;
           arrayOfByte1 = new byte[j];
-          System.arraycopy(paramList, this.cgK, arrayOfByte1, 0, j);
-          Arrays.fill(paramList, 0, cgP, (byte)0);
+          System.arraycopy(paramList, this.hty, arrayOfByte1, 0, j);
+          Arrays.fill(paramList, 0, htD, (byte)0);
           System.arraycopy(arrayOfByte1, 0, paramList, 0, j);
-          this.cgO.put(locald2.ceu, Integer.valueOf(j));
-          this.cgN.put(locald2.ceu, paramList);
+          this.htC.put(locale2.hqQ, Integer.valueOf(j));
+          this.htB.put(locale2.hqQ, paramList);
         }
       }
       do
       {
         for (;;)
         {
-          if (locald2.cem.equals(locald1.cem))
+          if (locale2.hqJ.equals(locale1.hqJ))
           {
-            paramList = new byte[locald2.cem.length];
-            System.arraycopy(locald2.cem, 0, paramList, 0, locald2.cem.length);
-            locald2.cem = paramList;
+            paramList = new byte[locale2.hqJ.length];
+            System.arraycopy(locale2.hqJ, 0, paramList, 0, locale2.hqJ.length);
+            locale2.hqJ = paramList;
           }
-          paramList = locald2;
+          paramList = locale2;
           break;
-          paramList = new f(locald1.ceu, locald1.sampleRate, locald1.channels, locald1.cel, this.cgH, this.cgI, this.cgJ);
-          this.cgM.put(locald1.ceu, paramList);
+          paramList = new g(locale1.hqQ, locale1.sampleRate, locale1.channels, locale1.hqI, this.htv, this.htw, this.htx);
+          this.htA.put(locale1.hqQ, paramList);
           break label154;
-          System.arraycopy(arrayOfByte1, 0, paramList, j, cgP - j);
-          j = cgP - j + j;
+          System.arraycopy(arrayOfByte1, 0, paramList, j, htD - j);
+          j = htD - j + j;
           break label339;
-          arrayOfByte1 = new byte[this.cgK];
+          arrayOfByte1 = new byte[this.hty];
           System.arraycopy(paramList, 0, arrayOfByte1, 0, j);
-          locald2.cem = arrayOfByte1;
+          locale2.hqJ = arrayOfByte1;
           j = 0;
-          Arrays.fill(paramList, 0, cgP, (byte)0);
+          Arrays.fill(paramList, 0, htD, (byte)0);
           break label416;
-          if (arrayOfByte1.length >= this.cgK) {
+          if (arrayOfByte1.length >= this.hty) {
             break label667;
           }
-          paramList = new byte[this.cgK];
-          Arrays.fill(paramList, 0, this.cgK, (byte)0);
+          paramList = new byte[this.hty];
+          Arrays.fill(paramList, 0, this.hty, (byte)0);
           System.arraycopy(arrayOfByte1, 0, paramList, 0, arrayOfByte1.length);
-          locald2.cem = paramList;
+          locale2.hqJ = paramList;
         }
-      } while (arrayOfByte1.length <= this.cgK);
-      byte[] arrayOfByte2 = new byte[this.cgK];
-      Arrays.fill(arrayOfByte2, 0, this.cgK, (byte)0);
-      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, this.cgK);
-      locald2.cem = arrayOfByte2;
+      } while (arrayOfByte1.length <= this.hty);
+      byte[] arrayOfByte2 = new byte[this.hty];
+      Arrays.fill(arrayOfByte2, 0, this.hty, (byte)0);
+      System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, this.hty);
+      locale2.hqJ = arrayOfByte2;
       if (paramList == null) {
-        if (arrayOfByte1.length > cgP)
+        if (arrayOfByte1.length > htD)
         {
           j = arrayOfByte1.length;
           label733:
-          cgP = j;
+          htD = j;
           paramList = new byte[j];
         }
       }
       for (;;)
       {
-        Arrays.fill(paramList, 0, cgP, (byte)0);
-        System.arraycopy(arrayOfByte1, this.cgK, paramList, 0, arrayOfByte1.length - this.cgK);
+        Arrays.fill(paramList, 0, htD, (byte)0);
+        System.arraycopy(arrayOfByte1, this.hty, paramList, 0, arrayOfByte1.length - this.hty);
         j = arrayOfByte1.length;
-        int k = this.cgK;
-        this.cgO.put(locald2.ceu, Integer.valueOf(j - k));
-        this.cgN.put(locald2.ceu, paramList);
+        int k = this.hty;
+        this.htC.put(locale2.hqQ, Integer.valueOf(j - k));
+        this.htB.put(locale2.hqQ, paramList);
         break;
-        j = cgP;
+        j = htD;
         break label733;
-        paramList = I(localArrayList);
-        AppMethodBeat.o(137119);
+        paramList = bo(localArrayList);
+        AppMethodBeat.o(136868);
         return paramList;
       }
     }
   }
   
-  public final void q(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final byte[] bo(List<com.tencent.mm.audio.mix.a.e> paramList)
   {
-    AppMethodBeat.i(137118);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioSyncMixController", "init, outSample:%d, outChannel:%d, outBitDepth:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.cgH = paramInt1;
-    this.cgI = paramInt2;
-    this.cgJ = paramInt3;
-    this.cgK = paramInt4;
-    if (this.cgK <= 0) {
-      if (2 != paramInt3) {
-        break label98;
-      }
-    }
-    label98:
-    for (paramInt3 = 16;; paramInt3 = 8)
+    AppMethodBeat.i(136871);
+    if (paramList.isEmpty())
     {
-      this.cgK = (paramInt3 * (paramInt1 * paramInt2) * 20 / 8 / 1000);
-      AppMethodBeat.o(137118);
-      return;
+      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioSyncMixController", "list is invalid");
+      AppMethodBeat.o(136871);
+      return null;
     }
+    if (paramList.size() == 1)
+    {
+      paramList = ((com.tencent.mm.audio.mix.a.e)paramList.get(0)).hqJ;
+      AppMethodBeat.o(136871);
+      return paramList;
+    }
+    if (this.hsV == null)
+    {
+      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioSyncMixController", "mixer is null");
+      AppMethodBeat.o(136871);
+      return null;
+    }
+    paramList = this.hsV.bm(paramList);
+    if (paramList != null)
+    {
+      paramList = paramList.hqJ;
+      AppMethodBeat.o(136871);
+      return paramList;
+    }
+    AppMethodBeat.o(136871);
+    return null;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(137121);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioSyncMixController", "release, ids size:%d", new Object[] { Integer.valueOf(this.cgL.size()) });
-    Iterator localIterator = this.cgL.iterator();
+    AppMethodBeat.i(136870);
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioSyncMixController", "release, ids size:%d", new Object[] { Integer.valueOf(this.htz.size()) });
+    Iterator localIterator = this.htz.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (this.cgM.containsKey(str))
+      if (this.htA.containsKey(str))
       {
-        g localg = (g)this.cgM.remove(str);
-        if (localg != null) {
-          localg.release();
+        h localh = (h)this.htA.remove(str);
+        if (localh != null) {
+          localh.release();
         }
       }
-      this.cgN.remove(str);
-      this.cgO.remove(str);
+      this.htB.remove(str);
+      this.htC.remove(str);
     }
-    this.cgM.clear();
-    this.cgN.clear();
-    this.cgO.clear();
-    this.cgL.clear();
-    if (this.cgg != null) {
-      this.cgg = null;
+    this.htA.clear();
+    this.htB.clear();
+    this.htC.clear();
+    this.htz.clear();
+    if (this.hsV != null) {
+      this.hsV = null;
     }
-    AppMethodBeat.o(137121);
+    AppMethodBeat.o(136870);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.e
  * JD-Core Version:    0.7.0.1
  */

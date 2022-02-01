@@ -11,40 +11,38 @@ import android.widget.LinearLayout;
 public class DotIndexView
   extends LinearLayout
 {
-  protected int a;
-  protected Context a;
   protected LinearLayout a;
-  protected int b;
-  protected int c = 8;
+  protected int b = 2130844991;
+  protected Context c;
+  protected int d = 0;
+  protected int e = 8;
   
   public DotIndexView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130843480;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    this.a = new LinearLayout(paramContext);
+    this.c = this.a.getContext();
   }
   
   public DotIndexView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130843480;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
+    this.a = new LinearLayout(paramContext);
+    this.c = this.a.getContext();
   }
   
   public void setDotDrawable(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.b != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.b != 0))
+      this.b = paramInt;
+      if ((this.a != null) && (this.d != 0))
       {
-        Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(this.jdField_a_of_type_Int);
+        Drawable localDrawable = this.c.getResources().getDrawable(this.b);
         paramInt = 0;
-        while (paramInt < this.b)
+        while (paramInt < this.d)
         {
-          View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt);
+          View localView = this.a.getChildAt(paramInt);
           if ((localView != null) && ((localView instanceof ImageView))) {
             ((ImageView)localView).setImageDrawable(localDrawable);
           }
@@ -56,33 +54,33 @@ public class DotIndexView
   
   public void setDotSelected(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {}
-    do
-    {
+    if (this.a == null) {
       return;
-      if (paramBoolean)
+    }
+    if (paramBoolean)
+    {
+      int i = 0;
+      while (i < this.d)
       {
-        int i = 0;
-        while (i < this.b)
-        {
-          if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i) != null) {
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i).setSelected(false);
-          }
-          i += 1;
+        if (this.a.getChildAt(i) != null) {
+          this.a.getChildAt(i).setSelected(false);
         }
+        i += 1;
       }
-    } while (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt) == null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt).setSelected(paramBoolean);
+    }
+    if (this.a.getChildAt(paramInt) != null) {
+      this.a.getChildAt(paramInt).setSelected(paramBoolean);
+    }
   }
   
   public void setMargin(int paramInt)
   {
-    this.c = paramInt;
+    this.e = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.DotIndexView
  * JD-Core Version:    0.7.0.1
  */

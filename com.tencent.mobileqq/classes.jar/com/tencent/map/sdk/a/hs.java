@@ -17,51 +17,58 @@ public final class hs
   
   public final Rect a()
   {
-    if (this.a == null) {}
-    Rect localRect;
-    do
-    {
+    Object localObject = this.a;
+    if (localObject == null) {
       return null;
-      localRect = this.a.g();
-    } while (localRect == null);
-    int j = localRect.left;
-    int i = localRect.right;
-    int m = localRect.top;
-    int k = localRect.bottom;
-    int i3 = (localRect.right + localRect.left) / 2;
-    int n = (localRect.top + localRect.bottom) / 2;
-    int i4 = localRect.right;
-    int i5 = localRect.left;
-    int i1 = localRect.bottom;
-    int i2 = localRect.top;
+    }
+    localObject = ((ms)localObject).g();
+    if (localObject == null) {
+      return null;
+    }
+    int i = ((Rect)localObject).left;
+    int j = ((Rect)localObject).right;
+    int k = ((Rect)localObject).top;
+    int m = ((Rect)localObject).bottom;
+    int i3 = (((Rect)localObject).right + ((Rect)localObject).left) / 2;
+    int n = (((Rect)localObject).top + ((Rect)localObject).bottom) / 2;
+    int i4 = ((Rect)localObject).right;
+    int i5 = ((Rect)localObject).left;
+    int i1 = ((Rect)localObject).bottom;
+    int i2 = ((Rect)localObject).top;
+    float f;
     if (i4 - i5 < fz.v * 40.0F)
     {
-      j = (int)(i3 - fz.v * 20.0F);
-      i = (int)(i3 + fz.v * 20.0F);
+      f = i3;
+      i = (int)(f - fz.v * 20.0F);
+      j = (int)(f + fz.v * 20.0F);
     }
     if (i1 - i2 < fz.v * 40.0F)
     {
-      m = (int)(n - fz.v * 20.0F);
-      k = (int)(n + fz.v * 20.0F);
+      f = n;
+      k = (int)(f - fz.v * 20.0F);
+      m = (int)(f + fz.v * 20.0F);
     }
-    return new Rect(j, m, i, k);
+    return new Rect(i, k, j, m);
   }
   
   public final String b()
   {
-    if (this.a == null) {
+    ms localms = this.a;
+    if (localms == null) {
       return null;
     }
-    return this.a.k();
+    return localms.k();
   }
   
   public final void c()
   {
-    if (this.b != null)
+    Object localObject = this.b;
+    if (localObject != null)
     {
-      TencentMap.OnMarkerClickListener localOnMarkerClickListener = this.b.z;
-      if ((this.a != null) && (localOnMarkerClickListener != null)) {
-        localOnMarkerClickListener.onMarkerClick(this.a.G);
+      localObject = ((pn)localObject).z;
+      ms localms = this.a;
+      if ((localms != null) && (localObject != null)) {
+        ((TencentMap.OnMarkerClickListener)localObject).onMarkerClick(localms.G);
       }
     }
   }

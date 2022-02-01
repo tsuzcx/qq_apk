@@ -1,22 +1,14 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity.NativeChromeClient;
 
-public final class dbt
+public class dbt
   implements Runnable
 {
-  public dbt(WebView paramWebView, String paramString) {}
+  public dbt(QQBrowserActivity.NativeChromeClient paramNativeChromeClient, String paramString) {}
   
   public void run()
   {
-    try
-    {
-      ((CustomWebView)this.jdField_a_of_type_ComTencentSmttSdkWebView).a("javascript:" + this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity$NativeChromeClient.a.setTitle(this.jdField_a_of_type_JavaLangString);
   }
 }
 

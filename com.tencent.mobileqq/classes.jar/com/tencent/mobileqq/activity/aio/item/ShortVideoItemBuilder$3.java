@@ -1,35 +1,45 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agai;
-import agas;
-import alud;
+import android.text.TextUtils;
 import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.multimsg.save.FileSaveResult;
+import com.tencent.mobileqq.multimsg.save.ISingleFileSaveCallBack;
 
-public class ShortVideoItemBuilder$3
-  implements Runnable
+class ShortVideoItemBuilder$3
+  implements ISingleFileSaveCallBack
 {
-  public ShortVideoItemBuilder$3(agai paramagai, MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean, agas paramagas) {}
+  ShortVideoItemBuilder$3(ShortVideoItemBuilder paramShortVideoItemBuilder, String paramString, ShortVideoItemBuilder.Holder paramHolder) {}
   
-  public void run()
+  public void a()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq;
-    if (this.jdField_a_of_type_Boolean)
+    if (!TextUtils.isEmpty(this.a))
     {
-      this.jdField_a_of_type_Agas.a.setDrawStatus(1);
-      this.jdField_a_of_type_Agas.a.setAnimProgress(alud.a(2131714475), str);
-      this.jdField_a_of_type_Agas.a.e = 10;
-      this.jdField_a_of_type_Agas.a.setVideoCompressStatus(true);
-      return;
+      String str = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b.q.frienduin);
+      localStringBuilder.append(this.b.q.uniseq);
+      if (str.equals(localStringBuilder.toString())) {
+        this.b.c.setVisibility(8);
+      }
     }
-    this.jdField_a_of_type_Agas.a.a(str, 1.0F);
-    this.jdField_a_of_type_Agas.a.setAnimProgress(10, str);
-    this.jdField_a_of_type_Agas.a.setVideoCompressStatus(false);
   }
+  
+  public void a(FileSaveResult paramFileSaveResult)
+  {
+    ShortVideoItemBuilder.a(this.c, paramFileSaveResult, this.a, this.b, this);
+  }
+  
+  public void a(FileSaveResult paramFileSaveResult, int paramInt)
+  {
+    this.c.a(this.b, paramInt, false);
+  }
+  
+  public void b(FileSaveResult paramFileSaveResult) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

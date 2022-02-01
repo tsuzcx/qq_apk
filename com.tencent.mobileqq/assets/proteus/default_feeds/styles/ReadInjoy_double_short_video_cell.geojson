@@ -27,7 +27,7 @@
             {
                 "view_type":"container",
                 "direction":"horizontal",
-                "margin_top": "8",
+                "margin_top": "14",
                 "height":{
                     "type":"wrap_content"
                 },
@@ -43,18 +43,18 @@
                         "view_id":"id_container_1",
                         "event_type": "cmd_url_click_left_card_report",
                         "default_visible": "YES",
-                        "margin_left":"6",
+                        "margin_left":"12",
                         "height":{
                             "type":"wrap_content"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"178.5"
+                            "value":"174"
                         },
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "feedstype": "1031",
-                                "double_videocard_pos": "0"
+                                "double_card_pos": "0"
                             },
                             "setRemoteInfo:":{
                                 "rowkey_1": "$rowkey_1",
@@ -72,11 +72,10 @@
                                 "layout_type":"layout_relative",
                                 "height":{
                                     "type":"relative",
-                                    "value":"102"
+                                    "value":"95"
                                 },
                                 "width":{
-                                    "type":"relative",
-                                    "value":"178.5"
+                                    "type":"match_parent"
                                 },
                                 "subviews": [
                                     {
@@ -106,7 +105,6 @@
                                             "value":"32"
                                         },
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "loadImageWithPath:": "rij_play_icon"
                                         }
                                     },
@@ -152,23 +150,89 @@
                                                 }
                                             }
                                         ]
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_top_left_mask_1",
+                                        "default_visible": "YES",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "left_top_round_corner"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_bottom_left_mask_1",
+                                        "default_visible": "YES",
+                                        "align_parent_bottom": "YES",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "left_bottom_round_corner"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_top_right_mask_1",
+                                        "default_visible": "YES",
+                                        "align_parent_right": "YES",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "right_top_round_corner"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_bottom_right_mask_1",
+                                        "default_visible": "YES",
+                                        "align_parent_right": "YES",
+                                        "align_parent_bottom": "YES",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "right_bottom_round_corner"
+                                        }
                                     }
                                 ]
                             },
                             {
                                 "view_type":"UILabel",
                                 "view_id":"id_artilce_title_1",
-                                "margin_left":"4",
-                                "margin_top":"9",
+                                "margin_top":"4",
                                 "height":{
                                     "type":"wrap_content"
                                 },
                                 "width":{
-                                    "type":"relative",
-                                    "value":"158.5"
+                                    "type":"match_parent"
                                 },
                                 "attributes":{
-                                    "setText:lineSpace:":["$article_title_1","3"],
+                                    "setText:lineSpace:":["$article_title_1","6"],
                                     "setTextColorString:":"$article_title_1_color",
                                     "setFontSizeString:":"$article_title_1_textsize",
                                     "setNumberOfLinesString:":"2"
@@ -179,16 +243,13 @@
                                 "layout_type":"layout_linear",
                                 "direction": "horizontal",
                                 "align_parent_center_vertical": "YES",
-                                "margin_left":"4",
-                                "margin_top":"5",
-                                "margin_bottom":"14",
+                                "margin_top":"8",
                                 "height":{
                                     "type":"relative",
                                     "value":"15"
                                 },
                                 "width":{
-                                    "type":"relative",
-                                    "value":"221"
+                                    "type":"match_parent"
                                 },
                                 "subviews":[
                                     {
@@ -204,12 +265,11 @@
                                         "attributes":{
                                             "setText:":"$info_source_1",
                                             "setTextColorString:":"$info_source_color1",
-                                            "setFontSizeString:":"12",
+                                            "setFontSizeString:":"11",
                                             "setNumberOfLinesString:":"1",
                                             "setMaxWidth:type:": ["100", "relative"]
                                         }
                                     },
-                                    
                                     {
                                         "view_type": "UILabel",
                                         "view_id": "id_comment_num",
@@ -222,10 +282,9 @@
                                             "type": "wrap_content"
                                         },
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "setText:": "$comment_num_1",
                                             "setTextColorString:": "#A6A6A6",
-                                            "setFontSizeString:": "12",
+                                            "setFontSizeString:": "11",
                                             "setNumberOfLinesString:": "1"
                                         }
                                     }
@@ -240,18 +299,18 @@
                         "view_id":"id_container_2",
                         "event_type": "cmd_url_click_right_card_report",
                         "default_visible": "YES",
-                        "margin_left":"6",
+                        "margin_left":"3",
                         "height":{
                             "type":"wrap_content"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"178.5"
+                            "value":"174"
                         },
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "feedstype": "1031",
-                                "double_videocard_pos": "1"
+                                "double_card_pos": "1"
                             },
                             "setRemoteInfo:":{
                                 "rowkey_2": "$rowkey_2",
@@ -269,11 +328,10 @@
                                 "layout_type":"layout_relative",
                                 "height":{
                                     "type":"relative",
-                                    "value":"102"
+                                    "value":"95"
                                 },
                                 "width":{
-                                    "type":"relative",
-                                    "value":"178.5"
+                                    "type":"match_parent"
                                 },
                                 "subviews":[
                                     {
@@ -303,7 +361,6 @@
                                             "value":"32"
                                         },
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "loadImageWithPath:": "rij_play_icon"
                                         }
                                     },
@@ -349,23 +406,89 @@
                                                 }
                                             }
                                         ]
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_top_left_mask_2",
+                                        "default_visible": "YES",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "left_top_round_corner"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_bottom_left_mask_2",
+                                        "default_visible": "YES",
+                                        "align_parent_bottom": "YES",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "left_bottom_round_corner"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_top_right_mask_2",
+                                        "default_visible": "YES",
+                                        "align_parent_right": "YES",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "right_top_round_corner"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_bottom_right_mask_2",
+                                        "default_visible": "YES",
+                                        "align_parent_right": "YES",
+                                        "align_parent_bottom": "YES",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "6"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "right_bottom_round_corner"
+                                        }
                                     }
                                 ]
                             },
                             {
                                 "view_type":"UILabel",
                                 "view_id":"id_artilce_title_2",
-                                "margin_left":"4",
-                                "margin_top":"9",
+                                "margin_top":"4",
                                 "height":{
                                     "type":"wrap_content"
                                 },
                                 "width":{
-                                    "type":"relative",
-                                    "value":"158.5"
+                                    "type":"match_parent"
                                 },
                                 "attributes":{
-                                    "setText:lineSpace:":["$article_title_2","3"],
+                                    "setText:lineSpace:":["$article_title_2","6"],
                                     "setTextColorString:":"$article_title_2_color",
                                     "setFontSizeString:":"$article_title_2_textsize",
                                     "setNumberOfLinesString:":"2"
@@ -376,16 +499,13 @@
                                 "layout_type":"layout_linear",
                                 "direction": "horizontal",
                                 "align_parent_center_vertical": "YES",
-                                "margin_left":"4",
-                                "margin_top":"5",
-                                "margin_bottom":"14",
+                                "margin_top":"8",
                                 "height":{
                                     "type":"relative",
                                     "value":"15"
                                 },
                                 "width":{
-                                    "type":"relative",
-                                    "value":"221"
+                                    "type":"match_parent"
                                 },
                                 "subviews":[
                                     {
@@ -401,7 +521,7 @@
                                         "attributes":{
                                             "setText:":"$info_source_2",
                                             "setTextColorString:":"$info_source_color2",
-                                            "setFontSizeString:":"12",
+                                            "setFontSizeString:":"11",
                                             "setNumberOfLinesString:":"1",
                                             "setMaxWidth:type:": ["100", "relative"]
                                         }
@@ -418,10 +538,9 @@
                                             "type": "wrap_content"
                                         },
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "setText:": "$comment_num_2",
                                             "setTextColorString:": "#A6A6A6",
-                                            "setFontSizeString:": "12",
+                                            "setFontSizeString:": "11",
                                             "setNumberOfLinesString:": "1"
                                         }
                                     }
@@ -431,23 +550,7 @@
                     }
                 ]
             },
-            {
-                "view_type":"UIView",
-                "view_id":"id_separator",
-                "margin_left":"6",
-                "default_visible":"YES",
-                "height":{
-                    "type":"absolutely",
-                    "value":"0.5"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"363"
-                },
-                "attributes":{
-                    "setBackgroundColorString:":"#E5E5E5"
-                }
-            }
+            {"$includeComponet":"componet/separator_normal_bottom.geojson"}
         ]
     }
 }

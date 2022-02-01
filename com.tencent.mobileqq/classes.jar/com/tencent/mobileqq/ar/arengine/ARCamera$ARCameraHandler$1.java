@@ -1,31 +1,29 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import anai;
-import anak;
-
-public class ARCamera$ARCameraHandler$1
+class ARCamera$ARCameraHandler$1
   implements Runnable
 {
-  public ARCamera$ARCameraHandler$1(anak paramanak) {}
+  ARCamera$ARCameraHandler$1(ARCamera.ARCameraHandler paramARCameraHandler) {}
   
   public void run()
   {
-    anai localanai = this.a.a;
-    int j = anai.a(this.a.a) / 2;
-    int k = anai.b(this.a.a) / 2;
-    int m = anai.a(this.a.a);
-    int n = anai.b(this.a.a);
-    if (!anai.a(this.a.a)) {}
-    for (int i = anai.g();; i = anai.a(this.a.a) * 3 / 4)
-    {
-      anai.a(localanai, j, k, m, n, i);
-      return;
+    ARCamera localARCamera = this.a.a;
+    int j = ARCamera.a(this.a.a) / 2;
+    int k = ARCamera.b(this.a.a) / 2;
+    int m = ARCamera.a(this.a.a);
+    int n = ARCamera.b(this.a.a);
+    int i;
+    if (!ARCamera.c(this.a.a)) {
+      i = ARCamera.m();
+    } else {
+      i = ARCamera.a(this.a.a) * 3 / 4;
     }
+    ARCamera.a(localARCamera, j, k, m, n, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCamera.ARCameraHandler.1
  * JD-Core Version:    0.7.0.1
  */

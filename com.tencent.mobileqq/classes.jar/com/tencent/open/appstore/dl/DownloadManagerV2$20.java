@@ -3,72 +3,63 @@ package com.tencent.open.appstore.dl;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bfbm;
-import bfkr;
-import bflp;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class DownloadManagerV2$20
+class DownloadManagerV2$20
   implements Runnable
 {
-  public DownloadManagerV2$20(bfkr parambfkr) {}
+  DownloadManagerV2$20(DownloadManagerV2 paramDownloadManagerV2) {}
   
   public void run()
   {
-    DownloadInfo localDownloadInfo;
     try
     {
-      if (!bfbm.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).getBoolean("download_clear_unuse", false))
+      if (!CommonDataAdapter.a().b().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).getBoolean("download_clear_unuse", false))
       {
-        Iterator localIterator = bfkr.a(this.this$0).values().iterator();
-        for (;;)
+        Iterator localIterator = DownloadManagerV2.c(this.this$0).values().iterator();
+        Object localObject;
+        while (localIterator.hasNext())
         {
-          if (!localIterator.hasNext()) {
-            break label139;
+          DownloadInfo localDownloadInfo = (DownloadInfo)localIterator.next();
+          if (localDownloadInfo.o == 0)
+          {
+            if (localDownloadInfo.j == 0) {
+              localObject = localDownloadInfo.d;
+            } else {
+              localObject = localDownloadInfo.k;
+            }
+            if (this.this$0.g((String)localObject) == null) {
+              DownloadManagerV2.a(this.this$0, localDownloadInfo);
+            }
           }
-          localDownloadInfo = (DownloadInfo)localIterator.next();
-          if (localDownloadInfo.c != 0) {
-            break label117;
-          }
-          if (localDownloadInfo.a != 0) {
-            break;
-          }
-          String str = localDownloadInfo.d;
-          label77:
-          if (this.this$0.a(str) == null) {
-            bfkr.a(this.this$0, localDownloadInfo);
+          else if (this.this$0.c(localDownloadInfo) == null)
+          {
+            DownloadManagerV2.a(this.this$0, localDownloadInfo);
           }
         }
+        if (DownloadManagerV2.c(this.this$0).size() > 200)
+        {
+          localObject = CommonDataAdapter.a().b().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).edit();
+          ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
+          ((SharedPreferences.Editor)localObject).apply();
+          return;
+        }
       }
-      return;
     }
     catch (Exception localException)
     {
-      bflp.c("DownloadManagerV2", "checkDownloadList>>>", localException);
+      LogUtility.c("DownloadManagerV2", "checkDownloadList>>>", localException);
     }
-    label117:
-    do
-    {
-      localObject = localDownloadInfo.i;
-      break label77;
-      if (this.this$0.a(localDownloadInfo) != null) {
-        break;
-      }
-      bfkr.a(this.this$0, localDownloadInfo);
-      break;
-    } while (bfkr.a(this.this$0).size() <= 200);
-    label139:
-    Object localObject = bfbm.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
-    ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.20
  * JD-Core Version:    0.7.0.1
  */

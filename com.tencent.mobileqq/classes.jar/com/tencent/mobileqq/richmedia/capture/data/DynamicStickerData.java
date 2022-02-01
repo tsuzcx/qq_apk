@@ -31,7 +31,10 @@ public class DynamicStickerData
   
   public boolean isShow(long paramLong)
   {
-    SLog.d("DynamicSticker", "isshow:" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isshow:");
+    localStringBuilder.append(paramLong);
+    SLog.d("DynamicSticker", localStringBuilder.toString());
     return this.mSegmentKeeper.isInSegment(paramLong);
   }
   
@@ -43,37 +46,52 @@ public class DynamicStickerData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("DynamicStickerData{");
-    localStringBuilder.append("centerP=").append(this.centerP);
-    localStringBuilder.append(", scale=").append(this.scale);
-    localStringBuilder.append(", rotate=").append(this.rotate);
-    localStringBuilder.append(", translateX=").append(this.translateX);
-    localStringBuilder.append(", translateY=").append(this.translateY);
-    localStringBuilder.append(", width=").append(this.width);
-    localStringBuilder.append(", height=").append(this.height);
-    localStringBuilder.append(", layerWidth=").append(this.layerWidth);
-    localStringBuilder.append(", layerHeight=").append(this.layerHeight);
-    localStringBuilder.append(", type=").append(this.type);
-    localStringBuilder.append(", path='").append(this.path).append('\'');
-    localStringBuilder.append(", data=").append(this.data);
-    localStringBuilder.append(", decodeFlag=").append(this.decodeFlag);
-    localStringBuilder.append(", mGifDecoder=").append(this.mGifDecoder);
+    localStringBuilder.append("centerP=");
+    localStringBuilder.append(this.centerP);
+    localStringBuilder.append(", scale=");
+    localStringBuilder.append(this.scale);
+    localStringBuilder.append(", rotate=");
+    localStringBuilder.append(this.rotate);
+    localStringBuilder.append(", translateX=");
+    localStringBuilder.append(this.translateX);
+    localStringBuilder.append(", translateY=");
+    localStringBuilder.append(this.translateY);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", layerWidth=");
+    localStringBuilder.append(this.layerWidth);
+    localStringBuilder.append(", layerHeight=");
+    localStringBuilder.append(this.layerHeight);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", path='");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", data=");
+    localStringBuilder.append(this.data);
+    localStringBuilder.append(", decodeFlag=");
+    localStringBuilder.append(this.decodeFlag);
+    localStringBuilder.append(", mGifDecoder=");
+    localStringBuilder.append(this.mGifDecoder);
     String str = this.mSegmentKeeper.toString();
     if (!TextUtils.isEmpty(str))
     {
       localStringBuilder.append(",");
       localStringBuilder.append(str);
     }
-    for (;;)
+    else
     {
-      localStringBuilder.append('}');
-      return localStringBuilder.toString();
       localStringBuilder.append(",segments=null");
     }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.DynamicStickerData
  * JD-Core Version:    0.7.0.1
  */

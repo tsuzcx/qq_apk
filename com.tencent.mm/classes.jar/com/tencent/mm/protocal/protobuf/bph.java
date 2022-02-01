@@ -1,79 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bph
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String data;
-  public String knW;
+  public LinkedList<bpc> ZXT;
+  
+  public bph()
+  {
+    AppMethodBeat.i(169010);
+    this.ZXT = new LinkedList();
+    AppMethodBeat.o(169010);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89123);
+    AppMethodBeat.i(169011);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.knW != null) {
-        paramVarArgs.e(1, this.knW);
-      }
-      if (this.data != null) {
-        paramVarArgs.e(2, this.data);
-      }
-      AppMethodBeat.o(89123);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.ZXT);
+      AppMethodBeat.o(169011);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.knW == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = e.a.a.b.b.a.f(1, this.knW) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.data != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.data);
-      }
-      AppMethodBeat.o(89123);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(89123);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        bph localbph = (bph)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(89123);
-          return -1;
-        case 1: 
-          localbph.knW = locala.CLY.readString();
-          AppMethodBeat.o(89123);
-          return 0;
-        }
-        localbph.data = locala.CLY.readString();
-        AppMethodBeat.o(89123);
-        return 0;
-      }
-      AppMethodBeat.o(89123);
-      return -1;
+      paramInt = i.a.a.a.c(1, 8, this.ZXT);
+      AppMethodBeat.o(169011);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.ZXT.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(169011);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      bph localbph = (bph)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(169011);
+        return -1;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        bpc localbpc = new bpc();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localbpc.parseFrom((byte[])localObject);
+        }
+        localbph.ZXT.add(localbpc);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(169011);
+      return 0;
+    }
+    AppMethodBeat.o(169011);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bph
  * JD-Core Version:    0.7.0.1
  */

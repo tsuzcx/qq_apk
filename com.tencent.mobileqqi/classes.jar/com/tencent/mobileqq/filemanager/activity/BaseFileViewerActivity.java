@@ -10,7 +10,7 @@ public class BaseFileViewerActivity
   public void i(int paramInt)
   {
     super.f(2130903509);
-    ((RelativeLayout)findViewById(2131232761)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
+    ((RelativeLayout)findViewById(2131232760)).addView(((LayoutInflater)getSystemService("layout_inflater")).inflate(paramInt, null));
     b(getIntent());
   }
   

@@ -9,14 +9,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class MiniAppAd$Location
   extends MessageMicro<Location>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "latitude", "longitude", "coordinates_type" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, Location.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field coordinates_type = PBField.initUInt32(0);
   public final PBInt32Field latitude = PBField.initInt32(0);
   public final PBInt32Field longitude = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "latitude", "longitude", "coordinates_type" }, new Object[] { localInteger, localInteger, localInteger }, Location.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_AD.MiniAppAd.Location
  * JD-Core Version:    0.7.0.1
  */

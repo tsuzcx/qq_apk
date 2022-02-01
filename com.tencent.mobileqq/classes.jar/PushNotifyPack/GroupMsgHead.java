@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupMsgHead
   extends JceStruct
 {
-  public byte cCurPkg;
-  public byte cTotalPkg;
-  public long dwReserved;
-  public int usCmdType;
-  public int usPkgSeq;
+  public byte cCurPkg = 0;
+  public byte cTotalPkg = 0;
+  public long dwReserved = 0L;
+  public int usCmdType = 0;
+  public int usPkgSeq = 0;
   
   public GroupMsgHead() {}
   
@@ -44,7 +44,7 @@ public final class GroupMsgHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.GroupMsgHead
  * JD-Core Version:    0.7.0.1
  */

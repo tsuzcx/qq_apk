@@ -18,12 +18,12 @@ import android.widget.ProgressBar;
 public class ProgressSpinner
   extends ProgressBar
 {
-  private static final Property<ProgressSpinner, Float> Dx = new Property(Float.class, "showingness") {};
-  private int DA;
-  private ArgbEvaluator Dy = new ArgbEvaluator();
-  private float Dz;
+  private static final Property<ProgressSpinner, Float> Fm = new Property(Float.class, "showingness") {};
+  private ArgbEvaluator Fn = new ArgbEvaluator();
+  private float Fo;
+  private int Fp;
   private Interpolator mInterpolator;
-  private int[] nI = null;
+  private int[] pw = null;
   
   public ProgressSpinner(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,9 +44,9 @@ public class ProgressSpinner
     }
     setIndeterminateDrawable(new t(this));
     if (getVisibility() == 0) {
-      this.Dz = 1.0F;
+      this.Fo = 1.0F;
     }
-    int[] arrayOfInt = this.nI;
+    int[] arrayOfInt = this.pw;
     if (paramAttributeSet != null) {
       arrayOfInt = b(paramContext, paramAttributeSet, paramInt);
     }
@@ -62,11 +62,11 @@ public class ProgressSpinner
     for (;;)
     {
       if ((paramAttributeSet != null) && (paramAttributeSet.length > 0)) {
-        this.nI = paramAttributeSet;
+        this.pw = paramAttributeSet;
       }
       return;
       label106:
-      paramContext = getResources().obtainTypedArray(b.wc);
+      paramContext = getResources().obtainTypedArray(b.xR);
       paramAttributeSet = new int[paramContext.length()];
       paramInt = 0;
       while (paramInt < paramContext.length())
@@ -82,12 +82,12 @@ public class ProgressSpinner
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, k.yd, paramInt, 0);
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, k.zS, paramInt, 0);
     paramContext = localObject2;
-    if (localTypedArray.hasValue(k.ye)) {}
+    if (localTypedArray.hasValue(k.zT)) {}
     try
     {
-      paramInt = localTypedArray.getResourceId(k.ye, 0);
+      paramInt = localTypedArray.getResourceId(k.zT, 0);
       paramAttributeSet = getResources().getIntArray(paramInt);
       if (paramAttributeSet != null)
       {
@@ -96,7 +96,7 @@ public class ProgressSpinner
       }
       else
       {
-        paramInt = localTypedArray.getColor(k.ye, getResources().getColor(17170445));
+        paramInt = localTypedArray.getColor(k.zT, getResources().getColor(17170445));
         paramContext = new int[1];
         paramContext[0] = Integer.valueOf(paramInt).intValue();
       }

@@ -58,11 +58,8 @@ public class MessageForConfessNews
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MessageForConfessNews", 2, "doParse", localJSONException);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("MessageForConfessNews", 2, "doParse", localJSONException);
       }
     }
     if (QLog.isDevelopLevel()) {

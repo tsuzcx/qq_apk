@@ -5,14 +5,13 @@ import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 public class icr
   implements DialogInterface.OnClickListener
 {
-  public icr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String[] paramArrayOfString) {}
+  public icr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneWebMusicJsPlugin.access$002(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, true);
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusic(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
     paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$102(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, false);
+    QzoneWebMusicJsPlugin.access$102(this.a, false);
+    QzoneWebMusicJsPlugin.access$200(this.a, "cancel");
   }
 }
 

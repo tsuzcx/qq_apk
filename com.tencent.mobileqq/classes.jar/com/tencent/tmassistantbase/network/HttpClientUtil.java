@@ -25,25 +25,26 @@ public class HttpClientUtil
   public static void setProxy(HttpClient paramHttpClient)
   {
     Object localObject = GlobalUtil.getNetStatus();
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      if ((!((String)localObject).equalsIgnoreCase("cmwap")) && (!((String)localObject).equalsIgnoreCase("3gwap")) && (!((String)localObject).equalsIgnoreCase("uniwap"))) {
-        break label66;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      if ((!((String)localObject).equalsIgnoreCase("cmwap")) && (!((String)localObject).equalsIgnoreCase("3gwap")) && (!((String)localObject).equalsIgnoreCase("uniwap")))
+      {
+        if (((String)localObject).equalsIgnoreCase("ctwap"))
+        {
+          localObject = new HttpHost("10.0.0.200", 80);
+          paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
+        }
       }
-      localObject = new HttpHost("10.0.0.172", 80);
-      paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
+      else
+      {
+        localObject = new HttpHost("10.0.0.172", 80);
+        paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
+      }
     }
-    label66:
-    while (!((String)localObject).equalsIgnoreCase("ctwap")) {
-      return;
-    }
-    localObject = new HttpHost("10.0.0.200", 80);
-    paramHttpClient.getParams().setParameter("http.route.default-proxy", localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.network.HttpClientUtil
  * JD-Core Version:    0.7.0.1
  */

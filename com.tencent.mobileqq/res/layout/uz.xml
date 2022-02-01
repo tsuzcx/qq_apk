@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout android:id="@id/bpw" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/bq9" android:background="@color/bp" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <FrameLayout android:id="@id/bq9" android:background="@color/black" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView android:id="@id/kod" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <FrameLayout android:id="@id/kou" android:layout_width="fill_parent" android:layout_height="fill_parent" />
             <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/v3" />

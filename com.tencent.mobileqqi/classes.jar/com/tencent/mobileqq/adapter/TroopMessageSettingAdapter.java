@@ -187,7 +187,7 @@ public class TroopMessageSettingAdapter
       if (paramView != null) {
         if (((Integer)paramView.getTag()).intValue() == 1)
         {
-          paramViewGroup = (TextView)paramView.findViewById(2131234484);
+          paramViewGroup = (TextView)paramView.findViewById(2131234483);
           paramViewGroup.setEnabled(false);
           if (!TextUtils.isEmpty(((TroopInfo)localObject).troopname)) {
             break label268;
@@ -210,11 +210,11 @@ public class TroopMessageSettingAdapter
       }
       for (;;)
       {
-        paramViewGroup = (TextView)paramView.findViewById(2131234484);
-        ImageView localImageView = (ImageView)paramView.findViewById(2131234483);
+        paramViewGroup = (TextView)paramView.findViewById(2131234483);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131234482);
         localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(((TroopInfo)localObject).troopuin));
         localImageView.setVisibility(0);
-        paramView.findViewById(2131234485).setVisibility(0);
+        paramView.findViewById(2131234484).setVisibility(0);
         a(paramView, paramInt2, getChildrenCount(paramInt1));
         break;
         paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903978, null);

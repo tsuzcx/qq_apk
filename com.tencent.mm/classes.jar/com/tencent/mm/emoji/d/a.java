@@ -1,15 +1,34 @@
 package com.tencent.mm.emoji.d;
 
-import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/upload/EmojiCaptureCallback;", "", "onResult", "", "timeEnter", "", "success", "", "md5", "", "plugin-emojisdk_release"})
-public abstract interface a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/report/AnimateEmojiReporter;", "", "()V", "isRecentClick", "", "()Z", "setRecentClick", "(Z)V", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class a
 {
-  public abstract void a(long paramLong, boolean paramBoolean, String paramString);
+  public static final a mmh;
+  private static boolean mmi;
+  
+  static
+  {
+    AppMethodBeat.i(242727);
+    mmh = new a();
+    AppMethodBeat.o(242727);
+  }
+  
+  public static boolean aVX()
+  {
+    return mmi;
+  }
+  
+  public static void fl(boolean paramBoolean)
+  {
+    mmi = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.d.a
  * JD-Core Version:    0.7.0.1
  */

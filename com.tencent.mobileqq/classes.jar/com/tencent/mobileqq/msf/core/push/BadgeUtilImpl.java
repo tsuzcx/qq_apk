@@ -42,11 +42,10 @@ public class BadgeUtilImpl
   
   public static boolean isEnabled(Context paramContext)
   {
-    boolean bool = false;
     if (isSupportBadge(paramContext)) {
-      bool = SettingCloneUtil.readValue(paramContext, null, null, "qqsetting_show_badgeunread_key", true);
+      return SettingCloneUtil.readValue(paramContext, null, null, "qqsetting_show_badgeunread_key", true);
     }
-    return bool;
+    return false;
   }
   
   public static boolean isSupportBadge(Context paramContext)
@@ -61,8 +60,14 @@ public class BadgeUtilImpl
   
   public static void setBadge(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BadgeUtilImpl", 2, "setBadge count=" + paramInt + "|forceSet=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setBadge count=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("|forceSet=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("BadgeUtilImpl", 2, localStringBuilder.toString());
     }
     if ((!isEnabled(paramContext)) && (!paramBoolean)) {
       return;
@@ -90,7 +95,7 @@ public class BadgeUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.BadgeUtilImpl
  * JD-Core Version:    0.7.0.1
  */

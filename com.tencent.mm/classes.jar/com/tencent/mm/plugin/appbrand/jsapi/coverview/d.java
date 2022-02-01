@@ -1,108 +1,178 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
-import android.view.View;
+import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v.b;
-import com.tencent.mm.plugin.appbrand.jsapi.base.a;
-import com.tencent.mm.plugin.appbrand.page.af;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.e.b;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.e.c;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.e.d;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.e.e;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.e.f;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
-  extends a
 {
-  private static final int CTRL_INDEX = 446;
-  public static final String NAME = "insertScrollView";
+  private static int action = 0;
+  private static int eventId = 0;
+  private static long mWR = 0L;
+  private static long rTI = 0L;
   
-  public final View a(com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject)
+  private static e.f[] A(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(126300);
-    parame = new WxaScrollView(parame.getContext());
-    AppMethodBeat.o(126300);
-    return parame;
+    int j = 0;
+    AppMethodBeat.i(137517);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramMotionEvent.getPointerCount())
+    {
+      e.f localf = new e.f();
+      localf.id = paramMotionEvent.getPointerId(i);
+      localf.x = paramMotionEvent.getX(i);
+      localf.y = paramMotionEvent.getY(i);
+      localArrayList.add(localf);
+      i += 1;
+    }
+    paramMotionEvent = new e.f[localArrayList.size()];
+    i = j;
+    while (i < localArrayList.size())
+    {
+      paramMotionEvent[i] = ((e.f)localArrayList.get(i));
+      i += 1;
+    }
+    AppMethodBeat.o(137517);
+    return paramMotionEvent;
   }
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, final int paramInt, View paramView, JSONObject paramJSONObject)
+  public static void a(h paramh, int paramInt, MotionEvent paramMotionEvent, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(126302);
-    ab.d("MicroMsg.JsApiInsertScrollView", "onInsertView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
-    WxaScrollView localWxaScrollView = (WxaScrollView)paramView;
-    boolean bool = paramJSONObject.optBoolean("needScrollEvent");
-    String str = paramJSONObject.optString("data", "");
-    com.tencent.mm.plugin.appbrand.jsapi.s.e.b(paramView, paramJSONObject.optJSONObject("style"));
-    parame.vC().J(paramInt, true).i("data", str);
-    if (bool) {
-      localWxaScrollView.setOnScrollChangedListener(new m()
+    AppMethodBeat.i(327321);
+    int i = paramMotionEvent.getActionIndex();
+    int j = paramMotionEvent.getPointerId(i);
+    float f1 = paramMotionEvent.getX(i);
+    float f2 = paramMotionEvent.getY(i);
+    if ((action == paramMotionEvent.getAction()) && (eventId == j) && (rTI == paramMotionEvent.getEventTime()) && (mWR == paramMotionEvent.getDownTime()))
+    {
+      Log.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d, don't send Duplicate event", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(paramMotionEvent.getEventTime()), Long.valueOf(paramMotionEvent.getDownTime()) });
+      AppMethodBeat.o(327321);
+      return;
+    }
+    action = paramMotionEvent.getAction();
+    eventId = j;
+    rTI = paramMotionEvent.getEventTime();
+    mWR = paramMotionEvent.getDownTime();
+    e.f localf = new e.f();
+    localf.c(j, f1, f2);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("data", paramString);
+      localJSONObject.put("viewId", paramInt);
+      label203:
+      Log.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(rTI), Long.valueOf(mWR) });
+      paramString = null;
+      switch (paramMotionEvent.getAction())
       {
-        public final void q(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      default: 
+        paramMotionEvent = paramString;
+      }
+      for (;;)
+      {
+        if ((paramMotionEvent != null) && (paramBoolean))
         {
-          AppMethodBeat.i(126298);
-          if (!(paramAnonymousView instanceof WxaScrollView))
-          {
-            AppMethodBeat.o(126298);
-            return;
-          }
-          Object localObject = parame.vC().J(paramInt, false);
-          if (localObject == null)
-          {
-            AppMethodBeat.o(126298);
-            return;
-          }
-          localObject = ((v.b)localObject).getString("data", null);
-          if (localObject == null)
-          {
-            AppMethodBeat.o(126298);
-            return;
-          }
-          paramAnonymousView = ((WxaScrollView)paramAnonymousView).getTargetView();
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("data", localObject);
-          localHashMap.put("scrollLeft", Integer.valueOf(g.pN(paramAnonymousInt1)));
-          localHashMap.put("scrollTop", Integer.valueOf(g.pN(paramAnonymousInt2)));
-          localHashMap.put("scrollWidth", Integer.valueOf(g.pN(paramAnonymousView.getWidth())));
-          localHashMap.put("scrollHeight", Integer.valueOf(g.pN(paramAnonymousView.getHeight())));
-          paramAnonymousView = new l().x(localHashMap);
-          parame.b(paramAnonymousView);
-          AppMethodBeat.o(126298);
+          paramMotionEvent.ZR(localJSONObject.toString());
+          paramh.a(paramMotionEvent);
+          AppMethodBeat.o(327321);
+          return;
         }
-      });
+        try
+        {
+          localJSONObject.put("touch", localf.aZh());
+          label335:
+          paramMotionEvent = new e.c();
+          continue;
+          paramString = new JSONArray();
+          try
+          {
+            localJSONObject.put("touches", paramString);
+            label363:
+            paramMotionEvent = A(paramMotionEvent);
+            if ((paramMotionEvent != null) && (paramMotionEvent.length > 0))
+            {
+              paramInt = 0;
+              while (paramInt < paramMotionEvent.length)
+              {
+                paramString.put(paramMotionEvent[paramInt].aZh());
+                paramInt += 1;
+              }
+            }
+            paramMotionEvent = new e.d();
+            continue;
+            try
+            {
+              localJSONObject.put("touch", localf.aZh());
+              label427:
+              paramMotionEvent = new e.e();
+              continue;
+              paramString = new JSONArray();
+              try
+              {
+                localJSONObject.put("touches", paramString);
+                label455:
+                paramMotionEvent = A(paramMotionEvent);
+                if ((paramMotionEvent != null) && (paramMotionEvent.length > 0))
+                {
+                  paramInt = 0;
+                  while (paramInt < paramMotionEvent.length)
+                  {
+                    paramString.put(paramMotionEvent[paramInt].aZh());
+                    paramInt += 1;
+                  }
+                }
+                paramMotionEvent = new e.b();
+                continue;
+                if (paramMotionEvent != null)
+                {
+                  paramMotionEvent.ZR(localJSONObject.toString());
+                  paramh.a(paramMotionEvent, null);
+                }
+                AppMethodBeat.o(327321);
+                return;
+              }
+              catch (JSONException localJSONException1)
+              {
+                break label455;
+              }
+            }
+            catch (JSONException paramMotionEvent)
+            {
+              break label427;
+            }
+          }
+          catch (JSONException localJSONException2)
+          {
+            break label363;
+          }
+        }
+        catch (JSONException paramMotionEvent)
+        {
+          break label335;
+        }
+      }
     }
-    paramJSONObject.optInt("scrollLeft", 0);
-    if (paramJSONObject.has("scrollX"))
+    catch (JSONException paramString)
     {
-      bool = paramJSONObject.optBoolean("scrollX", true);
-      ab.i("MicroMsg.JsApiInsertScrollView", "scrollHorizontal:%b", new Object[] { Boolean.valueOf(bool) });
-      localWxaScrollView.setScrollHorizontal(bool);
+      break label203;
     }
-    if (paramJSONObject.has("scrollY"))
-    {
-      bool = paramJSONObject.optBoolean("scrollY", true);
-      ab.i("MicroMsg.JsApiInsertScrollView", "scrollVertical:%b", new Object[] { Boolean.valueOf(bool) });
-      localWxaScrollView.setScrollVertical(bool);
-    }
-    if (paramJSONObject.has("scrollTop"))
-    {
-      paramInt = g.a(paramJSONObject, "scrollTop", localWxaScrollView.getScrollY());
-      ab.i("MicroMsg.JsApiInsertScrollView", "scrollTop:%d", new Object[] { Integer.valueOf(paramInt) });
-      localWxaScrollView.postDelayed(new d.2(this, localWxaScrollView, paramInt), 100L);
-    }
-    AppMethodBeat.o(126302);
-  }
-  
-  public final int w(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(126301);
-    int i = paramJSONObject.getInt("viewId");
-    AppMethodBeat.o(126301);
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,28 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import vdl;
-import vzd;
-import wce;
-import wcf;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
 
-public class VipForwardVideoInfoController$1$1
+class VipForwardVideoInfoController$1$1
   implements Runnable
 {
-  public VipForwardVideoInfoController$1$1(wcf paramwcf, vdl paramvdl) {}
+  VipForwardVideoInfoController$1$1(VipForwardVideoInfoController.1 param1, GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent) {}
   
   public void run()
   {
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_Vdl.a;
+    QQUserUIItem localQQUserUIItem = this.a.a;
     if (localQQUserUIItem != null)
     {
-      this.jdField_a_of_type_Wcf.jdField_a_of_type_Wce.a.j();
-      wce.a(this.jdField_a_of_type_Wcf.jdField_a_of_type_Wce, localQQUserUIItem, this.jdField_a_of_type_Wcf.jdField_a_of_type_Vzh);
+      this.b.b.a.z();
+      VipForwardVideoInfoController.a(this.b.b, localQQUserUIItem, this.b.a);
       return;
     }
-    this.jdField_a_of_type_Wcf.jdField_a_of_type_Wce.a.k();
+    this.b.b.a.A();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.VipForwardVideoInfoController.1.1
  * JD-Core Version:    0.7.0.1
  */

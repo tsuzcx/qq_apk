@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.view.QMListItemView android:layout_height="76.0dip" style="@style/ado"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/mk_" android:layout_marginRight="@dimen/bl7" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/wrz" style="@style/adt" />
+    <ImageView android:id="@id/mzg" android:contentDescription="@string/xl8" style="@style/adr" />
+    <View android:id="@id/mza" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_centerVertical="true" />
+    <TextView android:id="@id/mz3" android:layout_toLeftOf="@id/mk_" android:layout_toRightOf="@id/mzg" android:layout_above="@id/mza" style="@style/adp" />
+    <TextView android:id="@id/mz4" android:layout_below="@id/mza" android:layout_alignLeft="@id/mz3" style="@style/adq" />
+    <TextView android:id="@id/mys" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/mz4" android:layout_below="@id/mza" style="@style/adq" />
+</com.tencent.qqmail.view.QMListItemView>

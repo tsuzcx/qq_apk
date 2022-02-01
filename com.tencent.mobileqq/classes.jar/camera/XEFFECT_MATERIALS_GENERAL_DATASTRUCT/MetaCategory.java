@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,11 +14,11 @@ public final class MetaCategory
   static Map<String, String> cache_dynamicFields;
   static ArrayList<MetaMaterial> cache_materials;
   static ArrayList<MetaCategory> cache_subCategories = new ArrayList();
-  public Map<String, String> dynamicFields;
+  public Map<String, String> dynamicFields = null;
   public String id = "";
-  public ArrayList<MetaMaterial> materials;
+  public ArrayList<MetaMaterial> materials = null;
   public String name = "";
-  public ArrayList<MetaCategory> subCategories;
+  public ArrayList<MetaCategory> subCategories = null;
   public String thumbUrl = "";
   
   static
@@ -55,29 +56,35 @@ public final class MetaCategory
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 1);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.thumbUrl != null) {
-      paramJceOutputStream.write(this.thumbUrl, 2);
+    localObject = this.thumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.subCategories != null) {
-      paramJceOutputStream.write(this.subCategories, 3);
+    localObject = this.subCategories;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.materials != null) {
-      paramJceOutputStream.write(this.materials, 4);
+    localObject = this.materials;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.dynamicFields != null) {
-      paramJceOutputStream.write(this.dynamicFields, 5);
+    localObject = this.dynamicFields;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory
  * JD-Core Version:    0.7.0.1
  */

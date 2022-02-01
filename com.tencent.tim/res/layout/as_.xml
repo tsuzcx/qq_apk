@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="bottom" android:id="@id/mnf" android:background="@android:color/white" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#fff0f2f8" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <RelativeLayout android:id="@id/ler" android:background="#0f0188fd" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="8.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="@android:color/black" android:id="@id/lep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="0人已编辑" android:layout_centerVertical="true" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/htm" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff0188fd" android:id="@id/les" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/q_2" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

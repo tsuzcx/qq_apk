@@ -24,18 +24,19 @@ public final class qqstory_struct$EmoticonPack
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 56, 66, 74 }, new String[] { "pack_id", "icon", "name", "download_url", "type", "md5", "version", "download_icon", "config" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(1), localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, localByteStringMicro6 }, EmoticonPack.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 56, 66, 74 }, new String[] { "pack_id", "icon", "name", "download_url", "type", "md5", "version", "download_icon", "config" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(1), localByteStringMicro4, localInteger, localByteStringMicro5, localByteStringMicro6 }, EmoticonPack.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SecurityConfig Version = "1">
+	<SubConfig Type = "1">
+		<Element Value = "0">
+			<TailWording>消息中可能涉及银行卡号。钱财往来别大意，$1更放心。</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "电话核实"></Action>
+		</Element>
+		<Element Value = "10">
+			<TailWording>银行卡号已认证，未发现安全风险。</TailWording>
+		</Element>
+		<Element Value = "20">
+			<TailWording>系统已自动隐藏银行卡号。请务必$1好友身份，谨防诈骗。$2</TailWording>
+			<TailWording Status = "1">你已确认卡号安全，系统已展示完整卡号。</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "电话核实"></Action>
+			<Action PlaceHolder = "2" Type = "showAlert" Name = "查看完整卡号">
+				<AlertTitle>安全提示</AlertTitle>
+				<AlertText>请电话核实好友身份，确认卡号安全，谨防诈骗。</AlertText>
+				<AlertOtherBtnText>查看卡号</AlertOtherBtnText>
+				<AlertCancelBtnText>返回</AlertCancelBtnText>
+			</Action>
+		</Element>
+		<Element Value = "30">
+			<TailWording>包含非法欺诈卡号，已被系统自动屏蔽。请$1好友身份，不要轻易汇款。$2</TailWording>
+			<Action PlaceHolder = "1" Type = "makePhoneCall" Name = "电话核实"></Action>
+			<Action PlaceHolder = "2" Type = "showAlert" Name = "查看详情">
+				<AlertTitle>安全警示</AlertTitle>
+				<AlertText>包含非法银行卡号，多人举报为欺诈。请电话核实对方身份，切勿轻易汇款。</AlertText>
+				<AlertCancelBtnText>返回</AlertCancelBtnText>
+			</Action>
+		</Element>
+	</SubConfig>
+</SecurityConfig>

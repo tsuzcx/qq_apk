@@ -19,7 +19,7 @@ public final class CLIENT$StGetStoryReplyListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQ_STORY_CLIENT.CLIENT.StGetStoryReplyListReq
  * JD-Core Version:    0.7.0.1
  */

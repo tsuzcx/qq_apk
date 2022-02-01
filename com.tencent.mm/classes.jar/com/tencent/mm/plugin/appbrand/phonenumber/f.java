@@ -1,46 +1,69 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f.a.a;
-import a.f.a.r;
-import a.f.b.t;
-import a.f.b.v;
-import a.g;
-import a.j.k;
-import a.l;
-import a.y;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.wx_extension.b.a;
-import com.tencent.mm.protocal.protobuf.bzm;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.eyf;
+import com.tencent.mm.protocal.protobuf.eyg;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiSendVerifyCodeWxaPhone;", "", "appId", "", "mobile", "(Ljava/lang/String;Ljava/lang/String;)V", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getRr", "()Lcom/tencent/mm/modelbase/CommReqResp;", "rr$delegate", "Lkotlin/Lazy;", "run", "", "callback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "errType", "errCode", "errMsg", "Lcom/tencent/mm/protocal/protobuf/SendVerifyCodeResp;", "resp", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiSendVerifyCodeWxaPhone;", "", "appId", "", "mobile", "(Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getMobile", "run", "", "callback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/SendVerifyCodeResp;", "Lkotlin/ParameterName;", "name", "resp", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  private final a.f iCD;
-  
-  static
-  {
-    AppMethodBeat.i(143934);
-    eOJ = new k[] { (k)v.a(new t(v.aG(f.class), "rr", "getRr()Lcom/tencent/mm/modelbase/CommReqResp;")) };
-    AppMethodBeat.o(143934);
-  }
+  private final String appId;
+  private final String hRk;
   
   public f(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(134782);
-    this.iCD = g.j((a)new f.a(paramString1, paramString2));
-    AppMethodBeat.o(134782);
+    AppMethodBeat.i(148036);
+    this.appId = paramString1;
+    this.hRk = paramString2;
+    AppMethodBeat.o(148036);
   }
   
-  public final void a(r<? super Integer, ? super Integer, ? super String, ? super bzm, y> paramr)
+  private static final ah a(b paramb, eyg parameyg)
   {
-    AppMethodBeat.i(143935);
-    com.tencent.mm.ipcinvoker.wx_extension.b.a((com.tencent.mm.ai.b)this.iCD.getValue(), (b.a)new f.b(paramr));
-    AppMethodBeat.o(143935);
+    AppMethodBeat.i(318940);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(318940);
+      return null;
+    }
+    paramb.invoke(parameyg);
+    paramb = ah.aiuX;
+    AppMethodBeat.o(318940);
+    return paramb;
+  }
+  
+  private static final void f(b paramb, Object paramObject)
+  {
+    AppMethodBeat.i(318950);
+    if ((paramObject instanceof Exception)) {
+      Log.e("Luggage.FULL.CgiPhoneNumber", s.X("CgiSendVerifyCodeWxaPhone ", ((Exception)paramObject).getMessage()));
+    }
+    if (paramb != null) {
+      paramb.invoke(null);
+    }
+    AppMethodBeat.o(318950);
+  }
+  
+  public final void Z(b<? super eyg, ah> paramb)
+  {
+    AppMethodBeat.i(148035);
+    eyf localeyf = new eyf();
+    localeyf.appid = this.appId;
+    localeyf.hRk = this.hRk;
+    ((com.tencent.mm.plugin.appbrand.networking.c)e.T(com.tencent.mm.plugin.appbrand.networking.c.class)).a("/cgi-bin/mmbiz-bin/wxaapp/sendverifycode", (a)localeyf, eyg.class).c(new f..ExternalSyntheticLambda0(paramb)).a(new f..ExternalSyntheticLambda1(paramb));
+    AppMethodBeat.o(148035);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.f
  * JD-Core Version:    0.7.0.1
  */

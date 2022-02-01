@@ -16,7 +16,6 @@ public class e
     paramArrayOfByte2 = new byte[this.d];
     util.int8_to_buf(paramArrayOfByte2, 0, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 1, paramArrayOfByte1.length);
-    int i = paramArrayOfByte1.length;
     return a(paramArrayOfByte2);
   }
 }

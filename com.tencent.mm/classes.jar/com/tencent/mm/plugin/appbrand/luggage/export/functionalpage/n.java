@@ -1,66 +1,57 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.config.ad;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/InvokeCallbackContext;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CallbackContext;", "transitiveData", "", "(Ljava/lang/String;)V", "getTransitiveData", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/GetSycConfigTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "()V", "invoke", "data", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class n
-  extends a
+  implements m<IPCString, AppBrandSysConfigWC>
 {
-  final String hiO;
-  
-  public n(String paramString)
+  private static AppBrandSysConfigWC d(IPCString paramIPCString)
   {
-    super((byte)0);
-    this.hiO = paramString;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(134753);
-    if (this != paramObject)
+    AppMethodBeat.i(50878);
+    Log.i("MicroMsg.AppBrand.FunctionalConfigAssembler", s.X("invoke GetSycConfigTask with ", paramIPCString));
+    try
     {
-      if ((paramObject instanceof n))
+      s.checkNotNull(paramIPCString);
+      if (h.baC().aZN())
       {
-        paramObject = (n)paramObject;
-        if (!j.e(this.hiO, paramObject.hiO)) {}
+        paramIPCString = ad.XH(paramIPCString.value);
+        if (paramIPCString != null)
+        {
+          paramIPCString.eqf = AppBrandGlobalSystemConfig.ckD();
+          AppMethodBeat.o(50878);
+          return paramIPCString;
+        }
       }
     }
-    else
+    catch (Exception paramIPCString)
     {
-      AppMethodBeat.o(134753);
-      return true;
+      if (BuildInfo.DEBUG)
+      {
+        AppMethodBeat.o(50878);
+        throw paramIPCString;
+      }
+      AppMethodBeat.o(50878);
+      return null;
     }
-    AppMethodBeat.o(134753);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(134752);
-    String str = this.hiO;
-    if (str != null)
-    {
-      int i = str.hashCode();
-      AppMethodBeat.o(134752);
-      return i;
-    }
-    AppMethodBeat.o(134752);
-    return 0;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(134751);
-    String str = "InvokeCallbackContext(transitiveData=" + this.hiO + ")";
-    AppMethodBeat.o(134751);
-    return str;
+    AppMethodBeat.o(50878);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.n
  * JD-Core Version:    0.7.0.1
  */

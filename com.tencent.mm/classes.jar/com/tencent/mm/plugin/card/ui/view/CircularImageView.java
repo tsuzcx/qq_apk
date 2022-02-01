@@ -28,14 +28,14 @@ public class CircularImageView
   public CircularImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(88800);
+    AppMethodBeat.i(113727);
     this.paint = new Paint();
-    AppMethodBeat.o(88800);
+    AppMethodBeat.o(113727);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(88801);
+    AppMethodBeat.i(113728);
     Object localObject1 = getDrawable();
     if (localObject1 != null)
     {
@@ -57,16 +57,16 @@ public class CircularImageView
       this.paint.reset();
       paramCanvas.drawBitmap((Bitmap)localObject1, (Rect)localObject2, (Rect)localObject3, this.paint);
       paramCanvas.save();
-      AppMethodBeat.o(88801);
+      AppMethodBeat.o(113728);
       return;
     }
     super.onDraw(paramCanvas);
-    AppMethodBeat.o(88801);
+    AppMethodBeat.o(113728);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.CircularImageView
  * JD-Core Version:    0.7.0.1
  */

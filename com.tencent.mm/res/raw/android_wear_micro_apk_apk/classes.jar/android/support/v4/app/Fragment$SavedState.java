@@ -9,11 +9,11 @@ public class Fragment$SavedState
   implements Parcelable
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-  final Bundle bW;
+  final Bundle dF;
   
   Fragment$SavedState(Parcel paramParcel)
   {
-    this.bW = paramParcel.readBundle();
+    this.dF = paramParcel.readBundle();
   }
   
   public int describeContents()
@@ -23,7 +23,7 @@ public class Fragment$SavedState
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeBundle(this.bW);
+    paramParcel.writeBundle(this.dF);
   }
 }
 

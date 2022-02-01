@@ -1,84 +1,60 @@
 package com.tencent.mm.storage.emotion;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xwalk.core.Log;
+import com.tencent.mm.autogen.b.dw;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/storage/emotion/GetEmotionStoreRecListCacheInfo;", "Lcom/tencent/mm/autogen/table/BaseGetEmotionStoreRecListCache;", "reqType", "", "cache", "", "(Ljava/lang/String;[B)V", "cu", "Landroid/database/Cursor;", "(Landroid/database/Cursor;)V", "()V", "GetEmotionListCache", "", "getCache", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
-  extends k
+  extends dw
 {
-  public HashMap<String, s> yQg;
+  public static final a admI;
+  private static final IAutoDBItem.MAutoDBInfo info;
   
-  public final void axH()
+  static
   {
-    AppMethodBeat.i(62894);
-    g.RL().Ru().set(ac.a.yKl, null);
-    this.yQg = new HashMap();
-    AppMethodBeat.o(62894);
+    AppMethodBeat.i(248979);
+    admI = new a((byte)0);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = dw.aJm();
+    s.s(localMAutoDBInfo, "initAutoDBInfo(GetEmotio…istCacheInfo::class.java)");
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(248979);
   }
   
-  public final List<s> blf()
-  {
-    AppMethodBeat.i(62893);
-    if (this.yQg == null) {
-      dzG();
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.yQg.values().iterator();
-    while (localIterator.hasNext())
-    {
-      s locals = (s)localIterator.next();
-      if ((locals.position >= 0) && (locals.position < com.tencent.mm.cd.e.dve().aRA())) {
-        localArrayList.add(locals);
-      }
-    }
-    Collections.sort(localArrayList, new t.1(this));
-    AppMethodBeat.o(62893);
-    return localArrayList;
-  }
+  public t() {}
   
-  public final void dzG()
+  public t(Cursor paramCursor)
   {
-    AppMethodBeat.i(62892);
-    Object localObject = (String)g.RL().Ru().get(ac.a.yKl, "");
-    this.yQg = new HashMap();
-    try
+    this();
+    AppMethodBeat.i(248972);
+    if (paramCursor == null)
     {
-      localObject = new JSONArray((String)localObject);
-      int i = 0;
-      while (i < ((JSONArray)localObject).length())
-      {
-        s locals = new s();
-        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-        locals.key = localJSONObject.optString("key", "");
-        locals.position = localJSONObject.optInt("position", 0);
-        locals.yQf = localJSONObject.optInt("use_count", 0);
-        locals.ePF = localJSONObject.optLong("last_time", 0L);
-        this.yQg.put(locals.key, locals);
-        i += 1;
-      }
-      AppMethodBeat.o(62892);
+      AppMethodBeat.o(248972);
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      Log.w("SmileyUsageInfoStorage", "data error clear all");
-      axH();
-      AppMethodBeat.o(62892);
-    }
+    convertFrom(paramCursor);
+    AppMethodBeat.o(248972);
   }
+  
+  public t(String paramString, byte[] paramArrayOfByte)
+  {
+    this();
+    AppMethodBeat.i(248965);
+    this.field_reqType = paramString;
+    this.field_cache = paramArrayOfByte;
+    AppMethodBeat.o(248965);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/storage/emotion/GetEmotionStoreRecListCacheInfo$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getEmotionStoreRecListCacheTableName", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import alqo;
 import com.tencent.litetransfersdk.FTNInfo;
 import com.tencent.litetransfersdk.NFCInfo;
 import com.tencent.litetransfersdk.Session;
 
-public class DataLineHandler$11
+class DataLineHandler$11
   implements Runnable
 {
-  public DataLineHandler$11(alqo paramalqo, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
+  DataLineHandler$11(DataLineHandler paramDataLineHandler, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
   
   public void run()
   {
-    alqo.a(this.this$0, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
+    DataLineHandler.a(this.this$0, this.a, this.b, this.c, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.11
  * JD-Core Version:    0.7.0.1
  */

@@ -38,25 +38,29 @@ public final class s_videoremark
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.iconurl != null) {
-      paramJceOutputStream.write(this.iconurl, 0);
+    String str = this.iconurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.icondesc != null) {
-      paramJceOutputStream.write(this.icondesc, 1);
+    str = this.icondesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.remark != null) {
-      paramJceOutputStream.write(this.remark, 2);
+    str = this.remark;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.actiontype, 3);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 4);
+    str = this.actionurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.orgwebsite, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_videoremark
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ final class AddMoreFriendsUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(25505);
-    this.sZu.finish();
-    AppMethodBeat.o(25505);
+    AppMethodBeat.i(29195);
+    this.SIv.finish();
+    AppMethodBeat.o(29195);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddMoreFriendsUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,150 +1,148 @@
 package com.tencent.mm.plugin.wallet.pay.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.e;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet.a.s;
+import com.tencent.mm.plugin.wallet.model.p;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.model.w;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 import org.json.JSONObject;
 
-public final class b
-  extends f
+public class b
+  extends g
 {
-  private boolean tVE;
-  private boolean tVF;
+  private boolean VmY;
+  private boolean VmZ;
   
-  public b(u paramu, Orders paramOrders)
+  public b(w paramw, Orders paramOrders)
   {
-    super(paramu, paramOrders);
-    AppMethodBeat.i(45941);
-    this.tVE = false;
-    cRO();
-    AppMethodBeat.o(45941);
+    super(paramw, paramOrders);
+    AppMethodBeat.i(69284);
+    this.VmY = false;
+    ifW();
+    AppMethodBeat.o(69284);
   }
   
-  private void cRO()
+  private void ifW()
   {
-    AppMethodBeat.i(45942);
-    this.tVE = false;
-    s.cRG();
-    if ((s.cRH().ulT != null) && (this.tVG.pVo != null))
+    AppMethodBeat.i(69285);
+    this.VmY = false;
+    p.ifO();
+    if ((p.ifP().VKi != null) && (this.Vna.Nxi != null))
     {
-      String str = this.tVG.poq;
-      s.cRG();
-      if (str.equals(s.cRH().ulT.field_bankcardType))
+      String str = this.Vna.hAk;
+      p.ifO();
+      if (str.equals(p.ifP().VKi.field_bankcardType))
       {
-        if ((this.tVG.pVo.cCD != 31) && (this.tVG.pVo.cCD != 32) && (this.tVG.pVo.cCD != 33) && (this.tVG.pVo.cCD != 42) && (this.tVG.pVo.cCD != 37)) {
-          break label178;
+        if ((this.Vna.Nxi.hUR != 31) && (this.Vna.Nxi.hUR != 32) && (this.Vna.Nxi.hUR != 33) && (this.Vna.Nxi.hUR != 42) && (this.Vna.Nxi.hUR != 37) && (this.Vna.Nxi.hUR != 56)) {
+          break label193;
         }
-        this.tVE = true;
+        this.VmY = true;
       }
     }
     for (;;)
     {
-      ab.i("MicroMsg.NetSceneTenpayPayVertify", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(this.tVE), Boolean.valueOf(this.tVF) });
-      AppMethodBeat.o(45942);
+      Log.i("MicroMsg.NetSceneTenpayPayVertify", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(this.VmY), Boolean.valueOf(this.VmZ) });
+      AppMethodBeat.o(69285);
       return;
-      label178:
-      this.tVF = true;
+      label193:
+      this.VmZ = true;
     }
   }
   
-  protected final void aj(Map<String, String> paramMap)
+  protected void bi(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(45943);
-    cRO();
-    if ((this.tVE) || (this.tVF)) {
-      paramMap.put("busi_scene", this.tVG.poq);
+    AppMethodBeat.i(69286);
+    ifW();
+    if ((this.VmY) || (this.VmZ)) {
+      paramMap.put("busi_scene", this.Vna.hAk);
     }
-    AppMethodBeat.o(45943);
+    AppMethodBeat.o(69286);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(45946);
-    if (this.tVE) {
-      h.qsU.idkeyStat(663L, 26L, 1L, false);
+    AppMethodBeat.i(69289);
+    if (this.VmY) {
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(663L, 26L, 1L, false);
     }
     for (;;)
     {
-      int i = super.doScene(parame, paramf);
-      AppMethodBeat.o(45946);
+      int i = super.doScene(paramg, paramh);
+      AppMethodBeat.o(69289);
       return i;
-      if (this.tVF) {
-        h.qsU.idkeyStat(663L, 22L, 1L, false);
+      if (this.VmZ) {
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(663L, 22L, 1L, false);
       }
     }
   }
   
-  public final int getFuncId()
+  public int getFuncId()
   {
-    AppMethodBeat.i(45944);
-    cRO();
-    if (this.tVE)
+    AppMethodBeat.i(69287);
+    ifW();
+    if (this.VmY)
     {
-      AppMethodBeat.o(45944);
+      AppMethodBeat.o(69287);
       return 1281;
     }
-    if (this.tVF)
+    if (this.VmZ)
     {
-      AppMethodBeat.o(45944);
+      AppMethodBeat.o(69287);
       return 1305;
     }
-    AppMethodBeat.o(45944);
+    AppMethodBeat.o(69287);
     return 1601;
   }
   
-  public final int getTenpayCgicmd()
+  public int getTenpayCgicmd()
   {
     return 121;
   }
   
-  public final String getUri()
+  public String getUri()
   {
-    AppMethodBeat.i(45945);
-    cRO();
-    if (this.tVE)
+    AppMethodBeat.i(69288);
+    ifW();
+    if (this.VmY)
     {
-      AppMethodBeat.o(45945);
+      AppMethodBeat.o(69288);
       return "/cgi-bin/mmpay-bin/tenpay/snslqtpaybindverify";
     }
-    if (this.tVF)
+    if (this.VmZ)
     {
-      AppMethodBeat.o(45945);
+      AppMethodBeat.o(69288);
       return "/cgi-bin/mmpay-bin/tenpay/lqtpaybindverify";
     }
-    AppMethodBeat.o(45945);
+    AppMethodBeat.o(69288);
     return "/cgi-bin/mmpay-bin/tenpay/banpaybindverify";
   }
   
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(45947);
+    AppMethodBeat.i(69290);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     if (paramInt != 0)
     {
-      if (this.tVE)
+      if (this.VmY)
       {
-        h.qsU.idkeyStat(663L, 27L, 1L, false);
-        AppMethodBeat.o(45947);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(663L, 27L, 1L, false);
+        AppMethodBeat.o(69290);
         return;
       }
-      if (this.tVF) {
-        h.qsU.idkeyStat(663L, 23L, 1L, false);
+      if (this.VmZ) {
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(663L, 23L, 1L, false);
       }
     }
-    AppMethodBeat.o(45947);
+    AppMethodBeat.o(69290);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,10 @@
 package com.tencent.youtu.ytagreflectlivecheck.worker;
 
 import android.os.SystemClock;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public abstract class TimerWorker
 {
@@ -15,7 +17,7 @@ public abstract class TimerWorker
   
   protected TimerWorker(long paramLong1, long paramLong2)
   {
-    YTLogger.i("CloudFaceCountDownTimer", "[TimerWorker.TimerWorker] mCountDownTimer");
+    YTAGReflectLiveCheckJNIInterface.nativeLog("CloudFaceCountDownTimer", "[TimerWorker.TimerWorker] mCountDownTimer");
     this.mMillisInFuture = paramLong1;
     this.mCountdownInterval = paramLong2;
   }
@@ -69,39 +71,39 @@ public abstract class TimerWorker
     //   1: monitorenter
     //   2: aload_0
     //   3: iconst_0
-    //   4: putfield 23	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mCancelled	Z
+    //   4: putfield 25	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mCancelled	Z
     //   7: aload_0
-    //   8: getfield 33	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mMillisInFuture	J
+    //   8: getfield 35	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mMillisInFuture	J
     //   11: lconst_0
     //   12: lcmp
     //   13: ifgt +11 -> 24
     //   16: aload_0
-    //   17: invokevirtual 59	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:onFinish	()V
+    //   17: invokevirtual 63	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:onFinish	()V
     //   20: aload_0
     //   21: monitorexit
     //   22: aload_0
     //   23: areturn
     //   24: aload_0
-    //   25: invokestatic 49	android/os/SystemClock:elapsedRealtime	()J
+    //   25: invokestatic 53	android/os/SystemClock:elapsedRealtime	()J
     //   28: aload_0
-    //   29: getfield 33	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mMillisInFuture	J
+    //   29: getfield 35	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mMillisInFuture	J
     //   32: ladd
-    //   33: putfield 43	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mStopTimeInFuture	J
+    //   33: putfield 47	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mStopTimeInFuture	J
     //   36: aload_0
-    //   37: new 53	java/util/Timer
+    //   37: new 57	java/util/Timer
     //   40: dup
-    //   41: invokespecial 66	java/util/Timer:<init>	()V
-    //   44: putfield 51	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mTimer	Ljava/util/Timer;
+    //   41: invokespecial 70	java/util/Timer:<init>	()V
+    //   44: putfield 55	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mTimer	Ljava/util/Timer;
     //   47: aload_0
-    //   48: getfield 51	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mTimer	Ljava/util/Timer;
-    //   51: new 68	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker$1
+    //   48: getfield 55	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mTimer	Ljava/util/Timer;
+    //   51: new 6	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker$1
     //   54: dup
     //   55: aload_0
-    //   56: invokespecial 70	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker$1:<init>	(Lcom/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker;)V
+    //   56: invokespecial 72	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker$1:<init>	(Lcom/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker;)V
     //   59: lconst_0
     //   60: aload_0
-    //   61: getfield 35	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mCountdownInterval	J
-    //   64: invokevirtual 74	java/util/Timer:schedule	(Ljava/util/TimerTask;JJ)V
+    //   61: getfield 37	com/tencent/youtu/ytagreflectlivecheck/worker/TimerWorker:mCountdownInterval	J
+    //   64: invokevirtual 76	java/util/Timer:schedule	(Ljava/util/TimerTask;JJ)V
     //   67: goto -47 -> 20
     //   70: astore_1
     //   71: aload_0
@@ -120,7 +122,7 @@ public abstract class TimerWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.worker.TimerWorker
  * JD-Core Version:    0.7.0.1
  */

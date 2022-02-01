@@ -11,13 +11,13 @@ public final class operation_delcomment_req
 {
   static Map<String, String> cache_bypass_param;
   static Map<Integer, String> cache_mapBusiParam = new HashMap();
-  public Map<String, String> bypass_param;
+  public Map<String, String> bypass_param = null;
   public String ciphertext = "";
-  public long iAppID;
-  public long iCommentUin;
-  public int iDelSource;
-  public long iSrcUin;
-  public Map<Integer, String> mapBusiParam;
+  public long iAppID = 0L;
+  public long iCommentUin = 0L;
+  public int iDelSource = 0;
+  public long iSrcUin = 0L;
+  public Map<Integer, String> mapBusiParam = null;
   public String strCommentID = "";
   public String strCommentUinOpenid = "";
   public String strSrcID = "";
@@ -71,23 +71,27 @@ public final class operation_delcomment_req
     paramJceOutputStream.write(this.strCommentID, 4);
     paramJceOutputStream.write(this.iDelSource, 5);
     paramJceOutputStream.write(this.mapBusiParam, 6);
-    if (this.strSrcUinOpenid != null) {
-      paramJceOutputStream.write(this.strSrcUinOpenid, 7);
+    Object localObject = this.strSrcUinOpenid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strCommentUinOpenid != null) {
-      paramJceOutputStream.write(this.strCommentUinOpenid, 8);
+    localObject = this.strCommentUinOpenid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.ciphertext != null) {
-      paramJceOutputStream.write(this.ciphertext, 9);
+    localObject = this.ciphertext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.bypass_param != null) {
-      paramJceOutputStream.write(this.bypass_param, 10);
+    localObject = this.bypass_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_delcomment_req
  * JD-Core Version:    0.7.0.1
  */

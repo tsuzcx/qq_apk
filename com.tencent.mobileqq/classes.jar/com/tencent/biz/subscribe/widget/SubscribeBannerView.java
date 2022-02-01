@@ -3,24 +3,23 @@ package com.tencent.biz.subscribe.widget;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
-import ynv;
 
 public class SubscribeBannerView
   extends BaseWidgetView
 {
-  private static int jdField_a_of_type_Int = ImmersiveUtils.a(20.0F);
-  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private SubscribeBannerView.BannerAdapter jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter;
-  private SubscribeBannerView.DotsIndicator jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator;
+  private static int f = ImmersiveUtils.dpToPx(20.0F);
+  private SubscribeBannerView.BannerAdapter c;
+  private SubscribeBannerView.DotsIndicator d;
+  private ViewPager e;
   
   public SubscribeBannerView(@NonNull Context paramContext)
   {
@@ -34,46 +33,46 @@ public class SubscribeBannerView
   
   private void a(FrameLayout paramFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator = new SubscribeBannerView.DotsIndicator(getContext());
+    this.d = new SubscribeBannerView.DotsIndicator(getContext());
     paramFrameLayout = new FrameLayout.LayoutParams(-2, -2);
     paramFrameLayout.gravity = 81;
-    addView(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator, paramFrameLayout);
+    addView(this.d, paramFrameLayout);
   }
   
-  public int a()
+  public void a()
+  {
+    SubscribeBannerView.BannerAdapter localBannerAdapter = this.c;
+    if (localBannerAdapter != null) {
+      localBannerAdapter.a().clear();
+    }
+  }
+  
+  protected void a(Context paramContext, View paramView)
+  {
+    this.e = new ViewPager(getContext());
+    paramContext = new FrameLayout.LayoutParams(-1, -1);
+    paramContext.bottomMargin = f;
+    this.e.setLayoutParams(paramContext);
+    this.e.setOffscreenPageLimit(3);
+    this.e.setOnPageChangeListener(new SubscribeBannerView.1(this));
+    paramContext = (FrameLayout)paramView;
+    paramContext.addView(this.e);
+    a(paramContext);
+  }
+  
+  protected void a(Object paramObject) {}
+  
+  protected int getLayoutId()
   {
     return 0;
   }
   
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = new ViewPager(getContext());
-    paramContext = new FrameLayout.LayoutParams(-1, -1);
-    paramContext.bottomMargin = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setLayoutParams(paramContext);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(3);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new ynv(this));
-    ((FrameLayout)paramView).addView(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
-    a((FrameLayout)paramView);
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter.a().clear();
-    }
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(null);
-    }
-  }
-  
   public void setAdapter(SubscribeBannerView.BannerAdapter paramBannerAdapter)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter = paramBannerAdapter;
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter);
+    this.c = paramBannerAdapter;
+    paramBannerAdapter = this.e;
+    if (paramBannerAdapter != null) {
+      paramBannerAdapter.setAdapter(this.c);
     }
   }
   
@@ -81,30 +80,32 @@ public class SubscribeBannerView
   {
     if (getLayoutParams() != null)
     {
-      getLayoutParams().height = (jdField_a_of_type_Int + paramInt);
+      getLayoutParams().height = (paramInt + f);
       requestLayout();
     }
   }
   
   public void setDatas(List paramList)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$BannerAdapter.a((ArrayList)paramList);
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((SubscribeBannerView.BannerAdapter)localObject).a((ArrayList)paramList);
     }
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator != null)
+    localObject = this.d;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator.removeAllViews();
+      ((SubscribeBannerView.DotsIndicator)localObject).removeAllViews();
       if ((paramList != null) && (paramList.size() > 0))
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator.a(paramList.size());
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeBannerView$DotsIndicator.setDotsSelected(0);
+        this.d.a(paramList.size());
+        this.d.setDotsSelected(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView
  * JD-Core Version:    0.7.0.1
  */

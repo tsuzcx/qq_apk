@@ -1,6 +1,5 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.splash.SplashFallbackActivity;
@@ -10,10 +9,10 @@ public class WeChatSplashFallbackActivity
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(137977);
+    AppMethodBeat.i(160094);
     super.onCreate(paramBundle);
-    setContentView(2130971311);
-    AppMethodBeat.o(137977);
+    setContentView(2131497334);
+    AppMethodBeat.o(160094);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -24,7 +23,7 @@ public class WeChatSplashFallbackActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.app.WeChatSplashFallbackActivity
  * JD-Core Version:    0.7.0.1
  */

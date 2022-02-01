@@ -11,9 +11,9 @@ public class Mp3SeekTable
   
   public Mp3SeekTable()
   {
-    AppMethodBeat.i(128489);
+    AppMethodBeat.i(114237);
     this.mInfo = new Mp3FrameInfoParse.Mp3Info();
-    AppMethodBeat.o(128489);
+    AppMethodBeat.o(114237);
   }
   
   private static long timeToBytePositionInCbr(Mp3FrameInfoParse.Mp3Info paramMp3Info, long paramLong)
@@ -69,10 +69,10 @@ public class Mp3SeekTable
   
   private static long timeToBytePositionInXingVbr(Mp3FrameInfoParse.Mp3Info paramMp3Info, long paramLong)
   {
-    AppMethodBeat.i(128492);
+    AppMethodBeat.i(114240);
     if ((paramMp3Info == null) || (paramMp3Info.toc_table == null) || (paramMp3Info.fileLengthInBytes <= 0L) || (paramMp3Info.firstFramePosition < 0L) || (paramMp3Info.duration < 0L) || (paramLong < 0L))
     {
-      AppMethodBeat.o(128492);
+      AppMethodBeat.o(114240);
       return -1L;
     }
     long l1 = paramMp3Info.fileLengthInBytes;
@@ -92,7 +92,7 @@ public class Mp3SeekTable
       if (l2 >= paramLong) {
         break label247;
       }
-      AppMethodBeat.o(128492);
+      AppMethodBeat.o(114240);
       return l2;
       if (d1 < 100.0D) {
         break;
@@ -118,47 +118,47 @@ public class Mp3SeekTable
       break label188;
     }
     label247:
-    AppMethodBeat.o(128492);
+    AppMethodBeat.o(114240);
     return paramLong;
   }
   
   public void parse(IDataSource paramIDataSource)
   {
-    AppMethodBeat.i(128490);
+    AppMethodBeat.i(114238);
     Mp3FrameInfoParse.parseFrameInfo(new TrackPositionDataSource(paramIDataSource), this.mInfo);
-    AppMethodBeat.o(128490);
+    AppMethodBeat.o(114238);
   }
   
   public long seek(long paramLong)
   {
-    AppMethodBeat.i(128491);
+    AppMethodBeat.i(114239);
     if (paramLong < 0L)
     {
-      AppMethodBeat.o(128491);
+      AppMethodBeat.o(114239);
       return -1L;
     }
     switch (this.mInfo.VBRType)
     {
     default: 
-      AppMethodBeat.o(128491);
+      AppMethodBeat.o(114239);
       return -1L;
     case 0: 
       paramLong = timeToBytePositionInCbr(this.mInfo, paramLong);
-      AppMethodBeat.o(128491);
+      AppMethodBeat.o(114239);
       return paramLong;
     case 2: 
       paramLong = timeToBytePositionInXingVbr(this.mInfo, paramLong);
-      AppMethodBeat.o(128491);
+      AppMethodBeat.o(114239);
       return paramLong;
     }
     paramLong = timeToBytePositionInVBRIVbr(this.mInfo, paramLong);
-    AppMethodBeat.o(128491);
+    AppMethodBeat.o(114239);
     return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mp3.Mp3SeekTable
  * JD-Core Version:    0.7.0.1
  */

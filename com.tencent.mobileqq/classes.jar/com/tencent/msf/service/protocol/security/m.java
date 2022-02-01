@@ -66,21 +66,24 @@ public final class m
     paramJceOutputStream.write(this.b, 1);
     paramJceOutputStream.write(this.c, 2);
     paramJceOutputStream.write(this.d, 3);
-    if (this.e != null) {
-      paramJceOutputStream.write(this.e, 4);
+    Object localObject = this.e;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.f, 5);
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 6);
+    localObject = this.g;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
-    if (this.h != null) {
-      paramJceOutputStream.write(this.h, 7);
+    localObject = this.h;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.security.m
  * JD-Core Version:    0.7.0.1
  */

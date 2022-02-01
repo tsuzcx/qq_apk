@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <IconPreference android:key="settings_avatar" android:layout="@layout/bdi" android:title="@string/ej0" />
+    <IconPreference android:key="settings_qrcode" android:layout="@layout/bdi" android:title="@string/j7f" />
+    <Preference android:key="settings_data" android:layout="@layout/bdi" android:title="@string/d6b" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_privacy" android:layout="@layout/bdi" android:title="@string/ej6" />
+    <Preference android:key="settings_poi" android:layout="@layout/bdi" android:title="@string/egx" />
+    <Preference android:key="account_management" android:layout="@layout/bdi" android:title="@string/cy0" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="settings_show_my_finder" android:summary="@string/epp" android:title="@string/epo" />
+    <CheckBoxPreference android:key="settings_mp_identity_switch" android:summary="@string/ecr" android:title="@string/ecq" />
+</PreferenceScreen>

@@ -7,15 +7,15 @@ final class Functions$6
   
   public R call(Object... paramVarArgs)
   {
-    if (paramVarArgs.length != 5) {
-      throw new RuntimeException("Func5 expecting 5 arguments.");
+    if (paramVarArgs.length == 5) {
+      return this.val$f.call(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2], paramVarArgs[3], paramVarArgs[4]);
     }
-    return this.val$f.call(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2], paramVarArgs[3], paramVarArgs[4]);
+    throw new RuntimeException("Func5 expecting 5 arguments.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.functions.Functions.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background" android:drawable="@drawable/gt8" />
+    <item android:id="@android:id/secondaryProgress">
+        <clip android:drawable="@drawable/gt7" />
+    </item>
+    <item android:id="@android:id/progress">
+        <clip android:drawable="@drawable/gt7" />
+    </item>
+</layer-list>

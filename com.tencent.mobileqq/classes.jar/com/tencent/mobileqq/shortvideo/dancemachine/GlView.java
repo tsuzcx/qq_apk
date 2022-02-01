@@ -82,16 +82,17 @@ public abstract class GlView
   
   private boolean animationHasTranslateAnimation()
   {
-    if (this.mCurrentAnimation != null)
+    Object localObject = this.mCurrentAnimation;
+    if (localObject != null)
     {
-      if ((this.mCurrentAnimation instanceof TranslateAnimation)) {
+      if ((localObject instanceof TranslateAnimation)) {
         return true;
       }
-      if ((this.mCurrentAnimation instanceof AnimationSet))
+      if ((localObject instanceof AnimationSet))
       {
-        Iterator localIterator = ((AnimationSet)this.mCurrentAnimation).getAnimations().iterator();
-        while (localIterator.hasNext()) {
-          if (((Animation)localIterator.next() instanceof TranslateAnimation)) {
+        localObject = ((AnimationSet)localObject).getAnimations().iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (((Animation)((Iterator)localObject).next() instanceof TranslateAnimation)) {
             return true;
           }
         }
@@ -107,35 +108,37 @@ public abstract class GlView
   
   private void drawRegion()
   {
-    if (this.mDrawMode == 0) {
-      GLES20.glDrawArrays(5, 0, this.mVertexNum);
-    }
-    do
+    int i = this.mDrawMode;
+    if (i == 0)
     {
+      GLES20.glDrawArrays(5, 0, this.mVertexNum);
       return;
-      if (this.mDrawMode == 1)
-      {
-        GLES20.glDrawArrays(4, 0, this.mVertexNum);
-        return;
-      }
-      if (this.mDrawMode == 2)
-      {
-        GLES20.glDrawArrays(6, 0, this.mVertexNum);
-        return;
-      }
-    } while (this.mDrawMode != 3);
-    GLES20.glDrawArrays(0, 0, this.mVertexNum);
+    }
+    if (i == 1)
+    {
+      GLES20.glDrawArrays(4, 0, this.mVertexNum);
+      return;
+    }
+    if (i == 2)
+    {
+      GLES20.glDrawArrays(6, 0, this.mVertexNum);
+      return;
+    }
+    if (i == 3) {
+      GLES20.glDrawArrays(0, 0, this.mVertexNum);
+    }
   }
   
   private void enableBlend()
   {
-    if ((this.mBlendMode & 0x2) == 2)
+    int i = this.mBlendMode;
+    if ((i & 0x2) == 2)
     {
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(770, 1);
       return;
     }
-    if ((this.mBlendMode & 0x4) == 4)
+    if ((i & 0x4) == 4)
     {
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(0, 768);
@@ -155,17 +158,24 @@ public abstract class GlView
     int i = 0;
     while (i < paramInt2)
     {
-      this.srcPoint[0] = this.mVertexPointCache[(paramInt1 + i)].x;
-      this.srcPoint[1] = this.mVertexPointCache[(paramInt1 + i)].y;
+      Object localObject = this.srcPoint;
+      PointF[] arrayOfPointF = this.mVertexPointCache;
+      int j = paramInt1 + i;
+      localObject[0] = arrayOfPointF[j].x;
+      this.srcPoint[1] = this.mVertexPointCache[j].y;
       this.matrix.mapPoints(this.dstPoint, this.srcPoint);
-      this.mVertexPointCache[(paramInt1 + i)].x = this.dstPoint[0];
-      this.mVertexPointCache[(paramInt1 + i)].y = this.dstPoint[1];
+      localObject = this.mVertexPointCache;
+      arrayOfPointF = localObject[j];
+      float[] arrayOfFloat = this.dstPoint;
+      arrayOfPointF.x = arrayOfFloat[0];
+      localObject[j].y = arrayOfFloat[1];
       i += 1;
     }
   }
   
   private void negativeVertexAdjust()
   {
+    Object localObject;
     if (this.mVertexPointCache[1].y <= 0.0F)
     {
       this.mVertexPointCache[0].set(0.0F, 0.0F);
@@ -173,9 +183,13 @@ public abstract class GlView
       this.mVertexPointCache[2].set(0.0F, 0.0F);
       this.mVertexPointCache[3].set(0.0F, 0.0F);
       int i = 0;
-      while (i < this.adjustTextureCoord.length)
+      for (;;)
       {
-        this.adjustTextureCoord[0] = 0.0F;
+        localObject = this.adjustTextureCoord;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject[0] = 0.0F;
         i += 1;
       }
     }
@@ -183,16 +197,18 @@ public abstract class GlView
     {
       float f = this.mVertexPointCache[1].y - this.mVertexPointCache[0].y;
       f = (f - this.mVertexPointCache[1].y) / f;
-      this.adjustTextureCoord[0] = 0.0F;
-      this.adjustTextureCoord[1] = f;
-      this.adjustTextureCoord[2] = 0.0F;
-      this.adjustTextureCoord[3] = 1.0F;
-      this.adjustTextureCoord[4] = 1.0F;
-      this.adjustTextureCoord[5] = 1.0F;
-      this.adjustTextureCoord[6] = 1.0F;
-      this.adjustTextureCoord[7] = f;
-      this.mVertexPointCache[0].y = 0.0F;
-      this.mVertexPointCache[3].y = 0.0F;
+      localObject = this.adjustTextureCoord;
+      localObject[0] = 0.0F;
+      localObject[1] = f;
+      localObject[2] = 0.0F;
+      localObject[3] = 1.0F;
+      localObject[4] = 1.0F;
+      localObject[5] = 1.0F;
+      localObject[6] = 1.0F;
+      localObject[7] = f;
+      localObject = this.mVertexPointCache;
+      localObject[0].y = 0.0F;
+      localObject[3].y = 0.0F;
     }
   }
   
@@ -260,8 +276,6 @@ public abstract class GlView
   {
     Rect localRect = this.context.getViewPort();
     Animation localAnimation = getAnimation();
-    int i;
-    int j;
     if (localAnimation != null)
     {
       if (!localAnimation.isInitialized())
@@ -304,33 +318,31 @@ public abstract class GlView
           setMapDataToRegion(this.mCurrentDrawRegion);
           i = 1;
           j = 1;
+          break label329;
         }
+        i = 1;
+        break label327;
       }
     }
-    for (;;)
+    int i = 0;
+    label327:
+    int j = 0;
+    label329:
+    if (i == 0) {
+      setAlpha(1.0F);
+    }
+    if (j == 0)
     {
-      if (i == 0) {
-        setAlpha(1.0F);
-      }
-      if (j == 0)
-      {
-        this.mVertexPointCache[0].set(this.mClipRegion.left, this.mClipRegion.top);
-        this.mVertexPointCache[1].set(this.mClipRegion.left, this.mClipRegion.bottom);
-        this.mVertexPointCache[2].set(this.mClipRegion.right, this.mClipRegion.bottom);
-        this.mVertexPointCache[3].set(this.mClipRegion.right, this.mClipRegion.top);
-        this.mCurrentDrawRegion.set(this.mClipRegion);
-      }
-      if (this.mEnableNegativeVertexAdjust)
-      {
-        negativeVertexAdjust();
-        this.mUseAdjustTextureCoord = true;
-      }
-      return;
-      i = 1;
-      j = 0;
-      continue;
-      i = 0;
-      j = 0;
+      this.mVertexPointCache[0].set(this.mClipRegion.left, this.mClipRegion.top);
+      this.mVertexPointCache[1].set(this.mClipRegion.left, this.mClipRegion.bottom);
+      this.mVertexPointCache[2].set(this.mClipRegion.right, this.mClipRegion.bottom);
+      this.mVertexPointCache[3].set(this.mClipRegion.right, this.mClipRegion.top);
+      this.mCurrentDrawRegion.set(this.mClipRegion);
+    }
+    if (this.mEnableNegativeVertexAdjust)
+    {
+      negativeVertexAdjust();
+      this.mUseAdjustTextureCoord = true;
     }
   }
   
@@ -346,23 +358,26 @@ public abstract class GlView
   
   public void initView(int paramInt)
   {
-    int i = 0;
-    if (this.mProgramObject == null) {
+    Object localObject = this.mProgramObject;
+    if (localObject == null)
+    {
       DanceLog.print("GlView", "GlView: initView mProgramObject=null");
+      return;
     }
+    this.mVertexPointCount = paramInt;
+    allocateFloatBuffer(((GLShaderManager.GLProgram)localObject).getVertexAttributeSize() * this.mVertexPointCount);
+    this.mVertexPointCache = new PointF[this.mVertexPointCount];
+    localObject = this.bufferId;
+    paramInt = 0;
+    GLES20.glGenBuffers(1, (int[])localObject, 0);
     for (;;)
     {
-      return;
-      this.mVertexPointCount = paramInt;
-      allocateFloatBuffer(this.mProgramObject.getVertexAttributeSize() * this.mVertexPointCount);
-      this.mVertexPointCache = new PointF[this.mVertexPointCount];
-      GLES20.glGenBuffers(1, this.bufferId, 0);
-      paramInt = i;
-      while (paramInt < this.mVertexPointCache.length)
-      {
-        this.mVertexPointCache[paramInt] = new PointF();
-        paramInt += 1;
+      localObject = this.mVertexPointCache;
+      if (paramInt >= localObject.length) {
+        break;
       }
+      localObject[paramInt] = new PointF();
+      paramInt += 1;
     }
   }
   
@@ -424,23 +439,18 @@ public abstract class GlView
   {
     boolean bool = this.context.getSurfaceViewSize().equals(this.context.getViewPort());
     int i = 0;
-    if (i < this.mVertexPointCount)
+    while (i < this.mVertexPointCount)
     {
       if (bool) {
         this.mVertexBuffer.put(this.mVertexPointCache[i].x);
+      } else if (ENABLE_X_INVERSE) {
+        this.mVertexBuffer.put(this.context.getViewPort().width() - this.mVertexPointCache[i].x);
+      } else {
+        this.mVertexBuffer.put(this.mVertexPointCache[i].x);
       }
-      for (;;)
-      {
-        this.mVertexBuffer.put(this.mVertexPointCache[i].y);
-        this.mVertexBuffer.put(paramFloat);
-        i += 1;
-        break;
-        if (ENABLE_X_INVERSE) {
-          this.mVertexBuffer.put(this.context.getViewPort().width() - this.mVertexPointCache[i].x);
-        } else {
-          this.mVertexBuffer.put(this.mVertexPointCache[i].x);
-        }
-      }
+      this.mVertexBuffer.put(this.mVertexPointCache[i].y);
+      this.mVertexBuffer.put(paramFloat);
+      i += 1;
     }
   }
   
@@ -477,35 +487,35 @@ public abstract class GlView
     setVertexCoordinateData(this.mZOrderValue);
     if ((this.mEnableClip) && (this.mSizeRegion.contains(this.mClipRegion)))
     {
-      float f1 = (this.mClipRegion.left - this.mSizeRegion.left) / this.mSizeRegion.width();
+      float f3 = (this.mClipRegion.left - this.mSizeRegion.left) / this.mSizeRegion.width();
       float f2 = (this.mSizeRegion.right - this.mClipRegion.right) / this.mSizeRegion.width();
-      float f3 = (this.mClipRegion.top - this.mSizeRegion.top) / this.mSizeRegion.height();
+      float f1 = (this.mClipRegion.top - this.mSizeRegion.top) / this.mSizeRegion.height();
       float f4 = (this.mSizeRegion.bottom - this.mClipRegion.bottom) / this.mSizeRegion.height();
-      this.mVertexBuffer.put(f1);
       this.mVertexBuffer.put(f3);
       this.mVertexBuffer.put(f1);
-      this.mVertexBuffer.put(1.0F - f4);
-      this.mVertexBuffer.put(1.0F - f2);
-      this.mVertexBuffer.put(1.0F - f4);
-      this.mVertexBuffer.put(1.0F - f2);
       this.mVertexBuffer.put(f3);
+      FloatBuffer localFloatBuffer = this.mVertexBuffer;
+      f3 = 1.0F - f4;
+      localFloatBuffer.put(f3);
+      localFloatBuffer = this.mVertexBuffer;
+      f2 = 1.0F - f2;
+      localFloatBuffer.put(f2);
+      this.mVertexBuffer.put(f3);
+      this.mVertexBuffer.put(f2);
+      this.mVertexBuffer.put(f1);
     }
-    for (;;)
+    else if (this.mUseAdjustTextureCoord)
     {
-      setColorAttributeValue();
-      this.mVertexNum = 4;
-      this.mDrawMode = 2;
-      return;
-      if (this.mUseAdjustTextureCoord)
-      {
-        this.mVertexBuffer.put(this.adjustTextureCoord);
-        this.mUseAdjustTextureCoord = false;
-      }
-      else
-      {
-        this.mVertexBuffer.put(TEXTURE_COORD);
-      }
+      this.mVertexBuffer.put(this.adjustTextureCoord);
+      this.mUseAdjustTextureCoord = false;
     }
+    else
+    {
+      this.mVertexBuffer.put(TEXTURE_COORD);
+    }
+    setColorAttributeValue();
+    this.mVertexNum = 4;
+    this.mDrawMode = 2;
   }
   
   protected void updateAttribute()
@@ -527,8 +537,8 @@ public abstract class GlView
   
   protected boolean updateParam()
   {
-    boolean bool1 = false;
     boolean bool2 = this.mRequestUpdate;
+    boolean bool1 = false;
     this.mRequestUpdate = false;
     if ((this.mCurrentAnimation != null) || (bool2)) {
       bool1 = true;
@@ -538,7 +548,7 @@ public abstract class GlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GlView
  * JD-Core Version:    0.7.0.1
  */

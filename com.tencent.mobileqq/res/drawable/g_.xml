@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<animated-selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@android:color/white" />
-    <size android:height="2.0dip" android:width="2.0dip" />
-</shape>
+    <item android:state_checked="true" android:id="@id/ovh" android:drawable="@drawable/54" />
+    <item android:id="@id/ovf" android:drawable="@drawable/52" />
+    <transition android:drawable="@drawable/55" android:toId="@id/ovf" android:fromId="@id/ovh" />
+    <transition android:drawable="@drawable/53" android:toId="@id/ovh" android:fromId="@id/ovf" />
+</animated-selector>

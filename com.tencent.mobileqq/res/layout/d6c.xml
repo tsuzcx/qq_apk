@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:id="@id/bt1" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+            <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" />
+            <RelativeLayout android:id="@id/jp7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="96.0dip" android:layout_marginBottom="5.0dip" android:layout_centerInParent="true">
+                <TextView android:textSize="16.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:gravity="center" android:id="@id/jq5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:layout_centerHorizontal="true" />
+                <TextView android:textSize="12.0dip" android:ellipsize="end" android:gravity="center" android:id="@id/joi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:layout_below="@id/jq5" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/skin_header_btn_back_normal" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:gravity="center" android:id="@id/dt6" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="32.0dip" android:layout_centerVertical="true" />
+            <ImageView android:gravity="center" android:id="@id/dz1" android:background="@drawable/skin_header_btn_back_aio_theme_normal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/k4f" android:background="@drawable/c0a" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_toRightOf="@id/dz1" android:layout_centerVertical="true" />
+            <TextView android:gravity="center" android:id="@id/ivTitleBtnLeftButton" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:maxWidth="88.0dip" android:minWidth="52.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+            <include android:id="@id/ie3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/iy" />
+        </RelativeLayout>
+        <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/bt9" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:id="@id/qbq" android:text="相册" style="@style/c0" />
+                    <TextView android:textSize="12.0sp" android:textColor="#55979797" android:gravity="center|left" android:layout_gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="10.0dip" android:text="首张默认为头像" android:layout_alignParentRight="true" />
+                </FrameLayout>
+                <RelativeLayout android:orientation="vertical" android:id="@id/bt4" android:background="@color/al3" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <androidx.recyclerview.widget.RecyclerView android:id="@id/i4m" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_below="@id/qbq" />
+                </RelativeLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/black" android:text="昵称" style="@style/c0" />
+                    <EditText android:textSize="14.0sp" android:textColor="#ff7c7c7c" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nickname" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="30.0dip" android:hint="@string/qxf" android:singleLine="true" android:layout_weight="1.0" />
+                </LinearLayout>
+                <FrameLayout android:background="#fff4f5f6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="12.0sp" android:textColor="#ff898989" android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="尊敬的客户，个人头像和昵称内容必须遵守相关法律法规和社区规则，并经过审核才能生效，请严格遵守相关规定，以免违规。" />
+                </FrameLayout>
+                <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/o0x" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:id="@id/jfb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="兴趣偏好" android:layout_alignParentTop="true" />
+                    <ImageView android:layout_alignTop="@id/jfb" android:layout_alignBottom="@id/jfb" android:layout_alignParentRight="true" style="@style/bt" />
+                    <LinearLayout android:orientation="vertical" android:id="@id/o0y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.849976dip" android:layout_below="@id/jfb" />
+                </RelativeLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iu" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:text="@string/qw8" style="@style/c0" />
+                    <EditText android:textSize="14.0sp" android:textColor="#ff777777" android:textColorHint="#ff777777" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/is" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/qvi" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/csq" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:text="@string/qxk" style="@style/c0" />
+                    <EditText android:textSize="14.0sp" android:textColor="#ff777777" android:textColorHint="#ff777777" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/csn" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/qvl" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/l6e" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:text="签名" style="@style/c0" />
+                    <EditText android:textSize="14.0sp" android:textColor="#ff777777" android:textColorHint="#ff777777" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/l6d" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="@string/qwc" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                    <ImageView style="@style/bt" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j23" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:text="@string/qwm" style="@style/c0" />
+                    <EditText android:textSize="14.0sp" android:textColor="#ff777777" android:textColorHint="#ff777777" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/j1x" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/qxg" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                </LinearLayout>
+                <FrameLayout android:background="#fff4f5f6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray3" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="5.0dip" android:text="个人信息" />
+                </FrameLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dzb" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:text="@string/qxl" style="@style/c0" />
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:addStatesFromChildren="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                        <EditText android:textSize="14.0sp" android:textColor="#ff777777" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/dza" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/qvd" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                    </LinearLayout>
+                    <ImageView style="@style/bt" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:text="@string/qwl" style="@style/c0" />
+                    <EditText android:textSize="14.0sp" android:textColor="#ff777777" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b6h" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="30.0dip" android:hint="@string/qw6" android:singleLine="true" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b1g" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:text="@string/qvo" style="@style/c0" />
+                    <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b1f" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/qwk" android:singleLine="true" android:layout_weight="1.0" />
+                    <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center_vertical" android:id="@id/as1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/qvb" />
+                    <ImageView style="@style/bt" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d6v" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/black" android:text="@string/qwf" style="@style/c0" />
+                    <EditText android:textSize="14.0sp" android:textColor="#ff777777" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/d6u" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="@string/qx7" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                    <ImageView style="@style/bt" />
+                </LinearLayout>
+                <FrameLayout android:background="#fff4f5f6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray3" android:id="@id/ig5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/up" android:layout_marginTop="20.0dip" android:layout_marginBottom="5.0dip" android:text="更多兴趣爱好" android:lineSpacingExtra="5.0dip" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/e1p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" />
+                <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/cge" android:paddingLeft="10.0dip" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="收到的花对附近的人可见" />
+            </LinearLayout>
+        </com.tencent.mobileqq.widget.BounceScrollView>
+    </LinearLayout>
+    <com.tencent.mobileqq.nearby.widget.NearbyCoverView android:id="@id/bat" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

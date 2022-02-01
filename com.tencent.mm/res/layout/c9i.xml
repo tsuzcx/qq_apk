@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d0">
+        <ImageView android:id="@id/a1r" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:src="@drawable/b__" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cd">
+            <TextView android:textSize="@dimen/t" android:textColor="@color/gg" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cr" android:minWidth="@dimen/d6" android:maxLines="1" android:singleLine="true" android:layout_alignTop="@id/a1r" android:layout_toStartOf="@id/al0" android:layout_toEndOf="@id/a1r" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/xo" android:ellipsize="end" android:id="@id/c23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:maxWidth="280.0dip" android:maxLines="1" android:singleLine="true" android:layout_below="@id/bta" android:paddingEnd="@dimen/cp" android:layout_alignStart="@id/bta" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/xo" android:ellipsize="end" android:id="@id/kyh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:maxWidth="280.0dip" android:maxLines="1" android:singleLine="true" android:layout_below="@id/bta" android:paddingEnd="@dimen/cp" android:layout_alignStart="@id/bta" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:layout_gravity="center_horizontal" android:id="@id/alr" android:layout_width="@dimen/cj" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d_" android:text="@string/k0l" style="@style/og" />
+</LinearLayout>

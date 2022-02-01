@@ -667,7 +667,7 @@ public class TimeFormatterUtils
     int k = jdField_a_of_type_JavaUtilCalendar.get(6);
     jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
     Object localObject = a(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6));
-    switch (hee.a[localObject.ordinal()])
+    switch (hed.a[localObject.ordinal()])
     {
     default: 
       return null;

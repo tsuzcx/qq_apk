@@ -1,7 +1,0 @@
-attribute vec4 position;
-varying vec2 TexCoordOut;
-
-void main() {
-    gl_Position = position;
-    TexCoordOut = position.xy;
-}

@@ -15,23 +15,28 @@ public final class SpmcArrayQueue<E>
   
   public boolean offer(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException("Null is not a valid element");
-    }
-    Object[] arrayOfObject = this.buffer;
-    long l1 = this.mask;
-    long l2 = lvProducerIndex();
-    long l3 = calcElementOffset(l2);
-    if (lvElement(arrayOfObject, l3) != null)
+    if (paramE != null)
     {
-      if (l2 - lvConsumerIndex() > l1) {
-        return false;
+      Object[] arrayOfObject = this.buffer;
+      long l1 = this.mask;
+      long l2 = lvProducerIndex();
+      long l3 = calcElementOffset(l2);
+      if (lvElement(arrayOfObject, l3) != null)
+      {
+        if (l2 - lvConsumerIndex() > l1) {
+          return false;
+        }
+        while (lvElement(arrayOfObject, l3) != null) {}
       }
-      while (lvElement(arrayOfObject, l3) != null) {}
+      spElement(arrayOfObject, l3, paramE);
+      soTail(l2 + 1L);
+      return true;
     }
-    spElement(arrayOfObject, l3, paramE);
-    soTail(1L + l2);
-    return true;
+    paramE = new NullPointerException("Null is not a valid element");
+    for (;;)
+    {
+      throw paramE;
+    }
   }
   
   public E peek()
@@ -92,7 +97,7 @@ public final class SpmcArrayQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.unsafe.SpmcArrayQueue
  * JD-Core Version:    0.7.0.1
  */

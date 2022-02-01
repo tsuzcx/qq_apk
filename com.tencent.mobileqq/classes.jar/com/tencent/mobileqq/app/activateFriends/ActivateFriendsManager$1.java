@@ -1,47 +1,54 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import amfz;
-import amga;
 import com.tencent.qphone.base.util.QLog;
 
-public class ActivateFriendsManager$1
+class ActivateFriendsManager$1
   implements Runnable
 {
-  public ActivateFriendsManager$1(amga paramamga) {}
+  ActivateFriendsManager$1(ActivateFriendsManager paramActivateFriendsManager) {}
   
   public void run()
   {
+    long l1 = Math.abs(System.currentTimeMillis() - ActivateFriendsManager.a(this.this$0));
+    long l2 = ActivateFriendsManager.b(this.this$0);
     boolean bool2 = true;
     boolean bool1;
-    if (Math.abs(System.currentTimeMillis() - amga.a(this.this$0)) > amga.b(this.this$0))
-    {
+    if (l1 > l2) {
       bool1 = true;
-      if (Math.abs(System.currentTimeMillis() - amga.c(this.this$0)) <= amga.d(this.this$0)) {
-        break label168;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "checkRunnable | lastBirthdayCheckInStamp = " + amga.a(this.this$0) + " | checkBirthdayInterval = " + amga.b(this.this$0) + " | lastMemorialCheckInStamp = " + amga.c(this.this$0) + " | checkMemorialInterval = " + amga.d(this.this$0) + " | isBirthday = " + bool1 + " | isMemorial = " + bool2);
-      }
-      if ((bool1) || (bool2)) {
-        break label173;
-      }
-      return;
+    } else {
       bool1 = false;
-      break;
-      label168:
+    }
+    if (Math.abs(System.currentTimeMillis() - ActivateFriendsManager.c(this.this$0)) <= ActivateFriendsManager.d(this.this$0)) {
       bool2 = false;
     }
-    label173:
-    amfz.a(amga.a(this.this$0), bool1, bool2);
-    this.this$0.a = amga.a(this.this$0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkRunnable | lastBirthdayCheckInStamp = ");
+      ((StringBuilder)localObject).append(ActivateFriendsManager.a(this.this$0));
+      ((StringBuilder)localObject).append(" | checkBirthdayInterval = ");
+      ((StringBuilder)localObject).append(ActivateFriendsManager.b(this.this$0));
+      ((StringBuilder)localObject).append(" | lastMemorialCheckInStamp = ");
+      ((StringBuilder)localObject).append(ActivateFriendsManager.c(this.this$0));
+      ((StringBuilder)localObject).append(" | checkMemorialInterval = ");
+      ((StringBuilder)localObject).append(ActivateFriendsManager.d(this.this$0));
+      ((StringBuilder)localObject).append(" | isBirthday = ");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(" | isMemorial = ");
+      ((StringBuilder)localObject).append(bool2);
+      QLog.d("ActivateFriends.Manager", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((!bool1) && (!bool2)) {
+      return;
+    }
+    ActivateFriendServlet.a(ActivateFriendsManager.e(this.this$0), bool1, bool2);
+    Object localObject = this.this$0;
+    ((ActivateFriendsManager)localObject).a = ActivateFriendsManager.f((ActivateFriendsManager)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager.1
  * JD-Core Version:    0.7.0.1
  */

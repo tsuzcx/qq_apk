@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.fts.ui;
 
 import android.content.Context;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fts.a.a.c;
+import com.tencent.mm.plugin.fts.a.a.e;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.a.o;
 import com.tencent.mm.plugin.fts.a.d.b;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
-import com.tencent.mm.plugin.fts.ui.a.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.fts.ui.b.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,113 +24,206 @@ public abstract class a
   extends b
   implements com.tencent.mm.plugin.fts.a.l
 {
-  HashSet<String> mSS = new HashSet();
-  private com.tencent.mm.plugin.fts.a.a.a mSV;
-  private long mVN;
-  public List<e.a> mVO = Collections.synchronizedList(new LinkedList());
-  protected String query;
+  HashSet<String> HtA = new HashSet();
+  private c HtE;
+  private long Hux;
+  public List<e.a> HwJ = Collections.synchronizedList(new LinkedList());
+  private String query;
   
   public a(Context paramContext, e.b paramb, int paramInt)
   {
     super(paramContext, paramb, paramInt);
   }
   
-  protected abstract com.tencent.mm.plugin.fts.a.a.a a(ak paramak, HashSet<String> paramHashSet);
+  public int Wi(int paramInt)
+  {
+    int k = this.HwJ.size();
+    int i = 0;
+    if (i < k)
+    {
+      e.a locala = (e.a)this.HwJ.get(i);
+      locala.Huj = paramInt;
+      int j = paramInt;
+      if (locala.Huk) {
+        j = paramInt + 1;
+      }
+      paramInt = j + (locala.tbH.size() + locala.Hun);
+      locala.Hul = paramInt;
+      if (!locala.ABD) {
+        break label100;
+      }
+      paramInt += 1;
+    }
+    label100:
+    for (;;)
+    {
+      i += 1;
+      break;
+      return paramInt;
+    }
+  }
   
-  public com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt1, int paramInt2, com.tencent.mm.plugin.fts.a.a.l paraml, e.a parama)
+  public final com.tencent.mm.plugin.fts.a.d.a.a Wj(int paramInt)
+  {
+    int j = this.HwJ.size();
+    int i = 0;
+    e.a locala;
+    Object localObject;
+    if (i < j)
+    {
+      locala = (e.a)this.HwJ.get(i);
+      if ((locala.Huj == paramInt) && (locala.Huk)) {
+        localObject = c(paramInt, locala);
+      }
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        if (((com.tencent.mm.plugin.fts.a.d.a.a)localObject).position == locala.Hul) {
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).Hup = false;
+        }
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).syO = fxF();
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).FWt = locala.FWt;
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).xVf = locala.businessType;
+        return localObject;
+        if ((locala.Hul == paramInt) && (locala.ABD))
+        {
+          localObject = d(paramInt, locala);
+          continue;
+        }
+        if (paramInt <= locala.Hul) {
+          localObject = a(paramInt, locala);
+        }
+      }
+      else
+      {
+        i += 1;
+        break;
+        return null;
+      }
+      localObject = null;
+    }
+  }
+  
+  protected abstract c a(MMHandler paramMMHandler, HashSet<String> paramHashSet);
+  
+  public com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt1, int paramInt2, o paramo, e.a parama)
   {
     return null;
   }
   
   protected abstract com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama);
   
-  protected abstract void a(j paramj, HashSet<String> paramHashSet);
+  protected abstract void a(m paramm, HashSet<String> paramHashSet);
   
-  public final void a(String paramString, ak paramak, HashSet<String> paramHashSet, long paramLong)
+  public final void a(String paramString, MMHandler paramMMHandler, HashSet<String> paramHashSet)
   {
-    bCd();
+    fxG();
     clearData();
     this.query = paramString;
-    this.mSV = a(paramak, paramHashSet);
+    this.HtE = a(paramMMHandler, paramHashSet);
   }
   
-  protected k b(int paramInt, e.a parama)
+  protected e b(int paramInt, e.a parama)
   {
-    return new k(paramInt);
+    return null;
   }
   
-  public final void b(j paramj)
+  public final void b(m paramm)
   {
-    switch (paramj.bpE)
+    switch (paramm.resultCode)
     {
     default: 
       return;
     case 0: 
-      ab.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "search type %d | result %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramj.mSW.size()) });
-      if ((this.query == null) || (!this.query.equals(paramj.mPi.query)))
+      Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "search type %d | result %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramm.HtF.size()) });
+      if ((this.query == null) || (!this.query.equals(paramm.HpM.query)))
       {
-        ab.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "Native Search: Not Same query origin:%s current:%s", new Object[] { paramj.mPi.query, this.query });
+        Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "Native Search: Not Same query origin:%s current:%s", new Object[] { paramm.HpM.query, this.query });
         return;
       }
-      this.mVN = System.currentTimeMillis();
-      this.mSS = paramj.mPi.mSS;
-      a(paramj, this.mSS);
-    }
-    do
-    {
-      this.mTx.a(this, paramj.mPi.query);
+      this.Hux = System.currentTimeMillis();
+      this.HtA = paramm.HpM.HtA;
+      a(paramm, this.HtA);
+      fxE().a(this, paramm.HpM.query, true);
       return;
-      ab.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "onSearchError: type=%d | errorCode=%d | originQuery=%s", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramj.bpE), paramj.mPi.query });
-    } while (paramj.mPi.query.equals(this.query));
-    ab.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "Native Search: Not Same Query");
+    }
+    Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "onSearchError: type=%d | errorCode=%d | originQuery=%s", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramm.resultCode), paramm.HpM.query });
+    if (!paramm.HpM.query.equals(this.query))
+    {
+      Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "Native Search: Not Same Query");
+      return;
+    }
+    fxE().a(this, paramm.HpM.query, false);
   }
   
-  public final void bCd()
+  protected k c(int paramInt, e.a parama)
   {
-    if (this.mSV != null)
+    return new k(paramInt);
+  }
+  
+  public final void clearData()
+  {
+    this.query = null;
+    this.HtA.clear();
+    this.HwJ.clear();
+  }
+  
+  protected com.tencent.mm.plugin.fts.ui.b.n d(int paramInt, e.a parama)
+  {
+    com.tencent.mm.plugin.fts.ui.b.n localn = new com.tencent.mm.plugin.fts.ui.b.n(paramInt);
+    localn.Hur = (parama.Hul - parama.Huj);
+    localn.Huy = true;
+    return localn;
+  }
+  
+  public final void fxG()
+  {
+    if (this.HtE != null)
     {
-      ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.mSV);
-      this.mSV = null;
+      ((com.tencent.mm.plugin.fts.a.n)h.az(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.HtE);
+      this.HtE = null;
     }
   }
   
-  public final LinkedList<Integer> bCe()
+  public final LinkedList<Integer> fxH()
   {
     LinkedList localLinkedList = new LinkedList();
-    int j = this.mVO.size();
+    int j = this.HwJ.size();
     int i = 0;
     while (i < j)
     {
-      e.a locala = (e.a)this.mVO.get(i);
-      if (locala.mTy != 2147483647) {
-        localLinkedList.add(Integer.valueOf(locala.mTy));
+      e.a locala = (e.a)this.HwJ.get(i);
+      if (locala.Huj != 2147483647) {
+        localLinkedList.add(Integer.valueOf(locala.Huj));
       }
       i += 1;
     }
     return localLinkedList;
   }
   
-  public final int bCf()
+  public final int fxI()
   {
-    return bCx();
+    return fyc();
   }
   
-  public final long bCg()
+  public final long fxJ()
   {
-    return this.mVN;
+    return this.Hux;
   }
   
-  public final int bCx()
+  public final int fyc()
   {
-    int m = this.mVO.size();
+    int m = this.HwJ.size();
     int j = 0;
     int k = 0;
     while (j < m)
     {
-      Iterator localIterator = ((e.a)this.mVO.get(j)).mTC.iterator();
+      Iterator localIterator = ((e.a)this.HwJ.get(j)).tbH.iterator();
       if (localIterator.hasNext())
       {
-        String str = bo.bf(((com.tencent.mm.plugin.fts.a.a.l)localIterator.next()).mRV, "");
+        String str = Util.nullAs(((o)localIterator.next()).Hsz, "");
         int i = -1;
         switch (str.hashCode())
         {
@@ -159,90 +255,77 @@ public abstract class a
     return k;
   }
   
-  protected com.tencent.mm.plugin.fts.ui.a.n c(int paramInt, e.a parama)
+  public final String getQuery()
   {
-    com.tencent.mm.plugin.fts.ui.a.n localn = new com.tencent.mm.plugin.fts.ui.a.n(paramInt);
-    localn.mTJ = (parama.mTA - parama.mTy);
-    localn.mTP = true;
-    return localn;
+    return this.query;
   }
   
-  public final void clearData()
+  public final List<e> rs(long paramLong)
   {
-    this.query = null;
-    this.mSS.clear();
-    this.mVO.clear();
-  }
-  
-  public int wt(int paramInt)
-  {
-    int k = this.mVO.size();
-    int i = 0;
-    if (i < k)
+    ArrayList localArrayList = new ArrayList();
+    if (this.Hux > 0L)
     {
-      e.a locala = (e.a)this.mVO.get(i);
-      locala.mTy = paramInt;
-      int j = paramInt;
-      if (locala.mTz) {
-        j = paramInt + 1;
-      }
-      paramInt = j + (locala.mTC.size() + locala.mTF);
-      locala.mTA = paramInt;
-      if (!locala.mTB) {
-        break label100;
-      }
-      paramInt += 1;
-    }
-    label100:
-    for (;;)
-    {
-      i += 1;
-      break;
-      return paramInt;
-    }
-  }
-  
-  public final com.tencent.mm.plugin.fts.a.d.a.a wu(int paramInt)
-  {
-    int j = this.mVO.size();
-    int i = 0;
-    e.a locala;
-    Object localObject;
-    if (i < j)
-    {
-      locala = (e.a)this.mVO.get(i);
-      if ((locala.mTy == paramInt) && (locala.mTz)) {
-        localObject = b(paramInt, locala);
-      }
-    }
-    for (;;)
-    {
-      if (localObject != null)
+      int i = 0;
+      if (i < this.HwJ.size())
       {
-        if (((com.tencent.mm.plugin.fts.a.d.a.a)localObject).position == locala.mTA) {
-          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mTH = false;
-        }
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).ibk = this.ibk;
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mRX = locala.mRX;
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).lox = locala.businessType;
-        return localObject;
-        if ((locala.mTA == paramInt) && (locala.mTB))
+        e.a locala = (e.a)this.HwJ.get(i);
+        int k = locala.tbH.size();
+        int m = locala.Hun;
+        int j = 0;
+        e locale;
+        while (j < m + k)
         {
-          localObject = c(paramInt, locala);
-          continue;
+          locale = b(j, locala);
+          if (locale != null)
+          {
+            locale.HsB = (this.Hux - paramLong);
+            locale.position = (locala.Huj + j + 1);
+            localArrayList.add(locale);
+          }
+          j += 1;
         }
-        if (paramInt <= locala.mTA) {
-          localObject = a(paramInt, locala);
+        if (locala.ABD)
+        {
+          locale = new e();
+          locale.hTs = String.valueOf(locala.hashCode());
+          j = locala.businessType;
+          if (j != -3) {
+            break label233;
+          }
+          locale.itemType = 4;
+        }
+        for (;;)
+        {
+          if (locale != null)
+          {
+            locale.HsB = (this.Hux - paramLong);
+            locale.position = locala.Hul;
+            localArrayList.add(locale);
+          }
+          i += 1;
+          break;
+          label233:
+          if (j == -4) {
+            locale.itemType = 3;
+          } else if (j == -1) {
+            locale.itemType = 12;
+          } else if (j == -2) {
+            locale.itemType = 11;
+          } else if (j == -6) {
+            locale.itemType = 10;
+          } else if (j == -13) {
+            locale.itemType = 19;
+          } else if (j == -7) {
+            locale.itemType = 5;
+          } else if (j == -23) {
+            locale.itemType = 31;
+          } else {
+            locale = null;
+          }
         }
       }
-      else
-      {
-        i += 1;
-        break;
-        return null;
-      }
-      localObject = null;
     }
+    return localArrayList;
   }
 }
 

@@ -29,16 +29,17 @@ public class NoteItem$HtmlText
     HtmlText localHtmlText = new HtmlText(paramLong);
     localHtmlText.htmlContent = CBundleReader.getString(paramLong, "html_content");
     long[] arrayOfLong = CBundleReader.getLongArray(paramLong, "pic_url_list");
+    int j = 0;
     ArrayList localArrayList;
-    int j;
+    int k;
     int i;
     Object localObject;
     if (arrayOfLong != null)
     {
       localArrayList = new ArrayList(arrayOfLong.length);
-      j = arrayOfLong.length;
+      k = arrayOfLong.length;
       i = 0;
-      while (i < j)
+      while (i < k)
       {
         long l = arrayOfLong[i];
         if (l != 0L)
@@ -58,9 +59,9 @@ public class NoteItem$HtmlText
     if (arrayOfLong != null)
     {
       localArrayList = new ArrayList(arrayOfLong.length);
-      j = arrayOfLong.length;
-      i = 0;
-      while (i < j)
+      k = arrayOfLong.length;
+      i = j;
+      while (i < k)
       {
         paramLong = arrayOfLong[i];
         if (paramLong != 0L)
@@ -82,18 +83,21 @@ public class NoteItem$HtmlText
   
   public void releaseNative()
   {
-    if ((isNative()) && (this.fileList != null))
+    if (isNative())
     {
       FileItem[] arrayOfFileItem = this.fileList;
-      int j = arrayOfFileItem.length;
-      int i = 0;
-      while (i < j)
+      if (arrayOfFileItem != null)
       {
-        FileItem localFileItem = arrayOfFileItem[i];
-        if (localFileItem != null) {
-          localFileItem.releaseNative();
+        int j = arrayOfFileItem.length;
+        int i = 0;
+        while (i < j)
+        {
+          FileItem localFileItem = arrayOfFileItem[i];
+          if (localFileItem != null) {
+            localFileItem.releaseNative();
+          }
+          i += 1;
         }
-        i += 1;
       }
     }
     super.releaseNative();
@@ -101,7 +105,7 @@ public class NoteItem$HtmlText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.data.NoteItem.HtmlText
  * JD-Core Version:    0.7.0.1
  */

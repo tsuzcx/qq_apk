@@ -1,37 +1,38 @@
 package com.tencent.mm.plugin.translate;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(26045);
+    AppMethodBeat.i(29728);
     b localb = new b();
-    AppMethodBeat.o(26045);
+    AppMethodBeat.o(29728);
     return localb;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(26046);
+    AppMethodBeat.i(29729);
     a locala = new a();
-    AppMethodBeat.o(26046);
+    AppMethodBeat.o(29729);
     return locala;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.translate.Plugin
  * JD-Core Version:    0.7.0.1
  */

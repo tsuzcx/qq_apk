@@ -1,40 +1,29 @@
 package com.tencent.thumbplayer.adapter.player.systemplayer;
 
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnTimedTextListener;
-import android.media.TimedText;
-import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
-import com.tencent.thumbplayer.api.TPSubtitleData;
-
 class TPSystemMediaPlayer$5
-  implements MediaPlayer.OnTimedTextListener
+  implements Runnable
 {
-  TPSystemMediaPlayer$5(TPSystemMediaPlayer paramTPSystemMediaPlayer) {}
+  TPSystemMediaPlayer$5(TPSystemMediaPlayer paramTPSystemMediaPlayer, TPSystemMediaPlayer.BufferCheck paramBufferCheck) {}
   
-  public void onTimedText(MediaPlayer paramMediaPlayer, TimedText paramTimedText)
+  public void run()
   {
-    TPSubtitleData localTPSubtitleData;
-    if (TPSystemMediaPlayer.access$2600(this.this$0) != null)
+    while (!this.val$bc.mCheckAbort)
     {
-      localTPSubtitleData = new TPSubtitleData();
-      if (paramTimedText == null) {
-        break label69;
+      TPSystemMediaPlayer.access$1400(this.this$0);
+      try
+      {
+        Thread.sleep(400L);
       }
-    }
-    label69:
-    for (paramMediaPlayer = paramTimedText.getText();; paramMediaPlayer = "")
-    {
-      localTPSubtitleData.subtitleData = paramMediaPlayer;
-      localTPSubtitleData.trackIndex = TPSystemMediaPlayer.access$2700(this.this$0);
-      localTPSubtitleData.startPositionMs = this.this$0.getCurrentPositionMs();
-      TPSystemMediaPlayer.access$2600(this.this$0).onSubtitleData(localTPSubtitleData);
-      return;
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemMediaPlayer.5
  * JD-Core Version:    0.7.0.1
  */

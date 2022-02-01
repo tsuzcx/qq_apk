@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SvcResponseGetMsgV2
   extends JceStruct
@@ -14,19 +15,19 @@ public final class SvcResponseGetMsgV2
   static ArrayList<SvcGetMsgInfo> cache_vMsgInfos;
   static byte[] cache_vSyncCookie;
   static ArrayList<UinPairMsg> cache_vUinPairMsg;
-  public byte cMoreMsg;
-  public byte cReplyCode;
-  public int cSyncFlag;
-  public int iAccostTotalUnread;
-  public long lUin;
-  public short shSumMsg;
+  public byte cMoreMsg = 0;
+  public byte cReplyCode = 0;
+  public int cSyncFlag = 0;
+  public int iAccostTotalUnread = 0;
+  public long lUin = 0L;
+  public short shSumMsg = 0;
   public String strResult = "";
-  public int uMsgTime;
-  public ArrayList<AccostMsg> vAccostMsg;
-  public byte[] vCookies;
-  public ArrayList<SvcGetMsgInfo> vMsgInfos;
-  public byte[] vSyncCookie;
-  public ArrayList<UinPairMsg> vUinPairMsg;
+  public int uMsgTime = 0;
+  public ArrayList<AccostMsg> vAccostMsg = null;
+  public byte[] vCookies = null;
+  public ArrayList<SvcGetMsgInfo> vMsgInfos = null;
+  public byte[] vSyncCookie = null;
+  public ArrayList<UinPairMsg> vUinPairMsg = null;
   
   public SvcResponseGetMsgV2() {}
   
@@ -103,22 +104,25 @@ public final class SvcResponseGetMsgV2
     paramJceOutputStream.write(this.shSumMsg, 5);
     paramJceOutputStream.write(this.vMsgInfos, 6);
     paramJceOutputStream.write(this.vAccostMsg, 7);
-    if (this.vCookies != null) {
-      paramJceOutputStream.write(this.vCookies, 8);
+    Object localObject = this.vCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
     paramJceOutputStream.write(this.iAccostTotalUnread, 9);
-    if (this.vSyncCookie != null) {
-      paramJceOutputStream.write(this.vSyncCookie, 10);
+    localObject = this.vSyncCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
     paramJceOutputStream.write(this.cSyncFlag, 11);
-    if (this.vUinPairMsg != null) {
-      paramJceOutputStream.write(this.vUinPairMsg, 12);
+    localObject = this.vUinPairMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcResponseGetMsgV2
  * JD-Core Version:    0.7.0.1
  */

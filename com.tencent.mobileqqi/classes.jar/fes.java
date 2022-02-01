@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.app.PluginConfigProxy;
-import mqq.observer.ServerConfigObserver;
-import protocol.KQQConfig.GetResourceRespV2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class fes
-  implements Runnable
+public final class fes
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver;
-  private GetResourceRespV2 jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public fes(PluginConfigProxy paramPluginConfigProxy, ServerConfigObserver paramServerConfigObserver, boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_MqqObserverServerConfigObserver = paramServerConfigObserver;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2 = paramGetResourceRespV2;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_MqqObserverServerConfigObserver.onGetPluginConfig(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2);
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface.dismiss();
+      System.exit(0);
+    }
   }
 }
 

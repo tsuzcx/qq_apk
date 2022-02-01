@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/abl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout style="@style/gq"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="left" android:id="@android:id/title" android:paddingTop="@dimen/m1" android:text="@string/cnx" style="@style/l1" />
-</LinearLayout>
+    <include layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/b3v" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/b4b" android:background="@drawable/lu" android:maxWidth="@dimen/zb" android:maxHeight="@dimen/cg" android:minHeight="@dimen/ad" style="@style/hc" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

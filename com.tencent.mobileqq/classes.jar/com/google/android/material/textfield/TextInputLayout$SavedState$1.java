@@ -1,0 +1,34 @@
+package com.google.android.material.textfield;
+
+import android.os.Parcel;
+import android.os.Parcelable.ClassLoaderCreator;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+final class TextInputLayout$SavedState$1
+  implements Parcelable.ClassLoaderCreator<TextInputLayout.SavedState>
+{
+  @Nullable
+  public TextInputLayout.SavedState a(@NonNull Parcel paramParcel)
+  {
+    return new TextInputLayout.SavedState(paramParcel, null);
+  }
+  
+  @NonNull
+  public TextInputLayout.SavedState a(@NonNull Parcel paramParcel, ClassLoader paramClassLoader)
+  {
+    return new TextInputLayout.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  @NonNull
+  public TextInputLayout.SavedState[] a(int paramInt)
+  {
+    return new TextInputLayout.SavedState[paramInt];
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     com.google.android.material.textfield.TextInputLayout.SavedState.1
+ * JD-Core Version:    0.7.0.1
+ */

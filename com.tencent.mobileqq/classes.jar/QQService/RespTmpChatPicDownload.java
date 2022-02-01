@@ -10,21 +10,11 @@ public final class RespTmpChatPicDownload
   extends JceStruct
   implements Cloneable
 {
-  public int lReplyCode;
-  public long lSeq;
-  public long lUIN;
+  public int lReplyCode = 0;
+  public long lSeq = 0L;
+  public long lUIN = 0L;
   public String strDownloadURL = "";
   public String strResult = "";
-  
-  static
-  {
-    if (!RespTmpChatPicDownload.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public RespTmpChatPicDownload() {}
   
@@ -39,18 +29,17 @@ public final class RespTmpChatPicDownload
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -65,13 +54,32 @@ public final class RespTmpChatPicDownload
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (RespTmpChatPicDownload)paramObject;
-    } while ((!JceUtil.equals(this.lUIN, paramObject.lUIN)) || (!JceUtil.equals(this.lSeq, paramObject.lSeq)) || (!JceUtil.equals(this.lReplyCode, paramObject.lReplyCode)) || (!JceUtil.equals(this.strResult, paramObject.strResult)) || (!JceUtil.equals(this.strDownloadURL, paramObject.strDownloadURL)));
-    return true;
+    }
+    paramObject = (RespTmpChatPicDownload)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lUIN, paramObject.lUIN))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.lSeq, paramObject.lSeq))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.lReplyCode, paramObject.lReplyCode))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.strResult, paramObject.strResult))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.strDownloadURL, paramObject.strDownloadURL)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -107,7 +115,7 @@ public final class RespTmpChatPicDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespTmpChatPicDownload
  * JD-Core Version:    0.7.0.1
  */

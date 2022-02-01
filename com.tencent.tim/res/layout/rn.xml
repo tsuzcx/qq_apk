@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/et2" android:text="@string/o61" style="@style/qk" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:gravity="top" android:id="@id/et5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="25.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/eta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="￥" />
+            <TextView android:textSize="50.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/et4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="19.50" android:layout_toRightOf="@id/eta" />
+            <TextView android:textSize="16.0sp" android:id="@id/et_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="Q币" android:layout_toRightOf="@id/et4" android:layout_alignBottom="@id/et4" />
+        </RelativeLayout>
+        <TextView android:id="@id/et6" android:text="@string/o5x" android:layout_toRightOf="@id/et5" style="@style/qm" />
+        <TextView android:id="@id/et7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="￥10.00" android:layout_toRightOf="@id/et5" android:layout_below="@id/et6" style="@style/qn" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/et9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0sp" android:textColor="#ffff8444" android:layout_gravity="center" android:id="@id/et8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ钱包立减优惠5.00元" />
+        <ImageView android:layout_gravity="center_vertical" android:background="@drawable/cyq" android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginLeft="4.0dip" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <View android:id="@id/et3" android:visibility="gone" style="@style/qc" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,21 +1,20 @@
 package com.dataline.activities;
 
-import at;
-import dt;
+import com.dataline.util.DatalineSessionAdapter;
 
-public class LiteActivity$27$3
+class LiteActivity$27$3
   implements Runnable
 {
-  public LiteActivity$27$3(at paramat, long paramLong, float paramFloat) {}
+  LiteActivity$27$3(LiteActivity.27 param27, long paramLong, float paramFloat) {}
   
   public void run()
   {
-    this.jdField_a_of_type_At.a.jdField_a_of_type_Dt.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_Float);
+    this.c.a.m.a(this.a, this.c.a.f, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.27.3
  * JD-Core Version:    0.7.0.1
  */

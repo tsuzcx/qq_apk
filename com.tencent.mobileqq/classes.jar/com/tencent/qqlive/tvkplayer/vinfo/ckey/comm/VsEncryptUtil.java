@@ -8,26 +8,38 @@ public class VsEncryptUtil
 {
   public static byte[] VsAesDecrypt(String paramString, byte[] paramArrayOfByte)
   {
-    if ((paramString == null) || (paramArrayOfByte == null)) {}
-    while (paramString.length() != 16) {
-      return null;
+    if (paramString != null)
+    {
+      if (paramArrayOfByte == null) {
+        return null;
+      }
+      if (paramString.length() != 16) {
+        return null;
+      }
+      SecretKeySpec localSecretKeySpec = new SecretKeySpec(paramString.getBytes(), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+      localCipher.init(2, localSecretKeySpec, new IvParameterSpec(paramString.getBytes()));
+      return localCipher.doFinal(paramArrayOfByte);
     }
-    SecretKeySpec localSecretKeySpec = new SecretKeySpec(paramString.getBytes(), "AES");
-    Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    localCipher.init(2, localSecretKeySpec, new IvParameterSpec(paramString.getBytes()));
-    return localCipher.doFinal(paramArrayOfByte);
+    return null;
   }
   
   public static byte[] VsAesEncrypt(String paramString, byte[] paramArrayOfByte)
   {
-    if ((paramString == null) || (paramArrayOfByte == null)) {}
-    while (paramString.length() != 16) {
-      return null;
+    if (paramString != null)
+    {
+      if (paramArrayOfByte == null) {
+        return null;
+      }
+      if (paramString.length() != 16) {
+        return null;
+      }
+      SecretKeySpec localSecretKeySpec = new SecretKeySpec(paramString.getBytes(), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+      localCipher.init(1, localSecretKeySpec, new IvParameterSpec(paramString.getBytes()));
+      return localCipher.doFinal(paramArrayOfByte);
     }
-    SecretKeySpec localSecretKeySpec = new SecretKeySpec(paramString.getBytes(), "AES");
-    Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    localCipher.init(1, localSecretKeySpec, new IvParameterSpec(paramString.getBytes()));
-    return localCipher.doFinal(paramArrayOfByte);
+    return null;
   }
   
   public static byte[] VsDecrypt_APPLOCAL(byte[] paramArrayOfByte)
@@ -37,7 +49,11 @@ public class VsEncryptUtil
       paramArrayOfByte = VsAesDecrypt(getAesKey_APPLOCAL(), paramArrayOfByte);
       return paramArrayOfByte;
     }
-    catch (Throwable paramArrayOfByte) {}
+    catch (Throwable paramArrayOfByte)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -48,7 +64,11 @@ public class VsEncryptUtil
       paramArrayOfByte = VsAesDecrypt(getAesKey_SDCRD(), paramArrayOfByte);
       return paramArrayOfByte;
     }
-    catch (Throwable paramArrayOfByte) {}
+    catch (Throwable paramArrayOfByte)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -59,7 +79,11 @@ public class VsEncryptUtil
       paramArrayOfByte = VsAesEncrypt(getAesKey_APPLOCAL(), paramArrayOfByte);
       return paramArrayOfByte;
     }
-    catch (Throwable paramArrayOfByte) {}
+    catch (Throwable paramArrayOfByte)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -70,7 +94,11 @@ public class VsEncryptUtil
       paramArrayOfByte = VsAesEncrypt(getAesKey_SDCRD(), paramArrayOfByte);
       return paramArrayOfByte;
     }
-    catch (Throwable paramArrayOfByte) {}
+    catch (Throwable paramArrayOfByte)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -218,7 +246,7 @@ public class VsEncryptUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsEncryptUtil
  * JD-Core Version:    0.7.0.1
  */

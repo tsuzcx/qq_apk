@@ -2,79 +2,73 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.ai;
-import com.tencent.mm.protocal.protobuf.bli;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.wallet_core.model.af;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class i
-  extends j<ai>
+  extends MAutoStorage<af>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(47086);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ai.info, "WalletRegionGreyAreaList") };
-    AppMethodBeat.o(47086);
+    AppMethodBeat.i(70623);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(af.info, "WalletPrefInfo") };
+    AppMethodBeat.o(70623);
   }
   
-  public i(e parame)
+  public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, ai.info, "WalletRegionGreyAreaList", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, af.info, "WalletPrefInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final ai IC(int paramInt)
+  public final af bgW(String paramString)
   {
-    AppMethodBeat.i(47085);
-    Object localObject = "select * from WalletRegionGreyAreaList where wallet_region = ".concat(String.valueOf(paramInt));
-    Cursor localCursor = this.db.a((String)localObject, null, 2);
-    ab.i("MicroMsg.WalletRegionGreyItemStg", "getWalletRegionGreyItem ".concat(String.valueOf(localObject)));
-    if (localCursor == null)
+    Object localObject = null;
+    AppMethodBeat.i(70621);
+    if (!Util.isNullOrNil(paramString))
     {
-      localObject = new ai();
-      AppMethodBeat.o(47085);
-      return localObject;
-    }
-    localObject = new ai();
-    if (localCursor.moveToNext())
-    {
-      localObject = new ai();
-      ((ai)localObject).convertFrom(localCursor);
-    }
-    ab.i("MicroMsg.WalletRegionGreyItemStg", "get grey item ");
-    localCursor.close();
-    AppMethodBeat.o(47085);
-    return localObject;
-  }
-  
-  public final void a(int paramInt, bli parambli)
-  {
-    AppMethodBeat.i(47084);
-    ai localai = new ai();
-    localai.field_wallet_region = paramInt;
-    try
-    {
-      localai.field_wallet_grey_item_buf = parambli.toByteArray();
-      super.replace(localai);
-      AppMethodBeat.o(47084);
-      return;
-    }
-    catch (Exception parambli)
-    {
-      for (;;)
+      Cursor localCursor = this.db.rawQuery("select * from WalletPrefInfo where pref_key=?", new String[] { paramString }, 2);
+      if (localCursor == null)
       {
-        ab.e("MicroMsg.WalletRegionGreyItemStg", "setWalletRegionGreyItem error " + parambli.getMessage());
+        AppMethodBeat.o(70621);
+        return null;
       }
+      paramString = localObject;
+      if (localCursor.moveToFirst())
+      {
+        paramString = new af();
+        paramString.convertFrom(localCursor);
+      }
+      localCursor.close();
+      AppMethodBeat.o(70621);
+      return paramString;
     }
+    AppMethodBeat.o(70621);
+    return null;
+  }
+  
+  public final boolean bgX(String paramString)
+  {
+    AppMethodBeat.i(70622);
+    if (!Util.isNullOrNil(paramString))
+    {
+      paramString = "delete from WalletPrefInfo where pref_key='" + paramString + "'";
+      boolean bool = this.db.execSQL("WalletPrefInfo", paramString);
+      AppMethodBeat.o(70622);
+      return bool;
+    }
+    AppMethodBeat.o(70622);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.i
  * JD-Core Version:    0.7.0.1
  */

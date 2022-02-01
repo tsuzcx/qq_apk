@@ -13,7 +13,7 @@ public class zzacw$zza
   extends zza
 {
   public static final Parcelable.Creator<zza> CREATOR = new cb();
-  final ArrayList<zzacw.zzb> PV;
+  final ArrayList<zzacw.zzb> RK;
   final String className;
   final int versionCode;
   
@@ -21,7 +21,7 @@ public class zzacw$zza
   {
     this.versionCode = paramInt;
     this.className = paramString;
-    this.PV = paramArrayList;
+    this.RK = paramArrayList;
   }
   
   zzacw$zza(String paramString, Map<String, zzacs.zza<?, ?>> paramMap)
@@ -33,7 +33,7 @@ public class zzacw$zza
     }
     for (;;)
     {
-      this.PV = paramString;
+      this.RK = paramString;
       return;
       paramString = new ArrayList();
       Iterator localIterator = paramMap.keySet().iterator();
@@ -45,15 +45,15 @@ public class zzacw$zza
     }
   }
   
-  final HashMap<String, zzacs.zza<?, ?>> jA()
+  final HashMap<String, zzacs.zza<?, ?>> jJ()
   {
     HashMap localHashMap = new HashMap();
-    int j = this.PV.size();
+    int j = this.RK.size();
     int i = 0;
     while (i < j)
     {
-      zzacw.zzb localzzb = (zzacw.zzb)this.PV.get(i);
-      localHashMap.put(localzzb.PW, localzzb.PX);
+      zzacw.zzb localzzb = (zzacw.zzb)this.RK.get(i);
+      localHashMap.put(localzzb.RL, localzzb.RM);
       i += 1;
     }
     return localHashMap;

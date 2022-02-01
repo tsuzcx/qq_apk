@@ -1,51 +1,51 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.text.TextUtils;
-import aphw;
-import apia;
-import apib;
 import appoint.define.appoint_define.AppointInfo;
 import appoint.define.appoint_define.DateComment;
 import appoint.define.appoint_define.DateEvent;
 import appoint.define.appoint_define.StrangerInfo;
-import awge;
-import awhp;
-import awhs;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.dating.DatingComment;
+import com.tencent.mobileqq.dating.DatingStranger;
+import com.tencent.mobileqq.dating.DatingUtil;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONObject;
 
 public class DateEventMsg
-  extends awge
+  extends Entity
   implements Comparable<DateEventMsg>
 {
   public int attendIdx;
   public byte bDeleted;
   public byte bReaded;
-  @awhp
-  public aphw date_comment;
-  @awhp
+  @notColumn
+  public DatingComment date_comment;
+  @notColumn
   public appoint_define.AppointInfo date_info;
-  @awhs
+  @unique
   public long event_id;
-  @awhp
+  @notColumn
   boolean isInited = false;
   public String msg_content;
   public byte[] msg_date_info;
   public String msg_user_info;
-  @awhp
+  @notColumn
   public String strReadableTime;
-  @awhp
+  @notColumn
   public String strTime;
-  @awhp
+  @notColumn
   public String str_event_tips;
   public long time;
   public int type;
-  @awhp
-  public apia user_info;
+  @notColumn
+  public DatingStranger user_info;
   
   public static DateEventMsg convertFrom(appoint_define.DateEvent paramDateEvent)
   {
@@ -59,180 +59,191 @@ public class DateEventMsg
     localDateEventMsg.attendIdx = paramDateEvent.uint32_attend_idx.get();
     localDateEventMsg.bDeleted = 0;
     localDateEventMsg.bReaded = 0;
-    if (paramDateEvent.msg_user_info.has())
-    {
-      localDateEventMsg.user_info = apia.a((appoint_define.StrangerInfo)paramDateEvent.msg_user_info.get());
-      label96:
-      if (!paramDateEvent.msg_date_info.has()) {
-        break label175;
-      }
+    if (paramDateEvent.msg_user_info.has()) {
+      localDateEventMsg.user_info = DatingStranger.a((appoint_define.StrangerInfo)paramDateEvent.msg_user_info.get());
+    } else {
+      localDateEventMsg.msg_user_info = null;
     }
-    label175:
-    for (localDateEventMsg.date_info = ((appoint_define.AppointInfo)paramDateEvent.msg_date_info.get());; localDateEventMsg.date_info = null) {
-      switch (localDateEventMsg.type)
+    if (paramDateEvent.msg_date_info.has()) {
+      localDateEventMsg.date_info = ((appoint_define.AppointInfo)paramDateEvent.msg_date_info.get());
+    } else {
+      localDateEventMsg.date_info = null;
+    }
+    int i = localDateEventMsg.type;
+    if ((i != 1) && (i != 2))
+    {
+      if ((i == 3) || (i == 4) || (i == 5))
       {
-      default: 
-        localDateEventMsg.isInited = true;
-        return localDateEventMsg;
-        localDateEventMsg.msg_user_info = null;
-        break label96;
+        localDateEventMsg.str_event_tips = paramDateEvent.str_event_tips.get();
+        if (TextUtils.isEmpty(localDateEventMsg.str_event_tips))
+        {
+          i = localDateEventMsg.type;
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i == 5) {
+                localDateEventMsg.str_event_tips = HardCodeUtil.a(2131900925);
+              }
+            }
+            else {
+              localDateEventMsg.str_event_tips = HardCodeUtil.a(2131900924);
+            }
+          }
+          else {
+            localDateEventMsg.str_event_tips = HardCodeUtil.a(2131900923);
+          }
+        }
+        DatingUtil.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
       }
     }
-    if (paramDateEvent.msg_comment.has()) {
-      localDateEventMsg.date_comment = aphw.a((appoint_define.DateComment)paramDateEvent.msg_comment.get());
-    }
-    for (;;)
+    else
     {
-      apib.a("DateEventMsg.convertFrom", new Object[] { localDateEventMsg.date_comment });
-      break;
-      apib.b("DateEventMsg.convertFrom", new Object[] { "msg_comment no value" });
-    }
-    localDateEventMsg.str_event_tips = paramDateEvent.str_event_tips.get();
-    if (TextUtils.isEmpty(localDateEventMsg.str_event_tips)) {
-      switch (localDateEventMsg.type)
-      {
+      if (paramDateEvent.msg_comment.has()) {
+        localDateEventMsg.date_comment = DatingComment.a((appoint_define.DateComment)paramDateEvent.msg_comment.get());
+      } else {
+        DatingUtil.b("DateEventMsg.convertFrom", new Object[] { "msg_comment no value" });
       }
+      DatingUtil.a("DateEventMsg.convertFrom", new Object[] { localDateEventMsg.date_comment });
     }
-    for (;;)
-    {
-      apib.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
-      break;
-      localDateEventMsg.str_event_tips = alud.a(2131703168);
-      continue;
-      localDateEventMsg.str_event_tips = alud.a(2131703169);
-      continue;
-      localDateEventMsg.str_event_tips = alud.a(2131703170);
-    }
+    localDateEventMsg.isInited = true;
+    return localDateEventMsg;
   }
   
   public int compareTo(DateEventMsg paramDateEventMsg)
   {
-    if ((paramDateEventMsg == null) || (this.event_id > paramDateEventMsg.event_id)) {
-      return 1;
+    if (paramDateEventMsg != null)
+    {
+      long l1 = this.event_id;
+      long l2 = paramDateEventMsg.event_id;
+      if (l1 <= l2)
+      {
+        if (l1 == l2) {
+          return 0;
+        }
+        return -1;
+      }
     }
-    if (this.event_id == paramDateEventMsg.event_id) {
-      return 0;
-    }
-    return -1;
+    return 1;
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while (paramObject.getClass() != getClass());
-    if (this.event_id == ((DateEventMsg)paramObject).event_id) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
     }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
+    if (this.event_id == ((DateEventMsg)paramObject).event_id) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void init()
   {
-    if (this.isInited) {}
-    label150:
-    label202:
-    do
-    {
+    if (this.isInited) {
       return;
-      this.isInited = true;
+    }
+    this.isInited = true;
+    try
+    {
+      if (TextUtils.isEmpty(this.msg_user_info)) {
+        this.user_info = null;
+      } else {
+        this.user_info = DatingStranger.a(new JSONObject(this.msg_user_info));
+      }
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+    }
+    byte[] arrayOfByte = this.msg_date_info;
+    if ((arrayOfByte != null) && (arrayOfByte.length != 0))
+    {
+      this.date_info = new appoint_define.AppointInfo();
       try
       {
-        if (TextUtils.isEmpty(this.msg_user_info)) {}
-        for (this.user_info = null; (this.msg_date_info == null) || (this.msg_date_info.length == 0); this.user_info = apia.a(new JSONObject(this.msg_user_info)))
+        this.date_info.mergeFrom(this.msg_date_info);
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
+    }
+    else
+    {
+      this.date_info = null;
+    }
+    int i = this.type;
+    if ((i != 1) && (i != 2))
+    {
+      if ((i == 3) || (i == 4) || (i == 5)) {
+        this.str_event_tips = this.msg_content;
+      }
+    }
+    else {
+      try
+      {
+        if (TextUtils.isEmpty(this.msg_content))
         {
-          this.date_info = null;
-          if ((this.type != 1) && (this.type != 2)) {
-            break label202;
-          }
-          try
-          {
-            if (!TextUtils.isEmpty(this.msg_content)) {
-              break label150;
-            }
-            this.str_event_tips = "";
-            return;
-          }
-          catch (Exception localException1)
-          {
-            localException1.printStackTrace();
-            return;
-          }
+          this.str_event_tips = "";
+          return;
         }
+        this.date_comment = DatingComment.a(new JSONObject(this.msg_content));
+        DatingUtil.a("DateEventMsg.init", new Object[] { Integer.valueOf(this.type), this.date_comment, this.msg_content });
+        return;
       }
       catch (Exception localException2)
       {
-        for (;;)
-        {
-          localException2.printStackTrace();
-          continue;
-          this.date_info = new appoint_define.AppointInfo();
-          try
-          {
-            this.date_info.mergeFrom(this.msg_date_info);
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-          {
-            localInvalidProtocolBufferMicroException.printStackTrace();
-          }
-        }
-        this.date_comment = aphw.a(new JSONObject(this.msg_content));
-        apib.a("DateEventMsg.init", new Object[] { Integer.valueOf(this.type), this.date_comment, this.msg_content });
-        return;
+        localException2.printStackTrace();
       }
-    } while ((this.type != 3) && (this.type != 4) && (this.type != 5));
-    this.str_event_tips = this.msg_content;
+    }
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    Object localObject = apia.a(this.user_info);
-    if (localObject == null)
-    {
+    Object localObject = DatingStranger.a(this.user_info);
+    String str = "";
+    if (localObject == null) {
       localObject = "";
-      this.msg_user_info = ((String)localObject);
-      if (this.date_info == null) {
-        break label83;
-      }
-      this.msg_date_info = this.date_info.toByteArray();
-      label38:
-      if ((this.type != 1) && (this.type != 2)) {
-        break label99;
-      }
-      localObject = aphw.a(this.date_comment);
-      if (localObject != null) {
-        break label91;
-      }
-      localObject = "";
-      this.msg_content = ((String)localObject);
+    } else {
+      localObject = ((JSONObject)localObject).toString();
     }
-    label83:
-    label91:
-    label99:
-    while ((this.type != 3) && (this.type != 4) && (this.type != 5)) {
-      for (;;)
+    this.msg_user_info = ((String)localObject);
+    localObject = this.date_info;
+    if (localObject != null) {
+      this.msg_date_info = ((appoint_define.AppointInfo)localObject).toByteArray();
+    } else {
+      this.msg_date_info = null;
+    }
+    int i = this.type;
+    if ((i != 1) && (i != 2))
+    {
+      if ((i == 3) || (i == 4) || (i == 5))
       {
-        return;
-        localObject = ((JSONObject)localObject).toString();
-        break;
-        this.msg_date_info = null;
-        break label38;
-        localObject = ((JSONObject)localObject).toString();
+        str = this.str_event_tips;
+        localObject = str;
+        if (str == null) {
+          localObject = "";
+        }
+        this.msg_content = ((String)localObject);
       }
     }
-    if (this.str_event_tips == null) {}
-    for (localObject = "";; localObject = this.str_event_tips)
+    else
     {
+      localObject = DatingComment.a(this.date_comment);
+      if (localObject == null) {
+        localObject = str;
+      } else {
+        localObject = ((JSONObject)localObject).toString();
+      }
       this.msg_content = ((String)localObject);
-      return;
     }
   }
 }

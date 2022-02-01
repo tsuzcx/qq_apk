@@ -1,10 +1,10 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import aase;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
+import com.tencent.gdtad.log.GdtLog;
 
 public class GdtVideoCeilingScrollVIew
   extends ScrollView
@@ -26,31 +26,40 @@ public class GdtVideoCeilingScrollVIew
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    aase.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
+    GdtLog.b("GdtVideoCeilingScrollVIew", "dispatchTouchEvent");
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    aase.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
+    GdtLog.b("GdtVideoCeilingScrollVIew", "onInterceptTouchEvent");
     return false;
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    aase.b("GdtVideoCeilingScrollVIew", "onScrollChanged: t -> " + paramInt2 + ", oldt -> " + paramInt4 + ", l -> " + paramInt1 + ", oldl -> " + paramInt3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onScrollChanged: t -> ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", oldt -> ");
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append(", l -> ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", oldl -> ");
+    localStringBuilder.append(paramInt3);
+    GdtLog.b("GdtVideoCeilingScrollVIew", localStringBuilder.toString());
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    aase.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
+    GdtLog.b("GdtVideoCeilingScrollVIew", "onTouchEvent");
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingScrollVIew
  * JD-Core Version:    0.7.0.1
  */

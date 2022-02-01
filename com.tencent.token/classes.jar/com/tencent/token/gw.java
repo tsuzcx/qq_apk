@@ -1,273 +1,94 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.Flushable;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.concurrent.Executor;
-import java.util.regex.Pattern;
-import okio.h;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 
-public final class gw
-  implements Closeable, Flushable
+public abstract class gw
 {
-  static final Pattern a;
-  final hw b;
-  final int c;
-  h d;
-  final LinkedHashMap e;
-  int f;
-  boolean g;
-  boolean h;
-  boolean i;
-  private long k;
-  private long l;
-  private long m;
-  private final Executor n;
-  private final Runnable o;
+  static int a = -1;
+  private static boolean b = false;
   
-  static
+  public static gw a(Activity paramActivity, gv paramgv)
   {
-    if (!gw.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      j = bool;
-      a = Pattern.compile("[a-z0-9_-]{1,120}");
-      return;
-    }
+    return a(paramActivity, paramActivity.getWindow(), paramgv);
   }
   
-  private void d()
+  public static gw a(Dialog paramDialog, gv paramgv)
   {
-    try
-    {
-      if (b()) {
-        throw new IllegalStateException("cache is closed");
-      }
-    }
-    finally {}
+    return a(paramDialog.getContext(), paramDialog.getWindow(), paramgv);
   }
   
-  void a(gx paramgx, boolean paramBoolean)
+  private static gw a(Context paramContext, Window paramWindow, gv paramgv)
   {
-    int i3 = 0;
-    gy localgy;
-    try
-    {
-      localgy = paramgx.a;
-      if (localgy.f != paramgx) {
-        throw new IllegalStateException();
-      }
+    if (Build.VERSION.SDK_INT >= 24) {
+      return new gy(paramContext, paramWindow, paramgv);
     }
-    finally {}
-    int i2 = i3;
-    if (paramBoolean)
-    {
-      i2 = i3;
-      if (!localgy.e)
-      {
-        int i1 = 0;
-        for (;;)
-        {
-          i2 = i3;
-          if (i1 >= this.c) {
-            break;
-          }
-          if (paramgx.b[i1] == 0)
-          {
-            paramgx.b();
-            throw new IllegalStateException("Newly created entry didn't create value for index " + i1);
-          }
-          if (!this.b.b(localgy.d[i1]))
-          {
-            paramgx.b();
-            return;
-          }
-          i1 += 1;
-        }
-      }
+    if (Build.VERSION.SDK_INT >= 23) {
+      return new ha(paramContext, paramWindow, paramgv);
     }
-    for (;;)
-    {
-      long l1;
-      if (i2 < this.c)
-      {
-        paramgx = localgy.d[i2];
-        if (paramBoolean)
-        {
-          if (this.b.b(paramgx))
-          {
-            File localFile = localgy.c[i2];
-            this.b.a(paramgx, localFile);
-            l1 = localgy.b[i2];
-            long l2 = this.b.c(localFile);
-            localgy.b[i2] = l2;
-            this.l = (this.l - l1 + l2);
-          }
-        }
-        else {
-          this.b.a(paramgx);
-        }
-      }
-      else
-      {
-        this.f += 1;
-        localgy.f = null;
-        if ((localgy.e | paramBoolean))
-        {
-          localgy.e = true;
-          this.d.b("CLEAN").i(32);
-          this.d.b(localgy.a);
-          localgy.a(this.d);
-          this.d.i(10);
-          if (paramBoolean)
-          {
-            l1 = this.m;
-            this.m = (1L + l1);
-            localgy.g = l1;
-          }
-        }
-        for (;;)
-        {
-          this.d.flush();
-          if ((this.l <= this.k) && (!a())) {
-            break;
-          }
-          this.n.execute(this.o);
-          break;
-          this.e.remove(localgy.a);
-          this.d.b("REMOVE").i(32);
-          this.d.b(localgy.a);
-          this.d.i(10);
-        }
-      }
-      i2 += 1;
-    }
+    return new gz(paramContext, paramWindow, paramgv);
   }
   
-  boolean a()
+  public static boolean l()
   {
-    return (this.f >= 2000) && (this.f >= this.e.size());
+    return b;
   }
   
-  boolean a(gy paramgy)
-  {
-    if (paramgy.f != null) {
-      paramgy.f.a();
-    }
-    int i1 = 0;
-    while (i1 < this.c)
-    {
-      this.b.a(paramgy.c[i1]);
-      this.l -= paramgy.b[i1];
-      paramgy.b[i1] = 0L;
-      i1 += 1;
-    }
-    this.f += 1;
-    this.d.b("REMOVE").i(32).b(paramgy.a).i(10);
-    this.e.remove(paramgy.a);
-    if (a()) {
-      this.n.execute(this.o);
-    }
-    return true;
-  }
+  public abstract ActionBar a();
   
-  public boolean b()
-  {
-    try
-    {
-      boolean bool = this.h;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public abstract <T extends View> T a(int paramInt);
   
-  void c()
-  {
-    while (this.l > this.k) {
-      a((gy)this.e.values().iterator().next());
-    }
-    this.i = false;
-  }
+  public abstract ho a(ho.a parama);
   
-  public void close()
-  {
-    for (;;)
-    {
-      try
-      {
-        if ((!this.g) || (this.h))
-        {
-          this.h = true;
-          return;
-        }
-        gy[] arrayOfgy = (gy[])this.e.values().toArray(new gy[this.e.size()]);
-        int i2 = arrayOfgy.length;
-        int i1 = 0;
-        if (i1 < i2)
-        {
-          gy localgy = arrayOfgy[i1];
-          if (localgy.f != null) {
-            localgy.f.b();
-          }
-        }
-        else
-        {
-          c();
-          this.d.close();
-          this.d = null;
-          this.h = true;
-          continue;
-        }
-        i1 += 1;
-      }
-      finally {}
-    }
-  }
+  public abstract void a(Configuration paramConfiguration);
   
-  /* Error */
-  public void flush()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 210	com/tencent/token/gw:g	Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifne +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: invokespecial 222	com/tencent/token/gw:d	()V
-    //   18: aload_0
-    //   19: invokevirtual 218	com/tencent/token/gw:c	()V
-    //   22: aload_0
-    //   23: getfield 131	com/tencent/token/gw:d	Lokio/h;
-    //   26: invokeinterface 154 1 0
-    //   31: goto -20 -> 11
-    //   34: astore_2
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_2
-    //   38: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	39	0	this	gw
-    //   6	2	1	bool	boolean
-    //   34	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	34	finally
-    //   14	31	34	finally
-  }
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void a(Toolbar paramToolbar);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, ViewGroup.LayoutParams paramLayoutParams);
+  
+  public abstract void a(CharSequence paramCharSequence);
+  
+  public abstract MenuInflater b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(Bundle paramBundle);
+  
+  public abstract void b(View paramView, ViewGroup.LayoutParams paramLayoutParams);
+  
+  public abstract void c();
+  
+  public abstract boolean c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract gu.a i();
+  
+  public abstract void j();
+  
+  public abstract boolean k();
 }
 
 

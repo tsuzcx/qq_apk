@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.dating;
 
-import aluj;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.hotchat.api.IHotChatHandler;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 class NearbyTransitActivity$3
@@ -12,16 +14,14 @@ class NearbyTransitActivity$3
   
   public void run()
   {
-    boolean bool = true;
-    aluj localaluj = (aluj)this.this$0.app.a(35);
+    IHotChatHandler localIHotChatHandler = (IHotChatHandler)this.this$0.app.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName());
     Common.WifiPOIInfo localWifiPOIInfo = this.a;
-    if (this.a.uint32_wifi_poi_type.get() == 1) {}
-    for (;;)
-    {
-      localaluj.a(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.this$0));
-      return;
+    int i = localWifiPOIInfo.uint32_wifi_poi_type.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    localIHotChatHandler.joinHotChat(localWifiPOIInfo, bool, 4, NearbyTransitActivity.g(this.this$0));
   }
 }
 

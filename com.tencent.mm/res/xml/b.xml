@@ -5,11 +5,10 @@
     <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendSearchPreference android:key="find_friends_by_input" />
     <com.tencent.mm.ui.base.preference.PreferenceInfoCategory android:key="find_friends_info" />
     <PreferenceCategory />
-    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:summary="@string/bvu" android:title="@string/bvt" android:icon="@raw/avatar_radar" android:key="find_friends_by_radar" />
-    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:summary="@string/bvx" android:title="@string/bvw" android:icon="@raw/default_chatroom" android:key="find_friends_create_pwdgroup" />
-    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:summary="@string/bvs" android:title="@string/bvr" android:icon="@raw/avatar_scan" android:key="find_friends_by_qrcode" />
-    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:summary="@string/bvp" android:title="@string/bvn" android:icon="@raw/default_fmessage" android:key="find_friends_by_other_way" />
-    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:summary="@string/bvv" android:title="@string/bkp" android:icon="@raw/default_servicebrand_contact" android:key="find_friends_by_web" />
-    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:summary="@string/cu" android:title="@string/cv" android:icon="@raw/default_wework" android:key="find_friends_by_ww" />
-    <PreferenceCategory />
+    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:icon="@raw/avatar_radar" android:key="find_friends_by_radar" android:summary="@string/cw9" android:title="@string/cw8" />
+    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:icon="@raw/default_chatroom" android:key="find_friends_create_pwdgroup" android:summary="@string/cwb" android:title="@string/cwa" />
+    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:icon="@raw/avatar_scan" android:key="find_friends_by_qrcode" android:summary="@string/cw7" android:title="@string/cw6" />
+    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:icon="@raw/default_fmessage" android:key="find_friends_by_other_way" android:summary="@string/cw4" android:title="@string/cw2" />
+    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:icon="@raw/default_servicebrand_contact" android:key="find_friends_by_web" android:summary="@string/cw_" android:title="@string/cgm" />
+    <com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference android:icon="@raw/default_wework" android:key="find_friends_by_ww" android:summary="@string/em" android:title="@string/en" />
 </PreferenceScreen>

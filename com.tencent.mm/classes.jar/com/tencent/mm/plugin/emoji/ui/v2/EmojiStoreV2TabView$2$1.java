@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.plugin.emoji.model.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMTabView;
 
 final class EmojiStoreV2TabView$2$1
@@ -13,32 +14,39 @@ final class EmojiStoreV2TabView$2$1
   
   public final void run()
   {
-    AppMethodBeat.i(53799);
+    AppMethodBeat.i(109372);
     try
     {
-      if (EmojiStoreV2TabView.b(this.lrV.lrU) != null)
-      {
-        if (i.getEmojiStorageMgr().dxv())
-        {
-          EmojiStoreV2TabView.b(this.lrV.lrU).setText(2131299208);
-          AppMethodBeat.o(53799);
-          return;
-        }
-        EmojiStoreV2TabView.b(this.lrV.lrU).setText(2131299207);
+      if (EmojiStoreV2TabView.b(this.xYQ.xYP) == null) {
+        break label121;
       }
-      AppMethodBeat.o(53799);
-      return;
+      if (!Util.isNullOrNil(j.dzN().xMJ))
+      {
+        EmojiStoreV2TabView.b(this.xYQ.xYP).setText(j.dzN().xMJ);
+        AppMethodBeat.o(109372);
+        return;
+      }
+      if (j.dzN().xMI)
+      {
+        EmojiStoreV2TabView.b(this.xYQ.xYP).setText(h.h.emoji_store_main_tab_friends);
+        AppMethodBeat.o(109372);
+        return;
+      }
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2TabView", localException, "event update error", new Object[0]);
-      AppMethodBeat.o(53799);
+      Log.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2TabView", localException, "event update error", new Object[0]);
+      AppMethodBeat.o(109372);
+      return;
     }
+    EmojiStoreV2TabView.b(this.xYQ.xYP).setText(h.h.emoji_store_main_tab);
+    label121:
+    AppMethodBeat.o(109372);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView.2.1
  * JD-Core Version:    0.7.0.1
  */

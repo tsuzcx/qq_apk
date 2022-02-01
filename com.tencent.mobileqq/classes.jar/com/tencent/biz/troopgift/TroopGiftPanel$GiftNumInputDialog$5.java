@@ -1,11 +1,9 @@
 package com.tencent.biz.troopgift;
 
-import ywj;
-
-public class TroopGiftPanel$GiftNumInputDialog$5
+class TroopGiftPanel$GiftNumInputDialog$5
   implements Runnable
 {
-  public TroopGiftPanel$GiftNumInputDialog$5(ywj paramywj) {}
+  TroopGiftPanel$GiftNumInputDialog$5(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class TroopGiftPanel$GiftNumInputDialog$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 
 class PhoneMatchView$1$2
   implements Runnable
@@ -10,9 +10,9 @@ class PhoneMatchView$1$2
   
   public void run()
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.this$0.a.getManager(11);
-    localPhoneContactManagerImp.j();
-    localPhoneContactManagerImp.e = true;
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.a.this$0.a.getRuntimeService(IPhoneContactService.class, "");
+    localIPhoneContactService.uploadOrUpdateContact();
+    localIPhoneContactService.setNeedUploadResultTip(true);
   }
 }
 

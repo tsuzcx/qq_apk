@@ -10,9 +10,12 @@ import android.support.v4.util.SimpleArrayMap;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.Proteus;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.expand.IProteusDtReporter;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.JsonUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
@@ -45,7 +48,7 @@ public abstract class ViewBase
   protected int mBorderWidth = 0;
   protected String mClickEvnet;
   protected Rect mContentRect;
-  public VafContext mContext;
+  protected VafContext mContext;
   protected int mDrawLeft;
   protected int mDrawTop;
   protected String mEventAttachedData;
@@ -56,18 +59,18 @@ public abstract class ViewBase
   private boolean mIsSoftwareRender = false;
   private SimpleArrayMap<String, Object> mKeyedTags;
   protected Matrix mMatrixBG = null;
-  public int mMeasuredHeight;
+  protected int mMeasuredHeight;
   protected int mMeasuredWidth;
   protected int mMinHeight;
   protected int mMinWidth;
-  public String mName;
+  protected String mName;
   private ViewBase.OnClickListener mOnClickListener;
   protected int mPaddingBottom;
   protected int mPaddingLeft;
   protected int mPaddingRight;
   protected int mPaddingTop;
   protected Paint mPaint;
-  public Layout.Params mParams;
+  protected Layout.Params mParams;
   protected Layout mParent;
   protected Object mTag;
   protected int mUuid;
@@ -94,36 +97,43 @@ public abstract class ViewBase
   private boolean changeVisibility()
   {
     View localView = getNativeView();
+    int i;
     if (localView != null)
     {
-      switch (this.mVisibility)
+      i = this.mVisibility;
+      if (i != 0)
       {
-      default: 
-        return true;
-      case 4: 
+        if (i != 4)
+        {
+          if (i != 8) {
+            return true;
+          }
+          localView.setVisibility(8);
+          return true;
+        }
         localView.setVisibility(4);
         return true;
-      case 0: 
-        localView.setVisibility(0);
-        return true;
       }
-      localView.setVisibility(8);
+      localView.setVisibility(0);
       return true;
     }
     if (isContainer())
     {
-      switch (this.mVisibility)
+      i = this.mVisibility;
+      if (i != 0)
       {
-      default: 
-        return true;
-      case 0: 
-        this.mHolderView.setVisibility(0);
-        return true;
-      case 4: 
+        if (i != 4)
+        {
+          if (i != 8) {
+            return true;
+          }
+          this.mHolderView.setVisibility(8);
+          return true;
+        }
         this.mHolderView.setVisibility(4);
         return true;
       }
-      this.mHolderView.setVisibility(8);
+      this.mHolderView.setVisibility(0);
       return true;
     }
     return false;
@@ -131,30 +141,30 @@ public abstract class ViewBase
   
   private void setBorderRadiusArray(JSONArray paramJSONArray)
   {
-    if (paramJSONArray == null) {}
-    JSONArray localJSONArray;
-    do
-    {
-      return;
-      localJSONArray = paramJSONArray.optJSONArray(0);
-      paramJSONArray = paramJSONArray.optString(1, "relative");
-    } while (localJSONArray == null);
-    double d1 = localJSONArray.optDouble(0, 0.0D);
-    double d2 = localJSONArray.optDouble(1, 0.0D);
-    double d3 = localJSONArray.optDouble(2, 0.0D);
-    double d4 = localJSONArray.optDouble(3, 0.0D);
-    if ("absolutely".equals(paramJSONArray))
-    {
-      this.mBorderTopLeftRadius = Utils.dp2px(d1);
-      this.mBorderTopRightRadius = Utils.dp2px(d2);
-      this.mBorderBottomRightRadius = Utils.dp2px(d3);
-      this.mBorderBottomLeftRadius = Utils.dp2px(d4);
+    if (paramJSONArray == null) {
       return;
     }
-    this.mBorderTopLeftRadius = Utils.rp2px(d1);
-    this.mBorderTopRightRadius = Utils.rp2px(d2);
-    this.mBorderBottomRightRadius = Utils.rp2px(d3);
-    this.mBorderBottomLeftRadius = Utils.rp2px(d4);
+    JSONArray localJSONArray = paramJSONArray.optJSONArray(0);
+    paramJSONArray = paramJSONArray.optString(1, "relative");
+    if (localJSONArray != null)
+    {
+      double d1 = localJSONArray.optDouble(0, 0.0D);
+      double d2 = localJSONArray.optDouble(1, 0.0D);
+      double d3 = localJSONArray.optDouble(2, 0.0D);
+      double d4 = localJSONArray.optDouble(3, 0.0D);
+      if ("absolutely".equals(paramJSONArray))
+      {
+        this.mBorderTopLeftRadius = Utils.dp2px(d1);
+        this.mBorderTopRightRadius = Utils.dp2px(d2);
+        this.mBorderBottomRightRadius = Utils.dp2px(d3);
+        this.mBorderBottomLeftRadius = Utils.dp2px(d4);
+        return;
+      }
+      this.mBorderTopLeftRadius = Utils.rp2px(d1);
+      this.mBorderTopRightRadius = Utils.rp2px(d2);
+      this.mBorderBottomRightRadius = Utils.rp2px(d3);
+      this.mBorderBottomLeftRadius = Utils.rp2px(d4);
+    }
   }
   
   private void setTag(String paramString, Object paramObject)
@@ -167,22 +177,18 @@ public abstract class ViewBase
   
   private boolean setValue(int paramInt, Object paramObject)
   {
-    boolean bool1;
     if ((paramObject instanceof String)) {
-      bool1 = setValue(paramInt, (String)paramObject);
+      return setValue(paramInt, (String)paramObject);
     }
-    do
+    boolean bool = setAttribute(paramInt, paramObject);
+    if (!bool)
     {
-      boolean bool2;
-      do
-      {
-        return bool1;
-        bool2 = setAttribute(paramInt, paramObject);
-        bool1 = bool2;
-      } while (bool2);
-      bool1 = bool2;
-    } while (this.mParams == null);
-    return this.mParams.setAttribute(paramInt, paramObject);
+      Layout.Params localParams = this.mParams;
+      if (localParams != null) {
+        return localParams.setAttribute(paramInt, paramObject);
+      }
+    }
+    return bool;
   }
   
   private boolean setValue(String paramString, Object paramObject)
@@ -208,8 +214,14 @@ public abstract class ViewBase
           onParseValueFinished();
         }
       }
-      if (LogUtil.QLog.isColorLevel()) {
-        LogUtil.QLog.d("ViewBase", 2, "[viewBase] bind dynamicValue " + paramViewBean.valueBean.dynamicValue + " viewId = " + paramViewBean.viewId);
+      if (LogUtil.QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[viewBase] bind dynamicValue ");
+        ((StringBuilder)localObject).append(paramViewBean.valueBean.dynamicValue);
+        ((StringBuilder)localObject).append(" viewId = ");
+        ((StringBuilder)localObject).append(paramViewBean.viewId);
+        LogUtil.QLog.d("ViewBase", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -218,17 +230,23 @@ public abstract class ViewBase
   {
     if ((paramViewBean != null) && (paramViewBean.valueBean != null) && (paramViewBean.valueBean.normalValue != null))
     {
-      Iterator localIterator = paramViewBean.valueBean.normalValue.entrySet().iterator();
-      while (localIterator.hasNext())
+      Object localObject = paramViewBean.valueBean.normalValue.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         setValue((String)localEntry.getKey(), localEntry.getValue());
       }
       if (this.mVisibility != 8) {
         onParseValueFinished();
       }
-      if (LogUtil.QLog.isColorLevel()) {
-        LogUtil.QLog.d("ViewBase", 2, "[viewBase] bind normalValue " + paramViewBean.valueBean.normalValue + " viewId = " + paramViewBean.viewId);
+      if (LogUtil.QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[viewBase] bind normalValue ");
+        ((StringBuilder)localObject).append(paramViewBean.valueBean.normalValue);
+        ((StringBuilder)localObject).append(" viewId = ");
+        ((StringBuilder)localObject).append(paramViewBean.viewId);
+        LogUtil.QLog.d("ViewBase", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -388,10 +406,12 @@ public abstract class ViewBase
   
   public ViewBase getParent()
   {
-    if (this.mParent == null) {
-      return ((IContainer)this.mHolderView.getParent()).getVirtualView();
+    Layout localLayout = this.mParent;
+    Object localObject = localLayout;
+    if (localLayout == null) {
+      localObject = ((IContainer)this.mHolderView.getParent()).getVirtualView();
     }
-    return this.mParent;
+    return localObject;
   }
   
   public Object getTag()
@@ -401,8 +421,9 @@ public abstract class ViewBase
   
   public Object getTag(String paramString)
   {
-    if (this.mKeyedTags != null) {
-      return this.mKeyedTags.get(paramString);
+    SimpleArrayMap localSimpleArrayMap = this.mKeyedTags;
+    if (localSimpleArrayMap != null) {
+      return localSimpleArrayMap.get(paramString);
     }
     return null;
   }
@@ -464,64 +485,69 @@ public abstract class ViewBase
   
   public final void measureComponent(int paramInt1, int paramInt2)
   {
+    int k = this.mAutoDimDirection;
     int i = paramInt1;
     int j = paramInt2;
-    if (this.mAutoDimDirection > 0) {
-      switch (this.mAutoDimDirection)
+    if (k > 0) {
+      if (k != 1)
       {
-      default: 
-        j = paramInt2;
-        i = paramInt1;
-      }
-    }
-    for (;;)
-    {
-      onComMeasure(i, j);
-      return;
-      i = paramInt1;
-      j = paramInt2;
-      if (1073741824 == View.MeasureSpec.getMode(paramInt1))
-      {
-        j = View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt1) * this.mAutoDimY / this.mAutoDimX), 1073741824);
-        i = paramInt1;
-        continue;
-        i = paramInt1;
-        j = paramInt2;
-        if (1073741824 == View.MeasureSpec.getMode(paramInt2))
+        if (k != 2)
         {
-          i = View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt2) * this.mAutoDimX / this.mAutoDimY), 1073741824);
+          i = paramInt1;
           j = paramInt2;
+        }
+        else
+        {
+          i = paramInt1;
+          j = paramInt2;
+          if (1073741824 == View.MeasureSpec.getMode(paramInt2))
+          {
+            i = View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt2) * this.mAutoDimX / this.mAutoDimY), 1073741824);
+            j = paramInt2;
+          }
+        }
+      }
+      else
+      {
+        i = paramInt1;
+        j = paramInt2;
+        if (1073741824 == View.MeasureSpec.getMode(paramInt1))
+        {
+          j = View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt1) * this.mAutoDimY / this.mAutoDimX), 1073741824);
+          i = paramInt1;
         }
       }
     }
+    onComMeasure(i, j);
   }
   
   protected boolean onClick()
   {
-    boolean bool = false;
-    if (this.mOnClickListener != null)
+    ViewBase.OnClickListener localOnClickListener = this.mOnClickListener;
+    if (localOnClickListener != null)
     {
-      this.mOnClickListener.onClick(this);
-      bool = true;
+      localOnClickListener.onClick(this);
+      return true;
     }
-    return bool;
+    return false;
   }
   
   protected void onComDraw(Canvas paramCanvas)
   {
     if (getNativeView() == null)
     {
-      if (this.mBackground == 0) {
-        break label51;
+      if (this.mBackground != 0)
+      {
+        VirtualViewUtils.drawBackground(paramCanvas, this.mBackgroundPaint, this.mMeasuredWidth, this.mMeasuredHeight, this.mBorderWidth, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
+        return;
       }
-      VirtualViewUtils.drawBackground(paramCanvas, this.mBackgroundPaint, this.mMeasuredWidth, this.mMeasuredHeight, this.mBorderWidth, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
+      Bitmap localBitmap = this.mBackgroundImage;
+      if (localBitmap != null)
+      {
+        this.mMatrixBG.setScale(this.mMeasuredWidth / localBitmap.getWidth(), this.mMeasuredHeight / this.mBackgroundImage.getHeight());
+        paramCanvas.drawBitmap(this.mBackgroundImage, this.mMatrixBG, this.mBackgroundPaint);
+      }
     }
-    label51:
-    while (this.mBackgroundImage == null) {
-      return;
-    }
-    this.mMatrixBG.setScale(this.mMeasuredWidth / this.mBackgroundImage.getWidth(), this.mMeasuredHeight / this.mBackgroundImage.getHeight());
-    paramCanvas.drawBitmap(this.mBackgroundImage, this.mMatrixBG, this.mBackgroundPaint);
   }
   
   public void onParseValueFinished()
@@ -530,21 +556,28 @@ public abstract class ViewBase
     if ((localView != null) && (softwareRender())) {
       localView.setLayerType(1, null);
     }
-    if ((localView != null) && (this.mAlpha >= 0.0F) && (this.mAlpha <= 1.001F)) {
-      localView.setAlpha(this.mAlpha);
+    if (localView != null)
+    {
+      float f = this.mAlpha;
+      if ((f >= 0.0F) && (f <= 1.001F)) {
+        localView.setAlpha(f);
+      }
     }
   }
   
   public void refresh()
   {
-    refresh(this.mDrawLeft, this.mDrawTop, this.mDrawLeft + this.mMeasuredWidth, this.mDrawTop + this.mMeasuredHeight);
+    int i = this.mDrawLeft;
+    int j = this.mDrawTop;
+    refresh(i, j, this.mMeasuredWidth + i, this.mMeasuredHeight + j);
   }
   
   public void refresh(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mHolderView != null)
+    View localView = this.mHolderView;
+    if (localView != null)
     {
-      this.mHolderView.invalidate(paramInt1, paramInt2, paramInt3, paramInt4);
+      localView.invalidate(paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
     LogUtil.QLog.d("ViewBase", 2, "refresh holdView is null");
@@ -558,88 +591,118 @@ public abstract class ViewBase
   
   protected boolean setAttribute(int paramInt, Object paramObject)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (paramInt != 63)
     {
-    default: 
-      bool = false;
+      if (paramInt != 72) {
+        return false;
+      }
+      IProteusDtReporter localIProteusDtReporter = Proteus.getInstance().getDtReporter();
+      if (localIProteusDtReporter != null)
+      {
+        String str = (String)JsonUtils.getObjectFromJsonArray(paramObject, 0);
+        if (TextUtils.isEmpty(str))
+        {
+          if (LogUtil.QLog.isColorLevel())
+          {
+            paramObject = new StringBuilder();
+            paramObject.append("setDtElement fail, id can't empty! viewID: ");
+            paramObject.append(getViewId());
+            LogUtil.QLog.i("ViewBase", 2, paramObject.toString());
+          }
+        }
+        else
+        {
+          paramObject = JsonUtils.getObjectFromJsonArray(paramObject, 1);
+          localIProteusDtReporter.setDtElementIdWithParams(getNativeView(), str, JsonUtils.covertJsonObjectToMap(paramObject));
+        }
+      }
     }
-    do
+    else if ((paramObject instanceof JSONArray))
     {
-      return bool;
-    } while (!(paramObject instanceof JSONArray));
-    setBorderRadiusArray((JSONArray)paramObject);
+      setBorderRadiusArray((JSONArray)paramObject);
+    }
     return true;
   }
   
   protected boolean setAttribute(int paramInt, String paramString)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (paramInt != 53)
     {
-    default: 
-      bool = false;
-    case 53: 
-      return bool;
-    case 7: 
-      paramInt = Utils.rp2px(Double.valueOf(paramString).doubleValue());
-      this.mPaddingBottom = paramInt;
-      this.mPaddingTop = paramInt;
-      this.mPaddingRight = paramInt;
-      this.mPaddingLeft = paramInt;
-      return true;
-    case 8: 
-      this.mPaddingLeft = Utils.rp2px(Double.valueOf(paramString).doubleValue());
-      return true;
-    case 9: 
-      this.mPaddingRight = Utils.rp2px(Double.valueOf(paramString).doubleValue());
-      return true;
-    case 10: 
-      this.mPaddingTop = Utils.rp2px(Double.valueOf(paramString).doubleValue());
-      return true;
-    case 11: 
-      this.mPaddingBottom = Utils.rp2px(Double.valueOf(paramString).doubleValue());
-      return true;
-    case 15: 
-      this.mBorderWidth = Utils.rp2px(Double.valueOf(paramString).doubleValue());
-      return true;
-    case 16: 
-      this.mBorderColor = Utils.parseColor(paramString);
-      return true;
-    case 17: 
-      this.mBorderRadius = Utils.rp2px(Double.valueOf(paramString).doubleValue());
-      this.mBorderTopLeftRadius = this.mBorderRadius;
-      this.mBorderTopRightRadius = this.mBorderRadius;
-      this.mBorderBottomLeftRadius = this.mBorderRadius;
-      this.mBorderBottomRightRadius = this.mBorderRadius;
-      return true;
-    case 36: 
-      this.mClickEvnet = paramString;
-      return true;
-    case 37: 
-      if ("VISIBLE".equals(paramString))
+      if (paramInt != 62)
       {
-        setVisibility(0);
+        if (paramInt != 65)
+        {
+          switch (paramInt)
+          {
+          default: 
+            switch (paramInt)
+            {
+            default: 
+              switch (paramInt)
+              {
+              default: 
+                return false;
+              case 38: 
+                this.mEventAttachedData = paramString;
+                return true;
+              case 37: 
+                if ("VISIBLE".equals(paramString))
+                {
+                  setVisibility(0);
+                  return true;
+                }
+                setVisibility(8);
+                return true;
+              }
+              this.mClickEvnet = paramString;
+              return true;
+            case 17: 
+              this.mBorderRadius = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+              paramInt = this.mBorderRadius;
+              this.mBorderTopLeftRadius = paramInt;
+              this.mBorderTopRightRadius = paramInt;
+              this.mBorderBottomLeftRadius = paramInt;
+              this.mBorderBottomRightRadius = paramInt;
+              return true;
+            case 16: 
+              this.mBorderColor = Utils.parseColor(paramString);
+              return true;
+            case 15: 
+              this.mBorderWidth = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+              return true;
+            }
+            setBackgroundColor(Utils.parseColor(paramString));
+            return true;
+          case 11: 
+            this.mPaddingBottom = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+            return true;
+          case 10: 
+            this.mPaddingTop = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+            return true;
+          case 9: 
+            this.mPaddingRight = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+            return true;
+          case 8: 
+            this.mPaddingLeft = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+            return true;
+          }
+          paramInt = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+          this.mPaddingBottom = paramInt;
+          this.mPaddingTop = paramInt;
+          this.mPaddingRight = paramInt;
+          this.mPaddingLeft = paramInt;
+          return true;
+        }
+        this.mAlpha = Utils.toFloat(paramString).floatValue();
         return true;
       }
-      setVisibility(8);
-      return true;
-    case 38: 
-      this.mEventAttachedData = paramString;
-      return true;
-    case 14: 
-      setBackgroundColor(Utils.parseColor(paramString));
-      return true;
-    case 62: 
       if ("YES".equals(paramString))
       {
         this.mIsSoftwareRender = true;
         return true;
       }
       this.mIsSoftwareRender = false;
-      return true;
     }
-    this.mAlpha = Utils.toFloat(paramString).floatValue();
     return true;
   }
   
@@ -710,15 +773,15 @@ public abstract class ViewBase
   
   public void setClickable(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (this.mFlag |= 0x20;; this.mFlag &= 0xFFFFFFDF)
+    if (paramBoolean) {
+      this.mFlag |= 0x20;
+    } else {
+      this.mFlag &= 0xFFFFFFDF;
+    }
+    if (getNativeView() != null)
     {
-      if (getNativeView() != null)
-      {
-        getNativeView().setFocusable(false);
-        getNativeView().setClickable(paramBoolean);
-      }
-      return;
+      getNativeView().setFocusable(false);
+      getNativeView().setClickable(paramBoolean);
     }
   }
   
@@ -752,14 +815,13 @@ public abstract class ViewBase
     {
       setClickable(false);
       this.mOnClickListener = null;
-    }
-    do
-    {
       return;
-      this.mOnClickListener = paramOnClickListener;
-      setClickable(true);
-    } while (getNativeView() == null);
-    getNativeView().setOnClickListener(new ViewBase.1(this));
+    }
+    this.mOnClickListener = paramOnClickListener;
+    setClickable(true);
+    if (getNativeView() != null) {
+      getNativeView().setOnClickListener(new ViewBase.1(this));
+    }
   }
   
   public void setTag(Object paramObject)
@@ -773,10 +835,11 @@ public abstract class ViewBase
     boolean bool1 = bool2;
     if (!bool2)
     {
+      Layout.Params localParams = this.mParams;
       bool1 = bool2;
-      if (this.mParams != null)
+      if (localParams != null)
       {
-        bool2 = this.mParams.setAttribute(paramInt, paramString);
+        bool2 = localParams.setAttribute(paramInt, paramString);
         bool1 = bool2;
         if (bool2)
         {
@@ -821,7 +884,7 @@ public abstract class ViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase
  * JD-Core Version:    0.7.0.1
  */

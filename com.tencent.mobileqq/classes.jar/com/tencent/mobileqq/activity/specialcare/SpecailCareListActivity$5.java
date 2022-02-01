@@ -1,16 +1,37 @@
 package com.tencent.mobileqq.activity.specialcare;
 
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.notification.NotifyIdManager;
+
 class SpecailCareListActivity$5
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
   SpecailCareListActivity$5(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.this$0.a(2)) {
-      this.this$0.runOnUiThread(new SpecailCareListActivity.5.1(this));
+    if (paramCompoundButton == SpecailCareListActivity.b(this.a).getSwitch())
+    {
+      Object localObject = this.a;
+      SettingCloneUtil.writeValue((Context)localObject, SpecailCareListActivity.c((SpecailCareListActivity)localObject), this.a.getString(2131914365), "qqsetting_special_care_bar", paramBoolean);
+      SpecailCareListActivity.d(this.a).c(paramBoolean);
+      NotifyIdManager.a(paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onCheckedChanged: invoked. care bar  isChecked: ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        QLog.i("SpecailCareListActivity", 2, ((StringBuilder)localObject).toString());
+      }
     }
-    this.this$0.a(2, true);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

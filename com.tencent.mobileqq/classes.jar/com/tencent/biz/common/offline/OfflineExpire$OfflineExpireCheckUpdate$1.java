@@ -1,27 +1,26 @@
 package com.tencent.biz.common.offline;
 
+import com.tencent.biz.webviewplugin.OfflineWebResManager;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import mqq.app.AppRuntime;
-import nce;
-import zeq;
+import mqq.app.MobileQQ;
 
-public class OfflineExpire$OfflineExpireCheckUpdate$1
+class OfflineExpire$OfflineExpireCheckUpdate$1
   implements Runnable
 {
-  public OfflineExpire$OfflineExpireCheckUpdate$1(nce paramnce) {}
+  OfflineExpire$OfflineExpireCheckUpdate$1(OfflineExpire.OfflineExpireCheckUpdate paramOfflineExpireCheckUpdate) {}
   
   public void run()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if ((localAppRuntime instanceof AppInterface)) {
-      new zeq((AppInterface)localAppRuntime).a();
+      new OfflineWebResManager((AppInterface)localAppRuntime).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineExpire.OfflineExpireCheckUpdate.1
  * JD-Core Version:    0.7.0.1
  */

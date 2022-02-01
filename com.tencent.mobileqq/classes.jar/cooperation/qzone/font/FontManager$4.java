@@ -1,34 +1,41 @@
 package cooperation.qzone.font;
 
-import bjjs;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
-public class FontManager$4
+class FontManager$4
   implements Runnable
 {
-  public FontManager$4(bjjs parambjjs, String paramString, int paramInt) {}
+  FontManager$4(FontManager paramFontManager, String paramString, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FontManager", 4, "begin to download font file from network, url =" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(bjjs.a(this.this$0, this.jdField_a_of_type_Int)))) {
-      bjjs.a(this.this$0, this.jdField_a_of_type_Int);
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (QLog.isDevelopLevel())
     {
-      bjjs.a(this.this$0, this.jdField_a_of_type_Int);
-      return;
-      QLog.e("FontManager", 1, "Font Download Failed, font url = " + this.jdField_a_of_type_JavaLangString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("begin to download font file from network, url =");
+      localStringBuilder.append(this.val$fontUrl);
+      QLog.d("FontManager", 4, localStringBuilder.toString());
     }
+    if (HttpDownloadUtil.download(null, this.val$fontUrl, new File(FontManager.access$500(this.this$0, this.val$fontID))))
+    {
+      FontManager.access$600(this.this$0, this.val$fontID);
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Font Download Failed, font url = ");
+      localStringBuilder.append(this.val$fontUrl);
+      QLog.e("FontManager", 1, localStringBuilder.toString());
+    }
+    FontManager.access$700(this.this$0, this.val$fontID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.font.FontManager.4
  * JD-Core Version:    0.7.0.1
  */

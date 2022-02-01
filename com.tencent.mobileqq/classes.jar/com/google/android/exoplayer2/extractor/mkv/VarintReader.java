@@ -30,9 +30,13 @@ final class VarintReader
   public static int parseUnsignedVarintLength(int paramInt)
   {
     int i = 0;
-    while (i < VARINT_LENGTH_MASKS.length)
+    for (;;)
     {
-      if ((VARINT_LENGTH_MASKS[i] & paramInt) != 0L) {
+      long[] arrayOfLong = VARINT_LENGTH_MASKS;
+      if (i >= arrayOfLong.length) {
+        break;
+      }
+      if ((arrayOfLong[i] & paramInt) != 0L) {
         return i + 1;
       }
       i += 1;
@@ -53,18 +57,20 @@ final class VarintReader
         return -1L;
       }
       this.length = parseUnsignedVarintLength(this.scratch[0] & 0xFF);
-      if (this.length == -1) {
+      if (this.length != -1) {
+        this.state = 1;
+      } else {
         throw new IllegalStateException("No valid varint length mask found");
       }
-      this.state = 1;
     }
-    if (this.length > paramInt)
+    int i = this.length;
+    if (i > paramInt)
     {
       this.state = 0;
       return -2L;
     }
-    if (this.length != 1) {
-      paramExtractorInput.readFully(this.scratch, 1, this.length - 1);
+    if (i != 1) {
+      paramExtractorInput.readFully(this.scratch, 1, i - 1);
     }
     this.state = 0;
     return assembleVarint(this.scratch, this.length, paramBoolean2);
@@ -78,7 +84,7 @@ final class VarintReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mkv.VarintReader
  * JD-Core Version:    0.7.0.1
  */

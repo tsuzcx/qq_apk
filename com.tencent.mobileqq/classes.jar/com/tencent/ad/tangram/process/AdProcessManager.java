@@ -24,8 +24,9 @@ public enum AdProcessManager
   
   private AdProcessManagerAdapter getAdapter()
   {
-    if (this.adapter != null) {
-      return (AdProcessManagerAdapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if (localWeakReference != null) {
+      return (AdProcessManagerAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -38,47 +39,64 @@ public enum AdProcessManager
     try
     {
       paramContext = paramContext.getSystemService("activity");
-      if ((paramContext == null) || (!(paramContext instanceof ActivityManager)))
+      if ((paramContext != null) && ((paramContext instanceof ActivityManager)))
       {
-        AdLog.e("AdProcessManager", "getCurrentProcessNameInternal error");
-        return null;
+        paramContext = ((ActivityManager)ActivityManager.class.cast(paramContext)).getRunningAppProcesses();
+        if ((paramContext != null) && (!paramContext.isEmpty())) {
+          paramContext = paramContext.iterator();
+        }
       }
-      paramContext = ((ActivityManager)ActivityManager.class.cast(paramContext)).getRunningAppProcesses();
-      if ((paramContext == null) || (paramContext.isEmpty()))
-      {
-        AdLog.e("AdProcessManager", "getCurrentProcessNameInternal error");
-        return null;
-      }
-      paramContext = paramContext.iterator();
       while (paramContext.hasNext())
       {
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
         if (localRunningAppProcessInfo.pid == Process.myPid())
         {
-          paramContext = localRunningAppProcessInfo.processName;
-          return paramContext;
+          return localRunningAppProcessInfo.processName;
+          AdLog.e("AdProcessManager", "getCurrentProcessNameInternal error");
+          return null;
+          AdLog.e("AdProcessManager", "getCurrentProcessNameInternal error");
+          return null;
         }
       }
-      return null;
     }
     catch (Throwable paramContext)
     {
       AdLog.e("AdProcessManager", "getCurrentProcessNameInternal", paramContext);
+      return null;
     }
     return null;
   }
   
   public String getCurrentProcessName(Context paramContext)
   {
-    if (TextUtils.isEmpty(this.currentProcessName)) {}
-    try
-    {
-      if (TextUtils.isEmpty(this.currentProcessName)) {
-        this.currentProcessName = getCurrentProcessNameInternal(paramContext);
+    if (TextUtils.isEmpty(this.currentProcessName)) {
+      try
+      {
+        if (TextUtils.isEmpty(this.currentProcessName)) {
+          this.currentProcessName = getCurrentProcessNameInternal(paramContext);
+        }
       }
-      return this.currentProcessName;
+      finally {}
     }
-    finally {}
+    return this.currentProcessName;
+  }
+  
+  public String getMainProcessName()
+  {
+    AdProcessManagerAdapter localAdProcessManagerAdapter = getAdapter();
+    if (localAdProcessManagerAdapter != null) {
+      return localAdProcessManagerAdapter.getMainProcessName();
+    }
+    return null;
+  }
+  
+  public String getWebProcessName()
+  {
+    AdProcessManagerAdapter localAdProcessManagerAdapter = getAdapter();
+    if (localAdProcessManagerAdapter != null) {
+      return localAdProcessManagerAdapter.getWebProcessName();
+    }
+    return null;
   }
   
   public Boolean isOnMainProcess()
@@ -124,7 +142,7 @@ public enum AdProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.process.AdProcessManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.mobileqq.widget.CameraFrameLayout;
+import com.tencent.mobileqq.widget.QQToast;
 
-class hfl
-  implements View.OnClickListener
+public class hfl
+  implements Runnable
 {
-  hfl(hfk paramhfk) {}
+  public hfl(CameraFrameLayout paramCameraFrameLayout) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!CameraFrameLayout.a(this.a.a)) {
-      return;
-    }
-    paramView = (QQAppInterface)((BaseActivity)this.a.a.getContext()).getAppRuntime();
-    ReportController.b(paramView, "CliOper", "", "", "background", "bkground_shut", 0, 0, "1", "", "", "");
-    CameraUtil.b(paramView);
+    QQToast.a(this.a.getContext(), 0, this.a.getContext().getString(2131561697), 0).b(((BaseActivity)this.a.getContext()).d());
   }
 }
 

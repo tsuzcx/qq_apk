@@ -1,160 +1,180 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import ammm;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import arqx;
-import azuc;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.statistics.storage.StorageReport;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class ScanSpaceManager
   implements Handler.Callback
 {
-  public static final ArrayList<String> a;
-  public long a;
-  private ammm jdField_a_of_type_Ammm;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private volatile boolean jdField_a_of_type_Boolean;
-  public long b;
-  public long c;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
-  }
+  public static final ArrayList<String> d = new ArrayList(2);
+  public long a = 0L;
+  public long b = 0L;
+  public long c = 0L;
+  private volatile boolean e = false;
+  private IScanSpaceListener f;
+  private Handler g;
   
   public ScanSpaceManager()
   {
-    c();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    g();
+    this.e = false;
+    this.g = new Handler(Looper.getMainLooper(), this);
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Object localObject = this.g;
+    if (localObject != null)
     {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-      localMessage.arg1 = paramInt;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      localObject = ((Handler)localObject).obtainMessage(1);
+      ((Message)localObject).arg1 = paramInt;
+      this.g.sendMessage((Message)localObject);
     }
   }
   
-  private void c()
+  private void g()
   {
-    String str1 = arqx.a().b();
-    String str2 = arqx.a().a();
-    jdField_a_of_type_JavaUtilArrayList.clear();
+    String str1 = FMSettings.a().getDefaultRecvPath();
+    String str2 = FMSettings.a().getOtherRecvPath();
+    d.clear();
+    StringBuilder localStringBuilder;
     if (!TextUtils.isEmpty(str1))
     {
-      jdField_a_of_type_JavaUtilArrayList.add(str1);
-      QLog.d("ScanSpaceManager", 2, " need scan file path1 = " + str1);
+      d.add(str1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" need scan file path1 = ");
+      localStringBuilder.append(str1);
+      QLog.d("ScanSpaceManager", 2, localStringBuilder.toString());
     }
     if (!TextUtils.isEmpty(str2))
     {
-      jdField_a_of_type_JavaUtilArrayList.add(str2);
-      QLog.d("ScanSpaceManager", 2, " need scan file path2 = " + str2);
+      d.add(str2);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" need scan file path2 = ");
+      localStringBuilder.append(str2);
+      QLog.d("ScanSpaceManager", 2, localStringBuilder.toString());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanSpaceManager", 2, " need scan file path1 = " + str1 + " path2 = " + str2);
-    }
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    if (QLog.isColorLevel())
     {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 200L);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" need scan file path1 = ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" path2 = ");
+      localStringBuilder.append(str2);
+      QLog.d("ScanSpaceManager", 2, localStringBuilder.toString());
     }
   }
   
-  public long a()
+  private void h()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_Long - this.b - this.c;
+    Object localObject = this.g;
+    if (localObject != null)
+    {
+      localObject = ((Handler)localObject).obtainMessage(2);
+      this.g.sendMessageDelayed((Message)localObject, 200L);
     }
-    return 0L;
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
-      if (this.jdField_a_of_type_Ammm != null)
+      IScanSpaceListener localIScanSpaceListener = this.f;
+      if (localIScanSpaceListener != null)
       {
-        this.jdField_a_of_type_Ammm.b();
-        this.jdField_a_of_type_Ammm.a(0);
+        localIScanSpaceListener.b();
+        this.f.a(0);
       }
-      azuc.a().post(new ScanSpaceManager.ScanSpaceTask(this));
+      StorageReport.c().post(new ScanSpaceManager.ScanSpaceTask(this));
     }
   }
   
-  public void a(ammm paramammm)
+  public void a(IScanSpaceListener paramIScanSpaceListener)
   {
-    this.jdField_a_of_type_Ammm = paramammm;
+    this.f = paramIScanSpaceListener;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
-  public long b()
+  public long c()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
+      return this.a - this.b - this.c;
+    }
+    return 0L;
+  }
+  
+  public long d()
+  {
+    if (this.e) {
       return this.c;
     }
     return 0L;
   }
   
-  public void b()
+  public long e()
   {
-    this.jdField_a_of_type_Boolean = false;
-    azuc.a();
-    jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    this.jdField_a_of_type_Ammm = null;
-  }
-  
-  public long c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_Long;
+    if (this.e) {
+      return this.a;
     }
     return 0L;
   }
   
+  public void f()
+  {
+    this.e = false;
+    StorageReport.d();
+    d.clear();
+    Handler localHandler = this.g;
+    if (localHandler != null)
+    {
+      localHandler.removeCallbacksAndMessages(null);
+      this.g = null;
+    }
+    this.f = null;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (this.jdField_a_of_type_Ammm != null)
+      if (i == 2)
       {
-        this.jdField_a_of_type_Ammm.a(paramMessage.arg1);
-        continue;
-        if (this.jdField_a_of_type_Ammm != null) {
-          this.jdField_a_of_type_Ammm.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
+        paramMessage = this.f;
+        if (paramMessage != null)
+        {
+          long l1 = this.b;
+          long l2 = this.a;
+          long l3 = this.c;
+          paramMessage.a(l1, l2 - l1 - l3, l3, l2);
         }
       }
     }
+    else
+    {
+      IScanSpaceListener localIScanSpaceListener = this.f;
+      if (localIScanSpaceListener != null) {
+        localIScanSpaceListener.a(paramMessage.arg1);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager
  * JD-Core Version:    0.7.0.1
  */

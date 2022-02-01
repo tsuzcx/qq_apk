@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
-import android.support.annotation.NonNull;
-
 public class ExcitingTransferDownloadConfig
 {
   public long mSliceSize = 524288L;
@@ -11,15 +9,27 @@ public class ExcitingTransferDownloadConfig
   public int uSliceNum = 10;
   public int uSpeedDuration = 2000;
   
-  @NonNull
   public String toString()
   {
-    return "mSliceSize:" + this.mSliceSize + " uMaxParrallelSlice:" + this.uMaxParrallelSlice + " uMaxWaitingSlice:" + this.uMaxWaitingSlice + " uNotifyIntervals:" + this.uNotifyIntervals + " uSpeedDuration:" + this.uSpeedDuration + " uSliceNum:" + this.uSliceNum;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mSliceSize:");
+    localStringBuilder.append(this.mSliceSize);
+    localStringBuilder.append(" uMaxParrallelSlice:");
+    localStringBuilder.append(this.uMaxParrallelSlice);
+    localStringBuilder.append(" uMaxWaitingSlice:");
+    localStringBuilder.append(this.uMaxWaitingSlice);
+    localStringBuilder.append(" uNotifyIntervals:");
+    localStringBuilder.append(this.uNotifyIntervals);
+    localStringBuilder.append(" uSpeedDuration:");
+    localStringBuilder.append(this.uSpeedDuration);
+    localStringBuilder.append(" uSliceNum:");
+    localStringBuilder.append(this.uSliceNum);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

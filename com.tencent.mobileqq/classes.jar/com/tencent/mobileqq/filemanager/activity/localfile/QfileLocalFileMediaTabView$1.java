@@ -1,10 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import arrj;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 class QfileLocalFileMediaTabView$1
@@ -15,46 +18,59 @@ class QfileLocalFileMediaTabView$1
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Map localMap;
-    Iterator localIterator;
-    String str;
-    if ((this.this$0.f) && ((QfileLocalFileMediaTabView.a(this.this$0) & 0x1) > 0))
+    QfileLocalFileMediaTabView.a(this.this$0, localArrayList);
+    QfileLocalFileMediaTabView.b(this.this$0, localArrayList);
+    this.this$0.v.addAll(localArrayList);
+    HashMap localHashMap1 = QfileLocalFileMediaTabView.a(this.this$0);
+    HashMap localHashMap2 = QfileLocalFileMediaTabView.b(this.this$0);
+    Object localObject = localHashMap1.keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.addAll((Collection)localHashMap1.get((String)((Iterator)localObject).next()));
+    }
+    localObject = localHashMap2.keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.addAll((Collection)localHashMap2.get((String)((Iterator)localObject).next()));
+    }
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    Iterator localIterator = localArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      localMap = arrj.c(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
-      if (localMap != null)
+      FileInfo localFileInfo = (FileInfo)localIterator.next();
+      if (localFileInfo == null)
       {
-        localIterator = localMap.keySet().iterator();
-        while (localIterator.hasNext())
+        localIterator.remove();
+      }
+      else
+      {
+        String str = localFileInfo.a();
+        if ((str != null) && (str.length() != 0))
         {
-          str = (String)localIterator.next();
-          if ("QQfile_recv".equalsIgnoreCase(str) != true) {
-            localArrayList.addAll((List)localMap.get(str));
+          if (("camera".equalsIgnoreCase(str) != true) && ("Video".equalsIgnoreCase(str) != true))
+          {
+            localObject = str;
+            if ("QQ".equalsIgnoreCase(str)) {
+              localObject = HardCodeUtil.a(2131896092);
+            }
+          }
+          else
+          {
+            localObject = "Camera";
+          }
+          if (!localLinkedHashMap.containsKey(localObject)) {
+            localLinkedHashMap.put(localObject, new ArrayList());
+          }
+          if (!((List)localLinkedHashMap.get(localObject)).contains(localFileInfo)) {
+            ((List)localLinkedHashMap.get(localObject)).add(localFileInfo);
           }
         }
       }
     }
-    if ((this.this$0.f) && ((QfileLocalFileMediaTabView.a(this.this$0) & 0x2) > 0))
-    {
-      localMap = arrj.b(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity);
-      if (localMap != null)
-      {
-        localIterator = localMap.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          str = (String)localIterator.next();
-          if ("QQfile_recv".equalsIgnoreCase(str) != true) {
-            localArrayList.addAll((List)localMap.get(str));
-          }
-        }
-      }
-    }
-    this.this$0.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-    QfileLocalFileMediaTabView.a(this.this$0);
+    QfileLocalFileMediaTabView.a(this.this$0, new QfileLocalFileMediaTabView.1.1(this, localArrayList, localHashMap2, localHashMap1, localLinkedHashMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView.1
  * JD-Core Version:    0.7.0.1
  */

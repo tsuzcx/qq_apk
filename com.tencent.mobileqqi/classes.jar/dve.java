@@ -1,36 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.VisitorsActivity;
 import com.tencent.mobileqq.widget.GridListView;
 
 public class dve
-  extends Handler
+  implements View.OnClickListener
 {
   public dve(VisitorsActivity paramVisitorsActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    boolean bool = true;
+    paramView = VisitorsActivity.a(this.a);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.b();
+    if (i == 0)
     {
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        return;
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
-        return;
-        VisitorsActivity.a(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.B();
-        this.a.a(1, this.a.getString(2131562097));
-      } while (!dvk.a(this.a.jdField_a_of_type_Dvk));
-      dvk.a(this.a.jdField_a_of_type_Dvk, false);
-      this.a.jdField_a_of_type_Dvk.notifyDataSetChanged();
-      return;
+      paramView.setText(2131562286);
+      this.a.b = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setMode(1);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.invalidate();
+      paramView = this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      if (i != 0) {
+        break label128;
+      }
     }
-    this.a.jdField_a_of_type_Dvk.notifyDataSetChanged();
-    this.a.d = SystemClock.uptimeMillis();
+    for (;;)
+    {
+      paramView.putBoolean("visitor_grid", bool);
+      paramView.commit();
+      return;
+      if (i != 1) {
+        break;
+      }
+      paramView.setText(2131562177);
+      this.a.b = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView.setMode(0);
+      break;
+      label128:
+      bool = false;
+    }
   }
 }
 

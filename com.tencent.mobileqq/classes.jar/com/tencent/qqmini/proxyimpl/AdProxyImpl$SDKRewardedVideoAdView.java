@@ -1,154 +1,286 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bgun;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import android.text.TextUtils;
+import com.tencent.gdtad.IGdtAPI;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtPreLoader;
+import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoModel;
+import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoPageData;
+import com.tencent.gdtad.basics.motivevideo.data.StartGdtMotiveVideoParams;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
+import com.tencent.mobileqq.mini.util.AdUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
-import com.tencent.qqmini.sdk.core.proxy.AdProxy.IRewardVideoAdListener;
-import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsRewardVideoAdView;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IRewardVideoAdListener;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.ICommonManager;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 class AdProxyImpl$SDKRewardedVideoAdView
   extends AdProxy.AbsRewardVideoAdView
 {
-  public static final String PROFITABLE_FLAG = "profitable_flag";
-  public static final String TIME_DURATION = "duration_time";
-  public static final String TIME_ELAPSED = "elapsed_time";
-  int SHARE_RATE = 53;
-  WeakReference<Activity> mActivity;
-  int mAdType;
-  String mAppid;
-  int mDeviceOrientation;
-  String mEntryPath;
-  String mGdtCookie;
-  GdtMotiveVideoPageData mGdtMotiveVideoPageData;
-  String mPosid;
-  String mRefer;
-  String mReportData;
-  AdProxy.IRewardVideoAdListener mRewardedListener;
-  String mUin;
-  String mVia;
+  WeakReference<Context> a;
+  AdProxy.IRewardVideoAdListener b;
+  GdtMotiveVideoPageData c;
+  GdtMotiveVideoPageData d;
+  String e;
+  int f = 53;
+  String g;
+  String h;
+  String i;
+  int j;
+  int k;
+  String l;
+  String m;
+  String n;
+  String o;
+  String p;
+  IMiniAppContext q;
   
-  public AdProxyImpl$SDKRewardedVideoAdView(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.IRewardVideoAdListener paramIRewardVideoAdListener)
+  public AdProxyImpl$SDKRewardedVideoAdView(AdProxyImpl paramAdProxyImpl, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.IRewardVideoAdListener paramIRewardVideoAdListener, IMiniAppContext paramIMiniAppContext)
   {
     super(paramAdProxyImpl);
-    this.mActivity = new WeakReference(paramActivity);
-    this.mRewardedListener = paramIRewardVideoAdListener;
-    this.mAppid = paramString1;
-    this.mPosid = paramString2;
-    this.mUin = paramString3;
-    this.mAdType = paramInt1;
-    this.mDeviceOrientation = paramInt2;
-    this.mGdtCookie = paramString4;
-    this.mEntryPath = paramString5;
-    this.mReportData = paramString6;
-    this.mRefer = paramString7;
-    this.mVia = paramString8;
+    this.a = new WeakReference(paramContext);
+    this.b = paramIRewardVideoAdListener;
+    this.g = paramString1;
+    this.h = paramString2;
+    this.i = paramString3;
+    this.j = paramInt1;
+    this.k = paramInt2;
+    this.l = paramString4;
+    this.m = paramString5;
+    this.n = paramString6;
+    this.o = paramString7;
+    this.p = paramString8;
+    this.q = paramIMiniAppContext;
   }
   
-  public void loadAD()
+  private GdtMotiveVideoPageData a(String paramString)
   {
-    if (this.mActivity != null) {}
-    for (Activity localActivity = (Activity)this.mActivity.get(); localActivity == null; localActivity = null)
-    {
-      if (this.mRewardedListener != null) {
-        this.mRewardedListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
-      }
-      return;
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject2 = null;
+    if (!bool) {
+      localObject1 = AdProxyImpl.b(this.r, paramString);
+    } else {
+      localObject1 = null;
     }
-    this.this$0.requestAdInfo(localActivity, this.mUin, this.mPosid, this.mAppid, this.SHARE_RATE, this.mAdType, this.mDeviceOrientation, this.mGdtCookie, this.mEntryPath, this.mReportData, this.mRefer, this.mVia, new AdProxyImpl.SDKRewardedVideoAdView.1(this));
+    if (localObject1 == null) {
+      return null;
+    }
+    GdtAd localGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
+    Object localObject1 = localObject2;
+    if (localGdtAd.isValid())
+    {
+      GdtPreLoader.a().a(localGdtAd);
+      int i1;
+      if (this.k == 90) {
+        i1 = 0;
+      } else {
+        i1 = 1;
+      }
+      paramString = RewardedVideoAdPlugin.a(localGdtAd, paramString, i1);
+      localObject1 = paramString;
+      if (paramString != null)
+      {
+        i1 = AdUtils.getRewardVideoShowTimeFromExp(localGdtAd);
+        localObject1 = paramString;
+        if (i1 > 0)
+        {
+          paramString.setVideoCountDown(i1);
+          localObject1 = paramString;
+        }
+      }
+    }
+    return localObject1;
   }
   
-  public void onReceiveVideoClose(int paramInt, Bundle paramBundle)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdProxyImpl", 2, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceiveResult() called with: resultCode = [");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], resultData = [");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("AdProxyImpl", 2, ((StringBuilder)localObject).toString());
     }
     long l2 = paramBundle.getLong("duration_time");
     long l3 = paramBundle.getLong("elapsed_time");
     boolean bool = paramBundle.getBoolean("profitable_flag", false);
     long l1;
-    if (l2 > l3)
-    {
+    if (l2 > l3) {
       l1 = l3;
-      int j = (int)(l1 / 1000L);
-      int i = j;
-      if (j > 15) {
-        i = 15;
-      }
-      Object localObject = null;
-      paramBundle = localObject;
-      if (AppRuntimeLoaderManager.g() != null)
-      {
-        paramBundle = localObject;
-        if (AppRuntimeLoaderManager.g().getCurrentRunTimeLoader() != null) {
-          paramBundle = AppRuntimeLoaderManager.g().getCurrentRunTimeLoader().getMiniAppInfo();
-        }
-      }
-      if (paramBundle == null) {
-        break label293;
-      }
-      paramBundle.gameAdsTotalTime += i;
-      QLog.d("AdProxyImpl", 1, "RewardedAd now gameAdsTotalTime = " + paramBundle.gameAdsTotalTime + ", reportTime = " + i);
-    }
-    for (;;)
-    {
-      if (this.mRewardedListener != null)
-      {
-        if ((bool) && (paramInt == -1)) {
-          this.mRewardedListener.onReward();
-        }
-        this.mRewardedListener.onADClose();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AdProxyImpl", 1, "RewardedAd ActivityResultListener receive durationTime= " + l2 + " elaspedTime=" + l3 + " profitable=" + bool + ", resultCode = " + paramInt);
-      }
-      return;
+    } else {
       l1 = l2;
-      break;
-      label293:
+    }
+    int i2 = (int)(l1 / 1000L);
+    int i1 = i2;
+    if (i2 > 15) {
+      i1 = 15;
+    }
+    paramBundle = null;
+    Object localObject = AppLoaderFactory.g().getCommonManager().getCurrentRuntime();
+    if (localObject != null) {
+      paramBundle = ((BaseRuntime)localObject).getMiniAppInfo();
+    }
+    if (paramBundle != null)
+    {
+      paramBundle.gameAdsTotalTime += i1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("RewardedAd now gameAdsTotalTime = ");
+      ((StringBuilder)localObject).append(paramBundle.gameAdsTotalTime);
+      ((StringBuilder)localObject).append(", reportTime = ");
+      ((StringBuilder)localObject).append(i1);
+      QLog.d("AdProxyImpl", 1, ((StringBuilder)localObject).toString());
+    }
+    else
+    {
       QLog.d("AdProxyImpl", 1, "RewardedAd miniAppInfo is null");
+    }
+    paramBundle = this.b;
+    if (paramBundle != null)
+    {
+      if ((bool) && (paramInt == -1)) {
+        paramBundle.onReward();
+      }
+      this.b.onADClose(this.e);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("RewardedAd ActivityResultListener receive durationTime= ");
+      paramBundle.append(l2);
+      paramBundle.append(" elaspedTime=");
+      paramBundle.append(l3);
+      paramBundle.append(" profitable=");
+      paramBundle.append(bool);
+      paramBundle.append(", resultCode = ");
+      paramBundle.append(paramInt);
+      QLog.d("AdProxyImpl", 1, paramBundle.toString());
     }
   }
   
-  public void showAD()
+  public void loadAD(Context paramContext)
   {
-    Activity localActivity;
-    if (this.mActivity != null)
+    if (paramContext == null)
     {
-      localActivity = (Activity)this.mActivity.get();
-      if ((localActivity != null) && (this.mGdtMotiveVideoPageData != null)) {
-        break label65;
+      paramContext = this.b;
+      if (paramContext != null) {
+        paramContext.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
-      QLog.d("AdProxyImpl", 1, "data is not GdtMotiveVideoPageData");
-      if (this.mRewardedListener != null) {
-        this.mRewardedListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+      return;
+    }
+    QLog.i("AdProxyImpl", 1, "reward load");
+    this.r.requestAdInfo(paramContext, this.i, this.h, this.g, this.f, this.j, this.k, this.l, this.m, this.n, this.o, this.p, 2, new AdProxyImpl.SDKRewardedVideoAdView.1(this));
+  }
+  
+  public void showAD(Context paramContext, String paramString)
+  {
+    GdtMotiveVideoPageData localGdtMotiveVideoPageData = null;
+    if ((paramContext != null) && ((paramContext instanceof Activity))) {
+      paramContext = (Activity)paramContext;
+    } else {
+      paramContext = null;
+    }
+    if (paramContext != null)
+    {
+      Object localObject = this.c;
+      if (localObject != null)
+      {
+        this.e = paramString;
+        ((GdtMotiveVideoPageData)localObject).refId = "biz_src_miniapp";
+        boolean bool = new GdtMotiveVideoModel((GdtMotiveVideoPageData)localObject).d().isProcessInTool();
+        if (bool) {
+          this.c.containerType = 0;
+        } else {
+          this.c.containerType = 1;
+        }
+        paramString = this.d;
+        if (paramString != null)
+        {
+          paramString.refId = "biz_src_miniapp";
+          if (bool) {
+            paramString.containerType = 0;
+          } else {
+            paramString.containerType = 1;
+          }
+          paramString = this.d;
+          localObject = this.q;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.d.adId);
+          localStringBuilder.append("");
+          paramString.antiSpamParams = MiniAdAntiSpamReportUtil.c((IMiniAppContext)localObject, localStringBuilder.toString(), this.h);
+        }
+        if ((this.c.vSize != 185) && (this.c.vSize != 585))
+        {
+          paramString = new AdProxyImpl.CallbackData(this, null);
+          localObject = AdProxyImpl.CallbackData.b(paramString);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("mvBrowing dataKey = ");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(", data =");
+          localStringBuilder.append(AdProxyImpl.CallbackData.a(paramString));
+          QLog.i("AdProxyImpl", 1, localStringBuilder.toString());
+          if (AdProxyImpl.a() == null) {
+            AdProxyImpl.a(new HashMap());
+          }
+          this.c.motiveBrowsingKey = ((String)localObject);
+          AdProxyImpl.a().put(localObject, paramString);
+          paramString = localGdtMotiveVideoPageData;
+        }
+        else
+        {
+          paramString = new AdProxyImpl.AdResultReceiver(new Handler(Looper.getMainLooper()), this);
+        }
+        localGdtMotiveVideoPageData = this.c;
+        localObject = this.q;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.c.adId);
+        localStringBuilder.append("");
+        localGdtMotiveVideoPageData.antiSpamParams = MiniAdAntiSpamReportUtil.c((IMiniAppContext)localObject, localStringBuilder.toString(), this.h);
+        paramContext = StartGdtMotiveVideoParams.a(paramContext, this.c, paramString);
+        paramContext.e = bool;
+        paramContext.c = this.d;
+        if (bool)
+        {
+          paramContext.g = 4760;
+          AdProxyImpl.a(this.r, this);
+        }
+        paramString = new StringBuilder();
+        paramString.append("[showAD] isProcessInTool=");
+        paramString.append(bool);
+        QLog.e("AdProxyImpl", 1, paramString.toString());
+        ((IGdtAPI)QRoute.api(IGdtAPI.class)).startGdtMotiveVideo(paramContext);
+        paramContext = this.b;
+        if (paramContext != null) {
+          paramContext.onADShow();
+        }
+        return;
       }
     }
-    label65:
-    do
-    {
-      return;
-      localActivity = null;
-      break;
-      this.mGdtMotiveVideoPageData.refId = "biz_src_miniapp";
-      this.mGdtMotiveVideoPageData.containerType = 1;
-      this.mGdtMotiveVideoPageData.resultReceiver = new AdProxyImpl.AdResultReceiver(new Handler(Looper.getMainLooper()), this);
-      GdtMotiveVideoFragment.a(localActivity, GdtMotiveVideoFragment.class, this.mGdtMotiveVideoPageData);
-    } while (this.mRewardedListener == null);
-    this.mRewardedListener.onADShow();
+    QLog.d("AdProxyImpl", 1, "data is not GdtMotiveVideoPageData");
+    paramContext = this.b;
+    if (paramContext != null) {
+      paramContext.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKRewardedVideoAdView
  * JD-Core Version:    0.7.0.1
  */

@@ -31,14 +31,15 @@ public final class check_video_illegal_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.video_urls != null) {
-      paramJceOutputStream.write(this.video_urls, 0);
+    ArrayList localArrayList = this.video_urls;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.check_video_illegal_req
  * JD-Core Version:    0.7.0.1
  */

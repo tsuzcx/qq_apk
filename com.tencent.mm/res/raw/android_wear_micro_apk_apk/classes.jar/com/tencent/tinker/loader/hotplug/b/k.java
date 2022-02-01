@@ -20,15 +20,15 @@ import java.lang.reflect.Field;
 public final class k
   extends Instrumentation
 {
-  private final Instrumentation alP;
-  private final Object alQ;
-  private final Field alR;
+  private final Instrumentation app;
+  private final Object apq;
+  private final Field apr;
   
   private k(Instrumentation paramInstrumentation, Object paramObject, Field paramField)
   {
-    this.alP = paramInstrumentation;
-    this.alQ = paramObject;
-    this.alR = paramField;
+    this.app = paramInstrumentation;
+    this.apq = paramObject;
+    this.apr = paramField;
     try
     {
       a(paramInstrumentation);
@@ -40,12 +40,12 @@ public final class k
     }
   }
   
-  public static k L(Context paramContext)
+  public static k M(Context paramContext)
   {
     try
     {
       paramContext = h.b(paramContext, null);
-      Field localField = h.a(paramContext, "mInstrumentation");
+      Field localField = h.d(paramContext, "mInstrumentation");
       Instrumentation localInstrumentation = (Instrumentation)localField.get(paramContext);
       if ((localInstrumentation instanceof k)) {
         return (k)localInstrumentation;
@@ -65,7 +65,7 @@ public final class k
     paramActivity.setTheme(paramActivityInfo.theme);
     try
     {
-      h.a(paramActivity, "mActivityInfo").set(paramActivity, paramActivityInfo);
+      h.d(paramActivity, "mActivityInfo").set(paramActivity, paramActivityInfo);
       return;
     }
     catch (Throwable paramActivity)
@@ -100,9 +100,9 @@ public final class k
       return false;
     }
     String str = paramClassLoader.getClassName();
-    if (c.ab(str) == null)
+    if (c.af(str) == null)
     {
-      Log.e("Tinker.Instrumentation", "Failed to query target activity's info, perhaps the target is not hotpluged component. Target: " + str);
+      Log.e("Tinker.Instrumentation", "Failed to query target activity's info, perhaps the target is not hotpluged component. Target: ".concat(String.valueOf(str)));
       return false;
     }
     paramIntent.setComponent(paramClassLoader);
@@ -114,7 +114,7 @@ public final class k
   {
     if (paramActivity != null)
     {
-      ActivityInfo localActivityInfo = c.ab(paramActivity.getClass().getName());
+      ActivityInfo localActivityInfo = c.af(paramActivity.getClass().getName());
       if (localActivityInfo != null) {
         a(paramActivity, localActivityInfo);
       }
@@ -126,7 +126,7 @@ public final class k
   {
     if (paramActivity != null)
     {
-      ActivityInfo localActivityInfo = c.ab(paramActivity.getClass().getName());
+      ActivityInfo localActivityInfo = c.af(paramActivity.getClass().getName());
       if (localActivityInfo != null) {
         a(paramActivity, localActivityInfo);
       }
@@ -156,19 +156,19 @@ public final class k
     return super.newActivity(paramClassLoader, paramString, paramIntent);
   }
   
-  public final void og()
+  public final void oT()
   {
-    this.alR.set(this.alQ, this.alP);
+    this.apr.set(this.apq, this.app);
   }
   
-  public final void ok()
+  public final void oX()
   {
-    if ((this.alR.get(this.alQ) instanceof k))
+    if ((this.apr.get(this.apq) instanceof k))
     {
       Log.w("Tinker.Instrumentation", "already installed, skip rest logic.");
       return;
     }
-    this.alR.set(this.alQ, this);
+    this.apr.set(this.apq, this);
   }
 }
 

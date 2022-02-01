@@ -1,40 +1,43 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aepn;
 import android.text.TextUtils;
-import awgf;
 import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class AppGuideTipsManager$1
+class AppGuideTipsManager$1
   implements Runnable
 {
-  public AppGuideTipsManager$1(aepn paramaepn) {}
+  AppGuideTipsManager$1(AppGuideTipsManager paramAppGuideTipsManager) {}
   
   public void run()
   {
-    aepn.a(this.this$0);
+    AppGuideTipsManager.a(this.this$0);
     this.this$0.c();
-    aepn.a(this.this$0).clear();
-    ArrayList localArrayList = (ArrayList)aepn.a(this.this$0).a(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
-    if ((localArrayList == null) || (localArrayList.size() <= 0)) {}
+    AppGuideTipsManager.b(this.this$0).clear();
+    Object localObject1 = (ArrayList)AppGuideTipsManager.c(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
+    int i;
+    if (localObject1 != null)
+    {
+      if (((ArrayList)localObject1).size() <= 0) {
+        return;
+      }
+      i = 0;
+    }
     for (;;)
     {
-      return;
-      int i = 0;
-      label71:
-      AppGuideTipsConfig localAppGuideTipsConfig;
+      Object localObject2;
       String[] arrayOfString;
       int j;
-      if (i < localArrayList.size())
+      if (i < ((ArrayList)localObject1).size())
       {
-        localAppGuideTipsConfig = (AppGuideTipsConfig)localArrayList.get(i);
-        if ((localAppGuideTipsConfig != null) && (!TextUtils.isEmpty(localAppGuideTipsConfig.tipsType))) {
-          if (!TextUtils.isEmpty(localAppGuideTipsConfig.msgTypeStr))
+        localObject2 = (AppGuideTipsConfig)((ArrayList)localObject1).get(i);
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((AppGuideTipsConfig)localObject2).tipsType))) {
+          if (!TextUtils.isEmpty(((AppGuideTipsConfig)localObject2).msgTypeStr))
           {
-            arrayOfString = localAppGuideTipsConfig.msgTypeStr.split("\\|");
+            arrayOfString = ((AppGuideTipsConfig)localObject2).msgTypeStr.split("\\|");
             if (arrayOfString != null)
             {
               j = 0;
@@ -47,19 +50,23 @@ public class AppGuideTipsManager$1
       try
       {
         int k = Integer.valueOf(arrayOfString[j]).intValue();
-        localAppGuideTipsConfig.msgTypeMap.put(Integer.valueOf(k), Boolean.valueOf(true));
+        ((AppGuideTipsConfig)localObject2).msgTypeMap.put(Integer.valueOf(k), Boolean.valueOf(true));
         label174:
         j += 1;
         break label137;
-        aepn.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
+        AppGuideTipsManager.b(this.this$0).put(((AppGuideTipsConfig)localObject2).tipsType, localObject2);
         i += 1;
-        break label71;
-        aepn.a(this.this$0, true);
+        continue;
+        AppGuideTipsManager.a(this.this$0, true);
         this.this$0.b();
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = AppGuideTipsManager.a;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("loadConfig, mTipsMap size=");
+          ((StringBuilder)localObject2).append(AppGuideTipsManager.b(this.this$0).size());
+          QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
         }
-        QLog.d(aepn.a, 2, "loadConfig, mTipsMap size=" + aepn.a(this.this$0).size());
         return;
       }
       catch (Exception localException)
@@ -71,7 +78,7 @@ public class AppGuideTipsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

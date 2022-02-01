@@ -327,11 +327,12 @@ public abstract interface IX5WebViewExtension
   
   public abstract void waitSWInstalled(String paramString, Message paramMessage);
   
+  @Deprecated
   public abstract Drawable wrapDrawableWithNativeBitmap(Drawable paramDrawable, int paramInt, Bitmap.Config paramConfig);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension
  * JD-Core Version:    0.7.0.1
  */

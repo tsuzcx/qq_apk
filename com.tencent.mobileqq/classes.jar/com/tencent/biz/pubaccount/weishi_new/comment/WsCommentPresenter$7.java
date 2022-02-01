@@ -1,34 +1,29 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import android.widget.TextView;
-import tdn;
-import yhj;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaReply;
 
-public class WsCommentPresenter$7
+class WsCommentPresenter$7
   implements Runnable
 {
-  public WsCommentPresenter$7(tdn paramtdn) {}
+  WsCommentPresenter$7(WsCommentPresenter paramWsCommentPresenter, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (tdn.b(this.this$0) != null)
-    {
-      if (tdn.b(this.this$0) > 0L)
-      {
-        tdn.b(this.this$0).setText(yhj.a(tdn.b(this.this$0)));
-        tdn.b(this.this$0).setVisibility(0);
-      }
+    boolean bool;
+    if (this.a == 8) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    else {
-      return;
-    }
-    tdn.b(this.this$0).setText("");
-    tdn.b(this.this$0).setVisibility(8);
+    stSimpleMetaComment localstSimpleMetaComment = WSCommentRestoreManager.a().a(this.this$0.g());
+    stSimpleMetaReply localstSimpleMetaReply = WSCommentRestoreManager.a().b(this.this$0.g());
+    WsCommentPresenter.a(this.this$0, localstSimpleMetaComment, localstSimpleMetaReply, this.b, true, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentPresenter.7
  * JD-Core Version:    0.7.0.1
  */

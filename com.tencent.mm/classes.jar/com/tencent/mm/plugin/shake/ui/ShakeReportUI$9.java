@@ -1,28 +1,40 @@
 package com.tencent.mm.plugin.shake.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShakeReportUI$9
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
   ShakeReportUI$9(ShakeReportUI paramShakeReportUI) {}
   
-  public final void onClick(View paramView)
+  public final void onAnimationCancel(Animator paramAnimator)
   {
-    AppMethodBeat.i(24786);
-    paramView = new Intent(this.qRs, ShakeMsgListUI.class);
-    paramView.putExtra("shake_msg_from", 1);
-    paramView.putExtra("shake_msg_list_title", this.qRs.getString(2131303655));
-    this.qRs.startActivity(paramView);
-    AppMethodBeat.o(24786);
+    AppMethodBeat.i(273568);
+    ShakeReportUI.a(this.PEm, Boolean.FALSE);
+    AppMethodBeat.o(273568);
+  }
+  
+  public final void onAnimationEnd(Animator paramAnimator)
+  {
+    AppMethodBeat.i(273566);
+    ShakeReportUI.a(this.PEm, Boolean.FALSE);
+    AppMethodBeat.o(273566);
+  }
+  
+  public final void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public final void onAnimationStart(Animator paramAnimator)
+  {
+    AppMethodBeat.i(273564);
+    ShakeReportUI.a(this.PEm, Boolean.TRUE);
+    AppMethodBeat.o(273564);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeReportUI.9
  * JD-Core Version:    0.7.0.1
  */

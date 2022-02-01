@@ -2,23 +2,13 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsUserUI$10
   implements DialogInterface.OnClickListener
 {
-  SnsUserUI$10(SnsUserUI paramSnsUserUI)
-  {
-    AppMethodBeat.i(39793);
-    AppMethodBeat.o(39793);
-  }
+  SnsUserUI$10(SnsUserUI paramSnsUserUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    AppMethodBeat.i(145672);
-    paramDialogInterface.dismiss();
-    AppMethodBeat.o(145672);
-  }
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

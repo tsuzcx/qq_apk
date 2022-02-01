@@ -10,13 +10,13 @@ class NewMessageYellowBar$2
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.getDefault(), "%d个小视频更新", new Object[] { Integer.valueOf(this.a) }));
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.this$0.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    this.this$0.a.setText(String.format(Locale.getDefault(), "%d个小视频更新", new Object[] { Integer.valueOf(this.a) }));
+    this.this$0.a.startAnimation(this.this$0.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar.2
  * JD-Core Version:    0.7.0.1
  */

@@ -39,33 +39,32 @@ public abstract class BaseRenderer
   
   public final void disable()
   {
+    int i = this.state;
     boolean bool = true;
-    if (this.state == 1) {}
-    for (;;)
-    {
-      Assertions.checkState(bool);
-      this.state = 0;
-      this.stream = null;
-      this.streamIsFinal = false;
-      onDisabled();
-      return;
+    if (i != 1) {
       bool = false;
     }
+    Assertions.checkState(bool);
+    this.state = 0;
+    this.stream = null;
+    this.streamIsFinal = false;
+    onDisabled();
   }
   
   public final void enable(RendererConfiguration paramRendererConfiguration, Format[] paramArrayOfFormat, SampleStream paramSampleStream, long paramLong1, boolean paramBoolean, long paramLong2)
   {
-    if (this.state == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.configuration = paramRendererConfiguration;
-      this.state = 1;
-      onEnabled(paramBoolean);
-      replaceStream(paramArrayOfFormat, paramSampleStream, paramLong2);
-      onPositionReset(paramLong1, paramBoolean);
-      return;
+    boolean bool;
+    if (this.state == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    this.configuration = paramRendererConfiguration;
+    this.state = 1;
+    onEnabled(paramBoolean);
+    replaceStream(paramArrayOfFormat, paramSampleStream, paramLong2);
+    onPositionReset(paramLong1, paramBoolean);
   }
   
   public final RendererCapabilities getCapabilities()
@@ -154,32 +153,25 @@ public abstract class BaseRenderer
         return -3;
       }
       paramDecoderInputBuffer.timeUs += this.streamOffsetUs;
-    }
-    for (;;)
-    {
       return i;
-      if (i == -5)
-      {
-        paramDecoderInputBuffer = paramFormatHolder.format;
-        if (paramDecoderInputBuffer.subsampleOffsetUs != 9223372036854775807L) {
-          paramFormatHolder.format = paramDecoderInputBuffer.copyWithSubsampleOffsetUs(paramDecoderInputBuffer.subsampleOffsetUs + this.streamOffsetUs);
-        }
+    }
+    if (i == -5)
+    {
+      paramDecoderInputBuffer = paramFormatHolder.format;
+      if (paramDecoderInputBuffer.subsampleOffsetUs != 9223372036854775807L) {
+        paramFormatHolder.format = paramDecoderInputBuffer.copyWithSubsampleOffsetUs(paramDecoderInputBuffer.subsampleOffsetUs + this.streamOffsetUs);
       }
     }
+    return i;
   }
   
   public final void replaceStream(Format[] paramArrayOfFormat, SampleStream paramSampleStream, long paramLong)
   {
-    if (!this.streamIsFinal) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.stream = paramSampleStream;
-      this.readEndOfStream = false;
-      this.streamOffsetUs = paramLong;
-      onStreamChanged(paramArrayOfFormat, paramLong);
-      return;
-    }
+    Assertions.checkState(this.streamIsFinal ^ true);
+    this.stream = paramSampleStream;
+    this.readEndOfStream = false;
+    this.streamOffsetUs = paramLong;
+    onStreamChanged(paramArrayOfFormat, paramLong);
   }
   
   public final void resetPosition(long paramLong)
@@ -206,28 +198,27 @@ public abstract class BaseRenderer
   
   public final void start()
   {
+    int i = this.state;
     boolean bool = true;
-    if (this.state == 1) {}
-    for (;;)
-    {
-      Assertions.checkState(bool);
-      this.state = 2;
-      onStarted();
-      return;
+    if (i != 1) {
       bool = false;
     }
+    Assertions.checkState(bool);
+    this.state = 2;
+    onStarted();
   }
   
   public final void stop()
   {
-    if (this.state == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.state = 1;
-      onStopped();
-      return;
+    boolean bool;
+    if (this.state == 2) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    this.state = 1;
+    onStopped();
   }
   
   public int supportsMixedMimeTypeAdaptation()
@@ -237,7 +228,7 @@ public abstract class BaseRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.BaseRenderer
  * JD-Core Version:    0.7.0.1
  */

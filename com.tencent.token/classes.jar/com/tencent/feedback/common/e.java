@@ -5,13 +5,13 @@ import java.util.Locale;
 
 public final class e
 {
-  private static e.a a = null;
+  private static a a;
   
-  private static e.a a()
+  private static a a()
   {
     try
     {
-      e.a locala = a;
+      a locala = a;
       return locala;
     }
     finally
@@ -21,7 +21,7 @@ public final class e
     }
   }
   
-  public static void a(e.a parama)
+  public static void a(a parama)
   {
     try
     {
@@ -37,45 +37,47 @@ public final class e
   
   private static boolean a(int paramInt, String paramString, Object... paramVarArgs)
   {
-    e.a locala = a();
+    a locala = a();
     if (locala == null) {
       return false;
     }
     String str;
-    if (paramString == null) {
+    if (paramString == null)
+    {
       str = "null";
     }
-    for (;;)
+    else
     {
-      switch (paramInt)
-      {
-      default: 
-        return false;
-      case 0: 
-        locala.a(str);
-        return true;
-        str = paramString;
-        if (paramVarArgs != null)
-        {
+      str = paramString;
+      if (paramVarArgs != null) {
+        if (paramVarArgs.length == 0) {
           str = paramString;
-          if (paramVarArgs.length != 0) {
-            str = String.format(Locale.US, paramString, paramVarArgs);
-          }
+        } else {
+          str = String.format(Locale.US, paramString, paramVarArgs);
         }
-        break;
       }
     }
-    locala.b(str);
-    return true;
-    locala.c(str);
-    return true;
-    locala.d(str);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 3: 
+      locala.d(str);
+      return true;
+    case 2: 
+      locala.c(str);
+      return true;
+    case 1: 
+      locala.b(str);
+      return true;
+    }
+    locala.a(str);
     return true;
   }
   
   private static boolean a(int paramInt, Throwable paramThrowable)
   {
-    e.a locala = a();
+    a locala = a();
     if (locala == null) {
       return false;
     }
@@ -84,17 +86,17 @@ public final class e
     {
     default: 
       return false;
-    case 0: 
-      locala.a(paramThrowable);
-      return true;
-    case 1: 
-      locala.b(paramThrowable);
+    case 3: 
+      locala.d(paramThrowable);
       return true;
     case 2: 
       locala.c(paramThrowable);
       return true;
+    case 1: 
+      locala.b(paramThrowable);
+      return true;
     }
-    locala.d(paramThrowable);
+    locala.a(paramThrowable);
     return true;
   }
   
@@ -126,6 +128,17 @@ public final class e
   public static boolean d(String paramString, Object... paramVarArgs)
   {
     return a(3, paramString, paramVarArgs);
+  }
+  
+  public static class a
+  {
+    public void a(String paramString) {}
+    
+    public void b(String paramString) {}
+    
+    public void c(String paramString) {}
+    
+    public void d(String paramString) {}
   }
 }
 

@@ -9,14 +9,14 @@ final class BlurView$1
   
   public final void run()
   {
-    AppMethodBeat.i(155355);
-    this.zuW.zuP.qO(this.zuV);
-    AppMethodBeat.o(155355);
+    AppMethodBeat.i(142720);
+    this.aede.aecY.LN(this.val$enabled);
+    AppMethodBeat.o(142720);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.blur.BlurView.1
  * JD-Core Version:    0.7.0.1
  */

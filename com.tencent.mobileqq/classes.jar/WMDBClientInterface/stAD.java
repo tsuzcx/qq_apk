@@ -67,14 +67,17 @@ public final class stAD
     paramJceOutputStream.write(this.coverUrl, 5);
     paramJceOutputStream.write(this.title, 6);
     paramJceOutputStream.write(this.content, 7);
-    if (this.wmId != null) {
-      paramJceOutputStream.write(this.wmId, 8);
+    String str = this.wmId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.wmPackageUrl != null) {
-      paramJceOutputStream.write(this.wmPackageUrl, 9);
+    str = this.wmPackageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.packageUrl != null) {
-      paramJceOutputStream.write(this.packageUrl, 10);
+    str = this.packageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
     paramJceOutputStream.write(this.packageVersion, 11);
     paramJceOutputStream.write(this.version, 12);
@@ -82,7 +85,7 @@ public final class stAD
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     WMDBClientInterface.stAD
  * JD-Core Version:    0.7.0.1
  */

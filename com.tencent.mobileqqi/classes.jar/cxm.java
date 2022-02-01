@@ -1,6 +1,8 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class cxm
   implements DialogInterface.OnClickListener
@@ -9,6 +11,8 @@ public class cxm
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    SettingCloneUtil.writeValue(this.a.b.a(), null, "security_scan_key", "qqsetting_security_scan_key", true);
+    this.a.b.B();
     this.a.finish();
   }
 }

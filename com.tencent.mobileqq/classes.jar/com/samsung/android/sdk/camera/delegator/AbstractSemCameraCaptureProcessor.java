@@ -17,7 +17,7 @@ public abstract class AbstractSemCameraCaptureProcessor
 {
   public static final AbstractSemCameraCaptureProcessor.ProcessorParameter<Boolean> PARAMETER_ENABLE_FACE_BEAUTY = new AbstractSemCameraCaptureProcessor.ProcessorParameter("beauty_parameter");
   public static final AbstractSemCameraCaptureProcessor.ProcessorParameter<Integer> PARAMETER_IMAGE_FORMAT = new AbstractSemCameraCaptureProcessor.ProcessorParameter("image_format");
-  protected static final String TAG = AbstractSemCameraCaptureProcessor.class.getSimpleName();
+  protected static final String TAG = "AbstractSemCameraCaptureProcessor";
   
   public abstract CaptureRequest buildCaptureRequest(CaptureRequest.Builder paramBuilder);
   
@@ -39,7 +39,7 @@ public abstract class AbstractSemCameraCaptureProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.samsung.android.sdk.camera.delegator.AbstractSemCameraCaptureProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/muf" android:background="@drawable/bie" android:paddingLeft="2.0dip" android:paddingRight="7.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/mui" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="centerCrop" />
-    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/muk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="7.0dip" android:maxWidth="100.0dip" android:maxLines="1" />
-    <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/muj" android:background="@drawable/bi8" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="27.0dip" android:text="关注" />
-</LinearLayout>
+<com.tencent.widget.ScrollView android:orientation="vertical" android:id="@id/n03" android:background="@drawable/e1h" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/np7" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:id="@id/amy" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="12.0dip">
+                <TextView android:textSize="17.0sp" android:textColor="@color/aqm" android:layout_gravity="center_vertical" android:id="@id/mw1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/zbx" android:layout_weight="1.0" />
+                <com.tencent.mobileqq.guild.widget.GuildSwitchButton android:layout_gravity="center|right" android:id="@id/ot0" android:focusable="true" android:layout_width="52.0dip" android:layout_height="32.0dip" android:layout_marginRight="16.0dip" app:isChecked="false" />
+            </LinearLayout>
+            <TextView android:textSize="14.0sp" android:textColor="#ff8d9aad" android:id="@id/nvl" android:background="@drawable/e1h" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="14.0dip" android:text="@string/x59" android:layout_below="@id/amy" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.widget.ScrollView>

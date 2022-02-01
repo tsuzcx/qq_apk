@@ -15,11 +15,12 @@ public class DragSortItemViewCheckable
   
   public boolean isChecked()
   {
+    boolean bool = false;
     View localView = super.getChildAt(0);
     if ((localView instanceof Checkable)) {
-      return ((Checkable)localView).isChecked();
+      bool = ((Checkable)localView).isChecked();
     }
-    return false;
+    return bool;
   }
   
   public void setChecked(boolean paramBoolean)

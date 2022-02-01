@@ -1,54 +1,88 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.z;
-import java.util.Map;
-import junit.framework.Assert;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class bs
-  implements e
 {
-  public final void a(e.c paramc) {}
+  private static final Queue<Integer> omm;
+  public static final long[] omn;
+  public static final int[] omo;
+  public static final int[] omp;
+  public static final int[] omq;
+  public static final int[] omr;
+  private static bs oms;
+  public long[] omt;
+  public long[] omu;
   
-  public final e.b b(e.a parama)
+  static
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(16347);
-    parama = parama.eyJ;
-    if (parama != null)
+    AppMethodBeat.i(42979);
+    omm = new ConcurrentLinkedQueue();
+    omn = new long[] { 0L, 2000L, 5000L, 10000L, 30000L, 60000L, 180000L, 300000L, 600000L, 1800000L, 3600000L };
+    omo = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    omp = new int[] { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 };
+    omq = new int[] { 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170 };
+    omr = new int[] { 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200 };
+    AppMethodBeat.o(42979);
+  }
+  
+  private bs()
+  {
+    AppMethodBeat.i(42978);
+    Object localObject = (String)h.baE().ban().get(at.a.adfI, "0,0,0,0,0,0,0,0,0,0,0,0");
+    this.omt = new long[12];
+    localObject = ((String)localObject).split(",");
+    int i = 0;
+    if (localObject.length < 12) {}
+    for (int j = localObject.length;; j = 12)
     {
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      if (parama.woR == null) {
-        break label100;
+      if (i >= j) {
+        break label93;
       }
-    }
-    label100:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assert.assertTrue(bool1);
-      parama = (String)br.F(aa.a(parama.woR), "tips").get(".tips.tip.url");
-      ab.v("MicroMsg.SoftwareMsgExtension", "url:".concat(String.valueOf(parama)));
-      aw.aaz();
-      c.Ru().set(12308, parama);
-      AppMethodBeat.o(16347);
-      return null;
-      bool1 = false;
+      this.omt[i] = Util.getLong(localObject[i], 0L);
+      i += 1;
       break;
     }
+    label93:
+    localObject = (String)h.baE().ban().get(at.a.adfJ, "0,0,0,0,0,0,0,0,0,0,0,0");
+    this.omu = new long[12];
+    localObject = ((String)localObject).split(",");
+    i = k;
+    if (localObject.length < 12) {}
+    for (j = localObject.length;; j = 12)
+    {
+      if (i >= j) {
+        break label175;
+      }
+      this.omu[i] = Util.getLong(localObject[i], 0L);
+      i += 1;
+      break;
+    }
+    label175:
+    AppMethodBeat.o(42978);
+  }
+  
+  public static bs bCO()
+  {
+    AppMethodBeat.i(42977);
+    if (oms == null) {
+      oms = new bs();
+    }
+    bs localbs = oms;
+    AppMethodBeat.o(42977);
+    return localbs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bs
  * JD-Core Version:    0.7.0.1
  */

@@ -19,43 +19,43 @@ public class zzi
   private zzi(LifecycleFragment paramLifecycleFragment)
   {
     super(paramLifecycleFragment);
-    AppMethodBeat.i(60926);
+    AppMethodBeat.i(11418);
     this.zzed = new SparseArray();
     this.mLifecycleFragment.addCallback("AutoManageHelper", this);
-    AppMethodBeat.o(60926);
+    AppMethodBeat.o(11418);
   }
   
   public static zzi zza(LifecycleActivity paramLifecycleActivity)
   {
-    AppMethodBeat.i(60925);
+    AppMethodBeat.i(11417);
     paramLifecycleActivity = getFragment(paramLifecycleActivity);
     zzi localzzi = (zzi)paramLifecycleActivity.getCallbackOrNull("AutoManageHelper", zzi.class);
     if (localzzi != null)
     {
-      AppMethodBeat.o(60925);
+      AppMethodBeat.o(11417);
       return localzzi;
     }
     paramLifecycleActivity = new zzi(paramLifecycleActivity);
-    AppMethodBeat.o(60925);
+    AppMethodBeat.o(11417);
     return paramLifecycleActivity;
   }
   
   private final zza zzd(int paramInt)
   {
-    AppMethodBeat.i(60934);
+    AppMethodBeat.i(11426);
     if (this.zzed.size() <= paramInt)
     {
-      AppMethodBeat.o(60934);
+      AppMethodBeat.o(11426);
       return null;
     }
     zza localzza = (zza)this.zzed.get(this.zzed.keyAt(paramInt));
-    AppMethodBeat.o(60934);
+    AppMethodBeat.o(11426);
     return localzza;
   }
   
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(60931);
+    AppMethodBeat.i(11423);
     int i = 0;
     while (i < this.zzed.size())
     {
@@ -68,12 +68,12 @@ public class zzi
       }
       i += 1;
     }
-    AppMethodBeat.o(60931);
+    AppMethodBeat.o(11423);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(60929);
+    AppMethodBeat.i(11421);
     super.onStart();
     boolean bool = this.mStarted;
     Object localObject = String.valueOf(this.zzed);
@@ -90,12 +90,12 @@ public class zzi
         i += 1;
       }
     }
-    AppMethodBeat.o(60929);
+    AppMethodBeat.o(11421);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(60930);
+    AppMethodBeat.i(11422);
     super.onStop();
     int i = 0;
     while (i < this.zzed.size())
@@ -106,12 +106,12 @@ public class zzi
       }
       i += 1;
     }
-    AppMethodBeat.o(60930);
+    AppMethodBeat.o(11422);
   }
   
   public final void zza(int paramInt, GoogleApiClient paramGoogleApiClient, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(60927);
+    AppMethodBeat.i(11419);
     Preconditions.checkNotNull(paramGoogleApiClient, "GoogleApiClient instance cannot be null");
     if (this.zzed.indexOfKey(paramInt) < 0) {}
     for (boolean bool = true;; bool = false)
@@ -129,18 +129,18 @@ public class zzi
         new StringBuilder(String.valueOf(paramOnConnectionFailedListener).length() + 11).append("connecting ").append(paramOnConnectionFailedListener);
         paramGoogleApiClient.connect();
       }
-      AppMethodBeat.o(60927);
+      AppMethodBeat.o(11419);
       return;
     }
   }
   
   protected final void zza(ConnectionResult paramConnectionResult, int paramInt)
   {
-    AppMethodBeat.i(60932);
+    AppMethodBeat.i(11424);
     if (paramInt < 0)
     {
       Log.wtf("AutoManageHelper", "AutoManageLifecycleHelper received onErrorResolutionFailed callback but no failing client ID is set", new Exception());
-      AppMethodBeat.o(60932);
+      AppMethodBeat.o(11424);
       return;
     }
     Object localObject = (zza)this.zzed.get(paramInt);
@@ -152,12 +152,12 @@ public class zzi
         ((GoogleApiClient.OnConnectionFailedListener)localObject).onConnectionFailed(paramConnectionResult);
       }
     }
-    AppMethodBeat.o(60932);
+    AppMethodBeat.o(11424);
   }
   
   public final void zzc(int paramInt)
   {
-    AppMethodBeat.i(60928);
+    AppMethodBeat.i(11420);
     zza localzza = (zza)this.zzed.get(paramInt);
     this.zzed.remove(paramInt);
     if (localzza != null)
@@ -165,12 +165,12 @@ public class zzi
       localzza.zzef.unregisterConnectionFailedListener(localzza);
       localzza.zzef.disconnect();
     }
-    AppMethodBeat.o(60928);
+    AppMethodBeat.o(11420);
   }
   
   protected final void zzr()
   {
-    AppMethodBeat.i(60933);
+    AppMethodBeat.i(11425);
     int i = 0;
     while (i < this.zzed.size())
     {
@@ -180,7 +180,7 @@ public class zzi
       }
       i += 1;
     }
-    AppMethodBeat.o(60933);
+    AppMethodBeat.o(11425);
   }
   
   final class zza
@@ -192,27 +192,27 @@ public class zzi
     
     public zza(int paramInt, GoogleApiClient paramGoogleApiClient, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
     {
-      AppMethodBeat.i(60923);
+      AppMethodBeat.i(11415);
       this.zzee = paramInt;
       this.zzef = paramGoogleApiClient;
       this.zzeg = paramOnConnectionFailedListener;
       paramGoogleApiClient.registerConnectionFailedListener(this);
-      AppMethodBeat.o(60923);
+      AppMethodBeat.o(11415);
     }
     
     public final void onConnectionFailed(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(60924);
+      AppMethodBeat.i(11416);
       String str = String.valueOf(paramConnectionResult);
       new StringBuilder(String.valueOf(str).length() + 27).append("beginFailureResolution for ").append(str);
       zzi.this.zzb(paramConnectionResult, this.zzee);
-      AppMethodBeat.o(60924);
+      AppMethodBeat.o(11416);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzi
  * JD-Core Version:    0.7.0.1
  */

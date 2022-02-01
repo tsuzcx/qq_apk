@@ -6,54 +6,54 @@ public class RedTypeInfo
   implements Serializable
 {
   private static final long serialVersionUID = 1L;
-  private String red_content;
-  private String red_desc;
-  private int red_priority;
-  private int red_type;
+  private String redContent;
+  private String redDesc;
+  private int redPriority;
+  private int redType;
   
-  public String getRed_content()
+  public String getRedContent()
   {
-    return this.red_content;
+    return this.redContent;
   }
   
-  public String getRed_desc()
+  public String getRedDesc()
   {
-    return this.red_desc;
+    return this.redDesc;
   }
   
-  public int getRed_priority()
+  public int getRedPriority()
   {
-    return this.red_priority;
+    return this.redPriority;
   }
   
-  public int getRed_type()
+  public int getRedType()
   {
-    return this.red_type;
+    return this.redType;
   }
   
-  public void setRed_content(String paramString)
+  public void setRedContent(String paramString)
   {
-    this.red_content = paramString;
+    this.redContent = paramString;
   }
   
-  public void setRed_desc(String paramString)
+  public void setRedDesc(String paramString)
   {
-    this.red_desc = paramString;
+    this.redDesc = paramString;
   }
   
-  public void setRed_priority(int paramInt)
+  public void setRedPriority(int paramInt)
   {
-    this.red_priority = paramInt;
+    this.redPriority = paramInt;
   }
   
-  public void setRed_type(int paramInt)
+  public void setRedType(int paramInt)
   {
-    this.red_type = paramInt;
+    this.redType = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTypeInfo
  * JD-Core Version:    0.7.0.1
  */

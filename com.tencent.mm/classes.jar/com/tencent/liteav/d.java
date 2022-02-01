@@ -1,952 +1,2832 @@
 package com.tencent.liteav;
 
 import android.content.Context;
-import android.net.Uri;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.media.MediaFormat;
+import android.opengl.GLES20;
+import android.os.Bundle;
+import android.os.Looper;
+import android.view.Surface;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
-import com.tencent.liteav.basic.datareport.TXCDRExtInfo;
-import com.tencent.liteav.basic.datareport.a;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.module.Monitor;
+import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
+import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
 import com.tencent.liteav.basic.module.TXCStatus;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.basic.opengl.n;
+import com.tencent.liteav.basic.opengl.p;
+import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.structs.TXSVideoFrame;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.liteav.beauty.TXBeautyManager;
+import com.tencent.liteav.beauty.d.d;
+import com.tencent.liteav.renderer.TXCGLSurfaceView;
+import com.tencent.liteav.screencapture.a.a;
+import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
+import com.tencent.liteav.videoencoder.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.rtmp.TXLog;
+import com.tencent.rtmp.ui.TXCloudVideoView;
+import java.lang.ref.WeakReference;
+import java.nio.ByteBuffer;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class d
+  extends com.tencent.liteav.basic.module.a
+  implements b.b, com.tencent.liteav.basic.c.b, com.tencent.liteav.beauty.f, l, e
 {
-  private static String a;
-  private static HashMap<String, d.a> w;
-  private HashMap b;
-  private String c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private Context h;
-  private String i;
-  private long j;
+  private Surface A;
+  private int B;
+  private int C;
+  private com.tencent.liteav.basic.opengl.g D;
+  private com.tencent.liteav.basic.structs.b E;
+  private int F;
+  private boolean G;
+  private boolean H;
+  private volatile boolean I;
+  private long J;
+  private long K;
+  private int L;
+  private WeakReference<o> M;
+  private boolean N;
+  private WeakReference<a> O;
+  private j P;
+  private j Q;
+  private j R;
+  private com.tencent.liteav.beauty.b.k S;
+  private int T;
+  private boolean U;
+  private boolean V;
+  private boolean W;
+  private final com.tencent.liteav.beauty.b X;
+  private boolean Y;
+  private WeakReference<m> Z;
+  b a;
+  private com.tencent.liteav.basic.opengl.f aa;
+  private WeakReference<com.tencent.liteav.basic.c.b> ab;
+  private int ac;
+  private int ad;
+  b b;
+  private final com.tencent.liteav.basic.util.c c;
+  private final com.tencent.liteav.basic.util.f d;
+  private k e;
+  private com.tencent.liteav.beauty.d f;
+  private boolean g;
+  private boolean h;
+  private TXSVideoEncoderParam i;
+  private com.tencent.liteav.videoencoder.b j;
   private int k;
-  private long l;
-  private boolean m;
-  private long n;
-  private int o;
-  private boolean p;
-  private long q;
-  private long r;
-  private long s;
-  private long t;
-  private long u;
-  private String v;
-  private String x;
-  
-  static
-  {
-    AppMethodBeat.i(67704);
-    a = "TXCDataReport";
-    w = new HashMap();
-    AppMethodBeat.o(67704);
-  }
+  private boolean l;
+  private TXSVideoEncoderParam m;
+  private com.tencent.liteav.videoencoder.b n;
+  private final Object o;
+  private Context p;
+  private g q;
+  private int r;
+  private int s;
+  private int t;
+  private boolean u;
+  private int v;
+  private int w;
+  private boolean x;
+  private TXCloudVideoView y;
+  private final Object z;
   
   public d(Context paramContext)
   {
-    AppMethodBeat.i(67681);
-    this.p = false;
-    this.q = 0L;
-    this.r = 0L;
-    this.s = 0L;
-    this.t = 0L;
-    this.u = 0L;
-    this.x = "";
-    this.b = new HashMap(100);
-    this.h = paramContext.getApplicationContext();
-    this.i = TXCCommonUtil.getAppVersion();
-    this.o = 5000;
-    this.u = 0L;
-    AppMethodBeat.o(67681);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    AppMethodBeat.i(67701);
-    Object localObject = new TXCDRExtInfo();
-    ((TXCDRExtInfo)localObject).url = this.c;
-    ((TXCDRExtInfo)localObject).report_common = false;
-    ((TXCDRExtInfo)localObject).report_status = false;
-    String str2 = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str2, a.X, a.am, (TXCDRExtInfo)localObject);
-    this.u = TXCTimeUtil.getUtcTimeTick();
-    TXCDRApi.txSetEventValue(str2, a.X, "u64_timestamp", String.valueOf(this.u));
-    TXCDRApi.txSetEventValue(str2, a.X, "str_device_type", (String)this.b.get("str_device_type"));
-    TXCDRApi.txSetEventIntValue(str2, a.X, "u32_network_type", e("u32_network_type"));
-    long l4 = TXCStatus.a(this.x, 7107);
-    long l2 = TXCStatus.a(this.x, 7108);
-    long l1 = l2;
-    if (l2 != -1L) {
-      l1 = l2 - l4;
-    }
-    int i1 = a.X;
-    String str1;
-    if (paramBoolean)
-    {
-      l2 = l1;
-      TXCDRApi.txSetEventIntValue(str2, i1, "u32_dns_time", l2);
-      str1 = TXCStatus.b(this.x, 7110);
-      i1 = a.X;
-      if (!paramBoolean) {
-        break label871;
-      }
-      localObject = str1;
-      label219:
-      TXCDRApi.txSetEventValue(str2, i1, "u32_server_ip", (String)localObject);
-      l3 = TXCStatus.a(this.x, 7109);
-      l2 = l3;
-      if (l3 != -1L) {
-        l2 = l3 - l4;
-      }
-      i1 = a.X;
-      if (!paramBoolean) {
-        break label878;
-      }
-    }
-    label871:
-    label878:
-    for (long l3 = l2;; l3 = -1L)
-    {
-      TXCDRApi.txSetEventIntValue(str2, i1, "u32_connect_server_time", l3);
-      TXCDRApi.txSetEventIntValue(str2, a.X, "u32_stream_begin", -1L);
-      this.j = (TXCStatus.a(this.x, 6001) - l4);
-      TXCDRApi.txSetEventIntValue(str2, a.X, "u32_first_i_frame", this.j);
-      l3 = TXCStatus.a(this.x, 7103) - l4;
-      TXCDRApi.txSetEventIntValue(str2, a.X, "u32_first_frame_down", l3);
-      TXCDRApi.txSetEventValue(str2, a.X, "str_user_id", (String)this.b.get("str_user_id"));
-      TXCDRApi.txSetEventValue(str2, a.X, "str_package_name", (String)this.b.get("str_package_name"));
-      TXCDRApi.txSetEventValue(str2, a.X, "str_app_version", this.i);
-      TXCDRApi.txSetEventValue(str2, a.X, "dev_uuid", (String)this.b.get("dev_uuid"));
-      i1 = TXCStatus.c(this.x, 2013);
-      TXCDRApi.txSetEventValue(str2, a.X, "u32_max_cache_time", String.valueOf(i1));
-      int i2 = TXCStatus.c(this.x, 2012);
-      TXCDRApi.txSetEventValue(str2, a.X, "u32_min_cache_time", String.valueOf(i2));
-      int i3 = TXCStatus.c(this.x, 7105);
-      TXCDRApi.txSetEventValue(str2, a.X, "u64_err_code", String.valueOf(i3));
-      localObject = TXCStatus.b(this.x, 7106);
-      TXCDRApi.txSetEventValue(str2, a.X, "str_err_info", (String)localObject);
-      int i4 = TXCStatus.c(this.x, 7112);
-      TXCDRApi.txSetEventValue(str2, a.X, "u32_link_type", String.valueOf(i4));
-      int i5 = TXCStatus.c(this.x, 7111);
-      TXCDRApi.txSetEventValue(str2, a.X, "u32_channel_type", String.valueOf(i5));
-      TXCDRApi.nativeReportEvent(str2, a.X);
-      TXCLog.d(a, "report evt 40501: token=" + str2 + " u64_timestamp=" + this.u + " str_device_type=" + (String)this.b.get("str_device_type") + " u32_network_type=" + e("u32_network_type") + " u32_dns_time=" + l1 + " u32_server_ip=" + str1 + " u32_connect_server_time=" + l2 + " u32_stream_begin=-1 u32_first_i_frame=" + this.j + " u32_first_frame_down=" + l3 + " str_user_id=" + (String)this.b.get("str_user_id") + " str_package_name=" + (String)this.b.get("str_package_name") + " str_app_version=" + this.i + " dev_uuid=" + (String)this.b.get("dev_uuid") + " u32_max_cache_time=" + i1 + " u32_min_cache_time=" + i2 + " u64_err_code=" + i3 + " str_err_info=" + (String)localObject + " u32_link_type=" + i4 + " u32_channel_type=" + i5);
-      AppMethodBeat.o(67701);
-      return;
-      l2 = -1L;
-      break;
-      localObject = "";
-      break label219;
-    }
-  }
-  
-  protected static boolean c(String paramString)
-  {
-    AppMethodBeat.i(67687);
-    if ((paramString != null) && (paramString.contains("myqcloud")))
-    {
-      AppMethodBeat.o(67687);
-      return true;
-    }
-    boolean bool = com.tencent.liteav.basic.e.b.a().a(paramString);
-    AppMethodBeat.o(67687);
-    return bool;
-  }
-  
-  private int e(String paramString)
-  {
-    AppMethodBeat.i(67699);
-    paramString = (Number)this.b.get(paramString);
-    if (paramString != null)
-    {
-      int i1 = paramString.intValue();
-      AppMethodBeat.o(67699);
-      return i1;
-    }
-    AppMethodBeat.o(67699);
-    return 0;
-  }
-  
-  private void i()
-  {
-    AppMethodBeat.i(67690);
-    Object localObject = new TXCDRExtInfo();
-    ((TXCDRExtInfo)localObject).url = this.c;
-    ((TXCDRExtInfo)localObject).report_common = false;
-    ((TXCDRExtInfo)localObject).report_status = false;
-    String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, a.U, a.am, (TXCDRExtInfo)localObject);
-    long l4 = TXCTimeUtil.getUtcTimeTick();
-    TXCDRApi.txSetEventIntValue(str, a.U, "u64_timestamp", l4);
-    TXCDRApi.txSetEventValue(str, a.U, "str_device_type", (String)this.b.get("str_device_type"));
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_network_type", e("u32_network_type"));
-    long l5 = TXCStatus.a(this.x, 7107);
-    long l2 = TXCStatus.a(this.x, 7108);
-    long l1 = l2;
-    if (l2 != -1L) {
-      l1 = l2 - l5;
-    }
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_dns_time", l1);
-    localObject = TXCStatus.b(this.x, 7110);
-    TXCDRApi.txSetEventValue(str, a.U, "u32_server_ip", (String)localObject);
-    long l3 = TXCStatus.a(this.x, 7109);
-    l2 = l3;
-    if (l3 != -1L) {
-      l2 = l3 - l5;
-    }
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_connect_server_time", l2);
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_stream_begin", -1L);
-    this.j = (TXCStatus.a(this.x, 6001) - l5);
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_first_i_frame", this.j);
-    l3 = TXCStatus.a(this.x, 7103) - l5;
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_first_frame_down", l3);
-    TXCDRApi.txSetEventValue(str, a.U, "str_user_id", (String)this.b.get("str_user_id"));
-    TXCDRApi.txSetEventValue(str, a.U, "str_package_name", (String)this.b.get("str_package_name"));
-    TXCDRApi.txSetEventValue(str, a.U, "str_app_version", this.i);
-    TXCDRApi.txSetEventValue(str, a.U, "dev_uuid", (String)this.b.get("dev_uuid"));
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_isp2p", this.k);
-    TXCDRApi.nativeReportEvent(str, a.U);
-    TXCLog.d(a, "report evt 40101: token=" + str + " u64_timestamp=" + l4 + " str_device_type=" + (String)this.b.get("str_device_type") + " u32_network_type=" + e("u32_network_type") + " u32_dns_time=" + l1 + " u32_server_ip=" + (String)localObject + " u32_connect_server_time=" + l2 + " u32_stream_begin=-1 u32_first_i_frame=" + this.j + " u32_first_frame_down=" + l3 + " str_user_id=" + (String)this.b.get("str_user_id") + " str_package_name=" + (String)this.b.get("str_package_name") + " str_app_version=" + this.i + " dev_uuid=" + (String)this.b.get("dev_uuid") + " u32_isp2p=" + this.k);
-    AppMethodBeat.o(67690);
-  }
-  
-  private void j()
-  {
-    AppMethodBeat.i(67691);
-    TXCDRExtInfo localTXCDRExtInfo = new TXCDRExtInfo();
-    localTXCDRExtInfo.url = this.c;
-    localTXCDRExtInfo.report_common = false;
-    localTXCDRExtInfo.report_status = false;
-    String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, a.U, a.am, localTXCDRExtInfo);
-    long l1 = TXCTimeUtil.getUtcTimeTick();
-    TXCDRApi.txSetEventIntValue(str, a.U, "u64_timestamp", l1);
-    TXCDRApi.txSetEventValue(str, a.U, "str_device_type", (String)this.b.get("str_device_type"));
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_network_type", e("u32_network_type"));
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_dns_time", -1L);
-    TXCDRApi.txSetEventValue(str, a.U, "u32_server_ip", "");
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_connect_server_time", -1L);
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_stream_begin", -1L);
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_first_i_frame", -1L);
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_first_frame_down", -1L);
-    TXCDRApi.txSetEventValue(str, a.U, "str_user_id", (String)this.b.get("str_user_id"));
-    TXCDRApi.txSetEventValue(str, a.U, "str_package_name", (String)this.b.get("str_package_name"));
-    TXCDRApi.txSetEventValue(str, a.U, "str_app_version", this.i);
-    TXCDRApi.txSetEventValue(str, a.U, "dev_uuid", (String)this.b.get("dev_uuid"));
-    TXCDRApi.txSetEventIntValue(str, a.U, "u32_isp2p", this.k);
-    TXCDRApi.nativeReportEvent(str, a.U);
-    TXCLog.d(a, "report evt 40101: token=" + str + " u64_timestamp=" + l1 + " str_device_type=" + (String)this.b.get("str_device_type") + " u32_network_type=" + e("u32_network_type") + " u32_dns_time=-1 u32_server_ip= u32_connect_server_time=-1 u32_stream_begin=-1 u32_first_i_frame=-1 u32_first_frame_down=-1 str_user_id=" + (String)this.b.get("str_user_id") + " str_package_name=" + (String)this.b.get("str_package_name") + " str_app_version=" + this.i + " dev_uuid=" + (String)this.b.get("dev_uuid") + " u32_isp2p=" + this.k);
-    AppMethodBeat.o(67691);
-  }
-  
-  private void k()
-  {
-    AppMethodBeat.i(67692);
-    TXCDRExtInfo localTXCDRExtInfo = new TXCDRExtInfo();
-    localTXCDRExtInfo.url = this.c;
-    localTXCDRExtInfo.report_common = false;
-    localTXCDRExtInfo.report_status = false;
-    String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, a.W, a.am, localTXCDRExtInfo);
-    long l1 = TXCTimeUtil.getUtcTimeTick();
-    TXCDRApi.txSetEventIntValue(str, a.W, "u64_timestamp", l1);
-    long l2 = TXCStatus.a(this.x, 7107);
-    l2 = (TXCTimeUtil.getTimeTick() - l2) / 1000L;
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_result", l2);
-    long l3 = TXCStatus.a(this.x, 6003);
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_avg_block_time", l3);
-    TXCDRApi.txSetEventValue(str, a.W, "str_app_version", this.i);
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_isp2p", this.k);
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_avg_load", TXCStatus.a(this.x, 2001));
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_load_cnt", TXCStatus.a(this.x, 2002));
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_max_load", TXCStatus.a(this.x, 2003));
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_first_i_frame", this.j);
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_speed_cnt", TXCStatus.a(this.x, 2004));
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_nodata_cnt", TXCStatus.a(this.x, 2005));
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_avg_cache_time", TXCStatus.a(this.x, 2008));
-    TXCDRApi.txSetEventIntValue(str, a.W, "u32_is_real_time", TXCStatus.a(this.x, 2009));
-    TXCDRApi.nativeReportEvent(str, a.W);
-    TXCLog.d(a, "report evt 40102: token=" + str + " str_stream_url=" + this.c + " u64_timestamp=" + l1 + " u32_result=" + l2 + " u32_avg_block_time=" + l3 + " str_app_version=" + this.i + " u32_isp2p=" + this.k + " u32_avg_load=" + TXCStatus.a(this.x, 2001) + " u32_load_cnt=" + TXCStatus.a(this.x, 2002) + " u32_max_load=" + TXCStatus.a(this.x, 2003) + " u32_first_i_frame=" + this.j + " u32_speed_cnt=" + TXCStatus.a(this.x, 2004) + " u32_nodata_cnt=" + TXCStatus.a(this.x, 2005) + " u32_avg_cache_time=" + TXCStatus.a(this.x, 2008) + " u32_is_real_time=" + TXCStatus.a(this.x, 2009));
-    AppMethodBeat.o(67692);
-  }
-  
-  private void l()
-  {
-    AppMethodBeat.i(67693);
-    Object localObject = new TXCDRExtInfo();
-    ((TXCDRExtInfo)localObject).url = this.c;
-    ((TXCDRExtInfo)localObject).report_common = false;
-    ((TXCDRExtInfo)localObject).report_status = true;
-    String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, a.V, a.am, (TXCDRExtInfo)localObject);
-    int i1 = TXCStatus.c(this.x, 7102);
-    int i2 = TXCStatus.c(this.x, 7101);
-    TXCDRApi.txSetEventIntValue(str, a.V, "u32_avg_net_speed", i1 + i2);
-    double d1 = TXCStatus.d(this.x, 6002);
-    TXCDRApi.txSetEventIntValue(str, a.V, "u32_fps", (int)d1);
-    long l1 = TXCStatus.a(this.x, 6004);
-    if ((this.l != -1L) && (l1 >= this.l)) {
-      TXCDRApi.txSetEventIntValue(str, a.V, "u32_avg_block_count", l1 - this.l);
+    AppMethodBeat.i(14385);
+    this.c = new com.tencent.liteav.basic.util.c("capturer", (int)TimeUnit.SECONDS.toMillis(5L));
+    this.d = new com.tencent.liteav.basic.util.f(Looper.getMainLooper());
+    this.e = null;
+    this.f = null;
+    this.g = false;
+    this.h = false;
+    this.i = null;
+    this.j = null;
+    this.k = 8;
+    this.l = false;
+    this.m = null;
+    this.n = null;
+    this.o = new Object();
+    this.p = null;
+    this.q = null;
+    this.r = 0;
+    this.s = 0;
+    this.t = 0;
+    this.u = false;
+    this.v = 0;
+    this.w = 0;
+    this.x = false;
+    this.y = null;
+    this.z = new Object();
+    this.A = null;
+    this.B = 0;
+    this.C = 0;
+    this.D = null;
+    this.F = 0;
+    this.G = false;
+    this.H = false;
+    this.I = false;
+    this.J = 0L;
+    this.K = 0L;
+    this.L = 2;
+    this.N = false;
+    this.O = null;
+    this.P = null;
+    this.T = -1;
+    this.U = false;
+    this.V = false;
+    this.W = false;
+    this.Y = true;
+    this.aa = null;
+    this.ac = 0;
+    this.ad = 0;
+    this.p = paramContext.getApplicationContext();
+    this.q = new g();
+    this.f = new com.tencent.liteav.beauty.d(this.p, true);
+    this.f.a(this);
+    this.f.a(this);
+    if (this.q.V) {
+      this.f.a(d.d.a);
     }
     for (;;)
     {
-      this.l = l1;
-      localObject = com.tencent.liteav.basic.util.b.a();
-      i1 = com.tencent.liteav.basic.util.b.b();
-      l1 = TXCStatus.a(this.x, 6008);
-      TXCDRApi.txSetEventIntValue(str, a.V, "u32_avg_cache_count", l1);
-      TXCDRApi.txSetEventIntValue(str, a.V, "u32_cpu_usage", localObject[1]);
-      TXCDRApi.txSetEventIntValue(str, a.V, "u32_app_cpu_usage", localObject[0]);
-      TXCDRApi.txSetEventIntValue(str, a.V, "u32_app_mem_usage", i1);
-      TXCDRApi.txSetEventValue(str, a.V, "str_app_version", this.i);
-      TXCDRApi.txSetEventIntValue(str, a.V, "u32_isp2p", this.k);
-      TXCDRApi.nativeReportEvent(str, a.V);
-      if (this.p)
-      {
-        this.t += 1L;
-        this.s += l1;
-        if (l1 > this.r) {
-          this.r = l1;
-        }
-      }
-      AppMethodBeat.o(67693);
+      this.i = new TXSVideoEncoderParam();
+      this.i.encoderMode = 1;
+      this.j = null;
+      this.m = new TXSVideoEncoderParam();
+      this.m.encoderMode = 1;
+      this.a = new b(this);
+      this.X = new com.tencent.liteav.beauty.b(new com.tencent.liteav.basic.license.g(this.p));
+      this.X.setPreprocessor(this.f);
+      com.tencent.liteav.basic.d.c.a().a(this.p);
+      AppMethodBeat.o(14385);
       return;
-      TXCDRApi.txSetEventIntValue(str, a.V, "u32_avg_block_count", 0L);
-    }
-  }
-  
-  private void m()
-  {
-    AppMethodBeat.i(67694);
-    Object localObject1 = new HashMap();
-    String str1 = TXCStatus.b(this.x, 7116);
-    Object localObject2 = TXCStatus.b(this.x, 7117);
-    Object localObject3 = TXCStatus.b(this.x, 7118);
-    int i1 = TXCStatus.c(this.x, 7105);
-    String str2 = TXCStatus.b(this.x, 7106);
-    int i2 = TXCStatus.c(this.x, 7111);
-    ((Map)localObject1).put("stream_url", str1);
-    ((Map)localObject1).put("stream_id", localObject2);
-    ((Map)localObject1).put("bizid", localObject3);
-    ((Map)localObject1).put("err_code", String.valueOf(i1));
-    ((Map)localObject1).put("err_info", str2);
-    ((Map)localObject1).put("channel_type", String.valueOf(i2));
-    long l1 = System.currentTimeMillis();
-    long l2 = this.q;
-    ((Map)localObject1).put("start_time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(this.q)));
-    ((Map)localObject1).put("end_time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(l1)));
-    ((Map)localObject1).put("total_time", String.valueOf(l1 - l2));
-    l2 = TXCStatus.a(this.x, 6003);
-    l1 = TXCStatus.a(this.x, 6006);
-    long l3 = TXCStatus.a(this.x, 6005);
-    if (l2 != 0L) {}
-    for (l1 /= l2;; l1 = 0L)
-    {
-      ((Map)localObject1).put("block_count", String.valueOf(l2));
-      ((Map)localObject1).put("block_duration_max", String.valueOf(l3));
-      ((Map)localObject1).put("block_duration_avg", String.valueOf(l1));
-      if (this.t != 0L) {}
-      for (l1 = this.s / this.t;; l1 = 0L)
-      {
-        ((Map)localObject1).put("jitter_cache_max", String.valueOf(this.r));
-        ((Map)localObject1).put("jitter_cache_avg", String.valueOf(l1));
-        str1 = TXCDRApi.txCreateToken();
-        i1 = a.af;
-        i2 = a.al;
-        localObject2 = new TXCDRExtInfo();
-        ((TXCDRExtInfo)localObject2).command_id_comment = "LINKMIC";
-        TXCDRApi.InitEvent(this.h, str1, i1, i2, (TXCDRExtInfo)localObject2);
-        TXCLog.d(a, "report evt 40402: token=".concat(String.valueOf(str1)));
-        localObject1 = ((Map)localObject1).entrySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject3 = (Map.Entry)((Iterator)localObject1).next();
-          localObject2 = (String)((Map.Entry)localObject3).getKey();
-          localObject3 = (String)((Map.Entry)localObject3).getValue();
-          TXCLog.e(a, "RealTimePlayStatisticInfo: " + (String)localObject2 + " = " + (String)localObject3);
-          if ((localObject2 != null) && (((String)localObject2).length() > 0) && (localObject3 != null)) {
-            TXCDRApi.txSetEventValue(str1, i1, (String)localObject2, (String)localObject3);
-          }
-        }
-        TXCDRApi.nativeReportEvent(str1, i1);
-        this.p = false;
-        this.q = 0L;
-        this.t = 0L;
-        this.s = 0L;
-        this.r = 0L;
-        AppMethodBeat.o(67694);
-        return;
+      if (this.q.U) {
+        this.f.a(d.d.b);
+      } else {
+        this.f.a(d.d.c);
       }
     }
   }
   
-  private void n()
+  private void A()
   {
-    AppMethodBeat.i(67695);
-    TXCDRExtInfo localTXCDRExtInfo = new TXCDRExtInfo();
-    localTXCDRExtInfo.report_common = false;
-    localTXCDRExtInfo.report_status = false;
-    localTXCDRExtInfo.url = this.c;
-    long l1 = TXCStatus.a(this.x, 7013);
-    String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, a.P, a.al, localTXCDRExtInfo);
-    long l2 = TXCTimeUtil.getUtcTimeTick();
-    TXCDRApi.txSetEventIntValue(str, a.P, "u64_timestamp", TXCTimeUtil.getUtcTimeTick());
-    TXCDRApi.txSetEventValue(str, a.P, "str_device_type", (String)this.b.get("str_device_type"));
-    TXCDRApi.txSetEventIntValue(str, a.P, "u32_network_type", e("u32_network_type"));
-    TXCDRApi.txSetEventIntValue(str, a.P, "u32_dns_time", -1L);
-    TXCDRApi.txSetEventIntValue(str, a.P, "u32_connect_server_time", -1L);
-    TXCDRApi.txSetEventValue(str, a.P, "u32_server_ip", "");
-    TXCDRApi.txSetEventIntValue(str, a.P, "u32_video_resolution", this.d << 16 | this.e);
-    TXCDRApi.txSetEventIntValue(str, a.P, "u32_audio_samplerate", this.g);
-    TXCDRApi.txSetEventIntValue(str, a.P, "u32_video_bitrate", this.f);
-    TXCDRApi.txSetEventValue(str, a.P, "str_user_id", (String)this.b.get("str_user_id"));
-    TXCDRApi.txSetEventValue(str, a.P, "str_package_name", (String)this.b.get("str_package_name"));
-    TXCDRApi.txSetEventIntValue(str, a.P, "u32_channel_type", l1);
-    TXCDRApi.txSetEventValue(str, a.P, "str_app_version", this.i);
-    TXCDRApi.txSetEventValue(str, a.P, "dev_uuid", (String)this.b.get("dev_uuid"));
-    TXCDRApi.nativeReportEvent(str, a.P);
-    TXCLog.d(a, "report evt 40001: token=" + str + " str_stream_url=" + this.c + " u64_timestamp=" + l2 + " str_device_type=" + this.b.get("str_device_type") + " u32_network_type=" + e("u32_network_type") + " u32_dns_time=-1 u32_connect_server_time=-1 u32_server_ip= u32_video_resolution=" + (this.d << 16 | this.e) + " u32_audio_samplerate=" + this.g + " u32_video_bitrate=" + this.f + " str_user_id=" + this.b.get("str_user_id") + " str_package_name=" + this.b.get("str_package_name") + " u32_channel_type=" + l1 + " str_app_version=" + this.b.get("dev_uuid") + " dev_uuid=" + e("u32_max_load"));
-    AppMethodBeat.o(67695);
-  }
-  
-  private void o()
-  {
-    AppMethodBeat.i(67696);
-    Object localObject = new TXCDRExtInfo();
-    ((TXCDRExtInfo)localObject).report_common = false;
-    ((TXCDRExtInfo)localObject).report_status = false;
-    ((TXCDRExtInfo)localObject).url = this.c;
-    String str1 = TXCStatus.b(this.x, 7012);
-    long l3 = TXCStatus.a(this.x, 7009);
-    long l1 = TXCStatus.a(this.x, 7010);
-    if (l1 != -1L) {
-      l1 -= l3;
-    }
-    for (;;)
-    {
-      long l2 = TXCStatus.a(this.x, 7011);
-      if (l2 != -1L) {
-        l2 -= l3;
-      }
-      for (;;)
-      {
-        l3 = TXCStatus.a(this.x, 7013);
-        String str2 = (String)this.b.get("token");
-        TXCDRApi.InitEvent(this.h, str2, a.P, a.al, (TXCDRExtInfo)localObject);
-        long l4 = TXCTimeUtil.getUtcTimeTick();
-        TXCDRApi.txSetEventIntValue(str2, a.P, "u64_timestamp", l4);
-        TXCDRApi.txSetEventValue(str2, a.P, "str_device_type", (String)this.b.get("str_device_type"));
-        TXCDRApi.txSetEventIntValue(str2, a.P, "u32_network_type", e("u32_network_type"));
-        TXCDRApi.txSetEventIntValue(str2, a.P, "u32_dns_time", l1);
-        TXCDRApi.txSetEventIntValue(str2, a.P, "u32_connect_server_time", l2);
-        TXCDRApi.txSetEventValue(str2, a.P, "u32_server_ip", str1);
-        TXCDRApi.txSetEventIntValue(str2, a.P, "u32_video_resolution", this.d << 16 | this.e);
-        TXCDRApi.txSetEventIntValue(str2, a.P, "u32_audio_samplerate", this.g);
-        TXCDRApi.txSetEventIntValue(str2, a.P, "u32_video_bitrate", this.f);
-        TXCDRApi.txSetEventValue(str2, a.P, "str_user_id", (String)this.b.get("str_user_id"));
-        TXCDRApi.txSetEventValue(str2, a.P, "str_package_name", (String)this.b.get("str_package_name"));
-        TXCDRApi.txSetEventIntValue(str2, a.P, "u32_channel_type", l3);
-        TXCDRApi.txSetEventValue(str2, a.P, "str_app_version", this.i);
-        TXCDRApi.txSetEventValue(str2, a.P, "dev_uuid", (String)this.b.get("dev_uuid"));
-        localObject = TXCStatus.b(this.x, 7019);
-        TXCDRApi.txSetEventValue(str2, a.P, "str_nearest_ip_list", (String)localObject);
-        TXCDRApi.nativeReportEvent(str2, a.P);
-        TXCLog.d(a, "report evt 40001: token=" + str2 + " str_stream_url=" + this.c + " u64_timestamp=" + l4 + " str_device_type=" + this.b.get("str_device_type") + " u32_network_type=" + e("u32_network_type") + " u32_dns_time=" + l1 + " u32_connect_server_time=" + l2 + " u32_server_ip=" + str1 + " u32_video_resolution=" + (this.d << 16 | this.e) + " u32_audio_samplerate=" + this.g + " u32_video_bitrate=" + this.f + " str_user_id=" + this.b.get("str_user_id") + " str_package_name=" + this.b.get("str_package_name") + " u32_channel_type=" + l3 + " str_app_version=" + this.b.get("dev_uuid") + " dev_uuid=" + e("u32_max_load"));
-        AppMethodBeat.o(67696);
-        return;
-      }
-    }
-  }
-  
-  private void p()
-  {
-    AppMethodBeat.i(67697);
-    TXCDRExtInfo localTXCDRExtInfo = new TXCDRExtInfo();
-    localTXCDRExtInfo.report_common = false;
-    localTXCDRExtInfo.report_status = false;
-    localTXCDRExtInfo.url = this.c;
-    long l3 = TXCStatus.a(this.x, 7009);
-    long l1 = TXCStatus.a(this.x, 7013);
-    String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, a.R, a.al, localTXCDRExtInfo);
-    long l2 = TXCTimeUtil.getUtcTimeTick();
-    TXCDRApi.txSetEventIntValue(str, a.R, "u64_timestamp", l2);
-    l3 = (TXCTimeUtil.getTimeTick() - l3) / 1000L;
-    TXCDRApi.txSetEventIntValue(str, a.R, "u32_result", l3);
-    TXCDRApi.txSetEventValue(str, a.R, "str_user_id", (String)this.b.get("str_user_id"));
-    TXCDRApi.txSetEventValue(str, a.R, "str_package_name", (String)this.b.get("str_package_name"));
-    TXCDRApi.txSetEventIntValue(str, a.R, "u32_channel_type", l1);
-    TXCDRApi.txSetEventValue(str, a.R, "str_app_version", this.i);
-    TXCDRApi.txSetEventValue(str, a.R, "dev_uuid", (String)this.b.get("dev_uuid"));
-    int i1 = TXCStatus.c(this.x, 7016);
-    TXCDRApi.txSetEventValue(str, a.R, "u32_ip_count_quic", String.valueOf(i1));
-    i1 = TXCStatus.c(this.x, 7017);
-    TXCDRApi.txSetEventValue(str, a.R, "u32_connect_count_quic", String.valueOf(i1));
-    i1 = TXCStatus.c(this.x, 7018);
-    TXCDRApi.txSetEventValue(str, a.R, "u32_connect_count_tcp", String.valueOf(i1));
-    TXCDRApi.nativeReportEvent(str, a.R);
-    TXCLog.d(a, "report evt 40002: token=" + str + " str_stream_url=" + this.c + " u64_timestamp=" + l2 + " u32_result=" + l3 + " str_user_id=" + this.b.get("str_user_id") + " str_package_name=" + this.b.get("str_package_name") + " u32_channel_type=" + l1 + " str_app_version=" + this.i + " dev_uuid=" + this.b.get("dev_uuid"));
-    AppMethodBeat.o(67697);
-  }
-  
-  private void q()
-  {
-    AppMethodBeat.i(67698);
-    Object localObject2 = new TXCDRExtInfo();
-    ((TXCDRExtInfo)localObject2).report_common = false;
-    ((TXCDRExtInfo)localObject2).report_status = true;
-    ((TXCDRExtInfo)localObject2).url = this.c;
-    Object localObject1 = com.tencent.liteav.basic.util.b.a();
-    int i1 = localObject1[0];
-    int i2 = localObject1[1];
-    int i3 = com.tencent.liteav.basic.util.b.b();
-    long l1 = TXCStatus.a(this.x, 7013);
-    int i4 = TXCStatus.c(this.x, 7004);
-    int i5 = TXCStatus.c(this.x, 7003);
-    double d1 = TXCStatus.d(this.x, 4001);
-    int i6 = TXCStatus.c(this.x, 7005);
-    int i7 = TXCStatus.c(this.x, 7002);
-    int i8 = TXCStatus.c(this.x, 7001);
-    int i9 = TXCStatus.c(this.x, 4007);
-    localObject1 = TXCStatus.b(this.x, 7012);
-    String str1 = TXCStatus.b(this.x, 7014);
-    String str2 = TXCStatus.b(this.x, 7015);
-    String str3 = TXCStatus.b(this.x, 3001);
-    long l2 = TXCStatus.a(this.x, 3002);
-    double d2 = TXCStatus.d(this.x, 3003);
-    int i10 = TXCStatus.c(this.x, 7020);
-    String str4 = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str4, a.Q, a.al, (TXCDRExtInfo)localObject2);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_avg_audio_bitrate", i7);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_avg_video_bitrate", i8);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_avg_net_speed", i4 + i5);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_fps", (int)d1);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_avg_cache_size", i6);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_cpu_usage", i2);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_app_cpu_usage", i1);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_app_mem_usage", i3);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_channel_type", l1);
-    TXCDRApi.txSetEventValue(str4, a.Q, "str_app_version", this.i);
-    TXCDRApi.txSetEventValue(str4, a.Q, "str_device_type", (String)this.b.get("str_device_type"));
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_hw_enc", i9);
+    AppMethodBeat.i(229424);
     try
     {
-      if ((this.h != null) && (com.tencent.liteav.basic.util.b.d(this.h) == 1))
+      com.tencent.liteav.videoencoder.b localb = this.n;
+      this.n = null;
+      if (localb != null)
       {
-        localObject2 = (WifiManager)this.h.getSystemService("wifi");
-        if (localObject2 != null)
-        {
-          localObject2 = ((WifiManager)localObject2).getConnectionInfo();
-          if (localObject2 != null)
-          {
-            TXCDRApi.txSetEventValue(str4, a.Q, "str_wifi_ssid", ((WifiInfo)localObject2).getSSID());
-            TXCDRApi.txSetEventIntValue(str4, a.Q, "str_wifi_signal_strength", WifiManager.calculateSignalLevel(((WifiInfo)localObject2).getRssi(), 32));
-            TXCDRApi.txSetEventIntValue(str4, a.Q, "str_wifi_link_speed", ((WifiInfo)localObject2).getLinkSpeed());
-          }
-        }
+        localb.a();
+        localb.a(null);
       }
+      AppMethodBeat.o(229424);
+      return;
     }
     catch (Exception localException)
     {
-      label549:
-      break label549;
+      TXCLog.e("TXCCaptureAndEnc", "stop video encoder failed.", localException);
+      AppMethodBeat.o(229424);
     }
-    TXCDRApi.txSetEventValue(str4, a.Q, "str_server_ip", (String)localObject1);
-    TXCDRApi.txSetEventValue(str4, a.Q, "str_quic_connection_id", str1);
-    TXCDRApi.txSetEventValue(str4, a.Q, "str_quic_connection_stats", str2);
-    TXCDRApi.txSetEventValue(str4, a.Q, "str_beauty_stats", str3);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_send_strategy", i10);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_preprocess_timecost", l2);
-    TXCDRApi.txSetEventIntValue(str4, a.Q, "u32_preprocess_fps_out", (int)d2);
-    TXCDRApi.nativeReportEvent(str4, a.Q);
-    AppMethodBeat.o(67698);
   }
   
-  private void r()
+  private void B()
   {
-    AppMethodBeat.i(67700);
-    this.m = false;
-    this.n = 0L;
-    this.b.put("str_user_id", com.tencent.liteav.basic.util.b.b(this.h));
-    this.b.put("str_device_type", com.tencent.liteav.basic.util.b.c());
-    this.b.put("str_device_type", com.tencent.liteav.basic.util.b.c());
-    this.b.put("u32_network_type", Integer.valueOf(com.tencent.liteav.basic.util.b.d(this.h)));
-    this.b.put("token", com.tencent.liteav.basic.util.b.e());
-    this.b.put("str_package_name", com.tencent.liteav.basic.util.b.c(this.h));
-    this.b.put("dev_uuid", com.tencent.liteav.basic.util.b.e(this.h));
-    AppMethodBeat.o(67700);
-  }
-  
-  private void s()
-  {
-    AppMethodBeat.i(67702);
-    Object localObject = new TXCDRExtInfo();
-    ((TXCDRExtInfo)localObject).url = this.c;
-    ((TXCDRExtInfo)localObject).report_common = false;
-    ((TXCDRExtInfo)localObject).report_status = false;
-    String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, a.Z, a.am, (TXCDRExtInfo)localObject);
-    TXCDRApi.txSetEventValue(str, a.Z, "u64_begin_timestamp", String.valueOf(this.u));
-    long l2 = TXCTimeUtil.getUtcTimeTick();
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u64_end_timestamp", l2);
-    long l3 = (l2 - this.u) / 1000L;
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u64_playtime", l3);
-    TXCDRApi.txSetEventValue(str, a.Z, "str_device_type", (String)this.b.get("str_device_type"));
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u32_network_type", e("u32_network_type"));
-    localObject = TXCStatus.b(this.x, 7110);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_server_ip", (String)localObject);
-    TXCDRApi.txSetEventValue(str, a.Z, "str_user_id", (String)this.b.get("str_user_id"));
-    TXCDRApi.txSetEventValue(str, a.Z, "str_package_name", (String)this.b.get("str_package_name"));
-    TXCDRApi.txSetEventValue(str, a.Z, "str_app_version", this.i);
-    TXCDRApi.txSetEventValue(str, a.Z, "dev_uuid", (String)this.b.get("dev_uuid"));
-    long l4 = TXCStatus.a(this.x, 6003);
-    long l5 = TXCStatus.a(this.x, 6005);
-    long l6 = TXCStatus.a(this.x, 6006);
-    long l1 = 0L;
-    if (l4 > 0L) {
-      l1 = l6 / l4;
-    }
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u64_block_count", l4);
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u64_block_duration_max", l5);
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u64_block_duration_avg", l1);
-    l6 = TXCStatus.a(this.x, 6009);
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u64_jitter_cache_max", l6);
-    long l7 = TXCStatus.a(this.x, 6008);
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u64_jitter_cache_avg", l7);
-    long l8 = TXCStatus.a(this.x, 2008);
-    TXCDRApi.txSetEventIntValue(str, a.Z, "u64_audio_cache_avg", l8);
-    int i1 = TXCStatus.c(this.x, 7112);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_link_type", String.valueOf(i1));
-    long l9 = TXCStatus.c(this.x, 2001);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_avg_load", String.valueOf(l9));
-    long l10 = TXCStatus.c(this.x, 2002);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_load_cnt", String.valueOf(l10));
-    long l11 = TXCStatus.c(this.x, 2003);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_max_load", String.valueOf(l11));
-    int i2 = TXCStatus.c(this.x, 7111);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_channel_type", String.valueOf(i2));
-    int i3 = TXCStatus.c(this.x, 7113);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_ip_count_quic", String.valueOf(i3));
-    i3 = TXCStatus.c(this.x, 7114);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_connect_count_quic", String.valueOf(i3));
-    i3 = TXCStatus.c(this.x, 7115);
-    TXCDRApi.txSetEventValue(str, a.Z, "u32_connect_count_tcp", String.valueOf(i3));
-    TXCDRApi.nativeReportEvent(str, a.Z);
-    TXCLog.d(a, "report evt 40502: token=" + str + " str_stream_url=" + this.c + " u64_begin_timestamp=" + this.u + " u64_end_timestamp=" + l2 + " u64_playtime=" + l3 + " str_device_type=" + (String)this.b.get("str_device_type") + " u32_network_type=" + e("u32_network_type") + " u32_server_ip=" + (String)localObject + " str_user_id=" + (String)this.b.get("str_user_id") + " str_package_name=" + (String)this.b.get("str_package_name") + " str_app_version=" + this.i + " dev_uuid=" + (String)this.b.get("dev_uuid") + " u64_block_count=" + l4 + " u64_block_duration_max=" + l5 + " u64_block_duration_avg=" + l1 + " u64_jitter_cache_max=" + l6 + " u64_jitter_cache_avg=" + l7 + " u64_audio_cache_avg=" + l8 + " u32_link_type=" + i1 + " u32_avg_load=" + l9 + " u32_load_cnt=" + l10 + " u32_max_load=" + l11 + " u32_channel_type=" + i2);
-    AppMethodBeat.o(67702);
-  }
-  
-  private void t()
-  {
-    int i2 = 2;
-    AppMethodBeat.i(67703);
-    Object localObject = new TXCDRExtInfo();
-    ((TXCDRExtInfo)localObject).url = this.c;
-    ((TXCDRExtInfo)localObject).report_common = false;
-    ((TXCDRExtInfo)localObject).report_status = true;
-    String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, a.Y, a.am, (TXCDRExtInfo)localObject);
-    int i1 = TXCStatus.c(this.x, 7102);
-    int i3 = TXCStatus.c(this.x, 7101);
-    TXCDRApi.txSetEventIntValue(str, a.Y, "u32_net_speed", i1 + i3);
-    double d1 = TXCStatus.d(this.x, 6002);
-    TXCDRApi.txSetEventIntValue(str, a.Y, "u32_fps", (int)d1);
-    long l1 = TXCStatus.a(this.x, 6004);
-    if ((this.l != -1L) && (l1 >= this.l))
+    AppMethodBeat.i(229429);
+    try
     {
-      TXCDRApi.txSetEventIntValue(str, a.Y, "u32_video_block_count", l1 - this.l);
-      this.l = l1;
-      l1 = TXCStatus.a(this.x, 6008);
-      TXCDRApi.txSetEventIntValue(str, a.Y, "u32_video_cache_count", l1);
-      localObject = com.tencent.liteav.basic.util.b.a();
-      TXCDRApi.txSetEventIntValue(str, a.Y, "u32_cpu_usage", localObject[1]);
-      TXCDRApi.txSetEventIntValue(str, a.Y, "u32_app_cpu_usage", localObject[0]);
-      i1 = com.tencent.liteav.basic.util.b.b();
-      TXCDRApi.txSetEventIntValue(str, a.Y, "u32_app_mem_usage", i1);
-      TXCDRApi.txSetEventValue(str, a.Y, "str_app_version", this.i);
-      TXCDRApi.txSetEventValue(str, a.Y, "str_device_type", (String)this.b.get("str_device_type"));
-      if (TXCStatus.c(this.x, 5002) != 0) {
-        break label591;
+      TXCLog.i("TXCCaptureAndEnc", "stopBigVideoEncoderInGLThread");
+      com.tencent.liteav.videoencoder.b localb = this.j;
+      this.j = null;
+      if (localb != null)
+      {
+        localb.a();
+        localb.a(null);
+      }
+      this.V = true;
+      AppMethodBeat.o(229429);
+      return;
+    }
+    catch (Exception localException)
+    {
+      TXCLog.e("TXCCaptureAndEnc", "stopBigVideoEncoder failed.", localException);
+      AppMethodBeat.o(229429);
+    }
+  }
+  
+  private void C()
+  {
+    AppMethodBeat.i(229438);
+    if (this.e != null) {
+      this.e.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(229382);
+          d.a(d.this, d.c(d.this).width, d.c(d.this).height);
+          AppMethodBeat.o(229382);
+        }
+      });
+    }
+    AppMethodBeat.o(229438);
+  }
+  
+  private void D()
+  {
+    AppMethodBeat.i(229444);
+    if (this.f != null)
+    {
+      if (this.q.V)
+      {
+        this.f.a(d.d.a);
+        AppMethodBeat.o(229444);
+        return;
+      }
+      if (this.q.U)
+      {
+        this.f.a(d.d.b);
+        AppMethodBeat.o(229444);
+        return;
+      }
+      this.f.a(d.d.c);
+    }
+    AppMethodBeat.o(229444);
+  }
+  
+  private int a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    AppMethodBeat.i(229414);
+    paramInt2 = this.q.a;
+    paramInt1 = this.q.b;
+    if ((this.q.m == 0) || (this.q.m == 2))
+    {
+      paramInt2 = this.q.b;
+      paramInt1 = this.q.a;
+    }
+    if ((paramInt2 <= 0) || (paramInt1 <= 0))
+    {
+      TXCLog.e("TXCCaptureAndEnc", "sendCustomYUVData: invalid video encode resolution");
+      AppMethodBeat.o(229414);
+      return -1;
+    }
+    if (this.q.N)
+    {
+      B();
+      AppMethodBeat.o(229414);
+      return -1000;
+    }
+    b(paramInt2, paramInt1, paramObject);
+    AppMethodBeat.o(229414);
+    return 0;
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    AppMethodBeat.i(229408);
+    if (paramLong == 0L) {
+      paramLong = TXCTimeUtil.generatePtsMS();
+    }
+    for (;;)
+    {
+      b(paramInt2, paramInt3, this.f.a());
+      com.tencent.liteav.videoencoder.b localb = this.j;
+      if (localb != null)
+      {
+        localb.b(this.Y);
+        localb.a(paramInt1, paramInt2, paramInt3, paramLong);
+      }
+      localb = this.n;
+      if (localb != null)
+      {
+        localb.b(this.Y);
+        localb.a(paramInt1, paramInt2, paramInt3, paramLong);
+      }
+      AppMethodBeat.o(229408);
+      return;
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3, Object paramObject, int paramInt4, boolean paramBoolean)
+  {
+    AppMethodBeat.i(229395);
+    TXCLog.i("TXCCaptureAndEnc", "New encode size width = " + paramInt1 + " height = " + paramInt2 + " encType = " + paramInt3 + " eglContext: " + paramObject);
+    B();
+    com.tencent.liteav.videoencoder.b localb = new com.tencent.liteav.videoencoder.b(paramInt3);
+    TXCStatus.a(getID(), 4005, this.F, Integer.valueOf(paramInt3));
+    TXSVideoEncoderParam localTXSVideoEncoderParam;
+    if (paramInt3 == 1)
+    {
+      TXCEventRecorderProxy.a(getID(), 4004, 1L, -1L, "", this.F);
+      this.V = false;
+      this.i.encodeType = paramInt3;
+      this.i.width = paramInt1;
+      this.i.height = paramInt2;
+      this.i.fps = paramInt4;
+      this.i.gop = this.q.j;
+      this.i.encoderProfile = this.q.o;
+      localTXSVideoEncoderParam = this.i;
+      if (paramObject == null) {
+        break label582;
       }
     }
-    label591:
-    for (i1 = 2;; i1 = 1)
+    for (;;)
     {
-      TXCDRApi.txSetEventIntValue(str, a.Y, "u32_video_decode_type", i1);
-      if (TXCStatus.c(this.x, 2015) == 0) {}
-      for (i1 = i2;; i1 = 1)
+      localTXSVideoEncoderParam.glContext = paramObject;
+      this.i.realTime = paramBoolean;
+      this.i.streamType = this.F;
+      this.i.annexb = this.H;
+      this.i.bMultiRef = this.G;
+      this.i.baseFrameIndex = (this.J + 20L);
+      this.i.baseGopIndex = ((this.K + 1L) % 255L + 1L);
+      this.i.bLimitFps = this.h;
+      this.i.record = this.W;
+      this.i.encFmt = this.q.Z;
+      this.i.isH265EncoderEnabled = this.I;
+      this.i.bitrate = this.q.c;
+      localb.a(this);
+      localb.a(this);
+      localb.a(this.i);
+      localb.c(this.q.c);
+      localb.d(this.k);
+      localb.setID(getID());
+      localb.a(this.ac);
+      this.j = localb;
+      TXCStatus.a(getID(), 4003, this.F, Integer.valueOf(this.i.width << 16 | this.i.height));
+      TXCStatus.a(getID(), 13003, this.F, Integer.valueOf(this.i.gop * 1000));
+      TXCEventRecorderProxy.a(getID(), 4003, this.i.width, this.i.height, "", this.F);
+      TXCKeyPointReportProxy.a(40036, this.i.encodeType, this.F);
+      TXCKeyPointReportProxy.a(40037, this.i.width << 16 | this.i.height, this.F);
+      AppMethodBeat.o(229395);
+      return;
+      TXCEventRecorderProxy.a(getID(), 4004, 0L, -1L, "", this.F);
+      break;
+      label582:
+      paramObject = localb.a(paramInt1, paramInt2);
+    }
+  }
+  
+  private void a(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(229374);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("EVT_USERID", getID());
+    localBundle.putInt("EVT_ID", paramInt);
+    localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+    localBundle.putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
+    if (paramString != null) {
+      localBundle.putCharSequence("EVT_MSG", paramString);
+    }
+    com.tencent.liteav.basic.util.h.a(this.ab, paramInt, localBundle);
+    int i1;
+    if (paramInt == -1314)
+    {
+      paramString = getID();
+      i1 = 2002;
+      l1 = 5L;
+      TXCEventRecorderProxy.a(paramString, i1, l1, -1L, "", this.F);
+      label119:
+      if ((paramInt == -1301) || (paramInt == -1314) || (paramInt == -1315) || (paramInt == -1316))
       {
-        TXCDRApi.txSetEventIntValue(str, a.Y, "u32_audio_decode_type", i1);
-        TXCDRApi.txSetEventIntValue(str, a.Y, "u32_network_type", e("u32_network_type"));
-        i1 = TXCStatus.c(this.x, 6007);
-        TXCDRApi.txSetEventIntValue(str, a.Y, "u32_video_cache_time", i1);
-        i1 = TXCStatus.c(this.x, 2010);
-        TXCDRApi.txSetEventIntValue(str, a.Y, "u32_audio_cache_time", i1);
-        i1 = TXCStatus.c(this.x, 2011);
-        TXCDRApi.txSetEventIntValue(str, a.Y, "u32_audio_jitter", i1);
-        i1 = TXCStatus.c(this.x, 2014);
-        TXCDRApi.txSetEventIntValue(str, a.Y, "u32_audio_drop", i1);
-        l1 = (TXCTimeUtil.getUtcTimeTick() - this.u) / 1000L;
-        TXCDRApi.txSetEventValue(str, a.Y, "u64_playtime", String.valueOf(l1));
-        i1 = TXCStatus.c(this.x, 7112);
-        TXCDRApi.txSetEventValue(str, a.Y, "u32_link_type", String.valueOf(i1));
-        i1 = TXCStatus.c(this.x, 7111);
-        TXCDRApi.txSetEventValue(str, a.Y, "u32_channel_type", String.valueOf(i1));
-        TXCDRApi.nativeReportEvent(str, a.Y);
-        AppMethodBeat.o(67703);
-        return;
-        TXCDRApi.txSetEventIntValue(str, a.Y, "u32_video_block_count", 0L);
+        TXCKeyPointReportProxy.b(30003, paramInt);
+        if (this.e != null)
+        {
+          paramString = getID();
+          if (!this.e.l()) {
+            break label253;
+          }
+        }
+      }
+    }
+    label253:
+    for (long l1 = 0L;; l1 = 1L)
+    {
+      TXCEventRecorderProxy.a(paramString, 4002, l1, paramInt, "", this.F);
+      AppMethodBeat.o(229374);
+      return;
+      if ((paramInt != 1003) || (this.e == null)) {
+        break label119;
+      }
+      paramString = getID();
+      i1 = 4001;
+      if (this.e.l())
+      {
+        l1 = 0L;
         break;
+      }
+      l1 = 1L;
+      break;
+    }
+  }
+  
+  private void a(com.tencent.liteav.basic.structs.b paramb, int paramInt1, int paramInt2, Object paramObject, long paramLong)
+  {
+    AppMethodBeat.i(229378);
+    for (;;)
+    {
+      synchronized (this.o)
+      {
+        if ((this.t == 2) || ((this.b != null) && (this.b.a())))
+        {
+          AppMethodBeat.o(229378);
+          return;
+        }
+        paramb.e = paramInt1;
+        paramb.f = paramInt2;
+        paramb.i = this.q.T;
+        if (this.q.m == 0)
+        {
+          paramb.g = this.q.b;
+          paramb.h = this.q.a;
+          paramb.l = com.tencent.liteav.basic.util.h.a(paramb.e, paramb.f, paramb.g, paramb.h);
+        }
+      }
+      try
+      {
+        this.f.a(this.q.m);
+        this.f.a(paramObject);
+        this.f.a(paramb, paramb.b, 0, paramLong);
+        AppMethodBeat.o(229378);
+        return;
+        paramb.g = this.q.a;
+        paramb.h = this.q.b;
+        continue;
+        paramb = finally;
+        AppMethodBeat.o(229378);
+        throw paramb;
+      }
+      catch (Exception paramb)
+      {
+        for (;;)
+        {
+          TXCLog.e("TXCCaptureAndEnc", "send custom video frame failed." + paramb.getMessage());
+        }
+      }
+    }
+  }
+  
+  private void a(com.tencent.liteav.basic.structs.b paramb, boolean paramBoolean)
+  {
+    AppMethodBeat.i(229460);
+    e(paramb.e, paramb.f);
+    this.E = paramb;
+    if (this.y != null)
+    {
+      if (this.e != null)
+      {
+        this.e.a(paramb);
+        AppMethodBeat.o(229460);
+      }
+    }
+    else {
+      synchronized (this.z)
+      {
+        if ((this.A != null) && (this.D == null) && (this.e != null) && (this.e.f() != null))
+        {
+          this.D = new com.tencent.liteav.basic.opengl.g();
+          this.D.a(this.e.f(), this.A);
+          this.D.a(this.w);
+          this.D.b(this.ad);
+        }
+        if ((this.D != null) && (this.e != null)) {
+          this.D.a(paramb.a, paramb.i, this.v, this.B, this.C, paramb.e, paramb.f, paramBoolean, this.e.l());
+        }
+        AppMethodBeat.o(229460);
+        return;
+      }
+    }
+    AppMethodBeat.o(229460);
+  }
+  
+  private void a(Object paramObject, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(229400);
+    A();
+    com.tencent.liteav.videoencoder.b localb = new com.tencent.liteav.videoencoder.b(paramInt);
+    TXCStatus.a(getID(), 4005, 3, Integer.valueOf(paramInt));
+    TXSVideoEncoderParam localTXSVideoEncoderParam;
+    if (paramInt == 1)
+    {
+      TXCEventRecorderProxy.a(getID(), 4004, 1L, -1L, "", 3);
+      localTXSVideoEncoderParam = this.m;
+      if (paramObject == null) {
+        break label253;
+      }
+    }
+    for (;;)
+    {
+      localTXSVideoEncoderParam.glContext = paramObject;
+      this.m.encodeType = paramInt;
+      this.m.realTime = paramBoolean;
+      this.m.isH265EncoderEnabled = false;
+      TXCLog.i("TXCCaptureAndEnc", "start small video encoder");
+      localb.a(this);
+      localb.a(this);
+      localb.a(this.m);
+      localb.c(this.m.bitrate);
+      localb.setID(getID());
+      localb.a(this.ac);
+      this.n = localb;
+      TXCStatus.a(getID(), 4003, 3, Integer.valueOf(this.m.width << 16 | this.m.height));
+      TXCStatus.a(getID(), 13003, 3, Integer.valueOf(this.m.gop * 1000));
+      AppMethodBeat.o(229400);
+      return;
+      TXCEventRecorderProxy.a(getID(), 4004, 0L, -1L, "", 3);
+      break;
+      label253:
+      paramObject = localb.a(this.m.width, this.m.height);
+    }
+  }
+  
+  private void a(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(229478);
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
+      this.d.a(paramRunnable);
+      AppMethodBeat.o(229478);
+      return;
+    }
+    paramRunnable.run();
+    AppMethodBeat.o(229478);
+  }
+  
+  private void b(int paramInt1, int paramInt2, Object paramObject)
+  {
+    int i2 = 2;
+    AppMethodBeat.i(229418);
+    int i1 = i2;
+    switch (this.q.k)
+    {
+    default: 
+      i1 = i2;
+    case 0: 
+      if ((this.r == 1) && (this.s == 0)) {
+        i1 = 1;
+      }
+      break;
+    }
+    for (;;)
+    {
+      i2 = this.q.j;
+      if ((this.j == null) || (this.V) || (this.i.width != paramInt1) || (this.i.height != paramInt2) || (this.i.encodeType != i1) || (this.i.gop != i2) || (this.I != this.i.isH265EncoderEnabled)) {
+        a(paramInt1, paramInt2, i1, paramObject, this.q.i, this.q.Q);
+      }
+      if (((this.n == null) || (this.m.encodeType != i1)) && (this.l)) {
+        a(paramObject, i1, this.q.Q);
+      }
+      AppMethodBeat.o(229418);
+      return;
+      i1 = 1;
+      break;
+      i1 = 3;
+      break;
+    }
+  }
+  
+  private int c(com.tencent.liteav.basic.structs.b paramb)
+  {
+    AppMethodBeat.i(229469);
+    if (this.N)
+    {
+      i1 = paramb.a;
+      AppMethodBeat.o(229469);
+      return i1;
+    }
+    int i1 = paramb.a;
+    int i7;
+    j localj;
+    if (this.ad == 1)
+    {
+      i7 = 1;
+      if (i7 == paramb.i) {
+        break label398;
+      }
+      if (this.Q == null)
+      {
+        localj = new j();
+        localj.a();
+        localj.a(true);
+        localj.a(paramb.e, paramb.f);
+        if (paramb.e <= paramb.f) {
+          break label373;
+        }
+        localj.h();
+        label108:
+        this.Q = localj;
+      }
+      localj = this.Q;
+      if (localj == null) {
+        break label398;
+      }
+      localj.a(paramb.e, paramb.f);
+      i1 = localj.b(paramb.a);
+    }
+    label389:
+    label398:
+    for (;;)
+    {
+      int i2 = i1;
+      int i4;
+      int i5;
+      float[] arrayOfFloat;
+      int i6;
+      if (this.v != 0)
+      {
+        if (this.R == null)
+        {
+          localj = new j();
+          localj.a();
+          localj.a(true);
+          localj.a(paramb.e, paramb.f);
+          this.R = localj;
+        }
+        localj = this.R;
+        i2 = i1;
+        if (localj != null)
+        {
+          GLES20.glViewport(0, 0, paramb.e, paramb.f);
+          i4 = paramb.e;
+          i5 = paramb.f;
+          arrayOfFloat = localj.a(i4, i5, null, com.tencent.liteav.basic.util.h.a(i4, i5, paramb.e, paramb.f), 0);
+          i6 = (720 - this.v) % 360;
+          if ((i6 != 90) && (i6 != 270)) {
+            break label381;
+          }
+          i2 = paramb.f;
+          label304:
+          if ((i6 != 90) && (i6 != 270)) {
+            break label389;
+          }
+        }
+      }
+      for (int i3 = paramb.e;; i3 = paramb.f)
+      {
+        localj.a(i4, i5, i6, arrayOfFloat, i2 / i3, false, false);
+        localj.b(i1);
+        i2 = localj.l();
+        AppMethodBeat.o(229469);
+        return i2;
+        i7 = 0;
+        break;
+        label373:
+        localj.g();
+        break label108;
+        label381:
+        i2 = paramb.e;
+        break label304;
+      }
+    }
+  }
+  
+  private void c(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(229442);
+    com.tencent.liteav.beauty.d locald;
+    Bitmap localBitmap;
+    float f3;
+    float f2;
+    float f1;
+    if (this.q.K != -1.0F) {
+      if (this.f != null)
+      {
+        locald = this.f;
+        localBitmap = this.q.F;
+        f3 = this.q.I;
+        f2 = this.q.J;
+        f1 = this.q.K;
+      }
+    }
+    for (;;)
+    {
+      locald.a(localBitmap, f3, f2, f1);
+      do
+      {
+        AppMethodBeat.o(229442);
+        return;
+      } while ((this.f == null) || (paramInt1 == 0) || (paramInt2 == 0));
+      locald = this.f;
+      localBitmap = this.q.F;
+      f3 = this.q.G / paramInt1;
+      f2 = this.q.H / paramInt2;
+      if (this.q.F == null) {
+        f1 = 0.0F;
+      } else {
+        f1 = this.q.F.getWidth() / paramInt1;
+      }
+    }
+  }
+  
+  private void d(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(229447);
+    c(paramInt1, paramInt2);
+    AppMethodBeat.o(229447);
+  }
+  
+  private void d(com.tencent.liteav.basic.structs.b paramb)
+  {
+    AppMethodBeat.i(229475);
+    Object localObject1 = this.M;
+    if (localObject1 == null) {}
+    for (localObject1 = null; localObject1 == null; localObject1 = (o)((WeakReference)localObject1).get())
+    {
+      AppMethodBeat.o(229475);
+      return;
+    }
+    TXSVideoFrame localTXSVideoFrame = new TXSVideoFrame();
+    localTXSVideoFrame.width = paramb.e;
+    localTXSVideoFrame.height = paramb.f;
+    localTXSVideoFrame.pts = TXCTimeUtil.generatePtsMS();
+    int i1 = c(paramb);
+    if (this.L == 5)
+    {
+      localTXSVideoFrame.textureId = i1;
+      localTXSVideoFrame.eglContext = this.f.a();
+      if (this.T == -1)
+      {
+        this.T = TXCOpenGlUtils.d();
+        TXCLog.i("TXCCaptureAndEnc", "create FrameBuffer: %d", new Object[] { Integer.valueOf(this.T) });
+      }
+      TXCOpenGlUtils.a(localTXSVideoFrame.textureId, this.T);
+      GLES20.glBindFramebuffer(36160, this.T);
+      ((o)localObject1).onRenderVideoFrame(getID(), this.F, localTXSVideoFrame);
+      TXCOpenGlUtils.d(this.T);
+      if (this.N)
+      {
+        if (localTXSVideoFrame.data == null) {
+          break label274;
+        }
+        localObject1 = ByteBuffer.wrap(localTXSVideoFrame.data);
+        ((ByteBuffer)localObject1).position(0);
+        paramb.a = TXCOpenGlUtils.a((ByteBuffer)localObject1, paramb.e, paramb.f, i1);
+      }
+    }
+    label274:
+    label344:
+    Object localObject2;
+    label385:
+    label418:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          if ((this.N) && (this.y != null))
+          {
+            paramb = this.y.getGLSurfaceView();
+            if (paramb != null) {
+              paramb.d();
+            }
+          }
+          AppMethodBeat.o(229475);
+          return;
+          localObject1 = localTXSVideoFrame.buffer;
+          break;
+          if (this.L != 2) {
+            break label344;
+          }
+          localTXSVideoFrame.textureId = i1;
+          localTXSVideoFrame.eglContext = this.f.a();
+          ((o)localObject1).onRenderVideoFrame(getID(), this.F, localTXSVideoFrame);
+          if (this.N) {
+            paramb.a = localTXSVideoFrame.textureId;
+          }
+        }
+      } while ((this.L != 1) && (this.L != 4));
+      if (this.P == null)
+      {
+        if (this.L != 1) {
+          break label634;
+        }
+        localObject2 = new com.tencent.liteav.beauty.b.o(1);
+        ((j)localObject2).a(true);
+        if (!((j)localObject2).a()) {
+          break label647;
+        }
+        ((j)localObject2).a(paramb.e, paramb.f);
+        this.P = ((j)localObject2);
+      }
+      localObject2 = this.P;
+      if (localObject2 != null)
+      {
+        GLES20.glViewport(0, 0, paramb.e, paramb.f);
+        ((j)localObject2).a(paramb.e, paramb.f);
+        ((j)localObject2).b(i1);
+        GLES20.glBindFramebuffer(36160, ((j)localObject2).m());
+        ((o)localObject1).onRenderVideoFrame(getID(), this.F, localTXSVideoFrame);
+      }
+    } while ((!this.N) || ((localTXSVideoFrame.data == null) && (localTXSVideoFrame.buffer == null)));
+    if (this.L == 1) {
+      i1 = 1;
+    }
+    for (;;)
+    {
+      label522:
+      if (this.S == null)
+      {
+        localObject1 = new com.tencent.liteav.beauty.b.k(i1);
+        ((com.tencent.liteav.beauty.b.k)localObject1).a(true);
+        if (!((com.tencent.liteav.beauty.b.k)localObject1).a()) {
+          TXCLog.w("TXCCaptureAndEnc", " init i420ToRGBA filter failed");
+        }
+        ((com.tencent.liteav.beauty.b.k)localObject1).a(paramb.e, paramb.f);
+        this.S = ((com.tencent.liteav.beauty.b.k)localObject1);
+      }
+      localObject1 = this.S;
+      GLES20.glViewport(0, 0, paramb.e, paramb.f);
+      ((com.tencent.liteav.beauty.b.k)localObject1).a(paramb.e, paramb.f);
+      if (localTXSVideoFrame.data != null) {
+        ((com.tencent.liteav.beauty.b.k)localObject1).a(localTXSVideoFrame.data);
+      }
+      for (;;)
+      {
+        paramb.a = ((com.tencent.liteav.beauty.b.k)localObject1).r();
+        break;
+        label634:
+        localObject2 = new com.tencent.liteav.beauty.b.o(3);
+        break label385;
+        label647:
+        TXCLog.i("TXCCaptureAndEnc", "init filter error ");
+        this.P = null;
+        break label418;
+        if (this.L != 4) {
+          break label689;
+        }
+        i1 = 3;
+        break label522;
+        ((com.tencent.liteav.beauty.b.k)localObject1).a(localTXSVideoFrame.buffer);
+      }
+      label689:
+      i1 = 1;
+    }
+  }
+  
+  private void e(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(229454);
+    if (!this.x)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("EVT_USERID", getID());
+      localBundle.putInt("EVT_ID", 2003);
+      localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+      localBundle.putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
+      localBundle.putCharSequence("EVT_MSG", "Renders the first video frame");
+      localBundle.putInt("EVT_PARAM1", paramInt1);
+      localBundle.putInt("EVT_PARAM2", paramInt2);
+      com.tencent.liteav.basic.util.h.a(this.ab, 2003, localBundle);
+      TXCLog.i("TXCCaptureAndEnc", "trtc_render render first frame " + getID() + ", " + this.F);
+      this.x = true;
+    }
+    AppMethodBeat.o(229454);
+  }
+  
+  private void l(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(229366);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229366);
+      return;
+    }
+    this.e.a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(229364);
+        if (d.m(d.this) != null) {
+          d.m(d.this).b();
+        }
+        AppMethodBeat.o(229364);
+      }
+    });
+    u();
+    this.e.a(paramBoolean);
+    this.e = null;
+    TXCLog.i("TXCCaptureAndEnc", "stopped CaptureSource");
+    ??? = this.y;
+    this.d.post(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(229367);
+        if (this.a != null) {
+          this.a.stop(paramBoolean);
+        }
+        AppMethodBeat.o(229367);
+      }
+    });
+    this.y = null;
+    synchronized (this.z)
+    {
+      this.A = null;
+      if (this.D != null)
+      {
+        this.D.a();
+        this.D = null;
+      }
+      if (this.a.a()) {
+        this.a.b();
+      }
+      if (this.u) {
+        x();
+      }
+      AppMethodBeat.o(229366);
+      return;
+    }
+  }
+  
+  private void m(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(229432);
+    if (this.e != null) {
+      this.e.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(229398);
+          k localk = d.f(d.this);
+          if (localk == null)
+          {
+            AppMethodBeat.o(229398);
+            return;
+          }
+          localk.f(d.e(d.this).i);
+          localk.e(d.e(d.this).m);
+          localk.a(d.e(d.this).l);
+          localk.b(d.e(d.this).a, d.e(d.this).b);
+          localk.e(d.e(d.this).V);
+          if ((paramBoolean) && (localk.d())) {
+            localk.b(false);
+          }
+          AppMethodBeat.o(229398);
+        }
+      });
+    }
+    AppMethodBeat.o(229432);
+  }
+  
+  private void x()
+  {
+    AppMethodBeat.i(229353);
+    TXCLog.i("TXCCaptureAndEnc", " startBlackStream");
+    if (this.b == null) {
+      this.b = new b(this);
+    }
+    this.b.a(10, -1, null, 64, 64);
+    AppMethodBeat.o(229353);
+  }
+  
+  private void y()
+  {
+    AppMethodBeat.i(229358);
+    TXCLog.i("TXCCaptureAndEnc", " stopBlackStream when enableBlackStream " + this.u);
+    if (this.b != null) {
+      this.b.b();
+    }
+    AppMethodBeat.o(229358);
+  }
+  
+  private void z()
+  {
+    m localm = null;
+    AppMethodBeat.i(229384);
+    if (this.T != -1)
+    {
+      TXCLog.i("TXCCaptureAndEnc", "destroy FrameBuffer: %d", new Object[] { Integer.valueOf(this.T) });
+      TXCOpenGlUtils.b(this.T);
+      this.T = -1;
+    }
+    if (this.aa != null)
+    {
+      this.aa.e();
+      this.aa = null;
+    }
+    if (this.Z != null) {
+      localm = (m)this.Z.get();
+    }
+    if (localm != null) {
+      localm.onGLContextReadyToDestory();
+    }
+    AppMethodBeat.o(229384);
+  }
+  
+  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject, long paramLong)
+  {
+    AppMethodBeat.i(229680);
+    for (;;)
+    {
+      synchronized (this.o)
+      {
+        if ((this.t == 2) || ((this.b != null) && (this.b.a())))
+        {
+          AppMethodBeat.o(229680);
+          return 0;
+        }
+        int i1 = a(paramInt2, paramInt3, paramObject);
+        if (i1 != 0)
+        {
+          AppMethodBeat.o(229680);
+          return i1;
+        }
+        if (paramLong == 0L)
+        {
+          paramLong = TXCTimeUtil.generatePtsMS();
+          paramObject = this.j;
+          if (paramObject != null)
+          {
+            paramObject.a(this.q.T);
+            paramObject.a(paramInt1, paramInt2, paramInt3, paramLong);
+          }
+          paramObject = this.n;
+          if (paramObject != null)
+          {
+            paramObject.a(this.q.T);
+            paramObject.a(paramInt1, paramInt2, paramInt3, paramLong);
+          }
+          AppMethodBeat.o(229680);
+          return 0;
+        }
+      }
+    }
+  }
+  
+  public int a(com.tencent.liteav.basic.structs.b paramb)
+  {
+    AppMethodBeat.i(229686);
+    if (this.Z != null) {}
+    for (m localm = (m)this.Z.get();; localm = null)
+    {
+      if (localm != null)
+      {
+        if ((this.aa == null) || (this.aa.c() != paramb.e) || (this.aa.d() != paramb.f))
+        {
+          if (this.aa != null) {
+            this.aa.e();
+          }
+          this.aa = new com.tencent.liteav.basic.opengl.f(paramb.e, paramb.f);
+          this.aa.a();
+        }
+        paramb.a = localm.onProcessVideoFrame(paramb.a, paramb.e, paramb.f, this.aa.b());
+        GLES20.glDisable(3042);
+        GLES20.glDisable(2929);
+      }
+      d(paramb);
+      a(paramb, false);
+      int i1 = paramb.a;
+      AppMethodBeat.o(229686);
+      return i1;
+    }
+  }
+  
+  public int a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    AppMethodBeat.i(229635);
+    int i1;
+    if ((this.m.width != paramInt1) || (this.m.height != paramInt2))
+    {
+      i1 = 1;
+      this.m.width = paramInt1;
+      this.m.height = paramInt2;
+      this.m.fps = paramInt3;
+      this.m.gop = paramInt5;
+      this.m.encoderProfile = 1;
+      this.m.realTime = this.q.Q;
+      this.m.streamType = 3;
+      this.m.bitrate = paramInt4;
+      this.m.annexb = true;
+      this.m.bMultiRef = false;
+      if ((this.n != null) && ((i1 != 0) || ((this.l) && (!paramBoolean))))
+      {
+        if (this.e == null) {
+          break label186;
+        }
+        this.e.a(new Runnable()
+        {
+          public void run()
+          {
+            AppMethodBeat.i(229383);
+            d.i(d.this);
+            AppMethodBeat.o(229383);
+          }
+        });
+      }
+    }
+    for (;;)
+    {
+      this.l = paramBoolean;
+      AppMethodBeat.o(229635);
+      return 0;
+      i1 = 0;
+      break;
+      label186:
+      A();
+    }
+  }
+  
+  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    AppMethodBeat.i(229677);
+    for (;;)
+    {
+      synchronized (this.o)
+      {
+        if ((this.t == 2) || ((this.b != null) && (this.b.a())))
+        {
+          AppMethodBeat.o(229677);
+          return 0;
+        }
+        int i1 = a(paramInt2, paramInt3, null);
+        if (i1 != 0)
+        {
+          AppMethodBeat.o(229677);
+          return i1;
+        }
+        com.tencent.liteav.videoencoder.b localb = this.j;
+        if (localb != null)
+        {
+          if (paramLong == 0L)
+          {
+            paramLong = TXCTimeUtil.generatePtsMS();
+            localb.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(229677);
+          return 0;
+        }
       }
     }
   }
   
   public void a()
   {
-    AppMethodBeat.i(67682);
-    r();
-    this.l = -1L;
-    this.q = System.currentTimeMillis();
-    AppMethodBeat.o(67682);
+    AppMethodBeat.i(14386);
+    TXCLog.i("TXCCaptureAndEnc", "onPushEnd");
+    if (this.O == null)
+    {
+      AppMethodBeat.o(14386);
+      return;
+    }
+    a locala = (a)this.O.get();
+    if (locala == null)
+    {
+      AppMethodBeat.o(14386);
+      return;
+    }
+    locala.onBackgroudPushStop();
+    AppMethodBeat.o(14386);
   }
   
-  public void a(int paramInt)
+  public void a(float paramFloat)
   {
-    this.f = paramInt;
+    AppMethodBeat.i(229669);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229669);
+      return;
+    }
+    this.e.a(paramFloat);
+    AppMethodBeat.o(229669);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(float paramFloat1, float paramFloat2)
   {
-    this.d = paramInt1;
-    this.e = paramInt2;
+    AppMethodBeat.i(229718);
+    if ((this.e != null) && (this.q.L)) {
+      this.e.a(paramFloat1, paramFloat2);
+    }
+    AppMethodBeat.o(229718);
   }
   
-  public void a(String paramString)
+  public void a(final int paramInt)
   {
-    AppMethodBeat.i(67685);
-    this.c = paramString;
-    b(paramString);
-    AppMethodBeat.o(67685);
+    AppMethodBeat.i(229592);
+    TXCLog.i("TXCCaptureAndEnc", "vrotation setVideoEncRotation ".concat(String.valueOf(paramInt)));
+    this.ac = paramInt;
+    if (this.e != null)
+    {
+      this.e.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(14380);
+          if (d.a(d.this) != null) {
+            d.a(d.this).a(paramInt);
+          }
+          if (d.b(d.this) != null) {
+            d.b(d.this).a(paramInt);
+          }
+          AppMethodBeat.o(14380);
+        }
+      });
+      AppMethodBeat.o(229592);
+      return;
+    }
+    com.tencent.liteav.videoencoder.b localb = this.j;
+    if (localb != null) {
+      localb.a(paramInt);
+    }
+    localb = this.n;
+    if (localb != null) {
+      localb.a(paramInt);
+    }
+    AppMethodBeat.o(229592);
+  }
+  
+  public void a(final int paramInt1, final int paramInt2)
+  {
+    AppMethodBeat.i(229640);
+    synchronized (this.z)
+    {
+      if (this.D != null)
+      {
+        this.D.a(new Runnable()
+        {
+          public void run()
+          {
+            AppMethodBeat.i(229360);
+            d.b(d.this, paramInt1);
+            d.c(d.this, paramInt2);
+            if ((d.k(d.this) != null) && (d.l(d.this) != null)) {
+              d.a(d.this, d.k(d.this), true);
+            }
+            AppMethodBeat.o(229360);
+          }
+        });
+        AppMethodBeat.o(229640);
+        return;
+      }
+      this.B = paramInt1;
+      this.C = paramInt2;
+    }
+  }
+  
+  public void a(final int paramInt1, final int paramInt2, final int paramInt3)
+  {
+    AppMethodBeat.i(229625);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229625);
+      return;
+    }
+    this.e.a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(229422);
+        if ((paramInt2 != 0) && (paramInt3 != 0))
+        {
+          d.e(d.this).a = paramInt2;
+          d.e(d.this).b = paramInt3;
+          if (d.f(d.this) != null)
+          {
+            d.f(d.this).a(com.tencent.liteav.basic.b.c.a);
+            d.f(d.this).b(paramInt2, paramInt3);
+          }
+        }
+        if ((paramInt1 != 0) && (d.a(d.this) != null))
+        {
+          d.e(d.this).c = paramInt1;
+          d.a(d.this).c(paramInt1);
+        }
+        AppMethodBeat.o(229422);
+      }
+    });
+    AppMethodBeat.o(229625);
+  }
+  
+  public void a(int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4, final int paramInt5, int paramInt6, int paramInt7, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(229620);
+    if (paramInt1 == 2)
+    {
+      if ((this.i.width != 0) && (this.i.height != 0) && ((paramInt2 != this.i.width) || (paramInt3 != this.i.height) || (paramInt4 > this.i.fps) || (paramBoolean != this.I))) {
+        if (this.e != null) {
+          this.e.a(new Runnable()
+          {
+            public void run()
+            {
+              AppMethodBeat.i(229372);
+              label130:
+              Object localObject;
+              if ((paramInt2 != d.c(d.this).width) || (paramInt3 != d.c(d.this).height) || (paramInt4 > d.c(d.this).fps))
+              {
+                i = 1;
+                int j = i;
+                if (!paramBoolean)
+                {
+                  j = i;
+                  if (d.d(d.this))
+                  {
+                    TXCLog.i("TXCCaptureAndEnc", "disable h265 encoder from QoS. prepare to restart.");
+                    d.a(d.this, false);
+                    j = 1;
+                  }
+                }
+                if (j != 0)
+                {
+                  TXCLog.i("TXCCaptureAndEnc", "restart encoder when QoS changed.");
+                  if (paramInt2 <= paramInt3) {
+                    break label390;
+                  }
+                  d.e(d.this).m = 0;
+                  localObject = d.e(d.this);
+                  if (paramInt2 <= paramInt3) {
+                    break label415;
+                  }
+                  i = paramInt3;
+                  label154:
+                  ((g)localObject).a = i;
+                  localObject = d.e(d.this);
+                  if (paramInt2 <= paramInt3) {
+                    break label423;
+                  }
+                }
+              }
+              label390:
+              label415:
+              label423:
+              for (int i = paramInt2;; i = paramInt3)
+              {
+                ((g)localObject).b = i;
+                localObject = d.f(d.this);
+                if (localObject != null)
+                {
+                  ((k)localObject).a(com.tencent.liteav.basic.b.c.a);
+                  ((k)localObject).b(paramInt2, paramInt3);
+                  ((k)localObject).e(d.e(d.this).m);
+                }
+                d.e(d.this).c = paramInt5;
+                d.e(d.this).i = paramInt4;
+                d.g(d.this);
+                TXCLog.e("TXCCaptureAndEnc", String.format("QOS restart big encoder old resolution %dx%d fps %d, new resolution %dx%d fps %d", new Object[] { Integer.valueOf(d.c(d.this).width), Integer.valueOf(d.c(d.this).height), Integer.valueOf(d.c(d.this).fps), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
+                AppMethodBeat.o(229372);
+                return;
+                i = 0;
+                break;
+                if (paramInt2 >= paramInt3) {
+                  break label130;
+                }
+                d.e(d.this).m = 1;
+                break label130;
+                i = paramInt2;
+                break label154;
+              }
+            }
+          });
+        }
+      }
+      for (;;)
+      {
+        d(paramInt7);
+        AppMethodBeat.o(229620);
+        return;
+        if (this.I != paramBoolean)
+        {
+          localObject1 = this.o;
+          if (!paramBoolean) {}
+          try
+          {
+            if (this.I) {
+              this.I = false;
+            }
+            continue;
+          }
+          finally
+          {
+            AppMethodBeat.o(229620);
+          }
+          localObject1 = this.j;
+          if (localObject1 != null)
+          {
+            ((com.tencent.liteav.videoencoder.b)localObject1).b(paramInt5, paramInt6);
+            ((com.tencent.liteav.videoencoder.b)localObject1).b(paramInt4);
+          }
+        }
+      }
+    }
+    if ((this.m != null) && ((paramInt2 != this.m.width) || (paramInt3 != this.m.height)) && (this.e != null)) {
+      this.e.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(229387);
+          TXCLog.w("TXCCaptureAndEnc", String.format("QOS restart big encoder old resolution %dx%d fps %d, new resolution %dx%d fps %d", new Object[] { Integer.valueOf(d.h(d.this).width), Integer.valueOf(d.h(d.this).height), Integer.valueOf(d.h(d.this).fps), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) }));
+          d.h(d.this).width = paramInt2;
+          d.h(d.this).height = paramInt3;
+          d.i(d.this);
+          AppMethodBeat.o(229387);
+        }
+      });
+    }
+    Object localObject1 = this.n;
+    if (localObject1 != null)
+    {
+      ((com.tencent.liteav.videoencoder.b)localObject1).b(paramInt5, paramInt6);
+      ((com.tencent.liteav.videoencoder.b)localObject1).b(paramInt4);
+    }
+    AppMethodBeat.o(229620);
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramInt == 2)
+    {
+      this.K = paramLong1;
+      this.J = paramLong2;
+    }
+  }
+  
+  public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    AppMethodBeat.i(229657);
+    this.q.F = paramBitmap;
+    this.q.I = paramFloat1;
+    this.q.J = paramFloat2;
+    this.q.K = paramFloat3;
+    C();
+    AppMethodBeat.o(229657);
+  }
+  
+  public void a(final Bitmap paramBitmap, final ByteBuffer paramByteBuffer, final int paramInt1, final int paramInt2)
+  {
+    AppMethodBeat.i(229706);
+    paramBitmap = new Runnable()
+    {
+      public void run()
+      {
+        int i = 1;
+        AppMethodBeat.i(229375);
+        for (;;)
+        {
+          try
+          {
+            Object localObject;
+            if (((d.n(d.this) == 2) || (d.o(d.this))) && (paramBitmap != null))
+            {
+              localObject = paramByteBuffer;
+              if (localObject != null) {}
+            }
+            else
+            {
+              AppMethodBeat.o(229375);
+              return;
+            }
+            if (!d.c(d.this).isH265EncoderEnabled)
+            {
+              if (d.c(d.this).encodeType != 2)
+              {
+                if ((d.a(d.this) == null) || (d.p(d.this)) || (d.c(d.this).width != paramInt1) || (d.c(d.this).height != paramInt2) || (i != 0) || (d.c(d.this).gop != d.e(d.this).j) || (d.d(d.this) != d.c(d.this).isH265EncoderEnabled))
+                {
+                  if (d.c(d.this).isH265EncoderEnabled) {
+                    d.a(d.this, paramInt1, paramInt2, d.c(d.this).encodeType, null, d.e(d.this).D, true);
+                  }
+                }
+                else
+                {
+                  if (((d.b(d.this) == null) || (d.h(d.this).encodeType != 2)) && (d.q(d.this))) {
+                    d.a(d.this, null, 2, true);
+                  }
+                  i = paramBitmap.getWidth();
+                  int j = paramBitmap.getHeight();
+                  localObject = d.a(d.this);
+                  if (localObject != null) {
+                    ((com.tencent.liteav.videoencoder.b)localObject).a(paramByteBuffer.array(), 2, i, j, TXCTimeUtil.generatePtsMS());
+                  }
+                  localObject = d.b(d.this);
+                  if (localObject != null) {
+                    ((com.tencent.liteav.videoencoder.b)localObject).a(paramByteBuffer.array(), 2, i, j, TXCTimeUtil.generatePtsMS());
+                  }
+                  AppMethodBeat.o(229375);
+                }
+              }
+              else
+              {
+                i = 0;
+                continue;
+              }
+              d.a(d.this, paramInt1, paramInt2, 2, null, d.e(d.this).D, true);
+              continue;
+            }
+            i = 0;
+          }
+          catch (Exception localException)
+          {
+            TXCLog.e("TXCCaptureAndEnc", "onPushBitmap failed." + localException.getMessage());
+            AppMethodBeat.o(229375);
+            return;
+          }
+        }
+      }
+    };
+    paramByteBuffer = this.e;
+    if (paramByteBuffer != null)
+    {
+      paramByteBuffer.a(paramBitmap);
+      AppMethodBeat.o(229706);
+      return;
+    }
+    paramBitmap.run();
+    AppMethodBeat.o(229706);
+  }
+  
+  public void a(SurfaceTexture paramSurfaceTexture)
+  {
+    AppMethodBeat.i(229709);
+    if (this.f != null) {
+      this.f.b();
+    }
+    if (this.Z != null) {}
+    for (paramSurfaceTexture = (m)this.Z.get();; paramSurfaceTexture = null)
+    {
+      if (paramSurfaceTexture != null) {
+        paramSurfaceTexture.onGLContextCreated();
+      }
+      AppMethodBeat.o(229709);
+      return;
+    }
+  }
+  
+  public void a(MediaFormat paramMediaFormat)
+  {
+    AppMethodBeat.i(229697);
+    if (this.O == null)
+    {
+      AppMethodBeat.o(229697);
+      return;
+    }
+    a locala = (a)this.O.get();
+    if (locala != null) {
+      locala.onEncVideoFormat(paramMediaFormat);
+    }
+    AppMethodBeat.o(229697);
+  }
+  
+  public void a(Surface paramSurface)
+  {
+    AppMethodBeat.i(229639);
+    if (this.y != null)
+    {
+      TXCLog.w("TXCCaptureAndEnc", "camera preview view is not null, can't set surface");
+      AppMethodBeat.o(229639);
+      return;
+    }
+    synchronized (this.z)
+    {
+      if (this.A != paramSurface)
+      {
+        TXCLog.i("TXCCaptureAndEnc", "surface-render: set surface ".concat(String.valueOf(paramSurface)));
+        this.A = paramSurface;
+        if (this.D != null)
+        {
+          this.D.a();
+          this.D = null;
+        }
+        AppMethodBeat.o(229639);
+        return;
+      }
+      TXCLog.i("TXCCaptureAndEnc", "surface-render: set surface the same".concat(String.valueOf(paramSurface)));
+    }
+  }
+  
+  public void a(com.tencent.liteav.basic.c.b paramb)
+  {
+    AppMethodBeat.i(229567);
+    this.ab = new WeakReference(paramb);
+    AppMethodBeat.o(229567);
+  }
+  
+  public void a(final p paramp)
+  {
+    AppMethodBeat.i(229641);
+    if (this.y != null)
+    {
+      TXCGLSurfaceView localTXCGLSurfaceView = this.y.getGLSurfaceView();
+      if (localTXCGLSurfaceView != null)
+      {
+        localTXCGLSurfaceView.a(new p()
+        {
+          public void onTakePhotoComplete(Bitmap paramAnonymousBitmap)
+          {
+            AppMethodBeat.i(229351);
+            if (paramp != null) {
+              paramp.onTakePhotoComplete(paramAnonymousBitmap);
+            }
+            AppMethodBeat.o(229351);
+          }
+        });
+        AppMethodBeat.o(229641);
+        return;
+      }
+      if (paramp != null) {
+        paramp.onTakePhotoComplete(null);
+      }
+      AppMethodBeat.o(229641);
+      return;
+    }
+    if (this.D != null)
+    {
+      this.D.a(new p()
+      {
+        public void onTakePhotoComplete(Bitmap paramAnonymousBitmap)
+        {
+          AppMethodBeat.i(229368);
+          if (paramp != null) {
+            paramp.onTakePhotoComplete(paramAnonymousBitmap);
+          }
+          AppMethodBeat.o(229368);
+        }
+      });
+      AppMethodBeat.o(229641);
+      return;
+    }
+    if (paramp != null) {
+      paramp.onTakePhotoComplete(null);
+    }
+    AppMethodBeat.o(229641);
+  }
+  
+  public void a(TXSNALPacket arg1, int paramInt)
+  {
+    int i1 = 1;
+    AppMethodBeat.i(229694);
+    Object localObject1;
+    if (paramInt == 0)
+    {
+      if (???.streamType == 2)
+      {
+        this.K = ???.gopIndex;
+        this.J = ???.frameIndex;
+      }
+      if (this.O == null)
+      {
+        AppMethodBeat.o(229694);
+        return;
+      }
+      localObject1 = (a)this.O.get();
+      if (localObject1 != null) {
+        ((a)localObject1).onEncVideo(???);
+      }
+      AppMethodBeat.o(229694);
+      return;
+    }
+    if (((paramInt == 10000004) || (paramInt == 10000005) || (paramInt == 10000006)) && (this.i.encodeType == 1))
+    {
+      TXCLog.i("TXCCaptureAndEnc", "onEncodeNal mEnableHEVCEncode " + this.I + " errCode= " + paramInt);
+      if (this.I)
+      {
+        ??? = Locale.getDefault();
+        localObject1 = TXCCommonUtil.getDeviceInfo();
+        if (com.tencent.liteav.videoencoder.c.a(1920, 1080, 20))
+        {
+          Monitor.a(2, String.format(???, "VideoEncoder: h265 hardware encoder error %d, switch to 264 encoder. %s, %d", new Object[] { Integer.valueOf(paramInt), localObject1, Integer.valueOf(i1) }), "", 0);
+          ??? = this.e;
+          if (??? == null) {
+            break label267;
+          }
+          ???.a(new Runnable()
+          {
+            public void run()
+            {
+              AppMethodBeat.i(229362);
+              d.a(d.this, false);
+              d.g(d.this);
+              d.i(d.this);
+              AppMethodBeat.o(229362);
+            }
+          });
+        }
+        for (;;)
+        {
+          com.tencent.liteav.basic.util.h.a(this.ab, -2310, getID());
+          AppMethodBeat.o(229694);
+          return;
+          i1 = 0;
+          break;
+          label267:
+          synchronized (this.o)
+          {
+            this.I = false;
+            B();
+            A();
+          }
+        }
+      }
+      Monitor.a(2, String.format("VideoEncoder: hardware encoder error %d, switch to software encoder", new Object[] { Integer.valueOf(paramInt) }), "", 0);
+      u();
+      this.s += 1;
+      this.q.k = 0;
+      a(1103, "Failed to enable hardware encoder, use software encoder");
+    }
+    AppMethodBeat.o(229694);
+  }
+  
+  public void a(com.tencent.liteav.basic.structs.b paramb, long paramLong)
+  {
+    AppMethodBeat.i(229689);
+    a(paramb.a, paramb.e, paramb.f, paramLong);
+    AppMethodBeat.o(229689);
+  }
+  
+  public void a(a parama)
+  {
+    AppMethodBeat.i(229551);
+    this.O = new WeakReference(parama);
+    AppMethodBeat.o(229551);
+  }
+  
+  public void a(g paramg)
+  {
+    AppMethodBeat.i(229559);
+    int i1;
+    boolean bool1;
+    label133:
+    boolean bool2;
+    if ((paramg != null) && ((this.q.F != paramg.F) || (this.q.G != paramg.G) || (this.q.H != paramg.H) || (this.q.K != paramg.K) || (this.q.I != paramg.I) || (this.q.J != paramg.J)))
+    {
+      i1 = 1;
+      if ((paramg == null) || ((this.q.a == paramg.a) && (this.q.b == paramg.b))) {
+        break label353;
+      }
+      bool1 = true;
+      if ((paramg == null) || (this.q.a <= 0) || (this.q.b <= 0) || (paramg.a <= 0) || (paramg.b <= 0) || (Math.abs(this.q.a / this.q.b - paramg.a / paramg.b) <= 0.1D)) {
+        break label358;
+      }
+      bool2 = true;
+      if (paramg == null) {
+        break label379;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        this.q = ((g)paramg.clone());
+        TXCLog.i("TXCCaptureAndEnc", String.format("vsize setConfig w*h:%d*%d orientation:%d", new Object[] { Integer.valueOf(this.q.a), Integer.valueOf(this.q.b), Integer.valueOf(this.q.m) }));
+        if (this.e != null) {
+          this.e.e(this.q.m);
+        }
+        D();
+        if (!this.q.U) {
+          break label393;
+        }
+        bool1 = false;
+        m(bool1);
+        if ((k()) && (i1 != 0)) {
+          C();
+        }
+        AppMethodBeat.o(229559);
+        return;
+        i1 = 0;
+        break;
+        label353:
+        bool1 = false;
+        break label133;
+        label358:
+        bool2 = false;
+      }
+      catch (CloneNotSupportedException paramg)
+      {
+        this.q = new g();
+        continue;
+      }
+      label379:
+      this.q = new g();
+      continue;
+      label393:
+      if (!this.q.V) {
+        bool1 = bool2;
+      }
+    }
+  }
+  
+  public void a(m paramm)
+  {
+    AppMethodBeat.i(229570);
+    this.Z = new WeakReference(paramm);
+    AppMethodBeat.o(229570);
+  }
+  
+  public void a(o paramo, int paramInt)
+  {
+    AppMethodBeat.i(229554);
+    this.L = paramInt;
+    if (paramo != null)
+    {
+      this.M = new WeakReference(paramo);
+      AppMethodBeat.o(229554);
+      return;
+    }
+    this.M = null;
+    AppMethodBeat.o(229554);
+  }
+  
+  public void a(a.a parama)
+  {
+    AppMethodBeat.i(229642);
+    if (TXCBuild.VersionInt() < 21)
+    {
+      parama = new Bundle();
+      parama.putString("EVT_MSG", "Screen recording failed, unsupported Android system version. system version should above 5.0");
+      onNotifyEvent(-1309, parama);
+      TXLog.e("TXCCaptureAndEnc", "Screen capture need running on Android Lollipop or higher version, current:" + TXCBuild.VersionInt());
+      AppMethodBeat.o(229642);
+      return;
+    }
+    this.r = 1;
+    if (this.e == null)
+    {
+      this.e = new i(this.p, this.q, parama);
+      TXCLog.i("TXCCaptureAndEnc", "create TXCScreenCaptureSource");
+    }
+    this.X.a(false);
+    j(this.F);
+    this.e.a(this);
+    this.e.a(this);
+    this.e.a();
+    this.e.a(getID());
+    TXCDRApi.txReportDAU(this.p, com.tencent.liteav.basic.datareport.a.aH);
+    AppMethodBeat.o(229642);
+  }
+  
+  public void a(final TXCloudVideoView paramTXCloudVideoView)
+  {
+    AppMethodBeat.i(229631);
+    if (this.q.N)
+    {
+      TXCLog.e("TXCCaptureAndEnc", "enable pure audio push , so can not start preview!");
+      AppMethodBeat.o(229631);
+      return;
+    }
+    if (this.a != null) {
+      this.a.b();
+    }
+    this.x = false;
+    boolean bool = this.q.X;
+    Object localObject;
+    if (paramTXCloudVideoView != null)
+    {
+      final TXCGLSurfaceView[] arrayOfTXCGLSurfaceView = new TXCGLSurfaceView[1];
+      a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(229401);
+          arrayOfTXCGLSurfaceView[0] = new TXCGLSurfaceView(paramTXCloudVideoView.getContext());
+          paramTXCloudVideoView.addVideoView(arrayOfTXCGLSurfaceView[0]);
+          AppMethodBeat.o(229401);
+        }
+      });
+      localObject = arrayOfTXCGLSurfaceView[0];
+      arrayOfTXCGLSurfaceView[0].setNotifyListener(this);
+      TXCLog.i("TXCCaptureAndEnc", "start camera preview with GLSurfaceView");
+    }
+    for (;;)
+    {
+      this.r = 0;
+      this.e = new c(this.p, this.q, (n)localObject, bool);
+      y();
+      j(this.F);
+      this.e.a(getID());
+      this.e.a(this);
+      this.e.a(this);
+      this.e.a();
+      this.e.b(this.v);
+      this.e.c(this.w);
+      this.e.d(this.ad);
+      this.y = paramTXCloudVideoView;
+      this.d.post(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(229386);
+          if (paramTXCloudVideoView != null) {
+            paramTXCloudVideoView.start(d.e(d.this).L, d.e(d.this).M, d.f(d.this));
+          }
+          AppMethodBeat.o(229386);
+        }
+      });
+      this.x = false;
+      TXCKeyPointReportProxy.a(30003);
+      AppMethodBeat.o(229631);
+      return;
+      localObject = new com.tencent.liteav.basic.opengl.h();
+      TXCLog.i("TXCCaptureAndEnc", "start camera preview with SurfaceTexture");
+      bool = false;
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.p = paramBoolean;
+    this.N = paramBoolean;
   }
   
-  public void b()
+  public int b(int paramInt1, int paramInt2, int paramInt3, Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(67683);
-    if (this.m)
-    {
-      p();
-      AppMethodBeat.o(67683);
-      return;
-    }
-    TXCLog.e(a, "push " + this.c + " failed!");
-    n();
-    AppMethodBeat.o(67683);
+    AppMethodBeat.i(229682);
+    com.tencent.liteav.basic.structs.b localb = new com.tencent.liteav.basic.structs.b();
+    localb.a = paramInt1;
+    localb.b = 0;
+    a(localb, paramInt2, paramInt3, paramObject, paramLong);
+    AppMethodBeat.o(229682);
+    return 0;
+  }
+  
+  public TXBeautyManager b()
+  {
+    return this.X;
   }
   
   public void b(int paramInt)
   {
-    this.g = paramInt;
+    AppMethodBeat.i(229596);
+    TXCLog.i("TXCCaptureAndEnc", "setLocalViewMirror ".concat(String.valueOf(paramInt)));
+    this.ad = paramInt;
+    if (this.e != null) {
+      this.e.d(this.ad);
+    }
+    if (this.D != null) {
+      this.D.b(this.ad);
+    }
+    AppMethodBeat.o(229596);
   }
   
-  public void b(String paramString)
+  public void b(int paramInt1, int paramInt2)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(229667);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229667);
       return;
     }
-    this.v = paramString;
+    this.e.a(paramInt1, paramInt2);
+    AppMethodBeat.o(229667);
   }
   
-  public void c()
+  public void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(67684);
-    if (this.m) {
-      if (this.p) {
-        s();
+    AppMethodBeat.i(229651);
+    this.X.setBeautyLevel(paramInt1);
+    this.X.setWhitenessLevel(paramInt2);
+    this.X.setRuddyLevel(paramInt3);
+    AppMethodBeat.o(229651);
+  }
+  
+  public void b(com.tencent.liteav.basic.structs.b paramb)
+  {
+    AppMethodBeat.i(229710);
+    this.c.a();
+    if (!this.U)
+    {
+      this.U = true;
+      TXCKeyPointReportProxy.b(30003, 0);
+    }
+    if (this.t == 2)
+    {
+      AppMethodBeat.o(229710);
+      return;
+    }
+    k localk = this.e;
+    if ((this.f != null) && (!this.q.N) && (localk != null))
+    {
+      if ((this.i.height != paramb.h) || (this.i.width != paramb.g)) {
+        d(paramb.g, paramb.h);
+      }
+      this.f.a(localk.f());
+      this.f.a(this.q.m);
+      this.f.a(paramb, paramb.b, 0, 0L);
+    }
+    AppMethodBeat.o(229710);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    AppMethodBeat.i(14405);
+    this.Y = paramBoolean;
+    TXCLog.i("TXCCaptureAndEnc", "Is encoder need texture after glFinish: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(14405);
+  }
+  
+  public void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  
+  public g c()
+  {
+    return this.q;
+  }
+  
+  public void c(final int paramInt)
+  {
+    AppMethodBeat.i(229624);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229624);
+      return;
+    }
+    this.e.a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(229403);
+        if (d.a(d.this) != null) {
+          d.a(d.this).d(paramInt);
+        }
+        d.a(d.this, paramInt);
+        AppMethodBeat.o(229403);
+      }
+    });
+    AppMethodBeat.o(229624);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    AppMethodBeat.i(229618);
+    TXCLog.i("TXCCaptureAndEnc", "enableBlackStream ".concat(String.valueOf(paramBoolean)));
+    this.u = paramBoolean;
+    if (this.u)
+    {
+      if (this.e == null)
+      {
+        x();
+        AppMethodBeat.o(229618);
+      }
+    }
+    else {
+      y();
+    }
+    AppMethodBeat.o(229618);
+  }
+  
+  public int d()
+  {
+    return this.i.width;
+  }
+  
+  public void d(final int paramInt)
+  {
+    AppMethodBeat.i(229628);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229628);
+      return;
+    }
+    this.e.a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(229405);
+        if (d.a(d.this) != null) {
+          d.a(d.this).e(paramInt);
+        }
+        AppMethodBeat.o(229405);
+      }
+    });
+    AppMethodBeat.o(229628);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    AppMethodBeat.i(229632);
+    l(paramBoolean);
+    AppMethodBeat.o(229632);
+  }
+  
+  public int e()
+  {
+    return this.i.height;
+  }
+  
+  public void e(int paramInt)
+  {
+    AppMethodBeat.i(229637);
+    if (this.q.i == paramInt)
+    {
+      AppMethodBeat.o(229637);
+      return;
+    }
+    this.q.i = paramInt;
+    if ((this.e != null) && (this.e.g() < paramInt)) {
+      switch (this.r)
+      {
       }
     }
     for (;;)
     {
-      if (this.p) {
-        m();
-      }
-      AppMethodBeat.o(67684);
+      AppMethodBeat.o(229637);
       return;
-      k();
-      continue;
-      TXCLog.e(a, "play " + this.c + " failed");
-      if (this.p) {
-        b(false);
-      } else {
-        j();
+      m(true);
+      u();
+      AppMethodBeat.o(229637);
+      return;
+      this.e.f(paramInt);
+    }
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    this.W = paramBoolean;
+  }
+  
+  public int f()
+  {
+    AppMethodBeat.i(229601);
+    if (k())
+    {
+      TXCLog.w("TXCCaptureAndEnc", "ignore startPush when pushing, status:" + this.t);
+      AppMethodBeat.o(229601);
+      return -2;
+    }
+    TXCDRApi.initCrashReport(this.p);
+    this.t = 1;
+    TXCLog.i("TXCCaptureAndEnc", "startWithoutAudio");
+    D();
+    AppMethodBeat.o(229601);
+    return 0;
+  }
+  
+  public void f(int paramInt)
+  {
+    AppMethodBeat.i(229645);
+    TXCLog.i("TXCCaptureAndEnc", "setRenderMode ".concat(String.valueOf(paramInt)));
+    this.w = paramInt;
+    if (this.e != null) {
+      this.e.c(paramInt);
+    }
+    if (this.D != null) {
+      this.D.a(this.w);
+    }
+    AppMethodBeat.o(229645);
+  }
+  
+  public boolean f(boolean paramBoolean)
+  {
+    AppMethodBeat.i(229650);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229650);
+      return false;
+    }
+    paramBoolean = this.e.d(paramBoolean);
+    AppMethodBeat.o(229650);
+    return paramBoolean;
+  }
+  
+  public void g()
+  {
+    AppMethodBeat.i(229605);
+    if (!k())
+    {
+      TXCLog.w("TXCCaptureAndEnc", "ignore stopPush when not pushing, status:" + this.t);
+      AppMethodBeat.o(229605);
+      return;
+    }
+    TXCLog.i("TXCCaptureAndEnc", "stop");
+    this.t = 0;
+    u();
+    this.q.Q = false;
+    if (this.a != null) {
+      this.a.b();
+    }
+    c(false);
+    this.E = null;
+    AppMethodBeat.o(229605);
+  }
+  
+  public void g(int paramInt)
+  {
+    AppMethodBeat.i(229646);
+    if (this.v != paramInt) {
+      TXCLog.i("TXCCaptureAndEnc", "vrotation setRenderRotation ".concat(String.valueOf(paramInt)));
+    }
+    this.v = paramInt;
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229646);
+      return;
+    }
+    this.e.b(paramInt);
+    AppMethodBeat.o(229646);
+  }
+  
+  public boolean g(boolean paramBoolean)
+  {
+    AppMethodBeat.i(229668);
+    this.q.T = paramBoolean;
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229668);
+      return false;
+    }
+    this.e.c(paramBoolean);
+    AppMethodBeat.o(229668);
+    return true;
+  }
+  
+  public void h()
+  {
+    AppMethodBeat.i(229610);
+    if (this.t != 1)
+    {
+      TXCLog.w("TXCCaptureAndEnc", "ignore pause push when is not pushing, status:" + this.t);
+      AppMethodBeat.o(229610);
+      return;
+    }
+    this.t = 2;
+    TXCLog.i("TXCCaptureAndEnc", "pausePusher");
+    if ((this.q.E & 0x1) == 1)
+    {
+      u();
+      if ((this.a != null) && (!this.q.N))
+      {
+        int i1 = this.i.width;
+        int i3 = this.i.height;
+        int i2;
+        if (i1 != 0)
+        {
+          i2 = i3;
+          if (i3 != 0) {}
+        }
+        else
+        {
+          i1 = this.q.a;
+          i2 = this.q.b;
+          if ((this.q.m == 0) || (this.q.m == 2))
+          {
+            i1 = this.q.b;
+            i2 = this.q.a;
+          }
+        }
+        this.a.a(this.q.D, this.q.C, this.q.B, i1, i2);
+      }
+      if (this.e != null) {
+        this.e.c();
+      }
+    }
+    AppMethodBeat.o(229610);
+  }
+  
+  public void h(int paramInt)
+  {
+    AppMethodBeat.i(229653);
+    this.X.setBeautyStyle(paramInt);
+    AppMethodBeat.o(229653);
+  }
+  
+  public void h(boolean paramBoolean)
+  {
+    AppMethodBeat.i(229672);
+    if (this.I)
+    {
+      TXCLog.i("TXCCaptureAndEnc", "enableRPS when mEnableHEVCEncode = true");
+      AppMethodBeat.o(229672);
+      return;
+    }
+    if (this.G == paramBoolean)
+    {
+      AppMethodBeat.o(229672);
+      return;
+    }
+    this.G = paramBoolean;
+    TXCLog.i("TXCCaptureAndEnc", "trtc_api onVideoConfigChanged enableRps " + this.G);
+    if (this.G) {
+      this.q.k = 0;
+    }
+    u();
+    AppMethodBeat.o(229672);
+  }
+  
+  public void i()
+  {
+    AppMethodBeat.i(14394);
+    if (this.t != 2)
+    {
+      TXCLog.w("TXCCaptureAndEnc", "ignore resume push when is not pause, status:" + this.t);
+      AppMethodBeat.o(14394);
+      return;
+    }
+    this.t = 1;
+    TXCLog.i("TXCCaptureAndEnc", "resumePusher");
+    if ((this.q.E & 0x1) == 1)
+    {
+      if ((this.a != null) && (!this.q.N)) {
+        this.a.b();
+      }
+      u();
+      if (this.e != null) {
+        this.e.b();
+      }
+      C();
+    }
+    AppMethodBeat.o(14394);
+  }
+  
+  public void i(boolean paramBoolean)
+  {
+    this.h = paramBoolean;
+  }
+  
+  public boolean i(int paramInt)
+  {
+    AppMethodBeat.i(229665);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229665);
+      return false;
+    }
+    boolean bool = this.e.a(paramInt);
+    AppMethodBeat.o(229665);
+    return bool;
+  }
+  
+  public void j(int paramInt)
+  {
+    AppMethodBeat.i(229670);
+    this.F = paramInt;
+    if (this.e != null) {
+      this.e.g(this.F);
+    }
+    AppMethodBeat.o(229670);
+  }
+  
+  public void j(boolean paramBoolean)
+  {
+    this.H = paramBoolean;
+  }
+  
+  public boolean j()
+  {
+    return this.u;
+  }
+  
+  public void k(int paramInt)
+  {
+    AppMethodBeat.i(229674);
+    com.tencent.liteav.videoencoder.b localb = null;
+    if (paramInt == 2) {
+      localb = this.j;
+    }
+    for (;;)
+    {
+      if (localb != null) {
+        localb.b();
+      }
+      AppMethodBeat.o(229674);
+      return;
+      if (paramInt == 3) {
+        localb = this.n;
       }
     }
   }
   
-  protected d.a d()
+  public void k(final boolean paramBoolean)
   {
-    AppMethodBeat.i(67686);
+    AppMethodBeat.i(229676);
+    TXCLog.i("TXCCaptureAndEnc", "mEnableHEVCEncode = ".concat(String.valueOf(paramBoolean)));
+    if (this.e != null)
+    {
+      this.e.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(229426);
+          d.a(d.this, paramBoolean);
+          AppMethodBeat.o(229426);
+        }
+      });
+      AppMethodBeat.o(229676);
+      return;
+    }
+    synchronized (this.o)
+    {
+      this.I = paramBoolean;
+      AppMethodBeat.o(229676);
+      return;
+    }
+  }
+  
+  public boolean k()
+  {
+    return this.t != 0;
+  }
+  
+  public void l()
+  {
+    AppMethodBeat.i(14397);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(14397);
+      return;
+    }
+    this.e.a(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(229409);
+        if (d.f(d.this) != null) {
+          d.f(d.this).b(true);
+        }
+        d.a(d.this, d.c(d.this).width, d.c(d.this).height);
+        d.this.a(d.j(d.this));
+        AppMethodBeat.o(229409);
+      }
+    });
+    AppMethodBeat.o(14397);
+  }
+  
+  public void l(int paramInt)
+  {
+    AppMethodBeat.i(229700);
+    if (!this.I) {
+      if (this.i.width * this.i.height >= 518400) {
+        break label58;
+      }
+    }
+    for (this.q.k = 0; paramInt == 3; this.q.k = 0)
+    {
+      label42:
+      w();
+      AppMethodBeat.o(229700);
+      return;
+      label58:
+      if ((this.i.width * this.i.height >= 921600) || (!this.g)) {
+        break label42;
+      }
+    }
+    if (this.I) {
+      com.tencent.liteav.basic.util.h.a(this.ab, -2310, getID());
+    }
+    for (;;)
+    {
+      k(false);
+      v();
+      AppMethodBeat.o(229700);
+      return;
+      this.g = true;
+    }
+  }
+  
+  public void m()
+  {
+    AppMethodBeat.i(14398);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(14398);
+      return;
+    }
+    this.X.a(true);
+    l(true);
+    AppMethodBeat.o(14398);
+  }
+  
+  public void m(int paramInt) {}
+  
+  public void n(final int paramInt)
+  {
+    int i1 = 2;
+    AppMethodBeat.i(229721);
+    if (paramInt <= 0) {
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      if (paramInt > 2) {
+        paramInt = i1;
+      }
+      for (;;)
+      {
+        Runnable local18 = new Runnable()
+        {
+          public void run()
+          {
+            AppMethodBeat.i(229380);
+            if (d.c(d.this).encoderMode == paramInt)
+            {
+              AppMethodBeat.o(229380);
+              return;
+            }
+            d.c(d.this).encoderMode = paramInt;
+            d.h(d.this).encoderMode = paramInt;
+            d.g(d.this);
+            d.i(d.this);
+            AppMethodBeat.o(229380);
+          }
+        };
+        if (this.e == null)
+        {
+          local18.run();
+          AppMethodBeat.o(229721);
+          return;
+        }
+        this.e.a(local18);
+        AppMethodBeat.o(229721);
+        return;
+      }
+    }
+  }
+  
+  public boolean n()
+  {
+    AppMethodBeat.i(229660);
+    if (this.e != null)
+    {
+      boolean bool = this.e.h();
+      AppMethodBeat.o(229660);
+      return bool;
+    }
+    AppMethodBeat.o(229660);
+    return false;
+  }
+  
+  public boolean o()
+  {
+    AppMethodBeat.i(229661);
+    if (this.e != null)
+    {
+      boolean bool = this.e.i();
+      AppMethodBeat.o(229661);
+      return bool;
+    }
+    AppMethodBeat.o(229661);
+    return false;
+  }
+  
+  public void onNotifyEvent(int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(229704);
+    if (paramBundle != null) {
+      paramBundle.putString("EVT_USERID", getID());
+    }
+    if (paramInt == -2311) {
+      k(false);
+    }
+    com.tencent.liteav.basic.util.h.a(this.ab, paramInt, paramBundle);
+    if (paramInt == -1314)
+    {
+      TXCEventRecorderProxy.a(getID(), 2002, 5L, -1L, "", this.F);
+      if ((paramInt == -1301) || (paramInt == -1314) || (paramInt == -1315) || (paramInt == -1316))
+      {
+        TXCKeyPointReportProxy.b(30003, paramInt);
+        if (this.e != null)
+        {
+          paramBundle = getID();
+          if (!this.e.l()) {
+            break label230;
+          }
+        }
+      }
+    }
+    label230:
+    for (long l1 = 0L;; l1 = 1L)
+    {
+      TXCEventRecorderProxy.a(paramBundle, 4002, l1, paramInt, "", this.F);
+      AppMethodBeat.o(229704);
+      return;
+      if (paramInt == 1003)
+      {
+        if (this.e == null) {
+          break;
+        }
+        paramBundle = getID();
+        if (this.e.l()) {}
+        for (l1 = 0L;; l1 = 1L)
+        {
+          TXCEventRecorderProxy.a(paramBundle, 4001, l1, -1L, "", this.F);
+          break;
+        }
+      }
+      if (paramInt != -1308) {
+        break;
+      }
+      m();
+      break;
+    }
+  }
+  
+  public boolean p()
+  {
+    AppMethodBeat.i(229662);
+    if (this.e != null)
+    {
+      boolean bool = this.e.j();
+      AppMethodBeat.o(229662);
+      return bool;
+    }
+    AppMethodBeat.o(229662);
+    return false;
+  }
+  
+  public boolean q()
+  {
+    AppMethodBeat.i(229663);
+    if (this.e != null)
+    {
+      boolean bool = this.e.k();
+      AppMethodBeat.o(229663);
+      return bool;
+    }
+    AppMethodBeat.o(229663);
+    return false;
+  }
+  
+  public int r()
+  {
+    AppMethodBeat.i(229664);
+    if (this.e == null)
+    {
+      AppMethodBeat.o(229664);
+      return 0;
+    }
+    int i1 = this.e.e();
+    AppMethodBeat.o(229664);
+    return i1;
+  }
+  
+  public void s()
+  {
+    AppMethodBeat.i(14406);
     try
     {
-      Object localObject2 = Uri.parse(this.v);
-      if (localObject2 == null)
-      {
-        localObject1 = d.a.a;
-        AppMethodBeat.o(67686);
-        return localObject1;
+      if (this.f != null) {
+        this.f.b();
       }
-      localObject1 = ((Uri)localObject2).getHost();
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      if (this.P != null)
       {
-        localObject1 = d.a.a;
-        AppMethodBeat.o(67686);
-        return localObject1;
+        this.P.d();
+        this.P = null;
       }
-      String str = ((Uri)localObject2).getScheme();
-      if (str == null)
+      if (this.R != null)
       {
-        localObject1 = d.a.a;
-        AppMethodBeat.o(67686);
-        return localObject1;
+        this.R.d();
+        this.R = null;
       }
-      if ((!str.equals("rtmp")) && (!str.equals("http")) && (!str.equals("https")))
+      if (this.Q != null)
       {
-        localObject1 = d.a.a;
-        AppMethodBeat.o(67686);
-        return localObject1;
+        this.Q.d();
+        this.Q = null;
       }
-      if (c((String)localObject1))
-      {
-        localObject1 = d.a.b;
-        AppMethodBeat.o(67686);
-        return localObject1;
-      }
-      localObject2 = ((Uri)localObject2).getQueryParameterNames();
-      if ((localObject2 != null) && ((((Set)localObject2).contains("bizid")) || (((Set)localObject2).contains("txTime")) || (((Set)localObject2).contains("txSecret"))))
-      {
-        localObject1 = d.a.b;
-        AppMethodBeat.o(67686);
-        return localObject1;
-      }
-      if (w.containsKey(localObject1))
-      {
-        localObject1 = (d.a)w.get(localObject1);
-        AppMethodBeat.o(67686);
-        return localObject1;
-      }
-      w.put(localObject1, d.a.a);
-      new Thread(new d.1(this, (String)localObject1)).start();
+      B();
+      A();
+      z();
+      AppMethodBeat.o(14406);
+      return;
     }
     catch (Exception localException)
     {
-      Object localObject1;
-      label252:
-      break label252;
+      TXCLog.e("TXCCaptureAndEnc", "stop preprocessor and encoder failed.", localException);
+      AppMethodBeat.o(14406);
     }
-    localObject1 = d.a.a;
-    AppMethodBeat.o(67686);
-    return localObject1;
   }
   
-  public void d(String paramString)
+  public void setID(String paramString)
   {
-    this.x = paramString;
+    AppMethodBeat.i(229587);
+    super.setID(paramString);
+    if (this.j != null) {
+      this.j.setID(paramString);
+    }
+    if (this.n != null) {
+      this.n.setID(paramString);
+    }
+    if (this.f != null) {
+      this.f.setID(paramString);
+    }
+    if (this.e != null) {
+      this.e.a(getID());
+    }
+    TXCLog.w("TXCCaptureAndEnc", "setID:".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(229587);
   }
   
-  public void e()
+  public void t()
   {
-    AppMethodBeat.i(67688);
-    if ((!this.m) && (!TextUtils.isEmpty(TXCStatus.b(this.x, 7012))))
+    AppMethodBeat.i(14407);
+    TXCLog.i("TXCCaptureAndEnc", "onCaptureDestroy->enter ");
+    if (this.f != null) {
+      this.f.b();
+    }
+    if (this.P != null)
     {
-      o();
-      this.m = true;
+      this.P.d();
+      this.P = null;
     }
-    if (this.n <= 0L) {
-      this.n = TXCTimeUtil.getTimeTick();
-    }
-    if ((this.m) && (TXCTimeUtil.getTimeTick() - this.n > 5000L))
+    if (this.R != null)
     {
-      q();
-      this.n = TXCTimeUtil.getTimeTick();
+      this.R.d();
+      this.R = null;
     }
-    AppMethodBeat.o(67688);
+    if (this.Q != null)
+    {
+      this.Q.d();
+      this.Q = null;
+    }
+    if (this.S != null)
+    {
+      this.S.d();
+      this.S = null;
+    }
+    B();
+    A();
+    z();
+    AppMethodBeat.o(14407);
   }
   
-  public void f()
+  public void u()
   {
-    AppMethodBeat.i(67689);
-    if (!this.m)
+    AppMethodBeat.i(229713);
+    Runnable local13 = new Runnable()
     {
-      long l1 = TXCStatus.a(this.x, 6001);
-      long l2 = TXCStatus.a(this.x, 7104);
-      if ((l1 != 0L) || (l2 != 0L))
+      public void run()
       {
-        if (!this.p) {
-          break label180;
-        }
-        b(true);
-        this.o = 5000;
-        this.m = true;
+        AppMethodBeat.i(229394);
+        d.g(d.this);
+        d.i(d.this);
+        AppMethodBeat.o(229394);
       }
-      String str = TXCStatus.b(this.x, 7119);
-      if (str != null) {
-        b(str);
-      }
-    }
-    if (this.n <= 0L) {
-      this.n = TXCTimeUtil.getTimeTick();
-    }
-    if ((this.m) && (TXCTimeUtil.getTimeTick() > this.n + this.o))
+    };
+    ??? = this.e;
+    if (??? != null)
     {
-      if (!this.p) {
-        break label187;
-      }
-      t();
-      this.o = 5000;
-    }
-    for (;;)
-    {
-      this.l = TXCStatus.a(this.x, 6004);
-      this.n = TXCTimeUtil.getTimeTick();
-      AppMethodBeat.o(67689);
+      ((k)???).a(local13);
+      AppMethodBeat.o(229713);
       return;
-      label180:
-      i();
-      break;
-      label187:
-      if (d() == d.a.c)
-      {
-        AppMethodBeat.o(67689);
-        return;
-      }
-      l();
-      this.o = TXCDRApi.getStatusReportInterval();
-      if (this.o < 5000) {
-        this.o = 5000;
-      }
-      if (this.o > 300000) {
-        this.o = 300000;
-      }
     }
+    synchronized (this.o)
+    {
+      local13.run();
+      AppMethodBeat.o(229713);
+      return;
+    }
+  }
+  
+  public void v()
+  {
+    AppMethodBeat.i(229715);
+    if (this.j == null)
+    {
+      AppMethodBeat.o(229715);
+      return;
+    }
+    if (this.e != null)
+    {
+      this.e.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(229389);
+          d.g(d.this);
+          AppMethodBeat.o(229389);
+        }
+      });
+      AppMethodBeat.o(229715);
+      return;
+    }
+    B();
+    AppMethodBeat.o(229715);
+  }
+  
+  public void w()
+  {
+    AppMethodBeat.i(229716);
+    if (this.n == null)
+    {
+      AppMethodBeat.o(229716);
+      return;
+    }
+    if (this.e != null)
+    {
+      this.e.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(229392);
+          d.i(d.this);
+          AppMethodBeat.o(229392);
+        }
+      });
+      AppMethodBeat.o(229716);
+      return;
+    }
+    A();
+    AppMethodBeat.o(229716);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onBackgroudPushStop();
+    
+    public abstract void onEncVideo(TXSNALPacket paramTXSNALPacket);
+    
+    public abstract void onEncVideoFormat(MediaFormat paramMediaFormat);
   }
 }
 

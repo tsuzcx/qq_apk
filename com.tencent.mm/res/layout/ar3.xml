@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/d9k" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/ea5" android:visibility="invisible" android:layout_centerHorizontal="true" style="@style/rb" />
-    <TextView android:id="@id/ea6" android:layout_below="@id/ea5" android:layout_centerHorizontal="true" style="@style/ra" />
-    <TextView android:id="@id/ea2" android:text="@string/e25" android:layout_centerHorizontal="true" style="@style/rd" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/a5s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cp">
+        <View android:layout_gravity="center_vertical" android:background="@drawable/a5r" android:layout_width="@dimen/bv" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bv" android:layout_marginBottom="@dimen/bv" android:layout_marginStart="@dimen/cp" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/g_" android:ellipsize="end" android:gravity="start" android:layout_gravity="center_vertical" android:id="@id/d9l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:text="每日一看:#打工人" android:singleLine="true" android:includeFontPadding="false" android:layout_marginStart="@dimen/a6w" android:layout_marginEnd="@dimen/cp" />
+    </LinearLayout>
+</FrameLayout>

@@ -5,14 +5,14 @@ public final class e
 {
   public e(i parami)
   {
-    this.CMD = 2064;
-    this.CME = 13;
-    this.CMG = parami;
+    this.ajGQ = 2064;
+    this.ajGR = 13;
+    this.ajGT = parami;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.request.e
  * JD-Core Version:    0.7.0.1
  */

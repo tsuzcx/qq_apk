@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.qqmini.sdk.core.proxy.WebSocketProxy.WebSocketListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
 
 class WebSocketProxyImpl$1
   implements Runnable
@@ -9,14 +9,14 @@ class WebSocketProxyImpl$1
   
   public void run()
   {
-    if (!this.val$task.socketClosedCallbacked) {
-      this.val$task.mListener.onClose(this.val$socketId, this.val$code, this.val$reason);
+    if (!this.a.e) {
+      this.a.c.onClose(this.b, this.c, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

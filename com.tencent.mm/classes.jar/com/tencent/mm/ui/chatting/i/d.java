@@ -1,99 +1,118 @@
 package com.tencent.mm.ui.chatting.i;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.v;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.chatting.a.c.a;
-import com.tencent.mm.ui.chatting.a.c.e;
-import com.tencent.mm.ui.chatting.e.b.b;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.autogen.mmdata.rpt.qo;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.v;
+import com.tencent.mm.modelvideo.ae;
+import com.tencent.mm.modelvideo.ae.a;
+import com.tencent.mm.modelvideo.z;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cc;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/report/VideoDownloadReporter;", "", "()V", "reportVideoDownload", "", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "fileName", "", "isRawVideo", "", "downloadSize", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends b
 {
-  int elr = -1;
-  int zPk = 0;
+  public static final d aeJp;
   
-  public d(Context paramContext)
+  static
   {
-    super(paramContext);
+    AppMethodBeat.i(253984);
+    aeJp = new d();
+    AppMethodBeat.o(253984);
   }
   
-  public final void a(c.a parama, int paramInt)
+  public static void a(cc paramcc, String paramString, boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(32550);
-    parama = (d.b)parama;
-    d.a locala = (d.a)PD(paramInt);
-    if (bo.isNullOrNil(locala.desc)) {
-      parama.gpM.setVisibility(8);
-    }
-    for (;;)
+    int j = 1;
+    AppMethodBeat.i(253979);
+    if (paramcc == null)
     {
-      parama.ivs.setImageResource(locala.iconRes);
-      AppMethodBeat.o(32550);
+      AppMethodBeat.o(253979);
       return;
-      parama.gpM.setVisibility(0);
-      parama.gpM.setText(bo.bf(locala.desc, ""));
     }
-  }
-  
-  public final String apc()
-  {
-    AppMethodBeat.i(32546);
-    String str = this.mContext.getString(2131296521);
-    AppMethodBeat.o(32546);
-    return str;
-  }
-  
-  public final void dJQ()
-  {
-    AppMethodBeat.i(32545);
-    ab.i("MicroMsg.FileHistoryListPresenter", "[loadData] isFirst:%s", new Object[] { Boolean.TRUE });
-    this.zPc.dJU();
-    g.RM();
-    g.RO().ac(new d.1(this));
-    AppMethodBeat.o(32545);
-  }
-  
-  public final c.e dJR()
-  {
-    AppMethodBeat.i(32548);
-    d.2 local2 = new d.2(this);
-    AppMethodBeat.o(32548);
-    return local2;
-  }
-  
-  public final String dJT()
-  {
-    AppMethodBeat.i(32547);
-    String str = this.mContext.getString(2131296521);
-    AppMethodBeat.o(32547);
-    return str;
-  }
-  
-  public final int getType()
-  {
-    return 6;
-  }
-  
-  public final RecyclerView.v v(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(32549);
-    paramViewGroup = new d.b(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969580, paramViewGroup, false));
-    AppMethodBeat.o(32549);
-    return paramViewGroup;
+    if (paramString == null)
+    {
+      AppMethodBeat.o(253979);
+      return;
+    }
+    z localz = com.tencent.mm.modelvideo.ab.Qo(paramString);
+    if (localz == null)
+    {
+      AppMethodBeat.o(253979);
+      return;
+    }
+    paramString = ae.pbN;
+    ae localae = ae.a.Qv(localz.bOu());
+    qo localqo = new qo();
+    long l;
+    if (localae != null)
+    {
+      localqo.jti = localae.nVD;
+      if (paramBoolean)
+      {
+        paramString = localae.pbQ;
+        localqo.jth = localqo.F("FildID", paramString, true);
+        if (!paramBoolean) {
+          break label268;
+        }
+        l = localae.pbT;
+        label119:
+        localqo.iIE = l;
+        if (!com.tencent.mm.platformtools.ab.isNullOrNil(localae.pbQ)) {
+          break label279;
+        }
+        i = 0;
+        label140:
+        localqo.jtf = i;
+      }
+    }
+    else
+    {
+      boolean bool = au.bwG(paramcc.field_talker);
+      localqo.imN = localqo.F("ChatName", ((n)h.ax(n.class)).bzA().JE(paramcc.field_talker).aSV(), true);
+      if (!bool) {
+        break label285;
+      }
+      i = 1;
+      label202:
+      localqo.imM = i;
+      if (bool) {
+        localqo.jtj = v.getMembersCountByChatRoomName(paramcc.field_talker);
+      }
+      if (!paramBoolean) {
+        break label291;
+      }
+    }
+    label268:
+    label279:
+    label285:
+    label291:
+    for (int i = j;; i = 0)
+    {
+      localqo.jtg = i;
+      localqo.jag = paramLong;
+      localqo.bMH();
+      AppMethodBeat.o(253979);
+      return;
+      paramString = localae.pbR;
+      break;
+      l = localz.osy;
+      break label119;
+      i = 1;
+      break label140;
+      i = 0;
+      break label202;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.i.d
  * JD-Core Version:    0.7.0.1
  */

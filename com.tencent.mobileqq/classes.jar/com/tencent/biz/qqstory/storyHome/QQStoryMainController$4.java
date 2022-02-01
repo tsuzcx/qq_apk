@@ -3,8 +3,6 @@ package com.tencent.biz.qqstory.storyHome;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import whf;
-import whn;
 
 class QQStoryMainController$4
   implements Runnable
@@ -16,19 +14,22 @@ class QQStoryMainController$4
     if (QQStoryMainController.a(this.this$0)) {
       return;
     }
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = this.this$0.a();
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.setInputViewHideListener(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    this.this$0.jdField_a_of_type_Whn.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.a(), this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    QQStoryMainController.a(this.this$0, this.this$0.jdField_a_of_type_Whf.a());
-    QQStoryMainController.a(this.this$0, this.this$0.jdField_a_of_type_Whf.a());
-    QQStoryMainController.a(this.this$0).setVisibility(8);
-    QQStoryMainController.a(this.this$0).setVisibility(8);
-    QQStoryMainController.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "mainHallConfig", QQStoryMainController.a(this.this$0), QQStoryMainController.a(this.this$0));
+    QQStoryMainController localQQStoryMainController = this.this$0;
+    localQQStoryMainController.f = localQQStoryMainController.h();
+    this.this$0.f.setInputViewHideListener(this.this$0.b);
+    this.this$0.l.a(this.this$0.d, this.this$0.a(), this.this$0.b);
+    localQQStoryMainController = this.this$0;
+    QQStoryMainController.a(localQQStoryMainController, localQQStoryMainController.i.c());
+    localQQStoryMainController = this.this$0;
+    QQStoryMainController.a(localQQStoryMainController, localQQStoryMainController.i.d());
+    QQStoryMainController.b(this.this$0).setVisibility(8);
+    QQStoryMainController.c(this.this$0).setVisibility(8);
+    QQStoryMainController.a(this.this$0.a, "mainHallConfig", QQStoryMainController.b(this.this$0), QQStoryMainController.c(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainController.4
  * JD-Core Version:    0.7.0.1
  */

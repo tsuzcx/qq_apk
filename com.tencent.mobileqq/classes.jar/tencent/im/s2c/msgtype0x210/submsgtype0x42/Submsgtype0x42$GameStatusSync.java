@@ -22,7 +22,7 @@ public final class Submsgtype0x42$GameStatusSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x42.Submsgtype0x42.GameStatusSync
  * JD-Core Version:    0.7.0.1
  */

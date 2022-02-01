@@ -1,40 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera.a;
 
+import android.graphics.Point;
 import android.graphics.Rect;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.qbar.QbarNative.QBarPoint;
 
 public abstract class c
 {
-  private boolean cvo = false;
-  public c.a hJB;
+  private boolean hJi = false;
+  public a rRd;
   
-  public final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, Rect paramRect, int paramInt3)
+  public final void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Point paramPoint, Rect paramRect, int paramInt5, int paramInt6)
   {
-    if (this.cvo) {}
+    if (this.hJi) {}
     b localb;
     do
     {
       return;
-      localb = aCQ();
+      localb = crQ();
     } while (paramArrayOfByte == null);
-    localb.hJp.ac(new b.1(localb, paramArrayOfByte, paramInt3, paramInt1, paramInt2, paramRect));
+    localb.rQM.postToWorker(new b.1(localb, paramArrayOfByte, paramInt5, paramInt1, paramInt2, paramInt3, paramInt4, paramPoint, paramRect, paramInt6));
   }
   
-  protected abstract b aCQ();
+  protected abstract b crQ();
   
   public final void init()
   {
-    aCQ().init();
+    crQ().init();
   }
   
   public final void release()
   {
-    aCQ().release();
+    crQ().release();
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte, QbarNative.QBarPoint paramQBarPoint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.a.c
  * JD-Core Version:    0.7.0.1
  */

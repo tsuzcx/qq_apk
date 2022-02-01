@@ -24,36 +24,62 @@ public class AppBrandMainService$AppBrandMainServiceBinder
   
   public void onAppBackground(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    QLog.w("miniapp-process_AppBrandMainService", 1, "AppBrandMainService onAppBackground. pOrigName=" + this.mProcessName + " Name=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandMainService onAppBackground. pOrigName=");
+    localStringBuilder.append(this.mProcessName);
+    localStringBuilder.append(" Name=");
+    localStringBuilder.append(paramString);
+    QLog.w("miniapp-process_AppBrandMainService", 1, localStringBuilder.toString());
     AppBrandLaunchManager.g().getHandler().post(new AppBrandMainService.AppBrandMainServiceBinder.3(this, paramString, paramMiniAppConfig, paramBundle));
   }
   
   public void onAppForeground(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    QLog.w("miniapp-process_AppBrandMainService", 1, "AppBrandMainService onAppForeground. pOrigName=" + this.mProcessName + " Name=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandMainService onAppForeground. pOrigName=");
+    localStringBuilder.append(this.mProcessName);
+    localStringBuilder.append(" Name=");
+    localStringBuilder.append(paramString);
+    QLog.w("miniapp-process_AppBrandMainService", 1, localStringBuilder.toString());
     AppBrandLaunchManager.g().getHandler().post(new AppBrandMainService.AppBrandMainServiceBinder.4(this, paramString, paramMiniAppConfig, paramBundle));
   }
   
   public void onAppStart(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    QLog.w("miniapp-process_AppBrandMainService", 1, "AppBrandMainService onAppStart. pOrigName=" + this.mProcessName + " Name=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandMainService onAppStart. pOrigName=");
+    localStringBuilder.append(this.mProcessName);
+    localStringBuilder.append(" Name=");
+    localStringBuilder.append(paramString);
+    QLog.w("miniapp-process_AppBrandMainService", 1, localStringBuilder.toString());
     AppBrandLaunchManager.g().getHandler().post(new AppBrandMainService.AppBrandMainServiceBinder.2(this, paramString, paramMiniAppConfig, paramBundle));
   }
   
   public void onAppStop(String paramString, MiniAppConfig paramMiniAppConfig, Bundle paramBundle)
   {
-    QLog.w("miniapp-process_AppBrandMainService", 1, "AppBrandMainService onAppStop. pOrigName=" + this.mProcessName + " Name=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandMainService onAppStop. pOrigName=");
+    localStringBuilder.append(this.mProcessName);
+    localStringBuilder.append(" Name=");
+    localStringBuilder.append(paramString);
+    QLog.w("miniapp-process_AppBrandMainService", 1, localStringBuilder.toString());
     AppBrandLaunchManager.g().getHandler().post(new AppBrandMainService.AppBrandMainServiceBinder.5(this, paramString, paramMiniAppConfig, paramBundle));
   }
   
   public void preloadMiniApp()
   {
-    QLog.w("miniapp-process_AppBrandMainService", 1, "AppBrandMainService call preloadMiniApp not from Main Processor . pName=" + this.mProcessName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandMainService call preloadMiniApp not from Main Processor . pName=");
+    localStringBuilder.append(this.mProcessName);
+    QLog.w("miniapp-process_AppBrandMainService", 1, localStringBuilder.toString());
   }
   
   public void preloadPackage(MiniAppInfo paramMiniAppInfo)
   {
-    QLog.w("miniapp-process_AppBrandMainService", 1, "AppBrandMainService call preloadPackage not from Main Processor. pName=" + this.mProcessName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandMainService call preloadPackage not from Main Processor. pName=");
+    localStringBuilder.append(this.mProcessName);
+    QLog.w("miniapp-process_AppBrandMainService", 1, localStringBuilder.toString());
     if (paramMiniAppInfo != null) {
       AppBrandLaunchManager.g().preloadPackage(paramMiniAppInfo);
     }
@@ -66,13 +92,16 @@ public class AppBrandMainService$AppBrandMainServiceBinder
   
   public void startMiniApp(MiniAppConfig paramMiniAppConfig, ResultReceiver paramResultReceiver)
   {
-    QLog.w("miniapp-process_AppBrandMainService", 1, "AppBrandMainService call startMiniApp not from Main Processor. pName=" + this.mProcessName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandMainService call startMiniApp not from Main Processor. pName=");
+    localStringBuilder.append(this.mProcessName);
+    QLog.w("miniapp-process_AppBrandMainService", 1, localStringBuilder.toString());
     AppBrandLaunchManager.g().getHandler().post(new AppBrandMainService.AppBrandMainServiceBinder.1(this, paramMiniAppConfig, paramResultReceiver));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandMainService.AppBrandMainServiceBinder
  * JD-Core Version:    0.7.0.1
  */

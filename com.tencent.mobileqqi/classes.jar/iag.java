@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.plugin.PluginIphoneTitleBarActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class iag
-  implements View.OnClickListener
+public final class iag
+  implements DialogInterface.OnClickListener
 {
-  public iag(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
+  public iag(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    this.a.onClick(paramDialogInterface, paramInt);
+    paramDialogInterface.dismiss();
   }
 }
 

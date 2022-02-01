@@ -3,65 +3,65 @@ package com.tencent.mm.plugin.facedetect.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.FaceProNative;
 import com.tencent.mm.plugin.facedetect.FaceProNative.FaceResult;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
 {
-  public FaceProNative mic = null;
+  public FaceProNative zSS = null;
   
-  public final FaceProNative.FaceResult buy()
+  public final FaceProNative.FaceResult dOQ()
   {
-    AppMethodBeat.i(214);
-    if (this.mic == null)
+    AppMethodBeat.i(103739);
+    if (this.zSS == null)
     {
-      ab.e("MicroMsg.FaceDetectNativeManager", "hy: release out not init");
-      AppMethodBeat.o(214);
+      Log.e("MicroMsg.FaceDetectNativeManager", "hy: release out not init");
+      AppMethodBeat.o(103739);
       return null;
     }
     try
     {
-      long l = bo.yB();
-      FaceProNative.FaceResult localFaceResult = this.mic.engineReleaseOut();
-      ab.i("MicroMsg.FaceDetectNativeManager", "hy: uninitialize result : %d, using: %d ms", new Object[] { Integer.valueOf(localFaceResult.result), Long.valueOf(bo.yB() - l) });
-      this.mic = null;
-      AppMethodBeat.o(214);
+      long l = Util.currentTicks();
+      FaceProNative.FaceResult localFaceResult = this.zSS.engineReleaseOut();
+      Log.i("MicroMsg.FaceDetectNativeManager", "hy: uninitialize result : %d, using: %d ms", new Object[] { Integer.valueOf(localFaceResult.result), Long.valueOf(Util.currentTicks() - l) });
+      this.zSS = null;
+      AppMethodBeat.o(103739);
       return localFaceResult;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      ab.printErrStackTrace("MicroMsg.FaceDetectNativeManager", localThrowable, "hy: face lib release crash!!!", new Object[0]);
-      this.mic.engineRelease();
-      this.mic = null;
-      AppMethodBeat.o(214);
+      Log.printErrStackTrace("MicroMsg.FaceDetectNativeManager", localThrowable, "hy: face lib release crash!!!", new Object[0]);
+      this.zSS.engineRelease();
+      this.zSS = null;
+      AppMethodBeat.o(103739);
     }
     return null;
   }
   
-  public final int buz()
+  public final int dOR()
   {
-    AppMethodBeat.i(215);
-    if (this.mic == null) {}
+    AppMethodBeat.i(103740);
+    if (this.zSS == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.v("MicroMsg.FaceDetectNativeManager", "alvinluo cutDown sFaceProNative == null: %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.mic != null) {
+      Log.v("MicroMsg.FaceDetectNativeManager", "alvinluo cutDown sFaceProNative == null: %b", new Object[] { Boolean.valueOf(bool) });
+      if (this.zSS != null) {
         break;
       }
-      ab.e("MicroMsg.FaceDetectNativeManager", "hy: reelase not init");
-      AppMethodBeat.o(215);
+      Log.e("MicroMsg.FaceDetectNativeManager", "hy: reelase not init");
+      AppMethodBeat.o(103740);
       return -101;
     }
-    int i = this.mic.engineRelease();
-    ab.i("MicroMsg.FaceDetectNativeManager", "hy: cut down result: %d", new Object[] { Integer.valueOf(i) });
-    this.mic = null;
-    AppMethodBeat.o(215);
+    int i = this.zSS.engineRelease();
+    Log.i("MicroMsg.FaceDetectNativeManager", "hy: cut down result: %d", new Object[] { Integer.valueOf(i) });
+    this.zSS = null;
+    AppMethodBeat.o(103740);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.g
  * JD-Core Version:    0.7.0.1
  */

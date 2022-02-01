@@ -1,40 +1,37 @@
 package com.tencent.mobileqq.ark.debug;
 
 import android.text.TextUtils;
-import anqh;
 
-public final class JSDebuggerSoLoader$3
+final class JSDebuggerSoLoader$3
   implements Runnable
 {
   public void run()
   {
-    if (anqh.a() == 0)
+    if (JSDebuggerSoLoader.c() == 0)
     {
-      anqh.a(anqh.a());
-      anqh.a();
-      anqh.a();
+      JSDebuggerSoLoader.a(JSDebuggerSoLoader.a());
+      JSDebuggerSoLoader.d();
+      JSDebuggerSoLoader.e();
+      return;
     }
-    String str;
-    do
+    if (JSDebuggerSoLoader.c() == 1)
     {
-      do
-      {
-        return;
-        if (anqh.a() == 1)
-        {
-          anqh.a();
-          return;
-        }
-      } while (anqh.a() != 2);
-      anqh.a();
-      str = anqh.a();
-    } while (TextUtils.isEmpty(str));
-    anqh.a(str, "libarkDebuggerJSImpl.so");
+      JSDebuggerSoLoader.e();
+      return;
+    }
+    if (JSDebuggerSoLoader.c() == 2)
+    {
+      JSDebuggerSoLoader.e();
+      String str = JSDebuggerSoLoader.a();
+      if (!TextUtils.isEmpty(str)) {
+        JSDebuggerSoLoader.a(str, "libarkDebuggerJSImpl.so");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class RES_ITEM_COVER
   extends JceStruct
 {
   static Map<String, String> cache_extendinfo = new HashMap();
-  public Map<String, String> extendinfo;
+  public Map<String, String> extendinfo = null;
   public String strJumpQzone = "";
   
   static
@@ -34,17 +34,19 @@ public final class RES_ITEM_COVER
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strJumpQzone != null) {
-      paramJceOutputStream.write(this.strJumpQzone, 0);
+    Object localObject = this.strJumpQzone;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 1);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QQ.RES_ITEM_COVER
  * JD-Core Version:    0.7.0.1
  */

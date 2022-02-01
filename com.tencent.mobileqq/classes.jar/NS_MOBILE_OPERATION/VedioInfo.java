@@ -11,15 +11,15 @@ public final class VedioInfo
 {
   static Map<String, String> cache_ext_info = new HashMap();
   public String detailurl = "";
-  public Map<String, String> ext_info;
+  public Map<String, String> ext_info = null;
   public String img = "";
   public String playurl = "";
-  public int pub_route;
-  public int subtype;
-  public long time;
+  public int pub_route = 0;
+  public int subtype = 0;
+  public long time = 0L;
   public String title = "";
   public String video_id = "";
-  public int who;
+  public int who = 0;
   
   static
   {
@@ -58,33 +58,39 @@ public final class VedioInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.playurl != null) {
-      paramJceOutputStream.write(this.playurl, 0);
+    Object localObject = this.playurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.img != null) {
-      paramJceOutputStream.write(this.img, 1);
+    localObject = this.img;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 2);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.who, 3);
-    if (this.detailurl != null) {
-      paramJceOutputStream.write(this.detailurl, 4);
+    localObject = this.detailurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.video_id != null) {
-      paramJceOutputStream.write(this.video_id, 5);
+    localObject = this.video_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.pub_route, 6);
     paramJceOutputStream.write(this.time, 7);
     paramJceOutputStream.write(this.subtype, 8);
-    if (this.ext_info != null) {
-      paramJceOutputStream.write(this.ext_info, 9);
+    localObject = this.ext_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.VedioInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,52 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.app.ai;
+import com.tencent.mm.pluginsdk.model.app.ap;
 
 final class JsApiLaunchApplication$a
-  implements ai
+  implements ap
 {
-  volatile boolean cyH;
-  volatile boolean ftW;
-  volatile boolean hyp;
-  volatile boolean hyq;
-  JsApiLaunchApplication.a.a hyr;
+  volatile boolean hPS;
+  volatile boolean ouJ;
+  volatile boolean ryI;
+  volatile boolean ryJ;
+  a ryK;
   
-  JsApiLaunchApplication$a(JsApiLaunchApplication.a.a parama)
+  JsApiLaunchApplication$a(a parama)
   {
-    this.hyr = parama;
+    this.ryK = parama;
   }
   
-  public final void dZ(boolean paramBoolean)
+  final void iY(boolean paramBoolean)
   {
-    AppMethodBeat.i(130448);
-    this.ftW = true;
-    this.hyp = paramBoolean;
-    if ((this.hyq) && (this.hyr != null)) {
-      this.hyr.r(this.cyH, paramBoolean);
+    AppMethodBeat.i(45508);
+    this.hPS = paramBoolean;
+    this.ryJ = true;
+    if ((this.ouJ) && (this.ryK != null)) {
+      this.ryK.C(paramBoolean, this.ryI);
     }
-    AppMethodBeat.o(130448);
+    AppMethodBeat.o(45508);
   }
   
-  final void ea(boolean paramBoolean)
+  public final void onLaunchApp(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(130449);
-    this.cyH = paramBoolean;
-    this.hyq = true;
-    if ((this.ftW) && (this.hyr != null)) {
-      this.hyr.r(paramBoolean, this.hyp);
+    AppMethodBeat.i(325470);
+    this.ouJ = true;
+    this.ryI = paramBoolean1;
+    if ((this.ryJ) && (this.ryK != null)) {
+      this.ryK.C(this.hPS, paramBoolean1);
     }
-    AppMethodBeat.o(130449);
+    AppMethodBeat.o(325470);
+  }
+  
+  static abstract interface a
+  {
+    public abstract void C(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiLaunchApplication.a
  * JD-Core Version:    0.7.0.1
  */

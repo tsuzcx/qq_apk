@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMWebView android:id="@id/webview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/o6g" android:layout_width="fill_parent" android:layout_height="@dimen/btw" />
+</FrameLayout>

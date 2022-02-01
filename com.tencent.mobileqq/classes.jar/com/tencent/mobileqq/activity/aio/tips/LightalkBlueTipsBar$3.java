@@ -1,22 +1,27 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agzy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class LightalkBlueTipsBar$3
+class LightalkBlueTipsBar$3
   implements Runnable
 {
-  public LightalkBlueTipsBar$3(agzy paramagzy) {}
+  LightalkBlueTipsBar$3(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
   
   public void run()
   {
-    Object localObject = agzy.a(this.this$0).getPreferences();
-    if (((SharedPreferences)localObject).getInt("LT_tip_show_times" + agzy.a(this.this$0).getCurrentAccountUin(), 5) != 5)
+    Object localObject = LightalkBlueTipsBar.a(this.this$0).getPreferences();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LT_tip_show_times");
+    localStringBuilder.append(LightalkBlueTipsBar.a(this.this$0).getCurrentAccountUin());
+    if (((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 5) != 5)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + agzy.a(this.this$0).getCurrentAccountUin(), 5);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LT_tip_show_times");
+      localStringBuilder.append(LightalkBlueTipsBar.a(this.this$0).getCurrentAccountUin());
+      ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), 5);
       ((SharedPreferences.Editor)localObject).commit();
     }
   }

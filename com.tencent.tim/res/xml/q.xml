@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sharemenu xmlns:sharemenu="http://schemas.android.com/apk/res-auto">
+    <sharemenu_item sharemenu:button_id="@id/mz6" sharemenu:icon_id="@drawable/gmt" sharemenu:title_id="@string/xfs" />
+    <sharemenu_item sharemenu:button_id="@id/mz5" sharemenu:icon_id="@drawable/gnx" sharemenu:title_id="@string/whk" />
+    <sharemenu_item sharemenu:button_id="@id/mz7" sharemenu:icon_id="@drawable/gnq" sharemenu:title_id="@string/xml" />
+    <sharemenu_item sharemenu:button_id="@id/mz9" sharemenu:icon_id="@drawable/gnz" sharemenu:title_id="@string/who" />
+    <sharemenu_item sharemenu:button_id="@id/mz_" sharemenu:icon_id="@drawable/go1" sharemenu:title_id="@string/wha" />
+    <sharemenu_item sharemenu:button_id="@id/mz8" sharemenu:icon_id="@drawable/gns" sharemenu:title_id="@string/y0x" />
+</sharemenu>

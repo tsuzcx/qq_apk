@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import ajln;
-import ajlo;
-import ajlp;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,43 +19,50 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(19)
 public class DragTextView
   extends TextView
-  implements ajlo
+  implements IDragView
 {
-  private static int jdField_a_of_type_Int;
+  private static int a;
   private static int b;
   private static int c;
-  private ajlp jdField_a_of_type_Ajlp;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean;
-  private int d = -1;
+  private IDragView.OnChangeModeListener d;
+  private int e = -1;
+  private String f;
+  private boolean g;
+  private Rect h = null;
+  private View i = null;
+  private final Handler j = new Handler(Looper.getMainLooper());
+  private GestureDetector k;
+  private GestureDetector.OnDoubleTapListener l;
   
   public DragTextView(Context paramContext)
   {
     super(paramContext);
     a(paramContext);
+    b(paramContext);
   }
   
   public DragTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     a(paramContext);
+    b(paramContext);
   }
   
   public DragTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     a(paramContext);
+    b(paramContext);
   }
   
   private static void a(Context paramContext)
   {
-    if (jdField_a_of_type_Int == 0)
+    if (a == 0)
     {
-      float f = 16.0F * paramContext.getResources().getDisplayMetrics().density;
-      jdField_a_of_type_Int = (int)f;
-      b = (int)(1.5F * f);
-      c = (int)(f * 0.5F);
+      float f1 = paramContext.getResources().getDisplayMetrics().density * 16.0F;
+      a = (int)f1;
+      b = (int)(1.5F * f1);
+      c = (int)(f1 * 0.5F);
     }
   }
   
@@ -63,21 +71,36 @@ public class DragTextView
     Rect localRect = new Rect();
     paramView.getGlobalVisibleRect(localRect);
     super.getGlobalVisibleRect(paramRect);
-    if (this.d == 2)
+    if (this.e == 2)
     {
-      paramRect.top = (paramRect.top - localRect.top - jdField_a_of_type_Int);
+      paramRect.top = (paramRect.top - localRect.top - a);
       paramRect.left = (paramRect.left - localRect.left - c);
       paramRect.bottom = (paramRect.bottom - localRect.top + c);
-      paramRect.right = (paramRect.right - localRect.left + jdField_a_of_type_Int);
+      paramRect.right = (paramRect.right - localRect.left + a);
       return;
     }
     paramRect.top = (paramRect.top - localRect.top - b);
     paramRect.left = (paramRect.left - localRect.left - b);
-    paramRect.bottom = (paramRect.bottom - localRect.top + jdField_a_of_type_Int);
-    paramRect.right = (paramRect.right - localRect.left + jdField_a_of_type_Int);
+    paramRect.bottom = (paramRect.bottom - localRect.top + a);
+    paramRect.right = (paramRect.right - localRect.left + a);
   }
   
-  public int a()
+  private void b(Context paramContext)
+  {
+    this.k = new GestureDetector(paramContext, new DragTextView.1(this), this.j);
+  }
+  
+  public String getDragGroup()
+  {
+    return this.f;
+  }
+  
+  public int getDragViewType()
+  {
+    return this.e;
+  }
+  
+  public IDragView.OnChangeModeListener getOnModeChangeListener()
   {
     return this.d;
   }
@@ -85,24 +108,34 @@ public class DragTextView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (paramBoolean)) {
-      a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidGraphicsRect);
+    Rect localRect = this.h;
+    if ((localRect != null) && (paramBoolean)) {
+      a(this.i, localRect);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.d != -1) && (!this.jdField_a_of_type_Boolean) && (paramMotionEvent.getAction() == 0))
+    if (this.l != null) {
+      this.k.onTouchEvent(paramMotionEvent);
+    }
+    if ((this.e != -1) && (!this.g) && (paramMotionEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Ajlp != null)
+      IDragView.OnChangeModeListener localOnChangeModeListener = this.d;
+      if (localOnChangeModeListener != null)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Ajlp.a(this, this.d);
+        this.g = true;
+        localOnChangeModeListener.a(this, this.e, this.f);
         return true;
       }
       return super.onTouchEvent(paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
+  }
+  
+  public void setDragGroup(String paramString)
+  {
+    this.f = paramString;
   }
   
   public void setDragViewType(int paramInt)
@@ -112,36 +145,45 @@ public class DragTextView
   
   public void setDragViewType(int paramInt, View paramView)
   {
-    this.d = paramInt;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)getParent());
+    this.e = paramInt;
+    this.i = paramView;
+    if (this.i == null) {
+      this.i = ((ViewGroup)getParent());
     }
-    if ((this.jdField_a_of_type_Ajlp != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.d != null) && (this.i != null) && (this.h == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ajln(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.h = new Rect();
+      this.i.setTouchDelegate(new DragTextView.DragTouchDelegate(this, this.h, this));
     }
   }
   
-  public void setOnModeChangeListener(ajlp paramajlp)
+  public void setOnDoubleTapListener(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
   {
-    this.jdField_a_of_type_Ajlp = paramajlp;
-    if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramajlp);
-    }
-    if ((this.jdField_a_of_type_Ajlp != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    this.l = paramOnDoubleTapListener;
+  }
+  
+  public void setOnModeChangeListener(IDragView.OnChangeModeListener paramOnChangeModeListener)
+  {
+    this.d = paramOnChangeModeListener;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ajln(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setOnModeChangeListener:");
+      localStringBuilder.append(paramOnChangeModeListener);
+      QLog.d("Drag", 2, localStringBuilder.toString());
+    }
+    if ((this.d != null) && (this.i != null) && (this.h == null))
+    {
+      this.h = new Rect();
+      this.i.setTouchDelegate(new DragTextView.DragTouchDelegate(this, this.h, this));
     }
   }
   
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if ((this.jdField_a_of_type_Boolean) && (paramInt == 0)) {
-      this.jdField_a_of_type_Boolean = false;
+    if ((this.g) && (paramInt == 0)) {
+      this.g = false;
     }
   }
 }

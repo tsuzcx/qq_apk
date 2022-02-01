@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/dj" android:layout_width="300.0dip" android:layout_height="88.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/f0y" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginStart="16.0dip" />
-    <com.tencent.mm.plugin.story.ui.view.AudioWaveView android:id="@id/f0z" android:layout_width="74.0dip" android:layout_height="20.0dip" android:layout_marginTop="12.0dip" android:layout_centerHorizontal="true" android:layout_marginEnd="12.0dip" android:layout_alignParentEnd="true" />
-    <ProgressBar android:id="@id/ezc" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" style="@style/a02" />
-    <com.tencent.mm.plugin.story.ui.view.editor.item.MusicLrcView android:textSize="16.0sp" android:textColor="@color/h6" android:ellipsize="none" android:id="@id/f10" android:fadingEdge="horizontal" android:fadingEdgeLength="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="暂无歌词" android:singleLine="true" android:layout_below="@id/f0y" android:layout_centerHorizontal="true" android:requiresFadingEdge="horizontal" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
+<RelativeLayout android:id="@id/f4h" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="@dimen/m_" android:textColor="@color/al6" android:gravity="center" android:id="@id/bx4" android:background="@drawable/a9m" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:paddingBottom="0.5dip" android:visibility="invisible" android:layout_width="@dimen/ac4" android:layout_height="@dimen/ac3" android:minHeight="@dimen/ac3" android:text="@string/bwg" android:layout_centerInParent="true" android:onClick="onClick" />
+    <Button android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/bx5" android:background="@drawable/a9m" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="@dimen/ac4" android:layout_height="@dimen/ac3" android:drawableRight="@raw/image_gallery_load_hd_cancel_icon" android:layout_centerInParent="true" android:onClick="onClick" />
+    <LinearLayout android:gravity="center" android:id="@id/bx6" android:background="@drawable/a9m" android:layout_width="@dimen/ac4" android:layout_height="@dimen/ac3" android:layout_centerInParent="true">
+        <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/image_gallery_image_download_done_icon" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/bx0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bwi" />
+    </LinearLayout>
 </RelativeLayout>

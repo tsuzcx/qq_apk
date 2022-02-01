@@ -23,22 +23,22 @@ public final class ProfileQzmallDeco
   static PolymorphicPraise cache_stPolymorphicPraise;
   static DataForQboss cache_stQbossData;
   static ActYellowDiamond cache_stYellowDiamond;
-  public QzmallAvatar stAvatar;
-  public UserCmShowQzoneTrack stCmShowQzoneTrack;
-  public QzmallCustomBanner stCustomBanner;
-  public QzmallCustomNavi stCustomNavi;
-  public QzmallCustomPlayer stCustomPlayer;
-  public QzmallCustomPraise stCustomPraise;
-  public CustomTrackDeco stCustomTrack;
-  public QzmallCustomVip stCustomVip;
-  public QzmallFacade stFacade;
-  public FacadeDIY stFacadeDIY;
-  public FeedNavi stFeedNavi;
-  public QzmallFeedSkin stFeedSkin;
-  public QzmallFloat stFloat;
-  public PolymorphicPraise stPolymorphicPraise;
-  public DataForQboss stQbossData;
-  public ActYellowDiamond stYellowDiamond;
+  public QzmallAvatar stAvatar = null;
+  public UserCmShowQzoneTrack stCmShowQzoneTrack = null;
+  public QzmallCustomBanner stCustomBanner = null;
+  public QzmallCustomNavi stCustomNavi = null;
+  public QzmallCustomPlayer stCustomPlayer = null;
+  public QzmallCustomPraise stCustomPraise = null;
+  public CustomTrackDeco stCustomTrack = null;
+  public QzmallCustomVip stCustomVip = null;
+  public QzmallFacade stFacade = null;
+  public FacadeDIY stFacadeDIY = null;
+  public FeedNavi stFeedNavi = null;
+  public QzmallFeedSkin stFeedSkin = null;
+  public QzmallFloat stFloat = null;
+  public PolymorphicPraise stPolymorphicPraise = null;
+  public DataForQboss stQbossData = null;
+  public ActYellowDiamond stYellowDiamond = null;
   
   static
   {
@@ -101,59 +101,75 @@ public final class ProfileQzmallDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stCustomNavi != null) {
-      paramJceOutputStream.write(this.stCustomNavi, 0);
+    Object localObject = this.stCustomNavi;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stCustomPraise != null) {
-      paramJceOutputStream.write(this.stCustomPraise, 1);
+    localObject = this.stCustomPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stCustomPlayer != null) {
-      paramJceOutputStream.write(this.stCustomPlayer, 2);
+    localObject = this.stCustomPlayer;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.stCustomBanner != null) {
-      paramJceOutputStream.write(this.stCustomBanner, 3);
+    localObject = this.stCustomBanner;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stAvatar != null) {
-      paramJceOutputStream.write(this.stAvatar, 4);
+    localObject = this.stAvatar;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stFloat != null) {
-      paramJceOutputStream.write(this.stFloat, 5);
+    localObject = this.stFloat;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.stFeedSkin != null) {
-      paramJceOutputStream.write(this.stFeedSkin, 6);
+    localObject = this.stFeedSkin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.stCustomVip != null) {
-      paramJceOutputStream.write(this.stCustomVip, 7);
+    localObject = this.stCustomVip;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.stFacade != null) {
-      paramJceOutputStream.write(this.stFacade, 8);
+    localObject = this.stFacade;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.stYellowDiamond != null) {
-      paramJceOutputStream.write(this.stYellowDiamond, 9);
+    localObject = this.stYellowDiamond;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.stPolymorphicPraise != null) {
-      paramJceOutputStream.write(this.stPolymorphicPraise, 10);
+    localObject = this.stPolymorphicPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.stQbossData != null) {
-      paramJceOutputStream.write(this.stQbossData, 11);
+    localObject = this.stQbossData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.stFeedNavi != null) {
-      paramJceOutputStream.write(this.stFeedNavi, 12);
+    localObject = this.stFeedNavi;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.stFacadeDIY != null) {
-      paramJceOutputStream.write(this.stFacadeDIY, 13);
+    localObject = this.stFacadeDIY;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.stCustomTrack != null) {
-      paramJceOutputStream.write(this.stCustomTrack, 14);
+    localObject = this.stCustomTrack;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
-    if (this.stCmShowQzoneTrack != null) {
-      paramJceOutputStream.write(this.stCmShowQzoneTrack, 15);
+    localObject = this.stCmShowQzoneTrack;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.ProfileQzmallDeco
  * JD-Core Version:    0.7.0.1
  */

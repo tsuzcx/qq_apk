@@ -1,13 +1,22 @@
-import android.graphics.drawable.Drawable;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import java.lang.ref.WeakReference;
 
-class hap
-  implements Runnable
+public class hap
+  extends BitmapDrawable
 {
-  hap(hao paramhao, Drawable paramDrawable) {}
+  private final WeakReference a;
   
-  public void run()
+  public hap(Resources paramResources, Bitmap paramBitmap, haq paramhaq)
   {
-    this.jdField_a_of_type_Hao.a.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    super(paramResources, paramBitmap);
+    this.a = new WeakReference(paramhaq);
+  }
+  
+  public haq a()
+  {
+    return (haq)this.a.get();
   }
 }
 

@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.story.ui.a;
 
-import a.l;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import java.util.ArrayList;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "T", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "()V", "dataList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "getItemCount", "", "removeAt", "", "userIndex", "update", "users", "", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "T", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "()V", "dataList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "getItemCount", "", "removeAt", "", "userIndex", "update", "users", "", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class d<T extends RecyclerView.v>
   extends RecyclerView.a<T>
 {
-  public static final d.a sIh = new d.a((byte)0);
-  public final ArrayList<String> iRT = new ArrayList();
+  public static final a Suh = new a((byte)0);
+  public final ArrayList<String> pUj = new ArrayList();
   
   public int getItemCount()
   {
-    return this.iRT.size();
+    return this.pUj.size();
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter$Companion;", "", "()V", "empty", "", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

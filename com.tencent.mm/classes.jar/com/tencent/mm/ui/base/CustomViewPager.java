@@ -4,8 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.mogic.WxViewPager;
+import com.tencent.mm.ui.widget.SwipeBackLayout.c;
 
 public class CustomViewPager
   extends WxViewPager
@@ -13,6 +14,7 @@ public class CustomViewPager
   private static final String TAG = "MicroMsg.CustomViewPager";
   private boolean mCanSlide = true;
   private boolean mCanSlideBySide = true;
+  private SwipeBackLayout.c mSwipeBackListener = null;
   
   public CustomViewPager(Context paramContext)
   {
@@ -24,59 +26,89 @@ public class CustomViewPager
     super(paramContext, paramAttributeSet);
   }
   
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(251310);
+    if ((this.mSwipeBackListener != null) && (this.mSwipeBackListener.gjA())) {
+      if (this.mSwipeBackListener.gjD())
+      {
+        if (this.mSwipeBackListener.gjz() == 1)
+        {
+          this.mSwipeBackListener.n(paramMotionEvent);
+          AppMethodBeat.o(251310);
+          return true;
+        }
+        if (this.mSwipeBackListener.i(paramMotionEvent))
+        {
+          paramMotionEvent.setAction(3);
+          super.dispatchTouchEvent(paramMotionEvent);
+          AppMethodBeat.o(251310);
+          return true;
+        }
+      }
+      else
+      {
+        this.mSwipeBackListener.n(paramMotionEvent);
+      }
+    }
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(251310);
+    return bool;
+  }
+  
   public boolean isGutterDrag(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(106259);
+    AppMethodBeat.i(141620);
     if (this.mCanSlideBySide)
     {
       boolean bool = super.isGutterDrag(paramFloat1, paramFloat2);
-      AppMethodBeat.o(106259);
+      AppMethodBeat.o(141620);
       return bool;
     }
-    AppMethodBeat.o(106259);
+    AppMethodBeat.o(141620);
     return false;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(106260);
+    AppMethodBeat.i(141621);
     if (!this.mCanSlide)
     {
-      AppMethodBeat.o(106260);
+      AppMethodBeat.o(141621);
       return false;
     }
     try
     {
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(106260);
+      AppMethodBeat.o(141621);
       return bool;
     }
     catch (Exception paramMotionEvent)
     {
-      ab.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
-      AppMethodBeat.o(106260);
+      Log.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
+      AppMethodBeat.o(141621);
     }
     return false;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(106261);
+    AppMethodBeat.i(141622);
     if (!this.mCanSlide)
     {
-      AppMethodBeat.o(106261);
+      AppMethodBeat.o(141622);
       return false;
     }
     try
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(106261);
+      AppMethodBeat.o(141622);
       return bool;
     }
     catch (Exception paramMotionEvent)
     {
-      ab.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
-      AppMethodBeat.o(106261);
+      Log.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
+      AppMethodBeat.o(141622);
     }
     return false;
   }
@@ -90,10 +122,15 @@ public class CustomViewPager
   {
     this.mCanSlideBySide = paramBoolean;
   }
+  
+  public void setSwipeBackListener(SwipeBackLayout.c paramc)
+  {
+    this.mSwipeBackListener = paramc;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.base.CustomViewPager
  * JD-Core Version:    0.7.0.1
  */

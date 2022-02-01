@@ -1,53 +1,54 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.as;
-import com.tencent.mm.plugin.game.d.aw;
-import com.tencent.mm.plugin.game.d.bc;
-import com.tencent.mm.plugin.game.d.cs;
-import com.tencent.mm.plugin.game.d.y;
-import com.tencent.mm.plugin.game.f.d;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.game.d.d;
+import com.tencent.mm.plugin.game.protobuf.aj;
+import com.tencent.mm.plugin.game.protobuf.aq;
+import com.tencent.mm.plugin.game.protobuf.bg;
+import com.tencent.mm.plugin.game.protobuf.bi;
+import com.tencent.mm.plugin.game.protobuf.bo;
+import com.tencent.mm.plugin.game.protobuf.dm;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class ad
   extends x
 {
-  public static void a(bc parambc)
+  public static void a(bo parambo)
   {
-    AppMethodBeat.i(111377);
-    if ((parambc == null) || (bo.es(parambc.nsC)))
+    AppMethodBeat.i(41542);
+    if ((parambo == null) || (Util.isNullOrNil(parambo.IJV)))
     {
-      AppMethodBeat.o(111377);
+      AppMethodBeat.o(41542);
       return;
     }
-    parambc = parambc.nsC.iterator();
-    while (parambc.hasNext())
+    parambo = parambo.IJV.iterator();
+    while (parambo.hasNext())
     {
-      Object localObject = (com.tencent.mm.plugin.game.d.ad)parambc.next();
-      if ((((com.tencent.mm.plugin.game.d.ad)localObject).nrm != null) && (((com.tencent.mm.plugin.game.d.ad)localObject).nrm.npS != null))
+      Object localObject = (aq)parambo.next();
+      if ((((aq)localObject).IIK != null) && (((aq)localObject).IIK.IGJ != null))
       {
-        d.c(a(((com.tencent.mm.plugin.game.d.ad)localObject).nrm.npS));
+        d.c(a(((aq)localObject).IIK.IGJ));
       }
-      else if ((((com.tencent.mm.plugin.game.d.ad)localObject).nro != null) && (!bo.es(((com.tencent.mm.plugin.game.d.ad)localObject).nro.nqs)))
+      else if ((((aq)localObject).IIM != null) && (!Util.isNullOrNil(((aq)localObject).IIM.IHH)))
       {
-        localObject = ((com.tencent.mm.plugin.game.d.ad)localObject).nro.nqs.iterator();
+        localObject = ((aq)localObject).IIM.IHH.iterator();
         while (((Iterator)localObject).hasNext()) {
-          d.c(a(((y)((Iterator)localObject).next()).npS));
+          d.c(a(((aj)((Iterator)localObject).next()).IGJ));
         }
       }
-      else if ((((com.tencent.mm.plugin.game.d.ad)localObject).nrn != null) && (((com.tencent.mm.plugin.game.d.ad)localObject).nrn.npS != null))
+      else if ((((aq)localObject).IIL != null) && (((aq)localObject).IIL.IGJ != null))
       {
-        d.c(a(((com.tencent.mm.plugin.game.d.ad)localObject).nrn.npS));
+        d.c(a(((aq)localObject).IIL.IGJ));
       }
     }
-    AppMethodBeat.o(111377);
+    AppMethodBeat.o(41542);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ad
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,14 @@ public final class c
     this.f = a.a(paramDataInputStream.readInt());
     i = paramDataInputStream.readShort();
     this.g = ((short)(i >> 8 & 0xFF | (i & 0xFF) << 8));
-    this.h = new byte[this.g];
-    paramDataInputStream.read(this.h, 0, this.g);
+    i = this.g;
+    this.h = new byte[i];
+    paramDataInputStream.read(this.h, 0, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.a.c
  * JD-Core Version:    0.7.0.1
  */

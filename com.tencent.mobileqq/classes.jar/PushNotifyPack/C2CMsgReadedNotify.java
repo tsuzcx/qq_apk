@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class C2CMsgReadedNotify
   extends JceStruct
 {
-  public long lBindedUin;
-  public long lFlag;
-  public long lLastReadTime;
-  public long lLastReadTime_qms;
-  public long lPeerUin;
+  public long lBindedUin = 0L;
+  public long lFlag = 0L;
+  public long lLastReadTime = 0L;
+  public long lLastReadTime_qms = 0L;
+  public long lPeerUin = 0L;
   public String strPhoneNum = "";
-  public long uAioType;
-  public long uint64_to_tiny_id;
+  public long uAioType = 0L;
+  public long uint64_to_tiny_id = 0L;
   
   public C2CMsgReadedNotify() {}
   
@@ -47,8 +47,9 @@ public final class C2CMsgReadedNotify
     paramJceOutputStream.write(this.lPeerUin, 0);
     paramJceOutputStream.write(this.lLastReadTime, 1);
     paramJceOutputStream.write(this.lFlag, 2);
-    if (this.strPhoneNum != null) {
-      paramJceOutputStream.write(this.strPhoneNum, 3);
+    String str = this.strPhoneNum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.lBindedUin, 4);
     paramJceOutputStream.write(this.lLastReadTime_qms, 5);
@@ -58,7 +59,7 @@ public final class C2CMsgReadedNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.C2CMsgReadedNotify
  * JD-Core Version:    0.7.0.1
  */

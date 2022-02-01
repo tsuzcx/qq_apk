@@ -2,46 +2,49 @@ package com.tencent.mm.plugin.downloader;
 
 import android.os.FileObserver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.b.q;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
   extends FileObserver
 {
-  private String kVf;
+  private String xke;
   
   public a(String paramString)
   {
-    super(paramString, 618);
-    this.kVf = paramString;
+    super(q.n(paramString, false), 618);
+    AppMethodBeat.i(267079);
+    this.xke = paramString;
+    AppMethodBeat.o(267079);
   }
   
   public final void onEvent(int paramInt, String paramString)
   {
-    AppMethodBeat.i(2270);
+    AppMethodBeat.i(88814);
     if (paramString == null)
     {
-      ab.e("DownloadsObserver", "path should be null");
-      AppMethodBeat.o(2270);
+      Log.e("DownloadsObserver", "path should be null");
+      AppMethodBeat.o(88814);
       return;
     }
-    paramString = this.kVf + paramString;
+    paramString = this.xke + paramString;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(2270);
+      AppMethodBeat.o(88814);
       return;
-      ab.i("DownloadsObserver", "close write file: %s", new Object[] { paramString });
-      AppMethodBeat.o(2270);
+      Log.i("DownloadsObserver", "close write file: %s", new Object[] { paramString });
+      AppMethodBeat.o(88814);
       return;
-      ab.i("DownloadsObserver", "open file: %s", new Object[] { paramString });
-      AppMethodBeat.o(2270);
+      Log.i("DownloadsObserver", "open file: %s", new Object[] { paramString });
+      AppMethodBeat.o(88814);
       return;
-      ab.i("DownloadsObserver", "delete file: %s", new Object[] { paramString });
-      AppMethodBeat.o(2270);
+      Log.i("DownloadsObserver", "delete file: %s", new Object[] { paramString });
+      AppMethodBeat.o(88814);
       return;
-      ab.i("DownloadsObserver", "move from file: %s", new Object[] { paramString });
+      Log.i("DownloadsObserver", "move from file: %s", new Object[] { paramString });
     }
   }
 }

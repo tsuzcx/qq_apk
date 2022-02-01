@@ -1,5 +1,6 @@
 package com.tencent.qapmsdk.base.config;
 
+import java.util.Collection;
 import java.util.List;
 import kotlin.Lazy;
 import kotlin.LazyKt;
@@ -16,10 +17,10 @@ public final class PluginCombination
   @JvmField
   @NotNull
   public static final DefaultPluginConfig anrPlugin;
-  private static final List<DefaultPluginConfig> austerityPlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { dropFramePlugin, dbPlugin, ioPlugin, leakPlugin, ceilingHprofPlugin, ceilingValuePlugin, batteryPlugin, devicePlugin, anrPlugin, crashPlugin, statisticsPlugin });
+  private static final List<DefaultPluginConfig> austerityPlugins;
   @JvmField
   @NotNull
-  public static final DefaultPluginConfig batteryPlugin;
+  public static final DefaultPluginConfig bigBitmapPlugin;
   @JvmField
   @NotNull
   public static final DefaultPluginConfig ceilingHprofPlugin;
@@ -61,8 +62,14 @@ public final class PluginCombination
   private static final Lazy modeStable$delegate;
   @JvmField
   @NotNull
+  public static final DefaultPluginConfig qqBatteryPlugin;
+  @JvmField
+  @NotNull
   public static final DefaultPluginConfig resourcePlugin;
   private static final List<DefaultPluginConfig> stablePlugins;
+  @JvmField
+  @NotNull
+  public static final DefaultPluginConfig startUpPlugin;
   @JvmField
   @NotNull
   public static final DefaultPluginConfig statisticsPlugin;
@@ -80,7 +87,6 @@ public final class PluginCombination
     leakPlugin = (DefaultPluginConfig)new DefaultPluginConfig.LeakPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     ceilingHprofPlugin = (DefaultPluginConfig)new DefaultPluginConfig.CeilingHprofPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     ceilingValuePlugin = (DefaultPluginConfig)new DefaultPluginConfig.CeilingValuePlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
-    batteryPlugin = (DefaultPluginConfig)new DefaultPluginConfig.BatteryPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     devicePlugin = (DefaultPluginConfig)new DefaultPluginConfig.DevicePlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     resourcePlugin = (DefaultPluginConfig)new DefaultPluginConfig.ResourcePlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     crashPlugin = (DefaultPluginConfig)new DefaultPluginConfig.CrashPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
@@ -90,14 +96,25 @@ public final class PluginCombination
     jsErrorPlugin = (DefaultPluginConfig)new DefaultPluginConfig.JsErrorPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     userBreadCrumbPlugin = (DefaultPluginConfig)new DefaultPluginConfig.BreadCrumbPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     statisticsPlugin = (DefaultPluginConfig)new DefaultPluginConfig.StatisticsPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
+    bigBitmapPlugin = (DefaultPluginConfig)new DefaultPluginConfig.BigBitmapPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
+    startUpPlugin = (DefaultPluginConfig)new DefaultPluginConfig.StartUpPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
+    qqBatteryPlugin = (DefaultPluginConfig)new DefaultPluginConfig.QQBatteryPlugin(0, 0, 0, 0, 0.0F, 0, null, null, 255, null);
     modeAll$delegate = LazyKt.lazy((Function0)PluginCombination.Companion.modeAll.2.INSTANCE);
     modeStable$delegate = LazyKt.lazy((Function0)PluginCombination.Companion.modeStable.2.INSTANCE);
-    stablePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, dropFramePlugin, userBreadCrumbPlugin });
+    stablePlugins = CollectionsKt.listOf(new DefaultPluginConfig[] { loopStackPlugin, resourcePlugin, dropFramePlugin, userBreadCrumbPlugin, anrPlugin, crashPlugin });
+    Collection localCollection = (Collection)CollectionsKt.listOf(new DefaultPluginConfig[] { dropFramePlugin, dbPlugin, ioPlugin, leakPlugin, ceilingHprofPlugin, ceilingValuePlugin, devicePlugin, anrPlugin, crashPlugin, statisticsPlugin, bigBitmapPlugin, startUpPlugin });
+    List localList;
+    if (!SDKConfig.PURE_QAPM) {
+      localList = CollectionsKt.listOf(qqBatteryPlugin);
+    } else {
+      localList = CollectionsKt.emptyList();
+    }
+    austerityPlugins = CollectionsKt.plus(localCollection, (Iterable)localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.PluginCombination
  * JD-Core Version:    0.7.0.1
  */

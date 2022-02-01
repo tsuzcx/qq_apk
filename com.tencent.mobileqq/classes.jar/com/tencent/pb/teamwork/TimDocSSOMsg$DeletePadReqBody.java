@@ -22,14 +22,15 @@ public final class TimDocSSOMsg$DeletePadReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 58 }, new String[] { "uint32_appid", "bytes_pad_url", "msg_login_info", "uint32_list_type", "uint32_domainid", "bytes_localpadid", "rpt_msg_padid_list" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, null }, DeletePadReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 58 }, new String[] { "uint32_appid", "bytes_pad_url", "msg_login_info", "uint32_list_type", "uint32_domainid", "bytes_localpadid", "rpt_msg_padid_list" }, new Object[] { localInteger, localByteStringMicro1, null, localInteger, localInteger, localByteStringMicro2, null }, DeletePadReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.DeletePadReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class ShortVideoPlayActivity$18
   
   public void run()
   {
-    this.this$0.b.setText(this.this$0.i);
+    this.this$0.mTotalTime.setText(this.this$0.mDurationStr);
   }
 }
 

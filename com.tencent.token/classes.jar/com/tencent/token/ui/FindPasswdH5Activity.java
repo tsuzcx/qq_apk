@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.webkit.WebView;
-import com.tencent.token.global.c;
-import com.tencent.token.global.h;
+import com.tencent.token.xr;
+import com.tencent.token.xv;
 
 public class FindPasswdH5Activity
   extends EmbedWebBaseActivity
@@ -17,23 +17,48 @@ public class FindPasswdH5Activity
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
     paramBundle = getIntent().getStringExtra("captcha_sig");
-    h.a("captcha_sig=" + paramBundle);
-    switch (c.a())
+    xv.a("captcha_sig=".concat(String.valueOf(paramBundle)));
+    switch (xr.a())
     {
     default: 
-      this.mWebView.loadUrl(getResources().getString(2131231301) + "&key=" + paramBundle);
+      localWebView = this.mWebView;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getResources().getString(2131493452));
+      localStringBuilder.append("&key=");
+      localStringBuilder.append(paramBundle);
+      localWebView.loadUrl(localStringBuilder.toString());
       return;
-    case 0: 
-      this.mWebView.loadUrl(getResources().getString(2131231458) + "&key=" + paramBundle);
-      return;
-    case 1: 
-      this.mWebView.loadUrl(getResources().getString(2131231301) + "&key=" + paramBundle);
+    case 3: 
+      localWebView = this.mWebView;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getResources().getString(2131493263));
+      localStringBuilder.append("&key=");
+      localStringBuilder.append(paramBundle);
+      localWebView.loadUrl(localStringBuilder.toString());
       return;
     case 2: 
-      this.mWebView.loadUrl(getResources().getString(2131230971) + "&key=" + paramBundle);
+      localWebView = this.mWebView;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getResources().getString(2131493116));
+      localStringBuilder.append("&key=");
+      localStringBuilder.append(paramBundle);
+      localWebView.loadUrl(localStringBuilder.toString());
+      return;
+    case 1: 
+      localWebView = this.mWebView;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getResources().getString(2131493452));
+      localStringBuilder.append("&key=");
+      localStringBuilder.append(paramBundle);
+      localWebView.loadUrl(localStringBuilder.toString());
       return;
     }
-    this.mWebView.loadUrl(getResources().getString(2131231118) + "&key=" + paramBundle);
+    WebView localWebView = this.mWebView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getResources().getString(2131493612));
+    localStringBuilder.append("&key=");
+    localStringBuilder.append(paramBundle);
+    localWebView.loadUrl(localStringBuilder.toString());
   }
 }
 

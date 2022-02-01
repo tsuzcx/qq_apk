@@ -17,26 +17,25 @@ public class DrivingParam$Travel
   
   public String toString()
   {
-    int i = 50;
     int j = this.points.size();
-    if (j > 50) {}
-    for (;;)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      j = 0;
-      while (j < i)
-      {
-        localStringBuilder.append(this.points.get(j)).append(";");
-        j += 1;
-      }
-      return super.toString();
-      i = j;
+    int i = j;
+    if (j > 50) {
+      i = 50;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    j = 0;
+    while (j < i)
+    {
+      localStringBuilder.append(this.points.get(j));
+      localStringBuilder.append(";");
+      j += 1;
+    }
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.DrivingParam.Travel
  * JD-Core Version:    0.7.0.1
  */

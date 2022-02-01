@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.wallet_payu.pwd.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.pwd.ui.WalletPasswordSettingUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.wxpay.a.m;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.a;
 
 public class WalletPayUPasswordSettingUI
   extends WalletPasswordSettingUI
 {
-  public final int cSJ()
+  public final int igT()
   {
-    return 2131165317;
+    return a.m.wallet_payu_password_setting_pref;
   }
   
-  public final void cSK()
+  public final void igU()
   {
-    AppMethodBeat.i(48521);
-    ab.d("MicroMsg.WalletPayUPasswordSettingUI", "hy: start payu reset pwd");
+    AppMethodBeat.i(72162);
+    Log.d("MicroMsg.WalletPayUPasswordSettingUI", "hy: start payu reset pwd");
     a.a(this, g.class, null);
-    AppMethodBeat.o(48521);
+    AppMethodBeat.o(72162);
   }
   
-  public final void cSL()
+  public final void igV()
   {
-    AppMethodBeat.i(48520);
-    ab.d("MicroMsg.WalletPayUPasswordSettingUI", "hy: start payu do forgot pwd");
+    AppMethodBeat.i(72161);
+    Log.d("MicroMsg.WalletPayUPasswordSettingUI", "hy: start payu do forgot pwd");
     a.a(this, com.tencent.mm.plugin.wallet_payu.pwd.a.f.class, null);
-    AppMethodBeat.o(48520);
+    AppMethodBeat.o(72161);
   }
   
-  public final void cSM()
+  public final void igW()
   {
-    AppMethodBeat.i(48522);
-    getPreferenceScreen().cl("wallet_modify_gesture_password", true);
-    getPreferenceScreen().cl("wallet_open_gesture_password", true);
-    AppMethodBeat.o(48522);
+    AppMethodBeat.i(72163);
+    getPreferenceScreen().eh("wallet_modify_gesture_password", true);
+    getPreferenceScreen().eh("wallet_open_gesture_password", true);
+    AppMethodBeat.o(72163);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -47,7 +47,7 @@ public class WalletPayUPasswordSettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUPasswordSettingUI
  * JD-Core Version:    0.7.0.1
  */

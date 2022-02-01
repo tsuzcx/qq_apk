@@ -8,10 +8,10 @@ import java.io.Reader;
 
 public final class e
 {
-  public static String Q(InputStream paramInputStream)
+  public static String ak(InputStream paramInputStream)
   {
-    AppMethodBeat.i(77314);
-    d.s(paramInputStream, "Cannot get String from a null object");
+    AppMethodBeat.i(40583);
+    d.x(paramInputStream, "Cannot get String from a null object");
     try
     {
       char[] arrayOfChar = new char[65536];
@@ -27,20 +27,20 @@ public final class e
       } while (i >= 0);
       paramInputStream.close();
       paramInputStream = localStringBuilder.toString();
-      AppMethodBeat.o(77314);
+      AppMethodBeat.o(40583);
       return paramInputStream;
     }
     catch (IOException paramInputStream)
     {
       paramInputStream = new IllegalStateException("Error while reading response body", paramInputStream);
-      AppMethodBeat.o(77314);
+      AppMethodBeat.o(40583);
       throw paramInputStream;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.g.e
  * JD-Core Version:    0.7.0.1
  */

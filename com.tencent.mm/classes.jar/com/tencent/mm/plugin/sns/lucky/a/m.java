@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ak;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.storage.o;
+import com.tencent.mm.b.g;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.model.ap;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.aur;
-import com.tencent.mm.protocal.protobuf.bct;
-import com.tencent.mm.protocal.protobuf.cea;
-import com.tencent.mm.protocal.protobuf.ces;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.czh;
+import com.tencent.mm.protocal.protobuf.dna;
+import com.tencent.mm.protocal.protobuf.fef;
+import com.tencent.mm.protocal.protobuf.fez;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,109 +20,117 @@ import java.util.List;
 
 public final class m
 {
-  private static final ThreadLocal<HashMap<String, Long>> rcv;
+  private static final ThreadLocal<HashMap<String, Long>> Qqa;
   
   static
   {
-    AppMethodBeat.i(35898);
-    rcv = new ThreadLocal();
-    AppMethodBeat.o(35898);
+    AppMethodBeat.i(95195);
+    Qqa = new ThreadLocal();
+    AppMethodBeat.o(95195);
   }
   
-  public static boolean ZV(String paramString)
+  public static long A(SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(35892);
-    paramString = ag.cpf().abv(paramString);
-    boolean bool = a(paramString, ak.q(paramString));
-    AppMethodBeat.o(35892);
-    return bool;
+    AppMethodBeat.i(95193);
+    long l = b(paramSnsInfo, null);
+    AppMethodBeat.o(95193);
+    return l;
   }
   
-  public static boolean a(n paramn, SnsObject paramSnsObject)
+  public static boolean a(SnsInfo paramSnsInfo, SnsObject paramSnsObject)
   {
-    AppMethodBeat.i(35894);
-    if (paramn == null)
+    AppMethodBeat.i(95191);
+    if (paramSnsInfo == null)
     {
-      AppMethodBeat.o(35894);
+      AppMethodBeat.o(95191);
       return true;
     }
-    bct localbct = paramn.csz();
-    if (paramn.field_type != 21)
+    dna localdna = paramSnsInfo.getPostInfo();
+    if (paramSnsInfo.getTypeFlag() != 21)
     {
-      AppMethodBeat.o(35894);
+      AppMethodBeat.o(95191);
       return true;
     }
-    if (localbct.cMQ == 1)
+    if (localdna.ihz == 1)
     {
-      AppMethodBeat.o(35894);
+      AppMethodBeat.o(95191);
       return true;
     }
-    if (r.Zn().equals(paramn.field_userName))
+    if (z.bAM().equals(paramSnsInfo.getUserName()))
     {
-      AppMethodBeat.o(35894);
+      AppMethodBeat.o(95191);
       return true;
     }
     if (paramSnsObject.SnsRedEnvelops != null)
     {
-      paramSnsObject = paramSnsObject.SnsRedEnvelops.xPe;
+      paramSnsObject = paramSnsObject.SnsRedEnvelops.abEG;
       if ((paramSnsObject == null) || (paramSnsObject.size() == 0))
       {
-        AppMethodBeat.o(35894);
+        AppMethodBeat.o(95191);
         return false;
       }
-      paramn = r.Zn();
+      paramSnsInfo = z.bAM();
       paramSnsObject = paramSnsObject.iterator();
       while (paramSnsObject.hasNext()) {
-        if (paramn.equals(((cea)paramSnsObject.next()).Username))
+        if (paramSnsInfo.equals(((fef)paramSnsObject.next()).Username))
         {
-          AppMethodBeat.o(35894);
+          AppMethodBeat.o(95191);
           return true;
         }
       }
     }
-    AppMethodBeat.o(35894);
+    AppMethodBeat.o(95191);
     return false;
   }
   
-  public static long b(n paramn, SnsObject paramSnsObject)
+  public static boolean aXP(String paramString)
+  {
+    AppMethodBeat.i(95189);
+    paramString = al.hgB().aZL(paramString);
+    boolean bool = a(paramString, ap.E(paramString));
+    AppMethodBeat.o(95189);
+    return bool;
+  }
+  
+  public static long b(SnsInfo paramSnsInfo, SnsObject paramSnsObject)
   {
     long l = 0L;
-    AppMethodBeat.i(35897);
-    if (paramn == null)
+    AppMethodBeat.i(95194);
+    if (paramSnsInfo == null)
     {
-      AppMethodBeat.o(35897);
+      AppMethodBeat.o(95194);
       return 0L;
     }
     Object localObject1 = paramSnsObject;
     if (paramSnsObject == null) {
-      localObject1 = ak.q(paramn);
+      localObject1 = ap.E(paramSnsInfo);
     }
     if (localObject1 == null)
     {
-      AppMethodBeat.o(35897);
+      AppMethodBeat.o(95194);
       return 0L;
     }
     paramSnsObject = ((SnsObject)localObject1).SnsRedEnvelops;
     if (paramSnsObject == null)
     {
-      AppMethodBeat.o(35897);
+      AppMethodBeat.o(95194);
       return 0L;
     }
-    Object localObject2 = paramSnsObject.xPe;
+    Object localObject2 = paramSnsObject.abEG;
     if (localObject2 == null)
     {
-      AppMethodBeat.o(35897);
+      AppMethodBeat.o(95194);
       return 0L;
     }
-    paramSnsObject = paramn.rCU;
-    if (bo.isNullOrNil(paramSnsObject)) {}
-    for (paramn = g.w(paramn.field_content) + g.w(paramn.field_attrBuf);; paramn = paramSnsObject)
+    paramSnsObject = paramSnsInfo.contentByteMd5;
+    if (Util.isNullOrNil(paramSnsObject)) {}
+    for (paramSnsInfo = g.getMessageDigest(paramSnsInfo.field_content) + g.getMessageDigest(paramSnsInfo.field_attrBuf);; paramSnsInfo = paramSnsObject)
     {
-      localObject1 = (HashMap)rcv.get();
-      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramn)))
+      localObject1 = (HashMap)Qqa.get();
+      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramSnsInfo)))
       {
-        l = ((Long)((HashMap)localObject1).get(paramn)).longValue();
-        AppMethodBeat.o(35897);
+        l = ((Long)((HashMap)localObject1).get(paramSnsInfo)).longValue();
+        AppMethodBeat.o(95194);
         return l;
       }
       paramSnsObject = ((List)localObject2).iterator();
@@ -132,18 +138,18 @@ public final class m
       {
         if (paramSnsObject.hasNext())
         {
-          cea localcea = (cea)paramSnsObject.next();
-          localObject2 = new aur();
+          fef localfef = (fef)paramSnsObject.next();
+          localObject2 = new czh();
           try
           {
-            ((aur)localObject2).parseFrom(aa.a(localcea.xOb));
-            l += ((aur)localObject2).cNd;
+            ((czh)localObject2).parseFrom(com.tencent.mm.platformtools.w.a(localfef.abDk));
+            l += ((czh)localObject2).ihV;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ab.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
+              Log.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
             }
           }
         }
@@ -152,52 +158,44 @@ public final class m
       if (localObject1 == null) {
         paramSnsObject = new HashMap();
       }
-      paramSnsObject.put(paramn, Long.valueOf(l));
-      rcv.set(paramSnsObject);
-      AppMethodBeat.o(35897);
+      paramSnsObject.put(paramSnsInfo, Long.valueOf(l));
+      Qqa.set(paramSnsObject);
+      AppMethodBeat.o(95194);
       return l;
     }
   }
   
-  public static boolean k(n paramn)
+  public static boolean y(SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(35893);
-    boolean bool = a(paramn, ak.q(paramn));
-    AppMethodBeat.o(35893);
+    AppMethodBeat.i(95190);
+    boolean bool = a(paramSnsInfo, ap.E(paramSnsInfo));
+    AppMethodBeat.o(95190);
     return bool;
   }
   
-  public static int l(n paramn)
+  public static int z(SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(35895);
-    if (paramn == null)
+    AppMethodBeat.i(95192);
+    if (paramSnsInfo == null)
     {
-      AppMethodBeat.o(35895);
+      AppMethodBeat.o(95192);
       return 0;
     }
-    paramn = ak.q(paramn);
-    if (paramn == null)
+    paramSnsInfo = ap.E(paramSnsInfo);
+    if (paramSnsInfo == null)
     {
-      AppMethodBeat.o(35895);
+      AppMethodBeat.o(95192);
       return 0;
     }
-    paramn = paramn.SnsRedEnvelops;
-    if ((paramn == null) || (paramn.xPe.size() == 0))
+    paramSnsInfo = paramSnsInfo.SnsRedEnvelops;
+    if ((paramSnsInfo == null) || (paramSnsInfo.abEG.size() == 0))
     {
-      AppMethodBeat.o(35895);
+      AppMethodBeat.o(95192);
       return 0;
     }
-    int i = paramn.xPe.size();
-    AppMethodBeat.o(35895);
+    int i = paramSnsInfo.abEG.size();
+    AppMethodBeat.o(95192);
     return i;
-  }
-  
-  public static long m(n paramn)
-  {
-    AppMethodBeat.i(35896);
-    long l = b(paramn, null);
-    AppMethodBeat.o(35896);
-    return l;
   }
 }
 

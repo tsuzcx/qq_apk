@@ -3,45 +3,44 @@ package com.tencent.biz;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
+import com.tencent.biz.authorize.FlatBuffersConfig;
+import com.tencent.biz.authorize.JsonConfig;
 import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import java.util.concurrent.ConcurrentHashMap;
-import myl;
-import nbj;
-import nbk;
 
-public class AuthorizeConfig$1
+class AuthorizeConfig$1
   implements Runnable
 {
-  public AuthorizeConfig$1(myl parammyl) {}
+  AuthorizeConfig$1(AuthorizeConfig paramAuthorizeConfig) {}
   
   public void run()
   {
     long l = SystemClock.currentThreadTimeMillis();
-    if (l > myl.jdField_a_of_type_Long + 10000L)
+    if (l > AuthorizeConfig.d + 10000L)
     {
-      this.this$0.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
-      myl.jdField_a_of_type_Long = l;
+      this.this$0.v.getSharedPreferences("domainCmdRight", 4);
+      AuthorizeConfig.d = l;
     }
-    FlatBuffersParser.b();
-    l = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastUpdate", 0L);
-    if (l != myl.jdField_b_of_type_Long)
+    FlatBuffersParser.c();
+    l = this.this$0.w.getLong("lastUpdate", 0L);
+    if (l != AuthorizeConfig.e)
     {
-      myl.jdField_b_of_type_Long = l;
-      this.this$0.jdField_a_of_type_Nbk.b();
-      this.this$0.jdField_a_of_type_Nbj.a();
-      this.this$0.i = null;
-      this.this$0.jdField_b_of_type_OrgJsonJSONObject = null;
-      this.this$0.c = null;
-      this.this$0.jdField_a_of_type_OrgJsonJSONObject = null;
-      this.this$0.g = null;
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.this$0.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      AuthorizeConfig.e = l;
+      this.this$0.x.g();
+      this.this$0.y.f();
+      AuthorizeConfig localAuthorizeConfig = this.this$0;
+      localAuthorizeConfig.r = null;
+      localAuthorizeConfig.g = null;
+      localAuthorizeConfig.h = null;
+      localAuthorizeConfig.f = null;
+      localAuthorizeConfig.t.clear();
+      this.this$0.u.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.1
  * JD-Core Version:    0.7.0.1
  */

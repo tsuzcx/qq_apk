@@ -1,342 +1,271 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
+import android.os.Process;
 import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class extends
 {
-  public Handler lc;
+  public static final Set<String> a;
+  public static final String[] b;
+  public static final Set<String> c;
   
-  public extends(Handler paramHandler)
+  static
   {
-    this.lc = paramHandler;
+    HashSet localHashSet = new HashSet();
+    a = localHashSet;
+    b = new String[0];
+    localHashSet.add(import.a(import.M));
+    localHashSet.add(import.a(import.N));
+    localHashSet.add(import.a(import.O));
+    localHashSet.add(import.a(import.P));
+    localHashSet.add(import.a(import.Q));
+    localHashSet.add(import.a(import.R));
+    localHashSet.add(import.a(import.S));
+    localHashSet.add(import.a(import.T));
+    localHashSet.add(import.a(import.U));
+    localHashSet.add(import.a(import.V));
+    localHashSet.add(import.a(import.W));
+    localHashSet.add(import.a(import.X));
+    localHashSet = new HashSet();
+    c = localHashSet;
+    localHashSet.add(import.a(import.L));
   }
   
-  public static String c(Context paramContext, String paramString)
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    paramContext = paramContext.getSharedPreferences("turingfd_conf_105668_xqMini", 0);
-    if (paramContext == null) {
-      paramContext = "";
-    }
-    do
-    {
-      return paramContext;
-      paramString = paramContext.getString(paramString, "");
-      paramContext = paramString;
-    } while (TextUtils.isEmpty(paramString));
+    StringBuffer localStringBuffer = new StringBuffer();
     try
     {
-      int j = paramString.length() / 2;
-      paramContext = new byte[j];
-      paramString = paramString.toUpperCase().toCharArray();
-      int i = 0;
-      while (i < j)
+      paramString1 = new String(instanceof.a(paramString1));
+      if (TextUtils.isEmpty(paramString1))
       {
-        int k = i * 2;
-        int m = paramString[k];
-        m = (byte)"0123456789ABCDEF".indexOf(m);
-        k = paramString[(k + 1)];
-        paramContext[i] = ((byte)((byte)"0123456789ABCDEF".indexOf(k) | m << 4));
-        i += 1;
+        paramString1 = b;
       }
-      paramContext = for.a(paramContext, for.c());
-      paramContext = new String(paramContext, "UTF-8");
-      return paramContext;
+      else
+      {
+        localObject1 = paramString1.split("\n");
+        if (localObject1 != null)
+        {
+          paramString1 = (String)localObject1;
+          if (localObject1.length != 0) {}
+        }
+        else
+        {
+          paramString1 = b;
+        }
+      }
     }
-    catch (Throwable paramContext) {}
-    return "";
-  }
-  
-  public while<Long> a(Context paramContext, int paramInt)
-  {
-    System.currentTimeMillis();
-    while localwhile = new while(paramInt);
-    paramContext = c(paramContext, "402").split("_");
-    int i = paramContext.length;
-    paramInt = 0;
-    while (paramInt < i)
+    finally
     {
-      String str = paramContext[paramInt];
-      try
-      {
-        long l = Long.valueOf(str).longValue();
-        localwhile.offer(Long.valueOf(l));
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        label61:
-        break label61;
-      }
-      paramInt += 1;
+      Object localObject1;
+      label64:
+      int j;
+      int i;
+      break label64;
     }
-    return localwhile;
-  }
-  
-  public void a(Context paramContext, int paramInt, long paramLong)
-  {
-    a(paramContext, "202", paramInt + "_" + paramLong);
-  }
-  
-  public void a(Context paramContext, long paramLong)
-  {
-    a(paramContext, "204", "" + paramLong);
-  }
-  
-  public void a(Context paramContext, while<Long> paramwhile)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramwhile.size())
+    paramString1 = null;
+    if (paramString1 == null)
     {
-      localStringBuilder.append(paramwhile.Kb.get(i));
-      if (i != paramwhile.size() - 1) {
-        localStringBuilder.append("_");
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString3);
+      paramString1.append(";-1");
+      localStringBuffer.append(paramString1.toString());
+      return localStringBuffer.toString();
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString3);
+    ((StringBuilder)localObject1).append(";0");
+    localStringBuffer.append(((StringBuilder)localObject1).toString());
+    new HashMap();
+    paramString3 = new HashMap();
+    paramString2 = Pattern.compile(paramString2);
+    j = paramString1.length;
+    i = 0;
+    while (i < j)
+    {
+      Object localObject2 = paramString2.matcher(paramString1[i]);
+      if (((Matcher)localObject2).find())
+      {
+        localObject1 = ((Matcher)localObject2).group(4).trim();
+        if ("0A".equals(((Matcher)localObject2).group(3)))
+        {
+          localObject2 = ((Matcher)localObject2).group(1).split(":");
+          if ((localObject2 != null) && (localObject2.length >= 2)) {
+            paramString3.put(localObject2[1], localObject1);
+          }
+        }
       }
       i += 1;
     }
-    a(paramContext, "402", localStringBuilder.toString(), true);
-  }
-  
-  public final void a(Context paramContext, String paramString1, String paramString2)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString1, paramString2);
-    a(paramContext, localHashMap, false);
-  }
-  
-  public final void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(paramString1, paramString2);
-    a(paramContext, localHashMap, paramBoolean);
-  }
-  
-  public final void a(Context paramContext, Map<String, String> paramMap)
-  {
-    paramContext = paramContext.getSharedPreferences("turingfd_conf_105668_xqMini", 0);
-    if (paramContext == null) {}
-    do
+    if (!paramString3.isEmpty())
     {
-      return;
-      paramContext = paramContext.edit();
-    } while (paramContext == null);
-    Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramMap.get(str1);
-      try
+      localStringBuffer.append(";");
+      paramString1 = paramString3.keySet().iterator();
+      while (paramString1.hasNext())
       {
-        paramContext.putString(str1, for.a(for.b(str2.getBytes(), for.c())));
+        paramString2 = (String)paramString1.next();
+        localStringBuffer.append((String)paramString3.get(paramString2));
+        localStringBuffer.append(":");
+        localStringBuffer.append(paramString2);
+        if (paramString1.hasNext()) {
+          localStringBuffer.append(",");
+        }
       }
-      catch (Throwable localThrowable) {}
     }
-    try
+    return localStringBuffer.toString();
+  }
+  
+  public static List<Lynx> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = const.h();
+    Object localObject3 = new ArrayList();
+    int j = Process.myPid();
+    Object localObject2 = (ArrayList)localObject1;
+    localObject1 = ((ArrayList)localObject2).iterator();
+    int i = 0;
+    while (((Iterator)localObject1).hasNext())
     {
-      paramContext.commit();
-      return;
-    }
-    catch (Throwable paramContext) {}
-  }
-  
-  public final void a(Context paramContext, Map<String, String> paramMap, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a(paramContext, paramMap);
-      return;
-    }
-    this.lc.post(new default(this, paramContext, paramMap));
-  }
-  
-  public final long b(Context paramContext, String paramString)
-  {
-    paramContext = c(paramContext, paramString);
-    try
-    {
-      long l = Long.valueOf(paramContext).longValue();
-      return l;
-    }
-    catch (Throwable paramContext) {}
-    return 0L;
-  }
-  
-  public void b(Context paramContext, long paramLong)
-  {
-    a(paramContext, "201", "" + paramLong);
-  }
-  
-  public void b(Context paramContext, public parampublic)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("101", parampublic.Pb);
-    localHashMap.put("102", "" + parampublic.Qb);
-    if (!TextUtils.isEmpty(parampublic.Tb)) {
-      localHashMap.put("104", parampublic.Tb);
-    }
-    if (!TextUtils.isEmpty(parampublic.Ub)) {
-      localHashMap.put("105", parampublic.Ub);
-    }
-    if (!TextUtils.isEmpty(parampublic.Vb)) {
-      localHashMap.put("106", parampublic.Vb);
-    }
-    a(paramContext, localHashMap, true);
-  }
-  
-  public void c(Context paramContext, long paramLong)
-  {
-    a(paramContext, "203", "" + paramLong);
-  }
-  
-  public void c(Context paramContext, boolean paramBoolean)
-  {
-    a(paramContext, "403", "" + paramBoolean, true);
-  }
-  
-  public void d(Context paramContext, long paramLong)
-  {
-    a(paramContext, "107", "" + paramLong, true);
-    a(paramContext, "108", "" + System.currentTimeMillis() / 1000L, true);
-  }
-  
-  public void d(Context paramContext, String paramString)
-  {
-    a(paramContext, "404", paramString, true);
-  }
-  
-  public void e(Context paramContext, long paramLong)
-  {
-    long l = paramLong;
-    if (paramLong >= 9223372036854775807L) {
-      l = 9223372036854775807L;
-    }
-    a(paramContext, "401", "" + l, true);
-  }
-  
-  public void f(Context paramContext, long paramLong)
-  {
-    a(paramContext, "109", "" + paramLong, true);
-  }
-  
-  public String n(Context paramContext)
-  {
-    return c(paramContext, "201");
-  }
-  
-  public String o(Context paramContext)
-  {
-    return c(paramContext, "203");
-  }
-  
-  public long p(Context paramContext)
-  {
-    paramContext = c(paramContext, "401");
-    try
-    {
-      long l = Long.valueOf(paramContext).longValue();
-      return l;
-    }
-    catch (Throwable paramContext) {}
-    return 0L;
-  }
-  
-  public boolean q(Context paramContext)
-  {
-    paramContext = c(paramContext, "403");
-    try
-    {
-      if (TextUtils.isEmpty(paramContext)) {
-        return true;
+      localObject4 = (Aquila)((Iterator)localObject1).next();
+      if (j == ((Aquila)localObject4).a) {
+        i = ((Aquila)localObject4).e;
       }
-      boolean bool = Boolean.valueOf(paramContext).booleanValue();
-      return bool;
     }
-    catch (Throwable paramContext) {}
-    return true;
-  }
-  
-  public long r(Context paramContext)
-  {
-    paramContext = c(paramContext, "107");
-    try
+    Object localObject5;
+    if ((i != 0) && (j != i))
     {
-      long l = Long.valueOf(paramContext).longValue();
-      return l;
+      localObject4 = ((ArrayList)localObject2).iterator();
+      localObject1 = "";
+      while (((Iterator)localObject4).hasNext())
+      {
+        localObject5 = (Aquila)((Iterator)localObject4).next();
+        if (i == ((Aquila)localObject5).a) {
+          localObject1 = ((Aquila)localObject5).d;
+        }
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject4 = new Lynx();
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append(return.a);
+        ((StringBuilder)localObject5).append(return.e);
+        ((Lynx)localObject4).a = ((StringBuilder)localObject5).toString();
+        ((Lynx)localObject4).b = ((String)localObject1);
+        ((ArrayList)localObject3).add(localObject4);
+      }
     }
-    catch (Throwable paramContext) {}
-    return 0L;
-  }
-  
-  public String s(Context paramContext)
-  {
-    return c(paramContext, "301");
-  }
-  
-  public String t(Context paramContext)
-  {
-    return c(paramContext, "404");
-  }
-  
-  public String u(Context paramContext)
-  {
-    return c(paramContext, "202");
-  }
-  
-  public long v(Context paramContext)
-  {
-    paramContext = c(paramContext, "109");
-    try
+    localArrayList.addAll((Collection)localObject3);
+    localObject3 = new StringBuilder();
+    localObject1 = new ArrayList();
+    Object localObject4 = ((ArrayList)localObject2).iterator();
+    Iterator localIterator;
+    String str;
+    while (((Iterator)localObject4).hasNext())
     {
-      long l = Long.valueOf(paramContext).longValue();
-      return l;
+      localObject5 = (Aquila)((Iterator)localObject4).next();
+      localIterator = a.iterator();
+      while (localIterator.hasNext())
+      {
+        str = (String)localIterator.next();
+        if (((Aquila)localObject5).d.contains(str))
+        {
+          ((StringBuilder)localObject3).append(((Aquila)localObject5).d);
+          ((StringBuilder)localObject3).append("_");
+        }
+      }
     }
-    catch (Throwable paramContext) {}
-    return 0L;
-  }
-  
-  public public w(Context paramContext)
-  {
-    String str1 = c(paramContext, "101");
-    if (TextUtils.isEmpty(str1)) {
-      return public.c(1);
-    }
-    long l1 = 0L;
-    try
+    localObject3 = ((StringBuilder)localObject3).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
-      long l2 = Long.valueOf(c(paramContext, "102")).longValue();
-      l1 = l2;
+      localObject4 = new Lynx();
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append(return.a);
+      ((StringBuilder)localObject5).append(return.c);
+      ((Lynx)localObject4).a = ((StringBuilder)localObject5).toString();
+      ((Lynx)localObject4).b = ((String)localObject3).substring(0, ((String)localObject3).length() - 1);
+      ((ArrayList)localObject1).add(localObject4);
     }
-    catch (Throwable localThrowable)
+    localArrayList.addAll((Collection)localObject1);
+    localObject1 = new ArrayList();
+    localObject3 = new StringBuilder();
+    localObject4 = new HashSet();
+    localObject2 = ((ArrayList)localObject2).iterator();
+    i = 0;
+    while (((Iterator)localObject2).hasNext())
     {
-      label40:
-      String str2;
-      String str3;
-      public.do localdo;
-      break label40;
+      localObject5 = (Aquila)((Iterator)localObject2).next();
+      label768:
+      if ((((Aquila)localObject5).c == 0) && (((Aquila)localObject5).d.startsWith("/")) && (!((Aquila)localObject5).d.startsWith("/system")) && (!((Aquila)localObject5).d.startsWith("/dev")) && (!((Aquila)localObject5).d.startsWith("/sbin")) && (!((Aquila)localObject5).d.startsWith("/init")) && (!((Aquila)localObject5).d.startsWith("/vendor")) && (!((Aquila)localObject5).d.startsWith("/bin")) && (!((Aquila)localObject5).d.startsWith("/usr")) && (!((Aquila)localObject5).d.contains("kinguser")) && (!((Aquila)localObject5).d.endsWith("so")))
+      {
+        localIterator = a.iterator();
+        while (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          if (((Aquila)localObject5).d.contains(str))
+          {
+            j = 1;
+            break label709;
+          }
+        }
+        j = 0;
+        label709:
+        if (j == 0)
+        {
+          localIterator = c.iterator();
+          while (localIterator.hasNext())
+          {
+            str = (String)localIterator.next();
+            if (((Aquila)localObject5).d.contains(str))
+            {
+              j = 1;
+              break label768;
+            }
+          }
+          j = 0;
+          if (j == 0)
+          {
+            ((HashSet)localObject4).add(((Aquila)localObject5).d);
+            if (i >= 8) {
+              break;
+            }
+            i += 1;
+          }
+        }
+      }
     }
-    str2 = c(paramContext, "104");
-    str3 = c(paramContext, "105");
-    paramContext = c(paramContext, "106");
-    localdo = public.create(0);
-    localdo.Qb = l1;
-    localdo.Pb = str1;
-    localdo.Tb = str2;
-    localdo.Ub = str3;
-    localdo.Vb = paramContext;
-    return localdo.build();
+    if (((HashSet)localObject4).size() > 0)
+    {
+      localObject2 = ((HashSet)localObject4).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        ((StringBuilder)localObject3).append((String)((Iterator)localObject2).next());
+        ((StringBuilder)localObject3).append("%3B");
+      }
+      localObject2 = ((StringBuilder)localObject3).toString();
+      localObject3 = new Lynx();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append(return.a);
+      ((StringBuilder)localObject4).append(return.d);
+      ((Lynx)localObject3).a = ((StringBuilder)localObject4).toString();
+      ((Lynx)localObject3).b = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+      ((ArrayList)localObject1).add(localObject3);
+    }
+    localArrayList.addAll((Collection)localObject1);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.extends
  * JD-Core Version:    0.7.0.1
  */

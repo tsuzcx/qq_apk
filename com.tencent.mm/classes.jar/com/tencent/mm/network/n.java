@@ -9,30 +9,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface n
   extends IInterface
 {
-  public abstract void onNetworkChange(int paramInt);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString, t paramt, byte[] paramArrayOfByte);
   
   public static abstract class a
     extends Binder
     implements n
   {
-    private static final String DESCRIPTOR = "com.tencent.mm.network.IOnNetworkChange_AIDL";
-    static final int TRANSACTION_onNetworkChange = 1;
-    
     public a()
     {
-      attachInterface(this, "com.tencent.mm.network.IOnNetworkChange_AIDL");
+      attachInterface(this, "com.tencent.mm.network.IOnGYNetEnd_AIDL");
     }
     
-    public static n asInterface(IBinder paramIBinder)
+    public static n bQU()
     {
-      if (paramIBinder == null) {
-        return null;
-      }
-      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mm.network.IOnNetworkChange_AIDL");
-      if ((localIInterface != null) && ((localIInterface instanceof n))) {
-        return (n)localIInterface;
-      }
-      return new a(paramIBinder);
+      return a.pnT;
     }
     
     public IBinder asBinder()
@@ -47,11 +37,11 @@ public abstract interface n
       default: 
         return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
       case 1598968902: 
-        paramParcel2.writeString("com.tencent.mm.network.IOnNetworkChange_AIDL");
+        paramParcel2.writeString("com.tencent.mm.network.IOnGYNetEnd_AIDL");
         return true;
       }
-      paramParcel1.enforceInterface("com.tencent.mm.network.IOnNetworkChange_AIDL");
-      onNetworkChange(paramParcel1.readInt());
+      paramParcel1.enforceInterface("com.tencent.mm.network.IOnGYNetEnd_AIDL");
+      a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), t.a.u(paramParcel1.readStrongBinder()), paramParcel1.createByteArray());
       paramParcel2.writeNoException();
       return true;
     }
@@ -59,6 +49,7 @@ public abstract interface n
     static final class a
       implements n
     {
+      public static n pnT;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -66,21 +57,29 @@ public abstract interface n
         this.mRemote = paramIBinder;
       }
       
-      public final IBinder asBinder()
+      public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, t paramt, byte[] paramArrayOfByte)
       {
-        return this.mRemote;
-      }
-      
-      public final void onNetworkChange(int paramInt)
-      {
-        AppMethodBeat.i(58526);
+        AppMethodBeat.i(132746);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IOnNetworkChange_AIDL");
-          localParcel1.writeInt(paramInt);
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
+          localParcel1.writeInterfaceToken("com.tencent.mm.network.IOnGYNetEnd_AIDL");
+          localParcel1.writeInt(paramInt1);
+          localParcel1.writeInt(paramInt2);
+          localParcel1.writeInt(paramInt3);
+          localParcel1.writeString(paramString);
+          if (paramt != null) {}
+          for (IBinder localIBinder = paramt.asBinder();; localIBinder = null)
+          {
+            localParcel1.writeStrongBinder(localIBinder);
+            localParcel1.writeByteArray(paramArrayOfByte);
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (n.a.bQU() == null)) {
+              break;
+            }
+            n.a.bQU().a(paramInt1, paramInt2, paramInt3, paramString, paramt, paramArrayOfByte);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -88,15 +87,20 @@ public abstract interface n
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58526);
+          AppMethodBeat.o(132746);
         }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.n
  * JD-Core Version:    0.7.0.1
  */

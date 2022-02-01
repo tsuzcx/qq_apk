@@ -1,0 +1,57 @@
+{
+  "keyboard_background":"@color/BG_1",
+  "ime_candidate_start_color":"#ffF6F6F6",
+  "ime_candidate_end_color":"#ffEEEEEE",
+  "ime_keyboard_end_color":"#ffDDDDDD",
+  "ime_key_white_color":"@color/white",
+  "ime_key_white_shadow_color":"@color/BW_0_Alpha_0_4",
+  "ime_key_grey_color":"#CBCDD2",
+  "ime_key_grey_shadow_color":"@color/BW_0_Alpha_0_4",
+  "ime_key_green_color":"@color/Brand",
+  "ime_key_green_shadow_color":"@color/BW_0_Alpha_0_3",
+  "ime_key_pressed_mask_color":"@color/BW_0_Alpha_0_1",
+  "ime_key_float_view_long_click_bg_color":"@color/BW_BG_30",
+  "ime_key_float_view_upper_bg_color":"@color/BW_BG_30",
+  "ime_key_text_color":"@color/FG_0",
+  "ime_icon_color":"@color/FG_0",
+
+  "line_color":"@color/FG_3",
+  "candidate_item_bg_pressed_color":"@color/Brand",
+  "ime_float_view_long_click_text_color":"@color/White",
+
+  "key_text_color_default":"@color/FG_0",
+  "ime_divider_color":"@color/FG_3",
+  "ime_symbol_types_bg_color":"@color/BW_0_Alpha_0_1",
+
+  "S2_text_invalid_color":"@color/BW_0_Alpha_0_3",
+  "S2_grey_button_icon_color":"@color/FG_0",
+
+  "S5_type_text_color":"@color/BW_0_Alpha_0_9",
+  "S5_text_color":"@color/BW_0_Alpha_0_9",
+  "S5_text_type_color":"@color/FG_4",
+
+  "S6_pinyin_bg_color":"@color/ime_symbol_types_bg_color",
+  "ime_key_transparent_to_white_bg_pressed":"@color/white",
+
+  "S8_subtype_item_text_unenable_color":"@color/BW_0_Alpha_0_3",
+  "S8_button_bg_color":"@color/white",
+  "ime_emoji_type_gradient_start_color": "#00f7f7f7",
+  "ime_emoji_type_gradient_end_color": "#fff7f7f7",
+  "ime_emoji_type_selected_color":"@color/white",
+  "ime_emoji_delete_bg_color":"@color/white",
+  "ime_mask_color": "#f1F7F7F7",
+  "hld_welab_main_color": "#FFF3A050",
+  "hld_welab_btn_text_color": "#FFFA9D3B",
+
+  "ime_about_title_color":"#FF1A1A1A",
+  "ime_scroll_bar_color": "#FF9EA0A5",
+  "S8_emoji_exception_text_color": "#FFD0D0D0",
+  "S9_title_color": "#FF6E6F70",
+  "ime_seek_bar_backgroud_color": "#FFD5D5D5",
+  "ime_seek_bar_front_color": "#FF0DC160",
+
+  "ime_text_up_bg_color": "#B0222222",
+  "white": "#FFFFFFFF",
+  "White": "#FFFFFFFF",
+  "black": "#FF000000"
+}

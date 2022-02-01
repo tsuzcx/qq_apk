@@ -1,52 +1,17 @@
 package com.tencent.mobileqq.activity.main;
 
-import aggx;
-import aiez;
-import alwk;
-import android.content.res.Resources;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import aupg;
-import azsj;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.observer.VipGifObserver;
 
-public class MainAssistObserver$2
-  implements Runnable
+class MainAssistObserver$2
+  extends VipGifObserver
 {
-  public MainAssistObserver$2(aiez paramaiez) {}
+  MainAssistObserver$2(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = this.this$0.a;
-    if (localObject != null) {}
-    for (QQAppInterface localQQAppInterface = ((SplashActivity)localObject).app; (localObject == null) || (localQQAppInterface == null); localQQAppInterface = null) {
-      return;
-    }
-    try
-    {
-      aggx.a(localQQAppInterface);
-      aupg.a().a(localQQAppInterface);
-      localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
-      int i = ((DisplayMetrics)localObject).widthPixels;
-      int j = ((DisplayMetrics)localObject).heightPixels;
-      localObject = BaseApplicationImpl.sImageCache;
-      float f = alwk.a().a;
-      ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
-      localQQAppInterface.E();
-      QQToast.a(true);
-      QQAppInterface.a().a();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("MainAssistObserver", 4, "notifyWindowShowed e=" + localException);
-      }
+    if ((paramInt == 0) && (paramBoolean == true)) {
+      MainAssistObserver.b(this.a);
     }
   }
 }

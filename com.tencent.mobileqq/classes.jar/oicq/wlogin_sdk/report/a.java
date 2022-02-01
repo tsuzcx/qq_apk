@@ -27,11 +27,16 @@ public class a
     while (paramContext.hasNext())
     {
       paramArrayList = (a.a)paramContext.next();
-      localStringBuilder.append(paramArrayList.b).append("|");
-      localStringBuilder.append(paramArrayList.a).append("|");
-      localStringBuilder.append(paramArrayList.c).append("|");
-      localStringBuilder.append(paramArrayList.d).append("|");
-      localStringBuilder.append(paramArrayList.e).append(";");
+      localStringBuilder.append(paramArrayList.b);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramArrayList.a);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramArrayList.c);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramArrayList.d);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramArrayList.e);
+      localStringBuilder.append(";");
     }
     return localStringBuilder.toString();
   }
@@ -57,19 +62,22 @@ public class a
   
   public boolean a(Context paramContext)
   {
-    util.LOGI("saveCost " + this.a.size(), "");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("saveCost ");
+    ((StringBuilder)localObject).append(this.a.size());
+    util.LOGI(((StringBuilder)localObject).toString(), "");
     if (this.a.size() > 0)
     {
-      ArrayList localArrayList = new ArrayList(this.a.size());
-      localArrayList.addAll(this.a);
+      localObject = new ArrayList(this.a.size());
+      ((ArrayList)localObject).addAll(this.a);
       this.a.clear();
-      util.save_cost_time(paramContext, a(paramContext, localArrayList));
+      util.save_cost_time(paramContext, a(paramContext, (ArrayList)localObject));
       if (this.b.size() > 0)
       {
-        localArrayList = new ArrayList(this.b.size());
-        localArrayList.addAll(this.b);
+        localObject = new ArrayList(this.b.size());
+        ((ArrayList)localObject).addAll(this.b);
         this.b.clear();
-        util.save_cost_trace(paramContext, b(paramContext, localArrayList));
+        util.save_cost_trace(paramContext, b(paramContext, (ArrayList)localObject));
       }
       return true;
     }
@@ -87,14 +95,17 @@ public class a
     while (paramContext.hasNext())
     {
       paramArrayList = (a.a)paramContext.next();
-      localStringBuilder.append(paramArrayList.b).append(",").append(paramArrayList.f).append("|");
+      localStringBuilder.append(paramArrayList.b);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramArrayList.f);
+      localStringBuilder.append("|");
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.report.a
  * JD-Core Version:    0.7.0.1
  */

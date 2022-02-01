@@ -10,7 +10,7 @@ public final class ReqGetRecommender
   static int cache_eTimingType;
   static ReqUserInfo cache_stUserInfo;
   public int eTimingType = 0;
-  public ReqUserInfo stUserInfo;
+  public ReqUserInfo stUserInfo = null;
   
   public ReqGetRecommender() {}
   
@@ -37,7 +37,7 @@ public final class ReqGetRecommender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.ReqGetRecommender
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fit;
+import fis;
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -921,7 +921,7 @@ public abstract class BaseMessageManager
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b.put(MsgProxyUtils.a(paramString, paramInt1), Boolean.valueOf(true));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fit(this, paramString, paramInt1, paramInt2, paramRefreshMessageContext));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fis(this, paramString, paramInt1, paramInt2, paramRefreshMessageContext));
   }
   
   public void a(String paramString, int paramInt, long paramLong) {}

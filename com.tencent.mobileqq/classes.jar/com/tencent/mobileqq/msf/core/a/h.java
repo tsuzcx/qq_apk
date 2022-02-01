@@ -22,9 +22,11 @@ class h
     if (this.c != null)
     {
       paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-      if (paramArrayOfChar != null) {
-        this.a.put(this.b + this.c, paramArrayOfChar);
-      }
+      Map localMap = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.c);
+      localMap.put(localStringBuilder.toString(), paramArrayOfChar);
     }
   }
   
@@ -42,7 +44,7 @@ class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.a.h
  * JD-Core Version:    0.7.0.1
  */

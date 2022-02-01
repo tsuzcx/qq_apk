@@ -9,66 +9,66 @@ public final class CommentFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<CommentFrame> CREATOR;
-  public final String axa;
   public final String description;
+  public final String language;
   public final String text;
   
   static
   {
-    AppMethodBeat.i(95303);
-    CREATOR = new CommentFrame.1();
-    AppMethodBeat.o(95303);
+    AppMethodBeat.i(92425);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(92425);
   }
   
   CommentFrame(Parcel paramParcel)
   {
     super("COMM");
-    AppMethodBeat.i(95299);
-    this.axa = paramParcel.readString();
+    AppMethodBeat.i(92421);
+    this.language = paramParcel.readString();
     this.description = paramParcel.readString();
     this.text = paramParcel.readString();
-    AppMethodBeat.o(95299);
+    AppMethodBeat.o(92421);
   }
   
   public CommentFrame(String paramString1, String paramString2, String paramString3)
   {
     super("COMM");
-    this.axa = paramString1;
+    this.language = paramString1;
     this.description = paramString2;
     this.text = paramString3;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(95300);
+    AppMethodBeat.i(92422);
     if (this == paramObject)
     {
-      AppMethodBeat.o(95300);
+      AppMethodBeat.o(92422);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(95300);
+      AppMethodBeat.o(92422);
       return false;
     }
     paramObject = (CommentFrame)paramObject;
-    if ((x.e(this.description, paramObject.description)) && (x.e(this.axa, paramObject.axa)) && (x.e(this.text, paramObject.text)))
+    if ((x.p(this.description, paramObject.description)) && (x.p(this.language, paramObject.language)) && (x.p(this.text, paramObject.text)))
     {
-      AppMethodBeat.o(95300);
+      AppMethodBeat.o(92422);
       return true;
     }
-    AppMethodBeat.o(95300);
+    AppMethodBeat.o(92422);
     return false;
   }
   
   public final int hashCode()
   {
     int k = 0;
-    AppMethodBeat.i(95301);
+    AppMethodBeat.i(92423);
     int i;
-    if (this.axa != null)
+    if (this.language != null)
     {
-      i = this.axa.hashCode();
+      i = this.language.hashCode();
       if (this.description == null) {
         break label78;
       }
@@ -79,7 +79,7 @@ public final class CommentFrame
       if (this.text != null) {
         k = this.text.hashCode();
       }
-      AppMethodBeat.o(95301);
+      AppMethodBeat.o(92423);
       return (j + (i + 527) * 31) * 31 + k;
       i = 0;
       break;
@@ -88,16 +88,16 @@ public final class CommentFrame
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(95302);
+    AppMethodBeat.i(92424);
     paramParcel.writeString(this.id);
-    paramParcel.writeString(this.axa);
+    paramParcel.writeString(this.language);
     paramParcel.writeString(this.text);
-    AppMethodBeat.o(95302);
+    AppMethodBeat.o(92424);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.CommentFrame
  * JD-Core Version:    0.7.0.1
  */

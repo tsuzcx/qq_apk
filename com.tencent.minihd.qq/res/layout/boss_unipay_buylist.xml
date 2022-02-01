@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="#90000000" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/boss_unipay_linear.tipframe">
+        <LinearLayout style="@style/boss_unipay_linear">
+            <LinearLayout style="@style/boss_unipay_tips_header">
+                <LinearLayout android:orientation="vertical" android:layout_weight="100.0" style="@style/boss_unipay_tips_title">
+                    <TextView android:id="@id/boss_unipay_id_buylist_buyinfo" android:text="QQ会员" style="@style/boss_unipay_tx" />
+                </LinearLayout>
+                <ImageButton android:id="@id/boss_unipay_id_buylist_close" style="@style/boss_unipay_ic_tipsclose" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/unipay_id_mpinfoView" android:background="@drawable/boss_unipay_dr_adbg" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_marginBottom="10.0dip" style="@style/boss_unipay_linear">
+            <TextView android:textSize="13.0sp" android:ellipsize="end" android:gravity="left" android:id="@id/unipay_id_mpinfoText" android:maxLines="2" style="@style/boss_unipay_tx" />
+        </RelativeLayout>
+        <LinearLayout android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" style="@style/boss_unipay_list_group">
+            <ListView android:id="@id/boss_unipay_id_buylistview" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@null" />
+            <LinearLayout android:id="@id/boss_unipay_id_buylist_gameother" android:focusable="true" android:clickable="true" style="@style/boss_unipay_listbar_c_effect.bottom">
+                <LinearLayout android:duplicateParentState="true" android:layout_weight="100.0" style="@style/boss_unipay_wrap">
+                    <TextView android:id="@id/boss_unipay_id_buylist_gameothertext" android:duplicateParentState="true" android:text="其他数额" style="@style/boss_unipay_tx.list" />
+                </LinearLayout>
+                <ImageView android:id="@id/boss_unipay_id_buylist_gameotherimg" android:duplicateParentState="true" style="@style/boss_unipay_ic_arrowr.list" />
+            </LinearLayout>
+            <RelativeLayout android:id="@id/boss_unipay_id_buylist_monthother" style="@style/boss_unipay_listbar_c.bottom">
+                <TextView android:id="@id/boss_unipay_id_buylist_monthothertext" android:layout_marginLeft="25.0dip" android:text="其他..." android:layout_centerVertical="true" style="@style/boss_unipay_tx" />
+            </RelativeLayout>
+        </LinearLayout>
+        <CheckBox android:id="@id/boss_unipay_id_buylist_autopay" android:layout_marginTop="7.0dip" android:text="@string/boss_unipay_agreecheck" style="@style/boss_unipay_agreecheck" />
+        <Button android:id="@id/boss_unipay_id_buylist_paybtn" android:layout_marginLeft="8.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" style="@style/boss_unipay_btn_main" />
+    </LinearLayout>
+</LinearLayout>

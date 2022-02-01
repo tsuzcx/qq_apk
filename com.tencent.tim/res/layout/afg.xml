@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:id="@id/ggt" android:layout_width="wrap_content" android:layout_height="23.5dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/ggs" android:background="@drawable/dvy" android:visibility="visible" android:layout_width="23.5dip" android:layout_height="fill_parent" android:layout_marginRight="7.5dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/u8" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/at5" android:visibility="visible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:text="@string/q26" android:singleLine="true" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/u8" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/at4" android:visibility="visible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:cursorVisible="true" android:singleLine="true" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/bcf" android:paddingLeft="5.0dip" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dzm" />
+    <TextView android:textColor="@color/u2" android:layout_gravity="center_vertical" android:id="@id/at6" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/e3v" />
+</LinearLayout>

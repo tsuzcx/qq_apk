@@ -18,8 +18,7 @@
                 "layout_type": "layout_relative",
                 "margin_top":"18",
                 "height": {
-                  "type": "relative",
-                  "value": "73"
+                  "type": "wrap_content"
                 },
                 "width": {
                   "type": "match_parent"
@@ -59,7 +58,7 @@
                         "attributes": {
                           "setTextColorString:": "#262626",
                           "setText:": "-1",
-                          "setFontSizeString:": "17",
+                          "setFontSizeString:ratio:":["17","$attribute_text_size_ratio"],
                           "setNumberOfLinesString:": "2"
                         }
                       },
@@ -96,7 +95,6 @@
                                 "type": "wrap_content"
                                },
                                "attributes": {
-                                "setFrameString:": "-1",
                                 "setText:": "-1",
                                 "setTextColorString:": "#919191",
                                 "setBackgroundColorString:": "#F2F2F2",
@@ -147,7 +145,6 @@
                               },
                               "event_type": "ad_button_click_in_detail",
                               "attributes": {
-                                "setFrameString:": "-1",
                                 "setText:": "-1",
                                 "setTextColorString:": "#00CAFC",
                                 "setFontSizeString:": "12",
@@ -195,7 +192,7 @@
                     },
                     "subviews": [
                       {
-                        "view_type": "ReadInjoyAsynImageView",
+                        "view_type": "ReadInJoyAdCommonBlurImageView",
                         "view_id": "id_recommend_cover_img",
                         "height": {
                           "type": "match_parent"
@@ -205,12 +202,7 @@
                         },
                         "event_type": "ad_img_click_in_detail",
                         "attributes": {
-                          "setFrameString:": "-1",
-                          "setScaleType:": "2",
-                          "setImageWithURLString:lineup:": [
-                            "-1",
-                            "-1"
-                          ]
+                          "setFeedsModel:": "$article_model"
                         }
                       },
                       {
@@ -236,7 +228,6 @@
                               "type": "match_parent"
                             },
                             "attributes": {
-                              "setFrameString:": "-1",
                               "setImageWithURLString:lineup:": [
                                 "-1",
                                 "-1"
@@ -278,7 +269,6 @@
                               "value": "8"
                             },
                             "attributes": {
-                              "setFrameString:": "-1",
                               "setImageWithURLString:lineup:": [
                                 "-1",
                                 "-1"
@@ -303,8 +293,7 @@
                           "type": "wrap_content"
                         },
                         "attributes": {
-                          "setBackgroundColorString:": "#80000000",
-                          "setFrameString:": "-1"
+                          "setBackgroundColorString:": "#80000000"
                         },
                         "subviews": [
                           {
@@ -320,7 +309,6 @@
                               "value": "15"
                             },
                             "attributes": {
-                              "setFrameString:": "-1",
                               "setImageWithURLString:lineup:": [
                                 "-1",
                                 "-1"

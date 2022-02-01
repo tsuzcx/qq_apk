@@ -1,30 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.data.TroopBarPageEntity.TypeListEntity;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPostAbsLayout.AbsItemViewHolder;
 import com.tencent.mobileqq.troop.data.TroopBarPostLayoutTab;
+import java.util.ArrayList;
 
 public class gvn
-  implements Animation.AnimationListener
+  extends TroopBarPostAbsLayout.AbsItemViewHolder
 {
-  public gvn(TroopBarPostLayoutTab paramTroopBarPostLayoutTab, TroopBarPageEntity.TypeListEntity paramTypeListEntity, View paramView) {}
+  public View a;
+  public LinearLayout a;
+  protected ArrayList a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public gvn(TroopBarPostLayoutTab paramTroopBarPostLayoutTab, View paramView)
   {
-    paramAnimation = new Intent();
-    paramAnimation.setAction("change_post_type");
-    paramAnimation.putExtra("post_type", this.jdField_a_of_type_ComTencentMobileqqDataTroopBarPageEntity$TypeListEntity);
-    this.jdField_a_of_type_AndroidViewView.getContext().sendBroadcast(paramAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutTab.a = true;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutTab.a = false;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131232623));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131232624);
   }
 }
 

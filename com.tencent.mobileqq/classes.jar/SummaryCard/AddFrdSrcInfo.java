@@ -8,8 +8,8 @@ public final class AddFrdSrcInfo
   extends JceStruct
 {
   public String strSrcName = "";
-  public long uSrcId;
-  public long uSubSrcId;
+  public long uSrcId = 0L;
+  public long uSubSrcId = 0L;
   
   public AddFrdSrcInfo() {}
   
@@ -29,8 +29,9 @@ public final class AddFrdSrcInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strSrcName != null) {
-      paramJceOutputStream.write(this.strSrcName, 0);
+    String str = this.strSrcName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.uSrcId, 1);
     paramJceOutputStream.write(this.uSubSrcId, 2);
@@ -38,7 +39,7 @@ public final class AddFrdSrcInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.AddFrdSrcInfo
  * JD-Core Version:    0.7.0.1
  */

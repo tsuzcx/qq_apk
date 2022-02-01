@@ -22,14 +22,15 @@ final class Completable$9
     }
     catch (Throwable localThrowable)
     {
-      while (localBooleanSubscription.isUnsubscribed()) {}
-      paramCompletableSubscriber.onError(localThrowable);
+      if (!localBooleanSubscription.isUnsubscribed()) {
+        paramCompletableSubscriber.onError(localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.Completable.9
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import java.util.Map;
 
 public final class d
 {
-  private static d a = null;
+  private static d a;
   private com.tencent.bugly.crashreport.common.strategy.a b;
   private com.tencent.bugly.crashreport.common.info.a c;
   private b d;
@@ -40,7 +40,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.crash.d
  * JD-Core Version:    0.7.0.1
  */

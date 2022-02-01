@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import atfs;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchFloatingWindowController;
 
 class MiniMsgIPCClient$1
   implements Runnable
@@ -10,7 +10,7 @@ class MiniMsgIPCClient$1
   
   public void run()
   {
-    atfs.a().a(BaseApplicationImpl.getContext());
+    WatchFloatingWindowController.c().a(BaseApplicationImpl.getContext());
   }
 }
 

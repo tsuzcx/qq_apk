@@ -13,24 +13,19 @@ final class OrientationHelper$2
   public int getDecoratedEnd(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = this.mLayoutManager.getDecoratedBottom(paramView);
-    return localLayoutParams.bottomMargin + i;
+    return this.mLayoutManager.getDecoratedBottom(paramView) + localLayoutParams.bottomMargin;
   }
   
   public int getDecoratedMeasurement(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = this.mLayoutManager.getDecoratedMeasuredHeight(paramView);
-    int j = localLayoutParams.topMargin;
-    return localLayoutParams.bottomMargin + (i + j);
+    return this.mLayoutManager.getDecoratedMeasuredHeight(paramView) + localLayoutParams.topMargin + localLayoutParams.bottomMargin;
   }
   
   public int getDecoratedMeasurementInOther(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = this.mLayoutManager.getDecoratedMeasuredWidth(paramView);
-    int j = localLayoutParams.leftMargin;
-    return localLayoutParams.rightMargin + (i + j);
+    return this.mLayoutManager.getDecoratedMeasuredWidth(paramView) + localLayoutParams.leftMargin + localLayoutParams.rightMargin;
   }
   
   public int getDecoratedStart(View paramView)

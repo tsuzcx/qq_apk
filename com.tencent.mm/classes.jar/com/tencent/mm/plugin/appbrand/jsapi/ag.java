@@ -1,12 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.n.o;
 
-public final class ag
-  extends a<r>
+final class ag
 {
-  public static final int CTRL_INDEX = 286;
-  public static final String NAME = "chooseInvoiceTitle";
+  static final f.a rwS;
+  
+  static
+  {
+    AppMethodBeat.i(325541);
+    rwS = new f.a()
+    {
+      public final boolean a(String paramAnonymousString, o paramAnonymouso)
+      {
+        return false;
+      }
+    };
+    AppMethodBeat.o(325541);
+  }
 }
 
 

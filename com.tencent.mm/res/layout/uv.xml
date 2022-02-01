@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/a1h"
+<LinearLayout android:orientation="vertical" android:background="@color/p" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:id="@id/zx" android:padding="@dimen/ne" android:layout_width="65.0dip" android:layout_height="65.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-    <RelativeLayout android:id="@id/bht" android:background="#46ffffff" android:visibility="gone" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_centerInParent="true">
-        <ProgressBar android:id="@id/bhu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a0v" />
-        <ImageView android:id="@id/bhv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a3f" android:layout_centerInParent="true" android:contentDescription="@string/ba5" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:ellipsize="end" android:gravity="left" android:id="@id/bgj" android:background="@drawable/ayb" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+    <ListView android:id="@id/bh0" android:background="@color/al2" android:visibility="gone" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/ah8" android:cacheColorHint="#00000000" android:overScrollMode="never" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bgm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/bif" layout="@layout/ve" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a78" android:id="@id/bgn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:text="@string/bfr" />
+    </LinearLayout>
+</LinearLayout>

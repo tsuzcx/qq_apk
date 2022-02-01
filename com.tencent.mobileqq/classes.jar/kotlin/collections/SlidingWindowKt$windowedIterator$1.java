@@ -44,7 +44,6 @@ final class SlidingWindowKt$windowedIterator$1
   {
     Intrinsics.checkParameterIsNotNull(paramContinuation, "completion");
     paramContinuation = new 1(this.$size, this.$step, this.$iterator, this.$reuseBuffer, this.$partialWindows, paramContinuation);
-    SequenceScope localSequenceScope = (SequenceScope)paramObject;
     paramContinuation.p$ = ((SequenceScope)paramObject);
     return paramContinuation;
   }
@@ -57,243 +56,250 @@ final class SlidingWindowKt$windowedIterator$1
   @Nullable
   public final Object invokeSuspend(@NotNull Object paramObject)
   {
-    int n = 1;
-    int m = 0;
-    Object localObject5 = IntrinsicsKt.getCOROUTINE_SUSPENDED();
-    int j;
-    int i;
+    Object localObject3 = IntrinsicsKt.getCOROUTINE_SUSPENDED();
+    int i = this.label;
     Object localObject1;
     Object localObject2;
+    int j;
+    Object localObject4;
+    Object localObject6;
+    Object localObject7;
+    Object localObject5;
+    Object localObject8;
+    int m;
     int k;
-    Object localObject3;
-    switch (this.label)
+    if (i != 0)
     {
-    default: 
-      throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-    case 0: 
-      ResultKt.throwOnFailure(paramObject);
-      paramObject = this.p$;
-      j = RangesKt.coerceAtMost(this.$size, 1024);
-      i = this.$step - this.$size;
-      if (i >= 0)
+      if (i != 1)
       {
-        localObject1 = new ArrayList(j);
-        localObject2 = this.$iterator;
-        k = 0;
-        if (((Iterator)localObject2).hasNext())
+        if (i != 2)
         {
-          localObject3 = ((Iterator)localObject2).next();
-          if (k > 0)
+          if (i != 3)
           {
-            m = k - 1;
-            k = j;
-            j = i;
-            i = m;
-          }
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      m = i;
-      i = j;
-      j = k;
-      k = m;
-      break;
-      ((ArrayList)localObject1).add(localObject3);
-      if (((ArrayList)localObject1).size() == this.$size)
-      {
-        this.L$0 = paramObject;
-        this.I$0 = j;
-        this.I$1 = i;
-        this.L$1 = localObject1;
-        this.I$2 = k;
-        this.L$2 = localObject3;
-        this.L$3 = localObject2;
-        this.label = 1;
-        localObject3 = localObject2;
-        Object localObject4 = localObject1;
-        localObject2 = paramObject;
-        if (paramObject.yield(localObject1, this) == localObject5)
-        {
-          return localObject5;
-          localObject3 = (Iterator)this.L$3;
-          localObject1 = this.L$2;
-          i = this.I$2;
-          localObject4 = (ArrayList)this.L$1;
-          i = this.I$1;
-          j = this.I$0;
-          localObject2 = (SequenceScope)this.L$0;
-          ResultKt.throwOnFailure(paramObject);
-        }
-        if (this.$reuseBuffer) {
-          ((ArrayList)localObject4).clear();
-        }
-        for (;;)
-        {
-          paramObject = localObject2;
-          k = j;
-          j = i;
-          localObject2 = localObject3;
-          localObject1 = localObject4;
-          break;
-          localObject4 = new ArrayList(this.$size);
-        }
-        if (!((Collection)localObject1).isEmpty()) {
-          m = n;
-        }
-        while ((m != 0) && ((this.$partialWindows) || (((ArrayList)localObject1).size() == this.$size)))
-        {
-          this.L$0 = paramObject;
-          this.I$0 = j;
-          this.I$1 = i;
-          this.L$1 = localObject1;
-          this.I$2 = k;
-          this.label = 2;
-          if (paramObject.yield(localObject1, this) == localObject5)
-          {
-            return localObject5;
-            m = 0;
-            continue;
-            i = this.I$2;
-            localObject1 = (ArrayList)this.L$1;
-            i = this.I$1;
-            i = this.I$0;
-            localObject1 = (SequenceScope)this.L$0;
-            ResultKt.throwOnFailure(paramObject);
-          }
-        }
-        return Unit.INSTANCE;
-        localObject3 = new RingBuffer(j);
-        localObject2 = this.$iterator;
-        k = i;
-        localObject1 = paramObject;
-        i = j;
-        j = k;
-        paramObject = localObject3;
-        label522:
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject4 = ((Iterator)localObject2).next();
-          paramObject.add(localObject4);
-          if (paramObject.isFull()) {
-            if (paramObject.size() < this.$size)
+            if (i != 4)
             {
-              paramObject = paramObject.expanded(this.$size);
+              if (i == 5) {
+                localObject1 = (RingBuffer)this.L$1;
+              } else {
+                throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+              }
             }
             else
             {
-              if (this.$reuseBuffer) {}
-              for (localObject3 = (List)paramObject;; localObject3 = (List)new ArrayList((Collection)paramObject))
-              {
-                this.L$0 = localObject1;
-                this.I$0 = i;
-                this.I$1 = j;
-                this.L$1 = paramObject;
-                this.L$2 = localObject4;
-                this.L$3 = localObject2;
-                this.label = 3;
-                if (((SequenceScope)localObject1).yield(localObject3, this) != localObject5) {
-                  break;
-                }
-                return localObject5;
-              }
-              localObject1 = (Iterator)this.L$3;
-              localObject2 = this.L$2;
               localObject2 = (RingBuffer)this.L$1;
-              i = this.I$1;
-              j = this.I$0;
-              localObject3 = (SequenceScope)this.L$0;
+              j = this.I$1;
+              i = this.I$0;
+              localObject4 = (SequenceScope)this.L$0;
               ResultKt.throwOnFailure(paramObject);
+              localObject6 = this;
+              break label943;
             }
+          }
+          else
+          {
+            localObject4 = (Iterator)this.L$3;
+            localObject1 = this.L$2;
+            localObject1 = (RingBuffer)this.L$1;
+            j = this.I$1;
+            i = this.I$0;
+            localObject6 = (SequenceScope)this.L$0;
+            ResultKt.throwOnFailure(paramObject);
+            localObject7 = this;
+            paramObject = localObject1;
+            break label803;
           }
         }
-        for (paramObject = localObject3;; paramObject = localObject3)
+        else
         {
-          ((RingBuffer)localObject2).removeFirst(this.$step);
-          k = j;
-          localObject3 = paramObject;
-          paramObject = localObject2;
-          localObject2 = localObject1;
-          j = i;
+          i = this.I$2;
+          localObject1 = (ArrayList)this.L$1;
+        }
+        i = this.I$1;
+        i = this.I$0;
+        localObject1 = (SequenceScope)this.L$0;
+        ResultKt.throwOnFailure(paramObject);
+        break label1025;
+      }
+      localObject1 = (Iterator)this.L$3;
+      localObject2 = this.L$2;
+      i = this.I$2;
+      localObject2 = (ArrayList)this.L$1;
+      i = this.I$1;
+      j = this.I$0;
+      localObject5 = (SequenceScope)this.L$0;
+      ResultKt.throwOnFailure(paramObject);
+      localObject8 = this;
+      localObject7 = localObject3;
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+    }
+    else
+    {
+      ResultKt.throwOnFailure(paramObject);
+      localObject6 = this.p$;
+      i = RangesKt.coerceAtMost(this.$size, 1024);
+      j = this.$step - this.$size;
+      if (j < 0) {
+        break label616;
+      }
+      paramObject = new ArrayList(i);
+      m = 0;
+      localObject1 = this.$iterator;
+      localObject4 = localObject3;
+      k = j;
+      localObject2 = this;
+      localObject3 = localObject1;
+      j = i;
+      i = m;
+    }
+    while (localObject3.hasNext())
+    {
+      localObject1 = localObject3.next();
+      if (i > 0)
+      {
+        i -= 1;
+      }
+      else
+      {
+        paramObject.add(localObject1);
+        if (paramObject.size() == ((1)localObject2).$size)
+        {
+          ((1)localObject2).L$0 = localObject6;
+          ((1)localObject2).I$0 = j;
+          ((1)localObject2).I$1 = k;
+          ((1)localObject2).L$1 = paramObject;
+          ((1)localObject2).I$2 = i;
+          ((1)localObject2).L$2 = localObject1;
+          ((1)localObject2).L$3 = localObject3;
+          ((1)localObject2).label = 1;
           i = k;
-          localObject1 = localObject3;
-          break label522;
-          if (!this.$partialWindows) {
-            break;
+          localObject1 = paramObject;
+          localObject5 = localObject6;
+          localObject7 = localObject4;
+          localObject8 = localObject2;
+          if (((SequenceScope)localObject6).yield(paramObject, (Continuation)localObject2) == localObject4) {
+            return localObject4;
           }
-          k = j;
-          j = i;
-          i = k;
-          label762:
-          if (paramObject.size() > this.$step)
+          if (((1)localObject8).$reuseBuffer)
           {
-            if (this.$reuseBuffer) {}
-            for (localObject2 = (List)paramObject;; localObject2 = (List)new ArrayList((Collection)paramObject))
-            {
-              this.L$0 = localObject1;
-              this.I$0 = j;
-              this.I$1 = i;
-              this.L$1 = paramObject;
-              this.label = 4;
-              if (((SequenceScope)localObject1).yield(localObject2, this) != localObject5) {
-                break;
-              }
-              return localObject5;
-            }
-            localObject2 = (RingBuffer)this.L$1;
-            i = this.I$1;
-            j = this.I$0;
-            localObject1 = (SequenceScope)this.L$0;
-            ResultKt.throwOnFailure(paramObject);
-            paramObject = localObject2;
+            ((ArrayList)localObject1).clear();
+            paramObject = localObject1;
           }
-          for (;;)
+          else
           {
-            paramObject.removeFirst(this.$step);
-            break label762;
-            k = m;
-            if (!((Collection)paramObject).isEmpty()) {
-              k = 1;
-            }
-            if (k == 0) {
-              break;
-            }
-            this.L$0 = localObject1;
-            this.I$0 = j;
-            this.I$1 = i;
-            this.L$1 = paramObject;
-            this.label = 5;
-            if (((SequenceScope)localObject1).yield(paramObject, this) != localObject5) {
-              break;
-            }
-            return localObject5;
-            localObject1 = (RingBuffer)this.L$1;
-            i = this.I$1;
-            i = this.I$0;
-            localObject1 = (SequenceScope)this.L$0;
-            ResultKt.throwOnFailure(paramObject);
-            break;
+            paramObject = new ArrayList(((1)localObject8).$size);
           }
+          m = i;
           k = i;
-          localObject3 = localObject1;
-          localObject1 = localObject2;
-          localObject2 = paramObject;
-          i = j;
-          j = k;
+          i = m;
+          localObject6 = localObject5;
+          localObject4 = localObject7;
+          localObject2 = localObject8;
         }
       }
-      m = j;
-      j = i;
-      i = k;
-      k = m;
     }
+    if (((((Collection)paramObject).isEmpty() ^ true)) && ((((1)localObject2).$partialWindows) || (paramObject.size() == ((1)localObject2).$size)))
+    {
+      ((1)localObject2).L$0 = localObject6;
+      ((1)localObject2).I$0 = j;
+      ((1)localObject2).I$1 = k;
+      ((1)localObject2).L$1 = paramObject;
+      ((1)localObject2).I$2 = i;
+      ((1)localObject2).label = 2;
+      if (((SequenceScope)localObject6).yield(paramObject, (Continuation)localObject2) == localObject4)
+      {
+        return localObject4;
+        label616:
+        paramObject = new RingBuffer(i);
+        localObject4 = this.$iterator;
+        localObject2 = localObject6;
+        localObject1 = this;
+        while (((Iterator)localObject4).hasNext())
+        {
+          localObject6 = ((Iterator)localObject4).next();
+          paramObject.add(localObject6);
+          if (paramObject.isFull())
+          {
+            k = paramObject.size();
+            m = ((1)localObject1).$size;
+            if (k < m)
+            {
+              paramObject = paramObject.expanded(m);
+            }
+            else
+            {
+              if (((1)localObject1).$reuseBuffer) {
+                localObject5 = (List)paramObject;
+              } else {
+                localObject5 = (List)new ArrayList((Collection)paramObject);
+              }
+              ((1)localObject1).L$0 = localObject2;
+              ((1)localObject1).I$0 = i;
+              ((1)localObject1).I$1 = j;
+              ((1)localObject1).L$1 = paramObject;
+              ((1)localObject1).L$2 = localObject6;
+              ((1)localObject1).L$3 = localObject4;
+              ((1)localObject1).label = 3;
+              localObject6 = localObject2;
+              localObject7 = localObject1;
+              if (((SequenceScope)localObject2).yield(localObject5, (Continuation)localObject1) == localObject3) {
+                return localObject3;
+              }
+              label803:
+              paramObject.removeFirst(((1)localObject7).$step);
+              localObject2 = localObject6;
+              localObject1 = localObject7;
+            }
+          }
+        }
+        if (((1)localObject1).$partialWindows)
+        {
+          localObject4 = paramObject;
+          paramObject = localObject2;
+          localObject2 = localObject4;
+          while (((RingBuffer)localObject2).size() > ((1)localObject1).$step)
+          {
+            if (((1)localObject1).$reuseBuffer) {
+              localObject5 = (List)localObject2;
+            } else {
+              localObject5 = (List)new ArrayList((Collection)localObject2);
+            }
+            ((1)localObject1).L$0 = paramObject;
+            ((1)localObject1).I$0 = i;
+            ((1)localObject1).I$1 = j;
+            ((1)localObject1).L$1 = localObject2;
+            ((1)localObject1).label = 4;
+            localObject4 = paramObject;
+            localObject6 = localObject1;
+            if (paramObject.yield(localObject5, (Continuation)localObject1) == localObject3) {
+              return localObject3;
+            }
+            label943:
+            ((RingBuffer)localObject2).removeFirst(((1)localObject6).$step);
+            paramObject = localObject4;
+            localObject1 = localObject6;
+          }
+          if ((((Collection)localObject2).isEmpty() ^ true))
+          {
+            ((1)localObject1).L$0 = paramObject;
+            ((1)localObject1).I$0 = i;
+            ((1)localObject1).I$1 = j;
+            ((1)localObject1).L$1 = localObject2;
+            ((1)localObject1).label = 5;
+            if (paramObject.yield(localObject2, (Continuation)localObject1) == localObject3) {
+              return localObject3;
+            }
+          }
+        }
+      }
+    }
+    label1025:
+    return Unit.INSTANCE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.SlidingWindowKt.windowedIterator.1
  * JD-Core Version:    0.7.0.1
  */

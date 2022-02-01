@@ -1,101 +1,102 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Parcelable;
-import com.tencent.luggage.d.k;
-import com.tencent.luggage.webview.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.l;
-import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.util.Collection;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.game.luggage.d.a.c;
+import com.tencent.mm.plugin.game.luggage.d.a.e;
+import com.tencent.mm.plugin.game.luggage.d.a.f;
+import com.tencent.mm.plugin.game.luggage.d.a.g;
+import com.tencent.mm.plugin.game.luggage.d.a.h;
+import com.tencent.mm.plugin.game.luggage.d.a.i;
+import com.tencent.mm.plugin.game.luggage.d.a.k;
+import com.tencent.mm.plugin.game.luggage.d.a.l;
+import com.tencent.mm.plugin.game.luggage.d.a.m;
+import com.tencent.mm.plugin.game.luggage.d.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
+import org.json.JSONArray;
 
 public final class d
+  implements com.tencent.mm.plugin.game.luggage.a.a
 {
-  private static HashMap<String, d.a> eyb;
-  private static HashMap<String, k> nju;
-  private static LinkedList<String> njv;
-  
-  static
+  private static void aFX(String paramString)
   {
-    AppMethodBeat.i(135839);
-    nju = new HashMap();
-    eyb = new HashMap();
-    njv = new LinkedList();
-    AppMethodBeat.o(135839);
+    AppMethodBeat.i(82990);
+    Log.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
+    JSONArray localJSONArray = new JSONArray();
+    localJSONArray.put(paramString);
+    com.tencent.mm.plugin.webview.b.b.isU().b("wx62d9035fd4fd2059", localJSONArray);
+    AppMethodBeat.o(82990);
   }
   
-  public static k PR(String paramString)
+  public final String aFV(String paramString)
   {
-    AppMethodBeat.i(135837);
-    paramString = (k)nju.get(paramString);
-    AppMethodBeat.o(135837);
+    AppMethodBeat.i(82988);
+    com.tencent.mm.plugin.webview.b.b.isU();
+    paramString = com.tencent.mm.plugin.webview.b.b.bjy(paramString);
+    AppMethodBeat.o(82988);
     return paramString;
   }
   
-  public static void a(Class<? extends a> paramClass, String paramString, d.a parama)
+  public final boolean aFW(String paramString)
   {
-    AppMethodBeat.i(135835);
-    if (!ah.dsW())
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("action_id", 1);
-      localBundle.putString("preload_url", paramString);
-      localBundle.putSerializable("webcore_impl_class", paramClass);
-      ToolsProcessIPCService.a(localBundle, d.b.class, new d.1(parama));
-      AppMethodBeat.o(135835);
-      return;
+    AppMethodBeat.i(82989);
+    if (MMApplicationContext.isMainProcess()) {
+      aFX(paramString);
     }
-    if (njv.contains(paramString))
+    for (;;)
     {
-      ab.i("MicroMsg.PreloadGameWebCoreHelp", "preload ing, return");
-      parama.tU();
-      AppMethodBeat.o(135835);
-      return;
+      AppMethodBeat.o(82989);
+      return false;
+      com.tencent.mm.ipcinvoker.j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.class, null);
     }
-    njv.add(paramString);
-    l.q(new d.2(paramClass, paramString, parama));
-    AppMethodBeat.o(135835);
   }
   
-  public static k aq(Context paramContext, String paramString)
+  public final Map<String, Class> fEp()
   {
-    AppMethodBeat.i(135836);
-    paramString = (k)nju.remove(paramString);
-    if (paramString != null) {
-      paramString.setContext(paramContext);
-    }
-    AppMethodBeat.o(135836);
-    return paramString;
+    AppMethodBeat.i(276954);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("addDownloadTaskStraight", com.tencent.mm.plugin.game.luggage.d.a.a.class);
+    localHashMap.put("bookDownloadGame", com.tencent.mm.plugin.game.luggage.d.a.b.class);
+    localHashMap.put("cancelDownloadTask", c.class);
+    localHashMap.put("getDownloadWidgetTaskInfos", com.tencent.mm.plugin.game.luggage.d.a.d.class);
+    localHashMap.put("getInstallState", e.class);
+    localHashMap.put("installDownloadTask", f.class);
+    localHashMap.put("jumpDownloaderWidget", g.class);
+    localHashMap.put("launchApplication", h.class);
+    localHashMap.put("pauseDownloadTask", k.class);
+    localHashMap.put("queryDownloadTask", l.class);
+    localHashMap.put("resumeDownloadTask", m.class);
+    localHashMap.put("startGameWebview", n.class);
+    localHashMap.put("startGameWebView", n.class);
+    localHashMap.put("openGameCenter", i.class);
+    localHashMap.put("openGameTabHome", com.tencent.mm.plugin.game.luggage.d.a.j.class);
+    localHashMap.put("openAdCanvas", com.tencent.mm.plugin.sns.ad.f.a.a.class);
+    AppMethodBeat.o(276954);
+    return localHashMap;
   }
   
-  public static void destroy()
+  public final LinkedList<Class> fEq()
   {
-    AppMethodBeat.i(135838);
-    if (ah.dsW())
-    {
-      localObject = nju.values().iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((k)((Iterator)localObject).next()).destroy();
-      }
-      nju.clear();
-      AppMethodBeat.o(135838);
-      return;
-    }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("action_id", 2);
-    ToolsProcessIPCService.a((Parcelable)localObject, d.b.class, null);
-    AppMethodBeat.o(135838);
+    AppMethodBeat.i(276958);
+    LinkedList localLinkedList = new LinkedList(com.tencent.mm.plugin.game.luggage.h.b.fEv());
+    AppMethodBeat.o(276958);
+    return localLinkedList;
   }
+  
+  @com.tencent.mm.ipcinvoker.c.a
+  static class a
+    implements com.tencent.mm.ipcinvoker.d<IPCString, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.d
  * JD-Core Version:    0.7.0.1
  */

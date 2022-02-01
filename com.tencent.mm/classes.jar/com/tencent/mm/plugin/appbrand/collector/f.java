@@ -6,34 +6,34 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public final class f
 {
-  private static final AtomicInteger hgC;
-  private static final AtomicLong hgD;
-  private static boolean hgE;
+  private static final AtomicInteger qVd;
+  private static final AtomicLong qVe;
+  private static boolean qVf;
   
   static
   {
-    AppMethodBeat.i(57044);
-    hgC = new AtomicInteger();
-    hgD = new AtomicLong();
-    AppMethodBeat.o(57044);
+    AppMethodBeat.i(146109);
+    qVd = new AtomicInteger();
+    qVe = new AtomicLong();
+    AppMethodBeat.o(146109);
   }
   
-  public static boolean ayl()
+  public static boolean cko()
   {
-    return hgE;
+    return qVf;
   }
   
-  public static String aym()
+  public static String ckp()
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(57043);
-    int i = hgC.get();
-    long l1 = hgD.get();
+    AppMethodBeat.i(146108);
+    int i = qVd.get();
+    long l1 = qVe.get();
     Object localObject = new StringBuilder();
     StringBuilder localStringBuilder = ((StringBuilder)localObject).append("fps : ");
-    int j = hgC.get();
-    long l2 = hgD.get();
-    if ((!hgE) || (l2 <= 0L))
+    int j = qVd.get();
+    long l2 = qVe.get();
+    if ((!qVf) || (l2 <= 0L))
     {
       f1 = 0.0F;
       localStringBuilder.append(f1);
@@ -48,29 +48,29 @@ public final class f
     {
       localStringBuilder.append(f1);
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(57043);
+      AppMethodBeat.o(146108);
       return localObject;
       f1 = j * 1000.0F / (float)l2;
       break;
     }
   }
   
-  public static void dP(boolean paramBoolean)
+  public static void iv(boolean paramBoolean)
   {
-    hgE = paramBoolean;
+    qVf = paramBoolean;
   }
   
   public static void reset()
   {
-    AppMethodBeat.i(57042);
-    hgC.set(0);
-    hgD.set(0L);
-    AppMethodBeat.o(57042);
+    AppMethodBeat.i(146107);
+    qVd.set(0);
+    qVe.set(0L);
+    AppMethodBeat.o(146107);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.f
  * JD-Core Version:    0.7.0.1
  */

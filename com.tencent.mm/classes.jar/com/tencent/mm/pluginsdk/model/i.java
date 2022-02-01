@@ -1,117 +1,128 @@
 package com.tencent.mm.pluginsdk.model;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.s.a.a.a;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.d;
-import com.tencent.mm.pluginsdk.model.app.t;
-import com.tencent.mm.pluginsdk.model.app.x;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import java.util.Map;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.g;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.autogen.a.np;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.br.b;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.z;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.bz;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 
 public final class i
-  implements t
+  implements g
 {
-  public static boolean vKi = false;
-  private static i vKj;
-  public i.a vKk;
-  
-  public static b alj(String paramString)
+  public final g.b b(g.a parama)
   {
-    AppMethodBeat.i(27299);
-    if (paramString == null)
+    AppMethodBeat.i(30937);
+    dl localdl = parama.mpN;
+    if ((localdl == null) || (localdl.IIs != 47))
     {
-      AppMethodBeat.o(27299);
+      Log.f("MicroMsg.EmojiExtension", "parseEmojiMsg failed, invalid cmdAM");
+      AppMethodBeat.o(30937);
       return null;
     }
-    paramString = br.F(paramString, "PersonalAppSetting");
-    if (paramString == null)
+    Object localObject2 = w.a(localdl.YFE);
+    Object localObject1 = w.a(localdl.YFF);
+    bh.bCz();
+    cc localcc;
+    label171:
+    long l;
+    if (((String)c.ban().d(2, null)).equals(localObject2))
     {
-      AppMethodBeat.o(27299);
-      return null;
-    }
-    paramString = (String)paramString.get(".PersonalAppSetting.OpenID");
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(27299);
-      return null;
-    }
-    b localb = new b();
-    localb.vKl = paramString;
-    AppMethodBeat.o(27299);
-    return localb;
-  }
-  
-  public static i dkZ()
-  {
-    AppMethodBeat.i(27296);
-    if (vKj == null) {
-      vKj = new i();
-    }
-    i locali = vKj;
-    AppMethodBeat.o(27296);
-    return locali;
-  }
-  
-  public final void a(int paramInt1, int paramInt2, String paramString, x paramx)
-  {
-    AppMethodBeat.i(27298);
-    if (!aw.RG())
-    {
-      AppMethodBeat.o(27298);
-      return;
-    }
-    ab.d("MicroMsg.GetUserInfoInAppLogic", "onSceneEnd errType=%s errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramx == null)
-    {
-      ab.e("MicroMsg.GetUserInfoInAppLogic", "scene == null");
-      AppMethodBeat.o(27298);
-      return;
-    }
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      switch (paramx.getType())
+      String str = w.a(localdl.YFG);
+      if (!((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().a((String)localObject1, str, localdl.Njv, localdl.YFJ, parama))
       {
+        Log.w("MicroMsg.EmojiExtension", "emoji plugin not found");
+        localcc = new cc();
+        localcc.setType(47);
+        localcc.BS((String)localObject1);
+        if (!z.Iy((String)localObject2)) {
+          break label516;
+        }
+        i = 1;
+        localcc.pI(i);
+        localcc.BT("no_plugin_md5");
+        localcc.gX(localdl.Njv);
+        localcc.setContent(str);
+        if (localcc.field_isSend != 1) {
+          break label521;
+        }
+        l = br.JN(localcc.field_talker);
+        label219:
+        localcc.setCreateTime(l);
+        localcc.setStatus(3);
+        localcc.AU(localdl.YFJ);
+        br.a(localcc, parama);
+        bh.bCz();
+        c.bzD().ba(localcc);
       }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(27298);
-      return;
-      if ((ah.getContext() == null) || (a.a.caj() == null))
+      localObject1 = br.JP(localdl.YFJ);
+      if (localObject1 != null)
       {
-        ab.e("MicroMsg.GetUserInfoInAppLogic", "wrong environment");
-        AppMethodBeat.o(27298);
-        return;
-      }
-      ab.e("MicroMsg.GetUserInfoInAppLogic", "NetSceneGetUserInfoInApp come back", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      paramString = (l)paramx;
-      if (this.vKk != null) {
-        this.vKk.a(paramString);
+        Log.i("MicroMsg.EmojiExtension", "bizClientMsgId = %s", new Object[] { ((br.b)localObject1).olR });
+        if ((((br.b)localObject1).olW != null) && (((br.b)localObject1).scene == 1))
+        {
+          parama = w.a(localdl.YFE);
+          bh.bCz();
+          c.ban().B(73729, Integer.valueOf(1));
+          localObject2 = new bz();
+          ((bz)localObject2).field_content = MMApplicationContext.getContext().getString(R.l.gOu);
+          ((bz)localObject2).field_createtime = Util.nowSecond();
+          ((bz)localObject2).field_imgpath = "";
+          ((bz)localObject2).field_sayhicontent = ((bz)localObject2).field_content;
+          ((bz)localObject2).field_sayhiuser = parama;
+          ((bz)localObject2).field_scene = 18;
+          if (localdl.vhk <= 3) {
+            break label539;
+          }
+        }
       }
     }
-  }
-  
-  public final void dla()
-  {
-    AppMethodBeat.i(27297);
-    if (!aw.RG())
+    label516:
+    label521:
+    label539:
+    for (int i = localdl.vhk;; i = 3)
     {
-      AppMethodBeat.o(27297);
-      return;
+      ((bz)localObject2).field_status = i;
+      ((bz)localObject2).field_svrid = localdl.Njv;
+      ((bz)localObject2).field_talker = parama;
+      ((bz)localObject2).field_type = localdl.IIs;
+      ((bz)localObject2).field_isSend = 0;
+      ((bz)localObject2).field_sayhiencryptuser = parama;
+      ((bz)localObject2).field_ticket = ((br.b)localObject1).olW;
+      com.tencent.mm.modelverify.d.bNJ().a((bz)localObject2);
+      localObject1 = new np();
+      ((np)localObject1).hPZ.hQa = parama;
+      ((np)localObject1).publish();
+      AppMethodBeat.o(30937);
+      return null;
+      localObject1 = localObject2;
+      break;
+      i = 0;
+      break label171;
+      l = br.D(localcc.field_talker, localdl.CreateTime);
+      break label219;
     }
-    al.caf().a(14, this);
-    vKi = true;
-    AppMethodBeat.o(27297);
   }
   
-  public static final class b
-  {
-    public String vKl;
-  }
+  public final void b(g.c paramc) {}
 }
 
 

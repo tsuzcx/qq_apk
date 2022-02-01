@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.main.CommonLoadingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08028a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mobileqq.activity.main.CommonLoadingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080289" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0143" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d04d2" />
 </com.tencent.mobileqq.activity.main.CommonLoadingView>

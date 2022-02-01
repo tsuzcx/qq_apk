@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ui.launcher;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.g;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/launcher/API_openWeAppStarList;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/launcher/API_openWeAppStarList;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class c
-  extends a<d>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<g>
 {
-  public static final int CTRL_INDEX = 649;
-  public static final String NAME = "openWeAppStarList";
   @Deprecated
-  public static final c.a ibt;
+  public static final int CTRL_INDEX = 649;
+  @Deprecated
+  public static final String NAME = "openWeAppStarList";
+  private static final a syQ;
   
   static
   {
-    AppMethodBeat.i(143900);
-    ibt = new c.a((byte)0);
-    AppMethodBeat.o(143900);
+    AppMethodBeat.i(50721);
+    syQ = new a((byte)0);
+    AppMethodBeat.o(50721);
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/launcher/API_openWeAppStarList$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class a {}
 }
 
 

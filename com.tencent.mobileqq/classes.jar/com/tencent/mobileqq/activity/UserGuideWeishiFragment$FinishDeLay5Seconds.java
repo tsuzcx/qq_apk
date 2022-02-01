@@ -16,22 +16,23 @@ class UserGuideWeishiFragment$FinishDeLay5Seconds
   
   public void run()
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      Activity localActivity = (Activity)this.a.get();
-      if ((localActivity != null) && (!localActivity.isFinishing()))
+      localObject = (Activity)((WeakReference)localObject).get();
+      if ((localObject != null) && (!((Activity)localObject).isFinishing()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("UserGuideWeishiFragment", 2, "FinishDeLay5Seconds");
         }
-        localActivity.finish();
+        ((Activity)localObject).finish();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserGuideWeishiFragment.FinishDeLay5Seconds
  * JD-Core Version:    0.7.0.1
  */

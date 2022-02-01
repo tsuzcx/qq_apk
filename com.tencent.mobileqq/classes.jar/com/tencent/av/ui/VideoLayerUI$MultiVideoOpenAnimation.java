@@ -3,51 +3,50 @@ package com.tencent.av.ui;
 import android.graphics.Rect;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
-import mgp;
 
 public class VideoLayerUI$MultiVideoOpenAnimation
   implements Runnable
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private int b;
+  private int a = 0;
+  private int b = 0;
+  private float c = 0.0F;
   
   public VideoLayerUI$MultiVideoOpenAnimation(VideoLayerUI paramVideoLayerUI, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramVideoLayerUI = paramVideoLayerUI.jdField_a_of_type_ArrayOfMgp[this.jdField_a_of_type_Int];
-    Rect localRect = paramVideoLayerUI.b();
-    this.jdField_a_of_type_Float = (localRect.width() / 10.0F);
+    this.a = paramInt;
+    paramVideoLayerUI = paramVideoLayerUI.ae[this.a];
+    Rect localRect = paramVideoLayerUI.f();
+    this.c = (localRect.width() / 10.0F);
     paramInt = localRect.right;
     int i = localRect.width();
-    paramVideoLayerUI.b(paramInt, localRect.top, i + paramInt, localRect.bottom);
-    paramVideoLayerUI.b();
+    paramVideoLayerUI.c(paramInt, localRect.top, i + paramInt, localRect.bottom);
+    paramVideoLayerUI.m();
   }
   
   public void run()
   {
-    if (this.b == 9) {
+    if (this.b == 9)
+    {
       this.this$0.c(false);
     }
-    for (;;)
+    else
     {
-      this.b += 1;
-      if (this.b <= 9) {
-        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
-      }
-      return;
-      mgp localmgp = this.this$0.jdField_a_of_type_ArrayOfMgp[this.jdField_a_of_type_Int];
-      Rect localRect = localmgp.b();
-      int i = (int)(localRect.left - this.jdField_a_of_type_Float);
+      GLVideoView localGLVideoView = this.this$0.ae[this.a];
+      Rect localRect = localGLVideoView.f();
+      int i = (int)(localRect.left - this.c);
       int j = localRect.width();
-      localmgp.b(i, localRect.top, j + i, localRect.bottom);
-      localmgp.b();
+      localGLVideoView.c(i, localRect.top, j + i, localRect.bottom);
+      localGLVideoView.m();
+    }
+    this.b += 1;
+    if (this.b <= 9) {
+      this.this$0.Y.a().postDelayed(this, 30L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.MultiVideoOpenAnimation
  * JD-Core Version:    0.7.0.1
  */

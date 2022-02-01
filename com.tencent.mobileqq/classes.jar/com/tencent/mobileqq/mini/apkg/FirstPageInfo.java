@@ -30,19 +30,21 @@ public class FirstPageInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    if (paramObject == null) {
+      return false;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if ((paramObject instanceof FirstPageInfo))
     {
-      do
-      {
-        return false;
-        if (paramObject == this) {
-          return true;
-        }
-      } while (!(paramObject instanceof FirstPageInfo));
       paramObject = (FirstPageInfo)paramObject;
-    } while ((!TextUtils.equals(paramObject.pagePath, this.pagePath)) || (!TextUtils.equals(paramObject.subPkgName, this.pagePath)));
-    return true;
+      if (!TextUtils.equals(paramObject.pagePath, this.pagePath)) {
+        return false;
+      }
+      return TextUtils.equals(paramObject.subPkgName, this.pagePath);
+    }
+    return false;
   }
   
   public String getPagePath()
@@ -67,7 +69,15 @@ public class FirstPageInfo
   
   public String toString()
   {
-    return "FirstPageInfo{pagePath='" + this.pagePath + '\'' + ", subPkgName='" + this.subPkgName + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FirstPageInfo{pagePath='");
+    localStringBuilder.append(this.pagePath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", subPkgName='");
+    localStringBuilder.append(this.subPkgName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -78,7 +88,7 @@ public class FirstPageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.FirstPageInfo
  * JD-Core Version:    0.7.0.1
  */

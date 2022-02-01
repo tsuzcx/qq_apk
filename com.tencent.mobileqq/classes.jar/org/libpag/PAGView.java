@@ -1,17 +1,20 @@
 package org.libpag;
 
 import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.graphics.drawable.Drawable;
 import android.opengl.EGLContext;
 import android.os.Build.VERSION;
-import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
@@ -24,25 +27,35 @@ public class PAGView
   extends TextureView
   implements TextureView.SurfaceTextureListener, ScreenBroadcastReceiver.ScreenStateListener
 {
-  private static final int MAX_PRECISION = 100000000;
-  private static final int MSG_FLUSH = 1;
-  private static final int MSG_PLAY = 0;
-  private static final int MSG_REMOVE_CALLBACK_MSG = 2;
+  private static final int ANDROID_SDK_VERSION_O = 26;
+  private static final int MSG_FLUSH = 0;
+  private static final int MSG_HANDLER_THREAD_QUITE = 2;
+  private static final int MSG_SURFACE_DESTROY = 1;
+  private static final String TAG = "PAGView";
   private static final Object g_HandlerLock = new Object();
-  private static int g_HandlerThreadCount;
-  private static Handler g_PAGRendererHandler = null;
+  private static volatile int g_HandlerThreadCount;
+  private static PAGView.PAGRendererHandler g_PAGRendererHandler = null;
   private static HandlerThread g_PAGRendererThread = null;
+  private Boolean _isAnimatorPreRunning = null;
   private boolean _isPlaying = false;
   private ValueAnimator animator;
+  private volatile double animatorProgress;
+  private volatile long currentPlayTime;
   private String filePath = "";
   private SparseArray<PAGImage> imageReplacementMap = new SparseArray();
   private boolean isAttachedToWindow = false;
+  private Runnable mAnimatorCancelRunnable = new PAGView.5(this);
+  private final AnimatorListenerAdapter mAnimatorListenerAdapter = new PAGView.2(this);
+  private Runnable mAnimatorStartRunnable = new PAGView.4(this);
+  private final ValueAnimator.AnimatorUpdateListener mAnimatorUpdateListener = new PAGView.1(this);
   private TextureView.SurfaceTextureListener mListener;
+  private ArrayList<PAGView.PAGFlushListener> mPAGFlushListeners = new ArrayList();
   private boolean mSaveVisibleState;
   private ArrayList<PAGView.PAGViewListener> mViewListeners = new ArrayList();
   private PAGFile pagFile;
   private PAGPlayer pagPlayer;
   private PAGSurface pagSurface;
+  private boolean preAggregatedVisible = true;
   private EGLContext sharedContext = null;
   private SparseArray<PAGText> textReplacementMap = new SparseArray();
   
@@ -77,59 +90,75 @@ public class PAGView
     setupSurfaceTexture();
   }
   
-  /* Error */
-  private static void DestroyHandlerThread(Object paramObject)
+  private static void DestroyHandlerThread()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 65	org/libpag/PAGView:g_HandlerThreadCount	I
-    //   6: iconst_1
-    //   7: isub
-    //   8: putstatic 65	org/libpag/PAGView:g_HandlerThreadCount	I
-    //   11: iconst_2
-    //   12: aload_0
-    //   13: invokestatic 116	org/libpag/PAGView:sendMessage	(ILjava/lang/Object;)V
-    //   16: getstatic 65	org/libpag/PAGView:g_HandlerThreadCount	I
-    //   19: ifne +48 -> 67
-    //   22: getstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
-    //   25: ifnull +42 -> 67
-    //   28: getstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
-    //   31: invokevirtual 122	android/os/HandlerThread:isAlive	()Z
-    //   34: ifeq +33 -> 67
-    //   37: getstatic 61	org/libpag/PAGView:g_PAGRendererHandler	Landroid/os/Handler;
-    //   40: aconst_null
-    //   41: invokevirtual 127	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
-    //   44: getstatic 132	android/os/Build$VERSION:SDK_INT	I
-    //   47: bipush 18
-    //   49: if_icmple +22 -> 71
-    //   52: getstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
-    //   55: invokevirtual 135	android/os/HandlerThread:quitSafely	()Z
-    //   58: pop
-    //   59: aconst_null
-    //   60: putstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
-    //   63: aconst_null
-    //   64: putstatic 61	org/libpag/PAGView:g_PAGRendererHandler	Landroid/os/Handler;
-    //   67: ldc 2
-    //   69: monitorexit
-    //   70: return
-    //   71: getstatic 63	org/libpag/PAGView:g_PAGRendererThread	Landroid/os/HandlerThread;
-    //   74: invokevirtual 138	android/os/HandlerThread:quit	()Z
-    //   77: pop
-    //   78: goto -19 -> 59
-    //   81: astore_0
-    //   82: ldc 2
-    //   84: monitorexit
-    //   85: aload_0
-    //   86: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	paramObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	59	81	finally
-    //   59	67	81	finally
-    //   71	78	81	finally
+    try
+    {
+      g_HandlerThreadCount -= 1;
+      int i = g_HandlerThreadCount;
+      if (i != 0) {
+        return;
+      }
+      if ((g_PAGRendererHandler != null) && (g_PAGRendererThread != null))
+      {
+        boolean bool = g_PAGRendererThread.isAlive();
+        if (!bool) {
+          return;
+        }
+        SendMessage(2, null);
+        return;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  private static void HandlerThreadQuit()
+  {
+    if (g_HandlerThreadCount != 0) {
+      return;
+    }
+    if (g_PAGRendererHandler != null)
+    {
+      HandlerThread localHandlerThread = g_PAGRendererThread;
+      if (localHandlerThread == null) {
+        return;
+      }
+      if (!localHandlerThread.isAlive()) {
+        return;
+      }
+      g_PAGRendererHandler.removeCallbacksAndMessages(null);
+      if (Build.VERSION.SDK_INT > 18) {
+        g_PAGRendererThread.quitSafely();
+      } else {
+        g_PAGRendererThread.quit();
+      }
+      g_PAGRendererThread = null;
+      g_PAGRendererHandler = null;
+    }
+  }
+  
+  private static void NeedsUpdateView(PAGView paramPAGView)
+  {
+    PAGView.PAGRendererHandler localPAGRendererHandler = g_PAGRendererHandler;
+    if (localPAGRendererHandler == null) {
+      return;
+    }
+    localPAGRendererHandler.needsUpdateView(paramPAGView);
+  }
+  
+  private static void SendMessage(int paramInt, Object paramObject)
+  {
+    Object localObject = g_PAGRendererHandler;
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((PAGView.PAGRendererHandler)localObject).obtainMessage();
+    ((Message)localObject).arg1 = paramInt;
+    if (paramObject != null) {
+      ((Message)localObject).obj = paramObject;
+    }
+    g_PAGRendererHandler.sendMessage((Message)localObject);
   }
   
   private static void StartHandlerThread()
@@ -152,11 +181,11 @@ public class PAGView
   
   private void applyReplacements()
   {
-    int j = 0;
     PAGFile localPAGFile = (PAGFile)this.pagPlayer.getComposition();
     if (localPAGFile == null) {
       return;
     }
+    int j = 0;
     int i = 0;
     while (i < this.textReplacementMap.size())
     {
@@ -173,28 +202,64 @@ public class PAGView
     this.imageReplacementMap.clear();
   }
   
-  private void doPlay()
+  private void cancelAnimator()
   {
-    if (!this.isAttachedToWindow) {
+    if (isMainThread())
+    {
+      this.currentPlayTime = this.animator.getCurrentPlayTime();
+      this.animator.cancel();
       return;
     }
-    double d = this.pagPlayer.getProgress();
-    this.animator.setCurrentPlayTime((d * this.animator.getDuration()));
-    post(new PAGView.3(this));
+    removeCallbacks(this.mAnimatorStartRunnable);
+    post(this.mAnimatorCancelRunnable);
   }
   
-  private static void sendMessage(int paramInt, Object paramObject)
+  private void doPlay()
   {
-    if (g_PAGRendererHandler != null)
+    if (!this.isAttachedToWindow)
     {
-      Message localMessage = g_PAGRendererHandler.obtainMessage();
-      localMessage.what = paramInt;
-      localMessage.obj = paramObject;
-      if (paramInt == 0) {
-        localMessage.arg1 = ((int)(((Float)((PAGView)paramObject).animator.getAnimatedValue()).floatValue() * 1.0E+008F));
-      }
-      g_PAGRendererHandler.sendMessage(localMessage);
+      Log.e("PAGView", "doPlay: PAGView is not attached to window");
+      return;
     }
+    Log.i("PAGView", "doPlay");
+    this.animator.setCurrentPlayTime(this.currentPlayTime);
+    startAnimator();
+  }
+  
+  private boolean isMainThread()
+  {
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
+  }
+  
+  private void onAnimationUpdate(double paramDouble)
+  {
+    this.animatorProgress = paramDouble;
+    NeedsUpdateView(this);
+  }
+  
+  private void pauseAnimator()
+  {
+    if (this._isAnimatorPreRunning == null) {
+      this._isAnimatorPreRunning = Boolean.valueOf(this.animator.isRunning());
+    }
+    if (this.animator.isRunning()) {
+      cancelAnimator();
+    }
+  }
+  
+  private void resumeAnimator()
+  {
+    if ((this._isPlaying) && (!this.animator.isRunning()))
+    {
+      Boolean localBoolean = this._isAnimatorPreRunning;
+      if ((localBoolean == null) || (localBoolean.booleanValue()))
+      {
+        this._isAnimatorPreRunning = null;
+        doPlay();
+        return;
+      }
+    }
+    this._isAnimatorPreRunning = null;
   }
   
   private void setupSurfaceTexture()
@@ -205,8 +270,29 @@ public class PAGView
     this.animator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.animator.setRepeatCount(0);
     this.animator.setInterpolator(new LinearInterpolator());
-    this.animator.addUpdateListener(new PAGView.1(this, this));
-    this.animator.addListener(new PAGView.2(this, this));
+  }
+  
+  private void startAnimator()
+  {
+    if (isMainThread())
+    {
+      this.animator.start();
+      return;
+    }
+    removeCallbacks(this.mAnimatorCancelRunnable);
+    post(this.mAnimatorStartRunnable);
+  }
+  
+  private void updateView()
+  {
+    if (!this.isAttachedToWindow) {
+      return;
+    }
+    this.pagPlayer.setProgress(this.animatorProgress);
+    flush();
+    if (!this.mPAGFlushListeners.isEmpty()) {
+      post(new PAGView.3(this));
+    }
   }
   
   @Deprecated
@@ -220,6 +306,16 @@ public class PAGView
     try
     {
       this.mViewListeners.add(paramPAGViewListener);
+      return;
+    }
+    finally {}
+  }
+  
+  public void addPAGFlushListener(PAGView.PAGFlushListener paramPAGFlushListener)
+  {
+    try
+    {
+      this.mPAGFlushListeners.add(paramPAGFlushListener);
       return;
     }
     finally {}
@@ -245,6 +341,7 @@ public class PAGView
     return this.pagPlayer.flush();
   }
   
+  @Deprecated
   public boolean flush(boolean paramBoolean)
   {
     return flush();
@@ -252,8 +349,9 @@ public class PAGView
   
   public void freeCache()
   {
-    if (this.pagSurface != null) {
-      this.pagSurface.freeCache();
+    PAGSurface localPAGSurface = this.pagSurface;
+    if (localPAGSurface != null) {
+      localPAGSurface.freeCache();
     }
   }
   
@@ -262,6 +360,7 @@ public class PAGView
     return this.pagPlayer.getComposition();
   }
   
+  @Deprecated
   public PAGFile getFile()
   {
     return this.pagFile;
@@ -282,6 +381,7 @@ public class PAGView
     return this.pagPlayer.getProgress();
   }
   
+  @Deprecated
   public PAGComposition getRootComposition()
   {
     return this.pagPlayer.getComposition();
@@ -289,8 +389,9 @@ public class PAGView
   
   public boolean isPlaying()
   {
-    if (this.animator != null) {
-      return this.animator.isRunning();
+    ValueAnimator localValueAnimator = this.animator;
+    if (localValueAnimator != null) {
+      return localValueAnimator.isRunning();
     }
     return false;
   }
@@ -305,126 +406,174 @@ public class PAGView
     return this.pagPlayer.maxFrameRate();
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     this.isAttachedToWindow = true;
     super.onAttachedToWindow();
+    this.animator.addListener(this.mAnimatorListenerAdapter);
     BroadcastUtil.getInstance().registerScreenBroadcast(this);
     synchronized (g_HandlerLock)
     {
       StartHandlerThread();
-      if (this._isPlaying) {
-        doPlay();
-      }
+      resumeAnimator();
       return;
     }
   }
   
   protected void onDetachedFromWindow()
   {
-    boolean bool2 = false;
     this.isAttachedToWindow = false;
     super.onDetachedFromWindow();
     BroadcastUtil.getInstance().unregisterScreenBroadcast(this);
-    if (this.pagSurface != null)
+    ??? = this.pagSurface;
+    if (??? != null)
     {
-      this.pagSurface.release();
+      ((PAGSurface)???).release();
       this.pagSurface = null;
     }
-    boolean bool1 = bool2;
-    if (this._isPlaying)
-    {
-      bool1 = bool2;
-      if (this.animator.isRunning()) {
-        bool1 = true;
+    pauseAnimator();
+    if (Build.VERSION.SDK_INT < 26) {
+      synchronized (g_HandlerLock)
+      {
+        DestroyHandlerThread();
       }
     }
-    this._isPlaying = bool1;
-    this.animator.cancel();
-    synchronized (g_HandlerLock)
-    {
-      DestroyHandlerThread(this);
-      return;
-    }
+    this.animator.removeListener(this.mAnimatorListenerAdapter);
   }
   
   public void onScreenOff()
   {
-    if (getVisibility() == 0) {
+    if (getVisibility() == 0)
+    {
       this.mSaveVisibleState = true;
+      setVisibility(4);
     }
   }
   
   public void onScreenOn()
   {
-    if (this.mSaveVisibleState)
-    {
-      if (getVisibility() != 0) {
-        break label29;
-      }
-      dispatchVisibilityChanged(this, getVisibility());
-    }
-    for (;;)
-    {
-      this.mSaveVisibleState = false;
-      return;
-      label29:
+    if (this.mSaveVisibleState) {
       setVisibility(0);
     }
+    this.mSaveVisibleState = false;
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if (this.pagSurface != null)
+    Object localObject = this.pagSurface;
+    if (localObject != null)
     {
-      this.pagSurface.release();
+      ((PAGSurface)localObject).release();
       this.pagSurface = null;
     }
     this.pagSurface = PAGSurface.FromSurfaceTexture(paramSurfaceTexture, this.sharedContext);
     this.pagPlayer.setSurface(this.pagSurface);
-    if (this.pagSurface == null) {}
-    do
-    {
+    if (this.pagSurface == null) {
       return;
-      sendMessage(1, this);
-    } while (this.mListener == null);
-    this.mListener.onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
+    }
+    this.animator.addUpdateListener(this.mAnimatorUpdateListener);
+    if (!this.mPAGFlushListeners.isEmpty())
+    {
+      this.pagSurface.clearAll();
+      NeedsUpdateView(this);
+    }
+    else
+    {
+      flush();
+    }
+    localObject = this.mListener;
+    if (localObject != null) {
+      ((TextureView.SurfaceTextureListener)localObject).onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
+    }
   }
   
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture arg1)
   {
     this.pagPlayer.setSurface(null);
-    if (this.mListener != null) {
-      this.mListener.onSurfaceTextureDestroyed(paramSurfaceTexture);
+    Object localObject1 = this.mListener;
+    if (localObject1 != null) {
+      ((TextureView.SurfaceTextureListener)localObject1).onSurfaceTextureDestroyed(???);
     }
-    if (this.pagSurface != null) {
-      this.pagSurface.freeCache();
+    localObject1 = this.pagSurface;
+    if (localObject1 != null) {
+      ((PAGSurface)localObject1).freeCache();
     }
-    return true;
+    this.animator.removeUpdateListener(this.mAnimatorUpdateListener);
+    localObject1 = g_PAGRendererHandler;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (localObject1 != null)
+    {
+      bool1 = bool2;
+      if (??? != null)
+      {
+        SendMessage(1, ???);
+        bool1 = false;
+      }
+    }
+    if (Build.VERSION.SDK_INT >= 26) {
+      synchronized (g_HandlerLock)
+      {
+        DestroyHandlerThread();
+        return bool1;
+      }
+    }
+    return bool1;
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if (this.pagSurface != null)
+    Object localObject = this.pagSurface;
+    if (localObject != null)
     {
-      this.pagSurface.updateSize();
-      sendMessage(1, this);
+      ((PAGSurface)localObject).updateSize();
+      if (!this.mPAGFlushListeners.isEmpty())
+      {
+        this.pagSurface.clearAll();
+        NeedsUpdateView(this);
+      }
+      else
+      {
+        flush();
+      }
     }
-    if (this.mListener != null) {
-      this.mListener.onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
+    localObject = this.mListener;
+    if (localObject != null) {
+      ((TextureView.SurfaceTextureListener)localObject).onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
     }
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.mListener != null) {
-      this.mListener.onSurfaceTextureUpdated(paramSurfaceTexture);
+    TextureView.SurfaceTextureListener localSurfaceTextureListener = this.mListener;
+    if (localSurfaceTextureListener != null) {
+      localSurfaceTextureListener.onSurfaceTextureUpdated(paramSurfaceTexture);
     }
+  }
+  
+  public void onVisibilityAggregated(boolean paramBoolean)
+  {
+    super.onVisibilityAggregated(paramBoolean);
+    if (this.preAggregatedVisible == paramBoolean) {
+      return;
+    }
+    this.preAggregatedVisible = paramBoolean;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onVisibilityAggregated isVisible=");
+    localStringBuilder.append(paramBoolean);
+    Log.i("PAGView", localStringBuilder.toString());
+    if (paramBoolean)
+    {
+      resumeAnimator();
+      return;
+    }
+    pauseAnimator();
   }
   
   public void play()
   {
     this._isPlaying = true;
+    this._isAnimatorPreRunning = null;
     doPlay();
   }
   
@@ -444,6 +593,17 @@ public class PAGView
     finally {}
   }
   
+  public void removePAGFlushListener(PAGView.PAGFlushListener paramPAGFlushListener)
+  {
+    try
+    {
+      this.mPAGFlushListeners.remove(paramPAGFlushListener);
+      return;
+    }
+    finally {}
+  }
+  
+  @Deprecated
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
     PAGComposition localPAGComposition = this.pagPlayer.getComposition();
@@ -489,17 +649,19 @@ public class PAGView
     this.animator.setDuration(l / 1000L);
   }
   
+  @Deprecated
   public void setFile(PAGFile paramPAGFile)
   {
-    if (paramPAGFile != null) {}
-    for (PAGFile localPAGFile = paramPAGFile.copyOriginal();; localPAGFile = null)
-    {
-      setComposition(localPAGFile);
-      this.pagFile = paramPAGFile;
-      if (this.pagFile != null) {
-        applyReplacements();
-      }
-      return;
+    PAGFile localPAGFile;
+    if (paramPAGFile != null) {
+      localPAGFile = paramPAGFile.copyOriginal();
+    } else {
+      localPAGFile = null;
+    }
+    setComposition(localPAGFile);
+    this.pagFile = paramPAGFile;
+    if (this.pagFile != null) {
+      applyReplacements();
     }
   }
   
@@ -515,22 +677,25 @@ public class PAGView
   
   public boolean setPath(String paramString)
   {
-    if ((paramString != null) && (paramString.startsWith("assets://"))) {}
-    for (PAGFile localPAGFile = PAGFile.Load(getContext().getAssets(), paramString.substring(9));; localPAGFile = PAGFile.Load(paramString))
-    {
-      setComposition(localPAGFile);
-      this.filePath = paramString;
-      if (localPAGFile == null) {
-        break;
-      }
-      return true;
+    PAGFile localPAGFile;
+    if ((paramString != null) && (paramString.startsWith("assets://"))) {
+      localPAGFile = PAGFile.Load(getContext().getAssets(), paramString.substring(9));
+    } else {
+      localPAGFile = PAGFile.Load(paramString);
     }
-    return false;
+    setComposition(localPAGFile);
+    this.filePath = paramString;
+    return localPAGFile != null;
   }
   
   public void setProgress(double paramDouble)
   {
-    this.pagPlayer.setProgress(paramDouble);
+    paramDouble = Math.max(0.0D, Math.min(paramDouble, 1.0D));
+    double d = this.animator.getDuration();
+    Double.isNaN(d);
+    this.currentPlayTime = ((d * paramDouble));
+    this.animator.setCurrentPlayTime(this.currentPlayTime);
+    onAnimationUpdate(paramDouble);
   }
   
   public void setRepeatCount(int paramInt)
@@ -557,6 +722,7 @@ public class PAGView
     this.mListener = paramSurfaceTextureListener;
   }
   
+  @Deprecated
   public void setTextData(int paramInt, PAGText paramPAGText)
   {
     PAGComposition localPAGComposition = this.pagPlayer.getComposition();
@@ -578,8 +744,10 @@ public class PAGView
   
   public void stop()
   {
+    Log.i("PAGView", "stop");
     this._isPlaying = false;
-    post(new PAGView.4(this));
+    this._isAnimatorPreRunning = null;
+    cancelAnimator();
   }
   
   public boolean videoEnabled()
@@ -589,7 +757,7 @@ public class PAGView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.PAGView
  * JD-Core Version:    0.7.0.1
  */

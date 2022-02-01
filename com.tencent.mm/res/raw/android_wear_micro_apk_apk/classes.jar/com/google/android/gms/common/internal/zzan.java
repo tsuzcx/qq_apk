@@ -9,11 +9,11 @@ public class zzan
   extends zza
 {
   public static final Parcelable.Creator<zzan> CREATOR = new j();
-  final int Hc;
+  final int IR;
   
   zzan(int paramInt)
   {
-    this.Hc = paramInt;
+    this.IR = paramInt;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

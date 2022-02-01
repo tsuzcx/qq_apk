@@ -43,14 +43,15 @@ public final class mobile_online_report_req
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.type_id, 2);
-    if (this.vecOnlineItem != null) {
-      paramJceOutputStream.write(this.vecOnlineItem, 3);
+    ArrayList localArrayList = this.vecOnlineItem;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_online_report_req
  * JD-Core Version:    0.7.0.1
  */

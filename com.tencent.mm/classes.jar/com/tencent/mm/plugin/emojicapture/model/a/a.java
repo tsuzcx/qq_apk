@@ -1,41 +1,80 @@
 package com.tencent.mm.plugin.emojicapture.model.a;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "", "()V", "attachText", "", "getAttachText", "()Ljava/lang/String;", "setAttachText", "(Ljava/lang/String;)V", "attachTextColor", "", "getAttachTextColor", "()I", "setAttachTextColor", "(I)V", "enableRemoveBg", "", "getEnableRemoveBg", "()Z", "setEnableRemoveBg", "(Z)V", "removeBg", "getRemoveBg", "setRemoveBg", "scene", "getScene", "setScene", "stickerInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiStickerInfo;", "getStickerInfo", "()Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiStickerInfo;", "setStickerInfo", "(Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiStickerInfo;)V", "thumbPath", "getThumbPath", "setThumbPath", "timeEnter", "", "getTimeEnter", "()J", "setTimeEnter", "(J)V", "videoPath", "getVideoPath", "setVideoPath", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/model/capture/DataCallbackHolder;", "Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "()V", "dataCallback", "dataList", "", "Lcom/tencent/mm/sticker/LensItem;", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "setDataCallback", "callback", "updateData", "lensList", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  implements c
 {
-  public long eyh;
-  public boolean lsQ;
-  public b ltF;
-  public String ltG;
-  public int ltH;
-  public boolean ltI = true;
-  public int scene = 1;
-  public String thumbPath = "";
-  public String videoPath = "";
+  public List<com.tencent.mm.sticker.c> dataList;
+  public c yhb;
   
-  public final void mV(String paramString)
+  public a()
   {
-    AppMethodBeat.i(2636);
-    j.q(paramString, "<set-?>");
-    this.thumbPath = paramString;
-    AppMethodBeat.o(2636);
+    AppMethodBeat.i(209);
+    this.dataList = ((List)new ArrayList());
+    AppMethodBeat.o(209);
   }
   
-  public final void setVideoPath(String paramString)
+  public final void bz(List<com.tencent.mm.sticker.c> paramList)
   {
-    AppMethodBeat.i(2635);
-    j.q(paramString, "<set-?>");
-    this.videoPath = paramString;
-    AppMethodBeat.o(2635);
+    AppMethodBeat.i(204);
+    s.u(paramList, "lensList");
+    this.dataList = paramList;
+    c localc = this.yhb;
+    if (localc != null) {
+      localc.bz(paramList);
+    }
+    AppMethodBeat.o(204);
+  }
+  
+  public final void gX(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(205);
+    c localc = this.yhb;
+    if (localc != null) {
+      localc.gX(paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(205);
+  }
+  
+  public final void gY(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(206);
+    c localc = this.yhb;
+    if (localc != null) {
+      localc.gY(paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(206);
+  }
+  
+  public final void gZ(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(207);
+    c localc = this.yhb;
+    if (localc != null) {
+      localc.gZ(paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(207);
+  }
+  
+  public final void ha(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(208);
+    c localc = this.yhb;
+    if (localc != null) {
+      localc.ha(paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.a
  * JD-Core Version:    0.7.0.1
  */

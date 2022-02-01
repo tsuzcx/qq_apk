@@ -9,11 +9,11 @@ public final class VoiceRedPackMatchRsp
 {
   public String billno = "";
   public String degree = "";
-  public long grabUin;
-  public long makeUin;
-  public int status;
+  public long grabUin = 0L;
+  public long makeUin = 0L;
+  public int status = 0;
   public String strErr = "";
-  public int timeInterval;
+  public int timeInterval = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -28,29 +28,51 @@ public final class VoiceRedPackMatchRsp
   
   public String toString()
   {
-    return "VoiceRedPackMatchRsp{grabUin=" + this.grabUin + ", billno='" + this.billno + '\'' + ", makeUin=" + this.makeUin + ", status=" + this.status + ", timeInterval=" + this.timeInterval + ", strErr='" + this.strErr + '\'' + ", degree='" + this.degree + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VoiceRedPackMatchRsp{grabUin=");
+    localStringBuilder.append(this.grabUin);
+    localStringBuilder.append(", billno='");
+    localStringBuilder.append(this.billno);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", makeUin=");
+    localStringBuilder.append(this.makeUin);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.status);
+    localStringBuilder.append(", timeInterval=");
+    localStringBuilder.append(this.timeInterval);
+    localStringBuilder.append(", strErr='");
+    localStringBuilder.append(this.strErr);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", degree='");
+    localStringBuilder.append(this.degree);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.grabUin, 0);
-    if (this.billno != null) {
-      paramJceOutputStream.write(this.billno, 1);
+    String str = this.billno;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.makeUin, 2);
     paramJceOutputStream.write(this.status, 3);
     paramJceOutputStream.write(this.timeInterval, 4);
-    if (this.strErr != null) {
-      paramJceOutputStream.write(this.strErr, 5);
+    str = this.strErr;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.degree != null) {
-      paramJceOutputStream.write(this.degree, 6);
+    str = this.degree;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.VoiceRedPackMatchRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -24,13 +24,15 @@ public final class msg_svc$PbC2CReadedReportReq$UinPairReadInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 56, 72 }, new String[] { "peer_uin", "last_read_time", "crm_sig", "peer_type", "chat_type", "cpid", "aio_type", "uint64_to_tiny_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(1), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, UinPairReadInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 56, 72 }, new String[] { "peer_uin", "last_read_time", "crm_sig", "peer_type", "chat_type", "cpid", "aio_type", "uint64_to_tiny_id" }, new Object[] { localLong, localInteger, localByteStringMicro, Integer.valueOf(1), localInteger, localLong, localInteger, localLong }, UinPairReadInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbC2CReadedReportReq.UinPairReadInfo
  * JD-Core Version:    0.7.0.1
  */

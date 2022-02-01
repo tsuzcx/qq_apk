@@ -1,6 +1,6 @@
 package io.flutter.view;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public class FlutterMain$Settings
 {
@@ -19,7 +19,7 @@ public class FlutterMain$Settings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.view.FlutterMain.Settings
  * JD-Core Version:    0.7.0.1
  */

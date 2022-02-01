@@ -8,6 +8,7 @@ import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.core.ViolaRenderManager;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.baseComponent.VComponent;
+import com.tencent.viola.utils.ViolaUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,14 +19,14 @@ public class Association
   public static final String MODULE_NAME = "association";
   public static final String TAG = "Association";
   
-  private void bind(@Nullable String paramString1, @Nullable String paramString2, @Nullable JSONArray paramJSONArray, @Nullable String paramString3, @Nullable String paramString4)
+  private void bind(@Nullable String paramString1, @Nullable String paramString2, @Nullable JSONArray paramJSONArray, @Nullable String paramString3, @Nullable String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramJSONArray != null))
     {
       Object localObject = getViolaInstance();
       localObject = ViolaSDKManager.getInstance().getRenderManager().getComponent(((ViolaInstance)localObject).getInstanceId(), paramString1);
       if ((localObject != null) && (!((VComponent)localObject).isDestroyed())) {
-        ((VComponent)localObject).setAssocioationEvents(new AssocioationEvents(paramString1, paramString2, paramJSONArray, paramString3, paramString4));
+        ((VComponent)localObject).setAssocioationEvents(new AssocioationEvents(paramString1, paramString2, paramJSONArray, paramString3, paramString4, paramBoolean1, paramBoolean2));
       }
     }
   }
@@ -33,18 +34,41 @@ public class Association
   @JSMethod
   public void bind(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    if ((paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_REF)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_EVENT)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_PROPS))) {}
-    try
-    {
-      bind(paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_REF), paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_EVENT), paramJSONObject.getJSONArray(AssocioationEvents.ASSOCIOATION_KEY_PROPS), "", paramString);
-      return;
+    boolean bool1;
+    if ((paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_REF)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_EVENT)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_PROPS))) {
+      bool1 = true;
     }
-    catch (JSONException paramJSONObject) {}
+    for (;;)
+    {
+      try
+      {
+        if (paramJSONObject.has("sync")) {
+          bool1 = ViolaUtils.getBoolean(paramJSONObject.opt("sync"));
+        }
+        if (ViolaUtils.useV8Engine())
+        {
+          bool1 = false;
+          if (!paramJSONObject.has("applyLayout")) {
+            break label122;
+          }
+          bool2 = ViolaUtils.getBoolean(paramJSONObject.opt("applyLayout"));
+          bind(paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_REF), paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_EVENT), paramJSONObject.getJSONArray(AssocioationEvents.ASSOCIOATION_KEY_PROPS), "", paramString, bool1, bool2);
+          return;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        return;
+      }
+      continue;
+      label122:
+      boolean bool2 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.Association
  * JD-Core Version:    0.7.0.1
  */

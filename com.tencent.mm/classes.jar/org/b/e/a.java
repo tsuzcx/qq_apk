@@ -14,131 +14,131 @@ import org.b.d.k;
 public final class a
   implements b
 {
-  private org.b.d.a CSe;
-  private org.b.a.a.b CSf;
+  private org.b.d.a ajYV;
+  private org.b.a.a.b ajYW;
   
   public a(org.b.a.a.b paramb, org.b.d.a parama)
   {
-    this.CSf = paramb;
-    this.CSe = parama;
+    this.ajYW = paramb;
+    this.ajYV = parama;
   }
   
   private void a(org.b.d.c paramc, i parami)
   {
-    AppMethodBeat.i(77293);
-    paramc.jH("oauth_timestamp", new org.b.f.d().erM());
-    paramc.jH("oauth_nonce", new org.b.f.d().getNonce());
-    paramc.jH("oauth_consumer_key", this.CSe.CRz);
-    paramc.jH("oauth_signature_method", new org.b.f.a().erL());
-    paramc.jH("oauth_version", "1.0");
-    if (this.CSe.ery()) {
-      paramc.jH("scope", this.CSe.scope);
+    AppMethodBeat.i(40562);
+    paramc.rK("oauth_timestamp", new org.b.f.d().kJV());
+    paramc.rK("oauth_nonce", new org.b.f.d().kJW());
+    paramc.rK("oauth_consumer_key", this.ajYV.ajYp);
+    paramc.rK("oauth_signature_method", new org.b.f.a().kJU());
+    paramc.rK("oauth_version", "1.0");
+    if (this.ajYV.kJH()) {
+      paramc.rK("scope", this.ajYV.scope);
     }
-    paramc.jH("oauth_signature", b(paramc, parami));
-    this.CSe.log("appended additional OAuth parameters: " + org.b.g.b.y(paramc.CRI));
-    AppMethodBeat.o(77293);
+    paramc.rK("oauth_signature", b(paramc, parami));
+    this.ajYV.log("appended additional OAuth parameters: " + org.b.g.b.M(paramc.ajYy));
+    AppMethodBeat.o(40562);
   }
   
   private String b(org.b.d.c paramc, i parami)
   {
-    AppMethodBeat.i(77297);
-    this.CSe.log("generating signature...");
+    AppMethodBeat.i(40566);
+    this.ajYV.log("generating signature...");
     paramc = new org.b.c.c().a(paramc);
-    parami = new org.b.f.a().aO(paramc, this.CSe.CRA, parami.xsy);
-    this.CSe.log("base string is: ".concat(String.valueOf(paramc)));
-    this.CSe.log("signature is: ".concat(String.valueOf(parami)));
-    AppMethodBeat.o(77297);
+    parami = new org.b.f.a().cb(paramc, this.ajYV.ajYq, parami.aaTQ);
+    this.ajYV.log("base string is: ".concat(String.valueOf(paramc)));
+    this.ajYV.log("signature is: ".concat(String.valueOf(parami)));
+    AppMethodBeat.o(40566);
     return parami;
   }
   
   private void b(org.b.d.c paramc)
   {
-    AppMethodBeat.i(77298);
-    switch (erK()[this.CSe.CRD.ordinal()])
+    AppMethodBeat.i(40567);
+    switch (kJT()[this.ajYV.ajYt.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(77298);
+      AppMethodBeat.o(40567);
       return;
-      this.CSe.log("using Http Header signature");
-      paramc.addHeader("Authorization", new e().a(paramc));
-      AppMethodBeat.o(77298);
+      this.ajYV.log("using Http Header signature");
+      paramc.rM("Authorization", new e().a(paramc));
+      AppMethodBeat.o(40567);
       return;
-      this.CSe.log("using Querystring signature");
-      Iterator localIterator = paramc.CRI.entrySet().iterator();
+      this.ajYV.log("using Querystring signature");
+      Iterator localIterator = paramc.ajYy.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        paramc.jI((String)localEntry.getKey(), (String)localEntry.getValue());
+        paramc.rL((String)localEntry.getKey(), (String)localEntry.getValue());
       }
     }
   }
   
   public final i a(i parami, k paramk)
   {
-    AppMethodBeat.i(77294);
-    this.CSe.log("obtaining access token from " + this.CSf.erx());
-    org.b.d.c localc = new org.b.d.c(j.CRW, this.CSf.erx());
-    localc.jH("oauth_token", parami.token);
-    localc.jH("oauth_verifier", paramk.value);
-    this.CSe.log("setting token to: " + parami + " and verifier to: " + paramk);
+    AppMethodBeat.i(40563);
+    this.ajYV.log("obtaining access token from " + this.ajYW.kJG());
+    org.b.d.c localc = new org.b.d.c(j.ajYN, this.ajYW.kJG());
+    localc.rK("oauth_token", parami.token);
+    localc.rK("oauth_verifier", paramk.value);
+    this.ajYV.log("setting token to: " + parami + " and verifier to: " + paramk);
     a(localc, parami);
     b(localc);
-    parami = localc.erD();
-    parami = new org.b.c.g().azT(parami.getBody());
-    AppMethodBeat.o(77294);
+    parami = localc.kJM();
+    parami = new org.b.c.g().bLx(parami.getBody());
+    AppMethodBeat.o(40563);
     return parami;
   }
   
   public final void a(i parami, org.b.d.c paramc)
   {
-    AppMethodBeat.i(77295);
-    this.CSe.log("signing request: " + paramc.erB());
-    if (("".equals(parami.token)) && ("".equals(parami.xsy))) {}
+    AppMethodBeat.i(40564);
+    this.ajYV.log("signing request: " + paramc.kJK());
+    if (("".equals(parami.token)) && ("".equals(parami.aaTQ))) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        paramc.jH("oauth_token", parami.token);
+        paramc.rK("oauth_token", parami.token);
       }
-      this.CSe.log("setting token to: ".concat(String.valueOf(parami)));
+      this.ajYV.log("setting token to: ".concat(String.valueOf(parami)));
       a(paramc, parami);
       b(paramc);
-      AppMethodBeat.o(77295);
+      AppMethodBeat.o(40564);
       return;
     }
   }
   
   public final String b(i parami)
   {
-    AppMethodBeat.i(77296);
-    parami = this.CSf.b(parami);
-    AppMethodBeat.o(77296);
+    AppMethodBeat.i(40565);
+    parami = this.ajYW.b(parami);
+    AppMethodBeat.o(40565);
     return parami;
   }
   
-  public final i erJ()
+  public final i kJS()
   {
-    AppMethodBeat.i(77292);
-    this.CSe.log("obtaining request token from " + this.CSf.erw());
-    Object localObject = new org.b.d.c(j.CRW, this.CSf.erw());
-    this.CSe.log("setting oauth_callback to " + this.CSe.CRB);
-    ((org.b.d.c)localObject).jH("oauth_callback", this.CSe.CRB);
-    a((org.b.d.c)localObject, org.b.d.b.CRH);
+    AppMethodBeat.i(40561);
+    this.ajYV.log("obtaining request token from " + this.ajYW.kJF());
+    Object localObject = new org.b.d.c(j.ajYN, this.ajYW.kJF());
+    this.ajYV.log("setting oauth_callback to " + this.ajYV.ajYr);
+    ((org.b.d.c)localObject).rK("oauth_callback", this.ajYV.ajYr);
+    a((org.b.d.c)localObject, org.b.d.b.ajYx);
     b((org.b.d.c)localObject);
-    this.CSe.log("sending request...");
-    localObject = ((org.b.d.c)localObject).erD();
+    this.ajYV.log("sending request...");
+    localObject = ((org.b.d.c)localObject).kJM();
     String str = ((org.b.d.g)localObject).getBody();
-    this.CSe.log("response status code: " + ((org.b.d.g)localObject).code);
-    this.CSe.log("response body: ".concat(String.valueOf(str)));
-    localObject = new org.b.c.g().azT(str);
-    AppMethodBeat.o(77292);
+    this.ajYV.log("response status code: " + ((org.b.d.g)localObject).code);
+    this.ajYV.log("response body: ".concat(String.valueOf(str)));
+    localObject = new org.b.c.g().bLx(str);
+    AppMethodBeat.o(40561);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.e.a
  * JD-Core Version:    0.7.0.1
  */

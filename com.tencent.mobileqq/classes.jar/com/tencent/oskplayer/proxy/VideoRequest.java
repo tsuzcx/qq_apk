@@ -70,11 +70,17 @@ public class VideoRequest
   {
     if (transCancelState(0, 1))
     {
-      if (this.mVideoCancelListener != null) {
-        this.mVideoCancelListener.onVideoCancelStart(this);
+      Object localObject = this.mVideoCancelListener;
+      if (localObject != null) {
+        ((VideoCancelListener)localObject).onVideoCancelStart(this);
       }
-      if (PlayerConfig.g().isDebugVersion()) {
-        PlayerUtils.log(3, getLogTag(), this + "cancel start");
+      if (PlayerConfig.g().isDebugVersion())
+      {
+        localObject = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this);
+        localStringBuilder.append("cancel start");
+        PlayerUtils.log(3, (String)localObject, localStringBuilder.toString());
       }
     }
   }
@@ -123,11 +129,17 @@ public class VideoRequest
   {
     if (transCancelState(1, 2))
     {
-      if (this.mVideoCancelListener != null) {
-        this.mVideoCancelListener.onVideoCancelProceed(this, 100);
+      Object localObject = this.mVideoCancelListener;
+      if (localObject != null) {
+        ((VideoCancelListener)localObject).onVideoCancelProceed(this, 100);
       }
-      if (PlayerConfig.g().isDebugVersion()) {
-        PlayerUtils.log(3, getLogTag(), this + "cancel proceeding");
+      if (PlayerConfig.g().isDebugVersion())
+      {
+        localObject = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this);
+        localStringBuilder.append("cancel proceeding");
+        PlayerUtils.log(3, (String)localObject, localStringBuilder.toString());
       }
     }
   }
@@ -136,11 +148,17 @@ public class VideoRequest
   {
     if (transCancelState(2, 3))
     {
-      if (this.mVideoCancelListener != null) {
-        this.mVideoCancelListener.onVideoCancelSuccess(this);
+      Object localObject = this.mVideoCancelListener;
+      if (localObject != null) {
+        ((VideoCancelListener)localObject).onVideoCancelSuccess(this);
       }
-      if (PlayerConfig.g().isDebugVersion()) {
-        PlayerUtils.log(3, getLogTag(), this + "cancel success");
+      if (PlayerConfig.g().isDebugVersion())
+      {
+        localObject = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this);
+        localStringBuilder.append("cancel success");
+        PlayerUtils.log(3, (String)localObject, localStringBuilder.toString());
       }
     }
   }
@@ -195,7 +213,10 @@ public class VideoRequest
   
   public String getLogTag()
   {
-    return this.extraLogTag + this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.extraLogTag);
+    localStringBuilder.append(this.TAG);
+    return localStringBuilder.toString();
   }
   
   public int getPrority()
@@ -244,10 +265,26 @@ public class VideoRequest
       String str = toString();
       long l = System.currentTimeMillis();
       float f = (float)(this.sentBytes * 1000L) / (float)((l - this.mStartTime) * 1024L);
-      str = str + ", startTime=" + this.mStartTime;
-      str = str + ", sentBytes=" + this.sentBytes;
-      str = str + ", totalLength=" + this.totalLength;
-      str = str + ", downloadSpeedKBs=" + f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(", startTime=");
+      localStringBuilder.append(this.mStartTime);
+      str = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(", sentBytes=");
+      localStringBuilder.append(this.sentBytes);
+      str = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(", totalLength=");
+      localStringBuilder.append(this.totalLength);
+      str = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(", downloadSpeedKBs=");
+      localStringBuilder.append(f);
+      str = localStringBuilder.toString();
       return str;
     }
     finally
@@ -293,7 +330,8 @@ public class VideoRequest
   
   public boolean isHeadRequest()
   {
-    return (this.requestMethod != null) && (this.requestMethod.toLowerCase().equals("head"));
+    String str = this.requestMethod;
+    return (str != null) && (str.toLowerCase().equals("head"));
   }
   
   public boolean isIdle()
@@ -378,8 +416,9 @@ public class VideoRequest
   
   public void setStoppedReason(int paramInt)
   {
-    if ((this.stoppedReason & paramInt) == 0) {
-      this.stoppedReason += paramInt;
+    int i = this.stoppedReason;
+    if ((i & paramInt) == 0) {
+      this.stoppedReason = (i + paramInt);
     }
   }
   
@@ -400,22 +439,43 @@ public class VideoRequest
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{sourceUrl=").append(this.sourceUrl).append(",seq=").append(this.mSeqNum).append(",uuid=").append(getUuid()).append(",priority=").append(getPrority()).append(",requestProperty=");
-    if (this.httpHeader != null)
-    {
-      str = this.httpHeader.toString();
-      localStringBuilder = localStringBuilder.append(str).append(",range=[").append(getRangeStart()).append(",").append(getRangeEnd()).append("],preferredContentType=").append(this.preferredContentType).append(",cancelState=").append(this.cancelState).append(",task=");
-      if (this.task != null) {
-        break label185;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("{sourceUrl=");
+    localStringBuilder.append(this.sourceUrl);
+    localStringBuilder.append(",seq=");
+    localStringBuilder.append(this.mSeqNum);
+    localStringBuilder.append(",uuid=");
+    localStringBuilder.append(getUuid());
+    localStringBuilder.append(",priority=");
+    localStringBuilder.append(getPrority());
+    localStringBuilder.append(",requestProperty=");
+    Object localObject = this.httpHeader;
+    String str = "null";
+    if (localObject != null) {
+      localObject = ((HttpHeader)localObject).toString();
+    } else {
+      localObject = "null";
     }
-    label185:
-    for (String str = "null";; str = this.task.toString())
-    {
-      return str + "}";
-      str = "null";
-      break;
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(",range=[");
+    localStringBuilder.append(getRangeStart());
+    localStringBuilder.append(",");
+    localStringBuilder.append(getRangeEnd());
+    localStringBuilder.append("],preferredContentType=");
+    localStringBuilder.append(this.preferredContentType);
+    localStringBuilder.append(",cancelState=");
+    localStringBuilder.append(this.cancelState);
+    localStringBuilder.append(",task=");
+    localObject = this.task;
+    if (localObject == null) {
+      localObject = str;
+    } else {
+      localObject = localObject.toString();
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void updateInfo(long paramLong, FileType paramFileType)
@@ -452,7 +512,7 @@ public class VideoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.VideoRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w6" android:gravity="center" android:id="@id/ejy" android:background="@drawable/a1t" android:paddingLeft="@dimen/l5" android:paddingRight="@dimen/l5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/kw" android:layout_marginBottom="@dimen/m7" android:minWidth="@dimen/a9j" android:text="test" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <com.tencent.mm.plugin.game.ui.GameBestSellingMore android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/gw" android:textColor="@color/w1" android:layout_gravity="center_vertical" android:id="@id/gzr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/gx" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/gzq" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="12.0dip" android:src="@drawable/bah" android:scaleType="fitXY" />
+    </com.tencent.mm.plugin.game.ui.GameBestSellingMore>
+</FrameLayout>

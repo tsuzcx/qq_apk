@@ -8,15 +8,15 @@ public final class MsgType0x210SubMsgType0xe
   extends JceStruct
 {
   public String str_msg = "";
-  public long uint32_code;
-  public long uint32_dst_app_id;
-  public long uint32_dst_inst_id;
-  public long uint32_operate;
-  public long uint32_seq;
-  public long uint32_src_app_id;
-  public long uint32_src_inst_id;
-  public long uint64_dst_uin;
-  public long uint64_sessionid;
+  public long uint32_code = 0L;
+  public long uint32_dst_app_id = 0L;
+  public long uint32_dst_inst_id = 0L;
+  public long uint32_operate = 0L;
+  public long uint32_seq = 0L;
+  public long uint32_src_app_id = 0L;
+  public long uint32_src_inst_id = 0L;
+  public long uint64_dst_uin = 0L;
+  public long uint64_sessionid = 0L;
   
   public MsgType0x210SubMsgType0xe() {}
   
@@ -59,14 +59,15 @@ public final class MsgType0x210SubMsgType0xe
     paramJceOutputStream.write(this.uint32_operate, 6);
     paramJceOutputStream.write(this.uint32_seq, 7);
     paramJceOutputStream.write(this.uint32_code, 8);
-    if (this.str_msg != null) {
-      paramJceOutputStream.write(this.str_msg, 9);
+    String str = this.str_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0xe
  * JD-Core Version:    0.7.0.1
  */

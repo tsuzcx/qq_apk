@@ -1,0 +1,13 @@
+{
+ "view_type" : "UIView",
+  "view_id": "id_social_header_padding_view",
+  "event_type": "cmd_social_header_wrapper_click",
+  "height": {
+    "type": "relative",
+    "value": "16.5"
+  },
+  "width": {
+    "type": "relative",
+    "value": "375"
+  }
+}

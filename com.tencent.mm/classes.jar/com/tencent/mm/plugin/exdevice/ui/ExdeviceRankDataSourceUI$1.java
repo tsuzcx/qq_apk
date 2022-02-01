@@ -11,15 +11,15 @@ final class ExdeviceRankDataSourceUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(20114);
-    ExdeviceRankDataSourceUI.a(this.lOR);
-    AppMethodBeat.o(20114);
+    AppMethodBeat.i(24186);
+    ExdeviceRankDataSourceUI.a(this.yCi);
+    AppMethodBeat.o(24186);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankDataSourceUI.1
  * JD-Core Version:    0.7.0.1
  */

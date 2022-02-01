@@ -22,10 +22,11 @@ public class VideoParam
   
   public int getMaxFps()
   {
-    if ((this.mFpsRange == null) || (this.mFpsRange.length <= 1)) {
-      return 25;
+    int[] arrayOfInt = this.mFpsRange;
+    if ((arrayOfInt != null) && (arrayOfInt.length > 1)) {
+      return arrayOfInt[1] / 1000;
     }
-    return this.mFpsRange[1] / 1000;
+    return 25;
   }
   
   @TargetApi(18)
@@ -40,31 +41,27 @@ public class VideoParam
     {
       Iterator localIterator = paramParameters.getSupportedPreviewFpsRange().iterator();
       paramParameters = localObject2;
-      localObject1 = paramParameters;
-      if (localIterator.hasNext())
+      for (;;)
       {
-        localObject1 = (int[])localIterator.next();
-        if (localObject1[1] < 25000) {
-          break label98;
+        localObject1 = paramParameters;
+        if (!localIterator.hasNext()) {
+          break;
         }
-        paramParameters = (Camera.Parameters)localObject1;
+        localObject1 = (int[])localIterator.next();
+        if (localObject1[1] >= 25000) {
+          paramParameters = (Camera.Parameters)localObject1;
+        }
       }
     }
-    label98:
-    for (;;)
-    {
-      break;
-      if (localObject1 == null) {
-        LogUtils.e("VideoParam", String.format("Not support fps: %d", new Object[] { Integer.valueOf(25) }));
-      }
-      this.mFpsRange = ((int[])localObject1);
-      return;
+    if (localObject1 == null) {
+      LogUtils.e("VideoParam", String.format("Not support fps: %d", new Object[] { Integer.valueOf(25) }));
     }
+    this.mFpsRange = ((int[])localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.recorder.VideoParam
  * JD-Core Version:    0.7.0.1
  */

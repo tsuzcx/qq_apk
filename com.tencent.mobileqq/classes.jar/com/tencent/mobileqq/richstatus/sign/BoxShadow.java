@@ -15,13 +15,13 @@ import android.widget.FrameLayout;
 public class BoxShadow
   extends FrameLayout
 {
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  RectF jdField_a_of_type_AndroidGraphicsRectF;
-  int b;
+  RectF a;
+  Paint b = new Paint();
   int c;
-  private int d;
-  private int e;
+  int d;
+  int e;
+  private int f;
+  private int g;
   
   public BoxShadow(@NonNull Context paramContext)
   {
@@ -31,13 +31,13 @@ public class BoxShadow
   public BoxShadow(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramContext);
-    this.b = paramInt2;
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    paramInt1 = (int)(0.5F * paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(new BlurMaskFilter(paramInt1, BlurMaskFilter.Blur.NORMAL));
+    this.d = paramInt2;
+    this.e = paramInt1;
+    this.c = paramInt3;
+    this.b.setColor(this.c);
+    this.b.setStyle(Paint.Style.FILL);
+    paramInt1 = (int)(paramInt1 * 0.5F);
+    this.b.setMaskFilter(new BlurMaskFilter(paramInt1, BlurMaskFilter.Blur.NORMAL));
     setLayerType(1, null);
   }
   
@@ -53,8 +53,11 @@ public class BoxShadow
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRectF != null) {
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.b, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+    RectF localRectF = this.a;
+    if (localRectF != null)
+    {
+      int i = this.d;
+      paramCanvas.drawRoundRect(localRectF, i, i, this.b);
     }
     super.dispatchDraw(paramCanvas);
   }
@@ -62,27 +65,28 @@ public class BoxShadow
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_AndroidGraphicsRectF == null) || (this.d != getMeasuredWidth()) || (this.e != getMeasuredHeight()))
+    if ((this.a == null) || (this.f != getMeasuredWidth()) || (this.g != getMeasuredHeight()))
     {
-      paramInt1 = (int)(0.5F * this.c);
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt1, getMeasuredWidth() - paramInt1, getMeasuredHeight() - paramInt1 * 1.15F);
-      this.d = getMeasuredWidth();
-      this.e = getMeasuredHeight();
+      paramInt1 = (int)(this.e * 0.5F);
+      float f1 = paramInt1;
+      this.a = new RectF(f1, f1, getMeasuredWidth() - paramInt1, getMeasuredHeight() - 1.15F * f1);
+      this.f = getMeasuredWidth();
+      this.g = getMeasuredHeight();
     }
   }
   
   public void setShadowColor(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.c != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+      this.c = paramInt;
+      this.b.setColor(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.BoxShadow
  * JD-Core Version:    0.7.0.1
  */

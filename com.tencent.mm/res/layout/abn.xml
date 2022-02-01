@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a6q" android:paddingLeft="@dimen/a50" android:paddingTop="@dimen/ll" android:paddingRight="@dimen/a50" android:paddingBottom="@dimen/ll" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:ellipsize="end" android:id="@id/d1t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/u2" android:ellipsize="end" android:id="@id/d1u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" />
-    </LinearLayout>
-    <LinearLayout android:gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:ellipsize="end" android:id="@id/d1v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="16.0dip" android:singleLine="true" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/u2" android:ellipsize="end" android:id="@id/d1w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" />
-    </LinearLayout>
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/v7" android:layout_width="fill_parent" android:layout_height="379.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/cp" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/epg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:text="@string/cxu" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/cd" android:textStyle="bold" android:textColor="@color/FG_2" android:id="@id/epe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/cxt" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/epg" />
+    <ImageView android:id="@id/epf" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/cv" android:src="@drawable/c_8" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/epe" />
+    <TextView android:textSize="@dimen/cp" android:textColor="@color/az" android:gravity="center" android:id="@id/epd" android:background="@drawable/ii" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/d6" android:text="@string/et1" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/epf" />
+</androidx.constraintlayout.widget.ConstraintLayout>

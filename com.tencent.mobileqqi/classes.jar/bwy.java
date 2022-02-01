@@ -1,27 +1,17 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
+import com.tencent.mobileqq.servlet.ReduFriendObserver;
 
 public class bwy
-  implements Runnable
+  extends ReduFriendObserver
 {
   public bwy(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a.a.jdField_a_of_type_Int == 1) && (BaseApplicationImpl.getContext().getSharedPreferences("troop_new_guid", 0).getBoolean(this.a.a.jdField_a_of_type_JavaLangString, false))) {}
-    try
-    {
-      long l1 = Long.parseLong(this.a.a.jdField_a_of_type_JavaLangString);
-      long l2 = Long.parseLong(this.a.b.a());
-      TroopNotificationHelper.a(this.a.b, 0, l1, l1, l2, "", (int)System.currentTimeMillis(), "OidbSvc.0x852_48", (short)34, true);
-      return;
+    if (paramBoolean) {
+      ChatActivity.a(this.a);
     }
-    catch (Exception localException) {}
   }
 }
 

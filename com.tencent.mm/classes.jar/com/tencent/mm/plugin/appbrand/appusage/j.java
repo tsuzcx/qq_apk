@@ -1,62 +1,139 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import android.os.Bundle;
+import android.database.Cursor;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.s.m;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class j
-  extends k
+  extends MAutoStorage<b>
 {
-  private static volatile j hbd = null;
+  public static final String[] nVW;
+  public final ISQLiteDatabase qFJ;
   
-  public static j axa()
+  static
   {
-    AppMethodBeat.i(129551);
-    if (hbd == null) {}
-    try
-    {
-      if (hbd == null) {
-        hbd = new j();
-      }
-      j localj = hbd;
-      AppMethodBeat.o(129551);
-      return localj;
-    }
-    finally
-    {
-      AppMethodBeat.o(129551);
-    }
+    AppMethodBeat.i(44488);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(b.nVV, "AppBrandAppLaunchUsernameDuplicateRecord2") };
+    AppMethodBeat.o(44488);
   }
   
-  public static boolean axb()
+  public j(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(129553);
-    if (!g.RG())
+    super(paramISQLiteDatabase, b.nVV, "AppBrandAppLaunchUsernameDuplicateRecord2", b.INDEX_CREATE);
+    this.qFJ = paramISQLiteDatabase;
+  }
+  
+  private b aiZ(String paramString)
+  {
+    AppMethodBeat.i(370009);
+    b localb = new b();
+    localb.field_usernameHash = paramString.hashCode();
+    if ((!get(localb, new String[] { "usernameHash" })) || (localb.field_username == null) || (!localb.field_username.equals(paramString)))
     {
-      AppMethodBeat.o(129553);
+      AppMethodBeat.o(370009);
+      return null;
+    }
+    AppMethodBeat.o(370009);
+    return localb;
+  }
+  
+  public final boolean U(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(44487);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(44487);
       return false;
     }
-    boolean bool = ((Boolean)g.RL().Ru().get(ac.a.yCP, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(129553);
+    b localb = new b();
+    localb.field_usernameHash = paramString.hashCode();
+    localb.field_username = paramString;
+    boolean bool = get(localb, new String[0]);
+    localb.field_updateTime = paramLong;
+    if (bool)
+    {
+      bool = update(localb, new String[0]);
+      AppMethodBeat.o(44487);
+      return bool;
+    }
+    bool = insert(localb);
+    AppMethodBeat.o(44487);
     return bool;
   }
   
-  public static void release()
+  public final boolean WI(String paramString)
   {
-    hbd = null;
+    AppMethodBeat.i(319313);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(319313);
+      return false;
+    }
+    paramString = aiZ(paramString);
+    if ((paramString != null) && (paramString.field_updateTime > 0L))
+    {
+      AppMethodBeat.o(319313);
+      return true;
+    }
+    AppMethodBeat.o(319313);
+    return false;
   }
   
-  public final void a(long paramLong, boolean paramBoolean, Bundle paramBundle, int paramInt1, int paramInt2)
+  public final boolean WJ(String paramString)
   {
-    AppMethodBeat.i(129552);
-    m.aNS().ac(new j.3(this, paramInt1, paramInt2, paramBoolean, paramLong, paramBundle));
-    AppMethodBeat.o(129552);
+    AppMethodBeat.i(319317);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(319317);
+      return false;
+    }
+    b localb = new b();
+    localb.field_username = paramString;
+    localb.field_usernameHash = paramString.hashCode();
+    boolean bool = super.delete(localb, new String[] { "usernameHash" });
+    AppMethodBeat.o(319317);
+    return bool;
+  }
+  
+  public final List<String> ciM()
+  {
+    AppMethodBeat.i(319311);
+    Cursor localCursor = rawQuery(String.format("select attributes.appId from %s as duplicate inner join %s as attributes where duplicate.username = attributes.username", new Object[] { "AppBrandAppLaunchUsernameDuplicateRecord2", "WxaAttributesTable" }), new String[0]);
+    ArrayList localArrayList = new ArrayList();
+    if ((localCursor == null) || (localCursor.getColumnCount() <= 0))
+    {
+      AppMethodBeat.o(319311);
+      return localArrayList;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!localCursor.moveToNext()) {
+          break;
+        }
+        String str = localCursor.getString(0);
+        if (Util.isNullOrNil(str)) {
+          Log.i("MicroMsg.AppBrandLaunchUsernameDuplicateStorage", "appId is null, continue");
+        } else {
+          localList.add(str);
+        }
+      }
+      finally
+      {
+        localCursor.close();
+        AppMethodBeat.o(319311);
+      }
+    }
+    localCursor.close();
+    AppMethodBeat.o(319311);
+    return localList;
   }
 }
 

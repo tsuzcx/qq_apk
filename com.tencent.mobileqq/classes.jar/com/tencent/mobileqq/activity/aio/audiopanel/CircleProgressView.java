@@ -12,25 +12,29 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.view.ViewParent;
 import android.widget.ImageView;
-import azkz;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mvp.IBasePresenter;
+import com.tencent.mvp.IBasePresenterView;
+import com.tencent.mvp.SimpleMVPUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class CircleProgressView
   extends ImageView
+  implements IBasePresenterView
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_a_of_type_Boolean;
-  private int b = -1;
-  private int c = -9013368;
-  private int d = 6;
-  private int e = azkz.a(9.0F);
+  private Paint a;
+  private Bitmap b;
+  private Matrix c = new Matrix();
+  private RectF d = new RectF();
+  private Rect e = new Rect();
+  private int f = 0;
+  private int g = -1;
+  private int h = -9013368;
+  private int i = 6;
+  private int j = ScreenUtil.dip2px(9.0F);
+  private boolean k = false;
+  private ICircleProcessViewPresenter l;
   
   public CircleProgressView(Context paramContext)
   {
@@ -46,109 +50,135 @@ public class CircleProgressView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+  }
+  
+  public IBasePresenter getPresenter()
+  {
+    return this.l;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int j = getWidth();
-    int k = getHeight();
-    int i = paramCanvas.getSaveCount();
+    int n = getWidth();
+    int i1 = getHeight();
+    int m = paramCanvas.getSaveCount();
     paramCanvas.save();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
-    for (;;)
+    Object localObject1 = this.b;
+    if (localObject1 != null) {}
+    try
     {
-      try
-      {
-        Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (localBitmap != null))
-        {
-          this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-          this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, j, k);
-          j = this.jdField_a_of_type_Int * 360 / 100;
-          Canvas localCanvas = new Canvas(localBitmap);
-          localCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
-          localCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, j - 90, 360 - j, true, this.jdField_a_of_type_AndroidGraphicsPaint);
-          paramCanvas.drawBitmap(localBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
-          localBitmap.recycle();
-          paramCanvas.restoreToCount(i);
-          if (!this.jdField_a_of_type_Boolean) {}
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        try
-        {
-          ((ListenPanel)getParent().getParent()).b(201);
-          this.jdField_a_of_type_Boolean = false;
-          super.onDraw(paramCanvas);
-          return;
-          localOutOfMemoryError = localOutOfMemoryError;
-          Object localObject1 = null;
-          continue;
-          if (this.b > 0)
-          {
-            f = this.b;
-            this.jdField_a_of_type_AndroidGraphicsRectF.set(this.e + f, this.e + f, j - f - this.e, k - f - this.e);
-            this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-            this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
-            this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-            j = this.jdField_a_of_type_Int * 360 / 100;
-            paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 270.0F, j, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-            continue;
-          }
-          float f = 3.0F;
-          continue;
-        }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("AIOAudioPanel", 2, "CircleProgressView startPlayAnimByType error e=" + toString());
-          }
-          this.jdField_a_of_type_Boolean = false;
-          continue;
-        }
-      }
-      Object localObject2 = null;
+      localObject1 = Bitmap.createBitmap(((Bitmap)localObject1).getWidth(), this.b.getHeight(), Bitmap.Config.ARGB_8888);
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label56:
+      Object localObject2;
+      int i2;
+      float f1;
+      break label56;
+    }
+    localObject1 = null;
+    localObject2 = this.b;
+    if ((localObject2 != null) && (localObject1 != null))
+    {
+      this.e.set(0, 0, ((Bitmap)localObject2).getWidth(), this.b.getHeight());
+      this.a.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+      this.d.set(0.0F, 0.0F, n, i1);
+      n = this.f * 360 / 100;
+      localObject2 = new Canvas((Bitmap)localObject1);
+      ((Canvas)localObject2).drawBitmap(this.b, null, this.e, null);
+      ((Canvas)localObject2).drawArc(this.d, n - 90, 360 - n, true, this.a);
+      paramCanvas.drawBitmap((Bitmap)localObject1, null, this.e, null);
+      ((Bitmap)localObject1).recycle();
+    }
+    else
+    {
+      i2 = this.g;
+      if (i2 > 0) {
+        f1 = i2;
+      } else {
+        f1 = 3.0F;
+      }
+      localObject1 = this.d;
+      i2 = this.j;
+      ((RectF)localObject1).set(i2 + f1, i2 + f1, n - f1 - i2, i1 - f1 - i2);
+      this.a.setStyle(Paint.Style.STROKE);
+      this.a.setStrokeWidth(this.i);
+      this.a.setColor(this.h);
+      n = this.f * 360 / 100;
+      paramCanvas.drawArc(this.d, 270.0F, n, false, this.a);
+    }
+    paramCanvas.restoreToCount(m);
+    if (this.k) {}
+    try
+    {
+      SimpleMVPUtils.a(this, "startPlayAnim");
+      this.k = false;
+    }
+    catch (Exception localException)
+    {
+      label371:
+      break label371;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("CircleProgressView startPlayAnimByType error e=");
+      ((StringBuilder)localObject1).append(toString());
+      QLog.e("AIOAudioPanel", 2, ((StringBuilder)localObject1).toString());
+    }
+    this.k = false;
+    super.onDraw(paramCanvas);
   }
   
   public void setAnimFlag(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
+  }
+  
+  public void setPresenter(IBasePresenter paramIBasePresenter)
+  {
+    if (paramIBasePresenter == null)
+    {
+      this.l = null;
+      return;
+    }
+    if ((paramIBasePresenter instanceof ICircleProcessViewPresenter)) {
+      this.l = ((ICircleProcessViewPresenter)paramIBasePresenter);
+    }
   }
   
   public void setProgress(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
     invalidate();
   }
   
   public void setProgressBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.b = paramBitmap;
   }
   
   public void setRingColor(int paramInt)
   {
-    this.c = paramInt;
+    this.h = paramInt;
   }
   
   public void setRingWidth(int paramInt)
   {
-    this.d = paramInt;
+    this.i = paramInt;
   }
   
   public void setStrokeWidth(int paramInt)
   {
-    this.b = paramInt;
+    this.g = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

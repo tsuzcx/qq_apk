@@ -20,35 +20,35 @@ public final class operation_publishmood_req
   static ShootInfo cache_shootInfo;
   static Source cache_source;
   static Map<String, String> cache_stored_extend_info;
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String clientkey = "";
   public String content = "";
-  public Map<String, String> extend_info;
-  public short frames;
-  public LbsInfo hidden_poi;
-  public int isWinPhone;
+  public Map<String, String> extend_info = null;
+  public short frames = 0;
+  public LbsInfo hidden_poi = null;
+  public int isWinPhone = 0;
   public boolean issynctoweibo = true;
   public boolean isverified = true;
-  public LbsInfo lbsinfo;
-  public long lock_days;
-  public int mediaSubType;
-  public int mediabittype;
-  public MediaInfo mediainfo;
-  public int mediatype;
-  public int modifyflag;
+  public LbsInfo lbsinfo = null;
+  public long lock_days = 0L;
+  public int mediaSubType = 0;
+  public int mediabittype = 0;
+  public MediaInfo mediainfo = null;
+  public int mediatype = 0;
+  public int modifyflag = 0;
   public String open_appid = "";
-  public Map<String, byte[]> proto_extend_info;
-  public long publishTime;
+  public Map<String, byte[]> proto_extend_info = null;
+  public long publishTime = 0L;
   public String richtype = "";
   public String richval = "";
-  public UgcRightInfo right_info;
-  public long seal_id;
-  public ShootInfo shootInfo;
-  public Source source;
+  public UgcRightInfo right_info = null;
+  public long seal_id = 0L;
+  public ShootInfo shootInfo = null;
+  public Source source = null;
   public String sourceName = "";
   public String srcid = "";
-  public Map<String, String> stored_extend_info;
-  public long uin;
+  public Map<String, String> stored_extend_info = null;
+  public long uin = 0L;
   public String weibourl = "";
   
   static
@@ -143,76 +143,94 @@ public final class operation_publishmood_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 1);
+    Object localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.isverified, 2);
     paramJceOutputStream.write(this.issynctoweibo, 3);
-    if (this.weibourl != null) {
-      paramJceOutputStream.write(this.weibourl, 4);
+    localObject = this.weibourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.mediatype, 5);
-    if (this.mediainfo != null) {
-      paramJceOutputStream.write(this.mediainfo, 6);
+    localObject = this.mediainfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.lbsinfo != null) {
-      paramJceOutputStream.write(this.lbsinfo, 7);
+    localObject = this.lbsinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.source != null) {
-      paramJceOutputStream.write(this.source, 8);
+    localObject = this.source;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
     paramJceOutputStream.write(this.mediabittype, 9);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 10);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 11);
+    localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.open_appid != null) {
-      paramJceOutputStream.write(this.open_appid, 12);
+    localObject = this.open_appid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.right_info != null) {
-      paramJceOutputStream.write(this.right_info, 13);
+    localObject = this.right_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.shootInfo != null) {
-      paramJceOutputStream.write(this.shootInfo, 14);
+    localObject = this.shootInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
     paramJceOutputStream.write(this.publishTime, 15);
     paramJceOutputStream.write(this.mediaSubType, 16);
-    if (this.srcid != null) {
-      paramJceOutputStream.write(this.srcid, 17);
+    localObject = this.srcid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
     paramJceOutputStream.write(this.modifyflag, 18);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 19);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 19);
     }
-    if (this.richtype != null) {
-      paramJceOutputStream.write(this.richtype, 20);
+    localObject = this.richtype;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.richval != null) {
-      paramJceOutputStream.write(this.richval, 21);
+    localObject = this.richval;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.isWinPhone, 22);
-    if (this.sourceName != null) {
-      paramJceOutputStream.write(this.sourceName, 23);
+    localObject = this.sourceName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
-    if (this.hidden_poi != null) {
-      paramJceOutputStream.write(this.hidden_poi, 24);
+    localObject = this.hidden_poi;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 24);
     }
     paramJceOutputStream.write(this.seal_id, 25);
     paramJceOutputStream.write(this.frames, 26);
     paramJceOutputStream.write(this.lock_days, 27);
-    if (this.stored_extend_info != null) {
-      paramJceOutputStream.write(this.stored_extend_info, 28);
+    localObject = this.stored_extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 28);
     }
-    if (this.proto_extend_info != null) {
-      paramJceOutputStream.write(this.proto_extend_info, 29);
+    localObject = this.proto_extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 29);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_publishmood_req
  * JD-Core Version:    0.7.0.1
  */

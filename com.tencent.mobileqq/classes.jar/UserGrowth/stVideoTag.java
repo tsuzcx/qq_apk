@@ -9,7 +9,7 @@ public final class stVideoTag
 {
   public String bgColor = "";
   public String imgUrl = "";
-  public int tagId;
+  public int tagId = 0;
   public String text = "";
   public String textColor = "";
   
@@ -36,23 +36,27 @@ public final class stVideoTag
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.tagId, 0);
-    if (this.imgUrl != null) {
-      paramJceOutputStream.write(this.imgUrl, 1);
+    String str = this.imgUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 2);
+    str = this.text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.textColor != null) {
-      paramJceOutputStream.write(this.textColor, 3);
+    str = this.textColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.bgColor != null) {
-      paramJceOutputStream.write(this.bgColor, 4);
+    str = this.bgColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stVideoTag
  * JD-Core Version:    0.7.0.1
  */

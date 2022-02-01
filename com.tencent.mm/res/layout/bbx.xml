@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/l4j" android:layout_width="fill_parent" android:layout_height="@dimen/cm"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip">
+        <ImageView android:id="@id/gpu" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" android:src="@drawable/ag0" />
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <TextView android:textSize="@dimen/hr" android:textColor="@color/gg" android:id="@id/b4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/gqg" style="@style/kn" />
+    <TextView android:textColor="@color/m4" android:gravity="center" android:id="@id/gpv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:text="0.6.0" style="@style/z8" />
+</LinearLayout>

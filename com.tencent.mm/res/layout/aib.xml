@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/pm" android:background="@color/e1" android:layout_width="fill_parent" android:layout_height="@dimen/m5" android:layout_alignParentTop="true" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dg2" android:paddingLeft="14.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/pm">
-        <TextView android:textSize="@dimen/ko" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bcp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="48.0dip" android:maxLines="2" android:layout_weight="1.0" />
-        <ImageButton android:gravity="center|right" android:id="@id/dg3" android:background="@color/a3x" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/delete_white_icon" android:scaleType="center" />
-    </LinearLayout>
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="@dimen/db"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g7h" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:src="@raw/icons_filled_close" app:iconColor="@color/g_" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/gb" android:ellipsize="end" android:gravity="center" android:id="@id/g7k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d_" android:layout_marginRight="@dimen/d_" android:text="@string/dt0" android:maxLines="1" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

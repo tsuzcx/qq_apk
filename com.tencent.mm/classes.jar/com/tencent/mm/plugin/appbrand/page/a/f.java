@@ -1,38 +1,28 @@
 package com.tencent.mm.plugin.appbrand.page.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
-
-public abstract class f
-  extends a
+public abstract interface f
 {
-  public final LinkedList<f.a> iAq = new LinkedList()
-  {
-    public final boolean remove(Object paramAnonymousObject)
-    {
-      AppMethodBeat.i(87352);
-      boolean bool = super.remove(paramAnonymousObject);
-      f.a(f.this);
-      AppMethodBeat.o(87352);
-      return bool;
-    }
-  };
+  public abstract void a(f.a parama, int paramInt);
   
-  public final c.a aKe()
-  {
-    f.a locala = new f.a(this);
-    this.iAq.addFirst(locala);
-    return locala;
-  }
+  public abstract void aeW(String paramString);
   
-  public final void destroy()
-  {
-    this.iAq.clear();
-  }
+  public abstract void cFS();
+  
+  public abstract void cFT();
+  
+  public abstract void fj(String paramString1, String paramString2);
+  
+  public abstract void kr(boolean paramBoolean);
+  
+  public abstract void kt(boolean paramBoolean);
+  
+  public abstract void requestDisallowInterceptTouchEvent(boolean paramBoolean);
+  
+  public abstract void setPullDownText(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.f
  * JD-Core Version:    0.7.0.1
  */

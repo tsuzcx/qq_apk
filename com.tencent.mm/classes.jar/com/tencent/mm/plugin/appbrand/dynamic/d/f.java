@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v.b;
+import com.tencent.mm.ac.b.b.a;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.LogInfo;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.z.b.b.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.recovery.util.Util;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -19,9 +19,9 @@ public final class f
     super("log", paramInt);
   }
   
-  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
-    AppMethodBeat.i(10832);
+    AppMethodBeat.i(121312);
     for (;;)
     {
       int i;
@@ -40,21 +40,21 @@ public final class f
             localLogInfo.level = (localJSONObject.optInt("level") + 1);
             localLogInfo.message = localJSONObject.optString("msg");
             localArrayList.add(localLogInfo);
-            ab.d("MicroMsg.JsApiFunc_Log", "ts : %s, level : %d, msg : %s", new Object[] { Util.oW(localLogInfo.ts), Integer.valueOf(localLogInfo.level), localLogInfo.message });
+            Log.d("MicroMsg.JsApiFunc_Log", "ts : %s, level : %d, msg : %s", new Object[] { Util.getTimeFormat(localLogInfo.ts), Integer.valueOf(localLogInfo.level), localLogInfo.message });
           }
         }
         else
         {
-          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.c(parama.Qx().getString("__page_view_id", null), localArrayList);
-          parama1.aj(a(true, "", null));
-          AppMethodBeat.o(10832);
+          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.d(parama.aZk().getString("__page_view_id", null), localArrayList);
+          parama1.cN(h(true, ""));
+          AppMethodBeat.o(121312);
           return;
         }
       }
       catch (JSONException parama)
       {
-        parama1.aj(a(false, "dataArray is null", null));
-        AppMethodBeat.o(10832);
+        parama1.cN(h(false, "dataArray is null"));
+        AppMethodBeat.o(121312);
         return;
       }
       i += 1;
@@ -63,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.f
  * JD-Core Version:    0.7.0.1
  */

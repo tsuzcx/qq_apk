@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:orientation="vertical" android:background="@drawable/apm" android:layout_width="fill_parent" android:layout_height="@dimen/ck" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/ls" />
-    <EditText android:id="@id/lh" android:imeOptions="actionDone" style="@style/lr" />
-</merge>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/bx" android:layout_marginTop="@dimen/d4">
+        <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="center" android:id="@id/ium" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginStart="@dimen/cd" android:layout_alignParentStart="true" />
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/bkh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/i4z" android:lines="1" android:singleLine="true" android:layout_marginStart="2.0dip" android:layout_toEndOf="@id/ium" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:id="@id/bki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="00:12" android:layout_below="@id/bkh" android:layout_alignStart="@id/bkh" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:id="@id/iv3" android:background="@drawable/apn" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginBottom="@dimen/cp" android:layout_alignParentBottom="true" android:layout_marginEnd="@dimen/cd" android:layout_toStartOf="@id/iv5">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iv4" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:contentDescription="@string/i4v" />
+    </LinearLayout>
+    <LinearLayout android:gravity="end" android:id="@id/iv5" android:background="@drawable/apo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:minHeight="@dimen/d0" android:layout_alignParentBottom="true" android:layout_marginEnd="@dimen/cd" android:layout_alignParentEnd="true">
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_marginBottom="@dimen/bv" android:text="@string/iy8" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cd" />
+    </LinearLayout>
+</RelativeLayout>

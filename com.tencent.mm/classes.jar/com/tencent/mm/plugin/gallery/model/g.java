@@ -2,139 +2,262 @@ package com.tencent.mm.plugin.gallery.model;
 
 import android.os.HandlerThread;
 import android.os.Looper;
-import android.os.Process;
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.threadpool.h;
+import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public final class g
 {
-  public ak faV;
-  HandlerThread ndf;
-  HandlerThread ndg;
-  HandlerThread ndh;
-  ak ndi;
-  ak ndj;
-  ak ndk;
+  static int HHl;
+  HandlerThread HHh;
+  HandlerThread HHi;
+  MMHandler HHj;
+  MMHandler HHk;
+  ExecutorService HHm;
+  ExecutorService HHn;
+  ExecutorService HHo;
+  HandlerThread HHp;
+  MMHandler HHq;
+  MMHandler mRi;
   
-  public g()
+  g()
   {
-    AppMethodBeat.i(21273);
-    ab.d("MicroMsg.GalleryHandlerThread", "galleryhandlerthread init");
-    this.ndf = new HandlerThread("galleryDecodeHanlderThread", 10);
-    this.ndi = null;
-    this.ndf.start();
-    this.ndg = new HandlerThread("galleryQueryHandlerThread", 1);
-    this.ndj = null;
-    this.ndg.start();
-    this.ndh = new HandlerThread("galleryAfterTakePicThreadThread", 0);
-    this.ndk = null;
-    this.ndh.start();
-    AppMethodBeat.o(21273);
-  }
-  
-  private ak bEd()
-  {
-    AppMethodBeat.i(21274);
-    if ((this.ndi == null) && (this.ndf != null)) {
-      this.ndi = new ak(this.ndf.getLooper());
-    }
-    ak localak = this.ndi;
-    AppMethodBeat.o(21274);
-    return localak;
-  }
-  
-  public final void T(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(21278);
-    ak localak = bEd();
-    if (localak == null)
+    AppMethodBeat.i(111298);
+    Log.d("MicroMsg.GalleryHandlerThread", "GalleryHandlerThread init.");
+    this.HHh = new HandlerThread("smartGalleryQueryHandlerThread", 10);
+    this.HHj = null;
+    this.HHh.start();
+    this.HHi = new HandlerThread("galleryAssistHandlerThread", 10);
+    this.HHk = null;
+    this.HHi.start();
+    this.mRi = null;
+    int j = Runtime.getRuntime().availableProcessors() / 2;
+    if (j < 2) {}
+    for (;;)
     {
-      ab.e("MicroMsg.GalleryHandlerThread", "post to decode worker, but decode handler is null");
-      AppMethodBeat.o(21278);
+      HHl = i;
+      com.tencent.threadpool.i locali = h.ahAA;
+      i = HHl;
+      this.HHm = locali.a("gly-tp_q", i, i, new LinkedBlockingQueue());
+      locali = h.ahAA;
+      i = HHl;
+      this.HHn = locali.a("gly-tp", i, i, new LinkedBlockingQueue());
+      this.HHo = h.ahAA.a("gly-tp-p", HHl / 2, HHl / 2, new LinkedBlockingQueue());
+      this.HHp = new HandlerThread("galleryQuerySubHandlerThread", 10);
+      this.HHq = null;
+      this.HHp.start();
+      AppMethodBeat.o(111298);
+      return;
+      if (j > 4) {
+        i = 4;
+      } else {
+        i = j;
+      }
+    }
+  }
+  
+  public final void a(i<c.b> parami1, i<c.b> parami2)
+  {
+    AppMethodBeat.i(111308);
+    if ((parami1 != null) && (parami2 != null) && (this.HHo != null)) {
+      while ((e.fAm().fAe()) && (!parami1.isEmpty()))
+      {
+        final c.b localb = (c.b)parami1.fAN();
+        if ((localb != null) && (!localb.mCancel))
+        {
+          parami2.add(localb);
+          e.fAm().fAf();
+          this.HHo.execute(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(111297);
+              final boolean bool = localb.doInBackground();
+              g.this.fAG().post(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(111296);
+                  c.b localb = g.2.this.HHw;
+                  boolean bool = bool;
+                  localb.HGC.HGB.remove(localb);
+                  c localc = localb.HGC;
+                  localc.HGz += 1;
+                  localb.HGC.fAg();
+                  if (bool) {
+                    localb.HGC.HGv.a(localb.mFilePath, localb.bitmap, localb.HGF, null, true, -1, localb.HGG);
+                  }
+                  AppMethodBeat.o(111296);
+                }
+              });
+              AppMethodBeat.o(111297);
+            }
+          });
+        }
+      }
+    }
+    AppMethodBeat.o(111308);
+  }
+  
+  public final void a(i<String> parami, HashMap<String, c.c> paramHashMap)
+  {
+    AppMethodBeat.i(111307);
+    if ((parami != null) && (paramHashMap != null) && (this.HHn != null)) {
+      while ((e.fAm().fAc()) && (!parami.isEmpty()))
+      {
+        final String str = (String)parami.fAN();
+        if (paramHashMap.containsKey(str))
+        {
+          final c.c localc = (c.c)paramHashMap.get(str);
+          if ((localc != null) && (!localc.mCancel))
+          {
+            e.fAm().fAd();
+            this.HHn.execute(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(111295);
+                long l2 = SystemClock.currentThreadTimeMillis();
+                long l1 = SystemClock.uptimeMillis();
+                final boolean bool = localc.doInBackground();
+                l2 = SystemClock.currentThreadTimeMillis() - l2;
+                l1 = SystemClock.uptimeMillis() - l1;
+                Log.d("MicroMsg.GalleryHandlerThread", "background time: %s, %s, %s, %s.", new Object[] { str, Long.valueOf(l2), Long.valueOf(l1), Float.valueOf((float)l2 * 1.0F / (float)l1) });
+                g.this.fAG().post(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(111294);
+                    c.c localc = g.1.this.HHr;
+                    boolean bool = bool;
+                    Log.d("MicroMsg.CacheService", "do on post execute, filePath[%s], mDecodeTaskKey[%s], success[%s], cancel[%s].", new Object[] { localc.mFilePath, localc.HGI, Boolean.valueOf(bool), Boolean.valueOf(localc.mCancel) });
+                    if (!localc.mCancel) {
+                      localc.HGC.HGy.remove(localc.HGI);
+                    }
+                    Log.d("MicroMsg.CacheService", "remove job from waitingDecodeTask, after size:[%d].", new Object[] { Integer.valueOf(localc.HGC.HGy.size()) });
+                    c localc1 = localc.HGC;
+                    localc1.HGw += 1;
+                    localc.HGC.fAb();
+                    if (bool)
+                    {
+                      localc.HGC.HGv.a(localc.mFilePath, localc.bitmap, localc.HGF, localc.HGH, localc.mCancel, localc.mPosition, localc.HGG);
+                      localc.bitmap = null;
+                    }
+                    AppMethodBeat.o(111294);
+                  }
+                });
+                AppMethodBeat.o(111295);
+              }
+            });
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(111307);
+  }
+  
+  public final void aF(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(289590);
+    MMHandler localMMHandler = fAF();
+    if (localMMHandler != null)
+    {
+      localMMHandler.post(paramRunnable);
+      AppMethodBeat.o(289590);
       return;
     }
-    localak.post(paramRunnable);
-    AppMethodBeat.o(21278);
+    Log.w("MicroMsg.GalleryHandlerThread", "assistHandler is null.");
+    AppMethodBeat.o(289590);
   }
   
-  public final void U(Runnable paramRunnable)
+  public final void aG(Runnable paramRunnable)
   {
-    AppMethodBeat.i(21279);
-    ak localak = bEd();
-    if (localak == null)
+    AppMethodBeat.i(173731);
+    if (this.HHm != null) {
+      this.HHm.execute(paramRunnable);
+    }
+    AppMethodBeat.o(173731);
+  }
+  
+  public final void aH(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(173733);
+    MMHandler localMMHandler = fAH();
+    if (localMMHandler != null)
     {
-      ab.e("MicroMsg.GalleryHandlerThread", "post at front of queue, but decode handler is null");
-      AppMethodBeat.o(21279);
+      localMMHandler.post(paramRunnable);
+      AppMethodBeat.o(173733);
       return;
     }
-    ab.i("MicroMsg.GalleryHandlerThread", "postAtFrontOfQueue:[%b]", new Object[] { Boolean.valueOf(localak.postAtFrontOfQueueV2(paramRunnable)) });
-    AppMethodBeat.o(21279);
+    Log.w("MicroMsg.GalleryHandlerThread", "querySubHandler is null.");
+    AppMethodBeat.o(173733);
   }
   
-  public final ak bEe()
+  final MMHandler fAF()
   {
-    AppMethodBeat.i(21276);
-    if (this.ndj == null) {
-      this.ndj = new ak(this.ndg.getLooper());
+    AppMethodBeat.i(111301);
+    if ((this.HHk == null) && (this.HHi != null)) {
+      this.HHk = new MMHandler(this.HHi.getLooper());
     }
-    ak localak = this.ndj;
-    AppMethodBeat.o(21276);
-    return localak;
+    MMHandler localMMHandler = this.HHk;
+    AppMethodBeat.o(111301);
+    return localMMHandler;
   }
   
-  public final ak bEf()
+  public final MMHandler fAG()
   {
-    AppMethodBeat.i(21277);
-    if (this.faV == null) {
-      this.faV = new ak(Looper.getMainLooper());
+    AppMethodBeat.i(111302);
+    if (this.mRi == null) {
+      this.mRi = new MMHandler(Looper.getMainLooper());
     }
-    ak localak = this.faV;
-    AppMethodBeat.o(21277);
-    return localak;
+    MMHandler localMMHandler = this.mRi;
+    AppMethodBeat.o(111302);
+    return localMMHandler;
   }
   
-  public final void bEg()
+  final MMHandler fAH()
   {
-    AppMethodBeat.i(21280);
-    ak localak = bEd();
-    if (localak == null)
+    AppMethodBeat.i(173732);
+    if ((this.HHq == null) && (this.HHp != null)) {
+      this.HHq = new MMHandler(this.HHp.getLooper());
+    }
+    MMHandler localMMHandler = this.HHq;
+    AppMethodBeat.o(173732);
+    return localMMHandler;
+  }
+  
+  public final MMHandler fAI()
+  {
+    AppMethodBeat.i(111300);
+    if ((this.HHj == null) && (this.HHh != null)) {
+      this.HHj = new MMHandler(this.HHh.getLooper());
+    }
+    MMHandler localMMHandler = this.HHj;
+    AppMethodBeat.o(111300);
+    return localMMHandler;
+  }
+  
+  public final void postToMainThread(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(111306);
+    if (paramRunnable == null)
     {
-      ab.e("MicroMsg.GalleryHandlerThread", "remove all work handler callbacks, but decode handler is null");
-      AppMethodBeat.o(21280);
+      Log.e("MicroMsg.GalleryHandlerThread", "postToMainThread, runnable is null");
+      AppMethodBeat.o(111306);
       return;
     }
-    localak.removeCallbacksAndMessages(null);
-    this.ndi = null;
-    AppMethodBeat.o(21280);
-  }
-  
-  public final void d(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(21281);
-    bEf().post(paramRunnable);
-    AppMethodBeat.o(21281);
-  }
-  
-  public final void wL(int paramInt)
-  {
-    AppMethodBeat.i(21275);
-    try
-    {
-      Process.setThreadPriority(this.ndh.getThreadId(), paramInt);
-      AppMethodBeat.o(21275);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.GalleryHandlerThread", localException, "", new Object[0]);
-      AppMethodBeat.o(21275);
-    }
+    fAG().post(paramRunnable);
+    AppMethodBeat.o(111306);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.g
  * JD-Core Version:    0.7.0.1
  */

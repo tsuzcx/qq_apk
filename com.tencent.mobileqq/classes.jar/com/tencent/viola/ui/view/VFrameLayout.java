@@ -38,17 +38,19 @@ public class VFrameLayout
   @Nullable
   public VDiv getComponent()
   {
-    if (this.mDivWeakReference != null) {
-      return (VDiv)this.mDivWeakReference.get();
+    WeakReference localWeakReference = this.mDivWeakReference;
+    if (localWeakReference != null) {
+      return (VDiv)localWeakReference.get();
     }
     return null;
   }
   
   public void onDestroy()
   {
-    if (this.mVelocityTracker != null)
+    VelocityTracker localVelocityTracker = this.mVelocityTracker;
+    if (localVelocityTracker != null)
     {
-      this.mVelocityTracker.recycle();
+      localVelocityTracker.recycle();
       this.mVelocityTracker = null;
     }
   }
@@ -58,38 +60,49 @@ public class VFrameLayout
     if (getComponent() != null)
     {
       int i = paramMotionEvent.getAction();
-      if (getComponent().isContainTargetEvent("pan"))
+      if ((getComponent().isContainTargetEvent("pan")) || (getComponent().isContainTargetEvent("androidPan")))
       {
         if (this.mVelocityTracker == null) {
           this.mVelocityTracker = VelocityTracker.obtain();
         }
         this.mVelocityTracker.addMovement(paramMotionEvent);
         this.mVelocityTracker.computeCurrentVelocity(100);
-        switch (i)
+        if (i != 0)
         {
+          if (i != 1) {
+            if (i != 2)
+            {
+              if (i != 3) {
+                break label332;
+              }
+            }
+            else
+            {
+              if ((Math.abs(paramMotionEvent.getX() - this.mStartX) <= this.mTouchSlop) && (Math.abs(paramMotionEvent.getY() - this.mStartY) <= this.mTouchSlop)) {
+                break label332;
+              }
+              getComponent().firePanEvent("change", paramMotionEvent.getX() - this.mLastX, paramMotionEvent.getY() - this.mLastY, paramMotionEvent.getX(), paramMotionEvent.getY(), this.mVelocityTracker.getXVelocity(), this.mVelocityTracker.getYVelocity());
+              this.mLastX = paramMotionEvent.getX();
+              this.mLastY = paramMotionEvent.getY();
+              break label332;
+            }
+          }
+          getComponent().firePanEvent("end", paramMotionEvent.getX() - this.mLastX, paramMotionEvent.getY() - this.mLastY, paramMotionEvent.getX(), paramMotionEvent.getY(), this.mVelocityTracker.getXVelocity(), this.mVelocityTracker.getYVelocity());
+          this.mLastX = paramMotionEvent.getX();
+          this.mLastY = paramMotionEvent.getY();
+        }
+        else
+        {
+          this.mLastX = paramMotionEvent.getX();
+          this.mLastY = paramMotionEvent.getY();
+          this.mStartX = paramMotionEvent.getX();
+          this.mStartY = paramMotionEvent.getY();
+          getComponent().firePanEvent("begin", 0.0F, 0.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), this.mVelocityTracker.getXVelocity(), this.mVelocityTracker.getYVelocity());
         }
       }
     }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      this.mLastX = paramMotionEvent.getX();
-      this.mLastY = paramMotionEvent.getY();
-      this.mStartX = paramMotionEvent.getX();
-      this.mStartY = paramMotionEvent.getY();
-      getComponent().firePanEvent("begin", 0.0F, 0.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), this.mVelocityTracker.getXVelocity(), this.mVelocityTracker.getYVelocity());
-      continue;
-      if ((Math.abs(paramMotionEvent.getX() - this.mStartX) > this.mTouchSlop) || (Math.abs(paramMotionEvent.getY() - this.mStartY) > this.mTouchSlop))
-      {
-        getComponent().firePanEvent("change", paramMotionEvent.getX() - this.mLastX, paramMotionEvent.getY() - this.mLastY, paramMotionEvent.getX(), paramMotionEvent.getY(), this.mVelocityTracker.getXVelocity(), this.mVelocityTracker.getYVelocity());
-        this.mLastX = paramMotionEvent.getX();
-        this.mLastY = paramMotionEvent.getY();
-        continue;
-        getComponent().firePanEvent("end", paramMotionEvent.getX() - this.mLastX, paramMotionEvent.getY() - this.mLastY, paramMotionEvent.getX(), paramMotionEvent.getY(), this.mVelocityTracker.getXVelocity(), this.mVelocityTracker.getYVelocity());
-        this.mLastX = paramMotionEvent.getX();
-        this.mLastY = paramMotionEvent.getY();
-      }
-    }
+    label332:
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -102,7 +115,7 @@ public class VFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.VFrameLayout
  * JD-Core Version:    0.7.0.1
  */

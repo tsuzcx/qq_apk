@@ -7,12 +7,8 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
-import android.support.annotation.RestrictTo;
-import android.support.v7.appcompat.R.styleable;
-import android.support.v7.widget.ActionMenuView.ActionMenuChildView;
+import android.support.v7.widget.ActionMenuView.a;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.ForwardingListener;
-import android.support.v7.widget.TooltipCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -20,30 +16,30 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
+import com.tencent.token.hg.j;
+import com.tencent.token.id;
+import com.tencent.token.id.b;
+import com.tencent.token.if;
+import com.tencent.token.il.a;
+import com.tencent.token.io;
+import com.tencent.token.jl;
+import com.tencent.token.jy;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ActionMenuItemView
   extends AppCompatTextView
-  implements MenuView.ItemView, ActionMenuView.ActionMenuChildView, View.OnClickListener
+  implements ActionMenuView.a, View.OnClickListener, il.a
 {
-  private static final int MAX_ICON_SIZE = 32;
-  private static final String TAG = "ActionMenuItemView";
-  private boolean mAllowTextWithIcon;
-  private boolean mExpandedFormat;
-  private ForwardingListener mForwardingListener;
-  private Drawable mIcon;
-  MenuItemImpl mItemData;
-  MenuBuilder.ItemInvoker mItemInvoker;
-  private int mMaxIconSize;
-  private int mMinWidth;
-  ActionMenuItemView.PopupCallback mPopupCallback;
-  private int mSavedPaddingLeft;
-  private CharSequence mTitle;
-  
-  public ActionMenuItemView(Context paramContext)
-  {
-    this(paramContext, null);
-  }
+  if b;
+  id.b c;
+  b d;
+  private CharSequence e;
+  private Drawable f;
+  private jl g;
+  private boolean h;
+  private boolean i;
+  private int j;
+  private int k;
+  private int l;
   
   public ActionMenuItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -54,167 +50,165 @@ public class ActionMenuItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = paramContext.getResources();
-    this.mAllowTextWithIcon = shouldAllowTextWithIcon();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ActionMenuItemView, paramInt, 0);
-    this.mMinWidth = paramContext.getDimensionPixelSize(R.styleable.ActionMenuItemView_android_minWidth, 0);
+    this.h = e();
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, hg.j.ActionMenuItemView, paramInt, 0);
+    this.j = paramContext.getDimensionPixelSize(hg.j.ActionMenuItemView_android_minWidth, 0);
     paramContext.recycle();
-    this.mMaxIconSize = ((int)(localResources.getDisplayMetrics().density * 32.0F + 0.5F));
+    this.l = ((int)(localResources.getDisplayMetrics().density * 32.0F + 0.5F));
     setOnClickListener(this);
-    this.mSavedPaddingLeft = -1;
+    this.k = -1;
     setSaveEnabled(false);
   }
   
-  private boolean shouldAllowTextWithIcon()
+  private boolean e()
   {
     Configuration localConfiguration = getContext().getResources().getConfiguration();
-    int i = localConfiguration.screenWidthDp;
-    int j = localConfiguration.screenHeightDp;
-    return (i >= 480) || ((i >= 640) && (j >= 480)) || (localConfiguration.orientation == 2);
+    int m = localConfiguration.screenWidthDp;
+    int n = localConfiguration.screenHeightDp;
+    return (m >= 480) || ((m >= 640) && (n >= 480)) || (localConfiguration.orientation == 2);
   }
   
-  private void updateTextButtonVisibility()
+  private void f()
   {
-    int k = 0;
-    Object localObject2 = null;
-    int i;
-    if (!TextUtils.isEmpty(this.mTitle))
+    boolean bool = TextUtils.isEmpty(this.e);
+    int n = 1;
+    int m = n;
+    if (this.f != null)
     {
-      i = 1;
-      if (this.mIcon != null)
+      if (this.b.i())
       {
-        j = k;
-        if (!this.mItemData.showsTextAsAction()) {
-          break label54;
+        m = n;
+        if (this.h) {
+          break label52;
         }
-        if (!this.mAllowTextWithIcon)
+        if (this.i)
         {
-          j = k;
-          if (!this.mExpandedFormat) {
-            break label54;
-          }
+          m = n;
+          break label52;
         }
       }
-      int j = 1;
-      label54:
-      i &= j;
-      if (i == 0) {
-        break label141;
-      }
-      localObject1 = this.mTitle;
-      label68:
-      setText((CharSequence)localObject1);
-      localObject1 = this.mItemData.getContentDescription();
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label159;
-      }
-      if (i == 0) {
-        break label147;
-      }
-      localObject1 = null;
-      label98:
-      setContentDescription((CharSequence)localObject1);
-      label104:
-      localObject1 = this.mItemData.getTooltipText();
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label180;
-      }
-      if (i == 0) {
-        break label168;
-      }
+      m = 0;
     }
-    label141:
-    label147:
-    label159:
-    label168:
-    for (Object localObject1 = localObject2;; localObject1 = this.mItemData.getTitle())
+    label52:
+    m = (bool ^ true) & m;
+    Object localObject2 = null;
+    if (m != 0) {
+      localObject1 = this.e;
+    } else {
+      localObject1 = null;
+    }
+    setText((CharSequence)localObject1);
+    Object localObject1 = this.b.getContentDescription();
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      TooltipCompat.setTooltipText(this, (CharSequence)localObject1);
-      return;
-      i = 0;
-      break;
-      localObject1 = null;
-      break label68;
-      localObject1 = this.mItemData.getTitle();
-      break label98;
+      if (m != 0) {
+        localObject1 = null;
+      } else {
+        localObject1 = this.b.getTitle();
+      }
       setContentDescription((CharSequence)localObject1);
-      break label104;
     }
-    label180:
-    TooltipCompat.setTooltipText(this, (CharSequence)localObject1);
+    else
+    {
+      setContentDescription((CharSequence)localObject1);
+    }
+    localObject1 = this.b.getTooltipText();
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (m != 0) {
+        localObject1 = localObject2;
+      } else {
+        localObject1 = this.b.getTitle();
+      }
+      jy.a(this, (CharSequence)localObject1);
+      return;
+    }
+    jy.a(this, (CharSequence)localObject1);
   }
   
-  public MenuItemImpl getItemData()
+  public final void a(if paramif)
   {
-    return this.mItemData;
+    this.b = paramif;
+    setIcon(paramif.getIcon());
+    setTitle(paramif.a(this));
+    setId(paramif.getItemId());
+    int m;
+    if (paramif.isVisible()) {
+      m = 0;
+    } else {
+      m = 8;
+    }
+    setVisibility(m);
+    setEnabled(paramif.isEnabled());
+    if ((paramif.hasSubMenu()) && (this.g == null)) {
+      this.g = new a();
+    }
   }
   
-  public boolean hasText()
+  public final boolean a()
+  {
+    return true;
+  }
+  
+  public final boolean b()
   {
     return !TextUtils.isEmpty(getText());
   }
   
-  public void initialize(MenuItemImpl paramMenuItemImpl, int paramInt)
+  public final boolean c()
   {
-    this.mItemData = paramMenuItemImpl;
-    setIcon(paramMenuItemImpl.getIcon());
-    setTitle(paramMenuItemImpl.getTitleForItemView(this));
-    setId(paramMenuItemImpl.getItemId());
-    if (paramMenuItemImpl.isVisible()) {}
-    for (paramInt = 0;; paramInt = 8)
-    {
-      setVisibility(paramInt);
-      setEnabled(paramMenuItemImpl.isEnabled());
-      if ((paramMenuItemImpl.hasSubMenu()) && (this.mForwardingListener == null)) {
-        this.mForwardingListener = new ActionMenuItemView.ActionMenuItemForwardingListener(this);
-      }
-      return;
-    }
+    return (b()) && (this.b.getIcon() == null);
   }
   
-  public boolean needsDividerAfter()
+  public final boolean d()
   {
-    return hasText();
+    return b();
   }
   
-  public boolean needsDividerBefore()
+  public if getItemData()
   {
-    return (hasText()) && (this.mItemData.getIcon() == null);
+    return this.b;
   }
   
   public void onClick(View paramView)
   {
-    if (this.mItemInvoker != null) {
-      this.mItemInvoker.invokeItem(this.mItemData);
+    paramView = this.c;
+    if (paramView != null) {
+      paramView.a(this.b);
     }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    this.mAllowTextWithIcon = shouldAllowTextWithIcon();
-    updateTextButtonVisibility();
+    this.h = e();
+    f();
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    boolean bool = hasText();
-    if ((bool) && (this.mSavedPaddingLeft >= 0)) {
-      super.setPadding(this.mSavedPaddingLeft, getPaddingTop(), getPaddingRight(), getPaddingBottom());
+    boolean bool = b();
+    if (bool)
+    {
+      m = this.k;
+      if (m >= 0) {
+        super.setPadding(m, getPaddingTop(), getPaddingRight(), getPaddingBottom());
+      }
     }
     super.onMeasure(paramInt1, paramInt2);
-    int i = View.MeasureSpec.getMode(paramInt1);
+    int m = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    int j = getMeasuredWidth();
-    if (i == -2147483648) {}
-    for (paramInt1 = Math.min(paramInt1, this.mMinWidth);; paramInt1 = this.mMinWidth)
-    {
-      if ((i != 1073741824) && (this.mMinWidth > 0) && (j < paramInt1)) {
-        super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), paramInt2);
-      }
-      if ((!bool) && (this.mIcon != null)) {
-        super.setPadding((getMeasuredWidth() - this.mIcon.getBounds().width()) / 2, getPaddingTop(), getPaddingRight(), getPaddingBottom());
-      }
-      return;
+    int n = getMeasuredWidth();
+    if (m == -2147483648) {
+      paramInt1 = Math.min(paramInt1, this.j);
+    } else {
+      paramInt1 = this.j;
+    }
+    if ((m != 1073741824) && (this.j > 0) && (n < paramInt1)) {
+      super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), paramInt2);
+    }
+    if ((!bool) && (this.f != null)) {
+      super.setPadding((getMeasuredWidth() - this.f.getBounds().width()) / 2, getPaddingTop(), getPaddingRight(), getPaddingBottom());
     }
   }
   
@@ -225,15 +219,14 @@ public class ActionMenuItemView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.mItemData.hasSubMenu()) && (this.mForwardingListener != null) && (this.mForwardingListener.onTouch(this, paramMotionEvent))) {
-      return true;
+    if (this.b.hasSubMenu())
+    {
+      jl localjl = this.g;
+      if ((localjl != null) && (localjl.onTouch(this, paramMotionEvent))) {
+        return true;
+      }
     }
     return super.onTouchEvent(paramMotionEvent);
-  }
-  
-  public boolean prefersCondensedTitle()
-  {
-    return true;
   }
   
   public void setCheckable(boolean paramBoolean) {}
@@ -242,72 +235,100 @@ public class ActionMenuItemView
   
   public void setExpandedFormat(boolean paramBoolean)
   {
-    if (this.mExpandedFormat != paramBoolean)
+    if (this.i != paramBoolean)
     {
-      this.mExpandedFormat = paramBoolean;
-      if (this.mItemData != null) {
-        this.mItemData.actionFormatChanged();
+      this.i = paramBoolean;
+      if localif = this.b;
+      if (localif != null) {
+        localif.b.g();
       }
     }
   }
   
   public void setIcon(Drawable paramDrawable)
   {
-    this.mIcon = paramDrawable;
+    this.f = paramDrawable;
     if (paramDrawable != null)
     {
-      int m = paramDrawable.getIntrinsicWidth();
-      int k = paramDrawable.getIntrinsicHeight();
-      int j = k;
-      int i = m;
-      float f;
-      if (m > this.mMaxIconSize)
+      int i2 = paramDrawable.getIntrinsicWidth();
+      int i3 = paramDrawable.getIntrinsicHeight();
+      int i1 = this.l;
+      int n = i2;
+      int m = i3;
+      float f1;
+      if (i2 > i1)
       {
-        f = this.mMaxIconSize / m;
-        i = this.mMaxIconSize;
-        j = (int)(k * f);
+        f1 = i1 / i2;
+        m = (int)(i3 * f1);
+        n = i1;
       }
-      m = j;
-      k = i;
-      if (j > this.mMaxIconSize)
+      i3 = this.l;
+      i2 = n;
+      i1 = m;
+      if (m > i3)
       {
-        f = this.mMaxIconSize / j;
-        m = this.mMaxIconSize;
-        k = (int)(i * f);
+        f1 = i3 / m;
+        i2 = (int)(n * f1);
+        i1 = i3;
       }
-      paramDrawable.setBounds(0, 0, k, m);
+      paramDrawable.setBounds(0, 0, i2, i1);
     }
     setCompoundDrawables(paramDrawable, null, null, null);
-    updateTextButtonVisibility();
+    f();
   }
   
-  public void setItemInvoker(MenuBuilder.ItemInvoker paramItemInvoker)
+  public void setItemInvoker(id.b paramb)
   {
-    this.mItemInvoker = paramItemInvoker;
+    this.c = paramb;
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.mSavedPaddingLeft = paramInt1;
+    this.k = paramInt1;
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void setPopupCallback(ActionMenuItemView.PopupCallback paramPopupCallback)
+  public void setPopupCallback(b paramb)
   {
-    this.mPopupCallback = paramPopupCallback;
+    this.d = paramb;
   }
-  
-  public void setShortcut(boolean paramBoolean, char paramChar) {}
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.mTitle = paramCharSequence;
-    updateTextButtonVisibility();
+    this.e = paramCharSequence;
+    f();
   }
   
-  public boolean showsIcon()
+  final class a
+    extends jl
   {
-    return true;
+    public a()
+    {
+      super();
+    }
+    
+    public final io a()
+    {
+      if (ActionMenuItemView.this.d != null) {
+        return ActionMenuItemView.this.d.a();
+      }
+      return null;
+    }
+    
+    public final boolean b()
+    {
+      if ((ActionMenuItemView.this.c != null) && (ActionMenuItemView.this.c.a(ActionMenuItemView.this.b)))
+      {
+        io localio = a();
+        return (localio != null) && (localio.d());
+      }
+      return false;
+    }
+  }
+  
+  public static abstract class b
+  {
+    public abstract io a();
   }
 }
 

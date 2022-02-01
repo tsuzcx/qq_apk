@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/cdg" android:background="@drawable/ap9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp"
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:id="@id/cdh" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@raw/default_avatar" android:scaleType="centerCrop" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/a6q" android:layout_gravity="center_vertical" android:id="@id/cdi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:singleLine="true" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/j69" android:background="@drawable/sy" android:layout_width="fill_parent" android:layout_height="@dimen/ik" android:singleLine="true" />
 </LinearLayout>

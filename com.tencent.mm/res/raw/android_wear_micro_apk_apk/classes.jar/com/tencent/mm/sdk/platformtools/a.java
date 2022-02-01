@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.TYPE, java.lang.annotation.ElementType.METHOD})
 public @interface a
 {
-  Class<? extends Activity>[] ld() default {};
+  Class<? extends Activity>[] lp() default {};
 }
 
 

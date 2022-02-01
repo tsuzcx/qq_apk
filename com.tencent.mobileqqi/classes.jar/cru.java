@@ -1,17 +1,15 @@
-import android.os.Handler;
 import android.view.ViewStub;
-import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.activity.main.CommonLoadingView;
-import com.tencent.mobileqq.activity.main.CommonLoadingView.OnFirstDrawListener;
 
-public class cru
-  implements CommonLoadingView.OnFirstDrawListener
+class cru
+  implements Runnable
 {
-  public cru(Leba paramLeba, CommonLoadingView paramCommonLoadingView, ViewStub paramViewStub) {}
+  cru(crt paramcrt) {}
   
-  public void x_()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.post(new crv(this));
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(0);
   }
 }
 

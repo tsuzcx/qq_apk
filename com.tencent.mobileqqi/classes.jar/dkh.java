@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
 public class dkh
-  implements DialogInterface.OnDismissListener
 {
-  public dkh(SplashActivity paramSplashActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.e();
-  }
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 

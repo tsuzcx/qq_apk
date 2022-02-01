@@ -1,169 +1,160 @@
 package com.tencent.mobileqq.triton.engine;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.text.TextUtils;
-import android.view.View;
+import android.hardware.display.DisplayManager;
+import android.os.SystemClock;
+import android.view.Display;
 import androidx.annotation.NonNull;
 import com.tencent.mobileqq.triton.annotation.JNIModule;
 import com.tencent.mobileqq.triton.api.TTChannel;
-import com.tencent.mobileqq.triton.api.http.NativeHttp;
-import com.tencent.mobileqq.triton.audio.TTAudioPlayerManager;
-import com.tencent.mobileqq.triton.audio.WebAudioProxy;
-import com.tencent.mobileqq.triton.bridge.TTJSBridge;
-import com.tencent.mobileqq.triton.bridge.TTJSInnerEngine;
-import com.tencent.mobileqq.triton.bridge.plugins.AudioPlugin;
+import com.tencent.mobileqq.triton.exception.ErrorCodes;
+import com.tencent.mobileqq.triton.exception.TritonInitException;
 import com.tencent.mobileqq.triton.font.FontBitmapManager;
 import com.tencent.mobileqq.triton.game.GameLauncher;
-import com.tencent.mobileqq.triton.game.LifecycleManager;
+import com.tencent.mobileqq.triton.internal.debug.JankCanaryAgent;
+import com.tencent.mobileqq.triton.internal.engine.EngineContext;
+import com.tencent.mobileqq.triton.internal.engine.StatisticsManagerImpl;
+import com.tencent.mobileqq.triton.internal.engine.TTAppAgent;
+import com.tencent.mobileqq.triton.internal.game.EngineScriptPackageBridge;
+import com.tencent.mobileqq.triton.internal.game.GameDataFileSystemBridge;
+import com.tencent.mobileqq.triton.internal.game.GameScriptPackageBridge;
+import com.tencent.mobileqq.triton.internal.lifecycle.ValueHolder;
+import com.tencent.mobileqq.triton.internal.model.PlatformConfig;
+import com.tencent.mobileqq.triton.internal.script.InspectorBridge;
+import com.tencent.mobileqq.triton.internal.script.ScriptSystem;
+import com.tencent.mobileqq.triton.internal.touch.TouchProviderBridge;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
 import com.tencent.mobileqq.triton.jni.JNICaller.TTEngine;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
+import com.tencent.mobileqq.triton.model.DebugConfig;
 import com.tencent.mobileqq.triton.render.RenderContext;
-import com.tencent.mobileqq.triton.render.monitor.BlackScreenMonitor;
-import com.tencent.mobileqq.triton.render.monitor.FPSMonitor;
-import com.tencent.mobileqq.triton.render.monitor.ScreenShootMonitor;
-import com.tencent.mobileqq.triton.sdk.APIProxy;
-import com.tencent.mobileqq.triton.sdk.FPSCallback;
-import com.tencent.mobileqq.triton.sdk.GameEngineClassloader;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
-import com.tencent.mobileqq.triton.sdk.ITHttp;
-import com.tencent.mobileqq.triton.sdk.ITLog;
-import com.tencent.mobileqq.triton.sdk.ITSoLoader;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
-import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
-import com.tencent.mobileqq.triton.sdk.audio.IAudioPlayerBuilder;
-import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
-import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
-import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
-import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
-import com.tencent.mobileqq.triton.sdk.callback.ScreenShotCallback;
-import com.tencent.mobileqq.triton.sdk.game.GameLifecycle;
-import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
-import com.tencent.mobileqq.triton.sdk.game.MiniGameInfo;
+import com.tencent.mobileqq.triton.script.InspectorAgent;
+import com.tencent.mobileqq.triton.statistic.NativeLibraryLoadStatistic;
 import com.tencent.mobileqq.triton.utils.CanvasRecorder;
-import com.tencent.mobileqq.triton.utils.SystemInfoManager;
-import com.tencent.mobileqq.triton.views.GameUserInfoBtnManager;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Executor;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
+import io.github.landerlyoung.jenny.NativeFieldProxy;
+import io.github.landerlyoung.jenny.NativeMethodProxy;
+import io.github.landerlyoung.jenny.NativeProxy;
+import io.github.landerlyoung.jenny.NativeProxyForClasses;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 @JNIModule
-@TTNativeModule(name="TTEngine")
+@TritonKeep
+@NativeProxy(allFields=false, allMethods=false, namespace="jni")
+@NativeProxyForClasses(classes={Runnable.class}, namespace="jni")
 public class TTEngine
-  implements ITTEngine
 {
   static final String NAME = "TTEngine";
-  private static final String TAG = "TTEngine";
-  private volatile boolean bInitJSContext = false;
-  private Activity mAttachedActivity;
-  @TTNativeCall
-  private CanvasRecorder mCanvasRecorder;
-  private Executor mDiskIoExecutor;
-  private boolean mEnableCodeCache = true;
-  @TTNativeCall
-  private FontBitmapManager mFontBitmapManager;
-  private GameLauncher mGameLauncher;
-  @TTNativeCall
-  private GameUserInfoBtnManager mGameUserInfoBtnManager;
-  private TTJSInnerEngine mInnerJSEngine;
-  private TTEngine.InspectorBridge mInspectorBridge;
-  private TTJSBridge mJSBridge;
-  private IJSEngine mJSEngine;
-  private JsRuntimeLoader mJsRuntimeLoader;
-  private LifecycleManager mLifecycleManager;
-  private ITTEngine.IListener mListener;
-  @TTNativeCall
-  private NativeHttp mNativeHttp;
-  private IQQEnv mQQEnv;
+  @TritonKeep
+  private final CanvasRecorder mCanvasRecorder;
+  private final Context mContext;
+  private final EngineContext mEngineContext;
+  private long mEngineInitLoadSoEndTime;
+  private long mEngineInitStartTime;
+  private final GameLauncher mGameLauncher;
+  private volatile boolean mInitJSContext = false;
+  private InspectorBridge mInspectorBridge;
+  private JankCanaryAgent mJankCanary;
+  private EngineScriptLoader mJsRuntimeLoader;
+  private final ArrayList<NativeLibraryLoadStatistic> mNativeLibraryLoadStatistics = new ArrayList();
+  private final PlatformConfig mPlatformConfig;
   private volatile RenderContext mRenderContext;
   private volatile ScriptService mScriptEngine;
-  private SystemInfoManager mSystemInfoManager;
-  @TTNativeCall
-  private TTChannel mTTChannel;
-  private volatile int mTargetFPS;
-  private WebAudioProxy mWebAudioProxy;
-  @TTNativeCall
+  @TritonKeep
+  private final TTChannel mTTChannel;
+  private TouchProviderBridge mTouchEventManager;
+  @TritonKeep
+  @NativeFieldProxy(getter=true, setter=false)
   private long nativeTTAppHandle;
-  private HashMap<String, Boolean> optionalSoLoadStatusMap;
+  private final String tag;
   
-  public TTEngine()
+  public TTEngine(PlatformConfig paramPlatformConfig, EngineContext paramEngineContext, List<NativeLibraryLoadStatistic> paramList)
   {
-    TTLog.i("TTEngine", "new TTEngine " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TTEngine@");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    this.tag = localStringBuilder.toString();
+    this.mPlatformConfig = paramPlatformConfig;
+    this.mEngineContext = paramEngineContext;
+    this.mNativeLibraryLoadStatistics.addAll(paramList);
+    this.mContext = paramPlatformConfig.getContext();
     this.nativeTTAppHandle = 0L;
-    this.mTTChannel = new TTChannel(this);
-    this.mFontBitmapManager = new FontBitmapManager(this);
-    this.mNativeHttp = new NativeHttp(this);
-    this.mGameUserInfoBtnManager = new GameUserInfoBtnManager(this);
-    this.mLifecycleManager = new LifecycleManager();
-    this.mInnerJSEngine = new TTJSInnerEngine(this);
-    this.mJSBridge = new TTJSBridge(this);
-    this.mGameLauncher = new GameLauncher(this, this.mJSBridge);
-    this.mJsRuntimeLoader = new JsRuntimeLoader(this);
+    this.mTTChannel = new TTChannel(paramPlatformConfig.getDebugConfig());
+    this.mGameLauncher = new GameLauncher(this);
+    this.mJsRuntimeLoader = new EngineScriptLoader(paramEngineContext);
     this.mCanvasRecorder = new CanvasRecorder(this);
-    this.mWebAudioProxy = new WebAudioProxy();
+    bindErrorCallback(paramEngineContext);
+    initEngine();
   }
   
-  @TTNativeCall
-  private void _setTargetFPS(int paramInt)
+  private void bindErrorCallback(EngineContext paramEngineContext)
   {
-    setTargetFPS(paramInt);
+    this.mTTChannel.setOnScriptErrorCallback(new TTEngine.1(this, paramEngineContext));
+    this.mTTChannel.setOnRenderErrorCallback(new TTEngine.2(this, paramEngineContext));
   }
   
-  private void assertInited(String paramString)
+  private static float getScreenRefreshRate(Context paramContext)
   {
-    if (!this.bInitJSContext) {}
+    paramContext = ((DisplayManager)paramContext.getSystemService("display")).getDisplays();
+    if ((paramContext != null) && (paramContext.length > 0)) {
+      return paramContext[0].getRefreshRate();
+    }
+    return 60.0F;
+  }
+  
+  private void initEngine()
+  {
+    try
+    {
+      this.mEngineInitStartTime = SystemClock.uptimeMillis();
+      Object localObject1 = this.tag;
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("initEngine load triton version : ");
+      ((StringBuilder)localObject3).append(JNICaller.TTEngine.nativeGetTTVersion());
+      ((StringBuilder)localObject3).append(" classLoader:");
+      ((StringBuilder)localObject3).append(getClass().getClassLoader());
+      Logger.i((String)localObject1, ((StringBuilder)localObject3).toString());
+      this.mEngineContext.getStatisticsManager().getTargetFPSHolder().setValue(Float.valueOf(getScreenRefreshRate(this.mContext)));
+      if (JNICaller.TTEngine.nativeEnvInit(this))
+      {
+        this.mInspectorBridge = new InspectorBridge(getEngineContext().getLifeCycleOwner());
+        this.mJankCanary = new JankCanaryAgent(TTAppAgent.nativeGetInstance(this.nativeTTAppHandle, 1), new TTEngine.3(this), this.mEngineContext.getMainThreadExecutor(), getEngineContext().getStatisticsManager().getJankTraceLevelHolder(), getEngineContext().getStatisticsManager().getTraceInfoCallbackHolder());
+        localObject1 = new ValueHolder(Boolean.valueOf(false), getEngineContext());
+        ((ValueHolder)localObject1).observe(new TTEngine.4(this));
+        this.mTouchEventManager = new TouchProviderBridge(this.mJankCanary, getEngineContext().getLifeCycleOwner(), getEngineContext().getStatisticsManager().getLastClicksHolder(), getEngineContext().getStatisticsManager().getLastClickInfoHolder());
+        localObject3 = getEngineContext().getStatisticsManager();
+        this.mRenderContext = new RenderContext(new TTEngine.5(this), getEngineContext().getLifeCycleOwner(), this.nativeTTAppHandle, ((StatisticsManagerImpl)localObject3).getCurrentFPSHolder(), ((StatisticsManagerImpl)localObject3).getLastBlackScreenTimeMillisHolder(), (ValueHolder)localObject1, ((StatisticsManagerImpl)localObject3).getAccumulatedDrawCallsHolder(), getEngineContext().getScreenShotCallbackHolder(), this.mContext, this.mPlatformConfig.getWorkerExecutor(), this.mPlatformConfig.getMainThreadExecutor(), this.mTouchEventManager, this.mPlatformConfig.getEnableOpenGlEs3());
+        this.mEngineInitLoadSoEndTime = SystemClock.uptimeMillis();
+        this.mScriptEngine = new ScriptService(this, this.mEngineContext.getStatisticsManager().getTargetFPSHolder(), this.mEngineContext.getStatisticsManager().getFrameCallbackHolder(), this.mEngineContext.getStatisticsManager().getAccumulatedDrawCallsHolder(), this.mEngineContext.getStatisticsManager().getCurrentDrawCallsHolder(), this.mEngineContext.getStatisticsManager().getAccumulatedFramesHolder(), this.mPlatformConfig.getDebugConfig().getDebugEnabled());
+        this.mScriptEngine.awaitStart();
+        this.mInitJSContext = true;
+        return;
+      }
+      Logger.e(this.tag, "initEngine nativeEnvInit fail!");
+      onInitFinish(ErrorCodes.NATIVE_FUNCTION_CALL);
+      throw new TritonInitException("initEngine nativeEnvInit fail!", ErrorCodes.NATIVE_FUNCTION_CALL);
+    }
+    finally {}
   }
   
   public static native void nativeFontManagerInit(AssetManager paramAssetManager, String paramString);
   
   public static native String nativeGetTTVersion();
   
-  public void addFPSCallback(FPSCallback paramFPSCallback)
+  @TritonKeep
+  @NativeMethodProxy
+  private void setTargetFPS(int paramInt)
   {
-    if (getRenderContext() != null) {}
-    for (FPSMonitor localFPSMonitor = (FPSMonitor)getRenderContext().getSwapListener(FPSMonitor.class);; localFPSMonitor = null)
-    {
-      if (localFPSMonitor != null) {
-        localFPSMonitor.addFPSCallback(paramFPSCallback);
-      }
-      return;
+    if (paramInt > 0) {
+      getEngineContext().getStatisticsManager().getTargetFPSHolder().setValue(Float.valueOf(paramInt));
     }
-  }
-  
-  public void addGameLifeCycle(GameLifecycle paramGameLifecycle)
-  {
-    this.mLifecycleManager.addGameLifeCycle(paramGameLifecycle);
-  }
-  
-  public View createGameView(Activity paramActivity, int paramInt1, int paramInt2)
-  {
-    if ((getRenderContext() == null) || (getSystemInfoManager() == null)) {
-      throw new IllegalStateException("createGameView on null renderContext or null SystemInfoManager");
-    }
-    return getRenderContext().createGameView(paramActivity, paramInt1, paramInt2, getSystemInfoManager().getDensity());
   }
   
   public void createTTApp()
   {
-    JNICaller.TTEngine.nativeCreateTTApp(this, getRenderContext(), getCanvasRecorder(), getTTChannel(), getUserInfoBtnManager(), (GameLauncher)getGameLauncher(), (NativeHttp)getNativeHttp(), getFontBitmapManager(), this.mInspectorBridge);
-  }
-  
-  public APIProxy getApiProxy()
-  {
-    return this.mTTChannel.getApiProxy();
-  }
-  
-  public Activity getAttachedActivity()
-  {
-    return this.mAttachedActivity;
-  }
-  
-  public IAudioNativeManager getAudioNativeManager()
-  {
-    return this.mWebAudioProxy;
+    JNICaller.TTEngine.nativeCreateTTApp(this, getRenderContext(), getCanvasRecorder(), getTTChannel(), this.mEngineContext.getFontBitmapManager(), this.mInspectorBridge, this.mRenderContext.getTouchEventManager(), new EngineScriptPackageBridge(this.mEngineContext.getEnginePackage()), this.mEngineContext.getScriptSystem());
   }
   
   public CanvasRecorder getCanvasRecorder()
@@ -173,82 +164,22 @@ public class TTEngine
   
   public long getCurrentDrawCount()
   {
-    return ScriptService.getCurrentDrawCallCount();
+    return getEngineContext().getStatisticsManager().getCurrentDrawCalls();
   }
   
-  public int getDisplayRefreshRate()
+  public EngineContext getEngineContext()
   {
-    if (this.mSystemInfoManager != null) {
-      return this.mSystemInfoManager.getScreenRefreshRate();
-    }
-    return 60;
+    return this.mEngineContext;
   }
   
-  public ITTEngine.IListener getEngineListener()
-  {
-    return this.mListener;
-  }
-  
-  public FontBitmapManager getFontBitmapManager()
-  {
-    return this.mFontBitmapManager;
-  }
-  
-  public IGameLauncher getGameLauncher()
+  public GameLauncher getGameLauncher()
   {
     return this.mGameLauncher;
   }
   
-  public IJSEngine getInnerJsEngine()
-  {
-    return this.mInnerJSEngine;
-  }
-  
-  public IJSEngine getJsEngine()
-  {
-    return this.mJSEngine;
-  }
-  
-  public ITTJSRuntime getJsRuntime(int paramInt)
-  {
-    return this.mJSBridge.getJsRuntime(paramInt);
-  }
-  
-  public JsRuntimeLoader getJsRuntimeLoader()
+  public EngineScriptLoader getJsRuntimeLoader()
   {
     return this.mJsRuntimeLoader;
-  }
-  
-  public long getLastBlackTime()
-  {
-    if (getRenderContext() != null) {}
-    for (BlackScreenMonitor localBlackScreenMonitor = (BlackScreenMonitor)getRenderContext().getSwapListener(BlackScreenMonitor.class); localBlackScreenMonitor != null; localBlackScreenMonitor = null) {
-      return localBlackScreenMonitor.getLastBlackTime();
-    }
-    return -1L;
-  }
-  
-  public LifecycleManager getLifecycleManager()
-  {
-    return this.mLifecycleManager;
-  }
-  
-  public MiniGameInfo getMiniGameInfo()
-  {
-    if (getGameLauncher() != null) {
-      return getGameLauncher().getCurrentGame();
-    }
-    return null;
-  }
-  
-  public ITNativeBufferPool getNativeBufferPool()
-  {
-    return this.mJSBridge;
-  }
-  
-  public ITHttp getNativeHttp()
-  {
-    return this.mNativeHttp;
   }
   
   public long getNativeTTAppHandle()
@@ -256,46 +187,11 @@ public class TTEngine
     return this.nativeTTAppHandle;
   }
   
-  public boolean getOptionalSoLoadStatus(String paramString)
-  {
-    if ((this.optionalSoLoadStatusMap != null) && (!this.optionalSoLoadStatusMap.isEmpty()) && (this.optionalSoLoadStatusMap.containsKey(paramString))) {
-      return ((Boolean)this.optionalSoLoadStatusMap.get(paramString)).booleanValue();
-    }
-    return false;
-  }
-  
   public native int getProcessedMessageCount();
-  
-  public IQQEnv getQQEnv()
-  {
-    return this.mQQEnv;
-  }
   
   public RenderContext getRenderContext()
   {
     return this.mRenderContext;
-  }
-  
-  public Map<String, String> getResPathCache()
-  {
-    return GameLauncher.getResPathCache();
-  }
-  
-  public void getScreenShot(ScreenShotCallback paramScreenShotCallback)
-  {
-    if (getRenderContext() != null) {}
-    for (ScreenShootMonitor localScreenShootMonitor = (ScreenShootMonitor)getRenderContext().getSwapListener(ScreenShootMonitor.class);; localScreenShootMonitor = null)
-    {
-      if (localScreenShootMonitor != null) {
-        localScreenShootMonitor.getGameScreenShot(paramScreenShotCallback);
-      }
-      return;
-    }
-  }
-  
-  public SystemInfoManager getSystemInfoManager()
-  {
-    return this.mSystemInfoManager;
   }
   
   public TTChannel getTTChannel()
@@ -303,112 +199,18 @@ public class TTEngine
     return this.mTTChannel;
   }
   
-  public int getTargetFPS()
+  public void initGameInfo()
   {
-    return this.mTargetFPS;
-  }
-  
-  public GameUserInfoBtnManager getUserInfoBtnManager()
-  {
-    return this.mGameUserInfoBtnManager;
-  }
-  
-  public void handleFocusGain()
-  {
-    if (this.mInnerJSEngine != null) {}
-    for (AudioPlugin localAudioPlugin = (AudioPlugin)this.mInnerJSEngine.getPlugin(AudioPlugin.class);; localAudioPlugin = null)
-    {
-      if ((localAudioPlugin != null) && (localAudioPlugin.getAudioPlayerManager() != null)) {
-        localAudioPlugin.getAudioPlayerManager().handleFocusGain();
-      }
-      return;
-    }
-  }
-  
-  public void handleFocusLoss()
-  {
-    if (this.mInnerJSEngine != null) {}
-    for (AudioPlugin localAudioPlugin = (AudioPlugin)this.mInnerJSEngine.getPlugin(AudioPlugin.class);; localAudioPlugin = null)
-    {
-      if ((localAudioPlugin != null) && (localAudioPlugin.getAudioPlayerManager() != null)) {
-        localAudioPlugin.getAudioPlayerManager().handleFocusLoss();
-      }
-      return;
-    }
-  }
-  
-  public int initEngine(Context paramContext, ITTEngine.IListener paramIListener, IInspectorAgent paramIInspectorAgent)
-  {
-    try
-    {
-      if (this.bInitJSContext) {
-        return 0;
-      }
-      getQQEnv().reportDC04266(1001, null);
-      if (!TTSoLoader.loadSo())
-      {
-        TTLog.e("TTEngine", "initEngine loadSo fail!");
-        return 1001;
-      }
-      this.optionalSoLoadStatusMap = TTSoLoader.loadOptionalSoList();
-      getQQEnv().reportDC04266(1002, null);
-      if (paramIInspectorAgent != null) {
-        this.mInspectorBridge = new TTEngine.InspectorBridge(paramIInspectorAgent, null);
-      }
-      this.mListener = paramIListener;
-      this.mSystemInfoManager = new SystemInfoManager(this, paramContext);
-      this.mRenderContext = new RenderContext(this, paramContext);
-      this.mTargetFPS = getDisplayRefreshRate();
-      boolean bool = getClass().getClassLoader() instanceof GameEngineClassloader;
-      TTLog.i("TTEngine", "initEngine load triton from dex?" + bool + " version : " + JNICaller.TTEngine.nativeGetTTVersion());
-      if (!JNICaller.TTEngine.nativeEnvInit(this))
-      {
-        TTLog.e("TTEngine", "initEngine nativeEnvInit fail!");
-        return 2001;
-      }
-    }
-    finally {}
-    getQQEnv().reportDC04266(8, null);
-    if (this.mJsRuntimeLoader.collectJsFileToPreload()) {
-      getQQEnv().reportDC04266(9, null);
-    }
-    this.mScriptEngine = new ScriptService(this);
-    addGameLifeCycle(this.mInnerJSEngine);
-    addGameLifeCycle(new CodeCacheSaver(this));
-    this.bInitJSContext = true;
-    return 0;
+    JNICaller.TTEngine.nativeInitGameInfo(this, new GameScriptPackageBridge(this.mEngineContext.getGamePackage()), new GameDataFileSystemBridge(this.mEngineContext.getDataFileSystem()));
   }
   
   public native void interruptLoop();
   
-  public boolean isGLThread()
-  {
-    return (this.mScriptEngine != null) && (this.mScriptEngine.isJSThread());
-  }
-  
-  public int loadScriptPathWithCodeCache(int paramInt, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      throw new IllegalStateException("all parameter must not be null or empty");
-    }
-    return JNICaller.TTEngine.nativeLoadScriptPathWithCodeCache(this, paramInt, paramString1, this.mGameLauncher.getGameDebugPath(paramString2), paramString3);
-  }
-  
-  public int loadScriptStringWithCodeCache(int paramInt, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      throw new IllegalStateException("all parameter must not be null or empty");
-    }
-    return JNICaller.TTEngine.nativeLoadScriptStringWithCodeCache(this, paramInt, paramString1, this.mGameLauncher.getGameDebugPath(paramString2), paramString3);
-  }
-  
   public native long nativeCanvasPresent();
   
-  public native void nativeCreateTTApp(RenderContext paramRenderContext, CanvasRecorder paramCanvasRecorder, TTChannel paramTTChannel, GameUserInfoBtnManager paramGameUserInfoBtnManager, GameLauncher paramGameLauncher, NativeHttp paramNativeHttp, FontBitmapManager paramFontBitmapManager, TTEngine.InspectorBridge paramInspectorBridge);
+  public native void nativeCreateTTApp(RenderContext paramRenderContext, CanvasRecorder paramCanvasRecorder, TTChannel paramTTChannel, FontBitmapManager paramFontBitmapManager, InspectorBridge paramInspectorBridge, TouchProviderBridge paramTouchProviderBridge, EngineScriptPackageBridge paramEngineScriptPackageBridge, ScriptSystem paramScriptSystem);
   
   public native void nativeDiposeTTApp();
-  
-  public native void nativeEnableJankTrace(boolean paramBoolean);
   
   public native boolean nativeEnvInit();
   
@@ -416,11 +218,9 @@ public class TTEngine
   
   public native long nativeGetCurrentFrameDrawCallCount();
   
-  public native int nativeLoadScriptPathWithCodeCache(int paramInt, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3);
+  public native void nativeInitGameInfo(GameScriptPackageBridge paramGameScriptPackageBridge, GameDataFileSystemBridge paramGameDataFileSystemBridge);
   
-  public native int nativeLoadScriptStringWithCodeCache(int paramInt, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3);
-  
-  public native long nativeOnVSync(long paramLong);
+  public native void nativeOnVSync(long paramLong);
   
   public native void nativePause();
   
@@ -428,22 +228,18 @@ public class TTEngine
   
   public native void nativeSaveScriptCodeCache();
   
-  public native boolean nativeStartDrawCall();
+  public native void nativeSetJankTraceLevel(int paramInt);
   
-  public void onCreate(Activity paramActivity)
-  {
-    this.mAttachedActivity = paramActivity;
-    this.mLifecycleManager.onCreate(paramActivity);
-  }
+  public native boolean nativeStartDrawCall();
   
   public void onDestroy()
   {
-    TTLog.i("TTEngine", "~TTEngine " + this);
-    this.mAttachedActivity = null;
-    this.bInitJSContext = false;
-    if (this.mLifecycleManager != null) {
-      this.mLifecycleManager.onDestroy();
-    }
+    String str = this.tag;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("~TTEngine ");
+    localStringBuilder.append(this);
+    Logger.i(str, localStringBuilder.toString());
+    this.mInitJSContext = false;
     if (this.mRenderContext != null) {
       this.mRenderContext.onDestroy();
     }
@@ -452,9 +248,13 @@ public class TTEngine
     }
   }
   
+  public void onInitFinish(ErrorCodes paramErrorCodes)
+  {
+    this.mGameLauncher.onInitDone(paramErrorCodes, this.mEngineInitLoadSoEndTime - this.mEngineInitStartTime, getJsRuntimeLoader().getLoadScriptScriptTimeMs(), SystemClock.uptimeMillis() - getJsRuntimeLoader().getLoadEngineScriptEndTime(), SystemClock.uptimeMillis() - this.mEngineInitStartTime, this.mJsRuntimeLoader.getEngineScriptLoadStatics(), this.mJsRuntimeLoader.getEngineScriptInitException(), this.mNativeLibraryLoadStatistics);
+  }
+  
   public void onPause()
   {
-    this.mLifecycleManager.onPause();
     if (this.mScriptEngine != null) {
       this.mScriptEngine.onPause();
     }
@@ -465,134 +265,66 @@ public class TTEngine
     if (this.mScriptEngine != null) {
       this.mScriptEngine.onResume();
     }
-    this.mLifecycleManager.onResume();
   }
   
-  @TTNativeCall
-  public String onScriptCall(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
+  public boolean postRunnable(@NonNull Runnable paramRunnable)
   {
-    paramArrayOfByte1 = new String(paramArrayOfByte1);
-    paramArrayOfByte2 = new String(paramArrayOfByte2);
-    return this.mJSBridge.onScriptCall(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
+    return postRunnableDelayed(paramRunnable, 0L);
   }
   
-  @TTNativeCall
-  public String onScriptPublish(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt)
+  public boolean postRunnableDelayed(@NonNull Runnable paramRunnable, long paramLong)
   {
-    paramArrayOfByte1 = new String(paramArrayOfByte1);
-    paramArrayOfByte2 = new String(paramArrayOfByte2);
-    paramArrayOfByte3 = new String(paramArrayOfByte3);
-    return this.mJSBridge.onScriptPublish(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramInt);
-  }
-  
-  public void postRunnable(@NonNull Runnable paramRunnable)
-  {
-    postRunnableDelayed(paramRunnable, 0L);
-  }
-  
-  public void postRunnableDelayed(@NonNull Runnable paramRunnable, long paramLong)
-  {
-    assertInited("post runnable after engine is destroyed");
-    if (this.bInitJSContext) {
-      JNICaller.TTEngine.postRunnableDelayedWithPriority(this, paramRunnable, paramLong, 0);
+    try
+    {
+      this.mEngineContext.getLock().lock();
+      if (this.mEngineContext.getEngineState() == EngineState.DESTROYED)
+      {
+        String str = this.tag;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("postRunnable after engine is destroyed ");
+        localStringBuilder.append(paramRunnable);
+        localStringBuilder.append(" to ");
+        localStringBuilder.append(this);
+        Logger.w(str, localStringBuilder.toString());
+        return false;
+      }
+      JNICaller.TTEngine.postRunnableDelayedWithPriority(this, new TTEngine.6(this, paramRunnable), paramLong, 0);
+      return true;
+    }
+    finally
+    {
+      this.mEngineContext.getLock().unlock();
     }
   }
   
   public native void postRunnableDelayedWithPriority(@NonNull Runnable paramRunnable, long paramLong, int paramInt);
   
-  public void removeFPSCallback(FPSCallback paramFPSCallback)
-  {
-    if (getRenderContext() != null) {}
-    for (FPSMonitor localFPSMonitor = (FPSMonitor)getRenderContext().getSwapListener(FPSMonitor.class);; localFPSMonitor = null)
-    {
-      if (localFPSMonitor != null) {
-        localFPSMonitor.removeFPSCallback(paramFPSCallback);
-      }
-      return;
-    }
-  }
-  
   public native boolean runLoop(boolean paramBoolean);
   
-  void saveScriptCodeCache()
+  public void saveScriptCodeCache()
   {
-    if (this.mEnableCodeCache) {
-      JNICaller.TTEngine.nativeSaveScriptCodeCache(this);
+    JNICaller.TTEngine.nativeSaveScriptCodeCache(this);
+  }
+  
+  public void setInspectorAgent(InspectorAgent paramInspectorAgent)
+  {
+    if (paramInspectorAgent != null) {
+      this.mInspectorBridge.setProxy(paramInspectorAgent);
     }
   }
   
-  public void setApiProxy(APIProxy paramAPIProxy)
+  public String toString()
   {
-    this.mTTChannel.setApiProxy(paramAPIProxy);
-  }
-  
-  public void setAudioPlayerBuilder(IAudioPlayerBuilder paramIAudioPlayerBuilder)
-  {
-    if (this.mInnerJSEngine != null) {}
-    for (AudioPlugin localAudioPlugin = (AudioPlugin)this.mInnerJSEngine.getPlugin(AudioPlugin.class);; localAudioPlugin = null)
-    {
-      if ((localAudioPlugin != null) && (localAudioPlugin.getAudioPlayerManager() != null)) {
-        localAudioPlugin.getAudioPlayerManager().setAudioPlayerBuilder(paramIAudioPlayerBuilder);
-      }
-      return;
-    }
-  }
-  
-  public void setDiskIoExecutor(@NonNull Executor paramExecutor)
-  {
-    this.mDiskIoExecutor = paramExecutor;
-  }
-  
-  public void setEnableCodeCache(boolean paramBoolean)
-  {
-    this.mEnableCodeCache = paramBoolean;
-  }
-  
-  public void setEnableJankCanary(boolean paramBoolean)
-  {
-    JNICaller.TTEngine.nativeEnableJankTrace(this, paramBoolean);
-  }
-  
-  public void setEngineListener(ITTEngine.IListener paramIListener)
-  {
-    this.mListener = paramIListener;
-  }
-  
-  public void setJsEngine(IJSEngine paramIJSEngine)
-  {
-    this.mJSEngine = paramIJSEngine;
-  }
-  
-  public void setLog(ITLog paramITLog)
-  {
-    TTLog.init(paramITLog);
-  }
-  
-  public void setQQEnv(IQQEnv paramIQQEnv)
-  {
-    this.mQQEnv = paramIQQEnv;
-  }
-  
-  public void setSoLoader(ITSoLoader paramITSoLoader)
-  {
-    TTSoLoader.setSoLoader(paramITSoLoader);
-  }
-  
-  public void setTargetFPS(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= getDisplayRefreshRate()))
-    {
-      this.mTargetFPS = paramInt;
-      if (this.mScriptEngine != null) {
-        this.mScriptEngine.onTargetFpsChange(paramInt);
-      }
-      TTLog.i("TTEngine", "setTargetFPS:" + paramInt);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.mEngineContext.getId());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.TTEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -13,20 +13,21 @@ import android.widget.ImageView;
 public class CircleProgress
   extends ImageView
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  boolean jdField_a_of_type_Boolean = true;
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = true;
+  int a;
+  float b;
   int c;
   int d;
-  int e;
+  int e = 9;
   int f;
   int g;
   int h;
+  int i;
+  int j;
+  Paint k;
+  float l;
+  RectF m = new RectF();
+  boolean n = true;
+  boolean o = true;
   
   public CircleProgress(Context paramContext)
   {
@@ -42,84 +43,105 @@ public class CircleProgress
   
   private void a()
   {
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = getResources().getColor(2131165614);
-    this.e = getResources().getColor(2131165571);
-    this.d = 51;
-    this.f = 255;
-    this.c = getResources().getColor(2131165603);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.b = getResources().getDisplayMetrics().density;
+    this.c = getResources().getColor(2131166114);
+    this.g = getResources().getColor(2131165990);
+    this.f = 51;
+    this.h = 255;
+    this.d = getResources().getColor(2131166040);
+    this.k = new Paint();
+    this.k.setAntiAlias(true);
+    this.k.setStyle(Paint.Style.STROKE);
+  }
+  
+  protected void a(Canvas paramCanvas)
+  {
+    this.k.setColor(this.c);
+    if (this.n) {
+      this.k.setAlpha(this.f * 255 / 100);
+    }
+    this.k.setShadowLayer(this.e, 0.0F, 0.0F, this.d);
+    paramCanvas.drawArc(this.m, -90.0F, 360.0F, false, this.k);
+    this.k.setColor(this.g);
+    if (this.o) {
+      this.k.setAlpha(this.h * 255 / 100);
+    }
+    this.k.setShadowLayer(this.e, 0.0F, 0.0F, this.d);
+    RectF localRectF = this.m;
+    int i1 = this.a;
+    localRectF.set(i1, i1, this.i - i1, this.j - i1);
+    localRectF = this.m;
+    double d1 = this.l;
+    Double.isNaN(d1);
+    paramCanvas.drawArc(localRectF, -90.0F, (float)(d1 * 3.6D), false, this.k);
+  }
+  
+  public float getProgress()
+  {
+    return this.l;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.g = getWidth();
-    this.h = getHeight();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.d * 255 / 100);
-    }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(9.0F, 0.0F, 0.0F, this.c);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.g - this.jdField_a_of_type_Int, this.h - this.jdField_a_of_type_Int);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    if (this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.f * 255 / 100);
-    }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(9.0F, 0.0F, 0.0F, this.c);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.g - this.jdField_a_of_type_Int, this.h - this.jdField_a_of_type_Int);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, (float)(3.6D * this.jdField_b_of_type_Float), false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.i = getWidth();
+    this.j = getHeight();
+    RectF localRectF = this.m;
+    int i1 = this.a;
+    localRectF.set(i1, i1, this.i - i1, this.j - i1);
+    a(paramCanvas);
   }
   
   public void setBgAndProgressColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt1;
-    this.e = paramInt4;
-    this.f = paramInt3;
+    this.c = paramInt2;
+    this.f = paramInt1;
+    this.g = paramInt4;
+    this.h = paramInt3;
   }
   
   public void setBgAndProgressUseAlpha(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.n = paramBoolean1;
+    this.o = paramBoolean2;
   }
   
   public void setProgress(float paramFloat)
   {
     float f1 = 100.0F;
-    if (paramFloat > 100.0F) {}
-    for (;;)
-    {
-      this.jdField_b_of_type_Float = f1;
-      f1 = paramFloat;
-      if (paramFloat < 0.0F) {
-        f1 = 0.0F;
-      }
-      this.jdField_b_of_type_Float = f1;
-      invalidate();
-      return;
+    if (paramFloat <= 100.0F) {
       f1 = paramFloat;
     }
+    this.l = f1;
+    f1 = paramFloat;
+    if (paramFloat < 0.0F) {
+      f1 = 0.0F;
+    }
+    this.l = f1;
+    invalidate();
+  }
+  
+  public void setShadowRadius(int paramInt)
+  {
+    this.e = paramInt;
   }
   
   public void setStrokeWidth(float paramFloat)
   {
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * paramFloat + 0.5D));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
+    double d1 = paramFloat * this.b;
+    Double.isNaN(d1);
+    this.a = ((int)(d1 + 0.5D));
+    this.k.setStrokeWidth(this.a);
   }
   
   public void setmShadowColor(int paramInt)
   {
-    this.c = paramInt;
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgress
  * JD-Core Version:    0.7.0.1
  */

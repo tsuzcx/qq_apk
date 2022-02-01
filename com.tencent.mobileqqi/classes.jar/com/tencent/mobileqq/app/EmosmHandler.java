@@ -85,7 +85,7 @@ public class EmosmHandler
     localReqBody.uint32_sub_cmd.set(5);
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()).longValue());
     localReqBody.int32_plat_id.set(109);
-    localReqBody.str_app_version.set("6.0.2");
+    localReqBody.str_app_version.set("6.0.3");
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "BQMallSvc.TabOpReq");
     localToServiceMsg.extraData.putInt("EmosmSubCmd", 5);
     localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
@@ -496,7 +496,7 @@ public class EmosmHandler
     paramString.uint32_sub_cmd.set(8);
     paramString.uint64_uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()).longValue());
     paramString.int32_plat_id.set(109);
-    paramString.str_app_version.set("6.0.2");
+    paramString.str_app_version.set("6.0.3");
     paramString.msg_subcmd0x8_req_addtab.set((MessageMicro)localObject);
     paramString.setHasFlag(true);
     localObject = a("BQMallSvc.TabOpReq");

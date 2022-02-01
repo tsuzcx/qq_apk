@@ -1,26 +1,31 @@
 package com.tencent.widget;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Path.FillType;
 import android.graphics.RectF;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.R.styleable;
 
 public class XFrameLayout
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = -1;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private int b;
-  private int c = 0;
-  private int d;
-  private int e;
+  public static final int MODE_ALL = 1;
+  public static final int MODE_BOTTOM = 5;
+  public static final int MODE_LEFT = 2;
+  public static final int MODE_NONE = 0;
+  public static final int MODE_RIGHT = 4;
+  public static final int MODE_TOP = 3;
+  private int mLastRadius;
+  private int mLastRoundMode;
+  private int mMaxHeight = -1;
+  private int mRadius;
+  private int mRoundMode = 0;
+  private Path mRoundPath = new Path();
   
   public XFrameLayout(Context paramContext)
   {
@@ -35,77 +40,87 @@ public class XFrameLayout
   public XFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.tencent_widget);
-    setMaxHeight(paramContext.getDimensionPixelSize(0, -1));
-    paramContext.recycle();
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
+    this.mRoundPath.setFillType(Path.FillType.EVEN_ODD);
   }
   
-  private void a()
+  private void checkPathChanged()
   {
-    if ((this.d == this.b) && (this.e == this.c)) {
+    if ((this.mLastRadius == this.mRadius) && (this.mLastRoundMode == this.mRoundMode)) {
       return;
     }
     int i = getWidth();
     int j = getHeight();
-    this.d = this.b;
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    switch (this.c)
+    this.mLastRadius = this.mRadius;
+    this.mRoundPath.reset();
+    int k = this.mRoundMode;
+    if (k != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, i, j), this.b, this.b, Path.Direction.CW);
-      return;
-    case 2: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      if (k != 2)
+      {
+        if (k != 3)
+        {
+          if (k != 4)
+          {
+            if (k != 5) {
+              return;
+            }
+            localPath = this.mRoundPath;
+            localRectF = new RectF(0.0F, 0.0F, i, j);
+            i = this.mRadius;
+            f1 = i;
+            f2 = i;
+            f3 = i;
+            f4 = i;
+            localDirection = Path.Direction.CW;
+            localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+            return;
+          }
+          localPath = this.mRoundPath;
+          localRectF = new RectF(0.0F, 0.0F, i, j);
+          i = this.mRadius;
+          f1 = i;
+          f2 = i;
+          f3 = i;
+          f4 = i;
+          localDirection = Path.Direction.CW;
+          localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
+          return;
+        }
+        localPath = this.mRoundPath;
+        localRectF = new RectF(0.0F, 0.0F, i, j);
+        i = this.mRadius;
+        f1 = i;
+        f2 = i;
+        f3 = i;
+        f4 = i;
+        localDirection = Path.Direction.CW;
+        localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
+        return;
+      }
+      localPath = this.mRoundPath;
       localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.b;
-      f2 = this.b;
-      f3 = this.b;
-      f4 = this.b;
-      localDirection = Path.Direction.CW;
+      i = this.mRadius;
+      float f1 = i;
+      float f2 = i;
+      float f3 = i;
+      float f4 = i;
+      Path.Direction localDirection = Path.Direction.CW;
       localPath.addRoundRect(localRectF, new float[] { f1, f2, 0.0F, 0.0F, 0.0F, 0.0F, f3, f4 }, localDirection);
       return;
-    case 3: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.b;
-      f2 = this.b;
-      f3 = this.b;
-      f4 = this.b;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
-      return;
-    case 4: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.b;
-      f2 = this.b;
-      f3 = this.b;
-      f4 = this.b;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
-      return;
     }
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    Path localPath = this.mRoundPath;
     RectF localRectF = new RectF(0.0F, 0.0F, i, j);
-    float f1 = this.b;
-    float f2 = this.b;
-    float f3 = this.b;
-    float f4 = this.b;
-    Path.Direction localDirection = Path.Direction.CW;
-    localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+    i = this.mRadius;
+    localPath.addRoundRect(localRectF, i, i, Path.Direction.CW);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.c != 0)
+    if ((this.mRoundMode != 0) && (Build.VERSION.SDK_INT >= 21))
     {
       int i = paramCanvas.save();
-      a();
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      checkPathChanged();
+      paramCanvas.clipPath(this.mRoundPath);
       super.draw(paramCanvas);
       paramCanvas.restoreToCount(i);
       return;
@@ -116,15 +131,17 @@ public class XFrameLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = paramInt2;
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.mMaxHeight > 0)
     {
       int j = View.MeasureSpec.getMode(paramInt2);
+      int k = View.MeasureSpec.getSize(paramInt2);
+      int m = this.mMaxHeight;
       i = paramInt2;
-      if (View.MeasureSpec.getSize(paramInt2) > this.jdField_a_of_type_Int)
+      if (k > m)
       {
         i = paramInt2;
         if (j != 0) {
-          i = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, j);
+          i = View.MeasureSpec.makeMeasureSpec(m, j);
         }
       }
     }
@@ -133,21 +150,21 @@ public class XFrameLayout
   
   public void setCornerRadiusAndMode(int paramInt1, int paramInt2)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
+    this.mRadius = paramInt1;
+    this.mRoundMode = paramInt2;
   }
   
   public void setMaxHeight(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int < getMeasuredHeight()) {
+    this.mMaxHeight = paramInt;
+    if (this.mMaxHeight < getMeasuredHeight()) {
       requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.XFrameLayout
  * JD-Core Version:    0.7.0.1
  */

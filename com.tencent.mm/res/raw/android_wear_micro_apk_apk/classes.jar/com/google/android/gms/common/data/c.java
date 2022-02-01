@@ -6,21 +6,21 @@ import java.util.HashMap;
 
 public class c
 {
-  private final String[] If;
-  private final ArrayList<HashMap<String, Object>> In;
-  private final String Io;
-  private final HashMap<Object, Integer> Ip;
-  private boolean Iq;
-  private String Ir;
+  private final String[] JU;
+  private final ArrayList<HashMap<String, Object>> Kc;
+  private final String Kd;
+  private final HashMap<Object, Integer> Ke;
+  private boolean Kf;
+  private String Kg;
   
   private c(String[] paramArrayOfString, String paramString)
   {
-    this.If = ((String[])d.u(paramArrayOfString));
-    this.In = new ArrayList();
-    this.Io = paramString;
-    this.Ip = new HashMap();
-    this.Iq = false;
-    this.Ir = null;
+    this.JU = ((String[])d.D(paramArrayOfString));
+    this.Kc = new ArrayList();
+    this.Kd = paramString;
+    this.Ke = new HashMap();
+    this.Kf = false;
+    this.Kg = null;
   }
 }
 

@@ -31,23 +31,40 @@ public class DesktopAppModuleInfo
       this.appStoreInfo = MiniAppInfo.from(paramStUserAppInfo);
       if (this.appStoreInfo != null)
       {
-        QLog.d("DesktopAppModuleInfo", 1, "create DesktopAppModuleInfo. appStoreInfo: id = " + this.appStoreInfo.appId + ", name = " + this.appStoreInfo.name + ", title: " + paramString);
+        paramStUserAppInfo = new StringBuilder();
+        paramStUserAppInfo.append("create DesktopAppModuleInfo. appStoreInfo: id = ");
+        paramStUserAppInfo.append(this.appStoreInfo.appId);
+        paramStUserAppInfo.append(", name = ");
+        paramStUserAppInfo.append(this.appStoreInfo.name);
+        paramStUserAppInfo.append(", title: ");
+        paramStUserAppInfo.append(paramString);
+        QLog.d("DesktopAppModuleInfo", 1, paramStUserAppInfo.toString());
         return;
       }
-      QLog.d("DesktopAppModuleInfo", 1, "create DesktopAppModuleInfo. appStoreInfo is null. title: " + paramString);
+      paramStUserAppInfo = new StringBuilder();
+      paramStUserAppInfo.append("create DesktopAppModuleInfo. appStoreInfo is null. title: ");
+      paramStUserAppInfo.append(paramString);
+      QLog.d("DesktopAppModuleInfo", 1, paramStUserAppInfo.toString());
       return;
     }
-    QLog.d("DesktopAppModuleInfo", 1, "create DesktopAppModuleInfo. appInfo is null. title: " + paramString);
+    paramStUserAppInfo = new StringBuilder();
+    paramStUserAppInfo.append("create DesktopAppModuleInfo. appInfo is null. title: ");
+    paramStUserAppInfo.append(paramString);
+    QLog.d("DesktopAppModuleInfo", 1, paramStUserAppInfo.toString());
   }
   
   public String toString()
   {
-    return this.moduleTitle + "_" + this.mModuleType;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.moduleTitle);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.mModuleType);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppModuleInfo
  * JD-Core Version:    0.7.0.1
  */

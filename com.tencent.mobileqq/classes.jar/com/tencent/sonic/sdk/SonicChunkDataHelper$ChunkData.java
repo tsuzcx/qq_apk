@@ -20,7 +20,8 @@ class SonicChunkDataHelper$ChunkData
   public String toHeader()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append(this.chunkKey).append("=");
+    localStringBuilder.append(this.chunkKey);
+    localStringBuilder.append("=");
     String str2 = this.chunkSha1;
     String str1 = str2;
     if (!TextUtils.isEmpty(str2))
@@ -37,7 +38,7 @@ class SonicChunkDataHelper$ChunkData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicChunkDataHelper.ChunkData
  * JD-Core Version:    0.7.0.1
  */

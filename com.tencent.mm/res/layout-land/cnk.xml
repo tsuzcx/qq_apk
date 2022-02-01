@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/m5w" android:background="@color/UN_BW_0_Alpha_0_5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/m5t" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toLeftOf="@id/m32" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:id="@id/m32" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintDimensionRatio="w,1:1" app:layout_constraintRight_toRightOf="hr_" app:sheetDirection="0">
+        <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/m31" android:background="@drawable/b6y" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/m5u" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_100_Alpha_0_8" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/m65" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/d6" android:src="@raw/olympics_torch_white" android:layout_centerHorizontal="true" app:iconColor="@color/BW_100_Alpha_0_9" />
+            <TextView android:textSize="@dimen/hr" android:textColor="@color/az" android:gravity="center" android:id="@id/m34" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cv" android:layout_marginRight="@dimen/cp" android:text="@string/lti" android:layout_below="@id/m65" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/az" android:gravity="center" android:id="@id/m33" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cv" android:text="@string/lth" android:layout_below="@id/m34" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/m33">
+                <Button android:textSize="@dimen/j7" android:textColor="#e6e75e58" android:layout_gravity="center" android:id="@id/bl1" android:background="@drawable/yf" android:layout_width="@dimen/cj" android:layout_height="@dimen/d6" android:text="@string/ltf" />
+            </FrameLayout>
+        </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</androidx.constraintlayout.widget.ConstraintLayout>

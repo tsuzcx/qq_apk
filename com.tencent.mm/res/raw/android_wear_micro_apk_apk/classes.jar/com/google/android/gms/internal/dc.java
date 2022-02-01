@@ -10,14 +10,14 @@ import com.google.android.gms.common.internal.zzd;
 final class dc
   implements da
 {
-  private IBinder KE;
+  private IBinder Mt;
   
   dc(IBinder paramIBinder)
   {
-    this.KE = paramIBinder;
+    this.Mt = paramIBinder;
   }
   
-  public final void A(boolean paramBoolean)
+  public final void C(boolean paramBoolean)
   {
     int i = 0;
     Parcel localParcel1 = Parcel.obtain();
@@ -29,7 +29,30 @@ final class dc
         i = 1;
       }
       localParcel1.writeInt(i);
-      this.KE.transact(13, localParcel1, localParcel2, 0);
+      this.Mt.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public final void D(boolean paramBoolean)
+  {
+    int i = 0;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.google.android.gms.signin.internal.ISignInService");
+      if (paramBoolean) {
+        i = 1;
+      }
+      localParcel1.writeInt(i);
+      this.Mt.transact(13, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -58,7 +81,7 @@ final class dc
           {
             paramAccount = paramcx.asBinder();
             localParcel1.writeStrongBinder(paramAccount);
-            this.KE.transact(8, localParcel1, localParcel2, 0);
+            this.Mt.transact(8, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -93,11 +116,11 @@ final class dc
     //   20: aload_1
     //   21: ifnull +70 -> 91
     //   24: aload_1
-    //   25: invokeinterface 67 1 0
+    //   25: invokeinterface 68 1 0
     //   30: astore_1
     //   31: aload 5
     //   33: aload_1
-    //   34: invokevirtual 63	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   34: invokevirtual 64	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
     //   37: aload 5
     //   39: iload_2
     //   40: invokevirtual 34	android/os/Parcel:writeInt	(I)V
@@ -111,7 +134,7 @@ final class dc
     //   54: iload_2
     //   55: invokevirtual 34	android/os/Parcel:writeInt	(I)V
     //   58: aload_0
-    //   59: getfield 15	com/google/android/gms/internal/dc:KE	Landroid/os/IBinder;
+    //   59: getfield 15	com/google/android/gms/internal/dc:Mt	Landroid/os/IBinder;
     //   62: bipush 9
     //   64: aload 5
     //   66: aload 6
@@ -169,7 +192,7 @@ final class dc
           {
             paramzzad = paramaw.asBinder();
             localParcel1.writeStrongBinder(paramzzad);
-            this.KE.transact(5, localParcel1, localParcel2, 0);
+            this.Mt.transact(5, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -205,7 +228,7 @@ final class dc
           {
             paramzzd = paramcx.asBinder();
             localParcel1.writeStrongBinder(paramzzd);
-            this.KE.transact(2, localParcel1, localParcel2, 0);
+            this.Mt.transact(2, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -243,9 +266,9 @@ final class dc
     //   23: aload_1
     //   24: aload_2
     //   25: iconst_0
-    //   26: invokevirtual 82	com/google/android/gms/internal/zzban:writeToParcel	(Landroid/os/Parcel;I)V
+    //   26: invokevirtual 83	com/google/android/gms/internal/zzban:writeToParcel	(Landroid/os/Parcel;I)V
     //   29: aload_0
-    //   30: getfield 15	com/google/android/gms/internal/dc:KE	Landroid/os/IBinder;
+    //   30: getfield 15	com/google/android/gms/internal/dc:Mt	Landroid/os/IBinder;
     //   33: iconst_3
     //   34: aload_2
     //   35: aload_3
@@ -301,7 +324,7 @@ final class dc
           {
             paramzzbar = paramcx.asBinder();
             localParcel1.writeStrongBinder(paramzzbar);
-            this.KE.transact(10, localParcel1, localParcel2, 0);
+            this.Mt.transact(10, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -337,7 +360,7 @@ final class dc
           {
             paramzzbau = paramcx.asBinder();
             localParcel1.writeStrongBinder(paramzzbau);
-            this.KE.transact(12, localParcel1, localParcel2, 0);
+            this.Mt.transact(12, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -358,7 +381,7 @@ final class dc
   
   public final IBinder asBinder()
   {
-    return this.KE;
+    return this.Mt;
   }
   
   /* Error */
@@ -375,13 +398,13 @@ final class dc
     //   14: aload_1
     //   15: ifnull +43 -> 58
     //   18: aload_1
-    //   19: invokeinterface 60 1 0
+    //   19: invokeinterface 61 1 0
     //   24: astore_1
     //   25: aload_2
     //   26: aload_1
-    //   27: invokevirtual 63	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   27: invokevirtual 64	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
     //   30: aload_0
-    //   31: getfield 15	com/google/android/gms/internal/dc:KE	Landroid/os/IBinder;
+    //   31: getfield 15	com/google/android/gms/internal/dc:Mt	Landroid/os/IBinder;
     //   34: bipush 11
     //   36: aload_2
     //   37: aload_3
@@ -418,7 +441,7 @@ final class dc
     //   25	49	63	finally
   }
   
-  public final void bo(int paramInt)
+  public final void bI(int paramInt)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -426,30 +449,7 @@ final class dc
     {
       localParcel1.writeInterfaceToken("com.google.android.gms.signin.internal.ISignInService");
       localParcel1.writeInt(paramInt);
-      this.KE.transact(7, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public final void z(boolean paramBoolean)
-  {
-    int i = 0;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.google.android.gms.signin.internal.ISignInService");
-      if (paramBoolean) {
-        i = 1;
-      }
-      localParcel1.writeInt(i);
-      this.KE.transact(4, localParcel1, localParcel2, 0);
+      this.Mt.transact(7, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }

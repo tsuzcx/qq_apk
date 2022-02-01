@@ -50,14 +50,14 @@ public class RecentDefaultItemBuilder
       paramOnDragModeChangedListener = new RecentDefaultItemBuilder.RecentItemDefaultHolder();
       View localView = a(paramContext, 2130903928, paramOnDragModeChangedListener, 2);
       paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131230940));
-      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234179));
-      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131234180));
-      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231883));
-      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234189));
+      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234178));
+      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131234179));
+      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231882));
+      paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131234188));
       paramOnDragModeChangedListener.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(16908308));
-      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232903));
-      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232615));
-      paramOnDragModeChangedListener.e = ((TextView)localView.findViewById(2131234183));
+      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232902));
+      paramOnDragModeChangedListener.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131232614));
+      paramOnDragModeChangedListener.e = ((TextView)localView.findViewById(2131234182));
       paramOnDragModeChangedListener.f = ((TextView)localView.findViewById(16908309));
       a(localView, paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetTextView, paramContext);
       localView.setTag(paramOnDragModeChangedListener);
@@ -154,7 +154,7 @@ public class RecentDefaultItemBuilder
   {
     try
     {
-      LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131231417);
+      LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131231416);
       paramView = TimeManager.a().a("000000", 1225168973512L);
       if (TextUtils.isEmpty(paramView))
       {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BounceScrollView android:background="@color/common_bg_color" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/item_container" android:paddingBottom="@dimen/float_btn_height" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mobileqq.widget.BounceScrollView>
+    <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/btn_container" android:background="@drawable/profile_info_card_btns_bg" android:layout_width="fill_parent" android:layout_height="@dimen/float_btn_height" />
+</merge>

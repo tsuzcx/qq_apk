@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/caz" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintGuide_begin="@dimen/d0" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cax" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:src="@raw/icons_filled_close" android:layout_marginStart="@dimen/cp" app:iconColor="@color/az" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/caz" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cay" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:src="@raw/icons_filled_done" android:layout_marginEnd="@dimen/cp" app:iconColor="@color/Orange" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toBottomOf="@id/caz" />
+    <EditText android:textSize="32.0dip" android:textColor="@color/al2" android:gravity="center_vertical" android:id="@id/cba" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,36 +1,40 @@
 package com.tencent.biz.pubaccount.weishi_new.player;
 
+import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayerSdkMgr;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import thq;
-import tht;
-import tlo;
 
-public class WSVideoPluginInstall$2
+class WSVideoPluginInstall$2
   implements Runnable
 {
-  public WSVideoPluginInstall$2(thq paramthq) {}
+  WSVideoPluginInstall$2(WSVideoPluginInstall paramWSVideoPluginInstall) {}
   
   public void run()
   {
-    tlo.e("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][installPlugin] start install video sdk in subThread.");
-    if (!thq.b()) {
-      thq.a(this.this$0);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("[WSVideoPluginInstall.java][installPlugin] start install video sdk in subThread. mIsInitialized:");
+    localStringBuilder1.append(WSVideoPluginInstall.d());
+    WSLog.e("WS_VIDEO_WSVideoPluginInstall", localStringBuilder1.toString());
+    if (!WSVideoPluginInstall.d()) {
+      WSVideoPluginInstall.a(this.this$0);
     }
     try
     {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new tht(thq.a(this.this$0)));
+      WSVideoPluginInstall.c(this.this$0).a(BaseApplicationImpl.getContext(), new WSVideoPluginInstall.SDKInstallListener(WSVideoPluginInstall.b(this.this$0)));
       return;
     }
     catch (Exception localException)
     {
-      tlo.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][installPlugin] ERROR e:" + localException.getMessage());
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("[WSVideoPluginInstall.java][installPlugin] ERROR e:");
+      localStringBuilder2.append(localException.getMessage());
+      WSLog.d("WS_VIDEO_WSVideoPluginInstall", localStringBuilder2.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall.2
  * JD-Core Version:    0.7.0.1
  */

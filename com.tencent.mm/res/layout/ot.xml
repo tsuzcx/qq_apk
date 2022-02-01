@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/ayh" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_gravity="center_vertical" android:layout_width="48.0dip" android:layout_height="48.0dip">
-        <CheckBox android:gravity="center" android:layout_gravity="center" android:id="@id/a2c" android:focusable="false" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" style="@style/l6" />
-        <View android:id="@id/axd" android:layout_width="48.0dip" android:layout_height="48.0dip" />
-        <ProgressBar android:layout_gravity="center" android:id="@id/a2o" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" style="@style/a0t" />
-        <ImageView android:layout_gravity="center" android:id="@id/aol" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/axl" />
-    </FrameLayout>
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/kd" android:padding="@dimen/lb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <FrameLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/sg" android:layout_width="45.0dip" android:layout_height="45.0dip" android:scaleType="centerCrop" />
-            <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/ats" android:visibility="gone" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_centerInParent="true" app:circleColor="@color/a3x" app:progressColor="#66000000" app:innerSize="65.0dip" app:style="h3" />
-        </FrameLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
-            <TextView android:id="@id/rc" android:maxLines="2" android:singleLine="false" android:lineSpacingExtra="3.0dip" style="@style/ln" />
-            <TextView android:id="@id/lv" android:layout_marginTop="3.0dip" android:maxLines="1" android:singleLine="false" android:lineSpacingExtra="3.0dip" style="@style/lm" />
-        </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/kq8" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/toast_ok" app:iconColor="@color/az" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/al6" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/kq9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/cd" android:layout_marginRight="@dimen/cd" android:maxLines="2" />
     </LinearLayout>
 </LinearLayout>

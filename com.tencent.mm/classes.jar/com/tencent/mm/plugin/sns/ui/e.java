@@ -11,9 +11,9 @@ import java.io.OutputStream;
 
 public final class e
 {
-  public static byte[] bk(byte[] paramArrayOfByte)
+  public static byte[] cx(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(38080);
+    AppMethodBeat.i(97701);
     Object localObject = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
     paramArrayOfByte = ((Bitmap)localObject).copy(Bitmap.Config.ARGB_8888, true);
     Canvas localCanvas = new Canvas(paramArrayOfByte);
@@ -22,7 +22,7 @@ public final class e
     localObject = new ByteArrayOutputStream();
     paramArrayOfByte.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
     paramArrayOfByte = ((ByteArrayOutputStream)localObject).toByteArray();
-    AppMethodBeat.o(38080);
+    AppMethodBeat.o(97701);
     return paramArrayOfByte;
   }
 }

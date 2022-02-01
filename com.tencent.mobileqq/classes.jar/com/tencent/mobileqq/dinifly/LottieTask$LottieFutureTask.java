@@ -22,16 +22,8 @@ class LottieTask$LottieFutureTask
       LottieTask.access$300(this.this$0, (LottieResult)get());
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      LottieTask.access$300(this.this$0, new LottieResult(localInterruptedException));
-      return;
-    }
-    catch (ExecutionException localExecutionException)
-    {
-      label24:
-      break label24;
-    }
+    catch (ExecutionException localExecutionException) {}catch (InterruptedException localInterruptedException) {}
+    LottieTask.access$300(this.this$0, new LottieResult(localInterruptedException));
   }
 }
 

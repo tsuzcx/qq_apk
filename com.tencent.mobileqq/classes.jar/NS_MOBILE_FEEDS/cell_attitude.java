@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class cell_attitude
   extends JceStruct
 {
-  public int num;
+  public int num = 0;
   
   public cell_attitude() {}
   
@@ -28,7 +28,7 @@ public final class cell_attitude
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_attitude
  * JD-Core Version:    0.7.0.1
  */

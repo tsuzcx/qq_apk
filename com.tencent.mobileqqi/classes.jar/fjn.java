@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
-import java.util.TimerTask;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class fjn
-  extends TimerTask
 {
-  private fjn(OnLinePushMessageProcessor paramOnLinePushMessageProcessor) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public void run()
+  public fjn(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.cancel();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
 }
 

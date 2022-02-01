@@ -14,31 +14,29 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcpf;
-import bcqg;
-import bcqh;
-import bcqi;
-import bdbb;
-import bdbc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.avatar.api.IQQAvatarService;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.troop.robot.TroopRobotInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class AddedRobotView
   extends LinearLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new bcqh(this);
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcqi jdField_a_of_type_Bcqi;
-  private bdbb jdField_a_of_type_Bdbb;
-  private bdbc jdField_a_of_type_Bdbc = new bcqg(this);
-  private String jdField_a_of_type_JavaLangString;
+  private Context a;
   private TextView b;
+  private TextView c;
+  private RecyclerView d;
+  private AddedRobotView.RobotListAdapter e;
+  private GridLayoutManager f;
+  private IFaceDecoder g;
+  private RelativeLayout h;
+  private String i;
+  private DecodeTaskCompletionListener j = new AddedRobotView.1(this);
+  private RecyclerView.OnScrollListener k = new AddedRobotView.2(this);
   
   public AddedRobotView(Context paramContext)
   {
@@ -60,94 +58,103 @@ public class AddedRobotView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     setOrientation(1);
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    setBackgroundResource(2130849827);
-    paramContext = paramContext.inflate(2131561356, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131369341));
-    this.b = ((TextView)paramContext.findViewById(2131375782));
+    paramContext = LayoutInflater.from(this.a);
+    setBackgroundResource(2130852616);
+    paramContext = paramContext.inflate(2131627892, null);
+    this.b = ((TextView)paramContext.findViewById(2131437066));
+    this.c = ((TextView)paramContext.findViewById(2131444784));
     addView(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, 5);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
+    this.d = new RecyclerView(this.a);
+    this.f = new GridLayoutManager(this.a, 5);
+    this.d.setLayoutManager(this.f);
     paramContext = new LinearLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutParams(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-    addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    paramContext = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    paramContext.setText(getResources().getString(2131694809));
+    this.d.setLayoutParams(paramContext);
+    this.d.setOverScrollMode(2);
+    addView(this.d);
+    paramContext = new TextView(this.a);
+    paramContext.setText(getResources().getString(2131892144));
     paramContext.setTextSize(2, 14.0F);
-    paramContext.setTextColor(getResources().getColor(2131166977));
-    paramContext.setContentDescription(getResources().getString(2131694809));
+    paramContext.setTextColor(getResources().getColor(2131168118));
+    paramContext.setContentDescription(getResources().getString(2131892144));
     paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130849827);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298678));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramContext);
-    addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    paramContext = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    paramContext.setBackgroundResource(2130838592);
-    paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298679)));
+    this.h = new RelativeLayout(this.a);
+    this.h.setBackgroundResource(2130852616);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131299657));
+    this.h.setLayoutParams(localLayoutParams);
+    this.h.setGravity(17);
+    this.h.addView(paramContext);
+    addView(this.h);
+    paramContext = new RelativeLayout(this.a);
+    paramContext.setBackgroundResource(2130838958);
+    paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131299658)));
     addView(paramContext);
-    this.jdField_a_of_type_Bdbb = new bdbb((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_Bdbb.a(this.jdField_a_of_type_Bdbc);
-    this.jdField_a_of_type_Bcqi = new bcqi(this, this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bcqi);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
+    paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    this.g = ((IQQAvatarService)paramContext.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramContext);
+    this.g.setDecodeTaskCompletionListener(this.j);
+    this.e = new AddedRobotView.RobotListAdapter(this, this.a);
+    this.d.setAdapter(this.e);
+    this.d.addOnScrollListener(this.k);
   }
   
   public void a()
   {
     QLog.i("AddedRobotView", 1, "onDestroy.");
-    if (this.jdField_a_of_type_Bdbb != null) {
-      this.jdField_a_of_type_Bdbb.d();
+    IFaceDecoder localIFaceDecoder = this.g;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
     }
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.a = null;
   }
   
-  public void setAddList(ArrayList<bcpf> paramArrayList, int paramInt, String paramString)
+  public void setAddList(ArrayList<TroopRobotInfo> paramArrayList, int paramInt, String paramString)
   {
-    if (this.b != null) {
-      if (paramArrayList == null) {
-        break label214;
-      }
-    }
-    label214:
-    for (int i = paramArrayList.size();; i = 0)
+    if (this.c != null)
     {
-      String str = i + "/" + paramInt;
-      this.b.setText(str);
-      this.b.setVisibility(0);
-      this.b.setContentDescription(str);
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getText(2131689772));
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getText(2131689772));
+      int m;
+      if (paramArrayList != null) {
+        m = paramArrayList.size();
+      } else {
+        m = 0;
       }
-      if ((paramArrayList == null) || (paramArrayList.size() == 0))
-      {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-        QLog.d("AddedRobotView", 2, "setAddList 0");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaLangString = paramString;
-        return;
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-        this.jdField_a_of_type_Bcqi.a(paramArrayList);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        QLog.d("AddedRobotView", 2, "setAddList " + paramArrayList.size());
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(paramInt);
+      localObject = ((StringBuilder)localObject).toString();
+      this.c.setText((CharSequence)localObject);
+      this.c.setVisibility(0);
+      this.c.setContentDescription((CharSequence)localObject);
     }
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      ((TextView)localObject).setText(this.a.getResources().getText(2131886311));
+      this.b.setContentDescription(this.a.getResources().getText(2131886311));
+    }
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
+    {
+      this.d.setVisibility(0);
+      this.e.a(paramArrayList);
+      this.h.setVisibility(8);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setAddList ");
+      ((StringBuilder)localObject).append(paramArrayList.size());
+      QLog.d("AddedRobotView", 2, ((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      this.h.setVisibility(0);
+      this.d.setVisibility(8);
+      QLog.d("AddedRobotView", 2, "setAddList 0");
+    }
+    this.i = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AddedRobotView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,30 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class den
-  extends FriendListObserver
+  implements Runnable
 {
   public den(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
-  protected void c(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  public void run()
   {
-    RecentLoginDevActivity.b(this.a);
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult success");
+      if ((RecentLoginDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
+        RecentLoginDevActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
       }
-      RecentLoginDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
-      if (QLog.isColorLevel())
+      if ((RecentLoginDevActivity.a(this.a) != null) && (!RecentLoginDevActivity.a(this.a).isShowing())) {
+        RecentLoginDevActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("Q.devlock.RecentLoginDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
+        localThrowable.printStackTrace();
       }
-      RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
-      return;
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label288;
-      }
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data is null");
-    }
-    for (;;)
-    {
-      QQToast.a(this.a.a(), 1, this.a.getString(2131562570), 0).b(this.a.d());
-      return;
-      label288:
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
-    }
-    RecentLoginDevActivity.b(this.a);
-    if (paramBoolean)
-    {
-      ReportController.b(this.a.b, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
-      if ((paramInt > -1) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
-      {
-        RecentLoginDevActivity.a(this.a).remove(paramInt);
-        RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
-      }
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131561930), 0).b(this.a.d());
-      return;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131561764), 0).b(this.a.d());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.d());
   }
 }
 

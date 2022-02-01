@@ -24,13 +24,11 @@ public final class active_photo
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof active_photo)) {}
-    do
-    {
+    if (!(paramObject instanceof active_photo)) {
       return false;
-      paramObject = (active_photo)paramObject;
-    } while ((!paramObject.albumid.equals(this.albumid)) || (!paramObject.photoid.equals(this.photoid)) || (!paramObject.title.equals(this.title)) || (!paramObject.desc.equals(this.desc)));
-    return true;
+    }
+    paramObject = (active_photo)paramObject;
+    return (paramObject.albumid.equals(this.albumid)) && (paramObject.photoid.equals(this.photoid)) && (paramObject.title.equals(this.title)) && (paramObject.desc.equals(this.desc));
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -51,7 +49,7 @@ public final class active_photo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.active_photo
  * JD-Core Version:    0.7.0.1
  */

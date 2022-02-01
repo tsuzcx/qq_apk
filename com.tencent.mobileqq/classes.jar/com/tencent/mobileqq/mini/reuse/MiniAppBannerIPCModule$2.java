@@ -16,12 +16,12 @@ final class MiniAppBannerIPCModule$2
     localBundle.putString("apkgName", this.val$apkgInfo.apkgName);
     localBundle.putString("iconUrl", this.val$apkgInfo.iconUrl);
     localBundle.putParcelable("appConfig", this.val$apkgInfo.appConfig);
-    QIPCClientHelper.getInstance().callServer(MiniAppBannerIPCModule.NAME, this.val$action, localBundle, null);
+    QIPCClientHelper.getInstance().callServer("MiniAppBannerIPCModule", this.val$action, localBundle, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppBannerIPCModule.2
  * JD-Core Version:    0.7.0.1
  */

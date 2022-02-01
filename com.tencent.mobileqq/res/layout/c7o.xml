@@ -4,6 +4,6 @@
     <com.tencent.mobileqq.widget.BounceScrollView android:layout_gravity="bottom" android:id="@id/lah" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="40.0dip">
         <com.tencent.mobileqq.colornote.list.ColorNoteListLayout android:id="@id/ldk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </com.tencent.mobileqq.widget.BounceScrollView>
-    <com.tencent.mobileqq.widget.AutoBgImageView android:layout_gravity="center|right|top" android:id="@id/a3u" android:layout_width="56.0dip" android:layout_height="48.0dip" android:src="@drawable/bfy" android:scaleType="center" android:contentDescription="@string/w_2" />
+    <com.tencent.mobileqq.widget.AutoBgImageView android:layout_gravity="center|right|top" android:id="@id/a3u" android:layout_width="56.0dip" android:layout_height="48.0dip" android:src="@drawable/bfy" android:scaleType="center" android:contentDescription="@string/wkn" />
     <ViewStub android:layout_gravity="center" android:id="@id/a3t" android:layout="@layout/lp" android:inflatedId="@id/a3t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

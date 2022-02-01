@@ -2,7 +2,6 @@ package com.tencent.mobileqq.profile.view;
 
 import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
-import alpk;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -20,22 +19,23 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import awor;
-import awqt;
-import awra;
-import awwf;
-import awwl;
-import awwm;
-import bdeu;
-import bdin;
-import bhtb;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import android.widget.ListAdapter;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profilecard.bussiness.photowall.handler.PhotoWallHandler;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.ITemplateUtils;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import com.tencent.widget.GridView;
 import cooperation.qzone.model.CoverCacheData;
 import java.util.ArrayList;
@@ -47,321 +47,342 @@ public class VipPhotoViewForSimple
   extends LinearLayout
   implements Handler.Callback
 {
-  public static float b;
-  public float a;
-  public int a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new awwl(this);
-  View jdField_a_of_type_AndroidViewView;
-  public HorizontalScrollView a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private awqt jdField_a_of_type_Awqt;
-  public QQAppInterface a;
-  public GridView a;
-  CoverCacheData jdField_a_of_type_CooperationQzoneModelCoverCacheData;
-  private String jdField_a_of_type_JavaLangString;
-  public List<awwf> a;
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  private View b;
-  public int c = -1;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
+  public static float o = 1.43F;
+  private View.OnClickListener A = new VipPhotoViewForSimple.2(this);
+  QQAppInterface a;
+  View b;
+  public List<QzonePhotoView.PhotoInfo> c;
+  CoverCacheData d;
+  public int e;
+  public int f;
   public int g = -1;
   public int h = -1;
   public int i = -1;
-  private int j;
-  
-  static
-  {
-    jdField_b_of_type_Float = 1.43F;
-  }
+  public int j = -1;
+  public int k = -1;
+  public int l = -1;
+  public int m = -1;
+  public float n = 1.5F;
+  public GridView p;
+  public HorizontalScrollView q;
+  private Activity r;
+  private ProfileCardInfo s;
+  private Handler t;
+  private String u;
+  private int v;
+  private boolean w = false;
+  private ImageView x;
+  private View y;
+  private ITemplateUtils z;
   
   public VipPhotoViewForSimple(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = 1.5F;
   }
   
   public VipPhotoViewForSimple(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = 1.5F;
   }
   
-  private List<awwf> a(String paramString, List<Map<Integer, String>> paramList)
+  private List<QzonePhotoView.PhotoInfo> a(String paramString, List<Map<Integer, String>> paramList)
   {
-    int m = 0;
     LinkedList localLinkedList = new LinkedList();
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("update").append("|type = ").append(paramString).append("|vecUrls = ").append(paramList);
-      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("update");
+      ((StringBuilder)localObject).append("|type = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("|vecUrls = ");
+      ((StringBuilder)localObject).append(paramList);
+      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_CooperationQzoneModelCoverCacheData == null) {
-      this.jdField_a_of_type_CooperationQzoneModelCoverCacheData = new CoverCacheData();
+    if (this.d == null) {
+      this.d = new CoverCacheData();
     }
-    this.jdField_a_of_type_CooperationQzoneModelCoverCacheData.b = paramString;
-    this.jdField_a_of_type_CooperationQzoneModelCoverCacheData.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramList);
-    this.jdField_a_of_type_CooperationQzoneModelCoverCacheData.jdField_a_of_type_Long = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-    int k;
+    Object localObject = this.d;
+    ((CoverCacheData)localObject).type = paramString;
+    ((CoverCacheData)localObject).photoWall = ((ArrayList)paramList);
+    ((CoverCacheData)localObject).uin = Long.parseLong(this.u);
+    int i2 = 0;
+    int i1;
     if (paramList != null) {
-      k = paramList.size();
+      i1 = paramList.size();
+    } else {
+      i1 = 0;
     }
-    while ((m < k) && (m < 16))
+    while ((i2 < i1) && (i2 < 16))
     {
-      paramString = (Map)paramList.get(m);
+      paramString = (Map)paramList.get(i2);
       if (paramString != null)
       {
-        paramString = new awwf(m, 100, paramString);
-        paramString.c = localLinkedList.size();
-        paramString.jdField_b_of_type_Int = m;
+        paramString = new QzonePhotoView.PhotoInfo(i2, 100, paramString);
+        paramString.e = localLinkedList.size();
+        paramString.d = i2;
         localLinkedList.add(paramString);
       }
-      m += 1;
-      continue;
-      k = 0;
+      i2 += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "updateCoverData photoInfo size=" + localLinkedList.size());
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("updateCoverData photoInfo size=");
+      paramString.append(localLinkedList.size());
+      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, paramString.toString());
     }
     return localLinkedList;
   }
   
   private void a(boolean paramBoolean)
   {
-    String str = "http://ti.qq.com/photowall/index.html?_wv=1027";
-    if (!paramBoolean) {
-      str = "http://ti.qq.com/photowall/index.html?_wv=1027" + "&uin=" + this.jdField_a_of_type_JavaLangString;
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("url", str);
+    Object localObject = "https://ti.qq.com/photowall/index.html?_wv=1027";
     if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("https://ti.qq.com/photowall/index.html?_wv=1027");
+      ((StringBuilder)localObject).append("&uin=");
+      ((StringBuilder)localObject).append(this.u);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    Intent localIntent = new Intent(this.r, QQBrowserActivity.class);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("url", (String)localObject);
+    if (!paramBoolean)
+    {
+      this.r.startActivity(localIntent);
       return;
     }
-    this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1022);
-  }
-  
-  public CoverCacheData a()
-  {
-    return this.jdField_a_of_type_CooperationQzoneModelCoverCacheData;
+    this.r.startActivityForResult(localIntent, 100);
   }
   
   @TargetApi(9)
-  public void a(BaseActivity paramBaseActivity, awqt paramawqt)
+  public void a(QBaseActivity paramQBaseActivity, ProfileCardInfo paramProfileCardInfo)
   {
     if (QLog.isColorLevel()) {
       QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "initView");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseActivity;
-    this.jdField_a_of_type_Awqt = paramawqt;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_JavaLangString = paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2131561833, this, true);
-    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371908));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371909));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372328));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374165);
-    paramBaseActivity = getResources().getDisplayMetrics();
-    this.jdField_a_of_type_Int = paramBaseActivity.widthPixels;
-    this.jdField_b_of_type_Int = paramBaseActivity.heightPixels;
-    int k = (int)(this.jdField_a_of_type_Int / this.jdField_a_of_type_Float);
-    this.c = k;
-    this.f = k;
-    this.d = ((int)(this.f / jdField_b_of_type_Float));
-    this.h = getResources().getDimensionPixelSize(2131298375);
-    this.i = getResources().getDimensionPixelSize(2131298374);
-    this.g = (this.d + this.h + this.i);
-    this.e = getResources().getDimensionPixelSize(2131298376);
-    if (paramawqt.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (bhtb.c()) {
-        this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setOverScrollMode(2);
-      }
-      paramBaseActivity = this.jdField_a_of_type_JavaLangString;
-      ThreadManager.post(new VipPhotoViewForSimple.1(this), 8, null, true);
-      paramBaseActivity = Message.obtain();
-      paramBaseActivity.what = 100;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBaseActivity);
-      return;
+    this.a = ((QQAppInterface)paramQBaseActivity.getAppRuntime());
+    this.r = paramQBaseActivity;
+    this.s = paramProfileCardInfo;
+    this.t = new Handler(this);
+    this.u = paramProfileCardInfo.allInOne.uin;
+    this.b = LayoutInflater.from(this.a.getApplication()).inflate(2131628453, this, true);
+    this.p = ((GridView)this.b.findViewById(2131440206));
+    this.q = ((HorizontalScrollView)this.b.findViewById(2131440207));
+    this.x = ((ImageView)this.b.findViewById(2131440723));
+    this.y = this.b.findViewById(2131443117);
+    paramQBaseActivity = getResources().getDisplayMetrics();
+    this.e = paramQBaseActivity.widthPixels;
+    this.f = paramQBaseActivity.heightPixels;
+    int i1 = (int)(this.e / this.n);
+    this.g = i1;
+    this.j = i1;
+    this.h = ((int)(this.j / o));
+    this.l = getResources().getDimensionPixelSize(2131299339);
+    this.m = getResources().getDimensionPixelSize(2131299338);
+    this.k = (this.h + this.l + this.m);
+    this.i = getResources().getDimensionPixelSize(2131299340);
+    boolean bool;
+    if (paramProfileCardInfo.allInOne.pa == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.w = bool;
+    if (VersionUtils.c()) {
+      this.q.setOverScrollMode(2);
+    }
+    paramQBaseActivity = this.u;
+    ThreadManager.post(new VipPhotoViewForSimple.1(this), 8, null, true);
+    paramQBaseActivity = Message.obtain();
+    paramQBaseActivity.what = 100;
+    this.t.sendMessage(paramQBaseActivity);
   }
   
-  public void a(CoverCacheData paramCoverCacheData)
+  public void a(List<QzonePhotoView.PhotoInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "updateCoverCacheData data = " + paramCoverCacheData);
-    }
-    if (paramCoverCacheData != null) {
-      a(a(paramCoverCacheData.b, paramCoverCacheData.jdField_a_of_type_JavaUtilArrayList));
-    }
-    if ((this.jdField_a_of_type_CooperationQzoneModelCoverCacheData != null) && (bdeu.a("PhotoWallCover", this.jdField_a_of_type_CooperationQzoneModelCoverCacheData.b)))
+    Object localObject;
+    if ((QLog.isColorLevel()) && (paramList != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "need get req cover info");
-      }
-      paramCoverCacheData = Message.obtain();
-      paramCoverCacheData.what = 100;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramCoverCacheData);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updatePhotoView photoInfo size=");
+      ((StringBuilder)localObject).append(paramList.size());
+      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, ((StringBuilder)localObject).toString());
     }
-  }
-  
-  public void a(List<awwf> paramList)
-  {
-    if ((QLog.isColorLevel()) && (paramList != null)) {
-      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "updatePhotoView photoInfo size=" + paramList.size());
+    this.c = paramList;
+    int i1;
+    if (paramList != null) {
+      i1 = paramList.size();
+    } else {
+      i1 = 0;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramList != null) {}
-    for (int k = paramList.size(); k > 0; k = 0)
+    if (i1 > 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetGridView.setPadding(0, this.h, 0, this.i);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setColumnWidth(this.c);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setStretchMode(0);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setHorizontalSpacing(this.e);
-      awwm localawwm = new awwm(this, this.jdField_a_of_type_AndroidAppActivity);
-      localawwm.a(paramList);
-      k = paramList.size();
-      paramList = new LinearLayout.LayoutParams((this.c + this.e) * k, this.g);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setLayoutParams(paramList);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(k);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(localawwm);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(0);
+      this.p.setPadding(0, this.l, 0, this.m);
+      this.p.setColumnWidth(this.g);
+      this.p.setStretchMode(0);
+      this.p.setHorizontalSpacing(this.i);
+      localObject = new VipPhotoViewForSimple.PhotoAdapter(this, this.r);
+      ((VipPhotoViewForSimple.PhotoAdapter)localObject).a(paramList);
+      i1 = paramList.size();
+      paramList = new LinearLayout.LayoutParams((this.g + this.i) * i1, this.k);
+      this.p.setLayoutParams(paramList);
+      this.p.setNumColumns(i1);
+      this.p.setAdapter((ListAdapter)localObject);
+      this.x.setVisibility(8);
+      this.y.setVisibility(8);
+      this.p.setVisibility(0);
       setVisibility(0);
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.w)
     {
-      awra.a(this.jdField_a_of_type_AndroidWidgetImageView, "src", this.jdField_a_of_type_Awqt.jdField_a_of_type_Awra, "simpleAddSrc");
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(new awor(25, null));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(8);
+      this.z.updateViewAttr(this.x, "src", this.s.currentTemplate, "simpleAddSrc");
+      this.x.setTag(new DataTag(25, null));
+      this.x.setOnClickListener(this.A);
+      this.x.setVisibility(0);
+      this.y.setVisibility(0);
+      this.p.setVisibility(8);
       setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.x.setVisibility(8);
+    this.y.setVisibility(8);
     setVisibility(8);
   }
   
   public void a(boolean paramBoolean, String paramString, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "onGetQZoneCover|isSuc = " + paramBoolean + ",uin=" + paramString + ",mUin=" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (!bdeu.a(paramString, this.jdField_a_of_type_JavaLangString)) {}
-    label193:
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetQZoneCover|isSuc = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(",uin=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",mUin=");
+      ((StringBuilder)localObject).append(this.u);
+      QLog.i("ProfileCard.VipPhotoViewForSimple", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!Utils.a(paramString, this.u)) {
       return;
-      if ((paramBoolean) && (parammobile_sub_get_photo_wall_rsp != null))
+    }
+    if ((paramBoolean) && (parammobile_sub_get_photo_wall_rsp != null))
+    {
+      paramString = new ArrayList();
+      boolean bool = false;
+      int i1 = 0;
+      while (i1 < parammobile_sub_get_photo_wall_rsp.vecUrls.size())
       {
-        paramString = new ArrayList();
-        int k = 0;
-        while (k < parammobile_sub_get_photo_wall_rsp.vecUrls.size())
-        {
-          paramString.add(((PhotoWall)parammobile_sub_get_photo_wall_rsp.vecUrls.get(k)).photoUrls);
-          k += 1;
-        }
-        List localList = a("", paramString);
-        k = 0;
-        parammobile_sub_get_photo_wall_rsp = null;
-        paramString = null;
-        for (;;)
-        {
-          paramBoolean = bool;
-          if (k < 16)
-          {
-            if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= k)) {
-              break label287;
-            }
-            paramString = (awwf)this.jdField_a_of_type_JavaUtilList.get(k);
-            if ((localList == null) || (localList.size() <= k)) {
-              break label292;
-            }
-          }
-          for (parammobile_sub_get_photo_wall_rsp = (awwf)localList.get(k);; parammobile_sub_get_photo_wall_rsp = null)
-          {
-            if (bdeu.a(paramString, parammobile_sub_get_photo_wall_rsp)) {
-              break label297;
-            }
-            paramBoolean = true;
-            if (QLog.isColorLevel()) {
-              QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "onGetQZoneCover  isNewPhoto=" + String.valueOf(paramBoolean));
-            }
-            if ((!paramBoolean) && ((paramString != null) || (parammobile_sub_get_photo_wall_rsp != null))) {
-              break;
-            }
-            a(localList);
-            return;
-            paramString = null;
-            break label193;
-          }
-          k += 1;
-        }
+        paramString.add(((PhotoWall)parammobile_sub_get_photo_wall_rsp.vecUrls.get(i1)).photoUrls);
+        i1 += 1;
       }
-    } while ((!bdin.a(BaseApplication.getContext())) || (this.j >= 3));
-    label287:
-    label292:
-    label297:
-    paramString = Message.obtain();
-    paramString.what = 100;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
+      localObject = a("", paramString);
+      paramString = null;
+      parammobile_sub_get_photo_wall_rsp = paramString;
+      i1 = 0;
+      for (;;)
+      {
+        paramBoolean = bool;
+        if (i1 >= 16) {
+          break;
+        }
+        paramString = this.c;
+        if ((paramString != null) && (paramString.size() > i1)) {
+          paramString = (QzonePhotoView.PhotoInfo)this.c.get(i1);
+        } else {
+          paramString = null;
+        }
+        if ((localObject != null) && (((List)localObject).size() > i1)) {
+          parammobile_sub_get_photo_wall_rsp = (QzonePhotoView.PhotoInfo)((List)localObject).get(i1);
+        } else {
+          parammobile_sub_get_photo_wall_rsp = null;
+        }
+        if (!Utils.a(paramString, parammobile_sub_get_photo_wall_rsp))
+        {
+          paramBoolean = true;
+          break;
+        }
+        i1 += 1;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onGetQZoneCover  isNewPhoto=");
+        localStringBuilder.append(String.valueOf(paramBoolean));
+        QLog.i("ProfileCard.VipPhotoViewForSimple", 2, localStringBuilder.toString());
+      }
+      if ((paramBoolean) || ((paramString == null) && (parammobile_sub_get_photo_wall_rsp == null))) {
+        a((List)localObject);
+      }
+    }
+    else if ((NetworkUtil.isWifiEnabled(BaseApplication.getContext())) && (this.v < 3))
+    {
+      paramString = Message.obtain();
+      paramString.what = 100;
+      this.t.sendMessage(paramString);
+    }
+  }
+  
+  public CoverCacheData getCoverCacheData()
+  {
+    return this.d;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i1 = paramMessage.what;
+    if (i1 != 100)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileCard.VipPhotoViewForSimple", 2, "handleMessage MSG_LOAD_PHOTO_WALL");
+      if (i1 != 200)
+      {
+        if (i1 == 201)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ProfileCard.VipPhotoViewForSimple", 2, "handleMessage MSG_LOAD_PHOTO_WALL");
+          }
+          ((PhotoWallHandler)this.a.getBusinessHandler(PhotoWallHandler.class.getName())).getQzonePhotoWall(this.u, "");
+          this.t.removeMessages(201);
+        }
       }
-      ((alpk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_JavaLangString, "");
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(201);
-      continue;
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "handleMessage() MSG_UPDATE_PHOTO_VIEW");
+        }
+        if ((paramMessage.obj instanceof LinkedList)) {
+          a((List)paramMessage.obj);
+        }
+        this.t.sendEmptyMessage(201);
+      }
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
         QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "handleMessage() MSG_REQ_ALBUM");
       }
-      paramMessage = (alpk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
+      paramMessage = (CardHandler)this.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
       if (paramMessage != null)
       {
-        paramMessage.a(this.jdField_a_of_type_JavaLangString, 2);
-        this.j += 1;
+        paramMessage.b(this.u, 2);
+        this.v += 1;
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.i("ProfileCard.VipPhotoViewForSimple", 2, "handleMessage() MSG_UPDATE_PHOTO_VIEW");
-      }
-      if ((paramMessage.obj instanceof LinkedList)) {
-        a((List)paramMessage.obj);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(201);
+      this.t.removeMessages(100);
     }
+    return false;
+  }
+  
+  public void setTemplateUtils(ITemplateUtils paramITemplateUtils)
+  {
+    this.z = paramITemplateUtils;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipPhotoViewForSimple
  * JD-Core Version:    0.7.0.1
  */

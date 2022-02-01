@@ -22,13 +22,14 @@ public final class qqstory_struct$VidRateInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "vid", "self_rate_result", "total_rate_count", "total_rate_score", "video_rate_users" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null }, VidRateInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "vid", "self_rate_result", "total_rate_count", "total_rate_score", "video_rate_users" }, new Object[] { localByteStringMicro, localInteger, localInteger, Long.valueOf(0L), null }, VidRateInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo
  * JD-Core Version:    0.7.0.1
  */

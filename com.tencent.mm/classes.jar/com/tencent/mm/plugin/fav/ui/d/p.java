@@ -1,76 +1,73 @@
 package com.tencent.mm.plugin.fav.ui.d;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.y;
-import com.tencent.mm.plugin.fav.ui.j;
-import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acs;
-import java.util.LinkedList;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.z;
+import com.tencent.mm.plugin.fav.ui.FavoriteImageServer;
+import com.tencent.mm.plugin.fav.ui.q.e;
+import com.tencent.mm.plugin.fav.ui.q.f;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.arx;
 
 public final class p
-  extends a
+  extends b
 {
-  final int mDa;
-  
-  public p(l paraml)
+  public p(FavoriteImageServer paramFavoriteImageServer)
   {
-    super(paraml);
-    AppMethodBeat.i(74658);
-    this.mDa = com.tencent.mm.cb.a.ao(paraml.context, 2131427653);
-    AppMethodBeat.o(74658);
+    super(paramFavoriteImageServer);
   }
   
-  public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
+  public final View a(View paramView, ViewGroup paramViewGroup, g paramg)
   {
-    AppMethodBeat.i(74659);
-    Object localObject = paramViewGroup.getContext();
+    AppMethodBeat.i(107489);
+    paramViewGroup = paramViewGroup.getContext();
+    View localView;
     if (paramView == null)
     {
-      paramViewGroup = new p.a();
-      paramView = a(View.inflate((Context)localObject, 2130969546, null), paramViewGroup, paramg);
-      paramViewGroup.mDc = ((ImageView)paramView.findViewById(2131824033));
-      paramViewGroup.mDI = ((TextView)paramView.findViewById(2131824041));
-      paramViewGroup.mDI.setVisibility(0);
-      LinkedList localLinkedList = paramg.field_favProto.wVc;
-      if ((localLinkedList.size() <= 0) || (((aca)localLinkedList.getFirst()).duration <= 0)) {
-        break label180;
-      }
-      paramViewGroup.mDI.setText(j.C((Context)localObject, ((aca)localLinkedList.getFirst()).duration));
+      paramView = new a();
+      localView = a(View.inflate(paramViewGroup, q.f.fav_listitem_text, null), paramView, paramg);
+      paramView.lNZ = ((TextView)localView.findViewById(q.e.fav_text));
+      paramViewGroup = paramView;
     }
     for (;;)
     {
       a(paramViewGroup, paramg);
-      localObject = b.c(paramg);
-      this.mvC.a(paramViewGroup.mDc, (aca)localObject, paramg, 2131230826, this.mDa, this.mDa);
-      AppMethodBeat.o(74659);
-      return paramView;
-      paramViewGroup = (p.a)paramView.getTag();
-      break;
-      label180:
-      paramViewGroup.mDI.setText("");
+      if ((paramg.field_favProto.desc != null) && (paramg.field_favProto.desc.length() > 0)) {
+        break;
+      }
+      paramViewGroup.lNZ.setText("");
+      AppMethodBeat.o(107489);
+      return localView;
+      paramViewGroup = (a)paramView.getTag();
+      localView = paramView;
     }
+    paramViewGroup.lNZ.setText(com.tencent.mm.pluginsdk.ui.span.p.b(paramViewGroup.lNZ.getContext(), paramg.field_favProto.desc, paramViewGroup.lNZ.getTextSize()));
+    AppMethodBeat.o(107489);
+    return localView;
   }
   
-  public final void a(View paramView, acs paramacs)
+  public final void a(View paramView, arx paramarx)
   {
-    AppMethodBeat.i(74660);
-    p.a locala = (p.a)paramView.getTag();
+    AppMethodBeat.i(107490);
+    a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
-    AppMethodBeat.o(74660);
+    ((z)h.ax(z.class)).a(paramView, locala.AdF, paramarx);
+    AppMethodBeat.o(107490);
+  }
+  
+  public static final class a
+    extends b.b
+  {
+    TextView lNZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.p
  * JD-Core Version:    0.7.0.1
  */

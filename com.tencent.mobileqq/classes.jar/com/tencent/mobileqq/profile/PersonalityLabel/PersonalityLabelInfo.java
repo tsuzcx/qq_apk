@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import awpz;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -24,7 +23,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new awpz();
+  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new PersonalityLabelInfo.1();
   public static final String TAG = "PersonalityLabelInfo";
   int addTime = 0;
   public int bgColor = -16777216;
@@ -32,15 +31,15 @@ public class PersonalityLabelInfo
   int category = 0;
   String coverUrl = "";
   public int fgColor = -1;
-  public long id;
-  public long modTime;
+  public long id = 0L;
+  long modTime;
   public List<PersonalityLabelPhoto> personalityLabelPhotos;
-  public int photoCount = 0;
-  public long praiseCount = 0L;
-  public int praiseFlag;
+  int photoCount = 0;
+  long praiseCount = 0L;
+  int praiseFlag;
   public String text = "";
   long unreadPraiseCount = 0L;
-  public ArrayList<PersonalityLabelZan> zanUins;
+  ArrayList<PersonalityLabelZan> zanUins;
   
   public PersonalityLabelInfo()
   {
@@ -61,7 +60,7 @@ public class PersonalityLabelInfo
     this.zanUins = new ArrayList();
   }
   
-  public PersonalityLabelInfo(Parcel paramParcel)
+  protected PersonalityLabelInfo(Parcel paramParcel)
   {
     paramParcel.readInt();
     this.id = paramParcel.readLong();
@@ -85,16 +84,18 @@ public class PersonalityLabelInfo
   {
     try
     {
-      i = Color.parseColor(paramString);
+      int i = Color.parseColor(paramString);
       return i;
     }
     catch (Exception localException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        int i = paramInt;
-      } while (!QLog.isColorLevel());
-      QLog.i("PersonalityLabelInfo", 2, "getColor exception from" + paramString, localException);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getColor exception from");
+        localStringBuilder.append(paramString);
+        QLog.i("PersonalityLabelInfo", 2, localStringBuilder.toString(), localException);
+      }
     }
     return paramInt;
   }
@@ -102,101 +103,91 @@ public class PersonalityLabelInfo
   @NonNull
   public static PersonalityLabelInfo convertFromPb(PersonalityTagComm.LabelInfo paramLabelInfo)
   {
-    long l2 = 0L;
-    int j = 0;
     PersonalityLabelInfo localPersonalityLabelInfo = new PersonalityLabelInfo();
-    long l1;
-    label56:
-    label80:
-    Object localObject;
-    if (paramLabelInfo.uint64_id.has())
-    {
+    boolean bool = paramLabelInfo.uint64_id.has();
+    long l2 = 0L;
+    if (bool) {
       l1 = paramLabelInfo.uint64_id.get();
-      localPersonalityLabelInfo.id = l1;
-      if (!paramLabelInfo.uint32_add_time.has()) {
-        break label424;
-      }
-      i = paramLabelInfo.uint32_add_time.get();
-      localPersonalityLabelInfo.addTime = i;
-      if (!paramLabelInfo.uint32_category.has()) {
-        break label429;
-      }
-      i = paramLabelInfo.uint32_category.get();
-      localPersonalityLabelInfo.category = i;
-      if (!paramLabelInfo.str_text.has()) {
-        break label434;
-      }
-      localObject = paramLabelInfo.str_text.get();
-      label105:
-      localPersonalityLabelInfo.text = ((String)localObject);
-      if (!paramLabelInfo.str_fg_color.has()) {
-        break label441;
-      }
-      i = a(paramLabelInfo.str_fg_color.get(), -1);
-      label134:
-      localPersonalityLabelInfo.fgColor = i;
-      if (!paramLabelInfo.str_bg_color.has()) {
-        break label446;
-      }
-      i = a(paramLabelInfo.str_bg_color.get(), -16777216);
-      label163:
-      localPersonalityLabelInfo.bgColor = i;
-      if (!paramLabelInfo.str_cover_photo_url.has()) {
-        break label452;
-      }
-      localObject = paramLabelInfo.str_cover_photo_url.get();
-      label188:
-      localPersonalityLabelInfo.coverUrl = ((String)localObject);
-      if (!paramLabelInfo.uint32_praise_count.has()) {
-        break label459;
-      }
-      l1 = paramLabelInfo.uint32_praise_count.get();
-      label214:
-      localPersonalityLabelInfo.praiseCount = l1;
-      if (!paramLabelInfo.uint32_unread_praise.has()) {
-        break label464;
-      }
-      l1 = paramLabelInfo.uint32_unread_praise.get();
-      label239:
-      localPersonalityLabelInfo.unreadPraiseCount = l1;
-      if (!paramLabelInfo.uint32_photo_count.has()) {
-        break label469;
-      }
-      i = paramLabelInfo.uint32_photo_count.get();
-      label263:
-      localPersonalityLabelInfo.photoCount = i;
-      if (!paramLabelInfo.bytes_photo_cookie.has()) {
-        break label474;
-      }
-      localObject = paramLabelInfo.bytes_photo_cookie.get().toStringUtf8();
-      label291:
-      localPersonalityLabelInfo.bytesPhotoCookie = ((String)localObject);
-      l1 = l2;
-      if (paramLabelInfo.uint32_mod_time.has()) {
-        l1 = paramLabelInfo.uint32_mod_time.get();
-      }
-      localPersonalityLabelInfo.modTime = l1;
-      if (!paramLabelInfo.uint32_praise_flag.has()) {
-        break label480;
-      }
+    } else {
+      l1 = 0L;
     }
-    label424:
-    label429:
-    label434:
-    label441:
-    label446:
-    label452:
-    label459:
-    label464:
-    label469:
-    label474:
-    label480:
-    for (int i = paramLabelInfo.uint32_praise_flag.get();; i = 0)
+    localPersonalityLabelInfo.id = l1;
+    bool = paramLabelInfo.uint32_add_time.has();
+    int j = 0;
+    if (bool) {
+      i = paramLabelInfo.uint32_add_time.get();
+    } else {
+      i = 0;
+    }
+    localPersonalityLabelInfo.addTime = i;
+    if (paramLabelInfo.uint32_category.has()) {
+      i = paramLabelInfo.uint32_category.get();
+    } else {
+      i = 0;
+    }
+    localPersonalityLabelInfo.category = i;
+    bool = paramLabelInfo.str_text.has();
+    String str = "";
+    if (bool) {
+      localObject = paramLabelInfo.str_text.get();
+    } else {
+      localObject = "";
+    }
+    localPersonalityLabelInfo.text = ((String)localObject);
+    bool = paramLabelInfo.str_fg_color.has();
+    int i = -1;
+    if (bool) {
+      i = a(paramLabelInfo.str_fg_color.get(), -1);
+    }
+    localPersonalityLabelInfo.fgColor = i;
+    bool = paramLabelInfo.str_bg_color.has();
+    i = -16777216;
+    if (bool) {
+      i = a(paramLabelInfo.str_bg_color.get(), -16777216);
+    }
+    localPersonalityLabelInfo.bgColor = i;
+    Object localObject = str;
+    if (paramLabelInfo.str_cover_photo_url.has()) {
+      localObject = paramLabelInfo.str_cover_photo_url.get();
+    }
+    localPersonalityLabelInfo.coverUrl = ((String)localObject);
+    if (paramLabelInfo.uint32_praise_count.has()) {
+      l1 = paramLabelInfo.uint32_praise_count.get();
+    } else {
+      l1 = 0L;
+    }
+    localPersonalityLabelInfo.praiseCount = l1;
+    if (paramLabelInfo.uint32_unread_praise.has()) {
+      l1 = paramLabelInfo.uint32_unread_praise.get();
+    } else {
+      l1 = 0L;
+    }
+    localPersonalityLabelInfo.unreadPraiseCount = l1;
+    if (paramLabelInfo.uint32_photo_count.has()) {
+      i = paramLabelInfo.uint32_photo_count.get();
+    } else {
+      i = 0;
+    }
+    localPersonalityLabelInfo.photoCount = i;
+    if (paramLabelInfo.bytes_photo_cookie.has()) {
+      localObject = paramLabelInfo.bytes_photo_cookie.get().toStringUtf8();
+    } else {
+      localObject = null;
+    }
+    localPersonalityLabelInfo.bytesPhotoCookie = ((String)localObject);
+    long l1 = l2;
+    if (paramLabelInfo.uint32_mod_time.has()) {
+      l1 = paramLabelInfo.uint32_mod_time.get();
+    }
+    localPersonalityLabelInfo.modTime = l1;
+    if (paramLabelInfo.uint32_praise_flag.has()) {
+      i = paramLabelInfo.uint32_praise_flag.get();
+    } else {
+      i = 0;
+    }
+    localPersonalityLabelInfo.praiseFlag = i;
+    if ((paramLabelInfo.rpt_msg_photo.has()) && (paramLabelInfo.rpt_msg_photo.size() > 0))
     {
-      localPersonalityLabelInfo.praiseFlag = i;
-      if ((!paramLabelInfo.rpt_msg_photo.has()) || (paramLabelInfo.rpt_msg_photo.size() <= 0)) {
-        break label485;
-      }
       i = 0;
       while (i < paramLabelInfo.rpt_msg_photo.size())
       {
@@ -204,30 +195,7 @@ public class PersonalityLabelInfo
         localPersonalityLabelInfo.personalityLabelPhotos.add(localObject);
         i += 1;
       }
-      l1 = 0L;
-      break;
-      i = 0;
-      break label56;
-      i = 0;
-      break label80;
-      localObject = "";
-      break label105;
-      i = -1;
-      break label134;
-      i = -16777216;
-      break label163;
-      localObject = "";
-      break label188;
-      l1 = 0L;
-      break label214;
-      l1 = 0L;
-      break label239;
-      i = 0;
-      break label263;
-      localObject = null;
-      break label291;
     }
-    label485:
     if ((paramLabelInfo.rpt_last_praise_uins_info.has()) && (paramLabelInfo.rpt_last_praise_uins_info.size() > 0))
     {
       i = j;
@@ -248,13 +216,14 @@ public class PersonalityLabelInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (PersonalityLabelInfo)paramObject;
-    } while ((!TextUtils.equals(paramObject.text, this.text)) || (paramObject.fgColor != this.fgColor) || (paramObject.bgColor != this.bgColor) || (paramObject.modTime != this.modTime));
-    return true;
+    }
+    paramObject = (PersonalityLabelInfo)paramObject;
+    if ((TextUtils.equals(paramObject.text, this.text)) && (paramObject.fgColor == this.fgColor) && (paramObject.bgColor == this.bgColor)) {
+      return paramObject.modTime == this.modTime;
+    }
+    return false;
   }
   
   public int getSize()
@@ -264,27 +233,78 @@ public class PersonalityLabelInfo
   
   public boolean isComplete()
   {
+    List localList = this.personalityLabelPhotos;
     boolean bool = false;
-    if (this.personalityLabelPhotos == null) {}
-    for (int i = 0;; i = this.personalityLabelPhotos.size())
-    {
-      if (i == this.photoCount) {
-        bool = true;
-      }
-      return bool;
+    int i;
+    if (localList == null) {
+      i = 0;
+    } else {
+      i = localList.size();
     }
+    if (i == this.photoCount) {
+      bool = true;
+    }
+    return bool;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("id").append(":").append(this.id).append("|").append("addTime:").append(this.addTime).append("|").append("category:").append(this.category).append("|").append("text:").append(this.text).append("|").append("fgColor:").append(this.fgColor).append("|").append("bgColor:").append(this.bgColor).append("|").append("coverUrl:").append(this.coverUrl).append("|").append("photoCount:").append(this.photoCount).append("|").append("praiseCount:").append(this.praiseCount).append("|").append("unreadPraiseCount:").append(this.unreadPraiseCount).append("|").append("bytesPhotoCookie:").append(this.bytesPhotoCookie).append("|").append("photoSise:").append(this.personalityLabelPhotos.size()).append("|").append("modeTime:").append(this.modTime).append("|").append("praiseFlag:").append(this.praiseFlag).append("|").append("personalityLabelPhotos:[").append(this.personalityLabelPhotos).append("]|").append("recent_prase_uins:[").append(this.zanUins).append("]|");
+    localStringBuilder.append("id");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append("|");
+    localStringBuilder.append("addTime:");
+    localStringBuilder.append(this.addTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append("category:");
+    localStringBuilder.append(this.category);
+    localStringBuilder.append("|");
+    localStringBuilder.append("text:");
+    localStringBuilder.append(this.text);
+    localStringBuilder.append("|");
+    localStringBuilder.append("fgColor:");
+    localStringBuilder.append(this.fgColor);
+    localStringBuilder.append("|");
+    localStringBuilder.append("bgColor:");
+    localStringBuilder.append(this.bgColor);
+    localStringBuilder.append("|");
+    localStringBuilder.append("coverUrl:");
+    localStringBuilder.append(this.coverUrl);
+    localStringBuilder.append("|");
+    localStringBuilder.append("photoCount:");
+    localStringBuilder.append(this.photoCount);
+    localStringBuilder.append("|");
+    localStringBuilder.append("praiseCount:");
+    localStringBuilder.append(this.praiseCount);
+    localStringBuilder.append("|");
+    localStringBuilder.append("unreadPraiseCount:");
+    localStringBuilder.append(this.unreadPraiseCount);
+    localStringBuilder.append("|");
+    localStringBuilder.append("bytesPhotoCookie:");
+    localStringBuilder.append(this.bytesPhotoCookie);
+    localStringBuilder.append("|");
+    localStringBuilder.append("photoSise:");
+    localStringBuilder.append(this.personalityLabelPhotos.size());
+    localStringBuilder.append("|");
+    localStringBuilder.append("modeTime:");
+    localStringBuilder.append(this.modTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append("praiseFlag:");
+    localStringBuilder.append(this.praiseFlag);
+    localStringBuilder.append("|");
+    localStringBuilder.append("personalityLabelPhotos:[");
+    localStringBuilder.append(this.personalityLabelPhotos);
+    localStringBuilder.append("]|");
+    localStringBuilder.append("recent_prase_uins:[");
+    localStringBuilder.append(this.zanUins);
+    localStringBuilder.append("]|");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(PersonalityLabel.CURRENT_VERSION);
+    paramParcel.writeInt(ProfilePersonalityLabelInfo.CURRENT_VERSION);
     paramParcel.writeLong(this.id);
     paramParcel.writeInt(this.addTime);
     paramParcel.writeInt(this.category);
@@ -304,7 +324,7 @@ public class PersonalityLabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo
  * JD-Core Version:    0.7.0.1
  */

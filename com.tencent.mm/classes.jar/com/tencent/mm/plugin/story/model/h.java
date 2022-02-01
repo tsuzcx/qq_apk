@@ -6,164 +6,180 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cb;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.recordvideo.PluginVideoEditor;
+import com.tencent.mm.plugin.recordvideo.background.d;
 import com.tencent.mm.plugin.story.h.b;
-import com.tencent.mm.plugin.story.h.f;
-import com.tencent.mm.plugin.story.h.k;
+import com.tencent.mm.plugin.story.h.c;
+import com.tencent.mm.plugin.story.h.g;
+import com.tencent.mm.plugin.story.h.j;
 import com.tencent.mm.plugin.story.h.m;
+import com.tencent.mm.plugin.story.h.n;
 import com.tencent.mm.plugin.story.h.o;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.protocal.protobuf.cic;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.t;
-import java.io.File;
+import com.tencent.mm.protocal.protobuf.fjj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/model/StoryCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "allUnRead", "", "allmockData", "args", "", "", "([Ljava/lang/String;)V", "cleanDb", "commentClear", "commentDump", "copyFile", "copydb", "createFiles", "delfile", "dumpDbInfo", "dumpFile", "processCommand", "", "context", "Landroid/content/Context;", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "resetFirst", "resetI2VParams", "(Landroid/content/Context;[Ljava/lang/String;)V", "rsetStoryPostThreshold", "strangerClear", "strangerDump", "strangerRead", "testMakeData", "videoCacheClear", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/model/StoryCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "allUnRead", "", "allmockData", "args", "", "", "([Ljava/lang/String;)V", "cleanDb", "commentClear", "commentDump", "copyFile", "copydb", "createFiles", "delfile", "dumpDbInfo", "dumpFile", "processCommand", "", "context", "Landroid/content/Context;", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "resetFirst", "resetI2VParams", "(Landroid/content/Context;[Ljava/lang/String;)V", "rsetStoryPostThreshold", "strangerClear", "strangerDump", "strangerRead", "testMakeData", "videoCacheClear", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
   implements a
 {
-  public static final h.a suD;
+  public static final h.a SjK;
   
   static
   {
-    AppMethodBeat.i(109033);
-    suD = new h.a((byte)0);
-    AppMethodBeat.o(109033);
+    AppMethodBeat.i(118663);
+    SjK = new h.a((byte)0);
+    AppMethodBeat.o(118663);
   }
   
-  private static void H(String[] paramArrayOfString)
+  private static void S(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(109030);
+    AppMethodBeat.i(118660);
     Object localObject2 = paramArrayOfString[2];
-    paramArrayOfString = j.svi;
-    paramArrayOfString = j.b.cAC().acU("foreverzeus");
-    Object localObject1 = j.svi;
-    localObject1 = j.b.cAB();
-    Object localObject3 = j.svi;
-    boolean bool = bo.isEqual(j.b.coK(), "foreverzeus");
-    int i = cb.abr();
-    localObject3 = i.suJ;
-    localObject1 = k.a((k)localObject1, "foreverzeus", bool, i - i.cAp());
+    paramArrayOfString = StoryCore.SjP;
+    paramArrayOfString = StoryCore.b.hvS().bbJ("foreverzeus");
+    Object localObject1 = StoryCore.SjP;
+    localObject1 = StoryCore.b.hvR();
+    Object localObject3 = StoryCore.SjP;
+    boolean bool = Util.isEqual(StoryCore.b.hgg(), "foreverzeus");
+    int i = cn.getSyncServerTimeSecond();
+    localObject3 = i.SjL;
+    localObject1 = com.tencent.mm.plugin.story.h.k.a((com.tencent.mm.plugin.story.h.k)localObject1, "foreverzeus", bool, i - i.hvz());
     if (((List)localObject1).isEmpty())
     {
-      t.makeText(ah.getContext(), (CharSequence)"allmockData error1", 1).show();
-      AppMethodBeat.o(109030);
+      aa.makeText(MMApplicationContext.getContext(), (CharSequence)"allmockData error1", 1).show();
+      AppMethodBeat.o(118660);
       return;
     }
-    localObject2 = com.tencent.mm.model.n.nt((String)localObject2);
+    localObject2 = v.Il((String)localObject2);
     if (localObject2 != null)
     {
       localObject2 = ((Iterable)localObject2).iterator();
       if (((Iterator)localObject2).hasNext())
       {
         localObject3 = (String)((Iterator)localObject2).next();
-        Object localObject4 = j.svi;
-        localObject4 = j.b.cAC();
-        a.f.b.j.p(localObject3, "it");
-        localObject4 = ((com.tencent.mm.plugin.story.h.g)localObject4).acU((String)localObject3);
-        i = (int)((f)localObject4).systemRowid;
-        if (!((f)localObject4).isValid())
+        Object localObject4 = StoryCore.SjP;
+        localObject4 = StoryCore.b.hvS();
+        s.s(localObject3, "it");
+        localObject4 = ((g)localObject4).bbJ((String)localObject3);
+        i = (int)((com.tencent.mm.plugin.story.h.f)localObject4).systemRowid;
+        if (!((com.tencent.mm.plugin.story.h.f)localObject4).isValid())
         {
           paramArrayOfString.setUserName((String)localObject3);
-          paramArrayOfString.field_storyPostTime = ((int)bo.yB());
+          paramArrayOfString.field_storyPostTime = ((int)Util.currentTicks());
           paramArrayOfString.systemRowid = -1L;
           if (i >= 0) {
             break label299;
           }
-          localObject4 = j.svi;
-          j.b.cAC().insert((com.tencent.mm.sdk.e.c)paramArrayOfString);
+          localObject4 = StoryCore.SjP;
+          StoryCore.b.hvS().insert((IAutoDBItem)paramArrayOfString);
         }
         for (;;)
         {
-          localObject4 = (com.tencent.mm.plugin.story.h.j)((List)localObject1).get(0);
-          ((com.tencent.mm.plugin.story.h.j)localObject4).field_userName = ((String)localObject3);
-          ((com.tencent.mm.plugin.story.h.j)localObject4).field_createTime = cb.abr();
-          cic localcic = ((com.tencent.mm.plugin.story.h.j)localObject4).cEY();
-          localcic.jJA = ((String)localObject3);
-          ((com.tencent.mm.plugin.story.h.j)localObject4).b(localcic);
-          ((com.tencent.mm.plugin.story.h.j)localObject4).cIp = -1;
-          localObject3 = j.svi;
-          j.b.cAB().insert((com.tencent.mm.sdk.e.c)localObject4);
+          localObject4 = (j)((List)localObject1).get(0);
+          ((j)localObject4).field_userName = ((String)localObject3);
+          ((j)localObject4).field_createTime = cn.getSyncServerTimeSecond();
+          fjj localfjj = ((j)localObject4).hzt();
+          localfjj.UserName = ((String)localObject3);
+          ((j)localObject4).b(localfjj);
+          ((j)localObject4).icg = -1;
+          localObject3 = StoryCore.SjP;
+          StoryCore.b.hvR().insert((IAutoDBItem)localObject4);
           break;
           label299:
-          localObject4 = j.svi;
-          j.b.cAC().b(i * 1L, paramArrayOfString);
+          localObject4 = StoryCore.SjP;
+          StoryCore.b.hvS().b(i * 1L, paramArrayOfString);
         }
       }
     }
-    t.makeText(ah.getContext(), (CharSequence)"allmockData done", 1).show();
-    AppMethodBeat.o(109030);
+    aa.makeText(MMApplicationContext.getContext(), (CharSequence)"allmockData done", 1).show();
+    AppMethodBeat.o(118660);
   }
   
-  private static void I(String[] paramArrayOfString)
+  private static void T(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(109031);
-    int j = bo.apV(paramArrayOfString[2]);
-    ab.i("MicroMsg.StoryCommand", "testMakeData datacount ".concat(String.valueOf(j)));
-    paramArrayOfString = j.svi;
-    paramArrayOfString = j.b.cAB();
-    Object localObject1 = j.svi;
-    boolean bool = bo.isEqual(j.b.coK(), "ychengo");
-    int i = cb.abr();
-    localObject1 = i.suJ;
-    paramArrayOfString = k.a(paramArrayOfString, "ychengo", bool, i - i.cAp());
-    i = 0;
-    while (i < j)
+    AppMethodBeat.i(118661);
+    int j = Util.safeParseInt(paramArrayOfString[2]);
+    Log.i("MicroMsg.StoryCommand", s.X("testMakeData datacount ", Integer.valueOf(j)));
+    paramArrayOfString = StoryCore.SjP;
+    paramArrayOfString = StoryCore.b.hvR();
+    Object localObject1 = StoryCore.SjP;
+    boolean bool = Util.isEqual(StoryCore.b.hgg(), "ychengo");
+    int i = cn.getSyncServerTimeSecond();
+    localObject1 = i.SjL;
+    paramArrayOfString = com.tencent.mm.plugin.story.h.k.a(paramArrayOfString, "ychengo", bool, i - i.hvz());
+    if (j > 0) {
+      i = 0;
+    }
+    for (;;)
     {
-      localObject1 = (com.tencent.mm.plugin.story.h.j)paramArrayOfString.get(0);
-      ((com.tencent.mm.plugin.story.h.j)localObject1).field_userName = "ychengo";
-      ((com.tencent.mm.plugin.story.h.j)localObject1).field_createTime = cb.abr();
-      Object localObject2 = ((com.tencent.mm.plugin.story.h.j)localObject1).cEY();
-      ((cic)localObject2).jJA = "ychengo";
-      ((com.tencent.mm.plugin.story.h.j)localObject1).b((cic)localObject2);
-      ((com.tencent.mm.plugin.story.h.j)localObject1).cIp = -1;
-      localObject2 = j.svi;
-      j.b.cAB().insert((com.tencent.mm.sdk.e.c)localObject1);
       i += 1;
+      localObject1 = (j)paramArrayOfString.get(0);
+      ((j)localObject1).field_userName = "ychengo";
+      ((j)localObject1).field_createTime = cn.getSyncServerTimeSecond();
+      Object localObject2 = ((j)localObject1).hzt();
+      ((fjj)localObject2).UserName = "ychengo";
+      ((j)localObject1).b((fjj)localObject2);
+      ((j)localObject1).icg = -1;
+      localObject2 = StoryCore.SjP;
+      StoryCore.b.hvR().insert((IAutoDBItem)localObject1);
+      if (i >= j)
+      {
+        aa.makeText(MMApplicationContext.getContext(), (CharSequence)s.X("testMakeData done ", Integer.valueOf(j)), 1).show();
+        AppMethodBeat.o(118661);
+        return;
+      }
     }
-    t.makeText(ah.getContext(), (CharSequence)"testMakeData done ".concat(String.valueOf(j)), 1).show();
-    AppMethodBeat.o(109031);
   }
   
-  private static void cAj()
+  private static void hvt()
   {
-    AppMethodBeat.i(109025);
-    Object localObject = j.svi;
-    localObject = ((Iterable)j.b.cAE().cEJ()).iterator();
+    AppMethodBeat.i(118655);
+    Object localObject = StoryCore.SjP;
+    localObject = ((Iterable)StoryCore.b.hvU().eZt()).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      com.tencent.mm.plugin.story.h.c localc = (com.tencent.mm.plugin.story.h.c)((Iterator)localObject).next();
-      ab.i("MicroMsg.StoryCommand", "commentDump " + localc.field_storyId + ' ' + localc.field_readCommentId + ' ' + localc.field_syncCommentId);
+      c localc = (c)((Iterator)localObject).next();
+      Log.i("MicroMsg.StoryCommand", "commentDump " + localc.field_storyId + ' ' + localc.field_readCommentId + ' ' + localc.field_syncCommentId);
     }
-    AppMethodBeat.o(109025);
+    AppMethodBeat.o(118655);
   }
   
-  private static void cAk()
+  private static void hvu()
   {
-    AppMethodBeat.i(109026);
-    Object localObject = j.svi;
-    localObject = ((Iterable)j.b.cAE().cEJ()).iterator();
+    AppMethodBeat.i(118656);
+    Object localObject = StoryCore.SjP;
+    localObject = ((Iterable)StoryCore.b.hvU().eZt()).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      com.tencent.mm.plugin.story.h.c localc = (com.tencent.mm.plugin.story.h.c)((Iterator)localObject).next();
-      j.b localb = j.svi;
-      j.b.cAE().delete((com.tencent.mm.sdk.e.c)localc, new String[0]);
+      c localc = (c)((Iterator)localObject).next();
+      StoryCore.b localb = StoryCore.SjP;
+      StoryCore.b.hvU().delete((IAutoDBItem)localc, new String[0]);
     }
-    AppMethodBeat.o(109026);
+    AppMethodBeat.o(118656);
   }
   
-  private static void cAl()
+  private static void hvv()
   {
-    AppMethodBeat.i(109027);
-    Object localObject1 = j.svi;
-    Object localObject2 = j.b.cAF();
+    AppMethodBeat.i(118657);
+    Object localObject1 = StoryCore.SjP;
+    Object localObject2 = StoryCore.b.hvV();
     localObject1 = new ArrayList();
     localObject2 = ((o)localObject2).db.rawQuery("select * from StoryVideoCacheInfo", null);
     Object localObject3;
@@ -171,8 +187,8 @@ public final class h
     {
       while (((Cursor)localObject2).moveToNext())
       {
-        localObject3 = new com.tencent.mm.plugin.story.h.n();
-        ((com.tencent.mm.plugin.story.h.n)localObject3).convertFrom((Cursor)localObject2);
+        localObject3 = new n();
+        ((n)localObject3).convertFrom((Cursor)localObject2);
         ((ArrayList)localObject1).add(localObject3);
       }
       ((Cursor)localObject2).close();
@@ -180,327 +196,311 @@ public final class h
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (com.tencent.mm.plugin.story.h.n)((Iterator)localObject1).next();
-      localObject3 = j.svi;
-      j.b.cAF().delete((com.tencent.mm.sdk.e.c)localObject2, new String[0]);
+      localObject2 = (n)((Iterator)localObject1).next();
+      localObject3 = StoryCore.SjP;
+      StoryCore.b.hvV().delete((IAutoDBItem)localObject2, new String[0]);
     }
-    AppMethodBeat.o(109027);
+    AppMethodBeat.o(118657);
   }
   
-  public static void cAm()
+  public static void hvw()
   {
-    AppMethodBeat.i(109028);
-    ab.i("MicroMsg.StoryCommand", "cleanDb");
-    j.b localb = j.svi;
-    j.b.cAF().csu();
-    localb = j.svi;
-    j.b.cAC().csu();
-    localb = j.svi;
-    j.b.cAD().csu();
-    localb = j.svi;
-    j.b.cAB().csu();
-    localb = j.svi;
-    com.tencent.mm.vfs.e.cO(j.b.getAccStoryCachePath());
-    AppMethodBeat.o(109028);
+    AppMethodBeat.i(118658);
+    Log.i("MicroMsg.StoryCommand", "cleanDb");
+    StoryCore.b localb = StoryCore.SjP;
+    StoryCore.b.hvV().gGK();
+    localb = StoryCore.SjP;
+    StoryCore.b.hvS().gGK();
+    localb = StoryCore.SjP;
+    StoryCore.b.hvT().gGK();
+    localb = StoryCore.SjP;
+    StoryCore.b.hvR().gGK();
+    localb = StoryCore.SjP;
+    y.ew(StoryCore.b.getAccStoryCachePath(), true);
+    ((PluginVideoEditor)com.tencent.mm.kernel.h.az(PluginVideoEditor.class)).getVideoEditorDataStorage().gGK();
+    AppMethodBeat.o(118658);
   }
   
-  public static void cAn()
+  public static void hvx()
   {
-    AppMethodBeat.i(109029);
-    Object localObject = j.svi;
-    j.b.cAB().csu();
-    localObject = j.svi;
-    j.b.cAF().csu();
-    localObject = j.svi;
-    com.tencent.mm.vfs.e.cO(j.b.getAccStoryCachePath());
-    localObject = j.svi;
-    localObject = ((Iterable)j.b.cAC().cEW()).iterator();
+    AppMethodBeat.i(118659);
+    Object localObject = StoryCore.SjP;
+    StoryCore.b.hvR().gGK();
+    localObject = StoryCore.SjP;
+    StoryCore.b.hvV().gGK();
+    localObject = StoryCore.SjP;
+    y.ew(StoryCore.b.getAccStoryCachePath(), true);
+    localObject = StoryCore.SjP;
+    localObject = ((Iterable)StoryCore.b.hvS().hzp()).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      f localf = (f)((Iterator)localObject).next();
+      com.tencent.mm.plugin.story.h.f localf = (com.tencent.mm.plugin.story.h.f)((Iterator)localObject).next();
       localf.field_readId = 0L;
       localf.field_md5 = "";
       localf.field_preLoadResource = 0L;
-      localf.ady("");
+      localf.bcj("");
       localf.field_preloadStoryId = 0L;
-      j.b localb = j.svi;
-      j.b.cAC().b(localf.systemRowid, localf);
+      StoryCore.b localb = StoryCore.SjP;
+      StoryCore.b.hvS().b(localf.systemRowid, localf);
     }
-    ab.i("MicroMsg.StoryCommand", "allUnRead done");
-    t.makeText(ah.getContext(), (CharSequence)"allUnRead Done", 1).show();
-    AppMethodBeat.o(109029);
+    Log.i("MicroMsg.StoryCommand", "allUnRead done");
+    aa.makeText(MMApplicationContext.getContext(), (CharSequence)"allUnRead Done", 1).show();
+    AppMethodBeat.o(118659);
   }
   
-  public static void cAo()
+  public static void hvy()
   {
-    AppMethodBeat.i(109032);
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.RL();
-    a.f.b.j.p(locale, "MMKernel.storage()");
-    locale.Ru().set(ac.a.yLr, Integer.valueOf(0));
-    AppMethodBeat.o(109032);
+    AppMethodBeat.i(118662);
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acYs, Integer.valueOf(0));
+    AppMethodBeat.o(118662);
   }
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    AppMethodBeat.i(109024);
-    a.f.b.j.q(paramArrayOfString, "args");
-    a.f.b.j.q(paramString, "username");
-    ab.i("MicroMsg.StoryCommand", a.a.e.a(paramArrayOfString, null, null, null, 0, null, null, 63));
+    AppMethodBeat.i(118654);
+    s.u(paramArrayOfString, "args");
+    s.u(paramString, "username");
+    Log.i("MicroMsg.StoryCommand", kotlin.a.k.a(paramArrayOfString, null, null, null, 0, null, null, 63));
     if (paramArrayOfString.length <= 1)
     {
-      AppMethodBeat.o(109024);
+      AppMethodBeat.o(118654);
       return false;
     }
     paramString = paramArrayOfString[1];
-    label350:
-    int i;
     switch (paramString.hashCode())
     {
     default: 
     case -350339842: 
-    case -2113815067: 
-    case 536375440: 
-    case 2103071987: 
-    case -2122675824: 
-    case 102573: 
-    case 1550482439: 
-    case 1233668806: 
-    case -505421199: 
       do
       {
-        do
+        AppMethodBeat.o(118654);
+        return false;
+      } while (!paramString.equals("reseti2v"));
+      if (paramContext != null) {
+        break;
+      }
+    }
+    for (paramContext = localObject1;; paramContext = paramContext.getSharedPreferences("storyi2v", 0))
+    {
+      if (paramContext != null)
+      {
+        paramContext = paramContext.edit();
+        if (paramContext != null)
         {
-          AppMethodBeat.o(109024);
-          return false;
-        } while (!paramString.equals("reseti2v"));
-        paramArrayOfString = localObject1;
-        if (paramContext != null) {
-          paramArrayOfString = paramContext.getSharedPreferences("storyi2v", 0);
-        }
-        if (paramArrayOfString != null)
-        {
-          paramContext = paramArrayOfString.edit();
+          paramContext = paramContext.putInt("storyi2v_bitRate", 3500000);
           if (paramContext != null)
           {
-            paramContext = paramContext.putInt("storyi2v_bitRate", 3500000);
+            paramContext = paramContext.putInt("storyi2v_frameRate", 15);
             if (paramContext != null)
             {
-              paramContext = paramContext.putInt("storyi2v_frameRate", 15);
+              paramContext = paramContext.putInt("storyi2v_iFrameInterval", 10);
               if (paramContext != null)
               {
-                paramContext = paramContext.putInt("storyi2v_iFrameInterval", 10);
-                if (paramContext != null)
-                {
-                  paramContext = paramContext.putInt("storyi2v_MaxSize", 720);
-                  if (paramContext != null) {
-                    paramContext.commit();
-                  }
+                paramContext = paramContext.putInt("storyi2v_MaxSize", 720);
+                if (paramContext != null) {
+                  paramContext.commit();
                 }
               }
             }
           }
         }
-        for (;;)
+      }
+      label1410:
+      for (;;)
+      {
+        label341:
+        AppMethodBeat.o(118654);
+        return true;
+        if (!paramString.equals("testcopyDb")) {
+          break;
+        }
+        paramContext = s.X(com.tencent.mm.kernel.h.baE().cachePath, "StoryMicroMsg.db");
+        paramArrayOfString = StoryCore.SjP;
+        paramArrayOfString = s.X(StoryCore.b.getAccStoryPath(), "StoryMicroMsg.db");
+        y.O(paramContext, paramArrayOfString, false);
+        Log.i("MicroMsg.StoryCommand", s.X("copydb ", paramArrayOfString));
+        aa.makeText(MMApplicationContext.getContext(), (CharSequence)"copydb done", 1).show();
+        continue;
+        if (!paramString.equals("allunread")) {
+          break;
+        }
+        hvx();
+        continue;
+        if (!paramString.equals("commentDump")) {
+          break;
+        }
+        hvt();
+        continue;
+        if (!paramString.equals("dumpFile")) {
+          break;
+        }
+        paramContext = k.Skq;
+        k.hwh();
+        continue;
+        if (!paramString.equals("i2v")) {
+          break;
+        }
+        s.u(paramArrayOfString, "args");
+        int i = Util.safeParseInt(paramArrayOfString[2]);
+        int j = Util.safeParseInt(paramArrayOfString[3]);
+        int k = Util.safeParseInt(paramArrayOfString[4]);
+        int m = Util.safeParseInt(paramArrayOfString[5]);
+        if (paramContext == null) {}
+        for (paramContext = localObject2;; paramContext = paramContext.getSharedPreferences("storyi2v", 0))
         {
-          AppMethodBeat.o(109024);
-          return true;
-          if (!paramString.equals("testcopyDb")) {
+          if (paramContext == null) {
+            break label1410;
+          }
+          paramContext = paramContext.edit();
+          if (paramContext == null) {
+            break label341;
+          }
+          paramContext = paramContext.putInt("storyi2v_bitRate", i);
+          if (paramContext == null) {
+            break label341;
+          }
+          paramContext = paramContext.putInt("storyi2v_frameRate", j);
+          if (paramContext == null) {
+            break label341;
+          }
+          paramContext = paramContext.putInt("storyi2v_iFrameInterval", k);
+          if (paramContext == null) {
+            break label341;
+          }
+          paramContext = paramContext.putInt("storyi2v_MaxSize", m);
+          if (paramContext == null) {
+            break label341;
+          }
+          paramContext.commit();
+          break label341;
+          if (!paramString.equals("delfile")) {
             break;
           }
-          paramContext = new StringBuilder();
-          paramArrayOfString = com.tencent.mm.kernel.g.RL();
-          a.f.b.j.p(paramArrayOfString, "MMKernel.storage()");
-          paramContext = paramArrayOfString.Rp() + "StoryMicroMsg.db";
-          paramArrayOfString = new StringBuilder();
-          paramString = j.svi;
-          paramArrayOfString = j.b.getAccStoryPath() + "StoryMicroMsg.db";
-          com.tencent.mm.vfs.e.C(paramContext, paramArrayOfString);
-          ab.i("MicroMsg.StoryCommand", "copydb ".concat(String.valueOf(paramArrayOfString)));
-          t.makeText(ah.getContext(), (CharSequence)"copydb done", 1).show();
-          continue;
-          if (!paramString.equals("allunread")) {
+          paramContext = k.Skq;
+          y.ew(k.hwg(), true);
+          break label341;
+          if (!paramString.equals("videoCacheClear")) {
             break;
           }
-          cAn();
-          continue;
-          if (!paramString.equals("commentDump")) {
+          hvv();
+          break label341;
+          if (!paramString.equals("copyfile")) {
             break;
           }
-          cAj();
-          continue;
-          if (!paramString.equals("dumpFile")) {
-            break;
+          paramArrayOfString = paramArrayOfString[2];
+          paramContext = k.Skq;
+          k.hwh();
+          paramContext = k.Skq;
+          s.u(paramArrayOfString, "path");
+          k.aTB(s.X(k.hwf(), "cpfiles/"));
+          paramContext = new u(paramArrayOfString);
+          if (!paramContext.jKS()) {
+            paramContext = "";
           }
-          paramContext = l.svv;
-          l.cAU();
-          continue;
-          if (!paramString.equals("i2v")) {
-            break;
-          }
-          a.f.b.j.q(paramArrayOfString, "args");
-          i = bo.apV(paramArrayOfString[2]);
-          int j = bo.apV(paramArrayOfString[3]);
-          int k = bo.apV(paramArrayOfString[4]);
-          int m = bo.apV(paramArrayOfString[5]);
-          paramArrayOfString = localObject2;
-          if (paramContext != null) {
-            paramArrayOfString = paramContext.getSharedPreferences("storyi2v", 0);
-          }
-          if (paramArrayOfString != null)
+          for (;;)
           {
-            paramContext = paramArrayOfString.edit();
-            if (paramContext != null)
-            {
-              paramContext = paramContext.putInt("storyi2v_bitRate", i);
-              if (paramContext != null)
-              {
-                paramContext = paramContext.putInt("storyi2v_frameRate", j);
-                if (paramContext != null)
-                {
-                  paramContext = paramContext.putInt("storyi2v_iFrameInterval", k);
-                  if (paramContext != null)
-                  {
-                    paramContext = paramContext.putInt("storyi2v_MaxSize", m);
-                    if (paramContext != null)
-                    {
-                      paramContext.commit();
-                      continue;
-                      if (!paramString.equals("delfile")) {
-                        break;
-                      }
-                      paramContext = l.svv;
-                      com.tencent.mm.vfs.e.cO(l.cAT());
-                      continue;
-                      if (!paramString.equals("videoCacheClear")) {
-                        break;
-                      }
-                      cAl();
-                    }
-                  }
-                }
-              }
+            aa.makeText(MMApplicationContext.getContext(), (CharSequence)s.X("copyFile done ", paramContext), 1).show();
+            break label341;
+            if (!paramString.equals("createFile")) {
+              break;
             }
+            paramContext = k.Skq;
+            k.hwi();
+            break label341;
+            if (!paramString.equals("resetFirst")) {
+              break;
+            }
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.acYv, Integer.valueOf(0));
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.acYw, Boolean.FALSE);
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.acYx, Boolean.FALSE);
+            break label341;
+            if (!paramString.equals("strangerClear")) {
+              break;
+            }
+            paramContext = StoryCore.SjP;
+            paramContext = ((Iterable)StoryCore.b.hvS().hzp()).iterator();
+            while (paramContext.hasNext())
+            {
+              paramArrayOfString = (com.tencent.mm.plugin.story.h.f)paramContext.next();
+              paramString = StoryCore.SjP;
+              StoryCore.b.hvS().delete((IAutoDBItem)paramArrayOfString, new String[0]);
+            }
+            break label341;
+            if (!paramString.equals("commentClear")) {
+              break;
+            }
+            hvu();
+            break label341;
+            if (!paramString.equals("strangerRead")) {
+              break;
+            }
+            paramContext = StoryCore.SjP;
+            paramContext = ((Iterable)StoryCore.b.hvS().eZt()).iterator();
+            while (paramContext.hasNext())
+            {
+              paramArrayOfString = (com.tencent.mm.plugin.story.h.f)paramContext.next();
+              paramArrayOfString.field_readId = paramArrayOfString.field_syncId;
+              paramString = StoryCore.SjP;
+              StoryCore.b.hvS().b(paramArrayOfString);
+            }
+            break label341;
+            if (!paramString.equals("cleandb")) {
+              break;
+            }
+            hvw();
+            break label341;
+            if (!paramString.equals("testDumpInfo")) {
+              break;
+            }
+            paramContext = StoryCore.SjP;
+            paramContext = StoryCore.b.hvV().db.rawQuery("select count(*) from StoryVideoCacheInfo", null);
+            i = paramContext.getCount();
+            paramContext.close();
+            paramContext = s.X("StoryVideoCacheInfo resultData ", Integer.valueOf(i));
+            paramArrayOfString = StoryCore.SjP;
+            paramArrayOfString = StoryCore.b.hvR();
+            paramString = s.X("select count(*) from ", com.tencent.mm.plugin.story.h.k.ptT);
+            paramArrayOfString = paramArrayOfString.db.rawQuery(paramString, null);
+            i = paramArrayOfString.getCount();
+            paramArrayOfString.close();
+            paramArrayOfString = com.tencent.mm.plugin.story.h.k.ptT + " resultData " + i;
+            Log.i("MicroMsg.StoryCommand", "info1 " + paramContext + " info2 " + paramArrayOfString);
+            break label341;
+            if (!paramString.equals("allmakeData")) {
+              break;
+            }
+            T(paramArrayOfString);
+            break label341;
+            if (!paramString.equals("strangerDump")) {
+              break;
+            }
+            paramContext = StoryCore.SjP;
+            paramContext = ((Iterable)StoryCore.b.hvS().eZt()).iterator();
+            while (paramContext.hasNext())
+            {
+              paramArrayOfString = (com.tencent.mm.plugin.story.h.f)paramContext.next();
+              Log.i("MicroMsg.StoryCommand", "strangerDump " + paramArrayOfString.getUserName() + ' ' + paramArrayOfString.field_syncId + ' ' + paramArrayOfString.field_readId + ' ' + paramArrayOfString.field_storyPostTime + ' ' + paramArrayOfString.field_updateTime);
+            }
+            break label341;
+            if (!paramString.equals("allmockData")) {
+              break;
+            }
+            S(paramArrayOfString);
+            break label341;
+            paramContext = k.hwf() + "cpfiles/" + paramContext.getName();
+            Log.i("MicroMsg.StoryFileNameUtil", "copy file path " + paramArrayOfString + " newPath " + paramContext);
+            y.O(paramArrayOfString, paramContext, false);
           }
         }
-      } while (!paramString.equals("copyfile"));
-      paramArrayOfString = paramArrayOfString[2];
-      paramContext = l.svv;
-      l.cAU();
-      paramContext = l.svv;
-      a.f.b.j.q(paramArrayOfString, "path");
-      l.adc(l.cAS() + "cpfiles/");
-      paramContext = new File(paramArrayOfString);
-      if (!paramContext.exists()) {
-        paramContext = "";
       }
-      break;
-    }
-    for (;;)
-    {
-      t.makeText(ah.getContext(), (CharSequence)"copyFile done ".concat(String.valueOf(paramContext)), 1).show();
-      break label350;
-      if (!paramString.equals("createFile")) {
-        break;
-      }
-      paramContext = l.svv;
-      l.cAV();
-      break label350;
-      if (!paramString.equals("resetFirst")) {
-        break;
-      }
-      paramContext = com.tencent.mm.kernel.g.RL();
-      a.f.b.j.p(paramContext, "MMKernel.storage()");
-      paramContext.Ru().set(ac.a.yLu, Integer.valueOf(0));
-      paramContext = com.tencent.mm.kernel.g.RL();
-      a.f.b.j.p(paramContext, "MMKernel.storage()");
-      paramContext.Ru().set(ac.a.yLv, Boolean.FALSE);
-      paramContext = com.tencent.mm.kernel.g.RL();
-      a.f.b.j.p(paramContext, "MMKernel.storage()");
-      paramContext.Ru().set(ac.a.yLw, Boolean.FALSE);
-      break label350;
-      if (!paramString.equals("strangerClear")) {
-        break;
-      }
-      paramContext = j.svi;
-      paramContext = ((Iterable)j.b.cAC().cEW()).iterator();
-      while (paramContext.hasNext())
-      {
-        paramArrayOfString = (f)paramContext.next();
-        paramString = j.svi;
-        j.b.cAC().delete((com.tencent.mm.sdk.e.c)paramArrayOfString, new String[0]);
-      }
-      if (!paramString.equals("commentClear")) {
-        break;
-      }
-      cAk();
-      break label350;
-      if (!paramString.equals("strangerRead")) {
-        break;
-      }
-      paramContext = j.svi;
-      paramContext = ((Iterable)j.b.cAC().cEJ()).iterator();
-      while (paramContext.hasNext())
-      {
-        paramArrayOfString = (f)paramContext.next();
-        paramArrayOfString.field_readId = paramArrayOfString.field_syncId;
-        paramString = j.svi;
-        j.b.cAC().b(paramArrayOfString);
-      }
-      if (!paramString.equals("cleandb")) {
-        break;
-      }
-      cAm();
-      break label350;
-      if (!paramString.equals("testDumpInfo")) {
-        break;
-      }
-      paramContext = j.svi;
-      paramContext = j.b.cAF().db.rawQuery("select count(*) from StoryVideoCacheInfo", null);
-      a.f.b.j.p(paramContext, "cu");
-      i = paramContext.getCount();
-      paramContext.close();
-      paramContext = "StoryVideoCacheInfo resultData ".concat(String.valueOf(i));
-      paramArrayOfString = j.svi;
-      paramArrayOfString = j.b.cAB();
-      paramString = "select count(*) from " + k.sGE;
-      paramArrayOfString = paramArrayOfString.db.rawQuery(paramString, null);
-      a.f.b.j.p(paramArrayOfString, "cu");
-      i = paramArrayOfString.getCount();
-      paramArrayOfString.close();
-      paramArrayOfString = k.sGE + " resultData " + i;
-      ab.i("MicroMsg.StoryCommand", "info1 " + paramContext + " info2 " + paramArrayOfString);
-      break label350;
-      if (!paramString.equals("allmakeData")) {
-        break;
-      }
-      I(paramArrayOfString);
-      break label350;
-      if (!paramString.equals("strangerDump")) {
-        break;
-      }
-      paramContext = j.svi;
-      paramContext = ((Iterable)j.b.cAC().cEJ()).iterator();
-      while (paramContext.hasNext())
-      {
-        paramArrayOfString = (f)paramContext.next();
-        ab.i("MicroMsg.StoryCommand", "strangerDump " + paramArrayOfString.getUserName() + ' ' + paramArrayOfString.field_syncId + ' ' + paramArrayOfString.field_readId + ' ' + paramArrayOfString.field_storyPostTime + ' ' + paramArrayOfString.field_updateTime);
-      }
-      if (!paramString.equals("allmockData")) {
-        break;
-      }
-      H(paramArrayOfString);
-      break label350;
-      paramContext = l.cAS() + "cpfiles/" + paramContext.getName();
-      ab.i("MicroMsg.StoryFileNameUtil", "copy file path " + paramArrayOfString + " newPath " + paramContext);
-      com.tencent.mm.vfs.e.C(paramArrayOfString, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.model.h
  * JD-Core Version:    0.7.0.1
  */

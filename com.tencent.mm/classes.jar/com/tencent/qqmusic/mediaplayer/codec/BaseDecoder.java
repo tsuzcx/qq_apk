@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.codec;
 
+import android.media.AudioTrack;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.AudioInformation;
 import com.tencent.qqmusic.mediaplayer.NativeLibs;
@@ -93,6 +94,8 @@ public abstract class BaseDecoder
     return -1;
   }
   
+  public void setAudioTrack(AudioTrack paramAudioTrack) {}
+  
   public void setAudioType(AudioFormat.AudioType paramAudioType)
   {
     this.mAudioType = paramAudioType;
@@ -100,7 +103,7 @@ public abstract class BaseDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.BaseDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/gcq" android:layout_width="fill_parent" android:layout_height="@dimen/a49" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip">
+        <FrameLayout android:gravity="center" android:orientation="vertical" android:id="@id/al5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:layout_weight="1.0">
+            <View android:layout_gravity="center" android:id="@id/ea3" android:background="@drawable/he7" android:layout_width="60.0dip" android:layout_height="32.0dip" />
+            <com.tencent.mobileqq.widget.RedDotTextView android:textSize="16.0dip" android:textColor="@color/amr" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pr9" />
+        </FrameLayout>
+        <FrameLayout android:gravity="center" android:orientation="vertical" android:id="@id/aha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="3.0dip" android:layout_weight="1.0">
+            <View android:layout_gravity="center" android:id="@id/e_e" android:background="@drawable/he7" android:layout_width="60.0dip" android:layout_height="32.0dip" />
+            <com.tencent.mobileqq.widget.RedDotTextView android:textSize="16.0dip" android:textColor="@color/amr" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pr_" />
+        </FrameLayout>
+        <FrameLayout android:gravity="center" android:orientation="vertical" android:id="@id/aiw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:layout_weight="1.0">
+            <View android:layout_gravity="center" android:id="@id/e_o" android:background="@drawable/he7" android:layout_width="60.0dip" android:layout_height="32.0dip" />
+            <com.tencent.mobileqq.widget.RedDotTextView android:textSize="16.0dip" android:textColor="@color/amr" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pr7" />
+        </FrameLayout>
+        <FrameLayout android:gravity="center" android:orientation="vertical" android:id="@id/law" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:layout_weight="1.0">
+            <View android:layout_gravity="center" android:id="@id/lps" android:background="@drawable/he7" android:layout_width="60.0dip" android:layout_height="32.0dip" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/amr" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="合拍" />
+        </FrameLayout>
+    </LinearLayout>
+    <com.tencent.widget.HorizontalListView android:id="@id/d9m" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_below="@id/gcq" />
+</RelativeLayout>

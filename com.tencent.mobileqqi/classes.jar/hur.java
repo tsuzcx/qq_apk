@@ -1,12 +1,21 @@
-import com.tencent.util.DumpMemInfoHandler;
+import android.view.View;
+import com.tencent.widget.AbsListView;
 
 public class hur
+  implements Runnable
 {
-  public long a;
-  public long b;
-  public long c;
+  public hur(AbsListView paramAbsListView, View paramView, hvc paramhvc) {}
   
-  private hur(DumpMemInfoHandler paramDumpMemInfoHandler) {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
+    this.jdField_a_of_type_AndroidViewView.setPressed(false);
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.setPressed(false);
+    if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.p) {
+      this.jdField_a_of_type_Hvc.run();
+    }
+    AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, null);
+  }
 }
 
 

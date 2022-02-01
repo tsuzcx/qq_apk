@@ -53,12 +53,27 @@ public class QlAndQQInterface$WorkState
   
   public String toString()
   {
-    return " mWorking:" + this.mWorking + " mState:" + this.mState + " mPeerUin:" + this.mPeerUin + " mPeerNick:" + this.mPeerNick + " mMode:" + this.mMode + " mTransferingCount:" + this.mTransferingCount + " mForIphone:" + this.mForIphone;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" mWorking:");
+    localStringBuilder.append(this.mWorking);
+    localStringBuilder.append(" mState:");
+    localStringBuilder.append(this.mState);
+    localStringBuilder.append(" mPeerUin:");
+    localStringBuilder.append(this.mPeerUin);
+    localStringBuilder.append(" mPeerNick:");
+    localStringBuilder.append(this.mPeerNick);
+    localStringBuilder.append(" mMode:");
+    localStringBuilder.append(this.mMode);
+    localStringBuilder.append(" mTransferingCount:");
+    localStringBuilder.append(this.mTransferingCount);
+    localStringBuilder.append(" mForIphone:");
+    localStringBuilder.append(this.mForIphone);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlAndQQInterface.WorkState
  * JD-Core Version:    0.7.0.1
  */

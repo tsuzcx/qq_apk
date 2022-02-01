@@ -12,11 +12,15 @@ public class HandleScanResult$Req
   
   public boolean checkArgs()
   {
-    if ((this.scanResult == null) || (this.scanResult.length() < 0)) {}
-    while (this.scanResult.length() > 10240) {
-      return false;
+    String str = this.scanResult;
+    if (str != null)
+    {
+      if (str.length() < 0) {
+        return false;
+      }
+      return this.scanResult.length() <= 10240;
     }
-    return true;
+    return false;
   }
   
   public int getType()
@@ -32,7 +36,7 @@ public class HandleScanResult$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.HandleScanResult.Req
  * JD-Core Version:    0.7.0.1
  */

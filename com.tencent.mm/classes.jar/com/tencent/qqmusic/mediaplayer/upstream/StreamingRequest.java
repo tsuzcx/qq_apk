@@ -17,9 +17,9 @@ public class StreamingRequest
   
   public String toString()
   {
-    AppMethodBeat.i(105509);
+    AppMethodBeat.i(87751);
     String str = "StreamingRequest{uri='" + this.uri + '\'' + ", headers=" + this.headers + '}';
-    AppMethodBeat.o(105509);
+    AppMethodBeat.o(87751);
     return str;
   }
 }

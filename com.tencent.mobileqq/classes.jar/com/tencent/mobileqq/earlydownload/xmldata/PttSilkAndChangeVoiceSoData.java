@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aplz;
-
 public class PttSilkAndChangeVoiceSoData
   extends XmlData
 {
-  @aplz(a=true, b=true)
-  public boolean amrV5So;
-  @aplz(a=true, b=true)
-  public boolean amrV7So;
-  @aplz(a=true, b=true)
-  public boolean amrV8So;
-  @aplz(a=true, b=true)
-  public boolean mipsSo;
-  @aplz(a=true, b=true)
+  @saveInSP(a=true, b=true)
+  public boolean amrV5So = false;
+  @saveInSP(a=true, b=true)
+  public boolean amrV7So = false;
+  @saveInSP(a=true, b=true)
+  public boolean amrV8So = false;
+  @saveInSP(a=true, b=true)
+  public boolean mipsSo = false;
+  @saveInSP(a=true, b=true)
   public String version = "";
-  @aplz(a=true, b=true)
-  public boolean x86So;
+  @saveInSP(a=true, b=true)
+  public boolean x86So = false;
   
   public String getSharedPreferencesName()
   {

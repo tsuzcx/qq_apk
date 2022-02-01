@@ -5,15 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vz;
-import com.tencent.mm.g.a.vz.b;
+import com.tencent.mm.autogen.a.adv;
+import com.tencent.mm.autogen.a.adv.b;
 import com.tencent.mm.plugin.wear.ui.WearYoLockUI;
 import com.tencent.mm.plugin.wear.ui.WearYoNoLockUI;
-import com.tencent.mm.protocal.protobuf.cyd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.protocal.protobuf.ghc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -23,110 +23,127 @@ import java.util.Set;
 
 public final class a
 {
-  private PowerManager uGW;
-  private KeyguardManager uGX;
-  LinkedHashMap<String, a.a> uHW;
+  private KeyguardManager WiC;
+  LinkedHashMap<String, a> Wjz;
+  private PowerManager powerManager;
   
   public a()
   {
-    AppMethodBeat.i(26453);
-    this.uHW = new LinkedHashMap();
-    this.uGW = ((PowerManager)ah.getContext().getSystemService("power"));
-    this.uGX = ((KeyguardManager)ah.getContext().getSystemService("keyguard"));
-    AppMethodBeat.o(26453);
+    AppMethodBeat.i(30135);
+    this.Wjz = new LinkedHashMap();
+    this.powerManager = ((PowerManager)MMApplicationContext.getContext().getSystemService("power"));
+    this.WiC = ((KeyguardManager)MMApplicationContext.getContext().getSystemService("keyguard"));
+    AppMethodBeat.o(30135);
   }
   
-  public static vz agi(String paramString)
+  public static adv bhG(String paramString)
   {
-    AppMethodBeat.i(26454);
-    vz localvz = new vz();
-    localvz.cNo.coO = 1;
-    localvz.cNo.username = paramString;
-    com.tencent.mm.sdk.b.a.ymk.l(localvz);
-    AppMethodBeat.o(26454);
-    return localvz;
+    AppMethodBeat.i(30136);
+    adv localadv = new adv();
+    localadv.iig.hAf = 1;
+    localadv.iig.username = paramString;
+    localadv.publish();
+    AppMethodBeat.o(30136);
+    return localadv;
   }
   
-  public final void cYO()
+  public final void ioe()
   {
-    AppMethodBeat.i(26455);
-    if (agi(null).cNp.cNq != 0)
+    AppMethodBeat.i(30137);
+    if (bhG(null).iih.iii != 0)
     {
-      ab.i("MicroMsg.wear.WearYoLogic", "current show yo");
-      AppMethodBeat.o(26455);
+      Log.i("MicroMsg.wear.WearYoLogic", "current show yo");
+      AppMethodBeat.o(30137);
       return;
     }
     for (;;)
     {
+      Object localObject1;
       Object localObject5;
-      synchronized (this.uHW)
+      synchronized (this.Wjz)
       {
-        Object localObject1 = this.uHW.entrySet().iterator();
+        localObject1 = this.Wjz.entrySet().iterator();
         if (!((Iterator)localObject1).hasNext()) {
-          break label305;
+          break label363;
         }
-        localObject1 = (a.a)((Map.Entry)((Iterator)localObject1).next()).getValue();
+        localObject1 = (a)((Map.Entry)((Iterator)localObject1).next()).getValue();
         if (localObject1 != null) {
-          this.uHW.remove(((a.a)localObject1).tac);
+          this.Wjz.remove(((a)localObject1).hgk);
         }
         if (localObject1 != null)
         {
-          localObject5 = ((a.a)localObject1).content;
-          ??? = new cyd();
-          localObject5 = br.F((String)localObject5, "msg");
+          localObject5 = ((a)localObject1).content;
+          ??? = new ghc();
+          localObject5 = XmlParser.parseXml((String)localObject5, "msg", null);
           if (localObject5 != null) {
-            break label239;
+            break label297;
           }
-          ((cyd)???).jKs = 0;
+          ((ghc)???).vhJ = 0;
           localObject5 = new Intent();
-          ((Intent)localObject5).putExtra("key_talker", ((a.a)localObject1).tac);
+          ((Intent)localObject5).putExtra("key_talker", ((a)localObject1).hgk);
         }
       }
       try
       {
-        ((Intent)localObject5).putExtra("key_data", ((cyd)???).toByteArray());
-        label168:
+        ((Intent)localObject5).putExtra("key_data", ((ghc)???).toByteArray());
+        label169:
         ((Intent)localObject5).addFlags(268435456);
         int i;
-        if ((this.uGX.inKeyguardRestrictedInputMode()) || (!this.uGW.isScreenOn()))
+        if ((this.WiC.inKeyguardRestrictedInputMode()) || (!this.powerManager.isScreenOn()))
         {
           i = 1;
-          label198:
+          label199:
           if (i == 0) {
-            break label287;
+            break label345;
           }
-          ((Intent)localObject5).setClass(ah.getContext(), WearYoLockUI.class);
+          ((Intent)localObject5).setClass(MMApplicationContext.getContext(), WearYoLockUI.class);
         }
         for (;;)
         {
-          ah.getContext().startActivity((Intent)localObject5);
-          AppMethodBeat.o(26455);
+          localObject1 = MMApplicationContext.getContext();
+          ??? = new com.tencent.mm.hellhoundlib.b.a().cG(localObject5);
+          com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)???).aYi(), "com/tencent/mm/plugin/wear/model/yo/WearYoLogic", "publishNextYoMessage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)???).sb(0));
+          com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/wear/model/yo/WearYoLogic", "publishNextYoMessage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(30137);
           return;
           localObject2 = finally;
-          AppMethodBeat.o(26455);
+          AppMethodBeat.o(30137);
           throw localObject2;
-          label239:
-          ((cyd)???).jKs = bo.getInt((String)((Map)localObject5).get(".msg.yo.$type"), 0);
-          ((cyd)???).jJu = bo.getInt((String)((Map)localObject5).get(".msg.yo.$count"), 0);
+          label297:
+          ((ghc)???).vhJ = Util.getInt((String)((Map)localObject5).get(".msg.yo.$type"), 0);
+          ((ghc)???).vgN = Util.getInt((String)((Map)localObject5).get(".msg.yo.$count"), 0);
           break;
           i = 0;
-          break label198;
-          label287:
-          ((Intent)localObject5).setClass(ah.getContext(), WearYoNoLockUI.class);
+          break label199;
+          label345:
+          ((Intent)localObject5).setClass(MMApplicationContext.getContext(), WearYoNoLockUI.class);
         }
       }
       catch (IOException localIOException)
       {
-        break label168;
+        break label169;
       }
-      label305:
+      label363:
       Object localObject3 = null;
+    }
+  }
+  
+  final class a
+  {
+    String content;
+    String hgk;
+    
+    public a(String paramString1, String paramString2)
+    {
+      this.hgk = paramString1;
+      this.content = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.g.a
  * JD-Core Version:    0.7.0.1
  */

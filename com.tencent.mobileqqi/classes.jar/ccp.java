@@ -1,54 +1,42 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.activity.ImageViewParameter;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.open.adapter.OpenAppClient;
 
 public class ccp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ccp(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, ImageViewParameter paramImageViewParameter, String paramString) {}
+  public ccp(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, Uri paramUri, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_Int == -3000) && (this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.istroop == 1001))
+    try
     {
-      paramView = PkgTools.c(this.jdField_a_of_type_JavaLangString);
-      paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, paramView);
-      if (paramView != null) {
-        paramView.b();
+      localObject3 = BaseApplicationImpl.getContext().getContentResolver().query(this.jdField_a_of_type_AndroidNetUri, null, this.jdField_a_of_type_JavaLangString, null, null);
+      localObject1 = localObject3;
+      if (localObject3 != null)
+      {
+        ((Cursor)localObject3).getCount();
+        localObject1 = localObject3;
       }
-      return;
     }
-    if ((this.jdField_a_of_type_Int == -3000) || (this.jdField_a_of_type_Int == -3004) || (this.jdField_a_of_type_Int == -30002) || (this.jdField_a_of_type_Int == -30003))
+    catch (Exception localException)
     {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.b, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.action, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.shareAppID, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.msgtype);
-      return;
+      for (;;)
+      {
+        Object localObject3;
+        Object localObject1;
+        Object localObject2 = null;
+      }
     }
-    if (this.jdField_a_of_type_Int == -3005)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.b, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.action, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.shareAppID, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a.msgtype);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == -3001)
-    {
-      paramView = new Bundle();
-      paramView.putString("schemaurl", this.jdField_a_of_type_JavaLangString);
-      paramView.putString("uin", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.b.a());
-      paramView.putString("vkey", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.b.f());
-      OpenAppClient.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a, paramView);
-      return;
-    }
-    PicItemBuilder.a(paramView.getContext(), paramView, this.jdField_a_of_type_ComTencentMobileqqActivityImageViewParameter.a, ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a));
+    localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.obtainMessage(8);
+    ((Message)localObject3).obj = localObject1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.sendMessage((Message)localObject3);
   }
 }
 

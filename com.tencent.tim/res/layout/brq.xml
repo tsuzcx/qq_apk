@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.util.StoryFeedBannerContainer android:orientation="vertical" android:background="@drawable/aao" android:paddingLeft="7.5dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/j3n" android:layout_width="fill_parent" android:layout_height="36.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/jfb" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/s9m" android:layout_centerVertical="true" android:contentDescription="@string/s9q" />
+        <ImageView android:id="@id/aga" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="36.0dip" android:layout_height="20.0dip" android:src="@drawable/cmm" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/s9k" />
+    </RelativeLayout>
+    <com.tencent.widget.HorizontalListView android:id="@id/d7w" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="95.0dip" android:layout_below="@id/j3n" />
+</com.qzone.widget.util.StoryFeedBannerContainer>

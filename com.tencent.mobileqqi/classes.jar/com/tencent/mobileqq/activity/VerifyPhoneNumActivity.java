@@ -19,6 +19,7 @@ import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToastNotifier;
 import com.tencent.qphone.base.util.QLog;
+import duv;
 import duw;
 import dux;
 import duy;
@@ -26,7 +27,6 @@ import duz;
 import dva;
 import dvb;
 import dvc;
-import dvd;
 import mqq.observer.WtloginObserver;
 
 public class VerifyPhoneNumActivity
@@ -35,14 +35,14 @@ public class VerifyPhoneNumActivity
 {
   private static final String jdField_a_of_type_JavaLangString = "VerifyPhoneNumActivity";
   public Dialog a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new duw(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new duv(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new dvb(this);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new dva(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   protected QQToastNotifier a;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new dva(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new duz(this);
   private boolean jdField_a_of_type_Boolean = false;
   private byte[] jdField_a_of_type_ArrayOfByte = null;
   private Handler jdField_b_of_type_AndroidOsHandler = new Handler();
@@ -56,11 +56,11 @@ public class VerifyPhoneNumActivity
   private void e()
   {
     this.k.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234655));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234654));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234656));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234655));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234654));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131234653));
     try
     {
       if ((this.d != null) && (this.d.length() > 4))
@@ -141,19 +141,19 @@ public class VerifyPhoneNumActivity
   
   private void l()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new dvc(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new dvb(this));
   }
   
   private void m()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new dvd(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new dvc(this));
   }
   
   protected void a(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new duy(this, paramInt));
+      this.jdField_a_of_type_AndroidOsHandler.post(new dux(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -194,7 +194,7 @@ public class VerifyPhoneNumActivity
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new dux(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new duw(this));
       return;
     }
     catch (Exception localException)
@@ -220,7 +220,7 @@ public class VerifyPhoneNumActivity
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new duz(this));
+      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new duy(this));
       return;
     }
     LoginActivity.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
@@ -234,11 +234,11 @@ public class VerifyPhoneNumActivity
     {
     default: 
       return;
-    case 2131234655: 
+    case 2131234654: 
       l();
       g();
       return;
-    case 2131234656: 
+    case 2131234655: 
       l();
       h();
       return;

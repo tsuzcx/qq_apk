@@ -1,65 +1,127 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import a.l;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.content.Intent;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordAlbumPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "enable", "", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "onClick", "", "v", "Landroid/view/View;", "setEnable", "setVisibility", "visibility", "", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoAddonTextPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/TextView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/TextView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/TextView;", "setView", "(Landroid/widget/TextView;)V", "setText", "", "wording", "", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r
-  implements View.OnClickListener, q
+  implements v
 {
-  public static final r.a qcO;
-  public boolean enable;
-  private ImageView mCy;
+  private a GrC;
+  private TextView NKC;
   
-  static
+  public r(TextView paramTextView, a parama)
   {
-    AppMethodBeat.i(150695);
-    qcO = new r.a((byte)0);
-    AppMethodBeat.o(150695);
+    AppMethodBeat.i(75575);
+    this.NKC = paramTextView;
+    this.GrC = parama;
+    AppMethodBeat.o(75575);
   }
   
-  public r(ImageView paramImageView, d paramd)
+  public final void a(RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(150694);
-    this.mCy = paramImageView;
-    this.mCy.setOnClickListener((View.OnClickListener)this);
-    this.mCy.setImageDrawable(aj.g(this.mCy.getContext(), 2131231436, -1));
-    this.enable = true;
-    AppMethodBeat.o(150694);
+    AppMethodBeat.i(280713);
+    v.a.a(this, paramRecordConfigProvider);
+    AppMethodBeat.o(280713);
   }
   
-  public final boolean cgq()
+  public final void bwk()
   {
-    return false;
+    AppMethodBeat.i(280731);
+    s.u(this, "this");
+    AppMethodBeat.o(280731);
   }
   
   public final String name()
   {
-    return null;
+    AppMethodBeat.i(280719);
+    String str = v.a.b(this);
+    AppMethodBeat.o(280719);
+    return str;
   }
   
-  public final void onClick(View paramView) {}
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(280725);
+    s.u(this, "this");
+    AppMethodBeat.o(280725);
+  }
   
-  public final void onPause() {}
+  public final boolean onBackPress()
+  {
+    AppMethodBeat.i(280741);
+    s.u(this, "this");
+    AppMethodBeat.o(280741);
+    return false;
+  }
   
-  public final void onResume() {}
+  public final void onDetach()
+  {
+    AppMethodBeat.i(280748);
+    s.u(this, "this");
+    AppMethodBeat.o(280748);
+  }
   
-  public final void release() {}
+  public final void onPause()
+  {
+    AppMethodBeat.i(280757);
+    s.u(this, "this");
+    AppMethodBeat.o(280757);
+  }
   
-  public final void reset() {}
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(280764);
+    v.a.a(this, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(280764);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(280775);
+    s.u(this, "this");
+    AppMethodBeat.o(280775);
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(280785);
+    s.u(this, "this");
+    AppMethodBeat.o(280785);
+  }
+  
+  public final void reset()
+  {
+    AppMethodBeat.i(280796);
+    s.u(this, "this");
+    AppMethodBeat.o(280796);
+  }
+  
+  public final void setText(String paramString)
+  {
+    AppMethodBeat.i(75574);
+    if (Util.isNullOrNil(paramString))
+    {
+      this.NKC.setVisibility(8);
+      AppMethodBeat.o(75574);
+      return;
+    }
+    this.NKC.setVisibility(0);
+    this.NKC.setText((CharSequence)paramString);
+    AppMethodBeat.o(75574);
+  }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(150693);
-    if (this.enable) {
-      this.mCy.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(150693);
+    AppMethodBeat.i(280806);
+    s.u(this, "this");
+    AppMethodBeat.o(280806);
   }
 }
 

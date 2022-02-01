@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="120px"
+    version="1.1"
+    viewBox="0 0 120 120"
+    width="120px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>shortvideo_play_btn</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="1104"
+        stroke="none"
+        stroke-width="1">
+        <g id="shortvideo_play_btn">
+            <g id="Group-4">
+                <circle
+                    cx="60"
+                    cy="60"
+                    fill="#000000"
+                    fill-opacity="0.4"
+                    id="Oval-2"
+                    r="60"></circle>
+                <path
+                    d="M60,117 C91.4802307,117 117,91.4802307 117,60 C117,28.5197693 91.4802307,3 60,3 C28.5197693,3 3,28.5197693 3,60 C3,91.4802307 28.5197693,117 60,117 Z M60,120 C26.862915,120 0,93.137085 0,60 C0,26.862915 26.862915,0 60,0 C93.137085,0 120,26.862915 120,60 C120,93.137085 93.137085,120 60,120 Z"
+                    fill="#FFFFFF"
+                    id="Oval-2"
+                    opacity="0.800000012"></path>
+                <path
+                    d="M46.5,38.2231522 C46.5,36.5620006 47.6561443,35.897658 49.0798073,36.7378182 L85.9201927,58.4787958 C87.3449809,59.31962 87.3438557,60.6835295 85.9201927,61.5236897 L49.0798073,83.2646673 C47.6550191,84.1054916 46.5,83.4354808 46.5,81.7793333 L46.5,38.2231522 Z"
+                    fill="#FFFFFF"
+                    id="Rectangle-98"
+                    opacity="0.800000012"></path>
+            </g>
+        </g>
+    </g>
+</svg>

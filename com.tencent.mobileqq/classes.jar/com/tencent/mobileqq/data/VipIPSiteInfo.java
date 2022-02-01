@@ -3,13 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apfu;
 import java.util.List;
 
 public class VipIPSiteInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new apfu();
+  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new VipIPSiteInfo.1();
   public int extId;
   public String extStr;
   public String ipContent;
@@ -46,7 +45,38 @@ public class VipIPSiteInfo
   
   public String toString()
   {
-    return "VipIPSiteInfo{ipID=" + this.ipID + ", ipName='" + this.ipName + '\'' + ", ipDesc='" + this.ipDesc + '\'' + ", ipUrl='" + this.ipUrl + '\'' + ", itemSize=" + this.itemSize + ", strType='" + this.strType + '\'' + ", extId=" + this.extId + ", extStr='" + this.extStr + '\'' + ", ipLogo='" + this.ipLogo + '\'' + ", ipContent='" + this.ipContent + '\'' + ", ipList=" + this.ipList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VipIPSiteInfo{ipID=");
+    localStringBuilder.append(this.ipID);
+    localStringBuilder.append(", ipName='");
+    localStringBuilder.append(this.ipName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ipDesc='");
+    localStringBuilder.append(this.ipDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ipUrl='");
+    localStringBuilder.append(this.ipUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", itemSize=");
+    localStringBuilder.append(this.itemSize);
+    localStringBuilder.append(", strType='");
+    localStringBuilder.append(this.strType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extId=");
+    localStringBuilder.append(this.extId);
+    localStringBuilder.append(", extStr='");
+    localStringBuilder.append(this.extStr);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ipLogo='");
+    localStringBuilder.append(this.ipLogo);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ipContent='");
+    localStringBuilder.append(this.ipContent);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ipList=");
+    localStringBuilder.append(this.ipList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

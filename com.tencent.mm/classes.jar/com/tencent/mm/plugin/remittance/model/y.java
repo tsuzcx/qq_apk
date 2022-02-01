@@ -1,48 +1,68 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.um;
+import com.tencent.mm.protocal.protobuf.un;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class y
-  extends m
+  extends w
 {
-  public y(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  private um Ojq;
+  public un Ojr;
+  private h callback;
+  private final c rr;
+  
+  public y(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(44788);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("trans_id", paramString1);
-    localHashMap.put("transfer_id", paramString2);
-    localHashMap.put("receiver_name", paramString3);
-    localHashMap.put("from", String.valueOf(paramInt2));
-    localHashMap.put("invalid_time", String.valueOf(paramInt1));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(44788);
+    AppMethodBeat.i(288842);
+    Log.i("MicroMsg.NetScenePersonalPayPlaceOrder", "appID = %s ，outPrepayId = %s ,,totalAmount = %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong) });
+    c.a locala = new c.a();
+    locala.otE = new um();
+    locala.otF = new un();
+    locala.funcId = 4304;
+    locala.uri = "/cgi-bin/mmpay-bin/personalpayplaceorder";
+    this.rr = locala.bEF();
+    this.Ojq = ((um)c.b.b(this.rr.otB));
+    this.Ojq.appid = paramString1;
+    this.Ojq.Olk = paramString2;
+    this.Ojq.Oll = paramLong;
+    AppMethodBeat.o(288842);
   }
   
-  public final int getFuncId()
+  public final int doScene(g paramg, h paramh)
   {
-    return 1545;
+    AppMethodBeat.i(288849);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(288849);
+    return i;
   }
   
-  public final int getTenpayCgicmd()
+  public final int getType()
   {
-    return 0;
+    return 4304;
   }
   
-  public final String getUri()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    return "/cgi-bin/mmpay-bin/transferresendmsg";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(44789);
-    ab.d("Micromsg.NetSceneTenpayRemittanceResendMsg", "errCode " + paramInt + " errMsg: " + paramString);
-    AppMethodBeat.o(44789);
+    AppMethodBeat.i(288853);
+    Log.i("MicroMsg.NetScenePersonalPayPlaceOrder", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.Ojr = ((un)c.c.b(((c)params).otC));
+    }
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(288853);
   }
 }
 

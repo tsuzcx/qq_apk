@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.JumpAction;
 
 public class hby
-  implements DialogInterface.OnDismissListener
+  implements Handler.Callback
 {
   public hby(JumpAction paramJumpAction) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((JumpAction.a(this.a) instanceof LoginActivity)) {
-      ((LoginActivity)JumpAction.a(this.a)).finish();
-    }
+    ((BaseActivity)JumpAction.a(this.a)).finish();
+    return true;
   }
 }
 

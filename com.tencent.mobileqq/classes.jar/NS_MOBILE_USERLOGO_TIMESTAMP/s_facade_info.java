@@ -26,15 +26,16 @@ public final class s_facade_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.facade_id != null) {
-      paramJceOutputStream.write(this.facade_id, 0);
+    String str = this.facade_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.timestamp, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_USERLOGO_TIMESTAMP.s_facade_info
  * JD-Core Version:    0.7.0.1
  */

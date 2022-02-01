@@ -1,67 +1,54 @@
 package com.b.a.a;
 
-import android.os.Handler;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.b.a.k;
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-abstract class e
+public abstract class e
+  implements a
 {
-  private a bmv;
-  long bmw;
-  final Handler handler;
+  private final ExecutorService cBy = Executors.newSingleThreadExecutor();
   
-  e(Handler paramHandler)
+  final void af(List<File> paramList)
   {
-    if (paramHandler != null) {}
-    for (;;)
+    Object localObject = paramList.iterator();
+    for (long l1 = 0L; ((Iterator)localObject).hasNext(); l1 = ((File)((Iterator)localObject).next()).length() + l1) {}
+    paramList.size();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      this.handler = paramHandler;
-      return;
-      paramHandler = new Handler();
-    }
-  }
-  
-  final void p(long paramLong1, long paramLong2)
-  {
-    stop();
-    this.bmw = paramLong1;
-    this.bmv = new a((byte)0);
-    a.a(this.bmv, paramLong2);
-  }
-  
-  final void stop()
-  {
-    if (this.bmv != null) {
-      a.a(this.bmv);
-    }
-  }
-  
-  abstract void th();
-  
-  final class a
-    implements Runnable
-  {
-    private boolean bmx;
-    private boolean started;
-    
-    private a() {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(55612);
-      if (this.bmx)
+      localObject = (File)paramList.next();
+      if (!bG(l1))
       {
-        AppMethodBeat.o(55612);
-        return;
+        long l2 = ((File)localObject).length();
+        if (((File)localObject).delete())
+        {
+          l1 -= l2;
+          new StringBuilder("Cache file ").append(localObject).append(" is deleted because it exceeds cache limit");
+          k.OV();
+        }
+        else
+        {
+          new StringBuilder("Error deleting file ").append(localObject).append(" for trimming cache");
+          k.OX();
+        }
       }
-      e.this.th();
-      e.this.handler.postDelayed(this, e.this.bmw);
-      AppMethodBeat.o(55612);
     }
+  }
+  
+  protected abstract boolean bG(long paramLong);
+  
+  public final void s(File paramFile)
+  {
+    this.cBy.submit(new e.a(this, paramFile));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.b.a.a.e
  * JD-Core Version:    0.7.0.1
  */

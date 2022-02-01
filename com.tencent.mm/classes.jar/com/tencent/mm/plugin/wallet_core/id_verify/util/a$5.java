@@ -8,20 +8,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a$5
   implements DialogInterface.OnCancelListener
 {
-  a$5(Activity paramActivity) {}
+  a$5(boolean paramBoolean, Activity paramActivity) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(46670);
-    if (this.ueR) {
-      this.gjR.finish();
+    AppMethodBeat.i(70180);
+    if (this.VCx) {
+      this.hkm.finish();
     }
-    AppMethodBeat.o(46670);
+    AppMethodBeat.o(70180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.util.a.5
  * JD-Core Version:    0.7.0.1
  */

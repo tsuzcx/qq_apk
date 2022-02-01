@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/d6"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/el9" android:background="@drawable/bxa" android:layout_width="fill_parent" android:layout_height="@dimen/d6" />
+    <com.tencent.mm.pluginsdk.ui.seekbar.HeroSeekBarView android:gravity="center" android:id="@id/el_" android:layout_width="fill_parent" android:layout_height="@dimen/d6" />
+</LinearLayout>

@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.view.ViewStub.OnInflateListener;
 import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class cro
-  implements ViewStub.OnInflateListener
+  extends QZoneObserver
 {
   public cro(Leba paramLeba) {}
   
-  public void onInflate(ViewStub paramViewStub, View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.f();
-    if (!Leba.a(this.a)) {
-      this.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
     }
-    Leba.a(this.a, true);
+    if (paramBoolean1)
+    {
+      this.a.a.notifyDataSetChanged();
+      Leba.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
+      }
+    }
   }
 }
 

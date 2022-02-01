@@ -23,7 +23,7 @@ public final class ApkDownUrl
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76029);
+    AppMethodBeat.i(102275);
     this.type = paramJceInputStream.read(this.type, 0, true);
     if (cache_urlList == null)
     {
@@ -31,20 +31,20 @@ public final class ApkDownUrl
       cache_urlList.add("");
     }
     this.urlList = ((ArrayList)paramJceInputStream.read(cache_urlList, 1, true));
-    AppMethodBeat.o(76029);
+    AppMethodBeat.o(102275);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76028);
+    AppMethodBeat.i(102274);
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.urlList, 1);
-    AppMethodBeat.o(76028);
+    AppMethodBeat.o(102274);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.ApkDownUrl
  * JD-Core Version:    0.7.0.1
  */

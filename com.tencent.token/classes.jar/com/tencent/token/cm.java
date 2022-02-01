@@ -1,443 +1,767 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.encrypt.TknEncManager;
-import com.tencent.token.utils.encrypt.a;
-import com.tencent.token.utils.encrypt.random.PRNGFixes;
-import com.tencent.token.utils.encrypt.random.SecureRandom;
-import com.tencent.token.utils.w;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.Fragment.c;
+import java.io.PrintWriter;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 
-public class cm
+public final class cm
+  extends cv
+  implements ct.g
 {
-  public byte[] a;
-  public int[] b = new int[6];
-  private long c = 0L;
-  private int d = 30;
-  private long e = 0L;
-  private String f = "";
-  private int g = 0;
+  final ct a;
+  public ArrayList<a> b = new ArrayList();
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public boolean i;
+  boolean j = true;
+  public String k;
+  boolean l;
+  public int m = -1;
+  public int n;
+  public CharSequence o;
+  public int p;
+  public CharSequence q;
+  public ArrayList<String> r;
+  public ArrayList<String> s;
+  public boolean t = false;
+  ArrayList<Runnable> u;
   
-  public cm()
+  public cm(ct paramct)
   {
-    e();
+    this.a = paramct;
   }
   
-  private void b(long paramLong)
+  private void b(int paramInt, Fragment paramFragment, String paramString)
   {
-    Object localObject1 = Calendar.getInstance();
-    ((Calendar)localObject1).setTime(new Date(paramLong));
-    ((Calendar)localObject1).setTimeZone(TimeZone.getTimeZone("GMT+8"));
-    Object localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(((Calendar)localObject1).get(1)).append('-').append(w.a(((Calendar)localObject1).get(2) + 1, 2)).append('-').append(w.a(((Calendar)localObject1).get(5), 2)).append(' ').append(w.a(((Calendar)localObject1).get(11), 2)).append(':').append(w.a(((Calendar)localObject1).get(12), 2)).append(':').append(w.a(((Calendar)localObject1).get(13) / 30 * 30, 2));
-    localObject1 = ((StringBuffer)localObject2).toString().getBytes();
-    if (this.a == null) {
-      return;
-    }
-    localObject2 = new byte[this.a.length + localObject1.length];
-    System.arraycopy(this.a, 0, localObject2, 0, this.a.length);
-    System.arraycopy(localObject1, 0, localObject2, this.a.length, localObject1.length);
-    localObject1 = new fc().a((byte[])localObject2);
-    localObject2 = new byte[localObject1.length * 2];
-    int i = 0;
-    while (i < localObject1.length)
+    Object localObject = paramFragment.getClass();
+    int i1 = ((Class)localObject).getModifiers();
+    if ((!((Class)localObject).isAnonymousClass()) && (Modifier.isPublic(i1)) && ((!((Class)localObject).isMemberClass()) || (Modifier.isStatic(i1))))
     {
-      localObject2[(i * 2)] = ((byte)((localObject1[i] & 0xFF) >>> 4));
-      localObject2[(i * 2 + 1)] = ((byte)(localObject1[i] & 0xF));
-      i += 1;
-    }
-    i = 0;
-    while (i < 6)
-    {
-      int j = 0;
-      int k = 0;
-      while (j < 9)
+      paramFragment.s = this.a;
+      if (paramString != null)
       {
-        k += localObject2[(i + 1 + j * 7)];
-        j += 1;
-      }
-      this.b[i] = (k % 10);
-      i += 1;
-    }
-    this.e = (paramLong / 1000L / this.d * this.d * 1000L);
-  }
-  
-  public static String d()
-  {
-    try
-    {
-      String str = o().getString("token_info", "");
-      return str;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  private int[] m()
-  {
-    int[] arrayOfInt = new int[16];
-    Object localObject1 = new fc();
-    Object localObject2 = new fc();
-    for (;;)
-    {
-      try
-      {
-        localObject1 = ((fc)localObject1).a(((fc)localObject2).a(this.a));
-        localObject2 = new byte[localObject1.length * 2];
-        i = 0;
-        if (i < localObject1.length)
+        if ((paramFragment.A != null) && (!paramString.equals(paramFragment.A)))
         {
-          localObject2[(i * 2)] = ((byte)((localObject1[i] & 0xFF) >>> 4));
-          localObject2[(i * 2 + 1)] = ((byte)(localObject1[i] & 0xF));
-          i += 1;
-          continue;
-          if (arrayOfInt[0] == 0) {
-            arrayOfInt[0] = 1;
+          localObject = new StringBuilder("Can't change tag of fragment ");
+          ((StringBuilder)localObject).append(paramFragment);
+          ((StringBuilder)localObject).append(": was ");
+          ((StringBuilder)localObject).append(paramFragment.A);
+          ((StringBuilder)localObject).append(" now ");
+          ((StringBuilder)localObject).append(paramString);
+          throw new IllegalStateException(((StringBuilder)localObject).toString());
+        }
+        paramFragment.A = paramString;
+      }
+      if (paramInt != 0) {
+        if (paramInt != -1)
+        {
+          if ((paramFragment.y != 0) && (paramFragment.y != paramInt))
+          {
+            paramString = new StringBuilder("Can't change container ID of fragment ");
+            paramString.append(paramFragment);
+            paramString.append(": was ");
+            paramString.append(paramFragment.y);
+            paramString.append(" now ");
+            paramString.append(paramInt);
+            throw new IllegalStateException(paramString.toString());
           }
-          return arrayOfInt;
-        }
-      }
-      catch (Exception localException)
-      {
-        return arrayOfInt;
-      }
-      int i = 0;
-      while (i < 16)
-      {
-        int j = 0;
-        int k = 0;
-        while (j < 4)
-        {
-          k += localObject2[(j * 16 + i)];
-          j += 1;
-        }
-        arrayOfInt[i] = (k % 10);
-        i += 1;
-      }
-    }
-  }
-  
-  private String n()
-  {
-    byte[] arrayOfByte = new byte[16];
-    Object localObject2 = cx.b();
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (((String)localObject2).length() != 0) {}
-    }
-    else
-    {
-      localObject1 = System.getProperty("microedition.platform");
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = "";
-    }
-    int j = Runtime.getRuntime().hashCode();
-    try
-    {
-      PRNGFixes.a();
-      localObject1 = new SecureRandom();
-      SecureRandom localSecureRandom = new SecureRandom();
-      StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append((String)localObject2).append(localSecureRandom.nextInt()).append(System.currentTimeMillis()).append(j).append(new Object().hashCode());
-      ((SecureRandom)localObject1).a(localStringBuffer.toString().getBytes());
-      int i = 1;
-      while (i < arrayOfByte.length)
-      {
-        arrayOfByte[i] = ((byte)(Math.abs(((SecureRandom)localObject1).nextInt()) % 256));
-        localSecureRandom.a(localSecureRandom.a(i));
-        localStringBuffer = new StringBuffer();
-        localStringBuffer.append(System.currentTimeMillis() + "").append(localSecureRandom.nextInt()).append(j).append(new Object().hashCode());
-        localStringBuffer.insert(Math.abs(localSecureRandom.nextInt()) % localStringBuffer.length(), (String)localObject2);
-        ((SecureRandom)localObject1).a(localStringBuffer.toString().getBytes());
-        i += 1;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-      arrayOfByte[0] = ((byte)(Math.abs(localException.nextInt()) % 64));
-    }
-    return dg.a(arrayOfByte);
-  }
-  
-  private static SharedPreferences o()
-  {
-    switch ()
-    {
-    default: 
-      return RqdApplication.l().getSharedPreferences("token_save_info", 0);
-    case 0: 
-      return RqdApplication.l().getSharedPreferences("token_save_info_test", 0);
-    case 1: 
-      return RqdApplication.l().getSharedPreferences("token_save_info", 0);
-    case 2: 
-      return RqdApplication.l().getSharedPreferences("token_save_info_exp", 0);
-    }
-    return RqdApplication.l().getSharedPreferences("token_save_info_gray", 0);
-  }
-  
-  public String a(int paramInt)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.c;
-    long l3 = paramInt;
-    Object localObject1 = Calendar.getInstance();
-    ((Calendar)localObject1).setTime(new Date(l1 + l2 + l3));
-    ((Calendar)localObject1).setTimeZone(TimeZone.getTimeZone("GMT+8"));
-    Object localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(((Calendar)localObject1).get(1)).append('-').append(w.a(((Calendar)localObject1).get(2) + 1, 2)).append('-').append(w.a(((Calendar)localObject1).get(5), 2)).append(' ').append(w.a(((Calendar)localObject1).get(11), 2)).append(':').append(w.a(((Calendar)localObject1).get(12), 2)).append(':').append(w.a(((Calendar)localObject1).get(13) / 30 * 30, 2));
-    localObject1 = ((StringBuffer)localObject2).toString().getBytes();
-    if (this.a == null) {
-      return "";
-    }
-    localObject2 = new byte[this.a.length + localObject1.length];
-    System.arraycopy(this.a, 0, localObject2, 0, this.a.length);
-    System.arraycopy(localObject1, 0, localObject2, this.a.length, localObject1.length);
-    localObject2 = new fc().a((byte[])localObject2);
-    localObject1 = new byte[localObject2.length * 2];
-    paramInt = 0;
-    while (paramInt < localObject2.length)
-    {
-      localObject1[(paramInt * 2)] = ((byte)((localObject2[paramInt] & 0xFF) >>> 4));
-      localObject1[(paramInt * 2 + 1)] = ((byte)(localObject2[paramInt] & 0xF));
-      paramInt += 1;
-    }
-    localObject2 = new StringBuffer();
-    paramInt = 0;
-    while (paramInt < 6)
-    {
-      int i = 0;
-      int j = 0;
-      while (i < 9)
-      {
-        j += localObject1[(paramInt + 1 + i * 7)];
-        i += 1;
-      }
-      ((StringBuffer)localObject2).append(j % 10);
-      paramInt += 1;
-    }
-    return ((StringBuffer)localObject2).toString();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.c = paramLong;
-    this.e = 0L;
-  }
-  
-  public void a(ex paramex)
-  {
-    this.a = new fc().a(dg.a(paramex.e()));
-  }
-  
-  public void a(String paramString)
-  {
-    new fv().a(paramString);
-    this.f = paramString;
-  }
-  
-  public boolean a()
-  {
-    return (this.a == null) || (this.a.length == 0);
-  }
-  
-  public void b()
-  {
-    this.a = null;
-  }
-  
-  public void c()
-  {
-    try
-    {
-      ge localge = new ge();
-      String str;
-      Object localObject2;
-      byte[] arrayOfByte;
-      if ((this.a != null) && (this.a.length > 0))
-      {
-        str = n();
-        localObject2 = new a();
-        arrayOfByte = ((a)localObject2).b(this.a, com.tencent.token.utils.encrypt.c.a(str));
-        if (arrayOfByte != null) {
-          break label176;
-        }
-        arrayOfByte = ((a)localObject2).b(this.a, com.tencent.token.utils.encrypt.c.a(str));
-      }
-      for (;;)
-      {
-        localObject2 = o();
-        boolean bool;
-        if (localObject2 != null)
-        {
-          bool = true;
-          h.a(bool);
-          localObject2 = ((SharedPreferences)localObject2).edit();
-          ((SharedPreferences.Editor)localObject2).putInt("token_type", 2);
-          ((SharedPreferences.Editor)localObject2).putString("token_info", str);
-          ((SharedPreferences.Editor)localObject2).commit();
-          localge.a(this.c, this.d, arrayOfByte);
-        }
-        for (;;)
-        {
-          return;
-          bool = false;
-          break;
-          localge.a(this.c, this.d, this.a);
-        }
-      }
-    }
-    finally {}
-  }
-  
-  public void e()
-  {
-    boolean bool = false;
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = ga.a();
-        Object localObject3 = new ge();
-        ((ge)localObject3).a((SQLiteDatabase)localObject1);
-        if (!((ge)localObject3).a())
-        {
-          ((ge)localObject3).b = 0L;
-          ((ge)localObject3).d = null;
-          ((ge)localObject3).c = 30;
-          ((ge)localObject3).b((SQLiteDatabase)localObject1);
-        }
-        Object localObject4 = new fv();
-        ((fv)localObject4).a((SQLiteDatabase)localObject1);
-        if (!((fv)localObject4).a())
-        {
-          ((fv)localObject4).b = "";
-          ((fv)localObject4).b((SQLiteDatabase)localObject1);
-        }
-        this.c = ((ge)localObject3).b;
-        this.a = ((ge)localObject3).d;
-        this.d = ((ge)localObject3).c;
-        this.f = ((fv)localObject4).b;
-        localObject1 = o();
-        if (localObject1 != null) {
-          bool = true;
-        }
-        h.a(bool);
-        localObject3 = ((SharedPreferences)localObject1).edit();
-        ((SharedPreferences.Editor)localObject3).putBoolean("token_status", true);
-        ((SharedPreferences.Editor)localObject3).commit();
-        if ((this.a != null) && (this.a.length > 0))
-        {
-          this.g = ((SharedPreferences)localObject1).getInt("token_type", 0);
-          if (2 != this.g) {
-            break label287;
-          }
-          localObject4 = ((SharedPreferences)localObject1).getString("token_info", "");
-          if ((localObject4 == null) || (((String)localObject4).length() == 0)) {
-            this.a = null;
-          }
+          paramFragment.y = paramInt;
+          paramFragment.z = paramInt;
         }
         else
         {
-          return;
+          localObject = new StringBuilder("Can't add fragment ");
+          ((StringBuilder)localObject).append(paramFragment);
+          ((StringBuilder)localObject).append(" with tag ");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(" to container view with no id");
+          throw new IllegalArgumentException(((StringBuilder)localObject).toString());
         }
-        a locala = new a();
-        localObject3 = locala.a(this.a, com.tencent.token.utils.encrypt.c.a((String)localObject4));
-        localObject1 = localObject3;
-        if (localObject3 == null) {
-          localObject1 = locala.a(this.a, com.tencent.token.utils.encrypt.c.a((String)localObject4));
+      }
+      a(new a(1, paramFragment));
+      return;
+    }
+    paramFragment = new StringBuilder("Fragment ");
+    paramFragment.append(((Class)localObject).getCanonicalName());
+    paramFragment.append(" must be a public static class to be  properly recreated from instance state.");
+    throw new IllegalStateException(paramFragment.toString());
+  }
+  
+  static boolean b(a parama)
+  {
+    parama = parama.b;
+    return (parama != null) && (parama.l) && (parama.J != null) && (!parama.C) && (!parama.B) && (parama.E());
+  }
+  
+  final Fragment a(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
+  {
+    int i2 = 0;
+    for (Fragment localFragment1 = paramFragment; i2 < this.b.size(); localFragment1 = paramFragment)
+    {
+      a locala = (a)this.b.get(i2);
+      int i1;
+      switch (locala.a)
+      {
+      case 4: 
+      case 5: 
+      default: 
+        paramFragment = localFragment1;
+        i1 = i2;
+        break;
+      case 8: 
+        this.b.add(i2, new a(9, localFragment1));
+        i1 = i2 + 1;
+        paramFragment = locala.b;
+        break;
+      case 3: 
+      case 6: 
+        paramArrayList.remove(locala.b);
+        paramFragment = localFragment1;
+        i1 = i2;
+        if (locala.b == localFragment1)
+        {
+          this.b.add(i2, new a(9, locala.b));
+          i1 = i2 + 1;
+          paramFragment = null;
         }
-        this.a = ((byte[])localObject1);
-        continue;
-        if (1 != this.g) {
-          break label316;
+        break;
+      case 2: 
+        Fragment localFragment2 = locala.b;
+        int i6 = localFragment2.z;
+        int i4 = paramArrayList.size() - 1;
+        paramFragment = localFragment1;
+        i1 = i2;
+        int i3 = 0;
+        i2 = i4;
+        while (i2 >= 0)
+        {
+          Fragment localFragment3 = (Fragment)paramArrayList.get(i2);
+          i4 = i1;
+          localFragment1 = paramFragment;
+          int i5 = i3;
+          if (localFragment3.z == i6) {
+            if (localFragment3 == localFragment2)
+            {
+              i5 = 1;
+              i4 = i1;
+              localFragment1 = paramFragment;
+            }
+            else
+            {
+              i4 = i1;
+              localFragment1 = paramFragment;
+              if (localFragment3 == paramFragment)
+              {
+                this.b.add(i1, new a(9, localFragment3));
+                i4 = i1 + 1;
+                localFragment1 = null;
+              }
+              paramFragment = new a(3, localFragment3);
+              paramFragment.c = locala.c;
+              paramFragment.e = locala.e;
+              paramFragment.d = locala.d;
+              paramFragment.f = locala.f;
+              this.b.add(i4, paramFragment);
+              paramArrayList.remove(localFragment3);
+              i4 += 1;
+              i5 = i3;
+            }
+          }
+          i2 -= 1;
+          i1 = i4;
+          paramFragment = localFragment1;
+          i3 = i5;
         }
+        if (i3 != 0)
+        {
+          this.b.remove(i1);
+          i1 -= 1;
+        }
+        else
+        {
+          locala.a = 1;
+          paramArrayList.add(localFragment2);
+        }
+        break;
+      case 1: 
+      case 7: 
+        paramArrayList.add(locala.b);
+        i1 = i2;
+        paramFragment = localFragment1;
+      }
+      i2 = i1 + 1;
+    }
+    return localFragment1;
+  }
+  
+  public final cv a(int paramInt, Fragment paramFragment, String paramString)
+  {
+    b(paramInt, paramFragment, paramString);
+    return this;
+  }
+  
+  public final cv a(Fragment paramFragment)
+  {
+    a(new a(6, paramFragment));
+    return this;
+  }
+  
+  public final cv a(Fragment paramFragment, String paramString)
+  {
+    b(0, paramFragment, paramString);
+    return this;
+  }
+  
+  public final void a()
+  {
+    ArrayList localArrayList = this.u;
+    if (localArrayList != null)
+    {
+      int i1 = 0;
+      int i2 = localArrayList.size();
+      while (i1 < i2)
+      {
+        ((Runnable)this.u.get(i1)).run();
+        i1 += 1;
+      }
+      this.u = null;
+    }
+  }
+  
+  public final void a(int paramInt)
+  {
+    if (!this.i) {
+      return;
+    }
+    Object localObject1;
+    if (ct.a)
+    {
+      localObject1 = new StringBuilder("Bump nesting in ");
+      ((StringBuilder)localObject1).append(this);
+      ((StringBuilder)localObject1).append(" by ");
+      ((StringBuilder)localObject1).append(paramInt);
+    }
+    int i2 = this.b.size();
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      localObject1 = (a)this.b.get(i1);
+      if (((a)localObject1).b != null)
+      {
+        Object localObject2 = ((a)localObject1).b;
+        ((Fragment)localObject2).r += paramInt;
+        if (ct.a)
+        {
+          localObject2 = new StringBuilder("Bump nesting of ");
+          ((StringBuilder)localObject2).append(((a)localObject1).b);
+          ((StringBuilder)localObject2).append(" to ");
+          ((StringBuilder)localObject2).append(((a)localObject1).b.r);
+        }
+      }
+      i1 += 1;
+    }
+  }
+  
+  final void a(Fragment.c paramc)
+  {
+    int i1 = 0;
+    while (i1 < this.b.size())
+    {
+      a locala = (a)this.b.get(i1);
+      if (b(locala)) {
+        locala.b.a(paramc);
+      }
+      i1 += 1;
+    }
+  }
+  
+  public final void a(a parama)
+  {
+    this.b.add(parama);
+    parama.c = this.c;
+    parama.d = this.d;
+    parama.e = this.e;
+    parama.f = this.f;
+  }
+  
+  public final void a(String paramString, PrintWriter paramPrintWriter)
+  {
+    a(paramString, paramPrintWriter, true);
+  }
+  
+  public final void a(String paramString, PrintWriter paramPrintWriter, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mName=");
+      paramPrintWriter.print(this.k);
+      paramPrintWriter.print(" mIndex=");
+      paramPrintWriter.print(this.m);
+      paramPrintWriter.print(" mCommitted=");
+      paramPrintWriter.println(this.l);
+      if (this.g != 0)
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mTransition=#");
+        paramPrintWriter.print(Integer.toHexString(this.g));
+        paramPrintWriter.print(" mTransitionStyle=#");
+        paramPrintWriter.println(Integer.toHexString(this.h));
+      }
+      if ((this.c != 0) || (this.d != 0))
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mEnterAnim=#");
+        paramPrintWriter.print(Integer.toHexString(this.c));
+        paramPrintWriter.print(" mExitAnim=#");
+        paramPrintWriter.println(Integer.toHexString(this.d));
+      }
+      if ((this.e != 0) || (this.f != 0))
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mPopEnterAnim=#");
+        paramPrintWriter.print(Integer.toHexString(this.e));
+        paramPrintWriter.print(" mPopExitAnim=#");
+        paramPrintWriter.println(Integer.toHexString(this.f));
+      }
+      if ((this.n != 0) || (this.o != null))
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mBreadCrumbTitleRes=#");
+        paramPrintWriter.print(Integer.toHexString(this.n));
+        paramPrintWriter.print(" mBreadCrumbTitleText=");
+        paramPrintWriter.println(this.o);
+      }
+      if ((this.p != 0) || (this.q != null))
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mBreadCrumbShortTitleRes=#");
+        paramPrintWriter.print(Integer.toHexString(this.p));
+        paramPrintWriter.print(" mBreadCrumbShortTitleText=");
+        paramPrintWriter.println(this.q);
+      }
+    }
+    if (!this.b.isEmpty())
+    {
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.println("Operations:");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("    ");
+      int i2 = this.b.size();
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        a locala = (a)this.b.get(i1);
+        switch (locala.a)
+        {
+        default: 
+          localObject = new StringBuilder("cmd=");
+          ((StringBuilder)localObject).append(locala.a);
+          localObject = ((StringBuilder)localObject).toString();
+          break;
+        case 9: 
+          localObject = "UNSET_PRIMARY_NAV";
+          break;
+        case 8: 
+          localObject = "SET_PRIMARY_NAV";
+          break;
+        case 7: 
+          localObject = "ATTACH";
+          break;
+        case 6: 
+          localObject = "DETACH";
+          break;
+        case 5: 
+          localObject = "SHOW";
+          break;
+        case 4: 
+          localObject = "HIDE";
+          break;
+        case 3: 
+          localObject = "REMOVE";
+          break;
+        case 2: 
+          localObject = "REPLACE";
+          break;
+        case 1: 
+          localObject = "ADD";
+          break;
+        case 0: 
+          localObject = "NULL";
+        }
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("  Op #");
+        paramPrintWriter.print(i1);
+        paramPrintWriter.print(": ");
+        paramPrintWriter.print((String)localObject);
+        paramPrintWriter.print(" ");
+        paramPrintWriter.println(locala.b);
+        if (paramBoolean)
+        {
+          if ((locala.c != 0) || (locala.d != 0))
+          {
+            paramPrintWriter.print(paramString);
+            paramPrintWriter.print("enterAnim=#");
+            paramPrintWriter.print(Integer.toHexString(locala.c));
+            paramPrintWriter.print(" exitAnim=#");
+            paramPrintWriter.println(Integer.toHexString(locala.d));
+          }
+          if ((locala.e != 0) || (locala.f != 0))
+          {
+            paramPrintWriter.print(paramString);
+            paramPrintWriter.print("popEnterAnim=#");
+            paramPrintWriter.print(Integer.toHexString(locala.e));
+            paramPrintWriter.print(" popExitAnim=#");
+            paramPrintWriter.println(Integer.toHexString(locala.f));
+          }
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  final void a(boolean paramBoolean)
+  {
+    int i1 = this.b.size() - 1;
+    Object localObject1;
+    while (i1 >= 0)
+    {
+      localObject1 = (a)this.b.get(i1);
+      Object localObject2 = ((a)localObject1).b;
+      if (localObject2 != null) {
+        ((Fragment)localObject2).a(ct.b(this.g), this.h);
+      }
+      int i2 = ((a)localObject1).a;
+      if (i2 != 1)
+      {
+        switch (i2)
+        {
+        default: 
+          localObject2 = new StringBuilder("Unknown cmd: ");
+          ((StringBuilder)localObject2).append(((a)localObject1).a);
+          throw new IllegalArgumentException(((StringBuilder)localObject2).toString());
+        case 9: 
+          this.a.h((Fragment)localObject2);
+          break;
+        case 8: 
+          this.a.h(null);
+          break;
+        case 7: 
+          ((Fragment)localObject2).a(((a)localObject1).f);
+          this.a.f((Fragment)localObject2);
+          break;
+        case 6: 
+          ((Fragment)localObject2).a(((a)localObject1).e);
+          this.a.g((Fragment)localObject2);
+          break;
+        case 5: 
+          ((Fragment)localObject2).a(((a)localObject1).f);
+          ct.d((Fragment)localObject2);
+          break;
+        case 4: 
+          ((Fragment)localObject2).a(((a)localObject1).e);
+          ct.e((Fragment)localObject2);
+          break;
+        case 3: 
+          ((Fragment)localObject2).a(((a)localObject1).e);
+          this.a.a((Fragment)localObject2, false);
+          break;
+        }
+      }
+      else
+      {
+        ((Fragment)localObject2).a(((a)localObject1).f);
+        this.a.c((Fragment)localObject2);
+      }
+      if ((!this.t) && (((a)localObject1).a != 3) && (localObject2 != null)) {
+        this.a.a((Fragment)localObject2);
+      }
+      i1 -= 1;
+    }
+    if ((!this.t) && (paramBoolean))
+    {
+      localObject1 = this.a;
+      ((ct)localObject1).a(((ct)localObject1).l, true);
+    }
+  }
+  
+  final boolean a(ArrayList<cm> paramArrayList, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == paramInt1) {
+      return false;
+    }
+    int i6 = this.b.size();
+    int i2 = 0;
+    int i4;
+    for (int i3 = -1; i2 < i6; i3 = i4)
+    {
+      Object localObject = (a)this.b.get(i2);
+      int i1;
+      if (((a)localObject).b != null) {
+        i1 = ((a)localObject).b.z;
+      } else {
+        i1 = 0;
+      }
+      i4 = i3;
+      if (i1 != 0)
+      {
+        i4 = i3;
+        if (i1 != i3)
+        {
+          i3 = paramInt1;
+          while (i3 < paramInt2)
+          {
+            localObject = (cm)paramArrayList.get(i3);
+            int i7 = ((cm)localObject).b.size();
+            i4 = 0;
+            while (i4 < i7)
+            {
+              a locala = (a)((cm)localObject).b.get(i4);
+              int i5;
+              if (locala.b != null) {
+                i5 = locala.b.z;
+              } else {
+                i5 = 0;
+              }
+              if (i5 == i1) {
+                return true;
+              }
+              i4 += 1;
+            }
+            i3 += 1;
+          }
+          i4 = i1;
+        }
+      }
+      i2 += 1;
+    }
+    return false;
+  }
+  
+  public final boolean a(ArrayList<cm> paramArrayList, ArrayList<Boolean> paramArrayList1)
+  {
+    if (ct.a) {
+      new StringBuilder("Run: ").append(this);
+    }
+    paramArrayList.add(this);
+    paramArrayList1.add(Boolean.FALSE);
+    if (this.i)
+    {
+      paramArrayList = this.a;
+      if (paramArrayList.g == null) {
+        paramArrayList.g = new ArrayList();
+      }
+      paramArrayList.g.add(this);
+    }
+    return true;
+  }
+  
+  public final int b()
+  {
+    if (!this.l)
+    {
+      if (ct.a)
+      {
+        new StringBuilder("Commit: ").append(this);
+        localObject1 = new PrintWriter(new eq("FragmentManager"));
+        a("  ", (PrintWriter)localObject1);
+        ((PrintWriter)localObject1).close();
+      }
+      this.l = true;
+      if (this.i) {
+        this.m = this.a.a(this);
+      } else {
+        this.m = -1;
+      }
+      Object localObject1 = this.a;
+      ((ct)localObject1).f();
+      try
+      {
+        if ((!((ct)localObject1).u) && (((ct)localObject1).m != null))
+        {
+          if (((ct)localObject1).b == null) {
+            ((ct)localObject1).b = new ArrayList();
+          }
+          ((ct)localObject1).b.add(this);
+          ((ct)localObject1).g();
+          return this.m;
+        }
+        throw new IllegalStateException("Activity has been destroyed");
       }
       finally {}
-      label287:
-      this.a = TknEncManager.a().decInitCode(this.a);
-      c();
-      continue;
-      label316:
-      c();
     }
+    throw new IllegalStateException("commit already called");
   }
   
-  public String f()
+  final Fragment b(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
   {
-    return this.f;
-  }
-  
-  public String g()
-  {
-    int[] arrayOfInt = m();
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < arrayOfInt.length)
+    int i1 = 0;
+    while (i1 < this.b.size())
     {
-      localStringBuffer.append(arrayOfInt[i]);
-      i += 1;
-    }
-    localStringBuffer.insert(12, '-');
-    localStringBuffer.insert(8, '-');
-    localStringBuffer.insert(4, '-');
-    return localStringBuffer.toString();
-  }
-  
-  public long h()
-  {
-    try
-    {
-      int[] arrayOfInt = m();
-      StringBuffer localStringBuffer = new StringBuffer();
-      int i = 0;
-      while (i < arrayOfInt.length)
+      a locala = (a)this.b.get(i1);
+      int i2 = locala.a;
+      if (i2 != 1)
       {
-        localStringBuffer.append(arrayOfInt[i]);
-        i += 1;
+        if (i2 != 3) {}
+        switch (i2)
+        {
+        default: 
+          break;
+        case 9: 
+          paramFragment = locala.b;
+          break;
+        case 8: 
+          paramFragment = null;
+          break;
+        case 6: 
+          paramArrayList.add(locala.b);
+          break;
+        }
       }
-      long l = Long.parseLong(localStringBuffer.toString());
-      return l;
+      else
+      {
+        paramArrayList.remove(locala.b);
+      }
+      i1 += 1;
     }
-    catch (Exception localException) {}
-    return 0L;
+    return paramFragment;
   }
   
-  public void i()
+  public final cv b(Fragment paramFragment)
   {
-    long l = System.currentTimeMillis() + this.c;
-    if (l - this.e >= this.d * 1000) {
-      b(l);
+    a(new a(7, paramFragment));
+    return this;
+  }
+  
+  final boolean b(int paramInt)
+  {
+    int i3 = this.b.size();
+    int i1 = 0;
+    while (i1 < i3)
+    {
+      a locala = (a)this.b.get(i1);
+      int i2;
+      if (locala.b != null) {
+        i2 = locala.b.z;
+      } else {
+        i2 = 0;
+      }
+      if ((i2 != 0) && (i2 == paramInt)) {
+        return true;
+      }
+      i1 += 1;
+    }
+    return false;
+  }
+  
+  final void c()
+  {
+    int i2 = this.b.size();
+    int i1 = 0;
+    Object localObject1;
+    while (i1 < i2)
+    {
+      localObject1 = (a)this.b.get(i1);
+      Object localObject2 = ((a)localObject1).b;
+      if (localObject2 != null) {
+        ((Fragment)localObject2).a(this.g, this.h);
+      }
+      int i3 = ((a)localObject1).a;
+      if (i3 != 1)
+      {
+        switch (i3)
+        {
+        default: 
+          localObject2 = new StringBuilder("Unknown cmd: ");
+          ((StringBuilder)localObject2).append(((a)localObject1).a);
+          throw new IllegalArgumentException(((StringBuilder)localObject2).toString());
+        case 9: 
+          this.a.h(null);
+          break;
+        case 8: 
+          this.a.h((Fragment)localObject2);
+          break;
+        case 7: 
+          ((Fragment)localObject2).a(((a)localObject1).c);
+          this.a.g((Fragment)localObject2);
+          break;
+        case 6: 
+          ((Fragment)localObject2).a(((a)localObject1).d);
+          this.a.f((Fragment)localObject2);
+          break;
+        case 5: 
+          ((Fragment)localObject2).a(((a)localObject1).c);
+          ct.e((Fragment)localObject2);
+          break;
+        case 4: 
+          ((Fragment)localObject2).a(((a)localObject1).d);
+          ct.d((Fragment)localObject2);
+          break;
+        case 3: 
+          ((Fragment)localObject2).a(((a)localObject1).d);
+          this.a.c((Fragment)localObject2);
+          break;
+        }
+      }
+      else
+      {
+        ((Fragment)localObject2).a(((a)localObject1).c);
+        this.a.a((Fragment)localObject2, false);
+      }
+      if ((!this.t) && (((a)localObject1).a != 1) && (localObject2 != null)) {
+        this.a.a((Fragment)localObject2);
+      }
+      i1 += 1;
+    }
+    if (!this.t)
+    {
+      localObject1 = this.a;
+      ((ct)localObject1).a(((ct)localObject1).l, true);
     }
   }
   
-  public void j()
+  public final String toString()
   {
-    b(System.currentTimeMillis() + this.c);
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("BackStackEntry{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    if (this.m >= 0)
+    {
+      localStringBuilder.append(" #");
+      localStringBuilder.append(this.m);
+    }
+    if (this.k != null)
+    {
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.k);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
-  public String k()
+  public static final class a
   {
-    return a(-30000);
-  }
-  
-  public long l()
-  {
-    return this.c;
+    public int a;
+    public Fragment b;
+    public int c;
+    public int d;
+    public int e;
+    public int f;
+    
+    public a() {}
+    
+    a(int paramInt, Fragment paramFragment)
+    {
+      this.a = paramInt;
+      this.b = paramFragment;
+    }
   }
 }
 

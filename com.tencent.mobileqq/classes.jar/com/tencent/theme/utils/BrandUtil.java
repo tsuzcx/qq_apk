@@ -29,7 +29,11 @@ public final class BrandUtil
       boolean bool = Build.BRAND.toLowerCase().contains("gionee");
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label14:
+      break label14;
+    }
     return false;
   }
   
@@ -46,7 +50,11 @@ public final class BrandUtil
       boolean bool = Build.BRAND.toLowerCase().contains("nubia");
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label14:
+      break label14;
+    }
     return false;
   }
   
@@ -57,7 +65,11 @@ public final class BrandUtil
       boolean bool = Build.BRAND.toLowerCase(Locale.US).contains("oppo");
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label17:
+      break label17;
+    }
     return false;
   }
   
@@ -68,13 +80,17 @@ public final class BrandUtil
       boolean bool = Build.BRAND.toLowerCase().contains("vivo");
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label14:
+      break label14;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.utils.BrandUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public final class WifiInfo
 {
   public String bssid = "";
   public int hasPwd = 1;
-  public boolean haveLocalConf;
+  public boolean haveLocalConf = false;
   public int safeType = 0;
   public String ssid = "";
   
@@ -29,24 +29,28 @@ public final class WifiInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ssid != null) {
-      paramJceOutputStream.write(this.ssid, 0);
+    String str = this.ssid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.bssid != null) {
-      paramJceOutputStream.write(this.bssid, 1);
+    str = this.bssid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.hasPwd != 1) {
-      paramJceOutputStream.write(this.hasPwd, 2);
+    int i = this.hasPwd;
+    if (i != 1) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.safeType != 0) {
-      paramJceOutputStream.write(this.safeType, 3);
+    i = this.safeType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
     paramJceOutputStream.write(this.haveLocalConf, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MWIFI.WifiInfo
  * JD-Core Version:    0.7.0.1
  */

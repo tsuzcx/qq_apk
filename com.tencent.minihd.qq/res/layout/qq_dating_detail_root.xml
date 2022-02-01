@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/stub_loading" android:visibility="gone" android:layout="@layout/qq_dating_detail_loading" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/stub_list" android:visibility="gone" android:layout="@layout/qq_dating_detail_list" android:inflatedId="@id/common_xlistview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.dating.widget.CustomTabBarView android:id="@id/tabbar_float" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/stub_error_page" android:visibility="gone" android:layout="@layout/qq_dating_detail_error_page" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

@@ -5,12 +5,12 @@ public final class al
 {
   public al()
   {
-    this.CMD = 361;
+    this.ajGQ = 361;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.al
  * JD-Core Version:    0.7.0.1
  */

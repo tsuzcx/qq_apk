@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import augd;
-import augo;
+import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
+import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
 import mqq.os.MqqHandler;
 
 class MsgBackupQRFragment$6
@@ -11,18 +11,18 @@ class MsgBackupQRFragment$6
   
   public void run()
   {
-    augo localaugo = augo.a();
-    String str = localaugo.a().a();
+    MsgBackupManager localMsgBackupManager = MsgBackupManager.a();
+    String str = localMsgBackupManager.e().d();
     if (str != null)
     {
-      localaugo.a(str);
-      this.this$0.b.postDelayed(this, 500L);
+      localMsgBackupManager.a(str);
+      this.this$0.J.postDelayed(this, 500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.6
  * JD-Core Version:    0.7.0.1
  */

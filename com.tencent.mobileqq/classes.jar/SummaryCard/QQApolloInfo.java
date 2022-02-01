@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class QQApolloInfo
   extends JceStruct
 {
-  public long uTimestamp;
-  public long uUserFlag;
-  public long uVipFlag;
-  public long uVipLevel;
+  public long uTimestamp = 0L;
+  public long uUserFlag = 0L;
+  public long uVipFlag = 0L;
+  public long uVipLevel = 0L;
   
   public QQApolloInfo() {}
   
@@ -40,7 +40,7 @@ public final class QQApolloInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.QQApolloInfo
  * JD-Core Version:    0.7.0.1
  */

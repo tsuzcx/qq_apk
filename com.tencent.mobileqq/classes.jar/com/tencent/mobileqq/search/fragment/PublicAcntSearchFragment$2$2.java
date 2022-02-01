@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ayky;
-
-public class PublicAcntSearchFragment$2$2
+class PublicAcntSearchFragment$2$2
   implements Runnable
 {
-  public PublicAcntSearchFragment$2$2(ayky paramayky) {}
+  PublicAcntSearchFragment$2$2(PublicAcntSearchFragment.2 param2) {}
   
   public void run()
   {
-    this.a.a.h_(true);
-    this.a.a.g_(false);
+    PublicAcntSearchFragment.c(this.a.a, true);
+    PublicAcntSearchFragment.d(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment.2.2
  * JD-Core Version:    0.7.0.1
  */

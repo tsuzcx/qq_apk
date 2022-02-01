@@ -1,94 +1,103 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aan;
-import com.tencent.mm.protocal.protobuf.als;
-import com.tencent.mm.protocal.protobuf.alt;
-import com.tencent.mm.protocal.protobuf.cx;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.LinkedList;
 
 public final class g
-  extends m
-  implements k
+  extends com.tencent.mm.bx.a
 {
-  private f callback;
-  public LinkedList<aan> puj;
-  public String pur;
-  private b rr;
+  public String city;
+  public String country;
+  public String oDI;
+  public String province;
   
-  public g(String paramString1, String paramString2, cx paramcx)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43985);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new als();
-    ((b.a)localObject).fsY = new alt();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getlastestexpressinfo";
-    ((b.a)localObject).funcId = 578;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (als)this.rr.fsV.fta;
-    this.pur = paramString1;
-    ((als)localObject).wCj = paramString1;
-    ab.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "pid ".concat(String.valueOf(paramString1)));
-    ((als)localObject).wDF = paramString2;
-    ((als)localObject).xcr = paramcx;
-    AppMethodBeat.o(43985);
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(43987);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(43987);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 578;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(43986);
-    paramArrayOfByte = (alt)((b)paramq).fsW.fta;
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.wuD == 0))
+    AppMethodBeat.i(91273);
+    if (paramInt == 0)
     {
-      ab.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "resp.ExpressCount " + paramArrayOfByte.xct);
-      this.puj = paramArrayOfByte.xcs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.country != null) {
+        paramVarArgs.g(1, this.country);
+      }
+      if (this.province != null) {
+        paramVarArgs.g(2, this.province);
+      }
+      if (this.city != null) {
+        paramVarArgs.g(3, this.city);
+      }
+      if (this.oDI != null) {
+        paramVarArgs.g(4, this.oDI);
+      }
+      AppMethodBeat.o(91273);
+      return 0;
     }
-    paramInt1 = paramInt3;
-    paramq = paramString;
-    if (paramInt3 == 0)
-    {
-      paramInt1 = paramInt3;
-      paramq = paramString;
-      if (paramArrayOfByte.wuD != 0)
-      {
-        paramInt1 = paramArrayOfByte.wuD;
-        paramq = paramArrayOfByte.wuE;
+    if (paramInt == 1) {
+      if (this.country == null) {
+        break label390;
       }
     }
-    ab.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "errCode " + paramInt1 + ", errMsg " + paramq);
-    this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
-    AppMethodBeat.o(43986);
+    label390:
+    for (int i = i.a.a.b.b.a.h(1, this.country) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.province != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.province);
+      }
+      i = paramInt;
+      if (this.city != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.city);
+      }
+      paramInt = i;
+      if (this.oDI != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.oDI);
+      }
+      AppMethodBeat.o(91273);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(91273);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        g localg = (g)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91273);
+          return -1;
+        case 1: 
+          localg.country = locala.ajGk.readString();
+          AppMethodBeat.o(91273);
+          return 0;
+        case 2: 
+          localg.province = locala.ajGk.readString();
+          AppMethodBeat.o(91273);
+          return 0;
+        case 3: 
+          localg.city = locala.ajGk.readString();
+          AppMethodBeat.o(91273);
+          return 0;
+        }
+        localg.oDI = locala.ajGk.readString();
+        AppMethodBeat.o(91273);
+        return 0;
+      }
+      AppMethodBeat.o(91273);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.g
  * JD-Core Version:    0.7.0.1
  */

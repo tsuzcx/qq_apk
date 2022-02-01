@@ -6,64 +6,64 @@ import java.util.Map;
 public final class aq
   extends k
 {
-  private static byte[] i;
-  private static Map<String, String> j;
-  public byte a = 0;
-  public int b = 0;
-  public byte[] c = null;
+  private static Map<String, String> i = new HashMap();
+  public long a = 0L;
+  public byte b = 0;
+  public String c = "";
   public String d = "";
-  public long e = 0L;
-  public String f = "";
-  public Map<String, String> g = null;
-  private String h = "";
+  public String e = "";
+  public Map<String, String> f = null;
+  public String g = "";
+  public boolean h = true;
   
   static
   {
-    byte[] arrayOfByte = (byte[])new byte[1];
-    i = arrayOfByte;
-    ((byte[])arrayOfByte)[0] = 0;
-    j = new HashMap();
-    j.put("", "");
+    i.put("", "");
   }
   
   public final void a(i parami)
   {
     this.a = parami.a(this.a, 0, true);
     this.b = parami.a(this.b, 1, true);
-    byte[] arrayOfByte = i;
-    this.c = ((byte[])parami.c(2, false));
+    this.c = parami.b(2, false);
     this.d = parami.b(3, false);
-    this.e = parami.a(this.e, 4, false);
-    this.h = parami.b(5, false);
-    this.f = parami.b(6, false);
-    this.g = ((Map)parami.a(j, 7, false));
+    this.e = parami.b(4, false);
+    this.f = ((Map)parami.a(i, 5, false));
+    this.g = parami.b(6, false);
+    boolean bool = this.h;
+    this.h = parami.a(7, false);
   }
   
   public final void a(j paramj)
   {
     paramj.a(this.a, 0);
     paramj.a(this.b, 1);
-    if (this.c != null) {
-      paramj.a(this.c, 2);
+    Object localObject = this.c;
+    if (localObject != null) {
+      paramj.a((String)localObject, 2);
     }
-    if (this.d != null) {
-      paramj.a(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      paramj.a((String)localObject, 3);
     }
-    paramj.a(this.e, 4);
-    if (this.h != null) {
-      paramj.a(this.h, 5);
+    localObject = this.e;
+    if (localObject != null) {
+      paramj.a((String)localObject, 4);
     }
-    if (this.f != null) {
-      paramj.a(this.f, 6);
+    localObject = this.f;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 5);
     }
-    if (this.g != null) {
-      paramj.a(this.g, 7);
+    localObject = this.g;
+    if (localObject != null) {
+      paramj.a((String)localObject, 6);
     }
+    paramj.a(this.h, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.aq
  * JD-Core Version:    0.7.0.1
  */

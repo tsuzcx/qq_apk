@@ -3,47 +3,46 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avcq;
 
 public class Comments$Comment
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comment> CREATOR = new avcq();
-  public int a;
+  public static final Parcelable.Creator<Comment> CREATOR = new Comments.Comment.1();
   public long a;
-  public MedalInfo a;
-  public String a;
-  public int b;
-  public long b;
   public String b;
-  public int c;
   public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
+  public int d;
   public String e;
   public long f;
+  public String g;
+  public int h;
+  public long i;
+  public String j;
+  public long k;
+  public String l;
+  public int m;
+  public long n;
+  public MedalInfo o;
   
   public Comments$Comment() {}
   
   public Comments$Comment(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo = ((MedalInfo)paramParcel.readParcelable(MedalInfo.class.getClassLoader()));
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Long = paramParcel.readLong();
-    this.jdField_e_of_type_Long = paramParcel.readLong();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.o = ((MedalInfo)paramParcel.readParcelable(MedalInfo.class.getClassLoader()));
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readInt();
     this.f = paramParcel.readLong();
+    this.e = paramParcel.readString();
+    this.g = paramParcel.readString();
+    this.h = paramParcel.readInt();
+    this.i = paramParcel.readLong();
+    this.k = paramParcel.readLong();
+    this.j = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readInt();
+    this.n = paramParcel.readLong();
   }
   
   public int describeContents()
@@ -53,13 +52,14 @@ public class Comments$Comment
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof Comment;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof Comment))
+    if (bool3)
     {
       paramObject = (Comment)paramObject;
       bool1 = bool2;
-      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+      if (this.a == paramObject.a) {
         bool1 = true;
       }
     }
@@ -78,25 +78,25 @@ public class Comments$Comment
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo, paramInt);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeLong(this.jdField_e_of_type_Long);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeParcelable(this.o, paramInt);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeLong(this.c);
     paramParcel.writeLong(this.f);
+    paramParcel.writeString(this.e);
+    paramParcel.writeString(this.g);
+    paramParcel.writeInt(this.h);
+    paramParcel.writeLong(this.i);
+    paramParcel.writeLong(this.k);
+    paramParcel.writeString(this.j);
+    paramParcel.writeString(this.l);
+    paramParcel.writeInt(this.m);
+    paramParcel.writeLong(this.n);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.Comments.Comment
  * JD-Core Version:    0.7.0.1
  */

@@ -112,41 +112,40 @@ public class TransferData
   
   public String toJSONObject()
   {
-    if ((this.mPositionList == null) || (this.mPositionList.size() == 0)) {}
-    while (!this.mConfigData.isValid()) {
-      return null;
-    }
-    JSONArray localJSONArray;
-    String str;
-    try
+    Object localObject = this.mPositionList;
+    if (localObject != null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("config_data", this.mConfigData.toJSONObject());
-      localJSONObject.put("reverse_shift", this.mReverseShift);
-      localJSONArray = new JSONArray();
-      Iterator localIterator = this.mPositionList.iterator();
-      while (localIterator.hasNext())
+      if (((ArrayList)localObject).size() == 0) {
+        return null;
+      }
+      if (!this.mConfigData.isValid()) {
+        return null;
+      }
+      try
       {
-        localJSONArray.put((Long)localIterator.next());
-        continue;
-        return str;
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("config_data", this.mConfigData.toJSONObject());
+        ((JSONObject)localObject).put("reverse_shift", this.mReverseShift);
+        JSONArray localJSONArray = new JSONArray();
+        Iterator localIterator = this.mPositionList.iterator();
+        while (localIterator.hasNext()) {
+          localJSONArray.put((Long)localIterator.next());
+        }
+        ((JSONObject)localObject).put("pos_list", localJSONArray);
+        localObject = ((JSONObject)localObject).toString();
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      str = null;
-    }
-    for (;;)
-    {
-      str.put("pos_list", localJSONArray);
-      str = str.toString();
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.videotransfer.TransferData
  * JD-Core Version:    0.7.0.1
  */

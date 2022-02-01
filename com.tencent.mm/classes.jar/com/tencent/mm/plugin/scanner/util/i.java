@@ -1,352 +1,243 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.widget.Toast;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.network.ac;
-import com.tencent.mm.plugin.scanner.model.OfflineScanContext;
-import com.tencent.mm.plugin.scanner.model.j;
-import com.tencent.mm.plugin.scanner.ui.i.b;
-import com.tencent.mm.protocal.protobuf.ll;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.scanner.model.ac;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import com.tencent.qbar.b.a.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/ScanProductSkipFrameManager;", "", "()V", "KEY_SCAN_PRODUCT_ENGINE_DETECT_SKIP_FRAME_COUNT", "", "KEY_SCAN_PRODUCT_SERVER_DETECT_FRAME_COUNT", "MMKV_KEY_SUFFIX", "SCAN_PRODUCT_ENGINE_DETECT_MAX_SKIP_FRAME", "", "SCAN_PRODUCT_ENGINE_DETECT_MIN_FRAME_IN_ONE_SECOND", "SCAN_PRODUCT_ENGINE_DETECT_MIN_SKIP_FRAME", "SCAN_PRODUCT_SERVER_DETECT_DEFAULT_TIMEOUT_MS", "SCAN_PRODUCT_SERVER_DETECT_MAX_FRAME", "SCAN_PRODUCT_SERVER_DETECT_MIN_FRAME", "TAG", "enableAdjustEngineDetectFrame", "", "enableAdjustServerDetectFrame", "engineDetectMaxSkipFrame", "engineDetectMinSkipFrame", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "serverDetectMaxFrame", "serverDetectMinFrame", "serverDetectTimeoutMs", "computeEngineSkipFrame", "frameCost", "computeServerFrame", "skipFrame", "enterScanUI", "", "getEngineDetectSkipFrameCount", "getServerDetectFrameCount", "safeParseKey", "key", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "defaultValue", "(Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;I)Ljava/lang/Integer;", "updateSkipFrame", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  implements f
 {
-  private int cpE;
-  private int cpF;
-  private ProgressDialog eeN = null;
-  private Activity gQx;
-  i.a qCN = null;
-  private f.a qCO = null;
-  boolean qCt = false;
-  int qCu = -1;
-  private Bundle qCv;
-  private String qur;
-  boolean qus = false;
-  private int qwn;
-  private i.b qzg;
-  String typeName;
+  public static final i PiM;
+  private static boolean PiN;
+  private static boolean PiO;
+  private static int PiP;
+  private static int PiQ;
+  private static int PiR;
+  private static int PiS;
+  private static int PiT;
+  private static MultiProcessMMKV eMf;
   
-  public i() {}
-  
-  public i(i.b paramb, i.a parama)
+  static
   {
-    this.qzg = paramb;
-    this.qCN = parama;
-  }
-  
-  private void cjv()
-  {
-    AppMethodBeat.i(151695);
-    com.tencent.mm.kernel.g.Rc().a(1061, this);
-    AppMethodBeat.o(151695);
-  }
-  
-  public final void a(Activity paramActivity, String paramString1, boolean paramBoolean1, int paramInt1, int paramInt2, String paramString2, f.a parama, Bundle paramBundle, int paramInt3, boolean paramBoolean2, int paramInt4)
-  {
-    AppMethodBeat.i(156521);
-    boolean bool;
-    if (parama == null)
+    boolean bool2 = false;
+    AppMethodBeat.i(314128);
+    PiM = new i();
+    PiP = 4;
+    PiQ = 1;
+    PiR = 20;
+    PiS = 15;
+    PiT = 5000;
+    try
     {
-      bool = true;
-      ab.i("MicroMsg.ScanBarCodeHelper", "alvinluo handleBarCode dealQBarStringCallback == null: %b, processOfflineScan: %b, selectFromAlbum: %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) });
-      this.gQx = paramActivity;
-      this.qus = paramBoolean1;
-      this.qur = paramString1;
-      this.cpE = paramInt1;
-      this.cpF = paramInt2;
-      this.typeName = paramString2;
-      this.qCv = paramBundle;
-      this.qCO = parama;
-      this.qwn = paramInt3;
-      this.qCt = paramBoolean2;
-      this.qCu = paramInt4;
-      if (com.tencent.mm.kernel.g.Rc().adt() != 0) {
-        break label318;
+      bool1 = com.tencent.mm.kernel.h.baz();
+      if ((bool1) && (eMf == null)) {
+        eMf = MultiProcessMMKV.getMMKV(s.X(z.bAM(), "_scan_product_skip_frame"));
       }
-      paramBoolean2 = at.isConnected(paramActivity);
-      if (!paramBoolean2) {
-        break label260;
-      }
-      paramInt4 = 2;
-      label133:
-      ab.i("MicroMsg.ScanBarCodeHelper", "alvinluo handleBarcode network unavailable and deal with offline, isConnected: %b", new Object[] { Boolean.valueOf(paramBoolean2) });
-      if (this.qCt) {
-        break label282;
-      }
-      parama = c.qCh;
-      if (!c.CL(paramInt3)) {
-        break label282;
-      }
-      parama = c.qCh;
-      paramString1 = new OfflineScanContext(this.qzg.getContext(), paramInt4, paramString1, paramInt1, paramInt2, paramString2, paramBoolean1, paramBundle);
-      if (!paramBoolean2) {
-        break label266;
-      }
-      paramActivity = paramActivity.getString(2131302921);
-      label218:
-      c.a(paramString1, paramActivity, false);
-      paramActivity = j.qut;
-      if (!this.qus) {
-        break label276;
-      }
+      Log.i("MicroMsg.ScanProductSkipFrameManager", "initMMKV %s, mmkv: %s", new Object[] { Boolean.valueOf(bool1), eMf });
     }
-    label260:
-    label266:
-    label276:
-    for (paramInt1 = 2;; paramInt1 = 1)
+    catch (Exception localException)
     {
-      j.l(paramString2, paramInt1, paramInt4, 0);
-      AppMethodBeat.o(156521);
-      return;
-      bool = false;
-      break;
-      paramInt4 = 1;
-      break label133;
-      paramActivity = paramActivity.getString(2131302922);
-      break label218;
-    }
-    label282:
-    if (this.qCt)
-    {
-      paramString2 = c.qCh;
-      if (c.CL(paramInt3))
+      for (;;)
       {
-        paramString2 = c.qCh;
-        c.a(paramActivity, paramActivity.getString(2131302920), null);
+        Integer localInteger;
+        Log.printErrStackTrace("MicroMsg.ScanProductSkipFrameManager", (Throwable)localException, "checkInitMMKV exception", new Object[0]);
+        continue;
+        boolean bool1 = false;
       }
     }
-    for (;;)
+    if ((((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zgn, 0) == 1) || (BuildInfo.DEBUG) || (WeChatEnvironment.hasDebugger()))
     {
-      label318:
-      cjv();
-      paramActivity = paramString1.split(",", 2);
-      if (paramActivity.length >= 2) {
-        break;
+      bool1 = true;
+      PiO = bool1;
+      if ((((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zgo, 0) != 1) && (!BuildInfo.DEBUG))
+      {
+        bool1 = bool2;
+        if (!WeChatEnvironment.hasDebugger()) {}
       }
-      ab.e("MicroMsg.ScanBarCodeHelper", "wrong zbar format");
-      if (this.qCN != null) {
-        this.qCN.onError();
+      else
+      {
+        bool1 = true;
       }
-      if (this.qzg != null) {
-        this.qzg.kA(false);
+      PiN = bool1;
+      localInteger = b(c.a.zgp, 4);
+      if (localInteger != null) {
+        PiP = ((Number)localInteger).intValue();
       }
-      AppMethodBeat.o(156521);
+      localInteger = b(c.a.zgq, 1);
+      if (localInteger != null) {
+        PiQ = ((Number)localInteger).intValue();
+      }
+      localInteger = b(c.a.zgr, 20);
+      if (localInteger != null) {
+        PiR = ((Number)localInteger).intValue();
+      }
+      localInteger = b(c.a.zgs, 15);
+      if (localInteger != null) {
+        PiS = ((Number)localInteger).intValue();
+      }
+      localInteger = b(c.a.zgt, 5000);
+      if (localInteger != null) {
+        PiT = ((Number)localInteger).intValue();
+      }
+      Log.i("MicroMsg.ScanProductSkipFrameManager", "initSkipFrameManager enableAdjustEngineDetectFrame: " + PiO + ", enableAdjustServerDetectFrame: " + PiN + ", engineDetectMaxFrame: " + PiP + ",engineDetectMinFrame: " + PiQ + ", serverDetectMaxFrame: " + PiR + ", serverDetectMinFrame: " + PiS + ", serverDetecTimeout: " + PiT);
+      AppMethodBeat.o(314128);
       return;
-      Toast.makeText(paramActivity, paramActivity.getString(2131300044), 0).show();
     }
-    paramActivity = new com.tencent.mm.plugin.scanner.model.g(t.YP(paramActivity[0]), paramActivity[1], paramInt1, paramInt2);
-    paramActivity.qup = paramBoolean1;
-    com.tencent.mm.kernel.g.Rc().a(paramActivity, 0);
-    if (this.qzg != null)
-    {
-      this.qzg.ciy();
-      kA(true);
-    }
-    paramString1 = this.gQx;
-    this.gQx.getString(2131297087);
-    this.eeN = com.tencent.mm.ui.base.h.b(paramString1, this.gQx.getString(2131302251), true, new i.1(this, paramActivity));
-    AppMethodBeat.o(156521);
   }
   
-  public final boolean c(Context paramContext, int paramInt1, int paramInt2)
+  private static Integer b(c.a parama, int paramInt)
   {
-    AppMethodBeat.i(156522);
-    if (paramContext == null)
+    AppMethodBeat.i(314109);
+    paramInt = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(parama, paramInt);
+    if (paramInt > 0)
     {
-      AppMethodBeat.o(156522);
-      return false;
+      AppMethodBeat.o(314109);
+      return Integer.valueOf(paramInt);
     }
-    switch (paramInt1)
+    AppMethodBeat.o(314109);
+    return null;
+  }
+  
+  public static final void gUa()
+  {
+    AppMethodBeat.i(314115);
+    if ((!PiO) && (!PiN))
     {
-    default: 
-      AppMethodBeat.o(156522);
-      return false;
-    case 1: 
-      if (com.tencent.mm.kernel.g.Rc().adu())
+      Log.w("MicroMsg.ScanProductSkipFrameManager", "not enable adjust skip frame");
+      AppMethodBeat.o(314115);
+      return;
+    }
+    Object localObject = com.tencent.qbar.b.a.ahrN;
+    int n = a.a.jWZ();
+    int j;
+    int k;
+    if (n > 0)
+    {
+      if (n >= 250)
       {
-        com.tencent.mm.kernel.g.Rc().getNetworkServerIp();
-        new StringBuilder().append(paramInt2);
+        i = PiQ;
+        Log.i("MicroMsg.ScanProductSkipFrameManager", s.X("computeEngineSkipFrame use minSkipFrame frameCost: ", Integer.valueOf(n)));
+        j = Math.max(Math.min((int)(float)Math.ceil(1.0F * PiT / ((i + 1) * n)), PiR), PiS);
+        k = ac.gRi();
+        j = (int)(float)Math.floor(j * 1.0F * k / 20.0F);
+        localObject = eMf;
+        if (localObject != null)
+        {
+          localObject = ((MultiProcessMMKV)localObject).putInt("scan_product_engine_detect_skip_frame_count", i);
+          if (localObject != null)
+          {
+            localObject = ((SharedPreferences.Editor)localObject).putInt("scan_product_server_detect_frame_count", j);
+            if (localObject != null) {
+              ((SharedPreferences.Editor)localObject).apply();
+            }
+          }
+        }
+        Log.i("MicroMsg.ScanProductSkipFrameManager", "updateSkipFrame engineDetectSkipFrame: " + i + ", serverDetectFrame: " + j);
+      }
+    }
+    else
+    {
+      localObject = com.tencent.qbar.b.a.ahrN;
+      j = a.a.jWZ();
+      k = gUb();
+      localObject = com.tencent.qbar.b.a.ahrN;
+      localObject = com.tencent.qbar.b.a.iTS();
+      if (localObject != null) {
+        break label560;
+      }
+    }
+    label560:
+    for (int i = 0;; i = ((MultiProcessMMKV)localObject).getInt("scan_code_decode_cost", 0))
+    {
+      if ((j > 0) && (i > 0)) {
+        com.tencent.mm.plugin.report.service.h.OAn.b(24741, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
+      }
+      AppMethodBeat.o(314115);
+      return;
+      i = (int)Math.floor(1000.0D / n);
+      j = i / 2;
+      double d1 = 1000.0D / (n * 2) - 1.0D;
+      double d2 = 1000.0D / (j * n) - 1.0D;
+      int m = Math.max(Math.min((int)Math.floor((Math.floor(d2) + Math.ceil(d1)) * 1.0D / 2.0D), PiP), PiQ);
+      Log.i("MicroMsg.ScanProductSkipFrameManager", "computeEngineSkipFrame frameCost: " + n + ", scanCodeFrameCount: " + i + ", maxScanProductFrameCount: " + j + ", maxSkipFrame: " + d1 + ", minSkipFrame: " + d2 + ", skipFrame: " + m);
+      localObject = eMf;
+      if (localObject == null)
+      {
+        j = 0;
+        k = 0;
       }
       for (;;)
       {
-        AppMethodBeat.o(156522);
-        return true;
-        if (ac.cm(paramContext)) {
-          com.tencent.mm.pluginsdk.ui.tools.h.fY(paramContext);
-        } else {
-          Toast.makeText(paramContext, this.gQx.getString(2131300043, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 1).show();
+        i = m;
+        if (j == 0) {
+          break;
         }
-      }
-    }
-    Toast.makeText(paramContext, this.gQx.getString(2131300044), 1).show();
-    AppMethodBeat.o(156522);
-    return true;
-  }
-  
-  final void cjw()
-  {
-    AppMethodBeat.i(151699);
-    if (this.qCN != null) {
-      this.qCN.ciY();
-    }
-    AppMethodBeat.o(151699);
-  }
-  
-  final void kA(boolean paramBoolean)
-  {
-    AppMethodBeat.i(151698);
-    if (this.qzg != null) {
-      this.qzg.kA(paramBoolean);
-    }
-    AppMethodBeat.o(151698);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    AppMethodBeat.i(151696);
-    ab.i("MicroMsg.ScanBarCodeHelper", "alvinluo onSceneEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    com.tencent.mm.kernel.g.Rc().b(1061, this);
-    if (this.eeN != null)
-    {
-      this.eeN.dismiss();
-      this.eeN = null;
-    }
-    if ((paramm == null) || (this.gQx == null))
-    {
-      if (paramm == null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ab.e("MicroMsg.ScanBarCodeHelper", "onSceneEnd() scene is null [%s]", new Object[] { Boolean.valueOf(bool) });
-        if (this.qCN != null) {
-          this.qCN.onError();
+        i = m;
+        if (Math.abs(m - k) < 2) {
+          break;
         }
-        AppMethodBeat.o(151696);
-        return;
-      }
-    }
-    if ((paramInt1 == 4) && (paramInt2 == -4))
-    {
-      com.tencent.mm.ui.base.h.a(this.gQx, 2131302246, 2131297087, new i.2(this));
-      AppMethodBeat.o(151696);
-      return;
-    }
-    paramString = c.qCh;
-    if (c.CL(this.qwn))
-    {
-      paramString = c.qCh;
-      if (c.b(paramInt1, paramm))
-      {
-        if (!this.qCt)
-        {
-          ab.i("MicroMsg.ScanBarCodeHelper", "alvinluo dealQBarString onSceneEnd overtime and deal with offline");
-          paramString = c.qCh;
-          c.a(new OfflineScanContext(this.gQx, 2, this.qur, this.cpE, this.cpF, this.typeName, this.qus, this.qCv), this.gQx.getString(2131302921), true);
-          paramString = j.qut;
-          paramString = this.typeName;
-          if (this.qus) {}
-          for (paramInt1 = 2;; paramInt1 = 1)
-          {
-            j.l(paramString, paramInt1, 2, 0);
-            AppMethodBeat.o(151696);
-            return;
-          }
-        }
-        paramString = c.qCh;
-        c.a(this.gQx, this.gQx.getString(2131302920), null);
-        AppMethodBeat.o(151696);
-        return;
-      }
-    }
-    if (c(this.gQx, paramInt1, paramInt2))
-    {
-      kA(true);
-      AppMethodBeat.o(151696);
-      return;
-    }
-    if ((paramInt1 == 4) && (paramInt2 == -2004))
-    {
-      com.tencent.mm.ui.base.h.h(this.gQx, 2131302239, 2131297087);
-      cjw();
-      AppMethodBeat.o(151696);
-      return;
-    }
-    if ((paramInt1 != 0) || (paramInt2 != 0))
-    {
-      Toast.makeText(this.gQx, this.gQx.getString(2131300093, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-      cjw();
-      AppMethodBeat.o(151696);
-      return;
-    }
-    paramString = c.qCh;
-    if ((c.n(paramm)) && (!this.qCt))
-    {
-      paramString = j.qut;
-      paramString = this.typeName;
-      if (!this.qus) {
-        break label539;
-      }
-    }
-    label539:
-    for (paramInt1 = 2;; paramInt1 = 1)
-    {
-      j.l(paramString, paramInt1, 4, 0);
-      if (paramm.getType() != 1061) {
-        break label681;
-      }
-      paramString = ((com.tencent.mm.plugin.scanner.model.g)paramm).cif();
-      if (paramString != null) {
+        Log.i("MicroMsg.ScanProductSkipFrameManager", "computeEngineSkipFrame current: %d, last: %d", new Object[] { Integer.valueOf(m), Integer.valueOf(k) });
+        i = (m + k) / 2;
         break;
-      }
-      ab.e("MicroMsg.ScanBarCodeHelper", "onSceneEnd(), getResp() == null");
-      cjw();
-      AppMethodBeat.o(151696);
-      return;
-    }
-    ab.d("MicroMsg.ScanBarCodeHelper", "onSceneEnd() ScanBarcode Type = %s", new Object[] { Integer.valueOf(paramString.jKs) });
-    if (bo.isNullOrNil(paramString.wyR))
-    {
-      cjw();
-      AppMethodBeat.o(151696);
-      return;
-    }
-    switch (q.a(paramString.jKs, paramString.wyR, this.gQx, this.qzg, 4, this.qCO, ((com.tencent.mm.plugin.scanner.model.g)paramm).cpE, ((com.tencent.mm.plugin.scanner.model.g)paramm).cpF, this.qwn, ((com.tencent.mm.plugin.scanner.model.g)paramm).qup, this.qCt, this.typeName, this.qCu))
-    {
-    }
-    for (;;)
-    {
-      kA(false);
-      label681:
-      AppMethodBeat.o(151696);
-      return;
-      if (!this.qCt)
-      {
-        this.gQx.finish();
-        this.gQx.overridePendingTransition(0, 0);
-      }
-      AppMethodBeat.o(151696);
-      return;
-      ab.d("MicroMsg.ScanBarCodeHelper", "onSceneEnd() PROCESS_XML_RETURN_TYPE_SEARCH_CONTACT");
-      continue;
-      ab.e("MicroMsg.ScanBarCodeHelper", "onSceneEnd() PROCESS_XML_RETURN_TYPE_WRONG");
-      if (this.qzg != null) {
-        this.qzg.lg(0L);
+        k = ((MultiProcessMMKV)localObject).getInt("scan_product_engine_detect_skip_frame_count", 0);
+        j = k;
       }
     }
+  }
+  
+  public static final int gUb()
+  {
+    AppMethodBeat.i(314117);
+    int i = com.tencent.mm.plugin.scanner.c.a.gQq();
+    if (!PiO)
+    {
+      AppMethodBeat.o(314117);
+      return i;
+    }
+    MultiProcessMMKV localMultiProcessMMKV = eMf;
+    if (localMultiProcessMMKV == null)
+    {
+      AppMethodBeat.o(314117);
+      return i;
+    }
+    i = localMultiProcessMMKV.getInt("scan_product_engine_detect_skip_frame_count", i);
+    AppMethodBeat.o(314117);
+    return i;
+  }
+  
+  public static final int gUc()
+  {
+    AppMethodBeat.i(314120);
+    int i = ac.gRi();
+    if (!PiN)
+    {
+      AppMethodBeat.o(314120);
+      return i;
+    }
+    MultiProcessMMKV localMultiProcessMMKV = eMf;
+    if (localMultiProcessMMKV == null)
+    {
+      AppMethodBeat.o(314120);
+      return i;
+    }
+    i = localMultiProcessMMKV.getInt("scan_product_server_detect_frame_count", i);
+    AppMethodBeat.o(314120);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.i
  * JD-Core Version:    0.7.0.1
  */

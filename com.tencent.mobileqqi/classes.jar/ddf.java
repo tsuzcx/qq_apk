@@ -3,7 +3,7 @@ import com.tencent.mobileqq.activity.QQSettingMe;
 class ddf
   implements Runnable
 {
-  ddf(dde paramdde) {}
+  ddf(ddd paramddd) {}
   
   public void run()
   {

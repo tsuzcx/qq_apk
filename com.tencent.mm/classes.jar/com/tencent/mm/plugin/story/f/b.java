@@ -1,741 +1,814 @@
 package com.tencent.mm.plugin.story.f;
 
-import a.f.a.m;
-import a.f.a.q;
-import a.y;
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.os.Process;
-import com.google.android.exoplayer2.g.a.a;
-import com.google.android.exoplayer2.i.x;
-import com.google.android.exoplayer2.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ar;
-import com.tencent.mm.g.b.a.as;
-import com.tencent.mm.g.b.a.bc;
-import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.plugin.story.c.a.c.a;
-import com.tencent.mm.plugin.story.model.audio.AudioCacheInfo;
-import com.tencent.mm.plugin.story.model.audio.AudioCacheInfo.a;
-import com.tencent.mm.plugin.story.model.audio.i.a;
-import com.tencent.mm.plugin.story.model.j.b;
-import com.tencent.mm.plugin.story.proxy.StoryAudioManagerProxy;
-import com.tencent.mm.plugin.story.proxy.StoryAudioManagerProxy.a;
-import com.tencent.mm.plugin.story.ui.StoryCaptureUI.b;
-import com.tencent.mm.plugin.story.ui.view.editor.item.EditorItemContainer;
-import com.tencent.mm.plugin.story.ui.view.editor.item.f;
-import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.protocal.protobuf.bsp;
-import com.tencent.mm.protocal.protobuf.chk;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.story.model.StoryCore;
+import com.tencent.mm.plugin.story.model.StoryCore.b;
+import com.tencent.mm.plugin.story.model.a.l;
+import com.tencent.mm.plugin.story.model.d.g;
+import com.tencent.mm.plugin.story.model.d.h.a;
+import com.tencent.mm.plugin.story.model.m.a;
+import com.tencent.mm.protocal.protobuf.fij;
+import com.tencent.mm.protocal.protobuf.fis;
+import com.tencent.mm.protocal.protobuf.fjj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.r;
+import kotlin.g.b.an;
+import kotlin.g.b.u;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/presenter/EditorPresenter;", "Lcom/tencent/mm/plugin/story/contract/EditorContract$IPresenter;", "context", "Landroid/content/Context;", "uiNavigation", "Lcom/tencent/mm/plugin/story/ui/StoryCaptureUI$UINavigation;", "view", "Lcom/tencent/mm/plugin/story/contract/EditorContract$IView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/story/ui/StoryCaptureUI$UINavigation;Lcom/tencent/mm/plugin/story/contract/EditorContract$IView;)V", "TAG", "", "captureInfo", "Lcom/tencent/mm/plugin/story/data/StoryCaptureInfo;", "getContext", "()Landroid/content/Context;", "exoPlayer", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "isFavorite", "", "isNotifyMoment", "loading", "Lcom/tencent/mm/plugin/story/presenter/EditorPresenter$StoryProgressDialog;", "mixAudio", "Lcom/tencent/mm/plugin/story/model/audio/AudioCacheInfo;", "muteOrigin", "showLoading", "com/tencent/mm/plugin/story/presenter/EditorPresenter$showLoading$1", "Lcom/tencent/mm/plugin/story/presenter/EditorPresenter$showLoading$1;", "startPerformance", "", "getUiNavigation", "()Lcom/tencent/mm/plugin/story/ui/StoryCaptureUI$UINavigation;", "getView", "()Lcom/tencent/mm/plugin/story/contract/EditorContract$IView;", "checkAudioCache", "", "callback", "Lkotlin/Function0;", "commit", "storyEditorData", "Lcom/tencent/mm/plugin/story/storage/StoryEditorData;", "thumbPath", "editorInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "isImageVideo", "onFinish", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "retId", "videoPath", "mediaDes", "needExport", "resId", "destroy", "getEditorItemList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "Lkotlin/collections/ArrayList;", "getMixer", "Lcom/tencent/mm/plugin/story/model/mix/StoryVideoMixer;", "editorItems", "mix", "mute", "notifyFavorite", "notifyMoment", "isNotify", "onBack", "onPlayerRepeat", "pause", "pauseAudio", "playAudio", "info", "prepareReport", "reportImageSize", "reset", "resume", "runMix", "runMixInBackground", "setup", "StoryProgressDialog", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/presenter/FavStoryPresenter;", "Lcom/tencent/mm/plugin/story/presenter/IGalleryPresenter;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "username", "", "dateList", "", "galleryUserCallback", "Lcom/tencent/mm/plugin/story/presenter/GalleryGroupUpdateCallback;", "queryCondition", "", "(Ljava/lang/String;Ljava/util/List;Lcom/tencent/mm/plugin/story/presenter/GalleryGroupUpdateCallback;I)V", "TAG", "dateGalleryMap", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "dateState", "Lcom/tencent/mm/plugin/story/presenter/GalleryUserState;", "deleteColumnIndex", "deleteRowIndex", "enableVisitor", "", "galleryState", "isSelf", "loadingIndexQueue", "Ljava/util/LinkedList;", "selectedCol", "selectedRow", "storyCommentChangeListener", "Lkotlin/Function4;", "", "", "cancelDeleteItem", "row", "column", "deleteItem", "destroy", "initLoad", "notifyDateUpdate", "userIndex", "userGalleryItems", "onGalleryState", "state", "onItemRemovedCallback", "isOk", "onMsgListState", "index", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSelected", "onSetFavoriteCallback", "favorite", "selectedDate", "success", "onSetPrivacyCallback", "isPrivacy", "preloadForUser", "setFavorite", "nowFavorite", "replaceInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setPrivacy", "nowPrivacy", "setSelectedCommentRead", "setSelectedRead", "setSelectedVisitRead", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements com.tencent.mm.plugin.story.d.b.a
+  extends f
+  implements com.tencent.mm.am.h
 {
-  final String TAG;
-  final Context context;
-  int eez;
-  boolean qaU;
-  private v qdF;
-  a qdb;
-  boolean sAA;
-  boolean sAB;
-  AudioCacheInfo sAC;
-  j sAD;
-  final StoryCaptureUI.b sAE;
-  public final com.tencent.mm.plugin.story.d.b.b sAF;
-  com.tencent.mm.plugin.story.e.a syP;
+  private final int Siv;
+  private final r<Long, Boolean, String, String, ah> SmW;
+  private final List<String> Sme;
+  private int SoA;
+  private boolean SoB;
+  private final c Sos;
+  private final ArrayList<ArrayList<com.tencent.mm.plugin.story.model.d.h>> Sot;
+  private final ArrayList<e> Sou;
+  private final LinkedList<Integer> Sov;
+  private int Sow;
+  private int Sox;
+  private int Soy;
+  private int Soz;
+  private final String TAG;
+  private boolean hHq;
+  private final String username;
   
-  public b(Context paramContext, StoryCaptureUI.b paramb, com.tencent.mm.plugin.story.d.b.b paramb1)
+  private b(String paramString, List<String> paramList, c paramc, int paramInt)
   {
-    AppMethodBeat.i(109553);
-    this.context = paramContext;
-    this.sAE = paramb;
-    this.sAF = paramb1;
-    this.TAG = "MicroMsg.Story.EditorPresenter";
-    this.syP = new com.tencent.mm.plugin.story.e.a();
-    this.sAA = true;
-    this.sAD = new j(this);
-    AppMethodBeat.o(109553);
-  }
-  
-  private final void cCj()
-  {
-    AppMethodBeat.i(109547);
-    com.tencent.mm.media.i.a locala = new com.tencent.mm.media.i.a("runMix");
-    pause();
-    Object localObject1 = new a();
-    Object localObject2 = this.context;
-    a.f.b.j.q(localObject2, "context");
-    a.a((a)localObject1, (Context)localObject2, false, 0, (a.f.a.a)b.a.b.sAI, 6);
-    this.qdb = ((a)localObject1);
-    Object localObject3;
-    boolean bool;
-    int j;
-    int k;
-    int m;
-    if (this.qaU) {
-      if (this.sAC == null)
-      {
-        i = 0;
-        this.syP.ssq = i;
-        this.syP.ssr = this.sAC;
-        localObject1 = cgr();
-        localObject2 = U((ArrayList)localObject1);
-        localObject3 = k.sCp;
-        localObject3 = k.a(this.sAF, this.sAC);
-        bool = WXHardCoderJNI.hcEncodeVideoEnable;
-        j = WXHardCoderJNI.hcEncodeVideoDelay;
-        k = WXHardCoderJNI.hcEncodeVideoCPU;
-        m = WXHardCoderJNI.hcEncodeVideoIO;
-        if (!WXHardCoderJNI.hcEncodeVideoThr) {
-          break label341;
-        }
-      }
-    }
-    label341:
-    for (int i = Process.myTid();; i = 0)
+    AppMethodBeat.i(119189);
+    this.username = paramString;
+    this.Sme = paramList;
+    this.Sos = paramc;
+    this.Siv = paramInt;
+    this.TAG = "MicroMsg.FavStoryPresenter";
+    this.Sot = new ArrayList();
+    this.Sou = new ArrayList();
+    this.Sov = new LinkedList();
+    this.Sow = -1;
+    this.Sox = -1;
+    this.Soy = -1;
+    this.Soz = -1;
+    this.SmW = ((r)new k(this));
+    paramString = StoryCore.SjP;
+    this.hHq = Util.isEqual(StoryCore.b.hgg(), this.username);
+    this.Sos.ang(this.Sme.size());
+    paramString = ((Iterable)this.Sme).iterator();
+    while (paramString.hasNext())
     {
-      this.eez = WXHardCoderJNI.startPerformance(bool, j, k, m, i, 35000, 603, WXHardCoderJNI.hcEncodeVideoAction, "MicroMsg.Media.StoryVideoMixer");
-      ab.i("MicroMsg.Media.StoryVideoMixer", "hardcoder summerPerformance startPerformance: %s", new Object[] { Integer.valueOf(this.eez) });
-      c.a locala1 = (c.a)com.tencent.mm.plugin.story.c.a.c.srQ.Uw();
-      locala1.acE(this.syP.ssl);
-      ab.i("MicroMsg.Media.StoryVideoMixer", "remux video config: ".concat(String.valueOf(locala1)));
-      ((com.tencent.mm.plugin.story.model.e.b)localObject2).a(locala1.eRu, locala1.eRv, locala1.videoBitrate, locala1.fzT, locala1.audioSampleRate, 1, locala1.eRw, locala1.eWL);
-      ((com.tencent.mm.plugin.story.model.e.b)localObject2).a((q)new b.g(this, locala, (ArrayList)localObject1, (chk)localObject3));
-      AppMethodBeat.o(109547);
-      return;
-      i = 2;
-      break;
-      if (this.sAC == null)
-      {
-        i = 1;
-        break;
-      }
-      i = 3;
-      break;
+      paramList = (String)paramString.next();
+      Log.i(this.TAG, kotlin.g.b.s.X("LogStory: ", paramList));
+      this.Sot.add(new ArrayList());
+      this.Sou.add(new e(paramList));
     }
+    if (this.hHq) {
+      com.tencent.mm.kernel.h.baD().mCm.a(764, (com.tencent.mm.am.h)this);
+    }
+    paramString = com.tencent.mm.plugin.story.model.b.b.SlF;
+    com.tencent.mm.plugin.story.model.b.b.g(this.SmW);
+    this.SoB = com.tencent.mm.plugin.story.c.a.e.Sjb.huS();
+    AppMethodBeat.o(119189);
   }
   
-  final com.tencent.mm.plugin.story.model.e.b U(ArrayList<com.tencent.mm.media.editor.a.b> paramArrayList)
+  private final void EJ(boolean paramBoolean)
   {
-    AppMethodBeat.i(109548);
-    float f1 = this.sAF.getItemContainer().getLeft();
-    float f2 = this.sAF.getItemContainer().getTop();
-    float f3 = this.sAF.getItemContainer().getRight();
-    float f4 = this.sAF.getItemContainer().getBottom();
-    long l = cb.abq();
-    com.tencent.mm.plugin.story.e.a locala = this.syP;
-    paramArrayList = (List)paramArrayList;
-    String str1 = com.tencent.mm.plugin.story.model.l.acZ(String.valueOf(l));
-    String str2 = com.tencent.mm.plugin.story.model.l.ada(String.valueOf(l));
-    paramArrayList = new com.tencent.mm.plugin.story.model.e.b(locala, paramArrayList, new float[] { f1, f2, f3, f4 }, str1, str2, 0, false, 96);
-    AppMethodBeat.o(109548);
-    return paramArrayList;
+    AppMethodBeat.i(119174);
+    d.uiThread((kotlin.g.a.a)new c(paramBoolean, this));
+    AppMethodBeat.o(119174);
   }
   
-  public final void a(com.tencent.mm.plugin.story.e.a parama)
+  private final void R(final int paramInt, final List<com.tencent.mm.plugin.story.model.d.h> paramList)
   {
-    AppMethodBeat.i(109540);
-    a.f.b.j.q(parama, "captureInfo");
-    this.syP = parama;
-    Object localObject = com.tencent.mm.plugin.story.model.audio.c.swQ;
-    com.tencent.mm.plugin.story.model.audio.c.a(new com.tencent.mm.plugin.story.model.audio.c());
-    com.tencent.mm.plugin.story.c.a locala = new com.tencent.mm.plugin.story.c.a();
-    locala.sre = parama.ssp;
-    if (parama.ssp) {}
-    for (localObject = com.tencent.mm.plugin.story.c.d.srw;; localObject = com.tencent.mm.plugin.story.c.d.srr)
+    AppMethodBeat.i(119176);
+    if (paramList.isEmpty())
     {
-      localObject = locala.a((com.tencent.mm.plugin.story.c.d)localObject);
-      ((com.tencent.mm.plugin.story.c.a)localObject).srg = true;
-      ((com.tencent.mm.plugin.story.c.a)localObject).srf = true;
-      this.sAF.a(parama.ssl, parama.sss, parama.ssn, parama.sso, parama.ssp, (com.tencent.mm.plugin.story.c.a)localObject, (a.f.a.a)new b.i(this));
-      AppMethodBeat.o(109540);
+      Collection localCollection = (Collection)this.Sot;
+      if (localCollection == null)
+      {
+        paramList = new NullPointerException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
+        AppMethodBeat.o(119176);
+        throw paramList;
+      }
+      an.hA(localCollection).remove(paramList);
+      d.uiThread((kotlin.g.a.a)new a(this, paramInt));
+      AppMethodBeat.o(119176);
       return;
     }
+    d.uiThread((kotlin.g.a.a)new b(this, paramInt, paramList));
+    AppMethodBeat.o(119176);
   }
   
-  public final void bnC()
+  private static final void a(final b paramb)
   {
-    int j = 2;
-    AppMethodBeat.i(109550);
-    Object localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDy().bC(System.currentTimeMillis());
-    localObject1 = com.tencent.mm.plugin.story.model.audio.c.swQ;
-    localObject1 = com.tencent.mm.plugin.story.model.audio.c.cBC();
-    int i;
-    label179:
-    long l1;
-    long l2;
-    long l3;
-    if ((localObject1 != null) && (((com.tencent.mm.plugin.story.model.audio.c)localObject1).pKF != 0L))
+    AppMethodBeat.i(367084);
+    kotlin.g.b.s.u(paramb, "this$0");
+    if ((paramb.Soy >= 0) && (paramb.Soy < paramb.Sot.size()) && (paramb.Soz >= 0) && (paramb.Soz < ((ArrayList)paramb.Sot.get(paramb.Soy)).size()))
     {
-      localObject2 = new bsp();
-      ((bsp)localObject2).xGe = ((com.tencent.mm.plugin.story.model.audio.c)localObject1).swI;
-      if (!((com.tencent.mm.plugin.story.model.audio.c)localObject1).swK) {
-        break label349;
-      }
-      i = ((com.tencent.mm.plugin.story.model.audio.c)localObject1).cpt;
-      localObject3 = AudioCacheInfo.swC;
-      if (i != AudioCacheInfo.cBz()) {
-        break label344;
-      }
-      i = 10;
-      ((bsp)localObject2).xGf = i;
-      ((bsp)localObject2).xGh = ((int)bo.aox());
-      ((com.tencent.mm.plugin.story.model.audio.c)localObject1).cBA();
-      ((com.tencent.mm.plugin.story.model.audio.c)localObject1).swL.add(localObject2);
-      ab.i(com.tencent.mm.plugin.story.model.audio.c.TAG, "record send " + com.tencent.mm.plugin.story.model.audio.d.a((bsp)localObject2));
-      if (((com.tencent.mm.plugin.story.model.audio.c)localObject1).pKF != 0L)
+      Object localObject1 = ((ArrayList)paramb.Sot.get(paramb.Soy)).get(paramb.Soz);
+      kotlin.g.b.s.s(localObject1, "dateGalleryMap[selectedRow][selectedCol]");
+      localObject1 = ((com.tencent.mm.plugin.story.model.d.h)localObject1).Sms;
+      Log.i(paramb.TAG, "setSelectedRead " + paramb.Soz + ", " + ((g)localObject1).Smi);
+      if (((g)localObject1).Smm.size() > 0)
       {
-        localObject2 = ah.getContext();
-        if (!at.isWifi((Context)localObject2)) {
-          break label385;
+        Object localObject2 = com.tencent.mm.plugin.story.model.b.b.SlF;
+        long l = ((g)localObject1).idH;
+        localObject2 = ((g)localObject1).Smm.getLast();
+        kotlin.g.b.s.s(localObject2, "comment.visitorList.last");
+        if (com.tencent.mm.plugin.story.model.b.b.b(l, (com.tencent.mm.plugin.story.model.b.a)localObject2)) {
+          d.uiThread((kotlin.g.a.a)new j((g)localObject1, paramb));
         }
-        i = 1;
-        localObject2 = com.tencent.mm.plugin.report.service.h.qsU;
-        l1 = com.tencent.mm.plugin.story.model.audio.c.swN;
-        l2 = com.tencent.mm.plugin.story.model.audio.c.swO;
-        l3 = ((com.tencent.mm.plugin.story.model.audio.c)localObject1).pKF;
-        if (!((com.tencent.mm.plugin.story.model.audio.c)localObject1).swK) {
-          break label443;
-        }
+      }
+    }
+    AppMethodBeat.o(367084);
+  }
+  
+  private static final void a(b paramb, int paramInt)
+  {
+    AppMethodBeat.i(367114);
+    kotlin.g.b.s.u(paramb, "this$0");
+    if (((e)paramb.Sou.get(paramInt)).SoT != 2) {
+      paramb.Sov.add(Integer.valueOf(paramInt));
+    }
+    AppMethodBeat.o(367114);
+  }
+  
+  private static final void a(b paramb, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(367110);
+    kotlin.g.b.s.u(paramb, "this$0");
+    paramb.Sow = paramInt1;
+    paramb.Sox = paramInt2;
+    Object localObject1 = ((ArrayList)paramb.Sot.get(paramInt1)).get(paramInt2);
+    kotlin.g.b.s.s(localObject1, "dateGalleryMap[row][column]");
+    localObject1 = (com.tencent.mm.plugin.story.model.d.h)localObject1;
+    Object localObject2 = StoryCore.SjP;
+    localObject2 = StoryCore.b.hvR().anv(((com.tencent.mm.plugin.story.model.d.h)localObject1).Smr.icg);
+    Object localObject3 = StoryCore.SjP;
+    StoryCore.b.hvR().bcp(((com.tencent.mm.plugin.story.model.d.h)localObject1).Smr.icg + '_' + ((com.tencent.mm.plugin.story.model.d.h)localObject1).Smr.createTime);
+    if (localObject2 != null)
+    {
+      Log.i(paramb.TAG, "LogStory: deleteItem2 storyinfo " + localObject1 + " deleteItemRow " + paramb.Sow + " deleteItemCol " + paramb.Sox + " localid " + ((com.tencent.mm.plugin.story.model.d.h)localObject1).Smr.icg + ' ' + ((com.tencent.mm.plugin.story.h.j)localObject2).field_storyID);
+      if (((com.tencent.mm.plugin.story.h.j)localObject2).field_storyID == 0L) {
+        break label285;
+      }
+      if ((paramb.Sow != -1) && (paramb.Sox != -1))
+      {
+        localObject3 = com.tencent.mm.plugin.story.model.m.Sks;
+        m.a.aA(((com.tencent.mm.plugin.story.h.j)localObject2).field_storyID, ((com.tencent.mm.plugin.story.model.d.h)localObject1).Smr.icg);
       }
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.report.service.h)localObject2).e(16208, new Object[] { Integer.valueOf(i), Integer.valueOf(1), "", Long.valueOf(l1), Long.valueOf(l2), "", Long.valueOf(l3), Integer.valueOf(j), Integer.valueOf(((com.tencent.mm.plugin.story.model.audio.c)localObject1).swI), "", "" });
-      ((com.tencent.mm.plugin.story.model.audio.c)localObject1).cBB();
-      localObject1 = com.tencent.mm.plugin.story.model.j.svi;
-      if (j.b.cAM() != com.tencent.mm.plugin.story.c.a.f.a.ssi) {
-        break label448;
+      if (((com.tencent.mm.plugin.story.model.d.h)localObject1).Smr.hwL())
+      {
+        localObject2 = StoryCore.SjP;
+        StoryCore.b.gHI().post(new b..ExternalSyntheticLambda5(paramb, (com.tencent.mm.plugin.story.model.d.h)localObject1));
       }
-      localObject1 = com.tencent.mm.plugin.story.g.h.sEz;
-      com.tencent.mm.plugin.story.g.h.mh(true);
-      cCj();
-      AppMethodBeat.o(109550);
+      AppMethodBeat.o(367110);
       return;
-      label344:
-      i = 2;
-      break;
-      label349:
-      i = ((com.tencent.mm.plugin.story.model.audio.c)localObject1).cpt;
-      localObject3 = AudioCacheInfo.swC;
-      if (i == AudioCacheInfo.cBz()) {}
-      for (i = 12;; i = 6)
-      {
-        ((bsp)localObject2).xGf = i;
-        break;
-      }
-      label385:
-      if (at.is4G((Context)localObject2))
-      {
-        i = 6;
-        break label179;
-      }
-      if (at.is3G((Context)localObject2))
-      {
-        i = 5;
-        break label179;
-      }
-      if (at.is2G((Context)localObject2))
-      {
-        i = 4;
-        break label179;
-      }
-      if (at.isWap((Context)localObject2))
-      {
-        i = 3;
-        break label179;
-      }
-      i = 2;
-      break label179;
-      label443:
-      j = 1;
+      label285:
+      localObject2 = com.tencent.mm.plugin.story.model.m.Sks;
+      m.a.anc(((com.tencent.mm.plugin.story.model.d.h)localObject1).Smr.icg);
+      paramb.EJ(true);
     }
-    label448:
-    localObject1 = com.tencent.mm.plugin.story.g.h.sEz;
-    com.tencent.mm.plugin.story.g.h.mh(false);
-    localObject1 = (a.f.a.a)new b.f(this);
-    Object localObject2 = this.sAC;
-    Object localObject3 = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("checkAudioCache audio:");
-    if (localObject2 != null)
-    {
-      bool = true;
-      localStringBuilder = localStringBuilder.append(bool).append(", cache:");
-      if (localObject2 == null) {
-        break label648;
-      }
-    }
-    label648:
-    for (boolean bool = ((AudioCacheInfo)localObject2).arq;; bool = false)
-    {
-      ab.i((String)localObject3, bool);
-      if ((localObject2 == null) || (((AudioCacheInfo)localObject2).arq)) {
-        break label654;
-      }
-      ab.i(this.TAG, "checkAudioCache false");
-      localObject3 = new a();
-      a.a((a)localObject3, this.context, true, 0, (a.f.a.a)new b(this, (AudioCacheInfo)localObject2), 4);
-      this.qdb = ((a)localObject3);
-      localObject3 = com.tencent.mm.plugin.story.model.audio.i.swW;
-      com.tencent.mm.plugin.story.model.audio.i.cBF().a((AudioCacheInfo)localObject2, (m)new b.c(this, (AudioCacheInfo)localObject2, (a.f.a.a)localObject1));
-      AppMethodBeat.o(109550);
-      return;
-      bool = false;
-      break;
-    }
-    label654:
-    ab.i(this.TAG, "checkAudioCache done");
-    ((a.f.a.a)localObject1).invoke();
-    AppMethodBeat.o(109550);
   }
   
-  public final void c(AudioCacheInfo paramAudioCacheInfo)
+  private static final void a(b paramb, com.tencent.mm.plugin.story.model.d.h paramh)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(109544);
-    String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("play audio ");
-    Object localObject1;
-    int i;
-    if (paramAudioCacheInfo != null)
+    AppMethodBeat.i(367097);
+    kotlin.g.b.s.u(paramb, "this$0");
+    kotlin.g.b.s.u(paramh, "$item");
+    Log.i(paramb.TAG, kotlin.g.b.s.X("LogStory: deleteItem fake ", paramh));
+    paramb = com.tencent.mm.plugin.story.model.m.Sks;
+    m.a.anc(paramh.Smr.icg);
+    paramb = com.tencent.mm.plugin.story.model.e.a.SmE;
+    com.tencent.mm.plugin.story.model.e.a.aSR(paramh.Smr.taskId);
+    paramb = com.tencent.mm.plugin.story.model.e.a.SmE;
+    com.tencent.mm.plugin.story.model.e.a.aSS(paramh.Smr.taskId);
+    AppMethodBeat.o(367097);
+  }
+  
+  private final void a(final boolean paramBoolean1, ArrayList<com.tencent.mm.plugin.story.model.d.h> paramArrayList, final boolean paramBoolean2)
+  {
+    AppMethodBeat.i(119175);
+    if ((!paramBoolean1) && (paramArrayList != null))
     {
-      localObject1 = Integer.valueOf(paramAudioCacheInfo.swp);
-      localStringBuilder = localStringBuilder.append(localObject1).append(' ');
-      localObject1 = localObject2;
-      if (paramAudioCacheInfo != null) {
-        localObject1 = paramAudioCacheInfo.musicUrl;
-      }
-      ab.i(str, (String)localObject1);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      com.tencent.mm.plugin.story.g.i.cDi().fZ("");
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      com.tencent.mm.plugin.story.g.i.cDi().bP(0L);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      com.tencent.mm.plugin.story.g.i.cDi().bQ(0L);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      com.tencent.mm.plugin.story.g.i.cDm().da(0L);
-      pauseAudio();
-      this.sAC = paramAudioCacheInfo;
-      if (paramAudioCacheInfo != null)
+      final int i = this.Sot.indexOf(paramArrayList);
+      this.Sot.remove(paramArrayList);
+      d.uiThread((kotlin.g.a.a)new d(this, i));
+    }
+    d.uiThread((kotlin.g.a.a)new e(this, paramBoolean1, paramBoolean2));
+    AppMethodBeat.o(119175);
+  }
+  
+  private static final void b(final b paramb)
+  {
+    AppMethodBeat.i(367092);
+    kotlin.g.b.s.u(paramb, "this$0");
+    if ((paramb.Soy >= 0) && (paramb.Soy < paramb.Sot.size()) && (paramb.Soz >= 0) && (paramb.Soz < ((ArrayList)paramb.Sot.get(paramb.Soy)).size()))
+    {
+      Object localObject1 = ((ArrayList)paramb.Sot.get(paramb.Soy)).get(paramb.Soz);
+      kotlin.g.b.s.s(localObject1, "dateGalleryMap[selectedRow][selectedCol]");
+      Object localObject2 = (com.tencent.mm.plugin.story.model.d.h)localObject1;
+      localObject1 = ((com.tencent.mm.plugin.story.model.d.h)localObject2).Sms;
+      localObject2 = ((com.tencent.mm.plugin.story.model.d.h)localObject2).Smo;
+      Log.i(paramb.TAG, "setSelectedRead " + paramb.Soz + ", " + ((g)localObject1).Sly);
+      if (paramb.SoB)
       {
-        localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-        com.tencent.mm.plugin.story.g.i.cDi().fZ(String.valueOf(paramAudioCacheInfo.swp));
-        localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-        localObject1 = com.tencent.mm.plugin.story.g.i.cDi();
-        i = paramAudioCacheInfo.cpt;
-        localObject2 = AudioCacheInfo.swC;
-        if (i != AudioCacheInfo.cBz()) {
-          break label472;
+        if ((localObject2 != null) && (((com.tencent.mm.plugin.story.h.j)localObject2).hzs()))
+        {
+          ((com.tencent.mm.plugin.story.h.j)localObject2).ER(false);
+          localObject1 = com.tencent.mm.plugin.story.model.m.Sks;
+          m.a.aB(((com.tencent.mm.plugin.story.h.j)localObject2).field_storyID, ((com.tencent.mm.plugin.story.h.j)localObject2).field_localFlag);
+          d.uiThread((kotlin.g.a.a)new h(paramb));
+          AppMethodBeat.o(367092);
+        }
+      }
+      else
+      {
+        if ((localObject2 != null) && (((com.tencent.mm.plugin.story.h.j)localObject2).hzs()))
+        {
+          ((com.tencent.mm.plugin.story.h.j)localObject2).ER(false);
+          m.a locala = com.tencent.mm.plugin.story.model.m.Sks;
+          m.a.aB(((com.tencent.mm.plugin.story.h.j)localObject2).field_storyID, ((com.tencent.mm.plugin.story.h.j)localObject2).field_localFlag);
+        }
+        if (((g)localObject1).commentList.size() > 0)
+        {
+          localObject2 = com.tencent.mm.plugin.story.model.b.b.SlF;
+          long l = ((g)localObject1).idH;
+          localObject2 = ((g)localObject1).commentList.getLast();
+          kotlin.g.b.s.s(localObject2, "comment.commentList.last");
+          if (com.tencent.mm.plugin.story.model.b.b.b(l, (com.tencent.mm.plugin.story.model.b.a)localObject2)) {
+            d.uiThread((kotlin.g.a.a)new i((g)localObject1, paramb));
+          }
         }
       }
     }
-    label472:
-    for (long l = 0L;; l = paramAudioCacheInfo.position + 1)
+    AppMethodBeat.o(367092);
+  }
+  
+  private static final void c(final b paramb)
+  {
+    AppMethodBeat.i(367093);
+    kotlin.g.b.s.u(paramb, "this$0");
+    if ((paramb.Soy >= 0) && (paramb.Soy < paramb.Sot.size()) && (paramb.Soz >= 0) && (paramb.Soz < ((ArrayList)paramb.Sot.get(paramb.Soy)).size()))
     {
-      ((as)localObject1).bP(l);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      com.tencent.mm.plugin.story.g.i.cDi().bQ(paramAudioCacheInfo.swu);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      com.tencent.mm.plugin.story.g.i.cDm().da(1L);
-      localObject1 = com.tencent.mm.plugin.story.model.audio.c.swQ;
-      localObject1 = com.tencent.mm.plugin.story.model.audio.c.cBC();
+      Object localObject1 = ((ArrayList)paramb.Sot.get(paramb.Soy)).get(paramb.Soz);
+      kotlin.g.b.s.s(localObject1, "dateGalleryMap[selectedRow][selectedCol]");
+      localObject1 = ((com.tencent.mm.plugin.story.model.d.h)localObject1).Sms;
+      Log.i(paramb.TAG, "setSelectedRead " + paramb.Soz + ", " + ((g)localObject1).Smj);
+      if (((g)localObject1).PmC.size() > 0)
+      {
+        Object localObject2 = com.tencent.mm.plugin.story.model.b.b.SlF;
+        long l = ((g)localObject1).idH;
+        localObject2 = ((g)localObject1).PmC.getLast();
+        kotlin.g.b.s.s(localObject2, "comment.msgList.last");
+        if (com.tencent.mm.plugin.story.model.b.b.b(l, (com.tencent.mm.plugin.story.model.b.a)localObject2)) {
+          d.uiThread((kotlin.g.a.a)new g((g)localObject1, paramb));
+        }
+      }
+    }
+    AppMethodBeat.o(367093);
+  }
+  
+  private final void hxk()
+  {
+    AppMethodBeat.i(119177);
+    StoryCore.b localb = StoryCore.SjP;
+    StoryCore.b.gHI().post(new b..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(119177);
+  }
+  
+  private final void hxl()
+  {
+    AppMethodBeat.i(119178);
+    StoryCore.b localb = StoryCore.SjP;
+    StoryCore.b.gHI().post(new b..ExternalSyntheticLambda2(this));
+    AppMethodBeat.o(119178);
+  }
+  
+  public final void M(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(119183);
+    if (paramInt1 == 3)
+    {
+      if (paramBoolean)
+      {
+        switch (paramInt2)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(119183);
+          return;
+          StoryCore.b localb = StoryCore.SjP;
+          StoryCore.b.gHI().post(new b..ExternalSyntheticLambda1(this));
+          AppMethodBeat.o(119183);
+          return;
+          hxl();
+        }
+      }
+      hxl();
+    }
+    AppMethodBeat.o(119183);
+  }
+  
+  public final void N(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(119186);
+    Log.i(this.TAG, "LogStory: setPrivacy row:" + paramInt1 + " column:" + paramInt2);
+    Object localObject1;
+    Object localObject2;
+    if ((paramInt1 >= 0) && (paramInt1 < this.Sme.size()) && (paramInt2 >= 0) && (paramInt2 < ((ArrayList)this.Sot.get(paramInt1)).size()))
+    {
+      if (paramBoolean) {
+        break label251;
+      }
+      paramBoolean = true;
+      localObject1 = ((ArrayList)this.Sot.get(paramInt1)).get(paramInt2);
+      kotlin.g.b.s.s(localObject1, "dateGalleryMap[row][column]");
+      localObject1 = (com.tencent.mm.plugin.story.model.d.h)localObject1;
+      Log.i(this.TAG, "LogStory: setPrivacy storyinfo " + localObject1 + " targetPrivacy:" + paramBoolean);
+      localObject2 = StoryCore.SjP;
+      localObject1 = StoryCore.b.hvR().anv((int)((com.tencent.mm.plugin.story.model.d.h)localObject1).Smo.systemRowid);
       if (localObject1 != null)
       {
-        i = paramAudioCacheInfo.swp;
-        int j = paramAudioCacheInfo.type;
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject1).swI = i;
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject1).swJ = System.currentTimeMillis();
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject1).swK = true;
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject1).cCv = false;
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject1).cpt = j;
-      }
-      localObject2 = new com.google.android.exoplayer2.g.c((com.google.android.exoplayer2.g.f.a)new a.a((com.google.android.exoplayer2.h.d)new com.google.android.exoplayer2.h.l()));
-      localObject1 = x.i(this.context, this.context.getString(2131297005));
-      this.qdF = com.google.android.exoplayer2.g.a(this.context, (com.google.android.exoplayer2.g.h)localObject2);
-      localObject2 = com.tencent.mm.plugin.story.model.audio.i.swW;
-      a.f.b.j.p(localObject1, "userAgent");
-      paramAudioCacheInfo = i.a.a(paramAudioCacheInfo, (String)localObject1);
-      localObject1 = this.qdF;
-      if (localObject1 != null) {
-        ((v)localObject1).aC(true);
-      }
-      localObject1 = this.qdF;
-      if (localObject1 != null) {
-        ((v)localObject1).a(paramAudioCacheInfo);
-      }
-      paramAudioCacheInfo = this.qdF;
-      if (paramAudioCacheInfo != null) {
-        paramAudioCacheInfo.setRepeatMode(2);
-      }
-      if (this.qdF != null)
-      {
-        paramAudioCacheInfo = this.sAF;
-        localObject1 = this.qdF;
-        if (localObject1 == null) {
-          a.f.b.j.ebi();
+        localObject2 = com.tencent.mm.plugin.story.g.e.SqW;
+        com.tencent.mm.plugin.story.g.e.EN(paramBoolean);
+        if (!paramBoolean) {
+          break label256;
         }
-        paramAudioCacheInfo.setMusicPlayer((v)localObject1);
       }
-      AppMethodBeat.o(109544);
+    }
+    label256:
+    for (long l = 3L;; l = 4L)
+    {
+      localObject2 = com.tencent.mm.plugin.story.g.h.SqZ;
+      com.tencent.mm.plugin.story.g.h.a(l, String.valueOf(((com.tencent.mm.plugin.story.h.j)localObject1).field_storyID), 0L, 0L, 28);
+      localObject2 = com.tencent.mm.plugin.story.model.m.Sks;
+      m.a.c(((com.tencent.mm.plugin.story.h.j)localObject1).field_storyID, (int)((com.tencent.mm.plugin.story.h.j)localObject1).systemRowid, paramBoolean, ((com.tencent.mm.plugin.story.h.j)localObject1).hzy());
+      AppMethodBeat.o(119186);
       return;
-      localObject1 = null;
+      label251:
+      paramBoolean = false;
       break;
     }
   }
   
-  final ArrayList<com.tencent.mm.media.editor.a.b> cgr()
+  public final void O(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(109549);
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((Iterable)this.sAF.getItemContainer().getAllItemViews()).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(119188);
+    Log.i(this.TAG, kotlin.g.b.s.X("LogStory: setFavorite ", Integer.valueOf(paramInt2)));
+    Object localObject1;
+    Object localObject2;
+    if ((paramInt1 >= 0) && (paramInt1 < this.Sme.size()) && (paramInt2 >= 0) && (paramInt2 < ((ArrayList)this.Sot.get(paramInt1)).size()))
     {
-      com.tencent.mm.media.editor.a.b localb = ((com.tencent.mm.media.editor.a.h)localIterator.next()).UH();
-      if (localb != null) {
-        localArrayList.add(localb);
+      if (paramBoolean) {
+        break label290;
+      }
+      paramBoolean = true;
+      localObject1 = ((ArrayList)this.Sot.get(paramInt1)).get(paramInt2);
+      kotlin.g.b.s.s(localObject1, "dateGalleryMap[row][column]");
+      localObject1 = (com.tencent.mm.plugin.story.model.d.h)localObject1;
+      Log.i(this.TAG, "LogStory: setFavorite storyinfo " + localObject1 + " localid " + ((com.tencent.mm.plugin.story.model.d.h)localObject1).Smr.icg + " targetFavorite:" + paramBoolean);
+      localObject2 = StoryCore.SjP;
+      localObject1 = StoryCore.b.hvR().anv((int)((com.tencent.mm.plugin.story.model.d.h)localObject1).Smo.systemRowid);
+      if (localObject1 != null)
+      {
+        localObject2 = com.tencent.mm.plugin.story.g.e.SqW;
+        com.tencent.mm.plugin.story.g.e.EM(paramBoolean);
+        if (!paramBoolean) {
+          break label295;
+        }
       }
     }
-    AppMethodBeat.o(109549);
-    return localArrayList;
+    label290:
+    label295:
+    for (long l = 1L;; l = 2L)
+    {
+      localObject2 = com.tencent.mm.plugin.story.g.h.SqZ;
+      com.tencent.mm.plugin.story.g.h.a(l, String.valueOf(((com.tencent.mm.plugin.story.h.j)localObject1).field_storyID), 0L, 0L, 28);
+      localObject2 = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
+      ((ArrayList)localObject2).add(Long.valueOf(((com.tencent.mm.plugin.story.h.j)localObject1).field_storyID));
+      localArrayList.add(Integer.valueOf((int)((com.tencent.mm.plugin.story.h.j)localObject1).systemRowid));
+      localObject1 = com.tencent.mm.plugin.story.model.m.Sks;
+      m.a.b((List)localObject2, (List)localArrayList, paramBoolean);
+      AppMethodBeat.o(119188);
+      return;
+      paramBoolean = false;
+      break;
+    }
   }
   
-  public final void czM()
+  public final void anf(int paramInt)
   {
-    long l2 = 1L;
-    AppMethodBeat.i(109546);
-    Object localObject1 = ((Iterable)this.sAF.getItemContainer().getAllItemViews()).iterator();
+    AppMethodBeat.i(119184);
+    this.SoA = paramInt;
+    if ((this.SoA == 1) && (!this.SoB)) {
+      hxk();
+    }
+    AppMethodBeat.o(119184);
+  }
+  
+  public final void destroy()
+  {
+    AppMethodBeat.i(119180);
+    if (this.hHq) {
+      com.tencent.mm.kernel.h.baD().mCm.b(764, (com.tencent.mm.am.h)this);
+    }
+    com.tencent.mm.plugin.story.model.b.b localb = com.tencent.mm.plugin.story.model.b.b.SlF;
+    com.tencent.mm.plugin.story.model.b.b.h(this.SmW);
+    AppMethodBeat.o(119180);
+  }
+  
+  public final void hxm()
+  {
+    AppMethodBeat.i(119179);
+    this.Sow = -1;
+    this.Sox = -1;
+    m.a locala = com.tencent.mm.plugin.story.model.m.Sks;
+    m.a.hwj();
+    AppMethodBeat.o(119179);
+  }
+  
+  public final void hxn()
+  {
     int j = 0;
+    AppMethodBeat.i(119181);
+    Object localObject1 = ((Iterable)this.Sme).iterator();
     int i = 0;
-    Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (com.tencent.mm.media.editor.a.h)((Iterator)localObject1).next();
-      if ((localObject2 instanceof com.tencent.mm.plugin.story.ui.view.editor.item.b))
+      ((Iterator)localObject1).next();
+      if (i < 0) {
+        kotlin.a.p.kkW();
+      }
+      ((e)this.Sou.get(i)).SoT = 1;
+      i += 1;
+    }
+    Object localObject2 = this.username;
+    kotlin.g.b.s.u(localObject2, "username");
+    localObject1 = new ArrayList();
+    Object localObject3 = StoryCore.SjP;
+    localObject3 = StoryCore.b.hvR();
+    Object localObject4 = StoryCore.SjP;
+    localObject3 = ((com.tencent.mm.plugin.story.h.k)localObject3).ds((String)localObject2, Util.isEqual((String)localObject2, StoryCore.b.hgg())).iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject4 = (com.tencent.mm.plugin.story.h.j)((Iterator)localObject3).next();
+      fjj localfjj = ((com.tencent.mm.plugin.story.h.j)localObject4).hzt();
+      if ((localfjj.abJZ != null) && (localfjj.abJZ.Zpr.size() != 0))
       {
+        h.a locala = com.tencent.mm.plugin.story.model.d.h.Smn;
+        kotlin.g.b.s.s(localObject4, "story");
+        ((ArrayList)localObject1).add(h.a.b((com.tencent.mm.plugin.story.h.j)localObject4));
+        Log.i(f.access$getTAG$cp(), "getFavGalleryItemsFromDb story username " + (String)localObject2 + ' ' + ((ArrayList)localObject1).size() + " content " + ((fis)localfjj.abJZ.Zpr.get(0)).aaTl + " and " + ((fis)localfjj.abJZ.Zpr.get(0)).Url + " id:" + ((com.tencent.mm.plugin.story.h.j)localObject4).field_storyID + " storyUsername: " + ((com.tencent.mm.plugin.story.h.j)localObject4).field_userName);
+      }
+    }
+    if (((ArrayList)localObject1).size() > 0)
+    {
+      localObject2 = ((Iterable)localObject1).iterator();
+      i = 0;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = ((Iterator)localObject2).next();
+        if (i < 0) {
+          kotlin.a.p.kkW();
+        }
+        localObject3 = (com.tencent.mm.plugin.story.model.d.h)localObject3;
+        if (i < this.Sot.size()) {
+          ((ArrayList)this.Sot.get(i)).add(localObject3);
+        }
         i += 1;
       }
-      else if ((localObject2 instanceof com.tencent.mm.plugin.story.ui.view.editor.item.g))
-      {
-        j += 1;
-      }
-      else if ((localObject2 instanceof f))
-      {
-        com.tencent.mm.plugin.story.g.i locali = com.tencent.mm.plugin.story.g.i.sFa;
-        com.tencent.mm.plugin.story.g.i.cDi().ga(((f)localObject2).getReportPositionString().toString());
-        locali = com.tencent.mm.plugin.story.g.i.sFa;
-        com.tencent.mm.plugin.story.g.i.cDi().gb(String.valueOf(((f)localObject2).getLatitude()));
-        locali = com.tencent.mm.plugin.story.g.i.sFa;
-        com.tencent.mm.plugin.story.g.i.cDi().gc(String.valueOf(((f)localObject2).getLongitude()));
-        localObject2 = com.tencent.mm.plugin.story.g.i.sFa;
-        com.tencent.mm.plugin.story.g.i.cDm().FW();
-      }
-      else if ((localObject2 instanceof com.tencent.mm.plugin.story.ui.view.editor.item.d))
-      {
-        localObject2 = com.tencent.mm.plugin.story.g.i.sFa;
-        com.tencent.mm.plugin.story.g.i.cDi().Ft();
-      }
-      else if ((localObject2 instanceof com.tencent.mm.plugin.story.ui.view.editor.item.h))
-      {
-        localObject2 = com.tencent.mm.plugin.story.g.i.sFa;
-        com.tencent.mm.plugin.story.g.i.cDi().Fu();
-        localObject2 = com.tencent.mm.plugin.story.g.i.sFa;
-        com.tencent.mm.plugin.story.g.i.cDm().FY();
-      }
+      Log.i(this.TAG, kotlin.g.b.s.X("LogStory: preload Db data ", Integer.valueOf(((ArrayList)localObject1).size())));
     }
-    localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDi().bN(i);
-    localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDi().bO(j);
-    localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-    localObject1 = com.tencent.mm.plugin.story.g.i.cDi();
-    if (this.sAA)
+    for (;;)
     {
-      l1 = 1L;
-      ((as)localObject1).bT(l1);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      localObject1 = com.tencent.mm.plugin.story.g.i.cDi();
-      localObject2 = this.sAC;
-      if (localObject2 == null) {
-        break label413;
-      }
-      int k = ((AudioCacheInfo)localObject2).cpt;
-      localObject2 = AudioCacheInfo.swC;
-      if (k != AudioCacheInfo.cBz()) {
-        break label413;
-      }
-      l1 = 1L;
-      label335:
-      ((as)localObject1).bS(l1);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      localObject1 = com.tencent.mm.plugin.story.g.i.cDm();
-      if (!this.sAA) {
-        break label419;
-      }
-    }
-    label413:
-    label419:
-    for (long l1 = l2;; l1 = 0L)
-    {
-      ((bc)localObject1).dc(l1);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      com.tencent.mm.plugin.story.g.i.cDm().cY(i);
-      localObject1 = com.tencent.mm.plugin.story.g.i.sFa;
-      com.tencent.mm.plugin.story.g.i.cDm().cZ(j);
-      AppMethodBeat.o(109546);
-      return;
-      l1 = 0L;
-      break;
-      l1 = 0L;
-      break label335;
-    }
-  }
-  
-  public final void lQ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(109543);
-    this.qaU = paramBoolean;
-    this.sAF.getVideoPlayView().setMute(this.qaU);
-    AppMethodBeat.o(109543);
-  }
-  
-  public final void lR(boolean paramBoolean)
-  {
-    this.sAA = paramBoolean;
-  }
-  
-  public final void lS(boolean paramBoolean)
-  {
-    this.sAB = paramBoolean;
-  }
-  
-  public final void pause()
-  {
-    AppMethodBeat.i(109541);
-    ab.b(this.TAG, "pause", new Object[0]);
-    this.sAF.getItemContainer().pause();
-    this.sAF.getVideoPlayView().pause();
-    this.sAF.onPause();
-    v localv = this.qdF;
-    if (localv != null)
-    {
-      localv.aC(false);
-      AppMethodBeat.o(109541);
-      return;
-    }
-    AppMethodBeat.o(109541);
-  }
-  
-  public final void pauseAudio()
-  {
-    AppMethodBeat.i(109545);
-    Object localObject = this.qdF;
-    if ((localObject == null) || (((v)localObject).mJ() != 4))
-    {
-      localObject = com.tencent.mm.plugin.story.model.audio.c.swQ;
-      localObject = com.tencent.mm.plugin.story.model.audio.c.cBC();
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject).cBA();
-      }
-      localObject = this.qdF;
-      if (localObject != null) {
-        ((v)localObject).stop();
-      }
-      localObject = this.qdF;
-      if (localObject != null) {
-        ((v)localObject).release();
-      }
-      this.qdF = null;
-      this.sAC = null;
-    }
-    AppMethodBeat.o(109545);
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(109552);
-    this.qaU = false;
-    this.sAA = true;
-    this.sAF.reset();
-    this.sAF.getVideoPlayView().setMute(this.qaU);
-    this.sAF.getVideoPlayView().stop();
-    pauseAudio();
-    this.sAC = null;
-    this.syP.reset();
-    StoryAudioManagerProxy.a locala = StoryAudioManagerProxy.sCO;
-    StoryAudioManagerProxy.access$getInstance$cp().cancelAll();
-    AppMethodBeat.o(109552);
-  }
-  
-  public final void resume()
-  {
-    AppMethodBeat.i(109542);
-    ab.b(this.TAG, "resume", new Object[0]);
-    this.sAF.getItemContainer().resume();
-    this.sAF.getVideoPlayView().start();
-    this.sAF.onResume();
-    v localv = this.qdF;
-    if (localv != null)
-    {
-      localv.aC(true);
-      AppMethodBeat.o(109542);
-      return;
-    }
-    AppMethodBeat.o(109542);
-  }
-  
-  public final boolean zY()
-  {
-    AppMethodBeat.i(109551);
-    if (this.sAF.Pk())
-    {
-      czM();
-      if (this.sAF.czN())
+      localObject1 = ((Iterable)this.Sme).iterator();
+      i = j;
+      while (((Iterator)localObject1).hasNext())
       {
-        AppMethodBeat.o(109551);
-        return true;
-      }
-      Object localObject = com.tencent.mm.plugin.story.model.audio.c.swQ;
-      localObject = com.tencent.mm.plugin.story.model.audio.c.cBC();
-      bsp localbsp;
-      if ((localObject != null) && (((com.tencent.mm.plugin.story.model.audio.c)localObject).pKF != 0L))
-      {
-        localbsp = new bsp();
-        localbsp.xGe = ((com.tencent.mm.plugin.story.model.audio.c)localObject).swI;
-        if (!((com.tencent.mm.plugin.story.model.audio.c)localObject).swK) {
-          break label188;
+        ((Iterator)localObject1).next();
+        if (i < 0) {
+          kotlin.a.p.kkW();
         }
-        i = ((com.tencent.mm.plugin.story.model.audio.c)localObject).cpt;
-        locala = AudioCacheInfo.swC;
-        if (i != AudioCacheInfo.cBz()) {
-          break label183;
+        if (this.Sot.size() > i)
+        {
+          localObject2 = this.Sot.get(i);
+          kotlin.g.b.s.s(localObject2, "dateGalleryMap[index]");
+          R(i, (List)localObject2);
+        }
+        i += 1;
+      }
+      Log.i(this.TAG, "LogStory: initLoad no data");
+    }
+    AppMethodBeat.o(119181);
+  }
+  
+  public final void ma(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(119182);
+    Log.i(this.TAG, kotlin.g.b.s.X("LogStory: deleteItem ", Integer.valueOf(paramInt1)));
+    if ((paramInt1 >= 0) && (paramInt1 < this.Sot.size()) && (paramInt2 >= 0) && (paramInt2 < ((ArrayList)this.Sot.get(paramInt1)).size()))
+    {
+      StoryCore.b localb = StoryCore.SjP;
+      StoryCore.b.gHI().post(new b..ExternalSyntheticLambda4(this, paramInt1, paramInt2));
+    }
+    AppMethodBeat.o(119182);
+  }
+  
+  public final void mb(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(119185);
+    Log.d(this.TAG, "onSelected row=" + paramInt1 + " column=" + paramInt2);
+    this.Soy = paramInt1;
+    this.Soz = paramInt2;
+    if (this.SoA == 1) {
+      hxk();
+    }
+    StoryCore.b localb = StoryCore.SjP;
+    StoryCore.b.gHI().post(new b..ExternalSyntheticLambda3(this, paramInt1));
+    AppMethodBeat.o(119185);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
+  {
+    AppMethodBeat.i(119187);
+    kotlin.g.b.s.u(paramp, "scene");
+    Log.i(this.TAG, "LogStory: " + paramInt1 + ' ' + paramInt2 + ' ' + paramString);
+    if ((paramp instanceof com.tencent.mm.plugin.story.model.a.f))
+    {
+      com.tencent.mm.plugin.story.model.a.a locala = ((com.tencent.mm.plugin.story.model.a.f)paramp).hwE();
+      if (locala != null)
+      {
+        if ((locala instanceof l))
+        {
+          if (paramInt2 == 0)
+          {
+            paramString = ((Iterable)((com.tencent.mm.plugin.story.model.a.f)paramp).Slm).iterator();
+            while (paramString.hasNext())
+            {
+              paramInt1 = ((Number)paramString.next()).intValue();
+              paramp = com.tencent.mm.plugin.story.model.m.Sks;
+              m.a.anc(paramInt1);
+            }
+          }
+          if (paramInt2 == 0) {}
+          for (bool = true;; bool = false)
+          {
+            EJ(bool);
+            AppMethodBeat.o(119187);
+            return;
+          }
+        }
+        if ((locala instanceof com.tencent.mm.plugin.story.model.a.m))
+        {
+          Log.i(this.TAG, "onSceneEnd MMSTORY_OBJ_OP_VISIBILITY_TYPE errType:" + paramInt1 + ", errcode:" + paramInt2);
+          if (paramInt2 == 0)
+          {
+            paramString = ((Iterable)((com.tencent.mm.plugin.story.model.a.f)paramp).Slm).iterator();
+            while (paramString.hasNext())
+            {
+              paramInt1 = ((Number)paramString.next()).intValue();
+              paramp = com.tencent.mm.plugin.story.model.m.Sks;
+              m.a.lY(paramInt1, ((com.tencent.mm.plugin.story.model.a.m)locala).Slw);
+            }
+            if ((((com.tencent.mm.plugin.story.model.a.m)locala).Slw == 1) && (!((com.tencent.mm.plugin.story.model.a.m)locala).Slx)) {}
+            for (bool = true;; bool = false)
+            {
+              d.uiThread((kotlin.g.a.a)new f(this, bool));
+              AppMethodBeat.o(119187);
+              return;
+            }
+          }
+        }
+        else if ((locala instanceof com.tencent.mm.plugin.story.model.a.k))
+        {
+          if (paramInt2 == 0)
+          {
+            Iterator localIterator1 = ((Iterable)((com.tencent.mm.plugin.story.model.a.f)paramp).Slm).iterator();
+            if (localIterator1.hasNext())
+            {
+              int j = ((Number)localIterator1.next()).intValue();
+              Log.i(this.TAG, "onSceneEnd update story favorite: errType " + paramInt1 + ", errcode " + paramInt2 + ", localId " + j + ", favorite:" + ((com.tencent.mm.plugin.story.model.a.k)locala).favorite);
+              paramString = com.tencent.mm.plugin.story.model.m.Sks;
+              m.a.lZ(j, ((com.tencent.mm.plugin.story.model.a.k)locala).favorite);
+              Iterator localIterator2 = ((Iterable)this.Sot).iterator();
+              label476:
+              label510:
+              int i;
+              if (localIterator2.hasNext())
+              {
+                paramp = localIterator2.next();
+                Iterator localIterator3 = ((Iterable)paramp).iterator();
+                if (localIterator3.hasNext())
+                {
+                  paramString = localIterator3.next();
+                  if ((int)((com.tencent.mm.plugin.story.model.d.h)paramString).Smo.systemRowid == j)
+                  {
+                    i = 1;
+                    label547:
+                    if (i == 0) {
+                      break label602;
+                    }
+                    label552:
+                    if (paramString == null) {
+                      break label609;
+                    }
+                    i = 1;
+                    label559:
+                    if (i == 0) {
+                      break label613;
+                    }
+                    paramString = paramp;
+                    label567:
+                    paramString = (ArrayList)paramString;
+                    if (((com.tencent.mm.plugin.story.model.a.k)locala).favorite != 1) {
+                      break label620;
+                    }
+                  }
+                }
+              }
+              label602:
+              label609:
+              label613:
+              label620:
+              for (bool = true;; bool = false)
+              {
+                a(bool, paramString, true);
+                break;
+                i = 0;
+                break label547;
+                break label510;
+                paramString = null;
+                break label552;
+                i = 0;
+                break label559;
+                break label476;
+                paramString = null;
+                break label567;
+              }
+            }
+            AppMethodBeat.o(119187);
+            return;
+          }
+          paramString = com.tencent.mm.plugin.story.h.a.Sry;
+          if (paramInt2 == com.tencent.mm.plugin.story.h.a.hyH()) {
+            if (((com.tencent.mm.plugin.story.model.a.k)locala).favorite != 1) {
+              break label674;
+            }
+          }
         }
       }
-      label183:
-      for (int i = 11;; i = 5)
-      {
-        localbsp.xGf = i;
-        localbsp.xGh = ((int)bo.aox());
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject).cBA();
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject).swL.add(localbsp);
-        ab.i(com.tencent.mm.plugin.story.model.audio.c.TAG, "record cancel " + com.tencent.mm.plugin.story.model.audio.d.a(localbsp));
-        ((com.tencent.mm.plugin.story.model.audio.c)localObject).cBB();
-        reset();
-        this.sAE.boQ();
-        AppMethodBeat.o(109551);
-        return true;
-      }
-      label188:
-      i = ((com.tencent.mm.plugin.story.model.audio.c)localObject).cpt;
-      AudioCacheInfo.a locala = AudioCacheInfo.swC;
-      if (i == AudioCacheInfo.cBz()) {}
-      for (i = 13;; i = 7)
-      {
-        localbsp.xGf = i;
-        break;
-      }
     }
-    AppMethodBeat.o(109551);
-    return false;
-  }
-  
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/presenter/EditorPresenter$StoryProgressDialog;", "", "()V", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mCancel", "Lkotlin/Function0;", "", "dismiss", "setCancelable", "enable", "", "setOnCancel", "onCancel", "show", "context", "Landroid/content/Context;", "cancelAble", "tip", "", "cancel", "plugin-story_release"})
-  public static final class a
-  {
-    p lxi;
-    a.f.a.a<y> sAG;
-    
-    public a()
+    label674:
+    for (final boolean bool = true;; bool = false)
     {
-      AppMethodBeat.i(109523);
-      this.sAG = ((a.f.a.a)b.a.a.sAH);
-      AppMethodBeat.o(109523);
-    }
-    
-    public final void a(Context paramContext, boolean paramBoolean, int paramInt, a.f.a.a<y> parama)
-    {
-      AppMethodBeat.i(151083);
-      a.f.b.j.q(paramContext, "context");
-      a.f.b.j.q(parama, "cancel");
-      this.sAG = parama;
-      if (this.lxi == null) {
-        this.lxi = p.b(paramContext, (CharSequence)paramContext.getString(paramInt), paramBoolean, (DialogInterface.OnCancelListener)new b.a.c(this));
-      }
-      AppMethodBeat.o(151083);
-    }
-    
-    public final void dismiss()
-    {
-      AppMethodBeat.i(109522);
-      p localp = this.lxi;
-      if (localp != null) {
-        localp.dismiss();
-      }
-      this.lxi = null;
-      AppMethodBeat.o(109522);
-    }
-    
-    @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
-    static final class b
-      extends a.f.b.k
-      implements a.f.a.a<y>
-    {
-      public static final b sAI;
-      
-      static
-      {
-        AppMethodBeat.i(109519);
-        sAI = new b();
-        AppMethodBeat.o(109519);
-      }
-      
-      b()
-      {
-        super();
-      }
+      a(bool, null, false);
+      AppMethodBeat.o(119187);
+      return;
     }
   }
   
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/story/presenter/EditorPresenter$checkAudioCache$1$1"})
-  static final class b
-    extends a.f.b.k
-    implements a.f.a.a<y>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    b(b paramb, AudioCacheInfo paramAudioCacheInfo)
+    a(b paramb, int paramInt)
     {
       super();
     }
   }
   
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/story/presenter/EditorPresenter$showLoading$1", "Ljava/lang/Runnable;", "run", "", "plugin-story_release"})
-  public static final class j
-    implements Runnable
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public final void run()
+    b(b paramb, int paramInt, List<com.tencent.mm.plugin.story.model.d.h> paramList)
     {
-      AppMethodBeat.i(109539);
-      b localb = this.sAK;
-      b.a locala = new b.a();
-      b.a.a(locala, this.sAK.context, false, 0, (a.f.a.a)b.j.a.sBe, 4);
-      localb.qdb = locala;
-      AppMethodBeat.o(109539);
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    c(boolean paramBoolean, b paramb)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    d(b paramb, int paramInt)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    e(b paramb, boolean paramBoolean1, boolean paramBoolean2)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    f(b paramb, boolean paramBoolean)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    g(g paramg, b paramb)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    h(b paramb)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class i
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    i(g paramg, b paramb)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class j
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    j(g paramg, b paramb)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "storyId", "", "isSync", "", "fromUser", "", "storyOwner"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class k
+    extends u
+    implements r<Long, Boolean, String, String, ah>
+  {
+    k(b paramb)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.b
  * JD-Core Version:    0.7.0.1
  */

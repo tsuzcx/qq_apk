@@ -57,14 +57,13 @@ public class CompressUtil
   
   private static byte[] unZip(byte[] paramArrayOfByte)
   {
-    ByteArrayOutputStream localByteArrayOutputStream = null;
     ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
     ZipInputStream localZipInputStream = new ZipInputStream(localByteArrayInputStream);
-    paramArrayOfByte = localByteArrayOutputStream;
+    paramArrayOfByte = null;
     while (localZipInputStream.getNextEntry() != null)
     {
       paramArrayOfByte = new byte[1024];
-      localByteArrayOutputStream = new ByteArrayOutputStream();
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       for (;;)
       {
         int i = localZipInputStream.read(paramArrayOfByte, 0, paramArrayOfByte.length);
@@ -110,7 +109,7 @@ public class CompressUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.CompressUtil
  * JD-Core Version:    0.7.0.1
  */

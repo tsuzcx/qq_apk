@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <ListView android:id="@id/bde" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/mn" />
-    <ListView android:id="@id/cbm" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/mn" />
-    <RelativeLayout android:id="@id/amp" android:background="#f7ffffff" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/bdf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a00" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center_horizontal" android:id="@id/aa_" android:background="#f7ffffff" android:paddingTop="@dimen/l8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/c_b" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/br7" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center" android:id="@id/g34" android:paddingTop="15.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/bz" android:gravity="center|left" android:id="@id/bz1" android:background="@color/ahb" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/ig" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/m9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

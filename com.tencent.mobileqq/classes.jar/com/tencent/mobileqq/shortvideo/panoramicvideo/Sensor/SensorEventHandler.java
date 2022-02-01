@@ -5,7 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Utils.SensorUtil;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.utils.SensorUtil;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.resource.SensorResource;
 import com.tencent.sveffects.SdkContext;
@@ -40,15 +40,15 @@ public class SensorEventHandler
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (paramSensorEvent.accuracy != 0) {}
-    switch (paramSensorEvent.sensor.getType())
+    if (paramSensorEvent.accuracy != 0)
     {
-    default: 
-      return;
+      if (paramSensorEvent.sensor.getType() != 11) {
+        return;
+      }
+      this.mDeviceRotation = SdkContext.getInstance().getResources().getSensorResource().getRotation();
+      SensorUtil.sensorRotationVectorToMatrix(paramSensorEvent, this.mDeviceRotation, this.rotationMatrix);
+      this.sensorHandlerCallback.updateSensorMatrix(this.rotationMatrix);
     }
-    this.mDeviceRotation = SdkContext.getInstance().getResources().getSensorResource().getRotation();
-    SensorUtil.sensorRotationVectorToMatrix(paramSensorEvent, this.mDeviceRotation, this.rotationMatrix);
-    this.sensorHandlerCallback.updateSensorMatrix(this.rotationMatrix);
   }
   
   public void releaseResources()
@@ -67,7 +67,7 @@ public class SensorEventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler
  * JD-Core Version:    0.7.0.1
  */

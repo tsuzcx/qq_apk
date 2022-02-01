@@ -42,51 +42,73 @@ public abstract class Random
   @NotNull
   public byte[] nextBytes(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int k = 1;
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "array");
     int i = paramArrayOfByte.length;
-    if (paramInt1 < 0) {}
-    for (i = 0;; i = 1)
+    int j = 0;
+    int k = 1;
+    if ((paramInt1 >= 0) && (i >= paramInt1))
     {
-      if (i != 0) {
-        break label111;
-      }
-      throw ((Throwable)new IllegalArgumentException(("fromIndex (" + paramInt1 + ") or toIndex (" + paramInt2 + ") are out of range: 0.." + paramArrayOfByte.length + '.').toString()));
-      if (i < paramInt1) {
-        break;
-      }
       i = paramArrayOfByte.length;
-      if ((paramInt2 < 0) || (i < paramInt2)) {
-        break;
+      if ((paramInt2 >= 0) && (i >= paramInt2))
+      {
+        i = 1;
+        break label55;
       }
     }
-    label111:
-    if (paramInt1 <= paramInt2) {}
-    for (i = k; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("fromIndex (" + paramInt1 + ") must be not greater than toIndex (" + paramInt2 + ").").toString()));
-    }
-    k = (paramInt2 - paramInt1) / 4;
     i = 0;
-    while (i < k)
+    label55:
+    if (i != 0)
     {
-      int m = nextInt();
-      paramArrayOfByte[paramInt1] = ((byte)m);
-      paramArrayOfByte[(paramInt1 + 1)] = ((byte)(m >>> 8));
-      paramArrayOfByte[(paramInt1 + 2)] = ((byte)(m >>> 16));
-      paramArrayOfByte[(paramInt1 + 3)] = ((byte)(m >>> 24));
-      paramInt1 += 4;
-      i += 1;
+      if (paramInt1 <= paramInt2) {
+        i = k;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        k = (paramInt2 - paramInt1) / 4;
+        i = 0;
+        while (i < k)
+        {
+          int m = nextInt();
+          paramArrayOfByte[paramInt1] = ((byte)m);
+          paramArrayOfByte[(paramInt1 + 1)] = ((byte)(m >>> 8));
+          paramArrayOfByte[(paramInt1 + 2)] = ((byte)(m >>> 16));
+          paramArrayOfByte[(paramInt1 + 3)] = ((byte)(m >>> 24));
+          paramInt1 += 4;
+          i += 1;
+        }
+        i = paramInt2 - paramInt1;
+        k = nextBits(i * 8);
+        paramInt2 = j;
+        while (paramInt2 < i)
+        {
+          paramArrayOfByte[(paramInt1 + paramInt2)] = ((byte)(k >>> paramInt2 * 8));
+          paramInt2 += 1;
+        }
+        return paramArrayOfByte;
+      }
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("fromIndex (");
+      paramArrayOfByte.append(paramInt1);
+      paramArrayOfByte.append(") must be not greater than toIndex (");
+      paramArrayOfByte.append(paramInt2);
+      paramArrayOfByte.append(").");
+      throw ((Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString()));
     }
-    i = paramInt2 - paramInt1;
-    k = nextBits(i * 8);
-    paramInt2 = j;
-    while (paramInt2 < i)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fromIndex (");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(") or toIndex (");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(") are out of range: 0..");
+    localStringBuilder.append(paramArrayOfByte.length);
+    localStringBuilder.append('.');
+    paramArrayOfByte = (Throwable)new IllegalArgumentException(localStringBuilder.toString().toString());
+    for (;;)
     {
-      paramArrayOfByte[(paramInt1 + paramInt2)] = ((byte)(k >>> paramInt2 * 8));
-      paramInt2 += 1;
+      throw paramArrayOfByte;
     }
-    return paramArrayOfByte;
   }
   
   public double nextDouble()
@@ -101,42 +123,45 @@ public abstract class Random
   
   public double nextDouble(double paramDouble1, double paramDouble2)
   {
-    int j = 1;
     RandomKt.checkRangeBounds(paramDouble1, paramDouble2);
-    double d = paramDouble2 - paramDouble1;
-    int i;
-    if (Double.isInfinite(d)) {
-      if ((!Double.isInfinite(paramDouble1)) && (!Double.isNaN(paramDouble1)))
-      {
-        i = 1;
-        if (i == 0) {
-          break label126;
-        }
-        if ((Double.isInfinite(paramDouble2)) || (Double.isNaN(paramDouble2))) {
-          break label120;
-        }
-        i = j;
-        label61:
-        if (i == 0) {
-          break label126;
-        }
-        d = nextDouble() * (paramDouble2 / 2 - paramDouble1 / 2);
-      }
-    }
-    label120:
-    label126:
-    for (paramDouble1 = d + (paramDouble1 + d);; paramDouble1 = nextDouble() * d + paramDouble1)
+    double d1 = paramDouble2 - paramDouble1;
+    if (Double.isInfinite(d1))
     {
-      d = paramDouble1;
-      if (paramDouble1 >= paramDouble2) {
-        d = Math.nextAfter(paramDouble2, DoubleCompanionObject.INSTANCE.getNEGATIVE_INFINITY());
+      boolean bool = Double.isInfinite(paramDouble1);
+      int j = 1;
+      int i;
+      if ((!bool) && (!Double.isNaN(paramDouble1))) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      return d;
-      i = 0;
-      break;
-      i = 0;
-      break label61;
+      if (i != 0)
+      {
+        if ((!Double.isInfinite(paramDouble2)) && (!Double.isNaN(paramDouble2))) {
+          i = j;
+        } else {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          d1 = nextDouble();
+          double d2 = 2;
+          Double.isNaN(d2);
+          double d3 = paramDouble2 / d2;
+          Double.isNaN(d2);
+          d1 *= (d3 - paramDouble1 / d2);
+          paramDouble1 = paramDouble1 + d1 + d1;
+          break label143;
+        }
+      }
     }
+    paramDouble1 += nextDouble() * d1;
+    label143:
+    d1 = paramDouble1;
+    if (paramDouble1 >= paramDouble2) {
+      d1 = Math.nextAfter(paramDouble2, DoubleCompanionObject.INSTANCE.getNEGATIVE_INFINITY());
+    }
+    return d1;
   }
   
   public float nextFloat()
@@ -158,27 +183,28 @@ public abstract class Random
   {
     RandomKt.checkRangeBounds(paramInt1, paramInt2);
     int i = paramInt2 - paramInt1;
-    if ((i > 0) || (i == -2147483648))
+    if ((i <= 0) && (i != -2147483648))
     {
-      if ((-i & i) == i) {
-        paramInt2 = nextBits(RandomKt.fastLog2(i));
-      }
-      for (;;)
+      do
       {
-        return paramInt2 + paramInt1;
-        int j;
-        do
-        {
-          j = nextInt() >>> 1;
-          paramInt2 = j % i;
-        } while (j - paramInt2 + (i - 1) < 0);
-      }
+        i = nextInt();
+      } while ((paramInt1 > i) || (paramInt2 <= i));
+      return i;
     }
-    do
+    if ((-i & i) == i)
     {
-      i = nextInt();
-    } while ((paramInt1 > i) || (paramInt2 <= i));
-    return i;
+      paramInt2 = nextBits(RandomKt.fastLog2(i));
+    }
+    else
+    {
+      int j;
+      do
+      {
+        j = nextInt() >>> 1;
+        paramInt2 = j % i;
+      } while (j - paramInt2 + (i - 1) < 0);
+    }
+    return paramInt1 + paramInt2;
   }
   
   public long nextLong()
@@ -197,34 +223,32 @@ public abstract class Random
     long l1 = paramLong2 - paramLong1;
     if (l1 > 0L)
     {
-      int j;
       if ((-l1 & l1) == l1)
       {
         int i = (int)l1;
-        j = (int)(l1 >>> 32);
-        if (i != 0) {
-          paramLong2 = nextBits(RandomKt.fastLog2(i)) & 0xFFFFFFFF;
+        int j = (int)(l1 >>> 32);
+        if (i != 0) {}
+        for (i = nextBits(RandomKt.fastLog2(i));; i = nextInt())
+        {
+          paramLong2 = i & 0xFFFFFFFF;
+          break label135;
+          if (j != 1) {
+            break;
+          }
         }
+        paramLong2 = (nextBits(RandomKt.fastLog2(j)) << 32) + nextInt();
       }
-      for (;;)
+      else
       {
-        return paramLong2 + paramLong1;
-        if (j == 1)
+        long l2;
+        do
         {
-          paramLong2 = nextInt() & 0xFFFFFFFF;
-        }
-        else
-        {
-          paramLong2 = (nextBits(RandomKt.fastLog2(j)) << 32) + nextInt();
-          continue;
-          long l2;
-          do
-          {
-            l2 = nextLong() >>> 1;
-            paramLong2 = l2 % l1;
-          } while (l2 - paramLong2 + (l1 - 1L) < 0L);
-        }
+          l2 = nextLong() >>> 1;
+          paramLong2 = l2 % l1;
+        } while (l2 - paramLong2 + (l1 - 1L) < 0L);
       }
+      label135:
+      return paramLong1 + paramLong2;
     }
     do
     {
@@ -235,7 +259,7 @@ public abstract class Random
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.random.Random
  * JD-Core Version:    0.7.0.1
  */

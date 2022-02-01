@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aeuh;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -14,8 +13,8 @@ class PokePanel$2$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI start");
     }
-    ArrayList localArrayList = this.a.a;
-    PokePanel.a(this.a.this$0).a(localArrayList);
+    ArrayList localArrayList = this.a.b;
+    PokePanel.b(this.a.this$0).a(localArrayList);
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI end");
     }
@@ -23,7 +22,7 @@ class PokePanel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokePanel.2.1
  * JD-Core Version:    0.7.0.1
  */

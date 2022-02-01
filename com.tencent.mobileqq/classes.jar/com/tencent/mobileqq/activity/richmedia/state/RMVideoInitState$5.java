@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajpx;
-import ajrw;
-import ajtn;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import azhg;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
 
-public class RMVideoInitState$5
+class RMVideoInitState$5
   implements Runnable
 {
-  public RMVideoInitState$5(ajtn paramajtn) {}
+  RMVideoInitState$5(RMVideoInitState paramRMVideoInitState) {}
   
   public void run()
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
     boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
     boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
-    azhg localazhg = azhg.a();
-    if ((!bool1) && (ajpx.a == 1))
+    CameraControl localCameraControl = CameraControl.a();
+    if ((!bool1) && (FlowCameraConstant.b == 1))
     {
-      ajrw.a(localazhg.a(), "front");
+      NewFlowCameraReporter.a(localCameraControl.l(), "front");
       localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
-    }
-    while ((bool2) || (ajpx.a != 2)) {
       return;
     }
-    ajrw.a(localazhg.a(), "back");
-    localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
+    if ((!bool2) && (FlowCameraConstant.b == 2))
+    {
+      NewFlowCameraReporter.a(localCameraControl.l(), "back");
+      localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
+    }
   }
 }
 

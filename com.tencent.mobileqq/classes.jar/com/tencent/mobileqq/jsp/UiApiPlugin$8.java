@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.jsp;
 
-import atkb;
-import bddt;
-import begz;
+import com.tencent.mobileqq.util.ScreenShotUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import org.json.JSONObject;
 
-public class UiApiPlugin$8
+class UiApiPlugin$8
   implements Runnable
 {
   UiApiPlugin$8(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    this.this$0.i = this.a.optString("callback");
-    bddt.a(this.this$0.mRuntime.a(), new atkb(this));
+    this.this$0.l = this.a.optString("callback");
+    ScreenShotUtil.a(this.this$0.mRuntime.a(), new UiApiPlugin.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.8
  * JD-Core Version:    0.7.0.1
  */

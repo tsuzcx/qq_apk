@@ -4,29 +4,29 @@ import android.graphics.Canvas;
 
 public abstract interface d
 {
+  public abstract boolean Bo(int paramInt);
+  
+  public abstract boolean Bp(int paramInt);
+  
+  public abstract int Fo();
+  
   public abstract boolean a(d paramd);
   
-  public abstract float aFI();
+  public abstract void c(Canvas paramCanvas, boolean paramBoolean);
   
-  public abstract boolean aFJ();
+  public abstract float cwf();
   
-  public abstract int aFK();
+  public abstract boolean cwg();
   
-  public abstract void b(Canvas paramCanvas, boolean paramBoolean);
+  public abstract int cwh();
   
-  public abstract void dl(int paramInt1, int paramInt2);
-  
-  public abstract int getCurrX();
+  public abstract void fz(int paramInt1, int paramInt2);
   
   public abstract int getWidth();
-  
-  public abstract boolean oo(int paramInt);
-  
-  public abstract boolean op(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.d
  * JD-Core Version:    0.7.0.1
  */

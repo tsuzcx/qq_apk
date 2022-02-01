@@ -3,14 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjli;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WeishiBasicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiBasicInfo> CREATOR = new bjli();
+  public static final Parcelable.Creator<WeishiBasicInfo> CREATOR = new WeishiBasicInfo.1();
   public String cover_url;
   public Map<String, String> dc_report;
   public String nick_name;
@@ -25,7 +24,7 @@ public class WeishiBasicInfo
   public String weishi_topicName;
   public String weishi_topicUrl;
   
-  public WeishiBasicInfo(Parcel paramParcel)
+  protected WeishiBasicInfo(Parcel paramParcel)
   {
     this.weishi_feedId = paramParcel.readString();
     this.weishi_fileId = paramParcel.readString();
@@ -39,7 +38,8 @@ public class WeishiBasicInfo
     this.weishi_topicUrl = paramParcel.readString();
     this.weishi_schema = paramParcel.readString();
     this.dc_report = new HashMap();
-    paramParcel.readMap(this.dc_report, this.dc_report.getClass().getClassLoader());
+    Map localMap = this.dc_report;
+    paramParcel.readMap(localMap, localMap.getClass().getClassLoader());
     this.weishi_summary = paramParcel.readString();
   }
   
@@ -84,7 +84,7 @@ public class WeishiBasicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.WeishiBasicInfo
  * JD-Core Version:    0.7.0.1
  */

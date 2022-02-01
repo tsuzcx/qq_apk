@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/refresh_view" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ProgressBar android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="30.0dip" style="@android:style/Widget.Material.ProgressBar" />
+    </FrameLayout>
+</FrameLayout>

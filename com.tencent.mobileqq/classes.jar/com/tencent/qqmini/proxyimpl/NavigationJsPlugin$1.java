@@ -1,7 +1,8 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import com.tencent.qqmini.sdk.log.QMLog;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 class NavigationJsPlugin$1
   implements Runnable
@@ -12,20 +13,34 @@ class NavigationJsPlugin$1
   {
     try
     {
-      if (!this.val$activity.moveTaskToBack(false)) {
-        this.val$activity.finish();
+      if (NavigationJsPlugin.a(this.this$0))
+      {
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+          this.a.finishAndRemoveTask();
+          return;
+        }
+        this.a.finish();
+        return;
       }
+      if (this.a.moveTaskToBack(false)) {
+        break label61;
+      }
+      this.a.finish();
       return;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("NavigationJsPlugin", "Failed to moveTaskBack");
+      label53:
+      label61:
+      break label53;
     }
+    QLog.e("NavigationJsPlugin", 1, "Failed to moveTaskBack");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

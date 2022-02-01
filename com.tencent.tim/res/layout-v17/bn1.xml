@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/hki" android:background="@android:color/white" android:paddingTop="8.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.qzone.widget.AvatarImageView android:id="@id/eyj" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginTop="@dimen/ni" android:scaleType="fitXY" />
+        <FrameLayout android:id="@id/l3_" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginTop="@dimen/ni" android:scaleType="fitXY">
+            <com.qzone.widget.AsyncImageView android:id="@id/aok" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/bhw" android:scaleType="fitXY" />
+            <com.qzone.widget.AsyncImageView android:id="@id/dvz" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="8.5dip" android:layout_marginTop="9.5dip" android:src="@drawable/bhx" android:scaleType="fitXY" android:layout_marginStart="8.5dip" />
+            <com.qzone.widget.AsyncImageView android:id="@id/l34" android:background="@drawable/a23" android:visibility="gone" android:layout_width="38.0dip" android:layout_height="38.0dip" android:scaleType="fitXY" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0sp" android:textColor="@color/qzone_skin_feed_input_box_hint_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k8g" android:background="@drawable/azo" android:paddingLeft="20.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="@dimen/ni" android:layout_marginBottom="12.0dip" android:text="@string/glc" android:singleLine="true" android:maxLength="10" />
+            <LinearLayout android:layout_gravity="end" android:orientation="horizontal" android:id="@id/lw2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="38.0dip" android:layout_marginTop="@dimen/ni" android:layout_marginRight="15.0dip" android:layout_marginEnd="15.0dip">
+                <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_common_gray2gray_color" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vq7" />
+                <cooperation.qzone.widget.DinTypeFaceTextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/qzone_skin_moodlistbanner_text_blue_color" android:layout_gravity="center" android:id="@id/lw1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mo" android:layout_marginTop="1.5dip" android:layout_marginRight="1.0dip" android:lines="1" android:textAlignment="center" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_common_gray2gray_color" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vq6" />
+                <ImageView android:layout_gravity="center" android:layout_width="9.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="1.0dip" android:src="@drawable/qzone_skin_moodlistbanner_arrow_right" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+    <com.qzone.widget.DisallowInterceptRecycleView android:id="@id/isj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/k8g" />
+</LinearLayout>

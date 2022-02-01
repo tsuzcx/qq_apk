@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RuleInfo
   extends JceStruct
 {
-  public long rule_id;
-  public long test_id;
+  public long rule_id = 0L;
+  public long test_id = 0L;
   
   public RuleInfo() {}
   
@@ -32,7 +32,7 @@ public final class RuleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.RuleInfo
  * JD-Core Version:    0.7.0.1
  */

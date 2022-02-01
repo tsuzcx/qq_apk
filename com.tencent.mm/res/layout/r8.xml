@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/na" android:textColor="@color/l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout style="@style/h1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/b49" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewFrom android:id="@id/b4c" android:layout_marginLeft="@dimen/a45" android:layout_marginRight="@dimen/a45" style="@style/ib" />
+            <ProgressBar android:id="@id/b4k" android:visibility="gone" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:indeterminateDrawable="@drawable/anj" android:layout_centerInParent="true" />
+            <TextView android:textSize="@dimen/mi" android:textColor="@color/al6" android:gravity="right" android:id="@id/b8p" android:background="@drawable/emoji_app_msg_mask" android:padding="@dimen/m7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:shadowColor="@color/lo" android:layout_alignLeft="@id/b4c" android:layout_alignRight="@id/b4c" android:layout_alignBottom="@id/b4c" />
+            <ImageView android:id="@id/b8w" android:background="@null" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:src="@drawable/emoji_download_btn" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

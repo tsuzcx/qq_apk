@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQzoneFeed;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
 public class eai
-  implements Runnable
+  implements View.OnClickListener
 {
-  AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
-  String jdField_a_of_type_JavaLangString;
+  public eai(QzoneFeedItemBuilder paramQzoneFeedItemBuilder, MessageForQzoneFeed paramMessageForQzoneFeed) {}
   
-  public eai(String paramString, AudioPlayer paramAudioPlayer)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = paramAudioPlayer;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(this.jdField_a_of_type_JavaLangString);
+    paramView = paramView.getContext();
+    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
+    localUserInfo.a = QzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).a();
+    localUserInfo.b = QzoneFeedItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).e();
+    localUserInfo.c = QzoneFeedItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder).getSid();
+    QZoneHelper.b((Activity)paramView, localUserInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
   }
 }
 

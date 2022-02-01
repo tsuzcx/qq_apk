@@ -21,11 +21,12 @@ public final class CachedObservable<T>
   
   public static <T> CachedObservable<T> from(Observable<? extends T> paramObservable, int paramInt)
   {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("capacityHint > 0 required");
+    if (paramInt >= 1)
+    {
+      paramObservable = new CachedObservable.CacheState(paramObservable, paramInt);
+      return new CachedObservable(new CachedObservable.CachedSubscribe(paramObservable), paramObservable);
     }
-    paramObservable = new CachedObservable.CacheState(paramObservable, paramInt);
-    return new CachedObservable(new CachedObservable.CachedSubscribe(paramObservable), paramObservable);
+    throw new IllegalArgumentException("capacityHint > 0 required");
   }
   
   boolean hasObservers()
@@ -40,7 +41,7 @@ public final class CachedObservable<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.CachedObservable
  * JD-Core Version:    0.7.0.1
  */

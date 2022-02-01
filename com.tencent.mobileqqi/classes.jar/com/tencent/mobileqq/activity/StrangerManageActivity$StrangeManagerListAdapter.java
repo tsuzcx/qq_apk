@@ -12,7 +12,7 @@ import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.FaceInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Stranger;
 import com.tencent.widget.XListView;
-import dkq;
+import dkp;
 import java.util.ArrayList;
 
 public class StrangerManageActivity$StrangeManagerListAdapter
@@ -60,13 +60,13 @@ public class StrangerManageActivity$StrangeManagerListAdapter
     if (paramView == null)
     {
       paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130903446, null);
-      paramViewGroup = new dkq();
+      paramViewGroup = new dkp();
       paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));
       paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230943));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232615));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231985));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232616));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131232614));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231984));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131232615));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this.a);
       paramViewGroup.jdField_a_of_type_Long = localStranger.time;
@@ -114,7 +114,7 @@ public class StrangerManageActivity$StrangeManagerListAdapter
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localStringBuilder.toString());
       this.a.a(paramViewGroup);
       return paramView;
-      paramViewGroup = (dkq)paramView.getTag();
+      paramViewGroup = (dkp)paramView.getTag();
       break;
       label398:
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localStranger.name);

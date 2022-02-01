@@ -4,29 +4,28 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aslp;
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONObject;
 
 public class PadFaceAd
-  extends awge
+  extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PadFaceAd> CREATOR = new aslp();
+  public static final Parcelable.Creator<PadFaceAd> CREATOR = new PadFaceAd.1();
   public String appName;
   public String appVersion;
   public String appView;
   public String arkMeta;
   public long endTime;
-  @awhs
+  @unique
   public int padFaceId;
   public int redPointId;
   public long startTime;
   
   public PadFaceAd() {}
   
-  public PadFaceAd(Parcel paramParcel)
+  protected PadFaceAd(Parcel paramParcel)
   {
     this.padFaceId = paramParcel.readInt();
     this.redPointId = paramParcel.readInt();
@@ -67,7 +66,17 @@ public class PadFaceAd
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PadFaceAd {");
-    localStringBuilder.append("padFaceId=").append(this.padFaceId).append(",redPointId=").append(this.redPointId).append(",appName=").append(this.appName).append(",appView=").append(this.appView).append(",appVersion=").append(this.appVersion).append("}");
+    localStringBuilder.append("padFaceId=");
+    localStringBuilder.append(this.padFaceId);
+    localStringBuilder.append(",redPointId=");
+    localStringBuilder.append(this.redPointId);
+    localStringBuilder.append(",appName=");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append(",appView=");
+    localStringBuilder.append(this.appView);
+    localStringBuilder.append(",appVersion=");
+    localStringBuilder.append(this.appVersion);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
@@ -85,7 +94,7 @@ public class PadFaceAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.PadFaceAd
  * JD-Core Version:    0.7.0.1
  */

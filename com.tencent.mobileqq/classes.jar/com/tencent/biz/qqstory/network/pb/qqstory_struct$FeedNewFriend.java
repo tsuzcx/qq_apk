@@ -22,13 +22,14 @@ public final class qqstory_struct$FeedNewFriend
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58 }, new String[] { "from_type", "from_uid", "to_uid", "feed_id", "video_isend", "video_next", "video_list" }, new Object[] { Integer.valueOf(0), null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, FeedNewFriend.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58 }, new String[] { "from_type", "from_uid", "to_uid", "feed_id", "video_isend", "video_next", "video_list" }, new Object[] { localInteger, null, null, localByteStringMicro, localInteger, localInteger, null }, FeedNewFriend.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedNewFriend
  * JD-Core Version:    0.7.0.1
  */

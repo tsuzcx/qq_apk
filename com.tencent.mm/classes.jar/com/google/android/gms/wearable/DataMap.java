@@ -2,7 +2,6 @@ package com.google.android.gms.wearable;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.internal.wearable.zze;
 import com.google.android.gms.internal.wearable.zzf;
 import com.google.android.gms.internal.wearable.zzg;
@@ -15,7 +14,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-@VisibleForTesting
 public class DataMap
 {
   public static final String TAG = "DataMap";
@@ -23,14 +21,14 @@ public class DataMap
   
   public DataMap()
   {
-    AppMethodBeat.i(70803);
+    AppMethodBeat.i(100786);
     this.zzq = new HashMap();
-    AppMethodBeat.o(70803);
+    AppMethodBeat.o(100786);
   }
   
   public static ArrayList<DataMap> arrayListFromBundleArrayList(ArrayList<Bundle> paramArrayList)
   {
-    AppMethodBeat.i(70806);
+    AppMethodBeat.i(100789);
     ArrayList localArrayList = new ArrayList();
     paramArrayList = (ArrayList)paramArrayList;
     int j = paramArrayList.size();
@@ -41,13 +39,13 @@ public class DataMap
       i += 1;
       localArrayList.add(fromBundle((Bundle)localObject));
     }
-    AppMethodBeat.o(70806);
+    AppMethodBeat.o(100789);
     return localArrayList;
   }
   
   public static DataMap fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(70804);
+    AppMethodBeat.i(100787);
     paramBundle.setClassLoader(Asset.class.getClassLoader());
     DataMap localDataMap = new DataMap();
     Iterator localIterator = paramBundle.keySet().iterator();
@@ -104,23 +102,23 @@ public class DataMap
         }
       }
     }
-    AppMethodBeat.o(70804);
+    AppMethodBeat.o(100787);
     return localDataMap;
   }
   
   public static DataMap fromByteArray(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(70805);
+    AppMethodBeat.i(100788);
     try
     {
       paramArrayOfByte = zze.zza(new zzf(zzg.zza(paramArrayOfByte), new ArrayList()));
-      AppMethodBeat.o(70805);
+      AppMethodBeat.o(100788);
       return paramArrayOfByte;
     }
     catch (zzs paramArrayOfByte)
     {
       paramArrayOfByte = new IllegalArgumentException("Unable to convert data", paramArrayOfByte);
-      AppMethodBeat.o(70805);
+      AppMethodBeat.o(100788);
       throw paramArrayOfByte;
     }
   }
@@ -128,10 +126,10 @@ public class DataMap
   private static int zza(ArrayList<?> paramArrayList)
   {
     int i = 0;
-    AppMethodBeat.i(70861);
+    AppMethodBeat.i(100844);
     if (paramArrayList.isEmpty())
     {
-      AppMethodBeat.o(70861);
+      AppMethodBeat.o(100844);
       return 0;
     }
     paramArrayList = (ArrayList)paramArrayList;
@@ -145,41 +143,41 @@ public class DataMap
       {
         if ((localObject instanceof Integer))
         {
-          AppMethodBeat.o(70861);
+          AppMethodBeat.o(100844);
           return 2;
         }
         if ((localObject instanceof String))
         {
-          AppMethodBeat.o(70861);
+          AppMethodBeat.o(100844);
           return 3;
         }
         if ((localObject instanceof DataMap))
         {
-          AppMethodBeat.o(70861);
+          AppMethodBeat.o(100844);
           return 4;
         }
         i = j;
         if ((localObject instanceof Bundle))
         {
-          AppMethodBeat.o(70861);
+          AppMethodBeat.o(100844);
           return 5;
         }
       }
     }
-    AppMethodBeat.o(70861);
+    AppMethodBeat.o(100844);
     return 1;
   }
   
   private static void zza(String paramString1, Object paramObject, String paramString2, ClassCastException paramClassCastException)
   {
-    AppMethodBeat.i(70859);
+    AppMethodBeat.i(100842);
     zza(paramString1, paramObject, paramString2, "<null>", paramClassCastException);
-    AppMethodBeat.o(70859);
+    AppMethodBeat.o(100842);
   }
   
   private static void zza(String paramString1, Object paramObject1, String paramString2, Object paramObject2, ClassCastException paramClassCastException)
   {
-    AppMethodBeat.i(70860);
+    AppMethodBeat.i(100843);
     paramClassCastException = new StringBuilder();
     paramClassCastException.append("Key ");
     paramClassCastException.append(paramString1);
@@ -190,36 +188,36 @@ public class DataMap
     paramClassCastException.append(".  The default value ");
     paramClassCastException.append(paramObject2);
     paramClassCastException.append(" was returned.");
-    AppMethodBeat.o(70860);
+    AppMethodBeat.o(100843);
   }
   
   public void clear()
   {
-    AppMethodBeat.i(70811);
+    AppMethodBeat.i(100794);
     this.zzq.clear();
-    AppMethodBeat.o(70811);
+    AppMethodBeat.o(100794);
   }
   
   public boolean containsKey(String paramString)
   {
-    AppMethodBeat.i(70812);
+    AppMethodBeat.i(100795);
     boolean bool = this.zzq.containsKey(paramString);
-    AppMethodBeat.o(70812);
+    AppMethodBeat.o(100795);
     return bool;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70856);
+    AppMethodBeat.i(100839);
     if (!(paramObject instanceof DataMap))
     {
-      AppMethodBeat.o(70856);
+      AppMethodBeat.o(100839);
       return false;
     }
     paramObject = (DataMap)paramObject;
     if (size() != paramObject.size())
     {
-      AppMethodBeat.o(70856);
+      AppMethodBeat.o(100839);
       return false;
     }
     Iterator localIterator = keySet().iterator();
@@ -232,7 +230,7 @@ public class DataMap
       {
         if (!(localObject2 instanceof Asset))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
         localObject1 = (Asset)localObject1;
@@ -245,7 +243,7 @@ public class DataMap
         }
         while (!bool)
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
           bool = false;
           continue;
@@ -260,12 +258,12 @@ public class DataMap
       {
         if (!(localObject2 instanceof String[]))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
         if (!Arrays.equals((String[])localObject1, (String[])localObject2))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
       }
@@ -273,12 +271,12 @@ public class DataMap
       {
         if (!(localObject2 instanceof long[]))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
         if (!Arrays.equals((long[])localObject1, (long[])localObject2))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
       }
@@ -286,12 +284,12 @@ public class DataMap
       {
         if (!(localObject2 instanceof float[]))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
         if (!Arrays.equals((float[])localObject1, (float[])localObject2))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
       }
@@ -299,12 +297,12 @@ public class DataMap
       {
         if (!(localObject2 instanceof byte[]))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
         if (!Arrays.equals((byte[])localObject1, (byte[])localObject2))
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
       }
@@ -312,624 +310,624 @@ public class DataMap
       {
         if (localObject1 != localObject2)
         {
-          AppMethodBeat.o(70856);
+          AppMethodBeat.o(100839);
           return false;
         }
       }
       else if (!localObject1.equals(localObject2))
       {
-        AppMethodBeat.o(70856);
+        AppMethodBeat.o(100839);
         return false;
       }
     }
-    AppMethodBeat.o(70856);
+    AppMethodBeat.o(100839);
     return true;
   }
   
   public <T> T get(String paramString)
   {
-    AppMethodBeat.i(70813);
+    AppMethodBeat.i(100796);
     paramString = this.zzq.get(paramString);
-    AppMethodBeat.o(70813);
+    AppMethodBeat.o(100796);
     return paramString;
   }
   
   public Asset getAsset(String paramString)
   {
-    AppMethodBeat.i(70847);
+    AppMethodBeat.i(100830);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70847);
+      AppMethodBeat.o(100830);
       return null;
     }
     try
     {
       Asset localAsset = (Asset)localObject;
-      AppMethodBeat.o(70847);
+      AppMethodBeat.o(100830);
       return localAsset;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "Asset", localClassCastException);
-      AppMethodBeat.o(70847);
+      AppMethodBeat.o(100830);
     }
     return null;
   }
   
   public boolean getBoolean(String paramString)
   {
-    AppMethodBeat.i(70833);
+    AppMethodBeat.i(100816);
     boolean bool = getBoolean(paramString, false);
-    AppMethodBeat.o(70833);
+    AppMethodBeat.o(100816);
     return bool;
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(70834);
+    AppMethodBeat.i(100817);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70834);
+      AppMethodBeat.o(100817);
       return paramBoolean;
     }
     try
     {
       boolean bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(70834);
+      AppMethodBeat.o(100817);
       return bool;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "Boolean", Boolean.valueOf(paramBoolean), localClassCastException);
-      AppMethodBeat.o(70834);
+      AppMethodBeat.o(100817);
     }
     return paramBoolean;
   }
   
   public byte getByte(String paramString)
   {
-    AppMethodBeat.i(70835);
+    AppMethodBeat.i(100818);
     byte b = getByte(paramString, (byte)0);
-    AppMethodBeat.o(70835);
+    AppMethodBeat.o(100818);
     return b;
   }
   
   public byte getByte(String paramString, byte paramByte)
   {
-    AppMethodBeat.i(70836);
+    AppMethodBeat.i(100819);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70836);
+      AppMethodBeat.o(100819);
       return paramByte;
     }
     try
     {
       byte b = ((Byte)localObject).byteValue();
-      AppMethodBeat.o(70836);
+      AppMethodBeat.o(100819);
       return b;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "Byte", Byte.valueOf(paramByte), localClassCastException);
-      AppMethodBeat.o(70836);
+      AppMethodBeat.o(100819);
     }
     return paramByte;
   }
   
   public byte[] getByteArray(String paramString)
   {
-    AppMethodBeat.i(70852);
+    AppMethodBeat.i(100835);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70852);
+      AppMethodBeat.o(100835);
       return null;
     }
     try
     {
       byte[] arrayOfByte = (byte[])localObject;
-      AppMethodBeat.o(70852);
+      AppMethodBeat.o(100835);
       return arrayOfByte;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "byte[]", localClassCastException);
-      AppMethodBeat.o(70852);
+      AppMethodBeat.o(100835);
     }
     return null;
   }
   
   public DataMap getDataMap(String paramString)
   {
-    AppMethodBeat.i(70848);
+    AppMethodBeat.i(100831);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70848);
+      AppMethodBeat.o(100831);
       return null;
     }
     try
     {
       DataMap localDataMap = (DataMap)localObject;
-      AppMethodBeat.o(70848);
+      AppMethodBeat.o(100831);
       return localDataMap;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "DataMap", localClassCastException);
-      AppMethodBeat.o(70848);
+      AppMethodBeat.o(100831);
     }
     return null;
   }
   
   public ArrayList<DataMap> getDataMapArrayList(String paramString)
   {
-    AppMethodBeat.i(70851);
+    AppMethodBeat.i(100834);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70851);
+      AppMethodBeat.o(100834);
       return null;
     }
     try
     {
       ArrayList localArrayList = (ArrayList)localObject;
-      AppMethodBeat.o(70851);
+      AppMethodBeat.o(100834);
       return localArrayList;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "ArrayList<DataMap>", localClassCastException);
-      AppMethodBeat.o(70851);
+      AppMethodBeat.o(100834);
     }
     return null;
   }
   
   public double getDouble(String paramString)
   {
-    AppMethodBeat.i(70843);
+    AppMethodBeat.i(100826);
     double d = getDouble(paramString, 0.0D);
-    AppMethodBeat.o(70843);
+    AppMethodBeat.o(100826);
     return d;
   }
   
   public double getDouble(String paramString, double paramDouble)
   {
-    AppMethodBeat.i(70844);
+    AppMethodBeat.i(100827);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70844);
+      AppMethodBeat.o(100827);
       return paramDouble;
     }
     try
     {
       double d = ((Double)localObject).doubleValue();
-      AppMethodBeat.o(70844);
+      AppMethodBeat.o(100827);
       return d;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "Double", Double.valueOf(paramDouble), localClassCastException);
-      AppMethodBeat.o(70844);
+      AppMethodBeat.o(100827);
     }
     return paramDouble;
   }
   
   public float getFloat(String paramString)
   {
-    AppMethodBeat.i(70841);
+    AppMethodBeat.i(100824);
     float f = getFloat(paramString, 0.0F);
-    AppMethodBeat.o(70841);
+    AppMethodBeat.o(100824);
     return f;
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
-    AppMethodBeat.i(70842);
+    AppMethodBeat.i(100825);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70842);
+      AppMethodBeat.o(100825);
       return paramFloat;
     }
     try
     {
       float f = ((Float)localObject).floatValue();
-      AppMethodBeat.o(70842);
+      AppMethodBeat.o(100825);
       return f;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "Float", Float.valueOf(paramFloat), localClassCastException);
-      AppMethodBeat.o(70842);
+      AppMethodBeat.o(100825);
     }
     return paramFloat;
   }
   
   public float[] getFloatArray(String paramString)
   {
-    AppMethodBeat.i(70854);
+    AppMethodBeat.i(100837);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70854);
+      AppMethodBeat.o(100837);
       return null;
     }
     try
     {
       float[] arrayOfFloat = (float[])localObject;
-      AppMethodBeat.o(70854);
+      AppMethodBeat.o(100837);
       return arrayOfFloat;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "float[]", localClassCastException);
-      AppMethodBeat.o(70854);
+      AppMethodBeat.o(100837);
     }
     return null;
   }
   
   public int getInt(String paramString)
   {
-    AppMethodBeat.i(70837);
+    AppMethodBeat.i(100820);
     int i = getInt(paramString, 0);
-    AppMethodBeat.o(70837);
+    AppMethodBeat.o(100820);
     return i;
   }
   
   public int getInt(String paramString, int paramInt)
   {
-    AppMethodBeat.i(70838);
+    AppMethodBeat.i(100821);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70838);
+      AppMethodBeat.o(100821);
       return paramInt;
     }
     try
     {
       int i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(70838);
+      AppMethodBeat.o(100821);
       return i;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "Integer", localClassCastException);
-      AppMethodBeat.o(70838);
+      AppMethodBeat.o(100821);
     }
     return paramInt;
   }
   
   public ArrayList<Integer> getIntegerArrayList(String paramString)
   {
-    AppMethodBeat.i(70849);
+    AppMethodBeat.i(100832);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70849);
+      AppMethodBeat.o(100832);
       return null;
     }
     try
     {
       ArrayList localArrayList = (ArrayList)localObject;
-      AppMethodBeat.o(70849);
+      AppMethodBeat.o(100832);
       return localArrayList;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "ArrayList<Integer>", localClassCastException);
-      AppMethodBeat.o(70849);
+      AppMethodBeat.o(100832);
     }
     return null;
   }
   
   public long getLong(String paramString)
   {
-    AppMethodBeat.i(70839);
+    AppMethodBeat.i(100822);
     long l = getLong(paramString, 0L);
-    AppMethodBeat.o(70839);
+    AppMethodBeat.o(100822);
     return l;
   }
   
   public long getLong(String paramString, long paramLong)
   {
-    AppMethodBeat.i(70840);
+    AppMethodBeat.i(100823);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70840);
+      AppMethodBeat.o(100823);
       return paramLong;
     }
     try
     {
       long l = ((Long)localObject).longValue();
-      AppMethodBeat.o(70840);
+      AppMethodBeat.o(100823);
       return l;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "long", localClassCastException);
-      AppMethodBeat.o(70840);
+      AppMethodBeat.o(100823);
     }
     return paramLong;
   }
   
   public long[] getLongArray(String paramString)
   {
-    AppMethodBeat.i(70853);
+    AppMethodBeat.i(100836);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70853);
+      AppMethodBeat.o(100836);
       return null;
     }
     try
     {
       long[] arrayOfLong = (long[])localObject;
-      AppMethodBeat.o(70853);
+      AppMethodBeat.o(100836);
       return arrayOfLong;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "long[]", localClassCastException);
-      AppMethodBeat.o(70853);
+      AppMethodBeat.o(100836);
     }
     return null;
   }
   
   public String getString(String paramString)
   {
-    AppMethodBeat.i(70846);
+    AppMethodBeat.i(100829);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70846);
+      AppMethodBeat.o(100829);
       return null;
     }
     try
     {
       String str = (String)localObject;
-      AppMethodBeat.o(70846);
+      AppMethodBeat.o(100829);
       return str;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "String", localClassCastException);
-      AppMethodBeat.o(70846);
+      AppMethodBeat.o(100829);
     }
     return null;
   }
   
   public String getString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(70845);
+    AppMethodBeat.i(100828);
     paramString1 = getString(paramString1);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(70845);
+      AppMethodBeat.o(100828);
       return paramString2;
     }
-    AppMethodBeat.o(70845);
+    AppMethodBeat.o(100828);
     return paramString1;
   }
   
   public String[] getStringArray(String paramString)
   {
-    AppMethodBeat.i(70855);
+    AppMethodBeat.i(100838);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70855);
+      AppMethodBeat.o(100838);
       return null;
     }
     try
     {
       String[] arrayOfString = (String[])localObject;
-      AppMethodBeat.o(70855);
+      AppMethodBeat.o(100838);
       return arrayOfString;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "String[]", localClassCastException);
-      AppMethodBeat.o(70855);
+      AppMethodBeat.o(100838);
     }
     return null;
   }
   
   public ArrayList<String> getStringArrayList(String paramString)
   {
-    AppMethodBeat.i(70850);
+    AppMethodBeat.i(100833);
     Object localObject = this.zzq.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(70850);
+      AppMethodBeat.o(100833);
       return null;
     }
     try
     {
       ArrayList localArrayList = (ArrayList)localObject;
-      AppMethodBeat.o(70850);
+      AppMethodBeat.o(100833);
       return localArrayList;
     }
     catch (ClassCastException localClassCastException)
     {
       zza(paramString, localObject, "ArrayList<String>", localClassCastException);
-      AppMethodBeat.o(70850);
+      AppMethodBeat.o(100833);
     }
     return null;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(70857);
+    AppMethodBeat.i(100840);
     int i = this.zzq.hashCode();
-    AppMethodBeat.o(70857);
+    AppMethodBeat.o(100840);
     return i * 29;
   }
   
   public boolean isEmpty()
   {
-    AppMethodBeat.i(70810);
+    AppMethodBeat.i(100793);
     boolean bool = this.zzq.isEmpty();
-    AppMethodBeat.o(70810);
+    AppMethodBeat.o(100793);
     return bool;
   }
   
   public Set<String> keySet()
   {
-    AppMethodBeat.i(70816);
+    AppMethodBeat.i(100799);
     Set localSet = this.zzq.keySet();
-    AppMethodBeat.o(70816);
+    AppMethodBeat.o(100799);
     return localSet;
   }
   
   public void putAll(DataMap paramDataMap)
   {
-    AppMethodBeat.i(70815);
+    AppMethodBeat.i(100798);
     Iterator localIterator = paramDataMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       this.zzq.put(str, paramDataMap.get(str));
     }
-    AppMethodBeat.o(70815);
+    AppMethodBeat.o(100798);
   }
   
   public void putAsset(String paramString, Asset paramAsset)
   {
-    AppMethodBeat.i(70824);
+    AppMethodBeat.i(100807);
     this.zzq.put(paramString, paramAsset);
-    AppMethodBeat.o(70824);
+    AppMethodBeat.o(100807);
   }
   
   public void putBoolean(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(70817);
+    AppMethodBeat.i(100800);
     this.zzq.put(paramString, Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(70817);
+    AppMethodBeat.o(100800);
   }
   
   public void putByte(String paramString, byte paramByte)
   {
-    AppMethodBeat.i(70818);
+    AppMethodBeat.i(100801);
     this.zzq.put(paramString, Byte.valueOf(paramByte));
-    AppMethodBeat.o(70818);
+    AppMethodBeat.o(100801);
   }
   
   public void putByteArray(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(70829);
+    AppMethodBeat.i(100812);
     this.zzq.put(paramString, paramArrayOfByte);
-    AppMethodBeat.o(70829);
+    AppMethodBeat.o(100812);
   }
   
   public void putDataMap(String paramString, DataMap paramDataMap)
   {
-    AppMethodBeat.i(70825);
+    AppMethodBeat.i(100808);
     this.zzq.put(paramString, paramDataMap);
-    AppMethodBeat.o(70825);
+    AppMethodBeat.o(100808);
   }
   
   public void putDataMapArrayList(String paramString, ArrayList<DataMap> paramArrayList)
   {
-    AppMethodBeat.i(70826);
+    AppMethodBeat.i(100809);
     this.zzq.put(paramString, paramArrayList);
-    AppMethodBeat.o(70826);
+    AppMethodBeat.o(100809);
   }
   
   public void putDouble(String paramString, double paramDouble)
   {
-    AppMethodBeat.i(70822);
+    AppMethodBeat.i(100805);
     this.zzq.put(paramString, Double.valueOf(paramDouble));
-    AppMethodBeat.o(70822);
+    AppMethodBeat.o(100805);
   }
   
   public void putFloat(String paramString, float paramFloat)
   {
-    AppMethodBeat.i(70821);
+    AppMethodBeat.i(100804);
     this.zzq.put(paramString, Float.valueOf(paramFloat));
-    AppMethodBeat.o(70821);
+    AppMethodBeat.o(100804);
   }
   
   public void putFloatArray(String paramString, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(70831);
+    AppMethodBeat.i(100814);
     this.zzq.put(paramString, paramArrayOfFloat);
-    AppMethodBeat.o(70831);
+    AppMethodBeat.o(100814);
   }
   
   public void putInt(String paramString, int paramInt)
   {
-    AppMethodBeat.i(70819);
+    AppMethodBeat.i(100802);
     this.zzq.put(paramString, Integer.valueOf(paramInt));
-    AppMethodBeat.o(70819);
+    AppMethodBeat.o(100802);
   }
   
   public void putIntegerArrayList(String paramString, ArrayList<Integer> paramArrayList)
   {
-    AppMethodBeat.i(70827);
+    AppMethodBeat.i(100810);
     this.zzq.put(paramString, paramArrayList);
-    AppMethodBeat.o(70827);
+    AppMethodBeat.o(100810);
   }
   
   public void putLong(String paramString, long paramLong)
   {
-    AppMethodBeat.i(70820);
+    AppMethodBeat.i(100803);
     this.zzq.put(paramString, Long.valueOf(paramLong));
-    AppMethodBeat.o(70820);
+    AppMethodBeat.o(100803);
   }
   
   public void putLongArray(String paramString, long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(70830);
+    AppMethodBeat.i(100813);
     this.zzq.put(paramString, paramArrayOfLong);
-    AppMethodBeat.o(70830);
+    AppMethodBeat.o(100813);
   }
   
   public void putString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(70823);
+    AppMethodBeat.i(100806);
     this.zzq.put(paramString1, paramString2);
-    AppMethodBeat.o(70823);
+    AppMethodBeat.o(100806);
   }
   
   public void putStringArray(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(70832);
+    AppMethodBeat.i(100815);
     this.zzq.put(paramString, paramArrayOfString);
-    AppMethodBeat.o(70832);
+    AppMethodBeat.o(100815);
   }
   
   public void putStringArrayList(String paramString, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(70828);
+    AppMethodBeat.i(100811);
     this.zzq.put(paramString, paramArrayList);
-    AppMethodBeat.o(70828);
+    AppMethodBeat.o(100811);
   }
   
   public Object remove(String paramString)
   {
-    AppMethodBeat.i(70814);
+    AppMethodBeat.i(100797);
     paramString = this.zzq.remove(paramString);
-    AppMethodBeat.o(70814);
+    AppMethodBeat.o(100797);
     return paramString;
   }
   
   public int size()
   {
-    AppMethodBeat.i(70809);
+    AppMethodBeat.i(100792);
     int i = this.zzq.size();
-    AppMethodBeat.o(70809);
+    AppMethodBeat.o(100792);
     return i;
   }
   
   public Bundle toBundle()
   {
-    AppMethodBeat.i(70807);
+    AppMethodBeat.i(100790);
     Bundle localBundle = new Bundle();
     Iterator localIterator = this.zzq.keySet().iterator();
     while (localIterator.hasNext())
@@ -994,23 +992,23 @@ public class DataMap
         }
       }
     }
-    AppMethodBeat.o(70807);
+    AppMethodBeat.o(100790);
     return localBundle;
   }
   
   public byte[] toByteArray()
   {
-    AppMethodBeat.i(70808);
+    AppMethodBeat.i(100791);
     byte[] arrayOfByte = zzt.zzb(zze.zza(this).zzfw);
-    AppMethodBeat.o(70808);
+    AppMethodBeat.o(100791);
     return arrayOfByte;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(70858);
+    AppMethodBeat.i(100841);
     String str = this.zzq.toString();
-    AppMethodBeat.o(70858);
+    AppMethodBeat.o(100841);
     return str;
   }
 }

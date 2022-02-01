@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/dl" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/iwl" android:background="@color/g_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/abm" android:layout_width="265.0dip" android:layout_height="85.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" />
-    <TextView android:textSize="22.0dip" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center" android:id="@id/abo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
-    <View android:id="@id/abz" android:background="#ffefefef" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="30.0dip" android:layerType="software" />
-    <LinearLayout android:orientation="vertical" android:id="@id/ac0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip">
-        <View android:background="#ffefefef" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layerType="software" />
-        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.5dip" android:layout_marginBottom="15.5dip" android:layout_centerInParent="true">
-            <TextView android:textSize="17.0dip" android:textColor="#ff545bbc" android:layout_gravity="center_horizontal" android:id="@id/ac1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:textSize="13.0dip" android:textColor="#ff888888" android:layout_gravity="center_horizontal" android:id="@id/ac2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-        </LinearLayout>
-        <View android:layout_gravity="bottom" android:background="#ffefefef" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" android:layerType="software" />
-    </LinearLayout>
-</LinearLayout>
+    <FrameLayout android:gravity="center" android:id="@id/l7g" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.mmsight.ui.cameraglview.MMSightCameraGLSurfaceView android:layout_gravity="center" android:id="@id/c_w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/ega" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/bsb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/iio" android:background="@color/g_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/i0y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/kfa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <ImageView android:id="@id/cb5" android:background="@drawable/ahf" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginBottom="@dimen/ajw" android:src="@raw/photo_edit_navbar_icon_mark" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="@color/a9w" android:id="@id/l5k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageButton android:id="@id/bef" android:background="@null" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginBottom="50.0dip" android:src="@raw/mmsight_camera_icon_close" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/jl9" android:background="@drawable/ahf" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="@dimen/ajw" android:layout_marginBottom="@dimen/ajw" android:src="@raw/mmsight_camera_preview_icon_back" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:gravity="center" android:id="@id/jlj" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginRight="@dimen/ajw" android:layout_marginBottom="@dimen/ajw" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+            <ImageView android:id="@id/jl_" android:background="@drawable/ahf" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" />
+            <ProgressBar android:id="@id/jlg" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" style="@style/a85" />
+        </RelativeLayout>
+        <com.tencent.mm.plugin.mmsight.ui.VideoSeekBarEditorView android:id="@id/l7q" android:background="@color/ahb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/glg" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="200.0dip">
+        <com.tencent.mm.plugin.mmsight.ui.MMSightTopCountdownCoverView android:id="@id/krl" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/ajy" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/kb7" android:padding="20.0dip" android:focusable="true" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@raw/mmsight_camera_navbar_icon_switch" android:layout_alignParentRight="true" />
+    </com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView>
+    <RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bsz" android:background="@color/ahb" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton android:layout_gravity="center|top" android:id="@id/iho" android:background="@null" android:visibility="gone" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/gt8" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:id="@id/ar7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/gt8" android:layout_above="@id/iho" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.video.ObservableTextureView android:id="@id/i2i" android:layout_width="1.0px" android:layout_height="1.0px" android:alpha="0.0" />
+</FrameLayout>

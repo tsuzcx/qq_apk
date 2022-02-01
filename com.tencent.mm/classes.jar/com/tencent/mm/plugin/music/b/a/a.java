@@ -8,9 +8,9 @@ import java.util.Iterator;
 
 public final class a
 {
-  static void r(ArrayList<IDKey> paramArrayList)
+  static void h(ArrayList<IDKey> paramArrayList)
   {
-    AppMethodBeat.i(104813);
+    AppMethodBeat.i(62939);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("idkeyGroupStat:  id:971");
     paramArrayList = paramArrayList.iterator();
@@ -20,12 +20,12 @@ public final class a
       localStringBuilder.append(", key:" + localIDKey.GetKey() + " value:" + localIDKey.GetValue());
     }
     b.d("MicroMsg.Audio.AudioMixReport", localStringBuilder.toString());
-    AppMethodBeat.o(104813);
+    AppMethodBeat.o(62939);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.a.a
  * JD-Core Version:    0.7.0.1
  */

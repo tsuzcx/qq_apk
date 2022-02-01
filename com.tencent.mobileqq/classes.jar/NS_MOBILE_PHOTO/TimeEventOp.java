@@ -9,8 +9,8 @@ public final class TimeEventOp
 {
   static int cache_action = 0;
   static TimeEvent cache_events = new TimeEvent();
-  public int action;
-  public TimeEvent events;
+  public int action = 0;
+  public TimeEvent events = null;
   
   public TimeEventOp() {}
   
@@ -28,15 +28,16 @@ public final class TimeEventOp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.events != null) {
-      paramJceOutputStream.write(this.events, 0);
+    TimeEvent localTimeEvent = this.events;
+    if (localTimeEvent != null) {
+      paramJceOutputStream.write(localTimeEvent, 0);
     }
     paramJceOutputStream.write(this.action, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.TimeEventOp
  * JD-Core Version:    0.7.0.1
  */

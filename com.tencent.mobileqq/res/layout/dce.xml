@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/relativeItem" android:layout_width="fill_parent" android:layout_height="@dimen/au0" android:minHeight="@dimen/au0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/ot8" android:background="@drawable/b8c" android:layout_width="fill_parent" android:layout_height="@dimen/au0" />
+    <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:scaleType="fitXY" android:contentDescription="@null" style="@style/hp" />
+    <View android:id="@id/ot9" android:background="@drawable/g7q" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginLeft="54.0dip" android:layout_marginTop="54.0dip" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:id="@id/lastMsgTime" android:paddingTop="14.0dip" android:paddingRight="@dimen/bq1" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/text1Area" android:paddingRight="76.0dip" android:duplicateParentState="true" style="@style/hq">
+        <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:id="@android:id/text1" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="bottom" android:id="@id/j1x" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="3.0dip" android:layout_marginBottom="2.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/cwu" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/q59" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_toLeftOf="@id/lastMsgTime">
+        <TextView android:textSize="12.0dip" android:textColor="#ffe73695" android:gravity="center" android:id="@id/pyk" android:background="@drawable/g8i" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="20.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/yg3" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff3775da" android:gravity="center" android:id="@id/ois" android:background="@drawable/g7o" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="20.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/yg2" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginRight="@dimen/bq1" android:layout_below="@id/text1Area" android:layout_alignLeft="@id/text1Area">
+        <ImageView android:id="@id/ba2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@null" android:contentDescription="@null" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_red_theme_version2" android:ellipsize="end" android:gravity="center" android:id="@id/c0i" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:gravity="center|left" android:id="@android:id/text2" android:paddingRight="6.0dip" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="24.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+        <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/unreadmsg" style="@style/cg" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
-import java.util.Comparator;
 
 public class gjl
-  implements Comparator
+  implements Runnable
 {
   public gjl(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public void run()
   {
-    long l1 = paramRecentBaseData1.a();
-    long l2 = paramRecentBaseData2.a();
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    QZoneShareAlbumAssistantActivity.a(this.a).a(QZoneShareAlbumAssistantActivity.b(this.a));
+    QZoneShareAlbumAssistantActivity.a(this.a).notifyDataSetChanged();
   }
 }
 

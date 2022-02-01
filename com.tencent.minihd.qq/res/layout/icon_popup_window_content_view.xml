@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BoundedLinearLayout android:orientation="vertical" android:id="@id/icon_popup_window_content_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="145.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BoundedLinearLayout android:id="@id/header" android:background="@drawable/card_shadow_head" android:layout_width="fill_parent" android:layout_height="@dimen/common_16dp" />
+    <com.tencent.mobileqq.widget.BoundedLinearLayout android:orientation="vertical" android:id="@id/sv_container" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/sv" android:background="@android:color/transparent" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="sv" android:overScrollMode="never">
+            <com.tencent.mobileqq.widget.BoundedLinearLayout android:orientation="vertical" android:id="@id/icon_popup_window_item_container" android:background="@drawable/card_shadow_body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="145.0dip" />
+        </ScrollView>
+    </com.tencent.mobileqq.widget.BoundedLinearLayout>
+    <com.tencent.mobileqq.widget.BoundedLinearLayout android:id="@id/footer" android:background="@drawable/card_shadow_foot" android:layout_width="fill_parent" android:layout_height="@dimen/common_16dp" />
+</com.tencent.mobileqq.widget.BoundedLinearLayout>

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class material_pay_present_live_item_rsp
   extends JceStruct
 {
-  public int iCode;
+  public int iCode = 0;
   
   public material_pay_present_live_item_rsp() {}
   
@@ -28,7 +28,7 @@ public final class material_pay_present_live_item_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_pay_present_live_item_rsp
  * JD-Core Version:    0.7.0.1
  */

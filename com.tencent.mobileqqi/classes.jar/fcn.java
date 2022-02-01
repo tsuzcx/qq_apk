@@ -1,15 +1,13 @@
 import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.observer.AccountObserver;
 
-public class fcn
-  extends AccountObserver
+class fcn
+  implements Runnable
 {
-  public fcn(FriendsManager paramFriendsManager) {}
+  fcn(fcm paramfcm, String paramString1, String paramString2) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    ThreadManager.b(new fco(this, paramString2, paramString1));
+    this.jdField_a_of_type_Fcm.a.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

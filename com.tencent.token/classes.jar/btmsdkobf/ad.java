@@ -8,28 +8,29 @@ import java.util.ArrayList;
 public final class ad
   extends JceStruct
 {
-  static ArrayList bn = new ArrayList();
-  public ArrayList bm = null;
+  static ArrayList<String> bn = new ArrayList();
+  public ArrayList<String> bm = null;
   
   static
   {
     bn.add("");
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ad();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bm = ((ArrayList)paramJceInputStream.read(bn, 0, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bm != null) {
-      paramJceOutputStream.write(this.bm, 0);
+    ArrayList localArrayList = this.bm;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

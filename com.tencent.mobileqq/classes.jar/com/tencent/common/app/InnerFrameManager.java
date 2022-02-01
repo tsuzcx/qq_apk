@@ -10,7 +10,7 @@ import android.view.ViewStub;
 import android.view.ViewStub.OnInflateListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ViewFlipper;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -19,11 +19,11 @@ public class InnerFrameManager
   extends ViewFlipper
   implements ViewStub.OnInflateListener
 {
-  public Activity a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Set<InnerFrame> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
+  public Activity a = null;
+  private BaseQQAppInterface b = null;
+  private Set<InnerFrame> c = new HashSet();
+  private boolean d = false;
+  private Bundle e;
   
   public InnerFrameManager(Context paramContext)
   {
@@ -38,26 +38,21 @@ public class InnerFrameManager
     addView(paramContext, 0);
   }
   
-  public int a()
-  {
-    return getDisplayedChild() - 1;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     ((InnerFrame)getChildAt(getDisplayedChild())).a();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle = null;
+    this.e = null;
     a(paramInt, true);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((InnerFrame)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
     }
@@ -65,7 +60,7 @@ public class InnerFrameManager
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.e = paramBundle;
     a(paramInt, true);
   }
   
@@ -75,42 +70,41 @@ public class InnerFrameManager
     if (getDisplayedChild() == paramInt) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       ((InnerFrame)getChildAt(getDisplayedChild())).b();
     }
     ((InnerFrame)getChildAt(getDisplayedChild())).c();
     getChildAt(paramInt).setVisibility(0);
-    if (paramBoolean) {
-      if (getDisplayedChild() != 0)
-      {
-        if (getDisplayedChild() >= paramInt) {
-          break label135;
+    if (paramBoolean)
+    {
+      if (getDisplayedChild() != 0) {
+        if (getDisplayedChild() < paramInt)
+        {
+          setInAnimation(this.a, 2130772108);
+          setOutAnimation(this.a, 2130772109);
         }
-        setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772047);
-        setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772048);
+        else
+        {
+          setInAnimation(this.a, 2130772102);
+          setOutAnimation(this.a, 2130772103);
+        }
       }
     }
-    for (;;)
+    else
     {
-      setDisplayedChild(paramInt);
-      ((InnerFrame)getChildAt(paramInt)).b(this.jdField_a_of_type_AndroidOsBundle);
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
-      }
+      setInAnimation(this.a, 2130772196);
+      setOutAnimation(this.a, 2130772196);
+    }
+    setDisplayedChild(paramInt);
+    ((InnerFrame)getChildAt(paramInt)).b(this.e);
+    if (this.d) {
       ((InnerFrame)getChildAt(paramInt)).a();
-      return;
-      label135:
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772043);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772044);
-      continue;
-      setInAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772097);
-      setOutAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772097);
     }
   }
   
   public void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
     int j = getChildCount();
     int i = 1;
     while (i < j)
@@ -122,13 +116,13 @@ public class InnerFrameManager
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     ((InnerFrame)getChildAt(getDisplayedChild())).b();
   }
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((InnerFrame)localIterator.next()).c();
     }
@@ -136,34 +130,39 @@ public class InnerFrameManager
   
   public void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
       ((InnerFrame)localIterator.next()).d();
     }
   }
   
+  public int getCurrentPage()
+  {
+    return getDisplayedChild() - 1;
+  }
+  
   public void onInflate(ViewStub paramViewStub, View paramView)
   {
     paramViewStub = (InnerFrame)paramView;
-    this.jdField_a_of_type_JavaUtilSet.add(paramViewStub);
-    paramViewStub.setActivity(this.jdField_a_of_type_AndroidAppActivity);
+    this.c.add(paramViewStub);
+    paramViewStub.setActivity(this.a);
     paramViewStub.setInnerFrameManager(this);
-    paramViewStub.setAppIntf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramViewStub.a(this.jdField_a_of_type_AndroidOsBundle);
+    paramViewStub.setAppIntf(this.b);
+    paramViewStub.a(this.e);
   }
   
-  public void setAppIntf(QQAppInterface paramQQAppInterface)
+  public void setAppIntf(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    this.b = paramBaseQQAppInterface;
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
-      ((InnerFrame)localIterator.next()).setAppIntf(paramQQAppInterface);
+      ((InnerFrame)localIterator.next()).setAppIntf(paramBaseQQAppInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.InnerFrameManager
  * JD-Core Version:    0.7.0.1
  */

@@ -4,97 +4,113 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.a.a.e;
 import com.tencent.mm.plugin.emoji.a.a.f;
-import com.tencent.mm.plugin.emoji.model.h.a;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.emoji.h.b;
+import com.tencent.mm.plugin.emoji.h.d;
+import com.tencent.mm.plugin.emoji.h.e;
+import com.tencent.mm.plugin.emoji.h.f;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.plugin.emoji.model.r.a;
+import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class a
 {
   private final String TAG = "MicroMsg.emoji.BaseEmojiItemHolder";
-  protected TextView iJG;
-  protected View ldA;
-  protected ImageView ldB;
-  protected ImageView ldC;
-  protected TextView ldD;
-  protected TextView ldE;
-  protected ProgressBar ldF;
-  protected ViewGroup ldG;
-  protected View ldH;
-  protected TextView ldI;
-  protected ImageView ldJ;
-  protected View ldK;
-  protected ProgressBar ldL;
-  protected TextView ldM;
-  protected TextView ldN;
-  protected FrameLayout ldO;
-  protected View ldP;
-  private View ldt;
-  private final int ldu = 2130969370;
-  private final int ldv = 2130969396;
-  private final int ldw = 2130969397;
-  private int[] ldx = { -1, -1 };
-  private int ldy = -1;
-  public f ldz;
-  Context mContext;
+  private Context mContext;
   private LayoutInflater mLayoutInflater;
   public int mPosition;
+  protected View qAv;
+  protected TextView sUt;
+  private View xFS;
+  private final int xFT = h.f.emoji_list_item;
+  private final int xFU = h.f.emoji_store_v2_grid_item;
+  private final int xFV = h.f.emoji_store_v2_grid_item_main;
+  private int[] xFW = { -1, -1 };
+  private int xFX = -1;
+  public f xFY;
+  protected View xFZ;
+  protected ImageView xGa;
+  protected ImageView xGb;
+  protected View xGc;
+  protected TextView xGd;
+  protected TextView xGe;
+  protected ViewGroup xGf;
+  protected TextView xGg;
+  protected View xGh;
+  protected ProgressBar xGi;
+  protected ViewGroup xGj;
+  protected View xGk;
+  protected TextView xGl;
+  protected ImageView xGm;
+  protected View xGn;
+  protected ProgressBar xGo;
+  protected TextView xGp;
+  protected TextView xGq;
+  protected FrameLayout xGr;
   
   public a(Context paramContext, View paramView)
   {
-    this(paramContext, paramView, a.a.ldT);
+    this(paramContext, paramView, a.xGv);
   }
   
-  private a(Context paramContext, View paramView, a.a parama)
+  private a(Context paramContext, View paramView, a parama)
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(this.mContext);
     paramContext = paramView;
     if (paramView == null) {}
-    label433:
+    label483:
     int i;
-    switch (a.2.ldS[parama.ordinal()])
+    switch (2.xGu[parama.ordinal()])
     {
     default: 
-      paramContext = ud(this.ldu);
-      this.ldP = paramContext;
+      paramContext = JU(this.xFT);
+      this.qAv = paramContext;
       if (paramContext != null)
       {
-        this.ldt = paramContext;
-        this.ldA = this.ldt.findViewById(2131823588);
-        this.ldC = ((ImageView)this.ldt.findViewById(2131823600));
-        this.ldB = ((ImageView)this.ldt.findViewById(2131823589));
-        this.iJG = ((TextView)this.ldt.findViewById(2131823433));
-        this.ldD = ((TextView)this.ldt.findViewById(2131823593));
-        this.ldE = ((TextView)this.ldt.findViewById(2131823592));
-        this.ldF = ((ProgressBar)this.ldt.findViewById(2131823597));
-        this.ldH = this.ldt.findViewById(2131823591);
-        this.ldG = ((ViewGroup)this.ldt.findViewById(2131823594));
-        this.ldI = ((TextView)this.ldt.findViewById(2131823595));
-        this.ldJ = ((ImageView)this.ldt.findViewById(2131823596));
-        this.ldK = this.ldt.findViewById(2131823598);
-        this.ldL = ((ProgressBar)this.ldt.findViewById(2131823599));
-        this.ldM = ((TextView)this.ldt.findViewById(2131823586));
-        this.ldN = ((TextView)this.ldt.findViewById(2131823673));
-        this.ldO = ((FrameLayout)this.ldt.findViewById(2131823587));
+        this.xFS = paramContext;
+        this.xFZ = this.xFS.findViewById(h.e.item_container);
+        this.xGb = ((ImageView)this.xFS.findViewById(h.e.item_tip));
+        this.xGa = ((ImageView)this.xFS.findViewById(h.e.item_icon));
+        this.sUt = ((TextView)this.xFS.findViewById(h.e.item_name));
+        this.xGc = this.xFS.findViewById(h.e.item_name_new_tip);
+        this.xGd = ((TextView)this.xFS.findViewById(h.e.item_name_pack_type));
+        this.xGe = ((TextView)this.xFS.findViewById(h.e.item_date));
+        this.xGf = ((ViewGroup)this.xFS.findViewById(h.e.item_introduce_root));
+        this.xGg = ((TextView)this.xFS.findViewById(h.e.item_introduce));
+        this.xGh = this.xFS.findViewById(h.e.emoji_preview_info_tag);
+        this.xGi = ((ProgressBar)this.xFS.findViewById(h.e.price_loading));
+        this.xGk = this.xFS.findViewById(h.e.item_option);
+        this.xGj = ((ViewGroup)this.xFS.findViewById(h.e.item_root));
+        this.xGl = ((TextView)this.xFS.findViewById(h.e.item_state));
+        this.xGm = ((ImageView)this.xFS.findViewById(h.e.item_state_image));
+        this.xGn = this.xFS.findViewById(h.e.item_progress_bar);
+        this.xGo = ((ProgressBar)this.xFS.findViewById(h.e.item_download_progress));
+        this.xGp = ((TextView)this.xFS.findViewById(h.e.item_category));
+        this.xGq = ((TextView)this.xFS.findViewById(h.e.item_new));
+        this.xGr = ((FrameLayout)this.xFS.findViewById(h.e.item_list_content));
       }
-      bkk();
-      if (parama == a.a.ldT)
+      dxT();
+      if (parama == a.xGv)
       {
-        paramView = bkl();
-        if ((this.ldB != null) && (paramView[0] >= 0) && (paramView[1] >= 0) && ((paramView[0] != this.ldx[0]) || (paramView[1] != this.ldx[1]))) {
-          break label502;
+        paramView = dxU();
+        if ((paramView != null) && (this.xGa != null)) {
+          break label552;
         }
-        i = bkm();
-        if ((this.ldt != null) && (i >= 0) && (this.ldy != i)) {
-          break label540;
+        i = dxV();
+        if ((this.xFS != null) && (i >= 0) && (this.xFX != i)) {
+          break label632;
         }
       }
       break;
@@ -103,49 +119,31 @@ public abstract class a
     {
       paramContext.setTag(this);
       return;
-      paramContext = ud(this.ldu);
+      paramContext = JU(this.xFT);
       break;
-      paramContext = ud(this.ldw);
+      paramContext = JU(this.xFV);
       break;
-      paramContext = ud(this.ldv);
+      paramContext = JU(this.xFU);
       break;
-      label502:
-      parama = this.ldB.getLayoutParams();
+      label552:
+      if ((paramView.length != 2) || (paramView[0] < 0) || (paramView[1] < 0) || ((paramView[0] == this.xFW[0]) && (paramView[1] == this.xFW[1]))) {
+        break label483;
+      }
+      parama = this.xGa.getLayoutParams();
       parama.width = paramView[0];
       parama.height = paramView[1];
-      this.ldB.setLayoutParams(parama);
-      this.ldx = paramView;
-      break label433;
-      label540:
-      this.ldt.setMinimumHeight(i);
-      if (this.ldA != null) {
-        this.ldA.setMinimumHeight(i);
+      this.xGa.setLayoutParams(parama);
+      this.xFW = paramView;
+      break label483;
+      label632:
+      this.xFS.setMinimumHeight(i);
+      if (this.xFZ != null) {
+        this.xFZ.setMinimumHeight(i);
       }
     }
   }
   
-  private void bkx()
-  {
-    this.ldF.setVisibility(8);
-    this.ldG.setBackgroundResource(2130838045);
-    this.ldG.setVisibility(0);
-    this.ldH.setEnabled(true);
-    this.ldI.setText("");
-    if (this.ldK == null) {
-      this.ldL.setVisibility(4);
-    }
-    for (;;)
-    {
-      this.ldI.setVisibility(0);
-      this.ldI.setText(2131299193);
-      this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131690799));
-      this.ldJ.setVisibility(8);
-      return;
-      this.ldK.setVisibility(4);
-    }
-  }
-  
-  private View ud(int paramInt)
+  private View JU(int paramInt)
   {
     if ((this.mLayoutInflater == null) || (paramInt <= 0)) {
       return null;
@@ -153,298 +151,415 @@ public abstract class a
     return this.mLayoutInflater.inflate(paramInt, null);
   }
   
-  public final void Kg(String paramString)
+  private void dyd()
   {
-    this.ldD.setText(paramString);
-  }
-  
-  public final void Kh(String paramString)
-  {
-    if (bo.isNullOrNil(paramString))
+    this.xGi.setVisibility(8);
+    this.xGj.setBackgroundResource(h.d.btn_solid_green);
+    this.xGj.setVisibility(0);
+    this.xGk.setEnabled(true);
+    this.xGl.setText("");
+    if (this.xGn == null) {
+      this.xGo.setVisibility(4);
+    }
+    for (;;)
     {
-      this.ldE.setVisibility(8);
+      this.xGl.setVisibility(0);
+      this.xGl.setText(h.h.emoji_store_download);
+      this.xGl.setTextColor(this.mContext.getResources().getColorStateList(h.b.white_text_color_selector));
+      this.xGm.setVisibility(8);
       return;
+      this.xGn.setVisibility(4);
     }
-    this.ldE.setVisibility(0);
-    this.ldE.setText(paramString);
   }
   
-  public final void a(h.a parama)
+  public final void JV(int paramInt)
   {
-    if (this.ldH != null) {
-      this.ldH.setOnClickListener(new a.1(this, parama));
+    this.xGa.setImageResource(paramInt);
+  }
+  
+  public final void JW(int paramInt)
+  {
+    this.xGb.setVisibility(paramInt);
+  }
+  
+  public final void JX(int paramInt)
+  {
+    this.xGb.setImageResource(paramInt);
+  }
+  
+  public final void JY(int paramInt)
+  {
+    this.xGk.setVisibility(paramInt);
+  }
+  
+  public final void a(final r.a parama)
+  {
+    if (this.xGk != null) {
+      this.xGk.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(108290);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/emoji/adapter/BaseEmojiItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (a.this.a(parama, paramAnonymousView)) {
+            a.this.b(parama, paramAnonymousView);
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/adapter/BaseEmojiItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(108290);
+        }
+      });
     }
   }
   
-  protected boolean a(h.a parama, View paramView)
+  protected boolean a(r.a parama, View paramView)
   {
     return true;
   }
   
-  protected void b(h.a parama, View paramView)
+  public final void anJ(String paramString)
+  {
+    this.xGe.setText(paramString);
+  }
+  
+  public final void anK(String paramString)
+  {
+    if (Util.isNullOrNil(paramString))
+    {
+      this.xGf.setVisibility(8);
+      this.xGg.setVisibility(8);
+      return;
+    }
+    this.xGf.setVisibility(0);
+    this.xGg.setVisibility(0);
+    this.xGg.setText(paramString);
+  }
+  
+  public final void anL(String paramString)
+  {
+    this.xGf.setVisibility(0);
+    this.xGg.setVisibility(0);
+    this.xGg.setText(paramString);
+    this.xGh.setVisibility(0);
+  }
+  
+  protected void b(r.a parama, View paramView)
   {
     if (parama != null) {
       parama.a(this);
     }
   }
   
-  protected abstract void bkk();
+  protected abstract void dxT();
   
-  protected abstract int[] bkl();
+  protected abstract int[] dxU();
   
-  protected abstract int bkm();
+  protected abstract int dxV();
   
-  public final void bkn()
+  public final ImageView dxW()
   {
-    this.iJG.setText(2131299259);
+    return this.xGa;
   }
   
-  public final ImageView bko()
+  public final ImageView dxX()
   {
-    return this.ldB;
+    return this.xGb;
   }
   
-  public final void bkp()
+  public final void dxY()
   {
-    this.ldB.setImageResource(2130839105);
+    this.xGe.setVisibility(8);
+    this.xGg.setVisibility(8);
   }
   
-  public final ImageView bkq()
+  public final int dxZ()
   {
-    return this.ldC;
-  }
-  
-  public final void bkr()
-  {
-    this.ldC.setImageResource(2130838655);
-  }
-  
-  public final void bks()
-  {
-    this.ldD.setVisibility(8);
-    this.ldE.setVisibility(8);
-  }
-  
-  public final int bkt()
-  {
-    if (this.ldz == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.ldz.mStatus)) {
+    if (this.xFY == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.xFY.mStatus)) {
       return localInteger.intValue();
     }
   }
   
-  public final String bku()
+  public final String dya()
   {
-    if (this.ldz == null) {}
-    while (this.ldz.lfa == null) {
+    if (this.xFY == null) {}
+    while (this.xFY.xHE == null) {
       return null;
     }
-    return this.ldz.lfa.PackPrice;
+    return String.valueOf(this.xFY.xHE.akkv);
   }
   
-  protected abstract boolean bkv();
+  protected abstract boolean dyb();
   
-  protected final void bkw()
+  protected final void dyc()
   {
-    this.ldF.setVisibility(8);
-    this.ldG.setVisibility(8);
-    this.ldH.setEnabled(false);
-    this.ldJ.setVisibility(8);
-    this.ldL.setVisibility(0);
-    this.ldL.setProgress(getProgress());
-    if (this.ldK == null)
+    this.xGi.setVisibility(8);
+    this.xGj.setVisibility(8);
+    this.xGk.setEnabled(false);
+    this.xGm.setVisibility(8);
+    this.xGo.setVisibility(0);
+    this.xGo.setProgress(getProgress());
+    this.xGo.setContentDescription(String.format(MMApplicationContext.getString(h.h.emoji_download), new Object[] { Integer.valueOf(getProgress()) }));
+    if (this.xGn == null)
     {
-      this.ldL.setVisibility(0);
+      this.xGo.setVisibility(0);
       return;
     }
-    this.ldK.setVisibility(0);
+    this.xGn.setVisibility(0);
   }
   
-  public void bky()
+  public void dye()
   {
-    if (this.ldz == null) {}
-    while (!bkv()) {
-      return;
-    }
-    this.ldI.setVisibility(8);
-    this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131690741));
-    switch (bkt())
+    if (this.xFY == null) {}
+    do
     {
-    case 1: 
-    case 2: 
-    case 5: 
-    case 9: 
-    default: 
-      ab.w("MicroMsg.emoji.BaseEmojiItemHolder", "unknow product status:%d", new Object[] { Integer.valueOf(bkt()) });
-      return;
-    case 8: 
-      this.ldF.setVisibility(8);
-      this.ldG.setBackgroundDrawable(null);
-      this.ldG.setVisibility(0);
-      this.ldH.setEnabled(false);
-      this.ldI.setVisibility(0);
-      this.ldI.setText(2131299196);
-      this.ldJ.setVisibility(4);
-      if (this.ldK == null)
+      do
       {
-        this.ldL.setVisibility(4);
         return;
-      }
-      this.ldK.setVisibility(4);
-      return;
-    case 0: 
-      bkx();
-      return;
-    case 6: 
-      bkw();
-      return;
-    case 7: 
-      if (this.ldz.lfe)
+      } while (!dyb());
+      this.xGl.setVisibility(8);
+      this.xGl.setTextColor(this.mContext.getResources().getColorStateList(h.b.black_text_color_selector));
+      switch (dxZ())
       {
-        ab.d("MicroMsg.emoji.BaseEmojiItemHolder", "jacks use emoji");
-        this.ldF.setVisibility(8);
-        this.ldG.setBackgroundResource(2130838045);
-        this.ldG.setVisibility(0);
-        this.ldG.setTag(getProductId());
-        this.ldH.setEnabled(true);
-        this.ldI.setVisibility(0);
-        this.ldI.setText(2131299261);
-        this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131690799));
-        this.ldJ.setVisibility(4);
-        if (this.ldK == null)
+      case -1: 
+      case 1: 
+      case 2: 
+      case 5: 
+      case 9: 
+      case 13: 
+      case 14: 
+      case 15: 
+      case 16: 
+      case 17: 
+      case 18: 
+      case 19: 
+      default: 
+        Log.w("MicroMsg.emoji.BaseEmojiItemHolder", "unknow product status:%d", new Object[] { Integer.valueOf(dxZ()) });
+        return;
+      case 8: 
+        this.xGi.setVisibility(8);
+        this.xGj.setBackgroundDrawable(null);
+        this.xGj.setVisibility(0);
+        this.xGk.setEnabled(false);
+        this.xGl.setVisibility(0);
+        this.xGl.setText(h.h.emoji_store_expire);
+        this.xGm.setVisibility(4);
+        if (this.xGn == null)
         {
-          this.ldL.setVisibility(4);
+          this.xGo.setVisibility(4);
           return;
         }
-        this.ldK.setVisibility(4);
+        this.xGn.setVisibility(4);
         return;
-      }
-      if ((this.ldz.lfg) && (e.ea(this.ldz.lfa.PackFlag, 64)))
-      {
-        this.ldG.setVisibility(0);
-        this.ldG.setBackgroundResource(2130838048);
-        this.ldI.setVisibility(0);
-        this.ldI.setText(2131299226);
-        this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131690799));
-        this.ldJ.setVisibility(4);
-        this.ldH.setEnabled(true);
-        if (this.ldK == null)
+      case -2: 
+        this.xGi.setVisibility(8);
+        this.xGj.setBackgroundDrawable(null);
+        this.xGj.setVisibility(0);
+        this.xGk.setEnabled(false);
+        this.xGl.setVisibility(0);
+        this.xGl.setText(h.h.emoji_store_not_available_for_buy);
+        this.xGm.setVisibility(4);
+        if (this.xGn == null)
         {
-          this.ldL.setVisibility(4);
+          this.xGo.setVisibility(4);
           return;
         }
-        this.ldK.setVisibility(4);
+        this.xGn.setVisibility(4);
         return;
-      }
-      this.ldF.setVisibility(8);
-      this.ldG.setVisibility(0);
-      this.ldG.setBackgroundResource(2130838050);
-      this.ldI.setVisibility(0);
-      this.ldI.setText(2131299195);
-      this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131689767));
-      this.ldJ.setVisibility(4);
-      this.ldH.setEnabled(false);
-      if (this.ldK == null)
-      {
-        this.ldL.setVisibility(4);
+      case 0: 
+        dyd();
         return;
-      }
-      this.ldK.setVisibility(4);
-      return;
-    case 3: 
-      bkx();
-      return;
-    case 4: 
-    case 12: 
-      this.ldF.setVisibility(8);
-      this.ldG.setBackgroundResource(2130838050);
-      this.ldG.setVisibility(0);
-      if (this.ldK == null) {
-        this.ldL.setVisibility(4);
-      }
-      for (;;)
-      {
-        this.ldH.setEnabled(true);
-        this.ldJ.setVisibility(4);
-        this.ldI.setVisibility(0);
-        if (this.ldz.lfa == null) {
-          break;
+      case 6: 
+        dyc();
+        return;
+      case 7: 
+        if (this.xFY.xHJ)
+        {
+          Log.d("MicroMsg.emoji.BaseEmojiItemHolder", "jacks use emoji");
+          this.xGi.setVisibility(8);
+          this.xGj.setBackgroundResource(h.d.btn_solid_green);
+          this.xGj.setVisibility(0);
+          this.xGj.setTag(getProductId());
+          this.xGk.setEnabled(true);
+          this.xGl.setVisibility(0);
+          this.xGl.setText(h.h.emoji_store_use);
+          this.xGl.setTextColor(this.mContext.getResources().getColorStateList(h.b.white_text_color_selector));
+          this.xGm.setVisibility(4);
+          if (this.xGn == null)
+          {
+            this.xGo.setVisibility(4);
+            return;
+          }
+          this.xGn.setVisibility(4);
+          return;
         }
-        this.ldI.setText(this.ldz.lfa.PackPrice);
+        if ((this.xFY.xHL) && (e.gO(this.xFY.xHE.akke, 64)))
+        {
+          this.xGj.setVisibility(0);
+          this.xGj.setBackgroundResource(h.d.btn_solid_red);
+          this.xGl.setVisibility(0);
+          this.xGl.setText(h.h.emoji_store_reward);
+          this.xGl.setTextColor(this.mContext.getResources().getColorStateList(h.b.white_text_color_selector));
+          this.xGm.setVisibility(4);
+          this.xGk.setEnabled(true);
+          if (this.xGn == null)
+          {
+            this.xGo.setVisibility(4);
+            return;
+          }
+          this.xGn.setVisibility(4);
+          return;
+        }
+        this.xGi.setVisibility(8);
+        this.xGj.setVisibility(0);
+        this.xGj.setBackgroundResource(h.d.btn_solid_white);
+        this.xGl.setVisibility(0);
+        this.xGl.setText(h.h.emoji_store_downloaded);
+        this.xGl.setTextColor(this.mContext.getResources().getColorStateList(h.b.black_text_color_disabled));
+        this.xGm.setVisibility(4);
+        this.xGk.setEnabled(false);
+        if (this.xGn == null)
+        {
+          this.xGo.setVisibility(4);
+          return;
+        }
+        this.xGn.setVisibility(4);
         return;
-        this.ldK.setVisibility(4);
-      }
-    case 10: 
-      this.ldF.setVisibility(8);
-      this.ldG.setBackgroundResource(2130838050);
-      this.ldG.setVisibility(0);
-      this.ldI.setVisibility(0);
-      this.ldI.setText(2131299217);
-      this.ldJ.setVisibility(4);
-      this.ldH.setEnabled(true);
-      if (this.ldK == null)
-      {
-        this.ldL.setVisibility(4);
+      case 3: 
+        dyd();
         return;
+      case 4: 
+      case 12: 
+        this.xGi.setVisibility(8);
+        this.xGj.setBackgroundResource(h.d.btn_solid_white);
+        this.xGj.setVisibility(0);
+        if (this.xGn != null) {
+          break label914;
+        }
+        this.xGo.setVisibility(4);
+        this.xGk.setEnabled(true);
+        this.xGm.setVisibility(4);
+        this.xGl.setVisibility(0);
       }
-      this.ldK.setVisibility(4);
-      return;
-    }
-    this.ldF.setVisibility(0);
-    this.ldG.setBackgroundResource(2130838050);
-    this.ldG.setVisibility(0);
-    this.ldI.setVisibility(0);
-    this.ldI.setText("");
-    this.ldH.setEnabled(false);
-    this.ldJ.setVisibility(4);
-    if (this.ldK == null)
+    } while (this.xFY.xHE == null);
+    if (com.tencent.mm.plugin.emoji.g.b.KK(this.xFY.xHE.akke))
     {
-      this.ldL.setVisibility(4);
+      this.xGl.setText(com.tencent.mm.plugin.emoji.g.b.c(this.mContext, this.xFY.xHE.akkv, ""));
+      this.xGl.setContentDescription(String.format(MMApplicationContext.getString(h.h.emoji_wecoin_price_unit), new Object[] { Integer.valueOf(this.xFY.xHE.akkv) }));
+    }
+    for (;;)
+    {
+      this.xGl.setTextColor(this.mContext.getResources().getColorStateList(h.b.white_text_color_selector));
+      this.xGj.setBackgroundResource(h.d.btn_solid_green);
+      return;
+      label914:
+      this.xGn.setVisibility(4);
+      break;
+      this.xGl.setText(this.xFY.xHE.akkc);
+      this.xGl.setContentDescription(String.format(MMApplicationContext.getString(h.h.emoji_price_unit), new Object[] { this.xGl.getText() }));
+    }
+    this.xGi.setVisibility(8);
+    this.xGj.setBackgroundResource(h.d.btn_solid_white);
+    this.xGj.setVisibility(0);
+    this.xGl.setVisibility(0);
+    this.xGl.setText(h.h.emoji_store_play);
+    this.xGm.setVisibility(4);
+    this.xGk.setEnabled(true);
+    if (this.xGn == null)
+    {
+      this.xGo.setVisibility(4);
       return;
     }
-    this.ldK.setVisibility(4);
+    this.xGn.setVisibility(4);
+    return;
+    this.xGi.setVisibility(0);
+    this.xGj.setBackgroundResource(h.d.btn_solid_white);
+    this.xGj.setVisibility(0);
+    this.xGl.setVisibility(0);
+    this.xGl.setText("");
+    this.xGk.setEnabled(false);
+    this.xGm.setVisibility(4);
+    if (this.xGn == null)
+    {
+      this.xGo.setVisibility(4);
+      return;
+    }
+    this.xGn.setVisibility(4);
+    return;
+    this.xGi.setVisibility(8);
+    this.xGj.setBackgroundResource(h.d.btn_solid_green);
+    this.xGj.setEnabled(false);
+    this.xGj.setVisibility(0);
+    this.xGh.setVisibility(0);
+    this.xGk.setEnabled(false);
+    this.xGl.setTextColor(this.xGl.getResources().getColorStateList(h.b.emoji_download_finish_color));
+    this.xGl.setVisibility(0);
+    this.xGl.setText(h.h.emoji_preview_activity_limit);
+    this.xGm.setVisibility(4);
+    if (this.xGn == null)
+    {
+      this.xGo.setVisibility(4);
+      return;
+    }
+    this.xGn.setVisibility(4);
   }
   
-  public final View bkz()
+  protected final Context getContext()
   {
-    return this.ldP;
+    return this.mContext;
   }
   
   public final String getProductId()
   {
-    if (this.ldz == null) {}
-    while (this.ldz.lfa == null) {
+    if (this.xFY == null) {}
+    while (this.xFY.xHE == null) {
       return null;
     }
-    return this.ldz.lfa.ProductID;
+    return this.xFY.xHE.ProductID;
   }
   
   public final int getProgress()
   {
-    if (this.ldz == null) {
+    if (this.xFY == null) {
       return 0;
     }
-    return this.ldz.ym;
+    return this.xFY.boE;
+  }
+  
+  public final View getRoot()
+  {
+    return this.qAv;
+  }
+  
+  public final void setTitle(int paramInt)
+  {
+    this.sUt.setText(paramInt);
   }
   
   public final void setTitle(String paramString)
   {
-    this.iJG.setText(paramString);
+    this.sUt.setText(paramString);
   }
   
-  public final void ue(int paramInt)
+  public static enum a
   {
-    this.ldC.setVisibility(paramInt);
-  }
-  
-  public final void uf(int paramInt)
-  {
-    this.ldH.setVisibility(paramInt);
+    static
+    {
+      AppMethodBeat.i(108294);
+      xGv = new a("LIST", 0);
+      xGw = new a("GRID_MAIN", 1);
+      xGx = new a("GRID_RECOMMEND", 2);
+      xGy = new a[] { xGv, xGw, xGx };
+      AppMethodBeat.o(108294);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a
  * JD-Core Version:    0.7.0.1
  */

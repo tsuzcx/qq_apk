@@ -10,11 +10,11 @@ import android.graphics.Shader.TileMode;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import com.tencent.mm.plugin.appbrand.canvas.e;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,14 +23,14 @@ public class RealSetFillStyleActionPatternArg
   extends RealSetFillStyleActionArg
 {
   public static final Parcelable.Creator<RealSetFillStyleActionPatternArg> CREATOR;
-  public String heX;
   public String path;
+  public String qTC;
   
   static
   {
-    AppMethodBeat.i(103388);
-    CREATOR = new RealSetFillStyleActionPatternArg.1();
-    AppMethodBeat.o(103388);
+    AppMethodBeat.i(145071);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145071);
   }
   
   public RealSetFillStyleActionPatternArg() {}
@@ -42,23 +42,23 @@ public class RealSetFillStyleActionPatternArg
   
   public final boolean a(d paramd, Canvas paramCanvas)
   {
-    AppMethodBeat.i(103381);
-    if (bo.isNullOrNil(this.path))
+    AppMethodBeat.i(145064);
+    if (Util.isNullOrNil(this.path))
     {
-      AppMethodBeat.o(103381);
+      AppMethodBeat.o(145064);
       return false;
     }
-    paramCanvas = paramd.heC;
-    paramd = paramd.heH.a(paramd, this.path);
+    paramCanvas = paramd.qTj;
+    paramd = paramd.qTo.a(paramd, this.path);
     Object localObject;
     int j;
     int k;
     int i;
     if ((paramd != null) && (!paramd.isRecycled()))
     {
-      localObject = this.heX;
-      j = g.pO(paramd.getWidth());
-      k = g.pO(paramd.getHeight());
+      localObject = this.qTC;
+      j = i.DC(paramd.getWidth());
+      k = i.DC(paramd.getHeight());
       i = -1;
       switch (((String)localObject).hashCode())
       {
@@ -74,7 +74,7 @@ public class RealSetFillStyleActionPatternArg
     for (;;)
     {
       paramCanvas.setShader(paramd);
-      AppMethodBeat.o(103381);
+      AppMethodBeat.o(145064);
       return true;
       if (!((String)localObject).equals("repeat")) {
         break;
@@ -122,77 +122,77 @@ public class RealSetFillStyleActionPatternArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103382);
+    AppMethodBeat.i(145065);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103382);
+      AppMethodBeat.o(145065);
       return true;
     }
     if (!(paramObject instanceof RealSetFillStyleActionPatternArg))
     {
-      AppMethodBeat.o(103382);
+      AppMethodBeat.o(145065);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103382);
+      AppMethodBeat.o(145065);
       return false;
     }
     paramObject = (RealSetFillStyleActionPatternArg)paramObject;
-    if ((Objects.equals(this.path, paramObject.path)) && (Objects.equals(this.heX, paramObject.heX)))
+    if ((Objects.equals(this.path, paramObject.path)) && (Objects.equals(this.qTC, paramObject.qTC)))
     {
-      AppMethodBeat.o(103382);
+      AppMethodBeat.o(145065);
       return true;
     }
-    AppMethodBeat.o(103382);
+    AppMethodBeat.o(145065);
     return false;
-  }
-  
-  public final void f(JSONArray paramJSONArray)
-  {
-    AppMethodBeat.i(103386);
-    super.f(paramJSONArray);
-    this.path = paramJSONArray.optString(1);
-    this.heX = paramJSONArray.optString(2);
-    AppMethodBeat.o(103386);
-  }
-  
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(103384);
-    super.h(paramParcel);
-    this.path = paramParcel.readString();
-    this.heX = paramParcel.readString();
-    AppMethodBeat.o(103384);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103383);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.path, this.heX });
-    AppMethodBeat.o(103383);
+    AppMethodBeat.i(145066);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.path, this.qTC });
+    AppMethodBeat.o(145066);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void i(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103387);
-    super.p(paramJSONObject);
-    AppMethodBeat.o(103387);
+    AppMethodBeat.i(145069);
+    super.i(paramJSONArray);
+    this.path = paramJSONArray.optString(1);
+    this.qTC = paramJSONArray.optString(2);
+    AppMethodBeat.o(145069);
+  }
+  
+  public final void k(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145067);
+    super.k(paramParcel);
+    this.path = paramParcel.readString();
+    this.qTC = paramParcel.readString();
+    AppMethodBeat.o(145067);
+  }
+  
+  public final void parse(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(145070);
+    super.parse(paramJSONObject);
+    AppMethodBeat.o(145070);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103385);
+    AppMethodBeat.i(145068);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.path);
-    paramParcel.writeString(this.heX);
-    AppMethodBeat.o(103385);
+    paramParcel.writeString(this.qTC);
+    AppMethodBeat.o(145068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionPatternArg
  * JD-Core Version:    0.7.0.1
  */

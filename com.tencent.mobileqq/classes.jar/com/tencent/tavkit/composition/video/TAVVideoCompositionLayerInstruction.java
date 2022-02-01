@@ -18,14 +18,11 @@ import org.jetbrains.annotations.NotNull;
 public class TAVVideoCompositionLayerInstruction
   implements VideoCompositionLayerInstruction
 {
-  @NonNull
   private final TAVVideoCompositionTrack imageSource;
   private Matrix preferredTransform;
-  @NonNull
   private CMTimeRange timeRange;
   private int trackID;
   private TAVVideoTransition transition;
-  @NonNull
   private final TAVVideoConfiguration videoConfiguration;
   
   public TAVVideoCompositionLayerInstruction(int paramInt, TAVTransitionableVideo paramTAVTransitionableVideo)
@@ -48,10 +45,9 @@ public class TAVVideoCompositionLayerInstruction
     return null;
   }
   
-  @NonNull
   public VideoCompositionLayerInstruction.CropRectangleRamp getCropRectangleRampForTime(CMTime paramCMTime)
   {
-    return null;
+    return new VideoCompositionLayerInstruction.CropRectangleRamp(CMTimeRange.fromSeconds(0.0F, 0.0F));
   }
   
   @NonNull
@@ -60,10 +56,9 @@ public class TAVVideoCompositionLayerInstruction
     return this.imageSource;
   }
   
-  @NonNull
   public VideoCompositionLayerInstruction.OpacityRamp getOpacityRampForTime(CMTime paramCMTime)
   {
-    return null;
+    return new VideoCompositionLayerInstruction.OpacityRamp(CMTimeRange.fromSeconds(0.0F, 0.0F));
   }
   
   public Matrix getPreferredTransform()
@@ -71,7 +66,6 @@ public class TAVVideoCompositionLayerInstruction
     return this.preferredTransform;
   }
   
-  @NonNull
   public CMTimeRange getTimeRange()
   {
     return this.timeRange;
@@ -82,10 +76,9 @@ public class TAVVideoCompositionLayerInstruction
     return this.trackID;
   }
   
-  @NonNull
   public VideoCompositionLayerInstruction.TransformRamp getTransformRampForTime(CMTime paramCMTime)
   {
-    return null;
+    return new VideoCompositionLayerInstruction.TransformRamp(CMTimeRange.fromSeconds(0.0F, 0.0F));
   }
   
   public TAVVideoTransition getTransition()
@@ -104,7 +97,7 @@ public class TAVVideoCompositionLayerInstruction
     this.preferredTransform = paramMatrix;
   }
   
-  public void setTimeRange(@NonNull CMTimeRange paramCMTimeRange)
+  public void setTimeRange(CMTimeRange paramCMTimeRange)
   {
     this.timeRange = paramCMTimeRange;
   }
@@ -121,12 +114,24 @@ public class TAVVideoCompositionLayerInstruction
   
   public String toString()
   {
-    return "TAVVideoCompositionLayerInstruction{trackID=" + this.trackID + ", timeRange=" + this.timeRange.toSimpleString() + ", preferredTransform=" + this.preferredTransform + ", imageSource=" + this.imageSource + ", transition=" + this.transition + ", videoConfiguration=" + this.videoConfiguration + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVVideoCompositionLayerInstruction{trackID=");
+    localStringBuilder.append(this.trackID);
+    localStringBuilder.append(", timeRange=");
+    localStringBuilder.append(this.timeRange.toSimpleString());
+    localStringBuilder.append(", preferredTransform=");
+    localStringBuilder.append(this.preferredTransform);
+    localStringBuilder.append(", transition=");
+    localStringBuilder.append(this.transition);
+    localStringBuilder.append(", videoConfiguration=");
+    localStringBuilder.append(this.videoConfiguration);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.TAVVideoCompositionLayerInstruction
  * JD-Core Version:    0.7.0.1
  */

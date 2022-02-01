@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import aefu;
-
-public class TroopMemberListActivity$28$2
+class TroopMemberListActivity$28$2
   implements Runnable
 {
-  public TroopMemberListActivity$28$2(aefu paramaefu) {}
+  TroopMemberListActivity$28$2(TroopMemberListActivity.28 param28) {}
   
   public void run()
   {
-    this.a.a.m();
+    this.a.a.inviteMember();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.28.2
  * JD-Core Version:    0.7.0.1
  */

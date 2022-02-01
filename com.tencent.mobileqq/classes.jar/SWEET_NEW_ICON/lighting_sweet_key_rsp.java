@@ -9,7 +9,7 @@ public final class lighting_sweet_key_rsp
   extends JceStruct
 {
   static sweet_rsp_comm cache_rsp_comm = new sweet_rsp_comm();
-  public sweet_rsp_comm rsp_comm;
+  public sweet_rsp_comm rsp_comm = null;
   
   public lighting_sweet_key_rsp() {}
   
@@ -30,7 +30,7 @@ public final class lighting_sweet_key_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_ICON.lighting_sweet_key_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -11,39 +11,6 @@ public class BeaconAdapter
 {
   private static boolean beaconEnable = false;
   
-  static
-  {
-    try
-    {
-      Class.forName("com.tencent.beacon.event.UserAction");
-      if (sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.1.2"))
-      {
-        beaconEnable = true;
-        return;
-      }
-      beaconEnable = false;
-      return;
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        Class.forName("com.tencent.tvkbeacon.event.UserAction");
-        if (sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.1.2"))
-        {
-          beaconEnable = true;
-          return;
-        }
-      }
-      catch (Exception localException2)
-      {
-        beaconEnable = false;
-        return;
-      }
-      beaconEnable = false;
-    }
-  }
-  
   public static void doUploadRecords()
   {
     if (!beaconEnable) {
@@ -248,8 +215,10 @@ public class BeaconAdapter
   
   public static void setOmgId(String paramString)
   {
-    if (!beaconEnable) {}
-    while (!sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.2.0")) {
+    if (!beaconEnable) {
+      return;
+    }
+    if (!sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.2.0")) {
       return;
     }
     UserAction.setOmgId(paramString);
@@ -297,7 +266,7 @@ public class BeaconAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.BeaconAdapter
  * JD-Core Version:    0.7.0.1
  */

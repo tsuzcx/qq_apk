@@ -20,71 +20,62 @@ public class ConfigBaseParser
   
   protected int getIntValue(String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramInt;
-      paramString = getIntValues(paramString);
-    } while ((paramString == null) || (paramString.length <= 0));
-    return paramString[0];
+    }
+    paramString = getIntValues(paramString);
+    if ((paramString != null) && (paramString.length > 0)) {
+      return paramString[0];
+    }
+    return paramInt;
   }
   
   protected int[] getIntValues(String paramString)
   {
-    int[] arrayOfInt = null;
     if (TextUtils.isEmpty(this.mData)) {
       this.mData = getConfig();
     }
-    Object localObject = findConfigValue(this.mData, paramString, "unknown");
-    paramString = arrayOfInt;
-    if (localObject != null)
+    paramString = findConfigValue(this.mData, paramString, "unknown");
+    if (paramString != null)
     {
-      if (!((String)localObject).equalsIgnoreCase("unknown")) {
-        break label57;
+      if (paramString.equalsIgnoreCase("unknown")) {
+        return null;
       }
-      paramString = arrayOfInt;
-    }
-    label57:
-    do
-    {
-      return paramString;
-      localObject = ((String)localObject).split(",");
-      paramString = arrayOfInt;
-    } while (localObject == null);
-    int j = localObject.length;
-    arrayOfInt = new int[j];
-    int i = 0;
-    for (;;)
-    {
-      paramString = arrayOfInt;
-      if (i >= j) {
-        break;
+      paramString = paramString.split(",");
+      if (paramString == null) {
+        return null;
       }
-      try
+      int j = paramString.length;
+      int[] arrayOfInt = new int[j];
+      int i = 0;
+      while (i < j)
       {
-        arrayOfInt[i] = Integer.parseInt(localObject[i].trim());
-        i += 1;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
+        try
         {
-          paramString.printStackTrace();
+          arrayOfInt[i] = Integer.parseInt(paramString[i].trim());
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
           arrayOfInt[i] = 0;
         }
+        i += 1;
       }
+      return arrayOfInt;
     }
+    return null;
   }
   
   protected String getStringValue(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString1)) {
       return paramString2;
-      paramString1 = getStringValues(paramString1);
-    } while ((paramString1 == null) || (paramString1.length <= 0));
-    return paramString1[0];
+    }
+    paramString1 = getStringValues(paramString1);
+    if ((paramString1 != null) && (paramString1.length > 0)) {
+      return paramString1[0];
+    }
+    return paramString2;
   }
   
   protected String[] getStringValues(String paramString)
@@ -93,10 +84,10 @@ public class ConfigBaseParser
       this.mData = getConfig();
     }
     paramString = findConfigValue(this.mData, paramString, "unknown");
-    if ((paramString == null) || (paramString.equalsIgnoreCase("unknown"))) {
-      return null;
+    if ((paramString != null) && (!paramString.equalsIgnoreCase("unknown"))) {
+      return paramString.trim().split(",");
     }
-    return paramString.trim().split(",");
+    return null;
   }
   
   public void setConfig(String paramString)
@@ -106,7 +97,7 @@ public class ConfigBaseParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.config.ConfigBaseParser
  * JD-Core Version:    0.7.0.1
  */

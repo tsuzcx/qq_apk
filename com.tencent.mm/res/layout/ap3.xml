@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/e1x" android:background="@color/a6q" android:padding="@dimen/m8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.plugin.recharge.ui.form.InstantAutoCompleteTextView android:textSize="28.0dip" android:textColor="@color/h6" android:id="@id/bw" android:padding="0.0dip" android:layout_margin="0.0dip" android:dropDownSelector="@color/a3x" android:popupBackground="@null" android:dropDownWidth="fill_parent" android:dropDownAnchor="@id/e1x" android:dropDownHeight="200.0dip" style="@style/pt" />
-            <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:layout_gravity="center_vertical" android:id="@id/bx" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/zu" android:scaleType="fitXY" style="@style/pk" />
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/ect" android:layout_width="@dimen/a6y" android:layout_height="@dimen/a6y" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/cv" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <ImageView android:id="@id/d_9" android:background="@color/hc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bvx" android:scaleType="centerCrop" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <FrameLayout android:layout_gravity="center" android:id="@id/ecv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/ecw" android:padding="1.0dip" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_outlined_play2" android:scaleType="fitCenter" app:iconColor="@color/al2" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/m_" android:textColor="@color/al2" android:ellipsize="end" android:id="@id/ecq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="00: 21" android:singleLine="true" />
         </LinearLayout>
-        <TextView android:textSize="13.0dip" android:textColor="@color/h6" android:id="@id/bz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:minHeight="16.0dip" />
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a6w" android:layout_marginStart="@dimen/cd" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintHorizontal_weight="1.0" app:layout_constraintStart_toEndOf="@id/ect" app:layout_constraintTop_toTopOf="@id/ect">
+        <TextView android:textSize="@dimen/mc" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/ecx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="没有理想的人不伤心没有理想的人不伤心没有理想的人不伤心" android:maxLines="2" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/ecu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="新裤子乐队" android:singleLine="true" />
     </LinearLayout>
-</merge>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ecp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" app:layout_constraintTop_toBottomOf="@id/ect">
+        <TextView android:textSize="@dimen/a_" android:layout_gravity="center_vertical" android:id="@id/eco" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="2个动态" android:singleLine="true" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ecr" android:background="@drawable/a4d" android:paddingTop="@dimen/a6w" android:paddingBottom="@dimen/a6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/cd">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_camera" app:iconColor="@color/al2" />
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/al2" android:id="@id/ecs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/da2" android:layout_marginStart="@dimen/a6w" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

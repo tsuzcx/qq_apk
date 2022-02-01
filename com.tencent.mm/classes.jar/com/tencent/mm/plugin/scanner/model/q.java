@@ -1,48 +1,67 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eg;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.po;
+import com.tencent.mm.protocal.protobuf.pp;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.LinkedList;
 
 public final class q
-  extends eg
+  extends p
+  implements m
 {
-  public static c.a info;
+  private h callback;
+  public c rr;
   
-  static
+  public q(String paramString1, LinkedList<String> paramLinkedList, int paramInt, String paramString2, double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(80885);
-    c.a locala = new c.a();
-    locala.yrK = new Field[4];
-    locala.columns = new String[5];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "originMD5";
-    locala.yrM.put("originMD5", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" originMD5 TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "originMD5";
-    locala.columns[1] = "resultFile";
-    locala.yrM.put("resultFile", "TEXT");
-    localStringBuilder.append(" resultFile TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "fromLang";
-    locala.yrM.put("fromLang", "TEXT");
-    localStringBuilder.append(" fromLang TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "toLang";
-    locala.yrM.put("toLang", "TEXT");
-    localStringBuilder.append(" toLang TEXT");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(80885);
+    AppMethodBeat.i(51617);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new po();
+    ((c.a)localObject).otF = new pp();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetactioninfo";
+    ((c.a)localObject).funcId = 1068;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (po)c.b.b(this.rr.otB);
+    ((po)localObject).ProductID = paramString1;
+    ((po)localObject).IJG = paramInt;
+    ((po)localObject).YTb = paramString2;
+    ((po)localObject).YTa = paramLinkedList;
+    ((po)localObject).YTd = paramDouble2;
+    ((po)localObject).YTc = paramDouble1;
+    AppMethodBeat.o(51617);
   }
   
-  public final c.a getDBInfo()
+  public final int doScene(g paramg, h paramh)
   {
-    return info;
+    AppMethodBeat.i(51619);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(51619);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 1068;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(51618);
+    Log.i("MicroMsg.NetSceneGetActionInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(51618);
   }
 }
 

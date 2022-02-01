@@ -1,23 +1,56 @@
 package com.tencent.mobileqq.activity;
 
-import acth;
-import axlx;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.qcircle.api.utils.QCircleHostConfig;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 
-public class ConversationTitleBtnCtrl$2
-  implements Runnable
+class ConversationTitleBtnCtrl$2
+  implements URLDrawable.URLDrawableListener
 {
-  public ConversationTitleBtnCtrl$2(acth paramacth) {}
+  ConversationTitleBtnCtrl$2(ConversationTitleBtnCtrl paramConversationTitleBtnCtrl) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    ((axlx)BaseApplicationImpl.getApplication().getRuntime().getManager(36)).b("140000");
+    if (ConversationTitleBtnCtrl.b(this.a) != null) {
+      ConversationTitleBtnCtrl.b(this.a).setVisibility(0);
+    }
+    if (ConversationTitleBtnCtrl.c(this.a) != null) {
+      ConversationTitleBtnCtrl.c(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (ConversationTitleBtnCtrl.b(this.a) != null) {
+      ConversationTitleBtnCtrl.b(this.a).setVisibility(0);
+    }
+    if (ConversationTitleBtnCtrl.c(this.a) != null) {
+      ConversationTitleBtnCtrl.c(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (ConversationTitleBtnCtrl.d(this.a) != null) {
+      ConversationTitleBtnCtrl.d(this.a).setVisibility(8);
+    }
+    if (ConversationTitleBtnCtrl.e(this.a) != null) {
+      ConversationTitleBtnCtrl.e(this.a).setVisibility(8);
+    }
+    if (ConversationTitleBtnCtrl.c(this.a) != null) {
+      ConversationTitleBtnCtrl.c(this.a).setVisibility(0);
+    }
+    QCircleHostConfig.setNeedShowMessageEntranceAnim(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationTitleBtnCtrl.2
  * JD-Core Version:    0.7.0.1
  */

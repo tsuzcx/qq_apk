@@ -9,9 +9,9 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +31,8 @@ public class FaceOffNoseOcclusionFilter
     super("attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main(){\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate;\n}\n", "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nvoid main(void) {\n    gl_FragColor = texture2D(inputImageTexture2, textureCoordinate);\n}\n");
     initParams();
     setCoordNum(690);
-    GlUtil.glGenTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   private void initFaceTexCoords()
@@ -43,7 +44,7 @@ public class FaceOffNoseOcclusionFilter
   {
     if (!this.isTexLoaded)
     {
-      Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FEATURE_TYPE.NOSE_MASK);
+      Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FeatureType.NOSE_MASK);
       if (BitmapUtils.isLegal(localBitmap))
       {
         GlUtil.loadTexture(this.texture[0], localBitmap);
@@ -54,21 +55,30 @@ public class FaceOffNoseOcclusionFilter
   
   private void updateParam(List<PointF> paramList, float paramFloat)
   {
-    Object localObject = null;
     try
     {
-      paramList = VideoMaterialUtil.copyList(paramList);
-      if (paramList != null) {
-        setPositions(FaceOffUtil.initFaceNoseLastPositions(FaceOffUtil.getFullCoordsForNoseAndOutline(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-      }
-      return;
+      paramList = VideoMaterial.copyList(paramList);
     }
     catch (Exception paramList)
     {
-      for (;;)
-      {
-        paramList = localObject;
-      }
+      label8:
+      double d1;
+      double d2;
+      int i;
+      break label8;
+    }
+    paramList = null;
+    if (paramList != null)
+    {
+      paramList = FaceOffUtil.getFullCoordsForNoseAndOutline(paramList);
+      d1 = this.width;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      i = (int)(d1 * d2);
+      d1 = this.height;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      setPositions(FaceOffUtil.initFaceNoseLastPositions(paramList, i, (int)(d1 * d2), this.faceVertices));
     }
   }
   
@@ -82,7 +92,8 @@ public class FaceOffNoseOcclusionFilter
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GlUtil.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GlUtil.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void initAttribParams()
@@ -98,6 +109,16 @@ public class FaceOffNoseOcclusionFilter
     addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
   }
   
+  public void loadFaceTex(String paramString)
+  {
+    paramString = BitmapUtils.decodeSampledBitmapFromFile(paramString, 1);
+    if (BitmapUtils.isLegal(paramString))
+    {
+      GlUtil.loadTexture(this.texture[0], paramString);
+      this.isTexLoaded = true;
+    }
+  }
+  
   public void updatePreview(Object paramObject)
   {
     if ((paramObject instanceof PTDetectInfo))
@@ -105,13 +126,13 @@ public class FaceOffNoseOcclusionFilter
       paramObject = (PTDetectInfo)paramObject;
       loadNoseTex();
       super.updatePreview(paramObject);
-      updateParam(paramObject.facePoints, paramObject.faceAngles[1]);
+      updateParam(paramObject.facePoints, 0.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceOffNoseOcclusionFilter
  * JD-Core Version:    0.7.0.1
  */

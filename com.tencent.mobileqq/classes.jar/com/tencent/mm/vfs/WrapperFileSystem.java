@@ -20,9 +20,10 @@ public abstract class WrapperFileSystem<T extends FileSystem>
   {
     VFSUtils.checkFileSystemVersion(paramParcel, WrapperFileSystem.class, 1);
     this.mFS = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    if (this.mFS == null) {
-      throw new IllegalArgumentException("Wrong wrapped filesystem.");
+    if (this.mFS != null) {
+      return;
     }
+    throw new IllegalArgumentException("Wrong wrapped filesystem.");
   }
   
   protected WrapperFileSystem(T paramT)
@@ -47,10 +48,11 @@ public abstract class WrapperFileSystem<T extends FileSystem>
   
   protected long copyFileImpl(String paramString1, FileSystem paramFileSystem, String paramString2)
   {
-    if ((this.mFS instanceof AbstractFileSystem)) {
-      return ((AbstractFileSystem)this.mFS).copyFileImpl(paramString1, paramFileSystem, paramString2);
+    FileSystem localFileSystem = this.mFS;
+    if ((localFileSystem instanceof AbstractFileSystem)) {
+      return ((AbstractFileSystem)localFileSystem).copyFileImpl(paramString1, paramFileSystem, paramString2);
     }
-    return this.mFS.copyFile(paramString1, paramFileSystem, paramString2);
+    return localFileSystem.copyFile(paramString1, paramFileSystem, paramString2);
   }
   
   public boolean delete(String paramString)
@@ -90,8 +92,9 @@ public abstract class WrapperFileSystem<T extends FileSystem>
   
   protected boolean moveFileImpl(String paramString1, FileSystem paramFileSystem, String paramString2)
   {
-    if ((this.mFS instanceof AbstractFileSystem)) {
-      return ((AbstractFileSystem)this.mFS).moveFileImpl(paramString1, paramFileSystem, paramString2);
+    FileSystem localFileSystem = this.mFS;
+    if ((localFileSystem instanceof AbstractFileSystem)) {
+      return ((AbstractFileSystem)localFileSystem).moveFileImpl(paramString1, paramFileSystem, paramString2);
     }
     return false;
   }
@@ -149,7 +152,7 @@ public abstract class WrapperFileSystem<T extends FileSystem>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.WrapperFileSystem
  * JD-Core Version:    0.7.0.1
  */

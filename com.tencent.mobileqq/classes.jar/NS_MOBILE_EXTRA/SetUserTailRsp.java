@@ -27,14 +27,15 @@ public final class SetUserTailRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.strTailName, 0);
-    if (this.strTailNoIcon != null) {
-      paramJceOutputStream.write(this.strTailNoIcon, 1);
+    String str = this.strTailNoIcon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.SetUserTailRsp
  * JD-Core Version:    0.7.0.1
  */

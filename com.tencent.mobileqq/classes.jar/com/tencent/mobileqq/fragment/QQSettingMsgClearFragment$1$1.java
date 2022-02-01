@@ -1,31 +1,28 @@
 package com.tencent.mobileqq.fragment;
 
-import ajip;
 import android.os.Handler;
-import ashe;
-import azuc;
-import bdne;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.storage.StorageReport;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class QQSettingMsgClearFragment$1$1
+class QQSettingMsgClearFragment$1$1
   implements Runnable
 {
-  public QQSettingMsgClearFragment$1$1(ashe paramashe) {}
+  QQSettingMsgClearFragment$1$1(QQSettingMsgClearFragment.1 param1) {}
   
   public void run()
   {
-    QQSettingMsgHistoryActivity.a(this.a.a.getActivity(), QQSettingMsgClearFragment.a(this.a.a));
-    azuc.a().a(true);
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    bdne.a(QQSettingMsgClearFragment.a(this.a.a).c());
-    ajip.a().a(0L);
+    QQSettingMsgHistoryActivity.a(this.a.b.getBaseActivity(), QQSettingMsgClearFragment.a(this.a.b));
+    StorageReport.a().a(true);
+    this.a.b.c.sendEmptyMessageDelayed(0, 1000L);
+    SharedPreUtils.h(QQSettingMsgClearFragment.a(this.a.b).getCurrentUin());
     QQSettingMsgHistoryActivity.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

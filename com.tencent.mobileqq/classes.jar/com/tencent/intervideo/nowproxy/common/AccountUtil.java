@@ -15,19 +15,31 @@ public class AccountUtil
   
   public static int getAccountType(LoginType paramLoginType)
   {
-    switch (AccountUtil.1.$SwitchMap$com$tencent$intervideo$nowproxy$common$login$LoginType[paramLoginType.ordinal()])
+    int j = AccountUtil.1.$SwitchMap$com$tencent$intervideo$nowproxy$common$login$LoginType[paramLoginType.ordinal()];
+    int i = 5;
+    if (j != 1)
     {
-    case 1: 
-    default: 
+      if (j == 2) {
+        break label44;
+      }
+      if (j == 3) {
+        return i;
+      }
+      if (j == 4) {
+        break label41;
+      }
+      if (j == 5) {}
+    }
+    else
+    {
       return 2;
-    case 2: 
-      return 4;
-    case 3: 
-      return 5;
-    case 4: 
-      return 8;
     }
     return 9;
+    label41:
+    return 8;
+    label44:
+    i = 4;
+    return i;
   }
   
   public static String getDeviceId(Context paramContext)
@@ -38,12 +50,12 @@ public class AccountUtil
     paramContext = new File(paramContext.getFilesDir(), "DEVICE_ID");
     try
     {
-      if (paramContext.exists()) {
+      if (paramContext.exists())
+      {
         sDeviceId = readDeviceIdFromFile(paramContext);
       }
-      for (;;)
+      else
       {
-        return sDeviceId;
         sDeviceId = UUID.randomUUID().toString();
         paramContext.createNewFile();
         writeDeviceIdToFile(paramContext, sDeviceId);
@@ -51,11 +63,9 @@ public class AccountUtil
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
+    return sDeviceId;
   }
   
   public static int getOriginalAccountType(LoginType paramLoginType)
@@ -63,14 +73,15 @@ public class AccountUtil
     if (paramLoginType == null) {
       return 0;
     }
-    switch (AccountUtil.1.$SwitchMap$com$tencent$intervideo$nowproxy$common$login$LoginType[paramLoginType.ordinal()])
+    int i = AccountUtil.1.$SwitchMap$com$tencent$intervideo$nowproxy$common$login$LoginType[paramLoginType.ordinal()];
+    if (i != 4)
     {
-    default: 
-      return 0;
-    case 4: 
-      return 8;
+      if (i != 5) {
+        return 0;
+      }
+      return 9;
     }
-    return 9;
+    return 8;
   }
   
   private static String readDeviceIdFromFile(File paramFile)
@@ -91,7 +102,7 @@ public class AccountUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.common.AccountUtil
  * JD-Core Version:    0.7.0.1
  */

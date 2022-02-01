@@ -4,29 +4,29 @@ import com.tencent.tav.coremedia.CMTimeRange;
 
 public class TAVStickerLayerInfo$TAVStickerTimeEffect
 {
-  private CMTimeRange mSourceVideoTimeRange = CMTimeRange.CMTimeRangeInvalid;
-  private CMTimeRange mTimeRange = CMTimeRange.CMTimeRangeInvalid;
   private boolean reversed = false;
+  private CMTimeRange sourceVideoTimeRange = CMTimeRange.CMTimeRangeInvalid;
+  private CMTimeRange timeRange = CMTimeRange.CMTimeRangeInvalid;
   
   public TAVStickerLayerInfo$TAVStickerTimeEffect(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2, boolean paramBoolean)
   {
     if (paramCMTimeRange1 != null) {
-      this.mSourceVideoTimeRange = paramCMTimeRange1;
+      this.sourceVideoTimeRange = paramCMTimeRange1;
     }
     if (paramCMTimeRange2 != null) {
-      this.mTimeRange = paramCMTimeRange2;
+      this.timeRange = paramCMTimeRange2;
     }
     this.reversed = paramBoolean;
   }
   
   public CMTimeRange getSourceVideoTimeRange()
   {
-    return this.mSourceVideoTimeRange;
+    return this.sourceVideoTimeRange;
   }
   
   public CMTimeRange getTimeRange()
   {
-    return this.mTimeRange;
+    return this.timeRange;
   }
   
   public boolean isReversed()
@@ -36,27 +36,45 @@ public class TAVStickerLayerInfo$TAVStickerTimeEffect
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TAVStickerTimeEffect {mSourceVideoTimeRange : ");
-    if (this.mSourceVideoTimeRange != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVStickerTimeEffect {sourceVideoTimeRange : ");
+    Object localObject = this.sourceVideoTimeRange;
+    String str = "null";
+    if (localObject != null)
     {
-      str = "start : " + this.mSourceVideoTimeRange.getStartUs() + ", duration : " + this.mSourceVideoTimeRange.getDurationUs();
-      localStringBuilder = localStringBuilder.append(str).append(", mTimeRange : ");
-      if (this.mTimeRange == null) {
-        break label152;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start : ");
+      ((StringBuilder)localObject).append(this.sourceVideoTimeRange.getStartUs());
+      ((StringBuilder)localObject).append(", duration : ");
+      ((StringBuilder)localObject).append(this.sourceVideoTimeRange.getDurationUs());
+      localObject = ((StringBuilder)localObject).toString();
     }
-    label152:
-    for (String str = "start : " + this.mTimeRange.getStartUs() + ", duration : " + this.mTimeRange.getDurationUs();; str = "null")
+    else
     {
-      return str + ", reversed : " + this.reversed + "}";
-      str = "null";
-      break;
+      localObject = "null";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", timeRange : ");
+    localObject = str;
+    if (this.timeRange != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start : ");
+      ((StringBuilder)localObject).append(this.timeRange.getStartUs());
+      ((StringBuilder)localObject).append(", duration : ");
+      ((StringBuilder)localObject).append(this.timeRange.getDurationUs());
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", reversed : ");
+    localStringBuilder.append(this.reversed);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerLayerInfo.TAVStickerTimeEffect
  * JD-Core Version:    0.7.0.1
  */

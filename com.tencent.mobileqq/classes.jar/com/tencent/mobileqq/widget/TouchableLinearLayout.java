@@ -30,8 +30,9 @@ public class TouchableLinearLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.onTouch(this, paramMotionEvent);
+    View.OnTouchListener localOnTouchListener = this.a;
+    if (localOnTouchListener != null) {
+      localOnTouchListener.onTouch(this, paramMotionEvent);
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -44,7 +45,7 @@ public class TouchableLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TouchableLinearLayout
  * JD-Core Version:    0.7.0.1
  */

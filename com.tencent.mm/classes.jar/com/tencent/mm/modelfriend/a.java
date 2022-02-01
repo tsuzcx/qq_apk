@@ -1,69 +1,81 @@
 package com.tencent.mm.modelfriend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.a;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.ai.p;
+import com.tencent.mm.am.n;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.a;
+import com.tencent.mm.am.p.b;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.modelsimple.o;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.n.a;
 import com.tencent.mm.protocal.n.b;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cco;
-import com.tencent.mm.protocal.protobuf.cij;
-import com.tencent.mm.protocal.protobuf.cuv;
-import com.tencent.mm.protocal.protobuf.js;
-import com.tencent.mm.protocal.protobuf.jt;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.y;
+import com.tencent.mm.protocal.protobuf.dtr;
+import com.tencent.mm.protocal.protobuf.fck;
+import com.tencent.mm.protocal.protobuf.fde;
+import com.tencent.mm.protocal.protobuf.fjq;
+import com.tencent.mm.protocal.protobuf.gdd;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.my;
+import com.tencent.mm.protocal.protobuf.mz;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  public static a.a fBk;
-  com.tencent.mm.ai.f callback;
-  public final q ftU;
-  private int ftx;
+  public static a oDC;
+  private com.tencent.mm.am.h callback;
+  public final com.tencent.mm.network.s ouH;
+  private int ouk;
   
   public a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3)
   {
-    AppMethodBeat.i(123400);
+    this(paramString1, paramInt1, paramString2, paramInt2, paramString3, 0);
+  }
+  
+  public a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3)
+  {
+    AppMethodBeat.i(134117);
     this.callback = null;
-    this.ftx = 2;
-    this.ftU = new a.b();
-    n.a locala = (n.a)this.ftU.getReqObj();
-    locala.wiw.wsW = paramInt1;
-    ab.d("MicroMsg.NetSceneBindMobileForReg", "Get mobile:" + paramString1 + " opcode:" + paramInt1 + " verifyCode:" + paramString2);
-    locala.wiw.wvG = paramString1;
-    locala.wiw.wvH = paramString2;
-    locala.wiw.wvI = paramInt2;
-    locala.wiw.wvJ = paramString3;
-    locala.wiw.lGH = com.tencent.mm.sdk.platformtools.aa.dsG();
-    locala.wiw.wsp = com.tencent.mm.kernel.a.QX();
-    if ((bo.isNullOrNil(locala.wiw.wvL)) && (bo.isNullOrNil(locala.wiw.wvM)))
+    this.ouk = 2;
+    this.ouH = new b();
+    n.a locala = (n.a)this.ouH.getReqObj();
+    locala.Yyb.YKH = paramInt1;
+    Log.d("MicroMsg.NetSceneBindMobileForReg", "Get mobile:" + paramString1 + " opcode:" + paramInt1 + " verifyCode:" + paramString2);
+    locala.Yyb.YOc = paramString1;
+    locala.Yyb.YOd = paramString2;
+    locala.Yyb.YOm = paramInt3;
+    locala.Yyb.YOe = paramInt2;
+    locala.Yyb.YOf = paramString3;
+    locala.Yyb.yts = LocaleUtil.getApplicationLanguage();
+    locala.Yyb.YJX = b.aZR();
+    if ((Util.isNullOrNil(locala.Yyb.YOh)) && (Util.isNullOrNil(locala.Yyb.YOi)))
     {
-      paramString2 = locala.wiw;
-      if (fBk == null) {
-        break label226;
+      paramString2 = locala.Yyb;
+      if (oDC == null) {
+        break label233;
       }
     }
-    label226:
-    for (paramString1 = fBk.agL();; paramString1 = "")
+    label233:
+    for (paramString1 = oDC.bJf();; paramString1 = "")
     {
-      paramString2.wvL = paramString1;
-      locala.wiw.wvM = d.DEVICE_NAME;
-      AppMethodBeat.o(123400);
+      paramString2.YOh = paramString1;
+      locala.Yyb.YOi = d.Yxf;
+      AppMethodBeat.o(134117);
       return;
     }
   }
@@ -71,298 +83,334 @@ public final class a
   public a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
     this(paramString1, paramInt, paramString2, 0, paramString3);
-    AppMethodBeat.i(123399);
-    ((n.a)this.ftU.getReqObj()).wiw.wrW = paramString4;
-    AppMethodBeat.o(123399);
+    AppMethodBeat.i(134116);
+    ((n.a)this.ouH.getReqObj()).Yyb.YJu = paramString4;
+    AppMethodBeat.o(134116);
   }
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     this(paramString1, 11, paramString2, paramString3, paramString4);
-    AppMethodBeat.i(123398);
-    paramString1 = (n.a)this.ftU.getReqObj();
-    paramString1.wiw.wvL = paramString5;
-    paramString1.wiw.wvM = paramString6;
-    AppMethodBeat.o(123398);
+    AppMethodBeat.i(134115);
+    paramString1 = (n.a)this.ouH.getReqObj();
+    paramString1.Yyb.YOh = paramString5;
+    paramString1.Yyb.YOi = paramString6;
+    AppMethodBeat.o(134115);
   }
   
-  public final int Ac()
+  public final void NG(String paramString)
   {
-    AppMethodBeat.i(123403);
-    int i = ((n.a)this.ftU.getReqObj()).wiw.wsW;
-    AppMethodBeat.o(123403);
-    return i;
+    AppMethodBeat.i(239526);
+    ((n.a)this.ouH.getReqObj()).Yyb.YOs = paramString;
+    AppMethodBeat.o(239526);
   }
   
-  public final void a(cuv paramcuv)
+  public final void NH(String paramString)
   {
-    AppMethodBeat.i(123414);
-    try
+    AppMethodBeat.i(134141);
+    ((n.a)this.ouH.getReqObj()).Yyb.YOn = paramString;
+    AppMethodBeat.o(134141);
+  }
+  
+  public final void W(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(134142);
+    fde localfde = new fde();
+    localfde.AXR = paramInt;
+    if (paramBoolean) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      ((n.a)this.ftU.getReqObj()).wiw.wss = new SKBuiltinBuffer_t().setBuffer(paramcuv.toByteArray());
-      AppMethodBeat.o(123414);
+      localfde.abCH = paramInt;
+      ((n.a)this.ouH.getReqObj()).Yyb.YOq = localfde;
+      AppMethodBeat.o(134142);
       return;
     }
-    catch (Throwable paramcuv)
+  }
+  
+  public final void a(gdd paramgdd)
+  {
+    AppMethodBeat.i(134132);
+    try
     {
-      AppMethodBeat.o(123414);
+      ((n.a)this.ouH.getReqObj()).Yyb.YKb = new gol().df(paramgdd.toByteArray());
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(134132);
     }
   }
   
-  public final int agA()
+  public final int bIO()
   {
-    AppMethodBeat.i(123411);
-    int i = ((n.b)this.ftU.getRespObj()).wix.wvQ;
-    AppMethodBeat.o(123411);
+    AppMethodBeat.i(134120);
+    int i = ((n.a)this.ouH.getReqObj()).Yyb.YKH;
+    AppMethodBeat.o(134120);
     return i;
   }
   
-  public final String agB()
+  public final String bIP()
   {
-    AppMethodBeat.i(123412);
-    String str = ((n.b)this.ftU.getRespObj()).wix.wwf;
-    AppMethodBeat.o(123412);
+    AppMethodBeat.i(134123);
+    String str = ((n.b)this.ouH.getRespObj()).Yyc.YOy;
+    AppMethodBeat.o(134123);
     return str;
   }
   
-  public final String agC()
+  public final String bIQ()
   {
-    AppMethodBeat.i(123413);
-    String str = ((n.b)this.ftU.getRespObj()).wix.wwg;
-    AppMethodBeat.o(123413);
+    AppMethodBeat.i(134125);
+    String str = ((n.b)this.ouH.getRespObj()).Yyc.hFb;
+    AppMethodBeat.o(134125);
     return str;
   }
   
-  public final int agD()
+  public final String bIR()
   {
-    AppMethodBeat.i(123415);
-    Object localObject = ((n.b)this.ftU.getRespObj()).wix.wrV;
-    cij localcij;
-    if ((localObject != null) && (((cco)localObject).xNc != null) && (((cco)localObject).xNc.size() > 0))
+    AppMethodBeat.i(134126);
+    String str = ((n.b)this.ouH.getRespObj()).Yyc.YJu;
+    AppMethodBeat.o(134126);
+    return str;
+  }
+  
+  public final String bIS()
+  {
+    AppMethodBeat.i(134127);
+    String str = ((n.b)this.ouH.getRespObj()).Yyc.YOF;
+    AppMethodBeat.o(134127);
+    return str;
+  }
+  
+  public final int bIT()
+  {
+    AppMethodBeat.i(134128);
+    int i = ((n.b)this.ouH.getRespObj()).Yyc.YOm;
+    AppMethodBeat.o(134128);
+    return i;
+  }
+  
+  public final String bIU()
+  {
+    AppMethodBeat.i(134129);
+    String str = ((n.b)this.ouH.getRespObj()).Yyc.YOH;
+    AppMethodBeat.o(134129);
+    return str;
+  }
+  
+  public final String bIV()
+  {
+    AppMethodBeat.i(134130);
+    String str = ((n.b)this.ouH.getRespObj()).Yyc.YOI;
+    AppMethodBeat.o(134130);
+    return str;
+  }
+  
+  public final dtr bIW()
+  {
+    AppMethodBeat.i(239619);
+    dtr localdtr = ((n.b)this.ouH.getRespObj()).Yyc.YOr;
+    AppMethodBeat.o(239619);
+    return localdtr;
+  }
+  
+  public final int bIX()
+  {
+    AppMethodBeat.i(134133);
+    Object localObject = ((n.b)this.ouH.getRespObj()).Yyc.YJt;
+    fjq localfjq;
+    if ((localObject != null) && (((fck)localObject).abBZ != null) && (((fck)localObject).abBZ.size() > 0))
     {
-      localObject = ((cco)localObject).xNc.iterator();
+      localObject = ((fck)localObject).abBZ.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        localcij = (cij)((Iterator)localObject).next();
-      } while (localcij.qsk != 6);
+        localfjq = (fjq)((Iterator)localObject).next();
+      } while (localfjq.OzG != 6);
     }
-    for (int i = bo.getInt(localcij.xSX, 3);; i = 3)
+    for (int i = Util.getInt(localfjq.abKm, 3);; i = 3)
     {
-      AppMethodBeat.o(123415);
+      AppMethodBeat.o(134133);
       return i;
     }
   }
   
-  public final int agE()
+  public final int bIY()
   {
-    AppMethodBeat.i(123416);
-    Object localObject = ((n.b)this.ftU.getRespObj()).wix.wrV;
-    cij localcij;
-    if ((localObject != null) && (((cco)localObject).xNc != null) && (((cco)localObject).xNc.size() > 0))
+    AppMethodBeat.i(134134);
+    Object localObject = ((n.b)this.ouH.getRespObj()).Yyc.YJt;
+    fjq localfjq;
+    if ((localObject != null) && (((fck)localObject).abBZ != null) && (((fck)localObject).abBZ.size() > 0))
     {
-      localObject = ((cco)localObject).xNc.iterator();
+      localObject = ((fck)localObject).abBZ.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        localcij = (cij)((Iterator)localObject).next();
-      } while (localcij.qsk != 4);
+        localfjq = (fjq)((Iterator)localObject).next();
+      } while (localfjq.OzG != 4);
     }
-    for (int i = bo.getInt(localcij.xSX, 30);; i = 30)
+    for (int i = Util.getInt(localfjq.abKm, 30);; i = 30)
     {
-      AppMethodBeat.o(123416);
+      AppMethodBeat.o(134134);
       return i;
     }
   }
   
-  public final int agF()
+  public final int bIZ()
   {
-    AppMethodBeat.i(123417);
-    Object localObject = ((n.b)this.ftU.getRespObj()).wix.wrV;
-    cij localcij;
-    if ((localObject != null) && (((cco)localObject).xNc != null) && (((cco)localObject).xNc.size() > 0))
+    AppMethodBeat.i(134135);
+    Object localObject = ((n.b)this.ouH.getRespObj()).Yyc.YJt;
+    fjq localfjq;
+    if ((localObject != null) && (((fck)localObject).abBZ != null) && (((fck)localObject).abBZ.size() > 0))
     {
-      localObject = ((cco)localObject).xNc.iterator();
+      localObject = ((fck)localObject).abBZ.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        localcij = (cij)((Iterator)localObject).next();
-      } while (localcij.qsk != 5);
+        localfjq = (fjq)((Iterator)localObject).next();
+      } while (localfjq.OzG != 5);
     }
-    for (int i = bo.getInt(localcij.xSX, 0);; i = 0)
+    for (int i = Util.getInt(localfjq.abKm, 0);; i = 0)
     {
-      AppMethodBeat.o(123417);
+      AppMethodBeat.o(134135);
       return i;
     }
   }
   
-  public final boolean agG()
+  public final boolean bJa()
   {
-    AppMethodBeat.i(123418);
-    Object localObject = ((n.b)this.ftU.getRespObj()).wix.wrV;
-    cij localcij;
-    if ((localObject != null) && (((cco)localObject).xNc != null) && (((cco)localObject).xNc.size() > 0))
+    AppMethodBeat.i(134136);
+    Object localObject = ((n.b)this.ouH.getRespObj()).Yyc.YJt;
+    fjq localfjq;
+    if ((localObject != null) && (((fck)localObject).abBZ != null) && (((fck)localObject).abBZ.size() > 0))
     {
-      localObject = ((cco)localObject).xNc.iterator();
+      localObject = ((fck)localObject).abBZ.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        localcij = (cij)((Iterator)localObject).next();
-      } while (localcij.qsk != 7);
+        localfjq = (fjq)((Iterator)localObject).next();
+      } while (localfjq.OzG != 7);
     }
-    for (int i = bo.getInt(localcij.xSX, 0);; i = 0)
+    for (int i = Util.getInt(localfjq.abKm, 0);; i = 0)
     {
       if (i > 0)
       {
-        AppMethodBeat.o(123418);
+        AppMethodBeat.o(134136);
         return true;
       }
-      AppMethodBeat.o(123418);
+      AppMethodBeat.o(134136);
       return false;
     }
   }
   
-  public final boolean agH()
+  public final boolean bJb()
   {
-    AppMethodBeat.i(123419);
-    Object localObject = ((n.b)this.ftU.getRespObj()).wix.wrV;
-    cij localcij;
-    if ((localObject != null) && (((cco)localObject).xNc != null) && (((cco)localObject).xNc.size() > 0))
+    AppMethodBeat.i(134137);
+    Object localObject = ((n.b)this.ouH.getRespObj()).Yyc.YJt;
+    fjq localfjq;
+    if ((localObject != null) && (((fck)localObject).abBZ != null) && (((fck)localObject).abBZ.size() > 0))
     {
-      localObject = ((cco)localObject).xNc.iterator();
+      localObject = ((fck)localObject).abBZ.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        localcij = (cij)((Iterator)localObject).next();
-      } while (localcij.qsk != 10);
+        localfjq = (fjq)((Iterator)localObject).next();
+      } while (localfjq.OzG != 10);
     }
-    for (int i = bo.getInt(localcij.xSX, 0);; i = 0)
+    for (int i = Util.getInt(localfjq.abKm, 0);; i = 0)
     {
       if (i > 0)
       {
-        AppMethodBeat.o(123419);
+        AppMethodBeat.o(134137);
         return true;
       }
-      AppMethodBeat.o(123419);
+      AppMethodBeat.o(134137);
       return false;
     }
   }
   
-  public final String agI()
+  public final String bJc()
   {
-    AppMethodBeat.i(123420);
-    Object localObject = ((n.b)this.ftU.getRespObj()).wix.wrV;
-    cij localcij;
-    if ((localObject != null) && (((cco)localObject).xNc != null) && (((cco)localObject).xNc.size() > 0))
+    AppMethodBeat.i(134138);
+    Object localObject = ((n.b)this.ouH.getRespObj()).Yyc.YJt;
+    fjq localfjq;
+    if ((localObject != null) && (((fck)localObject).abBZ != null) && (((fck)localObject).abBZ.size() > 0))
     {
-      localObject = ((cco)localObject).xNc.iterator();
+      localObject = ((fck)localObject).abBZ.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        localcij = (cij)((Iterator)localObject).next();
-      } while (localcij.qsk != 14);
+        localfjq = (fjq)((Iterator)localObject).next();
+      } while (localfjq.OzG != 14);
     }
-    for (localObject = localcij.xSX;; localObject = null)
+    for (localObject = localfjq.abKm;; localObject = null)
     {
-      AppMethodBeat.o(123420);
+      AppMethodBeat.o(134138);
       return localObject;
     }
   }
   
-  public final String agJ()
+  public final String bJd()
   {
-    AppMethodBeat.i(123421);
-    Object localObject = ((n.b)this.ftU.getRespObj()).wix.wrV;
-    cij localcij;
-    if ((localObject != null) && (((cco)localObject).xNc != null) && (((cco)localObject).xNc.size() > 0))
+    AppMethodBeat.i(134139);
+    Object localObject = ((n.b)this.ouH.getRespObj()).Yyc.YJt;
+    fjq localfjq;
+    if ((localObject != null) && (((fck)localObject).abBZ != null) && (((fck)localObject).abBZ.size() > 0))
     {
-      localObject = ((cco)localObject).xNc.iterator();
+      localObject = ((fck)localObject).abBZ.iterator();
       do
       {
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        localcij = (cij)((Iterator)localObject).next();
-      } while (localcij.qsk != 15);
+        localfjq = (fjq)((Iterator)localObject).next();
+      } while (localfjq.OzG != 15);
     }
-    for (localObject = localcij.xSX;; localObject = null)
+    for (localObject = localfjq.abKm;; localObject = null)
     {
-      AppMethodBeat.o(123421);
+      AppMethodBeat.o(134139);
       return localObject;
     }
   }
   
-  public final String agK()
+  public final String bJe()
   {
-    AppMethodBeat.i(123422);
-    String str = ((n.b)this.ftU.getRespObj()).wix.wvR;
-    AppMethodBeat.o(123422);
+    AppMethodBeat.i(134140);
+    String str = ((n.b)this.ouH.getRespObj()).Yyc.YOn;
+    AppMethodBeat.o(134140);
     return str;
   }
   
-  public final String agw()
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(123406);
-    String str = ((n.b)this.ftU.getRespObj()).wix.wvW;
-    AppMethodBeat.o(123406);
-    return str;
-  }
-  
-  public final String agx()
-  {
-    AppMethodBeat.i(123408);
-    String str = ((n.b)this.ftU.getRespObj()).wix.crs;
-    AppMethodBeat.o(123408);
-    return str;
-  }
-  
-  public final String agy()
-  {
-    AppMethodBeat.i(123409);
-    String str = ((n.b)this.ftU.getRespObj()).wix.wrW;
-    AppMethodBeat.o(123409);
-    return str;
-  }
-  
-  public final String agz()
-  {
-    AppMethodBeat.i(123410);
-    String str = ((n.b)this.ftU.getRespObj()).wix.wwd;
-    AppMethodBeat.o(123410);
-    return str;
-  }
-  
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ai.f paramf)
-  {
-    AppMethodBeat.i(123404);
-    this.callback = paramf;
-    paramf = (n.a)this.ftU.getReqObj();
-    if ((paramf.wiw.wvG == null) || (paramf.wiw.wvG.length() <= 0))
+    AppMethodBeat.i(134121);
+    this.callback = paramh;
+    paramh = (n.a)this.ouH.getReqObj();
+    if ((paramh.Yyb.YOc == null) || (paramh.Yyb.YOc.length() <= 0))
     {
-      ab.e("MicroMsg.NetSceneBindMobileForReg", "doScene getMobile Error: " + paramf.wiw.wvG);
-      AppMethodBeat.o(123404);
+      Log.e("MicroMsg.NetSceneBindMobileForReg", "doScene getMobile Error: " + paramh.Yyb.YOc);
+      AppMethodBeat.o(134121);
       return -1;
     }
-    if (((paramf.wiw.wsW == 6) || (paramf.wiw.wsW == 9)) && ((paramf.wiw.wvH == null) || (paramf.wiw.wvH.length() <= 0)))
+    if (((paramh.Yyb.YKH == 6) || (paramh.Yyb.YKH == 9)) && ((paramh.Yyb.YOd == null) || (paramh.Yyb.YOd.length() <= 0)))
     {
-      ab.e("MicroMsg.NetSceneBindMobileForReg", "doScene getVerifyCode Error: " + paramf.wiw.wvG);
-      AppMethodBeat.o(123404);
+      Log.e("MicroMsg.NetSceneBindMobileForReg", "doScene getVerifyCode Error: " + paramh.Yyb.YOc);
+      AppMethodBeat.o(134121);
       return -1;
     }
-    int i = dispatch(parame, this.ftU, this);
-    AppMethodBeat.o(123404);
+    int i = dispatch(paramg, this.ouH, this);
+    AppMethodBeat.o(134121);
     return i;
   }
   
@@ -373,116 +421,118 @@ public final class a
   
   public final String getUsername()
   {
-    AppMethodBeat.i(123407);
-    String str = ((n.b)this.ftU.getRespObj()).wix.Username;
-    AppMethodBeat.o(123407);
+    AppMethodBeat.i(134124);
+    String str = ((n.b)this.ouH.getRespObj()).Yyc.Username;
+    AppMethodBeat.o(134124);
     return str;
   }
   
-  public final void ll(int paramInt)
+  public final void onGYNetEnd(final int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(123401);
-    ((n.a)this.ftU.getReqObj()).wiw.wvO = paramInt;
-    AppMethodBeat.o(123401);
-  }
-  
-  public final void lm(int paramInt)
-  {
-    AppMethodBeat.i(123402);
-    ((n.a)this.ftU.getReqObj()).wiw.wvP = paramInt;
-    AppMethodBeat.o(123402);
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(123405);
-    ab.i("MicroMsg.NetSceneBindMobileForReg", "dkidc onGYNetEnd  errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    paramArrayOfByte = (n.b)paramq.getRespObj();
+    AppMethodBeat.i(134122);
+    Log.i("MicroMsg.NetSceneBindMobileForReg", "dkidc onGYNetEnd  errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    paramArrayOfByte = (n.b)params.getRespObj();
     boolean bool;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.wix != null))
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.Yyc != null))
     {
-      paramInt1 = paramArrayOfByte.wix.wsa;
-      ab.i("MicroMsg.NetSceneBindMobileForReg", "summerauth mmtls bindopreg:%s", new Object[] { Integer.valueOf(paramInt1) });
-      g.RM();
-      g.RL().eHM.set(47, Integer.valueOf(paramInt1));
-      com.tencent.mm.network.e locale = g.RK().eHt.ftA;
-      if (locale != null)
+      paramInt1 = paramArrayOfByte.Yyc.YJy;
+      Log.i("MicroMsg.NetSceneBindMobileForReg", "summerauth mmtls bindopreg:%s", new Object[] { Integer.valueOf(paramInt1) });
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baE().mCE.B(47, Integer.valueOf(paramInt1));
+      g localg = com.tencent.mm.kernel.h.baD().mCm.oun;
+      if (localg != null)
       {
         if ((paramInt1 & 0x1) != 0) {
-          break label219;
+          break label218;
         }
         bool = true;
-        locale.cT(bool);
+        localg.hd(bool);
       }
     }
     for (;;)
     {
       if ((paramInt2 == 4) && (paramInt3 == -301))
       {
-        ax.a(true, paramArrayOfByte.wix.wvY, paramArrayOfByte.wix.wvZ, paramArrayOfByte.wix.wvX);
-        this.ftx -= 1;
-        if (this.ftx <= 0)
+        bj.a(true, paramArrayOfByte.Yyc.YOA, paramArrayOfByte.Yyc.YOB, paramArrayOfByte.Yyc.YOz, true, 0);
+        this.ouk -= 1;
+        if (this.ouk <= 0)
         {
           this.callback.onSceneEnd(3, -1, "", this);
-          AppMethodBeat.o(123405);
+          AppMethodBeat.o(134122);
           return;
-          label219:
+          label218:
           bool = false;
           break;
-          ab.i("MicroMsg.NetSceneBindMobileForReg", "summerauth mmtls bindopreg not set as ret:%s", new Object[] { paramArrayOfByte });
+          Log.i("MicroMsg.NetSceneBindMobileForReg", "summerauth mmtls bindopreg not set as ret:%s", new Object[] { paramArrayOfByte });
           continue;
         }
         doScene(dispatcher(), this.callback);
-        AppMethodBeat.o(123405);
+        AppMethodBeat.o(134122);
         return;
       }
     }
     if ((paramInt2 == 4) && (paramInt3 == -240))
     {
-      ab.i("MicroMsg.NetSceneBindMobileForReg", "summerauth bindopreg MM_ERR_AUTO_RETRY_REQUEST redirectCount:%s", new Object[] { Integer.valueOf(this.ftx) });
-      this.ftx -= 1;
-      if (this.ftx <= 0)
+      Log.i("MicroMsg.NetSceneBindMobileForReg", "summerauth bindopreg MM_ERR_AUTO_RETRY_REQUEST redirectCount:%s", new Object[] { Integer.valueOf(this.ouk) });
+      this.ouk -= 1;
+      if (this.ouk <= 0)
       {
         this.callback.onSceneEnd(3, -1, "", this);
-        AppMethodBeat.o(123405);
+        AppMethodBeat.o(134122);
         return;
       }
       doScene(dispatcher(), this.callback);
-      AppMethodBeat.o(123405);
+      AppMethodBeat.o(134122);
       return;
     }
     if ((paramInt2 == 4) && (paramInt3 == -102))
     {
-      paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      ab.d("MicroMsg.NetSceneBindMobileForReg", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      g.RO().ac(new a.1(this, paramInt1));
-      AppMethodBeat.o(123405);
+      paramInt1 = params.getReqObj().getRsaInfo().ver;
+      Log.d("MicroMsg.NetSceneBindMobileForReg", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(134113);
+          new o().doScene(a.a(a.this), new com.tencent.mm.am.h()
+          {
+            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, p paramAnonymous2p)
+            {
+              AppMethodBeat.i(134112);
+              Log.d("MicroMsg.NetSceneBindMobileForReg", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2p.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
+              {
+                a.b(a.this).onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", a.this);
+                AppMethodBeat.o(134112);
+                return;
+              }
+              a.this.doScene(a.c(a.this), a.b(a.this));
+              AppMethodBeat.o(134112);
+            }
+          });
+          AppMethodBeat.o(134113);
+        }
+      });
+      AppMethodBeat.o(134122);
       return;
     }
     if ((paramInt2 == 4) && ((paramInt3 == -305) || (paramInt3 == -306)))
     {
-      ab.i("MicroMsg.NetSceneBindMobileForReg", "summerauth bindmobilereg MM_ERR_CERT_SWITCH or MM_ERR_ECDHFAIL_ROLLBACK errCode:%d ver:%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(com.tencent.mm.protocal.f.whV) });
+      Log.i("MicroMsg.NetSceneBindMobileForReg", "summerauth bindmobilereg MM_ERR_CERT_SWITCH or MM_ERR_ECDHFAIL_ROLLBACK errCode:%d ver:%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(com.tencent.mm.protocal.f.iPL()) });
       doScene(dispatcher(), this.callback);
-      AppMethodBeat.o(123405);
+      AppMethodBeat.o(134122);
       return;
     }
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ab.e("MicroMsg.NetSceneBindMobileForReg", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+      Log.e("MicroMsg.NetSceneBindMobileForReg", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(123405);
+      AppMethodBeat.o(134122);
       return;
     }
-    ax.a(false, paramArrayOfByte.wix.wvY, paramArrayOfByte.wix.wvZ, paramArrayOfByte.wix.wvX);
+    bj.a(false, paramArrayOfByte.Yyc.YOA, paramArrayOfByte.Yyc.YOB, paramArrayOfByte.Yyc.YOz, false, 0);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(123405);
-  }
-  
-  public final void sQ(String paramString)
-  {
-    AppMethodBeat.i(123423);
-    ((n.a)this.ftU.getReqObj()).wiw.wvR = paramString;
-    AppMethodBeat.o(123423);
+    AppMethodBeat.o(134122);
   }
   
   public final int securityLimitCount()
@@ -490,16 +540,82 @@ public final class a
     return 3;
   }
   
-  public final m.b securityVerificationChecked(q paramq)
+  public final p.b securityVerificationChecked(com.tencent.mm.network.s params)
   {
-    return m.b.ftu;
+    return p.b.ouh;
   }
   
-  public final void setSecurityCheckError(m.a parama) {}
+  public final void setSecurityCheckError(p.a parama) {}
+  
+  public final void wd(int paramInt)
+  {
+    AppMethodBeat.i(134118);
+    ((n.a)this.ouH.getReqObj()).Yyb.YOk = paramInt;
+    AppMethodBeat.o(134118);
+  }
+  
+  public final void we(int paramInt)
+  {
+    AppMethodBeat.i(134119);
+    ((n.a)this.ouH.getReqObj()).Yyb.YOl = paramInt;
+    AppMethodBeat.o(134119);
+  }
+  
+  public final void wf(int paramInt)
+  {
+    AppMethodBeat.i(239623);
+    ((n.a)this.ouH.getReqObj()).Yyb.YOm = paramInt;
+    AppMethodBeat.o(239623);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract String bJf();
+  }
+  
+  public static final class b
+    extends n
+  {
+    private final n.a oDG;
+    private final n.b oDH;
+    
+    public b()
+    {
+      AppMethodBeat.i(134114);
+      this.oDG = new n.a();
+      this.oDH = new n.b();
+      AppMethodBeat.o(134114);
+    }
+    
+    public final int getOptions()
+    {
+      return 1;
+    }
+    
+    public final l.d getReqObjImp()
+    {
+      return this.oDG;
+    }
+    
+    public final l.e getRespObj()
+    {
+      return this.oDH;
+    }
+    
+    public final int getType()
+    {
+      return 145;
+    }
+    
+    public final String getUri()
+    {
+      return "/cgi-bin/micromsg-bin/bindopmobileforreg";
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelfriend.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.screendetect;
 
-import agjb;
-import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +17,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,26 +33,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aryl;
-import aryv;
-import asbd;
-import askc;
-import axza;
-import ayfq;
-import ayfr;
-import ayfy;
-import ayfz;
-import ayga;
-import aygb;
-import aygc;
-import aygf;
-import azkz;
-import bdal;
-import bdoo;
-import bhuw;
-import bjev;
-import bnle;
 import com.enrique.stackblur.StackBlurManager;
+import com.tencent.aelight.camera.qqstory.api.IAELaunchEditPic;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.Utils;
@@ -63,21 +42,34 @@ import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.forward.ForwardOptionBuilder;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.gallery.view.BigImageAdapter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import com.tencent.util.LiuHaiUtils;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.DragView;
 import com.tencent.widget.Gallery;
 import com.tencent.widget.GridView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import cooperation.qzone.QZoneShareManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -89,95 +81,100 @@ public class ScreenShotFragment
   extends PublicBaseFragment
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aryv jdField_a_of_type_Aryv;
-  private ayfq jdField_a_of_type_Ayfq;
-  private ayfr jdField_a_of_type_Ayfr = new ayfy(this);
-  private aygf jdField_a_of_type_Aygf;
-  protected bhuw a;
-  private ElasticHorScrView jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private DragView jdField_a_of_type_ComTencentWidgetDragView;
-  private Gallery jdField_a_of_type_ComTencentWidgetGallery;
-  private GridView jdField_a_of_type_ComTencentWidgetGridView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ScreenShotFragment.5(this);
-  private String jdField_a_of_type_JavaLangString;
-  private List<RecentBaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private boolean jdField_d_of_type_Boolean;
-  private TextView e;
-  
-  public ScreenShotFragment()
-  {
-    this.jdField_a_of_type_Bhuw = new aygb(this);
-  }
+  private int A;
+  private String B;
+  private ScreenShotAdapter.OnHolderItemClickListener C = new ScreenShotFragment.1(this);
+  private Bitmap D;
+  private RelativeLayout E;
+  private ForwardBaseOption F;
+  private int G;
+  private BaseActivity H;
+  private boolean I;
+  private boolean J;
+  private boolean K;
+  private boolean L;
+  private Runnable M = new ScreenShotFragment.5(this);
+  protected AdapterView.OnItemClickListener a = new ScreenShotFragment.4(this);
+  private ImageView b;
+  private ImageView c;
+  private TextView d;
+  private RecyclerView e;
+  private TextView f;
+  private TextView g;
+  private TextView h;
+  private TextView i;
+  private boolean j = false;
+  private QQAppInterface k;
+  private ScreenShotHelper l;
+  private List<RecentBaseData> m = new ArrayList();
+  private ScreenShotAdapter n;
+  private LinearLayoutManager o;
+  private View p;
+  private LinearLayout q;
+  private LinearLayout r;
+  private ImageView s;
+  private ElasticHorScrView t;
+  private GridView u;
+  private DragView v;
+  private Gallery w;
+  private Handler x = new Handler(Looper.getMainLooper());
+  private int y;
+  private int z;
   
   private Bitmap a(Bitmap paramBitmap, int paramInt)
   {
     Matrix localMatrix = new Matrix();
     localMatrix.setRotate(paramInt, paramBitmap.getWidth() / 2.0F, paramBitmap.getHeight() / 2.0F);
     float f2;
-    if (paramInt == 90) {
-      f2 = paramBitmap.getHeight();
-    }
-    for (float f1 = 0.0F;; f1 = paramBitmap.getWidth())
+    float f1;
+    if (paramInt == 90)
     {
-      Object localObject = new float[9];
-      localMatrix.getValues((float[])localObject);
-      localMatrix.postTranslate(f2 - localObject[2], f1 - localObject[5]);
-      localObject = Bitmap.createBitmap(paramBitmap.getHeight(), paramBitmap.getWidth(), Bitmap.Config.RGB_565);
-      Paint localPaint = new Paint();
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      localCanvas.drawBitmap(paramBitmap, localMatrix, localPaint);
-      localCanvas.setBitmap(null);
-      return localObject;
       f2 = paramBitmap.getHeight();
+      f1 = 0.0F;
     }
+    else
+    {
+      f2 = paramBitmap.getHeight();
+      f1 = paramBitmap.getWidth();
+    }
+    Object localObject = new float[9];
+    localMatrix.getValues((float[])localObject);
+    localMatrix.postTranslate(f2 - localObject[2], f1 - localObject[5]);
+    localObject = Bitmap.createBitmap(paramBitmap.getHeight(), paramBitmap.getWidth(), Bitmap.Config.RGB_565);
+    Paint localPaint = new Paint();
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    localCanvas.drawBitmap(paramBitmap, localMatrix, localPaint);
+    localCanvas.setBitmap(null);
+    return localObject;
   }
   
-  public static String a(String paramString, int paramInt)
+  protected static String a(String paramString, int paramInt)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (paramString != null)
     {
-      str = paramString;
-      if (paramString.length() > paramInt) {
-        str = paramString.substring(0, paramInt) + "\n" + paramString.substring(paramInt);
+      localObject = paramString;
+      if (paramString.length() > paramInt)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString.substring(0, paramInt));
+        ((StringBuilder)localObject).append("\n");
+        ((StringBuilder)localObject).append(paramString.substring(paramInt));
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    return str;
+    return localObject;
   }
   
   private void a(int paramInt)
   {
-    Object localObject3 = (RecentBaseData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject3 = (RecentBaseData)this.m.get(paramInt);
     if ((localObject3 instanceof RecentUserBaseData))
     {
-      b(((RecentBaseData)localObject3).a());
-      Object localObject1 = null;
-      if (getActivity().getIntent() != null) {
-        localObject1 = getActivity().getIntent();
+      b(((RecentBaseData)localObject3).getRecentUserType());
+      localObject1 = null;
+      if (getBaseActivity().getIntent() != null) {
+        localObject1 = getBaseActivity().getIntent();
       }
       Object localObject2 = localObject1;
       if (localObject1 == null) {
@@ -188,116 +185,117 @@ public class ScreenShotFragment
         QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment handleIconItemClick");
       }
       localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("uin", ((RecentUserBaseData)localObject1).a());
-      ((Bundle)localObject3).putString("troop_uin", ((RecentUserBaseData)localObject1).c());
-      ((Bundle)localObject3).putString("uinname", ((RecentUserBaseData)localObject1).b());
-      ((Bundle)localObject3).putInt("uintype", ((RecentUserBaseData)localObject1).a());
+      ((Bundle)localObject3).putString("uin", ((RecentUserBaseData)localObject1).getRecentUserUin());
+      ((Bundle)localObject3).putString("troop_uin", ((RecentUserBaseData)localObject1).g());
+      ((Bundle)localObject3).putString("uinname", ((RecentUserBaseData)localObject1).getTitleName());
+      ((Bundle)localObject3).putInt("uintype", ((RecentUserBaseData)localObject1).getRecentUserType());
       ((Bundle)localObject3).putBoolean("key_help_forward_pic", true);
-      ((Intent)localObject2).setData(Uri.parse(this.jdField_a_of_type_JavaLangString));
+      ((Intent)localObject2).setData(Uri.parse(this.B));
       ((Intent)localObject2).putExtra("forward_type", 1);
       ((Intent)localObject2).putExtra("key_share_from_screen_shot", true);
-      if (this.jdField_a_of_type_Aryv == null) {
-        this.jdField_a_of_type_Aryv = asbd.a((Intent)localObject2, getActivity().app, getActivity());
+      if (this.F == null) {
+        this.F = ForwardOptionBuilder.a((Intent)localObject2, getBaseActivity().app, getBaseActivity());
       }
-      if (((RecentUserBaseData)localObject1).a() == 6000)
+      if (((RecentUserBaseData)localObject1).getRecentUserType() == 6000)
       {
-        this.jdField_a_of_type_Aryv.a(aryl.f.intValue(), (Bundle)localObject3);
+        this.F.a(ForwardAbility.ForwardAbilityType.g.intValue(), (Bundle)localObject3);
         return;
       }
-      this.jdField_a_of_type_Aryv.a(aryl.a.intValue(), (Bundle)localObject3);
+      this.F.a(ForwardAbility.ForwardAbilityType.b.intValue(), (Bundle)localObject3);
       return;
     }
-    QLog.e("ScreenShotFragment", 2, "handleIconItemClick : position = " + paramInt + ", data is null!");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("handleIconItemClick : position = ");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append(", data is null!");
+    QLog.e("ScreenShotFragment", 2, ((StringBuilder)localObject1).toString());
   }
   
   private void a(Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_Aygf.a(paramActivity, paramQQAppInterface));
+    this.m.addAll(this.l.a(paramActivity, paramQQAppInterface));
   }
   
   private void a(View paramView)
   {
-    boolean bool = false;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376184));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376187));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376180));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376185));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    if (AppSetting.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131713975));
+    this.E = ((RelativeLayout)paramView.findViewById(2131445343));
+    this.E.setOnClickListener(this);
+    this.c = ((ImageView)paramView.findViewById(2131445346));
+    this.c.setOnClickListener(this);
+    this.q = ((LinearLayout)paramView.findViewById(2131445339));
+    this.b = ((ImageView)paramView.findViewById(2131445344));
+    this.b.setOnClickListener(this);
+    if (AppSetting.e) {
+      this.b.setContentDescription(HardCodeUtil.a(2131911055));
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376179));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376558));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365537));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378877));
-    Object localObject = this.jdField_c_of_type_AndroidWidgetTextView;
-    int i;
-    if ((this.jdField_b_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
+    this.e = ((RecyclerView)paramView.findViewById(2131445338));
+    this.d = ((TextView)paramView.findViewById(2131445753));
+    this.d.setOnClickListener(this);
+    this.f = ((TextView)paramView.findViewById(2131432302));
+    this.f.setOnClickListener(this);
+    this.g = ((TextView)paramView.findViewById(2131448574));
+    Object localObject = this.g;
+    int i1;
+    if ((!this.I) && (!this.L)) {
+      i1 = 8;
+    } else {
+      i1 = 0;
+    }
+    ViewUtils.setVisible((View)localObject, i1);
+    this.g.setOnClickListener(this);
+    this.h = ((TextView)paramView.findViewById(2131448589));
+    this.h.setOnClickListener(this);
+    this.i = ((TextView)paramView.findViewById(2131448672));
+    this.i.setOnClickListener(this);
+    this.v = ((DragView)paramView.findViewById(2131432158));
+    this.w = ((Gallery)paramView.findViewById(2131433934));
+    this.r = ((LinearLayout)paramView.findViewById(2131445340));
+    this.s = ((ImageView)this.p.findViewById(2131429228));
+    if (AppSetting.e) {
+      this.s.setContentDescription(HardCodeUtil.a(2131901576));
+    }
+    this.s.setOnClickListener(this);
+    this.t = ((ElasticHorScrView)paramView.findViewById(2131445785));
+    localObject = this.t;
+    boolean bool = true;
+    ((ElasticHorScrView)localObject).setMove(true);
+    this.u = ((GridView)paramView.findViewById(2131434386));
+    if (this.K)
     {
-      i = 0;
-      bdoo.b((View)localObject, i);
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378889));
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.e = ((TextView)paramView.findViewById(2131378941));
-      this.e.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentWidgetDragView = ((DragView)paramView.findViewById(2131365489));
-      this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)paramView.findViewById(2131367020));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376181));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363032));
-      if (AppSetting.jdField_c_of_type_Boolean) {
-        this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131713980));
+      this.c.setVisibility(8);
+      this.v.setVisibility(0);
+      this.w.setAdapter(new BigImageAdapter(Collections.singletonList(this.B)));
+      this.w.setSpacing(getResources().getDimensionPixelSize(2131297535));
+      this.w.setSelection(0);
+      this.v.setRatioModify(true);
+      this.v.setEnableDrag(false);
+      localObject = this.E;
+      ((RelativeLayout)localObject).setPadding(((RelativeLayout)localObject).getPaddingLeft(), this.E.getPaddingTop(), this.E.getPaddingRight(), 0);
+      if (CheckPermission.isHasStoragePermission(getBaseActivity())) {
+        j();
+      } else {
+        CheckPermission.requestStoragePermission(this.H, 1, new ScreenShotFragment.2(this));
       }
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)paramView.findViewById(2131376578));
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-      this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramView.findViewById(2131367308));
-      if (this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentWidgetDragView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(new askc(Collections.singletonList(this.jdField_a_of_type_JavaLangString)));
-        this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297026));
-        this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(0);
-        this.jdField_a_of_type_ComTencentWidgetDragView.setRatioModify(true);
-        this.jdField_a_of_type_ComTencentWidgetDragView.setEnableDrag(false);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingLeft(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingTop(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight(), 0);
-        if (!CheckPermission.isHasStoragePermission(getActivity())) {
-          break label715;
-        }
-        i();
-      }
+      ((TextView)paramView.findViewById(2131445341)).setText(HardCodeUtil.a(2131892599));
     }
-    for (;;)
-    {
-      ((TextView)paramView.findViewById(2131376182)).setText(alud.a(2131695331));
-      if (this.jdField_d_of_type_Boolean) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131719538));
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingLeft(), ImmersiveUtils.getStatusBarHeight(getActivity()) + 15, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingBottom());
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131720605));
-      localObject = getActivity();
-      Uri localUri = Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString));
-      TextView localTextView1 = this.e;
-      TextView localTextView2 = this.jdField_d_of_type_AndroidWidgetTextView;
-      if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-        bool = true;
-      }
-      aygf.a((Context)localObject, localUri, localTextView1, localTextView2, bool);
-      paramView.findViewById(2131367070).setVisibility(this.jdField_c_of_type_AndroidWidgetTextView.getVisibility());
-      paramView.findViewById(2131367071).setVisibility(this.jdField_d_of_type_AndroidWidgetTextView.getVisibility());
-      paramView.findViewById(2131367072).setVisibility(this.e.getVisibility());
-      h();
-      return;
-      i = 8;
-      break;
-      label715:
-      CheckPermission.requestStoragePermission(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, new ayfz(this));
+    if (this.L) {
+      this.g.setText(HardCodeUtil.a(2131916047));
     }
+    localObject = this.E;
+    ((RelativeLayout)localObject).setPadding(((RelativeLayout)localObject).getPaddingLeft(), ImmersiveUtils.getStatusBarHeight(getBaseActivity()) + 15, this.E.getPaddingRight(), this.E.getPaddingBottom());
+    this.b.setContentDescription(getString(2131917019));
+    localObject = getBaseActivity();
+    Uri localUri = Uri.fromFile(new File(this.B));
+    TextView localTextView1 = this.i;
+    TextView localTextView2 = this.h;
+    if (this.g.getVisibility() == 0) {
+      bool = false;
+    }
+    ScreenShotHelper.a((Context)localObject, localUri, localTextView1, localTextView2, bool);
+    paramView.findViewById(2131434055).setVisibility(this.g.getVisibility());
+    paramView.findViewById(2131434056).setVisibility(this.h.getVisibility());
+    paramView.findViewById(2131434057).setVisibility(this.i.getVisibility());
+    i();
   }
   
   private void a(BaseActivity paramBaseActivity, String paramString)
@@ -310,102 +308,7 @@ public class ScreenShotFragment
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
     localBundle.putStringArrayList("images", localArrayList);
-    bjev.a(paramBaseActivity, getActivity(), localBundle, null, 2);
-  }
-  
-  private void a(String paramString)
-  {
-    if ((getActivity() == null) || (getActivity().isFinishing())) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramString);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-      {
-        QLog.e("ScreenShotFragment", 1, "run: screenBitmap == null");
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ScreenShotFragment", 2, "screenBitmap : width = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + ", height = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      }
-    } while ((this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() <= 16) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() <= 16));
-    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    int i = j;
-    int k;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      QLog.d("ScreenShotFragment", 1, new Object[] { "long pic blur background change start, height is : ", Integer.valueOf(j) });
-      k = this.jdField_a_of_type_AndroidViewView.getHeight();
-      if ((k == 0) || (j <= k)) {
-        break label318;
-      }
-      i = k;
-    }
-    Canvas localCanvas;
-    for (;;)
-    {
-      QLog.d("ScreenShotFragment", 1, new Object[] { "long pic blur background change finish, height is : ", Integer.valueOf(i), " rootHeight is : ", Integer.valueOf(k) });
-      try
-      {
-        paramString = Bitmap.createScaledBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * 0.0625F), (int)(i * 0.0625F), false);
-        localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        localCanvas.drawColor(Color.parseColor("#33000000"));
-        localCanvas.setBitmap(null);
-        if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-          this.jdField_a_of_type_AndroidOsHandler.post(new ScreenShotFragment.6(this));
-        }
-        if (paramString == null)
-        {
-          QLog.e("ScreenShotFragment", 1, "run: scaledBitmap == null");
-          return;
-          label318:
-          i = j;
-          if (getActivity() == null) {
-            continue;
-          }
-          i = j;
-          if (j <= azkz.a(getActivity())) {
-            continue;
-          }
-          i = azkz.a(getActivity());
-        }
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        for (;;)
-        {
-          if (0 != 0) {
-            throw new NullPointerException();
-          }
-          QLog.e("ScreenShotFragment", 1, "create scale Bitmap error : out of memory");
-          paramString = null;
-        }
-        Bitmap localBitmap = new StackBlurManager(paramString).process(4);
-        if (localBitmap == null)
-        {
-          QLog.e("ScreenShotFragment", 1, "run: blured bitmap is null");
-          return;
-        }
-        localCanvas = new Canvas(paramString);
-        localCanvas.drawColor(0);
-        localCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
-        if (!"1103".equals(ThemeUtil.curThemeId)) {
-          break label487;
-        }
-      }
-    }
-    localCanvas.drawColor(Color.parseColor("#4DEBEDF5"));
-    for (;;)
-    {
-      localCanvas.setBitmap(null);
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidOsHandler.post(new ScreenShotFragment.7(this, paramString));
-      return;
-      label487:
-      localCanvas.drawColor(Color.parseColor("#7F03081A"));
-    }
+    QZoneShareManager.publishToQzone(paramBaseActivity, getBaseActivity(), localBundle, null, 2);
   }
   
   private void a(String paramString, Bitmap paramBitmap)
@@ -414,8 +317,8 @@ public class ScreenShotFragment
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment shareToWXFriend");
     }
     WXShareHelper.a().a(paramString, paramBitmap, 0, false);
-    if (getActivity() != null) {
-      getActivity().finish();
+    if (getBaseActivity() != null) {
+      getBaseActivity().finish();
     }
   }
   
@@ -423,65 +326,177 @@ public class ScreenShotFragment
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    }
-    do
-    {
+      this.q.setVisibility(0);
+      this.r.setVisibility(8);
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    } while (!this.jdField_c_of_type_Boolean);
-    aygf.a("0X800A9A8", "1", "");
+    }
+    this.q.setVisibility(8);
+    this.r.setVisibility(0);
+    if (this.K) {
+      ScreenShotHelper.a("0X800A9A8", "1", "");
+    }
   }
   
   private void b(int paramInt)
   {
-    String str = null;
-    switch (paramInt)
+    String str;
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      if ((this.jdField_c_of_type_Boolean) && (str != null)) {
-        aygf.a("0X800A9A7", str, "1");
+      if (paramInt != 1)
+      {
+        if (paramInt != 1006)
+        {
+          if (paramInt != 3000)
+          {
+            if (paramInt == 6000)
+            {
+              ScreenShotHelper.a("0X8009FEE", 5);
+              str = "3";
+              break label94;
+            }
+          }
+          else {
+            ScreenShotHelper.a("0X8009FEE", 3);
+          }
+        }
+        else {
+          ScreenShotHelper.a("0X8009FEE", 4);
+        }
+        str = null;
       }
-      return;
+      else
+      {
+        ScreenShotHelper.a("0X8009FEE", 2);
+        str = "2";
+      }
+    }
+    else
+    {
+      ScreenShotHelper.a("0X8009FEE", 1);
       str = "1";
-      aygf.a("0X8009FEE", 1);
-      continue;
-      str = "2";
-      aygf.a("0X8009FEE", 2);
-      continue;
-      aygf.a("0X8009FEE", 3);
-      continue;
-      aygf.a("0X8009FEE", 4);
-      continue;
-      str = "3";
-      aygf.a("0X8009FEE", 5);
+    }
+    label94:
+    if ((this.K) && (str != null)) {
+      ScreenShotHelper.a("0X800A9A7", str, "1");
     }
   }
   
   private static void b(Activity paramActivity, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment launchFriendPicker path = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ScreenShotShareFragment launchFriendPicker path = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ScreenShotFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = new Intent(paramActivity, ForwardRecentActivity.class);
+    Object localObject = new Intent(paramActivity, ForwardRecentActivity.class);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("key_help_forward_pic", true);
-    localIntent.putExtras(localBundle);
-    localIntent.putExtra("forward_type", 1);
-    localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
-    localIntent.putExtra("key_share_from_screen_shot", true);
-    localIntent.putExtra("key_share_from_screen_need_finish", true);
-    localIntent.setData(Uri.parse(paramString));
-    paramActivity.startActivityForResult(localIntent, 3);
+    ((Intent)localObject).putExtras(localBundle);
+    ((Intent)localObject).putExtra("forward_type", 1);
+    ((Intent)localObject).putExtra("key_allow_multiple_forward_from_limit", false);
+    ((Intent)localObject).putExtra("key_share_from_screen_shot", true);
+    ((Intent)localObject).putExtra("key_share_from_screen_need_finish", true);
+    ((Intent)localObject).setData(Uri.parse(paramString));
+    paramActivity.startActivityForResult((Intent)localObject, 3);
   }
   
   private void b(String paramString)
   {
-    axza.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString, 101);
+    int i1;
+    if (getBaseActivity() != null)
+    {
+      if (getBaseActivity().isFinishing()) {
+        return;
+      }
+      this.D = a(paramString);
+      if (this.D == null)
+      {
+        QLog.e("ScreenShotFragment", 1, "run: screenBitmap == null");
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("screenBitmap : width = ");
+        paramString.append(this.D.getWidth());
+        paramString.append(", height = ");
+        paramString.append(this.D.getHeight());
+        QLog.d("ScreenShotFragment", 2, paramString.toString());
+      }
+      if (this.D.getHeight() > 16)
+      {
+        if (this.D.getWidth() <= 16) {
+          return;
+        }
+        int i2 = this.D.getHeight();
+        i1 = i2;
+        if (this.K)
+        {
+          QLog.d("ScreenShotFragment", 1, new Object[] { "long pic blur background change start, height is : ", Integer.valueOf(i2) });
+          int i3 = this.p.getHeight();
+          if ((i3 != 0) && (i2 > i3))
+          {
+            i1 = i3;
+          }
+          else
+          {
+            i1 = i2;
+            if (getBaseActivity() != null)
+            {
+              i1 = i2;
+              if (i2 > ScreenUtil.getInstantScreenHeight(getBaseActivity())) {
+                i1 = ScreenUtil.getInstantScreenHeight(getBaseActivity());
+              }
+            }
+          }
+          QLog.d("ScreenShotFragment", 1, new Object[] { "long pic blur background change finish, height is : ", Integer.valueOf(i1), " rootHeight is : ", Integer.valueOf(i3) });
+        }
+      }
+    }
+    try
+    {
+      paramString = Bitmap.createScaledBitmap(this.D, (int)(this.D.getWidth() * 0.0625F), (int)(i1 * 0.0625F), false);
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      label298:
+      Object localObject;
+      Canvas localCanvas;
+      break label298;
+    }
+    QLog.e("ScreenShotFragment", 1, "create scale Bitmap error : out of memory");
+    paramString = null;
+    localObject = new Canvas(this.D);
+    ((Canvas)localObject).drawColor(Color.parseColor("#33000000"));
+    ((Canvas)localObject).setBitmap(null);
+    if (this.c != null) {
+      this.x.post(new ScreenShotFragment.6(this));
+    }
+    if (paramString == null)
+    {
+      QLog.e("ScreenShotFragment", 1, "run: scaledBitmap == null");
+      return;
+    }
+    localObject = new StackBlurManager(paramString).process(4);
+    if (localObject == null)
+    {
+      QLog.e("ScreenShotFragment", 1, "run: blured bitmap is null");
+      return;
+    }
+    localCanvas = new Canvas(paramString);
+    localCanvas.drawColor(0);
+    localCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, null);
+    if ("1103".equals(ThemeUtil.curThemeId)) {
+      localCanvas.drawColor(Color.parseColor("#4DEBEDF5"));
+    } else {
+      localCanvas.drawColor(Color.parseColor("#7F03081A"));
+    }
+    localCanvas.setBitmap(null);
+    if (this.p != null) {
+      this.x.post(new ScreenShotFragment.7(this, paramString));
+    }
   }
   
   private void b(String paramString, Bitmap paramBitmap)
@@ -490,328 +505,311 @@ public class ScreenShotFragment
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment shareToFriendCircle");
     }
     WXShareHelper.a().a(paramString, paramBitmap, 1, false);
-    if (getActivity() != null) {
-      getActivity().finish();
+    if (getBaseActivity() != null) {
+      getBaseActivity().finish();
     }
   }
   
-  private void f()
+  private void c(String paramString)
   {
-    this.jdField_b_of_type_Boolean = getArguments().getBoolean("is_aio_page_with_msg", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "handlerArg: mHasMsg = " + this.jdField_b_of_type_Boolean);
-    }
+    com.tencent.mobileqq.richmediabrowser.utils.AIOGalleryUtils.a(this.H, paramString, 101);
   }
   
   private void g()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment bindData");
-    }
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
-    }
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Ayfq = new ayfq(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, 0);
-    this.jdField_a_of_type_Ayfq.a(this.jdField_a_of_type_Ayfr);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ayfq);
-    this.jdField_a_of_type_Ayfq.a(this.jdField_a_of_type_JavaUtilList);
-    List localList = a()[0];
-    Object localObject1 = new TextPaint();
-    ((TextPaint)localObject1).setTextSize(getActivity().getResources().getDimensionPixelSize(2131298843));
-    localObject1 = new StaticLayout(a(a(localList), 6), (TextPaint)localObject1, this.jdField_a_of_type_Int, Layout.Alignment.ALIGN_CENTER, 1.0F, this.jdField_b_of_type_Int, true);
-    if (Build.VERSION.SDK_INT >= 9) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
-    }
-    Object localObject2 = localList.iterator();
-    int i = 0;
-    if (((Iterator)localObject2).hasNext())
+    Object localObject = getArguments();
+    this.I = ((Bundle)localObject).getBoolean("is_aio_page_with_msg", false);
+    this.J = ((Bundle)localObject).getBoolean("switch_bottom_layout", false);
+    if (QLog.isColorLevel())
     {
-      if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject2).next()).visibility != 0) {
-        break label408;
-      }
-      i += 1;
-    }
-    label408:
-    for (;;)
-    {
-      break;
-      int j = 20 + (this.jdField_a_of_type_Int + 20);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setColumnWidth(j);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(i);
-      localObject2 = this.jdField_a_of_type_ComTencentWidgetGridView.getLayoutParams();
-      this.jdField_a_of_type_ComTencentWidgetGridView.setPadding(16, this.jdField_a_of_type_ComTencentWidgetGridView.getPaddingTop(), 16, this.jdField_a_of_type_ComTencentWidgetGridView.getPaddingBottom());
-      ((ViewGroup.LayoutParams)localObject2).width = (j * i + 0 + 0);
-      i = this.jdField_a_of_type_Int;
-      j = this.jdField_c_of_type_Int;
-      ((ViewGroup.LayoutParams)localObject2).height = (((StaticLayout)localObject1).getHeight() + (i + j));
-      this.jdField_a_of_type_ComTencentWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(new aygc(getActivity(), localList));
-      this.jdField_a_of_type_ComTencentWidgetGridView.setSelector(new ColorDrawable(0));
-      this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_Bhuw);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handlerArg: mHasMsg = ");
+      ((StringBuilder)localObject).append(this.I);
+      ((StringBuilder)localObject).append(", mSwitchLayout = ");
+      ((StringBuilder)localObject).append(this.J);
+      QLog.d("ScreenShotFragment", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   private void h()
   {
-    int n = 1;
-    int i;
-    int j;
-    label27:
-    int k;
-    label39:
-    int m;
-    if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0)
-    {
-      i = 1;
-      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-        break label135;
-      }
-      j = 1;
-      if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-        break label140;
-      }
-      k = 1;
-      if (this.jdField_d_of_type_AndroidWidgetTextView.getVisibility() != 0) {
-        break label145;
-      }
-      m = 1;
-      label52:
-      if (this.e.getVisibility() != 0) {
-        break label151;
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment bindData");
+    }
+    if (this.B != null) {
+      ThreadManager.getSubThreadHandler().postDelayed(this.M, 100L);
+    }
+    this.o = new LinearLayoutManager(getBaseActivity());
+    this.o.setOrientation(0);
+    this.e.setLayoutManager(this.o);
+    this.n = new ScreenShotAdapter(getBaseActivity(), this.k, this.e, 0);
+    this.n.a(this.C);
+    this.e.setAdapter(this.n);
+    this.n.a(this.m);
+    List localList = c()[0];
+    Object localObject1 = new TextPaint();
+    ((TextPaint)localObject1).setTextSize(getBaseActivity().getResources().getDimensionPixelSize(2131299838));
+    localObject1 = new StaticLayout(a(a(localList), 6), (TextPaint)localObject1, this.y, Layout.Alignment.ALIGN_CENTER, 1.0F, this.z, true);
+    if (Build.VERSION.SDK_INT >= 9) {
+      this.t.setOverScrollMode(2);
+    }
+    Object localObject2 = localList.iterator();
+    int i1 = 0;
+    while (((Iterator)localObject2).hasNext()) {
+      if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject2).next()).visibility == 0) {
+        i1 += 1;
       }
     }
-    for (;;)
-    {
-      if (m + (0 + i + j + k) + n >= 4)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(12.0F);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(12.0F);
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(12.0F);
-        this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(12.0F);
-        this.e.setTextSize(12.0F);
-      }
-      return;
-      i = 0;
-      break;
-      label135:
-      j = 0;
-      break label27;
-      label140:
-      k = 0;
-      break label39;
-      label145:
-      m = 0;
-      break label52;
-      label151:
-      n = 0;
-    }
+    int i2 = this.y + 20 + 20;
+    this.u.setColumnWidth(i2);
+    this.u.setNumColumns(i1);
+    localObject2 = this.u.getLayoutParams();
+    GridView localGridView = this.u;
+    localGridView.setPadding(16, localGridView.getPaddingTop(), 16, this.u.getPaddingBottom());
+    ((ViewGroup.LayoutParams)localObject2).width = (i1 * i2 + 0 + 0);
+    ((ViewGroup.LayoutParams)localObject2).height = (this.y + this.A + ((StaticLayout)localObject1).getHeight());
+    this.u.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    this.u.setAdapter(new ScreenShotFragment.ActionSheetItemAdapter(getBaseActivity(), localList));
+    this.u.setSelector(new ColorDrawable(0));
+    this.u.setOnItemClickListener(this.a);
   }
   
   private void i()
   {
-    QQToast.a(getActivity(), 2131719321, 0).a();
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    agjb.a(getActivity(), localFile, Utils.Crc64String(localFile.getName()));
+    int i1 = this.d.getVisibility();
+    int i5 = 1;
+    if (i1 == 0) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    int i2;
+    if (this.f.getVisibility() == 0) {
+      i2 = 1;
+    } else {
+      i2 = 0;
+    }
+    int i3;
+    if (this.g.getVisibility() == 0) {
+      i3 = 1;
+    } else {
+      i3 = 0;
+    }
+    int i4;
+    if (this.h.getVisibility() == 0) {
+      i4 = 1;
+    } else {
+      i4 = 0;
+    }
+    if (this.i.getVisibility() != 0) {
+      i5 = 0;
+    }
+    if (i1 + 0 + i2 + i3 + i4 + i5 >= 4)
+    {
+      this.d.setTextSize(12.0F);
+      this.f.setTextSize(12.0F);
+      this.g.setTextSize(12.0F);
+      this.h.setTextSize(12.0F);
+      this.i.setTextSize(12.0F);
+    }
   }
   
   private void j()
   {
-    if (ImmersiveUtils.a(getActivity()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onResume current is liuhai style!");
-      }
-      bnle.c(getActivity());
-    }
+    QQToast.makeText(getBaseActivity(), 2131915871, 0).show();
+    File localFile = new File(this.B);
+    com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils.a(getBaseActivity(), localFile, Utils.Crc64String(localFile.getName()));
   }
   
   private void k()
   {
+    if (LiuHaiUtils.b(getBaseActivity()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onResume current is liuhai style!");
+      }
+      LiuHaiUtils.enableNotch(getBaseActivity());
+    }
+  }
+  
+  private void l()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment#screenShotLong");
     }
-    if (getActivity() != null)
+    if (getBaseActivity() != null)
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("click_long_screen_shot", true);
-      getActivity().setResult(-1, localIntent);
-      getActivity().finish();
+      getBaseActivity().setResult(-1, localIntent);
+      getBaseActivity().finish();
     }
   }
   
   public Bitmap a(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return null;
-      try
-      {
-        paramString = new File(paramString);
-        if (paramString.exists())
-        {
-          Object localObject = new BitmapFactory.Options();
-          ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-          bdal.a(paramString.getAbsolutePath(), (BitmapFactory.Options)localObject);
-          int i = ((BitmapFactory.Options)localObject).outHeight;
-          ((BitmapFactory.Options)localObject).inSampleSize = ((i - this.jdField_d_of_type_Int) / i);
-          ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-          ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
-          localObject = bdal.a(paramString.getAbsolutePath(), (BitmapFactory.Options)localObject).copy(Bitmap.Config.RGB_565, true);
-          paramString = (String)localObject;
-          if (((Bitmap)localObject).getWidth() > ((Bitmap)localObject).getHeight()) {
-            paramString = a((Bitmap)localObject, 90);
-          }
-        }
+    }
+    try
+    {
+      paramString = new File(paramString);
+      if (!paramString.exists()) {
+        return null;
       }
-      catch (OutOfMemoryError paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ScreenShotFragment", 2, "makeShareBitmap", paramString);
-          }
-          paramString = null;
-        }
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+      BitmapManager.a(paramString.getAbsolutePath(), (BitmapFactory.Options)localObject);
+      int i1 = ((BitmapFactory.Options)localObject).outHeight;
+      ((BitmapFactory.Options)localObject).inSampleSize = ((i1 - this.G) / i1);
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
+      localObject = BitmapManager.a(paramString.getAbsolutePath(), (BitmapFactory.Options)localObject).copy(Bitmap.Config.RGB_565, true);
+      paramString = (String)localObject;
+      if (((Bitmap)localObject).getWidth() > ((Bitmap)localObject).getHeight()) {
+        paramString = a((Bitmap)localObject, 90);
       }
-      catch (Throwable paramString)
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      if (QLog.isColorLevel())
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ScreenShotFragment", 2, "makeShareBitmap", paramString);
-          }
-          paramString = null;
-        }
+        QLog.d("ScreenShotFragment", 2, "makeShareBitmap", paramString);
+        return null;
       }
     }
-    return paramString;
+    catch (OutOfMemoryError paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotFragment", 2, "makeShareBitmap", paramString);
+      }
+    }
+    return null;
   }
   
   protected String a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    Object localObject = "";
-    int i = 0;
-    if (i < paramList.size())
+    Object localObject1 = "";
+    int i1 = 0;
+    while (i1 < paramList.size())
     {
-      String str = ((ShareActionSheetBuilder.ActionSheetItem)paramList.get(i)).label;
-      if (str.length() <= ((String)localObject).length()) {
-        break label55;
+      String str = ((ShareActionSheetBuilder.ActionSheetItem)paramList.get(i1)).label;
+      Object localObject2 = localObject1;
+      if (str.length() > ((String)localObject1).length()) {
+        localObject2 = str;
       }
-      localObject = str;
+      i1 += 1;
+      localObject1 = localObject2;
     }
-    label55:
-    for (;;)
-    {
-      i += 1;
-      break;
-      return localObject;
-    }
+    return localObject1;
   }
   
   public void a()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null)
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity != null)
     {
-      localFragmentActivity.finish();
-      localFragmentActivity.overridePendingTransition(0, 0);
+      localBaseActivity.finish();
+      localBaseActivity.overridePendingTransition(0, 0);
       if (QLog.isColorLevel()) {
         QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment finishActivity, because app is null!");
       }
     }
   }
   
-  public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  public void b()
+  {
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity != null)
+    {
+      localBaseActivity.finish();
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment finishActivity");
+      }
+      localBaseActivity.overridePendingTransition(0, 0);
+    }
+    if (this.K) {
+      ScreenShotHelper.a("0X800A9AD", "1", "");
+    }
+  }
+  
+  public List<ShareActionSheetBuilder.ActionSheetItem>[] c()
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131696873);
-    localActionSheetItem.icon = 2130838917;
+    localActionSheetItem.label = getBaseActivity().getString(2131894171);
+    localActionSheetItem.icon = 2130839221;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131696886);
-    localActionSheetItem.icon = 2130838918;
+    localActionSheetItem.label = getBaseActivity().getString(2131894185);
+    localActionSheetItem.icon = 2130839222;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131696893);
-    localActionSheetItem.icon = 2130838921;
+    localActionSheetItem.label = getBaseActivity().getString(2131894192);
+    localActionSheetItem.icon = 2130839225;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131696876);
-    localActionSheetItem.icon = 2130838915;
+    localActionSheetItem.label = getBaseActivity().getString(2131894174);
+    localActionSheetItem.icon = 2130839219;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = getActivity().getString(2131692997);
-    localActionSheetItem.icon = 2130839739;
+    localActionSheetItem.label = getBaseActivity().getString(2131889842);
+    localActionSheetItem.icon = 2130840469;
     localActionSheetItem.action = 50;
+    localActionSheetItem.argus = "";
+    localArrayList.add(localActionSheetItem);
+    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
+    localActionSheetItem.label = getBaseActivity().getString(2131890810);
+    localActionSheetItem.icon = 2130840475;
+    localActionSheetItem.action = 39;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     return (List[])new ArrayList[] { localArrayList };
   }
   
-  public void b()
-  {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null)
-    {
-      localFragmentActivity.finish();
-      if (QLog.isColorLevel()) {
-        QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment finishActivity");
-      }
-      localFragmentActivity.overridePendingTransition(0, 0);
-    }
-    if (this.jdField_c_of_type_Boolean) {
-      aygf.a("0X800A9AD", "1", "");
-    }
-  }
-  
-  public void c()
+  public void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment exitScreenShotScreen");
     }
-    if (getActivity() != null) {
-      getActivity().finish();
+    if (getBaseActivity() != null) {
+      getBaseActivity().finish();
     }
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment startEdit");
-    }
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return;
-    }
-    Intent localIntent = EditPicActivity.a(getActivity(), this.jdField_a_of_type_JavaLangString, true, true, true, true, true, false, false, false, 2, 122, 0, false, null);
-    getActivity().startActivityForResult(localIntent, 1);
   }
   
   public void e()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment startEdit");
+    }
+    if (this.B == null) {
+      return;
+    }
+    Intent localIntent = ((IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class)).startEditPic(getBaseActivity(), this.B, true, true, true, true, true, false, false, false, 2, 122, 0, false, null);
+    getBaseActivity().startActivityForResult(localIntent, 1);
+  }
+  
+  public void f()
+  {
     QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment startCrop");
-    if (this.jdField_a_of_type_JavaLangString == null)
+    if (this.B == null)
     {
       QLog.e("ScreenShotFragment", 1, "crop error : mCurrentPath is null");
       return;
     }
-    Intent localIntent = EditPicActivity.a(getActivity(), this.jdField_a_of_type_JavaLangString, true, true, true, true, true, false, false, false, 2, 133, 0, false, null);
-    getActivity().startActivityForResult(localIntent, 5);
+    Intent localIntent = ((IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class)).startEditPic(getBaseActivity(), this.B, true, true, true, true, true, false, false, false, 2, 133, 0, false, null);
+    getBaseActivity().startActivityForResult(localIntent, 5);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -828,27 +826,32 @@ public class ScreenShotFragment
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, new Object[] { "ScreenShotShareFragment onActivityResult requestCode = ", paramInt1 + ", resultCode = " + paramInt2 });
-    }
-    if (paramInt1 == 1) {
-      c();
-    }
-    do
+    if (QLog.isColorLevel())
     {
+      paramIntent = new StringBuilder();
+      paramIntent.append(paramInt1);
+      paramIntent.append(", resultCode = ");
+      paramIntent.append(paramInt2);
+      QLog.d("ScreenShotFragment", 2, new Object[] { "ScreenShotShareFragment onActivityResult requestCode = ", paramIntent.toString() });
+    }
+    if (paramInt1 == 1)
+    {
+      d();
       return;
-      if (paramInt1 == 2)
-      {
-        c();
-        return;
-      }
-      if (paramInt1 == 3)
-      {
-        c();
-        return;
-      }
-    } while (paramInt1 != 101);
-    c();
+    }
+    if (paramInt1 == 2)
+    {
+      d();
+      return;
+    }
+    if (paramInt1 == 3)
+    {
+      d();
+      return;
+    }
+    if (paramInt1 == 101) {
+      d();
+    }
   }
   
   public boolean onBackEvent()
@@ -858,57 +861,61 @@ public class ScreenShotFragment
   
   public void onClick(View paramView)
   {
+    Intent localIntent;
     switch (paramView.getId())
     {
     default: 
-    case 2131376185: 
-    case 2131376187: 
-    case 2131376558: 
-    case 2131365537: 
-    case 2131378877: 
-      do
-      {
-        return;
-        b();
-        return;
-        a(false);
-        aygf.a("0X8009FEF", 0);
-        return;
-        if (this.jdField_c_of_type_Boolean)
-        {
-          e();
-          aygf.a("0X800A9AA", "1", "");
-          return;
-        }
-        d();
-        aygf.a("0X8009FF4", 0);
-        return;
-        k();
-        if (this.jdField_b_of_type_Boolean) {
-          aygf.a("0X800A8BD", 0);
-        }
-      } while (!this.jdField_d_of_type_Boolean);
-      aygf.a("0X800A9A5", "1", "");
-      return;
-    case 2131363032: 
-      a(true);
-      return;
-    case 2131376184: 
+      break;
+    case 2131448672: 
+      localIntent = new Intent();
+      localIntent.putExtra("preResult", (String)this.i.getTag());
+      ScreenShotHelper.a(getBaseActivity(), this.B, 1, localIntent);
+      ScreenShotHelper.a("0X800AC93", 0);
+      this.H.finish();
+      break;
+    case 2131448589: 
+      localIntent = new Intent();
+      localIntent.putExtra("preResult", (String)this.h.getTag());
+      ScreenShotHelper.a(getBaseActivity(), this.B, 2, localIntent);
+      ScreenShotHelper.a("0X800AC94", 0);
+      this.j = true;
+      break;
+    case 2131448574: 
+      l();
+      if (this.I) {
+        ScreenShotHelper.a("0X800A8BD", 0);
+      }
+      if (this.L) {
+        ScreenShotHelper.a("0X800A9A5", "1", "");
+      }
+      break;
+    case 2131445753: 
+      a(false);
+      ScreenShotHelper.a("0X8009FEF", 0);
+      break;
+    case 2131445344: 
+    case 2131445346: 
       b();
-      return;
-    case 2131378889: 
-      paramView = new Intent();
-      paramView.putExtra("preResult", (String)this.jdField_d_of_type_AndroidWidgetTextView.getTag());
-      aygf.a(getActivity(), this.jdField_a_of_type_JavaLangString, 2, paramView);
-      aygf.a("0X800AC94", 0);
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      break;
+    case 2131445343: 
+      b();
+      break;
+    case 2131432302: 
+      if (this.K)
+      {
+        f();
+        ScreenShotHelper.a("0X800A9AA", "1", "");
+      }
+      else
+      {
+        e();
+        ScreenShotHelper.a("0X8009FF4", 0);
+      }
+      break;
+    case 2131429228: 
+      a(true);
     }
-    paramView = new Intent();
-    paramView.putExtra("preResult", (String)this.e.getTag());
-    aygf.a(getActivity(), this.jdField_a_of_type_JavaLangString, 1, paramView);
-    aygf.a("0X800AC93", 0);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -917,31 +924,31 @@ public class ScreenShotFragment
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onCreate");
     }
-    if (getActivity() == null) {
+    if (getBaseActivity() == null) {
       QLog.e("ScreenShotFragment", 2, "ScreenShotShareFragment onCreate activity has gone!");
     }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
-    this.jdField_a_of_type_Aygf = new aygf();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      a();
-    }
-    do
+    this.H = getBaseActivity();
+    this.l = new ScreenShotHelper();
+    this.k = getBaseActivity().app;
+    if (this.k == null)
     {
-      do
-      {
-        return;
-        a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.jdField_a_of_type_Int = getActivity().getResources().getDimensionPixelSize(2131296685);
-        this.jdField_b_of_type_Int = getActivity().getResources().getDimensionPixelOffset(2131296688);
-        this.jdField_c_of_type_Int = getActivity().getResources().getDimensionPixelOffset(2131296687);
-        paramBundle = getActivity().getIntent();
-      } while (paramBundle == null);
-      this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("screen_path");
-      this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("is_web_screen_long_shot", false);
-      this.jdField_d_of_type_Boolean = paramBundle.getBooleanExtra("is_screen_shot_from_web", false);
-    } while (!this.jdField_c_of_type_Boolean);
-    aygf.a("0X800A9A6", "1", "");
+      a();
+      return;
+    }
+    a(getBaseActivity(), this.k);
+    this.y = getBaseActivity().getResources().getDimensionPixelSize(2131297127);
+    this.z = getBaseActivity().getResources().getDimensionPixelOffset(2131297130);
+    this.A = getBaseActivity().getResources().getDimensionPixelOffset(2131297129);
+    paramBundle = getBaseActivity().getIntent();
+    if (paramBundle != null)
+    {
+      this.B = paramBundle.getStringExtra("screen_path");
+      this.K = paramBundle.getBooleanExtra("is_web_screen_long_shot", false);
+      this.L = paramBundle.getBooleanExtra("is_screen_shot_from_web", false);
+      if (this.K) {
+        ScreenShotHelper.a("0X800A9A6", "1", "");
+      }
+    }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -949,13 +956,16 @@ public class ScreenShotFragment
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onCreateView");
     }
-    f();
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561254, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#aa000000"));
-    this.jdField_d_of_type_Int = getActivity().getResources().getDimensionPixelSize(2131298693);
-    a(this.jdField_a_of_type_AndroidViewView);
     g();
-    return this.jdField_a_of_type_AndroidViewView;
+    this.p = paramLayoutInflater.inflate(2131627771, paramViewGroup, false);
+    this.p.setBackgroundColor(Color.parseColor("#aa000000"));
+    this.G = getBaseActivity().getResources().getDimensionPixelSize(2131299676);
+    a(this.p);
+    h();
+    a(this.J ^ true);
+    paramLayoutInflater = this.p;
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -964,16 +974,18 @@ public class ScreenShotFragment
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onDestroy");
     }
-    if (this.jdField_a_of_type_Ayfq != null) {
-      this.jdField_a_of_type_Ayfq.a();
+    Object localObject = this.n;
+    if (localObject != null) {
+      ((ScreenShotAdapter)localObject).a();
     }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if (this.M != null) {
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.M);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    localObject = this.D;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      ((Bitmap)localObject).recycle();
+      this.D = null;
     }
   }
   
@@ -991,30 +1003,30 @@ public class ScreenShotFragment
     if (QLog.isColorLevel()) {
       QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onResume");
     }
-    FragmentActivity localFragmentActivity = getActivity();
-    SystemBarCompact localSystemBarCompact = localFragmentActivity.mSystemBarComp;
+    BaseActivity localBaseActivity = getBaseActivity();
+    SystemBarCompact localSystemBarCompact = localBaseActivity.mSystemBarComp;
     if (localSystemBarCompact != null) {
       localSystemBarCompact.setgetStatusBarVisible(false, 0);
     }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      ViewCompat.setOnApplyWindowInsetsListener(localFragmentActivity.getWindow().getDecorView(), new ayga(this));
+      ViewCompat.setOnApplyWindowInsetsListener(localBaseActivity.getWindow().getDecorView(), new ScreenShotFragment.3(this));
       return;
     }
-    j();
+    k();
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    if (this.j) {
+      this.H.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotFragment
  * JD-Core Version:    0.7.0.1
  */

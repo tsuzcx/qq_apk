@@ -11,18 +11,13 @@ import android.view.ViewGroup;
 public class MultiLineLayout
   extends ViewGroup
 {
-  public static boolean a;
-  private float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  private int b;
+  public static boolean a = true;
+  int b;
   private int c;
   private int d;
-  private int e = -1;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
+  private int e = 0;
+  private int f = -1;
+  private float g;
   
   public MultiLineLayout(Context paramContext)
   {
@@ -43,170 +38,152 @@ public class MultiLineLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ((int)(5.0F * this.jdField_a_of_type_Float));
+    this.g = paramContext.getResources().getDisplayMetrics().density;
+    this.b = ((int)(this.g * 5.0F));
+  }
+  
+  public int getLineCount()
+  {
+    return this.e;
+  }
+  
+  public int getShowLine()
+  {
+    return this.f;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt3 = 0;
-    paramInt2 = 0;
-    int k = getChildCount();
-    label28:
-    View localView;
-    int m;
-    int i;
-    if (k > 0)
-    {
+    int j = getChildCount();
+    if (j > 0) {
       paramInt1 = 1;
-      this.d = paramInt1;
-      paramInt4 = 0;
+    } else {
       paramInt1 = 0;
-      if (paramInt4 >= k) {
-        break label289;
-      }
-      localView = getChildAt(paramInt4);
-      if (((this.e != -1) && (this.d > this.e)) || (localView.getVisibility() == 8)) {
-        break label271;
-      }
-      localView.setVisibility(0);
-      m = localView.getMeasuredWidth();
-      i = localView.getMeasuredHeight();
-      int j = paramInt3 + m + this.jdField_a_of_type_Int;
-      if (j > this.b) {
-        break label184;
-      }
-      localView.layout(paramInt3, paramInt1, m + paramInt3, paramInt1 + i);
-      i = (int)Math.max(paramInt2, i + 5.0F * this.jdField_a_of_type_Float);
-      paramInt3 = j;
-      paramInt2 = paramInt1;
-      paramInt1 = i;
     }
-    for (;;)
+    this.e = paramInt1;
+    paramInt3 = 0;
+    paramInt1 = 0;
+    paramInt2 = 0;
+    paramInt4 = 0;
+    while (paramInt3 < j)
     {
-      i = paramInt4 + 1;
-      paramInt4 = paramInt1;
-      paramInt1 = paramInt2;
-      paramInt2 = paramInt4;
-      paramInt4 = i;
-      break label28;
-      paramInt1 = 0;
-      break;
-      label184:
-      this.d += 1;
-      if ((this.e == -1) || (this.d <= this.e))
+      View localView = getChildAt(paramInt3);
+      int i = this.f;
+      if (((i == -1) || (this.e <= i)) && (localView.getVisibility() != 8))
       {
-        paramInt1 += paramInt2;
-        localView.layout(0, paramInt1, m, paramInt1 + i);
+        localView.setVisibility(0);
+        int m = localView.getMeasuredWidth();
+        int k = localView.getMeasuredHeight();
+        int n = paramInt4 + m;
+        i = this.b + n;
+        float f1;
+        if (i <= this.c)
+        {
+          localView.layout(paramInt4, paramInt1, n, paramInt1 + k);
+          f1 = Math.max(paramInt2, k + this.g * 5.0F);
+          paramInt2 = i;
+        }
+        for (;;)
+        {
+          i = (int)f1;
+          break;
+          this.e += 1;
+          paramInt4 = this.f;
+          if ((paramInt4 != -1) && (this.e > paramInt4))
+          {
+            localView.setVisibility(8);
+          }
+          else
+          {
+            paramInt1 += paramInt2;
+            localView.layout(0, paramInt1, m, paramInt1 + k);
+          }
+          paramInt2 = this.b + m;
+          f1 = k + this.g * 5.0F;
+        }
+        paramInt4 = paramInt2;
+        paramInt2 = i;
       }
-      for (;;)
+      else
       {
-        paramInt3 = this.jdField_a_of_type_Int + m;
-        i = (int)(i + 5.0F * this.jdField_a_of_type_Float);
-        paramInt2 = paramInt1;
-        paramInt1 = i;
-        break;
         localView.setVisibility(8);
       }
-      label271:
-      localView.setVisibility(8);
-      i = paramInt1;
-      paramInt1 = paramInt2;
-      paramInt2 = i;
+      paramInt3 += 1;
     }
-    label289:
-    if (this.c == 0)
-    {
-      this.c = (paramInt1 + paramInt2);
-      return;
-    }
-    this.c = (paramInt1 + paramInt2);
+    this.d = (paramInt1 + paramInt2);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int m = 0;
-    this.b = View.MeasureSpec.getSize(paramInt1);
+    this.c = View.MeasureSpec.getSize(paramInt1);
     measureChildren(paramInt1, paramInt2);
     int i1 = getChildCount();
-    int k;
-    int j;
-    int i;
-    label48:
-    View localView;
-    if (i1 > 0)
-    {
+    int k = 0;
+    if (i1 > 0) {
       paramInt1 = 1;
-      this.d = paramInt1;
-      k = 0;
-      j = 0;
+    } else {
       paramInt1 = 0;
-      i = 0;
-      paramInt2 = m;
-      if (k >= i1) {
-        break label249;
-      }
-      localView = getChildAt(k);
-      if (localView.getVisibility() != 8) {
-        break label111;
-      }
-      m = paramInt1;
-      paramInt1 = paramInt2;
-      paramInt2 = i;
-      i = m;
     }
-    label111:
-    int n;
-    for (;;)
+    this.e = paramInt1;
+    paramInt1 = 0;
+    int j = 0;
+    paramInt2 = 0;
+    int i = 0;
+    while (k < i1)
     {
-      m = k + 1;
-      k = i;
-      i = paramInt2;
-      paramInt2 = paramInt1;
-      paramInt1 = k;
-      k = m;
-      break label48;
-      paramInt1 = 0;
-      break;
-      m = localView.getMeasuredHeight();
-      if ((this.e != -1) && (this.d > this.e)) {
-        break label249;
+      View localView = getChildAt(k);
+      if (localView.getVisibility() != 8)
+      {
+        int m = localView.getMeasuredHeight();
+        int n = this.f;
+        if ((n != -1) && (this.e > n)) {
+          break;
+        }
+        j = localView.getMeasuredWidth();
+        n = paramInt2 + j + this.b;
+        if (n <= this.c)
+        {
+          i = (int)Math.max(i, m + this.g * 5.0F);
+          j = paramInt1;
+          paramInt2 = paramInt1;
+          paramInt1 = n;
+        }
+        else
+        {
+          this.e += 1;
+          n = this.f;
+          if (n != -1)
+          {
+            paramInt2 = paramInt1;
+            if (this.e > n) {}
+          }
+          else
+          {
+            paramInt2 = paramInt1 + i;
+          }
+          paramInt1 = this.b + j;
+          j = paramInt2;
+          i = m;
+        }
+        n = paramInt2 + m;
+        m = j;
+        paramInt2 = paramInt1;
+        j = n;
+        paramInt1 = m;
       }
-      n = localView.getMeasuredWidth();
-      paramInt2 = this.jdField_a_of_type_Int + (i + n);
-      if (paramInt2 > this.b) {
-        break label192;
-      }
-      j = (int)Math.max(j, m + 5.0F * this.jdField_a_of_type_Float);
-      i = paramInt1;
-      paramInt1 += m;
+      k += 1;
     }
-    label192:
-    this.d += 1;
-    if ((this.e == -1) || (this.d <= this.e)) {
-      paramInt1 += j;
-    }
-    for (paramInt2 = paramInt1;; paramInt2 = paramInt1)
-    {
-      n = this.jdField_a_of_type_Int + n;
-      j = m;
-      i = paramInt2;
-      paramInt2 = n;
-      break;
-      label249:
-      setMeasuredDimension(this.b, paramInt2);
-      return;
-    }
+    setMeasuredDimension(this.c, j);
   }
   
   public void setShowLine(int paramInt)
   {
-    this.e = paramInt;
+    this.f = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.MultiLineLayout
  * JD-Core Version:    0.7.0.1
  */

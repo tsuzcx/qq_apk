@@ -64,125 +64,128 @@ public final class c
     //   4: aload_0
     //   5: getfield 29	com/tencent/hlyyb/downloader/e/a/c:a	Lcom/tencent/hlyyb/downloader/e/a/d;
     //   8: invokeinterface 61 1 0
-    //   13: istore 4
-    //   15: invokestatic 56	android/os/SystemClock:elapsedRealtime	()J
-    //   18: lload_2
-    //   19: lsub
-    //   20: lstore_2
-    //   21: iload 4
-    //   23: ifne +57 -> 80
-    //   26: getstatic 66	com/tencent/hlyyb/downloader/a/a:d	I
-    //   29: istore_1
-    //   30: lload_2
-    //   31: lconst_0
-    //   32: lcmp
-    //   33: ifle +47 -> 80
+    //   13: istore 6
+    //   15: goto +6 -> 21
+    //   18: iconst_0
+    //   19: istore 6
+    //   21: invokestatic 56	android/os/SystemClock:elapsedRealtime	()J
+    //   24: lload_2
+    //   25: lsub
+    //   26: lstore_2
+    //   27: iload 6
+    //   29: ifne +82 -> 111
+    //   32: getstatic 66	com/tencent/hlyyb/downloader/a/a:d	I
+    //   35: istore_1
     //   36: lload_2
-    //   37: iload_1
-    //   38: i2l
-    //   39: lcmp
-    //   40: ifge +40 -> 80
-    //   43: iload_1
-    //   44: i2l
-    //   45: lload_2
-    //   46: lsub
-    //   47: l2i
-    //   48: istore_1
-    //   49: aload_0
-    //   50: iconst_1
-    //   51: putfield 27	com/tencent/hlyyb/downloader/e/a/c:e	Z
-    //   54: aload_0
-    //   55: getfield 25	com/tencent/hlyyb/downloader/e/a/c:d	Ljava/lang/Object;
-    //   58: astore 5
-    //   60: aload 5
-    //   62: monitorenter
-    //   63: aload_0
-    //   64: getfield 25	com/tencent/hlyyb/downloader/e/a/c:d	Ljava/lang/Object;
-    //   67: iload_1
-    //   68: i2l
-    //   69: invokevirtual 70	java/lang/Object:wait	(J)V
-    //   72: aload 5
-    //   74: monitorexit
-    //   75: aload_0
-    //   76: iconst_0
-    //   77: putfield 27	com/tencent/hlyyb/downloader/e/a/c:e	Z
-    //   80: aload_0
-    //   81: getfield 23	com/tencent/hlyyb/downloader/e/a/c:c	Ljava/lang/Object;
-    //   84: astore 5
-    //   86: aload 5
-    //   88: monitorenter
-    //   89: aload_0
-    //   90: getfield 21	com/tencent/hlyyb/downloader/e/a/c:b	Z
-    //   93: istore 4
-    //   95: iload 4
-    //   97: ifne +10 -> 107
-    //   100: aload_0
-    //   101: getfield 23	com/tencent/hlyyb/downloader/e/a/c:c	Ljava/lang/Object;
-    //   104: invokevirtual 72	java/lang/Object:wait	()V
-    //   107: aload 5
-    //   109: monitorexit
-    //   110: goto -110 -> 0
-    //   113: astore 6
-    //   115: aload 5
-    //   117: monitorexit
-    //   118: aload 6
-    //   120: athrow
-    //   121: astore 5
-    //   123: iconst_0
-    //   124: istore 4
-    //   126: goto -111 -> 15
-    //   129: astore 6
-    //   131: aload 5
-    //   133: monitorexit
-    //   134: aload 6
-    //   136: athrow
-    //   137: astore 5
-    //   139: aload_0
-    //   140: iconst_0
-    //   141: putfield 27	com/tencent/hlyyb/downloader/e/a/c:e	Z
-    //   144: goto -64 -> 80
-    //   147: astore 5
-    //   149: aload_0
-    //   150: iconst_0
-    //   151: putfield 27	com/tencent/hlyyb/downloader/e/a/c:e	Z
-    //   154: aload 5
-    //   156: athrow
-    //   157: astore 6
-    //   159: aload 6
-    //   161: invokevirtual 75	java/lang/InterruptedException:printStackTrace	()V
-    //   164: goto -57 -> 107
+    //   37: lconst_0
+    //   38: lcmp
+    //   39: ifle +72 -> 111
+    //   42: iload_1
+    //   43: i2l
+    //   44: lstore 4
+    //   46: lload_2
+    //   47: lload 4
+    //   49: lcmp
+    //   50: ifge +61 -> 111
+    //   53: lload 4
+    //   55: lload_2
+    //   56: lsub
+    //   57: l2i
+    //   58: istore_1
+    //   59: aload_0
+    //   60: iconst_1
+    //   61: putfield 27	com/tencent/hlyyb/downloader/e/a/c:e	Z
+    //   64: aload_0
+    //   65: getfield 25	com/tencent/hlyyb/downloader/e/a/c:d	Ljava/lang/Object;
+    //   68: astore 7
+    //   70: aload 7
+    //   72: monitorenter
+    //   73: aload_0
+    //   74: getfield 25	com/tencent/hlyyb/downloader/e/a/c:d	Ljava/lang/Object;
+    //   77: iload_1
+    //   78: i2l
+    //   79: invokevirtual 70	java/lang/Object:wait	(J)V
+    //   82: aload 7
+    //   84: monitorexit
+    //   85: goto +21 -> 106
+    //   88: astore 8
+    //   90: aload 7
+    //   92: monitorexit
+    //   93: aload 8
+    //   95: athrow
+    //   96: astore 7
+    //   98: aload_0
+    //   99: iconst_0
+    //   100: putfield 27	com/tencent/hlyyb/downloader/e/a/c:e	Z
+    //   103: aload 7
+    //   105: athrow
+    //   106: aload_0
+    //   107: iconst_0
+    //   108: putfield 27	com/tencent/hlyyb/downloader/e/a/c:e	Z
+    //   111: aload_0
+    //   112: getfield 23	com/tencent/hlyyb/downloader/e/a/c:c	Ljava/lang/Object;
+    //   115: astore 7
+    //   117: aload 7
+    //   119: monitorenter
+    //   120: aload_0
+    //   121: getfield 21	com/tencent/hlyyb/downloader/e/a/c:b	Z
+    //   124: istore 6
+    //   126: iload 6
+    //   128: ifne +20 -> 148
+    //   131: aload_0
+    //   132: getfield 23	com/tencent/hlyyb/downloader/e/a/c:c	Ljava/lang/Object;
+    //   135: invokevirtual 72	java/lang/Object:wait	()V
+    //   138: goto +10 -> 148
+    //   141: astore 8
+    //   143: aload 8
+    //   145: invokevirtual 75	java/lang/InterruptedException:printStackTrace	()V
+    //   148: aload 7
+    //   150: monitorexit
+    //   151: goto -151 -> 0
+    //   154: astore 8
+    //   156: aload 7
+    //   158: monitorexit
+    //   159: goto +6 -> 165
+    //   162: aload 8
+    //   164: athrow
+    //   165: goto -3 -> 162
+    //   168: astore 7
+    //   170: goto -152 -> 18
+    //   173: astore 7
+    //   175: goto -69 -> 106
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	167	0	this	c
-    //   29	39	1	i	int
-    //   3	43	2	l	long
-    //   13	112	4	bool	boolean
-    //   121	11	5	localThrowable	java.lang.Throwable
-    //   137	1	5	localException	Exception
-    //   147	8	5	localObject2	Object
-    //   113	6	6	localObject3	Object
-    //   129	6	6	localObject4	Object
-    //   157	3	6	localInterruptedException	java.lang.InterruptedException
+    //   0	178	0	this	c
+    //   35	43	1	i	int
+    //   3	53	2	l1	long
+    //   44	10	4	l2	long
+    //   13	114	6	bool	boolean
+    //   96	8	7	localObject2	Object
+    //   168	1	7	localThrowable	java.lang.Throwable
+    //   173	1	7	localException	Exception
+    //   88	6	8	localObject4	Object
+    //   141	3	8	localInterruptedException	java.lang.InterruptedException
+    //   154	9	8	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   89	95	113	finally
-    //   100	107	113	finally
-    //   107	110	113	finally
-    //   115	118	113	finally
-    //   159	164	113	finally
-    //   4	15	121	java/lang/Throwable
-    //   63	75	129	finally
-    //   131	134	129	finally
-    //   49	63	137	java/lang/Exception
-    //   134	137	137	java/lang/Exception
-    //   49	63	147	finally
-    //   134	137	147	finally
-    //   100	107	157	java/lang/InterruptedException
+    //   73	85	88	finally
+    //   90	93	88	finally
+    //   59	73	96	finally
+    //   93	96	96	finally
+    //   131	138	141	java/lang/InterruptedException
+    //   120	126	154	finally
+    //   131	138	154	finally
+    //   143	148	154	finally
+    //   148	151	154	finally
+    //   156	159	154	finally
+    //   4	15	168	java/lang/Throwable
+    //   59	73	173	java/lang/Exception
+    //   93	96	173	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.a.c
  * JD-Core Version:    0.7.0.1
  */

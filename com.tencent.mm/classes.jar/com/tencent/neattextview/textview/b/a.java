@@ -21,21 +21,21 @@ public final class a
   
   public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList)
   {
-    AppMethodBeat.i(3241);
-    fH(paramList);
+    AppMethodBeat.i(39743);
+    os(paramList);
     int i = paramTextPaint.getColor();
-    paramTextPaint.setColor(((BackgroundColorSpan)this.Bbj).getBackgroundColor());
-    paramList = this.Bbi.iterator();
+    paramTextPaint.setColor(((BackgroundColorSpan)this.ahaT).getBackgroundColor());
+    paramList = this.ahaS.iterator();
     while (paramList.hasNext()) {
       paramCanvas.drawRect((RectF)paramList.next(), paramTextPaint);
     }
     paramTextPaint.setColor(i);
-    AppMethodBeat.o(3241);
+    AppMethodBeat.o(39743);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.neattextview.textview.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/i6" android:paddingBottom="@dimen/i6" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <ListView android:id="@id/nm" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a_a" android:transcriptMode="disabled" android:cacheColorHint="#ffffffff" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" style="@style/q1" />
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.applet.StrokeScrollBar android:id="@id/np" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-    </FrameLayout>
+    <RelativeLayout android:id="@id/b47" android:background="@drawable/b4b" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i6" android:minHeight="75.0dip">
+        <ImageView android:id="@id/i91" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:src="@drawable/b__" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" android:singleLine="true" android:layout_toRightOf="@id/i91" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </LinearLayout>

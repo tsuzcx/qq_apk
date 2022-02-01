@@ -1,53 +1,52 @@
 package com.tencent.mm.plugin.wallet_core.ui.ibg;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoOldUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.c.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.model.t;
 import java.util.Iterator;
 import java.util.Set;
 
 public class WalletIbgOrderInfoOldUI
   extends WalletOrderInfoOldUI
 {
-  public final Orders cVH()
-  {
-    return this.tVr;
-  }
-  
   public final void done()
   {
-    AppMethodBeat.i(47847);
-    ab.i("MicroMsg.WalletIbgOrderInfoOldUI", "hy: result is not set manly. set to OK");
-    Iterator localIterator = this.uqP.iterator();
+    AppMethodBeat.i(71447);
+    Log.i("MicroMsg.WalletIbgOrderInfoOldUI", "hy: result is not set manly. set to OK");
+    Iterator localIterator = this.VPH.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (!bo.isNullOrNil(str))
+      if (!Util.isNullOrNil(str))
       {
-        ab.d("MicroMsg.WalletIbgOrderInfoOldUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
-        g.RM();
-        g.RK().eHt.a(new r(str), 0);
+        Log.d("MicroMsg.WalletIbgOrderInfoOldUI", "hy: doing netscene subscribe...appName: %s", new Object[] { str });
+        h.baF();
+        h.baD().mCm.a(new t(str), 0);
       }
     }
     setResult(-1);
     finish();
-    AppMethodBeat.o(47847);
+    AppMethodBeat.o(71447);
+  }
+  
+  public final Orders ikP()
+  {
+    return this.VmL;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(47846);
-    this.tVr = WalletIbgOrderInfoUI.tVr;
+    AppMethodBeat.i(71446);
+    this.VmL = WalletIbgOrderInfoUI.VmL;
     super.onCreate(paramBundle);
-    AppMethodBeat.o(47846);
+    AppMethodBeat.o(71446);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

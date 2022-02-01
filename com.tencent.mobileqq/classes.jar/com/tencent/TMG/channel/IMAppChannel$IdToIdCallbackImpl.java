@@ -16,9 +16,10 @@ public class IMAppChannel$IdToIdCallbackImpl
   
   public void onError(int paramInt, String paramString)
   {
-    if (this.mCallback != null)
+    AVAppChannel.IdToIdCallback localIdToIdCallback = this.mCallback;
+    if (localIdToIdCallback != null)
     {
-      this.mCallback.onError(paramInt, paramString);
+      localIdToIdCallback.onError(paramInt, paramString);
       this.mCallback = null;
     }
   }
@@ -45,7 +46,7 @@ public class IMAppChannel$IdToIdCallbackImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.channel.IMAppChannel.IdToIdCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

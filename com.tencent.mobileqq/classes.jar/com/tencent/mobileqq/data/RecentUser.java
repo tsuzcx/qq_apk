@@ -1,47 +1,50 @@
 package com.tencent.mobileqq.data;
 
-import ajlu;
 import android.database.Cursor;
-import awhl;
-import awhm;
-import awhn;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.defaultValue;
+import com.tencent.mobileqq.persistence.defaultzero;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.proxy.api.IRecentUserMsgSerializeApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
-public class RecentUser
-  extends BaseRecentUser
+@KeepClassConstructor
+public final class RecentUser
+  extends Entity
 {
   public static final long FLAG_HOTCHAT = 1L;
   public static final long FLAG_PA_AD = 16L;
   public static final String TABLE_NAME = "recent";
   private static final String TAG = "RecentUser";
   public String displayName;
-  @awhp
+  @notColumn
   public Object extraInfo;
-  @awhl(a=0)
+  @defaultValue(defaultInteger=0)
   public int isHiddenChat;
-  @awhp
+  @notColumn
   public int jumpTabMode;
-  @awhm
+  @defaultzero
   public long lFlag;
-  @awhm
+  @defaultzero
   public long lastmsgdrafttime;
   public long lastmsgtime;
-  @awhp
+  public boolean mIsParsed;
+  @notColumn
   public Object msg;
   public byte[] msgData;
   public int msgType;
-  @awhm
+  @defaultzero
   public long opTime;
   public byte[] parceledRecentBaseData;
-  @awhm
+  @defaultzero
   public long showUpTime;
   public String troopUin;
-  @awhn
-  private int type;
+  public int type;
   public String uin;
   
   @Deprecated
@@ -55,8 +58,18 @@ public class RecentUser
   
   public void cleanMsgAndMsgData(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentUser", 2, "cleanMsgAndMsgData " + this.uin + " " + this.uin + " this.msgType " + this.msgType + " msgType " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cleanMsgAndMsgData ");
+      localStringBuilder.append(this.uin);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.uin);
+      localStringBuilder.append(" this.msgType ");
+      localStringBuilder.append(this.msgType);
+      localStringBuilder.append(" msgType ");
+      localStringBuilder.append(paramInt);
+      QLog.d("RecentUser", 2, localStringBuilder.toString());
     }
     if (this.msgType == paramInt)
     {
@@ -68,48 +81,72 @@ public class RecentUser
   
   public void doParse()
   {
-    this.msg = ajlu.a(this.msgType, this.msgData);
+    IRecentUserMsgSerializeApi localIRecentUserMsgSerializeApi = (IRecentUserMsgSerializeApi)QRoute.api(IRecentUserMsgSerializeApi.class);
+    if (localIRecentUserMsgSerializeApi != null) {
+      this.msg = localIRecentUserMsgSerializeApi.recentUserMsgDeserialize(this.msgType, this.msgData);
+    }
   }
   
-  public boolean entityByCursor(Cursor paramCursor)
+  protected boolean entityByCursor(Cursor paramCursor)
   {
-    if (1 == paramCursor.getShort(paramCursor.getColumnIndex("mIsParsed"))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mIsParsed = bool;
-      this.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      this.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
-      this.displayName = paramCursor.getString(paramCursor.getColumnIndex("displayName"));
-      this.type = paramCursor.getInt(paramCursor.getColumnIndex("type"));
-      this.lastmsgtime = paramCursor.getLong(paramCursor.getColumnIndex("lastmsgtime"));
-      this.lastmsgdrafttime = paramCursor.getLong(paramCursor.getColumnIndex("lastmsgdrafttime"));
-      this.msgType = paramCursor.getInt(paramCursor.getColumnIndex("msgType"));
-      this.msgData = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
-      this.showUpTime = paramCursor.getLong(paramCursor.getColumnIndex("showUpTime"));
-      this.lFlag = paramCursor.getLong(paramCursor.getColumnIndex("lFlag"));
-      this.opTime = paramCursor.getLong(paramCursor.getColumnIndex("opTime"));
-      this.isHiddenChat = paramCursor.getInt(paramCursor.getColumnIndex("isHiddenChat"));
-      this.parceledRecentBaseData = paramCursor.getBlob(paramCursor.getColumnIndex("parceledRecentBaseData"));
-      return true;
+    boolean bool;
+    if (1 == paramCursor.getShort(paramCursor.getColumnIndex("mIsParsed"))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mIsParsed = bool;
+    this.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+    this.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+    this.displayName = paramCursor.getString(paramCursor.getColumnIndex("displayName"));
+    this.type = paramCursor.getInt(paramCursor.getColumnIndex("type"));
+    this.lastmsgtime = paramCursor.getLong(paramCursor.getColumnIndex("lastmsgtime"));
+    this.lastmsgdrafttime = paramCursor.getLong(paramCursor.getColumnIndex("lastmsgdrafttime"));
+    this.msgType = paramCursor.getInt(paramCursor.getColumnIndex("msgType"));
+    this.msgData = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
+    this.showUpTime = paramCursor.getLong(paramCursor.getColumnIndex("showUpTime"));
+    this.lFlag = paramCursor.getLong(paramCursor.getColumnIndex("lFlag"));
+    this.opTime = paramCursor.getLong(paramCursor.getColumnIndex("opTime"));
+    this.isHiddenChat = paramCursor.getInt(paramCursor.getColumnIndex("isHiddenChat"));
+    this.parceledRecentBaseData = paramCursor.getBlob(paramCursor.getColumnIndex("parceledRecentBaseData"));
+    return true;
   }
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject != null) && ((paramObject instanceof RecentUser)))
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (paramObject != null)
     {
-      paramObject = (RecentUser)paramObject;
-      if (this.uin == null) {
-        if ((paramObject.uin != null) || (getType() != paramObject.getType())) {}
-      }
-      while ((this.uin.equals(paramObject.uin)) && (getType() == paramObject.getType()))
+      bool1 = bool3;
+      if ((paramObject instanceof RecentUser))
       {
-        return true;
-        return false;
+        paramObject = (RecentUser)paramObject;
+        String str = this.uin;
+        if (str == null)
+        {
+          bool1 = bool2;
+          if (paramObject.uin == null)
+          {
+            bool1 = bool2;
+            if (getType() == paramObject.getType()) {
+              bool1 = true;
+            }
+          }
+          return bool1;
+        }
+        bool1 = bool3;
+        if (str.equals(paramObject.uin))
+        {
+          bool1 = bool3;
+          if (getType() == paramObject.getType()) {
+            bool1 = true;
+          }
+        }
       }
-      return false;
     }
-    return false;
+    return bool1;
   }
   
   public String getTableName()
@@ -122,16 +159,53 @@ public class RecentUser
     return this.type;
   }
   
-  public void prewrite()
+  public void parse()
   {
-    this.msgData = ajlu.a(this.msgType, this.msg);
-    super.prewrite();
+    if (!this.mIsParsed) {
+      try
+      {
+        if (!this.mIsParsed)
+        {
+          doParse();
+          this.mIsParsed = true;
+        }
+        return;
+      }
+      finally {}
+    }
+  }
+  
+  protected void prewrite()
+  {
+    IRecentUserMsgSerializeApi localIRecentUserMsgSerializeApi = (IRecentUserMsgSerializeApi)QRoute.api(IRecentUserMsgSerializeApi.class);
+    if (localIRecentUserMsgSerializeApi != null) {
+      this.msgData = localIRecentUserMsgSerializeApi.recentUserMsgSerialize(this.msgType, this.msg);
+    }
+  }
+  
+  public void reParse()
+  {
+    if (!this.mIsParsed) {
+      return;
+    }
+    this.mIsParsed = false;
+    parse();
   }
   
   public void setMsgAndType(Object paramObject, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentUser", 2, "setMsgAndType " + this.uin + " " + this.uin + " this.msgType " + this.msgType + " msgType " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setMsgAndType ");
+      localStringBuilder.append(this.uin);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.uin);
+      localStringBuilder.append(" this.msgType ");
+      localStringBuilder.append(this.msgType);
+      localStringBuilder.append(" msgType ");
+      localStringBuilder.append(paramInt);
+      QLog.d("RecentUser", 2, localStringBuilder.toString());
     }
     if (paramInt >= this.msgType)
     {
@@ -146,9 +220,16 @@ public class RecentUser
     this.type = paramInt;
   }
   
-  public boolean shouldShowInRecentList()
+  public String toString()
   {
-    return (this.msgType == 24) || (this.msgType == 17) || (this.msgType == 16) || (this.msgType == 10) || (this.msgType == 5) || (this.msgType == 13) || (this.msgType == 27) || (this.msgType == 7) || (this.msgType == 8) || (this.msgType == 18) || (this.msgType == 22) || (this.msgType == 21) || (this.msgType == 2) || (this.msgType == 3) || (this.msgType == 11) || (this.msgType == 29) || (this.msgType == 4) || (this.msgType == 19) || (this.msgType == 14) || (this.msgType == 1) || (this.msgType == 9) || (this.msgType == 12) || (this.msgType == 6) || (this.msgType == 20) || (this.msgType == 23);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RecentUser{uin='");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

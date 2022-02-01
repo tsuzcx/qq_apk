@@ -14,7 +14,19 @@ public class VIPDonateMsg
   
   public String toString()
   {
-    return "VIPDonateMsg [title=" + this.title + ", subTitle=" + this.subTitle + ", footer=" + this.footer + ", jumpUrl=" + this.jumpUrl + ", brief=" + this.brief + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VIPDonateMsg [title=");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append(", subTitle=");
+    localStringBuilder.append(this.subTitle);
+    localStringBuilder.append(", footer=");
+    localStringBuilder.append(this.footer);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append(", brief=");
+    localStringBuilder.append(this.brief);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

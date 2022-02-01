@@ -1,395 +1,108 @@
 package com.tencent.mm.aj.a;
 
-import android.database.Cursor;
-import android.os.Looper;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import androidx.compose.ui.d.l;
+import androidx.compose.ui.e.aa;
+import androidx.compose.ui.e.b.e;
+import androidx.compose.ui.e.u;
+import androidx.compose.ui.n.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.f;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.h.a;
+import kotlin.p;
 
-public final class b
-  extends com.tencent.mm.sdk.e.j<a>
-  implements n.b
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/mm_compose/painter/DrawablePainter;", "Landroidx/compose/ui/graphics/painter/Painter;", "drawable", "Landroid/graphics/drawable/Drawable;", "(Landroid/graphics/drawable/Drawable;)V", "intrinsicSize", "Landroidx/compose/ui/geometry/Size;", "getIntrinsicSize-NH-jbRc", "()J", "applyAlpha", "", "alpha", "", "applyColorFilter", "colorFilter", "Landroidx/compose/ui/graphics/ColorFilter;", "applyLayoutDirection", "layoutDirection", "Landroidx/compose/ui/unit/LayoutDirection;", "onDraw", "", "Landroidx/compose/ui/graphics/drawscope/DrawScope;", "compose-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class b
+  extends androidx.compose.ui.e.c.c
 {
-  public static final String[] SQL_CREATE;
-  public com.tencent.mm.sdk.e.e db;
-  final l<b.a, a.b> fuL;
+  private final Drawable drawable;
   
-  static
+  public b(Drawable paramDrawable)
   {
-    AppMethodBeat.i(11513);
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(a.info, "BizChatConversation") };
-    AppMethodBeat.o(11513);
+    AppMethodBeat.i(238720);
+    this.drawable = paramDrawable;
+    this.drawable.setBounds(0, 0, this.drawable.getIntrinsicWidth(), this.drawable.getIntrinsicHeight());
+    AppMethodBeat.o(238720);
   }
   
-  public b(com.tencent.mm.sdk.e.e parame)
+  public final boolean S(float paramFloat)
   {
-    super(parame, a.info, "BizChatConversation", null);
-    AppMethodBeat.i(11494);
-    this.fuL = new b.1(this);
-    this.db = parame;
-    parame.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS bizChatIdIndex ON BizChatConversation ( bizChatId )");
-    parame.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS brandUserNameIndex ON BizChatConversation ( brandUserName )");
-    parame.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS unreadCountIndex ON BizChatConversation ( unReadCount )");
-    int j = 0;
-    Cursor localCursor = parame.a("PRAGMA table_info( BizChatConversation)", null, 2);
-    do
-    {
-      i = j;
-      if (!localCursor.moveToNext()) {
-        break;
-      }
-      i = localCursor.getColumnIndex("name");
-    } while ((i < 0) || (!"flag".equalsIgnoreCase(localCursor.getString(i))));
-    int i = 1;
-    localCursor.close();
-    if (i == 0) {
-      parame.execSQL("BizChatConversation", "update BizChatConversation set flag = lastMsgTime");
-    }
-    ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().a(this);
-    AppMethodBeat.o(11494);
-  }
-  
-  public static long a(a parama, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(11507);
-    if (parama == null)
-    {
-      AppMethodBeat.o(11507);
-      return 0L;
-    }
-    if (paramLong != 0L) {}
-    for (;;)
-    {
-      switch (paramInt)
-      {
-      default: 
-        paramLong = a(parama, paramLong);
-        AppMethodBeat.o(11507);
-        return paramLong;
-        paramLong = bo.aoy();
-      }
-    }
-    paramLong = a(parama, paramLong);
-    AppMethodBeat.o(11507);
-    return paramLong | 0x0;
-    paramLong = a(parama, paramLong);
-    AppMethodBeat.o(11507);
-    return paramLong & 0xFFFFFFFF;
-    paramLong = a(parama, paramLong);
-    AppMethodBeat.o(11507);
-    return paramLong & 0x0;
-  }
-  
-  private static long a(a parama, long paramLong)
-  {
-    return parama.field_flag & 0x0 | 0xFFFFFFFF & paramLong;
-  }
-  
-  public static void a(a parama, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(11505);
-    if (parama.field_msgCount == 0)
-    {
-      String str = parama.field_brandUserName;
-      long l = parama.field_bizChatId;
-      parama.field_msgCount = ((com.tencent.mm.aj.o)g.E(com.tencent.mm.aj.o.class)).YD().bg(str, l);
-      ab.i("MicroMsg.BizConversationStorage", "getMsgCount from message table");
-    }
-    for (;;)
-    {
-      ab.i("MicroMsg.BizConversationStorage", "countMsg %d talker :%s deleteCount:%d insertCount:%d", new Object[] { Integer.valueOf(parama.field_msgCount), Long.valueOf(parama.field_bizChatId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(11505);
-      return;
-      if (paramInt1 > 0)
-      {
-        parama.field_msgCount -= paramInt1;
-        if (parama.field_msgCount < 0)
-        {
-          ab.e("MicroMsg.BizConversationStorage", "msg < 0 ,some path must be ignore!");
-          parama.field_msgCount = 0;
-        }
-      }
-      else if (paramInt2 > 0)
-      {
-        parama.field_msgCount += paramInt2;
-      }
-    }
-  }
-  
-  public static boolean c(a parama)
-  {
-    AppMethodBeat.i(11509);
-    if (parama == null)
-    {
-      ab.e("MicroMsg.BizConversationStorage", "isPlacedTop failed, conversation null");
-      AppMethodBeat.o(11509);
-      return false;
-    }
-    if (a(parama, 4, 0L) != 0L)
-    {
-      AppMethodBeat.o(11509);
-      return true;
-    }
-    AppMethodBeat.o(11509);
-    return false;
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(11498);
-    ab.i("MicroMsg.BizConversationStorage", "onNotifyChange");
-    if ((paramObject == null) || (!(paramObject instanceof String)))
-    {
-      AppMethodBeat.o(11498);
-      return;
-    }
-    paramn = (String)paramObject;
-    if ((f.lg(paramn)) && (!t.nT(paramn))) {
-      e.H(paramn, true);
-    }
-    AppMethodBeat.o(11498);
-  }
-  
-  public final void a(b.a parama)
-  {
-    AppMethodBeat.i(11497);
-    if (this.fuL != null) {
-      this.fuL.remove(parama);
-    }
-    AppMethodBeat.o(11497);
-  }
-  
-  public final void a(b.a parama, Looper paramLooper)
-  {
-    AppMethodBeat.i(11496);
-    this.fuL.a(parama, paramLooper);
-    AppMethodBeat.o(11496);
-  }
-  
-  public final boolean a(a parama)
-  {
-    AppMethodBeat.i(11501);
-    ab.d("MicroMsg.BizConversationStorage", "BizChatConversationStorage insert");
-    if (parama == null)
-    {
-      ab.w("MicroMsg.BizConversationStorage", "insert wrong argument");
-      AppMethodBeat.o(11501);
-      return false;
-    }
-    boolean bool = super.insert(parama);
-    ab.i("MicroMsg.BizConversationStorage", "BizChatConversationStorage insert res:%s", new Object[] { Boolean.valueOf(bool) });
-    if (bool)
-    {
-      a.b localb = new a.b();
-      localb.fxq = parama.field_bizChatId;
-      localb.cqQ = parama.field_brandUserName;
-      localb.fxp = b.a.a.fxl;
-      localb.fxr = parama;
-      this.fuL.cy(localb);
-      this.fuL.doNotify();
-    }
-    AppMethodBeat.o(11501);
-    return bool;
-  }
-  
-  public final List<c> aG(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(11504);
-    ArrayList localArrayList = new ArrayList();
-    if (bo.isNullOrNil(paramString2))
-    {
-      AppMethodBeat.o(11504);
-      return localArrayList;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("select BizChatInfo.*");
-    localStringBuilder.append(" from BizChatConversation , BizChatInfo");
-    localStringBuilder.append(" where BizChatConversation.brandUserName = '").append(paramString1).append("'");
-    localStringBuilder.append(" and BizChatInfo.brandUserName = '").append(paramString1).append("'");
-    localStringBuilder.append(" and BizChatConversation.bizChatId");
-    localStringBuilder.append(" = BizChatInfo.bizChatLocalId");
-    localStringBuilder.append(" and BizChatInfo.chatName like '%").append(paramString2).append("%'");
-    localStringBuilder.append(" order by BizChatConversation.flag desc");
-    localStringBuilder.append(" , BizChatConversation.lastMsgTime desc");
-    ab.d("MicroMsg.BizConversationStorage", "getBizChatConversationSearchCursor: sql:%s", new Object[] { localStringBuilder.toString() });
-    paramString1 = rawQuery(localStringBuilder.toString(), new String[0]);
-    if (paramString1 != null)
-    {
-      if (paramString1.moveToFirst()) {
-        do
-        {
-          paramString2 = new c();
-          paramString2.convertFrom(paramString1);
-          localArrayList.add(paramString2);
-        } while (paramString1.moveToNext());
-      }
-      paramString1.close();
-    }
-    AppMethodBeat.o(11504);
-    return localArrayList;
-  }
-  
-  public final boolean b(a parama)
-  {
-    AppMethodBeat.i(11502);
-    if (parama == null)
-    {
-      ab.w("MicroMsg.BizConversationStorage", "update wrong argument");
-      AppMethodBeat.o(11502);
-      return false;
-    }
-    boolean bool = super.replace(parama);
-    ab.i("MicroMsg.BizConversationStorage", "BizChatConversationStorage update res:%s", new Object[] { Boolean.valueOf(bool) });
-    if (bool)
-    {
-      e.g(z.afk().aG(parama.field_bizChatId));
-      a.b localb = new a.b();
-      localb.fxq = parama.field_bizChatId;
-      localb.cqQ = parama.field_brandUserName;
-      localb.fxp = b.a.a.fxn;
-      localb.fxr = parama;
-      this.fuL.cy(localb);
-      this.fuL.doNotify();
-    }
-    AppMethodBeat.o(11502);
-    return bool;
-  }
-  
-  protected final void finalize()
-  {
-    AppMethodBeat.i(11495);
-    ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().b(this);
-    AppMethodBeat.o(11495);
-  }
-  
-  public final a gF(long paramLong)
-  {
-    AppMethodBeat.i(11499);
-    a locala = new a();
-    locala.field_bizChatId = paramLong;
-    super.get(locala, new String[0]);
-    AppMethodBeat.o(11499);
-    return locala;
-  }
-  
-  public final boolean gG(long paramLong)
-  {
-    AppMethodBeat.i(11500);
-    a locala = gF(paramLong);
-    boolean bool = super.delete(locala, new String[] { "bizChatId" });
-    if (bool)
-    {
-      a.b localb = new a.b();
-      localb.fxq = locala.field_bizChatId;
-      localb.cqQ = locala.field_brandUserName;
-      localb.fxp = b.a.a.fxm;
-      localb.fxr = locala;
-      this.fuL.cy(localb);
-      this.fuL.doNotify();
-    }
-    AppMethodBeat.o(11500);
-    return bool;
-  }
-  
-  public final boolean gH(long paramLong)
-  {
-    AppMethodBeat.i(11506);
-    a locala = gF(paramLong);
-    if ((locala.field_unReadCount == 0) && (locala.field_bizChatId == paramLong))
-    {
-      AppMethodBeat.o(11506);
-      return true;
-    }
-    locala.field_unReadCount = 0;
-    locala.field_atCount = 0;
-    b(locala);
-    AppMethodBeat.o(11506);
+    AppMethodBeat.i(238742);
+    this.drawable.setAlpha(kotlin.k.k.bQ(a.eH(255.0F * paramFloat), 0, 255));
+    AppMethodBeat.o(238742);
     return true;
   }
   
-  public final boolean gI(long paramLong)
+  public final void b(e parame)
   {
-    AppMethodBeat.i(11508);
-    boolean bool = c(gF(paramLong));
-    AppMethodBeat.o(11508);
-    return bool;
-  }
-  
-  public final boolean gJ(long paramLong)
-  {
-    AppMethodBeat.i(11510);
-    gF(paramLong);
-    a locala = gF(paramLong);
-    boolean bool = this.db.execSQL("BizChatConversation", "update BizChatConversation set flag = " + a(locala, 2, 0L) + " where bizChatId = " + locala.field_bizChatId);
-    if (bool)
+    AppMethodBeat.i(238735);
+    s.u(parame, "<this>");
+    u localu = parame.uG().uH();
+    this.drawable.setBounds(0, 0, a.eH(androidx.compose.ui.d.k.Q(parame.sf())), a.eH(androidx.compose.ui.d.k.R(parame.sf())));
+    try
     {
-      locala = gF(locala.field_bizChatId);
-      a.b localb = new a.b();
-      localb.fxq = locala.field_bizChatId;
-      localb.cqQ = locala.field_brandUserName;
-      localb.fxp = b.a.a.fxn;
-      localb.fxr = locala;
-      this.fuL.cy(localb);
-      this.fuL.doNotify();
+      localu.sz();
+      this.drawable.draw(androidx.compose.ui.e.c.a(localu));
+      return;
     }
-    AppMethodBeat.o(11510);
-    return bool;
-  }
-  
-  public final boolean gK(long paramLong)
-  {
-    AppMethodBeat.i(11511);
-    a locala = gF(paramLong);
-    boolean bool = this.db.execSQL("BizChatConversation", "update BizChatConversation set flag = " + a(locala, 3, locala.field_lastMsgTime) + " where bizChatId = " + locala.field_bizChatId);
-    if (bool)
+    finally
     {
-      locala = gF(locala.field_bizChatId);
-      a.b localb = new a.b();
-      localb.fxq = locala.field_bizChatId;
-      localb.cqQ = locala.field_brandUserName;
-      localb.fxp = b.a.a.fxn;
-      localb.fxr = locala;
-      this.fuL.cy(localb);
-      this.fuL.doNotify();
+      localu.restore();
+      AppMethodBeat.o(238735);
     }
-    AppMethodBeat.o(11511);
-    return bool;
   }
   
-  public final Cursor si(String paramString)
+  public final boolean c(aa paramaa)
   {
-    AppMethodBeat.i(11503);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("select * from BizChatConversation");
-    localStringBuilder.append(" where brandUserName = '").append(paramString).append("'");
-    localStringBuilder.append(" order by flag desc , lastMsgTime desc");
-    ab.d("MicroMsg.BizConversationStorage", "getBizChatConversationCursor: sql:%s", new Object[] { localStringBuilder.toString() });
-    paramString = this.db.rawQuery(localStringBuilder.toString(), null);
-    AppMethodBeat.o(11503);
-    return paramString;
+    AppMethodBeat.i(238750);
+    Drawable localDrawable = this.drawable;
+    if (paramaa == null) {}
+    for (paramaa = null;; paramaa = androidx.compose.ui.e.d.a(paramaa))
+    {
+      localDrawable.setColorFilter(paramaa);
+      AppMethodBeat.o(238750);
+      return true;
+    }
   }
   
-  public static final class a$b
+  public final boolean c(n paramn)
   {
-    public String cqQ;
-    public b.a.a fxp;
-    public long fxq;
-    public a fxr;
+    int i = 0;
+    AppMethodBeat.i(238759);
+    s.u(paramn, "layoutDirection");
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      Drawable localDrawable = this.drawable;
+      switch (a.$EnumSwitchMapping$0[paramn.ordinal()])
+      {
+      default: 
+        paramn = new p();
+        AppMethodBeat.o(238759);
+        throw paramn;
+      case 2: 
+        i = 1;
+      }
+      boolean bool = localDrawable.setLayoutDirection(i);
+      AppMethodBeat.o(238759);
+      return bool;
+    }
+    AppMethodBeat.o(238759);
+    return false;
+  }
+  
+  public final long uM()
+  {
+    AppMethodBeat.i(238726);
+    long l = l.z(this.drawable.getIntrinsicWidth(), this.drawable.getIntrinsicHeight());
+    AppMethodBeat.o(238726);
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aj.a.b
  * JD-Core Version:    0.7.0.1
  */

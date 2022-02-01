@@ -99,17 +99,16 @@ public final class Excluder
     if (isAnonymousOrLocal(paramClass)) {
       return true;
     }
-    if (paramBoolean) {}
-    for (Object localObject = this.serializationStrategies;; localObject = this.deserializationStrategies)
-    {
-      localObject = ((List)localObject).iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (!((ExclusionStrategy)((Iterator)localObject).next()).shouldSkipClass(paramClass));
-      return true;
+    if (paramBoolean) {
+      localObject = this.serializationStrategies;
+    } else {
+      localObject = this.deserializationStrategies;
+    }
+    Object localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((ExclusionStrategy)((Iterator)localObject).next()).shouldSkipClass(paramClass)) {
+        return true;
+      }
     }
     return false;
   }
@@ -125,42 +124,44 @@ public final class Excluder
     if (paramField.isSynthetic()) {
       return true;
     }
+    Object localObject;
     if (this.requireExpose)
     {
       localObject = (Expose)paramField.getAnnotation(Expose.class);
       if (localObject != null)
       {
-        if (!paramBoolean) {
-          break label97;
+        if (paramBoolean)
+        {
+          if (!((Expose)localObject).serialize()) {
+            return true;
+          }
         }
-        if (((Expose)localObject).serialize()) {
-          break label106;
-        }
+        else if (((Expose)localObject).deserialize()) {}
       }
-      label97:
-      while (!((Expose)localObject).deserialize()) {
+      else {
         return true;
       }
     }
-    label106:
     if ((!this.serializeInnerClasses) && (isInnerClass(paramField.getType()))) {
       return true;
     }
     if (isAnonymousOrLocal(paramField.getType())) {
       return true;
     }
-    if (paramBoolean) {}
-    for (Object localObject = this.serializationStrategies; !((List)localObject).isEmpty(); localObject = this.deserializationStrategies)
+    if (paramBoolean) {
+      localObject = this.serializationStrategies;
+    } else {
+      localObject = this.deserializationStrategies;
+    }
+    if (!((List)localObject).isEmpty())
     {
       paramField = new FieldAttributes(paramField);
       localObject = ((List)localObject).iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
+      while (((Iterator)localObject).hasNext()) {
+        if (((ExclusionStrategy)((Iterator)localObject).next()).shouldSkipField(paramField)) {
+          return true;
         }
-      } while (!((ExclusionStrategy)((Iterator)localObject).next()).shouldSkipField(paramField));
-      return true;
+      }
     }
     return false;
   }
@@ -190,8 +191,8 @@ public final class Excluder
   
   public Excluder withModifiers(int... paramVarArgs)
   {
-    int i = 0;
     Excluder localExcluder = clone();
+    int i = 0;
     localExcluder.modifiers = 0;
     int j = paramVarArgs.length;
     while (i < j)
@@ -211,7 +212,7 @@ public final class Excluder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.Excluder
  * JD-Core Version:    0.7.0.1
  */

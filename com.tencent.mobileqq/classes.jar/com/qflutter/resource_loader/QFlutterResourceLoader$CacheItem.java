@@ -14,25 +14,26 @@ class QFlutterResourceLoader$CacheItem
   
   public void cache(Object paramObject)
   {
-    if ((paramObject instanceof Bitmap)) {
-      this.bitmap = ((Bitmap)paramObject);
-    }
-    do
+    if ((paramObject instanceof Bitmap))
     {
+      this.bitmap = ((Bitmap)paramObject);
       return;
-      if ((paramObject instanceof ByteBuffer))
-      {
-        this.byteBuffer = ((ByteBuffer)paramObject);
-        return;
-      }
-    } while (!(paramObject instanceof byte[]));
-    this.bytes = ((byte[])paramObject);
+    }
+    if ((paramObject instanceof ByteBuffer))
+    {
+      this.byteBuffer = ((ByteBuffer)paramObject);
+      return;
+    }
+    if ((paramObject instanceof byte[])) {
+      this.bytes = ((byte[])paramObject);
+    }
   }
   
   public boolean decrement()
   {
-    if (this.ref_count > 0) {
-      this.ref_count -= 1;
+    int i = this.ref_count;
+    if (i > 0) {
+      this.ref_count = (i - 1);
     }
     return this.ref_count <= 0;
   }
@@ -44,7 +45,7 @@ class QFlutterResourceLoader$CacheItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.resource_loader.QFlutterResourceLoader.CacheItem
  * JD-Core Version:    0.7.0.1
  */

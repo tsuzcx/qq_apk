@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/settingcontent" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">"
+<com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/fold_uncommonly_used_contacts" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/qq_setting_table_item2item_40px" formItem:bgType="single" formItem:leftText="@string/fold_uncommonly_used_contacts" formItem:showArrow="true" />
+    <TextView android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qq_setting_table_txtLeftRightPadding_20px" android:layout_marginTop="@dimen/qq_setting_table_item2item_40px" android:layout_marginRight="@dimen/qq_setting_table_txtLeftRightPadding_20px" android:layout_marginBottom="@dimen/qq_setting_table_item2txt_16px" android:text="@string/uncommonly_used_contacts_dongtai_permission" android:contentDescription="@string/uncommonly_used_contacts_dongtai_permission" style="@style/table_shuoming_13sp_808080" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mydongtai_permisson" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="top" formItem:switchText="@string/not_allowed_see_mydongtai" formItem:switchChecked="true" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/shield_hisdongtai" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:switchText="@string/shield_hisdongtai" formItem:switchChecked="true" />
+</LinearLayout>

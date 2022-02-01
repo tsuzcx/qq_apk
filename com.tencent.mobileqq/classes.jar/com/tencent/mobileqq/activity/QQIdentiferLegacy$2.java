@@ -1,21 +1,26 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.utils.DialogUtil;
+import mqq.app.QQPermissionCallback;
 
 class QQIdentiferLegacy$2
-  implements Runnable
+  implements QQPermissionCallback
 {
-  QQIdentiferLegacy$2(QQIdentiferLegacy paramQQIdentiferLegacy, String paramString) {}
+  QQIdentiferLegacy$2(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QQToast.a(QQIdentiferLegacy.a(this.this$0), this.a, 1).b(QQIdentiferLegacy.a(this.this$0).getTitleBarHeight());
+    DialogUtil.a(QQIdentiferLegacy.b(this.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQIdentiferLegacy.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.2
  * JD-Core Version:    0.7.0.1
  */

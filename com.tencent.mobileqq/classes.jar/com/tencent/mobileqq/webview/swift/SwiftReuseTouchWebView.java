@@ -5,81 +5,91 @@ import android.content.MutableContextWrapper;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebBackForwardList;
 import com.tencent.smtt.sdk.WebHistoryItem;
+import mqq.app.MobileQQ;
 
 public class SwiftReuseTouchWebView
   extends TouchWebView
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public static int b;
-  private static SwiftReuseTouchWebView b;
-  public int a;
-  private SwiftReuseTouchWebView jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-  private int c;
+  public static int c = 0;
+  private static final Object e = new Object();
+  private static SwiftReuseTouchWebView f;
+  public int b = 0;
+  private SwiftReuseTouchWebView d;
+  private int g = 0;
   
   private SwiftReuseTouchWebView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
   }
   
-  public static SwiftReuseTouchWebView a(Context paramContext)
+  public static SwiftReuseTouchWebView b(Context paramContext)
   {
-    SwiftReuseTouchWebView localSwiftReuseTouchWebView = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      QLog.i("SwiftReuseTouchWebView", 1, "sPool acquire:" + jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView);
-      if (jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView != null)
+      synchronized (e)
       {
-        localSwiftReuseTouchWebView = jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-        jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = localSwiftReuseTouchWebView.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-        localSwiftReuseTouchWebView.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = null;
-        jdField_b_of_type_Int -= 1;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("sPool acquire:");
+        ((StringBuilder)localObject1).append(f);
+        QLog.i("SwiftReuseTouchWebView", 1, ((StringBuilder)localObject1).toString());
+        if (f != null)
+        {
+          localObject1 = f;
+          f = ((SwiftReuseTouchWebView)localObject1).d;
+          ((SwiftReuseTouchWebView)localObject1).d = null;
+          c -= 1;
+          if (localObject1 == null) {
+            return new SwiftReuseTouchWebView(new MutableContextWrapper(paramContext));
+          }
+          ((SwiftReuseTouchWebView)localObject1).clearHistory();
+          ((SwiftReuseTouchWebView)localObject1).b = 1;
+          ((SwiftReuseTouchWebView)localObject1).g += 1;
+          ((SwiftReuseTouchWebView)localObject1).onResume();
+          ((MutableContextWrapper)((SwiftReuseTouchWebView)localObject1).getContext()).setBaseContext(paramContext);
+          return localObject1;
+        }
       }
-      if (localSwiftReuseTouchWebView == null) {
-        return new SwiftReuseTouchWebView(new MutableContextWrapper(paramContext));
-      }
+      Object localObject1 = null;
     }
-    localSwiftReuseTouchWebView.clearHistory();
-    localSwiftReuseTouchWebView.jdField_a_of_type_Int = 1;
-    localSwiftReuseTouchWebView.c += 1;
-    localSwiftReuseTouchWebView.onResume();
-    ((MutableContextWrapper)localSwiftReuseTouchWebView.getContext()).setBaseContext(paramContext);
-    return localSwiftReuseTouchWebView;
   }
   
   public void a(boolean paramBoolean)
   {
-    int i = 0;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      if (jdField_b_of_type_Int < 4)
+      synchronized (e)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-        jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = this;
-        jdField_b_of_type_Int += 1;
+        int j = c;
         i = 1;
-      }
-      if (i != 0)
-      {
-        ((MutableContextWrapper)getContext()).setBaseContext(BaseApplicationImpl.sApplication);
-        if (!paramBoolean)
+        if (j < 4)
         {
-          resetForReuse();
-          onPause();
+          this.d = f;
+          f = this;
+          c += 1;
+          if (i != 0)
+          {
+            ((MutableContextWrapper)getContext()).setBaseContext(MobileQQ.sMobileQQ);
+            if (!paramBoolean)
+            {
+              resetForReuse();
+              onPause();
+            }
+            return;
+          }
+          super.destroy();
+          return;
         }
-        return;
       }
+      int i = 0;
     }
-    super.destroy();
   }
   
   public boolean canGoBack()
   {
-    if (1 == this.jdField_a_of_type_Int)
+    if (1 == this.b)
     {
       Object localObject = copyBackForwardList();
       if ((localObject != null) && (((WebBackForwardList)localObject).getSize() > 0))
@@ -96,33 +106,33 @@ public class SwiftReuseTouchWebView
   
   public void destroy()
   {
-    if (this.c > 3)
+    if (this.g > 3)
     {
       super.destroy();
       return;
     }
-    if (!"about:blank".equals(getUrl())) {}
-    try
-    {
-      stopLoading();
-      loadUrlOriginal("about:blank");
-      clearHistory();
-      clearView();
-      new Handler(Looper.getMainLooper()).postDelayed(new SwiftReuseTouchWebView.1(this), 1000L);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+    if (!"about:blank".equals(getUrl())) {
+      try
       {
-        QLog.e("SwiftReuseTouchWebView", 1, "destroy error:" + localThrowable.getMessage());
+        stopLoading();
+        loadUrlOriginal("about:blank");
+        clearHistory();
+        clearView();
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("destroy error:");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.e("SwiftReuseTouchWebView", 1, localStringBuilder.toString());
       }
     }
+    new Handler(Looper.getMainLooper()).postDelayed(new SwiftReuseTouchWebView.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView
  * JD-Core Version:    0.7.0.1
  */

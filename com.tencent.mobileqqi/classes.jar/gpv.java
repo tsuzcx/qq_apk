@@ -1,23 +1,20 @@
-import android.content.Intent;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
 public class gpv
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public gpv(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.a.a);
-    paramView.putExtra("hide_operation_bar", true);
-    paramView.putExtra("hide_more_button", true);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.b, "P_CliOper", "Grp_nearby", "", "hot", "Clk", 0, 0, "", "", "", "");
+    if (this.a.a != null) {
+      this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 

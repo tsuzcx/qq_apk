@@ -52,7 +52,10 @@ public class ContainerWithHotReload
     }
     catch (Exception paramLayoutParams)
     {
-      LogUtil.QLog.e("readinjoy.proteus", 2, " there is no margin field in layout params: " + paramLayoutParams.toString());
+      paramParams = new StringBuilder();
+      paramParams.append(" there is no margin field in layout params: ");
+      paramParams.append(paramLayoutParams.toString());
+      LogUtil.QLog.e("readinjoy.proteus", 2, paramParams.toString());
     }
   }
   
@@ -85,20 +88,21 @@ public class ContainerWithHotReload
   
   public void onHotReloadChanged(Context paramContext, String paramString1, String paramString2)
   {
-    if (paramString1.equals(this.mTemplateBean.getStyleName())) {}
-    try
-    {
-      refresh(paramString1, this);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-      return;
-    }
-    catch (IOException paramContext)
-    {
-      paramContext.printStackTrace();
+    if (paramString1.equals(this.mTemplateBean.getStyleName())) {
+      try
+      {
+        refresh(paramString1, this);
+        return;
+      }
+      catch (IOException paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
   }
   
@@ -144,7 +148,7 @@ public class ContainerWithHotReload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.ContainerWithHotReload
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ public final class AdMsgInfo
   extends JceStruct
 {
   public String strMsgContent = "";
-  public long uDstUin;
-  public int uMsgType;
-  public long uSrcUin;
-  public long utime;
+  public long uDstUin = 0L;
+  public int uMsgType = 0;
+  public long uSrcUin = 0L;
+  public long utime = 0L;
   
   public AdMsgInfo() {}
   
@@ -44,7 +44,7 @@ public final class AdMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushAdMsg.AdMsgInfo
  * JD-Core Version:    0.7.0.1
  */

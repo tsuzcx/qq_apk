@@ -2,7 +2,7 @@ package io.flutter.embedding.android;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public final class SplashScreen$_CC
 {
@@ -15,7 +15,7 @@ public final class SplashScreen$_CC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.SplashScreen._CC
  * JD-Core Version:    0.7.0.1
  */

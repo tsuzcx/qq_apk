@@ -145,8 +145,8 @@ public class DLFilesViewerActivity
     setContentView(2130903179);
     getWindow().setBackgroundDrawable(null);
     e();
-    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131231514));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231515));
+    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131231513));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231514));
     this.jdField_a_of_type_ComTencentWidgetXListView.setStackFromBottom(true);
     this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter = new DatalineFilesAdapter(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet, this, this.b);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter);

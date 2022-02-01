@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/layoutnormal" android:background="@color/qzone_cover_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/qzone_describe_user_frame" android:background="@color/qzone_color_bai" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="15.0sp" android:textColor="@color/color_content" android:id="@id/qzone_describe_default_tips" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:lineSpacingExtra="2.0dip" />
+        <Button android:textSize="18.0sp" android:textColor="@color/color_yellowdiamond_btn" android:id="@id/qzone_describe_open_qzvip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="10.0dip" android:text="@string/short_tobe_vip" android:layout_below="@id/qzone_describe_default_tips" layout_gravity="center" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/feed_item_content_text_size" android:textColor="@color/color_content" android:id="@id/qzone_describe_preview_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/qzone_describe_user_frame" android:lineSpacingExtra="2.0dip" />
+    <com.qzone.widget.AsyncImageView android:id="@id/qzone_describe_preview_image" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:scaleType="fitXY" android:layout_below="@id/qzone_describe_preview_tips" />
+</RelativeLayout>

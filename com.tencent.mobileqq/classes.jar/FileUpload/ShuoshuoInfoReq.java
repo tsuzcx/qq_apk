@@ -50,14 +50,15 @@ public final class ShuoshuoInfoReq
     paramJceOutputStream.write(this.iAlbumTypeID, 1);
     paramJceOutputStream.write(this.iBatchID, 2);
     paramJceOutputStream.write(this.busiData, 3);
-    if (this.pic_list != null) {
-      paramJceOutputStream.write(this.pic_list, 4);
+    ArrayList localArrayList = this.pic_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.ShuoshuoInfoReq
  * JD-Core Version:    0.7.0.1
  */

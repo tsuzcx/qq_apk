@@ -1,0 +1,168 @@
+{
+    "ReadInjoy_ad_small_game_collection_card_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_ad_small_game_more_click_view",
+                "event_type": "cmd_ad_small_game_more_click",
+                "default_visible": "YES",
+                "margin_top": "0",
+                "margin_left": "0",
+                "height": {
+                    "type": "relative",
+                    "value": "246"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "attributes": {
+                    "setImageWithURLString:lineup:": [
+                        "$small_game_bg_img",
+                        "1"
+                    ]
+                }
+            },
+            {
+                "view_type": "container",
+                "direction": "vertical",
+                "margin_top": "-246",
+                "margin_left": "0",
+                "height": {
+                    "type": "relative",
+                    "value": "246"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews": [{
+                        "view_type": "container",
+                        "layout_type": "layout_relative",
+                        "margin_top": "10",
+                        "margin_left": "6",
+                        "height": {
+                            "type": "relative",
+                            "value": "29"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "363"
+                        },
+                        "subviews": [{
+                                "view_type": "UILabel",
+                                "view_id": "id_artilce_game_title",
+                                "margin_left": "0",
+                                "margin_top": "0",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "29"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes":{
+                                    "setText:": "$article_title",
+                                    "setTextColorString:": "#272727",
+                                    "setFontSizeString:": "17",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_linear",
+                                "direction": "horizontal",
+                                "margin_right": "0",
+                                "margin_top": "0",
+                                "align_parent_right": "YES",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "29"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [{
+                                        "view_type": "UILabel",
+                                        "view_id": "id_more_button_label",
+                                        "margin_left": "0",
+                                        "margin_top": "0",
+                                        "align_parent_right": "YES",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "29"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$more_btn_text",
+                                            "setTextColorString:": "#666666",
+                                            "setFontSizeString:": "12",
+                                            "setNumberOfLinesString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "ReadInjoyAsynImageView",
+                                        "view_id": "id_more_button_icon",
+                                        "margin_left": "4",
+                                        "margin_top": "8.5",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "12"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "7"
+                                        },
+                                        "attributes": {
+                                            "setImageWithURLString:lineup:": [
+                                                "$more_btn_icon",
+                                                "1"
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "ProteusCollectionView",
+                        "view_id": "id_small_game_proteus_collection_view",
+                        "height": {
+                            "type": "relative",
+                            "value": "207"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "375"
+                        },
+                        "attributes": {
+                            "setCellArray:": "$datas",
+                            "setScrollTypeString:": "0",
+                            "setScrollInfiniteRoll:": "0",
+                            "setEdgeDragString:": "0",
+                            "setScrollIndicatorString:": "0",
+                            "setScrollBounceString:": "1",
+                            "setScrollInsetLeft:right:top:bottom:": [
+                                "6",
+                                "6",
+                                "0",
+                                "0"
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

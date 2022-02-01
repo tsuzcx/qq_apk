@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/ko8" style="@style/mf" />
+    <RelativeLayout android:layout_width="0.0dip" android:layout_height="@dimen/m1" android:layout_weight="1.0">
+        <com.tencent.mm.plugin.account.sdk.MMImeClearEditText android:id="@id/cd6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" android:imeOptions="actionDone" style="@style/md" />
+        <View android:id="@id/bdh" android:background="@color/ahb" android:visibility="gone" android:layout_width="@dimen/d9" android:layout_height="@dimen/d_" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/bf8" android:importantForAccessibility="yes" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g6u" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/safe_keyboard" android:layout_centerVertical="true" android:layout_marginStart="-8.0dip" app:iconColor="@color/FG_1" />
+</LinearLayout>

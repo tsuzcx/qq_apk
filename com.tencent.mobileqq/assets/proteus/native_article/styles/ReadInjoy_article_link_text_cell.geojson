@@ -26,9 +26,8 @@
 			},
 			"attributes": {
 				"setRichText:": "$id_attribute_text",
-				"setFrameString:": "-1",
 				"setTextColorString:": "#3a7ed4",
-				"setFontSizeString:": "$attribute_text_size",
+				"setFontSizeString:ratio:":["16","$attribute_text_size_ratio"],
 				"setLineSpace:": "13",
 				"setAttatchInfo:": "$jump_url"
 			}

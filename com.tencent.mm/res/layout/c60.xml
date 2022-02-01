@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/is_" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="result" style="@style/ow" />
+    <Button android:id="@id/jyt" android:text="@string/jlr" style="@style/n6" />
+    <Button android:id="@id/jyo" android:text="@string/jlm" style="@style/n6" />
+    <Button android:id="@id/jys" android:text="@string/jlq" style="@style/n6" />
+    <Button android:id="@id/jyq" android:text="@string/jlo" style="@style/n6" />
+    <Button android:id="@id/jyn" android:text="@string/jll" style="@style/n6" />
+    <Button android:id="@id/jyr" android:text="@string/jlp" style="@style/n6" />
+    <Button android:id="@id/jyp" android:text="@string/jln" style="@style/n6" />
+    <Button android:id="@id/jym" android:text="@string/jlk" style="@style/n6" />
+    <Button android:id="@id/jyl" android:text="@string/jlj" style="@style/n6" />
+</LinearLayout>

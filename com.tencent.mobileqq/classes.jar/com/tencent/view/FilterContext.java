@@ -20,53 +20,53 @@ public class FilterContext
   
   public FilterContext()
   {
-    int[] arrayOfInt = new int[2];
+    Object localObject = new int[2];
     this.mEGL = ((EGL10)EGLContext.getEGL());
     this.mEGLDisplay = this.mEGL.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    this.mEGL.eglInitialize(this.mEGLDisplay, arrayOfInt);
+    this.mEGL.eglInitialize(this.mEGLDisplay, (int[])localObject);
     this.mEGLConfig = chooseConfig();
-    if (this.mEGLConfig != null)
+    localObject = this.mEGLConfig;
+    if (localObject != null)
     {
-      this.mEGLContext = this.mEGL.eglCreateContext(this.mEGLDisplay, this.mEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+      this.mEGLContext = this.mEGL.eglCreateContext(this.mEGLDisplay, (EGLConfig)localObject, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
       this.mEGLSurface = this.mEGL.eglCreatePbufferSurface(this.mEGLDisplay, this.mEGLConfig, new int[] { 12375, 100, 12374, 100, 12344 });
     }
   }
   
   private EGLConfig chooseConfig()
   {
-    EGLConfig localEGLConfig = null;
     int[] arrayOfInt1 = new int[15];
-    int[] tmp8_7 = arrayOfInt1;
-    tmp8_7[0] = 12325;
-    int[] tmp14_8 = tmp8_7;
-    tmp14_8[1] = 0;
-    int[] tmp18_14 = tmp14_8;
-    tmp18_14[2] = 12326;
-    int[] tmp24_18 = tmp18_14;
-    tmp24_18[3] = 0;
-    int[] tmp28_24 = tmp24_18;
-    tmp28_24[4] = 12324;
-    int[] tmp34_28 = tmp28_24;
-    tmp34_28[5] = 8;
-    int[] tmp39_34 = tmp34_28;
-    tmp39_34[6] = 12323;
-    int[] tmp46_39 = tmp39_34;
-    tmp46_39[7] = 8;
-    int[] tmp52_46 = tmp46_39;
-    tmp52_46[8] = 12322;
-    int[] tmp59_52 = tmp52_46;
-    tmp59_52[9] = 8;
-    int[] tmp65_59 = tmp59_52;
-    tmp65_59[10] = 12321;
-    int[] tmp72_65 = tmp65_59;
-    tmp72_65[11] = 8;
-    int[] tmp78_72 = tmp72_65;
-    tmp78_72[12] = 12352;
-    int[] tmp85_78 = tmp78_72;
-    tmp85_78[13] = 4;
-    int[] tmp90_85 = tmp85_78;
-    tmp90_85[14] = 12344;
-    tmp90_85;
+    int[] tmp6_5 = arrayOfInt1;
+    tmp6_5[0] = 12325;
+    int[] tmp12_6 = tmp6_5;
+    tmp12_6[1] = 0;
+    int[] tmp16_12 = tmp12_6;
+    tmp16_12[2] = 12326;
+    int[] tmp22_16 = tmp16_12;
+    tmp22_16[3] = 0;
+    int[] tmp26_22 = tmp22_16;
+    tmp26_22[4] = 12324;
+    int[] tmp32_26 = tmp26_22;
+    tmp32_26[5] = 8;
+    int[] tmp37_32 = tmp32_26;
+    tmp37_32[6] = 12323;
+    int[] tmp44_37 = tmp37_32;
+    tmp44_37[7] = 8;
+    int[] tmp50_44 = tmp44_37;
+    tmp50_44[8] = 12322;
+    int[] tmp57_50 = tmp50_44;
+    tmp57_50[9] = 8;
+    int[] tmp63_57 = tmp57_50;
+    tmp63_57[10] = 12321;
+    int[] tmp70_63 = tmp63_57;
+    tmp70_63[11] = 8;
+    int[] tmp76_70 = tmp70_63;
+    tmp76_70[12] = 12352;
+    int[] tmp83_76 = tmp76_70;
+    tmp83_76[13] = 4;
+    int[] tmp88_83 = tmp83_76;
+    tmp88_83[14] = 12344;
+    tmp88_83;
     int[] arrayOfInt2 = new int[1];
     this.mEGL.eglChooseConfig(this.mEGLDisplay, arrayOfInt1, null, 0, arrayOfInt2);
     int i = arrayOfInt2[0];
@@ -74,19 +74,20 @@ public class FilterContext
     {
       this.mEGLConfigs = new EGLConfig[i];
       this.mEGL.eglChooseConfig(this.mEGLDisplay, arrayOfInt1, this.mEGLConfigs, i, arrayOfInt2);
-      localEGLConfig = this.mEGLConfigs[0];
+      return this.mEGLConfigs[0];
     }
-    return localEGLConfig;
+    return null;
   }
   
   private int getConfigAttrib(EGLConfig paramEGLConfig, int paramInt)
   {
-    int i = 0;
     int[] arrayOfInt = new int[1];
-    if (this.mEGL.eglGetConfigAttrib(this.mEGLDisplay, paramEGLConfig, paramInt, arrayOfInt)) {
-      i = arrayOfInt[0];
+    boolean bool = this.mEGL.eglGetConfigAttrib(this.mEGLDisplay, paramEGLConfig, paramInt, arrayOfInt);
+    paramInt = 0;
+    if (bool) {
+      paramInt = arrayOfInt[0];
     }
-    return i;
+    return paramInt;
   }
   
   private void listConfig()
@@ -97,14 +98,28 @@ public class FilterContext
     int i = 0;
     while (i < j)
     {
-      EGLConfig localEGLConfig = arrayOfEGLConfig[i];
-      int k = getConfigAttrib(localEGLConfig, 12325);
-      int m = getConfigAttrib(localEGLConfig, 12326);
-      int n = getConfigAttrib(localEGLConfig, 12324);
-      int i1 = getConfigAttrib(localEGLConfig, 12323);
-      int i2 = getConfigAttrib(localEGLConfig, 12322);
-      int i3 = getConfigAttrib(localEGLConfig, 12321);
-      LogUtils.i("PixelBuffer", "    <d,s,r,g,b,a> = <" + k + "," + m + "," + n + "," + i1 + "," + i2 + "," + i3 + ">");
+      Object localObject = arrayOfEGLConfig[i];
+      int k = getConfigAttrib((EGLConfig)localObject, 12325);
+      int m = getConfigAttrib((EGLConfig)localObject, 12326);
+      int n = getConfigAttrib((EGLConfig)localObject, 12324);
+      int i1 = getConfigAttrib((EGLConfig)localObject, 12323);
+      int i2 = getConfigAttrib((EGLConfig)localObject, 12322);
+      int i3 = getConfigAttrib((EGLConfig)localObject, 12321);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("    <d,s,r,g,b,a> = <");
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(n);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(i1);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(i2);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(i3);
+      ((StringBuilder)localObject).append(">");
+      LogUtils.i("PixelBuffer", ((StringBuilder)localObject).toString());
       i += 1;
     }
     LogUtils.i("PixelBuffer", "}");
@@ -126,12 +141,15 @@ public class FilterContext
     if (this.mEGLConfig == null) {
       return false;
     }
-    return this.mEGL.eglMakeCurrent(this.mEGLDisplay, this.mEGLSurface, this.mEGLSurface, this.mEGLContext);
+    EGL10 localEGL10 = this.mEGL;
+    EGLDisplay localEGLDisplay = this.mEGLDisplay;
+    EGLSurface localEGLSurface = this.mEGLSurface;
+    return localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.mEGLContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.view.FilterContext
  * JD-Core Version:    0.7.0.1
  */

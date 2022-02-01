@@ -11,19 +11,19 @@ public class ChoreographerCompat
 {
   private static final boolean IS_JELLYBEAN_OR_HIGHER;
   private static final long ONE_FRAME_MILLIS = 17L;
-  private static ChoreographerCompat __instance;
+  private static ChoreographerCompat __instance = new ChoreographerCompat();
   private Choreographer mChoreographer;
   private Handler mHandler;
   
   static
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (boolean bool = true;; bool = false)
-    {
-      IS_JELLYBEAN_OR_HIGHER = bool;
-      __instance = new ChoreographerCompat();
-      return;
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    IS_JELLYBEAN_OR_HIGHER = bool;
   }
   
   private ChoreographerCompat()
@@ -82,7 +82,7 @@ public class ChoreographerCompat
       choreographerPostFrameCallbackDelayed(paramFrameCallback.getFrameCallback(), paramLong);
       return;
     }
-    this.mHandler.postDelayed(paramFrameCallback.getRunnable(), 17L + paramLong);
+    this.mHandler.postDelayed(paramFrameCallback.getRunnable(), paramLong + 17L);
   }
   
   public void removeFrameCallback(ChoreographerCompat.FrameCallback paramFrameCallback)
@@ -97,7 +97,7 @@ public class ChoreographerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.animation.rebound.ChoreographerCompat
  * JD-Core Version:    0.7.0.1
  */

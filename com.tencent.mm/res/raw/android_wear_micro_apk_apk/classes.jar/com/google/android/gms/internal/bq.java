@@ -19,20 +19,20 @@ final class bq
       return;
     case 0: 
       t localt1 = (t)paramMessage.obj;
-      paramMessage = bp.f(this.Pw);
+      paramMessage = bp.f(this.Rl);
       if (localt1 == null) {}
       for (;;)
       {
         try
         {
-          bp.a(bp.g(this.Pw), new Status(13, "Transform returned null"));
+          bp.a(bp.g(this.Rl), new Status(13, "Transform returned null"));
           return;
         }
         finally {}
         if ((localt2 instanceof bk)) {
-          bp.a(bp.g(this.Pw), ((bk)localt2).gC());
+          bp.a(bp.g(this.Rl), ((bk)localt2).gM());
         } else {
-          bp.g(this.Pw).a(localt2);
+          bp.g(this.Rl).a(localt2);
         }
       }
     }

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.fling;
 
-import ahya;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -10,13 +9,13 @@ import android.widget.RelativeLayout;
 public class ContentWrapView
   extends RelativeLayout
 {
-  private ahya jdField_a_of_type_Ahya;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  private Matrix mMatrix = new Matrix();
+  private ContentWrapView.TransformationInfo mTransInfo;
   
   public ContentWrapView(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public ContentWrapView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,55 +26,59 @@ public class ContentWrapView
   public ContentWrapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a()
-  {
-    ahya localahya = this.jdField_a_of_type_Ahya;
-    if (localahya == null) {}
-    while (!localahya.jdField_a_of_type_Boolean) {
-      return;
-    }
-    ahya.a(localahya).setTranslate(localahya.jdField_a_of_type_Float, localahya.b);
-    localahya.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void a(Context paramContext)
+  private void init(Context paramContext)
   {
     setWillNotDraw(false);
   }
   
+  private void updateMatrix()
+  {
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo == null) {
+      return;
+    }
+    if (localTransformationInfo.mMatrixDirty)
+    {
+      ContentWrapView.TransformationInfo.access$000(localTransformationInfo).setTranslate(localTransformationInfo.mTranslationX, localTransformationInfo.mTranslationY);
+      localTransformationInfo.mMatrixDirty = false;
+    }
+  }
+  
   public void draw(Canvas paramCanvas)
   {
-    ahya localahya = this.jdField_a_of_type_Ahya;
-    if (localahya != null)
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo != null)
     {
-      a();
-      paramCanvas.concat(ahya.a(localahya));
+      updateMatrix();
+      paramCanvas.concat(ContentWrapView.TransformationInfo.access$000(localTransformationInfo));
     }
     super.draw(paramCanvas);
   }
   
   public void ensureTransformationInfo()
   {
-    if (this.jdField_a_of_type_Ahya == null) {
-      this.jdField_a_of_type_Ahya = new ahya();
+    if (this.mTransInfo == null) {
+      this.mTransInfo = new ContentWrapView.TransformationInfo();
     }
   }
   
   public float getTransX()
   {
-    if (this.jdField_a_of_type_Ahya != null) {
-      return this.jdField_a_of_type_Ahya.jdField_a_of_type_Float;
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo != null) {
+      return localTransformationInfo.mTranslationX;
     }
     return 0.0F;
   }
   
   public float getTransY()
   {
-    if (this.jdField_a_of_type_Ahya != null) {
-      return this.jdField_a_of_type_Ahya.b;
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo != null) {
+      return localTransformationInfo.mTranslationY;
     }
     return 0.0F;
   }
@@ -83,11 +86,11 @@ public class ContentWrapView
   public void transX(float paramFloat)
   {
     ensureTransformationInfo();
-    ahya localahya = this.jdField_a_of_type_Ahya;
-    if (localahya.jdField_a_of_type_Float != paramFloat)
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo.mTranslationX != paramFloat)
     {
-      localahya.jdField_a_of_type_Float = paramFloat;
-      localahya.jdField_a_of_type_Boolean = true;
+      localTransformationInfo.mTranslationX = paramFloat;
+      localTransformationInfo.mMatrixDirty = true;
       invalidate();
     }
   }
@@ -95,18 +98,18 @@ public class ContentWrapView
   public void transXBy(float paramFloat)
   {
     if (paramFloat != 0.0F) {
-      transX(getTransX() + paramFloat);
+      transX(paramFloat + getTransX());
     }
   }
   
   public void transY(float paramFloat)
   {
     ensureTransformationInfo();
-    ahya localahya = this.jdField_a_of_type_Ahya;
-    if (localahya.b != paramFloat)
+    ContentWrapView.TransformationInfo localTransformationInfo = this.mTransInfo;
+    if (localTransformationInfo.mTranslationY != paramFloat)
     {
-      localahya.b = paramFloat;
-      localahya.jdField_a_of_type_Boolean = true;
+      localTransformationInfo.mTranslationY = paramFloat;
+      localTransformationInfo.mMatrixDirty = true;
       invalidate();
     }
   }
@@ -114,7 +117,7 @@ public class ContentWrapView
   public void transYBy(float paramFloat)
   {
     if (paramFloat != 0.0F) {
-      transX(getTransX() + paramFloat);
+      transX(paramFloat + getTransX());
     }
   }
 }

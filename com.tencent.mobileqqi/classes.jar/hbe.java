@@ -1,27 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
+import java.util.Comparator;
 
 public final class hbe
-  extends Handler
+  implements Comparator
 {
-  public hbe(Looper paramLooper)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadPriorityManager.a();
-      return;
+    long l1 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject1)[1]);
+    long l2 = Long.parseLong(((java.lang.String[])(java.lang.String[])paramObject2)[1]);
+    if (l1 == l2) {
+      return 0;
     }
-    ThreadPriorityManager.b();
+    if (l1 < l2) {
+      return 2;
+    }
+    return -1;
   }
 }
 

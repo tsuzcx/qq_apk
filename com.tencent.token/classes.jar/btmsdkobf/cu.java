@@ -4,45 +4,84 @@ public class cu
 {
   private static ci iu;
   private static ci iv;
-  private static cu.b iw;
+  private static b iw;
   
   public static ci bu()
   {
-    if (iu == null) {}
-    try
-    {
-      if (iu == null) {
-        iu = new cu.a();
+    if (iu == null) {
+      try
+      {
+        if (iu == null) {
+          iu = new a();
+        }
       }
-      return iu;
+      finally {}
     }
-    finally {}
+    return iu;
   }
   
   public static ci bv()
   {
-    if (iv == null) {}
-    try
-    {
-      if (iv == null) {
-        iv = new cu.a();
+    if (iv == null) {
+      try
+      {
+        if (iv == null) {
+          iv = new a();
+        }
       }
-      return iv;
+      finally {}
     }
-    finally {}
+    return iv;
   }
   
-  public static cu.b bw()
+  public static b bw()
   {
-    if (iw == null) {}
-    try
-    {
-      if (iw == null) {
-        iw = new cu.b();
+    if (iw == null) {
+      try
+      {
+        if (iw == null) {
+          iw = new b();
+        }
       }
-      return iw;
+      finally {}
     }
-    finally {}
+    return iw;
+  }
+  
+  public static class a
+    implements ci
+  {
+    private Object V = new Object();
+    private int ix = 1;
+    
+    public int bm()
+    {
+      synchronized (this.V)
+      {
+        int i = this.ix;
+        this.ix += 1;
+        return i;
+      }
+    }
+  }
+  
+  public static class b
+  {
+    private final Object V = new Object();
+    private byte iy = 0;
+    
+    public byte bx()
+    {
+      synchronized (this.V)
+      {
+        if (this.iy + 1 == 127) {
+          this.iy = 0;
+        }
+        byte b = (byte)(this.iy + 1);
+        this.iy = b;
+        return b;
+      }
+    }
   }
 }
 

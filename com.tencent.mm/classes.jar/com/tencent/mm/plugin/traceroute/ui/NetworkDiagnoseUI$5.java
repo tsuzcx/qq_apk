@@ -9,9 +9,9 @@ final class NetworkDiagnoseUI$5
   
   public final void run()
   {
-    AppMethodBeat.i(26027);
-    NetworkDiagnoseUI.h(this.tnM);
-    AppMethodBeat.o(26027);
+    AppMethodBeat.i(29710);
+    NetworkDiagnoseUI.h(this.TRG);
+    AppMethodBeat.o(29710);
   }
 }
 

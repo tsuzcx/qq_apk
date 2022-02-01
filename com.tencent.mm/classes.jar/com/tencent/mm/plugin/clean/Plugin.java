@@ -1,33 +1,31 @@
 package com.tencent.mm.plugin.clean;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.clean.a.a;
-import com.tencent.mm.plugin.clean.c.j;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements com.tencent.mm.pluginsdk.c.d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(18650);
+    AppMethodBeat.i(22759);
     a locala = new a();
-    AppMethodBeat.o(18650);
+    AppMethodBeat.o(22759);
     return locala;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(18651);
-    j localj = j.bhb();
-    AppMethodBeat.o(18651);
-    return localj;
+    AppMethodBeat.i(22760);
+    com.tencent.mm.plugin.clean.c.d locald = com.tencent.mm.plugin.clean.c.d.dqN();
+    AppMethodBeat.o(22760);
+    return locald;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }

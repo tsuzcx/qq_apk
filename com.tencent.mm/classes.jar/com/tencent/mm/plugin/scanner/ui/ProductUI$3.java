@@ -10,15 +10,15 @@ final class ProductUI$3
   
   public final void run()
   {
-    AppMethodBeat.i(81081);
-    ProductUI.a(this.qyh, this.qyj);
-    ProductUI.b(this.qyh, this.qyj);
-    AppMethodBeat.o(81081);
+    AppMethodBeat.i(51853);
+    ProductUI.a(this.OZW, this.OZY);
+    ProductUI.b(this.OZW, this.OZY);
+    AppMethodBeat.o(51853);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ProductUI.3
  * JD-Core Version:    0.7.0.1
  */

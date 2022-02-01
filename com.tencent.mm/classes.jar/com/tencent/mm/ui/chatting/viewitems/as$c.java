@@ -1,64 +1,65 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.autogen.a.ed;
+import com.tencent.mm.autogen.a.ed.b;
+import com.tencent.mm.autogen.a.ty;
+import com.tencent.mm.cc.a.b;
+import com.tencent.mm.emoji.c.b.af;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.emojicapture.api.EmojiCaptureReporter;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.chatting.ah;
+import com.tencent.mm.ui.chatting.component.api.x;
 
 public final class as$c
-  extends as.a
+  implements View.OnClickListener
 {
-  public final View a(LayoutInflater paramLayoutInflater, View paramView)
+  private com.tencent.mm.ui.chatting.d.a aeiK;
+  
+  public as$c(com.tencent.mm.ui.chatting.d.a parama)
   {
-    AppMethodBeat.i(33407);
-    Object localObject;
-    if (paramView != null)
+    this.aeiK = parama;
+  }
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(37290);
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemEmoji$EmojiCaptureTipsClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    Log.i("MicroMsg.EmojiCaptureTipsClickListener", "onClick: ");
+    h.baE().ban().set(at.a.acWY, Long.valueOf(System.currentTimeMillis()));
+    EmojiCaptureReporter.dDw();
+    paramView = new ed();
+    paramView.hDT.type = 2;
+    paramView.publish();
+    new ty().publish();
+    if (!paramView.hDU.hDV)
     {
-      localObject = paramView;
-      if (paramView.getTag() != null) {}
+      com.tencent.mm.cc.a.iRg();
+      paramView = com.tencent.mm.cc.a.aclv;
+      a.b.btU("capture");
+      ((x)this.aeiK.cm(x.class)).jsd().setDefaultSmileyByDetail(af.aVv());
     }
-    else
-    {
-      localObject = new w(paramLayoutInflater, 2130969089);
-      ((View)localObject).setTag(new as.i().fl((View)localObject));
-    }
-    AppMethodBeat.o(33407);
-    return localObject;
-  }
-  
-  public final void a(c.a parama, int paramInt, a parama1, bi parambi, String paramString)
-  {
-    AppMethodBeat.i(33408);
-    as.i.a((as.i)parama, parambi, true, paramInt, parama1, o(parama1), c(parama1));
-    AppMethodBeat.o(33408);
-  }
-  
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bi parambi)
-  {
-    return false;
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, a parama, bi parambi)
-  {
-    return false;
-  }
-  
-  public final boolean aK(int paramInt, boolean paramBoolean)
-  {
-    return (!paramBoolean) && (paramInt == 50);
-  }
-  
-  public final boolean b(View paramView, a parama, bi parambi)
-  {
-    return false;
+    ((x)this.aeiK.cm(x.class)).jsd().iMe();
+    paramView = this.aeiK;
+    Log.i("MicroMsg.ChattingContext", "[scrollToLast]0");
+    paramView.aezP.jpJ();
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemEmoji$EmojiCaptureTipsClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(37290);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.as.c
  * JD-Core Version:    0.7.0.1
  */

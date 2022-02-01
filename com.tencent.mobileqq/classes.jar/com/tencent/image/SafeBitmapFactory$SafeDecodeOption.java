@@ -27,212 +27,184 @@ public class SafeBitmapFactory$SafeDecodeOption
   
   public HashMap<String, String> getInfo()
   {
-    int j = 1;
-    HashMap localHashMap = new HashMap();
-    StringBuilder localStringBuilder = new StringBuilder().append("");
-    if (this.isGetBitmap)
-    {
-      i = 1;
-      localHashMap.put("isGetBitmap", i);
-      localHashMap.put("runTime", "" + this.runTime);
-      localStringBuilder = new StringBuilder().append("");
-      if (!this.needRegionDecode) {
-        break label684;
-      }
-      i = 1;
-      label101:
-      localHashMap.put("needRegionDecode", i);
-      localStringBuilder = new StringBuilder().append("");
-      if (!this.inNeedCache) {
-        break label689;
-      }
-      i = 1;
-      label140:
-      localHashMap.put("needCache", i);
-      localStringBuilder = new StringBuilder().append("");
-      if (!this.inNeedFlashBackTest) {
-        break label694;
-      }
-      i = 1;
-      label179:
-      localHashMap.put("inNeedFlashBackTest", i);
-      if (this.inOptions != null) {
-        localHashMap.put("inSampleSize", "" + this.inOptions.inSampleSize);
-      }
-      localStringBuilder = new StringBuilder().append("");
-      if (!this.needFlashBackTest) {
-        break label699;
-      }
-      i = 1;
-      label257:
-      localHashMap.put("needFlashBackTest", i);
-      localStringBuilder = new StringBuilder().append("");
-      if (!this.isInJustDecodeBounds) {
-        break label704;
-      }
-    }
-    label684:
-    label689:
-    label694:
-    label699:
-    label704:
-    for (int i = j;; i = 0)
-    {
-      localHashMap.put("isInJustDecodeBounds", i);
-      if (this.regionDecodeOpen != -1) {
-        localHashMap.put("regionDecodeOpen", "" + this.regionDecodeOpen);
-      }
-      if (!this.dataSourceType.equals("")) {
-        localHashMap.put("dataSourceType", this.dataSourceType);
-      }
-      if (this.rawWidth != -1) {
-        localHashMap.put("rawWidth", "" + this.rawWidth);
-      }
-      if (this.rawHeight != -1) {
-        localHashMap.put("rawHeight", "" + this.rawHeight);
-      }
-      if (this.isPng != -1) {
-        localHashMap.put("isPng", "" + this.isPng);
-      }
-      if (this.isBeforeFlashBackPic != -1) {
-        localHashMap.put("isBeforeFlashBackPic", "" + this.isBeforeFlashBackPic);
-      }
-      if (this.ram != -1L) {
-        localHashMap.put("ram", "" + this.ram);
-      }
-      if (this.ramThreshold != -1) {
-        localHashMap.put("ramThreshold", "" + this.ramThreshold);
-      }
-      if (this.pxThreshold != -1L) {
-        localHashMap.put("pxThreshold", "" + this.pxThreshold);
-      }
-      if (this.flashTestThreshold != -1L) {
-        localHashMap.put("flashTestThreshold", "" + this.flashTestThreshold);
-      }
-      return localHashMap;
-      i = 0;
-      break;
-      i = 0;
-      break label101;
-      i = 0;
-      break label140;
-      i = 0;
-      break label179;
-      i = 0;
-      break label257;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public String toString()
   {
-    boolean bool2 = true;
-    StringBuilder localStringBuilder = new StringBuilder().append("RegionDecodeInfo{  isGetBitmap=").append(this.isGetBitmap).append(", runTime=").append(this.runTime).append(", needRegionDecode=").append(this.needRegionDecode).append(", inNeedCache=").append(this.inNeedCache).append(", inNeedFlashBackTest=").append(this.inNeedFlashBackTest);
-    if (this.inOptions != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RegionDecodeInfo{  isGetBitmap=");
+    localStringBuilder.append(this.isGetBitmap);
+    localStringBuilder.append(", runTime=");
+    localStringBuilder.append(this.runTime);
+    localStringBuilder.append(", needRegionDecode=");
+    localStringBuilder.append(this.needRegionDecode);
+    localStringBuilder.append(", inNeedCache=");
+    localStringBuilder.append(this.inNeedCache);
+    localStringBuilder.append(", inNeedFlashBackTest=");
+    localStringBuilder.append(this.inNeedFlashBackTest);
+    Object localObject = this.inOptions;
+    String str = "";
+    if (localObject != null)
     {
-      localObject = ", inSampleSize=" + this.inOptions.inSampleSize;
-      localStringBuilder = localStringBuilder.append((String)localObject).append(", isInJustDecodeBounds=").append(this.isInJustDecodeBounds);
-      if (this.regionDecodeOpen != -1) {
-        break label352;
-      }
-      localObject = "";
-      localStringBuilder = localStringBuilder.append((String)localObject);
-      if (!this.dataSourceType.equals("")) {
-        break label392;
-      }
-      localObject = "";
-      label158:
-      localStringBuilder = localStringBuilder.append((String)localObject);
-      if (this.rawWidth != -1) {
-        break label418;
-      }
-      localObject = "";
-      label177:
-      localStringBuilder = localStringBuilder.append((String)localObject);
-      if (this.rawHeight != -1) {
-        break label444;
-      }
-      localObject = "";
-      label196:
-      localStringBuilder = localStringBuilder.append((String)localObject);
-      if (this.isPng != -1) {
-        break label470;
-      }
-      localObject = "";
-      localStringBuilder = localStringBuilder.append((String)localObject).append(", needFlashBackTest=").append(this.needFlashBackTest);
-      if (this.isBeforeFlashBackPic != -1) {
-        break label510;
-      }
-      localObject = "";
-      localStringBuilder = localStringBuilder.append((String)localObject);
-      if (this.ram != -1L) {
-        break label550;
-      }
-      localObject = "";
-      label268:
-      localStringBuilder = localStringBuilder.append((String)localObject);
-      if (this.ramThreshold != -1) {
-        break label576;
-      }
-      localObject = "";
-      label287:
-      localStringBuilder = localStringBuilder.append((String)localObject);
-      if (this.pxThreshold != -1L) {
-        break label602;
-      }
-      localObject = "";
-      label309:
-      localStringBuilder = localStringBuilder.append((String)localObject);
-      if (this.flashTestThreshold != -1L) {
-        break label628;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", inSampleSize=");
+      ((StringBuilder)localObject).append(this.inOptions.inSampleSize);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    label352:
-    label628:
-    for (Object localObject = "";; localObject = ", flashTestThreshold=" + this.flashTestThreshold)
+    else
     {
-      return (String)localObject + '}';
       localObject = "";
-      break;
-      localObject = new StringBuilder().append(", regionDecodeOpen=");
-      if (this.regionDecodeOpen == 1) {}
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        localObject = bool1;
-        break;
-      }
-      localObject = ", dataSourceType=" + this.dataSourceType;
-      break label158;
-      localObject = ", rawWidth=" + this.rawWidth;
-      break label177;
-      localObject = ", rawHeight=" + this.rawHeight;
-      break label196;
-      localObject = new StringBuilder().append(", isPng=");
-      if (this.isPng == 1) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        localObject = bool1;
-        break;
-      }
-      label510:
-      localObject = new StringBuilder().append(", isBeforeFlashBackPic=");
-      if (this.isBeforeFlashBackPic == 1) {}
-      for (bool1 = bool2;; bool1 = false)
-      {
-        localObject = bool1;
-        break;
-      }
-      localObject = ", ram=" + this.ram;
-      break label268;
-      localObject = ", ramThreshold=" + this.ramThreshold;
-      break label287;
-      localObject = ", pxThreshold=" + this.pxThreshold;
-      break label309;
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", isInJustDecodeBounds=");
+    localStringBuilder.append(this.isInJustDecodeBounds);
+    int i = this.regionDecodeOpen;
+    boolean bool2 = false;
+    boolean bool1;
+    if (i == -1)
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", regionDecodeOpen=");
+      if (this.regionDecodeOpen == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      ((StringBuilder)localObject).append(bool1);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    if (this.dataSourceType.equals(""))
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", dataSourceType=");
+      ((StringBuilder)localObject).append(this.dataSourceType);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    if (this.rawWidth == -1)
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", rawWidth=");
+      ((StringBuilder)localObject).append(this.rawWidth);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    if (this.rawHeight == -1)
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", rawHeight=");
+      ((StringBuilder)localObject).append(this.rawHeight);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    if (this.isPng == -1)
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", isPng=");
+      if (this.isPng == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      ((StringBuilder)localObject).append(bool1);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", needFlashBackTest=");
+    localStringBuilder.append(this.needFlashBackTest);
+    if (this.isBeforeFlashBackPic == -1)
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", isBeforeFlashBackPic=");
+      bool1 = bool2;
+      if (this.isBeforeFlashBackPic == 1) {
+        bool1 = true;
+      }
+      ((StringBuilder)localObject).append(bool1);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    if (this.ram == -1L)
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", ram=");
+      ((StringBuilder)localObject).append(this.ram);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    if (this.ramThreshold == -1)
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", ramThreshold=");
+      ((StringBuilder)localObject).append(this.ramThreshold);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    if (this.pxThreshold == -1L)
+    {
+      localObject = "";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", pxThreshold=");
+      ((StringBuilder)localObject).append(this.pxThreshold);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    if (this.flashTestThreshold == -1L)
+    {
+      localObject = str;
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", flashTestThreshold=");
+      ((StringBuilder)localObject).append(this.flashTestThreshold);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.SafeBitmapFactory.SafeDecodeOption
  * JD-Core Version:    0.7.0.1
  */

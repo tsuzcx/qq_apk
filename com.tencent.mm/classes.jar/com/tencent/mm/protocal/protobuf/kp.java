@@ -1,141 +1,114 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class kp
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public String name;
-  public int type;
-  public int ver;
-  public String wyb;
-  public String wyc;
-  public int wyd;
-  public int wye;
-  public String wyf;
-  public String wyg;
+  public int YME;
+  public String YMF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(11700);
+    AppMethodBeat.i(91364);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wyb != null) {
-        paramVarArgs.e(1, this.wyb);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(91364);
+        throw paramVarArgs;
       }
-      paramVarArgs.aO(2, this.type);
-      if (this.wyc != null) {
-        paramVarArgs.e(3, this.wyc);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.name != null) {
-        paramVarArgs.e(4, this.name);
+      paramVarArgs.bS(2, this.YME);
+      if (this.YMF != null) {
+        paramVarArgs.g(3, this.YMF);
       }
-      paramVarArgs.aO(5, this.ver);
-      paramVarArgs.aO(6, this.wyd);
-      paramVarArgs.aO(7, this.wye);
-      if (this.wyf != null) {
-        paramVarArgs.e(8, this.wyf);
-      }
-      if (this.wyg != null) {
-        paramVarArgs.e(9, this.wyg);
-      }
-      AppMethodBeat.o(11700);
+      AppMethodBeat.o(91364);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wyb == null) {
-        break label649;
+      if (this.BaseResponse == null) {
+        break label436;
       }
     }
-    label649:
-    for (paramInt = e.a.a.b.b.a.f(1, this.wyb) + 0;; paramInt = 0)
+    label436:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.type);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.YME);
       paramInt = i;
-      if (this.wyc != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.wyc);
+      if (this.YMF != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.YMF);
       }
-      i = paramInt;
-      if (this.name != null) {
-        i = paramInt + e.a.a.b.b.a.f(4, this.name);
-      }
-      i = i + e.a.a.b.b.a.bl(5, this.ver) + e.a.a.b.b.a.bl(6, this.wyd) + e.a.a.b.b.a.bl(7, this.wye);
-      paramInt = i;
-      if (this.wyf != null) {
-        paramInt = i + e.a.a.b.b.a.f(8, this.wyf);
-      }
-      i = paramInt;
-      if (this.wyg != null) {
-        i = paramInt + e.a.a.b.b.a.f(9, this.wyg);
-      }
-      AppMethodBeat.o(11700);
-      return i;
+      AppMethodBeat.o(91364);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(11700);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(91364);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(91364);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         kp localkp = (kp)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(11700);
+          AppMethodBeat.o(91364);
           return -1;
         case 1: 
-          localkp.wyb = locala.CLY.readString();
-          AppMethodBeat.o(11700);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localkp.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91364);
           return 0;
         case 2: 
-          localkp.type = locala.CLY.sl();
-          AppMethodBeat.o(11700);
-          return 0;
-        case 3: 
-          localkp.wyc = locala.CLY.readString();
-          AppMethodBeat.o(11700);
-          return 0;
-        case 4: 
-          localkp.name = locala.CLY.readString();
-          AppMethodBeat.o(11700);
-          return 0;
-        case 5: 
-          localkp.ver = locala.CLY.sl();
-          AppMethodBeat.o(11700);
-          return 0;
-        case 6: 
-          localkp.wyd = locala.CLY.sl();
-          AppMethodBeat.o(11700);
-          return 0;
-        case 7: 
-          localkp.wye = locala.CLY.sl();
-          AppMethodBeat.o(11700);
-          return 0;
-        case 8: 
-          localkp.wyf = locala.CLY.readString();
-          AppMethodBeat.o(11700);
+          localkp.YME = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(91364);
           return 0;
         }
-        localkp.wyg = locala.CLY.readString();
-        AppMethodBeat.o(11700);
+        localkp.YMF = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(91364);
         return 0;
       }
-      AppMethodBeat.o(11700);
+      AppMethodBeat.o(91364);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.kp
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tenpay.android.wechat;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tenpay.ndk.Encrypt;
 import java.lang.reflect.Field;
 import java.security.MessageDigest;
@@ -11,7 +11,7 @@ public class TenpayUtil
 {
   public static final int getResourceDeclareStyleableIndex(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(49512);
+    AppMethodBeat.i(73260);
     try
     {
       paramContext = Class.forName(paramContext.getPackageName() + ".R$styleable").getFields();
@@ -23,22 +23,21 @@ public class TenpayUtil
         if (localObject.getName().equals(paramString))
         {
           i = localObject.getInt(null);
-          AppMethodBeat.o(49512);
           return i;
         }
         i += 1;
       }
       return 0;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(49512);
+      AppMethodBeat.o(73260);
     }
   }
   
   public static final int[] getResourceDeclareStyleableIntArray(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(49511);
+    AppMethodBeat.i(73259);
     try
     {
       paramContext = Class.forName(paramContext.getPackageName() + ".R$styleable").getFields();
@@ -50,16 +49,16 @@ public class TenpayUtil
         if (localObject.getName().equals(paramString))
         {
           paramContext = (int[])localObject.get(null);
-          AppMethodBeat.o(49511);
+          AppMethodBeat.o(73259);
           return paramContext;
         }
         i += 1;
       }
-      AppMethodBeat.o(49511);
+      AppMethodBeat.o(73259);
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(49511);
+      AppMethodBeat.o(73259);
       return null;
     }
     return null;
@@ -67,15 +66,15 @@ public class TenpayUtil
   
   public static boolean invalidateID(String paramString)
   {
-    AppMethodBeat.i(49513);
+    AppMethodBeat.i(73261);
     if (paramString == null)
     {
-      AppMethodBeat.o(49513);
+      AppMethodBeat.o(73261);
       return false;
     }
     if (paramString.length() != 18)
     {
-      AppMethodBeat.o(49513);
+      AppMethodBeat.o(73261);
       return false;
     }
     int i = 0;
@@ -84,7 +83,7 @@ public class TenpayUtil
     {
       while (i < paramString.length() - 1)
       {
-        int k = bo.apV(paramString.substring(i, i + 1));
+        int k = Util.safeParseInt(paramString.substring(i, i + 1));
         int m = new int[] { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 }[i];
         j += k * m;
         i += 1;
@@ -93,7 +92,7 @@ public class TenpayUtil
     }
     catch (NumberFormatException paramString)
     {
-      AppMethodBeat.o(49513);
+      AppMethodBeat.o(73261);
       return false;
     }
     j = paramString.charAt(17);
@@ -101,22 +100,22 @@ public class TenpayUtil
     {
       if ((j != 88) && (j != 120))
       {
-        AppMethodBeat.o(49513);
+        AppMethodBeat.o(73261);
         return false;
       }
     }
     else if (j != new char[] { 49, 48, 88, 57, 56, 55, 54, 53, 52, 51, 50 }[i])
     {
-      AppMethodBeat.o(49513);
+      AppMethodBeat.o(73261);
       return false;
     }
-    AppMethodBeat.o(49513);
+    AppMethodBeat.o(73261);
     return true;
   }
   
   public static String md5HexDigest(String paramString)
   {
-    AppMethodBeat.i(49510);
+    AppMethodBeat.i(73258);
     char[] arrayOfChar = new char[16];
     char[] tmp13_11 = arrayOfChar;
     tmp13_11[0] = 48;
@@ -171,7 +170,7 @@ public class TenpayUtil
         continue;
       }
       paramString = new String((char[])localObject);
-      AppMethodBeat.o(49510);
+      AppMethodBeat.o(73258);
       return paramString;
       while (i < 16)
       {
@@ -187,47 +186,47 @@ public class TenpayUtil
   
   public static String signWith3Des(String paramString)
   {
-    AppMethodBeat.i(49509);
+    AppMethodBeat.i(73257);
     if (paramString == null)
     {
-      AppMethodBeat.o(49509);
+      AppMethodBeat.o(73257);
       return null;
     }
     paramString = md5HexDigest(paramString);
     paramString = new Encrypt().desedeEncode(paramString);
-    AppMethodBeat.o(49509);
+    AppMethodBeat.o(73257);
     return paramString;
   }
   
   public static byte[] sm4DecryptCBC(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    AppMethodBeat.i(49508);
+    AppMethodBeat.i(73256);
     if (paramArrayOfByte1 == null)
     {
-      AppMethodBeat.o(49508);
+      AppMethodBeat.o(73256);
       return null;
     }
-    paramArrayOfByte1 = new Encrypt().sm4BCDDecryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
-    AppMethodBeat.o(49508);
+    paramArrayOfByte1 = new Encrypt().sm4DecryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+    AppMethodBeat.o(73256);
     return paramArrayOfByte1;
   }
   
   public static byte[] sm4EncryptCBC(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    AppMethodBeat.i(49507);
+    AppMethodBeat.i(73255);
     if (paramArrayOfByte1 == null)
     {
-      AppMethodBeat.o(49507);
+      AppMethodBeat.o(73255);
       return null;
     }
-    paramArrayOfByte1 = new Encrypt().sm4BCDEncryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
-    AppMethodBeat.o(49507);
+    paramArrayOfByte1 = new Encrypt().sm4EncryptCBC(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
+    AppMethodBeat.o(73255);
     return paramArrayOfByte1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpayUtil
  * JD-Core Version:    0.7.0.1
  */

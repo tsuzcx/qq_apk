@@ -1,396 +1,274 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.i;
-import com.tencent.mm.ba.r;
-import com.tencent.mm.g.a.tm;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.game.api.b.a;
-import com.tencent.mm.pluginsdk.j;
-import com.tencent.mm.pluginsdk.ui.d.q;
-import com.tencent.mm.protocal.protobuf.bdt;
-import com.tencent.mm.protocal.protobuf.bxh;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bi.a;
-import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.MMAppMgr;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.v.a;
+import com.tencent.mm.plugin.report.f;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class aa
-  implements i, com.tencent.mm.pluginsdk.h, j, com.tencent.mm.pluginsdk.m
+public final class aa
 {
-  public final void BO()
+  private static final List<aa.a> hhu;
+  private static final boolean[] hhv;
+  
+  static
   {
-    AppMethodBeat.i(15424);
-    com.tencent.mm.modelmulti.n.aio().lL(7);
-    AppMethodBeat.o(15424);
+    AppMethodBeat.i(239180);
+    hhu = new ArrayList();
+    hhv = new boolean[] { false };
+    AppMethodBeat.o(239180);
   }
   
-  public final com.tencent.mm.ai.h BP()
+  public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(15426);
-    com.tencent.mm.audio.a.a locala = new com.tencent.mm.audio.a.a(ah.getContext());
-    AppMethodBeat.o(15426);
-    return locala;
-  }
-  
-  public final void BQ()
-  {
-    AppMethodBeat.i(15436);
-    tm localtm = new tm();
-    localtm.cJY.cKa = true;
-    com.tencent.mm.sdk.b.a.ymk.l(localtm);
-    AppMethodBeat.o(15436);
-  }
-  
-  public final void BR()
-  {
-    AppMethodBeat.i(15441);
-    MMAppMgr.BR();
-    AppMethodBeat.o(15441);
-  }
-  
-  public final Intent BS()
-  {
-    AppMethodBeat.i(15446);
-    Intent localIntent = new Intent(ah.getContext(), LauncherUI.class);
-    localIntent.putExtra("nofification_type", "talkroom_notification");
-    localIntent.addFlags(67108864);
-    AppMethodBeat.o(15446);
-    return localIntent;
-  }
-  
-  public final boolean BT()
-  {
-    AppMethodBeat.i(15451);
-    boolean bool = q.BT();
-    AppMethodBeat.o(15451);
-    return bool;
-  }
-  
-  public final void BU()
-  {
-    AppMethodBeat.i(15453);
-    com.tencent.mm.booter.o.BU();
-    AppMethodBeat.o(15453);
-  }
-  
-  public final boolean BV()
-  {
-    AppMethodBeat.i(15459);
-    boolean bool = com.tencent.mm.modelmulti.k.ail();
-    AppMethodBeat.o(15459);
-    return bool;
-  }
-  
-  public final String H(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(15433);
-    paramString1 = com.tencent.mm.pluginsdk.model.app.p.H(paramString1, paramString2);
-    AppMethodBeat.o(15433);
-    return paramString1;
-  }
-  
-  public final Bitmap a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(15445);
-    if (paramInt2 != -1)
+    AppMethodBeat.i(239158);
+    synchronized (hhv)
     {
-      AppMethodBeat.o(15445);
-      return null;
+      if (hhv[0] != 0) {
+        com.tencent.mm.sdk.platformtools.Log.i(paramString1, paramString2, paramVarArgs);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(239158);
+        return;
+        List localList = hhu;
+        String str = paramString2;
+        try
+        {
+          if (paramVarArgs.length > 0) {
+            str = String.format(paramString2, paramVarArgs);
+          }
+          hhu.add(new d(4, paramString1, str));
+        }
+        finally
+        {
+          AppMethodBeat.o(239158);
+        }
+      }
     }
-    switch (paramInt1)
-    {
-    }
+  }
+  
+  public static void a(String paramString1, Throwable arg1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(239166);
     for (;;)
     {
-      AppMethodBeat.o(15445);
-      return null;
-      paramIntent = com.tencent.mm.pluginsdk.ui.tools.n.h(paramActivity.getApplicationContext(), paramIntent, com.tencent.mm.compatible.util.e.esy);
-      if (paramIntent == null)
+      StringBuilder localStringBuilder;
+      synchronized (hhv)
       {
-        AppMethodBeat.o(15445);
-        return null;
+        if (hhv[0] != 0)
+        {
+          com.tencent.mm.sdk.platformtools.Log.printErrStackTrace(paramString1, ???, paramString2, paramVarArgs);
+          AppMethodBeat.o(239166);
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        if (paramVarArgs.length > 0)
+        {
+          localStringBuilder.append(String.format(paramString2, paramVarArgs));
+          localStringBuilder.append("  ").append(android.util.Log.getStackTraceString(???));
+          synchronized (hhu)
+          {
+            hhu.add(new d(6, paramString1, localStringBuilder.toString()));
+          }
+        }
       }
-      Intent localIntent = new Intent();
-      localIntent.setClassName(paramActivity, "com.tencent.mm.ui.tools.CropImageNewUI");
-      localIntent.putExtra("CropImageMode", 1);
-      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.compatible.util.e.esy + "temp.avatar");
-      localIntent.putExtra("CropImage_ImgPath", paramIntent);
-      paramActivity.startActivityForResult(localIntent, 4);
-      AppMethodBeat.o(15445);
-      return null;
-      if (paramIntent == null)
+      localStringBuilder.append(paramString2);
+    }
+  }
+  
+  public static void aCL()
+  {
+    AppMethodBeat.i(239171);
+    synchronized (hhv)
+    {
+      if (hhv[0] != 0) {
+        f.Ozc.idkeyStat(1141L, 0L, 1L, true);
+      }
+      for (;;)
       {
-        AppMethodBeat.o(15445);
-        return null;
+        AppMethodBeat.o(239171);
+        return;
+        synchronized (hhu)
+        {
+          hhu.add(new b());
+        }
       }
-      localIntent = new Intent();
-      localIntent.setClassName(paramActivity, "com.tencent.mm.ui.tools.CropImageNewUI");
-      localIntent.putExtra("CropImageMode", 1);
-      localIntent.putExtra("CropImage_Filter", true);
-      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.compatible.util.e.esy + "temp.avatar");
-      localIntent.putExtra("CropImage_ImgPath", null);
-      com.tencent.mm.ui.tools.a.a(paramActivity, paramIntent, localIntent, com.tencent.mm.compatible.util.e.esy, 4);
-      AppMethodBeat.o(15445);
-      return null;
-      if (paramIntent == null)
+    }
+  }
+  
+  public static void b(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(239168);
+    synchronized (hhv)
+    {
+      if (hhv[0] != 0) {
+        f.Ozc.b(paramInt, paramVarArgs);
+      }
+      for (;;)
       {
-        AppMethodBeat.o(15445);
-        return null;
+        AppMethodBeat.o(239168);
+        return;
+        synchronized (hhu)
+        {
+          hhu.add(new c(paramInt, paramVarArgs));
+        }
       }
-      paramActivity = paramIntent.getStringExtra("CropImage_OutputPath");
-      if (paramActivity != null) {
-        break;
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(239161);
+    synchronized (hhv)
+    {
+      if (hhv[0] != 0) {
+        com.tencent.mm.sdk.platformtools.Log.w(paramString1, paramString2, paramVarArgs);
       }
-      ab.e("MicroMsg.WorkerModelCallback", "crop picture failed");
+      for (;;)
+      {
+        AppMethodBeat.o(239161);
+        return;
+        List localList = hhu;
+        String str = paramString2;
+        try
+        {
+          if (paramVarArgs.length > 0) {
+            str = String.format(paramString2, paramVarArgs);
+          }
+          hhu.add(new d(5, paramString1, str));
+        }
+        finally
+        {
+          AppMethodBeat.o(239161);
+        }
+      }
     }
-    ab.e("MicroMsg.WorkerModelCallback", "crop picture path %s ", new Object[] { paramActivity });
-    paramActivity = com.tencent.mm.sdk.platformtools.d.aoV(paramActivity);
-    AppMethodBeat.o(15445);
-    return paramActivity;
   }
   
-  public final com.tencent.mm.ai.m a(com.tencent.mm.ai.g paramg)
+  public static void c(String paramString1, String paramString2, Object... arg2)
   {
-    AppMethodBeat.i(15447);
-    if (com.tencent.mm.modelmulti.k.ail())
+    AppMethodBeat.i(239162);
+    synchronized (hhv)
     {
-      paramg = new com.tencent.mm.modelmulti.e(paramg);
-      AppMethodBeat.o(15447);
-      return paramg;
+      if (hhv[0] != 0) {
+        com.tencent.mm.sdk.platformtools.Log.e(paramString1, paramString2, ???);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(239162);
+        return;
+        synchronized (hhu)
+        {
+          hhu.add(new d(6, paramString1, paramString2));
+        }
+      }
     }
-    com.tencent.mm.modelmulti.n.aio().lL(4);
-    AppMethodBeat.o(15447);
-    return null;
   }
   
-  public final void a(Context paramContext, ad paramad, bi.a parama, Bundle paramBundle, String paramString)
+  public static void execute()
   {
-    AppMethodBeat.i(15455);
-    com.tencent.mm.ui.contact.e.a(paramContext, paramad, parama, true, true, paramBundle, paramString);
-    AppMethodBeat.o(15455);
-  }
-  
-  public final void a(Context paramContext, bi.a parama, Bundle paramBundle)
-  {
-    AppMethodBeat.i(15454);
-    com.tencent.mm.ui.contact.e.a(paramContext, parama, true, true, paramBundle);
-    AppMethodBeat.o(15454);
-  }
-  
-  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5)
-  {
-    AppMethodBeat.i(15434);
-    com.tencent.mm.plugin.game.api.b localb = b.a.bEX();
-    if (localb != null) {
-      localb.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, "");
-    }
-    AppMethodBeat.o(15434);
-  }
-  
-  public final void a(Intent paramIntent, bxh parambxh, int paramInt)
-  {
-    AppMethodBeat.i(15452);
-    com.tencent.mm.api.b.a(paramIntent, parambxh, paramInt);
-    AppMethodBeat.o(15452);
-  }
-  
-  public final void a(Intent paramIntent, String paramString)
-  {
-    AppMethodBeat.i(15456);
-    com.tencent.mm.ui.contact.e.a(paramIntent, paramString);
-    AppMethodBeat.o(15456);
-  }
-  
-  public final void a(com.tencent.mm.aj.d paramd, Activity paramActivity, ad paramad)
-  {
-    AppMethodBeat.i(15450);
-    com.tencent.mm.ui.tools.b.c(paramd, paramActivity, paramad);
-    AppMethodBeat.o(15450);
-  }
-  
-  public final void a(com.tencent.mm.aj.d paramd, Activity paramActivity, ad paramad, boolean paramBoolean, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(15449);
-    com.tencent.mm.ui.tools.b.a(paramd, paramActivity, paramad, paramBoolean, paramRunnable, 0);
-    AppMethodBeat.o(15449);
-  }
-  
-  public final void a(bdt parambdt, String paramString)
-  {
-    AppMethodBeat.i(15458);
-    ((com.tencent.mm.plugin.messenger.foundation.a.d)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.d.class)).a(parambdt, paramString);
-    AppMethodBeat.o(15458);
-  }
-  
-  public final void a(String paramString1, String paramString2, int paramInt, String paramString3, long paramLong)
-  {
-    AppMethodBeat.i(153478);
-    com.tencent.mm.plugin.game.api.b localb = b.a.bEX();
-    if (localb != null) {
-      localb.a(paramString1, paramString2, paramInt, 4, paramString3, paramLong, "");
-    }
-    AppMethodBeat.o(153478);
-  }
-  
-  public final boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(15439);
-    boolean bool = v.a.a(paramContext, paramInt1, paramInt2, paramString, 4);
-    AppMethodBeat.o(15439);
-    return bool;
-  }
-  
-  public final boolean a(ad paramad)
-  {
-    AppMethodBeat.i(15448);
-    boolean bool = com.tencent.mm.modelmulti.a.a(paramad);
-    AppMethodBeat.o(15448);
-    return bool;
-  }
-  
-  public final boolean b(Context paramContext, int paramInt1, int paramInt2, String paramString)
-  {
-    AppMethodBeat.i(15440);
-    boolean bool = v.a.a(paramContext, paramInt1, paramInt2, paramString, 7);
-    AppMethodBeat.o(15440);
-    return bool;
-  }
-  
-  public final void bh(Context paramContext)
-  {
-    AppMethodBeat.i(15443);
-    MMAppMgr.hK(paramContext);
-    AppMethodBeat.o(15443);
-  }
-  
-  public final com.tencent.mm.ai.m bs(boolean paramBoolean)
-  {
-    AppMethodBeat.i(15437);
-    if (paramBoolean) {
-      r.aiP().lR(4);
-    }
-    com.tencent.mm.ba.k localk = new com.tencent.mm.ba.k(4);
-    aw.Rc().a(localk, 0);
-    AppMethodBeat.o(15437);
-    return localk;
-  }
-  
-  public final String dE(String paramString)
-  {
-    AppMethodBeat.i(15428);
-    if (com.tencent.mm.pluginsdk.model.app.g.ca(paramString, false) != null)
+    AppMethodBeat.i(239176);
+    synchronized (hhv)
     {
-      paramString = com.tencent.mm.pluginsdk.model.app.g.ca(paramString, false).field_packageName;
-      AppMethodBeat.o(15428);
-      return paramString;
+      synchronized (hhu)
+      {
+        Iterator localIterator = hhu.iterator();
+        if (localIterator.hasNext()) {
+          ((aa.a)localIterator.next()).execute();
+        }
+      }
     }
-    AppMethodBeat.o(15428);
-    return "";
+    hhv[0] = true;
+    AppMethodBeat.o(239176);
   }
   
-  public final boolean dF(String paramString)
+  static final class b
+    extends aa.a
   {
-    AppMethodBeat.i(15430);
-    boolean bool = com.tencent.mm.pluginsdk.model.app.g.dF(paramString);
-    AppMethodBeat.o(15430);
-    return bool;
-  }
-  
-  public final boolean dG(String paramString)
-  {
-    AppMethodBeat.i(15438);
-    boolean bool = com.tencent.mm.pluginsdk.model.app.g.dG(paramString);
-    AppMethodBeat.o(15438);
-    return bool;
-  }
-  
-  public final void dH(String paramString)
-  {
-    AppMethodBeat.i(15457);
-    com.tencent.mm.aq.b.agX();
-    com.tencent.mm.aq.b.sS(paramString);
-    AppMethodBeat.o(15457);
-  }
-  
-  public final String f(Context paramContext, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(15432);
-    paramContext = com.tencent.mm.pluginsdk.model.app.p.f(paramContext, paramString1, paramString2);
-    AppMethodBeat.o(15432);
-    return paramContext;
-  }
-  
-  public final void gf(int paramInt)
-  {
-    AppMethodBeat.i(15425);
-    ab.d("MicroMsg.WorkerModelCallback", "trigger netscene sync, scene[%d]", new Object[] { Integer.valueOf(paramInt) });
-    com.tencent.mm.modelmulti.n.aio().lL(paramInt);
-    AppMethodBeat.o(15425);
-  }
-  
-  public final boolean n(Activity paramActivity)
-  {
-    AppMethodBeat.i(15442);
-    if (!com.tencent.mm.compatible.util.f.Mi())
+    final int id = 1141;
+    final int key = 0;
+    final int value = 1;
+    
+    b()
     {
-      t.ii(paramActivity);
-      AppMethodBeat.o(15442);
-      return false;
+      super();
     }
-    com.tencent.mm.pluginsdk.ui.tools.n.m(paramActivity, 2);
-    AppMethodBeat.o(15442);
-    return true;
-  }
-  
-  public final void o(Activity paramActivity)
-  {
-    AppMethodBeat.i(15444);
-    MMAppMgr.a(paramActivity, null);
-    AppMethodBeat.o(15444);
-  }
-  
-  public final String t(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(15429);
-    paramContext = com.tencent.mm.pluginsdk.model.app.g.t(paramContext, paramString);
-    AppMethodBeat.o(15429);
-    return paramContext;
-  }
-  
-  public final String t(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(15427);
-    if (com.tencent.mm.pluginsdk.model.app.g.em(paramString, paramInt) != null)
+    
+    final void execute()
     {
-      paramString = com.tencent.mm.pluginsdk.model.app.g.em(paramString, paramInt).field_packageName;
-      AppMethodBeat.o(15427);
-      return paramString;
+      AppMethodBeat.i(239244);
+      f.Ozc.idkeyStat(this.id, this.key, this.value, true);
+      AppMethodBeat.o(239244);
     }
-    AppMethodBeat.o(15427);
-    return "";
   }
   
-  public final boolean u(Context paramContext, String paramString)
+  static final class c
+    extends aa.a
   {
-    AppMethodBeat.i(15431);
-    boolean bool = com.tencent.mm.pluginsdk.model.app.g.u(paramContext, paramString);
-    AppMethodBeat.o(15431);
-    return bool;
+    final Object[] aqm;
+    final int id;
+    
+    c(int paramInt, Object... paramVarArgs)
+    {
+      super();
+      this.id = paramInt;
+      this.aqm = paramVarArgs;
+    }
+    
+    final void execute()
+    {
+      AppMethodBeat.i(239253);
+      f.Ozc.a(this.id, true, true, false, this.aqm);
+      AppMethodBeat.o(239253);
+    }
+  }
+  
+  static final class d
+    extends aa.a
+  {
+    final int level;
+    final String msg;
+    final String tag;
+    
+    d(int paramInt, String paramString1, String paramString2)
+    {
+      super();
+      this.level = paramInt;
+      this.tag = paramString1;
+      this.msg = paramString2;
+    }
+    
+    final void execute()
+    {
+      AppMethodBeat.i(239256);
+      switch (this.level)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(239256);
+        return;
+        com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.hhx, this.msg });
+        AppMethodBeat.o(239256);
+        return;
+        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.hhx, this.msg });
+        AppMethodBeat.o(239256);
+        return;
+        com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.hhx, this.msg });
+        AppMethodBeat.o(239256);
+        return;
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.hhx, this.msg });
+        AppMethodBeat.o(239256);
+        return;
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.hhx, this.msg });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.aa
  * JD-Core Version:    0.7.0.1
  */

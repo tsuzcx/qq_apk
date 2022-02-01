@@ -12,26 +12,26 @@ final class h
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(123224);
+    AppMethodBeat.i(76769);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(123224);
+      AppMethodBeat.o(76769);
       return;
       int i = paramMessage.getData().getInt("errorCode");
-      this.bmf.bmg.fn(i);
-      AppMethodBeat.o(123224);
+      this.dYT.dYU.onGetError(i);
+      AppMethodBeat.o(76769);
       return;
       paramMessage = (a)paramMessage.obj;
-      this.bmf.bmg.a(paramMessage);
+      this.dYT.dYU.a(paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.h
  * JD-Core Version:    0.7.0.1
  */

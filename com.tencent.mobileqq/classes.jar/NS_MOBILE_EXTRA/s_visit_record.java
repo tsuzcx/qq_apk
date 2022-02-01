@@ -53,8 +53,9 @@ public final class s_visit_record
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.subid, 2);
     paramJceOutputStream.write(this.srcId, 3);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 4);
+    Map localMap = this.busi_param;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 4);
     }
     paramJceOutputStream.write(this.gameId, 5);
     paramJceOutputStream.write(this.visit_type, 6);
@@ -62,7 +63,7 @@ public final class s_visit_record
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.s_visit_record
  * JD-Core Version:    0.7.0.1
  */

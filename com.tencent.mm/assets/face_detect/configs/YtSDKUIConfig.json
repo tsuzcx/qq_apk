@@ -1,0 +1,31 @@
+{
+    "version": "1.0.0",
+    "ui_basic_config":
+    {
+        "ocr_card_ui":
+        {
+            "show_prompt_tips": true
+        },
+        "silent_ui":
+        {
+
+        },
+        "action_ui":
+        {
+            "max_retry_count": 0
+        },
+        "reflect_ui":
+        {
+            "max_retry_count": 0
+        },
+        "action+reflect_ui":
+        {
+
+        },
+        "lipread_ui":
+        {
+            "max_retry_count": 0
+        }
+    }
+
+}

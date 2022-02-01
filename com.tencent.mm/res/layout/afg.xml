@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/dge" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df">
+        <TextView android:id="@id/dg_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="skinSmooth" android:layout_marginEnd="@dimen/df" />
+        <SeekBar android:id="@id/dgf" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
+        <TextView android:id="@id/dgk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df">
+        <TextView android:id="@id/dga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="eyeMorph" android:layout_marginEnd="@dimen/df" />
+        <SeekBar android:id="@id/dgg" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
+        <TextView android:id="@id/dgl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df">
+        <TextView android:id="@id/dgb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="faceMorph" android:layout_marginEnd="@dimen/df" />
+        <SeekBar android:id="@id/dgh" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
+        <TextView android:id="@id/dgm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df">
+        <TextView android:id="@id/dgc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="eyeBright" android:layout_marginEnd="@dimen/df" />
+        <SeekBar android:id="@id/dgi" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
+        <TextView android:id="@id/dgn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df">
+        <TextView android:id="@id/dgd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="skinBright" android:layout_marginEnd="@dimen/df" />
+        <SeekBar android:id="@id/dgj" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
+        <TextView android:id="@id/dgo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/d2y" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

@@ -5,18 +5,16 @@ import com.google.android.gms.common.api.internal.ListenerHolder;
 import com.google.android.gms.common.api.internal.RegisterListenerMethod;
 import com.google.android.gms.wearable.ChannelApi.ChannelListener;
 import com.google.android.gms.wearable.ChannelClient.ChannelCallback;
-import javax.annotation.Nullable;
 
 final class zzat
   extends RegisterListenerMethod<zzhg, ChannelClient.ChannelCallback>
 {
   private final IntentFilter[] zzba;
-  @Nullable
   private final String zzce;
   private final ChannelApi.ChannelListener zzcf;
   private final ListenerHolder<ChannelApi.ChannelListener> zzci;
   
-  zzat(ChannelApi.ChannelListener paramChannelListener, @Nullable String paramString, IntentFilter[] paramArrayOfIntentFilter, ListenerHolder<ChannelClient.ChannelCallback> paramListenerHolder, ListenerHolder<ChannelApi.ChannelListener> paramListenerHolder1)
+  zzat(ChannelApi.ChannelListener paramChannelListener, String paramString, IntentFilter[] paramArrayOfIntentFilter, ListenerHolder<ChannelClient.ChannelCallback> paramListenerHolder, ListenerHolder<ChannelApi.ChannelListener> paramListenerHolder1)
   {
     super(paramListenerHolder);
     this.zzcf = paramChannelListener;
@@ -27,7 +25,7 @@ final class zzat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzat
  * JD-Core Version:    0.7.0.1
  */

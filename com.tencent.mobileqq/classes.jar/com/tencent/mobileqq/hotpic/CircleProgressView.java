@@ -13,13 +13,13 @@ import android.view.View;
 public class CircleProgressView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+  private int a;
+  private int b;
   private int c = 50;
-  private int d;
+  private int d = 0;
+  private Paint e;
+  private RectF f = new RectF();
+  private Paint g = new Paint();
   
   public CircleProgressView(Context paramContext)
   {
@@ -40,18 +40,18 @@ public class CircleProgressView
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setARGB(255, 18, 183, 245);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setARGB(89, 78, 76, 67);
+    this.e = new Paint();
+    this.e.setStyle(Paint.Style.STROKE);
+    this.e.setAntiAlias(true);
+    this.e.setARGB(255, 18, 183, 245);
+    this.g.setStyle(Paint.Style.FILL);
+    this.g.setAntiAlias(true);
+    this.g.setARGB(89, 78, 76, 67);
   }
   
   private void b()
@@ -64,15 +64,19 @@ public class CircleProgressView
   {
     super.onDraw(paramCanvas);
     float f1 = getWidth() / 2;
-    float f2 = f1 - this.c;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (f1 - f2 - this.c / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (f1 - f2 - this.c / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (f1 + f2 + this.c / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (f2 + f1 + this.c / 2);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    paramCanvas.drawCircle(f1, f1, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
+    int i = this.c;
+    float f2 = f1 - i;
+    RectF localRectF = this.f;
+    float f3 = f1 - f2;
+    localRectF.left = (f3 - i / 2);
+    localRectF.top = (f3 - i / 2);
+    f2 += f1;
+    localRectF.right = (i / 2 + f2);
+    localRectF.bottom = (f2 + i / 2);
+    this.e.setStrokeWidth(i);
+    paramCanvas.drawCircle(f1, f1, f1, this.g);
     paramCanvas.save();
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 270.0F, 3.6F * this.d, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawArc(this.f, 270.0F, this.d * 3.6F, false, this.e);
     paramCanvas.restore();
     postInvalidateDelayed(20L);
   }
@@ -80,7 +84,7 @@ public class CircleProgressView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    setMeasuredDimension(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    setMeasuredDimension(this.a, this.b);
   }
   
   public void setCircleWidth(int paramInt)
@@ -90,8 +94,8 @@ public class CircleProgressView
   
   public void setMeasureSize(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
   public void setProgress(int paramInt)
@@ -111,7 +115,7 @@ public class CircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

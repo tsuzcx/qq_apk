@@ -14,22 +14,24 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bdin;
-import bdnn;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.R.id;
 import com.tencent.mobileqq.microapp.R.layout;
+import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
 import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 import java.util.Properties;
 import org.json.JSONException;
@@ -84,40 +86,31 @@ public class MiniAppVideoPlayer
   private void a(Activity paramActivity)
   {
     int i1 = paramActivity.getWindow().getDecorView().getSystemUiVisibility();
-    if (Build.VERSION.SDK_INT >= 21)
-    {
+    if (Build.VERSION.SDK_INT >= 21) {
       i1 = 5894;
-      if (Build.VERSION.SDK_INT < 19) {
-        break label64;
-      }
-      i1 |= 0x800;
-    }
-    for (;;)
-    {
-      paramActivity.getWindow().getDecorView().setSystemUiVisibility(i1);
-      return;
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
-      }
+    } else if (Build.VERSION.SDK_INT >= 16) {
       i1 = 1798;
-      break;
-      label64:
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      i1 |= 0x800;
+    } else {
       i1 |= 0x1;
     }
+    paramActivity.getWindow().getDecorView().setSystemUiVisibility(i1);
   }
   
   private void a(Context paramContext)
   {
     this.z = paramContext;
-    this.r = LayoutInflater.from(paramContext).inflate(R.layout.h, null);
-    this.t = ((FrameLayout)this.r.findViewById(R.id.ac));
-    this.y = ((FrameLayout)this.r.findViewById(R.id.bh));
-    this.w = ((ImageView)this.r.findViewById(R.id.bg));
-    this.x = ((ImageView)this.r.findViewById(R.id.ap));
+    this.r = LayoutInflater.from(paramContext).inflate(R.layout.b, null);
+    this.t = ((FrameLayout)this.r.findViewById(R.id.j));
+    this.y = ((FrameLayout)this.r.findViewById(R.id.r));
+    this.w = ((ImageView)this.r.findViewById(R.id.q));
+    this.x = ((ImageView)this.r.findViewById(R.id.k));
     this.x.setOnClickListener(this);
     addView(this.r);
     this.q = new MiniAppVideoPlayer.a(this);
-    com.tencent.mobileqq.microapp.c.a.a().a(new i(this));
+    com.tencent.mobileqq.microapp.a.a.a().a(new i(this));
   }
   
   private void b(Context paramContext)
@@ -127,106 +120,114 @@ public class MiniAppVideoPlayer
       TVK_SDKMgr.initSdk(getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
       this.aa = true;
     }
-    if (!TVK_SDKMgr.isInstalled(getContext())) {
+    if (!TVK_SDKMgr.isInstalled(getContext()))
+    {
       if (QLog.isColorLevel()) {
         QLog.d(this.a, 2, "TVK_SDK is not installed");
       }
+      return;
     }
-    do
-    {
-      do
-      {
-        return;
-        this.v = TVK_SDKMgr.getProxyFactory();
-      } while (this.v == null);
-      this.u = this.v.createVideoView_Scroll(paramContext);
-      this.s = this.v.createMediaPlayer(paramContext, this.u);
-    } while (this.s == null);
+    this.v = TVK_SDKMgr.getProxyFactory();
+    Object localObject = this.v;
+    if (localObject == null) {
+      return;
+    }
+    this.u = ((TVK_IProxyFactory)localObject).createVideoView_Scroll(paramContext);
+    this.s = this.v.createMediaPlayer(paramContext, this.u);
+    if (this.s == null) {
+      return;
+    }
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     this.ab = ((View)this.u);
     this.ab.setLayoutParams(paramContext);
     this.ab.setVisibility(0);
     this.s.setXYaxis(2);
-    if (!this.i)
-    {
-      if (bdnn.a(this.e)) {
-        break label468;
-      }
-      paramContext = URLDrawable.getDrawable(this.e, null);
-      if ((paramContext != null) && (this.w != null)) {
-        this.w.setImageDrawable(paramContext);
-      }
-    }
-    for (;;)
-    {
-      try
+    if (!this.i) {
+      if (!StringUtil.isEmpty(this.e))
       {
-        if (this.g)
+        paramContext = URLDrawable.getDrawable(this.e, null);
+        if (paramContext != null)
         {
-          paramContext = new Properties();
-          if (this.h)
-          {
-            paramContext.put("mHaveDanmu", "true");
-            this.s.attachDanmuView();
+          localObject = this.w;
+          if (localObject != null) {
+            ((ImageView)localObject).setImageDrawable(paramContext);
           }
-          if (this.k) {
-            paramContext.put("mHaveCacheDownload", "true");
-          }
-          this.s.attachControllerView(paramContext);
         }
       }
-      catch (IllegalAccessException paramContext)
+      else if (!StringUtil.isEmpty(this.l))
       {
-        label468:
-        paramContext.printStackTrace();
-        continue;
+        c.a(this.l, new j(this));
       }
-      this.s.setOnControllerClickListener(new k(this));
-      this.s.setOnVideoPreparedListener(new l(this));
-      this.s.setOnCompletionListener(new m(this));
-      this.s.setOnErrorListener(new p(this));
-      this.s.setOnInfoListener(new q(this));
-      this.s.setOnSeekCompleteListener(new r(this));
-      this.y.setVisibility(0);
-      this.t.removeAllViews();
-      this.t.addView(this.ab);
-      this.t.setBackgroundColor(-16777216);
-      if ((this.ac <= 0L) || (!bdin.h(this.z))) {
-        break;
+    }
+    try
+    {
+      if (this.g)
+      {
+        paramContext = new Properties();
+        boolean bool = this.h;
+        if (bool)
+        {
+          paramContext.put("mHaveDanmu", "true");
+          this.s.attachDanmuView();
+        }
+        if (this.k) {
+          paramContext.put("mHaveCacheDownload", "true");
+        }
+        this.s.attachControllerView(paramContext);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "play current pos is: " + this.ac);
+    }
+    catch (IllegalAccessException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    this.s.setOnControllerClickListener(new k(this));
+    this.s.setOnVideoPreparedListener(new l(this));
+    this.s.setOnCompletionListener(new m(this));
+    this.s.setOnErrorListener(new p(this));
+    this.s.setOnInfoListener(new q(this));
+    this.s.setOnSeekCompleteListener(new r(this));
+    this.y.setVisibility(0);
+    this.t.removeAllViews();
+    this.t.addView(this.ab);
+    this.t.setBackgroundColor(-16777216);
+    if ((this.ac > 0L) && (NetworkUtil.isWifiConnected(this.z)))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramContext = this.a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("play current pos is: ");
+        ((StringBuilder)localObject).append(this.ac);
+        QLog.d(paramContext, 2, ((StringBuilder)localObject).toString());
       }
       a(this.ac);
-      return;
-      if (!bdnn.a(this.l)) {
-        com.tencent.mobileqq.microapp.b.a.a(this.l, new j(this));
-      }
     }
   }
   
   private void h()
   {
-    if ((this.m == null) || (this.m.get() == null)) {}
-    AppBrandUI localAppBrandUI;
-    FrameLayout localFrameLayout;
-    ViewGroup localViewGroup;
-    do
+    Object localObject = this.m;
+    if (localObject != null)
     {
-      return;
-      localAppBrandUI = (AppBrandUI)this.m.get();
-      localFrameLayout = this.n.appBrandRuntime.g.fullScreenLayout;
-      localViewGroup = (ViewGroup)this.ab.getParent();
-    } while (localViewGroup == null);
-    localViewGroup.removeAllViews();
-    this.p = true;
-    localAppBrandUI.getWindow().setFlags(1024, 1024);
-    localAppBrandUI.getWindow().getDecorView().setSystemUiVisibility(2);
-    localAppBrandUI.setRequestedOrientation(0);
-    a(localAppBrandUI);
-    localFrameLayout.addView(this.ab);
-    localFrameLayout.setVisibility(0);
-    localFrameLayout.bringToFront();
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
+      localObject = (AppBrandUI)this.m.get();
+      FrameLayout localFrameLayout = this.n.appBrandRuntime.g.fullScreenLayout;
+      ViewGroup localViewGroup = (ViewGroup)this.ab.getParent();
+      if (localViewGroup == null) {
+        return;
+      }
+      localViewGroup.removeAllViews();
+      this.p = true;
+      ((AppBrandUI)localObject).getWindow().setFlags(1024, 1024);
+      ((AppBrandUI)localObject).getWindow().getDecorView().setSystemUiVisibility(2);
+      ((AppBrandUI)localObject).setRequestedOrientation(0);
+      a((Activity)localObject);
+      localFrameLayout.addView(this.ab);
+      localFrameLayout.setVisibility(0);
+      localFrameLayout.bringToFront();
+    }
   }
   
   public void a()
@@ -236,7 +237,7 @@ public class MiniAppVideoPlayer
   
   public void a(long paramLong)
   {
-    if (bdnn.a(this.l)) {
+    if (StringUtil.isEmpty(this.l)) {
       return;
     }
     this.f = true;
@@ -248,41 +249,46 @@ public class MiniAppVideoPlayer
       ((TVK_PlayerVideoInfo)localObject).setPlayType(38);
       this.s.setLoopback(true);
     }
-    if ((this.l.startsWith("http")) || (this.l.startsWith("https"))) {
+    if ((!this.l.startsWith("http")) && (!this.l.startsWith("https"))) {
+      ((TVK_PlayerVideoInfo)localObject).setPlayType(4);
+    } else {
       ((TVK_PlayerVideoInfo)localObject).setPlayType(5);
     }
-    for (;;)
+    if (this.h) {
+      this.s.startPlayDanmu();
+    }
+    this.s.openMediaPlayerByUrl(getContext(), this.l, paramLong, 0L, (TVK_PlayerVideoInfo)localObject);
+    this.y.setVisibility(8);
+    try
     {
-      if (this.h) {
-        this.s.startPlayDanmu();
-      }
-      this.s.openMediaPlayerByUrl(getContext(), this.l, paramLong, 0L, (TVK_PlayerVideoInfo)localObject);
-      this.y.setVisibility(8);
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("data", this.b);
-        this.c.evaluteJs("WeixinJSBridge.subscribeHandler(\"onVideoPlay\", " + localObject + "," + this.d + ")");
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return;
-      }
-      localJSONException.setPlayType(4);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("data", this.b);
+      ServiceWebview localServiceWebview = this.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onVideoPlay\", ");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append(")");
+      localServiceWebview.evaluteJs(localStringBuilder.toString());
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
   }
   
   public void a(String paramString)
   {
-    if (paramString.startsWith("wxfile")) {
-      this.l = b.a().d(paramString);
-    }
-    while ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
+    if (paramString.startsWith("wxfile"))
+    {
+      this.l = b.a().c(paramString);
       return;
     }
-    this.l = paramString;
+    if ((paramString.startsWith("http")) || (paramString.startsWith("https"))) {
+      this.l = paramString;
+    }
   }
   
   public void a(JSONObject paramJSONObject)
@@ -300,12 +306,13 @@ public class MiniAppVideoPlayer
     paramJSONObject.optBoolean("showCenterPlayBtn");
     paramJSONObject.optBoolean("showFullScreenBtn");
     paramJSONObject.optBoolean("enableProgressGesture");
-    if (bdnn.a(this.e)) {
+    if (StringUtil.isEmpty(this.e)) {
       this.e = paramJSONObject.optString("poster");
     }
     paramJSONObject.optInt("initialTime");
-    if (this.s != null) {
-      this.ac = this.s.getCurrentPostion();
+    paramJSONObject = this.s;
+    if (paramJSONObject != null) {
+      this.ac = paramJSONObject.getCurrentPostion();
     }
   }
   
@@ -319,15 +326,21 @@ public class MiniAppVideoPlayer
   
   public void b(String paramString)
   {
-    if (this.s != null) {
-      this.s.addDanmuContentForLocal(paramString);
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.s;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.addDanmuContentForLocal(paramString);
     }
   }
   
   public void b(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "initVideoPlayerSettings isFullScreen: " + this.p);
+    if (QLog.isColorLevel())
+    {
+      String str = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initVideoPlayerSettings isFullScreen: ");
+      localStringBuilder.append(this.p);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if (this.p) {
       return;
@@ -339,19 +352,27 @@ public class MiniAppVideoPlayer
   public void c()
   {
     this.f = false;
-    if (this.s.isPlaying()) {
+    if (this.s.isPlaying())
+    {
       this.s.pause();
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("data", this.b);
-      this.c.evaluteJs("WeixinJSBridge.subscribeHandler(\"onVideoPause\", " + localJSONObject + "," + this.d + ")");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("data", this.b);
+        ServiceWebview localServiceWebview = this.c;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onVideoPause\", ");
+        localStringBuilder.append(localJSONObject);
+        localStringBuilder.append(",");
+        localStringBuilder.append(this.d);
+        localStringBuilder.append(")");
+        localServiceWebview.evaluteJs(localStringBuilder.toString());
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
   
@@ -372,41 +393,50 @@ public class MiniAppVideoPlayer
   
   public void g()
   {
-    if ((this.m == null) || (this.m.get() == null)) {}
-    Object localObject;
-    do
+    Object localObject = this.m;
+    if (localObject != null)
     {
-      do
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
+      if (!this.p) {
+        return;
+      }
+      this.ac = this.s.getCurrentPostion();
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return;
-        } while (!this.p);
-        this.ac = this.s.getCurrentPostion();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, "smallScreen current pos is: " + this.ac);
+        localObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("smallScreen current pos is: ");
+        localStringBuilder.append(this.ac);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
+      this.p = false;
+      localObject = this.n.appBrandRuntime.g.fullScreenLayout;
+      ((FrameLayout)localObject).setVisibility(8);
+      ((FrameLayout)localObject).removeAllViews();
+      localObject = (AppBrandUI)this.m.get();
+      if (localObject != null)
+      {
+        ((AppBrandUI)localObject).setRequestedOrientation(1);
+        if (Build.VERSION.SDK_INT >= 16) {
+          ((AppBrandUI)localObject).getWindow().getDecorView().setSystemUiVisibility(0);
         }
-        this.p = false;
-        localObject = this.n.appBrandRuntime.g.fullScreenLayout;
-        ((FrameLayout)localObject).setVisibility(8);
-        ((FrameLayout)localObject).removeAllViews();
-        localObject = (AppBrandUI)this.m.get();
-      } while (localObject == null);
-      ((AppBrandUI)localObject).setRequestedOrientation(1);
-    } while (Build.VERSION.SDK_INT < 16);
-    ((AppBrandUI)localObject).getWindow().getDecorView().setSystemUiVisibility(0);
+      }
+    }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == R.id.ap) {
+    if (paramView.getId() == R.id.k) {
       a(e());
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.MiniAppVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

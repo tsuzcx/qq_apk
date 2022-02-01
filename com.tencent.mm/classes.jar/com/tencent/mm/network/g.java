@@ -1,87 +1,112 @@
 package com.tencent.mm.network;
 
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.network.a.b;
+import com.tencent.mm.protocal.ab;
+import java.util.List;
 
 public abstract interface g
-  extends IInterface
 {
-  public abstract void gd(int paramInt);
+  public abstract void Mb(String paramString);
   
-  public static abstract class a
-    extends Binder
-    implements g
-  {
-    public a()
-    {
-      attachInterface(this, "com.tencent.mm.network.IIpxxCallback_AIDL");
-    }
-    
-    public IBinder asBinder()
-    {
-      return this;
-    }
-    
-    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-    {
-      switch (paramInt1)
-      {
-      default: 
-        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-      case 1598968902: 
-        paramParcel2.writeString("com.tencent.mm.network.IIpxxCallback_AIDL");
-        return true;
-      }
-      paramParcel1.enforceInterface("com.tencent.mm.network.IIpxxCallback_AIDL");
-      gd(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    }
-    
-    static final class a
-      implements g
-    {
-      private IBinder mRemote;
-      
-      a(IBinder paramIBinder)
-      {
-        this.mRemote = paramIBinder;
-      }
-      
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final void gd(int paramInt)
-      {
-        AppMethodBeat.i(58517);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.network.IIpxxCallback_AIDL");
-          localParcel1.writeInt(paramInt);
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(58517);
-        }
-      }
-    }
-  }
+  public abstract void Mc(String paramString);
+  
+  public abstract void Md(String paramString);
+  
+  public abstract String[] Me(String paramString);
+  
+  public abstract int a(t paramt, n paramn);
+  
+  public abstract int a(String paramString1, int paramInt, long paramLong, String paramString2, String paramString3);
+  
+  public abstract int a(String paramString, boolean paramBoolean, List<String> paramList);
+  
+  public abstract int a(int[] paramArrayOfInt, boolean paramBoolean, long paramLong, String paramString);
+  
+  public abstract void a(b paramb);
+  
+  public abstract void a(i parami);
+  
+  public abstract void a(j paramj);
+  
+  public abstract void a(q paramq);
+  
+  public abstract void a(ab paramab);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
+  
+  public abstract int ackActionNotify(String paramString, long paramLong, int paramInt);
+  
+  public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  
+  public abstract void bFP();
+  
+  public abstract boolean bFR();
+  
+  public abstract e bGg();
+  
+  public abstract k bGh();
+  
+  public abstract void bGi();
+  
+  public abstract void bGj();
+  
+  public abstract String[] bGk();
+  
+  public abstract void cancel(int paramInt);
+  
+  public abstract void clearMMtlsForbidenHostAndPsk();
+  
+  public abstract int doLiveSpeedTest(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, u paramu);
+  
+  public abstract void forceUseV6(boolean paramBoolean);
+  
+  public abstract int getHostByName(String paramString, List<String> paramList);
+  
+  public abstract String[] getIPsString(boolean paramBoolean);
+  
+  public abstract String getIspId();
+  
+  public abstract int getMMtlsRegion();
+  
+  public abstract long getMarsTimestamp();
+  
+  public abstract String getNetworkServerIp();
+  
+  public abstract void ha(boolean paramBoolean);
+  
+  public abstract void hb(boolean paramBoolean);
+  
+  public abstract void hc(boolean paramBoolean);
+  
+  public abstract void hd(boolean paramBoolean);
+  
+  public abstract void keepSignalling();
+  
+  public abstract void reportFailIp(String paramString);
+  
+  public abstract void reportV6Status(boolean paramBoolean);
+  
+  public abstract void reset();
+  
+  public abstract void setDebugHost(String paramString);
+  
+  public abstract void setHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  
+  public abstract void setMMtlsRegion(int paramInt);
+  
+  public abstract void setNetIdAndIsp(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void setSignallingStrategy(long paramLong1, long paramLong2);
+  
+  public abstract void simpleTestCommand(String paramString);
+  
+  public abstract void stopSignalling();
+  
+  public abstract void switchProcessActiveState(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import axsq;
-import axxq;
+import com.tencent.mobileqq.richmedia.server.ChannelStateManager;
 
-public class ConnManager$2
+class ConnManager$2
   implements Runnable
 {
-  public ConnManager$2(axsq paramaxsq, long paramLong) {}
+  ConnManager$2(ConnManager paramConnManager, long paramLong) {}
   
   public void run()
   {
-    axsq.a(this.this$0).b(10);
-    this.this$0.a(axsq.a(this.this$0), this.a);
+    ConnManager.a(this.this$0).b(10);
+    ConnManager localConnManager = this.this$0;
+    localConnManager.a(ConnManager.b(localConnManager), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.ConnManager.2
  * JD-Core Version:    0.7.0.1
  */

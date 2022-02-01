@@ -3,6 +3,7 @@ package rx.subscriptions;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collection<Lrx.Subscription;>;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -28,36 +29,27 @@ public final class CompositeSubscription
     if (paramCollection == null) {
       return;
     }
-    Subscription localSubscription = null;
+    Object localObject = null;
     Iterator localIterator = paramCollection.iterator();
-    paramCollection = localSubscription;
-    for (;;)
+    paramCollection = (Collection<Subscription>)localObject;
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break label68;
-      }
-      localSubscription = (Subscription)localIterator.next();
+      localObject = (Subscription)localIterator.next();
       try
       {
-        localSubscription.unsubscribe();
+        ((Subscription)localObject).unsubscribe();
       }
       catch (Throwable localThrowable)
       {
-        if (paramCollection != null) {
-          break label73;
+        localObject = paramCollection;
+        if (paramCollection == null) {
+          localObject = new ArrayList();
         }
+        ((List)localObject).add(localThrowable);
+        paramCollection = (Collection<Subscription>)localObject;
       }
     }
-    paramCollection = new ArrayList();
-    label68:
-    label73:
-    for (;;)
-    {
-      paramCollection.add(localThrowable);
-      break;
-      Exceptions.throwIfAny(paramCollection);
-      return;
-    }
+    Exceptions.throwIfAny(paramCollection);
   }
   
   public void add(Subscription paramSubscription)
@@ -87,12 +79,13 @@ public final class CompositeSubscription
     if (!this.unsubscribed) {
       try
       {
-        if ((this.unsubscribed) || (this.subscriptions == null)) {
+        if ((!this.unsubscribed) && (this.subscriptions != null))
+        {
+          Set localSet = this.subscriptions;
+          this.subscriptions = null;
+          unsubscribeFromAll(localSet);
           return;
         }
-        Set localSet = this.subscriptions;
-        this.subscriptions = null;
-        unsubscribeFromAll(localSet);
         return;
       }
       finally {}
@@ -101,10 +94,11 @@ public final class CompositeSubscription
   
   public boolean hasSubscriptions()
   {
+    boolean bool1 = this.unsubscribed;
     boolean bool2 = false;
-    if (!this.unsubscribed)
+    if (!bool1)
     {
-      boolean bool1 = bool2;
+      bool1 = bool2;
       try
       {
         if (!this.unsubscribed)
@@ -135,15 +129,14 @@ public final class CompositeSubscription
     if (!this.unsubscribed) {
       try
       {
-        if ((this.unsubscribed) || (this.subscriptions == null)) {
-          return;
-        }
-        boolean bool = this.subscriptions.remove(paramSubscription);
-        if (bool)
+        if ((!this.unsubscribed) && (this.subscriptions != null))
         {
-          paramSubscription.unsubscribe();
-          return;
+          boolean bool = this.subscriptions.remove(paramSubscription);
+          if (bool) {
+            paramSubscription.unsubscribe();
+          }
         }
+        else {}
       }
       finally {}
     }
@@ -169,7 +162,7 @@ public final class CompositeSubscription
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.subscriptions.CompositeSubscription
  * JD-Core Version:    0.7.0.1
  */

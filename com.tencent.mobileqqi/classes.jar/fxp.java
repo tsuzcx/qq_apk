@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public class fxp
+public final class fxp
+  implements Parcelable.Creator
 {
-  public long a;
-  public String a;
-  public long b;
+  public ForwardFileInfo a(Parcel paramParcel)
+  {
+    return new ForwardFileInfo(paramParcel, null);
+  }
   
-  public fxp(FileManagerProxy paramFileManagerProxy) {}
+  public ForwardFileInfo[] a(int paramInt)
+  {
+    return new ForwardFileInfo[paramInt];
+  }
 }
 
 

@@ -1,121 +1,99 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
-import java.util.LinkedList;
 
 public final class bfn
-  extends buy
+  extends com.tencent.mm.bx.a
 {
-  public SKBuiltinBuffer_t wtq;
+  public int ZPu;
+  public int ZPv;
+  public int ZPw;
+  public String background_color;
+  public String id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(54244);
+    AppMethodBeat.i(258352);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wtq == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Buffer");
-        AppMethodBeat.o(54244);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.id != null) {
+        paramVarArgs.g(1, this.id);
       }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.bS(2, this.ZPu);
+      paramVarArgs.bS(3, this.ZPv);
+      if (this.background_color != null) {
+        paramVarArgs.g(4, this.background_color);
       }
-      if (this.wtq != null)
-      {
-        paramVarArgs.iQ(2, this.wtq.computeSize());
-        this.wtq.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(54244);
+      paramVarArgs.bS(5, this.ZPw);
+      AppMethodBeat.o(258352);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label514;
+      if (this.id == null) {
+        break label402;
       }
     }
-    label514:
-    for (paramInt = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label402:
+    for (paramInt = i.a.a.b.b.a.h(1, this.id) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.wtq != null) {
-        i = paramInt + e.a.a.a.iP(2, this.wtq.computeSize());
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.ZPu) + i.a.a.b.b.a.cJ(3, this.ZPv);
+      paramInt = i;
+      if (this.background_color != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.background_color);
       }
-      AppMethodBeat.o(54244);
-      return i;
+      i = i.a.a.b.b.a.cJ(5, this.ZPw);
+      AppMethodBeat.o(258352);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.wtq == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Buffer");
-          AppMethodBeat.o(54244);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(54244);
+        AppMethodBeat.o(258352);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bfn localbfn = (bfn)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(54244);
+          AppMethodBeat.o(258352);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localbfn.BaseRequest = ((hq)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(54244);
+          localbfn.id = locala.ajGk.readString();
+          AppMethodBeat.o(258352);
+          return 0;
+        case 2: 
+          localbfn.ZPu = locala.ajGk.aar();
+          AppMethodBeat.o(258352);
+          return 0;
+        case 3: 
+          localbfn.ZPv = locala.ajGk.aar();
+          AppMethodBeat.o(258352);
+          return 0;
+        case 4: 
+          localbfn.background_color = locala.ajGk.readString();
+          AppMethodBeat.o(258352);
           return 0;
         }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localbfn.wtq = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(54244);
+        localbfn.ZPw = locala.ajGk.aar();
+        AppMethodBeat.o(258352);
         return 0;
       }
-      AppMethodBeat.o(54244);
+      AppMethodBeat.o(258352);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bfn
  * JD-Core Version:    0.7.0.1
  */

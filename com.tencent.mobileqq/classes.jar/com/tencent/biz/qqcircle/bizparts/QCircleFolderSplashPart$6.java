@@ -1,22 +1,21 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import com.tencent.qphone.base.util.QLog;
-import tsk;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class QCircleFolderSplashPart$6
-  implements Runnable
+class QCircleFolderSplashPart$6
+  implements MediaPlayer.OnCompletionListener
 {
-  public QCircleFolderSplashPart$6(tsk paramtsk) {}
+  QCircleFolderSplashPart$6(QCircleFolderSplashPart paramQCircleFolderSplashPart) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    QLog.d("QCircleFolderSplashPart", 4, "mDownloadAPacketRunnable run...");
-    tsk.c(this.this$0);
+    QCircleFolderSplashPart.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.bizparts.QCircleFolderSplashPart.6
  * JD-Core Version:    0.7.0.1
  */

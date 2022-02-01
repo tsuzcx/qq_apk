@@ -3,9 +3,9 @@ package cooperation.qzone.report.lp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bjdm;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,7 +30,7 @@ public class LpReportInfo_dc04233
   
   private boolean isNeedReport()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("king_card_sp", 0);
+    SharedPreferences localSharedPreferences = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getSharedPreferences("king_card_sp");
     Object localObject = localSharedPreferences.getString("lastReportTime", "");
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date localDate = new Date();
@@ -42,39 +42,53 @@ public class LpReportInfo_dc04233
     try
     {
       localObject = localSimpleDateFormat.parse((String)localObject);
-      double d = (localDate.getTime() - ((Date)localObject).getTime()) * 1.0D / 3600000.0D;
-      if (QLog.isColorLevel()) {
-        QLog.i("LpReportInfo_dc04233", 2, "dc04233 offest time = " + d);
+      long l1 = localDate.getTime();
+      long l2 = ((Date)localObject).getTime();
+      double d = l1 - l2;
+      Double.isNaN(d);
+      d = d * 1.0D / 3600000.0D;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("dc04233 offest time = ");
+        ((StringBuilder)localObject).append(d);
+        QLog.i("LpReportInfo_dc04233", 2, ((StringBuilder)localObject).toString());
       }
       if (d >= 24.0D)
       {
         localSharedPreferences.edit().putString("lastReportTime", localSimpleDateFormat.format(localDate)).apply();
         return true;
       }
+      return false;
     }
     catch (ParseException localParseException)
     {
       localParseException.printStackTrace();
       localSharedPreferences.edit().putString("lastReportTime", localSimpleDateFormat.format(localDate)).apply();
-      return true;
     }
-    return false;
+    return true;
   }
   
   public String getSimpleInfo()
   {
-    return "dc04233 uin: " + this.uin + " isKingCard: " + this.isKingCard;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc04233 uin: ");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(" isKingCard: ");
+    localStringBuilder.append(this.isKingCard);
+    return localStringBuilder.toString();
   }
   
   public void report()
   {
-    if (isNeedReport()) {
+    if (isNeedReport())
+    {
       LpReportManager.getInstance().reportToDC04233(this, false, false);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i("LpReportInfo_dc04233", 2, "dc04233 has report");
+    if (QLog.isColorLevel()) {
+      QLog.i("LpReportInfo_dc04233", 2, "dc04233 has report");
+    }
   }
   
   public Map<String, String> toMap()
@@ -82,13 +96,13 @@ public class LpReportInfo_dc04233
     HashMap localHashMap = new HashMap();
     localHashMap.put("uin", String.valueOf(this.uin));
     localHashMap.put("is_kingcard", String.valueOf(this.isKingCard));
-    LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
+    LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04233
  * JD-Core Version:    0.7.0.1
  */

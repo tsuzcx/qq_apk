@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingTop="14.0dip" android:paddingBottom="20.0dip" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/tk"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a4y" android:id="@android:id/title" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/ny" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/a4x" android:id="@android:id/summary" android:paddingLeft="9.0dip" android:paddingTop="3.0dip" android:paddingRight="9.0dip" android:paddingBottom="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:singleLine="false" android:includeFontPadding="false" android:layout_below="@android:id/title" android:lineSpacingExtra="2.0dip" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@drawable/aqu" android:id="@id/gz3" android:padding="2.0dip" android:focusable="false" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ie2" android:singleLine="true" android:layout_below="@android:id/summary" android:layout_alignParentRight="true" style="@style/m4" />
+</RelativeLayout>

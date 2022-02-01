@@ -20,33 +20,34 @@ class VPageSlider$1
       return;
     }
     JSONObject localJSONObject = new JSONObject();
+    String str;
     try
     {
       localJSONObject.put("index", paramInt);
-      JSONArray localJSONArray = new JSONArray();
-      if (((VPageSliderView)this.this$0.getHostView()).getComponent().getDomObject() != null)
-      {
-        String str = ((VPageSliderView)this.this$0.getHostView()).getComponent().getDomObject().getRef();
-        if (str != null) {
-          localJSONArray.put(str);
-        }
-      }
-      localJSONArray.put("change");
-      VPageSlider.access$000(this.this$0, "change", localJSONArray, localJSONObject);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e(VPageSlider.TAG, "change error :" + localException.getMessage());
+      str = VPageSlider.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("change error :");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e(str, localStringBuilder.toString());
+    }
+    JSONArray localJSONArray = new JSONArray();
+    if (((VPageSliderView)this.this$0.getHostView()).getComponent().getDomObject() != null)
+    {
+      str = ((VPageSliderView)this.this$0.getHostView()).getComponent().getDomObject().getRef();
+      if (str != null) {
+        localJSONArray.put(str);
       }
     }
+    localJSONArray.put("change");
+    VPageSlider.access$000(this.this$0, "change", localJSONArray, localJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VPageSlider.1
  * JD-Core Version:    0.7.0.1
  */

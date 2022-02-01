@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bqz" android:background="@null" android:layout_width="@dimen/axd" android:layout_height="@dimen/axd"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/a8a" android:background="@drawable/b2z" android:layout_width="@dimen/axe" android:layout_height="@dimen/axe" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/br7" android:paddingLeft="@dimen/axc" android:paddingTop="@dimen/axc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/f1c" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@raw/webview_bag_indicator_icon_normal" />
+        <TextView android:textSize="12.0dip" android:textColor="#7fffffff" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/lep" />
+    </LinearLayout>
+</RelativeLayout>

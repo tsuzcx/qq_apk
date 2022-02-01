@@ -1,25 +1,15 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.luggage.a.b;
 
-public final class i
-  extends h
+public abstract interface i
+  extends b
 {
-  public i(com.tencent.mm.plugin.appbrand.i parami)
-  {
-    super(parami);
-  }
-  
-  public final void Ez(String paramString)
-  {
-    AppMethodBeat.i(132509);
-    b.k(this.gRG, paramString);
-    AppMethodBeat.o(132509);
-  }
+  public abstract boolean afq(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.i
  * JD-Core Version:    0.7.0.1
  */

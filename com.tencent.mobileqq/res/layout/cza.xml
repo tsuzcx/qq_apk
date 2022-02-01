@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/idg" android:background="@color/qcircle_skin_color_bg_default" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/n1_" android:paddingTop="50.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/czd" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/p46" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="76.0dip" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/p48" android:visibility="visible" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/qcircle_skin_btn_newpost" android:scaleType="fitCenter" />
+    <ViewStub android:id="@id/myk" android:visibility="gone" android:layout="@layout/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p_q" android:visibility="gone" android:layout="@layout/cyi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView android:id="@id/pb9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p7o" android:layout="@layout/czi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" />
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/p_3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="164.0dip" android:scaleType="centerCrop" />
+    <ViewStub android:id="@id/qzl" android:layout="@layout/cvm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/p_4" android:layout="@layout/cxq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bnt" />
+</FrameLayout>

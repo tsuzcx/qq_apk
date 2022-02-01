@@ -10,28 +10,28 @@ public class zze
   
   static
   {
-    AppMethodBeat.i(57622);
+    AppMethodBeat.i(2576);
     zzf = zze.class.getClassLoader();
-    AppMethodBeat.o(57622);
+    AppMethodBeat.o(2576);
   }
   
   public static void zzd(Parcel paramParcel, Parcelable paramParcelable)
   {
-    AppMethodBeat.i(57621);
+    AppMethodBeat.i(2575);
     if (paramParcelable == null)
     {
       paramParcel.writeInt(0);
-      AppMethodBeat.o(57621);
+      AppMethodBeat.o(2575);
       return;
     }
     paramParcel.writeInt(1);
     paramParcelable.writeToParcel(paramParcel, 0);
-    AppMethodBeat.o(57621);
+    AppMethodBeat.o(2575);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.internal.gcm.zze
  * JD-Core Version:    0.7.0.1
  */

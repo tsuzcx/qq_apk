@@ -1,145 +1,103 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.Path.FillType;
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableGradientColorValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableIntegerValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue;
 import com.tencent.mobileqq.dinifly.model.content.GradientFill;
 import com.tencent.mobileqq.dinifly.model.content.GradientType;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
+import java.util.Collections;
 
 class GradientFillParser
 {
+  private static final JsonReader.Options GRADIENT_NAMES = JsonReader.Options.of(new String[] { "p", "k" });
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "g", "o", "t", "s", "e", "r", "hd" });
+  
   static GradientFill parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    String str1 = null;
-    AnimatableGradientColorValue localAnimatableGradientColorValue = null;
-    AnimatableIntegerValue localAnimatableIntegerValue = null;
-    GradientType localGradientType = null;
-    AnimatablePointValue localAnimatablePointValue2 = null;
-    AnimatablePointValue localAnimatablePointValue1 = null;
-    Path.FillType localFillType = Path.FillType.WINDING;
+    Object localObject6 = Path.FillType.WINDING;
+    Object localObject8 = null;
+    String str = null;
+    Object localObject1 = str;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
+    Object localObject4 = localObject3;
     boolean bool = false;
-    label26:
-    while (paramJsonReader.hasNext())
-    {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+    Object localObject5 = localObject2;
+    Object localObject7 = localObject1;
+    localObject1 = localObject8;
+    while (paramJsonReader.hasNext()) {
+      switch (paramJsonReader.selectName(NAMES))
       {
-      }
-      for (;;)
-      {
-        switch (i)
+      default: 
+        paramJsonReader.skipName();
+        paramJsonReader.skipValue();
+        break;
+      case 7: 
+        bool = paramJsonReader.nextBoolean();
+        break;
+      case 6: 
+        if (paramJsonReader.nextInt() == 1) {
+          localObject2 = Path.FillType.WINDING;
+        } else {
+          localObject2 = Path.FillType.EVEN_ODD;
+        }
+        localObject6 = localObject2;
+        break;
+      case 5: 
+        localObject4 = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
+        break;
+      case 4: 
+        localObject3 = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
+        break;
+      case 3: 
+        if (paramJsonReader.nextInt() == 1) {
+          localObject2 = GradientType.LINEAR;
+        } else {
+          localObject2 = GradientType.RADIAL;
+        }
+        localObject7 = localObject2;
+        break;
+      case 2: 
+        localObject1 = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
+        break;
+      case 1: 
+        int i = -1;
+        paramJsonReader.beginObject();
+        while (paramJsonReader.hasNext())
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label26;
-          if (str2.equals("nm"))
+          int j = paramJsonReader.selectName(GRADIENT_NAMES);
+          if (j != 0)
           {
-            i = 0;
-            continue;
-            if (str2.equals("g"))
+            if (j != 1)
             {
-              i = 1;
-              continue;
-              if (str2.equals("o"))
-              {
-                i = 2;
-                continue;
-                if (str2.equals("t"))
-                {
-                  i = 3;
-                  continue;
-                  if (str2.equals("s"))
-                  {
-                    i = 4;
-                    continue;
-                    if (str2.equals("e"))
-                    {
-                      i = 5;
-                      continue;
-                      if (str2.equals("r"))
-                      {
-                        i = 6;
-                        continue;
-                        if (str2.equals("hd")) {
-                          i = 7;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+              paramJsonReader.skipName();
+              paramJsonReader.skipValue();
+            }
+            else
+            {
+              localObject5 = AnimatableValueParser.parseGradientColor(paramJsonReader, paramLottieComposition, i);
             }
           }
-          break;
-        }
-      }
-      str1 = paramJsonReader.nextString();
-      continue;
-      int j = -1;
-      paramJsonReader.beginObject();
-      label312:
-      while (paramJsonReader.hasNext())
-      {
-        str2 = paramJsonReader.nextName();
-        i = -1;
-        switch (str2.hashCode())
-        {
-        }
-        for (;;)
-        {
-          switch (i)
-          {
-          default: 
-            paramJsonReader.skipValue();
-            break label312;
-            if (str2.equals("p"))
-            {
-              i = 0;
-              continue;
-              if (str2.equals("k")) {
-                i = 1;
-              }
-            }
-            break;
+          else {
+            i = paramJsonReader.nextInt();
           }
         }
-        j = paramJsonReader.nextInt();
-        continue;
-        localAnimatableGradientColorValue = AnimatableValueParser.parseGradientColor(paramJsonReader, paramLottieComposition, j);
-      }
-      paramJsonReader.endObject();
-      continue;
-      localAnimatableIntegerValue = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
-      continue;
-      if (paramJsonReader.nextInt() == 1)
-      {
-        localGradientType = GradientType.LINEAR;
-      }
-      else
-      {
-        localGradientType = GradientType.RADIAL;
-        continue;
-        localAnimatablePointValue2 = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
-        continue;
-        localAnimatablePointValue1 = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
-        continue;
-        if (paramJsonReader.nextInt() == 1)
-        {
-          localFillType = Path.FillType.WINDING;
-        }
-        else
-        {
-          localFillType = Path.FillType.EVEN_ODD;
-          continue;
-          bool = paramJsonReader.nextBoolean();
-        }
+        paramJsonReader.endObject();
+        break;
+      case 0: 
+        str = paramJsonReader.nextString();
       }
     }
-    return new GradientFill(str1, localGradientType, localFillType, localAnimatableGradientColorValue, localAnimatableIntegerValue, localAnimatablePointValue2, localAnimatablePointValue1, null, null, bool);
+    paramJsonReader = (JsonReader)localObject1;
+    if (localObject1 == null) {
+      paramJsonReader = new AnimatableIntegerValue(Collections.singletonList(new Keyframe(Integer.valueOf(100))));
+    }
+    return new GradientFill(str, localObject7, (Path.FillType)localObject6, (AnimatableGradientColorValue)localObject5, paramJsonReader, (AnimatablePointValue)localObject3, (AnimatablePointValue)localObject4, null, null, bool);
   }
 }
 

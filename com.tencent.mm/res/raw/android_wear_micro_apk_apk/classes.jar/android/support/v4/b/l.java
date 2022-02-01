@@ -20,12 +20,12 @@ final class l
   
   public final void clear()
   {
-    this.jr.bh();
+    this.lo.by();
   }
   
   public final boolean contains(Object paramObject)
   {
-    return this.jr.k(paramObject) >= 0;
+    return this.lo.r(paramObject) >= 0;
   }
   
   public final boolean containsAll(Collection<?> paramCollection)
@@ -41,20 +41,20 @@ final class l
   
   public final boolean isEmpty()
   {
-    return this.jr.bf() == 0;
+    return this.lo.bw() == 0;
   }
   
   public final Iterator<V> iterator()
   {
-    return new h(this.jr, 1);
+    return new h(this.lo, 1);
   }
   
   public final boolean remove(Object paramObject)
   {
-    int i = this.jr.k(paramObject);
+    int i = this.lo.r(paramObject);
     if (i >= 0)
     {
-      this.jr.p(i);
+      this.lo.z(i);
       return true;
     }
     return false;
@@ -62,16 +62,16 @@ final class l
   
   public final boolean removeAll(Collection<?> paramCollection)
   {
-    int j = this.jr.bf();
+    int j = this.lo.bw();
     int i = 0;
     boolean bool = false;
     while (i < j)
     {
       int m = i;
       int k = j;
-      if (paramCollection.contains(this.jr.b(i, 1)))
+      if (paramCollection.contains(this.lo.b(i, 1)))
       {
-        this.jr.p(i);
+        this.lo.z(i);
         m = i - 1;
         k = j - 1;
         bool = true;
@@ -84,16 +84,16 @@ final class l
   
   public final boolean retainAll(Collection<?> paramCollection)
   {
-    int j = this.jr.bf();
+    int j = this.lo.bw();
     int i = 0;
     boolean bool = false;
     while (i < j)
     {
       int m = i;
       int k = j;
-      if (!paramCollection.contains(this.jr.b(i, 1)))
+      if (!paramCollection.contains(this.lo.b(i, 1)))
       {
-        this.jr.p(i);
+        this.lo.z(i);
         m = i - 1;
         k = j - 1;
         bool = true;
@@ -106,17 +106,17 @@ final class l
   
   public final int size()
   {
-    return this.jr.bf();
+    return this.lo.bw();
   }
   
   public final Object[] toArray()
   {
-    return this.jr.s(1);
+    return this.lo.C(1);
   }
   
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
-    return this.jr.a(paramArrayOfT, 1);
+    return this.lo.a(paramArrayOfT, 1);
   }
 }
 

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/ep9" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/ep_" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_margin="1.0dip" android:scaleType="centerCrop" android:maxHeight="160.0dip" />
-</com.tencent.mm.plugin.sns.ui.PhotosContent>
+    <LinearLayout android:orientation="vertical" android:id="@id/bqz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="80.0dip" android:layout_marginBottom="30.0dip" android:src="@drawable/ba6" />
+        <TextView android:textSize="@dimen/fn" android:textColor="@color/a7b" android:id="@id/gky" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" />
+        <TextView android:textSize="@dimen/fn" android:textColor="@color/w0" android:id="@id/j7w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
+        <TextView android:textSize="@dimen/fx" android:textColor="@color/w0" android:id="@id/j7n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:lineSpacingExtra="4.0dip" />
+    </LinearLayout>
+</LinearLayout>

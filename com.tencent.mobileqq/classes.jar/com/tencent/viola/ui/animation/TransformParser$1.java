@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-final class TransformParser$1
+class TransformParser$1
   implements FunctionParser.Mapper<Property<View, Float>, Float>
 {
   TransformParser$1(int paramInt1, int paramInt2, int paramInt3) {}
@@ -26,23 +26,34 @@ final class TransformParser$1
   {
     HashMap localHashMap = DataStructureUtil.newHashMapWithExpectedSize(paramList.size());
     ArrayList localArrayList = new ArrayList(paramList.size());
-    if ((paramList.contains(View.ROTATION)) || (paramList.contains(View.ROTATION_X)) || (paramList.contains(View.ROTATION_Y))) {
+    if ((!paramList.contains(View.ROTATION)) && (!paramList.contains(View.ROTATION_X)) && (!paramList.contains(View.ROTATION_Y)))
+    {
+      if ((!paramList.contains(View.TRANSLATION_X)) && (!paramList.contains(View.TRANSLATION_Y)))
+      {
+        if ((!paramList.contains(View.SCALE_X)) && (!paramList.contains(View.SCALE_Y)))
+        {
+          if (paramList.contains(CameraDistanceProperty.getInstance())) {
+            localArrayList.add(parseCameraDistance(paramList1));
+          }
+        }
+        else {
+          localArrayList.addAll(parseScale(paramList.size(), paramList1));
+        }
+      }
+      else {
+        localArrayList.addAll(parseTranslation(paramList, paramInt1, paramInt2, paramList1, paramInt3));
+      }
+    }
+    else {
       localArrayList.addAll(parseRotationZ(paramList1));
     }
-    while (paramList.size() == localArrayList.size())
+    if (paramList.size() == localArrayList.size())
     {
       paramInt1 = 0;
       while (paramInt1 < paramList.size())
       {
-        localHashMap.put(paramList.get(paramInt1), localArrayList.get(paramInt1));
+        localHashMap.put((Property)paramList.get(paramInt1), (Float)localArrayList.get(paramInt1));
         paramInt1 += 1;
-      }
-      if ((paramList.contains(View.TRANSLATION_X)) || (paramList.contains(View.TRANSLATION_Y))) {
-        localArrayList.addAll(parseTranslation(paramList, paramInt1, paramInt2, paramList1, paramInt3));
-      } else if ((paramList.contains(View.SCALE_X)) || (paramList.contains(View.SCALE_Y))) {
-        localArrayList.addAll(parseScale(paramList.size(), paramList1));
-      } else if (paramList.contains(CameraDistanceProperty.getInstance())) {
-        localArrayList.add(parseCameraDistance(paramList1));
       }
     }
     return localHashMap;
@@ -50,33 +61,30 @@ final class TransformParser$1
   
   private Float parseCameraDistance(List<String> paramList)
   {
-    float f2 = 3.4028235E+38F;
-    float f1 = f2;
     if (paramList.size() == 1)
     {
-      float f3 = FlexConvertUtils.converPxByViewportToRealPx(paramList.get(0), this.val$viewportW);
-      float f4 = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
-      f1 = f2;
-      if (!Float.isNaN(f3))
+      f1 = FlexConvertUtils.converPxByViewportToRealPx(paramList.get(0), this.val$viewportW);
+      float f2 = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
+      if ((!Float.isNaN(f1)) && (f1 > 0.0F))
       {
-        f1 = f2;
-        if (f3 > 0.0F) {
-          f1 = f3 * f4;
-        }
+        f1 *= f2;
+        break label61;
       }
     }
+    float f1 = 3.4028235E+38F;
+    label61:
     return Float.valueOf(f1);
   }
   
   private void parseDoubleTranslation(int paramInt1, int paramInt2, @NonNull List<String> paramList, List<Float> paramList1, String paramString, int paramInt3)
   {
-    if (paramList.size() == 1) {}
-    for (paramList = paramString;; paramList = (String)paramList.get(1))
-    {
-      paramList1.add(Float.valueOf(TransformParser.access$000(paramString, paramInt1, paramInt3)));
-      paramList1.add(Float.valueOf(TransformParser.access$000(paramList, paramInt2, paramInt3)));
-      return;
+    if (paramList.size() == 1) {
+      paramList = paramString;
+    } else {
+      paramList = (String)paramList.get(1);
     }
+    paramList1.add(Float.valueOf(TransformParser.access$000(paramString, paramInt1, paramInt3)));
+    paramList1.add(Float.valueOf(TransformParser.access$000(paramList, paramInt2, paramInt3)));
   }
   
   @NonNull
@@ -114,13 +122,14 @@ final class TransformParser$1
   
   private void parseSingleTranslation(List<Property<View, Float>> paramList, int paramInt1, int paramInt2, List<Float> paramList1, String paramString, int paramInt3)
   {
-    if (paramList.contains(View.TRANSLATION_X)) {
+    if (paramList.contains(View.TRANSLATION_X))
+    {
       paramList1.add(Float.valueOf(TransformParser.access$000(paramString, paramInt1, paramInt3)));
-    }
-    while (!paramList.contains(View.TRANSLATION_Y)) {
       return;
     }
-    paramList1.add(Float.valueOf(TransformParser.access$000(paramString, paramInt2, paramInt3)));
+    if (paramList.contains(View.TRANSLATION_Y)) {
+      paramList1.add(Float.valueOf(TransformParser.access$000(paramString, paramInt2, paramInt3)));
+    }
   }
   
   private List<Float> parseTranslation(List<Property<View, Float>> paramList, int paramInt1, int paramInt2, @NonNull List<String> paramList1, int paramInt3)
@@ -146,7 +155,7 @@ final class TransformParser$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.animation.TransformParser.1
  * JD-Core Version:    0.7.0.1
  */

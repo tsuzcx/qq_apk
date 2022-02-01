@@ -21,19 +21,34 @@ public class UserInfoBean
   public long i;
   public String j;
   public long k = 0L;
-  public boolean l = false;
-  public String m = "unknown";
+  public boolean l;
+  public String m;
   public String n;
   public int o;
-  public int p = -1;
-  public int q = -1;
-  public Map<String, String> r = null;
-  public Map<String, String> s = null;
+  public int p;
+  public int q;
+  public Map<String, String> r;
+  public Map<String, String> s;
   
-  public UserInfoBean() {}
+  public UserInfoBean()
+  {
+    this.l = false;
+    this.m = "unknown";
+    this.p = -1;
+    this.q = -1;
+    this.r = null;
+    this.s = null;
+  }
   
   public UserInfoBean(Parcel paramParcel)
   {
+    boolean bool = false;
+    this.l = false;
+    this.m = "unknown";
+    this.p = -1;
+    this.q = -1;
+    this.r = null;
+    this.s = null;
     this.b = paramParcel.readInt();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
@@ -44,20 +59,17 @@ public class UserInfoBean
     this.i = paramParcel.readLong();
     this.j = paramParcel.readString();
     this.k = paramParcel.readLong();
-    if (paramParcel.readByte() == 1) {}
-    for (;;)
-    {
-      this.l = bool;
-      this.m = paramParcel.readString();
-      this.p = paramParcel.readInt();
-      this.q = paramParcel.readInt();
-      this.r = z.b(paramParcel);
-      this.s = z.b(paramParcel);
-      this.n = paramParcel.readString();
-      this.o = paramParcel.readInt();
-      return;
-      bool = false;
+    if (paramParcel.readByte() == 1) {
+      bool = true;
     }
+    this.l = bool;
+    this.m = paramParcel.readString();
+    this.p = paramParcel.readInt();
+    this.q = paramParcel.readInt();
+    this.r = z.b(paramParcel);
+    this.s = z.b(paramParcel);
+    this.n = paramParcel.readString();
+    this.o = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -77,24 +89,19 @@ public class UserInfoBean
     paramParcel.writeLong(this.i);
     paramParcel.writeString(this.j);
     paramParcel.writeLong(this.k);
-    if (this.l) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.m);
-      paramParcel.writeInt(this.p);
-      paramParcel.writeInt(this.q);
-      z.b(paramParcel, this.r);
-      z.b(paramParcel, this.s);
-      paramParcel.writeString(this.n);
-      paramParcel.writeInt(this.o);
-      return;
-    }
+    paramParcel.writeByte((byte)this.l);
+    paramParcel.writeString(this.m);
+    paramParcel.writeInt(this.p);
+    paramParcel.writeInt(this.q);
+    z.b(paramParcel, this.r);
+    z.b(paramParcel, this.s);
+    paramParcel.writeString(this.n);
+    paramParcel.writeInt(this.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.biz.UserInfoBean
  * JD-Core Version:    0.7.0.1
  */

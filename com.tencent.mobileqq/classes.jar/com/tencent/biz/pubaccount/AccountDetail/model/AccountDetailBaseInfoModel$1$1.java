@@ -1,26 +1,24 @@
-package com.tencent.biz.pubaccount.AccountDetail.model;
+package com.tencent.biz.pubaccount.accountdetail.model;
 
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailImpl;
 import com.tencent.qphone.base.util.QLog;
-import nhx;
-import nhy;
 
-public class AccountDetailBaseInfoModel$1$1
+class AccountDetailBaseInfoModel$1$1
   implements Runnable
 {
-  public AccountDetailBaseInfoModel$1$1(nhy paramnhy, AccountDetail paramAccountDetail) {}
+  AccountDetailBaseInfoModel$1$1(AccountDetailBaseInfoModel.1 param1, PublicAccountDetailImpl paramPublicAccountDetailImpl) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailInSubThread");
     }
-    nhx.a(this.this$0.a, this.a);
+    AccountDetailBaseInfoModel.a(this.this$0.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel.1.1
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailBaseInfoModel.1.1
  * JD-Core Version:    0.7.0.1
  */

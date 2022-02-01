@@ -18,19 +18,41 @@ class ExoMediaPlayer$ExoMediaSourceEventListener
   
   public void onLoadError(DataSpec paramDataSpec, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, IOException paramIOException, boolean paramBoolean)
   {
-    ExoMediaPlayer.getLogger().i("ExoMediaPlayer", "loadError " + paramDataSpec + "," + paramInt1 + "," + paramInt2 + "," + paramLong3 + "\n" + ExoMediaPlayerUtils.getPrintableStackTrace(paramIOException));
+    paramFormat = ExoMediaPlayer.getLogger();
+    paramObject = new StringBuilder();
+    paramObject.append("loadError ");
+    paramObject.append(paramDataSpec);
+    paramObject.append(",");
+    paramObject.append(paramInt1);
+    paramObject.append(",");
+    paramObject.append(paramInt2);
+    paramObject.append(",");
+    paramObject.append(paramLong3);
+    paramObject.append("\n");
+    paramObject.append(ExoMediaPlayerUtils.getPrintableStackTrace(paramIOException));
+    paramFormat.i("ExoMediaPlayer", paramObject.toString());
   }
   
   public void onLoadStarted(DataSpec paramDataSpec, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3)
   {
-    ExoMediaPlayer.getLogger().i("ExoMediaPlayer", "loadStart " + paramDataSpec + "," + paramInt1 + "," + paramInt2 + "," + paramLong3);
+    paramFormat = ExoMediaPlayer.getLogger();
+    paramObject = new StringBuilder();
+    paramObject.append("loadStart ");
+    paramObject.append(paramDataSpec);
+    paramObject.append(",");
+    paramObject.append(paramInt1);
+    paramObject.append(",");
+    paramObject.append(paramInt2);
+    paramObject.append(",");
+    paramObject.append(paramLong3);
+    paramFormat.i("ExoMediaPlayer", paramObject.toString());
   }
   
   public void onUpstreamDiscarded(int paramInt, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.mediaplayer.ExoMediaPlayer.ExoMediaSourceEventListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.aio.VoiceNotifyConfigHelper;
 import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import java.net.URL;
 
 public class fao
   implements Runnable
 {
-  public fao(ConfigHandler paramConfigHandler) {}
+  public fao(ConfigHandler paramConfigHandler, String paramString, File paramFile) {}
   
   public void run()
   {
-    VoiceNotifyConfigHelper.a().a(this.a.a.getApplication());
+    try
+    {
+      HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, new URL(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

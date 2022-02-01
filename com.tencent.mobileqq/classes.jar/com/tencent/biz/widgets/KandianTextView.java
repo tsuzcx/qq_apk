@@ -30,45 +30,42 @@ public class KandianTextView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (Build.VERSION.SDK_INT < 16) {}
-    while (this.a) {
+    if (Build.VERSION.SDK_INT < 16) {
       return;
     }
-    String str2;
+    if (this.a) {
+      return;
+    }
     if (super.getLineCount() == 2)
     {
-      paramInt2 = super.getLayout().getLineVisibleEnd(0);
-      paramInt3 = super.getLayout().getLineVisibleEnd(1);
-      if ((paramInt2 - 1 >= 0) && ((paramInt3 - paramInt2 == 1) || (paramInt3 - paramInt2 == 2)))
+      paramInt1 = super.getLayout().getLineVisibleEnd(0);
+      paramInt2 = super.getLayout().getLineVisibleEnd(1);
+      paramInt3 = paramInt1 - 1;
+      if (paramInt3 >= 0)
       {
-        str2 = super.getText().toString();
-        if (paramInt3 - paramInt2 != 2) {
-          break label186;
+        paramInt1 = paramInt2 - paramInt1;
+        if ((paramInt1 == 1) || (paramInt1 == 2))
+        {
+          String str2 = super.getText().toString();
+          if (paramInt1 == 2 ? (str2.charAt(paramInt3) >= '一') && (str2.charAt(paramInt3) <= 40869) : (str2.charAt(paramInt3) >= '一') && (str2.charAt(paramInt3) <= 40869)) {
+            paramInt1 = 1;
+          } else {
+            paramInt1 = 0;
+          }
+          if (paramInt1 != 0)
+          {
+            String str1 = str2.substring(0, paramInt3);
+            str2 = str2.substring(paramInt3, paramInt2);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str1);
+            localStringBuilder.append("\n");
+            localStringBuilder.append(str2);
+            super.setText(localStringBuilder.toString());
+          }
         }
-        if ((str2.charAt(paramInt2 - 1) < '一') || (str2.charAt(paramInt2 - 1) > 40869)) {
-          break label218;
-        }
-        paramInt1 = 1;
       }
     }
-    for (;;)
-    {
-      if (paramInt1 != 0)
-      {
-        String str1 = str2.substring(0, paramInt2 - 1);
-        str2 = str2.substring(paramInt2 - 1, paramInt3);
-        super.setText(str1 + "\n" + str2);
-      }
-      this.a = true;
-      return;
-      label186:
-      if ((str2.charAt(paramInt2 - 1) >= '一') && (str2.charAt(paramInt2 - 1) <= 40869)) {
-        paramInt1 = 1;
-      } else {
-        label218:
-        paramInt1 = 0;
-      }
-    }
+    this.a = true;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -79,7 +76,7 @@ public class KandianTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.KandianTextView
  * JD-Core Version:    0.7.0.1
  */

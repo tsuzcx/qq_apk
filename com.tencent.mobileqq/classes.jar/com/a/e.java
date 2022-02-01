@@ -7,10 +7,12 @@ public final class e
   
   public e(l paraml, int paramInt, String paramString)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Status code may not be negative.");
+    if (paramInt >= 0)
+    {
+      this.a = paramInt;
+      return;
     }
-    this.a = paramInt;
+    throw new IllegalArgumentException("Status code may not be negative.");
   }
   
   public final int a()
@@ -30,7 +32,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.a.e
  * JD-Core Version:    0.7.0.1
  */

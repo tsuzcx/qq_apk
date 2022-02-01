@@ -1,81 +1,68 @@
 package com.tencent.mm.br;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.protocal.protobuf.atk;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.a.c.a;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.y;
+import com.tencent.mm.model.y.a;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static void run()
+  public static m Ywg;
+  public static l Ywh;
+  
+  public static void b(String paramString, final y paramy)
   {
-    AppMethodBeat.i(28268);
-    if ((!aw.RG()) || (aw.QP()))
+    AppMethodBeat.i(133694);
+    new a()
     {
-      AppMethodBeat.o(28268);
-      return;
-    }
-    long l3 = bo.aox();
-    aw.aaz();
-    long l2 = bo.a((Long)c.Ru().get(331797, null), 0L);
-    long l1 = l2;
-    if (10013 == ae.gkK)
-    {
-      l1 = l2;
-      if (ae.gkL != 0) {
-        l1 = 0L;
-      }
-    }
-    if (l1 < l3)
-    {
-      aw.aaz();
-      c.Ru().set(331797, Long.valueOf(432000L + l3));
-      try
+      public final void execute(g paramAnonymousg)
       {
-        atk localatk = new atk();
-        localatk.xiG = "";
-        Account[] arrayOfAccount = AccountManager.get(ah.getContext()).getAccountsByType("com.google");
-        int j = arrayOfAccount.length;
-        int i = 0;
-        while (i < j)
-        {
-          Account localAccount = arrayOfAccount[i];
-          if (!bo.isNullOrNil(localatk.xiG)) {
-            break;
-          }
-          ab.i("MicroMsg.PostTaskGoogleAcc", "google account[%s]", new Object[] { localAccount.name });
-          localatk.xiG = localAccount.name;
-          i += 1;
+        AppMethodBeat.i(133691);
+        String str = b.this;
+        y localy = paramy;
+        c.a(str, b.Ywg, b.Ywh);
+        paramAnonymousg = localy;
+        if (localy == null) {
+          paramAnonymousg = new y(b.bsb(str));
         }
-        if ((10013 == ae.gkK) && (ae.gkL != 0)) {
-          localatk.xiG = "rssjbbk@gmail.com";
-        }
-        if (!bo.isNullOrNil(localatk.xiG))
-        {
-          aw.aaz();
-          c.Yz().c(new j.a(57, localatk));
-          AppMethodBeat.o(28268);
-          return;
-        }
-        ab.w("MicroMsg.PostTaskGoogleAcc", "Get Accounts failed , Not any info?");
-        AppMethodBeat.o(28268);
-        return;
+        y.a("plugin.".concat(String.valueOf(str)), paramAnonymousg);
+        AppMethodBeat.o(133691);
       }
-      catch (Exception localException)
-      {
-        ab.w("MicroMsg.PostTaskGoogleAcc", "Get Accounts failed :%s", new Object[] { localException.getMessage() });
-      }
+    }.alone();
+    AppMethodBeat.o(133694);
+  }
+  
+  public static void bsa(String paramString)
+  {
+    AppMethodBeat.i(133693);
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).bbA()) {
+      c.a(paramString, Ywg, Ywh);
     }
-    AppMethodBeat.o(28268);
+    AppMethodBeat.o(133693);
+  }
+  
+  public static y.a bsb(String paramString)
+  {
+    AppMethodBeat.i(133695);
+    y.a local2 = new y.a()
+    {
+      public final be createSubCore()
+      {
+        AppMethodBeat.i(133692);
+        be localbe = c.bsd(b.this);
+        AppMethodBeat.o(133692);
+        return localbe;
+      }
+    };
+    Log.i("MicroMsg.PluginCompatHelper", "CompatSubCore creator %s for plugin %s", new Object[] { local2, paramString });
+    AppMethodBeat.o(133695);
+    return local2;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.screendetect;
 
 import android.content.Context;
-import aygf;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 class ScreenShotDetector$1
@@ -11,12 +11,22 @@ class ScreenShotDetector$1
   
   public void run()
   {
-    aygf.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.a(this.this$0));
+    boolean bool = ScreenShotDetector.d();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start screenshots, ");
+      localStringBuilder.append(bool);
+      QLog.d("ScreenShotDetector", 2, localStringBuilder.toString());
+    }
+    if (bool) {
+      ScreenShotHelper.a((Context)ScreenShotDetector.a(this.this$0).get(), this.a, ScreenShotDetector.b(this.this$0));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotDetector.1
  * JD-Core Version:    0.7.0.1
  */

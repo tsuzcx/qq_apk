@@ -7,36 +7,36 @@ public final class a
 {
   public final void a(f paramf)
   {
-    AppMethodBeat.i(133262);
+    AppMethodBeat.i(48981);
     AppBrandStickyBannerLogic.b.d(paramf);
-    AppMethodBeat.o(133262);
-  }
-  
-  public final BannerModel aMG()
-  {
-    AppMethodBeat.i(133261);
-    BannerModel localBannerModel = b.aMJ();
-    AppMethodBeat.o(133261);
-    return localBannerModel;
-  }
-  
-  public final void aMH()
-  {
-    AppMethodBeat.i(133264);
-    AppBrandStickyBannerLogic.b.aMH();
-    AppMethodBeat.o(133264);
+    AppMethodBeat.o(48981);
   }
   
   public final void b(f paramf)
   {
-    AppMethodBeat.i(133263);
+    AppMethodBeat.i(48982);
     AppBrandStickyBannerLogic.b.c(paramf);
-    AppMethodBeat.o(133263);
+    AppMethodBeat.o(48982);
+  }
+  
+  public final BannerModel cLV()
+  {
+    AppMethodBeat.i(48980);
+    BannerModel localBannerModel = b.cLZ();
+    AppMethodBeat.o(48980);
+    return localBannerModel;
+  }
+  
+  public final void cLW()
+  {
+    AppMethodBeat.i(48983);
+    AppBrandStickyBannerLogic.b.cLW();
+    AppMethodBeat.o(48983);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.a
  * JD-Core Version:    0.7.0.1
  */

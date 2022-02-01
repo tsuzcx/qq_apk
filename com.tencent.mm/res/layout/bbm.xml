@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/goh" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center" android:id="@id/g4l" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginBottom="5.0dip" style="@style/a85" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:background="@drawable/byo" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m2" android:maxWidth="230.0dip" android:minWidth="40.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/al6" android:id="@id/g4u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="4" />
+            <TextView android:textColor="@color/al6" android:id="@id/g52" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:minWidth="40.0dip" android:maxLines="4" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/eq1" android:background="@drawable/ad6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gb9" />
+    </LinearLayout>
+</FrameLayout>

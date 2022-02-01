@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/dvn" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="50.0dip" android:layout_toRightOf="@id/dvn">
-        <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxLines="1" android:includeFontPadding="false" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxLines="1" android:includeFontPadding="false" />
     </LinearLayout>
     <ImageView android:id="@id/dwf" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/ezc" android:layout_alignParentRight="true" />
 </RelativeLayout>

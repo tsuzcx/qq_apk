@@ -1,28 +1,40 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agrn;
-import amdu;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
-public class HotChatPie$13
+class HotChatPie$13
   implements Runnable
 {
-  public HotChatPie$13(agrn paramagrn) {}
+  HotChatPie$13(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
-    amdu localamdu = (amdu)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localamdu != null)
+    if (this.this$0.U.getVisibility() == 0) {
+      this.this$0.U.setVisibility(4);
+    }
+    int i = this.this$0.V.getCount();
+    if ((this.this$0.V != null) && (this.this$0.ch != i)) {
+      this.this$0.cf.a(true);
+    }
+    if ((this.this$0.bp != null) && (this.this$0.bp.m() > 0)) {
+      this.this$0.bp.d(4);
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.this$0.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "send_oidb_0x8c9_2");
-      }
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(1105933138L));
-      localamdu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localArrayList, true);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.this$0.c);
+      ((StringBuilder)localObject).append("Q.hotchat.aio_post_red_point");
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("update, mLastMsgCountBeforeSwitch2PostTab:");
+      localStringBuilder.append(this.this$0.ch);
+      localStringBuilder.append(",current msgItemCount:");
+      localStringBuilder.append(i);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
   }
 }

@@ -10,10 +10,12 @@ public final class a
   
   a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length != 16) {
-      throw new RuntimeException("the keys's length must be 16!");
+    if (paramArrayOfByte.length == 16)
+    {
+      this.a = paramArrayOfByte;
+      return;
     }
-    this.a = paramArrayOfByte;
+    throw new RuntimeException("the keys's length must be 16!");
   }
   
   public final byte[] a(byte[] paramArrayOfByte)
@@ -39,7 +41,10 @@ public final class a
   
   public final String toString()
   {
-    return "AESCoding [keyBytes=" + b.a(this.a) + "]";
+    StringBuilder localStringBuilder = new StringBuilder("AESCoding [keyBytes=");
+    localStringBuilder.append(b.a(this.a));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

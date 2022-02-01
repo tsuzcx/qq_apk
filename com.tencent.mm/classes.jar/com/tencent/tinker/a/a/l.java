@@ -48,11 +48,11 @@ public final class l
   public static void a(b paramb, int paramInt, long paramLong)
   {
     int i = 65 - Long.numberOfLeadingZeros(paramLong >> 63 ^ paramLong) + 7 >> 3;
-    paramb.writeByte(i - 1 << 5 | paramInt);
+    paramb.eQ(i - 1 << 5 | paramInt);
     paramInt = i;
     while (paramInt > 0)
     {
-      paramb.writeByte((byte)(int)paramLong);
+      paramb.eQ((byte)(int)paramLong);
       paramLong >>= 8;
       paramInt -= 1;
     }
@@ -66,11 +66,11 @@ public final class l
       i = 1;
     }
     i = i + 7 >> 3;
-    paramb.writeByte(i - 1 << 5 | paramInt);
+    paramb.eQ(i - 1 << 5 | paramInt);
     paramInt = i;
     while (paramInt > 0)
     {
-      paramb.writeByte((byte)(int)paramLong);
+      paramb.eQ((byte)(int)paramLong);
       paramLong >>= 8;
       paramInt -= 1;
     }
@@ -85,11 +85,11 @@ public final class l
     }
     i = i + 7 >> 3;
     paramLong >>= 64 - i * 8;
-    paramb.writeByte(i - 1 << 5 | paramInt);
+    paramb.eQ(i - 1 << 5 | paramInt);
     paramInt = i;
     while (paramInt > 0)
     {
-      paramb.writeByte((byte)(int)paramLong);
+      paramb.eQ((byte)(int)paramLong);
       paramLong >>= 8;
       paramInt -= 1;
     }
@@ -97,7 +97,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.l
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,9 @@ class UploadManager$2
     while (paramJobContext.hasNext())
     {
       long l = ((Long)paramJobContext.next()).longValue();
-      UploadManager.access$100(this.this$0, l, false, false, this.val$ignoreNetType, this.val$ignoreNetType);
+      UploadManager localUploadManager = this.this$0;
+      boolean bool = this.val$ignoreNetType;
+      UploadManager.access$100(localUploadManager, l, false, false, bool, bool);
     }
     UploadManager.access$200(this.this$0, -1L, true);
     return null;
@@ -24,7 +26,7 @@ class UploadManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadManager.2
  * JD-Core Version:    0.7.0.1
  */

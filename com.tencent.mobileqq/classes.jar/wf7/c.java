@@ -26,27 +26,32 @@ public final class c
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.o != null) {
-      paramJceOutputStream.write(this.o, 0);
+    String str = this.o;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.p != null) {
-      paramJceOutputStream.write(this.p, 1);
+    str = this.p;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.q != null) {
-      paramJceOutputStream.write(this.q, 2);
+    str = this.q;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.r != null) {
-      paramJceOutputStream.write(this.r, 3);
+    str = this.r;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.s, 5);
-    if (this.t != null) {
-      paramJceOutputStream.write(this.t, 6);
+    str = this.t;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.c
  * JD-Core Version:    0.7.0.1
  */

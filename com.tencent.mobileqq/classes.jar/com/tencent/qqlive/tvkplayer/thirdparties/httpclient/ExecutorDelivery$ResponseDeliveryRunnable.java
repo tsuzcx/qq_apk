@@ -21,18 +21,15 @@ class ExecutorDelivery$ResponseDeliveryRunnable
     }
     if (this.mResponse.isSuccess()) {
       this.mRequest.deliverResponse(this.mResponse);
-    }
-    for (;;)
-    {
-      this.mRequest.finish();
-      return;
+    } else {
       this.mRequest.deliverError(this.mResponse.e);
     }
+    this.mRequest.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.ExecutorDelivery.ResponseDeliveryRunnable
  * JD-Core Version:    0.7.0.1
  */

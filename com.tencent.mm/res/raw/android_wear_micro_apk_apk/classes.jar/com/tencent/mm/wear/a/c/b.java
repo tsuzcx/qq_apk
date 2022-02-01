@@ -2,9 +2,9 @@ package com.tencent.mm.wear.a.c;
 
 final class b
 {
-  String aiV;
-  Object[] aiW;
-  Throwable aiX;
+  String amx;
+  Object[] amy;
+  Throwable amz;
   int level;
   String tag;
   

@@ -7,23 +7,24 @@ import android.os.Process;
 public final class n
   implements Runnable
 {
-  private static final String XP;
-  private static final String XQ;
-  final Runnable XA;
-  final String XB;
-  final Object XC;
-  final Thread XD;
-  String XE;
-  long XF;
-  final o XG;
-  long XH;
-  long XI;
-  long XJ;
-  long XK;
-  long XL;
-  long XM;
-  long XN;
-  float XO = -1.0F;
+  private static final String ZR;
+  private static final String ZS;
+  final Object YJ;
+  public final Runnable ZC;
+  final String ZD;
+  final Thread ZE;
+  String ZF;
+  long ZG;
+  final o ZH;
+  long ZI;
+  long ZJ;
+  long ZK;
+  long ZL;
+  long ZM;
+  long ZN;
+  long ZO;
+  long ZP;
+  float ZQ = -1.0F;
   final Handler handler;
   int priority;
   boolean started = false;
@@ -42,7 +43,7 @@ public final class n
     localStringBuilder.append("|usedTime = %d");
     localStringBuilder.append("|cpuTime = %d");
     localStringBuilder.append("|started = %b");
-    XP = localStringBuilder.toString();
+    ZR = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("taskName = %s");
     localStringBuilder.append(" | addTime = %s");
@@ -52,20 +53,20 @@ public final class n
     localStringBuilder.append(" | threadCpuTime = %d");
     localStringBuilder.append(" | totalCpuTime = %d");
     localStringBuilder.append(" | threadCpuRate = %.1f");
-    XQ = localStringBuilder.toString();
+    ZS = localStringBuilder.toString();
   }
   
   n(Thread paramThread, Handler paramHandler, Runnable paramRunnable, Object paramObject, o paramo)
   {
-    this.XD = paramThread;
+    this.ZE = paramThread;
     if (paramThread != null)
     {
-      this.XE = paramThread.getName();
-      this.XF = paramThread.getId();
+      this.ZF = paramThread.getName();
+      this.ZG = paramThread.getId();
       this.priority = paramThread.getPriority();
     }
     this.handler = paramHandler;
-    this.XA = paramRunnable;
+    this.ZC = paramRunnable;
     paramHandler = paramRunnable.getClass().getName();
     paramRunnable = paramRunnable.toString();
     paramThread = paramHandler;
@@ -77,33 +78,39 @@ public final class n
         paramThread = paramHandler + "_" + paramRunnable.substring(i + 1);
       }
     }
-    this.XB = paramThread;
-    this.XC = paramObject;
-    this.XG = paramo;
-    this.XH = System.currentTimeMillis();
+    this.ZD = paramThread;
+    this.YJ = paramObject;
+    this.ZH = paramo;
+    this.ZI = System.currentTimeMillis();
   }
   
   public final void run()
   {
     int i = Process.myTid();
     new StringBuilder("/proc/self/task/").append(i).append("/stat");
-    this.XK = System.currentTimeMillis();
-    this.XL = Debug.threadCpuTimeNanos();
-    this.XM = -1L;
-    this.XN = -1L;
+    this.ZL = System.currentTimeMillis();
+    this.ZM = Debug.threadCpuTimeNanos();
+    this.ZP = (this.ZL - this.ZI - this.ZJ);
+    this.ZN = -1L;
+    this.ZO = -1L;
     this.started = true;
-    this.XA.run();
-    this.XM = (-1L - this.XM);
-    this.XN = (-1L - this.XN);
-    this.XJ = System.currentTimeMillis();
-    this.XK = (this.XJ - this.XK);
-    this.XL = ((Debug.threadCpuTimeNanos() - this.XL) / 1000000L);
-    if (this.XN != 0L) {
-      this.XO = ((float)(100L * this.XM) / (float)this.XN);
+    this.ZC.run();
+    this.ZN = (-1L - this.ZN);
+    this.ZO = (-1L - this.ZO);
+    this.ZK = System.currentTimeMillis();
+    this.ZL = (this.ZK - this.ZL);
+    this.ZM = ((Debug.threadCpuTimeNanos() - this.ZM) / 1000000L);
+    if (this.ZO != 0L) {
+      this.ZQ = ((float)(100L * this.ZN) / (float)this.ZO);
     }
-    if (this.XG != null) {
-      this.XG.c(this.XA, this);
+    if (this.ZH != null) {
+      this.ZH.c(this.ZC, this);
     }
+  }
+  
+  public final String toString()
+  {
+    return this.ZD + ", " + this.ZC;
   }
 }
 

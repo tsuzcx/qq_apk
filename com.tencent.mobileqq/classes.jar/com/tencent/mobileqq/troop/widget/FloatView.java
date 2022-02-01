@@ -12,70 +12,92 @@ import android.widget.ImageView;
 public class FloatView
   extends ImageView
 {
-  private float jdField_a_of_type_Float;
-  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private float a;
   private float b;
   private float c;
   private float d;
+  private WindowManager e;
+  private WindowManager.LayoutParams f;
+  private GestureDetector g;
+  private GestureDetector.OnGestureListener h;
   
   public FloatView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getApplicationContext().getSystemService("window"));
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
+    this.e = ((WindowManager)paramContext.getApplicationContext().getSystemService("window"));
+    this.f = new WindowManager.LayoutParams();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = ((int)(this.jdField_a_of_type_Float - this.c));
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = ((int)(this.b - this.d));
-    this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    WindowManager.LayoutParams localLayoutParams = this.f;
+    localLayoutParams.x = ((int)(this.a - this.c));
+    localLayoutParams.y = ((int)(this.b - this.d));
+    this.e.updateViewLayout(this, localLayoutParams);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidViewWindowManager != null) {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
+    WindowManager localWindowManager = this.e;
+    if (localWindowManager != null) {
+      localWindowManager.removeView(this);
     }
+  }
+  
+  public WindowManager getWindowManager()
+  {
+    return this.e;
+  }
+  
+  public WindowManager.LayoutParams getWindowParams()
+  {
+    return this.f;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    Rect localRect = new Rect();
-    getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.top;
-    this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+    Object localObject = new Rect();
+    getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = ((Rect)localObject).top;
+    this.a = paramMotionEvent.getRawX();
     this.b = (paramMotionEvent.getRawY() - i);
-    switch (paramMotionEvent.getAction())
+    i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i == 2) {
+          b();
+        }
+      }
+      else
+      {
+        b();
+        this.d = 0.0F;
+        this.c = 0.0F;
+      }
     }
-    while (this.jdField_a_of_type_AndroidViewGestureDetector == null)
+    else
     {
-      return true;
       this.c = paramMotionEvent.getX();
       this.d = paramMotionEvent.getY();
-      continue;
-      b();
-      continue;
-      b();
-      this.d = 0.0F;
-      this.c = 0.0F;
     }
-    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    localObject = this.g;
+    if (localObject == null) {
+      return true;
+    }
+    return ((GestureDetector)localObject).onTouchEvent(paramMotionEvent);
   }
   
   public void setOnGestureListener(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = paramOnGestureListener;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, paramOnGestureListener);
+    this.h = paramOnGestureListener;
+    this.g = new GestureDetector(paramContext, paramOnGestureListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FloatView
  * JD-Core Version:    0.7.0.1
  */

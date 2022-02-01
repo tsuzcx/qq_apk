@@ -22,31 +22,33 @@ final class SubripSubtitle
   public List<Cue> getCues(long paramLong)
   {
     int i = Util.binarySearchFloor(this.cueTimesUs, paramLong, true, false);
-    if ((i == -1) || (this.cues[i] == null)) {
-      return Collections.emptyList();
+    if (i != -1)
+    {
+      Cue[] arrayOfCue = this.cues;
+      if (arrayOfCue[i] != null) {
+        return Collections.singletonList(arrayOfCue[i]);
+      }
     }
-    return Collections.singletonList(this.cues[i]);
+    return Collections.emptyList();
   }
   
   public long getEventTime(int paramInt)
   {
     boolean bool2 = true;
-    if (paramInt >= 0)
-    {
+    boolean bool1;
+    if (paramInt >= 0) {
       bool1 = true;
-      Assertions.checkArgument(bool1);
-      if (paramInt >= this.cueTimesUs.length) {
-        break label39;
-      }
-    }
-    label39:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assertions.checkArgument(bool1);
-      return this.cueTimesUs[paramInt];
+    } else {
       bool1 = false;
-      break;
     }
+    Assertions.checkArgument(bool1);
+    if (paramInt < this.cueTimesUs.length) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    return this.cueTimesUs[paramInt];
   }
   
   public int getEventTimeCount()
@@ -65,7 +67,7 @@ final class SubripSubtitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.subrip.SubripSubtitle
  * JD-Core Version:    0.7.0.1
  */

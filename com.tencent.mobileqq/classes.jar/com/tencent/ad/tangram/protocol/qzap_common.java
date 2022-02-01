@@ -8,6 +8,8 @@ public final class qzap_common
   public static final int CONNECTIONTYPE_4G_LIMIT = 6;
   public static final int CONNECTIONTYPE_4G_NOT_LIMIT = 5;
   public static final int CONNECTIONTYPE_5G = 7;
+  public static final int CONNECTIONTYPE_ETHERNET = 8;
+  public static final int CONNECTIONTYPE_NO_NETWORK = 50;
   public static final int CONNECTIONTYPE_UNKNOWN = 0;
   public static final int CONNECTIONTYPE_WIFI = 1;
   public static final int ChinaMobile = 1;
@@ -24,13 +26,16 @@ public final class qzap_common
   public static final int DEST_TYPE_FENGYE = 7;
   public static final int DEST_TYPE_IOS_UNIVERSAL_LINK = 13;
   public static final int DEST_TYPE_MINI_PROGRAM = 14;
+  public static final int DEST_TYPE_MINI_PROGRAM_CANVAS_WECHAT = 21;
   public static final int DEST_TYPE_MYAPP = 2;
   public static final int DEST_TYPE_MYAPP_APP_STORE = 10;
+  public static final int DEST_TYPE_OTT = 20;
   public static final int DEST_TYPE_SPA = 1;
   public static final int DEST_TYPE_STURNUS_IMAX = 15;
   public static final int DEST_TYPE_TENCENT_NEWS_LIVE = 17;
   public static final int DEST_TYPE_TENCENT_NEWS_SOFT_ARTICLE = 16;
   public static final int DEST_TYPE_WECHAT_CANVAS = 12;
+  public static final int DEST_TYPE_YUEBAO = 19;
   public static final int DEVICE_OS_TYPE_ANDROID = 2;
   public static final int DEVICE_OS_TYPE_IOS = 1;
   public static final int DEVICE_OS_TYPE_JAVA = 5;
@@ -46,6 +51,7 @@ public final class qzap_common
   public static final int DISPLAY_TYPE_VIDEO_STICKY = 3;
   public static final int PRODUCTTYPE_51BUY = 9;
   public static final int PRODUCTTYPE_APPLE_APP_STORE = 19;
+  public static final int PRODUCTTYPE_APP_PROMOTION = 50;
   public static final int PRODUCTTYPE_ARTICLE = 42;
   public static final int PRODUCTTYPE_B_QQ = 8;
   public static final int PRODUCTTYPE_DP_COUPON = 27;
@@ -60,6 +66,7 @@ public final class qzap_common
   public static final int PRODUCTTYPE_LEAD_AD = 43;
   public static final int PRODUCTTYPE_LIVE_VIDEO_ROOM = 15;
   public static final int PRODUCTTYPE_LOCATION = 41;
+  public static final int PRODUCTTYPE_MINI_PROGRAM_WECHAT = 52;
   public static final int PRODUCTTYPE_MYAPP = 5;
   public static final int PRODUCTTYPE_MYAPP_PROMOTION = 35;
   public static final int PRODUCTTYPE_NOW_APP = 44;
@@ -89,11 +96,13 @@ public final class qzap_common
   public static final int PRODUCTTYPE_WECHAT = 23;
   public static final int PRODUCTTYPE_WECHAT_ARTICLE = 29;
   public static final int PRODUCTTYPE_WECHAT_CARD = 36;
+  public static final int PRODUCTTYPE_WECHAT_CHANNELS = 51;
   public static final int PRODUCTTYPE_WECHAT_LBS = 39;
   public static final int PRODUCTTYPE_WECHAT_MINI_GAME = 46;
   public static final int PRODUCTTYPE_WECHAT_PAY_COUPON = 47;
   public static final int PRODUCTTYPE_WECHAT_SHOP = 30;
   public static final int PRODUCTTYPE_WECHAT_URL = 31;
+  public static final int Unknown = 0;
   public static final int kMuidTypeIFA = 2;
   public static final int kMuidTypeIMEI = 1;
   public static final int kMuidTypeMAC = 3;
@@ -101,7 +110,7 @@ public final class qzap_common
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.protocol.qzap_common
  * JD-Core Version:    0.7.0.1
  */

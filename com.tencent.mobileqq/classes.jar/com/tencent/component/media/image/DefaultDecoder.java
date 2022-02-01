@@ -16,375 +16,367 @@ public class DefaultDecoder
   private Bitmap decodeByteArray(byte[] paramArrayOfByte, int paramInt1, int paramInt2, BitmapFactory.Options paramOptions, int paramInt3, int paramInt4)
   {
     // Byte code:
-    //   0: ldc 10
-    //   2: new 23	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 24	java/lang/StringBuilder:<init>	()V
-    //   9: ldc 26
-    //   11: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: iload 5
-    //   16: invokevirtual 33	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   19: ldc 35
-    //   21: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: iload 6
-    //   26: invokevirtual 33	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 45	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   35: pop
-    //   36: aload 4
-    //   38: iconst_1
-    //   39: putfield 51	android/graphics/BitmapFactory$Options:inDither	Z
-    //   42: aload 4
-    //   44: iconst_1
-    //   45: putfield 54	android/graphics/BitmapFactory$Options:inMutable	Z
-    //   48: aload 4
-    //   50: getstatic 60	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   53: putfield 63	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   56: aload_1
-    //   57: iload_2
-    //   58: iload_3
-    //   59: aload 4
-    //   61: invokestatic 68	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   64: astore_1
-    //   65: aload_1
-    //   66: areturn
-    //   67: astore_1
-    //   68: ldc 10
-    //   70: aload_1
-    //   71: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   74: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   77: aconst_null
-    //   78: areturn
-    //   79: astore_1
-    //   80: aload_1
-    //   81: athrow
-    //   82: astore_1
-    //   83: ldc 10
-    //   85: aload_1
-    //   86: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   89: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   92: aconst_null
-    //   93: areturn
+    //   0: new 23	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 24	java/lang/StringBuilder:<init>	()V
+    //   7: astore 7
+    //   9: aload 7
+    //   11: ldc 26
+    //   13: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: pop
+    //   17: aload 7
+    //   19: iload 5
+    //   21: invokevirtual 33	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   24: pop
+    //   25: aload 7
+    //   27: ldc 35
+    //   29: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: pop
+    //   33: aload 7
+    //   35: iload 6
+    //   37: invokevirtual 33	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: ldc 10
+    //   43: aload 7
+    //   45: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokestatic 45	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   51: pop
+    //   52: aload 4
+    //   54: iconst_1
+    //   55: putfield 51	android/graphics/BitmapFactory$Options:inDither	Z
+    //   58: aload 4
+    //   60: iconst_1
+    //   61: putfield 54	android/graphics/BitmapFactory$Options:inMutable	Z
+    //   64: aload 4
+    //   66: getstatic 60	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   69: putfield 63	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   72: aload_1
+    //   73: iload_2
+    //   74: iload_3
+    //   75: aload 4
+    //   77: invokestatic 68	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   80: astore_1
+    //   81: aload_1
+    //   82: areturn
+    //   83: astore_1
+    //   84: goto +28 -> 112
+    //   87: astore_1
+    //   88: ldc 10
+    //   90: aload_1
+    //   91: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   94: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   97: goto +13 -> 110
+    //   100: astore_1
+    //   101: ldc 10
+    //   103: aload_1
+    //   104: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   107: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   110: aconst_null
+    //   111: areturn
+    //   112: aload_1
+    //   113: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	94	0	this	DefaultDecoder
-    //   0	94	1	paramArrayOfByte	byte[]
-    //   0	94	2	paramInt1	int
-    //   0	94	3	paramInt2	int
-    //   0	94	4	paramOptions	BitmapFactory.Options
-    //   0	94	5	paramInt3	int
-    //   0	94	6	paramInt4	int
+    //   0	114	0	this	DefaultDecoder
+    //   0	114	1	paramArrayOfByte	byte[]
+    //   0	114	2	paramInt1	int
+    //   0	114	3	paramInt2	int
+    //   0	114	4	paramOptions	BitmapFactory.Options
+    //   0	114	5	paramInt3	int
+    //   0	114	6	paramInt4	int
+    //   7	37	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   56	65	67	java/lang/RuntimeException
-    //   56	65	79	finally
-    //   68	77	79	finally
-    //   83	92	79	finally
-    //   56	65	82	java/lang/OutOfMemoryError
+    //   72	81	83	finally
+    //   88	97	83	finally
+    //   101	110	83	finally
+    //   72	81	87	java/lang/OutOfMemoryError
+    //   72	81	100	java/lang/RuntimeException
   }
   
   /* Error */
   public Bitmap decodeBitmap(File paramFile, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: ifnull +24 -> 25
-    //   4: aload_1
-    //   5: invokevirtual 91	java/io/File:exists	()Z
-    //   8: ifeq +17 -> 25
-    //   11: aload_1
-    //   12: invokevirtual 94	java/io/File:isFile	()Z
-    //   15: ifeq +10 -> 25
-    //   18: aload_1
-    //   19: invokevirtual 97	java/io/File:canRead	()Z
-    //   22: ifne +5 -> 27
-    //   25: aconst_null
-    //   26: areturn
-    //   27: new 47	android/graphics/BitmapFactory$Options
-    //   30: dup
-    //   31: invokespecial 98	android/graphics/BitmapFactory$Options:<init>	()V
-    //   34: astore 8
-    //   36: aload 8
-    //   38: iconst_1
-    //   39: putfield 101	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   42: new 103	java/io/BufferedInputStream
-    //   45: dup
-    //   46: new 105	java/io/FileInputStream
-    //   49: dup
-    //   50: aload_1
-    //   51: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   54: sipush 8192
-    //   57: invokespecial 111	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   60: astore 6
-    //   62: aload 6
-    //   64: astore 5
-    //   66: aload 6
-    //   68: aconst_null
-    //   69: aload 8
-    //   71: invokestatic 115	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   74: pop
-    //   75: aload 6
-    //   77: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   80: aload 8
-    //   82: iconst_0
-    //   83: putfield 101	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   86: new 120	com/tencent/component/media/image/ImageLoader$Options
-    //   89: dup
-    //   90: invokespecial 121	com/tencent/component/media/image/ImageLoader$Options:<init>	()V
-    //   93: astore 5
-    //   95: aload 5
-    //   97: iload_3
-    //   98: putfield 125	com/tencent/component/media/image/ImageLoader$Options:clipHeight	I
-    //   101: aload 5
-    //   103: iload_2
-    //   104: putfield 128	com/tencent/component/media/image/ImageLoader$Options:clipWidth	I
-    //   107: iload_3
-    //   108: ifle +27 -> 135
-    //   111: iload_2
-    //   112: ifle +23 -> 135
-    //   115: aload 8
-    //   117: aload 5
-    //   119: aload 8
-    //   121: getfield 131	android/graphics/BitmapFactory$Options:outWidth	I
-    //   124: aload 8
-    //   126: getfield 134	android/graphics/BitmapFactory$Options:outHeight	I
-    //   129: invokestatic 140	com/tencent/component/media/image/ImageOptionSampleSize:computeSampleSize	(Lcom/tencent/component/media/image/ImageLoader$Options;II)I
-    //   132: putfield 143	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   135: aload 8
-    //   137: getfield 143	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   140: iconst_1
-    //   141: if_icmpge +9 -> 150
-    //   144: aload 8
-    //   146: iconst_1
-    //   147: putfield 143	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   150: new 103	java/io/BufferedInputStream
-    //   153: dup
-    //   154: new 105	java/io/FileInputStream
-    //   157: dup
-    //   158: aload_1
-    //   159: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   162: sipush 8192
-    //   165: invokespecial 111	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   168: astore 5
-    //   170: aload 5
-    //   172: astore_1
-    //   173: aload 8
-    //   175: aload 4
-    //   177: invokestatic 149	com/tencent/component/media/utils/BitmapUtils:addInBitmapOptions	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;)V
-    //   180: aload 5
-    //   182: astore_1
-    //   183: aload 5
-    //   185: aconst_null
-    //   186: aload 8
-    //   188: invokestatic 115	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   191: astore 4
-    //   193: aload 5
-    //   195: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   198: aload 4
-    //   200: areturn
-    //   201: astore_1
-    //   202: ldc 10
-    //   204: aload_1
-    //   205: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   208: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   211: aload 4
-    //   213: areturn
-    //   214: astore 5
-    //   216: ldc 10
-    //   218: aload 5
-    //   220: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   223: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   226: goto -146 -> 80
-    //   229: astore 7
-    //   231: aconst_null
-    //   232: astore 6
-    //   234: aload 6
-    //   236: astore 5
-    //   238: ldc 10
-    //   240: aload 7
-    //   242: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   245: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   248: aload 6
-    //   250: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   253: goto -173 -> 80
-    //   256: astore 5
-    //   258: ldc 10
-    //   260: aload 5
-    //   262: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   265: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   268: goto -188 -> 80
-    //   271: astore 7
-    //   273: aconst_null
-    //   274: astore 6
-    //   276: aload 6
-    //   278: astore 5
-    //   280: ldc 10
-    //   282: aload 7
-    //   284: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   287: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   290: aload 6
-    //   292: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   295: goto -215 -> 80
-    //   298: astore 5
-    //   300: ldc 10
-    //   302: aload 5
-    //   304: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   307: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   310: goto -230 -> 80
-    //   313: astore_1
-    //   314: aconst_null
-    //   315: astore 5
-    //   317: aload 5
-    //   319: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   322: aload_1
-    //   323: athrow
+    //   0: aconst_null
+    //   1: astore 8
+    //   3: aload_1
+    //   4: ifnull +462 -> 466
+    //   7: aload_1
+    //   8: invokevirtual 91	java/io/File:exists	()Z
+    //   11: ifeq +455 -> 466
+    //   14: aload_1
+    //   15: invokevirtual 94	java/io/File:isFile	()Z
+    //   18: ifeq +448 -> 466
+    //   21: aload_1
+    //   22: invokevirtual 97	java/io/File:canRead	()Z
+    //   25: ifne +5 -> 30
+    //   28: aconst_null
+    //   29: areturn
+    //   30: new 47	android/graphics/BitmapFactory$Options
+    //   33: dup
+    //   34: invokespecial 98	android/graphics/BitmapFactory$Options:<init>	()V
+    //   37: astore 9
+    //   39: aload 9
+    //   41: iconst_1
+    //   42: putfield 101	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   45: new 103	java/io/BufferedInputStream
+    //   48: dup
+    //   49: new 105	java/io/FileInputStream
+    //   52: dup
+    //   53: aload_1
+    //   54: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   57: sipush 8192
+    //   60: invokespecial 111	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   63: astore 6
+    //   65: aload 6
+    //   67: astore 5
+    //   69: aload 6
+    //   71: aconst_null
+    //   72: aload 9
+    //   74: invokestatic 115	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   77: pop
+    //   78: aload 6
+    //   80: invokevirtual 118	java/io/BufferedInputStream:close	()V
+    //   83: goto +86 -> 169
+    //   86: astore 7
+    //   88: goto +20 -> 108
+    //   91: astore 7
+    //   93: goto +42 -> 135
+    //   96: astore_1
+    //   97: aconst_null
+    //   98: astore 5
+    //   100: goto +344 -> 444
+    //   103: astore 7
+    //   105: aconst_null
+    //   106: astore 6
+    //   108: aload 6
+    //   110: astore 5
+    //   112: ldc 10
+    //   114: aload 7
+    //   116: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   119: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   122: aload 6
+    //   124: invokevirtual 118	java/io/BufferedInputStream:close	()V
+    //   127: goto +42 -> 169
+    //   130: astore 7
+    //   132: aconst_null
+    //   133: astore 6
+    //   135: aload 6
+    //   137: astore 5
+    //   139: ldc 10
+    //   141: aload 7
+    //   143: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   146: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   149: aload 6
+    //   151: invokevirtual 118	java/io/BufferedInputStream:close	()V
+    //   154: goto +15 -> 169
+    //   157: astore 5
+    //   159: ldc 10
+    //   161: aload 5
+    //   163: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   166: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: aload 9
+    //   171: iconst_0
+    //   172: putfield 101	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   175: new 120	com/tencent/component/media/image/ImageLoader$Options
+    //   178: dup
+    //   179: invokespecial 121	com/tencent/component/media/image/ImageLoader$Options:<init>	()V
+    //   182: astore 5
+    //   184: aload 5
+    //   186: iload_3
+    //   187: putfield 125	com/tencent/component/media/image/ImageLoader$Options:clipHeight	I
+    //   190: aload 5
+    //   192: iload_2
+    //   193: putfield 128	com/tencent/component/media/image/ImageLoader$Options:clipWidth	I
+    //   196: iload_3
+    //   197: ifle +27 -> 224
+    //   200: iload_2
+    //   201: ifle +23 -> 224
+    //   204: aload 9
+    //   206: aload 5
+    //   208: aload 9
+    //   210: getfield 131	android/graphics/BitmapFactory$Options:outWidth	I
+    //   213: aload 9
+    //   215: getfield 134	android/graphics/BitmapFactory$Options:outHeight	I
+    //   218: invokestatic 140	com/tencent/component/media/image/ImageOptionSampleSize:computeSampleSize	(Lcom/tencent/component/media/image/ImageLoader$Options;II)I
+    //   221: putfield 143	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   224: aload 9
+    //   226: getfield 143	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   229: iconst_1
+    //   230: if_icmpge +9 -> 239
+    //   233: aload 9
+    //   235: iconst_1
+    //   236: putfield 143	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   239: new 103	java/io/BufferedInputStream
+    //   242: dup
+    //   243: new 105	java/io/FileInputStream
+    //   246: dup
+    //   247: aload_1
+    //   248: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   251: sipush 8192
+    //   254: invokespecial 111	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   257: astore 5
+    //   259: aload 5
+    //   261: astore_1
+    //   262: aload 9
+    //   264: aload 4
+    //   266: invokestatic 149	com/tencent/component/media/utils/BitmapUtils:addInBitmapOptions	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;)V
+    //   269: aload 5
+    //   271: astore_1
+    //   272: aload 5
+    //   274: aconst_null
+    //   275: aload 9
+    //   277: invokestatic 115	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   280: astore 4
+    //   282: aload 4
+    //   284: astore_1
+    //   285: aload 5
+    //   287: invokevirtual 118	java/io/BufferedInputStream:close	()V
+    //   290: aload 4
+    //   292: areturn
+    //   293: astore 4
+    //   295: ldc 10
+    //   297: aload 4
+    //   299: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   302: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   305: aload_1
+    //   306: areturn
+    //   307: astore 4
+    //   309: goto +25 -> 334
+    //   312: astore 4
+    //   314: goto +48 -> 362
+    //   317: astore 4
+    //   319: goto +71 -> 390
+    //   322: astore_1
+    //   323: aconst_null
     //   324: astore 4
-    //   326: ldc 10
-    //   328: aload 4
-    //   330: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   333: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   336: goto -14 -> 322
-    //   339: astore 4
-    //   341: aconst_null
-    //   342: astore 5
-    //   344: aload 5
-    //   346: astore_1
-    //   347: ldc 10
-    //   349: aload 4
-    //   351: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   354: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   357: aload 5
-    //   359: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   362: aconst_null
-    //   363: areturn
+    //   326: goto +95 -> 421
+    //   329: astore 4
+    //   331: aconst_null
+    //   332: astore 5
+    //   334: aload 5
+    //   336: astore_1
+    //   337: ldc 10
+    //   339: aload 4
+    //   341: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   344: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   347: aload 8
+    //   349: astore_1
+    //   350: aload 5
+    //   352: invokevirtual 118	java/io/BufferedInputStream:close	()V
+    //   355: aconst_null
+    //   356: areturn
+    //   357: astore 4
+    //   359: aconst_null
+    //   360: astore 5
+    //   362: aload 5
     //   364: astore_1
     //   365: ldc 10
-    //   367: aload_1
-    //   368: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   371: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   374: aconst_null
-    //   375: areturn
-    //   376: astore 4
-    //   378: aconst_null
-    //   379: astore 5
-    //   381: aload 5
-    //   383: astore_1
-    //   384: ldc 10
-    //   386: aload 4
-    //   388: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   391: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   394: aload 5
-    //   396: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   399: aconst_null
-    //   400: areturn
-    //   401: astore_1
-    //   402: ldc 10
-    //   404: aload_1
-    //   405: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   408: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   367: aload 4
+    //   369: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   372: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   375: aload 8
+    //   377: astore_1
+    //   378: aload 5
+    //   380: invokevirtual 118	java/io/BufferedInputStream:close	()V
+    //   383: aconst_null
+    //   384: areturn
+    //   385: astore 4
+    //   387: aconst_null
+    //   388: astore 5
+    //   390: aload 5
+    //   392: astore_1
+    //   393: ldc 10
+    //   395: aload 4
+    //   397: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   400: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   403: aload 8
+    //   405: astore_1
+    //   406: aload 5
+    //   408: invokevirtual 118	java/io/BufferedInputStream:close	()V
     //   411: aconst_null
     //   412: areturn
-    //   413: astore 4
-    //   415: aconst_null
-    //   416: astore 5
+    //   413: astore 5
+    //   415: aload_1
+    //   416: astore 4
     //   418: aload 5
     //   420: astore_1
-    //   421: ldc 10
-    //   423: aload 4
-    //   425: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   428: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   431: aload 5
-    //   433: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   436: aconst_null
-    //   437: areturn
-    //   438: astore_1
-    //   439: ldc 10
+    //   421: aload 4
+    //   423: invokevirtual 118	java/io/BufferedInputStream:close	()V
+    //   426: goto +15 -> 441
+    //   429: astore 4
+    //   431: ldc 10
+    //   433: aload 4
+    //   435: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   438: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   441: aload_1
-    //   442: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   445: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   448: aconst_null
-    //   449: areturn
-    //   450: astore 4
-    //   452: aconst_null
-    //   453: astore_1
-    //   454: aload_1
-    //   455: invokevirtual 118	java/io/BufferedInputStream:close	()V
-    //   458: aload 4
-    //   460: athrow
-    //   461: astore_1
-    //   462: ldc 10
+    //   442: athrow
+    //   443: astore_1
+    //   444: aload 5
+    //   446: invokevirtual 118	java/io/BufferedInputStream:close	()V
+    //   449: goto +15 -> 464
+    //   452: astore 4
+    //   454: ldc 10
+    //   456: aload 4
+    //   458: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   461: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   464: aload_1
-    //   465: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   468: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   471: goto -13 -> 458
-    //   474: astore 4
-    //   476: goto -22 -> 454
-    //   479: astore 4
-    //   481: goto -63 -> 418
-    //   484: astore 4
-    //   486: goto -105 -> 381
-    //   489: astore 4
-    //   491: goto -147 -> 344
-    //   494: astore_1
-    //   495: goto -178 -> 317
-    //   498: astore 7
-    //   500: goto -224 -> 276
-    //   503: astore 7
-    //   505: goto -271 -> 234
+    //   465: athrow
+    //   466: aconst_null
+    //   467: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	508	0	this	DefaultDecoder
-    //   0	508	1	paramFile	File
-    //   0	508	2	paramInt1	int
-    //   0	508	3	paramInt2	int
-    //   0	508	4	paramBitmap	Bitmap
-    //   64	130	5	localObject1	Object
-    //   214	5	5	localIOException1	java.io.IOException
-    //   236	1	5	localBufferedInputStream1	java.io.BufferedInputStream
-    //   256	5	5	localIOException2	java.io.IOException
-    //   278	1	5	localBufferedInputStream2	java.io.BufferedInputStream
-    //   298	5	5	localIOException3	java.io.IOException
-    //   315	117	5	localObject2	Object
-    //   60	231	6	localBufferedInputStream3	java.io.BufferedInputStream
-    //   229	12	7	localFileNotFoundException1	java.io.FileNotFoundException
-    //   271	12	7	localThrowable1	Throwable
-    //   498	1	7	localThrowable2	Throwable
-    //   503	1	7	localFileNotFoundException2	java.io.FileNotFoundException
-    //   34	153	8	localOptions	BitmapFactory.Options
+    //   0	468	0	this	DefaultDecoder
+    //   0	468	1	paramFile	File
+    //   0	468	2	paramInt1	int
+    //   0	468	3	paramInt2	int
+    //   0	468	4	paramBitmap	Bitmap
+    //   67	71	5	localBufferedInputStream1	java.io.BufferedInputStream
+    //   157	5	5	localIOException	java.io.IOException
+    //   182	225	5	localObject1	Object
+    //   413	32	5	localObject2	Object
+    //   63	87	6	localBufferedInputStream2	java.io.BufferedInputStream
+    //   86	1	7	localThrowable1	Throwable
+    //   91	1	7	localFileNotFoundException1	java.io.FileNotFoundException
+    //   103	12	7	localThrowable2	Throwable
+    //   130	12	7	localFileNotFoundException2	java.io.FileNotFoundException
+    //   1	403	8	localObject3	Object
+    //   37	239	9	localOptions	BitmapFactory.Options
     // Exception table:
     //   from	to	target	type
-    //   193	198	201	java/io/IOException
-    //   75	80	214	java/io/IOException
-    //   42	62	229	java/io/FileNotFoundException
-    //   248	253	256	java/io/IOException
-    //   42	62	271	java/lang/Throwable
-    //   290	295	298	java/io/IOException
-    //   42	62	313	finally
-    //   317	322	324	java/io/IOException
-    //   150	170	339	java/io/FileNotFoundException
-    //   357	362	364	java/io/IOException
-    //   150	170	376	java/lang/OutOfMemoryError
-    //   394	399	401	java/io/IOException
-    //   150	170	413	java/lang/Throwable
-    //   431	436	438	java/io/IOException
-    //   150	170	450	finally
-    //   454	458	461	java/io/IOException
-    //   173	180	474	finally
-    //   183	193	474	finally
-    //   347	357	474	finally
-    //   384	394	474	finally
-    //   421	431	474	finally
-    //   173	180	479	java/lang/Throwable
-    //   183	193	479	java/lang/Throwable
-    //   173	180	484	java/lang/OutOfMemoryError
-    //   183	193	484	java/lang/OutOfMemoryError
-    //   173	180	489	java/io/FileNotFoundException
-    //   183	193	489	java/io/FileNotFoundException
-    //   66	75	494	finally
-    //   238	248	494	finally
-    //   280	290	494	finally
-    //   66	75	498	java/lang/Throwable
-    //   66	75	503	java/io/FileNotFoundException
+    //   69	78	86	java/lang/Throwable
+    //   69	78	91	java/io/FileNotFoundException
+    //   45	65	96	finally
+    //   45	65	103	java/lang/Throwable
+    //   45	65	130	java/io/FileNotFoundException
+    //   78	83	157	java/io/IOException
+    //   122	127	157	java/io/IOException
+    //   149	154	157	java/io/IOException
+    //   285	290	293	java/io/IOException
+    //   350	355	293	java/io/IOException
+    //   378	383	293	java/io/IOException
+    //   406	411	293	java/io/IOException
+    //   262	269	307	java/lang/Throwable
+    //   272	282	307	java/lang/Throwable
+    //   262	269	312	java/lang/OutOfMemoryError
+    //   272	282	312	java/lang/OutOfMemoryError
+    //   262	269	317	java/io/FileNotFoundException
+    //   272	282	317	java/io/FileNotFoundException
+    //   239	259	322	finally
+    //   239	259	329	java/lang/Throwable
+    //   239	259	357	java/lang/OutOfMemoryError
+    //   239	259	385	java/io/FileNotFoundException
+    //   262	269	413	finally
+    //   272	282	413	finally
+    //   337	347	413	finally
+    //   365	375	413	finally
+    //   393	403	413	finally
+    //   421	426	429	java/io/IOException
+    //   69	78	443	finally
+    //   112	122	443	finally
+    //   139	149	443	finally
+    //   444	449	452	java/io/IOException
   }
   
   public Bitmap decodeFile(File paramFile, BitmapFactory.Options paramOptions)
@@ -421,280 +413,314 @@ public class DefaultDecoder
     //   15: aload_3
     //   16: aload_2
     //   17: invokevirtual 162	com/tencent/component/media/image/DefaultDecoder:decodeImage	(Ljava/io/FileInputStream;Landroid/graphics/BitmapFactory$Options;)Lcom/tencent/component/media/image/BitmapReference;
-    //   20: astore_2
-    //   21: aload_2
-    //   22: astore_1
-    //   23: aload_3
-    //   24: ifnull +9 -> 33
-    //   27: aload_3
+    //   20: astore 5
+    //   22: aload_3
+    //   23: astore_2
+    //   24: aload 5
+    //   26: astore_1
+    //   27: aload_2
     //   28: invokevirtual 163	java/io/FileInputStream:close	()V
-    //   31: aload_2
-    //   32: astore_1
-    //   33: aload_1
-    //   34: areturn
-    //   35: astore_2
-    //   36: aconst_null
-    //   37: astore_3
-    //   38: aload_3
-    //   39: astore_1
-    //   40: ldc 10
-    //   42: new 23	java/lang/StringBuilder
-    //   45: dup
-    //   46: invokespecial 24	java/lang/StringBuilder:<init>	()V
-    //   49: ldc 165
-    //   51: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: aload_2
-    //   55: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   58: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   67: aload 4
-    //   69: astore_1
-    //   70: aload_3
-    //   71: ifnull -38 -> 33
-    //   74: aload_3
-    //   75: invokevirtual 163	java/io/FileInputStream:close	()V
-    //   78: aconst_null
-    //   79: areturn
+    //   31: aload_1
+    //   32: areturn
+    //   33: astore_2
+    //   34: goto +138 -> 172
+    //   37: astore_2
+    //   38: goto +20 -> 58
+    //   41: astore_1
+    //   42: aload_3
+    //   43: astore_2
+    //   44: aload_1
+    //   45: astore_3
+    //   46: goto +69 -> 115
+    //   49: astore_2
+    //   50: aconst_null
+    //   51: astore_1
+    //   52: goto +120 -> 172
+    //   55: astore_2
+    //   56: aconst_null
+    //   57: astore_3
+    //   58: aload_3
+    //   59: astore_1
+    //   60: new 23	java/lang/StringBuilder
+    //   63: dup
+    //   64: invokespecial 24	java/lang/StringBuilder:<init>	()V
+    //   67: astore 5
+    //   69: aload_3
+    //   70: astore_1
+    //   71: aload 5
+    //   73: ldc 165
+    //   75: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: pop
+    //   79: aload_3
     //   80: astore_1
-    //   81: aconst_null
-    //   82: areturn
-    //   83: astore_2
-    //   84: aconst_null
-    //   85: astore_3
-    //   86: aload_3
-    //   87: astore_1
-    //   88: ldc 10
-    //   90: new 23	java/lang/StringBuilder
-    //   93: dup
-    //   94: invokespecial 24	java/lang/StringBuilder:<init>	()V
-    //   97: ldc 165
-    //   99: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: aload_2
-    //   103: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   106: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   115: aload 4
-    //   117: astore_1
-    //   118: aload_3
-    //   119: ifnull -86 -> 33
-    //   122: aload_3
-    //   123: invokevirtual 163	java/io/FileInputStream:close	()V
-    //   126: aconst_null
-    //   127: areturn
-    //   128: astore_1
-    //   129: aconst_null
-    //   130: areturn
-    //   131: astore_2
-    //   132: aconst_null
-    //   133: astore_1
-    //   134: aload_1
-    //   135: ifnull +7 -> 142
-    //   138: aload_1
-    //   139: invokevirtual 163	java/io/FileInputStream:close	()V
-    //   142: aload_2
-    //   143: athrow
-    //   144: astore_1
-    //   145: aload_2
-    //   146: areturn
-    //   147: astore_1
-    //   148: goto -6 -> 142
-    //   151: astore_2
-    //   152: goto -18 -> 134
-    //   155: astore_2
-    //   156: goto -70 -> 86
-    //   159: astore_2
-    //   160: goto -122 -> 38
+    //   81: aload 5
+    //   83: aload_2
+    //   84: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   87: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload_3
+    //   92: astore_1
+    //   93: ldc 10
+    //   95: aload 5
+    //   97: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   103: aload_3
+    //   104: ifnull +66 -> 170
+    //   107: aload 4
+    //   109: astore_1
+    //   110: aload_3
+    //   111: astore_2
+    //   112: goto -85 -> 27
+    //   115: aload_2
+    //   116: astore_1
+    //   117: new 23	java/lang/StringBuilder
+    //   120: dup
+    //   121: invokespecial 24	java/lang/StringBuilder:<init>	()V
+    //   124: astore 5
+    //   126: aload_2
+    //   127: astore_1
+    //   128: aload 5
+    //   130: ldc 165
+    //   132: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: pop
+    //   136: aload_2
+    //   137: astore_1
+    //   138: aload 5
+    //   140: aload_3
+    //   141: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   144: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: aload_2
+    //   149: astore_1
+    //   150: ldc 10
+    //   152: aload 5
+    //   154: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   160: aload_2
+    //   161: ifnull +9 -> 170
+    //   164: aload 4
+    //   166: astore_1
+    //   167: goto -140 -> 27
+    //   170: aconst_null
+    //   171: areturn
+    //   172: aload_1
+    //   173: ifnull +7 -> 180
+    //   176: aload_1
+    //   177: invokevirtual 163	java/io/FileInputStream:close	()V
+    //   180: goto +5 -> 185
+    //   183: aload_2
+    //   184: athrow
+    //   185: goto -2 -> 183
+    //   188: astore_2
+    //   189: aload_1
+    //   190: areturn
+    //   191: astore_1
+    //   192: goto -12 -> 180
+    //   195: astore_3
+    //   196: aconst_null
+    //   197: astore_2
+    //   198: goto -83 -> 115
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	163	0	this	DefaultDecoder
-    //   0	163	1	paramFile	File
-    //   0	163	2	paramOptions	BitmapFactory.Options
-    //   11	112	3	localFileInputStream	java.io.FileInputStream
-    //   1	115	4	localObject	Object
+    //   0	201	0	this	DefaultDecoder
+    //   0	201	1	paramFile	File
+    //   0	201	2	paramOptions	BitmapFactory.Options
+    //   11	130	3	localObject1	Object
+    //   195	1	3	localFileNotFoundException	java.io.FileNotFoundException
+    //   1	164	4	localObject2	Object
+    //   20	133	5	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   3	12	35	java/io/FileNotFoundException
-    //   74	78	80	java/io/IOException
-    //   3	12	83	java/lang/Throwable
-    //   122	126	128	java/io/IOException
-    //   3	12	131	finally
-    //   27	31	144	java/io/IOException
-    //   138	142	147	java/io/IOException
-    //   14	21	151	finally
-    //   40	67	151	finally
-    //   88	115	151	finally
-    //   14	21	155	java/lang/Throwable
-    //   14	21	159	java/io/FileNotFoundException
+    //   14	22	33	finally
+    //   60	69	33	finally
+    //   71	79	33	finally
+    //   81	91	33	finally
+    //   93	103	33	finally
+    //   117	126	33	finally
+    //   128	136	33	finally
+    //   138	148	33	finally
+    //   150	160	33	finally
+    //   14	22	37	java/lang/Throwable
+    //   14	22	41	java/io/FileNotFoundException
+    //   3	12	49	finally
+    //   3	12	55	java/lang/Throwable
+    //   27	31	188	java/io/IOException
+    //   176	180	191	java/io/IOException
+    //   3	12	195	java/io/FileNotFoundException
   }
   
   /* Error */
   public BitmapReference decodeImage(java.io.FileInputStream paramFileInputStream, BitmapFactory.Options paramOptions)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: aload_1
-    //   4: ifnonnull +5 -> 9
-    //   7: aconst_null
-    //   8: areturn
-    //   9: new 103	java/io/BufferedInputStream
-    //   12: dup
-    //   13: aload_1
-    //   14: sipush 8192
-    //   17: invokespecial 111	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   20: astore 5
-    //   22: iload 4
-    //   24: istore_3
-    //   25: getstatic 172	android/os/Build$VERSION:SDK_INT	I
-    //   28: bipush 21
-    //   30: if_icmplt +19 -> 49
-    //   33: iload 4
-    //   35: istore_3
-    //   36: ldc 174
-    //   38: getstatic 179	android/os/Build:MANUFACTURER	Ljava/lang/String;
-    //   41: invokevirtual 185	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   44: ifeq +5 -> 49
-    //   47: iconst_1
-    //   48: istore_3
-    //   49: iload_3
-    //   50: ifeq +103 -> 153
-    //   53: sipush 4096
-    //   56: newarray byte
-    //   58: astore 6
-    //   60: new 187	java/io/ByteArrayOutputStream
-    //   63: dup
-    //   64: invokespecial 188	java/io/ByteArrayOutputStream:<init>	()V
-    //   67: astore_1
-    //   68: aload 5
-    //   70: aload 6
-    //   72: iconst_0
-    //   73: aload 6
-    //   75: arraylength
-    //   76: invokevirtual 192	java/io/BufferedInputStream:read	([BII)I
-    //   79: istore_3
-    //   80: iload_3
-    //   81: iconst_m1
-    //   82: if_icmpeq +47 -> 129
-    //   85: aload_1
-    //   86: aload 6
-    //   88: iconst_0
-    //   89: iload_3
-    //   90: invokevirtual 196	java/io/ByteArrayOutputStream:write	([BII)V
-    //   93: goto -25 -> 68
-    //   96: astore_1
-    //   97: ldc 10
-    //   99: new 23	java/lang/StringBuilder
-    //   102: dup
-    //   103: invokespecial 24	java/lang/StringBuilder:<init>	()V
-    //   106: ldc 165
-    //   108: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: aload_1
-    //   112: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   115: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   121: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   124: aconst_null
-    //   125: areturn
-    //   126: astore_1
-    //   127: aload_1
-    //   128: athrow
-    //   129: aload_1
-    //   130: invokevirtual 200	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   133: astore 5
-    //   135: aload_1
-    //   136: invokevirtual 201	java/io/ByteArrayOutputStream:close	()V
-    //   139: aload 5
-    //   141: iconst_0
-    //   142: aload 5
-    //   144: arraylength
-    //   145: aload_2
-    //   146: invokestatic 68	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   149: invokestatic 207	com/tencent/component/media/image/BitmapReference:getBitmapReference	(Landroid/graphics/Bitmap;)Lcom/tencent/component/media/image/BitmapReference;
-    //   152: areturn
-    //   153: aload 5
-    //   155: aconst_null
-    //   156: aload_2
-    //   157: invokestatic 115	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   160: invokestatic 207	com/tencent/component/media/image/BitmapReference:getBitmapReference	(Landroid/graphics/Bitmap;)Lcom/tencent/component/media/image/BitmapReference;
-    //   163: astore_1
-    //   164: aload_1
-    //   165: areturn
-    //   166: astore_1
-    //   167: ldc 10
-    //   169: new 23	java/lang/StringBuilder
-    //   172: dup
-    //   173: invokespecial 24	java/lang/StringBuilder:<init>	()V
-    //   176: ldc 165
-    //   178: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: aload_1
-    //   182: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   185: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   191: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   194: aconst_null
-    //   195: areturn
+    //   0: aload_1
+    //   1: ifnonnull +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: new 103	java/io/BufferedInputStream
+    //   9: dup
+    //   10: aload_1
+    //   11: sipush 8192
+    //   14: invokespecial 111	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   17: astore 4
+    //   19: getstatic 172	android/os/Build$VERSION:SDK_INT	I
+    //   22: bipush 21
+    //   24: if_icmplt +190 -> 214
+    //   27: ldc 174
+    //   29: getstatic 179	android/os/Build:MANUFACTURER	Ljava/lang/String;
+    //   32: invokevirtual 185	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   35: ifeq +179 -> 214
+    //   38: iconst_1
+    //   39: istore_3
+    //   40: goto +3 -> 43
+    //   43: iload_3
+    //   44: ifeq +73 -> 117
+    //   47: sipush 4096
+    //   50: newarray byte
+    //   52: astore 5
+    //   54: new 187	java/io/ByteArrayOutputStream
+    //   57: dup
+    //   58: invokespecial 188	java/io/ByteArrayOutputStream:<init>	()V
+    //   61: astore_1
+    //   62: aload 4
+    //   64: aload 5
+    //   66: iconst_0
+    //   67: aload 5
+    //   69: arraylength
+    //   70: invokevirtual 192	java/io/BufferedInputStream:read	([BII)I
+    //   73: istore_3
+    //   74: iload_3
+    //   75: iconst_m1
+    //   76: if_icmpeq +14 -> 90
+    //   79: aload_1
+    //   80: aload 5
+    //   82: iconst_0
+    //   83: iload_3
+    //   84: invokevirtual 196	java/io/ByteArrayOutputStream:write	([BII)V
+    //   87: goto -25 -> 62
+    //   90: aload_1
+    //   91: invokevirtual 200	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   94: astore 4
+    //   96: aload_1
+    //   97: invokevirtual 201	java/io/ByteArrayOutputStream:close	()V
+    //   100: aload 4
+    //   102: iconst_0
+    //   103: aload 4
+    //   105: arraylength
+    //   106: aload_2
+    //   107: invokestatic 68	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   110: invokestatic 207	com/tencent/component/media/image/BitmapReference:getBitmapReference	(Landroid/graphics/Bitmap;)Lcom/tencent/component/media/image/BitmapReference;
+    //   113: astore_1
+    //   114: goto +14 -> 128
+    //   117: aload 4
+    //   119: aconst_null
+    //   120: aload_2
+    //   121: invokestatic 115	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   124: invokestatic 207	com/tencent/component/media/image/BitmapReference:getBitmapReference	(Landroid/graphics/Bitmap;)Lcom/tencent/component/media/image/BitmapReference;
+    //   127: astore_1
+    //   128: aload_1
+    //   129: areturn
+    //   130: astore_1
+    //   131: goto +75 -> 206
+    //   134: astore_1
+    //   135: new 23	java/lang/StringBuilder
+    //   138: dup
+    //   139: invokespecial 24	java/lang/StringBuilder:<init>	()V
+    //   142: astore_2
+    //   143: aload_2
+    //   144: ldc 165
+    //   146: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: pop
+    //   150: aload_2
+    //   151: aload_1
+    //   152: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   155: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: pop
+    //   159: ldc 10
+    //   161: aload_2
+    //   162: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   165: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   168: aconst_null
+    //   169: areturn
+    //   170: astore_1
+    //   171: new 23	java/lang/StringBuilder
+    //   174: dup
+    //   175: invokespecial 24	java/lang/StringBuilder:<init>	()V
+    //   178: astore_2
+    //   179: aload_2
+    //   180: ldc 165
+    //   182: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload_2
+    //   187: aload_1
+    //   188: invokestatic 72	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   191: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: pop
+    //   195: ldc 10
+    //   197: aload_2
+    //   198: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: invokestatic 77	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   204: aconst_null
+    //   205: areturn
+    //   206: goto +5 -> 211
+    //   209: aload_1
+    //   210: athrow
+    //   211: goto -2 -> 209
+    //   214: iconst_0
+    //   215: istore_3
+    //   216: goto -173 -> 43
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	196	0	this	DefaultDecoder
-    //   0	196	1	paramFileInputStream	java.io.FileInputStream
-    //   0	196	2	paramOptions	BitmapFactory.Options
-    //   24	66	3	i	int
-    //   1	33	4	j	int
-    //   20	134	5	localObject	Object
-    //   58	29	6	arrayOfByte	byte[]
+    //   0	219	0	this	DefaultDecoder
+    //   0	219	1	paramFileInputStream	java.io.FileInputStream
+    //   0	219	2	paramOptions	BitmapFactory.Options
+    //   39	177	3	i	int
+    //   17	101	4	localObject	Object
+    //   52	29	5	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   9	22	96	java/lang/Exception
-    //   25	33	96	java/lang/Exception
-    //   36	47	96	java/lang/Exception
-    //   53	68	96	java/lang/Exception
-    //   68	80	96	java/lang/Exception
-    //   85	93	96	java/lang/Exception
-    //   129	153	96	java/lang/Exception
-    //   153	164	96	java/lang/Exception
-    //   9	22	126	finally
-    //   25	33	126	finally
-    //   36	47	126	finally
-    //   53	68	126	finally
-    //   68	80	126	finally
-    //   85	93	126	finally
-    //   97	124	126	finally
-    //   129	153	126	finally
-    //   153	164	126	finally
-    //   167	194	126	finally
-    //   9	22	166	java/lang/OutOfMemoryError
-    //   25	33	166	java/lang/OutOfMemoryError
-    //   36	47	166	java/lang/OutOfMemoryError
-    //   53	68	166	java/lang/OutOfMemoryError
-    //   68	80	166	java/lang/OutOfMemoryError
-    //   85	93	166	java/lang/OutOfMemoryError
-    //   129	153	166	java/lang/OutOfMemoryError
-    //   153	164	166	java/lang/OutOfMemoryError
+    //   6	38	130	finally
+    //   47	62	130	finally
+    //   62	74	130	finally
+    //   79	87	130	finally
+    //   90	114	130	finally
+    //   117	128	130	finally
+    //   135	168	130	finally
+    //   171	204	130	finally
+    //   6	38	134	java/lang/OutOfMemoryError
+    //   47	62	134	java/lang/OutOfMemoryError
+    //   62	74	134	java/lang/OutOfMemoryError
+    //   79	87	134	java/lang/OutOfMemoryError
+    //   90	114	134	java/lang/OutOfMemoryError
+    //   117	128	134	java/lang/OutOfMemoryError
+    //   6	38	170	java/lang/Exception
+    //   47	62	170	java/lang/Exception
+    //   62	74	170	java/lang/Exception
+    //   79	87	170	java/lang/Exception
+    //   90	114	170	java/lang/Exception
+    //   117	128	170	java/lang/Exception
   }
   
   public BitmapReference decodeImage(byte[] paramArrayOfByte, int paramInt1, int paramInt2, BitmapFactory.Options paramOptions, int paramInt3, int paramInt4)
   {
-    Object localObject = null;
     try
     {
       paramArrayOfByte = decodeByteArray(paramArrayOfByte, paramInt1, paramInt2, paramOptions, paramInt3, paramInt4);
-      return BitmapReference.getBitmapReference(paramArrayOfByte);
     }
     catch (Throwable paramArrayOfByte)
     {
-      for (;;)
-      {
-        ImageManagerLog.e("DefaultDecoder", "decodeImage error " + Log.getStackTraceString(paramArrayOfByte));
-        paramArrayOfByte = localObject;
-      }
+      paramOptions = new StringBuilder();
+      paramOptions.append("decodeImage error ");
+      paramOptions.append(Log.getStackTraceString(paramArrayOfByte));
+      ImageManagerLog.e("DefaultDecoder", paramOptions.toString());
+      paramArrayOfByte = null;
     }
+    return BitmapReference.getBitmapReference(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.DefaultDecoder
  * JD-Core Version:    0.7.0.1
  */

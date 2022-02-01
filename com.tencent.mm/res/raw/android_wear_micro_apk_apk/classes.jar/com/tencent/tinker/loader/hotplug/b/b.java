@@ -6,28 +6,28 @@ import android.os.Message;
 final class b
   implements Handler.Callback, f
 {
-  private final c alA;
-  private final Handler.Callback alC;
-  private volatile boolean alD;
+  private final c apa;
+  private final Handler.Callback apc;
+  private volatile boolean apd;
   
   b(c paramc, Handler.Callback paramCallback)
   {
-    this.alA = paramc;
-    this.alC = paramCallback;
-    this.alD = false;
+    this.apa = paramc;
+    this.apc = paramCallback;
+    this.apd = false;
   }
   
   public final boolean handleMessage(Message paramMessage)
   {
-    if (this.alD) {
+    if (this.apd) {
       return false;
     }
-    this.alD = true;
-    this.alA.handleMessage(paramMessage);
-    if (this.alC != null) {}
-    for (boolean bool = this.alC.handleMessage(paramMessage);; bool = false)
+    this.apd = true;
+    this.apa.handleMessage(paramMessage);
+    if (this.apc != null) {}
+    for (boolean bool = this.apc.handleMessage(paramMessage);; bool = false)
     {
-      this.alD = false;
+      this.apd = false;
       return bool;
     }
   }

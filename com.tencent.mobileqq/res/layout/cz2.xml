@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/iro" android:scaleType="fitXY" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/y18" />
+</merge>

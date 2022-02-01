@@ -5,9 +5,9 @@ import a.a.a.b;
 public final class h
   extends com.tencent.mm.d.a
 {
-  public int Vv;
-  public String Vw;
-  public String Vx;
+  public int Xq;
+  public String Xr;
+  public String Xs;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
@@ -15,18 +15,18 @@ public final class h
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.Vw == null) {
+      if (this.Xr == null) {
         throw new b("Not all required fields were included: Title");
       }
-      if (this.Vx == null) {
+      if (this.Xs == null) {
         throw new b("Not all required fields were included: Content");
       }
-      paramVarArgs.aq(1, this.Vv);
-      if (this.Vw != null) {
-        paramVarArgs.d(2, this.Vw);
+      paramVarArgs.at(1, this.Xq);
+      if (this.Xr != null) {
+        paramVarArgs.d(2, this.Xr);
       }
-      if (this.Vx != null) {
-        paramVarArgs.d(3, this.Vx);
+      if (this.Xs != null) {
+        paramVarArgs.d(3, this.Xs);
       }
       i = 0;
     }
@@ -36,26 +36,26 @@ public final class h
       if (paramInt != 1) {
         break;
       }
-      i = a.a.a.a.ak(1, this.Vv) + 0;
+      i = a.a.a.a.an(1, this.Xq) + 0;
       paramInt = i;
-      if (this.Vw != null) {
-        paramInt = i + a.a.a.b.b.a.e(2, this.Vw);
+      if (this.Xr != null) {
+        paramInt = i + a.a.a.b.b.a.e(2, this.Xr);
       }
       i = paramInt;
-    } while (this.Vx == null);
-    return paramInt + a.a.a.b.b.a.e(3, this.Vx);
+    } while (this.Xs == null);
+    return paramInt + a.a.a.b.b.a.e(3, this.Xs);
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
-      if (this.Vw == null) {
+      if (this.Xr == null) {
         throw new b("Not all required fields were included: Title");
       }
-      if (this.Vx == null) {
+      if (this.Xs == null) {
         throw new b("Not all required fields were included: Content");
       }
       return 0;
@@ -69,13 +69,13 @@ public final class h
       default: 
         return -1;
       case 1: 
-        localh.Vv = locala.ot();
+        localh.Xq = locala.pg();
         return 0;
       case 2: 
-        localh.Vw = locala.ou();
+        localh.Xr = locala.ph();
         return 0;
       }
-      localh.Vx = locala.ou();
+      localh.Xs = locala.ph();
       return 0;
     }
     return -1;

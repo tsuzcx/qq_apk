@@ -29,17 +29,18 @@ public final class qqstory_710_message$StoryCommentInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58, 64, 72, 82, 88, 98, 106, 112 }, new String[] { "comment_id", "comment_uid", "comment_time", "content", "comment_del", "is_bigv", "union_id", "reply_uid", "reply_is_bigv", "reply_union_id", "type", "share_name", "share_union_id", "share_type" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0) }, StoryCommentInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 58, 64, 72, 82, 88, 98, 106, 112 }, new String[] { "comment_id", "comment_uid", "comment_time", "content", "comment_del", "is_bigv", "union_id", "reply_uid", "reply_is_bigv", "reply_union_id", "type", "share_name", "share_union_id", "share_type" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, Long.valueOf(0L), localInteger, localByteStringMicro3, localInteger, localByteStringMicro4, localByteStringMicro5, localInteger }, StoryCommentInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryCommentInfo
  * JD-Core Version:    0.7.0.1
  */

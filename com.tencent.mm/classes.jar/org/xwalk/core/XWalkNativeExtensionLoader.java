@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class XWalkNativeExtensionLoader
 {
+  private static final String TAG = "XWalkNativeExtensionLoader";
   private Object bridge;
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes;
@@ -14,42 +15,36 @@ public class XWalkNativeExtensionLoader
   
   static
   {
-    AppMethodBeat.i(85713);
+    AppMethodBeat.i(154808);
     if (!XWalkNativeExtensionLoader.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(85713);
+      AppMethodBeat.o(154808);
       return;
     }
   }
   
   public XWalkNativeExtensionLoader()
   {
-    AppMethodBeat.i(85710);
+    AppMethodBeat.i(154805);
     this.registerNativeExtensionsInPathStringMethod = new ReflectMethod(null, "registerNativeExtensionsInPath", new Class[0]);
     this.constructorTypes = new ArrayList();
     this.constructorParams = new ArrayList();
     reflectionInit();
-    AppMethodBeat.o(85710);
+    AppMethodBeat.o(154805);
   }
   
-  protected Object getBridge()
+  private void reflectionInit()
   {
-    return this.bridge;
-  }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(85712);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
+    AppMethodBeat.i(154807);
+    if (XWalkCoreWrapper.getInstance() == null)
     {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(85712);
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154807);
       return;
     }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
     int j = this.constructorTypes.size();
     Object localObject1 = new Class[j + 1];
     int i = 0;
@@ -61,7 +56,7 @@ public class XWalkNativeExtensionLoader
         localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
         this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
       }
-      label137:
+      label133:
       do
       {
         for (;;)
@@ -69,13 +64,13 @@ public class XWalkNativeExtensionLoader
           i += 1;
           break;
           if (!(localObject2 instanceof Class)) {
-            break label137;
+            break label133;
           }
           localObject1[i] = ((Class)localObject2);
         }
       } while ($assertionsDisabled);
       localObject1 = new AssertionError();
-      AppMethodBeat.o(85712);
+      AppMethodBeat.o(154807);
       throw ((Throwable)localObject1);
     }
     localObject1[j] = Object.class;
@@ -88,22 +83,28 @@ public class XWalkNativeExtensionLoader
         this.postWrapperMethod.invoke(new Object[0]);
       }
       this.registerNativeExtensionsInPathStringMethod.init(this.bridge, null, "registerNativeExtensionsInPathSuper", new Class[] { String.class });
-      AppMethodBeat.o(85712);
+      AppMethodBeat.o(154807);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
-      AppMethodBeat.o(85712);
+      Log.e("XWalkNativeExtensionLoader", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+      AppMethodBeat.o(154807);
     }
+  }
+  
+  protected Object getBridge()
+  {
+    return this.bridge;
   }
   
   public void registerNativeExtensionsInPath(String paramString)
   {
-    AppMethodBeat.i(85711);
+    AppMethodBeat.i(154806);
     try
     {
       this.registerNativeExtensionsInPathStringMethod.invoke(new Object[] { paramString });
-      AppMethodBeat.o(85711);
+      AppMethodBeat.o(154806);
       return;
     }
     catch (UnsupportedOperationException paramString)
@@ -111,17 +112,17 @@ public class XWalkNativeExtensionLoader
       if (this.coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85711);
+        AppMethodBeat.o(154806);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(85711);
+      AppMethodBeat.o(154806);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkNativeExtensionLoader
  * JD-Core Version:    0.7.0.1
  */

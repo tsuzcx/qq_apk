@@ -9,12 +9,12 @@ class GesturePWDUnlockActivity$1
   
   public void run()
   {
-    GesturePWDUnlockActivity.a(this.this$0).setEnabled(true);
+    GesturePWDUnlockActivity.access$000(this.this$0).setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDUnlockActivity.1
  * JD-Core Version:    0.7.0.1
  */

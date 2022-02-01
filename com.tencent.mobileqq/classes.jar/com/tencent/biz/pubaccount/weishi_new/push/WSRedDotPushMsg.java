@@ -5,21 +5,21 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import org.json.JSONObject;
-import tiw;
-import tjc;
 
 public class WSRedDotPushMsg
-  extends tiw
+  extends WSBasePushMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSRedDotPushMsg> CREATOR = new tjc();
+  public static final Parcelable.Creator<WSRedDotPushMsg> CREATOR = new WSRedDotPushMsg.1();
+  public String mDramaId;
   public String mFeedIds;
   public IWSPushBaseStrategy mStrategyInfo;
   
-  public WSRedDotPushMsg(Parcel paramParcel)
+  protected WSRedDotPushMsg(Parcel paramParcel)
   {
     super(paramParcel);
     this.mFeedIds = paramParcel.readString();
+    this.mDramaId = paramParcel.readString();
     this.mStrategyInfo = ((IWSPushBaseStrategy)paramParcel.readParcelable(WSPushStrategyInfo.class.getClassLoader()));
   }
   
@@ -41,28 +41,40 @@ public class WSRedDotPushMsg
     return 0;
   }
   
-  public void parseJson(JSONObject paramJSONObject)
+  protected void parseJson(JSONObject paramJSONObject)
   {
     super.parseJson(paramJSONObject);
     this.mFeedIds = paramJSONObject.optString("feedids");
+    this.mDramaId = paramJSONObject.optString("dramaid");
     this.mStrategyInfo = WSPushStrategyInfo.getInstance(paramJSONObject.optJSONObject("strategy_info"));
   }
   
   public String toString()
   {
-    return "WSRedDotPushMsg{mStrategyInfo=" + this.mStrategyInfo + ", mPushId='" + this.mPushId + '\'' + ", mMsgData='" + this.mMsgData + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSRedDotPushMsg{mStrategyInfo=");
+    localStringBuilder.append(this.mStrategyInfo);
+    localStringBuilder.append(", mPushId='");
+    localStringBuilder.append(this.mPushId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mMsgData='");
+    localStringBuilder.append(this.mMsgData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.mFeedIds);
+    paramParcel.writeString(this.mDramaId);
     paramParcel.writeParcelable(this.mStrategyInfo, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg
  * JD-Core Version:    0.7.0.1
  */

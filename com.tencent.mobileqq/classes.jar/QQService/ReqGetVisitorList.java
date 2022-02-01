@@ -10,8 +10,8 @@ public final class ReqGetVisitorList
   static ReqHead cache_stHeader;
   static UserCntlData cache_stUserData;
   public int iPageSize = -1;
-  public ReqHead stHeader;
-  public UserCntlData stUserData;
+  public ReqHead stHeader = null;
+  public UserCntlData stUserData = null;
   
   public ReqGetVisitorList() {}
   
@@ -44,7 +44,7 @@ public final class ReqGetVisitorList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqGetVisitorList
  * JD-Core Version:    0.7.0.1
  */

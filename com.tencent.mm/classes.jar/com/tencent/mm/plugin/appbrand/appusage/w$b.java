@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 final class w$b
-  extends j<w.a>
+  extends MAutoStorage<w.a>
 {
-  w$b(e parame)
+  w$b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, w.a.fkk, "AppBrandLauncherLayoutItem", w.a.INDEX_CREATE);
+    super(paramISQLiteDatabase, w.a.nVV, "AppBrandLauncherLayoutItem", w.a.INDEX_CREATE);
   }
 }
 

@@ -1,8 +1,7 @@
 package com.tencent.biz.webviewplugin;
 
-import begz;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import zgm;
 
 class WebSoPlugin$2$1
   implements Runnable
@@ -11,21 +10,25 @@ class WebSoPlugin$2$1
   
   public void run()
   {
-    if ((this.a.this$0.mRuntime != null) && (this.a.this$0.mRuntime.a() != null)) {}
-    try
-    {
-      this.a.this$0.a(this.a.this$0.mRuntime.a());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("WebSoPlugin", 1, "asynJudgmentDynamicCover, useSoftwareMode err, ExceptionMsg = " + localThrowable.getMessage());
+    if ((this.a.this$0.mRuntime != null) && (this.a.this$0.mRuntime.a() != null)) {
+      try
+      {
+        this.a.this$0.a(this.a.this$0.mRuntime.a());
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("asynJudgmentDynamicCover, useSoftwareMode err, ExceptionMsg = ");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.e("WebSoPlugin", 1, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.WebSoPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

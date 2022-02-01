@@ -6,28 +6,33 @@ import com.tencent.qphone.base.util.QLog;
 public class QCircleFakeAdapter$RetryRunnable
   implements Runnable
 {
-  private QCircleFakeAdapter jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter;
-  private QCircleFeedEvent jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent;
+  private QCircleFakeAdapter a;
+  private QCircleFeedEvent b;
   
   public QCircleFakeAdapter$RetryRunnable(QCircleFakeAdapter paramQCircleFakeAdapter, QCircleFeedEvent paramQCircleFeedEvent)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter = paramQCircleFakeAdapter;
-    this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent = paramQCircleFeedEvent;
+    this.a = paramQCircleFakeAdapter;
+    this.b = paramQCircleFeedEvent;
   }
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter != null) && (this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent != null))
+    QCircleFakeAdapter localQCircleFakeAdapter = this.a;
+    if (localQCircleFakeAdapter != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqcircleAdapterQCircleFakeAdapter.a(this.jdField_a_of_type_ComTencentBizQqcircleEventsQCircleFeedEvent, true);
-      return;
+      QCircleFeedEvent localQCircleFeedEvent = this.b;
+      if (localQCircleFeedEvent != null)
+      {
+        localQCircleFakeAdapter.a(localQCircleFeedEvent, true);
+        return;
+      }
     }
     QLog.d("QCircleFakeAdapter", 1, "adapter or event is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter.RetryRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -10,25 +10,28 @@ class Dns$1
 {
   public List<InetAddress> lookup(String paramString)
   {
-    if (paramString == null) {
-      throw new UnknownHostException("hostname == null");
+    if (paramString != null) {
+      try
+      {
+        List localList = Arrays.asList(InetAddress.getAllByName(paramString));
+        return localList;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Broken system behaviour for dns lookup of ");
+        localStringBuilder.append(paramString);
+        paramString = new UnknownHostException(localStringBuilder.toString());
+        paramString.initCause(localNullPointerException);
+        throw paramString;
+      }
     }
-    try
-    {
-      List localList = Arrays.asList(InetAddress.getAllByName(paramString));
-      return localList;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      paramString = new UnknownHostException("Broken system behaviour for dns lookup of " + paramString);
-      paramString.initCause(localNullPointerException);
-      throw paramString;
-    }
+    throw new UnknownHostException("hostname == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Dns.1
  * JD-Core Version:    0.7.0.1
  */

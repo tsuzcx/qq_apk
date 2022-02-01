@@ -10,7 +10,7 @@ public final class stLyricInfo
   public String strFormat = "";
   public String strLyric = "";
   public String strSongMid = "";
-  public long uiSongId;
+  public long uiSongId = 0L;
   
   public stLyricInfo() {}
   
@@ -33,20 +33,23 @@ public final class stLyricInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uiSongId, 0);
-    if (this.strSongMid != null) {
-      paramJceOutputStream.write(this.strSongMid, 1);
+    String str = this.strSongMid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strFormat != null) {
-      paramJceOutputStream.write(this.strFormat, 2);
+    str = this.strFormat;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strLyric != null) {
-      paramJceOutputStream.write(this.strLyric, 3);
+    str = this.strLyric;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stLyricInfo
  * JD-Core Version:    0.7.0.1
  */

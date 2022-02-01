@@ -24,12 +24,13 @@ public class Mp4MaterialLoader$EglHandlerThreadEx
     release();
   }
   
-  public void onLooperPrepared()
+  protected void onLooperPrepared()
   {
     super.onLooperPrepared();
-    if (this.mSynObjectRef != null)
+    Object localObject1 = this.mSynObjectRef;
+    if (localObject1 != null)
     {
-      Object localObject1 = this.mSynObjectRef.get();
+      localObject1 = ((WeakReference)localObject1).get();
       if (localObject1 != null) {
         try
         {
@@ -66,7 +67,7 @@ public class Mp4MaterialLoader$EglHandlerThreadEx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.Mp4MaterialLoader.EglHandlerThreadEx
  * JD-Core Version:    0.7.0.1
  */

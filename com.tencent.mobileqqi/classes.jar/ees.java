@@ -1,25 +1,49 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecommendContactMsg;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.List;
 
-class ees
-  implements Runnable
+public class ees
+  implements View.OnClickListener
 {
-  ees(eer parameer, List paramList) {}
+  public ees(RecommendListView paramRecommendListView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Eer.a.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    if ((this.jdField_a_of_type_Eer.a.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Eer.a.jdField_a_of_type_JavaUtilList.size() > 0))
+    PhoneContactManagerImp localPhoneContactManagerImp;
+    if (paramView.getId() == 2131230988)
     {
-      if (this.jdField_a_of_type_Eer.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a() != this.jdField_a_of_type_Eer.a.jdField_a_of_type_Efb) {
-        this.jdField_a_of_type_Eer.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Eer.a.jdField_a_of_type_Efb);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+      if (this.a.jdField_a_of_type_Efa != null) {
+        this.a.jdField_a_of_type_Efa.a = -1;
       }
-      this.jdField_a_of_type_Eer.a.jdField_a_of_type_Efb.notifyDataSetChanged();
-      return;
+      paramView = (Button)paramView;
+      if (paramView.getTag() != null)
+      {
+        int i = ((Integer)paramView.getTag()).intValue();
+        paramView = (RecommendContactMsg)this.a.jdField_a_of_type_Efa.getItem(i);
+        localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
+        if (paramView != null)
+        {
+          if ((paramView.source == null) || (paramView.source.length() <= 0)) {
+            break label154;
+          }
+          localPhoneContactManagerImp.b(paramView.uin);
+        }
+      }
     }
-    this.jdField_a_of_type_Eer.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(null);
-    this.jdField_a_of_type_Eer.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setEmptyView(this.jdField_a_of_type_Eer.a.d);
+    for (;;)
+    {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "frd_recommend", "Delete_frd_offer", 0, 0, "0", "", "", "");
+      return;
+      label154:
+      localPhoneContactManagerImp.b(paramView.mobileNo);
+    }
   }
 }
 

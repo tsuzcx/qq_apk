@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GuestGetLikeReq
   extends JceStruct
 {
-  public long fromUin;
-  public long toUin;
+  public long fromUin = 0L;
+  public long toUin = 0L;
   
   public GuestGetLikeReq() {}
   
@@ -32,7 +32,7 @@ public final class GuestGetLikeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.GuestGetLikeReq
  * JD-Core Version:    0.7.0.1
  */

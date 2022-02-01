@@ -1,0 +1,52 @@
+{
+    "view_type": "UIView",
+    "direction": "horizontal",
+    "margin_left": "65",
+    "view_id": "id_author_like_container",
+    "visible_depend_on_children": "YES",
+    "height": {
+        "type": "relative",
+        "value": "16"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "subviews": [
+        {
+            "view_type": "UIImageView",
+            "visible_depend_on_brother": "id_author_like_label",
+            "align_parent_center_vertical": "YES",
+            "view_id": "id_author_like_img",
+            "height": {
+                "type": "relative",
+                "value": "10.5"
+            },
+            "width": {
+                "type": "relative",
+                "value": "12"
+            },
+            "attributes": {
+                "loadImageWithPath:": "like_active"
+            }
+        },
+        {
+            "view_type": "UILabel",
+            "align_parent_center_vertical": "YES",
+            "view_id": "id_author_like_label",
+            "margin_left":"2.5",
+            "height": {
+                "type": "relative",
+                "value": "16"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setText:": "$author_like_text",
+                "setFontSizeString:": "10",
+                "setTextColorString:": "#FF4222"
+            }
+        }
+    ]
+}

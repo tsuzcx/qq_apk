@@ -24,12 +24,12 @@ import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 import com.tencent.mobileqq.utils.DBUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.remote.SimpleAccount;
+import dnl;
 import dnm;
-import dnn;
-import dnp;
+import dno;
+import dnq;
 import dnr;
-import dns;
-import dnw;
+import dnv;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -41,8 +41,8 @@ public class SubaccountUgActivity
   implements View.OnClickListener, Observer
 {
   public static final int a = 1980;
-  Handler jdField_a_of_type_AndroidOsHandler = new dnm(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dnn(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new dnl(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new dnm(this);
   SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver;
   public SubAccountAssistantManager a;
   public String a;
@@ -99,12 +99,12 @@ public class SubaccountUgActivity
     setContentView(2130904002);
     setTitle(2131562836);
     this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountAssistantManager = SubAccountAssistantManager.a();
-    ImageView localImageView = (ImageView)findViewById(2131234551);
-    Object localObject4 = (ImageView)findViewById(2131234550);
-    TextView localTextView = (TextView)findViewById(2131234552);
-    Object localObject3 = (TextView)findViewById(2131234553);
-    Button localButton = (Button)findViewById(2131234554);
-    Object localObject2 = findViewById(2131234555);
+    ImageView localImageView = (ImageView)findViewById(2131234550);
+    Object localObject4 = (ImageView)findViewById(2131234549);
+    TextView localTextView = (TextView)findViewById(2131234551);
+    Object localObject3 = (TextView)findViewById(2131234552);
+    Button localButton = (Button)findViewById(2131234553);
+    Object localObject2 = findViewById(2131234554);
     Object localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), false);
     paramBundle = (Bundle)localObject1;
     if (localObject1 == null) {
@@ -225,13 +225,13 @@ public class SubaccountUgActivity
         ((TextView)localObject3).setVisibility(0);
         localButton.setText(2131563165);
         ((View)localObject2).setVisibility(0);
-        localObject3 = (Button)((View)localObject2).findViewById(2131234556);
-        localObject2 = (Button)((View)localObject2).findViewById(2131234558);
+        localObject3 = (Button)((View)localObject2).findViewById(2131234555);
+        localObject2 = (Button)((View)localObject2).findViewById(2131234557);
         i = ((Button)localObject3).getPaint().getFlags() | 0x8;
         ((Button)localObject3).getPaint().setFlags(i);
         ((Button)localObject2).getPaint().setFlags(i);
-        ((Button)localObject3).setOnClickListener(new dnp(this, paramBundle));
-        ((Button)localObject2).setOnClickListener(new dnr(this));
+        ((Button)localObject3).setOnClickListener(new dno(this, paramBundle));
+        ((Button)localObject2).setOnClickListener(new dnq(this));
         i = ((String)localObject4).indexOf((String)localObject1);
         if (i > -1)
         {
@@ -247,7 +247,7 @@ public class SubaccountUgActivity
         if (paramBundle.a(a(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())) {
           paramBundle.a(a(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), false);
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dns(this);
+        this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new dnr(this);
         a(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver);
         a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
         if (!jdField_a_of_type_Boolean)
@@ -295,11 +295,11 @@ public class SubaccountUgActivity
   public void h()
   {
     this.c = false;
-    View localView = findViewById(2131234555);
-    TextView localTextView1 = (TextView)findViewById(2131234552);
-    TextView localTextView2 = (TextView)findViewById(2131234553);
-    ImageView localImageView = (ImageView)findViewById(2131234550);
-    ((Button)findViewById(2131234554)).setText(2131561704);
+    View localView = findViewById(2131234554);
+    TextView localTextView1 = (TextView)findViewById(2131234551);
+    TextView localTextView2 = (TextView)findViewById(2131234552);
+    ImageView localImageView = (ImageView)findViewById(2131234549);
+    ((Button)findViewById(2131234553)).setText(2131561704);
     localView.setVisibility(8);
     localTextView1.setText(2131563252);
     localTextView2.setVisibility(8);
@@ -367,7 +367,7 @@ public class SubaccountUgActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if (((paramObject instanceof MessageRecord)) && (!((MessageRecord)paramObject).isSendFromLocal())) {
-      runOnUiThread(new dnw(this));
+      runOnUiThread(new dnv(this));
     }
   }
 }

@@ -1,87 +1,91 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView.b;
-import com.tencent.mm.plugin.fts.ui.widget.a.c;
+import com.tencent.mm.ui.search.FTSEditTextView.d;
+import com.tencent.mm.ui.search.FTSSearchView.c;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FTSConvMessageUI
   extends FTSBaseUI
 {
-  private int ibk;
-  private String mSN;
-  private g mXc;
+  private String Htv;
+  private h HyI;
   private String query;
+  private int syO;
   
   protected final d a(e parame)
   {
-    AppMethodBeat.i(61821);
-    if (this.mXc == null) {
-      this.mXc = new g(parame, this.mSN, this.ibk);
+    AppMethodBeat.i(111916);
+    if (this.HyI == null) {
+      this.HyI = new h(parame, this.Htv, this.syO);
     }
-    parame = this.mXc;
-    AppMethodBeat.o(61821);
+    parame = this.HyI;
+    AppMethodBeat.o(111916);
     return parame;
   }
   
-  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
-  {
-    AppMethodBeat.i(61823);
-    super.a(paramString2, paramString2, paramList, paramb);
-    AppMethodBeat.o(61823);
-  }
-  
-  public final boolean aMm()
+  public final boolean aWU()
   {
     return false;
   }
   
-  protected final void bCD()
+  protected final void fyk()
   {
-    AppMethodBeat.i(61818);
-    super.bCD();
-    this.mSN = getIntent().getStringExtra("key_conv");
+    AppMethodBeat.i(111913);
+    super.fyk();
+    this.Htv = getIntent().getStringExtra("key_conv");
     this.query = getIntent().getStringExtra("key_query");
-    this.ibk = getIntent().getIntExtra("Search_Scene", 0);
-    AppMethodBeat.o(61818);
+    this.syO = getIntent().getIntExtra("Search_Scene", 0);
+    AppMethodBeat.o(111913);
+  }
+  
+  protected final boolean fyz()
+  {
+    return false;
   }
   
   public final String getHint()
   {
-    AppMethodBeat.i(61822);
-    String str = getString(2131303028);
-    AppMethodBeat.o(61822);
+    AppMethodBeat.i(111917);
+    String str = getString(p.g.search_talker_page_hint);
+    AppMethodBeat.o(111917);
     return str;
   }
   
   public int getLayoutId()
   {
-    return 2130969655;
+    return p.e.fts_conv_detail_ui;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(61819);
+    AppMethodBeat.i(111914);
     super.onCreate(paramBundle);
     paramBundle = new a((byte)0);
-    a.a(paramBundle, com.tencent.mm.plugin.fts.a.d.NA(this.mSN));
+    a.a(paramBundle, com.tencent.mm.plugin.fts.a.d.atS(this.Htv));
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramBundle);
-    m(this.query, localArrayList);
-    bCz();
-    AppMethodBeat.o(61819);
+    B(this.query, localArrayList);
+    fye();
+    AppMethodBeat.o(111914);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(61820);
-    this.mXc.finish();
+    AppMethodBeat.i(111915);
+    this.HyI.finish();
     super.onDestroy();
-    AppMethodBeat.o(61820);
+    AppMethodBeat.o(111915);
+  }
+  
+  public void onEditTextChange(String paramString1, String paramString2, List<FTSSearchView.c> paramList, FTSEditTextView.d paramd)
+  {
+    AppMethodBeat.i(168768);
+    super.onEditTextChange(paramString2, paramString2, paramList, paramd);
+    AppMethodBeat.o(168768);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -91,9 +95,9 @@ public class FTSConvMessageUI
   }
   
   final class a
-    implements a.c
+    implements FTSSearchView.c
   {
-    private String elx;
+    private String displayName;
     
     private a() {}
     
@@ -104,13 +108,13 @@ public class FTSConvMessageUI
     
     public final String getTagName()
     {
-      return this.elx;
+      return this.displayName;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSConvMessageUI
  * JD-Core Version:    0.7.0.1
  */

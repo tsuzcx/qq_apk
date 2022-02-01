@@ -1,19 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.mobileqq.activity.ChatForEnterpriseActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.EnterpriseQQObserver;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
 
 public class cbc
-  implements View.OnClickListener
+  extends EnterpriseQQObserver
 {
   public cbc(ChatForEnterpriseActivity paramChatForEnterpriseActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    ChatForEnterpriseActivity.a(this.a).setVisibility(8);
-    this.a.a.setVisibility(0);
+    if (paramBoolean)
+    {
+      paramObject = EnterpriseQQManager.a(this.a.b).a(this.a.b, this.a.c());
+      if (!CrmUtils.a(this.a.b, this.a.a.a)) {
+        paramObject = null;
+      }
+      ChatForEnterpriseActivity.a(this.a, paramObject);
+      if (paramObject != null) {
+        ChatForEnterpriseActivity.a(this.a, false);
+      }
+    }
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

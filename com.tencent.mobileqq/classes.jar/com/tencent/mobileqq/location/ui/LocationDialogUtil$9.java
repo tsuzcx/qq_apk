@@ -1,26 +1,23 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.app.Activity;
-import android.content.res.Resources;
-import atqr;
-import atri;
-import bdgm;
-import bdjz;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class LocationDialogUtil$9
+final class LocationDialogUtil$9
   implements Runnable
 {
-  public LocationDialogUtil$9(Activity paramActivity) {}
+  LocationDialogUtil$9(Activity paramActivity, String paramString1, int paramInt1, String paramString2, int paramInt2) {}
   
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.a, 230, null, this.a.getResources().getString(2131720159), 2131694953, 2131690648, null, new atri(this));
-    atqr.a(this.a, localbdjz);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230, null, this.b, 2131887648, 2131892267, new LocationDialogUtil.9.1(this), new LocationDialogUtil.9.2(this));
+    LocationDialogUtil.a(this.a, localQQCustomDialog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.9
  * JD-Core Version:    0.7.0.1
  */

@@ -61,37 +61,44 @@ public final class cell_active_adv
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.mediatype, 0);
-    if (this.picdata != null) {
-      paramJceOutputStream.write(this.picdata, 1);
+    Object localObject = this.picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.pic_actiontype, 2);
-    if (this.pic_actionurl != null) {
-      paramJceOutputStream.write(this.pic_actionurl, 3);
+    localObject = this.pic_actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.copy != null) {
-      paramJceOutputStream.write(this.copy, 4);
+    localObject = this.copy;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.copy_actiontype, 5);
-    if (this.copy_actionturl != null) {
-      paramJceOutputStream.write(this.copy_actionturl, 6);
+    localObject = this.copy_actionturl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.button_text != null) {
-      paramJceOutputStream.write(this.button_text, 7);
+    localObject = this.button_text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.button_actiontype, 8);
-    if (this.up_copy != null) {
-      paramJceOutputStream.write(this.up_copy, 9);
+    localObject = this.up_copy;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.up_copy_actiontype, 10);
     paramJceOutputStream.write(this.is_report, 11);
-    if (this.report_url != null) {
-      paramJceOutputStream.write(this.report_url, 12);
+    localObject = this.report_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_active_adv
  * JD-Core Version:    0.7.0.1
  */

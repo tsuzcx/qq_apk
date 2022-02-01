@@ -7,26 +7,26 @@ import java.lang.reflect.Field;
 public class a
   extends e<Handler.Callback>
 {
-  private static Field alB = null;
-  private final c alA;
-  private final Handler alz;
+  private static Field apb = null;
+  private final Handler aoZ;
+  private final c apa;
   
   /* Error */
   static
   {
     // Byte code:
     //   0: aconst_null
-    //   1: putstatic 17	com/tencent/tinker/loader/hotplug/b/a:alB	Ljava/lang/reflect/Field;
+    //   1: putstatic 17	com/tencent/tinker/loader/hotplug/b/a:apb	Ljava/lang/reflect/Field;
     //   4: ldc 2
     //   6: monitorenter
-    //   7: getstatic 17	com/tencent/tinker/loader/hotplug/b/a:alB	Ljava/lang/reflect/Field;
+    //   7: getstatic 17	com/tencent/tinker/loader/hotplug/b/a:apb	Ljava/lang/reflect/Field;
     //   10: astore_0
     //   11: aload_0
     //   12: ifnonnull +13 -> 25
     //   15: ldc 19
     //   17: ldc 21
     //   19: invokestatic 27	com/tencent/tinker/loader/a/h:a	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   22: putstatic 17	com/tencent/tinker/loader/hotplug/b/a:alB	Ljava/lang/reflect/Field;
+    //   22: putstatic 17	com/tencent/tinker/loader/hotplug/b/a:apb	Ljava/lang/reflect/Field;
     //   25: ldc 2
     //   27: monitorexit
     //   28: return
@@ -53,8 +53,8 @@ public class a
   
   public a(Handler paramHandler, c paramc)
   {
-    this.alz = paramHandler;
-    this.alA = paramc;
+    this.aoZ = paramHandler;
+    this.apa = paramc;
   }
 }
 

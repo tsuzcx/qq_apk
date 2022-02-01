@@ -18,7 +18,10 @@ final class ei$3
     }
     catch (Exception localException)
     {
-      throw new RuntimeException("Unable to invoke no-args constructor for " + this.b + ". Register an InstanceCreator with Gson for this type may fix this problem.", localException);
+      StringBuilder localStringBuilder = new StringBuilder("Unable to invoke no-args constructor for ");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(". Register an InstanceCreator with Gson for this type may fix this problem.");
+      throw new RuntimeException(localStringBuilder.toString(), localException);
     }
   }
 }

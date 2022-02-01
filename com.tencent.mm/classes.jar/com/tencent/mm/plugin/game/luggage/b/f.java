@@ -1,76 +1,63 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.g.i;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.b.b;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONArray;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.webview.luggage.c.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-public class f
-  extends bi<com.tencent.mm.plugin.game.luggage.d.f>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/luggage/jsapi/JsApiChatRoomAtMember;", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi;", "Lcom/tencent/luggage/container/LuggageComponent;", "()V", "getEnv", "", "invokeInMM", "", "context", "Landroid/content/Context;", "dataStr", "", "jsApiCallback", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi$JsApiCallback;", "invokeInOwn", "ctx", "Lcom/tencent/luggage/container/LuggageJsApi$InvokeContext;", "Lcom/tencent/luggage/container/LuggageJsApi;", "kotlin.jvm.PlatformType", "name", "luggage-game_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class f
+  extends bv<com.tencent.luggage.d.a>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(135869);
-    ab.i("MicroMsg.JsApiClearGameData", "invokeInMM");
-    paramContext = i.ci(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(277134);
+    Object localObject = c.ZL(paramString);
+    if (localObject == null)
     {
-      ab.e("MicroMsg.JsApiClearGameData", "data is null");
-      parama.c("null_data", null);
-      AppMethodBeat.o(135869);
+      s.checkNotNull(parama);
+      parama.j("invalid_params", null);
+      AppMethodBeat.o(277134);
       return;
     }
-    paramString = paramContext.optString("preVerifyAppId");
-    if (bo.isNullOrNil(paramString))
+    paramContext = ((JSONObject)localObject).optString("chatRoomName");
+    paramString = ((JSONObject)localObject).optString("userName");
+    localObject = ((JSONObject)localObject).optString("nickName");
+    if ((Util.isNullOrNil(paramContext)) || (Util.isNullOrNil(paramString)) || (Util.isNullOrNil((String)localObject)))
     {
-      ab.i("MicroMsg.JsApiClearGameData", "appId is null");
-      parama.c("appid_null", null);
-      AppMethodBeat.o(135869);
+      s.checkNotNull(parama);
+      parama.j("invalid_params", null);
+      AppMethodBeat.o(277134);
       return;
     }
-    JSONArray localJSONArray = paramContext.optJSONArray("keys");
-    boolean bool = paramContext.optBoolean("clearAllData", false);
-    if ((localJSONArray != null) && (localJSONArray.length() > 0))
-    {
-      b.dav().b(paramString, localJSONArray);
-      parama.c(null, null);
-      AppMethodBeat.o(135869);
-      return;
-    }
-    if (bool)
-    {
-      b.dav().agI(paramString);
-      parama.c(null, null);
-      AppMethodBeat.o(135869);
-      return;
-    }
-    ab.i("MicroMsg.JsApiClearGameData", "keys is null");
-    parama.c("fail", null);
-    AppMethodBeat.o(135869);
+    ((com.tencent.mm.plugin.game.chatroom.a.a)h.az(com.tencent.mm.plugin.game.chatroom.a.a.class)).callAtFunction(paramContext, paramString, (String)localObject);
+    s.checkNotNull(parama);
+    parama.j(null, null);
+    AppMethodBeat.o(277134);
   }
   
-  public final void b(a<com.tencent.mm.plugin.game.luggage.d.f>.a parama) {}
+  public final void b(b<com.tencent.luggage.d.a>.a paramb) {}
   
-  public final int bjL()
+  public final int dgI()
   {
     return 1;
   }
   
   public final String name()
   {
-    return "clearGameData";
+    return "chatRoomAtMember";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.f
  * JD-Core Version:    0.7.0.1
  */

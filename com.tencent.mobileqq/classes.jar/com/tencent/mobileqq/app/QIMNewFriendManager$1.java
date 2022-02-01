@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.app;
 
-import alzu;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 
-public class QIMNewFriendManager$1
+class QIMNewFriendManager$1
   implements Runnable
 {
-  public QIMNewFriendManager$1(alzu paramalzu, QQAppInterface paramQQAppInterface) {}
+  QIMNewFriendManager$1(QIMNewFriendManager paramQIMNewFriendManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    ((FlashChatManager)this.a.getManager(217)).b();
+    ((FlashChatManager)this.a.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QIMNewFriendManager.1
  * JD-Core Version:    0.7.0.1
  */

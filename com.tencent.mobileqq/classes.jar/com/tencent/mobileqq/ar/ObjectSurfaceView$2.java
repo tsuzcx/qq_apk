@@ -7,18 +7,20 @@ class ObjectSurfaceView$2
   
   public void run()
   {
-    ObjectBaseData localObjectBaseData = this.a;
-    if ((this.b != null) && (this.b.a) && (this.b.f) && (!this.b.e)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localObjectBaseData.a(bool);
-      return;
+    ObjectBaseData localObjectBaseData1 = this.a;
+    ObjectBaseData localObjectBaseData2 = this.b;
+    boolean bool;
+    if ((localObjectBaseData2 != null) && (localObjectBaseData2.c) && (this.b.P) && (!this.b.h)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localObjectBaseData1.a(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ObjectSurfaceView.2
  * JD-Core Version:    0.7.0.1
  */

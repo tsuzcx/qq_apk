@@ -1,29 +1,14 @@
 import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.app.FriendListObserver;
-import java.util.Map;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class egt
-  extends FriendListObserver
+  extends MessageObserver
 {
   private egt(TroopView paramTroopView) {}
   
-  protected void a(boolean paramBoolean, Map paramMap)
+  protected void d()
   {
     this.a.a();
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.a();
-    }
   }
 }
 

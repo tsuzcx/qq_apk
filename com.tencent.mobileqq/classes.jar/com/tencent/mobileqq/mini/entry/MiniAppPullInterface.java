@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.app.Activity;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewGroup;
+import mqq.app.AppRuntime;
 
 public abstract interface MiniAppPullInterface
 {
@@ -10,25 +10,31 @@ public abstract interface MiniAppPullInterface
   
   public abstract boolean hasOpenDesktop();
   
-  public abstract void hideMiniAppEntry();
+  public abstract void hideMiniAppEntry(int paramInt);
   
-  public abstract void initLater(DrawerFrame paramDrawerFrame);
+  public abstract void initLater(ViewGroup paramViewGroup);
   
   public abstract void initUI(Activity paramActivity);
   
   public abstract boolean isMiniAppLauncherOpened();
   
-  public abstract void onAccountChanged(QQAppInterface paramQQAppInterface);
+  public abstract void onAccountChanged(AppRuntime paramAppRuntime);
+  
+  public abstract void onDestroy();
   
   public abstract void onPostThemeChanged();
   
   public abstract void onResume();
   
   public abstract void onStop();
+  
+  public abstract void replaceTopRefresh(Object paramObject);
+  
+  public abstract boolean showMicroAppEntry();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppPullInterface
  * JD-Core Version:    0.7.0.1
  */

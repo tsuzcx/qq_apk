@@ -11,32 +11,33 @@ public final class Video
 {
   static Map<Integer, String> cache_cover;
   static Map<Integer, String> cache_map_urls = new HashMap();
-  public int appid;
-  public Map<Integer, String> cover;
+  public int appid = 0;
+  public Map<Integer, String> cover = null;
   public String desc = "";
-  public int file_size;
-  public int height;
+  public int file_size = 0;
+  public int height = 0;
   public String lloc = "";
-  public Map<Integer, String> map_urls;
-  public long play_time;
-  public int play_type;
-  public int rights;
-  public long status;
+  public Map<Integer, String> map_urls = null;
+  public long play_time = 0L;
+  public int play_type = 0;
+  public int rights = 0;
+  public long status = 0L;
   public String subid = "";
   public String tid = "";
-  public long timestamp;
+  public long timestamp = 0L;
   public String toast = "";
   public String ugckey = "";
-  public long uin;
+  public long uin = 0L;
   public String vid = "";
-  public int visitor_num;
-  public int width;
+  public int visitor_num = 0;
+  public int width = 0;
   
   static
   {
-    cache_map_urls.put(Integer.valueOf(0), "");
+    Integer localInteger = Integer.valueOf(0);
+    cache_map_urls.put(localInteger, "");
     cache_cover = new HashMap();
-    cache_cover.put(Integer.valueOf(0), "");
+    cache_cover.put(localInteger, "");
   }
   
   public Video() {}
@@ -92,48 +93,57 @@ public final class Video
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.vid != null) {
-      paramJceOutputStream.write(this.vid, 1);
+    Object localObject = this.vid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.timestamp, 2);
     paramJceOutputStream.write(this.play_time, 3);
-    if (this.map_urls != null) {
-      paramJceOutputStream.write(this.map_urls, 4);
+    localObject = this.map_urls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
     paramJceOutputStream.write(this.file_size, 5);
-    if (this.cover != null) {
-      paramJceOutputStream.write(this.cover, 6);
+    localObject = this.cover;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
     paramJceOutputStream.write(this.rights, 7);
     paramJceOutputStream.write(this.status, 8);
-    if (this.toast != null) {
-      paramJceOutputStream.write(this.toast, 9);
+    localObject = this.toast;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.tid != null) {
-      paramJceOutputStream.write(this.tid, 10);
+    localObject = this.tid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 11);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.visitor_num, 12);
-    if (this.ugckey != null) {
-      paramJceOutputStream.write(this.ugckey, 13);
+    localObject = this.ugckey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.play_type, 14);
     paramJceOutputStream.write(this.width, 15);
     paramJceOutputStream.write(this.height, 16);
     paramJceOutputStream.write(this.appid, 17);
-    if (this.subid != null) {
-      paramJceOutputStream.write(this.subid, 18);
+    localObject = this.subid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.lloc != null) {
-      paramJceOutputStream.write(this.lloc, 19);
+    localObject = this.lloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.Video
  * JD-Core Version:    0.7.0.1
  */

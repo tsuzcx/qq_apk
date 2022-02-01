@@ -1,44 +1,30 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryRecommendAudio;", "", "()V", "DEFAULT_QUALITY", "", "getDEFAULT_QUALITY", "()I", "DEFAULT_THUMB_W_H", "getDEFAULT_THUMB_W_H", "MAX_IMAGE_DATA_SIZE", "getMAX_IMAGE_DATA_SIZE", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/ConstantsStory$StoryRangeDatailUI;", "", "()V", "KEY_STORY_LOCAL_ID", "", "getKEY_STORY_LOCAL_ID", "()Ljava/lang/String;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$f
 {
-  private static final int sGh = 299;
-  private static final int sGi = 50;
-  private static final int sGj = 102400;
-  public static final f sGk;
+  public static final f SsE;
+  private static final String SsF;
   
   static
   {
-    AppMethodBeat.i(156043);
-    sGk = new f();
-    sGh = 299;
-    sGi = 50;
-    sGj = 102400;
-    AppMethodBeat.o(156043);
+    AppMethodBeat.i(119472);
+    SsE = new f();
+    SsF = "key_story_local_id";
+    AppMethodBeat.o(119472);
   }
   
-  public static int cED()
+  public static String hzf()
   {
-    return sGh;
-  }
-  
-  public static int cEE()
-  {
-    return sGi;
-  }
-  
-  public static int cEF()
-  {
-    return sGj;
+    return SsF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.a.f
  * JD-Core Version:    0.7.0.1
  */

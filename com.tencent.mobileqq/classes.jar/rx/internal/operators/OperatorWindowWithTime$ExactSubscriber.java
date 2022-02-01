@@ -44,35 +44,37 @@ final class OperatorWindowWithTime$ExactSubscriber
   
   boolean drain(List<Object> paramList)
   {
-    if (paramList == null) {}
-    Object localObject;
-    do
+    if (paramList == null) {
+      return true;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      do
+      Object localObject = paramList.next();
+      if (localObject == OperatorWindowWithTime.NEXT_SUBJECT)
       {
-        while (!paramList.hasNext())
+        if (!replaceSubject()) {
+          return false;
+        }
+      }
+      else
+      {
+        if (OperatorWindowWithTime.nl.isError(localObject))
         {
+          error(OperatorWindowWithTime.nl.getError(localObject));
           return true;
-          paramList = paramList.iterator();
         }
-        localObject = paramList.next();
-        if (localObject != OperatorWindowWithTime.NEXT_SUBJECT) {
-          break;
+        if (OperatorWindowWithTime.nl.isCompleted(localObject))
+        {
+          complete();
+          return true;
         }
-      } while (replaceSubject());
-      return false;
-      if (OperatorWindowWithTime.nl.isError(localObject))
-      {
-        error(OperatorWindowWithTime.nl.getError(localObject));
-        return true;
+        if (!emitValue(localObject)) {
+          return false;
+        }
       }
-      if (OperatorWindowWithTime.nl.isCompleted(localObject))
-      {
-        complete();
-        return true;
-      }
-    } while (emitValue(localObject));
-    return false;
+    }
+    return true;
   }
   
   boolean emitValue(T paramT)
@@ -87,14 +89,17 @@ final class OperatorWindowWithTime$ExactSubscriber
       localState1 = this.state;
     }
     localState1.consumer.onNext(paramT);
-    if (localState1.count == this.this$0.size - 1) {
-      localState1.consumer.onCompleted();
-    }
-    for (paramT = localState1.clear();; paramT = localState1.next())
+    if (localState1.count == this.this$0.size - 1)
     {
-      this.state = paramT;
-      return true;
+      localState1.consumer.onCompleted();
+      paramT = localState1.clear();
     }
+    else
+    {
+      paramT = localState1.next();
+    }
+    this.state = paramT;
+    return true;
   }
   
   void error(Throwable paramThrowable)
@@ -112,186 +117,186 @@ final class OperatorWindowWithTime$ExactSubscriber
   void nextWindow()
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: iconst_0
-    //   3: istore_1
-    //   4: aload_0
-    //   5: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   8: astore 4
-    //   10: aload 4
-    //   12: monitorenter
-    //   13: aload_0
-    //   14: getfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   17: ifeq +38 -> 55
-    //   20: aload_0
-    //   21: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   24: ifnonnull +14 -> 38
-    //   27: aload_0
-    //   28: new 164	java/util/ArrayList
-    //   31: dup
-    //   32: invokespecial 165	java/util/ArrayList:<init>	()V
-    //   35: putfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   38: aload_0
-    //   39: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   42: getstatic 109	rx/internal/operators/OperatorWindowWithTime:NEXT_SUBJECT	Ljava/lang/Object;
-    //   45: invokeinterface 167 2 0
-    //   50: pop
-    //   51: aload 4
-    //   53: monitorexit
-    //   54: return
-    //   55: aload_0
-    //   56: iconst_1
-    //   57: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   60: aload 4
-    //   62: monitorexit
-    //   63: aload_0
-    //   64: invokevirtual 112	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:replaceSubject	()Z
-    //   67: istore_3
-    //   68: iload_3
-    //   69: ifne +37 -> 106
-    //   72: aload_0
-    //   73: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   76: astore 4
-    //   78: aload 4
-    //   80: monitorenter
-    //   81: aload_0
-    //   82: iconst_0
-    //   83: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   86: aload 4
-    //   88: monitorexit
-    //   89: return
-    //   90: astore 5
-    //   92: aload 4
-    //   94: monitorexit
-    //   95: aload 5
-    //   97: athrow
-    //   98: astore 5
-    //   100: aload 4
-    //   102: monitorexit
-    //   103: aload 5
-    //   105: athrow
-    //   106: aload_0
-    //   107: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   110: astore 5
-    //   112: aload 5
-    //   114: monitorenter
-    //   115: aload_0
-    //   116: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   119: astore 4
-    //   121: aload 4
-    //   123: ifnonnull +46 -> 169
-    //   126: aload_0
-    //   127: iconst_0
-    //   128: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   131: aload 5
-    //   133: monitorexit
-    //   134: return
-    //   135: iload_1
-    //   136: istore_2
-    //   137: aload 5
-    //   139: monitorexit
-    //   140: aload 4
-    //   142: athrow
-    //   143: astore 4
-    //   145: iload_1
-    //   146: ifne +20 -> 166
-    //   149: aload_0
-    //   150: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   153: astore 5
-    //   155: aload 5
-    //   157: monitorenter
-    //   158: aload_0
-    //   159: iconst_0
-    //   160: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   163: aload 5
-    //   165: monitorexit
-    //   166: aload 4
-    //   168: athrow
-    //   169: aload_0
-    //   170: aconst_null
-    //   171: putfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   174: aload 5
-    //   176: monitorexit
-    //   177: aload_0
-    //   178: aload 4
-    //   180: invokevirtual 169	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:drain	(Ljava/util/List;)Z
-    //   183: istore_3
-    //   184: iload_3
-    //   185: ifne -79 -> 106
-    //   188: aload_0
-    //   189: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   192: astore 4
-    //   194: aload 4
-    //   196: monitorenter
-    //   197: aload_0
-    //   198: iconst_0
-    //   199: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   202: aload 4
-    //   204: monitorexit
-    //   205: return
+    //   0: aload_0
+    //   1: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
+    //   4: astore 4
+    //   6: aload 4
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: getfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   13: ifeq +38 -> 51
+    //   16: aload_0
+    //   17: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   20: ifnonnull +14 -> 34
+    //   23: aload_0
+    //   24: new 164	java/util/ArrayList
+    //   27: dup
+    //   28: invokespecial 165	java/util/ArrayList:<init>	()V
+    //   31: putfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   34: aload_0
+    //   35: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   38: getstatic 109	rx/internal/operators/OperatorWindowWithTime:NEXT_SUBJECT	Ljava/lang/Object;
+    //   41: invokeinterface 167 2 0
+    //   46: pop
+    //   47: aload 4
+    //   49: monitorexit
+    //   50: return
+    //   51: iconst_1
+    //   52: istore_2
+    //   53: aload_0
+    //   54: iconst_1
+    //   55: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   58: aload 4
+    //   60: monitorexit
+    //   61: aload_0
+    //   62: invokevirtual 112	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:replaceSubject	()Z
+    //   65: istore_3
+    //   66: iload_3
+    //   67: ifne +29 -> 96
+    //   70: aload_0
+    //   71: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
+    //   74: astore 4
+    //   76: aload 4
+    //   78: monitorenter
+    //   79: aload_0
+    //   80: iconst_0
+    //   81: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   84: aload 4
+    //   86: monitorexit
+    //   87: return
+    //   88: astore 5
+    //   90: aload 4
+    //   92: monitorexit
+    //   93: aload 5
+    //   95: athrow
+    //   96: aload_0
+    //   97: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
+    //   100: astore 5
+    //   102: aload 5
+    //   104: monitorenter
+    //   105: aload_0
+    //   106: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   109: astore 4
+    //   111: aload 4
+    //   113: ifnonnull +12 -> 125
+    //   116: aload_0
+    //   117: iconst_0
+    //   118: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   121: aload 5
+    //   123: monitorexit
+    //   124: return
+    //   125: aload_0
+    //   126: aconst_null
+    //   127: putfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   130: aload 5
+    //   132: monitorexit
+    //   133: aload_0
+    //   134: aload 4
+    //   136: invokevirtual 169	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:drain	(Ljava/util/List;)Z
+    //   139: istore_3
+    //   140: iload_3
+    //   141: ifne -45 -> 96
+    //   144: aload_0
+    //   145: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
+    //   148: astore 4
+    //   150: aload 4
+    //   152: monitorenter
+    //   153: aload_0
+    //   154: iconst_0
+    //   155: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   158: aload 4
+    //   160: monitorexit
+    //   161: return
+    //   162: astore 5
+    //   164: aload 4
+    //   166: monitorexit
+    //   167: aload 5
+    //   169: athrow
+    //   170: astore 4
+    //   172: iconst_0
+    //   173: istore_1
+    //   174: iload_1
+    //   175: istore_2
+    //   176: aload 5
+    //   178: monitorexit
+    //   179: aload 4
+    //   181: athrow
+    //   182: astore 4
+    //   184: goto +14 -> 198
+    //   187: astore 4
+    //   189: iload_2
+    //   190: istore_1
+    //   191: goto -17 -> 174
+    //   194: astore 4
+    //   196: iconst_0
+    //   197: istore_1
+    //   198: iload_1
+    //   199: ifne +31 -> 230
+    //   202: aload_0
+    //   203: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
     //   206: astore 5
-    //   208: aload 4
-    //   210: monitorexit
-    //   211: aload 5
-    //   213: athrow
-    //   214: astore 4
+    //   208: aload 5
+    //   210: monitorenter
+    //   211: aload_0
+    //   212: iconst_0
+    //   213: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
     //   216: aload 5
     //   218: monitorexit
-    //   219: aload 4
-    //   221: athrow
+    //   219: goto +11 -> 230
     //   222: astore 4
-    //   224: goto -79 -> 145
-    //   227: astore 4
-    //   229: iconst_0
-    //   230: istore_1
-    //   231: goto -96 -> 135
-    //   234: astore 4
-    //   236: iload_2
-    //   237: istore_1
-    //   238: goto -103 -> 135
+    //   224: aload 5
+    //   226: monitorexit
+    //   227: aload 4
+    //   229: athrow
+    //   230: aload 4
+    //   232: athrow
+    //   233: astore 5
+    //   235: aload 4
+    //   237: monitorexit
+    //   238: goto +6 -> 244
+    //   241: aload 5
+    //   243: athrow
+    //   244: goto -3 -> 241
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	241	0	this	ExactSubscriber
-    //   3	235	1	i	int
-    //   1	236	2	j	int
-    //   67	118	3	bool	boolean
-    //   8	133	4	localObject1	Object
-    //   143	36	4	localList	List
-    //   214	6	4	localObject3	Object
-    //   222	1	4	localObject4	Object
-    //   227	1	4	localObject5	Object
-    //   234	1	4	localObject6	Object
-    //   90	6	5	localObject7	Object
-    //   98	6	5	localObject8	Object
-    //   110	65	5	localObject9	Object
-    //   206	11	5	localObject10	Object
+    //   0	247	0	this	ExactSubscriber
+    //   173	26	1	i	int
+    //   52	138	2	j	int
+    //   65	76	3	bool	boolean
+    //   170	10	4	localObject2	Object
+    //   182	1	4	localObject3	Object
+    //   187	1	4	localObject4	Object
+    //   194	1	4	localObject5	Object
+    //   222	14	4	localObject6	Object
+    //   88	6	5	localObject7	Object
+    //   100	31	5	localObject8	Object
+    //   162	15	5	localObject9	Object
+    //   233	9	5	localObject11	Object
     // Exception table:
     //   from	to	target	type
-    //   81	89	90	finally
-    //   92	95	90	finally
-    //   13	38	98	finally
-    //   38	54	98	finally
-    //   55	63	98	finally
-    //   100	103	98	finally
-    //   140	143	143	finally
-    //   197	205	206	finally
-    //   208	211	206	finally
-    //   158	166	214	finally
-    //   216	219	214	finally
-    //   63	68	222	finally
-    //   106	115	222	finally
-    //   177	184	222	finally
-    //   115	121	227	finally
-    //   126	131	227	finally
-    //   169	177	227	finally
-    //   131	134	234	finally
-    //   137	140	234	finally
+    //   79	87	88	finally
+    //   90	93	88	finally
+    //   153	161	162	finally
+    //   164	167	162	finally
+    //   105	111	170	finally
+    //   116	121	170	finally
+    //   125	133	170	finally
+    //   179	182	182	finally
+    //   121	124	187	finally
+    //   176	179	187	finally
+    //   61	66	194	finally
+    //   96	105	194	finally
+    //   133	140	194	finally
+    //   211	219	222	finally
+    //   224	227	222	finally
+    //   9	34	233	finally
+    //   34	50	233	finally
+    //   53	61	233	finally
+    //   235	238	233	finally
   }
   
   public void onCompleted()
   {
-    List localList;
     synchronized (this.guard)
     {
       if (this.emitting)
@@ -302,22 +307,21 @@ final class OperatorWindowWithTime$ExactSubscriber
         this.queue.add(OperatorWindowWithTime.nl.completed());
         return;
       }
-      localList = this.queue;
+      List localList = this.queue;
       this.queue = null;
       this.emitting = true;
+      try
+      {
+        drain(localList);
+        complete();
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        error(localThrowable);
+        return;
+      }
     }
-    try
-    {
-      drain(localList);
-      complete();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      error(localThrowable);
-    }
-    localObject2 = finally;
-    throw localObject2;
   }
   
   public void onError(Throwable paramThrowable)
@@ -340,176 +344,178 @@ final class OperatorWindowWithTime$ExactSubscriber
   public void onNext(T arg1)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: iconst_0
-    //   3: istore_2
-    //   4: aload_0
-    //   5: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   8: astore 5
-    //   10: aload 5
-    //   12: monitorenter
-    //   13: aload_0
-    //   14: getfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   17: ifeq +36 -> 53
-    //   20: aload_0
-    //   21: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   24: ifnonnull +14 -> 38
-    //   27: aload_0
-    //   28: new 164	java/util/ArrayList
-    //   31: dup
-    //   32: invokespecial 165	java/util/ArrayList:<init>	()V
-    //   35: putfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   38: aload_0
-    //   39: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   42: aload_1
-    //   43: invokeinterface 167 2 0
-    //   48: pop
-    //   49: aload 5
-    //   51: monitorexit
-    //   52: return
-    //   53: aload_0
-    //   54: iconst_1
-    //   55: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   58: aload 5
-    //   60: monitorexit
-    //   61: aload_0
-    //   62: aload_1
-    //   63: invokevirtual 138	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitValue	(Ljava/lang/Object;)Z
-    //   66: istore 4
-    //   68: iload 4
-    //   70: ifne +31 -> 101
-    //   73: aload_0
-    //   74: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   77: astore_1
-    //   78: aload_1
-    //   79: monitorenter
-    //   80: aload_0
-    //   81: iconst_0
-    //   82: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   85: aload_1
-    //   86: monitorexit
-    //   87: return
-    //   88: astore 5
-    //   90: aload_1
-    //   91: monitorexit
-    //   92: aload 5
-    //   94: athrow
-    //   95: astore_1
-    //   96: aload 5
-    //   98: monitorexit
-    //   99: aload_1
-    //   100: athrow
-    //   101: aload_0
-    //   102: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   105: astore 5
-    //   107: aload 5
-    //   109: monitorenter
-    //   110: aload_0
-    //   111: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   114: astore_1
-    //   115: aload_1
-    //   116: ifnonnull +43 -> 159
-    //   119: aload_0
-    //   120: iconst_0
-    //   121: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   124: aload 5
-    //   126: monitorexit
-    //   127: return
-    //   128: iload_2
-    //   129: istore_3
-    //   130: aload 5
-    //   132: monitorexit
-    //   133: aload_1
-    //   134: athrow
-    //   135: astore_1
-    //   136: iload_2
-    //   137: ifne +20 -> 157
+    //   0: aload_0
+    //   1: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
+    //   4: astore 5
+    //   6: aload 5
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: getfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   13: ifeq +36 -> 49
+    //   16: aload_0
+    //   17: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   20: ifnonnull +14 -> 34
+    //   23: aload_0
+    //   24: new 164	java/util/ArrayList
+    //   27: dup
+    //   28: invokespecial 165	java/util/ArrayList:<init>	()V
+    //   31: putfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   34: aload_0
+    //   35: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   38: aload_1
+    //   39: invokeinterface 167 2 0
+    //   44: pop
+    //   45: aload 5
+    //   47: monitorexit
+    //   48: return
+    //   49: iconst_1
+    //   50: istore_3
+    //   51: aload_0
+    //   52: iconst_1
+    //   53: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   56: aload 5
+    //   58: monitorexit
+    //   59: aload_0
+    //   60: aload_1
+    //   61: invokevirtual 138	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitValue	(Ljava/lang/Object;)Z
+    //   64: istore 4
+    //   66: iload 4
+    //   68: ifne +25 -> 93
+    //   71: aload_0
+    //   72: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
+    //   75: astore_1
+    //   76: aload_1
+    //   77: monitorenter
+    //   78: aload_0
+    //   79: iconst_0
+    //   80: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   83: aload_1
+    //   84: monitorexit
+    //   85: return
+    //   86: astore 5
+    //   88: aload_1
+    //   89: monitorexit
+    //   90: aload 5
+    //   92: athrow
+    //   93: aload_0
+    //   94: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
+    //   97: astore 5
+    //   99: aload 5
+    //   101: monitorenter
+    //   102: aload_0
+    //   103: getfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   106: astore_1
+    //   107: aload_1
+    //   108: ifnonnull +12 -> 120
+    //   111: aload_0
+    //   112: iconst_0
+    //   113: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   116: aload 5
+    //   118: monitorexit
+    //   119: return
+    //   120: aload_0
+    //   121: aconst_null
+    //   122: putfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
+    //   125: aload 5
+    //   127: monitorexit
+    //   128: aload_0
+    //   129: aload_1
+    //   130: invokevirtual 169	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:drain	(Ljava/util/List;)Z
+    //   133: istore 4
+    //   135: iload 4
+    //   137: ifne -44 -> 93
     //   140: aload_0
     //   141: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   144: astore 5
-    //   146: aload 5
-    //   148: monitorenter
-    //   149: aload_0
-    //   150: iconst_0
-    //   151: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   154: aload 5
-    //   156: monitorexit
+    //   144: astore_1
+    //   145: aload_1
+    //   146: monitorenter
+    //   147: aload_0
+    //   148: iconst_0
+    //   149: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   152: aload_1
+    //   153: monitorexit
+    //   154: return
+    //   155: astore 5
     //   157: aload_1
-    //   158: athrow
-    //   159: aload_0
-    //   160: aconst_null
-    //   161: putfield 162	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:queue	Ljava/util/List;
-    //   164: aload 5
-    //   166: monitorexit
-    //   167: aload_0
-    //   168: aload_1
-    //   169: invokevirtual 169	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:drain	(Ljava/util/List;)Z
-    //   172: istore 4
-    //   174: iload 4
-    //   176: ifne -75 -> 101
-    //   179: aload_0
-    //   180: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
-    //   183: astore_1
-    //   184: aload_1
-    //   185: monitorenter
-    //   186: aload_0
-    //   187: iconst_0
-    //   188: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
-    //   191: aload_1
-    //   192: monitorexit
-    //   193: return
-    //   194: astore 5
-    //   196: aload_1
-    //   197: monitorexit
-    //   198: aload 5
-    //   200: athrow
-    //   201: astore_1
-    //   202: aload 5
-    //   204: monitorexit
-    //   205: aload_1
-    //   206: athrow
-    //   207: astore_1
-    //   208: goto -72 -> 136
-    //   211: astore_1
-    //   212: iconst_0
-    //   213: istore_2
-    //   214: goto -86 -> 128
+    //   158: monitorexit
+    //   159: aload 5
+    //   161: athrow
+    //   162: astore_1
+    //   163: iconst_0
+    //   164: istore_2
+    //   165: iload_2
+    //   166: istore_3
+    //   167: aload 5
+    //   169: monitorexit
+    //   170: aload_1
+    //   171: athrow
+    //   172: astore_1
+    //   173: goto +12 -> 185
+    //   176: astore_1
+    //   177: iload_3
+    //   178: istore_2
+    //   179: goto -14 -> 165
+    //   182: astore_1
+    //   183: iconst_0
+    //   184: istore_2
+    //   185: iload_2
+    //   186: ifne +29 -> 215
+    //   189: aload_0
+    //   190: getfield 43	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:guard	Ljava/lang/Object;
+    //   193: astore 5
+    //   195: aload 5
+    //   197: monitorenter
+    //   198: aload_0
+    //   199: iconst_0
+    //   200: putfield 160	rx/internal/operators/OperatorWindowWithTime$ExactSubscriber:emitting	Z
+    //   203: aload 5
+    //   205: monitorexit
+    //   206: goto +9 -> 215
+    //   209: astore_1
+    //   210: aload 5
+    //   212: monitorexit
+    //   213: aload_1
+    //   214: athrow
+    //   215: aload_1
+    //   216: athrow
     //   217: astore_1
-    //   218: iload_3
-    //   219: istore_2
-    //   220: goto -92 -> 128
+    //   218: aload 5
+    //   220: monitorexit
+    //   221: goto +5 -> 226
+    //   224: aload_1
+    //   225: athrow
+    //   226: goto -2 -> 224
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	223	0	this	ExactSubscriber
-    //   3	217	2	i	int
-    //   1	218	3	j	int
-    //   66	109	4	bool	boolean
-    //   8	51	5	localObject1	Object
-    //   88	9	5	localObject2	Object
-    //   105	60	5	localObject3	Object
-    //   194	9	5	localObject4	Object
+    //   0	229	0	this	ExactSubscriber
+    //   164	22	2	i	int
+    //   50	128	3	j	int
+    //   64	72	4	bool	boolean
+    //   4	53	5	localObject1	Object
+    //   86	5	5	localObject2	Object
+    //   97	29	5	localObject3	Object
+    //   155	13	5	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   80	87	88	finally
-    //   90	92	88	finally
-    //   13	38	95	finally
-    //   38	52	95	finally
-    //   53	61	95	finally
-    //   96	99	95	finally
-    //   133	135	135	finally
-    //   186	193	194	finally
-    //   196	198	194	finally
-    //   149	157	201	finally
-    //   202	205	201	finally
-    //   61	68	207	finally
-    //   101	110	207	finally
-    //   167	174	207	finally
-    //   110	115	211	finally
-    //   119	124	211	finally
-    //   159	167	211	finally
-    //   124	127	217	finally
-    //   130	133	217	finally
+    //   78	85	86	finally
+    //   88	90	86	finally
+    //   147	154	155	finally
+    //   157	159	155	finally
+    //   102	107	162	finally
+    //   111	116	162	finally
+    //   120	128	162	finally
+    //   170	172	172	finally
+    //   116	119	176	finally
+    //   167	170	176	finally
+    //   59	66	182	finally
+    //   93	102	182	finally
+    //   128	135	182	finally
+    //   198	206	209	finally
+    //   210	213	209	finally
+    //   9	34	217	finally
+    //   34	48	217	finally
+    //   51	59	217	finally
+    //   218	221	217	finally
   }
   
   public void onStart()
@@ -542,7 +548,7 @@ final class OperatorWindowWithTime$ExactSubscriber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorWindowWithTime.ExactSubscriber
  * JD-Core Version:    0.7.0.1
  */

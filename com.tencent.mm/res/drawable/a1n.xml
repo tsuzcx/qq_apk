@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/aq2" />
-    <item android:drawable="@drawable/aq1" />
-</selector>
+    <solid android:color="@color/qx" />
+    <size android:height="@dimen/cv" android:width="@dimen/cv" />
+    <corners android:radius="@dimen/cd" />
+</shape>

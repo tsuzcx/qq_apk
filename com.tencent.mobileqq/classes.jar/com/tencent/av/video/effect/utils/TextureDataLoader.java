@@ -34,9 +34,10 @@ public class TextureDataLoader
   
   public TextureDataLoader()
   {
-    this.mYuvTempTextureId[0] = -1;
-    this.mYuvTempTextureId[1] = -1;
-    this.mYuvTempTextureId[2] = -1;
+    int[] arrayOfInt = this.mYuvTempTextureId;
+    arrayOfInt[0] = -1;
+    arrayOfInt[1] = -1;
+    arrayOfInt[2] = -1;
     this.mGLCubeBuffer = ByteBuffer.allocateDirect(CUBE.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.mGLCubeBuffer.put(CUBE).position(0);
     this.mGLTextureBuffer = ByteBuffer.allocateDirect(TEXTURE_COORDINATE.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
@@ -45,9 +46,10 @@ public class TextureDataLoader
   
   private void createResultFBO(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.mResultFBO != -1)
+    int i = this.mResultFBO;
+    if (i != -1)
     {
-      GLES20.glDeleteFramebuffers(1, new int[] { this.mResultFBO }, 0);
+      GLES20.glDeleteFramebuffers(1, new int[] { i }, 0);
       this.mResultFBO = -1;
     }
     this.mResultFBO = initFrameBuffer(paramInt1, paramInt2, paramInt3);
@@ -74,50 +76,57 @@ public class TextureDataLoader
   {
     this.mWidth = 0;
     this.mHeight = 0;
-    if (this.mDataBuffer != null)
+    Object localObject = this.mDataBuffer;
+    if (localObject != null)
     {
-      this.mDataBuffer.clear();
+      ((ByteBuffer)localObject).clear();
       this.mDataBuffer = null;
     }
-    if (this.mResultFBO != -1)
+    int i = this.mResultFBO;
+    if (i != -1)
     {
-      GLES20.glDeleteFramebuffers(1, new int[] { this.mResultFBO }, 0);
+      GLES20.glDeleteFramebuffers(1, new int[] { i }, 0);
       this.mResultFBO = -1;
       this.mResultFBOReleTextureId = -1;
     }
-    if (this.mYuvTempTextureId[0] != -1)
+    localObject = this.mYuvTempTextureId;
+    if (localObject[0] != -1)
     {
-      GLES20.glDeleteTextures(this.mYuvTempTextureId.length, this.mYuvTempTextureId, 0);
-      this.mYuvTempTextureId[0] = -1;
-      this.mYuvTempTextureId[1] = -1;
-      this.mYuvTempTextureId[2] = -1;
+      GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
+      localObject = this.mYuvTempTextureId;
+      localObject[0] = -1;
+      localObject[1] = -1;
+      localObject[2] = -1;
     }
   }
   
   public EffectTexture loadDataToTexture(byte[] paramArrayOfByte, ColorFormat paramColorFormat, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramInt1 == 0) || (paramInt2 == 0)) {
-      return new EffectTexture(paramInt3, -1, paramInt1, paramInt2);
-    }
-    int[] arrayOfInt = new int[1];
-    if (paramInt3 == -1)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0) && (paramInt1 != 0) && (paramInt2 != 0))
     {
-      GLES20.glGenTextures(1, arrayOfInt, 0);
-      GLES20.glBindTexture(3553, arrayOfInt[0]);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    }
-    for (;;)
-    {
-      paramInt3 = arrayOfInt[0];
+      Object localObject = new int[1];
+      if (paramInt3 == -1)
+      {
+        GLES20.glGenTextures(1, (int[])localObject, 0);
+        GLES20.glBindTexture(3553, localObject[0]);
+        GLES20.glTexParameterf(3553, 10240, 9729.0F);
+        GLES20.glTexParameterf(3553, 10241, 9729.0F);
+        GLES20.glTexParameterf(3553, 10242, 33071.0F);
+        GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      }
+      else
+      {
+        GLES20.glBindTexture(3553, paramInt3);
+        localObject[0] = paramInt3;
+      }
+      paramInt3 = localObject[0];
       if ((this.mWidth != paramInt1) || (this.mHeight != paramInt2))
       {
         this.mWidth = paramInt1;
         this.mHeight = paramInt2;
-        if (this.mDataBuffer != null) {
-          this.mDataBuffer.clear();
+        localObject = this.mDataBuffer;
+        if (localObject != null) {
+          ((ByteBuffer)localObject).clear();
         }
         this.mDataBuffer = ByteBuffer.allocate(this.mWidth * this.mHeight * 4);
         createResultFBO(paramInt1, paramInt2, paramInt3);
@@ -139,112 +148,115 @@ public class TextureDataLoader
         this.mGLUniformYuvFormat = GLES20.glGetUniformLocation(this.mProgramId, "yuvFormat");
         this.mGLUniformColorMat = GLES20.glGetUniformLocation(this.mProgramId, "colorMat");
       }
-      if (this.mYuvTempTextureId[0] == -1) {
-        GLES20.glGenTextures(this.mYuvTempTextureId.length, this.mYuvTempTextureId, 0);
+      localObject = this.mYuvTempTextureId;
+      if (localObject[0] == -1) {
+        GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
       }
-      if (paramColorFormat != ColorFormat.RGBA) {
-        break;
+      if (paramColorFormat == ColorFormat.RGBA)
+      {
+        this.mDataBuffer.position(0);
+        this.mDataBuffer.put(paramArrayOfByte, 0, paramInt1 * paramInt2 * 4);
+        this.mDataBuffer.position(0);
+        GLES20.glActiveTexture(33984);
+        GLES20.glBindTexture(3553, this.mResultFBOReleTextureId);
+        GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, this.mDataBuffer);
       }
-      this.mDataBuffer.position(0);
-      this.mDataBuffer.put(paramArrayOfByte, 0, paramInt1 * paramInt2 * 4);
-      this.mDataBuffer.position(0);
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.mResultFBOReleTextureId);
-      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, this.mDataBuffer);
+      else
+      {
+        this.mDataBuffer.position(0);
+        localObject = this.mDataBuffer;
+        int i = paramInt1 * paramInt2;
+        ((ByteBuffer)localObject).put(paramArrayOfByte, 0, i);
+        this.mDataBuffer.position(0);
+        GLES20.glActiveTexture(33984);
+        GLES20.glBindTexture(3553, this.mYuvTempTextureId[0]);
+        GLES20.glTexParameterf(3553, 10241, 9729.0F);
+        GLES20.glTexParameterf(3553, 10240, 9729.0F);
+        GLES20.glTexParameterf(3553, 10242, 33071.0F);
+        GLES20.glTexParameterf(3553, 10243, 33071.0F);
+        GLES20.glTexImage2D(3553, 0, 6409, paramInt1, paramInt2, 0, 6409, 5121, this.mDataBuffer);
+        if ((paramColorFormat != ColorFormat.NV12) && (paramColorFormat != ColorFormat.NV21))
+        {
+          this.mDataBuffer.position(0);
+          localObject = this.mDataBuffer;
+          int j = i / 4;
+          ((ByteBuffer)localObject).put(paramArrayOfByte, i, j);
+          this.mDataBuffer.position(0);
+          GLES20.glActiveTexture(33985);
+          GLES20.glBindTexture(3553, this.mYuvTempTextureId[1]);
+          GLES20.glTexParameterf(3553, 10241, 9729.0F);
+          GLES20.glTexParameterf(3553, 10240, 9729.0F);
+          GLES20.glTexParameterf(3553, 10242, 33071.0F);
+          GLES20.glTexParameterf(3553, 10243, 33071.0F);
+          int k = paramInt1 / 2;
+          int m = paramInt2 / 2;
+          GLES20.glTexImage2D(3553, 0, 6409, k, m, 0, 6409, 5121, this.mDataBuffer);
+          this.mDataBuffer.position(0);
+          this.mDataBuffer.put(paramArrayOfByte, i + j, j);
+          this.mDataBuffer.position(0);
+          GLES20.glActiveTexture(33986);
+          GLES20.glBindTexture(3553, this.mYuvTempTextureId[2]);
+          GLES20.glTexParameterf(3553, 10241, 9729.0F);
+          GLES20.glTexParameterf(3553, 10240, 9729.0F);
+          GLES20.glTexParameterf(3553, 10242, 33071.0F);
+          GLES20.glTexParameterf(3553, 10243, 33071.0F);
+          GLES20.glTexImage2D(3553, 0, 6409, k, m, 0, 6409, 5121, this.mDataBuffer);
+        }
+        else
+        {
+          this.mDataBuffer.position(0);
+          this.mDataBuffer.put(paramArrayOfByte, i, i / 2);
+          this.mDataBuffer.position(0);
+          GLES20.glActiveTexture(33985);
+          GLES20.glBindTexture(3553, this.mYuvTempTextureId[1]);
+          GLES20.glTexParameterf(3553, 10241, 9729.0F);
+          GLES20.glTexParameterf(3553, 10240, 9729.0F);
+          GLES20.glTexParameterf(3553, 10242, 33071.0F);
+          GLES20.glTexParameterf(3553, 10243, 33071.0F);
+          GLES20.glTexImage2D(3553, 0, 6410, paramInt1 / 2, paramInt2 / 2, 0, 6410, 5121, this.mDataBuffer);
+        }
+        GLES20.glBindFramebuffer(36160, this.mResultFBO);
+        GLES20.glViewport(0, 0, paramInt1, paramInt2);
+        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+        GLES20.glClear(16640);
+        GLES20.glUseProgram(this.mProgramId);
+        GLES20.glUniformMatrix4fv(this.mGLUniformColorMat, 1, false, YUV_2_RGB_MATRIX, 0);
+        if (paramColorFormat == ColorFormat.NV12) {
+          GLES20.glUniform1i(this.mGLUniformYuvFormat, 1);
+        } else if (paramColorFormat == ColorFormat.NV21) {
+          GLES20.glUniform1i(this.mGLUniformYuvFormat, 2);
+        } else {
+          GLES20.glUniform1i(this.mGLUniformYuvFormat, 3);
+        }
+        GLES20.glActiveTexture(33984);
+        GLES20.glBindTexture(3553, this.mYuvTempTextureId[0]);
+        GLES20.glUniform1i(this.mGLUniformTexture0, 0);
+        GLES20.glActiveTexture(33985);
+        GLES20.glBindTexture(3553, this.mYuvTempTextureId[1]);
+        GLES20.glUniform1i(this.mGLUniformTexture1, 1);
+        GLES20.glActiveTexture(33986);
+        GLES20.glBindTexture(3553, this.mYuvTempTextureId[2]);
+        GLES20.glUniform1i(this.mGLUniformTexture2, 2);
+        this.mGLCubeBuffer.position(0);
+        GLES20.glEnableVertexAttribArray(this.mGLAttribPosition);
+        GLES20.glVertexAttribPointer(this.mGLAttribPosition, 2, 5126, false, 0, this.mGLCubeBuffer);
+        this.mGLTextureBuffer.position(0);
+        GLES20.glEnableVertexAttribArray(this.mGLAttribTextureCoordinate);
+        GLES20.glVertexAttribPointer(this.mGLAttribTextureCoordinate, 2, 5126, false, 0, this.mGLTextureBuffer);
+        GLES20.glDrawArrays(5, 0, 4);
+        GLES20.glDisableVertexAttribArray(this.mGLAttribPosition);
+        GLES20.glDisableVertexAttribArray(this.mGLAttribTextureCoordinate);
+        GLES20.glBindTexture(3553, 0);
+        GLES20.glBindFramebuffer(36160, 0);
+      }
       return new EffectTexture(paramInt3, this.mResultFBO, this.mWidth, this.mHeight);
-      GLES20.glBindTexture(3553, paramInt3);
-      arrayOfInt[0] = paramInt3;
     }
-    this.mDataBuffer.position(0);
-    this.mDataBuffer.put(paramArrayOfByte, 0, paramInt1 * paramInt2);
-    this.mDataBuffer.position(0);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, this.mYuvTempTextureId[0]);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glTexImage2D(3553, 0, 6409, paramInt1, paramInt2, 0, 6409, 5121, this.mDataBuffer);
-    if ((paramColorFormat == ColorFormat.NV12) || (paramColorFormat == ColorFormat.NV21))
-    {
-      this.mDataBuffer.position(0);
-      this.mDataBuffer.put(paramArrayOfByte, paramInt1 * paramInt2, paramInt1 * paramInt2 / 2);
-      this.mDataBuffer.position(0);
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.mYuvTempTextureId[1]);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6410, paramInt1 / 2, paramInt2 / 2, 0, 6410, 5121, this.mDataBuffer);
-      label723:
-      GLES20.glBindFramebuffer(36160, this.mResultFBO);
-      GLES20.glViewport(0, 0, paramInt1, paramInt2);
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-      GLES20.glClear(16640);
-      GLES20.glUseProgram(this.mProgramId);
-      GLES20.glUniformMatrix4fv(this.mGLUniformColorMat, 1, false, YUV_2_RGB_MATRIX, 0);
-      if (paramColorFormat != ColorFormat.NV12) {
-        break label1227;
-      }
-      GLES20.glUniform1i(this.mGLUniformYuvFormat, 1);
-    }
-    for (;;)
-    {
-      GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.mYuvTempTextureId[0]);
-      GLES20.glUniform1i(this.mGLUniformTexture0, 0);
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.mYuvTempTextureId[1]);
-      GLES20.glUniform1i(this.mGLUniformTexture1, 1);
-      GLES20.glActiveTexture(33986);
-      GLES20.glBindTexture(3553, this.mYuvTempTextureId[2]);
-      GLES20.glUniform1i(this.mGLUniformTexture2, 2);
-      this.mGLCubeBuffer.position(0);
-      GLES20.glEnableVertexAttribArray(this.mGLAttribPosition);
-      GLES20.glVertexAttribPointer(this.mGLAttribPosition, 2, 5126, false, 0, this.mGLCubeBuffer);
-      this.mGLTextureBuffer.position(0);
-      GLES20.glEnableVertexAttribArray(this.mGLAttribTextureCoordinate);
-      GLES20.glVertexAttribPointer(this.mGLAttribTextureCoordinate, 2, 5126, false, 0, this.mGLTextureBuffer);
-      GLES20.glDrawArrays(5, 0, 4);
-      GLES20.glDisableVertexAttribArray(this.mGLAttribPosition);
-      GLES20.glDisableVertexAttribArray(this.mGLAttribTextureCoordinate);
-      GLES20.glBindTexture(3553, 0);
-      GLES20.glBindFramebuffer(36160, 0);
-      break;
-      this.mDataBuffer.position(0);
-      this.mDataBuffer.put(paramArrayOfByte, paramInt1 * paramInt2, paramInt1 * paramInt2 / 4);
-      this.mDataBuffer.position(0);
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.mYuvTempTextureId[1]);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6409, paramInt1 / 2, paramInt2 / 2, 0, 6409, 5121, this.mDataBuffer);
-      this.mDataBuffer.position(0);
-      this.mDataBuffer.put(paramArrayOfByte, paramInt1 * paramInt2 + paramInt1 * paramInt2 / 4, paramInt1 * paramInt2 / 4);
-      this.mDataBuffer.position(0);
-      GLES20.glActiveTexture(33986);
-      GLES20.glBindTexture(3553, this.mYuvTempTextureId[2]);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6409, paramInt1 / 2, paramInt2 / 2, 0, 6409, 5121, this.mDataBuffer);
-      break label723;
-      label1227:
-      if (paramColorFormat == ColorFormat.NV21) {
-        GLES20.glUniform1i(this.mGLUniformYuvFormat, 2);
-      } else {
-        GLES20.glUniform1i(this.mGLUniformYuvFormat, 3);
-      }
-    }
+    return new EffectTexture(paramInt3, -1, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.utils.TextureDataLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import abti;
-import alud;
 import android.text.TextUtils;
-import awge;
+import com.tencent.imcore.message.UinMD5Cache;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -13,25 +13,25 @@ import java.util.Locale;
 import java.util.Random;
 
 public class QCallRecord
-  extends awge
+  extends Entity
 {
   private static final int Kilo = 1000;
   public static int TYPE_DATE = 0;
   public static int TYPE_REALRECORD = 1;
   public static final int VERSION_CODE = 1;
-  public int contactId = -1;
+  public int contactId;
   public String friendUin;
   public int isVideo;
-  public int issend = 1;
+  public int issend;
   public byte[] msgData;
   public String senderuin;
   public int state;
   public String talkTime;
   public long time;
-  public int type = TYPE_REALRECORD;
+  public int type;
   public int uinType;
   public long uniseq;
-  public int versionCode = 1;
+  public int versionCode;
   
   public QCallRecord()
   {
@@ -40,15 +40,25 @@ public class QCallRecord
   
   public QCallRecord(int paramInt)
   {
+    int i = TYPE_REALRECORD;
+    this.type = i;
+    this.issend = 1;
+    this.versionCode = 1;
+    this.contactId = -1;
     this.type = paramInt;
-    if (paramInt == TYPE_REALRECORD) {
+    if (paramInt == i) {
       createMessageUniseq();
     }
   }
   
   public static String getTableName(String paramString, int paramInt)
   {
-    return "qc_" + paramInt + "_" + abti.a(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qc_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(UinMD5Cache.a(paramString));
+    return localStringBuilder.toString();
   }
   
   public void createMessageUniseq()
@@ -75,30 +85,33 @@ public class QCallRecord
     Calendar localCalendar2 = Calendar.getInstance();
     localCalendar2.setTimeInMillis(System.currentTimeMillis());
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6))) {
-      return alud.a(2131709976);
+      return HardCodeUtil.a(2131907295);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) + 1 == localCalendar2.get(6))) {
-      return alud.a(2131709974);
+      return HardCodeUtil.a(2131907293);
     }
-    if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) > localCalendar2.get(6) - 7)) {}
-    switch (localCalendar1.get(7))
-    {
-    default: 
-      return new SimpleDateFormat("yy-MM-dd").format(localDate);
-    case 1: 
-      return alud.a(2131709968);
-    case 2: 
-      return alud.a(2131709971);
-    case 3: 
-      return alud.a(2131709970);
-    case 4: 
-      return alud.a(2131709972);
-    case 5: 
-      return alud.a(2131709975);
-    case 6: 
-      return alud.a(2131709978);
+    if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) > localCalendar2.get(6) - 7)) {
+      switch (localCalendar1.get(7))
+      {
+      default: 
+        break;
+      case 7: 
+        return HardCodeUtil.a(2131907292);
+      case 6: 
+        return HardCodeUtil.a(2131907297);
+      case 5: 
+        return HardCodeUtil.a(2131907294);
+      case 4: 
+        return HardCodeUtil.a(2131907291);
+      case 3: 
+        return HardCodeUtil.a(2131907289);
+      case 2: 
+        return HardCodeUtil.a(2131907290);
+      case 1: 
+        return HardCodeUtil.a(2131907287);
+      }
     }
-    return alud.a(2131709973);
+    return new SimpleDateFormat("yy-MM-dd").format(localDate);
   }
   
   public String getTableName()
@@ -108,70 +121,80 @@ public class QCallRecord
   
   public String getTalkTimeMinute()
   {
-    int j = 0;
-    if (TextUtils.isEmpty(this.talkTime)) {
+    boolean bool = TextUtils.isEmpty(this.talkTime);
+    Object localObject2 = "";
+    if (bool) {
       return "";
     }
-    Object localObject = this.talkTime;
-    long l1;
-    long l3;
-    if (this.uinType == 3000)
+    String str = this.talkTime;
+    int i = this.uinType;
+    int k = 0;
+    Object localObject1 = str;
+    if (i == 3000)
     {
-      long l2 = Long.parseLong(this.talkTime);
-      localObject = "00:00";
+      long l2 = Long.parseLong(str);
       if (l2 > 0L)
       {
-        l1 = l2 % 60L;
-        l3 = l2 / 60L;
+        long l1 = l2 % 60L;
+        long l3 = l2 / 60L;
         l2 = l3 / 60L;
         l3 %= 60L;
-        if (l2 <= 0L) {
-          break label283;
+        if (l2 > 0L) {
+          localObject1 = String.format(Locale.CHINA, "%02d:%02d:%02d", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l1) });
+        } else {
+          localObject1 = String.format(Locale.CHINA, "%02d:%02d", new Object[] { Long.valueOf(l3), Long.valueOf(l1) });
         }
-        localObject = String.format(Locale.CHINA, "%02d:%02d:%02d", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l1) });
       }
-    }
-    int i;
-    int k;
-    if ((localObject != null) && (!((String)localObject).equals("")) && (((String)localObject).split(":").length >= 2))
-    {
-      localObject = ((String)localObject).split(":");
-      if (localObject.length == 2)
+      else
       {
-        j = Integer.parseInt(localObject[0]);
-        i = Integer.parseInt(localObject[1]);
-        k = 0;
+        localObject1 = "00:00";
       }
     }
-    for (;;)
+    if ((localObject1 != null) && (!((String)localObject1).equals("")) && (((String)localObject1).split(":").length >= 2))
     {
-      label189:
-      if (k != 0) {}
-      for (localObject = "" + k + alud.a(2131709969);; localObject = "")
+      localObject1 = ((String)localObject1).split(":");
+      int j;
+      if (localObject1.length == 2)
       {
-        if (j != 0) {
-          localObject = (String)localObject + j + alud.a(2131709977);
-        }
-        for (;;)
-        {
-          return (String)localObject + i + alud.a(2131709967);
-          label283:
-          localObject = String.format(Locale.CHINA, "%02d:%02d", new Object[] { Long.valueOf(l3), Long.valueOf(l1) });
-          break;
-          if (localObject.length != 3) {
-            break label363;
-          }
-          k = Integer.parseInt(localObject[0]);
-          j = Integer.parseInt(localObject[1]);
-          i = Integer.parseInt(localObject[2]);
-          break label189;
-          return "";
-        }
+        j = Integer.parseInt(localObject1[0]);
+        i = Integer.parseInt(localObject1[1]);
       }
-      label363:
-      i = 0;
-      k = 0;
+      else if (localObject1.length == 3)
+      {
+        k = Integer.parseInt(localObject1[0]);
+        j = Integer.parseInt(localObject1[1]);
+        i = Integer.parseInt(localObject1[2]);
+      }
+      else
+      {
+        i = 0;
+        j = 0;
+      }
+      localObject1 = localObject2;
+      if (k != 0)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append(k);
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131907288));
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      localObject2 = localObject1;
+      if (j != 0)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131907296));
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131907286));
+      return ((StringBuilder)localObject1).toString();
     }
+    return "";
   }
   
   public String getTime()
@@ -183,12 +206,16 @@ public class QCallRecord
   {
     if (this.uinType != 3000)
     {
-      if ((this.issend != 0) || ((12 != this.state) && (10 != this.state) && (6 != this.state))) {}
-    }
-    else {
-      while ((this.issend == 0) && (this.state == 2)) {
-        return true;
+      if (this.issend == 0)
+      {
+        int i = this.state;
+        if ((12 == i) || (10 == i) || (6 == i)) {
+          return true;
+        }
       }
+    }
+    else if ((this.issend == 0) && (this.state == 2)) {
+      return true;
     }
     return false;
   }
@@ -205,7 +232,31 @@ public class QCallRecord
   
   public String toString()
   {
-    return "QCallRecord [state=" + this.state + ", time=" + this.time + ", talkTime=" + this.talkTime + ", type=" + this.type + ", friendUin=" + this.friendUin + ", uinType=" + this.uinType + ", uniseq=" + this.uniseq + ", issend=" + this.issend + ", msgData=" + Arrays.toString(this.msgData) + ", senderuin=" + this.senderuin + ", isVideo=" + this.isVideo + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCallRecord [state=");
+    localStringBuilder.append(this.state);
+    localStringBuilder.append(", time=");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(", talkTime=");
+    localStringBuilder.append(this.talkTime);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", friendUin=");
+    localStringBuilder.append(this.friendUin);
+    localStringBuilder.append(", uinType=");
+    localStringBuilder.append(this.uinType);
+    localStringBuilder.append(", uniseq=");
+    localStringBuilder.append(this.uniseq);
+    localStringBuilder.append(", issend=");
+    localStringBuilder.append(this.issend);
+    localStringBuilder.append(", msgData=");
+    localStringBuilder.append(Arrays.toString(this.msgData));
+    localStringBuilder.append(", senderuin=");
+    localStringBuilder.append(this.senderuin);
+    localStringBuilder.append(", isVideo=");
+    localStringBuilder.append(this.isVideo);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

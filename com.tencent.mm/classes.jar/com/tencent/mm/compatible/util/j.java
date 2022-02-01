@@ -1,60 +1,26 @@
 package com.tencent.mm.compatible.util;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 @Deprecated
 public final class j
-  extends x
+  extends KeyBoardUtil
 {
-  public static final int Mq()
+  public static final void H(Context paramContext, int paramInt)
   {
-    return ync;
-  }
-  
-  public static final int Mr()
-  {
-    AppMethodBeat.i(93100);
-    int i = as.apq(ah.dsP()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
-    AppMethodBeat.o(93100);
-    return i;
-  }
-  
-  @TargetApi(11)
-  public static final void q(Activity paramActivity)
-  {
-    AppMethodBeat.i(93098);
-    if (paramActivity == null)
-    {
-      AppMethodBeat.o(93098);
-      return;
-    }
-    Rect localRect = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.top;
-    int j = a.p(paramActivity);
-    ync = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
-    AppMethodBeat.o(93098);
-  }
-  
-  public static final void z(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(93099);
-    int j = x.av(paramContext, 0);
-    int i = x.gK(paramContext);
+    AppMethodBeat.i(155904);
+    int j = KeyBoardUtil.getMinPanelHeightPx(paramContext);
+    int i = KeyBoardUtil.getMaxPanelHeightPx(paramContext);
     if (paramInt < j) {
       paramInt = j;
     }
@@ -65,17 +31,41 @@ public final class j
       }
       for (;;)
       {
-        if ((x.ynb != paramInt) && (x.gM(paramContext)) && (paramInt >= 0))
-        {
-          x.ynb = paramInt;
-          ab.d("MicroMsg.KeyBordUtil", "save keybord: %d", new Object[] { Integer.valueOf(paramInt) });
-          ah.dsQ().edit().putInt("com.tencent.mm.compatible.util.keybord.height", paramInt).commit();
-        }
-        as.apq(ah.dsP()).putInt("com.tencent.mm.compatible.util.keybord.height", paramInt);
-        AppMethodBeat.o(93099);
+        saveKeyBordHeightPx(paramContext, paramInt);
+        MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putInt("com.tencent.mm.compatible.util.keybord.height", paramInt);
+        AppMethodBeat.o(155904);
         return;
       }
     }
+  }
+  
+  public static final int aQj()
+  {
+    return CONTENT_HEIGHT;
+  }
+  
+  public static final int aQk()
+  {
+    AppMethodBeat.i(155905);
+    int i = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
+    AppMethodBeat.o(155905);
+    return i;
+  }
+  
+  public static final void w(Activity paramActivity)
+  {
+    AppMethodBeat.i(155903);
+    if (paramActivity == null)
+    {
+      AppMethodBeat.o(155903);
+      return;
+    }
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    int i = localRect.top;
+    int j = a.v(paramActivity);
+    CONTENT_HEIGHT = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
+    AppMethodBeat.o(155903);
   }
 }
 

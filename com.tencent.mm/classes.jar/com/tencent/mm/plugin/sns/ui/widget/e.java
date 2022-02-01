@@ -2,89 +2,82 @@ package com.tencent.mm.plugin.sns.ui.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Point;
+import android.text.TextUtils.TruncateAt;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 
 public final class e
 {
-  private static e snn;
-  private static final int snq;
-  public int smV = 0;
-  private com.tencent.mm.kiss.widget.textview.a.a sno = null;
-  private com.tencent.mm.kiss.widget.textview.a.a snp = null;
+  private static e RXf;
+  private com.tencent.mm.kiss.widget.textview.a.a RXc = null;
+  private int RXd = 0;
   
   static
   {
-    AppMethodBeat.i(40522);
-    snn = new e();
-    snq = com.tencent.mm.cb.a.ap(ah.getContext(), 2131427507);
-    AppMethodBeat.o(40522);
+    AppMethodBeat.i(100505);
+    RXf = new e();
+    AppMethodBeat.o(100505);
   }
   
-  public static e cxN()
+  public static e hsR()
   {
-    return snn;
-  }
-  
-  public static float getTextSize()
-  {
-    AppMethodBeat.i(40521);
-    float f = (int)(snq * com.tencent.mm.cb.a.dr(ah.getContext()));
-    AppMethodBeat.o(40521);
-    return f;
-  }
-  
-  public final com.tencent.mm.kiss.widget.textview.a.a cxO()
-  {
-    AppMethodBeat.i(40519);
-    int i = (int)(snq * com.tencent.mm.cb.a.dr(ah.getContext()));
-    if ((this.snp == null) || ((int)this.snp.textSize != i)) {
-      this.snp = b.SP().jR(8388627).jS(ah.getContext().getResources().getColor(2131690322)).ae(i).SQ().eLU;
-    }
-    com.tencent.mm.kiss.widget.textview.a.a locala = this.snp;
-    AppMethodBeat.o(40519);
-    return locala;
+    return RXf;
   }
   
   public final com.tencent.mm.kiss.widget.textview.a.a getTextViewConfig()
   {
-    AppMethodBeat.i(40518);
-    int i = (int)(snq * com.tencent.mm.cb.a.dr(ah.getContext()));
-    if ((this.sno == null) || ((int)this.sno.textSize != i)) {
-      this.sno = b.SP().jR(8388627).jS(ah.getContext().getResources().getColor(2131690322)).ae(i).eLU;
+    AppMethodBeat.i(100503);
+    int i = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), (int)(15.0F * com.tencent.mm.cd.a.getScaleSize(MMApplicationContext.getContext())));
+    if ((this.RXc == null) || ((int)this.RXc.textSize != i)) {
+      this.RXc = b.bbQ().bn(i).sI(MMApplicationContext.getContext().getResources().getColor(b.c.FG_0_5)).sH(16).b(TextUtils.TruncateAt.END).mGZ;
     }
-    com.tencent.mm.kiss.widget.textview.a.a locala = this.sno;
-    AppMethodBeat.o(40518);
+    com.tencent.mm.kiss.widget.textview.a.a locala = this.RXc;
+    AppMethodBeat.o(100503);
     return locala;
   }
   
   public final int getViewWidth()
   {
-    AppMethodBeat.i(40520);
-    if (this.smV <= 0)
+    AppMethodBeat.i(100504);
+    if (this.RXd <= 0)
     {
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-      i = localDisplayMetrics.widthPixels;
-      int j = (int)(ah.getResources().getDimension(2131427808) + ah.getResources().getDimension(2131427808));
-      int k = (int)ah.getResources().getDimension(2131428713);
-      int m = (int)ah.getResources().getDimension(2131427808);
-      this.smV = (i - k - j);
-      ab.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "screenWidth " + i + " textViewWidth " + this.smV + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
+      i = al.gbR().x;
+      int j = (int)(MMApplicationContext.getResources().getDimension(b.d.NormalPadding) + MMApplicationContext.getResources().getDimension(b.d.NormalPadding));
+      int k = (int)MMApplicationContext.getResources().getDimension(b.d.sns_timeilne_margin_left);
+      int m = (int)MMApplicationContext.getResources().getDimension(b.d.NormalPadding);
+      this.RXd = (i - k - j - m);
+      if (this.RXd <= 0)
+      {
+        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+        ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+        i = localDisplayMetrics.widthPixels;
+        this.RXd = (i - k - j - m);
+        Log.i("MicroMsg.SnsComment2LinePreloadTextViewConfig", "try again, screenWidth " + i + " textViewWidth " + this.RXd + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
+      }
+      if (aw.jkS()) {
+        this.RXd = bd.bs(MMApplicationContext.getContext(), b.d.sns_timeline_item_large_screen_width);
+      }
+      Log.i("MicroMsg.SnsComment2LinePreloadTextViewConfig", "finally, screenWidth " + i + " textViewWidth " + this.RXd + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
     }
-    int i = this.smV;
-    AppMethodBeat.o(40520);
+    int i = this.RXd;
+    AppMethodBeat.o(100504);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.e
  * JD-Core Version:    0.7.0.1
  */

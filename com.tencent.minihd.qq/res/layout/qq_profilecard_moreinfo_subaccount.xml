@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/account_top_info" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:gravity="right" android:layout_gravity="right" android:id="@id/title" android:text="@string/info_card_option_account" style="@style/CardInfoItemTitle" />
+        <LinearLayout android:orientation="vertical" android:id="@id/info_and_level_layout" android:paddingTop="@dimen/info_card_moreinfo_item_paddingTB" android:paddingBottom="@dimen/info_card_moreinfo_item_paddingTB" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/info_card_moreinfo_item_info_marginLeft" android:layout_marginRight="32.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/info_card_middle_item_txtsize" android:textColor="@color/skin_black" android:id="@id/info" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/qqlevel_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+                <TextView android:textSize="@dimen/qq_profilecard_info_text_size_small" android:textColor="@color/skin_gray2" android:ellipsize="end" android:gravity="bottom" android:id="@id/info_card_level" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                <TextView android:textSize="13.0sp" android:textColor="#ffa6a6a6" android:layout_gravity="center_vertical" android:id="@id/accelerate_icon" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/arrow" android:visibility="gone" style="@style/CardInfoItemArrow" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/extra_info" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/account_info_extra_line" android:background="#0c000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/info_card_moreinfo_item_title_divider_marginLeft" android:layout_marginRight="32.0dip" />
+        <TextView android:textSize="@dimen/info_card_middle_item_txtsize" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/info_extra" android:paddingRight="@dimen/info_card_moreinfo_item_paddingLR" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/info_card_moreinfo_item_title_divider_marginLeft" android:layout_marginTop="@dimen/info_card_moreinfo_item_paddingTB" android:layout_marginBottom="@dimen/info_card_moreinfo_item_paddingTB" android:maxLines="2" />
+    </LinearLayout>
+</LinearLayout>

@@ -38,14 +38,15 @@ public final class SubScribeSDKDownloadTaskByViaRequest
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.viaList, 0);
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 1);
+    ArrayList localArrayList = this.data;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.SubScribeSDKDownloadTaskByViaRequest
  * JD-Core Version:    0.7.0.1
  */

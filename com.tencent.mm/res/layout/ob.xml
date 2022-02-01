@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/avr" android:background="@drawable/b03" android:padding="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:padding="@dimen/i6" android:layout_width="255.0dip" android:layout_height="wrap_content" android:minHeight="220.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <ImageView android:id="@id/avs" android:layout_width="@dimen/n2" android:layout_height="@dimen/n2" />
-        <TextView android:id="@id/avt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/a5t" />
-    </LinearLayout>
-    <Button android:id="@id/avu" android:layout_marginLeft="@dimen/n6" android:minWidth="@dimen/n6" android:text="@string/ale" style="@style/ns" />
+    <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/br1" android:layout_width="220.0dip" android:layout_height="106.599976dip" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:layout_gravity="center" android:id="@id/ax6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/avx" />
 </LinearLayout>

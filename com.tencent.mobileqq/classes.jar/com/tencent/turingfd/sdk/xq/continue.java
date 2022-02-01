@@ -1,16 +1,20 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
+import java.util.Stack;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
-public abstract interface continue
+public class continue
 {
-  public abstract void a(Context paramContext);
-  
-  public abstract interface b(Context paramContext);
+  public Stack<Node> a = new Stack();
+  public Document b;
+  public final DocumentBuilder c = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.continue
  * JD-Core Version:    0.7.0.1
  */

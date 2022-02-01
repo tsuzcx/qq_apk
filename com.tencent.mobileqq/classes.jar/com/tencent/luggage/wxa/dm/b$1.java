@@ -1,0 +1,23 @@
+package com.tencent.luggage.wxa.dm;
+
+import com.tencent.luggage.sdk.customize.impl.a;
+import com.tencent.luggage.wxa.bb.a.c;
+import com.tencent.mm.plugin.appbrand.ui.i;
+
+class b$1
+  implements Runnable
+{
+  b$1(b paramb, a.c paramc) {}
+  
+  public void run()
+  {
+    b.a(this.b, this.a);
+    this.a.a(i.class, new a());
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.luggage.wxa.dm.b.1
+ * JD-Core Version:    0.7.0.1
+ */

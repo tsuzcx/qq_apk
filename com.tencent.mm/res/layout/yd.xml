@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bpu" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/nh" android:textColor="@color/o7" android:gravity="center" android:id="@id/bpv" android:background="@drawable/ny" android:layout_width="@dimen/a27" android:layout_height="@dimen/a27" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/bpw" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:background="@color/o7" android:layout_width="97.0dip" android:layout_height="1.0dip" />
-        <View android:id="@id/bpx" android:background="@android:color/white" android:visibility="gone" android:layout_width="97.0dip" android:layout_height="1.0dip" />
-    </RelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ListView android:id="@id/jq" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/az8" android:transcriptMode="disabled" android:cacheColorHint="#ffffffff" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" style="@style/r8" />
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/k8" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </FrameLayout>
 </LinearLayout>

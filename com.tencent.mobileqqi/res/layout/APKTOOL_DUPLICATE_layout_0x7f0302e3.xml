@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.cover.ui.CoverContainer android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b06" android:focusable="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01b8"
+<com.qzone.cover.ui.CoverContainer android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b05" android:focusable="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01b8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.cover.ui.CoverImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b07" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020be4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020be4" android:scaleType="centerCrop" android:adjustViewBounds="false" />
+    <com.qzone.cover.ui.CoverImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b06" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020be4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020be4" android:scaleType="centerCrop" android:adjustViewBounds="false" />
     <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0302be" />
 </com.qzone.cover.ui.CoverContainer>

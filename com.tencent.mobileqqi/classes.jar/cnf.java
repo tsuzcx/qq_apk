@@ -1,18 +1,25 @@
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
-import mqq.app.permission.PermissionItem;
-import mqq.app.permission.PermissionManager;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.permission.PermissionCallback;
 
 class cnf
-  implements PermissionDialogCallback
+  implements PermissionCallback
 {
-  cnf(cnb paramcnb) {}
+  cnf(cne paramcne) {}
   
-  public void a() {}
-  
-  public void b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200), PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new cng(this));
+    new PermissionsDialog().a(this.a.a.a, paramInt, paramArrayOfString, new cng(this));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.a.a.a, 5);
+    ReportController.b(this.a.a.a.b, "CliOper", "", "", "0X8004176", "0X8004176", ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.f), 0, "", "", "", "");
   }
 }
 

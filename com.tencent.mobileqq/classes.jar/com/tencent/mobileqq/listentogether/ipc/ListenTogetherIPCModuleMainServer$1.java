@@ -1,36 +1,35 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
 import android.text.TextUtils;
-import atnl;
-import awsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.profile.musicbox.ProfileMusicBoxController;
 
-public class ListenTogetherIPCModuleMainServer$1
+class ListenTogetherIPCModuleMainServer$1
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$1(atnl paramatnl, String paramString1, String paramString2) {}
+  ListenTogetherIPCModuleMainServer$1(ListenTogetherIPCModuleMainServer paramListenTogetherIPCModuleMainServer, String paramString1, String paramString2) {}
   
   public void run()
   {
-    awsw localawsw = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (localawsw != null)
+    ProfileMusicBoxController localProfileMusicBoxController = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).l();
+    if (localProfileMusicBoxController != null)
     {
-      localawsw.a(this.a);
-      if ((!localawsw.b()) && (!TextUtils.isEmpty(this.b)))
+      localProfileMusicBoxController.a(this.a);
+      if ((!localProfileMusicBoxController.o()) && (!TextUtils.isEmpty(this.b)))
       {
         SongInfo localSongInfo = new SongInfo();
-        localSongInfo.e = this.b;
-        localawsw.a(localSongInfo);
+        localSongInfo.g = this.b;
+        localProfileMusicBoxController.a(localSongInfo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.1
  * JD-Core Version:    0.7.0.1
  */

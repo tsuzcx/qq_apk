@@ -1,33 +1,27 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-public class gxk
-  extends Handler
+public final class gxk
+  implements Runnable
 {
-  public gxk(RollangleImageView.ImageCache paramImageCache, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public gxk(QQAppInterface paramQQAppInterface, Entity paramEntity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity.getId() != -1L)) {
+      if (!localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity)) {
+        localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity.getClass());
+      }
+    }
+    for (;;)
     {
+      localEntityManager.a();
       return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity);
+    }
   }
 }
 

@@ -22,13 +22,14 @@ public final class oidb_cmd0x977$RspFollowData
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 90, 96, 106 }, new String[] { "op_type", "uint32_is_no_more_data", "uint64_total_count", "bytes_cookie", "uint64_dst_uin", "msg_follow_list" }, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro, Long.valueOf(0L), null }, RspFollowData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 90, 96, 106 }, new String[] { "op_type", "uint32_is_no_more_data", "uint64_total_count", "bytes_cookie", "uint64_dst_uin", "msg_follow_list" }, new Object[] { Integer.valueOf(1), Integer.valueOf(0), localLong, localByteStringMicro, localLong, null }, RspFollowData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x977.oidb_cmd0x977.RspFollowData
  * JD-Core Version:    0.7.0.1
  */

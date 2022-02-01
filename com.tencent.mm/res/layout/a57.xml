@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/nw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
-        <ImageView android:layout_gravity="center_horizontal" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="80.0dip" android:layout_marginBottom="30.0dip" android:src="@drawable/agw" />
-        <TextView android:textSize="@dimen/iw" android:textColor="@color/h6" android:id="@id/c9s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" />
-        <TextView android:textSize="@dimen/iw" android:textColor="@color/qh" android:id="@id/c9t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
-        <TextView android:textSize="@dimen/j6" android:textColor="@color/qh" android:id="@id/c9u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:lineSpacingExtra="4.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a7e" android:background="@drawable/p4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/aum">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/agv" android:id="@id/hl1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/j4" />
     </LinearLayout>
+    <View android:id="@id/a7h" android:background="@drawable/b7q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
 </LinearLayout>

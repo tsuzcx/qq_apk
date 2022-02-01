@@ -32,12 +32,14 @@ public class AsynchronousVideoCompositionRequest
   
   private void notifyFinish()
   {
-    if (this.authorComposition != null) {
-      synchronized (this.authorComposition)
+    Object localObject1 = this.authorComposition;
+    if (localObject1 != null) {
+      try
       {
         this.authorComposition.notifyAll();
         return;
       }
+      finally {}
     }
   }
   
@@ -153,20 +155,31 @@ public class AsynchronousVideoCompositionRequest
   
   public CMSampleBuffer sourceFrameByTrackID(int paramInt)
   {
-    if (this.sampleBuffers != null) {
-      return (CMSampleBuffer)this.sampleBuffers.get(paramInt);
+    SparseArray localSparseArray = this.sampleBuffers;
+    if (localSparseArray != null) {
+      return (CMSampleBuffer)localSparseArray.get(paramInt);
     }
     return null;
   }
   
   public String toString()
   {
-    return "AsynchronousVideoCompositionRequest{renderContext=" + this.renderContext + ", compositionTime=" + this.compositionTime + ", videoCompositionInstruction=" + this.videoCompositionInstruction + ", sampleBuffers=" + this.sampleBuffers + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AsynchronousVideoCompositionRequest{renderContext=");
+    localStringBuilder.append(this.renderContext);
+    localStringBuilder.append(", compositionTime=");
+    localStringBuilder.append(this.compositionTime);
+    localStringBuilder.append(", videoCompositionInstruction=");
+    localStringBuilder.append(this.videoCompositionInstruction);
+    localStringBuilder.append(", sampleBuffers=");
+    localStringBuilder.append(this.sampleBuffers);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.compositing.AsynchronousVideoCompositionRequest
  * JD-Core Version:    0.7.0.1
  */

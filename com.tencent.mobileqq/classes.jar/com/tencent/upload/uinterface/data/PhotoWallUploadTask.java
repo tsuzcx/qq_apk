@@ -66,54 +66,55 @@ public class PhotoWallUploadTask
     return TaskTypeConfig.PhotoWallUploadTaskType;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (this.mDeleteFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
     }
   }
   
-  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
-    Object localObject1 = null;
     if (paramArrayOfByte == null)
     {
       onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), "photowall upload task response is null");
       return;
     }
     Object localObject2 = new String(paramArrayOfByte);
+    Object localObject1 = null;
+    Object localObject3;
     try
     {
       localObject2 = decodeUploadResult((String)localObject2);
-      if (localObject2 == null)
-      {
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          localObject2 = "unpack PhotoWallUploadResult==null. " + paramArrayOfByte;
-        }
-        onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), (String)localObject2);
-        return;
-      }
     }
     catch (Exception localException)
     {
-      Object localObject3;
-      for (;;)
-      {
-        localObject1 = Log.getStackTraceString(localException);
-        UploadLog.e("PhotoWallUploadTask", "decode photowallUpload result err", localException);
-        localObject3 = null;
-      }
-      if (this.uploadTaskCallback != null) {
-        this.uploadTaskCallback.onUploadSucceed(this, localObject3);
-      }
-      super.processFileUploadFinishRsp(paramArrayOfByte);
+      localObject1 = Log.getStackTraceString(localException);
+      UploadLog.e("PhotoWallUploadTask", "decode photowallUpload result err", localException);
+      localObject3 = null;
     }
+    if (localObject3 == null)
+    {
+      localObject3 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unpack PhotoWallUploadResult==null. ");
+        ((StringBuilder)localObject1).append(paramArrayOfByte);
+        localObject3 = ((StringBuilder)localObject1).toString();
+      }
+      onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), (String)localObject3);
+      return;
+    }
+    if (this.uploadTaskCallback != null) {
+      this.uploadTaskCallback.onUploadSucceed(this, localObject3);
+    }
+    super.processFileUploadFinishRsp(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.PhotoWallUploadTask
  * JD-Core Version:    0.7.0.1
  */

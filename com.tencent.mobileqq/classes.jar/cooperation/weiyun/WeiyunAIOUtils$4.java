@@ -1,21 +1,32 @@
 package cooperation.weiyun;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class WeiyunAIOUtils$4
-  implements Runnable
+final class WeiyunAIOUtils$4
+  implements FMDialogUtil.FMDialogInterface
 {
-  public WeiyunAIOUtils$4(QQAppInterface paramQQAppInterface, int paramInt) {}
+  WeiyunAIOUtils$4(QQAppInterface paramQQAppInterface, List paramList1, List paramList2, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, MqqHandler paramMqqHandler, int paramInt) {}
   
-  public void run()
+  public void a()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692914, 0).b(this.jdField_a_of_type_Int);
+    if (WeiyunAIOUtils.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h))
+    {
+      QQToast.makeText(this.a.getApp(), 2131889761, 0).show(this.h);
+      return;
+    }
+    QQToast.makeText(this.a.getApp(), 2131889814, 0).show(this.h);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.4
  * JD-Core Version:    0.7.0.1
  */

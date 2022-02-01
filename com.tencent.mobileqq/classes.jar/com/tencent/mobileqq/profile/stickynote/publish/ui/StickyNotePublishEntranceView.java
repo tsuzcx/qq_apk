@@ -7,28 +7,33 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
-import azqs;
+import com.tencent.biz.videostory.config.VSConfigManager;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 import org.json.JSONObject;
-import yyw;
 
 public class StickyNotePublishEntranceView
-  extends RelativeLayout
+  extends FrameLayout
 {
-  private int jdField_a_of_type_Int = 1;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private Card jdField_a_of_type_ComTencentMobileqqDataCard;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  private String jdField_b_of_type_JavaLangString;
+  private Card a;
+  private boolean b;
+  private ViewGroup c;
+  private URLImageView d;
+  private URLImageView e;
+  private TextView f;
+  private Drawable g;
+  private Drawable h;
+  private String i;
+  private String j;
+  private int k = 1;
   
   public StickyNotePublishEntranceView(Context paramContext)
   {
@@ -44,252 +49,249 @@ public class StickyNotePublishEntranceView
   protected String a(String paramString)
   {
     Object localObject = paramString;
-    Card localCard;
     if (!TextUtils.isEmpty(paramString))
     {
-      localCard = this.jdField_a_of_type_ComTencentMobileqqDataCard;
+      Card localCard = this.a;
       localObject = paramString;
       if (localCard != null)
       {
         localObject = getContext().getResources();
-        if (localCard.shGender != 0) {
-          break label52;
+        if (localCard.shGender == 0) {
+          localObject = ((Resources)localObject).getString(2131890667);
+        } else if (localCard.shGender == 1) {
+          localObject = ((Resources)localObject).getString(2131916580);
+        } else {
+          localObject = ((Resources)localObject).getString(2131916995);
         }
-        localObject = ((Resources)localObject).getString(2131693366);
+        localObject = paramString.replace("{TA}", (CharSequence)localObject);
       }
     }
-    for (;;)
-    {
-      localObject = paramString.replace("{TA}", (CharSequence)localObject);
-      return localObject;
-      label52:
-      if (localCard.shGender == 1) {
-        localObject = ((Resources)localObject).getString(2131720071);
-      } else {
-        localObject = ((Resources)localObject).getString(2131720572);
-      }
-    }
+    return localObject;
   }
   
   public void a()
   {
-    Object localObject = (String)yyw.a().a("sticky_note_publish_entrance_config", "");
-    int i;
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
+    String str = (String)VSConfigManager.a().a("sticky_note_publish_entrance_config", "");
+    if (TextUtils.isEmpty(str)) {
       b();
-      i = 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_Boolean)
+      JSONObject localJSONObject1;
+      try
       {
-        azqs.b(null, "dc00898", "", "", "0X800AB1D", "0X800AB1D", i, 0, "0", "0", "", "");
-        return;
-      }
-      for (;;)
-      {
+        JSONObject localJSONObject3 = new JSONObject(str);
+        JSONObject localJSONObject2 = localJSONObject3.optJSONObject("festival");
+        boolean bool1;
+        if (localJSONObject2 != null)
+        {
+          try
+          {
+            bool1 = "1".equals(localJSONObject2.optString("enable"));
+            m = localJSONObject2.optInt("priority");
+          }
+          catch (Throwable localThrowable1)
+          {
+            break label321;
+          }
+        }
+        else
+        {
+          bool1 = false;
+          m = 1;
+        }
+        localJSONObject1 = null;
+        Object localObject1 = this.a;
+        if (localObject1 == null) {
+          break label397;
+        }
+        n = (int)((((Card)localObject1).lBirthday & 0xFF00) >> 8);
+        int i1 = (int)(((Card)localObject1).lBirthday & 0xFF);
+        localObject1 = Calendar.getInstance();
+        ((Calendar)localObject1).setTimeInMillis(System.currentTimeMillis());
+        int i2 = ((Calendar)localObject1).get(2);
         try
         {
-          JSONObject localJSONObject3 = new JSONObject((String)localObject);
-          JSONObject localJSONObject2 = localJSONObject3.optJSONObject("festival");
-          if (localJSONObject2 == null) {
-            break label421;
+          int i3 = ((Calendar)localObject1).get(5);
+          localObject1 = localJSONObject1;
+          if (n != i2 + 1) {
+            break label401;
           }
-          bool1 = "1".equals(localJSONObject2.optString("enable"));
-          i = localJSONObject2.optInt("priority");
-          JSONObject localJSONObject1 = null;
-          boolean bool3 = false;
-          int k = 2;
-          Card localCard = this.jdField_a_of_type_ComTencentMobileqqDataCard;
-          int j = k;
-          boolean bool2 = bool3;
-          localObject = localJSONObject1;
-          if (localCard != null)
-          {
-            int m = (int)((localCard.lBirthday & 0xFF00) >> 8);
-            int n = (int)(localCard.lBirthday & 0xFF);
-            localObject = Calendar.getInstance();
-            ((Calendar)localObject).setTimeInMillis(System.currentTimeMillis());
-            int i1 = ((Calendar)localObject).get(2);
-            int i2 = ((Calendar)localObject).get(5);
-            j = k;
-            bool2 = bool3;
-            localObject = localJSONObject1;
-            if (m == i1 + 1)
-            {
-              j = k;
-              bool2 = bool3;
-              localObject = localJSONObject1;
-              if (n == i2)
-              {
-                localJSONObject1 = localJSONObject3.optJSONObject("birthday");
-                j = k;
-                bool2 = bool3;
-                localObject = localJSONObject1;
-                if (localJSONObject1 != null)
-                {
-                  bool2 = "1".equals(localJSONObject1.optString("enable"));
-                  j = localJSONObject1.optInt("priority");
-                  localObject = localJSONObject1;
-                }
-              }
-            }
+          localObject1 = localJSONObject1;
+          if (i1 != i3) {
+            break label401;
           }
+          localJSONObject1 = localJSONObject3.optJSONObject("birthday");
+          localObject1 = localJSONObject1;
+          if (localJSONObject1 == null) {
+            break label401;
+          }
+          bool2 = "1".equals(localJSONObject1.optString("enable"));
+          n = localJSONObject1.optInt("priority");
+          localObject1 = localJSONObject1;
+          i1 = 1;
           if ((bool1) && (bool2))
           {
-            if ((bool2) && (j >= i))
+            if ((bool2) && (n >= m))
             {
-              a((JSONObject)localObject);
-              i = 3;
+              a((JSONObject)localObject1);
+              break label414;
             }
-            else
-            {
-              a(localJSONObject2);
-              i = 4;
-            }
+            a(localJSONObject2);
+            break label409;
           }
-          else if ((bool2) && (!bool1))
+          if ((bool2) && (!bool1))
           {
-            a((JSONObject)localObject);
-            i = 3;
+            a((JSONObject)localObject1);
+            break label414;
           }
-          else if ((bool1) && (!bool2))
+          if ((bool1) && (!bool2))
           {
             a(localJSONObject2);
-            i = 4;
+            break label409;
           }
-          else
-          {
-            b();
-            i = 1;
-          }
+          b();
+          m = i1;
         }
-        catch (Throwable localThrowable)
-        {
-          QLog.e("StickyNotePublishEntranceView", 2, localThrowable, new Object[0]);
-          i = 1;
-        }
-        break;
-        azqs.b(null, "dc00898", "", "", "0X800AB1E", "0X800AB1E", i, 0, "0", "0", "", "");
-        return;
-        label421:
-        i = 1;
-        boolean bool1 = false;
+        catch (Throwable localThrowable2) {}
+        QLog.e("StickyNotePublishEntranceView", 2, localThrowable3, new Object[0]);
       }
+      catch (Throwable localThrowable3) {}
+      label321:
+      int m = 1;
+      this.k = m;
+      if (this.b)
+      {
+        ReportController.b(null, "dc00898", "", "", "0X800AB1D", "0X800AB1D", m, 0, "0", "0", "", "");
+        return;
+      }
+      ReportController.b(null, "dc00898", "", "", "0X800AB1E", "0X800AB1E", m, 0, "0", "0", "", "");
+      return;
+      label397:
+      Object localObject2 = localJSONObject1;
+      label401:
+      boolean bool2 = false;
+      int n = 2;
+      continue;
+      label409:
+      m = 4;
+      continue;
+      label414:
+      m = 3;
     }
   }
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131561227, this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369345));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131363035));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377277));
+    inflate(paramContext, 2131627741, this);
+    this.c = ((ViewGroup)findViewById(2131431349));
+    this.d = ((URLImageView)findViewById(2131437071));
+    this.e = ((URLImageView)findViewById(2131429236));
+    this.f = ((TextView)findViewById(2131446628));
     paramContext = paramContext.getResources();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramContext.getColor(2131166359));
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131691237);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(2131691236);
+    this.g = new ColorDrawable(paramContext.getColor(2131167324));
+    this.h = new ColorDrawable(paramContext.getColor(2131167325));
+    this.i = paramContext.getString(2131888141);
+    this.j = paramContext.getString(2131888140);
     a();
   }
   
   public void a(Card paramCard)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
+    this.a = paramCard;
     a();
   }
   
   protected void a(JSONObject paramJSONObject)
   {
-    String str;
-    Object localObject;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (paramJSONObject != null))
+    if ((this.a != null) && (paramJSONObject != null))
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label102;
+      String str;
+      if (this.b) {
+        str = "host";
+      } else {
+        str = "guest";
       }
-      str = "host";
-      localObject = paramJSONObject.optJSONObject(str);
+      Object localObject = paramJSONObject.optJSONObject(str);
       if (localObject != null)
       {
         paramJSONObject = ((JSONObject)localObject).optString("leftIcon");
         str = ((JSONObject)localObject).optString("bgUrl");
         localObject = ((JSONObject)localObject).optString("summary");
-        if (TextUtils.isEmpty(paramJSONObject)) {
-          break label108;
+        if (!TextUtils.isEmpty(paramJSONObject)) {
+          this.d.setBackgroundURL(paramJSONObject);
+        } else {
+          this.d.setVisibility(8);
         }
-        this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundURL(paramJSONObject);
-        label67:
-        if (TextUtils.isEmpty(str)) {
-          break label120;
+        if (!TextUtils.isEmpty(str)) {
+          this.e.setBackgroundURL(str);
+        } else {
+          this.e.setBackgroundDrawable(this.g);
         }
-        this.jdField_b_of_type_ComTencentImageURLImageView.setBackgroundURL(str);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          this.f.setText(a((String)localObject));
+          return;
+        }
+        this.f.setVisibility(8);
       }
     }
-    for (;;)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label134;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a((String)localObject));
-      return;
-      label102:
-      str = "guest";
-      break;
-      label108:
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-      break label67;
-      label120:
-      this.jdField_b_of_type_ComTencentImageURLImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    label134:
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130845454);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_b_of_type_JavaLangString)
+    this.d.setImageResource(2130847521);
+    String str;
+    if (this.b) {
+      str = this.i;
+    } else {
+      str = this.j;
+    }
+    this.f.setText(a(str));
+    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(str));
+      this.d.setColorFilter(1996488704);
+      this.e.setBackgroundDrawable(this.h);
       return;
     }
+    this.e.setBackgroundDrawable(this.g);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int m = paramMotionEvent.getAction();
+    if (m != 0)
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      setAlpha(0.5F);
-      continue;
-      setAlpha(1.0F);
-      if (this.jdField_a_of_type_Boolean)
+      if (m != 1)
       {
-        azqs.b(null, "dc00898", "", "", "0X800AB1F", "0X800AB1F", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
+        if (m == 3) {
+          this.c.setAlpha(1.0F);
+        }
       }
       else
       {
-        azqs.b(null, "dc00898", "", "", "0X800AB20", "0X800AB20", this.jdField_a_of_type_Int, 0, "0", "0", "", "");
-        continue;
-        setAlpha(1.0F);
+        this.c.setAlpha(1.0F);
+        if (this.b) {
+          ReportController.b(null, "dc00898", "", "", "0X800AB1F", "0X800AB1F", this.k, 0, "0", "0", "", "");
+        } else {
+          ReportController.b(null, "dc00898", "", "", "0X800AB20", "0X800AB20", this.k, 0, "0", "0", "", "");
+        }
       }
     }
+    else {
+      this.c.setAlpha(0.5F);
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setIsHost(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishEntranceView
  * JD-Core Version:    0.7.0.1
  */

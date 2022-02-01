@@ -9,20 +9,21 @@ public final class az
 {
   public long db = 0L;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new az();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.db = paramJceInputStream.read(this.db, 0, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.db != 0L) {
-      paramJceOutputStream.write(this.db, 0);
+    long l = this.db;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
   }
 }

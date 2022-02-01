@@ -1,145 +1,98 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.database.Cursor;
+import android.content.Context;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fi;
-import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
-import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
-import com.tencent.mm.plugin.wallet_core.model.mall.a;
-import com.tencent.mm.plugin.wallet_core.model.mall.b;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Map;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.wallet_core.id_verify.model.a;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.List;
 
 public final class y
-  extends fi
 {
-  public static c.a info;
-  public ArrayList<MallFunction> oxK;
-  private ArrayList<MallNews> oxL;
-  private ArrayList<a> oxM;
-  public SparseArray<String> oxN;
+  public SparseArray<String> VJx = null;
+  public List<a> VJy;
+  public List<ElementQuery> VxZ = null;
   
-  static
+  public final String bf(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(46899);
-    c.a locala = new c.a();
-    locala.yrK = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "wallet_region";
-    locala.yrM.put("wallet_region", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" wallet_region INTEGER PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "wallet_region";
-    locala.columns[1] = "function_list";
-    locala.yrM.put("function_list", "TEXT");
-    localStringBuilder.append(" function_list TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "new_list";
-    locala.yrM.put("new_list", "TEXT");
-    localStringBuilder.append(" new_list TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "banner_list";
-    locala.yrM.put("banner_list", "TEXT");
-    localStringBuilder.append(" banner_list TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "type_name_list";
-    locala.yrM.put("type_name_list", "TEXT");
-    localStringBuilder.append(" type_name_list TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "isShowSetting";
-    locala.yrM.put("isShowSetting", "INTEGER");
-    localStringBuilder.append(" isShowSetting INTEGER");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(46899);
-  }
-  
-  public y()
-  {
-    AppMethodBeat.i(46897);
-    this.oxK = new ArrayList();
-    this.oxL = new ArrayList();
-    this.oxM = new ArrayList();
-    this.oxN = new SparseArray();
-    AppMethodBeat.o(46897);
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(46898);
-    super.convertFrom(paramCursor);
-    String str3 = this.field_function_list;
-    String str2 = this.field_new_list;
-    String str1 = this.field_banner_list;
-    paramCursor = this.field_type_name_list;
-    try
+    AppMethodBeat.i(70411);
+    if (this.VJx != null)
     {
-      if (!bo.isNullOrNil(str3)) {
-        this.oxK = b.I(new JSONArray(str3));
+      String str = (String)this.VJx.get(paramInt);
+      if (!Util.isNullOrNil(str))
+      {
+        AppMethodBeat.o(70411);
+        return str;
       }
     }
-    catch (Exception localException2)
-    {
-      try
-      {
-        if (!bo.isNullOrNil(str2)) {
-          this.oxL = b.F(new JSONArray(str2));
-        }
-      }
-      catch (Exception localException2)
-      {
-        try
-        {
-          for (;;)
-          {
-            if (!bo.isNullOrNil(str1)) {
-              this.oxM = b.G(new JSONArray(str1));
-            }
-            try
-            {
-              if (!bo.isNullOrNil(paramCursor)) {
-                this.oxN = b.H(new JSONArray(paramCursor));
-              }
-              AppMethodBeat.o(46898);
-              return;
-            }
-            catch (Exception paramCursor)
-            {
-              this.oxN = null;
-              ab.printErrStackTrace("MicroMsg.WalletFunciontListInfo", paramCursor, "", new Object[0]);
-              AppMethodBeat.o(46898);
-            }
-            localException3 = localException3;
-            ab.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException3, "", new Object[0]);
-            continue;
-            localException2 = localException2;
-            this.oxL = null;
-            ab.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException2, "", new Object[0]);
-          }
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            this.oxM = null;
-            ab.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException1, "", new Object[0]);
-          }
-        }
-      }
-    }
+    paramContext = paramContext.getString(a.i.wallet_card_cre_type_default);
+    AppMethodBeat.o(70411);
+    return paramContext;
   }
   
-  public final c.a getDBInfo()
+  public final ElementQuery bgA(String paramString)
   {
-    return info;
+    AppMethodBeat.i(70413);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.w("MicroMsg.WalletBankElementManager", "hy: bindSerail given is null");
+      AppMethodBeat.o(70413);
+      return null;
+    }
+    if ((this.VxZ != null) && (this.VxZ.size() != 0))
+    {
+      Iterator localIterator = this.VxZ.iterator();
+      while (localIterator.hasNext())
+      {
+        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
+        if (paramString.equals(localElementQuery.MDt))
+        {
+          AppMethodBeat.o(70413);
+          return localElementQuery;
+        }
+      }
+      Log.w("MicroMsg.WalletBankElementManager", "hy: not found given element query");
+      AppMethodBeat.o(70413);
+      return null;
+    }
+    Log.w("MicroMsg.WalletBankElementManager", "hy: element list is null. get element failed");
+    AppMethodBeat.o(70413);
+    return null;
+  }
+  
+  public final ElementQuery bgz(String paramString)
+  {
+    AppMethodBeat.i(70412);
+    if ((this.VxZ != null) && (this.VxZ.size() != 0))
+    {
+      Iterator localIterator = this.VxZ.iterator();
+      while (localIterator.hasNext())
+      {
+        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
+        if ((localElementQuery.hAk != null) && (localElementQuery.hAk.equals(paramString)))
+        {
+          AppMethodBeat.o(70412);
+          return localElementQuery;
+        }
+      }
+      Log.w("MicroMsg.WalletBankElementManager", "hy: not found given banktype: %s", new Object[] { paramString });
+      AppMethodBeat.o(70412);
+      return null;
+    }
+    Log.w("MicroMsg.WalletBankElementManager", "hy: no element from given banktype");
+    AppMethodBeat.o(70412);
+    return null;
+  }
+  
+  public final String kJ(Context paramContext)
+  {
+    AppMethodBeat.i(70410);
+    paramContext = bf(paramContext, u.iiC().ijr());
+    AppMethodBeat.o(70410);
+    return paramContext;
   }
 }
 

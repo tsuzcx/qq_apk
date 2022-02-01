@@ -1,39 +1,44 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ahww;
-import ahxp;
 import java.util.List;
 
-public class SDKEmotionSettingManager$20
+class SDKEmotionSettingManager$20
   implements Runnable
 {
-  public SDKEmotionSettingManager$20(ahww paramahww, int paramInt1, int paramInt2, int paramInt3) {}
+  SDKEmotionSettingManager$20(SDKEmotionSettingManager paramSDKEmotionSettingManager, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    if (ahww.a(this.this$0) != null) {
-      ahww.a(this.this$0).dismiss();
+    if (SDKEmotionSettingManager.k(this.this$0) != null) {
+      SDKEmotionSettingManager.k(this.this$0).dismiss();
     }
-    ahww.a(this.this$0, false);
-    if (this.a == this.b) {
-      ahww.a(this.this$0, ahww.a(this.this$0), Long.valueOf(ahww.a(this.this$0)).longValue(), true);
+    SDKEmotionSettingManager.a(this.this$0, false);
+    SDKEmotionSettingManager localSDKEmotionSettingManager;
+    if (this.a == this.b)
+    {
+      localSDKEmotionSettingManager = this.this$0;
+      SDKEmotionSettingManager.a(localSDKEmotionSettingManager, SDKEmotionSettingManager.a(localSDKEmotionSettingManager), Long.valueOf(SDKEmotionSettingManager.b(this.this$0)).longValue(), true);
     }
-    while (this.a == 1)
+    else
+    {
+      localSDKEmotionSettingManager = this.this$0;
+      SDKEmotionSettingManager.a(localSDKEmotionSettingManager, SDKEmotionSettingManager.a(localSDKEmotionSettingManager), Long.valueOf(SDKEmotionSettingManager.b(this.this$0)).longValue(), true, null);
+    }
+    if (this.a == 1)
     {
       int j = -1;
       int i = j;
-      if (ahww.c(this.this$0) != null)
+      if (SDKEmotionSettingManager.n(this.this$0) != null)
       {
         i = j;
-        if (ahww.c(this.this$0).size() > 0) {
-          i = ((Integer)ahww.c(this.this$0).get(0)).intValue();
+        if (SDKEmotionSettingManager.n(this.this$0).size() > 0) {
+          i = ((Integer)SDKEmotionSettingManager.n(this.this$0).get(0)).intValue();
         }
       }
-      ahww.a(this.this$0, i, null);
+      SDKEmotionSettingManager.a(this.this$0, i, null);
       return;
-      ahww.a(this.this$0, ahww.a(this.this$0), Long.valueOf(ahww.a(this.this$0)).longValue(), true, null);
     }
-    ahww.a(this.this$0, this.b, this.c, null);
+    SDKEmotionSettingManager.a(this.this$0, this.b, this.c, null);
   }
 }
 

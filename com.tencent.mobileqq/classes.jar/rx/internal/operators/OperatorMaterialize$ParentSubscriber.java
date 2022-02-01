@@ -35,41 +35,42 @@ class OperatorMaterialize$ParentSubscriber<T>
   
   private void drain()
   {
-    for (;;)
+    try
     {
-      try
+      if (this.busy)
       {
-        if (this.busy)
-        {
-          this.missed = true;
-          return;
-        }
-        AtomicLong localAtomicLong = this.requested;
-        if (this.child.isUnsubscribed()) {
-          break;
-        }
+        this.missed = true;
+        return;
+      }
+      AtomicLong localAtomicLong = this.requested;
+      while (!this.child.isUnsubscribed())
+      {
         Notification localNotification = this.terminalNotification;
         if ((localNotification != null) && (localAtomicLong.get() > 0L))
         {
           this.terminalNotification = null;
           this.child.onNext(localNotification);
-          if (this.child.isUnsubscribed()) {
-            break;
+          if (!this.child.isUnsubscribed()) {
+            this.child.onCompleted();
           }
-          this.child.onCompleted();
           return;
         }
-      }
-      finally {}
-      try
-      {
-        if (!this.missed)
+        try
         {
-          this.busy = false;
-          return;
+          if (!this.missed)
+          {
+            this.busy = false;
+            return;
+          }
         }
+        finally {}
       }
-      finally {}
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -106,7 +107,7 @@ class OperatorMaterialize$ParentSubscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorMaterialize.ParentSubscriber
  * JD-Core Version:    0.7.0.1
  */

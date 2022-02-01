@@ -1,36 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class ceb
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public ceb(ChatTextSizeSettingActivity paramChatTextSizeSettingActivity) {}
+  public ceb(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      this.a.e = 0;
-    }
-    for (;;)
-    {
-      this.a.a(this.a.e);
-      ReportController.b(this.a.b, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.e), "", "", "");
-      return;
-      this.a.e = 1;
-      continue;
-      this.a.e = 2;
-      continue;
-      this.a.e = 3;
-    }
+    this.a.finish();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ceb
  * JD-Core Version:    0.7.0.1
  */

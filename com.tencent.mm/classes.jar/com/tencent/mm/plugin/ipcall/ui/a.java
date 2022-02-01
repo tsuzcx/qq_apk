@@ -4,42 +4,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a
 {
+  private int JKa;
   String countryCode;
-  String fHT;
-  String fHU;
-  private int nQl;
+  String oLl;
+  String oLm;
   
   public a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.fHT = paramString1;
+    this.oLl = paramString1;
     this.countryCode = paramString2;
-    this.nQl = paramInt;
-    this.fHU = paramString3;
+    this.JKa = paramInt;
+    this.oLm = paramString3;
   }
   
-  public final int bJY()
+  public final int fSa()
   {
-    AppMethodBeat.i(21952);
-    if (this.nQl == 0)
+    AppMethodBeat.i(25567);
+    if (this.JKa == 0)
     {
-      AppMethodBeat.o(21952);
+      AppMethodBeat.o(25567);
       return 0;
     }
-    String[] arrayOfString = IPCallCountryCodeScrollbar.nSu;
+    String[] arrayOfString = IPCallCountryCodeScrollbar.JMh;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
-      if (arrayOfString[i].equals(String.valueOf((char)this.nQl)))
+      if (arrayOfString[i].equals(String.valueOf((char)this.JKa)))
       {
-        i = this.nQl;
-        AppMethodBeat.o(21952);
+        i = this.JKa;
+        AppMethodBeat.o(25567);
         return i;
       }
       i += 1;
     }
     i = "#".charAt(0);
-    AppMethodBeat.o(21952);
+    AppMethodBeat.o(25567);
     return i;
   }
 }

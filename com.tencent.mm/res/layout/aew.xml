@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioButton android:background="@drawable/vr" style="@style/gx"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/ddh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/ddd" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/dri" app:layout_constraintHeight_percent="0.25" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/dde" android:background="@drawable/ac2" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintHeight_percent="0.75" app:layout_constraintLeft_toLeftOf="hr_">
+        <include android:id="@id/ddg" layout="@layout/aev" />
+        <include android:id="@id/ddf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ddg" layout="@layout/aeu" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

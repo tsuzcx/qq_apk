@@ -118,29 +118,32 @@ public final class OkHttpClient$Builder
   
   public Builder addInterceptor(Interceptor paramInterceptor)
   {
-    if (paramInterceptor == null) {
-      throw new IllegalArgumentException("interceptor == null");
+    if (paramInterceptor != null)
+    {
+      this.interceptors.add(paramInterceptor);
+      return this;
     }
-    this.interceptors.add(paramInterceptor);
-    return this;
+    throw new IllegalArgumentException("interceptor == null");
   }
   
   public Builder addNetworkInterceptor(Interceptor paramInterceptor)
   {
-    if (paramInterceptor == null) {
-      throw new IllegalArgumentException("interceptor == null");
+    if (paramInterceptor != null)
+    {
+      this.networkInterceptors.add(paramInterceptor);
+      return this;
     }
-    this.networkInterceptors.add(paramInterceptor);
-    return this;
+    throw new IllegalArgumentException("interceptor == null");
   }
   
   public Builder authenticator(Authenticator paramAuthenticator)
   {
-    if (paramAuthenticator == null) {
-      throw new NullPointerException("authenticator == null");
+    if (paramAuthenticator != null)
+    {
+      this.authenticator = paramAuthenticator;
+      return this;
     }
-    this.authenticator = paramAuthenticator;
-    return this;
+    throw new NullPointerException("authenticator == null");
   }
   
   public OkHttpClient build()
@@ -170,11 +173,12 @@ public final class OkHttpClient$Builder
   
   public Builder certificatePinner(CertificatePinner paramCertificatePinner)
   {
-    if (paramCertificatePinner == null) {
-      throw new NullPointerException("certificatePinner == null");
+    if (paramCertificatePinner != null)
+    {
+      this.certificatePinner = paramCertificatePinner;
+      return this;
     }
-    this.certificatePinner = paramCertificatePinner;
-    return this;
+    throw new NullPointerException("certificatePinner == null");
   }
   
   public Builder connectTimeout(long paramLong, TimeUnit paramTimeUnit)
@@ -192,11 +196,12 @@ public final class OkHttpClient$Builder
   
   public Builder connectionPool(ConnectionPool paramConnectionPool)
   {
-    if (paramConnectionPool == null) {
-      throw new NullPointerException("connectionPool == null");
+    if (paramConnectionPool != null)
+    {
+      this.connectionPool = paramConnectionPool;
+      return this;
     }
-    this.connectionPool = paramConnectionPool;
-    return this;
+    throw new NullPointerException("connectionPool == null");
   }
   
   public Builder connectionSpecs(List<ConnectionSpec> paramList)
@@ -207,47 +212,52 @@ public final class OkHttpClient$Builder
   
   public Builder cookieJar(CookieJar paramCookieJar)
   {
-    if (paramCookieJar == null) {
-      throw new NullPointerException("cookieJar == null");
+    if (paramCookieJar != null)
+    {
+      this.cookieJar = paramCookieJar;
+      return this;
     }
-    this.cookieJar = paramCookieJar;
-    return this;
+    throw new NullPointerException("cookieJar == null");
   }
   
   public Builder dispatcher(Dispatcher paramDispatcher)
   {
-    if (paramDispatcher == null) {
-      throw new IllegalArgumentException("dispatcher == null");
+    if (paramDispatcher != null)
+    {
+      this.dispatcher = paramDispatcher;
+      return this;
     }
-    this.dispatcher = paramDispatcher;
-    return this;
+    throw new IllegalArgumentException("dispatcher == null");
   }
   
   public Builder dns(Dns paramDns)
   {
-    if (paramDns == null) {
-      throw new NullPointerException("dns == null");
+    if (paramDns != null)
+    {
+      this.dns = paramDns;
+      return this;
     }
-    this.dns = paramDns;
-    return this;
+    throw new NullPointerException("dns == null");
   }
   
   public Builder eventListener(EventListener paramEventListener)
   {
-    if (paramEventListener == null) {
-      throw new NullPointerException("eventListener == null");
+    if (paramEventListener != null)
+    {
+      this.eventListenerFactory = EventListener.factory(paramEventListener);
+      return this;
     }
-    this.eventListenerFactory = EventListener.factory(paramEventListener);
-    return this;
+    throw new NullPointerException("eventListener == null");
   }
   
   public Builder eventListenerFactory(EventListener.Factory paramFactory)
   {
-    if (paramFactory == null) {
-      throw new NullPointerException("eventListenerFactory == null");
+    if (paramFactory != null)
+    {
+      this.eventListenerFactory = paramFactory;
+      return this;
     }
-    this.eventListenerFactory = paramFactory;
-    return this;
+    throw new NullPointerException("eventListenerFactory == null");
   }
   
   public Builder followRedirects(boolean paramBoolean)
@@ -264,11 +274,12 @@ public final class OkHttpClient$Builder
   
   public Builder hostnameVerifier(HostnameVerifier paramHostnameVerifier)
   {
-    if (paramHostnameVerifier == null) {
-      throw new NullPointerException("hostnameVerifier == null");
+    if (paramHostnameVerifier != null)
+    {
+      this.hostnameVerifier = paramHostnameVerifier;
+      return this;
     }
-    this.hostnameVerifier = paramHostnameVerifier;
-    return this;
+    throw new NullPointerException("hostnameVerifier == null");
   }
   
   public List<Interceptor> interceptors()
@@ -297,21 +308,34 @@ public final class OkHttpClient$Builder
   public Builder protocols(List<Protocol> paramList)
   {
     paramList = new ArrayList(paramList);
-    if ((!paramList.contains(Protocol.H2_PRIOR_KNOWLEDGE)) && (!paramList.contains(Protocol.HTTP_1_1))) {
-      throw new IllegalArgumentException("protocols must contain h2_prior_knowledge or http/1.1: " + paramList);
+    if ((!paramList.contains(Protocol.H2_PRIOR_KNOWLEDGE)) && (!paramList.contains(Protocol.HTTP_1_1)))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("protocols must contain h2_prior_knowledge or http/1.1: ");
+      localStringBuilder.append(paramList);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if ((paramList.contains(Protocol.H2_PRIOR_KNOWLEDGE)) && (paramList.size() > 1)) {
-      throw new IllegalArgumentException("protocols containing h2_prior_knowledge cannot use other protocols: " + paramList);
+    if ((paramList.contains(Protocol.H2_PRIOR_KNOWLEDGE)) && (paramList.size() > 1))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("protocols containing h2_prior_knowledge cannot use other protocols: ");
+      localStringBuilder.append(paramList);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if (paramList.contains(Protocol.HTTP_1_0)) {
-      throw new IllegalArgumentException("protocols must not contain http/1.0: " + paramList);
-    }
-    if (paramList.contains(null)) {
+    if (!paramList.contains(Protocol.HTTP_1_0))
+    {
+      if (!paramList.contains(null))
+      {
+        paramList.remove(Protocol.SPDY_3);
+        this.protocols = Collections.unmodifiableList(paramList);
+        return this;
+      }
       throw new IllegalArgumentException("protocols must not contain null");
     }
-    paramList.remove(Protocol.SPDY_3);
-    this.protocols = Collections.unmodifiableList(paramList);
-    return this;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("protocols must not contain http/1.0: ");
+    localStringBuilder.append(paramList);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public Builder proxy(@Nullable Proxy paramProxy)
@@ -322,20 +346,22 @@ public final class OkHttpClient$Builder
   
   public Builder proxyAuthenticator(Authenticator paramAuthenticator)
   {
-    if (paramAuthenticator == null) {
-      throw new NullPointerException("proxyAuthenticator == null");
+    if (paramAuthenticator != null)
+    {
+      this.proxyAuthenticator = paramAuthenticator;
+      return this;
     }
-    this.proxyAuthenticator = paramAuthenticator;
-    return this;
+    throw new NullPointerException("proxyAuthenticator == null");
   }
   
   public Builder proxySelector(ProxySelector paramProxySelector)
   {
-    if (paramProxySelector == null) {
-      throw new NullPointerException("proxySelector == null");
+    if (paramProxySelector != null)
+    {
+      this.proxySelector = paramProxySelector;
+      return this;
     }
-    this.proxySelector = paramProxySelector;
-    return this;
+    throw new NullPointerException("proxySelector == null");
   }
   
   public Builder readTimeout(long paramLong, TimeUnit paramTimeUnit)
@@ -365,34 +391,38 @@ public final class OkHttpClient$Builder
   
   public Builder socketFactory(SocketFactory paramSocketFactory)
   {
-    if (paramSocketFactory == null) {
-      throw new NullPointerException("socketFactory == null");
+    if (paramSocketFactory != null)
+    {
+      this.socketFactory = paramSocketFactory;
+      return this;
     }
-    this.socketFactory = paramSocketFactory;
-    return this;
+    throw new NullPointerException("socketFactory == null");
   }
   
   public Builder sslSocketFactory(SSLSocketFactory paramSSLSocketFactory)
   {
-    if (paramSSLSocketFactory == null) {
-      throw new NullPointerException("sslSocketFactory == null");
+    if (paramSSLSocketFactory != null)
+    {
+      this.sslSocketFactory = paramSSLSocketFactory;
+      this.certificateChainCleaner = Platform.get().buildCertificateChainCleaner(paramSSLSocketFactory);
+      return this;
     }
-    this.sslSocketFactory = paramSSLSocketFactory;
-    this.certificateChainCleaner = Platform.get().buildCertificateChainCleaner(paramSSLSocketFactory);
-    return this;
+    throw new NullPointerException("sslSocketFactory == null");
   }
   
   public Builder sslSocketFactory(SSLSocketFactory paramSSLSocketFactory, X509TrustManager paramX509TrustManager)
   {
-    if (paramSSLSocketFactory == null) {
-      throw new NullPointerException("sslSocketFactory == null");
-    }
-    if (paramX509TrustManager == null) {
+    if (paramSSLSocketFactory != null)
+    {
+      if (paramX509TrustManager != null)
+      {
+        this.sslSocketFactory = paramSSLSocketFactory;
+        this.certificateChainCleaner = CertificateChainCleaner.get(paramX509TrustManager);
+        return this;
+      }
       throw new NullPointerException("trustManager == null");
     }
-    this.sslSocketFactory = paramSSLSocketFactory;
-    this.certificateChainCleaner = CertificateChainCleaner.get(paramX509TrustManager);
-    return this;
+    throw new NullPointerException("sslSocketFactory == null");
   }
   
   public Builder writeTimeout(long paramLong, TimeUnit paramTimeUnit)
@@ -410,7 +440,7 @@ public final class OkHttpClient$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.OkHttpClient.Builder
  * JD-Core Version:    0.7.0.1
  */

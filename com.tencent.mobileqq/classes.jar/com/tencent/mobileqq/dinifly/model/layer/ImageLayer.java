@@ -7,8 +7,8 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.animation.LPaint;
@@ -45,34 +45,37 @@ public class ImageLayer
     super.addValueCallback(paramT, paramLottieValueCallback);
     if (paramT == LottieProperty.COLOR_FILTER)
     {
-      if (paramLottieValueCallback == null) {
+      if (paramLottieValueCallback == null)
+      {
         this.colorFilterAnimation = null;
+        return;
       }
+      this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
     }
-    else {
-      return;
-    }
-    this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
   }
   
   public void drawLayer(@NonNull Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     Bitmap localBitmap = getBitmap();
-    if ((localBitmap == null) || (localBitmap.isRecycled())) {
-      return;
+    if (localBitmap != null)
+    {
+      if (localBitmap.isRecycled()) {
+        return;
+      }
+      float f = Utils.dpScale();
+      this.paint.setAlpha(paramInt);
+      BaseKeyframeAnimation localBaseKeyframeAnimation = this.colorFilterAnimation;
+      if (localBaseKeyframeAnimation != null) {
+        this.paint.setColorFilter((ColorFilter)localBaseKeyframeAnimation.getValue());
+      }
+      paramCanvas.save();
+      paramCanvas.concat(paramMatrix);
+      this.src.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+      this.dst.set(0, 0, (int)(localBitmap.getWidth() * f), (int)(localBitmap.getHeight() * f));
+      paramCanvas.drawBitmap(localBitmap, this.src, this.dst, this.paint);
+      paramCanvas.restore();
+      this.viewMatirx = this.transform.getMatrix();
     }
-    float f = Utils.dpScale();
-    this.paint.setAlpha(paramInt);
-    if (this.colorFilterAnimation != null) {
-      this.paint.setColorFilter((ColorFilter)this.colorFilterAnimation.getValue());
-    }
-    paramCanvas.save();
-    paramCanvas.concat(paramMatrix);
-    this.src.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-    this.dst.set(0, 0, (int)(localBitmap.getWidth() * f), (int)(f * localBitmap.getHeight()));
-    paramCanvas.drawBitmap(localBitmap, this.src, this.dst, this.paint);
-    paramCanvas.restore();
-    this.viewMatirx = this.transform.getMatrix();
   }
   
   public void getBounds(RectF paramRectF, Matrix paramMatrix, boolean paramBoolean)

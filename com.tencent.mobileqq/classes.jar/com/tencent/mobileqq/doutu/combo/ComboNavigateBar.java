@@ -10,101 +10,102 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import apkj;
-import apkk;
-import apkl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ComboNavigateBar
   extends LinearLayout
   implements View.OnClickListener, Animation.AnimationListener
 {
-  protected Animation a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  apkj jdField_a_of_type_Apkj;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = true;
-  private ImageView b;
-  private ImageView c;
+  ComboObject a;
+  protected Animation b = null;
+  protected Animation c = null;
   private ImageView d;
   private ImageView e;
+  private ImageView f;
+  private ImageView g;
+  private ImageView h;
+  private BaseQQAppInterface i;
+  private boolean j = true;
+  private String k = "";
   
   public ComboNavigateBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private Drawable a(View paramView, apkl paramapkl)
+  private Drawable a(View paramView, ComboResource.ImageObject paramImageObject)
   {
     paramView = paramView.getLayoutParams();
-    paramView.width = paramapkl.jdField_a_of_type_Int;
-    paramView.height = paramapkl.b;
-    return paramapkl.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  private boolean a()
-  {
-    apkl localapkl = apkk.a();
-    if (localapkl == null)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    this.e.setImageDrawable(a(this.e, localapkl));
-    return true;
+    paramView.width = paramImageObject.a;
+    paramView.height = paramImageObject.b;
+    return paramImageObject.c;
   }
   
   private boolean a(ImageView paramImageView, int paramInt)
   {
-    apkl localapkl = apkk.a(paramInt);
-    if (localapkl == null)
+    ComboResource.ImageObject localImageObject = ComboResource.a(paramInt, this.i.getApplicationContext());
+    if (localImageObject == null)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.j = false;
       return false;
     }
-    paramImageView.setImageDrawable(a(paramImageView, localapkl));
+    paramImageView.setImageDrawable(a(paramImageView, localImageObject));
     return true;
   }
   
   private boolean b()
   {
-    apkl localapkl = apkk.b();
-    if (localapkl == null)
+    ComboResource.ImageObject localImageObject = ComboResource.a(this.i.getApplicationContext());
+    if (localImageObject == null)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.j = false;
       return false;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localapkl));
+    ImageView localImageView = this.h;
+    localImageView.setImageDrawable(a(localImageView, localImageObject));
+    return true;
+  }
+  
+  private boolean c()
+  {
+    ComboResource.ImageObject localImageObject = ComboResource.b(this.i.getApplicationContext());
+    if (localImageObject == null)
+    {
+      this.j = false;
+      return false;
+    }
+    ImageView localImageView = this.d;
+    localImageView.setImageDrawable(a(localImageView, localImageObject));
     return true;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidViewAnimationAnimation != null) && (getVisibility() == 0))
+    if ((this.c != null) && (getVisibility() == 0))
     {
       clearAnimation();
-      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      startAnimation(this.c);
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void a(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.e = ((ImageView)findViewById(2131362265));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362259));
-    this.b = ((ImageView)findViewById(2131362260));
-    this.c = ((ImageView)findViewById(2131362261));
-    this.d = ((ImageView)findViewById(2131362262));
+    this.i = paramBaseQQAppInterface;
+    this.h = ((ImageView)findViewById(2131427947));
+    this.d = ((ImageView)findViewById(2131427941));
+    this.e = ((ImageView)findViewById(2131427942));
+    this.f = ((ImageView)findViewById(2131427943));
+    this.g = ((ImageView)findViewById(2131427944));
     setVisibility(8);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+    this.c = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
+    this.c.setDuration(500L);
+    this.c.setAnimationListener(this);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation.equals(this.jdField_a_of_type_AndroidViewAnimationAnimation)) {
+    if (paramAnimation.equals(this.c)) {
       setVisibility(8);
     }
   }
@@ -116,61 +117,59 @@ public class ComboNavigateBar
   public void onClick(View paramView)
   {
     a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setCountNum()
   {
-    int k = this.jdField_a_of_type_Apkj.jdField_a_of_type_Int;
-    int j = k / 10;
-    int i;
-    if (j != 0)
+    int i1 = this.a.b;
+    int n = i1 / 10;
+    int m;
+    if (n != 0)
     {
-      i = j % 10;
-      j /= 10;
+      m = n % 10;
+      n /= 10;
     }
-    for (;;)
+    else
     {
-      if (j != 0) {
-        j %= 100;
-      }
-      for (;;)
+      m = 0;
+    }
+    if (n != 0) {
+      n %= 100;
+    } else {
+      n = 0;
+    }
+    c();
+    b();
+    this.g.setVisibility(0);
+    a(this.g, i1 % 10);
+    if (n == 0)
+    {
+      if (m == 0)
       {
-        b();
-        a();
-        this.d.setVisibility(0);
-        a(this.d, k % 10);
-        if (j == 0)
-        {
-          if (i == 0)
-          {
-            this.c.setVisibility(8);
-            this.b.setVisibility(8);
-            return;
-          }
-          this.c.setVisibility(0);
-          this.b.setVisibility(8);
-          a(this.c, i);
-          return;
-        }
-        this.c.setVisibility(0);
-        this.b.setVisibility(0);
-        a(this.c, i);
-        a(this.b, j);
+        this.f.setVisibility(8);
+        this.e.setVisibility(8);
         return;
-        j = 0;
       }
-      i = 0;
+      this.f.setVisibility(0);
+      this.e.setVisibility(8);
+      a(this.f, m);
+      return;
     }
+    this.f.setVisibility(0);
+    this.e.setVisibility(0);
+    a(this.f, m);
+    a(this.e, n);
   }
   
-  public void setInfo(apkj paramapkj)
+  public void setInfo(ComboObject paramComboObject)
   {
-    this.jdField_a_of_type_Apkj = paramapkj;
-    this.jdField_a_of_type_Boolean = true;
-    String str = paramapkj.jdField_a_of_type_JavaLangString;
-    int i = paramapkj.jdField_a_of_type_Int;
+    this.a = paramComboObject;
+    this.j = true;
+    String str = paramComboObject.a;
+    int m = paramComboObject.b;
     setCountNum();
-    if (this.jdField_a_of_type_Boolean == true)
+    if (this.j == true)
     {
       setVisibility(0);
       setOnClickListener(this);

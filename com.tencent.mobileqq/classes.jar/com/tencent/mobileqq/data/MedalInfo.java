@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhp;
-import awhs;
-import bdeu;
 import com.tencent.mobileqq.medalwall.MedalID;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.util.Utils;
 import java.util.ArrayList;
 
 public class MedalInfo
-  extends awge
+  extends Entity
 {
-  @awhp
+  @notColumn
   public static final int READ_STATE_DEFAULT = 0;
-  @awhp
+  @notColumn
   public static final int READ_STATE_LOCAL_READ = 2;
-  @awhp
+  @notColumn
   public static final int READ_STATE_UNREAD = 1;
-  @awhs
+  @unique
   public int iId;
   public int iLevel;
   public int iLevelCount;
@@ -54,121 +54,113 @@ public class MedalInfo
     }
     long l2 = this.lObtainTimeLevel1;
     long l1 = l2;
-    if (bdeu.b(l2, this.lObtainTimeLevel2) < 0) {
+    if (Utils.b(l2, this.lObtainTimeLevel2) < 0) {
       l1 = this.lObtainTimeLevel2;
     }
     l2 = l1;
-    if (bdeu.b(l1, this.lObtainTimeLevel3) < 0) {
+    if (Utils.b(l1, this.lObtainTimeLevel3) < 0) {
       l2 = this.lObtainTimeLevel3;
     }
     long l3 = paramMedalInfo.lObtainTimeLevel1;
     l1 = l3;
-    if (bdeu.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
+    if (Utils.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
       l1 = paramMedalInfo.lObtainTimeLevel2;
     }
     l3 = l1;
-    if (bdeu.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
+    if (Utils.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
       l3 = paramMedalInfo.lObtainTimeLevel3;
     }
-    if (bdeu.b(l2, l3) > 0) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return Utils.b(l2, l3) > 0;
   }
   
   public boolean isUnread()
   {
+    int i = this.iLevel;
     boolean bool3 = false;
-    boolean bool1 = true;
-    if (this.iLevel == 255) {
+    boolean bool1;
+    if (i == 255)
+    {
+      bool1 = bool3;
       if (this.iUnreadLevel1 != 1) {}
     }
-    do
+    else
     {
-      for (;;)
+      do
       {
-        return bool1;
-        bool1 = false;
-      }
-      bool1 = bool3;
-    } while (this.iLevelCount <= 1);
-    if (this.iLevel >= 1) {
-      if (this.iUnreadLevel1 == 1) {
-        bool1 = true;
-      }
-    }
-    for (;;)
-    {
-      label57:
-      boolean bool2 = bool1;
-      if (this.iLevel >= 2) {
-        if ((!bool1) && (this.iUnreadLevel2 != 1)) {
-          break label110;
-        }
-      }
-      label110:
-      for (bool2 = true;; bool2 = false)
-      {
-        if (this.iLevel < 3) {
-          break label115;
-        }
-        if (!bool2)
+        do
         {
+          return true;
           bool1 = bool3;
-          if (this.iUnreadLevel3 != 1) {
+          if (this.iLevelCount <= 1) {
             break;
           }
-        }
-        return true;
-        bool1 = false;
-        break label57;
-      }
-      label115:
-      return bool2;
-      bool1 = false;
+          boolean bool2;
+          if ((i >= 1) && (this.iUnreadLevel1 == 1)) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+          bool1 = bool2;
+          if (this.iLevel >= 2) {
+            if ((!bool2) && (this.iUnreadLevel2 != 1)) {
+              bool1 = false;
+            } else {
+              bool1 = true;
+            }
+          }
+          if (this.iLevel < 3) {
+            break;
+          }
+        } while (bool1);
+        bool1 = bool3;
+      } while (this.iUnreadLevel3 == 1);
     }
+    return bool1;
   }
   
   public void putReportInfo(ArrayList<MedalID> paramArrayList)
   {
-    if (paramArrayList == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.iLevel != 255) {
-          break;
-        }
-      } while (this.iUnreadLevel1 != 1);
-      paramArrayList.add(new MedalID(this.iId, 255));
+    if (paramArrayList == null) {
       return;
-      if ((this.iUnreadLevel1 == 1) && (this.iLevel >= 1)) {
+    }
+    int i = this.iLevel;
+    if (i == 255)
+    {
+      if (this.iUnreadLevel1 == 1) {
+        paramArrayList.add(new MedalID(this.iId, 255));
+      }
+    }
+    else
+    {
+      if ((this.iUnreadLevel1 == 1) && (i >= 1)) {
         paramArrayList.add(new MedalID(this.iId, 1));
       }
       if ((this.iUnreadLevel2 == 1) && (this.iLevel >= 2)) {
         paramArrayList.add(new MedalID(this.iId, 2));
       }
-    } while ((this.iUnreadLevel3 != 1) || (this.iLevel < 3));
-    paramArrayList.add(new MedalID(this.iId, 3));
+      if ((this.iUnreadLevel3 == 1) && (this.iLevel >= 3)) {
+        paramArrayList.add(new MedalID(this.iId, 3));
+      }
+    }
   }
   
   public void setRead()
   {
-    if (this.iLevel == 255) {
+    int i = this.iLevel;
+    if (i == 255)
+    {
+      this.iUnreadLevel1 = 2;
+      return;
+    }
+    if (i >= 1) {
       this.iUnreadLevel1 = 2;
     }
-    do
-    {
-      return;
-      if (this.iLevel >= 1) {
-        this.iUnreadLevel1 = 2;
-      }
-      if (this.iLevel >= 2) {
-        this.iUnreadLevel2 = 2;
-      }
-    } while (this.iLevel < 3);
-    this.iUnreadLevel3 = 2;
+    if (this.iLevel >= 2) {
+      this.iUnreadLevel2 = 2;
+    }
+    if (this.iLevel >= 3) {
+      this.iUnreadLevel3 = 2;
+    }
   }
 }
 

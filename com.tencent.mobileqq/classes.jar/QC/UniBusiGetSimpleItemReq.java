@@ -12,15 +12,16 @@ public final class UniBusiGetSimpleItemReq
 {
   static Map<Integer, ArrayList<Integer>> cache_mAppidItems;
   static LoginInfo cache_stLogin = new LoginInfo();
-  public Map<Integer, ArrayList<Integer>> mAppidItems;
-  public LoginInfo stLogin;
+  public Map<Integer, ArrayList<Integer>> mAppidItems = null;
+  public LoginInfo stLogin = null;
   
   static
   {
     cache_mAppidItems = new HashMap();
+    Integer localInteger = Integer.valueOf(0);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(0));
-    cache_mAppidItems.put(Integer.valueOf(0), localArrayList);
+    localArrayList.add(localInteger);
+    cache_mAppidItems.put(localInteger, localArrayList);
   }
   
   public UniBusiGetSimpleItemReq() {}
@@ -39,17 +40,19 @@ public final class UniBusiGetSimpleItemReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stLogin != null) {
-      paramJceOutputStream.write(this.stLogin, 0);
+    Object localObject = this.stLogin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.mAppidItems != null) {
-      paramJceOutputStream.write(this.mAppidItems, 1);
+    localObject = this.mAppidItems;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiGetSimpleItemReq
  * JD-Core Version:    0.7.0.1
  */

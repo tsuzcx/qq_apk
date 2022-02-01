@@ -1,37 +1,30 @@
 package com.tencent.mobileqq.activity;
 
-import aupa;
-import azaf;
-import bayf;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.transfile.BaseTransFileController;
+import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.qphone.base.util.QLog;
 
-public final class ChatActivityFacade$22
+final class ChatActivityFacade$22
   implements Runnable
 {
-  public ChatActivityFacade$22(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, long paramLong) {}
+  ChatActivityFacade$22(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, long paramLong) {}
   
   public void run()
   {
     try
     {
-      MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+      MessageRecord localMessageRecord = this.a.getMessageFacade().a(this.b.b, this.b.a, this.c);
       if ((localMessageRecord != null) && (localMessageRecord.isSendFromLocal())) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord.frienduin, localMessageRecord.uniseq));
+        ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).removeProcessor(BaseTransFileController.makeKey(localMessageRecord.frienduin, localMessageRecord.uniseq));
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      localMessageRecord = azaf.a(localMessageRecord);
-      if ((localMessageRecord != null) && (localMessageRecord.msgtype == -1051))
-      {
-        aupa localaupa = (aupa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166);
-        localMessageRecord.extStr = null;
-        localaupa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, true);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, null, true);
+      this.a.getMessageFacade().h(this.b.b, this.b.a, this.c);
+      localMessageRecord = MessageRecordFactory.a(localMessageRecord);
+      this.a.getMessageFacade().a(localMessageRecord, null, true);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -42,7 +35,7 @@ public final class ChatActivityFacade$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.22
  * JD-Core Version:    0.7.0.1
  */

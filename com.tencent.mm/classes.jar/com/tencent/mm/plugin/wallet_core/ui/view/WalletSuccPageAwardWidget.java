@@ -2,43 +2,54 @@ package com.tencent.mm.plugin.wallet_core.ui.view;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
+import android.graphics.Bitmap;
+import android.graphics.NinePatch;
+import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.NinePatchDrawable;
 import android.os.Looper;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.a.a.c.a;
-import com.tencent.mm.at.o;
-import com.tencent.mm.g.a.so;
+import com.tencent.mm.autogen.a.zp;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.loader.b.k;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.c.j;
-import com.tencent.mm.plugin.wallet_core.c.l;
+import com.tencent.mm.plugin.wallet_core.c.m;
+import com.tencent.mm.plugin.wallet_core.c.o;
+import com.tencent.mm.plugin.wallet_core.utils.n;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.aal;
-import com.tencent.mm.protocal.protobuf.amd;
-import com.tencent.mm.protocal.protobuf.yz;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.protocal.protobuf.alf;
+import com.tencent.mm.protocal.protobuf.aos;
+import com.tencent.mm.protocal.protobuf.cmx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.vfs.y;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.xweb.util.d;
-import d.a.a.b;
-import d.a.a.g;
-import d.a.a.i;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -48,96 +59,73 @@ import org.json.JSONObject;
 public class WalletSuccPageAwardWidget
   extends FrameLayout
 {
-  private static final String uxL;
-  private ak faV;
-  private TextView gve;
-  private TextView hsI;
-  private CdnImageView kAK;
-  private String kMN;
-  private ViewGroup owk;
-  private boolean qBd;
-  private d.a.a.c qnc;
-  private boolean ubz;
-  private ImageView uxA;
-  private ImageView uxB;
-  private WalletScratchShakeView uxC;
-  private WalletAwardShakeAnimView uxD;
-  private i uxE;
-  private WalletBaseUI uxF;
-  private boolean uxG;
-  private boolean uxH;
-  private boolean uxI;
-  private d.a.a.a uxJ;
-  private boolean uxK;
-  private Button uxz;
-  
-  static
-  {
-    AppMethodBeat.i(47982);
-    uxL = com.tencent.mm.compatible.util.e.eQz + "wallet/images/";
-    AppMethodBeat.o(47982);
-  }
+  private Button Bqo;
+  private ViewGroup KGL;
+  private g.a.a.c OnC;
+  private boolean Pcx;
+  private ImageView VXd;
+  private ImageView VXe;
+  private WalletScratchShakeView VXf;
+  private WalletAwardShakeAnimView VXg;
+  private g.a.a.i VXh;
+  private WalletBaseUI VXi;
+  private boolean VXj;
+  private boolean VXk;
+  private boolean VXl;
+  private g.a.a.a VXm;
+  private boolean VXn;
+  private boolean VxI;
+  private TextView descTv;
+  private TextView lDF;
+  private MMHandler mRi;
+  private CdnImageView wGP;
+  private String wXY;
   
   public WalletSuccPageAwardWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(47958);
-    this.uxG = false;
-    this.uxH = false;
-    this.qBd = true;
-    this.uxI = false;
-    this.uxJ = null;
-    this.faV = new ak(Looper.getMainLooper());
-    this.uxK = false;
+    AppMethodBeat.i(71570);
+    this.VXj = false;
+    this.VXk = false;
+    this.Pcx = true;
+    this.VXl = false;
+    this.VXm = null;
+    this.mRi = new MMHandler(Looper.getMainLooper());
+    this.VXn = false;
     init(paramContext);
-    AppMethodBeat.o(47958);
+    AppMethodBeat.o(71570);
   }
   
   public WalletSuccPageAwardWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(47959);
-    this.uxG = false;
-    this.uxH = false;
-    this.qBd = true;
-    this.uxI = false;
-    this.uxJ = null;
-    this.faV = new ak(Looper.getMainLooper());
-    this.uxK = false;
+    AppMethodBeat.i(71571);
+    this.VXj = false;
+    this.VXk = false;
+    this.Pcx = true;
+    this.VXl = false;
+    this.VXm = null;
+    this.mRi = new MMHandler(Looper.getMainLooper());
+    this.VXn = false;
     init(paramContext);
-    AppMethodBeat.o(47959);
+    AppMethodBeat.o(71571);
   }
   
-  public static boolean a(d.a.a.c paramc)
+  public static boolean a(g.a.a.c paramc)
   {
-    AppMethodBeat.i(47957);
-    if ((paramc != null) && (((paramc.wQZ != null) && (paramc.wQZ.size() > 0)) || (paramc.CLu != null)))
+    AppMethodBeat.i(71569);
+    if ((paramc != null) && (((paramc.ZvT != null) && (paramc.ZvT.size() > 0)) || (paramc.ajFE != null)))
     {
-      AppMethodBeat.o(47957);
+      AppMethodBeat.o(71569);
       return true;
     }
-    AppMethodBeat.o(47957);
+    AppMethodBeat.o(71569);
     return false;
   }
   
-  private static String afQ(String paramString)
+  private static String b(g.a.a.c paramc)
   {
-    AppMethodBeat.i(47971);
-    if (!bo.Q(new String[0]))
-    {
-      com.tencent.mm.vfs.e.um(uxL);
-      String str = uxL + d.w(paramString.getBytes());
-      ab.i("MicroMsg.WalletSuccPageAwardWidget", "buildImagePathByUrl, url: %s, path: %s", new Object[] { paramString, str });
-      AppMethodBeat.o(47971);
-      return str;
-    }
-    AppMethodBeat.o(47971);
-    return null;
-  }
-  
-  private static String b(d.a.a.c paramc)
-  {
-    AppMethodBeat.i(47976);
+    AppMethodBeat.i(71588);
     if (paramc != null)
     {
       JSONObject localJSONObject1;
@@ -146,19 +134,19 @@ public class WalletSuccPageAwardWidget
       {
         localJSONObject1 = new JSONObject();
         localObject1 = new JSONArray();
-        if ((paramc.wQZ != null) && (paramc.wQZ.size() > 0))
+        if ((paramc.ZvT != null) && (paramc.ZvT.size() > 0))
         {
-          localObject2 = paramc.wQZ.iterator();
+          localObject2 = paramc.ZvT.iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            i locali = (i)((Iterator)localObject2).next();
+            g.a.a.i locali = (g.a.a.i)((Iterator)localObject2).next();
             JSONObject localJSONObject2 = new JSONObject();
-            localJSONObject2.put("logo", locali.pvi);
-            localJSONObject2.put("award_name", locali.CLT);
-            localJSONObject2.put("award_description", locali.CLU);
-            localJSONObject2.put("background_img", locali.CLV);
-            localJSONObject2.put("award_name_color", locali.CLW);
-            localJSONObject2.put("award_description_color", locali.CLX);
+            localJSONObject2.put("logo", locali.MRI);
+            localJSONObject2.put("award_name", locali.ajGc);
+            localJSONObject2.put("award_description", locali.ajGd);
+            localJSONObject2.put("background_img", locali.ajGe);
+            localJSONObject2.put("award_name_color", locali.ajGf);
+            localJSONObject2.put("award_description_color", locali.ajGg);
             ((JSONArray)localObject1).put(localJSONObject2);
           }
         }
@@ -166,359 +154,421 @@ public class WalletSuccPageAwardWidget
       }
       catch (Exception paramc)
       {
-        AppMethodBeat.o(47976);
+        AppMethodBeat.o(71588);
         return "";
       }
-      localJSONObject1.put("is_query_others", paramc.CLp);
-      localJSONObject1.put("draw_lottery_params", paramc.wPV);
-      localJSONObject1.put("is_show_btn", paramc.wRa);
+      localJSONObject1.put("is_query_others", paramc.ajFz);
+      localJSONObject1.put("draw_lottery_params", paramc.Zsq);
+      localJSONObject1.put("is_show_btn", paramc.ZvU);
       Object localObject1 = new JSONObject();
-      if (paramc.wRb != null)
+      if (paramc.ZvV != null)
       {
-        ((JSONObject)localObject1).put("btn_words", paramc.wRb.CLh);
-        ((JSONObject)localObject1).put("btn_color", paramc.wRb.CLi);
-        ((JSONObject)localObject1).put("btn_op_type", paramc.wRb.CLj);
-        ((JSONObject)localObject1).put("url", paramc.wRb.url);
+        ((JSONObject)localObject1).put("btn_words", paramc.ZvV.ajFr);
+        ((JSONObject)localObject1).put("btn_color", paramc.ZvV.ajFs);
+        ((JSONObject)localObject1).put("btn_op_type", paramc.ZvV.ajFt);
+        ((JSONObject)localObject1).put("url", paramc.ZvV.url);
         localObject2 = new JSONObject();
-        if (paramc.wRb.CLk != null)
+        if (paramc.ZvV.ajFu != null)
         {
-          ((JSONObject)localObject2).put("activity_tinyapp_username", paramc.wRb.CLk.xzC);
-          ((JSONObject)localObject2).put("activity_tinyapp_path", paramc.wRb.CLk.xzD);
-          ((JSONObject)localObject2).put("activity_tinyapp_version", paramc.wRb.CLk.xzE);
+          ((JSONObject)localObject2).put("activity_tinyapp_username", paramc.ZvV.ajFu.abho);
+          ((JSONObject)localObject2).put("activity_tinyapp_path", paramc.ZvV.ajFu.abhp);
+          ((JSONObject)localObject2).put("activity_tinyapp_version", paramc.ZvV.ajFu.abhq);
         }
         ((JSONObject)localObject1).put("mini_app_info", localObject2);
-        ((JSONObject)localObject1).put("get_lottery_params", paramc.wRb.xcU);
+        ((JSONObject)localObject1).put("get_lottery_params", paramc.ZvV.aauB);
       }
       localJSONObject1.put("btn_info", localObject1);
-      localJSONObject1.put("exposure_info_modify_params", paramc.wQY);
-      localJSONObject1.put("user_opertaion_type", paramc.CLq);
-      localJSONObject1.put("is_show_layer", paramc.CLr);
-      localJSONObject1.put("background_img_whole", paramc.CLt);
-      if (paramc.CLu != null)
+      localJSONObject1.put("exposure_info_modify_params", paramc.ZvS);
+      localJSONObject1.put("user_opertaion_type", paramc.ajFA);
+      localJSONObject1.put("is_show_layer", paramc.ajFB);
+      localJSONObject1.put("background_img_whole", paramc.ajFD);
+      if (paramc.ajFE != null)
       {
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("animation_wording", paramc.CLu.CLl);
-        ((JSONObject)localObject1).put("animation_wording_color", paramc.CLu.CLm);
-        ((JSONObject)localObject1).put("url", paramc.CLu.url);
-        ((JSONObject)localObject1).put("op_type", paramc.CLu.xWC);
-        ((JSONObject)localObject1).put("after_animation_wording", paramc.CLu.CLn);
-        ((JSONObject)localObject1).put("after_animation_wording_color", paramc.CLu.CLo);
+        ((JSONObject)localObject1).put("animation_wording", paramc.ajFE.ajFv);
+        ((JSONObject)localObject1).put("animation_wording_color", paramc.ajFE.ajFw);
+        ((JSONObject)localObject1).put("url", paramc.ajFE.url);
+        ((JSONObject)localObject1).put("op_type", paramc.ajFE.YAN);
+        ((JSONObject)localObject1).put("after_animation_wording", paramc.ajFE.ajFx);
+        ((JSONObject)localObject1).put("after_animation_wording_color", paramc.ajFE.ajFy);
         localObject2 = new JSONObject();
-        if (paramc.CLu.CLk != null)
+        if (paramc.ajFE.ajFu != null)
         {
-          ((JSONObject)localObject2).put("activity_tinyapp_username", paramc.CLu.CLk.xzC);
-          ((JSONObject)localObject2).put("activity_tinyapp_path", paramc.CLu.CLk.xzD);
-          ((JSONObject)localObject2).put("activity_tinyapp_version", paramc.CLu.CLk.xzE);
+          ((JSONObject)localObject2).put("activity_tinyapp_username", paramc.ajFE.ajFu.abho);
+          ((JSONObject)localObject2).put("activity_tinyapp_path", paramc.ajFE.ajFu.abhp);
+          ((JSONObject)localObject2).put("activity_tinyapp_version", paramc.ajFE.ajFu.abhq);
         }
         ((JSONObject)localObject1).put("mini_app_info", localObject2);
         localJSONObject1.put("draw_lottery_info", localObject1);
       }
       paramc = localJSONObject1.toString();
-      AppMethodBeat.o(47976);
+      AppMethodBeat.o(71588);
       return paramc;
     }
-    AppMethodBeat.o(47976);
+    AppMethodBeat.o(71588);
     return "";
   }
   
-  private void cWP()
+  private String bhp(String paramString)
+  {
+    AppMethodBeat.i(71583);
+    if (!Util.isNullOrNil(new String[0]))
+    {
+      y.bDX(getAccImagesPath());
+      String str = getAccImagesPath() + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes());
+      Log.i("MicroMsg.WalletSuccPageAwardWidget", "buildImagePathByUrl, url: %s, path: %s", new Object[] { paramString, str });
+      AppMethodBeat.o(71583);
+      return str;
+    }
+    AppMethodBeat.o(71583);
+    return null;
+  }
+  
+  private String getAccImagesPath()
+  {
+    AppMethodBeat.i(71589);
+    String str = com.tencent.mm.loader.i.b.bmz() + "wallet/images/";
+    AppMethodBeat.o(71589);
+    return str;
+  }
+  
+  private void ilT()
   {
     int i = 2;
-    AppMethodBeat.i(47962);
-    ab.i("MicroMsg.WalletSuccPageAwardWidget", "setViewByData, exposureInfo: %s, isFirstShow: %s", new Object[] { b(this.qnc), Boolean.valueOf(this.qBd) });
-    if (this.qnc == null)
+    AppMethodBeat.i(71574);
+    Log.i("MicroMsg.WalletSuccPageAwardWidget", "setViewByData, exposureInfo: %s, isFirstShow: %s", new Object[] { b(this.OnC), Boolean.valueOf(this.Pcx) });
+    if (this.OnC == null)
     {
-      ab.e("MicroMsg.WalletSuccPageAwardWidget", "setViewByData, exposureInfo is null!");
-      AppMethodBeat.o(47962);
+      Log.e("MicroMsg.WalletSuccPageAwardWidget", "setViewByData, exposureInfo is null!");
+      AppMethodBeat.o(71574);
       return;
     }
-    ab.b("MicroMsg.WalletSuccPageAwardWidget", "setViewByData, user_operation_type: %s, single_exposure_info_list size: %s, isClickH5OrTinyApp: %s", new Object[] { Integer.valueOf(this.qnc.CLq), Integer.valueOf(this.qnc.wQZ.size()), Boolean.valueOf(this.uxG) });
-    if ((this.qnc.CLq <= 0) || (this.qnc.CLq > 5))
+    Log.printInfoStack("MicroMsg.WalletSuccPageAwardWidget", "setViewByData, user_operation_type: %s, single_exposure_info_list size: %s, isClickH5OrTinyApp: %s", new Object[] { Integer.valueOf(this.OnC.ajFA), Integer.valueOf(this.OnC.ZvT.size()), Boolean.valueOf(this.VXj) });
+    if ((this.OnC.ajFA <= 0) || (this.OnC.ajFA > 5))
     {
-      AppMethodBeat.o(47962);
+      AppMethodBeat.o(71574);
       return;
     }
-    if (!a(this.qnc))
+    if (!a(this.OnC))
     {
-      AppMethodBeat.o(47962);
+      AppMethodBeat.o(71574);
       return;
     }
     h localh;
-    if (this.qnc.CLq == 4)
+    if (this.OnC.ajFA == 4)
     {
-      cWT();
-      if ((this.qBd) || (this.uxG))
+      ilX();
+      if ((this.Pcx) || (this.VXj))
       {
-        localh = h.qsU;
-        if (!this.uxG) {
+        localh = h.OAn;
+        if (!this.VXj) {
           break label293;
         }
       }
     }
     for (;;)
     {
-      localh.e(15225, new Object[] { Integer.valueOf(3), Integer.valueOf(i) });
-      this.qBd = false;
-      AppMethodBeat.o(47962);
+      localh.b(15225, new Object[] { Integer.valueOf(3), Integer.valueOf(i) });
+      this.Pcx = false;
+      AppMethodBeat.o(71574);
       return;
-      if ((this.qnc.CLq == 1) || (this.qnc.CLq == 2) || (this.qnc.CLq == 3))
+      if ((this.OnC.ajFA == 1) || (this.OnC.ajFA == 2) || (this.OnC.ajFA == 3))
       {
-        cWS();
+        ilW();
         break;
       }
-      if (this.qnc.CLq != 5) {
+      if (this.OnC.ajFA != 5) {
         break;
       }
-      cWU();
+      ilY();
       break;
       label293:
       i = 1;
     }
   }
   
-  private void cWQ()
+  private void ilU()
   {
-    AppMethodBeat.i(47963);
-    ab.i("MicroMsg.WalletSuccPageAwardWidget", "showNetFailedView");
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.gve.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.hsI.getLayoutParams();
+    AppMethodBeat.i(71575);
+    Log.i("MicroMsg.WalletSuccPageAwardWidget", "showNetFailedView");
+    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.lDF.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.descTv.getLayoutParams();
     localLayoutParams1.addRule(15, -1);
     localLayoutParams2.addRule(15, 0);
-    this.gve.setLayoutParams(localLayoutParams1);
-    this.hsI.setLayoutParams(localLayoutParams2);
-    this.gve.setVisibility(0);
-    this.hsI.setVisibility(8);
-    this.gve.setText(2131305662);
-    this.gve.setTextColor(Color.parseColor("#353535"));
-    this.hsI.setTextColor(Color.parseColor("#B2B2B2"));
-    this.uxA.setVisibility(8);
-    findViewById(2131825332).setVisibility(0);
-    findViewById(2131827210).setVisibility(0);
-    this.uxz.setVisibility(8);
-    this.kAK.setVisibility(0);
-    this.kAK.setImageResource(2130840868);
-    this.uxC.setVisibility(8);
-    this.uxC.onDestroy();
-    this.uxD.setVisibility(8);
-    this.uxD.destroy();
-    AppMethodBeat.o(47963);
+    this.lDF.setLayoutParams(localLayoutParams1);
+    this.descTv.setLayoutParams(localLayoutParams2);
+    this.lDF.setVisibility(0);
+    this.descTv.setVisibility(8);
+    this.lDF.setText(a.i.wallet_shake_award_net_failed);
+    this.lDF.setTextColor(getResources().getColor(a.c.normal_text_color));
+    this.descTv.setTextColor(getResources().getColor(a.c.hint_text_color));
+    this.VXd.setVisibility(8);
+    findViewById(a.f.order_info_tinyapp_splitter_1).setVisibility(0);
+    findViewById(a.f.order_info_tinyapp_splitter_2).setVisibility(0);
+    this.Bqo.setVisibility(8);
+    this.wGP.setVisibility(0);
+    this.wGP.setImageResource(a.e.wallet_pay_shake_award_net_failed_logo);
+    this.VXf.setVisibility(8);
+    this.VXf.onDestroy();
+    this.VXg.setVisibility(8);
+    this.VXg.destroy();
+    AppMethodBeat.o(71575);
   }
   
-  private void cWR()
+  private void ilV()
   {
-    AppMethodBeat.i(47967);
-    ab.i("MicroMsg.WalletSuccPageAwardWidget", "updateViewAfterMiniAppReturn");
-    if ((this.qnc.CLu != null) && (this.qnc.CLu.xWC != 1))
+    AppMethodBeat.i(71579);
+    Log.i("MicroMsg.WalletSuccPageAwardWidget", "updateViewAfterMiniAppReturn");
+    if ((this.OnC.ajFE != null) && (this.OnC.ajFE.YAN != 1))
     {
-      this.uxC.setVisibility(8);
-      this.uxC.onDestroy();
-      this.uxD.setVisibility(8);
-      this.uxD.destroy();
+      this.VXf.setVisibility(8);
+      this.VXf.onDestroy();
+      this.VXg.setVisibility(8);
+      this.VXg.destroy();
     }
-    cWW();
-    AppMethodBeat.o(47967);
+    ima();
+    AppMethodBeat.o(71579);
   }
   
-  private void cWS()
+  private void ilW()
   {
-    AppMethodBeat.i(47968);
-    cWV();
-    if (this.uxD.getVisibility() != 8)
+    AppMethodBeat.i(71580);
+    ilZ();
+    if (this.VXg.getVisibility() != 8)
     {
-      this.uxD.setVisibility(8);
-      this.uxD.destroy();
+      this.VXg.setVisibility(8);
+      this.VXg.destroy();
     }
-    if (this.uxC.getVisibility() != 0)
+    if (this.VXf.getVisibility() != 0)
     {
-      this.uxC.setVisibility(0);
-      this.uxC.post(new WalletSuccPageAwardWidget.1(this));
+      this.VXf.setVisibility(0);
+      this.VXf.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(71552);
+          if (WalletSuccPageAwardWidget.a(WalletSuccPageAwardWidget.this).getHeight() != WalletSuccPageAwardWidget.this.getHeight())
+          {
+            FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)WalletSuccPageAwardWidget.a(WalletSuccPageAwardWidget.this).getLayoutParams();
+            localLayoutParams.width = WalletSuccPageAwardWidget.b(WalletSuccPageAwardWidget.this).getWidth();
+            localLayoutParams.height = WalletSuccPageAwardWidget.b(WalletSuccPageAwardWidget.this).getHeight();
+            WalletSuccPageAwardWidget.a(WalletSuccPageAwardWidget.this).setLayoutParams(localLayoutParams);
+          }
+          WalletSuccPageAwardWidget.c(WalletSuccPageAwardWidget.this);
+          AppMethodBeat.o(71552);
+        }
+      });
     }
-    AppMethodBeat.o(47968);
+    AppMethodBeat.o(71580);
   }
   
-  private void cWT()
+  private void ilX()
   {
-    AppMethodBeat.i(47969);
-    cWV();
-    if (this.uxC.getVisibility() != 8)
+    AppMethodBeat.i(71581);
+    ilZ();
+    if (this.VXf.getVisibility() != 8)
     {
-      this.uxC.setVisibility(8);
-      this.uxC.onDestroy();
+      this.VXf.setVisibility(8);
+      this.VXf.onDestroy();
     }
-    if (this.uxD.getVisibility() != 8)
+    if (this.VXg.getVisibility() != 8)
     {
-      this.uxD.setVisibility(8);
-      this.uxD.destroy();
+      this.VXg.setVisibility(8);
+      this.VXg.destroy();
     }
-    AppMethodBeat.o(47969);
+    AppMethodBeat.o(71581);
   }
   
-  private void cWU()
+  private void ilY()
   {
-    AppMethodBeat.i(47970);
-    cWV();
-    if (this.uxC.getVisibility() != 8)
+    AppMethodBeat.i(71582);
+    ilZ();
+    if (this.VXf.getVisibility() != 8)
     {
-      this.uxC.setVisibility(8);
-      this.uxC.onDestroy();
+      this.VXf.setVisibility(8);
+      this.VXf.onDestroy();
     }
-    if (this.qnc.CLu != null)
+    if (this.OnC.ajFE != null)
     {
-      ab.i("MicroMsg.WalletSuccPageAwardWidget", "setWithNewShakeView, op_type: %s", new Object[] { Integer.valueOf(this.qnc.CLu.xWC) });
-      switch (this.qnc.CLu.xWC)
+      Log.i("MicroMsg.WalletSuccPageAwardWidget", "setWithNewShakeView, op_type: %s", new Object[] { Integer.valueOf(this.OnC.ajFE.YAN) });
+      switch (this.OnC.ajFE.YAN)
       {
       default: 
-        this.uxD.setVisibility(8);
-        this.uxD.destroy();
-        AppMethodBeat.o(47970);
+        this.VXg.setVisibility(8);
+        this.VXg.destroy();
+        AppMethodBeat.o(71582);
         return;
       case 1: 
-        if (this.uxD.getVisibility() != 0)
+        if (this.VXg.getVisibility() != 0)
         {
-          this.uxD.setVisibility(0);
-          this.uxD.post(new WalletSuccPageAwardWidget.4(this));
+          this.VXg.setVisibility(0);
+          this.VXg.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(71556);
+              if (WalletSuccPageAwardWidget.d(WalletSuccPageAwardWidget.this).getHeight() != WalletSuccPageAwardWidget.this.getHeight())
+              {
+                FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)WalletSuccPageAwardWidget.d(WalletSuccPageAwardWidget.this).getLayoutParams();
+                localLayoutParams.width = WalletSuccPageAwardWidget.b(WalletSuccPageAwardWidget.this).getWidth();
+                localLayoutParams.height = (WalletSuccPageAwardWidget.b(WalletSuccPageAwardWidget.this).getHeight() - com.tencent.mm.cd.a.fromDPToPix(WalletSuccPageAwardWidget.this.getContext(), 2));
+                localLayoutParams.topMargin = com.tencent.mm.cd.a.fromDPToPix(WalletSuccPageAwardWidget.this.getContext(), 1);
+                localLayoutParams.bottomMargin = com.tencent.mm.cd.a.fromDPToPix(WalletSuccPageAwardWidget.this.getContext(), 1);
+                WalletSuccPageAwardWidget.d(WalletSuccPageAwardWidget.this).setLayoutParams(localLayoutParams);
+              }
+              AppMethodBeat.o(71556);
+            }
+          });
         }
-        this.uxD.destroy();
-        if (!bo.isNullOrNil(this.qnc.CLu.CLl))
+        this.VXg.destroy();
+        if (!Util.isNullOrNil(this.OnC.ajFE.ajFv))
         {
-          ab.i("MicroMsg.WalletSuccPageAwardWidget", "animation_wording: %s", new Object[] { this.qnc.CLu.CLl });
-          this.uxD.setShakeHintWording(this.qnc.CLu.CLl);
+          Log.i("MicroMsg.WalletSuccPageAwardWidget", "animation_wording: %s", new Object[] { this.OnC.ajFE.ajFv });
+          this.VXg.setShakeHintWording(this.OnC.ajFE.ajFv);
         }
-        if (!bo.isNullOrNil(this.qnc.CLu.CLm)) {}
+        if (!Util.isNullOrNil(this.OnC.ajFE.ajFw)) {}
         try
         {
-          ab.i("MicroMsg.WalletSuccPageAwardWidget", "animation_wording_color: %s", new Object[] { this.qnc.CLu.CLm });
-          this.uxD.setShakeHintWordingColor(Color.parseColor(this.qnc.CLu.CLm));
-          if (!bo.isNullOrNil(this.qnc.CLu.CLn))
+          Log.i("MicroMsg.WalletSuccPageAwardWidget", "animation_wording_color: %s", new Object[] { this.OnC.ajFE.ajFw });
+          this.VXg.setShakeHintWordingColor(n.dE(this.OnC.ajFE.ajFw, true));
+          if (!Util.isNullOrNil(this.OnC.ajFE.ajFx))
           {
-            ab.i("MicroMsg.WalletSuccPageAwardWidget", "after_animation_wording: %s", new Object[] { this.qnc.CLu.CLn });
-            this.uxD.setAfterHintWording(this.qnc.CLu.CLn);
+            Log.i("MicroMsg.WalletSuccPageAwardWidget", "after_animation_wording: %s", new Object[] { this.OnC.ajFE.ajFx });
+            this.VXg.setAfterHintWording(this.OnC.ajFE.ajFx);
           }
-          if (!bo.isNullOrNil(this.qnc.CLu.CLo)) {
-            ab.i("MicroMsg.WalletSuccPageAwardWidget", "after_animation_wording_color: %s", new Object[] { this.qnc.CLu.CLo });
+          if (!Util.isNullOrNil(this.OnC.ajFE.ajFy)) {
+            Log.i("MicroMsg.WalletSuccPageAwardWidget", "after_animation_wording_color: %s", new Object[] { this.OnC.ajFE.ajFy });
           }
         }
         catch (Exception localException1)
         {
           try
           {
-            this.uxD.setAfterHintWordingColor(Color.parseColor(this.qnc.CLu.CLo));
-            this.uxD.setShakeOrClickCallback(new WalletAwardShakeAnimView.a()
+            this.VXg.setAfterHintWordingColor(n.dE(this.OnC.ajFE.ajFy, true));
+            this.VXg.setShakeOrClickCallback(new WalletAwardShakeAnimView.a()
             {
-              public final void nV(boolean paramAnonymousBoolean)
+              public final void HX(boolean paramAnonymousBoolean)
               {
-                AppMethodBeat.i(47945);
-                ab.i("MicroMsg.WalletSuccPageAwardWidget", "onStartShakeOrClick, isShake: %s, isClickH5OrTinyApp: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(WalletSuccPageAwardWidget.e(WalletSuccPageAwardWidget.this)) });
+                AppMethodBeat.i(71557);
+                Log.i("MicroMsg.WalletSuccPageAwardWidget", "onStartShakeOrClick, isShake: %s, isClickH5OrTinyApp: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(WalletSuccPageAwardWidget.e(WalletSuccPageAwardWidget.this)) });
                 if (paramAnonymousBoolean)
                 {
-                  localh = h.qsU;
+                  localh = h.OAn;
                   if (WalletSuccPageAwardWidget.e(WalletSuccPageAwardWidget.this)) {}
                   for (i = 2;; i = 1)
                   {
-                    localh.e(15225, new Object[] { Integer.valueOf(4), Integer.valueOf(i) });
-                    WalletSuccPageAwardWidget.d(WalletSuccPageAwardWidget.this).setShakeHintWording(WalletSuccPageAwardWidget.this.getContext().getString(2131305663));
-                    WalletSuccPageAwardWidget.d(WalletSuccPageAwardWidget.this).setShakeHintWordingColor(Color.parseColor("#9C9C9C"));
+                    localh.b(15225, new Object[] { Integer.valueOf(4), Integer.valueOf(i) });
+                    WalletSuccPageAwardWidget.d(WalletSuccPageAwardWidget.this).setShakeHintWording(WalletSuccPageAwardWidget.this.getContext().getString(a.i.wallet_shake_award_shaking_wording));
+                    WalletSuccPageAwardWidget.d(WalletSuccPageAwardWidget.this).setShakeHintWordingColor(WalletSuccPageAwardWidget.this.getResources().getColor(a.c.desc_text_color));
                     WalletSuccPageAwardWidget.a(WalletSuccPageAwardWidget.this, 2, false);
                     WalletSuccPageAwardWidget.f(WalletSuccPageAwardWidget.this);
-                    AppMethodBeat.o(47945);
+                    AppMethodBeat.o(71557);
                     return;
                   }
                 }
-                h localh = h.qsU;
+                h localh = h.OAn;
                 if (WalletSuccPageAwardWidget.e(WalletSuccPageAwardWidget.this)) {}
                 for (int i = 2;; i = 1)
                 {
-                  localh.e(15225, new Object[] { Integer.valueOf(7), Integer.valueOf(i) });
+                  localh.b(15225, new Object[] { Integer.valueOf(7), Integer.valueOf(i) });
                   break;
                 }
               }
             });
-            this.uxD.cWF();
-            AppMethodBeat.o(47970);
+            this.VXg.hQe();
+            AppMethodBeat.o(71582);
             return;
             localException1 = localException1;
-            ab.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException1, "parse animation_wording_color %s error %s", new Object[] { this.qnc.CLu.CLm, localException1.getMessage() });
+            Log.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException1, "parse animation_wording_color %s error %s", new Object[] { this.OnC.ajFE.ajFw, localException1.getMessage() });
           }
           catch (Exception localException2)
           {
             for (;;)
             {
-              ab.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException2, "parse after_animation_wording_color %s error %s", new Object[] { this.qnc.CLu.CLo, localException2.getMessage() });
+              Log.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException2, "parse after_animation_wording_color %s error %s", new Object[] { this.OnC.ajFE.ajFy, localException2.getMessage() });
             }
           }
         }
       case 2: 
-        g localg = this.qnc.CLu.CLk;
+        g.a.a.g localg = this.OnC.ajFE.ajFu;
         if (localg == null) {
-          break label829;
+          break label828;
         }
-        ab.i("MicroMsg.WalletSuccPageAwardWidget", "setWithNewShakeView, jump tiny app, userName: %s, path: %s, version: %s", new Object[] { localg.xzC, localg.xzD, Integer.valueOf(localg.xzE) });
-        so localso = new so();
-        localso.cIQ.userName = localg.xzC;
-        localso.cIQ.cIS = bo.bf(localg.xzD, "");
-        localso.cIQ.scene = 1060;
-        localso.cIQ.cmF = this.kMN;
-        localso.cIQ.cIT = 0;
-        if (localg.xzE > 0) {
-          localso.cIQ.bDc = localg.xzE;
+        Log.i("MicroMsg.WalletSuccPageAwardWidget", "setWithNewShakeView, jump tiny app, userName: %s, path: %s, version: %s", new Object[] { localg.abho, localg.abhp, Integer.valueOf(localg.abhq) });
+        zp localzp = new zp();
+        localzp.icM.userName = localg.abho;
+        localzp.icM.icO = Util.nullAs(localg.abhp, "");
+        localzp.icM.scene = 1060;
+        localzp.icM.hzx = this.wXY;
+        localzp.icM.icP = 0;
+        if (localg.abhq > 0) {
+          localzp.icM.appVersion = localg.abhq;
         }
-        localso.cIQ.context = this.uxF;
-        com.tencent.mm.sdk.b.a.ymk.l(localso);
-        this.uxG = true;
-        this.uxK = false;
-        this.faV.postDelayed(new WalletSuccPageAwardWidget.6(this), 3000L);
-        AppMethodBeat.o(47970);
-        return;
-      case 3: 
-        ab.i("MicroMsg.WalletSuccPageAwardWidget", "setWithNewShakeView, goto h5, url: %s", new Object[] { this.qnc.CLu.url });
-        com.tencent.mm.wallet_core.ui.e.m(this.uxF, this.qnc.CLu.url, false);
-        this.uxG = true;
-        this.uxK = false;
-        this.faV.postDelayed(new Runnable()
+        localzp.icM.context = this.VXi;
+        localzp.publish();
+        this.VXj = true;
+        this.VXn = false;
+        this.mRi.postDelayed(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(47947);
+            AppMethodBeat.i(71558);
             WalletSuccPageAwardWidget.g(WalletSuccPageAwardWidget.this);
-            AppMethodBeat.o(47947);
+            AppMethodBeat.o(71558);
           }
         }, 3000L);
-        AppMethodBeat.o(47970);
+        AppMethodBeat.o(71582);
+        return;
+      case 3: 
+        Log.i("MicroMsg.WalletSuccPageAwardWidget", "setWithNewShakeView, goto h5, url: %s", new Object[] { this.OnC.ajFE.url });
+        com.tencent.mm.wallet_core.ui.i.p(this.VXi, this.OnC.ajFE.url, false);
+        this.VXj = true;
+        this.VXn = false;
+        this.mRi.postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(71559);
+            WalletSuccPageAwardWidget.g(WalletSuccPageAwardWidget.this);
+            AppMethodBeat.o(71559);
+          }
+        }, 3000L);
+        AppMethodBeat.o(71582);
         return;
       }
-      ab.i("MicroMsg.WalletSuccPageAwardWidget", "setWithNewShakeView, directly show info");
-      this.uxC.setVisibility(8);
-      this.uxC.onDestroy();
+      Log.i("MicroMsg.WalletSuccPageAwardWidget", "setWithNewShakeView, directly show info");
+      this.VXf.setVisibility(8);
+      this.VXf.onDestroy();
     }
-    this.uxD.setVisibility(8);
-    this.uxD.destroy();
-    label829:
-    AppMethodBeat.o(47970);
+    this.VXg.setVisibility(8);
+    this.VXg.destroy();
+    label828:
+    AppMethodBeat.o(71582);
   }
   
-  private void cWV()
+  private void ilZ()
   {
-    AppMethodBeat.i(47972);
-    ab.i("MicroMsg.WalletSuccPageAwardWidget", "initBaseLotteryView");
-    Object localObject1 = this.qnc.wQZ;
+    AppMethodBeat.i(71584);
+    Log.i("MicroMsg.WalletSuccPageAwardWidget", "initBaseLotteryView");
+    Object localObject1 = this.OnC.ZvT;
     int i;
     if (localObject1 != null)
     {
       i = ((List)localObject1).size();
-      ab.i("MicroMsg.WalletSuccPageAwardWidget", "singleExposureInfoList %s, size: %s", new Object[] { localObject1, Integer.valueOf(i) });
+      Log.i("MicroMsg.WalletSuccPageAwardWidget", "singleExposureInfoList %s, size: %s", new Object[] { localObject1, Integer.valueOf(i) });
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        this.uxE = ((i)((List)localObject1).get(0));
-        ab.i("MicroMsg.WalletSuccPageAwardWidget", "singleExposureInfo %s, award_name: %s, award_description: %s, logo: %s", new Object[] { Integer.valueOf(0), this.uxE.CLT, this.uxE.CLU, this.uxE.pvi });
-        this.kAK.setUrl(this.uxE.pvi);
-        if (!bo.isNullOrNil(this.uxE.pvi)) {
-          this.kAK.setVisibility(0);
+        this.VXh = ((g.a.a.i)((List)localObject1).get(0));
+        Log.i("MicroMsg.WalletSuccPageAwardWidget", "singleExposureInfo %s, award_name: %s, award_description: %s, logo: %s", new Object[] { Integer.valueOf(0), this.VXh.ajGc, this.VXh.ajGd, this.VXh.MRI });
+        this.wGP.setUrl(this.VXh.MRI);
+        if (!Util.isNullOrNil(this.VXh.MRI)) {
+          this.wGP.setVisibility(0);
         }
-        if (bo.isNullOrNil(this.uxE.CLT)) {
-          break label1223;
+        if (Util.isNullOrNil(this.VXh.ajGc)) {
+          break label1228;
         }
-        this.gve.setText(this.uxE.CLT);
-        this.gve.setVisibility(0);
+        this.lDF.setText(this.VXh.ajGc);
+        this.lDF.setVisibility(0);
       }
     }
     for (;;)
@@ -526,189 +576,403 @@ public class WalletSuccPageAwardWidget
       Object localObject2;
       try
       {
-        if (!bo.isNullOrNil(this.uxE.CLW)) {
-          this.gve.setTextColor(Color.parseColor(this.uxE.CLW));
+        if (!Util.isNullOrNil(this.VXh.ajGf)) {
+          this.lDF.setTextColor(n.dE(this.VXh.ajGf, true));
         }
         i = 1;
-        if (!bo.isNullOrNil(this.uxE.CLU))
+        if (!Util.isNullOrNil(this.VXh.ajGd))
         {
-          this.hsI.setText(this.uxE.CLU);
-          this.hsI.setVisibility(0);
+          this.descTv.setText(this.VXh.ajGd);
+          this.descTv.setVisibility(0);
         }
       }
       catch (Exception localException1)
       {
         try
         {
-          if (!bo.isNullOrNil(this.uxE.CLX)) {
-            this.hsI.setTextColor(Color.parseColor(this.uxE.CLX));
+          if (!Util.isNullOrNil(this.VXh.ajGg)) {
+            this.descTv.setTextColor(n.dE(this.VXh.ajGg, true));
           }
           i = 1;
           if (i != 0)
           {
-            localObject1 = (RelativeLayout.LayoutParams)this.gve.getLayoutParams();
-            localObject3 = (RelativeLayout.LayoutParams)this.hsI.getLayoutParams();
-            if ((!bo.isNullOrNil(this.uxE.CLT)) && (bo.isNullOrNil(this.uxE.CLU)))
+            localObject1 = (RelativeLayout.LayoutParams)this.lDF.getLayoutParams();
+            localObject3 = (RelativeLayout.LayoutParams)this.descTv.getLayoutParams();
+            if ((!Util.isNullOrNil(this.VXh.ajGc)) && (Util.isNullOrNil(this.VXh.ajGd)))
             {
               ((RelativeLayout.LayoutParams)localObject1).addRule(15, -1);
               ((RelativeLayout.LayoutParams)localObject3).addRule(15, 0);
-              this.gve.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-              this.hsI.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-              this.gve.setVisibility(0);
-              this.hsI.setVisibility(8);
+              this.lDF.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+              this.descTv.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+              this.lDF.setVisibility(0);
+              this.descTv.setVisibility(8);
             }
           }
           else
           {
-            if (bo.isNullOrNil(this.uxE.CLV)) {
+            if (Util.isNullOrNil(this.VXh.ajGe)) {
               continue;
             }
-            ab.i("MicroMsg.WalletSuccPageAwardWidget", "background_img: %s", new Object[] { this.uxE.CLV });
+            Log.i("MicroMsg.WalletSuccPageAwardWidget", "background_img: %s", new Object[] { this.VXh.ajGe });
             localObject1 = new c.a();
-            ((c.a)localObject1).eNM = true;
-            ((c.a)localObject1).eNL = true;
-            ((c.a)localObject1).eNO = afQ(this.uxE.CLV);
-            localObject1 = ((c.a)localObject1).ahY();
-            o.ahG().a(this.uxE.CLV, null, (com.tencent.mm.at.a.a.c)localObject1, new WalletSuccPageAwardWidget.8(this));
-            i = this.qnc.wRa;
-            localObject3 = this.qnc.wRb;
-            if (this.qnc.wRb == null) {
-              continue;
-            }
-            localObject1 = this.qnc.wRb.CLh;
-            ab.i("MicroMsg.WalletSuccPageAwardWidget", "is_show_btn: %s, btn_info: %s, btn_words: %s", new Object[] { Integer.valueOf(i), localObject3, localObject1 });
-            if ((this.qnc.wRa != 0) && (this.qnc.wRb != null) && (!bo.isNullOrNil(this.qnc.wRb.CLh))) {
-              continue;
-            }
-            this.uxz.setVisibility(8);
-            if (this.gve.getVisibility() == 0)
+            ((c.a)localObject1).oKp = true;
+            ((c.a)localObject1).oKo = true;
+            ((c.a)localObject1).fullPath = bhp(this.VXh.ajGe);
+            localObject1 = ((c.a)localObject1).bKx();
+            r.bKe().a(this.VXh.ajGe, null, (com.tencent.mm.modelimage.loader.a.c)localObject1, new k()
             {
-              this.gve.setSingleLine();
-              this.gve.post(new WalletSuccPageAwardWidget.10(this));
-            }
-            if (this.uxz.getVisibility() != 0) {
-              this.gve.setEllipsize(TextUtils.TruncateAt.END);
-            }
-            if (this.qnc.CLr != 0) {
-              ab.i("MicroMsg.WalletSuccPageAwardWidget", "exposureInfo.is_show_layer is true: %s, direct show layer", new Object[] { Integer.valueOf(this.qnc.CLr) });
-            }
-            if (!bo.isNullOrNil(this.qnc.CLt))
-            {
-              ab.i("MicroMsg.WalletSuccPageAwardWidget", "background_img_whole: %s", new Object[] { this.qnc.CLt });
-              if (this.uxB != null)
+              public final void onImageLoadComplete(String paramAnonymousString, View paramAnonymousView, Bitmap paramAnonymousBitmap, Object... paramAnonymousVarArgs)
               {
-                this.uxB.setVisibility(0);
+                AppMethodBeat.i(71562);
+                Log.i("MicroMsg.WalletSuccPageAwardWidget", "load background_img finish, url: %s, bitmap: %s", new Object[] { paramAnonymousString, paramAnonymousBitmap });
+                if ((paramAnonymousBitmap != null) && (WalletSuccPageAwardWidget.h(WalletSuccPageAwardWidget.this) != null) && (!Util.isNullOrNil(WalletSuccPageAwardWidget.h(WalletSuccPageAwardWidget.this).ajGe)) && (WalletSuccPageAwardWidget.h(WalletSuccPageAwardWidget.this).ajGe.equals(paramAnonymousString)))
+                {
+                  paramAnonymousString = new NinePatch(paramAnonymousBitmap, WalletSuccPageAwardWidget.aT(paramAnonymousBitmap), "widget_bg");
+                  MMHandlerThread.postToMainThread(new Runnable()
+                  {
+                    public final void run()
+                    {
+                      AppMethodBeat.i(71561);
+                      WalletSuccPageAwardWidget.i(WalletSuccPageAwardWidget.this).setImageDrawable(this.VXp);
+                      WalletSuccPageAwardWidget.i(WalletSuccPageAwardWidget.this).setVisibility(0);
+                      WalletSuccPageAwardWidget.i(WalletSuccPageAwardWidget.this).post(new Runnable()
+                      {
+                        public final void run()
+                        {
+                          AppMethodBeat.i(71560);
+                          ViewGroup.LayoutParams localLayoutParams = WalletSuccPageAwardWidget.i(WalletSuccPageAwardWidget.this).getLayoutParams();
+                          localLayoutParams.height = WalletSuccPageAwardWidget.b(WalletSuccPageAwardWidget.this).getHeight();
+                          localLayoutParams.width = WalletSuccPageAwardWidget.b(WalletSuccPageAwardWidget.this).getWidth();
+                          WalletSuccPageAwardWidget.i(WalletSuccPageAwardWidget.this).setLayoutParams(localLayoutParams);
+                          WalletSuccPageAwardWidget.this.findViewById(a.f.order_info_tinyapp_splitter_1).setVisibility(8);
+                          WalletSuccPageAwardWidget.this.findViewById(a.f.order_info_tinyapp_splitter_2).setVisibility(8);
+                          AppMethodBeat.o(71560);
+                        }
+                      });
+                      AppMethodBeat.o(71561);
+                    }
+                  });
+                }
+                AppMethodBeat.o(71562);
+              }
+            });
+            i = this.OnC.ZvU;
+            localObject3 = this.OnC.ZvV;
+            if (this.OnC.ZvV == null) {
+              continue;
+            }
+            localObject1 = this.OnC.ZvV.ajFr;
+            Log.i("MicroMsg.WalletSuccPageAwardWidget", "is_show_btn: %s, btn_info: %s, btn_words: %s", new Object[] { Integer.valueOf(i), localObject3, localObject1 });
+            if ((this.OnC.ZvU != 0) && (this.OnC.ZvV != null) && (!Util.isNullOrNil(this.OnC.ZvV.ajFr))) {
+              continue;
+            }
+            this.Bqo.setVisibility(8);
+            if (this.lDF.getVisibility() == 0)
+            {
+              this.lDF.setSingleLine();
+              this.lDF.post(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(71566);
+                  try
+                  {
+                    if ((WalletSuccPageAwardWidget.s(WalletSuccPageAwardWidget.this).getVisibility() == 0) && (WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).getRight() > 0) && (WalletSuccPageAwardWidget.s(WalletSuccPageAwardWidget.this).getLeft() > 0) && (WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).getRight() >= WalletSuccPageAwardWidget.s(WalletSuccPageAwardWidget.this).getLeft()) && (!Util.isNullOrNil(WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).getText())))
+                    {
+                      float f = WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).getTextSize();
+                      Log.i("MicroMsg.WalletSuccPageAwardWidget", "nameTv size exceed, nameTv.getRight(): %s, button.getLeft(): %s", new Object[] { Integer.valueOf(WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).getRight()), Integer.valueOf(WalletSuccPageAwardWidget.s(WalletSuccPageAwardWidget.this).getLeft()) });
+                      Object localObject = new Paint();
+                      ((Paint)localObject).setTextSize(f);
+                      String str2 = WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).getText().toString();
+                      f = WalletSuccPageAwardWidget.s(WalletSuccPageAwardWidget.this).getLeft() - WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).getLeft();
+                      int i = 1;
+                      while ((((Paint)localObject).measureText(str2.substring(0, str2.length() - i - 1)) > f) && (i <= str2.length() - 1)) {
+                        i += 1;
+                      }
+                      Log.i("MicroMsg.WalletSuccPageAwardWidget", "nameTv, exceed len, final search count: %s, text.length: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(str2.length()) });
+                      String str1 = str2.substring(0, str2.length() - i - 1);
+                      localObject = str1;
+                      if (str2.length() > 9)
+                      {
+                        localObject = str1;
+                        if (str1.length() < 9) {
+                          localObject = str2.substring(0, 9);
+                        }
+                      }
+                      WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).setText((CharSequence)localObject);
+                      WalletSuccPageAwardWidget.t(WalletSuccPageAwardWidget.this).append("...");
+                    }
+                    AppMethodBeat.o(71566);
+                    return;
+                  }
+                  catch (Exception localException)
+                  {
+                    Log.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException, "calc nameTv len error: %s", new Object[] { localException.getMessage() });
+                    AppMethodBeat.o(71566);
+                  }
+                }
+              });
+            }
+            if (this.Bqo.getVisibility() != 0) {
+              this.lDF.setEllipsize(TextUtils.TruncateAt.END);
+            }
+            if (this.OnC.ajFB != 0) {
+              Log.i("MicroMsg.WalletSuccPageAwardWidget", "exposureInfo.is_show_layer is true: %s, direct show layer", new Object[] { Integer.valueOf(this.OnC.ajFB) });
+            }
+            if (!Util.isNullOrNil(this.OnC.ajFD))
+            {
+              Log.i("MicroMsg.WalletSuccPageAwardWidget", "background_img_whole: %s", new Object[] { this.OnC.ajFD });
+              if (this.VXe != null)
+              {
+                this.VXe.setVisibility(0);
                 localObject1 = new c.a();
-                ((c.a)localObject1).eNM = true;
-                ((c.a)localObject1).eNL = true;
-                ((c.a)localObject1).eNO = afQ(this.qnc.CLt);
-                localObject1 = ((c.a)localObject1).ahY();
-                o.ahG().a(this.qnc.CLt, null, (com.tencent.mm.at.a.a.c)localObject1, new WalletSuccPageAwardWidget.11(this));
+                ((c.a)localObject1).oKp = true;
+                ((c.a)localObject1).oKo = true;
+                ((c.a)localObject1).fullPath = bhp(this.OnC.ajFD);
+                localObject1 = ((c.a)localObject1).bKx();
+                r.bKe().a(this.OnC.ajFD, null, (com.tencent.mm.modelimage.loader.a.c)localObject1, new k()
+                {
+                  public final void onImageLoadComplete(String paramAnonymousString, View paramAnonymousView, final Bitmap paramAnonymousBitmap, Object... paramAnonymousVarArgs)
+                  {
+                    AppMethodBeat.i(71568);
+                    Log.i("MicroMsg.WalletSuccPageAwardWidget", "load background_img_whole finish, url: %s, bitmap: %s", new Object[] { paramAnonymousString, paramAnonymousBitmap });
+                    if ((paramAnonymousBitmap != null) && (WalletSuccPageAwardWidget.j(WalletSuccPageAwardWidget.this) != null) && (!Util.isNullOrNil(WalletSuccPageAwardWidget.j(WalletSuccPageAwardWidget.this).ajFD)) && (WalletSuccPageAwardWidget.j(WalletSuccPageAwardWidget.this).ajFD.equals(paramAnonymousString))) {
+                      MMHandlerThread.postToMainThread(new Runnable()
+                      {
+                        public final void run()
+                        {
+                          AppMethodBeat.i(71567);
+                          WalletSuccPageAwardWidget.u(WalletSuccPageAwardWidget.this).setScaleType(ImageView.ScaleType.CENTER_CROP);
+                          WalletSuccPageAwardWidget.u(WalletSuccPageAwardWidget.this).setImageBitmap(paramAnonymousBitmap);
+                          AppMethodBeat.o(71567);
+                        }
+                      });
+                    }
+                    AppMethodBeat.o(71568);
+                  }
+                });
               }
             }
-            AppMethodBeat.o(47972);
+            AppMethodBeat.o(71584);
             return;
             i = 0;
             break;
             localException1 = localException1;
-            ab.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException1, "parse award_name_color error: %s", new Object[] { localException1.getMessage() });
+            Log.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException1, "parse award_name_color error: %s", new Object[] { localException1.getMessage() });
           }
         }
         catch (Exception localException2)
         {
           Object localObject3;
-          ab.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException2, "parse award_description_color error: %s", new Object[] { localException2.getMessage() });
+          Log.printErrStackTrace("MicroMsg.WalletSuccPageAwardWidget", localException2, "parse award_description_color error: %s", new Object[] { localException2.getMessage() });
           continue;
-          if ((bo.isNullOrNil(this.uxE.CLT)) && (!bo.isNullOrNil(this.uxE.CLU)))
+          if ((Util.isNullOrNil(this.VXh.ajGc)) && (!Util.isNullOrNil(this.VXh.ajGd)))
           {
             localException2.addRule(15, 0);
             ((RelativeLayout.LayoutParams)localObject3).addRule(15, -1);
-            this.gve.setLayoutParams(localException2);
-            this.hsI.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-            this.gve.setVisibility(8);
-            this.hsI.setVisibility(0);
+            this.lDF.setLayoutParams(localException2);
+            this.descTv.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+            this.lDF.setVisibility(8);
+            this.descTv.setVisibility(0);
             continue;
           }
           localException2.addRule(15, 0);
           ((RelativeLayout.LayoutParams)localObject3).addRule(15, 0);
-          this.gve.setLayoutParams(localException2);
-          this.hsI.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-          this.gve.setVisibility(0);
-          this.hsI.setVisibility(0);
+          this.lDF.setLayoutParams(localException2);
+          this.descTv.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+          this.lDF.setVisibility(0);
+          this.descTv.setVisibility(0);
           continue;
-          this.uxA.setVisibility(8);
-          findViewById(2131825332).setVisibility(0);
-          findViewById(2131827210).setVisibility(0);
+          this.VXd.setVisibility(8);
+          findViewById(a.f.order_info_tinyapp_splitter_1).setVisibility(0);
+          findViewById(a.f.order_info_tinyapp_splitter_2).setVisibility(0);
           continue;
           localObject2 = "";
           continue;
-          localObject2 = this.qnc.wRb;
+          localObject2 = this.OnC.ZvV;
           if (localObject2 == null) {
             continue;
           }
-          ab.i("MicroMsg.WalletSuccPageAwardWidget", "btn_words: %s, type: %s, color: %s, url: %s", new Object[] { ((d.a.a.a)localObject2).CLh, Integer.valueOf(((d.a.a.a)localObject2).CLj), ((d.a.a.a)localObject2).CLi, ((d.a.a.a)localObject2).url });
-          this.uxz.setText(((d.a.a.a)localObject2).CLh);
-          if (!bo.isNullOrNil(((d.a.a.a)localObject2).CLi))
+          Log.i("MicroMsg.WalletSuccPageAwardWidget", "btn_words: %s, type: %s, color: %s, url: %s", new Object[] { ((g.a.a.a)localObject2).ajFr, Integer.valueOf(((g.a.a.a)localObject2).ajFt), ((g.a.a.a)localObject2).ajFs, ((g.a.a.a)localObject2).url });
+          this.Bqo.setText(((g.a.a.a)localObject2).ajFr);
+          if (!Util.isNullOrNil(((g.a.a.a)localObject2).ajFs))
           {
-            localObject3 = getContext().getResources().getDrawable(2130838045);
-            ((Drawable)localObject3).setColorFilter(Color.parseColor(((d.a.a.a)localObject2).CLi), PorterDuff.Mode.SRC);
-            this.uxz.setBackground((Drawable)localObject3);
+            localObject3 = getContext().getResources().getDrawable(a.e.btn_solid_green);
+            ((Drawable)localObject3).setColorFilter(n.dE(((g.a.a.a)localObject2).ajFs, false), PorterDuff.Mode.SRC);
+            this.Bqo.setBackground((Drawable)localObject3);
           }
-          this.uxz.setOnClickListener(new WalletSuccPageAwardWidget.9(this));
-          this.uxz.setVisibility(0);
-          if ((!this.qBd) && (!this.uxG)) {
+          this.Bqo.setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(71565);
+              Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+              ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardWidget$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+              if ((WalletSuccPageAwardWidget.j(WalletSuccPageAwardWidget.this) != null) && (WalletSuccPageAwardWidget.j(WalletSuccPageAwardWidget.this).ZvV != null))
+              {
+                WalletSuccPageAwardWidget.a(WalletSuccPageAwardWidget.this, WalletSuccPageAwardWidget.j(WalletSuccPageAwardWidget.this).ZvV);
+                Log.i("MicroMsg.WalletSuccPageAwardWidget", "click btn, type: %s", new Object[] { Integer.valueOf(WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt) });
+                if (WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt != 1) {
+                  break label282;
+                }
+                Log.i("MicroMsg.WalletSuccPageAwardWidget", "click btn_info, type: %s, url: %s", new Object[] { Integer.valueOf(WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt), WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).url });
+                com.tencent.mm.wallet_core.ui.i.p(WalletSuccPageAwardWidget.l(WalletSuccPageAwardWidget.this), WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).url, false);
+                WalletSuccPageAwardWidget.m(WalletSuccPageAwardWidget.this);
+                WalletSuccPageAwardWidget.n(WalletSuccPageAwardWidget.this);
+                WalletSuccPageAwardWidget.o(WalletSuccPageAwardWidget.this);
+                WalletSuccPageAwardWidget.p(WalletSuccPageAwardWidget.this).postDelayed(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(71563);
+                    WalletSuccPageAwardWidget.g(WalletSuccPageAwardWidget.this);
+                    AppMethodBeat.o(71563);
+                  }
+                }, 3000L);
+                paramAnonymousView = h.OAn;
+                if (!WalletSuccPageAwardWidget.e(WalletSuccPageAwardWidget.this)) {
+                  break label743;
+                }
+              }
+              label282:
+              label743:
+              for (int i = 2;; i = 1)
+              {
+                paramAnonymousView.b(15225, new Object[] { Integer.valueOf(2), Integer.valueOf(i) });
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardWidget$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(71565);
+                return;
+                if (WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt == 2)
+                {
+                  paramAnonymousView = WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFu;
+                  if (paramAnonymousView != null)
+                  {
+                    Log.i("MicroMsg.WalletSuccPageAwardWidget", "click btn, jump tiny app, userName: %s, path: %s, version: %s", new Object[] { paramAnonymousView.abho, paramAnonymousView.abhp, Integer.valueOf(paramAnonymousView.abhq) });
+                    localObject = new zp();
+                    ((zp)localObject).icM.userName = paramAnonymousView.abho;
+                    ((zp)localObject).icM.icO = Util.nullAs(paramAnonymousView.abhp, "");
+                    ((zp)localObject).icM.scene = 1060;
+                    ((zp)localObject).icM.hzx = WalletSuccPageAwardWidget.q(WalletSuccPageAwardWidget.this);
+                    ((zp)localObject).icM.icP = 0;
+                    if (paramAnonymousView.abhq > 0) {
+                      ((zp)localObject).icM.appVersion = paramAnonymousView.abhq;
+                    }
+                    ((zp)localObject).icM.context = WalletSuccPageAwardWidget.l(WalletSuccPageAwardWidget.this);
+                    ((zp)localObject).publish();
+                    WalletSuccPageAwardWidget.m(WalletSuccPageAwardWidget.this);
+                    WalletSuccPageAwardWidget.o(WalletSuccPageAwardWidget.this);
+                    WalletSuccPageAwardWidget.p(WalletSuccPageAwardWidget.this).postDelayed(new Runnable()
+                    {
+                      public final void run()
+                      {
+                        AppMethodBeat.i(71564);
+                        WalletSuccPageAwardWidget.g(WalletSuccPageAwardWidget.this);
+                        AppMethodBeat.o(71564);
+                      }
+                    }, 3000L);
+                  }
+                  WalletSuccPageAwardWidget.n(WalletSuccPageAwardWidget.this);
+                  break;
+                }
+                if (WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt == 3)
+                {
+                  Log.i("MicroMsg.WalletSuccPageAwardWidget", "click btn, do get lottery");
+                  WalletSuccPageAwardWidget.r(WalletSuccPageAwardWidget.this);
+                  WalletSuccPageAwardWidget.n(WalletSuccPageAwardWidget.this);
+                  break;
+                }
+                if (WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt == 5)
+                {
+                  Log.i("MicroMsg.WalletSuccPageAwardWidget", "click btn, do nothing");
+                  break;
+                }
+                if (WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt == 6)
+                {
+                  Log.i("MicroMsg.WalletSuccPageAwardWidget", "click btn, show layer");
+                  WalletSuccPageAwardWidget.n(WalletSuccPageAwardWidget.this);
+                  break;
+                }
+                if (WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt == 7)
+                {
+                  Log.i("MicroMsg.WalletSuccPageAwardWidget", "click btn, draw lottery");
+                  WalletSuccPageAwardWidget.a(WalletSuccPageAwardWidget.this, 3, true);
+                  WalletSuccPageAwardWidget.n(WalletSuccPageAwardWidget.this);
+                  break;
+                }
+                if (WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt == 8)
+                {
+                  WalletSuccPageAwardWidget.r(WalletSuccPageAwardWidget.this);
+                  Log.i("MicroMsg.WalletSuccPageAwardWidget", "click btn_info, type: %s, url: %s", new Object[] { Integer.valueOf(WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt), WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).url });
+                  WalletSuccPageAwardWidget.n(WalletSuccPageAwardWidget.this);
+                  break;
+                }
+                if (WalletSuccPageAwardWidget.k(WalletSuccPageAwardWidget.this).ajFt != 9) {
+                  break;
+                }
+                WalletSuccPageAwardWidget.r(WalletSuccPageAwardWidget.this);
+                WalletSuccPageAwardWidget.n(WalletSuccPageAwardWidget.this);
+                break;
+              }
+            }
+          });
+          this.Bqo.setVisibility(0);
+          if ((!this.Pcx) && (!this.VXj)) {
             continue;
           }
-          localObject2 = h.qsU;
-          if (!this.uxG) {}
+          localObject2 = h.OAn;
+          if (!this.VXj) {}
         }
       }
       for (i = 2;; i = 1)
       {
-        ((h)localObject2).e(15225, new Object[] { Integer.valueOf(1), Integer.valueOf(i) });
+        ((h)localObject2).b(15225, new Object[] { Integer.valueOf(1), Integer.valueOf(i) });
         break;
       }
-      label1223:
+      label1228:
       i = 0;
     }
   }
   
-  private void cWW()
+  private void ima()
   {
-    AppMethodBeat.i(47973);
-    ab.i("MicroMsg.WalletSuccPageAwardWidget", "tryDoModifyExposure, isClickH5OrTinyApp: %s", new Object[] { Boolean.valueOf(this.uxG) });
-    if (this.uxG)
+    AppMethodBeat.i(71585);
+    Log.i("MicroMsg.WalletSuccPageAwardWidget", "tryDoModifyExposure, isClickH5OrTinyApp: %s", new Object[] { Boolean.valueOf(this.VXj) });
+    if (this.VXj)
     {
-      com.tencent.mm.plugin.wallet_core.c.m localm = new com.tencent.mm.plugin.wallet_core.c.m(this.qnc.wQY, this.ubz);
-      this.uxF.doSceneProgress(localm, false);
+      com.tencent.mm.plugin.wallet_core.c.p localp = new com.tencent.mm.plugin.wallet_core.c.p(this.OnC.ZvS, this.VxI);
+      this.VXi.doSceneProgress(localp, false);
     }
-    AppMethodBeat.o(47973);
+    AppMethodBeat.o(71585);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(47960);
-    w.hM(paramContext).inflate(2130971254, this, true);
-    this.owk = ((ViewGroup)findViewById(2131821724));
-    this.kAK = ((CdnImageView)findViewById(2131829401));
-    this.gve = ((TextView)findViewById(2131821254));
-    this.hsI = ((TextView)findViewById(2131821007));
-    this.uxz = ((Button)findViewById(2131820875));
-    this.uxC = ((WalletScratchShakeView)findViewById(2131829402));
-    this.uxA = ((ImageView)findViewById(2131824152));
-    this.uxD = ((WalletAwardShakeAnimView)findViewById(2131829403));
-    this.kAK.setRoundCorner(true);
-    this.kAK.setUseSdcardCache(true);
-    AppMethodBeat.o(47960);
+    AppMethodBeat.i(71572);
+    af.mU(paramContext).inflate(a.g.wallet_succ_page_award_widget, this, true);
+    this.KGL = ((ViewGroup)findViewById(a.f.content_layout));
+    this.wGP = ((CdnImageView)findViewById(a.f.logo_iv));
+    this.lDF = ((TextView)findViewById(a.f.name_tv));
+    this.descTv = ((TextView)findViewById(a.f.desc_tv));
+    this.Bqo = ((Button)findViewById(a.f.button));
+    this.VXf = ((WalletScratchShakeView)findViewById(a.f.scratch_shake_view));
+    this.VXd = ((ImageView)findViewById(a.f.background));
+    this.VXg = ((WalletAwardShakeAnimView)findViewById(a.f.shake_view));
+    this.lDF.setTextSize(1, 17.0F);
+    this.descTv.setTextSize(1, 14.0F);
+    this.Bqo.setTextSize(1, 16.0F);
+    this.wGP.setRoundCorner(true);
+    this.wGP.setUseSdcardCache(true);
+    AppMethodBeat.o(71572);
   }
   
-  public final void a(WalletBaseUI paramWalletBaseUI, d.a.a.c paramc, String paramString, boolean paramBoolean, ImageView paramImageView)
+  public final void a(WalletBaseUI paramWalletBaseUI, g.a.a.c paramc, String paramString, boolean paramBoolean, ImageView paramImageView)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(47961);
+    AppMethodBeat.i(71573);
     String str = b(paramc);
     boolean bool1;
-    if ((paramc == null) || (paramc.CLs == null))
+    if ((paramc == null) || (paramc.ajFC == null))
     {
       bool1 = true;
       if (paramImageView != null) {
@@ -717,14 +981,14 @@ public class WalletSuccPageAwardWidget
     }
     for (;;)
     {
-      ab.i("MicroMsg.WalletSuccPageAwardWidget", "setWidgetData, exposureInfo: %s, layerInfo==null: %s, hostUIBackgroundView==null:%s, isClickH5OrTinyApp: %s, isF2F: %s", new Object[] { str, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(this.uxG), Boolean.valueOf(paramBoolean) });
-      this.uxF = paramWalletBaseUI;
-      this.qnc = paramc;
-      this.ubz = paramBoolean;
-      this.kMN = paramString;
-      this.uxB = paramImageView;
-      cWP();
-      AppMethodBeat.o(47961);
+      Log.i("MicroMsg.WalletSuccPageAwardWidget", "setWidgetData, exposureInfo: %s, layerInfo==null: %s, hostUIBackgroundView==null:%s, isClickH5OrTinyApp: %s, isF2F: %s", new Object[] { str, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(this.VXj), Boolean.valueOf(paramBoolean) });
+      this.VXi = paramWalletBaseUI;
+      this.OnC = paramc;
+      this.VxI = paramBoolean;
+      this.wXY = paramString;
+      this.VXe = paramImageView;
+      ilT();
+      AppMethodBeat.o(71573);
       return;
       bool1 = false;
       break;
@@ -736,37 +1000,37 @@ public class WalletSuccPageAwardWidget
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool3 = false;
-    AppMethodBeat.i(47975);
-    if ((this.uxC != null) && (this.uxC.getVisibility() == 0))
+    AppMethodBeat.i(71587);
+    if ((this.VXf != null) && (this.VXf.getVisibility() == 0))
     {
       boolean bool2 = bool3;
       WalletScratchShakeView localWalletScratchShakeView;
-      if (this.uxC != null)
+      if (this.VXf != null)
       {
-        localWalletScratchShakeView = this.uxC;
-        if (localWalletScratchShakeView.uwY == null) {
+        localWalletScratchShakeView = this.VXf;
+        if (localWalletScratchShakeView.VWD == null) {
           break label131;
         }
-        bool1 = localWalletScratchShakeView.uwY.O(paramMotionEvent);
+        bool1 = localWalletScratchShakeView.VWD.aq(paramMotionEvent);
         if (bool1) {}
-        localWalletScratchShakeView = this.uxC;
-        if (localWalletScratchShakeView.uwY == null) {
+        localWalletScratchShakeView = this.VXf;
+        if (localWalletScratchShakeView.VWD == null) {
           break label136;
         }
       }
       label131:
       label136:
-      for (bool1 = localWalletScratchShakeView.uwY.uxs;; bool1 = true)
+      for (bool1 = localWalletScratchShakeView.VWD.VWX;; bool1 = true)
       {
         bool2 = bool3;
         if (!bool1) {
-          bool2 = this.uxC.dispatchTouchEvent(paramMotionEvent);
+          bool2 = this.VXf.dispatchTouchEvent(paramMotionEvent);
         }
-        if ((this.owk == null) || (bool2)) {
+        if ((this.KGL == null) || (bool2)) {
           break label141;
         }
-        bool1 = this.owk.dispatchTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(47975);
+        bool1 = this.KGL.dispatchTouchEvent(paramMotionEvent);
+        AppMethodBeat.o(71587);
         return bool1;
         bool1 = false;
         break;
@@ -774,61 +1038,61 @@ public class WalletSuccPageAwardWidget
     }
     label141:
     boolean bool1 = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(47975);
+    AppMethodBeat.o(71587);
     return bool1;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(47964);
-    if (this.uxF != null)
+    AppMethodBeat.i(71576);
+    if (this.VXi != null)
     {
-      ab.i("MicroMsg.WalletSuccPageAwardWidget", "init");
-      this.uxF.addSceneEndListener(1859);
-      this.uxF.addSceneEndListener(2547);
-      this.uxF.addSceneEndListener(2803);
-      this.uxF.addSceneEndListener(2508);
-      this.uxF.addSceneEndListener(2529);
-      this.uxF.addSceneEndListener(2888);
+      Log.i("MicroMsg.WalletSuccPageAwardWidget", "init");
+      this.VXi.addSceneEndListener(1859);
+      this.VXi.addSceneEndListener(2547);
+      this.VXi.addSceneEndListener(2803);
+      this.VXi.addSceneEndListener(2508);
+      this.VXi.addSceneEndListener(2529);
+      this.VXi.addSceneEndListener(2888);
     }
-    AppMethodBeat.o(47964);
+    AppMethodBeat.o(71576);
   }
   
   public final void onDestroy()
   {
     int i = 2;
-    AppMethodBeat.i(47965);
+    AppMethodBeat.i(71577);
     Object localObject;
-    if (this.uxF != null)
+    if (this.VXi != null)
     {
-      this.uxF.removeSceneEndListener(1859);
-      this.uxF.removeSceneEndListener(2547);
-      this.uxF.removeSceneEndListener(2803);
-      this.uxF.removeSceneEndListener(2508);
-      this.uxF.removeSceneEndListener(2529);
-      this.uxF.removeSceneEndListener(2888);
-      ab.i("MicroMsg.WalletSuccPageAwardWidget", "onDestroy, isShakeOrScratch: %s, isClickAwardButton: %s", new Object[] { Boolean.valueOf(this.uxH), Boolean.valueOf(this.uxI) });
-      if ((!this.uxH) && (!this.uxI))
+      this.VXi.removeSceneEndListener(1859);
+      this.VXi.removeSceneEndListener(2547);
+      this.VXi.removeSceneEndListener(2803);
+      this.VXi.removeSceneEndListener(2508);
+      this.VXi.removeSceneEndListener(2529);
+      this.VXi.removeSceneEndListener(2888);
+      Log.i("MicroMsg.WalletSuccPageAwardWidget", "onDestroy, isShakeOrScratch: %s, isClickAwardButton: %s", new Object[] { Boolean.valueOf(this.VXk), Boolean.valueOf(this.VXl) });
+      if ((!this.VXk) && (!this.VXl))
       {
-        localObject = h.qsU;
-        if (!this.uxG) {
+        localObject = h.OAn;
+        if (!this.VXj) {
           break label230;
         }
       }
     }
     for (;;)
     {
-      ((h)localObject).e(15225, new Object[] { Integer.valueOf(6), Integer.valueOf(i) });
-      ab.i("MicroMsg.WalletSuccPageAwardWidget", "user do nothing and quit ui, call drawlottery");
-      localObject = new j(this.qnc.wPV, 4, this.ubz);
-      this.uxF.doSceneProgress((com.tencent.mm.ai.m)localObject, false);
-      if (this.uxC != null) {
-        this.uxC.onDestroy();
+      ((h)localObject).b(15225, new Object[] { Integer.valueOf(6), Integer.valueOf(i) });
+      Log.i("MicroMsg.WalletSuccPageAwardWidget", "user do nothing and quit ui, call drawlottery");
+      localObject = new m(this.OnC.Zsq, 4, this.VxI);
+      this.VXi.doSceneProgress((com.tencent.mm.am.p)localObject, false);
+      if (this.VXf != null) {
+        this.VXf.onDestroy();
       }
-      if (this.uxD != null) {
-        this.uxD.destroy();
+      if (this.VXg != null) {
+        this.VXg.destroy();
       }
-      AppMethodBeat.o(47965);
+      AppMethodBeat.o(71577);
       return;
       label230:
       i = 1;
@@ -837,231 +1101,239 @@ public class WalletSuccPageAwardWidget
   
   public final void onResume()
   {
-    AppMethodBeat.i(47966);
-    ab.i("MicroMsg.WalletSuccPageAwardWidget", "onResume, isClickH5OrTinyApp: %s, exposureInfo: %s, isMiniAppReturn: %s", new Object[] { Boolean.valueOf(this.uxG), b(this.qnc), Boolean.valueOf(this.uxK) });
-    if (!this.uxK)
+    AppMethodBeat.i(71578);
+    Log.i("MicroMsg.WalletSuccPageAwardWidget", "onResume, isClickH5OrTinyApp: %s, exposureInfo: %s, isMiniAppReturn: %s", new Object[] { Boolean.valueOf(this.VXj), b(this.OnC), Boolean.valueOf(this.VXn) });
+    if (!this.VXn)
     {
-      this.uxK = true;
-      cWR();
+      this.VXn = true;
+      ilV();
     }
-    AppMethodBeat.o(47966);
+    AppMethodBeat.o(71578);
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     int i = 0;
-    AppMethodBeat.i(47974);
-    ab.i("MicroMsg.WalletSuccPageAwardWidget", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramm });
-    if ((paramm instanceof l))
+    AppMethodBeat.i(71586);
+    Log.i("MicroMsg.WalletSuccPageAwardWidget", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramp });
+    if ((paramp instanceof o))
     {
-      paramString = (l)paramm;
+      paramString = (o)paramp;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = paramString.ubE;
+        paramString = paramString.VxM;
         if (paramString == null)
         {
-          ab.e("MicroMsg.WalletSuccPageAwardWidget", "getLottery end, response is null!!");
-          AppMethodBeat.o(47974);
+          Log.e("MicroMsg.WalletSuccPageAwardWidget", "getLottery end, response is null!!");
+          AppMethodBeat.o(71586);
           return true;
         }
-        ab.i("MicroMsg.WalletSuccPageAwardWidget", "getLottery ret_code: %s, ret_msg: %s, alert_wording: %s, exposure_info: %s", new Object[] { Integer.valueOf(paramString.koj), paramString.kok, paramString.wZi, paramString.ukr });
-        if (paramString.koj == 0)
+        Log.i("MicroMsg.WalletSuccPageAwardWidget", "getLottery ret_code: %s, ret_msg: %s, alert_wording: %s, exposure_info: %s", new Object[] { Integer.valueOf(paramString.wuz), paramString.wuA, paramString.aaoE, paramString.VIz });
+        if (paramString.wuz == 0)
         {
-          if (!bo.isNullOrNil(paramString.wZi))
+          if (!Util.isNullOrNil(paramString.aaoE))
           {
-            Toast.makeText(getContext(), paramString.wZi, 1).show();
-            AppMethodBeat.o(47974);
+            Toast.makeText(getContext(), paramString.aaoE, 1).show();
+            AppMethodBeat.o(71586);
             return true;
           }
-          if (paramString.ukr != null)
+          if (paramString.VIz != null)
           {
-            if (this.qnc.wRb != null)
+            if (this.OnC.ZvV != null)
             {
-              paramInt1 = this.qnc.wRb.CLj;
-              this.qnc = paramString.ukr;
-              if ((paramString.ukr.wRb != null) && (this.qnc.wRb != null))
+              paramInt1 = this.OnC.ZvV.ajFt;
+              this.OnC = paramString.VIz;
+              if ((paramString.VIz.ZvV != null) && (this.OnC.ZvV != null))
               {
-                ab.i("MicroMsg.WalletSuccPageAwardWidget", "getLottery end, btn_op_type: %s", new Object[] { Integer.valueOf(paramString.ukr.wRb.CLj) });
-                if (paramString.ukr.wRb.CLj == 4)
+                Log.i("MicroMsg.WalletSuccPageAwardWidget", "getLottery end, btn_op_type: %s", new Object[] { Integer.valueOf(paramString.VIz.ZvV.ajFt) });
+                if (paramString.VIz.ZvV.ajFt == 4)
                 {
-                  ab.i("MicroMsg.WalletSuccPageAwardWidget", "update exposureInfo, new btn_op_type is 4");
-                  this.qnc.wRb.CLj = paramInt1;
+                  Log.i("MicroMsg.WalletSuccPageAwardWidget", "update exposureInfo, new btn_op_type is 4");
+                  this.OnC.ZvV.ajFt = paramInt1;
                 }
               }
-              ab.i("MicroMsg.WalletSuccPageAwardWidget", "update exposureInfo");
-              cWP();
+              Log.i("MicroMsg.WalletSuccPageAwardWidget", "update exposureInfo");
+              ilT();
             }
           }
           else
           {
-            if ((this.uxJ != null) && (this.uxI))
+            if ((this.VXm != null) && (this.VXl))
             {
-              if (this.uxJ.CLj != 8) {
+              if (this.VXm.ajFt != 8) {
                 break label375;
               }
-              ab.i("MicroMsg.WalletSuccPageAwardWidget", "on getLotteryEnd, btn_op_type==GET_LOTTERY_AND_JUMP_URL, goto h5");
-              com.tencent.mm.wallet_core.ui.e.m(this.uxF, this.uxJ.url, false);
-              this.uxG = true;
+              Log.i("MicroMsg.WalletSuccPageAwardWidget", "on getLotteryEnd, btn_op_type==GET_LOTTERY_AND_JUMP_URL, goto h5");
+              com.tencent.mm.wallet_core.ui.i.p(this.VXi, this.VXm.url, false);
+              this.VXj = true;
             }
             label357:
-            this.uxJ = null;
+            this.VXm = null;
           }
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(47974);
+        AppMethodBeat.o(71586);
         return true;
         paramInt1 = 0;
         break;
         label375:
-        if (this.uxJ.CLj != 9) {
+        if (this.VXm.ajFt != 9) {
           break label357;
         }
-        paramString = this.uxJ.CLk;
+        paramString = this.VXm.ajFu;
         if (paramString == null) {
           break label357;
         }
-        ab.i("MicroMsg.WalletSuccPageAwardWidget", "on getLotteryEnd, btn_op_type==GET_LOTTERY_AND_JUMP_MINI_APP, jump tiny app, userName: %s, path: %s, version: %s", new Object[] { paramString.xzC, paramString.xzD, Integer.valueOf(paramString.xzE) });
-        paramm = new so();
-        paramm.cIQ.userName = paramString.xzC;
-        paramm.cIQ.cIS = bo.bf(paramString.xzD, "");
-        paramm.cIQ.scene = 1060;
-        paramm.cIQ.cmF = this.kMN;
-        paramm.cIQ.cIT = 0;
-        if (paramString.xzE > 0) {
-          paramm.cIQ.bDc = paramString.xzE;
+        Log.i("MicroMsg.WalletSuccPageAwardWidget", "on getLotteryEnd, btn_op_type==GET_LOTTERY_AND_JUMP_MINI_APP, jump tiny app, userName: %s, path: %s, version: %s", new Object[] { paramString.abho, paramString.abhp, Integer.valueOf(paramString.abhq) });
+        paramp = new zp();
+        paramp.icM.userName = paramString.abho;
+        paramp.icM.icO = Util.nullAs(paramString.abhp, "");
+        paramp.icM.scene = 1060;
+        paramp.icM.hzx = this.wXY;
+        paramp.icM.icP = 0;
+        if (paramString.abhq > 0) {
+          paramp.icM.appVersion = paramString.abhq;
         }
-        paramm.cIQ.context = this.uxF;
-        com.tencent.mm.sdk.b.a.ymk.l(paramm);
-        this.uxG = true;
-        this.uxK = false;
-        this.faV.postDelayed(new WalletSuccPageAwardWidget.3(this), 3000L);
+        paramp.icM.context = this.VXi;
+        paramp.publish();
+        this.VXj = true;
+        this.VXn = false;
+        this.mRi.postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(71555);
+            WalletSuccPageAwardWidget.g(WalletSuccPageAwardWidget.this);
+            AppMethodBeat.o(71555);
+          }
+        }, 3000L);
         break label357;
-        ab.i("MicroMsg.WalletSuccPageAwardWidget", "getLotteryFailed");
-        cWQ();
+        Log.i("MicroMsg.WalletSuccPageAwardWidget", "getLotteryFailed");
+        ilU();
       }
     }
     Object localObject1;
     Object localObject2;
-    if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.m))
+    if ((paramp instanceof com.tencent.mm.plugin.wallet_core.c.p))
     {
-      paramString = (com.tencent.mm.plugin.wallet_core.c.m)paramm;
+      paramString = (com.tencent.mm.plugin.wallet_core.c.p)paramp;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = paramString.ubG;
+        paramString = paramString.VxO;
         if (paramString == null)
         {
-          ab.e("MicroMsg.WalletSuccPageAwardWidget", "modifyExposure end, response is null!!");
-          AppMethodBeat.o(47974);
+          Log.e("MicroMsg.WalletSuccPageAwardWidget", "modifyExposure end, response is null!!");
+          AppMethodBeat.o(71586);
           return true;
         }
-        paramInt2 = paramString.koj;
-        paramm = paramString.kok;
-        localObject1 = paramString.wQZ;
-        i = paramString.wRa;
-        localObject2 = paramString.wRb;
-        if (paramString.wRb == null) {
-          break label881;
+        paramInt2 = paramString.wuz;
+        paramp = paramString.wuA;
+        localObject1 = paramString.ZvT;
+        i = paramString.ZvU;
+        localObject2 = paramString.ZvV;
+        if (paramString.ZvV == null) {
+          break label878;
         }
-        paramInt1 = paramString.wRb.CLj;
-        ab.i("MicroMsg.WalletSuccPageAwardWidget", "modifyExposure, ret_code: %s, ret_msg: %s, single_exposure_info_list: %s, is_show_btn: %s, btn_info: %s, btn_op_type: %s", new Object[] { Integer.valueOf(paramInt2), paramm, localObject1, Integer.valueOf(i), localObject2, Integer.valueOf(paramInt1) });
-        if (paramString.koj == 0)
+        paramInt1 = paramString.ZvV.ajFt;
+        Log.i("MicroMsg.WalletSuccPageAwardWidget", "modifyExposure, ret_code: %s, ret_msg: %s, single_exposure_info_list: %s, is_show_btn: %s, btn_info: %s, btn_op_type: %s", new Object[] { Integer.valueOf(paramInt2), paramp, localObject1, Integer.valueOf(i), localObject2, Integer.valueOf(paramInt1) });
+        if (paramString.wuz == 0)
         {
-          this.qnc.wQZ = paramString.wQZ;
-          this.qnc.wRa = paramString.wRa;
-          if (this.qnc.wRb == null) {
-            break label886;
+          this.OnC.ZvT = paramString.ZvT;
+          this.OnC.ZvU = paramString.ZvU;
+          if (this.OnC.ZvV == null) {
+            break label883;
           }
         }
       }
-      label881:
-      label886:
-      for (paramInt1 = this.qnc.wRb.CLj;; paramInt1 = 0)
+      label878:
+      label883:
+      for (paramInt1 = this.OnC.ZvV.ajFt;; paramInt1 = 0)
       {
-        if (paramString.wRb != null)
+        if (paramString.ZvV != null)
         {
-          this.qnc.wRb = paramString.wRb;
-          if ((this.qnc.wRb != null) && (paramString.wRb.CLj == 4))
+          this.OnC.ZvV = paramString.ZvV;
+          if ((this.OnC.ZvV != null) && (paramString.ZvV.ajFt == 4))
           {
-            ab.i("MicroMsg.WalletSuccPageAwardWidget", "update exposureInfo, new btn_op_type is 4");
-            this.qnc.wRb.CLj = paramInt1;
+            Log.i("MicroMsg.WalletSuccPageAwardWidget", "update exposureInfo, new btn_op_type is 4");
+            this.OnC.ZvV.ajFt = paramInt1;
           }
         }
-        ab.i("MicroMsg.WalletSuccPageAwardWidget", "after modify, exposureInfo: %s", new Object[] { b(this.qnc) });
-        cWV();
-        this.uxG = false;
-        AppMethodBeat.o(47974);
+        Log.i("MicroMsg.WalletSuccPageAwardWidget", "after modify, exposureInfo: %s", new Object[] { b(this.OnC) });
+        ilZ();
+        this.VXj = false;
+        AppMethodBeat.o(71586);
         return true;
         paramInt1 = 0;
         break;
       }
     }
-    if ((paramm instanceof j))
+    if ((paramp instanceof m))
     {
-      paramString = (j)paramm;
+      paramString = (m)paramp;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramm = paramString.uby;
-        if (paramm == null)
+        paramp = paramString.VxH;
+        if (paramp == null)
         {
-          ab.e("MicroMsg.WalletSuccPageAwardWidget", "drawLottery end, response is null!!");
-          AppMethodBeat.o(47974);
+          Log.e("MicroMsg.WalletSuccPageAwardWidget", "drawLottery end, response is null!!");
+          AppMethodBeat.o(71586);
           return true;
         }
-        paramInt1 = paramm.koj;
-        localObject1 = paramm.kok;
-        localObject2 = paramm.ukr;
-        if (paramm.ukr != null)
+        paramInt1 = paramp.wuz;
+        localObject1 = paramp.wuA;
+        localObject2 = paramp.VIz;
+        if (paramp.VIz != null)
         {
-          paramString = paramm.ukr.wQZ;
-          ab.i("MicroMsg.WalletSuccPageAwardWidget", "drawLottery end, retcode: %s, retmsg: %s, exposure_info: %s, single_exposure_info_list: %s", new Object[] { Integer.valueOf(paramInt1), localObject1, localObject2, paramString });
-          if ((paramm.ukr == null) || (paramm.ukr.wQZ == null) || (paramm.ukr.wQZ.size() <= 0)) {
-            break label1222;
+          paramString = paramp.VIz.ZvT;
+          Log.i("MicroMsg.WalletSuccPageAwardWidget", "drawLottery end, retcode: %s, retmsg: %s, exposure_info: %s, single_exposure_info_list: %s", new Object[] { Integer.valueOf(paramInt1), localObject1, localObject2, paramString });
+          if ((paramp.VIz == null) || (paramp.VIz.ZvT == null) || (paramp.VIz.ZvT.size() <= 0)) {
+            break label1219;
           }
-          paramString = paramm.ukr;
-          localObject1 = paramm.ukr.wRb;
-          if (paramm.ukr.wRb == null) {
-            break label1217;
+          paramString = paramp.VIz;
+          localObject1 = paramp.VIz.ZvV;
+          if (paramp.VIz.ZvV == null) {
+            break label1214;
           }
-          paramInt1 = paramm.ukr.wRb.CLj;
-          label1082:
-          ab.i("MicroMsg.WalletSuccPageAwardWidget", "drawLottery end, exposureInfo: %s, btninfo: %s, btn_op_type: %s", new Object[] { paramString, localObject1, Integer.valueOf(paramInt1) });
+          paramInt1 = paramp.VIz.ZvV.ajFt;
+          label1079:
+          Log.i("MicroMsg.WalletSuccPageAwardWidget", "drawLottery end, exposureInfo: %s, btninfo: %s, btn_op_type: %s", new Object[] { paramString, localObject1, Integer.valueOf(paramInt1) });
           paramInt1 = i;
-          if (this.qnc.wRb != null) {
-            paramInt1 = this.qnc.wRb.CLj;
+          if (this.OnC.ZvV != null) {
+            paramInt1 = this.OnC.ZvV.ajFt;
           }
-          this.qnc = paramm.ukr;
-          if ((this.qnc.wRb != null) && (paramm.ukr.wRb != null) && (paramm.ukr.wRb.CLj == 4))
+          this.OnC = paramp.VIz;
+          if ((this.OnC.ZvV != null) && (paramp.VIz.ZvV != null) && (paramp.VIz.ZvV.ajFt == 4))
           {
-            ab.i("MicroMsg.WalletSuccPageAwardWidget", "update exposureInfo, new btn_op_type is 4");
-            this.qnc.wRb.CLj = paramInt1;
+            Log.i("MicroMsg.WalletSuccPageAwardWidget", "update exposureInfo, new btn_op_type is 4");
+            this.OnC.ZvV.ajFt = paramInt1;
           }
-          cWP();
+          ilT();
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(47974);
+        AppMethodBeat.o(71586);
         return true;
         paramString = "";
         break;
-        label1217:
+        label1214:
         paramInt1 = 0;
-        break label1082;
-        label1222:
-        cWQ();
+        break label1079;
+        label1219:
+        ilU();
         continue;
-        cWQ();
+        ilU();
       }
     }
-    AppMethodBeat.o(47974);
+    AppMethodBeat.o(71586);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WalletSuccPageAwardWidget
  * JD-Core Version:    0.7.0.1
  */

@@ -20,35 +20,35 @@ import java.lang.reflect.Method;
 public class AppSetting
 {
   private static String A;
-  public static int a = 537064379;
-  public static final String a = "6602";
+  public static int a = 537064872;
+  public static final String a = "6604";
   public static final boolean a = true;
   public static int b = 0;
   public static final String b = "130";
   public static final boolean b = false;
   public static int c = 0;
-  public static final String c = "CF75553BDA1428DF";
+  public static final String c = "C98F0817C2C04949";
   public static boolean c = false;
   public static int d = 0;
-  public static final String d = "master";
+  public static final String d = "603";
   public static boolean d = false;
   public static final String e = "AQQ_2013 4.6";
   public static final boolean e = true;
   public static final String f = "2013";
   public static boolean f = false;
-  public static final String g = "6.0.2";
+  public static final String g = "6.0.3";
   public static boolean g = false;
   public static final String h = "QQ/5.0";
   public static boolean h = false;
-  public static final String i = "V 6.0.2.6602";
+  public static final String i = "V 6.0.3.6604";
   public static final boolean i = true;
-  public static final String j = "6.0.2.6602";
+  public static final String j = "6.0.3.6604";
   public static boolean j = false;
-  public static final String k = "6.0.2.6602.2020-04-24.rmaster.YingYongBao";
+  public static final String k = "6.0.3.6604.2020-06-24.r603.YingYongBao";
   public static boolean k = false;
-  public static final String l = "2013 6.0.2";
+  public static final String l = "2013 6.0.3";
   public static final boolean l = true;
-  public static final String m = "2013 6.0.26602";
+  public static final String m = "2013 6.0.36604";
   public static boolean m = false;
   public static String n;
   public static boolean n = false;
@@ -88,7 +88,7 @@ public class AppSetting
   
   public static final String a()
   {
-    return "CF75553BDA1428DF";
+    return "C98F0817C2C04949";
   }
   
   public static String a(Context paramContext)
@@ -268,7 +268,7 @@ public class AppSetting
       if (str2.length() > 20) {
         localObject2 = str2.substring(0, 20);
       }
-      y = "AQQ_2013 4.6/2013 6.0.26602&NA_0/000000&ADR&" + A + "18" + "&" + (String)localObject2 + "&" + x + "&" + "CF75553BDA1428DF" + "&" + v + "&" + "V3";
+      y = "AQQ_2013 4.6/2013 6.0.36604&NA_0/000000&ADR&" + A + "18" + "&" + (String)localObject2 + "&" + x + "&" + "C98F0817C2C04949" + "&" + v + "&" + "V3";
       return y;
       label299:
       str2 = "ALL";
@@ -277,7 +277,7 @@ public class AppSetting
   
   public static String c()
   {
-    return "2013 6.0.2";
+    return "2013 6.0.3";
   }
 }
 

@@ -1,37 +1,35 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 
 @Deprecated
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final com.tencent.mm.pluginsdk.n createApplication()
   {
     return null;
   }
   
-  public final at createSubCore()
+  public final be createSubCore()
   {
-    AppMethodBeat.i(129143);
-    g localg = new g();
-    AppMethodBeat.o(129143);
-    return localg;
+    AppMethodBeat.i(43979);
+    com.tencent.mm.plugin.appbrand.app.n localn = new com.tencent.mm.plugin.appbrand.app.n();
+    AppMethodBeat.o(43979);
+    return localn;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.Plugin
  * JD-Core Version:    0.7.0.1
  */

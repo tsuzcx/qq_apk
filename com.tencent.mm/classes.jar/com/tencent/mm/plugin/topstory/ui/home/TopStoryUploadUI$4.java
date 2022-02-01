@@ -1,58 +1,60 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.plugin.sns.ui.SnsEditText;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.modelimage.loader.b.h;
+import com.tencent.mm.modelimage.loader.c.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class TopStoryUploadUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements h
 {
   TopStoryUploadUI$4(TopStoryUploadUI paramTopStoryUploadUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final Bitmap a(String paramString, View paramView, b paramb)
   {
-    AppMethodBeat.i(1683);
-    if (this.thy.isFinishing())
+    AppMethodBeat.i(271759);
+    Log.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap url = ".concat(String.valueOf(paramString)));
+    if ((paramb == null) || (paramb.bitmap == null) || (paramb.bitmap.isRecycled()))
     {
-      AppMethodBeat.o(1683);
-      return false;
+      Log.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap bitmap is null");
+      AppMethodBeat.o(271759);
+      return null;
     }
-    if (System.currentTimeMillis() - TopStoryUploadUI.d(this.thy) < 500L)
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(1683);
-      return false;
+      Log.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap url is null");
+      AppMethodBeat.o(271759);
+      return null;
     }
-    com.tencent.mm.plugin.report.service.h.qsU.e(17080, new Object[] { Integer.valueOf(4), Integer.valueOf(2), TopStoryUploadUI.e(this.thy) });
-    TopStoryUploadUI.a(this.thy, System.currentTimeMillis());
-    paramMenuItem = TopStoryUploadUI.f(this.thy).getText().toString();
-    if (paramMenuItem.length() > 200)
+    if (!(paramView instanceof ImageView))
     {
-      com.tencent.mm.ui.base.h.b(this.thy, this.thy.getString(2131304037), "", true);
-      AppMethodBeat.o(1683);
-      return true;
+      Log.w("micromsg.topstory.TopStoryUploadUI", "onProcessBitmap view not ImageView");
+      AppMethodBeat.o(271759);
+      return null;
     }
-    if (!TopStoryUploadUI.bDC())
+    if (paramb.bitmap.getWidth() < paramb.bitmap.getHeight()) {
+      ((ImageView)paramView).setScaleType(ImageView.ScaleType.FIT_CENTER);
+    }
+    for (;;)
     {
-      com.tencent.mm.ui.base.h.b(this.thy, this.thy.getString(2131300044), "", true);
-      e.qrI.idkeyStat(1032L, 1L, 1L, false);
-      AppMethodBeat.o(1683);
-      return true;
+      AppMethodBeat.o(271759);
+      return null;
+      ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
-    long l = System.currentTimeMillis();
-    String str = TopStoryUploadUI.cIV();
-    f localf = g.ca(TopStoryUploadUI.e(this.thy), true);
-    this.thy.a(l, TopStoryUploadUI.g(this.thy), paramMenuItem, str, localf, TopStoryUploadUI.h(this.thy));
-    AppMethodBeat.o(1683);
-    return true;
   }
+  
+  public final void b(String paramString, View paramView, b paramb) {}
+  
+  public final void c(String paramString, View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.TopStoryUploadUI.4
  * JD-Core Version:    0.7.0.1
  */

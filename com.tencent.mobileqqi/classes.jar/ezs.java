@@ -1,15 +1,13 @@
 import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.data.CircleBuddy;
-import java.util.Comparator;
 
 public class ezs
-  implements Comparator
+  implements Runnable
 {
   public ezs(CircleManager paramCircleManager) {}
   
-  public int a(CircleBuddy paramCircleBuddy1, CircleBuddy paramCircleBuddy2)
+  public void run()
   {
-    return paramCircleBuddy2.randomCloseness - paramCircleBuddy1.randomCloseness;
+    this.a.c(CircleManager.a(this.a));
   }
 }
 

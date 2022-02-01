@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class RecoveryHandleService
   extends IntentService
 {
-  private static volatile boolean ajH;
+  private static volatile boolean anj;
   
   public RecoveryHandleService()
   {
@@ -28,14 +28,14 @@ public class RecoveryHandleService
   public void onDestroy()
   {
     com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "onDestroy", new Object[0]);
-    com.tencent.recovery.a.d.nK();
+    com.tencent.recovery.a.d.oy();
     super.onDestroy();
   }
   
   protected final void onHandleIntent(Intent paramIntent)
   {
     boolean bool = paramIntent.getBooleanExtra("KeyIsRetry", false);
-    int i = com.tencent.recovery.e.a.C(this);
+    int i = com.tencent.recovery.e.a.D(this);
     String str = paramIntent.getStringExtra("KeyReportUploadClassName");
     Object localObject2 = paramIntent.getStringExtra("KeyReportHandleClassName");
     RecoveryData localRecoveryData = (RecoveryData)paramIntent.getParcelableExtra("KeyRecoveryData");
@@ -51,16 +51,16 @@ public class RecoveryHandleService
     if (paramIntent != null) {
       paramIntent.cancel();
     }
-    if (ajH) {
+    if (anj) {
       com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "handle already running", new Object[0]);
     }
     for (;;)
     {
       com.tencent.recovery.a.a(this, localArrayList, str);
-      ajH = false;
+      anj = false;
       stopSelf();
       return;
-      ajH = true;
+      anj = true;
       com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "try to increase recovery process priority", new Object[0]);
       try
       {
@@ -70,7 +70,7 @@ public class RecoveryHandleService
         }
         for (;;)
         {
-          com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "start to handle %s's exception uuid: %s threadId: %d", new Object[] { localRecoveryData.processName, localRecoveryData.ajr, Long.valueOf(Thread.currentThread().getId()) });
+          com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "start to handle %s's exception uuid: %s threadId: %d", new Object[] { localRecoveryData.processName, localRecoveryData.amT, Long.valueOf(Thread.currentThread().getId()) });
           paramIntent = new com.tencent.recovery.model.a();
           try
           {
@@ -86,7 +86,7 @@ public class RecoveryHandleService
               com.tencent.recovery.a.d.a("Recovery.RecoveryHandleService", localException, "handle", new Object[0]);
             }
           }
-          if ((paramIntent.ajy) && (!bool))
+          if ((paramIntent.ana) && (!bool))
           {
             localObject1 = new Intent();
             ((Intent)localObject1).setClassName(this, (String)localObject2);
@@ -98,11 +98,11 @@ public class RecoveryHandleService
             if (localObject2 != null) {
               ((PendingIntent)localObject2).cancel();
             }
-            localObject2 = com.tencent.recovery.b.d.A(this);
+            localObject2 = com.tencent.recovery.b.d.B(this);
             localObject1 = PendingIntent.getService(this, 1000002, (Intent)localObject1, 0);
-            l = System.currentTimeMillis() + ((com.tencent.recovery.b.a)localObject2).nP() - 2000L;
+            l = System.currentTimeMillis() + ((com.tencent.recovery.b.a)localObject2).oD() - 2000L;
             ((AlarmManager)getSystemService("alarm")).set(0, l, (PendingIntent)localObject1);
-            com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "startAlarm pendingIntent success: %d will retry %s", new Object[] { Integer.valueOf(((PendingIntent)localObject1).hashCode()), com.tencent.recovery.e.a.k(l) });
+            com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "startAlarm pendingIntent success: %d will retry %s", new Object[] { Integer.valueOf(((PendingIntent)localObject1).hashCode()), com.tencent.recovery.e.a.n(l) });
           }
           com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "handle recoveryHandleResult %s", new Object[] { paramIntent });
           break;
@@ -114,7 +114,7 @@ public class RecoveryHandleService
       {
         for (;;)
         {
-          com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "try to increase recovery process priority error:" + paramIntent, new Object[0]);
+          com.tencent.recovery.a.d.c("Recovery.RecoveryHandleService", "try to increase recovery process priority error:".concat(String.valueOf(paramIntent)), new Object[0]);
         }
       }
     }

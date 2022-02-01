@@ -1,64 +1,74 @@
 package com.tencent.mm.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.chatting.ao;
+import com.tencent.mm.R.g;
+import com.tencent.mm.ui.chatting.at;
 
 public class SplashImageView
   extends ImageView
 {
+  private at adKr;
   private boolean hasDrawed;
-  private ao zfl;
   
   public SplashImageView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(29908);
-    setImageResource(2130840935);
-    AppMethodBeat.o(29908);
+    AppMethodBeat.i(33760);
+    gmt();
+    AppMethodBeat.o(33760);
   }
   
   public SplashImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(29909);
-    setImageResource(2130840935);
-    AppMethodBeat.o(29909);
+    AppMethodBeat.i(33761);
+    gmt();
+    AppMethodBeat.o(33761);
   }
   
   public SplashImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(29910);
-    setImageResource(2130840935);
-    AppMethodBeat.o(29910);
+    AppMethodBeat.i(33762);
+    gmt();
+    AppMethodBeat.o(33762);
+  }
+  
+  private void gmt()
+  {
+    AppMethodBeat.i(33763);
+    setBackgroundDrawable(getResources().getDrawable(R.g.ui_loading));
+    AppMethodBeat.o(33763);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(29911);
+    AppMethodBeat.i(33764);
     super.onDraw(paramCanvas);
+    setBackgroundDrawable(getResources().getDrawable(R.g.ui_loading));
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.zfl != null) {
-        this.zfl.bEm();
+      if (this.adKr != null) {
+        this.adKr.fBx();
       }
     }
-    AppMethodBeat.o(29911);
+    AppMethodBeat.o(33764);
   }
   
-  public void setOnDrawListener(ao paramao)
+  public void setOnDrawListener(at paramat)
   {
-    this.zfl = paramao;
+    this.adKr = paramat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.SplashImageView
  * JD-Core Version:    0.7.0.1
  */

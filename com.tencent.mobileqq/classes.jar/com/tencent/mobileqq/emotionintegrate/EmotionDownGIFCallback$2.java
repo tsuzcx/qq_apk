@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import aqaj;
-import aqak;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
-public class EmotionDownGIFCallback$2
+class EmotionDownGIFCallback$2
   implements Runnable
 {
-  public EmotionDownGIFCallback$2(aqaj paramaqaj, int paramInt) {}
+  EmotionDownGIFCallback$2(EmotionDownGIFCallback paramEmotionDownGIFCallback, int paramInt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmotionDownGIFCallback", 2, new Object[] { "onDownloadProgress:", Integer.valueOf(this.a) });
     }
-    if (aqaj.a(this.this$0).get() != null) {
-      ((aqak)aqaj.a(this.this$0).get()).a(this.a, aqaj.a(this.this$0));
+    if (EmotionDownGIFCallback.a(this.this$0).get() != null) {
+      ((EmotionDownGIFCallback.UiCallback)EmotionDownGIFCallback.a(this.this$0).get()).a(this.a, EmotionDownGIFCallback.b(this.this$0));
     }
   }
 }

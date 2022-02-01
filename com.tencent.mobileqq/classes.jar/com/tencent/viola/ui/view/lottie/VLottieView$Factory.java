@@ -8,8 +8,9 @@ public class VLottieView$Factory
   
   public static IVLottieViewProxy createVLottieView(Context paramContext)
   {
-    if (vlottieViewCreater != null) {
-      return vlottieViewCreater.createLottieView(paramContext);
+    IVlottieViewCreater localIVlottieViewCreater = vlottieViewCreater;
+    if (localIVlottieViewCreater != null) {
+      return localIVlottieViewCreater.createLottieView(paramContext);
     }
     return null;
   }
@@ -21,7 +22,7 @@ public class VLottieView$Factory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.lottie.VLottieView.Factory
  * JD-Core Version:    0.7.0.1
  */

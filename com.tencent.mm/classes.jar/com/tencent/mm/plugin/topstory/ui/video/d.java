@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.aj;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
 {
   public static final h c(b paramb)
   {
-    AppMethodBeat.i(1709);
+    AppMethodBeat.i(126068);
     int n = paramb.getLayoutManager().getChildCount();
     int j;
-    label73:
+    label71:
     int k;
     Object localObject;
     if (n == 0)
@@ -21,40 +21,40 @@ public class d
       paramb = null;
       if (!(paramb instanceof h))
       {
-        AppMethodBeat.o(1709);
+        AppMethodBeat.o(126068);
         return null;
       }
     }
     else if (paramb.getLayoutManager().getClipToPadding())
     {
-      j = paramb.cJj().iI() + paramb.cJj().iK() / 2;
+      j = paramb.hNC().JE() + paramb.hNC().JG() / 2;
       int i = 2147483647;
       k = 0;
       localObject = null;
-      label81:
+      label79:
       if (k >= n) {
-        break label166;
+        break label164;
       }
       View localView = paramb.getLayoutManager().getChildAt(k);
-      int m = Math.abs(paramb.cJj().bh(localView) + paramb.cJj().bl(localView) / 2 - j);
+      int m = Math.abs(paramb.hNC().bs(localView) + paramb.hNC().bw(localView) / 2 - j);
       if (m >= i) {
-        break label194;
+        break label191;
       }
       localObject = localView;
       i = m;
     }
-    label166:
-    label194:
+    label164:
+    label191:
     for (;;)
     {
       k += 1;
-      break label81;
-      j = paramb.cJj().getEnd() / 2;
-      break label73;
-      paramb = paramb.getRecyclerView().bb(localObject);
+      break label79;
+      j = paramb.hNC().getEnd() / 2;
+      break label71;
+      paramb = paramb.getRecyclerView().bj(localObject);
       break;
       paramb = (h)paramb;
-      AppMethodBeat.o(1709);
+      AppMethodBeat.o(126068);
       return paramb;
     }
   }
@@ -67,7 +67,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.d
  * JD-Core Version:    0.7.0.1
  */

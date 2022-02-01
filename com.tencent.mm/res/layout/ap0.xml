@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="51.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/nf" android:textColor="@color/xr" android:ellipsize="end" android:gravity="center" android:id="@id/e1m" android:background="@drawable/zr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="47.0dip" android:text="@string/d16" android:singleLine="true" />
-    <View android:background="@drawable/bhy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/d31" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:layout_gravity="center_vertical" android:id="@id/d30" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cd" android:layout_marginEnd="@dimen/d0" />
+        <FrameLayout android:layout_gravity="end|center" android:id="@id/d2t" android:background="@drawable/a49" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:importantForAccessibility="noHideDescendants" android:layout_marginEnd="@dimen/cp">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/d2u" android:layout_width="6.0dip" android:layout_height="12.0dip" android:src="@drawable/bxj" android:rotation="90.0" app:iconColor="@color/FG_1" />
+        </FrameLayout>
+    </FrameLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/d32" android:paddingBottom="@dimen/df" android:visibility="gone" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="-8.0dip" android:layout_below="@id/d31" android:paddingStart="@dimen/cd" android:layout_marginEnd="@dimen/d0" />
+</RelativeLayout>

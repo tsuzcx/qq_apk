@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.model;
 
-import alud;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QQARSession$18$1
@@ -11,12 +11,12 @@ class QQARSession$18$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131710537), 1).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131907810), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.18.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="100" android:drawable="@drawable/b4m" />
-    <item android:duration="100" android:drawable="@drawable/b4n" />
-    <item android:duration="100" android:drawable="@drawable/b4o" />
-    <item android:duration="100" android:drawable="@drawable/b4p" />
-    <item android:duration="100" android:drawable="@drawable/b4q" />
+    <item android:duration="100" android:drawable="@drawable/bt7" />
+    <item android:duration="100" android:drawable="@drawable/bt8" />
+    <item android:duration="100" android:drawable="@drawable/bt9" />
+    <item android:duration="100" android:drawable="@drawable/bt_" />
+    <item android:duration="100" android:drawable="@drawable/bta" />
 </animation-list>

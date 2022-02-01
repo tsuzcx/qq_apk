@@ -1,38 +1,23 @@
 package android.arch.lifecycle;
 
-import android.support.annotation.RestrictTo;
+import com.tencent.token.bi;
+import com.tencent.token.bj.a;
+import com.tencent.token.bm;
+import com.tencent.token.bq;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class CompositeGeneratedAdaptersObserver
   implements GenericLifecycleObserver
 {
-  private final GeneratedAdapter[] mGeneratedAdapters;
+  private final bi[] a;
   
-  CompositeGeneratedAdaptersObserver(GeneratedAdapter[] paramArrayOfGeneratedAdapter)
+  public CompositeGeneratedAdaptersObserver(bi[] paramArrayOfbi)
   {
-    this.mGeneratedAdapters = paramArrayOfGeneratedAdapter;
+    this.a = paramArrayOfbi;
   }
   
-  public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
+  public final void a(bm parambm, bj.a parama)
   {
-    int j = 0;
-    MethodCallsLogger localMethodCallsLogger = new MethodCallsLogger();
-    GeneratedAdapter[] arrayOfGeneratedAdapter = this.mGeneratedAdapters;
-    int k = arrayOfGeneratedAdapter.length;
-    int i = 0;
-    while (i < k)
-    {
-      arrayOfGeneratedAdapter[i].callMethods(paramLifecycleOwner, paramEvent, false, localMethodCallsLogger);
-      i += 1;
-    }
-    arrayOfGeneratedAdapter = this.mGeneratedAdapters;
-    k = arrayOfGeneratedAdapter.length;
-    i = j;
-    while (i < k)
-    {
-      arrayOfGeneratedAdapter[i].callMethods(paramLifecycleOwner, paramEvent, true, localMethodCallsLogger);
-      i += 1;
-    }
+    new bq();
   }
 }
 

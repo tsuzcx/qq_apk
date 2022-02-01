@@ -1,24 +1,22 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import uyl;
-import uyo;
-import uzk;
-import uzl;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest.MsgTabNodeListResponse;
 
-public class MsgTabNodeListLoader$2$1
+class MsgTabNodeListLoader$2$1
   implements Runnable
 {
-  public MsgTabNodeListLoader$2$1(uyo paramuyo, uzk paramuzk, uzl paramuzl, ErrorMessage paramErrorMessage) {}
+  MsgTabNodeListLoader$2$1(MsgTabNodeListLoader.2 param2, MsgTabNodeListRequest paramMsgTabNodeListRequest, MsgTabNodeListRequest.MsgTabNodeListResponse paramMsgTabNodeListResponse, ErrorMessage paramErrorMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Uyo.a.a(this.jdField_a_of_type_Uzk, this.jdField_a_of_type_Uzl, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    this.d.a.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,43 +9,45 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.plugin.websearch.a.e;
+import com.tencent.mm.plugin.websearch.a.f;
+import com.tencent.mm.ui.af;
 
 public class MoreFooter
   extends LinearLayout
 {
   private Context context;
-  private TextView gui;
-  private View kgr;
+  private View lBX;
+  private TextView mll;
   
   public MoreFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(91584);
+    AppMethodBeat.i(116759);
     this.context = paramContext;
-    paramContext = (ViewGroup)w.hM(this.context).inflate(2130971325, this);
-    this.gui = ((TextView)paramContext.findViewById(2131821071));
-    this.kgr = paramContext.findViewById(2131821003);
-    AppMethodBeat.o(91584);
+    paramContext = (ViewGroup)af.mU(this.context).inflate(a.f.widget_footer_more, this);
+    this.mll = ((TextView)paramContext.findViewById(a.e.tip_tv));
+    this.lBX = paramContext.findViewById(a.e.root);
+    AppMethodBeat.o(116759);
   }
   
   public void setOnClickLsn(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(91586);
-    this.kgr.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(91586);
+    AppMethodBeat.i(116761);
+    this.lBX.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(116761);
   }
   
   public void setTitle(String paramString)
   {
-    AppMethodBeat.i(91585);
-    this.gui.setText(paramString);
-    AppMethodBeat.o(91585);
+    AppMethodBeat.i(116760);
+    this.mll.setText(paramString);
+    AppMethodBeat.o(116760);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.footer.MoreFooter
  * JD-Core Version:    0.7.0.1
  */

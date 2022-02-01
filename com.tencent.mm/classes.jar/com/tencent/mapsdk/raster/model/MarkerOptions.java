@@ -2,6 +2,7 @@ package com.tencent.mapsdk.raster.model;
 
 import android.view.View;
 import android.view.animation.Animation;
+import com.tencent.tencentmap.mapsdk.maps.model.MarkerCollisionItem;
 
 public final class MarkerOptions
 {
@@ -23,6 +24,7 @@ public final class MarkerOptions
   private boolean isGps = false;
   private boolean isVisible = true;
   private LatLng latLng;
+  private MarkerCollisionItem[] mCollisions;
   private IndoorInfo mIndoorInfo;
   private View markerView;
   private float rotation = 0.0F;
@@ -82,6 +84,11 @@ public final class MarkerOptions
   public final float getAnchorV()
   {
     return this.anchorV;
+  }
+  
+  public final MarkerCollisionItem[] getCollisions()
+  {
+    return this.mCollisions;
   }
   
   public final String getContentDescription()
@@ -252,6 +259,11 @@ public final class MarkerOptions
     return this;
   }
   
+  public final void setCollisions(MarkerCollisionItem... paramVarArgs)
+  {
+    this.mCollisions = paramVarArgs;
+  }
+  
   public final MarkerOptions setHidingAnination(Animation paramAnimation)
   {
     this.hidingAnination = paramAnimation;
@@ -296,7 +308,7 @@ public final class MarkerOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.MarkerOptions
  * JD-Core Version:    0.7.0.1
  */

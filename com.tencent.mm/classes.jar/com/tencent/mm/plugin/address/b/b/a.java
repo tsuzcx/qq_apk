@@ -1,42 +1,17 @@
 package com.tencent.mm.plugin.address.b.b;
 
-import android.app.Dialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.HashSet;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 
 public final class a
-  implements f
+  implements h
 {
-  private HashSet<m> gKK;
-  private HashSet<m> gKL;
-  private Dialog gKM;
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(16721);
-    if (this.gKL.contains(paramm))
-    {
-      this.gKL.remove(paramm);
-      ab.d("MicroMsg.InvoiceNetSceneMgr", "has find scene ");
-    }
-    for (;;)
-    {
-      if ((this.gKL.isEmpty()) && (this.gKK.isEmpty()) && (this.gKM != null))
-      {
-        this.gKM.dismiss();
-        this.gKM = null;
-      }
-      AppMethodBeat.o(16721);
-      return;
-      if (this.gKK.contains(paramm))
-      {
-        this.gKK.remove(paramm);
-        ab.d("MicroMsg.InvoiceNetSceneMgr", "has find forcescenes ");
-      }
-    }
+    AppMethodBeat.i(20764);
+    AppMethodBeat.o(20764);
+    throw null;
   }
 }
 

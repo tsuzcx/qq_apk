@@ -1,93 +1,45 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
-import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.HashMap;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.vending.e.b;
+import kotlin.Metadata;
+import kotlin.ah;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandRuntimeLaunchConditionForMainProcessIPC;", "", "()V", "connect", "", "waitFor", "block", "Lkotlin/Function0;", "lifecycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "IPCInvokerConnector", "IPCInvokerConnectorAutoReleaseCallback", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  private static final HashMap<String, MMToClientEvent> hwA;
+  public static final d rve;
   
   static
   {
-    AppMethodBeat.i(86953);
-    hwA = new HashMap();
-    AppMethodBeat.o(86953);
+    AppMethodBeat.i(319399);
+    rve = new d();
+    AppMethodBeat.o(319399);
   }
   
-  public static <T extends Parcelable> void a(String paramString, T paramT)
+  public static final void a(kotlin.g.a.a<ah> parama, b<? super com.tencent.mm.vending.e.a> paramb)
   {
-    AppMethodBeat.i(86952);
-    synchronized (hwA)
+    AppMethodBeat.i(319396);
+    String str = MainProcessIPCService.PROCESS_NAME;
+    IPCVoid localIPCVoid = IPCVoid.mzv;
+    if (parama == null) {}
+    for (parama = null;; parama = new d.b(parama, paramb))
     {
-      paramString = (MMToClientEvent)hwA.get(paramString);
-      if ((paramString == null) || (paramT == null) || (paramT == null)) {}
-    }
-    AppMethodBeat.o(86952);
-  }
-  
-  public static void b(MMToClientEvent paramMMToClientEvent)
-  {
-    AppMethodBeat.i(86948);
-    ab.i("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId:%s, MMToClientEvent.hash:%d", new Object[] { paramMMToClientEvent.appId, Integer.valueOf(paramMMToClientEvent.hashCode()) });
-    if (paramMMToClientEvent.appId == null)
-    {
-      ab.e("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId is null!!!");
-      AppMethodBeat.o(86948);
-      return;
-    }
-    synchronized (hwA)
-    {
-      if (hwA.get(paramMMToClientEvent.appId) == null)
-      {
-        hwA.put(paramMMToClientEvent.appId, paramMMToClientEvent);
-        AppMethodBeat.o(86948);
-        return;
-      }
-      ab.d("MicroMsg.MMToClientEventCenter", "The CommonConfig is already exist!~ so replace it");
-      hwA.remove(paramMMToClientEvent.appId);
-      hwA.put(paramMMToClientEvent.appId, paramMMToClientEvent);
-    }
-  }
-  
-  public static void be(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(86951);
-    ab.i("MicroMsg.MMToClientEventCenter", "notify unread:%d", new Object[] { Integer.valueOf(paramInt) });
-    synchronized (hwA)
-    {
-      paramString = (MMToClientEvent)hwA.get(paramString);
-      if (paramString == null) {}
-    }
-    ab.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
-    AppMethodBeat.o(86951);
-  }
-  
-  public static void c(MMToClientEvent paramMMToClientEvent)
-  {
-    AppMethodBeat.i(86949);
-    ab.i("MicroMsg.MMToClientEventCenter", "unregister MMToClientEvent.appId:%s", new Object[] { paramMMToClientEvent.appId });
-    synchronized (hwA)
-    {
-      hwA.remove(paramMMToClientEvent.appId);
-      AppMethodBeat.o(86949);
+      XIPCInvoker.a(str, localIPCVoid, d.a.class, (f)parama);
+      AppMethodBeat.o(319396);
       return;
     }
   }
   
-  public static void j(String paramString1, int paramInt, String paramString2)
+  public static final void connect()
   {
-    AppMethodBeat.i(86950);
-    ab.i("MicroMsg.MMToClientEventCenter", "notify appId:%s, type:%d, config:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
-    MMToClientEvent localMMToClientEvent;
-    synchronized (hwA)
-    {
-      localMMToClientEvent = (MMToClientEvent)hwA.get(paramString1);
-      if (localMMToClientEvent == null) {}
-    }
-    ab.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
-    AppMethodBeat.o(86950);
+    AppMethodBeat.i(319392);
+    a(null, null);
+    AppMethodBeat.o(319392);
   }
 }
 

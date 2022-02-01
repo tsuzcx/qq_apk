@@ -1,48 +1,52 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.mobileqq.widget.CameraFrameLayout;
 import com.tencent.mobileqq.widget.CameraFrameLayoutProxy;
+import com.tencent.mobileqq.widget.CameraFrameLayoutProxy.OnDoubleClick;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.permission.PermissionManager;
 
 public class hfo
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+  extends CameraFrameLayoutProxy.OnDoubleClick
 {
-  public hfo(CameraFrameLayoutProxy paramCameraFrameLayoutProxy) {}
-  
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public hfo(CameraFrameLayoutProxy paramCameraFrameLayoutProxy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraFrameLayoutProxy", 2, "onSharedPreferenceChanged begin");
-    }
-    if ((paramSharedPreferences == null) || (CameraFrameLayoutProxy.a(this.a) == null)) {}
-    do
+    super(paramCameraFrameLayoutProxy);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = (BaseActivity)CameraFrameLayoutProxy.a(this.a);
+    Object localObject = (QQAppInterface)paramMotionEvent.getAppRuntime();
+    if (!paramMotionEvent.permissionManager.checkPermission("android.permission.CAMERA"))
     {
-      do
-      {
-        QQAppInterface localQQAppInterface;
-        do
-        {
-          return;
-          localQQAppInterface = (QQAppInterface)((BaseActivity)CameraFrameLayoutProxy.a(this.a)).getAppRuntime();
-        } while ((!CameraUtil.a(localQQAppInterface, paramString)) || (!CameraUtil.a(localQQAppInterface, CameraFrameLayoutProxy.a(this.a))) || (!CameraUtil.b(localQQAppInterface)));
-        boolean bool = paramSharedPreferences.getBoolean(paramString, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("CameraFrameLayoutProxy", 2, "onSharedPreferenceChanged isOpen:" + bool + "  mIsOpen:" + this.a.b);
-        }
-        if (!bool) {
-          break;
-        }
-        if ((CameraFrameLayoutProxy.a(this.a) != null) && (CameraFrameLayoutProxy.a(this.a).b())) {
-          this.a.b = false;
-        }
-      } while (this.a.b);
-      CameraFrameLayoutProxy.a(this.a);
-      return;
-    } while (!this.a.b);
-    CameraFrameLayoutProxy.b(this.a);
+      localObject = new PermissionsDialog();
+      localhfp = new hfp(this, paramMotionEvent);
+      ((PermissionsDialog)localObject).a(paramMotionEvent, new String[] { "android.permission.CAMERA" }, localhfp);
+    }
+    while ((!CameraUtil.a((QQAppInterface)localObject, CameraFrameLayoutProxy.a(this.a))) || (!CameraUtil.b((QQAppInterface)localObject)) || ((CameraFrameLayoutProxy.a(this.a) != null) && (!CameraFrameLayoutProxy.a(this.a).a())))
+    {
+      hfp localhfp;
+      return false;
+    }
+    boolean bool = CameraUtil.a((QQAppInterface)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraFrameLayoutProxy", 2, "onDoubleTap isOpen:" + bool);
+    }
+    if (bool)
+    {
+      ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "background", "bkground_shut", 0, 0, "0", "", "", "");
+      CameraUtil.b((QQAppInterface)localObject);
+      return false;
+    }
+    ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "background", "bkground_open", 0, 0, "", "", "", "");
+    CameraUtil.a((QQAppInterface)localObject);
+    CameraFrameLayoutProxy.a(this.a).setDoubleClickFlag(true);
+    return false;
   }
 }
 

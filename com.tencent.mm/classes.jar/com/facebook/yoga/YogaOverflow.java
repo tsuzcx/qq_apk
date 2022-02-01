@@ -8,12 +8,12 @@ public enum YogaOverflow
   
   static
   {
-    AppMethodBeat.i(144176);
+    AppMethodBeat.i(18199);
     VISIBLE = new YogaOverflow("VISIBLE", 0, 0);
     HIDDEN = new YogaOverflow("HIDDEN", 1, 1);
     SCROLL = new YogaOverflow("SCROLL", 2, 2);
     $VALUES = new YogaOverflow[] { VISIBLE, HIDDEN, SCROLL };
-    AppMethodBeat.o(144176);
+    AppMethodBeat.o(18199);
   }
   
   private YogaOverflow(int paramInt)
@@ -23,24 +23,24 @@ public enum YogaOverflow
   
   public static YogaOverflow fromInt(int paramInt)
   {
-    AppMethodBeat.i(144175);
+    AppMethodBeat.i(18198);
     switch (paramInt)
     {
     default: 
       localObject = new IllegalArgumentException("Unknown enum value: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(144175);
+      AppMethodBeat.o(18198);
       throw ((Throwable)localObject);
     case 0: 
       localObject = VISIBLE;
-      AppMethodBeat.o(144175);
+      AppMethodBeat.o(18198);
       return localObject;
     case 1: 
       localObject = HIDDEN;
-      AppMethodBeat.o(144175);
+      AppMethodBeat.o(18198);
       return localObject;
     }
     Object localObject = SCROLL;
-    AppMethodBeat.o(144175);
+    AppMethodBeat.o(18198);
     return localObject;
   }
   
@@ -51,7 +51,7 @@ public enum YogaOverflow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.facebook.yoga.YogaOverflow
  * JD-Core Version:    0.7.0.1
  */

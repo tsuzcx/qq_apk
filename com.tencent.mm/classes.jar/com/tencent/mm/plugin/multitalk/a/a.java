@@ -1,191 +1,93 @@
 package com.tencent.mm.plugin.multitalk.a;
 
-import android.database.Cursor;
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bg.f;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.pb.common.c.g;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.a.f;
+import com.tencent.mm.plugin.multitalk.a.h;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/agingOptimize/MultiTalkAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends j<f>
+  extends MMBaseAccessibilityConfig
 {
-  public static final String[] SQL_CREATE;
-  public static LinkedHashMap<String, Class> mMm;
-  
-  static
+  public a(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(54109);
-    SQL_CREATE = new String[] { j.getCreateSQLs(f.info, "MultiTalkInfo"), "CREATE INDEX IF NOT EXISTS idx_MultiTalkInfo_key  on MultiTalkInfo  (  wxGroupId )" };
-    mMm = new a.1();
-    AppMethodBeat.o(54109);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(284647);
+    AppMethodBeat.o(284647);
   }
   
-  public a(e parame)
+  public final void initConfig()
   {
-    super(parame, f.info, "MultiTalkInfo", null);
+    AppMethodBeat.i(284657);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(a.f.multitalk_main_ui);
+    localConfigHelper.view(a.e.invite_main_layout).descFormat(a.h.multitalk_invite).valueByView(a.e.invite_main_nickname_tv);
+    localConfigHelper.view(a.e.small_avatar_introduce_layout).desc((b)a.Lin);
+    localConfigHelper.view(a.e.small_avatar_iv_container).disable();
+    localConfigHelper.view(a.e.introduce_tv).disable();
+    localConfigHelper.view(a.e.invite_main_avatar_iv).disable();
+    root(a.f.main_ui_talking_avatar_cell).view(a.e.mask_view).descFormat(a.h.multitalk_members_waiting).valueByView(a.e.avatar_username_tv);
+    localConfigHelper = root(a.f.multitalk_icons_layout);
+    localConfigHelper.view(a.e.multitalk_icons_container).descFormat(a.h.multitalk_icon).valueByView(a.e.icon_name);
+    localConfigHelper.view(a.e.icon_name).disable();
+    localConfigHelper = root(a.f.multitalk_frame_layout);
+    localConfigHelper.view(a.e.frame_avatar).desc((b)new b(this));
+    localConfigHelper.view(a.e.frame_video).desc((b)new c(this));
+    AppMethodBeat.o(284657);
   }
   
-  public final f Uj(String paramString)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<View, String>
   {
-    AppMethodBeat.i(54107);
-    ab.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "getMultiTaklInfo for wxGroupId = %s", new Object[] { paramString });
-    paramString = rawQuery("select wxGroupId, groupId, roomId, roomKey, routeId, inviteUserName,memberCount,createTime,state from MultiTalkInfo where wxGroupId = '" + paramString + "'", new String[0]);
-    if (paramString != null) {}
-    try
+    public static final a Lin;
+    
+    static
     {
-      if (paramString.moveToNext())
-      {
-        f localf = new f();
-        localf.field_wxGroupId = paramString.getString(0);
-        localf.field_groupId = paramString.getString(1);
-        localf.field_roomId = paramString.getInt(2);
-        localf.field_roomKey = paramString.getLong(3);
-        localf.field_routeId = paramString.getInt(4);
-        localf.field_inviteUserName = paramString.getString(5);
-        localf.field_memberCount = paramString.getInt(6);
-        localf.field_createTime = paramString.getLong(7);
-        localf.field_state = paramString.getInt(8);
-        ab.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "getMultiTalkInfo got value for wxGroupId = %s, groupId=%s, roomId = %d, roomKey = %d, routeId = %d,inviteUser=%s,memberCount=%d, createTime=%d,field_state=%d", new Object[] { localf.field_wxGroupId, localf.field_groupId, Integer.valueOf(localf.field_roomId), Long.valueOf(localf.field_roomKey), Integer.valueOf(localf.field_routeId), localf.field_inviteUserName, Integer.valueOf(localf.field_memberCount), Long.valueOf(localf.field_createTime), Integer.valueOf(localf.field_state) });
-        return localf;
-      }
-      return null;
+      AppMethodBeat.i(284631);
+      Lin = new a();
+      AppMethodBeat.o(284631);
     }
-    catch (Exception localException)
+    
+    a()
     {
-      ab.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "getMultiTalkInfo error! " + localException.toString());
-      return null;
-    }
-    finally
-    {
-      if (paramString != null) {
-        paramString.close();
-      }
-      AppMethodBeat.o(54107);
+      super();
     }
   }
   
-  public final boolean a(f paramf)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements b<View, String>
   {
-    AppMethodBeat.i(54105);
-    String str = paramf.field_wxGroupId;
-    if (g.isEmpty(str))
+    b(a parama)
     {
-      ab.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "save. multiTalkInfo wxGroupId is empty!");
-      AppMethodBeat.o(54105);
-      return false;
-    }
-    ab.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "save. wxGroupId=%s, groupId=%s, roomId =%d, roomKey =%d, routeId =%d, inviteUser=%s,memberCount=%d,createTime=%d", new Object[] { str, paramf.field_groupId, Integer.valueOf(paramf.field_roomId), Long.valueOf(paramf.field_roomKey), Integer.valueOf(paramf.field_routeId), paramf.field_inviteUserName, Integer.valueOf(paramf.field_memberCount), Long.valueOf(paramf.field_createTime) });
-    try
-    {
-      boolean bool = insert(paramf);
-      ab.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "insert ret " + bool + " for id=%s" + str);
-      AppMethodBeat.o(54105);
-      return bool;
-    }
-    catch (Exception paramf)
-    {
-      ab.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "save mulitalTalk failure!" + paramf.toString());
-      AppMethodBeat.o(54105);
-    }
-    return false;
-  }
-  
-  public final boolean b(f paramf)
-  {
-    AppMethodBeat.i(54106);
-    String str = paramf.field_wxGroupId;
-    if (g.isEmpty(str))
-    {
-      ab.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "update. multiTalkInfo wxGroupId is empty!");
-      AppMethodBeat.o(54106);
-      return false;
-    }
-    ab.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "update. wxGroupId=%s, groupId=%s, roomId =%d, roomKey =%d, routeId =%d, inviteUser=%s,memberCount=%d,createTime=%d,state=%d", new Object[] { str, paramf.field_groupId, Integer.valueOf(paramf.field_roomId), Long.valueOf(paramf.field_roomKey), Integer.valueOf(paramf.field_routeId), paramf.field_inviteUserName, Integer.valueOf(paramf.field_memberCount), Long.valueOf(paramf.field_createTime), Integer.valueOf(paramf.field_state) });
-    try
-    {
-      boolean bool = update(paramf, new String[] { "wxGroupId" });
-      ab.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "update ret " + bool + " for id=%s" + str);
-      AppMethodBeat.o(54106);
-      return bool;
-    }
-    catch (Exception paramf)
-    {
-      ab.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "save mulitalTalk failure!" + paramf.toString());
-      AppMethodBeat.o(54106);
-    }
-    return false;
-  }
-  
-  public final LinkedList<f> bTJ()
-  {
-    AppMethodBeat.i(54104);
-    Cursor localCursor = rawQuery("select wxGroupId, groupId, roomId, roomKey, routeId, createTime from MultiTalkInfo", new String[0]);
-    LinkedList localLinkedList = new LinkedList();
-    for (;;)
-    {
-      if (localCursor != null) {}
-      try
-      {
-        if (localCursor.moveToNext())
-        {
-          f localf = new f();
-          localf.field_wxGroupId = localCursor.getString(0);
-          localf.field_groupId = localCursor.getString(1);
-          localf.field_roomId = localCursor.getInt(2);
-          localf.field_roomKey = localCursor.getLong(3);
-          localf.field_routeId = localCursor.getInt(4);
-          localf.field_createTime = localCursor.getLong(5);
-          ab.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "getMultiTalkInfoList got value for wxGroupId = %s, groupId=%s, roomId = %d, roomKey = %d, routeId = %d, createTime=%d", new Object[] { localf.field_wxGroupId, localf.field_groupId, Integer.valueOf(localf.field_roomId), Long.valueOf(localf.field_roomKey), Integer.valueOf(localf.field_routeId), Long.valueOf(localf.field_createTime) });
-          localLinkedList.add(localf);
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        ab.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "getMultiTalkInfoList error!");
-        for (;;)
-        {
-          return localLinkedList;
-          if (localCursor != null) {
-            localCursor.close();
-          }
-        }
-      }
-      finally
-      {
-        if (localCursor != null) {
-          localCursor.close();
-        }
-        AppMethodBeat.o(54104);
-      }
+      super();
     }
   }
   
-  public final boolean qD(String paramString)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements b<View, String>
   {
-    AppMethodBeat.i(54108);
-    ab.i("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "delete id = %s", new Object[] { paramString });
-    try
+    c(a parama)
     {
-      super.execSQL("MultiTalkInfo", "delete from MultiTalkInfo where wxGroupId = \"" + paramString + "\"");
-      AppMethodBeat.o(54108);
-      return true;
+      super();
     }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.MultiTalk.storage.MultiTalkInfoStorage", "delete fail for wxGroupId = ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(54108);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.a.a
  * JD-Core Version:    0.7.0.1
  */

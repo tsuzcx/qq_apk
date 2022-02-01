@@ -15,23 +15,31 @@ class ConstructorConstructor$3
       Object localObject = this.val$constructor.newInstance(null);
       return localObject;
     }
-    catch (InstantiationException localInstantiationException)
-    {
-      throw new RuntimeException("Failed to invoke " + this.val$constructor + " with no args", localInstantiationException);
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      throw new RuntimeException("Failed to invoke " + this.val$constructor + " with no args", localInvocationTargetException.getTargetException());
-    }
     catch (IllegalAccessException localIllegalAccessException)
     {
       throw new AssertionError(localIllegalAccessException);
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to invoke ");
+      localStringBuilder.append(this.val$constructor);
+      localStringBuilder.append(" with no args");
+      throw new RuntimeException(localStringBuilder.toString(), localInvocationTargetException.getTargetException());
+    }
+    catch (InstantiationException localInstantiationException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to invoke ");
+      localStringBuilder.append(this.val$constructor);
+      localStringBuilder.append(" with no args");
+      throw new RuntimeException(localStringBuilder.toString(), localInstantiationException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.ConstructorConstructor.3
  * JD-Core Version:    0.7.0.1
  */

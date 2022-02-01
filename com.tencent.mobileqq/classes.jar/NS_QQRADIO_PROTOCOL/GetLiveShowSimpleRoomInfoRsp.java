@@ -8,12 +8,12 @@ public final class GetLiveShowSimpleRoomInfoRsp
   extends JceStruct
 {
   static RecordPlayInfo cache_recordPlayInfo = new RecordPlayInfo();
-  public int happychat;
-  public int isRecordVideo;
+  public int happychat = 0;
+  public int isRecordVideo = 0;
   public String multiVideoStreamUrl = "";
-  public RecordPlayInfo recordPlayInfo;
+  public RecordPlayInfo recordPlayInfo = null;
   public String roomName = "";
-  public int roomStatus;
+  public int roomStatus = 0;
   public String roomid = "";
   public String uid = "";
   public String videoRtmpUrl = "";
@@ -48,32 +48,38 @@ public final class GetLiveShowSimpleRoomInfoRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.roomid != null) {
-      paramJceOutputStream.write(this.roomid, 0);
+    Object localObject = this.roomid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 1);
+    localObject = this.uid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.roomName != null) {
-      paramJceOutputStream.write(this.roomName, 2);
+    localObject = this.roomName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.roomStatus, 3);
-    if (this.multiVideoStreamUrl != null) {
-      paramJceOutputStream.write(this.multiVideoStreamUrl, 4);
+    localObject = this.multiVideoStreamUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.videoRtmpUrl != null) {
-      paramJceOutputStream.write(this.videoRtmpUrl, 5);
+    localObject = this.videoRtmpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.isRecordVideo, 6);
-    if (this.recordPlayInfo != null) {
-      paramJceOutputStream.write(this.recordPlayInfo, 7);
+    localObject = this.recordPlayInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
     paramJceOutputStream.write(this.happychat, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_PROTOCOL.GetLiveShowSimpleRoomInfoRsp
  * JD-Core Version:    0.7.0.1
  */

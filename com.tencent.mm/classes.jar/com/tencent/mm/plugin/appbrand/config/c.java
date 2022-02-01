@@ -1,106 +1,101 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfigTrimHelper;", "", "()V", "TAG", "", "trimOffInjectConfigFields", "", "appId", "injectConfig", "Lorg/json/JSONObject;", "pruneWxConfigByPage", "", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends j<b>
 {
-  public static final String[] fkl;
-  public final e gVl;
+  public static final c qWD;
   
   static
   {
-    AppMethodBeat.i(101788);
-    fkl = new String[] { j.getCreateSQLs(b.fkk, "AppBrandCommonKVData") };
-    AppMethodBeat.o(101788);
+    AppMethodBeat.i(135557);
+    qWD = new c();
+    AppMethodBeat.o(135557);
   }
   
-  public c(e parame)
+  public static final void c(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    super(parame, b.fkk, "AppBrandCommonKVData", null);
-    this.gVl = parame;
-  }
-  
-  public final boolean bG(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(101784);
-    if (bo.isNullOrNil(paramString1))
+    int j = 0;
+    AppMethodBeat.i(135556);
+    s.u(paramString, "appId");
+    s.u(paramJSONObject, "injectConfig");
+    long l1 = Util.nowMilliSecond();
+    Object localObject = paramJSONObject.optJSONObject("tabBar");
+    int m;
+    if (localObject != null)
     {
-      AppMethodBeat.o(101784);
-      return false;
-    }
-    b localb = new b();
-    localb.field_key = paramString1;
-    localb.field_value = paramString2;
-    if (bo.isNullOrNil(localb.field_value))
-    {
-      if (!super.delete(localb, new String[0]))
+      localObject = ((JSONObject)localObject).optJSONArray("list");
+      if (localObject != null)
       {
-        AppMethodBeat.o(101784);
-        return true;
+        m = ((JSONArray)localObject).length();
+        if (m <= 0) {}
       }
-      AppMethodBeat.o(101784);
-      return false;
     }
-    boolean bool = super.replace(localb);
-    AppMethodBeat.o(101784);
-    return bool;
-  }
-  
-  public final String get(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(101785);
-    if (bo.isNullOrNil(paramString1))
+    int k;
+    for (int i = 0;; i = k)
     {
-      AppMethodBeat.o(101785);
-      return paramString2;
+      k = i + 1;
+      ((JSONArray)localObject).getJSONObject(i).remove("iconData");
+      ((JSONArray)localObject).getJSONObject(i).remove("selectedIconData");
+      if (k >= m)
+      {
+        localObject = paramJSONObject.optJSONArray("subPackages");
+        if (localObject != null)
+        {
+          m = ((JSONArray)localObject).length();
+          if (m <= 0) {}
+        }
+        for (i = 0;; i = k)
+        {
+          k = i + 1;
+          ((JSONArray)localObject).getJSONObject(i).remove("pages");
+          if (k >= m)
+          {
+            localObject = paramJSONObject.optJSONArray("subpackages");
+            if (localObject != null)
+            {
+              k = ((JSONArray)localObject).length();
+              if (k <= 0) {}
+            }
+            for (i = j;; i = j)
+            {
+              j = i + 1;
+              ((JSONArray)localObject).getJSONObject(i).remove("pages");
+              if (j >= k)
+              {
+                if (paramBoolean)
+                {
+                  paramJSONObject.remove("page");
+                  paramJSONObject.remove("preloadRule");
+                }
+                paramJSONObject.remove("preloadResources");
+                paramJSONObject.remove("preloadSubpackages");
+                paramJSONObject.remove("manualSplashScreen");
+                paramJSONObject.remove("useCommandBuffer");
+                paramJSONObject.remove("permission");
+                paramJSONObject.remove("navigateToMiniProgramAppIdList");
+                long l2 = Util.nowMilliSecond();
+                Log.d("Luggage.WXA.AppBrandAppConfigTrimHelper", "trimOffInjectConfigFields appId[" + paramString + "] cost[" + (l2 - l1) + "ms]");
+                AppMethodBeat.o(135556);
+                return;
+              }
+            }
+          }
+        }
+      }
     }
-    b localb = new b();
-    localb.field_key = paramString1;
-    if (super.get(localb, new String[0]))
-    {
-      paramString1 = localb.field_value;
-      AppMethodBeat.o(101785);
-      return paramString1;
-    }
-    AppMethodBeat.o(101785);
-    return paramString2;
-  }
-  
-  public final boolean qD(String paramString)
-  {
-    AppMethodBeat.i(101786);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(101786);
-      return false;
-    }
-    b localb = new b();
-    localb.field_key = paramString;
-    localb.field_value = get(paramString, "");
-    if ((TextUtils.isEmpty(localb.field_value)) || (super.delete(localb, new String[0])))
-    {
-      AppMethodBeat.o(101786);
-      return true;
-    }
-    AppMethodBeat.o(101786);
-    return false;
-  }
-  
-  public final void zY(String paramString)
-  {
-    AppMethodBeat.i(101787);
-    super.execSQL("AppBrandCommonKVData", String.format("delete from %s where %s like '%s%%'", new Object[] { "AppBrandCommonKVData", "key", paramString }));
-    AppMethodBeat.o(101787);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.c
  * JD-Core Version:    0.7.0.1
  */

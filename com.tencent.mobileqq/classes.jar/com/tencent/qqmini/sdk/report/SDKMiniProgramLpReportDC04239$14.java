@@ -1,27 +1,30 @@
 package com.tencent.qqmini.sdk.report;
 
-import android.os.Bundle;
-import bgtu;
-import bhcn;
+import com.tencent.qqmini.sdk.entry.MiniAppExposureManager.BaseExposureReport;
+import java.util.Iterator;
+import java.util.List;
 
-public final class SDKMiniProgramLpReportDC04239$14
+final class SDKMiniProgramLpReportDC04239$14
   implements Runnable
 {
+  SDKMiniProgramLpReportDC04239$14(List paramList) {}
+  
   public void run()
   {
-    if (bhcn.a() != null)
+    Iterator localIterator = this.val$appConfigList.iterator();
+    while (localIterator.hasNext())
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable("app_config", bhcn.a());
-      localBundle.putLong("add_duration_ms", bhcn.a());
-      bgtu.a().a("record_duration", localBundle, null);
-      bhcn.b();
+      MiniAppExposureManager.BaseExposureReport localBaseExposureReport = (MiniAppExposureManager.BaseExposureReport)localIterator.next();
+      if (localBaseExposureReport != null) {
+        localBaseExposureReport.report();
+      }
     }
+    MiniProgramReporter.getInstance().flush();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.14
  * JD-Core Version:    0.7.0.1
  */

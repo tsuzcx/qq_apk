@@ -8,24 +8,24 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.kandian.ad.api.R.styleable;
 import java.math.BigDecimal;
 
 public class AdRatingBar
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 1;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_b_of_type_Boolean = true;
-  private float jdField_c_of_type_Float;
-  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean a;
+  private int b;
+  private float c;
   private float d;
   private float e;
+  private float f;
+  private float g;
+  private Drawable h;
+  private Drawable i;
+  private Drawable j;
+  private int k = 1;
+  private boolean l = true;
   
   public AdRatingBar(Context paramContext)
   {
@@ -47,132 +47,125 @@ public class AdRatingBar
   private ImageView a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
     paramContext = new ImageView(paramContext);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(Math.round(this.jdField_b_of_type_Float), Math.round(this.jdField_c_of_type_Float));
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(Math.round(this.d), Math.round(this.e));
     if (!paramBoolean2) {
-      localMarginLayoutParams.rightMargin = Math.round(this.e);
+      localMarginLayoutParams.rightMargin = Math.round(this.g);
     }
     paramContext.setLayoutParams(localMarginLayoutParams);
-    paramContext.setPadding(0, 0, Math.round(this.d), 0);
+    paramContext.setPadding(0, 0, Math.round(this.f), 0);
     if (paramBoolean1)
     {
-      paramContext.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramContext.setImageDrawable(this.h);
       return paramContext;
     }
-    paramContext.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    paramContext.setImageDrawable(this.i);
     return paramContext;
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     setOrientation(0);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AdRatingBar);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.g);
     try
     {
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(7);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(4);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(6);
-      this.jdField_b_of_type_Float = paramAttributeSet.getDimension(12, 60.0F);
-      this.jdField_c_of_type_Float = paramAttributeSet.getDimension(8, 120.0F);
-      this.d = paramAttributeSet.getDimension(10, 0.0F);
-      this.e = paramAttributeSet.getDimension(9, 0.0F);
-      this.jdField_a_of_type_Int = paramAttributeSet.getInteger(13, 5);
-      this.jdField_a_of_type_Float = paramAttributeSet.getFloat(1, 0.0F);
-      this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(0, true);
-      paramAttributeSet.recycle();
-      int i = 0;
-      for (;;)
-      {
-        if (i >= this.jdField_a_of_type_Int) {
-          break label185;
-        }
-        if (i != this.jdField_a_of_type_Int - 1) {
-          break;
-        }
-        bool = true;
-        addView(a(paramContext, this.jdField_b_of_type_Boolean, bool));
-        i += 1;
-      }
+      this.j = paramAttributeSet.getDrawable(R.styleable.l);
+      this.h = paramAttributeSet.getDrawable(R.styleable.j);
+      this.i = paramAttributeSet.getDrawable(R.styleable.k);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-        continue;
-        boolean bool = false;
-      }
-      label185:
-      setStar(this.jdField_a_of_type_Float);
+      localOutOfMemoryError.printStackTrace();
     }
+    this.d = paramAttributeSet.getDimension(R.styleable.p, 60.0F);
+    this.e = paramAttributeSet.getDimension(R.styleable.m, 120.0F);
+    this.f = paramAttributeSet.getDimension(R.styleable.o, 0.0F);
+    this.g = paramAttributeSet.getDimension(R.styleable.n, 0.0F);
+    this.b = paramAttributeSet.getInteger(R.styleable.q, 5);
+    this.c = paramAttributeSet.getFloat(R.styleable.i, 0.0F);
+    this.a = paramAttributeSet.getBoolean(R.styleable.h, true);
+    paramAttributeSet.recycle();
+    int m = 0;
+    for (;;)
+    {
+      int n = this.b;
+      if (m >= n) {
+        break;
+      }
+      boolean bool;
+      if (m == n - 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      addView(a(paramContext, this.l, bool));
+      m += 1;
+    }
+    setStar(this.c);
   }
   
   public void setRatable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    int i = 0;
-    while (i < getChildCount())
+    this.a = paramBoolean;
+    int m = 0;
+    while (m < getChildCount())
     {
-      getChildAt(i).setClickable(paramBoolean);
-      i += 1;
+      getChildAt(m).setClickable(paramBoolean);
+      m += 1;
     }
   }
   
   public void setRating(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
     setStar(paramFloat);
   }
   
   public void setStar(float paramFloat)
   {
-    int j = (int)paramFloat;
-    float f = new BigDecimal(Float.toString(paramFloat)).subtract(new BigDecimal(Integer.toString(j))).floatValue();
-    if (j > this.jdField_a_of_type_Int)
-    {
-      paramFloat = this.jdField_a_of_type_Int;
-      if (paramFloat >= 0.0F) {
-        break label95;
-      }
-      paramFloat = 0.0F;
+    int n = (int)paramFloat;
+    float f2 = new BigDecimal(Float.toString(paramFloat)).subtract(new BigDecimal(Integer.toString(n))).floatValue();
+    int m = this.b;
+    if (n > m) {
+      paramFloat = m;
+    } else {
+      paramFloat = n;
     }
-    label95:
-    for (;;)
+    float f1 = paramFloat;
+    if (paramFloat < 0.0F) {
+      f1 = 0.0F;
+    }
+    m = 0;
+    while (m < f1)
     {
-      i = 0;
-      while (i < paramFloat)
+      ((ImageView)getChildAt(m)).setImageDrawable(this.i);
+      m += 1;
+    }
+    if (f2 > 0.0F)
+    {
+      ((ImageView)getChildAt(n)).setImageDrawable(this.j);
+      m = this.b - 1;
+      while (m >= 1.0F + f1)
       {
-        ((ImageView)getChildAt(i)).setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        i += 1;
-      }
-      paramFloat = j;
-      break;
-    }
-    if (f > 0.0F)
-    {
-      ((ImageView)getChildAt(j)).setImageDrawable(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable);
-      i = this.jdField_a_of_type_Int - 1;
-      while (i >= 1.0F + paramFloat)
-      {
-        ((ImageView)getChildAt(i)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        i -= 1;
+        ((ImageView)getChildAt(m)).setImageDrawable(this.h);
+        m -= 1;
       }
     }
-    int i = this.jdField_a_of_type_Int - 1;
-    while (i >= paramFloat)
+    m = this.b - 1;
+    while (m >= f1)
     {
-      ((ImageView)getChildAt(i)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      i -= 1;
+      ((ImageView)getChildAt(m)).setImageDrawable(this.h);
+      m -= 1;
     }
   }
   
   public void setStarNum(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.AdRatingBar
  * JD-Core Version:    0.7.0.1
  */

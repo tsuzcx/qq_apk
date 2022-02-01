@@ -7,7 +7,7 @@ public class TVKVideoInfoConfig
 {
   private static final int CGI_MAX_RETRY_TIME = 3;
   private static final int CGI_REQUEST_TIME_OUT = 3000;
-  private static TVKVideoInfoConfig mCgiConfig = null;
+  private static TVKVideoInfoConfig mCgiConfig;
   private int mCgiRetryTime = 3;
   private int mCgiTimeoutMS = 3000;
   private String mChecktimeBkUrl;
@@ -178,7 +178,7 @@ public class TVKVideoInfoConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,49 @@
+{
+    "view_type":"UIView",
+    "view_id":"id_friends_biu_wrapper",
+    "layout_type": "layout_relative",
+    "event_type": "cmd_friends_biu_click",
+    "margin_left":"12",
+    "margin_right":"12",
+    "height": {
+        "type":"relative",
+        "value":"46"
+    },
+    "width": {
+      "type": "relative",
+      "value": "351"
+    },
+    "subviews": [
+        {
+            "view_type": "UIView",
+            "view_id": "id_friends_biu_separator_line",
+            "height": {
+                "type": "absolutely",
+                "value": "0.5"
+            },
+            "width": {
+                "type": "match_parent"
+            },
+            "attributes": {
+                "setFrameString:": "-1",
+                "setBackgroundColorString:": "#ebebeb"
+            }
+        },
+        {
+            "view_type":"ReadInJoyFriendsBiu",
+            "view_id":"id_friends_biu",
+            "height":{
+                "type":"match_parent"
+            },
+            "width":{
+                "type":"match_parent"
+            },
+            "attributes":{
+                "setImage:":"-1",
+                "setTextColorString:":"#80000000",
+                "setFontSizeString:":"14",
+                "setBorderWidthString:":"115"
+            }
+        }
+    ]
+}

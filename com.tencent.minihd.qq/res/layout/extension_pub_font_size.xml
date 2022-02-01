@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip">
+        <LinearLayout android:layout_gravity="center_vertical" android:id="@id/fontSize1" android:background="@drawable/common_list_item_background" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/extension_pub_browser_edit_font_a1" android:contentDescription="@string/qb_pabrowser_adjust_font_1" />
+        </LinearLayout>
+        <View android:background="@drawable/extension_pub_browser_font_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <LinearLayout android:layout_gravity="center_vertical" android:id="@id/fontSize2" android:background="@drawable/common_list_item_background" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/extension_pub_browser_edit_font_a2" android:contentDescription="@string/qb_pabrowser_adjust_font_2" />
+        </LinearLayout>
+        <View android:background="@drawable/extension_pub_browser_font_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <LinearLayout android:layout_gravity="center_vertical" android:id="@id/fontSize3" android:background="@drawable/common_list_item_background" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/extension_pub_browser_edit_font_a3" android:contentDescription="@string/qb_pabrowser_adjust_font_3" />
+        </LinearLayout>
+        <View android:background="@drawable/extension_pub_browser_font_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <LinearLayout android:layout_gravity="center_vertical" android:id="@id/fontSize4" android:background="@drawable/common_list_item_background" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/extension_pub_browser_edit_font_a4" android:contentDescription="@string/qb_pabrowser_adjust_font_4" />
+        </LinearLayout>
+        <View android:background="@drawable/extension_pub_browser_font_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <LinearLayout android:layout_gravity="center_vertical" android:id="@id/closeButton" android:background="@drawable/common_list_item_background" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/extension_pub_browser_font_close" android:contentDescription="@string/qb_pabrowser_adjust_font_2" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

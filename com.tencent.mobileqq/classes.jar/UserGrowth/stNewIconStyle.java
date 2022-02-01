@@ -10,13 +10,13 @@ public final class stNewIconStyle
   extends JceStruct
 {
   static Map<String, String> cache_exp = new HashMap();
-  public Map<String, String> exp;
+  public Map<String, String> exp = null;
   public String h5_url = "";
   public String iconUrl = "";
-  public int id;
+  public int id = 0;
   public String img_url = "";
   public String schema_url = "";
-  public int tag_type;
+  public int tag_type = 0;
   public String title = "";
   
   static
@@ -52,31 +52,37 @@ public final class stNewIconStyle
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    Object localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.tag_type, 1);
-    if (this.iconUrl != null) {
-      paramJceOutputStream.write(this.iconUrl, 2);
+    localObject = this.iconUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.img_url != null) {
-      paramJceOutputStream.write(this.img_url, 3);
+    localObject = this.img_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.h5_url != null) {
-      paramJceOutputStream.write(this.h5_url, 4);
+    localObject = this.h5_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.schema_url != null) {
-      paramJceOutputStream.write(this.schema_url, 5);
+    localObject = this.schema_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.id, 6);
-    if (this.exp != null) {
-      paramJceOutputStream.write(this.exp, 7);
+    localObject = this.exp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stNewIconStyle
  * JD-Core Version:    0.7.0.1
  */

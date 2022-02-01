@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/ud" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/root_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j1w">
+        <com.tenpay.sdk.view.GrayTipsLayout android:id="@id/db0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="25.0dip" />
+        <RelativeLayout android:id="@id/d12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <RelativeLayout android:id="@id/d13" android:layout_width="@dimen/b4y" android:layout_height="@dimen/b4x" android:layout_centerInParent="true">
+                <View android:background="@drawable/a4d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+                <com.tencent.mobileqq.widget.RoundImageView android:id="@id/d11" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" app:qwRadius="@dimen/aas" />
+                <include android:id="@id/fam" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" layout="@layout/ae4" />
+                <include android:id="@id/cwb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" layout="@layout/ae6" />
+                <ImageButton android:id="@id/az9" android:background="@null" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/dws" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <include layout="@layout/ae8" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

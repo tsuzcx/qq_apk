@@ -1,24 +1,29 @@
-import android.app.Activity;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.app.Dialog;
+import android.widget.Toast;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
 
-public final class hzr
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+class hzr
+  extends OnPluginInstallListener.Stub
 {
-  public hzr(IPluginManager.PluginParams paramPluginParams, Activity paramActivity) {}
+  hzr(hzq paramhzq) {}
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    if (paramPluginManagerClient.isPluginInstalled(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b))
-    {
-      IPluginManager.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-      IPluginManager.a(null);
-      return;
+    if ((this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a != null) && (this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.isShowing())) {
+      this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a.dismiss();
     }
-    paramPluginManagerClient.installPlugin(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, new hzs(this));
-    IPluginManager.a(null);
+    Toast.makeText(this.a.jdField_a_of_type_AndroidAppActivity, "加载失败", 0).show();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    IPluginManager.d(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
   }
 }
 

@@ -1,89 +1,119 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.b.a;
-import com.tencent.mm.memory.n;
-import com.tencent.mm.plugin.sns.data.i;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.story.api.e;
+import com.tencent.mm.plugin.story.api.f;
+import com.tencent.mm.plugin.story.api.f.a;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class aj
-  extends a
 {
-  int alpha;
-  long nhl;
-  boolean nhm;
-  private Map<String, Boolean> rhV;
+  public static int Qum = 30;
+  public static boolean Qun = false;
+  public static boolean Quo = false;
+  public static boolean Qup = false;
+  public static int Quq = 50;
+  public static boolean Qur = true;
   
-  public aj(String paramString, n paramn, long paramLong)
+  public static void hfX()
   {
-    super(paramString, paramn);
-    AppMethodBeat.i(36535);
-    this.nhm = false;
-    this.alpha = 255;
-    this.rhV = new HashMap();
-    if (paramLong != 0L)
+    AppMethodBeat.i(309408);
+    Qum = ((c)h.ax(c.class)).a(c.a.zff, 30);
+    Qun = ((e)h.az(e.class)).getStoryBasicConfig().a(f.a.Sih);
+    Quo = ((e)h.az(e.class)).getStoryBasicConfig().a(f.a.Sig);
+    Qup = ((e)h.az(e.class)).getStoryBasicConfig().a(f.a.Sii);
+    Quq = ((c)h.ax(c.class)).a(c.a.zfo, 50);
+    if (((c)h.ax(c.class)).a(c.a.zfp, 1) > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.nhl = paramLong;
-      this.rhV.put(paramString, Boolean.TRUE);
-      this.nhm = true;
-      AppMethodBeat.o(36535);
+      Qur = bool;
+      AppMethodBeat.o(309408);
       return;
     }
-    if (!this.rhV.containsKey(paramString))
-    {
-      this.nhl = SystemClock.uptimeMillis();
-      this.rhV.put(paramString, Boolean.TRUE);
-      this.nhm = true;
-    }
-    AppMethodBeat.o(36535);
   }
   
-  public final void draw(Canvas paramCanvas)
+  public static void hfY()
   {
-    AppMethodBeat.i(36536);
-    Rect localRect = getBounds();
-    Bitmap localBitmap = this.feU.XT();
-    if (!i.A(localBitmap))
+    AppMethodBeat.i(309410);
+    Qum = ((c)h.ax(c.class)).a(c.a.zff, 30);
+    Qun = ((e)h.az(e.class)).getStoryBasicConfig().a(f.a.Sih);
+    Quo = ((e)h.az(e.class)).getStoryBasicConfig().a(f.a.Sig);
+    Qup = ((e)h.az(e.class)).getStoryBasicConfig().a(f.a.Sii);
+    if (((c)h.ax(c.class)).a(c.a.zfp, 1) > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramCanvas.drawColor(-1118482);
-      this.nhl = 0L;
-      AppMethodBeat.o(36536);
+      Qur = bool;
+      AppMethodBeat.o(309410);
       return;
     }
-    float f;
-    if (this.nhm)
+  }
+  
+  public static boolean hfZ()
+  {
+    AppMethodBeat.i(309413);
+    boolean bool = ((c)h.ax(c.class)).a(c.a.zxl, true);
+    AppMethodBeat.o(309413);
+    return bool;
+  }
+  
+  public static boolean hga()
+  {
+    AppMethodBeat.i(309415);
+    boolean bool = ((c)h.ax(c.class)).a(c.a.zxh, false);
+    AppMethodBeat.o(309415);
+    return bool;
+  }
+  
+  public static boolean hgb()
+  {
+    AppMethodBeat.i(309416);
+    if ((((c)h.ax(c.class)).a(c.a.zxi, false)) && (MultiProcessMMKV.getDefault().getInt("sns_with_together_at_contact_red", 0) == 0))
     {
-      f = (float)(SystemClock.uptimeMillis() - this.nhl) / 150.0F;
-      if (this.nhl == 0L) {
-        f = 0.0F;
-      }
-      if (f >= 1.0F) {
-        this.nhm = false;
-      }
+      AppMethodBeat.o(309416);
+      return true;
     }
-    else
+    AppMethodBeat.o(309416);
+    return false;
+  }
+  
+  public static boolean hgc()
+  {
+    AppMethodBeat.i(309419);
+    if (MultiProcessMMKV.getDefault().getInt("sns_with_together_red", 0) == 1)
     {
-      this.feS.setAlpha(this.alpha);
-      paramCanvas.drawBitmap(localBitmap, null, localRect, this.feS);
-      AppMethodBeat.o(36536);
-      return;
+      AppMethodBeat.o(309419);
+      return true;
     }
-    int i = (int)(f * this.alpha);
-    this.feS.setAlpha(i);
-    paramCanvas.drawBitmap(localBitmap, null, localRect, this.feS);
-    invalidateSelf();
-    AppMethodBeat.o(36536);
+    AppMethodBeat.o(309419);
+    return false;
+  }
+  
+  public static boolean hgd()
+  {
+    AppMethodBeat.i(309420);
+    if (MultiProcessMMKV.getDefault().getInt("sns_with_together_red", 0) == 0)
+    {
+      AppMethodBeat.o(309420);
+      return true;
+    }
+    AppMethodBeat.o(309420);
+    return false;
+  }
+  
+  public static boolean hge()
+  {
+    AppMethodBeat.i(309421);
+    boolean bool = ((c)h.ax(c.class)).a(c.a.zxm, false);
+    AppMethodBeat.o(309421);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.aj
  * JD-Core Version:    0.7.0.1
  */

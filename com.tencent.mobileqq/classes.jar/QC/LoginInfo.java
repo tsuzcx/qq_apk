@@ -8,8 +8,8 @@ public final class LoginInfo
   extends JceStruct
 {
   public int iKeyType = 1;
-  public int iOpplat;
-  public long lUin;
+  public int iOpplat = 0;
+  public long lUin = 0L;
   public String sClientIp = "";
   public String sClientVer = "";
   public String sSKey = "";
@@ -40,21 +40,24 @@ public final class LoginInfo
   {
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.iKeyType, 1);
-    if (this.sSKey != null) {
-      paramJceOutputStream.write(this.sSKey, 2);
+    String str = this.sSKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.sClientIp != null) {
-      paramJceOutputStream.write(this.sClientIp, 3);
+    str = this.sClientIp;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iOpplat, 4);
-    if (this.sClientVer != null) {
-      paramJceOutputStream.write(this.sClientVer, 5);
+    str = this.sClientVer;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.LoginInfo
  * JD-Core Version:    0.7.0.1
  */

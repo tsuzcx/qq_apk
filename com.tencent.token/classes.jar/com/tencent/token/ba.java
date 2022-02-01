@@ -1,23 +1,45 @@
 package com.tencent.token;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.halley.common.a;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
-final class ba
-  extends BroadcastReceiver
+public final class ba
+  extends JceStruct
 {
-  ba(ax paramax) {}
+  static ArrayList d;
+  public int a = 0;
+  public int b = 0;
+  public ArrayList c = null;
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    try
+    this.a = paramJceInputStream.read(this.a, 0, false);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    if (d == null)
     {
-      a.a().a(new az(this.a, paramIntent));
-      return;
+      d = new ArrayList();
+      az localaz = new az();
+      d.add(localaz);
     }
-    catch (Throwable paramContext) {}
+    this.c = ((ArrayList)paramJceInputStream.read(d, 2, false));
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    int i = this.a;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
+    }
+    i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
+    }
+    ArrayList localArrayList = this.c;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
+    }
   }
 }
 

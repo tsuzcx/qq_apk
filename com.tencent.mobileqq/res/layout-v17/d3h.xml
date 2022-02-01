@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/dvu" android:layout_width="100.0dip" android:layout_height="100.0dip" app:authIconEnable="false" />
+    <RelativeLayout android:gravity="bottom" android:clipChildren="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_weight="1.0">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/oex" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/of1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/qle" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/qcircle_skin_color_text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/xza" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/lqf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/k7x" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/qcircle_skin_color_text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/xya" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/k86" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/qcircle_skin_color_text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/xyx" />
+            </LinearLayout>
+        </LinearLayout>
+        <FrameLayout android:id="@id/pcu" android:background="@drawable/fm7" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_margin="8.0dip" android:layout_marginLeft="-10.0dip" android:layout_below="@id/oex" android:layout_alignParentRight="true">
+            <ImageView android:layout_gravity="center" android:id="@id/pcv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qcircle_skin_icon_profilepage_arrow_maximize" android:scaleType="fitXY" />
+        </FrameLayout>
+        <RelativeLayout android:id="@id/qns" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/pcu" android:layout_below="@id/oex">
+            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:id="@id/qnr" android:background="@drawable/frp" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/y2h" android:layout_weight="1.0" />
+            <com.tencent.biz.qqcircle.widgets.QCircleGuideBubbleView android:id="@id/p7n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="42.0dip" android:layout_marginBottom="-42.0dip" android:layout_below="@id/qnr" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/oet" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/pcu" android:layout_below="@id/qns">
+            <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:gravity="center" android:id="@id/k85" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/xyx" android:layout_weight="0.65" app:qcircle_disable_follow_res="@drawable/fqj" app:qcircle_disable_un_follow_res="@drawable/fqj" app:qcircle_follow_res="@drawable/fr0" app:qcircle_follow_text_color="@color/qcircle_skin_color_text_secondary" app:qcircle_support_special_follow="true" app:qcircle_un_follow_res="@drawable/fry" app:qcircle_un_follow_text_color="@color/qcircle_skin_color_text_ghost" />
+            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/ay4" android:gravity="center" android:id="@id/qnq" android:background="@drawable/fqg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="6.0dip" android:text="@string/xy_" android:layout_weight="0.35" android:layout_marginStart="6.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

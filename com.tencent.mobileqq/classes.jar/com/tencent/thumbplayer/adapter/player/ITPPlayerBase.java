@@ -2,12 +2,16 @@ package com.tencent.thumbplayer.adapter.player;
 
 import android.os.ParcelFileDescriptor;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
+import com.tencent.thumbplayer.api.TPCommonEnum.TPSeekMode;
+import com.tencent.thumbplayer.api.TPCommonEnum.TPSwitchDefMode;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
+import com.tencent.thumbplayer.log.TPLoggerContext;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +25,13 @@ public abstract interface ITPPlayerBase
   
   public abstract void deselectTrack(int paramInt, long paramLong);
   
-  public abstract long getBufferedDurationMs();
-  
   public abstract long getCurrentPositionMs();
   
   public abstract long getDurationMs();
+  
+  public abstract int getNativePlayerId();
+  
+  public abstract long getPlayableDurationMs();
   
   public abstract TPProgramInfo[] getProgramInfo();
   
@@ -51,13 +57,15 @@ public abstract interface ITPPlayerBase
   
   public abstract void seekTo(int paramInt);
   
-  public abstract void seekTo(int paramInt1, int paramInt2);
+  public abstract void seekTo(int paramInt1, @TPCommonEnum.TPSeekMode int paramInt2);
   
   public abstract void selectProgram(int paramInt, long paramLong);
   
   public abstract void selectTrack(int paramInt, long paramLong);
   
   public abstract void setAudioGainRatio(float paramFloat);
+  
+  public abstract void setAudioNormalizeVolumeParams(String paramString);
   
   public abstract void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor);
   
@@ -73,6 +81,8 @@ public abstract interface ITPPlayerBase
   
   public abstract void setOnAudioPcmOutputListener(ITPPlayerBaseListener.IOnAudioPcmOutListener paramIOnAudioPcmOutListener);
   
+  public abstract void setOnAudioProcessOutputListener(ITPPlayerBaseListener.IOnAudioProcessOutListener paramIOnAudioProcessOutListener);
+  
   public abstract void setOnCompletionListener(ITPPlayerBaseListener.IOnCompletionListener paramIOnCompletionListener);
   
   public abstract void setOnErrorListener(ITPPlayerBaseListener.IOnErrorListener paramIOnErrorListener);
@@ -85,7 +95,11 @@ public abstract interface ITPPlayerBase
   
   public abstract void setOnSubtitleDataListener(ITPPlayerBaseListener.IOnSubtitleDataListener paramIOnSubtitleDataListener);
   
+  public abstract void setOnSubtitleFrameOutListener(ITPPlayerBaseListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener);
+  
   public abstract void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener);
+  
+  public abstract void setOnVideoProcessOutputListener(ITPPlayerBaseListener.IOnVideoProcessOutListener paramIOnVideoProcessOutListener);
   
   public abstract void setOnVideoSizeChangedListener(ITPPlayerBaseListener.IOnVideoSizeChangedListener paramIOnVideoSizeChangedListener);
   
@@ -97,17 +111,23 @@ public abstract interface ITPPlayerBase
   
   public abstract void setSurface(Surface paramSurface);
   
+  public abstract void setSurfaceHolder(SurfaceHolder paramSurfaceHolder);
+  
   public abstract void start();
   
   public abstract void stop();
   
-  public abstract void switchDefinition(ITPMediaAsset paramITPMediaAsset, int paramInt, long paramLong);
+  public abstract void switchDefinition(ITPMediaAsset paramITPMediaAsset, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
   
-  public abstract void switchDefinition(String paramString, int paramInt, long paramLong);
+  public abstract void switchDefinition(String paramString, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
+  
+  public abstract void switchDefinition(String paramString, Map<String, String> paramMap, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
+  
+  public abstract void updateLoggerContext(TPLoggerContext paramTPLoggerContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.ITPPlayerBase
  * JD-Core Version:    0.7.0.1
  */

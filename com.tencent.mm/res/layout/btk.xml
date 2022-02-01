@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="ConfigStorage" />
+        <com.tencent.mm.ui.anim.content.AnimSizeFrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.MMEditText android:id="@id/g46" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="@dimen/db" android:hint="local_key" />
+        </com.tencent.mm.ui.anim.content.AnimSizeFrameLayout>
+        <com.tencent.mm.ui.widget.MMEditText android:id="@id/g49" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:hint="local_value" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp">
+            <Button android:layout_gravity="center_horizontal" android:id="@id/g48" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:text="查询" android:layout_weight="1.0" style="@style/og" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/g47" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:text="修改" android:layout_weight="1.0" style="@style/og" />
+        </LinearLayout>
+        <TextView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bx" android:layout_marginBottom="@dimen/cp" android:text="DynamicConfig" />
+        <com.tencent.mm.ui.widget.MMEditText android:id="@id/cag" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:hint="dynamic_key" />
+        <com.tencent.mm.ui.widget.MMEditText android:id="@id/cai" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:hint="dynamic_value" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/cah" android:layout_width="120.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/cp" android:text="@string/a17" style="@style/og" />
+        <TextView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bx" android:layout_marginBottom="@dimen/cp" android:text="MMKV-setting" />
+        <com.tencent.mm.ui.widget.MMEditText android:id="@id/m54" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:hint="mmkv_key" />
+        <com.tencent.mm.ui.widget.MMEditText android:id="@id/m56" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:hint="mmkv_value" />
+        <com.tencent.mm.ui.widget.MMEditText android:id="@id/m57" android:layout_width="fill_parent" android:layout_height="@dimen/c2" android:layout_marginTop="@dimen/cp" android:hint="values类型，1-int, 2,long, 3, string, 4,bool, 5,float, " />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/m55" android:layout_width="120.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/cp" android:text="@string/a17" style="@style/og" />
+    </LinearLayout>
+</ScrollView>

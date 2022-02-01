@@ -10,12 +10,16 @@ class EditLocalVideoActivity$22
   
   public void run()
   {
-    if (EditLocalVideoActivity.a(this.this$0) != null)
+    if (EditLocalVideoActivity.E(this.this$0) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EditLocalVideoActivity", 2, "onCurrentRangeTimeChanged, time=" + this.this$0.a((int)this.a));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onCurrentRangeTimeChanged, time=");
+        localStringBuilder.append(this.this$0.a((int)this.a));
+        QLog.d("EditLocalVideoActivity", 2, localStringBuilder.toString());
       }
-      EditLocalVideoActivity.a(this.this$0).setText(this.this$0.a((int)this.a));
+      EditLocalVideoActivity.E(this.this$0).setText(this.this$0.a((int)this.a));
     }
   }
 }

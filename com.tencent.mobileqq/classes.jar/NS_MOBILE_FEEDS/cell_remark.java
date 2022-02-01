@@ -8,7 +8,7 @@ public final class cell_remark
   extends JceStruct
 {
   static s_shoot_info cache_shoot_info = new s_shoot_info();
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
   public String remark = "";
   public String remark_down = "";
@@ -42,28 +42,33 @@ public final class cell_remark
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.remark != null) {
-      paramJceOutputStream.write(this.remark, 0);
+    Object localObject = this.remark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.remark_up != null) {
-      paramJceOutputStream.write(this.remark_up, 1);
+    localObject = this.remark_up;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.remark_down != null) {
-      paramJceOutputStream.write(this.remark_down, 2);
+    localObject = this.remark_down;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.time, 3);
-    if (this.shoot_info != null) {
-      paramJceOutputStream.write(this.shoot_info, 4);
+    localObject = this.shoot_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.action_type, 5);
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 6);
+    localObject = this.action_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_remark
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class OperBanner
   extends JceStruct
 {
   static MaterialFile cache_stFile = new MaterialFile();
-  public MaterialFile stFile;
+  public MaterialFile stFile = null;
   public String strH5JumpUrl = "";
   public String strSchema = "";
   
@@ -31,17 +31,19 @@ public final class OperBanner
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stFile, 0);
-    if (this.strSchema != null) {
-      paramJceOutputStream.write(this.strSchema, 1);
+    String str = this.strSchema;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strH5JumpUrl != null) {
-      paramJceOutputStream.write(this.strH5JumpUrl, 2);
+    str = this.strH5JumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.OperBanner
  * JD-Core Version:    0.7.0.1
  */

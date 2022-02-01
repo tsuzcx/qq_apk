@@ -8,7 +8,7 @@ public class ApplyJoinShareAlbum
   extends JceStruct
 {
   public String albumid = "";
-  public long owner;
+  public long owner = 0L;
   
   public ApplyJoinShareAlbum() {}
   
@@ -27,14 +27,15 @@ public class ApplyJoinShareAlbum
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.owner, 0);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 1);
+    String str = this.albumid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.ApplyJoinShareAlbum
  * JD-Core Version:    0.7.0.1
  */

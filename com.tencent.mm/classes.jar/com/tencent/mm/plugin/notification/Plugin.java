@@ -1,45 +1,44 @@
 package com.tencent.mm.plugin.notification;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.notification.d.f;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.notification.model.f;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  a piz;
+  c MvX;
   
   public Plugin()
   {
-    AppMethodBeat.i(23097);
-    this.piz = new a();
-    AppMethodBeat.o(23097);
+    AppMethodBeat.i(26723);
+    this.MvX = new c();
+    AppMethodBeat.o(26723);
   }
   
-  public o createApplication()
+  public n createApplication()
   {
-    return this.piz;
+    return this.MvX;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(23098);
-    f localf = f.bYn();
-    AppMethodBeat.o(23098);
+    AppMethodBeat.i(26724);
+    f localf = f.guR();
+    AppMethodBeat.o(26724);
     return localf;
   }
   
-  public b getContactWidgetFactory()
+  public com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.Plugin
  * JD-Core Version:    0.7.0.1
  */

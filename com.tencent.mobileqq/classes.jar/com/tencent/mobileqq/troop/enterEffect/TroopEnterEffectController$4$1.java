@@ -1,30 +1,36 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import bbuf;
-import bbun;
-import bbuo;
+import com.tencent.mobileqq.troop.entereffect.TroopEnterEffectData;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopEnterEffectController$4$1
+class TroopEnterEffectController$4$1
   implements Runnable
 {
-  public TroopEnterEffectController$4$1(bbun parambbun, int paramInt, bbuo parambbuo) {}
+  TroopEnterEffectController$4$1(TroopEnterEffectController.4 param4, int paramInt, TroopEnterEffectData paramTroopEnterEffectData) {}
   
   public void run()
   {
-    QLog.d("TroopEnterEffect.Controller", 2, "download Res isAIO = " + this.jdField_a_of_type_Bbun.a.a);
-    if (this.jdField_a_of_type_Bbun.a.a)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download Res isAIO = ");
+    localStringBuilder.append(this.c.a.i);
+    QLog.d("TroopEnterEffect.Controller", 2, localStringBuilder.toString());
+    if (this.c.a.i)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + this.jdField_a_of_type_Int + " showAnimation");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("download Res callback success id = ");
+        localStringBuilder.append(this.a);
+        localStringBuilder.append(" showAnimation");
+        QLog.d("TroopEnterEffect.Controller", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Bbun.a.a(this.jdField_a_of_type_Bbuo);
+      this.c.a.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.4.1
  * JD-Core Version:    0.7.0.1
  */

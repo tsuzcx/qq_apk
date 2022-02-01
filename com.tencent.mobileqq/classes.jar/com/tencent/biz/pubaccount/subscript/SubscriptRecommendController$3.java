@@ -1,24 +1,25 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import suk;
-import syb;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class SubscriptRecommendController$3
+class SubscriptRecommendController$3
   implements Runnable
 {
-  public SubscriptRecommendController$3(suk paramsuk) {}
+  SubscriptRecommendController$3(SubscriptRecommendController paramSubscriptRecommendController) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Boolean = suk.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (syb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      this.this$0.jdField_a_of_type_Boolean = true;
+    SubscriptRecommendController localSubscriptRecommendController = this.this$0;
+    localSubscriptRecommendController.i = SubscriptRecommendController.d(localSubscriptRecommendController.f);
+    if (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).showPubAccUin(this.this$0.f)) {
+      this.this$0.i = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.3
  * JD-Core Version:    0.7.0.1
  */

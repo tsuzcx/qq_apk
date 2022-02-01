@@ -20,12 +20,12 @@ public class SubscribeMiniProgramMsg$Req
   
   public boolean checkArgs()
   {
-    if ((this.miniProgramAppId == null) || (this.miniProgramAppId.length() == 0))
-    {
-      Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, miniProgramAppId is null");
-      return false;
+    String str = this.miniProgramAppId;
+    if ((str != null) && (str.length() != 0)) {
+      return true;
     }
-    return true;
+    Log.e("MicroMsg.SDK.SubscribeMessage.Req", "checkArgs fail, miniProgramAppId is null");
+    return false;
   }
   
   public void fromBundle(Bundle paramBundle)
@@ -47,7 +47,7 @@ public class SubscribeMiniProgramMsg$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.SubscribeMiniProgramMsg.Req
  * JD-Core Version:    0.7.0.1
  */

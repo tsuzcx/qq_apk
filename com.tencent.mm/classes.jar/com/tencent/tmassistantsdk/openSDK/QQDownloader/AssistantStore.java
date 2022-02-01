@@ -15,15 +15,15 @@ public class AssistantStore
     
     static
     {
-      AppMethodBeat.i(75850);
+      AppMethodBeat.i(102096);
       CONTENT_URI = Uri.parse("content://com.tencent.android.qqdownloader.provider/downloadsinfo?notify=true");
-      AppMethodBeat.o(75850);
+      AppMethodBeat.o(102096);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.QQDownloader.AssistantStore
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class ReadInJoyNativeAdFragment$7
   
   public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.this$0).setProgress(this.a.f);
+    ReadInJoyNativeAdFragment.m(this.this$0).setProgress(this.a.t);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment.7
  * JD-Core Version:    0.7.0.1
  */

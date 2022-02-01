@@ -4,12 +4,12 @@ import android.content.Context;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 final class a$2
-  extends ak
+  extends MMHandler
 {
   a$2(a parama, Looper paramLooper)
   {
@@ -18,19 +18,29 @@ final class a$2
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(36927);
-    if (paramMessage.what == 10008)
-    {
-      ab.i("MicroMsg.AdDownloadApkMgr", "unregister package receiver");
-      ah.getContext().unregisterReceiver(this.rrw.rrp);
-      this.rrw.rrq = false;
+    AppMethodBeat.i(96291);
+    if (paramMessage.what == 10008) {
+      Log.w("MicroMsg.AdDownloadApkMgr", "unregister package receiver");
     }
-    AppMethodBeat.o(36927);
+    try
+    {
+      MMApplicationContext.getContext().unregisterReceiver(this.QIE.QIx);
+      this.QIE.QIy = false;
+      AppMethodBeat.o(96291);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.AdDownloadApkMgr", "unregister package receiver, exp=" + paramMessage.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.2
  * JD-Core Version:    0.7.0.1
  */

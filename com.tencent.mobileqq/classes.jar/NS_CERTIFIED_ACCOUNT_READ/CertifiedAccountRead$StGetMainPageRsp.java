@@ -17,7 +17,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class CertifiedAccountRead$StGetMainPageRsp
   extends MessageMicro<StGetMainPageRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66, 74, 80, 88, 98, 106, 114 }, new String[] { "extInfo", "user", "feedCount", "fansCount", "followCount", "vecFeed", "isFinish", "share", "vecGroup", "ytdFansCount", "viewTotalCount", "pushFeed", "messStatus", "jumpURLs" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null, null, Long.valueOf(0L), Long.valueOf(0L), null, null, null }, StGetMainPageRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBUInt32Field fansCount = PBField.initUInt32(0);
   public final PBUInt32Field feedCount = PBField.initUInt32(0);
@@ -32,10 +32,16 @@ public final class CertifiedAccountRead$StGetMainPageRsp
   public final PBRepeatMessageField<CertifiedAccountMeta.StQQGroup> vecGroup = PBField.initRepeatMessage(CertifiedAccountMeta.StQQGroup.class);
   public final PBUInt64Field viewTotalCount = PBField.initUInt64(0L);
   public final PBUInt64Field ytdFansCount = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66, 74, 80, 88, 98, 106, 114 }, new String[] { "extInfo", "user", "feedCount", "fansCount", "followCount", "vecFeed", "isFinish", "share", "vecGroup", "ytdFansCount", "viewTotalCount", "pushFeed", "messStatus", "jumpURLs" }, new Object[] { null, null, localInteger, localInteger, localInteger, null, localInteger, null, null, Long.valueOf(0L), Long.valueOf(0L), null, null, null }, StGetMainPageRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp
  * JD-Core Version:    0.7.0.1
  */

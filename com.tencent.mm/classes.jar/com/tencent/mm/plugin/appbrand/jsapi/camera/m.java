@@ -1,51 +1,49 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.b;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.config.n;
+import com.tencent.mm.plugin.appbrand.game.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/camera/JsApiInsertCameraWC;", "Lcom/tencent/mm/plugin/appbrand/jsapi/camera/JsApiInsertCamera;", "()V", "invoke", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
-  extends b
+  extends l
 {
-  private static final int CTRL_INDEX = 330;
-  public static final String NAME = "removeCamera";
+  public static final m.a rQB;
   
-  public final boolean b(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  static
   {
-    AppMethodBeat.i(126254);
-    super.b(parame, paramInt, paramView, paramJSONObject);
-    ab.i("MicroMsg.JsApiRemoveCamera", "onRemoveView cameraId=%d", new Object[] { Integer.valueOf(paramInt) });
-    if (!(paramView instanceof CoverViewContainer))
-    {
-      ab.w("MicroMsg.JsApiRemoveCamera", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(126254);
-      return false;
-    }
-    paramView = (View)((CoverViewContainer)paramView).aa(View.class);
-    if ((paramView == null) || (!(paramView instanceof e)))
-    {
-      ab.w("MicroMsg.JsApiRemoveCamera", "the camera view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(126254);
-      return false;
-    }
-    paramView = (e)paramView;
-    parame.b(paramView);
-    parame.b(paramView);
-    parame.b(paramView);
-    paramView.release();
-    AppMethodBeat.o(126254);
-    return true;
+    AppMethodBeat.i(325981);
+    rQB = new m.a((byte)0);
+    AppMethodBeat.o(325981);
   }
   
-  public final int w(JSONObject paramJSONObject)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(126253);
-    int i = paramJSONObject.optInt("cameraId", 0);
-    AppMethodBeat.o(126253);
-    return i;
+    AppMethodBeat.i(325983);
+    s.u(paramf, "component");
+    if (((paramf instanceof com.tencent.mm.plugin.appbrand.game.f.d)) || ((paramf instanceof c)))
+    {
+      Boolean localBoolean = ((com.tencent.mm.plugin.gamelive.d)h.az(com.tencent.mm.plugin.gamelive.d.class)).isGameLiving(paramf.getAppId(), ((n)paramf.aN(n.class)).qYY.qHO);
+      s.s(localBoolean, "plugin(IPluginGameLive::…ass.java).appDebugType())");
+      if (localBoolean.booleanValue())
+      {
+        Log.i("MicroMsg.JsApiInsertCameraWC", "is game living");
+        paramf.callback(paramInt, ZP(s.X("fail: ", a.bt(paramf.getContext(), ba.i.appbrand_game_camera_is_in_live))));
+        AppMethodBeat.o(325983);
+        return;
+      }
+    }
+    super.a(paramf, paramJSONObject, paramInt);
+    AppMethodBeat.o(325983);
   }
 }
 

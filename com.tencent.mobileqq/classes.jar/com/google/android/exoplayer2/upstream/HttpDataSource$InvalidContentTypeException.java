@@ -7,13 +7,13 @@ public final class HttpDataSource$InvalidContentTypeException
   
   public HttpDataSource$InvalidContentTypeException(String paramString, DataSpec paramDataSpec)
   {
-    super("Invalid content type: " + paramString, paramDataSpec, 1);
+    super(localStringBuilder.toString(), paramDataSpec, 1);
     this.contentType = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.HttpDataSource.InvalidContentTypeException
  * JD-Core Version:    0.7.0.1
  */

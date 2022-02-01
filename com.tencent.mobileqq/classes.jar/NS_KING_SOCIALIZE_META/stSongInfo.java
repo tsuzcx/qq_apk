@@ -7,18 +7,18 @@ import com.qq.taf.jce.JceStruct;
 public final class stSongInfo
   extends JceStruct
 {
-  public int copyright;
-  public int iIsOnly;
-  public int iPlayTime;
-  public int iPlayable;
-  public int iSize;
-  public int iSizeHq;
-  public int iSizeSq;
-  public int iSizeStandard;
-  public int iSource;
-  public int iTryBegin;
-  public int iTryEnd;
-  public int iTrySize;
+  public int copyright = 0;
+  public int iIsOnly = 0;
+  public int iPlayTime = 0;
+  public int iPlayable = 0;
+  public int iSize = 0;
+  public int iSizeHq = 0;
+  public int iSizeSq = 0;
+  public int iSizeStandard = 0;
+  public int iSource = 0;
+  public int iTryBegin = 0;
+  public int iTryEnd = 0;
+  public int iTrySize = 0;
   public String strGenre = "";
   public String strH5Url = "";
   public String strLanguage = "";
@@ -28,7 +28,7 @@ public final class stSongInfo
   public String strPlayUrlHq = "";
   public String strPlayUrlSq = "";
   public String strPlayUrlStandard = "";
-  public long uiId;
+  public long uiId = 0L;
   
   public stSongInfo() {}
   
@@ -87,38 +87,47 @@ public final class stSongInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uiId, 0);
-    if (this.strMid != null) {
-      paramJceOutputStream.write(this.strMid, 1);
+    String str = this.strMid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 2);
+    str = this.strName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strGenre != null) {
-      paramJceOutputStream.write(this.strGenre, 3);
+    str = this.strGenre;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iIsOnly, 4);
-    if (this.strLanguage != null) {
-      paramJceOutputStream.write(this.strLanguage, 5);
+    str = this.strLanguage;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.iPlayable, 6);
     paramJceOutputStream.write(this.iTrySize, 7);
     paramJceOutputStream.write(this.iTryBegin, 8);
     paramJceOutputStream.write(this.iTryEnd, 9);
     paramJceOutputStream.write(this.iPlayTime, 10);
-    if (this.strH5Url != null) {
-      paramJceOutputStream.write(this.strH5Url, 11);
+    str = this.strH5Url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.strPlayUrl != null) {
-      paramJceOutputStream.write(this.strPlayUrl, 12);
+    str = this.strPlayUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.strPlayUrlStandard != null) {
-      paramJceOutputStream.write(this.strPlayUrlStandard, 13);
+    str = this.strPlayUrlStandard;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
-    if (this.strPlayUrlHq != null) {
-      paramJceOutputStream.write(this.strPlayUrlHq, 14);
+    str = this.strPlayUrlHq;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
-    if (this.strPlayUrlSq != null) {
-      paramJceOutputStream.write(this.strPlayUrlSq, 15);
+    str = this.strPlayUrlSq;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
     paramJceOutputStream.write(this.iSize, 16);
     paramJceOutputStream.write(this.iSizeStandard, 17);
@@ -130,7 +139,7 @@ public final class stSongInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stSongInfo
  * JD-Core Version:    0.7.0.1
  */

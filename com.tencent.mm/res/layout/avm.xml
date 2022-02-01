@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/lp" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart android:id="@id/bxg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.chatroom.view.GameChatEmojiView android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/eij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_marginBottom="@dimen/bv" android:scaleType="centerInside" android:maxWidth="@dimen/a5n" android:maxHeight="@dimen/a5n" />
+    </RelativeLayout>
 </FrameLayout>

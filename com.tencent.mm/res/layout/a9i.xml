@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/b3_" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/rf" android:gravity="center" android:id="@id/b3a" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-</FrameLayout>
+<com.tencent.mm.plugin.finder.webview.ad.BottomScrollFrameLayout android:orientation="vertical" android:background="@color/al4" android:layout_width="fill_parent" android:layout_height="@dimen/a7k" app:cornerRadius="@dimen/cd"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.webview.RelativeInterceptScrollLayout android:id="@id/lmk" android:background="@color/f" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/a7k" />
+    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/e8y" android:background="@drawable/anj" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/ck" android:layout_centerHorizontal="true" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/e8z" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/e90" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/FG_2" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:layout_gravity="center_horizontal" android:id="@id/e91" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="@string/est" android:singleLine="true" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_gravity="center_horizontal" android:id="@id/beq" android:layout_width="@dimen/d4" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/cr" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/dvx" app:cornerRadius="@dimen/df">
+        <ImageView android:id="@id/bea" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/bet" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/ahb" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/y3" />
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <com.tencent.mm.plugin.scanner.MultiCodeMaskView android:id="@id/h36" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mm.plugin.finder.webview.ad.BottomScrollFrameLayout>

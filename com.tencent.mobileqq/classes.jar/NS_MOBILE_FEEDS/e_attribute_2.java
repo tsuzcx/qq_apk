@@ -8,6 +8,7 @@ public final class e_attribute_2
   public static final int _IsAdvForwardFeeds = 32768;
   public static final int _IsBigPicWithShareParamFeeds = 134217728;
   public static final int _IsCampusRecomFeed = 4096;
+  public static final int _IsCircleShareFeeds = 1073741824;
   public static final int _IsCommentPraiseFeed = 2048;
   public static final int _IsExistDroplistFollowButton = 8192;
   public static final int _IsFamousRankingFeed = 1024;
@@ -38,7 +39,7 @@ public final class e_attribute_2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_attribute_2
  * JD-Core Version:    0.7.0.1
  */

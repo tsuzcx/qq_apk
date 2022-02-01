@@ -11,15 +11,15 @@ final class BindLinkedInUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(13397);
-    BindLinkedInUI.a(this.gtf);
-    AppMethodBeat.o(13397);
+    AppMethodBeat.i(109825);
+    BindLinkedInUI.a(this.pOv);
+    AppMethodBeat.o(109825);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI.10
  * JD-Core Version:    0.7.0.1
  */

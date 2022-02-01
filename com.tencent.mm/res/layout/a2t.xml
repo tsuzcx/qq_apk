@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/mu"
+<LinearLayout android:orientation="vertical" android:id="@id/iwl" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:id="@id/r_" android:baselineAligned="false" style="@style/nk">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/ra" android:layout_width="@dimen/hk" android:layout_height="@dimen/hk" android:layout_marginRight="@dimen/mx" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/ne" android:paddingRight="@dimen/g2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <com.tencent.mm.ui.base.EllipsizeTextView android:id="@id/b95" android:layout_width="0.0dip" android:maxWidth="140.0dip" android:layout_weight="1.0" style="@style/ln" />
-                    <TextView android:id="@id/lq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{2017/03/09}" style="@style/ll" />
-                </LinearLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@id/c2u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
-                    <TextView android:gravity="center|left" android:id="@id/b1w" android:layout_width="fill_parent" android:singleLine="true" style="@style/lm" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-        <View android:id="@id/pm" android:background="@color/x" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="72.0dip" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c2y" android:background="@drawable/emoji_store_v2_single_bar" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="@dimen/m1" android:layout_marginTop="@dimen/if" android:layout_marginBottom="@dimen/if" style="@style/r8">
+        <TextView android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c99" android:singleLine="true" style="@style/ma" />
+        <TextView android:textColor="@color/al6" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/he4" android:background="@drawable/azm" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/ig" android:layout_marginRight="@dimen/ig" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cf8" android:background="@color/al2" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/iq" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/r8">
+        <TextView android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/cfp" android:layout_width="0.0dip" android:text="@string/c6f" android:layout_weight="1.0" style="@style/ma" />
+        <TextView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/cg_" android:layout_width="0.0dip" android:text="@string/c8z" android:drawableRight="@raw/emoji_arrow" android:layout_weight="1.0" style="@style/m_" />
+    </LinearLayout>
 </LinearLayout>

@@ -4,49 +4,49 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.c;
+import com.tencent.mm.wallet_core.e;
 
 public class b
   extends com.tencent.mm.plugin.wallet_core.b.b
 {
-  public final c a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(45499);
+    AppMethodBeat.i(68737);
     paramActivity = super.a(paramActivity, paramBundle);
-    AppMethodBeat.o(45499);
+    AppMethodBeat.o(68737);
     return paramActivity;
   }
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(45501);
+    AppMethodBeat.i(68739);
     if ((paramBundle != null) && (paramBundle.getBoolean("intent_bind_end", false)))
     {
       a(paramActivity, "wallet", ".balance.ui.lqt.WalletLqtSaveFetchUI", -1, new Intent(), true);
-      AppMethodBeat.o(45501);
+      AppMethodBeat.o(68739);
       return;
     }
     paramActivity.finish();
-    AppMethodBeat.o(45501);
+    AppMethodBeat.o(68739);
   }
   
-  public final String bzC()
+  public final String fud()
   {
     return "BalanceFetchCardProcess";
   }
   
-  public final void e(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(45500);
+    AppMethodBeat.i(68738);
     if (paramActivity != null) {
       paramActivity.finish();
     }
-    AppMethodBeat.o(45500);
+    AppMethodBeat.o(68738);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.b
  * JD-Core Version:    0.7.0.1
  */

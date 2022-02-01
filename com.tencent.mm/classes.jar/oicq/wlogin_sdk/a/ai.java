@@ -6,56 +6,56 @@ import oicq.wlogin_sdk.tools.util;
 public final class ai
   extends a
 {
-  public int CNU = 0;
-  public int CNV = 0;
-  public int CNW = 0;
+  public int ajIi = 0;
+  public int ajIj = 0;
+  public int ajIk = 0;
   
   public ai()
   {
-    this.CMD = 326;
+    this.ajGQ = 326;
   }
   
-  public final Boolean erf()
+  public final Boolean kGl()
   {
-    AppMethodBeat.i(96472);
-    if (this.CNn < 12)
+    AppMethodBeat.i(88111);
+    if (this.ajHA < 12)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96472);
+      AppMethodBeat.o(88111);
       return localBoolean;
     }
-    int i = util.ae(this.CMx, this.CNm + 4);
-    if (this.CNn < i + 12)
+    int i = util.aq(this.ajGK, this.ajHz + 4);
+    if (this.ajHA < i + 12)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96472);
+      AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.CNU = i;
-    i = util.ae(this.CMx, this.CNm + 6 + this.CNU);
-    if (this.CNn < this.CNU + 12 + i)
+    this.ajIi = i;
+    i = util.aq(this.ajGK, this.ajHz + 6 + this.ajIi);
+    if (this.ajHA < this.ajIi + 12 + i)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96472);
+      AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.CNV = i;
-    i = util.ae(this.CMx, this.CNm + 10 + this.CNU + this.CNV);
-    if (this.CNn < this.CNU + 12 + this.CNV + i)
+    this.ajIj = i;
+    i = util.aq(this.ajGK, this.ajHz + 10 + this.ajIi + this.ajIj);
+    if (this.ajHA < this.ajIi + 12 + this.ajIj + i)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96472);
+      AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.CNW = i;
+    this.ajIk = i;
     Boolean localBoolean = Boolean.TRUE;
-    AppMethodBeat.o(96472);
+    AppMethodBeat.o(88111);
     return localBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -21,69 +21,79 @@ public final class ad
   
   public final String a()
   {
-    return this.a + ":" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
   
   public final boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      int i;
-      if (paramString.startsWith("["))
+    }
+    int i;
+    if (paramString.startsWith("["))
+    {
+      if (paramString.contains("]"))
       {
-        if (paramString.contains("]"))
+        Object localObject = paramString.split("]");
+        if (localObject.length != 2) {
+          return false;
+        }
+        if (!localObject[1].startsWith(":")) {
+          return false;
+        }
+        paramString = localObject[0].substring(1);
+        if (!as.c(paramString)) {
+          return false;
+        }
+        try
         {
-          paramString = paramString.split("]");
-          if ((paramString.length == 2) && (paramString[1].startsWith(":")))
+          i = Integer.parseInt(localObject[1].substring(1));
+          if (i >= 0)
           {
-            String str = paramString[0].substring(1);
-            if (as.c(str)) {
-              try
-              {
-                i = Integer.parseInt(paramString[1].substring(1));
-                if ((i < 0) || (i > 65535)) {
-                  continue;
-                }
-                this.a = ("[" + str + "]");
-                this.b = i;
-                return true;
-              }
-              catch (NumberFormatException paramString)
-              {
-                paramString.printStackTrace();
-                return false;
-              }
+            if (i > 65535) {
+              return false;
             }
+            localObject = new StringBuilder("[");
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append("]");
+            this.a = ((StringBuilder)localObject).toString();
+            this.b = i;
+            return true;
           }
+          return false;
         }
-      }
-      else
-      {
-        paramString = paramString.split(":");
-        if (paramString.length == 2)
+        catch (NumberFormatException paramString)
         {
-          this.a = paramString[0];
-          if (dg.d(this.a)) {
-            try
-            {
-              this.b = Integer.parseInt(paramString[1]);
-              if (this.b >= 0)
-              {
-                i = this.b;
-                if (i <= 65535) {
-                  return true;
-                }
-              }
-            }
-            catch (NumberFormatException paramString)
-            {
-              paramString.printStackTrace();
-            }
-          }
+          paramString.printStackTrace();
         }
       }
+      return false;
+    }
+    paramString = paramString.split(":");
+    if (paramString.length != 2) {
+      return false;
+    }
+    this.a = paramString[0];
+    if (!dg.d(this.a)) {
+      return false;
+    }
+    try
+    {
+      this.b = Integer.parseInt(paramString[1]);
+      if (this.b >= 0)
+      {
+        i = this.b;
+        return i <= 65535;
+      }
+      return false;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
     }
     return false;
   }
@@ -95,25 +105,27 @@ public final class ad
   
   public final boolean c()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(this.a))
+    if ((!TextUtils.isEmpty(this.a)) && (this.a.charAt(0) == '['))
     {
-      bool1 = bool2;
-      if (this.a.charAt(0) == '[')
-      {
-        bool1 = bool2;
-        if (this.a.charAt(this.a.length() - 1) == ']') {
-          bool1 = true;
-        }
+      String str = this.a;
+      if (str.charAt(str.length() - 1) == ']') {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public final String toString()
   {
-    return this.a + ":" + this.b + ",protocalType:" + this.f + ",ipType:" + this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",protocalType:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",ipType:");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
 }
 

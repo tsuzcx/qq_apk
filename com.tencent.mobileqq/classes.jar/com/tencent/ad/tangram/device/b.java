@@ -1,119 +1,25 @@
 package com.tencent.ad.tangram.device;
 
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.provider.Settings.System;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.log.AdLog;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public final class b
+final class b
 {
-  private static final String TAG = "AdDevice";
-  private static String androidId;
-  private static String deviceId;
-  
-  public static String getAndroidId(Context paramContext)
+  private static boolean isBSSIDValid(String paramString)
   {
-    if (!TextUtils.isEmpty(androidId)) {
-      return androidId;
-    }
-    try
-    {
-      paramContext = Settings.System.getString(paramContext.getApplicationContext().getContentResolver(), "android_id");
-      if (!TextUtils.isEmpty(paramContext)) {
-        androidId = paramContext;
-      }
-      return androidId;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        AdLog.e("AdDevice", "getAndroidId", paramContext);
-      }
-    }
+    return (!TextUtils.isEmpty(paramString)) && (b.a.pattern.matcher(paramString).matches());
   }
   
-  public static String getAndroidIdCache(Context paramContext)
+  public AdDeviceIdentifier build(Context paramContext, boolean paramBoolean)
   {
-    return androidId;
-  }
-  
-  public static String getDeviceId(Context paramContext)
-  {
-    if (!TextUtils.isEmpty(deviceId)) {
-      return deviceId;
-    }
-    if (Build.VERSION.SDK_INT >= 29) {}
-    for (;;)
-    {
-      return deviceId;
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getApplicationContext();
-        if (paramContext != null) {
-          try
-          {
-            paramContext = paramContext.getSystemService("phone");
-            if ((paramContext instanceof TelephonyManager))
-            {
-              paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
-              if (paramContext != null)
-              {
-                paramContext = paramContext.getDeviceId();
-                if (!TextUtils.isEmpty(paramContext)) {
-                  deviceId = paramContext;
-                }
-              }
-            }
-          }
-          catch (Throwable paramContext)
-          {
-            AdLog.i("AdDevice", "getDeviceId", paramContext);
-          }
-        }
-      }
-    }
-  }
-  
-  public static String getDeviceIdCache(Context paramContext)
-  {
-    return deviceId;
-  }
-  
-  public static int getPhoneType(Context paramContext)
-  {
-    if (paramContext == null) {}
-    for (;;)
-    {
-      return 0;
-      paramContext = paramContext.getApplicationContext();
-      if (paramContext != null) {
-        try
-        {
-          paramContext = paramContext.getSystemService("phone");
-          if ((paramContext instanceof TelephonyManager))
-          {
-            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
-            if (paramContext != null)
-            {
-              int i = paramContext.getPhoneType();
-              return i;
-            }
-          }
-        }
-        catch (Throwable paramContext)
-        {
-          AdLog.e("AdDevice", "getPhoneType", paramContext);
-        }
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.device.b
  * JD-Core Version:    0.7.0.1
  */

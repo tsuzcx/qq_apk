@@ -2,96 +2,47 @@ package com.tencent.mm.modelrecovery;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.b;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.j;
-import java.io.IOException;
+import com.tencent.mm.recoveryv2.RecoveryCrash;
+import com.tencent.mm.recoveryv2.b;
+import com.tencent.mm.recoveryv2.h;
+import com.tencent.mm.recoveryv2.h.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static void aiR()
+  public static void dU(Context paramContext)
   {
-    AppMethodBeat.i(16543);
-    b localb = new b(ah.getContext().getFilesDir(), "/recovery/recovery.log");
-    String str = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (localb.exists())
-    {
-      localObject1 = localObject2;
-      if (localb.length() > 0L) {
-        localObject1 = str;
-      }
-    }
-    try
-    {
-      localObject2 = e.cS(j.p(localb.dQJ()));
-      localObject1 = localObject2;
-      localb.delete();
-      localObject1 = localObject2;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        int k;
-        int i;
-        int j;
-        ab.printErrStackTrace("MicroMsg.Recovery.RecoveryLogUtil", localIOException, "recoveryLog", new Object[0]);
-        continue;
-        if (str.equals("E"))
-        {
-          j = 0;
-          continue;
-          ab.e(localIOException[1], localIOException[2]);
-          continue;
-          ab.i("MicroMsg.Recovery.RecoveryLogUtil", str);
-        }
-      }
-      AppMethodBeat.o(16543);
-      return;
-    }
-    if (!bo.isNullOrNil((String)localObject1))
-    {
-      localObject1 = ((String)localObject1).split("​​");
-      k = localObject1.length;
-      i = 0;
-      for (;;)
-      {
-        if (i >= k) {
-          break label259;
-        }
-        str = localObject1[i];
-        localObject2 = str.split("​");
-        if ((localObject2 == null) || (localObject2.length != 3)) {
-          break;
-        }
-        str = localObject2[0];
-        j = -1;
-        switch (str.hashCode())
-        {
-        default: 
-          switch (j)
-          {
-          default: 
-            ab.i(localObject2[1], localObject2[2]);
-            i += 1;
-          }
-          break;
-        }
-      }
-    }
-    label259:
-    ab.i("MicroMsg.Recovery.RecoveryLogUtil", "not found recovery log");
-    AppMethodBeat.o(16543);
+    AppMethodBeat.i(231037);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setLaunchRecovery, dump recovery status:");
+    Object localObject = RecoveryCrash.lL(paramContext);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "crash count   = " + ((RecoveryCrash)localObject).acjU.acjW);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "crash time    = " + ((RecoveryCrash)localObject).acjR);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "crash version = " + ((RecoveryCrash)localObject).acjS);
+    localObject = h.a.lS(paramContext);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setting enable       = " + ((h.a)localObject).mEnabled);
+    localObject = h.lR(paramContext);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setting threshold 1  = " + ((h)localObject).ackd);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setting threshold 2  = " + ((h)localObject).acke);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setting interval     = " + ((h)localObject).ackf);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setting min interval = " + ((h)localObject).ackh);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setting auto reset   = " + ((h)localObject).acki);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setLaunchRecovery, main process will crash immediately");
+    localObject = RecoveryCrash.lL(paramContext).axO(((h)localObject).ackd);
+    ((RecoveryCrash)localObject).acjR = System.currentTimeMillis();
+    ((RecoveryCrash)localObject).sz();
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "setting new recovery status:");
+    paramContext = RecoveryCrash.lL(paramContext);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "crash count   = " + paramContext.acjU.acjW);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "crash time    = " + paramContext.acjR);
+    Log.w("MicroMsg.Recovery.RecoveryHelper", "crash version = " + paramContext.acjS);
+    paramContext = new RuntimeException("setLaunchRecovery");
+    AppMethodBeat.o(231037);
+    throw paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelrecovery.a
  * JD-Core Version:    0.7.0.1
  */

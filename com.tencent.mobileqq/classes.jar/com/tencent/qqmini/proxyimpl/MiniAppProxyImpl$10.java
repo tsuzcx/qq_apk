@@ -1,77 +1,113 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ampt;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.launcher.action.ActionBridge.UpdateUIActionBridge;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 
 class MiniAppProxyImpl$10
-  extends ampt
+  implements IActivityResultListener
 {
-  MiniAppProxyImpl$10(MiniAppProxyImpl paramMiniAppProxyImpl, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, boolean paramBoolean5, boolean paramBoolean6, AsyncResult paramAsyncResult)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  MiniAppProxyImpl$10(MiniAppProxyImpl paramMiniAppProxyImpl, IActivityResultManager paramIActivityResultManager) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
-    {
-      paramSosoLbsInfo = paramSosoLbsInfo.a;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        if ((this.val$isWgs84) && (paramSosoLbsInfo.c != 0.0D) && (paramSosoLbsInfo.d != 0.0D))
-        {
-          localJSONObject.put("latitude", paramSosoLbsInfo.c);
-          localJSONObject.put("longitude", paramSosoLbsInfo.d);
-        }
-        for (;;)
-        {
-          localJSONObject.put("speed", paramSosoLbsInfo.jdField_b_of_type_Float);
-          localJSONObject.put("accuracy", paramSosoLbsInfo.jdField_a_of_type_Float);
-          if (this.val$needAltitude) {
-            localJSONObject.put("altitude", paramSosoLbsInfo.e);
-          }
-          localJSONObject.put("verticalAccuracy", 0.0D);
-          localJSONObject.put("horizontalAccuracy", paramSosoLbsInfo.jdField_a_of_type_Float);
-          this.val$asyncResult.onReceiveResult(true, localJSONObject);
-          return;
-          localJSONObject.put("latitude", paramSosoLbsInfo.jdField_a_of_type_Double);
-          localJSONObject.put("longitude", paramSosoLbsInfo.jdField_b_of_type_Double);
-        }
-        paramSosoLbsInfo = new JSONObject();
-      }
-      catch (JSONException paramSosoLbsInfo)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MiniAppProxyImpl", 2, paramSosoLbsInfo, new Object[0]);
-        }
-        this.val$asyncResult.onReceiveResult(false, new JSONObject());
-        return;
-      }
+    if (paramInt1 != 9527) {
+      return false;
     }
-    try
+    this.a.removeActivityResultListener(this);
+    QLog.d("MiniAppProxyImpl", 1, "set isMiniMsgTabShow false");
+    MiniAppProxyImpl.a(this.b, false);
+    if (paramInt2 != -1)
     {
-      paramSosoLbsInfo.put("errCode", paramInt);
-      this.val$asyncResult.onReceiveResult(false, paramSosoLbsInfo);
-      return;
+      paramIntent = new StringBuilder();
+      paramIntent.append("onShareActivityResult, resultCode not Activity.RESULT_OK, but ");
+      paramIntent.append(paramInt2);
+      QLog.w("MiniAppProxyImpl", 1, paramIntent.toString());
+      return true;
     }
-    catch (JSONException localJSONException)
+    switch (paramIntent.getIntExtra("clickID", -1))
     {
-      for (;;)
-      {
-        QLog.e("MiniAppProxyImpl", 1, "getLocationJsonObject exception:", localJSONException);
-      }
+    default: 
+      break;
+    case 17: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(18);
+      break;
+    case 16: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(17);
+      break;
+    case 15: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(16);
+      break;
+    case 14: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(15);
+      break;
+    case 13: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(14);
+      break;
+    case 12: 
+      localObject = new Message();
+      ((Message)localObject).what = 13;
+      ((Message)localObject).setData(paramIntent.getExtras());
+      MiniAppProxyImpl.b(this.b).sendMessage((Message)localObject);
+      break;
+    case 11: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(12);
+      break;
+    case 10: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(11);
+      break;
+    case 9: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(10);
+      paramIntent = "back_home";
+      break;
+    case 8: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(9);
+      break;
+    case 7: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(8);
+      paramIntent = "share_Moments";
+      break;
+    case 6: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(7);
+      paramIntent = "share_WX";
+      break;
+    case 5: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(6);
+      break;
+    case 4: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(4);
+      paramIntent = "about";
+      break;
+    case 3: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(5);
+      break;
+    case 2: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(3);
+      break;
+    case 1: 
+      MiniAppProxyImpl.b(this.b).sendEmptyMessage(2);
+      break;
+    case 0: 
+      paramIntent = "cancel_system";
+      break;
+    case -1: 
+      paramIntent = "cancel";
+      break;
     }
+    paramIntent = "";
+    Object localObject = this.b;
+    MiniAppProxyImpl.a((MiniAppProxyImpl)localObject, MiniAppProxyImpl.a((MiniAppProxyImpl)localObject), paramIntent);
+    ActionBridge.UpdateUIActionBridge.updateRedDot(MiniAppProxyImpl.a(this.b));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.10
  * JD-Core Version:    0.7.0.1
  */

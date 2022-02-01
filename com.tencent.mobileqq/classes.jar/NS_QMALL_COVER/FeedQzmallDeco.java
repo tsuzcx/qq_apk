@@ -18,17 +18,17 @@ public final class FeedQzmallDeco
   static QzoneDescription cache_stQzDescription = new QzoneDescription();
   static ReturnToPraise cache_stReturnToPraise;
   static ActYellowDiamond cache_stYellowDiamond;
-  public QzmallCustomBubbleSkin stBubbleSkin;
-  public QzmallCustomPassivePraise stCustomPassivePraise;
-  public QzmallCustomPraise stCustomPraise;
-  public QzmallCustomVip stCustomVip;
-  public QzmallFacade stFacade;
-  public FacadeDIY stFacadeDIY;
-  public QzmallFeedAvatar stFeedAvatar;
-  public QzmallFeedSkin stFeedSkin;
-  public QzoneDescription stQzDescription;
-  public ReturnToPraise stReturnToPraise;
-  public ActYellowDiamond stYellowDiamond;
+  public QzmallCustomBubbleSkin stBubbleSkin = null;
+  public QzmallCustomPassivePraise stCustomPassivePraise = null;
+  public QzmallCustomPraise stCustomPraise = null;
+  public QzmallCustomVip stCustomVip = null;
+  public QzmallFacade stFacade = null;
+  public FacadeDIY stFacadeDIY = null;
+  public QzmallFeedAvatar stFeedAvatar = null;
+  public QzmallFeedSkin stFeedSkin = null;
+  public QzoneDescription stQzDescription = null;
+  public ReturnToPraise stReturnToPraise = null;
+  public ActYellowDiamond stYellowDiamond = null;
   
   static
   {
@@ -76,44 +76,55 @@ public final class FeedQzmallDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFeedAvatar != null) {
-      paramJceOutputStream.write(this.stFeedAvatar, 0);
+    Object localObject = this.stFeedAvatar;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stCustomVip != null) {
-      paramJceOutputStream.write(this.stCustomVip, 1);
+    localObject = this.stCustomVip;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stCustomPassivePraise != null) {
-      paramJceOutputStream.write(this.stCustomPassivePraise, 2);
+    localObject = this.stCustomPassivePraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.stCustomPraise != null) {
-      paramJceOutputStream.write(this.stCustomPraise, 3);
+    localObject = this.stCustomPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stFeedSkin != null) {
-      paramJceOutputStream.write(this.stFeedSkin, 4);
+    localObject = this.stFeedSkin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stFacade != null) {
-      paramJceOutputStream.write(this.stFacade, 5);
+    localObject = this.stFacade;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.stBubbleSkin != null) {
-      paramJceOutputStream.write(this.stBubbleSkin, 6);
+    localObject = this.stBubbleSkin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.stYellowDiamond != null) {
-      paramJceOutputStream.write(this.stYellowDiamond, 7);
+    localObject = this.stYellowDiamond;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.stReturnToPraise != null) {
-      paramJceOutputStream.write(this.stReturnToPraise, 8);
+    localObject = this.stReturnToPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.stFacadeDIY != null) {
-      paramJceOutputStream.write(this.stFacadeDIY, 9);
+    localObject = this.stFacadeDIY;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.stQzDescription != null) {
-      paramJceOutputStream.write(this.stQzDescription, 10);
+    localObject = this.stQzDescription;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.FeedQzmallDeco
  * JD-Core Version:    0.7.0.1
  */

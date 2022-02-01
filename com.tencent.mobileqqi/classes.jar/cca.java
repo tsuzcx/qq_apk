@@ -1,28 +1,28 @@
+import android.os.AsyncTask;
 import android.os.Handler;
-import android.view.View;
-import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class cca
-  implements ActionSheet.OnButtonClickListener
+class cca
+  extends AsyncTask
 {
-  public cca(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, ActionSheet paramActionSheet) {}
+  cca(cbz paramcbz) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      paramView = ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).obtainMessage(1);
-      ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory).sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new ccb(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+    this.a.a.b.a().a(paramVarArgs[0], true);
+    return null;
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    ChatHistory.a(this.a.a).removeMessages(1);
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
+      this.a.a.a.dismiss();
     }
   }
 }

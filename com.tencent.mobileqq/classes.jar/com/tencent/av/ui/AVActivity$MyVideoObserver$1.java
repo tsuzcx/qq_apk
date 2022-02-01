@@ -1,25 +1,21 @@
 package com.tencent.av.ui;
 
-import com.tencent.mobileqq.utils.AudioHelper;
-import mdz;
+import com.tencent.av.wtogether.callback.VideoSink;
+import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
 
-public class AVActivity$MyVideoObserver$1
+class AVActivity$MyVideoObserver$1
   implements Runnable
 {
-  public AVActivity$MyVideoObserver$1(mdz parammdz) {}
+  AVActivity$MyVideoObserver$1(AVActivity.MyVideoObserver paramMyVideoObserver, WatchTogetherMediaPlayCtrl paramWatchTogetherMediaPlayCtrl, VideoSink paramVideoSink) {}
   
   public void run()
   {
-    if (this.a.a.a != null)
-    {
-      long l = AudioHelper.b();
-      this.a.a.a.f(l, 4096);
-    }
+    this.a.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.MyVideoObserver.1
  * JD-Core Version:    0.7.0.1
  */

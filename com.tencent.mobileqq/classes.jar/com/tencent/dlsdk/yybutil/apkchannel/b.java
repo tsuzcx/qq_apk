@@ -17,30 +17,24 @@ class b
   
   void a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
-      System.out.println("WARNING:[YYBComment]decode|data=null|exit");
-    }
-    ByteBuffer localByteBuffer;
-    int i;
-    do
+    if (paramArrayOfByte == null)
     {
+      System.out.println("WARNING:[YYBComment]decode|data=null|exit");
       return;
-      localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-      i = c.a().length;
-      byte[] arrayOfByte = new byte[i];
-      localByteBuffer.get(arrayOfByte);
-      if (!c.equals(new c(arrayOfByte)))
-      {
-        System.out.println("ERROR:[YYBComment]decode|unknow protocol|exit");
-        throw new ProtocolException("[YYBComment] unknow protocl [" + Arrays.toString(paramArrayOfByte) + "]");
-      }
+    }
+    Object localObject = ByteBuffer.wrap(paramArrayOfByte);
+    int i = c.a().length;
+    byte[] arrayOfByte = new byte[i];
+    ((ByteBuffer)localObject).get(arrayOfByte);
+    if (c.equals(new c(arrayOfByte)))
+    {
       if (paramArrayOfByte.length - i <= 2)
       {
         System.out.println("ERROR:[YYBComment]decode|data.length - headLength <= 2|1|exit");
         return;
       }
       arrayOfByte = new byte[2];
-      localByteBuffer.get(arrayOfByte);
+      ((ByteBuffer)localObject).get(arrayOfByte);
       int j = new c(arrayOfByte).b();
       if (paramArrayOfByte.length - i - 2 < j)
       {
@@ -48,22 +42,36 @@ class b
         return;
       }
       arrayOfByte = new byte[j];
-      localByteBuffer.get(arrayOfByte);
+      ((ByteBuffer)localObject).get(arrayOfByte);
       this.a.load(new InputStreamReader(new ByteArrayInputStream(arrayOfByte), "UTF-8"));
       i = paramArrayOfByte.length - i - j - 2;
-    } while (i <= 0);
-    this.b = new byte[i];
-    localByteBuffer.get(this.b);
+      if (i > 0)
+      {
+        this.b = new byte[i];
+        ((ByteBuffer)localObject).get(this.b);
+      }
+      return;
+    }
+    System.out.println("ERROR:[YYBComment]decode|unknow protocol|exit");
+    localObject = new StringBuilder("[YYBComment] unknow protocl [");
+    ((StringBuilder)localObject).append(Arrays.toString(paramArrayOfByte));
+    ((StringBuilder)localObject).append("]");
+    throw new ProtocolException(((StringBuilder)localObject).toString());
   }
   
   public String toString()
   {
-    return "YYBComment [p=" + this.a + ", otherData=" + Arrays.toString(this.b) + "]";
+    StringBuilder localStringBuilder = new StringBuilder("YYBComment [p=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", otherData=");
+    localStringBuilder.append(Arrays.toString(this.b));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.dlsdk.yybutil.apkchannel.b
  * JD-Core Version:    0.7.0.1
  */

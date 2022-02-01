@@ -41,14 +41,16 @@ public class ColorToneFilter
   
   public void apply()
   {
-    GLES20.glGenTextures(this.mTextures.length, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     loadBeautyTex();
     super.apply();
   }
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.mTextures.length, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     super.clearGLSLSelf();
   }
   
@@ -72,7 +74,7 @@ public class ColorToneFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ColorToneFilter
  * JD-Core Version:    0.7.0.1
  */

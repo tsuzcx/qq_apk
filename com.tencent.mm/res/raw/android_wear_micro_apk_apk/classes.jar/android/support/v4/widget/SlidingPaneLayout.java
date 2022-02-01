@@ -24,37 +24,37 @@ import java.util.ArrayList;
 public class SlidingPaneLayout
   extends ViewGroup
 {
-  static final p pG = new q();
-  private float kj;
-  private float kk;
-  private boolean lI = true;
-  boolean lu;
-  private final Rect oI = new Rect();
-  private float pA;
-  int pB;
-  private int pC;
-  final ac pD;
-  boolean pE;
-  final ArrayList<n> pF = new ArrayList();
-  private int ps = -858993460;
-  private int pt;
-  private Drawable pu;
-  private Drawable pv;
-  private final int pw;
-  private boolean px;
-  View py;
-  float pz;
+  static final q rw = new r();
+  private float mg;
+  private float mh;
+  private boolean nE = true;
+  boolean nq;
+  private final Rect qy = new Rect();
+  private int ri = -858993460;
+  private int rj;
+  private Drawable rk;
+  private Drawable rl;
+  private final int rm;
+  private boolean rn;
+  View ro;
+  float rp;
+  private float rq;
+  int rr;
+  private int rs;
+  final ad rt;
+  boolean ru;
+  final ArrayList<o> rv = new ArrayList();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 17)
     {
-      pG = new s();
+      rw = new t();
       return;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      pG = new r();
+      rw = new s();
       return;
     }
   }
@@ -68,12 +68,12 @@ public class SlidingPaneLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.pw = ((int)(32.0F * f + 0.5F));
+    this.rm = ((int)(32.0F * f + 0.5F));
     setWillNotDraw(false);
-    android.support.v4.view.r.a(this, new m(this));
-    android.support.v4.view.r.c(this, 1);
-    this.pD = ac.a(this, 0.5F, new o(this));
-    this.pD.o(f * 400.0F);
+    android.support.v4.view.r.a(this, new n(this));
+    android.support.v4.view.r.f(this, 1);
+    this.rt = ad.a(this, 0.5F, new p(this));
+    this.rt.p(f * 400.0F);
   }
   
   private void a(View paramView, float paramFloat, int paramInt)
@@ -82,72 +82,72 @@ public class SlidingPaneLayout
     if ((paramFloat > 0.0F) && (paramInt != 0))
     {
       i = (int)(((0xFF000000 & paramInt) >>> 24) * paramFloat);
-      if (localLayoutParams.pL == null) {
-        localLayoutParams.pL = new Paint();
+      if (localLayoutParams.rB == null) {
+        localLayoutParams.rB = new Paint();
       }
-      localLayoutParams.pL.setColorFilter(new PorterDuffColorFilter(i << 24 | 0xFFFFFF & paramInt, PorterDuff.Mode.SRC_OVER));
+      localLayoutParams.rB.setColorFilter(new PorterDuffColorFilter(i << 24 | 0xFFFFFF & paramInt, PorterDuff.Mode.SRC_OVER));
       if (paramView.getLayerType() != 2) {
-        paramView.setLayerType(2, localLayoutParams.pL);
+        paramView.setLayerType(2, localLayoutParams.rB);
       }
-      Q(paramView);
+      W(paramView);
     }
     while (paramView.getLayerType() == 0)
     {
       int i;
       return;
     }
-    if (localLayoutParams.pL != null) {
-      localLayoutParams.pL.setColorFilter(null);
+    if (localLayoutParams.rB != null) {
+      localLayoutParams.rB.setColorFilter(null);
     }
-    paramView = new n(this, paramView);
-    this.pF.add(paramView);
+    paramView = new o(this, paramView);
+    this.rv.add(paramView);
     android.support.v4.view.r.b(this, paramView);
   }
   
-  private boolean cp()
+  private boolean ct()
   {
     boolean bool = false;
-    if ((this.lI) || (h(0.0F)))
+    if ((this.nE) || (i(0.0F)))
     {
-      this.pE = false;
+      this.ru = false;
       bool = true;
     }
     return bool;
   }
   
-  private boolean h(float paramFloat)
+  private boolean i(float paramFloat)
   {
-    if (!this.px) {
+    if (!this.rn) {
       return false;
     }
-    boolean bool = cq();
-    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)this.py.getLayoutParams();
+    boolean bool = cu();
+    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)this.ro.getLayoutParams();
     int j;
     int k;
     if (bool)
     {
       i = getPaddingRight();
       j = localLayoutParams.rightMargin;
-      k = this.py.getWidth();
+      k = this.ro.getWidth();
     }
-    for (int i = (int)(getWidth() - (j + i + this.pB * paramFloat + k)); this.pD.b(this.py, i, this.py.getTop()); i = (int)(localLayoutParams.leftMargin + i + this.pB * paramFloat))
+    for (int i = (int)(getWidth() - (j + i + this.rr * paramFloat + k)); this.rt.b(this.ro, i, this.ro.getTop()); i = (int)(localLayoutParams.leftMargin + i + this.rr * paramFloat))
     {
-      co();
-      android.support.v4.view.r.f(this);
+      cs();
+      android.support.v4.view.r.g(this);
       return true;
       i = getPaddingLeft();
     }
     return false;
   }
   
-  private void i(float paramFloat)
+  private void j(float paramFloat)
   {
-    boolean bool = cq();
-    Object localObject = (SlidingPaneLayout.LayoutParams)this.py.getLayoutParams();
+    boolean bool = cu();
+    Object localObject = (SlidingPaneLayout.LayoutParams)this.ro.getLayoutParams();
     int i;
     label43:
     int j;
-    if (((SlidingPaneLayout.LayoutParams)localObject).pK) {
+    if (((SlidingPaneLayout.LayoutParams)localObject).rA) {
       if (bool)
       {
         i = ((SlidingPaneLayout.LayoutParams)localObject).rightMargin;
@@ -162,11 +162,11 @@ public class SlidingPaneLayout
           return;
         }
         localObject = getChildAt(j);
-        if (localObject != this.py)
+        if (localObject != this.ro)
         {
-          int k = (int)((1.0F - this.pA) * this.pC);
-          this.pA = paramFloat;
-          int m = k - (int)((1.0F - paramFloat) * this.pC);
+          int k = (int)((1.0F - this.rq) * this.rs);
+          this.rq = paramFloat;
+          int m = k - (int)((1.0F - paramFloat) * this.rs);
           k = m;
           if (bool) {
             k = -m;
@@ -182,9 +182,9 @@ public class SlidingPaneLayout
     }
     label177:
     label182:
-    for (float f = this.pA - 1.0F;; f = 1.0F - this.pA)
+    for (float f = this.rq - 1.0F;; f = 1.0F - this.rq)
     {
-      a((View)localObject, f, this.pt);
+      a((View)localObject, f, this.rj);
       j += 1;
       break label52;
       i = ((SlidingPaneLayout.LayoutParams)localObject).leftMargin;
@@ -194,9 +194,9 @@ public class SlidingPaneLayout
     }
   }
   
-  final void P(View paramView)
+  final void V(View paramView)
   {
-    boolean bool = cq();
+    boolean bool = cu();
     int i;
     int j;
     label31:
@@ -306,16 +306,30 @@ public class SlidingPaneLayout
     }
   }
   
-  final void Q(int paramInt)
+  final void W(View paramView)
   {
-    if (this.py == null)
+    rw.a(this, paramView);
+  }
+  
+  final boolean X(View paramView)
+  {
+    if (paramView == null) {
+      return false;
+    }
+    paramView = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
+    return (this.rn) && (paramView.rA) && (this.rp > 0.0F);
+  }
+  
+  final void ab(int paramInt)
+  {
+    if (this.ro == null)
     {
-      this.pz = 0.0F;
+      this.rp = 0.0F;
       return;
     }
-    boolean bool = cq();
-    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)this.py.getLayoutParams();
-    int j = this.py.getWidth();
+    boolean bool = cu();
+    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)this.ro.getLayoutParams();
+    int j = this.ro.getWidth();
     int i = paramInt;
     if (bool) {
       i = getWidth() - paramInt - j;
@@ -331,32 +345,18 @@ public class SlidingPaneLayout
     label140:
     for (j = localLayoutParams.rightMargin;; j = localLayoutParams.leftMargin)
     {
-      this.pz = ((i - (j + paramInt)) / this.pB);
-      if (this.pC != 0) {
-        i(this.pz);
+      this.rp = ((i - (j + paramInt)) / this.rr);
+      if (this.rs != 0) {
+        j(this.rp);
       }
-      if (!localLayoutParams.pK) {
+      if (!localLayoutParams.rA) {
         break;
       }
-      a(this.py, this.pz, this.ps);
+      a(this.ro, this.rp, this.ri);
       return;
       paramInt = getPaddingLeft();
       break label65;
     }
-  }
-  
-  final void Q(View paramView)
-  {
-    pG.a(this, paramView);
-  }
-  
-  final boolean R(View paramView)
-  {
-    if (paramView == null) {
-      return false;
-    }
-    paramView = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
-    return (this.px) && (paramView.pK) && (this.pz > 0.0F);
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -364,7 +364,21 @@ public class SlidingPaneLayout
     return ((paramLayoutParams instanceof SlidingPaneLayout.LayoutParams)) && (super.checkLayoutParams(paramLayoutParams));
   }
   
-  final void co()
+  public void computeScroll()
+  {
+    if (this.rt.cE())
+    {
+      if (!this.rn) {
+        this.rt.abort();
+      }
+    }
+    else {
+      return;
+    }
+    android.support.v4.view.r.g(this);
+  }
+  
+  final void cs()
   {
     int j = getChildCount();
     int i = 0;
@@ -378,32 +392,18 @@ public class SlidingPaneLayout
     }
   }
   
-  public void computeScroll()
+  final boolean cu()
   {
-    if (this.pD.cx())
-    {
-      if (!this.px) {
-        this.pD.abort();
-      }
-    }
-    else {
-      return;
-    }
-    android.support.v4.view.r.f(this);
-  }
-  
-  final boolean cq()
-  {
-    return android.support.v4.view.r.i(this) == 1;
+    return android.support.v4.view.r.j(this) == 1;
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
     Drawable localDrawable;
-    if (cq())
+    if (cu())
     {
-      localDrawable = this.pv;
+      localDrawable = this.rl;
       if (getChildCount() <= 1) {
         break label53;
       }
@@ -415,7 +415,7 @@ public class SlidingPaneLayout
         break label59;
       }
       return;
-      localDrawable = this.pu;
+      localDrawable = this.rk;
       break;
     }
     label59:
@@ -424,7 +424,7 @@ public class SlidingPaneLayout
     int n = localDrawable.getIntrinsicWidth();
     int j;
     int i;
-    if (cq())
+    if (cu())
     {
       j = localView.getRight();
       i = j + n;
@@ -442,23 +442,23 @@ public class SlidingPaneLayout
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
-    int i = paramCanvas.save(2);
-    if ((this.px) && (!localLayoutParams.pJ) && (this.py != null))
+    int i = paramCanvas.save();
+    if ((this.rn) && (!localLayoutParams.rz) && (this.ro != null))
     {
-      paramCanvas.getClipBounds(this.oI);
-      if (!cq()) {
-        break label105;
+      paramCanvas.getClipBounds(this.qy);
+      if (!cu()) {
+        break label104;
       }
-      this.oI.left = Math.max(this.oI.left, this.py.getRight());
+      this.qy.left = Math.max(this.qy.left, this.ro.getRight());
     }
     for (;;)
     {
-      paramCanvas.clipRect(this.oI);
+      paramCanvas.clipRect(this.qy);
       boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
       paramCanvas.restoreToCount(i);
       return bool;
-      label105:
-      this.oI.right = Math.min(this.oI.right, this.py.getLeft());
+      label104:
+      this.qy.right = Math.min(this.qy.right, this.ro.getLeft());
     }
   }
   
@@ -483,32 +483,32 @@ public class SlidingPaneLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.lI = true;
+    this.nE = true;
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.lI = true;
-    int j = this.pF.size();
+    this.nE = true;
+    int j = this.rv.size();
     int i = 0;
     while (i < j)
     {
-      ((n)this.pF.get(i)).run();
+      ((o)this.rv.get(i)).run();
       i += 1;
     }
-    this.pF.clear();
+    this.rv.clear();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool2 = false;
     int i = paramMotionEvent.getActionMasked();
-    if ((!this.px) && (i == 0) && (getChildCount() > 1))
+    if ((!this.rn) && (i == 0) && (getChildCount() > 1))
     {
       View localView = getChildAt(1);
       if (localView != null) {
-        if (ac.c(localView, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) {
+        if (ad.c(localView, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) {
           break label104;
         }
       }
@@ -516,17 +516,17 @@ public class SlidingPaneLayout
     label104:
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.pE = bool1;
-      if ((this.px) && ((!this.lu) || (i == 0))) {
+      this.ru = bool1;
+      if ((this.rn) && ((!this.nq) || (i == 0))) {
         break;
       }
-      this.pD.cancel();
+      this.rt.cancel();
       bool1 = super.onInterceptTouchEvent(paramMotionEvent);
       return bool1;
     }
     if ((i == 3) || (i == 1))
     {
-      this.pD.cancel();
+      this.rt.cancel();
       return false;
     }
     switch (i)
@@ -539,7 +539,7 @@ public class SlidingPaneLayout
     {
       for (i = 0;; i = 1)
       {
-        if (!this.pD.c(paramMotionEvent))
+        if (!this.rt.d(paramMotionEvent))
         {
           bool1 = bool2;
           if (i == 0) {
@@ -547,28 +547,28 @@ public class SlidingPaneLayout
           }
         }
         return true;
-        this.lu = false;
+        this.nq = false;
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
-        this.kj = f1;
-        this.kk = f2;
-        if ((!ac.c(this.py, (int)f1, (int)f2)) || (!R(this.py))) {
+        this.mg = f1;
+        this.mh = f2;
+        if ((!ad.c(this.ro, (int)f1, (int)f2)) || (!X(this.ro))) {
           break label160;
         }
       }
       f2 = paramMotionEvent.getX();
       f1 = paramMotionEvent.getY();
-      f2 = Math.abs(f2 - this.kj);
-      f1 = Math.abs(f1 - this.kk);
-    } while ((f2 <= this.pD.getTouchSlop()) || (f1 <= f2));
-    this.pD.cancel();
-    this.lu = true;
+      f2 = Math.abs(f2 - this.mg);
+      f1 = Math.abs(f1 - this.mh);
+    } while ((f2 <= this.rt.getTouchSlop()) || (f1 <= f2));
+    this.rt.cancel();
+    this.nq = true;
     return false;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    boolean bool = cq();
+    boolean bool = cu();
     label35:
     label46:
     int m;
@@ -581,7 +581,7 @@ public class SlidingPaneLayout
     int j;
     if (bool)
     {
-      this.pD.S(2);
+      this.rt.ad(2);
       int k = paramInt3 - paramInt1;
       if (!bool) {
         break label358;
@@ -593,13 +593,13 @@ public class SlidingPaneLayout
       paramInt3 = getPaddingLeft();
       int n = getPaddingTop();
       m = getChildCount();
-      if (this.lI)
+      if (this.nE)
       {
-        if ((!this.px) || (!this.pE)) {
+        if ((!this.rn) || (!this.ru)) {
           break label375;
         }
         f = 1.0F;
-        this.pz = f;
+        this.rp = f;
       }
       paramInt4 = 0;
       i = paramInt1;
@@ -615,13 +615,13 @@ public class SlidingPaneLayout
       localLayoutParams = (SlidingPaneLayout.LayoutParams)localView.getLayoutParams();
       i1 = localView.getMeasuredWidth();
       j = 0;
-      if (!localLayoutParams.pJ) {
+      if (!localLayoutParams.rz) {
         break label396;
       }
       i = localLayoutParams.leftMargin;
       int i2 = localLayoutParams.rightMargin;
-      i2 = Math.min(paramInt1, k - paramInt3 - this.pw) - paramInt2 - (i + i2);
-      this.pB = i2;
+      i2 = Math.min(paramInt1, k - paramInt3 - this.rm) - paramInt2 - (i + i2);
+      this.rr = i2;
       if (!bool) {
         break label381;
       }
@@ -632,10 +632,10 @@ public class SlidingPaneLayout
       }
       paramBoolean = true;
       label230:
-      localLayoutParams.pK = paramBoolean;
-      i2 = (int)(i2 * this.pz);
+      localLayoutParams.rA = paramBoolean;
+      i2 = (int)(i2 * this.rp);
       paramInt2 += i + i2;
-      this.pz = (i2 / this.pB);
+      this.rp = (i2 / this.rr);
       i = j;
       if (!bool) {
         break label432;
@@ -656,7 +656,7 @@ public class SlidingPaneLayout
       paramInt2 = paramInt4;
       paramInt4 = i;
       break label99;
-      this.pD.S(1);
+      this.rt.ad(1);
       break;
       label358:
       paramInt1 = getPaddingLeft();
@@ -674,8 +674,8 @@ public class SlidingPaneLayout
       paramBoolean = false;
       break label230;
       label396:
-      if ((this.px) && (this.pC != 0)) {}
-      for (paramInt2 = (int)((1.0F - this.pz) * this.pC);; paramInt2 = 0)
+      if ((this.rn) && (this.rs != 0)) {}
+      for (paramInt2 = (int)((1.0F - this.rp) * this.rs);; paramInt2 = 0)
       {
         i = paramInt2;
         paramInt2 = paramInt1;
@@ -685,28 +685,28 @@ public class SlidingPaneLayout
         j = i + i1;
         break label293;
         label448:
-        if (this.lI)
+        if (this.nE)
         {
-          if (!this.px) {
+          if (!this.rn) {
             break label523;
           }
-          if (this.pC != 0) {
-            i(this.pz);
+          if (this.rs != 0) {
+            j(this.rp);
           }
-          if (((SlidingPaneLayout.LayoutParams)this.py.getLayoutParams()).pK) {
-            a(this.py, this.pz, this.ps);
+          if (((SlidingPaneLayout.LayoutParams)this.ro.getLayoutParams()).rA) {
+            a(this.ro, this.rp, this.ri);
           }
         }
         for (;;)
         {
-          P(this.py);
-          this.lI = false;
+          V(this.ro);
+          this.nE = false;
           return;
           label523:
           paramInt1 = 0;
           while (paramInt1 < m)
           {
-            a(getChildAt(paramInt1), 0.0F, this.ps);
+            a(getChildAt(paramInt1), 0.0F, this.ri);
             paramInt1 += 1;
           }
         }
@@ -761,7 +761,7 @@ public class SlidingPaneLayout
         if (i3 > 2) {
           Log.e("SlidingPaneLayout", "onMeasure: More than two child views are not supported.");
         }
-        this.py = null;
+        this.ro = null;
         i1 = 0;
         m = i2;
         k = paramInt1;
@@ -776,7 +776,7 @@ public class SlidingPaneLayout
           if (localView.getVisibility() != 8) {
             break;
           }
-          localLayoutParams.pK = false;
+          localLayoutParams.rA = false;
           i1 += 1;
         }
         throw new IllegalStateException("Width must have an exact value or MATCH_PARENT");
@@ -840,9 +840,9 @@ public class SlidingPaneLayout
         label563:
         for (boolean bool2 = true;; bool2 = false)
         {
-          localLayoutParams.pJ = bool2;
-          if (localLayoutParams.pJ) {
-            this.py = localView;
+          localLayoutParams.rz = bool2;
+          if (localLayoutParams.rz) {
+            this.ro = localView;
           }
           bool1 = bool2 | bool1;
           k = m;
@@ -865,7 +865,7 @@ public class SlidingPaneLayout
         label569:
         if ((bool1) || (f > 0.0F))
         {
-          i1 = i2 - this.pw;
+          i1 = i2 - this.rm;
           m = 0;
           if (m < i3)
           {
@@ -883,7 +883,7 @@ public class SlidingPaneLayout
                   break label754;
                 }
                 n = 0;
-                if ((!bool1) || (localView == this.py)) {
+                if ((!bool1) || (localView == this.ro)) {
                   break label815;
                 }
                 if ((localLayoutParams.width < 0) && ((n > i1) || (localLayoutParams.weight > 0.0F)))
@@ -963,9 +963,9 @@ public class SlidingPaneLayout
         label800:
         label815:
         setMeasuredDimension(i, getPaddingTop() + k + getPaddingBottom());
-        this.px = bool1;
-        if ((this.pD.cu() != 0) && (!bool1)) {
-          this.pD.abort();
+        this.rn = bool1;
+        if ((this.rt.cB() != 0) && (!bool1)) {
+          this.rt.abort();
         }
         return;
         break;
@@ -986,16 +986,16 @@ public class SlidingPaneLayout
     }
     paramParcelable = (SlidingPaneLayout.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    if (paramParcelable.pM) {
-      if ((this.lI) || (h(1.0F))) {
-        this.pE = true;
+    if (paramParcelable.rC) {
+      if ((this.nE) || (i(1.0F))) {
+        this.ru = true;
       }
     }
     for (;;)
     {
-      this.pE = paramParcelable.pM;
+      this.ru = paramParcelable.rC;
       return;
-      cp();
+      ct();
     }
   }
   
@@ -1003,18 +1003,18 @@ public class SlidingPaneLayout
   {
     SlidingPaneLayout.SavedState localSavedState = new SlidingPaneLayout.SavedState(super.onSaveInstanceState());
     boolean bool;
-    if (this.px) {
-      if ((!this.px) || (this.pz == 1.0F)) {
+    if (this.rn) {
+      if ((!this.rn) || (this.rp == 1.0F)) {
         bool = true;
       }
     }
     for (;;)
     {
-      localSavedState.pM = bool;
+      localSavedState.rC = bool;
       return localSavedState;
       bool = false;
       continue;
-      bool = this.pE;
+      bool = this.ru;
     }
   }
   
@@ -1022,16 +1022,16 @@ public class SlidingPaneLayout
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt1 != paramInt3) {
-      this.lI = true;
+      this.nE = true;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.px) {
+    if (!this.rn) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    this.pD.d(paramMotionEvent);
+    this.rt.e(paramMotionEvent);
     switch (paramMotionEvent.getActionMasked())
     {
     }
@@ -1040,18 +1040,18 @@ public class SlidingPaneLayout
       return true;
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      this.kj = f1;
-      this.kk = f2;
+      this.mg = f1;
+      this.mh = f2;
       continue;
-      if (R(this.py))
+      if (X(this.ro))
       {
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
-        float f3 = f1 - this.kj;
-        float f4 = f2 - this.kk;
-        int i = this.pD.getTouchSlop();
-        if ((f3 * f3 + f4 * f4 < i * i) && (ac.c(this.py, (int)f1, (int)f2))) {
-          cp();
+        float f3 = f1 - this.mg;
+        float f4 = f2 - this.mh;
+        int i = this.rt.getTouchSlop();
+        if ((f3 * f3 + f4 * f4 < i * i) && (ad.c(this.ro, (int)f1, (int)f2))) {
+          ct();
         }
       }
     }
@@ -1060,15 +1060,15 @@ public class SlidingPaneLayout
   public void requestChildFocus(View paramView1, View paramView2)
   {
     super.requestChildFocus(paramView1, paramView2);
-    if ((!isInTouchMode()) && (!this.px)) {
-      if (paramView1 != this.py) {
+    if ((!isInTouchMode()) && (!this.rn)) {
+      if (paramView1 != this.ro) {
         break label36;
       }
     }
     label36:
     for (boolean bool = true;; bool = false)
     {
-      this.pE = bool;
+      this.ru = bool;
       return;
     }
   }

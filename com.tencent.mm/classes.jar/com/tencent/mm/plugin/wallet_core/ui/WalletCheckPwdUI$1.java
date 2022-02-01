@@ -11,15 +11,15 @@ final class WalletCheckPwdUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(47332);
-    WalletCheckPwdUI.a(this.uqg);
-    AppMethodBeat.o(47332);
+    AppMethodBeat.i(70895);
+    WalletCheckPwdUI.a(this.VOY);
+    AppMethodBeat.o(70895);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI.1
  * JD-Core Version:    0.7.0.1
  */

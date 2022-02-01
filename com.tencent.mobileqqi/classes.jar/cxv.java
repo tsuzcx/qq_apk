@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotificationActivity;
 
-class cxv
-  implements DialogInterface.OnDismissListener
+public class cxv
+  implements View.OnClickListener
 {
-  cxv(cxu paramcxu) {}
+  public cxv(NotificationActivity paramNotificationActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a.c();
+    this.a.c();
   }
 }
 

@@ -1,8 +1,20 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.structmsg.StructMsgUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.io.UnsupportedEncodingException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.SAXException;
 
 public class MessageForTroopFee
   extends ChatMessage
@@ -14,139 +26,69 @@ public class MessageForTroopFee
   public String summary;
   public String title;
   
-  /* Error */
-  public static MessageForTroopFee decodeMsgFromXmlBuff(com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface, int paramInt1, long paramLong, byte[] paramArrayOfByte, int paramInt2)
+  public static MessageForTroopFee decodeMsgFromXmlBuff(QQAppInterface paramQQAppInterface, int paramInt1, long paramLong, byte[] paramArrayOfByte, int paramInt2)
   {
-    // Byte code:
-    //   0: aload 4
-    //   2: ifnull +10 -> 12
-    //   5: aload 4
-    //   7: arraylength
-    //   8: iconst_2
-    //   9: if_icmpge +21 -> 30
-    //   12: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   15: ifeq +11 -> 26
-    //   18: ldc 40
-    //   20: iconst_2
-    //   21: ldc 42
-    //   23: invokestatic 46	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   26: aconst_null
-    //   27: astore_0
-    //   28: aload_0
-    //   29: areturn
-    //   30: aload 4
-    //   32: iload 5
-    //   34: invokestatic 52	azwm:a	([BI)[B
-    //   37: astore_0
-    //   38: new 54	java/lang/String
-    //   41: dup
-    //   42: aload_0
-    //   43: ldc 56
-    //   45: invokespecial 59	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   48: invokestatic 64	azvd:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: astore_0
-    //   52: new 66	java/io/ByteArrayInputStream
-    //   55: dup
-    //   56: aload_0
-    //   57: invokevirtual 70	java/lang/String:getBytes	()[B
-    //   60: invokespecial 73	java/io/ByteArrayInputStream:<init>	([B)V
-    //   63: astore_0
-    //   64: new 75	apfg
-    //   67: dup
-    //   68: invokespecial 76	apfg:<init>	()V
-    //   71: astore 4
-    //   73: invokestatic 82	javax/xml/parsers/SAXParserFactory:newInstance	()Ljavax/xml/parsers/SAXParserFactory;
-    //   76: astore 6
-    //   78: aload 6
-    //   80: invokevirtual 86	javax/xml/parsers/SAXParserFactory:newSAXParser	()Ljavax/xml/parsers/SAXParser;
-    //   83: aload_0
-    //   84: aload 4
-    //   86: invokevirtual 92	javax/xml/parsers/SAXParser:parse	(Ljava/io/InputStream;Lorg/xml/sax/helpers/DefaultHandler;)V
-    //   89: aload_0
-    //   90: invokevirtual 97	java/io/InputStream:close	()V
-    //   93: aload 4
-    //   95: invokevirtual 100	apfg:a	()Lcom/tencent/mobileqq/data/MessageForTroopFee;
-    //   98: astore 4
-    //   100: aload 4
-    //   102: astore_0
-    //   103: aload 4
-    //   105: invokevirtual 103	com/tencent/mobileqq/data/MessageForTroopFee:checkParams	()Z
-    //   108: ifeq -80 -> 28
-    //   111: aload 4
-    //   113: astore_0
-    //   114: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   117: ifeq -89 -> 28
-    //   120: ldc 40
-    //   122: iconst_2
-    //   123: ldc 105
-    //   125: invokestatic 46	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   128: aload 4
-    //   130: areturn
-    //   131: astore_0
-    //   132: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   135: ifeq +12 -> 147
-    //   138: ldc 107
-    //   140: iconst_2
-    //   141: ldc 109
-    //   143: aload_0
-    //   144: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   147: aconst_null
-    //   148: areturn
-    //   149: astore_0
-    //   150: aload_0
-    //   151: invokevirtual 116	java/io/UnsupportedEncodingException:printStackTrace	()V
-    //   154: aconst_null
-    //   155: areturn
-    //   156: astore_0
-    //   157: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   160: ifeq -13 -> 147
-    //   163: ldc 107
-    //   165: iconst_2
-    //   166: ldc 109
-    //   168: aload_0
-    //   169: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   172: goto -25 -> 147
-    //   175: astore_0
-    //   176: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   179: ifeq -32 -> 147
-    //   182: ldc 107
-    //   184: iconst_2
-    //   185: ldc 109
-    //   187: aload_0
-    //   188: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   191: goto -44 -> 147
-    //   194: astore_0
-    //   195: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   198: ifeq -51 -> 147
-    //   201: ldc 107
-    //   203: iconst_2
-    //   204: ldc 109
-    //   206: aload_0
-    //   207: invokestatic 113	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   210: goto -63 -> 147
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	213	0	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
-    //   0	213	1	paramInt1	int
-    //   0	213	2	paramLong	long
-    //   0	213	4	paramArrayOfByte	byte[]
-    //   0	213	5	paramInt2	int
-    //   76	3	6	localSAXParserFactory	javax.xml.parsers.SAXParserFactory
-    // Exception table:
-    //   from	to	target	type
-    //   78	100	131	javax/xml/parsers/ParserConfigurationException
-    //   103	111	131	javax/xml/parsers/ParserConfigurationException
-    //   114	128	131	javax/xml/parsers/ParserConfigurationException
-    //   38	52	149	java/io/UnsupportedEncodingException
-    //   78	100	156	org/xml/sax/SAXException
-    //   103	111	156	org/xml/sax/SAXException
-    //   114	128	156	org/xml/sax/SAXException
-    //   78	100	175	java/io/IOException
-    //   103	111	175	java/io/IOException
-    //   114	128	175	java/io/IOException
-    //   78	100	194	java/lang/Exception
-    //   103	111	194	java/lang/Exception
-    //   114	128	194	java/lang/Exception
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2))
+    {
+      paramQQAppInterface = StructMsgUtils.a(paramArrayOfByte, paramInt2);
+      try
+      {
+        paramQQAppInterface = StructMsgFactory.a(new String(paramQQAppInterface, "utf-8"));
+        paramQQAppInterface = new ByteArrayInputStream(paramQQAppInterface.getBytes());
+        paramArrayOfByte = new MessageForTroopFee.TroopFeeParserHandler();
+        SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
+        try
+        {
+          localSAXParserFactory.newSAXParser().parse(paramQQAppInterface, paramArrayOfByte);
+          paramQQAppInterface.close();
+          paramQQAppInterface = paramArrayOfByte.a();
+          if ((paramQQAppInterface.checkParams()) && (QLog.isColorLevel())) {
+            QLog.d("StructMsg", 2, "decode MessageForTroopFee for xml buff by stream success");
+          }
+          return paramQQAppInterface;
+        }
+        catch (Exception paramQQAppInterface)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.e(".troop.troop_fee", 2, "decode MessageForTroopFee for xml buff by stream", paramQQAppInterface);
+            return null;
+          }
+        }
+        catch (IOException paramQQAppInterface)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.e(".troop.troop_fee", 2, "decode MessageForTroopFee for xml buff by stream", paramQQAppInterface);
+            return null;
+          }
+        }
+        catch (SAXException paramQQAppInterface)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.e(".troop.troop_fee", 2, "decode MessageForTroopFee for xml buff by stream", paramQQAppInterface);
+            return null;
+          }
+        }
+        catch (ParserConfigurationException paramQQAppInterface)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e(".troop.troop_fee", 2, "decode MessageForTroopFee for xml buff by stream", paramQQAppInterface);
+          }
+        }
+        return null;
+      }
+      catch (UnsupportedEncodingException paramQQAppInterface)
+      {
+        paramQQAppInterface.printStackTrace();
+        return null;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "decode MessageForTroopFee for xml buff by stream failed. xmlbuff is null or lenght<2");
+    }
+    return null;
   }
   
   public boolean checkParams()
@@ -167,102 +109,99 @@ public class MessageForTroopFee
   protected void doParse()
   {
     // Byte code:
-    //   0: new 137	java/io/ObjectInputStream
-    //   3: dup
-    //   4: new 66	java/io/ByteArrayInputStream
-    //   7: dup
-    //   8: aload_0
-    //   9: getfield 141	com/tencent/mobileqq/data/MessageForTroopFee:msgData	[B
-    //   12: invokespecial 73	java/io/ByteArrayInputStream:<init>	([B)V
-    //   15: invokespecial 144	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   18: astore_2
-    //   19: aload_2
-    //   20: astore_1
-    //   21: aload_0
-    //   22: aload_2
-    //   23: invokevirtual 148	com/tencent/mobileqq/data/MessageForTroopFee:readExternal	(Ljava/io/ObjectInput;)V
-    //   26: aload_2
-    //   27: astore_1
-    //   28: aload_0
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_1
+    //   5: new 137	java/io/ObjectInputStream
+    //   8: dup
+    //   9: new 52	java/io/ByteArrayInputStream
+    //   12: dup
+    //   13: aload_0
+    //   14: getfield 141	com/tencent/mobileqq/data/MessageForTroopFee:msgData	[B
+    //   17: invokespecial 59	java/io/ByteArrayInputStream:<init>	([B)V
+    //   20: invokespecial 144	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   23: astore_2
+    //   24: aload_0
+    //   25: aload_2
+    //   26: invokevirtual 148	com/tencent/mobileqq/data/MessageForTroopFee:readExternal	(Ljava/io/ObjectInput;)V
     //   29: aload_0
-    //   30: invokevirtual 152	com/tencent/mobileqq/data/MessageForTroopFee:getSummaryMsg	()Ljava/lang/String;
-    //   33: putfield 155	com/tencent/mobileqq/data/MessageForTroopFee:msg	Ljava/lang/String;
-    //   36: aload_2
-    //   37: ifnull +7 -> 44
-    //   40: aload_2
-    //   41: invokevirtual 156	java/io/ObjectInputStream:close	()V
-    //   44: return
-    //   45: astore_1
-    //   46: aload_1
-    //   47: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   50: return
-    //   51: astore_3
-    //   52: aconst_null
-    //   53: astore_2
-    //   54: aload_2
-    //   55: astore_1
-    //   56: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   59: ifeq +14 -> 73
-    //   62: aload_2
-    //   63: astore_1
-    //   64: ldc 107
-    //   66: iconst_2
-    //   67: ldc 159
-    //   69: aload_3
-    //   70: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   73: aload_2
-    //   74: ifnull -30 -> 44
-    //   77: aload_2
-    //   78: invokevirtual 156	java/io/ObjectInputStream:close	()V
-    //   81: return
-    //   82: astore_1
-    //   83: aload_1
-    //   84: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   87: return
-    //   88: astore_2
-    //   89: aconst_null
-    //   90: astore_1
-    //   91: aload_1
-    //   92: ifnull +7 -> 99
-    //   95: aload_1
-    //   96: invokevirtual 156	java/io/ObjectInputStream:close	()V
-    //   99: aload_2
-    //   100: athrow
-    //   101: astore_1
-    //   102: aload_1
-    //   103: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   106: goto -7 -> 99
+    //   30: aload_0
+    //   31: invokevirtual 152	com/tencent/mobileqq/data/MessageForTroopFee:getSummaryMsg	()Ljava/lang/String;
+    //   34: putfield 155	com/tencent/mobileqq/data/MessageForTroopFee:msg	Ljava/lang/String;
+    //   37: aload_2
+    //   38: invokevirtual 156	java/io/ObjectInputStream:close	()V
+    //   41: return
+    //   42: astore_1
+    //   43: goto +55 -> 98
+    //   46: astore_1
+    //   47: aload_1
+    //   48: astore_3
+    //   49: goto +15 -> 64
+    //   52: astore_3
+    //   53: aload_1
+    //   54: astore_2
+    //   55: aload_3
+    //   56: astore_1
+    //   57: goto +41 -> 98
+    //   60: astore_3
+    //   61: aload 4
+    //   63: astore_2
+    //   64: aload_2
+    //   65: astore_1
+    //   66: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   69: ifeq +14 -> 83
+    //   72: aload_2
+    //   73: astore_1
+    //   74: ldc 105
+    //   76: iconst_2
+    //   77: ldc 158
+    //   79: aload_3
+    //   80: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   83: aload_2
+    //   84: ifnull +13 -> 97
+    //   87: aload_2
+    //   88: invokevirtual 156	java/io/ObjectInputStream:close	()V
+    //   91: return
+    //   92: astore_1
+    //   93: aload_1
+    //   94: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   97: return
+    //   98: aload_2
+    //   99: ifnull +15 -> 114
+    //   102: aload_2
+    //   103: invokevirtual 156	java/io/ObjectInputStream:close	()V
+    //   106: goto +8 -> 114
     //   109: astore_2
-    //   110: goto -19 -> 91
-    //   113: astore_3
-    //   114: goto -60 -> 54
+    //   110: aload_2
+    //   111: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   114: aload_1
+    //   115: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	117	0	this	MessageForTroopFee
-    //   20	8	1	localObjectInputStream1	java.io.ObjectInputStream
-    //   45	2	1	localException1	java.lang.Exception
-    //   55	9	1	localObjectInputStream2	java.io.ObjectInputStream
-    //   82	2	1	localException2	java.lang.Exception
-    //   90	6	1	localObject1	java.lang.Object
-    //   101	2	1	localException3	java.lang.Exception
-    //   18	60	2	localObjectInputStream3	java.io.ObjectInputStream
-    //   88	12	2	localObject2	java.lang.Object
-    //   109	1	2	localObject3	java.lang.Object
-    //   51	19	3	localException4	java.lang.Exception
-    //   113	1	3	localException5	java.lang.Exception
+    //   0	116	0	this	MessageForTroopFee
+    //   4	1	1	localObject1	java.lang.Object
+    //   42	1	1	localObject2	java.lang.Object
+    //   46	8	1	localException1	Exception
+    //   56	18	1	localObject3	java.lang.Object
+    //   92	23	1	localException2	Exception
+    //   23	80	2	localObject4	java.lang.Object
+    //   109	2	2	localException3	Exception
+    //   48	1	3	localException4	Exception
+    //   52	4	3	localObject5	java.lang.Object
+    //   60	20	3	localException5	Exception
+    //   1	61	4	localObject6	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   40	44	45	java/lang/Exception
-    //   0	19	51	java/lang/Exception
-    //   77	81	82	java/lang/Exception
-    //   0	19	88	finally
-    //   95	99	101	java/lang/Exception
-    //   21	26	109	finally
-    //   28	36	109	finally
-    //   56	62	109	finally
-    //   64	73	109	finally
-    //   21	26	113	java/lang/Exception
-    //   28	36	113	java/lang/Exception
+    //   24	37	42	finally
+    //   24	37	46	java/lang/Exception
+    //   5	24	52	finally
+    //   66	72	52	finally
+    //   74	83	52	finally
+    //   5	24	60	java/lang/Exception
+    //   37	41	92	java/lang/Exception
+    //   87	91	92	java/lang/Exception
+    //   102	106	109	java/lang/Exception
   }
   
   public byte[] getBytes()
@@ -273,7 +212,10 @@ public class MessageForTroopFee
   
   public String getSummaryMsg()
   {
-    return this.brief + this.title;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.brief);
+    localStringBuilder.append(this.title);
+    return localStringBuilder.toString();
   }
   
   public boolean isSupportReply()
@@ -281,13 +223,13 @@ public class MessageForTroopFee
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
   /* Error */
-  public void prewrite()
+  protected void prewrite()
   {
     // Byte code:
     //   0: new 180	java/io/ByteArrayOutputStream
@@ -315,119 +257,110 @@ public class MessageForTroopFee
     //   37: invokevirtual 194	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   40: putfield 141	com/tencent/mobileqq/data/MessageForTroopFee:msgData	[B
     //   43: aload_2
-    //   44: ifnull +7 -> 51
-    //   47: aload_2
-    //   48: invokevirtual 191	java/io/ObjectOutputStream:close	()V
-    //   51: aload 4
-    //   53: ifnull +8 -> 61
-    //   56: aload 4
-    //   58: invokevirtual 195	java/io/ByteArrayOutputStream:close	()V
-    //   61: return
-    //   62: astore_1
-    //   63: aload_1
-    //   64: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   67: goto -16 -> 51
-    //   70: astore_1
-    //   71: aload_1
-    //   72: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   75: return
-    //   76: astore_3
-    //   77: aconst_null
-    //   78: astore_2
-    //   79: aload_2
-    //   80: astore_1
-    //   81: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   84: ifeq +14 -> 98
-    //   87: aload_2
-    //   88: astore_1
-    //   89: ldc 107
-    //   91: iconst_2
-    //   92: ldc 197
-    //   94: aload_3
-    //   95: invokestatic 161	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   98: aload_2
-    //   99: astore_1
-    //   100: aload_3
-    //   101: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   104: aload_2
-    //   105: ifnull +7 -> 112
-    //   108: aload_2
-    //   109: invokevirtual 191	java/io/ObjectOutputStream:close	()V
-    //   112: aload 4
-    //   114: ifnull -53 -> 61
-    //   117: aload 4
-    //   119: invokevirtual 195	java/io/ByteArrayOutputStream:close	()V
-    //   122: return
-    //   123: astore_1
-    //   124: aload_1
-    //   125: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   128: return
-    //   129: astore_1
-    //   130: aload_1
-    //   131: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   134: goto -22 -> 112
-    //   137: astore_2
-    //   138: aconst_null
-    //   139: astore_1
-    //   140: aload_1
-    //   141: ifnull +7 -> 148
-    //   144: aload_1
-    //   145: invokevirtual 191	java/io/ObjectOutputStream:close	()V
+    //   44: invokevirtual 191	java/io/ObjectOutputStream:close	()V
+    //   47: goto +8 -> 55
+    //   50: astore_1
+    //   51: aload_1
+    //   52: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   55: aload 4
+    //   57: invokevirtual 195	java/io/ByteArrayOutputStream:close	()V
+    //   60: return
+    //   61: astore_3
+    //   62: goto +12 -> 74
+    //   65: astore_1
+    //   66: aconst_null
+    //   67: astore_2
+    //   68: goto +64 -> 132
+    //   71: astore_3
+    //   72: aconst_null
+    //   73: astore_2
+    //   74: aload_2
+    //   75: astore_1
+    //   76: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   79: ifeq +14 -> 93
+    //   82: aload_2
+    //   83: astore_1
+    //   84: ldc 105
+    //   86: iconst_2
+    //   87: ldc 197
+    //   89: aload_3
+    //   90: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   93: aload_2
+    //   94: astore_1
+    //   95: aload_3
+    //   96: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   99: aload_2
+    //   100: ifnull +15 -> 115
+    //   103: aload_2
+    //   104: invokevirtual 191	java/io/ObjectOutputStream:close	()V
+    //   107: goto +8 -> 115
+    //   110: astore_1
+    //   111: aload_1
+    //   112: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   115: aload 4
+    //   117: invokevirtual 195	java/io/ByteArrayOutputStream:close	()V
+    //   120: return
+    //   121: astore_1
+    //   122: aload_1
+    //   123: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   126: return
+    //   127: astore_3
+    //   128: aload_1
+    //   129: astore_2
+    //   130: aload_3
+    //   131: astore_1
+    //   132: aload_2
+    //   133: ifnull +15 -> 148
+    //   136: aload_2
+    //   137: invokevirtual 191	java/io/ObjectOutputStream:close	()V
+    //   140: goto +8 -> 148
+    //   143: astore_2
+    //   144: aload_2
+    //   145: invokevirtual 161	java/lang/Exception:printStackTrace	()V
     //   148: aload 4
-    //   150: ifnull +8 -> 158
-    //   153: aload 4
-    //   155: invokevirtual 195	java/io/ByteArrayOutputStream:close	()V
-    //   158: aload_2
-    //   159: athrow
-    //   160: astore_1
+    //   150: invokevirtual 195	java/io/ByteArrayOutputStream:close	()V
+    //   153: goto +8 -> 161
+    //   156: astore_2
+    //   157: aload_2
+    //   158: invokevirtual 161	java/lang/Exception:printStackTrace	()V
     //   161: aload_1
-    //   162: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   165: goto -17 -> 148
-    //   168: astore_1
-    //   169: aload_1
-    //   170: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   173: goto -15 -> 158
-    //   176: astore_2
-    //   177: goto -37 -> 140
-    //   180: astore_3
-    //   181: goto -102 -> 79
+    //   162: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	184	0	this	MessageForTroopFee
-    //   20	14	1	localObjectOutputStream1	java.io.ObjectOutputStream
-    //   62	2	1	localException1	java.lang.Exception
-    //   70	2	1	localException2	java.lang.Exception
-    //   80	20	1	localObjectOutputStream2	java.io.ObjectOutputStream
-    //   123	2	1	localException3	java.lang.Exception
-    //   129	2	1	localException4	java.lang.Exception
-    //   139	6	1	localObject1	java.lang.Object
-    //   160	2	1	localException5	java.lang.Exception
-    //   168	2	1	localException6	java.lang.Exception
-    //   18	91	2	localObjectOutputStream3	java.io.ObjectOutputStream
-    //   137	22	2	localObject2	java.lang.Object
-    //   176	1	2	localObject3	java.lang.Object
-    //   76	25	3	localException7	java.lang.Exception
-    //   180	1	3	localException8	java.lang.Exception
-    //   7	147	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   0	163	0	this	MessageForTroopFee
+    //   20	14	1	localObject1	java.lang.Object
+    //   50	2	1	localException1	Exception
+    //   65	1	1	localObject2	java.lang.Object
+    //   75	20	1	localObject3	java.lang.Object
+    //   110	2	1	localException2	Exception
+    //   121	8	1	localException3	Exception
+    //   131	31	1	localObject4	java.lang.Object
+    //   18	119	2	localObject5	java.lang.Object
+    //   143	2	2	localException4	Exception
+    //   156	2	2	localException5	Exception
+    //   61	1	3	localException6	Exception
+    //   71	25	3	localException7	Exception
+    //   127	4	3	localObject6	java.lang.Object
+    //   7	142	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
-    //   47	51	62	java/lang/Exception
-    //   56	61	70	java/lang/Exception
-    //   9	19	76	java/lang/Exception
-    //   117	122	123	java/lang/Exception
-    //   108	112	129	java/lang/Exception
-    //   9	19	137	finally
-    //   144	148	160	java/lang/Exception
-    //   153	158	168	java/lang/Exception
-    //   21	26	176	finally
-    //   28	32	176	finally
-    //   34	43	176	finally
-    //   81	87	176	finally
-    //   89	98	176	finally
-    //   100	104	176	finally
-    //   21	26	180	java/lang/Exception
-    //   28	32	180	java/lang/Exception
-    //   34	43	180	java/lang/Exception
+    //   43	47	50	java/lang/Exception
+    //   21	26	61	java/lang/Exception
+    //   28	32	61	java/lang/Exception
+    //   34	43	61	java/lang/Exception
+    //   9	19	65	finally
+    //   9	19	71	java/lang/Exception
+    //   103	107	110	java/lang/Exception
+    //   55	60	121	java/lang/Exception
+    //   115	120	121	java/lang/Exception
+    //   21	26	127	finally
+    //   28	32	127	finally
+    //   34	43	127	finally
+    //   76	82	127	finally
+    //   84	93	127	finally
+    //   95	99	127	finally
+    //   136	140	143	java/lang/Exception
+    //   148	153	156	java/lang/Exception
   }
   
   public void readExternal(ObjectInput paramObjectInput)

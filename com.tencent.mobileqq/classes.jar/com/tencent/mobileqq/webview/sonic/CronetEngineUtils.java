@@ -42,19 +42,19 @@ public class CronetEngineUtils
           String str2 = (String)paramHashMap.getValue();
           if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
           {
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("set Quic header, key: ");
+              localStringBuilder.append(str1);
+              localStringBuilder.append(", value: ");
+              localStringBuilder.append(str2);
+              QLog.d("SonicSdkImpl_CronetEngineUtils", 1, localStringBuilder.toString());
+            }
             paramString.addHeader((String)paramHashMap.getKey(), (String)paramHashMap.getValue());
-            continue;
-            return false;
           }
         }
       }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("SonicSdkImpl_CronetEngineUtils", 1, "startWithURL encount exception!", paramString);
-    }
-    for (;;)
-    {
       paramString = paramString.build();
       if (paramString != null)
       {
@@ -63,11 +63,16 @@ public class CronetEngineUtils
       }
       QLog.e("SonicSdkImpl_CronetEngineUtils", 1, "builderWrapper.build() is null!");
     }
+    catch (Throwable paramString)
+    {
+      QLog.e("SonicSdkImpl_CronetEngineUtils", 1, "startWithURL encount exception!", paramString);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.CronetEngineUtils
  * JD-Core Version:    0.7.0.1
  */

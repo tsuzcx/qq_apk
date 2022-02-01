@@ -1,16 +1,10 @@
-import cooperation.plugin.PluginDownloader;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import cooperation.plugin.PluginDownloader.OnPluginDownLoadListener;
 
 public class iac
-  implements FilenameFilter
 {
-  public iac(PluginDownloader paramPluginDownloader, String paramString) {}
-  
-  public boolean accept(File paramFile, String paramString)
-  {
-    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
-  }
+  private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+  private PluginDownloader.OnPluginDownLoadListener jdField_a_of_type_CooperationPluginPluginDownloader$OnPluginDownLoadListener;
 }
 
 

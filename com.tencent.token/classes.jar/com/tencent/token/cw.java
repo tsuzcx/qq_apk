@@ -1,1646 +1,961 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import android.os.Build;
+import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.jni.FaceDetector;
-import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.core.protocolcenter.ProtoSetServiceStatusV2;
-import com.tencent.token.core.protocolcenter.a;
-import com.tencent.token.core.protocolcenter.protocol.ProtoAutoIDCardDetect;
-import com.tencent.token.core.protocolcenter.protocol.ProtoCheckUpSMS;
-import com.tencent.token.core.protocolcenter.protocol.ProtoCopyFace;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDelDevice;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDelMbInfo;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDelUnverifyUin;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoBindToken;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoBindTokenByRealName;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoBindTokenByUniverify;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoGeneralBindToken;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoLoginV2;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoSendFeedback;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoSendSmscode;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoUnbindToken;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoVerifyOriginalMobile;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoVerifyQQToken;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoVerifyQuestion;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoVerifySmscode;
-import com.tencent.token.core.protocolcenter.protocol.ProtoDoWtLogin;
-import com.tencent.token.core.protocolcenter.protocol.ProtoFaceCommon;
-import com.tencent.token.core.protocolcenter.protocol.ProtoFaceVryOnOff;
-import com.tencent.token.core.protocolcenter.protocol.ProtoFeedbackAbnormalLogin;
-import com.tencent.token.core.protocolcenter.protocol.ProtoFeedbackMobileUsing;
-import com.tencent.token.core.protocolcenter.protocol.ProtoFreezeUin;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGeneralGetMobileCode;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGeneralVryMobileCode;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetAccountLockStatus;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetConfig;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetDeterminVerifyFactors;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetDeviceLock;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetDomain;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetDualMsgList;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetEvalAccountResult;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetGameLockStatus;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetLoginProtect;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetMbInfo;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetMbMobileCode;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetMessage;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetRealNameStatus;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetRealUin;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetSMSChannel;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetSafeProtection;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetStartUpImg;
-import com.tencent.token.core.protocolcenter.protocol.ProtoGetStrConfig;
-import com.tencent.token.core.protocolcenter.protocol.ProtoKickOff;
-import com.tencent.token.core.protocolcenter.protocol.ProtoLiveFaceDetect;
-import com.tencent.token.core.protocolcenter.protocol.ProtoModifyQQPwd;
-import com.tencent.token.core.protocolcenter.protocol.ProtoQueryCaptcha;
-import com.tencent.token.core.protocolcenter.protocol.ProtoQueryFreezeStatus;
-import com.tencent.token.core.protocolcenter.protocol.ProtoQueryMaliciousURL;
-import com.tencent.token.core.protocolcenter.protocol.ProtoQueryRealName;
-import com.tencent.token.core.protocolcenter.protocol.ProtoQuerySpecialVerify;
-import com.tencent.token.core.protocolcenter.protocol.ProtoRealNameCardCheck;
-import com.tencent.token.core.protocolcenter.protocol.ProtoRealNameReg;
-import com.tencent.token.core.protocolcenter.protocol.ProtoReportDnsInfo;
-import com.tencent.token.core.protocolcenter.protocol.ProtoReportLocation;
-import com.tencent.token.core.protocolcenter.protocol.ProtoSetMbMobile;
-import com.tencent.token.core.protocolcenter.protocol.ProtoUploadLogFile;
-import com.tencent.token.core.protocolcenter.protocol.ProtoVryCaptcha;
-import com.tencent.token.core.protocolcenter.protocol.ProtoVryMbMobileCode;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.h;
-import com.tencent.token.ui.di;
-import com.tencent.token.utils.b;
-import com.tencent.token.utils.w;
-import com.tencent.token.utils.x;
-import java.io.File;
-import java.net.URLEncoder;
-import java.util.HashMap;
+import android.support.v4.app.Fragment;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Random;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
 
-public class cw
-  implements a
+final class cw
 {
-  public static int a = new Random().nextInt() >>> 1;
-  private static cw b;
-  private com.tencent.token.core.protocolcenter.f c = new com.tencent.token.core.protocolcenter.f();
+  private static final int[] a = { 0, 3, 0, 1, 5, 4, 7, 6, 9, 8 };
+  private static final cy b;
+  private static final cy c = a();
   
-  public static cw a()
+  static
   {
-    if (b == null) {
-      b = new cw();
+    cx localcx;
+    if (Build.VERSION.SDK_INT >= 21) {
+      localcx = new cx();
+    } else {
+      localcx = null;
     }
-    return b;
+    b = localcx;
   }
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, Handler paramHandler)
+  private static a a(a parama, SparseArray<a> paramSparseArray, int paramInt)
   {
-    paramHandler = new ev("mbtoken3_get_config_v2", 2, paramHandler, 3041);
-    ProtoGetConfig.a(paramHandler, paramInt1, paramInt2, paramInt3);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong, byte paramByte, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_get_dual_msg_list_v2", 2, paramHandler, 3069);
-    ProtoGetDualMsgList.a(paramHandler, paramLong, paramByte);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong, int paramInt1, int paramInt2, int paramInt3, SafeMsgItem paramSafeMsgItem, Handler paramHandler)
-  {
-    QQUser localQQUser = do.a().e();
-    if (paramLong == 0L)
+    a locala = parama;
+    if (parama == null)
     {
-      if (localQQUser == null)
+      locala = new a();
+      paramSparseArray.put(paramInt, locala);
+    }
+    return locala;
+  }
+  
+  private static cy a()
+  {
+    try
+    {
+      cy localcy = (cy)Class.forName("android.support.transition.FragmentTransitionSupport").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      return localcy;
+    }
+    catch (Exception localException)
+    {
+      label25:
+      break label25;
+    }
+    return null;
+  }
+  
+  private static cy a(Fragment paramFragment1, Fragment paramFragment2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramFragment1 != null)
+    {
+      Object localObject = paramFragment1.j();
+      if (localObject != null) {
+        localArrayList.add(localObject);
+      }
+      localObject = paramFragment1.i();
+      if (localObject != null) {
+        localArrayList.add(localObject);
+      }
+      paramFragment1 = paramFragment1.m();
+      if (paramFragment1 != null) {
+        localArrayList.add(paramFragment1);
+      }
+    }
+    if (paramFragment2 != null)
+    {
+      paramFragment1 = paramFragment2.h();
+      if (paramFragment1 != null) {
+        localArrayList.add(paramFragment1);
+      }
+      paramFragment1 = paramFragment2.k();
+      if (paramFragment1 != null) {
+        localArrayList.add(paramFragment1);
+      }
+      paramFragment1 = paramFragment2.l();
+      if (paramFragment1 != null) {
+        localArrayList.add(paramFragment1);
+      }
+    }
+    if (localArrayList.isEmpty()) {
+      return null;
+    }
+    paramFragment1 = b;
+    if ((paramFragment1 != null) && (a(paramFragment1, localArrayList))) {
+      return b;
+    }
+    paramFragment1 = c;
+    if ((paramFragment1 != null) && (a(paramFragment1, localArrayList))) {
+      return c;
+    }
+    if ((b == null) && (c == null)) {
+      return null;
+    }
+    throw new IllegalArgumentException("Invalid Transition types");
+  }
+  
+  private static em<String, String> a(int paramInt1, ArrayList<cm> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt2, int paramInt3)
+  {
+    em localem = new em();
+    paramInt3 -= 1;
+    while (paramInt3 >= paramInt2)
+    {
+      Object localObject = (cm)paramArrayList.get(paramInt3);
+      if (((cm)localObject).b(paramInt1))
       {
-        paramSafeMsgItem = paramHandler.obtainMessage(3032);
-        paramHandler = new com.tencent.token.global.f();
-        paramHandler.b(110);
-        paramSafeMsgItem.arg1 = paramHandler.a;
-        paramSafeMsgItem.obj = paramHandler;
-        paramSafeMsgItem.sendToTarget();
-        return -1;
+        boolean bool = ((Boolean)paramArrayList1.get(paramInt3)).booleanValue();
+        if (((cm)localObject).r != null)
+        {
+          int j = ((cm)localObject).r.size();
+          ArrayList localArrayList2;
+          ArrayList localArrayList1;
+          if (bool)
+          {
+            localArrayList2 = ((cm)localObject).r;
+            localArrayList1 = ((cm)localObject).s;
+          }
+          else
+          {
+            localArrayList1 = ((cm)localObject).r;
+            localArrayList2 = ((cm)localObject).s;
+          }
+          int i = 0;
+          while (i < j)
+          {
+            localObject = (String)localArrayList1.get(i);
+            String str1 = (String)localArrayList2.get(i);
+            String str2 = (String)localem.remove(str1);
+            if (str2 != null) {
+              localem.put(localObject, str2);
+            } else {
+              localem.put(localObject, str1);
+            }
+            i += 1;
+          }
+        }
       }
-      paramLong = localQQUser.mUin;
+      paramInt3 -= 1;
     }
-    for (;;)
+    return localem;
+  }
+  
+  private static Object a(cy paramcy, Fragment paramFragment1, Fragment paramFragment2, boolean paramBoolean)
+  {
+    if ((paramFragment1 != null) && (paramFragment2 != null))
     {
-      paramHandler = new ev("mbtoken3_report_location", 3, paramHandler, 3032);
-      if ((localQQUser != null) && (!localQQUser.mIsBinded)) {
-        paramHandler.c.put("param.uin.wtlogin", Long.valueOf(localQQUser.mRealUin));
+      if (paramBoolean) {
+        paramFragment1 = paramFragment2.m();
+      } else {
+        paramFragment1 = paramFragment1.l();
       }
-      ProtoReportLocation.a(paramHandler, paramLong, paramInt1, paramInt2, paramInt3, paramSafeMsgItem);
-      this.c.a(paramHandler);
-      return 0;
+      return paramcy.c(paramcy.b(paramFragment1));
+    }
+    return null;
+  }
+  
+  private static Object a(cy paramcy, Fragment paramFragment, boolean paramBoolean)
+  {
+    if (paramFragment == null) {
+      return null;
+    }
+    if (paramBoolean) {
+      paramFragment = paramFragment.k();
+    } else {
+      paramFragment = paramFragment.h();
+    }
+    return paramcy.b(paramFragment);
+  }
+  
+  private static Object a(cy paramcy, Object paramObject1, Object paramObject2, Object paramObject3, Fragment paramFragment, boolean paramBoolean)
+  {
+    if ((paramObject1 != null) && (paramObject2 != null) && (paramFragment != null))
+    {
+      if (paramBoolean) {
+        paramBoolean = paramFragment.o();
+      } else {
+        paramBoolean = paramFragment.n();
+      }
+    }
+    else {
+      paramBoolean = true;
+    }
+    if (paramBoolean) {
+      return paramcy.a(paramObject2, paramObject1, paramObject3);
+    }
+    return paramcy.b(paramObject2, paramObject1, paramObject3);
+  }
+  
+  private static String a(em<String, String> paramem, String paramString)
+  {
+    int j = paramem.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (paramString.equals(paramem.c(i))) {
+        return (String)paramem.b(i);
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  private static void a(cm paramcm, SparseArray<a> paramSparseArray, boolean paramBoolean)
+  {
+    int j = paramcm.b.size();
+    int i = 0;
+    while (i < j)
+    {
+      a(paramcm, (cm.a)paramcm.b.get(i), paramSparseArray, false, paramBoolean);
+      i += 1;
     }
   }
   
-  public int a(long paramLong, int paramInt1, int paramInt2, Handler paramHandler)
+  private static void a(cm paramcm, cm.a parama, SparseArray<a> paramSparseArray, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = do.a().e();
-    if (paramLong == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3005);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
+    Fragment localFragment = parama.b;
+    if (localFragment == null) {
+      return;
     }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_get_message_v2", 3, paramHandler, 3005);
-      if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-        paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-      }
-      ProtoGetMessage.a(paramHandler, paramLong, paramInt1, 1, paramInt2, 40);
-      this.c.a(paramHandler);
-      return 0;
+    int m = localFragment.z;
+    if (m == 0) {
+      return;
     }
-  }
-  
-  public int a(long paramLong, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, String paramString3, Handler paramHandler)
-  {
-    QQUser localQQUser = do.a().e();
-    if (paramLong == 0L)
-    {
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3005);
-        paramString2 = new com.tencent.token.global.f();
-        paramString2.b(110);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_get_message_v2", 3, paramHandler, 3005);
-      if ((localQQUser != null) && (!localQQUser.mIsBinded)) {
-        paramHandler.c.put("param.uin.wtlogin", Long.valueOf(localQQUser.mRealUin));
-      }
-      ProtoGetMessage.a(paramHandler, paramLong, paramInt1, 1, paramInt2, 40, paramString1, paramInt3, paramInt4, paramString2, paramString3);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong, int paramInt, Handler paramHandler)
-  {
-    Object localObject = do.a().e();
-    if (paramLong == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3006);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_get_message_v2", 3, paramHandler, 3006);
-      if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-        paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-      }
-      ProtoGetMessage.a(paramHandler, paramLong, paramInt, 2, 0, 40);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong, int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3, Handler paramHandler)
-  {
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3054);
-        paramString2 = new com.tencent.token.global.f();
-        paramString2.b(110);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      a += 1;
-      int i = a;
-      paramHandler = new ev("mbtoken3_get_device_lock_status_v2", 3, paramHandler, 3054);
-      ProtoGetDeviceLock.a(paramHandler, paramLong, paramInt1, paramString1, paramInt2, paramInt3, paramString2, paramString3, i);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong, int paramInt, String paramString1, String paramString2, Handler paramHandler)
-  {
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3013);
-        paramString2 = new com.tencent.token.global.f();
-        paramString2.b(110);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_mbop_get_mobile_code", 3, paramHandler, 3013);
-      ProtoGetMbMobileCode.a(paramHandler, paramLong, paramInt, paramString1, paramString2);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, Handler paramHandler)
-  {
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3012);
-        paramString2 = new com.tencent.token.global.f();
-        paramString2.b(110);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_set_mod_mobile", 3, paramHandler, 3012);
-      ProtoSetMbMobile.a(paramHandler, paramLong, paramInt, paramString1, paramString2, paramString3);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong, int paramInt, boolean paramBoolean, String paramString, Handler paramHandler)
-  {
-    QQUser localQQUser = do.a().e();
-    if (paramLong == 0L)
-    {
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3004);
-        paramHandler = new com.tencent.token.global.f();
-        paramHandler.b(110);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_face_verify_on_off", 3, paramHandler, 4002);
-      int i = a + 1;
-      a = i;
-      ProtoFaceVryOnOff.a(paramHandler, paramLong, paramInt, i, paramBoolean, paramString);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Handler paramHandler)
-  {
-    Object localObject;
-    if (paramLong2 == 0L)
-    {
-      localObject = null;
-      if (paramLong1 != 0L) {
-        break label193;
-      }
-      localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3068);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong1 = ((QQUser)localObject).mUin;
-    }
-    label193:
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_check_up_sms", 2, paramHandler, 3068);
-      a += 1;
-      ProtoCheckUpSMS.a(paramHandler, paramLong1, ((QQUser)localObject).mRealUin, paramInt1, a, paramInt2);
-      this.c.a(paramHandler);
-      return 0;
-      paramHandler = new ev("mbtoken3_check_up_sms", 2, paramHandler, 3068);
-      a += 1;
-      ProtoCheckUpSMS.a(paramHandler, w.f(paramLong2), paramLong2, paramInt1, a, paramInt2);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong1, long paramLong2, int paramInt, Handler paramHandler)
-  {
-    a += 1;
-    paramHandler = new ev("mbtoken3_unbind_token", 3, paramHandler, 4001);
-    ProtoDoUnbindToken.a(paramHandler, paramLong1, paramLong2, paramInt, a);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong1, long paramLong2, int paramInt1, String paramString, int paramInt2, Handler paramHandler)
-  {
-    QQUser localQQUser;
-    if (paramLong2 == 0L)
-    {
-      localQQUser = null;
-      if (paramLong1 != 0L) {
-        break label197;
-      }
-      localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3066);
-        paramHandler = new com.tencent.token.global.f();
-        paramHandler.b(110);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      paramLong1 = localQQUser.mUin;
-    }
-    label197:
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_general_verify_mobile_code", 2, paramHandler, 3066);
-      a += 1;
-      ProtoGeneralVryMobileCode.a(paramHandler, paramLong1, localQQUser.mRealUin, paramInt1, a, paramString, paramInt2);
-      this.c.a(paramHandler);
-      return 0;
-      paramHandler = new ev("mbtoken3_general_verify_mobile_code", 2, paramHandler, 3066);
-      a += 1;
-      ProtoGeneralVryMobileCode.a(paramHandler, w.f(paramLong2), paramLong2, paramInt1, a, paramString, paramInt2);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong1, long paramLong2, int paramInt, String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, Handler paramHandler)
-  {
-    Object localObject;
-    long l1;
-    long l2;
     int i;
-    if ((paramInt == 1) || (paramInt == 3))
+    if (paramBoolean1) {
+      i = a[parama.a];
+    } else {
+      i = parama.a;
+    }
+    boolean bool = false;
+    int k = 1;
+    int j;
+    if (i != 1)
     {
-      localObject = do.a().e();
-      l1 = paramLong1;
-      l2 = paramLong2;
-      if (paramLong1 == 0L)
+      switch (i)
       {
-        if (localObject == null)
+      default: 
+        j = 0;
+        k = 0;
+        i = 0;
+        break;
+      case 5: 
+        if (paramBoolean2)
         {
-          paramString1 = paramHandler.obtainMessage(3067);
-          paramString2 = new com.tencent.token.global.f();
-          paramString2.b(110);
-          paramString1.arg1 = paramString2.a;
-          paramString1.obj = paramString2;
-          paramString1.sendToTarget();
-          return -1;
+          if ((localFragment.Q) && (!localFragment.B) && (localFragment.l)) {
+            bool = true;
+          } else {
+            bool = false;
+          }
         }
-        if (paramLong2 != ((QQUser)localObject).mRealUin)
+        else {
+          bool = localFragment.B;
+        }
+        j = 0;
+        i = 0;
+        break;
+      case 4: 
+        if (paramBoolean2)
         {
-          l1 = w.f(paramLong2);
-          l2 = paramLong2;
+          if ((localFragment.Q) && (localFragment.l) && (localFragment.B)) {
+            i = 1;
+          } else {
+            i = 0;
+          }
         }
+        else if ((localFragment.l) && (!localFragment.B)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        j = 1;
+        k = 0;
+        break;
+      case 3: 
+      case 6: 
+        if (paramBoolean2)
+        {
+          if ((!localFragment.l) && (localFragment.J != null) && (localFragment.J.getVisibility() == 0) && (localFragment.R >= 0.0F)) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+        }
+        else if ((localFragment.l) && (!localFragment.B)) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        j = 1;
+        k = 0;
+        break;
+      }
+    }
+    else
+    {
+      if (paramBoolean2) {
+        bool = localFragment.P;
+      } else if ((!localFragment.l) && (!localFragment.B)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      j = 0;
+      i = 0;
+    }
+    parama = (a)paramSparseArray.get(m);
+    if (bool)
+    {
+      parama = a(parama, paramSparseArray, m);
+      parama.a = localFragment;
+      parama.b = paramBoolean1;
+      parama.c = paramcm;
+    }
+    if ((!paramBoolean2) && (k != 0))
+    {
+      if ((parama != null) && (parama.d == localFragment)) {
+        parama.d = null;
+      }
+      localObject = paramcm.a;
+      if ((localFragment.b <= 0) && (((ct)localObject).l > 0) && (!paramcm.t))
+      {
+        ((ct)localObject).b(localFragment);
+        ((ct)localObject).a(localFragment, 1, 0, 0, false);
+      }
+    }
+    Object localObject = parama;
+    if (i != 0) {
+      if (parama != null)
+      {
+        localObject = parama;
+        if (parama.d != null) {}
       }
       else
       {
-        a += 1;
-        i = a;
-        if (paramInt != 1) {
-          break label995;
-        }
-        paramHandler = new ev("mbtoken3_realname_reg_v2", 3, paramHandler, 3067);
+        localObject = a(parama, paramSparseArray, m);
+        ((a)localObject).d = localFragment;
+        ((a)localObject).e = paramBoolean1;
+        ((a)localObject).f = paramcm;
       }
     }
-    for (;;)
-    {
-      paramHandler.m = 1;
-      paramHandler.n = new ContentValues(3);
-      paramHandler.n.put("aq_base_sid", cv.a().b());
-      localObject = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject).put("real_uin", l2);
-        ((JSONObject)localObject).put("uin", l1);
-        ((JSONObject)localObject).put("realname", paramString1);
-        ((JSONObject)localObject).put("id_number", paramString2);
-        ((JSONObject)localObject).put("op_type", paramInt);
-        h.a("doRealNameReg common_data=" + ((JSONObject)localObject).toString());
-        if (paramArrayOfByte1 != null)
-        {
-          str = b.a(paramArrayOfByte1);
-          ((JSONObject)localObject).put("face_data", str);
-          h.a("doRealNameReg face_data=" + str.length());
-        }
-        if (paramArrayOfByte2 != null)
-        {
-          str = b.a(paramArrayOfByte2);
-          ((JSONObject)localObject).put("id_photo_front", str);
-          h.a("doRealNameReg front_data=" + str.length());
-        }
-        if (paramArrayOfByte3 != null)
-        {
-          str = b.a(paramArrayOfByte3);
-          ((JSONObject)localObject).put("id_photo_back", str);
-          h.a("doRealNameReg back_data=" + str.length());
-        }
-        if (paramArrayOfByte4 != null) {
-          ((JSONObject)localObject).put("id_photo_info_front", b.a(paramArrayOfByte4));
-        }
-        if (paramArrayOfByte5 != null) {
-          ((JSONObject)localObject).put("id_photo_info_back", b.a(paramArrayOfByte5));
-        }
-        ((JSONObject)localObject).put("token_seq", cx.c().k());
-        ((JSONObject)localObject).put("guid", w.a(cp.a(RqdApplication.l()).b()));
-        ((JSONObject)localObject).put("seq_id", i);
-        ((JSONObject)localObject).put("op_time", (int)(cx.c().s() / 1000L));
-        ((JSONObject)localObject).put("vendor_id", Build.MANUFACTURER);
-        ((JSONObject)localObject).put("android_id", w.a(RqdApplication.l()));
-        ((JSONObject)localObject).put("imei", w.b(RqdApplication.l()));
-        ((JSONObject)localObject).put("mac", w.c(RqdApplication.l()));
-        ((JSONObject)localObject).put("device_model", Build.MODEL);
-        ((JSONObject)localObject).put("sys_ver", Build.VERSION.RELEASE);
-        ((JSONObject)localObject).put("face_detect_time", ProtoFaceCommon.f);
-        ((JSONObject)localObject).put("face_detect_frame", ProtoFaceCommon.h);
-        ((JSONObject)localObject).put("face_model_init_time", ProtoFaceCommon.g);
-        ((JSONObject)localObject).put("vivo_model_init_time", ProtoFaceCommon.i);
-        ((JSONObject)localObject).put("vivo_reg_action1_time", ProtoFaceCommon.j);
-        ((JSONObject)localObject).put("vivo_reg_action2_time", ProtoFaceCommon.k);
-        ((JSONObject)localObject).put("vivo_reg_action1_frame", ProtoFaceCommon.l);
-        ((JSONObject)localObject).put("vivo_reg_action2_frame", ProtoFaceCommon.m);
-        ((JSONObject)localObject).put("vivo_ver_action_time", ProtoFaceCommon.n);
-        ((JSONObject)localObject).put("vivo_ver_action_frame", ProtoFaceCommon.o);
-        ((JSONObject)localObject).put("vivo_reg_action1_type", ProtoLiveFaceDetect.d);
-        ((JSONObject)localObject).put("vivo_reg_action2_type", ProtoLiveFaceDetect.e);
-        ((JSONObject)localObject).put("vivo_ver_action_type", ProtoLiveFaceDetect.f);
-        ((JSONObject)localObject).put("id_photo_front_time", di.b);
-        ((JSONObject)localObject).put("id_photo_front_frame", di.a);
-        ((JSONObject)localObject).put("id_photo_back_time", di.d);
-        ((JSONObject)localObject).put("id_photo_back_frame", di.c);
-        String str = w.e(RqdApplication.l());
-        if (!TextUtils.isEmpty(str)) {
-          ((JSONObject)localObject).put("route_name", str);
-        }
-        str = w.d(RqdApplication.l());
-        if (!TextUtils.isEmpty(str)) {
-          ((JSONObject)localObject).put("route_mac", str);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
-      localObject = b.a(w.c(((JSONObject)localObject).toString().getBytes())).replace('+', '-').replace('=', '_');
-      h.a("doRealNameReg data = " + ((String)localObject).length());
-      paramHandler.n.put("data", (String)localObject);
-      ProtoRealNameReg.a(paramHandler, l1, i, l2, paramString1, paramString2, paramInt, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5);
-      this.c.a(paramHandler);
-      return 0;
-      l1 = ((QQUser)localObject).mUin;
-      l2 = ((QQUser)localObject).mRealUin;
-      break;
-      l1 = w.f(paramLong2);
-      l2 = paramLong2;
-      break;
-      label995:
-      if (paramInt == 3) {
-        paramHandler = new ev("mbtoken3_realname_reg_v2", 3, paramHandler, 3078);
-      } else {
-        paramHandler = new ev("mbtoken3_realname_reg_v2", 2, paramHandler, 3067);
-      }
+    if ((!paramBoolean2) && (j != 0) && (localObject != null) && (((a)localObject).a == localFragment)) {
+      ((a)localObject).a = null;
     }
   }
   
-  public int a(long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, Handler paramHandler)
+  static void a(ct paramct, ArrayList<cm> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    Object localObject1 = null;
-    if (paramLong2 != 0L) {
-      localObject1 = do.a().d(paramLong2);
+    Object localObject1 = paramct;
+    final boolean bool1 = paramBoolean;
+    if (((ct)localObject1).l <= 0) {
+      return;
     }
-    if (localObject1 == null) {
-      localObject1 = do.a().e();
-    }
-    for (;;)
+    SparseArray localSparseArray = new SparseArray();
+    int i = paramInt1;
+    Object localObject2;
+    while (i < paramInt2)
     {
-      if (paramLong1 == 0L)
-      {
-        if (localObject1 == null)
-        {
-          paramArrayOfByte = paramHandler.obtainMessage(3058);
-          paramHandler = new com.tencent.token.global.f();
-          paramHandler.b(110);
-          paramArrayOfByte.arg1 = paramHandler.a;
-          paramArrayOfByte.obj = paramHandler;
-          paramArrayOfByte.sendToTarget();
-          return -1;
-        }
-        paramLong1 = ((QQUser)localObject1).mUin;
+      localObject2 = (cm)paramArrayList.get(i);
+      if (((Boolean)paramArrayList1.get(i)).booleanValue()) {
+        b((cm)localObject2, localSparseArray, bool1);
+      } else {
+        a((cm)localObject2, localSparseArray, bool1);
       }
+      i += 1;
+    }
+    if (localSparseArray.size() != 0)
+    {
+      final View localView = new View(((ct)localObject1).m.c);
+      i = localSparseArray.size();
+      int j = 0;
       for (;;)
       {
-        long l;
-        if (paramLong2 != 0L)
-        {
-          l = w.f(paramLong2);
-          paramLong1 = paramLong2;
-          paramLong2 = l;
+        localObject1 = paramct;
+        if (j >= i) {
+          break;
         }
-        for (;;)
+        int k = localSparseArray.keyAt(j);
+        Object localObject4 = a(k, paramArrayList, paramArrayList1, paramInt1, paramInt2);
+        final a locala = (a)localSparseArray.valueAt(j);
+        Object localObject7;
+        Object localObject13;
+        Object localObject9;
+        final boolean bool2;
+        Object localObject8;
+        Object localObject10;
+        final Object localObject11;
+        Object localObject12;
+        Fragment localFragment1;
+        final Fragment localFragment2;
+        final Object localObject3;
+        Object localObject14;
+        Object localObject5;
+        final Object localObject6;
+        if (paramBoolean)
         {
-          a += 1;
-          int j = a;
-          label165:
-          Object localObject2;
-          if ((paramInt3 == 2) || (paramInt3 == 10) || (paramInt3 == 1))
+          if (((ct)localObject1).n.a()) {
+            localObject2 = (ViewGroup)((ct)localObject1).n.a(k);
+          } else {
+            localObject2 = null;
+          }
+          if (localObject2 != null)
           {
-            paramHandler = new ev("mbtoken3_face_reg_v2", 2, paramHandler, 3058);
-            paramHandler.m = 1;
-            paramHandler.n = new ContentValues(3);
-            paramHandler.n.put("aq_base_sid", cv.a().b());
-            localObject2 = new JSONObject();
-            if (paramInt1 == 2) {
-              break label1019;
+            localObject7 = locala.a;
+            localObject13 = locala.d;
+            localObject9 = a((Fragment)localObject13, (Fragment)localObject7);
+            if (localObject9 != null)
+            {
+              bool1 = locala.b;
+              bool2 = locala.e;
+              localObject8 = new ArrayList();
+              localObject10 = new ArrayList();
+              localObject11 = a((cy)localObject9, (Fragment)localObject7, bool1);
+              localObject12 = b((cy)localObject9, (Fragment)localObject13, bool2);
+              localFragment1 = locala.a;
+              localFragment2 = locala.d;
+              if (localFragment1 != null) {
+                localFragment1.J.setVisibility(0);
+              }
+              if ((localFragment1 != null) && (localFragment2 != null))
+              {
+                bool2 = locala.b;
+                if (((em)localObject4).isEmpty()) {
+                  localObject1 = null;
+                } else {
+                  localObject1 = a((cy)localObject9, localFragment1, localFragment2, bool2);
+                }
+                localObject3 = b((cy)localObject9, (em)localObject4, localObject1, locala);
+                localObject14 = c((cy)localObject9, (em)localObject4, localObject1, locala);
+                if (((em)localObject4).isEmpty())
+                {
+                  if (localObject3 != null) {
+                    ((em)localObject3).clear();
+                  }
+                  if (localObject14 != null) {
+                    ((em)localObject14).clear();
+                  }
+                  localObject1 = null;
+                }
+                else
+                {
+                  a((ArrayList)localObject10, (em)localObject3, ((em)localObject4).keySet());
+                  a((ArrayList)localObject8, (em)localObject14, ((em)localObject4).values());
+                }
+                if ((localObject11 == null) && (localObject12 == null) && (localObject1 == null))
+                {
+                  localObject1 = null;
+                }
+                else
+                {
+                  b(localFragment1, localFragment2, bool2, (em)localObject3);
+                  if (localObject1 != null)
+                  {
+                    ((ArrayList)localObject8).add(localView);
+                    ((cy)localObject9).a(localObject1, localView, (ArrayList)localObject10);
+                    a((cy)localObject9, localObject1, localObject12, (em)localObject3, locala.e, locala.f);
+                    localObject3 = new Rect();
+                    localObject5 = b((em)localObject14, locala, localObject11, bool2);
+                    if (localObject5 != null) {
+                      ((cy)localObject9).a(localObject11, (Rect)localObject3);
+                    }
+                    localObject6 = localObject3;
+                  }
+                  else
+                  {
+                    localObject3 = null;
+                    localObject6 = localObject3;
+                    localObject5 = localObject3;
+                  }
+                  de.a((View)localObject2, new Runnable()
+                  {
+                    public final void run()
+                    {
+                      cw.a(this.a, localFragment2, bool2, this.d);
+                      View localView = this.e;
+                      if (localView != null) {
+                        cy.a(localView, this.g);
+                      }
+                    }
+                  });
+                }
+              }
+              else
+              {
+                localObject1 = null;
+              }
+              if ((localObject11 == null) && (localObject1 == null) && (localObject12 == null)) {
+                break label846;
+              }
+              localObject3 = b((cy)localObject9, localObject12, (Fragment)localObject13, (ArrayList)localObject10, localView);
+              localObject5 = b((cy)localObject9, localObject11, (Fragment)localObject7, (ArrayList)localObject8, localView);
+              a((ArrayList)localObject5, 4);
+              localObject6 = a((cy)localObject9, localObject11, localObject12, localObject1, (Fragment)localObject7, bool1);
+              if (localObject6 != null)
+              {
+                if ((localObject13 != null) && (localObject12 != null) && (((Fragment)localObject13).l) && (((Fragment)localObject13).B) && (((Fragment)localObject13).Q))
+                {
+                  ((Fragment)localObject13).c(true);
+                  ((cy)localObject9).b(localObject12, ((Fragment)localObject13).J, (ArrayList)localObject3);
+                  de.a(((Fragment)localObject13).I, new Runnable()
+                  {
+                    public final void run()
+                    {
+                      cw.a(this.a);
+                    }
+                  });
+                }
+                localObject7 = cy.a((ArrayList)localObject8);
+                ((cy)localObject9).a(localObject6, localObject11, (ArrayList)localObject5, localObject12, (ArrayList)localObject3, localObject1, (ArrayList)localObject8);
+                ((cy)localObject9).a((ViewGroup)localObject2, localObject6);
+                ((cy)localObject9).a((View)localObject2, (ArrayList)localObject10, (ArrayList)localObject8, (ArrayList)localObject7, (Map)localObject4);
+                a((ArrayList)localObject5, 0);
+                ((cy)localObject9).a(localObject1, (ArrayList)localObject10, (ArrayList)localObject8);
+              }
+            }
+            else {}
+          }
+        }
+        else
+        {
+          label846:
+          localObject3 = localObject4;
+          if (((ct)localObject1).n.a()) {
+            localObject5 = (ViewGroup)((ct)localObject1).n.a(k);
+          } else {
+            localObject5 = null;
+          }
+          if (localObject5 != null)
+          {
+            localObject12 = locala.a;
+            localFragment1 = locala.d;
+            localObject13 = a(localFragment1, (Fragment)localObject12);
+            if (localObject13 != null)
+            {
+              bool1 = locala.b;
+              bool2 = locala.e;
+              localObject11 = a((cy)localObject13, (Fragment)localObject12, bool1);
+              localObject10 = b((cy)localObject13, localFragment1, bool2);
+              localObject1 = new ArrayList();
+              localObject2 = new ArrayList();
+              localFragment2 = locala.a;
+              localObject14 = locala.d;
+              if ((localFragment2 != null) && (localObject14 != null))
+              {
+                bool1 = locala.b;
+                if (((em)localObject3).isEmpty()) {
+                  localObject3 = null;
+                } else {
+                  localObject3 = a((cy)localObject13, localFragment2, (Fragment)localObject14, bool1);
+                }
+                localObject7 = b((cy)localObject13, (em)localObject4, localObject3, locala);
+                if (((em)localObject4).isEmpty()) {
+                  localObject3 = null;
+                } else {
+                  ((ArrayList)localObject1).addAll(((em)localObject7).values());
+                }
+                if ((localObject11 == null) && (localObject10 == null) && (localObject3 == null))
+                {
+                  localObject3 = localObject4;
+                  localObject6 = null;
+                  localObject4 = localObject1;
+                  localObject1 = localObject6;
+                }
+                else
+                {
+                  b(localFragment2, (Fragment)localObject14, bool1, (em)localObject7);
+                  if (localObject3 != null)
+                  {
+                    localObject6 = new Rect();
+                    ((cy)localObject13).a(localObject3, localView, (ArrayList)localObject1);
+                    a((cy)localObject13, localObject3, localObject10, (em)localObject7, locala.e, locala.f);
+                    localObject7 = localObject6;
+                    if (localObject11 != null)
+                    {
+                      ((cy)localObject13).a(localObject11, (Rect)localObject6);
+                      localObject7 = localObject6;
+                    }
+                  }
+                  else
+                  {
+                    localObject7 = null;
+                  }
+                  localObject8 = localObject4;
+                  localObject9 = localObject2;
+                  localObject6 = localObject8;
+                  localObject2 = localObject9;
+                  localObject4 = localObject1;
+                  de.a((View)localObject5, new Runnable()
+                  {
+                    public final void run()
+                    {
+                      Object localObject1 = cw.a(this.a, this.b, localObject3, locala);
+                      if (localObject1 != null)
+                      {
+                        this.e.addAll(((em)localObject1).values());
+                        this.e.add(localView);
+                      }
+                      cw.a(localFragment2, this.h, bool1, (em)localObject1);
+                      Object localObject2 = localObject3;
+                      if (localObject2 != null)
+                      {
+                        this.a.a(localObject2, this.j, this.e);
+                        localObject1 = cw.a((em)localObject1, locala, localObject11, bool1);
+                        if (localObject1 != null) {
+                          cy.a((View)localObject1, this.l);
+                        }
+                      }
+                    }
+                  });
+                  localObject1 = localObject3;
+                  localObject3 = localObject6;
+                }
+              }
+              else
+              {
+                localObject6 = null;
+                localObject4 = localObject1;
+                localObject1 = localObject6;
+              }
+              k = j;
+              int m = i;
+              localObject6 = localObject10;
+              if ((localObject11 == null) && (localObject1 == null))
+              {
+                i = m;
+                j = k;
+                if (localObject6 == null) {}
+              }
+              else
+              {
+                localObject4 = b((cy)localObject13, localObject6, localFragment1, (ArrayList)localObject4, localView);
+                if ((localObject4 == null) || (((ArrayList)localObject4).isEmpty())) {
+                  localObject6 = null;
+                }
+                ((cy)localObject13).b(localObject11, localView);
+                localObject7 = a((cy)localObject13, localObject11, localObject6, localObject1, (Fragment)localObject12, locala.b);
+                i = m;
+                j = k;
+                if (localObject7 != null)
+                {
+                  localObject8 = new ArrayList();
+                  ((cy)localObject13).a(localObject7, localObject11, (ArrayList)localObject8, localObject6, (ArrayList)localObject4, localObject1, (ArrayList)localObject2);
+                  de.a((View)localObject5, new Runnable()
+                  {
+                    public final void run()
+                    {
+                      Object localObject = this.a;
+                      if (localObject != null)
+                      {
+                        this.b.c(localObject, localView);
+                        localObject = cw.a(this.b, this.a, this.d, this.e, localView);
+                        this.f.addAll((Collection)localObject);
+                      }
+                      if (this.g != null)
+                      {
+                        if (localObject6 != null)
+                        {
+                          localObject = new ArrayList();
+                          ((ArrayList)localObject).add(localView);
+                          this.b.b(localObject6, this.g, (ArrayList)localObject);
+                        }
+                        this.g.clear();
+                        this.g.add(localView);
+                      }
+                    }
+                  });
+                  de.a((View)localObject5, new cy.2((cy)localObject13, (ArrayList)localObject2, (Map)localObject3));
+                  ((cy)localObject13).a((ViewGroup)localObject5, localObject7);
+                  de.a((View)localObject5, new cy.3((cy)localObject13, (ArrayList)localObject2, (Map)localObject3));
+                  i = m;
+                  j = k;
+                }
+              }
+            }
+            else {}
+          }
+        }
+        j += 1;
+      }
+    }
+  }
+  
+  private static void a(cy paramcy, Object paramObject1, Object paramObject2, em<String, View> paramem, boolean paramBoolean, cm paramcm)
+  {
+    if ((paramcm.r != null) && (!paramcm.r.isEmpty()))
+    {
+      if (paramBoolean) {
+        paramcm = (String)paramcm.s.get(0);
+      } else {
+        paramcm = (String)paramcm.r.get(0);
+      }
+      paramem = (View)paramem.get(paramcm);
+      paramcy.a(paramObject1, paramem);
+      if (paramObject2 != null) {
+        paramcy.a(paramObject2, paramem);
+      }
+    }
+  }
+  
+  private static void a(ArrayList<View> paramArrayList, int paramInt)
+  {
+    if (paramArrayList == null) {
+      return;
+    }
+    int i = paramArrayList.size() - 1;
+    while (i >= 0)
+    {
+      ((View)paramArrayList.get(i)).setVisibility(paramInt);
+      i -= 1;
+    }
+  }
+  
+  private static void a(ArrayList<View> paramArrayList, em<String, View> paramem, Collection<String> paramCollection)
+  {
+    int i = paramem.size() - 1;
+    while (i >= 0)
+    {
+      View localView = (View)paramem.c(i);
+      if (paramCollection.contains(fo.h(localView))) {
+        paramArrayList.add(localView);
+      }
+      i -= 1;
+    }
+  }
+  
+  private static boolean a(cy paramcy, List<Object> paramList)
+  {
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (!paramcy.a(paramList.get(i))) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  private static View b(em<String, View> paramem, a parama, Object paramObject, boolean paramBoolean)
+  {
+    parama = parama.c;
+    if ((paramObject != null) && (paramem != null) && (parama.r != null) && (!parama.r.isEmpty()))
+    {
+      if (paramBoolean) {
+        parama = (String)parama.r.get(0);
+      } else {
+        parama = (String)parama.s.get(0);
+      }
+      return (View)paramem.get(parama);
+    }
+    return null;
+  }
+  
+  private static em<String, View> b(cy paramcy, em<String, String> paramem, Object paramObject, a parama)
+  {
+    if ((!paramem.isEmpty()) && (paramObject != null))
+    {
+      paramObject = parama.d;
+      em localem = new em();
+      paramcy.a(localem, paramObject.J);
+      paramcy = parama.f;
+      if (parama.e)
+      {
+        paramObject = paramObject.z();
+        paramcy = paramcy.s;
+      }
+      else
+      {
+        paramObject = paramObject.A();
+        paramcy = paramcy.r;
+      }
+      et.a(localem, paramcy);
+      if (paramObject != null)
+      {
+        int i = paramcy.size() - 1;
+        while (i >= 0)
+        {
+          parama = (String)paramcy.get(i);
+          paramObject = (View)localem.get(parama);
+          if (paramObject == null)
+          {
+            paramem.remove(parama);
+          }
+          else if (!parama.equals(fo.h(paramObject)))
+          {
+            parama = (String)paramem.remove(parama);
+            paramem.put(fo.h(paramObject), parama);
+          }
+          i -= 1;
+        }
+      }
+      et.a(paramem, localem.keySet());
+      return localem;
+    }
+    paramem.clear();
+    return null;
+  }
+  
+  private static Object b(cy paramcy, Fragment paramFragment, boolean paramBoolean)
+  {
+    if (paramFragment == null) {
+      return null;
+    }
+    if (paramBoolean) {
+      paramFragment = paramFragment.i();
+    } else {
+      paramFragment = paramFragment.j();
+    }
+    return paramcy.b(paramFragment);
+  }
+  
+  private static ArrayList<View> b(cy paramcy, Object paramObject, Fragment paramFragment, ArrayList<View> paramArrayList, View paramView)
+  {
+    if (paramObject != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramFragment = paramFragment.J;
+      if (paramFragment != null) {
+        paramcy.a(localArrayList, paramFragment);
+      }
+      if (paramArrayList != null) {
+        localArrayList.removeAll(paramArrayList);
+      }
+      paramFragment = localArrayList;
+      if (!localArrayList.isEmpty())
+      {
+        localArrayList.add(paramView);
+        paramcy.a(paramObject, localArrayList);
+        return localArrayList;
+      }
+    }
+    else
+    {
+      paramFragment = null;
+    }
+    return paramFragment;
+  }
+  
+  private static void b(Fragment paramFragment1, Fragment paramFragment2, boolean paramBoolean, em<String, View> paramem)
+  {
+    if (paramBoolean) {
+      paramFragment1 = paramFragment2.z();
+    } else {
+      paramFragment1 = paramFragment1.z();
+    }
+    if (paramFragment1 != null)
+    {
+      paramFragment1 = new ArrayList();
+      paramFragment2 = new ArrayList();
+      int j = 0;
+      int i;
+      if (paramem == null) {
+        i = 0;
+      } else {
+        i = paramem.size();
+      }
+      while (j < i)
+      {
+        paramFragment2.add(paramem.b(j));
+        paramFragment1.add(paramem.c(j));
+        j += 1;
+      }
+    }
+  }
+  
+  private static void b(cm paramcm, SparseArray<a> paramSparseArray, boolean paramBoolean)
+  {
+    if (!paramcm.a.n.a()) {
+      return;
+    }
+    int i = paramcm.b.size() - 1;
+    while (i >= 0)
+    {
+      a(paramcm, (cm.a)paramcm.b.get(i), paramSparseArray, true, paramBoolean);
+      i -= 1;
+    }
+  }
+  
+  private static em<String, View> c(cy paramcy, em<String, String> paramem, Object paramObject, a parama)
+  {
+    Fragment localFragment = parama.a;
+    View localView = localFragment.J;
+    if ((!paramem.isEmpty()) && (paramObject != null) && (localView != null))
+    {
+      em localem = new em();
+      paramcy.a(localem, localView);
+      paramcy = parama.c;
+      if (parama.b)
+      {
+        paramObject = localFragment.A();
+        paramcy = paramcy.r;
+      }
+      else
+      {
+        paramObject = localFragment.z();
+        paramcy = paramcy.s;
+      }
+      if (paramcy != null)
+      {
+        et.a(localem, paramcy);
+        et.a(localem, paramem.values());
+      }
+      if (paramObject != null)
+      {
+        i = paramcy.size() - 1;
+        while (i >= 0)
+        {
+          parama = (String)paramcy.get(i);
+          paramObject = (View)localem.get(parama);
+          if (paramObject == null)
+          {
+            paramObject = a(paramem, parama);
+            if (paramObject != null) {
+              paramem.remove(paramObject);
             }
           }
-          for (;;)
+          else if (!parama.equals(fo.h(paramObject)))
           {
-            try
-            {
-              ((JSONObject)localObject2).put("uin", ((QQUser)localObject1).mRealUin);
-              ((JSONObject)localObject2).put("op_type", paramInt1);
-              h.a("doFaceRecognition opType=" + paramInt1 + ",mRealUin=" + ((QQUser)localObject1).mRealUin + ",uin=" + paramLong1);
-              l = System.currentTimeMillis();
-              if (paramInt1 == 3) {
-                continue;
-              }
-              h.c("doFaceRecognition src data=" + paramArrayOfByte.length);
-              localObject1 = b.a(paramArrayOfByte);
-              ((JSONObject)localObject2).put("img_data", localObject1);
-              h.c("doFaceRecognition img_data=" + ((String)localObject1).length());
-              ((JSONObject)localObject2).put("resolution", ProtoFaceCommon.d);
-              ((JSONObject)localObject2).put("so_code_time", ProtoFaceCommon.e);
-              ((JSONObject)localObject2).put("face_detect_time", ProtoFaceCommon.f);
-              ((JSONObject)localObject2).put("face_detect_frame", ProtoFaceCommon.h);
-              if (!FaceDetector.IsSupportNeon()) {
-                continue;
-              }
-              i = 1;
-            }
-            catch (Exception localException)
-            {
-              label1019:
-              paramHandler.k = true;
-              localException.printStackTrace();
-              continue;
-              int i = 0;
-              continue;
-              i = paramInt3;
-              continue;
-              l = paramLong2;
-              paramLong2 = paramLong1;
-              paramLong1 = l;
-            }
-            ((JSONObject)localObject2).put("is_neon", i);
-            ((JSONObject)localObject2).put("face_model_init_time", ProtoFaceCommon.g);
-            ((JSONObject)localObject2).put("vivo_model_init_time", ProtoFaceCommon.i);
-            ((JSONObject)localObject2).put("vivo_reg_action1_time", ProtoFaceCommon.j);
-            ((JSONObject)localObject2).put("vivo_reg_action2_time", ProtoFaceCommon.k);
-            ((JSONObject)localObject2).put("vivo_reg_action1_frame", ProtoFaceCommon.l);
-            ((JSONObject)localObject2).put("vivo_reg_action2_frame", ProtoFaceCommon.m);
-            ((JSONObject)localObject2).put("vivo_ver_action_time", ProtoFaceCommon.n);
-            ((JSONObject)localObject2).put("vivo_ver_action_frame", ProtoFaceCommon.o);
-            ((JSONObject)localObject2).put("vivo_reg_action1_type", ProtoLiveFaceDetect.d);
-            ((JSONObject)localObject2).put("vivo_reg_action2_type", ProtoLiveFaceDetect.e);
-            ((JSONObject)localObject2).put("vivo_ver_action_type", ProtoLiveFaceDetect.f);
-            ((JSONObject)localObject2).put("mobile_os", "android:" + URLEncoder.encode(Build.VERSION.RELEASE));
-            ((JSONObject)localObject2).put("algorithm", x.i());
-            ((JSONObject)localObject2).put("op_time", (int)(cx.c().s() / 1000L));
-            ((JSONObject)localObject2).put("seq_id", j);
-            ((JSONObject)localObject2).put("highlighted", paramInt4);
-            if (paramInt3 != 10) {
-              continue;
-            }
-            i = 1;
-            ((JSONObject)localObject2).put("scene", i);
-            h.a("doFaceRecognition scene=" + paramInt3);
-            i = (int)(System.currentTimeMillis() - l);
-            h.c("encodeTime=" + i);
-            ((JSONObject)localObject2).put("encode_time", i);
-            if (paramInt1 == 5) {
-              ((JSONObject)localObject2).put("token_seq", cx.c().k());
-            }
-            localObject1 = w.c(((JSONObject)localObject2).toString().getBytes());
-            localObject2 = b.a((byte[])localObject1).replace('+', '-').replace('=', '_');
-            paramHandler.n.put("data", (String)localObject2);
-            h.a("resolution=" + ProtoFaceCommon.d + ",so_code_time=" + ProtoFaceCommon.e + ",scan_time=" + ProtoFaceCommon.f + ",frame_cnt=" + ProtoFaceCommon.h + ",encode_time=" + i + ",seq=" + j);
-            h.a("doFaceRecognition data=" + localObject1.length);
-            h.a("doFaceRecognition base64 data=" + ((String)localObject2).length());
-            ProtoFaceCommon.a(paramHandler, paramLong2, j, paramLong1, paramInt1, paramArrayOfByte, paramInt2, paramInt3, paramInt4);
-            this.c.a(paramHandler);
-            return 0;
-            if (localObject1 == null) {
-              continue;
-            }
-            l = ((QQUser)localObject1).mRealUin;
-            paramLong2 = paramLong1;
-            paramLong1 = l;
-            break;
-            paramHandler = new ev("mbtoken3_face_reg_v2", 3, paramHandler, 3058);
-            break label165;
-            ((JSONObject)localObject2).put("uin", paramLong1);
-            if (paramInt2 > 0) {
-              ((JSONObject)localObject2).put("lock_status", paramInt2);
+            parama = a(paramem, parama);
+            if (parama != null) {
+              paramem.put(parama, fo.h(paramObject));
             }
           }
+          i -= 1;
         }
       }
-    }
-  }
-  
-  public int a(long paramLong1, long paramLong2, Handler paramHandler)
-  {
-    long l = paramLong1;
-    if (paramLong1 == 0L)
-    {
-      Object localObject = do.a().e();
-      if (localObject == null)
+      int i = paramem.size() - 1;
+      while (i >= 0)
       {
-        paramHandler = paramHandler.obtainMessage(3038);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_feedback_abnormal_login", 3, paramHandler, 3038);
-    ProtoFeedbackAbnormalLogin.a(paramHandler, l, paramLong2);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong1, long paramLong2, String paramString, Handler paramHandler, boolean paramBoolean)
-  {
-    long l;
-    if (0L == paramLong2)
-    {
-      QQUser localQQUser = do.a().e();
-      if (paramLong1 == 0L)
-      {
-        if (localQQUser == null)
-        {
-          paramString = paramHandler.obtainMessage(3080);
-          paramHandler = new com.tencent.token.global.f();
-          paramHandler.b(110);
-          paramString.arg1 = paramHandler.a;
-          paramString.obj = paramHandler;
-          paramString.sendToTarget();
-          return -1;
+        if (!localem.containsKey((String)paramem.c(i))) {
+          paramem.d(i);
         }
-        paramLong1 = localQQUser.mRealUin;
-        paramLong2 = localQQUser.mUin;
-        l = paramLong1;
-        paramLong1 = paramLong2;
+        i -= 1;
       }
+      return localem;
     }
-    for (;;)
-    {
-      a += 1;
-      if (paramBoolean) {}
-      for (paramHandler = new ev("mbtoken3_card_check", 3, paramHandler, 3080);; paramHandler = new ev("mbtoken3_card_check", 2, paramHandler, 3080))
-      {
-        ProtoRealNameCardCheck.a(paramHandler, paramLong1, l, a, paramString);
-        this.c.a(paramHandler);
-        return 0;
-      }
-      l = paramLong2;
-    }
+    paramem.clear();
+    return null;
   }
   
-  public int a(long paramLong, Handler paramHandler)
+  static final class a
   {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      Object localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3000);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_get_ac_lock_status_v2", 3, paramHandler, 3000);
-    ProtoGetAccountLockStatus.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong, Long paramLong1, int paramInt, Handler paramHandler)
-  {
-    if (paramLong1.longValue() == 0L)
-    {
-      paramLong1 = null;
-      if (paramLong != 0L) {
-        break label191;
-      }
-      paramLong1 = do.a().e();
-      if (paramLong1 == null)
-      {
-        paramLong1 = paramHandler.obtainMessage(3065);
-        paramHandler = new com.tencent.token.global.f();
-        paramHandler.b(110);
-        paramLong1.arg1 = paramHandler.a;
-        paramLong1.obj = paramHandler;
-        paramLong1.sendToTarget();
-        return -1;
-      }
-      paramLong = paramLong1.mUin;
-    }
-    label191:
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_general_get_mobile_code", 2, paramHandler, 3065);
-      a += 1;
-      ProtoGeneralGetMobileCode.a(paramHandler, paramLong, paramLong1.mRealUin, paramInt, a);
-      this.c.a(paramHandler);
-      return 0;
-      paramHandler = new ev("mbtoken3_general_get_mobile_code", 2, paramHandler, 3065);
-      a += 1;
-      ProtoGeneralGetMobileCode.a(paramHandler, w.f(paramLong1.longValue()), paramLong1.longValue(), paramInt, a);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong, String paramString, int paramInt, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_verify_qqtoken_v2", 2, paramHandler, 3027);
-    ProtoDoVerifyQQToken.a(paramHandler, paramLong, paramString, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong, String paramString, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3014);
-        paramHandler = new com.tencent.token.global.f();
-        paramHandler.b(110);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      l = localQQUser.mUin;
-    }
-    paramHandler = new ev("mbtoken3_mbop_verify_mobile_code", 3, paramHandler, 3014);
-    ProtoVryMbMobileCode.a(paramHandler, l, paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, String paramString4, int paramInt4, int paramInt5, String paramString5, String paramString6, Handler paramHandler)
-  {
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3055);
-        paramString2 = new com.tencent.token.global.f();
-        paramString2.b(110);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      a += 1;
-      int i = a;
-      paramHandler = new ev("mbtoken3_device_lock_del_device_v2", 3, paramHandler, 3055);
-      ProtoDelDevice.a(paramHandler, paramLong, paramString1, paramString2, paramInt1, paramInt2, paramString3, paramInt3, paramString4, paramInt4, paramInt5, paramString5, paramString6, i);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, String paramString5, String paramString6, Handler paramHandler)
-  {
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3056);
-        paramString2 = new com.tencent.token.global.f();
-        paramString2.b(110);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_kickoff_v2", 3, paramHandler, 3056);
-      ProtoKickOff.a(paramHandler, paramLong, paramString1, paramString2, paramInt1, paramInt2, paramString3, paramString4, paramInt3, paramInt4, paramString5, paramString6);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(long paramLong, List paramList, String[] paramArrayOfString, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_vry_ques_v2", 2, paramHandler, 3028);
-    ProtoDoVerifyQuestion.a(paramHandler, paramLong, paramList, paramArrayOfString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong, byte[] paramArrayOfByte, Handler paramHandler, int paramInt)
-  {
-    paramHandler = new ev("mbtoken3_vfy_wtlogin", 2, paramHandler, 3024);
-    ProtoDoWtLogin.a(paramHandler, paramLong + "", paramArrayOfByte, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(long paramLong, byte[] paramArrayOfByte, Handler paramHandler, int paramInt1, int paramInt2)
-  {
-    a += 1;
-    int i = a;
-    if (1 == paramInt2)
-    {
-      paramHandler = new ev("mbtoken3_determine_verify_factors", 3, paramHandler, 4003);
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(paramLong));
-      paramHandler.c.put("param.uinhash", Long.valueOf(paramLong));
-    }
-    for (;;)
-    {
-      ProtoGetDeterminVerifyFactors.a(paramHandler, paramLong, paramArrayOfByte, i, paramInt1, paramInt2);
-      this.c.a(paramHandler);
-      return 0;
-      paramHandler = new ev("mbtoken3_determine_verify_factors", 2, paramHandler, 4003);
-    }
-  }
-  
-  public int a(long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, Handler paramHandler)
-  {
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramArrayOfInt1 = paramHandler.obtainMessage(3061);
-        paramArrayOfInt2 = new com.tencent.token.global.f();
-        paramArrayOfInt2.b(110);
-        paramArrayOfInt1.arg1 = paramArrayOfInt2.a;
-        paramArrayOfInt1.obj = paramArrayOfInt2;
-        paramArrayOfInt1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_set_service_status_v2", 3, paramHandler, 3061);
-      a += 1;
-      ProtoSetServiceStatusV2.a(paramHandler, paramLong, paramArrayOfInt1, paramArrayOfInt2, paramString, a);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_exchange_key_v3", 1, paramHandler, 4000);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(Handler paramHandler, File paramFile, String paramString)
-  {
-    QQUser localQQUser = do.a().e();
-    paramHandler = new ev("mbtoken3_log_upload", 2, paramHandler, 3063);
-    paramHandler.m = 2;
-    paramHandler.o = paramFile;
-    if (localQQUser == null)
-    {
-      paramHandler.p = ("0_" + paramString);
-      paramHandler.n = new ContentValues(2);
-      if (localQQUser != null) {
-        break label193;
-      }
-      paramHandler.n.put("uin", w.b(String.valueOf(0).getBytes()));
-    }
-    for (;;)
-    {
-      paramHandler.n.put("aq_base_sid", cv.a().b());
-      paramHandler.n.put("log_date", Integer.valueOf(fe.a().j()));
-      ProtoUploadLogFile.a(paramHandler, paramFile.getAbsolutePath());
-      this.c.a(paramHandler);
-      return 0;
-      paramHandler.p = ("" + localQQUser.mUin + "_" + paramString);
-      break;
-      label193:
-      paramHandler.n.put("uin", w.b(String.valueOf(localQQUser.b()).getBytes()));
-    }
-  }
-  
-  public int a(ConfigResult paramConfigResult, Handler paramHandler)
-  {
-    paramHandler = new ev("token.getstartupimg", 1, paramHandler, 3042);
-    ProtoGetStartUpImg.a(paramHandler, paramConfigResult);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    return this.c.a(paramString);
-  }
-  
-  public int a(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2, Handler paramHandler)
-  {
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString1 = paramHandler.obtainMessage(3019);
-        paramString2 = new com.tencent.token.global.f();
-        paramString2.b(110);
-        paramString1.arg1 = paramString2.a;
-        paramString1.obj = paramString2;
-        paramString1.sendToTarget();
-        return -1;
-      }
-      paramLong = localQQUser.mRealUin;
-    }
-    for (;;)
-    {
-      a += 1;
-      int i = a;
-      paramHandler = new ev("mbtoken3_get_sms_port_v2", 2, paramHandler, 3019);
-      ProtoGetSMSChannel.a(paramHandler, paramLong, paramString1, paramInt1, paramInt2, paramString2, i);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int a(String paramString, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_query_malicious_url", 2, paramHandler, 3053);
-    ProtoQueryMaliciousURL.a(paramHandler, paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int a(JSONArray paramJSONArray, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_report_dns_v2", 2, paramHandler, 4013);
-    ProtoReportDnsInfo.a(paramHandler, paramJSONArray);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int b()
-  {
-    return a;
-  }
-  
-  public int b(long paramLong, int paramInt, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      Object localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3011);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_del_mbitem", 3, paramHandler, 3011);
-    ProtoDelMbInfo.a(paramHandler, l, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int b(long paramLong, int paramInt, String paramString1, String paramString2, Handler paramHandler)
-  {
-    if (paramString1 == null) {
-      paramString1 = "";
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_general_bind", 2, paramHandler, 4004);
-      ProtoDoGeneralBindToken.a(paramHandler, paramLong, paramInt, paramString1, paramString2);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int b(long paramLong1, long paramLong2, int paramInt, Handler paramHandler)
-  {
-    if ((0L == paramLong2) && (paramLong1 == 0L))
-    {
-      Object localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3075);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong1 = ((QQUser)localObject).mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_qry_spec_verify", 3, paramHandler, 3075);
-      a += 1;
-      ProtoQuerySpecialVerify.a(paramHandler, paramLong1, paramLong2, paramInt, a);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int b(long paramLong, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      Object localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3002);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_get_game_lock_status_v2", 3, paramHandler, 3002);
-    ProtoGetGameLockStatus.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int b(long paramLong, String paramString, int paramInt, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_verify_original_mobile", 2, paramHandler, 3085);
-    ProtoDoVerifyOriginalMobile.a(paramHandler, paramLong, paramString, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int b(long paramLong, String paramString, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_feedback_v2", 2, paramHandler, 3022);
-    ProtoDoSendFeedback.a(paramHandler, paramLong, paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int b(Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_get_uin_list_v2", 2, paramHandler, 3003);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int c(long paramLong, int paramInt, Handler paramHandler)
-  {
-    a += 1;
-    paramHandler = new ev("mbtoken3_login_v2", 2, paramHandler, 10002);
-    ProtoDoLoginV2.a(paramHandler, paramLong, paramInt, a);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int c(long paramLong, int paramInt, String paramString1, String paramString2, Handler paramHandler)
-  {
-    if (paramString1 == null) {
-      paramString1 = "";
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_bind_token_by_app_v3", 2, paramHandler, 3026);
-      ProtoDoBindToken.a(paramHandler, paramLong, paramInt, paramString1, paramString2);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int c(long paramLong, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      Object localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3001);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_get_safe_protection_v2", 3, paramHandler, 3001);
-    ProtoGetSafeProtection.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int c(long paramLong, String paramString, int paramInt, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_verify_mobile_code_v2", 2, paramHandler, 3029);
-    ProtoDoVerifySmscode.a(paramHandler, paramLong, paramString, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int c(long paramLong, String paramString, Handler paramHandler)
-  {
-    QQUser localQQUser = do.a().e();
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3060);
-        paramHandler = new com.tencent.token.global.f();
-        paramHandler.b(110);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      l = localQQUser.mUin;
-    }
-    a += 1;
-    paramHandler = new ev("mbtoken3_get_login_prot", 3, paramHandler, 3060);
-    ProtoGetLoginProtect.a(paramHandler, l, paramString, a);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int c(Handler paramHandler)
-  {
-    ev localev = new ev("mbtoken3_get_key_value_conf", 2, paramHandler, 3023);
-    Object localObject2 = this.c.b(localev);
-    if ((localObject2 != null) && (((ew)localObject2).a != null)) {
-      try
-      {
-        Object localObject1 = dr.a().h.a("key_value");
-        localObject2 = new JSONObject((String)((ew)localObject2).a);
-        if (((JSONObject)localObject2).getInt("key_value_version") >= ((NewConfigureCacheItem)localObject1).mClientVersion)
-        {
-          localObject1 = ((JSONObject)localObject2).getJSONObject("data");
-          paramHandler = paramHandler.obtainMessage(3023);
-          paramHandler.arg1 = 0;
-          paramHandler.obj = ((JSONObject)localObject1).toString();
-          paramHandler.sendToTarget();
-          return 0;
-        }
-      }
-      catch (JSONException paramHandler)
-      {
-        paramHandler.printStackTrace();
-      }
-    }
-    ProtoGetStrConfig.e(localev);
-    this.c.a(localev);
-    return 0;
-  }
-  
-  public int d(long paramLong, int paramInt, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_query_captcha", 2, paramHandler, 3071);
-    ProtoQueryCaptcha.a(paramHandler, paramLong, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int d(long paramLong, int paramInt, String paramString1, String paramString2, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_verify_captcha_v3", 2, paramHandler, 3072);
-    ProtoVryCaptcha.a(paramHandler, paramLong, paramInt, paramString1, paramString2);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int d(long paramLong, Handler paramHandler)
-  {
-    Object localObject = do.a().e();
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3004);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_eval_account_v3", 3, paramHandler, 3004);
-    if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-    }
-    ProtoGetEvalAccountResult.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int d(long paramLong, String paramString, int paramInt, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      QQUser localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(3052);
-        paramHandler = new com.tencent.token.global.f();
-        paramHandler.b(110);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      l = localQQUser.mUin;
-    }
-    paramHandler = new ev("mbtoken3_modify_pwd", 3, paramHandler, 3052);
-    ProtoModifyQQPwd.a(paramHandler, l, paramString, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int d(long paramLong, String paramString, Handler paramHandler)
-  {
-    a += 1;
-    paramHandler = new ev("mbtoken3_bind_token_by_univerify", 2, paramHandler, 4015);
-    ProtoDoBindTokenByUniverify.a(paramHandler, paramLong, paramString, a);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int d(Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_activate_token", 2, paramHandler, 3025);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int e(long paramLong, int paramInt, Handler paramHandler)
-  {
-    a += 1;
-    paramHandler = new ev("mbtoken3_bind_token_by_realname", 2, paramHandler, 3074);
-    ProtoDoBindTokenByRealName.a(paramHandler, paramLong, paramInt, a);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int e(long paramLong, Handler paramHandler)
-  {
-    Object localObject = do.a().e();
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3010);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_get_mbinfo", 3, paramHandler, 3010);
-    if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-    }
-    ProtoGetMbInfo.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int e(long paramLong, String paramString, int paramInt, Handler paramHandler)
-  {
-    QQUser localQQUser = null;
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      localQQUser = do.a().e();
-      if (localQQUser == null)
-      {
-        paramString = paramHandler.obtainMessage(4008);
-        paramHandler = new com.tencent.token.global.f();
-        paramHandler.b(110);
-        paramString.arg1 = paramHandler.a;
-        paramString.obj = paramHandler;
-        paramString.sendToTarget();
-        return -1;
-      }
-      l = localQQUser.mUin;
-    }
-    paramHandler = new ev("mbtoken3_freeze_action", 3, paramHandler, 4008);
-    if ((localQQUser != null) && (!localQQUser.mIsBinded)) {
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(localQQUser.mRealUin));
-    }
-    ProtoFreezeUin.a(paramHandler, l, paramInt, paramString);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int e(Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_qry_bind_notify_msg", 2, paramHandler, 3043);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int f(long paramLong, int paramInt, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == -1L)
-    {
-      QQUser localQQUser = do.a().e();
-      l = paramLong;
-      if (localQQUser != null) {
-        l = localQQUser.mRealUin;
-      }
-    }
-    paramHandler = new ev("mbtoken3_live_video_detect", 2, paramHandler, 3082);
-    ProtoLiveFaceDetect.a(paramHandler, l, paramInt);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int f(long paramLong, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_get_mobile_code_v2", 2, paramHandler, 3031);
-    ProtoDoSendSmscode.a(paramHandler, paramLong);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int f(Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_get_domain", 2, paramHandler, 3062);
-    long l = 0L;
-    QQUser localQQUser = do.a().e();
-    if (localQQUser != null) {
-      l = localQQUser.mRealUin;
-    }
-    ProtoGetDomain.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int g(long paramLong, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_query_real_uin_v2", 2, paramHandler, 1006);
-    ProtoGetRealUin.a(paramHandler, paramLong);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int h(long paramLong, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_del_unvfy_uin", 2, paramHandler, 3036);
-    ProtoDelUnverifyUin.a(paramHandler, paramLong);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int i(long paramLong, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      Object localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3037);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_feedback_mobile_using", 2, paramHandler, 3037);
-    ProtoFeedbackMobileUsing.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int j(long paramLong, Handler paramHandler)
-  {
-    Object localObject = null;
-    if (paramLong == 0L)
-    {
-      localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3064);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      paramLong = ((QQUser)localObject).mUin;
-    }
-    for (;;)
-    {
-      paramHandler = new ev("mbtoken3_realname_status_v2", 3, paramHandler, 3064);
-      a += 1;
-      ProtoGetRealNameStatus.a(paramHandler, paramLong, ((QQUser)localObject).mRealUin, a);
-      this.c.a(paramHandler);
-      return 0;
-    }
-  }
-  
-  public int k(long paramLong, Handler paramHandler)
-  {
-    paramHandler = new ev("mbtoken3_realname_qry", 2, paramHandler, 3073);
-    a += 1;
-    ProtoQueryRealName.a(paramHandler, paramLong, a);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int l(long paramLong, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == -1L)
-    {
-      QQUser localQQUser = do.a().e();
-      l = paramLong;
-      if (localQQUser != null) {
-        l = localQQUser.mRealUin;
-      }
-    }
-    paramHandler = new ev("mbtoken3_auto_idcard_detect", 2, paramHandler, 3083);
-    ProtoAutoIDCardDetect.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int m(long paramLong, Handler paramHandler)
-  {
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      Object localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(3075);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_copy_face", 3, paramHandler, 3084);
-    ProtoCopyFace.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
-  }
-  
-  public int n(long paramLong, Handler paramHandler)
-  {
-    Object localObject = null;
-    long l = paramLong;
-    if (paramLong == 0L)
-    {
-      localObject = do.a().e();
-      if (localObject == null)
-      {
-        paramHandler = paramHandler.obtainMessage(4007);
-        localObject = new com.tencent.token.global.f();
-        ((com.tencent.token.global.f)localObject).b(110);
-        paramHandler.arg1 = ((com.tencent.token.global.f)localObject).a;
-        paramHandler.obj = localObject;
-        paramHandler.sendToTarget();
-        return -1;
-      }
-      l = ((QQUser)localObject).mUin;
-    }
-    paramHandler = new ev("mbtoken3_query_freeze_status", 3, paramHandler, 4007);
-    if ((localObject != null) && (!((QQUser)localObject).mIsBinded)) {
-      paramHandler.c.put("param.uin.wtlogin", Long.valueOf(((QQUser)localObject).mRealUin));
-    }
-    ProtoQueryFreezeStatus.a(paramHandler, l);
-    this.c.a(paramHandler);
-    return 0;
+    public Fragment a;
+    public boolean b;
+    public cm c;
+    public Fragment d;
+    public boolean e;
+    public cm f;
   }
 }
 

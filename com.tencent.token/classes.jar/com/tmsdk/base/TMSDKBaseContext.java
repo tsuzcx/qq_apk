@@ -6,11 +6,12 @@ import btmsdkobf.be;
 import btmsdkobf.bh;
 import btmsdkobf.bn;
 import btmsdkobf.bx;
+import btmsdkobf.cj;
 import btmsdkobf.ec;
 import btmsdkobf.ee;
 import btmsdkobf.eg;
 import com.qq.taf.jce.JceStruct;
-import tmsdk.common.tcc.b;
+import com.tencent.token.avm;
 
 public class TMSDKBaseContext
 {
@@ -23,17 +24,27 @@ public class TMSDKBaseContext
   
   public static void SaveStringData(int paramInt, String paramString)
   {
-    eg.e("TMSDKBaseContext", "SaveStringData, modelId:[" + paramInt + "]msg:[" + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder("SaveStringData, modelId:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]msg:[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    eg.e("TMSDKBaseContext", localStringBuilder.toString());
     be.SaveStringData(paramInt, paramString);
   }
   
   public static void SaveStringDataOnce(int paramInt, String paramString)
   {
-    eg.e("TMSDKBaseContext", "SaveStringDataOnce, modelId:[" + paramInt + "]msg:[" + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder("SaveStringDataOnce, modelId:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]msg:[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    eg.e("TMSDKBaseContext", localStringBuilder.toString());
     be.SaveStringDataOnce(paramInt, paramString);
   }
   
-  public static void addReportListener(TMSDKBaseContext.IReportListener paramIReportListener)
+  public static void addReportListener(IReportListener paramIReportListener)
   {
     bn.addReportListener(paramIReportListener);
   }
@@ -61,12 +72,12 @@ public class TMSDKBaseContext
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return b.decrypt(paramArrayOfByte1, paramArrayOfByte2);
+    return avm.b(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return b.encrypt(paramArrayOfByte1, paramArrayOfByte2);
+    return avm.a(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static Context getApplicationContext()
@@ -89,64 +100,28 @@ public class TMSDKBaseContext
     return bx.ar().getGuid();
   }
   
-  /* Error */
   public static boolean init(Context paramContext, AbsTMSBaseConfig paramAbsTMSBaseConfig)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 20	com/tmsdk/base/TMSDKBaseContext:r	Z
-    //   6: ifeq +17 -> 23
-    //   9: ldc 28
-    //   11: ldc 140
-    //   13: invokestatic 54	btmsdkobf/eg:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   16: iconst_1
-    //   17: istore_2
-    //   18: ldc 2
-    //   20: monitorexit
-    //   21: iload_2
-    //   22: ireturn
-    //   23: aload_0
-    //   24: aload_1
-    //   25: invokestatic 142	btmsdkobf/bc:init	(Landroid/content/Context;Lcom/tmsdk/base/AbsTMSBaseConfig;)Z
-    //   28: putstatic 20	com/tmsdk/base/TMSDKBaseContext:r	Z
-    //   31: ldc 28
-    //   33: new 30	java/lang/StringBuilder
-    //   36: dup
-    //   37: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   40: ldc 144
-    //   42: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: aload_0
-    //   46: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   49: ldc 149
-    //   51: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: aload_1
-    //   55: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   58: ldc 151
-    //   60: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: getstatic 20	com/tmsdk/base/TMSDKBaseContext:r	Z
-    //   66: invokevirtual 154	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   69: ldc 44
-    //   71: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: invokestatic 54	btmsdkobf/eg:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   80: getstatic 20	com/tmsdk/base/TMSDKBaseContext:r	Z
-    //   83: istore_2
-    //   84: goto -66 -> 18
-    //   87: astore_0
-    //   88: ldc 2
-    //   90: monitorexit
-    //   91: aload_0
-    //   92: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	93	0	paramContext	Context
-    //   0	93	1	paramAbsTMSBaseConfig	AbsTMSBaseConfig
-    //   17	67	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	16	87	finally
-    //   23	84	87	finally
+    try
+    {
+      if (r)
+      {
+        eg.e("TMSDKBaseContext", "has initialized, return true");
+        return true;
+      }
+      r = bc.init(paramContext, paramAbsTMSBaseConfig);
+      StringBuilder localStringBuilder = new StringBuilder("init, aContext:[");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("]aTMSConfig:[");
+      localStringBuilder.append(paramAbsTMSBaseConfig);
+      localStringBuilder.append("]ret:[");
+      localStringBuilder.append(r);
+      localStringBuilder.append("]");
+      eg.e("TMSDKBaseContext", localStringBuilder.toString());
+      boolean bool = r;
+      return bool;
+    }
+    finally {}
   }
   
   public static boolean isENG()
@@ -164,26 +139,37 @@ public class TMSDKBaseContext
     return r;
   }
   
-  public static void removeReportListener(TMSDKBaseContext.IReportListener paramIReportListener)
+  public static void removeReportListener(IReportListener paramIReportListener)
   {
     bn.removeReportListener(paramIReportListener);
   }
   
   public static void saveActionData(int paramInt)
   {
-    eg.e("TMSDKBaseContext", "saveActionData, modelId:[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder("saveActionData, modelId:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    eg.e("TMSDKBaseContext", localStringBuilder.toString());
     be.saveActionData(paramInt);
   }
   
   public static void saveActionData(int paramInt1, int paramInt2)
   {
-    eg.e("TMSDKBaseContext", "saveActionData, modelId:[" + paramInt1 + "]errorCode:[" + paramInt2 + "]");
+    StringBuilder localStringBuilder = new StringBuilder("saveActionData, modelId:[");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("]errorCode:[");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    eg.e("TMSDKBaseContext", localStringBuilder.toString());
     be.saveActionData(paramInt1, paramInt2);
   }
   
   public static void saveActionDataOnce(int paramInt)
   {
-    eg.e("TMSDKBaseContext", "saveActionDataOnce, modelId:[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder("saveActionDataOnce, modelId:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    eg.e("TMSDKBaseContext", localStringBuilder.toString());
     be.saveActionDataOnce(paramInt);
   }
   
@@ -194,18 +180,64 @@ public class TMSDKBaseContext
   
   public static void sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ISharkCallBackOut paramISharkCallBackOut, long paramLong)
   {
-    eg.e("TMSDKBaseContext", "guid:[" + bx.ar().getGuid() + "]sendShark, cmdId:[" + paramInt1 + "]timeout:[" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder("guid:[");
+    localStringBuilder.append(bx.ar().getGuid());
+    localStringBuilder.append("]sendShark, cmdId:[");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("]timeout:[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    eg.e("TMSDKBaseContext", localStringBuilder.toString());
     if (paramJceStruct1 == null)
     {
       eg.g("TMSDKBaseContext", "req == null");
       return;
     }
-    bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new TMSDKBaseContext.1(paramISharkCallBackOut), paramLong);
+    bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new cj()
+    {
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        Object localObject = new StringBuilder("onFinish, cmdId:[");
+        ((StringBuilder)localObject).append(paramAnonymousInt2);
+        ((StringBuilder)localObject).append("]retCode:[");
+        ((StringBuilder)localObject).append(paramAnonymousInt3);
+        ((StringBuilder)localObject).append("]dataRetCode:[");
+        ((StringBuilder)localObject).append(paramAnonymousInt4);
+        ((StringBuilder)localObject).append("]");
+        eg.g("TMSDKBaseContext", ((StringBuilder)localObject).toString());
+        int i = paramAnonymousInt3;
+        if (paramAnonymousInt3 == 0)
+        {
+          i = paramAnonymousInt3;
+          if (paramAnonymousInt4 == 0) {
+            i = 0;
+          }
+        }
+        if (i % 20 == -4) {
+          paramAnonymousInt3 = -102;
+        } else if (i != 0) {
+          paramAnonymousInt3 = -999;
+        } else if (paramAnonymousInt4 != 0) {
+          paramAnonymousInt3 = -101;
+        } else {
+          paramAnonymousInt3 = i;
+        }
+        localObject = this.s;
+        if (localObject != null) {
+          ((ISharkCallBackOut)localObject).onFinish(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4, paramAnonymousJceStruct);
+        }
+      }
+    }, paramLong);
   }
   
   public static void setAutoConnectionSwitch(Context paramContext, boolean paramBoolean)
   {
-    eg.e("TMSDKBaseContext", "setAutoConnectionSwitch, aContext:[" + paramContext + "]aAutoConnection:[" + paramBoolean + "]");
+    StringBuilder localStringBuilder = new StringBuilder("setAutoConnectionSwitch, aContext:[");
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("]aAutoConnection:[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    eg.e("TMSDKBaseContext", localStringBuilder.toString());
     bc.setAutoConnectionSwitch(paramContext, paramBoolean);
   }
   
@@ -220,6 +252,11 @@ public class TMSDKBaseContext
   }
   
   public static void wifiConnectRetReport() {}
+  
+  public static abstract interface IReportListener
+  {
+    public abstract void onReport();
+  }
 }
 
 

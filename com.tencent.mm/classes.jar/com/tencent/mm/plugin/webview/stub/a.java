@@ -4,82 +4,84 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.tools.u;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.ba.a.e;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class a
 {
-  public static final boolean bj(Context paramContext, String paramString)
+  public static final boolean cs(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(7058);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(79247);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(7058);
+      AppMethodBeat.o(79247);
       return false;
     }
     try
     {
-      paramContext = u.getPackageInfo(paramContext, "com.tencent.weread");
+      paramContext = aa.getPackageInfo(paramContext, "com.tencent.weread");
       if (paramContext != null) {}
       for (boolean bool = true;; bool = false)
       {
-        ab.d("MicroMsg.ConstantsWebViewStub", "isWeReadSupportShare(%s).", new Object[] { Boolean.valueOf(bool) });
+        Log.d("MicroMsg.ConstantsWebViewStub", "isWeReadSupportShare(%s).", new Object[] { Boolean.valueOf(bool) });
         if (paramContext != null) {
           break;
         }
-        AppMethodBeat.o(7058);
+        AppMethodBeat.o(79247);
         return false;
       }
-      bool = Uri.parse(paramString).getHost().startsWith("mp.weixin.qq.com");
+      bool = Uri.parse(paramString).getHost().startsWith(WeChatHosts.domainString(a.e.host_mp_weixin_qq_com));
       if (!bool)
       {
-        AppMethodBeat.o(7058);
+        AppMethodBeat.o(79247);
         return false;
       }
       int i = paramContext.versionCode;
       if (i > 2000812)
       {
-        AppMethodBeat.o(7058);
+        AppMethodBeat.o(79247);
         return true;
       }
     }
     catch (Exception paramContext)
     {
-      ab.e("MicroMsg.ConstantsWebViewStub", "exception has occurred in isQzoneSupportShare(), e : %s.", new Object[] { paramContext.getMessage() });
-      AppMethodBeat.o(7058);
+      Log.e("MicroMsg.ConstantsWebViewStub", "exception has occurred in isQzoneSupportShare(), e : %s.", new Object[] { paramContext.getMessage() });
+      AppMethodBeat.o(79247);
     }
     return false;
   }
   
-  public static final boolean fw(Context paramContext)
+  public static final boolean kS(Context paramContext)
   {
-    AppMethodBeat.i(7057);
+    AppMethodBeat.i(79246);
     try
     {
-      paramContext = u.getPackageInfo(paramContext, "com.tencent.mobileqq");
+      paramContext = aa.getPackageInfo(paramContext, "com.tencent.mobileqq");
       if (paramContext != null) {}
       for (boolean bool = true;; bool = false)
       {
-        ab.d("MicroMsg.ConstantsWebViewStub", "isQQSupportShare(%s).", new Object[] { Boolean.valueOf(bool) });
+        Log.d("MicroMsg.ConstantsWebViewStub", "isQQSupportShare(%s).", new Object[] { Boolean.valueOf(bool) });
         if (paramContext == null) {
           break;
         }
-        AppMethodBeat.o(7057);
+        AppMethodBeat.o(79246);
         return true;
       }
       return false;
     }
     catch (Exception paramContext)
     {
-      ab.e("MicroMsg.ConstantsWebViewStub", "exception has occurred in isQQSupportShare(), e : %s.", new Object[] { paramContext.getMessage() });
-      AppMethodBeat.o(7057);
+      Log.e("MicroMsg.ConstantsWebViewStub", "exception has occurred in isQQSupportShare(), e : %s.", new Object[] { paramContext.getMessage() });
+      AppMethodBeat.o(79246);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.a
  * JD-Core Version:    0.7.0.1
  */

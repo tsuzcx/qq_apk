@@ -12,42 +12,73 @@ class UploadSession$2
   
   public void run()
   {
-    Object localObject;
-    if (this.val$callback != this.this$0)
+    Object localObject = this.val$callback;
+    if (localObject != this.this$0)
     {
-      localObject = (NetworkEngine)this.val$callback;
-      UploadLog.d("[connect] UploadSession", "doAfterConnect. sid=" + UploadSession.access$100(this.this$0) + " succeed=" + this.val$isSuccess + " errorCode=" + this.val$errorCode + " ip=" + this.val$connectedIp + " The connection is invalid, close it!" + ((NetworkEngine)localObject).hashCode());
+      localObject = (NetworkEngine)localObject;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAfterConnect. sid=");
+      localStringBuilder.append(UploadSession.access$100(this.this$0));
+      localStringBuilder.append(" succeed=");
+      localStringBuilder.append(this.val$isSuccess);
+      localStringBuilder.append(" errorCode=");
+      localStringBuilder.append(this.val$errorCode);
+      localStringBuilder.append(" ip=");
+      localStringBuilder.append(this.val$connectedIp);
+      localStringBuilder.append(" The connection is invalid, close it!");
+      localStringBuilder.append(((NetworkEngine)localObject).hashCode());
+      UploadLog.d("[connect] UploadSession", localStringBuilder.toString());
       ((NetworkEngine)localObject).stop();
+      return;
     }
-    do
-    {
-      do
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doAfterConnect. sid=");
+    ((StringBuilder)localObject).append(UploadSession.access$100(this.this$0));
+    ((StringBuilder)localObject).append(" succeed=");
+    ((StringBuilder)localObject).append(this.val$isSuccess);
+    ((StringBuilder)localObject).append(" errorCode=");
+    ((StringBuilder)localObject).append(this.val$errorCode);
+    ((StringBuilder)localObject).append(" ip=");
+    ((StringBuilder)localObject).append(this.val$connectedIp);
+    ((StringBuilder)localObject).append(" currState=");
+    ((StringBuilder)localObject).append(UploadSession.access$200(this.this$0).toString());
+    UploadLog.d("[connect] UploadSession", ((StringBuilder)localObject).toString());
+    if ((UploadSession.access$200(this.this$0) == IUploadSession.SessionState.CONNECTING) || (UploadSession.access$200(this.this$0) == IUploadSession.SessionState.NO_CONNECT)) {
+      if (this.val$isSuccess)
       {
-        do
-        {
-          return;
-          UploadLog.d("[connect] UploadSession", "doAfterConnect. sid=" + UploadSession.access$100(this.this$0) + " succeed=" + this.val$isSuccess + " errorCode=" + this.val$errorCode + " ip=" + this.val$connectedIp + " currState=" + UploadSession.access$200(this.this$0).toString());
-        } while (UploadSession.access$200(this.this$0) != IUploadSession.SessionState.CONNECTING);
-        if (!this.val$isSuccess) {
-          break;
-        }
         this.this$0.recordLastActiveTime();
-        UploadLog.d("[connect] UploadSession", "sid=" + UploadSession.access$100(this.this$0) + ", connect succeed:" + this.val$isSuccess + ", ip=" + this.val$connectedIp + ", currState=" + UploadSession.access$200(this.this$0).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sid=");
+        ((StringBuilder)localObject).append(UploadSession.access$100(this.this$0));
+        ((StringBuilder)localObject).append(", connect succeed:");
+        ((StringBuilder)localObject).append(this.val$isSuccess);
+        ((StringBuilder)localObject).append(", ip=");
+        ((StringBuilder)localObject).append(this.val$connectedIp);
+        ((StringBuilder)localObject).append(", currState=");
+        ((StringBuilder)localObject).append(UploadSession.access$200(this.this$0).toString());
+        UploadLog.d("[connect] UploadSession", ((StringBuilder)localObject).toString());
         UploadSession.access$302(this.this$0, this.val$connectedIp);
         UploadSession.access$202(this.this$0, IUploadSession.SessionState.ESTABLISHED);
         localObject = (IUploadSessionCallback)UploadSession.access$400(this.this$0).get();
-      } while (localObject == null);
-      ((IUploadSessionCallback)localObject).onOpenSucceed(this.this$0);
-      return;
-      localObject = (IUploadSessionCallback)UploadSession.access$400(this.this$0).get();
-    } while (localObject == null);
-    UploadSession.access$202(this.this$0, IUploadSession.SessionState.NO_CONNECT);
-    ((IUploadSessionCallback)localObject).onOpenFailed(this.this$0, this.val$errorCode, "连接失败");
+        if (localObject != null) {
+          ((IUploadSessionCallback)localObject).onOpenSucceed(this.this$0);
+        }
+      }
+      else
+      {
+        localObject = (IUploadSessionCallback)UploadSession.access$400(this.this$0).get();
+        if (localObject != null)
+        {
+          UploadSession.access$202(this.this$0, IUploadSession.SessionState.NO_CONNECT);
+          ((IUploadSessionCallback)localObject).onOpenFailed(this.this$0, this.val$errorCode, "连接失败");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.session.UploadSession.2
  * JD-Core Version:    0.7.0.1
  */

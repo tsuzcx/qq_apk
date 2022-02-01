@@ -12,26 +12,44 @@ public class DecodePlayer$AudioDecodeConfig
   
   public void copyFrom(AudioDecodeConfig paramAudioDecodeConfig)
   {
-    if (paramAudioDecodeConfig == null) {
-      throw new NullPointerException();
+    if (paramAudioDecodeConfig != null)
+    {
+      this.audioFilePath = paramAudioDecodeConfig.audioFilePath;
+      this.repeat = paramAudioDecodeConfig.repeat;
+      this.speedType = paramAudioDecodeConfig.speedType;
+      this.mMuteAudio = paramAudioDecodeConfig.mMuteAudio;
+      this.startTimeMs = paramAudioDecodeConfig.startTimeMs;
+      this.endTimeMs = paramAudioDecodeConfig.endTimeMs;
+      this.videoDurationMs = paramAudioDecodeConfig.videoDurationMs;
+      return;
     }
-    this.audioFilePath = paramAudioDecodeConfig.audioFilePath;
-    this.repeat = paramAudioDecodeConfig.repeat;
-    this.speedType = paramAudioDecodeConfig.speedType;
-    this.mMuteAudio = paramAudioDecodeConfig.mMuteAudio;
-    this.startTimeMs = paramAudioDecodeConfig.startTimeMs;
-    this.endTimeMs = paramAudioDecodeConfig.endTimeMs;
-    this.videoDurationMs = paramAudioDecodeConfig.videoDurationMs;
+    throw new NullPointerException();
   }
   
   public String toString()
   {
-    return "AudioDecodeConfig=[audioFilePath:" + this.audioFilePath + " repeat:" + this.repeat + " speedType:" + this.speedType + " mMuteAudio:" + this.mMuteAudio + " startTimeMs:" + this.startTimeMs + " endTimeMs:" + this.endTimeMs + " videoDuration:" + this.videoDurationMs + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioDecodeConfig=[audioFilePath:");
+    localStringBuilder.append(this.audioFilePath);
+    localStringBuilder.append(" repeat:");
+    localStringBuilder.append(this.repeat);
+    localStringBuilder.append(" speedType:");
+    localStringBuilder.append(this.speedType);
+    localStringBuilder.append(" mMuteAudio:");
+    localStringBuilder.append(this.mMuteAudio);
+    localStringBuilder.append(" startTimeMs:");
+    localStringBuilder.append(this.startTimeMs);
+    localStringBuilder.append(" endTimeMs:");
+    localStringBuilder.append(this.endTimeMs);
+    localStringBuilder.append(" videoDuration:");
+    localStringBuilder.append(this.videoDurationMs);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodePlayer.AudioDecodeConfig
  * JD-Core Version:    0.7.0.1
  */

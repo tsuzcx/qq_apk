@@ -1,16 +1,19 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ainn;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
+import android.view.WindowManager;
 import android.widget.ListAdapter;
+import com.tencent.mobileqq.troop.avatar.AvatarInfo;
 import com.tencent.widget.GridView;
 
 public class AvatarGridView
   extends GridView
 {
-  protected int a = 4;
+  protected WindowManager a = null;
+  protected boolean b = false;
+  protected int c = 4;
   
   public AvatarGridView(Context paramContext)
   {
@@ -28,67 +31,65 @@ public class AvatarGridView
     setChildrenDrawingOrderEnabled(true);
   }
   
-  public int c()
-  {
-    return this.a;
-  }
-  
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    ListAdapter localListAdapter = a();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (localListAdapter != null)
-    {
-      localObject1 = localObject2;
-      if ((a().getItem(paramInt1 - 1) instanceof ainn)) {
-        localObject1 = (ainn)a().getItem(paramInt1 - 1);
-      }
-    }
     int i;
-    if (localObject1 != null) {
-      if ((((ainn)localObject1).b != 0) && (((ainn)localObject1).b == 4)) {
-        i = paramInt1 - 1;
+    if (getAdapter() != null)
+    {
+      localObject = getAdapter();
+      i = paramInt1 - 1;
+      if ((((ListAdapter)localObject).getItem(i) instanceof AvatarInfo))
+      {
+        localObject = (AvatarInfo)getAdapter().getItem(i);
+        break label52;
       }
     }
-    while (i > 4) {
-      if (paramInt2 == paramInt1 - 1)
-      {
+    Object localObject = null;
+    label52:
+    if ((localObject != null) && (((AvatarInfo)localObject).e != 0) && (((AvatarInfo)localObject).e == 4)) {
+      i = paramInt1 - 1;
+    } else {
+      i = paramInt1;
+    }
+    if (i > 4)
+    {
+      i = paramInt1 - 1;
+      if (paramInt2 == i) {
         return 3;
-        i = paramInt1;
-        continue;
-        i = paramInt1;
       }
-      else
-      {
-        if (paramInt2 == paramInt1 - 2) {
-          return 4;
-        }
-        if (paramInt2 == 4) {
-          return paramInt1 - 2;
-        }
-        if (paramInt2 == 3) {
-          return paramInt1 - 1;
-        }
+      int j = paramInt1 - 2;
+      if (paramInt2 == j) {
+        return 4;
+      }
+      if (paramInt2 == 4) {
+        return j;
+      }
+      if (paramInt2 == 3) {
+        return i;
       }
     }
     return super.getChildDrawingOrder(paramInt1, paramInt2);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  public int getNumColumns()
+  {
+    return this.c;
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
   }
   
   public void setNumColumns(int paramInt)
   {
-    this.a = paramInt;
+    this.c = paramInt;
     super.setNumColumns(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarGridView
  * JD-Core Version:    0.7.0.1
  */

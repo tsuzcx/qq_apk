@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.entry;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
-import bdhj;
-import bdoo;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppEntryLayout$2
@@ -15,42 +15,65 @@ class MiniAppEntryLayout$2
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    Bitmap localBitmap2 = null;
-    Bitmap localBitmap1 = null;
-    if (paramBitmap != null) {
-      paramDownloadParams = localBitmap2;
-    }
-    try
+    Object localObject = null;
+    Bitmap localBitmap = null;
+    if (paramBitmap != null)
     {
-      Rect localRect = new Rect();
-      paramDownloadParams = localBitmap2;
-      localRect.right = paramBitmap.getWidth();
-      paramDownloadParams = localBitmap2;
-      int i = bdoo.a(240.0F);
-      paramDownloadParams = localBitmap2;
-      localRect.bottom = Math.min(paramBitmap.getHeight(), i);
-      paramDownloadParams = localBitmap2;
-      localBitmap2 = bdhj.a(paramBitmap, localRect, 2);
-      localBitmap1 = localBitmap2;
-      paramDownloadParams = localBitmap2;
-      if (QLog.isColorLevel())
+      paramDownloadParams = localBitmap;
+      try
       {
-        paramDownloadParams = localBitmap2;
-        QLog.d("MicroAppEntryLayout", 2, "updateHongBaoRes，setDecodeHandler：,originalHeight:" + paramBitmap.getHeight() + ",maxHeight:" + i + "，outWidth：" + localRect.right + ",outHeight：" + localRect.bottom + ",outBitmap:" + localBitmap2);
-        localBitmap1 = localBitmap2;
+        Rect localRect = new Rect();
+        paramDownloadParams = localBitmap;
+        localRect.right = paramBitmap.getWidth();
+        paramDownloadParams = localBitmap;
+        int i = ViewUtils.dip2px(240.0F);
+        paramDownloadParams = localBitmap;
+        localRect.bottom = Math.min(paramBitmap.getHeight(), i);
+        paramDownloadParams = localBitmap;
+        localBitmap = ImageUtil.a(paramBitmap, localRect, 2);
+        paramDownloadParams = localBitmap;
+        localObject = localBitmap;
+        if (QLog.isColorLevel())
+        {
+          paramDownloadParams = localBitmap;
+          localObject = new StringBuilder();
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append("updateHongBaoRes，setDecodeHandler：,originalHeight:");
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append(paramBitmap.getHeight());
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append(",maxHeight:");
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append(i);
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append("，outWidth：");
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append(localRect.right);
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append(",outHeight：");
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append(localRect.bottom);
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append(",outBitmap:");
+          paramDownloadParams = localBitmap;
+          ((StringBuilder)localObject).append(localBitmap);
+          paramDownloadParams = localBitmap;
+          QLog.d("MicroAppEntryLayout", 2, ((StringBuilder)localObject).toString());
+          return localBitmap;
+        }
       }
-      return localBitmap1;
+      catch (Throwable paramBitmap)
+      {
+        QLog.e("MicroAppEntryLayout", 1, paramBitmap, new Object[0]);
+        localObject = paramDownloadParams;
+      }
     }
-    catch (Throwable paramBitmap)
-    {
-      QLog.e("MicroAppEntryLayout", 1, paramBitmap, new Object[0]);
-    }
-    return paramDownloadParams;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryLayout.2
  * JD-Core Version:    0.7.0.1
  */

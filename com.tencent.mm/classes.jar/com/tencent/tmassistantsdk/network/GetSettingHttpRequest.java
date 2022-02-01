@@ -14,11 +14,11 @@ public class GetSettingHttpRequest
   
   protected void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt)
   {
-    AppMethodBeat.i(75837);
+    AppMethodBeat.i(102083);
     if (paramJceStruct2 == null)
     {
       TMLog.i("GetSettingHttpRequest", "response is null!");
-      AppMethodBeat.o(75837);
+      AppMethodBeat.o(102083);
       return;
     }
     if ((this.mListener != null) && (paramInt == 0) && ((paramJceStruct2 instanceof GetSettingsResponse)))
@@ -27,19 +27,19 @@ public class GetSettingHttpRequest
       if (paramJceStruct2.ret == 0)
       {
         this.mListener.onSettingHttpRequestFinish((GetSettingsRequest)paramJceStruct1, paramJceStruct2, true);
-        AppMethodBeat.o(75837);
+        AppMethodBeat.o(102083);
         return;
       }
       this.mListener.onSettingHttpRequestFinish((GetSettingsRequest)paramJceStruct1, paramJceStruct2, false);
     }
-    AppMethodBeat.o(75837);
+    AppMethodBeat.o(102083);
   }
   
   public void sendSettingRequest()
   {
-    AppMethodBeat.i(75836);
+    AppMethodBeat.i(102082);
     super.sendRequest(new GetSettingsRequest());
-    AppMethodBeat.o(75836);
+    AppMethodBeat.o(102082);
   }
   
   public void setGetSettingHttpListener(IGetSettingHttpListener paramIGetSettingHttpListener)
@@ -49,7 +49,7 @@ public class GetSettingHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.GetSettingHttpRequest
  * JD-Core Version:    0.7.0.1
  */

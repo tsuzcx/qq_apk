@@ -20,9 +20,9 @@ import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.BaseApplication;
+import cut;
 import cuu;
-import cuv;
-import cuy;
+import cux;
 import mqq.observer.WtloginObserver;
 
 public class LoginPhoneNumActivity
@@ -34,11 +34,11 @@ public class LoginPhoneNumActivity
   public static final int b = 2014;
   public static final int c = 2015;
   private long jdField_a_of_type_Long = 0L;
-  Handler jdField_a_of_type_AndroidOsHandler = new cuu(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new cut(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cuy(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new cux(this);
   private boolean jdField_a_of_type_Boolean = false;
   
   private String a(String paramString)
@@ -123,7 +123,7 @@ public class LoginPhoneNumActivity
   {
     try
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new cuv(this, paramString1, paramString2));
+      this.jdField_b_of_type_AndroidOsHandler.post(new cuu(this, paramString1, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -146,12 +146,12 @@ public class LoginPhoneNumActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232997));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232996));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131561809) + "+" + this.d);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232017));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232016));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232998));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131232997));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -225,7 +225,7 @@ public class LoginPhoneNumActivity
     {
     default: 
       return;
-    case 2131232997: 
+    case 2131232996: 
       startActivityForResult(new Intent(this, CountryActivity.class), 1);
       return;
     }

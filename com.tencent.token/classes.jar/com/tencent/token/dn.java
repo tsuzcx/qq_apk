@@ -1,79 +1,215 @@
 package com.tencent.token;
 
-import com.tencent.token.core.push.b;
-import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.Base64;
+import android.util.Xml;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
-public class dn
+public final class dn
 {
-  private static dn a = null;
-  private String b = "/cn/mbtoken3/mbtoken3_asec_push_getconn";
-  
-  public static dn a()
+  public static a a(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
-    if (a == null) {
-      a = new dn();
+    int i;
+    do
+    {
+      i = paramXmlPullParser.next();
+    } while ((i != 2) && (i != 1));
+    if (i == 2)
+    {
+      paramXmlPullParser.require(2, null, "font-family");
+      if (paramXmlPullParser.getName().equals("font-family")) {
+        return b(paramXmlPullParser, paramResources);
+      }
+      a(paramXmlPullParser);
+      return null;
     }
-    return a;
+    throw new XmlPullParserException("No start tag found");
   }
   
-  public f b()
+  public static List<List<byte[]>> a(Resources paramResources, int paramInt)
   {
-    f localf = new f();
-    Object localObject1 = new gk();
-    Object localObject2 = c.e() + this.b;
-    Object localObject3 = ((gk)localObject1).a((String)localObject2);
-    if (localObject3 == null)
+    Object localObject = null;
+    ArrayList localArrayList = null;
+    if (paramInt != 0)
     {
-      localf.a(((gk)localObject1).a());
-      h.c("client request url: " + (String)localObject2 + " failed, reason: " + localf.a + ":" + localf.b);
-      return localf;
-    }
-    try
-    {
-      localObject1 = new JSONObject(new String((byte[])localObject3));
-      int i = ((JSONObject)localObject1).getInt("err");
-      if (i != 0)
+      TypedArray localTypedArray = paramResources.obtainTypedArray(paramInt);
+      localObject = localArrayList;
+      if (localTypedArray.length() > 0)
       {
-        h.c("error" + ((JSONObject)localObject1).toString());
-        localObject1 = ((JSONObject)localObject1).getString("info");
-        localf.a(i, (String)localObject1, (String)localObject1);
-      }
-      else
-      {
-        int j = ((JSONObject)localObject1).getInt("retry_cnt");
-        int k = ((JSONObject)localObject1).getInt("retry_time");
-        int m = ((JSONObject)localObject1).getInt("hb_time");
-        localObject1 = ((JSONObject)localObject1).getJSONArray("conn");
-        localObject2 = new String[((JSONArray)localObject1).length()];
-        localObject3 = new int[((JSONArray)localObject1).length()];
-        i = 0;
-        while (i < ((JSONArray)localObject1).length())
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
-          localObject2[i] = localJSONObject.getString("ip");
-          localObject3[i] = localJSONObject.getInt("port");
-          i += 1;
+        localArrayList = new ArrayList();
+        int i;
+        if (localTypedArray.getResourceId(0, 0) != 0) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        b.a().a((String[])localObject2, (int[])localObject3, j, k * 1000, m * 1000);
-        localf.c();
+        if (i != 0)
+        {
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = localArrayList;
+            if (paramInt >= localTypedArray.length()) {
+              break;
+            }
+            localArrayList.add(a(paramResources.getStringArray(localTypedArray.getResourceId(paramInt, 0))));
+            paramInt += 1;
+          }
+        }
+        localArrayList.add(a(paramResources.getStringArray(paramInt)));
+        localObject = localArrayList;
+      }
+      localTypedArray.recycle();
+    }
+    if (localObject != null) {
+      return localObject;
+    }
+    return Collections.emptyList();
+  }
+  
+  private static List<byte[]> a(String[] paramArrayOfString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      localArrayList.add(Base64.decode(paramArrayOfString[i], 0));
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  private static void a(XmlPullParser paramXmlPullParser)
+  {
+    int i = 1;
+    while (i > 0) {
+      switch (paramXmlPullParser.next())
+      {
+      default: 
+        break;
+      case 3: 
+        i -= 1;
+        break;
+      case 2: 
+        i += 1;
       }
     }
-    catch (JSONException localJSONException)
+  }
+  
+  private static a b(XmlPullParser paramXmlPullParser, Resources paramResources)
+  {
+    Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), ca.b.FontFamily);
+    String str1 = ((TypedArray)localObject).getString(ca.b.FontFamily_fontProviderAuthority);
+    String str2 = ((TypedArray)localObject).getString(ca.b.FontFamily_fontProviderPackage);
+    String str3 = ((TypedArray)localObject).getString(ca.b.FontFamily_fontProviderQuery);
+    int i = ((TypedArray)localObject).getResourceId(ca.b.FontFamily_fontProviderCerts, 0);
+    int j = ((TypedArray)localObject).getInteger(ca.b.FontFamily_fontProviderFetchStrategy, 1);
+    int k = ((TypedArray)localObject).getInteger(ca.b.FontFamily_fontProviderFetchTimeout, 500);
+    ((TypedArray)localObject).recycle();
+    if ((str1 != null) && (str2 != null) && (str3 != null))
     {
-      h.c("parse json failed: " + localJSONException.toString());
-      localf.a(10020, "JSONException:" + localJSONException.toString());
+      while (paramXmlPullParser.next() != 3) {
+        a(paramXmlPullParser);
+      }
+      return new d(new ej(str1, str2, str3, a(paramResources, i)), j, k);
     }
-    catch (Exception localException)
+    localObject = new ArrayList();
+    while (paramXmlPullParser.next() != 3) {
+      if (paramXmlPullParser.getEventType() == 2) {
+        if (paramXmlPullParser.getName().equals("font")) {
+          ((List)localObject).add(c(paramXmlPullParser, paramResources));
+        } else {
+          a(paramXmlPullParser);
+        }
+      }
+    }
+    if (((List)localObject).isEmpty()) {
+      return null;
+    }
+    return new b((c[])((List)localObject).toArray(new c[((List)localObject).size()]));
+  }
+  
+  private static c c(XmlPullParser paramXmlPullParser, Resources paramResources)
+  {
+    paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), ca.b.FontFamilyFont);
+    if (paramResources.hasValue(ca.b.FontFamilyFont_fontWeight)) {
+      i = ca.b.FontFamilyFont_fontWeight;
+    } else {
+      i = ca.b.FontFamilyFont_android_fontWeight;
+    }
+    int j = paramResources.getInt(i, 400);
+    if (paramResources.hasValue(ca.b.FontFamilyFont_fontStyle)) {
+      i = ca.b.FontFamilyFont_fontStyle;
+    } else {
+      i = ca.b.FontFamilyFont_android_fontStyle;
+    }
+    int i = paramResources.getInt(i, 0);
+    boolean bool = true;
+    if (1 != i) {
+      bool = false;
+    }
+    if (paramResources.hasValue(ca.b.FontFamilyFont_font)) {
+      i = ca.b.FontFamilyFont_font;
+    } else {
+      i = ca.b.FontFamilyFont_android_font;
+    }
+    int k = paramResources.getResourceId(i, 0);
+    String str = paramResources.getString(i);
+    paramResources.recycle();
+    while (paramXmlPullParser.next() != 3) {
+      a(paramXmlPullParser);
+    }
+    return new c(str, j, bool, k);
+  }
+  
+  public static abstract interface a {}
+  
+  public static final class b
+    implements dn.a
+  {
+    public final dn.c[] a;
+    
+    public b(dn.c[] paramArrayOfc)
     {
-      h.c("unknown err: " + localException.toString());
-      localf.a(10021, "JSONException:" + localException.toString());
+      this.a = paramArrayOfc;
     }
-    return localf;
+  }
+  
+  public static final class c
+  {
+    public final String a;
+    public int b;
+    public boolean c;
+    public int d;
+    
+    public c(String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
+    {
+      this.a = paramString;
+      this.b = paramInt1;
+      this.c = paramBoolean;
+      this.d = paramInt2;
+    }
+  }
+  
+  public static final class d
+    implements dn.a
+  {
+    public final ej a;
+    public final int b;
+    public final int c;
+    
+    public d(ej paramej, int paramInt1, int paramInt2)
+    {
+      this.a = paramej;
+      this.c = paramInt1;
+      this.b = paramInt2;
+    }
   }
 }
 

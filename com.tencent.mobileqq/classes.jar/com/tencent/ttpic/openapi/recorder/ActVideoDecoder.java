@@ -26,7 +26,7 @@ import java.nio.ByteBuffer;
 @TargetApi(18)
 public class ActVideoDecoder
 {
-  private static final String TAG = ActVideoDecoder.class.getSimpleName();
+  private static final String TAG = "ActVideoDecoder";
   private static final int TIMEOUT_MS = 2500;
   private static final int TIMEOUT_US = 10000;
   private MediaCodec.BufferInfo info = new MediaCodec.BufferInfo();
@@ -72,171 +72,172 @@ public class ActVideoDecoder
       for (;;)
       {
         boolean bool = this.mInited;
-        if (!bool) {
-          try
-          {
-            this.mInitLock.wait();
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-          }
+        if (bool) {
+          break;
+        }
+        try
+        {
+          this.mInitLock.wait();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
         }
       }
+      this.mDecoderSurface = new Surface(this.mSurfaceTexture);
+      this.mExtractor = new MediaExtractor();
+      try
+      {
+        setExtractorDataSource(this.mExtractor, this.mFilename);
+        prepare();
+        return;
+      }
+      catch (IOException ???)
+      {
+        ???.printStackTrace();
+        return;
+      }
     }
-    this.mDecoderSurface = new Surface(this.mSurfaceTexture);
-    this.mExtractor = new MediaExtractor();
-    try
+    for (;;)
     {
-      setExtractorDataSource(this.mExtractor, this.mFilename);
-      prepare();
-      return;
-    }
-    catch (IOException ???)
-    {
-      ???.printStackTrace();
+      throw localObject;
     }
   }
   
   private int decodeNext()
   {
-    int j = -1;
-    int k = 0;
-    int i;
-    int m;
     if (this.mDecoder == null)
     {
-      if (AEOpenRenderConfig.DEBUG) {
-        throw new RuntimeException("ActVideoDecoder init fail!");
+      if (!AEOpenRenderConfig.DEBUG) {
+        return -1;
       }
+      throw new RuntimeException("ActVideoDecoder init fail!");
     }
-    else
+    int k = 0;
+    int i = 0;
+    do
     {
-      i = 0;
-      j = k;
-      if (!Thread.interrupted())
+      for (;;)
       {
+        j = k;
+        if (Thread.interrupted()) {
+          return j;
+        }
         BenchUtil.benchStart("[decodeNext] dequeueInputBuffer");
         if (!this.isEOS)
         {
           j = this.mDecoder.dequeueInputBuffer(10000L);
           if (j >= 0)
           {
-            ByteBuffer localByteBuffer = this.inputBuffers[j];
-            m = this.mExtractor.readSampleData(localByteBuffer, 0);
-            if (m >= 0) {
-              break label165;
+            localObject = this.inputBuffers[j];
+            int m = this.mExtractor.readSampleData((ByteBuffer)localObject, 0);
+            if (m < 0)
+            {
+              LogUtils.d(TAG, "extractor read sample to EOS");
+              this.mDecoder.queueInputBuffer(j, 0, 0, 0L, 4);
+              this.isEOS = true;
             }
-            LogUtils.d(TAG, "extractor read sample to EOS");
-            this.mDecoder.queueInputBuffer(j, 0, 0, 0L, 4);
-            this.isEOS = true;
+            else
+            {
+              this.mDecoder.queueInputBuffer(j, 0, m, this.mExtractor.getSampleTime(), 0);
+              this.mExtractor.advance();
+            }
           }
         }
         BenchUtil.benchEnd("[decodeNext] dequeueInputBuffer");
         BenchUtil.benchStart("[decodeNext] wait");
         j = this.mDecoder.dequeueOutputBuffer(this.info, 10000L);
         BenchUtil.benchEnd("[decodeNext] wait");
-        if ((this.info.flags & 0x4) == 0) {
-          break label195;
+        if ((this.info.flags & 0x4) != 0) {
+          return 0;
+        }
+        if ((j != -3) && (j != -2))
+        {
+          if (j == -1) {
+            break;
+          }
+          this.mCurFrameIndex += 1L;
+          if (this.mCurFrameIndex == this.mLastFrameIndex)
+          {
+            this.mHasNewFrame = true;
+            this.mDecoder.releaseOutputBuffer(j, true);
+            return 0;
+          }
+          this.mDecoder.releaseOutputBuffer(j, false);
         }
       }
-    }
-    for (j = k;; j = k)
-    {
-      label163:
-      return j;
-      label165:
-      this.mDecoder.queueInputBuffer(j, 0, m, this.mExtractor.getSampleTime(), 0);
-      this.mExtractor.advance();
-      break;
-      switch (j)
-      {
-      default: 
-        label195:
-        this.mCurFrameIndex += 1L;
-        if (this.mCurFrameIndex != this.mLastFrameIndex) {
-          break label317;
-        }
-        this.mHasNewFrame = true;
-        this.mDecoder.releaseOutputBuffer(j, true);
-      }
-    }
-    for (;;)
-    {
-      break;
-      continue;
       j = i + 1;
       i = j;
-      if (j > 10)
-      {
-        LogUtils.e(TAG, "dequeueOutputBuffer timed out! eos = " + this.isEOS);
-        j = -1;
-        break label163;
-        label317:
-        this.mDecoder.releaseOutputBuffer(j, false);
-      }
-    }
+    } while (j <= 10);
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dequeueOutputBuffer timed out! eos = ");
+    localStringBuilder.append(this.isEOS);
+    LogUtils.e((String)localObject, localStringBuilder.toString());
+    int j = -1;
+    return j;
   }
   
   private void prepare()
   {
     int i = 0;
-    for (;;)
+    while (i < this.mExtractor.getTrackCount())
     {
-      if (i < this.mExtractor.getTrackCount())
+      localObject = this.mExtractor.getTrackFormat(i);
+      String str1 = ((MediaFormat)localObject).getString("mime");
+      if (str1.startsWith("video/"))
       {
-        MediaFormat localMediaFormat = this.mExtractor.getTrackFormat(i);
-        String str = localMediaFormat.getString("mime");
-        if (str.startsWith("video/"))
+        this.mExtractor.selectTrack(i);
+        LogUtils.d(TAG, "extractor video track selected");
+        this.mWidth = ((MediaFormat)localObject).getInteger("width");
+        this.mHeight = ((MediaFormat)localObject).getInteger("height");
+        i = this.mRotation;
+        if ((i == 90) || (i == 270))
         {
-          this.mExtractor.selectTrack(i);
-          LogUtils.d(TAG, "extractor video track selected");
-          this.mWidth = localMediaFormat.getInteger("width");
-          this.mHeight = localMediaFormat.getInteger("height");
-          if ((this.mRotation == 90) || (this.mRotation == 270))
-          {
-            i = this.mWidth;
-            this.mWidth = this.mHeight;
-            this.mHeight = i;
-          }
-          this.mDuration = (localMediaFormat.getLong("durationUs") / 1000L);
-          LogUtils.d(TAG, "width = " + this.mWidth + ", height = " + this.mHeight + ", mDuration = " + this.mDuration);
-          this.mDecoder = MediaCodec.createDecoderByType(str);
-          localMediaFormat.setInteger("max-input-size", 0);
-          this.mDecoder.configure(localMediaFormat, this.mDecoderSurface, null, 0);
+          i = this.mWidth;
+          this.mWidth = this.mHeight;
+          this.mHeight = i;
         }
-      }
-      else
-      {
-        if (this.mDecoder != null) {
-          break;
-        }
-        LogUtils.e(TAG, "Can't find video info!");
-        return;
+        this.mDuration = (((MediaFormat)localObject).getLong("durationUs") / 1000L);
+        String str2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("width = ");
+        localStringBuilder.append(this.mWidth);
+        localStringBuilder.append(", height = ");
+        localStringBuilder.append(this.mHeight);
+        localStringBuilder.append(", mDuration = ");
+        localStringBuilder.append(this.mDuration);
+        LogUtils.d(str2, localStringBuilder.toString());
+        this.mDecoder = MediaCodec.createDecoderByType(str1);
+        ((MediaFormat)localObject).setInteger("max-input-size", 0);
+        this.mDecoder.configure((MediaFormat)localObject, this.mDecoderSurface, null, 0);
+        break;
       }
       i += 1;
     }
+    Object localObject = this.mDecoder;
+    if (localObject == null)
+    {
+      LogUtils.e(TAG, "Can't find video info!");
+      return;
+    }
     try
     {
-      this.mDecoder.start();
+      ((MediaCodec)localObject).start();
       this.inputBuffers = this.mDecoder.getInputBuffers();
-      this.isEOS = false;
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    this.isEOS = false;
   }
   
   private static void setExtractorDataSource(MediaExtractor paramMediaExtractor, String paramString)
   {
     if (paramString.startsWith("assets://"))
     {
-      paramString = paramString.substring("assets://".length());
+      paramString = paramString.substring(9);
       paramString = AEModule.getContext().getAssets().openFd(paramString);
       paramMediaExtractor.setDataSource(paramString.getFileDescriptor(), paramString.getStartOffset(), paramString.getLength());
       paramString.close();
@@ -247,37 +248,50 @@ public class ActVideoDecoder
   
   public void decodeFrame(long paramLong)
   {
-    if (this.mDecoderSurface == null) {
-      throw new RuntimeException("You haven't set surfaceTexture?!");
-    }
-    if (paramLong <= this.mLastFrameIndex) {
-      return;
-    }
-    this.mLastFrameIndex = paramLong;
-    try
+    if (this.mDecoderSurface != null)
     {
-      BenchUtil.benchStart(TAG + "[decodeNext]");
-      decodeNext();
-      BenchUtil.benchEnd(TAG + "[decodeNext]");
-      return;
+      if (paramLong <= this.mLastFrameIndex) {
+        return;
+      }
+      this.mLastFrameIndex = paramLong;
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(TAG);
+        localStringBuilder.append("[decodeNext]");
+        BenchUtil.benchStart(localStringBuilder.toString());
+        decodeNext();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(TAG);
+        localStringBuilder.append("[decodeNext]");
+        BenchUtil.benchEnd(localStringBuilder.toString());
+        return;
+      }
+      catch (Exception localException)
+      {
+        LogUtils.e(TAG, "decodeNext error: ", localException, new Object[0]);
+        return;
+      }
     }
-    catch (Exception localException)
-    {
-      LogUtils.e(TAG, "decodeNext error: ", localException, new Object[0]);
-    }
+    throw new RuntimeException("You haven't set surfaceTexture?!");
   }
   
   public void decodeFrameAsync(long paramLong)
   {
-    if (this.mDecoderSurface == null) {
-      throw new RuntimeException("You haven't set surfaceTexture?!");
-    }
-    if ((this.isDecoding) || (paramLong <= this.mLastFrameIndex)) {
+    if (this.mDecoderSurface != null)
+    {
+      if (!this.isDecoding)
+      {
+        if (paramLong <= this.mLastFrameIndex) {
+          return;
+        }
+        this.isDecoding = true;
+        this.mLastFrameIndex = paramLong;
+        this.mHandler.post(new ActVideoDecoder.2(this));
+      }
       return;
     }
-    this.isDecoding = true;
-    this.mLastFrameIndex = paramLong;
-    this.mHandler.post(new ActVideoDecoder.2(this));
+    throw new RuntimeException("You haven't set surfaceTexture?!");
   }
   
   public long getDuration()
@@ -310,32 +324,34 @@ public class ActVideoDecoder
     RendererUtils.clearTexture(this.mTempTex);
     this.mSurfaceTexFilter.clearGLSLSelf();
     this.mFrame.clear();
-    if (this.mDecoderSurface != null) {
-      this.mDecoderSurface.release();
+    Object localObject = this.mDecoderSurface;
+    if (localObject != null) {
+      ((Surface)localObject).release();
     }
-    if (this.mExtractor != null) {
-      this.mExtractor.release();
+    localObject = this.mExtractor;
+    if (localObject != null) {
+      ((MediaExtractor)localObject).release();
     }
-    if (this.mDecoder != null) {}
+    localObject = this.mDecoder;
+    if (localObject != null) {}
     try
     {
-      this.mDecoder.stop();
+      ((MediaCodec)localObject).stop();
       this.mDecoder.release();
       LogUtils.i(TAG, "mDecoder stop and release");
       this.mDecoder = null;
-      if (this.mHandler != null)
-      {
-        this.mHandler.removeCallbacksAndMessages(null);
-        this.mHandler.post(new ActVideoDecoder.4(this));
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.mDecoder = null;
-      }
+      label84:
+      break label84;
+    }
+    this.mDecoder = null;
+    localObject = this.mHandler;
+    if (localObject != null)
+    {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
+      this.mHandler.post(new ActVideoDecoder.4(this));
     }
   }
   
@@ -352,11 +368,8 @@ public class ActVideoDecoder
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(localException.getMessage())) {
-          LogUtils.d(TAG, localException.getMessage());
-        }
+      if (!TextUtils.isEmpty(localException.getMessage())) {
+        LogUtils.d(TAG, localException.getMessage());
       }
     }
     this.isEOS = false;
@@ -366,8 +379,9 @@ public class ActVideoDecoder
   
   public void resetAsync()
   {
-    if (this.mHandler != null) {
-      this.mHandler.post(new ActVideoDecoder.3(this));
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new ActVideoDecoder.3(this));
     }
   }
   
@@ -385,9 +399,12 @@ public class ActVideoDecoder
   public boolean updateFrame()
   {
     boolean bool1 = this.mHasNewFrame;
-    if (this.mHasNewFrame)
+    if (bool1)
     {
-      BenchUtil.benchStart(TAG + "[updateFrame] wait");
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(TAG);
+      ((StringBuilder)???).append("[updateFrame] wait");
+      BenchUtil.benchStart(((StringBuilder)???).toString());
       synchronized (this.mUpdateFrameLock)
       {
         for (;;)
@@ -409,31 +426,43 @@ public class ActVideoDecoder
             }
           }
         }
+        this.mFrameAvailable = false;
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(TAG);
+        ((StringBuilder)???).append("[updateFrame] wait");
+        BenchUtil.benchEnd(((StringBuilder)???).toString());
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(TAG);
+        ((StringBuilder)???).append("[updateFrame] render");
+        BenchUtil.benchStart(((StringBuilder)???).toString());
       }
-      this.mFrameAvailable = false;
-      BenchUtil.benchEnd(TAG + "[updateFrame] wait");
-      BenchUtil.benchStart(TAG + "[updateFrame] render");
     }
     try
     {
       this.mSurfaceTexture.updateTexImage();
-      label167:
+      label175:
       this.mSurfaceTexture.getTransformMatrix(this.mTransformMatrix);
       this.mSurfaceTexFilter.updateMatrix(this.mTransformMatrix);
       this.mSurfaceTexFilter.RenderProcess(this.mTempTex, getWidth(), getHeight(), this.mDstTex, 0.0D, this.mFrame);
       this.mHasNewFrame = false;
-      BenchUtil.benchEnd(TAG + "[updateFrame] render");
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(TAG);
+      ((StringBuilder)???).append("[updateFrame] render");
+      BenchUtil.benchEnd(((StringBuilder)???).toString());
+      return bool1;
+      localObject2 = finally;
+      throw localObject2;
       return bool1;
     }
     catch (Exception localException)
     {
-      break label167;
+      break label175;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.recorder.ActVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

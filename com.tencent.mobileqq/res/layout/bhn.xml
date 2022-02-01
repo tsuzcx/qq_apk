@@ -3,11 +3,11 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
         <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/hdf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rnu" />
-        <TextView android:textSize="10.0dip" android:textColor="@color/bp" android:layout_gravity="center_horizontal" android:id="@id/hde" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vxb" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/black" android:layout_gravity="center_horizontal" android:id="@id/hde" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vxb" />
         <LinearLayout android:orientation="horizontal" android:id="@id/hdd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="10.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/hda" android:paddingLeft="2.5dip" android:paddingRight="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="123相册" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/bp" android:id="@id/hdb" android:paddingLeft="2.5dip" android:paddingRight="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="144照片" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/bp" android:id="@id/hdc" android:paddingLeft="2.5dip" android:paddingRight="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1223视频" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/black" android:gravity="center" android:id="@id/hda" android:paddingLeft="2.5dip" android:paddingRight="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="123相册" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/black" android:id="@id/hdb" android:paddingLeft="2.5dip" android:paddingRight="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="144照片" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/black" android:id="@id/hdc" android:paddingLeft="2.5dip" android:paddingRight="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1223视频" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

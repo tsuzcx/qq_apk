@@ -10,7 +10,7 @@ class ChatHistoryC2CDateFragment$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$1.this$0.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$1.a, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CDateFragment$1.b, this.jdField_a_of_type_JavaUtilArrayList);
+    this.b.this$0.t.a(this.b.a, this.b.b, this.a);
   }
 }
 

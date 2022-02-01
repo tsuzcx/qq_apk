@@ -1,37 +1,39 @@
 package com.tencent.mm.plugin.search;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.search.a.b;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final n createApplication()
   {
-    AppMethodBeat.i(24398);
+    AppMethodBeat.i(28065);
     a locala = new a();
-    AppMethodBeat.o(24398);
+    AppMethodBeat.o(28065);
     return locala;
   }
   
-  public final at createSubCore()
+  public final be createSubCore()
   {
-    AppMethodBeat.i(24399);
-    com.tencent.mm.plugin.search.a.b localb = new com.tencent.mm.plugin.search.a.b();
-    AppMethodBeat.o(24399);
+    AppMethodBeat.i(28066);
+    b localb = new b();
+    AppMethodBeat.o(28066);
     return localb;
   }
   
-  public final com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.search.Plugin
  * JD-Core Version:    0.7.0.1
  */

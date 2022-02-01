@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.api.composition;
 
+import com.tencent.thumbplayer.api.TPCommonEnum.TP_DRM_TYPE;
 import java.util.Map;
 
 public abstract interface ITPMediaDRMAsset
@@ -20,17 +21,18 @@ public abstract interface ITPMediaDRMAsset
   
   public abstract String getDrmProperty(String paramString1, String paramString2);
   
+  @TPCommonEnum.TP_DRM_TYPE
   public abstract int getDrmType();
   
   public abstract void setDrmPlayUrl(String paramString);
   
   public abstract void setDrmProperty(String paramString1, String paramString2);
   
-  public abstract void setDrmType(int paramInt);
+  public abstract void setDrmType(@TPCommonEnum.TP_DRM_TYPE int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.api.composition.ITPMediaDRMAsset
  * JD-Core Version:    0.7.0.1
  */

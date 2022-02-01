@@ -3,115 +3,65 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cxv
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int Scene;
-  public com.tencent.mm.bv.b wrr;
-  public String xlH;
-  public long yfa;
+  public String aaDc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28760);
+    AppMethodBeat.i(101818);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xlH == null)
-      {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: Talker");
-        AppMethodBeat.o(28760);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aaDc != null) {
+        paramVarArgs.g(1, this.aaDc);
       }
-      if (this.wrr == null)
-      {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: VoiceData");
-        AppMethodBeat.o(28760);
-        throw paramVarArgs;
-      }
-      if (this.xlH != null) {
-        paramVarArgs.e(1, this.xlH);
-      }
-      paramVarArgs.am(2, this.yfa);
-      if (this.wrr != null) {
-        paramVarArgs.c(3, this.wrr);
-      }
-      paramVarArgs.aO(4, this.Scene);
-      AppMethodBeat.o(28760);
+      AppMethodBeat.o(101818);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xlH == null) {
-        break label472;
+      if (this.aaDc == null) {
+        break label209;
       }
     }
-    label472:
-    for (paramInt = e.a.a.b.b.a.f(1, this.xlH) + 0;; paramInt = 0)
+    label209:
+    for (paramInt = i.a.a.b.b.a.h(1, this.aaDc) + 0;; paramInt = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.p(2, this.yfa);
-      paramInt = i;
-      if (this.wrr != null) {
-        paramInt = i + e.a.a.b.b.a.b(3, this.wrr);
-      }
-      i = e.a.a.b.b.a.bl(4, this.Scene);
-      AppMethodBeat.o(28760);
-      return paramInt + i;
+      AppMethodBeat.o(101818);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.xlH == null)
-        {
-          paramVarArgs = new e.a.a.b("Not all required fields were included: Talker");
-          AppMethodBeat.o(28760);
-          throw paramVarArgs;
-        }
-        if (this.wrr == null)
-        {
-          paramVarArgs = new e.a.a.b("Not all required fields were included: VoiceData");
-          AppMethodBeat.o(28760);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(28760);
+        AppMethodBeat.o(101818);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         cxv localcxv = (cxv)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(28760);
+          AppMethodBeat.o(101818);
           return -1;
-        case 1: 
-          localcxv.xlH = locala.CLY.readString();
-          AppMethodBeat.o(28760);
-          return 0;
-        case 2: 
-          localcxv.yfa = locala.CLY.sm();
-          AppMethodBeat.o(28760);
-          return 0;
-        case 3: 
-          localcxv.wrr = locala.CLY.eqS();
-          AppMethodBeat.o(28760);
-          return 0;
         }
-        localcxv.Scene = locala.CLY.sl();
-        AppMethodBeat.o(28760);
+        localcxv.aaDc = locala.ajGk.readString();
+        AppMethodBeat.o(101818);
         return 0;
       }
-      AppMethodBeat.o(28760);
+      AppMethodBeat.o(101818);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cxv
  * JD-Core Version:    0.7.0.1
  */

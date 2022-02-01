@@ -1,44 +1,25 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apuo;
-import apwv;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class EmoticonPanelCameraHelper$4
-  implements Runnable
+class EmoticonPanelCameraHelper$4
+  implements DialogInterface.OnClickListener
 {
-  public EmoticonPanelCameraHelper$4(apuo paramapuo) {}
+  EmoticonPanelCameraHelper$4(EmoticonPanelCameraHelper paramEmoticonPanelCameraHelper, Context paramContext) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    List localList = this.this$0.a.b;
-    int i;
-    apwv localapwv;
-    if (localList != null)
-    {
-      i = 0;
-      if (i < localList.size())
-      {
-        localapwv = (apwv)localList.get(i);
-        if ((localapwv == null) || (localapwv.a != 11)) {}
-      }
-    }
-    for (;;)
-    {
-      if ((localapwv != null) && (this.this$0.a.a != null)) {
-        this.this$0.a.a.a(localapwv);
-      }
-      while (!QLog.isColorLevel())
-      {
-        return;
-        i += 1;
-        break;
-      }
-      QLog.d("EmoticonPanelCameraHelper", 2, "updateCameraEmoticonPanel cameraInfo can not find");
-      return;
-      localapwv = null;
-    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.val$context, FavEmosmManageActivity.class);
+    paramDialogInterface.putExtra("camera_emo_mode", 1);
+    this.val$context.startActivity(paramDialogInterface);
+    ReportController.b(this.this$0.app.getAppRuntime(), "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
   }
 }
 

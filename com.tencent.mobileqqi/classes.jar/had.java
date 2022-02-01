@@ -1,35 +1,52 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceDecodeTask.DecodeCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class had
-  extends Handler
+public class had
+  extends Thread
 {
-  public had(Looper paramLooper)
+  private boolean a = true;
+  
+  public void a()
   {
-    super(paramLooper);
+    this.a = false;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage == null) {}
-    do
-    {
-      do
+    setName("FaceDecodeThread" + getId());
+    Object localObject1 = null;
+    while (this.a) {
+      synchronized (FaceDecodeTask.a())
       {
-        return;
-      } while (paramMessage.what != FaceDecodeTask.a());
-      paramMessage = (FaceDecodeTask)paramMessage.obj;
-    } while ((paramMessage == null) || (FaceDecodeTask.a(paramMessage) == null) || (FaceDecodeTask.a(paramMessage) == null));
-    if (FaceDecodeTask.a(paramMessage))
-    {
-      FaceDecodeTask.a(paramMessage).b = 2;
-      FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
-      return;
+        int i = FaceDecodeTask.a().size();
+        if (i == 0) {}
+        try
+        {
+          FaceDecodeTask.a().wait();
+          localObject3 = localObject1;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            Object localObject3;
+            Object localObject4 = localObject2;
+          }
+        }
+        localObject1 = localObject3;
+        if (localObject3 != null)
+        {
+          FaceDecodeTask.b((FaceDecodeTask)localObject3);
+          localObject1 = null;
+          continue;
+          localObject3 = (FaceDecodeTask)FaceDecodeTask.a().remove(0);
+        }
+      }
     }
-    FaceDecodeTask.a(paramMessage).a(FaceDecodeTask.a(paramMessage), FaceDecodeTask.a(paramMessage));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqhead.FaceDecodeTask", 2, "FaceDecodeThread thread exit. isRunning=" + this.a + ", id=" + getId());
+    }
   }
 }
 

@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<vector android:height="40.0dip" android:width="40.0dip" android:viewportWidth="40.0" android:viewportHeight="40.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="@color/ajr" android:endColor="@color/bp" android:angle="270.0" />
-</shape>
+    <group>
+        <clip-path android:pathData="M0,0h40v40h-40z" />
+        <path android:fillColor="#ff222222" android:pathData="M5.5,6L34.5,6A1.5,1.5 0,0 1,36 7.5L36,7.5A1.5,1.5 0,0 1,34.5 9L5.5,9A1.5,1.5 0,0 1,4 7.5L4,7.5A1.5,1.5 0,0 1,5.5 6z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h40v40h-40z" />
+        <path android:fillColor="#ff222222" android:pathData="M5.5,31L34.5,31A1.5,1.5 0,0 1,36 32.5L36,32.5A1.5,1.5 0,0 1,34.5 34L5.5,34A1.5,1.5 0,0 1,4 32.5L4,32.5A1.5,1.5 0,0 1,5.5 31z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h40v40h-40z" />
+        <path android:fillColor="#ff222222" android:pathData="M5.5,18.5L34.5,18.5A1.5,1.5 0,0 1,36 20L36,20A1.5,1.5 0,0 1,34.5 21.5L5.5,21.5A1.5,1.5 0,0 1,4 20L4,20A1.5,1.5 0,0 1,5.5 18.5z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    </group>
+</vector>

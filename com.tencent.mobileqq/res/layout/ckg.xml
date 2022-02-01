@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/o4f" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/o1k" android:background="@drawable/intimate_relationship_friend_mark_bg" android:layout_width="fill_parent" android:layout_height="115.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="20.0dip">
+        <com.tencent.widget.RoundRectImageView android:id="@id/n0t" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    </RelativeLayout>
+</FrameLayout>

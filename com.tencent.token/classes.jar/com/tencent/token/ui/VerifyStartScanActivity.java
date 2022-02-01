@@ -5,26 +5,41 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qbardemo.MainActivity;
-import com.tencent.token.global.j;
+import com.tencent.token.aay;
 import com.tencent.token.ui.base.CameraPrepareDialog;
-import com.tencent.token.ui.base.dk;
+import com.tencent.token.xy;
+import com.tencent.token.yt;
+import com.tencent.token.zv;
+import com.tencent.token.zv.a;
 
 public class VerifyStartScanActivity
   extends BaseActivity
 {
   private CameraPrepareDialog mCameraDialog;
-  private dk mScanTipView;
+  private zv mScanTipView;
   private int mSource;
   
   private void gotoScan()
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      afc localafc = new afc(this);
-      requestRuntimePermissions(new String[] { "android.permission.CAMERA" }, localafc);
+      yt local3 = new yt()
+      {
+        public final void a()
+        {
+          VerifyStartScanActivity.this.gotonext();
+        }
+        
+        public final void b()
+        {
+          VerifyStartScanActivity.this.gotonext();
+        }
+      };
+      requestRuntimePermissions(new String[] { "android.permission.CAMERA" }, local3);
       return;
     }
     gotonext();
@@ -32,7 +47,7 @@ public class VerifyStartScanActivity
   
   private void gotonext()
   {
-    this.mCameraDialog = new CameraPrepareDialog(this, 2131362182);
+    this.mCameraDialog = new CameraPrepareDialog(this);
     this.mCameraDialog.show();
     Intent localIntent = new Intent(this, MainActivity.class);
     localIntent.putExtra("source_from", this.mSource);
@@ -45,36 +60,49 @@ public class VerifyStartScanActivity
     View localView = new View(this);
     localView.setBackgroundColor(-16777216);
     setContentView(localView);
-    if (!j.a(this.mSource))
+    if (!xy.a(this.mSource))
     {
       gotoScan();
-      setRightTitleImage(2130838011, new afa(this));
+      setRightTitleImage(2131100169, new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          paramAnonymousView = VerifyStartScanActivity.this;
+          aay.b(paramAnonymousView, paramAnonymousView.getString(2131493432));
+        }
+      });
       return;
     }
-    this.mScanTipView = new dk(this, this.mSource);
-    this.mScanTipView.setViewListener(new afb(this));
+    this.mScanTipView = new zv(this, this.mSource);
+    this.mScanTipView.setViewListener(new zv.a()
+    {
+      public final void a()
+      {
+        VerifyStartScanActivity.this.gotoScan();
+      }
+    });
     addContentView(this.mScanTipView);
     if (this.mSource == 0)
     {
-      this.mTitleBar.setBackgroundColor(getResources().getColor(2131493039));
-      this.mTitleDivider.setBackgroundColor(getResources().getColor(2131493053));
+      this.mTitleBar.setBackgroundColor(getResources().getColor(2130968774));
+      this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968790));
     }
-    for (;;)
+    else
     {
-      this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837617));
-      this.mTitleText.setTextColor(getResources().getColor(2131493027));
-      return;
-      setTitle(getResources().getString(2131231396));
-      this.mTitleBar.setBackgroundColor(getResources().getColor(2131493050));
+      setTitle(getResources().getString(2131493548));
+      this.mTitleBar.setBackgroundColor(getResources().getColor(2130968787));
       this.mTitleDivider.setVisibility(8);
     }
+    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
+    this.mTitleText.setTextColor(getResources().getColor(2130968762));
   }
   
   protected void dismissCameraDialog()
   {
-    if (this.mCameraDialog != null)
+    CameraPrepareDialog localCameraPrepareDialog = this.mCameraDialog;
+    if (localCameraPrepareDialog != null)
     {
-      this.mCameraDialog.dismiss();
+      localCameraPrepareDialog.dismiss();
       this.mCameraDialog = null;
     }
   }

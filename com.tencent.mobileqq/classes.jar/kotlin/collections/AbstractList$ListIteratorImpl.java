@@ -35,12 +35,13 @@ class AbstractList$ListIteratorImpl
   
   public E previous()
   {
-    if (!hasPrevious()) {
-      throw ((Throwable)new NoSuchElementException());
+    if (hasPrevious())
+    {
+      AbstractList localAbstractList = this.this$0;
+      setIndex(getIndex() - 1);
+      return localAbstractList.get(getIndex());
     }
-    AbstractList localAbstractList = this.this$0;
-    setIndex(getIndex() - 1);
-    return localAbstractList.get(getIndex());
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public int previousIndex()
@@ -55,7 +56,7 @@ class AbstractList$ListIteratorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.AbstractList.ListIteratorImpl
  * JD-Core Version:    0.7.0.1
  */

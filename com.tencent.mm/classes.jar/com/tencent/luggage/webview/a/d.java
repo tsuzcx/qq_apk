@@ -7,18 +7,18 @@ import java.util.regex.Pattern;
 
 public final class d
 {
-  public final LinkedList<Pair<e, Pattern>> bFK;
+  public final LinkedList<Pair<e, Pattern>> exu;
   
   public d()
   {
-    AppMethodBeat.i(90947);
-    this.bFK = new LinkedList();
-    AppMethodBeat.o(90947);
+    AppMethodBeat.i(140560);
+    this.exu = new LinkedList();
+    AppMethodBeat.o(140560);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.webview.a.d
  * JD-Core Version:    0.7.0.1
  */

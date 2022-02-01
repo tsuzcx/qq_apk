@@ -39,13 +39,16 @@ public final class value$HomeworkInfo
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 72, 80, 90, 96, 104, 114, 120, 128, 136, 144, 152, 160, 168 }, new String[] { "group_id", "uin", "course_id", "course_name", "title", "content", "date", "need_feedback", "push_time", "feedback_ts", "multi_media", "team_id", "hw_type", "exam_msg", "syncgids", "hw_id", "appid", "feedback_num", "is_read", "feedback", "create_ts" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "", "", localByteStringMicro, "", Boolean.valueOf(false), Long.valueOf(0L), Long.valueOf(0L), null, Long.valueOf(0L), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Long.valueOf(0L) }, HomeworkInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 72, 80, 90, 96, 104, 114, 120, 128, 136, 144, 152, 160, 168 }, new String[] { "group_id", "uin", "course_id", "course_name", "title", "content", "date", "need_feedback", "push_time", "feedback_ts", "multi_media", "team_id", "hw_type", "exam_msg", "syncgids", "hw_id", "appid", "feedback_num", "is_read", "feedback", "create_ts" }, new Object[] { localLong, localLong, localInteger, "", "", localByteStringMicro, "", localBoolean, localLong, localLong, null, localLong, localInteger, null, localLong, localLong, localInteger, localInteger, localBoolean, localInteger, localLong }, HomeworkInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.group_homework.value.HomeworkInfo
  * JD-Core Version:    0.7.0.1
  */

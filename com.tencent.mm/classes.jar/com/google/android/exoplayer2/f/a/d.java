@@ -9,86 +9,43 @@ import java.util.PriorityQueue;
 abstract class d
   implements com.google.android.exoplayer2.f.e
 {
-  private long aOF;
-  private final LinkedList<h> aVc = new LinkedList();
-  final LinkedList<i> aVd;
-  private final PriorityQueue<h> aVe;
-  private h aVf;
+  private long cYu;
+  private final LinkedList<h> deY = new LinkedList();
+  final LinkedList<i> deZ;
+  private final PriorityQueue<h> dfa;
+  private h dfb;
   
   public d()
   {
     int i = 0;
     while (i < 10)
     {
-      this.aVc.add(new h());
+      this.deY.add(new h());
       i += 1;
     }
-    this.aVd = new LinkedList();
+    this.deZ = new LinkedList();
     i = j;
     while (i < 2)
     {
-      this.aVd.add(new e(this));
+      this.deZ.add(new e(this));
       i += 1;
     }
-    this.aVe = new PriorityQueue();
+    this.dfa = new PriorityQueue();
   }
   
   private void c(h paramh)
   {
     paramh.clear();
-    this.aVc.add(paramh);
+    this.deY.add(paramh);
   }
   
-  protected abstract void a(h paramh);
+  protected abstract boolean TH();
   
-  public void aa(long paramLong)
+  protected abstract com.google.android.exoplayer2.f.d TI();
+  
+  public i TL()
   {
-    this.aOF = paramLong;
-  }
-  
-  public void b(h paramh)
-  {
-    boolean bool;
-    if (paramh == this.aVf)
-    {
-      bool = true;
-      a.checkArgument(bool);
-      if (!paramh.nD()) {
-        break label37;
-      }
-      c(paramh);
-    }
-    for (;;)
-    {
-      this.aVf = null;
-      return;
-      bool = false;
-      break;
-      label37:
-      this.aVe.add(paramh);
-    }
-  }
-  
-  public void flush()
-  {
-    this.aOF = 0L;
-    while (!this.aVe.isEmpty()) {
-      c((h)this.aVe.poll());
-    }
-    if (this.aVf != null)
-    {
-      c(this.aVf);
-      this.aVf = null;
-    }
-  }
-  
-  protected abstract boolean pM();
-  
-  protected abstract com.google.android.exoplayer2.f.d pN();
-  
-  public i pQ()
-  {
-    if (this.aVd.isEmpty()) {
+    if (this.deZ.isEmpty()) {
       return null;
     }
     h localh;
@@ -98,48 +55,91 @@ abstract class d
       do
       {
         c(localh);
-        if ((this.aVe.isEmpty()) || (((h)this.aVe.peek()).aAT > this.aOF)) {
+        if ((this.dfa.isEmpty()) || (((h)this.dfa.peek()).timeUs > this.cYu)) {
           break;
         }
-        localh = (h)this.aVe.poll();
-        if (localh.nE())
+        localh = (h)this.dfa.poll();
+        if (localh.Ry())
         {
-          localObject = (i)this.aVd.pollFirst();
-          ((i)localObject).db(4);
+          localObject = (i)this.deZ.pollFirst();
+          ((i)localObject).hp(4);
           c(localh);
           return localObject;
         }
         a(localh);
-      } while (!pM());
-      localObject = pN();
-    } while (localh.nD());
-    i locali = (i)this.aVd.pollFirst();
-    locali.a(localh.aAT, (com.google.android.exoplayer2.f.d)localObject, 9223372036854775807L);
+      } while (!TH());
+      localObject = TI();
+    } while (localh.Rx());
+    i locali = (i)this.deZ.pollFirst();
+    locali.a(localh.timeUs, (com.google.android.exoplayer2.f.d)localObject, 9223372036854775807L);
     c(localh);
     return locali;
     return null;
   }
   
-  public h pR()
+  public h TM()
   {
-    if (this.aVf == null) {}
+    if (this.dfb == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      if (!this.aVc.isEmpty()) {
+      if (!this.deY.isEmpty()) {
         break;
       }
       return null;
     }
-    this.aVf = ((h)this.aVc.pollFirst());
-    return this.aVf;
+    this.dfb = ((h)this.deY.pollFirst());
+    return this.dfb;
+  }
+  
+  protected abstract void a(h paramh);
+  
+  public void b(h paramh)
+  {
+    boolean bool;
+    if (paramh == this.dfb)
+    {
+      bool = true;
+      a.checkArgument(bool);
+      if (!paramh.Rx()) {
+        break label37;
+      }
+      c(paramh);
+    }
+    for (;;)
+    {
+      this.dfb = null;
+      return;
+      bool = false;
+      break;
+      label37:
+      this.dfa.add(paramh);
+    }
+  }
+  
+  public void cy(long paramLong)
+  {
+    this.cYu = paramLong;
+  }
+  
+  public void flush()
+  {
+    this.cYu = 0L;
+    while (!this.dfa.isEmpty()) {
+      c((h)this.dfa.poll());
+    }
+    if (this.dfb != null)
+    {
+      c(this.dfb);
+      this.dfb = null;
+    }
   }
   
   public void release() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.d
  * JD-Core Version:    0.7.0.1
  */

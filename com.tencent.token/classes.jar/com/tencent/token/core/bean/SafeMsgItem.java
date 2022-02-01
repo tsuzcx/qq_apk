@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.h;
+import com.tencent.token.xv;
 import java.io.Serializable;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,10 +25,10 @@ public class SafeMsgItem
   public static final int QQ_MSG_TYPE_B_QB_INT = 1;
   public static final int QQ_MSG_TYPE_B_WTLOGIN = 11;
   private static final long serialVersionUID = -7664964646815479758L;
-  public SafeMsgItem.MsgAction mAction;
+  public MsgAction mAction;
   public String mContent;
   public String mDetail;
-  public SafeMsgItem.MsgAction mFeedBack;
+  public MsgAction mFeedBack;
   public int mFlag;
   public String mIP;
   public long mId;
@@ -49,7 +49,7 @@ public class SafeMsgItem
   public long mUin;
   public String mUri;
   
-  private int d(String paramString)
+  public static int a(String paramString)
   {
     try
     {
@@ -58,33 +58,18 @@ public class SafeMsgItem
       int j = Integer.parseInt(paramString[1]);
       int k = Integer.parseInt(paramString[2]);
       int m = Integer.parseInt(paramString[3]);
-      return (m & 0xFF) + (((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8));
+      return ((i & 0xFF) << 24) + ((j & 0xFF) << 16) + ((k & 0xFF) << 8) + (m & 0xFF);
     }
     catch (Exception paramString) {}
     return 0;
   }
   
-  public long a()
+  public final boolean a()
   {
-    return this.mId;
+    return (this.mFlag & 0x80) == 128;
   }
   
-  public void a(int paramInt)
-  {
-    this.mFlag = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.mId = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.mTitle = paramString;
-  }
-  
-  public boolean a(JSONObject paramJSONObject)
+  public final boolean a(JSONObject paramJSONObject)
   {
     try
     {
@@ -94,40 +79,40 @@ public class SafeMsgItem
       this.mFlag = paramJSONObject.getInt("flag");
       this.mTextBeforeTable = paramJSONObject.getString("text_before_table");
       this.mTextAfterTable = paramJSONObject.getString("text_after_table");
-      JSONObject localJSONObject = paramJSONObject.getJSONObject("type");
-      if (localJSONObject != null)
+      localObject = paramJSONObject.getJSONObject("type");
+      if (localObject != null)
       {
-        this.mTypea = localJSONObject.getInt("typea");
-        this.mTypeb = localJSONObject.getInt("typeb");
-        this.mTypec = localJSONObject.getInt("typec");
+        this.mTypea = ((JSONObject)localObject).getInt("typea");
+        this.mTypeb = ((JSONObject)localObject).getInt("typeb");
+        this.mTypec = ((JSONObject)localObject).getInt("typec");
       }
-      localJSONObject = paramJSONObject.getJSONObject("action");
-      if (localJSONObject != null)
+      localObject = paramJSONObject.getJSONObject("action");
+      if (localObject != null)
       {
-        this.mAction = new SafeMsgItem.MsgAction(this);
-        this.mAction.mActionType = localJSONObject.getString("action_type");
-        this.mAction.mButtonText = localJSONObject.getString("btn_text");
-        this.mAction.mTargetUrl = localJSONObject.getString("target");
+        this.mAction = new MsgAction();
+        this.mAction.mActionType = ((JSONObject)localObject).getString("action_type");
+        this.mAction.mButtonText = ((JSONObject)localObject).getString("btn_text");
+        this.mAction.mTargetUrl = ((JSONObject)localObject).getString("target");
       }
-      localJSONObject = paramJSONObject.getJSONObject("feedback");
-      if (localJSONObject != null)
+      localObject = paramJSONObject.getJSONObject("feedback");
+      if (localObject != null)
       {
-        this.mFeedBack = new SafeMsgItem.MsgAction(this);
-        this.mFeedBack.mActionType = localJSONObject.getString("type");
-        this.mFeedBack.mButtonText = localJSONObject.getString("btn_text");
-        this.mFeedBack.mTargetUrl = localJSONObject.getString("target");
+        this.mFeedBack = new MsgAction();
+        this.mFeedBack.mActionType = ((JSONObject)localObject).getString("type");
+        this.mFeedBack.mButtonText = ((JSONObject)localObject).getString("btn_text");
+        this.mFeedBack.mTargetUrl = ((JSONObject)localObject).getString("target");
       }
       this.mTextBeforeTable = paramJSONObject.getString("text_before_table");
       this.mTable = paramJSONObject.getJSONArray("table").toString();
       if (this.mTypea == 1)
       {
         this.mIP = paramJSONObject.getString("ip");
-        localJSONObject = paramJSONObject.getJSONObject("location");
-        if (localJSONObject != null)
+        localObject = paramJSONObject.getJSONObject("location");
+        if (localObject != null)
         {
-          this.mLoc_country_id = localJSONObject.getInt("country_id");
-          this.mLoc_prov_id = localJSONObject.getInt("prov_id");
-          this.mLoc_city_id = localJSONObject.getInt("city_id");
+          this.mLoc_country_id = ((JSONObject)localObject).getInt("country_id");
+          this.mLoc_prov_id = ((JSONObject)localObject).getInt("prov_id");
+          this.mLoc_city_id = ((JSONObject)localObject).getInt("city_id");
         }
       }
       this.mTextAfterTable = paramJSONObject.getString("text_after_table");
@@ -136,129 +121,37 @@ public class SafeMsgItem
     }
     catch (JSONException paramJSONObject)
     {
-      h.c("JSONException: " + paramJSONObject.getMessage());
+      Object localObject = new StringBuilder("JSONException: ");
+      ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+      xv.c(((StringBuilder)localObject).toString());
     }
     return false;
   }
   
-  public int b()
-  {
-    return this.mFlag;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.mTypea = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    this.mTime = paramLong;
-  }
-  
-  public void b(String paramString)
-  {
-    this.mContent = paramString;
-  }
-  
-  public String c()
-  {
-    return this.mTitle;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.mTypeb = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.mUri = paramString;
-  }
-  
-  public String d()
-  {
-    return this.mContent;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.mTypec = paramInt;
-  }
-  
-  public long e()
-  {
-    return this.mTime;
-  }
-  
-  public int f()
-  {
-    return this.mTypea;
-  }
-  
-  public int g()
-  {
-    return this.mTypeb;
-  }
-  
-  public int h()
-  {
-    return this.mTypec;
-  }
-  
-  public String i()
-  {
-    return this.mTable;
-  }
-  
-  public String j()
-  {
-    return this.mUri;
-  }
-  
-  public int k()
-  {
-    return d(this.mIP);
-  }
-  
-  public int l()
-  {
-    return this.mLoc_country_id;
-  }
-  
-  public int m()
-  {
-    return this.mLoc_prov_id;
-  }
-  
-  public int n()
-  {
-    return this.mLoc_city_id;
-  }
-  
-  public String o()
-  {
-    return this.mMsgVersion;
-  }
-  
-  public boolean p()
-  {
-    return (this.mFlag & 0x80) == 128;
-  }
-  
-  public boolean q()
+  public final boolean b()
   {
     return (this.mFlag & 0x4) == 4;
   }
   
-  public boolean r()
+  public final boolean c()
   {
     return (this.mFlag & 0x100) == 256;
   }
   
-  public boolean s()
+  public final boolean d()
   {
     return (this.mFlag & 0x1) == 1;
+  }
+  
+  public class MsgAction
+    implements Serializable
+  {
+    private static final long serialVersionUID = -179518061041549637L;
+    public String mActionType;
+    public String mButtonText;
+    public String mTargetUrl;
+    
+    public MsgAction() {}
   }
 }
 

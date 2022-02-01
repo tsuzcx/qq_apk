@@ -8,18 +8,18 @@ import java.io.PrintWriter;
 
 public class ay
 {
-  protected final az OR;
+  protected final az QG;
   
   protected ay(az paramaz)
   {
-    this.OR = paramaz;
+    this.QG = paramaz;
   }
   
   public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
   
   public final Activity getActivity()
   {
-    return this.OR.jb();
+    return this.QG.jk();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}

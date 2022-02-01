@@ -4,52 +4,52 @@ import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import com.tencent.luggage.g.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class VoipSmallService
   extends Service
 {
   public IBinder onBind(Intent paramIntent)
   {
-    AppMethodBeat.i(5167);
-    ab.i("MicroMsg.VoipSmallService", "VoipSmallService onBind");
+    AppMethodBeat.i(115792);
+    Log.i("MicroMsg.VoipSmallService", "VoipSmallService onBind");
     paramIntent = (Notification)paramIntent.getParcelableExtra("notification");
-    if ((b.fv(26)) && (paramIntent != null)) {
+    if ((d.rb(26)) && (paramIntent != null)) {
       startForeground(40, paramIntent);
     }
-    AppMethodBeat.o(5167);
+    AppMethodBeat.o(115792);
     return null;
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(5169);
-    ab.i("MicroMsg.VoipSmallService", "VoipSmallService onCreate");
-    AppMethodBeat.o(5169);
+    AppMethodBeat.i(115794);
+    Log.i("MicroMsg.VoipSmallService", "VoipSmallService onCreate");
+    AppMethodBeat.o(115794);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(5170);
-    ab.i("MicroMsg.VoipSmallService", "VoipSmallService onDestroy");
-    AppMethodBeat.o(5170);
+    AppMethodBeat.i(115795);
+    Log.i("MicroMsg.VoipSmallService", "VoipSmallService onDestroy");
+    AppMethodBeat.o(115795);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    AppMethodBeat.i(5168);
-    ab.i("MicroMsg.VoipSmallService", "VoipSmallService onUnbind");
+    AppMethodBeat.i(115793);
+    Log.i("MicroMsg.VoipSmallService", "VoipSmallService onUnbind");
     stopSelf();
     boolean bool = super.onUnbind(paramIntent);
-    AppMethodBeat.o(5168);
+    AppMethodBeat.o(115793);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.VoipSmallService
  * JD-Core Version:    0.7.0.1
  */

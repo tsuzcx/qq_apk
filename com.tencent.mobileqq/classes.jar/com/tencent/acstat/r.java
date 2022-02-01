@@ -17,13 +17,14 @@ final class r
       b localb = new b(this.a, StatServiceImpl.a(this.a, false, this.b), this.c.a, this.b);
       localb.b().c = this.c.c;
       Long localLong = Long.valueOf(this.d);
-      if (localLong.longValue() <= 0L) {}
-      for (long l = 1L;; l = localLong.longValue())
-      {
-        localb.a(Long.valueOf(l).longValue());
-        new ab(localb).a();
-        return;
+      long l;
+      if (localLong.longValue() <= 0L) {
+        l = 1L;
+      } else {
+        l = localLong.longValue();
       }
+      localb.a(Long.valueOf(l).longValue());
+      new ab(localb).a();
       return;
     }
     catch (Throwable localThrowable)
@@ -34,7 +35,7 @@ final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.r
  * JD-Core Version:    0.7.0.1
  */

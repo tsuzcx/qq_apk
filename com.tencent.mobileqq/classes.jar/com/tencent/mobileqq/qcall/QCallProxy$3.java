@@ -1,36 +1,44 @@
 package com.tencent.mobileqq.qcall;
 
 import android.database.Cursor;
-import axat;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.BaseProxyManager;
 import com.tencent.mobileqq.utils.SecurityUtile;
+import com.tencent.qphone.base.util.QLog;
 
-public class QCallProxy$3
+class QCallProxy$3
   implements Runnable
 {
-  public QCallProxy$3(axat paramaxat, String paramString) {}
+  QCallProxy$3(QCallProxy paramQCallProxy, String paramString) {}
   
   public void run()
   {
-    Cursor localCursor = axat.a(this.this$0, this.a);
-    if (localCursor != null)
+    try
     {
-      int i = localCursor.getColumnIndex("name");
-      while (localCursor.moveToNext())
+      Cursor localCursor = QCallProxy.a(this.this$0, this.a);
+      if (localCursor != null)
       {
-        String str = SecurityUtile.a(localCursor.getString(i));
-        int j = axat.a(this.this$0, str);
-        if (j != -1) {
-          axat.a(this.this$0).a(this.a, j, str, null, null, 2, null);
+        int i = localCursor.getColumnIndex("name");
+        while (localCursor.moveToNext())
+        {
+          String str = SecurityUtile.encode(localCursor.getString(i));
+          int j = QCallProxy.b(this.this$0, str);
+          if (j != -1) {
+            QCallProxy.a(this.this$0).addMsgQueue(this.a, j, str, null, null, 2, null);
+          }
         }
+        localCursor.close();
+        return;
       }
-      localCursor.close();
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.i("QCallProxy", 1, "deleteAllRecordFromDB", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallProxy.3
  * JD-Core Version:    0.7.0.1
  */

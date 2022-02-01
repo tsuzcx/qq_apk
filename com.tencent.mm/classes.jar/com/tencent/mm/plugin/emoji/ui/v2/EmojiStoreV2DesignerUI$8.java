@@ -1,32 +1,29 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ao.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 
 final class EmojiStoreV2DesignerUI$8
-  implements ao.b.a
+  implements DialogInterface.OnCancelListener
 {
   EmojiStoreV2DesignerUI$8(EmojiStoreV2DesignerUI paramEmojiStoreV2DesignerUI) {}
   
-  public final void p(String paramString, boolean paramBoolean)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(53586);
-    ab.i("MicroMsg.emoji.EmojiStoreV2DesignerUI", "getContactCallBack username:%s,succ:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
-    {
-      EmojiStoreV2DesignerUI.a(this.lpI, ((j)g.E(j.class)).YA().arw(paramString));
-      EmojiStoreV2DesignerUI.a(this.lpI);
+    AppMethodBeat.i(270794);
+    if (EmojiStoreV2DesignerUI.p(this.xWy) != null) {
+      h.baD().mCm.a(EmojiStoreV2DesignerUI.p(this.xWy));
     }
-    AppMethodBeat.o(53586);
+    AppMethodBeat.o(270794);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2DesignerUI.8
  * JD-Core Version:    0.7.0.1
  */

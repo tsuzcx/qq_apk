@@ -2,16 +2,15 @@ package com.tencent.mobileqq.data;
 
 import QQService.UserProfile;
 import QQService.VipBaseInfo;
-import awge;
-import awhp;
-import bdns;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="lEctID,type")
 public class CardProfile
-  extends awge
+  extends Entity
 {
   public static final int TYPE_FAVORITE = 3;
   public static final int TYPE_VISITOR = 1;
@@ -19,7 +18,7 @@ public class CardProfile
   public byte bAage;
   public long bAvailableCnt;
   public byte bCloseNeighborVote;
-  public byte bConstellation;
+  public byte bConstellation = 0;
   public byte bFavorite;
   public byte bFavoritedMe;
   public short bIsLastVoteCharged;
@@ -35,18 +34,17 @@ public class CardProfile
   public int lTime;
   public int nFaceNum;
   public short payVoteCount;
-  private transient RichStatus rs;
   public short shIntroType;
-  public VipBaseInfo stVipInfo;
+  public VipBaseInfo stVipInfo = null;
   public String strNick;
-  @awhp
+  @notColumn
   public String strTime = "";
   public int type = 1;
   public long uSource;
-  public byte[] vC2CSign;
+  public byte[] vC2CSign = null;
   public byte[] vFaceID;
   public byte[] vIntroContent;
-  public byte[] vRichSign;
+  public byte[] vRichSign = null;
   public short wFace;
   
   public static String tableName()
@@ -85,33 +83,56 @@ public class CardProfile
     localCardProfile.dwLikeCustomId = this.dwLikeCustomId;
     localCardProfile.bIsLastVoteCharged = this.bIsLastVoteCharged;
     localCardProfile.vRichSign = this.vRichSign;
-    if (this.lTime > 0) {
-      localCardProfile.strTime = bdns.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+    int i = this.lTime;
+    if (i > 0) {
+      localCardProfile.strTime = TimeFormatterUtils.a(i * 1000L, true, "yyyy-MM-dd");
     }
     return localCardProfile;
-  }
-  
-  public RichStatus getRichStatus()
-  {
-    if ((this.rs == null) && (this.vRichSign != null)) {
-      this.rs = RichStatus.parseStatus(this.vRichSign);
-    }
-    return this.rs;
   }
   
   public String getSimpleZanInfo()
   {
     StringBuilder localStringBuilder = new StringBuilder("zanInfo:");
-    localStringBuilder.append(",").append("uin").append("=").append(this.lEctID);
-    localStringBuilder.append(",").append("t").append("=").append(this.type);
-    localStringBuilder.append(",").append("n").append("=").append(this.strNick);
-    localStringBuilder.append(",").append("bVC").append("=").append(this.bVoteCnt);
-    localStringBuilder.append(",").append("bAailC").append("=").append(this.bAvailableCnt);
-    localStringBuilder.append(",").append("bTVC").append("=").append(this.bTodayVotedCnt);
-    localStringBuilder.append(",").append("bClose").append("=").append(this.bCloseNeighborVote);
-    localStringBuilder.append(",").append("bCharged").append("=").append(this.bIsLastVoteCharged);
-    localStringBuilder.append(",").append("payVC").append("=").append(this.payVoteCount);
-    localStringBuilder.append(",").append("bMutual").append("=").append(this.bMutualFriends);
+    localStringBuilder.append(",");
+    localStringBuilder.append("uin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.lEctID);
+    localStringBuilder.append(",");
+    localStringBuilder.append("t");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(",");
+    localStringBuilder.append("n");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.strNick);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bVC");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bVoteCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bAailC");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bAvailableCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bTVC");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bTodayVotedCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bClose");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bCloseNeighborVote);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bCharged");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bIsLastVoteCharged);
+    localStringBuilder.append(",");
+    localStringBuilder.append("payVC");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.payVoteCount);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bMutual");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bMutualFriends);
     return localStringBuilder.toString();
   }
   
@@ -144,8 +165,9 @@ public class CardProfile
     this.bVoteCnt = paramUserProfile.bVoteCnt;
     this.bAvailableCnt = paramUserProfile.bAvailableCnt;
     this.bTodayVotedCnt = paramUserProfile.bTodayVotedCnt;
-    if (this.lTime > 0) {
-      this.strTime = bdns.a(this.lTime * 1000L, true, "yyyy-MM-dd");
+    int i = this.lTime;
+    if (i > 0) {
+      this.strTime = TimeFormatterUtils.a(i * 1000L, true, "yyyy-MM-dd");
     }
     this.uSource = paramUserProfile.uSource;
     this.bCloseNeighborVote = ((byte)paramUserProfile.bCloseNeighborVote);
@@ -158,22 +180,49 @@ public class CardProfile
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("CardProfile");
-    localStringBuilder.append(",").append("lEctID").append(":").append(this.lEctID);
-    localStringBuilder.append(",").append("strNick").append(":").append(this.strNick);
-    localStringBuilder.append(",").append("bVC").append(":").append(this.bVoteCnt);
-    localStringBuilder.append(",").append("bAailC").append(":").append(this.bAvailableCnt);
-    localStringBuilder.append(",").append("bTVC").append(":").append(this.bTodayVotedCnt);
-    localStringBuilder.append(",").append("bClose").append(":").append(this.bCloseNeighborVote);
-    localStringBuilder.append(",").append("strTime").append(":").append(this.strTime);
-    localStringBuilder.append(",").append("type").append(":").append(this.type);
-    localStringBuilder.append(",").append("bMutual").append("=").append(this.bMutualFriends);
+    localStringBuilder.append(",");
+    localStringBuilder.append("lEctID");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.lEctID);
+    localStringBuilder.append(",");
+    localStringBuilder.append("strNick");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.strNick);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bVC");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bVoteCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bAailC");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bAvailableCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bTVC");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bTodayVotedCnt);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bClose");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.bCloseNeighborVote);
+    localStringBuilder.append(",");
+    localStringBuilder.append("strTime");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.strTime);
+    localStringBuilder.append(",");
+    localStringBuilder.append("type");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(",");
+    localStringBuilder.append("bMutual");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.bMutualFriends);
     return localStringBuilder.toString();
   }
   
   public void updateTime(long paramLong)
   {
     this.lTime = ((int)paramLong);
-    this.strTime = bdns.a(1000L * paramLong, true, "yyyy-MM-dd");
+    this.strTime = TimeFormatterUtils.a(paramLong * 1000L, true, "yyyy-MM-dd");
   }
 }
 

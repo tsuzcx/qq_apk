@@ -31,6 +31,7 @@ public final class oidb_cmd0x8c8$FeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -40,12 +41,12 @@ public final class oidb_cmd0x8c8$FeedsInfo
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 74, 82, 90, 98, 106, 114, 4002 }, new String[] { "feeds_type", "uint64_article_id", "uint32_article_is_video", "bytes_subscribe_name", "json_video_list", "bytes_subscribe_id", "bytes_article_summary", "uint32_business_id", "bytes_business_name", "bytes_business_url", "msg_social_fees_info", "bytes_business_name_prefix", "account_info", "bytes_rowkey", "bytes_number_of_participants" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, localByteStringMicro6, null, localByteStringMicro7, null, localByteStringMicro8, localByteStringMicro9 }, FeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 64, 74, 82, 90, 98, 106, 114, 4002 }, new String[] { "feeds_type", "uint64_article_id", "uint32_article_is_video", "bytes_subscribe_name", "json_video_list", "bytes_subscribe_id", "bytes_article_summary", "uint32_business_id", "bytes_business_name", "bytes_business_url", "msg_social_fees_info", "bytes_business_name_prefix", "account_info", "bytes_rowkey", "bytes_number_of_participants" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger, localByteStringMicro5, localByteStringMicro6, null, localByteStringMicro7, null, localByteStringMicro8, localByteStringMicro9 }, FeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

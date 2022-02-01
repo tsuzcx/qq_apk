@@ -1,23 +1,21 @@
 package com.tencent.biz.qqstory.model.item;
 
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.Address;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ulj;
-import wxe;
 
 public class AddressItem
   extends BaseUIItem
-  implements ulj
+  implements Copyable
 {
   public String building;
   public String city;
@@ -44,16 +42,13 @@ public class AddressItem
       localJSONObject.put("latitude", paramAddressItem.latitude);
       localJSONObject.put("coordinate", paramAddressItem.coordinate);
       localJSONObject.put("district", paramAddressItem.district);
-      wxe.b("AddressItem convertFromItem: ", localJSONObject.toString());
-      return localJSONObject.toString();
     }
     catch (JSONException paramAddressItem)
     {
-      for (;;)
-      {
-        paramAddressItem.printStackTrace();
-      }
+      paramAddressItem.printStackTrace();
     }
+    SLog.b("AddressItem convertFromItem: ", localJSONObject.toString());
+    return localJSONObject.toString();
   }
   
   public static AddressItem convertFromJson(String paramString)
@@ -89,7 +84,11 @@ public class AddressItem
       paramString1 = localJSONObject.toString();
       return paramString1;
     }
-    catch (JSONException paramString1) {}
+    catch (JSONException paramString1)
+    {
+      label103:
+      break label103;
+    }
     return "";
   }
   
@@ -114,29 +113,7 @@ public class AddressItem
       }
       return localAddressItem;
     }
-    wxe.b("AddressItem :getAddressFromProtoObject()", "address is null");
-    return null;
-  }
-  
-  public static final String getQQStoryPoiJson(TroopBarPOI paramTroopBarPOI)
-  {
-    if (paramTroopBarPOI == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("latitude", paramTroopBarPOI.b);
-        localJSONObject.put("longitude", paramTroopBarPOI.jdField_a_of_type_Int);
-        localJSONObject.put("uid", paramTroopBarPOI.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("coordinate", 0);
-        paramTroopBarPOI = localJSONObject.toString();
-        return paramTroopBarPOI;
-      }
-      catch (JSONException paramTroopBarPOI) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("zivonchen", 2, QLog.getStackTraceString(paramTroopBarPOI));
+    SLog.b("AddressItem :getAddressFromProtoObject()", "address is null");
     return null;
   }
   
@@ -202,54 +179,94 @@ public class AddressItem
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"AddressItem\", \"country\":");
-    if (this.country == null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"_class\":\"AddressItem\", \"country\":");
+    Object localObject = this.country;
+    String str = "null";
+    if (localObject == null)
     {
-      str = "null";
-      localStringBuilder = localStringBuilder.append(str).append(", \"city\":");
-      if (this.city != null) {
-        break label200;
-      }
-      str = "null";
-      label44:
-      localStringBuilder = localStringBuilder.append(str).append(", \"province\":");
-      if (this.province != null) {
-        break label231;
-      }
-      str = "null";
-      label65:
-      localStringBuilder = localStringBuilder.append(str).append(", \"street\":");
-      if (this.street != null) {
-        break label262;
-      }
-      str = "null";
-      label86:
-      localStringBuilder = localStringBuilder.append(str).append(", \"building\":");
-      if (this.building != null) {
-        break label293;
-      }
+      localObject = "null";
     }
-    label262:
-    label293:
-    for (String str = "null";; str = "\"" + this.building + "\"")
+    else
     {
-      return str + ", \"longitude\":\"" + this.longitude + "\", \"latitude\":\"" + this.latitude + "\", \"coordinate\":\"" + this.coordinate + "\"\"district\":\"" + this.district + "\"}";
-      str = "\"" + this.country + "\"";
-      break;
-      label200:
-      str = "\"" + this.city + "\"";
-      break label44;
-      label231:
-      str = "\"" + this.province + "\"";
-      break label65;
-      str = "\"" + this.street + "\"";
-      break label86;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"");
+      ((StringBuilder)localObject).append(this.country);
+      ((StringBuilder)localObject).append("\"");
+      localObject = ((StringBuilder)localObject).toString();
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", \"city\":");
+    if (this.city == null)
+    {
+      localObject = "null";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"");
+      ((StringBuilder)localObject).append(this.city);
+      ((StringBuilder)localObject).append("\"");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", \"province\":");
+    if (this.province == null)
+    {
+      localObject = "null";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"");
+      ((StringBuilder)localObject).append(this.province);
+      ((StringBuilder)localObject).append("\"");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", \"street\":");
+    if (this.street == null)
+    {
+      localObject = "null";
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"");
+      ((StringBuilder)localObject).append(this.street);
+      ((StringBuilder)localObject).append("\"");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", \"building\":");
+    if (this.building == null)
+    {
+      localObject = str;
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"");
+      ((StringBuilder)localObject).append(this.building);
+      ((StringBuilder)localObject).append("\"");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", \"longitude\":\"");
+    localStringBuilder.append(this.longitude);
+    localStringBuilder.append("\", \"latitude\":\"");
+    localStringBuilder.append(this.latitude);
+    localStringBuilder.append("\", \"coordinate\":\"");
+    localStringBuilder.append(this.coordinate);
+    localStringBuilder.append("\"\"district\":\"");
+    localStringBuilder.append(this.district);
+    localStringBuilder.append("\"}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.AddressItem
  * JD-Core Version:    0.7.0.1
  */

@@ -22,10 +22,12 @@ public class q
   public void a(t paramt)
   {
     this.b += 1;
-    this.a = ((int)(this.a + this.a * this.d));
-    if (!c()) {
-      throw paramt;
+    int i = this.a;
+    this.a = ((int)(i + i * this.d));
+    if (c()) {
+      return;
     }
+    throw paramt;
   }
   
   public int b()
@@ -40,7 +42,7 @@ public class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.q
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c3" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <TextView android:id="@id/title" android:paddingBottom="0.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0230" />
-        <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809c3" android:paddingBottom="0.0dip" android:layout_marginLeft="4.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0237">
+        <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0809c2" android:paddingBottom="0.0dip" android:layout_marginLeft="4.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0237">
             <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e0241" />
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080788" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023d" />
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080789" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080787" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023d" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080788" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />
         </LinearLayout>
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076f" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0234" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08076e" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0234" />
         <LinearLayout android:id="@id/content" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c6" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c5" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023a">
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080313" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />"
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080312" style="@style/APKTOOL_DUPLICATE_style_0x7f0e023b" />"
 </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

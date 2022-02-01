@@ -1,9 +1,11 @@
 package btmsdkobf;
 
+import com.qq.taf.jce.JceStruct;
+
 public abstract interface cn
   extends cm
 {
-  public abstract dj a(int paramInt1, long paramLong, int paramInt2, byte[] paramArrayOfByte);
+  public abstract dj<Long, Integer, JceStruct> a(int paramInt1, long paramLong, int paramInt2, byte[] paramArrayOfByte);
 }
 
 

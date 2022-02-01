@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator android:interpolator="@interpolator/generic_confirmation_animation_interpolator_2" android:duration="400" android:pathData="M 40,33.5 c 0.0,0.18153 0.0,11.31822 0.0,13.09601 c 0.0,0.75592 0.0,-6.96322 0.0,-6.88601" android:propertyXName="translateX" android:propertyYName="translateY" />
+    <set android:ordering="sequentially">
+        <objectAnimator android:interpolator="@android:interpolator/fast_out_slow_in" android:duration="400" android:valueFrom="0.3" android:valueTo="1" android:valueType="floatType" android:propertyName="scaleX" />
+        <objectAnimator android:interpolator="@interpolator/generic_confirmation_animation_interpolator_3" android:duration="233" android:valueFrom="1" android:valueTo="1" android:valueType="floatType" android:propertyName="scaleX" />
+        <objectAnimator android:interpolator="@android:interpolator/fast_out_slow_in" android:duration="266" android:valueFrom="1" android:valueTo="0.92" android:valueType="floatType" android:propertyName="scaleX" />
+    </set>
+    <set android:ordering="sequentially">
+        <objectAnimator android:interpolator="@android:interpolator/fast_out_slow_in" android:duration="400" android:valueFrom="0.3" android:valueTo="1" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:interpolator="@interpolator/generic_confirmation_animation_interpolator_3" android:duration="233" android:valueFrom="1" android:valueTo="1" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:interpolator="@android:interpolator/fast_out_slow_in" android:duration="266" android:valueFrom="1" android:valueTo="0.92" android:valueType="floatType" android:propertyName="scaleY" />
+    </set>
+    <objectAnimator android:interpolator="@android:interpolator/fast_out_slow_in" android:duration="400" android:valueFrom="65.0" android:valueTo="0.0" android:valueType="floatType" android:propertyName="rotation" />
+</set>

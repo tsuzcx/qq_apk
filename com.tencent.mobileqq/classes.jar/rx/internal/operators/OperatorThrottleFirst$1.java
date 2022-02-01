@@ -25,10 +25,11 @@ class OperatorThrottleFirst$1
   
   public void onNext(T paramT)
   {
-    long l = this.this$0.scheduler.now();
-    if ((this.lastOnNext == 0L) || (l - this.lastOnNext >= this.this$0.timeInMilliseconds))
+    long l1 = this.this$0.scheduler.now();
+    long l2 = this.lastOnNext;
+    if ((l2 == 0L) || (l1 - l2 >= this.this$0.timeInMilliseconds))
     {
-      this.lastOnNext = l;
+      this.lastOnNext = l1;
       this.val$subscriber.onNext(paramT);
     }
   }
@@ -40,7 +41,7 @@ class OperatorThrottleFirst$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorThrottleFirst.1
  * JD-Core Version:    0.7.0.1
  */

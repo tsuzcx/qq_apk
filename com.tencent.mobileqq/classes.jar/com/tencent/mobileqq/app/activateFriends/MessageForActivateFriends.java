@@ -8,9 +8,9 @@ public class MessageForActivateFriends
   extends ChatMessage
 {
   private static final String TAG = "ActivateFriends.Message";
-  public SubMsgType0x76.MsgBody msgBody;
+  public SubMsgType0x76.MsgBody msgBody = null;
   
-  public void doParse()
+  protected void doParse()
   {
     try
     {
@@ -20,8 +20,9 @@ public class MessageForActivateFriends
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ActivateFriends.Message", 2, "Message parse error.", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Message", 2, "Message parse error.", localException);
+      }
     }
   }
   
@@ -33,13 +34,13 @@ public class MessageForActivateFriends
     return this.msgBody;
   }
   
-  public void postwrite() {}
+  protected void postwrite() {}
   
-  public void prewrite() {}
+  protected void prewrite() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.MessageForActivateFriends
  * JD-Core Version:    0.7.0.1
  */

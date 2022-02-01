@@ -9,8 +9,8 @@ public final class UserData
 {
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public long lNextMid;
-  public int lTime;
+  public long lNextMid = 0L;
+  public int lTime = 0;
   public String strProvince = "";
   
   public UserData() {}
@@ -39,14 +39,15 @@ public final class UserData
     paramJceOutputStream.write(this.iLat, 1);
     paramJceOutputStream.write(this.iLon, 2);
     paramJceOutputStream.write(this.lNextMid, 3);
-    if (this.strProvince != null) {
-      paramJceOutputStream.write(this.strProvince, 4);
+    String str = this.strProvince;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.UserData
  * JD-Core Version:    0.7.0.1
  */

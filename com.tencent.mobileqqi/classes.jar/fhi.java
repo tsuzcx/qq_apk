@@ -1,30 +1,27 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Messenger;
-import android.util.SparseArray;
+import android.view.View;
 import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.Callback;
+import java.lang.ref.WeakReference;
 
 public class fhi
-  implements ServiceConnection
 {
-  public fhi(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler) {}
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public WeakReference b;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public fhi(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, View paramView, TroopQZoneUploadAlbumHandler.Callback paramCallback)
   {
-    QLog.d("UploadPhoto", 2, "onServiceConnected()...");
-    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-    this.a.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
-    TroopQZoneUploadAlbumHandler.a(this.a, this.a.jdField_b_of_type_Int);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramCallback);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public View a()
   {
-    QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
-    this.a.jdField_a_of_type_AndroidOsMessenger = null;
-    TroopQZoneUploadAlbumHandler.a(this.a, false);
-    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public TroopQZoneUploadAlbumHandler.Callback a()
+  {
+    return (TroopQZoneUploadAlbumHandler.Callback)this.b.get();
   }
 }
 

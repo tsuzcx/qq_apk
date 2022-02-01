@@ -1,19 +1,23 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qlink.QQProxyForQlink;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
 public final class fyj
-  implements ActionSheet.OnButtonClickListener
+  extends ClickableSpan
 {
-  public fyj(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity, ActionSheet paramActionSheet) {}
+  public fyj(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    this.a.a(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

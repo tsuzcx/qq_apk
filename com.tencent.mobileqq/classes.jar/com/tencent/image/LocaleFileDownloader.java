@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -12,32 +13,41 @@ public class LocaleFileDownloader
 {
   public File getFile(DownloadParams paramDownloadParams)
   {
-    paramDownloadParams = paramDownloadParams.url;
+    URL localURL = paramDownloadParams.url;
     try
     {
-      File localFile1 = new File(paramDownloadParams.toURI().getPath());
-      return localFile1;
-    }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      try
-      {
-        File localFile2 = new File(paramDownloadParams.toString().replaceFirst("file:", ""));
-        return localFile2;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("URLDrawable_", 2, "LocaleFileDownloader getFile error url:" + paramDownloadParams, localException);
-        }
-        return null;
-      }
+      paramDownloadParams = new File(localURL.toURI().getPath());
+      return paramDownloadParams;
     }
     catch (NullPointerException paramDownloadParams)
     {
-      paramDownloadParams.printStackTrace();
+      for (;;)
+      {
+        paramDownloadParams.printStackTrace();
+        return null;
+        try
+        {
+          paramDownloadParams = new File(localURL.toString().replaceFirst("file:", ""));
+        }
+        catch (Exception paramDownloadParams)
+        {
+          if (URLDrawable.depImp.mLog.isColorLevel())
+          {
+            ILog localILog = URLDrawable.depImp.mLog;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("LocaleFileDownloader getFile error url:");
+            localStringBuilder.append(localURL);
+            localILog.e("URLDrawable_", 2, localStringBuilder.toString(), paramDownloadParams);
+          }
+          return null;
+        }
+      }
     }
-    return null;
+    catch (URISyntaxException paramDownloadParams)
+    {
+      label29:
+      break label29;
+    }
   }
   
   public boolean hasDiskFile(DownloadParams paramDownloadParams)
@@ -52,12 +62,15 @@ public class LocaleFileDownloader
     if ((paramURLDrawableHandler != null) && (paramURLDrawableHandler.exists())) {
       return paramURLDrawableHandler;
     }
-    throw new IOException("File not Found. url: " + paramDownloadParams.url);
+    paramURLDrawableHandler = new StringBuilder();
+    paramURLDrawableHandler.append("File not Found. url: ");
+    paramURLDrawableHandler.append(paramDownloadParams.url);
+    throw new IOException(paramURLDrawableHandler.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.LocaleFileDownloader
  * JD-Core Version:    0.7.0.1
  */

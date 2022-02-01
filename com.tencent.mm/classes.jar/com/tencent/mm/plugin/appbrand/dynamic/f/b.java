@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.z.b.c;
+import com.tencent.mm.ac.b.c;
+import com.tencent.mm.plugin.appbrand.af.i;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -11,11 +11,11 @@ import org.json.JSONObject;
 public final class b
   extends c
 {
-  public String cacheKey;
-  public Map<String, String> hpW;
-  public int hpX;
-  public int hpY;
+  public String mgR;
   public String path;
+  public Map<String, String> rmP;
+  public int rmQ;
+  public int rmR;
   public String title;
   
   public b()
@@ -28,9 +28,9 @@ public final class b
     super("onCanvasInsert", paramInt);
   }
   
-  public final JSONObject toJSONObject()
+  public final JSONObject aZh()
   {
-    AppMethodBeat.i(10911);
+    AppMethodBeat.i(121392);
     JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
@@ -38,29 +38,29 @@ public final class b
       {
         localJSONObject.put("title", this.title);
         localJSONObject.put("path", this.path);
-        if (this.hpW != null) {
+        if (this.rmP != null) {
           continue;
         }
         localObject = new HashMap();
         localJSONObject.put("query", new JSONObject((Map)localObject));
-        localJSONObject.put("cacheKey", this.cacheKey);
-        localJSONObject.put("width", g.pN(this.hpX));
-        localJSONObject.put("height", g.pN(this.hpY));
+        localJSONObject.put("cacheKey", this.mgR);
+        localJSONObject.put("width", i.DB(this.rmQ));
+        localJSONObject.put("height", i.DB(this.rmR));
       }
       catch (JSONException localJSONException)
       {
         Object localObject;
         continue;
       }
-      AppMethodBeat.o(10911);
+      AppMethodBeat.o(121392);
       return localJSONObject;
-      localObject = this.hpW;
+      localObject = this.rmP;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.b
  * JD-Core Version:    0.7.0.1
  */

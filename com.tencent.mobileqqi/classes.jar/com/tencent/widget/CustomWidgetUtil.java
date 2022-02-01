@@ -103,7 +103,7 @@ public class CustomWidgetUtil
         }
       }
     }
-    Object localObject = paramTextView.getTag(2131234180);
+    Object localObject = paramTextView.getTag(2131234179);
     if (((localObject == null) && (paramInt3 == 0)) || (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == paramInt3))) {}
     float f1;
     for (;;)
@@ -114,7 +114,7 @@ public class CustomWidgetUtil
           paramTextView.setVisibility(8);
           return;
           paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt3, 0, 0, 0);
-          paramTextView.setTag(2131234180, Integer.valueOf(paramInt3));
+          paramTextView.setTag(2131234179, Integer.valueOf(paramInt3));
         }
         else
         {

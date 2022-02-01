@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqcircle.transition.QCircleTransitionLayout android:orientation="vertical" android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout android:id="@id/mwt" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.pull2refresh.RecyclerViewCompat android:id="@id/nve" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.biz.subscribe.widget.StatusView android:id="@id/o27" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/nku" android:layout_width="30.0dip" android:layout_height="30.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" />
+        <RelativeLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lqn" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="39.0dip">
+            <ImageView android:id="@id/ln8" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/is_" android:scaleType="centerCrop" android:layout_alignParentLeft="true" />
+            <ImageView android:id="@id/dy1" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/e4_" android:scaleType="centerCrop" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <ViewStub android:layout_gravity="bottom" android:id="@id/oed" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView android:id="@id/nnq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout>
+</com.tencent.biz.qqcircle.transition.QCircleTransitionLayout>

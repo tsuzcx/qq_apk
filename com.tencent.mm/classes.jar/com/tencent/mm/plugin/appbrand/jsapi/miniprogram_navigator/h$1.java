@@ -1,44 +1,36 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-import com.tencent.luggage.sdk.d.b;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.s.j;
-import com.tencent.mm.vending.g.d.a;
+import com.tencent.mm.plugin.appbrand.g;
 
 final class h$1
-  implements d.a
+  implements c.c
 {
-  h$1(h paramh, c.c paramc, b paramb, j paramj) {}
+  h$1(h paramh, g paramg, int paramInt) {}
   
-  public final void aX(Object paramObject)
+  public final void onNavigateResult(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(101985);
-    if (this.hTl != null)
+    AppMethodBeat.i(147183);
+    if (paramBoolean)
     {
-      if (!(paramObject instanceof Exception)) {
-        break label60;
-      }
-      paramObject = ((Exception)paramObject).getMessage();
-    }
-    for (;;)
-    {
-      this.hTl.i(false, paramObject);
-      this.hTm.k(new h.1.1(this), 0L);
-      AppMethodBeat.o(101985);
+      paramString = "ok";
+      this.rzm.callback(this.elZ, this.sik.ZP(paramString));
+      AppMethodBeat.o(147183);
       return;
-      label60:
-      if (paramObject == null) {
-        paramObject = "internal error";
-      } else {
-        paramObject = paramObject.toString();
-      }
+    }
+    StringBuilder localStringBuilder = new StringBuilder("fail");
+    if (TextUtils.isEmpty(paramString)) {}
+    for (paramString = "";; paramString = " ".concat(String.valueOf(paramString)))
+    {
+      paramString = paramString;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.h.1
  * JD-Core Version:    0.7.0.1
  */

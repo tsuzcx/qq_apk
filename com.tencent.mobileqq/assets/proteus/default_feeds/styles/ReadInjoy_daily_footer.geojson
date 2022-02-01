@@ -27,7 +27,6 @@
                     "type": "match_parent"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setBackgroundColorString:":"#03081A"
                 }
             },
@@ -142,7 +141,6 @@
                     "type": "match_parent"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setBackgroundColorString:":"#03081A"
                 }
             }

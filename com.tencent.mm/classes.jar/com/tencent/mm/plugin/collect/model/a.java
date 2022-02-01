@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.collect.model;
 
 public final class a
 {
-  public int cpo;
   public String desc;
-  public String kMM;
-  public String kMN;
+  public int fee;
   public long timestamp;
+  public String wXX;
+  public String wXY;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.a
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class VideoStatusTipsBar$RefreshMultiStateRunnable
   {
     VideoStatusTipsBar localVideoStatusTipsBar = (VideoStatusTipsBar)this.a.get();
     if (localVideoStatusTipsBar != null) {
-      localVideoStatusTipsBar.c();
+      localVideoStatusTipsBar.f();
     }
   }
 }

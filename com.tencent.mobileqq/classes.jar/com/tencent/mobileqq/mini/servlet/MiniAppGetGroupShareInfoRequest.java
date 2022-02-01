@@ -25,16 +25,20 @@ public class MiniAppGetGroupShareInfoRequest
   
   public static MiniProgramShare.StGetGroupShareInfoRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniProgramShare.StGetGroupShareInfoRsp localStGetGroupShareInfoRsp = new MiniProgramShare.StGetGroupShareInfoRsp();
+    Object localObject = new MiniProgramShare.StGetGroupShareInfoRsp();
     try
     {
-      localStGetGroupShareInfoRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetGroupShareInfoRsp;
+      ((MiniProgramShare.StGetGroupShareInfoRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppGetGroupShareInfoRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("MiniAppGetGroupShareInfoRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -47,7 +51,7 @@ public class MiniAppGetGroupShareInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetGroupShareInfoRequest
  * JD-Core Version:    0.7.0.1
  */

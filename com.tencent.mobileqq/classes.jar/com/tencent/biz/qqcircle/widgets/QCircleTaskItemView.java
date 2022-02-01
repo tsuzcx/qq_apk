@@ -1,17 +1,19 @@
 package com.tencent.biz.qqcircle.widgets;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import androidx.annotation.NonNull;
+import com.tencent.biz.qcircleshadow.lib.variation.HostDataTransUtils;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import cooperation.qqcircle.report.QCircleLpReportDc05504;
+import cooperation.qqcircle.report.QCircleLpReportDc05504.DataBuilder;
 import qqcircle.TaskCenterReader.TaskRecord;
-import ufy;
 
 public class QCircleTaskItemView
-  extends BaseWidgetView<TaskCenterReader.TaskRecord>
+  extends QCircleBaseWidgetView<TaskCenterReader.TaskRecord>
 {
   TextView a;
   TextView b;
@@ -22,52 +24,54 @@ public class QCircleTaskItemView
     super(paramContext);
   }
   
-  public int a()
+  protected void a(TaskCenterReader.TaskRecord paramTaskRecord, int paramInt)
   {
-    return 2131560596;
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.a = ((TextView)findViewById(2131379032));
-    this.b = ((TextView)findViewById(2131379030));
-    this.c = ((TextView)findViewById(2131379029));
-  }
-  
-  protected void a(TaskCenterReader.TaskRecord paramTaskRecord)
-  {
-    Object localObject;
     if (paramTaskRecord != null)
     {
       this.a.setText(paramTaskRecord.title.get());
-      this.b.setText(String.format("%s（%d/%d）", new Object[] { paramTaskRecord.desc.get(), Integer.valueOf(paramTaskRecord.haveDone.get()), Integer.valueOf(paramTaskRecord.maxCnt.get()) }));
+      this.b.setText(paramTaskRecord.taskDesc.get());
+      this.c.setText(paramTaskRecord.bottonDesc.get());
       TextView localTextView = this.c;
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramTaskRecord.haveDone.get() >= paramTaskRecord.maxCnt.get()) {
-        break label171;
+      paramInt = paramTaskRecord.bottonJumpFlag.get();
+      boolean bool = false;
+      if (paramInt > 0) {
+        paramInt = 2130845321;
+      } else {
+        paramInt = 0;
       }
-      localObject = "去";
-      localTextView.setText((String)localObject + "完成");
-      localObject = this.c;
-      if (paramTaskRecord.haveDone.get() >= paramTaskRecord.maxCnt.get()) {
-        break label177;
+      localTextView.setBackgroundResource(paramInt);
+      localTextView = this.c;
+      if (paramTaskRecord.bottonJumpFlag.get() > 0) {
+        bool = true;
+      }
+      localTextView.setEnabled(bool);
+      this.c.setOnClickListener(new QCircleTaskItemView.1(this, paramTaskRecord));
+      if ((!TextUtils.isEmpty(paramTaskRecord.jumpUrl.get())) && (paramTaskRecord.jumpUrl.get().startsWith("mqqapi://qcircle/openRewardAd"))) {
+        QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder().setToUin(HostDataTransUtils.getAccount()).setActionType(70).setSubActionType(1).setThrActionType(6));
       }
     }
-    label171:
-    label177:
-    for (int i = 2130843547;; i = 0)
-    {
-      ((TextView)localObject).setBackgroundResource(i);
-      this.c.setOnClickListener(new ufy(this, paramTaskRecord));
-      return;
-      localObject = "已";
-      break;
-    }
+  }
+  
+  public int getLayoutId()
+  {
+    return 2131626976;
+  }
+  
+  protected String getLogTag()
+  {
+    return "QCircleTaskItemView";
+  }
+  
+  protected void onInitView(Context paramContext, View paramView)
+  {
+    this.a = ((TextView)findViewById(2131448799));
+    this.b = ((TextView)findViewById(2131448797));
+    this.c = ((TextView)findViewById(2131448796));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleTaskItemView
  * JD-Core Version:    0.7.0.1
  */

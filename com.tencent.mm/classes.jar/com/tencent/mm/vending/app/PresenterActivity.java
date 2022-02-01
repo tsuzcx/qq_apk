@@ -3,36 +3,37 @@ package com.tencent.mm.vending.app;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.vending.e.b;
 
 public abstract class PresenterActivity
-  extends Activity
+  extends HellActivity
   implements b
 {
-  private c ANT = new c();
+  private c mGc = new c();
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.ANT.A(getIntent(), this);
+    this.mGc.z(getIntent(), this);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    this.ANT.onDestroy();
+    this.mGc.onDestroy();
     super.onDestroy();
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    this.ANT.a(3);
+    this.mGc.aFE(3);
     super.onPause();
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
-    this.ANT.a(2);
+    this.mGc.aFE(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

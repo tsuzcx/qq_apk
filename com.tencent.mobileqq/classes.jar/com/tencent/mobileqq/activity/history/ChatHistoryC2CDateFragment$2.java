@@ -18,29 +18,27 @@ class ChatHistoryC2CDateFragment$2
     long l1 = SystemClock.elapsedRealtime();
     int n = CalendarDay.getDaysInMonth(this.a, this.b);
     ArrayList localArrayList = new ArrayList();
-    int i = 1;
-    int k = 0;
-    int j = 0;
-    while (i <= n)
+    int j = 1;
+    int m = 0;
+    int k;
+    for (int i = 0; j <= n; i = k)
     {
-      MessageRecord localMessageRecord = ChatHistoryC2CDateFragment.a(this.this$0, this.a, this.b, i);
-      int m = k + 1;
-      k = j;
+      MessageRecord localMessageRecord = ChatHistoryC2CDateFragment.a(this.this$0, this.a, this.b, j);
+      m += 1;
+      k = i;
       if (localMessageRecord != null)
       {
-        k = j + 1;
+        k = i + 1;
         localArrayList.add(localMessageRecord);
       }
-      i += 1;
-      j = k;
-      k = m;
+      j += 1;
     }
     if (localArrayList.size() > 0) {
       ThreadManager.getUIHandler().post(new ChatHistoryC2CDateFragment.2.1(this, localArrayList));
     }
     long l2 = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
-      QLog.i(ChatHistoryC2CDateFragment.b(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Long.valueOf(l2 - l1) }));
+      QLog.i(ChatHistoryC2CDateFragment.b(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(l2 - l1) }));
     }
   }
 }

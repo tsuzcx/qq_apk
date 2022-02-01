@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
-import atnl;
-import awsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.profile.musicbox.ProfileMusicBoxController;
 
-public class ListenTogetherIPCModuleMainServer$2
+class ListenTogetherIPCModuleMainServer$2
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$2(atnl paramatnl) {}
+  ListenTogetherIPCModuleMainServer$2(ListenTogetherIPCModuleMainServer paramListenTogetherIPCModuleMainServer) {}
   
   public void run()
   {
-    awsw localawsw = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if ((localawsw != null) && (localawsw.a())) {
-      localawsw.d(false);
+    ProfileMusicBoxController localProfileMusicBoxController = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).l();
+    if ((localProfileMusicBoxController != null) && (localProfileMusicBoxController.g())) {
+      localProfileMusicBoxController.d(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.2
  * JD-Core Version:    0.7.0.1
  */

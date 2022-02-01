@@ -2,35 +2,36 @@ package com.tencent.mobileqq.teamwork.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import bahz;
-import baic;
-import beho;
-import beir;
-import bejk;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
+import com.tencent.mobileqq.webview.swift.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import zfy;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
 
 public class TeamWorkDocsListFragment
   extends WebViewFragment
 {
-  public void c()
+  public void showActionSheet()
   {
-    beir localbeir = (beir)this.jdField_a_of_type_Beho.a(4);
-    if (localbeir != null)
+    SwiftBrowserShareMenuHandler localSwiftBrowserShareMenuHandler = (SwiftBrowserShareMenuHandler)this.mComponentsProvider.a(4);
+    if (localSwiftBrowserShareMenuHandler != null)
     {
-      zfy localzfy = b();
-      if ((localzfy != null) && (baic.a(localzfy.a())))
+      Share localShare = (Share)getShare();
+      if ((localShare != null) && (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsUrl(localShare.getShareUrl())))
       {
-        a().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
-        localbeir.a = new bahz(a());
+        getHostActivity().getIntent().putExtra("big_brother_source_key", "biz_src_xl_docs");
+        localSwiftBrowserShareMenuHandler.h = new TeamWorkShareActionSheetBuilder(getHostActivity());
       }
-      localbeir.a(localzfy, this.jdField_a_of_type_Bejk.a);
+      localSwiftBrowserShareMenuHandler.a(localShare, getUIStyle().c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkDocsListFragment
  * JD-Core Version:    0.7.0.1
  */

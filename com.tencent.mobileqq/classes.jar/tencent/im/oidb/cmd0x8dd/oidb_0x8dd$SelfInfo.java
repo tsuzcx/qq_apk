@@ -33,14 +33,15 @@ public final class oidb_0x8dd$SelfInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 72, 80, 90, 98, 104, 112, 122, 128, 136 }, new String[] { "uint64_tinyid", "uint32_gender", "uint32_age", "bytes_birthday", "bytes_nick", "uint32_vote_num", "uint32_vote_increment", "uint32_charm", "uint32_charm_level", "uint32_god_flag", "str_third_line_info", "str_third_line_icon", "uint32_heart_num", "uint32_real_video_flag", "msg_cur_login_score", "uint32_finish_task_num", "uint32_all_task_num" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0) }, SelfInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 72, 80, 90, 98, 104, 112, 122, 128, 136 }, new String[] { "uint64_tinyid", "uint32_gender", "uint32_age", "bytes_birthday", "bytes_nick", "uint32_vote_num", "uint32_vote_increment", "uint32_charm", "uint32_charm_level", "uint32_god_flag", "str_third_line_info", "str_third_line_icon", "uint32_heart_num", "uint32_real_video_flag", "msg_cur_login_score", "uint32_finish_task_num", "uint32_all_task_num" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger, localInteger, "", "", localInteger, localInteger, null, localInteger, localInteger }, SelfInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo
  * JD-Core Version:    0.7.0.1
  */

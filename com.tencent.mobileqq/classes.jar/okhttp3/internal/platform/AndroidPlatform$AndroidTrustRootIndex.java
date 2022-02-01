@@ -22,29 +22,27 @@ final class AndroidPlatform$AndroidTrustRootIndex
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof AndroidTrustRootIndex)) {
-        return false;
-      }
-      paramObject = (AndroidTrustRootIndex)paramObject;
-    } while ((this.trustManager.equals(paramObject.trustManager)) && (this.findByIssuerAndSignatureMethod.equals(paramObject.findByIssuerAndSignatureMethod)));
-    return false;
+    }
+    if (!(paramObject instanceof AndroidTrustRootIndex)) {
+      return false;
+    }
+    paramObject = (AndroidTrustRootIndex)paramObject;
+    return (this.trustManager.equals(paramObject.trustManager)) && (this.findByIssuerAndSignatureMethod.equals(paramObject.findByIssuerAndSignatureMethod));
   }
   
   public X509Certificate findByIssuerAndSignature(X509Certificate paramX509Certificate)
   {
+    Object localObject = null;
     try
     {
-      paramX509Certificate = (TrustAnchor)this.findByIssuerAndSignatureMethod.invoke(this.trustManager, new Object[] { paramX509Certificate });
-      if (paramX509Certificate != null)
-      {
-        paramX509Certificate = paramX509Certificate.getTrustedCert();
-        return paramX509Certificate;
+      TrustAnchor localTrustAnchor = (TrustAnchor)this.findByIssuerAndSignatureMethod.invoke(this.trustManager, new Object[] { paramX509Certificate });
+      paramX509Certificate = localObject;
+      if (localTrustAnchor != null) {
+        paramX509Certificate = localTrustAnchor.getTrustedCert();
       }
-      return null;
+      return paramX509Certificate;
     }
     catch (IllegalAccessException paramX509Certificate)
     {
@@ -61,7 +59,7 @@ final class AndroidPlatform$AndroidTrustRootIndex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.platform.AndroidPlatform.AndroidTrustRootIndex
  * JD-Core Version:    0.7.0.1
  */

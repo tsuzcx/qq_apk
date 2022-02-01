@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView android:layout_gravity="center" android:id="@id/mkg" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/nrh" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/cmx" />
+    <ImageView android:id="@id/nrj" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/dj2" android:layout_toRightOf="@id/nrh" />
+    <ImageView android:id="@id/nrl" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/dk3" android:layout_alignParentRight="true" />
+</RelativeLayout>

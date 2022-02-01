@@ -19,28 +19,28 @@ public final class a
   private static java.security.cert.Certificate a(CertificateFactory paramCertificateFactory, android.content.pm.Signature paramSignature)
   {
     // Byte code:
-    //   0: ldc 11
-    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 19	java/io/ByteArrayInputStream
+    //   0: ldc 9
+    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 17	java/io/ByteArrayInputStream
     //   8: dup
     //   9: aload_1
-    //   10: invokevirtual 25	android/content/pm/Signature:toByteArray	()[B
-    //   13: invokespecial 29	java/io/ByteArrayInputStream:<init>	([B)V
+    //   10: invokevirtual 23	android/content/pm/Signature:toByteArray	()[B
+    //   13: invokespecial 27	java/io/ByteArrayInputStream:<init>	([B)V
     //   16: astore_1
     //   17: aload_0
     //   18: aload_1
-    //   19: invokevirtual 35	java/security/cert/CertificateFactory:generateCertificate	(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
-    //   22: checkcast 37	java/security/cert/X509Certificate
+    //   19: invokevirtual 33	java/security/cert/CertificateFactory:generateCertificate	(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
+    //   22: checkcast 35	java/security/cert/X509Certificate
     //   25: astore_0
     //   26: aload_1
-    //   27: invokevirtual 41	java/io/ByteArrayInputStream:close	()V
-    //   30: ldc 11
-    //   32: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: invokevirtual 39	java/io/ByteArrayInputStream:close	()V
+    //   30: ldc 9
+    //   32: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: aload_0
     //   36: areturn
     //   37: astore_0
     //   38: aload_1
-    //   39: invokevirtual 41	java/io/ByteArrayInputStream:close	()V
+    //   39: invokevirtual 39	java/io/ByteArrayInputStream:close	()V
     //   42: aconst_null
     //   43: astore_0
     //   44: goto -14 -> 30
@@ -48,33 +48,22 @@ public final class a
     //   48: aconst_null
     //   49: astore_0
     //   50: goto -20 -> 30
-    //   53: astore_0
-    //   54: aload_1
-    //   55: invokevirtual 41	java/io/ByteArrayInputStream:close	()V
-    //   58: ldc 11
-    //   60: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   63: aload_0
-    //   64: athrow
-    //   65: astore_1
-    //   66: goto -36 -> 30
-    //   69: astore_1
-    //   70: goto -12 -> 58
+    //   53: astore_1
+    //   54: goto -24 -> 30
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	73	0	paramCertificateFactory	CertificateFactory
-    //   0	73	1	paramSignature	android.content.pm.Signature
+    //   0	57	0	paramCertificateFactory	CertificateFactory
+    //   0	57	1	paramSignature	android.content.pm.Signature
     // Exception table:
     //   from	to	target	type
-    //   17	26	37	java/lang/Throwable
+    //   17	26	37	finally
     //   38	42	47	java/io/IOException
-    //   17	26	53	finally
-    //   26	30	65	java/io/IOException
-    //   54	58	69	java/io/IOException
+    //   26	30	53	java/io/IOException
   }
   
-  public static List<byte[]> ca(Context paramContext, String paramString)
+  public static List<byte[]> dm(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(114589);
+    AppMethodBeat.i(138452);
     localArrayList = new ArrayList();
     try
     {
@@ -91,14 +80,14 @@ public final class a
             if (paramString != null) {}
             try
             {
-              localArrayList.add(e.cq(paramString.getEncoded()));
+              localArrayList.add(e.md5(paramString.getEncoded()));
               i += 1;
             }
             catch (CertificateEncodingException paramString)
             {
               for (;;)
               {
-                h.cV("extractPkgCertMd5s(), CertificateEncodingException: ".concat(String.valueOf(paramString)));
+                h.he("extractPkgCertMd5s(), CertificateEncodingException: ".concat(String.valueOf(paramString)));
               }
             }
           }
@@ -106,40 +95,40 @@ public final class a
       }
       return localArrayList;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      h.cV("extractPkgCertMd5s(), Exception: ".concat(String.valueOf(paramContext)));
-      AppMethodBeat.o(114589);
+      h.he("extractPkgCertMd5s(), Exception: ".concat(String.valueOf(paramContext)));
+      AppMethodBeat.o(138452);
     }
   }
   
-  public static com.tencent.e.a.a cb(Context paramContext, String paramString)
+  public static com.tencent.e.a.a dn(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(114590);
+    AppMethodBeat.i(138453);
     com.tencent.e.a.a locala = new com.tencent.e.a.a();
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64);
-      locala.bYA = paramString;
+      locala.pkgName = paramString;
       locala.versionName = paramContext.versionName;
       locala.versionCode = paramContext.versionCode;
       paramContext = (X509Certificate)a(CertificateFactory.getInstance("X.509"), paramContext.signatures[0]);
       if (paramContext != null) {
-        locala.BiL = e.bytesToHexString(e.cq(paramContext.getEncoded()));
+        locala.ahsf = e.aC(e.md5(paramContext.getEncoded()));
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
       label81:
       break label81;
     }
-    AppMethodBeat.o(114590);
+    AppMethodBeat.o(138453);
     return locala;
   }
   
-  public static List<com.tencent.e.a.a> ja(Context paramContext)
+  public static List<com.tencent.e.a.a> ob(Context paramContext)
   {
-    AppMethodBeat.i(114588);
+    AppMethodBeat.i(138451);
     ArrayList localArrayList = new ArrayList();
     for (;;)
     {
@@ -156,35 +145,38 @@ public final class a
           continue;
         }
         if ((localApplicationInfo.flags & 0x1) == 0) {
-          break label226;
+          break label231;
         }
         i = 1;
-        locala = cb(paramContext, localApplicationInfo.packageName);
-        locala.BiK = localPackageManager.getApplicationLabel(localApplicationInfo).toString();
-        if (locala.BiK != null) {
-          break label236;
+        locala = dn(paramContext, localApplicationInfo.packageName);
+        if (locala == null) {
+          continue;
         }
-        locala.BiK = "";
+        locala.ahse = localPackageManager.getApplicationLabel(localApplicationInfo).toString();
+        if (locala.ahse != null) {
+          break label241;
+        }
+        locala.ahse = "";
       }
-      catch (Throwable paramContext)
+      finally
       {
         ApplicationInfo localApplicationInfo;
         com.tencent.e.a.a locala;
-        h.cU("getAllAppInfos(), exception: ".concat(String.valueOf(paramContext)));
-        AppMethodBeat.o(114588);
+        h.hd("getAllAppInfos(), exception: ".concat(String.valueOf(paramContext)));
+        AppMethodBeat.o(138451);
         return localArrayList;
       }
-      locala.edl = i;
+      locala.appType = i;
       locala.fileSize = new File(localApplicationInfo.sourceDir).length();
-      locala.BiM = localApplicationInfo.sourceDir;
+      locala.ahsg = localApplicationInfo.sourceDir;
       localArrayList.add(locala);
       new StringBuilder("add app: ").append(localApplicationInfo.packageName);
-      h.dUV();
+      h.jXD();
       continue;
-      label226:
+      label231:
       int i = 0;
       continue;
-      label236:
+      label241:
       while (i == 0)
       {
         i = 0;
@@ -196,7 +188,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.f.a
  * JD-Core Version:    0.7.0.1
  */

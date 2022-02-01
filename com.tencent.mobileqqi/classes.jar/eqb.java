@@ -1,13 +1,21 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class eqb
-  extends TroopMemberListActivity.ViewHolder
+  implements View.OnTouchListener
 {
-  public CheckBox a;
+  public eqb(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  private eqb(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.a.g();
+    }
+    return true;
+  }
 }
 
 

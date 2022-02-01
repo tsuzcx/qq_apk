@@ -1,15 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract class u<CONTEXT extends c>
-  extends m
+public final class u
+  extends s
 {
-  public abstract String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject);
+  private static final int CTRL_INDEX = -2;
+  private static final String NAME = "onAppUnhang";
+  private static u rwI;
+  
+  static
+  {
+    AppMethodBeat.i(325653);
+    rwI = new u();
+    AppMethodBeat.o(325653);
+  }
+  
+  public static void cpR() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u
  * JD-Core Version:    0.7.0.1
  */

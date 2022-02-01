@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class RecTroopBusinessItem
-  extends awge
+  extends Entity
 {
   public String btnText;
   public String des;
   public long endTime;
   public String iconUrl;
-  @awhs
+  @unique
   public String id;
   public String jumpParam;
   public int jumpType;

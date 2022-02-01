@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahby;
-import bhqh;
+import com.tencent.securitysdk.utils.MD5;
 
 public class ZhituRequest
 {
   public String chat;
   public String os;
-  public ahby report;
+  public ZhituReportRequest report;
   public int styles;
   public String text;
   public String uin;
@@ -15,7 +14,28 @@ public class ZhituRequest
   
   public String toString()
   {
-    return "ZhituRequest{chat='" + this.chat + '\'' + ", styles=" + this.styles + ", os='" + this.os + '\'' + ", uin='" + this.uin + '\'' + ", text='" + bhqh.a(this.text) + '\'' + ", report=" + this.report + ", version='" + this.version + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ZhituRequest{chat='");
+    localStringBuilder.append(this.chat);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", styles=");
+    localStringBuilder.append(this.styles);
+    localStringBuilder.append(", os='");
+    localStringBuilder.append(this.os);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uin='");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", text='");
+    localStringBuilder.append(MD5.b(this.text));
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", report=");
+    localStringBuilder.append(this.report);
+    localStringBuilder.append(", version='");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

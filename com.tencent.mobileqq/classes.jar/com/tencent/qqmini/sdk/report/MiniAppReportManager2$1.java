@@ -1,28 +1,49 @@
 package com.tencent.qqmini.sdk.report;
 
-import android.os.Bundle;
-import bgtu;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class MiniAppReportManager2$1
+final class MiniAppReportManager2$1
   implements Runnable
 {
-  public MiniAppReportManager2$1(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3) {}
-  
   public void run()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("app_config", this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-    localBundle.putString("action_type", "page_view");
-    localBundle.putString("sub_action", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("path", this.b);
-    localBundle.putString("reserves", this.c);
-    bgtu.a().a("launch_report2", localBundle, null);
+    int i = 0;
+    try
+    {
+      MiniAppReportManager2.access$002(false);
+      long l = System.currentTimeMillis();
+      Iterator localIterator = MiniAppReportManager2.launchStateMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (Map.Entry)localIterator.next();
+        String str = (String)((Map.Entry)localObject).getKey();
+        localObject = (MiniAppReportManager2.AppLaunchState)((Map.Entry)localObject).getValue();
+        if ((((MiniAppReportManager2.AppLaunchState)localObject).launchResult == 0) && (l - ((MiniAppReportManager2.AppLaunchState)localObject).activeTime > MiniAppReportManager2.LAUNCH_TIME_OUT)) {
+          MiniAppReportManager2.access$100((MiniAppReportManager2.AppLaunchState)localObject);
+        }
+        if (((MiniAppReportManager2.AppLaunchState)localObject).launchResult == 0) {
+          i = 1;
+        }
+      }
+      if (i != 0)
+      {
+        MiniAppReportManager2.access$200();
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("MiniAppReportManager2", "", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniAppReportManager2.1
  * JD-Core Version:    0.7.0.1
  */

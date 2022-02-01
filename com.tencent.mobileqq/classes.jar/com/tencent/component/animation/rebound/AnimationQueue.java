@@ -20,43 +20,44 @@ public class AnimationQueue
   {
     Double localDouble = (Double)this.mPendingQueue.poll();
     int i;
-    int j;
     if (localDouble != null)
     {
       this.mAnimationQueue.offer(localDouble);
       i = 0;
-      this.mTempValues.addAll(this.mAnimationQueue);
-      j = this.mTempValues.size() - 1;
-      label56:
-      if (j > -1) {
-        break label149;
-      }
-      this.mTempValues.clear();
     }
+    else
+    {
+      i = Math.max(this.mCallbacks.size() - this.mAnimationQueue.size(), 0);
+    }
+    this.mTempValues.addAll(this.mAnimationQueue);
+    int j = this.mTempValues.size() - 1;
     for (;;)
     {
-      if (this.mAnimationQueue.size() + i < this.mCallbacks.size())
+      if (j <= -1)
       {
-        if ((!this.mAnimationQueue.isEmpty()) || (!this.mPendingQueue.isEmpty())) {
-          break label236;
+        this.mTempValues.clear();
+        for (;;)
+        {
+          if (this.mAnimationQueue.size() + i < this.mCallbacks.size())
+          {
+            if ((this.mAnimationQueue.isEmpty()) && (this.mPendingQueue.isEmpty()))
+            {
+              this.mRunning = false;
+              return;
+            }
+            this.mChoreographer.postFrameCallback(this.mChoreographerCallback);
+            return;
+          }
+          this.mAnimationQueue.poll();
         }
-        this.mRunning = false;
-        return;
-        i = Math.max(this.mCallbacks.size() - this.mAnimationQueue.size(), 0);
-        break;
-        label149:
-        localDouble = (Double)this.mTempValues.get(j);
-        int k = this.mTempValues.size() - 1 - j + i;
-        if (this.mCallbacks.size() > k) {
-          ((AnimationQueue.Callback)this.mCallbacks.get(k)).onFrame(localDouble);
-        }
-        j -= 1;
-        break label56;
       }
-      this.mAnimationQueue.poll();
+      localDouble = (Double)this.mTempValues.get(j);
+      int k = this.mTempValues.size() - 1 - j + i;
+      if (this.mCallbacks.size() > k) {
+        ((AnimationQueue.Callback)this.mCallbacks.get(k)).onFrame(localDouble);
+      }
+      j -= 1;
     }
-    label236:
-    this.mChoreographer.postFrameCallback(this.mChoreographerCallback);
   }
   
   private void runIfIdle()
@@ -102,7 +103,7 @@ public class AnimationQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.animation.rebound.AnimationQueue
  * JD-Core Version:    0.7.0.1
  */

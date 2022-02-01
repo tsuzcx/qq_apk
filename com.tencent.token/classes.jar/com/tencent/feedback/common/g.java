@@ -39,7 +39,7 @@ public final class g
         paramContext = str.substring(0, 64);
       }
     }
-    return paramContext;
+    return String.valueOf(paramContext);
   }
   
   private static NetworkInfo d(Context paramContext)

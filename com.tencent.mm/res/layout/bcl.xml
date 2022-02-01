@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/ahg" android:background="@drawable/azr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">de <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.base.CustomScrollView android:id="@id/bsc" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ahl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <ImageView android:id="@id/c4o" android:visibility="gone" style="@style/i7" />
+                <ViewStub android:id="@id/aho" android:layout="@layout/bcq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/ahh" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/df" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
+                <ImageView android:id="@id/gsm" android:visibility="gone" android:layout_marginLeft="@dimen/cd" style="@style/i7" />
+                <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/ahk" android:paddingTop="@dimen/df" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/cv" android:visibility="gone" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
+                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ahe" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ahd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </com.tencent.mm.ui.base.CustomScrollView>
+        <View android:layout_gravity="bottom" android:id="@id/eqv" android:background="@drawable/a89" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/df" />
+    </FrameLayout>
+    <ImageView android:id="@id/gso" android:visibility="gone" android:layout_marginLeft="@dimen/cd" style="@style/i7" />
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ah_" android:background="@drawable/a89" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/aq6" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="@dimen/df" />
+        <TextView android:textSize="@dimen/w2" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/aq7" android:background="@drawable/b4f" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:text="@string/atw" />
+        <TextView android:textSize="@dimen/vw" android:textColor="@color/Link" android:gravity="center" android:id="@id/aq8" android:background="@drawable/agh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:text="@string/atw" />
+    </LinearLayout>
+</LinearLayout>

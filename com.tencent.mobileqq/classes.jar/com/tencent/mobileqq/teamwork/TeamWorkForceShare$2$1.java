@@ -1,34 +1,24 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.graphics.Bitmap;
-import bahk;
-import bfah;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class TeamWorkForceShare$2$1
+class TeamWorkForceShare$2$1
   implements Runnable
 {
   TeamWorkForceShare$2$1(TeamWorkForceShare.2 param2, String paramString, Bitmap paramBitmap) {}
   
   public void run()
   {
-    Object localObject = new bahk(this);
-    WXShareHelper.a().a((bfah)localObject);
-    TeamWorkForceShare.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkForceShare$2.this$0, String.valueOf(System.currentTimeMillis()));
-    localObject = WXShareHelper.a();
-    String str = this.jdField_a_of_type_JavaLangString;
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkForceShare$2.a) {}
-    for (int i = 0;; i = 1)
-    {
-      ((WXShareHelper)localObject).a(str, localBitmap, 280, i, TeamWorkForceShare.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkForceShare$2.this$0));
-      return;
-    }
+    TeamWorkForceShare.2.1.1 local1 = new TeamWorkForceShare.2.1.1(this);
+    WXShareHelper.a().a(local1);
+    TeamWorkForceShare.a(this.c.this$0, String.valueOf(System.currentTimeMillis()));
+    WXShareHelper.a().a(this.a, this.b, 280, this.c.a ^ true, TeamWorkForceShare.e(this.c.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.2.1
  * JD-Core Version:    0.7.0.1
  */

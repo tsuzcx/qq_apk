@@ -41,25 +41,26 @@ final class MediaPeriodHolder
     this.info = paramMediaPeriodInfo;
     this.sampleStreams = new SampleStream[paramArrayOfRendererCapabilities.length];
     this.mayRetainStreamFlags = new boolean[paramArrayOfRendererCapabilities.length];
-    paramArrayOfRendererCapabilities = paramMediaSource.createPeriod(paramMediaPeriodInfo.id, paramAllocator);
+    paramTrackSelector = paramMediaSource.createPeriod(paramMediaPeriodInfo.id, paramAllocator);
+    paramArrayOfRendererCapabilities = paramTrackSelector;
     if (paramMediaPeriodInfo.endPositionUs != -9223372036854775808L)
     {
-      paramArrayOfRendererCapabilities = new ClippingMediaPeriod(paramArrayOfRendererCapabilities, true);
+      paramArrayOfRendererCapabilities = new ClippingMediaPeriod(paramTrackSelector, true);
       paramArrayOfRendererCapabilities.setClipping(0L, paramMediaPeriodInfo.endPositionUs);
     }
-    for (;;)
-    {
-      this.mediaPeriod = paramArrayOfRendererCapabilities;
-      return;
-    }
+    this.mediaPeriod = paramArrayOfRendererCapabilities;
   }
   
   private void associateNoSampleRenderersWithEmptySampleStream(SampleStream[] paramArrayOfSampleStream)
   {
     int i = 0;
-    while (i < this.rendererCapabilities.length)
+    for (;;)
     {
-      if ((this.rendererCapabilities[i].getTrackType() == 5) && (this.trackSelectorResult.renderersEnabled[i] != 0)) {
+      RendererCapabilities[] arrayOfRendererCapabilities = this.rendererCapabilities;
+      if (i >= arrayOfRendererCapabilities.length) {
+        break;
+      }
+      if ((arrayOfRendererCapabilities[i].getTrackType() == 5) && (this.trackSelectorResult.renderersEnabled[i] != 0)) {
         paramArrayOfSampleStream[i] = new EmptySampleStream();
       }
       i += 1;
@@ -83,9 +84,13 @@ final class MediaPeriodHolder
   private void disassociateNoSampleRenderersWithEmptySampleStream(SampleStream[] paramArrayOfSampleStream)
   {
     int i = 0;
-    while (i < this.rendererCapabilities.length)
+    for (;;)
     {
-      if (this.rendererCapabilities[i].getTrackType() == 5) {
+      RendererCapabilities[] arrayOfRendererCapabilities = this.rendererCapabilities;
+      if (i >= arrayOfRendererCapabilities.length) {
+        break;
+      }
+      if (arrayOfRendererCapabilities[i].getTrackType() == 5) {
         paramArrayOfSampleStream[i] = null;
       }
       i += 1;
@@ -108,12 +113,14 @@ final class MediaPeriodHolder
   
   private void updatePeriodTrackSelectorResult(TrackSelectorResult paramTrackSelectorResult)
   {
-    if (this.periodTrackSelectorResult != null) {
-      disableTrackSelectionsInResult(this.periodTrackSelectorResult);
+    TrackSelectorResult localTrackSelectorResult = this.periodTrackSelectorResult;
+    if (localTrackSelectorResult != null) {
+      disableTrackSelectionsInResult(localTrackSelectorResult);
     }
     this.periodTrackSelectorResult = paramTrackSelectorResult;
-    if (this.periodTrackSelectorResult != null) {
-      enableTrackSelectionsInResult(this.periodTrackSelectorResult);
+    paramTrackSelectorResult = this.periodTrackSelectorResult;
+    if (paramTrackSelectorResult != null) {
+      enableTrackSelectionsInResult(paramTrackSelectorResult);
     }
   }
   
@@ -126,16 +133,19 @@ final class MediaPeriodHolder
   {
     TrackSelectionArray localTrackSelectionArray = this.trackSelectorResult.selections;
     int i = 0;
-    if (i < localTrackSelectionArray.length)
+    for (;;)
     {
-      boolean[] arrayOfBoolean = this.mayRetainStreamFlags;
-      if ((!paramBoolean) && (this.trackSelectorResult.isEquivalent(this.periodTrackSelectorResult, i))) {}
-      for (int j = 1;; j = 0)
-      {
-        arrayOfBoolean[i] = j;
-        i += 1;
+      int j = localTrackSelectionArray.length;
+      int k = 1;
+      if (i >= j) {
         break;
       }
+      boolean[] arrayOfBoolean = this.mayRetainStreamFlags;
+      if ((paramBoolean) || (!this.trackSelectorResult.isEquivalent(this.periodTrackSelectorResult, i))) {
+        k = 0;
+      }
+      arrayOfBoolean[i] = k;
+      i += 1;
     }
     disassociateNoSampleRenderersWithEmptySampleStream(this.sampleStreams);
     updatePeriodTrackSelectorResult(this.trackSelectorResult);
@@ -143,24 +153,29 @@ final class MediaPeriodHolder
     associateNoSampleRenderersWithEmptySampleStream(this.sampleStreams);
     this.hasEnabledTracks = false;
     i = 0;
-    while (i < this.sampleStreams.length) {
-      if (this.sampleStreams[i] != null)
+    for (;;)
+    {
+      paramArrayOfBoolean = this.sampleStreams;
+      if (i >= paramArrayOfBoolean.length) {
+        break;
+      }
+      if (paramArrayOfBoolean[i] != null)
       {
         Assertions.checkState(this.trackSelectorResult.renderersEnabled[i]);
         if (this.rendererCapabilities[i].getTrackType() != 5) {
           this.hasEnabledTracks = true;
         }
-        i += 1;
       }
       else
       {
-        if (localTrackSelectionArray.get(i) == null) {}
-        for (paramBoolean = true;; paramBoolean = false)
-        {
-          Assertions.checkState(paramBoolean);
-          break;
+        if (localTrackSelectionArray.get(i) == null) {
+          paramBoolean = true;
+        } else {
+          paramBoolean = false;
         }
+        Assertions.checkState(paramBoolean);
       }
+      i += 1;
     }
     return paramLong;
   }
@@ -173,22 +188,19 @@ final class MediaPeriodHolder
   
   public long getBufferedPositionUs(boolean paramBoolean)
   {
-    long l1;
     if (!this.prepared) {
-      l1 = this.info.startPositionUs;
+      return this.info.startPositionUs;
     }
-    do
+    long l2 = this.mediaPeriod.getBufferedPositionUs();
+    long l1 = l2;
+    if (l2 == -9223372036854775808L)
     {
-      long l2;
-      do
-      {
-        return l1;
-        l2 = this.mediaPeriod.getBufferedPositionUs();
-        l1 = l2;
-      } while (l2 != -9223372036854775808L);
       l1 = l2;
-    } while (!paramBoolean);
-    return this.info.durationUs;
+      if (paramBoolean) {
+        l1 = this.info.durationUs;
+      }
+    }
+    return l1;
   }
   
   public long getDurationUs()
@@ -252,9 +264,10 @@ final class MediaPeriodHolder
   
   public boolean selectTracks(float paramFloat)
   {
-    int i = 0;
     Object localObject1 = this.trackSelector.selectTracks(this.rendererCapabilities, this.mediaPeriod.getTrackGroups());
-    if (((TrackSelectorResult)localObject1).isEquivalent(this.periodTrackSelectorResult)) {
+    boolean bool = ((TrackSelectorResult)localObject1).isEquivalent(this.periodTrackSelectorResult);
+    int i = 0;
+    if (bool) {
       return false;
     }
     this.trackSelectorResult = ((TrackSelectorResult)localObject1);
@@ -278,12 +291,12 @@ final class MediaPeriodHolder
   
   public long toRendererTime(long paramLong)
   {
-    return getRendererOffset() + paramLong;
+    return paramLong + getRendererOffset();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.MediaPeriodHolder
  * JD-Core Version:    0.7.0.1
  */

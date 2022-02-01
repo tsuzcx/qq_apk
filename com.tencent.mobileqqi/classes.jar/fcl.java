@@ -1,24 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import com.tencent.mobileqq.app.FriendListHandler;
 
-public final class fcl
-  implements Parcelable.Creator
+public class fcl
 {
-  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
-  {
-    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
-    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
-    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
-    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
-    localQQHeadDetails.b = paramParcel.readString();
-    return localQQHeadDetails;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public long b = 0L;
+  public long c = 0L;
+  public long d = 0L;
+  public long e;
+  private long f;
   
-  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  public fcl(FriendListHandler paramFriendListHandler)
   {
-    return new FriendListHandler.QQHeadDetails[paramInt];
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

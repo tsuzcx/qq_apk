@@ -27,16 +27,37 @@ final class RingBuffer<T>
   public RingBuffer(@NotNull Object[] paramArrayOfObject, int paramInt)
   {
     this.buffer = paramArrayOfObject;
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("ring buffer filled size should not be negative but it is " + paramInt).toString()));
+    int j = 1;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt <= this.buffer.length) {}
-    for (i = j; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("ring buffer filled size: " + paramInt + " cannot be larger than the buffer size: " + this.buffer.length).toString()));
+    if (i != 0)
+    {
+      if (paramInt <= this.buffer.length) {
+        i = j;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        this.capacity = this.buffer.length;
+        this.size = paramInt;
+        return;
+      }
+      paramArrayOfObject = new StringBuilder();
+      paramArrayOfObject.append("ring buffer filled size: ");
+      paramArrayOfObject.append(paramInt);
+      paramArrayOfObject.append(" cannot be larger than the buffer size: ");
+      paramArrayOfObject.append(this.buffer.length);
+      throw ((Throwable)new IllegalArgumentException(paramArrayOfObject.toString().toString()));
     }
-    this.capacity = this.buffer.length;
-    this.size = paramInt;
+    paramArrayOfObject = new StringBuilder();
+    paramArrayOfObject.append("ring buffer filled size should not be negative but it is ");
+    paramArrayOfObject.append(paramInt);
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfObject.toString().toString()));
   }
   
   private final int forward(int paramInt1, int paramInt2)
@@ -46,28 +67,31 @@ final class RingBuffer<T>
   
   public final void add(T paramT)
   {
-    if (isFull()) {
-      throw ((Throwable)new IllegalStateException("ring buffer is full"));
+    if (!isFull())
+    {
+      this.buffer[((this.startIndex + size()) % access$getCapacity$p(this))] = paramT;
+      this.size = (size() + 1);
+      return;
     }
-    this.buffer[((this.startIndex + size()) % access$getCapacity$p(this))] = paramT;
-    this.size = (size() + 1);
+    throw ((Throwable)new IllegalStateException("ring buffer is full"));
   }
   
   @NotNull
   public final RingBuffer<T> expanded(int paramInt)
   {
-    paramInt = RangesKt.coerceAtMost(this.capacity + (this.capacity >> 1) + 1, paramInt);
+    int i = this.capacity;
+    paramInt = RangesKt.coerceAtMost(i + (i >> 1) + 1, paramInt);
     Object[] arrayOfObject;
     if (this.startIndex == 0)
     {
       arrayOfObject = Arrays.copyOf(this.buffer, paramInt);
       Intrinsics.checkExpressionValueIsNotNull(arrayOfObject, "java.util.Arrays.copyOf(this, newSize)");
     }
-    for (;;)
+    else
     {
-      return new RingBuffer(arrayOfObject, size());
       arrayOfObject = toArray(new Object[paramInt]);
     }
+    return new RingBuffer(arrayOfObject, size());
   }
   
   public T get(int paramInt)
@@ -95,32 +119,50 @@ final class RingBuffer<T>
   public final void removeFirst(int paramInt)
   {
     int j = 1;
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("n shouldn't be negative but it is " + paramInt).toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt <= size()) {}
-    for (i = j; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("n shouldn't be greater than the buffer size: n = " + paramInt + ", size = " + size()).toString()));
-    }
-    if (paramInt > 0)
+    if (i != 0)
     {
-      i = this.startIndex;
-      j = (i + paramInt) % access$getCapacity$p(this);
-      if (i <= j) {
-        break label176;
+      if (paramInt <= size()) {
+        i = j;
+      } else {
+        i = 0;
       }
-      ArraysKt.fill(this.buffer, null, i, this.capacity);
-      ArraysKt.fill(this.buffer, null, 0, j);
+      if (i != 0)
+      {
+        if (paramInt > 0)
+        {
+          i = this.startIndex;
+          j = (i + paramInt) % access$getCapacity$p(this);
+          if (i > j)
+          {
+            ArraysKt.fill(this.buffer, null, i, this.capacity);
+            ArraysKt.fill(this.buffer, null, 0, j);
+          }
+          else
+          {
+            ArraysKt.fill(this.buffer, null, i, j);
+          }
+          this.startIndex = j;
+          this.size = (size() - paramInt);
+        }
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("n shouldn't be greater than the buffer size: n = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", size = ");
+      localStringBuilder.append(size());
+      throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString().toString()));
     }
-    for (;;)
-    {
-      this.startIndex = j;
-      this.size = (size() - paramInt);
-      return;
-      label176:
-      ArraysKt.fill(this.buffer, null, i, j);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n shouldn't be negative but it is ");
+    localStringBuilder.append(paramInt);
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString().toString()));
   }
   
   @NotNull
@@ -132,7 +174,6 @@ final class RingBuffer<T>
   @NotNull
   public <T> T[] toArray(@NotNull T[] paramArrayOfT)
   {
-    int n = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "array");
     Object localObject = paramArrayOfT;
     if (paramArrayOfT.length < size())
@@ -142,43 +183,48 @@ final class RingBuffer<T>
     }
     int i1 = size();
     int j = this.startIndex;
+    int n = 0;
     int i = 0;
     int k;
     int m;
     for (;;)
     {
-      k = n;
-      m = i;
+      k = i;
+      m = n;
       if (i >= i1) {
         break;
       }
-      k = n;
-      m = i;
+      k = i;
+      m = n;
       if (j >= this.capacity) {
         break;
       }
       localObject[i] = this.buffer[j];
-      j += 1;
       i += 1;
+      j += 1;
     }
-    while (m < i1)
+    while (k < i1)
     {
-      localObject[m] = this.buffer[k];
-      m += 1;
+      localObject[k] = this.buffer[m];
       k += 1;
+      m += 1;
     }
     if (localObject.length > size()) {
       localObject[size()] = null;
     }
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
+    if (localObject != null) {
+      return localObject;
     }
-    return localObject;
+    paramArrayOfT = new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
+    for (;;)
+    {
+      throw paramArrayOfT;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.RingBuffer
  * JD-Core Version:    0.7.0.1
  */

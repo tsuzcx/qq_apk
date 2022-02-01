@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/v1" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/r8" android:importantForAccessibility="no">
+        <LinearLayout android:orientation="vertical" android:id="@id/r7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no">
+            <TextView android:textSize="@dimen/t" android:textColor="#e6ffffff" android:gravity="center" android:id="@id/r9" android:layout_width="fill_parent" android:layout_height="@dimen/b9" android:text="@string/vt" />
+            <View android:background="#1a000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:orientation="vertical" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" android:importantForAccessibility="no">
+                <com.tencent.mm.plugin.taskbar.ui.TaskBarView android:id="@id/r_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+    <com.tencent.mm.plugin.taskbar.api.GyroView android:id="@id/et8" android:layout_width="@dimen/abn" android:layout_height="@dimen/abm" android:layout_marginBottom="@dimen/b9" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainerView android:id="@id/c38" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/r4" android:layout_width="fill_parent" android:layout_height="@dimen/r8" android:layout_alignParentBottom="true" />
+</RelativeLayout>

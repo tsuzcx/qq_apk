@@ -35,12 +35,41 @@ public class b
   
   public String toString()
   {
-    return "MonitorDataFlow{bufferSize=" + this.f + ", mType='" + this.h + '\'' + ", ip='" + this.b + '\'' + ", port=" + this.d + ", refer='" + this.c + '\'' + ", keyHash='" + this.j + '\'' + ", flag=" + this.e + ", networktype=" + this.g + ", status=" + this.i + ", processName='" + this.a + '\'' + ", lastUpdateTime=" + this.k + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MonitorDataFlow{bufferSize=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", mType='");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ip='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", port=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", refer='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", keyHash='");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", flag=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", networktype=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", processName='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", lastUpdateTime=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.b
  * JD-Core Version:    0.7.0.1
  */

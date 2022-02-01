@@ -10,8 +10,8 @@ public final class ae
   static void a(Scope paramScope, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramScope.Hc);
-    c.a(paramParcel, 2, paramScope.gE());
+    c.c(paramParcel, 1, paramScope.IR);
+    c.a(paramParcel, 2, paramScope.gO());
     c.v(paramParcel, i);
   }
 }

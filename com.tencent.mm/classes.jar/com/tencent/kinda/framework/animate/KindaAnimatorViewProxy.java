@@ -5,7 +5,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.kinda.framework.widget.base.MMKView;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -23,22 +23,39 @@ public class KindaAnimatorViewProxy
   
   static
   {
-    AppMethodBeat.i(144284);
+    AppMethodBeat.i(18319);
     defaultLongEvaluator = new KindaAnimatorViewProxy.LongEvaluator();
     defaultDoubleEvaluator = new KindaAnimatorViewProxy.DoubleEvaluator();
     defaultArgbEvaluator = new ArgbEvaluator();
-    AppMethodBeat.o(144284);
+    AppMethodBeat.o(18319);
   }
   
   private ValueAnimator buildAnimator(final Method paramMethod1, Method paramMethod2, Object paramObject)
   {
-    AppMethodBeat.i(144279);
+    AppMethodBeat.i(18314);
     if (paramObject.getClass().equals(Integer.class))
     {
       paramMethod2 = ValueAnimator.ofInt(new int[] { ((Integer)paramMethod2.invoke(this.target, new Object[0])).intValue(), ((Integer)paramObject).intValue() });
-      paramMethod2.addUpdateListener(new KindaAnimatorViewProxy.1(this, paramMethod1));
+      paramMethod2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.i(18302);
+          int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
+          try
+          {
+            paramMethod1.invoke(KindaAnimatorViewProxy.this.target, new Object[] { Integer.valueOf(i) });
+            AppMethodBeat.o(18302);
+            return;
+          }
+          catch (Exception paramAnonymousValueAnimator)
+          {
+            AppMethodBeat.o(18302);
+          }
+        }
+      });
       paramMethod2.setDuration(KindaGlobalAnimator.animateDuration());
-      AppMethodBeat.o(144279);
+      AppMethodBeat.o(18314);
       return paramMethod2;
     }
     if (paramObject.getClass().equals(Long.class)) {
@@ -47,17 +64,17 @@ public class KindaAnimatorViewProxy
         {
           public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            AppMethodBeat.i(144268);
+            AppMethodBeat.i(18303);
             int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
             try
             {
               paramMethod1.invoke(KindaAnimatorViewProxy.this.target, new Object[] { Long.valueOf(i) });
-              AppMethodBeat.o(144268);
+              AppMethodBeat.o(18303);
               return;
             }
             catch (Exception paramAnonymousValueAnimator)
             {
-              AppMethodBeat.o(144268);
+              AppMethodBeat.o(18303);
             }
           }
         });
@@ -65,35 +82,86 @@ public class KindaAnimatorViewProxy
     }
     do
     {
-      AppMethodBeat.o(144279);
+      AppMethodBeat.o(18314);
       return null;
       paramMethod2 = ValueAnimator.ofObject(defaultLongEvaluator, new Object[] { (Long)paramMethod2.invoke(this.target, new Object[0]), (Long)paramObject });
-      paramMethod2.addUpdateListener(new KindaAnimatorViewProxy.3(this, paramMethod1));
+      paramMethod2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.i(18304);
+          long l = ((Long)paramAnonymousValueAnimator.getAnimatedValue()).longValue();
+          try
+          {
+            paramMethod1.invoke(KindaAnimatorViewProxy.this.target, new Object[] { Long.valueOf(l) });
+            AppMethodBeat.o(18304);
+            return;
+          }
+          catch (Exception paramAnonymousValueAnimator)
+          {
+            AppMethodBeat.o(18304);
+          }
+        }
+      });
       paramMethod2.setDuration(KindaGlobalAnimator.animateDuration());
-      AppMethodBeat.o(144279);
+      AppMethodBeat.o(18314);
       return paramMethod2;
       if (paramObject.getClass().equals(Float.class))
       {
         paramMethod2 = ValueAnimator.ofFloat(new float[] { ((Float)paramMethod2.invoke(this.target, new Object[0])).floatValue(), ((Float)paramObject).floatValue() });
-        paramMethod2.addUpdateListener(new KindaAnimatorViewProxy.4(this, paramMethod1));
+        paramMethod2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        {
+          public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+          {
+            AppMethodBeat.i(18305);
+            float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+            try
+            {
+              paramMethod1.invoke(KindaAnimatorViewProxy.this.target, new Object[] { Float.valueOf(f) });
+              AppMethodBeat.o(18305);
+              return;
+            }
+            catch (Exception paramAnonymousValueAnimator)
+            {
+              AppMethodBeat.o(18305);
+            }
+          }
+        });
         paramMethod2.setDuration(KindaGlobalAnimator.animateDuration());
-        AppMethodBeat.o(144279);
+        AppMethodBeat.o(18314);
         return paramMethod2;
       }
     } while (!paramObject.getClass().equals(Double.class));
     paramMethod2 = ValueAnimator.ofObject(defaultDoubleEvaluator, new Object[] { (Double)paramMethod2.invoke(this.target, new Object[0]), (Double)paramObject });
-    paramMethod2.addUpdateListener(new KindaAnimatorViewProxy.5(this, paramMethod1));
+    paramMethod2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        AppMethodBeat.i(18306);
+        double d = ((Double)paramAnonymousValueAnimator.getAnimatedValue()).doubleValue();
+        try
+        {
+          paramMethod1.invoke(KindaAnimatorViewProxy.this.target, new Object[] { Double.valueOf(d) });
+          AppMethodBeat.o(18306);
+          return;
+        }
+        catch (Exception paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.o(18306);
+        }
+      }
+    });
     paramMethod2.setDuration(KindaGlobalAnimator.animateDuration());
-    AppMethodBeat.o(144279);
+    AppMethodBeat.o(18314);
     return paramMethod2;
   }
   
   private boolean checkHasPrimitiveTypeParams(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(144282);
+    AppMethodBeat.i(18317);
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0))
     {
-      AppMethodBeat.o(144282);
+      AppMethodBeat.o(18317);
       return false;
     }
     if (paramArrayOfObject.length == 1)
@@ -101,22 +169,22 @@ public class KindaAnimatorViewProxy
       paramArrayOfObject = paramArrayOfObject[0];
       if (paramArrayOfObject.getClass().isPrimitive())
       {
-        AppMethodBeat.o(144282);
+        AppMethodBeat.o(18317);
         return true;
       }
       if ((paramArrayOfObject.getClass().equals(Integer.class)) || (paramArrayOfObject.getClass().equals(Long.class)) || (paramArrayOfObject.getClass().equals(Float.class)) || (paramArrayOfObject.getClass().equals(Double.class)))
       {
-        AppMethodBeat.o(144282);
+        AppMethodBeat.o(18317);
         return true;
       }
     }
-    AppMethodBeat.o(144282);
+    AppMethodBeat.o(18317);
     return false;
   }
   
   private Method getterMethod(Class paramClass, String paramString)
   {
-    AppMethodBeat.i(144280);
+    AppMethodBeat.i(18315);
     paramClass = paramClass.getMethods();
     int j = paramClass.length;
     int i = 0;
@@ -125,31 +193,31 @@ public class KindaAnimatorViewProxy
       Method localMethod = paramClass[i];
       if ((localMethod.getName().startsWith("get")) && (localMethod.getName().toLowerCase().endsWith(paramString.toLowerCase())))
       {
-        AppMethodBeat.o(144280);
+        AppMethodBeat.o(18315);
         return localMethod;
       }
       i += 1;
     }
-    AppMethodBeat.o(144280);
+    AppMethodBeat.o(18315);
     return null;
   }
   
   private String propName(Method paramMethod)
   {
-    AppMethodBeat.i(144281);
+    AppMethodBeat.i(18316);
     if ((paramMethod != null) && (paramMethod.getName().startsWith("set")))
     {
       paramMethod = paramMethod.getName().substring(3);
-      AppMethodBeat.o(144281);
+      AppMethodBeat.o(18316);
       return paramMethod;
     }
-    AppMethodBeat.o(144281);
+    AppMethodBeat.o(18316);
     return null;
   }
   
   public static KView unWrapRealObj(Object paramObject)
   {
-    AppMethodBeat.i(144278);
+    AppMethodBeat.i(18313);
     if ((paramObject instanceof Proxy)) {
       try
       {
@@ -157,28 +225,28 @@ public class KindaAnimatorViewProxy
         if ((localObject instanceof KindaAnimatorViewProxy))
         {
           localObject = ((KindaAnimatorViewProxy)localObject).target;
-          AppMethodBeat.o(144278);
+          AppMethodBeat.o(18313);
           return localObject;
         }
       }
       catch (Exception localException)
       {
-        ab.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", localException, "unWrapRealObj %s", new Object[] { localException.getMessage() });
+        Log.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", localException, "unWrapRealObj %s", new Object[] { localException.getMessage() });
       }
     }
     if ((paramObject instanceof KView))
     {
       paramObject = (KView)paramObject;
-      AppMethodBeat.o(144278);
+      AppMethodBeat.o(18313);
       return paramObject;
     }
-    AppMethodBeat.o(144278);
+    AppMethodBeat.o(18313);
     return null;
   }
   
   public static Object unwrapProxyObject(Object paramObject)
   {
-    AppMethodBeat.i(144283);
+    AppMethodBeat.i(18318);
     if ((paramObject instanceof Proxy)) {
       try
       {
@@ -186,23 +254,23 @@ public class KindaAnimatorViewProxy
         if ((localObject instanceof KindaAnimatorViewProxy))
         {
           localObject = ((KindaAnimatorViewProxy)localObject).target;
-          AppMethodBeat.o(144283);
+          AppMethodBeat.o(18318);
           return localObject;
         }
       }
       catch (Exception localException)
       {
-        AppMethodBeat.o(144283);
+        AppMethodBeat.o(18318);
         return paramObject;
       }
     }
-    AppMethodBeat.o(144283);
+    AppMethodBeat.o(18318);
     return paramObject;
   }
   
   private Object[] unwrapProxyParams(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(144277);
+    AppMethodBeat.i(18312);
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
     {
       Object[] arrayOfObject = new Object[paramArrayOfObject.length];
@@ -234,10 +302,10 @@ public class KindaAnimatorViewProxy
           }
         }
       }
-      AppMethodBeat.o(144277);
+      AppMethodBeat.o(18312);
       return arrayOfObject;
     }
-    AppMethodBeat.o(144277);
+    AppMethodBeat.o(18312);
     return paramArrayOfObject;
   }
   
@@ -248,7 +316,7 @@ public class KindaAnimatorViewProxy
   
   public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(144276);
+    AppMethodBeat.i(18311);
     try
     {
       if ((KindaGlobalAnimator.hasAnimate()) && (paramMethod.getName().startsWith("set")) && (checkHasPrimitiveTypeParams(paramArrayOfObject)) && (paramMethod.getReturnType() == Void.TYPE))
@@ -263,7 +331,7 @@ public class KindaAnimatorViewProxy
             if (paramObject != null)
             {
               KindaGlobalAnimator.addAnimator(paramObject);
-              AppMethodBeat.o(144276);
+              AppMethodBeat.o(18311);
               return null;
             }
           }
@@ -271,27 +339,27 @@ public class KindaAnimatorViewProxy
       }
       paramObject = unwrapProxyParams(paramArrayOfObject);
       paramObject = paramMethod.invoke(this.target, paramObject);
-      AppMethodBeat.o(144276);
+      AppMethodBeat.o(18311);
       return paramObject;
     }
     catch (InvocationTargetException paramObject)
     {
-      ab.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
-      AppMethodBeat.o(144276);
+      Log.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+      AppMethodBeat.o(18311);
       return null;
     }
     catch (IllegalAccessException paramObject)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+        Log.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       }
     }
     catch (IllegalArgumentException paramObject)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+        Log.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       }
     }
   }
@@ -303,7 +371,7 @@ public class KindaAnimatorViewProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.KindaAnimatorViewProxy
  * JD-Core Version:    0.7.0.1
  */

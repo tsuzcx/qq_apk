@@ -2,6 +2,7 @@ package com.tencent.mapsdk.raster.model;
 
 import android.view.View;
 import android.view.animation.Animation;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Collision;
 
 public abstract interface Marker
   extends IOverlay
@@ -40,6 +41,8 @@ public abstract interface Marker
   
   public abstract boolean isVisible();
   
+  public abstract void refreshInfoWindow();
+  
   public abstract void remove();
   
   public abstract void set2Top();
@@ -48,6 +51,8 @@ public abstract interface Marker
   
   public abstract void setAnchor(float paramFloat1, float paramFloat2);
   
+  public abstract void setCollisions(Collision... paramVarArgs);
+  
   public abstract void setContentDescription(String paramString);
   
   public abstract void setDraggable(boolean paramBoolean);
@@ -55,6 +60,8 @@ public abstract interface Marker
   public abstract void setIcon(BitmapDescriptor paramBitmapDescriptor);
   
   public abstract void setInfoWindowHideAnimation(Animation paramAnimation);
+  
+  public abstract void setInfoWindowOffset(int paramInt1, int paramInt2);
   
   public abstract void setInfoWindowShowAnimation(Animation paramAnimation);
   
@@ -80,7 +87,7 @@ public abstract interface Marker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.Marker
  * JD-Core Version:    0.7.0.1
  */

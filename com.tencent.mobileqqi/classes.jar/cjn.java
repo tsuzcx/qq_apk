@@ -1,37 +1,17 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.graphics.Color;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.io.UnsupportedEncodingException;
 
-public class cjn
-  implements TextWatcher
+class cjn
+  implements Runnable
 {
-  public cjn(EditInfoActivity paramEditInfoActivity) {}
+  cjn(cjm paramcjm) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
-    {
-      this.a.b = ("0/" + this.a.c);
-      this.a.a.post(new cjo(this));
-      return;
-    }
-    try
-    {
-      paramInt1 = paramCharSequence.toString().getBytes("utf-8").length;
-      this.a.b = (paramInt1 + "/" + this.a.c);
-      this.a.a.post(new cjp(this, paramInt1));
-      return;
-    }
-    catch (UnsupportedEncodingException paramCharSequence)
-    {
-      paramCharSequence.printStackTrace();
-    }
+    this.a.a.a.setText(this.a.a.b);
+    this.a.a.a.setTextColor(Color.rgb(119, 119, 119));
+    EditInfoActivity.a(this.a.a, true);
   }
 }
 

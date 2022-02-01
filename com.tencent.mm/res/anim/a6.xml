@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:shareInterpolator="false" android:zAdjustment="top"
+<set
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <translate android:interpolator="@anim/ae" android:duration="250" android:fromYDelta="100.0%p" android:toYDelta="0.0" />
-    <scale android:duration="433" android:fillAfter="true" android:fromXScale="1.0" android:toXScale="1.0" android:fromYScale="1.0" android:toYScale="1.0" />
+    <rotate android:duration="50" android:fromDegrees="0.0" android:toDegrees="4.0" android:pivotX="50.0%" android:pivotY="100.0%" />
+    <rotate android:duration="100" android:fromDegrees="4.0" android:toDegrees="-4.0" android:pivotX="50.0%" android:pivotY="100.0%" android:startOffset="50" />
+    <rotate android:duration="100" android:fromDegrees="-4.0" android:toDegrees="4.0" android:pivotX="50.0%" android:pivotY="100.0%" android:startOffset="150" />
+    <rotate android:duration="100" android:fromDegrees="4.0" android:toDegrees="-4.0" android:pivotX="50.0%" android:pivotY="100.0%" android:startOffset="250" />
+    <rotate android:duration="50" android:fromDegrees="-4.0" android:toDegrees="0.0" android:pivotX="50.0%" android:pivotY="100.0%" android:startOffset="350" />
 </set>

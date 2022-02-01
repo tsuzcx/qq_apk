@@ -37,24 +37,19 @@ public abstract class Draft
   {
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramByteBuffer.remaining());
     byte b;
-    for (int i = 48;; i = b) {
-      if (paramByteBuffer.hasRemaining())
+    for (int i = 48; paramByteBuffer.hasRemaining(); i = b)
+    {
+      b = paramByteBuffer.get();
+      localByteBuffer.put(b);
+      if ((i == 13) && (b == 10))
       {
-        b = paramByteBuffer.get();
-        localByteBuffer.put(b);
-        if ((i == 13) && (b == 10))
-        {
-          localByteBuffer.limit(localByteBuffer.position() - 2);
-          localByteBuffer.position(0);
-          return localByteBuffer;
-        }
-      }
-      else
-      {
-        paramByteBuffer.position(paramByteBuffer.position() - localByteBuffer.position());
-        return null;
+        localByteBuffer.limit(localByteBuffer.position() - 2);
+        localByteBuffer.position(0);
+        return localByteBuffer;
       }
     }
+    paramByteBuffer.position(paramByteBuffer.position() - localByteBuffer.position());
+    return null;
   }
   
   public static String readStringLine(ByteBuffer paramByteBuffer)
@@ -69,68 +64,86 @@ public abstract class Draft
   public static HandshakeBuilder translateHandshakeHttp(ByteBuffer paramByteBuffer, Role paramRole)
   {
     Object localObject = readStringLine(paramByteBuffer);
-    if (localObject == null) {
-      throw new IncompleteHandshakeException(paramByteBuffer.capacity() + 128);
-    }
-    String[] arrayOfString = ((String)localObject).split(" ", 3);
-    if (arrayOfString.length != 3) {
+    if (localObject != null)
+    {
+      String[] arrayOfString = ((String)localObject).split(" ", 3);
+      if (arrayOfString.length == 3)
+      {
+        if (paramRole == Role.CLIENT) {
+          paramRole = translateHandshakeHttpClient(arrayOfString, (String)localObject);
+        } else {
+          paramRole = translateHandshakeHttpServer(arrayOfString, (String)localObject);
+        }
+        localObject = readStringLine(paramByteBuffer);
+        while ((localObject != null) && (((String)localObject).length() > 0))
+        {
+          localObject = ((String)localObject).split(":", 2);
+          if (localObject.length == 2)
+          {
+            if (paramRole.hasFieldValue(localObject[0]))
+            {
+              arrayOfString = localObject[0];
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append(paramRole.getFieldValue(localObject[0]));
+              localStringBuilder.append("; ");
+              localStringBuilder.append(localObject[1].replaceFirst("^ +", ""));
+              paramRole.put(arrayOfString, localStringBuilder.toString());
+            }
+            else
+            {
+              paramRole.put(localObject[0], localObject[1].replaceFirst("^ +", ""));
+            }
+            localObject = readStringLine(paramByteBuffer);
+          }
+          else
+          {
+            throw new InvalidHandshakeException("not an http header");
+          }
+        }
+        if (localObject != null) {
+          return paramRole;
+        }
+        throw new IncompleteHandshakeException();
+      }
       throw new InvalidHandshakeException();
     }
-    if (paramRole == Role.CLIENT) {}
-    for (paramRole = translateHandshakeHttpClient(arrayOfString, (String)localObject);; paramRole = translateHandshakeHttpServer(arrayOfString, (String)localObject))
-    {
-      localObject = readStringLine(paramByteBuffer);
-      if ((localObject == null) || (((String)localObject).length() <= 0)) {
-        break label200;
-      }
-      localObject = ((String)localObject).split(":", 2);
-      if (localObject.length == 2) {
-        break;
-      }
-      throw new InvalidHandshakeException("not an http header");
-    }
-    if (paramRole.hasFieldValue(localObject[0])) {
-      paramRole.put(localObject[0], paramRole.getFieldValue(localObject[0]) + "; " + localObject[1].replaceFirst("^ +", ""));
-    }
+    paramByteBuffer = new IncompleteHandshakeException(paramByteBuffer.capacity() + 128);
     for (;;)
     {
-      localObject = readStringLine(paramByteBuffer);
-      break;
-      paramRole.put(localObject[0], localObject[1].replaceFirst("^ +", ""));
+      throw paramByteBuffer;
     }
-    label200:
-    if (localObject == null) {
-      throw new IncompleteHandshakeException();
-    }
-    return paramRole;
   }
   
   private static HandshakeBuilder translateHandshakeHttpClient(String[] paramArrayOfString, String paramString)
   {
-    if (!"101".equals(paramArrayOfString[1])) {
-      throw new InvalidHandshakeException(String.format("Invalid status code received: %s Status line: %s", new Object[] { paramArrayOfString[1], paramString }));
-    }
-    if (!"HTTP/1.1".equalsIgnoreCase(paramArrayOfString[0])) {
+    if ("101".equals(paramArrayOfString[1]))
+    {
+      if ("HTTP/1.1".equalsIgnoreCase(paramArrayOfString[0]))
+      {
+        paramString = new HandshakeImpl1Server();
+        ServerHandshakeBuilder localServerHandshakeBuilder = (ServerHandshakeBuilder)paramString;
+        localServerHandshakeBuilder.setHttpStatus(Short.parseShort(paramArrayOfString[1]));
+        localServerHandshakeBuilder.setHttpStatusMessage(paramArrayOfString[2]);
+        return paramString;
+      }
       throw new InvalidHandshakeException(String.format("Invalid status line received: %s Status line: %s", new Object[] { paramArrayOfString[0], paramString }));
     }
-    paramString = new HandshakeImpl1Server();
-    ServerHandshakeBuilder localServerHandshakeBuilder = (ServerHandshakeBuilder)paramString;
-    localServerHandshakeBuilder.setHttpStatus(Short.parseShort(paramArrayOfString[1]));
-    localServerHandshakeBuilder.setHttpStatusMessage(paramArrayOfString[2]);
-    return paramString;
+    throw new InvalidHandshakeException(String.format("Invalid status code received: %s Status line: %s", new Object[] { paramArrayOfString[1], paramString }));
   }
   
   private static HandshakeBuilder translateHandshakeHttpServer(String[] paramArrayOfString, String paramString)
   {
-    if (!"GET".equalsIgnoreCase(paramArrayOfString[0])) {
-      throw new InvalidHandshakeException(String.format("Invalid request method received: %s Status line: %s", new Object[] { paramArrayOfString[0], paramString }));
-    }
-    if (!"HTTP/1.1".equalsIgnoreCase(paramArrayOfString[2])) {
+    if ("GET".equalsIgnoreCase(paramArrayOfString[0]))
+    {
+      if ("HTTP/1.1".equalsIgnoreCase(paramArrayOfString[2]))
+      {
+        paramString = new HandshakeImpl1Client();
+        paramString.setResourceDescriptor(paramArrayOfString[1]);
+        return paramString;
+      }
       throw new InvalidHandshakeException(String.format("Invalid status line received: %s Status line: %s", new Object[] { paramArrayOfString[2], paramString }));
     }
-    paramString = new HandshakeImpl1Client();
-    paramString.setResourceDescriptor(paramArrayOfString[1]);
-    return paramString;
+    throw new InvalidHandshakeException(String.format("Invalid request method received: %s Status line: %s", new Object[] { paramArrayOfString[0], paramString }));
   }
   
   public abstract HandshakeState acceptHandshakeAsClient(ClientHandshake paramClientHandshake, ServerHandshake paramServerHandshake);
@@ -144,10 +157,10 @@ public abstract class Draft
   
   public int checkAlloc(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new InvalidDataException(1002, "Negative count");
+    if (paramInt >= 0) {
+      return paramInt;
     }
-    return paramInt;
+    throw new InvalidDataException(1002, "Negative count");
   }
   
   public List<Framedata> continuousFrame(Opcode paramOpcode, ByteBuffer paramByteBuffer, boolean paramBoolean)
@@ -156,44 +169,36 @@ public abstract class Draft
       throw new IllegalArgumentException("Only Opcode.BINARY or  Opcode.TEXT are allowed");
     }
     Object localObject;
-    if (this.continuousFrameType != null) {
+    if (this.continuousFrameType != null)
+    {
       localObject = new ContinuousFrame();
     }
-    for (;;)
+    else
     {
-      ((DataFrame)localObject).setPayload(paramByteBuffer);
-      ((DataFrame)localObject).setFin(paramBoolean);
-      for (;;)
-      {
-        try
-        {
-          ((DataFrame)localObject).isValid();
-          if (!paramBoolean) {
-            break label125;
-          }
-          this.continuousFrameType = null;
-          return Collections.singletonList(localObject);
-        }
-        catch (InvalidDataException paramOpcode)
-        {
-          throw new IllegalArgumentException(paramOpcode);
-        }
-        this.continuousFrameType = paramOpcode;
-        if (paramOpcode == Opcode.BINARY)
-        {
-          localObject = new BinaryFrame();
-          break;
-        }
-        if (paramOpcode != Opcode.TEXT) {
-          break label133;
-        }
+      this.continuousFrameType = paramOpcode;
+      if (paramOpcode == Opcode.BINARY) {
+        localObject = new BinaryFrame();
+      } else if (paramOpcode == Opcode.TEXT) {
         localObject = new TextFrame();
-        break;
-        label125:
+      } else {
+        localObject = null;
+      }
+    }
+    ((DataFrame)localObject).setPayload(paramByteBuffer);
+    ((DataFrame)localObject).setFin(paramBoolean);
+    try
+    {
+      ((DataFrame)localObject).isValid();
+      if (paramBoolean) {
+        this.continuousFrameType = null;
+      } else {
         this.continuousFrameType = paramOpcode;
       }
-      label133:
-      localObject = null;
+      return Collections.singletonList(localObject);
+    }
+    catch (InvalidDataException paramOpcode)
+    {
+      throw new IllegalArgumentException(paramOpcode);
     }
   }
   
@@ -225,50 +230,56 @@ public abstract class Draft
   public List<ByteBuffer> createHandshake(Handshakedata paramHandshakedata, boolean paramBoolean)
   {
     Object localObject1 = new StringBuilder(100);
-    if ((paramHandshakedata instanceof ClientHandshake)) {
-      ((StringBuilder)localObject1).append("GET ").append(((ClientHandshake)paramHandshakedata).getResourceDescriptor()).append(" HTTP/1.1");
-    }
-    Object localObject2;
-    for (;;)
+    if ((paramHandshakedata instanceof ClientHandshake))
     {
-      ((StringBuilder)localObject1).append("\r\n");
-      localObject2 = paramHandshakedata.iterateHttpFields();
-      while (((Iterator)localObject2).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject2).next();
-        String str2 = paramHandshakedata.getFieldValue(str1);
-        ((StringBuilder)localObject1).append(str1);
-        ((StringBuilder)localObject1).append(": ");
-        ((StringBuilder)localObject1).append(str2);
-        ((StringBuilder)localObject1).append("\r\n");
-      }
-      if (!(paramHandshakedata instanceof ServerHandshake)) {
-        break;
-      }
-      ((StringBuilder)localObject1).append("HTTP/1.1 101 ").append(((ServerHandshake)paramHandshakedata).getHttpStatusMessage());
+      ((StringBuilder)localObject1).append("GET ");
+      ((StringBuilder)localObject1).append(((ClientHandshake)paramHandshakedata).getResourceDescriptor());
+      ((StringBuilder)localObject1).append(" HTTP/1.1");
     }
-    throw new IllegalArgumentException("unknown role");
+    else
+    {
+      if (!(paramHandshakedata instanceof ServerHandshake)) {
+        break label259;
+      }
+      ((StringBuilder)localObject1).append("HTTP/1.1 101 ");
+      ((StringBuilder)localObject1).append(((ServerHandshake)paramHandshakedata).getHttpStatusMessage());
+    }
+    ((StringBuilder)localObject1).append("\r\n");
+    Object localObject2 = paramHandshakedata.iterateHttpFields();
+    while (((Iterator)localObject2).hasNext())
+    {
+      String str1 = (String)((Iterator)localObject2).next();
+      String str2 = paramHandshakedata.getFieldValue(str1);
+      ((StringBuilder)localObject1).append(str1);
+      ((StringBuilder)localObject1).append(": ");
+      ((StringBuilder)localObject1).append(str2);
+      ((StringBuilder)localObject1).append("\r\n");
+    }
     ((StringBuilder)localObject1).append("\r\n");
     localObject1 = Charsetfunctions.asciiBytes(((StringBuilder)localObject1).toString());
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       paramHandshakedata = paramHandshakedata.getContent();
-      if (paramHandshakedata != null) {
-        break label255;
-      }
-    }
-    label255:
-    for (int i = 0;; i = paramHandshakedata.length)
-    {
-      localObject2 = ByteBuffer.allocate(i + localObject1.length);
-      ((ByteBuffer)localObject2).put((byte[])localObject1);
-      if (paramHandshakedata != null) {
-        ((ByteBuffer)localObject2).put(paramHandshakedata);
-      }
-      ((ByteBuffer)localObject2).flip();
-      return Collections.singletonList(localObject2);
+    } else {
       paramHandshakedata = null;
-      break;
+    }
+    int i;
+    if (paramHandshakedata == null) {
+      i = 0;
+    } else {
+      i = paramHandshakedata.length;
+    }
+    localObject2 = ByteBuffer.allocate(i + localObject1.length);
+    ((ByteBuffer)localObject2).put((byte[])localObject1);
+    if (paramHandshakedata != null) {
+      ((ByteBuffer)localObject2).put(paramHandshakedata);
+    }
+    ((ByteBuffer)localObject2).flip();
+    return Collections.singletonList(localObject2);
+    label259:
+    paramHandshakedata = new IllegalArgumentException("unknown role");
+    for (;;)
+    {
+      throw paramHandshakedata;
     }
   }
   
@@ -287,15 +298,15 @@ public abstract class Draft
   
   int readVersion(Handshakedata paramHandshakedata)
   {
-    int i = -1;
     paramHandshakedata = paramHandshakedata.getFieldValue("Sec-WebSocket-Version");
     if (paramHandshakedata.length() > 0) {}
     try
     {
-      i = new Integer(paramHandshakedata.trim()).intValue();
+      int i = new Integer(paramHandshakedata.trim()).intValue();
       return i;
     }
     catch (NumberFormatException paramHandshakedata) {}
+    return -1;
     return -1;
   }
   
@@ -320,7 +331,7 @@ public abstract class Draft
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.drafts.Draft
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.google.android.gms.common.ConnectionResult;
 
 public abstract interface aw
 {
-  public abstract void e(int paramInt, boolean paramBoolean);
+  public abstract void f(int paramInt, boolean paramBoolean);
   
   public abstract void g(ConnectionResult paramConnectionResult);
   

@@ -1,40 +1,37 @@
 package com.tencent.open.appstore.dl;
 
 import android.text.TextUtils;
-import bfkr;
-import bfpw;
-import bfpx;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.common.AppNotificationManager;
+import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class DownloadManagerV2$5
+class DownloadManagerV2$5
   implements Runnable
 {
-  public DownloadManagerV2$5(bfkr parambfkr) {}
+  DownloadManagerV2$5(DownloadManagerV2 paramDownloadManagerV2) {}
   
   public void run()
   {
-    ConcurrentHashMap localConcurrentHashMap = bfpw.a().a();
-    if (localConcurrentHashMap == null) {}
-    for (;;)
-    {
+    ConcurrentHashMap localConcurrentHashMap = AppNotificationManager.a().b();
+    if (localConcurrentHashMap == null) {
       return;
-      Iterator localIterator = localConcurrentHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = localConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)localConcurrentHashMap.get((String)localIterator.next());
+      if (localNoticeIdentity != null)
       {
-        bfpx localbfpx = (bfpx)localConcurrentHashMap.get((String)localIterator.next());
-        if (localbfpx != null)
+        Object localObject = DownloadManagerV2.a(this.this$0, localNoticeIdentity.b);
+        if ((localObject != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject).d)))
         {
-          Object localObject = bfkr.a(this.this$0, localbfpx.b);
-          if ((localObject != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject).d)))
-          {
-            localObject = this.this$0.a(((DownloadInfo)localObject).d);
-            if ((localObject != null) && (4 != bfkr.a(((TMAssistantDownloadTaskInfo)localObject).mState))) {
-              bfpw.a().a(localbfpx.a);
-            }
+          localObject = this.this$0.g(((DownloadInfo)localObject).d);
+          if ((localObject != null) && (4 != DownloadManagerV2.b(((TMAssistantDownloadTaskInfo)localObject).mState))) {
+            AppNotificationManager.a().a(localNoticeIdentity.a);
           }
         }
       }
@@ -43,7 +40,7 @@ public class DownloadManagerV2$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.5
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,18 +12,19 @@ public final class PhotoSearchBox
   extends JceStruct
 {
   static Map<Integer, PhotoSearchBoxItem> cache_items;
-  static int cache_status = 0;
+  static int cache_status;
   static ArrayList<Integer> cache_types = new ArrayList();
-  public Map<Integer, PhotoSearchBoxItem> items;
+  public Map<Integer, PhotoSearchBoxItem> items = null;
   public int status = 1;
-  public ArrayList<Integer> types;
+  public ArrayList<Integer> types = null;
   
   static
   {
-    cache_types.add(Integer.valueOf(0));
+    Integer localInteger = Integer.valueOf(0);
+    cache_types.add(localInteger);
     cache_items = new HashMap();
     PhotoSearchBoxItem localPhotoSearchBoxItem = new PhotoSearchBoxItem();
-    cache_items.put(Integer.valueOf(0), localPhotoSearchBoxItem);
+    cache_items.put(localInteger, localPhotoSearchBoxItem);
   }
   
   public PhotoSearchBox() {}
@@ -44,17 +46,19 @@ public final class PhotoSearchBox
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.status, 0);
-    if (this.types != null) {
-      paramJceOutputStream.write(this.types, 1);
+    Object localObject = this.types;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.items != null) {
-      paramJceOutputStream.write(this.items, 2);
+    localObject = this.items;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PhotoSearchBox
  * JD-Core Version:    0.7.0.1
  */

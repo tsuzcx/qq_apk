@@ -7,26 +7,26 @@ import com.google.android.gms.common.api.l;
 public final class i<T extends IInterface>
   extends ac<T>
 {
-  private final l<T> Jl;
+  private final l<T> La;
   
   protected final T e(IBinder paramIBinder)
   {
-    return this.Jl.gx();
+    return this.La.gH();
   }
   
-  protected final String gv()
+  protected final String gF()
   {
-    return this.Jl.gv();
+    return this.La.gF();
   }
   
-  protected final String gw()
+  protected final String gG()
   {
-    return this.Jl.gw();
+    return this.La.gG();
   }
   
-  public final l<T> hc()
+  public final l<T> hm()
   {
-    return this.Jl;
+    return this.La;
   }
 }
 

@@ -3,24 +3,18 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjks;
 
 public class CoverCacheData$PackageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PackageInfo> CREATOR = new bjks();
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  
-  public CoverCacheData$PackageInfo()
-  {
-    this.jdField_c_of_type_Int = -1;
-  }
+  public static final Parcelable.Creator<PackageInfo> CREATOR = new CoverCacheData.PackageInfo.1();
+  public String PackageUrl;
+  public int coverStyle = -1;
+  public int daytime = 0;
+  public String degrade_pic;
+  public String md5;
+  public String prePic;
+  public int weather;
   
   public int describeContents()
   {
@@ -29,18 +23,18 @@ public class CoverCacheData$PackageInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.d);
+    paramParcel.writeString(this.prePic);
+    paramParcel.writeString(this.PackageUrl);
+    paramParcel.writeString(this.md5);
+    paramParcel.writeInt(this.weather);
+    paramParcel.writeInt(this.daytime);
+    paramParcel.writeInt(this.coverStyle);
+    paramParcel.writeString(this.degrade_pic);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.CoverCacheData.PackageInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,135 +1,188 @@
 package com.tencent.mm.ui.widget.picker;
 
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.text.InputFilter;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ae;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.ui.av;
+import com.tencent.mm.ui.bc;
 
 public final class e
 {
   public static void a(NumberPicker paramNumberPicker, Drawable paramDrawable)
   {
-    AppMethodBeat.i(112852);
+    AppMethodBeat.i(159575);
     if (paramNumberPicker != null) {}
     try
     {
-      new ae(paramNumberPicker, "mSelectionDivider").set(paramDrawable);
-      AppMethodBeat.o(112852);
+      new av(paramNumberPicker, "mSelectionDivider").set(paramDrawable);
+      AppMethodBeat.o(159575);
       return;
     }
     catch (Exception paramNumberPicker)
     {
-      AppMethodBeat.o(112852);
+      AppMethodBeat.o(159575);
     }
   }
   
   public static EditText b(NumberPicker paramNumberPicker)
   {
-    AppMethodBeat.i(112853);
+    AppMethodBeat.i(159576);
     if (paramNumberPicker == null)
     {
-      AppMethodBeat.o(112853);
+      AppMethodBeat.o(159576);
       return null;
     }
     try
     {
-      paramNumberPicker = (EditText)new ae(paramNumberPicker, "mInputText").get();
-      AppMethodBeat.o(112853);
+      paramNumberPicker = (EditText)new av(paramNumberPicker, "mInputText").get();
+      AppMethodBeat.o(159576);
       return paramNumberPicker;
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      ak.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText IllegalAccessException", new Object[0]);
-      AppMethodBeat.o(112853);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText IllegalAccessException", new Object[0]);
+      AppMethodBeat.o(159576);
       return null;
     }
     catch (NoSuchFieldException paramNumberPicker)
     {
       for (;;)
       {
-        ak.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText NoSuchFieldException", new Object[0]);
+        bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText NoSuchFieldException", new Object[0]);
       }
     }
   }
   
-  public static void c(NumberPicker paramNumberPicker)
+  public static void b(NumberPicker paramNumberPicker, int paramInt)
   {
-    AppMethodBeat.i(112854);
+    AppMethodBeat.i(159574);
+    int j = paramNumberPicker.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      View localView = paramNumberPicker.getChildAt(i);
+      if ((localView instanceof EditText))
+      {
+        Paint localPaint = c(paramNumberPicker);
+        if (localPaint != null) {
+          localPaint.setColor(paramInt);
+        }
+        ((EditText)localView).setTextColor(paramInt);
+        paramNumberPicker.invalidate();
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(159574);
+  }
+  
+  private static Paint c(NumberPicker paramNumberPicker)
+  {
+    AppMethodBeat.i(159577);
     if (paramNumberPicker == null)
     {
-      AppMethodBeat.o(112854);
-      return;
+      AppMethodBeat.o(159577);
+      return null;
     }
-    paramNumberPicker.setDescendantFocusability(393216);
-    AppMethodBeat.o(112854);
+    try
+    {
+      paramNumberPicker = (Paint)new av(paramNumberPicker, "mSelectorWheelPaint").get();
+      AppMethodBeat.o(159577);
+      return paramNumberPicker;
+    }
+    catch (IllegalAccessException paramNumberPicker)
+    {
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint IllegalAccessException", new Object[0]);
+      AppMethodBeat.o(159577);
+      return null;
+    }
+    catch (NoSuchFieldException paramNumberPicker)
+    {
+      for (;;)
+      {
+        bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint NoSuchFieldException", new Object[0]);
+      }
+    }
   }
   
   public static void d(NumberPicker paramNumberPicker)
   {
-    AppMethodBeat.i(112855);
+    AppMethodBeat.i(159578);
     if (paramNumberPicker == null)
     {
-      AppMethodBeat.o(112855);
+      AppMethodBeat.o(159578);
       return;
     }
-    try
-    {
-      paramNumberPicker = (EditText)new ae(paramNumberPicker, "mInputText").get();
-      if (paramNumberPicker != null) {
-        paramNumberPicker.setFilters(new InputFilter[0]);
-      }
-      AppMethodBeat.o(112855);
-      return;
-    }
-    catch (IllegalAccessException paramNumberPicker)
-    {
-      ak.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying IllegalAccessException", new Object[0]);
-      AppMethodBeat.o(112855);
-      return;
-    }
-    catch (NoSuchFieldException paramNumberPicker)
-    {
-      ak.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying NoSuchFieldException", new Object[0]);
-      AppMethodBeat.o(112855);
-    }
+    paramNumberPicker.setDescendantFocusability(393216);
+    AppMethodBeat.o(159578);
   }
   
   public static void e(NumberPicker paramNumberPicker)
   {
-    AppMethodBeat.i(112856);
+    AppMethodBeat.i(159579);
     if (paramNumberPicker == null)
     {
-      AppMethodBeat.o(112856);
+      AppMethodBeat.o(159579);
       return;
     }
     try
     {
-      Runnable localRunnable = (Runnable)new ae(paramNumberPicker, "mSetSelectionCommand").get();
-      if (localRunnable != null) {
-        paramNumberPicker.removeCallbacks(localRunnable);
+      paramNumberPicker = (EditText)new av(paramNumberPicker, "mInputText").get();
+      if (paramNumberPicker != null) {
+        paramNumberPicker.setFilters(new InputFilter[0]);
       }
-      AppMethodBeat.o(112856);
+      AppMethodBeat.o(159579);
       return;
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      ak.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand IllegalAccessException", new Object[0]);
-      AppMethodBeat.o(112856);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying IllegalAccessException", new Object[0]);
+      AppMethodBeat.o(159579);
       return;
     }
     catch (NoSuchFieldException paramNumberPicker)
     {
-      ak.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand NoSuchFieldException", new Object[0]);
-      AppMethodBeat.o(112856);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying NoSuchFieldException", new Object[0]);
+      AppMethodBeat.o(159579);
+    }
+  }
+  
+  public static void f(NumberPicker paramNumberPicker)
+  {
+    AppMethodBeat.i(159580);
+    if (paramNumberPicker == null)
+    {
+      AppMethodBeat.o(159580);
+      return;
+    }
+    try
+    {
+      Runnable localRunnable = (Runnable)new av(paramNumberPicker, "mSetSelectionCommand").get();
+      if (localRunnable != null) {
+        paramNumberPicker.removeCallbacks(localRunnable);
+      }
+      AppMethodBeat.o(159580);
+      return;
+    }
+    catch (IllegalAccessException paramNumberPicker)
+    {
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand IllegalAccessException", new Object[0]);
+      AppMethodBeat.o(159580);
+      return;
+    }
+    catch (NoSuchFieldException paramNumberPicker)
+    {
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand NoSuchFieldException", new Object[0]);
+      AppMethodBeat.o(159580);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.e
  * JD-Core Version:    0.7.0.1
  */

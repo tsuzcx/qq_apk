@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class BackgroundColor
   extends JceStruct
 {
-  public int beginVal;
-  public int endVal;
+  public int beginVal = 0;
+  public int endVal = 0;
   
   public BackgroundColor() {}
   
@@ -32,7 +32,7 @@ public final class BackgroundColor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_KUOLIE_PROTOCOL.BackgroundColor
  * JD-Core Version:    0.7.0.1
  */

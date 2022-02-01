@@ -9,10 +9,10 @@ public final class UserInfo
 {
   static byte[] cache_sig;
   public String MobileNick = "";
-  public long lMobileUin;
+  public long lMobileUin = 0L;
   public String nickname = "";
   public String sKey = "";
-  public byte[] sig;
+  public byte[] sig = null;
   
   public UserInfo() {}
   
@@ -41,24 +41,28 @@ public final class UserInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 0);
+    Object localObject = this.nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.lMobileUin, 1);
-    if (this.sig != null) {
-      paramJceOutputStream.write(this.sig, 2);
+    localObject = this.sig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
-    if (this.MobileNick != null) {
-      paramJceOutputStream.write(this.MobileNick, 3);
+    localObject = this.MobileNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.sKey != null) {
-      paramJceOutputStream.write(this.sKey, 4);
+    localObject = this.sKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.UserInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -27,12 +27,20 @@ class br$a
   
   public String toString()
   {
-    return "Ap [mBssid=" + Arrays.toString(this.gg) + ", mRssi=" + this.gd + ", mFrequency=" + this.gh + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Ap [mBssid=");
+    localStringBuilder.append(Arrays.toString(this.gg));
+    localStringBuilder.append(", mRssi=");
+    localStringBuilder.append(this.gd);
+    localStringBuilder.append(", mFrequency=");
+    localStringBuilder.append(this.gh);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.br.a
  * JD-Core Version:    0.7.0.1
  */

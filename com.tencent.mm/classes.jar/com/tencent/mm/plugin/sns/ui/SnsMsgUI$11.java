@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.MMSlideDelView.c;
 
 final class SnsMsgUI$11
-  implements MenuItem.OnMenuItemClickListener
+  implements MMSlideDelView.c
 {
   SnsMsgUI$11(SnsMsgUI paramSnsMsgUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final int eB(View paramView)
   {
-    AppMethodBeat.i(39077);
-    h.a(this.rSU.getContext(), this.rSU.getString(2131303901), "", new SnsMsgUI.11.1(this), null);
-    AppMethodBeat.o(39077);
-    return true;
+    AppMethodBeat.i(308499);
+    int i = SnsMsgUI.b(this.RtY).getPositionForView(paramView);
+    AppMethodBeat.o(308499);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.11
  * JD-Core Version:    0.7.0.1
  */

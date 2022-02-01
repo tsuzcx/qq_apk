@@ -59,7 +59,6 @@
                             "type": "wrap_content"
                         },
                         "attributes": {
-                            "setFrameString:": "-1",
                             "setTextColorString:": "#262626",
                             "setText:": "-1",
                             "setBoldFontSizeString:": "17"

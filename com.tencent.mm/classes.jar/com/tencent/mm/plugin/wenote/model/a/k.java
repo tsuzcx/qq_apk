@@ -5,12 +5,12 @@ public final class k
 {
   public int duration;
   public String thumbPath;
-  public String vxi;
-  public boolean vxj = false;
+  public String xyq;
+  public boolean xyy = false;
   
-  public final String dhR()
+  public final String dwe()
   {
-    return this.vxi;
+    return this.xyq;
   }
   
   public final int getType()

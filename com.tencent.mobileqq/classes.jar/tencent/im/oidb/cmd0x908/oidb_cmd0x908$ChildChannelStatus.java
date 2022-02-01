@@ -20,13 +20,14 @@ public final class oidb_cmd0x908$ChildChannelStatus
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48 }, new String[] { "uint32_child_channel_id", "uint32_status", "bytes_channel_header_url", "uint32_subscription_count", "uint32_system_recomm", "uint32_is_topic" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ChildChannelStatus.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48 }, new String[] { "uint32_child_channel_id", "uint32_status", "bytes_channel_header_url", "uint32_subscription_count", "uint32_system_recomm", "uint32_is_topic" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, localInteger, localInteger }, ChildChannelStatus.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x908.oidb_cmd0x908.ChildChannelStatus
  * JD-Core Version:    0.7.0.1
  */

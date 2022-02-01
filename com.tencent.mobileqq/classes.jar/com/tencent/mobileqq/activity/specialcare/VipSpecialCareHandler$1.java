@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import akfy;
-import akfz;
 import android.os.HandlerThread;
 import android.os.Looper;
 import com.tencent.mobileqq.app.ThreadManager;
 
-public class VipSpecialCareHandler$1
+class VipSpecialCareHandler$1
   implements Runnable
 {
-  public VipSpecialCareHandler$1(akfy paramakfy) {}
+  VipSpecialCareHandler$1(VipSpecialCareHandler paramVipSpecialCareHandler) {}
   
   public void run()
   {
-    akfy.a(this.this$0, ThreadManager.newFreeHandlerThread("special-timer", 0));
-    akfy.a(this.this$0).start();
-    Looper localLooper = akfy.a(this.this$0).getLooper();
+    VipSpecialCareHandler.a(this.this$0, ThreadManager.newFreeHandlerThread("special-timer", 0));
+    VipSpecialCareHandler.a(this.this$0).start();
+    Looper localLooper = VipSpecialCareHandler.a(this.this$0).getLooper();
     if (localLooper == null) {
       return;
     }
-    akfy.a(this.this$0, new akfz(this, localLooper));
+    VipSpecialCareHandler.a(this.this$0, new VipSpecialCareHandler.1.1(this, localLooper));
   }
 }
 

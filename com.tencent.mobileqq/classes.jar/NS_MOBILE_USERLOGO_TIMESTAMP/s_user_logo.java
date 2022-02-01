@@ -31,14 +31,15 @@ public final class s_user_logo
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.timestamp, 1);
-    if (this.ip != null) {
-      paramJceOutputStream.write(this.ip, 2);
+    String str = this.ip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_USERLOGO_TIMESTAMP.s_user_logo
  * JD-Core Version:    0.7.0.1
  */

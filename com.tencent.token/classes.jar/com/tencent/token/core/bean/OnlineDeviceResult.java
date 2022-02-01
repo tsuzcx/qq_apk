@@ -9,7 +9,7 @@ public class OnlineDeviceResult
   implements Serializable
 {
   private static final long serialVersionUID = 8266486502836044167L;
-  public ArrayList mDevicesList;
+  public ArrayList<a> mDevicesList;
   
   public OnlineDeviceResult(JSONArray paramJSONArray)
   {
@@ -20,12 +20,33 @@ public class OnlineDeviceResult
       while (i < paramJSONArray.length())
       {
         JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-        g localg = new g(this);
-        localg.a(localJSONObject);
-        this.mDevicesList.add(localg);
+        a locala = new a();
+        locala.a = localJSONObject.getString("dguid");
+        locala.b = localJSONObject.getString("dname");
+        locala.c = localJSONObject.getString("dtype");
+        locala.d = localJSONObject.getString("ddes");
+        locala.e = localJSONObject.getInt("dappid");
+        locala.f = localJSONObject.getInt("dsubappid");
+        locala.g = localJSONObject.getString("dappname");
+        locala.h = localJSONObject.getInt("dflag");
+        this.mDevicesList.add(locala);
         i += 1;
       }
     }
+  }
+  
+  public final class a
+  {
+    public String a;
+    public String b;
+    public String c;
+    public String d;
+    public int e;
+    public int f;
+    public String g;
+    public int h;
+    
+    public a() {}
   }
 }
 

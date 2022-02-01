@@ -6,7 +6,7 @@ public abstract interface appid_xcx_video
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.cnst.appid_xcx_video
  * JD-Core Version:    0.7.0.1
  */

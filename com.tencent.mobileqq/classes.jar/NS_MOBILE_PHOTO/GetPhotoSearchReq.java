@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,21 +12,22 @@ public final class GetPhotoSearchReq
   extends JceStruct
 {
   static Map<Integer, PhotoSearchBoxChosenItem> cache_items;
-  static int cache_req_type = 0;
+  static int cache_req_type;
   static ArrayList<Integer> cache_types = new ArrayList();
   public String albumid = "";
   public String attach_info = "";
-  public Map<Integer, PhotoSearchBoxChosenItem> items;
+  public Map<Integer, PhotoSearchBoxChosenItem> items = null;
   public int req_type = 0;
-  public ArrayList<Integer> types;
-  public long uin;
+  public ArrayList<Integer> types = null;
+  public long uin = 0L;
   
   static
   {
-    cache_types.add(Integer.valueOf(0));
+    Integer localInteger = Integer.valueOf(0);
+    cache_types.add(localInteger);
     cache_items = new HashMap();
     PhotoSearchBoxChosenItem localPhotoSearchBoxChosenItem = new PhotoSearchBoxChosenItem();
-    cache_items.put(Integer.valueOf(0), localPhotoSearchBoxChosenItem);
+    cache_items.put(localInteger, localPhotoSearchBoxChosenItem);
   }
   
   public GetPhotoSearchReq() {}
@@ -53,24 +55,28 @@ public final class GetPhotoSearchReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 1);
+    Object localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.req_type, 2);
-    if (this.types != null) {
-      paramJceOutputStream.write(this.types, 3);
+    localObject = this.types;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.items != null) {
-      paramJceOutputStream.write(this.items, 4);
+    localObject = this.items;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 5);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetPhotoSearchReq
  * JD-Core Version:    0.7.0.1
  */

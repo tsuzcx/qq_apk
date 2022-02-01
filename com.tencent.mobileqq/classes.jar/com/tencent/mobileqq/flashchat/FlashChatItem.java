@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flashchat;
 
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import java.io.Serializable;
 
 public class FlashChatItem
@@ -11,7 +11,7 @@ public class FlashChatItem
   public static final int FREETYPE_VIP = 4;
   public static final int ID_NORMAL = -100001;
   public static final int ID_RANDOM = -100000;
-  public static FlashChatItem sDefaultItem = new FlashChatItem(-100000, alud.a(2131705010));
+  public static FlashChatItem sDefaultItem = new FlashChatItem(-100000, HardCodeUtil.a(2131902625));
   public String appName;
   public String color = "#02A7E3";
   public int feedType;
@@ -32,12 +32,33 @@ public class FlashChatItem
   
   public String toString()
   {
-    return "FlashChatItem{id=" + this.id + ", appName='" + this.appName + '\'' + ", feedType=" + this.feedType + ", name='" + this.name + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", mainView='" + this.mainView + '\'' + ", ver='" + this.ver + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FlashChatItem{id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", appName='");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", feedType=");
+    localStringBuilder.append(this.feedType);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mainView='");
+    localStringBuilder.append(this.mainView);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ver='");
+    localStringBuilder.append(this.ver);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatItem
  * JD-Core Version:    0.7.0.1
  */

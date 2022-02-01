@@ -2,13 +2,14 @@ package com.tencent.mobileqq.fts;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import asiv;
-import asjc;
-import asjd;
-import asjk;
-import asjl;
-import asjm;
-import com.tencent.mobileqq.fts.entity.FTSEntity;
+import com.tencent.mobileqq.fts.v2.FTSQueryArgsV2;
+import com.tencent.mobileqq.fts.v2.entity.FTSEntityV2;
+import com.tencent.mobileqq.fts.v2.logger.ILogger;
+import com.tencent.mobileqq.fts.v2.logger.Logger;
+import com.tencent.mobileqq.fts.v2.utils.FTSUtils;
+import com.tencent.mobileqq.fts.v2.utils.FileUtils;
+import com.tencent.mobileqq.fts.v2.utils.SQLUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,37 +18,38 @@ import java.util.Map;
 
 public class FTSDatabase
 {
-  private static asjc jdField_a_of_type_Asjc = new asjd();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
+  private static ILogger a = new Logger();
+  private boolean b = false;
+  private boolean c = true;
   
   public FTSDatabase()
   {
-    if (!this.b) {
+    if (!this.c) {
       log("Q.fts.troop.FTSDatabase", "w", "load so failed.");
     }
   }
   
-  public static asjc a()
+  public static ILogger a()
   {
-    return jdField_a_of_type_Asjc;
+    return a;
   }
   
-  public static void a(asjc paramasjc)
+  public static void a(ILogger paramILogger)
   {
-    jdField_a_of_type_Asjc = paramasjc;
-  }
-  
-  private void b()
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      throw new RuntimeException("Cannot operate database on UI Thread.");
-    }
+    a = paramILogger;
   }
   
   private synchronized native void closeNative();
   
   private synchronized native boolean execSQLNative(String paramString);
+  
+  private void g()
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      return;
+    }
+    throw new RuntimeException("Cannot operate database on UI Thread.");
+  }
   
   private synchronized native String getErrorMsg();
   
@@ -60,63 +62,88 @@ public class FTSDatabase
     a().a(paramString1, paramString2, paramString3);
   }
   
+  private synchronized native int mergeCommand(String paramString, int paramInt1, int paramInt2);
+  
   private synchronized native int queryIndexCount(String paramString);
   
   private synchronized native Object queryNative(String paramString, int[] paramArrayOfInt);
   
   private synchronized native boolean updateNative(String paramString, int[] paramArrayOfInt, byte[]... paramVarArgs);
   
-  public List<FTSEntity> a(asiv paramasiv)
+  public int a(String paramString, int paramInt1, int paramInt2)
   {
-    b();
-    if (!d()) {
-      log("Q.fts.troop.FTSDatabase", "w", "query failed. FTSDatabase is not available");
+    if (!f()) {
+      return -1;
     }
-    Object localObject3;
-    for (;;)
+    if (!c())
     {
-      return null;
-      Object localObject1 = new ArrayList();
-      localObject3 = asjm.a(paramasiv, (List)localObject1);
-      int[] arrayOfInt = new int[((List)localObject1).size()];
-      int i = 0;
-      while (i < ((List)localObject1).size())
-      {
-        arrayOfInt[i] = ((Integer)((List)localObject1).get(i)).intValue();
-        i += 1;
-      }
-      long l1 = System.currentTimeMillis();
-      try
-      {
-        localObject1 = (List)queryNative((String)localObject3, arrayOfInt);
-        long l2 = System.currentTimeMillis();
-        log("Q.fts.troop.FTSDatabase", "d", "query cost time = " + (l2 - l1) + " ; sql = " + (String)localObject3);
-        localObject3 = new ArrayList();
-        if (localObject1 != null)
-        {
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            ((List)localObject3).add(asjm.a((Map)((Iterator)localObject1).next(), paramasiv.a));
-          }
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        for (;;)
-        {
-          localUnsatisfiedLinkError.printStackTrace();
-          Object localObject2 = null;
-        }
-      }
+      QLog.d("Q.fts.troop.FTSDatabase", 1, "mergeCommand begin transaction failed");
+      return -1;
     }
-    return localObject3;
+    int i = mergeCommand(paramString, paramInt1, paramInt2);
+    if (!d())
+    {
+      QLog.d("Q.fts.troop.FTSDatabase", 1, "mergeCommand commit transaction failed");
+      return -1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.fts.troop.FTSDatabase", 2, new Object[] { "mergeCommand ", paramString, " x=", Integer.valueOf(paramInt1), " y=", Integer.valueOf(paramInt2), " ret:", Integer.valueOf(i) });
+    }
+    return i;
+  }
+  
+  public List<FTSEntityV2> a(FTSQueryArgsV2 paramFTSQueryArgsV2)
+  {
+    g();
+    if (!f())
+    {
+      log("Q.fts.troop.FTSDatabase", "w", "query failed. FTSDatabase is not available");
+      return null;
+    }
+    Object localObject1 = new ArrayList();
+    Object localObject2 = SQLUtils.a(paramFTSQueryArgsV2, (List)localObject1);
+    Object localObject3 = new int[((List)localObject1).size()];
+    int i = 0;
+    while (i < ((List)localObject1).size())
+    {
+      localObject3[i] = ((Integer)((List)localObject1).get(i)).intValue();
+      i += 1;
+    }
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator;
+    try
+    {
+      localObject1 = (List)queryNative((String)localObject2, (int[])localObject3);
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+      localIterator = null;
+    }
+    long l2 = System.currentTimeMillis();
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("query cost time = ");
+    ((StringBuilder)localObject3).append(l2 - l1);
+    ((StringBuilder)localObject3).append(" ; sql = ");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    log("Q.fts.troop.FTSDatabase", "d", ((StringBuilder)localObject3).toString());
+    localObject2 = new ArrayList();
+    if (localIterator != null)
+    {
+      localIterator = localIterator.iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject2).add(SQLUtils.a((Map)localIterator.next(), paramFTSQueryArgsV2.a));
+      }
+      return localObject2;
+    }
+    return null;
   }
   
   @Deprecated
   public List<Map> a(String paramString, int[] paramArrayOfInt)
   {
-    b();
-    if (!d())
+    g();
+    if (!f())
     {
       log("Q.fts.troop.FTSDatabase", "w", "querySQL failed. FTSDatabase is not available");
       return null;
@@ -128,71 +155,194 @@ public class FTSDatabase
     }
     catch (UnsatisfiedLinkError paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
     }
-  }
-  
-  public void a()
-  {
-    if (d()) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      log("Q.fts.troop.FTSDatabase", "i", Thread.currentThread().getName() + " native closeNative V2");
-      closeNative();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
-    }
+    return null;
   }
   
   public void a(String paramString)
   {
-    b();
-    if (this.jdField_a_of_type_Boolean)
+    g();
+    if (this.b)
     {
       log("Q.fts.troop.FTSDatabase", "w", "already initialized.");
       return;
     }
-    if (!this.b)
+    if (!this.c)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       log("Q.fts.troop.FTSDatabase", "w", "init failed because so is not available.");
       return;
     }
-    asjl.a(new File(paramString));
+    FileUtils.a(new File(paramString));
+    boolean bool;
     try
     {
-      log("Q.fts.troop.FTSDatabase", "i", Thread.currentThread().getName() + " native initNative V2");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Thread.currentThread().getName());
+      localStringBuilder.append(" native initNative V2");
+      log("Q.fts.troop.FTSDatabase", "i", localStringBuilder.toString());
       bool = initNative(paramString, true);
-      if (!bool)
-      {
-        this.b = false;
-        this.jdField_a_of_type_Boolean = true;
-        log("Q.fts.troop.FTSDatabase", "w", "init failed because initNative failed.");
-        return;
-      }
     }
     catch (UnsatisfiedLinkError paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        boolean bool = false;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      log("Q.fts.troop.FTSDatabase", "d", "initNative succeed.");
+      paramString.printStackTrace();
+      bool = false;
     }
+    if (!bool)
+    {
+      this.c = false;
+      this.b = true;
+      log("Q.fts.troop.FTSDatabase", "w", "init failed because initNative failed.");
+      return;
+    }
+    this.b = true;
+    log("Q.fts.troop.FTSDatabase", "d", "initNative succeed.");
   }
   
-  protected boolean a()
+  public boolean a(FTSEntityV2 paramFTSEntityV2)
+  {
+    g();
+    boolean bool2 = f();
+    boolean bool1 = false;
+    if (!bool2)
+    {
+      log("Q.fts.troop.FTSDatabase", "w", "insert failed. FTSDatabase is not available");
+      return false;
+    }
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    paramFTSEntityV2 = SQLUtils.a(paramFTSEntityV2, localArrayList2, localArrayList1);
+    int[] arrayOfInt = new int[localArrayList2.size()];
+    int i = 0;
+    while (i < localArrayList2.size())
+    {
+      arrayOfInt[i] = ((Integer)localArrayList2.get(i)).intValue();
+      i += 1;
+    }
+    try
+    {
+      bool2 = insertNative(paramFTSEntityV2, arrayOfInt, (byte[][])localArrayList1.toArray(new byte[localArrayList1.size()][]));
+      bool1 = bool2;
+    }
+    catch (UnsatisfiedLinkError paramFTSEntityV2)
+    {
+      paramFTSEntityV2.printStackTrace();
+    }
+    if (!bool1) {
+      try
+      {
+        paramFTSEntityV2 = new StringBuilder();
+        paramFTSEntityV2.append("insert failed. error msg = ");
+        paramFTSEntityV2.append(getErrorMsg());
+        log("Q.fts.troop.FTSDatabase", "w", paramFTSEntityV2.toString());
+        return bool1;
+      }
+      catch (UnsatisfiedLinkError paramFTSEntityV2)
+      {
+        paramFTSEntityV2.printStackTrace();
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean a(Class<? extends FTSEntityV2> paramClass)
+  {
+    g();
+    if (!f())
+    {
+      log("Q.fts.troop.FTSDatabase", "w", "createTable failed. FTSDatabase is not available");
+      return false;
+    }
+    boolean bool3 = true;
+    boolean bool2 = true;
+    boolean bool1 = true;
+    String str3;
+    String str2;
+    for (;;)
+    {
+      str3 = SQLUtils.a(paramClass, FTSUtils.a(), bool3, bool2, bool1);
+      boolean bool4;
+      try
+      {
+        bool4 = execSQLNative(str3);
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
+      {
+        localUnsatisfiedLinkError1.printStackTrace();
+        bool4 = false;
+      }
+      if (bool4) {
+        break label378;
+      }
+      try
+      {
+        String str1 = getErrorMsg();
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+      {
+        localUnsatisfiedLinkError2.printStackTrace();
+        str2 = "";
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Can't create virtual table. ");
+      localStringBuilder.append(str2);
+      log("Q.fts.troop.FTSDatabase", "e", localStringBuilder.toString());
+      if (!FTSUtils.a())
+      {
+        paramClass = new StringBuilder();
+        paramClass.append("createTable failed.");
+        paramClass.append(str2);
+        log("Q.fts.troop.FTSDatabase", "e", paramClass.toString());
+        return false;
+      }
+      if (TextUtils.isEmpty(str2))
+      {
+        log("Q.fts.troop.FTSDatabase", "e", "createTable failed. No error msg.");
+        return false;
+      }
+      if ((str2.contains("unrecognized parameter: notindexed")) && (bool2))
+      {
+        bool2 = false;
+      }
+      else if ((str2.contains("unrecognized parameter: compress")) && (bool1))
+      {
+        bool1 = false;
+      }
+      else
+      {
+        if ((!str2.contains("near \"NOT\": syntax error")) || (!bool3)) {
+          break;
+        }
+        bool3 = false;
+      }
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("table ");
+    localStringBuilder.append(paramClass.getSimpleName());
+    localStringBuilder.append(" already exists");
+    if (str2.contains(localStringBuilder.toString()))
+    {
+      paramClass = new StringBuilder();
+      paramClass.append("createTable succeed. ");
+      paramClass.append(str3);
+      log("Q.fts.troop.FTSDatabase", "d", paramClass.toString());
+      return true;
+    }
+    paramClass = new StringBuilder();
+    paramClass.append("createTable failed. ");
+    paramClass.append(str2);
+    log("Q.fts.troop.FTSDatabase", "e", paramClass.toString());
+    return false;
+    label378:
+    paramClass = new StringBuilder();
+    paramClass.append("createTable succeed. ");
+    paramClass.append(str3);
+    log("Q.fts.troop.FTSDatabase", "d", paramClass.toString());
+    return true;
+  }
+  
+  protected boolean b()
   {
     try
     {
@@ -206,136 +356,10 @@ public class FTSDatabase
     return false;
   }
   
-  public boolean a(FTSEntity paramFTSEntity)
+  public boolean b(String paramString)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    b();
-    if (!d()) {
-      log("Q.fts.troop.FTSDatabase", "w", "insert failed. FTSDatabase is not available");
-    }
-    do
-    {
-      return bool2;
-      ArrayList localArrayList1 = new ArrayList();
-      ArrayList localArrayList2 = new ArrayList();
-      paramFTSEntity = asjm.a(paramFTSEntity, localArrayList2, localArrayList1);
-      int[] arrayOfInt = new int[localArrayList2.size()];
-      int i = 0;
-      while (i < localArrayList2.size())
-      {
-        arrayOfInt[i] = ((Integer)localArrayList2.get(i)).intValue();
-        i += 1;
-      }
-      try
-      {
-        bool2 = insertNative(paramFTSEntity, arrayOfInt, (byte[][])localArrayList1.toArray(new byte[localArrayList1.size()][]));
-        bool1 = bool2;
-      }
-      catch (UnsatisfiedLinkError paramFTSEntity)
-      {
-        for (;;)
-        {
-          paramFTSEntity.printStackTrace();
-        }
-      }
-      bool2 = bool1;
-    } while (bool1);
-    try
-    {
-      log("Q.fts.troop.FTSDatabase", "w", "insert failed. error msg = " + getErrorMsg());
-      return bool1;
-    }
-    catch (UnsatisfiedLinkError paramFTSEntity)
-    {
-      paramFTSEntity.printStackTrace();
-      return bool1;
-    }
-  }
-  
-  public boolean a(Class<? extends FTSEntity> paramClass)
-  {
-    b();
-    if (!d())
-    {
-      log("Q.fts.troop.FTSDatabase", "w", "createTable failed. FTSDatabase is not available");
-      return false;
-    }
-    boolean bool3 = true;
-    boolean bool2 = true;
-    boolean bool1 = true;
-    String str2;
-    for (;;)
-    {
-      str2 = asjm.a(paramClass, asjk.a(), bool1, bool2, bool3);
-      try
-      {
-        bool4 = execSQLNative(str2);
-        if (!bool4) {
-          localObject = "";
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-      {
-        try
-        {
-          boolean bool4;
-          String str1 = getErrorMsg();
-          Object localObject = str1;
-          log("Q.fts.troop.FTSDatabase", "e", "Can't create virtual table. " + (String)localObject);
-          if (!asjk.a())
-          {
-            log("Q.fts.troop.FTSDatabase", "e", "createTable failed." + (String)localObject);
-            return false;
-            localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
-            localUnsatisfiedLinkError1.printStackTrace();
-            bool4 = false;
-          }
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
-        {
-          for (;;)
-          {
-            localUnsatisfiedLinkError2.printStackTrace();
-          }
-          if (TextUtils.isEmpty(localUnsatisfiedLinkError1))
-          {
-            log("Q.fts.troop.FTSDatabase", "e", "createTable failed. No error msg.");
-            return false;
-          }
-          if ((localUnsatisfiedLinkError1.contains("unrecognized parameter: notindexed")) && (bool2))
-          {
-            bool2 = false;
-          }
-          else if ((localUnsatisfiedLinkError1.contains("unrecognized parameter: compress")) && (bool3))
-          {
-            bool3 = false;
-          }
-          else if ((localUnsatisfiedLinkError1.contains("near \"NOT\": syntax error")) && (bool1))
-          {
-            bool1 = false;
-          }
-          else
-          {
-            if (localUnsatisfiedLinkError1.contains("table " + paramClass.getSimpleName() + " already exists"))
-            {
-              log("Q.fts.troop.FTSDatabase", "d", "createTable succeed. " + str2);
-              return true;
-            }
-            log("Q.fts.troop.FTSDatabase", "e", "createTable failed. " + localUnsatisfiedLinkError1);
-            return false;
-          }
-        }
-      }
-    }
-    log("Q.fts.troop.FTSDatabase", "d", "createTable succeed. " + str2);
-    return true;
-  }
-  
-  public boolean a(String paramString)
-  {
-    b();
-    if (!d())
+    g();
+    if (!f())
     {
       log("Q.fts.troop.FTSDatabase", "w", "execSQL failed. FTSDatabase is not available");
       return false;
@@ -352,64 +376,73 @@ public class FTSDatabase
     return false;
   }
   
-  public boolean b()
-  {
-    b();
-    boolean bool1;
-    if (!d())
-    {
-      log("Q.fts.troop.FTSDatabase", "w", "beginTransaction failed. FTSDatabase is not available");
-      bool1 = false;
-    }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        return bool1;
-        bool2 = a("BEGIN;");
-        bool1 = bool2;
-      } while (bool2);
-      log("Q.fts.troop.FTSDatabase", "e", "beginTransaction failed.");
-      bool1 = bool2;
-    } while (a("ROLLBACK;"));
-    log("Q.fts.troop.FTSDatabase", "e", "beginTransaction ROLLBACK failed.");
-    return bool2;
-  }
-  
   public boolean c()
   {
-    b();
-    boolean bool1;
-    if (!d())
+    g();
+    if (!f())
     {
-      log("Q.fts.troop.FTSDatabase", "w", "commitTransaction failed. FTSDatabase is not available");
-      bool1 = false;
+      log("Q.fts.troop.FTSDatabase", "w", "beginTransaction failed. FTSDatabase is not available");
+      return false;
     }
-    boolean bool2;
-    do
+    boolean bool = b("BEGIN;");
+    if (!bool)
     {
-      do
-      {
-        return bool1;
-        bool2 = a("COMMIT;");
-        bool1 = bool2;
-      } while (bool2);
-      log("Q.fts.troop.FTSDatabase", "e", "commitTransaction failed.");
-      bool1 = bool2;
-    } while (a("ROLLBACK;"));
-    log("Q.fts.troop.FTSDatabase", "e", "commitTransaction ROLLBACK failed.");
-    return bool2;
+      log("Q.fts.troop.FTSDatabase", "e", "beginTransaction failed.");
+      if (!b("ROLLBACK;")) {
+        log("Q.fts.troop.FTSDatabase", "e", "beginTransaction ROLLBACK failed.");
+      }
+    }
+    return bool;
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_Boolean) && (this.b);
+    g();
+    if (!f())
+    {
+      log("Q.fts.troop.FTSDatabase", "w", "commitTransaction failed. FTSDatabase is not available");
+      return false;
+    }
+    boolean bool = b("COMMIT;");
+    if (!bool)
+    {
+      log("Q.fts.troop.FTSDatabase", "e", "commitTransaction failed.");
+      if (!b("ROLLBACK;")) {
+        log("Q.fts.troop.FTSDatabase", "e", "commitTransaction ROLLBACK failed.");
+      }
+    }
+    return bool;
+  }
+  
+  public void e()
+  {
+    if (f())
+    {
+      this.b = false;
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(Thread.currentThread().getName());
+        localStringBuilder.append(" native closeNative V2");
+        log("Q.fts.troop.FTSDatabase", "i", localStringBuilder.toString());
+        closeNative();
+        return;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        localUnsatisfiedLinkError.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean f()
+  {
+    return (this.b) && (this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.FTSDatabase
  * JD-Core Version:    0.7.0.1
  */

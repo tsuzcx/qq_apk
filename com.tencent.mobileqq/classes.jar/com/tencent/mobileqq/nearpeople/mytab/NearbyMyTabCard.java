@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearpeople.mytab;
 
-import com.tencent.mobileqq.data.StrangerInfo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,18 +21,35 @@ public class NearbyMyTabCard
   public int nextCharm;
   public String nickName = "";
   public Long uin;
-  public List<StrangerInfo> visitors = new ArrayList();
+  public List<Object> visitors = new ArrayList();
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(120);
-    localStringBuilder.append("[").append("uin = ").append(this.uin).append(", nickName = ").append(this.nickName).append(", newLikeNum = ").append(this.newLikeNum).append(", charmValue = ").append(this.charmValue).append(", charmLevel = ").append(this.charmLevel).append(", currentCharm = ").append(this.currentCharm).append(", nextCharm = ").append(this.nextCharm).append(", giftNum = ").append(this.giftNum).append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append("uin = ");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", nickName = ");
+    localStringBuilder.append(this.nickName);
+    localStringBuilder.append(", newLikeNum = ");
+    localStringBuilder.append(this.newLikeNum);
+    localStringBuilder.append(", charmValue = ");
+    localStringBuilder.append(this.charmValue);
+    localStringBuilder.append(", charmLevel = ");
+    localStringBuilder.append(this.charmLevel);
+    localStringBuilder.append(", currentCharm = ");
+    localStringBuilder.append(this.currentCharm);
+    localStringBuilder.append(", nextCharm = ");
+    localStringBuilder.append(this.nextCharm);
+    localStringBuilder.append(", giftNum = ");
+    localStringBuilder.append(this.giftNum);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ final class j$1
   
   public final void run()
   {
-    AppMethodBeat.i(111905);
-    this.nyH.invalidateSelf();
-    AppMethodBeat.o(111905);
+    AppMethodBeat.i(42076);
+    this.IQv.invalidateSelf();
+    AppMethodBeat.o(42076);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.j.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,13 +19,14 @@ final class BlockingOperatorToFuture$2
   private T getValue()
   {
     Throwable localThrowable = (Throwable)this.val$error.get();
-    if (localThrowable != null) {
-      throw new ExecutionException("Observable onError", localThrowable);
-    }
-    if (this.cancelled) {
+    if (localThrowable == null)
+    {
+      if (!this.cancelled) {
+        return this.val$value.get();
+      }
       throw new CancellationException("Subscription unsubscribed");
     }
-    return this.val$value.get();
+    throw new ExecutionException("Observable onError", localThrowable);
   }
   
   public boolean cancel(boolean paramBoolean)
@@ -51,7 +52,11 @@ final class BlockingOperatorToFuture$2
     if (this.val$finished.await(paramLong, paramTimeUnit)) {
       return getValue();
     }
-    throw new TimeoutException("Timed out after " + paramTimeUnit.toMillis(paramLong) + "ms waiting for underlying Observable.");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Timed out after ");
+    localStringBuilder.append(paramTimeUnit.toMillis(paramLong));
+    localStringBuilder.append("ms waiting for underlying Observable.");
+    throw new TimeoutException(localStringBuilder.toString());
   }
   
   public boolean isCancelled()
@@ -66,7 +71,7 @@ final class BlockingOperatorToFuture$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.BlockingOperatorToFuture.2
  * JD-Core Version:    0.7.0.1
  */

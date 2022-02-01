@@ -1,0 +1,24 @@
+package com.tencent.mm.plugin.editor.model.nativenote.spans;
+
+import android.text.style.StyleSpan;
+
+public class BoldSpan
+  extends StyleSpan
+  implements h<Boolean>
+{
+  public BoldSpan()
+  {
+    super(1);
+  }
+  
+  public static Boolean dxs()
+  {
+    return Boolean.TRUE;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.BoldSpan
+ * JD-Core Version:    0.7.0.1
+ */

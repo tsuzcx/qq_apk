@@ -51,24 +51,26 @@ public class UploadServiceImpl
   @SuppressLint({"InlinedApi"})
   private void acquireWakeLockIfNot()
   {
-    int i = 1;
-    if (!UploadGlobalConfig.getConfig().canHoldSystemLock()) {}
-    do
-    {
+    if (!UploadGlobalConfig.getConfig().canHoldSystemLock()) {
       return;
-      if (this.mWakeLock == null)
-      {
-        this.mWakeLock = ((PowerManager)UploadGlobalConfig.getContext().getSystemService("power")).newWakeLock(1, "UploadServiceImpl");
-        this.mWakeLock.acquire();
-        UploadLog.d("UploadServiceImpl", "acquireWakeLock()");
-      }
-    } while (this.mWifiLock != null);
-    WifiManager localWifiManager = (WifiManager)UploadGlobalConfig.getContext().getApplicationContext().getSystemService("wifi");
-    if (Build.VERSION.SDK_INT >= 12) {
-      i = 3;
     }
-    this.mWifiLock = localWifiManager.createWifiLock(i, "UploadServiceImpl");
-    UploadLog.d("UploadServiceImpl", "acquireWifiLock()");
+    Object localObject = this.mWakeLock;
+    int i = 1;
+    if (localObject == null)
+    {
+      this.mWakeLock = ((PowerManager)UploadGlobalConfig.getContext().getSystemService("power")).newWakeLock(1, "UploadServiceImpl");
+      this.mWakeLock.acquire();
+      UploadLog.d("UploadServiceImpl", "acquireWakeLock()");
+    }
+    if (this.mWifiLock == null)
+    {
+      localObject = (WifiManager)UploadGlobalConfig.getContext().getApplicationContext().getSystemService("wifi");
+      if (Build.VERSION.SDK_INT >= 12) {
+        i = 3;
+      }
+      this.mWifiLock = ((WifiManager)localObject).createWifiLock(i, "UploadServiceImpl");
+      UploadLog.d("UploadServiceImpl", "acquireWifiLock()");
+    }
   }
   
   private void check2doClose()
@@ -80,33 +82,37 @@ public class UploadServiceImpl
   
   public static UploadServiceImpl getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new UploadServiceImpl();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new UploadServiceImpl();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private void releaseWakeLockIfExist()
   {
-    if (!UploadGlobalConfig.getConfig().canHoldSystemLock()) {}
-    do
-    {
+    if (!UploadGlobalConfig.getConfig().canHoldSystemLock()) {
       return;
-      if ((this.mWakeLock != null) && (this.mWakeLock.isHeld()))
-      {
-        this.mWakeLock.release();
-        this.mWakeLock = null;
-        UploadLog.d("UploadServiceImpl", "releaseWakeLock()");
-      }
-    } while ((this.mWifiLock == null) || (!this.mWifiLock.isHeld()));
-    this.mWifiLock.release();
-    this.mWifiLock = null;
-    UploadLog.d("UploadServiceImpl", "releaseWifiLock()");
+    }
+    Object localObject = this.mWakeLock;
+    if ((localObject != null) && (((PowerManager.WakeLock)localObject).isHeld()))
+    {
+      this.mWakeLock.release();
+      this.mWakeLock = null;
+      UploadLog.d("UploadServiceImpl", "releaseWakeLock()");
+    }
+    localObject = this.mWifiLock;
+    if ((localObject != null) && (((WifiManager.WifiLock)localObject).isHeld()))
+    {
+      this.mWifiLock.release();
+      this.mWifiLock = null;
+      UploadLog.d("UploadServiceImpl", "releaseWifiLock()");
+    }
   }
   
   private void setCloseTimer()
@@ -128,13 +134,11 @@ public class UploadServiceImpl
     }
     if (UploadTaskManager.getTaskType(paramAbstractUploadTask) == Const.FileType.Photo) {
       this.mImageUploadService.cancel(paramAbstractUploadTask);
-    }
-    for (;;)
-    {
-      UploadFlowTracker.trackCancel(paramAbstractUploadTask);
-      return true;
+    } else {
       this.mOtherUploadService.cancel(paramAbstractUploadTask);
     }
+    UploadFlowTracker.trackCancel(paramAbstractUploadTask);
+    return true;
   }
   
   public boolean clearCacheWhenIdle(Context paramContext)
@@ -162,8 +166,9 @@ public class UploadServiceImpl
     }
     UploadLog.v("UploadServiceImpl", "doClose --- R.I.P");
     mInit = false;
-    if (this.mTimer != null) {
-      this.mTimer.cancel();
+    Timer localTimer = this.mTimer;
+    if (localTimer != null) {
+      localTimer.cancel();
     }
     releaseWakeLockIfExist();
     this.mImageUploadService.close();
@@ -180,12 +185,17 @@ public class UploadServiceImpl
   
   public boolean isUploadIdle()
   {
-    if ((this.mImageUploadService.isUploadIdle()) && (this.mOtherUploadService.isUploadIdle())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      UploadLog.d("UploadServiceImpl", "UploadServiceImpl isUploadIdle: " + bool);
-      return bool;
+    boolean bool;
+    if ((this.mImageUploadService.isUploadIdle()) && (this.mOtherUploadService.isUploadIdle())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UploadServiceImpl isUploadIdle: ");
+    localStringBuilder.append(bool);
+    UploadLog.d("UploadServiceImpl", localStringBuilder.toString());
+    return bool;
   }
   
   public void keepImageTmpFile(boolean paramBoolean) {}
@@ -200,7 +210,10 @@ public class UploadServiceImpl
   public void prepare(TaskTypeConfig paramTaskTypeConfig)
   {
     paramTaskTypeConfig = paramTaskTypeConfig.serverRouteTable.supportFileType;
-    UploadLog.d("UploadServiceImpl", "prepare() type=" + paramTaskTypeConfig);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("prepare() type=");
+    localStringBuilder.append(paramTaskTypeConfig);
+    UploadLog.d("UploadServiceImpl", localStringBuilder.toString());
     if (paramTaskTypeConfig == Const.FileType.Photo)
     {
       this.mImageUploadService.prepare(paramTaskTypeConfig);
@@ -211,18 +224,25 @@ public class UploadServiceImpl
   
   public void setBackgroundMode(boolean paramBoolean)
   {
-    UploadLog.d("UploadServiceImpl", "setBackgroundMode:" + paramBoolean);
-    if (!mInit) {}
-    while (!paramBoolean) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setBackgroundMode:");
+    localStringBuilder.append(paramBoolean);
+    UploadLog.d("UploadServiceImpl", localStringBuilder.toString());
+    if (!mInit) {
       return;
     }
-    setCloseTimer();
+    if (paramBoolean) {
+      setCloseTimer();
+    }
   }
   
   public void setDebugServerRoute(DebugServerRoute paramDebugServerRoute)
   {
     RouteFactory.setDebugRoute(paramDebugServerRoute);
-    UploadLog.d("UploadServiceImpl", "setDebugServerRoute -- " + paramDebugServerRoute);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDebugServerRoute -- ");
+    localStringBuilder.append(paramDebugServerRoute);
+    UploadLog.d("UploadServiceImpl", localStringBuilder.toString());
     this.mImageUploadService.reset();
     this.mOtherUploadService.reset();
   }
@@ -232,18 +252,16 @@ public class UploadServiceImpl
     acquireWakeLockIfNot();
     if (UploadTaskManager.getTaskType(paramAbstractUploadTask) == Const.FileType.Photo) {
       this.mImageUploadService.upload(paramAbstractUploadTask);
-    }
-    for (;;)
-    {
-      UploadFlowTracker.trackStart(paramAbstractUploadTask);
-      return true;
+    } else {
       this.mOtherUploadService.upload(paramAbstractUploadTask);
     }
+    UploadFlowTracker.trackStart(paramAbstractUploadTask);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.impl.UploadServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,41 @@
-import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.troop.widget.AvatarWallView;
 
 public class gym
-  implements ActionSheet.OnButtonClickListener
+  implements Animation.AnimationListener
 {
-  public gym(AvatarWallAdapter paramAvatarWallAdapter, Activity paramActivity, ActionSheet paramActionSheet) {}
+  public gym(AvatarWallView paramAvatarWallView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt.length)) {
-      return;
-    }
-    switch (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt[paramInt])
+    int i = 0;
+    paramAnimation = this.a;
+    paramAnimation.p -= 1;
+    if (this.a.p <= 0)
     {
-    }
-    for (;;)
-    {
-      try
+      this.a.e = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c(this.a.jdField_a_of_type_Int, this.a.m);
+      if (this.a.d)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.e();
+        this.a.d = false;
       }
-      catch (Exception paramView)
+      int j = this.a.getChildCount();
+      while (i < j)
       {
-        paramView.printStackTrace();
-        return;
+        this.a.getChildAt(i).clearAnimation();
+        i += 1;
       }
-      AvatarWallAdapter.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.jdField_a_of_type_AndroidAppActivity, 15);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(this.jdField_a_of_type_AndroidAppActivity, 8 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b);
+      this.a.jdField_a_of_type_Int = this.a.m;
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

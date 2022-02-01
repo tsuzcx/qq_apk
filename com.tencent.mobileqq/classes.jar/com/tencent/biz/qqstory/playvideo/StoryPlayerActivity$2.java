@@ -1,7 +1,5 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import vnu;
-
 class StoryPlayerActivity$2
   implements Runnable
 {
@@ -9,12 +7,12 @@ class StoryPlayerActivity$2
   
   public void run()
   {
-    this.this$0.a.h();
+    this.this$0.b.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerActivity.2
  * JD-Core Version:    0.7.0.1
  */

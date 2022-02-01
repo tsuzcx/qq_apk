@@ -146,20 +146,20 @@ public class PoiMapActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131233241));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131233240));
     this.jdField_a_of_type_AndroidViewView = super.findViewById(2131230947);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131233259);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131233249);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131233258);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131233248);
     this.jdField_c_of_type_AndroidViewView.setVisibility(4);
-    Object localObject = super.findViewById(2131233244);
+    Object localObject = super.findViewById(2131233243);
     ((View)localObject).setOnClickListener(this);
     if (this.jdField_h_of_type_Boolean)
     {
       a("rec_locate", "pageview_all", "", "", "");
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_h_of_type_AndroidViewView.findViewById(2131231873).setVisibility(0);
       this.jdField_h_of_type_AndroidViewView.findViewById(2131231874).setVisibility(0);
-      this.jdField_h_of_type_AndroidViewView.findViewById(2131231875).setVisibility(0);
       ((View)localObject).setVisibility(8);
       if ((this.jdField_f_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(this.jdField_o_of_type_JavaLangString)))
       {
@@ -173,11 +173,11 @@ public class PoiMapActivity
     for (;;)
     {
       this.jdField_f_of_type_AndroidViewView = super.findViewById(2131230941);
-      super.findViewById(2131233086).setVisibility(8);
-      localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131233087);
+      super.findViewById(2131233085).setVisibility(8);
+      localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131233086);
       ((EditText)localObject).setFocusable(false);
       ((EditText)localObject).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      localObject = (ImageView)super.findViewById(2131231458);
+      localObject = (ImageView)super.findViewById(2131231457);
       ((ImageView)localObject).setVisibility(0);
       ((ImageView)localObject).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       return;
@@ -951,20 +951,20 @@ public class PoiMapActivity
     ((TranslateAnimation)localObject2).setAnimationListener(localbgt);
     localDialog.setOnDismissListener(new bgu(this, (TranslateAnimation)localObject2, localInputMethodManager));
     this.jdField_g_of_type_AndroidViewView = localDialog.findViewById(2131231116);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localDialog.findViewById(2131233087));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localDialog.findViewById(2131233086));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bhe(this, null));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
     this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(this.jdField_a_of_type_AndroidViewView$OnKeyListener);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)localDialog.findViewById(2131233088));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)localDialog.findViewById(2131233087));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new bgw(this));
-    localObject1 = (Button)localDialog.findViewById(2131233086);
+    localObject1 = (Button)localDialog.findViewById(2131233085);
     ((Button)localObject1).setVisibility(0);
     ((Button)localObject1).setOnClickListener(new bgx(this, localDialog));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localDialog.findViewById(2131231403));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localDialog.findViewById(2131231401));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localDialog.findViewById(2131231402));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localDialog.findViewById(2131231400));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bgy(this, localDialog));
-    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)localDialog.findViewById(2131234407));
+    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)localDialog.findViewById(2131234406));
     this.jdField_b_of_type_ComTencentWidgetXListView.setBackgroundDrawable(super.getResources().getDrawable(2130837729));
     this.jdField_b_of_type_ComTencentWidgetXListView.setDividerHeight(0);
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -1080,7 +1080,7 @@ public class PoiMapActivity
   
   public void g()
   {
-    Object localObject = (LinearLayout)super.findViewById(2131233260);
+    Object localObject = (LinearLayout)super.findViewById(2131233259);
     if (this.jdField_o_of_type_Boolean)
     {
       ((LinearLayout)localObject).setVisibility(8);
@@ -1088,7 +1088,7 @@ public class PoiMapActivity
       ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
       this.m.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    localObject = (FrameLayout)super.findViewById(2131233261);
+    localObject = (FrameLayout)super.findViewById(2131233260);
     this.jdField_a_of_type_ArrayOfComTencentBizPoiMapActivity$PoiTab = new PoiMapActivity.PoiTab[this.jdField_a_of_type_ArrayOfJavaLangString.length];
     localObject = new LinearLayout.LayoutParams(-2, -1);
     new LinearLayout.LayoutParams(-1, -1);
@@ -1120,11 +1120,11 @@ public class PoiMapActivity
   protected void i()
   {
     this.j = super.getResources().getDimensionPixelSize(2131427573);
-    this.jdField_d_of_type_AndroidViewView = super.findViewById(2131233254);
-    this.jdField_e_of_type_AndroidViewView = super.findViewById(2131233255);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131233257));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131233256));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131233258));
+    this.jdField_d_of_type_AndroidViewView = super.findViewById(2131233253);
+    this.jdField_e_of_type_AndroidViewView = super.findViewById(2131233254);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131233256));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131233255));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131233257));
     this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter = new PoiMapActivity.ShopListAdapter(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizPoiMapActivity$ShopListAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
@@ -1165,7 +1165,7 @@ public class PoiMapActivity
     {
     default: 
       return;
-    case 2131233244: 
+    case 2131233243: 
       r();
       if (this.jdField_h_of_type_Boolean)
       {

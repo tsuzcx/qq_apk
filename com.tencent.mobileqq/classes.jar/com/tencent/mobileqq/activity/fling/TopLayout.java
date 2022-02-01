@@ -15,14 +15,16 @@ public class TopLayout
   extends RelativeLayout
   implements TopContentLayout.OnOutScreenListener
 {
-  private TopBehindLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopBehindLayout;
-  private TopContentLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout;
-  private TopLayout.OnDraggingListener jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener;
+  private static final String TAG = "TopLayout";
+  private TopBehindLayout mBehindView;
+  private boolean mConfigChanged;
+  private TopContentLayout mContentView;
+  private TopLayout.OnDraggingListener mListener;
   
   public TopLayout(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public TopLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -33,21 +35,21 @@ public class TopLayout
   public TopLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a(Context paramContext)
+  private void init(Context paramContext)
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopBehindLayout = new TopBehindLayout(paramContext);
-    addView(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopBehindLayout, localLayoutParams);
+    this.mBehindView = new TopBehindLayout(paramContext);
+    addView(this.mBehindView, localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout = new TopContentLayout(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.setOnOutScreenListener(this);
-    addView(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, localLayoutParams);
+    this.mContentView = new TopContentLayout(paramContext);
+    this.mContentView.setOnOutScreenListener(this);
+    addView(this.mContentView, localLayoutParams);
   }
   
-  private void a(View paramView, float paramFloat)
+  private void scaleView(View paramView, float paramFloat)
   {
     int i = getWidth();
     int j = getHeight();
@@ -61,7 +63,7 @@ public class TopLayout
   
   public TopLayout.OnDraggingListener getOnDraggingListener()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener;
+    return this.mListener;
   }
   
   public void onConfigChanged(Configuration paramConfiguration) {}
@@ -69,46 +71,52 @@ public class TopLayout
   public void outing(int paramInt1, int paramInt2, View paramView)
   {
     paramInt2 = getContext().getResources().getDisplayMetrics().widthPixels;
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopBehindLayout;
+    paramView = this.mBehindView;
     if (paramView != null)
     {
       float f1 = Math.abs(paramInt1 / paramInt2);
-      float f2 = 0.95F + (1.0F - 0.95F) * f1;
+      float f2 = 0.05000001F * f1 + 0.95F;
       if (f2 < 1.0F) {
         paramView.setForeground(new ColorDrawable((int)((1.0F - f1) * 128.0F) << 24));
       }
-      a(paramView, f2);
+      scaleView(paramView, f2);
     }
-    if (Math.abs(paramInt1) >= paramInt2) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener.endDrag();
+    if (Math.abs(paramInt1) >= paramInt2)
+    {
+      paramView = this.mListener;
+      if (paramView != null) {
+        paramView.endDrag();
       }
     }
-    while ((paramInt1 != 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener == null)) {
-      return;
+    else if (paramInt1 == 0)
+    {
+      paramView = this.mListener;
+      if (paramView != null) {
+        paramView.cancelDrag();
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener.cancelDrag();
   }
   
   public void setBehind(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopBehindLayout.setContent(paramView);
+    this.mBehindView.setContent(paramView);
   }
   
   public void setContent(ContentWrapView paramContentWrapView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.setContent(paramContentWrapView);
+    this.mContentView.setContent(paramContentWrapView);
   }
   
   public void setOnDraggingListener(TopLayout.OnDraggingListener paramOnDraggingListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener = paramOnDraggingListener;
+    this.mListener = paramOnDraggingListener;
   }
   
   public void startDrag()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener.startDrag();
+    TopLayout.OnDraggingListener localOnDraggingListener = this.mListener;
+    if (localOnDraggingListener != null) {
+      localOnDraggingListener.startDrag();
     }
   }
 }

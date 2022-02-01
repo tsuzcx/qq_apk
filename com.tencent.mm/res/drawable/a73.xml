@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="false" android:drawable="@drawable/bmi" />
-    <item android:state_pressed="true" android:drawable="@drawable/bmj" />
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/ig" />
+            <solid android:color="#b2777777" />
+        </shape>
+    </item>
 </selector>

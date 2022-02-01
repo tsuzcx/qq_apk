@@ -45,16 +45,17 @@ public class WebViewFlutterPlugin
     localStringBuilder.append(",engine:");
     localStringBuilder.append(paramFlutterPluginBinding.getFlutterEngine());
     Log.i("FlutterWebView", localStringBuilder.toString());
-    if (this.flutterCookieManager == null) {
+    paramFlutterPluginBinding = this.flutterCookieManager;
+    if (paramFlutterPluginBinding == null) {
       return;
     }
-    this.flutterCookieManager.dispose();
+    paramFlutterPluginBinding.dispose();
     this.flutterCookieManager = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.WebViewFlutterPlugin
  * JD-Core Version:    0.7.0.1
  */

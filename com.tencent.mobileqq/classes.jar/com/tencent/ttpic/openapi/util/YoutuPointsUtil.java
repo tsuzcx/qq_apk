@@ -9,35 +9,137 @@ import java.util.List;
 
 public class YoutuPointsUtil
 {
+  private static final int LEN_83 = 166;
+  private static final int LEN_90 = 180;
+  
   private static void adjustEyeFeatureFloat(float[] paramArrayOfFloat)
   {
-    paramArrayOfFloat[40] = ((float)(paramArrayOfFloat[38] + (paramArrayOfFloat[40] - paramArrayOfFloat[38]) * 0.98D));
-    paramArrayOfFloat[41] = ((float)(paramArrayOfFloat[37] + (paramArrayOfFloat[41] - paramArrayOfFloat[37]) * 0.95D));
-    paramArrayOfFloat[42] = ((float)(paramArrayOfFloat[36] + (paramArrayOfFloat[42] - paramArrayOfFloat[36]) * 0.9D));
-    paramArrayOfFloat[50] = ((float)(paramArrayOfFloat[48] + (paramArrayOfFloat[50] - paramArrayOfFloat[48]) * 0.98D));
-    paramArrayOfFloat[51] = ((float)(paramArrayOfFloat[47] + (paramArrayOfFloat[51] - paramArrayOfFloat[47]) * 0.95D));
-    paramArrayOfFloat[52] = ((float)(paramArrayOfFloat[46] + (paramArrayOfFloat[52] - paramArrayOfFloat[46]) * 0.9D));
-    paramArrayOfFloat[35] = ((float)(paramArrayOfFloat[35] + (paramArrayOfFloat[39] - paramArrayOfFloat[35]) / 40.0D));
+    double d1 = paramArrayOfFloat[38];
+    double d2 = paramArrayOfFloat[40] - paramArrayOfFloat[38];
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramArrayOfFloat[40] = ((float)(d1 + d2 * 0.98D));
+    d1 = paramArrayOfFloat[37];
+    d2 = paramArrayOfFloat[41] - paramArrayOfFloat[37];
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramArrayOfFloat[41] = ((float)(d1 + d2 * 0.95D));
+    d1 = paramArrayOfFloat[36];
+    d2 = paramArrayOfFloat[42] - paramArrayOfFloat[36];
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramArrayOfFloat[42] = ((float)(d1 + d2 * 0.9D));
+    d1 = paramArrayOfFloat[48];
+    d2 = paramArrayOfFloat[50] - paramArrayOfFloat[48];
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramArrayOfFloat[50] = ((float)(d1 + d2 * 0.98D));
+    d1 = paramArrayOfFloat[47];
+    d2 = paramArrayOfFloat[51] - paramArrayOfFloat[47];
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramArrayOfFloat[51] = ((float)(d1 + d2 * 0.95D));
+    d1 = paramArrayOfFloat[46];
+    d2 = paramArrayOfFloat[52] - paramArrayOfFloat[46];
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramArrayOfFloat[52] = ((float)(d1 + d2 * 0.9D));
+    d1 = paramArrayOfFloat[35];
+    d2 = paramArrayOfFloat[39] - paramArrayOfFloat[35];
+    Double.isNaN(d2);
+    d2 /= 40.0D;
+    Double.isNaN(d1);
+    paramArrayOfFloat[35] = ((float)(d1 + d2));
   }
   
   private static void adjustEyeFeatureV2(PointF[] paramArrayOfPointF)
   {
-    paramArrayOfPointF[40].x = ((float)(paramArrayOfPointF[38].x + (paramArrayOfPointF[40].x - paramArrayOfPointF[38].x) * 0.98D));
-    paramArrayOfPointF[40].y = ((float)(paramArrayOfPointF[38].y + (paramArrayOfPointF[40].y - paramArrayOfPointF[38].y) * 0.98D));
-    paramArrayOfPointF[41].x = ((float)(paramArrayOfPointF[37].x + (paramArrayOfPointF[41].x - paramArrayOfPointF[37].x) * 0.95D));
-    paramArrayOfPointF[41].y = ((float)(paramArrayOfPointF[37].y + (paramArrayOfPointF[41].y - paramArrayOfPointF[37].y) * 0.95D));
-    paramArrayOfPointF[42].x = ((float)(paramArrayOfPointF[36].x + (paramArrayOfPointF[42].x - paramArrayOfPointF[36].x) * 0.9D));
-    paramArrayOfPointF[42].y = ((float)(paramArrayOfPointF[36].y + (paramArrayOfPointF[42].y - paramArrayOfPointF[36].y) * 0.9D));
-    paramArrayOfPointF[50].x = ((float)(paramArrayOfPointF[48].x + (paramArrayOfPointF[50].x - paramArrayOfPointF[48].x) * 0.98D));
-    paramArrayOfPointF[50].y = ((float)(paramArrayOfPointF[48].y + (paramArrayOfPointF[50].y - paramArrayOfPointF[48].y) * 0.98D));
-    paramArrayOfPointF[51].x = ((float)(paramArrayOfPointF[47].x + (paramArrayOfPointF[51].x - paramArrayOfPointF[47].x) * 0.95D));
-    paramArrayOfPointF[51].y = ((float)(paramArrayOfPointF[47].y + (paramArrayOfPointF[51].y - paramArrayOfPointF[47].y) * 0.95D));
-    paramArrayOfPointF[52].x = ((float)(paramArrayOfPointF[46].x + (paramArrayOfPointF[52].x - paramArrayOfPointF[46].x) * 0.9D));
-    paramArrayOfPointF[52].y = ((float)(paramArrayOfPointF[46].y + (paramArrayOfPointF[52].y - paramArrayOfPointF[46].y) * 0.9D));
-    PointF localPointF = paramArrayOfPointF[35];
-    localPointF.y = ((float)(localPointF.y + (paramArrayOfPointF[39].x - paramArrayOfPointF[35].x) / 40.0D));
+    PointF localPointF = paramArrayOfPointF[40];
+    double d1 = paramArrayOfPointF[38].x;
+    double d2 = paramArrayOfPointF[40].x - paramArrayOfPointF[38].x;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.x = ((float)(d1 + d2 * 0.98D));
+    localPointF = paramArrayOfPointF[40];
+    d1 = paramArrayOfPointF[38].y;
+    d2 = paramArrayOfPointF[40].y - paramArrayOfPointF[38].y;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.y = ((float)(d1 + d2 * 0.98D));
+    localPointF = paramArrayOfPointF[41];
+    d1 = paramArrayOfPointF[37].x;
+    d2 = paramArrayOfPointF[41].x - paramArrayOfPointF[37].x;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.x = ((float)(d1 + d2 * 0.95D));
+    localPointF = paramArrayOfPointF[41];
+    d1 = paramArrayOfPointF[37].y;
+    d2 = paramArrayOfPointF[41].y - paramArrayOfPointF[37].y;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.y = ((float)(d1 + d2 * 0.95D));
+    localPointF = paramArrayOfPointF[42];
+    d1 = paramArrayOfPointF[36].x;
+    d2 = paramArrayOfPointF[42].x - paramArrayOfPointF[36].x;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.x = ((float)(d1 + d2 * 0.9D));
+    localPointF = paramArrayOfPointF[42];
+    d1 = paramArrayOfPointF[36].y;
+    d2 = paramArrayOfPointF[42].y - paramArrayOfPointF[36].y;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.y = ((float)(d1 + d2 * 0.9D));
+    localPointF = paramArrayOfPointF[50];
+    d1 = paramArrayOfPointF[48].x;
+    d2 = paramArrayOfPointF[50].x - paramArrayOfPointF[48].x;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.x = ((float)(d1 + d2 * 0.98D));
+    localPointF = paramArrayOfPointF[50];
+    d1 = paramArrayOfPointF[48].y;
+    d2 = paramArrayOfPointF[50].y - paramArrayOfPointF[48].y;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.y = ((float)(d1 + d2 * 0.98D));
+    localPointF = paramArrayOfPointF[51];
+    d1 = paramArrayOfPointF[47].x;
+    d2 = paramArrayOfPointF[51].x - paramArrayOfPointF[47].x;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.x = ((float)(d1 + d2 * 0.95D));
+    localPointF = paramArrayOfPointF[51];
+    d1 = paramArrayOfPointF[47].y;
+    d2 = paramArrayOfPointF[51].y - paramArrayOfPointF[47].y;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.y = ((float)(d1 + d2 * 0.95D));
+    localPointF = paramArrayOfPointF[52];
+    d1 = paramArrayOfPointF[46].x;
+    d2 = paramArrayOfPointF[52].x - paramArrayOfPointF[46].x;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.x = ((float)(d1 + d2 * 0.9D));
+    localPointF = paramArrayOfPointF[52];
+    d1 = paramArrayOfPointF[46].y;
+    d2 = paramArrayOfPointF[52].y - paramArrayOfPointF[46].y;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    localPointF.y = ((float)(d1 + d2 * 0.9D));
+    localPointF = paramArrayOfPointF[35];
+    d1 = localPointF.y;
+    d2 = paramArrayOfPointF[39].x - paramArrayOfPointF[35].x;
+    Double.isNaN(d2);
+    d2 /= 40.0D;
+    Double.isNaN(d1);
+    localPointF.y = ((float)(d1 + d2));
     localPointF = paramArrayOfPointF[45];
-    localPointF.y = ((float)(localPointF.y + (paramArrayOfPointF[45].x - paramArrayOfPointF[49].x) / 40.0D));
+    d1 = localPointF.y;
+    d2 = paramArrayOfPointF[45].x - paramArrayOfPointF[49].x;
+    Double.isNaN(d2);
+    d2 /= 40.0D;
+    Double.isNaN(d1);
+    localPointF.y = ((float)(d1 + d2));
   }
   
   public static float[] calEyeEulerAngles(List<PointF> paramList)
@@ -48,50 +150,60 @@ public class YoutuPointsUtil
     PointF localPointF1 = new PointF(localPointF2.x - ((PointF)paramList.get(49)).x, localPointF2.y - ((PointF)paramList.get(49)).y);
     localPointF2 = new PointF(localPointF2.x - ((PointF)paramList.get(45)).x, localPointF2.y - ((PointF)paramList.get(45)).y);
     float f1 = (float)Math.sqrt(Math.pow(localPointF1.x, 2.0D) + Math.pow(localPointF1.y, 2.0D));
-    double d = Math.pow(localPointF2.x, 2.0D);
-    float f2 = ((float)Math.sqrt(Math.pow(localPointF2.y, 2.0D) + d) + f1) * 0.5F;
-    float f3 = (float)(1.570796F / 3.0D * ((f1 - f2) / f2));
+    float f2 = ((float)Math.sqrt(Math.pow(localPointF2.x, 2.0D) + Math.pow(localPointF2.y, 2.0D)) + f1) * 0.5F;
+    double d1 = 1.570796F;
+    Double.isNaN(d1);
+    d1 /= 3.0D;
+    double d2 = (f1 - f2) / f2;
+    Double.isNaN(d2);
+    f2 = (float)(d1 * d2);
     localPointF2 = new PointF(((PointF)paramList.get(45)).x - ((PointF)paramList.get(49)).x, ((PointF)paramList.get(45)).y - ((PointF)paramList.get(49)).y);
-    f2 = (float)((Math.atan2(localPointF1.x, localPointF1.y) - Math.atan2(localPointF2.x, localPointF2.y)) * 180.0D / 3.141592653589793D);
-    float f4;
-    if (f2 > 180.0D)
-    {
-      f1 = (float)(f2 - 360.0D);
-      localPointF1 = new PointF(f1 * -1.570796F / 270.0F, f3);
-      PointF localPointF3 = new PointF(((PointF)paramList.get(44)).x, ((PointF)paramList.get(44)).y);
-      localPointF2 = new PointF(localPointF3.x - ((PointF)paramList.get(39)).x, localPointF3.y - ((PointF)paramList.get(39)).y);
-      localPointF3 = new PointF(localPointF3.x - ((PointF)paramList.get(35)).x, localPointF3.y - ((PointF)paramList.get(35)).y);
-      f1 = (float)Math.sqrt(Math.pow(localPointF2.x, 2.0D) + Math.pow(localPointF2.y, 2.0D));
-      f2 = ((float)Math.sqrt(Math.pow(localPointF3.x, 2.0D) + Math.pow(localPointF3.y, 2.0D)) + f1) * 0.5F;
-      f3 = -(1.570796F / 3.0F);
-      f4 = (f1 - f2) / f2;
-      paramList = new PointF(((PointF)paramList.get(35)).x - ((PointF)paramList.get(39)).x, ((PointF)paramList.get(35)).y - ((PointF)paramList.get(39)).y);
-      f2 = (float)((Math.atan2(localPointF2.x, localPointF2.y) - Math.atan2(paramList.x, paramList.y)) * 180.0D / 3.141592653589793D);
-      if (f2 <= 180.0D) {
-        break label839;
-      }
-      f1 = (float)(f2 - 360.0D);
+    f1 = (float)((Math.atan2(localPointF1.x, localPointF1.y) - Math.atan2(localPointF2.x, localPointF2.y)) * 180.0D / 3.141592653589793D);
+    d1 = f1;
+    if (d1 > 180.0D) {
+      Double.isNaN(d1);
     }
-    for (;;)
+    for (d1 -= 360.0D;; d1 += 360.0D)
     {
-      paramList = new PointF(f1 * 1.570796F / 270.0F, f3 * f4);
-      f1 = localPointF1.x;
-      f2 = paramList.x;
-      f3 = localPointF1.y;
-      paramList = new PointF((f1 + f2) * 0.5F, (paramList.y + f3) * 0.5F);
-      return new float[] { paramList.x, paramList.y, 0.0F };
-      f1 = f2;
-      if (f2 >= -180.0D) {
+      f1 = (float)d1;
+      break;
+      if (d1 >= -180.0D) {
         break;
       }
-      f1 = (float)(f2 + 360.0D);
-      break;
-      label839:
-      f1 = f2;
-      if (f2 < -180.0D) {
-        f1 = (float)(f2 + 360.0D);
-      }
+      Double.isNaN(d1);
     }
+    localPointF1 = new PointF(-1.570796F * f1 / 270.0F, f2);
+    PointF localPointF3 = new PointF(((PointF)paramList.get(44)).x, ((PointF)paramList.get(44)).y);
+    localPointF2 = new PointF(localPointF3.x - ((PointF)paramList.get(39)).x, localPointF3.y - ((PointF)paramList.get(39)).y);
+    localPointF3 = new PointF(localPointF3.x - ((PointF)paramList.get(35)).x, localPointF3.y - ((PointF)paramList.get(35)).y);
+    f1 = (float)Math.sqrt(Math.pow(localPointF2.x, 2.0D) + Math.pow(localPointF2.y, 2.0D));
+    f2 = ((float)Math.sqrt(Math.pow(localPointF3.x, 2.0D) + Math.pow(localPointF3.y, 2.0D)) + f1) * 0.5F;
+    f2 = (f1 - f2) / f2;
+    paramList = new PointF(((PointF)paramList.get(35)).x - ((PointF)paramList.get(39)).x, ((PointF)paramList.get(35)).y - ((PointF)paramList.get(39)).y);
+    f1 = (float)((Math.atan2(localPointF2.x, localPointF2.y) - Math.atan2(paramList.x, paramList.y)) * 180.0D / 3.141592653589793D);
+    d1 = f1;
+    if (d1 > 180.0D) {
+      Double.isNaN(d1);
+    }
+    for (d1 -= 360.0D;; d1 += 360.0D)
+    {
+      f1 = (float)d1;
+      break;
+      if (d1 >= -180.0D) {
+        break;
+      }
+      Double.isNaN(d1);
+    }
+    paramList = new PointF(1.570796F * f1 / 270.0F, -0.5235988F * f2);
+    paramList = new PointF((localPointF1.x + paramList.x) * 0.5F, (localPointF1.y + paramList.y) * 0.5F);
+    return new float[] { paramList.x, paramList.y, 0.0F };
+  }
+  
+  private static void calculatePoints(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramInt1 *= 2;
+    paramArrayOfFloat1[paramInt1] = (getFacePointX(paramArrayOfFloat2, paramInt2) + (getFacePointX(paramArrayOfFloat2, paramInt3) - getFacePointX(paramArrayOfFloat2, paramInt2)) / 2.0F);
+    paramArrayOfFloat1[(paramInt1 + 1)] = (getFacePointY(paramArrayOfFloat2, paramInt2) + (getFacePointY(paramArrayOfFloat2, paramInt3) - getFacePointY(paramArrayOfFloat2, paramInt2)) / 2.0F);
   }
   
   private static float getArrayMiddleFloat(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
@@ -112,75 +224,114 @@ public class YoutuPointsUtil
     int i = paramInt1;
     while (i <= paramInt2)
     {
-      localPointF.x += paramArrayOfFloat[(i * 2)];
-      localPointF.y += paramArrayOfFloat[(i * 2 + 1)];
+      f1 = localPointF.x;
+      int j = i * 2;
+      localPointF.x = (f1 + paramArrayOfFloat[j]);
+      localPointF.y += paramArrayOfFloat[(j + 1)];
       i += 1;
     }
-    localPointF.x /= (paramInt2 - paramInt1 + 1);
-    localPointF.y /= (paramInt2 - paramInt1 + 1);
+    float f1 = localPointF.x;
+    float f2 = paramInt2 - paramInt1 + 1;
+    localPointF.x = (f1 / f2);
+    localPointF.y /= f2;
     return localPointF;
+  }
+  
+  private static float getFacePointX(float[] paramArrayOfFloat, int paramInt)
+  {
+    if (paramArrayOfFloat != null)
+    {
+      int i = paramArrayOfFloat.length;
+      paramInt *= 2;
+      if (i > paramInt) {
+        return paramArrayOfFloat[paramInt];
+      }
+    }
+    return 0.0F;
+  }
+  
+  public static float getFacePointY(float[] paramArrayOfFloat, int paramInt)
+  {
+    if (paramArrayOfFloat != null)
+    {
+      int i = paramArrayOfFloat.length;
+      paramInt = paramInt * 2 + 1;
+      if (i > paramInt) {
+        return paramArrayOfFloat[paramInt];
+      }
+    }
+    return 0.0F;
   }
   
   public static List<PointF> getIris3Points(List<List<PointF>> paramList1, List<List<PointF>> paramList2)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((CollectionUtils.isEmpty(paramList1)) || (CollectionUtils.isEmpty(paramList2))) {
-      return localArrayList;
+    if (!CollectionUtils.isEmpty(paramList1))
+    {
+      if (CollectionUtils.isEmpty(paramList2)) {
+        return localArrayList;
+      }
+      paramList1 = (List)paramList1.get(0);
+      paramList2 = (List)paramList2.get(0);
+      localArrayList.add(paramList1.get(43));
+      localArrayList.add(paramList1.get(53));
     }
-    paramList1 = (List)paramList1.get(0);
-    paramList2 = (List)paramList2.get(0);
-    localArrayList.add(paramList1.get(43));
-    localArrayList.add(paramList1.get(53));
     return localArrayList;
   }
   
   public static List<PointF> getIris4Points(List<List<PointF>> paramList1, List<List<PointF>> paramList2)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((CollectionUtils.isEmpty(paramList1)) || (CollectionUtils.isEmpty(paramList2))) {
-      return localArrayList;
+    if (!CollectionUtils.isEmpty(paramList1))
+    {
+      if (CollectionUtils.isEmpty(paramList2)) {
+        return localArrayList;
+      }
+      paramList1 = (List)paramList1.get(0);
+      paramList2 = (List)paramList2.get(0);
+      localArrayList.add(paramList1.get(44));
+      localArrayList.add(paramList1.get(54));
     }
-    paramList1 = (List)paramList1.get(0);
-    paramList2 = (List)paramList2.get(0);
-    localArrayList.add(paramList1.get(44));
-    localArrayList.add(paramList1.get(54));
     return localArrayList;
   }
   
   public static List<PointF> getIrisPoints(float[] paramArrayOfFloat)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramArrayOfFloat.length != 188) {}
-    for (;;)
-    {
+    if (paramArrayOfFloat.length != 188) {
       return localArrayList;
-      int i = 90;
-      while (i < 94)
-      {
-        localArrayList.add(new PointF(paramArrayOfFloat[(i * 2)], paramArrayOfFloat[(i * 2 + 1)]));
-        i += 1;
-      }
     }
+    int i = 90;
+    while (i < 94)
+    {
+      int j = i * 2;
+      localArrayList.add(new PointF(paramArrayOfFloat[j], paramArrayOfFloat[(j + 1)]));
+      i += 1;
+    }
+    return localArrayList;
   }
   
   public static List<PointF> getIrisRelatedPoints(List<List<PointF>> paramList1, List<List<PointF>> paramList2)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((CollectionUtils.isEmpty(paramList1)) || (CollectionUtils.isEmpty(paramList2))) {
-      return localArrayList;
+    if (!CollectionUtils.isEmpty(paramList1))
+    {
+      if (CollectionUtils.isEmpty(paramList2)) {
+        return localArrayList;
+      }
+      paramList1 = (List)paramList1.get(0);
+      paramList2 = (List)paramList2.get(0);
+      localArrayList.add(paramList1.get(44));
+      localArrayList.add(paramList1.get(41));
+      localArrayList.add(paramList2.get(0));
+      localArrayList.add(paramList1.get(37));
+      localArrayList.add(paramList2.get(1));
+      localArrayList.add(paramList1.get(54));
+      localArrayList.add(paramList1.get(51));
+      localArrayList.add(paramList2.get(2));
+      localArrayList.add(paramList1.get(47));
+      localArrayList.add(paramList2.get(3));
     }
-    paramList1 = (List)paramList1.get(0);
-    paramList2 = (List)paramList2.get(0);
-    localArrayList.add(paramList1.get(44));
-    localArrayList.add(paramList1.get(41));
-    localArrayList.add(paramList2.get(0));
-    localArrayList.add(paramList1.get(37));
-    localArrayList.add(paramList2.get(1));
-    localArrayList.add(paramList1.get(54));
-    localArrayList.add(paramList1.get(51));
-    localArrayList.add(paramList2.get(2));
-    localArrayList.add(paramList1.get(47));
-    localArrayList.add(paramList2.get(3));
     return localArrayList;
   }
   
@@ -191,7 +342,10 @@ public class YoutuPointsUtil
   
   private static PointF getMiddleV2(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
-    return new PointF((paramArrayOfFloat[(paramInt1 * 2)] + paramArrayOfFloat[(paramInt2 * 2)]) / 2.0F, (paramArrayOfFloat[(paramInt1 * 2 + 1)] + paramArrayOfFloat[(paramInt2 * 2 + 1)]) / 2.0F);
+    paramInt1 *= 2;
+    float f = paramArrayOfFloat[paramInt1];
+    paramInt2 *= 2;
+    return new PointF((f + paramArrayOfFloat[paramInt2]) / 2.0F, (paramArrayOfFloat[(paramInt1 + 1)] + paramArrayOfFloat[(paramInt2 + 1)]) / 2.0F);
   }
   
   public static void normalizePoints(List<PointF> paramList)
@@ -207,7 +361,7 @@ public class YoutuPointsUtil
     {
       float f5 = AlgoUtils.distanceOfPoint2Line((PointF)paramList.get(99), (PointF)paramList.get(101), f2, (PointF)paramList.get(i));
       float f6 = AlgoUtils.distanceOfPoint2Line((PointF)paramList.get(99), (PointF)paramList.get(105), f1, (PointF)paramList.get(i));
-      ((PointF)paramList.get(i)).set(f3 * f5, f4 * f6);
+      ((PointF)paramList.get(i)).set(f5 * f3, f6 * f4);
       i += 1;
     }
     while (paramList.size() > 83) {
@@ -217,24 +371,25 @@ public class YoutuPointsUtil
   
   public static Float[] smoothYTPointsVisPoints(Float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 90)) {}
-    for (;;)
+    if (paramArrayOfFloat != null)
     {
-      return paramArrayOfFloat;
-      int j = 0;
+      if (paramArrayOfFloat.length < 90) {
+        return paramArrayOfFloat;
+      }
+      int m = 66;
       int i = 66;
-      while (i <= 82)
+      int k;
+      for (int j = 0; i <= 82; j = k)
       {
-        int k = j;
+        k = j;
         if (paramArrayOfFloat[i].floatValue() < 0.7D) {
           k = j + 1;
         }
         i += 1;
-        j = k;
       }
       if (j >= 15)
       {
-        i = 66;
+        i = m;
         while (i <= 82)
         {
           if (paramArrayOfFloat[i].floatValue() >= 0.7D) {
@@ -244,6 +399,56 @@ public class YoutuPointsUtil
         }
       }
     }
+    return paramArrayOfFloat;
+  }
+  
+  public static float[] transform83PointsTo90(float[] paramArrayOfFloat)
+  {
+    float[] arrayOfFloat = new float['´'];
+    if (paramArrayOfFloat != null)
+    {
+      if (paramArrayOfFloat.length < 166) {
+        return arrayOfFloat;
+      }
+      int j = 0;
+      int i = 0;
+      while (j < 83)
+      {
+        int k = j * 2;
+        arrayOfFloat[k] = paramArrayOfFloat[k];
+        k += 1;
+        arrayOfFloat[k] = paramArrayOfFloat[k];
+        i += 1;
+        j += 1;
+      }
+      j = i * 2;
+      arrayOfFloat[j] = (getFacePointX(paramArrayOfFloat, 55) + (getFacePointX(paramArrayOfFloat, 63) - getFacePointX(paramArrayOfFloat, 55)) / 2.0F);
+      arrayOfFloat[(j + 1)] = (getFacePointY(paramArrayOfFloat, 55) + (getFacePointY(paramArrayOfFloat, 63) - getFacePointY(paramArrayOfFloat, 55)) / 2.0F);
+      i += 1;
+      j = i * 2;
+      arrayOfFloat[j] = (getFacePointX(paramArrayOfFloat, 23) + (getFacePointX(paramArrayOfFloat, 31) - getFacePointX(paramArrayOfFloat, 23)) / 2.0F);
+      arrayOfFloat[(j + 1)] = (getFacePointY(paramArrayOfFloat, 23) + (getFacePointY(paramArrayOfFloat, 31) - getFacePointY(paramArrayOfFloat, 23)) / 2.0F);
+      i += 1;
+      j = i * 2;
+      arrayOfFloat[j] = (getFacePointX(paramArrayOfFloat, 59) + (getFacePointX(paramArrayOfFloat, 77) - getFacePointX(paramArrayOfFloat, 59)) / 2.0F);
+      arrayOfFloat[(j + 1)] = (getFacePointY(paramArrayOfFloat, 59) + (getFacePointY(paramArrayOfFloat, 77) - getFacePointY(paramArrayOfFloat, 59)) / 2.0F);
+      i += 1;
+      j = i * 2;
+      arrayOfFloat[j] = (getFacePointX(paramArrayOfFloat, 35) + (getFacePointX(paramArrayOfFloat, 35) - getFacePointX(paramArrayOfFloat, 6)));
+      arrayOfFloat[(j + 1)] = (getFacePointY(paramArrayOfFloat, 35) + (getFacePointY(paramArrayOfFloat, 35) - getFacePointY(paramArrayOfFloat, 6)));
+      i += 1;
+      j = i * 2;
+      arrayOfFloat[j] = (getFacePointX(paramArrayOfFloat, 64) + (getFacePointX(paramArrayOfFloat, 64) - getFacePointX(paramArrayOfFloat, 9)) * 1.4F);
+      arrayOfFloat[(j + 1)] = (getFacePointY(paramArrayOfFloat, 64) + (getFacePointY(paramArrayOfFloat, 64) - getFacePointY(paramArrayOfFloat, 9)) * 1.4F);
+      i += 1;
+      j = i * 2;
+      arrayOfFloat[j] = (getFacePointX(paramArrayOfFloat, 45) + (getFacePointX(paramArrayOfFloat, 45) - getFacePointX(paramArrayOfFloat, 12)));
+      arrayOfFloat[(j + 1)] = (getFacePointY(paramArrayOfFloat, 45) + (getFacePointY(paramArrayOfFloat, 45) - getFacePointY(paramArrayOfFloat, 12)));
+      i = (i + 1) * 2;
+      arrayOfFloat[i] = (getFacePointX(arrayOfFloat, 83) + (getFacePointX(arrayOfFloat, 83) - getFacePointX(arrayOfFloat, 59)));
+      arrayOfFloat[(i + 1)] = (getFacePointY(arrayOfFloat, 83) + (getFacePointY(arrayOfFloat, 83) - getFacePointY(arrayOfFloat, 59)));
+    }
+    return arrayOfFloat;
   }
   
   public static List<PointF> transform90PointsTo83(float[] paramArrayOfFloat)
@@ -257,25 +462,32 @@ public class YoutuPointsUtil
     }
     arrayOfPointF[0] = getMiddleV2(paramArrayOfFloat, 67, 68);
     i = 1;
+    int j;
     while (i <= 17)
     {
-      arrayOfPointF[i].x = paramArrayOfFloat[((i + 68) * 2 + 0)];
-      arrayOfPointF[i].y = paramArrayOfFloat[((i + 68) * 2 + 1)];
+      localPointF = arrayOfPointF[i];
+      j = (i + 68) * 2;
+      localPointF.x = paramArrayOfFloat[(j + 0)];
+      arrayOfPointF[i].y = paramArrayOfFloat[(j + 1)];
       i += 1;
     }
     arrayOfPointF[18] = getMiddleV2(paramArrayOfFloat, 86, 87);
     i = 19;
     while (i <= 34)
     {
-      arrayOfPointF[i].x = paramArrayOfFloat[((i - 19) * 2 + 0)];
-      arrayOfPointF[i].y = paramArrayOfFloat[((i - 19) * 2 + 1)];
+      localPointF = arrayOfPointF[i];
+      j = (i - 19) * 2;
+      localPointF.x = paramArrayOfFloat[(j + 0)];
+      arrayOfPointF[i].y = paramArrayOfFloat[(j + 1)];
       i += 1;
     }
     i = 35;
     while (i <= 42)
     {
-      arrayOfPointF[i].x = paramArrayOfFloat[((i - 19) * 2 + 0)];
-      arrayOfPointF[i].y = paramArrayOfFloat[((i - 19) * 2 + 1)];
+      localPointF = arrayOfPointF[i];
+      j = (i - 19) * 2;
+      localPointF.x = paramArrayOfFloat[(j + 0)];
+      arrayOfPointF[i].y = paramArrayOfFloat[(j + 1)];
       i += 1;
     }
     arrayOfPointF[43] = getArrayMiddleV2(paramArrayOfFloat, 16, 23);
@@ -284,39 +496,93 @@ public class YoutuPointsUtil
     i = 45;
     while (i <= 52)
     {
-      arrayOfPointF[i].x = paramArrayOfFloat[((i - 21) * 2 + 0)];
-      arrayOfPointF[i].y = paramArrayOfFloat[((i - 21) * 2 + 1)];
+      localPointF = arrayOfPointF[i];
+      j = (i - 21) * 2;
+      localPointF.x = paramArrayOfFloat[(j + 0)];
+      arrayOfPointF[i].y = paramArrayOfFloat[(j + 1)];
       i += 1;
     }
     arrayOfPointF[53] = getArrayMiddleV2(paramArrayOfFloat, 24, 31);
     arrayOfPointF[54].x = paramArrayOfFloat['²'];
     arrayOfPointF[54].y = paramArrayOfFloat['³'];
-    arrayOfPointF[55].x = ((float)(paramArrayOfFloat[66] * 0.5D + paramArrayOfFloat[40] * 0.5D));
-    arrayOfPointF[55].y = ((float)(paramArrayOfFloat[67] * 0.5D + paramArrayOfFloat[41] * 0.5D));
-    arrayOfPointF[56].x = ((float)(0.1D * paramArrayOfFloat[64] + paramArrayOfFloat[70] * 0.45D + paramArrayOfFloat[72] * 0.45D));
-    arrayOfPointF[56].y = ((float)(0.1D * paramArrayOfFloat[65] + paramArrayOfFloat[71] * 0.45D + paramArrayOfFloat[73] * 0.45D));
+    PointF localPointF = arrayOfPointF[55];
+    double d1 = paramArrayOfFloat[66];
+    Double.isNaN(d1);
+    double d2 = paramArrayOfFloat[40];
+    Double.isNaN(d2);
+    localPointF.x = ((float)(d1 * 0.5D + d2 * 0.5D));
+    localPointF = arrayOfPointF[55];
+    d1 = paramArrayOfFloat[67];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[41];
+    Double.isNaN(d2);
+    localPointF.y = ((float)(d1 * 0.5D + d2 * 0.5D));
+    localPointF = arrayOfPointF[56];
+    d1 = paramArrayOfFloat[64];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[70];
+    Double.isNaN(d2);
+    double d3 = paramArrayOfFloat[72];
+    Double.isNaN(d3);
+    localPointF.x = ((float)(d1 * 0.1D + d2 * 0.45D + d3 * 0.45D));
+    localPointF = arrayOfPointF[56];
+    d1 = paramArrayOfFloat[65];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[71];
+    Double.isNaN(d2);
+    d3 = paramArrayOfFloat[73];
+    Double.isNaN(d3);
+    localPointF.y = ((float)(d1 * 0.1D + d2 * 0.45D + d3 * 0.45D));
     i = 57;
     while (i <= 61)
     {
-      arrayOfPointF[i].x = paramArrayOfFloat[((i - 20) * 2 + 0)];
-      arrayOfPointF[i].y = paramArrayOfFloat[((i - 20) * 2 + 1)];
+      localPointF = arrayOfPointF[i];
+      j = (i - 20) * 2;
+      localPointF.x = paramArrayOfFloat[(j + 0)];
+      arrayOfPointF[i].y = paramArrayOfFloat[(j + 1)];
       i += 1;
     }
-    arrayOfPointF[62].x = ((float)(0.1D * paramArrayOfFloat[64] + paramArrayOfFloat[86] * 0.45D + paramArrayOfFloat[84] * 0.45D));
-    arrayOfPointF[62].y = ((float)(0.1D * paramArrayOfFloat[65] + paramArrayOfFloat[87] * 0.45D + paramArrayOfFloat[85] * 0.45D));
-    arrayOfPointF[63].x = ((float)(paramArrayOfFloat[66] * 0.5D + paramArrayOfFloat[56] * 0.5D));
-    arrayOfPointF[63].y = ((float)(paramArrayOfFloat[67] * 0.5D + paramArrayOfFloat[57] * 0.5D));
+    localPointF = arrayOfPointF[62];
+    d1 = paramArrayOfFloat[64];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[86];
+    Double.isNaN(d2);
+    d3 = paramArrayOfFloat[84];
+    Double.isNaN(d3);
+    localPointF.x = ((float)(d1 * 0.1D + d2 * 0.45D + d3 * 0.45D));
+    localPointF = arrayOfPointF[62];
+    d1 = paramArrayOfFloat[65];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[87];
+    Double.isNaN(d2);
+    d3 = paramArrayOfFloat[85];
+    Double.isNaN(d3);
+    localPointF.y = ((float)(d1 * 0.1D + d2 * 0.45D + d3 * 0.45D));
+    localPointF = arrayOfPointF[63];
+    d1 = paramArrayOfFloat[66];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[56];
+    Double.isNaN(d2);
+    localPointF.x = ((float)(d1 * 0.5D + d2 * 0.5D));
+    localPointF = arrayOfPointF[63];
+    i = 67;
+    d1 = paramArrayOfFloat[67];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[57];
+    Double.isNaN(d2);
+    localPointF.y = ((float)(d1 * 0.5D + d2 * 0.5D));
     arrayOfPointF[64].x = paramArrayOfFloat[64];
     arrayOfPointF[64].y = paramArrayOfFloat[65];
     arrayOfPointF[65].x = paramArrayOfFloat[90];
     arrayOfPointF[65].y = paramArrayOfFloat[91];
     arrayOfPointF[66].x = paramArrayOfFloat[102];
     arrayOfPointF[66].y = paramArrayOfFloat[103];
-    i = 67;
     while (i <= 71)
     {
-      arrayOfPointF[i].x = paramArrayOfFloat[((i - 21) * 2 + 0)];
-      arrayOfPointF[i].y = paramArrayOfFloat[((i - 21) * 2 + 1)];
+      localPointF = arrayOfPointF[i];
+      j = (i - 21) * 2;
+      localPointF.x = paramArrayOfFloat[(j + 0)];
+      arrayOfPointF[i].y = paramArrayOfFloat[(j + 1)];
       i += 1;
     }
     arrayOfPointF[72] = getMiddleV2(paramArrayOfFloat, 60, 61);
@@ -326,8 +592,10 @@ public class YoutuPointsUtil
     i = 75;
     while (i <= 79)
     {
-      arrayOfPointF[i].x = paramArrayOfFloat[((131 - i) * 2 + 0)];
-      arrayOfPointF[i].y = paramArrayOfFloat[((131 - i) * 2 + 1)];
+      localPointF = arrayOfPointF[i];
+      j = (131 - i) * 2;
+      localPointF.x = paramArrayOfFloat[(j + 0)];
+      arrayOfPointF[i].y = paramArrayOfFloat[(j + 1)];
       i += 1;
     }
     arrayOfPointF[80] = getMiddleV2(paramArrayOfFloat, 62, 63);
@@ -379,16 +647,36 @@ public class YoutuPointsUtil
     }
     arrayOfFloat[53] = getArrayMiddleFloat(paramArrayOfFloat, 24, 31);
     arrayOfFloat[54] = paramArrayOfFloat[89];
-    arrayOfFloat[55] = ((float)(0.5D * paramArrayOfFloat[33] + 0.5D * paramArrayOfFloat[20]));
-    arrayOfFloat[56] = ((float)(0.1D * paramArrayOfFloat[32] + 0.45D * paramArrayOfFloat[35] + 0.45D * paramArrayOfFloat[36]));
+    double d1 = paramArrayOfFloat[33];
+    Double.isNaN(d1);
+    double d2 = paramArrayOfFloat[20];
+    Double.isNaN(d2);
+    arrayOfFloat[55] = ((float)(d1 * 0.5D + d2 * 0.5D));
+    d1 = paramArrayOfFloat[32];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[35];
+    Double.isNaN(d2);
+    double d3 = paramArrayOfFloat[36];
+    Double.isNaN(d3);
+    arrayOfFloat[56] = ((float)(d1 * 0.1D + d2 * 0.45D + d3 * 0.45D));
     i = 57;
     while (i <= 61)
     {
       arrayOfFloat[i] = paramArrayOfFloat[(i - 20)];
       i += 1;
     }
-    arrayOfFloat[62] = ((float)(0.1D * paramArrayOfFloat[32] + 0.45D * paramArrayOfFloat[43] + 0.45D * paramArrayOfFloat[42]));
-    arrayOfFloat[63] = ((float)(0.5D * paramArrayOfFloat[33] + 0.5D * paramArrayOfFloat[28]));
+    d1 = paramArrayOfFloat[32];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[43];
+    Double.isNaN(d2);
+    d3 = paramArrayOfFloat[42];
+    Double.isNaN(d3);
+    arrayOfFloat[62] = ((float)(d1 * 0.1D + d2 * 0.45D + d3 * 0.45D));
+    d1 = paramArrayOfFloat[33];
+    Double.isNaN(d1);
+    d2 = paramArrayOfFloat[28];
+    Double.isNaN(d2);
+    arrayOfFloat[63] = ((float)(d1 * 0.5D + d2 * 0.5D));
     arrayOfFloat[64] = paramArrayOfFloat[32];
     arrayOfFloat[65] = paramArrayOfFloat[45];
     arrayOfFloat[66] = paramArrayOfFloat[51];
@@ -420,13 +708,38 @@ public class YoutuPointsUtil
     paramArrayOfFloat.add(localPointF);
     paramArrayOfFloat.add(AlgoUtils.middlePoint((PointF)paramArrayOfFloat.get(23), (PointF)paramArrayOfFloat.get(31)));
     paramArrayOfFloat.add(AlgoUtils.middlePoint((PointF)paramArrayOfFloat.get(59), (PointF)paramArrayOfFloat.get(77)));
-    paramArrayOfFloat.add(new PointF(2.0F * ((PointF)paramArrayOfFloat.get(35)).x - ((PointF)paramArrayOfFloat.get(6)).x, (float)(((PointF)paramArrayOfFloat.get(39)).y + (((PointF)paramArrayOfFloat.get(39)).y - ((PointF)paramArrayOfFloat.get(56)).y) * 3.2D)));
-    paramArrayOfFloat.add(new PointF((float)(2.4D * ((PointF)paramArrayOfFloat.get(64)).x - 1.4D * ((PointF)paramArrayOfFloat.get(9)).x), (float)(2.5D * localPointF.y - 1.5D * ((PointF)paramArrayOfFloat.get(59)).y)));
-    paramArrayOfFloat.add(new PointF(2.0F * ((PointF)paramArrayOfFloat.get(45)).x - ((PointF)paramArrayOfFloat.get(12)).x, (float)(((PointF)paramArrayOfFloat.get(49)).y * 4.2D - ((PointF)paramArrayOfFloat.get(62)).y * 3.2D)));
-    float f1 = localPointF.x;
-    float f2 = ((PointF)paramArrayOfFloat.get(59)).x;
-    float f3 = ((PointF)paramArrayOfFloat.get(39)).y;
-    paramArrayOfFloat.add(new PointF(2.0F * f1 - f2, (float)((((PointF)paramArrayOfFloat.get(49)).y + f3) / 2.0D - (((PointF)paramArrayOfFloat.get(64)).y - localPointF.y) * 1.4D)));
+    float f1 = ((PointF)paramArrayOfFloat.get(35)).x;
+    float f2 = ((PointF)paramArrayOfFloat.get(6)).x;
+    double d1 = ((PointF)paramArrayOfFloat.get(39)).y;
+    double d2 = ((PointF)paramArrayOfFloat.get(39)).y - ((PointF)paramArrayOfFloat.get(56)).y;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    paramArrayOfFloat.add(new PointF(f1 * 2.0F - f2, (float)(d1 + d2 * 3.2D)));
+    d1 = ((PointF)paramArrayOfFloat.get(64)).x;
+    Double.isNaN(d1);
+    d2 = ((PointF)paramArrayOfFloat.get(9)).x;
+    Double.isNaN(d2);
+    f1 = (float)(d1 * 2.4D - d2 * 1.4D);
+    d1 = localPointF.y;
+    Double.isNaN(d1);
+    d2 = ((PointF)paramArrayOfFloat.get(59)).y;
+    Double.isNaN(d2);
+    paramArrayOfFloat.add(new PointF(f1, (float)(d1 * 2.5D - d2 * 1.5D)));
+    f1 = ((PointF)paramArrayOfFloat.get(45)).x;
+    f2 = ((PointF)paramArrayOfFloat.get(12)).x;
+    d1 = ((PointF)paramArrayOfFloat.get(49)).y;
+    Double.isNaN(d1);
+    d2 = ((PointF)paramArrayOfFloat.get(62)).y;
+    Double.isNaN(d2);
+    paramArrayOfFloat.add(new PointF(f1 * 2.0F - f2, (float)(d1 * 4.2D - d2 * 3.2D)));
+    f1 = localPointF.x;
+    f2 = ((PointF)paramArrayOfFloat.get(59)).x;
+    d1 = ((PointF)paramArrayOfFloat.get(39)).y + ((PointF)paramArrayOfFloat.get(49)).y;
+    Double.isNaN(d1);
+    d1 /= 2.0D;
+    d2 = ((PointF)paramArrayOfFloat.get(64)).y - localPointF.y;
+    Double.isNaN(d2);
+    paramArrayOfFloat.add(new PointF(f1 * 2.0F - f2, (float)(d1 - d2 * 1.4D)));
     return paramArrayOfFloat;
   }
   
@@ -452,7 +765,7 @@ public class YoutuPointsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.YoutuPointsUtil
  * JD-Core Version:    0.7.0.1
  */

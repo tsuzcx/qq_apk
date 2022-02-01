@@ -1,12 +1,58 @@
 package com.tencent.token;
 
-public class de
-  extends df
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+
+final class de
+  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
 {
-  public int b;
-  public String c;
-  public int d;
-  public short e;
+  private final View a;
+  private ViewTreeObserver b;
+  private final Runnable c;
+  
+  private de(View paramView, Runnable paramRunnable)
+  {
+    this.a = paramView;
+    this.b = paramView.getViewTreeObserver();
+    this.c = paramRunnable;
+  }
+  
+  public static de a(View paramView, Runnable paramRunnable)
+  {
+    paramRunnable = new de(paramView, paramRunnable);
+    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
+    paramView.addOnAttachStateChangeListener(paramRunnable);
+    return paramRunnable;
+  }
+  
+  private void a()
+  {
+    if (this.b.isAlive()) {
+      this.b.removeOnPreDrawListener(this);
+    } else {
+      this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    }
+    this.a.removeOnAttachStateChangeListener(this);
+  }
+  
+  public final boolean onPreDraw()
+  {
+    a();
+    this.c.run();
+    return true;
+  }
+  
+  public final void onViewAttachedToWindow(View paramView)
+  {
+    this.b = paramView.getViewTreeObserver();
+  }
+  
+  public final void onViewDetachedFromWindow(View paramView)
+  {
+    a();
+  }
 }
 
 

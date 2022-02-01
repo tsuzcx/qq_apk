@@ -1,85 +1,29 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Filter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Filter.FilterResults;
 import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.DropdownView;
-import com.tencent.qphone.base.remote.SimpleAccount;
 import java.util.List;
 
-public class cug
-  extends ArrayAdapter
-  implements View.OnClickListener
+class cug
+  extends Filter
 {
-  Filter jdField_a_of_type_AndroidWidgetFilter;
+  cug(cuf paramcuf) {}
   
-  public cug(LoginActivity paramLoginActivity, Context paramContext)
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    super(paramContext, 2130903066, 2131230993, paramLoginActivity.jdField_a_of_type_JavaUtilList);
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
   }
   
-  public String a(int paramInt)
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.b.b(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin());
-  }
-  
-  public String b(int paramInt)
-  {
-    return ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.size() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.b().setVisibility(8);
-    }
-    for (;;)
+    if (paramFilterResults.count > 0)
     {
-      return super.getCount();
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView.b().setVisibility(0);
+      this.a.notifyDataSetChanged();
+      return;
     }
-  }
-  
-  public Filter getFilter()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetFilter == null) {
-      this.jdField_a_of_type_AndroidWidgetFilter = new cuh(this);
-    }
-    return this.jdField_a_of_type_AndroidWidgetFilter;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (LinearLayout)paramView.findViewById(2131230991);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131230992);
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.a(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin(), false);
-    if (localBitmap != null) {
-      localImageView.setImageBitmap(localBitmap);
-    }
-    for (;;)
-    {
-      localImageView = (ImageView)paramView.findViewById(2131230994);
-      localImageView.setTag(Integer.valueOf(paramInt));
-      localImageView.setOnClickListener(this);
-      localImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.getString(2131561820));
-      paramView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.getString(2131561582) + "%s", new Object[] { ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin() }));
-      paramViewGroup.setOnClickListener(new cui(this, paramInt));
-      return paramView;
-      localImageView.setImageResource(2130838113);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.f = ((Integer)paramView.getTag()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.showDialog(1);
+    this.a.notifyDataSetInvalidated();
   }
 }
 

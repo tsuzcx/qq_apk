@@ -1,0 +1,28 @@
+package com.tencent.qqmail.utilities.ui;
+
+import android.graphics.Rect;
+import android.view.TouchDelegate;
+import android.view.View;
+
+final class QMUIKit$1
+  implements Runnable
+{
+  QMUIKit$1(View paramView1, int paramInt, View paramView2) {}
+  
+  public void run()
+  {
+    Rect localRect = new Rect();
+    this.val$view.getHitRect(localRect);
+    localRect.left -= this.val$expendSize;
+    localRect.top -= this.val$expendSize;
+    localRect.right += this.val$expendSize;
+    localRect.bottom += this.val$expendSize;
+    this.val$parentView.setTouchDelegate(new TouchDelegate(localRect, this.val$view));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes11.jar
+ * Qualified Name:     com.tencent.qqmail.utilities.ui.QMUIKit.1
+ * JD-Core Version:    0.7.0.1
+ */

@@ -13,15 +13,17 @@ public class HandshakeImpl1Client
   
   public void setResourceDescriptor(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("http resource descriptor must not be null");
+    if (paramString != null)
+    {
+      this.resourceDescriptor = paramString;
+      return;
     }
-    this.resourceDescriptor = paramString;
+    throw new IllegalArgumentException("http resource descriptor must not be null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.handshake.HandshakeImpl1Client
  * JD-Core Version:    0.7.0.1
  */

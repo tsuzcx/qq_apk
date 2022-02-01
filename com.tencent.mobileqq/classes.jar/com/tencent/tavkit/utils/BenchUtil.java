@@ -19,17 +19,32 @@ public class BenchUtil
   
   public static long benchEnd(String paramString)
   {
-    if ((ENABLE_DEBUG) && (!TextUtils.isEmpty(paramString)) && (startTimeMap != null))
+    boolean bool = ENABLE_DEBUG;
+    long l2 = 0L;
+    long l1 = l2;
+    if (bool)
     {
-      Long localLong = (Long)startTimeMap.get(paramString);
-      if (localLong == null) {
-        return 0L;
+      l1 = l2;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        Object localObject = startTimeMap;
+        l1 = l2;
+        if (localObject != null)
+        {
+          localObject = (Long)((Map)localObject).get(paramString);
+          if (localObject == null) {
+            return 0L;
+          }
+          l1 = System.currentTimeMillis() - ((Long)localObject).longValue();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(", cost time: ");
+          ((StringBuilder)localObject).append(l1);
+          Log.d("BenchUtil", ((StringBuilder)localObject).toString());
+        }
       }
-      long l = System.currentTimeMillis() - localLong.longValue();
-      Log.d("BenchUtil", paramString + ", cost time: " + l);
-      return l;
     }
-    return 0L;
+    return l1;
   }
   
   public static void benchStart(String paramString)
@@ -52,7 +67,7 @@ public class BenchUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.utils.BenchUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.chatroom.view.FixAspectRatioAndTopCropImageView android:id="@id/vw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" app:fix_ratio="0.33" app:left_bottom_radius="@dimen/h0" app:right_bottom_radius="@dimen/h0" />
+        <Button android:textSize="14.0dip" android:textColor="@color/az" android:id="@id/vv" android:background="@drawable/dv" android:layout_width="60.0dip" android:layout_height="32.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_toLeftOf="@id/vv" android:layout_centerVertical="true">
+            <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/w2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/vy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/w2" android:layout_alignLeft="@id/w2" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/w1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/vy" android:layout_alignLeft="@id/w2" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

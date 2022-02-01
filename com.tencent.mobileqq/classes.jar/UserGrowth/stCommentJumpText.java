@@ -8,7 +8,7 @@ public final class stCommentJumpText
   extends JceStruct
 {
   public String h5_url = "";
-  public int index;
+  public int index = 0;
   public String schema_url = "";
   public String text = "";
   
@@ -32,21 +32,24 @@ public final class stCommentJumpText
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 0);
+    String str = this.text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.index, 1);
-    if (this.h5_url != null) {
-      paramJceOutputStream.write(this.h5_url, 2);
+    str = this.h5_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.schema_url != null) {
-      paramJceOutputStream.write(this.schema_url, 3);
+    str = this.schema_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stCommentJumpText
  * JD-Core Version:    0.7.0.1
  */

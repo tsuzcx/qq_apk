@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bety;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class DevlockPushActivity$3
   implements Runnable
@@ -11,28 +11,24 @@ class DevlockPushActivity$3
   {
     try
     {
-      if ((this.this$0.a == null) && (!this.this$0.isFinishing()))
+      if ((this.this$0.b == null) && (!this.this$0.isFinishing()))
       {
-        this.this$0.a = new bety(this.this$0, this.this$0.getTitleBarHeight());
-        this.this$0.a.c(2131695090);
+        this.this$0.b = new QQProgressDialog(this.this$0, this.this$0.getTitleBarHeight());
+        this.this$0.b.c(2131892360);
       }
-      if ((this.this$0.a != null) && (!this.this$0.a.isShowing())) {
-        this.this$0.a.show();
-      }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
+    }
+    if ((this.this$0.b != null) && (!this.this$0.b.isShowing())) {
+      this.this$0.b.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockPushActivity.3
  * JD-Core Version:    0.7.0.1
  */

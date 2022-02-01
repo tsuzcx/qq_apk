@@ -2,55 +2,55 @@ package com.tencent.mm.plugin.music.model.e;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.b.f;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
-  public e db;
-  public f<String, c> pax;
+  public f<String, c> LNJ;
+  public ISQLiteDatabase db;
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, c.info, "PieceMusicInfo", null);
-    AppMethodBeat.i(105041);
-    this.db = parame;
-    this.pax = new com.tencent.mm.memory.a.c(20);
-    AppMethodBeat.o(105041);
+    super(paramISQLiteDatabase, c.info, "PieceMusicInfo", null);
+    AppMethodBeat.i(63179);
+    this.db = paramISQLiteDatabase;
+    this.LNJ = new com.tencent.mm.memory.a.c(20);
+    AppMethodBeat.o(63179);
   }
   
-  public final c VD(String paramString)
+  public final c aPh(String paramString)
   {
-    AppMethodBeat.i(105042);
-    if (this.pax.get(paramString) != null)
+    AppMethodBeat.i(63180);
+    if (this.LNJ.get(paramString) != null)
     {
-      paramString = (c)this.pax.get(paramString);
-      AppMethodBeat.o(105042);
+      paramString = (c)this.LNJ.get(paramString);
+      AppMethodBeat.o(63180);
       return paramString;
     }
     Object localObject = String.format("Select * From PieceMusicInfo Where musicId=?", new Object[0]);
-    localObject = this.db.a((String)localObject, new String[] { paramString }, 2);
+    localObject = this.db.rawQuery((String)localObject, new String[] { paramString }, 2);
     if ((localObject != null) && (((Cursor)localObject).moveToFirst()))
     {
       c localc = new c();
       localc.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      this.pax.put(paramString, localc);
-      AppMethodBeat.o(105042);
+      this.LNJ.put(paramString, localc);
+      AppMethodBeat.o(63180);
       return localc;
     }
     if (localObject != null) {
       ((Cursor)localObject).close();
     }
-    AppMethodBeat.o(105042);
+    AppMethodBeat.o(63180);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e.d
  * JD-Core Version:    0.7.0.1
  */

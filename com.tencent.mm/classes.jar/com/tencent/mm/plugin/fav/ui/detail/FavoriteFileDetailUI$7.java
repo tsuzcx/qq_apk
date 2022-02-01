@@ -10,14 +10,14 @@ final class FavoriteFileDetailUI$7
   
   public final void run()
   {
-    AppMethodBeat.i(74329);
-    this.mwd.dismiss();
-    AppMethodBeat.o(74329);
+    AppMethodBeat.i(107122);
+    this.Afz.dismiss();
+    AppMethodBeat.o(107122);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.FavoriteFileDetailUI.7
  * JD-Core Version:    0.7.0.1
  */

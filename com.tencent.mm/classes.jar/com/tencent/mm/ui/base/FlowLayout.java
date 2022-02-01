@@ -8,65 +8,74 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
+import com.tencent.mm.ah.a.m;
 import java.util.LinkedList;
+import org.xwalk.core.Log;
 
 public class FlowLayout
   extends ViewGroup
 {
-  private int zhv;
-  int zhw;
-  LinkedList<Integer> zhx;
-  
-  static
-  {
-    AppMethodBeat.i(106276);
-    if (!FlowLayout.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      AppMethodBeat.o(106276);
-      return;
-    }
-  }
+  public int aYP;
+  protected int adOr;
+  protected int adOs;
+  private LinkedList<Integer> adOt;
   
   public FlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106267);
-    this.zhv = 0;
-    this.zhw = 0;
-    this.zhx = new LinkedList();
-    c(paramContext, paramAttributeSet);
-    AppMethodBeat.o(106267);
+    AppMethodBeat.i(141630);
+    this.adOr = 0;
+    this.adOs = 0;
+    this.adOt = new LinkedList();
+    this.aYP = 0;
+    b(paramContext, paramAttributeSet);
+    AppMethodBeat.o(141630);
   }
   
   public FlowLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(106268);
-    this.zhv = 0;
-    this.zhw = 0;
-    this.zhx = new LinkedList();
-    c(paramContext, paramAttributeSet);
-    AppMethodBeat.o(106268);
+    AppMethodBeat.i(141631);
+    this.adOr = 0;
+    this.adOs = 0;
+    this.adOt = new LinkedList();
+    this.aYP = 0;
+    b(paramContext, paramAttributeSet);
+    AppMethodBeat.o(141631);
   }
   
-  private void c(Context paramContext, AttributeSet paramAttributeSet)
+  private void b(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(106269);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FlowLayout);
+    AppMethodBeat.i(141632);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.FlowLayout);
     try
     {
-      this.zhv = paramContext.getDimensionPixelSize(0, 0);
-      this.zhw = paramContext.getDimensionPixelSize(1, 0);
+      this.adOr = paramContext.getDimensionPixelSize(a.m.FlowLayout_horizontalSpacing, 0);
+      this.adOs = paramContext.getDimensionPixelSize(a.m.FlowLayout_verticalSpacing, 0);
       return;
     }
     finally
     {
       paramContext.recycle();
-      AppMethodBeat.o(106269);
+      AppMethodBeat.o(141632);
     }
+  }
+  
+  public final int aAJ(int paramInt)
+  {
+    AppMethodBeat.i(251300);
+    int j = Math.max(0, Math.min(this.adOt.size(), paramInt));
+    paramInt = getPaddingTop();
+    int i = 0;
+    while (i < j - 1)
+    {
+      paramInt += ((Integer)this.adOt.get(i)).intValue() + this.adOs;
+      i += 1;
+    }
+    i = ((Integer)this.adOt.get(j - 1)).intValue();
+    j = getPaddingBottom();
+    AppMethodBeat.o(251300);
+    return i + paramInt + j;
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -76,42 +85,48 @@ public class FlowLayout
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
-    AppMethodBeat.i(106273);
+    AppMethodBeat.i(141636);
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-2, -2);
-    AppMethodBeat.o(106273);
+    AppMethodBeat.o(141636);
     return localLayoutParams;
   }
   
   public ViewGroup.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(106274);
+    AppMethodBeat.i(141637);
     paramAttributeSet = new ViewGroup.LayoutParams(getContext(), paramAttributeSet);
-    AppMethodBeat.o(106274);
+    AppMethodBeat.o(141637);
     return paramAttributeSet;
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(106275);
+    AppMethodBeat.i(141638);
     paramLayoutParams = new ViewGroup.LayoutParams(paramLayoutParams.width, paramLayoutParams.height);
-    AppMethodBeat.o(106275);
+    AppMethodBeat.o(141638);
     return paramLayoutParams;
   }
   
   public int getLineCount()
   {
-    AppMethodBeat.i(106270);
-    int i = this.zhx.size();
-    AppMethodBeat.o(106270);
+    AppMethodBeat.i(141633);
+    int i = this.adOt.size();
+    AppMethodBeat.o(141633);
     return i;
+  }
+  
+  public int getRealLineCount()
+  {
+    return this.aYP;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(106272);
+    AppMethodBeat.i(141635);
     int i1 = getChildCount();
     int i = getPaddingLeft();
     paramInt2 = getPaddingTop();
+    this.aYP = 1;
     paramInt4 = 0;
     int j = 0;
     View localView;
@@ -129,19 +144,20 @@ public class FlowLayout
         k = localView.getMeasuredWidth();
         m = localView.getMeasuredHeight();
         if (i + k + getPaddingRight() <= paramInt3 - paramInt1) {
-          break label220;
+          break label235;
         }
         i = getPaddingLeft();
-        paramInt2 += ((Integer)this.zhx.get(paramInt4)).intValue() + this.zhw;
+        paramInt2 += ((Integer)this.adOt.get(paramInt4)).intValue() + this.adOs;
+        this.aYP += 1;
         paramInt4 += 1;
       }
     }
-    label220:
+    label235:
     for (;;)
     {
-      n = (((Integer)this.zhx.get(paramInt4)).intValue() - m) / 2;
+      n = (((Integer)this.adOt.get(paramInt4)).intValue() - m) / 2;
       localView.layout(i, paramInt2 + n, i + k, n + paramInt2 + m);
-      n = this.zhv + k + i;
+      n = this.adOr + k + i;
       k = paramInt2;
       m = paramInt4;
       j += 1;
@@ -149,25 +165,21 @@ public class FlowLayout
       paramInt4 = m;
       paramInt2 = k;
       break;
-      AppMethodBeat.o(106272);
+      AppMethodBeat.o(141635);
       return;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106271);
-    Object localObject;
-    if ((!$assertionsDisabled) && (View.MeasureSpec.getMode(paramInt1) == 0))
-    {
-      localObject = new AssertionError();
-      AppMethodBeat.o(106271);
-      throw ((Throwable)localObject);
+    AppMethodBeat.i(141634);
+    if (View.MeasureSpec.getMode(paramInt1) == 0) {
+      Log.e("MicroMsg.FlowLayout", " getMode(widthMeasureSpec) == MeasureSpec.UNSPECIFIED");
     }
     int i5 = View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight();
     int i4 = View.MeasureSpec.getSize(paramInt2) - getPaddingTop() - getPaddingBottom();
     int i6 = getChildCount();
-    this.zhx.clear();
+    this.adOt.clear();
     int k = 0;
     int j = 0;
     int i = 0;
@@ -177,26 +189,26 @@ public class FlowLayout
       int i1 = 0;
       while (i1 < i6)
       {
-        localObject = getChildAt(i1);
+        View localView = getChildAt(i1);
         int i3 = i;
         int m = j;
         int i2 = k;
-        if (((View)localObject).getVisibility() != 8)
+        if (localView.getVisibility() != 8)
         {
-          ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(i5, -2147483648), n);
-          int i7 = ((View)localObject).getMeasuredWidth();
+          localView.measure(View.MeasureSpec.makeMeasureSpec(i5, -2147483648), n);
+          int i7 = localView.getMeasuredWidth();
           i3 = i;
           m = j;
           i2 = k;
           if (k + i7 > i5)
           {
             i2 = 0;
-            m = j + (this.zhw + i);
-            this.zhx.add(Integer.valueOf(i));
+            m = j + (this.adOs + i);
+            this.adOt.add(Integer.valueOf(i));
             i3 = 0;
           }
-          i3 = Math.max(i3, ((View)localObject).getMeasuredHeight());
-          i2 += this.zhv + i7;
+          i3 = Math.max(i3, localView.getMeasuredHeight());
+          i2 += this.adOr + i7;
         }
         i1 += 1;
         i = i3;
@@ -204,14 +216,14 @@ public class FlowLayout
         k = i2;
       }
     }
-    this.zhx.add(Integer.valueOf(i));
+    this.adOt.add(Integer.valueOf(i));
     if (View.MeasureSpec.getMode(paramInt2) == 0) {
       paramInt2 = j + i + getPaddingTop() + getPaddingBottom();
     }
     for (;;)
     {
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), paramInt2);
-      AppMethodBeat.o(106271);
+      AppMethodBeat.o(141634);
       return;
       if ((View.MeasureSpec.getMode(paramInt2) == -2147483648) && (j + i < i4)) {
         paramInt2 = j + i + getPaddingTop() + getPaddingBottom();
@@ -223,7 +235,7 @@ public class FlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.FlowLayout
  * JD-Core Version:    0.7.0.1
  */

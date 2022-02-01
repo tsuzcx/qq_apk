@@ -11,63 +11,51 @@ public class SVMp4Merge
   public static int a(List<String> paramList, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int k = paramList.size();
-    if (k <= 1) {
+    int n = paramList.size();
+    int m = -1;
+    if (n <= 1) {
       return -1;
     }
-    int j = 0;
     int i = 0;
-    label29:
-    if (j < k)
+    int k;
+    for (int j = 0; i < n; j = k)
     {
-      localStringBuilder.append((String)paramList.get(j));
-      if (j != k - 1) {
+      localStringBuilder.append((String)paramList.get(i));
+      if (i != n - 1) {
         localStringBuilder.append('#');
       }
-      File localFile = new File((String)paramList.get(j));
-      if (!localFile.exists()) {
-        break label184;
+      File localFile = new File((String)paramList.get(i));
+      k = j;
+      if (localFile.exists()) {
+        k = j + (int)localFile.length();
       }
-      i = (int)localFile.length() + i;
+      i += 1;
     }
-    label184:
-    for (;;)
+    if (j <= 0) {
+      return -1;
+    }
+    try
     {
-      j += 1;
-      break label29;
-      if (i <= 0) {
-        break;
-      }
-      try
-      {
-        nativeSetDropStrategy(a, b);
-      }
-      catch (UnsatisfiedLinkError paramList)
-      {
-        try
-        {
-          for (;;)
-          {
-            i = nativeMergeMp4(localStringBuilder.toString().getBytes(), paramString, k, i);
-            paramList = new File(paramString);
-            if ((paramList.exists()) && (i < 0)) {
-              paramList.delete();
-            }
-            return i;
-            paramList = paramList;
-            paramList.printStackTrace();
-          }
-        }
-        catch (UnsatisfiedLinkError paramList)
-        {
-          for (;;)
-          {
-            paramList.printStackTrace();
-            i = -1;
-          }
-        }
-      }
+      nativeSetDropStrategy(a, b);
     }
+    catch (UnsatisfiedLinkError paramList)
+    {
+      paramList.printStackTrace();
+    }
+    try
+    {
+      i = nativeMergeMp4(localStringBuilder.toString().getBytes(), paramString, n, j);
+    }
+    catch (UnsatisfiedLinkError paramList)
+    {
+      paramList.printStackTrace();
+      i = m;
+    }
+    paramList = new File(paramString);
+    if ((paramList.exists()) && (i < 0)) {
+      paramList.delete();
+    }
+    return i;
   }
   
   private static native int nativeMergeMp4(byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2);
@@ -76,7 +64,7 @@ public class SVMp4Merge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.SVMp4Merge
  * JD-Core Version:    0.7.0.1
  */

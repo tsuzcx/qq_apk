@@ -6,67 +6,65 @@ import me.weishu.epic.art.method.ArtMethod;
 
 public class Runtime
 {
-  private static final String TAG = "Runtime";
-  private static volatile boolean g64 = false;
-  private static volatile boolean isArt = true;
-  private static volatile Boolean isThumb = null;
+  private static volatile Boolean a;
+  private static volatile boolean b = false;
+  private static volatile boolean c = true;
   
   static
   {
     try
     {
-      g64 = ((Boolean)Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("is64Bit", new Class[0]).invoke(Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("getRuntime", new Class[0]).invoke(null, new Object[0]), new Object[0])).booleanValue();
-      isArt = System.getProperty("java.vm.version").startsWith("2");
-      Log.i("Runtime", "is64Bit: " + g64 + ", isArt: " + isArt);
-      return;
+      b = ((Boolean)Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("is64Bit", new Class[0]).invoke(Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("getRuntime", new Class[0]).invoke(null, new Object[0]), new Object[0])).booleanValue();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Log.e("Runtime", "get is64Bit failed, default not 64bit!", localException);
-        g64 = false;
-      }
+      Log.e("Runtime", "get is64Bit failed, default not 64bit!", localException);
+      b = false;
     }
+    c = System.getProperty("java.vm.version").startsWith("2");
+    StringBuilder localStringBuilder = new StringBuilder("is64Bit: ");
+    localStringBuilder.append(b);
+    localStringBuilder.append(", isArt: ");
+    localStringBuilder.append(c);
+    Log.i("Runtime", localStringBuilder.toString());
   }
   
-  public static boolean is64Bit()
+  public static boolean a()
   {
-    return g64;
+    return b;
   }
   
-  public static boolean isArt()
+  public static boolean b()
   {
-    return isArt;
-  }
-  
-  public static boolean isThumb2()
-  {
+    if (a != null) {
+      return a.booleanValue();
+    }
     boolean bool = false;
-    if (isThumb != null) {
-      return isThumb.booleanValue();
-    }
     try
     {
-      long l = ArtMethod.of(String.class.getDeclaredMethod("hashCode", new Class[0])).getEntryPointFromQuickCompiledCode();
-      Logger.w("Runtime", "isThumb2, entry: " + Long.toHexString(l));
+      long l = ArtMethod.a(String.class.getDeclaredMethod("hashCode", new Class[0])).b();
+      StringBuilder localStringBuilder1 = new StringBuilder("isThumb2, entry: ");
+      localStringBuilder1.append(Long.toHexString(l));
+      Logger.c("Runtime", localStringBuilder1.toString());
       if ((l & 1L) == 1L) {
         bool = true;
       }
-      isThumb = Boolean.valueOf(bool);
-      bool = isThumb.booleanValue();
+      a = Boolean.valueOf(bool);
+      bool = a.booleanValue();
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      Logger.w("Runtime", "isThumb2, error: " + localThrowable);
+      StringBuilder localStringBuilder2 = new StringBuilder("isThumb2, error: ");
+      localStringBuilder2.append(localThrowable);
+      Logger.c("Runtime", localStringBuilder2.toString());
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.android.dexposed.utility.Runtime
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,7 @@ public class hjs
   
   public void onClick(View paramView)
   {
-    if (this.a.a) {
-      return;
-    }
-    this.a.b = ((String)paramView.getTag());
-    this.a.i();
+    this.a.h();
   }
 }
 

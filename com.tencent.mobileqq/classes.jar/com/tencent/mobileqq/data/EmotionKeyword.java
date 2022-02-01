@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="eId,epId,keyword")
 public class EmotionKeyword
-  extends awge
+  extends Entity
 {
   public String eId;
   public String epId;
@@ -15,19 +15,20 @@ public class EmotionKeyword
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (paramObject == this) {
-          return true;
-        }
-      } while ((getClass() != paramObject.getClass()) || (!(paramObject instanceof EmotionKeyword)));
-      paramObject = (EmotionKeyword)paramObject;
-    } while ((!this.epId.equals(paramObject.epId)) || (!this.eId.equals(paramObject.eId)) || (!this.keyword.equals(paramObject.keyword)));
-    return true;
+    if (paramObject == null) {
+      return false;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    if (!(paramObject instanceof EmotionKeyword)) {
+      return false;
+    }
+    paramObject = (EmotionKeyword)paramObject;
+    return (this.epId.equals(paramObject.epId)) && (this.eId.equals(paramObject.eId)) && (this.keyword.equals(paramObject.keyword));
   }
   
   public int hashCode()
@@ -44,7 +45,20 @@ public class EmotionKeyword
   
   public String toString()
   {
-    return "EmotionKeyword{keyword='" + this.keyword + '\'' + ", epId='" + this.epId + '\'' + ", eId='" + this.eId + '\'' + ", exposeNum=" + this.exposeNum + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EmotionKeyword{keyword='");
+    localStringBuilder.append(this.keyword);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", epId='");
+    localStringBuilder.append(this.epId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", eId='");
+    localStringBuilder.append(this.eId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", exposeNum=");
+    localStringBuilder.append(this.exposeNum);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

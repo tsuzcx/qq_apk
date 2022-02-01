@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.permission.PermissionChecker;
 
 class PhoneMatchActivity$1
   implements Runnable
@@ -9,7 +9,7 @@ class PhoneMatchActivity$1
   
   public void run()
   {
-    this.this$0.a.k();
+    PermissionChecker.a().e();
   }
 }
 

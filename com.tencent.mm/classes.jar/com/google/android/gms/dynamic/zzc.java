@@ -15,14 +15,14 @@ final class zzc
   
   public final void zza(LifecycleDelegate paramLifecycleDelegate)
   {
-    AppMethodBeat.i(61637);
+    AppMethodBeat.i(12129);
     DeferredLifecycleHelper.zzb(this.zzabg).onCreate(this.zzabi);
-    AppMethodBeat.o(61637);
+    AppMethodBeat.o(12129);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.dynamic.zzc
  * JD-Core Version:    0.7.0.1
  */

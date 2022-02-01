@@ -19,14 +19,15 @@ public final class articlesummary$PackTopicExtraInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40 }, new String[] { "uint32_join_count", "bytes_join_wording", "uint32_topic_id", "bytes_topic_name", "uint32_adtag" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0) }, PackTopicExtraInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40 }, new String[] { "uint32_join_count", "bytes_join_wording", "uint32_topic_id", "bytes_topic_name", "uint32_adtag" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localInteger }, PackTopicExtraInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.PackTopicExtraInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -18,20 +18,35 @@ public class CharProgression
   
   public CharProgression(char paramChar1, char paramChar2, int paramInt)
   {
-    if (paramInt == 0) {
-      throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
-    }
-    if (paramInt == -2147483648) {
+    if (paramInt != 0)
+    {
+      if (paramInt != -2147483648)
+      {
+        this.first = paramChar1;
+        this.last = ((char)ProgressionUtilKt.getProgressionLastElement(paramChar1, paramChar2, paramInt));
+        this.step = paramInt;
+        return;
+      }
       throw ((Throwable)new IllegalArgumentException("Step must be greater than Int.MIN_VALUE to avoid overflow on negation."));
     }
-    this.first = paramChar1;
-    this.last = ((char)ProgressionUtilKt.getProgressionLastElement(paramChar1, paramChar2, paramInt));
-    this.step = paramInt;
+    throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof CharProgression)) && (((isEmpty()) && (((CharProgression)paramObject).isEmpty())) || ((this.first == ((CharProgression)paramObject).first) && (this.last == ((CharProgression)paramObject).last) && (this.step == ((CharProgression)paramObject).step)));
+    if ((paramObject instanceof CharProgression)) {
+      if ((!isEmpty()) || (!((CharProgression)paramObject).isEmpty()))
+      {
+        int i = this.first;
+        paramObject = (CharProgression)paramObject;
+        if ((i != paramObject.first) || (this.last != paramObject.last) || (this.step != paramObject.step)) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   public final char getFirst()
@@ -59,13 +74,14 @@ public class CharProgression
   
   public boolean isEmpty()
   {
-    if (this.step > 0) {
-      if (this.first <= this.last) {}
-    }
-    while (this.first < this.last)
+    if (this.step > 0)
     {
+      if (this.first > this.last) {
+        return true;
+      }
+    }
+    else if (this.first < this.last) {
       return true;
-      return false;
     }
     return false;
   }
@@ -79,15 +95,33 @@ public class CharProgression
   @NotNull
   public String toString()
   {
-    if (this.step > 0) {
-      return this.first + ".." + this.last + " step " + this.step;
+    StringBuilder localStringBuilder;
+    int i;
+    if (this.step > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.first);
+      localStringBuilder.append("..");
+      localStringBuilder.append(this.last);
+      localStringBuilder.append(" step ");
+      i = this.step;
     }
-    return this.first + " downTo " + this.last + " step " + -this.step;
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.first);
+      localStringBuilder.append(" downTo ");
+      localStringBuilder.append(this.last);
+      localStringBuilder.append(" step ");
+      i = -this.step;
+    }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.CharProgression
  * JD-Core Version:    0.7.0.1
  */

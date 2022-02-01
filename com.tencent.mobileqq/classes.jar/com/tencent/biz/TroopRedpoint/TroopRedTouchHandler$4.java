@@ -5,26 +5,30 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
-public final class TroopRedTouchHandler$4
+final class TroopRedTouchHandler$4
   implements Runnable
 {
-  public TroopRedTouchHandler$4(QQAppInterface paramQQAppInterface, long paramLong) {}
+  TroopRedTouchHandler$4(QQAppInterface paramQQAppInterface, long paramLong) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "RedTouchExManager_GetTime", 0);
+    Object localObject = this.a.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a.getCurrentAccountUin());
+    localStringBuilder.append("RedTouchExManager_GetTime");
+    localObject = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putLong("last_get_time", System.currentTimeMillis() / 1000L);
-      ((SharedPreferences.Editor)localObject).putLong("interval_time", this.jdField_a_of_type_Long);
+      ((SharedPreferences.Editor)localObject).putLong("interval_time", this.b);
       ((SharedPreferences.Editor)localObject).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.4
  * JD-Core Version:    0.7.0.1
  */

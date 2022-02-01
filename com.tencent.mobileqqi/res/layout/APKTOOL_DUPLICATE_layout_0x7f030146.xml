@@ -2,16 +2,16 @@
 <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020099" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
-        <TextView android:textSize="10.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080626" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="5.5dip" android:text="群活动" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080627" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202a0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080626" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080628" android:paddingBottom="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.5dip" android:layout_marginTop="7.5dip" android:layout_marginRight="10.5dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080627">
+        <TextView android:textSize="10.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080625" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="5.5dip" android:text="群活动" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080626" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202a0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080625" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080627" android:paddingBottom="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.5dip" android:layout_marginTop="7.5dip" android:layout_marginRight="10.5dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080626">
             <FrameLayout android:layout_width="55.0dip" android:layout_height="55.0dip">
-                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080629" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080628" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020351" android:layout_width="fill_parent" android:layout_height="fill_parent" />
             </FrameLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08062a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip">
-                <TextView android:textSize="14.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08062b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="青春要合群校园新人活动" android:singleLine="true" />
-                <TextView android:textSize="10.0dip" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08062c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="百万小伙伴开学共同的选择，快来加入社团的QQ群吧" android:maxLines="2" android:lineSpacingExtra="4.0dip" />
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080629" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08062a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="青春要合群校园新人活动" android:singleLine="true" />
+                <TextView android:textSize="10.0dip" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08062b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="百万小伙伴开学共同的选择，快来加入社团的QQ群吧" android:maxLines="2" android:lineSpacingExtra="4.0dip" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

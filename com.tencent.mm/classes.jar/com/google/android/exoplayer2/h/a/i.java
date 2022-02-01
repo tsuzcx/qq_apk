@@ -1,72 +1,75 @@
 package com.google.android.exoplayer2.h.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Comparator;
+import java.io.DataInputStream;
 import java.util.TreeSet;
 
-public final class i
-  implements d, Comparator<e>
+final class i
 {
-  private final long bam;
-  private final TreeSet<e> ban;
-  private long bao;
+  final TreeSet<n> djC;
+  public final int id;
+  public final String key;
+  long length;
   
-  public i()
+  public i(int paramInt, String paramString, long paramLong)
   {
-    AppMethodBeat.i(151978);
-    this.bam = 104857600L;
-    this.ban = new TreeSet(this);
-    AppMethodBeat.o(151978);
+    AppMethodBeat.i(92977);
+    this.id = paramInt;
+    this.key = paramString;
+    this.length = paramLong;
+    this.djC = new TreeSet();
+    AppMethodBeat.o(92977);
   }
   
-  private void b(a parama, long paramLong)
+  public i(DataInputStream paramDataInputStream)
   {
-    AppMethodBeat.i(151983);
-    while ((this.bao + paramLong > this.bam) && (!this.ban.isEmpty())) {
-      try
-      {
-        parama.b((e)this.ban.first());
-      }
-      catch (a.a locala) {}
+    this(paramDataInputStream.readInt(), paramDataInputStream.readUTF(), paramDataInputStream.readLong());
+    AppMethodBeat.i(92976);
+    AppMethodBeat.o(92976);
+  }
+  
+  public final int Uu()
+  {
+    AppMethodBeat.i(92980);
+    int i = this.id;
+    int j = this.key.hashCode();
+    int k = (int)(this.length ^ this.length >>> 32);
+    AppMethodBeat.o(92980);
+    return (i * 31 + j) * 31 + k;
+  }
+  
+  public final void a(n paramn)
+  {
+    AppMethodBeat.i(92978);
+    this.djC.add(paramn);
+    AppMethodBeat.o(92978);
+  }
+  
+  public final n cE(long paramLong)
+  {
+    AppMethodBeat.i(92979);
+    n localn1 = n.k(this.key, paramLong);
+    n localn2 = (n)this.djC.floor(localn1);
+    if ((localn2 != null) && (localn2.position + localn2.length > paramLong))
+    {
+      AppMethodBeat.o(92979);
+      return localn2;
     }
-    AppMethodBeat.o(151983);
-  }
-  
-  public final void a(a parama, long paramLong)
-  {
-    AppMethodBeat.i(151979);
-    b(parama, paramLong);
-    AppMethodBeat.o(151979);
-  }
-  
-  public final void a(a parama, e parame)
-  {
-    AppMethodBeat.i(151980);
-    this.ban.add(parame);
-    this.bao += parame.aPF;
-    b(parama, 0L);
-    AppMethodBeat.o(151980);
-  }
-  
-  public final void a(a parama, e parame1, e parame2)
-  {
-    AppMethodBeat.i(151982);
-    c(parame1);
-    a(parama, parame2);
-    AppMethodBeat.o(151982);
-  }
-  
-  public final void c(e parame)
-  {
-    AppMethodBeat.i(151981);
-    this.ban.remove(parame);
-    this.bao -= parame.aPF;
-    AppMethodBeat.o(151981);
+    localn1 = (n)this.djC.ceiling(localn1);
+    if (localn1 == null)
+    {
+      localn1 = n.l(this.key, paramLong);
+      AppMethodBeat.o(92979);
+      return localn1;
+    }
+    localn1 = n.g(this.key, paramLong, localn1.position - paramLong);
+    AppMethodBeat.o(92979);
+    return localn1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.i
  * JD-Core Version:    0.7.0.1
  */

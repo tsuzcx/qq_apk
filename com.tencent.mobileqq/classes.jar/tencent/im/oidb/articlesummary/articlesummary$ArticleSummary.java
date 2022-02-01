@@ -19,6 +19,7 @@ public final class articlesummary$ArticleSummary
   public articlesummary.BusinessBarInfo business_bar = new articlesummary.BusinessBarInfo();
   public final PBBytesField bytes_ad_report_common_data = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_ads_jump_url = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_aio_share_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_article_content_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_article_summary = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_article_title = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -38,16 +39,20 @@ public final class articlesummary$ArticleSummary
   public final PBBytesField bytes_media_specs = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_original_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_push_context = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_qzone_share_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_recommend_reason = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_report_common_data = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_server_context = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_small_game_rsp_pack = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_subscribe_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_subscribe_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_test = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_title_with_topic = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_video_logo_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_video_report_info = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_video_subscript_color = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_video_subscript_txt = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_wechat_share_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBRepeatMessageField<articlesummary.VideoColumnInfo> card_column_entrances = PBField.initRepeatMessage(articlesummary.VideoColumnInfo.class);
   public articlesummary.DiandianLabel diandian_label = new articlesummary.DiandianLabel();
   public articlesummary.DiandianWording diandian_wording = new articlesummary.DiandianWording();
@@ -58,6 +63,7 @@ public final class articlesummary$ArticleSummary
   public final PBBytesField json_picture_list = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField json_video_list = PBField.initBytes(ByteStringMicro.EMPTY);
   public articlesummary.AccountVInfo msg_account_v_info = new articlesummary.AccountVInfo();
+  public articlesummary.CardExInfo msg_card_ex_info = new articlesummary.CardExInfo();
   public articlesummary.ChannelInfo msg_channel_info = new articlesummary.ChannelInfo();
   public articlesummary.FamilyCommentInfo msg_family_comment_info = new articlesummary.FamilyCommentInfo();
   public articlesummary.FeedsInfo msg_feeds_info = new articlesummary.FeedsInfo();
@@ -70,7 +76,9 @@ public final class articlesummary$ArticleSummary
   public final PBRepeatMessageField<articlesummary.SRTUniversalID> msg_srt_universal_id = PBField.initRepeatMessage(articlesummary.SRTUniversalID.class);
   public final PBRepeatMessageField<ArticleSummary> msg_sub_article_summary = PBField.initRepeatMessage(ArticleSummary.class);
   public articlesummary.SubscribeInfo msg_subscribe_info = new articlesummary.SubscribeInfo();
+  public articlesummary.SubscriptInfo msg_subscript_20 = new articlesummary.SubscriptInfo();
   public articlesummary.WeishiUGInfo msg_ug_info = new articlesummary.WeishiUGInfo();
+  public articlesummary.WeChatVideoInfo msg_wechat_video_info = new articlesummary.WeChatVideoInfo();
   public articlesummary.RecommendFollowInfos recommend_info = new articlesummary.RecommendFollowInfos();
   public final PBRepeatMessageField<articlesummary.ArticleTagInfo> rpt_article_tag_list = PBField.initRepeatMessage(articlesummary.ArticleTagInfo.class);
   public final PBRepeatMessageField<articlesummary.CommentInfo> rpt_comments = PBField.initRepeatMessage(articlesummary.CommentInfo.class);
@@ -80,14 +88,18 @@ public final class articlesummary$ArticleSummary
   public final PBUInt32Field uint32_ads_jump_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_ads_source = PBField.initUInt32(0);
   public final PBUInt32Field uint32_article_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_backend_content_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_column_style = PBField.initUInt32(0);
   public final PBUInt32Field uint32_comment_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_comment_icon_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_expose_repeat_flag = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_forbid_reprint_flag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_active = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_close_dislike = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_disp_timestamp = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_first_page_use_gif = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_gallery = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_is_show_follow_button = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_show_search_word = PBField.initUInt32(0);
   public final PBUInt32Field uint32_is_super_top_article = PBField.initUInt32(0);
   public final PBUInt32Field uint32_picture_number = PBField.initUInt32(0);
@@ -111,6 +123,8 @@ public final class articlesummary$ArticleSummary
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -144,12 +158,17 @@ public final class articlesummary$ArticleSummary
     ByteStringMicro localByteStringMicro31 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro32 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro33 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 64, 74, 82, 88, 96, 104, 112, 122, 130, 138, 144, 154, 162, 168, 176, 184, 194, 202, 210, 216, 226, 234, 240, 250, 258, 264, 272, 280, 290, 298, 306, 312, 322, 330, 338, 349, 352, 362, 368, 378, 386, 394, 400, 408, 418, 424, 434, 442, 448, 458, 466, 474, 482, 488, 498, 506, 514, 522, 530, 538, 546, 554, 562, 568, 576, 584, 594, 602, 610, 618, 626, 634, 640, 650, 658, 666, 674, 682, 690, 706, 714, 722, 730, 738, 744, 752 }, new String[] { "uint64_article_id", "bytes_article_title", "bytes_article_summary", "bytes_first_page_pic_url", "bytes_original_url", "bytes_article_content_url", "uint64_time", "uint32_comment_count", "bytes_subscribe_id", "bytes_subscribe_name", "uint64_recommend_time", "uint64_recommend_seq", "uint32_show_big_picture", "uint64_algorithm_id", "bytes_recommend_reason", "json_picture_list", "json_video_list", "uint32_abandon_repeat_flag", "bytes_test", "bytes_colour", "uint32_strategy_id", "uint64_source_article_id", "uint64_merged_video_id", "rpt_article_tag_list", "bytes_friend_like_wording", "bytes_media_specs", "uint32_video_show_small_picture", "msg_channel_info", "bytes_inner_uniq_id", "uint32_comment_icon_type", "bytes_server_context", "rpt_dislike_list", "uint32_is_disp_timestamp", "uint32_is_gallery", "uint32_picture_number", "msg_pack_info", "rpt_comments", "bytes_circle_id", "uint32_is_active", "bytes_push_context", "msg_subscribe_info", "msg_feeds_info", "float_aspect_ratio", "uint32_video_play_count", "rpt_label_list", "is_accountless", "msg_sub_article_summary", "bytes_interface_data", "bytes_gallery_report_extdata", "enum_article_style", "uint32_video_comment_count", "bytes_ads_jump_url", "uint32_ads_jump_type", "bytes_video_subscript_txt", "bytes_video_subscript_color", "uint32_ads_source", "bytes_video_report_info", "diandian_wording", "msg_new_pack_info", "bytes_first_page_gif_url", "uint32_is_first_page_use_gif", "recommend_info", "hot_word_info", "diandian_label", "bytes_gallery_busi_data", "business_bar", "video_download_bar_info", "awesome_comment_icon", "bytes_gw_common_data", "bytes_kb_id", "uint32_article_type", "uint32_is_close_dislike", "uint32_is_super_top_article", "bytes_jump_card_id", "bytes_report_common_data", "bytes_video_logo_url", "msg_partner_account_info", "video_column_info", "bytes_comment_button_jump_url", "uint32_is_show_search_word", "bytes_ad_report_common_data", "msg_srt_universal_id", "video_multi_column_info", "msg_account_v_info", "msg_scrip_cms_info", "video_simple_column_info", "msg_fusion_biu_info", "msg_kd_live_info", "msg_ug_info", "msg_family_comment_info", "card_column_entrances", "uint32_expose_repeat_flag", "uint32_red_package_flag" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro6, localByteStringMicro7, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, Integer.valueOf(0), localByteStringMicro11, localByteStringMicro12, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), null, localByteStringMicro13, localByteStringMicro14, Integer.valueOf(0), null, localByteStringMicro15, Integer.valueOf(0), localByteStringMicro16, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null, localByteStringMicro17, Integer.valueOf(0), localByteStringMicro18, null, null, Float.valueOf(0.0F), Integer.valueOf(0), null, Integer.valueOf(0), null, localByteStringMicro19, localByteStringMicro20, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro21, Integer.valueOf(0), localByteStringMicro22, localByteStringMicro23, Integer.valueOf(0), localByteStringMicro24, null, null, localByteStringMicro25, Integer.valueOf(0), null, null, null, localByteStringMicro26, null, null, null, localByteStringMicro27, localByteStringMicro28, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro29, localByteStringMicro30, localByteStringMicro31, null, null, localByteStringMicro32, Integer.valueOf(0), localByteStringMicro33, null, null, null, null, null, null, null, null, null, null, Integer.valueOf(0), Integer.valueOf(0) }, ArticleSummary.class);
+    ByteStringMicro localByteStringMicro34 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro35 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro36 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro37 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro38 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 64, 74, 82, 88, 96, 104, 112, 122, 130, 138, 144, 154, 162, 168, 176, 184, 194, 202, 210, 216, 226, 234, 240, 250, 258, 264, 272, 280, 290, 298, 306, 312, 322, 330, 338, 349, 352, 362, 368, 378, 386, 394, 400, 408, 418, 424, 434, 442, 448, 458, 466, 474, 482, 488, 498, 506, 514, 522, 530, 538, 546, 554, 562, 568, 576, 584, 594, 602, 610, 618, 626, 634, 640, 650, 658, 666, 674, 682, 690, 706, 714, 722, 730, 738, 744, 752, 760, 770, 778, 786, 794, 808, 824, 834, 848, 866, 874, 882 }, new String[] { "uint64_article_id", "bytes_article_title", "bytes_article_summary", "bytes_first_page_pic_url", "bytes_original_url", "bytes_article_content_url", "uint64_time", "uint32_comment_count", "bytes_subscribe_id", "bytes_subscribe_name", "uint64_recommend_time", "uint64_recommend_seq", "uint32_show_big_picture", "uint64_algorithm_id", "bytes_recommend_reason", "json_picture_list", "json_video_list", "uint32_abandon_repeat_flag", "bytes_test", "bytes_colour", "uint32_strategy_id", "uint64_source_article_id", "uint64_merged_video_id", "rpt_article_tag_list", "bytes_friend_like_wording", "bytes_media_specs", "uint32_video_show_small_picture", "msg_channel_info", "bytes_inner_uniq_id", "uint32_comment_icon_type", "bytes_server_context", "rpt_dislike_list", "uint32_is_disp_timestamp", "uint32_is_gallery", "uint32_picture_number", "msg_pack_info", "rpt_comments", "bytes_circle_id", "uint32_is_active", "bytes_push_context", "msg_subscribe_info", "msg_feeds_info", "float_aspect_ratio", "uint32_video_play_count", "rpt_label_list", "is_accountless", "msg_sub_article_summary", "bytes_interface_data", "bytes_gallery_report_extdata", "enum_article_style", "uint32_video_comment_count", "bytes_ads_jump_url", "uint32_ads_jump_type", "bytes_video_subscript_txt", "bytes_video_subscript_color", "uint32_ads_source", "bytes_video_report_info", "diandian_wording", "msg_new_pack_info", "bytes_first_page_gif_url", "uint32_is_first_page_use_gif", "recommend_info", "hot_word_info", "diandian_label", "bytes_gallery_busi_data", "business_bar", "video_download_bar_info", "awesome_comment_icon", "bytes_gw_common_data", "bytes_kb_id", "uint32_article_type", "uint32_is_close_dislike", "uint32_is_super_top_article", "bytes_jump_card_id", "bytes_report_common_data", "bytes_video_logo_url", "msg_partner_account_info", "video_column_info", "bytes_comment_button_jump_url", "uint32_is_show_search_word", "bytes_ad_report_common_data", "msg_srt_universal_id", "video_multi_column_info", "msg_account_v_info", "msg_scrip_cms_info", "video_simple_column_info", "msg_fusion_biu_info", "msg_kd_live_info", "msg_ug_info", "msg_family_comment_info", "card_column_entrances", "uint32_expose_repeat_flag", "uint32_red_package_flag", "uint32_forbid_reprint_flag", "bytes_wechat_share_url", "bytes_aio_share_url", "bytes_qzone_share_url", "bytes_small_game_rsp_pack", "uint32_column_style", "uint32_is_show_follow_button", "msg_subscript_20", "uint32_backend_content_type", "msg_card_ex_info", "msg_wechat_video_info", "bytes_title_with_topic" }, new Object[] { localLong, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localLong, localInteger, localByteStringMicro6, localByteStringMicro7, localLong, localLong, localInteger, localLong, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localInteger, localByteStringMicro11, localByteStringMicro12, localInteger, localLong, localLong, null, localByteStringMicro13, localByteStringMicro14, localInteger, null, localByteStringMicro15, localInteger, localByteStringMicro16, null, localInteger, localInteger, localInteger, null, null, localByteStringMicro17, localInteger, localByteStringMicro18, null, null, Float.valueOf(0.0F), localInteger, null, localInteger, null, localByteStringMicro19, localByteStringMicro20, localInteger, localInteger, localByteStringMicro21, localInteger, localByteStringMicro22, localByteStringMicro23, localInteger, localByteStringMicro24, null, null, localByteStringMicro25, localInteger, null, null, null, localByteStringMicro26, null, null, null, localByteStringMicro27, localByteStringMicro28, localInteger, localInteger, localInteger, localByteStringMicro29, localByteStringMicro30, localByteStringMicro31, null, null, localByteStringMicro32, localInteger, localByteStringMicro33, null, null, null, null, null, null, null, null, null, null, localInteger, localInteger, localInteger, localByteStringMicro34, localByteStringMicro35, localByteStringMicro36, localByteStringMicro37, localInteger, localInteger, null, localInteger, null, null, localByteStringMicro38 }, ArticleSummary.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.ArticleSummary
  * JD-Core Version:    0.7.0.1
  */

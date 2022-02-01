@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.KeyEvent;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.export.external.interfaces.ClientCertRequest;
 import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
 import com.tencent.smtt.export.external.interfaces.SslError;
@@ -31,7 +32,7 @@ public class WebViewClient
   public static final int ERROR_UNSUPPORTED_AUTH_SCHEME = -3;
   public static final int ERROR_UNSUPPORTED_SCHEME = -10;
   public static final int INTERCEPT_BY_ISP = -16;
-  SmttWebViewClient mX5Client;
+  i mX5Client;
   
   public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean) {}
   
@@ -50,8 +51,10 @@ public class WebViewClient
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (this.mX5Client != null) {
-      this.mX5Client.super_onPageStarted(paramWebView, paramString, paramBitmap);
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    i locali = this.mX5Client;
+    if (locali != null) {
+      locali.a(paramWebView, paramString, paramBitmap);
     }
   }
   
@@ -64,15 +67,15 @@ public class WebViewClient
   
   public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
-    if (this.mX5Client != null) {
+    if (this.mX5Client != null)
+    {
       if (paramWebResourceRequest.isForMainFrame()) {
-        this.mX5Client.onReceivedError(paramWebView.getX5WebView(), paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
+        this.mX5Client.onReceivedError(paramWebView.b(), paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
       }
     }
-    while (!paramWebResourceRequest.isForMainFrame()) {
-      return;
+    else if (paramWebResourceRequest.isForMainFrame()) {
+      onReceivedError(paramWebView, paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
     }
-    onReceivedError(paramWebView, paramWebResourceError.getErrorCode(), paramWebResourceError.getDescription().toString(), paramWebResourceRequest.getUrl().toString());
   }
   
   public void onReceivedHttpAuthRequest(WebView paramWebView, HttpAuthHandler paramHttpAuthHandler, String paramString1, String paramString2)
@@ -89,24 +92,32 @@ public class WebViewClient
     paramSslErrorHandler.cancel();
   }
   
+  public boolean onRenderProcessGone(WebView paramWebView, WebViewClient.RenderProcessGoneDetail paramRenderProcessGoneDetail)
+  {
+    return false;
+  }
+  
   public void onScaleChanged(WebView paramWebView, float paramFloat1, float paramFloat2) {}
   
+  @Deprecated
   public void onTooManyRedirects(WebView paramWebView, Message paramMessage1, Message paramMessage2) {}
   
   public void onUnhandledKeyEvent(WebView paramWebView, KeyEvent paramKeyEvent) {}
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    if (this.mX5Client != null) {
-      return this.mX5Client.shouldInterceptRequest(paramWebView.getX5WebView(), paramWebResourceRequest.getUrl().toString());
+    i locali = this.mX5Client;
+    if (locali != null) {
+      return locali.shouldInterceptRequest(paramWebView.b(), paramWebResourceRequest.getUrl().toString());
     }
     return shouldInterceptRequest(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
   {
-    if (this.mX5Client != null) {
-      return this.mX5Client.shouldInterceptRequest(paramWebView.getX5WebView(), paramWebResourceRequest);
+    paramBundle = this.mX5Client;
+    if (paramBundle != null) {
+      return paramBundle.shouldInterceptRequest(paramWebView.b(), paramWebResourceRequest);
     }
     return null;
   }
@@ -123,8 +134,9 @@ public class WebViewClient
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    if (this.mX5Client != null) {
-      return this.mX5Client.shouldOverrideUrlLoading(paramWebView.getX5WebView(), paramWebResourceRequest.getUrl().toString());
+    i locali = this.mX5Client;
+    if (locali != null) {
+      return locali.shouldOverrideUrlLoading(paramWebView.b(), paramWebResourceRequest.getUrl().toString());
     }
     return shouldOverrideUrlLoading(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
@@ -136,7 +148,7 @@ public class WebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebViewClient
  * JD-Core Version:    0.7.0.1
  */

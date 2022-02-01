@@ -26,21 +26,21 @@ public final class do
   
   public final do a(Type paramType, Object paramObject)
   {
+    boolean bool = true;
     eg.a(true);
     if ((paramObject instanceof dp)) {
       this.d.put(paramType, (dp)paramObject);
     }
     fd localfd = fd.a(paramType);
     List localList = this.e;
-    if (localfd.b == localfd.a) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localList.add(new ed.a(paramObject, localfd, bool, (byte)0));
-      if ((paramObject instanceof ee)) {
-        this.e.add(fc.a(fd.a(paramType), (ee)paramObject));
-      }
-      return this;
+    if (localfd.b != localfd.a) {
+      bool = false;
     }
+    localList.add(new ed.a(paramObject, localfd, bool, (byte)0));
+    if ((paramObject instanceof ee)) {
+      this.e.add(fc.a(fd.a(paramType), (ee)paramObject));
+    }
+    return this;
   }
 }
 

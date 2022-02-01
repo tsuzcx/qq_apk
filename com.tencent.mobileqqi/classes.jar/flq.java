@@ -1,5 +1,10 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class flq
 {
+  public ImageView a;
+  public TextView a;
   public String a;
 }
 

@@ -1,36 +1,37 @@
 package com.tencent.mobileqq.activity;
 
-import beas;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class NotificationActivity$32
-  implements Runnable
+  extends ClickableSpan
 {
-  NotificationActivity$32(NotificationActivity paramNotificationActivity) {}
+  NotificationActivity$32(NotificationActivity paramNotificationActivity, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = NotificationActivity.a(this.this$0).c();
-    QLog.e("LhHelper", 1, "handleLhExpire userStatus = " + i);
-    if (i == 1) {
-      NotificationActivity.a(this.this$0).sendEmptyMessage(1);
+    if (!this.a) {
+      ReportController.a(this.b.getAppRuntime(), "dc00898", "", NotificationActivity.access$1000(this.b), "0X800AA31", "0X800AA31", 0, 0, "", "", "", NotificationActivity.access$300(this.b));
     }
-    do
-    {
-      return;
-      if (i == 2)
-      {
-        NotificationActivity.a(this.this$0).sendEmptyMessage(2);
-        return;
-      }
-    } while (i != 3);
-    NotificationActivity.a(this.this$0).sendEmptyMessage(3);
+    NotificationActivity.access$1200(this.b, "0X800B656");
+    paramView = new Intent();
+    RouteUtils.a(this.b, paramView.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"), "/base/browser");
+    this.b.finish();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.32
  * JD-Core Version:    0.7.0.1
  */

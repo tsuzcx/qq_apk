@@ -35,17 +35,19 @@ public final class mobile_sub_get_cover_item_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.item != null) {
-      paramJceOutputStream.write(this.item, 0);
+    Object localObject = this.item;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.yellowInfo != null) {
-      paramJceOutputStream.write(this.yellowInfo, 1);
+    localObject = this.yellowInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_item_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -2,89 +2,111 @@ package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.database.DataSetObserver;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.ui.base.t;
 
 public class GameMenuView
   extends LinearLayout
 {
+  private View XhP;
+  private LinearLayout XhQ;
+  private LinearLayout XhR;
+  private f XhS;
+  private b.c XhT;
+  private b.a XhU;
   private Context mContext;
   private LayoutInflater mInflater;
-  private boolean vnS;
-  private View vnX;
-  private LinearLayout vnY;
-  private LinearLayout vnZ;
-  private f voa;
-  private b.c vob;
-  private b.a voc;
+  private boolean sRw;
   
   public GameMenuView(Context paramContext)
   {
     super(paramContext, null);
-    AppMethodBeat.i(8830);
-    this.vnS = false;
+    AppMethodBeat.i(80983);
+    this.sRw = false;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(this.mContext);
     paramContext = this.mContext.getResources().getDisplayMetrics();
     if (paramContext.widthPixels > paramContext.heightPixels) {
       bool = true;
     }
-    this.vnS = bool;
+    this.sRw = bool;
     initView();
-    AppMethodBeat.o(8830);
+    AppMethodBeat.o(80983);
   }
   
   public GameMenuView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(8832);
-    this.vnS = false;
+    AppMethodBeat.i(80985);
+    this.sRw = false;
     this.mContext = paramContext;
     initView();
-    AppMethodBeat.o(8832);
+    AppMethodBeat.o(80985);
   }
   
   private void initView()
   {
-    AppMethodBeat.i(8833);
-    if (this.vnS)
+    AppMethodBeat.i(80986);
+    if (this.sRw)
     {
       setOrientation(0);
-      this.mInflater.inflate(2130969790, this, true);
+      this.mInflater.inflate(c.g.game_menu_split_style_landscape, this, true);
     }
-    for (View localView = this.mInflater.inflate(2130969787, this, true);; localView = this.mInflater.inflate(2130969788, this, true))
+    for (View localView = this.mInflater.inflate(c.g.game_menu_layout_landscape, this, true);; localView = this.mInflater.inflate(c.g.game_menu_layout_portrait, this, true))
     {
-      this.vnX = localView.findViewById(2131824693);
-      this.vnY = ((LinearLayout)localView.findViewById(2131824694));
-      this.vnZ = ((LinearLayout)localView.findViewById(2131824695));
-      AppMethodBeat.o(8833);
+      this.XhP = localView.findViewById(c.f.game_menu_layout);
+      this.XhQ = ((LinearLayout)localView.findViewById(c.f.game_menu_first_line));
+      this.XhR = ((LinearLayout)localView.findViewById(c.f.game_menu_second_line));
+      AppMethodBeat.o(80986);
       return;
       setOrientation(1);
-      this.mInflater.inflate(2130969791, this, true);
+      this.mInflater.inflate(c.g.game_menu_split_style_portrait, this, true);
     }
   }
   
   public void setAdapter(f paramf)
   {
-    AppMethodBeat.i(8831);
-    this.voa = paramf;
-    paramf.registerDataSetObserver(new GameMenuView.1(this));
+    AppMethodBeat.i(80984);
+    this.XhS = paramf;
+    paramf.registerDataSetObserver(new DataSetObserver()
+    {
+      public final void onChanged()
+      {
+        AppMethodBeat.i(80981);
+        GameMenuView.a(GameMenuView.this);
+        AppMethodBeat.o(80981);
+      }
+      
+      public final void onInvalidated()
+      {
+        AppMethodBeat.i(80980);
+        GameMenuView.a(GameMenuView.this);
+        AppMethodBeat.o(80980);
+      }
+    });
     paramf.notifyDataSetChanged();
-    AppMethodBeat.o(8831);
+    AppMethodBeat.o(80984);
   }
   
   public void setDismissListener(b.a parama)
   {
-    this.voc = parama;
+    this.XhU = parama;
   }
   
   public void setGameMenuItemSelectedListener(b.c paramc)
   {
-    this.vob = paramc;
+    this.XhT = paramc;
   }
 }
 

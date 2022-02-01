@@ -1,58 +1,49 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.f;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.i.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Map;
+import com.tencent.mm.R.h;
+import com.tencent.mm.ui.widget.MMTextView;
 
-public class j$a
-  extends f
+final class j$a
+  extends c.a
 {
-  public String appId;
-  public String appName;
-  public String iconUrl;
-  public int state;
-  public int zTK;
+  ImageView aeNG;
+  MMTextView aePx;
+  View hDw;
   
-  private static String w(Map<String, String> paramMap, String paramString)
+  public final c.a P(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(32931);
-    paramMap = bo.nullAsNil((String)paramMap.get(".msg.appmsg.downloaderapp.".concat(String.valueOf(paramString))));
-    AppMethodBeat.o(32931);
-    return paramMap;
-  }
-  
-  public final f Yk()
-  {
-    AppMethodBeat.i(32929);
-    a locala = new a();
-    AppMethodBeat.o(32929);
-    return locala;
-  }
-  
-  public final void a(Map<String, String> paramMap, j.b paramb)
-  {
-    AppMethodBeat.i(32930);
-    if (paramb.type == 671088689)
+    AppMethodBeat.i(36886);
+    super.create(paramView);
+    this.timeTV = ((TextView)paramView.findViewById(R.h.fAm));
+    this.userTV = ((TextView)paramView.findViewById(R.h.fAr));
+    this.aePx = ((MMTextView)paramView.findViewById(R.h.fxy));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.fxt));
+    this.maskView = paramView.findViewById(R.h.fzn);
+    this.hDw = paramView.findViewById(R.h.fxw);
+    if (!paramBoolean)
     {
-      ab.i("MicroMsg.ChattingItemAppMsgDownloader", "values: %s", new Object[] { paramMap.toString() });
-      this.state = bo.getInt(w(paramMap, "state"), 0);
-      this.appId = w(paramMap, "appid");
-      this.appName = w(paramMap, "appname");
-      this.zTK = bo.getInt(w(paramMap, "appsize"), 0);
-      this.iconUrl = w(paramMap, "iconurl");
+      this.aeNG = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
+      this.stateIV = ((ImageView)paramView.findViewById(R.h.fAj));
+      this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.gbo));
     }
-    AppMethodBeat.o(32930);
+    AppMethodBeat.o(36886);
+    return this;
   }
   
-  public final void b(StringBuilder paramStringBuilder, j.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
+  public final View getMainContainerView()
+  {
+    return this.hDw;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.j.a
  * JD-Core Version:    0.7.0.1
  */

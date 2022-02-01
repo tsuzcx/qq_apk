@@ -1,49 +1,50 @@
 package com.tencent.mm.compatible.h;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public int cpX;
-  public String ese;
-  public long esf;
-  public int esg;
+  private static int lYL = 0;
   
-  public a()
+  public static boolean aPR()
   {
-    AppMethodBeat.i(93052);
-    this.ese = null;
-    this.esf = -1L;
-    this.esg = -1;
-    this.cpX = -1;
-    this.ese = null;
-    this.esf = -1L;
-    this.esg = -1;
-    this.cpX = -1;
-    AppMethodBeat.o(93052);
+    AppMethodBeat.i(155860);
+    if (lYL == 0)
+    {
+      SharedPreferences localSharedPreferences = MMApplicationContext.getDefaultPreference();
+      if ((localSharedPreferences == null) || (!localSharedPreferences.getBoolean("settings_support_swipe", true))) {
+        break label49;
+      }
+    }
+    label49:
+    for (lYL = 1; lYL == 1; lYL = 2)
+    {
+      AppMethodBeat.o(155860);
+      return true;
+    }
+    AppMethodBeat.o(155860);
+    return false;
   }
   
-  public final String Mf()
+  public static void eG(boolean paramBoolean)
   {
-    AppMethodBeat.i(93053);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ese);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.esf);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.esg);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cpX);
-    ab.d("MicroMsg.AudioRecorderInfo", " getStatInfo " + ((StringBuffer)localObject).toString());
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(93053);
-    return localObject;
+    AppMethodBeat.i(155861);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getDefaultPreference();
+    boolean bool = localSharedPreferences.getBoolean("settings_support_swipe", true);
+    if (bool != paramBoolean) {
+      localSharedPreferences.edit().putBoolean("settings_support_swipe", paramBoolean).commit();
+    }
+    Log.i("MicroMsg.StyleUtil", "switchSwipebackMode, from %B to %B", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(155861);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.h.a
  * JD-Core Version:    0.7.0.1
  */

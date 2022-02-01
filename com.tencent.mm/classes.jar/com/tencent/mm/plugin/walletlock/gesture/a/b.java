@@ -1,52 +1,13 @@
 package com.tencent.mm.plugin.walletlock.gesture.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-
 public final class b
 {
-  public static boolean cXK()
-  {
-    AppMethodBeat.i(51547);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yHZ, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(51547);
-    return bool;
-  }
-  
-  public static boolean cXL()
-  {
-    AppMethodBeat.i(51549);
-    g localg = d.cXM();
-    ab.v("MicroMsg.GestureUtil", "alvinluo timeInfo: %d, %d", new Object[] { Long.valueOf(localg.uEM), Long.valueOf(localg.uEN) });
-    if (localg.uEM != -1L)
-    {
-      e.a(localg);
-      if (localg.uEN / 1000L < 600L)
-      {
-        d.ae(localg.uEM, localg.uEN);
-        AppMethodBeat.o(51549);
-        return true;
-      }
-      d.cXN();
-    }
-    AppMethodBeat.o(51549);
-    return false;
-  }
-  
-  public static void oa(boolean paramBoolean)
-  {
-    AppMethodBeat.i(51548);
-    ab.i("MicroMsg.GestureGuardManager", "alvinluo setUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHZ, Boolean.valueOf(paramBoolean));
-    com.tencent.mm.kernel.g.RL().Ru().dww();
-    AppMethodBeat.o(51548);
-  }
+  public static int Wgm = 300;
+  public static final byte[] Wgn = { 48, 94, 48, 16, 6, 7, 42, -122, 72, -50, 61, 2, 1, 6, 5, 43, -127, 4, 0, 17, 3, 74, 0, 4, 6, -90, -103, -86, 2, 110, 117, -17, -44, 65, -14, 106, 103, -92, -88, 95, 91, 23, 43, -60, 14, 59, 21, 122, -2, -75, -32, -11, -96, -45, 34, -24, -16, 81, 37, -106, 3, -59, -106, -93, -103, -13, 122, -52, -45, 46, -122, -14, -57, 55, -77, -73, 0, -26, 4, 98, -84, 20, 84, -25, 66, 49, 101, 47, -39, 89, -113, -7, -69, -5, 101, -64 };
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.b
  * JD-Core Version:    0.7.0.1
  */

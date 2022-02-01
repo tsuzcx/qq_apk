@@ -1,22 +1,20 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.activity.UserguideActivity;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.widget.ImageView;
 import com.tencent.mobileqq.activity.qquserguide.UserguideVideoFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class ent
-  implements MediaPlayer.OnErrorListener
+  implements MediaPlayer.OnPreparedListener
 {
   public ent(UserguideVideoFragment paramUserguideVideoFragment) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a.jdField_a_of_type_Int = 0;
+    this.a.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new enu(this), 200L);
     if (QLog.isDevelopLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "fight........onError....extra .== ..........." + paramInt2);
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "fight............onPrepared .== ...........");
     }
-    this.a.a().finish();
-    return true;
   }
 }
 

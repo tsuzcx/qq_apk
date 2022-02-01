@@ -20,34 +20,34 @@ public class FileDataSink
   
   public void close()
   {
-    AppMethodBeat.i(104487);
+    AppMethodBeat.i(76590);
     if (!this.opened)
     {
-      AppMethodBeat.o(104487);
+      AppMethodBeat.o(76590);
       return;
     }
     this.randomAccessFile.close();
     this.currentPosition = 0L;
-    AppMethodBeat.o(104487);
+    AppMethodBeat.o(76590);
   }
   
   public void open()
   {
-    AppMethodBeat.i(104485);
+    AppMethodBeat.i(76588);
     if (this.opened)
     {
-      AppMethodBeat.o(104485);
+      AppMethodBeat.o(76588);
       return;
     }
     this.randomAccessFile = new RandomAccessFile(this.filePath, "rw");
     this.currentPosition = 0L;
     this.opened = true;
-    AppMethodBeat.o(104485);
+    AppMethodBeat.o(76588);
   }
   
   public int write(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(104486);
+    AppMethodBeat.i(76589);
     if (this.randomAccessFile != null)
     {
       if (this.currentPosition != paramLong)
@@ -58,16 +58,16 @@ public class FileDataSink
       }
       this.randomAccessFile.write(paramArrayOfByte, paramInt1, paramInt2);
       this.currentPosition += paramInt2;
-      AppMethodBeat.o(104486);
+      AppMethodBeat.o(76589);
       return paramInt2;
     }
-    AppMethodBeat.o(104486);
+    AppMethodBeat.o(76589);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.downstream.FileDataSink
  * JD-Core Version:    0.7.0.1
  */

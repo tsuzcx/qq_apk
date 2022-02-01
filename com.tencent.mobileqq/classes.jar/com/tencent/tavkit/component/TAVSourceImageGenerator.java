@@ -86,72 +86,45 @@ public class TAVSourceImageGenerator
   
   public Bitmap generateThumbnailAtTimeSync(CMTime paramCMTime)
   {
-    Object localObject = null;
-    if (this.assetImageGenerator != null) {
+    if (this.assetImageGenerator != null)
+    {
+      CMTime localCMTime;
       if (paramCMTime != null) {
-        localObject = paramCMTime;
+        localCMTime = paramCMTime;
+      }
+      try
+      {
+        if (paramCMTime.getTimeUs() < 0L) {
+          localCMTime = CMTime.CMTimeZero;
+        }
+        paramCMTime = this.assetImageGenerator.copyCGImageAtTimeAndActualTime(localCMTime, null);
+        return paramCMTime;
+      }
+      catch (Exception paramCMTime)
+      {
+        paramCMTime.printStackTrace();
+        throw new Exception(paramCMTime);
       }
     }
-    try
-    {
-      if (paramCMTime.getTimeUs() < 0L) {
-        localObject = CMTime.CMTimeZero;
-      }
-      localObject = this.assetImageGenerator.copyCGImageAtTimeAndActualTime((CMTime)localObject, null);
-      return localObject;
-    }
-    catch (Exception paramCMTime)
-    {
-      paramCMTime.printStackTrace();
-      throw new Exception(paramCMTime);
-    }
+    return null;
   }
   
-  /* Error */
   public void generateThumbnailAtTimes(List<CMTime> paramList, @NonNull AssetImageGenerator.ImageGeneratorListener paramImageGeneratorListener)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokespecial 147	com/tencent/tavkit/component/TAVSourceImageGenerator:checkRequestedTimes	(Ljava/util/List;)V
-    //   7: aload_1
-    //   8: invokeinterface 42 1 0
-    //   13: ifne +12 -> 25
-    //   16: aload_0
-    //   17: getfield 109	com/tencent/tavkit/component/TAVSourceImageGenerator:assetImageGenerator	Lcom/tencent/tav/core/AssetImageGenerator;
-    //   20: astore_3
-    //   21: aload_3
-    //   22: ifnonnull +6 -> 28
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: return
-    //   28: aload_0
-    //   29: getfield 109	com/tencent/tavkit/component/TAVSourceImageGenerator:assetImageGenerator	Lcom/tencent/tav/core/AssetImageGenerator;
-    //   32: aload_1
-    //   33: new 149	com/tencent/tavkit/component/TAVSourceImageGenerator$1
-    //   36: dup
-    //   37: aload_0
-    //   38: aload_2
-    //   39: invokespecial 152	com/tencent/tavkit/component/TAVSourceImageGenerator$1:<init>	(Lcom/tencent/tavkit/component/TAVSourceImageGenerator;Lcom/tencent/tav/core/AssetImageGenerator$ImageGeneratorListener;)V
-    //   42: invokevirtual 155	com/tencent/tav/core/AssetImageGenerator:generateCGImagesAsynchronouslyForTimes	(Ljava/util/List;Lcom/tencent/tav/core/AssetImageGenerator$ImageGeneratorListener;)V
-    //   45: goto -20 -> 25
-    //   48: astore_1
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: aload_1
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	53	0	this	TAVSourceImageGenerator
-    //   0	53	1	paramList	List<CMTime>
-    //   0	53	2	paramImageGeneratorListener	AssetImageGenerator.ImageGeneratorListener
-    //   20	2	3	localAssetImageGenerator	AssetImageGenerator
-    // Exception table:
-    //   from	to	target	type
-    //   2	21	48	finally
-    //   28	45	48	finally
+    try
+    {
+      checkRequestedTimes(paramList);
+      if (!paramList.isEmpty())
+      {
+        AssetImageGenerator localAssetImageGenerator = this.assetImageGenerator;
+        if (localAssetImageGenerator == null) {
+          return;
+        }
+        this.assetImageGenerator.generateCGImagesAsynchronouslyForTimes(paramList, new TAVSourceImageGenerator.1(this, paramImageGeneratorListener));
+      }
+      return;
+    }
+    finally {}
   }
   
   public AssetImageGenerator getAssetImageGenerator()
@@ -161,7 +134,7 @@ public class TAVSourceImageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVSourceImageGenerator
  * JD-Core Version:    0.7.0.1
  */

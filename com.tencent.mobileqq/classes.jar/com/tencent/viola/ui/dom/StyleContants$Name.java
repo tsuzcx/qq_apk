@@ -42,14 +42,20 @@ public abstract interface StyleContants$Name
   public static final String DISABLED = "disabled";
   public static final String ELLIPSIS = "ellipsis";
   public static final String ELLIPSIS_COLOR = "ellipsisColor";
+  public static final String EMOJI_SIZE = "emojiSize";
   public static final String FLEX = "flex";
   public static final String FLEX_DIRECTION = "flexDirection";
   public static final String FLEX_WRAP = "flexWrap";
+  public static final String FLOATBOTTOM = "floatBottom";
+  public static final String FLOATCENTER = "floatCenter";
   public static final String FONTSIZE = "fontSize";
   public static final String FONT_FAMILY = "fontFamily";
   public static final String FONT_SIZE = "fontSize";
   public static final String FONT_STYLE = "fontStyle";
   public static final String FONT_WEIGHT = "fontWeight";
+  public static final String FROM_TRANSFORM = "fromTransform";
+  public static final String FROM_TRANSFORM_OPACITY = "fromTransformOpacity";
+  public static final String FROM_TRANSFORM_PARSE = "fromTransformParse";
   public static final String HEIGHT = "height";
   public static final String HIGHLIGHT_BACKGROUNDCOLOR = "highlightBackgroundColor";
   public static final String IMAGE_ALIGN = "imageAlign";
@@ -58,6 +64,7 @@ public abstract interface StyleContants$Name
   public static final String LEFT = "left";
   public static final String LETTER_SPACING = "letterSpacing";
   public static final String LINES = "lines";
+  public static final String LINE_BREAK_MARGIN = "lineBreakMargin";
   public static final String LINE_HEIGHT = "lineHeight";
   public static final String LINE_SPACING = "lineSpacing";
   public static final String MARGIN = "margin";
@@ -98,7 +105,7 @@ public abstract interface StyleContants$Name
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.StyleContants.Name
  * JD-Core Version:    0.7.0.1
  */

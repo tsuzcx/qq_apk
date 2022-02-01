@@ -14,51 +14,47 @@ final class eh$b
   
   public eh$b(Type paramType1, Type paramType2, Type... paramVarArgs)
   {
-    boolean bool1;
-    if ((paramType2 instanceof Class))
+    boolean bool1 = paramType2 instanceof Class;
+    int i = 0;
+    if (bool1)
     {
       Class localClass = (Class)paramType2;
-      if ((paramType1 != null) || (localClass.getEnclosingClass() == null))
-      {
+      boolean bool2 = true;
+      if ((paramType1 == null) && (localClass.getEnclosingClass() != null)) {
+        bool1 = false;
+      } else {
         bool1 = true;
-        eg.a(bool1);
-        bool1 = bool2;
-        if (paramType1 != null)
-        {
-          if (localClass.getEnclosingClass() == null) {
-            break label160;
-          }
-          bool1 = bool2;
-        }
-        label63:
-        eg.a(bool1);
       }
-    }
-    else
-    {
+      eg.a(bool1);
+      bool1 = bool2;
       if (paramType1 != null) {
-        break label166;
+        if (localClass.getEnclosingClass() != null) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
+        }
       }
+      eg.a(bool1);
     }
-    label160:
-    label166:
-    for (paramType1 = null;; paramType1 = eh.a(paramType1))
+    if (paramType1 == null) {
+      paramType1 = null;
+    } else {
+      paramType1 = eh.a(paramType1);
+    }
+    this.a = paramType1;
+    this.b = eh.a(paramType2);
+    this.c = ((Type[])paramVarArgs.clone());
+    for (;;)
     {
-      this.a = paramType1;
-      this.b = eh.a(paramType2);
-      this.c = ((Type[])paramVarArgs.clone());
-      while (i < this.c.length)
-      {
-        eg.a(this.c[i]);
-        eh.e(this.c[i]);
-        paramType1 = this.c;
-        paramType1[i] = eh.a(paramType1[i]);
-        i += 1;
+      paramType1 = this.c;
+      if (i >= paramType1.length) {
+        break;
       }
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label63;
+      eg.a(paramType1[i]);
+      eh.e(this.c[i]);
+      paramType1 = this.c;
+      paramType1[i] = eh.a(paramType1[i]);
+      i += 1;
     }
   }
   
@@ -89,19 +85,23 @@ final class eh$b
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder((this.c.length + 1) * 30);
+    int j = this.c.length;
+    int i = 1;
+    StringBuilder localStringBuilder = new StringBuilder((j + 1) * 30);
     localStringBuilder.append(eh.c(this.b));
     if (this.c.length == 0) {
       return localStringBuilder.toString();
     }
-    localStringBuilder.append("<").append(eh.c(this.c[0]));
-    int i = 1;
+    localStringBuilder.append("<");
+    localStringBuilder.append(eh.c(this.c[0]));
     while (i < this.c.length)
     {
-      localStringBuilder.append(", ").append(eh.c(this.c[i]));
+      localStringBuilder.append(", ");
+      localStringBuilder.append(eh.c(this.c[i]));
       i += 1;
     }
-    return ">";
+    localStringBuilder.append(">");
+    return localStringBuilder.toString();
   }
 }
 

@@ -56,28 +56,32 @@ public class ActiveTestSuite
   
   void waitUntilFinished()
   {
-    try
+    for (;;)
     {
-      for (;;)
+      try
       {
         int i = this.fActiveTestDeathCount;
         int j = testCount();
-        if (i < j) {
-          try
-          {
-            wait();
-          }
-          catch (InterruptedException localInterruptedException) {}
-        }
+        if (i >= j) {}
       }
-      return;
+      finally
+      {
+        continue;
+        throw localObject;
+        continue;
+      }
+      try
+      {
+        wait();
+      }
+      catch (InterruptedException localInterruptedException) {}
     }
-    finally {}
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     junit.extensions.ActiveTestSuite
  * JD-Core Version:    0.7.0.1
  */

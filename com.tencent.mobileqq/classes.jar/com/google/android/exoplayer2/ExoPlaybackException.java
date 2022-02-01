@@ -36,39 +36,42 @@ public final class ExoPlaybackException
   
   public Exception getRendererException()
   {
+    int i = this.type;
     boolean bool = true;
-    if (this.type == 1) {}
-    for (;;)
-    {
-      Assertions.checkState(bool);
-      return (Exception)getCause();
+    if (i != 1) {
       bool = false;
     }
+    Assertions.checkState(bool);
+    return (Exception)getCause();
   }
   
   public IOException getSourceException()
   {
-    if (this.type == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      return (IOException)getCause();
+    boolean bool;
+    if (this.type == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    return (IOException)getCause();
   }
   
   public RuntimeException getUnexpectedException()
   {
-    if (this.type == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      return (RuntimeException)getCause();
+    boolean bool;
+    if (this.type == 2) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    return (RuntimeException)getCause();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ExoPlaybackException
  * JD-Core Version:    0.7.0.1
  */

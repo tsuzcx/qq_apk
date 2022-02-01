@@ -1,11 +1,10 @@
 package kotlinx.coroutines;
 
-import a.l;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CancelHandler;", "Lkotlinx/coroutines/CancelHandlerBase;", "Lkotlinx/coroutines/NotCompleted;", "()V", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/BeforeResumeCancelHandler;", "Lkotlinx/coroutines/CancelHandler;", "()V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class g
-  extends h
-  implements bm
+  extends n
 {}
 
 

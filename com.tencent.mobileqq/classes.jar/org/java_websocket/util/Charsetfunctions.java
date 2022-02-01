@@ -40,18 +40,15 @@ public class Charsetfunctions
       return false;
     }
     int i = 0;
-    for (;;)
+    while (paramInt < j)
     {
-      if (paramInt >= j) {
-        break label57;
-      }
-      i = utf8d[((i << 4) + 256 + utf8d[(paramByteBuffer.get(paramInt) & 0xFF)])];
+      int[] arrayOfInt = utf8d;
+      i = arrayOfInt[((i << 4) + 256 + arrayOfInt[(paramByteBuffer.get(paramInt) & 0xFF)])];
       if (i == 1) {
-        break;
+        return false;
       }
       paramInt += 1;
     }
-    label57:
     return true;
   }
   
@@ -111,7 +108,7 @@ public class Charsetfunctions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.util.Charsetfunctions
  * JD-Core Version:    0.7.0.1
  */

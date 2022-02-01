@@ -42,12 +42,14 @@ public class tlv_t11a
   
   public Boolean verify()
   {
-    if (this._body_len < 5) {
-      return Boolean.valueOf(false);
+    int i = this._body_len;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (i < 5) {
+      return localBoolean;
     }
-    int i = util.buf_to_int8(this._buf, this._head_len + 2 + 1 + 1);
+    i = util.buf_to_int8(this._buf, this._head_len + 2 + 1 + 1);
     if (this._body_len < i + 5) {
-      return Boolean.valueOf(false);
+      return localBoolean;
     }
     this._nick_len = i;
     return Boolean.valueOf(true);
@@ -55,7 +57,7 @@ public class tlv_t11a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t11a
  * JD-Core Version:    0.7.0.1
  */

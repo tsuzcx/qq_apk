@@ -20,13 +20,14 @@ public final class qqstory_service$RspBannerVideoList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "result", "video_list", "is_end", "next_cookie", "total_count" }, new Object[] { null, null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, RspBannerVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "result", "video_list", "is_end", "next_cookie", "total_count" }, new Object[] { null, null, localInteger, localByteStringMicro, localInteger }, RspBannerVideoList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList
  * JD-Core Version:    0.7.0.1
  */

@@ -38,80 +38,108 @@ public class e
   
   public Object b(Object paramObject, Method paramMethod, Object... paramVarArgs)
   {
-    Log.i("HookManager_AMHook", "onHook---" + paramMethod.getName(), new Throwable("---------------------------------------------------------------"));
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onHook---");
+    ((StringBuilder)localObject1).append(paramMethod.getName());
+    Log.i("HookManager_AMHook", ((StringBuilder)localObject1).toString(), new Throwable("---------------------------------------------------------------"));
     long l = System.currentTimeMillis();
-    Intent localIntent = (Intent)paramVarArgs[a.a(paramVarArgs, Intent.class)];
-    Object localObject;
-    if (localIntent != null)
+    localObject1 = (Intent)paramVarArgs[a.a(paramVarArgs, Intent.class)];
+    Object localObject2;
+    if (localObject1 != null)
     {
-      Log.i("miles", "intent=" + localIntent);
-      if (("android.intent.action.INSTALL_PACKAGE".equals(localIntent.getAction())) || (("android.intent.action.VIEW".equals(localIntent.getAction())) && ("application/vnd.android.package-archive".equals(localIntent.getType())))) {
-        localObject = localIntent.getData();
-      }
-    }
-    for (;;)
-    {
-      try
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("intent=");
+      ((StringBuilder)localObject2).append(localObject1);
+      Log.i("miles", ((StringBuilder)localObject2).toString());
+      if ((!"android.intent.action.INSTALL_PACKAGE".equals(((Intent)localObject1).getAction())) && ((!"android.intent.action.VIEW".equals(((Intent)localObject1).getAction())) || (!"application/vnd.android.package-archive".equals(((Intent)localObject1).getType()))))
       {
+        a(false);
+        Log.i("miles", "非安装intent,不拦截");
+        break label646;
+      }
+      localObject2 = ((Intent)localObject1).getData();
+    }
+    try
+    {
+      if (this.a == null)
+      {
+        this.a = GlobalUtil.getInstance().getContext();
         if (this.a == null)
         {
-          this.a = GlobalUtil.getInstance().getContext();
-          if (this.a == null)
-          {
-            Log.i("miles", "<onHook> mContext == null!");
-            return paramMethod.invoke(paramObject, paramVarArgs);
-          }
-        }
-        Log.i("miles", "step 1 time cost: " + (System.currentTimeMillis() - l) + "ms");
-        PackageManager localPackageManager = this.a.getPackageManager();
-        if ((localPackageManager == null) || (localObject == null))
-        {
-          Log.i("miles", "<onHook> pm == null || uri == null!");
+          Log.i("miles", "<onHook> mContext == null!");
           return paramMethod.invoke(paramObject, paramVarArgs);
         }
-        localObject = localPackageManager.getPackageArchiveInfo(((Uri)localObject).getPath(), 1);
-        if (localObject == null)
+      }
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("step 1 time cost: ");
+      ((StringBuilder)localObject3).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject3).append("ms");
+      Log.i("miles", ((StringBuilder)localObject3).toString());
+      localObject3 = this.a.getPackageManager();
+      if ((localObject3 != null) && (localObject2 != null))
+      {
+        localObject2 = ((PackageManager)localObject3).getPackageArchiveInfo(((Uri)localObject2).getPath(), 1);
+        if (localObject2 == null)
         {
           Log.i("miles", "<onHook> PackageInfo info == null!");
           return paramMethod.invoke(paramObject, paramVarArgs);
         }
-        Log.i("miles", "step 2 time cost: " + (System.currentTimeMillis() - l) + "ms");
-        if (!h.a(((PackageInfo)localObject).packageName))
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("step 2 time cost: ");
+        ((StringBuilder)localObject3).append(System.currentTimeMillis() - l);
+        ((StringBuilder)localObject3).append("ms");
+        Log.i("miles", ((StringBuilder)localObject3).toString());
+        if (!h.a(((PackageInfo)localObject2).packageName))
         {
           Log.i("miles", "<onHook> pkg not allowed!!!");
-          k.a().post(new f(this, (PackageInfo)localObject));
+          k.a().post(new f(this, (PackageInfo)localObject2));
           return paramMethod.invoke(paramObject, paramVarArgs);
         }
-        Log.i("miles", "step 3 time cost: " + (System.currentTimeMillis() - l) + "ms");
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("step 3 time cost: ");
+        ((StringBuilder)localObject3).append(System.currentTimeMillis() - l);
+        ((StringBuilder)localObject3).append("ms");
+        Log.i("miles", ((StringBuilder)localObject3).toString());
         if ((paramVarArgs.length > 1) && (paramVarArgs[1] != null))
         {
           paramVarArgs[1] = d.d();
-          localIntent.putExtra("caller_package", d.d());
+          ((Intent)localObject1).putExtra("caller_package", d.d());
           if (GlobalUtil.isOppo()) {
-            localIntent.putExtra("oppo_extra_pkg_name", d.d());
+            ((Intent)localObject1).putExtra("oppo_extra_pkg_name", d.d());
           }
-          Log.i("miles", "getFakePackage." + d.d());
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getFakePackage.");
+          ((StringBuilder)localObject1).append(d.d());
+          Log.i("miles", ((StringBuilder)localObject1).toString());
         }
-        k.a().post(new g(this, (PackageInfo)localObject));
-        Log.i("miles", "step 4 time cost: " + (System.currentTimeMillis() - l) + "ms");
+        k.a().post(new g(this, (PackageInfo)localObject2));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("step 4 time cost: ");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+        ((StringBuilder)localObject1).append("ms");
+        Log.i("miles", ((StringBuilder)localObject1).toString());
+        break label646;
       }
-      catch (Exception localException)
-      {
-        Log.i("miles", "获取包名信息异常,不拦截");
-        continue;
-      }
-      return paramMethod.invoke(paramObject, paramVarArgs);
-      a(false);
-      Log.i("miles", "非安装intent,不拦截");
-      continue;
-      a(false);
-      Log.i("miles", "非安装intent,不拦截");
+      Log.i("miles", "<onHook> pm == null || uri == null!");
+      localObject1 = paramMethod.invoke(paramObject, paramVarArgs);
+      return localObject1;
     }
+    catch (Exception localException)
+    {
+      label622:
+      break label622;
+    }
+    Log.i("miles", "获取包名信息异常,不拦截");
+    break label646;
+    a(false);
+    Log.i("miles", "非安装intent,不拦截");
+    label646:
+    return paramMethod.invoke(paramObject, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a.e
  * JD-Core Version:    0.7.0.1
  */

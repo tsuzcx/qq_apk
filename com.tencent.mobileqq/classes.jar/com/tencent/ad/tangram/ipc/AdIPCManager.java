@@ -1,7 +1,7 @@
 package com.tencent.ad.tangram.ipc;
 
+import android.content.Context;
 import android.support.annotation.Keep;
-import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -14,75 +14,70 @@ public enum AdIPCManager
   
   private static final String TAG = "AdIPCManager";
   private WeakReference<AdIPCManager.Adapter> adapter;
+  private volatile boolean initialized = false;
   private Map<String, AdIPCManager.Handler> map = new HashMap();
   
   private AdIPCManager() {}
   
-  private AdIPCManager.Adapter getAdapter()
+  public AdIPCManager.Handler getHandler(String paramString)
   {
-    if (this.adapter != null) {
-      return (AdIPCManager.Adapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      return ((AdIPCManager.Adapter)this.adapter.get()).getHandler(paramString);
     }
     return null;
   }
   
-  private AdIPCManager.Handler getHandler(String paramString)
+  public void init(Context paramContext, WeakReference<AdIPCManager.Adapter> paramWeakReference)
   {
-    return (AdIPCManager.Handler)this.map.get(paramString);
-  }
-  
-  public AdIPCManager.Result receive(String paramString, AdIPCManager.Params paramParams)
-  {
-    paramString = getHandler(paramString);
-    if (paramString == null) {
-      return null;
+    AdLog.i("AdIPCManager", String.format("init %b", new Object[] { Boolean.valueOf(this.initialized) }));
+    if (this.initialized) {
+      return;
     }
-    return paramString.receive(paramParams);
+    try
+    {
+      if (this.initialized) {
+        return;
+      }
+      this.initialized = true;
+      this.adapter = paramWeakReference;
+      if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+        ((AdIPCManager.Adapter)paramWeakReference.get()).init(paramContext);
+      }
+      return;
+    }
+    finally {}
   }
   
   public boolean register(String paramString, AdIPCManager.Handler paramHandler)
   {
-    boolean bool;
-    if (TextUtils.isEmpty(paramString)) {
-      bool = false;
+    WeakReference localWeakReference = this.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      return ((AdIPCManager.Adapter)this.adapter.get()).register(paramString, paramHandler);
     }
-    for (;;)
-    {
-      AdLog.i("AdIPCManager", String.format("register action:%s result:%b", new Object[] { paramString, Boolean.valueOf(bool) }));
-      return bool;
-      if (paramHandler == null)
-      {
-        bool = false;
-      }
-      else if (this.map.containsKey(paramString))
-      {
-        bool = false;
-      }
-      else
-      {
-        this.map.put(paramString, paramHandler);
-        bool = true;
-      }
-    }
+    return false;
   }
   
-  public AdIPCManager.Result send(String paramString, AdIPCManager.Params paramParams)
+  public AdIPCManager.Result send(Context paramContext, AdIPCManager.Params paramParams)
   {
-    AdIPCManager.Adapter localAdapter = getAdapter();
-    if (localAdapter != null) {
-      return localAdapter.send(paramString, paramParams);
+    WeakReference localWeakReference = this.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      return ((AdIPCManager.Adapter)this.adapter.get()).send(paramContext, paramParams);
     }
     return null;
   }
   
-  public void setAdapter(WeakReference<AdIPCManager.Adapter> paramWeakReference)
+  public void send(Context paramContext, AdIPCManager.Params paramParams, WeakReference<AdIPCManager.Callback> paramWeakReference)
   {
-    this.adapter = paramWeakReference;
+    WeakReference localWeakReference = this.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((AdIPCManager.Adapter)this.adapter.get()).send(paramContext, paramParams, paramWeakReference);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.ipc.AdIPCManager
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,34 +21,35 @@ public final class get_travel_photo_list_rsp
   static ArrayList<Album> cache_recommand_album;
   static RecommendPhotos cache_recommend_photos;
   static s_outshare cache_shareinfo;
-  public Album albuminfo;
-  public int appid;
+  public Album albuminfo = null;
+  public int appid = 0;
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
-  public Map<Integer, byte[]> features;
-  public int hasmore;
+  public Map<Integer, String> busi_param = null;
+  public Map<Integer, byte[]> features = null;
+  public int hasmore = 0;
   public int photo_search_status = 1;
-  public ArrayList<s_picdata> photolist;
-  public stPhotoPoiAreaList pos;
-  public ArrayList<Album> recommand_album;
-  public RecommendPhotos recommend_photos;
-  public s_outshare shareinfo;
+  public ArrayList<s_picdata> photolist = null;
+  public stPhotoPoiAreaList pos = null;
+  public ArrayList<Album> recommand_album = null;
+  public RecommendPhotos recommend_photos = null;
+  public s_outshare shareinfo = null;
   
   static
   {
-    Object localObject = new s_picdata();
-    cache_photolist.add(localObject);
+    Object localObject1 = new s_picdata();
+    cache_photolist.add(localObject1);
     cache_pos = new stPhotoPoiAreaList();
     cache_busi_param = new HashMap();
-    cache_busi_param.put(Integer.valueOf(0), "");
+    localObject1 = Integer.valueOf(0);
+    cache_busi_param.put(localObject1, "");
     cache_shareinfo = new s_outshare();
     cache_recommand_album = new ArrayList();
-    localObject = new Album();
-    cache_recommand_album.add(localObject);
+    Object localObject2 = new Album();
+    cache_recommand_album.add(localObject2);
     cache_features = new HashMap();
-    localObject = (byte[])new byte[1];
-    ((byte[])localObject)[0] = 0;
-    cache_features.put(Integer.valueOf(0), localObject);
+    localObject2 = (byte[])new byte[1];
+    ((byte[])localObject2)[0] = 0;
+    cache_features.put(localObject1, localObject2);
     cache_recommend_photos = new RecommendPhotos();
   }
   
@@ -89,35 +91,42 @@ public final class get_travel_photo_list_rsp
   {
     paramJceOutputStream.write(this.albuminfo, 0);
     paramJceOutputStream.write(this.photolist, 1);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.hasmore, 3);
-    if (this.pos != null) {
-      paramJceOutputStream.write(this.pos, 4);
+    localObject = this.pos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 5);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
     paramJceOutputStream.write(this.appid, 6);
-    if (this.shareinfo != null) {
-      paramJceOutputStream.write(this.shareinfo, 7);
+    localObject = this.shareinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.recommand_album != null) {
-      paramJceOutputStream.write(this.recommand_album, 8);
+    localObject = this.recommand_album;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.features != null) {
-      paramJceOutputStream.write(this.features, 9);
+    localObject = this.features;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
-    if (this.recommend_photos != null) {
-      paramJceOutputStream.write(this.recommend_photos, 10);
+    localObject = this.recommend_photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
     paramJceOutputStream.write(this.photo_search_status, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_travel_photo_list_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.activity.weather;
 
-import akgg;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import java.util.List;
 
-public class SessionClearFragment$1$1
+class SessionClearFragment$1$1
   implements Runnable
 {
-  public SessionClearFragment$1$1(akgg paramakgg, List paramList) {}
+  SessionClearFragment$1$1(SessionClearFragment.1 param1, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akgg.a.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Akgg.a.b();
-    SessionClearFragment.a(this.jdField_a_of_type_Akgg.a).setVisibility(0);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    this.b.a.a = this.a;
+    this.b.a.b();
+    SessionClearFragment.a(this.b.a).setVisibility(0);
+    List localList = this.a;
+    if ((localList != null) && (localList.size() != 0))
     {
-      SessionClearFragment.a(this.jdField_a_of_type_Akgg.a).setVisibility(0);
+      this.b.a.a(this.a);
       return;
     }
-    this.jdField_a_of_type_Akgg.a.a(this.jdField_a_of_type_JavaUtilList);
+    SessionClearFragment.b(this.b.a).setVisibility(0);
   }
 }
 

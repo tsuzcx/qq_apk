@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class ag
   extends JceStruct
 {
-  static ArrayList bp = new ArrayList();
+  static ArrayList<ac> bp = new ArrayList();
   public int bi = 0;
-  public ArrayList bo = null;
+  public ArrayList<ac> bo = null;
   
   static
   {
@@ -18,24 +18,26 @@ public final class ag
     bp.add(localac);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ag();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bi = paramJceInputStream.read(this.bi, 0, false);
     this.bo = ((ArrayList)paramJceInputStream.read(bp, 1, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bi != 0) {
-      paramJceOutputStream.write(this.bi, 0);
+    int i = this.bi;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.bo != null) {
-      paramJceOutputStream.write(this.bo, 1);
+    ArrayList localArrayList = this.bo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }

@@ -1,23 +1,21 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import uwa;
-import uwm;
-import wlu;
-import wma;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 
-public class MemoriesProfilePresenter$UpdateUserInfoEventReceiver$1
+class MemoriesProfilePresenter$UpdateUserInfoEventReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$UpdateUserInfoEventReceiver$1(wma paramwma, wlu paramwlu) {}
+  MemoriesProfilePresenter$UpdateUserInfoEventReceiver$1(MemoriesProfilePresenter.UpdateUserInfoEventReceiver paramUpdateUserInfoEventReceiver, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
   public void run()
   {
-    ((uwm)uwa.a(2)).a(this.a.a);
+    ((UserManager)SuperManager.a(2)).a(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1
  * JD-Core Version:    0.7.0.1
  */

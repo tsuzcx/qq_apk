@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/hkk" android:visibility="visible" android:clickable="true" android:layout_width="120.0dip" android:layout_height="wrap_content" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:paddingTop="11.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="40.0dip" android:layout_height="40.0dip">
+            <ImageView android:id="@id/hkl" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/g_3" />
+            <RelativeLayout android:layout_gravity="center" android:id="@id/m4l" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <cooperation.qzone.widget.DinTypeFaceTextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/m4j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="1.0dip" android:lines="1" />
+                <ImageView android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/hyb" android:scaleType="fitXY" android:layout_toRightOf="@id/m4j" android:layout_alignBottom="@id/m4j" />
+            </RelativeLayout>
+        </FrameLayout>
+        <TextView android:textSize="15.0sp" android:textColor="@color/a8m" android:id="@id/hkn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/s09" android:maxEms="5" android:singleLine="true" />
+    </LinearLayout>
+    <ViewStub android:id="@id/l31" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginTop="3.5dip" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/hko" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="62.0dip" android:scaleType="fitCenter" />
+    <ImageView android:id="@id/hkm" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="30.0dip" android:src="@drawable/g_w" android:layout_alignParentRight="true" />
+</RelativeLayout>

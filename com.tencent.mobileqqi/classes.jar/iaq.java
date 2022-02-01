@@ -1,20 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qlink.QQProxyForQlink;
+import android.content.DialogInterface.OnDismissListener;
 import cooperation.qlink.QlinkDialogActivity;
 
 public class iaq
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public iaq(QlinkDialogActivity paramQlinkDialogActivity, String paramString) {}
+  public iaq(QlinkDialogActivity paramQlinkDialogActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.a = true;
-    this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.b.a().a(this.jdField_a_of_type_JavaLangString, true);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_CooperationQlinkQlinkDialogActivity.finish();
+    this.a.finish();
   }
 }
 

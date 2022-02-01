@@ -20,8 +20,11 @@ class FailureList
     Result localResult = new Result();
     RunListener localRunListener = localResult.createListener();
     Iterator localIterator = this.failures.iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
+      if (!localIterator.hasNext()) {
+        break label62;
+      }
       Failure localFailure = (Failure)localIterator.next();
       try
       {
@@ -29,15 +32,18 @@ class FailureList
       }
       catch (Exception localException)
       {
-        throw new RuntimeException("I can't believe this happened");
+        label52:
+        break label52;
       }
     }
-    return localException;
+    throw new RuntimeException("I can't believe this happened");
+    label62:
+    return localResult;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.results.FailureList
  * JD-Core Version:    0.7.0.1
  */

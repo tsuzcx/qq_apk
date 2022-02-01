@@ -41,37 +41,37 @@ public class SplashMiniGameData
     if (i == 0)
     {
       localBoolean = null;
-      this.isPlayed = localBoolean;
-      this.videoUrl = paramParcel.readString();
-      this.videoDuration = paramParcel.readInt();
-      this.videoMute = paramParcel.readInt();
-      this.videoLocalPath = paramParcel.readString();
-      this.picUrl = paramParcel.readString();
-      this.picLocalPath = paramParcel.readString();
-      this.enable = paramParcel.readInt();
-      this.guide = paramParcel.readInt();
-      this.startTime = paramParcel.readLong();
-      this.endTime = paramParcel.readLong();
-      this.priority = paramParcel.readInt();
-      this.appId = paramParcel.readString();
-      this.version = paramParcel.readString();
-      this.downloadUrl = paramParcel.readString();
-      this.fileSize = paramParcel.readInt();
-      this.iconUrl = paramParcel.readString();
-      this.name = paramParcel.readString();
-      this.desc = paramParcel.readString();
-      this.developerDesc = paramParcel.readString();
-      this.downloadFileDomianList = paramParcel.createStringArrayList();
-      this.requestDomianList = paramParcel.createStringArrayList();
-      return;
     }
-    if (i == 1) {}
-    for (;;)
+    else
     {
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
       localBoolean = Boolean.valueOf(bool);
-      break;
-      bool = false;
     }
+    this.isPlayed = localBoolean;
+    this.videoUrl = paramParcel.readString();
+    this.videoDuration = paramParcel.readInt();
+    this.videoMute = paramParcel.readInt();
+    this.videoLocalPath = paramParcel.readString();
+    this.picUrl = paramParcel.readString();
+    this.picLocalPath = paramParcel.readString();
+    this.enable = paramParcel.readInt();
+    this.guide = paramParcel.readInt();
+    this.startTime = paramParcel.readLong();
+    this.endTime = paramParcel.readLong();
+    this.priority = paramParcel.readInt();
+    this.appId = paramParcel.readString();
+    this.version = paramParcel.readString();
+    this.downloadUrl = paramParcel.readString();
+    this.fileSize = paramParcel.readInt();
+    this.iconUrl = paramParcel.readString();
+    this.name = paramParcel.readString();
+    this.desc = paramParcel.readString();
+    this.developerDesc = paramParcel.readString();
+    this.downloadFileDomianList = paramParcel.createStringArrayList();
+    this.requestDomianList = paramParcel.createStringArrayList();
   }
   
   public int describeContents()
@@ -81,50 +81,103 @@ public class SplashMiniGameData
   
   public String toString()
   {
-    return "SplashMiniGameData{isPlayed=" + this.isPlayed + ", videoUrl='" + this.videoUrl + '\'' + ", videoDuration=" + this.videoDuration + ", videoMute=" + this.videoMute + ", videoLocalPath='" + this.videoLocalPath + '\'' + ", picUrl='" + this.picUrl + '\'' + ", picLocalPath='" + this.picLocalPath + '\'' + ", enable=" + this.enable + ", guide=" + this.guide + ", startTime=" + this.startTime + ", endTime=" + this.endTime + ", priority=" + this.priority + ", appId='" + this.appId + '\'' + ", version='" + this.version + '\'' + ", downloadUrl='" + this.downloadUrl + '\'' + ", fileSize=" + this.fileSize + ", iconUrl='" + this.iconUrl + '\'' + ", name='" + this.name + '\'' + ", desc='" + this.desc + '\'' + ", developerDesc='" + this.developerDesc + '\'' + ", downloadFileDomianList=" + this.downloadFileDomianList + ", requestDomianList=" + this.requestDomianList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SplashMiniGameData{isPlayed=");
+    localStringBuilder.append(this.isPlayed);
+    localStringBuilder.append(", videoUrl='");
+    localStringBuilder.append(this.videoUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoDuration=");
+    localStringBuilder.append(this.videoDuration);
+    localStringBuilder.append(", videoMute=");
+    localStringBuilder.append(this.videoMute);
+    localStringBuilder.append(", videoLocalPath='");
+    localStringBuilder.append(this.videoLocalPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", picUrl='");
+    localStringBuilder.append(this.picUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", picLocalPath='");
+    localStringBuilder.append(this.picLocalPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", enable=");
+    localStringBuilder.append(this.enable);
+    localStringBuilder.append(", guide=");
+    localStringBuilder.append(this.guide);
+    localStringBuilder.append(", startTime=");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append(", endTime=");
+    localStringBuilder.append(this.endTime);
+    localStringBuilder.append(", priority=");
+    localStringBuilder.append(this.priority);
+    localStringBuilder.append(", appId='");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", version='");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadUrl='");
+    localStringBuilder.append(this.downloadUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fileSize=");
+    localStringBuilder.append(this.fileSize);
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", developerDesc='");
+    localStringBuilder.append(this.developerDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadFileDomianList=");
+    localStringBuilder.append(this.downloadFileDomianList);
+    localStringBuilder.append(", requestDomianList=");
+    localStringBuilder.append(this.requestDomianList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.isPlayed == null) {
+    Boolean localBoolean = this.isPlayed;
+    if (localBoolean == null) {
       paramInt = 0;
+    } else if (localBoolean.booleanValue()) {
+      paramInt = 1;
+    } else {
+      paramInt = 2;
     }
-    for (;;)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.videoUrl);
-      paramParcel.writeInt(this.videoDuration);
-      paramParcel.writeInt(this.videoMute);
-      paramParcel.writeString(this.videoLocalPath);
-      paramParcel.writeString(this.picUrl);
-      paramParcel.writeString(this.picLocalPath);
-      paramParcel.writeInt(this.enable);
-      paramParcel.writeInt(this.guide);
-      paramParcel.writeLong(this.startTime);
-      paramParcel.writeLong(this.endTime);
-      paramParcel.writeInt(this.priority);
-      paramParcel.writeString(this.appId);
-      paramParcel.writeString(this.version);
-      paramParcel.writeString(this.downloadUrl);
-      paramParcel.writeInt(this.fileSize);
-      paramParcel.writeString(this.iconUrl);
-      paramParcel.writeString(this.name);
-      paramParcel.writeString(this.desc);
-      paramParcel.writeString(this.developerDesc);
-      paramParcel.writeStringList(this.downloadFileDomianList);
-      paramParcel.writeStringList(this.requestDomianList);
-      return;
-      if (this.isPlayed.booleanValue()) {
-        paramInt = 1;
-      } else {
-        paramInt = 2;
-      }
-    }
+    paramParcel.writeByte((byte)paramInt);
+    paramParcel.writeString(this.videoUrl);
+    paramParcel.writeInt(this.videoDuration);
+    paramParcel.writeInt(this.videoMute);
+    paramParcel.writeString(this.videoLocalPath);
+    paramParcel.writeString(this.picUrl);
+    paramParcel.writeString(this.picLocalPath);
+    paramParcel.writeInt(this.enable);
+    paramParcel.writeInt(this.guide);
+    paramParcel.writeLong(this.startTime);
+    paramParcel.writeLong(this.endTime);
+    paramParcel.writeInt(this.priority);
+    paramParcel.writeString(this.appId);
+    paramParcel.writeString(this.version);
+    paramParcel.writeString(this.downloadUrl);
+    paramParcel.writeInt(this.fileSize);
+    paramParcel.writeString(this.iconUrl);
+    paramParcel.writeString(this.name);
+    paramParcel.writeString(this.desc);
+    paramParcel.writeString(this.developerDesc);
+    paramParcel.writeStringList(this.downloadFileDomianList);
+    paramParcel.writeStringList(this.requestDomianList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.splash.SplashMiniGameData
  * JD-Core Version:    0.7.0.1
  */

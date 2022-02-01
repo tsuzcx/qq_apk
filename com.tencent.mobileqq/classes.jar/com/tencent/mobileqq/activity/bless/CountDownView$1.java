@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahdn;
-
 class CountDownView$1
   implements Runnable
 {
@@ -9,20 +7,22 @@ class CountDownView$1
   
   public void run()
   {
-    if ((CountDownView.a(this.this$0)) && (CountDownView.a(this.this$0) >= CountDownView.a().length))
+    if ((CountDownView.a(this.this$0)) && (CountDownView.b(this.this$0) >= CountDownView.b().length))
     {
       this.this$0.a();
-      if (CountDownView.a(this.this$0) != null) {
-        CountDownView.a(this.this$0).a();
+      if (CountDownView.c(this.this$0) != null) {
+        CountDownView.c(this.this$0).a();
       }
-    }
-    while (CountDownView.a(this.this$0) >= CountDownView.a().length) {
       return;
     }
-    CountDownView.a(this.this$0);
-    this.this$0.setImageResource(CountDownView.a()[CountDownView.a(this.this$0)]);
-    this.this$0.postDelayed(CountDownView.a(this.this$0), 1000L);
-    CountDownView.b(this.this$0);
+    if (CountDownView.b(this.this$0) >= CountDownView.b().length) {
+      return;
+    }
+    CountDownView.d(this.this$0);
+    this.this$0.setImageResource(CountDownView.b()[CountDownView.b(this.this$0)]);
+    CountDownView localCountDownView = this.this$0;
+    localCountDownView.postDelayed(CountDownView.e(localCountDownView), 1000L);
+    CountDownView.f(this.this$0);
   }
 }
 

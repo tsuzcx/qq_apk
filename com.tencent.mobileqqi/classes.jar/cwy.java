@@ -1,21 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
 
-public class cwy
-  implements DialogInterface.OnClickListener
+class cwy
+  implements Runnable
 {
-  public cwy(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
+  cwy(cwx paramcwx, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = MySelfTroopMemberCard.a(this.a).getInputValue();
-    if ((paramDialogInterface != null) && (!paramDialogInterface.equals("")) && (!paramDialogInterface.equals(this.a.a.getText()))) {
-      MySelfTroopMemberCard.a(this.a).post(new cwz(this, paramDialogInterface));
-    }
+    this.jdField_a_of_type_Cwx.a.b = true;
+    this.jdField_a_of_type_Cwx.a.d = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Cwx.a.a.setText(this.jdField_a_of_type_Cwx.a.d);
   }
 }
 

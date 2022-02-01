@@ -26,17 +26,18 @@ class VirtualDisplayController$OneTimeOnDrawListener
   
   public void onDraw()
   {
-    if (this.mOnDrawRunnable == null) {
+    Runnable localRunnable = this.mOnDrawRunnable;
+    if (localRunnable == null) {
       return;
     }
-    this.mOnDrawRunnable.run();
+    localRunnable.run();
     this.mOnDrawRunnable = null;
     this.mView.post(new VirtualDisplayController.OneTimeOnDrawListener.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.platform.VirtualDisplayController.OneTimeOnDrawListener
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
 import com.tencent.widget.AbsListView.LayoutParams;
-import guy;
+import gux;
 import java.text.DecimalFormat;
 
 public class NearbyTroops
@@ -221,14 +221,14 @@ public class NearbyTroops
     paramView.g.setText(paramXiaoQuInfo);
   }
   
-  public static void a(View paramView, guy paramguy)
+  public static void a(View paramView, gux paramgux)
   {
     paramView = (NearbyTroops.CustomViewHolder)paramView.getTag();
-    paramView.c.setBackgroundResource(paramguy.jdField_c_of_type_Int);
-    paramView.jdField_f_of_type_AndroidWidgetTextView.setText(paramguy.a);
+    paramView.c.setBackgroundResource(paramgux.jdField_c_of_type_Int);
+    paramView.jdField_f_of_type_AndroidWidgetTextView.setText(paramgux.a);
     paramView.jdField_f_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    paramView.g.setText(paramguy.b);
-    paramView.h.setText(paramguy.jdField_c_of_type_JavaLangString);
+    paramView.g.setText(paramgux.b);
+    paramView.h.setText(paramgux.jdField_c_of_type_JavaLangString);
   }
   
   public static void a(View paramView, String paramString, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -303,8 +303,8 @@ public class NearbyTroops
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903387, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.GroupViewHolder();
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131232408));
-    paramViewGroup.b = ((TextView)paramContext.findViewById(2131232409));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131232407));
+    paramViewGroup.b = ((TextView)paramContext.findViewById(2131232408));
     paramViewGroup.jdField_a_of_type_Int = 3;
     paramContext.setTag(paramViewGroup);
     return paramContext;
@@ -323,14 +323,14 @@ public class NearbyTroops
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903993, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.CustomViewHolder();
-    paramViewGroup.c = ((ImageView)paramContext.findViewById(2131232316));
-    paramViewGroup.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131232318));
-    paramViewGroup.g = ((TextView)paramContext.findViewById(2131232320));
-    paramViewGroup.h = ((TextView)paramContext.findViewById(2131232321));
-    paramViewGroup.b = ((ImageView)paramContext.findViewById(2131231399));
-    paramViewGroup.d = ((ImageView)paramContext.findViewById(2131234541));
-    paramViewGroup.e = ((ImageView)paramContext.findViewById(2131234542));
-    paramViewGroup.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131234543));
+    paramViewGroup.c = ((ImageView)paramContext.findViewById(2131232315));
+    paramViewGroup.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131232317));
+    paramViewGroup.g = ((TextView)paramContext.findViewById(2131232319));
+    paramViewGroup.h = ((TextView)paramContext.findViewById(2131232320));
+    paramViewGroup.b = ((ImageView)paramContext.findViewById(2131231398));
+    paramViewGroup.d = ((ImageView)paramContext.findViewById(2131234540));
+    paramViewGroup.e = ((ImageView)paramContext.findViewById(2131234541));
+    paramViewGroup.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131234542));
     paramViewGroup.c.setImageBitmap(null);
     paramContext.setTag(paramViewGroup);
     return paramContext;
@@ -350,9 +350,9 @@ public class NearbyTroops
     paramContext = LayoutInflater.from(paramContext).inflate(2130903391, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.MoreBtnViewHolder();
     paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131231066));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131231868));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131231869));
-    paramViewGroup.b = ((TextView)paramContext.findViewById(2131231507));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131231867));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131231868));
+    paramViewGroup.b = ((TextView)paramContext.findViewById(2131231506));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }

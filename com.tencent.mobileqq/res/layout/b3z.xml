@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/yw" style="@style/jq" />
     <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-        <TextView android:textSize="@dimen/j1" android:textColor="@color/bp" android:id="@id/title" android:layout_marginLeft="12.0dip" style="@style/k6" />
+        <TextView android:textSize="@dimen/j1" android:textColor="@color/black" android:id="@id/title" android:layout_marginLeft="12.0dip" style="@style/k6" />
         <TextView android:id="@id/f8v" style="@style/k0" />
         <LinearLayout android:id="@id/content" style="@style/jt">
             <View style="@style/k4" />

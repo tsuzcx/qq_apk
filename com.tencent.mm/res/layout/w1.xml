@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ble" android:background="@color/aak" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/bkj" android:background="@drawable/abk" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <android.support.v4.view.ViewPager android:gravity="center" android:id="@id/bkk" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/bkl" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rz">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/if" android:paddingTop="@dimen/if" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/bm" android:id="@id/blo" android:layout_marginBottom="@dimen/i6" android:text="hello" style="@style/hu" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i6">
+                <com.tencent.mm.ui.MMImageView android:id="@id/blm" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:src="@drawable/b__" style="@style/ht" />
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <com.tencent.mm.ui.base.NoMeasuredTextView android:textColor="@color/a7b" android:ellipsize="end" android:gravity="left" android:id="@id/blk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="0.0dip" android:layout_marginRight="0.0dip" android:text="message" android:singleLine="true" style="@style/hu" />
+                    <TextView android:textSize="@dimen/hq" android:id="@id/blg" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/g" style="@style/hr" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <include layout="@layout/vt" />
     </LinearLayout>
 </LinearLayout>

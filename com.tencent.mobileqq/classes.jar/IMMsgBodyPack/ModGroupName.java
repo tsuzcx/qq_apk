@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ModGroupName
   extends JceStruct
 {
-  public long dwGroupID;
+  public long dwGroupID = 0L;
   public String strGroupName = "";
   
   public ModGroupName() {}
@@ -27,14 +27,15 @@ public final class ModGroupName
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.dwGroupID, 0);
-    if (this.strGroupName != null) {
-      paramJceOutputStream.write(this.strGroupName, 1);
+    String str = this.strGroupName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.ModGroupName
  * JD-Core Version:    0.7.0.1
  */

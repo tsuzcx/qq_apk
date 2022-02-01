@@ -1,25 +1,15 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.EditTagActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
 
 public class cjr
-  extends CardObserver
+  implements DialogInterface.OnClickListener
 {
   public cjr(EditTagActivity paramEditTagActivity) {}
   
-  protected void b(boolean paramBoolean, Card paramCard)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.d(2131562804);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1000L);
-      return;
-      this.a.d(2131562043);
-    }
+    this.a.finish();
   }
 }
 

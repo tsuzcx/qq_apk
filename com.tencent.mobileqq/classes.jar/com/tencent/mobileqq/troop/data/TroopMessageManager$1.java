@@ -1,30 +1,29 @@
 package com.tencent.mobileqq.troop.data;
 
-import amdu;
-import bbtt;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopfriend.api.ITroopBatchAddFriendService;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
+import mqq.app.AppRuntime;
 
-public class TroopMessageManager$1
+class TroopMessageManager$1
   implements Runnable
 {
-  public TroopMessageManager$1(bbtt parambbtt, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2) {}
+  TroopMessageManager$1(TroopMessageManager paramTroopMessageManager, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    Object localObject = (amdu)bbtt.a(this.this$0).a(20);
+    Object localObject = (ITroopBatchAddFriendService)this.this$0.a.getRuntimeService(ITroopBatchAddFriendService.class, "");
     if (localObject != null)
     {
-      localObject = ((amdu)localObject).a();
+      localObject = ((ITroopBatchAddFriendService)localObject).getTroopBatchAddFriendMgr();
       if (localObject != null) {
-        ((TroopBatchAddFriendMgr)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+        ((TroopBatchAddFriendMgr)localObject).a(this.a, this.b, this.c, this.d, this.e);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

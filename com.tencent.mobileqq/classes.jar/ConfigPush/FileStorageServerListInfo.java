@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class FileStorageServerListInfo
   extends JceStruct
 {
-  public int iPort;
+  public int iPort = 0;
   public String sIP = "";
   
   public FileStorageServerListInfo() {}
@@ -32,7 +32,7 @@ public final class FileStorageServerListInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.FileStorageServerListInfo
  * JD-Core Version:    0.7.0.1
  */

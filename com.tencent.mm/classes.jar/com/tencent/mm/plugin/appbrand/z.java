@@ -1,35 +1,69 @@
 package com.tencent.mm.plugin.appbrand;
 
+import android.util.SparseArray;
+import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.f;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.List;
 
-final class z
-  implements f
+public final class z
 {
-  public final e d(c paramc)
+  public final SparseArray<List<b>> qwT;
+  final SparseIntArray qwU;
+  
+  private z()
   {
-    AppMethodBeat.i(86790);
-    if ((paramc instanceof e))
+    AppMethodBeat.i(134601);
+    this.qwT = new SparseArray();
+    this.qwU = new SparseIntArray();
+    AppMethodBeat.o(134601);
+  }
+  
+  public final void t(int paramInt, List<b> paramList)
+  {
+    AppMethodBeat.i(134605);
+    if (this.qwU.size() <= 0)
     {
-      paramc = (e)paramc;
-      AppMethodBeat.o(86790);
-      return paramc;
+      AppMethodBeat.o(134605);
+      return;
     }
-    if ((paramc instanceof r))
+    Log.i("MicroMsg.AppBrandServiceOnRuntimeReadyListenerMgr", "notify pending : %d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.qwU.indexOfKey(paramInt) < 0)
     {
-      paramc = ((r)paramc).getCurrentPageView();
-      AppMethodBeat.o(86790);
-      return paramc;
+      Log.i("MicroMsg.AppBrandServiceOnRuntimeReadyListenerMgr", "not in pending notify");
+      AppMethodBeat.o(134605);
+      return;
     }
-    AppMethodBeat.o(86790);
-    return null;
+    this.qwU.delete(paramInt);
+    paramInt = 0;
+    while (paramInt < paramList.size())
+    {
+      ((b)paramList.get(paramInt)).aEr();
+      paramInt += 1;
+    }
+    AppMethodBeat.o(134605);
+  }
+  
+  public static final class a
+  {
+    public static z qwV;
+    
+    static
+    {
+      AppMethodBeat.i(134600);
+      qwV = new z((byte)0);
+      AppMethodBeat.o(134600);
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void aEr();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.z
  * JD-Core Version:    0.7.0.1
  */

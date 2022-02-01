@@ -1,0 +1,24 @@
+{
+    "view_type":"UILabel",
+    "view_id":"id_bottom_mark",
+    "align_parent_center_vertical": "YES",
+    "margin_left":"6",
+    "padding_left":"4",
+    "padding_right":"4",
+    "height":{
+        "type":"absolutely",
+        "value":"16"
+    },
+    "width":{
+        "type":"wrap_content"
+    },
+    "attributes":{
+        "setBackgroundColorString:":"$mark_backgroundcolor",
+        "setCornerRadiusString:":"4.0",
+        "setText:":"$mark_text",
+        "setTextColorString:":"$mark_color",
+        "setFontSizeString:":"11",
+        "setNumberOfLinesString:":"1",
+        "setTextAlignmentString:": "1"
+    }
+}

@@ -12,23 +12,23 @@ public final class MsgType0x210SubMsgType0xa
   static byte[] cache_vMd5;
   static byte[] cache_vTokenKey;
   static byte[] cache_vUrlNotify;
-  public long lSessionId;
-  public byte[] strFileName;
-  public byte[] strOriginfile_md5;
-  public long uDstAppId;
-  public long uDstInstId;
-  public long uDstUin;
-  public long uFileLen;
-  public long uOriginfiletype;
-  public long uSeq;
-  public long uServerIp;
-  public long uServerPort;
-  public long uSrcAppId;
-  public long uSrcInstId;
-  public long uType;
-  public byte[] vMd5;
-  public byte[] vTokenKey;
-  public byte[] vUrlNotify;
+  public long lSessionId = 0L;
+  public byte[] strFileName = null;
+  public byte[] strOriginfile_md5 = null;
+  public long uDstAppId = 0L;
+  public long uDstInstId = 0L;
+  public long uDstUin = 0L;
+  public long uFileLen = 0L;
+  public long uOriginfiletype = 0L;
+  public long uSeq = 0L;
+  public long uServerIp = 0L;
+  public long uServerPort = 0L;
+  public long uSrcAppId = 0L;
+  public long uSrcInstId = 0L;
+  public long uType = 0L;
+  public byte[] vMd5 = null;
+  public byte[] vTokenKey = null;
+  public byte[] vUrlNotify = null;
   
   public MsgType0x210SubMsgType0xa() {}
   
@@ -109,22 +109,27 @@ public final class MsgType0x210SubMsgType0xa
     paramJceOutputStream.write(this.uType, 5);
     paramJceOutputStream.write(this.uServerIp, 6);
     paramJceOutputStream.write(this.uServerPort, 7);
-    if (this.vUrlNotify != null) {
-      paramJceOutputStream.write(this.vUrlNotify, 8);
+    byte[] arrayOfByte = this.vUrlNotify;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 8);
     }
-    if (this.vTokenKey != null) {
-      paramJceOutputStream.write(this.vTokenKey, 9);
+    arrayOfByte = this.vTokenKey;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 9);
     }
     paramJceOutputStream.write(this.uFileLen, 10);
-    if (this.strFileName != null) {
-      paramJceOutputStream.write(this.strFileName, 11);
+    arrayOfByte = this.strFileName;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 11);
     }
-    if (this.vMd5 != null) {
-      paramJceOutputStream.write(this.vMd5, 12);
+    arrayOfByte = this.vMd5;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 12);
     }
     paramJceOutputStream.write(this.lSessionId, 13);
-    if (this.strOriginfile_md5 != null) {
-      paramJceOutputStream.write(this.strOriginfile_md5, 14);
+    arrayOfByte = this.strOriginfile_md5;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 14);
     }
     paramJceOutputStream.write(this.uOriginfiletype, 15);
     paramJceOutputStream.write(this.uSeq, 16);
@@ -132,7 +137,7 @@ public final class MsgType0x210SubMsgType0xa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0xa
  * JD-Core Version:    0.7.0.1
  */

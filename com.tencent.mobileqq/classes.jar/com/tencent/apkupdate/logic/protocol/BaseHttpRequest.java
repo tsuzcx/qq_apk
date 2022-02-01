@@ -38,157 +38,170 @@ public abstract class BaseHttpRequest
   
   public void run()
   {
-    Object localObject3 = null;
-    if (isCancel()) {}
-    do
-    {
+    if (isCancel()) {
       return;
-      prepareData();
-    } while (this.sendRequest == null);
-    Object localObject5 = this.sendRequest;
-    Object localObject1;
-    if (localObject5 == null)
+    }
+    prepareData();
+    Object localObject3 = this.sendRequest;
+    if (localObject3 == null) {
+      return;
+    }
+    Object localObject4;
+    int i;
+    if (localObject3 == null)
     {
       localObject1 = null;
-      if (localObject1 != null) {
-        break label574;
-      }
     }
-    Object localObject2;
-    for (;;)
+    else
     {
-      int i;
-      try
+      localObject2 = new Request();
+      if (localObject3 == null)
       {
-        localObject1 = new URL(REQUEST_SERVER_URL);
-        Log.i(TAG, ">run serverUrl=" + localObject1);
-        localObject1 = (HttpsURLConnection)((URL)localObject1).openConnection();
-        localObject4 = SSLContext.getInstance("SSL");
-        ((SSLContext)localObject4).init(null, null, null);
-        if (localObject4 != null)
+        localObject1 = null;
+      }
+      else
+      {
+        localObject4 = new Net((byte)b.a().e(), b.a().d(), 0, b.c());
+        localObject1 = new ReqHead();
+        ((ReqHead)localObject1).requestId = b.i();
+        if (localObject3 == null)
         {
-          ((HttpsURLConnection)localObject1).setSSLSocketFactory(((SSLContext)localObject4).getSocketFactory());
-          ((HttpsURLConnection)localObject1).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+          i = -1;
         }
-        ((HttpsURLConnection)localObject1).setRequestMethod("POST");
-        ((HttpsURLConnection)localObject1).setDoOutput(true);
-        ((HttpsURLConnection)localObject1).setDoInput(true);
-        ((HttpsURLConnection)localObject1).setUseCaches(false);
-        ((HttpsURLConnection)localObject1).addRequestProperty("User-Agent", "AssistantDownloader");
-        ((HttpsURLConnection)localObject1).addRequestProperty("Content-Type", "application/octet-stream");
-        ((HttpsURLConnection)localObject1).setConnectTimeout(30000);
-        ((HttpsURLConnection)localObject1).setReadTimeout(30000);
-        localObject4 = ((HttpsURLConnection)localObject1).getOutputStream();
-        ((OutputStream)localObject4).write((byte[])localObject3);
-        ((OutputStream)localObject4).flush();
-        i = ((HttpsURLConnection)localObject1).getResponseCode();
-        i.a(TAG, ">run rspCode:" + i);
-        if (isCancel()) {
-          break;
+        else
+        {
+          String str = localObject3.getClass().getSimpleName();
+          i = JceCmd.convert(str.substring(0, str.length() - 7)).value();
         }
-        if (i != 200) {
-          break label717;
-        }
-        localObject1 = ((HttpsURLConnection)localObject1).getInputStream();
-        if (localObject1 == null) {
-          break label762;
-        }
-        localObject1 = com.tencent.apkupdate.a.a.a((InputStream)localObject1);
-        if ((localObject1 == null) || (localObject1.length <= 4)) {
-          break label735;
-        }
-        Log.i(TAG, ">run data.length:" + localObject1.length);
-        localObject1 = com.tencent.apkupdate.a.a.a((byte[])localObject1);
-        if ((localObject1 == null) || (((Response)localObject1).body == null)) {
-          break label722;
-        }
-        localObject1 = com.tencent.apkupdate.a.a.a(this.sendRequest, ((Response)localObject1).body);
-        if (localObject1 == null) {
-          break label707;
-        }
-        Log.i(TAG, ">run unpageageJceResponse succ");
-        onFinished(this.sendRequest, (JceStruct)localObject1);
+        ((ReqHead)localObject1).cmdId = i;
+        b.a();
+        ((ReqHead)localObject1).qua = b.f();
+        ((ReqHead)localObject1).phoneGuid = b.a().h();
+        ((ReqHead)localObject1).terminal = b.a().g();
+        ((ReqHead)localObject1).assistantAPILevel = 0;
+        ((ReqHead)localObject1).assistantVersionCode = 0;
+        ((ReqHead)localObject1).net = ((Net)localObject4);
+        ((ReqHead)localObject1).hostPackageName = b.b(b.a().b());
+        ((ReqHead)localObject1).hostVersionCode = b.c(b.a().b());
+      }
+      ((Request)localObject2).head = ((ReqHead)localObject1);
+      if (localObject3 == null)
+      {
+        localObject1 = null;
+      }
+      else
+      {
+        localObject1 = new JceOutputStream();
+        ((JceOutputStream)localObject1).setServerEncoding("utf-8");
+        ((JceStruct)localObject3).writeTo((JceOutputStream)localObject1);
+        localObject1 = ((JceOutputStream)localObject1).toByteArray();
+      }
+      ((Request)localObject2).body = ((byte[])localObject1);
+      localObject1 = localObject2;
+    }
+    if (localObject1 == null) {}
+    do
+    {
+      localObject1 = null;
+      break;
+      ((Request)localObject1).head.encryptWithPack = 0;
+      if (((Request)localObject1).body.length > 256)
+      {
+        ((Request)localObject1).body = com.tencent.apkupdate.a.a.b(((Request)localObject1).body);
+        ((Request)localObject1).head.encryptWithPack = ((byte)(((Request)localObject1).head.encryptWithPack | 0x1));
+      }
+      localObject2 = ((Request)localObject1).body;
+      localObject3 = "ji*9^&43U0X-~./(".getBytes();
+      ((Request)localObject1).body = new com.tencent.apkupdate.b.a().b((byte[])localObject2, 0, localObject2.length, (byte[])localObject3);
+      ((Request)localObject1).head.encryptWithPack = ((byte)(((Request)localObject1).head.encryptWithPack | 0x2));
+    } while (localObject1 == null);
+    Object localObject2 = new JceOutputStream();
+    ((JceOutputStream)localObject2).setServerEncoding("utf-8");
+    ((JceStruct)localObject1).writeTo((JceOutputStream)localObject2);
+    Object localObject1 = ((JceOutputStream)localObject2).toByteArray();
+    try
+    {
+      localObject2 = new URL(REQUEST_SERVER_URL);
+      localObject3 = TAG;
+      localObject4 = new StringBuilder(">run serverUrl=");
+      ((StringBuilder)localObject4).append(localObject2);
+      Log.i((String)localObject3, ((StringBuilder)localObject4).toString());
+      localObject2 = (HttpsURLConnection)((URL)localObject2).openConnection();
+      localObject3 = SSLContext.getInstance("SSL");
+      ((SSLContext)localObject3).init(null, null, null);
+      if (localObject3 != null)
+      {
+        ((HttpsURLConnection)localObject2).setSSLSocketFactory(((SSLContext)localObject3).getSocketFactory());
+        ((HttpsURLConnection)localObject2).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+      }
+      ((HttpsURLConnection)localObject2).setRequestMethod("POST");
+      ((HttpsURLConnection)localObject2).setDoOutput(true);
+      ((HttpsURLConnection)localObject2).setDoInput(true);
+      ((HttpsURLConnection)localObject2).setUseCaches(false);
+      ((HttpsURLConnection)localObject2).addRequestProperty("User-Agent", "AssistantDownloader");
+      ((HttpsURLConnection)localObject2).addRequestProperty("Content-Type", "application/octet-stream");
+      ((HttpsURLConnection)localObject2).setConnectTimeout(30000);
+      ((HttpsURLConnection)localObject2).setReadTimeout(30000);
+      localObject3 = ((HttpsURLConnection)localObject2).getOutputStream();
+      ((OutputStream)localObject3).write((byte[])localObject1);
+      ((OutputStream)localObject3).flush();
+      i = ((HttpsURLConnection)localObject2).getResponseCode();
+      localObject1 = TAG;
+      localObject3 = new StringBuilder(">run rspCode:");
+      ((StringBuilder)localObject3).append(i);
+      i.a((String)localObject1, ((StringBuilder)localObject3).toString());
+      if (isCancel()) {
         return;
       }
-      catch (Throwable localThrowable)
+      if (i == 200)
       {
-        Log.e(TAG, ">run error:", localThrowable);
-        onDataReceiveFailed();
-        return;
-      }
-      Object localObject4 = new Request();
-      if (localObject5 == null)
-      {
-        localObject2 = null;
-        ((Request)localObject4).head = ((ReqHead)localObject2);
-        if (localObject5 != null) {
-          break label544;
-        }
-      }
-      for (localObject2 = null;; localObject2 = ((JceOutputStream)localObject2).toByteArray())
-      {
-        ((Request)localObject4).body = ((byte[])localObject2);
-        localObject2 = localObject4;
-        break;
-        Net localNet = new Net((byte)b.a().e(), b.a().d(), 0, b.c());
-        localObject2 = new ReqHead();
-        ((ReqHead)localObject2).requestId = b.i();
-        if (localObject5 == null) {}
-        String str;
-        for (i = -1;; i = JceCmd.convert(str.substring(0, str.length() - 7)).value())
+        localObject1 = ((HttpsURLConnection)localObject2).getInputStream();
+        if (localObject1 != null)
         {
-          ((ReqHead)localObject2).cmdId = i;
-          b.a();
-          ((ReqHead)localObject2).qua = b.f();
-          ((ReqHead)localObject2).phoneGuid = b.a().h();
-          ((ReqHead)localObject2).terminal = b.a().g();
-          ((ReqHead)localObject2).assistantAPILevel = 0;
-          ((ReqHead)localObject2).assistantVersionCode = 0;
-          ((ReqHead)localObject2).net = localNet;
-          ((ReqHead)localObject2).hostPackageName = b.b(b.a().b());
-          ((ReqHead)localObject2).hostVersionCode = b.c(b.a().b());
-          break;
-          str = localObject5.getClass().getSimpleName();
+          localObject1 = com.tencent.apkupdate.a.a.a((InputStream)localObject1);
+          if ((localObject1 != null) && (localObject1.length > 4))
+          {
+            localObject2 = TAG;
+            localObject3 = new StringBuilder(">run data.length:");
+            ((StringBuilder)localObject3).append(localObject1.length);
+            Log.i((String)localObject2, ((StringBuilder)localObject3).toString());
+            localObject1 = com.tencent.apkupdate.a.a.a((byte[])localObject1);
+            if ((localObject1 != null) && (((Response)localObject1).body != null))
+            {
+              localObject1 = com.tencent.apkupdate.a.a.a(this.sendRequest, ((Response)localObject1).body);
+              if (localObject1 != null)
+              {
+                Log.i(TAG, ">run unpageageJceResponse succ");
+                onFinished(this.sendRequest, (JceStruct)localObject1);
+                return;
+              }
+              Log.e(TAG, ">run unpageageJceResponse failed, jceResponse is null");
+            }
+            else
+            {
+              Log.e(TAG, ">run unpageageJceResponse failed,jceResp or jceResp.body null");
+            }
+          }
+          else
+          {
+            localObject2 = TAG;
+            localObject3 = new StringBuilder(">run data maybe null:");
+            ((StringBuilder)localObject3).append(localObject1);
+            Log.e((String)localObject2, ((StringBuilder)localObject3).toString());
+          }
         }
-        label544:
-        localObject2 = new JceOutputStream();
-        ((JceOutputStream)localObject2).setServerEncoding("utf-8");
-        ((JceStruct)localObject5).writeTo((JceOutputStream)localObject2);
+        else
+        {
+          Log.e(TAG, ">run inputStream == null");
+        }
       }
-      label574:
-      ((Request)localObject2).head.encryptWithPack = 0;
-      if (((Request)localObject2).body.length > 256)
-      {
-        ((Request)localObject2).body = com.tencent.apkupdate.a.a.b(((Request)localObject2).body);
-        ((Request)localObject2).head.encryptWithPack = ((byte)(((Request)localObject2).head.encryptWithPack | 0x1));
-      }
-      localObject4 = ((Request)localObject2).body;
-      localObject5 = "ji*9^&43U0X-~./(".getBytes();
-      ((Request)localObject2).body = new com.tencent.apkupdate.b.a().b((byte[])localObject4, 0, localObject4.length, (byte[])localObject5);
-      ((Request)localObject2).head.encryptWithPack = ((byte)(((Request)localObject2).head.encryptWithPack | 0x2));
-      if (localObject2 != null)
-      {
-        localObject3 = new JceOutputStream();
-        ((JceOutputStream)localObject3).setServerEncoding("utf-8");
-        ((JceStruct)localObject2).writeTo((JceOutputStream)localObject3);
-        localObject3 = ((JceOutputStream)localObject3).toByteArray();
-      }
-    }
-    label707:
-    Log.e(TAG, ">run unpageageJceResponse failed, jceResponse is null");
-    for (;;)
-    {
-      label717:
       onDataReceiveFailed();
       return;
-      label722:
-      Log.e(TAG, ">run unpageageJceResponse failed,jceResp or jceResp.body null");
-      continue;
-      label735:
-      Log.e(TAG, ">run data maybe null:" + localObject2);
-      continue;
-      label762:
-      Log.e(TAG, ">run inputStream == null");
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e(TAG, ">run error:", localThrowable);
+      onDataReceiveFailed();
     }
   }
   
@@ -204,7 +217,7 @@ public abstract class BaseHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.BaseHttpRequest
  * JD-Core Version:    0.7.0.1
  */

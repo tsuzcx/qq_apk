@@ -8,14 +8,16 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import java.util.List;
 
 final class d$a
   extends BaseAdapter
 {
+  List<String> MSh;
+  int MSi = -1;
   private final Context context;
-  List<String> pvI;
-  int pvJ = -1;
   private final int style;
   
   public d$a(Context paramContext)
@@ -26,14 +28,14 @@ final class d$a
   
   public final int getCount()
   {
-    AppMethodBeat.i(44050);
-    if (this.pvI != null)
+    AppMethodBeat.i(66957);
+    if (this.MSh != null)
     {
-      int i = this.pvI.size();
-      AppMethodBeat.o(44050);
+      int i = this.MSh.size();
+      AppMethodBeat.o(66957);
       return i;
     }
-    AppMethodBeat.o(44050);
+    AppMethodBeat.o(66957);
     return 0;
   }
   
@@ -50,41 +52,41 @@ final class d$a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     boolean bool = true;
-    AppMethodBeat.i(44051);
+    AppMethodBeat.i(66958);
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = View.inflate(this.context, 2130970227, null);
+      paramViewGroup = View.inflate(this.context, a.g.mm_preference_dialog_item, null);
       paramView = new d.b();
-      paramView.pvK = ((TextView)paramViewGroup.findViewById(2131820676));
-      paramView.pvL = ((CheckBox)paramViewGroup.findViewById(2131826235));
-      paramView.pvM = ((RadioButton)paramViewGroup.findViewById(2131820951));
+      paramView.ElR = ((TextView)paramViewGroup.findViewById(a.f.text));
+      paramView.MSj = ((CheckBox)paramViewGroup.findViewById(a.f.check));
+      paramView.MSk = ((RadioButton)paramViewGroup.findViewById(a.f.radio));
       paramViewGroup.setTag(paramView);
     }
     paramView = (d.b)paramViewGroup.getTag();
-    paramView.pvK.setText((CharSequence)this.pvI.get(paramInt));
+    paramView.ElR.setText((CharSequence)this.MSh.get(paramInt));
     switch (this.style)
     {
     default: 
-      paramView.pvL.setVisibility(8);
-      paramView.pvM.setVisibility(8);
-      AppMethodBeat.o(44051);
+      paramView.MSj.setVisibility(8);
+      paramView.MSk.setVisibility(8);
+      AppMethodBeat.o(66958);
       return paramViewGroup;
     case 1: 
-      paramView.pvL.setVisibility(8);
-      paramView.pvM.setVisibility(0);
-      paramView = paramView.pvM;
-      if (paramInt == this.pvJ) {}
+      paramView.MSj.setVisibility(8);
+      paramView.MSk.setVisibility(0);
+      paramView = paramView.MSk;
+      if (paramInt == this.MSi) {}
       for (bool = true;; bool = false)
       {
         paramView.setChecked(bool);
         break;
       }
     }
-    paramView.pvL.setVisibility(0);
-    paramView.pvM.setVisibility(8);
-    paramView = paramView.pvL;
-    if (paramInt == this.pvJ) {}
+    paramView.MSj.setVisibility(0);
+    paramView.MSk.setVisibility(8);
+    paramView = paramView.MSj;
+    if (paramInt == this.MSi) {}
     for (;;)
     {
       paramView.setChecked(bool);
@@ -95,7 +97,7 @@ final class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

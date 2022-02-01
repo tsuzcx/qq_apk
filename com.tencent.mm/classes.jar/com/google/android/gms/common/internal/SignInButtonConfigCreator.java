@@ -13,7 +13,7 @@ public class SignInButtonConfigCreator
   
   public SignInButtonConfig createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61375);
+    AppMethodBeat.i(11867);
     int m = SafeParcelReader.validateObjectHeader(paramParcel);
     Scope[] arrayOfScope = null;
     int k = 0;
@@ -42,7 +42,7 @@ public class SignInButtonConfigCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, m);
     paramParcel = new SignInButtonConfig(i, j, k, arrayOfScope);
-    AppMethodBeat.o(61375);
+    AppMethodBeat.o(11867);
     return paramParcel;
   }
   
@@ -53,7 +53,7 @@ public class SignInButtonConfigCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.SignInButtonConfigCreator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.fingerprint.ui;
 
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.h;
 
 final class FingerPrintAuthUI$4
   implements Runnable
 {
-  FingerPrintAuthUI$4(FingerPrintAuthUI paramFingerPrintAuthUI, String paramString, int paramInt) {}
+  FingerPrintAuthUI$4(FingerPrintAuthUI paramFingerPrintAuthUI) {}
   
   public final void run()
   {
-    AppMethodBeat.i(41636);
-    h.a(this.mGW, this.val$text, "", this.mGW.getString(2131305099), false, new FingerPrintAuthUI.4.1(this));
-    AppMethodBeat.o(41636);
+    AppMethodBeat.i(64525);
+    FingerPrintAuthUI.g(this.HgZ).setVisibility(0);
+    AppMethodBeat.o(64525);
   }
 }
 

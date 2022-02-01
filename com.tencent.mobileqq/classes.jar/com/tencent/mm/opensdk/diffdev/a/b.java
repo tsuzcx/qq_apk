@@ -1,52 +1,83 @@
 package com.tencent.mm.opensdk.diffdev.a;
 
-import android.os.Handler;
+import android.os.AsyncTask;
+import android.os.Build.VERSION;
+import com.tencent.mm.opensdk.channel.a.a;
 import com.tencent.mm.opensdk.diffdev.OAuthErrCode;
 import com.tencent.mm.opensdk.diffdev.OAuthListener;
 import com.tencent.mm.opensdk.utils.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-final class b
-  implements OAuthListener
+public class b
+  extends AsyncTask<Void, Void, b.a>
 {
-  b(a parama) {}
+  private String a;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private OAuthListener f;
+  private c g;
   
-  public final void onAuthFinish(OAuthErrCode paramOAuthErrCode, String paramString)
+  public b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, OAuthListener paramOAuthListener)
   {
-    Log.d("MicroMsg.SDK.ListenerWrapper", String.format("onAuthFinish, errCode = %s, authCode = %s", new Object[] { paramOAuthErrCode.toString(), paramString }));
-    a.c(this.f);
-    Object localObject = new ArrayList();
-    ((List)localObject).addAll(a.a(this.f));
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((OAuthListener)((Iterator)localObject).next()).onAuthFinish(paramOAuthErrCode, paramString);
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramOAuthListener;
   }
   
-  public final void onAuthGotQrcode(String paramString, byte[] paramArrayOfByte)
+  public boolean a()
   {
-    Log.d("MicroMsg.SDK.ListenerWrapper", "onAuthGotQrcode, qrcodeImgPath = " + paramString);
-    Object localObject = new ArrayList();
-    ((List)localObject).addAll(a.a(this.f));
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((OAuthListener)((Iterator)localObject).next()).onAuthGotQrcode(paramString, paramArrayOfByte);
+    Log.i("MicroMsg.SDK.GetQRCodeTask", "cancelTask");
+    c localc = this.g;
+    if (localc == null) {
+      return cancel(true);
     }
+    return localc.cancel(true);
   }
   
-  public final void onQrcodeScanned()
+  protected Object doInBackground(Object[] paramArrayOfObject)
   {
-    Log.d("MicroMsg.SDK.ListenerWrapper", "onQrcodeScanned");
-    if (a.b(this.f) != null) {
-      a.b(this.f).post(new c(this));
+    paramArrayOfObject = (Void[])paramArrayOfObject;
+    Thread.currentThread().setName("OpenSdkGetQRCodeTask");
+    Log.i("MicroMsg.SDK.GetQRCodeTask", "doInBackground");
+    paramArrayOfObject = String.format("https://open.weixin.qq.com/connect/sdk/qrconnect?appid=%s&noncestr=%s&timestamp=%s&scope=%s&signature=%s", new Object[] { this.a, this.c, this.d, this.b, this.e });
+    long l = System.currentTimeMillis();
+    byte[] arrayOfByte = a.a(paramArrayOfObject, 60000);
+    Log.d("MicroMsg.SDK.GetQRCodeTask", String.format("doInBackground, url = %s, time consumed = %d(ms)", new Object[] { paramArrayOfObject, Long.valueOf(System.currentTimeMillis() - l) }));
+    return b.a.a(arrayOfByte);
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    paramObject = (b.a)paramObject;
+    Object localObject = paramObject.a;
+    if (localObject == OAuthErrCode.WechatAuth_Err_OK)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPostExecute, get qrcode success imgBufSize = ");
+      ((StringBuilder)localObject).append(paramObject.e.length);
+      Log.d("MicroMsg.SDK.GetQRCodeTask", ((StringBuilder)localObject).toString());
+      this.f.onAuthGotQrcode(paramObject.d, paramObject.e);
+      paramObject = new c(paramObject.b, this.f);
+      this.g = paramObject;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramObject.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        return;
+      }
+      paramObject.execute(new Void[0]);
+      return;
     }
+    Log.e("MicroMsg.SDK.GetQRCodeTask", String.format("onPostExecute, get qrcode fail, OAuthErrCode = %s", new Object[] { localObject }));
+    this.f.onAuthFinish(paramObject.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.b
  * JD-Core Version:    0.7.0.1
  */

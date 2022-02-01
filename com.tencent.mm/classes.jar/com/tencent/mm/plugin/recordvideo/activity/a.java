@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.recordvideo.activity;
 
-import a.l;
-import com.tencent.mm.media.widget.camerarecordview.a.b;
+import com.tencent.mm.media.widget.camerarecordview.b.b;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "", "toEditPicturePage", "", "model", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "toEditVideoPage", "toEditVideoPageNew", "toRecordPage", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "", "preRelease", "", "route", "toWhere", "", "model", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
 {
-  public abstract void b(b paramb);
+  public abstract void a(int paramInt, b paramb);
   
-  public abstract void c(b paramb);
+  public abstract void gGz();
   
-  public abstract void cgh();
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

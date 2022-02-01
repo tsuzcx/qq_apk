@@ -1,7 +1,6 @@
 package com.tencent.feedback.eup;
 
 import com.tencent.feedback.common.e;
-import java.util.Locale;
 
 public class CrashStrategyBean
   implements Cloneable
@@ -357,12 +356,17 @@ public class CrashStrategyBean
       {
         e.a("rqdp{The trigger count of the assert store is smaller than the default count.} [%s]", new Object[] { Integer.valueOf(paramInt) });
       }
-      finally {}
+      finally
+      {
+        Object localObject1;
+        continue;
+      }
       this.q = paramInt;
       return;
-      paramInt = 50;
-      continue;
-      if (paramInt <= 0) {}
+      throw localObject1;
+      if (paramInt <= 0) {
+        paramInt = 50;
+      }
     }
   }
   
@@ -375,12 +379,17 @@ public class CrashStrategyBean
       {
         e.a("rqdp{The interval of assert check task is smaller than the default time.} [%s s]", new Object[] { Integer.valueOf(paramInt) });
       }
-      finally {}
+      finally
+      {
+        Object localObject1;
+        continue;
+      }
       this.p = paramInt;
       return;
-      paramInt = 60;
-      continue;
-      if (paramInt <= 0) {}
+      throw localObject1;
+      if (paramInt <= 0) {
+        paramInt = 60;
+      }
     }
   }
   
@@ -404,13 +413,8 @@ public class CrashStrategyBean
     try
     {
       this.l = paramInt;
-      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void setEnableAfterQuery(boolean paramBoolean)
@@ -433,13 +437,8 @@ public class CrashStrategyBean
     try
     {
       this.h = paramInt;
-      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void setMaxStackFrame(int paramInt)
@@ -476,13 +475,8 @@ public class CrashStrategyBean
     try
     {
       this.a = paramInt;
-      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void setMaxUploadNum_GPRS(int paramInt)
@@ -491,13 +485,8 @@ public class CrashStrategyBean
     try
     {
       this.c = paramInt;
-      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void setMaxUploadNum_Wifi(int paramInt)
@@ -506,13 +495,8 @@ public class CrashStrategyBean
     try
     {
       this.b = paramInt;
-      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void setMerged(boolean paramBoolean)
@@ -577,13 +561,8 @@ public class CrashStrategyBean
     try
     {
       this.d = paramInt;
-      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void setSilentUpload(boolean paramBoolean)
@@ -628,24 +607,120 @@ public class CrashStrategyBean
     }
   }
   
+  /* Error */
   public String toString()
   {
-    try
-    {
-      String str1 = String.format(Locale.US, "[MSNum:%d ,Wifi:%d,GPRS:%d,ODay:%d,isMerged:%b,AfQ:%b,Silent:%b,mLog:%d,tag:%s,assert:%s, interval:%s, limit:%s]", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Boolean.valueOf(this.e), Boolean.valueOf(this.f), Boolean.valueOf(this.g), Integer.valueOf(this.h), this.i, Boolean.valueOf(this.o), Integer.valueOf(this.q), Integer.valueOf(this.p) });
-      return str1;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (!e.a(localThrowable)) {
-          localThrowable.printStackTrace();
-        }
-        String str2 = "error";
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 177	java/util/Locale:US	Ljava/util/Locale;
+    //   5: ldc 10
+    //   7: bipush 12
+    //   9: anewarray 4	java/lang/Object
+    //   12: dup
+    //   13: iconst_0
+    //   14: aload_0
+    //   15: getfield 38	com/tencent/feedback/eup/CrashStrategyBean:a	I
+    //   18: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   21: aastore
+    //   22: dup
+    //   23: iconst_1
+    //   24: aload_0
+    //   25: getfield 40	com/tencent/feedback/eup/CrashStrategyBean:b	I
+    //   28: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   31: aastore
+    //   32: dup
+    //   33: iconst_2
+    //   34: aload_0
+    //   35: getfield 42	com/tencent/feedback/eup/CrashStrategyBean:c	I
+    //   38: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   41: aastore
+    //   42: dup
+    //   43: iconst_3
+    //   44: aload_0
+    //   45: getfield 44	com/tencent/feedback/eup/CrashStrategyBean:d	I
+    //   48: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   51: aastore
+    //   52: dup
+    //   53: iconst_4
+    //   54: aload_0
+    //   55: getfield 46	com/tencent/feedback/eup/CrashStrategyBean:e	Z
+    //   58: invokestatic 182	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   61: aastore
+    //   62: dup
+    //   63: iconst_5
+    //   64: aload_0
+    //   65: getfield 48	com/tencent/feedback/eup/CrashStrategyBean:f	Z
+    //   68: invokestatic 182	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   71: aastore
+    //   72: dup
+    //   73: bipush 6
+    //   75: aload_0
+    //   76: getfield 50	com/tencent/feedback/eup/CrashStrategyBean:g	Z
+    //   79: invokestatic 182	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   82: aastore
+    //   83: dup
+    //   84: bipush 7
+    //   86: aload_0
+    //   87: getfield 52	com/tencent/feedback/eup/CrashStrategyBean:h	I
+    //   90: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   93: aastore
+    //   94: dup
+    //   95: bipush 8
+    //   97: aload_0
+    //   98: getfield 54	com/tencent/feedback/eup/CrashStrategyBean:i	Ljava/lang/String;
+    //   101: aastore
+    //   102: dup
+    //   103: bipush 9
+    //   105: aload_0
+    //   106: getfield 66	com/tencent/feedback/eup/CrashStrategyBean:o	Z
+    //   109: invokestatic 182	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   112: aastore
+    //   113: dup
+    //   114: bipush 10
+    //   116: aload_0
+    //   117: getfield 70	com/tencent/feedback/eup/CrashStrategyBean:q	I
+    //   120: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   123: aastore
+    //   124: dup
+    //   125: bipush 11
+    //   127: aload_0
+    //   128: getfield 68	com/tencent/feedback/eup/CrashStrategyBean:p	I
+    //   131: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   134: aastore
+    //   135: invokestatic 187	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   138: astore_1
+    //   139: aload_0
+    //   140: monitorexit
+    //   141: aload_1
+    //   142: areturn
+    //   143: astore_1
+    //   144: goto +20 -> 164
+    //   147: astore_1
+    //   148: aload_1
+    //   149: invokestatic 190	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   152: ifne +7 -> 159
+    //   155: aload_1
+    //   156: invokevirtual 193	java/lang/Throwable:printStackTrace	()V
+    //   159: aload_0
+    //   160: monitorexit
+    //   161: ldc 195
+    //   163: areturn
+    //   164: aload_0
+    //   165: monitorexit
+    //   166: aload_1
+    //   167: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	168	0	this	CrashStrategyBean
+    //   138	4	1	str	String
+    //   143	1	1	localObject	Object
+    //   147	20	1	localThrowable	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   2	139	143	finally
+    //   148	159	143	finally
+    //   2	139	147	java/lang/Throwable
   }
 }
 

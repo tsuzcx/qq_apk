@@ -16,7 +16,7 @@ public class TVKLogUtil
   public static final int VERBOSE = 60;
   public static final int WARNING = 20;
   private static boolean isDebug = false;
-  private static TVideoMgr.OnTVideoLogListener onTVideoLogListener = null;
+  private static TVideoMgr.OnTVideoLogListener onTVideoLogListener;
   
   public static void d(String paramString1, String paramString2)
   {
@@ -35,15 +35,26 @@ public class TVKLogUtil
   
   public static void e(String paramString1, Throwable paramThrowable, String paramString2)
   {
-    String str = "";
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = paramString2 + "\n";
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("\n");
+      paramString2 = ((StringBuilder)localObject).toString();
     }
-    paramString2 = str;
-    if (paramThrowable != null) {
-      paramString2 = str + Log.getStackTraceString(paramThrowable);
+    else
+    {
+      paramString2 = "";
     }
-    printTag(10, paramString1, paramString2, new Object[0]);
+    Object localObject = paramString2;
+    if (paramThrowable != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramThrowable));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    printTag(10, paramString1, (String)localObject, new Object[0]);
   }
   
   public static void i(String paramString1, String paramString2)
@@ -53,20 +64,26 @@ public class TVKLogUtil
   
   private static void logToLogListener(int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
+    if (paramInt != 10)
     {
-    default: 
-      return;
-    case 60: 
-      onTVideoLogListener.v(paramString1, paramString2);
-      return;
-    case 50: 
-      onTVideoLogListener.d(paramString1, paramString2);
-      return;
-    case 40: 
-      onTVideoLogListener.i(paramString1, paramString2);
-      return;
-    case 20: 
+      if (paramInt != 20)
+      {
+        if (paramInt != 40)
+        {
+          if (paramInt != 50)
+          {
+            if (paramInt != 60) {
+              return;
+            }
+            onTVideoLogListener.v(paramString1, paramString2);
+            return;
+          }
+          onTVideoLogListener.d(paramString1, paramString2);
+          return;
+        }
+        onTVideoLogListener.i(paramString1, paramString2);
+        return;
+      }
       onTVideoLogListener.w(paramString1, paramString2);
       return;
     }
@@ -75,52 +92,59 @@ public class TVKLogUtil
   
   private static void printTag(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if ((paramInt == 60) || (paramInt == 50)) {}
-    for (;;)
+    int i;
+    String str;
+    if (paramInt != 60)
     {
-      return;
-      int i = paramInt;
+      if (paramInt == 50) {
+        return;
+      }
+      i = paramInt;
       if (paramInt == 20) {
         i = 10;
       }
-      String str = paramString2;
-      if (paramVarArgs != null) {}
-      try
-      {
-        if (paramVarArgs.length == 0)
-        {
-          str = paramString2;
-          if (onTVideoLogListener == null) {
-            break label89;
-          }
-          if (i > ((Integer)TVKMediaPlayerConfig.PlayerConfig.log_print_level.getValue()).intValue()) {
-            continue;
-          }
-          logToLogListener(i, paramString1, str);
-        }
+      str = paramString2;
+      if (paramVarArgs == null) {}
+    }
+    try
+    {
+      if (paramVarArgs.length == 0) {
+        str = paramString2;
+      } else {
+        str = String.format(paramString2, paramVarArgs);
       }
-      catch (MissingFormatArgumentException paramString1)
+      if (onTVideoLogListener != null)
       {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-          return;
-          str = String.format(paramString2, paramVarArgs);
+        if (i > ((Integer)TVKMediaPlayerConfig.PlayerConfig.log_print_level.getValue()).intValue()) {
+          break label131;
         }
-        if ((isDebug) && (i <= ((Integer)TVKMediaPlayerConfig.PlayerConfig.log_print_level.getValue()).intValue()))
-        {
-          Log.println(toSysLevel(i), paramString1, str);
-          return;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        label89:
-        paramString1.printStackTrace();
+        logToLogListener(i, paramString1, str);
         return;
       }
-      catch (OutOfMemoryError paramString1) {}
+      if ((!isDebug) || (i > ((Integer)TVKMediaPlayerConfig.PlayerConfig.log_print_level.getValue()).intValue())) {
+        break label131;
+      }
+      Log.println(toSysLevel(i), paramString1, str);
+      return;
     }
+    catch (OutOfMemoryError paramString1)
+    {
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      label131:
+      break label122;
+    }
+    catch (MissingFormatArgumentException paramString1)
+    {
+      label122:
+      label127:
+      break label127;
+    }
+    paramString1.printStackTrace();
+    return;
+    paramString1.printStackTrace();
   }
   
   public static void setDebugEnable(boolean paramBoolean)
@@ -135,17 +159,23 @@ public class TVKLogUtil
   
   private static int toSysLevel(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 10)
     {
-    default: 
-      return 0;
-    case 60: 
-      return 2;
-    case 50: 
-      return 3;
-    case 40: 
-      return 4;
-    case 20: 
+      if (paramInt != 20)
+      {
+        if (paramInt != 40)
+        {
+          if (paramInt != 50)
+          {
+            if (paramInt != 60) {
+              return 0;
+            }
+            return 2;
+          }
+          return 3;
+        }
+        return 4;
+      }
       return 5;
     }
     return 6;
@@ -163,7 +193,7 @@ public class TVKLogUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil
  * JD-Core Version:    0.7.0.1
  */

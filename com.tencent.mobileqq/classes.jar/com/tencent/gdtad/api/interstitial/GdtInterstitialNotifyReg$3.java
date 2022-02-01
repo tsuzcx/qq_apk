@@ -1,23 +1,28 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaor;
 import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class GdtInterstitialNotifyReg$3
+class GdtInterstitialNotifyReg$3
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$3(aaor paramaaor, WeakReference paramWeakReference) {}
+  GdtInterstitialNotifyReg$3(GdtInterstitialNotifyReg paramGdtInterstitialNotifyReg, WeakReference paramWeakReference, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((GdtInterstitialFragment)this.a.get()).a();
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (this.b != null) && (!JSONObject.NULL.equals(this.b)) && (((GdtInterstitialFragment)this.a.get()).d() != null) && (((GdtInterstitialFragment)this.a.get()).d().d != null)) {
+      ((GdtInterstitialFragment)this.a.get()).d().d.n = this.b.toString();
+    }
+    localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((GdtInterstitialFragment)this.a.get()).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialNotifyReg.3
  * JD-Core Version:    0.7.0.1
  */

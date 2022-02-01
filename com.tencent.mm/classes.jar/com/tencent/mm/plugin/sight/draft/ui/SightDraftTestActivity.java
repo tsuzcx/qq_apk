@@ -3,18 +3,19 @@ package com.tencent.mm.plugin.sight.draft.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
 public class SightDraftTestActivity
-  extends Activity
+  extends HellActivity
 {
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(25021);
+    AppMethodBeat.i(28692);
     super.onCreate(paramBundle);
     paramBundle = new SightDraftContainerView(this);
     setContentView(paramBundle);
-    paramBundle.cmX();
-    AppMethodBeat.o(25021);
+    paramBundle.gYS();
+    AppMethodBeat.o(28692);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -25,7 +26,7 @@ public class SightDraftTestActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftTestActivity
  * JD-Core Version:    0.7.0.1
  */

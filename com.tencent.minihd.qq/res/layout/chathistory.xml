@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:skintype="contact_list_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <include android:id="@id/titlebar" layout="@layout/custom_commen_title" />
+    <ListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/listViewHistory" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:divider="@color/chat_background" android:dividerHeight="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/status_bar" android:background="#99000000" android:paddingLeft="9.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="28.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_tips" android:layout_gravity="center_vertical" android:id="@id/status_bar_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" />
+    </LinearLayout>
+    <FrameLayout android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/RelativeLayoutBottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/elpageLayer" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="55.0dip" android:layout_weight="1.0">
+                <ImageView android:id="@id/imageViewLeft" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingRight="15.0dip" android:paddingBottom="10.0dip" android:clickable="true" android:layout_width="45.5dip" android:layout_height="40.5dip" android:src="@drawable/chat_history_leftclickbutton" android:contentDescription="chat_history_previous_button" />
+                <EditText android:textSize="18.0dip" android:textColor="@color/skin_input" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/editTextPage" android:background="@drawable/number_base" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="0.0dip" android:text="1" android:maxLength="10" android:inputType="number" />
+                <TextView android:gravity="center_vertical" android:id="@id/textViewMid" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="0.0dip" android:text="/" style="@style/BottomTitleText" />
+                <TextView android:gravity="center_vertical" android:id="@id/textViewPage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" style="@style/BottomTitleText" />
+                <ImageView android:id="@id/imageViewRight" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingRight="15.0dip" android:paddingBottom="10.0dip" android:clickable="true" android:layout_width="45.5dip" android:layout_height="40.5dip" android:layout_marginLeft="0.0dip" android:src="@drawable/chat_history_rightclickbutton" android:contentDescription="chat_history_next_button" tencent:skintype="popup_compound" />
+            </LinearLayout>
+            <Button android:id="@id/buttonExport" android:background="@drawable/top_button_right_highlight_selector" android:paddingTop="6.0dip" android:paddingBottom="8.0dip" android:layout_width="52.0dip" android:layout_height="35.0dip" android:layout_marginLeft="8.0dip" android:text="@string/chat_exprot" style="@style/BottomTitleTextBlue" />
+            <Button android:id="@id/buttonDelete" android:background="@drawable/top_button_right_highlight_selector" android:paddingTop="6.0dip" android:paddingBottom="8.0dip" android:layout_width="52.0dip" android:layout_height="35.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:text="@string/chat_delete" style="@style/BottomTitleTextBlue" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

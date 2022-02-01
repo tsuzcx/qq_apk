@@ -1,4 +1,5 @@
 import com.tencent.mobileqq.activity.voip.VoipGoogleWalletPayActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class ewj
   implements Runnable
@@ -7,7 +8,7 @@ public class ewj
   
   public void run()
   {
-    this.a.a(VoipGoogleWalletPayActivity.a(this.a));
+    this.a.a.show();
   }
 }
 

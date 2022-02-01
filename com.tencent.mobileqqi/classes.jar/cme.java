@@ -1,40 +1,21 @@
-import android.os.Bundle;
-import android.os.Handler;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class cme
-  extends SSOAccountObserver
+  implements Runnable
 {
-  WeakReference a;
+  public cme(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public cme(ForwardOperations paramForwardOperations)
+  public void run()
   {
-    this.a = new WeakReference(paramForwardOperations);
-  }
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    paramString = (ForwardOperations)this.a.get();
-    if ((paramString != null) && (!paramString.c) && (ForwardOperations.a(paramString) != null)) {
-      ForwardOperations.a(paramString).sendEmptyMessage(0);
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
+    if (this.a.isFinishing()) {}
+    do
     {
-      paramArrayOfByte = (ForwardOperations)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.v = paramString;
-        paramArrayOfByte.c = true;
-      }
       return;
-    }
+      this.a.c = true;
+      ForwardRecentActivity.a(this.a).e();
+    } while ((!this.a.a) || (this.a.f != 11));
+    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
   }
 }
 

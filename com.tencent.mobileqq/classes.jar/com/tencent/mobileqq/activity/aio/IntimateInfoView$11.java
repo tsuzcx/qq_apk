@@ -1,26 +1,35 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aesk;
-import com.tencent.image.URLDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class IntimateInfoView$11
-  implements Runnable
+class IntimateInfoView$11
+  implements DialogInterface.OnClickListener
 {
-  public IntimateInfoView$11(aesk paramaesk) {}
+  IntimateInfoView$11(IntimateInfoView paramIntimateInfoView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aesk.a(this.this$0).getStatus() == 0)
+    try
     {
-      aesk.a(this.this$0).downloadImediatly();
-      return;
+      if ((IntimateInfoView.l(this.a) != null) && (IntimateInfoView.l(this.a).isShowing())) {
+        IntimateInfoView.l(this.a).dismiss();
+      }
     }
-    aesk.a(this.this$0).restartDownload();
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "disband cancel");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.11
  * JD-Core Version:    0.7.0.1
  */

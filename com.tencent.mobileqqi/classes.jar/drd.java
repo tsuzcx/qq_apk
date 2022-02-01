@@ -1,18 +1,18 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class drd
-  implements View.OnTouchListener
+  implements AdapterView.OnItemClickListener
 {
-  public drd(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
+  public drd(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a(paramAdapterView, paramView, paramInt);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

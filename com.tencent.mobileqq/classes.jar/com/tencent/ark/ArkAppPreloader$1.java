@@ -10,39 +10,33 @@ final class ArkAppPreloader$1
   
   public void run()
   {
-    ArkAppPreloader.PreloadAppCallback localPreloadAppCallback;
-    if (this.val$callbackRef != null)
-    {
-      localPreloadAppCallback = (ArkAppPreloader.PreloadAppCallback)this.val$callbackRef.get();
-      if (localPreloadAppCallback != null) {
-        localPreloadAppCallback.beginAppload(this.val$appName, this.val$condition);
-      }
+    ??? = this.val$callbackRef;
+    if (??? != null) {
+      ??? = (ArkAppPreloader.PreloadAppCallback)((WeakReference)???).get();
+    } else {
+      ??? = null;
     }
-    for (;;)
+    if (??? != null) {
+      ((ArkAppPreloader.PreloadAppCallback)???).beginAppload(this.val$appName, this.val$condition);
+    }
+    synchronized (ArkAppPreloader.access$000())
     {
-      synchronized (ArkAppPreloader.access$000())
+      boolean bool = ArkAppPreloader.access$000().containsKey(this.val$appName);
+      if (bool)
       {
-        if (!ArkAppPreloader.access$000().containsKey(this.val$appName)) {
-          break label496;
+        Logger.logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp allready preload appName=%s", new Object[] { this.val$appName }));
+        if (??? != null) {
+          ((ArkAppPreloader.PreloadAppCallback)???).onAppLoaded(true, this.val$appName, this.val$condition);
         }
-        i = 1;
-        if (i != 0)
-        {
-          ArkAppPreloader.access$100().logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp allready preload appName=%s", new Object[] { this.val$appName }));
-          if (localPreloadAppCallback != null) {
-            localPreloadAppCallback.onAppLoaded(true, this.val$appName, this.val$condition);
-          }
-          return;
-          localPreloadAppCallback = null;
-        }
+        return;
       }
       ark.Application localApplication = ark.Application.Create(this.val$appName, this.val$path);
       if (localApplication == null)
       {
-        if (localObject1 != null) {
-          localObject1.onAppLoaded(false, this.val$appName, this.val$condition);
+        if (??? != null) {
+          ((ArkAppPreloader.PreloadAppCallback)???).onAppLoaded(false, this.val$appName, this.val$condition);
         }
-        ArkAppPreloader.access$100().logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp failed!appName=%s,path=%s", new Object[] { this.val$appName, this.val$path }));
+        Logger.logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp failed!appName=%s,path=%s", new Object[] { this.val$appName, this.val$path }));
         return;
       }
       ArkAppPreloader.PreloadAppInfo localPreloadAppInfo = new ArkAppPreloader.PreloadAppInfo();
@@ -52,19 +46,19 @@ final class ArkAppPreloader$1
       localPreloadAppInfo.storagePath = this.val$storagePath;
       localPreloadAppInfo.cachePath = this.val$cachePath;
       localPreloadAppInfo.resPath = this.val$resPath;
-      localPreloadAppInfo.callbackRef = new WeakReference(localObject1);
+      localPreloadAppInfo.callbackRef = new WeakReference(???);
       synchronized (ArkAppPreloader.access$000())
       {
         if (!ArkAppPreloader.access$000().containsKey(this.val$appName)) {
           ArkAppPreloader.access$000().put(this.val$appName, localPreloadAppInfo);
         }
-        ArkAppPreloader.access$100().logI("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp load application, appName=%s,path=%s,application=%h", new Object[] { this.val$appName, this.val$path, localApplication }));
+        Logger.logI("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp load application, appName=%s,path=%s,application=%h", new Object[] { this.val$appName, this.val$path, localApplication }));
         if (!localApplication.Load(this.val$storagePath, this.val$resPath, this.val$cachePath))
         {
-          ArkAppPreloader.access$100().logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp load application failed!appName=%s,path=%s,application=%h", new Object[] { this.val$appName, this.val$path, localApplication }));
+          Logger.logE("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp load application failed!appName=%s,path=%s,application=%h", new Object[] { this.val$appName, this.val$path, localApplication }));
           localApplication.Release();
-          if (localObject1 != null) {
-            localObject1.onAppLoaded(false, this.val$appName, this.val$condition);
+          if (??? != null) {
+            ((ArkAppPreloader.PreloadAppCallback)???).onAppLoaded(false, this.val$appName, this.val$condition);
           }
           synchronized (ArkAppPreloader.access$000())
           {
@@ -72,20 +66,18 @@ final class ArkAppPreloader$1
             return;
           }
         }
+        if (??? != null) {
+          ((ArkAppPreloader.PreloadAppCallback)???).onAppLoaded(true, this.val$appName, this.val$condition);
+        }
+        Logger.logI("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp load application success! appName=%s,path=%s,application=%h", new Object[] { this.val$appName, this.val$path, localApplication }));
+        return;
       }
-      if (localObject2 != null) {
-        localObject2.onAppLoaded(true, this.val$appName, this.val$condition);
-      }
-      ArkAppPreloader.access$100().logI("ArkApp.ArkAppPreloader", String.format("profiling.preloadApp load application success! appName=%s,path=%s,application=%h", new Object[] { this.val$appName, this.val$path, localApplication }));
-      return;
-      label496:
-      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkAppPreloader.1
  * JD-Core Version:    0.7.0.1
  */

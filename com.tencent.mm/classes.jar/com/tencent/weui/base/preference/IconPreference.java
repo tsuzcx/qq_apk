@@ -13,46 +13,51 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ck.a.c;
+import com.tencent.mm.ck.a.d;
+import com.tencent.mm.ck.a.e;
+import com.tencent.mm.ck.a.f;
+import com.tencent.mm.ck.a.g;
 
 public class IconPreference
   extends Preference
 {
+  protected ImageView KKj;
+  private String MPk;
+  private int MPl;
+  private int MPm;
+  private TextView MPp;
+  private String MYb;
+  private ImageView QNl;
+  private int adYA;
+  private int adYB;
+  private View adYC;
+  private View adYD;
+  private TextView adYE;
+  private ImageView adYF;
+  private boolean adYJ;
+  private boolean adYK;
+  private int adYL;
+  private boolean adYM;
+  private int adYn;
+  private int adYo;
+  private int adYp;
+  private ImageView adYq;
+  private ViewGroup adYr;
+  private TextView adYs;
+  RelativeLayout.LayoutParams adYv;
+  private int adYw;
+  private int adYx;
+  private int adYy;
+  private int adYz;
+  private int adZY;
+  protected int adva;
+  private Bitmap adzN;
   private Context context;
   private String desc;
+  private TextView descTv;
   private Drawable drawable;
   private int height;
-  private TextView hsI;
-  protected ImageView oyN;
-  private String pAS;
-  private String pAT;
-  private int qGe;
-  private int qGf;
-  private ImageView ruQ;
-  protected int yUb;
-  private Bitmap yXe;
-  private int zqL;
-  private int zqM;
-  private int zqN;
-  private ImageView zqO;
-  private ViewGroup zqP;
-  private TextView zqQ;
-  RelativeLayout.LayoutParams zqS;
-  private int zqT;
-  private int zqU;
-  private int zqV;
-  private int zqW;
-  private int zqX;
-  private int zqY;
-  private View zqZ;
-  private View zra;
-  private TextView zrb;
-  private TextView zrc;
-  private ImageView zrd;
-  private boolean zre;
-  private boolean zrf;
-  private int zrg;
-  private boolean zrh;
-  private int zsn;
   
   public IconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -62,187 +67,187 @@ public class IconPreference
   public IconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(113253);
-    this.yUb = -1;
-    this.oyN = null;
-    this.pAS = "";
-    this.qGe = -1;
-    this.qGf = 8;
-    this.zqL = 8;
-    this.zqT = 8;
+    AppMethodBeat.i(159990);
+    this.adva = -1;
+    this.KKj = null;
+    this.MPk = "";
+    this.MPl = -1;
+    this.MPm = 8;
+    this.adYn = 8;
+    this.adYw = 8;
     this.desc = "";
-    this.pAT = "";
-    this.zqU = -1;
-    this.zqV = 8;
-    this.zqW = -1;
-    this.yXe = null;
-    this.zqX = 8;
-    this.zqM = 8;
-    this.zqN = 8;
-    this.zqY = 8;
-    this.zsn = 0;
-    this.zqO = null;
-    this.zqP = null;
-    this.zqZ = null;
-    this.zra = null;
-    this.ruQ = null;
+    this.MYb = "";
+    this.adYx = -1;
+    this.adYy = 8;
+    this.adYz = -1;
+    this.adzN = null;
+    this.adYA = 8;
+    this.adYo = 8;
+    this.adYp = 8;
+    this.adYB = 8;
+    this.adZY = 0;
+    this.adYq = null;
+    this.adYr = null;
+    this.adYC = null;
+    this.adYD = null;
+    this.QNl = null;
     this.height = -1;
-    this.zre = false;
-    this.zrf = false;
-    this.zrg = -1;
-    this.zrh = false;
+    this.adYJ = false;
+    this.adYK = false;
+    this.adYL = -1;
+    this.adYM = false;
     this.context = paramContext;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(113253);
+    setLayoutResource(a.g.mm_preference);
+    AppMethodBeat.o(159990);
   }
   
   protected void onBindView(View paramView)
   {
-    AppMethodBeat.i(113255);
+    AppMethodBeat.i(159992);
     super.onBindView(paramView);
-    this.zrd = ((ImageView)paramView.findViewById(2131822243));
+    this.adYF = ((ImageView)paramView.findViewById(a.f.image_iv));
     Object localObject;
-    if (this.zrd != null)
+    if (this.adYF != null)
     {
       if (this.drawable != null)
       {
-        this.zrd.setImageDrawable(this.drawable);
-        this.zrd.setVisibility(0);
+        this.adYF.setImageDrawable(this.drawable);
+        this.adYF.setVisibility(0);
       }
     }
     else
     {
-      localObject = (LinearLayout)paramView.findViewById(2131822408);
-      ((LinearLayout)localObject).setMinimumHeight(paramView.getResources().getDimensionPixelSize(2131427853));
+      localObject = (LinearLayout)paramView.findViewById(a.f.mm_preference_ll_id);
+      ((LinearLayout)localObject).setMinimumHeight(paramView.getResources().getDimensionPixelSize(a.d.SmallListHeight));
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      this.zrc = ((TextView)paramView.findViewById(2131822409));
-      if (this.zrc != null)
+      this.MPp = ((TextView)paramView.findViewById(a.f.text_tv_one));
+      if (this.MPp != null)
       {
-        if (!this.zrf) {
-          break label714;
+        if (!this.adYK) {
+          break label733;
         }
-        this.zrc.setCompoundDrawablesWithIntrinsicBounds(2130840641, 0, 0, 0);
-        this.zrc.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131427854));
-        label154:
-        this.zrc.setVisibility(this.qGf);
-        this.zrc.setText(this.pAS);
-        if (this.qGe != -1) {
-          this.zrc.setBackgroundDrawable(this.context.getResources().getDrawable(this.qGe));
+        this.MPp.setCompoundDrawablesWithIntrinsicBounds(a.e.unread_dot_shape, 0, 0, 0);
+        this.MPp.setCompoundDrawablePadding((int)this.context.getResources().getDimension(a.d.SmallPadding));
+        label160:
+        this.MPp.setVisibility(this.MPm);
+        this.MPp.setText(this.MPk);
+        if (this.MPl != -1) {
+          this.MPp.setBackgroundDrawable(this.context.getResources().getDrawable(this.MPl));
         }
       }
-      this.zrb = ((TextView)paramView.findViewById(2131822411));
-      if (this.zrb != null)
+      this.adYE = ((TextView)paramView.findViewById(a.f.text_tv_two));
+      if (this.adYE != null)
       {
-        this.zrb.setVisibility(this.zqV);
-        this.zrb.setText(this.pAT);
-        if (this.zqU != -1) {
-          this.zrb.setBackgroundDrawable(this.context.getResources().getDrawable(this.zqU));
+        this.adYE.setVisibility(this.adYy);
+        this.adYE.setText(this.MYb);
+        if (this.adYx != -1) {
+          this.adYE.setBackgroundDrawable(this.context.getResources().getDrawable(this.adYx));
         }
-        if (this.zqW != -1) {
-          this.zrb.setTextColor(this.zqW);
+        if (this.adYz != -1) {
+          this.adYE.setTextColor(this.adYz);
         }
-        if (!this.zre) {
-          break label728;
+        if (!this.adYJ) {
+          break label747;
         }
-        this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840641, 0);
-        this.zrb.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131427854));
+        this.adYE.setCompoundDrawablesWithIntrinsicBounds(0, 0, a.e.unread_dot_shape, 0);
+        this.adYE.setCompoundDrawablePadding((int)this.context.getResources().getDimension(a.d.SmallPadding));
       }
-      label334:
-      this.zqO = ((ImageView)paramView.findViewById(2131822410));
-      this.zqO.setVisibility(this.zqL);
-      if (this.zrg != -1) {
-        this.zqO.setImageResource(this.zrg);
+      label343:
+      this.adYq = ((ImageView)paramView.findViewById(a.f.text_prospect));
+      this.adYq.setVisibility(this.adYn);
+      if (this.adYL != -1) {
+        this.adYq.setImageResource(this.adYL);
       }
-      this.oyN = ((ImageView)paramView.findViewById(2131822413));
-      this.zqP = ((ViewGroup)paramView.findViewById(2131822412));
-      this.zra = paramView.findViewById(2131822415);
-      this.zra.setVisibility(this.zqY);
-      this.zqZ = paramView.findViewById(2131822414);
-      this.zqZ.setVisibility(this.zqN);
-      this.ruQ = ((ImageView)paramView.findViewById(2131821555));
-      this.ruQ.setVisibility(this.zsn);
-      if (this.yXe == null) {
-        break label742;
+      this.KKj = ((ImageView)paramView.findViewById(a.f.image_right_iv));
+      this.adYr = ((ViewGroup)paramView.findViewById(a.f.right_rl));
+      this.adYD = paramView.findViewById(a.f.right_center_prospect);
+      this.adYD.setVisibility(this.adYB);
+      this.adYC = paramView.findViewById(a.f.right_prospect);
+      this.adYC.setVisibility(this.adYp);
+      this.QNl = ((ImageView)paramView.findViewById(a.f.right_arrow));
+      this.QNl.setVisibility(this.adZY);
+      if (this.adzN == null) {
+        break label761;
       }
-      this.oyN.setImageBitmap(this.yXe);
-      label487:
-      this.oyN.setVisibility(this.zqX);
-      this.zqP.setVisibility(this.zqM);
-      if (this.zqS != null) {
-        this.oyN.setLayoutParams(this.zqS);
+      this.KKj.setImageBitmap(this.adzN);
+      label502:
+      this.KKj.setVisibility(this.adYA);
+      this.adYr.setVisibility(this.adYo);
+      if (this.adYv != null) {
+        this.KKj.setLayoutParams(this.adYv);
       }
-      this.zqQ = ((TextView)paramView.findViewById(16908310));
-      this.hsI = ((TextView)paramView.findViewById(2131821115));
-      if (this.hsI != null)
+      this.adYs = ((TextView)paramView.findViewById(16908310));
+      this.descTv = ((TextView)paramView.findViewById(a.f.desc));
+      if (this.descTv != null)
       {
-        this.hsI.setVisibility(this.zqT);
-        this.hsI.setText(this.desc);
-        if (!this.zrh) {
-          break label764;
+        this.descTv.setVisibility(this.adYw);
+        this.descTv.setText(this.desc);
+        if (!this.adYM) {
+          break label783;
         }
-        this.hsI.setTextColor(this.context.getResources().getColor(2131689963));
+        this.descTv.setTextColor(this.context.getResources().getColor(a.c.disable_text_color));
       }
-      label608:
-      if (this.zqQ != null)
+      label626:
+      if (this.adYs != null)
       {
-        if (!this.zrh) {
-          break label786;
+        if (!this.adYM) {
+          break label806;
         }
-        this.zqQ.setTextColor(this.context.getResources().getColor(2131689963));
+        this.adYs.setTextColor(this.context.getResources().getColor(a.c.disable_text_color));
       }
-      label641:
-      if (this.zrh) {
-        break label809;
+      label660:
+      if (this.adYM) {
+        break label829;
       }
     }
-    label786:
-    label809:
+    label783:
+    label806:
+    label829:
     for (boolean bool = true;; bool = false)
     {
       paramView.setEnabled(bool);
-      AppMethodBeat.o(113255);
+      AppMethodBeat.o(159992);
       return;
       if (getIcon() != null)
       {
-        localObject = this.zrd;
+        localObject = this.adYF;
         Drawable localDrawable = getIcon();
         this.drawable = localDrawable;
         ((ImageView)localObject).setImageDrawable(localDrawable);
-        this.zrd.setVisibility(0);
+        this.adYF.setVisibility(0);
         break;
       }
-      this.zrd.setVisibility(8);
+      this.adYF.setVisibility(8);
       break;
-      label714:
-      this.zrc.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break label154;
-      label728:
-      this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break label334;
-      label742:
-      if (this.yUb == -1) {
-        break label487;
+      label733:
+      this.MPp.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label160;
+      label747:
+      this.adYE.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label343;
+      label761:
+      if (this.adva == -1) {
+        break label502;
       }
-      this.oyN.setImageResource(this.yUb);
-      break label487;
-      label764:
-      this.hsI.setTextColor(this.context.getResources().getColor(2131690168));
-      break label608;
-      this.zqQ.setTextColor(this.context.getResources().getColor(2131690322));
-      break label641;
+      this.KKj.setImageResource(this.adva);
+      break label502;
+      this.descTv.setTextColor(this.context.getResources().getColor(a.c.hint_text_color));
+      break label626;
+      this.adYs.setTextColor(this.context.getResources().getColor(a.c.normal_text_color));
+      break label660;
     }
   }
   
   protected View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(113254);
+    AppMethodBeat.i(159991);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
     localViewGroup.removeAllViews();
-    View.inflate(getContext(), 2130970432, localViewGroup);
-    AppMethodBeat.o(113254);
+    View.inflate(getContext(), a.g.preference_content_icon, localViewGroup);
+    AppMethodBeat.o(159991);
     return paramViewGroup;
   }
 }

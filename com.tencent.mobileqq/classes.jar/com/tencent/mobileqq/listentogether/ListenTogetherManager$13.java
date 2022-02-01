@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.listentogether;
 
-import atnw;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class ListenTogetherManager$13
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  ListenTogetherManager$13(ListenTogetherManager paramListenTogetherManager, int paramInt, String paramString) {}
+  ListenTogetherManager$13(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ListenTogetherManager.a(this.this$0).b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.13
  * JD-Core Version:    0.7.0.1
  */

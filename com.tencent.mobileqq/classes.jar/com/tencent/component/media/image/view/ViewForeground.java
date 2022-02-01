@@ -37,9 +37,10 @@ public class ViewForeground
   private void updateDrawable(Drawable paramDrawable)
   {
     View localView = this.mView;
-    if (this.mDrawable != null)
+    Drawable localDrawable = this.mDrawable;
+    if (localDrawable != null)
     {
-      this.mDrawable.setCallback(null);
+      localDrawable.setCallback(null);
       localView.unscheduleDrawable(this.mDrawable);
     }
     this.mDrawable = paramDrawable;
@@ -64,41 +65,38 @@ public class ViewForeground
   
   public void draw(Canvas paramCanvas)
   {
-    int j = 0;
     Drawable localDrawable = this.mDrawable;
-    int k;
-    int i;
-    int m;
     if (localDrawable != null)
     {
       View localView = this.mView;
       if (this.mForegroundBoundsChanged)
       {
+        int i = 0;
         this.mForegroundBoundsChanged = false;
-        k = localView.getWidth();
-        i = localView.getHeight();
-        if (!this.mForegroundInPadding) {
-          break label100;
+        int j = localView.getWidth();
+        int k = localView.getHeight();
+        int m;
+        if (this.mForegroundInPadding)
+        {
+          i = localView.getPaddingLeft();
+          j -= localView.getPaddingRight();
+          m = localView.getPaddingTop();
+          k -= localView.getPaddingBottom();
         }
-        m = localView.getPaddingLeft();
-        k -= localView.getPaddingRight();
-        j = localView.getPaddingTop();
-        i -= localView.getPaddingBottom();
+        else
+        {
+          m = 0;
+        }
+        localDrawable.setBounds(i, m, j, k);
       }
-    }
-    for (;;)
-    {
-      localDrawable.setBounds(m, j, k, i);
       localDrawable.draw(paramCanvas);
-      return;
-      label100:
-      m = 0;
     }
   }
   
   public void drawableStateChanged()
   {
-    if ((this.mDrawable != null) && (this.mDrawable.isStateful())) {
+    Drawable localDrawable = this.mDrawable;
+    if ((localDrawable != null) && (localDrawable.isStateful())) {
       this.mDrawable.setState(this.mView.getDrawableState());
     }
   }
@@ -139,7 +137,7 @@ public class ViewForeground
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.view.ViewForeground
  * JD-Core Version:    0.7.0.1
  */

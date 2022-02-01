@@ -4,15 +4,16 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetBroadCastHbIdiomReq
   extends JceStruct
 {
   static ArrayList<String> cache_billnos = new ArrayList();
-  public long appid;
-  public ArrayList<String> billnos;
-  public int fromType;
-  public int platform;
+  public long appid = 0L;
+  public ArrayList<String> billnos = null;
+  public int fromType = 0;
+  public int platform = 0;
   public String qqVersion = "";
   public String sKey = "";
   
@@ -45,23 +46,26 @@ public final class GetBroadCastHbIdiomReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.billnos != null) {
-      paramJceOutputStream.write(this.billnos, 0);
+    Object localObject = this.billnos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.sKey != null) {
-      paramJceOutputStream.write(this.sKey, 1);
+    localObject = this.sKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.appid, 2);
     paramJceOutputStream.write(this.fromType, 3);
     paramJceOutputStream.write(this.platform, 4);
-    if (this.qqVersion != null) {
-      paramJceOutputStream.write(this.qqVersion, 5);
+    localObject = this.qqVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetBroadCastHbIdiomReq
  * JD-Core Version:    0.7.0.1
  */

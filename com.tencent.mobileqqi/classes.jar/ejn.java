@@ -1,6 +1,5 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class ejn
@@ -10,7 +9,7 @@ public class ejn
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    this.a.dismiss();
   }
 }
 

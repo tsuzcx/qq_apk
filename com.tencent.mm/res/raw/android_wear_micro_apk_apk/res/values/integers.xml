@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="a">1000</integer>
-    <integer name="b">250</integer>
-    <integer name="c">500</integer>
-    <integer name="d">500</integer>
-    <integer name="e">127</integer>
-    <integer name="f">10298000</integer>
-    <integer name="g">999</integer>
+    <integer name="action_choose_expand_full_duration">1000</integer>
+    <integer name="action_chooser_anim_duration">250</integer>
+    <integer name="action_chooser_bounce_delay">500</integer>
+    <integer name="action_chooser_confirmation_duration">500</integer>
+    <integer name="cancel_button_image_alpha">127</integer>
+    <integer name="google_play_services_version">10298000</integer>
+    <integer name="status_bar_notification_info_maxnum">999</integer>
 </resources>

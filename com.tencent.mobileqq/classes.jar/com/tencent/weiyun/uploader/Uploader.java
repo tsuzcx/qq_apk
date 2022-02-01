@@ -44,39 +44,47 @@ public class Uploader
     UploadNative localUploadNative = UploadNative.getInstance();
     localUploadNative.init(XpConfig.getCachePath(), "Android", Integer.toString(Build.VERSION.SDK_INT), XpConfig.getVersion(), XpConfig.getQUA(), XpConfig.isRdm(), new UploadSDKContext(this));
     this.mUploadContext = new UploadContext(paramContext, paramString, localUploadNative, paramIReporter);
-    paramContext = new HandlerThread(paramString + "_start");
+    paramContext = new StringBuilder();
+    paramContext.append(paramString);
+    paramContext.append("_start");
+    paramContext = new HandlerThread(paramContext.toString());
     paramContext.start();
     this.mStartHandler = new Handler(paramContext.getLooper(), this);
-    paramContext = new HandlerThread(paramString + "_stop");
+    paramContext = new StringBuilder();
+    paramContext.append(paramString);
+    paramContext.append("_stop");
+    paramContext = new HandlerThread(paramContext.toString());
     paramContext.start();
     this.mStopHandler = new Handler(paramContext.getLooper(), this);
   }
   
   private boolean addPendingRequest(String paramString, UploadRequest paramUploadRequest)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramUploadRequest == null)) {
-      return false;
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (!bool2) {
+      if (paramUploadRequest == null) {
+        return false;
+      }
     }
     for (;;)
     {
       synchronized (this.mPendingRequests)
       {
         Collection localCollection = (Collection)this.mPendingRequests.get(paramString);
-        if ((localCollection != null) && (localCollection.size() > 0))
-        {
-          i = 1;
-          this.mPendingRequests.add(paramString, paramUploadRequest);
-          if (i != 0) {
-            break label86;
-          }
-          bool = true;
-          return bool;
+        if ((localCollection == null) || (localCollection.size() <= 0)) {
+          break label93;
         }
+        i = 1;
+        this.mPendingRequests.add(paramString, paramUploadRequest);
+        if (i == 0) {
+          bool1 = true;
+        }
+        return bool1;
       }
+      return false;
+      label93:
       int i = 0;
-      continue;
-      label86:
-      boolean bool = false;
     }
   }
   
@@ -86,20 +94,24 @@ public class Uploader
     if (TextUtils.isEmpty(paramString)) {
       return localHashSet;
     }
-    localMultiHashMap = this.mPendingRequests;
+    MultiHashMap localMultiHashMap = this.mPendingRequests;
     if (paramBoolean) {}
+    try
+    {
+      for (paramString = this.mPendingRequests.remove(paramString);; paramString = this.mPendingRequests.get(paramString))
+      {
+        paramString = (HashSet)paramString;
+        break;
+      }
+      if (paramString != null) {
+        localHashSet.addAll(paramString);
+      }
+      return localHashSet;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        paramString = (HashSet)this.mPendingRequests.remove(paramString);
-        if (paramString != null) {
-          localHashSet.addAll(paramString);
-        }
-        return localHashSet;
-      }
-      finally {}
-      paramString = (HashSet)this.mPendingRequests.get(paramString);
+      throw paramString;
     }
   }
   
@@ -111,16 +123,20 @@ public class Uploader
       Iterator localIterator = this.mPendingRequests.entrySet().iterator();
       while (localIterator.hasNext())
       {
-        Collection localCollection1 = (Collection)((Map.Entry)localIterator.next()).getValue();
-        if (localCollection1 != null) {
-          localHashSet.addAll(localCollection1);
+        Collection localCollection = (Collection)((Map.Entry)localIterator.next()).getValue();
+        if (localCollection != null) {
+          localHashSet.addAll(localCollection);
         }
         if (paramBoolean) {
           localIterator.remove();
         }
       }
+      return localHashSet;
     }
-    return localCollection;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public static void init(IConfig paramIConfig, ILog paramILog)
@@ -131,17 +147,15 @@ public class Uploader
   
   private void notifyCanceled(Collection<UploadRequest> paramCollection)
   {
-    if (paramCollection == null) {}
-    for (;;)
-    {
+    if (paramCollection == null) {
       return;
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
-      {
-        UploadRequest localUploadRequest = (UploadRequest)paramCollection.next();
-        if ((localUploadRequest != null) && (localUploadRequest.listener() != null)) {
-          localUploadRequest.listener().onUploadCanceled(localUploadRequest);
-        }
+    }
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      UploadRequest localUploadRequest = (UploadRequest)paramCollection.next();
+      if ((localUploadRequest != null) && (localUploadRequest.listener() != null)) {
+        localUploadRequest.listener().onUploadCanceled(localUploadRequest);
       }
     }
   }
@@ -152,40 +166,34 @@ public class Uploader
       return;
     }
     paramCollection = paramCollection.iterator();
-    label12:
-    UploadRequest localUploadRequest;
     while (paramCollection.hasNext())
     {
-      localUploadRequest = (UploadRequest)paramCollection.next();
-      if ((localUploadRequest != null) && (localUploadRequest.listener() != null)) {
-        if (paramInt != 0) {
-          break label96;
+      UploadRequest localUploadRequest = (UploadRequest)paramCollection.next();
+      if ((localUploadRequest != null) && (localUploadRequest.listener() != null))
+      {
+        boolean bool;
+        if (paramInt == 0) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        UploadResponse localUploadResponse = new UploadResponse.Builder().request(localUploadRequest).code(paramInt).errMsg(paramString).build();
+        localUploadRequest.listener().onUploadFinished(localUploadRequest, bool, localUploadResponse);
       }
-    }
-    label96:
-    for (boolean bool = true;; bool = false)
-    {
-      UploadResponse localUploadResponse = new UploadResponse.Builder().request(localUploadRequest).code(paramInt).errMsg(paramString).build();
-      localUploadRequest.listener().onUploadFinished(localUploadRequest, bool, localUploadResponse);
-      break label12;
-      break;
     }
   }
   
   private void notifyProgress(Collection<UploadRequest> paramCollection, long paramLong1, float paramFloat, long paramLong2, long paramLong3, long paramLong4)
   {
-    if (paramCollection == null) {}
-    for (;;)
-    {
+    if (paramCollection == null) {
       return;
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
-      {
-        UploadRequest localUploadRequest = (UploadRequest)paramCollection.next();
-        if ((localUploadRequest != null) && (localUploadRequest.listener() != null)) {
-          localUploadRequest.listener().onUploadProgress(localUploadRequest, paramLong1, paramFloat, paramLong2, paramLong3, paramLong4);
-        }
+    }
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      UploadRequest localUploadRequest = (UploadRequest)paramCollection.next();
+      if ((localUploadRequest != null) && (localUploadRequest.listener() != null)) {
+        localUploadRequest.listener().onUploadProgress(localUploadRequest, paramLong1, paramFloat, paramLong2, paramLong3, paramLong4);
       }
     }
   }
@@ -199,7 +207,6 @@ public class Uploader
     if (paramUploadRequest != null) {}
     for (;;)
     {
-      int i;
       boolean bool;
       try
       {
@@ -207,29 +214,27 @@ public class Uploader
         {
           paramCollection.clear();
           paramCollection.add(paramUploadRequest);
+          continue;
+          paramUploadRequest = (Collection)this.mPendingRequests.remove(paramString);
+          if ((paramUploadRequest != null) && (paramCollection != null))
+          {
+            paramCollection.clear();
+            paramCollection.addAll(paramUploadRequest);
+          }
         }
         paramString = (Collection)this.mPendingRequests.get(paramString);
+        bool = true;
         if ((paramString == null) || (paramString.size() <= 0)) {
-          break label132;
+          break label135;
         }
         i = 1;
       }
       finally {}
       return bool;
-      paramUploadRequest = (Collection)this.mPendingRequests.remove(paramString);
-      if ((paramUploadRequest != null) && (paramCollection != null))
-      {
-        paramCollection.clear();
-        paramCollection.addAll(paramUploadRequest);
-        continue;
-        label132:
-        i = 0;
-        while (i != 0)
-        {
-          bool = false;
-          break;
-        }
-        bool = true;
+      label135:
+      int i = 0;
+      if (i != 0) {
+        bool = false;
       }
     }
   }
@@ -244,116 +249,125 @@ public class Uploader
     if (paramUploadRequest == null) {
       return;
     }
-    XpLog.i("prepare to cancel:" + paramUploadRequest.path() + ", requestKey=" + paramUploadRequest.requestKey() + ", listener=" + paramUploadRequest.listener());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("prepare to cancel:");
+    localStringBuilder.append(paramUploadRequest.path());
+    localStringBuilder.append(", requestKey=");
+    localStringBuilder.append(paramUploadRequest.requestKey());
+    localStringBuilder.append(", listener=");
+    localStringBuilder.append(paramUploadRequest.listener());
+    XpLog.i(localStringBuilder.toString());
     Message.obtain(this.mStopHandler, 2021, paramUploadRequest).sendToTarget();
   }
   
   public final void cancelAll()
   {
-    XpLog.i("prepare to cancel all from uploader-" + this.mUploadContext.tag());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("prepare to cancel all from uploader-");
+    localStringBuilder.append(this.mUploadContext.tag());
+    XpLog.i(localStringBuilder.toString());
     Message.obtain(this.mStopHandler, 2022).sendToTarget();
   }
   
   public boolean handleMessage(Message arg1)
   {
-    String str;
+    Object localObject5;
     if (???.what == 2020)
     {
       ??? = ???.obj;
       if ((??? instanceof UploadRequest))
       {
         ??? = (UploadRequest)???;
-        str = ???.requestKey();
-        ??? = collectPendingRequest(str, false);
-        if (!((Collection)???).isEmpty())
+        localObject5 = ((UploadRequest)???).requestKey();
+        Object localObject6 = collectPendingRequest((String)localObject5, false);
+        if (!((Collection)localObject6).isEmpty())
         {
-          if (((Collection)???).contains(???)) {
-            break label570;
+          ??? = (Message)???;
+          if (!((Collection)localObject6).contains(???)) {
+            ??? = (UploadRequest)((Collection)localObject6).iterator().next();
           }
-          ??? = (UploadRequest)((Collection)???).iterator().next();
-        }
-      }
-    }
-    label570:
-    for (;;)
-    {
-      if (??? != null) {
-        synchronized (this.mTasks)
-        {
-          boolean bool = this.mTasks.containsKey(str);
-          if (!bool)
-          {
-            ??? = this.mUploadContext.xpUploader().createUploadTask(???.uin(), ???.path(), ???.size(), ???.checkKey(), ???.serverName(), ???.serverIp(), ???.serverPort(), ???.channelCount(), ???.sliceSha(), ???.statisticTimes());
-            XpLog.i("createUploadTask: path=" + ???.path() + ", size=" + ???.size() + ", sha=" + ???.sha());
-            if ((!collectPendingRequest(str, false).isEmpty()) && (!TextUtils.isEmpty((CharSequence)???))) {
-              synchronized (this.mTasks)
-              {
-                this.mTasks.put(str, ???);
+          if (??? != null) {
+            synchronized (this.mTasks)
+            {
+              boolean bool = this.mTasks.containsKey(localObject5);
+              if (bool) {
+                break label591;
               }
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        synchronized (this.mSpeedFilters)
-        {
-          this.mSpeedFilters.put(???, new SpeedFilter());
-          this.mUploadContext.xpUploader().startTask((String)???);
-          return true;
-          ??? = finally;
-          throw ???;
-          localObject1 = finally;
-          throw localObject1;
-        }
-        if (???.what == 2021)
-        {
-          ??? = ???.obj;
-          if ((??? instanceof UploadRequest))
-          {
-            ??? = (UploadRequest)???;
-            ??? = new ArrayList();
-            if (removePendingRequest(((UploadRequest)???).requestKey(), (UploadRequest)???, ???)) {
+              ??? = this.mUploadContext.xpUploader().createUploadTask(???.uin(), ???.path(), ???.size(), ???.checkKey(), ???.serverName(), ???.serverIp(), ???.serverPort(), ???.channelCount(), ???.sliceSha(), ???.statisticTimes());
+              localObject6 = new StringBuilder();
+              ((StringBuilder)localObject6).append("createUploadTask: path=");
+              ((StringBuilder)localObject6).append(???.path());
+              ((StringBuilder)localObject6).append(", size=");
+              ((StringBuilder)localObject6).append(???.size());
+              ((StringBuilder)localObject6).append(", sha=");
+              ((StringBuilder)localObject6).append(???.sha());
+              XpLog.i(((StringBuilder)localObject6).toString());
+              if ((collectPendingRequest((String)localObject5, false).isEmpty()) || (TextUtils.isEmpty((CharSequence)???))) {
+                break label591;
+              }
               synchronized (this.mTasks)
               {
-                ??? = (String)this.mTasks.removeByKey(((UploadRequest)???).requestKey());
-                if (??? != null) {
-                  this.mUploadContext.xpUploader().stopTask((String)???);
+                this.mTasks.put(localObject5, ???);
+                synchronized (this.mSpeedFilters)
+                {
+                  this.mSpeedFilters.put(???, new SpeedFilter());
+                  this.mUploadContext.xpUploader().startTask((String)???);
+                  return true;
                 }
               }
             }
-            synchronized (this.mSpeedFilters)
-            {
-              this.mSpeedFilters.remove(???);
-              notifyCanceled(???);
-              continue;
-              ??? = finally;
-              throw ???;
-            }
-          }
-        }
-        else if (???.what == 2022)
-        {
-          ??? = collectPendingRequest(true);
-          synchronized (this.mTasks)
-          {
-            ??? = new ArrayList(this.mTasks.values());
-            this.mTasks.clear();
-            ??? = ((ArrayList)???).iterator();
-            if (((Iterator)???).hasNext())
-            {
-              ??? = (String)((Iterator)???).next();
-              this.mUploadContext.xpUploader().stopTask((String)???);
-            }
-          }
-          synchronized (this.mSpeedFilters)
-          {
-            this.mSpeedFilters.clear();
-            notifyCanceled(???);
           }
         }
       }
     }
+    else if (???.what == 2021)
+    {
+      ??? = ???.obj;
+      if ((??? instanceof UploadRequest))
+      {
+        localObject5 = (UploadRequest)???;
+        ??? = new ArrayList();
+        if (removePendingRequest(((UploadRequest)localObject5).requestKey(), (UploadRequest)localObject5, ???)) {
+          synchronized (this.mTasks)
+          {
+            localObject5 = (String)this.mTasks.removeByKey(((UploadRequest)localObject5).requestKey());
+            if (localObject5 != null)
+            {
+              this.mUploadContext.xpUploader().stopTask((String)localObject5);
+              synchronized (this.mSpeedFilters)
+              {
+                this.mSpeedFilters.remove(localObject5);
+              }
+            }
+          }
+        }
+        notifyCanceled(???);
+        return true;
+      }
+    }
+    else if (???.what == 2022)
+    {
+      ??? = collectPendingRequest(true);
+      synchronized (this.mTasks)
+      {
+        localObject5 = new ArrayList(this.mTasks.values());
+        this.mTasks.clear();
+        ??? = ((ArrayList)localObject5).iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject5 = (String)((Iterator)???).next();
+          this.mUploadContext.xpUploader().stopTask((String)localObject5);
+        }
+        synchronized (this.mSpeedFilters)
+        {
+          this.mSpeedFilters.clear();
+          notifyCanceled(???);
+          return true;
+        }
+      }
+    }
+    label591:
+    return true;
   }
   
   public void reportError(long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, boolean paramBoolean1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean2, int paramInt2)
@@ -395,7 +409,14 @@ public class Uploader
       XpLog.w("Unsupported request.");
       return false;
     }
-    XpLog.i("prepare to upload:" + paramUploadRequest.path() + ", requestKey=" + paramUploadRequest.requestKey() + ", listener=" + paramUploadRequest.listener());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("prepare to upload:");
+    localStringBuilder.append(paramUploadRequest.path());
+    localStringBuilder.append(", requestKey=");
+    localStringBuilder.append(paramUploadRequest.requestKey());
+    localStringBuilder.append(", listener=");
+    localStringBuilder.append(paramUploadRequest.listener());
+    XpLog.i(localStringBuilder.toString());
     if (addPendingRequest(paramUploadRequest.requestKey(), paramUploadRequest)) {
       Message.obtain(this.mStartHandler, 2020, paramUploadRequest).sendToTarget();
     }
@@ -406,26 +427,23 @@ public class Uploader
   
   public void uploadFinish(String paramString1, int paramInt, String paramString2)
   {
-    String str;
     synchronized (this.mTasks)
     {
-      str = (String)this.mTasks.removeByValue(paramString1);
-    }
-    synchronized (this.mSpeedFilters)
-    {
-      this.mSpeedFilters.remove(paramString1);
-      if (str != null)
+      String str = (String)this.mTasks.removeByValue(paramString1);
+      synchronized (this.mSpeedFilters)
       {
-        paramString1 = collectPendingRequest(str, true);
-        ??? = this.mUploadContext.reporter();
-        if ((??? != null) && (!paramString1.isEmpty())) {
-          ((IReporter)???).handleReport(new UploadResponse.Builder().request((UploadRequest)paramString1.iterator().next()).code(paramInt).errMsg(paramString2).build());
+        this.mSpeedFilters.remove(paramString1);
+        if (str != null)
+        {
+          paramString1 = collectPendingRequest(str, true);
+          ??? = this.mUploadContext.reporter();
+          if ((??? != null) && (!paramString1.isEmpty())) {
+            ((IReporter)???).handleReport(new UploadResponse.Builder().request((UploadRequest)paramString1.iterator().next()).code(paramInt).errMsg(paramString2).build());
+          }
+          notifyFinished(paramString1, paramInt, paramString2);
         }
-        notifyFinished(paramString1, paramInt, paramString2);
+        return;
       }
-      return;
-      paramString1 = finally;
-      throw paramString1;
     }
   }
   
@@ -434,33 +452,33 @@ public class Uploader
     synchronized (this.mSpeedFilters)
     {
       ??? = (SpeedFilter)this.mSpeedFilters.get(paramString);
-      if (??? == null) {
-        ??? = new long[] { paramLong3, paramLong4, paramLong5 };
+      if (??? == null)
+      {
+        ??? = new long[3];
+        ???[0] = paramLong3;
+        ???[1] = paramLong4;
+        ???[2] = paramLong5;
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        ??? = ((SpeedFilter)???).updateSpeed(paramLong3, paramLong4, paramLong5);
+      }
       synchronized (this.mTasks)
       {
         paramString = (String)this.mTasks.getByValue(paramString);
         if (paramString != null)
         {
           paramString = collectPendingRequest(paramString, false);
-          if (paramLong1 == 0L)
-          {
+          float f;
+          if (paramLong1 == 0L) {
             f = 1.0F;
-            notifyProgress(paramString, paramLong1, f, ???[0], ???[1], ???[2]);
+          } else {
+            f = (float)paramLong2 / (float)paramLong1;
           }
+          notifyProgress(paramString, paramLong1, f, ???[0], ???[1], ???[2]);
         }
-        else
-        {
-          return;
-          paramString = finally;
-          throw paramString;
-          ??? = ((SpeedFilter)???).updateSpeed(paramLong3, paramLong4, paramLong5);
-        }
+        return;
       }
-      float f = (float)paramLong2 / (float)paramLong1;
     }
   }
   
@@ -471,7 +489,7 @@ public class Uploader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.uploader.Uploader
  * JD-Core Version:    0.7.0.1
  */

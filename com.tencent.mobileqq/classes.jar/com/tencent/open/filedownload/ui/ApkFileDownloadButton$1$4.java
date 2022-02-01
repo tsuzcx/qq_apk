@@ -1,11 +1,9 @@
 package com.tencent.open.filedownload.ui;
 
-import bfqp;
-
-public class ApkFileDownloadButton$1$4
+class ApkFileDownloadButton$1$4
   implements Runnable
 {
-  public ApkFileDownloadButton$1$4(bfqp parambfqp) {}
+  ApkFileDownloadButton$1$4(ApkFileDownloadButton.1 param1) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class ApkFileDownloadButton$1$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.ApkFileDownloadButton.1.4
  * JD-Core Version:    0.7.0.1
  */

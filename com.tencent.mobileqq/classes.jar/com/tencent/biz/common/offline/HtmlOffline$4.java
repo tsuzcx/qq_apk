@@ -1,38 +1,47 @@
 package com.tencent.biz.common.offline;
 
+import com.tencent.biz.common.offline.util.ILog;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
-import nbs;
-import nbv;
-import nci;
 
-public final class HtmlOffline$4
+final class HtmlOffline$4
   implements Runnable
 {
-  public HtmlOffline$4(int paramInt, String paramString, AppRuntime paramAppRuntime, HashMap paramHashMap, nbs paramnbs, boolean paramBoolean1, boolean paramBoolean2) {}
+  HtmlOffline$4(int paramInt, String paramString, AppRuntime paramAppRuntime, HashMap paramHashMap, AsyncBack paramAsyncBack, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    if (nbv.a.a()) {
-      nbv.a.a("HtmlCheckUpdate", 2, "start checkUpThread. delay:" + this.jdField_a_of_type_Int + ", businessId:" + this.jdField_a_of_type_JavaLangString);
+    if (HtmlOffline.f.a())
+    {
+      ILog localILog = HtmlOffline.f;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start checkUpThread. delay:");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(", businessId:");
+      localStringBuilder.append(this.b);
+      localILog.a("HtmlCheckUpdate", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Int > 0) {}
+    int i = this.a;
+    long l;
+    if (i > 0) {
+      l = i * 1000;
+    }
     try
     {
-      Thread.sleep(this.jdField_a_of_type_Int * 1000);
-      label75:
-      nbv.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Nbs, true, this.jdField_a_of_type_Boolean, this.b);
+      Thread.sleep(l);
+      label96:
+      HtmlOffline.a(this.c, this.d, this.e, true, this.f, this.g);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label75;
+      break label96;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.4
  * JD-Core Version:    0.7.0.1
  */

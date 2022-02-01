@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center" android:background="@drawable/ajc" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMGridPaper android:orientation="horizontal" android:id="@id/a1i" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:listSelector="@drawable/w6" android:layout_centerInParent="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/d8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/tf" android:layout_marginTop="@dimen/te" android:layout_marginRight="@dimen/tf"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/fe" />
+    <View android:background="@color/eg" android:layout_width="fill_parent" android:layout_height="@dimen/tn" android:layout_marginTop="2.0dip" android:layout_marginBottom="18.0dip" android:layout_marginStart="@dimen/td" android:layout_marginEnd="@dimen/td" />
+    <LinearLayout android:id="@id/u0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/td" android:layout_marginEnd="@dimen/td">
+        <androidx.constraintlayout.widget.ConstraintLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/l" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/u1" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="0.0dip" android:layout_marginBottom="@dimen/tc" android:maxLines="2" android:layout_marginStart="0.0dip" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toStartOf="@id/et3" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:layout_constraintVertical_bias="0.555" />
+            <com.tencent.mm.plugin.appbrand.ui.recommend.AppBrandCombinationLayout android:layout_width="72.0dip" android:layout_height="72.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+                <ImageView android:layout_gravity="center" android:id="@id/u_" android:padding="1.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+                <ImageView android:id="@id/u2" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="centerCrop" />
+            </com.tencent.mm.plugin.appbrand.ui.recommend.AppBrandCombinationLayout>
+            <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/et3" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.75" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    <include layout="@layout/fc" />
+</LinearLayout>

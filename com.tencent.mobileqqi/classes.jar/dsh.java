@@ -1,25 +1,15 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import java.util.ArrayList;
+import java.util.Comparator;
 
-class dsh
-  implements DialogInterface.OnClickListener
+public class dsh
+  implements Comparator
 {
-  dsh(dsf paramdsf) {}
+  private dsh(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(TroopMemberListActivity.ATroopMember paramATroopMember1, TroopMemberListActivity.ATroopMember paramATroopMember2)
   {
-    paramDialogInterface = new ArrayList();
-    paramDialogInterface.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a);
-    this.a.jdField_a_of_type_Dsd.a.i = this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember.a;
-    ((TroopHandler)this.a.jdField_a_of_type_Dsd.a.b.a(19)).a(TroopMemberListActivity.a(this.a.jdField_a_of_type_Dsd.a), paramDialogInterface);
-    this.a.jdField_a_of_type_Dsd.a.e();
-    this.a.jdField_a_of_type_Dsd.a.a.show();
+    return paramATroopMember1.f.compareToIgnoreCase(paramATroopMember2.f);
   }
 }
 

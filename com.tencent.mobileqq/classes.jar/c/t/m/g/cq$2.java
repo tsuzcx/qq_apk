@@ -11,25 +11,30 @@ final class cq$2
   {
     try
     {
-      byte[] arrayOfByte = co.a(this.a);
-      if (co.b(arrayOfByte))
+      Object localObject = co.a(this.a);
+      if (co.b((byte[])localObject))
       {
         this.a.delete();
-        co.a("file " + this.a.getName() + " is empty, then delete.");
+        localObject = new StringBuilder("file ");
+        ((StringBuilder)localObject).append(this.a.getName());
+        ((StringBuilder)localObject).append(" is empty, then delete.");
+        co.a(((StringBuilder)localObject).toString());
         return;
       }
-      cu.j.a(this.b, arrayOfByte, new cq.2.1(this));
+      cu.j.a(this.b, (byte[])localObject, new cq.2.1(this));
       return;
     }
     catch (Throwable localThrowable)
     {
-      co.a("upload error,url=" + this.b, localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder("upload error,url=");
+      localStringBuilder.append(this.b);
+      co.a(localStringBuilder.toString(), localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cq.2
  * JD-Core Version:    0.7.0.1
  */

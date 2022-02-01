@@ -1,6 +1,5 @@
 package com.tencent.wcdb.database;
 
-import android.annotation.SuppressLint;
 import android.os.Process;
 import android.util.Pair;
 import android.util.Printer;
@@ -59,18 +58,18 @@ public final class SQLiteConnection
   
   static
   {
-    AppMethodBeat.i(12356);
+    AppMethodBeat.i(3039);
     EMPTY_STRING_ARRAY = new String[0];
     EMPTY_BYTE_ARRAY = new byte[0];
     TRIM_SQL_PATTERN = Pattern.compile("[\\s]*\\n+[\\s]*");
     HMAC_ALGO_MAPPING = new String[] { "HMAC_SHA1", "HMAC_SHA256", "HMAC_SHA512" };
     PBKDF2_ALGO_MAPPING = new String[] { "PBKDF2_HMAC_SHA1", "PBKDF2_HMAC_SHA256", "PBKDF2_HMAC_SHA512" };
-    AppMethodBeat.o(12356);
+    AppMethodBeat.o(3039);
   }
   
   private SQLiteConnection(SQLiteConnectionPool paramSQLiteConnectionPool, SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration, int paramInt, boolean paramBoolean, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec)
   {
-    AppMethodBeat.i(12297);
+    AppMethodBeat.i(2980);
     this.mRecentOperations = new OperationLog(null);
     this.mPassword = paramArrayOfByte;
     if (paramSQLiteCipherSpec == null)
@@ -90,7 +89,7 @@ public final class SQLiteConnection
     {
       this.mIsReadOnlyConnection = paramBoolean;
       this.mPreparedStatementCache = new PreparedStatementCache(this.mConfiguration.maxSqlCacheSize);
-      AppMethodBeat.o(12297);
+      AppMethodBeat.o(2980);
       return;
       paramArrayOfByte = new SQLiteCipherSpec(paramSQLiteCipherSpec);
       break;
@@ -101,7 +100,7 @@ public final class SQLiteConnection
   
   private void attachCancellationSignal(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12332);
+    AppMethodBeat.i(3015);
     if (paramCancellationSignal != null)
     {
       paramCancellationSignal.throwIfCanceled();
@@ -112,22 +111,22 @@ public final class SQLiteConnection
         paramCancellationSignal.setOnCancelListener(this);
       }
     }
-    AppMethodBeat.o(12332);
+    AppMethodBeat.o(3015);
   }
   
   private void bindArguments(PreparedStatement paramPreparedStatement, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(12335);
+    AppMethodBeat.i(3018);
     if (paramArrayOfObject != null) {}
     for (int i = paramArrayOfObject.length; i != paramPreparedStatement.mNumParameters; i = 0)
     {
       paramPreparedStatement = new SQLiteBindOrColumnIndexOutOfRangeException("Expected " + paramPreparedStatement.mNumParameters + " bind arguments but " + i + " were provided.");
-      AppMethodBeat.o(12335);
+      AppMethodBeat.o(3018);
       throw paramPreparedStatement;
     }
     if (i == 0)
     {
-      AppMethodBeat.o(12335);
+      AppMethodBeat.o(3018);
       return;
     }
     long l2 = paramPreparedStatement.getPtr();
@@ -169,12 +168,12 @@ public final class SQLiteConnection
         nativeBindString(this.mConnectionPtr, l2, j + 1, paramPreparedStatement.toString());
       }
     }
-    AppMethodBeat.o(12335);
+    AppMethodBeat.o(3018);
   }
   
   private void detachCancellationSignal(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12333);
+    AppMethodBeat.i(3016);
     if (paramCancellationSignal != null)
     {
       this.mCancellationSignalAttachCount -= 1;
@@ -184,12 +183,12 @@ public final class SQLiteConnection
         nativeResetCancel(this.mConnectionPtr, false);
       }
     }
-    AppMethodBeat.o(12333);
+    AppMethodBeat.o(3016);
   }
   
   private void dispose(boolean paramBoolean)
   {
-    AppMethodBeat.i(12304);
+    AppMethodBeat.i(2987);
     if (this.mConnectionPtr != 0L)
     {
       int i = this.mRecentOperations.beginOperation("close", null, null).mCookie;
@@ -203,30 +202,30 @@ public final class SQLiteConnection
       finally
       {
         this.mRecentOperations.endOperation(i);
-        AppMethodBeat.o(12304);
+        AppMethodBeat.o(2987);
       }
     }
-    AppMethodBeat.o(12304);
+    AppMethodBeat.o(2987);
   }
   
   private void finalizePreparedStatement(PreparedStatement paramPreparedStatement)
   {
-    AppMethodBeat.i(12331);
+    AppMethodBeat.i(3014);
     nativeFinalizeStatement(this.mConnectionPtr, paramPreparedStatement.getPtr());
     recyclePreparedStatement(paramPreparedStatement);
-    AppMethodBeat.o(12331);
+    AppMethodBeat.o(3014);
   }
   
   private SQLiteDebug.DbStats getMainDbStatsUnsafe(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(12345);
+    AppMethodBeat.i(3028);
     String str = this.mConfiguration.path;
     Object localObject = str;
     if (!this.mIsPrimaryConnection) {
       localObject = str + " (" + this.mConnectionId + ")";
     }
     localObject = new SQLiteDebug.DbStats((String)localObject, paramLong1, paramLong2, paramInt, this.mPreparedStatementCache.hitCount(), this.mPreparedStatementCache.missCount(), this.mPreparedStatementCache.size());
-    AppMethodBeat.o(12345);
+    AppMethodBeat.o(3028);
     return localObject;
   }
   
@@ -297,21 +296,21 @@ public final class SQLiteConnection
   
   private void notifyChange(String paramString1, String paramString2, long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
   {
-    AppMethodBeat.i(12316);
+    AppMethodBeat.i(2999);
     this.mPool.notifyChanges(paramString1, paramString2, paramArrayOfLong1, paramArrayOfLong2, paramArrayOfLong3);
-    AppMethodBeat.o(12316);
+    AppMethodBeat.o(2999);
   }
   
   private void notifyCheckpoint(String paramString, int paramInt)
   {
-    AppMethodBeat.i(12307);
+    AppMethodBeat.i(2990);
     this.mPool.notifyCheckpoint(paramString, paramInt);
-    AppMethodBeat.o(12307);
+    AppMethodBeat.o(2990);
   }
   
   private PreparedStatement obtainPreparedStatement(String paramString, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(12347);
+    AppMethodBeat.i(3030);
     PreparedStatement localPreparedStatement = this.mPreparedStatementPool;
     if (localPreparedStatement != null)
     {
@@ -326,7 +325,7 @@ public final class SQLiteConnection
       PreparedStatement.access$202(localPreparedStatement, paramInt1);
       PreparedStatement.access$102(localPreparedStatement, paramInt2);
       PreparedStatement.access$302(localPreparedStatement, paramBoolean);
-      AppMethodBeat.o(12347);
+      AppMethodBeat.o(3030);
       return localPreparedStatement;
       localPreparedStatement = new PreparedStatement(this);
     }
@@ -334,26 +333,26 @@ public final class SQLiteConnection
   
   static SQLiteConnection open(SQLiteConnectionPool paramSQLiteConnectionPool, SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration, int paramInt, boolean paramBoolean, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec)
   {
-    AppMethodBeat.i(12301);
+    AppMethodBeat.i(2984);
     paramSQLiteConnectionPool = new SQLiteConnection(paramSQLiteConnectionPool, paramSQLiteDatabaseConfiguration, paramInt, paramBoolean, paramArrayOfByte, paramSQLiteCipherSpec);
     try
     {
       paramSQLiteConnectionPool.open();
-      AppMethodBeat.o(12301);
+      AppMethodBeat.o(2984);
       return paramSQLiteConnectionPool;
     }
     catch (SQLiteException paramSQLiteDatabaseConfiguration)
     {
       SQLiteDebug.collectLastIOTraceStats(paramSQLiteConnectionPool);
       paramSQLiteConnectionPool.dispose(false);
-      AppMethodBeat.o(12301);
+      AppMethodBeat.o(2984);
       throw paramSQLiteDatabaseConfiguration;
     }
   }
   
   private void open()
   {
-    AppMethodBeat.i(12303);
+    AppMethodBeat.i(2986);
     this.mConnectionPtr = nativeOpen(this.mConfiguration.path, this.mConfiguration.openFlags, this.mConfiguration.vfsName);
     if ((this.mPassword != null) && (this.mPassword.length == 0)) {
       this.mPassword = null;
@@ -384,49 +383,49 @@ public final class SQLiteConnection
     finally
     {
       nativeSQLiteHandle(this.mConnectionPtr, false);
-      AppMethodBeat.o(12303);
+      AppMethodBeat.o(2986);
     }
     setUpdateNotificationFromConfiguration();
-    AppMethodBeat.o(12303);
+    AppMethodBeat.o(2986);
   }
   
   private void recyclePreparedStatement(PreparedStatement paramPreparedStatement)
   {
-    AppMethodBeat.i(12348);
+    AppMethodBeat.i(3031);
     PreparedStatement.access$602(paramPreparedStatement, null);
     PreparedStatement.access$702(paramPreparedStatement, this.mPreparedStatementPool);
     this.mPreparedStatementPool = paramPreparedStatement;
-    AppMethodBeat.o(12348);
+    AppMethodBeat.o(3031);
   }
   
   private void resetStatement(PreparedStatement paramPreparedStatement, boolean paramBoolean)
   {
-    AppMethodBeat.i(12336);
+    AppMethodBeat.i(3019);
     nativeResetStatement(this.mConnectionPtr, paramPreparedStatement.getPtr(), paramBoolean);
-    AppMethodBeat.o(12336);
+    AppMethodBeat.o(3019);
   }
   
   private void setCheckpointStrategy()
   {
-    AppMethodBeat.i(12308);
+    AppMethodBeat.i(2991);
     if ((!this.mConfiguration.isInMemoryDb()) && (!this.mIsReadOnlyConnection))
     {
       if (this.mConfiguration.customWALHookEnabled)
       {
         nativeSetWalHook(this.mConnectionPtr);
-        AppMethodBeat.o(12308);
+        AppMethodBeat.o(2991);
         return;
       }
       if (executeForLong("PRAGMA wal_autocheckpoint", null, null) != 100L) {
         executeForLong("PRAGMA wal_autocheckpoint=100", null, null);
       }
     }
-    AppMethodBeat.o(12308);
+    AppMethodBeat.o(2991);
   }
   
   private void setCipherSpec()
   {
-    AppMethodBeat.i(12306);
+    AppMethodBeat.i(2989);
     if (this.mCipher != null)
     {
       if (this.mCipher.kdfIteration != 0) {
@@ -440,12 +439,12 @@ public final class SQLiteConnection
         execute("PRAGMA cipher_kdf_algorithm=" + PBKDF2_ALGO_MAPPING[this.mCipher.kdfAlgorithm], null, null);
       }
     }
-    AppMethodBeat.o(12306);
+    AppMethodBeat.o(2989);
   }
   
   private void setForeignKeyModeFromConfiguration()
   {
-    AppMethodBeat.i(12310);
+    AppMethodBeat.i(2993);
     if (!this.mIsReadOnlyConnection) {
       if (!this.mConfiguration.foreignKeyConstraintsEnabled) {
         break label62;
@@ -457,14 +456,14 @@ public final class SQLiteConnection
       if (executeForLong("PRAGMA foreign_keys", null, null) != l) {
         execute("PRAGMA foreign_keys=".concat(String.valueOf(l)), null, null);
       }
-      AppMethodBeat.o(12310);
+      AppMethodBeat.o(2993);
       return;
     }
   }
   
   private void setJournalMode(String paramString)
   {
-    AppMethodBeat.i(12313);
+    AppMethodBeat.i(2996);
     String str = executeForString("PRAGMA journal_mode", null, null);
     if (!str.equalsIgnoreCase(paramString)) {
       try
@@ -472,7 +471,7 @@ public final class SQLiteConnection
         boolean bool = executeForString("PRAGMA journal_mode=".concat(String.valueOf(paramString)), null, null).equalsIgnoreCase(paramString);
         if (bool)
         {
-          AppMethodBeat.o(12313);
+          AppMethodBeat.o(2996);
           return;
         }
       }
@@ -481,23 +480,23 @@ public final class SQLiteConnection
         Log.w("WCDB.SQLiteConnection", "Could not change the database journal mode of '" + this.mConfiguration.label + "' from '" + str + "' to '" + paramString + "' because the database is locked.  This usually means that there are other open connections to the database which prevents the database from enabling or disabling write-ahead logging mode.  Proceeding without changing the journal mode.");
       }
     }
-    AppMethodBeat.o(12313);
+    AppMethodBeat.o(2996);
   }
   
   private void setJournalSizeLimit()
   {
-    AppMethodBeat.i(12309);
+    AppMethodBeat.i(2992);
     if ((!this.mConfiguration.isInMemoryDb()) && (!this.mIsReadOnlyConnection) && (executeForLong("PRAGMA journal_size_limit", null, null) != 524288L)) {
       executeForLong("PRAGMA journal_size_limit=524288", null, null);
     }
-    AppMethodBeat.o(12309);
+    AppMethodBeat.o(2992);
   }
   
   /* Error */
   private void setLocaleFromConfiguration()
   {
     // Byte code:
-    //   0: sipush 12314
+    //   0: sipush 2997
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 131	com/tencent/wcdb/database/SQLiteConnection:mConfiguration	Lcom/tencent/wcdb/database/SQLiteDatabaseConfiguration;
@@ -514,7 +513,7 @@ public final class SQLiteConnection
     //   29: bipush 16
     //   31: iand
     //   32: ifeq +10 -> 42
-    //   35: sipush 12314
+    //   35: sipush 2997
     //   38: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: return
     //   42: aload_0
@@ -529,7 +528,7 @@ public final class SQLiteConnection
     //   61: aload_0
     //   62: getfield 140	com/tencent/wcdb/database/SQLiteConnection:mIsReadOnlyConnection	Z
     //   65: ifeq +10 -> 75
-    //   68: sipush 12314
+    //   68: sipush 2997
     //   71: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   74: return
     //   75: aload_0
@@ -551,7 +550,7 @@ public final class SQLiteConnection
     //   103: istore_1
     //   104: iload_1
     //   105: ifeq +10 -> 115
-    //   108: sipush 12314
+    //   108: sipush 2997
     //   111: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   114: return
     //   115: aload_0
@@ -584,7 +583,7 @@ public final class SQLiteConnection
     //   162: aconst_null
     //   163: aconst_null
     //   164: invokevirtual 542	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   167: sipush 12314
+    //   167: sipush 2997
     //   170: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   173: return
     //   174: astore_3
@@ -608,7 +607,7 @@ public final class SQLiteConnection
     //   218: aload_3
     //   219: invokespecial 651	com/tencent/wcdb/database/SQLiteException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   222: astore_2
-    //   223: sipush 12314
+    //   223: sipush 2997
     //   226: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   229: aload_2
     //   230: athrow
@@ -618,7 +617,7 @@ public final class SQLiteConnection
     //   236: aconst_null
     //   237: aconst_null
     //   238: invokevirtual 542	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   241: sipush 12314
+    //   241: sipush 2997
     //   244: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   247: aload_3
     //   248: athrow
@@ -642,7 +641,7 @@ public final class SQLiteConnection
   
   private void setPageSize()
   {
-    AppMethodBeat.i(12305);
+    AppMethodBeat.i(2988);
     String str;
     long l;
     if (!this.mConfiguration.isInMemoryDb())
@@ -661,7 +660,7 @@ public final class SQLiteConnection
       if (executeForLong(str, null, null) != l) {
         execute(str + "=" + l, null, null);
       }
-      AppMethodBeat.o(12305);
+      AppMethodBeat.o(2988);
       return;
       label98:
       l = this.mCipher.pageSize;
@@ -674,30 +673,30 @@ public final class SQLiteConnection
   
   private void setReadOnlyFromConfiguration()
   {
-    AppMethodBeat.i(12315);
+    AppMethodBeat.i(2998);
     if (this.mIsReadOnlyConnection) {
       execute("PRAGMA query_only = 1", null, null);
     }
-    AppMethodBeat.o(12315);
+    AppMethodBeat.o(2998);
   }
   
   private void setSyncModeFromConfiguration()
   {
-    AppMethodBeat.i(12312);
+    AppMethodBeat.i(2995);
     execute("PRAGMA synchronous=".concat(String.valueOf(this.mConfiguration.synchronousMode)), null, null);
-    AppMethodBeat.o(12312);
+    AppMethodBeat.o(2995);
   }
   
   private void setUpdateNotificationFromConfiguration()
   {
-    AppMethodBeat.i(12317);
+    AppMethodBeat.i(3000);
     nativeSetUpdateNotification(this.mConnectionPtr, this.mConfiguration.updateNotificationEnabled, this.mConfiguration.updateNotificationRowID);
-    AppMethodBeat.o(12317);
+    AppMethodBeat.o(3000);
   }
   
   private void setWalModeFromConfiguration()
   {
-    AppMethodBeat.i(12311);
+    AppMethodBeat.i(2994);
     if ((!this.mConfiguration.isInMemoryDb()) && (!this.mIsReadOnlyConnection)) {
       if ((this.mConfiguration.openFlags & 0x20000000) == 0) {
         break label53;
@@ -707,40 +706,40 @@ public final class SQLiteConnection
     for (String str = "WAL";; str = "PERSIST")
     {
       setJournalMode(str);
-      AppMethodBeat.o(12311);
+      AppMethodBeat.o(2994);
       return;
     }
   }
   
   private void throwIfStatementForbidden(PreparedStatement paramPreparedStatement)
   {
-    AppMethodBeat.i(12337);
+    AppMethodBeat.i(3020);
     if ((this.mOnlyAllowReadOnlyOperations) && (!paramPreparedStatement.mReadOnly))
     {
       paramPreparedStatement = new SQLiteException("Cannot execute this statement because it might modify the database but the connection is read-only.");
-      AppMethodBeat.o(12337);
+      AppMethodBeat.o(3020);
       throw paramPreparedStatement;
     }
-    AppMethodBeat.o(12337);
+    AppMethodBeat.o(3020);
   }
   
   private static String trimSqlForDisplay(String paramString)
   {
-    AppMethodBeat.i(12349);
+    AppMethodBeat.i(3032);
     paramString = TRIM_SQL_PATTERN.matcher(paramString).replaceAll(" ");
-    AppMethodBeat.o(12349);
+    AppMethodBeat.o(3032);
     return paramString;
   }
   
   final PreparedStatement acquirePreparedStatement(String paramString)
   {
-    AppMethodBeat.i(12329);
+    AppMethodBeat.i(3012);
     PreparedStatement localPreparedStatement2 = (PreparedStatement)this.mPreparedStatementCache.get(paramString);
     if (localPreparedStatement2 != null) {
       if (!localPreparedStatement2.mInUse)
       {
         PreparedStatement.access$402(localPreparedStatement2, true);
-        AppMethodBeat.o(12329);
+        AppMethodBeat.o(3012);
         return localPreparedStatement2;
       }
     }
@@ -767,7 +766,7 @@ public final class SQLiteConnection
           }
         }
         PreparedStatement.access$402(localPreparedStatement2, true);
-        AppMethodBeat.o(12329);
+        AppMethodBeat.o(3012);
         return localPreparedStatement2;
       }
       catch (RuntimeException paramString)
@@ -775,7 +774,7 @@ public final class SQLiteConnection
         if ((localPreparedStatement1 == null) || (!localPreparedStatement1.mInCache)) {
           nativeFinalizeStatement(this.mConnectionPtr, l);
         }
-        AppMethodBeat.o(12329);
+        AppMethodBeat.o(3012);
         throw paramString;
       }
     }
@@ -783,14 +782,14 @@ public final class SQLiteConnection
   
   final void close()
   {
-    AppMethodBeat.i(12302);
+    AppMethodBeat.i(2985);
     dispose(false);
-    AppMethodBeat.o(12302);
+    AppMethodBeat.o(2985);
   }
   
   final void collectDbStats(ArrayList<SQLiteDebug.DbStats> paramArrayList)
   {
-    AppMethodBeat.i(12343);
+    AppMethodBeat.i(3026);
     int i = nativeGetDbLookaside(this.mConnectionPtr);
     long l1 = 0L;
     long l3 = 0L;
@@ -855,28 +854,28 @@ public final class SQLiteConnection
     catch (SQLiteException paramArrayList) {}finally
     {
       localCursorWindow.close();
-      AppMethodBeat.o(12343);
+      AppMethodBeat.o(3026);
     }
   }
   
   final void collectDbStatsUnsafe(ArrayList<SQLiteDebug.DbStats> paramArrayList)
   {
-    AppMethodBeat.i(12344);
+    AppMethodBeat.i(3027);
     paramArrayList.add(getMainDbStatsUnsafe(0, 0L, 0L));
-    AppMethodBeat.o(12344);
+    AppMethodBeat.o(3027);
   }
   
   final String describeCurrentOperationUnsafe()
   {
-    AppMethodBeat.i(12340);
+    AppMethodBeat.i(3023);
     String str = this.mRecentOperations.describeCurrentOperation();
-    AppMethodBeat.o(12340);
+    AppMethodBeat.o(3023);
     return str;
   }
   
   final void dump(Printer paramPrinter, boolean paramBoolean)
   {
-    AppMethodBeat.i(12338);
+    AppMethodBeat.i(3021);
     paramPrinter.println("Connection #" + this.mConnectionId + ":");
     if (paramBoolean) {
       paramPrinter.println("  connectionPtr: 0x" + Long.toHexString(this.mConnectionPtr));
@@ -890,13 +889,13 @@ public final class SQLiteConnection
     if (paramBoolean) {
       this.mPreparedStatementCache.dump(paramPrinter);
     }
-    AppMethodBeat.o(12338);
+    AppMethodBeat.o(3021);
   }
   
   final JSONObject dumpJSON(boolean paramBoolean)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(141576);
+    AppMethodBeat.i(3022);
     JSONObject localJSONObject = new JSONObject().put("id", this.mConnectionId).put("ptr", Long.toHexString(this.mConnectionPtr)).put("primary", this.mIsPrimaryConnection).put("readOnly", this.mOnlyAllowReadOnlyOperations);
     if (this.mAcquiredThread != null) {}
     for (Object localObject1 = this.mAcquiredThread.toString();; localObject1 = null)
@@ -907,14 +906,14 @@ public final class SQLiteConnection
         localObject1 = Integer.valueOf(this.mAcquiredTid);
       }
       localObject1 = localJSONObject.putOpt("tid", localObject1).put("operations", this.mRecentOperations.dumpJSON(paramBoolean));
-      AppMethodBeat.o(141576);
+      AppMethodBeat.o(3022);
       return localObject1;
     }
   }
   
   final void endNativeHandle(Exception paramException)
   {
-    AppMethodBeat.i(12299);
+    AppMethodBeat.i(2982);
     int i = this.mNativeHandleCount - 1;
     this.mNativeHandleCount = i;
     if ((i == 0) && (this.mNativeOperation != null))
@@ -928,7 +927,7 @@ public final class SQLiteConnection
     for (;;)
     {
       this.mNativeOperation = null;
-      AppMethodBeat.o(12299);
+      AppMethodBeat.o(2982);
       return;
       label69:
       this.mRecentOperations.failOperation(this.mNativeOperation.mCookie, paramException);
@@ -939,22 +938,22 @@ public final class SQLiteConnection
   public final void execute(String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal)
   {
     // Byte code:
-    //   0: sipush 12322
+    //   0: sipush 3005
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +22 -> 29
-    //   10: new 897	java/lang/IllegalArgumentException
+    //   10: new 896	java/lang/IllegalArgumentException
     //   13: dup
-    //   14: ldc_w 899
-    //   17: invokespecial 900	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 898
+    //   17: invokespecial 899	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   20: astore_1
-    //   21: sipush 12322
+    //   21: sipush 3005
     //   24: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_1
     //   28: athrow
     //   29: aload_0
     //   30: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
-    //   33: ldc_w 901
+    //   33: ldc_w 900
     //   36: aload_1
     //   37: aload_2
     //   38: invokevirtual 298	com/tencent/wcdb/database/SQLiteConnection$OperationLog:beginOperation	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/database/SQLiteConnection$Operation;
@@ -964,22 +963,22 @@ public final class SQLiteConnection
     //   48: istore 4
     //   50: aload_0
     //   51: aload_1
-    //   52: invokevirtual 903	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
+    //   52: invokevirtual 902	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
     //   55: astore_1
     //   56: aload 5
     //   58: aload_1
-    //   59: invokestatic 906	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
-    //   62: putfield 909	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
+    //   59: invokestatic 905	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
+    //   62: putfield 908	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
     //   65: aload_0
     //   66: aload_1
-    //   67: invokespecial 911	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   67: invokespecial 910	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   70: aload_0
     //   71: aload_1
     //   72: aload_2
     //   73: invokespecial 196	com/tencent/wcdb/database/SQLiteConnection:bindArguments	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;[Ljava/lang/Object;)V
     //   76: aload_0
     //   77: aload_1
-    //   78: invokespecial 913	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   78: invokespecial 912	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   81: aload_0
     //   82: aload_3
     //   83: invokespecial 165	com/tencent/wcdb/database/SQLiteConnection:attachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
@@ -987,33 +986,33 @@ public final class SQLiteConnection
     //   87: getfield 206	com/tencent/wcdb/database/SQLiteConnection:mConnectionPtr	J
     //   90: aload_1
     //   91: invokevirtual 247	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:getPtr	()J
-    //   94: invokestatic 915	com/tencent/wcdb/database/SQLiteConnection:nativeExecute	(JJ)V
+    //   94: invokestatic 914	com/tencent/wcdb/database/SQLiteConnection:nativeExecute	(JJ)V
     //   97: aload_0
     //   98: aload_3
     //   99: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   102: aload_0
     //   103: aload_1
-    //   104: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   104: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   107: aload_0
     //   108: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   111: iload 4
     //   113: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   116: sipush 12322
+    //   116: sipush 3005
     //   119: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   122: return
     //   123: astore_2
     //   124: aload_0
     //   125: aload_3
     //   126: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   129: sipush 12322
+    //   129: sipush 3005
     //   132: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: aload_2
     //   136: athrow
     //   137: astore_2
     //   138: aload_0
     //   139: aload_1
-    //   140: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
-    //   143: sipush 12322
+    //   140: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   143: sipush 3005
     //   146: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   149: aload_2
     //   150: athrow
@@ -1022,8 +1021,8 @@ public final class SQLiteConnection
     //   153: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   156: iload 4
     //   158: aload_1
-    //   159: invokevirtual 895	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
-    //   162: sipush 12322
+    //   159: invokevirtual 894	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
+    //   162: sipush 3005
     //   165: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   168: aload_1
     //   169: athrow
@@ -1032,7 +1031,7 @@ public final class SQLiteConnection
     //   172: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   175: iload 4
     //   177: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   180: sipush 12322
+    //   180: sipush 3005
     //   183: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   186: aload_1
     //   187: athrow
@@ -1063,16 +1062,16 @@ public final class SQLiteConnection
   public final int executeForChangedRowCount(String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal)
   {
     // Byte code:
-    //   0: sipush 12325
+    //   0: sipush 3008
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +22 -> 29
-    //   10: new 897	java/lang/IllegalArgumentException
+    //   10: new 896	java/lang/IllegalArgumentException
     //   13: dup
-    //   14: ldc_w 899
-    //   17: invokespecial 900	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 898
+    //   17: invokespecial 899	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   20: astore_1
-    //   21: sipush 12325
+    //   21: sipush 3008
     //   24: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_1
     //   28: athrow
@@ -1084,7 +1083,7 @@ public final class SQLiteConnection
     //   36: istore 7
     //   38: aload_0
     //   39: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
-    //   42: ldc_w 921
+    //   42: ldc_w 920
     //   45: aload_1
     //   46: aload_2
     //   47: invokevirtual 298	com/tencent/wcdb/database/SQLiteConnection$OperationLog:beginOperation	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/database/SQLiteConnection$Operation;
@@ -1098,7 +1097,7 @@ public final class SQLiteConnection
     //   65: istore 5
     //   67: aload_0
     //   68: aload_1
-    //   69: invokevirtual 903	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
+    //   69: invokevirtual 902	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
     //   72: astore_1
     //   73: iload 6
     //   75: istore 4
@@ -1106,13 +1105,13 @@ public final class SQLiteConnection
     //   79: istore 5
     //   81: aload 10
     //   83: aload_1
-    //   84: invokestatic 906	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
-    //   87: putfield 909	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
+    //   84: invokestatic 905	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
+    //   87: putfield 908	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
     //   90: iload 7
     //   92: istore 6
     //   94: aload_0
     //   95: aload_1
-    //   96: invokespecial 911	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   96: invokespecial 910	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   99: iload 7
     //   101: istore 6
     //   103: aload_0
@@ -1123,7 +1122,7 @@ public final class SQLiteConnection
     //   111: istore 6
     //   113: aload_0
     //   114: aload_1
-    //   115: invokespecial 913	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   115: invokespecial 912	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   118: iload 7
     //   120: istore 6
     //   122: aload_0
@@ -1133,7 +1132,7 @@ public final class SQLiteConnection
     //   128: getfield 206	com/tencent/wcdb/database/SQLiteConnection:mConnectionPtr	J
     //   131: aload_1
     //   132: invokevirtual 247	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:getPtr	()J
-    //   135: invokestatic 923	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForChangedRowCount	(JJ)I
+    //   135: invokestatic 922	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForChangedRowCount	(JJ)I
     //   138: istore 4
     //   140: iload 4
     //   142: istore 7
@@ -1148,21 +1147,21 @@ public final class SQLiteConnection
     //   159: istore 5
     //   161: aload_0
     //   162: aload_1
-    //   163: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   163: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   166: aload_0
     //   167: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   170: iload 9
-    //   172: invokevirtual 891	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperationDeferLog	(I)Z
+    //   172: invokevirtual 890	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperationDeferLog	(I)Z
     //   175: ifeq +23 -> 198
     //   178: aload_0
     //   179: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   182: iload 9
-    //   184: ldc_w 925
+    //   184: ldc_w 924
     //   187: iload 7
     //   189: invokestatic 680	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   192: invokevirtual 574	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   195: invokevirtual 929	com/tencent/wcdb/database/SQLiteConnection$OperationLog:logOperation	(ILjava/lang/String;)V
-    //   198: sipush 12325
+    //   195: invokevirtual 928	com/tencent/wcdb/database/SQLiteConnection$OperationLog:logOperation	(ILjava/lang/String;)V
+    //   198: sipush 3008
     //   201: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   204: iload 7
     //   206: ireturn
@@ -1174,7 +1173,7 @@ public final class SQLiteConnection
     //   214: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   217: iload 7
     //   219: istore 6
-    //   221: sipush 12325
+    //   221: sipush 3008
     //   224: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   227: iload 7
     //   229: istore 6
@@ -1187,12 +1186,12 @@ public final class SQLiteConnection
     //   240: istore 5
     //   242: aload_0
     //   243: aload_1
-    //   244: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   244: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   247: iload 6
     //   249: istore 4
     //   251: iload 6
     //   253: istore 5
-    //   255: sipush 12325
+    //   255: sipush 3008
     //   258: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   261: iload 6
     //   263: istore 4
@@ -1207,10 +1206,10 @@ public final class SQLiteConnection
     //   277: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   280: iload 9
     //   282: aload_1
-    //   283: invokevirtual 895	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
+    //   283: invokevirtual 894	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
     //   286: iload 4
     //   288: istore 5
-    //   290: sipush 12325
+    //   290: sipush 3008
     //   293: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   296: iload 4
     //   298: istore 5
@@ -1220,17 +1219,17 @@ public final class SQLiteConnection
     //   303: aload_0
     //   304: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   307: iload 9
-    //   309: invokevirtual 891	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperationDeferLog	(I)Z
+    //   309: invokevirtual 890	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperationDeferLog	(I)Z
     //   312: ifeq +23 -> 335
     //   315: aload_0
     //   316: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   319: iload 9
-    //   321: ldc_w 925
+    //   321: ldc_w 924
     //   324: iload 5
     //   326: invokestatic 680	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   329: invokevirtual 574	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   332: invokevirtual 929	com/tencent/wcdb/database/SQLiteConnection$OperationLog:logOperation	(ILjava/lang/String;)V
-    //   335: sipush 12325
+    //   332: invokevirtual 928	com/tencent/wcdb/database/SQLiteConnection$OperationLog:logOperation	(ILjava/lang/String;)V
+    //   335: sipush 3008
     //   338: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   341: aload_1
     //   342: athrow
@@ -1279,35 +1278,35 @@ public final class SQLiteConnection
   public final int executeForCursorWindow(String paramString, Object[] paramArrayOfObject, CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean, CancellationSignal paramCancellationSignal)
   {
     // Byte code:
-    //   0: sipush 12327
+    //   0: sipush 3010
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +22 -> 29
-    //   10: new 897	java/lang/IllegalArgumentException
+    //   10: new 896	java/lang/IllegalArgumentException
     //   13: dup
-    //   14: ldc_w 899
-    //   17: invokespecial 900	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 898
+    //   17: invokespecial 899	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   20: astore_1
-    //   21: sipush 12327
+    //   21: sipush 3010
     //   24: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_1
     //   28: athrow
     //   29: aload_3
     //   30: ifnonnull +22 -> 52
-    //   33: new 897	java/lang/IllegalArgumentException
+    //   33: new 896	java/lang/IllegalArgumentException
     //   36: dup
-    //   37: ldc_w 931
-    //   40: invokespecial 900	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   37: ldc_w 930
+    //   40: invokespecial 899	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   43: astore_1
-    //   44: sipush 12327
+    //   44: sipush 3010
     //   47: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aload_1
     //   51: athrow
     //   52: aload_3
-    //   53: invokevirtual 934	com/tencent/wcdb/CursorWindow:acquireReference	()V
+    //   53: invokevirtual 933	com/tencent/wcdb/CursorWindow:acquireReference	()V
     //   56: aload_0
     //   57: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
-    //   60: ldc_w 935
+    //   60: ldc_w 934
     //   63: aload_1
     //   64: aload_2
     //   65: invokevirtual 298	com/tencent/wcdb/database/SQLiteConnection$OperationLog:beginOperation	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/database/SQLiteConnection$Operation;
@@ -1317,22 +1316,22 @@ public final class SQLiteConnection
     //   75: istore 16
     //   77: aload_0
     //   78: aload_1
-    //   79: invokevirtual 903	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
+    //   79: invokevirtual 902	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
     //   82: astore 19
     //   84: aload 20
     //   86: aload 19
-    //   88: invokestatic 906	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
-    //   91: putfield 909	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
+    //   88: invokestatic 905	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
+    //   91: putfield 908	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
     //   94: aload_0
     //   95: aload 19
-    //   97: invokespecial 911	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   97: invokespecial 910	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   100: aload_0
     //   101: aload 19
     //   103: aload_2
     //   104: invokespecial 196	com/tencent/wcdb/database/SQLiteConnection:bindArguments	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;[Ljava/lang/Object;)V
     //   107: aload_0
     //   108: aload 19
-    //   110: invokespecial 913	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   110: invokespecial 912	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   113: aload_0
     //   114: aload 7
     //   116: invokespecial 165	com/tencent/wcdb/database/SQLiteConnection:attachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
@@ -1341,11 +1340,11 @@ public final class SQLiteConnection
     //   123: aload 19
     //   125: invokevirtual 247	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:getPtr	()J
     //   128: aload_3
-    //   129: getfield 938	com/tencent/wcdb/CursorWindow:mWindowPtr	J
+    //   129: getfield 937	com/tencent/wcdb/CursorWindow:mWindowPtr	J
     //   132: iload 4
     //   134: iload 5
     //   136: iload 6
-    //   138: invokestatic 940	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForCursorWindow	(JJJIIZ)J
+    //   138: invokestatic 939	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForCursorWindow	(JJJIIZ)J
     //   141: lstore 17
     //   143: lload 17
     //   145: bipush 32
@@ -1360,7 +1359,7 @@ public final class SQLiteConnection
     //   160: istore 5
     //   162: aload_3
     //   163: iload 9
-    //   165: invokevirtual 943	com/tencent/wcdb/CursorWindow:setStartPosition	(I)V
+    //   165: invokevirtual 942	com/tencent/wcdb/CursorWindow:setStartPosition	(I)V
     //   168: iload 5
     //   170: istore 8
     //   172: iload 11
@@ -1384,42 +1383,42 @@ public final class SQLiteConnection
     //   208: istore 12
     //   210: aload_0
     //   211: aload 19
-    //   213: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   213: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   216: aload_0
     //   217: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   220: iload 16
-    //   222: invokevirtual 891	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperationDeferLog	(I)Z
+    //   222: invokevirtual 890	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperationDeferLog	(I)Z
     //   225: ifeq +73 -> 298
     //   228: aload_0
     //   229: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   232: iload 16
     //   234: new 222	java/lang/StringBuilder
     //   237: dup
-    //   238: ldc_w 945
+    //   238: ldc_w 944
     //   241: invokespecial 227	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   244: aload_3
     //   245: invokevirtual 832	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   248: ldc_w 947
+    //   248: ldc_w 946
     //   251: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   254: iload 4
     //   256: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   259: ldc_w 949
+    //   259: ldc_w 948
     //   262: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   265: iload 9
     //   267: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   270: ldc_w 951
+    //   270: ldc_w 950
     //   273: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   276: iload 5
     //   278: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   281: ldc_w 953
+    //   281: ldc_w 952
     //   284: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: iload 11
     //   289: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   292: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   295: invokevirtual 929	com/tencent/wcdb/database/SQLiteConnection$OperationLog:logOperation	(ILjava/lang/String;)V
+    //   295: invokevirtual 928	com/tencent/wcdb/database/SQLiteConnection$OperationLog:logOperation	(ILjava/lang/String;)V
     //   298: aload_3
-    //   299: invokevirtual 956	com/tencent/wcdb/CursorWindow:releaseReference	()V
-    //   302: sipush 12327
+    //   299: invokevirtual 955	com/tencent/wcdb/CursorWindow:releaseReference	()V
+    //   302: sipush 3010
     //   305: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   308: iload 11
     //   310: ireturn
@@ -1445,7 +1444,7 @@ public final class SQLiteConnection
     //   345: istore 10
     //   347: iload 9
     //   349: istore 12
-    //   351: sipush 12327
+    //   351: sipush 3010
     //   354: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   357: iload 5
     //   359: istore 8
@@ -1476,7 +1475,7 @@ public final class SQLiteConnection
     //   406: istore 12
     //   408: aload_0
     //   409: aload 19
-    //   411: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   411: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   414: iload 5
     //   416: istore 13
     //   418: iload 9
@@ -1489,7 +1488,7 @@ public final class SQLiteConnection
     //   432: istore 10
     //   434: iload 11
     //   436: istore 12
-    //   438: sipush 12327
+    //   438: sipush 3010
     //   441: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   444: iload 5
     //   446: istore 13
@@ -1516,14 +1515,14 @@ public final class SQLiteConnection
     //   484: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   487: iload 16
     //   489: aload_1
-    //   490: invokevirtual 895	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
+    //   490: invokevirtual 894	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
     //   493: iload 13
     //   495: istore 8
     //   497: iload 14
     //   499: istore 10
     //   501: iload 15
     //   503: istore 12
-    //   505: sipush 12327
+    //   505: sipush 3010
     //   508: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   511: iload 13
     //   513: istore 8
@@ -1537,43 +1536,43 @@ public final class SQLiteConnection
     //   526: aload_0
     //   527: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   530: iload 16
-    //   532: invokevirtual 891	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperationDeferLog	(I)Z
+    //   532: invokevirtual 890	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperationDeferLog	(I)Z
     //   535: ifeq +73 -> 608
     //   538: aload_0
     //   539: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   542: iload 16
     //   544: new 222	java/lang/StringBuilder
     //   547: dup
-    //   548: ldc_w 945
+    //   548: ldc_w 944
     //   551: invokespecial 227	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   554: aload_3
     //   555: invokevirtual 832	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   558: ldc_w 947
+    //   558: ldc_w 946
     //   561: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   564: iload 4
     //   566: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   569: ldc_w 949
+    //   569: ldc_w 948
     //   572: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   575: iload 12
     //   577: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   580: ldc_w 951
+    //   580: ldc_w 950
     //   583: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   586: iload 8
     //   588: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   591: ldc_w 953
+    //   591: ldc_w 952
     //   594: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   597: iload 10
     //   599: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   602: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   605: invokevirtual 929	com/tencent/wcdb/database/SQLiteConnection$OperationLog:logOperation	(ILjava/lang/String;)V
-    //   608: sipush 12327
+    //   605: invokevirtual 928	com/tencent/wcdb/database/SQLiteConnection$OperationLog:logOperation	(ILjava/lang/String;)V
+    //   608: sipush 3010
     //   611: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   614: aload_1
     //   615: athrow
     //   616: astore_1
     //   617: aload_3
-    //   618: invokevirtual 956	com/tencent/wcdb/CursorWindow:releaseReference	()V
-    //   621: sipush 12327
+    //   618: invokevirtual 955	com/tencent/wcdb/CursorWindow:releaseReference	()V
+    //   621: sipush 3010
     //   624: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   627: aload_1
     //   628: athrow
@@ -1662,22 +1661,22 @@ public final class SQLiteConnection
   public final long executeForLastInsertedRowId(String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal)
   {
     // Byte code:
-    //   0: sipush 12326
+    //   0: sipush 3009
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +22 -> 29
-    //   10: new 897	java/lang/IllegalArgumentException
+    //   10: new 896	java/lang/IllegalArgumentException
     //   13: dup
-    //   14: ldc_w 899
-    //   17: invokespecial 900	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 898
+    //   17: invokespecial 899	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   20: astore_1
-    //   21: sipush 12326
+    //   21: sipush 3009
     //   24: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_1
     //   28: athrow
     //   29: aload_0
     //   30: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
-    //   33: ldc_w 958
+    //   33: ldc_w 957
     //   36: aload_1
     //   37: aload_2
     //   38: invokevirtual 298	com/tencent/wcdb/database/SQLiteConnection$OperationLog:beginOperation	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/database/SQLiteConnection$Operation;
@@ -1687,22 +1686,22 @@ public final class SQLiteConnection
     //   48: istore 4
     //   50: aload_0
     //   51: aload_1
-    //   52: invokevirtual 903	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
+    //   52: invokevirtual 902	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
     //   55: astore_1
     //   56: aload 7
     //   58: aload_1
-    //   59: invokestatic 906	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
-    //   62: putfield 909	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
+    //   59: invokestatic 905	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
+    //   62: putfield 908	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
     //   65: aload_0
     //   66: aload_1
-    //   67: invokespecial 911	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   67: invokespecial 910	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   70: aload_0
     //   71: aload_1
     //   72: aload_2
     //   73: invokespecial 196	com/tencent/wcdb/database/SQLiteConnection:bindArguments	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;[Ljava/lang/Object;)V
     //   76: aload_0
     //   77: aload_1
-    //   78: invokespecial 913	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   78: invokespecial 912	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   81: aload_0
     //   82: aload_3
     //   83: invokespecial 165	com/tencent/wcdb/database/SQLiteConnection:attachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
@@ -1710,19 +1709,19 @@ public final class SQLiteConnection
     //   87: getfield 206	com/tencent/wcdb/database/SQLiteConnection:mConnectionPtr	J
     //   90: aload_1
     //   91: invokevirtual 247	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:getPtr	()J
-    //   94: invokestatic 960	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForLastInsertedRowId	(JJ)J
+    //   94: invokestatic 959	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForLastInsertedRowId	(JJ)J
     //   97: lstore 5
     //   99: aload_0
     //   100: aload_3
     //   101: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   104: aload_0
     //   105: aload_1
-    //   106: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   106: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   109: aload_0
     //   110: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   113: iload 4
     //   115: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   118: sipush 12326
+    //   118: sipush 3009
     //   121: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   124: lload 5
     //   126: lreturn
@@ -1730,15 +1729,15 @@ public final class SQLiteConnection
     //   128: aload_0
     //   129: aload_3
     //   130: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   133: sipush 12326
+    //   133: sipush 3009
     //   136: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: aload_2
     //   140: athrow
     //   141: astore_2
     //   142: aload_0
     //   143: aload_1
-    //   144: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
-    //   147: sipush 12326
+    //   144: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   147: sipush 3009
     //   150: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   153: aload_2
     //   154: athrow
@@ -1747,8 +1746,8 @@ public final class SQLiteConnection
     //   157: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   160: iload 4
     //   162: aload_1
-    //   163: invokevirtual 895	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
-    //   166: sipush 12326
+    //   163: invokevirtual 894	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
+    //   166: sipush 3009
     //   169: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   172: aload_1
     //   173: athrow
@@ -1757,7 +1756,7 @@ public final class SQLiteConnection
     //   176: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   179: iload 4
     //   181: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   184: sipush 12326
+    //   184: sipush 3009
     //   187: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   190: aload_1
     //   191: athrow
@@ -1789,22 +1788,22 @@ public final class SQLiteConnection
   public final long executeForLong(String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal)
   {
     // Byte code:
-    //   0: sipush 12323
+    //   0: sipush 3006
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +22 -> 29
-    //   10: new 897	java/lang/IllegalArgumentException
+    //   10: new 896	java/lang/IllegalArgumentException
     //   13: dup
-    //   14: ldc_w 899
-    //   17: invokespecial 900	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 898
+    //   17: invokespecial 899	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   20: astore_1
-    //   21: sipush 12323
+    //   21: sipush 3006
     //   24: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_1
     //   28: athrow
     //   29: aload_0
     //   30: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
-    //   33: ldc_w 961
+    //   33: ldc_w 960
     //   36: aload_1
     //   37: aload_2
     //   38: invokevirtual 298	com/tencent/wcdb/database/SQLiteConnection$OperationLog:beginOperation	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/database/SQLiteConnection$Operation;
@@ -1814,22 +1813,22 @@ public final class SQLiteConnection
     //   48: istore 4
     //   50: aload_0
     //   51: aload_1
-    //   52: invokevirtual 903	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
+    //   52: invokevirtual 902	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
     //   55: astore_1
     //   56: aload 7
     //   58: aload_1
-    //   59: invokestatic 906	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
-    //   62: putfield 909	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
+    //   59: invokestatic 905	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
+    //   62: putfield 908	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
     //   65: aload_0
     //   66: aload_1
-    //   67: invokespecial 911	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   67: invokespecial 910	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   70: aload_0
     //   71: aload_1
     //   72: aload_2
     //   73: invokespecial 196	com/tencent/wcdb/database/SQLiteConnection:bindArguments	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;[Ljava/lang/Object;)V
     //   76: aload_0
     //   77: aload_1
-    //   78: invokespecial 913	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   78: invokespecial 912	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   81: aload_0
     //   82: aload_3
     //   83: invokespecial 165	com/tencent/wcdb/database/SQLiteConnection:attachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
@@ -1837,19 +1836,19 @@ public final class SQLiteConnection
     //   87: getfield 206	com/tencent/wcdb/database/SQLiteConnection:mConnectionPtr	J
     //   90: aload_1
     //   91: invokevirtual 247	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:getPtr	()J
-    //   94: invokestatic 963	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForLong	(JJ)J
+    //   94: invokestatic 962	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForLong	(JJ)J
     //   97: lstore 5
     //   99: aload_0
     //   100: aload_3
     //   101: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   104: aload_0
     //   105: aload_1
-    //   106: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   106: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   109: aload_0
     //   110: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   113: iload 4
     //   115: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   118: sipush 12323
+    //   118: sipush 3006
     //   121: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   124: lload 5
     //   126: lreturn
@@ -1857,15 +1856,15 @@ public final class SQLiteConnection
     //   128: aload_0
     //   129: aload_3
     //   130: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   133: sipush 12323
+    //   133: sipush 3006
     //   136: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: aload_2
     //   140: athrow
     //   141: astore_2
     //   142: aload_0
     //   143: aload_1
-    //   144: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
-    //   147: sipush 12323
+    //   144: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   147: sipush 3006
     //   150: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   153: aload_2
     //   154: athrow
@@ -1874,8 +1873,8 @@ public final class SQLiteConnection
     //   157: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   160: iload 4
     //   162: aload_1
-    //   163: invokevirtual 895	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
-    //   166: sipush 12323
+    //   163: invokevirtual 894	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
+    //   166: sipush 3006
     //   169: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   172: aload_1
     //   173: athrow
@@ -1884,7 +1883,7 @@ public final class SQLiteConnection
     //   176: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   179: iload 4
     //   181: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   184: sipush 12323
+    //   184: sipush 3006
     //   187: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   190: aload_1
     //   191: athrow
@@ -1916,22 +1915,22 @@ public final class SQLiteConnection
   public final String executeForString(String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal)
   {
     // Byte code:
-    //   0: sipush 12324
+    //   0: sipush 3007
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +22 -> 29
-    //   10: new 897	java/lang/IllegalArgumentException
+    //   10: new 896	java/lang/IllegalArgumentException
     //   13: dup
-    //   14: ldc_w 899
-    //   17: invokespecial 900	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 898
+    //   17: invokespecial 899	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   20: astore_1
-    //   21: sipush 12324
+    //   21: sipush 3007
     //   24: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_1
     //   28: athrow
     //   29: aload_0
     //   30: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
-    //   33: ldc_w 964
+    //   33: ldc_w 963
     //   36: aload_1
     //   37: aload_2
     //   38: invokevirtual 298	com/tencent/wcdb/database/SQLiteConnection$OperationLog:beginOperation	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/database/SQLiteConnection$Operation;
@@ -1941,22 +1940,22 @@ public final class SQLiteConnection
     //   48: istore 4
     //   50: aload_0
     //   51: aload_1
-    //   52: invokevirtual 903	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
+    //   52: invokevirtual 902	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
     //   55: astore_1
     //   56: aload 5
     //   58: aload_1
-    //   59: invokestatic 906	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
-    //   62: putfield 909	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
+    //   59: invokestatic 905	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
+    //   62: putfield 908	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
     //   65: aload_0
     //   66: aload_1
-    //   67: invokespecial 911	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   67: invokespecial 910	com/tencent/wcdb/database/SQLiteConnection:throwIfStatementForbidden	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   70: aload_0
     //   71: aload_1
     //   72: aload_2
     //   73: invokespecial 196	com/tencent/wcdb/database/SQLiteConnection:bindArguments	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;[Ljava/lang/Object;)V
     //   76: aload_0
     //   77: aload_1
-    //   78: invokespecial 913	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   78: invokespecial 912	com/tencent/wcdb/database/SQLiteConnection:applyBlockGuardPolicy	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   81: aload_0
     //   82: aload_3
     //   83: invokespecial 165	com/tencent/wcdb/database/SQLiteConnection:attachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
@@ -1964,19 +1963,19 @@ public final class SQLiteConnection
     //   87: getfield 206	com/tencent/wcdb/database/SQLiteConnection:mConnectionPtr	J
     //   90: aload_1
     //   91: invokevirtual 247	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:getPtr	()J
-    //   94: invokestatic 966	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForString	(JJ)Ljava/lang/String;
+    //   94: invokestatic 965	com/tencent/wcdb/database/SQLiteConnection:nativeExecuteForString	(JJ)Ljava/lang/String;
     //   97: astore_2
     //   98: aload_0
     //   99: aload_3
     //   100: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   103: aload_0
     //   104: aload_1
-    //   105: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   105: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   108: aload_0
     //   109: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   112: iload 4
     //   114: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   117: sipush 12324
+    //   117: sipush 3007
     //   120: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: aload_2
     //   124: areturn
@@ -1984,15 +1983,15 @@ public final class SQLiteConnection
     //   126: aload_0
     //   127: aload_3
     //   128: invokespecial 169	com/tencent/wcdb/database/SQLiteConnection:detachCancellationSignal	(Lcom/tencent/wcdb/support/CancellationSignal;)V
-    //   131: sipush 12324
+    //   131: sipush 3007
     //   134: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   137: aload_2
     //   138: athrow
     //   139: astore_2
     //   140: aload_0
     //   141: aload_1
-    //   142: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
-    //   145: sipush 12324
+    //   142: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   145: sipush 3007
     //   148: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   151: aload_2
     //   152: athrow
@@ -2001,8 +2000,8 @@ public final class SQLiteConnection
     //   155: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   158: iload 4
     //   160: aload_1
-    //   161: invokevirtual 895	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
-    //   164: sipush 12324
+    //   161: invokevirtual 894	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
+    //   164: sipush 3007
     //   167: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: aload_1
     //   171: athrow
@@ -2011,7 +2010,7 @@ public final class SQLiteConnection
     //   174: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   177: iload 4
     //   179: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   182: sipush 12324
+    //   182: sipush 3007
     //   185: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   188: aload_1
     //   189: athrow
@@ -2040,7 +2039,7 @@ public final class SQLiteConnection
   
   protected final void finalize()
   {
-    AppMethodBeat.i(12300);
+    AppMethodBeat.i(2983);
     try
     {
       if ((this.mPool != null) && (this.mConnectionPtr != 0L)) {
@@ -2052,7 +2051,7 @@ public final class SQLiteConnection
     finally
     {
       super.finalize();
-      AppMethodBeat.o(12300);
+      AppMethodBeat.o(2983);
     }
   }
   
@@ -2063,10 +2062,10 @@ public final class SQLiteConnection
   
   final long getNativeHandle(String paramString)
   {
-    AppMethodBeat.i(12298);
+    AppMethodBeat.i(2981);
     if (this.mConnectionPtr == 0L)
     {
-      AppMethodBeat.o(12298);
+      AppMethodBeat.o(2981);
       return 0L;
     }
     if ((paramString != null) && (this.mNativeOperation == null))
@@ -2076,19 +2075,19 @@ public final class SQLiteConnection
     }
     this.mNativeHandleCount += 1;
     long l = nativeSQLiteHandle(this.mConnectionPtr, true);
-    AppMethodBeat.o(12298);
+    AppMethodBeat.o(2981);
     return l;
   }
   
   final boolean isPreparedStatementInCache(String paramString)
   {
-    AppMethodBeat.i(12320);
+    AppMethodBeat.i(3003);
     if (this.mPreparedStatementCache.get(paramString) != null)
     {
-      AppMethodBeat.o(12320);
+      AppMethodBeat.o(3003);
       return true;
     }
-    AppMethodBeat.o(12320);
+    AppMethodBeat.o(3003);
     return false;
   }
   
@@ -2099,31 +2098,31 @@ public final class SQLiteConnection
   
   public final void onCancel()
   {
-    AppMethodBeat.i(12334);
+    AppMethodBeat.i(3017);
     nativeCancel(this.mConnectionPtr);
-    AppMethodBeat.o(12334);
+    AppMethodBeat.o(3017);
   }
   
   /* Error */
   public final void prepare(String paramString, SQLiteStatementInfo paramSQLiteStatementInfo)
   {
     // Byte code:
-    //   0: sipush 12321
+    //   0: sipush 3004
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +22 -> 29
-    //   10: new 897	java/lang/IllegalArgumentException
+    //   10: new 896	java/lang/IllegalArgumentException
     //   13: dup
-    //   14: ldc_w 899
-    //   17: invokespecial 900	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   14: ldc_w 898
+    //   17: invokespecial 899	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   20: astore_1
-    //   21: sipush 12321
+    //   21: sipush 3004
     //   24: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_1
     //   28: athrow
     //   29: aload_0
     //   30: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
-    //   33: ldc_w 983
+    //   33: ldc_w 982
     //   36: aload_1
     //   37: aconst_null
     //   38: invokevirtual 298	com/tencent/wcdb/database/SQLiteConnection$OperationLog:beginOperation	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)Lcom/tencent/wcdb/database/SQLiteConnection$Operation;
@@ -2133,61 +2132,61 @@ public final class SQLiteConnection
     //   48: istore 4
     //   50: aload_0
     //   51: aload_1
-    //   52: invokevirtual 903	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
+    //   52: invokevirtual 902	com/tencent/wcdb/database/SQLiteConnection:acquirePreparedStatement	(Ljava/lang/String;)Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;
     //   55: astore_1
     //   56: aload 6
     //   58: aload_1
-    //   59: invokestatic 906	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
-    //   62: putfield 909	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
+    //   59: invokestatic 905	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$100	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
+    //   62: putfield 908	com/tencent/wcdb/database/SQLiteConnection$Operation:mType	I
     //   65: aload_2
     //   66: ifnull +44 -> 110
     //   69: aload_2
     //   70: aload_1
     //   71: invokestatic 218	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$200	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)I
-    //   74: putfield 988	com/tencent/wcdb/database/SQLiteStatementInfo:numParameters	I
+    //   74: putfield 987	com/tencent/wcdb/database/SQLiteStatementInfo:numParameters	I
     //   77: aload_2
     //   78: aload_1
     //   79: invokestatic 702	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:access$300	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)Z
-    //   82: putfield 990	com/tencent/wcdb/database/SQLiteStatementInfo:readOnly	Z
+    //   82: putfield 989	com/tencent/wcdb/database/SQLiteStatementInfo:readOnly	Z
     //   85: aload_0
     //   86: getfield 206	com/tencent/wcdb/database/SQLiteConnection:mConnectionPtr	J
     //   89: aload_1
     //   90: invokevirtual 247	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:getPtr	()J
-    //   93: invokestatic 992	com/tencent/wcdb/database/SQLiteConnection:nativeGetColumnCount	(JJ)I
+    //   93: invokestatic 991	com/tencent/wcdb/database/SQLiteConnection:nativeGetColumnCount	(JJ)I
     //   96: istore 5
     //   98: iload 5
     //   100: ifne +31 -> 131
     //   103: aload_2
     //   104: getstatic 77	com/tencent/wcdb/database/SQLiteConnection:EMPTY_STRING_ARRAY	[Ljava/lang/String;
-    //   107: putfield 995	com/tencent/wcdb/database/SQLiteStatementInfo:columnNames	[Ljava/lang/String;
+    //   107: putfield 994	com/tencent/wcdb/database/SQLiteStatementInfo:columnNames	[Ljava/lang/String;
     //   110: aload_0
     //   111: aload_1
-    //   112: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   112: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
     //   115: aload_0
     //   116: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   119: iload 4
     //   121: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   124: sipush 12321
+    //   124: sipush 3004
     //   127: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: return
     //   131: aload_2
     //   132: iload 5
     //   134: anewarray 75	java/lang/String
-    //   137: putfield 995	com/tencent/wcdb/database/SQLiteStatementInfo:columnNames	[Ljava/lang/String;
+    //   137: putfield 994	com/tencent/wcdb/database/SQLiteStatementInfo:columnNames	[Ljava/lang/String;
     //   140: iconst_0
     //   141: istore_3
     //   142: iload_3
     //   143: iload 5
     //   145: if_icmpge -35 -> 110
     //   148: aload_2
-    //   149: getfield 995	com/tencent/wcdb/database/SQLiteStatementInfo:columnNames	[Ljava/lang/String;
+    //   149: getfield 994	com/tencent/wcdb/database/SQLiteStatementInfo:columnNames	[Ljava/lang/String;
     //   152: iload_3
     //   153: aload_0
     //   154: getfield 206	com/tencent/wcdb/database/SQLiteConnection:mConnectionPtr	J
     //   157: aload_1
     //   158: invokevirtual 247	com/tencent/wcdb/database/SQLiteConnection$PreparedStatement:getPtr	()J
     //   161: iload_3
-    //   162: invokestatic 997	com/tencent/wcdb/database/SQLiteConnection:nativeGetColumnName	(JJI)Ljava/lang/String;
+    //   162: invokestatic 996	com/tencent/wcdb/database/SQLiteConnection:nativeGetColumnName	(JJI)Ljava/lang/String;
     //   165: aastore
     //   166: iload_3
     //   167: iconst_1
@@ -2197,8 +2196,8 @@ public final class SQLiteConnection
     //   173: astore_2
     //   174: aload_0
     //   175: aload_1
-    //   176: invokevirtual 918	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
-    //   179: sipush 12321
+    //   176: invokevirtual 917	com/tencent/wcdb/database/SQLiteConnection:releasePreparedStatement	(Lcom/tencent/wcdb/database/SQLiteConnection$PreparedStatement;)V
+    //   179: sipush 3004
     //   182: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: aload_2
     //   186: athrow
@@ -2207,8 +2206,8 @@ public final class SQLiteConnection
     //   189: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   192: iload 4
     //   194: aload_1
-    //   195: invokevirtual 895	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
-    //   198: sipush 12321
+    //   195: invokevirtual 894	com/tencent/wcdb/database/SQLiteConnection$OperationLog:failOperation	(ILjava/lang/Exception;)V
+    //   198: sipush 3004
     //   201: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   204: aload_1
     //   205: athrow
@@ -2217,7 +2216,7 @@ public final class SQLiteConnection
     //   208: getfield 118	com/tencent/wcdb/database/SQLiteConnection:mRecentOperations	Lcom/tencent/wcdb/database/SQLiteConnection$OperationLog;
     //   211: iload 4
     //   213: invokevirtual 311	com/tencent/wcdb/database/SQLiteConnection$OperationLog:endOperation	(I)V
-    //   216: sipush 12321
+    //   216: sipush 3004
     //   219: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   222: aload_1
     //   223: athrow
@@ -2248,7 +2247,7 @@ public final class SQLiteConnection
   final void reconfigure(SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration)
   {
     int i1 = 0;
-    AppMethodBeat.i(12318);
+    AppMethodBeat.i(3001);
     this.mOnlyAllowReadOnlyOperations = false;
     long l1 = WCDBInitializationProbe.apiEnv;
     long l2 = nativeSQLiteHandle(this.mConnectionPtr, true);
@@ -2267,7 +2266,7 @@ public final class SQLiteConnection
     finally
     {
       nativeSQLiteHandle(this.mConnectionPtr, false);
-      AppMethodBeat.o(12318);
+      AppMethodBeat.o(3001);
     }
     int i;
     int j;
@@ -2324,7 +2323,7 @@ public final class SQLiteConnection
       if (i1 != 0) {
         setUpdateNotificationFromConfiguration();
       }
-      AppMethodBeat.o(12318);
+      AppMethodBeat.o(3001);
       return;
       i = 0;
       break;
@@ -2339,29 +2338,29 @@ public final class SQLiteConnection
   
   final void releasePreparedStatement(PreparedStatement paramPreparedStatement)
   {
-    AppMethodBeat.i(12330);
+    AppMethodBeat.i(3013);
     PreparedStatement.access$402(paramPreparedStatement, false);
     if (paramPreparedStatement.mInCache) {
       try
       {
         resetStatement(paramPreparedStatement, true);
-        AppMethodBeat.o(12330);
+        AppMethodBeat.o(3013);
         return;
       }
       catch (SQLiteException localSQLiteException)
       {
         this.mPreparedStatementCache.remove(paramPreparedStatement.mSql);
-        AppMethodBeat.o(12330);
+        AppMethodBeat.o(3013);
         return;
       }
     }
     finalizePreparedStatement(paramPreparedStatement);
-    AppMethodBeat.o(12330);
+    AppMethodBeat.o(3013);
   }
   
   final void setAcquisitionState(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(12319);
+    AppMethodBeat.i(3002);
     if (paramBoolean1)
     {
       this.mAcquiredThread = Thread.currentThread();
@@ -2370,19 +2369,19 @@ public final class SQLiteConnection
       {
         this.mAcquiredStack = this.mAcquiredThread.getStackTrace();
         this.mAcquiredTimestamp = System.currentTimeMillis();
-        AppMethodBeat.o(12319);
+        AppMethodBeat.o(3002);
         return;
       }
       this.mAcquiredStack = null;
       this.mAcquiredTimestamp = 0L;
-      AppMethodBeat.o(12319);
+      AppMethodBeat.o(3002);
       return;
     }
     this.mAcquiredThread = null;
     this.mAcquiredTid = 0;
     this.mAcquiredStack = null;
     this.mAcquiredTimestamp = 0L;
-    AppMethodBeat.o(12319);
+    AppMethodBeat.o(3002);
   }
   
   final void setOnlyAllowReadOnlyOperations(boolean paramBoolean)
@@ -2392,37 +2391,37 @@ public final class SQLiteConnection
   
   public final String toString()
   {
-    AppMethodBeat.i(12346);
+    AppMethodBeat.i(3029);
     String str = "SQLiteConnection: " + this.mConfiguration.path + " (" + this.mConnectionId + ")";
-    AppMethodBeat.o(12346);
+    AppMethodBeat.o(3029);
     return str;
   }
   
   final SQLiteTrace.TraceInfo<String> traceCurrentOperationUnsafe()
   {
-    AppMethodBeat.i(12341);
+    AppMethodBeat.i(3024);
     SQLiteTrace.TraceInfo localTraceInfo = this.mRecentOperations.traceCurrentOperation();
-    AppMethodBeat.o(12341);
+    AppMethodBeat.o(3024);
     return localTraceInfo;
   }
   
   final SQLiteTrace.TraceInfo<StackTraceElement[]> tracePersistAcquisitionUnsafe()
   {
-    AppMethodBeat.i(12342);
+    AppMethodBeat.i(3025);
     Object localObject = this.mAcquiredStack;
     if (localObject == null)
     {
-      AppMethodBeat.o(12342);
+      AppMethodBeat.o(3025);
       return null;
     }
     localObject = new SQLiteTrace.TraceInfo(localObject, this.mAcquiredTimestamp, this.mAcquiredTid);
-    AppMethodBeat.o(12342);
+    AppMethodBeat.o(3025);
     return localObject;
   }
   
   public final Pair<Integer, Integer> walCheckpoint(String paramString)
   {
-    AppMethodBeat.i(12328);
+    AppMethodBeat.i(3011);
     String str;
     if (paramString != null)
     {
@@ -2435,11 +2434,10 @@ public final class SQLiteConnection
     }
     long l = nativeWalCheckpoint(this.mConnectionPtr, str);
     paramString = new Pair(Integer.valueOf((int)(l >> 32)), Integer.valueOf((int)(l & 0xFFFFFFFF)));
-    AppMethodBeat.o(12328);
+    AppMethodBeat.o(3011);
     return paramString;
   }
   
-  @SuppressLint({"SimpleDateFormat"})
   static final class Operation
   {
     private static final SimpleDateFormat sDateFormat;
@@ -2456,16 +2454,16 @@ public final class SQLiteConnection
     
     static
     {
-      AppMethodBeat.i(12274);
+      AppMethodBeat.i(2956);
       sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-      AppMethodBeat.o(12274);
+      AppMethodBeat.o(2956);
     }
     
     private String getFormattedStartTime()
     {
-      AppMethodBeat.i(12272);
+      AppMethodBeat.i(2954);
       String str = sDateFormat.format(new Date(this.mStartTime));
-      AppMethodBeat.o(12272);
+      AppMethodBeat.o(2954);
       return str;
     }
     
@@ -2482,7 +2480,7 @@ public final class SQLiteConnection
     
     public final void describe(StringBuilder paramStringBuilder, boolean paramBoolean)
     {
-      AppMethodBeat.i(12271);
+      AppMethodBeat.i(2952);
       paramStringBuilder.append(this.mKind);
       int i;
       label149:
@@ -2536,12 +2534,12 @@ public final class SQLiteConnection
       if ((this.mException != null) && (this.mException.getMessage() != null)) {
         paramStringBuilder.append(", exception=\"").append(this.mException.getMessage()).append("\"");
       }
-      AppMethodBeat.o(12271);
+      AppMethodBeat.o(2952);
     }
     
     final JSONObject dumpJSON(boolean paramBoolean)
     {
-      AppMethodBeat.i(141574);
+      AppMethodBeat.i(2953);
       Object localObject = new JSONObject().put("start", this.mStartTime).put("kind", this.mKind);
       long l;
       JSONObject localJSONObject;
@@ -2550,14 +2548,14 @@ public final class SQLiteConnection
         l = this.mEndTime;
         localJSONObject = ((JSONObject)localObject).put("duration", l - this.mStartTime).put("status", getStatus()).putOpt("sql", this.mSql);
         if (this.mTid <= 0) {
-          break label128;
+          break label130;
         }
       }
-      label128:
+      label130:
       for (localObject = Integer.valueOf(this.mTid);; localObject = null)
       {
         localObject = localJSONObject.putOpt("tid", localObject).putOpt("exception", this.mException);
-        AppMethodBeat.o(141574);
+        AppMethodBeat.o(2953);
         return localObject;
         l = System.currentTimeMillis();
         break;
@@ -2576,28 +2574,28 @@ public final class SQLiteConnection
     
     private OperationLog()
     {
-      AppMethodBeat.i(12275);
+      AppMethodBeat.i(2957);
       this.mOperations = new SQLiteConnection.Operation[20];
-      AppMethodBeat.o(12275);
+      AppMethodBeat.o(2957);
     }
     
     private boolean endOperationDeferLogLocked(SQLiteConnection.Operation paramOperation)
     {
-      AppMethodBeat.i(12281);
+      AppMethodBeat.i(2963);
       if (paramOperation != null)
       {
         paramOperation.mEndTime = System.currentTimeMillis();
         paramOperation.mFinished = true;
         if ((paramOperation.mException != null) && (paramOperation.mException.getMessage() != null))
         {
-          AppMethodBeat.o(12281);
+          AppMethodBeat.o(2963);
           return true;
         }
         boolean bool = SQLiteDebug.shouldLogSlowQuery(paramOperation.mEndTime - paramOperation.mStartTime);
-        AppMethodBeat.o(12281);
+        AppMethodBeat.o(2963);
         return bool;
       }
-      AppMethodBeat.o(12281);
+      AppMethodBeat.o(2963);
       return false;
     }
     
@@ -2612,14 +2610,14 @@ public final class SQLiteConnection
     
     private void logOperationLocked(SQLiteConnection.Operation paramOperation, String paramString)
     {
-      AppMethodBeat.i(12282);
+      AppMethodBeat.i(2964);
       StringBuilder localStringBuilder = new StringBuilder();
       paramOperation.describe(localStringBuilder, false);
       if (paramString != null) {
         localStringBuilder.append(", ").append(paramString);
       }
       Log.i("WCDB.SQLiteConnection", localStringBuilder.toString());
-      AppMethodBeat.o(12282);
+      AppMethodBeat.o(2964);
     }
     
     private int newOperationCookieLocked(int paramInt)
@@ -2632,7 +2630,7 @@ public final class SQLiteConnection
     final SQLiteConnection.Operation beginOperation(String paramString1, String paramString2, Object[] paramArrayOfObject)
     {
       int i = 0;
-      AppMethodBeat.i(12276);
+      AppMethodBeat.i(2958);
       for (;;)
       {
         int j;
@@ -2686,7 +2684,7 @@ public final class SQLiteConnection
         localOperation1.mCookie = newOperationCookieLocked(j);
         localOperation1.mTid = SQLiteConnection.this.mAcquiredTid;
         this.mIndex = j;
-        AppMethodBeat.o(12276);
+        AppMethodBeat.o(2958);
         return localOperation1;
         label260:
         i += 1;
@@ -2695,7 +2693,7 @@ public final class SQLiteConnection
     
     final String describeCurrentOperation()
     {
-      AppMethodBeat.i(12283);
+      AppMethodBeat.i(2965);
       synchronized (this.mOperations)
       {
         Object localObject1 = this.mOperations[this.mIndex];
@@ -2704,17 +2702,17 @@ public final class SQLiteConnection
           StringBuilder localStringBuilder = new StringBuilder();
           ((SQLiteConnection.Operation)localObject1).describe(localStringBuilder, false);
           localObject1 = localStringBuilder.toString();
-          AppMethodBeat.o(12283);
+          AppMethodBeat.o(2965);
           return localObject1;
         }
-        AppMethodBeat.o(12283);
+        AppMethodBeat.o(2965);
         return null;
       }
     }
     
     final void dump(Printer paramPrinter, boolean paramBoolean)
     {
-      AppMethodBeat.i(12285);
+      AppMethodBeat.i(2967);
       for (;;)
       {
         synchronized (this.mOperations)
@@ -2737,7 +2735,7 @@ public final class SQLiteConnection
               j += 1;
               localOperation = this.mOperations[i];
               if ((localOperation == null) || (j >= 20)) {
-                AppMethodBeat.o(12285);
+                AppMethodBeat.o(2967);
               }
             }
             else
@@ -2755,7 +2753,7 @@ public final class SQLiteConnection
     
     final JSONArray dumpJSON(boolean paramBoolean)
     {
-      AppMethodBeat.i(141575);
+      AppMethodBeat.i(2968);
       JSONArray localJSONArray = new JSONArray();
       int i;
       int j;
@@ -2768,13 +2766,13 @@ public final class SQLiteConnection
         {
           localJSONArray.put(localOperation.dumpJSON(paramBoolean));
           if (i <= 0) {
-            break label103;
+            break label106;
           }
           i -= 1;
         }
         else
         {
-          AppMethodBeat.o(141575);
+          AppMethodBeat.o(2968);
           return localJSONArray;
         }
       }
@@ -2782,14 +2780,14 @@ public final class SQLiteConnection
       {
         j += 1;
         break;
-        label103:
+        label106:
         i = 19;
       }
     }
     
     final void endOperation(int paramInt)
     {
-      AppMethodBeat.i(12278);
+      AppMethodBeat.i(2960);
       synchronized (this.mOperations)
       {
         SQLiteConnection.Operation localOperation = getOperationLocked(paramInt);
@@ -2804,20 +2802,20 @@ public final class SQLiteConnection
         if (!"prepare".equals(str2)) {
           SQLiteConnection.this.mPool.traceExecute(str1, paramInt, l1 - l2);
         }
-        AppMethodBeat.o(12278);
+        AppMethodBeat.o(2960);
         return;
       }
     }
     
     final boolean endOperationDeferLog(int paramInt)
     {
-      AppMethodBeat.i(12279);
+      AppMethodBeat.i(2961);
       synchronized (this.mOperations)
       {
         SQLiteConnection.Operation localOperation = getOperationLocked(paramInt);
         if (localOperation == null)
         {
-          AppMethodBeat.o(12279);
+          AppMethodBeat.o(2961);
           return false;
         }
         boolean bool = endOperationDeferLogLocked(localOperation);
@@ -2829,52 +2827,52 @@ public final class SQLiteConnection
         if (!"prepare".equals(str2)) {
           SQLiteConnection.this.mPool.traceExecute(str1, paramInt, l1 - l2);
         }
-        AppMethodBeat.o(12279);
+        AppMethodBeat.o(2961);
         return bool;
       }
     }
     
     final void failOperation(int paramInt, Exception paramException)
     {
-      AppMethodBeat.i(12277);
+      AppMethodBeat.i(2959);
       synchronized (this.mOperations)
       {
         SQLiteConnection.Operation localOperation = getOperationLocked(paramInt);
         if (localOperation != null) {
           localOperation.mException = paramException;
         }
-        AppMethodBeat.o(12277);
+        AppMethodBeat.o(2959);
         return;
       }
     }
     
     final void logOperation(int paramInt, String paramString)
     {
-      AppMethodBeat.i(12280);
+      AppMethodBeat.i(2962);
       synchronized (this.mOperations)
       {
         SQLiteConnection.Operation localOperation = getOperationLocked(paramInt);
         if (localOperation != null) {
           logOperationLocked(localOperation, paramString);
         }
-        AppMethodBeat.o(12280);
+        AppMethodBeat.o(2962);
         return;
       }
     }
     
     final SQLiteTrace.TraceInfo<String> traceCurrentOperation()
     {
-      AppMethodBeat.i(12284);
+      AppMethodBeat.i(2966);
       synchronized (this.mOperations)
       {
         Object localObject1 = this.mOperations[this.mIndex];
         if ((localObject1 != null) && (!((SQLiteConnection.Operation)localObject1).mFinished))
         {
           localObject1 = new SQLiteTrace.TraceInfo(((SQLiteConnection.Operation)localObject1).mSql, ((SQLiteConnection.Operation)localObject1).mStartTime, ((SQLiteConnection.Operation)localObject1).mTid);
-          AppMethodBeat.o(12284);
+          AppMethodBeat.o(2966);
           return localObject1;
         }
-        AppMethodBeat.o(12284);
+        AppMethodBeat.o(2966);
         return null;
       }
     }
@@ -2895,101 +2893,101 @@ public final class SQLiteConnection
     
     PreparedStatement(SQLiteConnection paramSQLiteConnection)
     {
-      AppMethodBeat.i(12286);
+      AppMethodBeat.i(2969);
       this.mConnection = new WeakReference(paramSQLiteConnection);
-      AppMethodBeat.o(12286);
+      AppMethodBeat.o(2969);
     }
     
     public final void attachCancellationSignal(CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(12289);
+      AppMethodBeat.i(2972);
       SQLiteConnection localSQLiteConnection = (SQLiteConnection)this.mConnection.get();
       if (localSQLiteConnection == null)
       {
-        AppMethodBeat.o(12289);
+        AppMethodBeat.o(2972);
         return;
       }
       SQLiteConnection.access$1100(localSQLiteConnection, paramCancellationSignal);
-      AppMethodBeat.o(12289);
+      AppMethodBeat.o(2972);
     }
     
     public final void beginOperation(String paramString, Object[] paramArrayOfObject)
     {
-      AppMethodBeat.i(12291);
+      AppMethodBeat.i(2974);
       SQLiteConnection localSQLiteConnection = (SQLiteConnection)this.mConnection.get();
       if (localSQLiteConnection == null)
       {
-        AppMethodBeat.o(12291);
+        AppMethodBeat.o(2974);
         return;
       }
       this.mOperation = localSQLiteConnection.mRecentOperations.beginOperation(paramString, this.mSql, paramArrayOfObject);
       this.mOperation.mType = this.mType;
-      AppMethodBeat.o(12291);
+      AppMethodBeat.o(2974);
     }
     
     public final void bindArguments(Object[] paramArrayOfObject)
     {
-      AppMethodBeat.i(12287);
+      AppMethodBeat.i(2970);
       SQLiteConnection localSQLiteConnection = (SQLiteConnection)this.mConnection.get();
       if (localSQLiteConnection == null)
       {
-        AppMethodBeat.o(12287);
+        AppMethodBeat.o(2970);
         return;
       }
       SQLiteConnection.access$900(localSQLiteConnection, this, paramArrayOfObject);
-      AppMethodBeat.o(12287);
+      AppMethodBeat.o(2970);
     }
     
     public final void detachCancellationSignal(CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(12290);
+      AppMethodBeat.i(2973);
       SQLiteConnection localSQLiteConnection = (SQLiteConnection)this.mConnection.get();
       if (localSQLiteConnection == null)
       {
-        AppMethodBeat.o(12290);
+        AppMethodBeat.o(2973);
         return;
       }
       SQLiteConnection.access$1200(localSQLiteConnection, paramCancellationSignal);
-      AppMethodBeat.o(12290);
+      AppMethodBeat.o(2973);
     }
     
     public final void endOperation(String paramString)
     {
-      AppMethodBeat.i(12293);
+      AppMethodBeat.i(2976);
       if (this.mOperation == null)
       {
-        AppMethodBeat.o(12293);
+        AppMethodBeat.o(2976);
         return;
       }
       SQLiteConnection localSQLiteConnection = (SQLiteConnection)this.mConnection.get();
       if (localSQLiteConnection == null)
       {
-        AppMethodBeat.o(12293);
+        AppMethodBeat.o(2976);
         return;
       }
       if (localSQLiteConnection.mRecentOperations.endOperationDeferLog(this.mOperation.mCookie)) {
         localSQLiteConnection.mRecentOperations.logOperation(this.mOperation.mCookie, paramString);
       }
       this.mOperation = null;
-      AppMethodBeat.o(12293);
+      AppMethodBeat.o(2976);
     }
     
     public final void failOperation(Exception paramException)
     {
-      AppMethodBeat.i(12292);
+      AppMethodBeat.i(2975);
       if (this.mOperation == null)
       {
-        AppMethodBeat.o(12292);
+        AppMethodBeat.o(2975);
         return;
       }
       SQLiteConnection localSQLiteConnection = (SQLiteConnection)this.mConnection.get();
       if (localSQLiteConnection == null)
       {
-        AppMethodBeat.o(12292);
+        AppMethodBeat.o(2975);
         return;
       }
       localSQLiteConnection.mRecentOperations.failOperation(this.mOperation.mCookie, paramException);
-      AppMethodBeat.o(12292);
+      AppMethodBeat.o(2975);
     }
     
     public final long getPtr()
@@ -3014,15 +3012,15 @@ public final class SQLiteConnection
     
     public final void reset(boolean paramBoolean)
     {
-      AppMethodBeat.i(12288);
+      AppMethodBeat.i(2971);
       SQLiteConnection localSQLiteConnection = (SQLiteConnection)this.mConnection.get();
       if (localSQLiteConnection == null)
       {
-        AppMethodBeat.o(12288);
+        AppMethodBeat.o(2971);
         return;
       }
       SQLiteConnection.access$1000(localSQLiteConnection, this, paramBoolean);
-      AppMethodBeat.o(12288);
+      AppMethodBeat.o(2971);
     }
   }
   
@@ -3036,7 +3034,7 @@ public final class SQLiteConnection
     
     public final void dump(Printer paramPrinter)
     {
-      AppMethodBeat.i(12295);
+      AppMethodBeat.i(2978);
       paramPrinter.println("  Prepared statement cache:");
       Object localObject1 = snapshot();
       if (!((Map)localObject1).isEmpty())
@@ -3054,27 +3052,27 @@ public final class SQLiteConnection
           }
           i += 1;
         }
-        AppMethodBeat.o(12295);
+        AppMethodBeat.o(2978);
         return;
       }
       paramPrinter.println("    <none>");
-      AppMethodBeat.o(12295);
+      AppMethodBeat.o(2978);
     }
     
     protected final void entryRemoved(boolean paramBoolean, String paramString, SQLiteConnection.PreparedStatement paramPreparedStatement1, SQLiteConnection.PreparedStatement paramPreparedStatement2)
     {
-      AppMethodBeat.i(12294);
+      AppMethodBeat.i(2977);
       SQLiteConnection.PreparedStatement.access$502(paramPreparedStatement1, false);
       if (!paramPreparedStatement1.mInUse) {
         SQLiteConnection.access$1400(SQLiteConnection.this, paramPreparedStatement1);
       }
-      AppMethodBeat.o(12294);
+      AppMethodBeat.o(2977);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteConnection
  * JD-Core Version:    0.7.0.1
  */

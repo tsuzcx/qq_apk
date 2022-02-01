@@ -1,55 +1,51 @@
 package com.tencent.mobileqq.multimsg;
 
-import aupg;
-import azri;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-public class MultiMsgManager$5
+class MultiMsgManager$5
   implements Runnable
 {
-  public MultiMsgManager$5(aupg paramaupg, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
+  MultiMsgManager$5(MultiMsgManager paramMultiMsgManager, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    int j;
-    int k;
-    StringBuilder localStringBuilder;
+    Object localObject = this.a.getMessageFacade().a(this.b, this.c, this.d);
     if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
     {
-      localObject = aupg.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      localObject = MultiMsgManager.a().a(this.a, this.d);
       if (localObject != null)
       {
-        j = ((List)localObject).size();
-        k = aupg.a().a((Collection)localObject);
+        int i = ((List)localObject).size();
+        int j = MultiMsgManager.a().a((Collection)localObject);
         localObject = new HashMap();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.e ^ true);
+        localStringBuilder.append("");
+        ((HashMap)localObject).put("result", localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
-        if (!this.jdField_a_of_type_Boolean) {
-          break label228;
-        }
+        localStringBuilder.append(i);
+        localStringBuilder.append("");
+        ((HashMap)localObject).put("msgCount", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(j);
+        localStringBuilder.append("");
+        ((HashMap)localObject).put("picCount", localStringBuilder.toString());
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "multiMsgSend", this.e, 30000L, 0L, (HashMap)localObject, "");
       }
-    }
-    label228:
-    for (int i = 0;; i = 1)
-    {
-      ((HashMap)localObject).put("result", i + "");
-      ((HashMap)localObject).put("msgCount", j + "");
-      ((HashMap)localObject).put("picCount", k + "");
-      azri.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgManager.5
  * JD-Core Version:    0.7.0.1
  */

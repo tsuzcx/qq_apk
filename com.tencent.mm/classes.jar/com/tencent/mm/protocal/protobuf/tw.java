@@ -1,90 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class tw
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int wMu;
-  public LinkedList<tv> wMv;
-  
-  public tw()
-  {
-    AppMethodBeat.i(126190);
-    this.wMv = new LinkedList();
-    AppMethodBeat.o(126190);
-  }
+  public String content;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(126191);
+    AppMethodBeat.i(259649);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.wMu);
-      paramVarArgs.e(2, 8, this.wMv);
-      AppMethodBeat.o(126191);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.bl(1, this.wMu);
-      i = e.a.a.a.c(2, 8, this.wMv);
-      AppMethodBeat.o(126191);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.wMv.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.content != null) {
+        paramVarArgs.g(1, this.content);
       }
-      AppMethodBeat.o(126191);
+      AppMethodBeat.o(259649);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.content == null) {
+        break label209;
+      }
+    }
+    label209:
+    for (paramInt = i.a.a.b.b.a.h(1, this.content) + 0;; paramInt = 0)
     {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      tw localtw = (tw)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      AppMethodBeat.o(259649);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(126191);
-        return -1;
-      case 1: 
-        localtw.wMu = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(126191);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(259649);
         return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new tv();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((tv)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localtw.wMv.add(localObject1);
-        paramInt += 1;
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        tw localtw = (tw)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(259649);
+          return -1;
+        }
+        localtw.content = locala.ajGk.readString();
+        AppMethodBeat.o(259649);
+        return 0;
       }
-      AppMethodBeat.o(126191);
-      return 0;
+      AppMethodBeat.o(259649);
+      return -1;
     }
-    AppMethodBeat.o(126191);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.tw
  * JD-Core Version:    0.7.0.1
  */

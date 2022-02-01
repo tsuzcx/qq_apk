@@ -11,36 +11,76 @@ public final class AbstractList$Companion
 {
   public final void checkBoundsIndexes$kotlin_stdlib(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < 0) || (paramInt2 > paramInt3)) {
-      throw ((Throwable)new IndexOutOfBoundsException("startIndex: " + paramInt1 + ", endIndex: " + paramInt2 + ", size: " + paramInt3));
+    if ((paramInt1 >= 0) && (paramInt2 <= paramInt3))
+    {
+      if (paramInt1 <= paramInt2) {
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startIndex: ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" > endIndex: ");
+      localStringBuilder.append(paramInt2);
+      throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
     }
-    if (paramInt1 > paramInt2) {
-      throw ((Throwable)new IllegalArgumentException("startIndex: " + paramInt1 + " > endIndex: " + paramInt2));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startIndex: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", endIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramInt3);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   public final void checkElementIndex$kotlin_stdlib(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= paramInt2)) {
-      throw ((Throwable)new IndexOutOfBoundsException("index: " + paramInt1 + ", size: " + paramInt2));
+    if ((paramInt1 >= 0) && (paramInt1 < paramInt2)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("index: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramInt2);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   public final void checkPositionIndex$kotlin_stdlib(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 > paramInt2)) {
-      throw ((Throwable)new IndexOutOfBoundsException("index: " + paramInt1 + ", size: " + paramInt2));
+    if ((paramInt1 >= 0) && (paramInt1 <= paramInt2)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("index: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramInt2);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   public final void checkRangeIndexes$kotlin_stdlib(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < 0) || (paramInt2 > paramInt3)) {
-      throw ((Throwable)new IndexOutOfBoundsException("fromIndex: " + paramInt1 + ", toIndex: " + paramInt2 + ", size: " + paramInt3));
+    if ((paramInt1 >= 0) && (paramInt2 <= paramInt3))
+    {
+      if (paramInt1 <= paramInt2) {
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fromIndex: ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" > toIndex: ");
+      localStringBuilder.append(paramInt2);
+      throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
     }
-    if (paramInt1 > paramInt2) {
-      throw ((Throwable)new IllegalArgumentException("fromIndex: " + paramInt1 + " > toIndex: " + paramInt2));
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fromIndex: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramInt3);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   public final boolean orderedEquals$kotlin_stdlib(@NotNull Collection<?> paramCollection1, @NotNull Collection<?> paramCollection2)
@@ -63,16 +103,15 @@ public final class AbstractList$Companion
   public final int orderedHashCode$kotlin_stdlib(@NotNull Collection<?> paramCollection)
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "c");
-    int i = 1;
     paramCollection = paramCollection.iterator();
-    if (paramCollection.hasNext())
+    int j;
+    for (int i = 1; paramCollection.hasNext(); i = i * 31 + j)
     {
       Object localObject = paramCollection.next();
-      if (localObject != null) {}
-      for (int j = localObject.hashCode();; j = 0)
-      {
-        i = j + i * 31;
-        break;
+      if (localObject != null) {
+        j = localObject.hashCode();
+      } else {
+        j = 0;
       }
     }
     return i;
@@ -80,7 +119,7 @@ public final class AbstractList$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.AbstractList.Companion
  * JD-Core Version:    0.7.0.1
  */

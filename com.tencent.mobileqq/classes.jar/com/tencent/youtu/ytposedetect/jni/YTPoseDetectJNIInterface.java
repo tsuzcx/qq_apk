@@ -7,9 +7,11 @@ import java.io.ByteArrayOutputStream;
 
 public class YTPoseDetectJNIInterface
 {
-  public static native String base64Encode(byte[] paramArrayOfByte);
+  private static YTPoseDetectJNIInterface.IYtLoggerListener loggerListener;
   
   public static native boolean canReflect();
+  
+  public static native void configNativeLog(boolean paramBoolean);
   
   public static byte[] encodeJpeg(Bitmap paramBitmap)
   {
@@ -22,13 +24,9 @@ public class YTPoseDetectJNIInterface
   
   public static native byte[] getBestImage(int paramInt);
   
-  public static native Bitmap getBitmapFromYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
-  
   public static native byte[] getEyeImage(int paramInt);
   
   public static native byte[][] getFrameList();
-  
-  public static native int getFrameNum();
   
   public static native byte[] getMouthImage(int paramInt);
   
@@ -38,19 +36,42 @@ public class YTPoseDetectJNIInterface
   
   public static native boolean isRecordingDone();
   
-  public static native int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3);
+  public static void nativeLog(int paramInt, String paramString)
+  {
+    YTPoseDetectJNIInterface.IYtLoggerListener localIYtLoggerListener = loggerListener;
+    if (localIYtLoggerListener != null) {
+      localIYtLoggerListener.log("[YTPoseDetectJNIInterface.nativeLog]", paramString);
+    }
+  }
+  
+  public static void nativeLog(String paramString1, String paramString2)
+  {
+    YTPoseDetectJNIInterface.IYtLoggerListener localIYtLoggerListener = loggerListener;
+    if (localIYtLoggerListener != null) {
+      localIYtLoggerListener.log(paramString1, paramString2);
+    }
+  }
+  
+  public static native int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt5);
   
   public static native void releaseAll();
   
   public static native void resetDetect();
   
-  public static native void setFrameNum(int paramInt);
+  public static native byte[] rotateYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  
+  public static void setLoggerListener(YTPoseDetectJNIInterface.IYtLoggerListener paramIYtLoggerListener)
+  {
+    loggerListener = paramIYtLoggerListener;
+  }
   
   public static native void setSafetyLevel(int paramInt);
+  
+  public static native int updateParam(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface
  * JD-Core Version:    0.7.0.1
  */

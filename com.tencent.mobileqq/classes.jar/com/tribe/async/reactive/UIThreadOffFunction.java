@@ -26,16 +26,17 @@ public class UIThreadOffFunction<IN>
   
   private boolean isValidate()
   {
-    if (this.mRef == null) {
+    Object localObject = this.mRef;
+    if (localObject == null) {
       return true;
     }
-    IEventReceiver localIEventReceiver = (IEventReceiver)this.mRef.get();
-    if (localIEventReceiver == null)
+    localObject = (IEventReceiver)((WeakReference)localObject).get();
+    if (localObject == null)
     {
       SLog.w("async.UIThreadOffFunction", "receiver is null for WeakReference.");
       return false;
     }
-    return localIEventReceiver.isValidate();
+    return ((IEventReceiver)localObject).isValidate();
   }
   
   protected void call(IN paramIN)
@@ -56,7 +57,7 @@ public class UIThreadOffFunction<IN>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.reactive.UIThreadOffFunction
  * JD-Core Version:    0.7.0.1
  */

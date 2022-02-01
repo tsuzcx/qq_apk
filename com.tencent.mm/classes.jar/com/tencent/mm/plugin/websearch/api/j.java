@@ -1,29 +1,25 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.content.Context;
 import com.tencent.mm.kernel.c.a;
-import java.util.Map;
 
 public abstract interface j
   extends a
 {
-  public abstract void a(Context paramContext, int paramInt, String paramString1, String paramString2, Map<String, String> paramMap);
+  public abstract void asS(int paramInt);
   
-  public abstract void a(Context paramContext, int paramInt1, String paramString1, String paramString2, Map<String, String> paramMap, int paramInt2);
+  public abstract String bip(String paramString);
   
-  public abstract void a(Context paramContext, int paramInt1, String paramString1, String paramString2, Map<String, String> paramMap, String paramString3, int paramInt2);
+  public abstract void dB(int paramInt, String paramString);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, Map<String, String> paramMap);
+  public abstract int ipB();
   
-  public abstract void ad(Context paramContext, int paramInt);
+  public abstract String ipC();
   
-  public abstract void b(Context paramContext, int paramInt, String paramString1, String paramString2, Map<String, String> paramMap, String paramString3);
-  
-  public abstract void z(Context paramContext, String paramString1, String paramString2);
+  public abstract void nQ(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.j
  * JD-Core Version:    0.7.0.1
  */

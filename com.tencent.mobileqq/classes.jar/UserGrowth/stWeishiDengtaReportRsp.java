@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stWeishiDengtaReportRsp
   extends JceStruct
 {
-  public int code;
+  public int code = 0;
   public String msg = "";
   
   public stWeishiDengtaReportRsp() {}
@@ -27,14 +27,15 @@ public final class stWeishiDengtaReportRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.code, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stWeishiDengtaReportRsp
  * JD-Core Version:    0.7.0.1
  */

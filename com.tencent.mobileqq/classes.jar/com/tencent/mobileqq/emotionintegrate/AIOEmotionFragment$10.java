@@ -1,32 +1,52 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import aqae;
-import aqaf;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.EmoticonObserver;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 class AIOEmotionFragment$10
-  implements Runnable
+  extends EmoticonObserver
 {
-  AIOEmotionFragment$10(AIOEmotionFragment paramAIOEmotionFragment, List paramList, aqae paramaqae) {}
+  AIOEmotionFragment$10(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool = false;
-    this.this$0.jdField_a_of_type_Aqaf.a(this.jdField_a_of_type_JavaUtilList);
-    this.this$0.jdField_a_of_type_Aqaf.notifyDataSetChanged();
-    if (this.jdField_a_of_type_Aqae != null) {}
-    for (int i = this.this$0.jdField_a_of_type_Aqaf.a(this.jdField_a_of_type_Aqae);; i = 0)
+    if ((paramInt != 6) && (paramInt != 7) && (paramInt != 107)) {
+      return;
+    }
+    if (paramObject == null) {
+      return;
+    }
+    EmoticonResp localEmoticonResp = (EmoticonResp)paramObject;
+    int i;
+    if (paramBoolean)
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.setSelection(i);
-      if (QLog.isColorLevel())
-      {
-        if (this.jdField_a_of_type_Aqae == null) {
-          bool = true;
-        }
-        QLog.d("AIOEmotionFragment", 2, new Object[] { "mGallery setSelection pos:", Integer.valueOf(i), " dataIsNull:", Boolean.valueOf(bool) });
+      i = localEmoticonResp.delEpId;
+      if ((localEmoticonResp.keySeq != null) && (!localEmoticonResp.keySeq.equals(""))) {
+        paramObject = localEmoticonResp.keySeq;
+      } else {
+        paramObject = HardCodeUtil.a(2131898285);
+      }
+    }
+    else
+    {
+      paramObject = HardCodeUtil.a(2131898286);
+      i = -404;
+    }
+    if (TextUtils.isEmpty(localEmoticonResp.emoticonId))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
       }
       return;
+    }
+    QQAppInterface localQQAppInterface = this.a.c();
+    if (localQQAppInterface != null) {
+      ((IEmoticonManagerService)localQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).asyncFindEmoticon(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new AIOEmotionFragment.10.1(this, paramInt, localQQAppInterface, i, paramObject));
     }
   }
 }

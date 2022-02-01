@@ -61,14 +61,15 @@ public final class b
     paramJceOutputStream.write(this.c, 2);
     paramJceOutputStream.write(this.d, 3);
     paramJceOutputStream.write(this.e, 4);
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 5);
+    byte[] arrayOfByte = this.f;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.security.b
  * JD-Core Version:    0.7.0.1
  */

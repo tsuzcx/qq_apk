@@ -1,94 +1,25 @@
 package com.tencent.mm.plugin.story.model;
 
-import a.f.b.j;
-import a.l;
-import a.l.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/model/StoryTimelineConvert$pullXml;", "", "()V", "sb", "Ljava/lang/StringBuffer;", "getSb", "()Ljava/lang/StringBuffer;", "setSb", "(Ljava/lang/StringBuffer;)V", "xml", "", "getXml", "()Ljava/lang/String;", "addTag", "", "tag", "value", "", "emptyTag", "endTag", "setText", "", "startTag", "values", "", "text", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/model/StoryTimelineHelper$ContentObjTAG;", "", "()V", "XML_MEDIALIST", "", "getXML_MEDIALIST", "()Ljava/lang/String;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p$b
 {
-  StringBuffer jDt;
+  public static final b Skv;
+  private static final String Skw;
   
-  public p$b()
+  static
   {
-    AppMethodBeat.i(109144);
-    this.jDt = new StringBuffer();
-    AppMethodBeat.o(109144);
+    AppMethodBeat.i(118773);
+    Skv = new b();
+    Skw = ".mediaList";
+    AppMethodBeat.o(118773);
   }
   
-  public final void Gp(String paramString)
+  public static String hwm()
   {
-    AppMethodBeat.i(109138);
-    j.q(paramString, "tag");
-    this.jDt.append("<" + paramString + '>');
-    AppMethodBeat.o(109138);
-  }
-  
-  public final void Gq(String paramString)
-  {
-    AppMethodBeat.i(109139);
-    j.q(paramString, "tag");
-    this.jDt.append("</" + paramString + '>');
-    AppMethodBeat.o(109139);
-  }
-  
-  public final void adh(String paramString)
-  {
-    AppMethodBeat.i(109140);
-    j.q(paramString, "value");
-    setText(paramString);
-    AppMethodBeat.o(109140);
-  }
-  
-  public final void n(String paramString, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(109143);
-    j.q(paramString, "tag");
-    j.q(paramMap, "values");
-    this.jDt.append("<".concat(String.valueOf(paramString)));
-    paramString = paramMap.keySet().iterator();
-    while (paramString.hasNext())
-    {
-      String str1 = (String)paramString.next();
-      String str2 = (String)paramMap.get(str1);
-      this.jDt.append(" " + str1 + "=\"" + str2 + "\" ");
-    }
-    this.jDt.append(">");
-    paramMap.clear();
-    AppMethodBeat.o(109143);
-  }
-  
-  public final void setText(int paramInt)
-  {
-    AppMethodBeat.i(109142);
-    this.jDt.append(paramInt);
-    AppMethodBeat.o(109142);
-  }
-  
-  public final void setText(String paramString)
-  {
-    AppMethodBeat.i(109141);
-    j.q(paramString, "value");
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(109141);
-      return;
-    }
-    CharSequence localCharSequence = (CharSequence)paramString;
-    p.a locala = p.svy;
-    if (m.a(localCharSequence, (CharSequence)p.cAX(), false))
-    {
-      this.jDt.append("<![CDATA[" + bo.apT(paramString) + "]]>");
-      AppMethodBeat.o(109141);
-      return;
-    }
-    this.jDt.append("<![CDATA[" + paramString + "]]>");
-    AppMethodBeat.o(109141);
+    return Skw;
   }
 }
 

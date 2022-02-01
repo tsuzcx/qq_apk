@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class DefineAvatarInfo
   extends JceStruct
 {
-  public byte cImgFmt;
-  public byte cImgStyle;
+  public byte cImgFmt = 0;
+  public byte cImgStyle = 0;
   
   public DefineAvatarInfo() {}
   
@@ -32,7 +32,7 @@ public final class DefineAvatarInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.DefineAvatarInfo
  * JD-Core Version:    0.7.0.1
  */

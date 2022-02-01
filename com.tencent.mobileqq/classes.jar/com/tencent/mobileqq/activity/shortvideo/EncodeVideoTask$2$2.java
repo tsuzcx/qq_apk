@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import akci;
-import akck;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.editor.database.PublishVideoEntry;
 
-public class EncodeVideoTask$2$2
+class EncodeVideoTask$2$2
   implements Runnable
 {
-  public EncodeVideoTask$2$2(akck paramakck, int paramInt, PublishVideoEntry paramPublishVideoEntry, long paramLong) {}
+  EncodeVideoTask$2$2(EncodeVideoTask.2 param2, int paramInt, PublishVideoEntry paramPublishVideoEntry, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akck.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_Long);
+    this.d.a.a(this.a, this.b, this.c);
   }
 }
 

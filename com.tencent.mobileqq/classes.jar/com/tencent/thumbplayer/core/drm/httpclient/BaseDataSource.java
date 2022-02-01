@@ -1,6 +1,6 @@
 package com.tencent.thumbplayer.core.drm.httpclient;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public abstract class BaseDataSource
@@ -73,7 +73,7 @@ public abstract class BaseDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.drm.httpclient.BaseDataSource
  * JD-Core Version:    0.7.0.1
  */

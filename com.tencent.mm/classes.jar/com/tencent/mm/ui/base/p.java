@@ -1,170 +1,115 @@
 package com.tencent.mm.ui.base;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.Window;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ui.widget.a.j;
+import com.tencent.mm.view.MaxHeightScrollView;
+import org.xwalk.core.Log;
 
 public final class p
-  extends q
+  extends j
 {
-  private View Qz;
-  public ProgressBar jba;
-  private Context mContext;
-  private int style;
-  private TextView zag;
+  private TextView adRk;
+  private MaxHeightScrollView adRm;
+  public boolean adRn;
+  private Button lDJ;
+  private Button njI;
+  public TextView qjr;
+  private TextView titleTv;
   
-  private p(Context paramContext, int paramInt1, int paramInt2)
+  public p(Context paramContext)
   {
-    super(paramContext, paramInt1);
-    AppMethodBeat.i(106711);
-    this.mContext = paramContext;
-    this.style = paramInt2;
-    paramInt1 = i;
-    switch (this.style)
+    super(paramContext);
+    AppMethodBeat.i(251347);
+    this.adRn = false;
+    aFf(a.h.half_bottom_tips_double_dlg_layout);
+    this.titleTv = ((TextView)this.rootView.findViewById(a.g.tips_title));
+    this.qjr = ((TextView)this.rootView.findViewById(a.g.tips_hint));
+    this.lDJ = ((Button)this.rootView.findViewById(a.g.next_btn));
+    this.njI = ((Button)this.rootView.findViewById(a.g.cancel_btn));
+    this.adRk = ((TextView)this.rootView.findViewById(a.g.tips_hint_entry3));
+    this.adRm = ((MaxHeightScrollView)this.rootView.findViewById(a.g.scroll));
+    if (this.adRm != null)
     {
-    }
-    for (paramInt1 = i;; paramInt1 = 2130970267)
-    {
-      this.Qz = w.hM(this.mContext).inflate(paramInt1, null);
-      this.zag = ((TextView)this.Qz.findViewById(2131821848));
-      this.jba = ((ProgressBar)this.Qz.findViewById(2131821847));
-      setCanceledOnTouchOutside(true);
-      AppMethodBeat.o(106711);
-      return;
-    }
-  }
-  
-  private static p a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    AppMethodBeat.i(106716);
-    int i = paramInt2;
-    if (paramInt2 <= 0) {
-      switch (paramInt1)
+      if ((this.adRm.getContext() instanceof Activity))
       {
-      default: 
-        i = 2131493886;
+        paramContext = this.adRm.getContext().getResources().getDisplayMetrics();
+        if (paramContext != null)
+        {
+          this.adRm.setMaxHeight((int)(paramContext.heightPixels * 0.45F));
+          Log.i("MicroMsg.MMHalfBottomTipsDoubleBtnDialog", "displayMetrics.heightPixels = " + paramContext.heightPixels);
+          AppMethodBeat.o(251347);
+          return;
+        }
+        Log.i("MicroMsg.MMHalfBottomTipsDoubleBtnDialog", "displayMetrics is null");
+        AppMethodBeat.o(251347);
+        return;
       }
+      Log.i("MicroMsg.MMHalfBottomTipsDoubleBtnDialog", "display is null");
     }
-    for (;;)
-    {
-      paramContext = new p(paramContext, i, paramInt1);
-      paramContext.setMessage(paramCharSequence);
-      paramContext.setCancelable(paramBoolean);
-      paramContext.setOnCancelListener(paramOnCancelListener);
-      paramContext.setCanceledOnTouchOutside(false);
-      AppMethodBeat.o(106716);
-      return paramContext;
-      i = 2131493881;
-      continue;
-      i = 2131493881;
-      continue;
-      i = 2131493881;
-      continue;
-      i = 2131493886;
-    }
+    AppMethodBeat.o(251347);
   }
   
-  public static p b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
+  public final p bAe(String paramString)
   {
-    AppMethodBeat.i(106718);
-    paramContext = a(paramContext, paramCharSequence, paramBoolean, paramInt1, paramInt2, paramOnCancelListener);
-    paramContext.show();
-    AppMethodBeat.o(106718);
-    return paramContext;
+    AppMethodBeat.i(251349);
+    this.titleTv.setText(paramString);
+    AppMethodBeat.o(251349);
+    return this;
   }
   
-  public static p b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
+  public final p bAf(String paramString)
   {
-    AppMethodBeat.i(106717);
-    paramContext = b(paramContext, paramCharSequence, paramBoolean, 0, -1, paramOnCancelListener);
-    AppMethodBeat.o(106717);
-    return paramContext;
+    AppMethodBeat.i(251351);
+    this.qjr.setText(paramString);
+    AppMethodBeat.o(251351);
+    return this;
   }
   
-  public static p d(Context paramContext, CharSequence paramCharSequence)
+  public final p bAg(String paramString)
   {
-    AppMethodBeat.i(106715);
-    paramContext = a(paramContext, paramCharSequence, true, 0, -1, null);
-    AppMethodBeat.o(106715);
-    return paramContext;
+    AppMethodBeat.i(251359);
+    this.lDJ.setText(paramString);
+    AppMethodBeat.o(251359);
+    return this;
   }
   
-  public final void dismiss()
+  public final p j(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(106720);
-    try
-    {
-      super.dismiss();
-      AppMethodBeat.o(106720);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(106720);
-    }
+    AppMethodBeat.i(251352);
+    this.lDJ.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(251352);
+    return this;
   }
   
-  protected final void onCreate(Bundle paramBundle)
+  public final p jmq()
   {
-    AppMethodBeat.i(106712);
-    super.onCreate(paramBundle);
-    setContentView(this.Qz, new LinearLayout.LayoutParams(-1, -1));
-    paramBundle = getWindow().getAttributes();
-    paramBundle.width = -1;
-    paramBundle.height = -2;
-    if (this.style == 2)
-    {
-      getWindow().addFlags(2);
-      paramBundle.dimAmount = 0.65F;
-    }
-    onWindowAttributesChanged(paramBundle);
-    AppMethodBeat.o(106712);
+    AppMethodBeat.i(251362);
+    this.adRk.setVisibility(8);
+    AppMethodBeat.o(251362);
+    return this;
   }
   
-  public final void setCancelable(boolean paramBoolean)
+  public final p k(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(106713);
-    super.setCancelable(paramBoolean);
-    setCanceledOnTouchOutside(paramBoolean);
-    AppMethodBeat.o(106713);
-  }
-  
-  public final void setMessage(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(106714);
-    this.zag.setText(paramCharSequence);
-    AppMethodBeat.o(106714);
-  }
-  
-  public final void show()
-  {
-    AppMethodBeat.i(106719);
-    try
-    {
-      super.show();
-      AppMethodBeat.o(106719);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
-      AppMethodBeat.o(106719);
-    }
+    AppMethodBeat.i(251354);
+    this.njI.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(251354);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.p
  * JD-Core Version:    0.7.0.1
  */

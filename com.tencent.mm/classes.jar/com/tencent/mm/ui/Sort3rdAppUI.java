@@ -1,113 +1,125 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.f;
+import com.tencent.mm.pluginsdk.model.app.as;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.n;
-import com.tencent.mm.pluginsdk.model.app.o;
-import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.pluginsdk.model.app.s;
+import com.tencent.mm.pluginsdk.model.app.t;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.ui.widget.sortlist.DragSortListView;
+import com.tencent.mm.ui.widget.sortlist.DragSortListView.h;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Sort3rdAppUI
   extends MMActivity
 {
-  private DragSortListView lml;
-  private long xCZ;
-  private Sort3rdAppUI.a zff;
-  private List<f> zfg;
+  private long NlD;
+  private Sort3rdAppUI.a adKl;
+  private List<g> adKm;
+  private DragSortListView xSK;
   
   protected int getLayoutId()
   {
-    return 2130970900;
+    return R.i.gou;
   }
   
   protected void initView()
   {
-    AppMethodBeat.i(29905);
+    AppMethodBeat.i(33757);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(29897);
+        AppMethodBeat.i(33749);
         Sort3rdAppUI.this.finish();
-        AppMethodBeat.o(29897);
+        AppMethodBeat.o(33749);
         return true;
       }
     });
-    setMMTitle(getString(2131296404));
-    this.lml = ((DragSortListView)findViewById(2131821736));
-    this.lml.setDropListener(new Sort3rdAppUI.2(this));
-    AppMethodBeat.o(29905);
+    setMMTitle(getString(R.l.actionbar_setting));
+    this.xSK = ((DragSortListView)findViewById(R.h.listview));
+    this.xSK.setDropListener(new DragSortListView.h()
+    {
+      public final void drop(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(33750);
+        g localg = (g)Sort3rdAppUI.a(Sort3rdAppUI.this).getItem(paramAnonymousInt1);
+        Sort3rdAppUI.a(Sort3rdAppUI.this).remove(localg);
+        Sort3rdAppUI.a(Sort3rdAppUI.this).insert(localg, paramAnonymousInt2);
+        AppMethodBeat.o(33750);
+      }
+    });
+    AppMethodBeat.o(33757);
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(29904);
+    AppMethodBeat.i(33756);
     super.onCreate(paramBundle);
-    this.xCZ = getIntent().getLongExtra("KFlag", -1L);
+    this.NlD = getIntent().getLongExtra("KFlag", -1L);
     initView();
-    this.zfg = g.b(this, this.xCZ, true);
-    paramBundle = al.dlM().ny(this.xCZ);
+    this.adKm = com.tencent.mm.pluginsdk.model.app.h.c(this, this.NlD, true);
+    paramBundle = as.iIK().yj(this.NlD);
     if ((paramBundle != null) && (paramBundle.size() > 0)) {
-      Collections.sort(this.zfg, new Sort3rdAppUI.3(this, paramBundle));
+      Collections.sort(this.adKm, new Comparator() {});
     }
-    this.zff = new Sort3rdAppUI.a(this, this.zfg, this.xCZ);
-    this.lml.setAdapter(this.zff);
-    AppMethodBeat.o(29904);
+    this.adKl = new Sort3rdAppUI.a(this, this.adKm, this.NlD);
+    this.xSK.setAdapter(this.adKl);
+    AppMethodBeat.o(33756);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(29906);
+    AppMethodBeat.i(33758);
     super.onDestroy();
-    AppMethodBeat.o(29906);
+    AppMethodBeat.o(33758);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(29907);
+    AppMethodBeat.i(33759);
     super.onPause();
-    if (this.zff != null)
+    if (this.adKl != null)
     {
-      List localList = this.zff.lee;
-      o localo = al.dlM();
-      long l = this.xCZ;
+      List localList = this.adKl.xGG;
+      t localt = as.iIK();
+      long l = this.NlD;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("delete from AppSort");
       ((StringBuilder)localObject).append(" where flag = ").append(l).append(" ");
       localObject = ((StringBuilder)localObject).toString();
-      localo.db.execSQL("AppSort", (String)localObject);
+      localt.db.execSQL("AppSort", (String)localObject);
       if ((localList != null) && (localList.size() > 0))
       {
-        aw.aaz();
-        l = c.Rq().kr(Thread.currentThread().getId());
-        localo = al.dlM();
+        bh.bCz();
+        l = c.getDataDB().beginTransaction(Thread.currentThread().getId());
+        localt = as.iIK();
         int i = 0;
         while (i < localList.size())
         {
-          localObject = new n();
-          ((n)localObject).field_flag = this.xCZ;
-          ((n)localObject).field_appId = ((f)localList.get(i)).field_appId;
-          ((n)localObject).field_sortId = i;
-          localo.a((n)localObject);
+          localObject = new s();
+          ((s)localObject).field_flag = this.NlD;
+          ((s)localObject).field_appId = ((g)localList.get(i)).field_appId;
+          ((s)localObject).field_sortId = i;
+          localt.a((s)localObject);
           i += 1;
         }
-        aw.aaz();
-        c.Rq().nY(l);
+        bh.bCz();
+        c.getDataDB().endTransaction(l);
       }
     }
-    AppMethodBeat.o(29907);
+    AppMethodBeat.o(33759);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -118,7 +130,7 @@ public class Sort3rdAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.Sort3rdAppUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:padding="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/bl9" android:background="@drawable/l8" android:padding="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lt" android:text="@string/bgg" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/ac7" app:layout_constraintDimensionRatio="366:205" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/fk" />
+    <androidx.constraintlayout.widget.Barrier android:id="@id/ac3" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="kr5" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv,biz_slot_pic_cnt_icon,biz_slot_pic_cnt" />
+    <include layout="@layout/wr" />
+    <ImageView android:id="@id/biz_slot_pic_cnt_icon" android:background="@raw/biz_time_line_pic_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/g" app:layout_constraintBottom_toBottomOf="@id/biz_slot_pic_cnt" app:layout_constraintRight_toLeftOf="@id/biz_slot_pic_cnt" app:layout_constraintTop_toTopOf="@id/biz_slot_pic_cnt" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/al6" android:id="@id/biz_slot_pic_cnt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m2" android:layout_marginBottom="@dimen/m2" app:layout_constraintBottom_toBottomOf="@id/ac7" app:layout_constraintRight_toRightOf="@id/ac7" />
+</androidx.constraintlayout.widget.ConstraintLayout>

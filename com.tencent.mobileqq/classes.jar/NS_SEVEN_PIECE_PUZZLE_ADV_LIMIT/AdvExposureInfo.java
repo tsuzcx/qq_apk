@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class AdvExposureInfo
   extends JceStruct
 {
-  static int cache_iAuditResult = 0;
-  public int iAuditResult;
+  static int cache_iAuditResult;
+  public int iAuditResult = 0;
   public String strAdvId = "";
   public String strName = "";
   
@@ -30,18 +30,20 @@ public final class AdvExposureInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strAdvId != null) {
-      paramJceOutputStream.write(this.strAdvId, 0);
+    String str = this.strAdvId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 1);
+    str = this.strName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iAuditResult, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_SEVEN_PIECE_PUZZLE_ADV_LIMIT.AdvExposureInfo
  * JD-Core Version:    0.7.0.1
  */

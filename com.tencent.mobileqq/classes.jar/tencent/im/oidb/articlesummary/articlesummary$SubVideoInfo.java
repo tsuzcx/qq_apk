@@ -22,15 +22,16 @@ public final class articlesummary$SubVideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 56 }, new String[] { "uint64_article_id", "bytes_article_title", "bytes_first_page_pic_url", "bytes_jum_url", "bytes_inner_uniq_id", "uint32_video_play_count", "uint32_duration" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, SubVideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 56 }, new String[] { "uint64_article_id", "bytes_article_title", "bytes_first_page_pic_url", "bytes_jum_url", "bytes_inner_uniq_id", "uint32_video_play_count", "uint32_duration" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, localInteger, localInteger }, SubVideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.SubVideoInfo
  * JD-Core Version:    0.7.0.1
  */

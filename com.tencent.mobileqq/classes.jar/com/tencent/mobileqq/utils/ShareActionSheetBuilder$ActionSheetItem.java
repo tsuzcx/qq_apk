@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.utils;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View.OnClickListener;
-import bibv;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -17,29 +18,44 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_ADD_COLOR_NOTE = 70;
   public static final int ACTION_ADD_FAVORITER = 6;
   public static final int ACTION_ADD_FRIEND = 35;
+  public static final int ACTION_ADD_GOODS = 156;
+  public static final int ACTION_ADD_MINIAPP_TO_CURRENT_TROOP = 159;
   public static final int ACTION_ADD_SHORTCUT = 14;
   public static final int ACTION_ADD_TROOP_APP = 15;
   public static final int ACTION_ADJUST_FONT_SIZE = 7;
+  public static final int ACTION_BARRAGE_CLOSE = 143;
+  public static final int ACTION_BARRAGE_OPEN = 142;
   public static final int ACTION_CANCEL_ONLY_SEE_FRIEND = 103;
+  public static final int ACTION_CANCEL_PUSH_DISABLE = 167;
   public static final int ACTION_CARTON_DETAIL = 125;
   public static final int ACTION_CHANNEL_FACE2FACE_SHARE_TROOP = 24;
   public static final int ACTION_CHANNEL_QR_CODE = 23;
   public static final int ACTION_CHOOSE_FACE = 106;
+  public static final int ACTION_CLOSE_BARRAGE = 164;
+  public static final int ACTION_COLORNOTE_UPCOMING = 139;
   public static final int ACTION_COMIC_SWITCH_SECRET_MODE_ = 33;
   public static final int ACTION_COPYLINK = 1;
+  public static final int ACTION_COPY_AVGAME_ROOM_ID = 160;
   public static final int ACTION_DELETE = 40;
+  public static final int ACTION_DELETE_FANS = 137;
+  public static final int ACTION_DELETE_HAS_PUSH = 140;
   public static final int ACTION_DIRECT_SEND_TO_FRIEND = 41;
   public static final int ACTION_DIRECT_SEND_TO_STORY = 42;
   public static final int ACTION_DOWNLOAD = 124;
   public static final int ACTION_EDIT = 94;
   public static final int ACTION_EXPORT_TENCENT_DOCS = 68;
+  public static final int ACTION_FAN_GROUP_MANAGER = 152;
+  public static final int ACTION_FAV_DETAIL = 130;
+  public static final int ACTION_FAV_GROUP = 129;
   public static final int ACTION_FILE_CREATE_LINK = 122;
   public static final int ACTION_FILE_CREATE_QR = 123;
   public static final int ACTION_FILE_IMPORT_READER = 118;
   public static final int ACTION_FILE_IMPORT_TXDOC = 119;
+  public static final int ACTION_FILE_OPEN_WITH_MINIAPP = 166;
   public static final int ACTION_FILE_PRINT = 121;
   public static final int ACTION_FILE_SAFE_FORWARD = 120;
   public static final int ACTION_FOLLOW = 87;
+  public static final int ACTION_FOLLOW_MANAGE = 144;
   public static final int ACTION_GALLERY_EMOTION_LIST = 65;
   public static final int ACTION_GALLERY_FILE_FORWARD_TO_PC = 67;
   public static final int ACTION_GALLERY_PIC_ADD_TO_EMO = 48;
@@ -67,6 +83,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_GO_SUBSCRIPT_AIO = 30;
   public static final int ACTION_HIDE_FEED = 85;
   public static final int ACTION_HIDE_HIM = 86;
+  public static final int ACTION_HIDE_THIS_WORK = 141;
   public static final int ACTION_LAUNCH_CHAT = 92;
   public static final int ACTION_MINIAPP_ABOUT = 78;
   public static final int ACTION_MINIAPP_ADD_TO_MINE = 76;
@@ -80,11 +97,15 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_NOT_CARE = 38;
   public static final int ACTION_ONLY_SEE_FRIEND = 102;
   public static final int ACTION_OPEN_APP_DETAIL = 16;
+  public static final int ACTION_OPEN_BARRAGE = 163;
+  public static final int ACTION_OPEN_FILE_WITHOUT_DEFAULT_APP = 132;
   public static final int ACTION_OPEN_IN_QQ_BROWSER = 5;
   public static final int ACTION_OPEN_IN_SYS_BROWSER = 4;
   public static final int ACTION_OPEN_WEISHI_ACCOUNT = 45;
+  public static final int ACTION_ORDER_LIST = 155;
   public static final int ACTION_PA_REPORT = 36;
   public static final int ACTION_PITU = 105;
+  public static final int ACTION_PRIVATE_MESSAGE = 138;
   public static final int ACTION_PROMOTION = 89;
   public static final int ACTION_PUPU_ADD_SHELF = 109;
   public static final int ACTION_PUPU_BOOKMARK = 110;
@@ -96,6 +117,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_PUPU_PRIVACY = 116;
   public static final int ACTION_PUPU_PRIVACY_CANCEL = 117;
   public static final int ACTION_PUPU_SHOW_OPINION = 113;
+  public static final int ACTION_QCIRCLE_PRIVATE_MESSAGE = 162;
   public static final int ACTION_REFRESH_TROOP_APP_VIEW = 18;
   public static final int ACTION_REMOVE_COLOR_NOTE = 82;
   public static final int ACTION_REMOVE_FAVORITE = 84;
@@ -104,6 +126,8 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_REPORT_VIDEO_NOT_LIKE = 22;
   public static final int ACTION_REPRINT_BLOG = 101;
   public static final int ACTION_REPRINT_PHOTO = 100;
+  public static final int ACTION_RIJ_VIDEO_SETTING = 165;
+  public static final int ACTION_RIJ_WATCH_WORD = 133;
   public static final int ACTION_SAVE = 39;
   public static final int ACTION_SAVE_PIC = 43;
   public static final int ACTION_SAVE_TO_PICTURE = 47;
@@ -128,29 +152,43 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_SETTING = 83;
   public static final int ACTION_SET_BACKGROUND = 107;
   public static final int ACTION_SET_DRESS = 98;
+  public static final int ACTION_SET_MINIAPP_TO_TROOP = 158;
   public static final int ACTION_SET_PRIVATE = 95;
   public static final int ACTION_SET_TOP = 96;
+  public static final int ACTION_SHARE_PICTURE = 153;
   public static final int ACTION_SHARE_TROOP_APP = 17;
   public static final int ACTION_SHOW_MORE_INFO = 31;
+  public static final int ACTION_SHOW_ORIGINALURL = 131;
+  public static final int ACTION_STORE_MANAGER = 157;
+  public static final int ACTION_SYNC_QZONE = 154;
   public static final int ACTION_TAKE_SCREEN_SHOT = 21;
+  public static final int ACTION_TRIBE_ADD_TO_DIGEST = 145;
+  public static final int ACTION_TRIBE_CANCEL_DIGEST = 146;
+  public static final int ACTION_TRIBE_FEEDBACK = 151;
+  public static final int ACTION_TRIBE_INTEREST = 147;
+  public static final int ACTION_TRIBE_LOOK_OWNER = 148;
+  public static final int ACTION_TRIBE_PULL_BLACK = 150;
+  public static final int ACTION_TRIBE_PUSH_TOPIC = 149;
   public static final int ACTION_UNFOLLOW = 32;
   public static final int ACTION_UN_SET_TOP = 97;
+  public static final int ACTION_VIDEO_PLAY_FEEDBACK = 161;
   public static final int ACTION_VIEW_DRESS = 99;
   public static final int ACTION_VIEW_PUB_ACCOUNT = 8;
   public static final int ACTION_WATCH_ON_TV = 104;
   public static final int ACTION_WATCH_ORIGINAL_VIDEO = 88;
-  private static final int[] jdField_a_of_type_ArrayOfInt;
-  private static final int[] b;
-  private IllegalStateException jdField_a_of_type_JavaLangIllegalStateException;
-  public int action;
-  public String argus;
+  private static final int[] b = { 2130848055, 2130848056, 2130848015, 2130848016, 2130848021, 2130848022, 2130848007, 2130848008, 2130848004, 2130848005, 2130848061, 2130848062, 2130848044, 2130848045, 2130848051, 2130848052, 2130848025, 2130848026, 2130848027, 2130848028, 2130848087, 2130848088, 2130848034, 2130848035, 2130848019, 2130848020, 2130844779, 2130844781, 2130844784, 2130844783, 2130845858, 2130845859, 2130843695, 2130848089, 2130848090, 2130839218, 2130839480, 2130839515, 2130848029, 2130848030, 2130848011, 2130848012, 2130848013, 2130848014, 2130843696, 2130843706, 2130843691, 2130843697, 2130843693, 2130848057, 2130848058, 2130848452, 2130848685, 2130839223, 2130843679, 2130848107, 2130844266, 2130848040, 2130848041, 2130848023, 2130848024, 2130848017, 2130848018, 2130848104, 2130848105, 2130848000, 2130848069, 2130848070, 2130848073, 2130848074, 2130848001, 2130848002, 2130848075, 2130848076, 2130848049, 2130848050, 2130845687, 2130852790, 2130852791, 2130848038, 2130848039, 2130848047, 2130848048, 2130848071, 2130848072, 2130851501, 2130848108, 2130851500, 2130848046, 2130841060, 2130851811, 2130851812, 2130840471, 2130842105, 2130842106, 2130842115, 2130848043, 2130842116, 2130842117, 2130842118, 2130842119, 2130848112, 2130848088, 2130848079, 2130848080, 2130848053, 2130848054, 2130842107, 2130842108, 2130842111, 2130842112, 2130842109, 2130842110, 2130842113, 2130842114, 2130843688, 2130849773, 2130849770, 2130849768, 2130849767, 2130849766, 2130849759, 2130849760, 2130849757, 2130849758, 2130849771, 2130849761, 2130848067, 2130848068, 2130849769, 2130849772, 2130850344, 2130850345, 2130849756, 2130849763, 2130850348, 2130850343, 2130848077, 2130848078, 2130843688, 2130842818, 2130842816, 2130842820, 2130842821, 2130842828, 2130842834, 2130842824, 2130842825, 2130842830, 2130842831, 2130840472, 2130845612, 2130837689, 2130837690, 2130840463, 2130845608, 2130845621, 2130845622, 2130845610, 2130845611, 2130845613, 2130845614, 2130845577, 2130845578, 2130845573, 2130845574, 2130845579, 2130845580, 2130845606, 2130845607, 2130840563, 2130840564, 2130840559, 2130840560, 2130851499, 2130851498, 2130851487, 2130851486, 2130851491, 2130851490, 2130851483, 2130851482, 2130851489, 2130851488, 2130841783, 2130841784, 2130845054, 2130845053, 2130845052, 2130845051, 2130851488, 2130851479, 2130851478, 2130851493, 2130851492, 2130851481, 2130851480, 2130851495, 2130851494, 2130851485, 2130851484, 2130851477, 2130851476, 2130848067, 2130848068, 2130844689, 2130844688, 2130844691, 2130844690, 2130844693, 2130844692, 2130844697, 2130844696, 2130844699, 2130844698, 2130844687, 2130844686, 2130844695, 2130844694, 2130851239, 2130845248, 2130845247, 2130853459, 2130853460, 2130853457, 2130853458, 2130851335, 2130851336, 2130844296, 2130844295, 2130851497, 2130851496, 2130848110, 2130848111 };
+  private static final int[] c;
+  private static boolean d = false;
+  private IllegalStateException a;
+  public int action = 0;
+  public String argus = null;
   public boolean enable = true;
   public int firstLineCount;
-  public int icon;
-  public Drawable iconDrawable;
+  public int icon = 0;
+  public Drawable iconDrawable = null;
   public boolean iconNeedBg = true;
   public int id;
-  public String label;
+  public String label = null;
   public View.OnClickListener listener;
   public String reportID;
   public String uin;
@@ -159,268 +197,334 @@ public class ShareActionSheetBuilder$ActionSheetItem
   
   static
   {
-    int j = 0;
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845851, 2130845852, 2130845813, 2130845814, 2130845819, 2130845820, 2130845807, 2130845808, 2130845804, 2130845805, 2130845857, 2130845858, 2130845842, 2130845843, 2130845849, 2130845850, 2130845823, 2130845824, 2130845825, 2130845826, 2130845881, 2130845882, 2130845832, 2130845833, 2130845817, 2130845818, 2130843255, 2130843257, 2130843260, 2130843259, 2130844026, 2130844027, 2130842298, 2130845883, 2130845884, 2130838914, 2130839128, 2130839161, 2130845827, 2130845828, 2130845811, 2130845812, 2130842299, 2130842309, 2130842294, 2130842300, 2130842296, 2130845853, 2130845854, 2130846219, 2130846463, 2130838919, 2130842282, 2130845900, 2130842778, 2130845838, 2130845839, 2130845821, 2130845822, 2130845815, 2130845816, 2130845897, 2130845898, 2130845800, 2130845865, 2130845866, 2130845869, 2130845801, 2130845802, 2130845871, 2130845872, 2130845847, 2130845848, 2130843917, 2130849939, 2130849940, 2130845836, 2130845837, 2130845845, 2130845846, 2130845867, 2130845868, 2130840085, 2130849151, 2130849152, 2130839741, 2130840991, 2130840992, 2130841003, 2130845841, 2130841004, 2130841005, 2130841006, 2130841007, 2130845903, 2130845882, 2130840993, 2130840994, 2130840998, 2130840999, 2130840995, 2130840996, 2130841001, 2130841002, 2130842291, 2130847402, 2130847399, 2130847397, 2130847396, 2130847395, 2130847388, 2130847389, 2130847386, 2130847387, 2130847400, 2130847390, 2130847398, 2130847401, 2130847945, 2130847385, 2130847392, 2130847948, 2130847944, 2130845873, 2130845874, 2130842291, 2130841478, 2130841476, 2130841480, 2130841481, 2130841488, 2130841494, 2130841484, 2130841485, 2130841490, 2130841491, 2130839742, 2130843845, 2130837566, 2130837567, 2130839733, 2130843841, 2130843854, 2130843855, 2130843843, 2130843844, 2130843846, 2130843847 };
     HashSet localHashSet = new HashSet();
     int i = 0;
-    if (i < jdField_a_of_type_ArrayOfInt.length)
+    Object localObject;
+    for (;;)
     {
-      if (localHashSet.contains(Integer.valueOf(jdField_a_of_type_ArrayOfInt[i]))) {
-        QLog.e("ShareActionSheetBuilder", 1, "static initializer() called duplicated icon " + i + ", " + BaseApplicationImpl.getApplication().getResources().getResourceEntryName(jdField_a_of_type_ArrayOfInt[i]));
-      }
-      for (;;)
-      {
-        i += 1;
+      localObject = b;
+      if (i >= localObject.length) {
         break;
-        localHashSet.add(Integer.valueOf(jdField_a_of_type_ArrayOfInt[i]));
       }
-    }
-    Arrays.sort(jdField_a_of_type_ArrayOfInt);
-    b = new int[] { 2131719978, 2131719998, 2131719999, 2131719937, 2131719938, 2131719939, 2131719970, 2131720003, 2131720028, 2131719975, 2131720025, 2131720026, 2131720027, 2131720016, 2131719936, 2131719982, 2131719997, 2131719977, 2131719979, 2131720021, 2131719945, 2131719981, 2131720009, 2131720007, 2131720008, 2131719946, 2131720000, 2131719954, 2131720004, 2131719951, 2131719949, 2131719952, 2131719950, 2131719953, 2131719964, 2131719959, 2131719960, 2131719935, 2131719948, 2131719983, 2131720006, 2131719947, 2131720010, 2131719961, 2131719940, 2131719944, 2131719943, 2131719941, 2131720020, 2131720001, 2131719958, 2131719973, 2131719974, 2131720005, 2131719985, 2131719962, 2131719963, 2131697674, 2131697677, 2131697680, 2131697679, 2131696878, 2131695767, 2131720018, 2131719971, 2131719972, 2131719969, 2131720019, 2131720024, 2131719986, 2131719942, 2131719968, 2131719976, 2131719967, 2131720013, 2131720014, 2131720017, 2131720012, 2131720022, 2131720002, 2131719980, 2131719955, 2131719965, 2131720023, 2131719984, 2131719957, 2131720011, 2131695767, 2131719988, 2131719987, 2131719989, 2131719990, 2131719993, 2131719996, 2131719991, 2131719992, 2131719994, 2131719995 };
-    localHashSet = new HashSet();
-    i = j;
-    if (i < b.length)
-    {
-      if (localHashSet.contains(Integer.valueOf(b[i]))) {
-        QLog.e("ShareActionSheetBuilder", 1, "static initializer() called duplicated label " + i + ", " + BaseApplicationImpl.getApplication().getResources().getResourceEntryName(b[i]));
-      }
-      for (;;)
+      if (localHashSet.contains(Integer.valueOf(localObject[i])))
       {
-        i += 1;
-        break;
+        localObject = BaseApplication.getContext();
+        if (localObject != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("static initializer() called duplicated icon ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(((Context)localObject).getResources().getResourceEntryName(b[i]));
+          QLog.e("ShareActionSheetBuilder", 1, localStringBuilder.toString());
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("static initializer() called duplicated icon ");
+          ((StringBuilder)localObject).append(i);
+          QLog.e("ShareActionSheetBuilder", 1, ((StringBuilder)localObject).toString());
+        }
+      }
+      else
+      {
         localHashSet.add(Integer.valueOf(b[i]));
       }
+      i += 1;
     }
-    Arrays.sort(b);
+    Arrays.sort((int[])localObject);
+    c = new int[] { 2131916489, 2131916511, 2131916512, 2131916439, 2131916440, 2131916441, 2131916480, 2131916516, 2131916541, 2131916459, 2131916538, 2131916539, 2131916540, 2131916529, 2131916438, 2131916495, 2131916510, 2131916488, 2131916490, 2131916534, 2131916447, 2131916492, 2131916522, 2131916520, 2131916521, 2131916448, 2131916513, 2131916458, 2131916517, 2131916450, 2131916449, 2131916455, 2131916453, 2131916456, 2131916454, 2131916457, 2131916470, 2131916465, 2131916466, 2131916437, 2131916452, 2131916496, 2131916519, 2131916451, 2131916523, 2131896189, 2131916467, 2131916442, 2131916446, 2131916445, 2131916443, 2131916533, 2131916514, 2131916493, 2131916463, 2131916464, 2131916484, 2131916485, 2131916518, 2131916498, 2131916468, 2131916469, 2131895013, 2131895016, 2131895019, 2131895018, 2131894176, 2131892985, 2131916531, 2131916482, 2131916481, 2131916483, 2131916478, 2131916532, 2131916537, 2131916499, 2131916444, 2131916474, 2131916487, 2131916473, 2131916526, 2131916527, 2131916530, 2131916525, 2131916535, 2131916515, 2131916491, 2131916460, 2131916471, 2131916536, 2131916497, 2131916462, 2131916524, 2131892985, 2131916501, 2131916500, 2131916502, 2131916503, 2131916506, 2131916509, 2131916504, 2131916505, 2131916507, 2131916508, 2131916476, 2131916475, 2131916477, 2131896069, 2131916508, 2131916499, 2131916444, 2131916508, 2131916414, 2131916436, 2131916417, 2131916423, 2131916435, 2131916416, 2131916420, 2131916415, 2131916421, 2131916420, 2131916418, 2131916425, 2131916427, 2131916419, 2131916413, 2131916426, 2131916479, 2131916428, 2131916429, 2131916431, 2131916432, 2131916434, 2131916433, 2131916430, 2131916461, 2131916472, 2131915825, 2131915824, 2131894197, 2131916424, 2131916494 };
+    localHashSet = new HashSet();
+    i = 0;
+    for (;;)
+    {
+      localObject = c;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localHashSet.contains(Integer.valueOf(localObject[i])))
+      {
+        if (BaseApplication.getContext() != null)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("static initializer() called duplicated label ");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getResourceEntryName(c[i]));
+          QLog.e("ShareActionSheetBuilder", 1, ((StringBuilder)localObject).toString());
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("static initializer() called duplicated label ");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(", ");
+          QLog.e("ShareActionSheetBuilder", 1, ((StringBuilder)localObject).toString());
+        }
+      }
+      else {
+        localHashSet.add(Integer.valueOf(c[i]));
+      }
+      i += 1;
+    }
+    Arrays.sort((int[])localObject);
   }
   
   public ShareActionSheetBuilder$ActionSheetItem()
   {
     if (!new java.lang.Throwable().getStackTrace()[1].getClassName().equals(ActionSheetItem.class.getName()))
     {
-      this.jdField_a_of_type_JavaLangIllegalStateException = new IllegalStateException("Must use method com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem.build(int) to create me !");
-      QLog.e("ShareActionSheetBuilder", 1, "ActionSheetItem: ", this.jdField_a_of_type_JavaLangIllegalStateException);
+      this.a = new IllegalStateException("Must use method com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem.build(int) to create me !");
+      QLog.e("ShareActionSheetBuilder", 1, "ActionSheetItem: ", this.a);
     }
   }
   
   private static ActionSheetItem A()
   {
-    return a(2130847395, 2131719976, "open_aio");
+    return a(2130849770, 2131916527, "stick");
   }
   
   private static ActionSheetItem B()
   {
-    return a(2130847387, 2131719968, "Evernote");
+    return a(2130849768, 2131916526, "privacy");
   }
   
   private static ActionSheetItem C()
   {
-    return a(2130847945, 2131719965, "delete");
+    return a(2130849757, 2131916473, "edit");
   }
   
   private static ActionSheetItem D()
   {
-    int i = 2130845849;
-    if (bibv.a()) {
-      i = 2130845850;
-    }
-    return a(i, 2131696898, "check_profile");
+    return a(2130849766, 2131916487, "open_aio");
   }
   
   private static ActionSheetItem E()
   {
-    int i = 2130848778;
-    if (bibv.a()) {
-      i = 2130848779;
-    }
-    return a(i, 2131720024, "orignal");
+    return a(2130849758, 2131916474, "Evernote");
   }
   
   private static ActionSheetItem F()
   {
-    return a(2130847401, 2131720019, "unfollow");
+    int i;
+    if (by()) {
+      i = 2130850345;
+    } else {
+      i = 2130850344;
+    }
+    return a(i, 2131916471, "delete");
   }
   
   private static ActionSheetItem G()
   {
-    return a(2130847398, 2131719969, "follow");
+    int i;
+    if (by()) {
+      i = 2130848052;
+    } else {
+      i = 2130848051;
+    }
+    return a(i, 2131894197, "check_profile");
   }
   
   private static ActionSheetItem H()
   {
-    return a(2130847390, 2131719972, "hide_him");
+    int i;
+    if (by()) {
+      i = 2130851240;
+    } else {
+      i = 2130851239;
+    }
+    return a(i, 2131916537, "orignal");
   }
   
   private static ActionSheetItem I()
   {
-    int i = 2130845863;
-    if (bibv.a()) {
-      i = 2130845864;
-    }
-    return a(i, 2131719971, "hide_this_feed");
+    return a(2130849772, 2131916532, "unfollow");
   }
   
   private static ActionSheetItem J()
   {
-    return a(2130847400, 2131720018, "collect_cancel");
+    return a(2130849769, 2131916478, "follow");
   }
   
   private static ActionSheetItem K()
   {
-    int i = 2130845845;
-    if (bibv.a()) {
-      i = 2130845846;
-    }
-    return a(i, 2131719960, "colornote_cancel");
+    return a(2130849761, 2131916483, "hide_him");
   }
   
   private static ActionSheetItem L()
   {
-    int i = 2130840993;
-    if (bibv.a()) {
-      i = 2130840994;
+    int i;
+    if (by()) {
+      i = 2130848068;
+    } else {
+      i = 2130848067;
     }
-    return a(i, 2131719954, "backtohome");
+    return a(i, 2131916482, "hide_this_feed");
   }
   
   private static ActionSheetItem M()
   {
-    int i = 2130840998;
-    if (bibv.a()) {
-      i = 2130840999;
+    int i;
+    if (by()) {
+      i = 2130848068;
+    } else {
+      i = 2130848067;
     }
-    return a(i, 2131720004, "restart_applet");
+    return a(i, 2131916481, "hide_works");
   }
   
   private static ActionSheetItem N()
   {
-    int i = 2130841006;
-    if (bibv.a()) {
-      i = 2130841007;
-    }
-    return a(i, 2131720000, "remove_my");
+    return a(2130849771, 2131916531, "collect_cancel");
   }
   
   private static ActionSheetItem O()
   {
-    int i = 2130841004;
-    if (bibv.a()) {
-      i = 2130841005;
+    int i;
+    if (by()) {
+      i = 2130848048;
+    } else {
+      i = 2130848047;
     }
-    return a(i, 2131719946, "add_my");
+    return a(i, 2131916466, "colornote_cancel");
   }
   
   private static ActionSheetItem P()
   {
-    int i = 2130840991;
-    if (bibv.a()) {
-      i = 2130840992;
+    int i;
+    if (by()) {
+      i = 2130845578;
+    } else {
+      i = 2130845577;
     }
-    return a(i, 2131719941, "about");
+    return a(i, 2131916476, "fav_group");
   }
   
   private static ActionSheetItem Q()
   {
-    int i = 2130840995;
-    if (bibv.a()) {
-      i = 2130840996;
+    int i;
+    if (by()) {
+      i = 2130845574;
+    } else {
+      i = 2130845573;
     }
-    return a(i, 2131719950, "applet_closeperformance");
+    return a(i, 2131916475, "fav_detail");
   }
   
   private static ActionSheetItem R()
   {
-    int i = 2130840995;
-    if (bibv.a()) {
-      i = 2130840996;
+    int i;
+    if (by()) {
+      i = 2130845580;
+    } else {
+      i = 2130845579;
     }
-    return a(i, 2131719952, "applet_openperformance");
+    return a(i, 2131916477, "fav_show_originalurl");
   }
   
   private static ActionSheetItem S()
   {
-    int i = 2130840995;
-    if (bibv.a()) {
-      i = 2130840996;
+    int i;
+    if (by()) {
+      i = 2130842108;
+    } else {
+      i = 2130842107;
     }
-    return a(i, 2131719949, "applet_closedebug");
+    return a(i, 2131916458, "backtohome");
   }
   
   private static ActionSheetItem T()
   {
-    int i = 2130840995;
-    if (bibv.a()) {
-      i = 2130840996;
+    int i;
+    if (by()) {
+      i = 2130842112;
+    } else {
+      i = 2130842111;
     }
-    return a(i, 2131719951, "applet_opendebug");
+    return a(i, 2131916517, "restart_applet");
   }
   
   private static ActionSheetItem U()
   {
-    int i = 2130845867;
-    if (bibv.a()) {
-      i = 2130845868;
+    int i;
+    if (by()) {
+      i = 2130842119;
+    } else {
+      i = 2130842118;
     }
-    return a(i, 2131719977, "long_screenshot");
+    return a(i, 2131916513, "remove_my");
   }
   
   private static ActionSheetItem V()
   {
-    int i = 2130845836;
-    if (bibv.a()) {
-      i = 2130845837;
+    int i;
+    if (by()) {
+      i = 2130842117;
+    } else {
+      i = 2130842116;
     }
-    return a(i, 2131719959, "colornote");
+    return a(i, 2131916448, "add_my");
   }
   
   private static ActionSheetItem W()
   {
-    int i = 2130849939;
-    if (bibv.a()) {
-      i = 2130849940;
+    int i;
+    if (by()) {
+      i = 2130842106;
+    } else {
+      i = 2130842105;
     }
-    return a(i, 2131720021, "url_to_txdoc");
+    return a(i, 2131916443, "about");
   }
   
   private static ActionSheetItem X()
   {
-    int i = 2130845847;
-    if (bibv.a()) {
-      i = 2130845848;
+    int i;
+    if (by()) {
+      i = 2130842110;
+    } else {
+      i = 2130842109;
     }
-    return a(i, 2131720009, "search_emotion");
+    return a(i, 2131916454, "applet_closeperformance");
   }
   
   private static ActionSheetItem Y()
   {
-    int i = 2130845871;
-    if (bibv.a()) {
-      i = 2130845872;
+    int i;
+    if (by()) {
+      i = 2130842110;
+    } else {
+      i = 2130842109;
     }
-    return a(i, 2131719982, "other_app");
+    return a(i, 2131916456, "applet_openperformance");
   }
   
   private static ActionSheetItem Z()
   {
-    int i = 2130845869;
-    if (bibv.a()) {
-      i = 2130845870;
+    int i;
+    if (by()) {
+      i = 2130842110;
+    } else {
+      i = 2130842109;
     }
-    return a(i, 2131720007, "scan_appletcode");
+    return a(i, 2131916453, "applet_closedebug");
   }
   
   private static ActionSheetItem a()
   {
-    int i = 2130850174;
-    if (bibv.a()) {
-      i = 2130850175;
+    int i;
+    if (QQTheme.isNowThemeIsNight()) {
+      i = 2130851496;
+    } else {
+      i = 2130851497;
     }
-    return a(i, 2131719966, "download");
+    return a(i, 2131916424, "biz_src_kandian_playvideo");
   }
   
   private static ActionSheetItem a(int paramInt1, int paramInt2, String paramString)
   {
-    return a(paramInt1, paramInt2, paramString, BaseApplicationImpl.getApplication().getResources());
+    return a(paramInt1, paramInt2, paramString, BaseApplication.getContext().getResources());
   }
   
   private static ActionSheetItem a(int paramInt1, int paramInt2, String paramString, Resources paramResources)
@@ -434,340 +538,806 @@ public class ShareActionSheetBuilder$ActionSheetItem
   
   private static ActionSheetItem aA()
   {
-    int i = 2130845857;
-    if (bibv.a()) {
-      i = 2130845858;
+    int i;
+    if (by()) {
+      i = 2130848043;
+    } else {
+      i = 2130842115;
     }
-    return a(i, 2131719958, "collect");
+    return a(i, 2131916445, "add_desktop");
   }
   
   private static ActionSheetItem aB()
   {
-    int i = 2130845804;
-    if (bibv.a()) {
-      i = 2130845805;
+    int i;
+    if (by()) {
+      i = 2130851336;
+    } else {
+      i = 2130851335;
     }
-    return a(i, 2131719936, "Qbrowser");
+    return a(i, 2131916459, "biu");
   }
   
   private static ActionSheetItem aC()
   {
-    int i = 2130845807;
-    if (bibv.a()) {
-      i = 2130845808;
+    int i;
+    if (by()) {
+      i = 2130848035;
+    } else {
+      i = 2130848034;
     }
-    return a(i, 2131720016, "browser");
+    return a(i, 2131916540, "weibo");
   }
   
   private static ActionSheetItem aD()
   {
-    int i = 2130845819;
-    if (bibv.a()) {
-      i = 2130845820;
+    int i;
+    if (by()) {
+      i = 2130848088;
+    } else {
+      i = 2130848087;
     }
-    return a(i, 2131719938, "Qzone");
+    return a(i, 2131916514, "report");
   }
   
   private static ActionSheetItem aE()
   {
-    int i = 2130845813;
-    if (bibv.a()) {
-      i = 2130845814;
+    int i;
+    if (by()) {
+      i = 2130848080;
+    } else {
+      i = 2130848079;
     }
-    return a(i, 2131719937, "Qfriend");
+    return a(i, 2131916493, "open_barrage");
   }
   
   private static ActionSheetItem aF()
   {
-    int i = 2130845851;
-    if (bibv.a()) {
-      i = 2130845852;
+    int i;
+    if (by()) {
+      i = 2130848054;
+    } else {
+      i = 2130848053;
     }
-    return a(i, 2131719961, "copy_link");
+    return a(i, 2131916463, "close_barrage");
   }
   
   private static ActionSheetItem aG()
   {
-    int i = 2130839742;
-    if (bibv.a()) {
-      i = 2130843845;
+    int i;
+    if (by()) {
+      i = 2130848028;
+    } else {
+      i = 2130848027;
     }
-    return a(i, 2131719973, "Import_reader");
+    return a(i, 2131916539, "wechat_");
   }
   
   private static ActionSheetItem aH()
   {
-    int i = 2130837566;
-    if (bibv.a()) {
-      i = 2130837567;
+    int i;
+    if (by()) {
+      i = 2130848026;
+    } else {
+      i = 2130848025;
     }
-    return a(i, 2131719974, "edit_online");
+    return a(i, 2131916538, "wechat");
   }
   
   private static ActionSheetItem aI()
   {
-    int i = 2130839733;
-    if (bibv.a()) {
-      i = 2130843841;
+    int i;
+    if (by()) {
+      i = 2130848045;
+    } else {
+      i = 2130848044;
     }
-    return a(i, 2131720005, "safe_share");
+    return a(i, 2131916451, "adjust_font");
   }
   
   private static ActionSheetItem aJ()
   {
-    int i = 2130843854;
-    if (bibv.a()) {
-      i = 2130843855;
+    int i;
+    if (by()) {
+      i = 2130848062;
+    } else {
+      i = 2130848061;
     }
-    return a(i, 2131719985, "print");
+    return a(i, 2131916464, "collect");
   }
   
   private static ActionSheetItem aK()
   {
-    int i = 2130843843;
-    if (bibv.a()) {
-      i = 2130843844;
+    int i;
+    if (by()) {
+      i = 2130848005;
+    } else {
+      i = 2130848004;
     }
-    return a(i, 2131719962, "generate_link");
+    return a(i, 2131916438, "Qbrowser");
   }
   
   private static ActionSheetItem aL()
   {
-    int i = 2130843846;
-    if (bibv.a()) {
-      i = 2130843847;
+    int i;
+    if (by()) {
+      i = 2130848008;
+    } else {
+      i = 2130848007;
     }
-    return a(i, 2131719963, "generate_QRcode");
+    return a(i, 2131916529, "browser");
+  }
+  
+  private static ActionSheetItem aM()
+  {
+    int i;
+    if (by()) {
+      i = 2130848022;
+    } else {
+      i = 2130848021;
+    }
+    return a(i, 2131916440, "Qzone");
+  }
+  
+  private static ActionSheetItem aN()
+  {
+    int i;
+    if (by()) {
+      i = 2130848016;
+    } else {
+      i = 2130848015;
+    }
+    return a(i, 2131916439, "Qfriend");
+  }
+  
+  private static ActionSheetItem aO()
+  {
+    int i;
+    if (by()) {
+      i = 2130848056;
+    } else {
+      i = 2130848055;
+    }
+    return a(i, 2131916467, "copy_link");
+  }
+  
+  private static ActionSheetItem aP()
+  {
+    int i;
+    if (by()) {
+      i = 2130845612;
+    } else {
+      i = 2130840472;
+    }
+    return a(i, 2131916484, "Import_reader");
+  }
+  
+  private static ActionSheetItem aQ()
+  {
+    int i;
+    if (by()) {
+      i = 2130837690;
+    } else {
+      i = 2130837689;
+    }
+    return a(i, 2131916485, "edit_online");
+  }
+  
+  private static ActionSheetItem aR()
+  {
+    int i;
+    if (by()) {
+      i = 2130845608;
+    } else {
+      i = 2130840463;
+    }
+    return a(i, 2131916518, "safe_share");
+  }
+  
+  private static ActionSheetItem aS()
+  {
+    int i;
+    if (by()) {
+      i = 2130845622;
+    } else {
+      i = 2130845621;
+    }
+    return a(i, 2131916498, "print");
+  }
+  
+  private static ActionSheetItem aT()
+  {
+    int i;
+    if (by()) {
+      i = 2130845611;
+    } else {
+      i = 2130845610;
+    }
+    return a(i, 2131916468, "generate_link");
+  }
+  
+  private static ActionSheetItem aU()
+  {
+    int i;
+    if (by()) {
+      i = 2130845607;
+    } else {
+      i = 2130845606;
+    }
+    return a(i, 2131896069, "other_app");
+  }
+  
+  private static ActionSheetItem aV()
+  {
+    int i;
+    if (by()) {
+      i = 2130845614;
+    } else {
+      i = 2130845613;
+    }
+    return a(i, 2131916469, "generate_QRcode");
+  }
+  
+  private static ActionSheetItem aW()
+  {
+    int i;
+    if (by()) {
+      i = 2130840560;
+    } else {
+      i = 2130840559;
+    }
+    return a(i, 2131916499, "ad_promotion");
+  }
+  
+  private static ActionSheetItem aX()
+  {
+    int i;
+    if (by()) {
+      i = 2130840564;
+    } else {
+      i = 2130840563;
+    }
+    return a(i, 2131916444, "ad_block");
+  }
+  
+  private static ActionSheetItem aY()
+  {
+    int i;
+    if (by()) {
+      i = 2130851498;
+    } else {
+      i = 2130851499;
+    }
+    return a(i, 2131916436, "kouling_share");
+  }
+  
+  private static ActionSheetItem aZ()
+  {
+    int i;
+    if (by()) {
+      i = 2130851486;
+    } else {
+      i = 2130851487;
+    }
+    return a(i, 2131916435, "play_feedback");
   }
   
   private static ActionSheetItem aa()
   {
-    int i = 2130845883;
-    if (bibv.a()) {
-      i = 2130845884;
+    int i;
+    if (by()) {
+      i = 2130842110;
+    } else {
+      i = 2130842109;
     }
-    return a(i, 2131720008, "scan_qrcode");
+    return a(i, 2131916455, "applet_opendebug");
   }
   
   private static ActionSheetItem ab()
   {
-    int i = 2130845865;
-    if (bibv.a()) {
-      i = 2130845866;
+    int i;
+    if (by()) {
+      i = 2130848072;
+    } else {
+      i = 2130848071;
     }
-    return a(i, 2131719948, "aio_position");
+    return a(i, 2131916488, "long_screenshot");
   }
   
   private static ActionSheetItem ac()
   {
-    int i = 2130845897;
-    if (bibv.a()) {
-      i = 2130845898;
+    int i;
+    if (by()) {
+      i = 2130848039;
+    } else {
+      i = 2130848038;
     }
-    return a(i, 2131719983, "pick_words");
+    return a(i, 2131916465, "colornote");
   }
   
   private static ActionSheetItem ad()
   {
-    int i = 2130845815;
-    if (bibv.a()) {
-      i = 2130845816;
+    int i;
+    if (by()) {
+      i = 2130852791;
+    } else {
+      i = 2130852790;
     }
-    return a(i, 2131719970, "group_album");
+    return a(i, 2131916534, "url_to_txdoc");
   }
   
   private static ActionSheetItem ae()
   {
-    int i = 2130845821;
-    if (bibv.a()) {
-      i = 2130845822;
+    int i;
+    if (by()) {
+      i = 2130848050;
+    } else {
+      i = 2130848049;
     }
-    return a(i, 2131719939, "Qzone_album");
+    return a(i, 2131916522, "search_emotion");
   }
   
   private static ActionSheetItem af()
   {
-    int i = 2130845838;
-    if (bibv.a()) {
-      i = 2130845839;
+    int i;
+    if (by()) {
+      i = 2130848076;
+    } else {
+      i = 2130848075;
     }
-    return a(i, 2131719944, "add_emotion");
+    return a(i, 2131916495, "other_app");
   }
   
   private static ActionSheetItem ag()
   {
-    int i = 2130841001;
-    if (bibv.a()) {
-      i = 2130841002;
+    int i;
+    if (by()) {
+      i = 2130848074;
+    } else {
+      i = 2130848073;
     }
-    return a(i, 2131719997, "push_setup");
+    return a(i, 2131916520, "scan_appletcode");
   }
   
   private static ActionSheetItem ah()
   {
-    int i = 2130845900;
-    if (bibv.a()) {
-      i = 2130845901;
+    int i;
+    if (by()) {
+      i = 2130848090;
+    } else {
+      i = 2130848089;
     }
-    return a(i, 2131720020, "uninterested");
+    return a(i, 2131916521, "scan_qrcode");
   }
   
   private static ActionSheetItem ai()
   {
-    int i = 2130845853;
-    if (bibv.a()) {
-      i = 2130845854;
+    int i;
+    if (by()) {
+      i = 2130848070;
+    } else {
+      i = 2130848069;
     }
-    return a(i, 2131720006, "save");
+    return a(i, 2131916452, "aio_position");
   }
   
   private static ActionSheetItem aj()
   {
-    if (bibv.a()) {}
-    return a(2130842296, 2131719979, "not_care");
+    int i;
+    if (by()) {
+      i = 2130848105;
+    } else {
+      i = 2130848104;
+    }
+    return a(i, 2131916496, "pick_words");
   }
   
   private static ActionSheetItem ak()
   {
-    if (bibv.a()) {}
-    return a(2130842299, 2131695706, "open_aio");
+    int i;
+    if (by()) {
+      i = 2130848018;
+    } else {
+      i = 2130848017;
+    }
+    return a(i, 2131916480, "group_album");
   }
   
   private static ActionSheetItem al()
   {
-    if (bibv.a()) {}
-    return a(2130842300, 2131719945, "add_friend");
+    int i;
+    if (by()) {
+      i = 2130848024;
+    } else {
+      i = 2130848023;
+    }
+    return a(i, 2131916441, "Qzone_album");
   }
   
   private static ActionSheetItem am()
   {
-    if (bibv.a()) {}
-    return a(2130842299, 2131719981, "open_aio");
+    int i;
+    if (by()) {
+      i = 2130848041;
+    } else {
+      i = 2130848040;
+    }
+    return a(i, 2131916446, "add_emotion");
   }
   
   private static ActionSheetItem an()
   {
-    int i = 2130845827;
-    if (bibv.a()) {
-      i = 2130845828;
+    int i;
+    if (by()) {
+      i = 2130842114;
+    } else {
+      i = 2130842113;
     }
-    return a(i, 2131720028, "weiyun");
+    return a(i, 2131916510, "push_setup");
   }
   
   private static ActionSheetItem ao()
   {
-    int i = 2130845811;
-    if (bibv.a()) {
-      i = 2130845812;
+    int i;
+    if (by()) {
+      i = 2130848108;
+    } else {
+      i = 2130848107;
     }
-    return a(i, 2131720010, "sent_pc");
+    return a(i, 2131916533, "uninterested");
   }
   
   private static ActionSheetItem ap()
   {
-    int i = 2130845883;
-    if (bibv.a()) {
-      i = 2130845884;
+    int i;
+    if (by()) {
+      i = 2130848058;
+    } else {
+      i = 2130848057;
     }
-    return a(i, 2131719935, "QRcode");
+    return a(i, 2131916519, "save");
   }
   
   private static ActionSheetItem aq()
   {
-    if (bibv.a()) {}
-    return a(2130842298, 2131719940, "Screenshot_share");
+    int i;
+    if (by()) {
+      i = 2130848046;
+    } else {
+      i = 2130851500;
+    }
+    return a(i, 2131916490, "not_care");
   }
   
   private static ActionSheetItem ar()
   {
-    if (bibv.a()) {}
-    return a(2130844027, 2131719999, "qiyeqq");
+    by();
+    return a(2130843696, 2131892927, "open_aio");
   }
   
   private static ActionSheetItem as()
   {
-    if (bibv.a()) {}
-    return a(2130844026, 2131719998, "qidian");
+    by();
+    return a(2130843697, 2131916447, "add_friend");
   }
   
   private static ActionSheetItem at()
   {
-    int i = 2130841003;
-    if (bibv.a()) {
-      i = 2130845841;
-    }
-    return a(i, 2131719943, "add_desktop");
+    by();
+    return a(2130843696, 2131916492, "open_aio");
   }
   
   private static ActionSheetItem au()
   {
-    int i = 2130845817;
-    if (bibv.a()) {
-      i = 2130845818;
+    int i;
+    if (by()) {
+      i = 2130848030;
+    } else {
+      i = 2130848029;
     }
-    return a(i, 2131719975, "kandian");
+    return a(i, 2131916541, "weiyun");
   }
   
   private static ActionSheetItem av()
   {
-    int i = 2130845832;
-    if (bibv.a()) {
-      i = 2130845833;
+    int k;
+    int i;
+    int j;
+    if (QFileAssistantUtils.b())
+    {
+      k = 2131896189;
+      i = 2130848013;
+      j = k;
+      if (by())
+      {
+        i = 2130848014;
+        j = k;
+      }
     }
-    return a(i, 2131720027, "weibo");
+    else
+    {
+      k = 2131916523;
+      i = 2130848011;
+      j = k;
+      if (by())
+      {
+        i = 2130848012;
+        j = k;
+      }
+    }
+    return a(i, j, "sent_pc");
   }
   
   private static ActionSheetItem aw()
   {
-    int i = 2130845881;
-    if (bibv.a()) {
-      i = 2130845882;
+    int i;
+    if (by()) {
+      i = 2130848090;
+    } else {
+      i = 2130848089;
     }
-    return a(i, 2131720001, "report");
+    return a(i, 2131916437, "QRcode");
   }
   
   private static ActionSheetItem ax()
   {
-    int i = 2130845825;
-    if (bibv.a()) {
-      i = 2130845826;
-    }
-    return a(i, 2131720026, "wechat_");
+    by();
+    return a(2130843695, 2131916442, "Screenshot_share");
   }
   
   private static ActionSheetItem ay()
   {
-    int i = 2130845823;
-    if (bibv.a()) {
-      i = 2130845824;
-    }
-    return a(i, 2131720025, "wechat");
+    by();
+    return a(2130845859, 2131916512, "qiyeqq");
   }
   
   private static ActionSheetItem az()
   {
-    int i = 2130845842;
-    if (bibv.a()) {
-      i = 2130845843;
-    }
-    return a(i, 2131719947, "adjust_font");
+    by();
+    return a(2130845858, 2131916511, "qidian");
   }
   
   private static ActionSheetItem b()
   {
-    int i = 2130850172;
-    if (bibv.a()) {
-      i = 2130850173;
+    return a(2130844296, 2131915825, "open_viola_barrage");
+  }
+  
+  private static ActionSheetItem ba()
+  {
+    int i;
+    if (by()) {
+      i = 2130851490;
+    } else {
+      i = 2130851491;
     }
-    return a(i, 2131719956, "carton_detail");
+    return a(i, 2131916416, "delete_fans");
+  }
+  
+  private static ActionSheetItem bb()
+  {
+    int i;
+    if (by()) {
+      i = 2130851482;
+    } else {
+      i = 2130851483;
+    }
+    return a(i, 2131892985, "share_more");
+  }
+  
+  private static ActionSheetItem bc()
+  {
+    int i;
+    if (by()) {
+      i = 2130851488;
+    } else {
+      i = 2130851489;
+    }
+    return a(i, 2131916420, "private_chat");
+  }
+  
+  private static ActionSheetItem bd()
+  {
+    int i;
+    if (by()) {
+      i = 2130851488;
+    } else {
+      i = 2130851489;
+    }
+    return a(i, 2131916415, "copy_roomid");
+  }
+  
+  private static ActionSheetItem be()
+  {
+    int i;
+    if (by()) {
+      i = 2130841784;
+    } else {
+      i = 2130841783;
+    }
+    return a(i, 2131916450, "group_app");
+  }
+  
+  private static ActionSheetItem bf()
+  {
+    int i;
+    if (by()) {
+      i = 2130841784;
+    } else {
+      i = 2130841783;
+    }
+    return a(i, 2131916449, "add_to_group");
+  }
+  
+  private static ActionSheetItem bg()
+  {
+    int i;
+    if (by()) {
+      i = 2130845053;
+    } else {
+      i = 2130845054;
+    }
+    return a(i, 2131916421, "delete_launch");
+  }
+  
+  private static ActionSheetItem bh()
+  {
+    int i;
+    if (by()) {
+      i = 2130845051;
+    } else {
+      i = 2130845052;
+    }
+    return a(i, 2131916421, "cancel_push_off");
+  }
+  
+  private static ActionSheetItem bi()
+  {
+    int i;
+    if (by()) {
+      i = 2130845248;
+    } else {
+      i = 2130845247;
+    }
+    return a(i, 2131916422, "qcircle_private_message");
+  }
+  
+  private static ActionSheetItem bj()
+  {
+    int i;
+    if (by()) {
+      i = 2130851492;
+    } else {
+      i = 2130851493;
+    }
+    return a(i, 2131916426, "store_manage");
+  }
+  
+  private static ActionSheetItem bk()
+  {
+    int i;
+    if (by()) {
+      i = 2130851480;
+    } else {
+      i = 2130851481;
+    }
+    return a(i, 2131916418, "fan_group_manage");
+  }
+  
+  private static ActionSheetItem bl()
+  {
+    int i;
+    if (by()) {
+      i = 2130851478;
+    } else {
+      i = 2130851479;
+    }
+    return a(i, 2131916425, "sharepicture");
+  }
+  
+  private static ActionSheetItem bm()
+  {
+    int i;
+    if (by()) {
+      i = 2130851494;
+    } else {
+      i = 2130851495;
+    }
+    return a(i, 2131916427, "Sync_zone");
+  }
+  
+  private static ActionSheetItem bn()
+  {
+    int i;
+    if (by()) {
+      i = 2130851484;
+    } else {
+      i = 2130851485;
+    }
+    return a(i, 2131916419, "orderlist");
+  }
+  
+  private static ActionSheetItem bo()
+  {
+    int i;
+    if (by()) {
+      i = 2130851476;
+    } else {
+      i = 2130851477;
+    }
+    return a(i, 2131916413, "adding goods");
+  }
+  
+  private static ActionSheetItem bp()
+  {
+    int i;
+    if (by()) {
+      i = 2130842114;
+    } else {
+      i = 2130842113;
+    }
+    return a(i, 2131916479, "follow_manage");
+  }
+  
+  private static ActionSheetItem bq()
+  {
+    int i;
+    if (by()) {
+      i = 2130844686;
+    } else {
+      i = 2130844687;
+    }
+    return a(i, 2131916428, "add_to_digest");
+  }
+  
+  private static ActionSheetItem br()
+  {
+    int i;
+    if (by()) {
+      i = 2130844694;
+    } else {
+      i = 2130844695;
+    }
+    return a(i, 2131916429, "cancel_digest");
+  }
+  
+  private static ActionSheetItem bs()
+  {
+    int i;
+    if (by()) {
+      i = 2130844698;
+    } else {
+      i = 2130844699;
+    }
+    return a(i, 2131916431, "interest");
+  }
+  
+  private static ActionSheetItem bt()
+  {
+    int i;
+    if (by()) {
+      i = 2130844690;
+    } else {
+      i = 2130844691;
+    }
+    return a(i, 2131916432, "look_owner");
+  }
+  
+  private static ActionSheetItem bu()
+  {
+    int i;
+    if (by()) {
+      i = 2130844692;
+    } else {
+      i = 2130844693;
+    }
+    return a(i, 2131916434, "push_topics");
   }
   
   public static ActionSheetItem build(int paramInt)
   {
-    ActionSheetItem localActionSheetItem1;
+    Object localObject1;
     switch (paramInt)
     {
-    case 22: 
     case 24: 
     case 25: 
     case 28: 
@@ -790,437 +1360,736 @@ public class ShareActionSheetBuilder$ActionSheetItem
     case 63: 
     case 67: 
     case 69: 
-    case 89: 
-    case 90: 
     case 93: 
+    case 134: 
+    case 135: 
+    case 136: 
+    case 139: 
     default: 
-      localActionSheetItem1 = new ActionSheetItem();
-      QLog.e("ShareActionSheetBuilder", 1, "build: notSupportAction = [" + paramInt + "]", new IllegalArgumentException());
+      localObject1 = new ActionSheetItem();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("build: notSupportAction = [");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append("]");
+      QLog.e("ShareActionSheetBuilder", 1, ((StringBuilder)localObject2).toString(), new IllegalArgumentException());
+      break;
+    case 167: 
+      localObject1 = bh();
+      break;
+    case 166: 
+      localObject1 = bx();
+      break;
+    case 165: 
+      localObject1 = a();
+      break;
+    case 164: 
+      localObject1 = c();
+      break;
+    case 163: 
+      localObject1 = b();
+      break;
+    case 162: 
+      localObject1 = bi();
+      break;
+    case 161: 
+      localObject1 = aZ();
+      break;
+    case 160: 
+      localObject1 = bd();
+      break;
+    case 159: 
+      localObject1 = bf();
+      break;
+    case 158: 
+      localObject1 = be();
+      break;
+    case 157: 
+      localObject1 = bj();
+      break;
+    case 156: 
+      localObject1 = bo();
+      break;
+    case 155: 
+      localObject1 = bn();
+      break;
+    case 154: 
+      localObject1 = bm();
+      break;
+    case 153: 
+      localObject1 = bl();
+      break;
+    case 152: 
+      localObject1 = bk();
+      break;
+    case 151: 
+      localObject1 = bw();
+      break;
+    case 150: 
+      localObject1 = bv();
+      break;
+    case 149: 
+      localObject1 = bu();
+      break;
+    case 148: 
+      localObject1 = bt();
+      break;
+    case 147: 
+      localObject1 = bs();
+      break;
+    case 146: 
+      localObject1 = br();
+      break;
+    case 145: 
+      localObject1 = bq();
+      break;
+    case 144: 
+      localObject1 = bp();
+      break;
+    case 143: 
+      localObject1 = aF();
+      break;
+    case 142: 
+      localObject1 = aE();
+      break;
+    case 141: 
+      localObject1 = M();
+      break;
+    case 140: 
+      localObject1 = bg();
+      break;
+    case 138: 
+      localObject1 = bc();
+      break;
+    case 137: 
+      localObject1 = ba();
+      break;
+    case 133: 
+      localObject1 = aY();
+      break;
+    case 132: 
+      localObject1 = aU();
+      break;
+    case 131: 
+      localObject1 = R();
+      break;
+    case 130: 
+      localObject1 = Q();
+      break;
+    case 129: 
+      localObject1 = P();
+      break;
+    case 128: 
+      localObject1 = T();
+      break;
+    case 125: 
+      localObject1 = e();
+      break;
+    case 124: 
+      localObject1 = d();
+      break;
+    case 123: 
+      localObject1 = aV();
+      break;
+    case 122: 
+      localObject1 = aT();
+      break;
+    case 121: 
+      localObject1 = aS();
+      break;
+    case 120: 
+      localObject1 = aR();
+      break;
+    case 119: 
+      localObject1 = aQ();
+      break;
+    case 118: 
+      localObject1 = aP();
+      break;
+    case 117: 
+      localObject1 = o();
+      break;
+    case 116: 
+      localObject1 = n();
+      break;
+    case 115: 
+      localObject1 = m();
+      break;
+    case 114: 
+      localObject1 = l();
+      break;
+    case 113: 
+      localObject1 = k();
+      break;
+    case 112: 
+      localObject1 = j();
+      break;
+    case 111: 
+      localObject1 = i();
+      break;
+    case 110: 
+      localObject1 = h();
+      break;
+    case 109: 
+      localObject1 = g();
+      break;
+    case 108: 
+      localObject1 = f();
+      break;
+    case 107: 
+      localObject1 = p();
+      break;
+    case 106: 
+      localObject1 = q();
+      break;
+    case 105: 
+      localObject1 = r();
+      break;
+    case 104: 
+      localObject1 = s();
+      break;
+    case 103: 
+      localObject1 = t();
+      break;
+    case 102: 
+      localObject1 = u();
+      break;
+    case 101: 
+      localObject1 = v();
+      break;
+    case 100: 
+      localObject1 = w();
+      break;
+    case 99: 
+      localObject1 = x();
+      break;
+    case 98: 
+      localObject1 = y();
+      break;
+    case 97: 
+      localObject1 = z();
+      break;
+    case 96: 
+      localObject1 = A();
+      break;
+    case 95: 
+      localObject1 = B();
+      break;
+    case 94: 
+      localObject1 = C();
+      break;
+    case 92: 
+      localObject1 = D();
+      break;
+    case 91: 
+      localObject1 = E();
+      break;
+    case 90: 
+      localObject1 = aX();
+      break;
+    case 89: 
+      localObject1 = aW();
+      break;
+    case 88: 
+      localObject1 = H();
+      break;
+    case 87: 
+      localObject1 = J();
+      break;
+    case 86: 
+      localObject1 = K();
+      break;
+    case 85: 
+      localObject1 = L();
+      break;
+    case 84: 
+      localObject1 = N();
+      break;
+    case 82: 
+      localObject1 = O();
+      break;
+    case 81: 
+      localObject1 = S();
+      break;
+    case 80: 
+      localObject1 = X();
+      break;
+    case 79: 
+      localObject1 = Y();
+      break;
+    case 78: 
+      localObject1 = W();
+      break;
+    case 77: 
+      localObject1 = U();
+      break;
+    case 76: 
+      localObject1 = V();
+      break;
+    case 75: 
+      localObject1 = Z();
+      break;
+    case 74: 
+      localObject1 = aa();
+      break;
+    case 73: 
+      localObject1 = a(2130851811, 2131916489, "");
+      break;
+    case 72: 
+      localObject1 = a(2130841060, 2131916439, "");
+      break;
+    case 71: 
+      localObject1 = ab();
+      break;
+    case 70: 
+      localObject1 = ac();
+      break;
+    case 68: 
+      localObject1 = ad();
+      break;
+    case 66: 
+      localObject1 = aD();
+      break;
+    case 65: 
+      localObject1 = ae();
+      break;
+    case 64: 
+      localObject1 = af();
+      break;
+    case 56: 
+    case 127: 
+      localObject1 = ag();
+      break;
+    case 55: 
+    case 126: 
+      localObject1 = ah();
+      break;
+    case 54: 
+      localObject1 = ai();
+      break;
+    case 52: 
+      localObject1 = aj();
+      break;
+    case 51: 
+      localObject1 = ak();
+      break;
+    case 50: 
+      localObject1 = al();
+      break;
+    case 48: 
+      localObject1 = am();
+      break;
+    case 45: 
+    case 83: 
+      localObject1 = an();
+      break;
+    case 44: 
+      localObject1 = ao();
+      break;
+    case 40: 
+      localObject1 = F();
+      break;
+    case 39: 
+      localObject1 = ap();
+      break;
+    case 38: 
+      localObject1 = aq();
+      break;
+    case 37: 
+      localObject1 = ar();
+      break;
+    case 35: 
+      localObject1 = as();
+      break;
+    case 34: 
+      localObject1 = a(2130843691, 2131894176, "share_diandian");
+      break;
+    case 32: 
+      localObject1 = I();
+      break;
+    case 31: 
+      localObject1 = bb();
+      break;
+    case 30: 
+      localObject1 = at();
+      break;
+    case 27: 
+      localObject1 = au();
+      break;
+    case 26: 
+      localObject1 = av();
+      break;
+    case 23: 
+      localObject1 = aw();
+      break;
+    case 22: 
+      localObject1 = aZ();
+      break;
+    case 21: 
+      localObject1 = ax();
+      break;
+    case 20: 
+      localObject1 = ay();
+      break;
+    case 19: 
+      localObject1 = az();
+      break;
+    case 18: 
+      localObject1 = a(2130844783, 2131895018, "refresh_troop_app_view");
+      break;
+    case 17: 
+      localObject1 = a(2130844784, 2131895019, "share_troop_app");
+      break;
+    case 16: 
+      localObject1 = a(2130844781, 2131895016, "open_app_detail");
+      break;
+    case 15: 
+      localObject1 = a(2130844779, 2131895013, "add_troop_app");
+      break;
+    case 14: 
+      localObject1 = aA();
+      break;
+    case 13: 
+      localObject1 = aB();
+      break;
+    case 12: 
+      localObject1 = aC();
+      break;
+    case 11: 
+      localObject1 = aD();
+      break;
+    case 10: 
+      localObject1 = aG();
+      break;
+    case 9: 
+      localObject1 = aH();
+      break;
+    case 8: 
+      localObject1 = G();
+      break;
+    case 7: 
+      localObject1 = aI();
+      break;
+    case 6: 
+      localObject1 = aJ();
+      break;
+    case 5: 
+      localObject1 = aK();
+      break;
+    case 4: 
+      localObject1 = aL();
+      break;
+    case 3: 
+      localObject1 = aM();
+      break;
+    case 2: 
+      localObject1 = aN();
+      break;
+    case 1: 
+      localObject1 = aO();
     }
-    for (;;)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      ActionSheetItem localActionSheetItem2 = localActionSheetItem1;
-      if (localActionSheetItem1 == null)
-      {
-        localActionSheetItem2 = new ActionSheetItem();
-        QLog.e("ShareActionSheetBuilder", 1, "build: notSupportAction = [" + paramInt + "]", new IllegalArgumentException());
-      }
-      localActionSheetItem2.action = paramInt;
-      return localActionSheetItem2;
-      localActionSheetItem1 = aF();
-      continue;
-      localActionSheetItem1 = aE();
-      continue;
-      localActionSheetItem1 = aD();
-      continue;
-      localActionSheetItem1 = aC();
-      continue;
-      localActionSheetItem1 = aB();
-      continue;
-      localActionSheetItem1 = aA();
-      continue;
-      localActionSheetItem1 = az();
-      continue;
-      localActionSheetItem1 = D();
-      continue;
-      localActionSheetItem1 = ay();
-      continue;
-      localActionSheetItem1 = ax();
-      continue;
-      localActionSheetItem1 = aw();
-      continue;
-      localActionSheetItem1 = av();
-      continue;
-      localActionSheetItem1 = au();
-      continue;
-      localActionSheetItem1 = at();
-      continue;
-      localActionSheetItem1 = as();
-      continue;
-      localActionSheetItem1 = ar();
-      continue;
-      localActionSheetItem1 = aq();
-      continue;
-      localActionSheetItem1 = ap();
-      continue;
-      localActionSheetItem1 = ao();
-      continue;
-      localActionSheetItem1 = an();
-      continue;
-      localActionSheetItem1 = am();
-      continue;
-      localActionSheetItem1 = al();
-      continue;
-      localActionSheetItem1 = ak();
-      continue;
-      localActionSheetItem1 = aj();
-      continue;
-      localActionSheetItem1 = ai();
-      continue;
-      localActionSheetItem1 = ah();
-      continue;
-      localActionSheetItem1 = ag();
-      continue;
-      localActionSheetItem1 = af();
-      continue;
-      localActionSheetItem1 = ae();
-      continue;
-      localActionSheetItem1 = ad();
-      continue;
-      localActionSheetItem1 = ac();
-      continue;
-      localActionSheetItem1 = ab();
-      continue;
-      localActionSheetItem1 = aa();
-      continue;
-      localActionSheetItem1 = Z();
-      continue;
-      localActionSheetItem1 = Y();
-      continue;
-      localActionSheetItem1 = X();
-      continue;
-      localActionSheetItem1 = aw();
-      continue;
-      localActionSheetItem1 = W();
-      continue;
-      localActionSheetItem1 = V();
-      continue;
-      localActionSheetItem1 = U();
-      continue;
-      localActionSheetItem1 = a(2130840085, 2131719937, "");
-      continue;
-      localActionSheetItem1 = a(2130849151, 2131719978, "");
-      continue;
-      localActionSheetItem1 = T();
-      continue;
-      localActionSheetItem1 = S();
-      continue;
-      localActionSheetItem1 = R();
-      continue;
-      localActionSheetItem1 = Q();
-      continue;
-      localActionSheetItem1 = P();
-      continue;
-      localActionSheetItem1 = O();
-      continue;
-      localActionSheetItem1 = N();
-      continue;
-      localActionSheetItem1 = L();
-      continue;
-      localActionSheetItem1 = K();
-      continue;
-      localActionSheetItem1 = aG();
-      continue;
-      localActionSheetItem1 = aH();
-      continue;
-      localActionSheetItem1 = aI();
-      continue;
-      localActionSheetItem1 = aJ();
-      continue;
-      localActionSheetItem1 = aK();
-      continue;
-      localActionSheetItem1 = aL();
-      continue;
-      localActionSheetItem1 = a(2130843255, 2131697674, "add_troop_app");
-      continue;
-      localActionSheetItem1 = a(2130843257, 2131697677, "open_app_detail");
-      continue;
-      localActionSheetItem1 = a(2130843260, 2131697680, "share_troop_app");
-      continue;
-      localActionSheetItem1 = a(2130843259, 2131697679, "refresh_troop_app_view");
-      continue;
-      localActionSheetItem1 = a(2130842294, 2131696878, "share_diandian");
-      continue;
-      localActionSheetItem1 = a(2130842291, 2131695767, "share_more");
-      continue;
-      localActionSheetItem1 = J();
-      continue;
-      localActionSheetItem1 = I();
-      continue;
-      localActionSheetItem1 = H();
-      continue;
-      localActionSheetItem1 = G();
-      continue;
-      localActionSheetItem1 = F();
-      continue;
-      localActionSheetItem1 = E();
-      continue;
-      localActionSheetItem1 = C();
-      continue;
-      localActionSheetItem1 = B();
-      continue;
-      localActionSheetItem1 = A();
-      continue;
-      localActionSheetItem1 = z();
-      continue;
-      localActionSheetItem1 = y();
-      continue;
-      localActionSheetItem1 = x();
-      continue;
-      localActionSheetItem1 = w();
-      continue;
-      localActionSheetItem1 = v();
-      continue;
-      localActionSheetItem1 = u();
-      continue;
-      localActionSheetItem1 = t();
-      continue;
-      localActionSheetItem1 = s();
-      continue;
-      localActionSheetItem1 = r();
-      continue;
-      localActionSheetItem1 = q();
-      continue;
-      localActionSheetItem1 = p();
-      continue;
-      localActionSheetItem1 = o();
-      continue;
-      localActionSheetItem1 = n();
-      continue;
-      localActionSheetItem1 = m();
-      continue;
-      localActionSheetItem1 = a();
-      continue;
-      localActionSheetItem1 = b();
-      continue;
-      localActionSheetItem1 = c();
-      continue;
-      localActionSheetItem1 = d();
-      continue;
-      localActionSheetItem1 = e();
-      continue;
-      localActionSheetItem1 = f();
-      continue;
-      localActionSheetItem1 = g();
-      continue;
-      localActionSheetItem1 = h();
-      continue;
-      localActionSheetItem1 = i();
-      continue;
-      localActionSheetItem1 = j();
-      continue;
-      localActionSheetItem1 = k();
-      continue;
-      localActionSheetItem1 = l();
-      continue;
-      localActionSheetItem1 = M();
+      localObject2 = new ActionSheetItem();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("build: notSupportAction = [");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("]");
+      QLog.e("ShareActionSheetBuilder", 1, ((StringBuilder)localObject1).toString(), new IllegalArgumentException());
     }
+    ((ActionSheetItem)localObject2).action = paramInt;
+    return localObject2;
+  }
+  
+  public static ActionSheetItem build(int paramInt, boolean paramBoolean)
+  {
+    d = paramBoolean;
+    ActionSheetItem localActionSheetItem = build(paramInt);
+    d = false;
+    return localActionSheetItem;
+  }
+  
+  private static ActionSheetItem bv()
+  {
+    int i;
+    if (by()) {
+      i = 2130844696;
+    } else {
+      i = 2130844697;
+    }
+    return a(i, 2131916433, "pull_black");
+  }
+  
+  private static ActionSheetItem bw()
+  {
+    int i;
+    if (by()) {
+      i = 2130844688;
+    } else {
+      i = 2130844689;
+    }
+    return a(i, 2131916430, "feedback");
+  }
+  
+  private static ActionSheetItem bx()
+  {
+    int i;
+    if (by()) {
+      i = 2130848111;
+    } else {
+      i = 2130848110;
+    }
+    return a(i, 2131916494, "open_with_miniapp");
+  }
+  
+  private static boolean by()
+  {
+    return (QQTheme.isNowThemeIsNight()) || (d);
   }
   
   private static ActionSheetItem c()
   {
-    int i = 2130841478;
-    if (bibv.a()) {
-      i = 2130841479;
-    }
-    return a(i, 2131719988, "book_detail");
+    return a(2130844295, 2131915824, "close_viola_barrage");
   }
   
   private static ActionSheetItem d()
   {
-    int i = 2130841476;
-    if (bibv.a()) {
-      i = 2130841477;
+    int i;
+    if (by()) {
+      i = 2130853460;
+    } else {
+      i = 2130853459;
     }
-    return a(i, 2131719987, "add_shelf");
+    return a(i, 2131916472, "download");
   }
   
   private static ActionSheetItem e()
   {
-    int i = 2130841480;
-    if (bibv.a()) {
-      i = 2130841483;
+    int i;
+    if (by()) {
+      i = 2130853458;
+    } else {
+      i = 2130853457;
     }
-    return a(i, 2131719989, "bookmark");
+    return a(i, 2131916461, "carton_detail");
   }
   
   private static ActionSheetItem f()
   {
-    int i = 2130841481;
-    if (bibv.a()) {
-      i = 2130841482;
+    int i;
+    if (by()) {
+      i = 2130842819;
+    } else {
+      i = 2130842818;
     }
-    return a(i, 2131719990, "bookmark_cancel");
+    return a(i, 2131916501, "book_detail");
   }
   
   private static ActionSheetItem g()
   {
-    int i = 2130841488;
-    if (bibv.a()) {
-      i = 2130841489;
+    int i;
+    if (by()) {
+      i = 2130842817;
+    } else {
+      i = 2130842816;
     }
-    return a(i, 2131719993, "hide_opinion");
+    return a(i, 2131916500, "add_shelf");
   }
   
   private static ActionSheetItem h()
   {
-    int i = 2130841494;
-    if (bibv.a()) {
-      i = 2130841495;
+    int i;
+    if (by()) {
+      i = 2130842823;
+    } else {
+      i = 2130842820;
     }
-    return a(i, 2131719996, "show_opinion");
+    return a(i, 2131916502, "bookmark");
   }
   
   private static ActionSheetItem i()
   {
-    int i = 2130841484;
-    if (bibv.a()) {
-      i = 2130841487;
+    int i;
+    if (by()) {
+      i = 2130842822;
+    } else {
+      i = 2130842821;
     }
-    return a(i, 2131719991, "continue_purchase");
+    return a(i, 2131916503, "bookmark_cancel");
   }
   
   private static ActionSheetItem j()
   {
-    int i = 2130841485;
-    if (bibv.a()) {
-      i = 2130841486;
+    int i;
+    if (by()) {
+      i = 2130842829;
+    } else {
+      i = 2130842828;
     }
-    return a(i, 2131719992, "continue_purchase_cancel");
+    return a(i, 2131916506, "hide_opinion");
   }
   
   private static ActionSheetItem k()
   {
-    int i = 2130841490;
-    if (bibv.a()) {
-      i = 2130841493;
+    int i;
+    if (by()) {
+      i = 2130842835;
+    } else {
+      i = 2130842834;
     }
-    return a(i, 2131719994, "privacy");
+    return a(i, 2131916509, "show_opinion");
   }
   
   private static ActionSheetItem l()
   {
-    int i = 2130841491;
-    if (bibv.a()) {
-      i = 2130841492;
+    int i;
+    if (by()) {
+      i = 2130842827;
+    } else {
+      i = 2130842824;
     }
-    return a(i, 2131719995, "privacy_cancel");
+    return a(i, 2131916504, "continue_purchase");
   }
   
   private static ActionSheetItem m()
   {
-    return a(2130847944, 2131720011, "set_background");
+    int i;
+    if (by()) {
+      i = 2130842826;
+    } else {
+      i = 2130842825;
+    }
+    return a(i, 2131916505, "continue_purchase_cancel");
   }
   
   private static ActionSheetItem n()
   {
-    return a(2130847948, 2131719957, "rec_face");
+    int i;
+    if (by()) {
+      i = 2130842833;
+    } else {
+      i = 2130842830;
+    }
+    return a(i, 2131916507, "privacy");
   }
   
   private static ActionSheetItem o()
   {
-    return a(2130847392, 2131719984, "psapp");
+    int i;
+    if (by()) {
+      i = 2130842832;
+    } else {
+      i = 2130842831;
+    }
+    return a(i, 2131916508, "privacy_cancel");
   }
   
   private static ActionSheetItem p()
   {
-    return a(2130847385, 2131720023, "watch_on_tv");
+    return a(2130850343, 2131916524, "set_background");
   }
   
   private static ActionSheetItem q()
   {
-    return a(2130847388, 2131719955, "no_only_friend");
+    return a(2130850348, 2131916462, "rec_face");
   }
   
   private static ActionSheetItem r()
   {
-    int i = 2130845873;
-    if (bibv.a()) {
-      i = 2130845874;
-    }
-    return a(i, 2131719980, "only_friend");
+    return a(2130849763, 2131916497, "psapp");
   }
   
   private static ActionSheetItem s()
   {
-    return a(2130847389, 2131720002, "reprint_diary");
+    return a(2130849756, 2131916536, "watch_on_tv");
   }
   
   private static ActionSheetItem t()
   {
-    return a(2130847389, 2131720003, "reprint_photo");
+    return a(2130849759, 2131916460, "no_only_friend");
   }
   
   private static ActionSheetItem u()
   {
-    return a(2130847396, 2131720022, "look_dress");
+    int i;
+    if (by()) {
+      i = 2130848078;
+    } else {
+      i = 2130848077;
+    }
+    return a(i, 2131916491, "only_friend");
   }
   
   private static ActionSheetItem v()
   {
-    return a(2130847396, 2131720012, "set_card");
+    return a(2130849760, 2131916515, "reprint_diary");
   }
   
   private static ActionSheetItem w()
   {
-    return a(2130847402, 2131720017, "unstick");
+    return a(2130849760, 2131916516, "reprint_photo");
   }
   
   private static ActionSheetItem x()
   {
-    return a(2130847399, 2131720014, "stick");
+    return a(2130849767, 2131916535, "look_dress");
   }
   
   private static ActionSheetItem y()
   {
-    return a(2130847397, 2131720013, "privacy");
+    return a(2130849767, 2131916525, "set_card");
   }
   
   private static ActionSheetItem z()
   {
-    return a(2130847386, 2131719967, "edit");
+    return a(2130849773, 2131916530, "unstick");
   }
   
   public boolean isValidCreate()
   {
-    return this.jdField_a_of_type_JavaLangIllegalStateException == null;
+    return this.a == null;
   }
   
   public boolean isValidIcon()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (this.iconNeedBg)
     {
-      if (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, this.icon) < 0) {
-        break label28;
+      if (Arrays.binarySearch(b, this.icon) >= 0) {
+        return true;
       }
-      bool1 = true;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.label);
+        localStringBuilder.append(" is in invalid icon ");
+        localStringBuilder.append(this);
+        QLog.d("ShareActionSheetBuilder", 2, localStringBuilder.toString());
+      }
     }
-    label28:
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ShareActionSheetBuilder", 2, this.label + " is in invalid icon " + this);
     return false;
   }
   
   public boolean isValidLabel()
   {
-    boolean bool2 = false;
-    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    Resources localResources = BaseApplication.getContext().getResources();
     int i = 0;
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < b.length)
-      {
-        if (TextUtils.equals(this.label, localResources.getString(b[i]))) {
-          bool1 = true;
-        }
+      int[] arrayOfInt = c;
+      if (i >= arrayOfInt.length) {
+        break;
       }
-      else {
-        return bool1;
+      if (TextUtils.equals(this.label, localResources.getString(arrayOfInt[i]))) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem
  * JD-Core Version:    0.7.0.1
  */

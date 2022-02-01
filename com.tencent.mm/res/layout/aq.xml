@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/aq" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<androidx.appcompat.view.menu.ListMenuItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="196.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="#ff404040" android:id="@id/mk" android:paddingLeft="6.0dip" android:paddingTop="3.0dip" android:paddingRight="6.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-</LinearLayout>
+    <ImageView android:id="@id/erl" android:background="@drawable/ae" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" />
+    <LinearLayout android:id="@id/br7" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="?kg" style="@style/t0">
+        <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/t1">
+            <TextView android:textAppearance="?a4r" android:ellipsize="marquee" android:id="@id/ko8" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentTop="true" style="@style/t4" />
+            <TextView android:textAppearance="?a4z" android:id="@id/jk2" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/ko8" style="@style/t4" />
+        </RelativeLayout>
+        <ImageView android:layout_gravity="center" android:id="@id/k_5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" style="@style/t3" />
+    </LinearLayout>
+</androidx.appcompat.view.menu.ListMenuItemView>

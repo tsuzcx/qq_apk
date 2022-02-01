@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/q7"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/evm" android:text="@string/o6_" style="@style/qb" />
+    <EditText android:id="@id/evl" android:hint="@string/o6a" android:digits="0123456789\n" android:inputType="number" style="@style/qa" />
+    <ImageButton android:id="@id/evk" style="@style/midas_input_cell_button_clear" />
+</LinearLayout>

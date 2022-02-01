@@ -3,7 +3,6 @@ package com.tencent.mobileqq.data;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import apez;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -30,7 +29,7 @@ public class MessageForNearbyMarketGrayTips
   public static final int SCENE_SAY_HI = 1;
   public static final int SCENE_SAY_HI_FREQ = 2;
   public static final String TAG = "MessageForNearbyMarketGrayTips";
-  public int AioType;
+  public int AioType = 0;
   public int gender;
   private String mContent;
   private String mHighLight;
@@ -61,96 +60,102 @@ public class MessageForNearbyMarketGrayTips
   
   protected void doParse()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MessageForNearbyMarketGrayTips", 4, "doParse: " + this.msg);
-    }
-    String str = this.msg;
-    for (;;)
+    if (QLog.isDevelopLevel())
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(str);
-        this.mId = localJSONObject.getInt("id");
-        this.mContent = localJSONObject.getString("content");
-        if (localJSONObject.has("high_light"))
-        {
-          this.mHighLight = localJSONObject.getString("high_light");
-          if (localJSONObject.has("scene"))
-          {
-            this.mScene = localJSONObject.getInt("scene");
-            if (!localJSONObject.has("link")) {
-              break label192;
-            }
-            this.mLink = localJSONObject.getString("link");
-            if (!localJSONObject.has("aioType")) {
-              break;
-            }
-            this.AioType = localJSONObject.getInt("aioType");
-          }
-        }
-        else
-        {
-          this.mHighLight = null;
-          continue;
-        }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doParse: ");
+      ((StringBuilder)localObject).append(this.msg);
+      QLog.i("MessageForNearbyMarketGrayTips", 4, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.msg;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject((String)localObject);
+      this.mId = localJSONObject.getInt("id");
+      this.mContent = localJSONObject.getString("content");
+      if (localJSONObject.has("high_light")) {
+        this.mHighLight = localJSONObject.getString("high_light");
+      } else {
+        this.mHighLight = null;
+      }
+      if (localJSONObject.has("scene")) {
+        this.mScene = localJSONObject.getInt("scene");
+      } else {
         this.mScene = 0;
       }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        this.mContent = str;
-        this.mHighLight = null;
-        this.mScene = 0;
+      if (localJSONObject.has("link")) {
+        this.mLink = localJSONObject.getString("link");
+      } else {
         this.mLink = null;
-        this.AioType = 0;
+      }
+      if (localJSONObject.has("aioType"))
+      {
+        this.AioType = localJSONObject.getInt("aioType");
         return;
       }
-      continue;
-      label192:
-      this.mLink = null;
+      this.AioType = 0;
+      return;
     }
-    this.AioType = 0;
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      this.mContent = ((String)localObject);
+      this.mHighLight = null;
+      this.mScene = 0;
+      this.mLink = null;
+      this.AioType = 0;
+    }
   }
   
   public SpannableString getHightlightMsgText(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((!TextUtils.isEmpty(this.mContent)) && (!TextUtils.isEmpty(this.mHighLight))) {}
-    for (int j = this.mContent.indexOf(this.mHighLight);; j = -1)
+    int j;
+    if ((!TextUtils.isEmpty(this.mContent)) && (!TextUtils.isEmpty(this.mHighLight))) {
+      j = this.mContent.indexOf(this.mHighLight);
+    } else {
+      j = -1;
+    }
+    int k;
+    if (j >= 0) {
+      k = this.mHighLight.length() + j;
+    } else {
+      k = 0;
+    }
+    SpannableString localSpannableString = new SpannableString(this.mContent);
+    if ((j >= 0) && (k > j))
     {
-      if (j >= 0) {}
-      for (int k = this.mHighLight.length() + j;; k = 0)
+      int i = this.mScene;
+      if ((i != 1) && (i != 2) && (i != 4))
       {
-        SpannableString localSpannableString = new SpannableString(this.mContent);
-        int i;
-        if ((j >= 0) && (k > j)) {
-          switch (this.mScene)
+        if (i != 8)
+        {
+          if (i == 16)
           {
-          default: 
-            i = 0;
+            i = 4;
+            break label166;
           }
         }
-        for (;;)
+        else
         {
-          localSpannableString.setSpan(new apez(paramQQAppInterface, paramContext, this.mId, -12541697, i, this.mLink, this.mScene, this), j, k, 33);
-          return localSpannableString;
-          if (TextUtils.isEmpty(this.mLink)) {
-            break;
-          }
-          if (this.mLink.startsWith("mqqapi://"))
-          {
-            i = 2;
-          }
-          else
-          {
-            i = 1;
-            continue;
-            i = 3;
-            continue;
-            i = 4;
-          }
+          i = 3;
+          break label166;
         }
       }
+      else if (!TextUtils.isEmpty(this.mLink))
+      {
+        if (this.mLink.startsWith("mqqapi://"))
+        {
+          i = 2;
+          break label166;
+        }
+        i = 1;
+        break label166;
+      }
+      i = 0;
+      label166:
+      localSpannableString.setSpan(new MessageForNearbyMarketGrayTips.HightlightClickableSpan(paramQQAppInterface, paramContext, this.mId, -12541697, i, this.mLink, this.mScene, this), j, k, 33);
     }
+    return localSpannableString;
   }
 }
 

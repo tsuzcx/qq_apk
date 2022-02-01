@@ -11,12 +11,13 @@ class ChatHistoryC2CFileFragment$1
   
   public void run()
   {
-    if (this.a) {}
-    for (LinkedHashMap localLinkedHashMap = ChatHistoryC2CFileFragment.a(this.this$0);; localLinkedHashMap = ChatHistoryC2CFileFragment.b(this.this$0))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryC2CFileFragment.1.1(this, localLinkedHashMap));
-      return;
+    LinkedHashMap localLinkedHashMap;
+    if (this.a) {
+      localLinkedHashMap = this.this$0.w();
+    } else {
+      localLinkedHashMap = this.this$0.v();
     }
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryC2CFileFragment.1.1(this, localLinkedHashMap));
   }
 }
 

@@ -16,13 +16,18 @@ class MiniAppUserAppInfoListManager$2
     if ((paramBoolean) && (paramJSONObject != null))
     {
       long l = paramJSONObject.optLong("retCode");
-      Object localObject = paramJSONObject.optString("errMsg");
+      localObject = paramJSONObject.optString("errMsg");
       if (l != 0L)
       {
         this.this$0.queryMiniAppInfoFromDb();
         MiniAppUtils.updateMiniAppList(10);
         MiniAppUtils.resetUserAppListRequestRefreshTime();
-        QLog.e("MiniAppUserAppInfoListManager", 1, "sendUserAppListRequest, retCode = " + l + ", errMsg = " + (String)localObject);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("sendUserAppListRequest, retCode = ");
+        paramJSONObject.append(l);
+        paramJSONObject.append(", errMsg = ");
+        paramJSONObject.append((String)localObject);
+        QLog.e("MiniAppUserAppInfoListManager", 1, paramJSONObject.toString());
         return;
       }
       paramJSONObject = (INTERFACE.StGetUserAppListRsp)paramJSONObject.opt("response");
@@ -30,25 +35,28 @@ class MiniAppUserAppInfoListManager$2
       localObject = MiniAppUtils.getAppInterface();
       if (localObject != null) {
         MiniAppUtils.handlePreloadAppData(((AppInterface)localObject).getApp(), paramJSONObject);
-      }
-      for (;;)
-      {
-        MiniAppUtils.updateMiniAppList(1);
-        return;
+      } else {
         QLog.e("MiniAppUserAppInfoListManager", 1, "sendUserAppListRequest, app is null.");
       }
+      MiniAppUtils.updateMiniAppList(1);
+      return;
     }
     if ((paramJSONObject != null) && (paramJSONObject.optLong("retCode") != 1000L)) {
       MiniAppUtils.resetUserAppListRequestRefreshTime();
     }
     this.this$0.queryMiniAppInfoFromDb();
     MiniAppUtils.updateMiniAppList(2);
-    QLog.e("MiniAppUserAppInfoListManager", 1, "sendUserAppListRequest, isSuccess = " + paramBoolean + ", ret = " + paramJSONObject);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendUserAppListRequest, isSuccess = ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", ret = ");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    QLog.e("MiniAppUserAppInfoListManager", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.2
  * JD-Core Version:    0.7.0.1
  */

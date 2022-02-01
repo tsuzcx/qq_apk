@@ -16,7 +16,11 @@ public class DeviceInfo
       int i = Build.VERSION.SDK_INT;
       return i;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
     return -1;
   }
   
@@ -27,7 +31,11 @@ public class DeviceInfo
       String str = Build.BRAND;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
     return "fail";
   }
   
@@ -38,7 +46,11 @@ public class DeviceInfo
       String str = Build.MODEL;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
     return "fail";
   }
   
@@ -54,7 +66,7 @@ public class DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.reporter.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

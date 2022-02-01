@@ -21,14 +21,15 @@ public final class FeedCloudQwebcal$StQWebRsp
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "Seq", "retCode", "errMsg", "busiBuff", "Extinfo" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, null }, StQWebRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "Seq", "retCode", "errMsg", "busiBuff", "Extinfo" }, new Object[] { localLong, localLong, localByteStringMicro1, localByteStringMicro2, null }, StQWebRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     feedcloud.FeedCloudQwebcal.StQWebRsp
  * JD-Core Version:    0.7.0.1
  */

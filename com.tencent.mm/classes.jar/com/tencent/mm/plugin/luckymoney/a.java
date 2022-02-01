@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.luckymoney;
 
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements o
+  implements n
 {
-  public static n gmO;
-  private static m gmP;
+  public static m pFn;
+  private static l pFo;
+  
+  public final void a(l paraml)
+  {
+    pFo = paraml;
+  }
   
   public final void a(m paramm)
   {
-    gmP = paramm;
-  }
-  
-  public final void a(n paramn)
-  {
-    gmO = paramn;
+    pFn = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a
  * JD-Core Version:    0.7.0.1
  */

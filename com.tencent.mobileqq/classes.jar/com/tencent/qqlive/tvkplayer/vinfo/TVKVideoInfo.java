@@ -19,19 +19,21 @@ public class TVKVideoInfo
   public static final int MODEL_CODE_VINFO = 111;
   public static final int MODEL_CODE_VKEY = 112;
   public static final int SUCCESS = 0;
-  private static final String TAG = "TVKVideoInfo";
+  public static final String TAG = "TVKVideoInfo";
   public static final int TYPE_JSON = 1;
   public static final int TYPE_XML = 2;
   private static final long serialVersionUID = -1L;
-  private String VKey = "";
   private String actionUrl;
   private String adsid;
   private String[] backPlayUrl;
   private String bitrate;
   private int cgiCode = 0;
+  private String ckc;
   private String[] clipUrl;
   private int downloadType;
   private String drmToken = "";
+  private int drmType = 0;
+  private int enc = 0;
   private String errMsg;
   private String exInfo;
   private String exMsg;
@@ -40,15 +42,11 @@ public class TVKVideoInfo
   private int fp2p = -1;
   private int height;
   private int iFlag = 0;
-  private Object jceResponse;
   private String level = "";
   private int logHeight;
   private int logWidth;
   private int logX;
   private int logY;
-  private String mCkc;
-  private int mDrmType = 0;
-  private int mEnc = 0;
   private boolean mIsLogShow;
   private boolean mVideoEncryption = false;
   private int modelCode = 0;
@@ -61,6 +59,7 @@ public class TVKVideoInfo
   private String targetId = "";
   private int type;
   private ArrayList<TVKVideoInfo.ReferUrl> urlList = new ArrayList();
+  private String vKey = "";
   private String vKeyXml;
   private String vid;
   private int videoType;
@@ -120,7 +119,7 @@ public class TVKVideoInfo
   
   public String getCkc()
   {
-    return this.mCkc;
+    return this.ckc;
   }
   
   public String[] getClipUrl()
@@ -145,7 +144,7 @@ public class TVKVideoInfo
   
   public int getDrm()
   {
-    return this.mDrmType;
+    return this.drmType;
   }
   
   public int getDuration()
@@ -155,7 +154,7 @@ public class TVKVideoInfo
   
   public int getEnc()
   {
-    return this.mEnc;
+    return this.enc;
   }
   
   public boolean getEncryptionVideo()
@@ -195,27 +194,32 @@ public class TVKVideoInfo
   
   public String getFirstCdnHlsPlayUrl()
   {
-    Object localObject = null;
-    String str;
+    Object localObject;
     if (this.urlList.size() > 0)
     {
-      localObject = (TVKVideoInfo.ReferUrl)this.urlList.get(0);
-      str = ((TVKVideoInfo.ReferUrl)localObject).getUrl();
-      if (((TVKVideoInfo.ReferUrl)localObject).getHlsNode() != null) {
-        localObject = str + ((TVKVideoInfo.ReferUrl)localObject).getHlsNode().getPt();
+      TVKVideoInfo.ReferUrl localReferUrl = (TVKVideoInfo.ReferUrl)this.urlList.get(0);
+      String str = localReferUrl.getUrl();
+      localObject = str;
+      if (localReferUrl.getHlsNode() != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(localReferUrl.getHlsNode().getPt());
+        return ((StringBuilder)localObject).toString();
       }
     }
     else
     {
-      return localObject;
+      localObject = null;
     }
-    return str;
+    return localObject;
   }
   
   public int getFirstCdnId()
   {
+    int j = this.urlList.size();
     int i = 0;
-    if (this.urlList.size() > 0) {
+    if (j > 0) {
       i = ((TVKVideoInfo.ReferUrl)getUrlList().get(0)).getVt();
     }
     return i;
@@ -223,11 +227,10 @@ public class TVKVideoInfo
   
   public String getFirstCdnServer()
   {
-    String str = null;
     if (this.urlList.size() > 0) {
-      str = ((TVKVideoInfo.ReferUrl)getUrlList().get(0)).getUrl();
+      return ((TVKVideoInfo.ReferUrl)getUrlList().get(0)).getUrl();
     }
-    return str;
+    return null;
   }
   
   public int getFp2p()
@@ -243,11 +246,6 @@ public class TVKVideoInfo
   public int getIFlag()
   {
     return this.iFlag;
-  }
-  
-  public Object getJceResponse()
-  {
-    return this.jceResponse;
   }
   
   public String getLevel()
@@ -375,7 +373,7 @@ public class TVKVideoInfo
   
   public String getVKey()
   {
-    return this.VKey;
+    return this.vKey;
   }
   
   public String getVKeyXml()
@@ -395,12 +393,16 @@ public class TVKVideoInfo
   
   public String getVideoUrlWithoutVkey(String paramString)
   {
-    if ((this.urlList == null) || (this.urlList.size() == 0))
+    paramString = this.urlList;
+    if ((paramString != null) && (paramString.size() != 0))
     {
-      Log.e("TVKVideoInfo", "vinfo is not valiad!!");
-      return null;
+      paramString = new StringBuilder();
+      paramString.append(((TVKVideoInfo.ReferUrl)this.urlList.get(0)).getUrl());
+      paramString.append(this.fileName);
+      return paramString.toString();
     }
-    return ((TVKVideoInfo.ReferUrl)this.urlList.get(0)).getUrl() + this.fileName;
+    Log.e("TVKVideoInfo", "vinfo is not valiad!!");
+    return null;
   }
   
   public int getWidth()
@@ -455,7 +457,7 @@ public class TVKVideoInfo
   
   public void setCkc(String paramString)
   {
-    this.mCkc = paramString;
+    this.ckc = paramString;
   }
   
   public void setClipUrl(String[] paramArrayOfString)
@@ -485,7 +487,7 @@ public class TVKVideoInfo
   
   public void setDrm(int paramInt)
   {
-    this.mDrmType = paramInt;
+    this.drmType = paramInt;
   }
   
   public void setDuration(int paramInt)
@@ -495,7 +497,7 @@ public class TVKVideoInfo
   
   public void setEnc(int paramInt)
   {
-    this.mEnc = paramInt;
+    this.enc = paramInt;
   }
   
   public void setEncryptionVideo(boolean paramBoolean)
@@ -556,11 +558,6 @@ public class TVKVideoInfo
   public void setIsHevc(boolean paramBoolean)
   {
     super.setIsHevc(paramBoolean);
-  }
-  
-  public void setJceResponse(Object paramObject)
-  {
-    this.jceResponse = paramObject;
   }
   
   public void setLevel(String paramString)
@@ -700,7 +697,7 @@ public class TVKVideoInfo
   
   public void setVKey(String paramString)
   {
-    this.VKey = paramString;
+    this.vKey = paramString;
   }
   
   public void setVKeyXml(String paramString)
@@ -745,7 +742,7 @@ public class TVKVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo
  * JD-Core Version:    0.7.0.1
  */

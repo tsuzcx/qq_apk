@@ -9,6 +9,7 @@ public class AdClickUtil$Result
   public int action = 0;
   private AdError error = new AdError(1);
   public boolean errorHandled = false;
+  public int urlType = 0;
   
   public AdClickUtil$Result(int paramInt1, int paramInt2)
   {
@@ -24,8 +25,9 @@ public class AdClickUtil$Result
   
   public int getErrorCode()
   {
-    if (this.error != null) {
-      return this.error.getErrorCode();
+    AdError localAdError = this.error;
+    if (localAdError != null) {
+      return localAdError.getErrorCode();
     }
     return 1;
   }
@@ -37,7 +39,7 @@ public class AdClickUtil$Result
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdClickUtil.Result
  * JD-Core Version:    0.7.0.1
  */

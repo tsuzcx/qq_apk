@@ -9,7 +9,7 @@ public final class DomainIpChannel
   extends JceStruct
 {
   static ArrayList<DomainIpList> cache_vDomain_iplists;
-  public ArrayList<DomainIpList> vDomain_iplists;
+  public ArrayList<DomainIpList> vDomain_iplists = null;
   
   public DomainIpChannel() {}
   
@@ -36,7 +36,7 @@ public final class DomainIpChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.DomainIpChannel
  * JD-Core Version:    0.7.0.1
  */

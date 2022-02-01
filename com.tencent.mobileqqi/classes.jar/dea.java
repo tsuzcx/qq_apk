@@ -1,15 +1,15 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
-class dea
-  implements Runnable
+public class dea
+  implements DialogInterface.OnClickListener
 {
-  dea(ddz paramddz) {}
+  public dea(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.c();
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -13,51 +13,51 @@ import com.google.android.gms.internal.cl;
 public class FlagProviderImpl
   extends cj
 {
-  private boolean LL = false;
-  private SharedPreferences LM;
+  private boolean NA = false;
+  private SharedPreferences NB;
   
   public boolean getBooleanFlagValue(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (!this.LL) {
+    if (!this.NA) {
       return paramBoolean;
     }
-    return ((Boolean)cl.a(new b.1(this.LM, paramString, Boolean.valueOf(paramBoolean)))).booleanValue();
+    return ((Boolean)cl.a(new b.1(this.NB, paramString, Boolean.valueOf(paramBoolean)))).booleanValue();
   }
   
   public int getIntFlagValue(String paramString, int paramInt1, int paramInt2)
   {
-    if (!this.LL) {
+    if (!this.NA) {
       return paramInt1;
     }
-    return ((Integer)cl.a(new c.1(this.LM, paramString, Integer.valueOf(paramInt1)))).intValue();
+    return ((Integer)cl.a(new c.1(this.NB, paramString, Integer.valueOf(paramInt1)))).intValue();
   }
   
   public long getLongFlagValue(String paramString, long paramLong, int paramInt)
   {
-    if (!this.LL) {
+    if (!this.NA) {
       return paramLong;
     }
-    return ((Long)cl.a(new d.1(this.LM, paramString, Long.valueOf(paramLong)))).longValue();
+    return ((Long)cl.a(new d.1(this.NB, paramString, Long.valueOf(paramLong)))).longValue();
   }
   
   public String getStringFlagValue(String paramString1, String paramString2, int paramInt)
   {
-    if (!this.LL) {
+    if (!this.NA) {
       return paramString2;
     }
-    return (String)cl.a(new e.1(this.LM, paramString1, paramString2));
+    return (String)cl.a(new e.1(this.NB, paramString1, paramString2));
   }
   
   public void init(a parama)
   {
     parama = (Context)d.a(parama);
-    if (this.LL) {
+    if (this.NA) {
       return;
     }
     try
     {
-      this.LM = f.r(parama.createPackageContext("com.google.android.gms", 0));
-      this.LL = true;
+      this.NB = f.s(parama.createPackageContext("com.google.android.gms", 0));
+      this.NA = true;
       return;
     }
     catch (PackageManager.NameNotFoundException parama) {}

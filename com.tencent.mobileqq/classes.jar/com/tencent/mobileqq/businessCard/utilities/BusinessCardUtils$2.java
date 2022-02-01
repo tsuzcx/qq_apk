@@ -2,10 +2,10 @@ package com.tencent.mobileqq.businessCard.utilities;
 
 import com.tencent.image.URLDrawable;
 
-public final class BusinessCardUtils$2
+final class BusinessCardUtils$2
   implements Runnable
 {
-  public BusinessCardUtils$2(URLDrawable paramURLDrawable) {}
+  BusinessCardUtils$2(URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public final class BusinessCardUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils.2
  * JD-Core Version:    0.7.0.1
  */

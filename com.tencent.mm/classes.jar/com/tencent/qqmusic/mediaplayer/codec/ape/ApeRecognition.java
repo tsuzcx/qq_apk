@@ -15,11 +15,11 @@ public class ApeRecognition
   
   public AudioFormat.AudioType getAudioType(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128547);
+    AppMethodBeat.i(114356);
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (new String(paramArrayOfByte).startsWith("MAC")))
     {
       paramString = AudioFormat.AudioType.APE;
-      AppMethodBeat.o(128547);
+      AppMethodBeat.o(114356);
       return paramString;
     }
     AudioFormat.AudioType localAudioType = AudioFormat.AudioType.UNSUPPORT;
@@ -37,27 +37,27 @@ public class ApeRecognition
         }
       }
     }
-    AppMethodBeat.o(128547);
+    AppMethodBeat.o(114356);
     return paramArrayOfByte;
   }
   
   public AudioFormat.AudioType guessAudioType(String paramString)
   {
-    AppMethodBeat.i(128548);
+    AppMethodBeat.i(114357);
     if ((!TextUtils.isEmpty(paramString)) && ((paramString.toLowerCase().contains(".ape")) || (paramString.toLowerCase().contains(".mac"))))
     {
       paramString = AudioFormat.AudioType.APE;
-      AppMethodBeat.o(128548);
+      AppMethodBeat.o(114357);
       return paramString;
     }
     paramString = AudioFormat.AudioType.UNSUPPORT;
-    AppMethodBeat.o(128548);
+    AppMethodBeat.o(114357);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.ape.ApeRecognition
  * JD-Core Version:    0.7.0.1
  */

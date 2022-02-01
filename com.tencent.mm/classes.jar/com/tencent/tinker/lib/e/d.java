@@ -6,23 +6,23 @@ import java.util.HashMap;
 
 public final class d
 {
-  public String BsY;
-  public String BsZ;
-  public boolean Bta;
-  public boolean Btb;
-  public boolean Btc;
-  public File Btd;
-  public File Bte;
-  public File Btf;
-  public File Btg;
-  public File Bth;
-  public File Bti;
-  public HashMap<String, String> Btj;
-  public HashMap<String, String> Btk;
-  public HashMap<String, String> Btl;
-  public int Btm;
-  public long iHc;
+  public String ahRR;
+  public boolean ahRS;
+  public boolean ahRT;
+  public File ahRU;
+  public File ahRV;
+  public File ahRW;
+  public File ahRX;
+  public File ahRY;
+  public File ahRZ;
+  public HashMap<String, String> ahSa;
+  public HashMap<String, String> ahSb;
+  public HashMap<String, String> ahSc;
+  public int ahSd;
+  public long costTime;
+  public String oatDir;
   public SharePatchInfo patchInfo;
+  public boolean useInterpretMode;
 }
 
 

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class UserLocaleInfo
   extends JceStruct
 {
-  public long lLatitude;
-  public long lLongitude;
+  public long lLatitude = 0L;
+  public long lLongitude = 0L;
   
   public UserLocaleInfo() {}
   
@@ -32,7 +32,7 @@ public final class UserLocaleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.UserLocaleInfo
  * JD-Core Version:    0.7.0.1
  */

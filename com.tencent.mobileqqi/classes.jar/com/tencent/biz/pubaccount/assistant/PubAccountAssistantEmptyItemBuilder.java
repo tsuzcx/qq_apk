@@ -51,7 +51,7 @@ public class PubAccountAssistantEmptyItemBuilder
       if ((paramObject instanceof Integer))
       {
         paramObject = (Integer)paramObject;
-        paramDrawable = (TextView)paramView.findViewById(2131232574);
+        paramDrawable = (TextView)paramView.findViewById(2131232573);
         if (paramObject.intValue() != 9) {
           break label200;
         }

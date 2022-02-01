@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:orientation="vertical" android:background="@color/uy" android:paddingLeft="@dimen/a6k" android:paddingRight="@dimen/a6k" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/ahb" android:layout_width="wrap_content" android:layout_height="@dimen/d4"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/d8l" android:layout_width="fill_parent" android:layout_height="86.0dip" android:scaleType="fitXY" />
-    <TextView android:textSize="@dimen/m2" android:textStyle="bold" android:textColor="@color/uz" android:gravity="center" android:id="@id/d8m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
+    <RelativeLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:paddingStart="@dimen/cd">
+        <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/m4" android:ellipsize="end" android:gravity="center" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kd3" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginTop="1.0px" android:layout_alignTop="@id/kd0" android:layout_toEndOf="@id/kd0" />
+        <ImageView android:layout_gravity="top" android:id="@id/kd4" android:visibility="invisible" android:layout_width="@dimen/df" android:layout_height="@dimen/df" android:layout_marginTop="-4.0dip" android:layout_alignTop="@id/kd3" android:layout_toEndOf="@id/kd3" style="@style/zi" />
+        <ImageView android:layout_gravity="top" android:id="@id/a8v" android:visibility="invisible" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_marginTop="-5.5dip" android:layout_alignTop="@id/kd3" android:layout_toEndOf="@id/kd3" />
+    </RelativeLayout>
 </LinearLayout>

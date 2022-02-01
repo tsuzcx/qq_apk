@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+    height="80px"
+    version="1.1"
+    viewBox="0 0 80 80"
+    width="80px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 3.4.2 (15857) - http://www.bohemiancoding.com/sketch -->
+    <title>changshipin</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="最终稿"
+        stroke="none"
+        stroke-width="1"
+        sketch:type="MSPage">
+        <g
+            fill="#FFFFFF"
+            id="changshipin"
+            sketch:type="MSArtboardGroup">
+            <g
+                id="Rectangle-74-+-Group"
+                transform="translate(5.000000, 19.000000)"
+                sketch:type="MSLayerGroup">
+                <path
+                    d="M0,0.629404119 L44.0818037,0.629405361 L44.0818037,41.7468439 L0,41.7468427 L0,0.629404119 Z M5,5.62940412 L39,5.62940443 L39,36.6294041 L5,36.6294038 L5,5.62940412 Z"
+                    id="Rectangle-74"
+                    sketch:type="MSShapeGroup"></path>
+                <g
+                    id="Group"
+                    transform="translate(47.882760, 1.922839)"
+                    sketch:type="MSShapeGroup">
+                    <path
+                        d="M17.2386592,3.84567784 L21.2765525,3.84567728 L21.2765525,34.6111045 L17.2386592,34.611105 L17.2386592,3.84567784 Z"
+                        id="Rectangle-77"></path>
+                    <path
+                        d="M0.268773288,13.4598742 L4.22150919,13.459874 L4.22150919,24.9969092 L0.268773288,24.9969094 L0.268773288,13.4598742 Z"
+                        id="Rectangle-80"></path>
+                    <path
+                        d="M0,13.4598744 L21.3884488,0 L21.3884488,5.17143597 L0,18.6313104 L0,13.4598744 Z"
+                        id="Rectangle-78"></path>
+                    <path
+                        d="M21.3884488,33.285348 L0,19.8254736 L0,24.9969096 L21.3884488,38.456784 L21.3884488,33.285348 Z"
+                        id="Rectangle-78-Copy"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

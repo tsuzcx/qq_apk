@@ -18,15 +18,17 @@ public class e
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.b != null) {
-      this.b.a(paramView, paramMotionEvent);
+    Object localObject = this.b;
+    if (localObject != null) {
+      ((b.b)localObject).a(paramView, paramMotionEvent);
     }
-    return (this.a != null) && (this.a.onTouch(paramView, paramMotionEvent));
+    localObject = this.a;
+    return (localObject != null) && (((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.f.e
  * JD-Core Version:    0.7.0.1
  */

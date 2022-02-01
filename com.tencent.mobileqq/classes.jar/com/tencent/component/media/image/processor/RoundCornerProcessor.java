@@ -39,38 +39,39 @@ public class RoundCornerProcessor
   
   public static BitmapReference getRoundedCornerBitmap(BitmapReference paramBitmapReference, float[] paramArrayOfFloat)
   {
+    BitmapReference localBitmapReference2;
     try
     {
       BitmapReference localBitmapReference1 = ImageManager.getInstance().getBitmap(paramBitmapReference.getWidth(), paramBitmapReference.getHeight(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmapReference1.getBitmap());
-      RectF localRectF = new RectF(0.0F, 0.0F, paramBitmapReference.getWidth(), paramBitmapReference.getHeight());
-      Path localPath = new Path();
-      Paint localPaint = new Paint();
-      localPath.addRoundRect(localRectF, paramArrayOfFloat, Path.Direction.CW);
-      localPaint.setAntiAlias(true);
-      localCanvas.drawPath(localPath, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      localCanvas.drawBitmap(paramBitmapReference.getBitmap(), null, localRectF, localPaint);
-      return localBitmapReference1;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        ImageManagerLog.e("RoundCornerProcessor", "OOM," + localOutOfMemoryError.toString());
-        BitmapReference localBitmapReference2 = ImageManager.getInstance().getBitmap(paramBitmapReference.getWidth(), paramBitmapReference.getHeight(), Bitmap.Config.ARGB_4444);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OOM,");
+      ((StringBuilder)localObject).append(localOutOfMemoryError.toString());
+      ImageManagerLog.e("RoundCornerProcessor", ((StringBuilder)localObject).toString());
+      localBitmapReference2 = ImageManager.getInstance().getBitmap(paramBitmapReference.getWidth(), paramBitmapReference.getHeight(), Bitmap.Config.ARGB_4444);
     }
+    Object localObject = new Canvas(localBitmapReference2.getBitmap());
+    RectF localRectF = new RectF(0.0F, 0.0F, paramBitmapReference.getWidth(), paramBitmapReference.getHeight());
+    Path localPath = new Path();
+    Paint localPaint = new Paint();
+    localPath.addRoundRect(localRectF, paramArrayOfFloat, Path.Direction.CW);
+    localPaint.setAntiAlias(true);
+    ((Canvas)localObject).drawPath(localPath, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    ((Canvas)localObject).drawBitmap(paramBitmapReference.getBitmap(), null, localRectF, localPaint);
+    return localBitmapReference2;
   }
   
   @Public
   public float getRadius()
   {
-    float f = 0.0F;
-    if (this.mRadius > 0.0F) {
-      f = this.mRadius;
+    float f = this.mRadius;
+    if (f > 0.0F) {
+      return f;
     }
-    return f;
+    return 0.0F;
   }
   
   @Public
@@ -90,12 +91,13 @@ public class RoundCornerProcessor
     if (this.mPreProcessor != null) {
       localDrawable = this.mPreProcessor.process(paramDrawable);
     }
-    if (this.mRadiusArray == null) {}
-    do
-    {
+    if (this.mRadiusArray == null) {
       return localDrawable;
-      paramDrawable = ImageManagerEnv.g().drawableToBitmap(localDrawable);
-    } while (paramDrawable == null);
+    }
+    paramDrawable = ImageManagerEnv.g().drawableToBitmap(localDrawable);
+    if (paramDrawable == null) {
+      return localDrawable;
+    }
     paramDrawable = getRoundedCornerBitmap(paramDrawable, this.mRadiusArray);
     if (paramDrawable == null) {
       return null;
@@ -109,9 +111,13 @@ public class RoundCornerProcessor
     this.mRadius = paramFloat;
     this.mRadiusArray = new float[8];
     int i = 0;
-    while (i < this.mRadiusArray.length)
+    for (;;)
     {
-      this.mRadiusArray[i] = paramFloat;
+      float[] arrayOfFloat = this.mRadiusArray;
+      if (i >= arrayOfFloat.length) {
+        break;
+      }
+      arrayOfFloat[i] = paramFloat;
       i += 1;
     }
   }
@@ -124,7 +130,7 @@ public class RoundCornerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.processor.RoundCornerProcessor
  * JD-Core Version:    0.7.0.1
  */

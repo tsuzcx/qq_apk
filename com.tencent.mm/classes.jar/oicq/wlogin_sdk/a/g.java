@@ -6,49 +6,49 @@ import oicq.wlogin_sdk.tools.util;
 public final class g
   extends a
 {
-  public int CNA = 0;
-  public int CNx = 0;
-  public int CNy = 0;
-  public int CNz = 0;
+  public int ajHK = 0;
+  public int ajHL = 0;
+  public int ajHM = 0;
+  public int ajHN = 0;
   
   public g()
   {
-    this.CMD = 261;
+    this.ajGQ = 261;
   }
   
-  public final Boolean erf()
+  public final Boolean kGl()
   {
-    AppMethodBeat.i(96469);
-    if (this.CNn < 2)
+    AppMethodBeat.i(88108);
+    if (this.ajHA < 2)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96469);
+      AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.CNy = util.ae(this.CMx, this.CNm);
-    if (this.CNn < this.CNy + 2 + 2)
+    this.ajHL = util.aq(this.ajGK, this.ajHz);
+    if (this.ajHA < this.ajHL + 2 + 2)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96469);
+      AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.CNx = util.ae(this.CMx, this.CNm + 2 + this.CNy);
-    if (this.CNn < this.CNy + 2 + 2 + this.CNx)
+    this.ajHK = util.aq(this.ajGK, this.ajHz + 2 + this.ajHL);
+    if (this.ajHA < this.ajHL + 2 + 2 + this.ajHK)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96469);
+      AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.CNA = (this.CNm + 2);
-    this.CNz = (this.CNy + 2 + 2 + this.CNm);
+    this.ajHN = (this.ajHz + 2);
+    this.ajHM = (this.ajHL + 2 + 2 + this.ajHz);
     Boolean localBoolean = Boolean.TRUE;
-    AppMethodBeat.o(96469);
+    AppMethodBeat.o(88108);
     return localBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,99 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.w;
+import com.tencent.mm.plugin.wallet_core.model.Orders;
+import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public final class g
-  extends w
+public enum g
 {
-  private Context context;
+  private Map<String, WeakReference<f>> VLy;
   
-  public g(Context paramContext)
+  static
   {
-    this.context = paramContext;
+    AppMethodBeat.i(70674);
+    VLx = new g("INSTANCE");
+    VLz = new g[] { VLx };
+    AppMethodBeat.o(70674);
   }
   
-  public final boolean a(WebView paramWebView, String paramString)
+  private g()
   {
-    AppMethodBeat.i(47131);
-    paramWebView = new Intent();
-    paramWebView.putExtra("rawUrl", paramString);
-    ab.d("MicroMsg.ProtoColWebViewClient", "raw url: %s", new Object[] { paramWebView.getStringExtra("rawUrl") });
-    d.b(this.context, "webview", ".ui.tools.WebViewUI", paramWebView);
-    AppMethodBeat.o(47131);
-    return true;
+    AppMethodBeat.i(70671);
+    this.VLy = new HashMap();
+    AppMethodBeat.o(70671);
+  }
+  
+  private static String b(Orders paramOrders)
+  {
+    AppMethodBeat.i(70673);
+    if ((paramOrders != null) && (paramOrders.VGX != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i = 0;
+      while (i < paramOrders.VGX.size())
+      {
+        localStringBuilder.append(((Orders.Commodity)paramOrders.VGX.get(i)).hAU);
+        i += 1;
+      }
+      localStringBuilder.append("@");
+      localStringBuilder.append(paramOrders.VGF);
+      paramOrders = localStringBuilder.toString();
+      AppMethodBeat.o(70673);
+      return paramOrders;
+    }
+    AppMethodBeat.o(70673);
+    return null;
+  }
+  
+  public final f a(Orders paramOrders)
+  {
+    AppMethodBeat.i(70672);
+    String str = b(paramOrders);
+    if (Util.isNullOrNil(str))
+    {
+      Log.w("MicroMsg.FavorLogicHelperPool", "get key null");
+      AppMethodBeat.o(70672);
+      return null;
+    }
+    Object localObject;
+    if (this.VLy.containsKey(str))
+    {
+      Log.i("MicroMsg.FavorLogicHelperPool", "hit cache, key:".concat(String.valueOf(str)));
+      localObject = (WeakReference)this.VLy.get(str);
+      if (localObject == null) {
+        break label153;
+      }
+      localObject = (f)((WeakReference)localObject).get();
+      if (localObject != null)
+      {
+        AppMethodBeat.o(70672);
+        return localObject;
+      }
+      Log.i("MicroMsg.FavorLogicHelperPool", "helper null");
+    }
+    while ((paramOrders != null) && (paramOrders.VGY != null))
+    {
+      paramOrders = new f(paramOrders.VGY);
+      localObject = new WeakReference(paramOrders);
+      this.VLy.put(str, localObject);
+      AppMethodBeat.o(70672);
+      return paramOrders;
+      label153:
+      Log.i("MicroMsg.FavorLogicHelperPool", "weakHelper null");
+    }
+    AppMethodBeat.o(70672);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.g
  * JD-Core Version:    0.7.0.1
  */

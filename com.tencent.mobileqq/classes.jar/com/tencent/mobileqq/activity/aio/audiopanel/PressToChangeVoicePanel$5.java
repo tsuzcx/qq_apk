@@ -9,12 +9,12 @@ class PressToChangeVoicePanel$5
   
   public void run()
   {
-    PressToChangeVoicePanel.a(this.this$0).sendAccessibilityEvent(128);
+    PressToChangeVoicePanel.b(this.this$0).sendAccessibilityEvent(128);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel.5
  * JD-Core Version:    0.7.0.1
  */

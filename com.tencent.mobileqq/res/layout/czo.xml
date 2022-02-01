@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/pwd" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="52.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:id="@id/du6" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="@dimen/bnw" android:src="@drawable/qcircle_skin_icon_nav_back" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/black" android:ellipsize="end" android:gravity="center" android:id="@id/kbs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="咖啡瘾者" android:maxLines="1" android:layout_toLeftOf="@id/o91" android:layout_toRightOf="@id/du6" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/o91" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="@dimen/bnx" android:src="@drawable/qcircle_skin_icon_nav_more_dot" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

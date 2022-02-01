@@ -5,18 +5,18 @@ import android.os.Bundle;
 final class e
   implements Runnable
 {
-  final int iN;
-  final Bundle iO;
+  final int kL;
+  final Bundle kM;
   
   e(ResultReceiver paramResultReceiver, int paramInt, Bundle paramBundle)
   {
-    this.iN = paramInt;
-    this.iO = paramBundle;
+    this.kL = paramInt;
+    this.kM = paramBundle;
   }
   
   public final void run()
   {
-    this.iM.onReceiveResult(this.iN, this.iO);
+    this.kK.onReceiveResult(this.kL, this.kM);
   }
 }
 

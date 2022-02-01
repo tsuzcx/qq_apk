@@ -35,26 +35,31 @@ public final class share_tail_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strTailTitle != null) {
-      paramJceOutputStream.write(this.strTailTitle, 0);
+    String str = this.strTailTitle;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strTailSummary != null) {
-      paramJceOutputStream.write(this.strTailSummary, 1);
+    str = this.strTailSummary;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strButtonText != null) {
-      paramJceOutputStream.write(this.strButtonText, 2);
+    str = this.strButtonText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strButtonURL != null) {
-      paramJceOutputStream.write(this.strButtonURL, 3);
+    str = this.strButtonURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strIconUrl != null) {
-      paramJceOutputStream.write(this.strIconUrl, 4);
+    str = this.strIconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.share_tail_info
  * JD-Core Version:    0.7.0.1
  */

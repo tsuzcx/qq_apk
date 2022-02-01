@@ -25,7 +25,7 @@ public class HotRecommendGroupFlowLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
+  protected void a()
   {
     int j = getChildCount();
     int i = 0;

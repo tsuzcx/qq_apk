@@ -10,22 +10,18 @@ class Keyframe$ObjectKeyframe
     this.mFraction = paramFloat;
     this.mValue = paramObject;
     boolean bool;
-    if (paramObject != null)
-    {
+    if (paramObject != null) {
       bool = true;
-      this.mHasValue = bool;
-      if (!this.mHasValue) {
-        break label48;
-      }
-    }
-    label48:
-    for (paramObject = paramObject.getClass();; paramObject = Object.class)
-    {
-      this.mValueType = paramObject;
-      return;
+    } else {
       bool = false;
-      break;
     }
+    this.mHasValue = bool;
+    if (this.mHasValue) {
+      paramObject = paramObject.getClass();
+    } else {
+      paramObject = Object.class;
+    }
+    this.mValueType = paramObject;
   }
   
   public ObjectKeyframe clone()
@@ -43,17 +39,18 @@ class Keyframe$ObjectKeyframe
   public void setValue(Object paramObject)
   {
     this.mValue = paramObject;
-    if (paramObject != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mHasValue = bool;
-      return;
+    boolean bool;
+    if (paramObject != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mHasValue = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.nineoldandroids.animation.Keyframe.ObjectKeyframe
  * JD-Core Version:    0.7.0.1
  */

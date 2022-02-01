@@ -5,16 +5,21 @@ import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 final class MiniProgramLpReportDC04239$9
   implements Runnable
 {
-  MiniProgramLpReportDC04239$9(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  MiniProgramLpReportDC04239$9(String paramString, MiniAppConfig paramMiniAppConfig) {}
   
   public void run()
   {
-    MiniProgramLpReportDC04239.report(this.val$miniAppConfig, this.val$appType, this.val$path, this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2, null, null, null, null);
+    MiniAppConfig localMiniAppConfig = this.val$miniAppConfig;
+    if ((localMiniAppConfig != null) && (localMiniAppConfig.config != null))
+    {
+      localMiniAppConfig = this.val$miniAppConfig;
+      MiniProgramLpReportDC04239.access$000(localMiniAppConfig, MiniProgramLpReportDC04239.getAppType(localMiniAppConfig), null, "inner-app", "from_api", this.val$eventName);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239.9
  * JD-Core Version:    0.7.0.1
  */

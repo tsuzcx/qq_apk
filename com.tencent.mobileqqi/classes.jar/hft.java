@@ -1,5 +1,6 @@
 import com.tencent.mobileqq.widget.CameraFrameLayout;
 import com.tencent.mobileqq.widget.CameraFrameLayoutProxy;
+import com.tencent.qphone.base.util.QLog;
 
 public class hft
   implements Runnable
@@ -9,8 +10,15 @@ public class hft
   public void run()
   {
     if ((CameraFrameLayoutProxy.a(this.a) != null) && (!CameraFrameLayoutProxy.a(this.a).a())) {}
-    while ((!this.a.a) || (this.a.b)) {
+    do
+    {
       return;
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraFrameLayoutProxy", 2, "mShouldStartRealtimeBg:" + this.a.a);
+      }
+    } while ((!this.a.a) || (this.a.b));
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraFrameLayoutProxy", 2, "openRealtimeBg");
     }
     CameraFrameLayoutProxy.a(this.a);
   }

@@ -1,8 +1,5 @@
-import android.os.Bundle;
 import com.tencent.open.appcommon.AppViewBaseActivity;
 import com.tencent.open.appcommon.js.BaseJsCallBack;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class hku
   implements Runnable
@@ -11,21 +8,13 @@ public class hku
   
   public void run()
   {
-    try
+    if (this.jdField_a_of_type_JavaLangString.equals("1")) {}
+    for (boolean bool = true;; bool = false)
     {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("iconType", localJSONObject.optString("iconType"));
-      localBundle.putString("visible", localJSONObject.optString("visible"));
-      localBundle.putString("callBackKey", localJSONObject.optString("callBackKey"));
       if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity instanceof AppViewBaseActivity)) {
-        ((AppViewBaseActivity)this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity).b(localBundle);
+        ((AppViewBaseActivity)this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity).c(bool);
       }
       return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
     }
   }
 }

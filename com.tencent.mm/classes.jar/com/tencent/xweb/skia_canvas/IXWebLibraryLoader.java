@@ -2,6 +2,10 @@ package com.tencent.xweb.skia_canvas;
 
 public abstract interface IXWebLibraryLoader
 {
+  public abstract boolean afterLoad();
+  
+  public abstract boolean beforeLoad();
+  
   public abstract boolean load(String paramString);
 }
 

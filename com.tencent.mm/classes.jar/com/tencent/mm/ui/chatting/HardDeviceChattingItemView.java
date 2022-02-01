@@ -17,17 +17,17 @@ public class HardDeviceChattingItemView
   
   public void onFinishInflate()
   {
-    AppMethodBeat.i(30940);
+    AppMethodBeat.i(34819);
     super.onFinishInflate();
     if (!this.mHasInit) {
       this.mHasInit = true;
     }
-    AppMethodBeat.o(30940);
+    AppMethodBeat.o(34819);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.HardDeviceChattingItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.wifisdk.ui.api.RProxy.anim;
 import com.wifisdk.ui.api.RProxy.color;
 import com.wifisdk.ui.api.RProxy.drawable;
@@ -172,17 +173,18 @@ public class b
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = getItemViewType(paramInt);
-    paramViewGroup = getItem(paramInt);
+    Object localObject = getItem(paramInt);
     if (i == 2) {
-      return a((hp)paramViewGroup, paramView);
+      localObject = a((hp)localObject, paramView);
+    } else if (i == 3) {
+      localObject = a((hq)localObject, paramView);
+    } else if (i == 1) {
+      localObject = a((ho)localObject, paramView);
+    } else {
+      localObject = new View(this.mContext);
     }
-    if (i == 3) {
-      return a((hq)paramViewGroup, paramView);
-    }
-    if (i == 1) {
-      return a((ho)paramViewGroup, paramView);
-    }
-    return new View(this.mContext);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public int getViewTypeCount()
@@ -199,7 +201,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.wifisdk.ui.view.b
  * JD-Core Version:    0.7.0.1
  */

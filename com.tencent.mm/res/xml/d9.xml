@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_realtime" android:title="@string/ks6" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_2h" android:title="@string/ks1" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_24h" android:title="@string/krz" />
+</PreferenceScreen>

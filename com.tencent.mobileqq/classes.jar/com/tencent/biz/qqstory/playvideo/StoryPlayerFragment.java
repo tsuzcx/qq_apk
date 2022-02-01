@@ -5,39 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.SystemBarCompact;
-import vnq;
-import vns;
-import vnt;
-import vnu;
-import voc;
 
 public class StoryPlayerFragment
-  extends Fragment
-  implements voc
+  extends BaseFragment
+  implements StoryPlayerImpl.Ui
 {
-  private int jdField_a_of_type_Int;
-  public AnimationParam a;
-  protected vnu a;
-  private boolean jdField_a_of_type_Boolean;
-  
-  @NonNull
-  public Context a()
-  {
-    return getActivity();
-  }
+  protected StoryPlayerImpl a;
+  protected AnimationParam b;
+  private int c;
+  private boolean d;
   
   @NonNull
   public View a()
@@ -47,69 +36,76 @@ public class StoryPlayerFragment
   
   public void finish()
   {
-    getActivity().getSupportFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
+    getBaseActivity().getSupportFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
+  }
+  
+  @NonNull
+  public Context getContext()
+  {
+    return getBaseActivity();
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Vnu.a(paramBundle, getArguments());
+    this.a.a(paramBundle, getArguments());
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Vnu.a(paramInt1, paramInt2, paramIntent);
+    this.a.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_Vnu = new vnu();
-    this.jdField_a_of_type_Vnu.a(this);
+    this.a = new StoryPlayerImpl();
+    this.a.a(this);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = ((AnimationParam)getArguments().getParcelable("AnimationParam"));
+    this.b = ((AnimationParam)getArguments().getParcelable("AnimationParam"));
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561533, paramViewGroup, false);
-    paramViewGroup = getActivity();
-    this.jdField_a_of_type_Int = paramViewGroup.getWindow().getAttributes().flags;
-    if ((this.jdField_a_of_type_Int & 0x400) != 1024) {
-      getActivity().getWindow().setFlags(1024, 1024);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131628116, paramViewGroup, false);
+    paramViewGroup = getBaseActivity();
+    this.c = paramViewGroup.getWindow().getAttributes().flags;
+    if ((this.c & 0x400) != 1024) {
+      getBaseActivity().getWindow().setFlags(1024, 1024);
     }
     if (paramViewGroup.mSystemBarComp != null)
     {
-      this.jdField_a_of_type_Boolean = paramViewGroup.mSystemBarComp.isStatusBarVisible;
+      this.d = paramViewGroup.mSystemBarComp.isStatusBarVisible;
       if (paramViewGroup.mSystemBarComp.isStatusBarVisible) {
         paramViewGroup.mSystemBarComp.setgetStatusBarVisible(false, 0);
       }
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) {
-      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new vnq(this, paramLayoutInflater));
+    if (this.b != null) {
+      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new StoryPlayerFragment.1(this, paramLayoutInflater));
     }
-    paramLayoutInflater.setOnTouchListener(new vns(this));
+    paramLayoutInflater.setOnTouchListener(new StoryPlayerFragment.2(this));
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Vnu.g();
+    this.a.h();
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    FragmentActivity localFragmentActivity = getActivity();
-    localFragmentActivity.getWindow().setFlags(this.jdField_a_of_type_Int, -1);
-    if (localFragmentActivity.mSystemBarComp != null) {
-      localFragmentActivity.mSystemBarComp.setgetStatusBarVisible(this.jdField_a_of_type_Boolean, 0);
+    BaseActivity localBaseActivity = getBaseActivity();
+    localBaseActivity.getWindow().setFlags(this.c, -1);
+    if (localBaseActivity.mSystemBarComp != null) {
+      localBaseActivity.mSystemBarComp.setgetStatusBarVisible(this.d, 0);
     }
   }
   
@@ -121,33 +117,33 @@ public class StoryPlayerFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Vnu.e();
+    this.a.f();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Vnu.d();
+    this.a.e();
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_Vnu.c();
+    this.a.d();
     getView().setFocusableInTouchMode(true);
     getView().requestFocus();
-    getView().setOnKeyListener(new vnt(this));
+    getView().setOnKeyListener(new StoryPlayerFragment.3(this));
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Vnu.f();
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerFragment
  * JD-Core Version:    0.7.0.1
  */

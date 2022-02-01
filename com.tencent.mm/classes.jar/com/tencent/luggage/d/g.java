@@ -1,27 +1,17 @@
 package com.tencent.luggage.d;
 
-import android.content.Context;
-import java.util.LinkedList;
+import com.tencent.luggage.bridge.s;
 
-public abstract class g
+public abstract interface g
+  extends s
 {
-  abstract Context getContext();
+  public abstract void aof();
   
-  abstract k ui();
-  
-  abstract Class<? extends com.tencent.luggage.webview.a> uj();
-  
-  public abstract LinkedList<e> um();
-  
-  public abstract h un();
-  
-  abstract LinkedList<Class<? extends a>> uo();
-  
-  public abstract com.tencent.luggage.g.e up();
+  public abstract void destroy();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.g
  * JD-Core Version:    0.7.0.1
  */

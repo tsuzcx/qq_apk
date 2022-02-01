@@ -25,41 +25,38 @@ public abstract class TAVMovieResource
   
   protected void cloneFrom(@NonNull TAVMovieResource paramTAVMovieResource)
   {
+    Object localObject1 = paramTAVMovieResource.sourceTimeRange;
     Object localObject2 = null;
-    if (paramTAVMovieResource.sourceTimeRange != null)
-    {
-      localObject1 = paramTAVMovieResource.sourceTimeRange.clone();
-      this.sourceTimeRange = ((CMTimeRange)localObject1);
-      if (paramTAVMovieResource.timeRange == null) {
-        break label125;
-      }
-      localObject1 = paramTAVMovieResource.timeRange.clone();
-      label37:
-      this.timeRange = ((CMTimeRange)localObject1);
-      if (paramTAVMovieResource.duration == null) {
-        break label130;
-      }
-    }
-    label130:
-    for (Object localObject1 = paramTAVMovieResource.duration.clone();; localObject1 = null)
-    {
-      this.duration = ((CMTime)localObject1);
-      this.timeEffects = CloneUtil.cloneMovieTimeEffects(paramTAVMovieResource.timeEffects);
-      this.type = paramTAVMovieResource.type;
-      localObject1 = localObject2;
-      if (paramTAVMovieResource.naturalSize != null) {
-        localObject1 = paramTAVMovieResource.naturalSize.clone();
-      }
-      this.naturalSize = ((CGSize)localObject1);
-      this.status = paramTAVMovieResource.status;
-      this.errorStatus = paramTAVMovieResource.errorStatus;
-      return;
+    if (localObject1 != null) {
+      localObject1 = ((CMTimeRange)localObject1).clone();
+    } else {
       localObject1 = null;
-      break;
-      label125:
-      localObject1 = null;
-      break label37;
     }
+    this.sourceTimeRange = ((CMTimeRange)localObject1);
+    localObject1 = paramTAVMovieResource.timeRange;
+    if (localObject1 != null) {
+      localObject1 = ((CMTimeRange)localObject1).clone();
+    } else {
+      localObject1 = null;
+    }
+    this.timeRange = ((CMTimeRange)localObject1);
+    localObject1 = paramTAVMovieResource.duration;
+    if (localObject1 != null) {
+      localObject1 = ((CMTime)localObject1).clone();
+    } else {
+      localObject1 = null;
+    }
+    this.duration = ((CMTime)localObject1);
+    this.timeEffects = CloneUtil.cloneMovieTimeEffects(paramTAVMovieResource.timeEffects);
+    this.type = paramTAVMovieResource.type;
+    CGSize localCGSize = paramTAVMovieResource.naturalSize;
+    localObject1 = localObject2;
+    if (localCGSize != null) {
+      localObject1 = localCGSize.clone();
+    }
+    this.naturalSize = ((CGSize)localObject1);
+    this.status = paramTAVMovieResource.status;
+    this.errorStatus = paramTAVMovieResource.errorStatus;
   }
   
   public abstract TAVResource convertToResource();
@@ -163,7 +160,7 @@ public abstract class TAVMovieResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.resource.TAVMovieResource
  * JD-Core Version:    0.7.0.1
  */

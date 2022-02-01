@@ -2,223 +2,240 @@ package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.e.a;
-import com.tencent.mm.plugin.fts.a.h;
-import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.fts.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.j;
-import java.io.File;
+import com.tencent.mm.plugin.fts.a.a;
+import com.tencent.mm.plugin.fts.a.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.wcdb.database.SQLiteStatement;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public final class g
-  extends com.tencent.mm.plugin.fts.a.b
+  extends a
 {
-  m ezf;
-  private f fur;
-  com.tencent.mm.sdk.b.c mVr;
-  String[] mVs;
-  List<String> mVt;
+  public SQLiteStatement HwG;
+  public SQLiteStatement HwH;
+  private SQLiteStatement HwI;
   
-  public g()
+  public static boolean aEE(String paramString)
   {
-    AppMethodBeat.i(136806);
-    this.mVr = new g.1(this);
-    this.fur = new g.2(this);
-    AppMethodBeat.o(136806);
-  }
-  
-  public final boolean Pp()
-  {
-    AppMethodBeat.i(136809);
-    com.tencent.mm.kernel.g.Rc().b(30, this.fur);
-    AppMethodBeat.o(136809);
+    AppMethodBeat.i(52814);
+    long l = System.currentTimeMillis();
+    if (((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).gaZ().Hq(paramString) < l - 5184000000L)
+    {
+      AppMethodBeat.o(52814);
+      return true;
+    }
+    AppMethodBeat.o(52814);
     return false;
   }
   
-  public final a a(i parami)
+  public final void aED(String paramString)
   {
-    AppMethodBeat.i(136808);
-    switch (parami.hdl)
-    {
-    case 65522: 
-    default: 
-      parami = new g.a(this, (byte)0);
+    AppMethodBeat.i(52812);
+    this.HwI.bindLong(1, 1L);
+    this.HwI.bindString(2, paramString);
+    this.HwI.execute();
+    AppMethodBeat.o(52812);
+  }
+  
+  public final void aXv()
+  {
+    AppMethodBeat.i(52811);
+    if (aXw()) {
+      this.HqR.aG(-100L, 6L);
     }
-    for (;;)
+    this.HqR.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_query ON %s(query);", new Object[] { fxn(), fxn() }));
+    this.HqR.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_score ON %s(score);", new Object[] { fxn(), fxn() }));
+    String str = String.format("INSERT INTO %s (content) VALUES (?);", new Object[] { fxo() });
+    this.HwG = this.HqR.compileStatement(str);
+    str = String.format("INSERT INTO %s (docid, type, subtype, entity_id, aux_index, timestamp, query, score, scene, meta_content) VALUES (last_insert_rowid(), ?, ?, ?, ?, ?, ?, ?, ?, ?);", new Object[] { fxn() });
+    this.HwH = this.HqR.compileStatement(str);
+    str = String.format("UPDATE %s SET status=? WHERE aux_index=?", new Object[] { fxn() });
+    this.HwI = this.HqR.compileStatement(str);
+    AppMethodBeat.o(52811);
+  }
+  
+  public final boolean aXw()
+  {
+    AppMethodBeat.i(52817);
+    if (!iV(-100, 6))
     {
-      parami = this.ezf.a(-65536, parami);
-      AppMethodBeat.o(136808);
-      return parami;
-      parami = new g.f(this, parami.mSR, parami.talker);
-      continue;
-      parami = new g.g(this, (byte)0);
-      continue;
-      parami = new g.e(this, parami);
-      continue;
-      parami = new g.d(this, (byte)0);
+      AppMethodBeat.o(52817);
+      return true;
     }
+    AppMethodBeat.o(52817);
+    return false;
+  }
+  
+  public final boolean aXx()
+  {
+    AppMethodBeat.i(52815);
+    super.aXx();
+    this.HwG.close();
+    this.HwH.close();
+    this.HwI.close();
+    AppMethodBeat.o(52815);
+    return true;
+  }
+  
+  public final String dRh()
+  {
+    AppMethodBeat.i(52816);
+    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0, query TEXT COLLATE NOCASE, score INT, scene INT, meta_content TEXT);", new Object[] { fxn() });
+    AppMethodBeat.o(52816);
+    return str;
+  }
+  
+  public final int fyb()
+  {
+    AppMethodBeat.i(52813);
+    Object localObject1 = String.format("SELECT docid, query, score, scene, aux_index, entity_id, type, subtype, timestamp, meta_content FROM %s WHERE status > 0;", new Object[] { fxn() });
+    Object localObject2 = this.HqR.rawQuery((String)localObject1, null);
+    localObject1 = new ArrayList();
+    Object localObject3;
+    while (((Cursor)localObject2).moveToNext())
+    {
+      localObject3 = new com.tencent.mm.plugin.fts.a.a.n();
+      ((com.tencent.mm.plugin.fts.a.a.n)localObject3).convertFrom((Cursor)localObject2);
+      ((List)localObject1).add(localObject3);
+    }
+    ((Cursor)localObject2).close();
+    LinkedList localLinkedList1 = new LinkedList();
+    LinkedList localLinkedList2 = new LinkedList();
+    LinkedList localLinkedList3 = new LinkedList();
+    Iterator localIterator = ((List)localObject1).iterator();
+    boolean bool;
+    while (localIterator.hasNext())
+    {
+      com.tencent.mm.plugin.fts.a.a.n localn = (com.tencent.mm.plugin.fts.a.a.n)localIterator.next();
+      bool = false;
+      if (localn.type == 262144) {
+        localObject2 = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(17);
+      }
+      for (;;)
+      {
+        localObject1 = null;
+        if (!bool) {
+          localObject1 = ((com.tencent.mm.plugin.fts.a.i)localObject2).fj(localn.Hsz, localn.subtype);
+        }
+        if (Util.isNullOrNil((String)localObject1)) {
+          break label465;
+        }
+        if (!localn.query.equals("​chatroom_tophits")) {
+          break label403;
+        }
+        String[] arrayOfString = c.a.HrA.split(localn.HtJ);
+        localObject2 = "";
+        int j = arrayOfString.length;
+        i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          localObject3 = localObject2;
+          if (((String)localObject1).indexOf(str) >= 0) {
+            localObject3 = (String)localObject2 + str + "​";
+          }
+          i += 1;
+          localObject2 = localObject3;
+        }
+        localObject2 = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3);
+        bool = aEE(localn.Hsz);
+      }
+      if (!localn.HtJ.equals(localObject2))
+      {
+        localn.HtJ = ((String)localObject2);
+        localLinkedList2.add(Long.valueOf(localn.HtG));
+        localLinkedList3.add(localn);
+      }
+      else
+      {
+        localLinkedList1.add(Long.valueOf(localn.HtG));
+        continue;
+        label403:
+        if (!localn.HtJ.equals(localObject1))
+        {
+          localn.HtJ = ((String)localObject1);
+          localLinkedList2.add(Long.valueOf(localn.HtG));
+          localLinkedList3.add(localn);
+        }
+        else
+        {
+          localLinkedList1.add(Long.valueOf(localn.HtG));
+          continue;
+          label465:
+          localLinkedList2.add(Long.valueOf(localn.HtG));
+        }
+      }
+    }
+    Log.i("MicroMsg.FTS.FTS5TopHitsStorage", "updateTopHitsDirty deleteDocIdList=%d needToInsertTopHitListSize=%d normalDocIdList=%d", new Object[] { Integer.valueOf(localLinkedList2.size()), Integer.valueOf(localLinkedList3.size()), Integer.valueOf(localLinkedList1.size()) });
+    if (localLinkedList2.size() > 0) {
+      hP(localLinkedList2);
+    }
+    if (localLinkedList3.size() > 0)
+    {
+      bool = this.HqR.inTransaction();
+      if (!bool) {
+        this.HqR.beginTransaction();
+      }
+      localObject1 = localLinkedList3.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (com.tencent.mm.plugin.fts.a.a.n)((Iterator)localObject1).next();
+        if (!Util.isNullOrNil(((com.tencent.mm.plugin.fts.a.a.n)localObject2).HtJ))
+        {
+          this.HwG.bindString(1, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).HtJ);
+          this.HwG.execute();
+          this.HwH.bindLong(1, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).type);
+          this.HwH.bindLong(2, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).subtype);
+          this.HwH.bindLong(3, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).HtI);
+          this.HwH.bindString(4, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).Hsz);
+          this.HwH.bindLong(5, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).timestamp);
+          this.HwH.bindString(6, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).query);
+          this.HwH.bindLong(7, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).HtH);
+          this.HwH.bindLong(8, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).nAz);
+          this.HwH.bindString(9, ((com.tencent.mm.plugin.fts.a.a.n)localObject2).HtJ);
+          this.HwH.execute();
+        }
+      }
+      if (!bool) {
+        commit();
+      }
+    }
+    if (localLinkedList1.size() > 0) {
+      N(localLinkedList1, 0);
+    }
+    int i = localLinkedList2.size();
+    AppMethodBeat.o(52813);
+    return i;
+  }
+  
+  public final String getLogTag()
+  {
+    return "MicroMsg.FTS.FTS5TopHitsStorage";
   }
   
   public final String getName()
   {
-    return "SearchTestLogic";
+    return "FTS5TopHitsStorage";
   }
   
-  public final boolean onCreate()
+  public final int getPriority()
   {
-    AppMethodBeat.i(136807);
-    if (!((n)com.tencent.mm.kernel.g.G(n.class)).isFTSContextReady())
-    {
-      ab.i("MicroMsg.FTS.FTSSearchTestLogic", "Create Fail!");
-      AppMethodBeat.o(136807);
-      return false;
-    }
-    ab.i("MicroMsg.FTS.FTSSearchTestLogic", "Create Success!");
-    this.ezf = ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSTaskDaemon();
-    this.mVr.alive();
-    AppMethodBeat.o(136807);
-    return true;
+    return 768;
   }
   
-  final class b
-    extends a
+  public final String getTableName()
   {
-    private b() {}
-    
-    private static long bCr()
-    {
-      AppMethodBeat.i(136797);
-      Object localObject1 = String.format("SELECT count(docid) FROM %s WHERE subtype = %d", new Object[] { "FTS5MetaFavorite", Integer.valueOf(9) });
-      localObject1 = ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().rawQuery((String)localObject1, null);
-      try
-      {
-        if (((Cursor)localObject1).moveToNext())
-        {
-          long l = ((Cursor)localObject1).getLong(0);
-          return l;
-        }
-        return 0L;
-      }
-      finally
-      {
-        ((Cursor)localObject1).close();
-        AppMethodBeat.o(136797);
-      }
-    }
-    
-    private static long bCs()
-    {
-      AppMethodBeat.i(136798);
-      Object localObject1 = String.format("SELECT count(docid) FROM %s", new Object[] { "FTS5MetaMessage" });
-      localObject1 = ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().rawQuery((String)localObject1, null);
-      try
-      {
-        if (((Cursor)localObject1).moveToNext())
-        {
-          long l = ((Cursor)localObject1).getLong(0);
-          return l;
-        }
-        return 0L;
-      }
-      finally
-      {
-        ((Cursor)localObject1).close();
-        AppMethodBeat.o(136798);
-      }
-    }
-    
-    private static long bCt()
-    {
-      AppMethodBeat.i(136799);
-      Object localObject1 = String.format("SELECT count(docid) FROM %s WHERE type = %d AND subtype = %d", new Object[] { "FTS5MetaContact", Integer.valueOf(131072), Integer.valueOf(1) });
-      localObject1 = ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().rawQuery((String)localObject1, null);
-      try
-      {
-        if (((Cursor)localObject1).moveToNext())
-        {
-          long l = ((Cursor)localObject1).getLong(0);
-          return l;
-        }
-        return 0L;
-      }
-      finally
-      {
-        ((Cursor)localObject1).close();
-        AppMethodBeat.o(136799);
-      }
-    }
-    
-    private static long bCu()
-    {
-      AppMethodBeat.i(136800);
-      Object localObject1 = String.format("SELECT count(docid) FROM %s WHERE type = %d AND subtype = %d", new Object[] { "FTS5MetaContact", Integer.valueOf(131075), Integer.valueOf(38) });
-      localObject1 = ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().rawQuery((String)localObject1, null);
-      try
-      {
-        if (((Cursor)localObject1).moveToNext())
-        {
-          long l = ((Cursor)localObject1).getLong(0);
-          return l;
-        }
-        return 0L;
-      }
-      finally
-      {
-        ((Cursor)localObject1).close();
-        AppMethodBeat.o(136800);
-      }
-    }
-    
-    public final boolean execute()
-    {
-      AppMethodBeat.i(136796);
-      Object localObject1 = new StringBuffer();
-      long l = d.bBP().length();
-      com.tencent.mm.plugin.fts.a.e.mRj.mRm = (l / 1048576L);
-      ((StringBuffer)localObject1).append("[DBSize]=" + bo.nV(l));
-      ((StringBuffer)localObject1).append("\n");
-      com.tencent.mm.plugin.fts.a.e.mRj.mRn = bCt();
-      com.tencent.mm.plugin.fts.a.e.mRj.mRo = bCu();
-      com.tencent.mm.plugin.fts.a.e.mRj.mRq = bCr();
-      com.tencent.mm.plugin.fts.a.e.mRj.mRp = bCs();
-      ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().M(-301L, com.tencent.mm.plugin.fts.a.e.mRj.mRn);
-      ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().M(-302L, com.tencent.mm.plugin.fts.a.e.mRj.mRo);
-      ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().M(-303L, com.tencent.mm.plugin.fts.a.e.mRj.mRq);
-      ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSIndexDB().M(-304L, com.tencent.mm.plugin.fts.a.e.mRj.mRp);
-      ((StringBuffer)localObject1).append("[WXContact]=" + com.tencent.mm.plugin.fts.a.e.mRj.mRn);
-      ((StringBuffer)localObject1).append("\n");
-      ((StringBuffer)localObject1).append("[WXChatroom]=" + com.tencent.mm.plugin.fts.a.e.mRj.mRo);
-      ((StringBuffer)localObject1).append("\n");
-      ((StringBuffer)localObject1).append("[Favorite]=" + com.tencent.mm.plugin.fts.a.e.mRj.mRq);
-      ((StringBuffer)localObject1).append("\n");
-      ((StringBuffer)localObject1).append("[Message]=" + com.tencent.mm.plugin.fts.a.e.mRj.mRp);
-      Object localObject2 = ((StringBuffer)localObject1).toString();
-      ab.i("MicroMsg.FTS.FTSSearchTestLogic", (String)localObject2);
-      localObject1 = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fts.a.c.mQV, "FTS5IndexMicroMsgInfo.txt");
-      if (((com.tencent.mm.vfs.b)localObject1).exists()) {
-        ((com.tencent.mm.vfs.b)localObject1).delete();
-      }
-      if (!((com.tencent.mm.vfs.b)localObject1).dQI().exists()) {
-        ((com.tencent.mm.vfs.b)localObject1).dQI().mkdirs();
-      }
-      String str = j.p(((com.tencent.mm.vfs.b)localObject1).dQJ());
-      localObject2 = ((String)localObject2).getBytes();
-      ab.i("MicroMsg.FTS.FTSSearchTestLogic", "write fts info %d %s", new Object[] { Integer.valueOf(com.tencent.mm.vfs.e.b(str, (byte[])localObject2, localObject2.length)), j.p(((com.tencent.mm.vfs.b)localObject1).dQJ()) });
-      AppMethodBeat.o(136796);
-      return true;
-    }
-    
-    public final String getName()
-    {
-      return "FTS5DBInfoTask";
-    }
+    return "TopHits";
+  }
+  
+  public final int getType()
+  {
+    return 1;
   }
 }
 

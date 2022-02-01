@@ -14,7 +14,7 @@ public class WtloginMsfListener
   static Object TicketMgr;
   private static final Object __SyncCB;
   private static final Object __SyncSeq = new Object();
-  private static Map __cbs = new HashMap();
+  private static Map<Long, WtloginMsfListener> __cbs = new HashMap();
   private static long __seq;
   private byte[] data;
   private boolean flag;
@@ -52,15 +52,12 @@ public class WtloginMsfListener
       paramString1 = new byte[0];
     }
     this.data = paramString1;
-    if (paramInt > 0) {}
-    for (;;)
-    {
-      this.timeout = paramInt;
-      this.flag = paramBoolean;
-      this.userSigInfo = paramWUserSigInfo;
-      return;
+    if (paramInt <= 0) {
       paramInt = 5000;
     }
+    this.timeout = paramInt;
+    this.flag = paramBoolean;
+    this.userSigInfo = paramWUserSigInfo;
   }
   
   private static long allocateSeq()
@@ -75,25 +72,36 @@ public class WtloginMsfListener
   
   public static void onAsyncReceive(String paramString1, String paramString2, long paramLong, byte[] paramArrayOfByte)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("rpc receive ").append(paramString2).append(" seq: ").append(paramLong).append(" data:");
-    if (paramArrayOfByte == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayOfByte.length))
-    {
-      util.LOGI(localObject, paramString1);
-      localObject = pickSeq(paramLong);
-      if (localObject != null) {
-        ((WtloginMsfListener)localObject).onReceiveData(paramString1, paramString2, paramArrayOfByte);
-      }
-      return;
+    StringBuilder localStringBuilder = new StringBuilder("rpc receive ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" seq: ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" data:");
+    if (paramArrayOfByte == null) {
+      localObject = "null";
+    } else {
+      localObject = Integer.valueOf(paramArrayOfByte.length);
+    }
+    localStringBuilder.append(localObject);
+    util.LOGI(localStringBuilder.toString(), paramString1);
+    Object localObject = pickSeq(paramLong);
+    if (localObject != null) {
+      ((WtloginMsfListener)localObject).onReceiveData(paramString1, paramString2, paramArrayOfByte);
     }
   }
   
   public static void onAsyncReceiveFail(String paramString1, String paramString2, long paramLong, int paramInt)
   {
-    util.LOGI("rpc receive " + paramString2 + " seq: " + paramLong + " fail:" + paramInt, paramString1);
-    WtloginMsfListener localWtloginMsfListener = pickSeq(paramLong);
-    if (localWtloginMsfListener != null) {
-      localWtloginMsfListener.onReceiveFail(paramString1, paramString2, paramInt);
+    Object localObject = new StringBuilder("rpc receive ");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(" seq: ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" fail:");
+    ((StringBuilder)localObject).append(paramInt);
+    util.LOGI(((StringBuilder)localObject).toString(), paramString1);
+    localObject = pickSeq(paramLong);
+    if (localObject != null) {
+      ((WtloginMsfListener)localObject).onReceiveFail(paramString1, paramString2, paramInt);
     }
   }
   
@@ -107,47 +115,56 @@ public class WtloginMsfListener
     }
   }
   
+  private Object sendDataByReflectMqq(byte[] paramArrayOfByte, int paramInt, long paramLong)
+  {
+    Class localClass1 = Class.forName("mqq.manager.TicketManager");
+    if (TicketMgr == null)
+    {
+      Object localObject2 = Class.forName("com.tencent.common.app.BaseApplicationImpl");
+      Object localObject3 = Class.forName("mqq.app.BaseActivity");
+      Class localClass2 = Class.forName("mqq.app.AppRuntime");
+      Object localObject1 = ((Class)localObject2).getMethod("getApplication", new Class[0]);
+      Method localMethod = ((Class)localObject2).getMethod("waitAppRuntime", new Class[] { localObject3 });
+      localObject2 = localClass2.getMethod("getManager", new Class[] { Integer.TYPE });
+      localObject3 = localClass2.getField("TICKET_MANAGER");
+      localObject1 = ((Method)localObject1).invoke(null, new Object[0]);
+      if (localObject1 != null)
+      {
+        localObject1 = localMethod.invoke(localObject1, new Object[] { null });
+        if (localObject1 != null) {
+          TicketMgr = ((Method)localObject2).invoke(localObject1, new Object[] { ((Field)localObject3).get(localClass2) });
+        }
+      }
+    }
+    return localClass1.getMethod("sendRPCData", new Class[] { Long.TYPE, String.class, String.class, [B.class, Integer.TYPE }).invoke(TicketMgr, new Object[] { Long.valueOf(paramLong), this.uin, this.serviceCmd, paramArrayOfByte.clone(), Integer.valueOf(paramInt) });
+  }
+  
   private int sendRPCData(byte[] arg1, int paramInt)
   {
     long l = allocateSeq();
-    util.LOGI("sendRPCData seq: " + l, "");
+    util.LOGI("sendRPCData seq: ".concat(String.valueOf(l)), "");
     try
     {
-      Class localClass1 = Class.forName("mqq.manager.TicketManager");
-      if (TicketMgr == null)
-      {
-        Object localObject3 = Class.forName("com.tencent.common.app.BaseApplicationImpl");
-        Object localObject4 = Class.forName("mqq.app.BaseActivity");
-        Class localClass2 = Class.forName("mqq.app.AppRuntime");
-        Object localObject2 = ((Class)localObject3).getMethod("getApplication", new Class[0]);
-        Method localMethod = ((Class)localObject3).getMethod("waitAppRuntime", new Class[] { localObject4 });
-        localObject3 = localClass2.getMethod("getManager", new Class[] { Integer.TYPE });
-        localObject4 = localClass2.getField("TICKET_MANAGER");
-        localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
-        if (localObject2 != null)
+      if (WtloginHelper.getWtDataSender() == null) {
+        paramInt = Integer.parseInt(sendDataByReflectMqq(???, paramInt, l).toString());
+      } else {
+        paramInt = WtloginHelper.getWtDataSender().a(l, this.uin, this.serviceCmd, (byte[])???.clone(), paramInt);
+      }
+      int i = paramInt;
+      if (paramInt == 0) {
+        synchronized (__SyncCB)
         {
-          localObject2 = localMethod.invoke(localObject2, new Object[] { null });
-          if (localObject2 != null) {
-            TicketMgr = ((Method)localObject3).invoke(localObject2, new Object[] { ((Field)localObject4).get(localClass2) });
-          }
+          __cbs.put(Long.valueOf(l), this);
+          this.semp.acquire();
+          return 99;
         }
       }
-      int i = Integer.valueOf(localClass1.getMethod("sendRPCData", new Class[] { Long.TYPE, String.class, String.class, [B.class, Integer.TYPE }).invoke(TicketMgr, new Object[] { Long.valueOf(l), this.uin, this.serviceCmd, ???.clone(), Integer.valueOf(paramInt) }).toString()).intValue();
-      paramInt = i;
-      if (i == 0) {
-        paramInt = 99;
-      }
-      synchronized (__SyncCB)
-      {
-        __cbs.put(Long.valueOf(l), this);
-        this.semp.acquire();
-        return paramInt;
-      }
-      return -1000;
+      return i;
     }
     catch (Exception ???)
     {
       util.printException(???, this.uin);
+      i = -1000;
     }
   }
   
@@ -167,100 +184,92 @@ public class WtloginMsfListener
   
   public byte[] RecvData()
   {
-    StringBuilder localStringBuilder;
-    for (;;)
+    try
     {
-      try
+      this.semp.acquire();
+      if (!this.ret_success) {
+        return null;
+      }
+      String str;
+      if ((this.ret_uin != null) && (this.ret_uin.equals(this.uin)))
       {
-        this.semp.acquire();
-        if (!this.ret_success) {
-          return null;
-        }
-        if ((this.ret_uin != null) && (this.ret_uin.equals(this.uin))) {
-          break;
+        if ((this.ret_serviceCmd != null) && (this.ret_serviceCmd.equals(this.serviceCmd)))
+        {
+          this.semp.release();
+          return this.ret_data;
         }
         this.ret = -1009;
-        localStringBuilder = new StringBuilder().append("ret_uin: ");
-        if (this.ret_uin == null)
-        {
-          String str = "null";
-          localStringBuilder = localStringBuilder.append(str).append(", uin: ");
-          if (this.uin != null) {
-            break label124;
-          }
+        localStringBuilder = new StringBuilder("ret_serviceCmd: ");
+        if (this.ret_serviceCmd == null) {
           str = "null";
-          util.LOGI(str, "");
-          return null;
+        } else {
+          str = this.ret_serviceCmd;
         }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        util.printException(localInterruptedException, this.uin);
+        localStringBuilder.append(str);
+        localStringBuilder.append(", serviceCmd:");
+        if (this.serviceCmd == null) {
+          str = "null";
+        } else {
+          str = this.serviceCmd;
+        }
+        localStringBuilder.append(str);
+        util.LOGI(localStringBuilder.toString(), "");
         return null;
       }
-      localObject = this.ret_uin;
-      continue;
-      label124:
-      localObject = this.uin;
-    }
-    if ((this.ret_serviceCmd == null) || (!this.ret_serviceCmd.equals(this.serviceCmd)))
-    {
       this.ret = -1009;
-      localStringBuilder = new StringBuilder().append("ret_serviceCmd: ");
-      if (this.ret_serviceCmd == null)
-      {
-        localObject = "null";
-        localStringBuilder = localStringBuilder.append((String)localObject).append(", serviceCmd:");
-        if (this.serviceCmd != null) {
-          break label229;
-        }
+      StringBuilder localStringBuilder = new StringBuilder("ret_uin: ");
+      if (this.ret_uin == null) {
+        str = "null";
+      } else {
+        str = this.ret_uin;
       }
-      label229:
-      for (localObject = "null";; localObject = this.serviceCmd)
-      {
-        util.LOGI((String)localObject, "");
-        return null;
-        localObject = this.ret_serviceCmd;
-        break;
+      localStringBuilder.append(str);
+      localStringBuilder.append(", uin: ");
+      if (this.uin == null) {
+        str = "null";
+      } else {
+        str = this.uin;
       }
+      localStringBuilder.append(str);
+      util.LOGI(localStringBuilder.toString(), "");
+      return null;
     }
-    this.semp.release();
-    Object localObject = this.ret_data;
-    return localObject;
+    catch (InterruptedException localInterruptedException)
+    {
+      util.printException(localInterruptedException, this.uin);
+    }
+    return null;
   }
   
   public int SendData(byte[] paramArrayOfByte, int paramInt)
   {
     Object localObject;
-    if (!t.ar)
+    if (!u.ax)
     {
-      localObject = t.l();
-      util.LOGI("mqq process: " + (String)localObject, "");
+      localObject = u.m();
+      util.LOGI("mqq process: ".concat(String.valueOf(localObject)), "");
       if (!((String)localObject).endsWith(":MSF")) {
-        paramInt = sendRPCData(paramArrayOfByte, paramInt);
+        return sendRPCData(paramArrayOfByte, paramInt);
       }
     }
-    for (;;)
+    try
     {
-      return paramInt;
-      try
+      util.LOGI("msf sendData", "");
+      localObject = Class.forName(CLIENT_CLASSNAME);
+      int i = Integer.valueOf(((Class)localObject).getMethod("sendData", new Class[] { WUserSigInfo.class, String.class, String.class, [B.class, Integer.TYPE, Boolean.TYPE, WtloginMsfListener.class }).invoke(localObject, new Object[] { this.userSigInfo, this.uin, this.serviceCmd, paramArrayOfByte.clone(), Integer.valueOf(paramInt), Boolean.valueOf(this.flag), this }).toString()).intValue();
+      paramInt = i;
+      if (i > 0)
       {
-        util.LOGI("msf sendData", "");
-        localObject = Class.forName(CLIENT_CLASSNAME);
-        int i = Integer.valueOf(((Class)localObject).getMethod("sendData", new Class[] { WUserSigInfo.class, String.class, String.class, [B.class, Integer.TYPE, Boolean.TYPE, WtloginMsfListener.class }).invoke(localObject, new Object[] { this.userSigInfo, this.uin, this.serviceCmd, paramArrayOfByte.clone(), Integer.valueOf(paramInt), Boolean.valueOf(this.flag), this }).toString()).intValue();
-        paramInt = i;
-        if (i > 0)
-        {
-          this.semp.acquire();
-          return i;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        util.printException(paramArrayOfByte, this.uin);
+        this.semp.acquire();
+        return i;
       }
     }
-    return -1000;
+    catch (Exception paramArrayOfByte)
+    {
+      util.printException(paramArrayOfByte, this.uin);
+      paramInt = -1000;
+    }
+    return paramInt;
   }
   
   public int getRet()
@@ -299,14 +308,15 @@ public class WtloginMsfListener
       this.ret = SendData(this.data, this.timeout);
       if (this.ret <= 0)
       {
-        util.LOGI("msf request send data failed, ret=" + this.ret, "");
+        StringBuilder localStringBuilder = new StringBuilder("msf request send data failed, ret=");
+        localStringBuilder.append(this.ret);
+        util.LOGI(localStringBuilder.toString(), "");
         return;
       }
-      if (RecvData() == null)
-      {
+      if (RecvData() == null) {
         this.ret_data = null;
-        return;
       }
+      return;
     }
     catch (Exception localException) {}
   }

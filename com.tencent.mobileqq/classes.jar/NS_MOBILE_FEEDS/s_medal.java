@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class s_medal
   extends JceStruct
 {
-  static int cache_medal_state = 0;
-  static int cache_medal_type = 0;
+  static int cache_medal_state;
+  static int cache_medal_type;
   public String jump_url = "";
-  public int level;
-  public int medal_id;
-  public int medal_state;
-  public int medal_type;
+  public int level = 0;
+  public int medal_id = 0;
+  public int medal_state = 0;
+  public int medal_type = 0;
   public String pic_url = "";
   
   public s_medal() {}
@@ -43,18 +43,20 @@ public final class s_medal
     paramJceOutputStream.write(this.medal_type, 0);
     paramJceOutputStream.write(this.medal_state, 1);
     paramJceOutputStream.write(this.level, 2);
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 3);
+    String str = this.pic_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 4);
+    str = this.jump_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.medal_id, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_medal
  * JD-Core Version:    0.7.0.1
  */

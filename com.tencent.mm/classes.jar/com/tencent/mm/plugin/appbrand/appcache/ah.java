@@ -1,40 +1,41 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.r.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.autogen.b.gh;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-public class ah
-  extends c<ag>
+public final class ah
+  extends gh
 {
-  public static final String[] fkl;
+  static final IAutoDBItem.MAutoDBInfo DB_INFO;
+  static final String[] qDJ;
   
   static
   {
-    AppMethodBeat.i(59453);
-    fkl = new String[] { j.getCreateSQLs(ag.fkk, "PushWxaPkgDecryptKeyTable") };
-    AppMethodBeat.o(59453);
-  }
-  
-  public ah(e parame)
-  {
-    super(parame, ag.fkk, "PushWxaPkgDecryptKeyTable", ag.INDEX_CREATE);
-  }
-  
-  public final ag aq(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(59452);
-    ag localag = new ag();
-    localag.field_appId = paramString;
-    localag.field_appVersion = paramInt;
-    if (get(localag, new String[0]))
+    int i = 0;
+    AppMethodBeat.i(44312);
+    qDJ = new String[] { "key", "version" };
+    DB_INFO = gh.aJm();
+    String str = " PRIMARY KEY (";
+    Object localObject1 = qDJ;
+    int j = localObject1.length;
+    while (i < j)
     {
-      AppMethodBeat.o(59452);
-      return localag;
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
+      i += 1;
     }
-    AppMethodBeat.o(59452);
-    return null;
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = DB_INFO;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    AppMethodBeat.o(44312);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return DB_INFO;
   }
 }
 

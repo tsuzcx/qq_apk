@@ -21,12 +21,7 @@ public class JUnitCore
   
   public static void main(String... paramVarArgs)
   {
-    if (new JUnitCore().runMain(new RealSystem(), paramVarArgs).wasSuccessful()) {}
-    for (int i = 0;; i = 1)
-    {
-      System.exit(i);
-      return;
-    }
+    System.exit(new JUnitCore().runMain(new RealSystem(), paramVarArgs).wasSuccessful() ^ true);
   }
   
   public static Result runClasses(Computer paramComputer, Class<?>... paramVarArgs)
@@ -94,7 +89,11 @@ public class JUnitCore
   
   Result runMain(JUnitSystem paramJUnitSystem, String... paramVarArgs)
   {
-    paramJUnitSystem.out().println("JUnit version " + Version.id());
+    PrintStream localPrintStream = paramJUnitSystem.out();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JUnit version ");
+    localStringBuilder.append(Version.id());
+    localPrintStream.println(localStringBuilder.toString());
     paramVarArgs = JUnitCommandLineParseResult.parse(paramVarArgs);
     addListener(new TextListener(paramJUnitSystem));
     return run(paramVarArgs.createRequest(defaultComputer()));
@@ -102,7 +101,7 @@ public class JUnitCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runner.JUnitCore
  * JD-Core Version:    0.7.0.1
  */

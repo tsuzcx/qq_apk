@@ -9,8 +9,8 @@ public final class ReqGetDiscussInteRemark
   extends JceStruct
 {
   static ArrayList<Long> cache_UinList;
-  public long DiscussUin;
-  public ArrayList<Long> UinList;
+  public long DiscussUin = 0L;
+  public ArrayList<Long> UinList = null;
   
   public ReqGetDiscussInteRemark() {}
   
@@ -39,7 +39,7 @@ public final class ReqGetDiscussInteRemark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqGetDiscussInteRemark
  * JD-Core Version:    0.7.0.1
  */

@@ -51,10 +51,10 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import gyi;
+import gyh;
+import gyj;
 import gyk;
 import gyl;
-import gym;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -134,7 +134,7 @@ public class AvatarWallAdapter
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
     this.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilObserver = new gyi(this);
+    this.jdField_a_of_type_JavaUtilObserver = new gyh(this);
     this.jdField_b_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -372,10 +372,10 @@ public class AvatarWallAdapter
     while (paramInt1 > 0)
     {
       localObject = this.jdField_a_of_type_AndroidOsHandler;
-      gyk localgyk = new gyk(this, paramInt2);
+      gyj localgyj = new gyj(this, paramInt2);
       int i1 = m;
       m = i1 + 1;
-      ((Handler)localObject).postDelayed(localgyk, i1 * 10);
+      ((Handler)localObject).postDelayed(localgyj, i1 * 10);
       paramInt1 -= 1;
     }
   }
@@ -445,7 +445,7 @@ public class AvatarWallAdapter
   
   public void a(GridView paramGridView)
   {
-    paramGridView.setOnItemClickListener(new gyl(this));
+    paramGridView.setOnItemClickListener(new gyk(this));
   }
   
   public void a(AvatarWallAdapter.AddButtonStatusListener paramAddButtonStatusListener)
@@ -833,7 +833,7 @@ public class AvatarWallAdapter
         }
       }
     }
-    localActionSheet.a(new gym(this, paramActivity, localActionSheet));
+    localActionSheet.a(new gyl(this, paramActivity, localActionSheet));
     localActionSheet.show();
   }
   
@@ -1386,8 +1386,8 @@ public class AvatarWallAdapter
         if (paramViewGroup.getTag() == null)
         {
           localViewHolder = new AvatarWallAdapter.ViewHolder(this);
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231600));
-          localViewHolder.b = ((ImageView)paramViewGroup.findViewById(2131232293));
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131231599));
+          localViewHolder.b = ((ImageView)paramViewGroup.findViewById(2131232292));
           localViewHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131230757));
           localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131231016));
           FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jo9" android:background="#ff17b6ed" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:textSize="17.0dip" android:textColor="@color/r0" android:gravity="center" android:id="@id/e7d" android:background="@drawable/vl" android:clickable="true" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:text="@string/dax" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" android:contentDescription="@string/bov" />
+        <TextView android:textSize="17.0dip" android:textColor="#b2ffffff" android:gravity="center_horizontal" android:id="@id/eqw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ListView android:id="@id/eoy" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:divider="#ffcecece" android:dividerHeight="1.0dip" android:layout_below="@id/jo9" android:fadeScrollbars="true" />
+</RelativeLayout>

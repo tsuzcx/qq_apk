@@ -14,11 +14,7 @@ public class MD5Util
   {
     try
     {
-      String str = new String(paramString);
-      LogUtils.e(localNoSuchAlgorithmException1);
-    }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
-    {
+      Object localObject = new String(paramString);
       try
       {
         paramString = byteToString(MessageDigest.getInstance("MD5").digest(paramString.getBytes()));
@@ -26,13 +22,13 @@ public class MD5Util
       }
       catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
       {
-        for (;;)
-        {
-          paramString = localNoSuchAlgorithmException1;
-          Object localObject = localNoSuchAlgorithmException2;
-        }
+        paramString = (String)localObject;
+        localObject = localNoSuchAlgorithmException2;
       }
-      localNoSuchAlgorithmException1 = localNoSuchAlgorithmException1;
+      LogUtils.e(localNoSuchAlgorithmException1);
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+    {
       paramString = null;
     }
     return paramString;
@@ -45,7 +41,10 @@ public class MD5Util
       i = paramByte + 256;
     }
     paramByte = i / 16;
-    return strDigits[paramByte] + strDigits[(i % 16)];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(strDigits[paramByte]);
+    localStringBuilder.append(strDigits[(i % 16)]);
+    return localStringBuilder.toString();
   }
   
   private static String byteToNum(byte paramByte)
@@ -72,20 +71,21 @@ public class MD5Util
   private static String bytesToHexString(byte[] paramArrayOfByte)
   {
     StringBuilder localStringBuilder = new StringBuilder("");
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() < 2) {
-        localStringBuilder.append(0);
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+        if (str.length() < 2) {
+          localStringBuilder.append(0);
+        }
+        localStringBuilder.append(str);
+        i += 1;
       }
-      localStringBuilder.append(str);
-      i += 1;
+      return localStringBuilder.toString();
     }
-    return localStringBuilder.toString();
+    return null;
   }
   
   public static String getFileMD5(File paramFile)
@@ -94,10 +94,9 @@ public class MD5Util
       return null;
     }
     byte[] arrayOfByte = new byte[1024];
-    MessageDigest localMessageDigest;
     try
     {
-      localMessageDigest = MessageDigest.getInstance("MD5");
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       paramFile = new FileInputStream(paramFile);
       for (;;)
       {
@@ -108,18 +107,18 @@ public class MD5Util
         localMessageDigest.update(arrayOfByte, 0, i);
       }
       paramFile.close();
+      return bytesToHexString(localMessageDigest.digest());
     }
     catch (Exception paramFile)
     {
       paramFile.printStackTrace();
-      return null;
     }
-    return bytesToHexString(localMessageDigest.digest());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.encrypt.MD5Util
  * JD-Core Version:    0.7.0.1
  */

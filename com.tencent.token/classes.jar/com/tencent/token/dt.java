@@ -1,202 +1,184 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
-import com.tencent.token.utils.x;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.ParcelFileDescriptor;
+import android.system.ErrnoException;
+import android.system.Os;
+import android.system.OsConstants;
+import android.system.StructStat;
+import java.io.File;
 
-public class dt
+class dt
+  extends dw
 {
-  public static byte c = 1;
-  public static byte d = 2;
-  public static byte e = 3;
-  public er f = null;
-  
-  protected dt(String paramString)
+  private static File a(ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    this.f = new er(paramString);
-  }
-  
-  private f a(f paramf, int paramInt, byte paramByte)
-  {
-    return a(paramf, paramInt, 40, paramByte);
-  }
-  
-  private f a(f paramf, int paramInt1, int paramInt2, byte paramByte)
-  {
-    paramf = new f();
-    QQUser localQQUser = do.a().b(paramf);
-    boolean bool;
-    if (localQQUser == null)
+    try
     {
-      if (!paramf.b()) {}
-      for (bool = true;; bool = false)
+      StringBuilder localStringBuilder = new StringBuilder("/proc/self/fd/");
+      localStringBuilder.append(paramParcelFileDescriptor.getFd());
+      paramParcelFileDescriptor = Os.readlink(localStringBuilder.toString());
+      if (OsConstants.S_ISREG(Os.stat(paramParcelFileDescriptor).st_mode))
       {
-        h.a(bool);
-        return paramf;
+        paramParcelFileDescriptor = new File(paramParcelFileDescriptor);
+        return paramParcelFileDescriptor;
       }
+      return null;
     }
-    gk localgk = new gk();
-    long l1 = cx.c().s();
-    long l2 = System.currentTimeMillis();
-    if (l1 > l2) {}
-    Object localObject1;
-    int i;
-    for (;;)
-    {
-      l1 = 300L + l1 / 1000L;
-      l2 = x.a(paramInt1, localQQUser.mUin);
-      localObject1 = null;
-      i = cw.a + 1;
-      cw.a = i;
-      try
-      {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("uin", localQQUser.mUin);
-        ((JSONObject)localObject2).put("seq_id", i);
-        ((JSONObject)localObject2).put("op_time", cx.c().s() / 1000L);
-        ((JSONObject)localObject2).put("msg_type", paramInt1);
-        ((JSONObject)localObject2).put("req_msg_num", paramInt2);
-        ((JSONObject)localObject2).put("start_time", l2);
-        ((JSONObject)localObject2).put("end_time", l1);
-        ((JSONObject)localObject2).put("source", l1);
-        ((JSONObject)localObject2).put("end_time", l1);
-        ((JSONObject)localObject2).put("source", paramByte);
-        localObject2 = ((JSONObject)localObject2).toString();
-        h.a("plain:" + (String)localObject2);
-        localObject2 = w.b(((String)localObject2).getBytes());
-        localObject1 = localObject2;
-      }
-      catch (JSONException localJSONException3)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          h.c("JSONException:" + localJSONException3.getMessage());
-          continue;
-          bool = false;
-        }
-        try
-        {
-          localObject1 = new JSONObject(new String(localJSONException3));
-          paramInt2 = ((JSONObject)localObject1).getInt("err");
-          if (paramInt2 == 0) {
-            break label551;
-          }
-          h.a("error = " + paramInt2);
-          localObject1 = ((JSONObject)localObject1).getString("info");
-          paramf.a(paramInt2, (String)localObject1, (String)localObject1);
-          return paramf;
-          localObject1 = w.c(((JSONObject)localObject1).getString("data"));
-          if (localObject1 == null) {
-            break label813;
-          }
-          localObject1 = new JSONObject(new String((byte[])localObject1));
-          paramInt2 = ((JSONObject)localObject1).getInt("seq_id");
-          if (paramInt2 == i) {
-            break label676;
-          }
-          paramf.b(10030);
-          h.c("parseJSON error seq is wrong seq=" + paramInt2 + ",right = " + i);
-          return paramf;
-        }
-        catch (JSONException localJSONException1)
-        {
-          paramf.a(10020, "JSONException:" + localJSONException1.toString());
-          return paramf;
-          l1 = localJSONException1.getLong("uin");
-          if (l1 == localQQUser.mUin) {
-            break label773;
-          }
-          paramf.a(10000, "uin not match=" + l1 + ":" + localQQUser.mUin);
-          return paramf;
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            paramf.a(10021, "JSONException:" + localException1.toString());
-            break;
-            this.f.b(l1);
-            f localf = this.f.a(localException1, l1, paramInt1);
-            paramf = localf;
-            try
-            {
-              do.a().m();
-            }
-            catch (JSONException localJSONException2)
-            {
-              continue;
-              h.c("parseJSON error decodeData=" + localJSONException2);
-              paramf.a(10022, RqdApplication.l().getString(2131230925));
-            }
-            catch (Exception localException2) {}
-          }
-        }
-      }
-      localObject2 = new StringBuilder().append("?aq_base_sid=");
-      do.a();
-      localObject1 = do.c + "&data=" + (String)localObject1;
-      do.a();
-      if (do.c == null) {
-        break;
-      }
-      bool = true;
-      h.a(bool);
-      localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_get_message_v2" + (String)localObject1;
-      localObject2 = localgk.a((String)localObject1);
-      if (localObject2 != null) {
-        break label478;
-      }
-      paramf.a(localgk.a());
-      h.c("client request url: " + (String)localObject1 + " failed, reason=" + paramf.a + ":" + paramf.b);
-      return paramf;
-      l1 = l2;
-    }
-    label478:
-    return paramf;
+    catch (ErrnoException paramParcelFileDescriptor) {}
+    return null;
   }
   
-  protected f a(int paramInt, byte paramByte)
+  /* Error */
+  public android.graphics.Typeface a(android.content.Context paramContext, ek.b[] paramArrayOfb, int paramInt)
   {
-    f localf1 = new f();
-    f localf2 = a(localf1, paramInt, paramByte);
-    if (localf2.b()) {}
-    while (!do.a().c(localf1.a)) {
-      return localf2;
-    }
-    return a(localf1, paramInt, paramByte);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.f.c(paramInt);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.f.b(paramLong);
-  }
-  
-  public boolean d()
-  {
-    return this.f.i();
-  }
-  
-  public boolean e()
-  {
-    return this.f.j();
-  }
-  
-  public int f()
-  {
-    return this.f.h();
+    // Byte code:
+    //   0: aload_2
+    //   1: arraylength
+    //   2: ifgt +5 -> 7
+    //   5: aconst_null
+    //   6: areturn
+    //   7: aload_0
+    //   8: aload_2
+    //   9: iload_3
+    //   10: invokevirtual 67	com/tencent/token/dt:a	([Lcom/tencent/token/ek$b;I)Lcom/tencent/token/ek$b;
+    //   13: astore_2
+    //   14: aload_1
+    //   15: invokevirtual 73	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   18: astore 4
+    //   20: aload 4
+    //   22: aload_2
+    //   23: getfield 78	com/tencent/token/ek$b:a	Landroid/net/Uri;
+    //   26: ldc 80
+    //   28: aconst_null
+    //   29: invokevirtual 86	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;
+    //   32: astore 4
+    //   34: aload 4
+    //   36: invokestatic 88	com/tencent/token/dt:a	(Landroid/os/ParcelFileDescriptor;)Ljava/io/File;
+    //   39: astore_2
+    //   40: aload_2
+    //   41: ifnull +30 -> 71
+    //   44: aload_2
+    //   45: invokevirtual 92	java/io/File:canRead	()Z
+    //   48: ifne +6 -> 54
+    //   51: goto +20 -> 71
+    //   54: aload_2
+    //   55: invokestatic 98	android/graphics/Typeface:createFromFile	(Ljava/io/File;)Landroid/graphics/Typeface;
+    //   58: astore_1
+    //   59: aload 4
+    //   61: ifnull +8 -> 69
+    //   64: aload 4
+    //   66: invokevirtual 101	android/os/ParcelFileDescriptor:close	()V
+    //   69: aload_1
+    //   70: areturn
+    //   71: new 103	java/io/FileInputStream
+    //   74: dup
+    //   75: aload 4
+    //   77: invokevirtual 107	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   80: invokespecial 110	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   83: astore 5
+    //   85: aload_1
+    //   86: aload 5
+    //   88: invokestatic 113	com/tencent/token/dw:a	(Landroid/content/Context;Ljava/io/InputStream;)Landroid/graphics/Typeface;
+    //   91: astore_1
+    //   92: aload 5
+    //   94: invokevirtual 114	java/io/FileInputStream:close	()V
+    //   97: aload 4
+    //   99: ifnull +8 -> 107
+    //   102: aload 4
+    //   104: invokevirtual 101	android/os/ParcelFileDescriptor:close	()V
+    //   107: aload_1
+    //   108: areturn
+    //   109: astore_2
+    //   110: aconst_null
+    //   111: astore_1
+    //   112: goto +7 -> 119
+    //   115: astore_1
+    //   116: aload_1
+    //   117: athrow
+    //   118: astore_2
+    //   119: aload_1
+    //   120: ifnull +22 -> 142
+    //   123: aload 5
+    //   125: invokevirtual 114	java/io/FileInputStream:close	()V
+    //   128: goto +19 -> 147
+    //   131: astore 5
+    //   133: aload_1
+    //   134: aload 5
+    //   136: invokevirtual 118	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   139: goto +8 -> 147
+    //   142: aload 5
+    //   144: invokevirtual 114	java/io/FileInputStream:close	()V
+    //   147: aload_2
+    //   148: athrow
+    //   149: astore_1
+    //   150: aconst_null
+    //   151: astore_2
+    //   152: goto +7 -> 159
+    //   155: astore_2
+    //   156: aload_2
+    //   157: athrow
+    //   158: astore_1
+    //   159: aload 4
+    //   161: ifnull +31 -> 192
+    //   164: aload_2
+    //   165: ifnull +22 -> 187
+    //   168: aload 4
+    //   170: invokevirtual 101	android/os/ParcelFileDescriptor:close	()V
+    //   173: goto +19 -> 192
+    //   176: astore 4
+    //   178: aload_2
+    //   179: aload 4
+    //   181: invokevirtual 118	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   184: goto +8 -> 192
+    //   187: aload 4
+    //   189: invokevirtual 101	android/os/ParcelFileDescriptor:close	()V
+    //   192: aload_1
+    //   193: athrow
+    //   194: astore_1
+    //   195: aconst_null
+    //   196: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	197	0	this	dt
+    //   0	197	1	paramContext	android.content.Context
+    //   0	197	2	paramArrayOfb	ek.b[]
+    //   0	197	3	paramInt	int
+    //   18	151	4	localObject	java.lang.Object
+    //   176	12	4	localThrowable1	java.lang.Throwable
+    //   83	41	5	localFileInputStream	java.io.FileInputStream
+    //   131	12	5	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   85	92	109	finally
+    //   85	92	115	java/lang/Throwable
+    //   116	118	118	finally
+    //   123	128	131	java/lang/Throwable
+    //   34	40	149	finally
+    //   44	51	149	finally
+    //   54	59	149	finally
+    //   71	85	149	finally
+    //   92	97	149	finally
+    //   123	128	149	finally
+    //   133	139	149	finally
+    //   142	147	149	finally
+    //   147	149	149	finally
+    //   34	40	155	java/lang/Throwable
+    //   44	51	155	java/lang/Throwable
+    //   54	59	155	java/lang/Throwable
+    //   71	85	155	java/lang/Throwable
+    //   92	97	155	java/lang/Throwable
+    //   133	139	155	java/lang/Throwable
+    //   142	147	155	java/lang/Throwable
+    //   147	149	155	java/lang/Throwable
+    //   156	158	158	finally
+    //   168	173	176	java/lang/Throwable
+    //   20	34	194	java/io/IOException
+    //   64	69	194	java/io/IOException
+    //   102	107	194	java/io/IOException
+    //   168	173	194	java/io/IOException
+    //   178	184	194	java/io/IOException
+    //   187	192	194	java/io/IOException
+    //   192	194	194	java/io/IOException
   }
 }
 

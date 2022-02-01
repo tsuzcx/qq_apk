@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/j3_" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/bsu" layout="@layout/bv9" />
+</merge>

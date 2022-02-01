@@ -9,7 +9,7 @@ public final class GetResourceResp
   extends JceStruct
 {
   static ArrayList<GetResourceRespInfo> cache_vecResRespInfo;
-  public ArrayList<GetResourceRespInfo> vecResRespInfo;
+  public ArrayList<GetResourceRespInfo> vecResRespInfo = null;
   
   public GetResourceResp() {}
   
@@ -36,7 +36,7 @@ public final class GetResourceResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceResp
  * JD-Core Version:    0.7.0.1
  */

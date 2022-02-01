@@ -28,7 +28,6 @@ public abstract class BaseTestRunner
   
   static boolean filterLine(String paramString)
   {
-    boolean bool2 = false;
     String[] arrayOfString = new String[8];
     arrayOfString[0] = "junit.framework.TestCase";
     arrayOfString[1] = "junit.framework.TestResult";
@@ -39,20 +38,14 @@ public abstract class BaseTestRunner
     arrayOfString[6] = "junit.textui.TestRunner";
     arrayOfString[7] = "java.lang.reflect.Method.invoke(";
     int i = 0;
-    for (;;)
+    while (i < arrayOfString.length)
     {
-      boolean bool1 = bool2;
-      if (i < arrayOfString.length)
-      {
-        if (paramString.indexOf(arrayOfString[i]) > 0) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramString.indexOf(arrayOfString[i]) > 0) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public static String getFilteredTrace(String paramString)
@@ -75,12 +68,10 @@ public abstract class BaseTestRunner
           localPrintWriter.println(str);
         }
       }
-      return localException.toString();
+      return localStringWriter.toString();
     }
-    catch (Exception localException)
-    {
-      return paramString;
-    }
+    catch (Exception localException) {}
+    return paramString;
   }
   
   public static String getFilteredTrace(Throwable paramThrowable)
@@ -131,78 +122,64 @@ public abstract class BaseTestRunner
   private static void readPreferences()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: new 158	java/io/FileInputStream
-    //   5: dup
-    //   6: invokestatic 160	junit/runner/BaseTestRunner:getPreferencesFile	()Ljava/io/File;
-    //   9: invokespecial 163	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   12: astore_0
-    //   13: new 121	java/util/Properties
-    //   16: dup
-    //   17: invokestatic 119	junit/runner/BaseTestRunner:getPreferences	()Ljava/util/Properties;
-    //   20: invokespecial 166	java/util/Properties:<init>	(Ljava/util/Properties;)V
-    //   23: invokestatic 169	junit/runner/BaseTestRunner:setPreferences	(Ljava/util/Properties;)V
-    //   26: invokestatic 119	junit/runner/BaseTestRunner:getPreferences	()Ljava/util/Properties;
-    //   29: aload_0
-    //   30: invokevirtual 173	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   33: aload_0
-    //   34: ifnull +7 -> 41
-    //   37: aload_0
-    //   38: invokevirtual 178	java/io/InputStream:close	()V
-    //   41: return
+    //   0: new 158	java/io/FileInputStream
+    //   3: dup
+    //   4: invokestatic 160	junit/runner/BaseTestRunner:getPreferencesFile	()Ljava/io/File;
+    //   7: invokespecial 163	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   10: astore_0
+    //   11: new 121	java/util/Properties
+    //   14: dup
+    //   15: invokestatic 119	junit/runner/BaseTestRunner:getPreferences	()Ljava/util/Properties;
+    //   18: invokespecial 166	java/util/Properties:<init>	(Ljava/util/Properties;)V
+    //   21: invokestatic 169	junit/runner/BaseTestRunner:setPreferences	(Ljava/util/Properties;)V
+    //   24: invokestatic 119	junit/runner/BaseTestRunner:getPreferences	()Ljava/util/Properties;
+    //   27: aload_0
+    //   28: invokevirtual 173	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   31: aload_0
+    //   32: invokevirtual 178	java/io/InputStream:close	()V
+    //   35: return
+    //   36: astore_1
+    //   37: goto +6 -> 43
+    //   40: astore_1
+    //   41: aconst_null
     //   42: astore_0
-    //   43: aconst_null
-    //   44: astore_0
-    //   45: aload_0
-    //   46: ifnull -5 -> 41
-    //   49: aload_0
-    //   50: invokevirtual 178	java/io/InputStream:close	()V
-    //   53: return
+    //   43: aload_0
+    //   44: ifnull +7 -> 51
+    //   47: aload_0
+    //   48: invokevirtual 178	java/io/InputStream:close	()V
+    //   51: aload_1
+    //   52: athrow
+    //   53: aconst_null
     //   54: astore_0
-    //   55: return
-    //   56: astore_0
-    //   57: aload_1
-    //   58: ifnull +7 -> 65
-    //   61: aload_1
-    //   62: invokevirtual 178	java/io/InputStream:close	()V
-    //   65: aload_0
-    //   66: athrow
-    //   67: astore_0
-    //   68: return
-    //   69: astore_1
-    //   70: goto -5 -> 65
-    //   73: astore_2
-    //   74: aload_0
-    //   75: astore_1
-    //   76: aload_2
-    //   77: astore_0
-    //   78: goto -21 -> 57
-    //   81: astore_1
-    //   82: goto -37 -> 45
+    //   55: aload_0
+    //   56: ifnull +6 -> 62
+    //   59: goto -28 -> 31
+    //   62: return
+    //   63: astore_0
+    //   64: goto -11 -> 53
+    //   67: astore_1
+    //   68: goto -13 -> 55
+    //   71: astore_0
+    //   72: return
+    //   73: astore_0
+    //   74: goto -23 -> 51
     // Local variable table:
     //   start	length	slot	name	signature
-    //   12	26	0	localFileInputStream	java.io.FileInputStream
-    //   42	1	0	localIOException1	java.io.IOException
-    //   44	6	0	localObject1	Object
-    //   54	1	0	localIOException2	java.io.IOException
-    //   56	10	0	localObject2	Object
-    //   67	8	0	localIOException3	java.io.IOException
-    //   77	1	0	localObject3	Object
-    //   1	61	1	localObject4	Object
-    //   69	1	1	localIOException4	java.io.IOException
-    //   75	1	1	localObject5	Object
-    //   81	1	1	localIOException5	java.io.IOException
-    //   73	4	2	localObject6	Object
+    //   10	46	0	localFileInputStream	java.io.FileInputStream
+    //   63	1	0	localIOException1	java.io.IOException
+    //   71	1	0	localIOException2	java.io.IOException
+    //   73	1	0	localIOException3	java.io.IOException
+    //   36	1	1	localObject1	Object
+    //   40	12	1	localObject2	Object
+    //   67	1	1	localIOException4	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   2	13	42	java/io/IOException
-    //   49	53	54	java/io/IOException
-    //   2	13	56	finally
-    //   37	41	67	java/io/IOException
-    //   61	65	69	java/io/IOException
-    //   13	33	73	finally
-    //   13	33	81	java/io/IOException
+    //   11	31	36	finally
+    //   0	11	40	finally
+    //   0	11	63	java/io/IOException
+    //   11	31	67	java/io/IOException
+    //   31	35	71	java/io/IOException
+    //   47	51	73	java/io/IOException
   }
   
   public static void savePreferences()
@@ -236,15 +213,19 @@ public abstract class BaseTestRunner
   
   public static String truncate(String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (fgMaxMessageLength != -1)
     {
-      str = paramString;
-      if (paramString.length() > fgMaxMessageLength) {
-        str = paramString.substring(0, fgMaxMessageLength) + "...";
+      localObject = paramString;
+      if (paramString.length() > fgMaxMessageLength)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString.substring(0, fgMaxMessageLength));
+        ((StringBuilder)localObject).append("...");
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    return str;
+    return localObject;
   }
   
   public void addError(Test paramTest, Throwable paramThrowable)
@@ -279,7 +260,10 @@ public abstract class BaseTestRunner
   
   public String elapsedTimeAsString(long paramLong)
   {
-    return NumberFormat.getInstance().format(paramLong / 1000.0D);
+    NumberFormat localNumberFormat = NumberFormat.getInstance();
+    double d = paramLong;
+    Double.isNaN(d);
+    return localNumberFormat.format(d / 1000.0D);
   }
   
   public void endTest(Test paramTest)
@@ -310,71 +294,74 @@ public abstract class BaseTestRunner
     if (paramString.length() <= 0)
     {
       clearStatus();
-      paramString = null;
-      return paramString;
+      return null;
     }
-    for (;;)
+    try
     {
-      Object localObject;
-      try
-      {
-        for (;;)
-        {
-          Class localClass = loadSuiteClass(paramString);
-          try
-          {
-            localObject = (Test)paramString.invoke(null, new Object[0]);
-            paramString = (String)localObject;
-            if (localObject == null) {
-              break;
-            }
-            clearStatus();
-            return localObject;
-          }
-          catch (InvocationTargetException paramString)
-          {
-            runFailed("Failed to invoke suite():" + paramString.getTargetException().toString());
-            return null;
-          }
-          catch (IllegalAccessException paramString)
-          {
-            runFailed("Failed to invoke suite():" + paramString.toString());
-            return null;
-          }
-        }
+      localObject1 = loadSuiteClass(paramString);
+    }
+    catch (Exception paramString)
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Error: ");
+      ((StringBuilder)localObject1).append(paramString.toString());
+      runFailed(((StringBuilder)localObject1).toString());
+      return null;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label149:
+      Object localObject2 = localClassNotFoundException.getMessage();
+      if (localObject2 != null) {
+        paramString = (String)localObject2;
       }
-      catch (ClassNotFoundException localClassNotFoundException)
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Class not found \"");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append("\"");
+      runFailed(((StringBuilder)localObject2).toString());
+      return null;
+    }
+    try
+    {
+      paramString = ((Class)localObject1).getMethod("suite", new Class[0]);
+      if (!Modifier.isStatic(paramString.getModifiers()))
       {
-        try
-        {
-          paramString = localClass.getMethod("suite", new Class[0]);
-          if (Modifier.isStatic(paramString.getModifiers())) {
-            break label137;
-          }
-          runFailed("Suite() method must be static");
-          return null;
-        }
-        catch (Exception paramString)
-        {
-          clearStatus();
-          return new TestSuite((Class)localObject);
-        }
-        localClassNotFoundException = localClassNotFoundException;
-        localObject = localClassNotFoundException.getMessage();
-        if (localObject == null)
-        {
-          runFailed("Class not found \"" + paramString + "\"");
-          return null;
-        }
-      }
-      catch (Exception paramString)
-      {
-        runFailed("Error: " + paramString.toString());
+        runFailed("Suite() method must be static");
         return null;
       }
-      label137:
-      paramString = (String)localObject;
+      try
+      {
+        paramString = (Test)paramString.invoke(null, new Object[0]);
+        if (paramString == null) {
+          return paramString;
+        }
+        clearStatus();
+        return paramString;
+      }
+      catch (IllegalAccessException paramString)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Failed to invoke suite():");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        runFailed(((StringBuilder)localObject1).toString());
+        return null;
+      }
+      catch (InvocationTargetException paramString)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Failed to invoke suite():");
+        ((StringBuilder)localObject1).append(paramString.getTargetException().toString());
+        runFailed(((StringBuilder)localObject1).toString());
+        return null;
+      }
     }
+    catch (Exception paramString)
+    {
+      break label149;
+    }
+    clearStatus();
+    return new TestSuite((Class)localObject1);
   }
   
   protected Class<?> loadSuiteClass(String paramString)
@@ -386,36 +373,31 @@ public abstract class BaseTestRunner
   {
     String str = null;
     int i = 0;
-    if (i < paramArrayOfString.length)
+    while (i < paramArrayOfString.length)
     {
-      if (paramArrayOfString[i].equals("-noloading")) {
+      if (paramArrayOfString[i].equals("-noloading"))
+      {
         setLoading(false);
       }
-      for (;;)
+      else if (paramArrayOfString[i].equals("-nofilterstack"))
       {
+        fgFilterStack = false;
+      }
+      else if (paramArrayOfString[i].equals("-c"))
+      {
+        int j = paramArrayOfString.length;
         i += 1;
-        break;
-        if (paramArrayOfString[i].equals("-nofilterstack"))
-        {
-          fgFilterStack = false;
-        }
-        else
-        {
-          if (paramArrayOfString[i].equals("-c"))
-          {
-            if (paramArrayOfString.length > i + 1) {
-              str = extractClassName(paramArrayOfString[(i + 1)]);
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              System.out.println("Missing Test class name");
-            }
-          }
-          str = paramArrayOfString[i];
+        if (j > i) {
+          str = extractClassName(paramArrayOfString[i]);
+        } else {
+          System.out.println("Missing Test class name");
         }
       }
+      else
+      {
+        str = paramArrayOfString[i];
+      }
+      i += 1;
     }
     return str;
   }
@@ -454,7 +436,7 @@ public abstract class BaseTestRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     junit.runner.BaseTestRunner
  * JD-Core Version:    0.7.0.1
  */

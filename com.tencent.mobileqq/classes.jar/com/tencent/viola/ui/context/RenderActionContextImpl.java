@@ -25,12 +25,13 @@ public class RenderActionContextImpl
   public void destroy()
   {
     this.mInstanceWeakReference.clear();
-    if (this.mRegistry != null)
+    Object localObject = this.mRegistry;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mRegistry.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        VComponent localVComponent = (VComponent)((Map.Entry)localIterator.next()).getValue();
+        VComponent localVComponent = (VComponent)((Map.Entry)((Iterator)localObject).next()).getValue();
         if ((localVComponent != null) && (!localVComponent.isDestroyed())) {
           localVComponent.destroy();
         }
@@ -46,8 +47,9 @@ public class RenderActionContextImpl
   
   public ViolaInstance getInstance()
   {
-    if (this.mInstanceWeakReference != null) {
-      return (ViolaInstance)this.mInstanceWeakReference.get();
+    WeakReference localWeakReference = this.mInstanceWeakReference;
+    if (localWeakReference != null) {
+      return (ViolaInstance)localWeakReference.get();
     }
     return null;
   }
@@ -74,8 +76,10 @@ public class RenderActionContextImpl
   public void setLayout(String paramString, DomObject paramDomObject)
   {
     VComponent localVComponent = (VComponent)this.mRegistry.get(paramString);
-    if (localVComponent == null) {}
-    while ((paramString != null) && (!paramString.equals(localVComponent.getRef()))) {
+    if (localVComponent == null) {
+      return;
+    }
+    if ((paramString != null) && (!paramString.equals(localVComponent.getRef()))) {
       return;
     }
     localVComponent.applyLayout(paramDomObject);
@@ -88,7 +92,7 @@ public class RenderActionContextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.RenderActionContextImpl
  * JD-Core Version:    0.7.0.1
  */

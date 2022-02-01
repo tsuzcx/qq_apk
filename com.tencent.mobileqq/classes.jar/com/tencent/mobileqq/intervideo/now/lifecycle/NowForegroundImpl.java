@@ -12,8 +12,9 @@ import mqq.app.Foreground;
 public class NowForegroundImpl
   implements IForeground
 {
-  WeakReference<Activity> a;
   protected AppRuntime a;
+  WeakReference<Activity> b;
+  private int c = 0;
   
   public NowForegroundImpl()
   {
@@ -22,55 +23,52 @@ public class NowForegroundImpl
   
   public void a()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.getApplication().waitAppRuntime(null);
+    this.a = BaseApplicationImpl.getApplication().waitAppRuntime(null);
   }
   
   public void onCreate(Context paramContext)
   {
-    QLog.d("NowForegroundImpl", 2, "onCreate context = " + paramContext);
-    Foreground.updateRuntimeState(this.jdField_a_of_type_MqqAppAppRuntime);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCreate context = ");
+    localStringBuilder.append(paramContext);
+    QLog.d("NowForegroundImpl", 2, localStringBuilder.toString());
+    Foreground.updateRuntimeState(this.a);
     if ((paramContext instanceof Activity)) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
+      this.b = new WeakReference((Activity)paramContext);
     }
   }
   
   public void onDestroy()
   {
-    QLog.d("NowForegroundImpl", 2, "onDestroy mRuntime = " + this.jdField_a_of_type_MqqAppAppRuntime);
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity != null) {
-      Foreground.onDestroy(localActivity);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDestroy mRuntime = ");
+    localStringBuilder.append(this.a);
+    QLog.d("NowForegroundImpl", 2, localStringBuilder.toString());
   }
   
-  public void onPause()
-  {
-    Foreground.onPause(this.jdField_a_of_type_MqqAppAppRuntime);
-  }
+  public void onPause() {}
   
-  public void onResume()
-  {
-    Foreground.onResume(this.jdField_a_of_type_MqqAppAppRuntime);
-  }
+  public void onResume() {}
   
   public void onStart()
   {
-    QLog.d("NowForegroundImpl", 2, "onStart mActivity = " + this.jdField_a_of_type_JavaLangRefWeakReference);
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity != null) {
-      Foreground.onStart(this.jdField_a_of_type_MqqAppAppRuntime, localActivity);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStart mActivity = ");
+    localStringBuilder.append(this.b);
+    QLog.d("NowForegroundImpl", 2, localStringBuilder.toString());
   }
   
   public void onStop()
   {
-    QLog.d("NowForegroundImpl", 2, "onStop mRuntime = " + this.jdField_a_of_type_MqqAppAppRuntime);
-    Foreground.onStop(this.jdField_a_of_type_MqqAppAppRuntime);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStop mRuntime = ");
+    localStringBuilder.append(this.a);
+    QLog.d("NowForegroundImpl", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.lifecycle.NowForegroundImpl
  * JD-Core Version:    0.7.0.1
  */

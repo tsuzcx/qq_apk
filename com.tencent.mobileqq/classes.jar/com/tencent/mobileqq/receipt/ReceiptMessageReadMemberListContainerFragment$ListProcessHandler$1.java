@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.receipt;
 
-import axlb;
-
-public class ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$1
+class ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$1
   implements Runnable
 {
-  public ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$1(axlb paramaxlb, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  ReceiptMessageReadMemberListContainerFragment$ListProcessHandler$1(ReceiptMessageReadMemberListContainerFragment.ListProcessHandler paramListProcessHandler, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
   public void run()
   {
-    ReceiptMessageReadMemberListContainerFragment.e(this.a);
+    ReceiptMessageReadMemberListContainerFragment.q(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1
  * JD-Core Version:    0.7.0.1
  */

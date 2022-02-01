@@ -1,36 +1,31 @@
 package com.tencent.mobileqq.app;
 
-import android.os.Handler;
-import android.os.Looper;
-import awgf;
-import awgg;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.api.handler.ITroopInfoHandler;
+import com.tencent.mobileqq.troop.troopmanager.api.TroopManagerBizObserver;
+import com.tencent.qphone.base.util.QLog;
 
 class TroopManager$8
-  implements Runnable
+  extends TroopManagerBizObserver
 {
-  TroopManager$8(TroopManager paramTroopManager, TroopMemberInfo paramTroopMemberInfo, String paramString) {}
+  TroopManager$8(TroopManager paramTroopManager) {}
   
-  public void run()
+  protected void onActiveExtTroop(boolean paramBoolean, String paramString)
   {
-    Object localObject = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      ((awgf)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
-    }
-    for (;;)
-    {
-      ((awgf)localObject).a();
-      localObject = this.this$0.c(this.jdField_a_of_type_JavaLangString);
-      new Handler(Looper.getMainLooper()).post(new TroopManager.8.1(this, (ArrayList)localObject));
-      return;
-      ((awgf)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onActiveExtTroop success: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" troopUin: ");
+    localStringBuilder.append(paramString);
+    QLog.i("troop_ext", 1, localStringBuilder.toString());
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      ((ITroopInfoHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER)).a(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.8
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,15 @@ public final class BroadcastMsgCtr$ConfInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48 }, new String[] { "bytes_conf_name", "uint32_member_flag", "uint32_type", "bytes_sig", "uint32_appid", "uint32_conf_flag" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, ConfInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48 }, new String[] { "bytes_conf_name", "uint32_member_flag", "uint32_type", "bytes_sig", "uint32_appid", "uint32_conf_flag" }, new Object[] { localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localInteger, localInteger }, ConfInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.group.broadcast.BroadcastMsgCtr.ConfInfo
  * JD-Core Version:    0.7.0.1
  */

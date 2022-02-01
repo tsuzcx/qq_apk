@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/ng"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@null" android:paddingTop="29.0dip" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center" android:id="@id/zx" android:background="@drawable/smiley_item_bg2" android:padding="@dimen/n_" android:layout_width="46.0dip" android:layout_height="46.0dip" android:scaleType="fitCenter" />
-</FrameLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/aja" android:id="@id/ani" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:text="@string/gf8" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/a32" android:id="@id/anf" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip" android:text="@string/gf6" android:includeFontPadding="false" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/an6" android:paddingTop="1.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
+</LinearLayout>

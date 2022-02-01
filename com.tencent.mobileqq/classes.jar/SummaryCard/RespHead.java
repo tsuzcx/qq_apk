@@ -8,10 +8,10 @@ public final class RespHead
   extends JceStruct
 {
   static byte[] cache_vCookies;
-  public int iResult;
-  public int iVersion;
+  public int iResult = 0;
+  public int iVersion = 0;
   public String strErrorMsg = "";
-  public byte[] vCookies;
+  public byte[] vCookies = null;
   
   public RespHead() {}
   
@@ -41,14 +41,15 @@ public final class RespHead
     paramJceOutputStream.write(this.iVersion, 0);
     paramJceOutputStream.write(this.iResult, 1);
     paramJceOutputStream.write(this.strErrorMsg, 2);
-    if (this.vCookies != null) {
-      paramJceOutputStream.write(this.vCookies, 3);
+    byte[] arrayOfByte = this.vCookies;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.RespHead
  * JD-Core Version:    0.7.0.1
  */

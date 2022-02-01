@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRspDelLoginInfo
   extends JceStruct
 {
-  public int iResult;
+  public int iResult = 0;
   public String strResult = "";
   
   public SvcRspDelLoginInfo() {}
@@ -27,14 +27,15 @@ public final class SvcRspDelLoginInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iResult, 0);
-    if (this.strResult != null) {
-      paramJceOutputStream.write(this.strResult, 1);
+    String str = this.strResult;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcRspDelLoginInfo
  * JD-Core Version:    0.7.0.1
  */

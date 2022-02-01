@@ -4,16 +4,17 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class v
   extends JceStruct
 {
   static s aA = new s();
-  static ArrayList aU = new ArrayList();
-  static ArrayList aV;
+  static ArrayList<Integer> aU = new ArrayList();
+  static ArrayList<t> aV;
   public int aM = 0;
-  public ArrayList aN = null;
-  public ArrayList aO = null;
+  public ArrayList<Integer> aN = null;
+  public ArrayList<t> aO = null;
   public int aP = 0;
   public boolean aQ = true;
   public boolean aR = true;
@@ -30,12 +31,12 @@ public final class v
     aV.add(localt);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new v();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.ay = paramJceInputStream.read(this.ay, 0, true);
     this.aM = paramJceInputStream.read(this.aM, 1, false);
@@ -49,31 +50,38 @@ public final class v
     this.az = ((s)paramJceInputStream.read(aA, 9, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ay, 0);
-    if (this.aM != 0) {
-      paramJceOutputStream.write(this.aM, 1);
+    int i = this.aM;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.aN != null) {
-      paramJceOutputStream.write(this.aN, 2);
+    Object localObject = this.aN;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.aO != null) {
-      paramJceOutputStream.write(this.aO, 3);
+    localObject = this.aO;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.aP != 0) {
-      paramJceOutputStream.write(this.aP, 4);
+    i = this.aP;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
     paramJceOutputStream.write(this.aQ, 5);
     paramJceOutputStream.write(this.aR, 6);
-    if (this.aS != 120) {
-      paramJceOutputStream.write(this.aS, 7);
+    i = this.aS;
+    if (i != 120) {
+      paramJceOutputStream.write(i, 7);
     }
-    if (this.aT != 10) {
-      paramJceOutputStream.write(this.aT, 8);
+    i = this.aT;
+    if (i != 10) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.az != null) {
-      paramJceOutputStream.write(this.az, 9);
+    localObject = this.az;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
   }
 }

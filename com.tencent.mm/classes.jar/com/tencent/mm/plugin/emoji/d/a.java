@@ -1,17 +1,31 @@
 package com.tencent.mm.plugin.emoji.d;
 
-import com.tencent.mm.at.a.c.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.p;
+import com.tencent.mm.modelimage.loader.impr.e;
+import com.tencent.mm.network.aa;
+import com.tencent.mm.network.d.b;
+import com.tencent.mm.network.z;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.m.a.j;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class a
-  implements b
+  implements com.tencent.mm.modelimage.loader.b.c
 {
   /* Error */
-  public final com.tencent.mm.at.a.d.b tB(java.lang.String paramString)
+  public final com.tencent.mm.modelimage.loader.c.b Os(String paramString)
   {
     // Byte code:
-    //   0: ldc 32
-    //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 40
+    //   0: ldc 33
+    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 41
     //   7: astore 4
     //   9: aload 4
     //   11: astore 5
@@ -29,10 +43,10 @@ public final class a
     //   35: astore 11
     //   37: aload 4
     //   39: astore 12
-    //   41: new 42	com/tencent/mm/network/b$b
+    //   41: new 43	com/tencent/mm/network/d$b
     //   44: dup
     //   45: aload_1
-    //   46: invokespecial 45	com/tencent/mm/network/b$b:<init>	(Ljava/lang/String;)V
+    //   46: invokespecial 46	com/tencent/mm/network/d$b:<init>	(Ljava/lang/String;)V
     //   49: astore 13
     //   51: aload 4
     //   53: astore_3
@@ -53,8 +67,8 @@ public final class a
     //   82: aload 4
     //   84: astore 12
     //   86: aload 13
-    //   88: getfield 49	com/tencent/mm/network/b$b:ip	Ljava/lang/String;
-    //   91: invokestatic 55	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
+    //   88: getfield 50	com/tencent/mm/network/d$b:ip	Ljava/lang/String;
+    //   91: invokestatic 56	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   94: ifne +41 -> 135
     //   97: aload 4
     //   99: astore 5
@@ -73,7 +87,7 @@ public final class a
     //   125: aload 4
     //   127: astore 12
     //   129: aload 13
-    //   131: getfield 49	com/tencent/mm/network/b$b:ip	Ljava/lang/String;
+    //   131: getfield 50	com/tencent/mm/network/d$b:ip	Ljava/lang/String;
     //   134: astore_3
     //   135: aload_3
     //   136: astore 5
@@ -92,30 +106,30 @@ public final class a
     //   156: aload_3
     //   157: astore 12
     //   159: aload 13
-    //   161: getfield 49	com/tencent/mm/network/b$b:ip	Ljava/lang/String;
+    //   161: getfield 50	com/tencent/mm/network/d$b:ip	Ljava/lang/String;
     //   164: astore 4
     //   166: aload 13
-    //   168: getfield 59	com/tencent/mm/network/b$b:gdn	I
+    //   168: getfield 60	com/tencent/mm/network/d$b:pnI	I
     //   171: istore_2
     //   172: aload_1
     //   173: aload 13
-    //   175: invokestatic 63	com/tencent/mm/plugin/emoji/d/a$a:c	(Ljava/lang/String;Lcom/tencent/mm/network/b$b;)Lcom/tencent/mm/at/a/d/b;
+    //   175: invokestatic 64	com/tencent/mm/plugin/emoji/d/a$a:c	(Ljava/lang/String;Lcom/tencent/mm/network/d$b;)Lcom/tencent/mm/modelimage/loader/c/b;
     //   178: astore 5
-    //   180: ldc 32
-    //   182: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   180: ldc 33
+    //   182: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: aload 5
     //   187: areturn
     //   188: astore 6
     //   190: iconst_0
     //   191: istore_2
-    //   192: ldc 40
+    //   192: ldc 41
     //   194: astore 4
     //   196: aload 5
     //   198: astore_3
     //   199: aload 6
     //   201: astore 5
-    //   203: ldc 68
-    //   205: ldc 70
+    //   203: ldc 69
+    //   205: ldc 71
     //   207: iconst_5
     //   208: anewarray 4	java/lang/Object
     //   211: dup
@@ -133,49 +147,49 @@ public final class a
     //   224: dup
     //   225: iconst_3
     //   226: iload_2
-    //   227: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   227: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   230: aastore
     //   231: dup
     //   232: iconst_4
     //   233: aload 5
-    //   235: invokestatic 80	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   235: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   238: aastore
-    //   239: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   242: getstatic 92	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   245: ldc2_w 93
-    //   248: ldc2_w 95
+    //   239: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   242: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   245: ldc2_w 94
+    //   248: ldc2_w 96
     //   251: lconst_1
     //   252: iconst_0
-    //   253: invokevirtual 100	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   253: invokevirtual 101	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   256: aload_3
     //   257: astore_1
     //   258: iload_2
     //   259: iconst_1
     //   260: if_icmpne +16 -> 276
-    //   263: invokestatic 106	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
-    //   266: invokestatic 112	com/tencent/mm/sdk/platformtools/at:isConnected	(Landroid/content/Context;)Z
+    //   263: invokestatic 107	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   266: invokestatic 113	com/tencent/mm/sdk/platformtools/NetStatusUtil:isConnected	(Landroid/content/Context;)Z
     //   269: ifeq +7 -> 276
     //   272: aload_1
-    //   273: invokestatic 117	com/tencent/mm/network/b:reportFailIp	(Ljava/lang/String;)V
-    //   276: new 119	com/tencent/mm/at/a/d/b
+    //   273: invokestatic 118	com/tencent/mm/network/d:reportFailIp	(Ljava/lang/String;)V
+    //   276: new 120	com/tencent/mm/modelimage/loader/c/b
     //   279: dup
     //   280: aconst_null
     //   281: aconst_null
-    //   282: invokespecial 122	com/tencent/mm/at/a/d/b:<init>	([BLjava/lang/String;)V
+    //   282: invokespecial 123	com/tencent/mm/modelimage/loader/c/b:<init>	([BLjava/lang/String;)V
     //   285: astore_1
-    //   286: ldc 32
-    //   288: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   286: ldc 33
+    //   288: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   291: aload_1
     //   292: areturn
     //   293: astore 5
     //   295: iconst_0
     //   296: istore_2
-    //   297: ldc 40
+    //   297: ldc 41
     //   299: astore 4
     //   301: aload 6
     //   303: astore_3
-    //   304: ldc 68
-    //   306: ldc 70
+    //   304: ldc 69
+    //   306: ldc 71
     //   308: iconst_5
     //   309: anewarray 4	java/lang/Object
     //   312: dup
@@ -193,32 +207,32 @@ public final class a
     //   325: dup
     //   326: iconst_3
     //   327: iload_2
-    //   328: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   328: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   331: aastore
     //   332: dup
     //   333: iconst_4
     //   334: aload 5
-    //   336: invokestatic 80	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   336: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   339: aastore
-    //   340: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   343: getstatic 92	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   346: ldc2_w 93
+    //   340: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   343: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   346: ldc2_w 94
     //   349: lconst_0
     //   350: lconst_1
     //   351: iconst_0
-    //   352: invokevirtual 100	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   352: invokevirtual 101	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   355: aload_3
     //   356: astore_1
     //   357: goto -99 -> 258
     //   360: astore 5
     //   362: iconst_0
     //   363: istore_2
-    //   364: ldc 40
+    //   364: ldc 41
     //   366: astore 4
     //   368: aload 7
     //   370: astore_3
-    //   371: ldc 68
-    //   373: ldc 70
+    //   371: ldc 69
+    //   373: ldc 71
     //   375: iconst_5
     //   376: anewarray 4	java/lang/Object
     //   379: dup
@@ -236,32 +250,32 @@ public final class a
     //   392: dup
     //   393: iconst_3
     //   394: iload_2
-    //   395: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   395: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   398: aastore
     //   399: dup
     //   400: iconst_4
     //   401: aload 5
-    //   403: invokestatic 80	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   403: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   406: aastore
-    //   407: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   410: getstatic 92	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   413: ldc2_w 93
+    //   407: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   410: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   413: ldc2_w 94
     //   416: lconst_1
     //   417: lconst_1
     //   418: iconst_0
-    //   419: invokevirtual 100	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   419: invokevirtual 101	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   422: aload_3
     //   423: astore_1
     //   424: goto -166 -> 258
     //   427: astore 5
     //   429: iconst_0
     //   430: istore_2
-    //   431: ldc 40
+    //   431: ldc 41
     //   433: astore 4
     //   435: aload 8
     //   437: astore_3
-    //   438: ldc 68
-    //   440: ldc 70
+    //   438: ldc 69
+    //   440: ldc 71
     //   442: iconst_5
     //   443: anewarray 4	java/lang/Object
     //   446: dup
@@ -279,32 +293,32 @@ public final class a
     //   459: dup
     //   460: iconst_3
     //   461: iload_2
-    //   462: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   462: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   465: aastore
     //   466: dup
     //   467: iconst_4
     //   468: aload 5
-    //   470: invokestatic 80	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   470: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   473: aastore
-    //   474: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   477: getstatic 92	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   480: ldc2_w 93
-    //   483: ldc2_w 123
+    //   474: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   477: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   480: ldc2_w 94
+    //   483: ldc2_w 124
     //   486: lconst_1
     //   487: iconst_0
-    //   488: invokevirtual 100	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   488: invokevirtual 101	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   491: aload_3
     //   492: astore_1
     //   493: goto -235 -> 258
     //   496: astore 5
     //   498: iconst_0
     //   499: istore_2
-    //   500: ldc 40
+    //   500: ldc 41
     //   502: astore 4
     //   504: aload 9
     //   506: astore_3
-    //   507: ldc 68
-    //   509: ldc 70
+    //   507: ldc 69
+    //   509: ldc 71
     //   511: iconst_5
     //   512: anewarray 4	java/lang/Object
     //   515: dup
@@ -322,32 +336,32 @@ public final class a
     //   528: dup
     //   529: iconst_3
     //   530: iload_2
-    //   531: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   531: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   534: aastore
     //   535: dup
     //   536: iconst_4
     //   537: aload 5
-    //   539: invokestatic 80	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   539: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   542: aastore
-    //   543: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   546: getstatic 92	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   549: ldc2_w 93
-    //   552: ldc2_w 125
+    //   543: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   546: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   549: ldc2_w 94
+    //   552: ldc2_w 126
     //   555: lconst_1
     //   556: iconst_0
-    //   557: invokevirtual 100	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   557: invokevirtual 101	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   560: aload_3
     //   561: astore_1
     //   562: goto -304 -> 258
     //   565: astore 5
     //   567: iconst_0
     //   568: istore_2
-    //   569: ldc 40
+    //   569: ldc 41
     //   571: astore 4
     //   573: aload 10
     //   575: astore_3
-    //   576: ldc 68
-    //   578: ldc 70
+    //   576: ldc 69
+    //   578: ldc 71
     //   580: iconst_5
     //   581: anewarray 4	java/lang/Object
     //   584: dup
@@ -365,32 +379,32 @@ public final class a
     //   597: dup
     //   598: iconst_3
     //   599: iload_2
-    //   600: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   600: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   603: aastore
     //   604: dup
     //   605: iconst_4
     //   606: aload 5
-    //   608: invokestatic 80	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   608: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   611: aastore
-    //   612: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   615: getstatic 92	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   618: ldc2_w 93
-    //   621: ldc2_w 127
+    //   612: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   615: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   618: ldc2_w 94
+    //   621: ldc2_w 128
     //   624: lconst_1
     //   625: iconst_0
-    //   626: invokevirtual 100	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   626: invokevirtual 101	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   629: aload_3
     //   630: astore_1
     //   631: goto -373 -> 258
     //   634: astore 5
     //   636: iconst_0
     //   637: istore_2
-    //   638: ldc 40
+    //   638: ldc 41
     //   640: astore 4
     //   642: aload 11
     //   644: astore_3
-    //   645: ldc 68
-    //   647: ldc 70
+    //   645: ldc 69
+    //   647: ldc 71
     //   649: iconst_5
     //   650: anewarray 4	java/lang/Object
     //   653: dup
@@ -408,32 +422,32 @@ public final class a
     //   666: dup
     //   667: iconst_3
     //   668: iload_2
-    //   669: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   669: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   672: aastore
     //   673: dup
     //   674: iconst_4
     //   675: aload 5
-    //   677: invokestatic 80	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   677: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   680: aastore
-    //   681: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   684: getstatic 92	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   687: ldc2_w 93
-    //   690: ldc2_w 129
+    //   681: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   684: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   687: ldc2_w 94
+    //   690: ldc2_w 130
     //   693: lconst_1
     //   694: iconst_0
-    //   695: invokevirtual 100	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   695: invokevirtual 101	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   698: aload_3
     //   699: astore_1
     //   700: goto -442 -> 258
     //   703: astore 5
     //   705: iconst_0
     //   706: istore_2
-    //   707: ldc 40
+    //   707: ldc 41
     //   709: astore 4
     //   711: aload 12
     //   713: astore_3
-    //   714: ldc 68
-    //   716: ldc 70
+    //   714: ldc 69
+    //   716: ldc 71
     //   718: iconst_5
     //   719: anewarray 4	java/lang/Object
     //   722: dup
@@ -451,20 +465,20 @@ public final class a
     //   735: dup
     //   736: iconst_3
     //   737: iload_2
-    //   738: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   738: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   741: aastore
     //   742: dup
     //   743: iconst_4
     //   744: aload 5
-    //   746: invokestatic 80	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   746: invokestatic 81	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   749: aastore
-    //   750: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   753: getstatic 92	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   756: ldc2_w 93
-    //   759: ldc2_w 131
+    //   750: invokestatic 87	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   753: getstatic 93	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+    //   756: ldc2_w 94
+    //   759: ldc2_w 132
     //   762: lconst_1
     //   763: iconst_0
-    //   764: invokevirtual 100	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   764: invokevirtual 101	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   767: aload_3
     //   768: astore_1
     //   769: goto -511 -> 258
@@ -519,10 +533,10 @@ public final class a
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	868	0	this	a
-    //   0	868	1	paramString	java.lang.String
+    //   0	868	1	paramString	String
     //   171	689	2	i	int
     //   53	715	3	localObject1	Object
-    //   7	726	4	str	java.lang.String
+    //   7	726	4	str	String
     //   11	223	5	localObject2	Object
     //   293	42	5	localInterruptedException1	java.lang.InterruptedException
     //   360	42	5	localUnknownHostException1	java.net.UnknownHostException
@@ -530,9 +544,9 @@ public final class a
     //   496	42	5	localSocketException1	java.net.SocketException
     //   565	42	5	localSocketTimeoutException1	java.net.SocketTimeoutException
     //   634	42	5	localIOException1	java.io.IOException
-    //   703	42	5	localException1	java.lang.Exception
-    //   772	1	5	localException2	java.lang.Exception
-    //   779	1	5	localException3	java.lang.Exception
+    //   703	42	5	localException1	Exception
+    //   772	1	5	localException2	Exception
+    //   779	1	5	localException3	Exception
     //   784	1	5	localIOException2	java.io.IOException
     //   791	1	5	localIOException3	java.io.IOException
     //   796	1	5	localSocketTimeoutException2	java.net.SocketTimeoutException
@@ -555,7 +569,7 @@ public final class a
     //   31	543	10	localObject7	Object
     //   35	608	11	localObject8	Object
     //   39	673	12	localObject9	Object
-    //   49	125	13	localb	com.tencent.mm.network.b.b
+    //   49	125	13	localb	d.b
     // Exception table:
     //   from	to	target	type
     //   41	51	188	java/net/ProtocolException
@@ -607,10 +621,157 @@ public final class a
     //   166	172	856	java/net/ProtocolException
     //   172	180	863	java/net/ProtocolException
   }
+  
+  static final class a
+  {
+    private static z b(String paramString, d.b paramb)
+    {
+      AppMethodBeat.i(104563);
+      if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zmZ, false))
+      {
+        paramString = com.tencent.mm.network.d.Rt(paramString);
+        ((aa)paramString).pps = 1195;
+        boolean bool = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zpP, false);
+        ((aa)paramString).ppt = bool;
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1195L, 96L, 1L, false);
+      }
+      for (;;)
+      {
+        String str = "";
+        paramb = str;
+        if (MMApplicationContext.isMMProcess())
+        {
+          paramb = str;
+          if (com.tencent.mm.kernel.h.baz())
+          {
+            paramb = "https://" + WeChatHosts.domainString(a.j.host_weixin_qq_com) + "/?version=%d&uin=%s&nettype=%d&signal=%d";
+            int i = com.tencent.mm.protocal.d.Yxh;
+            com.tencent.mm.kernel.h.baC();
+            paramb = String.format(paramb, new Object[] { Integer.valueOf(i), p.getString(com.tencent.mm.kernel.b.getUin()), Integer.valueOf(NetStatusUtil.getNetTypeForStat(MMApplicationContext.getContext())), Integer.valueOf(ConnectivityCompat.Companion.getCompatMixStrength()) });
+          }
+        }
+        Log.d("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "referer %s ", new Object[] { paramb });
+        paramString.Rx("GET");
+        paramString.setRequestProperty("referer", paramb);
+        paramString.xx(15000);
+        paramString.xy(20000);
+        AppMethodBeat.o(104563);
+        return paramString;
+        paramString = com.tencent.mm.network.d.a(paramString, paramb);
+        com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(1195L, 95L, 1L, false);
+      }
+    }
+    
+    public static com.tencent.mm.modelimage.loader.c.b c(String paramString, d.b paramb)
+    {
+      AppMethodBeat.i(104564);
+      z localz2 = b(paramString, paramb);
+      if ((localz2 instanceof aa)) {}
+      for (int i = 1;; i = 0)
+      {
+        if (localz2 == null) {
+          Log.i("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "open connection failed.");
+        }
+        long l = System.currentTimeMillis();
+        int j = localz2.getResponseCode();
+        z localz1 = localz2;
+        d.b localb = paramb;
+        if (j == 302) {}
+        for (;;)
+        {
+          try
+          {
+            Log.i("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "302 redirect: %s", new Object[] { paramString });
+            String str = localz2.getHeaderField("location");
+            localz1 = localz2;
+            localb = paramb;
+            if (!Util.isNullOrNil(str)) {
+              localb = new d.b(str);
+            }
+            Log.printErrStackTrace("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", localException1, "httpURLConnectionGet 302 redirect", new Object[0]);
+          }
+          catch (Exception localException1)
+          {
+            try
+            {
+              localz2.disconnect();
+              localz1 = b(str, localb);
+              if (com.tencent.mm.network.d.a(localz1) == 0) {
+                break;
+              }
+              i = localz1.getResponseCode();
+              Log.e("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "checkHttpConnection failed! url:%s urlIP:%s dnsServerIP:%s dnsType:%d retCode:%d", new Object[] { paramString, localb.ip, localb.ip, Integer.valueOf(localb.pnI), Integer.valueOf(i) });
+              switch (i)
+              {
+              default: 
+                com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 12L, 1L, false);
+                i = localb.pnI;
+                paramString = localb.ip;
+                if ((i == 1) && (NetStatusUtil.isConnected(MMApplicationContext.getContext()))) {
+                  com.tencent.mm.network.d.reportFailIp(paramString);
+                }
+                AppMethodBeat.o(104564);
+                return null;
+              }
+            }
+            catch (Exception localException2)
+            {
+              for (;;)
+              {
+                paramb = (d.b)localObject;
+                Object localObject = localException2;
+              }
+            }
+            localException1 = localException1;
+          }
+          localz1 = localz2;
+          localObject = paramb;
+          continue;
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 8L, 1L, false);
+          continue;
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 9L, 1L, false);
+          continue;
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 10L, 1L, false);
+          continue;
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(315L, 11L, 1L, false);
+        }
+        paramb = localz1.getInputStream();
+        if (paramb == null)
+        {
+          Log.d("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "getInputStream failed. url:%s", new Object[] { paramString });
+          AppMethodBeat.o(104564);
+          return null;
+        }
+        paramString = localz1.bRe();
+        paramb = e.b(paramb, false);
+        localz1.disconnect();
+        l = System.currentTimeMillis() - l;
+        if (j == 200)
+        {
+          if (i == 0) {
+            break label518;
+          }
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(99L, 99L, l, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(97L, 97L, 1L, false);
+          Log.i("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "cronet request time ".concat(String.valueOf(l)));
+        }
+        for (;;)
+        {
+          paramString = new com.tencent.mm.modelimage.loader.c.b(paramb, paramString);
+          AppMethodBeat.o(104564);
+          return paramString;
+          label518:
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(98L, 98L, l, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(100L, 100L, 1L, false);
+          Log.i("MicroMsg.emoji.EmojiDownloader.DefaultHttpClientFactory", "normal request time ".concat(String.valueOf(l)));
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.d.a
  * JD-Core Version:    0.7.0.1
  */

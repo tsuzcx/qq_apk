@@ -35,10 +35,19 @@ public final class br
     paramMap.put("A19", localObject);
     localbt.a(paramMap);
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(dg.a(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss.SSS") + "|");
+    paramString = new StringBuilder();
+    paramString.append(dg.a(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss.SSS"));
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append("INFO|");
-    ((StringBuilder)localObject).append(as.b + "|");
-    ((StringBuilder)localObject).append(bq.b + "|");
+    paramString = new StringBuilder();
+    paramString.append(as.b);
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append(bq.b);
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append("beacon|");
     ((StringBuilder)localObject).append("1.8.1|");
     paramString = localbt.b;
@@ -49,23 +58,38 @@ public final class br
     }
     catch (UnsupportedEncodingException paramMap)
     {
-      for (;;)
-      {
-        paramMap.printStackTrace();
-      }
+      paramMap.printStackTrace();
     }
-    ((StringBuilder)localObject).append(paramString + "|");
+    paramMap = new StringBuilder();
+    paramMap.append(paramString);
+    paramMap.append("|");
+    ((StringBuilder)localObject).append(paramMap.toString());
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append("upload_ip|");
     ((StringBuilder)localObject).append("|");
-    ((StringBuilder)localObject).append(localbt.c + "|");
-    ((StringBuilder)localObject).append(localbt.a() + "|");
-    ((StringBuilder)localObject).append(paramBoolean + "|");
+    paramString = new StringBuilder();
+    paramString.append(localbt.c);
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append(localbt.a());
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
+    paramString = new StringBuilder();
+    paramString.append(paramBoolean);
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append("0|");
     ((StringBuilder)localObject).append("0|");
     paramString = a(localbt.b());
-    ((StringBuilder)localObject).append(paramString + "|");
-    ((StringBuilder)localObject).append(dg.a(localbt.a, "yyyy-MM-dd HH:mm:ss") + "|");
+    paramMap = new StringBuilder();
+    paramMap.append(paramString);
+    paramMap.append("|");
+    ((StringBuilder)localObject).append(paramMap.toString());
+    paramString = new StringBuilder();
+    paramString.append(dg.a(localbt.a, "yyyy-MM-dd HH:mm:ss"));
+    paramString.append("|");
+    ((StringBuilder)localObject).append(paramString.toString());
     ((StringBuilder)localObject).append("upload_time");
     return ((StringBuilder)localObject).toString();
   }

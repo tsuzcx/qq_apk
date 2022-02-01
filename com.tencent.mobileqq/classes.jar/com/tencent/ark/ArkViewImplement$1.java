@@ -10,12 +10,14 @@ class ArkViewImplement$1
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((this.this$0.mArkView == paramView) && (this.this$0.mImm != null) && (!paramBoolean)) {}
+    if (this.this$0.mArkView == paramView) {
+      paramView = this.this$0.mImm;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkViewImplement.1
  * JD-Core Version:    0.7.0.1
  */

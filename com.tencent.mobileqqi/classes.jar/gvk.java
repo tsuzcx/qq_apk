@@ -1,29 +1,68 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.TroopBarPageEntity;
 import com.tencent.mobileqq.troop.data.TroopBarPostLayoutBanner;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import mqq.util.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class gvk
-  implements Runnable
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public gvk(TroopBarPostLayoutBanner paramTroopBarPostLayoutBanner, View paramView) {}
+  public gvk(TroopBarPostLayoutBanner paramTroopBarPostLayoutBanner) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidViewView.getContext();
-    Object localObject1 = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((!(localObject2 instanceof BaseActivity)) || (!(localObject1 instanceof View))) {
-      return;
+    switch (paramInt)
+    {
     }
-    localObject1 = (TroopBarPageEntity)((View)localObject1).getTag(2131230860);
-    localObject2 = (BaseActivity)localObject2;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("bid", ((TroopBarPageEntity)localObject1).id);
-    localBundle.putString("op", "1");
-    TroopBarUtils.a((BaseActivity)localObject2, localBundle, "http://xiaoqu.qq.com/cgi-bin/bar/user/fbar", 2, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPostLayoutBanner.a);
-    TroopBarUtils.a("Clk_focus", ((TroopBarPageEntity)localObject1).id, "");
+    Object localObject;
+    label86:
+    do
+    {
+      Intent localIntent;
+      do
+      {
+        return;
+        localIntent = new Intent("refresh_page");
+        localObject = "hide_loading";
+        paramBundle = (Bundle)localObject;
+        if (paramJSONObject != null) {
+          paramBundle = (Bundle)localObject;
+        }
+        try
+        {
+          JSONObject localJSONObject = paramJSONObject.getJSONObject("level");
+          paramBundle = (Bundle)localObject;
+          if (localJSONObject != null)
+          {
+            paramJSONObject = "sign_in";
+            paramBundle = paramJSONObject;
+            localIntent.putExtra("broadcast_data", localJSONObject.toString());
+            paramBundle = paramJSONObject;
+          }
+        }
+        catch (JSONException paramJSONObject)
+        {
+          break label86;
+        }
+        localIntent.putExtra("sub_action", paramBundle);
+      } while (this.a.a.get() == null);
+      ((Activity)this.a.a.get()).sendBroadcast(localIntent);
+      return;
+      paramBundle = "hide_loading";
+      if (TroopBarUtils.a(paramJSONObject, "errno") == 0) {
+        paramBundle = "follow";
+      }
+      localObject = new Intent("refresh_page");
+      ((Intent)localObject).putExtra("sub_action", paramBundle);
+      if (paramJSONObject != null) {
+        ((Intent)localObject).putExtra("broadcast_data", paramJSONObject.toString());
+      }
+    } while (this.a.a.get() == null);
+    ((Activity)this.a.a.get()).sendBroadcast((Intent)localObject);
   }
 }
 

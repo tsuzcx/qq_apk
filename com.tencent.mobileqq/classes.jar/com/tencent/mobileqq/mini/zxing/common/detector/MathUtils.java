@@ -6,6 +6,10 @@ public final class MathUtils
   {
     double d1 = paramFloat1 - paramFloat3;
     double d2 = paramFloat2 - paramFloat4;
+    Double.isNaN(d1);
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    Double.isNaN(d2);
     return (float)Math.sqrt(d1 * d1 + d2 * d2);
   }
   
@@ -13,21 +17,28 @@ public final class MathUtils
   {
     double d1 = paramInt1 - paramInt3;
     double d2 = paramInt2 - paramInt4;
+    Double.isNaN(d1);
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    Double.isNaN(d2);
     return (float)Math.sqrt(d1 * d1 + d2 * d2);
   }
   
   public static int round(float paramFloat)
   {
-    if (paramFloat < 0.0F) {}
-    for (float f = -0.5F;; f = 0.5F) {
-      return (int)(f + paramFloat);
+    float f;
+    if (paramFloat < 0.0F) {
+      f = -0.5F;
+    } else {
+      f = 0.5F;
     }
+    return (int)(paramFloat + f);
   }
   
   public static int sum(int[] paramArrayOfInt)
   {
-    int i = 0;
     int k = paramArrayOfInt.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -39,7 +50,7 @@ public final class MathUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.common.detector.MathUtils
  * JD-Core Version:    0.7.0.1
  */

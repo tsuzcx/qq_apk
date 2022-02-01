@@ -7,12 +7,12 @@ class LoginInfoActivity$4
   
   public void run()
   {
-    LoginInfoActivity.c(this.this$0);
+    LoginInfoActivity.access$1600(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.4
  * JD-Core Version:    0.7.0.1
  */

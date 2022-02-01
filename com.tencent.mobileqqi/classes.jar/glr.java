@@ -1,17 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class glr
-  extends TimerTask
+public class glr
+  implements Runnable
 {
-  glr(glq paramglq) {}
+  public glr(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "LoopCycleGetMessage.startGetMsg: start get msg");
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("unread_friend_system_msg", this.jdField_a_of_type_Int).commit();
     }
-    glq.a(this.a, false);
   }
 }
 

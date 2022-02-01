@@ -1,34 +1,30 @@
 package com.tencent.mobileqq.matchchat;
 
-import android.graphics.Rect;
-import android.view.TouchDelegate;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.qqexpand.utils.IExpandReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class MatchChatMsgListFragment$5
-  implements Runnable
+class MatchChatMsgListFragment$5
+  implements View.OnClickListener
 {
-  public void run()
+  MatchChatMsgListFragment$5(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
-    }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
-    }
+    ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("click#message_page#go_setting", true, -1L, -1L, null, true, true);
+    AllInOne localAllInOne = new AllInOne(this.a.a.getCurrentAccountUin(), 0);
+    ProfileActivity.a(this.a.getActivity(), localAllInOne, 1031);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatMsgListFragment.5
  * JD-Core Version:    0.7.0.1
  */

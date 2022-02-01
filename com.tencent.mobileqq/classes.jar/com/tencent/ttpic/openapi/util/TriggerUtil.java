@@ -6,7 +6,6 @@ import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.model.StickerItem.TriggerArea;
@@ -14,6 +13,7 @@ import com.tencent.ttpic.util.youtu.bodydetector.BodyDetectResult;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.light.device.LightDeviceUtils;
 
 public class TriggerUtil
 {
@@ -24,58 +24,71 @@ public class TriggerUtil
   
   private static float calAngle(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3)
   {
-    float f1 = 0.0F;
-    float f2 = paramPointF2.x - paramPointF1.x;
-    float f3 = paramPointF2.y - paramPointF1.y;
-    float f4 = paramPointF3.x - paramPointF1.x;
-    float f5 = paramPointF3.y - paramPointF1.y;
-    float f6 = (f2 * f2 + f3 * f3) * (f4 * f4 + f5 * f5);
-    if (f6 == 0.0F) {}
-    do
-    {
-      do
-      {
-        return f1;
-        f2 = (float)((f2 * f4 + f3 * f5) / Math.sqrt(f6));
-      } while (f2 >= 1.0D);
-      if (f2 <= -1.0D) {
-        return 180.0F;
-      }
-      f2 = (float)Math.acos(f2) / 3.141593F * 180.0F;
-      f1 = f2;
-    } while (f2 <= 180.0D);
-    return 360.0F - f2;
+    float f1 = paramPointF2.x - paramPointF1.x;
+    float f2 = paramPointF2.y - paramPointF1.y;
+    float f3 = paramPointF3.x - paramPointF1.x;
+    float f4 = paramPointF3.y - paramPointF1.y;
+    float f5 = (f1 * f1 + f2 * f2) * (f3 * f3 + f4 * f4);
+    if (f5 == 0.0F) {
+      return 0.0F;
+    }
+    double d1 = f1 * f3 + f2 * f4;
+    double d2 = Math.sqrt(f5);
+    Double.isNaN(d1);
+    d1 = (float)(d1 / d2);
+    if (d1 >= 1.0D) {
+      return 0.0F;
+    }
+    if (d1 <= -1.0D) {
+      return 180.0F;
+    }
+    f2 = (float)Math.acos(d1) / 3.141593F * 180.0F;
+    f1 = f2;
+    if (f2 > 180.0D) {
+      f1 = 360.0F - f2;
+    }
+    return f1;
   }
   
   private static boolean hasOverlay(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
   {
-    boolean bool = true;
-    if ((paramPointF1 == null) || (paramPointF2 == null) || (paramPointF3 == null) || (paramPointF4 == null)) {
-      bool = false;
-    }
-    label101:
-    label105:
-    for (;;)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramPointF1 != null)
     {
-      return bool;
-      int i;
-      if (Math.max(paramPointF1.x, paramPointF3.x) <= Math.min(paramPointF2.x, paramPointF4.x))
+      bool1 = bool2;
+      if (paramPointF2 != null)
       {
-        i = 1;
-        if (Math.max(paramPointF1.y, paramPointF3.y) > Math.min(paramPointF2.y, paramPointF4.y)) {
-          break label101;
+        bool1 = bool2;
+        if (paramPointF3 != null)
+        {
+          if (paramPointF4 == null) {
+            return false;
+          }
+          int i;
+          if (Math.max(paramPointF1.x, paramPointF3.x) <= Math.min(paramPointF2.x, paramPointF4.x)) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          int j;
+          if (Math.max(paramPointF1.y, paramPointF3.y) <= Math.min(paramPointF2.y, paramPointF4.y)) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          bool1 = bool2;
+          if (i != 0)
+          {
+            bool1 = bool2;
+            if (j != 0) {
+              bool1 = true;
+            }
+          }
         }
-      }
-      for (int j = 1;; j = 0)
-      {
-        if ((i != 0) && (j != 0)) {
-          break label105;
-        }
-        return false;
-        i = 0;
-        break;
       }
     }
+    return bool1;
   }
   
   private static boolean isAllFingerTriggered(List<PointF> paramList, float paramFloat)
@@ -93,64 +106,59 @@ public class TriggerUtil
   
   private static boolean isFinger4Point(float paramFloat, int paramInt, PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
   {
-    float f3;
-    float f2;
-    float f1;
     if (paramFloat >= 0.0F)
     {
-      paramFloat = calAngle(paramPointF1, paramPointF2, paramPointF3);
-      f3 = calAngle(paramPointF1, paramPointF3, paramPointF4);
-      f2 = calAngle(paramPointF2, paramPointF3, paramPointF4);
-      f1 = calAngle(paramPointF1, paramPointF2, paramPointF4);
-      if (0.0F >= paramFloat) {
-        break label113;
+      float f1 = calAngle(paramPointF1, paramPointF2, paramPointF3);
+      float f4 = calAngle(paramPointF1, paramPointF3, paramPointF4);
+      float f3 = calAngle(paramPointF2, paramPointF3, paramPointF4);
+      float f2 = calAngle(paramPointF1, paramPointF2, paramPointF4);
+      if (0.0F >= f1) {
+        f1 = 0.0F;
       }
-    }
-    for (;;)
-    {
+      paramFloat = f1;
+      if (f1 < f4) {
+        paramFloat = f4;
+      }
+      f1 = paramFloat;
       if (paramFloat < f3) {
-        paramFloat = f3;
+        f1 = f3;
       }
-      for (;;)
-      {
-        if (paramFloat < f2) {
-          paramFloat = f2;
-        }
-        for (;;)
-        {
-          if (paramFloat < f1) {
-            paramFloat = f1;
-          }
-          for (;;)
-          {
-            if ((paramInt == 2) && (paramFloat > 10.0F)) {}
-            while (paramFloat > 20.0F) {
-              return true;
-            }
-            return false;
-            return false;
-          }
-        }
+      paramFloat = f1;
+      if (f1 < f2) {
+        paramFloat = f2;
       }
-      label113:
-      paramFloat = 0.0F;
+      if ((paramInt == 2) && (paramFloat > 10.0F)) {
+        return true;
+      }
+      return paramFloat > 20.0F;
     }
+    return false;
   }
   
   private static boolean isFingerTriggerd(int paramInt, PTHandAttr paramPTHandAttr)
   {
-    if ((paramPTHandAttr == null) || (paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() == 0)) {}
-    do
+    if ((paramPTHandAttr != null) && (paramPTHandAttr.getHandPointList() != null))
     {
-      do
-      {
+      if (paramPTHandAttr.getHandPointList().size() == 0) {
         return false;
-      } while ((!isHandBoxValid(paramPTHandAttr)) || (isHandBoxLeftOutOfRange(paramPTHandAttr)) || (isHandBoxRightOutOfRange(paramPTHandAttr)));
-      if (paramInt == 0) {
-        return isAllFingerTriggered(paramPTHandAttr.getHandPointList(), paramPTHandAttr.getConfidence());
       }
-    } while ((paramInt <= 0) || (paramInt > 5));
-    return isSingleFingerTriggered(paramInt, paramPTHandAttr.getHandPointList(), paramPTHandAttr.getConfidence());
+      if (!isHandBoxValid(paramPTHandAttr)) {
+        return false;
+      }
+      if (!isHandBoxLeftOutOfRange(paramPTHandAttr))
+      {
+        if (isHandBoxRightOutOfRange(paramPTHandAttr)) {
+          return false;
+        }
+        if (paramInt == 0) {
+          return isAllFingerTriggered(paramPTHandAttr.getHandPointList(), paramPTHandAttr.getConfidence());
+        }
+        if ((paramInt > 0) && (paramInt <= 5)) {
+          return isSingleFingerTriggered(paramInt, paramPTHandAttr.getHandPointList(), paramPTHandAttr.getConfidence());
+        }
+      }
+    }
+    return false;
   }
   
   public static boolean isGestureTriggered(PTHandAttr paramPTHandAttr, int paramInt)
@@ -160,89 +168,120 @@ public class TriggerUtil
   
   public static boolean isGestureTriggered(PTHandAttr paramPTHandAttr, int paramInt1, int paramInt2, int paramInt3, ArrayList<StickerItem.TriggerArea> paramArrayList, AIAttr paramAIAttr)
   {
-    if (paramPTHandAttr == null) {}
-    label57:
-    do
-    {
-      for (;;)
-      {
-        return false;
-        if ((paramArrayList != null) && (paramArrayList.size() > 0)) {}
-        for (int i = 1; (i == 0) || (isHotAreaTriggered(paramAIAttr, paramInt2, paramArrayList)); i = 0)
-        {
-          if (paramInt1 != 220) {
-            break label57;
-          }
-          return isFingerTriggerd(paramInt3, paramPTHandAttr);
-        }
-      }
-    } while (((200 > paramInt1) || (paramInt1 > 212) || (paramPTHandAttr.getHandType() != paramInt1)) && ((paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() == 0) || (paramInt1 != 200)) && (paramInt1 != PTFaceAttr.PTExpression.ALWAYS.value));
-    return true;
+    if (paramPTHandAttr == null) {
+      return false;
+    }
+    int i;
+    if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (!isHotAreaTriggered(paramAIAttr, paramInt2, paramArrayList))) {
+      return false;
+    }
+    if (paramInt1 == 220) {
+      return isFingerTriggerd(paramInt3, paramPTHandAttr);
+    }
+    return ((200 <= paramInt1) && (paramInt1 <= 214) && (paramPTHandAttr.getHandType() == paramInt1)) || ((paramPTHandAttr.getHandPointList() != null) && (paramPTHandAttr.getHandPointList().size() != 0) && (paramInt1 == 200)) || (paramInt1 == PTFaceAttr.PTExpression.ALWAYS.value);
   }
   
   private static boolean isHandBoxLeftOutOfRange(PTHandAttr paramPTHandAttr)
   {
-    if ((paramPTHandAttr == null) || (paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() < 30)) {
-      return false;
-    }
-    float f2 = ((PointF)paramPTHandAttr.getHandPointList().get(1)).x;
-    float f1 = 10000.0F;
-    int i = 9;
-    if (i < 30)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramPTHandAttr != null)
     {
-      if (((PointF)paramPTHandAttr.getHandPointList().get(i)).x >= f1) {
-        break label114;
+      bool1 = bool2;
+      if (paramPTHandAttr.getHandPointList() != null)
+      {
+        if (paramPTHandAttr.getHandPointList().size() < 30) {
+          return false;
+        }
+        float f3 = ((PointF)paramPTHandAttr.getHandPointList().get(1)).x;
+        int i = 9;
+        float f2;
+        for (float f1 = 10000.0F; i < 30; f1 = f2)
+        {
+          f2 = f1;
+          if (((PointF)paramPTHandAttr.getHandPointList().get(i)).x < f1) {
+            f2 = ((PointF)paramPTHandAttr.getHandPointList().get(i)).x;
+          }
+          i += 1;
+        }
+        bool1 = bool2;
+        if (f1 - f3 < 5.0F) {
+          bool1 = true;
+        }
       }
-      f1 = ((PointF)paramPTHandAttr.getHandPointList().get(i)).x;
     }
-    label114:
-    for (;;)
-    {
-      i += 1;
-      break;
-      return f1 - f2 < 5.0F;
-    }
+    return bool1;
   }
   
   private static boolean isHandBoxRightOutOfRange(PTHandAttr paramPTHandAttr)
   {
-    if ((paramPTHandAttr == null) || (paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() < 30)) {
-      return false;
-    }
-    float f2 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).x;
-    float f1 = 0.0F;
-    int i = 9;
-    if (i < 30)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramPTHandAttr != null)
     {
-      if (((PointF)paramPTHandAttr.getHandPointList().get(i)).x <= f1) {
-        break label114;
+      bool1 = bool2;
+      if (paramPTHandAttr.getHandPointList() != null)
+      {
+        if (paramPTHandAttr.getHandPointList().size() < 30) {
+          return false;
+        }
+        float f3 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).x;
+        int i = 9;
+        float f2;
+        for (float f1 = 0.0F; i < 30; f1 = f2)
+        {
+          f2 = f1;
+          if (((PointF)paramPTHandAttr.getHandPointList().get(i)).x > f1) {
+            f2 = ((PointF)paramPTHandAttr.getHandPointList().get(i)).x;
+          }
+          i += 1;
+        }
+        bool1 = bool2;
+        if (f3 - f1 < 5.0F) {
+          bool1 = true;
+        }
       }
-      f1 = ((PointF)paramPTHandAttr.getHandPointList().get(i)).x;
     }
-    label114:
-    for (;;)
-    {
-      i += 1;
-      break;
-      return f2 - f1 < 5.0F;
-    }
+    return bool1;
   }
   
   private static boolean isHandBoxValid(PTHandAttr paramPTHandAttr)
   {
-    if ((paramPTHandAttr == null) || (paramPTHandAttr.getHandPointList() == null) || (paramPTHandAttr.getHandPointList().size() < 30)) {}
-    float f1;
-    float f2;
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramPTHandAttr != null)
     {
-      return false;
-      f1 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).x - ((PointF)paramPTHandAttr.getHandPointList().get(1)).x;
-      f2 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).y - ((PointF)paramPTHandAttr.getHandPointList().get(1)).y;
-    } while ((f1 <= 0.01F) || (f2 <= 0.01F));
-    if ((f1 / f2 >= 0.5F) && (f2 / f1 >= 0.5F)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+      bool1 = bool2;
+      if (paramPTHandAttr.getHandPointList() != null)
+      {
+        if (paramPTHandAttr.getHandPointList().size() < 30) {
+          return false;
+        }
+        float f1 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).x - ((PointF)paramPTHandAttr.getHandPointList().get(1)).x;
+        float f2 = ((PointF)paramPTHandAttr.getHandPointList().get(8)).y - ((PointF)paramPTHandAttr.getHandPointList().get(1)).y;
+        bool1 = bool2;
+        if (f1 > 0.01F)
+        {
+          if (f2 <= 0.01F) {
+            return false;
+          }
+          bool1 = bool2;
+          if (f1 / f2 >= 0.5F)
+          {
+            bool1 = bool2;
+            if (f2 / f1 >= 0.5F) {
+              bool1 = true;
+            }
+          }
+        }
+      }
     }
+    return bool1;
   }
   
   private static boolean isHotAreaTriggered(AIAttr paramAIAttr, int paramInt, ArrayList<StickerItem.TriggerArea> paramArrayList)
@@ -253,305 +292,287 @@ public class TriggerUtil
     if (AEModule.getContext() == null) {
       return false;
     }
-    DeviceUtils.getScreenWidth(AEModule.getContext());
-    DeviceUtils.getScreenHeight(AEModule.getContext());
-    Object localObject1 = null;
-    Object localObject2;
+    LightDeviceUtils.getScreenWidth(AEModule.getContext());
+    LightDeviceUtils.getScreenHeight(AEModule.getContext());
+    Object localObject1;
     PTFaceAttr localPTFaceAttr;
+    List localList;
     if (paramAIAttr != null)
     {
-      localObject2 = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
+      localObject1 = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
       localPTFaceAttr = (PTFaceAttr)paramAIAttr.getAvailableData(AEDetectorType.FACE.value);
-      localObject1 = (List)paramAIAttr.getAvailableData(AEDetectorType.BODY.value);
-      paramAIAttr = (AIAttr)localObject2;
+      localList = (List)paramAIAttr.getAvailableData(AEDetectorType.BODY.value);
+      paramAIAttr = (AIAttr)localObject1;
     }
-    for (;;)
+    else
     {
+      localList = null;
+      paramAIAttr = null;
+      localPTFaceAttr = null;
+    }
+    if (paramAIAttr == null) {
+      return false;
+    }
+    int i = paramAIAttr.getDetectWidth();
+    int j = paramAIAttr.getDetectHeight();
+    if (i != 0)
+    {
+      if (j == 0) {
+        return false;
+      }
+      paramAIAttr = paramAIAttr.getHandPointList();
+      if ((paramAIAttr != null) && (paramInt >= 0) && (paramInt < paramAIAttr.size())) {
+        paramAIAttr = (PointF)paramAIAttr.get(paramInt);
+      } else {
+        paramAIAttr = null;
+      }
       if (paramAIAttr == null) {
         return false;
       }
-      int i = paramAIAttr.getDetectWidth();
-      int j = paramAIAttr.getDetectHeight();
-      if ((i == 0) || (j == 0)) {
-        return false;
-      }
-      Object localObject3 = paramAIAttr.getHandPointList();
-      localObject2 = null;
-      paramAIAttr = (AIAttr)localObject2;
-      if (localObject3 != null)
-      {
-        paramAIAttr = (AIAttr)localObject2;
-        if (paramInt >= 0)
-        {
-          paramAIAttr = (AIAttr)localObject2;
-          if (paramInt < ((List)localObject3).size()) {
-            paramAIAttr = (PointF)((List)localObject3).get(paramInt);
-          }
-        }
-      }
-      if (paramAIAttr == null) {
-        return false;
-      }
-      Iterator localIterator;
       if (paramArrayList != null)
       {
-        localObject2 = new PointF(paramAIAttr.x / i, paramAIAttr.y / j);
-        localObject3 = new PointF(paramAIAttr.x / i, paramAIAttr.y / j);
-        localIterator = paramArrayList.iterator();
-      }
-      label1802:
-      label1807:
-      label1810:
-      for (;;)
-      {
-        StickerItem.TriggerArea localTriggerArea;
-        float f1;
-        float f2;
-        float f3;
-        float f4;
-        label346:
-        float f6;
-        float f5;
-        Object localObject4;
-        if (localIterator.hasNext())
+        float f2 = paramAIAttr.x;
+        float f1 = i;
+        f2 /= f1;
+        float f3 = paramAIAttr.y;
+        float f4 = j;
+        localObject1 = new PointF(f2, f3 / f4);
+        PointF localPointF1 = new PointF(paramAIAttr.x / f1, paramAIAttr.y / f4);
+        Iterator localIterator = paramArrayList.iterator();
+        while (localIterator.hasNext())
         {
-          localTriggerArea = (StickerItem.TriggerArea)localIterator.next();
-          if (localTriggerArea == null) {
-            continue;
-          }
-          if (localTriggerArea.type == 1)
+          paramArrayList = (StickerItem.TriggerArea)localIterator.next();
+          if (paramArrayList != null)
           {
-            if ((localTriggerArea.rect == null) || (localTriggerArea.rect.length < 4)) {
-              continue;
-            }
-            f1 = localTriggerArea.rect[0];
-            f2 = localTriggerArea.rect[1];
-            f3 = localTriggerArea.rect[2];
-            f4 = localTriggerArea.rect[3];
-            paramArrayList = new PointF(f1, f2);
-            paramAIAttr = new PointF(f1 + f3, f2 + f4);
-            Log.e("ykk", "handPointLt::" + localObject2);
-            Log.e("ykk", "handPointRB::" + localObject3);
-            Log.e("ykk", "triggerHotAreaLT::" + paramArrayList);
-            Log.e("ykk", "triggerHotAreaRB::" + paramAIAttr);
-            if (!hasOverlay((PointF)localObject2, (PointF)localObject3, paramArrayList, paramAIAttr)) {
-              continue;
-            }
-            Log.e("ykk", "hasOverlay");
-            return true;
-          }
-          if (localTriggerArea.type == 2)
-          {
-            if ((localPTFaceAttr == null) || (localPTFaceAttr.getFaceDetWidth() == 0) || (localPTFaceAttr.getFaceDetHeight() == 0) || (localTriggerArea.rect == null) || (localTriggerArea.anchorPoint == null) || (localTriggerArea.anchorPoint.length < 1) || (localTriggerArea.rect.length < 4)) {
-              continue;
-            }
-            paramAIAttr = localPTFaceAttr.getAllFacePoints();
-            if ((paramAIAttr == null) || (paramAIAttr.size() <= 0)) {
-              continue;
-            }
-            paramArrayList = (List)paramAIAttr.get(0);
-            if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-              continue;
-            }
-            f1 = ((PointF)paramArrayList.get(0)).x;
-            f2 = ((PointF)paramArrayList.get(0)).x;
-            f3 = ((PointF)paramArrayList.get(0)).y;
-            f4 = ((PointF)paramArrayList.get(0)).y;
-            paramAIAttr = paramArrayList.iterator();
-            f6 = f1;
-            f5 = f2;
-            f2 = f3;
-            for (f1 = f4; paramAIAttr.hasNext(); f1 = Math.max(f1, ((PointF)localObject4).y))
+            if (paramArrayList.type == 1)
             {
-              localObject4 = (PointF)paramAIAttr.next();
-              f6 = Math.min(f6, ((PointF)localObject4).x);
-              f5 = Math.max(f5, ((PointF)localObject4).x);
-              f2 = Math.min(f2, ((PointF)localObject4).y);
-            }
-            f3 = f5 - f6;
-            f1 -= f2;
-            if (paramArrayList == null) {
-              break label1802;
-            }
-            if (localTriggerArea.anchorPoint.length == 1)
-            {
-              paramInt = localTriggerArea.anchorPoint[0];
-              if ((paramInt < 0) || (paramInt >= paramArrayList.size())) {
-                break label1807;
+              if ((paramArrayList.rect == null) || (paramArrayList.rect.length < 4)) {
+                continue;
               }
-              paramAIAttr = (PointF)paramArrayList.get(paramInt);
+              f1 = paramArrayList.rect[0];
+              f2 = paramArrayList.rect[1];
+              f3 = paramArrayList.rect[2];
+              f4 = paramArrayList.rect[3];
+              paramAIAttr = new PointF(f1, f2);
+              paramArrayList = new PointF(f3 + f1, f4 + f2);
             }
-          }
-        }
-        for (;;)
-        {
-          label787:
-          if (paramAIAttr == null) {
-            break label1810;
-          }
-          i = localPTFaceAttr.getFaceDetRotation();
-          if ((i == 90) || (i == 270))
-          {
-            paramInt = localPTFaceAttr.getFaceDetHeight();
-            label819:
-            if ((i != 90) && (i != 270)) {
-              break label1118;
-            }
-          }
-          label1118:
-          for (i = localPTFaceAttr.getFaceDetWidth();; i = localPTFaceAttr.getFaceDetHeight())
-          {
-            paramAIAttr.x /= paramInt;
-            paramAIAttr.y /= i;
-            f2 = paramAIAttr.x + localTriggerArea.rect[0] * f3 / paramInt;
-            f4 = paramAIAttr.y + localTriggerArea.rect[1] * f1 / i;
-            f3 = f3 * localTriggerArea.rect[2] / paramInt;
-            f1 = localTriggerArea.rect[3] * f1 / i;
-            paramArrayList = new PointF(f2, f4);
-            paramAIAttr = new PointF(f3 + f2, f4 + f1);
-            break;
-            if (localTriggerArea.anchorPoint.length != 2) {
-              break label1802;
-            }
-            paramInt = localTriggerArea.anchorPoint[0];
-            i = localTriggerArea.anchorPoint[1];
-            if ((paramInt < 0) || (paramInt >= paramArrayList.size()) || (i < 0) || (i >= paramArrayList.size())) {
-              break label1802;
-            }
-            paramAIAttr = new PointF();
-            f2 = ((PointF)paramArrayList.get(paramInt)).x;
-            paramAIAttr.x = ((((PointF)paramArrayList.get(i)).x + f2) / 2.0F);
-            f2 = ((PointF)paramArrayList.get(paramInt)).y;
-            paramAIAttr.y = ((((PointF)paramArrayList.get(i)).y + f2) / 2.0F);
-            break label787;
-            paramInt = localPTFaceAttr.getFaceDetWidth();
-            break label819;
-          }
-          if (localTriggerArea.type == 5)
-          {
-            if ((localObject1 == null) || (((List)localObject1).size() <= 0) || (localTriggerArea.rect == null) || (localTriggerArea.anchorPoint == null)) {
-              break;
-            }
-            localObject4 = (BodyDetectResult)((List)localObject1).get(0);
-            if ((localObject4 == null) || (((BodyDetectResult)localObject4).bodyPoints == null) || (((BodyDetectResult)localObject4).bodyPoints.size() <= 0) || (((BodyDetectResult)localObject4).detectWidth == 0) || (((BodyDetectResult)localObject4).detectHeight == 0)) {
-              break;
-            }
-            f1 = ((PointF)((BodyDetectResult)localObject4).bodyPoints.get(0)).x;
-            f2 = ((PointF)((BodyDetectResult)localObject4).bodyPoints.get(0)).x;
-            f3 = ((PointF)((BodyDetectResult)localObject4).bodyPoints.get(0)).y;
-            f4 = ((PointF)((BodyDetectResult)localObject4).bodyPoints.get(0)).y;
-            paramAIAttr = ((BodyDetectResult)localObject4).bodyPoints.iterator();
-            f6 = f1;
-            f5 = f2;
-            f2 = f3;
-            for (f1 = f4; paramAIAttr.hasNext(); f1 = Math.max(f1, paramArrayList.y))
+            else
             {
-              paramArrayList = (PointF)paramAIAttr.next();
-              f6 = Math.min(f6, paramArrayList.x);
-              f5 = Math.max(f5, paramArrayList.x);
-              f2 = Math.min(f2, paramArrayList.y);
-            }
-            f3 = f5 - f6;
-            f1 -= f2;
-            paramArrayList = null;
-            paramAIAttr = paramArrayList;
-            if (((BodyDetectResult)localObject4).bodyPoints != null)
-            {
-              if (localTriggerArea.anchorPoint.length != 1) {
-                break label1615;
-              }
-              paramInt = localTriggerArea.anchorPoint[0];
-              paramAIAttr = paramArrayList;
-              if (paramInt >= 0)
+              PointF localPointF2;
+              if (paramArrayList.type == 2)
               {
-                paramAIAttr = paramArrayList;
-                if (paramInt < ((BodyDetectResult)localObject4).bodyPoints.size()) {
-                  paramAIAttr = (PointF)((BodyDetectResult)localObject4).bodyPoints.get(paramInt);
+                if ((localPTFaceAttr == null) || (localPTFaceAttr.getFaceDetWidth() == 0) || (localPTFaceAttr.getFaceDetHeight() == 0) || (paramArrayList.rect == null) || (paramArrayList.anchorPoint == null) || (paramArrayList.anchorPoint.length < 1) || (paramArrayList.rect.length < 4)) {
+                  continue;
                 }
-              }
-            }
-            for (;;)
-            {
-              if (paramAIAttr == null) {
-                break label1791;
-              }
-              paramAIAttr.x /= ((BodyDetectResult)localObject4).detectWidth;
-              paramAIAttr.y /= ((BodyDetectResult)localObject4).detectHeight;
-              f2 = paramAIAttr.x + localTriggerArea.rect[0] * f3 / ((BodyDetectResult)localObject4).detectWidth;
-              f4 = paramAIAttr.y + localTriggerArea.rect[1] * f1 / ((BodyDetectResult)localObject4).detectHeight;
-              f3 = f3 * localTriggerArea.rect[2] / ((BodyDetectResult)localObject4).detectWidth;
-              f1 = localTriggerArea.rect[3] * f1 / ((BodyDetectResult)localObject4).detectWidth;
-              paramArrayList = new PointF(f2, f4);
-              paramAIAttr = new PointF(f3 + f2, f4 + f1);
-              break;
-              label1615:
-              paramAIAttr = paramArrayList;
-              if (localTriggerArea.anchorPoint.length == 2)
-              {
-                paramInt = localTriggerArea.anchorPoint[0];
-                i = localTriggerArea.anchorPoint[1];
-                paramAIAttr = paramArrayList;
-                if (paramInt >= 0)
+                paramAIAttr = localPTFaceAttr.getAllFacePoints();
+                if ((paramAIAttr == null) || (paramAIAttr.size() <= 0)) {
+                  continue;
+                }
+                localObject2 = (List)paramAIAttr.get(0);
+                if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
+                  continue;
+                }
+                f4 = ((PointF)((List)localObject2).get(0)).x;
+                f3 = ((PointF)((List)localObject2).get(0)).x;
+                f1 = ((PointF)((List)localObject2).get(0)).y;
+                f2 = ((PointF)((List)localObject2).get(0)).y;
+                paramAIAttr = ((List)localObject2).iterator();
+                while (paramAIAttr.hasNext())
                 {
-                  paramAIAttr = paramArrayList;
-                  if (paramInt < ((BodyDetectResult)localObject4).bodyPoints.size())
+                  localPointF2 = (PointF)paramAIAttr.next();
+                  f4 = Math.min(f4, localPointF2.x);
+                  f3 = Math.max(f3, localPointF2.x);
+                  f1 = Math.min(f1, localPointF2.y);
+                  f2 = Math.max(f2, localPointF2.y);
+                }
+                f3 -= f4;
+                f1 = f2 - f1;
+                if (localObject2 != null)
+                {
+                  if (paramArrayList.anchorPoint.length == 1)
                   {
-                    paramAIAttr = paramArrayList;
-                    if (i >= 0)
+                    paramInt = paramArrayList.anchorPoint[0];
+                    if ((paramInt >= 0) && (paramInt < ((List)localObject2).size())) {
+                      paramAIAttr = (PointF)((List)localObject2).get(paramInt);
+                    } else {
+                      paramAIAttr = null;
+                    }
+                    break label835;
+                  }
+                  if (paramArrayList.anchorPoint.length == 2)
+                  {
+                    paramInt = paramArrayList.anchorPoint[0];
+                    i = paramArrayList.anchorPoint[1];
+                    if ((paramInt >= 0) && (paramInt < ((List)localObject2).size()) && (i >= 0) && (i < ((List)localObject2).size()))
                     {
-                      paramAIAttr = paramArrayList;
-                      if (i < ((BodyDetectResult)localObject4).bodyPoints.size())
-                      {
-                        paramAIAttr = new PointF();
-                        f2 = ((PointF)((BodyDetectResult)localObject4).bodyPoints.get(paramInt)).x;
-                        paramAIAttr.x = ((((PointF)((BodyDetectResult)localObject4).bodyPoints.get(i)).x + f2) / 2.0F);
-                        f2 = ((PointF)((BodyDetectResult)localObject4).bodyPoints.get(paramInt)).y;
-                        paramAIAttr.y = ((((PointF)((BodyDetectResult)localObject4).bodyPoints.get(i)).y + f2) / 2.0F);
-                      }
+                      paramAIAttr = new PointF();
+                      paramAIAttr.x = ((((PointF)((List)localObject2).get(paramInt)).x + ((PointF)((List)localObject2).get(i)).x) / 2.0F);
+                      paramAIAttr.y = ((((PointF)((List)localObject2).get(paramInt)).y + ((PointF)((List)localObject2).get(i)).y) / 2.0F);
+                      break label835;
                     }
                   }
                 }
+                paramAIAttr = null;
+                label835:
+                if (paramAIAttr == null) {
+                  continue;
+                }
+                i = localPTFaceAttr.getFaceDetRotation();
+                if ((i != 90) && (i != 270)) {
+                  paramInt = localPTFaceAttr.getFaceDetWidth();
+                } else {
+                  paramInt = localPTFaceAttr.getFaceDetHeight();
+                }
+                if ((i != 90) && (i != 270)) {
+                  i = localPTFaceAttr.getFaceDetHeight();
+                } else {
+                  i = localPTFaceAttr.getFaceDetWidth();
+                }
+                f4 = paramAIAttr.x;
+                f2 = paramInt;
+                paramAIAttr.x = (f4 / f2);
+                float f5 = paramAIAttr.y;
+                f4 = i;
+                paramAIAttr.y = (f5 / f4);
+                f5 = paramAIAttr.x + paramArrayList.rect[0] * f3 / f2;
+                float f6 = paramAIAttr.y + paramArrayList.rect[1] * f1 / f4;
+                f2 = paramArrayList.rect[2] * f3 / f2;
+                f1 = paramArrayList.rect[3] * f1 / f4;
+                paramAIAttr = new PointF(f5, f6);
+                paramArrayList = new PointF(f2 + f5, f1 + f6);
+              }
+              else if (paramArrayList.type == 5)
+              {
+                if ((localList == null) || (localList.size() <= 0) || (paramArrayList.rect == null) || (paramArrayList.anchorPoint == null)) {
+                  continue;
+                }
+                localObject2 = (BodyDetectResult)localList.get(0);
+                if ((localObject2 == null) || (((BodyDetectResult)localObject2).bodyPoints == null) || (((BodyDetectResult)localObject2).bodyPoints.size() <= 0) || (((BodyDetectResult)localObject2).detectWidth == 0) || (((BodyDetectResult)localObject2).detectHeight == 0)) {
+                  continue;
+                }
+                f4 = ((PointF)((BodyDetectResult)localObject2).bodyPoints.get(0)).x;
+                f3 = ((PointF)((BodyDetectResult)localObject2).bodyPoints.get(0)).x;
+                f2 = ((PointF)((BodyDetectResult)localObject2).bodyPoints.get(0)).y;
+                f1 = ((PointF)((BodyDetectResult)localObject2).bodyPoints.get(0)).y;
+                paramAIAttr = ((BodyDetectResult)localObject2).bodyPoints.iterator();
+                while (paramAIAttr.hasNext())
+                {
+                  localPointF2 = (PointF)paramAIAttr.next();
+                  f4 = Math.min(f4, localPointF2.x);
+                  f3 = Math.max(f3, localPointF2.x);
+                  f2 = Math.min(f2, localPointF2.y);
+                  f1 = Math.max(f1, localPointF2.y);
+                }
+                f3 -= f4;
+                f4 = f1 - f2;
+                if (((BodyDetectResult)localObject2).bodyPoints != null)
+                {
+                  if (paramArrayList.anchorPoint.length == 1)
+                  {
+                    paramInt = paramArrayList.anchorPoint[0];
+                    if ((paramInt >= 0) && (paramInt < ((BodyDetectResult)localObject2).bodyPoints.size())) {
+                      paramAIAttr = (PointF)((BodyDetectResult)localObject2).bodyPoints.get(paramInt);
+                    } else {
+                      paramAIAttr = null;
+                    }
+                    break label1550;
+                  }
+                  if (paramArrayList.anchorPoint.length == 2)
+                  {
+                    paramInt = paramArrayList.anchorPoint[0];
+                    i = paramArrayList.anchorPoint[1];
+                    if ((paramInt >= 0) && (paramInt < ((BodyDetectResult)localObject2).bodyPoints.size()) && (i >= 0) && (i < ((BodyDetectResult)localObject2).bodyPoints.size()))
+                    {
+                      paramAIAttr = new PointF();
+                      paramAIAttr.x = ((((PointF)((BodyDetectResult)localObject2).bodyPoints.get(paramInt)).x + ((PointF)((BodyDetectResult)localObject2).bodyPoints.get(i)).x) / 2.0F);
+                      paramAIAttr.y = ((((PointF)((BodyDetectResult)localObject2).bodyPoints.get(paramInt)).y + ((PointF)((BodyDetectResult)localObject2).bodyPoints.get(i)).y) / 2.0F);
+                      break label1550;
+                    }
+                  }
+                }
+                paramAIAttr = null;
+                label1550:
+                if (paramAIAttr == null) {
+                  continue;
+                }
+                paramAIAttr.x /= ((BodyDetectResult)localObject2).detectWidth;
+                paramAIAttr.y /= ((BodyDetectResult)localObject2).detectHeight;
+                f1 = paramAIAttr.x + paramArrayList.rect[0] * f3 / ((BodyDetectResult)localObject2).detectWidth;
+                f2 = paramAIAttr.y + paramArrayList.rect[1] * f4 / ((BodyDetectResult)localObject2).detectHeight;
+                f3 = paramArrayList.rect[2] * f3 / ((BodyDetectResult)localObject2).detectWidth;
+                f4 = paramArrayList.rect[3] * f4 / ((BodyDetectResult)localObject2).detectWidth;
+                paramAIAttr = new PointF(f1, f2);
+                paramArrayList = new PointF(f3 + f1, f4 + f2);
+              }
+              else
+              {
+                paramAIAttr = null;
+                paramArrayList = null;
               }
             }
-            label1791:
-            break;
-            return false;
+            Object localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("handPointLt::");
+            ((StringBuilder)localObject2).append(localObject1);
+            Log.e("ykk", ((StringBuilder)localObject2).toString());
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("handPointRB::");
+            ((StringBuilder)localObject2).append(localPointF1);
+            Log.e("ykk", ((StringBuilder)localObject2).toString());
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("triggerHotAreaLT::");
+            ((StringBuilder)localObject2).append(paramAIAttr);
+            Log.e("ykk", ((StringBuilder)localObject2).toString());
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("triggerHotAreaRB::");
+            ((StringBuilder)localObject2).append(paramArrayList);
+            Log.e("ykk", ((StringBuilder)localObject2).toString());
+            if (hasOverlay((PointF)localObject1, localPointF1, paramAIAttr, paramArrayList))
+            {
+              Log.e("ykk", "hasOverlay");
+              return true;
+            }
           }
-          paramAIAttr = null;
-          paramArrayList = null;
-          break label346;
-          paramAIAttr = null;
-          continue;
-          paramAIAttr = null;
         }
       }
-      localObject2 = null;
-      localPTFaceAttr = null;
-      paramAIAttr = (AIAttr)localObject1;
-      localObject1 = localObject2;
     }
+    return false;
   }
   
   private static boolean isSingleFingerTriggered(int paramInt, List<PointF> paramList, float paramFloat)
   {
-    if (paramList == null) {}
-    while ((paramList.size() < 30) || (paramInt < 1) || (paramInt > 5)) {
+    if (paramList == null) {
       return false;
     }
-    switch (paramInt)
+    if (paramList.size() < 30) {
+      return false;
+    }
+    if (paramInt >= 1)
     {
-    default: 
-      return false;
-    case 1: 
+      if (paramInt > 5) {
+        return false;
+      }
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5) {
+                return false;
+              }
+              return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(26), (PointF)paramList.get(27), (PointF)paramList.get(28), (PointF)paramList.get(29));
+            }
+            return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(22), (PointF)paramList.get(23), (PointF)paramList.get(24), (PointF)paramList.get(25));
+          }
+          return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(18), (PointF)paramList.get(19), (PointF)paramList.get(20), (PointF)paramList.get(21));
+        }
+        return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(14), (PointF)paramList.get(15), (PointF)paramList.get(16), (PointF)paramList.get(17));
+      }
       return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(10), (PointF)paramList.get(11), (PointF)paramList.get(12), (PointF)paramList.get(13));
-    case 2: 
-      return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(14), (PointF)paramList.get(15), (PointF)paramList.get(16), (PointF)paramList.get(17));
-    case 3: 
-      return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(18), (PointF)paramList.get(19), (PointF)paramList.get(20), (PointF)paramList.get(21));
-    case 4: 
-      return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(22), (PointF)paramList.get(23), (PointF)paramList.get(24), (PointF)paramList.get(25));
     }
-    return isFinger4Point(paramFloat, paramInt, (PointF)paramList.get(26), (PointF)paramList.get(27), (PointF)paramList.get(28), (PointF)paramList.get(29));
+    return false;
   }
   
   public static boolean isTouchAreaTriggered(ArrayList<StickerItem.TriggerArea> paramArrayList, PointF paramPointF)
@@ -566,13 +587,8 @@ public class TriggerUtil
     while (paramArrayList.hasNext())
     {
       float[] arrayOfFloat = ((StickerItem.TriggerArea)paramArrayList.next()).rect;
-      if ((arrayOfFloat != null) && (arrayOfFloat.length >= 4) && (arrayOfFloat[0] <= paramPointF.x) && (paramPointF.x <= arrayOfFloat[0] + arrayOfFloat[2]) && (arrayOfFloat[1] <= paramPointF.y))
-      {
-        float f1 = paramPointF.y;
-        float f2 = arrayOfFloat[1];
-        if (f1 <= arrayOfFloat[3] + f2) {
-          return true;
-        }
+      if ((arrayOfFloat != null) && (arrayOfFloat.length >= 4) && (arrayOfFloat[0] <= paramPointF.x) && (paramPointF.x <= arrayOfFloat[0] + arrayOfFloat[2]) && (arrayOfFloat[1] <= paramPointF.y) && (paramPointF.y <= arrayOfFloat[1] + arrayOfFloat[3])) {
+        return true;
       }
     }
     return false;
@@ -580,7 +596,7 @@ public class TriggerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.TriggerUtil
  * JD-Core Version:    0.7.0.1
  */

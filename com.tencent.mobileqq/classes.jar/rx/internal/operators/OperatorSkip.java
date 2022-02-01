@@ -10,10 +10,15 @@ public final class OperatorSkip<T>
   
   public OperatorSkip(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("n >= 0 required but it was " + paramInt);
+    if (paramInt >= 0)
+    {
+      this.toSkip = paramInt;
+      return;
     }
-    this.toSkip = paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n >= 0 required but it was ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public Subscriber<? super T> call(Subscriber<? super T> paramSubscriber)
@@ -23,7 +28,7 @@ public final class OperatorSkip<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorSkip
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.LinerLayoutForListViewItem android:orientation="vertical" android:id="@id/msgblistItem" android:background="@drawable/qzone_list_item_bg_selector" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@color/white" android:layout_width="@dimen/qzone_feed_width" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qzone_common_32dp" android:layout_marginTop="@dimen/qzone_common_32dp" android:layout_marginRight="@dimen/qzone_common_32dp" android:layout_marginBottom="@dimen/qzone_common_32dp">
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/qzone_common_16dp">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="horizontal" android:id="@id/commontAear" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <com.qzone.widget.AvatarImageView android:id="@id/commentImgUserIcon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="@dimen/qzone_common_16dp" android:src="@drawable/qzone_icon_default_avatar" qzone:avatarSize="40.0dip" />
+                        <TextView android:textSize="@dimen/feed_item_username_text_size" android:textColor="@color/black" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/commentAuthor" android:background="@drawable/qzone_commentlist_item_bg_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:marqueeRepeatLimit="1" />
+                        <ImageView android:id="@id/msgb_authorInfovip" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
+                    </LinearLayout>
+                    <TextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/qzone_feed_combtn" android:gravity="right" android:id="@id/commentReplyButton" android:paddingLeft="@dimen/dp3" android:paddingBottom="@dimen/dp12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="30.0dip" android:text="回复" android:singleLine="true" android:drawableLeft="@drawable/qzone_feed_icon_comment_small" android:drawablePadding="6.0dip" android:layout_alignParentRight="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:id="@id/contentImageContainer" android:background="@drawable/qzone_commentlist_item_bg_selector" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="horizontal" android:id="@id/imageContainer" android:background="@drawable/qzone_commentlist_item_bg_selector" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" />
+                    <com.qzone.proxy.feedcomponent.adapter.text.CellTextView android:textSize="@dimen/feed_common_20sp" android:textColor="@color/feed_item_content_text_color" android:id="@id/commentContent" android:background="@drawable/qzone_commentlist_item_bg_selector" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:lineSpacingExtra="7.0dip" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:id="@id/msg_permission" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:maxWidth="135.0dip">
+                    <ImageView android:id="@id/msg_permission_icon" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/qzone_icon_albumpermissions_me" />
+                    <TextView android:textSize="@dimen/sp13" android:textColor="@color/qzone_feed_operation_lbs" android:id="@id/msg_permission_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="25.0dip" android:text="仅自己可见" android:singleLine="true" />
+                </LinearLayout>
+                <com.qzone.proxy.feedcomponent.adapter.text.CellTextView android:textSize="@dimen/sp13" android:textColor="@color/qzone_text_link" android:id="@id/msg_phonetype" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-4.0dip" android:layout_marginTop="5.0dip" />
+                <LinearLayout android:orientation="vertical" android:id="@id/commentReplyContainer" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="@dimen/qzone_common_32dp" android:layout_marginRight="@dimen/qzone_common_32dp" />
+    </LinearLayout>
+</com.qzone.widget.LinerLayoutForListViewItem>

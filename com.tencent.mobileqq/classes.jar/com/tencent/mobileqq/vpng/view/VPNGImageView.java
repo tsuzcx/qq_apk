@@ -12,16 +12,17 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bedv;
-import bedw;
-import bedy;
-import bedz;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vpng.glrenderer.Renderable;
+import com.tencent.mobileqq.vpng.glrenderer.VPNGRenderer;
+import com.tencent.mobileqq.vpng.glrenderer.VPNGRendererManager;
+import com.tencent.mobileqq.vpng.util.VPNGUtil;
 import cooperation.liveroom.LiveRoomGiftCallback;
 import java.io.File;
 
 public class VPNGImageView
   extends FrameLayout
-  implements TextureView.SurfaceTextureListener, bedv
+  implements TextureView.SurfaceTextureListener, Renderable
 {
   protected int mAlign = 1;
   protected LiveRoomGiftCallback mCallback;
@@ -29,9 +30,10 @@ public class VPNGImageView
   protected boolean mIsLoop;
   protected ImageView mPreImageView;
   protected TextureView mTextureView;
-  protected bedw mVPNGRenderer;
+  protected VPNGRenderer mVPNGRenderer;
   protected String mVideoPath;
   protected int mWidth;
+  protected boolean playOnSubThread = false;
   
   public VPNGImageView(Context paramContext)
   {
@@ -63,7 +65,7 @@ public class VPNGImageView
     return this.mWidth;
   }
   
-  public bedw getVPNGRenderer()
+  public VPNGRenderer getVPNGRenderer()
   {
     return this.mVPNGRenderer;
   }
@@ -73,44 +75,47 @@ public class VPNGImageView
     super.onDetachedFromWindow();
     if (this.mVPNGRenderer != null)
     {
-      bedy.a().a(this.mVPNGRenderer);
+      VPNGRendererManager.a().a(this.mVPNGRenderer);
       this.mVPNGRenderer = null;
     }
   }
   
   public void onDrawBegin()
   {
-    post(new VPNGImageView.1(this));
+    post(new VPNGImageView.2(this));
   }
   
   public void onPause()
   {
-    if (this.mVPNGRenderer != null) {
-      this.mVPNGRenderer.i();
+    VPNGRenderer localVPNGRenderer = this.mVPNGRenderer;
+    if (localVPNGRenderer != null) {
+      localVPNGRenderer.i();
     }
   }
   
   public void onRelease()
   {
-    if (this.mVPNGRenderer != null) {
-      this.mVPNGRenderer.c();
+    VPNGRenderer localVPNGRenderer = this.mVPNGRenderer;
+    if (localVPNGRenderer != null) {
+      localVPNGRenderer.c();
     }
   }
   
   public void onResume()
   {
-    if (this.mVPNGRenderer != null) {
-      this.mVPNGRenderer.j();
+    VPNGRenderer localVPNGRenderer = this.mVPNGRenderer;
+    if (localVPNGRenderer != null) {
+      localVPNGRenderer.j();
     }
   }
   
-  public void onSetRenderer(bedw parambedw)
+  public void onSetRenderer(VPNGRenderer paramVPNGRenderer)
   {
-    this.mVPNGRenderer = parambedw;
+    this.mVPNGRenderer = paramVPNGRenderer;
     if ((isActivated()) && (getVisibility() == 0))
     {
       this.mVPNGRenderer.a();
-      this.mVPNGRenderer.h();
+      playRender();
     }
   }
   
@@ -118,50 +123,82 @@ public class VPNGImageView
   {
     if (this.mVPNGRenderer == null)
     {
-      this.mVPNGRenderer = bedy.a().a(this, this.mWidth, this.mHeight);
-      if (this.mVPNGRenderer != null)
+      this.mVPNGRenderer = VPNGRendererManager.a().a(this, this.mWidth, this.mHeight);
+      localVPNGRenderer = this.mVPNGRenderer;
+      if (localVPNGRenderer != null)
       {
-        this.mVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
+        localVPNGRenderer.a(this.mVideoPath, this.mAlign, this.mCallback);
         this.mVPNGRenderer.b(this.mIsLoop);
       }
     }
-    if (this.mVPNGRenderer != null)
+    VPNGRenderer localVPNGRenderer = this.mVPNGRenderer;
+    if (localVPNGRenderer != null)
     {
-      this.mVPNGRenderer.a(paramInt1, paramInt2);
+      localVPNGRenderer.a(paramInt1, paramInt2);
       this.mVPNGRenderer.a(paramSurfaceTexture);
-      this.mVPNGRenderer.h();
+      playRender();
     }
     this.mTextureView.setAlpha(0.0F);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    this.mVPNGRenderer.b();
-    if (this.mCallback != null) {
-      this.mCallback.onCall(9, "");
+    paramSurfaceTexture = this.mVPNGRenderer;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.b();
+    }
+    paramSurfaceTexture = this.mCallback;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.onCall(9, "");
     }
     return false;
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    this.mVPNGRenderer.a(paramInt1, paramInt2);
+    paramSurfaceTexture = this.mVPNGRenderer;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.a(paramInt1, paramInt2);
+    }
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  
+  protected void playRender()
+  {
+    if (!this.playOnSubThread)
+    {
+      VPNGRenderer localVPNGRenderer = this.mVPNGRenderer;
+      if (localVPNGRenderer != null) {
+        localVPNGRenderer.h();
+      }
+    }
+    else
+    {
+      ThreadManager.excute(new VPNGImageView.1(this), 128, null, true);
+    }
+  }
   
   public void setImage(String paramString, BitmapFactory.Options paramOptions)
   {
     paramOptions = BitmapFactory.decodeFile(paramString, paramOptions).copy(Bitmap.Config.ARGB_8888, true);
     this.mWidth = paramOptions.getWidth();
     this.mHeight = paramOptions.getHeight();
-    String str = paramString + ".vpng";
-    if ((!new File(str).exists()) && (bedz.a(paramString, str))) {
-      setVideo(str, true);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".vpng");
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!new File((String)localObject).exists()) && (VPNGUtil.a(paramString, (String)localObject))) {
+      setVideo((String)localObject, true);
     }
     this.mPreImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.mPreImageView.setImageBitmap(paramOptions);
     this.mPreImageView.setVisibility(0);
+  }
+  
+  public void setPlayOnSubThread(boolean paramBoolean)
+  {
+    this.playOnSubThread = paramBoolean;
   }
   
   public void setVideo(String paramString, boolean paramBoolean)
@@ -171,35 +208,37 @@ public class VPNGImageView
   
   public void setVideo(String paramString, boolean paramBoolean, int paramInt, LiveRoomGiftCallback paramLiveRoomGiftCallback)
   {
-    if (this.mVPNGRenderer != null) {}
-    for (int i = 1;; i = 0)
-    {
-      if (this.mVPNGRenderer == null) {
-        this.mVPNGRenderer = bedy.a().a(this, this.mWidth, this.mHeight);
-      }
-      if (this.mVPNGRenderer != null)
-      {
-        this.mVPNGRenderer.a(paramString, paramInt, paramLiveRoomGiftCallback);
-        this.mVPNGRenderer.b(paramBoolean);
-        if (i != 0)
-        {
-          this.mVPNGRenderer.a(true);
-          this.mVPNGRenderer.h();
-        }
-      }
-      this.mVideoPath = paramString;
-      this.mIsLoop = paramBoolean;
-      this.mAlign = paramInt;
-      this.mCallback = paramLiveRoomGiftCallback;
-      this.mTextureView.setOpaque(false);
-      this.mTextureView.setSurfaceTextureListener(this);
-      return;
+    int i;
+    if (this.mVPNGRenderer != null) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (this.mVPNGRenderer == null) {
+      this.mVPNGRenderer = VPNGRendererManager.a().a(this, this.mWidth, this.mHeight);
+    }
+    VPNGRenderer localVPNGRenderer = this.mVPNGRenderer;
+    if (localVPNGRenderer != null)
+    {
+      localVPNGRenderer.a(paramString, paramInt, paramLiveRoomGiftCallback);
+      this.mVPNGRenderer.b(paramBoolean);
+      if (i != 0)
+      {
+        this.mVPNGRenderer.a(true);
+        playRender();
+      }
+    }
+    this.mVideoPath = paramString;
+    this.mIsLoop = paramBoolean;
+    this.mAlign = paramInt;
+    this.mCallback = paramLiveRoomGiftCallback;
+    this.mTextureView.setOpaque(false);
+    this.mTextureView.setSurfaceTextureListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.view.VPNGImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,30 +8,36 @@ public class AnnotationValidatorFactory
   
   public AnnotationValidator createAnnotationValidator(ValidateWith paramValidateWith)
   {
-    Object localObject = (AnnotationValidator)VALIDATORS_FOR_ANNOTATION_TYPES.get(paramValidateWith);
-    if (localObject != null) {
-      return localObject;
+    Object localObject1 = (AnnotationValidator)VALIDATORS_FOR_ANNOTATION_TYPES.get(paramValidateWith);
+    if (localObject1 != null) {
+      return localObject1;
     }
-    localObject = paramValidateWith.value();
-    if (localObject == null) {
-      throw new IllegalArgumentException("Can't create validator, value is null in annotation " + paramValidateWith.getClass().getName());
+    localObject1 = paramValidateWith.value();
+    if (localObject1 != null) {
+      try
+      {
+        localObject2 = (AnnotationValidator)((Class)localObject1).newInstance();
+        VALIDATORS_FOR_ANNOTATION_TYPES.putIfAbsent(paramValidateWith, localObject2);
+        paramValidateWith = (AnnotationValidator)VALIDATORS_FOR_ANNOTATION_TYPES.get(paramValidateWith);
+        return paramValidateWith;
+      }
+      catch (Exception paramValidateWith)
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Exception received when creating AnnotationValidator class ");
+        ((StringBuilder)localObject2).append(((Class)localObject1).getName());
+        throw new RuntimeException(((StringBuilder)localObject2).toString(), paramValidateWith);
+      }
     }
-    try
-    {
-      AnnotationValidator localAnnotationValidator = (AnnotationValidator)((Class)localObject).newInstance();
-      VALIDATORS_FOR_ANNOTATION_TYPES.putIfAbsent(paramValidateWith, localAnnotationValidator);
-      paramValidateWith = (AnnotationValidator)VALIDATORS_FOR_ANNOTATION_TYPES.get(paramValidateWith);
-      return paramValidateWith;
-    }
-    catch (Exception paramValidateWith)
-    {
-      throw new RuntimeException("Exception received when creating AnnotationValidator class " + ((Class)localObject).getName(), paramValidateWith);
-    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Can't create validator, value is null in annotation ");
+    ((StringBuilder)localObject1).append(paramValidateWith.getClass().getName());
+    throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.validator.AnnotationValidatorFactory
  * JD-Core Version:    0.7.0.1
  */

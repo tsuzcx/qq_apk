@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/custom_dialog_single_choice_list_item_bg_selector" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/font_size_large" android:textColor="@color/color_hei" android:gravity="center_vertical" android:id="@id/item_text" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:focusable="false" android:clickable="false" android:layout_width="200.0dip" android:layout_height="54.0dip" />
+    <CheckBox android:id="@id/item_checkbox" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="14.0dip" android:button="@null" android:drawableLeft="@drawable/checkbox_bg1" android:drawablePadding="4.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

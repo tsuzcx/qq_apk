@@ -9,11 +9,11 @@ public class zzah
   extends zza
 {
   public static final Parcelable.Creator<zzah> CREATOR = new g();
-  final int Hc;
-  private final int Jh;
-  private final int Ji;
+  final int IR;
+  private final int KW;
+  private final int KX;
   @Deprecated
-  private final Scope[] Jj;
+  private final Scope[] KY;
   
   public zzah(int paramInt1, int paramInt2)
   {
@@ -22,26 +22,26 @@ public class zzah
   
   zzah(int paramInt1, int paramInt2, int paramInt3, Scope[] paramArrayOfScope)
   {
-    this.Hc = paramInt1;
-    this.Jh = paramInt2;
-    this.Ji = paramInt3;
-    this.Jj = paramArrayOfScope;
+    this.IR = paramInt1;
+    this.KW = paramInt2;
+    this.KX = paramInt3;
+    this.KY = paramArrayOfScope;
   }
   
-  public final int gZ()
+  public final int hj()
   {
-    return this.Jh;
+    return this.KW;
   }
   
-  public final int ha()
+  public final int hk()
   {
-    return this.Ji;
+    return this.KX;
   }
   
   @Deprecated
-  public final Scope[] hb()
+  public final Scope[] hl()
   {
-    return this.Jj;
+    return this.KY;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-public class PortraitImageview$1
+class PortraitImageview$1
   implements Runnable
 {
   PortraitImageview$1(PortraitImageview paramPortraitImageview) {}
@@ -12,7 +12,7 @@ public class PortraitImageview$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PortraitImageview.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.emoji.StoreBannerEmojiView android:id="@id/bj8" android:background="#ffcacaca" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/bj9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afg" android:scaleType="centerInside" />
-</RelativeLayout>
+    <Button android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/gw" android:id="@id/gul" android:background="@drawable/c1" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/d_" style="@style/or" />
+    <Button android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/gw" android:id="@id/gum" android:background="@drawable/c3" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/d_" style="@style/or" />
+    <Button android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/FG_0_5" android:id="@id/gun" android:background="@drawable/c3" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:visibility="gone" android:layout_width="fill_parent" android:minHeight="@dimen/d_" style="@style/or" />
+</LinearLayout>

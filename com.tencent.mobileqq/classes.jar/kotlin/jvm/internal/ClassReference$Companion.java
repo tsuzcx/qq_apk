@@ -18,43 +18,40 @@ public final class ClassReference$Companion
   public final String getClassQualifiedName(@NotNull Class<?> paramClass)
   {
     Intrinsics.checkParameterIsNotNull(paramClass, "jClass");
-    Object localObject;
-    if (paramClass.isAnonymousClass()) {
-      localObject = null;
+    boolean bool = paramClass.isAnonymousClass();
+    String str = null;
+    if (bool) {
+      return null;
     }
-    String str;
-    do
+    if (paramClass.isLocalClass()) {
+      return null;
+    }
+    if (paramClass.isArray())
     {
-      return localObject;
-      if (paramClass.isLocalClass()) {
-        return null;
-      }
-      if (paramClass.isArray())
+      Object localObject = paramClass.getComponentType();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "componentType");
+      paramClass = str;
+      if (((Class)localObject).isPrimitive())
       {
-        paramClass = paramClass.getComponentType();
-        Intrinsics.checkExpressionValueIsNotNull(paramClass, "componentType");
-        if (paramClass.isPrimitive())
+        localObject = (String)ClassReference.access$getClassFqNames$cp().get(((Class)localObject).getName());
+        paramClass = str;
+        if (localObject != null)
         {
-          paramClass = (String)ClassReference.access$getClassFqNames$cp().get(paramClass.getName());
-          if (paramClass != null) {
-            paramClass = paramClass + "Array";
-          }
-        }
-        for (;;)
-        {
-          localObject = paramClass;
-          if (paramClass != null) {
-            break;
-          }
-          return "kotlin.Array";
-          paramClass = null;
-          continue;
-          paramClass = null;
+          paramClass = new StringBuilder();
+          paramClass.append((String)localObject);
+          paramClass.append("Array");
+          paramClass = paramClass.toString();
         }
       }
-      str = (String)ClassReference.access$getClassFqNames$cp().get(paramClass.getName());
-      localObject = str;
-    } while (str != null);
+      if (paramClass != null) {
+        return paramClass;
+      }
+      return "kotlin.Array";
+    }
+    str = (String)ClassReference.access$getClassFqNames$cp().get(paramClass.getName());
+    if (str != null) {
+      return str;
+    }
     return paramClass.getCanonicalName();
   }
   
@@ -62,96 +59,105 @@ public final class ClassReference$Companion
   public final String getClassSimpleName(@NotNull Class<?> paramClass)
   {
     Intrinsics.checkParameterIsNotNull(paramClass, "jClass");
-    Object localObject;
-    if (paramClass.isAnonymousClass()) {
-      localObject = null;
+    boolean bool = paramClass.isAnonymousClass();
+    Object localObject1 = "Array";
+    String str = null;
+    Object localObject2 = null;
+    if (bool) {
+      paramClass = (Class<?>)localObject2;
     }
-    String str;
-    do
+    for (;;)
     {
-      return localObject;
+      return paramClass;
       if (paramClass.isLocalClass())
       {
         str = paramClass.getSimpleName();
-        localObject = paramClass.getEnclosingMethod();
-        if (localObject != null)
+        localObject1 = paramClass.getEnclosingMethod();
+        if (localObject1 != null)
         {
           Intrinsics.checkExpressionValueIsNotNull(str, "name");
-          localObject = StringsKt.substringAfter$default(str, ((Method)localObject).getName() + "$", null, 2, null);
-          if (localObject != null) {
-            paramClass = (Class<?>)localObject;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(((Method)localObject1).getName());
+          ((StringBuilder)localObject2).append("$");
+          localObject1 = StringsKt.substringAfter$default(str, ((StringBuilder)localObject2).toString(), null, 2, null);
+          if (localObject1 != null)
+          {
+            paramClass = (Class<?>)localObject1;
+            break label166;
           }
         }
-        for (;;)
+        paramClass = paramClass.getEnclosingConstructor();
+        if (paramClass != null)
         {
-          localObject = paramClass;
-          if (paramClass != null) {
-            break;
-          }
           Intrinsics.checkExpressionValueIsNotNull(str, "name");
-          return StringsKt.substringAfter$default(str, '$', null, 2, null);
-          paramClass = paramClass.getEnclosingConstructor();
-          if (paramClass != null)
-          {
-            Intrinsics.checkExpressionValueIsNotNull(str, "name");
-            paramClass = StringsKt.substringAfter$default(str, paramClass.getName() + "$", null, 2, null);
-          }
-          else
-          {
-            paramClass = null;
-          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramClass.getName());
+          ((StringBuilder)localObject1).append("$");
+          paramClass = StringsKt.substringAfter$default(str, ((StringBuilder)localObject1).toString(), null, 2, null);
         }
+        else
+        {
+          paramClass = null;
+        }
+        label166:
+        if (paramClass != null) {
+          return paramClass;
+        }
+        Intrinsics.checkExpressionValueIsNotNull(str, "name");
+        return StringsKt.substringAfter$default(str, '$', null, 2, null);
       }
-      if (paramClass.isArray())
+      if (!paramClass.isArray()) {
+        break;
+      }
+      localObject2 = paramClass.getComponentType();
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "componentType");
+      paramClass = str;
+      if (((Class)localObject2).isPrimitive())
       {
-        paramClass = paramClass.getComponentType();
-        Intrinsics.checkExpressionValueIsNotNull(paramClass, "componentType");
-        if (paramClass.isPrimitive())
+        localObject2 = (String)ClassReference.access$getSimpleNames$cp().get(((Class)localObject2).getName());
+        paramClass = str;
+        if (localObject2 != null)
         {
-          paramClass = (String)ClassReference.access$getSimpleNames$cp().get(paramClass.getName());
-          if (paramClass != null) {
-            paramClass = paramClass + "Array";
-          }
-        }
-        for (;;)
-        {
-          localObject = paramClass;
-          if (paramClass != null) {
-            break;
-          }
-          return "Array";
-          paramClass = null;
-          continue;
-          paramClass = null;
+          paramClass = new StringBuilder();
+          paramClass.append((String)localObject2);
+          paramClass.append("Array");
+          paramClass = paramClass.toString();
         }
       }
-      str = (String)ClassReference.access$getSimpleNames$cp().get(paramClass.getName());
-      localObject = str;
-    } while (str != null);
-    return paramClass.getSimpleName();
+      if (paramClass == null) {
+        return localObject1;
+      }
+    }
+    localObject1 = (String)ClassReference.access$getSimpleNames$cp().get(paramClass.getName());
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    localObject1 = paramClass.getSimpleName();
+    return localObject1;
   }
   
   public final boolean isInstance(@Nullable Object paramObject, @NotNull Class<?> paramClass)
   {
     Intrinsics.checkParameterIsNotNull(paramClass, "jClass");
     Object localObject = ClassReference.access$getFUNCTION_CLASSES$cp();
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.Map<K, V>");
+    if (localObject != null)
+    {
+      localObject = (Integer)((Map)localObject).get(paramClass);
+      if (localObject != null) {
+        return TypeIntrinsics.isFunctionOfArity(paramObject, ((Number)localObject).intValue());
+      }
+      localObject = paramClass;
+      if (paramClass.isPrimitive()) {
+        localObject = JvmClassMappingKt.getJavaObjectType(JvmClassMappingKt.getKotlinClass(paramClass));
+      }
+      return ((Class)localObject).isInstance(paramObject);
     }
-    localObject = (Integer)((Map)localObject).get(paramClass);
-    if (localObject != null) {
-      return TypeIntrinsics.isFunctionOfArity(paramObject, ((Number)localObject).intValue());
-    }
-    localObject = paramClass;
-    if (paramClass.isPrimitive()) {
-      localObject = JvmClassMappingKt.getJavaObjectType(JvmClassMappingKt.getKotlinClass(paramClass));
-    }
-    return ((Class)localObject).isInstance(paramObject);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.Map<K, V>");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.internal.ClassReference.Companion
  * JD-Core Version:    0.7.0.1
  */

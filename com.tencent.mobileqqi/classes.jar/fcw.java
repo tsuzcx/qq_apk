@@ -1,8 +1,15 @@
+import com.tencent.mobileqq.app.I18nPublicAccountsManagerImp;
+import java.util.Comparator;
+
 public class fcw
+  implements Comparator
 {
-  public int a;
-  public String a;
-  public boolean a;
+  private fcw(I18nPublicAccountsManagerImp paramI18nPublicAccountsManagerImp) {}
+  
+  public int a(fcx paramfcx1, fcx paramfcx2)
+  {
+    return paramfcx2.a.compareTo(paramfcx1.a);
+  }
 }
 
 

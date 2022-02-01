@@ -1,31 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
 import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class efr
-  extends Handler
+  implements View.OnClickListener
 {
   public efr(NotificationView paramNotificationView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (NotificationView.a(this.a) == null);
-      this.a.k();
-      NotificationView.a(this.a).a = GroupSystemMsgController.a().a(this.a.a);
-      NotificationView.a(this.a).notifyDataSetChanged();
-      return;
+    paramView = (NotificationAdapter.ViewHolder)paramView.getTag();
+    if (paramView.a.msg_type.get() == 2) {
+      this.a.a(paramView);
     }
-    this.a.l();
   }
 }
 

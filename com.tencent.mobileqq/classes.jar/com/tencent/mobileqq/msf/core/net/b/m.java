@@ -17,12 +17,21 @@ class m
         str = paramString.substring(0, 10);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WifiDetector", 2, "WIFI detect onEchoResult, taskId: " + paramInt1 + " result: " + paramInt2 + " actualContent: " + str);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("WIFI detect onEchoResult, taskId: ");
+      paramString.append(paramInt1);
+      paramString.append(" result: ");
+      paramString.append(paramInt2);
+      paramString.append(" actualContent: ");
+      paramString.append(str);
+      QLog.d("WifiDetector", 2, paramString.toString());
     }
     paramInt2 = k.a(this.a, paramInt2);
     k.a(this.a, paramInt2, (String)paramObject);
-    k.b(this.a, k.a(this.a) - (1 << paramInt1));
+    paramString = this.a;
+    k.b(paramString, k.a(paramString) - (1 << paramInt1));
     if (k.a(this.a) == 0)
     {
       parama = (String)parama.g;
@@ -32,7 +41,7 @@ class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.m
  * JD-Core Version:    0.7.0.1
  */

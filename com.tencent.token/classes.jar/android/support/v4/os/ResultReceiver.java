@@ -5,29 +5,20 @@ import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.os.RemoteException;
-import android.support.annotation.RestrictTo;
+import com.tencent.token.ei;
+import com.tencent.token.ei.a;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ResultReceiver
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ResultReceiver.1();
-  final Handler mHandler;
-  final boolean mLocal;
-  IResultReceiver mReceiver;
-  
-  public ResultReceiver(Handler paramHandler)
-  {
-    this.mLocal = true;
-    this.mHandler = paramHandler;
-  }
+  public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator() {};
+  final boolean a = false;
+  final Handler b = null;
+  ei c;
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.mLocal = false;
-    this.mHandler = null;
-    this.mReceiver = IResultReceiver.Stub.asInterface(paramParcel.readStrongBinder());
+    this.c = ei.a.a(paramParcel.readStrongBinder());
   }
   
   public int describeContents()
@@ -35,40 +26,45 @@ public class ResultReceiver
     return 0;
   }
   
-  protected void onReceiveResult(int paramInt, Bundle paramBundle) {}
-  
-  public void send(int paramInt, Bundle paramBundle)
-  {
-    if (this.mLocal) {
-      if (this.mHandler != null) {
-        this.mHandler.post(new ResultReceiver.MyRunnable(this, paramInt, paramBundle));
-      }
-    }
-    while (this.mReceiver == null)
-    {
-      return;
-      onReceiveResult(paramInt, paramBundle);
-      return;
-    }
-    try
-    {
-      this.mReceiver.send(paramInt, paramBundle);
-      return;
-    }
-    catch (RemoteException paramBundle) {}
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     try
     {
-      if (this.mReceiver == null) {
-        this.mReceiver = new ResultReceiver.MyResultReceiver(this);
+      if (this.c == null) {
+        this.c = new a();
       }
-      paramParcel.writeStrongBinder(this.mReceiver.asBinder());
+      paramParcel.writeStrongBinder(this.c.asBinder());
       return;
     }
     finally {}
+  }
+  
+  final class a
+    extends ei.a
+  {
+    a() {}
+    
+    public final void a(int paramInt, Bundle paramBundle)
+    {
+      if (ResultReceiver.this.b != null) {
+        ResultReceiver.this.b.post(new ResultReceiver.b(ResultReceiver.this, paramInt, paramBundle));
+      }
+    }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    final int a;
+    final Bundle b;
+    
+    b(int paramInt, Bundle paramBundle)
+    {
+      this.a = paramInt;
+      this.b = paramBundle;
+    }
+    
+    public final void run() {}
   }
 }
 

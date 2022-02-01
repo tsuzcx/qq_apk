@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/ai6" android:paddingLeft="16.0dip" android:paddingTop="20.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="4.0dip" android:paddingStart="16.0dip" android:paddingEnd="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/b3r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/a2o" android:layout_below="@id/fxo" android:layout_alignLeft="@id/fxo">
+            <com.tencent.mobileqq.flashshow.widgets.common.FSAsyncTextView android:textSize="15.0dip" android:textColor="@color/akh" android:id="@id/fxm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:includeFontPadding="false" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/agv" android:id="@id/b3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+        </LinearLayout>
+        <com.tencent.mobileqq.flashshow.widgets.common.FSAsyncTextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/akh" android:ellipsize="end" android:id="@id/fxo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxLines="1" android:layout_toLeftOf="@id/p1i" android:layout_toRightOf="@id/a2o" />
+        <com.tencent.mobileqq.flashshow.widgets.common.FSAvatarView android:id="@id/a2o" android:layout_width="38.0dip" android:layout_height="38.0dip" />
+        <com.tencent.mobileqq.flashshow.widgets.comment.FSCommentPraiseLayout android:id="@id/p1i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/pt3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="46.0dip" android:layout_below="@id/b3r" android:layout_alignLeft="@id/b3r">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/pt5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

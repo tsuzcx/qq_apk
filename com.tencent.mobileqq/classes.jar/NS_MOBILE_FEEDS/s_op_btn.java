@@ -32,19 +32,21 @@ public final class s_op_btn
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.btn_title != null) {
-      paramJceOutputStream.write(this.btn_title, 0);
+    String str = this.btn_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.btn_color, 1);
     paramJceOutputStream.write(this.btn_actiontype, 2);
-    if (this.btn_url != null) {
-      paramJceOutputStream.write(this.btn_url, 3);
+    str = this.btn_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_op_btn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,246 +1,224 @@
 package com.tencent.tgpa.vendorpd.a;
 
-import java.io.BufferedReader;
+import android.content.Context;
+import android.os.Build;
+import android.os.Environment;
+import com.tencent.tgpa.vendorpd.CombinationInfo;
+import com.tencent.tgpa.vendorpd.GameCallback;
+import com.tencent.tgpa.vendorpd.GamePredownloader.RetMsg;
+import com.tencent.tgpa.vendorpd.b.c;
+import com.tencent.tgpa.vendorpd.b.d;
+import com.tencent.tgpa.vendorpd.b.e;
+import com.tencent.tgpa.vendorpd.b.f;
+import com.tencent.tgpa.vendorpd.gradish.GradishWrapper;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class b
 {
-  public static File a(String paramString)
+  private String a;
+  private String b;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
+  private GameCallback g;
+  
+  public b(b.b paramb)
   {
-    if (paramString == null) {
-      return null;
-    }
-    return new File(paramString);
+    this.a = b.b.a(paramb);
+    this.b = b.b.b(paramb);
+    this.c = b.b.c(paramb);
+    this.d = b.b.d(paramb);
+    this.e = b.b.e(paramb);
+    this.f = b.b.f(paramb);
+    this.g = b.b.g(paramb);
   }
   
-  public static boolean a(File paramFile)
+  private String a(String paramString)
   {
-    if (paramFile == null) {}
-    do
+    if (paramString == null)
     {
-      return false;
-      if ((paramFile.exists()) && (paramFile.isFile())) {
-        return true;
+      f.b("onResponse: request predownload info failed!");
+      paramString = GamePredownloader.RetMsg.NetworkException;
+    }
+    for (;;)
+    {
+      return paramString.getJsonData();
+      try
+      {
+        f.a("onResponse: request version response data: %s", new Object[] { paramString });
+        JSONObject localJSONObject1 = new JSONObject(paramString);
+        if ((localJSONObject1.has("ret")) && (localJSONObject1.has("data")))
+        {
+          if (localJSONObject1.getInt("ret") == 0)
+          {
+            paramString = localJSONObject1.getJSONObject("data");
+            Iterator localIterator = paramString.keys();
+            while (localIterator.hasNext())
+            {
+              String str1 = (String)localIterator.next();
+              try
+              {
+                JSONObject localJSONObject2 = paramString.getJSONObject(str1);
+                String str2 = localJSONObject2.getString("path");
+                StringBuilder localStringBuilder2 = new StringBuilder();
+                localStringBuilder2.append(Environment.getExternalStorageDirectory());
+                localStringBuilder2.append(File.separator);
+                localStringBuilder2.append(str2);
+                localStringBuilder2.append(File.separator);
+                localJSONObject2.put("path", localStringBuilder2.toString());
+              }
+              catch (Exception localException)
+              {
+                localException.printStackTrace();
+                StringBuilder localStringBuilder1 = new StringBuilder();
+                localStringBuilder1.append("onResponse: check game predownload info exception. game: ");
+                localStringBuilder1.append(str1);
+                f.d(localStringBuilder1.toString());
+              }
+            }
+            return localJSONObject1.toString();
+          }
+          f.b("OnResponse: request failed, ret is not 0! please check response: %s", new Object[] { paramString });
+          return localJSONObject1.toString();
+        }
+        f.b("OnResponse: request failed, json format is not correct! please check the data: %s", new Object[] { paramString });
+        paramString = GamePredownloader.RetMsg.ResponseDataJsonFormatException.getJsonData();
+        return paramString;
       }
-    } while (!b(paramFile.getParentFile()));
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        f.d("OnResponse: network response content parse to json exception.");
+        paramString = GamePredownloader.RetMsg.ResponseDataIsNotJson;
+      }
+    }
+  }
+  
+  private HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    localHashMap.put("X-Requested-With", "XMLHttpRequest");
+    localHashMap.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116");
+    return localHashMap;
+  }
+  
+  private String b(Context paramContext, ArrayList<String> paramArrayList)
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      String str = (String)paramArrayList.get(i);
+      try
+      {
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("vc", String.valueOf(com.tencent.tgpa.vendorpd.b.b.b(paramContext, str))).put("vn", com.tencent.tgpa.vendorpd.b.b.a(paramContext, str));
+        localJSONObject1.put(str, localJSONObject2);
+      }
+      catch (JSONException localJSONException)
+      {
+        label79:
+        break label79;
+      }
+      f.a("get game local version info exception! pkg: %s", new Object[] { str });
+      i += 1;
+    }
+    return localJSONObject1.toString();
+  }
+  
+  public b a(GameCallback paramGameCallback)
+  {
+    this.g = paramGameCallback;
+    return this;
+  }
+  
+  public String a(String paramString, CombinationInfo paramCombinationInfo)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(b.d.c.a());
+    String str1 = ((StringBuilder)localObject).toString();
+    HashMap localHashMap1 = a();
+    localHashMap1.put("app_name", paramString);
+    String str3 = String.valueOf(System.currentTimeMillis());
+    String str2 = d.c(paramCombinationInfo.predownFilePath);
+    if (paramCombinationInfo.cdnMD5 == null) {
+      localObject = "";
+    } else {
+      localObject = paramCombinationInfo.cdnMD5;
+    }
+    localObject = String.format("time_stamp=%s&api_key=%s&api_secret=%s&cdn_url=%s&cdn_md5=%s&game_package=%s&predownload_file=%s", new Object[] { str3, this.d, this.e, paramCombinationInfo.cdnUrl, localObject, paramCombinationInfo.gamePackageName, str2 });
+    HashMap localHashMap2 = new HashMap();
+    localHashMap2.put("time_stamp", str3);
+    localHashMap2.put("api_key", this.d);
+    localHashMap2.put("api_sign", String.valueOf(c.a((String)localObject)));
+    localHashMap2.put("model", Build.MODEL);
+    localHashMap2.put("manufacturer", Build.MANUFACTURER);
+    localHashMap2.put("channel", this.b);
+    localHashMap2.put("sdk_code", String.valueOf(17));
+    localHashMap2.put("sdk_version", "1.1.7");
+    localHashMap2.put("cdn_url", paramCombinationInfo.cdnUrl);
+    if (paramCombinationInfo.cdnMD5 == null) {
+      localObject = "";
+    } else {
+      localObject = paramCombinationInfo.cdnMD5;
+    }
+    localHashMap2.put("cdn_md5", localObject);
+    localHashMap2.put("game_package", paramCombinationInfo.gamePackageName);
+    localHashMap2.put("predownload_file", str2);
+    localHashMap2.put("predownfile_md5", paramCombinationInfo.predownFileMD5);
+    localHashMap2.put("app_name", paramString);
+    localHashMap2.put("xid", GradishWrapper.getXID());
+    paramCombinationInfo = this.f;
+    paramString = paramCombinationInfo;
+    if (paramCombinationInfo == null) {
+      paramString = "";
+    }
+    localHashMap2.put("oaid", paramString);
     try
     {
-      boolean bool = paramFile.createNewFile();
-      return bool;
+      f.a("request combine config, data: %s , header: %s", new Object[] { localHashMap2.toString(), localHashMap1.toString() });
+      paramString = e.a(str1, localHashMap2, localHashMap1);
+      return paramString;
     }
-    catch (Exception paramFile)
+    catch (IOException paramString)
     {
-      paramFile.printStackTrace();
+      paramString.printStackTrace();
+      f.d("request predownload combine config exception.");
     }
-    return false;
+    return null;
   }
   
-  /* Error */
-  public static boolean a(File paramFile, byte[] paramArrayOfByte, boolean paramBoolean)
+  public void a(Context paramContext, ArrayList<String> paramArrayList)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: iload 4
-    //   5: istore_3
-    //   6: aload_1
-    //   7: ifnull +13 -> 20
-    //   10: aload_0
-    //   11: invokestatic 42	com/tencent/tgpa/vendorpd/a/b:a	(Ljava/io/File;)Z
-    //   14: ifne +8 -> 22
-    //   17: iload 4
-    //   19: istore_3
-    //   20: iload_3
-    //   21: ireturn
-    //   22: aconst_null
-    //   23: astore 6
-    //   25: new 44	java/io/BufferedOutputStream
-    //   28: dup
-    //   29: new 46	java/io/FileOutputStream
-    //   32: dup
-    //   33: aload_0
-    //   34: iload_2
-    //   35: invokespecial 49	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   38: invokespecial 52	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   41: astore 5
-    //   43: aload 5
-    //   45: astore_0
-    //   46: aload 5
-    //   48: aload_1
-    //   49: invokevirtual 56	java/io/BufferedOutputStream:write	([B)V
-    //   52: iconst_1
-    //   53: istore_3
-    //   54: aload 5
-    //   56: ifnull -36 -> 20
-    //   59: aload 5
-    //   61: invokevirtual 59	java/io/BufferedOutputStream:close	()V
-    //   64: iconst_1
-    //   65: ireturn
-    //   66: astore_0
-    //   67: aload_0
-    //   68: invokevirtual 60	java/io/IOException:printStackTrace	()V
-    //   71: iconst_1
-    //   72: ireturn
-    //   73: astore 6
-    //   75: aconst_null
-    //   76: astore_1
-    //   77: aload_1
-    //   78: astore_0
-    //   79: aload 6
-    //   81: invokevirtual 37	java/lang/Exception:printStackTrace	()V
-    //   84: iload 4
-    //   86: istore_3
-    //   87: aload_1
-    //   88: ifnull -68 -> 20
-    //   91: aload_1
-    //   92: invokevirtual 59	java/io/BufferedOutputStream:close	()V
-    //   95: iconst_0
-    //   96: ireturn
-    //   97: astore_0
-    //   98: aload_0
-    //   99: invokevirtual 60	java/io/IOException:printStackTrace	()V
-    //   102: iconst_0
-    //   103: ireturn
-    //   104: astore_0
-    //   105: aload 6
-    //   107: astore_1
-    //   108: aload_1
-    //   109: ifnull +7 -> 116
-    //   112: aload_1
-    //   113: invokevirtual 59	java/io/BufferedOutputStream:close	()V
-    //   116: aload_0
-    //   117: athrow
-    //   118: astore_1
-    //   119: aload_1
-    //   120: invokevirtual 60	java/io/IOException:printStackTrace	()V
-    //   123: goto -7 -> 116
-    //   126: astore 5
-    //   128: aload_0
-    //   129: astore_1
-    //   130: aload 5
-    //   132: astore_0
-    //   133: goto -25 -> 108
-    //   136: astore 6
-    //   138: aload 5
-    //   140: astore_1
-    //   141: goto -64 -> 77
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	144	0	paramFile	File
-    //   0	144	1	paramArrayOfByte	byte[]
-    //   0	144	2	paramBoolean	boolean
-    //   5	82	3	bool1	boolean
-    //   1	84	4	bool2	boolean
-    //   41	19	5	localBufferedOutputStream	java.io.BufferedOutputStream
-    //   126	13	5	localObject1	Object
-    //   23	1	6	localObject2	Object
-    //   73	33	6	localException1	Exception
-    //   136	1	6	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   59	64	66	java/io/IOException
-    //   25	43	73	java/lang/Exception
-    //   91	95	97	java/io/IOException
-    //   25	43	104	finally
-    //   112	116	118	java/io/IOException
-    //   46	52	126	finally
-    //   79	84	126	finally
-    //   46	52	136	java/lang/Exception
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("/");
+    localStringBuilder.append(b.d.a.a());
+    new b.a(localStringBuilder.toString(), new b.1(this, paramContext, paramArrayList)).execute(new String[0]);
   }
   
-  public static boolean a(String paramString, byte[] paramArrayOfByte)
+  public void a(HashMap<String, String> paramHashMap)
   {
-    return a(a(paramString), paramArrayOfByte, false);
-  }
-  
-  public static boolean b(File paramFile)
-  {
-    if (paramFile != null) {
-      if (paramFile.exists())
-      {
-        if (!paramFile.isDirectory()) {}
-      }
-      else {
-        while (paramFile.mkdirs()) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    return b(a(paramString));
-  }
-  
-  public static String c(File paramFile)
-  {
-    if (!d(paramFile)) {
-      return null;
-    }
-    try
-    {
-      paramFile = new BufferedReader(new InputStreamReader(new FileInputStream(paramFile)));
-      StringBuilder localStringBuilder = new StringBuilder();
-      for (;;)
-      {
-        String str = paramFile.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuilder.append(str).append("\n");
-      }
-      paramFile = localStringBuilder.toString();
-    }
-    catch (Exception paramFile)
-    {
-      paramFile.printStackTrace();
-      return null;
-    }
-    return paramFile;
-  }
-  
-  public static String c(String paramString)
-  {
-    return c(a(paramString));
-  }
-  
-  public static boolean d(File paramFile)
-  {
-    return (paramFile != null) && (paramFile.exists());
-  }
-  
-  public static boolean d(String paramString)
-  {
-    return d(a(paramString));
-  }
-  
-  public static boolean e(File paramFile)
-  {
-    return (paramFile != null) && (paramFile.isDirectory());
-  }
-  
-  public static boolean e(String paramString)
-  {
-    return e(a(paramString));
-  }
-  
-  public static boolean f(File paramFile)
-  {
-    return (paramFile != null) && ((!paramFile.exists()) || ((paramFile.isFile()) && (paramFile.delete())));
-  }
-  
-  public static boolean f(String paramString)
-  {
-    return (paramString != null) && (f(a(paramString)));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("/");
+    localStringBuilder.append(b.d.b.a());
+    new b.a(localStringBuilder.toString(), paramHashMap, new b.2(this)).execute(new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.a.b
  * JD-Core Version:    0.7.0.1
  */

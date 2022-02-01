@@ -1,34 +1,43 @@
 package com.tencent.mm.plugin.shake.ui;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.as;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.shake.b;
+import com.tencent.mm.plugin.shake.model.m;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.preference.f;
-import java.util.Timer;
+import com.tencent.mm.ui.x;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import junit.framework.Assert;
 
 public final class a
-  implements as, com.tencent.mm.pluginsdk.b.a, n.b
+  implements bd, com.tencent.mm.pluginsdk.c.a, MStorageEx.IOnStorageChange
 {
-  private ad contact;
-  Context context;
+  private au contact;
+  private Context context;
   private f screen;
   
   public a(Context paramContext)
@@ -36,185 +45,233 @@ public final class a
     this.context = paramContext;
   }
   
-  private void bkc()
+  public static void M(Context paramContext, boolean paramBoolean)
+  {
+    AppMethodBeat.i(28366);
+    if (paramBoolean) {}
+    for (Object localObject = paramContext.getString(R.l.settings_plugins_installing);; localObject = paramContext.getString(R.l.settings_plugins_uninstalling))
+    {
+      paramContext.getString(R.l.app_tip);
+      paramContext = k.a(paramContext, (String)localObject, true, null);
+      localObject = new MMHandler()
+      {
+        public final void handleMessage(Message paramAnonymousMessage)
+        {
+          AppMethodBeat.i(28360);
+          int j = z.bBf();
+          if (this.xve) {}
+          for (int i = j & 0xFFFFFEFF;; i = j | 0x100)
+          {
+            Log.i("MicroMsg.ContactWidgetShake", "setInstall pluginFlag install:%b  pluginFlag : %d -> %d", new Object[] { Boolean.valueOf(this.xve), Integer.valueOf(j), Integer.valueOf(i) });
+            bh.bCz();
+            c.ban().B(34, Integer.valueOf(i));
+            bh.bCz();
+            c.bzz().d(new com.tencent.mm.ay.l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.xve) {
+              m.gXg();
+            }
+            if (this.KNw != null) {
+              this.KNw.onNotifyChange(null, null);
+            }
+            AppMethodBeat.o(28360);
+            return;
+          }
+        }
+      };
+      h.ahAA.p(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(28361);
+          if (a.this != null)
+          {
+            a.this.dismiss();
+            this.val$handler.sendEmptyMessage(0);
+          }
+          AppMethodBeat.o(28361);
+        }
+      }, 1500L);
+      AppMethodBeat.o(28366);
+      return;
+    }
+  }
+  
+  private void dvr()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(24695);
+    AppMethodBeat.i(28365);
     boolean bool3 = isOpen();
-    Object localObject = (HelperHeaderPreference)this.screen.atx("contact_info_header_helper");
+    Object localObject = (HelperHeaderPreference)this.screen.bAi("contact_info_header_helper");
     int i;
     if (localObject != null)
     {
-      ((HelperHeaderPreference)localObject).aB(this.contact.field_username, this.contact.Of(), this.context.getString(2131298758));
+      ((HelperHeaderPreference)localObject).bz(this.contact.field_username, this.contact.aSV(), this.context.getString(R.l.gCf));
       if (bool3)
       {
         i = 1;
-        ((HelperHeaderPreference)localObject).sb(i);
+        ((HelperHeaderPreference)localObject).updateStatus(i);
       }
     }
     else
     {
-      this.screen.cl("contact_info_shake_install", bool3);
+      this.screen.eh("contact_info_shake_install", bool3);
       localObject = this.screen;
       if (bool3) {
-        break label149;
+        break label150;
       }
       bool1 = true;
-      label104:
-      ((f)localObject).cl("contact_info_shake_go_shake", bool1);
+      label103:
+      ((f)localObject).eh("contact_info_shake_go_shake", bool1);
       localObject = this.screen;
       if (bool3) {
-        break label154;
+        break label155;
       }
     }
-    label149:
-    label154:
+    label150:
+    label155:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((f)localObject).cl("contact_info_shake_uninstall", bool1);
-      AppMethodBeat.o(24695);
+      ((f)localObject).eh("contact_info_shake_uninstall", bool1);
+      AppMethodBeat.o(28365);
       return;
       i = 0;
       break;
       bool1 = false;
-      break label104;
+      break label103;
     }
   }
   
   private static boolean isOpen()
   {
-    AppMethodBeat.i(24693);
-    if ((r.Zy() & 0x100) == 0)
+    AppMethodBeat.i(28363);
+    if ((z.bBf() & 0x100) == 0)
     {
-      AppMethodBeat.o(24693);
+      AppMethodBeat.o(28363);
       return true;
     }
-    AppMethodBeat.o(24693);
+    AppMethodBeat.o(28363);
     return false;
   }
   
-  public static void u(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(24696);
-    if (paramBoolean) {}
-    for (Object localObject = paramContext.getString(2131303380);; localObject = paramContext.getString(2131303388))
-    {
-      paramContext.getString(2131297087);
-      paramContext = h.b(paramContext, (String)localObject, true, null);
-      localObject = new a.2(paramBoolean);
-      new Timer().schedule(new a.3(paramContext, (ak)localObject), 1500L);
-      AppMethodBeat.o(24696);
-      return;
-    }
-  }
-  
-  public final boolean Ke(String paramString)
-  {
-    AppMethodBeat.i(24692);
-    ab.d("MicroMsg.ContactWidgetShake", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bo.nullAsNil(paramString).length() <= 0)
-    {
-      AppMethodBeat.o(24692);
-      return false;
-    }
-    if (paramString.equals("contact_info_shake_go_shake"))
-    {
-      paramString = new Intent();
-      paramString.setClass(this.context, ShakeReportUI.class);
-      this.context.startActivity(paramString);
-      ((Activity)this.context).finish();
-      AppMethodBeat.o(24692);
-      return true;
-    }
-    if (paramString.equals("contact_info_shake_install"))
-    {
-      u(this.context, true);
-      AppMethodBeat.o(24692);
-      return true;
-    }
-    if (paramString.equals("contact_info_shake_uninstall"))
-    {
-      h.d(this.context, this.context.getString(2131303384), "", this.context.getString(2131296891), this.context.getString(2131296888), new a.1(this), null);
-      AppMethodBeat.o(24692);
-      return true;
-    }
-    ab.e("MicroMsg.ContactWidgetShake", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(24692);
-    return false;
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(24699);
-    int i = bo.f(paramObject, 0);
-    ab.d("MicroMsg.ContactWidgetShake", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    aw.aaz();
-    if ((paramn != c.Ru()) || (i <= 0))
-    {
-      ab.e("MicroMsg.ContactWidgetShake", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
-      AppMethodBeat.o(24699);
-      return;
-    }
-    if ((i != 7) && (i != 34))
-    {
-      AppMethodBeat.o(24699);
-      return;
-    }
-    bkc();
-    AppMethodBeat.o(24699);
-  }
-  
-  public final boolean a(f paramf, ad paramad, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, au paramau, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
-    AppMethodBeat.i(24694);
+    AppMethodBeat.i(28364);
     if (paramf != null) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paramad != null) {
+      if (paramau != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(t.oi(paramad.field_username));
-      aw.aaz();
-      c.Ru().a(this);
-      aw.aaz();
+      Assert.assertTrue(au.bwe(paramau.field_username));
+      bh.bCz();
+      c.ban().add(this);
+      bh.bCz();
       c.a(this);
-      this.contact = paramad;
+      this.contact = paramau;
       this.screen = paramf;
-      paramf.addPreferencesFromResource(2131165222);
-      bkc();
-      AppMethodBeat.o(24694);
+      paramf.aBe(R.o.haW);
+      dvr();
+      AppMethodBeat.o(28364);
       return true;
     }
   }
   
-  public final void aaq()
+  public final boolean anl(String paramString)
   {
-    AppMethodBeat.i(24698);
-    bkc();
-    AppMethodBeat.o(24698);
+    AppMethodBeat.i(28362);
+    Log.d("MicroMsg.ContactWidgetShake", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (Util.nullAsNil(paramString).length() <= 0)
+    {
+      AppMethodBeat.o(28362);
+      return false;
+    }
+    if (paramString.equals("contact_info_shake_go_shake"))
+    {
+      Object localObject = new Intent();
+      ((Intent)localObject).setClass(this.context, ShakeReportUI.class);
+      paramString = this.context;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/shake/ui/ContactWidgetShake", "goShake", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mm/plugin/shake/ui/ContactWidgetShake", "goShake", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Activity)this.context).finish();
+      AppMethodBeat.o(28362);
+      return true;
+    }
+    if (paramString.equals("contact_info_shake_install"))
+    {
+      M(this.context, true);
+      AppMethodBeat.o(28362);
+      return true;
+    }
+    if (paramString.equals("contact_info_shake_uninstall"))
+    {
+      k.b(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(28359);
+          a.M(a.a(a.this), false);
+          AppMethodBeat.o(28359);
+        }
+      }, null);
+      AppMethodBeat.o(28362);
+      return true;
+    }
+    Log.e("MicroMsg.ContactWidgetShake", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(28362);
+    return false;
   }
   
-  public final boolean bkb()
+  public final boolean dvq()
   {
-    AppMethodBeat.i(24697);
-    aw.aaz();
-    c.Ru().b(this);
-    aw.aaz();
+    AppMethodBeat.i(28367);
+    bh.bCz();
+    c.ban().remove(this);
+    bh.bCz();
     c.b(this);
-    com.tencent.mm.plugin.shake.a.gmP.BO();
-    AppMethodBeat.o(24697);
+    b.pFo.aDx();
+    AppMethodBeat.o(28367);
     return true;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(28369);
+    int i = Util.nullAsInt(paramObject, 0);
+    Log.d("MicroMsg.ContactWidgetShake", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
+    bh.bCz();
+    if ((paramMStorageEx != c.ban()) || (i <= 0))
+    {
+      Log.e("MicroMsg.ContactWidgetShake", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
+      AppMethodBeat.o(28369);
+      return;
+    }
+    if ((i != 7) && (i != 34))
+    {
+      AppMethodBeat.o(28369);
+      return;
+    }
+    dvr();
+    AppMethodBeat.o(28369);
+  }
+  
+  public final void onNotifyUserStatusChange()
+  {
+    AppMethodBeat.i(28368);
+    dvr();
+    AppMethodBeat.o(28368);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.a
  * JD-Core Version:    0.7.0.1
  */

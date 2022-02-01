@@ -9,6 +9,10 @@ class d
     extends d
   {}
   
+  static final class b
+    extends d
+  {}
+  
   static final class c
     extends d
   {}

@@ -1,115 +1,122 @@
 package com.tencent.mm.plugin.location.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ce.b;
+import com.tencent.mm.plugin.map.a.a;
+import com.tencent.mm.plugin.map.a.d;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class LoaddingView
   extends LinearLayout
   implements c
 {
-  private TextView obU;
-  private ProgressBar obV;
-  private View obW;
-  private boolean obX;
-  private String obY;
-  private Animation wq;
+  private TextView KdU;
+  private ProgressBar KdV;
+  private ImageView KdW;
+  private boolean KdX;
+  private String KdY;
+  private Animation bCz;
   
   public LoaddingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(113426);
-    this.obX = false;
-    this.obY = "";
+    AppMethodBeat.i(55802);
+    this.KdX = false;
+    this.KdY = "";
     init(paramContext);
-    AppMethodBeat.o(113426);
+    AppMethodBeat.o(55802);
   }
   
-  @TargetApi(11)
   public LoaddingView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(113425);
-    this.obX = false;
-    this.obY = "";
+    AppMethodBeat.i(55801);
+    this.KdX = false;
+    this.KdY = "";
     init(paramContext);
-    AppMethodBeat.o(113425);
+    AppMethodBeat.o(55801);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(113427);
-    this.wq = AnimationUtils.loadAnimation(paramContext, 2131034284);
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969995, this, true);
-    this.obV = ((ProgressBar)paramContext.findViewById(2131825438));
-    this.obU = ((TextView)paramContext.findViewById(2131825439));
-    this.obW = paramContext.findViewById(2131825436);
-    this.obU.setText("");
-    this.obU.setVisibility(0);
-    this.obV.setVisibility(0);
-    AppMethodBeat.o(113427);
+    AppMethodBeat.i(55803);
+    this.bCz = AnimationUtils.loadAnimation(paramContext, a.a.translate_map);
+    paramContext = LayoutInflater.from(paramContext).inflate(a.f.location_view, this, true);
+    this.KdV = ((ProgressBar)paramContext.findViewById(a.e.location_load_progress));
+    this.KdU = ((TextView)paramContext.findViewById(a.e.location_tips));
+    this.KdW = ((ImageView)paramContext.findViewById(a.e.location_here));
+    if (b.iRp()) {
+      this.KdW.setImageResource(a.d.location_current_marker_easy_mode);
+    }
+    this.KdU.setText("");
+    this.KdU.setVisibility(0);
+    this.KdV.setVisibility(0);
+    AppMethodBeat.o(55803);
   }
   
   public String getPreText()
   {
-    return this.obY;
+    return this.KdY;
   }
   
   public void setPreText(String paramString)
   {
-    AppMethodBeat.i(113430);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(55806);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(113430);
+      AppMethodBeat.o(55806);
       return;
     }
-    this.obY = (paramString + "\n");
-    AppMethodBeat.o(113430);
+    this.KdY = (paramString + "\n");
+    AppMethodBeat.o(55806);
   }
   
   public void setProgressAlwaysGone(boolean paramBoolean)
   {
-    AppMethodBeat.i(113428);
-    this.obX = paramBoolean;
-    this.obV.setVisibility(8);
-    this.obU.setVisibility(8);
-    AppMethodBeat.o(113428);
+    AppMethodBeat.i(55804);
+    this.KdX = paramBoolean;
+    this.KdV.setVisibility(8);
+    this.KdU.setVisibility(8);
+    AppMethodBeat.o(55804);
   }
   
   public void setText(String paramString)
   {
-    AppMethodBeat.i(113429);
-    if ((this.obU == null) || (this.obV == null) || (this.obX))
+    AppMethodBeat.i(55805);
+    if ((this.KdU == null) || (this.KdV == null) || (this.KdX))
     {
-      AppMethodBeat.o(113429);
+      AppMethodBeat.o(55805);
       return;
     }
-    if (!bo.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
-      this.obU.setText(String.valueOf(paramString));
-      this.obV.setVisibility(8);
-      this.obU.setVisibility(0);
-      AppMethodBeat.o(113429);
+      this.KdU.setText(String.valueOf(paramString));
+      this.KdV.setVisibility(8);
+      this.KdU.setVisibility(0);
+      AppMethodBeat.o(55805);
       return;
     }
-    this.obU.setText("");
-    this.obU.setVisibility(0);
-    this.obV.setVisibility(0);
-    AppMethodBeat.o(113429);
+    this.KdU.setText("");
+    this.KdU.setVisibility(0);
+    this.KdV.setVisibility(0);
+    AppMethodBeat.o(55805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.LoaddingView
  * JD-Core Version:    0.7.0.1
  */

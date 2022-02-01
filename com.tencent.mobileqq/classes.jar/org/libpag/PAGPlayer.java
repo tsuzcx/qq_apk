@@ -1,6 +1,7 @@
 package org.libpag;
 
 import android.graphics.Matrix;
+import android.graphics.RectF;
 import org.extra.tools.LibraryLoadUtils;
 
 public class PAGPlayer
@@ -12,13 +13,14 @@ public class PAGPlayer
   {
     LibraryLoadUtils.loadLibrary("libpag");
     nativeInit();
-    PAGFont.loadSystemFonts();
   }
   
   public PAGPlayer()
   {
     nativeSetup();
   }
+  
+  private native void nativeFinalize();
   
   private native void nativeGetMatrix(float[] paramArrayOfFloat);
   
@@ -40,10 +42,17 @@ public class PAGPlayer
   
   protected void finalize()
   {
-    nativeRelease();
+    nativeFinalize();
   }
   
-  public native boolean flush();
+  public boolean flush()
+  {
+    return flushAndFenceSync(null);
+  }
+  
+  public native boolean flushAndFenceSync(long[] paramArrayOfLong);
+  
+  public native RectF getBounds(PAGLayer paramPAGLayer);
   
   public native PAGComposition getComposition();
   
@@ -56,6 +65,8 @@ public class PAGPlayer
     return this.pagSurface;
   }
   
+  public native boolean hitTestPoint(PAGLayer paramPAGLayer, float paramFloat1, float paramFloat2, boolean paramBoolean);
+  
   public Matrix matrix()
   {
     float[] arrayOfFloat = new float[9];
@@ -66,6 +77,11 @@ public class PAGPlayer
   }
   
   public native float maxFrameRate();
+  
+  public void release()
+  {
+    nativeRelease();
+  }
   
   public native int scaleMode();
   
@@ -102,10 +118,12 @@ public class PAGPlayer
   public native void setVideoEnabled(boolean paramBoolean);
   
   public native boolean videoEnabled();
+  
+  public native boolean waitSync(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.PAGPlayer
  * JD-Core Version:    0.7.0.1
  */

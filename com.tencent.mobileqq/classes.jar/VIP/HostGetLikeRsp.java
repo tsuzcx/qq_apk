@@ -9,9 +9,9 @@ public final class HostGetLikeRsp
 {
   static CommRsp cache_errInfo = new CommRsp();
   public boolean canLike = true;
-  public CommRsp errInfo;
+  public CommRsp errInfo = null;
   public boolean hasLiked = true;
-  public long iTotal;
+  public long iTotal = 0L;
   
   public HostGetLikeRsp() {}
   
@@ -33,8 +33,9 @@ public final class HostGetLikeRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.errInfo != null) {
-      paramJceOutputStream.write(this.errInfo, 0);
+    CommRsp localCommRsp = this.errInfo;
+    if (localCommRsp != null) {
+      paramJceOutputStream.write(localCommRsp, 0);
     }
     paramJceOutputStream.write(this.iTotal, 1);
     paramJceOutputStream.write(this.canLike, 2);
@@ -43,7 +44,7 @@ public final class HostGetLikeRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.HostGetLikeRsp
  * JD-Core Version:    0.7.0.1
  */

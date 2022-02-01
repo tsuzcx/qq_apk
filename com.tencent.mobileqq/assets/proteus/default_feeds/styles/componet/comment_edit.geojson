@@ -32,7 +32,6 @@
                  "type":"wrap_content"
                  },
                  "attributes": {
-                 "setFrameString": "-1",
                  "setText:": "写评论...",
                  "setTextColorString:": "#66000000",
                  "setAlpha":"",

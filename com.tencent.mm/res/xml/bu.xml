@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference android:key="settings_about_mm_header" android:layout="@layout/at8" />
-    <IconPreference android:title="@string/ehv" android:key="funtion_about_wechat" />
-    <IconPreference android:title="@string/ego" android:key="settings_update" />
-    <Preference android:title="@string/edy" android:key="settings_report" android:layout="@layout/afi" />
-    <IconSummaryPreference android:title="@string/c5e" android:key="funtion_update" />
-    <IconPreference android:title="@string/c5c" android:key="funtion_check_update" />
-    <IconPreference android:title="@string/c5d" android:key="funtion_crowdtest_update" />
-    <PreferenceCategory />
-</PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />

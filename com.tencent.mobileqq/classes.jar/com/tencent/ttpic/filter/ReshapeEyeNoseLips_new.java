@@ -55,23 +55,24 @@ public class ReshapeEyeNoseLips_new
   
   public void getparamV()
   {
-    this.paramV1[0] = this.eyesSize;
-    this.paramV1[1] = this.eyesWidth;
-    this.paramV1[2] = this.eyesHeight;
-    this.paramV1[3] = this.eyesTiltAngle;
-    this.paramV1[4] = this.eyesDistance;
-    this.paramV1[5] = this.noseSize;
-    this.paramV1[6] = this.noseOutlineWidth;
-    this.paramV1[7] = this.noseBridgeWidth;
-    this.paramV1[8] = this.nosePosition;
-    this.paramV1[9] = this.noseTipSize;
-    this.paramV1[10] = this.lipsSize;
-    this.paramV1[11] = this.lipsWidth;
-    this.paramV1[12] = this.lipsHeight;
-    this.paramV1[13] = this.lipsYPosition;
-    this.paramV1[14] = this.eyebrowHeight;
-    this.paramV1[15] = this.eyebrowDistance;
-    this.paramV1[16] = this.eyebrowTiltAngle;
+    float[] arrayOfFloat = this.paramV1;
+    arrayOfFloat[0] = this.eyesSize;
+    arrayOfFloat[1] = this.eyesWidth;
+    arrayOfFloat[2] = this.eyesHeight;
+    arrayOfFloat[3] = this.eyesTiltAngle;
+    arrayOfFloat[4] = this.eyesDistance;
+    arrayOfFloat[5] = this.noseSize;
+    arrayOfFloat[6] = this.noseOutlineWidth;
+    arrayOfFloat[7] = this.noseBridgeWidth;
+    arrayOfFloat[8] = this.nosePosition;
+    arrayOfFloat[9] = this.noseTipSize;
+    arrayOfFloat[10] = this.lipsSize;
+    arrayOfFloat[11] = this.lipsWidth;
+    arrayOfFloat[12] = this.lipsHeight;
+    arrayOfFloat[13] = this.lipsYPosition;
+    arrayOfFloat[14] = this.eyebrowHeight;
+    arrayOfFloat[15] = this.eyebrowDistance;
+    arrayOfFloat[16] = this.eyebrowTiltAngle;
   }
   
   public void initAttribParams()
@@ -149,18 +150,21 @@ public class ReshapeEyeNoseLips_new
     if (paramMap.containsKey("lipsHeight")) {
       this.lipsHeight = (((Float)paramMap.get("lipsHeight")).floatValue() * -0.008F);
     }
+    float f;
     if (paramMap.containsKey("lipsWidth"))
     {
       this.lipsWidth = (((Float)paramMap.get("lipsWidth")).floatValue() * -0.0038F);
-      if (this.lipsWidth < 0.0F) {
-        this.lipsWidth *= 0.8F;
+      f = this.lipsWidth;
+      if (f < 0.0F) {
+        this.lipsWidth = (f * 0.8F);
       }
     }
     if (paramMap.containsKey("lipsYPosition"))
     {
       this.lipsYPosition = (((Float)paramMap.get("lipsYPosition")).floatValue() * -0.01F);
-      if (this.lipsYPosition < 0.0F) {
-        this.lipsYPosition *= 1.4F;
+      f = this.lipsYPosition;
+      if (f < 0.0F) {
+        this.lipsYPosition = (f * 1.4F);
       }
     }
     if (paramMap.containsKey("angles")) {
@@ -174,7 +178,7 @@ public class ReshapeEyeNoseLips_new
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.ReshapeEyeNoseLips_new
  * JD-Core Version:    0.7.0.1
  */

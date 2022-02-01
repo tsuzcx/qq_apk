@@ -12,15 +12,15 @@
                 <include android:id="@id/qqsetting2_msg_history" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030243" />
             </LinearLayout>
             <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080974" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030243" />
-                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080975" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030242" />
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080973" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030243" />
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080974" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030242" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00d6">
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080975" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030243" />
             </LinearLayout>
             <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00d6">
                 <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080976" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030243" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00d6">
                 <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080977" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030243" />
-                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080978" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030243" />
             </LinearLayout>
             <include android:id="@id/about" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030243" />
         </LinearLayout>

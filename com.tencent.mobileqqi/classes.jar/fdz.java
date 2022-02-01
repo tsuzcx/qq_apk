@@ -2,11 +2,18 @@ import com.tencent.mobileqq.app.MessageHandler;
 
 public class fdz
 {
-  public int a;
-  public long a;
-  public short a;
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
   
-  private fdz(MessageHandler paramMessageHandler) {}
+  public fdz(MessageHandler paramMessageHandler) {}
+  
+  public fdz(MessageHandler paramMessageHandler, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
 }
 
 

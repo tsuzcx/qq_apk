@@ -1,44 +1,40 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
+import android.content.Context;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public enum c
+final class c
 {
-  public final int style;
+  int uKZ;
+  private final int[] uLd;
+  int uLe;
   
-  static
+  c()
   {
-    AppMethodBeat.i(77452);
-    jqy = new c("NORMAL", 0, 0);
-    jqz = new c("BOLD", 1, 1);
-    jqA = new c[] { jqy, jqz };
-    AppMethodBeat.o(77452);
+    AppMethodBeat.i(324612);
+    this.uLd = new int[2];
+    this.uKZ = -1;
+    this.uLe = -1;
+    AppMethodBeat.o(324612);
   }
   
-  private c(int paramInt)
+  final int[] cSk()
   {
-    this.style = paramInt;
-  }
-  
-  public static c FQ(String paramString)
-  {
-    AppMethodBeat.i(77451);
-    paramString = d.g(paramString, c.class);
-    c localc = jqy;
-    if (paramString == null) {
-      paramString = localc;
-    }
-    for (;;)
-    {
-      paramString = (c)paramString;
-      AppMethodBeat.o(77451);
-      return paramString;
-    }
+    AppMethodBeat.i(324615);
+    int[] arrayOfInt = this.uLd;
+    Display localDisplay = ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay();
+    arrayOfInt[0] = localDisplay.getWidth();
+    arrayOfInt[1] = localDisplay.getHeight();
+    AppMethodBeat.o(324615);
+    return arrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.c
  * JD-Core Version:    0.7.0.1
  */

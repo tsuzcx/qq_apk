@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" style="@style/vf">
-        <TextView android:id="@id/fcz" android:text="@string/fnl" style="@style/vs" />
-        <LinearLayout style="@style/w8">
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/fft" android:visibility="gone" android:clickable="false" wallet:titleText="@string/fnh" wallet:contentTextColor="@color/s4" wallet:contentEnabled="false" wallet:contentFocusable="false" wallet:contentClickable="false" style="@style/w9" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/dr4" android:minHeight="45.0dip" wallet:titleText="@string/fnj" wallet:contentHint="@string/fni" style="@style/vd" />
-        </LinearLayout>
-        <Button android:id="@id/b02" android:layout_width="fill_parent" android:layout_marginTop="16.0dip" android:text="@string/so" style="@style/w5" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a53" android:layout_gravity="center_horizontal" android:id="@id/ffu" android:paddingBottom="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:text="@string/fj9" style="@style/vl" />
-        <TextView android:layout_gravity="bottom" android:id="@id/fed" android:layout_height="fill_parent" style="@style/wc" />
-    </LinearLayout>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b1e" />
+<RelativeLayout android:id="@id/iwo" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/j24" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:gravity="center" android:orientation="vertical" android:background="#b3000000" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+            <ImageView android:id="@id/j23" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@drawable/c5a" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/az" android:id="@id/j27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/ido" android:layout_below="@id/j23" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/j26" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/idp" android:layout_below="@id/j27" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/az" android:gravity="center" android:id="@id/j25" android:background="@drawable/aqb" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginBottom="136.0dip" android:text="@string/ibe" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center" android:orientation="vertical" android:id="@id/j1q" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <ImageView android:id="@id/j1p" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@drawable/c5_" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/az" android:gravity="center" android:id="@id/j1r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/idm" android:layout_below="@id/j1p" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </RelativeLayout>

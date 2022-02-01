@@ -2,624 +2,682 @@ package com.tencent.mm.model;
 
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.e.b;
+import com.tencent.mm.an.q;
+import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.modelstat.p;
+import com.tencent.mm.modelvideo.v;
 import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.l;
-import com.tencent.mm.storage.n;
-import com.tencent.mm.storage.p;
-import com.tencent.mm.storage.z;
-import java.util.Collections;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.RWCache;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cb;
+import com.tencent.mm.storage.g;
+import com.tencent.mm.storage.k;
+import com.tencent.mm.storage.m;
+import com.tencent.mm.storage.o;
+import com.tencent.mm.storage.t;
+import com.tencent.mm.storagebase.h.a;
+import com.tencent.mm.storagebase.h.b;
+import com.tencent.mm.vfs.ad;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 public final class c
 {
-  public static HashMap<Integer, h.d> baseDBFactories;
-  public br fkq;
-  public bq fkr;
-  com.tencent.mm.storage.h fks;
-  com.tencent.mm.model.b.c fkt;
-  com.tencent.mm.model.b.d fku;
-  com.tencent.mm.storage.j fkv;
-  n fkw;
-  l fkx;
-  com.tencent.mm.model.b.b fky;
+  public static HashMap<Integer, h.b> baseDBFactories;
+  o oiA;
+  m oiB;
+  com.tencent.mm.model.b.b oiC;
+  public cd oit;
+  public cc oiu;
+  com.tencent.mm.storage.h oiv;
+  com.tencent.mm.storage.i oiw;
+  com.tencent.mm.model.b.c oix;
+  com.tencent.mm.model.b.d oiy;
+  k oiz;
   
   static
   {
-    AppMethodBeat.i(16262);
+    AppMethodBeat.i(20305);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("BOTTLE_MESSAGE_TABLE".hashCode()), new c.5());
-    baseDBFactories.put(Integer.valueOf("APPBRAND_MESSAGE_TABLE".hashCode()), new c.6());
-    baseDBFactories.put(Integer.valueOf("BackupMoveTime".hashCode()), new c.7());
-    baseDBFactories.put(Integer.valueOf("BackupTempMoveTime".hashCode()), new c.8());
-    baseDBFactories.put(Integer.valueOf("BackupRecoverMsgListDataId".hashCode()), new c.9());
-    AppMethodBeat.o(16262);
+    localHashMap.put(Integer.valueOf("BOTTLE_MESSAGE_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return bm.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("APPBRAND_MESSAGE_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.storage.h.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("APPBRAND_NOTIFY_MESSAGE_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.storage.i.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("BackupMoveTime".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return k.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("BackupTempMoveTime".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return o.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("BackupRecoverMsgListDataId".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return m.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(20305);
   }
   
   public c()
   {
-    AppMethodBeat.i(16205);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.RL();
-    c.1 local1 = new c.1(this);
-    locale.eHO.at(local1);
-    com.tencent.mm.kernel.a.c.RX().add(new com.tencent.mm.kernel.api.b()
+    AppMethodBeat.i(20248);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baE().a(new h.a()
     {
-      public final List<String> RR()
+      public final void bau()
       {
-        AppMethodBeat.i(16200);
-        LinkedList localLinkedList = new LinkedList();
-        Collections.addAll(localLinkedList, new String[] { "image/shakeTranImg/", "emoji/", "mailapp/", "mailapp/", "voice2/", "video/", "attachment/" });
-        AppMethodBeat.o(16200);
-        return localLinkedList;
+        AppMethodBeat.i(20242);
+        com.tencent.mm.kernel.h.baF();
+        if (com.tencent.mm.kernel.h.baz())
+        {
+          com.tencent.mm.modelstat.l locall = p.bNk();
+          if (locall != null)
+          {
+            Log.i("MicroMsg.AccountStorage", "summer preCloseCallback netStatStg: ".concat(String.valueOf(locall)));
+            long l = System.currentTimeMillis();
+            locall.oXb.appendAll(true);
+            Log.i("MicroMsg.NetStat", "summer net appendAllToDisk end takes: " + (System.currentTimeMillis() - l) + " ms");
+          }
+        }
+        AppMethodBeat.o(20242);
       }
+      
+      public final void bav() {}
+      
+      public final void baw() {}
     });
-    com.tencent.mm.kernel.a.c.RX().add(new c.3(this));
-    AppMethodBeat.o(16205);
+    com.tencent.mm.kernel.a.c.baR().add(new c.3(this));
+    com.tencent.mm.kernel.a.c.baR().add(new c.4(this));
+    AppMethodBeat.o(20248);
   }
   
-  public static void QR()
+  public static SharedPreferences Fz(String paramString)
   {
-    AppMethodBeat.i(16214);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QR();
-    AppMethodBeat.o(16214);
+    AppMethodBeat.i(20262);
+    com.tencent.mm.kernel.h.baF();
+    paramString = com.tencent.mm.kernel.h.baE().Fz(paramString);
+    AppMethodBeat.o(20262);
+    return paramString;
   }
   
-  public static String Ro()
+  public static void a(bd parambd)
   {
-    AppMethodBeat.i(16210);
-    com.tencent.mm.kernel.g.RM();
-    String str = com.tencent.mm.kernel.g.RL().Ro();
-    AppMethodBeat.o(16210);
-    return str;
+    AppMethodBeat.i(20255);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().a(parambd);
+    AppMethodBeat.o(20255);
   }
   
-  public static String Rp()
+  public static void aZK()
   {
-    AppMethodBeat.i(16250);
-    com.tencent.mm.kernel.g.RM();
-    String str = com.tencent.mm.kernel.g.RL().cachePath;
-    AppMethodBeat.o(16250);
-    return str;
+    AppMethodBeat.i(20257);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZK();
+    AppMethodBeat.o(20257);
   }
   
-  public static com.tencent.mm.cg.h Rq()
+  public static void b(bd parambd)
   {
-    AppMethodBeat.i(16217);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.cg.h localh = com.tencent.mm.kernel.g.RL().eHS;
-    AppMethodBeat.o(16217);
-    return localh;
+    AppMethodBeat.i(20256);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().b(parambd);
+    AppMethodBeat.o(20256);
   }
   
-  public static String Rr()
+  public static g bAc()
   {
-    AppMethodBeat.i(16248);
-    com.tencent.mm.kernel.g.RM();
-    String str = com.tencent.mm.kernel.g.RL().Rr();
-    AppMethodBeat.o(16248);
-    return str;
-  }
-  
-  public static String Rs()
-  {
-    AppMethodBeat.i(16249);
-    com.tencent.mm.kernel.g.RM();
-    String str = com.tencent.mm.kernel.g.RL().Rs();
-    AppMethodBeat.o(16249);
-    return str;
-  }
-  
-  public static z Ru()
-  {
-    AppMethodBeat.i(16220);
-    com.tencent.mm.kernel.g.RM();
-    z localz = com.tencent.mm.kernel.g.RL().Ru();
-    AppMethodBeat.o(16220);
-    return localz;
-  }
-  
-  public static void Rw()
-  {
-    AppMethodBeat.i(16208);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RL().Rw();
-    AppMethodBeat.o(16208);
-  }
-  
-  public static bd YA()
-  {
-    AppMethodBeat.i(16222);
-    bd localbd = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA();
-    AppMethodBeat.o(16222);
-    return localbd;
-  }
-  
-  public static m YB()
-  {
-    AppMethodBeat.i(16223);
-    m localm = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YB();
-    AppMethodBeat.o(16223);
-    return localm;
-  }
-  
-  public static com.tencent.mm.plugin.messenger.foundation.a.a.h YC()
-  {
-    AppMethodBeat.i(16224);
-    com.tencent.mm.plugin.messenger.foundation.a.a.h localh = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ();
-    AppMethodBeat.o(16224);
-    return localh;
-  }
-  
-  public static com.tencent.mm.storage.o YD()
-  {
-    AppMethodBeat.i(16225);
-    com.tencent.mm.storage.o localo = ((com.tencent.mm.aj.o)com.tencent.mm.kernel.g.E(com.tencent.mm.aj.o.class)).YD();
-    AppMethodBeat.o(16225);
-    return localo;
-  }
-  
-  public static p YE()
-  {
-    AppMethodBeat.i(16226);
-    p localp = ((com.tencent.mm.aj.o)com.tencent.mm.kernel.g.E(com.tencent.mm.aj.o.class)).YE();
-    AppMethodBeat.o(16226);
-    return localp;
-  }
-  
-  public static be YF()
-  {
-    AppMethodBeat.i(16227);
-    be localbe = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YF();
-    AppMethodBeat.o(16227);
-    return localbe;
-  }
-  
-  public static com.tencent.mm.plugin.downloader.g.b YG()
-  {
-    AppMethodBeat.i(16228);
-    com.tencent.mm.plugin.downloader.g.b localb = ((com.tencent.mm.plugin.downloader.a.d)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.downloader.a.d.class)).YG();
-    AppMethodBeat.o(16228);
-    return localb;
-  }
-  
-  public static bh YH()
-  {
-    AppMethodBeat.i(16229);
-    bh localbh = ((com.tencent.mm.plugin.m.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.m.a.a.class)).YH();
-    AppMethodBeat.o(16229);
-    return localbh;
-  }
-  
-  public static k YI()
-  {
-    AppMethodBeat.i(16230);
-    k localk = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YI();
-    AppMethodBeat.o(16230);
-    return localk;
-  }
-  
-  public static ag YJ()
-  {
-    AppMethodBeat.i(16231);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    ag localag = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.chatroom.a.c.class)).YJ();
-    AppMethodBeat.o(16231);
-    return localag;
-  }
-  
-  public static String YK()
-  {
-    AppMethodBeat.i(16232);
-    String str = com.tencent.mm.plugin.i.c.YK();
-    AppMethodBeat.o(16232);
-    return str;
-  }
-  
-  public static String YL()
-  {
-    AppMethodBeat.i(16233);
-    String str = com.tencent.mm.plugin.i.c.YL();
-    AppMethodBeat.o(16233);
-    return str;
-  }
-  
-  public static String YM()
-  {
-    AppMethodBeat.i(16234);
-    String str = s.YM();
-    AppMethodBeat.o(16234);
-    return str;
-  }
-  
-  public static String YN()
-  {
-    AppMethodBeat.i(16235);
-    String str = com.tencent.mm.plugin.record.b.YN();
-    AppMethodBeat.o(16235);
-    return str;
-  }
-  
-  public static String YO()
-  {
-    AppMethodBeat.i(16236);
-    String str = aa.YO();
-    AppMethodBeat.o(16236);
-    return str;
-  }
-  
-  public static String YP()
-  {
-    AppMethodBeat.i(16237);
-    Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.RM();
-    localObject = com.tencent.mm.kernel.g.RL().eHR + "emoji/";
-    AppMethodBeat.o(16237);
-    return localObject;
-  }
-  
-  public static String YQ()
-  {
-    AppMethodBeat.i(16239);
-    Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.RM();
-    localObject = com.tencent.mm.kernel.g.RL().eHR + "image/shakeTranImg/";
-    AppMethodBeat.o(16239);
-    return localObject;
-  }
-  
-  public static String YR()
-  {
-    AppMethodBeat.i(16240);
-    String str = com.tencent.mm.plugin.h.a.YR();
-    AppMethodBeat.o(16240);
-    return str;
-  }
-  
-  public static String YS()
-  {
-    AppMethodBeat.i(16241);
-    Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.RM();
-    localObject = com.tencent.mm.kernel.g.RL().eHR + "attachment/";
-    AppMethodBeat.o(16241);
-    return localObject;
-  }
-  
-  public static String YT()
-  {
-    AppMethodBeat.i(16242);
-    String str = ((com.tencent.mm.aj.o)com.tencent.mm.kernel.g.E(com.tencent.mm.aj.o.class)).YT();
-    AppMethodBeat.o(16242);
-    return str;
-  }
-  
-  public static String YU()
-  {
-    AppMethodBeat.i(16243);
-    Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.RM();
-    localObject = com.tencent.mm.kernel.g.RL().eHR + "record/";
-    AppMethodBeat.o(16243);
-    return localObject;
-  }
-  
-  public static String YV()
-  {
-    AppMethodBeat.i(16246);
-    Object localObject = new StringBuilder();
-    aw.aaz();
-    localObject = getAccPath() + "voiceremind/";
-    AppMethodBeat.o(16246);
-    return localObject;
-  }
-  
-  public static String YW()
-  {
-    AppMethodBeat.i(16247);
-    Object localObject = new StringBuilder();
-    aw.aaz();
-    localObject = getAccPath() + "wenote/";
-    AppMethodBeat.o(16247);
-    return localObject;
-  }
-  
-  public static String Yv()
-  {
-    AppMethodBeat.i(16207);
-    com.tencent.mm.kernel.g.RM();
-    String str = com.tencent.mm.kernel.g.RL().eHQ;
-    AppMethodBeat.o(16207);
-    return str;
-  }
-  
-  public static boolean Yw()
-  {
-    AppMethodBeat.i(16215);
-    com.tencent.mm.kernel.g.RM();
-    boolean bool = com.tencent.mm.kernel.a.jM(com.tencent.mm.kernel.g.RJ().eHa);
-    AppMethodBeat.o(16215);
-    return bool;
-  }
-  
-  public static int Yx()
-  {
-    AppMethodBeat.i(16216);
-    com.tencent.mm.kernel.g.RM();
-    int i = com.tencent.mm.kernel.g.RJ().eHb;
-    AppMethodBeat.o(16216);
-    return i;
-  }
-  
-  public static com.tencent.mm.cg.h Yy()
-  {
-    AppMethodBeat.i(16218);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.cg.h localh = com.tencent.mm.kernel.g.RL().eHT;
-    AppMethodBeat.o(16218);
-    return localh;
-  }
-  
-  public static com.tencent.mm.plugin.messenger.foundation.a.a.i Yz()
-  {
-    AppMethodBeat.i(16221);
-    com.tencent.mm.plugin.messenger.foundation.a.a.i locali = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Yz();
-    AppMethodBeat.o(16221);
-    return locali;
-  }
-  
-  public static com.tencent.mm.storage.g Zb()
-  {
-    AppMethodBeat.i(16257);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    com.tencent.mm.storage.g localg = com.tencent.mm.plugin.c.a.asD().Zb();
-    AppMethodBeat.o(16257);
+    AppMethodBeat.i(20300);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    g localg = com.tencent.mm.plugin.c.a.caJ().bAc();
+    AppMethodBeat.o(20300);
     return localg;
   }
   
-  public static com.tencent.mm.plugin.messenger.foundation.a.a.c Zc()
+  public static com.tencent.mm.plugin.messenger.foundation.a.a.c bAd()
   {
-    AppMethodBeat.i(16258);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    com.tencent.mm.plugin.messenger.foundation.a.a.c localc = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Zc();
-    AppMethodBeat.o(16258);
+    AppMethodBeat.i(20301);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.plugin.messenger.foundation.a.a.c localc = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bAd();
+    AppMethodBeat.o(20301);
     return localc;
   }
   
-  public static void a(as paramas)
+  public static String bai()
   {
-    AppMethodBeat.i(16212);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.a locala = com.tencent.mm.kernel.g.RJ();
-    ab.i("MMKernel.CoreAccount", "UserStatusChange: add %s", new Object[] { paramas });
-    synchronized (locala.eHc)
-    {
-      if (!locala.eHc.contains(paramas)) {
-        locala.eHc.add(paramas);
-      }
-      AppMethodBeat.o(16212);
-      return;
-    }
+    AppMethodBeat.i(20253);
+    com.tencent.mm.kernel.h.baF();
+    String str = com.tencent.mm.kernel.h.baE().bai();
+    AppMethodBeat.o(20253);
+    return str;
   }
   
-  public static void b(as paramas)
+  public static String baj()
   {
-    AppMethodBeat.i(16213);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.a locala = com.tencent.mm.kernel.g.RJ();
-    ab.i("MMKernel.CoreAccount", "UserStatusChange: remove %s", new Object[] { paramas });
-    synchronized (locala.eHc)
-    {
-      locala.eHc.remove(paramas);
-      AppMethodBeat.o(16213);
-      return;
-    }
+    AppMethodBeat.i(20293);
+    com.tencent.mm.kernel.h.baF();
+    String str = com.tencent.mm.kernel.h.baE().cachePath;
+    AppMethodBeat.o(20293);
+    return str;
+  }
+  
+  public static String bak()
+  {
+    AppMethodBeat.i(20291);
+    com.tencent.mm.kernel.h.baF();
+    String str = com.tencent.mm.kernel.h.baE().bak();
+    AppMethodBeat.o(20291);
+    return str;
+  }
+  
+  public static String bal()
+  {
+    AppMethodBeat.i(20292);
+    com.tencent.mm.kernel.h.baF();
+    String str = com.tencent.mm.kernel.h.baE().bal();
+    AppMethodBeat.o(20292);
+    return str;
+  }
+  
+  public static aq ban()
+  {
+    AppMethodBeat.i(20263);
+    com.tencent.mm.kernel.h.baF();
+    aq localaq = com.tencent.mm.kernel.h.baE().ban();
+    AppMethodBeat.o(20263);
+    return localaq;
+  }
+  
+  public static void bap()
+  {
+    AppMethodBeat.i(20251);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baE().bap();
+    AppMethodBeat.o(20251);
+  }
+  
+  public static bx bzA()
+  {
+    AppMethodBeat.i(20265);
+    bx localbx = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA();
+    AppMethodBeat.o(20265);
+    return localbx;
+  }
+  
+  public static com.tencent.mm.plugin.messenger.foundation.a.a.n bzB()
+  {
+    AppMethodBeat.i(20266);
+    com.tencent.mm.plugin.messenger.foundation.a.a.n localn = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzB();
+    AppMethodBeat.o(20266);
+    return localn;
+  }
+  
+  public static com.tencent.mm.plugin.messenger.foundation.a.a.f bzC()
+  {
+    AppMethodBeat.i(241943);
+    com.tencent.mm.plugin.messenger.foundation.a.a.f localf = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzC();
+    AppMethodBeat.o(241943);
+    return localf;
+  }
+  
+  public static com.tencent.mm.plugin.messenger.foundation.a.a.i bzD()
+  {
+    AppMethodBeat.i(20267);
+    com.tencent.mm.plugin.messenger.foundation.a.a.i locali = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).gaZ();
+    AppMethodBeat.o(20267);
+    return locali;
+  }
+  
+  public static t bzE()
+  {
+    AppMethodBeat.i(20268);
+    t localt = ((q)com.tencent.mm.kernel.h.ax(q.class)).bzE();
+    AppMethodBeat.o(20268);
+    return localt;
+  }
+  
+  public static com.tencent.mm.storage.u bzF()
+  {
+    AppMethodBeat.i(20269);
+    com.tencent.mm.storage.u localu = ((q)com.tencent.mm.kernel.h.ax(q.class)).bzF();
+    AppMethodBeat.o(20269);
+    return localu;
+  }
+  
+  public static by bzG()
+  {
+    AppMethodBeat.i(20270);
+    by localby = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzG();
+    AppMethodBeat.o(20270);
+    return localby;
+  }
+  
+  public static com.tencent.mm.plugin.downloader.f.b bzH()
+  {
+    AppMethodBeat.i(20271);
+    com.tencent.mm.plugin.downloader.f.b localb = ((com.tencent.mm.plugin.downloader.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.downloader.a.d.class)).bzH();
+    AppMethodBeat.o(20271);
+    return localb;
+  }
+  
+  public static cb bzI()
+  {
+    AppMethodBeat.i(20272);
+    cb localcb = ((com.tencent.mm.plugin.r.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.r.a.a.class)).bzI();
+    AppMethodBeat.o(20272);
+    return localcb;
+  }
+  
+  public static com.tencent.mm.plugin.messenger.foundation.a.a.l bzJ()
+  {
+    AppMethodBeat.i(20273);
+    com.tencent.mm.plugin.messenger.foundation.a.a.l locall = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzJ();
+    AppMethodBeat.o(20273);
+    return locall;
+  }
+  
+  public static ar bzK()
+  {
+    AppMethodBeat.i(20274);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    ar localar = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.chatroom.a.b.class)).bzK();
+    AppMethodBeat.o(20274);
+    return localar;
+  }
+  
+  public static String bzL()
+  {
+    AppMethodBeat.i(20275);
+    String str = com.tencent.mm.plugin.image.d.bzL();
+    AppMethodBeat.o(20275);
+    return str;
+  }
+  
+  public static String bzM()
+  {
+    AppMethodBeat.i(20276);
+    String str = com.tencent.mm.plugin.image.d.bzM();
+    AppMethodBeat.o(20276);
+    return str;
+  }
+  
+  public static String bzN()
+  {
+    AppMethodBeat.i(20277);
+    String str = s.bzN();
+    AppMethodBeat.o(20277);
+    return str;
+  }
+  
+  public static String bzO()
+  {
+    AppMethodBeat.i(20278);
+    String str = com.tencent.mm.plugin.record.c.bzO();
+    AppMethodBeat.o(20278);
+    return str;
+  }
+  
+  public static String bzP()
+  {
+    AppMethodBeat.i(20279);
+    String str = com.tencent.mm.storage.ar.bzP();
+    AppMethodBeat.o(20279);
+    return str;
+  }
+  
+  public static String bzQ()
+  {
+    AppMethodBeat.i(20280);
+    Object localObject = new StringBuilder();
+    com.tencent.mm.kernel.h.baF();
+    localObject = com.tencent.mm.kernel.h.baE().mCJ + "emoji/";
+    AppMethodBeat.o(20280);
+    return localObject;
+  }
+  
+  public static String bzR()
+  {
+    AppMethodBeat.i(20282);
+    Object localObject = new StringBuilder();
+    com.tencent.mm.kernel.h.baF();
+    localObject = com.tencent.mm.kernel.h.baE().mCJ + "image/shakeTranImg/";
+    AppMethodBeat.o(20282);
+    return localObject;
+  }
+  
+  public static String bzS()
+  {
+    AppMethodBeat.i(20283);
+    String str = com.tencent.mm.plugin.l.a.bzS();
+    AppMethodBeat.o(20283);
+    return str;
+  }
+  
+  public static String bzT()
+  {
+    AppMethodBeat.i(20284);
+    Object localObject = new StringBuilder();
+    com.tencent.mm.kernel.h.baF();
+    localObject = com.tencent.mm.kernel.h.baE().mCJ + "attachment/";
+    AppMethodBeat.o(20284);
+    return localObject;
+  }
+  
+  public static String bzU()
+  {
+    AppMethodBeat.i(20285);
+    String str = ((q)com.tencent.mm.kernel.h.ax(q.class)).bzU();
+    AppMethodBeat.o(20285);
+    return str;
+  }
+  
+  public static String bzV()
+  {
+    AppMethodBeat.i(20286);
+    Object localObject = new StringBuilder();
+    com.tencent.mm.kernel.h.baF();
+    localObject = com.tencent.mm.kernel.h.baE().mCJ + "record/";
+    AppMethodBeat.o(20286);
+    return localObject;
+  }
+  
+  public static String bzW()
+  {
+    AppMethodBeat.i(20289);
+    Object localObject = new StringBuilder();
+    bh.bCz();
+    localObject = getAccPath() + "voiceremind/";
+    AppMethodBeat.o(20289);
+    return localObject;
+  }
+  
+  public static String bzX()
+  {
+    AppMethodBeat.i(20290);
+    Object localObject = new StringBuilder();
+    bh.bCz();
+    localObject = getAccPath() + "wenote/";
+    AppMethodBeat.o(20290);
+    return localObject;
+  }
+  
+  public static String bzv()
+  {
+    AppMethodBeat.i(20250);
+    com.tencent.mm.kernel.h.baF();
+    String str = com.tencent.mm.kernel.h.baE().mCI;
+    AppMethodBeat.o(20250);
+    return str;
+  }
+  
+  public static boolean bzw()
+  {
+    AppMethodBeat.i(20258);
+    com.tencent.mm.kernel.h.baF();
+    boolean bool = com.tencent.mm.kernel.b.sy(com.tencent.mm.kernel.h.baC().mBT);
+    AppMethodBeat.o(20258);
+    return bool;
+  }
+  
+  public static int bzx()
+  {
+    AppMethodBeat.i(20259);
+    com.tencent.mm.kernel.h.baF();
+    int i = com.tencent.mm.kernel.h.baC().mBU;
+    AppMethodBeat.o(20259);
+    return i;
+  }
+  
+  public static com.tencent.mm.storagebase.h bzy()
+  {
+    AppMethodBeat.i(20261);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.storagebase.h localh = com.tencent.mm.kernel.h.baE().mCO;
+    AppMethodBeat.o(20261);
+    return localh;
+  }
+  
+  public static j bzz()
+  {
+    AppMethodBeat.i(20264);
+    j localj = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzz();
+    AppMethodBeat.o(20264);
+    return localj;
   }
   
   public static void clearPluginData(int paramInt)
   {
-    AppMethodBeat.i(16253);
-    q.ks(paramInt);
+    AppMethodBeat.i(20296);
+    y.uT(paramInt);
     if ((paramInt & 0x10) != 0)
     {
-      bf.a("medianote", null);
-      aw.aaz();
-      YF().arF("medianote");
+      br.a("medianote", null);
+      bh.bCz();
+      bzG().bxK("medianote");
+      ac.aY("medianote", 15);
     }
-    AppMethodBeat.o(16253);
+    AppMethodBeat.o(20296);
   }
   
   public static void closeDB()
   {
-    AppMethodBeat.i(16211);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RL().kr(null);
-    AppMethodBeat.o(16211);
+    AppMethodBeat.i(20254);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baE().Cg(null);
+    AppMethodBeat.o(20254);
   }
   
   public static String getAccPath()
   {
-    AppMethodBeat.i(16251);
-    com.tencent.mm.kernel.g.RM();
-    String str = com.tencent.mm.kernel.g.RL().eHR;
-    AppMethodBeat.o(16251);
+    AppMethodBeat.i(20294);
+    com.tencent.mm.kernel.h.baF();
+    String str = com.tencent.mm.kernel.h.baE().mCJ;
+    AppMethodBeat.o(20294);
     return str;
   }
   
   public static String getAccSnsPath()
   {
-    AppMethodBeat.i(16244);
-    String str = ((com.tencent.mm.plugin.sns.b.b)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.sns.b.b.class)).getAccSnsPath();
-    AppMethodBeat.o(16244);
+    AppMethodBeat.i(20287);
+    String str = ((com.tencent.mm.plugin.sns.c.c)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.sns.c.c.class)).getAccSnsPath();
+    AppMethodBeat.o(20287);
     return str;
   }
   
   public static String getAccSnsTmpPath()
   {
-    AppMethodBeat.i(16245);
-    String str = ((com.tencent.mm.plugin.sns.b.b)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.sns.b.b.class)).getAccSnsTmpPath();
-    AppMethodBeat.o(16245);
+    AppMethodBeat.i(20288);
+    String str = ((com.tencent.mm.plugin.sns.c.c)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.sns.c.c.class)).getAccSnsTmpPath();
+    AppMethodBeat.o(20288);
     return str;
   }
   
   public static String getAccVideoPath()
   {
-    AppMethodBeat.i(16238);
-    com.tencent.mm.modelvideo.o.alD();
-    String str = com.tencent.mm.modelvideo.o.getAccVideoPath();
-    AppMethodBeat.o(16238);
+    AppMethodBeat.i(20281);
+    v.bOg();
+    String str = v.getAccVideoPath();
+    AppMethodBeat.o(20281);
     return str;
+  }
+  
+  public static com.tencent.mm.storagebase.h getDataDB()
+  {
+    AppMethodBeat.i(20260);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.storagebase.h localh = com.tencent.mm.kernel.h.baE().mCN;
+    AppMethodBeat.o(20260);
+    return localh;
+  }
+  
+  public static com.tencent.mm.message.b.a getNotifyMessageRecordStorage()
+  {
+    AppMethodBeat.i(241975);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.message.b.a locala = ((com.tencent.mm.message.b.b)com.tencent.mm.kernel.h.az(com.tencent.mm.message.b.b.class)).getNotifyMessageRecordStorage();
+    AppMethodBeat.o(241975);
+    return locala;
   }
   
   public static int getUin()
   {
-    AppMethodBeat.i(16206);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ();
-    int i = com.tencent.mm.kernel.a.getUin();
-    AppMethodBeat.o(16206);
+    AppMethodBeat.i(20249);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC();
+    int i = com.tencent.mm.kernel.b.getUin();
+    AppMethodBeat.o(20249);
     return i;
   }
   
   public static boolean isSDCardAvailable()
   {
-    AppMethodBeat.i(16209);
-    com.tencent.mm.kernel.g.RM();
-    boolean bool = com.tencent.mm.kernel.g.RL().isSDCardAvailable();
-    AppMethodBeat.o(16209);
+    AppMethodBeat.i(20252);
+    com.tencent.mm.kernel.h.baF();
+    boolean bool = com.tencent.mm.kernel.h.baE().isSDCardAvailable();
+    AppMethodBeat.o(20252);
     return bool;
   }
   
-  public static SharedPreferences mC(String paramString)
+  public final com.tencent.mm.model.b.d bAa()
   {
-    AppMethodBeat.i(16219);
-    com.tencent.mm.kernel.g.RM();
-    paramString = com.tencent.mm.kernel.g.RL().mC(paramString);
-    AppMethodBeat.o(16219);
-    return paramString;
+    AppMethodBeat.i(20298);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.model.b.d locald = this.oiy;
+    AppMethodBeat.o(20298);
+    return locald;
   }
   
-  public final void YX()
+  public final com.tencent.mm.model.b.b bAb()
   {
-    AppMethodBeat.i(16252);
-    Object localObject = new StringBuilder("mm");
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ();
-    String str1 = com.tencent.mm.a.g.w(com.tencent.mm.kernel.a.getUin().getBytes());
-    localObject = ac.eQv + str1 + "/";
-    str1 = com.tencent.mm.compatible.util.e.eQz + str1 + "/";
-    String[] arrayOfString = new com.tencent.mm.vfs.b((String)localObject).a(new com.tencent.mm.vfs.i()
+    AppMethodBeat.i(20299);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.model.b.b localb = this.oiC;
+    AppMethodBeat.o(20299);
+    return localb;
+  }
+  
+  public final k bAe()
+  {
+    AppMethodBeat.i(20302);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    k localk = this.oiz;
+    AppMethodBeat.o(20302);
+    return localk;
+  }
+  
+  public final o bAf()
+  {
+    AppMethodBeat.i(20303);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    o localo = this.oiA;
+    AppMethodBeat.o(20303);
+    return localo;
+  }
+  
+  public final m bAg()
+  {
+    AppMethodBeat.i(20304);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    m localm = this.oiB;
+    AppMethodBeat.o(20304);
+    return localm;
+  }
+  
+  public final void bzY()
+  {
+    AppMethodBeat.i(20295);
+    String str1 = com.tencent.mm.kernel.h.baE().cachePath;
+    String str2 = com.tencent.mm.kernel.h.baE().mCJ;
+    String[] arrayOfString = new com.tencent.mm.vfs.u(str1).a(new ad()
     {
-      public final boolean nf(String paramAnonymousString)
+      public final boolean accept(com.tencent.mm.vfs.u paramAnonymousu, String paramAnonymousString)
       {
-        AppMethodBeat.i(16203);
+        AppMethodBeat.i(242040);
         if ((paramAnonymousString.equals("EnMicroMsg.db")) || (paramAnonymousString.startsWith("EnMicroMsg.dberr")) || (paramAnonymousString.equals("FTS5IndexMicroMsg_encrypt.db")))
         {
-          AppMethodBeat.o(16203);
+          AppMethodBeat.o(242040);
           return true;
         }
-        AppMethodBeat.o(16203);
+        AppMethodBeat.o(242040);
         return false;
       }
     });
     if (arrayOfString == null)
     {
-      AppMethodBeat.o(16252);
+      AppMethodBeat.o(20295);
       return;
     }
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
-      String str2 = arrayOfString[i];
-      String str3 = str1 + str2 + ".dump";
-      com.tencent.mm.vfs.e.deleteFile(str3);
-      com.tencent.mm.vfs.e.C((String)localObject + str2, str3);
-      ab.i("MicroMsg.AccountStorage", "Exported: ".concat(String.valueOf(str3)));
+      String str3 = arrayOfString[i];
+      String str4 = str2 + str3 + ".dump";
+      com.tencent.mm.vfs.y.deleteFile(str4);
+      com.tencent.mm.vfs.y.O(str1 + str3, str4, false);
+      Log.i("MicroMsg.AccountStorage", "Exported: ".concat(String.valueOf(str4)));
       i += 1;
     }
-    AppMethodBeat.o(16252);
+    AppMethodBeat.o(20295);
   }
   
-  public final com.tencent.mm.model.b.c YY()
+  public final com.tencent.mm.model.b.c bzZ()
   {
-    AppMethodBeat.i(16254);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    com.tencent.mm.model.b.c localc = this.fkt;
-    AppMethodBeat.o(16254);
+    AppMethodBeat.i(20297);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.model.b.c localc = this.oix;
+    AppMethodBeat.o(20297);
     return localc;
   }
   
-  public final com.tencent.mm.model.b.d YZ()
+  public static abstract interface a
   {
-    AppMethodBeat.i(16255);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    com.tencent.mm.model.b.d locald = this.fku;
-    AppMethodBeat.o(16255);
-    return locald;
-  }
-  
-  public final com.tencent.mm.model.b.b Za()
-  {
-    AppMethodBeat.i(16256);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    com.tencent.mm.model.b.b localb = this.fky;
-    AppMethodBeat.o(16256);
-    return localb;
-  }
-  
-  public final com.tencent.mm.storage.j Zd()
-  {
-    AppMethodBeat.i(16259);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    com.tencent.mm.storage.j localj = this.fkv;
-    AppMethodBeat.o(16259);
-    return localj;
-  }
-  
-  public final n Ze()
-  {
-    AppMethodBeat.i(16260);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    n localn = this.fkw;
-    AppMethodBeat.o(16260);
-    return localn;
-  }
-  
-  public final l Zf()
-  {
-    AppMethodBeat.i(16261);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RJ().QQ();
-    l locall = this.fkx;
-    AppMethodBeat.o(16261);
-    return locall;
+    public abstract void gQ(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.c
  * JD-Core Version:    0.7.0.1
  */

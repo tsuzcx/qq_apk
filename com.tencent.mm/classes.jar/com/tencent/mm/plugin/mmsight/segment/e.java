@@ -4,23 +4,28 @@ import android.graphics.Point;
 
 public abstract interface e
 {
-  public abstract void a(e.a parama);
+  public abstract void O(Runnable paramRunnable);
   
-  public abstract Point amc();
+  public abstract void a(a parama);
   
-  public abstract int amd();
+  public abstract Point bOM();
   
-  public abstract void mm(int paramInt);
+  public abstract int bON();
   
-  public abstract int p(String paramString, long paramLong1, long paramLong2);
+  public abstract int o(String paramString, long paramLong1, long paramLong2);
   
   public abstract void stop();
   
-  public abstract void y(Runnable paramRunnable);
+  public abstract void xe(int paramInt);
+  
+  public static abstract interface a
+  {
+    public abstract void cb(byte[] paramArrayOfByte);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.e
  * JD-Core Version:    0.7.0.1
  */

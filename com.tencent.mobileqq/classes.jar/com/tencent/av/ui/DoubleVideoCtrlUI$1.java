@@ -1,33 +1,47 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.tips.TipsUtil;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import lid;
 
-public class DoubleVideoCtrlUI$1
+class DoubleVideoCtrlUI$1
   implements Runnable
 {
   DoubleVideoCtrlUI$1(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void run()
   {
-    lid locallid = this.this$0.a.a();
-    QLog.w(this.this$0.jdField_d_of_type_JavaLangString, 1, "CheckRemoteCameraRunnable, 5s has past, 对方视频数据没来, mRecvVideoData[" + this.this$0.e + "], SessionType[" + locallid.jdField_d_of_type_Int + "], shutCameraAnswer[" + locallid.n + "], cameraPermission[" + locallid.o + "]");
-    if ((!this.this$0.e) && (locallid.jdField_d_of_type_Int == 2))
+    if (this.this$0.V()) {
+      return;
+    }
+    long l = AudioHelper.c();
+    if ((!this.this$0.am.n()) && (this.this$0.am.k().h == 1) && (this.this$0.am.k().H))
     {
-      this.this$0.a.e(locallid.jdField_d_of_type_JavaLangString);
-      if ((locallid.n) || (!locallid.o))
+      if (QLog.isColorLevel())
       {
-        locallid.a(-1011L, "CheckRemoteCameraRunnable", 1);
-        this.this$0.a("CheckRemoteCameraRunnable", 1);
+        String str = this.this$0.X;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("FixTerSwitchStatus ,switch to pc ,local close camera, seq[");
+        localStringBuilder.append(l);
+        localStringBuilder.append("]");
+        QLog.w(str, 1, localStringBuilder.toString());
       }
-      this.this$0.C(-1011L);
+      this.this$0.m(l);
+      this.this$0.al.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
+      TipsUtil.a(this.this$0.al, 1021);
+    }
+    this.this$0.f(l, 16777215);
+    if (this.this$0.am.k().E) {
+      this.this$0.am.a(true, this.this$0.am.k().s);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.1
  * JD-Core Version:    0.7.0.1
  */

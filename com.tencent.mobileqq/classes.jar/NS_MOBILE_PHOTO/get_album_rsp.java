@@ -14,22 +14,22 @@ public final class get_album_rsp
   static PublicShareData cache_public_share_data = new PublicShareData();
   static Map<Long, wx_user_info> cache_sharer_wx_info;
   static int cache_sort_type = 0;
-  public Album album;
-  public int albumCommentNum;
-  public int albumFaceNum;
-  public int albumLikeNum;
+  public Album album = null;
+  public int albumCommentNum = 0;
+  public int albumFaceNum = 0;
+  public int albumLikeNum = 0;
   public String albumLikekey = "";
-  public int albumVisitNum;
+  public int albumVisitNum = 0;
   public String invite_key = "";
-  public boolean isCoverUserSet;
-  public boolean isMyLiked;
-  public boolean isOwner;
-  public int largeCoverHeight;
+  public boolean isCoverUserSet = false;
+  public boolean isMyLiked = false;
+  public boolean isOwner = false;
+  public int largeCoverHeight = 0;
   public String largeCoverUrl = "";
-  public int largeCoverWidth;
-  public PublicShareData public_share_data;
+  public int largeCoverWidth = 0;
+  public PublicShareData public_share_data = null;
   public String share_url = "";
-  public Map<Long, wx_user_info> sharer_wx_info;
+  public Map<Long, wx_user_info> sharer_wx_info = null;
   public int sort_type = 3;
   
   static
@@ -88,37 +88,43 @@ public final class get_album_rsp
     paramJceOutputStream.write(this.album, 0);
     paramJceOutputStream.write(this.albumFaceNum, 1);
     paramJceOutputStream.write(this.albumLikeNum, 2);
-    if (this.albumLikekey != null) {
-      paramJceOutputStream.write(this.albumLikekey, 3);
+    Object localObject = this.albumLikekey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.albumVisitNum, 4);
     paramJceOutputStream.write(this.isMyLiked, 5);
-    if (this.largeCoverUrl != null) {
-      paramJceOutputStream.write(this.largeCoverUrl, 6);
+    localObject = this.largeCoverUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.albumCommentNum, 7);
-    if (this.share_url != null) {
-      paramJceOutputStream.write(this.share_url, 8);
+    localObject = this.share_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.invite_key != null) {
-      paramJceOutputStream.write(this.invite_key, 9);
+    localObject = this.invite_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.public_share_data != null) {
-      paramJceOutputStream.write(this.public_share_data, 10);
+    localObject = this.public_share_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
     paramJceOutputStream.write(this.largeCoverHeight, 11);
     paramJceOutputStream.write(this.largeCoverWidth, 12);
     paramJceOutputStream.write(this.sort_type, 13);
     paramJceOutputStream.write(this.isOwner, 14);
-    if (this.sharer_wx_info != null) {
-      paramJceOutputStream.write(this.sharer_wx_info, 15);
+    localObject = this.sharer_wx_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 15);
     }
     paramJceOutputStream.write(this.isCoverUserSet, 16);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_album_rsp
  * JD-Core Version:    0.7.0.1
  */

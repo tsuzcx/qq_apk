@@ -1,16 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.subscribe.widget.ShadowCardView android:id="@id/idg" android:layout_width="wrap_content" android:layout_height="wrap_content" app:shadowBlur="16.0dip" app:shadowBottomHeight="5.0dip" app:shadowCardColor="#ffebecf0" app:shadowCardOffsetX="5.0dip" app:shadowCardOffsetY="5.0dip" app:shadowHeightColor="#99a6abbd" app:shadowRightHeight="6.0dip" app:shadowRound="5.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:id="@id/ee7" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginTop="14.0dip">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/mgh" android:background="@drawable/eew" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/mts" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="咖啡瘾者俱乐部" android:maxLines="1" />
-        </LinearLayout>
-        <TextView android:textSize="12.0dip" android:textColor="#ff989eb4" android:ellipsize="end" android:id="@id/mtr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.5dip" android:layout_marginTop="5.0dip" android:text="2819人在发布动态" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.5dip" android:layout_marginTop="7.0dip" android:layout_marginRight="8.5dip" android:layout_marginBottom="12.0dip">
-            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/mdt" android:layout_width="43.0dip" android:layout_height="43.0dip" android:scaleType="centerCrop" app:round_radius="2.5dip" />
-            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/me5" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginLeft="2.0dip" android:scaleType="centerCrop" app:round_radius="2.5dip" />
-            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/meh" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginLeft="2.0dip" android:scaleType="centerCrop" app:round_radius="2.5dip" />
-        </LinearLayout>
-    </LinearLayout>
-</com.tencent.biz.subscribe.widget.ShadowCardView>
+<com.tencent.mobileqq.guild.privatechannel.ext.GuildSelectDeleteMemberLayout android:orientation="vertical" android:id="@id/els" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

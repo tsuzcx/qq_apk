@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/e4s" android:background="#f2ffffff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/aqo"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#ffcfcfcf" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="13.0sp" android:textColorHint="@color/l" android:gravity="center|left" android:id="@id/foz" android:background="@drawable/arf" android:paddingLeft="6.0dip" android:layout_width="0.0dip" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:hint="@string/gjx" android:layout_weight="1.0" />
+        <RelativeLayout android:paddingRight="16.0dip" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/fp0" android:layout_width="@dimen/aqn" android:layout_height="@dimen/aqn" android:layout_marginLeft="16.0dip" android:src="@drawable/ayw" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/aqr" android:textColor="@color/m" android:id="@id/hn1" android:layout_width="wrap_content" android:layout_height="@dimen/aqp" android:layout_marginLeft="@dimen/aqq" android:layout_marginTop="@dimen/aqs" android:includeFontPadding="false" android:layout_toRightOf="@id/fp0" android:layout_alignParentTop="true" />
+            <ImageView android:id="@id/fow" android:layout_width="@dimen/aqn" android:layout_height="@dimen/aqn" android:layout_marginLeft="@dimen/aqm" android:src="@drawable/ayu" android:layout_toRightOf="@id/fp0" android:layout_centerVertical="true" />
+            <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/aqr" android:textColor="@color/m" android:id="@id/hmz" android:layout_width="wrap_content" android:layout_height="@dimen/aqp" android:layout_marginTop="@dimen/aqs" android:includeFontPadding="false" android:layout_toRightOf="@id/fow" android:layout_alignParentTop="true" />
+            <ImageView android:id="@id/fox" android:layout_width="@dimen/aqn" android:layout_height="@dimen/aqn" android:layout_marginLeft="@dimen/aqm" android:src="@drawable/ayx" android:layout_toRightOf="@id/fow" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/hcb" android:layout_width="@dimen/aqn" android:layout_height="@dimen/aqn" android:layout_marginLeft="@dimen/aqm" android:src="@drawable/fvo" android:layout_toRightOf="@id/fox" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

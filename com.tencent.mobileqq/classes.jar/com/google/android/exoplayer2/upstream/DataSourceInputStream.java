@@ -64,15 +64,10 @@ public final class DataSourceInputStream
   
   public int read(@NonNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (!this.closed) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      checkOpened();
-      paramInt1 = this.dataSource.read(paramArrayOfByte, paramInt1, paramInt2);
-      if (paramInt1 != -1) {
-        break;
-      }
+    Assertions.checkState(this.closed ^ true);
+    checkOpened();
+    paramInt1 = this.dataSource.read(paramArrayOfByte, paramInt1, paramInt2);
+    if (paramInt1 == -1) {
       return -1;
     }
     this.totalBytesRead += paramInt1;
@@ -81,7 +76,7 @@ public final class DataSourceInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.DataSourceInputStream
  * JD-Core Version:    0.7.0.1
  */

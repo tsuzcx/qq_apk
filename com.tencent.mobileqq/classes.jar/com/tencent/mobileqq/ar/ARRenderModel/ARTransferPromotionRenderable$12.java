@@ -1,28 +1,30 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amtd;
-import amvq;
-import amvs;
+import com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper;
 
-public class ARTransferPromotionRenderable$12
+class ARTransferPromotionRenderable$12
   implements Runnable
 {
-  public ARTransferPromotionRenderable$12(amvq paramamvq) {}
+  ARTransferPromotionRenderable$12(ARTransferPromotionRenderable paramARTransferPromotionRenderable) {}
   
   public void run()
   {
-    if (!amvq.a(this.this$0).a.booleanValue())
+    if (!ARTransferPromotionRenderable.e(this.this$0).i.booleanValue())
     {
-      amvq.a(this.this$0, 3, amvq.a(this.this$0).c + "360Video.mp4", false, amvq.a(this.this$0).d, false);
-      amvq.a(this.this$0).a(true);
-      amvq.b(this.this$0);
-      amvq.c(this.this$0);
+      ARTransferPromotionRenderable localARTransferPromotionRenderable = this.this$0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ARTransferPromotionRenderable.e(this.this$0).o);
+      localStringBuilder.append("360Video.mp4");
+      ARTransferPromotionRenderable.a(localARTransferPromotionRenderable, 3, localStringBuilder.toString(), false, ARTransferPromotionRenderable.e(this.this$0).k, false);
+      ARTransferPromotionRenderable.a(this.this$0).a(true);
+      ARTransferPromotionRenderable.u(this.this$0);
+      ARTransferPromotionRenderable.v(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.12
  * JD-Core Version:    0.7.0.1
  */

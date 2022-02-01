@@ -1,28 +1,29 @@
 package android.support.v4.app;
 
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.view.animation.Animation;
 
 final class x
-  extends AnimatorListenerAdapter
 {
-  View bo;
+  public final Animation eL;
+  public final Animator eM;
   
-  x(View paramView)
+  private x(Animator paramAnimator)
   {
-    this.bo = paramView;
+    this.eL = null;
+    this.eM = paramAnimator;
+    if (paramAnimator == null) {
+      throw new IllegalStateException("Animator cannot be null");
+    }
   }
   
-  public final void onAnimationEnd(Animator paramAnimator)
+  private x(Animation paramAnimation)
   {
-    this.bo.setLayerType(0, null);
-    paramAnimator.removeListener(this);
-  }
-  
-  public final void onAnimationStart(Animator paramAnimator)
-  {
-    this.bo.setLayerType(2, null);
+    this.eL = paramAnimation;
+    this.eM = null;
+    if (paramAnimation == null) {
+      throw new IllegalStateException("Animation cannot be null");
+    }
   }
 }
 

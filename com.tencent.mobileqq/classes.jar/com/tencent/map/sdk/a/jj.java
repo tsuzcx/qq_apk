@@ -18,23 +18,24 @@ public final class jj
   
   public jj(Context paramContext, String paramString)
   {
-    if (paramString == null) {}
-    for (this.c = gf.a(paramContext);; this.c = ge.a(paramContext, paramString))
-    {
-      this.b = new CopyOnWriteArrayList();
-      paramString = this.c.a("mapStyleList");
-      paramContext = paramString;
-      if (paramString == null) {
-        paramContext = "[{\"id\":0,\"index\":0,\"order\":1},{\"id\":-1,\"index\":1,\"order\":-1},{\"id\":-1,\"index\":2,\"order\":-1},{\"id\":-1,\"index\":3,\"order\":-1},{\"id\":-1,\"index\":4,\"order\":-1},{\"id\":-1,\"index\":5,\"order\":-1},{\"id\":-1,\"index\":6,\"order\":-1},{\"id\":-1,\"index\":7,\"order\":-1},{\"id\":-1,\"index\":8,\"order\":-1},{\"id\":9,\"index\":9,\"order\":-1},{\"id\":10,\"index\":10,\"order\":-1},{\"id\":5,\"index\":11,\"order\":-1},{\"id\":4,\"index\":12,\"order\":-1},{\"id\":6,\"index\":13,\"order\":-1},{\"id\":7,\"index\":14,\"order\":-1},{\"id\":8,\"index\":15,\"order\":-1}]";
-      }
-      try
-      {
-        paramContext = new JSONArray(paramContext);
-        this.b.addAll(a(paramContext));
-        return;
-      }
-      catch (Exception paramContext) {}
+    if (paramString == null) {
+      this.c = gf.a(paramContext);
+    } else {
+      this.c = ge.a(paramContext, paramString);
     }
+    this.b = new CopyOnWriteArrayList();
+    paramString = this.c.a("mapStyleList");
+    paramContext = paramString;
+    if (paramString == null) {
+      paramContext = "[{\"id\":0,\"index\":0,\"order\":1},{\"id\":-1,\"index\":1,\"order\":-1},{\"id\":-1,\"index\":2,\"order\":-1},{\"id\":-1,\"index\":3,\"order\":-1},{\"id\":-1,\"index\":4,\"order\":-1},{\"id\":-1,\"index\":5,\"order\":-1},{\"id\":-1,\"index\":6,\"order\":-1},{\"id\":-1,\"index\":7,\"order\":-1},{\"id\":-1,\"index\":8,\"order\":-1},{\"id\":9,\"index\":9,\"order\":-1},{\"id\":10,\"index\":10,\"order\":-1},{\"id\":5,\"index\":11,\"order\":-1},{\"id\":4,\"index\":12,\"order\":-1},{\"id\":6,\"index\":13,\"order\":-1},{\"id\":7,\"index\":14,\"order\":-1},{\"id\":8,\"index\":15,\"order\":-1}]";
+    }
+    try
+    {
+      paramContext = new JSONArray(paramContext);
+      this.b.addAll(a(paramContext));
+      return;
+    }
+    catch (Exception paramContext) {}
   }
   
   public static List<ji> a(JSONArray paramJSONArray)
@@ -63,23 +64,34 @@ public final class jj
   
   public final int a(int paramInt)
   {
-    if ((this.b == null) || (this.b.size() == 0) || (paramInt < 0)) {}
-    ji localji;
-    do
+    int i = paramInt;
+    if (this.b != null)
     {
-      Iterator localIterator;
-      while (!localIterator.hasNext())
+      i = paramInt;
+      if (this.b.size() != 0)
       {
-        return paramInt;
-        this.d = paramInt;
-        if (paramInt >= a) {
-          return paramInt - a;
+        if (paramInt < 0) {
+          return paramInt;
         }
-        localIterator = this.b.iterator();
+        this.d = paramInt;
+        i = a;
+        if (paramInt >= i) {
+          return paramInt - i;
+        }
+        Iterator localIterator = this.b.iterator();
+        ji localji;
+        do
+        {
+          i = paramInt;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localji = (ji)localIterator.next();
+        } while (localji.c != paramInt);
+        i = localji.a;
       }
-      localji = (ji)localIterator.next();
-    } while (localji.c != paramInt);
-    return localji.a;
+    }
+    return i;
   }
 }
 

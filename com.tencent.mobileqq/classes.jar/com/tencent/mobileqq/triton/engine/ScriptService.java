@@ -1,104 +1,197 @@
 package com.tencent.mobileqq.triton.engine;
 
 import android.os.SystemClock;
+import com.tencent.mobileqq.triton.internal.lifecycle.ValueHolder;
+import com.tencent.mobileqq.triton.internal.render.VSyncScheduler;
+import com.tencent.mobileqq.triton.internal.statistic.FrameCallbackHelper;
+import com.tencent.mobileqq.triton.internal.touch.TouchProviderBridge;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
 import com.tencent.mobileqq.triton.jni.JNICaller.TTEngine;
 import com.tencent.mobileqq.triton.render.RenderContext;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
-import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
-import com.tencent.mobileqq.triton.touch.TouchEventManager;
-import com.tencent.mobileqq.triton.utils.FpsStabilizer;
+import com.tencent.mobileqq.triton.statistic.FrameCallback;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class ScriptService
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/engine/ScriptService;", "Lcom/tencent/mobileqq/triton/engine/JSThread$IListener;", "mEngine", "Lcom/tencent/mobileqq/triton/engine/TTEngine;", "targetFPSHolder", "Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;", "", "frameCallback", "Lcom/tencent/mobileqq/triton/statistic/FrameCallback;", "accumulatedDrawCallsHolder", "", "currentDrawCallsHolder", "accumulatedFramesHolder", "debugEnabled", "", "(Lcom/tencent/mobileqq/triton/engine/TTEngine;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Z)V", "isJSThread", "()Z", "mDebugEnabled", "mDrawCallsSinceLastLiveLog", "", "mFrameCallback", "Lcom/tencent/mobileqq/triton/internal/statistic/FrameCallbackHelper;", "mJSThread", "Lcom/tencent/mobileqq/triton/engine/JSThread;", "mLastLiveLogProcessedMessages", "mLiveLogRunnable", "Ljava/lang/Runnable;", "mStartLatch", "Ljava/util/concurrent/CountDownLatch;", "mVSyncScheduler", "Lcom/tencent/mobileqq/triton/internal/render/VSyncScheduler;", "mVSyncsSinceLastLiveLog", "awaitStart", "", "onDestroy", "onExit", "onPause", "onPrepare", "onPrepareJsRuntime", "onResume", "onVSync", "drawTime", "printLiveLog", "Companion", "Triton_release"}, k=1, mv={1, 1, 16})
+public final class ScriptService
   implements JSThread.IListener
 {
-  private static final long FRAME_MAX_DURATION_NANOS = TimeUnit.MILLISECONDS.toNanos(1500L);
-  private static final long LIVE_LOG_DURATION = TimeUnit.SECONDS.toNanos(5L);
+  public static final ScriptService.Companion Companion = new ScriptService.Companion(null);
+  private static final long LIVE_LOG_DURATION_MS = TimeUnit.SECONDS.toMillis(5L);
   private static final boolean LOG_LOOPER_TIME_COST = false;
   private static final String TAG = "ScriptService";
-  private static long mCurrentDrawCallCount = 0L;
-  private boolean firstFrame;
-  private int mDrawCallsSinceLastLiveLog = 0;
+  private final ValueHolder<Long> accumulatedDrawCallsHolder;
+  private final ValueHolder<Long> accumulatedFramesHolder;
+  private final ValueHolder<Long> currentDrawCallsHolder;
+  private final boolean mDebugEnabled;
+  private int mDrawCallsSinceLastLiveLog;
   private final TTEngine mEngine;
-  private final FpsStabilizer mFpsStabilizer = new FpsStabilizer();
-  private JSThread mJSThread;
-  private long mLastDrawTimeNanos;
-  private int mLastLiveLogProcessedMessages = 0;
-  private long mLastLiveLogTimeNanos;
-  private long mTotalDrawTimeNanos;
-  private int mVSyncsSinceLastLiveLog = 0;
+  private final FrameCallbackHelper mFrameCallback;
+  private final JSThread mJSThread;
+  private int mLastLiveLogProcessedMessages;
+  private final Runnable mLiveLogRunnable;
+  private final CountDownLatch mStartLatch;
+  private final VSyncScheduler mVSyncScheduler;
+  private int mVSyncsSinceLastLiveLog;
   
-  public ScriptService(TTEngine paramTTEngine)
+  public ScriptService(@NotNull TTEngine paramTTEngine, @NotNull ValueHolder<Float> paramValueHolder, @NotNull ValueHolder<FrameCallback> paramValueHolder1, @NotNull ValueHolder<Long> paramValueHolder2, @NotNull ValueHolder<Long> paramValueHolder3, @NotNull ValueHolder<Long> paramValueHolder4, boolean paramBoolean)
   {
     this.mEngine = paramTTEngine;
-    this.mJSThread = new JSThread(paramTTEngine, this);
+    this.accumulatedDrawCallsHolder = paramValueHolder2;
+    this.currentDrawCallsHolder = paramValueHolder3;
+    this.accumulatedFramesHolder = paramValueHolder4;
+    this.mStartLatch = new CountDownLatch(1);
+    this.mFrameCallback = new FrameCallbackHelper(paramValueHolder1);
+    this.mDebugEnabled = paramBoolean;
+    this.mJSThread = new JSThread(this.mEngine, (JSThread.IListener)this);
     this.mJSThread.start();
+    this.mVSyncScheduler = new VSyncScheduler((Function1)new ScriptService.1((ScriptService)this), paramValueHolder, (Executor)new ScriptService.2(this));
+    this.mLiveLogRunnable = ((Runnable)new ScriptService.3(this));
+    this.mLiveLogRunnable.run();
   }
   
-  public static long getCurrentDrawCallCount()
-  {
-    return mCurrentDrawCallCount;
-  }
-  
-  private void onPrepareJsRuntime()
+  private final void onPrepareJsRuntime()
   {
     long l = SystemClock.uptimeMillis();
-    this.mEngine.getQQEnv().reportDC04266(1005, null);
     this.mEngine.createTTApp();
-    if ((this.mEngine.getJsRuntimeLoader() != null) && (this.mEngine.getJsRuntimeLoader().initJsRuntime())) {}
-    for (int i = 1;; i = 0)
+    this.mStartLatch.countDown();
+    this.mEngine.getJsRuntimeLoader().initJsRuntime();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("injectJS BaseLib cost time:");
+    localStringBuilder.append(SystemClock.uptimeMillis() - l);
+    localStringBuilder.append("ms");
+    Logger.i$default("ScriptService", localStringBuilder.toString(), null, 4, null);
+  }
+  
+  private final void onVSync(long paramLong)
+  {
+    this.mFrameCallback.onFrameBegin(paramLong);
+    SystemClock.uptimeMillis();
+    Object localObject = this.accumulatedFramesHolder;
+    ((ValueHolder)localObject).setValue(Long.valueOf(((Number)((ValueHolder)localObject).getValue()).longValue() + 1L));
+    if (this.mEngine.getRenderContext() != null) {
+      localObject = this.mEngine.getRenderContext().getTouchEventManager();
+    } else {
+      localObject = null;
+    }
+    if (localObject != null) {
+      ((TouchProviderBridge)localObject).flushTouchEvents();
+    }
+    JNICaller.TTEngine.nativeOnVSync(this.mEngine, paramLong);
+    paramLong = JNICaller.TTEngine.nativeGetCurrentFrameDrawCallCount(this.mEngine);
+    this.currentDrawCallsHolder.setValue(Long.valueOf(paramLong));
+    localObject = this.accumulatedDrawCallsHolder;
+    ((ValueHolder)localObject).setValue(Long.valueOf(((Number)((ValueHolder)localObject).getValue()).longValue() + paramLong));
+    JNICaller.TTEngine.nativeCanvasPresent(this.mEngine);
+    this.mFrameCallback.onFrameEnd();
+    this.mVSyncsSinceLastLiveLog += 1;
+    this.mDrawCallsSinceLastLiveLog += (int)paramLong;
+  }
+  
+  private final void printLiveLog()
+  {
+    try
     {
-      if (i != 0) {
-        this.mEngine.getQQEnv().reportDC04266(1006, null);
+      i = this.mEngine.getProcessedMessageCount();
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      int i;
+      label11:
+      StringBuilder localStringBuilder;
+      break label11;
+    }
+    i = this.mEngine.getProcessedMessageCount();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JSThread liveLog in 5s Frame=[");
+    localStringBuilder.append(this.mVSyncsSinceLastLiveLog);
+    localStringBuilder.append("] DrawCall=[");
+    localStringBuilder.append(this.mDrawCallsSinceLastLiveLog);
+    localStringBuilder.append("] Message=[");
+    localStringBuilder.append(i - this.mLastLiveLogProcessedMessages);
+    localStringBuilder.append(']');
+    Logger.i$default("ScriptService", localStringBuilder.toString(), null, 4, null);
+    this.mVSyncsSinceLastLiveLog = 0;
+    this.mDrawCallsSinceLastLiveLog = 0;
+    this.mLastLiveLogProcessedMessages = i;
+  }
+  
+  public final void awaitStart()
+  {
+    long l = SystemClock.uptimeMillis();
+    for (;;)
+    {
+      if (this.mStartLatch.getCount() != 0L) {}
+      try
+      {
+        this.mStartLatch.await(1L, TimeUnit.SECONDS);
+        label28:
+        if (this.mStartLatch.getCount() == 0L) {
+          continue;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("awaitStart cost too long!!! ");
+        localStringBuilder.append(SystemClock.uptimeMillis() - l);
+        localStringBuilder.append("ms");
+        Logger.w$default("ScriptService", localStringBuilder.toString(), null, 4, null);
+        continue;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("awaitStartCostTime:");
+        localStringBuilder.append(SystemClock.uptimeMillis() - l);
+        localStringBuilder.append("ms");
+        Logger.i$default("ScriptService", localStringBuilder.toString(), null, 4, null);
+        return;
       }
-      TTLog.i("ScriptService", "injectJS BaseLib cost time:" + (SystemClock.uptimeMillis() - l) + "ms");
+      catch (InterruptedException localInterruptedException)
+      {
+        break label28;
+      }
+    }
+  }
+  
+  public final boolean isJSThread()
+  {
+    JSThread localJSThread = this.mJSThread;
+    return (localJSThread != null) && (localJSThread.isJSThread());
+  }
+  
+  public final void onDestroy()
+  {
+    JSThread localJSThread = this.mJSThread;
+    if (localJSThread == null) {
+      Intrinsics.throwNpe();
+    }
+    localJSThread.shutdown();
+    try
+    {
+      this.mJSThread.join();
       return;
     }
-  }
-  
-  private void printLiveLog(long paramLong)
-  {
-    if (paramLong - this.mLastLiveLogTimeNanos > LIVE_LOG_DURATION)
+    catch (InterruptedException localInterruptedException)
     {
-      int i = this.mEngine.getProcessedMessageCount();
-      TTLog.i("ScriptService", "JSThread liveLog in 5s Frame=[" + this.mVSyncsSinceLastLiveLog + "] DrawCall=[" + this.mDrawCallsSinceLastLiveLog + "] Message=[" + (i - this.mLastLiveLogProcessedMessages) + "]");
-      this.mVSyncsSinceLastLiveLog = 0;
-      this.mDrawCallsSinceLastLiveLog = 0;
-      this.mLastLiveLogTimeNanos = paramLong;
-      this.mLastLiveLogProcessedMessages = i;
-    }
-  }
-  
-  public boolean isJSThread()
-  {
-    return (this.mJSThread != null) && (this.mJSThread.isJSThread());
-  }
-  
-  public void onDestroy()
-  {
-    if (this.mJSThread != null)
-    {
-      this.mJSThread.shutdown();
-      this.mJSThread = null;
+      Logger.e("ScriptService", "onDestroy join jsThread failed ", (Throwable)localInterruptedException);
     }
   }
   
   public void onExit()
   {
     JNICaller.TTEngine.nativeDiposeTTApp(this.mEngine);
-    if (this.mEngine.getEngineListener() != null) {
-      this.mEngine.getEngineListener().onExit();
-    }
   }
   
-  public void onPause()
+  public final void onPause()
   {
-    TTLog.i("ScriptService", "============onPause==============");
-    if (this.mJSThread != null)
-    {
-      this.mJSThread.onPause();
-      this.mEngine.getQQEnv().reportDC04902("game_end", 0L);
+    Logger.i$default("ScriptService", "============onPause==============", null, 4, null);
+    this.mVSyncScheduler.stopScheduleVSync();
+    JSThread localJSThread = this.mJSThread;
+    if (localJSThread == null) {
+      Intrinsics.throwNpe();
     }
+    localJSThread.onPause();
   }
   
   public boolean onPrepare()
@@ -107,64 +200,20 @@ public class ScriptService
     return false;
   }
   
-  public void onResume()
+  public final void onResume()
   {
-    TTLog.i("ScriptService", "============onResume==============");
-    this.firstFrame = true;
-    if (this.mJSThread != null)
-    {
-      this.mJSThread.onResume();
-      this.mEngine.getQQEnv().reportDC04902("game_start", 0L);
+    Logger.i$default("ScriptService", "============onResume==============", null, 4, null);
+    JSThread localJSThread = this.mJSThread;
+    if (localJSThread == null) {
+      Intrinsics.throwNpe();
     }
-  }
-  
-  void onTargetFpsChange(int paramInt)
-  {
-    if (paramInt >= this.mEngine.getDisplayRefreshRate())
-    {
-      this.mFpsStabilizer.setTargetFps(0.0F);
-      return;
-    }
-    this.mFpsStabilizer.setTargetFps(paramInt);
-  }
-  
-  public boolean onVSync(long paramLong)
-  {
-    System.nanoTime();
-    long l2 = paramLong - this.mLastDrawTimeNanos;
-    long l1 = l2;
-    if (l2 > FRAME_MAX_DURATION_NANOS) {
-      l1 = TimeUnit.SECONDS.toNanos(1L) / this.mEngine.getTargetFPS();
-    }
-    if (this.mFpsStabilizer.shouldDoFrame(paramLong))
-    {
-      this.mLastDrawTimeNanos = paramLong;
-      this.mEngine.getQQEnv().updateDisplayFrameTime(paramLong, this.firstFrame);
-      this.firstFrame = false;
-      this.mEngine.getQQEnv().reportDC04902("draw_frame", l1 / 1000000L);
-      if (this.mEngine.getRenderContext() == null) {
-        break label188;
-      }
-    }
-    label188:
-    for (TouchEventManager localTouchEventManager = this.mEngine.getRenderContext().getTouchEventManager();; localTouchEventManager = null)
-    {
-      if (localTouchEventManager != null) {
-        localTouchEventManager.flushTouchEvents();
-      }
-      JNICaller.TTEngine.nativeOnVSync(this.mEngine, paramLong);
-      JNICaller.TTEngine.nativeCanvasPresent(this.mEngine);
-      mCurrentDrawCallCount = JNICaller.TTEngine.nativeGetCurrentFrameDrawCallCount(this.mEngine);
-      this.mVSyncsSinceLastLiveLog += 1;
-      this.mDrawCallsSinceLastLiveLog = ((int)(this.mDrawCallsSinceLastLiveLog + mCurrentDrawCallCount));
-      printLiveLog(paramLong);
-      return false;
-    }
+    localJSThread.onResume();
+    this.mVSyncScheduler.startScheduleVSync();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.ScriptService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
 package cooperation.qzone.webviewplugin;
 
-import bjqu;
-import bjqw;
-import bjze;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneVideoTabJsPlugin$5
+class QzoneVideoTabJsPlugin$5
   implements Runnable
 {
-  public QzoneVideoTabJsPlugin$5(bjze parambjze, String paramString) {}
+  QzoneVideoTabJsPlugin$5(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, String paramString) {}
   
   public void run()
   {
-    bjqu.a().a().e(this.a);
+    RemoteHandleManager.getInstance().getSender().downloadVideo(this.val$videoUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

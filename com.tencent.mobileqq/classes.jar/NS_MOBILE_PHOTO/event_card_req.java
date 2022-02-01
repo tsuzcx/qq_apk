@@ -13,10 +13,10 @@ public final class event_card_req
   static ArrayList<event_card> cache_cards;
   static Map<String, String> cache_extern;
   static lbs_info cache_lbs = new lbs_info();
-  public ArrayList<event_card> cards;
-  public Map<String, String> extern;
-  public lbs_info lbs;
-  public long uin;
+  public ArrayList<event_card> cards = null;
+  public Map<String, String> extern = null;
+  public lbs_info lbs = null;
+  public long uin = 0L;
   
   static
   {
@@ -50,14 +50,15 @@ public final class event_card_req
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.lbs, 1);
     paramJceOutputStream.write(this.cards, 2);
-    if (this.extern != null) {
-      paramJceOutputStream.write(this.extern, 3);
+    Map localMap = this.extern;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_card_req
  * JD-Core Version:    0.7.0.1
  */

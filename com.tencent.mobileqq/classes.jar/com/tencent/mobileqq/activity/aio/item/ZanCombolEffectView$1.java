@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 
-public class ZanCombolEffectView$1
+class ZanCombolEffectView$1
   implements Runnable
 {
   ZanCombolEffectView$1(ZanCombolEffectView paramZanCombolEffectView, Integer[] paramArrayOfInteger) {}
@@ -13,51 +13,50 @@ public class ZanCombolEffectView$1
   public void run()
   {
     ZanCombolEffectView.a(this.this$0).clear();
-    Integer[] arrayOfInteger = this.a;
-    int j = arrayOfInteger.length;
+    Object localObject = this.a;
+    int j = localObject.length;
     int i = 0;
     while (i < j)
     {
-      int k = arrayOfInteger[i].intValue();
+      int k = localObject[i].intValue();
       try
       {
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.getResources(), k);
-        if (localBitmap != null) {
-          ZanCombolEffectView.a(this.this$0).add(localBitmap);
+        try
+        {
+          Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.getResources(), k);
+          if (localBitmap != null) {
+            ZanCombolEffectView.a(this.this$0).add(localBitmap);
+          }
         }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
+        catch (OutOfMemoryError localOutOfMemoryError)
         {
           localOutOfMemoryError.printStackTrace();
         }
-        if (ZanCombolEffectView.a(this.this$0).size() <= 0) {
-          break label153;
-        }
-        ZanCombolEffectView.a(this.this$0, System.currentTimeMillis());
-        ZanCombolEffectView.b(this.this$0, ZanCombolEffectView.a(this.this$0));
-        ZanCombolEffectView.a(this.this$0, true);
-        ZanCombolEffectView.b(this.this$0, false);
-        this.this$0.postInvalidate();
-        if (!ZanCombolEffectView.a(this.this$0)) {
-          break label176;
-        }
-        ThreadManager.postImmediately(new ZanCombolEffectView.1.1(this), null, true);
-        return;
       }
       catch (Throwable localThrowable)
       {
-        label70:
-        break label70;
+        label80:
+        break label80;
       }
       i += 1;
+    }
+    if (ZanCombolEffectView.a(this.this$0).size() > 0)
+    {
+      ZanCombolEffectView.a(this.this$0, System.currentTimeMillis());
+      localObject = this.this$0;
+      ZanCombolEffectView.b((ZanCombolEffectView)localObject, ZanCombolEffectView.b((ZanCombolEffectView)localObject));
+      ZanCombolEffectView.a(this.this$0, true);
+      ZanCombolEffectView.b(this.this$0, false);
+      this.this$0.postInvalidate();
+    }
+    if (ZanCombolEffectView.c(this.this$0)) {
+      ThreadManager.postImmediately(new ZanCombolEffectView.1.1(this), null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView.1
  * JD-Core Version:    0.7.0.1
  */

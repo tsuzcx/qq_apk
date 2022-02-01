@@ -5017,8 +5017,9 @@ Details can be found at: http://ti.qq.com/adyen/index.html"</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d137a">Not now</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d137b">Service Agreement and Privacy Policy</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d137c">Please make sure to read carefully and understand fully the contents of the Service Agreement and Privacy Policy, including but not limited to: we need to collect your device info, operation log and other personal info in order to provide you with instant messaging, content sharing and other services. You can view, change and delete your personal info and manage your permissions in the Settings. You can read the Service Agreement, Privacy Policy and Permission Use Rules to learn more details. If you agree, please click Agree to accept our services.</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d137d">·</string>
-    <string name="APKTOOL_DUPLICATE_string_0x7f0d137e">|</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d137d">QQ number cancellation</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d137e">·</string>
+    <string name="APKTOOL_DUPLICATE_string_0x7f0d137f">|</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1382">Voip calling</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1383">Voip payment</string>
     <string name="APKTOOL_DUPLICATE_string_0x7f0d1384">comment(s)</string>

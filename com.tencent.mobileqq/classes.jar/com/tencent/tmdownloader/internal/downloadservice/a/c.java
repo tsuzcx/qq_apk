@@ -45,7 +45,16 @@ public class c
     localTMAssistantDownloadTaskInfo.mEndTime = paramc.u;
     localTMAssistantDownloadTaskInfo.showNotification = paramc.K;
     localTMAssistantDownloadTaskInfo.isAutoInstallBySDK = paramc.F;
-    ab.c("ServiceDownloadTaskManager", "TMAssistantDownloadTaskInfo pkg is: " + localTMAssistantDownloadTaskInfo.mTaskPackageName + ", mAppName is: " + localTMAssistantDownloadTaskInfo.mAppName + " dt mAppName is: " + paramc.E + ", isAutoInstallBySDK is: " + localTMAssistantDownloadTaskInfo.isAutoInstallBySDK);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TMAssistantDownloadTaskInfo pkg is: ");
+    localStringBuilder.append(localTMAssistantDownloadTaskInfo.mTaskPackageName);
+    localStringBuilder.append(", mAppName is: ");
+    localStringBuilder.append(localTMAssistantDownloadTaskInfo.mAppName);
+    localStringBuilder.append(" dt mAppName is: ");
+    localStringBuilder.append(paramc.E);
+    localStringBuilder.append(", isAutoInstallBySDK is: ");
+    localStringBuilder.append(localTMAssistantDownloadTaskInfo.isAutoInstallBySDK);
+    ab.c("ServiceDownloadTaskManager", localStringBuilder.toString());
     return localTMAssistantDownloadTaskInfo;
   }
   
@@ -64,78 +73,76 @@ public class c
   
   public int a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, Map<String, String> paramMap)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 3;
-    }
-    ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1);
-    if (e(paramString1, paramString2) != null)
+    if ((paramString1 != null) && (paramString2 != null))
     {
-      ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is not null");
-      return ApkDownloadManager.getInstance().startDownload(paramString2, paramInt, paramString3, paramString4, paramMap);
-    }
-    ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
-    Object localObject2 = c(paramString2);
-    b localb = new b(paramString1, paramString2);
-    localb.c = 1;
-    for (;;)
-    {
-      int j;
-      int i;
-      int k;
-      synchronized (this.a)
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      if (e(paramString1, paramString2) != null)
       {
-        this.a.add(localb);
-        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",add newTask");
-        ??? = ((ArrayList)localObject2).iterator();
-        j = 0;
-        i = 0;
-        if (!((Iterator)???).hasNext()) {
-          break label288;
-        }
-        localObject2 = (b)((Iterator)???).next();
-        if (((b)localObject2).c == 2)
-        {
-          k = 1;
-          j = i;
-          i = k;
-          k = j;
-          j = i;
-          i = k;
-        }
-      }
-      if (((b)localObject2).c == 1)
-      {
-        i = j;
-        j = 1;
-        continue;
-        label288:
-        if ((j == 1) || (i == 1))
-        {
-          if (j == 1) {
-            localb.c = 2;
-          }
-          for (;;)
-          {
-            if (this.b != null) {
-              this.b.OnDownloadStateChanged(paramString1, paramString2, localb.c, 0, null);
-            }
-            ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",newTask is downloading");
-            return 0;
-            if (i == 1) {
-              localb.c = 1;
-            }
-          }
-        }
-        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",start newTask download");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("clientKey:");
+        ((StringBuilder)localObject1).append(paramString1);
+        ((StringBuilder)localObject1).append(",taskItem is not null");
+        ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
         return ApkDownloadManager.getInstance().startDownload(paramString2, paramInt, paramString3, paramString4, paramMap);
       }
-      else
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(",taskItem is null");
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      Object localObject2 = c(paramString2);
+      localObject1 = new b(paramString1, paramString2);
+      ((b)localObject1).c = 1;
+      synchronized (this.a)
       {
-        k = i;
-        i = j;
-        j = k;
+        this.a.add(localObject1);
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("clientKey:");
+        ((StringBuilder)???).append(paramString1);
+        ((StringBuilder)???).append(",add newTask");
+        ab.c("ServiceDownloadTaskManager", ((StringBuilder)???).toString());
+        localObject2 = ((ArrayList)localObject2).iterator();
+        int j = 0;
+        int i = 0;
+        while (((Iterator)localObject2).hasNext())
+        {
+          ??? = (b)((Iterator)localObject2).next();
+          if (((b)???).c == 2) {
+            j = 1;
+          } else if (((b)???).c == 1) {
+            i = 1;
+          }
+        }
+        if ((j != 1) && (i != 1))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("clientKey:");
+          ((StringBuilder)localObject1).append(paramString1);
+          ((StringBuilder)localObject1).append(",start newTask download");
+          ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+          return ApkDownloadManager.getInstance().startDownload(paramString2, paramInt, paramString3, paramString4, paramMap);
+        }
+        if (j == 1) {
+          ((b)localObject1).c = 2;
+        } else if (i == 1) {
+          ((b)localObject1).c = 1;
+        }
+        paramString3 = this.b;
+        if (paramString3 != null) {
+          paramString3.OnDownloadStateChanged(paramString1, paramString2, ((b)localObject1).c, 0, null);
+        }
+        paramString2 = new StringBuilder();
+        paramString2.append("clientKey:");
+        paramString2.append(paramString1);
+        paramString2.append(",newTask is downloading");
+        ab.c("ServiceDownloadTaskManager", paramString2.toString());
+        return 0;
       }
     }
+    return 3;
   }
   
   public TMAssistantDownloadTaskInfo a(String paramString1, String paramString2)
@@ -151,7 +158,10 @@ public class c
       paramString1 = d.a((String)localObject);
       localObject = new d((String)localObject, (String)localObject);
       paramString1 = new TMAssistantDownloadTaskInfo(paramString2, paramString1, 4, ((d)localObject).a(), ((d)localObject).a(), "application/vnd.android.package-archive");
-      ab.c("ServiceDownloadTaskManager", "getDownloadTaskInfo downloadTaskInfo savePath | " + paramString1.mSavePath);
+      paramString2 = new StringBuilder();
+      paramString2.append("getDownloadTaskInfo downloadTaskInfo savePath | ");
+      paramString2.append(paramString1.mSavePath);
+      ab.c("ServiceDownloadTaskManager", paramString2.toString());
       return paramString1;
     }
     if (com.tencent.tmdownloader.internal.downloadservice.b.b(paramString2, "application/tm.android.apkdiff"))
@@ -167,9 +177,7 @@ public class c
   
   public void a()
   {
-    if (this != null) {
-      ApkDownloadManager.getInstance().AddDownloadListener(this);
-    }
+    ApkDownloadManager.getInstance().AddDownloadListener(this);
   }
   
   public void a(a parama)
@@ -181,44 +189,56 @@ public class c
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (this.b == null) {}
-    for (;;)
-    {
+    if (this.b == null) {
       return;
-      Object localObject = c(paramString1);
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    }
+    Object localObject = c(paramString1);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          b localb = (b)((Iterator)localObject).next();
-          ab.c("ServiceDownloadTaskManager", "clientKey:" + localb.a + ",state:" + paramInt1 + ",errorcode:" + paramInt2 + ",url:" + paramString1.hashCode());
-          localb.c = paramInt1;
-          this.b.OnDownloadStateChanged(localb.a, paramString1, paramInt1, paramInt2, paramString2);
-        }
+        b localb = (b)((Iterator)localObject).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("clientKey:");
+        localStringBuilder.append(localb.a);
+        localStringBuilder.append(",state:");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(",errorcode:");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append(",url:");
+        localStringBuilder.append(paramString1.hashCode());
+        ab.c("ServiceDownloadTaskManager", localStringBuilder.toString());
+        localb.c = paramInt1;
+        this.b.OnDownloadStateChanged(localb.a, paramString1, paramInt1, paramInt2, paramString2);
       }
     }
   }
   
   public void a(String paramString, long paramLong1, long paramLong2)
   {
-    if (this.b == null) {}
-    for (;;)
-    {
+    if (this.b == null) {
       return;
-      Object localObject = c(paramString);
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    }
+    Object localObject = c(paramString);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      long l = System.currentTimeMillis();
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        long l = System.currentTimeMillis();
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+        b localb = (b)((Iterator)localObject).next();
+        if (localb.a(paramLong1, paramLong2, l) == true)
         {
-          b localb = (b)((Iterator)localObject).next();
-          if (localb.a(paramLong1, paramLong2, l) == true)
-          {
-            ab.c("ServiceDownloadTaskManager", "clientKey:" + localb.a + ",receivedLen:" + paramLong1 + ",url:" + paramString.hashCode());
-            this.b.OnDownloadProgressChanged(localb.a, paramString, paramLong1, paramLong2);
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("clientKey:");
+          localStringBuilder.append(localb.a);
+          localStringBuilder.append(",receivedLen:");
+          localStringBuilder.append(paramLong1);
+          localStringBuilder.append(",url:");
+          localStringBuilder.append(paramString.hashCode());
+          ab.c("ServiceDownloadTaskManager", localStringBuilder.toString());
+          this.b.OnDownloadProgressChanged(localb.a, paramString, paramLong1, paramLong2);
         }
       }
     }
@@ -231,180 +251,241 @@ public class c
   
   public void b()
   {
-    if (this != null) {
-      ApkDownloadManager.getInstance().RemoveDownloadListener(this);
-    }
+    ApkDownloadManager.getInstance().RemoveDownloadListener(this);
   }
   
   public void b(String paramString1, String paramString2)
   {
     ab.c("ServiceDownloadTaskManager", "enter");
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    ab.c("ServiceDownloadTaskManager", "pauseDownload clientKey:" + paramString1 + "; url: " + paramString2);
-    b localb = e(paramString1, paramString2);
-    ab.c("ServiceDownloadTaskManager", "pauseDownload taskItem:" + localb);
-    if (localb != null) {
-      localb.c = 3;
-    }
-    for (;;)
+    if (paramString1 != null)
     {
-      synchronized (this.a)
-      {
-        this.a.remove(localb);
-        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
-        ??? = c(paramString2);
-        if ((??? == null) || (((ArrayList)???).size() == 0))
-        {
-          ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on pauseAll");
-          ApkDownloadManager.getInstance().pauseDownload(paramString2);
-        }
-        if (this.b != null) {
-          this.b.OnDownloadStateChanged(paramString1, paramString2, localb.c, 0, null);
-        }
-        ab.c("ServiceDownloadTaskManager", "exit");
+      if (paramString2 == null) {
         return;
       }
-      ab.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("pauseDownload clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append("; url: ");
+      ((StringBuilder)localObject1).append(paramString2);
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      localObject1 = e(paramString1, paramString2);
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("pauseDownload taskItem:");
+      ((StringBuilder)???).append(localObject1);
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)???).toString());
+      if (localObject1 != null)
+      {
+        ((b)localObject1).c = 3;
+        synchronized (this.a)
+        {
+          this.a.remove(localObject1);
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("clientKey:");
+          ((StringBuilder)???).append(paramString1);
+          ((StringBuilder)???).append(",remove taskItem");
+          ab.c("ServiceDownloadTaskManager", ((StringBuilder)???).toString());
+          ??? = c(paramString2);
+          if ((??? == null) || (((ArrayList)???).size() == 0))
+          {
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append("clientKey:");
+            ((StringBuilder)???).append(paramString1);
+            ((StringBuilder)???).append(",taskItem is the only on pauseAll");
+            ab.c("ServiceDownloadTaskManager", ((StringBuilder)???).toString());
+            ApkDownloadManager.getInstance().pauseDownload(paramString2);
+          }
+          ??? = this.b;
+          if (??? == null) {
+            break label321;
+          }
+          ((a)???).OnDownloadStateChanged(paramString1, paramString2, ((b)localObject1).c, 0, null);
+        }
+      }
+      paramString2 = new StringBuilder();
+      paramString2.append("clientKey:");
+      paramString2.append(paramString1);
+      paramString2.append(",taskItem is null");
+      ab.d("ServiceDownloadTaskManager", paramString2.toString());
+      label321:
+      ab.c("ServiceDownloadTaskManager", "exit");
     }
   }
   
   protected ArrayList<b> c(String paramString)
   {
-    if (paramString == null) {}
-    ArrayList localArrayList;
-    for (paramString = null;; paramString = localArrayList)
+    if (paramString == null) {
+      return null;
+    }
+    try
     {
-      return paramString;
-      try
+      ArrayList localArrayList = new ArrayList();
+      synchronized (this.a)
       {
-        localArrayList = new ArrayList();
-        synchronized (this.a)
+        Iterator localIterator = this.a.iterator();
+        while (localIterator.hasNext())
         {
-          Iterator localIterator = this.a.iterator();
-          while (localIterator.hasNext())
-          {
-            b localb = (b)localIterator.next();
-            if (localb.b.equals(paramString)) {
-              localArrayList.add(localb);
-            }
+          b localb = (b)localIterator.next();
+          if (localb.b.equals(paramString)) {
+            localArrayList.add(localb);
           }
         }
+        return localArrayList;
       }
-      finally {}
+      throw paramString;
     }
+    finally {}
+    for (;;) {}
   }
   
   public void c(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    ab.c("ServiceDownloadTaskManager", "cancelDownload clientKey:" + paramString1);
-    b localb = e(paramString1, paramString2);
-    ab.c("ServiceDownloadTaskManager", "cancelDownload taskItem:" + localb);
-    if (localb != null) {
-      localb.c = 6;
-    }
-    for (;;)
+    if (paramString1 != null)
     {
-      synchronized (this.a)
-      {
-        this.a.remove(localb);
-        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
-        ??? = c(paramString2);
-        if ((??? != null) && (((ArrayList)???).size() != 0)) {
-          break label245;
-        }
-        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on cancelAll");
-        ApkDownloadManager.getInstance().cancelDownload(paramString2);
-        if (this.b == null) {
-          break;
-        }
-        this.b.OnDownloadStateChanged(paramString1, paramString2, 6, 0, null);
+      if (paramString2 == null) {
         return;
       }
-      ab.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("cancelDownload clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      localObject1 = e(paramString1, paramString2);
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("cancelDownload taskItem:");
+      ((StringBuilder)???).append(localObject1);
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)???).toString());
+      if (localObject1 != null)
+      {
+        ((b)localObject1).c = 6;
+        synchronized (this.a)
+        {
+          this.a.remove(localObject1);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("clientKey:");
+          ((StringBuilder)localObject1).append(paramString1);
+          ((StringBuilder)localObject1).append(",remove taskItem");
+          ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+        }
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(",taskItem is null");
+      ab.d("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      localObject1 = c(paramString2);
+      if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("cancelDownload clientKey:");
+        paramString2.append(paramString1);
+        paramString2.append(",taskItem is null");
+        ab.d("ServiceDownloadTaskManager", paramString2.toString());
+        return;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(",taskItem is the only on cancelAll");
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      ApkDownloadManager.getInstance().cancelDownload(paramString2);
+      localObject1 = this.b;
+      if (localObject1 != null) {
+        ((a)localObject1).OnDownloadStateChanged(paramString1, paramString2, 6, 0, null);
+      }
     }
-    label245:
-    ab.d("ServiceDownloadTaskManager", "cancelDownload clientKey:" + paramString1 + ",taskItem is null");
   }
   
   protected void d(String arg1)
   {
-    if (??? == null) {}
-    for (;;)
-    {
+    if (??? == null) {
       return;
-      ArrayList localArrayList;
-      try
-      {
-        localArrayList = new ArrayList();
-        synchronized (this.a)
-        {
-          Iterator localIterator = this.a.iterator();
-          while (localIterator.hasNext())
-          {
-            b localb = (b)localIterator.next();
-            if (localb.b.equals(???)) {
-              localArrayList.add(localb);
-            }
-          }
-        }
-      }
-      finally {}
-      if (localArrayList.size() <= 0) {
-        continue;
-      }
+    }
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
       synchronized (this.a)
       {
-        this.a.removeAll(localArrayList);
+        Iterator localIterator = this.a.iterator();
+        while (localIterator.hasNext())
+        {
+          b localb = (b)localIterator.next();
+          if (localb.b.equals(???)) {
+            localArrayList.add(localb);
+          }
+        }
+        if (localArrayList.size() > 0) {
+          synchronized (this.a)
+          {
+            this.a.removeAll(localArrayList);
+          }
+        }
+        return;
       }
+      throw ???;
     }
+    finally {}
+    for (;;) {}
   }
   
   public void d(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    ab.c("ServiceDownloadTaskManager", "deleteDownload clientKey:" + paramString1);
-    b localb = e(paramString1, paramString2);
-    ab.c("ServiceDownloadTaskManager", "deleteDownload taskItem:" + localb);
-    if (localb != null) {
-      localb.c = 6;
-    }
-    for (;;)
+    if (paramString1 != null)
     {
-      synchronized (this.a)
-      {
-        this.a.remove(localb);
-        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",remove taskItem");
-        ??? = c(paramString2);
-        if ((??? != null) && (((ArrayList)???).size() != 0)) {
-          break label245;
-        }
-        ab.c("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is the only on deleteAll");
-        ApkDownloadManager.getInstance().deleteDownload(paramString2);
-        if (this.b == null) {
-          break;
-        }
-        this.b.OnDownloadStateChanged(paramString1, paramString2, 6, 0, null);
+      if (paramString2 == null) {
         return;
       }
-      ab.d("ServiceDownloadTaskManager", "clientKey:" + paramString1 + ",taskItem is null");
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("deleteDownload clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      localObject1 = e(paramString1, paramString2);
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("deleteDownload taskItem:");
+      ((StringBuilder)???).append(localObject1);
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)???).toString());
+      if (localObject1 != null)
+      {
+        ((b)localObject1).c = 6;
+        synchronized (this.a)
+        {
+          this.a.remove(localObject1);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("clientKey:");
+          ((StringBuilder)localObject1).append(paramString1);
+          ((StringBuilder)localObject1).append(",remove taskItem");
+          ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+        }
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(",taskItem is null");
+      ab.d("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      localObject1 = c(paramString2);
+      if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("deleteDownload clientKey:");
+        paramString2.append(paramString1);
+        paramString2.append(",taskItem is null");
+        ab.d("ServiceDownloadTaskManager", paramString2.toString());
+        return;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("clientKey:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(",taskItem is the only on deleteAll");
+      ab.c("ServiceDownloadTaskManager", ((StringBuilder)localObject1).toString());
+      ApkDownloadManager.getInstance().deleteDownload(paramString2);
+      localObject1 = this.b;
+      if (localObject1 != null) {
+        ((a)localObject1).OnDownloadStateChanged(paramString1, paramString2, 6, 0, null);
+      }
     }
-    label245:
-    ab.d("ServiceDownloadTaskManager", "deleteDownload clientKey:" + paramString1 + ",taskItem is null");
   }
   
   protected b e(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {}
-    for (paramString1 = null;; paramString1 = null)
-    {
-      return paramString1;
+    if ((paramString1 != null) && (paramString2 != null)) {
       try
       {
         synchronized (this.a)
@@ -413,20 +494,27 @@ public class c
           while (localIterator.hasNext())
           {
             b localb = (b)localIterator.next();
-            ab.b("ServiceDownloadTaskManager", "taskItem mClientKey is: " + localb.a + " mUrl is: " + localb.b);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("taskItem mClientKey is: ");
+            localStringBuilder.append(localb.a);
+            localStringBuilder.append(" mUrl is: ");
+            localStringBuilder.append(localb.b);
+            ab.b("ServiceDownloadTaskManager", localStringBuilder.toString());
             if ((localb.a != null) && (localb.a.equals(paramString1)) && (localb.b.equals(paramString2))) {
-              paramString1 = localb;
+              return localb;
             }
           }
+          return null;
         }
       }
       finally {}
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadservice.a.c
  * JD-Core Version:    0.7.0.1
  */

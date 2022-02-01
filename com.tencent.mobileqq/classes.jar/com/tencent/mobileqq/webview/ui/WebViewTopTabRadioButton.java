@@ -6,16 +6,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
-import bdaq;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class WebViewTopTabRadioButton
   extends RadioButton
 {
-  int jdField_a_of_type_Int = 0;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public volatile boolean a;
-  int jdField_b_of_type_Int = bdaq.a(super.getContext(), 2.0F);
-  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  Bitmap a;
+  int b = 0;
+  int c = DisplayUtil.a(super.getContext(), 2.0F);
+  public volatile boolean d = false;
+  Bitmap e;
   
   public WebViewTopTabRadioButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,29 +24,29 @@ public class WebViewTopTabRadioButton
   
   Bitmap a(Context paramContext)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130849801);
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    catch (OutOfMemoryError paramContext)
-    {
-      for (;;)
+    Bitmap localBitmap = this.a;
+    if ((localBitmap == null) || (localBitmap.isRecycled())) {
+      try
+      {
+        this.a = BitmapFactory.decodeResource(paramContext.getResources(), 2130852588);
+      }
+      catch (OutOfMemoryError paramContext)
       {
         paramContext.printStackTrace();
       }
     }
+    return this.a;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = a(super.getContext());
-      if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, null);
+      this.e = a(super.getContext());
+      Bitmap localBitmap = this.e;
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+        paramCanvas.drawBitmap(this.e, this.b, this.c, null);
       }
     }
   }
@@ -54,18 +54,19 @@ public class WebViewTopTabRadioButton
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(super.getContext());
-    if ((this.jdField_b_of_type_AndroidGraphicsBitmap == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {}
-    for (paramInt2 = bdaq.a(super.getContext(), 9.0F);; paramInt2 = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth())
-    {
-      this.jdField_a_of_type_Int = (paramInt1 - paramInt2 - bdaq.a(super.getContext(), 3.0F));
-      return;
+    this.e = a(super.getContext());
+    Bitmap localBitmap = this.e;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      paramInt2 = this.e.getWidth();
+    } else {
+      paramInt2 = DisplayUtil.a(super.getContext(), 9.0F);
     }
+    this.b = (paramInt1 - paramInt2 - DisplayUtil.a(super.getContext(), 3.0F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTopTabRadioButton
  * JD-Core Version:    0.7.0.1
  */

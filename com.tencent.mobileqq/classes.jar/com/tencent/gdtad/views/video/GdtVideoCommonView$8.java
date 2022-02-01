@@ -11,18 +11,18 @@ class GdtVideoCommonView$8
   
   public void run()
   {
-    if (GdtVideoCommonView.b(this.this$0) == 5)
+    if (GdtVideoCommonView.u(this.this$0) == 5)
     {
-      GdtVideoCommonView.b(this.this$0).setVisibility(0);
-      GdtVideoCommonView.a(this.this$0).setVisibility(8);
-      GdtVideoCommonView.b(this.this$0).setVisibility(8);
+      GdtVideoCommonView.s(this.this$0).setVisibility(0);
+      GdtVideoCommonView.v(this.this$0).setVisibility(8);
+      GdtVideoCommonView.h(this.this$0).setVisibility(8);
     }
-    GdtVideoCommonView.c(this.this$0);
+    GdtVideoCommonView.w(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,58 @@
-import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.data.TroopMemberCard;
 
-class dql
+public class dql
   implements View.OnClickListener
 {
-  dql(dqh paramdqh, CheckBox paramCheckBox, Dialog paramDialog) {}
+  public dql(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new ArrayList();
-    paramView.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_Dqh.a.e)));
-    this.jdField_a_of_type_Dqh.a.a.a(Long.parseLong(this.jdField_a_of_type_Dqh.a.c), paramView, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    paramView = this.jdField_a_of_type_Dqh.a.b;
-    String str = this.jdField_a_of_type_Dqh.a.c;
-    StringBuilder localStringBuilder = new StringBuilder().append("");
-    if (this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (int i = 0;; i = 1)
+    int i = 0;
+    Object localObject;
+    switch (((Integer)paramView.getTag()).intValue())
     {
-      ReportController.b(paramView, "P_CliOper", "Grp_mber", "", "manage_grp", "Clk_delmber_never", 0, 0, str, i, "", "");
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
+    default: 
       return;
+    case 4: 
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.f;
+      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity, ChatActivity.class);
+      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.e);
+      ((Intent)localObject).putExtra("PREVIOUS_WINDOW", TroopMemberCardActivity.class.getName());
+      ((Intent)localObject).putExtra("PREVIOUS_UIN", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.e);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isFriend) {
+        ((Intent)localObject).putExtra("uintype", 0);
+      }
+      for (;;)
+      {
+        ((Intent)localObject).putExtra("uinname", paramView);
+        ((Intent)localObject).putExtra("troop_code", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.c);
+        ((Intent)localObject).putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.d);
+        ((Intent)localObject).addFlags(67108864);
+        ((Intent)localObject).putExtra("cSpecialFlag", 0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.startActivity((Intent)localObject);
+        return;
+        ((Intent)localObject).putExtra("uintype", 1000);
+      }
+    case 5: 
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.f;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isFriend) {
+        paramView = null;
+      }
+      for (;;)
+      {
+        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity, i, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.e, (String)localObject, null, true, paramView, true, true, null, "");
+        return;
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.d;
+        i = 1000;
+      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.k();
   }
 }
 

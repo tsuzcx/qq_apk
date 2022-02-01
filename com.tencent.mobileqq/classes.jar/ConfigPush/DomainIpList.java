@@ -9,8 +9,8 @@ public final class DomainIpList
   extends JceStruct
 {
   static ArrayList<DomainIpInfo> cache_vIplist;
-  public int uDomain_type;
-  public ArrayList<DomainIpInfo> vIplist;
+  public int uDomain_type = 0;
+  public ArrayList<DomainIpInfo> vIplist = null;
   
   public DomainIpList() {}
   
@@ -40,7 +40,7 @@ public final class DomainIpList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.DomainIpList
  * JD-Core Version:    0.7.0.1
  */

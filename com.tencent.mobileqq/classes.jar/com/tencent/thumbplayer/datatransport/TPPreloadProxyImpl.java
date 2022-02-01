@@ -9,6 +9,7 @@ import com.tencent.thumbplayer.config.TPPlayerConfig;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TPPreloadProxyImpl
   implements ITPPreloadProxy
@@ -72,6 +73,8 @@ public class TPPreloadProxyImpl
             j = i;
             this.mDownloadProxy.setUserData("carrier_pesudo_state", Integer.valueOf(TPPlayerConfig.getUserUpcState()));
             j = i;
+            this.mDownloadProxy.setUserData("external_network_ip", TPPlayerConfig.getOutNetIp());
+            j = i;
             this.loadProxySucc = true;
             return;
           }
@@ -129,37 +132,45 @@ public class TPPreloadProxyImpl
     return 0;
   }
   
-  public int startPreload(String paramString, TPDownloadParamData paramTPDownloadParamData)
+  public int startPreload(String paramString, TPDownloadParamData paramTPDownloadParamData, ITPPreloadProxy.IPreloadListener paramIPreloadListener)
+  {
+    return startPreload(paramString, paramTPDownloadParamData, null, paramIPreloadListener);
+  }
+  
+  public int startPreload(String paramString, TPDownloadParamData paramTPDownloadParamData, Map<String, String> paramMap, ITPPreloadProxy.IPreloadListener paramIPreloadListener)
   {
     if (!isAvailable())
     {
       initProxy();
-      if (isAvailable()) {}
+      if (!isAvailable()) {
+        return -1;
+      }
     }
-    while (paramTPDownloadParamData == null) {
-      return -1;
-    }
-    paramTPDownloadParamData = TPProxyUtils.convertProxyDownloadParams(null, paramTPDownloadParamData);
-    try
+    if (paramTPDownloadParamData != null)
     {
-      int i = this.mDownloadProxy.startPreload(paramString, paramTPDownloadParamData, this.mInnerProxyListener);
-      return i;
-    }
-    catch (Throwable paramString)
-    {
-      TPLogUtil.e("TPPreloadProxyImpl", paramString);
+      paramTPDownloadParamData = TPProxyUtils.convertProxyDownloadParams(null, paramTPDownloadParamData, paramMap);
+      try
+      {
+        int i = this.mDownloadProxy.startPreload(paramString, paramTPDownloadParamData, new TPPreloadProxyImpl.1(this, paramIPreloadListener));
+        return i;
+      }
+      catch (Throwable paramString)
+      {
+        TPLogUtil.e("TPPreloadProxyImpl", paramString);
+      }
     }
     return -1;
   }
   
   public void stopPreload(int paramInt)
   {
-    if (this.mDownloadProxy == null) {
+    ITPDownloadProxy localITPDownloadProxy = this.mDownloadProxy;
+    if (localITPDownloadProxy == null) {
       return;
     }
     try
     {
-      this.mDownloadProxy.stopPreload(paramInt);
+      localITPDownloadProxy.stopPreload(paramInt);
       return;
     }
     catch (Throwable localThrowable)
@@ -170,7 +181,7 @@ public class TPPreloadProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPreloadProxyImpl
  * JD-Core Version:    0.7.0.1
  */

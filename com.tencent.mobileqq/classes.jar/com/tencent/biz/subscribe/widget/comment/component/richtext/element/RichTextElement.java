@@ -5,13 +5,13 @@ import android.os.Parcelable;
 public abstract class RichTextElement
   implements Parcelable, Comparable<RichTextElement>
 {
-  protected int a;
-  public int b;
+  protected int b;
   public int c;
+  public int d;
   
   public RichTextElement(int paramInt)
   {
-    this.a = paramInt;
+    this.b = paramInt;
   }
   
   public int a(RichTextElement paramRichTextElement)
@@ -19,12 +19,12 @@ public abstract class RichTextElement
     if (paramRichTextElement == null) {
       return 1;
     }
-    return this.b - paramRichTextElement.b;
+    return this.c - paramRichTextElement.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.comment.component.richtext.element.RichTextElement
  * JD-Core Version:    0.7.0.1
  */

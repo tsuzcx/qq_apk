@@ -51,15 +51,18 @@ public class ej
   
   private void g(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    synchronized (this.hx)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      this.mv.lv = paramString1;
-      this.mv.lu = paramString2;
-      this.lT.cT().a(this.mv);
-      return;
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      synchronized (this.hx)
+      {
+        this.mv.lv = paramString1;
+        this.mv.lu = paramString2;
+        this.lT.cT().a(this.mv);
+        return;
+      }
     }
   }
   
@@ -120,7 +123,7 @@ public class ej
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,358 +1,390 @@
 package com.tencent.mobileqq.forward;
 
-import aseb;
-
-public class ForwardShareCardOption$1
+class ForwardShareCardOption$1
   implements Runnable
 {
-  public ForwardShareCardOption$1(aseb paramaseb, int paramInt, String paramString1, String paramString2, boolean paramBoolean) {}
+  ForwardShareCardOption$1(ForwardShareCardOption paramForwardShareCardOption, int paramInt, String paramString1, String paramString2, boolean paramBoolean) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: invokestatic 38	java/lang/System:currentTimeMillis	()J
-    //   5: lstore_3
-    //   6: iconst_1
-    //   7: aload_0
-    //   8: getfield 19	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_Int	I
-    //   11: if_icmpne +364 -> 375
-    //   14: invokestatic 43	bdep:a	()Z
-    //   17: ifeq +138 -> 155
-    //   20: getstatic 48	alof:bJ	Ljava/lang/String;
-    //   23: astore 6
-    //   25: new 50	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 51	java/lang/StringBuilder:<init>	()V
-    //   32: aload 6
-    //   34: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: ldc 57
-    //   39: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: astore 6
-    //   47: new 63	java/io/File
-    //   50: dup
-    //   51: aload 6
-    //   53: invokespecial 66	java/io/File:<init>	(Ljava/lang/String;)V
-    //   56: astore 7
-    //   58: aload 7
-    //   60: invokevirtual 69	java/io/File:exists	()Z
-    //   63: ifeq +99 -> 162
-    //   66: iconst_1
-    //   67: istore_1
-    //   68: iload_1
-    //   69: ifne +7 -> 76
-    //   72: ldc 71
-    //   74: astore 6
-    //   76: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   79: ifeq +37 -> 116
-    //   82: ldc 78
-    //   84: iconst_2
-    //   85: new 50	java/lang/StringBuilder
-    //   88: dup
-    //   89: invokespecial 51	java/lang/StringBuilder:<init>	()V
-    //   92: ldc 80
-    //   94: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokestatic 38	java/lang/System:currentTimeMillis	()J
-    //   100: lload_3
-    //   101: lsub
-    //   102: invokevirtual 83	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   105: ldc 85
-    //   107: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 89	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   116: aload_0
-    //   117: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Laseb;
-    //   120: aload_0
-    //   121: getfield 21	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   124: aload 6
-    //   126: invokestatic 94	aseb:a	(Laseb;Ljava/lang/String;Ljava/lang/String;)V
-    //   129: aload_0
-    //   130: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Laseb;
-    //   133: invokevirtual 97	aseb:x	()V
-    //   136: aload_0
-    //   137: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Laseb;
-    //   140: getfield 100	aseb:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   143: new 102	com/tencent/mobileqq/forward/ForwardShareCardOption$1$1
-    //   146: dup
-    //   147: aload_0
-    //   148: invokespecial 105	com/tencent/mobileqq/forward/ForwardShareCardOption$1$1:<init>	(Lcom/tencent/mobileqq/forward/ForwardShareCardOption$1;)V
-    //   151: invokevirtual 111	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   154: return
-    //   155: ldc 113
-    //   157: astore 6
-    //   159: goto -134 -> 25
-    //   162: aload 7
-    //   164: invokevirtual 116	java/io/File:createNewFile	()Z
-    //   167: pop
-    //   168: new 118	java/io/BufferedOutputStream
-    //   171: dup
-    //   172: new 120	java/io/FileOutputStream
-    //   175: dup
-    //   176: aload 7
-    //   178: invokespecial 123	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   181: invokespecial 126	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   184: astore 8
-    //   186: invokestatic 132	bdhj:e	()Landroid/graphics/drawable/Drawable;
-    //   189: checkcast 134	android/graphics/drawable/BitmapDrawable
-    //   192: invokevirtual 138	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
-    //   195: getstatic 144	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   198: bipush 100
-    //   200: aload 8
-    //   202: invokevirtual 150	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   205: istore 5
-    //   207: iload 5
-    //   209: ifeq +432 -> 641
-    //   212: iconst_1
-    //   213: istore_2
-    //   214: aload 6
-    //   216: astore 7
-    //   218: aload 7
-    //   220: astore 6
-    //   222: iload_2
-    //   223: istore_1
-    //   224: aload 8
-    //   226: ifnull -158 -> 68
-    //   229: aload 8
-    //   231: invokevirtual 153	java/io/BufferedOutputStream:close	()V
-    //   234: aload 7
-    //   236: astore 6
-    //   238: iload_2
-    //   239: istore_1
-    //   240: goto -172 -> 68
-    //   243: astore 8
-    //   245: aload 7
-    //   247: astore 6
-    //   249: iload_2
-    //   250: istore_1
-    //   251: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   254: ifeq -186 -> 68
-    //   257: ldc 78
-    //   259: iconst_2
-    //   260: ldc 71
-    //   262: aload 8
-    //   264: invokestatic 156	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   267: aload 7
-    //   269: astore 6
-    //   271: iload_2
-    //   272: istore_1
-    //   273: goto -205 -> 68
-    //   276: astore 7
-    //   278: aconst_null
-    //   279: astore 6
-    //   281: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   284: ifeq +8 -> 292
-    //   287: aload 7
-    //   289: invokevirtual 159	java/io/IOException:printStackTrace	()V
-    //   292: aload 6
-    //   294: ifnull +339 -> 633
-    //   297: aload 6
-    //   299: invokevirtual 153	java/io/BufferedOutputStream:close	()V
-    //   302: aconst_null
-    //   303: astore 6
-    //   305: iconst_0
-    //   306: istore_1
-    //   307: goto -239 -> 68
-    //   310: astore 6
-    //   312: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   315: ifeq +13 -> 328
-    //   318: ldc 78
-    //   320: iconst_2
-    //   321: ldc 71
-    //   323: aload 6
-    //   325: invokestatic 156	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   328: aconst_null
-    //   329: astore 6
-    //   331: iconst_0
-    //   332: istore_1
-    //   333: goto -265 -> 68
-    //   336: astore 6
-    //   338: aconst_null
-    //   339: astore 7
-    //   341: aload 7
-    //   343: ifnull +8 -> 351
-    //   346: aload 7
-    //   348: invokevirtual 153	java/io/BufferedOutputStream:close	()V
-    //   351: aload 6
-    //   353: athrow
-    //   354: astore 7
-    //   356: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   359: ifeq -8 -> 351
-    //   362: ldc 78
-    //   364: iconst_2
-    //   365: ldc 71
+    //   0: invokestatic 40	java/lang/System:currentTimeMillis	()J
+    //   3: lstore_2
+    //   4: aload_0
+    //   5: getfield 21	com/tencent/mobileqq/forward/ForwardShareCardOption$1:a	I
+    //   8: istore_1
+    //   9: aconst_null
+    //   10: astore 10
+    //   12: iconst_0
+    //   13: istore 6
+    //   15: iconst_0
+    //   16: istore 5
+    //   18: iconst_1
+    //   19: iload_1
+    //   20: if_icmpne +350 -> 370
+    //   23: invokestatic 45	com/tencent/mobileqq/util/SystemUtil:a	()Z
+    //   26: ifeq +11 -> 37
+    //   29: getstatic 50	com/tencent/mobileqq/app/AppConstants:PATH_HEAD_HD	Ljava/lang/String;
+    //   32: astore 7
+    //   34: goto +7 -> 41
+    //   37: ldc 52
+    //   39: astore 7
+    //   41: new 54	java/lang/StringBuilder
+    //   44: dup
+    //   45: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   48: astore 8
+    //   50: aload 8
+    //   52: aload 7
+    //   54: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: aload 8
+    //   60: ldc 61
+    //   62: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: pop
+    //   66: aload 8
+    //   68: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: astore 9
+    //   73: new 67	java/io/File
+    //   76: dup
+    //   77: aload 9
+    //   79: invokespecial 70	java/io/File:<init>	(Ljava/lang/String;)V
+    //   82: astore 7
+    //   84: aload 7
+    //   86: invokevirtual 73	java/io/File:exists	()Z
+    //   89: ifeq +13 -> 102
+    //   92: aload 9
+    //   94: astore 7
+    //   96: iconst_1
+    //   97: istore 4
+    //   99: goto +537 -> 636
+    //   102: aload 7
+    //   104: invokevirtual 76	java/io/File:createNewFile	()Z
+    //   107: pop
+    //   108: new 78	java/io/BufferedOutputStream
+    //   111: dup
+    //   112: new 80	java/io/FileOutputStream
+    //   115: dup
+    //   116: aload 7
+    //   118: invokespecial 83	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   121: invokespecial 86	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   124: astore 8
+    //   126: aload 8
+    //   128: astore 7
+    //   130: invokestatic 92	com/tencent/mobileqq/utils/ImageUtil:h	()Landroid/graphics/drawable/Drawable;
+    //   133: checkcast 94	android/graphics/drawable/BitmapDrawable
+    //   136: invokevirtual 98	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
+    //   139: getstatic 104	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   142: bipush 100
+    //   144: aload 8
+    //   146: invokevirtual 110	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   149: istore 5
+    //   151: iload 5
+    //   153: ifeq +10 -> 163
+    //   156: aload 9
+    //   158: astore 7
+    //   160: goto +6 -> 166
+    //   163: aconst_null
+    //   164: astore 7
+    //   166: aload 8
+    //   168: invokevirtual 113	java/io/BufferedOutputStream:close	()V
+    //   171: aload 7
+    //   173: astore 8
+    //   175: iload 5
+    //   177: istore 4
+    //   179: goto +37 -> 216
+    //   182: astore 9
+    //   184: aload 7
+    //   186: astore 8
+    //   188: iload 5
+    //   190: istore 4
+    //   192: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   195: ifeq +21 -> 216
+    //   198: ldc 120
+    //   200: iconst_2
+    //   201: ldc 122
+    //   203: aload 9
+    //   205: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   208: iload 5
+    //   210: istore 4
+    //   212: aload 7
+    //   214: astore 8
+    //   216: aload 8
+    //   218: astore 7
+    //   220: goto +416 -> 636
+    //   223: astore 9
+    //   225: goto +16 -> 241
+    //   228: astore 7
+    //   230: aconst_null
+    //   231: astore 8
+    //   233: goto +103 -> 336
+    //   236: astore 9
+    //   238: aconst_null
+    //   239: astore 8
+    //   241: aload 8
+    //   243: astore 7
+    //   245: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   248: ifeq +12 -> 260
+    //   251: aload 8
+    //   253: astore 7
+    //   255: aload 9
+    //   257: invokevirtual 128	java/io/IOException:printStackTrace	()V
+    //   260: aload 10
+    //   262: astore 7
+    //   264: iload 6
+    //   266: istore 4
+    //   268: aload 8
+    //   270: ifnull +366 -> 636
+    //   273: aload 8
+    //   275: invokevirtual 113	java/io/BufferedOutputStream:close	()V
+    //   278: aload 10
+    //   280: astore 7
+    //   282: iload 6
+    //   284: istore 4
+    //   286: goto +350 -> 636
+    //   289: astore 8
+    //   291: aload 10
+    //   293: astore 7
+    //   295: iload 6
+    //   297: istore 4
+    //   299: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   302: ifeq +334 -> 636
+    //   305: ldc 120
+    //   307: iconst_2
+    //   308: ldc 122
+    //   310: aload 8
+    //   312: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   315: aload 10
+    //   317: astore 7
+    //   319: iload 6
+    //   321: istore 4
+    //   323: goto +313 -> 636
+    //   326: astore 9
+    //   328: aload 7
+    //   330: astore 8
+    //   332: aload 9
+    //   334: astore 7
+    //   336: aload 8
+    //   338: ifnull +29 -> 367
+    //   341: aload 8
+    //   343: invokevirtual 113	java/io/BufferedOutputStream:close	()V
+    //   346: goto +21 -> 367
+    //   349: astore 8
+    //   351: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   354: ifeq +13 -> 367
+    //   357: ldc 120
+    //   359: iconst_2
+    //   360: ldc 122
+    //   362: aload 8
+    //   364: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   367: aload 7
-    //   369: invokestatic 156	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   372: goto -21 -> 351
-    //   375: aload_0
-    //   376: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Laseb;
-    //   379: getfield 162	aseb:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   382: bipush 101
-    //   384: aload_0
-    //   385: getfield 21	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   388: iconst_0
-    //   389: invokevirtual 167	com/tencent/mobileqq/app/QQAppInterface:a	(ILjava/lang/String;I)Ljava/lang/String;
-    //   392: astore 6
-    //   394: aload_0
-    //   395: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Laseb;
-    //   398: getfield 162	aseb:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   401: invokevirtual 170	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   404: astore 7
-    //   406: aload 6
-    //   408: invokestatic 175	arso:a	(Ljava/lang/String;)Z
-    //   411: ifeq +152 -> 563
-    //   414: new 177	java/util/ArrayList
-    //   417: dup
-    //   418: invokespecial 178	java/util/ArrayList:<init>	()V
-    //   421: astore 8
-    //   423: aload 8
-    //   425: aload 6
-    //   427: invokevirtual 182	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   430: pop
-    //   431: aload 8
-    //   433: aload 7
-    //   435: aload_0
-    //   436: getfield 23	com/tencent/mobileqq/forward/ForwardShareCardOption$1:b	Ljava/lang/String;
-    //   439: ldc 184
-    //   441: invokestatic 189	bjev:a	(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/ArrayList;
-    //   444: astore 6
-    //   446: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   449: ifeq +41 -> 490
-    //   452: ldc 78
-    //   454: iconst_4
-    //   455: new 50	java/lang/StringBuilder
-    //   458: dup
-    //   459: invokespecial 51	java/lang/StringBuilder:<init>	()V
-    //   462: ldc 191
-    //   464: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   467: aload 6
-    //   469: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   472: ldc 196
-    //   474: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   477: aload_0
-    //   478: getfield 25	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_Boolean	Z
-    //   481: invokevirtual 199	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   484: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   487: invokestatic 89	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   490: aload 6
-    //   492: ifnull +133 -> 625
-    //   495: aload 6
-    //   497: invokevirtual 203	java/util/ArrayList:size	()I
-    //   500: ifle +125 -> 625
-    //   503: aload 6
-    //   505: iconst_0
-    //   506: invokevirtual 207	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   509: checkcast 209	java/lang/String
-    //   512: astore 7
-    //   514: aload 7
-    //   516: astore 6
-    //   518: iload_2
-    //   519: istore_1
-    //   520: aload 7
-    //   522: invokestatic 215	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   525: ifne -457 -> 68
-    //   528: aload 7
-    //   530: ldc 217
-    //   532: invokevirtual 220	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   535: ifne +19 -> 554
-    //   538: aload 7
-    //   540: astore 6
-    //   542: iload_2
-    //   543: istore_1
-    //   544: aload 7
-    //   546: ldc 222
-    //   548: invokevirtual 220	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   551: ifeq -483 -> 68
-    //   554: iconst_1
-    //   555: istore_1
-    //   556: aload 7
-    //   558: astore 6
-    //   560: goto -492 -> 68
-    //   563: aload_0
-    //   564: getfield 25	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_Boolean	Z
-    //   567: ifeq +58 -> 625
-    //   570: aload_0
-    //   571: getfield 17	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Laseb;
-    //   574: getfield 162	aseb:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   577: bipush 6
-    //   579: invokevirtual 225	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lalpd;
-    //   582: checkcast 227	alri
-    //   585: aload_0
-    //   586: getfield 21	com/tencent/mobileqq/forward/ForwardShareCardOption$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   589: iconst_1
-    //   590: invokevirtual 230	alri:a	(Ljava/lang/String;Z)V
-    //   593: return
-    //   594: astore 6
-    //   596: aload 8
+    //   369: athrow
+    //   370: aload_0
+    //   371: getfield 19	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
+    //   374: getfield 134	com/tencent/mobileqq/forward/ForwardShareCardOption:q	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   377: bipush 101
+    //   379: aload_0
+    //   380: getfield 23	com/tencent/mobileqq/forward/ForwardShareCardOption$1:b	Ljava/lang/String;
+    //   383: iconst_0
+    //   384: invokevirtual 140	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePath	(ILjava/lang/String;I)Ljava/lang/String;
+    //   387: astore 7
+    //   389: aload_0
+    //   390: getfield 19	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
+    //   393: getfield 134	com/tencent/mobileqq/forward/ForwardShareCardOption:q	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   396: invokevirtual 143	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   399: astore 8
+    //   401: aload 7
+    //   403: invokestatic 148	com/tencent/mobileqq/filemanager/util/FileUtil:d	(Ljava/lang/String;)Z
+    //   406: ifeq +190 -> 596
+    //   409: new 150	java/util/ArrayList
+    //   412: dup
+    //   413: invokespecial 151	java/util/ArrayList:<init>	()V
+    //   416: astore 9
+    //   418: aload 9
+    //   420: aload 7
+    //   422: invokevirtual 155	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   425: pop
+    //   426: aload 9
+    //   428: aload 8
+    //   430: aload_0
+    //   431: getfield 25	com/tencent/mobileqq/forward/ForwardShareCardOption$1:c	Ljava/lang/String;
+    //   434: ldc 157
+    //   436: invokestatic 163	cooperation/qzone/QZoneShareManager:batchUploadImages	(Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/ArrayList;
+    //   439: astore 8
+    //   441: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   444: ifeq +57 -> 501
+    //   447: new 54	java/lang/StringBuilder
+    //   450: dup
+    //   451: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   454: astore 7
+    //   456: aload 7
+    //   458: ldc 165
+    //   460: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: pop
+    //   464: aload 7
+    //   466: aload 8
+    //   468: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   471: pop
+    //   472: aload 7
+    //   474: ldc 170
+    //   476: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   479: pop
+    //   480: aload 7
+    //   482: aload_0
+    //   483: getfield 27	com/tencent/mobileqq/forward/ForwardShareCardOption$1:d	Z
+    //   486: invokevirtual 173	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   489: pop
+    //   490: ldc 120
+    //   492: iconst_4
+    //   493: aload 7
+    //   495: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   498: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   501: aload 10
+    //   503: astore 7
+    //   505: iload 6
+    //   507: istore 4
+    //   509: aload 8
+    //   511: ifnull +125 -> 636
+    //   514: aload 10
+    //   516: astore 7
+    //   518: iload 6
+    //   520: istore 4
+    //   522: aload 8
+    //   524: invokevirtual 180	java/util/ArrayList:size	()I
+    //   527: ifle +109 -> 636
+    //   530: aload 8
+    //   532: iconst_0
+    //   533: invokevirtual 184	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   536: checkcast 186	java/lang/String
+    //   539: astore 9
+    //   541: aload 9
+    //   543: astore 8
+    //   545: iload 5
+    //   547: istore 4
+    //   549: aload 9
+    //   551: invokestatic 192	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   554: ifne -338 -> 216
+    //   557: aload 9
+    //   559: astore 7
+    //   561: aload 9
+    //   563: ldc 194
+    //   565: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   568: ifne -472 -> 96
+    //   571: aload 9
+    //   573: astore 8
+    //   575: iload 5
+    //   577: istore 4
+    //   579: aload 9
+    //   581: ldc 199
+    //   583: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   586: ifeq -370 -> 216
+    //   589: aload 9
+    //   591: astore 7
+    //   593: goto -497 -> 96
+    //   596: aload 10
     //   598: astore 7
-    //   600: goto -259 -> 341
-    //   603: astore 8
-    //   605: aload 6
-    //   607: astore 7
-    //   609: aload 8
-    //   611: astore 6
-    //   613: goto -272 -> 341
-    //   616: astore 7
-    //   618: aload 8
-    //   620: astore 6
-    //   622: goto -341 -> 281
-    //   625: aconst_null
-    //   626: astore 6
-    //   628: iload_2
-    //   629: istore_1
-    //   630: goto -562 -> 68
-    //   633: aconst_null
-    //   634: astore 6
-    //   636: iconst_0
-    //   637: istore_1
-    //   638: goto -570 -> 68
-    //   641: aconst_null
-    //   642: astore 7
-    //   644: iconst_0
-    //   645: istore_2
-    //   646: goto -428 -> 218
+    //   600: iload 6
+    //   602: istore 4
+    //   604: aload_0
+    //   605: getfield 27	com/tencent/mobileqq/forward/ForwardShareCardOption$1:d	Z
+    //   608: ifeq +28 -> 636
+    //   611: aload_0
+    //   612: getfield 19	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
+    //   615: getfield 134	com/tencent/mobileqq/forward/ForwardShareCardOption:q	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   618: getstatic 204	com/tencent/mobileqq/app/BusinessHandlerFactory:DISCUSSION_HANDLER	Ljava/lang/String;
+    //   621: invokevirtual 208	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   624: checkcast 210	com/tencent/mobileqq/app/DiscussionHandler
+    //   627: aload_0
+    //   628: getfield 23	com/tencent/mobileqq/forward/ForwardShareCardOption$1:b	Ljava/lang/String;
+    //   631: iconst_1
+    //   632: invokevirtual 213	com/tencent/mobileqq/app/DiscussionHandler:c	(Ljava/lang/String;Z)V
+    //   635: return
+    //   636: iload 4
+    //   638: ifne +7 -> 645
+    //   641: ldc 122
+    //   643: astore 7
+    //   645: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   648: ifeq +50 -> 698
+    //   651: new 54	java/lang/StringBuilder
+    //   654: dup
+    //   655: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   658: astore 8
+    //   660: aload 8
+    //   662: ldc 215
+    //   664: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   667: pop
+    //   668: aload 8
+    //   670: invokestatic 40	java/lang/System:currentTimeMillis	()J
+    //   673: lload_2
+    //   674: lsub
+    //   675: invokevirtual 218	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   678: pop
+    //   679: aload 8
+    //   681: ldc 220
+    //   683: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   686: pop
+    //   687: ldc 120
+    //   689: iconst_2
+    //   690: aload 8
+    //   692: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   695: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   698: aload_0
+    //   699: getfield 19	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
+    //   702: aload_0
+    //   703: getfield 23	com/tencent/mobileqq/forward/ForwardShareCardOption$1:b	Ljava/lang/String;
+    //   706: aload 7
+    //   708: invokestatic 223	com/tencent/mobileqq/forward/ForwardShareCardOption:a	(Lcom/tencent/mobileqq/forward/ForwardShareCardOption;Ljava/lang/String;Ljava/lang/String;)V
+    //   711: aload_0
+    //   712: getfield 19	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
+    //   715: invokevirtual 226	com/tencent/mobileqq/forward/ForwardShareCardOption:ae	()V
+    //   718: aload_0
+    //   719: getfield 19	com/tencent/mobileqq/forward/ForwardShareCardOption$1:this$0	Lcom/tencent/mobileqq/forward/ForwardShareCardOption;
+    //   722: getfield 230	com/tencent/mobileqq/forward/ForwardShareCardOption:s	Landroid/app/Activity;
+    //   725: new 232	com/tencent/mobileqq/forward/ForwardShareCardOption$1$1
+    //   728: dup
+    //   729: aload_0
+    //   730: invokespecial 235	com/tencent/mobileqq/forward/ForwardShareCardOption$1$1:<init>	(Lcom/tencent/mobileqq/forward/ForwardShareCardOption$1;)V
+    //   733: invokevirtual 241	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   736: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	649	0	this	1
-    //   67	571	1	i	int
-    //   1	645	2	j	int
-    //   5	96	3	l	long
-    //   205	3	5	bool	boolean
-    //   23	281	6	localObject1	Object
-    //   310	14	6	localIOException1	java.io.IOException
-    //   329	1	6	localObject2	Object
-    //   336	16	6	localObject3	Object
-    //   392	167	6	localObject4	Object
-    //   594	12	6	localObject5	Object
-    //   611	24	6	localObject6	Object
-    //   56	212	7	localObject7	Object
-    //   276	12	7	localIOException2	java.io.IOException
-    //   339	8	7	localObject8	Object
-    //   354	14	7	localIOException3	java.io.IOException
-    //   404	204	7	localObject9	Object
-    //   616	1	7	localIOException4	java.io.IOException
-    //   642	1	7	localObject10	Object
-    //   184	46	8	localBufferedOutputStream	java.io.BufferedOutputStream
-    //   243	20	8	localIOException5	java.io.IOException
-    //   421	176	8	localArrayList	java.util.ArrayList
-    //   603	16	8	localObject11	Object
+    //   0	737	0	this	1
+    //   8	13	1	i	int
+    //   3	671	2	l	long
+    //   97	540	4	j	int
+    //   16	560	5	bool	boolean
+    //   13	588	6	k	int
+    //   32	187	7	localObject1	Object
+    //   228	1	7	localObject2	Object
+    //   243	464	7	localObject3	Object
+    //   48	226	8	localObject4	Object
+    //   289	22	8	localIOException1	java.io.IOException
+    //   330	12	8	localObject5	Object
+    //   349	14	8	localIOException2	java.io.IOException
+    //   399	292	8	localObject6	Object
+    //   71	86	9	str	String
+    //   182	22	9	localIOException3	java.io.IOException
+    //   223	1	9	localIOException4	java.io.IOException
+    //   236	20	9	localIOException5	java.io.IOException
+    //   326	7	9	localObject7	Object
+    //   416	174	9	localObject8	Object
+    //   10	587	10	localObject9	Object
     // Exception table:
     //   from	to	target	type
-    //   229	234	243	java/io/IOException
-    //   162	186	276	java/io/IOException
-    //   297	302	310	java/io/IOException
-    //   162	186	336	finally
-    //   346	351	354	java/io/IOException
-    //   186	207	594	finally
-    //   281	292	603	finally
-    //   186	207	616	java/io/IOException
+    //   166	171	182	java/io/IOException
+    //   130	151	223	java/io/IOException
+    //   102	126	228	finally
+    //   102	126	236	java/io/IOException
+    //   273	278	289	java/io/IOException
+    //   130	151	326	finally
+    //   245	251	326	finally
+    //   255	260	326	finally
+    //   341	346	349	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareCardOption.1
  * JD-Core Version:    0.7.0.1
  */

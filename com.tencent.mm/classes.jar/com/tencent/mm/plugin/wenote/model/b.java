@@ -1,70 +1,71 @@
 package com.tencent.mm.plugin.wenote.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aco;
-import com.tencent.mm.protocal.protobuf.acu;
-import com.tencent.mm.protocal.protobuf.acv;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.art;
+import com.tencent.mm.protocal.protobuf.arz;
+import com.tencent.mm.protocal.protobuf.asa;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class b
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private final com.tencent.mm.ai.b rr;
-  public int vvI;
-  private String vvJ;
-  private aco vvK;
-  private LinkedList<aco> vvL;
-  public int vvM;
+  public int Xzs;
+  private String Xzt;
+  private art Xzu;
+  private LinkedList<art> Xzv;
+  public int Xzw;
+  private h callback;
+  private final c rr;
   
-  public b(int paramInt1, int paramInt2, String paramString, LinkedList<aco> paramLinkedList, aco paramaco)
+  public b(int paramInt1, int paramInt2, String paramString, LinkedList<art> paramLinkedList, art paramart)
   {
-    AppMethodBeat.i(26595);
+    AppMethodBeat.i(30287);
     this.callback = null;
-    this.vvI = 1;
-    this.vvJ = "";
-    this.vvK = null;
-    this.vvL = new LinkedList();
-    this.vvM = 0;
-    this.vvL = paramLinkedList;
-    this.vvK = paramaco;
-    this.vvJ = paramString;
-    this.vvI = paramInt2;
-    this.vvM = paramInt1;
-    paramString = new b.a();
-    paramString.fsX = new acu();
-    paramString.fsY = new acv();
+    this.Xzs = 1;
+    this.Xzt = "";
+    this.Xzu = null;
+    this.Xzv = new LinkedList();
+    this.Xzw = 0;
+    this.Xzv = paramLinkedList;
+    this.Xzu = paramart;
+    this.Xzt = paramString;
+    this.Xzs = paramInt2;
+    this.Xzw = paramInt1;
+    paramString = new c.a();
+    paramString.otE = new arz();
+    paramString.otF = new asa();
     paramString.uri = "/cgi-bin/micromsg-bin/favsecurity ";
     paramString.funcId = 921;
-    paramString.reqCmdId = 0;
+    paramString.otG = 0;
     paramString.respCmdId = 0;
-    this.rr = paramString.ado();
-    AppMethodBeat.o(26595);
+    this.rr = paramString.bEF();
+    AppMethodBeat.o(30287);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(26596);
-    acu localacu = (acu)this.rr.fsV.fta;
-    localacu.nrS = this.vvI;
-    localacu.wVh = this.vvK;
-    localacu.wVg = this.vvL;
-    localacu.wxW = this.vvJ;
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(26596);
+    AppMethodBeat.i(30288);
+    arz localarz = (arz)c.b.b(this.rr.otB);
+    localarz.muC = this.Xzs;
+    localarz.ZBz = this.Xzu;
+    localarz.ZBy = this.Xzv;
+    localarz.YRE = this.Xzt;
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(30288);
     return i;
   }
   
@@ -73,52 +74,52 @@ public final class b
     return 921;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(26597);
-    ab.i("MicroMsg.NetSceneCheckNoteSecurity", "netId %d errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (acv)((com.tencent.mm.ai.b)paramq).fsW.fta;
+    AppMethodBeat.i(30289);
+    Log.i("MicroMsg.NetSceneCheckNoteSecurity", "netId %d errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = (asa)c.c.b(((c)params).otC);
     if (paramInt2 != 0)
     {
-      ab.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,errType:%d,fail", new Object[] { Integer.valueOf(paramInt2) });
+      Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,errType:%d,fail", new Object[] { Integer.valueOf(paramInt2) });
       this.callback.onSceneEnd(paramInt2, -1, paramString, this);
-      AppMethodBeat.o(26597);
+      AppMethodBeat.o(30289);
       return;
     }
-    if ((paramq == null) || (paramq.getBaseResponse() == null))
+    if ((params == null) || (params.getBaseResponse() == null))
     {
-      ab.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,response == null,ok");
+      Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,response == null,ok");
       this.callback.onSceneEnd(paramInt2, 0, paramString, this);
-      AppMethodBeat.o(26597);
+      AppMethodBeat.o(30289);
       return;
     }
-    if (paramq.getBaseResponse().Ret != 0)
+    if (params.getBaseResponse().Idd != 0)
     {
-      ab.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,baseresponse.ret != 0,ok");
+      Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,baseresponse.ret != 0,ok");
       this.callback.onSceneEnd(paramInt2, 0, paramString, this);
-      AppMethodBeat.o(26597);
+      AppMethodBeat.o(30289);
       return;
     }
-    if (paramq.wVi > 0)
+    if (params.ZBA > 0)
     {
-      ab.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,SecurityResult > 0,fail");
+      Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,SecurityResult > 0,fail");
       this.callback.onSceneEnd(paramInt2, -1, paramString, this);
-      AppMethodBeat.o(26597);
+      AppMethodBeat.o(30289);
       return;
     }
-    ab.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,SecurityResult = 0,fail");
+    Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,SecurityResult = 0,fail");
     this.callback.onSceneEnd(paramInt2, 0, paramString, this);
-    AppMethodBeat.o(26597);
+    AppMethodBeat.o(30289);
   }
   
-  public final m.b securityVerificationChecked(q paramq)
+  public final p.b securityVerificationChecked(s params)
   {
-    return m.b.ftu;
+    return p.b.ouh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.b
  * JD-Core Version:    0.7.0.1
  */

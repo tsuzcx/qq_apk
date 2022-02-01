@@ -1,25 +1,13 @@
 package com.tencent.mm.ui;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class HomeUI$4
-  implements View.OnLongClickListener
+  implements g.c
 {
   HomeUI$4(HomeUI paramHomeUI) {}
   
-  public final boolean onLongClick(View paramView)
-  {
-    AppMethodBeat.i(153762);
-    if ((b.dsf()) || (f.IS_FLAVOR_RED) || (f.IS_FLAVOR_PURPLE)) {
-      HomeUI.k(this.yYw);
-    }
-    AppMethodBeat.o(153762);
-    return false;
-  }
+  public final void onDialogClick(boolean paramBoolean, String paramString) {}
 }
 
 

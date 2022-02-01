@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/gf"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gh">
-        <TextView android:id="@id/ox" android:visibility="gone" style="@style/gl" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/au4" android:layout_marginRight="6.0dip" style="@style/gp" />
-            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/ave" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" style="@style/a0t" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip">
-                <FrameLayout android:id="@id/ar0" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:layout_gravity="center" android:id="@id/aso" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                    <ImageView android:id="@id/ass" android:background="@drawable/im" android:layout_width="@dimen/e9" android:layout_height="@dimen/e9" />
-                    <ImageView android:layout_gravity="center" android:id="@id/asr" android:background="@null" android:layout_width="@dimen/ee" android:layout_height="@dimen/ee" />
-                </FrameLayout>
-                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:ellipsize="end" android:id="@id/arq" android:layout_marginLeft="0.0dip" android:singleLine="true" style="@style/g8" />
-                </LinearLayout>
-            </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/avc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/iq" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/iq" android:layout_marginBottom="@dimen/g">
+        <TextView android:textSize="@dimen/m8" android:textColor="#ff6a6a6a" android:ellipsize="end" android:id="@id/avd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/avg" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/avf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m7" android:src="@drawable/bqx" />
+            <TextView android:textSize="@dimen/m8" android:textColor="@color/x1" android:ellipsize="end" android:id="@id/avh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6" android:singleLine="true" />
         </LinearLayout>
     </LinearLayout>
-    <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/ow" android:focusable="false" android:visibility="gone" style="@style/ge" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/kf" android:clickable="false" android:layout_width="fill_parent" android:layout_height="110.0dip" android:layout_marginTop="@dimen/ig">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/j7" android:ellipsize="end" android:text="@string/b10" android:singleLine="true" style="@style/g5" />
+    </LinearLayout>
 </LinearLayout>

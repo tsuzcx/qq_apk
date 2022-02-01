@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/clk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/cll" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/clm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/media_btn_play" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/cln" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:layout_centerInParent="true" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/c6e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/c6i" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:orientation="vertical" android:id="@id/brl" android:background="@drawable/aq7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <com.tencent.mm.plugin.finder.webview.RelativeInterceptScrollLayout android:id="@id/lmk" android:background="@color/f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/a7u" />
+            <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/bs4" android:background="@drawable/anj" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/ck" android:layout_centerHorizontal="true" />
+            <LinearLayout android:orientation="vertical" android:id="@id/brp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:layout_centerHorizontal="true">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/FG_2" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="@string/est" android:singleLine="true" />
+            </LinearLayout>
+            <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/beq" android:layout_width="@dimen/d4" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/cr" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/dvx">
+                <ImageView android:id="@id/bea" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/bet" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/ahb" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_2" />
+            </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/a3g" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.scanner.MultiCodeMaskView android:id="@id/h36" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

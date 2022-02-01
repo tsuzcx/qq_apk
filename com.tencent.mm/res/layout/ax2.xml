@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:layout_gravity="center_horizontal" android:id="@id/epa" android:background="@drawable/pp" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/epb" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:id="@id/epc" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:layout_width="116.0dip" android:layout_height="wrap_content" />
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="@dimen/g_" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df">
+        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/gox" android:visibility="gone" android:layout_width="@dimen/g_" android:layout_height="@dimen/g_" android:layout_marginLeft="6.0dip" android:src="@drawable/b9e" android:scaleType="fitXY" android:layout_alignParentLeft="true" app:radius="25.0dip" />
+        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/goy" android:visibility="gone" android:layout_width="@dimen/g_" android:layout_height="@dimen/g_" android:layout_marginLeft="3.0dip" android:src="@drawable/b9f" android:scaleType="fitXY" android:layout_alignParentLeft="true" app:radius="25.0dip" />
+        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/f2i" android:layout_width="@dimen/g_" android:layout_height="@dimen/g_" android:scaleType="fitXY" android:layout_alignParentLeft="true" app:radius="25.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:id="@id/op" android:background="@drawable/c6" android:visibility="gone" android:layout_width="@dimen/g_" android:layout_height="@dimen/g_" android:text="@string/jf" android:layout_alignParentLeft="true" />
+        <RelativeLayout android:id="@id/l2r" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/l2t" android:background="@drawable/azs" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_alignParentLeft="true">
+                <ImageView android:id="@id/l2q" android:layout_width="16.0dip" android:layout_height="16.0dip" android:scaleType="centerInside" />
+                <TextView android:textSize="8.0dip" android:textStyle="bold" android:textColor="@color/BW_BG_100" android:id="@id/l2s" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+        </RelativeLayout>
+        <ImageView android:id="@id/fnc" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    </RelativeLayout>
 </LinearLayout>

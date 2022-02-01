@@ -1,46 +1,31 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/report/model/WeAppRuntimeLoginStatusErrorReport;", "", "()V", "ID", "", "KEY_SYSTEM_RECREATE_APPBRAND_UI_MM_INVALID_UIN", "KEY_SYSTEM_RECREATE_APPBRAND_UI_NOW_UIN_NOT_EQUALS_CONFIG_UIN", "report", "", "key", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
 {
-  public String appId;
-  public int bDc;
-  public int cmE;
-  public final String cpW;
-  public final o htX;
-  public volatile long iHI;
-  public volatile boolean iHJ;
-  public int iHK;
-  public int iHL;
-  public long iHM;
-  public long iHN;
-  public String iHg;
-  public int scene;
+  public static final m tPK;
   
-  public m(o paramo)
+  static
   {
-    AppMethodBeat.i(132650);
-    this.iHJ = false;
-    this.htX = paramo;
-    this.cpW = paramo.atS().vZ();
-    AppMethodBeat.o(132650);
+    AppMethodBeat.i(175213);
+    tPK = new m();
+    AppMethodBeat.o(175213);
   }
   
-  public final String toString()
+  public static final void rG(int paramInt)
   {
-    AppMethodBeat.i(132651);
-    String str = "kv_14576{, networkType='" + this.iHg + '\'' + ", appId='" + this.appId + '\'' + ", appVersion=" + this.bDc + ", appState=" + this.cmE + ", scene=" + this.scene + ", sessionId='" + this.cpW + '\'' + ", is_download_code=" + this.iHK + ", is_load_x5=" + this.iHL + ", cost_time=" + this.iHM + ", event_time=" + this.iHN + ", load_time=" + this.iHI + ", real_time=" + bo.yB() + '}';
-    AppMethodBeat.o(132651);
-    return str;
+    AppMethodBeat.i(175212);
+    h.OAn.p(1294L, paramInt, 1L);
+    AppMethodBeat.o(175212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,30 @@
 package android.support.v4.app;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public final class ac
+final class ac
+  implements ab
 {
-  private final List<Fragment> dj;
-  private final List<ac> dk;
+  final int eS;
+  final int eT;
+  final String mName = null;
   
-  ac(List<Fragment> paramList, List<ac> paramList1)
+  ac(u paramu, int paramInt1, int paramInt2)
   {
-    this.dj = paramList;
-    this.dk = paramList1;
+    this.eS = paramInt1;
+    this.eT = 1;
   }
   
-  final List<ac> ap()
+  public final boolean a(ArrayList<e> paramArrayList, ArrayList<Boolean> paramArrayList1)
   {
-    return this.dk;
-  }
-  
-  final List<Fragment> getFragments()
-  {
-    return this.dj;
+    if ((this.eD.ek != null) && (this.eS < 0) && (this.mName == null))
+    {
+      u localu = this.eD.ek.cK;
+      if ((localu != null) && (localu.popBackStackImmediate())) {
+        return false;
+      }
+    }
+    return this.eD.a(paramArrayList, paramArrayList1, this.mName, this.eS, this.eT);
   }
 }
 

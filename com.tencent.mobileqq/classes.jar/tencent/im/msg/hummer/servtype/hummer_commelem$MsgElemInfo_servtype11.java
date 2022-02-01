@@ -22,18 +22,19 @@ public final class hummer_commelem$MsgElemInfo_servtype11
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 58, 66 }, new String[] { "bytes_resID", "bytes_resMD5", "reserve_Info1", "reserve_Info2", "uint32_doodleData_offset", "uint32_doodle_gif_id", "bytes_Doodle_url", "bytes_Doodle_md5" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, localByteStringMicro6 }, MsgElemInfo_servtype11.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 58, 66 }, new String[] { "bytes_resID", "bytes_resMD5", "reserve_Info1", "reserve_Info2", "uint32_doodleData_offset", "uint32_doodle_gif_id", "bytes_Doodle_url", "bytes_Doodle_md5" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger, localInteger, localByteStringMicro5, localByteStringMicro6 }, MsgElemInfo_servtype11.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype11
  * JD-Core Version:    0.7.0.1
  */

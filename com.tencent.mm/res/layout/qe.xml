@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/ne" android:paddingRight="@dimen/n_" android:paddingBottom="@dimen/ne" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:gravity="center" android:id="@id/b2y" android:layout_width="20.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" />
-        <TextView android:id="@id/b2z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textIsSelectable="true" />
-    </LinearLayout>
-    <View android:background="#ffd9d9d9" android:layout_width="fill_parent" android:layout_height="1.0px" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/hrp" android:paddingLeft="@dimen/i9" android:paddingRight="@dimen/i9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/a1c" android:id="@id/ebt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ig" android:layout_marginBottom="@dimen/ig" android:text="@string/kc3" android:layout_below="@id/hrp" android:layout_centerHorizontal="true" />
+</RelativeLayout>

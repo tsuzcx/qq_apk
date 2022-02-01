@@ -22,14 +22,16 @@ public abstract class AbstractWebSocket
   
   private void cancelConnectionLostTimer()
   {
-    if (this.connectionLostTimer != null)
+    Object localObject = this.connectionLostTimer;
+    if (localObject != null)
     {
-      this.connectionLostTimer.cancel();
+      ((Timer)localObject).cancel();
       this.connectionLostTimer = null;
     }
-    if (this.connectionLostTimerTask != null)
+    localObject = this.connectionLostTimerTask;
+    if (localObject != null)
     {
-      this.connectionLostTimerTask.cancel();
+      ((TimerTask)localObject).cancel();
       this.connectionLostTimerTask = null;
     }
   }
@@ -59,7 +61,10 @@ public abstract class AbstractWebSocket
     cancelConnectionLostTimer();
     this.connectionLostTimer = new Timer("WebSocketTimer");
     this.connectionLostTimerTask = new AbstractWebSocket.1(this);
-    this.connectionLostTimer.scheduleAtFixedRate(this.connectionLostTimerTask, this.connectionLostTimeout * 1000L, this.connectionLostTimeout * 1000L);
+    Timer localTimer = this.connectionLostTimer;
+    TimerTask localTimerTask = this.connectionLostTimerTask;
+    int i = this.connectionLostTimeout;
+    localTimer.scheduleAtFixedRate(localTimerTask, i * 1000L, 1000L * i);
   }
   
   public int getConnectionLostTimeout()
@@ -116,6 +121,10 @@ public abstract class AbstractWebSocket
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void setReuseAddr(boolean paramBoolean)
@@ -160,7 +169,7 @@ public abstract class AbstractWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.AbstractWebSocket
  * JD-Core Version:    0.7.0.1
  */

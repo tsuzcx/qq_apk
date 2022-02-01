@@ -70,92 +70,74 @@ public final class HlsMediaPeriod
     Object localObject2 = new ArrayList();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    Object localObject3;
-    Object localObject4;
-    if (i < ((List)localObject1).size())
+    while (i < ((List)localObject1).size())
     {
       localObject3 = (HlsMasterPlaylist.HlsUrl)((List)localObject1).get(i);
       localObject4 = ((HlsMasterPlaylist.HlsUrl)localObject3).format;
-      if ((((Format)localObject4).height > 0) || (Util.getCodecsOfType(((Format)localObject4).codecs, 2) != null)) {
-        ((ArrayList)localObject2).add(localObject3);
-      }
-      for (;;)
+      if ((((Format)localObject4).height <= 0) && (Util.getCodecsOfType(((Format)localObject4).codecs, 2) == null))
       {
-        i += 1;
-        break;
         if (Util.getCodecsOfType(((Format)localObject4).codecs, 1) != null) {
           localArrayList.add(localObject3);
         }
       }
+      else {
+        ((ArrayList)localObject2).add(localObject3);
+      }
+      i += 1;
     }
-    boolean bool;
-    label152:
-    int j;
-    if (!((ArrayList)localObject2).isEmpty())
-    {
+    if (!((ArrayList)localObject2).isEmpty()) {
       localObject1 = localObject2;
-      if (((List)localObject1).isEmpty()) {
-        break label337;
-      }
-      bool = true;
-      Assertions.checkArgument(bool);
-      localObject3 = (HlsMasterPlaylist.HlsUrl[])((List)localObject1).toArray(new HlsMasterPlaylist.HlsUrl[0]);
-      localObject4 = localObject3[0].format.codecs;
-      localObject2 = buildSampleStreamWrapper(0, (HlsMasterPlaylist.HlsUrl[])localObject3, paramHlsMasterPlaylist.muxedAudioFormat, paramHlsMasterPlaylist.muxedCaptionFormats, paramLong);
-      this.sampleStreamWrappers[0] = localObject2;
-      if ((!this.allowChunklessPreparation) || (localObject4 == null)) {
-        break label637;
-      }
-      if (Util.getCodecsOfType((String)localObject4, 2) == null) {
-        break label343;
-      }
-      j = 1;
-      label235:
-      if (Util.getCodecsOfType((String)localObject4, 1) == null) {
-        break label349;
-      }
+    } else if (localArrayList.size() < ((List)localObject1).size()) {
+      ((List)localObject1).removeAll(localArrayList);
     }
-    label337:
-    label343:
-    label349:
-    for (i = 1;; i = 0)
+    Assertions.checkArgument(((List)localObject1).isEmpty() ^ true);
+    Object localObject3 = (HlsMasterPlaylist.HlsUrl[])((List)localObject1).toArray(new HlsMasterPlaylist.HlsUrl[0]);
+    Object localObject4 = localObject3[0].format.codecs;
+    localObject2 = buildSampleStreamWrapper(0, (HlsMasterPlaylist.HlsUrl[])localObject3, paramHlsMasterPlaylist.muxedAudioFormat, paramHlsMasterPlaylist.muxedCaptionFormats, paramLong);
+    this.sampleStreamWrappers[0] = localObject2;
+    if ((this.allowChunklessPreparation) && (localObject4 != null))
     {
+      int j;
+      if (Util.getCodecsOfType((String)localObject4, 2) != null) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if (Util.getCodecsOfType((String)localObject4, 1) != null) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       localArrayList = new ArrayList();
-      if (j == 0) {
-        break label498;
-      }
-      localObject1 = new Format[((List)localObject1).size()];
-      j = 0;
-      while (j < localObject1.length)
+      if (j != 0)
       {
-        localObject1[j] = deriveVideoFormat(localObject3[j].format);
-        j += 1;
+        localObject1 = new Format[((List)localObject1).size()];
+        j = 0;
+        while (j < localObject1.length)
+        {
+          localObject1[j] = deriveVideoFormat(localObject3[j].format);
+          j += 1;
+        }
+        localArrayList.add(new TrackGroup((Format[])localObject1));
+        if ((i != 0) && ((paramHlsMasterPlaylist.muxedAudioFormat != null) || (paramHlsMasterPlaylist.audios.isEmpty()))) {
+          localArrayList.add(new TrackGroup(new Format[] { deriveMuxedAudioFormat(localObject3[0].format, paramHlsMasterPlaylist.muxedAudioFormat, -1) }));
+        }
+        paramHlsMasterPlaylist = paramHlsMasterPlaylist.muxedCaptionFormats;
+        if (paramHlsMasterPlaylist != null)
+        {
+          i = 0;
+          while (i < paramHlsMasterPlaylist.size())
+          {
+            localArrayList.add(new TrackGroup(new Format[] { (Format)paramHlsMasterPlaylist.get(i) }));
+            i += 1;
+          }
+        }
       }
-      if (localArrayList.size() < ((List)localObject1).size()) {
-        ((List)localObject1).removeAll(localArrayList);
-      }
-      break;
-      bool = false;
-      break label152;
-      j = 0;
-      break label235;
-    }
-    localArrayList.add(new TrackGroup((Format[])localObject1));
-    if ((i != 0) && ((paramHlsMasterPlaylist.muxedAudioFormat != null) || (paramHlsMasterPlaylist.audios.isEmpty()))) {
-      localArrayList.add(new TrackGroup(new Format[] { deriveMuxedAudioFormat(localObject3[0].format, paramHlsMasterPlaylist.muxedAudioFormat, -1) }));
-    }
-    paramHlsMasterPlaylist = paramHlsMasterPlaylist.muxedCaptionFormats;
-    if (paramHlsMasterPlaylist != null)
-    {
-      i = 0;
-      while (i < paramHlsMasterPlaylist.size())
+      else
       {
-        localArrayList.add(new TrackGroup(new Format[] { (Format)paramHlsMasterPlaylist.get(i) }));
-        i += 1;
-      }
-      label498:
-      if (i != 0)
-      {
+        if (i == 0) {
+          break label600;
+        }
         localObject1 = new Format[((List)localObject1).size()];
         i = 0;
         while (i < localObject1.length)
@@ -166,14 +148,14 @@ public final class HlsMediaPeriod
         }
         localArrayList.add(new TrackGroup((Format[])localObject1));
       }
-    }
-    else
-    {
       ((HlsSampleStreamWrapper)localObject2).prepareWithMasterPlaylistInfo(new TrackGroupArray((TrackGroup[])localArrayList.toArray(new TrackGroup[0])), 0);
       return;
+      label600:
+      paramHlsMasterPlaylist = new StringBuilder();
+      paramHlsMasterPlaylist.append("Unexpected codecs attribute: ");
+      paramHlsMasterPlaylist.append((String)localObject4);
+      throw new IllegalArgumentException(paramHlsMasterPlaylist.toString());
     }
-    throw new IllegalArgumentException("Unexpected codecs attribute: " + (String)localObject4);
-    label637:
     ((HlsSampleStreamWrapper)localObject2).setIsTimestampMaster(true);
     ((HlsSampleStreamWrapper)localObject2).continuePreparing();
   }
@@ -189,7 +171,7 @@ public final class HlsMediaPeriod
     buildAndPrepareMainSampleStreamWrapper((HlsMasterPlaylist)localObject2, paramLong);
     int j = 0;
     i = 1;
-    if (j < ((List)localObject1).size())
+    while (j < ((List)localObject1).size())
     {
       localObject2 = (HlsMasterPlaylist.HlsUrl)((List)localObject1).get(j);
       Object localObject3 = Collections.emptyList();
@@ -198,14 +180,11 @@ public final class HlsMediaPeriod
       Format localFormat = ((HlsMasterPlaylist.HlsUrl)localObject2).format;
       if ((this.allowChunklessPreparation) && (localFormat.codecs != null)) {
         ((HlsSampleStreamWrapper)localObject3).prepareWithMasterPlaylistInfo(new TrackGroupArray(new TrackGroup[] { new TrackGroup(new Format[] { ((HlsMasterPlaylist.HlsUrl)localObject2).format }) }), 0);
-      }
-      for (;;)
-      {
-        j += 1;
-        i += 1;
-        break;
+      } else {
         ((HlsSampleStreamWrapper)localObject3).continuePreparing();
       }
+      j += 1;
+      i += 1;
     }
     j = 0;
     while (j < localList.size())
@@ -228,28 +207,25 @@ public final class HlsMediaPeriod
   
   private void continuePreparingOrLoading()
   {
-    if (this.trackGroups != null) {
-      this.callback.onContinueLoadingRequested(this);
-    }
-    for (;;)
+    if (this.trackGroups != null)
     {
+      this.callback.onContinueLoadingRequested(this);
       return;
-      HlsSampleStreamWrapper[] arrayOfHlsSampleStreamWrapper = this.sampleStreamWrappers;
-      int j = arrayOfHlsSampleStreamWrapper.length;
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfHlsSampleStreamWrapper[i].continuePreparing();
-        i += 1;
-      }
+    }
+    HlsSampleStreamWrapper[] arrayOfHlsSampleStreamWrapper = this.sampleStreamWrappers;
+    int j = arrayOfHlsSampleStreamWrapper.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfHlsSampleStreamWrapper[i].continuePreparing();
+      i += 1;
     }
   }
   
   private static Format deriveMuxedAudioFormat(Format paramFormat1, Format paramFormat2, int paramInt)
   {
-    int j = 0;
-    String str2;
     int i;
+    int j;
     String str1;
     if (paramFormat2 != null)
     {
@@ -259,14 +235,15 @@ public final class HlsMediaPeriod
       str1 = paramFormat2.language;
       paramFormat2 = str2;
     }
-    for (;;)
+    else
     {
-      str2 = MimeTypes.getMediaMimeType(paramFormat2);
-      return Format.createAudioSampleFormat(paramFormat1.id, str2, paramFormat2, paramInt, -1, i, -1, null, null, j, str1);
       paramFormat2 = Util.getCodecsOfType(paramFormat1.codecs, 1);
       str1 = null;
       i = -1;
+      j = 0;
     }
+    String str2 = MimeTypes.getMediaMimeType(paramFormat2);
+    return Format.createAudioSampleFormat(paramFormat1.id, str2, paramFormat2, paramInt, -1, i, -1, null, null, j, str1);
   }
   
   private static Format deriveVideoFormat(Format paramFormat)
@@ -427,13 +404,18 @@ public final class HlsMediaPeriod
   
   public long seekToUs(long paramLong)
   {
-    if (this.enabledSampleStreamWrappers.length > 0)
+    HlsSampleStreamWrapper[] arrayOfHlsSampleStreamWrapper = this.enabledSampleStreamWrappers;
+    if (arrayOfHlsSampleStreamWrapper.length > 0)
     {
-      boolean bool = this.enabledSampleStreamWrappers[0].seekToUs(paramLong, false);
+      boolean bool = arrayOfHlsSampleStreamWrapper[0].seekToUs(paramLong, false);
       int i = 1;
-      while (i < this.enabledSampleStreamWrappers.length)
+      for (;;)
       {
-        this.enabledSampleStreamWrappers[i].seekToUs(paramLong, bool);
+        arrayOfHlsSampleStreamWrapper = this.enabledSampleStreamWrappers;
+        if (i >= arrayOfHlsSampleStreamWrapper.length) {
+          break;
+        }
+        arrayOfHlsSampleStreamWrapper[i].seekToUs(paramLong, bool);
         i += 1;
       }
       if (bool) {
@@ -445,145 +427,146 @@ public final class HlsMediaPeriod
   
   public long selectTracks(TrackSelection[] paramArrayOfTrackSelection, boolean[] paramArrayOfBoolean1, SampleStream[] paramArrayOfSampleStream, boolean[] paramArrayOfBoolean2, long paramLong)
   {
+    Object localObject1 = paramArrayOfSampleStream;
     int[] arrayOfInt1 = new int[paramArrayOfTrackSelection.length];
     int[] arrayOfInt2 = new int[paramArrayOfTrackSelection.length];
     int i = 0;
-    label32:
-    Object localObject;
-    if (i < paramArrayOfTrackSelection.length)
+    Object localObject3;
+    while (i < paramArrayOfTrackSelection.length)
     {
-      if (paramArrayOfSampleStream[i] == null)
-      {
+      if (localObject1[i] == null) {
         j = -1;
-        arrayOfInt1[i] = j;
-        arrayOfInt2[i] = -1;
-        if (paramArrayOfTrackSelection[i] != null)
-        {
-          localObject = paramArrayOfTrackSelection[i].getTrackGroup();
-          j = 0;
-        }
+      } else {
+        j = ((Integer)this.streamWrapperIndices.get(localObject1[i])).intValue();
       }
-      for (;;)
+      arrayOfInt1[i] = j;
+      arrayOfInt2[i] = -1;
+      if (paramArrayOfTrackSelection[i] != null)
       {
-        if (j < this.sampleStreamWrappers.length)
+        localObject2 = paramArrayOfTrackSelection[i].getTrackGroup();
+        j = 0;
+        for (;;)
         {
-          if (this.sampleStreamWrappers[j].getTrackGroups().indexOf((TrackGroup)localObject) != -1) {
-            arrayOfInt2[i] = j;
+          localObject3 = this.sampleStreamWrappers;
+          if (j >= localObject3.length) {
+            break;
           }
+          if (localObject3[j].getTrackGroups().indexOf((TrackGroup)localObject2) != -1)
+          {
+            arrayOfInt2[i] = j;
+            break;
+          }
+          j += 1;
         }
-        else
-        {
-          i += 1;
-          break;
-          j = ((Integer)this.streamWrapperIndices.get(paramArrayOfSampleStream[i])).intValue();
-          break label32;
-        }
-        j += 1;
       }
+      i += 1;
     }
-    boolean bool1 = false;
     this.streamWrapperIndices.clear();
     SampleStream[] arrayOfSampleStream1 = new SampleStream[paramArrayOfTrackSelection.length];
     SampleStream[] arrayOfSampleStream2 = new SampleStream[paramArrayOfTrackSelection.length];
-    TrackSelection[] arrayOfTrackSelection = new TrackSelection[paramArrayOfTrackSelection.length];
-    HlsSampleStreamWrapper[] arrayOfHlsSampleStreamWrapper = new HlsSampleStreamWrapper[this.sampleStreamWrappers.length];
-    int j = 0;
+    localObject1 = new TrackSelection[paramArrayOfTrackSelection.length];
+    Object localObject2 = new HlsSampleStreamWrapper[this.sampleStreamWrappers.length];
     i = 0;
-    int k;
-    if (j < this.sampleStreamWrappers.length)
+    int j = 0;
+    boolean bool1 = false;
+    while (j < this.sampleStreamWrappers.length)
     {
-      k = 0;
-      if (k < paramArrayOfTrackSelection.length)
+      int k = 0;
+      HlsSampleStreamWrapper[] arrayOfHlsSampleStreamWrapper;
+      while (k < paramArrayOfTrackSelection.length)
       {
-        if (arrayOfInt1[k] == j)
-        {
-          localObject = paramArrayOfSampleStream[k];
-          label225:
-          arrayOfSampleStream2[k] = localObject;
-          if (arrayOfInt2[k] != j) {
-            break label270;
-          }
+        m = arrayOfInt1[k];
+        arrayOfHlsSampleStreamWrapper = null;
+        if (m == j) {
+          localObject3 = paramArrayOfSampleStream[k];
+        } else {
+          localObject3 = null;
         }
-        label270:
-        for (localObject = paramArrayOfTrackSelection[k];; localObject = null)
-        {
-          arrayOfTrackSelection[k] = localObject;
-          k += 1;
-          break;
-          localObject = null;
-          break label225;
-        }
-      }
-      localObject = this.sampleStreamWrappers[j];
-      boolean bool3 = ((HlsSampleStreamWrapper)localObject).selectTracks(arrayOfTrackSelection, paramArrayOfBoolean1, arrayOfSampleStream2, paramArrayOfBoolean2, paramLong, bool1);
-      int m = 0;
-      k = 0;
-      if (k < paramArrayOfTrackSelection.length)
-      {
-        label337:
-        int n;
+        arrayOfSampleStream2[k] = localObject3;
+        localObject3 = arrayOfHlsSampleStreamWrapper;
         if (arrayOfInt2[k] == j) {
-          if (arrayOfSampleStream2[k] != null)
-          {
+          localObject3 = paramArrayOfTrackSelection[k];
+        }
+        localObject1[k] = localObject3;
+        k += 1;
+      }
+      localObject3 = this.sampleStreamWrappers[j];
+      boolean bool3 = ((HlsSampleStreamWrapper)localObject3).selectTracks((TrackSelection[])localObject1, paramArrayOfBoolean1, arrayOfSampleStream2, paramArrayOfBoolean2, paramLong, bool1);
+      k = 0;
+      int n;
+      for (int m = 0;; m = n)
+      {
+        n = paramArrayOfTrackSelection.length;
+        boolean bool2 = true;
+        if (k >= n) {
+          break;
+        }
+        if (arrayOfInt2[k] == j)
+        {
+          if (arrayOfSampleStream2[k] != null) {
             bool2 = true;
+          } else {
+            bool2 = false;
+          }
+          Assertions.checkState(bool2);
+          arrayOfSampleStream1[k] = arrayOfSampleStream2[k];
+          this.streamWrapperIndices.put(arrayOfSampleStream2[k], Integer.valueOf(j));
+          n = 1;
+        }
+        else
+        {
+          n = m;
+          if (arrayOfInt1[k] == j)
+          {
+            if (arrayOfSampleStream2[k] != null) {
+              bool2 = false;
+            }
             Assertions.checkState(bool2);
-            arrayOfSampleStream1[k] = arrayOfSampleStream2[k];
-            n = 1;
-            this.streamWrapperIndices.put(arrayOfSampleStream2[k], Integer.valueOf(j));
+            n = m;
           }
         }
-        do
-        {
-          k += 1;
-          m = n;
-          break;
-          bool2 = false;
-          break label337;
-          n = m;
-        } while (arrayOfInt1[k] != j);
-        if (arrayOfSampleStream2[k] == null) {}
-        for (boolean bool2 = true;; bool2 = false)
-        {
-          Assertions.checkState(bool2);
-          n = m;
-          break;
-        }
+        k += 1;
       }
-      if (m == 0) {
-        break label569;
-      }
-      arrayOfHlsSampleStreamWrapper[i] = localObject;
-      k = i + 1;
-      if (i == 0)
+      if (m != 0)
       {
-        ((HlsSampleStreamWrapper)localObject).setIsTimestampMaster(true);
-        if ((!bool3) && (this.enabledSampleStreamWrappers.length != 0) && (localObject == this.enabledSampleStreamWrappers[0])) {
-          break label517;
+        localObject2[i] = localObject3;
+        k = i + 1;
+        if (i == 0)
+        {
+          ((HlsSampleStreamWrapper)localObject3).setIsTimestampMaster(true);
+          if (!bool3)
+          {
+            arrayOfHlsSampleStreamWrapper = this.enabledSampleStreamWrappers;
+            if (arrayOfHlsSampleStreamWrapper.length != 0) {
+              if (localObject3 == arrayOfHlsSampleStreamWrapper[0]) {
+                break label535;
+              }
+            }
+          }
+          this.timestampAdjusterProvider.reset();
+          i = k;
+          bool1 = true;
+          break label542;
         }
-        this.timestampAdjusterProvider.reset();
-        bool1 = true;
+        else
+        {
+          ((HlsSampleStreamWrapper)localObject3).setIsTimestampMaster(false);
+        }
+        label535:
         i = k;
       }
-    }
-    label517:
-    label569:
-    for (;;)
-    {
+      label542:
       j += 1;
-      break;
-      ((HlsSampleStreamWrapper)localObject).setIsTimestampMaster(false);
-      i = k;
-      continue;
-      System.arraycopy(arrayOfSampleStream1, 0, paramArrayOfSampleStream, 0, arrayOfSampleStream1.length);
-      this.enabledSampleStreamWrappers = ((HlsSampleStreamWrapper[])Arrays.copyOf(arrayOfHlsSampleStreamWrapper, i));
-      this.compositeSequenceableLoader = this.compositeSequenceableLoaderFactory.createCompositeSequenceableLoader(this.enabledSampleStreamWrappers);
-      return paramLong;
     }
+    System.arraycopy(arrayOfSampleStream1, 0, paramArrayOfSampleStream, 0, arrayOfSampleStream1.length);
+    this.enabledSampleStreamWrappers = ((HlsSampleStreamWrapper[])Arrays.copyOf((Object[])localObject2, i));
+    this.compositeSequenceableLoader = this.compositeSequenceableLoaderFactory.createCompositeSequenceableLoader(this.enabledSampleStreamWrappers);
+    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.HlsMediaPeriod
  * JD-Core Version:    0.7.0.1
  */

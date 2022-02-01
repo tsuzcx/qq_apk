@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="l9">#90000000</color>
+    <color name="la">#90000000</color>
+    <color name="lb">#de000000</color>
+    <color name="ld">@android:color/white</color>
+    <color name="le">#deffffff</color>
+    <color name="lf">@android:color/black</color>
+    <color name="lg">#deffffff</color>
+</resources>

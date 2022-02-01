@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/aot" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ecogallery="http://schemas.android.com/apk/res-auto">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/o6g" android:layout_width="fill_parent" android:layout_height="@dimen/btw" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/aop" android:layout_gravity="center|right" android:id="@id/eew" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bg5" android:text="@string/wr2" />
+    <com.tencent.qqmail.card.view.CardGalleryLoadMoreArrow android:layout_gravity="center|right" android:id="@id/n_g" android:visibility="gone" android:layout_width="@dimen/bfo" android:layout_height="@dimen/bfn" />
+    <com.tencent.qqmail.card.view.CardGallery android:id="@id/gallery" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bfl" android:layout_marginBottom="@dimen/bfk" ecogallery:spacing="@dimen/bg6" ecogallery:unselectedAlpha="1.0" />
+    <FrameLayout android:layout_gravity="bottom|center|right" android:id="@id/mg5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bfj" android:layout_marginBottom="@dimen/bfi">
+        <ImageView android:id="@id/mg6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/go_" />
+        <ImageView android:layout_gravity="center|right|top" android:id="@id/mg8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gsm" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/o7g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.qqmail.view.QMContentLoadingView android:id="@id/n_q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" />
+</FrameLayout>

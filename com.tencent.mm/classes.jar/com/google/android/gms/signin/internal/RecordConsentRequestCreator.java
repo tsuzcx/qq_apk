@@ -14,7 +14,7 @@ public class RecordConsentRequestCreator
   
   public RecordConsentRequest createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61684);
+    AppMethodBeat.i(12176);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     String str = null;
@@ -43,7 +43,7 @@ public class RecordConsentRequestCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new RecordConsentRequest(i, localAccount, arrayOfScope, str);
-    AppMethodBeat.o(61684);
+    AppMethodBeat.o(12176);
     return paramParcel;
   }
   
@@ -54,7 +54,7 @@ public class RecordConsentRequestCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.signin.internal.RecordConsentRequestCreator
  * JD-Core Version:    0.7.0.1
  */

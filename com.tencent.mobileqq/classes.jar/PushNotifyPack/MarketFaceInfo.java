@@ -8,8 +8,8 @@ public final class MarketFaceInfo
   extends JceStruct
 {
   static byte[] cache_marketFaceBuff;
-  public long insertIdx;
-  public byte[] marketFaceBuff;
+  public long insertIdx = 0L;
+  public byte[] marketFaceBuff = null;
   
   public MarketFaceInfo() {}
   
@@ -38,7 +38,7 @@ public final class MarketFaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.MarketFaceInfo
  * JD-Core Version:    0.7.0.1
  */

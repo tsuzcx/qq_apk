@@ -7,7 +7,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pic.BaseStrategy;
 import com.tencent.mobileqq.pic.PicPreDownloader;
-import czu;
+import czt;
 
 public class PredownloadTest
   extends BaseActivity
@@ -28,13 +28,13 @@ public class PredownloadTest
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233032));
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233033));
-    this.c = ((EditText)findViewById(2131233034));
-    this.d = ((EditText)findViewById(2131233035));
-    this.e = ((EditText)findViewById(2131233036));
-    this.f = ((EditText)findViewById(2131233037));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233038));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233031));
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131233032));
+    this.c = ((EditText)findViewById(2131233033));
+    this.d = ((EditText)findViewById(2131233034));
+    this.e = ((EditText)findViewById(2131233035));
+    this.f = ((EditText)findViewById(2131233036));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233037));
     PredownloadTest.ConfigInfo localConfigInfo = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a.a();
     this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(localConfigInfo.a));
     this.jdField_b_of_type_AndroidWidgetEditText.setText(String.valueOf(localConfigInfo.b));
@@ -42,7 +42,7 @@ public class PredownloadTest
     this.d.setText(String.valueOf(localConfigInfo.d));
     this.e.setText(String.valueOf(localConfigInfo.e));
     this.f.setText(String.valueOf(localConfigInfo.f));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new czu(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new czt(this));
   }
   
   public long a(EditText paramEditText)

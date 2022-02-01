@@ -23,22 +23,25 @@ public class FixedSecureRandom
   
   public int nextInt()
   {
-    int i = 0x0 | a() << 24 | a() << 16;
-    if (this._intPad == 2) {
-      this._intPad -= 1;
-    }
-    while (this._intPad == 1)
-    {
-      this._intPad -= 1;
-      return i;
+    int i = a() << 24 | 0x0 | a() << 16;
+    int j = this._intPad;
+    if (j == 2) {
+      this._intPad = (j - 1);
+    } else {
       i |= a() << 8;
+    }
+    j = this._intPad;
+    if (j == 1)
+    {
+      this._intPad = (j - 1);
+      return i;
     }
     return i | a();
   }
   
   public long nextLong()
   {
-    return 0L | a() << 56 | a() << 48 | a() << 40 | a() << 32 | a() << 24 | a() << 16 | a() << 8 | a();
+    return a() << 56 | 0L | a() << 48 | a() << 40 | a() << 32 | a() << 24 | a() << 16 | a() << 8 | a();
   }
 }
 

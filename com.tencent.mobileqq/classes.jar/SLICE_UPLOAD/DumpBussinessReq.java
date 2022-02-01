@@ -32,17 +32,19 @@ public final class DumpBussinessReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.biz_req != null) {
-      paramJceOutputStream.write(this.biz_req, 0);
+    Object localObject = this.biz_req;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
-    if (this.IMEI != null) {
-      paramJceOutputStream.write(this.IMEI, 1);
+    localObject = this.IMEI;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.DumpBussinessReq
  * JD-Core Version:    0.7.0.1
  */

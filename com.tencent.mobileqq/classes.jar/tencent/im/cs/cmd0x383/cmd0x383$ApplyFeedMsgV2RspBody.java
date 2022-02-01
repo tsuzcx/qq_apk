@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class cmd0x383$ApplyFeedMsgV2RspBody
   extends MessageMicro<ApplyFeedMsgV2RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 88 }, new String[] { "uint32_total_file_num", "uint32_file_num", "uint32_bus_id", "str_file_path1", "str_file_path2", "str_file_path3", "bool_safe_check_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", Boolean.valueOf(false) }, ApplyFeedMsgV2RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_safe_check_flag = PBField.initBool(false);
   public final PBStringField str_file_path1 = PBField.initString("");
   public final PBStringField str_file_path2 = PBField.initString("");
@@ -18,10 +18,16 @@ public final class cmd0x383$ApplyFeedMsgV2RspBody
   public final PBUInt32Field uint32_bus_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_num = PBField.initUInt32(0);
   public final PBUInt32Field uint32_total_file_num = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 88 }, new String[] { "uint32_total_file_num", "uint32_file_num", "uint32_bus_id", "str_file_path1", "str_file_path2", "str_file_path3", "bool_safe_check_flag" }, new Object[] { localInteger, localInteger, localInteger, "", "", "", Boolean.valueOf(false) }, ApplyFeedMsgV2RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyFeedMsgV2RspBody
  * JD-Core Version:    0.7.0.1
  */

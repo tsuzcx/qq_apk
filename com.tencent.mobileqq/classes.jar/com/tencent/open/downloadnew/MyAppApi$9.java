@@ -1,23 +1,22 @@
 package com.tencent.open.downloadnew;
 
-import android.content.Context;
-import bfox;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 
-public class MyAppApi$9
+class MyAppApi$9
   implements Runnable
 {
-  public MyAppApi$9(bfox parambfox, Context paramContext, ArrayList paramArrayList, int paramInt, String paramString) {}
+  MyAppApi$9(MyAppApi paramMyAppApi, Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener, MyAppApi.ClickListenerProxy paramClickListenerProxy, MyAppApi.BackListener paramBackListener, String paramString2, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    TMAssistantCallYYB_V2.getInstance().startBatchOperation(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.this$0.a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.9
  * JD-Core Version:    0.7.0.1
  */

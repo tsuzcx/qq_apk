@@ -5,7 +5,7 @@ import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import common.qzone.component.util.SecurityUtil;
-import idg;
+import idf;
 import java.io.File;
 
 public class ImageFilePathUtil
@@ -34,7 +34,7 @@ public class ImageFilePathUtil
   
   private static String a()
   {
-    File localFile = idg.b();
+    File localFile = idf.b();
     if (localFile == null) {
       return null;
     }
@@ -139,7 +139,7 @@ public class ImageFilePathUtil
   private static String b(Context paramContext, boolean paramBoolean)
   {
     if (!paramBoolean) {}
-    for (paramContext = idg.a(paramContext); paramContext == null; paramContext = idg.a(paramContext, "cache")) {
+    for (paramContext = idf.a(paramContext); paramContext == null; paramContext = idf.a(paramContext, "cache")) {
       return null;
     }
     return paramContext.getAbsolutePath();

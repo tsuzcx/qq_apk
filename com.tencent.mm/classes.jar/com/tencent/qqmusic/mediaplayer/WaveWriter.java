@@ -33,21 +33,21 @@ public class WaveWriter
   
   public WaveWriter(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(104700);
+    AppMethodBeat.i(76421);
     this.mOutFile = new File(paramString1 + File.separator + paramString2);
     this.mSampleRate = paramInt1;
     this.mChannels = paramInt2;
     this.mSampleBits = paramInt3;
     this.mBytesWritten = 0;
-    AppMethodBeat.o(104700);
+    AppMethodBeat.o(76421);
   }
   
   private short[] interpolate(int paramInt1, int paramInt2, short[] paramArrayOfShort)
   {
-    AppMethodBeat.i(104711);
+    AppMethodBeat.i(76432);
     if (paramInt1 == paramInt2)
     {
-      AppMethodBeat.o(104711);
+      AppMethodBeat.o(76432);
       return paramArrayOfShort;
     }
     int j = Math.round(paramArrayOfShort.length / paramInt1 * paramInt2);
@@ -66,7 +66,7 @@ public class WaveWriter
       arrayOfShort[paramInt1] = ((short)(int)((paramArrayOfShort[paramInt2] - paramArrayOfShort[k]) * (f2 - k) + paramArrayOfShort[k]));
       paramInt1 += 1;
     }
-    AppMethodBeat.o(104711);
+    AppMethodBeat.o(76432);
     return arrayOfShort;
   }
   
@@ -74,11 +74,11 @@ public class WaveWriter
   {
     int n = 0;
     int m = 0;
-    AppMethodBeat.i(104710);
+    AppMethodBeat.i(76431);
     int i1 = paramInt1 / 8;
     if (i1 <= 0)
     {
-      AppMethodBeat.o(104710);
+      AppMethodBeat.o(76431);
       return null;
     }
     int i2 = paramArrayOfByte.length / i1;
@@ -113,7 +113,7 @@ public class WaveWriter
     for (;;)
     {
       this.mSampleRate = paramInt3;
-      AppMethodBeat.o(104710);
+      AppMethodBeat.o(76431);
       return paramArrayOfByte;
       paramArrayOfByte = new byte[paramInt2 * 2];
       paramInt1 = n;
@@ -128,15 +128,15 @@ public class WaveWriter
   
   private static void writeUnsignedShortLE(ByteArrayOutputStream paramByteArrayOutputStream, short paramShort)
   {
-    AppMethodBeat.i(104701);
+    AppMethodBeat.i(76422);
     paramByteArrayOutputStream.write(paramShort);
     paramByteArrayOutputStream.write(paramShort >> 8);
-    AppMethodBeat.o(104701);
+    AppMethodBeat.o(76422);
   }
   
   private void writeWaveHeader()
   {
-    AppMethodBeat.i(104706);
+    AppMethodBeat.i(76427);
     RandomAccessFile localRandomAccessFile = new RandomAccessFile(this.mOutFile, "rw");
     localRandomAccessFile.seek(0L);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -166,7 +166,7 @@ public class WaveWriter
       localByteArrayOutputStream.close();
       localDataOutputStream.close();
       localRandomAccessFile.close();
-      AppMethodBeat.o(104706);
+      AppMethodBeat.o(76427);
     }
   }
   
@@ -196,7 +196,7 @@ public class WaveWriter
   
   public void closeWaveFile()
   {
-    AppMethodBeat.i(104705);
+    AppMethodBeat.i(76426);
     if (this.mOutStream != null)
     {
       this.mOutStream.flush();
@@ -208,12 +208,12 @@ public class WaveWriter
       this.mTmpStream.close();
     }
     writeWaveHeader();
-    AppMethodBeat.o(104705);
+    AppMethodBeat.o(76426);
   }
   
   public boolean createWaveFile()
   {
-    AppMethodBeat.i(104702);
+    AppMethodBeat.i(76423);
     if (this.mOutFile.exists()) {
       this.mOutFile.delete();
     }
@@ -223,10 +223,10 @@ public class WaveWriter
       this.mOutStream = new BufferedOutputStream(new FileOutputStream(this.mOutFile), 16384);
       this.mTmpStream = new ByteArrayOutputStream();
       this.mOutStream.write(new byte[44]);
-      AppMethodBeat.o(104702);
+      AppMethodBeat.o(76423);
       return true;
     }
-    AppMethodBeat.o(104702);
+    AppMethodBeat.o(76423);
     return false;
   }
   
@@ -237,13 +237,13 @@ public class WaveWriter
   
   public boolean reSampler()
   {
-    AppMethodBeat.i(104708);
+    AppMethodBeat.i(76429);
     try
     {
       byte[] arrayOfByte = reSample(this.mTmpStream.toByteArray(), this.mSampleBits, this.mSampleRate, 8000);
       if (arrayOfByte == null)
       {
-        AppMethodBeat.o(104708);
+        AppMethodBeat.o(76429);
         return false;
       }
       Logger.d("WaveWriter", "mTmpStream length = " + this.mTmpStream.toByteArray().length);
@@ -252,32 +252,32 @@ public class WaveWriter
       arrayOfByte = reSample(arrayOfByte, this.mSampleBits, 8000, 4000);
       if (arrayOfByte == null)
       {
-        AppMethodBeat.o(104708);
+        AppMethodBeat.o(76429);
         return false;
       }
       Logger.d("WaveWriter", "resultData length = " + arrayOfByte.length);
       this.mBytesWritten = arrayOfByte.length;
       this.mOutStream.write(arrayOfByte);
-      AppMethodBeat.o(104708);
+      AppMethodBeat.o(76429);
       return true;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("WaveWriter", localThrowable);
-      AppMethodBeat.o(104708);
+      AppMethodBeat.o(76429);
     }
     return false;
   }
   
   public boolean reSamplerTo8K()
   {
-    AppMethodBeat.i(104709);
+    AppMethodBeat.i(76430);
     try
     {
       byte[] arrayOfByte = reSample(this.mTmpStream.toByteArray(), this.mSampleBits, this.mSampleRate, 8000);
       if (arrayOfByte == null)
       {
-        AppMethodBeat.o(104709);
+        AppMethodBeat.o(76430);
         return false;
       }
       Logger.d("WaveWriter", "mTmpStream length = " + this.mTmpStream.toByteArray().length);
@@ -285,13 +285,13 @@ public class WaveWriter
       Logger.d("WaveWriter", "resultData length = " + arrayOfByte.length);
       this.mBytesWritten = arrayOfByte.length;
       this.mOutStream.write(arrayOfByte);
-      AppMethodBeat.o(104709);
+      AppMethodBeat.o(76430);
       return true;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("WaveWriter", localThrowable);
-      AppMethodBeat.o(104709);
+      AppMethodBeat.o(76430);
     }
     return false;
   }
@@ -303,12 +303,12 @@ public class WaveWriter
   
   public void write(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(104703);
+    AppMethodBeat.i(76424);
     int i = paramInt1;
     if (paramInt1 > paramInt2)
     {
       paramArrayOfShort = new IndexOutOfBoundsException(String.format("offset %d is greater than length %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      AppMethodBeat.o(104703);
+      AppMethodBeat.o(76424);
       throw paramArrayOfShort;
     }
     while (i < paramInt2)
@@ -317,22 +317,22 @@ public class WaveWriter
       this.mBytesWritten += 2;
       i += 1;
     }
-    AppMethodBeat.o(104703);
+    AppMethodBeat.o(76424);
   }
   
   public void write(short[] paramArrayOfShort1, short[] paramArrayOfShort2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(104704);
+    AppMethodBeat.i(76425);
     if (this.mChannels != 2)
     {
-      AppMethodBeat.o(104704);
+      AppMethodBeat.o(76425);
       return;
     }
     int i = paramInt1;
     if (paramInt1 > paramInt2)
     {
       paramArrayOfShort1 = new IndexOutOfBoundsException(String.format("offset %d is greater than length %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      AppMethodBeat.o(104704);
+      AppMethodBeat.o(76425);
       throw paramArrayOfShort1;
     }
     while (i < paramInt2)
@@ -342,28 +342,28 @@ public class WaveWriter
       this.mBytesWritten += 4;
       i += 1;
     }
-    AppMethodBeat.o(104704);
+    AppMethodBeat.o(76425);
   }
   
   public void writeDone()
   {
-    AppMethodBeat.i(104707);
+    AppMethodBeat.i(76428);
     try
     {
       this.mOutStream.write(this.mTmpStream.toByteArray());
-      AppMethodBeat.o(104707);
+      AppMethodBeat.o(76428);
       return;
     }
     catch (IOException localIOException)
     {
       Logger.e("WaveWriter", localIOException);
-      AppMethodBeat.o(104707);
+      AppMethodBeat.o(76428);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.WaveWriter
  * JD-Core Version:    0.7.0.1
  */

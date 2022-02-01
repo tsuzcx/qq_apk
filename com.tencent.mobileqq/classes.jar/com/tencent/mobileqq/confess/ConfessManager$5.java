@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.confess;
 
-import aoiu;
-import aoiw;
-
-public class ConfessManager$5
+class ConfessManager$5
   implements Runnable
 {
-  public ConfessManager$5(aoiu paramaoiu, String paramString, aoiw paramaoiw) {}
+  ConfessManager$5(ConfessManager paramConfessManager, String paramString, ConfessManager.GroupChatExtra paramGroupChatExtra) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aoiw);
+    this.this$0.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessManager.5
  * JD-Core Version:    0.7.0.1
  */

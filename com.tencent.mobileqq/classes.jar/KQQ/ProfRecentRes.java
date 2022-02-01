@@ -9,11 +9,11 @@ public final class ProfRecentRes
   extends JceStruct
 {
   static ArrayList<FriendUinInfo> cache_vFriendInfo;
-  public byte cMask;
-  public byte cResult;
-  public long uServerTime;
-  public ArrayList<FriendUinInfo> vFriendInfo;
-  public short wFriendNum;
+  public byte cMask = 0;
+  public byte cResult = 0;
+  public long uServerTime = 0L;
+  public ArrayList<FriendUinInfo> vFriendInfo = null;
+  public short wFriendNum = 0;
   
   public ProfRecentRes() {}
   
@@ -52,7 +52,7 @@ public final class ProfRecentRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfRecentRes
  * JD-Core Version:    0.7.0.1
  */

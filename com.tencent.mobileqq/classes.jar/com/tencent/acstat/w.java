@@ -10,17 +10,18 @@ final class w
   
   public final void run()
   {
-    if ((this.a == null) || (this.a.trim().length() == 0))
+    String str = this.a;
+    if ((str != null) && (str.trim().length() != 0))
     {
-      StatServiceImpl.f().w("qq num is null or empty.");
+      StatServiceImpl.a(this.b, new StatAccount(this.a), this.c);
       return;
     }
-    StatServiceImpl.a(this.b, new StatAccount(this.a), this.c);
+    StatServiceImpl.f().w("qq num is null or empty.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.w
  * JD-Core Version:    0.7.0.1
  */

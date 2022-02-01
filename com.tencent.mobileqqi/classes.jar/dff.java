@@ -1,14 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
-class dff
-  implements DialogInterface.OnClickListener
+public class dff
+  implements Runnable
 {
-  dff(dfe paramdfe) {}
+  public dff(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

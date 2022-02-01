@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/le" android:background="@drawable/am" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/lf" android:background="@null" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gg" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="6.0dip" android:paddingRight="0.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="@dimen/n_" android:layout_marginBottom="4.0dip" android:layout_weight="1.0">
-        <ScrollView android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:overScrollMode="never">
-            <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/bui" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/dp" flowlayout:verticalSpacing="@dimen/dp" />
-        </ScrollView>
-        <ImageButton android:id="@id/buj" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:src="@drawable/a0p" android:contentDescription="@string/ask" />
-    </LinearLayout>
-</com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView>
+<LinearLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/cv">
+        <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:id="@id/ckk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="看看好友在玩什么" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/cki" android:layout_width="5.0dip" android:layout_height="9.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/biy" android:layout_toRightOf="@id/ckk" android:layout_centerVertical="true" />
+    </com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView>
+</LinearLayout>

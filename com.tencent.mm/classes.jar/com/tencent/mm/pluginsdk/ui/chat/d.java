@@ -11,27 +11,25 @@ public final class d
     super(paramContext, null);
   }
   
-  public final void AA() {}
+  public final void JA(boolean paramBoolean) {}
   
-  public final void AB() {}
+  public final void Jy(boolean paramBoolean) {}
   
-  public final void AC() {}
+  public final void Jz(boolean paramBoolean) {}
   
-  public final void AD() {}
+  public final void bDL() {}
   
-  public final void Ay() {}
+  public final void iKg() {}
   
-  public final void Az() {}
+  public final void iKh() {}
   
-  public final void bo(boolean paramBoolean) {}
+  public final void iKi() {}
   
-  public final void j(boolean paramBoolean1, boolean paramBoolean2) {}
+  public final void iKj() {}
   
   public final void onPause() {}
   
   public final void onResume() {}
-  
-  public final void refresh() {}
   
   public final void setDefaultEmojiByDetail(String paramString) {}
   
@@ -41,11 +39,23 @@ public final class d
   
   public final void setSendButtonEnable(boolean paramBoolean) {}
   
+  public final void setShowClose(boolean paramBoolean) {}
+  
+  public final void setShowSearch(boolean paramBoolean) {}
+  
+  public final void setShowSend(boolean paramBoolean) {}
+  
+  public final void setShowSmiley(boolean paramBoolean) {}
+  
+  public final void setShowStore(boolean paramBoolean) {}
+  
   public final void setTalkerName(String paramString) {}
+  
+  public final void setToSendText(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.d
  * JD-Core Version:    0.7.0.1
  */

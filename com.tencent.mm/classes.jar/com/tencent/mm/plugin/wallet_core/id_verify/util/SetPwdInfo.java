@@ -9,34 +9,34 @@ public class SetPwdInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<SetPwdInfo> CREATOR;
-  public String opB;
-  public String opC;
-  public String opD;
-  public int ueS;
+  public String KuO;
+  public int VCy;
+  public String rGU;
+  public String right_button_wording;
   
   static
   {
-    AppMethodBeat.i(46693);
-    CREATOR = new SetPwdInfo.1();
-    AppMethodBeat.o(46693);
+    AppMethodBeat.i(70204);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(70204);
   }
   
   public SetPwdInfo()
   {
-    this.opC = "";
-    this.opD = "";
+    this.rGU = "";
+    this.right_button_wording = "";
   }
   
   protected SetPwdInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(46691);
-    this.opC = "";
-    this.opD = "";
-    this.ueS = paramParcel.readInt();
-    this.opB = paramParcel.readString();
-    this.opC = paramParcel.readString();
-    this.opD = paramParcel.readString();
-    AppMethodBeat.o(46691);
+    AppMethodBeat.i(70202);
+    this.rGU = "";
+    this.right_button_wording = "";
+    this.VCy = paramParcel.readInt();
+    this.KuO = paramParcel.readString();
+    this.rGU = paramParcel.readString();
+    this.right_button_wording = paramParcel.readString();
+    AppMethodBeat.o(70202);
   }
   
   public int describeContents()
@@ -46,17 +46,17 @@ public class SetPwdInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(46692);
-    paramParcel.writeInt(this.ueS);
-    paramParcel.writeString(this.opB);
-    paramParcel.writeString(this.opC);
-    paramParcel.writeString(this.opD);
-    AppMethodBeat.o(46692);
+    AppMethodBeat.i(70203);
+    paramParcel.writeInt(this.VCy);
+    paramParcel.writeString(this.KuO);
+    paramParcel.writeString(this.rGU);
+    paramParcel.writeString(this.right_button_wording);
+    AppMethodBeat.o(70203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.util.SetPwdInfo
  * JD-Core Version:    0.7.0.1
  */

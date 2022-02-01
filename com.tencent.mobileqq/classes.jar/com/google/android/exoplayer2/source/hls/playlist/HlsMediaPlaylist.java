@@ -45,25 +45,18 @@ public final class HlsMediaPlaylist
     if (!paramList1.isEmpty())
     {
       paramString = (HlsMediaPlaylist.Segment)paramList1.get(paramList1.size() - 1);
-      paramLong2 = paramString.relativeStartTimeUs;
-      this.durationUs = (paramString.durationUs + paramLong2);
-      if (paramLong1 != -9223372036854775807L) {
-        break label162;
-      }
-      paramLong2 = -9223372036854775807L;
+      this.durationUs = (paramString.relativeStartTimeUs + paramString.durationUs);
     }
-    for (;;)
+    else
     {
-      this.startOffsetUs = paramLong2;
-      return;
       this.durationUs = 0L;
-      break;
-      label162:
-      paramLong2 = paramLong1;
-      if (paramLong1 < 0L) {
-        paramLong2 = paramLong1 + this.durationUs;
-      }
     }
+    if (paramLong1 == -9223372036854775807L) {
+      paramLong1 = -9223372036854775807L;
+    } else if (paramLong1 < 0L) {
+      paramLong1 = this.durationUs + paramLong1;
+    }
+    this.startOffsetUs = paramLong1;
   }
   
   public HlsMediaPlaylist copyWith(long paramLong, int paramInt)
@@ -86,41 +79,35 @@ public final class HlsMediaPlaylist
   
   public boolean isNewerThan(HlsMediaPlaylist paramHlsMediaPlaylist)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramHlsMediaPlaylist == null) || (this.mediaSequence > paramHlsMediaPlaylist.mediaSequence)) {
-      bool1 = true;
-    }
-    do
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramHlsMediaPlaylist != null)
     {
-      do
-      {
-        int i;
-        int j;
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (this.mediaSequence < paramHlsMediaPlaylist.mediaSequence);
-          i = this.segments.size();
-          j = paramHlsMediaPlaylist.segments.size();
-          if (i > j) {
-            break;
-          }
-          bool1 = bool2;
-        } while (i != j);
-        bool1 = bool2;
-      } while (!this.hasEndTag);
+      long l1 = this.mediaSequence;
+      long l2 = paramHlsMediaPlaylist.mediaSequence;
+      if (l1 > l2) {
+        return true;
+      }
+      if (l1 < l2) {
+        return false;
+      }
+      int i = this.segments.size();
+      int j = paramHlsMediaPlaylist.segments.size();
       bool1 = bool2;
-    } while (paramHlsMediaPlaylist.hasEndTag);
-    return true;
+      if (i <= j)
+      {
+        if ((i == j) && (this.hasEndTag) && (!paramHlsMediaPlaylist.hasEndTag)) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.playlist.HlsMediaPlaylist
  * JD-Core Version:    0.7.0.1
  */

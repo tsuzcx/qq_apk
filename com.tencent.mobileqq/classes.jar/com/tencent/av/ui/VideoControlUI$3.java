@@ -1,44 +1,42 @@
 package com.tencent.av.ui;
 
-import alud;
-import android.view.View;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Build;
+import com.tencent.av.utils.QQAnimationListener;
 import com.tencent.qphone.base.util.QLog;
 
 class VideoControlUI$3
-  implements Runnable
+  extends QQAnimationListener
 {
   VideoControlUI$3(VideoControlUI paramVideoControlUI) {}
   
-  public void run()
+  public void a()
   {
-    if (this.this$0.i)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.this$0.d, 1, "HideToolbarRunnable");
-      }
-      if (AudioHelper.a(1) != 1) {
-        break label46;
-      }
-      AudioHelper.a(alud.a(2131716514));
+    this.a.n();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    if (!this.a.af) {
+      this.a.f(0);
     }
-    label46:
-    Object localObject;
-    do
+    if ("GT-I9100G".equals(Build.MODEL))
     {
-      return;
-      localObject = this.this$0.a();
-      if (localObject == null) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.X, 2, "Model is 9100G, don't do animation");
       }
-      localObject = ((AVActivity)localObject).findViewById(2131372770);
-    } while ((localObject != null) && (((View)localObject).getVisibility() == 0));
-    this.this$0.e(0);
+    }
+    else {
+      this.a.Z();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.3
  * JD-Core Version:    0.7.0.1
  */

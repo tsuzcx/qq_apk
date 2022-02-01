@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/esy" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="224.0dip"
+<FrameLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/ep_" android:layout_width="73.0dip" android:layout_height="73.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/esz" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="76.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et0" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="152.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et1" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginTop="76.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et2" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="76.0dip" android:layout_marginTop="76.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et3" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="152.0dip" android:layout_marginTop="76.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et4" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginTop="152.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et5" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="76.0dip" android:layout_marginTop="152.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et6" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="152.0dip" android:layout_marginTop="152.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-</com.tencent.mm.plugin.sns.ui.PhotosContent>
+    <ImageView android:layout_gravity="center" android:id="@id/l6d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" />
+    <ImageView android:layout_gravity="center" android:id="@id/l5l" android:background="#ff333333" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:background="#59000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/g40" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.commlib.view.CycleProgressView android:layout_gravity="center_horizontal" android:id="@id/byo" android:layout_width="36.0dip" android:layout_height="36.0dip" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/al6" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/fcl" />
+    </LinearLayout>
+    <ImageView android:id="@id/c9p" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@raw/actionbar_icon_light_back" android:layout_alignParentTop="true" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
+</FrameLayout>

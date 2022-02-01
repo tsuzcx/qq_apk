@@ -6,18 +6,18 @@ public enum e$a
 {
   static
   {
-    AppMethodBeat.i(143525);
-    iIu = new a("Light", 0);
-    iIv = new a("Full", 1);
-    iIw = new a[] { iIu, iIv };
-    AppMethodBeat.o(143525);
+    AppMethodBeat.i(48211);
+    tRA = new a("Light", 0);
+    tRB = new a("Full", 1);
+    tRC = new a[] { tRA, tRB };
+    AppMethodBeat.o(48211);
   }
   
   private e$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.e.a
  * JD-Core Version:    0.7.0.1
  */

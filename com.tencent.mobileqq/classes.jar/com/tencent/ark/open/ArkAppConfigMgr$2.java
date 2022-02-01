@@ -3,6 +3,7 @@ package com.tencent.ark.open;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.Logger;
 import java.util.HashMap;
 
 class ArkAppConfigMgr$2
@@ -20,14 +21,14 @@ class ArkAppConfigMgr$2
         localSharedPreferences.edit().clear().commit();
       }
       ArkUtil.delete(ArkEnvironmentManager.getInstance().getAppIconDirectory(), false);
-      ArkAppConfigMgr.access$100().logI("ArkApp.ArkAppConfigMgr", new Object[] { "ArkSafe.cleanAllConfig, env=", ArkAppConfigMgr.access$500(this.this$0) });
+      Logger.logI("ArkApp.ArkAppConfigMgr", new Object[] { "ArkSafe.cleanAllConfig, env=", ArkAppConfigMgr.access$400(this.this$0) });
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.ArkAppConfigMgr.2
  * JD-Core Version:    0.7.0.1
  */

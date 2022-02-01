@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GroupInfo
   extends JceStruct
@@ -11,21 +12,21 @@ public final class GroupInfo
 {
   static ArrayList<GroupLabel> cache_labels = new ArrayList();
   public boolean bAlive = true;
-  public boolean bIsNew;
-  public long dwCertType;
-  public long dwExtFlag;
-  public long dwGroupActiveGrade;
-  public long dwGroupFlagExt;
-  public int iDistance;
-  public int iFaceId;
+  public boolean bIsNew = false;
+  public long dwCertType = 0L;
+  public long dwExtFlag = 0L;
+  public long dwGroupActiveGrade = 0L;
+  public long dwGroupFlagExt = 0L;
+  public int iDistance = 0;
+  public int iFaceId = 0;
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public int iMemberCnt;
-  public int iOnlineMemberCnt;
-  public long lCode;
-  public long lCreator;
-  public long lUin;
-  public ArrayList<GroupLabel> labels;
+  public int iMemberCnt = 0;
+  public int iOnlineMemberCnt = 0;
+  public long lCode = 0L;
+  public long lCreator = 0L;
+  public long lUin = 0L;
+  public ArrayList<GroupLabel> labels = null;
   public String strIntro = "";
   public String strJoinAuth = "";
   public String strJoinSig = "";
@@ -110,20 +111,23 @@ public final class GroupInfo
     paramJceOutputStream.write(this.bIsNew, 15);
     paramJceOutputStream.write(this.lCreator, 16);
     paramJceOutputStream.write(this.dwExtFlag, 17);
-    if (this.labels != null) {
-      paramJceOutputStream.write(this.labels, 18);
+    Object localObject = this.labels;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 18);
     }
-    if (this.strJoinAuth != null) {
-      paramJceOutputStream.write(this.strJoinAuth, 19);
+    localObject = this.strJoinAuth;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.strJoinSig != null) {
-      paramJceOutputStream.write(this.strJoinSig, 20);
+    localObject = this.strJoinSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

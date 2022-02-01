@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ce" parent="@style/a1u" />
-    <style name="cf" parent="@style/a1v" />
-    <style name="a1u" parent="@android:style/Theme.Material.NoActionBar" />
-    <style name="a1v" parent="@android:style/Theme.Material.Light.NoActionBar" />
+    <style name="ri" parent="@style/a8z" />
+    <style name="rj" parent="@style/a90" />
+    <style name="a8z" parent="@android:style/Theme.Material.NoActionBar" />
+    <style name="a90" parent="@android:style/Theme.Material.Light.NoActionBar" />
 </resources>

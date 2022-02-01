@@ -12,7 +12,7 @@ public abstract class AbstractPluginCommunicationChannel
     return null;
   }
   
-  public void transferAsync(String paramString, Bundle paramBundle, RemoteCallback paramRemoteCallback)
+  public void transferAsync(String paramString, Bundle paramBundle, RemotesCallback paramRemotesCallback)
     throws RemoteException
   {}
 }

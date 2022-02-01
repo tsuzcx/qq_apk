@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="0.5px" android:layout_width="fill_parent" android:layout_height="240.0dip"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:id="@id/tenpay_keyboard_1" android:background="@drawable/a4q" android:text="1" style="@style/s4" />
-        <Button android:id="@id/tenpay_keyboard_2" android:background="@drawable/a4q" android:text="2" style="@style/s4" />
-        <Button android:id="@id/tenpay_keyboard_3" android:background="@drawable/a4u" android:text="3" style="@style/s4" />
-    </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:id="@id/tenpay_keyboard_4" android:background="@drawable/a4q" android:text="4" style="@style/s4" />
-        <Button android:id="@id/tenpay_keyboard_5" android:background="@drawable/a4q" android:text="5" style="@style/s4" />
-        <Button android:id="@id/tenpay_keyboard_6" android:background="@drawable/a4u" android:text="6" style="@style/s4" />
-    </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:id="@id/tenpay_keyboard_7" android:background="@drawable/a4q" android:text="7" style="@style/s4" />
-        <Button android:id="@id/tenpay_keyboard_8" android:background="@drawable/a4q" android:text="8" style="@style/s4" />
-        <Button android:id="@id/tenpay_keyboard_9" android:background="@drawable/a4u" android:text="9" style="@style/s4" />
-    </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textSize="26.0dip" android:id="@id/tenpay_keyboard_x" android:background="@drawable/tenpay_keybtn_bottom" android:text="" style="@style/s4" />
-        <Button android:id="@id/tenpay_keyboard_0" android:background="@drawable/a4r" android:text="0" style="@style/s4" />
-        <ImageButton android:id="@id/tenpay_keyboard_d" android:background="@drawable/a4s" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/a4t" android:layout_weight="1.0" android:contentDescription="@string/cxh" />
-    </LinearLayout>
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/db">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bep" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:src="@drawable/bmn" />
+        <TextView android:textSize="@dimen/bm" android:textStyle="bold" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center" android:id="@id/g53" android:paddingLeft="64.0dip" android:paddingRight="64.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+    </RelativeLayout>
 </LinearLayout>

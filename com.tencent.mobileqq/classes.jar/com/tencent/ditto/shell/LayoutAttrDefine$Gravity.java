@@ -22,38 +22,33 @@ public class LayoutAttrDefine$Gravity
   
   public static int parse(String paramString)
   {
-    int j = 3;
-    int i;
     if ("top".equals(paramString)) {
-      i = 48;
+      return 48;
     }
-    do
-    {
-      do
-      {
-        return i;
-        if ("bottom".equals(paramString)) {
-          return 80;
-        }
-        i = j;
-      } while ("left".equals(paramString));
-      if ("right".equals(paramString)) {
-        return 5;
-      }
-      if ("center_vertical".equals(paramString)) {
-        return 16;
-      }
-      if ("center_horizontal".equals(paramString)) {
-        return 1;
-      }
-      i = j;
-    } while (!"center".equals(paramString));
-    return 17;
+    if ("bottom".equals(paramString)) {
+      return 80;
+    }
+    if ("left".equals(paramString)) {
+      return 3;
+    }
+    if ("right".equals(paramString)) {
+      return 5;
+    }
+    if ("center_vertical".equals(paramString)) {
+      return 16;
+    }
+    if ("center_horizontal".equals(paramString)) {
+      return 1;
+    }
+    if ("center".equals(paramString)) {
+      return 17;
+    }
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.shell.LayoutAttrDefine.Gravity
  * JD-Core Version:    0.7.0.1
  */

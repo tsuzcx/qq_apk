@@ -35,7 +35,18 @@ public final class Cell
   
   public String toString()
   {
-    return "Cell[cellId=" + this.iCellId + ",Lac=" + this.iLac + ",Mcc=" + this.shMcc + ",Mnc=" + this.shMnc + ",rssi=" + this.shRssi + "]\n";
+    StringBuilder localStringBuilder = new StringBuilder("Cell[cellId=");
+    localStringBuilder.append(this.iCellId);
+    localStringBuilder.append(",Lac=");
+    localStringBuilder.append(this.iLac);
+    localStringBuilder.append(",Mcc=");
+    localStringBuilder.append(this.shMcc);
+    localStringBuilder.append(",Mnc=");
+    localStringBuilder.append(this.shMnc);
+    localStringBuilder.append(",rssi=");
+    localStringBuilder.append(this.shRssi);
+    localStringBuilder.append("]\n");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)

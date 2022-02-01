@@ -1,65 +1,26 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
 import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.IQQPlayerService.Stub;
+import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import com.tencent.mobileqq.webviewplugin.JsBridgeListener;
-import org.json.JSONObject;
 
 public class gda
-  implements ServiceConnection
+  extends IQQPlayerCallback.Stub
 {
   public gda(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(int paramInt)
   {
-    MusicGeneWebViewPlugin.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
-    try
-    {
-      paramComponentName = MusicGeneWebViewPlugin.a(this.a).a(3, MusicGeneWebViewPlugin.a());
-      paramIBinder = MusicGeneWebViewPlugin.a(this.a).a();
-      if ((paramIBinder != null) && (paramIBinder.equals(paramComponentName))) {
-        MusicGeneWebViewPlugin.a(this.a).a(MusicGeneWebViewPlugin.a(this.a));
-      }
-      if (MusicGeneWebViewPlugin.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "0");
-        MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
-        MusicGeneWebViewPlugin.a(this.a, null);
-      }
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      paramComponentName.printStackTrace();
+    MusicGeneWebViewPlugin.a(this.a, paramInt);
+    if (paramInt == 2) {
+      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).c());
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(SongInfo paramSongInfo)
   {
-    try
-    {
-      if (MusicGeneWebViewPlugin.a(this.a) != null) {
-        MusicGeneWebViewPlugin.a(this.a).b(MusicGeneWebViewPlugin.a(this.a));
-      }
-      if (MusicGeneWebViewPlugin.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "1");
-        MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
-        MusicGeneWebViewPlugin.a(this.a, null);
-      }
+    if (MusicGeneWebViewPlugin.a(this.a) != null) {
+      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).a());
     }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
-    MusicGeneWebViewPlugin.a(this.a, null);
   }
 }
 

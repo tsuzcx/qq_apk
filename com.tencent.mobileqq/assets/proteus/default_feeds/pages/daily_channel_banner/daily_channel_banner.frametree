@@ -1,0 +1,149 @@
+{
+    "tag": "page",
+    "content": "",
+    "attributes": {
+        "viewID": "0",
+        "pts:on-exposure": "{{$RIJArticle.rowKey}}",
+        "data-event-type": "{{'allInOneJump'}}",
+        "data-jump-url": "",
+        "data-feeds_type": "{{card_report_params.feeds_type}}",
+        "data-channel_jump_type": "{{card_report_params.channel_jump_types}}"
+    },
+    "styles": {
+        "flex-direction": "column",
+        "display": "flex",
+        "box-sizing": "border-box"
+    },
+    "children": [
+        {
+            "tag": "view",
+            "content": "\n  \n  \n  \n",
+            "attributes": {
+                "viewID": "1",
+                "class": "card-container",
+                "pts:special-card": "",
+                "pts:round-corner-card": "",
+                "data-event-type": "{{'allInOneJump'}}",
+                "data-jump-url": "",
+                "pts:on-tap": "",
+                "data-feeds_type": "{{card_report_params.feeds_type}}",
+                "data-channel_jump_type": "{{card_report_params.channel_jump_types}}"
+            },
+            "styles": {
+                "display": "flex",
+                "box-sizing": "border-box",
+                "margin-top": "20rpx",
+                "margin-bottom": "20rpx"
+            },
+            "children": [
+                {
+                    "tag": "view",
+                    "content": "",
+                    "attributes": {
+                        "viewID": "2",
+                        "wx:if": "{{datas.length==3}}",
+                        "class": "placeHolder"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "150rpx"
+                    },
+                    "children": []
+                },
+                {
+                    "tag": "view",
+                    "content": "\n    \n  ",
+                    "attributes": {
+                        "viewID": "3",
+                        "class": "card-wrp"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "flex-direction": "row",
+                        "width": "750rpx",
+                        "justify-content": "space-between",
+                        "padding-left": "24rpx",
+                        "padding-right": "24rpx"
+                    },
+                    "children": [
+                        {
+                            "tag": "view",
+                            "content": "\n      \n      \n    ",
+                            "attributes": {
+                                "viewID": "5",
+                                "wx:for": "{{datas}}",
+                                "class": "view-entrance",
+                                "pts:on-tap": "{{$RIJArticle.rowKey}}",
+                                "data-event-type": "{{'allInOneJump'}}",
+                                "data-jump-url": "{{item.jump_url}}",
+                                "data-r5": "{{item.inner_report_params}}"
+                            },
+                            "styles": {
+                                "display": "flex",
+                                "box-sizing": "border-box",
+                                "flex-direction": "column",
+                                "align-items": "center"
+                            },
+                            "children": [
+                                {
+                                    "tag": "img",
+                                    "content": "",
+                                    "attributes": {
+                                        "viewID": "6",
+                                        "class": "img-wrp",
+                                        "mode": "scaleToFill",
+                                        "src": "{{item.cover_image_url}}"
+                                    },
+                                    "styles": {
+                                        "height": "80rpx",
+                                        "width": "80rpx"
+                                    },
+                                    "children": []
+                                },
+                                {
+                                    "tag": "text",
+                                    "content": "{{item.name}}",
+                                    "attributes": {
+                                        "viewID": "7",
+                                        "class": "txt-wrp"
+                                    },
+                                    "styles": {
+                                        "box-sizing": "border-box",
+                                        "display": "-webkit-box",
+                                        "overflow": "hidden",
+                                        "font-size": "24rpx",
+                                        "text-align": "center",
+                                        "margin": "auto",
+                                        "margin-top": "auto",
+                                        "margin-right": "auto",
+                                        "margin-bottom": "auto",
+                                        "margin-left": "auto",
+                                        "color": "rgb(102, 102, 102)"
+                                    },
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "tag": "view",
+                    "content": "",
+                    "attributes": {
+                        "viewID": "4",
+                        "wx:if": "{{datas.length==3}}",
+                        "class": "placeHolder"
+                    },
+                    "styles": {
+                        "display": "flex",
+                        "box-sizing": "border-box",
+                        "width": "150rpx"
+                    },
+                    "children": []
+                }
+            ]
+        }
+    ]
+}

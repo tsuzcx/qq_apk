@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,12 +14,12 @@ public final class modify_active_album_req
   static ArrayList<active_photo> cache_added_photo;
   static Map<String, String> cache_map_params = new HashMap();
   static shuoshuo_privacy cache_ss_info = new shuoshuo_privacy();
-  public ArrayList<active_photo> added_photo;
-  public Map<String, String> map_params;
+  public ArrayList<active_photo> added_photo = null;
+  public Map<String, String> map_params = null;
   public String mgz_id = "";
-  public long pic_total;
-  public shuoshuo_privacy ss_info;
-  public long uin;
+  public long pic_total = 0L;
+  public shuoshuo_privacy ss_info = null;
+  public long uin = 0L;
   
   static
   {
@@ -53,24 +54,28 @@ public final class modify_active_album_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.map_params != null) {
-      paramJceOutputStream.write(this.map_params, 1);
+    Object localObject = this.map_params;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.added_photo != null) {
-      paramJceOutputStream.write(this.added_photo, 2);
+    localObject = this.added_photo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.ss_info != null) {
-      paramJceOutputStream.write(this.ss_info, 3);
+    localObject = this.ss_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.mgz_id != null) {
-      paramJceOutputStream.write(this.mgz_id, 4);
+    localObject = this.mgz_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.pic_total, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.modify_active_album_req
  * JD-Core Version:    0.7.0.1
  */

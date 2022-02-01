@@ -1,58 +1,63 @@
 package com.tencent.mobileqq.activity;
 
-import actp;
-import actq;
-import actr;
-import acts;
-import actt;
-import actu;
-import actv;
-import actw;
-import ammy;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.BadTokenException;
-import azqs;
-import bahu;
-import bdgm;
-import bdjz;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkSaveDialog;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class DialogActivity
   extends BaseActivity
 {
-  public static int a;
+  public static int a = 0;
   public static int b = 1;
   public static int c = 2;
   public static int d = 3;
-  Dialog a;
-  private int e;
+  Dialog e;
   private int f;
+  private int g;
   
   private void a()
   {
-    bdjz localbdjz = bdgm.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131720098), new actq(this)).setNegativeButton(getString(2131720099), new actp(this));
-    localbdjz.setOnCancelListener(new actr(this));
-    a(localbdjz);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setMessage(getString(this.f)).setPositiveButton(getString(2131916604), new DialogActivity.3(this)).setNegativeButton(getString(2131916605), new DialogActivity.2(this));
+    localQQCustomDialog.setOnCancelListener(new DialogActivity.4(this));
+    a(localQQCustomDialog);
   }
   
   private void a(Dialog paramDialog)
   {
-    QLog.d("qqBaseActivity", 1, "DialogActivity showDialog dialogType=" + this.f + " dialog=" + paramDialog);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DialogActivity showDialog dialogType=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" dialog=");
+    localStringBuilder.append(paramDialog);
+    QLog.d("qqBaseActivity", 1, localStringBuilder.toString());
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("raw_photo", 2, "showDialog dialogType=" + this.f);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showDialog dialogType=");
+        localStringBuilder.append(this.g);
+        QLog.d("raw_photo", 2, localStringBuilder.toString());
       }
       paramDialog.show();
-      if (this.f == c) {
-        azqs.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
+      if (this.g == c)
+      {
+        ReportController.b(null, "dc00898", "", "", "0X8009AC7", "0X8009AC7", 0, 0, "", "", "", "");
+        return;
       }
-      return;
     }
     catch (WindowManager.BadTokenException localBadTokenException)
     {
@@ -65,15 +70,15 @@ public class DialogActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidAppDialog = bdgm.a(this, 230, null, getString(2131698910), getString(2131690648), getString(2131698911), new acts(this), new actt(this));
-    a(this.jdField_a_of_type_AndroidAppDialog);
+    this.e = DialogUtil.a(this, 230, null, getString(2131896600), getString(2131887648), getString(2131896601), new DialogActivity.5(this), new DialogActivity.6(this));
+    a(this.e);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidAppDialog = new ammy(this);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new actu(this));
-    a(this.jdField_a_of_type_AndroidAppDialog);
+    this.e = new MsgNotifyPushDialog(this);
+    this.e.setOnDismissListener(new DialogActivity.7(this));
+    a(this.e);
   }
   
   private void d()
@@ -81,52 +86,69 @@ public class DialogActivity
     if (getIntent() == null) {
       return;
     }
-    new bahu(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new actv(this), new actw(this)).show();
+    new TeamWorkSaveDialog(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new DialogActivity.8(this), new DialogActivity.9(this)).show();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
     {
-      this.f = localIntent.getIntExtra("key_dialog_type", jdField_a_of_type_Int);
-      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131691297);
+      this.g = localIntent.getIntExtra("key_dialog_type", a);
+      this.f = localIntent.getIntExtra("key_dialog_msg_id", 2131888197);
     }
     return super.doOnCreate(paramBundle);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
-    if (this.f == b)
+    if (this.g == b)
     {
-      QLog.d("qqBaseActivity", 1, "DialogActivity dimissDialog dialogType=" + this.f + " dialog=" + this.jdField_a_of_type_AndroidAppDialog);
-      if (this.jdField_a_of_type_AndroidAppDialog != null)
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DialogActivity dimissDialog dialogType=");
+      ((StringBuilder)localObject).append(this.g);
+      ((StringBuilder)localObject).append(" dialog=");
+      ((StringBuilder)localObject).append(this.e);
+      QLog.d("qqBaseActivity", 1, ((StringBuilder)localObject).toString());
+      localObject = this.e;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        ((Dialog)localObject).dismiss();
         finish();
-        this.jdField_a_of_type_AndroidAppDialog = null;
+        this.e = null;
       }
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+    Dialog localDialog = this.e;
+    if ((localDialog != null) && (localDialog.isShowing())) {
       return;
     }
-    if (this.f == b)
+    int i = this.g;
+    if (i == b)
     {
       b();
       return;
     }
-    if (this.f == c)
+    if (i == c)
     {
       c();
       return;
     }
-    if (this.f == d)
+    if (i == d)
     {
       d();
       return;
@@ -137,20 +159,28 @@ public class DialogActivity
   public void finish()
   {
     super.finish();
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(null);
+    Dialog localDialog = this.e;
+    if (localDialog != null) {
+      localDialog.setOnDismissListener(null);
     }
-    overridePendingTransition(0, 2130772028);
+    overridePendingTransition(0, 2130772081);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DialogActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.widget.MediaControllerX;
 
 public class gyr
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   public gyr(MediaControllerX paramMediaControllerX) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent.getAction() == 0) && (MediaControllerX.a(this.a))) {
-      this.a.c();
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
     }
-    return false;
   }
 }
 

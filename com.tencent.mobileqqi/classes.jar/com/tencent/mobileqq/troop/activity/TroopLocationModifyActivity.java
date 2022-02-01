@@ -9,8 +9,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
+import guk;
 import gul;
-import gum;
 
 public class TroopLocationModifyActivity
   extends TroopCreateMapViewSupportActivity
@@ -170,8 +170,8 @@ public class TroopLocationModifyActivity
     localActionSheet.a(2131561437);
     localActionSheet.a(2131562757, 3);
     localActionSheet.d(2131561746);
-    localActionSheet.setOnDismissListener(new gul(this));
-    localActionSheet.a(new gum(this));
+    localActionSheet.setOnDismissListener(new guk(this));
+    localActionSheet.a(new gul(this));
     this.b = localActionSheet;
     this.b.show();
   }

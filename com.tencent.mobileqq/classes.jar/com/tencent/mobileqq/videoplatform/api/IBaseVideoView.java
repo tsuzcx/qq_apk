@@ -17,6 +17,8 @@ public abstract interface IBaseVideoView
   
   public abstract boolean isLocalPlay();
   
+  public abstract boolean isMute();
+  
   public abstract boolean isPlaying();
   
   public abstract void pause();
@@ -37,13 +39,15 @@ public abstract interface IBaseVideoView
   
   public abstract void setID(long paramLong);
   
+  public abstract void setMute(boolean paramBoolean);
+  
   public abstract void setVideoParam(VideoPlayParam paramVideoPlayParam);
   
   public abstract void showCover(Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.api.IBaseVideoView
  * JD-Core Version:    0.7.0.1
  */

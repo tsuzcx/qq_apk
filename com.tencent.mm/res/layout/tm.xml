@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/ig" android:layout_width="120.0dip" android:layout_height="120.0dip">
-        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/bct" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="31.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/ih" style="@android:style/Widget.ProgressBar" />
-        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/a6q" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/ak2" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b47" android:background="@drawable/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:backgroundTintMode="src_atop" style="@style/h3">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/kg" android:id="@id/b_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bv" android:includeFontPadding="false" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/b9z" android:background="@raw/voip_voicecall" style="@style/hf" />
     </LinearLayout>
-</FrameLayout>
+    <include layout="@layout/qk" style="@style/gy" />
+</LinearLayout>

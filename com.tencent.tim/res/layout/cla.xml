@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.view.keeppressed.KeepPressedRelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip" style="@style/add"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/clb" />
+</com.tencent.qqmail.view.keeppressed.KeepPressedRelativeLayout>

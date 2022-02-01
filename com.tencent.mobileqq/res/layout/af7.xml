@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ayx" android:textColor="@color/bp" android:layout_gravity="bottom" android:id="@id/dco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11" />
-    <TextView android:textSize="@dimen/ayx" android:textColor="@color/bp" android:layout_gravity="bottom" android:id="@id/dep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="月" />
-    <TextView android:textSize="@dimen/ayo" android:textColor="@color/bp" android:layout_gravity="bottom" android:id="@id/dcp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" / " />
-    <TextView android:textSize="@dimen/ayo" android:textColor="@color/bp" android:layout_gravity="bottom" android:id="@id/deq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2019" />
+    <TextView android:textSize="@dimen/ayx" android:textColor="@color/black" android:layout_gravity="bottom" android:id="@id/dco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11" />
+    <TextView android:textSize="@dimen/ayx" android:textColor="@color/black" android:layout_gravity="bottom" android:id="@id/dep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="月" />
+    <TextView android:textSize="@dimen/ayo" android:textColor="@color/black" android:layout_gravity="bottom" android:id="@id/dcp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" / " />
+    <TextView android:textSize="@dimen/ayo" android:textColor="@color/black" android:layout_gravity="bottom" android:id="@id/deq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2019" />
     <TextView android:textSize="12.0sp" android:layout_gravity="bottom" android:id="@id/dbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
 </LinearLayout>

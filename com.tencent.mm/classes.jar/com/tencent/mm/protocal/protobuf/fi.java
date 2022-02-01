@@ -1,117 +1,114 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import org.json.JSONObject;
 
 public final class fi
-  extends buy
+  extends com.tencent.mm.bx.a
 {
-  public String poq;
-  public String qgu;
-  public String wrw;
+  public String appId;
+  public int appServiceType;
+  public int euz;
+  public String username;
+  
+  private JSONObject toJSON()
+  {
+    AppMethodBeat.i(258752);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "appId", this.appId, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "username", this.username, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "versionType", Integer.valueOf(this.euz), false);
+      com.tencent.mm.bk.a.a(localJSONObject, "appServiceType", Integer.valueOf(this.appServiceType), false);
+      label63:
+      AppMethodBeat.o(258752);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label63;
+    }
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(48773);
+    AppMethodBeat.i(258755);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.appId != null) {
+        paramVarArgs.g(1, this.appId);
       }
-      if (this.qgu != null) {
-        paramVarArgs.e(2, this.qgu);
+      if (this.username != null) {
+        paramVarArgs.g(2, this.username);
       }
-      if (this.poq != null) {
-        paramVarArgs.e(3, this.poq);
-      }
-      if (this.wrw != null) {
-        paramVarArgs.e(4, this.wrw);
-      }
-      AppMethodBeat.o(48773);
+      paramVarArgs.bS(3, this.euz);
+      paramVarArgs.bS(4, this.appServiceType);
+      AppMethodBeat.o(258755);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label490;
+      if (this.appId == null) {
+        break label362;
       }
     }
-    label490:
-    for (int i = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label362:
+    for (paramInt = i.a.a.b.b.a.h(1, this.appId) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.qgu != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.qgu);
+      int i = paramInt;
+      if (this.username != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.username);
       }
-      i = paramInt;
-      if (this.poq != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.poq);
-      }
-      paramInt = i;
-      if (this.wrw != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.wrw);
-      }
-      AppMethodBeat.o(48773);
-      return paramInt;
+      paramInt = i.a.a.b.b.a.cJ(3, this.euz);
+      int j = i.a.a.b.b.a.cJ(4, this.appServiceType);
+      AppMethodBeat.o(258755);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(48773);
+        AppMethodBeat.o(258755);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         fi localfi = (fi)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(48773);
+          AppMethodBeat.o(258755);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localfi.BaseRequest = ((hq)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(48773);
+          localfi.appId = locala.ajGk.readString();
+          AppMethodBeat.o(258755);
           return 0;
         case 2: 
-          localfi.qgu = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(48773);
+          localfi.username = locala.ajGk.readString();
+          AppMethodBeat.o(258755);
           return 0;
         case 3: 
-          localfi.poq = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(48773);
+          localfi.euz = locala.ajGk.aar();
+          AppMethodBeat.o(258755);
           return 0;
         }
-        localfi.wrw = ((e.a.a.a.a)localObject1).CLY.readString();
-        AppMethodBeat.o(48773);
+        localfi.appServiceType = locala.ajGk.aar();
+        AppMethodBeat.o(258755);
         return 0;
       }
-      AppMethodBeat.o(48773);
+      AppMethodBeat.o(258755);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fi
  * JD-Core Version:    0.7.0.1
  */

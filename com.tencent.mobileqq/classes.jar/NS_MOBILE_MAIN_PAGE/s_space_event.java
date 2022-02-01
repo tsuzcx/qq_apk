@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_space_event
   extends JceStruct
 {
-  public int iAdID;
+  public int iAdID = 0;
   public String strEventPic = "";
   public String strEventTxt = "";
   public String strJumpType = "";
@@ -38,27 +38,32 @@ public final class s_space_event
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strEventPic != null) {
-      paramJceOutputStream.write(this.strEventPic, 0);
+    String str = this.strEventPic;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strJumpType != null) {
-      paramJceOutputStream.write(this.strJumpType, 1);
+    str = this.strJumpType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 2);
+    str = this.strJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strEventTxt != null) {
-      paramJceOutputStream.write(this.strEventTxt, 3);
+    str = this.strEventTxt;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.traceinfo != null) {
-      paramJceOutputStream.write(this.traceinfo, 4);
+    str = this.traceinfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.iAdID, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_space_event
  * JD-Core Version:    0.7.0.1
  */

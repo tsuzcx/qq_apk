@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import alud;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 final class MiniAppLauncher$2
@@ -9,12 +9,12 @@ final class MiniAppLauncher$2
 {
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131707204), 1).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131904693), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher.2
  * JD-Core Version:    0.7.0.1
  */

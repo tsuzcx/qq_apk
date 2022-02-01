@@ -1,16 +1,29 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class gtn
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public gtn(TroopCreateBaseActivity paramTroopCreateBaseActivity) {}
+  public gtn(TroopCreateBaseActivity paramTroopCreateBaseActivity, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("result", paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_JavaLangString, paramDialogInterface.toString());
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

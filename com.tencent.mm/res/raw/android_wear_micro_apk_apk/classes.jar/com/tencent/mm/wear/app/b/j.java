@@ -9,37 +9,37 @@ import java.util.List;
 
 public final class j
 {
-  private e aaE = new e() {};
-  private HashMap<Integer, com.tencent.mm.wear.app.d.b.a> abo = new HashMap();
-  private com.tencent.mm.wear.app.d.a.a.j abp;
+  private HashMap<Integer, com.tencent.mm.wear.app.d.b.a> aeP = new HashMap();
+  private com.tencent.mm.wear.app.d.a.a.j aeQ;
+  private e aef = new e() {};
   
   public j()
   {
-    com.tencent.mm.sdk.a.a.WJ.a(this.aaE);
-    this.abp = new com.tencent.mm.wear.app.d.a.a.j();
+    com.tencent.mm.sdk.a.a.YM.a(this.aef);
+    this.aeQ = new com.tencent.mm.wear.app.d.a.a.j();
   }
   
   public final void a(com.tencent.mm.wear.app.d.b.a parama)
   {
-    Iterator localIterator = parama.mS().iterator();
+    Iterator localIterator = parama.nE().iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      d.e("MicroMsg.MMMessageCore", "add handler %d %s", new Object[] { Integer.valueOf(i), parama });
-      this.abo.put(Integer.valueOf(i), parama);
+      d.d("MicroMsg.MMMessageCore", "add handler %d %s", new Object[] { Integer.valueOf(i), parama });
+      this.aeP.put(Integer.valueOf(i), parama);
     }
   }
   
   public final void finish()
   {
-    this.abo.clear();
-    this.abp.finish();
-    com.tencent.mm.sdk.a.a.WJ.b(this.aaE);
+    this.aeP.clear();
+    this.aeQ.finish();
+    com.tencent.mm.sdk.a.a.YM.b(this.aef);
   }
   
-  public final com.tencent.mm.wear.app.d.a.a.j mv()
+  public final com.tencent.mm.wear.app.d.a.a.j nh()
   {
-    return this.abp;
+    return this.aeQ;
   }
 }
 

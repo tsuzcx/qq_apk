@@ -1,38 +1,37 @@
 package com.tencent.mm.plugin.dbbackup;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements com.tencent.mm.pluginsdk.c.d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(18967);
+    AppMethodBeat.i(23076);
     a locala = new a();
-    AppMethodBeat.o(18967);
+    AppMethodBeat.o(23076);
     return locala;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(18968);
+    AppMethodBeat.i(23077);
     d locald = new d();
-    AppMethodBeat.o(18968);
+    AppMethodBeat.o(23077);
     return locald;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.dbbackup.Plugin
  * JD-Core Version:    0.7.0.1
  */

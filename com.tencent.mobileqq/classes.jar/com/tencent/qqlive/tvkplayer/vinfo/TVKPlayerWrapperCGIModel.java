@@ -29,7 +29,7 @@ public class TVKPlayerWrapperCGIModel
   private static final int STATE_COMPLETE = 3;
   private static final int STATE_INIT = 0;
   private static final int STATE_ON_GOING = 1;
-  private static final String TAG = "TVKPlayer[TVKPlayerWrapper]";
+  public static final String TAG = "TVKPlayer[TVKPlayerWrapper]";
   private static boolean sIsDDSInit = false;
   private static boolean sIsDDSSup = false;
   private TVKPlayerWrapperCGIModel.CGIWrapperCallback mCallback;
@@ -40,7 +40,7 @@ public class TVKPlayerWrapperCGIModel
   public TVKPlayerWrapperCGIModel(@NonNull Looper paramLooper, TVKPlayerWrapperCGIModel.CGIWrapperCallback paramCGIWrapperCallback)
   {
     this.mCallback = paramCGIWrapperCallback;
-    this.mRequestQueue = new LinkedBlockingQueue(20);
+    this.mRequestQueue = new LinkedBlockingQueue();
     this.mRequestCallback = new TVKPlayerWrapperCGIModel.CGICombineCallback(this, null);
     this.mHandler = new TVKPlayerWrapperCGIModel.CGICallbackHandler(this, paramLooper);
   }
@@ -107,20 +107,18 @@ public class TVKPlayerWrapperCGIModel
     playVideoInfoCommonExtraRequestMapFormat(paramTVKPlaybackParam, paramTVKPlaybackInfo);
     if (-1L == paramTVKPlaybackParam.livePlayBackTimeSec()) {
       paramTVKPlaybackParam.videoInfo().getExtraRequestParamsMap().remove("playbacktime");
-    }
-    for (;;)
-    {
-      TVKPlayerWrapperCGIModel.CGIRequest localCGIRequest = new TVKPlayerWrapperCGIModel.CGIRequest(null);
-      localCGIRequest.reqId = -1;
-      localCGIRequest.reqType = 6;
-      localCGIRequest.reqState = 0;
-      localCGIRequest.playbackParam = paramTVKPlaybackParam;
-      localCGIRequest.playbackInfo = paramTVKPlaybackInfo;
-      localCGIRequest.requestInfo = paramTVKPlaybackInfo.requestInfo().copy();
-      localCGIRequest.startTimeMs = System.currentTimeMillis();
-      return localCGIRequest;
+    } else {
       paramTVKPlaybackParam.videoInfo().getExtraRequestParamsMap().put("playbacktime", String.valueOf(paramTVKPlaybackParam.livePlayBackTimeSec()));
     }
+    TVKPlayerWrapperCGIModel.CGIRequest localCGIRequest = new TVKPlayerWrapperCGIModel.CGIRequest(null);
+    localCGIRequest.reqId = -1;
+    localCGIRequest.reqType = 6;
+    localCGIRequest.reqState = 0;
+    localCGIRequest.playbackParam = paramTVKPlaybackParam;
+    localCGIRequest.playbackInfo = paramTVKPlaybackInfo;
+    localCGIRequest.requestInfo = paramTVKPlaybackInfo.requestInfo().copy();
+    localCGIRequest.startTimeMs = System.currentTimeMillis();
+    return localCGIRequest;
   }
   
   @NonNull
@@ -179,9 +177,9 @@ public class TVKPlayerWrapperCGIModel
   private void dumpRequest(TVKPlayerWrapperCGIModel.CGIRequest paramCGIRequest)
   {
     TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : ## videoInfo Request ##");
-    String str1 = paramCGIRequest.playbackParam.videoInfo().getVid();
+    String str3 = paramCGIRequest.playbackParam.videoInfo().getVid();
     String str2 = paramCGIRequest.requestInfo.definition();
-    String str3 = paramCGIRequest.requestInfo.audioTrack();
+    String str1 = paramCGIRequest.requestInfo.audioTrack();
     boolean bool1 = paramCGIRequest.requestInfo.h265Enable();
     boolean bool2 = paramCGIRequest.requestInfo.drmEnable();
     boolean bool3 = paramCGIRequest.requestInfo.hdr10Enable();
@@ -189,32 +187,52 @@ public class TVKPlayerWrapperCGIModel
     long l = paramCGIRequest.playbackParam.livePlayBackTimeSec();
     if (paramCGIRequest.reqType == 0) {
       TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :normal request");
+    } else if (paramCGIRequest.reqType == 1) {
+      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :switch definition request");
+    } else if (paramCGIRequest.reqType == 2) {
+      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :switch audio track request");
+    } else if (paramCGIRequest.reqType == 3) {
+      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :loop play request");
+    } else if (paramCGIRequest.reqType == 4) {
+      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :high rail request");
+    } else if (paramCGIRequest.reqType == 6) {
+      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :live back play");
     }
-    for (;;)
+    if (!TextUtils.isEmpty(str3))
     {
-      if (!TextUtils.isEmpty(str1)) {
-        TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request param : vid : " + str1);
-      }
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request param : definition  :" + str2);
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request param : h265Enable  :" + bool1);
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request param : audioTrack  :" + str3);
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request param : drmEnable   :" + bool2);
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request param : hdr10Enable :" + bool3);
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request param : dolbyEnable :" + bool4);
-      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request param : playbacktimems :" + l);
-      return;
-      if (paramCGIRequest.reqType == 1) {
-        TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :switch definition request");
-      } else if (paramCGIRequest.reqType == 2) {
-        TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :switch audio track request");
-      } else if (paramCGIRequest.reqType == 3) {
-        TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :loop play request");
-      } else if (paramCGIRequest.reqType == 4) {
-        TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :high rail request");
-      } else if (paramCGIRequest.reqType == 6) {
-        TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", "CGI : request type :live back play");
-      }
+      paramCGIRequest = new StringBuilder();
+      paramCGIRequest.append("CGI : request param : vid : ");
+      paramCGIRequest.append(str3);
+      TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramCGIRequest.toString());
     }
+    paramCGIRequest = new StringBuilder();
+    paramCGIRequest.append("CGI : request param : definition  :");
+    paramCGIRequest.append(str2);
+    TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramCGIRequest.toString());
+    paramCGIRequest = new StringBuilder();
+    paramCGIRequest.append("CGI : request param : h265Enable  :");
+    paramCGIRequest.append(bool1);
+    TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramCGIRequest.toString());
+    paramCGIRequest = new StringBuilder();
+    paramCGIRequest.append("CGI : request param : audioTrack  :");
+    paramCGIRequest.append(str1);
+    TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramCGIRequest.toString());
+    paramCGIRequest = new StringBuilder();
+    paramCGIRequest.append("CGI : request param : drmEnable   :");
+    paramCGIRequest.append(bool2);
+    TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramCGIRequest.toString());
+    paramCGIRequest = new StringBuilder();
+    paramCGIRequest.append("CGI : request param : hdr10Enable :");
+    paramCGIRequest.append(bool3);
+    TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramCGIRequest.toString());
+    paramCGIRequest = new StringBuilder();
+    paramCGIRequest.append("CGI : request param : dolbyEnable :");
+    paramCGIRequest.append(bool4);
+    TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramCGIRequest.toString());
+    paramCGIRequest = new StringBuilder();
+    paramCGIRequest.append("CGI : request param : playbacktimems :");
+    paramCGIRequest.append(l);
+    TVKLogUtil.i("TVKPlayer[TVKPlayerWrapper]", paramCGIRequest.toString());
   }
   
   @Nullable
@@ -231,58 +249,33 @@ public class TVKPlayerWrapperCGIModel
     return null;
   }
   
-  /* Error */
   private boolean hasRemainingOnGoingRequest()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 60	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel:mRequestQueue	Ljava/util/Queue;
-    //   6: invokeinterface 303 1 0
-    //   11: astore_3
-    //   12: aload_3
-    //   13: invokeinterface 308 1 0
-    //   18: ifeq +39 -> 57
-    //   21: aload_3
-    //   22: invokeinterface 312 1 0
-    //   27: checkcast 126	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest
-    //   30: astore 4
-    //   32: aload 4
-    //   34: getfield 138	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest:reqState	I
-    //   37: ifeq +14 -> 51
-    //   40: aload 4
-    //   42: getfield 138	com/tencent/qqlive/tvkplayer/vinfo/TVKPlayerWrapperCGIModel$CGIRequest:reqState	I
-    //   45: istore_1
-    //   46: iload_1
-    //   47: iconst_1
-    //   48: if_icmpne -36 -> 12
-    //   51: iconst_1
-    //   52: istore_2
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: iload_2
-    //   56: ireturn
-    //   57: iconst_0
-    //   58: istore_2
-    //   59: goto -6 -> 53
-    //   62: astore_3
-    //   63: aload_0
-    //   64: monitorexit
-    //   65: aload_3
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	67	0	this	TVKPlayerWrapperCGIModel
-    //   45	4	1	i	int
-    //   52	7	2	bool	boolean
-    //   11	11	3	localIterator	Iterator
-    //   62	4	3	localObject	Object
-    //   30	11	4	localCGIRequest	TVKPlayerWrapperCGIModel.CGIRequest
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	62	finally
-    //   12	46	62	finally
+    try
+    {
+      Iterator localIterator = this.mRequestQueue.iterator();
+      while (localIterator.hasNext())
+      {
+        TVKPlayerWrapperCGIModel.CGIRequest localCGIRequest = (TVKPlayerWrapperCGIModel.CGIRequest)localIterator.next();
+        if (localCGIRequest.reqState != 0)
+        {
+          int i = localCGIRequest.reqState;
+          if (i != 1) {
+            break;
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      return false;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public static boolean isHwDolbyDSSupported()
@@ -290,27 +283,33 @@ public class TVKPlayerWrapperCGIModel
     if (sIsDDSInit) {
       return sIsDDSSup;
     }
+    Object localObject1 = null;
+    boolean bool2 = false;
     try
     {
-      Object localObject1 = Class.forName("android.os.SystemProperties");
-      localObject1 = (String)((Class)localObject1).getMethod("get", new Class[] { String.class }).invoke(localObject1, new Object[] { "dolby.ds.state" });
-      if ((localObject1 != null) && ((localObject1 == null) || (!((String)localObject1).trim().equals(""))))
-      {
-        bool = true;
-        sIsDDSSup = bool;
-        sIsDDSInit = true;
-        return sIsDDSSup;
-      }
+      Object localObject2 = Class.forName("android.os.SystemProperties");
+      localObject2 = (String)((Class)localObject2).getMethod("get", new Class[] { String.class }).invoke(localObject2, new Object[] { "dolby.ds.state" });
+      localObject1 = localObject2;
     }
     catch (Exception localException)
     {
-      for (;;)
+      localException.printStackTrace();
+    }
+    boolean bool1 = bool2;
+    if (localObject1 != null) {
+      if (localObject1 != null)
       {
-        Object localObject2 = null;
-        continue;
-        boolean bool = false;
+        bool1 = bool2;
+        if (localObject1.trim().equals("")) {}
+      }
+      else
+      {
+        bool1 = true;
       }
     }
+    sIsDDSSup = bool1;
+    sIsDDSInit = true;
+    return sIsDDSSup;
   }
   
   private void markAllRequestCanceled()
@@ -349,30 +348,26 @@ public class TVKPlayerWrapperCGIModel
       ((ITVKVodInfoGetter)localObject).setOnInfoGetListener(this.mRequestCallback);
       i = ((ITVKVodInfoGetter)localObject).getPlayInfo(localTVKUserInfo, localTVKPlayerVideoInfo, str, i, 0);
     }
-    for (;;)
+    else if (localTVKPlayerVideoInfo.getPlayType() == 8)
     {
-      paramCGIRequest.reqId = i;
-      paramCGIRequest.reqState = 1;
-      dumpRequest(paramCGIRequest);
-      this.mRequestQueue.add(paramCGIRequest);
-      return;
-      if (localTVKPlayerVideoInfo.getPlayType() == 8)
-      {
-        localObject = new TVKVodInfoGetter((Context)localObject);
-        ((ITVKVodInfoGetter)localObject).setOnInfoGetListener(this.mRequestCallback);
-        i = ((ITVKVodInfoGetter)localObject).getPlayInfo(localTVKUserInfo, localTVKPlayerVideoInfo, str, i, 0);
-      }
-      else if (localTVKPlayerVideoInfo.getPlayType() == 1)
-      {
-        localObject = TVKLiveInfoGetter.create((Context)localObject);
-        ((ITVKLiveInfoGetter)localObject).setOnGetLiveInfoListener(this.mRequestCallback);
-        i = ((ITVKLiveInfoGetter)localObject).getLiveInfo(localTVKUserInfo, localTVKPlayerVideoInfo, str, i, isHwDolbyDSSupported());
-      }
-      else
-      {
-        i = -1;
-      }
+      localObject = new TVKVodInfoGetter((Context)localObject);
+      ((ITVKVodInfoGetter)localObject).setOnInfoGetListener(this.mRequestCallback);
+      i = ((ITVKVodInfoGetter)localObject).getPlayInfo(localTVKUserInfo, localTVKPlayerVideoInfo, str, i, 0);
     }
+    else if (localTVKPlayerVideoInfo.getPlayType() == 1)
+    {
+      localObject = TVKLiveInfoGetter.create((Context)localObject);
+      ((ITVKLiveInfoGetter)localObject).setOnGetLiveInfoListener(this.mRequestCallback);
+      i = ((ITVKLiveInfoGetter)localObject).getLiveInfo(localTVKUserInfo, localTVKPlayerVideoInfo, str, i, isHwDolbyDSSupported());
+    }
+    else
+    {
+      i = -1;
+    }
+    paramCGIRequest.reqId = i;
+    paramCGIRequest.reqState = 1;
+    dumpRequest(paramCGIRequest);
+    this.mRequestQueue.add(paramCGIRequest);
   }
   
   public void request(int paramInt, @NonNull TVKPlaybackParam paramTVKPlaybackParam, @NonNull TVKPlaybackInfo paramTVKPlaybackInfo)
@@ -408,7 +403,7 @@ public class TVKPlayerWrapperCGIModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerWrapperCGIModel
  * JD-Core Version:    0.7.0.1
  */

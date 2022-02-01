@@ -1,1436 +1,1119 @@
 package com.tencent.mm.plugin.exdevice.model;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.aj.d.b;
-import com.tencent.mm.aj.d.b.b;
-import com.tencent.mm.g.a.dn;
-import com.tencent.mm.g.a.dn.a;
-import com.tencent.mm.g.a.do;
-import com.tencent.mm.g.a.do.a;
-import com.tencent.mm.g.a.dq;
-import com.tencent.mm.g.a.dq.a;
-import com.tencent.mm.g.a.eb;
-import com.tencent.mm.g.a.ec;
-import com.tencent.mm.g.a.ed;
-import com.tencent.mm.g.a.eg;
-import com.tencent.mm.g.a.eg.a;
-import com.tencent.mm.g.a.ei;
-import com.tencent.mm.g.a.ei.a;
-import com.tencent.mm.g.a.es;
-import com.tencent.mm.g.a.ev;
-import com.tencent.mm.g.a.ey;
-import com.tencent.mm.g.a.ie;
-import com.tencent.mm.g.a.ie.b;
-import com.tencent.mm.g.a.ls;
-import com.tencent.mm.g.a.lv;
-import com.tencent.mm.g.a.y;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.ch;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.exdevice.i.j;
-import com.tencent.mm.plugin.exdevice.i.k;
-import com.tencent.mm.plugin.exdevice.service.ExDeviceService;
-import com.tencent.mm.plugin.exdevice.service.f.a;
-import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.pluginsdk.p.c.a;
-import com.tencent.mm.pluginsdk.p.e;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.alc;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.protocal.protobuf.alf;
-import com.tencent.mm.protocal.protobuf.auh;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.autogen.a.fr;
+import com.tencent.mm.autogen.b.ee;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.g.a;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.modelimage.j;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.modelvideo.aa;
+import com.tencent.mm.modelvideo.v;
+import com.tencent.mm.modelvideo.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.pluginsdk.model.app.as;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.protocal.protobuf.dan;
+import com.tencent.mm.protocal.protobuf.dao;
+import com.tencent.mm.protocal.protobuf.dap;
+import com.tencent.mm.protocal.protobuf.daq;
+import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.das;
+import com.tencent.mm.protocal.protobuf.dat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.storage.cc.c;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public final class e
 {
-  private final long bQo;
-  public com.tencent.mm.sdk.b.c jLe;
-  public com.tencent.mm.sdk.b.c lDA;
-  public com.tencent.mm.sdk.b.c lDB;
-  public com.tencent.mm.sdk.b.c lDC;
-  public com.tencent.mm.sdk.b.c lDD;
-  public com.tencent.mm.sdk.b.c lDE;
-  public com.tencent.mm.sdk.b.c lDF;
-  public com.tencent.mm.sdk.b.c lDG;
-  public com.tencent.mm.sdk.b.c lDH;
-  public com.tencent.mm.sdk.b.c lDI;
-  public com.tencent.mm.sdk.b.c lDJ;
-  public com.tencent.mm.sdk.b.c lDK;
-  public com.tencent.mm.sdk.b.c lDL;
-  public com.tencent.mm.sdk.b.c lDM;
-  public com.tencent.mm.sdk.b.c lDN;
-  public com.tencent.mm.sdk.b.c lDO;
-  public com.tencent.mm.sdk.b.c lDP;
-  public com.tencent.mm.sdk.b.c lDQ;
-  public com.tencent.mm.sdk.b.c lDR;
-  public com.tencent.mm.sdk.b.c lDS;
-  public com.tencent.mm.sdk.b.c lDT;
-  public com.tencent.mm.sdk.b.c lDU;
-  public com.tencent.mm.sdk.b.c lDV;
-  public com.tencent.mm.sdk.b.c lDW;
-  public com.tencent.mm.sdk.b.c lDX;
-  public com.tencent.mm.sdk.b.c lDY;
-  public com.tencent.mm.sdk.b.c lDZ;
-  List<b> lDo;
-  Map<String, b> lDp;
-  public com.tencent.mm.sdk.b.c lDq;
-  public com.tencent.mm.sdk.b.c lDr;
-  public com.tencent.mm.sdk.b.c lDs;
-  public com.tencent.mm.sdk.b.c lDt;
-  public com.tencent.mm.sdk.b.c lDu;
-  public com.tencent.mm.sdk.b.c lDv;
-  public com.tencent.mm.sdk.b.c lDw;
-  public com.tencent.mm.sdk.b.c lDx;
-  public com.tencent.mm.sdk.b.c lDy;
-  public com.tencent.mm.sdk.b.c lDz;
-  public com.tencent.mm.sdk.b.c lEa;
-  public com.tencent.mm.sdk.b.c lEb;
-  public com.tencent.mm.sdk.b.c lEc;
-  ExdeviceWCLanSDKUtil lEd;
-  g lEe;
-  private boolean lEf;
-  private e.c lEg;
-  ak mHandler;
+  static String ypA = "send_data_outdate";
+  static String ypx = "send_data_sucess";
+  static String ypy = "send_data_failed";
+  static String ypz = "send_data_sending";
   
-  public e()
+  static String a(com.tencent.mm.plugin.exdevice.i.b paramb)
   {
-    AppMethodBeat.i(19216);
-    this.lDq = new e.1(this);
-    this.lDr = new e.12(this);
-    this.lDs = new e.23(this);
-    this.lDt = new e.34(this);
-    this.lDu = new com.tencent.mm.sdk.b.c() {};
-    this.lDv = new e.43(this);
-    this.lDw = new e.44(this);
-    this.lDx = new e.45(this);
-    this.lDy = new e.46(this);
-    this.lDz = new e.2(this);
-    this.lDA = new e.3(this);
-    this.lDB = new e.4(this);
-    this.lDC = new e.5(this);
-    this.lDD = new e.6(this);
-    this.lDE = new com.tencent.mm.sdk.b.c() {};
-    this.lDF = new e.8(this);
-    this.lDG = new e.9(this);
-    this.lDH = new e.10(this);
-    this.lDI = new e.11(this);
-    this.lDJ = new e.13(this);
-    this.lDK = new e.14(this);
-    this.lDL = new e.15(this);
-    this.lDM = new com.tencent.mm.sdk.b.c() {};
-    this.lDN = new e.17(this);
-    this.lDO = new e.18(this);
-    this.lDP = new e.19(this);
-    this.lDQ = new e.20(this);
-    this.jLe = new com.tencent.mm.sdk.b.c() {};
-    this.lDR = new com.tencent.mm.sdk.b.c() {};
-    this.lDS = new e.24(this);
-    this.lDT = new e.25(this);
-    this.lDU = new e.26(this);
-    this.lDV = new e.27(this);
-    this.lDW = new e.28(this);
-    this.lDX = new e.29(this);
-    this.lDY = new e.30(this);
-    this.lDZ = new e.31(this);
-    this.lEa = new e.32(this);
-    this.lEb = new e.33(this);
-    this.lEc = new e.35(this);
-    this.bQo = 300000L;
-    this.lEf = false;
-    this.lDo = new LinkedList();
-    this.lDp = new HashMap();
-    HandlerThread localHandlerThread = com.tencent.mm.sdk.g.d.aqu("wifi_device_heart_beat");
-    localHandlerThread.start();
-    this.mHandler = new ak(localHandlerThread.getLooper());
-    AppMethodBeat.o(19216);
-  }
-  
-  static boolean Lr(String paramString)
-  {
-    AppMethodBeat.i(19225);
-    paramString = com.tencent.mm.aj.f.rS(paramString);
-    if (paramString == null)
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "bizInfo is null");
-      AppMethodBeat.o(19225);
-      return false;
-    }
-    paramString = paramString.cU(false);
-    if ((paramString == null) || (paramString.aeA() == null) || (!paramString.aeA().aeJ()))
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "this is not hardware biz");
-      AppMethodBeat.o(19225);
-      return false;
-    }
-    AppMethodBeat.o(19225);
-    return true;
-  }
-  
-  public static boolean Ls(String paramString)
-  {
-    AppMethodBeat.i(19233);
-    ab.d("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTDisconnectDevice, mac(%s).", new Object[] { paramString });
-    if (!bpL())
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "isBTOpenAndBLESupported return false");
-      AppMethodBeat.o(19233);
-      return false;
-    }
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "mac is null or nil");
-      AppMethodBeat.o(19233);
-      return false;
-    }
-    ad.bqk();
-    h.iZ(com.tencent.mm.plugin.exdevice.j.b.LX(paramString));
-    AppMethodBeat.o(19233);
-    return true;
-  }
-  
-  static int a(com.tencent.mm.plugin.exdevice.h.b paramb)
-  {
-    AppMethodBeat.i(19222);
-    int i = -1;
-    if (bo.nullAsNil(paramb.field_connProto).contains("1")) {
-      i = 1;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(19222);
-      return i;
-      if (bo.nullAsNil(paramb.field_connProto).contains("3")) {
-        i = 0;
-      }
-    }
-  }
-  
-  private b a(String paramString, b paramb)
-  {
-    AppMethodBeat.i(19244);
-    paramString = (b)this.lDp.put(paramString, paramb);
-    AppMethodBeat.o(19244);
-    return paramString;
-  }
-  
-  static boolean a(com.tencent.mm.plugin.exdevice.h.b paramb, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(19226);
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "handleSwitchViewEvent");
+    AppMethodBeat.i(274606);
     if (paramb == null)
     {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "HardDeviceInfo is null.");
-      AppMethodBeat.o(19226);
-      return false;
+      AppMethodBeat.o(274606);
+      return "";
     }
-    String str = paramb.field_brandName;
-    f.a locala = u.bqz().jl(paramb.field_mac);
-    if (locala == null)
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "can not find the hardevice connect state");
-      AppMethodBeat.o(19226);
-      return false;
+    String str = null;
+    if (!Util.isNullOrNil(paramb.kDc)) {
+      str = paramb.kDc;
     }
-    if (locala.crJ == 2)
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "notify the connect device %s", new Object[] { str });
-      localObject = new j(paramInt1, paramInt2, paramb.field_mac);
-      u.bqA().a((ae)localObject);
-    }
-    Object localObject = ad.bqf();
-    if (paramInt1 == 1) {}
-    for (paramInt2 = 1;; paramInt2 = 0)
-    {
-      ((d)localObject).uU(paramInt2);
-      if (paramInt1 != 2) {
-        break;
-      }
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "now exit chattingui, do not notify change the subtitle");
-      localObject = ad.bqf();
-      long l = paramb.field_mac;
-      localObject = (ap)((d)localObject).lCX.remove(Long.valueOf(l));
-      if (localObject != null) {
-        ((ap)localObject).stopTimer();
-      }
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "Device close strategy(%d)", new Object[] { Integer.valueOf(paramb.field_closeStrategy) });
-      if (((paramb.field_closeStrategy & 0x1) != 0) || (!u.bqz().jp(locala.lIB)) || ((2 != locala.crJ) && (locala.crJ != 0)))
-      {
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "now the device is not auth or not connect  or closeStrategy is to close after exit, try to stop connetct, connet state is %d, device is %s", new Object[] { Integer.valueOf(locala.crJ), str });
-        if (u.bqA().lCQ != null) {
-          u.bqA().lCQ.jr(locala.lIB);
-        }
-      }
-      if (f.b(paramb))
-      {
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "try to disconnect simpleBTDevice(%s).", new Object[] { Long.valueOf(paramb.field_mac) });
-        Ls(com.tencent.mm.plugin.exdevice.j.b.jw(paramb.field_mac));
-      }
-      AppMethodBeat.o(19226);
-      return true;
-    }
-    if ((2 != locala.crJ) && (p.e.vJC != null) && (p.e.vJC.cYC()))
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "getWearCommand is null or wear has connected in the brandName.");
-      AppMethodBeat.o(19226);
-      return false;
-    }
-    AppMethodBeat.o(19226);
-    return true;
-  }
-  
-  public static void aB(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(19241);
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "notifyOnDeviceBindStateChange. deviceId=%s, isBound=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    eb localeb = new eb();
-    localeb.crS.bYu = paramString;
-    localeb.crS.cqN = paramBoolean;
-    com.tencent.mm.sdk.b.a.ymk.a(localeb, Looper.getMainLooper());
-    AppMethodBeat.o(19241);
-  }
-  
-  static boolean bpJ()
-  {
-    AppMethodBeat.i(19228);
-    Object localObject = ad.bpY().bqE();
-    if (((LinkedList)localObject).isEmpty())
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "get harddevice info is null or empty");
-      AppMethodBeat.o(19228);
-      return false;
-    }
-    ad.bqf().uU(2);
-    localObject = ((LinkedList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      com.tencent.mm.plugin.exdevice.h.b localb = (com.tencent.mm.plugin.exdevice.h.b)((Iterator)localObject).next();
-      aw.aaz();
-      com.tencent.mm.storage.ad localad = com.tencent.mm.model.c.YA().arw(localb.field_brandName);
-      if ((localad == null) || (!com.tencent.mm.n.a.je(localad.field_type)))
-      {
-        ab.e("MicroMsg.exdevice.ExdeviceEventManager", "%s is not my contact now, may be has been deleted", new Object[] { localb.field_brandName });
-      }
-      else if ((localb.field_connStrategy & 0x4) == 0)
-      {
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "Connect Strategy is %d, no need to sync in main ui", new Object[] { Integer.valueOf(localb.field_connStrategy) });
-      }
-      else
-      {
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "now try to connect %s", new Object[] { localb.field_brandName });
-        ad.bqf().b(localb.field_brandName, localb.field_mac, 0, true);
-      }
-    }
-    AppMethodBeat.o(19228);
-    return true;
-  }
-  
-  static boolean bpK()
-  {
-    AppMethodBeat.i(19229);
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "receive StopAllChannelEvent");
-    ad.bqf();
-    d.hc(false);
-    ad.bqf().bpI();
-    AppMethodBeat.o(19229);
-    return true;
-  }
-  
-  private static boolean bpL()
-  {
-    AppMethodBeat.i(19231);
-    if (!com.tencent.mm.plugin.d.a.e.a.dA(ah.getContext()))
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-      AppMethodBeat.o(19231);
-      return false;
-    }
-    if (!com.tencent.mm.plugin.d.a.e.a.aWe())
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "Bluetooth is not open, Just leave");
-      AppMethodBeat.o(19231);
-      return false;
-    }
-    AppMethodBeat.o(19231);
-    return true;
-  }
-  
-  public static boolean bpM()
-  {
-    AppMethodBeat.i(19232);
-    ab.d("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTScanDevice");
-    if (!bpL())
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "isBTOpenAndBLESupported return false");
-      AppMethodBeat.o(19232);
-      return false;
-    }
-    ad.bqk().scan();
-    AppMethodBeat.o(19232);
-    return true;
-  }
-  
-  static boolean bpN()
-  {
-    AppMethodBeat.i(19245);
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "Wechat exit, stop ExDeviceService.");
-    Context localContext = ah.getContext();
-    try
-    {
-      ad.bqf().bpI();
-      com.tencent.mm.bq.d.l(new Intent(localContext, ExDeviceService.class), "exdevice");
-      AppMethodBeat.o(19245);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.w("MicroMsg.exdevice.ExDeviceServiceHelper", "unbindService() Service is not start by bindService.%s", new Object[] { localException.getMessage() });
-        ab.printErrStackTrace("MicroMsg.exdevice.ExDeviceServiceHelper", localException, "", new Object[0]);
-      }
-    }
-  }
-  
-  public static void c(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    AppMethodBeat.i(19238);
-    lv locallv = new lv();
-    locallv.cBR.op = 2;
-    locallv.cBR.czh = paramString1;
-    locallv.cBR.crJ = paramInt;
-    locallv.cBR.url = paramString2;
-    locallv.cBR.bYu = paramString3;
-    com.tencent.mm.sdk.b.a.ymk.a(locallv, Looper.getMainLooper());
-    AppMethodBeat.o(19238);
-  }
-  
-  static boolean c(com.tencent.mm.sdk.b.b paramb)
-  {
-    AppMethodBeat.i(19220);
-    paramb = (dn)paramb;
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "handleGetDeviceInfosEvent: brandName=%s, context=%s", new Object[] { paramb.crd.cqQ, paramb.crd.context });
-    LinkedList localLinkedList = ad.bpY().LK(paramb.crd.cqQ);
-    JSONArray localJSONArray = new JSONArray();
-    label222:
     for (;;)
     {
-      try
-      {
-        Iterator localIterator = localLinkedList.iterator();
-        JSONObject localJSONObject;
-        if (localIterator.hasNext())
-        {
-          com.tencent.mm.plugin.exdevice.h.b localb = (com.tencent.mm.plugin.exdevice.h.b)localIterator.next();
-          if (localLinkedList.isEmpty()) {
-            continue;
-          }
-          localJSONObject = new JSONObject();
-          localJSONObject.put("deviceId", localb.field_deviceID);
-          if (!u.bqz().jj(localb.field_mac)) {
-            break label222;
-          }
-          localJSONObject.put("state", "connected");
-          localJSONArray.put(localJSONObject);
-        }
-        localJSONObject.put("state", "disconnected");
-      }
-      catch (Exception localException)
-      {
-        ab.e("MicroMsg.exdevice.ExdeviceEventManager", "Ex in handleGetDeviceInfosEvent, %s", new Object[] { localException.getMessage() });
-        paramb.cre.crf = localJSONArray;
-        paramb.cre.cqS = true;
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "GetDeviceInfos: %s", new Object[] { localJSONArray.toString() });
-        AppMethodBeat.o(19220);
-        return true;
+      paramb = Util.nullAsNil(str);
+      AppMethodBeat.o(274606);
+      return paramb;
+      if (!Util.isNullOrNil(paramb.kDd)) {
+        str = paramb.kDd;
+      } else if (paramb.field_mac != 0L) {
+        str = com.tencent.mm.plugin.exdevice.k.b.lO(paramb.field_mac);
+      } else if (!Util.isNullOrNil(paramb.field_deviceID)) {
+        str = paramb.field_deviceID;
       }
     }
   }
   
-  public static boolean c(String paramString1, String paramString2, byte[] paramArrayOfByte)
+  static boolean a(dao paramdao, long paramLong)
   {
-    AppMethodBeat.i(19236);
-    Object localObject;
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)) || (bo.ce(paramArrayOfByte)))
+    AppMethodBeat.i(274621);
+    int i = -1;
+    Object localObject5 = null;
+    Object localObject2 = "";
+    bh.bCz();
+    Object localObject4 = com.tencent.mm.model.c.bzD().sl(paramLong);
+    if ((localObject4 == null) || (((fi)localObject4).field_msgId == 0L))
     {
-      localObject = paramString1;
-      if (bo.isNullOrNil(paramString1)) {
-        localObject = "null";
+      localObject2 = "";
+      if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
+        break label1974;
       }
-      paramString1 = paramString2;
-      if (bo.isNullOrNil(paramString2)) {
-        paramString1 = "null";
+      localObject1 = new u((String)localObject2);
+      localObject4 = ((u)localObject1).getName();
+      i = (int)((u)localObject1).length();
+      if (((String)localObject4).lastIndexOf(".") == -1) {
+        break label1968;
       }
-      if (bo.ce(paramArrayOfByte)) {}
-      for (i = 0;; i = paramArrayOfByte.length)
+      localObject1 = ((String)localObject4).substring(((String)localObject4).lastIndexOf(".") + 1);
+      label113:
+      localObject5 = y.bub((String)localObject2);
+      Log.i("MicroMsg.exdevice.ExDeviceUtil", "fileSize %s , fileMd5 %s", new Object[] { Integer.valueOf(i), localObject5 });
+      localObject2 = localObject1;
+    }
+    for (Object localObject1 = localObject5;; localObject1 = localObject5)
+    {
+      bh.bCz();
+      Object localObject6 = com.tencent.mm.model.c.bzD().sl(paramLong);
+      if ((localObject6 == null) || (((fi)localObject6).field_msgId == 0L))
       {
-        ab.e("MicroMsg.exdevice.ExdeviceEventManager", "input error. mac = %s, brandName = %s, dataLen = %d", new Object[] { localObject, paramString1, Integer.valueOf(i) });
-        AppMethodBeat.o(19236);
+        Log.w("MicroMsg.exdevice.ExDeviceUtil", "msgInfo or msgInfo.getMsgId() = 0");
+        AppMethodBeat.o(274621);
         return false;
-      }
-    }
-    String str;
-    if (bo.isNullOrNil(paramString1))
-    {
-      localObject = "null";
-      if (!bo.isNullOrNil(paramString2)) {
-        break label226;
-      }
-      str = "null";
-      label131:
-      if (!bo.ce(paramArrayOfByte)) {
-        break label232;
-      }
-    }
-    label226:
-    label232:
-    for (int i = 0;; i = paramArrayOfByte.length)
-    {
-      ab.d("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTUploadDataToServer. mac = %s, brandName = %s, dataLen = %d", new Object[] { localObject, str, Integer.valueOf(i) });
-      long l = com.tencent.mm.plugin.exdevice.j.b.LX(paramString1);
-      localObject = ad.bpY().jv(l);
-      if (localObject != null) {
-        break label238;
-      }
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "device(mac=%s) not found in brand(brandName=%s)", new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(19236);
-      return false;
-      localObject = paramString1;
-      break;
-      str = paramString2;
-      break label131;
-    }
-    label238:
-    paramString1 = com.tencent.mm.plugin.d.a.b.a.a.as(paramArrayOfByte);
-    if (1L != paramString1.jOK)
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "not step profile type %d != %d", new Object[] { Long.valueOf(1L), Long.valueOf(paramString1.jOK) });
-      AppMethodBeat.o(19236);
-      return false;
-    }
-    paramString1 = (com.tencent.mm.plugin.d.a.b.a.f)paramString1;
-    paramString2 = Calendar.getInstance();
-    paramString2.set(11, 0);
-    paramString2.set(12, 0);
-    paramString2.set(13, 0);
-    i = (int)(paramString2.getTimeInMillis() / 1000L);
-    int j = (int)(System.currentTimeMillis() / 1000L);
-    ((com.tencent.mm.plugin.sport.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.sport.a.b.class)).b(((com.tencent.mm.plugin.exdevice.h.b)localObject).field_deviceID, ((com.tencent.mm.plugin.exdevice.h.b)localObject).field_deviceType, i, j, paramString1.jQu, "");
-    AppMethodBeat.o(19236);
-    return true;
-  }
-  
-  public static void cd(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(19239);
-    lv locallv = new lv();
-    locallv.cBR.op = 1;
-    locallv.cBR.czh = paramString;
-    locallv.cBR.aXG = paramInt;
-    com.tencent.mm.sdk.b.a.ymk.a(locallv, Looper.getMainLooper());
-    AppMethodBeat.o(19239);
-  }
-  
-  public static void d(String paramString1, String paramString2, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(19240);
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "notifyOnRecvDataFromDevice. deviceId=%s, brandName=%s", new Object[] { paramString1, paramString2 });
-    ec localec = new ec();
-    localec.crT.bYu = paramString1;
-    localec.crT.cqQ = paramString2;
-    localec.crT.data = paramArrayOfByte;
-    com.tencent.mm.sdk.b.a.ymk.a(localec, Looper.getMainLooper());
-    AppMethodBeat.o(19240);
-  }
-  
-  static boolean d(com.tencent.mm.sdk.b.b paramb)
-  {
-    AppMethodBeat.i(19221);
-    paramb = (ei)paramb;
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "handleSendDataToDeviceEvent: brandName=%s, deviceId=%s", new Object[] { paramb.csc.cqQ, paramb.csc.bYu });
-    if (bo.ce(paramb.csc.data))
-    {
-      paramb.csd.cqS = false;
-      AppMethodBeat.o(19221);
-      return false;
-    }
-    Object localObject = ad.bpY().LI(paramb.csc.bYu);
-    if (localObject == null)
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "hdInfo error");
-      paramb.csd.cqS = false;
-      AppMethodBeat.o(19221);
-      return false;
-    }
-    if (!u.bqz().jj(((com.tencent.mm.plugin.exdevice.h.b)localObject).field_mac))
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "haven't connect");
-      paramb.csd.cqS = false;
-      AppMethodBeat.o(19221);
-      return false;
-    }
-    if (!u.bqz().jp(((com.tencent.mm.plugin.exdevice.h.b)localObject).field_mac))
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "haven't authed");
-      paramb.csd.cqS = false;
-      AppMethodBeat.o(19221);
-      return false;
-    }
-    if (aa.bpV().lEQ) {
-      aa.bpV().uW(a((com.tencent.mm.plugin.exdevice.h.b)localObject));
-    }
-    localObject = new com.tencent.mm.plugin.exdevice.i.g(paramb.csc.data, 10001, ((com.tencent.mm.plugin.exdevice.h.b)localObject).field_mac);
-    u.bqA().a((ae)localObject);
-    paramb.csd.cqS = true;
-    AppMethodBeat.o(19221);
-    return true;
-  }
-  
-  static boolean j(String paramString, List<com.tencent.mm.plugin.exdevice.h.b> paramList)
-  {
-    AppMethodBeat.i(19218);
-    String str = Uri.parse(paramString).getHost();
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "is url...");
-    paramString = null;
-    Iterator localIterator = paramList.iterator();
-    boolean bool1 = false;
-    boolean bool3;
-    for (;;)
-    {
-      bool3 = bool1;
-      if (localIterator.hasNext())
-      {
-        Object localObject = (com.tencent.mm.plugin.exdevice.h.b)localIterator.next();
-        paramList = ((ch)localObject).dCP;
-        localObject = ((ch)localObject).dCQ;
-        if ((localObject == null) || (((String)localObject).length() <= 0) || (paramList == null) || (!paramList.contains("wxmsg_url"))) {
+        int j = ((cc)localObject4).getType();
+        localObject1 = ((fi)localObject4).field_content;
+        if (((cc)localObject4).fxR())
+        {
+          localObject4 = k.b.Hf((String)localObject1);
+          if ((localObject4 != null) && ((((k.b)localObject4).type == 6) || (((k.b)localObject4).type == 2)))
+          {
+            localObject1 = as.cWJ().bpI(((k.b)localObject4).hzM);
+            if (localObject1 != null) {
+              localObject1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath;
+            }
+          }
+        }
+        for (;;)
+        {
+          localObject2 = localObject1;
+          break;
+          Log.e("MicroMsg.exdevice.ExDeviceUtil", "getFilePath attInfo is null");
+          localObject1 = localObject2;
           continue;
-        }
-        try
-        {
-          paramList = new JSONObject((String)localObject).getJSONArray("wxmsg_url");
-          paramString = paramList;
-          int j = paramString.length();
-          i = 0;
-          bool2 = bool1;
-          if (i >= j) {}
-        }
-        catch (JSONException paramList)
-        {
-          for (;;)
+          localObject1 = localObject2;
+          if (localObject4 != null)
           {
-            try
+            localObject1 = localObject2;
+            if (((k.b)localObject4).type != 3)
             {
-              boolean bool2 = paramString.getString(i).equals(str);
-              if (!bool2) {
-                continue;
-              }
-              bool2 = true;
-              bool3 = bool2;
-              if (bool2) {
-                break label213;
-              }
-              bool1 = bool2;
-            }
-            catch (JSONException paramList)
-            {
-              int i;
-              ab.printErrStackTrace("MicroMsg.exdevice.ExdeviceEventManager", paramList, "", new Object[0]);
-              i += 1;
-            }
-            paramList = paramList;
-            ab.printErrStackTrace("MicroMsg.exdevice.ExdeviceEventManager", paramList, "", new Object[0]);
-          }
-        }
-      }
-    }
-    label213:
-    AppMethodBeat.o(19218);
-    return bool3;
-  }
-  
-  static boolean k(String paramString, List<com.tencent.mm.plugin.exdevice.h.b> paramList)
-  {
-    AppMethodBeat.i(19219);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(19219);
-      return false;
-    }
-    Object localObject = new ie();
-    ((ie)localObject).cxt.crk = paramString;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    localObject = ((ie)localObject).cxu.cxv;
-    int i = ((TimeLineObject)localObject).xTS.wNZ;
-    boolean bool;
-    if (i == 1)
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "is photo...");
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localObject = ((com.tencent.mm.plugin.exdevice.h.b)paramList.next()).dCP;
-        if ((localObject != null) && (((String)localObject).contains("wxmsg_image"))) {
-          bool = true;
-        }
-      }
-    }
-    for (;;)
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "isSupportsSnsInfo = " + bool + ", snsLocalId = " + paramString);
-      AppMethodBeat.o(19219);
-      return bool;
-      bool = false;
-      continue;
-      if (i == 4)
-      {
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "is music...");
-        paramList = paramList.iterator();
-        for (;;)
-        {
-          if (paramList.hasNext())
-          {
-            localObject = ((com.tencent.mm.plugin.exdevice.h.b)paramList.next()).dCP;
-            if ((localObject != null) && (((String)localObject).contains("wxmsg_music")))
-            {
-              bool = true;
-              break;
-            }
-          }
-        }
-        bool = false;
-      }
-      else if (i == 15)
-      {
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "is sight...");
-        paramList = paramList.iterator();
-        for (;;)
-        {
-          if (paramList.hasNext())
-          {
-            localObject = ((com.tencent.mm.plugin.exdevice.h.b)paramList.next()).dCP;
-            if ((localObject != null) && (((String)localObject).contains("wxmsg_video")))
-            {
-              bool = true;
-              break;
-            }
-          }
-        }
-        bool = false;
-      }
-      else if (i == 3)
-      {
-        bool = j(((TimeLineObject)localObject).xTS.Url, paramList);
-      }
-      else
-      {
-        bool = false;
-      }
-    }
-  }
-  
-  public final boolean Lt(String paramString)
-  {
-    AppMethodBeat.i(19234);
-    ab.d("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTConnectDevice");
-    if (!bpL())
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "isBTOpenAndBLESupported return false");
-      AppMethodBeat.o(19234);
-      return false;
-    }
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "mac is null or nil");
-      AppMethodBeat.o(19234);
-      return false;
-    }
-    ad.bqk().a(com.tencent.mm.plugin.exdevice.j.b.LX(paramString), new e.40(this));
-    AppMethodBeat.o(19234);
-    return true;
-  }
-  
-  public final boolean a(b paramb)
-  {
-    AppMethodBeat.i(19242);
-    if (this.lDo.contains(paramb))
-    {
-      AppMethodBeat.o(19242);
-      return false;
-    }
-    boolean bool = this.lDo.add(paramb);
-    AppMethodBeat.o(19242);
-    return bool;
-  }
-  
-  final boolean at(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(19230);
-    ab.v("MicroMsg.exdevice.ExdeviceEventManager", "handleInChattingUI.");
-    Object localObject1 = com.tencent.mm.aj.f.rS(paramString);
-    if (localObject1 == null)
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "bizInfo is null");
-      AppMethodBeat.o(19230);
-      return false;
-    }
-    localObject1 = ((com.tencent.mm.aj.d)localObject1).cU(false);
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = ((d.b)localObject1).aeA();
-      if ((localObject2 != null) && (((d.b.b)localObject2).aeJ())) {}
-    }
-    else
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "this is not hardware biz");
-      AppMethodBeat.o(19230);
-      return false;
-    }
-    localObject1 = ad.bpY().LK(paramString);
-    Object localObject3;
-    if (((d.b.b)localObject2).fvJ == 1)
-    {
-      localObject2 = ad.bpY().bqE();
-      if (((List)localObject2).size() != 0)
-      {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (com.tencent.mm.plugin.exdevice.h.b)((Iterator)localObject2).next();
-          ab.i("MicroMsg.exdevice.ExdeviceEventManager", "BLE hard device info, mac(%s), deviceId(%s), deviceType(%s), SimpleProtol(%d)", new Object[] { Long.valueOf(((com.tencent.mm.plugin.exdevice.h.b)localObject3).field_mac), ((com.tencent.mm.plugin.exdevice.h.b)localObject3).field_deviceID, ((com.tencent.mm.plugin.exdevice.h.b)localObject3).field_deviceType, Long.valueOf(((ch)localObject3).dCO) });
-          if (0L != (((ch)localObject3).dCO & 1L)) {
-            ((List)localObject1).add(localObject3);
-          }
-        }
-      }
-    }
-    if (localObject1 == null)
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "handleInChattingUI, hdInfo is null.");
-      AppMethodBeat.o(19230);
-      return false;
-    }
-    if (((List)localObject1).size() == 0)
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "handleInChattingUI, hdInfo size is 0.");
-      AppMethodBeat.o(19230);
-      return true;
-    }
-    int j = 0;
-    localObject1 = ((List)localObject1).iterator();
-    int i = 0;
-    int k;
-    int m;
-    for (;;)
-    {
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (com.tencent.mm.plugin.exdevice.h.b)((Iterator)localObject1).next();
-        if (localObject2 == null)
-        {
-          ab.e("MicroMsg.exdevice.ExdeviceEventManager", "hdInfo error");
-        }
-        else if (bo.nullAsNil(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_connProto).contains("4"))
-        {
-          ab.i("MicroMsg.exdevice.ExdeviceEventManager", "%s, Wifi biz, continue.", new Object[] { ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName });
-        }
-        else if ((((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_connStrategy & 0x10) != 0)
-        {
-          ab.i("MicroMsg.exdevice.ExdeviceEventManager", "%s, Connect stragegy(%d) ignore connection on chat, continue!!!", new Object[] { ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName, Integer.valueOf(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_connStrategy) });
-        }
-        else if (bo.nullAsNil(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_connProto).contains("1"))
-        {
-          k = j + 1;
-          if (!com.tencent.mm.plugin.d.a.e.a.aWc())
-          {
-            ab.e("MicroMsg.exdevice.ExdeviceEventManager", "%s, device is BC, but you phone not support BC.", new Object[] { ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName });
-            j = k;
-            continue;
-          }
-          m = 1;
-          j = i;
-          i = k;
-          k = m;
-        }
-      }
-    }
-    for (;;)
-    {
-      label495:
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "receive ExDeviceOpInChattingUIEventListener, op(%d), brandName(%s), connProto(%s),", new Object[] { Integer.valueOf(paramInt), ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_connProto });
-      if (paramInt == 0)
-      {
-        localObject3 = ad.bqf();
-        long l = ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac;
-        ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "StopSyncTimer, device Id = %d", new Object[] { Long.valueOf(l) });
-        if (((d)localObject3).lCY.containsKey(Long.valueOf(l)))
-        {
-          ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "Switch from main view to chatting view before exdevice sync timeout, just stop MTimerHandler");
-          localObject3 = (ap)((d)localObject3).lCY.remove(Long.valueOf(l));
-          if (localObject3 == null) {
-            break label780;
-          }
-          ((ap)localObject3).stopTimer();
-        }
-        for (;;)
-        {
-          if (u.bqz().jj(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac))
-          {
-            ab.i("MicroMsg.exdevice.ExdeviceEventManager", "Enter chatting ui, find this deivce has been connected aready, device name = %s, device id = %d", new Object[] { ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName, Long.valueOf(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac) });
-            if (u.bqz().jp(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac))
-            {
-              ab.i("MicroMsg.exdevice.ExdeviceEventManager", "This device is auth aready");
-              c(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_url, 2, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_deviceID);
-              k = i;
-              i = j;
-              j = k;
-              break;
-              if (!bo.nullAsNil(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_connProto).contains("3")) {
-                break label1357;
-              }
-              i += 1;
-              if (!com.tencent.mm.plugin.d.a.e.a.dA(ah.getContext()))
+              localObject1 = localObject2;
+              if (((k.b)localObject4).type == 5)
               {
-                ab.e("MicroMsg.exdevice.ExdeviceEventManager", "device is BLE, but you phone not support BLE.");
-                break;
+                localObject1 = localObject2;
+                continue;
+                if (j == 3)
+                {
+                  localObject4 = r.bKa().af((cc)localObject4);
+                  localObject1 = localObject2;
+                  if (localObject4 != null)
+                  {
+                    localObject2 = r.bKa().NY(((com.tencent.mm.modelimage.h)localObject4).oGr);
+                    localObject1 = localObject2;
+                    if (Util.isNullOrNil((String)localObject2)) {
+                      localObject1 = r.bKa().NY(((com.tencent.mm.modelimage.h)localObject4).oGt);
+                    }
+                  }
+                }
+                else if (j != 62)
+                {
+                  localObject1 = localObject2;
+                  if (j != 43) {}
+                }
+                else
+                {
+                  v.bOh();
+                  localObject1 = aa.PX(((fi)localObject4).field_imgPath);
+                }
               }
-              k = 0;
-              m = j;
-              j = i;
-              i = m;
-              break label495;
-              label780:
-              ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "Remove deviceId(%d) from syncTimeOutMap failed!!!", new Object[] { Long.valueOf(l) });
-              continue;
             }
-            ab.i("MicroMsg.exdevice.ExdeviceEventManager", "This device has been connected but not auth yet.");
-            k = i;
-            i = j;
-            j = k;
+          }
+        }
+      }
+      if (((cc)localObject6).fxR())
+      {
+        localObject4 = k.b.Hf(((fi)localObject6).field_content);
+        if (localObject4 == null)
+        {
+          Log.e("MicroMsg.exdevice.ExDeviceUtil", "get content is null");
+          AppMethodBeat.o(274621);
+          return false;
+        }
+        if ((((k.b)localObject4).type == 3) || (((k.b)localObject4).type == 76))
+        {
+          localObject1 = new dar();
+          ((dar)localObject1).hAP = ((k.b)localObject4).title;
+          ((dar)localObject1).aaGk = ((k.b)localObject4).description;
+          ((dar)localObject1).Url = ((k.b)localObject4).url;
+          ((dar)localObject1).aaGl = ((k.b)localObject4).nRc;
+          ((dar)localObject1).ZjC = ((k.b)localObject4).nRx;
+          ((dar)localObject1).aaGm = ((k.b)localObject4).nRy;
+          ((dar)localObject1).IKJ = ((k.b)localObject4).appName;
+          if (Util.isNullOrNil(((dar)localObject1).IKJ))
+          {
+            localObject2 = com.tencent.mm.pluginsdk.model.app.h.is(((k.b)localObject4).appId, ((k.b)localObject4).appVersion);
+            if (localObject2 != null) {
+              ((dar)localObject1).IKJ = ((g)localObject2).field_appName;
+            }
+          }
+          ((dar)localObject1).aaGn = ((k.b)localObject4).nRr;
+          ((dar)localObject1).aaGo = ((k.b)localObject4).nRs;
+          ((dar)localObject1).aaGp = ((k.b)localObject4).nRv;
+          paramdao.aaGb = ((dar)localObject1);
+          paramdao.aaGa = 1;
+          AppMethodBeat.o(274621);
+          return true;
+        }
+        if (((k.b)localObject4).type == 6)
+        {
+          localObject5 = new dan();
+          ((dan)localObject5).IGU = ((k.b)localObject4).title;
+          ((dan)localObject5).crp = ((k.b)localObject4).nRe;
+          if (Util.isNullOrNil(((dan)localObject5).crp)) {
+            ((dan)localObject5).crp = ((String)localObject2);
+          }
+          localObject2 = ah.lw(paramLong);
+          if (localObject2 != null)
+          {
+            Log.i("MicroMsg.exdevice.ExDeviceUtil", "gen from record");
+            ((dan)localObject5).YKw = ((com.tencent.mm.plugin.exdevice.i.d)localObject2).field_fileid;
+            ((dan)localObject5).ZaN = ((com.tencent.mm.plugin.exdevice.i.d)localObject2).field_aeskey;
+            ((dan)localObject5).Md5 = ((com.tencent.mm.plugin.exdevice.i.d)localObject2).field_md5;
+            ((dan)localObject5).vhE = ((com.tencent.mm.plugin.exdevice.i.d)localObject2).field_size;
+            if (((dan)localObject5).vhE == 0) {
+              ((dan)localObject5).vhE = i;
+            }
+            if (Util.isNullOrNil(((dan)localObject5).Md5)) {
+              ((dan)localObject5).Md5 = ((String)localObject1);
+            }
+            if ((((k.b)localObject4).nRh == 0) && (((k.b)localObject4).nRd <= 26214400)) {
+              break label975;
+            }
+          }
+          label975:
+          for (i = a.lwb;; i = a.MediaType_FILE)
+          {
+            ((dan)localObject5).aaFZ = i;
+            Log.i("MicroMsg.exdevice.ExDeviceUtil", "fileMsg fileId %s aesKey %s cdn %d md5 %s fileSize %d name %s type %s", new Object[] { ((dan)localObject5).YKw, ((dan)localObject5).ZaN, Integer.valueOf(((dan)localObject5).aaFZ), ((dan)localObject5).Md5, Integer.valueOf(((dan)localObject5).vhE), ((dan)localObject5).IGU, ((dan)localObject5).crp });
+            paramdao.aaGe = ((dan)localObject5);
+            paramdao.aaGa = 4;
+            AppMethodBeat.o(274621);
+            return true;
+            ((dan)localObject5).YKw = ((k.b)localObject4).nRq;
+            ((dan)localObject5).ZaN = ((k.b)localObject4).aesKey;
+            ((dan)localObject5).Md5 = ((k.b)localObject4).filemd5;
+            ((dan)localObject5).vhE = ((k.b)localObject4).nRd;
             break;
           }
         }
-        if (!com.tencent.mm.plugin.exdevice.service.d.dN(ah.getContext()))
+        if (((k.b)localObject4).type == 5)
         {
-          ab.e("MicroMsg.exdevice.ExdeviceEventManager", "service not running");
-          k = i;
-          i = j;
-          j = k;
-          break;
-        }
-        if (f.b((com.tencent.mm.plugin.exdevice.h.b)localObject2))
-        {
-          ab.i("MicroMsg.exdevice.ExdeviceEventManager", "Connect simple device, mac(%s), brandName(%s)", new Object[] { com.tencent.mm.plugin.exdevice.j.b.jw(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName });
-          a(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName + ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac, new e.a(this, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName, com.tencent.mm.plugin.exdevice.j.b.jw(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_url, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_deviceID));
-          Lt(com.tencent.mm.plugin.exdevice.j.b.jw(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac));
-          k = i;
-          i = j;
-          j = k;
-          break;
-        }
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "Connect AirSync device, mac(%s), brandName(%s)", new Object[] { com.tencent.mm.plugin.exdevice.j.b.jw(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName });
-        ad.bqf().uU(1);
-        ad.bqf().a(Long.valueOf(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_connStrategy);
-        ad.bqf().c(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac, k);
-        k = i;
-        i = j;
-        j = k;
-        break;
-      }
-      if (paramInt == 1)
-      {
-        if (f.b((com.tencent.mm.plugin.exdevice.h.b)localObject2))
-        {
-          a(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName + ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac, new e.a(this, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName, com.tencent.mm.plugin.exdevice.j.b.jw(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_url, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_deviceID));
-          Lt(com.tencent.mm.plugin.exdevice.j.b.jw(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac));
-          k = i;
-          i = j;
-          j = k;
-          break;
-        }
-        ad.bqf().a(Long.valueOf(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_connStrategy);
-        ad.bqf().c(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac, k);
-        k = i;
-        i = j;
-        j = k;
-        break;
-      }
-      if (paramInt == 2)
-      {
-        if (f.b((com.tencent.mm.plugin.exdevice.h.b)localObject2))
-        {
-          Ls(com.tencent.mm.plugin.exdevice.j.b.jw(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac));
-          k = i;
-          i = j;
-          j = k;
-          break;
-        }
-        ad.bqf();
-        d.iZ(((com.tencent.mm.plugin.exdevice.h.b)localObject2).field_mac);
-      }
-      k = i;
-      i = j;
-      j = k;
-      break;
-      if (j + i > 0) {
-        if (!com.tencent.mm.plugin.d.a.e.a.aWe())
-        {
-          ab.w("MicroMsg.exdevice.ExdeviceEventManager", "System bluetooth is close");
-          cd(paramString, 0);
-        }
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(19230);
-        return true;
-        if ((i > 0) && (j == 0) && (!com.tencent.mm.plugin.d.a.e.a.dA(ah.getContext())))
-        {
-          cd(paramString, 1);
-          continue;
-          cd(paramString, -1);
-        }
-      }
-      label1357:
-      k = -1;
-      m = j;
-      j = i;
-      i = m;
-    }
-  }
-  
-  public final boolean b(b paramb)
-  {
-    AppMethodBeat.i(19243);
-    if (this.lDo.remove(paramb))
-    {
-      AppMethodBeat.o(19243);
-      return true;
-    }
-    AppMethodBeat.o(19243);
-    return false;
-  }
-  
-  final boolean b(com.tencent.mm.sdk.b.b paramb)
-  {
-    AppMethodBeat.i(19217);
-    paramb = (do)paramb;
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "ExDeviceGetLanDeviceInfosEvent: brandName=%s, context=%s", new Object[] { paramb.crg.cqQ, paramb.crg.context });
-    if (!Lr(paramb.crg.cqQ))
-    {
-      paramb.crh.crf = null;
-      paramb.crh.cqS = false;
-      AppMethodBeat.o(19217);
-      return true;
-    }
-    LinkedList localLinkedList = ad.bpY().LK(paramb.crg.cqQ);
-    JSONArray localJSONArray = new JSONArray();
-    label280:
-    for (;;)
-    {
-      try
-      {
-        Iterator localIterator = localLinkedList.iterator();
-        JSONObject localJSONObject;
-        if (localIterator.hasNext())
-        {
-          com.tencent.mm.plugin.exdevice.h.b localb = (com.tencent.mm.plugin.exdevice.h.b)localIterator.next();
-          if ((localLinkedList.isEmpty()) || (!bo.nullAsNil(localb.field_connProto).contains("4"))) {
-            continue;
-          }
-          localJSONObject = new JSONObject();
-          localJSONObject.put("deviceId", localb.field_deviceID);
-          if (!this.lEd.Lv(localb.field_deviceID)) {
-            break label280;
-          }
-          localJSONObject.put("state", "connected");
-          localJSONArray.put(localJSONObject);
-        }
-        localJSONObject.put("state", "disconnected");
-      }
-      catch (Exception localException)
-      {
-        ab.e("MicroMsg.exdevice.ExdeviceEventManager", "Ex in handleGetDeviceInfosEvent, %s", new Object[] { localException.getMessage() });
-        paramb.crh.crf = localJSONArray;
-        paramb.crh.cqS = true;
-        ab.i("MicroMsg.exdevice.ExdeviceEventManager", "GetDeviceInfos: %s", new Object[] { localJSONArray.toString() });
-        AppMethodBeat.o(19217);
-        return true;
-      }
-    }
-  }
-  
-  final boolean e(final com.tencent.mm.sdk.b.b paramb)
-  {
-    AppMethodBeat.i(19223);
-    paramb = (dq)paramb;
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "handleGetTicketEvent: brandName=%s, deviceId=%s, type=%d", new Object[] { paramb.cro.cqQ, paramb.cro.bYu, Integer.valueOf(paramb.cro.type) });
-    Object localObject2 = new alc();
-    ((alc)localObject2).xbZ = paramb.cro.type;
-    ((alc)localObject2).xca = 0;
-    ((alc)localObject2).wva = new auh();
-    ((alc)localObject2).wva.jJD = paramb.cro.bYu;
-    ((alc)localObject2).wva.wsq = paramb.cro.cqQ;
-    Object localObject1 = new LinkedList();
-    ((LinkedList)localObject1).add(localObject2);
-    localObject2 = new com.tencent.mm.ai.f()
-    {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ai.m paramAnonymousm)
-      {
-        AppMethodBeat.i(19195);
-        if ((paramAnonymousm != null) && (paramAnonymousm.getType() == 543))
-        {
-          aw.Rc().b(543, this);
-          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          localObject1 = new das();
+          ((das)localObject1).Url = ((k.b)localObject4).url;
+          ((das)localObject1).hAP = ((k.b)localObject4).title;
+          ((das)localObject1).aaGk = ((k.b)localObject4).description;
+          ((das)localObject1).IKJ = ((k.b)localObject4).appName;
+          if (Util.isNullOrNil(((das)localObject1).IKJ))
           {
-            ab.e("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-            paramb.crp.crr = true;
-            paramb.crp.crs = null;
-            if (paramb.callback != null) {
-              paramb.callback.run();
+            localObject2 = com.tencent.mm.pluginsdk.model.app.h.is(((k.b)localObject4).appId, ((k.b)localObject4).appVersion);
+            if (localObject2 != null) {
+              ((das)localObject1).IKJ = ((g)localObject2).field_appName;
             }
-            AppMethodBeat.o(19195);
-            return;
           }
-          ab.i("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-          paramAnonymousString = (z)paramAnonymousm;
-          if ((paramAnonymousString.lFp == null) || (paramAnonymousString.lFp.fsW.fta == null)) {}
-          alf localalf;
-          for (paramAnonymousString = null;; paramAnonymousString = (ale)paramAnonymousString.lFp.fsW.fta)
+          paramdao.aaGf = ((das)localObject1);
+          paramdao.aaGa = 5;
+          AppMethodBeat.o(274621);
+          return true;
+        }
+      }
+      else
+      {
+        if (((cc)localObject6).getType() == 3)
+        {
+          localObject5 = new dap();
+          localObject6 = r.bKa().G(((fi)localObject6).field_talker, ((fi)localObject6).field_msgSvrId);
+          ((dap)localObject5).IGU = ((String)localObject4);
+          ((dap)localObject5).crp = ((String)localObject2);
+          if (Util.isNullOrNil(((dap)localObject5).crp)) {
+            ((dap)localObject5).crp = ".jpg";
+          }
+          localObject2 = ah.lw(paramLong);
+          if (localObject2 != null)
           {
-            Iterator localIterator = paramAnonymousString.xcd.iterator();
-            paramAnonymousInt1 = 0;
+            Log.i("MicroMsg.exdevice.ExDeviceUtil", "gen from record");
+            ((dap)localObject5).YKw = ((com.tencent.mm.plugin.exdevice.i.d)localObject2).field_fileid;
+            ((dap)localObject5).ZaN = ((com.tencent.mm.plugin.exdevice.i.d)localObject2).field_aeskey;
+            ((dap)localObject5).Md5 = ((com.tencent.mm.plugin.exdevice.i.d)localObject2).field_md5;
+            ((dap)localObject5).vhE = ((com.tencent.mm.plugin.exdevice.i.d)localObject2).field_size;
+            if (((dap)localObject5).Md5 == null) {
+              ((dap)localObject5).Md5 = ((String)localObject1);
+            }
+            i = ((com.tencent.mm.modelimage.h)localObject6).oGu;
+            ((dap)localObject5).aaFZ = 3;
+            if (i == 1) {
+              break label1474;
+            }
+          }
+          label1474:
+          for (((dap)localObject5).aaFZ = 2;; ((dap)localObject5).aaFZ = 1)
+          {
             for (;;)
             {
-              if (!localIterator.hasNext()) {
-                break label413;
+              paramdao.aaGd = ((dap)localObject5);
+              paramdao.aaGa = 3;
+              Log.i("MicroMsg.exdevice.ExDeviceUtil", "imageMsg fileId %s aesKey %s cdn %d md5 %s size %d type %s", new Object[] { ((dap)localObject5).YKw, ((dap)localObject5).ZaN, Integer.valueOf(((dap)localObject5).aaFZ), ((dap)localObject5).Md5, Integer.valueOf(((dap)localObject5).vhE), ((dap)localObject5).crp });
+              AppMethodBeat.o(274621);
+              return true;
+              ((dap)localObject5).YKw = ((com.tencent.mm.modelimage.h)localObject6).getFileId();
+              ((dap)localObject5).ZaN = ((com.tencent.mm.modelimage.h)localObject6).getAesKey();
+              localObject2 = null;
+              localObject4 = XmlParser.parseXml(((com.tencent.mm.modelimage.h)localObject6).oGC, "msg", null);
+              if (localObject4 != null) {
+                localObject2 = (String)((Map)localObject4).get(".msg.img.$md5");
               }
-              localalf = (alf)localIterator.next();
-              if (localalf != null)
+              ((dap)localObject5).Md5 = ((String)localObject2);
+              ((dap)localObject5).vhE = i;
+              if (((dap)localObject5).vhE != 0) {
+                break;
+              }
+              localObject2 = (String)((Map)localObject4).get(".msg.img.$length");
+              if (localObject2 == null) {
+                break;
+              }
+              try
               {
-                paramAnonymousm = null;
-                paramAnonymousString = null;
-                if (localalf.wva != null)
-                {
-                  paramAnonymousm = localalf.wva.jJD;
-                  paramAnonymousString = localalf.wva.wsq;
-                }
-                if ((localalf.Ret == 0) && (!bo.isNullOrNil(localalf.wQf))) {
-                  break;
-                }
-                ab.e("MicroMsg.exdevice.ExdeviceEventManager", "deviceId(%s) get ticket fail. ret=%d, ticket=%s", new Object[] { paramAnonymousm, Integer.valueOf(localalf.Ret), localalf.wQf });
+                ((dap)localObject5).vhE = Integer.parseInt((String)localObject2);
+              }
+              catch (NumberFormatException localNumberFormatException)
+              {
+                Log.w("MicroMsg.exdevice.ExDeviceUtil", "wrong size");
               }
             }
+            break;
           }
-          ab.i("MicroMsg.exdevice.ExdeviceEventManager", "GetHardDeviceOperTicket end. deviceId=%s, deviceType=%s, ticket=%s, oper=%d", new Object[] { paramAnonymousm, paramAnonymousString, localalf.wQf, Integer.valueOf(localalf.xbZ) });
-          paramb.crp.crr = true;
-          paramb.crp.crs = localalf.wQf;
-          if (paramb.callback == null) {
-            break label519;
-          }
-          paramb.callback.run();
-          paramAnonymousInt1 = 1;
         }
-        label519:
-        for (;;)
+        if (((cc)localObject6).getType() == 48)
         {
-          break;
-          label413:
-          if (paramAnonymousInt1 == 0)
+          bh.bCz();
+          localObject1 = com.tencent.mm.model.c.bzD().aLV(((fi)localObject6).field_content);
+          localObject3 = new daq();
+          ((daq)localObject3).X = ((float)((cc.c)localObject1).KbW);
+          ((daq)localObject3).Y = ((float)((cc.c)localObject1).KbX);
+          ((daq)localObject3).aaGi = ((cc.c)localObject1).hQp;
+          ((daq)localObject3).ILD = ((cc.c)localObject1).label;
+          ((daq)localObject3).aaGj = ((cc.c)localObject1).poiName;
+          paramdao.aaGc = ((daq)localObject3);
+          paramdao.aaGa = 2;
+          AppMethodBeat.o(274621);
+          return true;
+        }
+        if (((cc)localObject6).getType() == 43)
+        {
+          localObject5 = new dat();
+          localObject6 = v.bOh().PR(((fi)localObject6).field_imgPath);
+          Object localObject7 = XmlParser.parseXml(((z)localObject6).bOu(), "msg", null);
+          if (localObject7 == null)
           {
-            paramb.crp.crr = true;
-            paramb.crp.crs = null;
-            if (paramb.callback != null) {
-              paramb.callback.run();
+            Log.w("MicroMsg.exdevice.ExDeviceUtil", "cdntra parse video recv xml failed");
+            AppMethodBeat.o(274621);
+            return false;
+          }
+          String str1 = (String)((Map)localObject7).get(".msg.videomsg.$md5");
+          String str2 = (String)((Map)localObject7).get(".msg.videomsg.$cdnvideourl");
+          localObject7 = (String)((Map)localObject7).get(".msg.videomsg.$aeskey");
+          ((dat)localObject5).IGU = ((String)localObject4);
+          if (Util.isNullOrNil(((dat)localObject5).IGU)) {
+            ((dat)localObject5).IGU = ((z)localObject6).getFileName();
+          }
+          ((dat)localObject5).crp = ((String)localObject3);
+          localObject3 = ah.lw(paramLong);
+          if (localObject3 != null)
+          {
+            Log.i("MicroMsg.exdevice.ExDeviceUtil", "gen from record");
+            ((dat)localObject5).fileid = ((com.tencent.mm.plugin.exdevice.i.d)localObject3).field_fileid;
+            ((dat)localObject5).aeskey = ((com.tencent.mm.plugin.exdevice.i.d)localObject3).field_aeskey;
+            ((dat)localObject5).Md5 = ((com.tencent.mm.plugin.exdevice.i.d)localObject3).field_md5;
+          }
+          for (((dat)localObject5).vhE = ((com.tencent.mm.plugin.exdevice.i.d)localObject3).field_size;; ((dat)localObject5).vhE = ((z)localObject6).osy)
+          {
+            if (Util.isNullOrNil(((dat)localObject5).Md5)) {
+              ((dat)localObject5).Md5 = ((String)localObject1);
             }
-          }
-          AppMethodBeat.o(19195);
-          return;
-          paramb.crp.crr = true;
-          paramb.crp.crs = null;
-          if (paramb.callback != null) {
-            paramb.callback.run();
-          }
-          AppMethodBeat.o(19195);
-          return;
-        }
-      }
-    };
-    localObject1 = new z((LinkedList)localObject1, paramb.cro.cqQ, paramb.cro.crq);
-    aw.Rc().a(543, (com.tencent.mm.ai.f)localObject2);
-    if (!aw.Rc().a((com.tencent.mm.ai.m)localObject1, 0))
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "MMCore.getNetSceneQueue().doScene failed!!!");
-      aw.Rc().b(543, (com.tencent.mm.ai.f)localObject2);
-      paramb.crp.crr = true;
-      paramb.crp.crs = null;
-      if (paramb.callback != null) {
-        paramb.callback.run();
-      }
-      AppMethodBeat.o(19223);
-      return true;
-    }
-    AppMethodBeat.o(19223);
-    return false;
-  }
-  
-  final boolean f(com.tencent.mm.sdk.b.b paramb)
-  {
-    AppMethodBeat.i(19224);
-    paramb = (eg)paramb;
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "handleScanDeviceEvent: brandName=%s, op=%s, btVersion=%s", new Object[] { paramb.crX.cqQ, Boolean.valueOf(paramb.crX.cqR), Integer.valueOf(paramb.crX.crZ) });
-    int j = paramb.crX.crZ;
-    int i = j;
-    if (j != 0)
-    {
-      i = j;
-      if (j != 1)
-      {
-        if (!com.tencent.mm.plugin.d.a.e.a.dA(ah.getContext())) {
-          break label197;
-        }
-        ab.w("MicroMsg.exdevice.ExdeviceEventManager", "invalid btVersion %s, use defalut BLE", new Object[] { Integer.valueOf(j) });
-        i = 0;
-      }
-    }
-    aa localaa;
-    Object localObject2;
-    if (paramb.crX.cqR)
-    {
-      localaa = aa.bpV();
-      ??? = paramb.crX.cqQ;
-      localObject2 = new aa.a()
-      {
-        public final void a(String paramAnonymousString, byte[] paramAnonymousArrayOfByte, boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(19196);
-          ab.i("MicroMsg.exdevice.ExdeviceEventManager", "OnScanDevice %s", new Object[] { paramAnonymousString });
-          if (paramAnonymousArrayOfByte == null) {
-            ab.i("MicroMsg.exdevice.ExdeviceEventManager", "notifyOnScanDeviceResult. deviceId=%s, isCompleted=%s", new Object[] { paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
-          }
-          for (;;)
-          {
-            ed localed = new ed();
-            localed.crU.crM = paramAnonymousArrayOfByte;
-            localed.crU.bYu = paramAnonymousString;
-            localed.crU.aLC = paramAnonymousBoolean;
-            com.tencent.mm.sdk.b.a.ymk.a(localed, Looper.getMainLooper());
-            AppMethodBeat.o(19196);
-            return;
-            ab.i("MicroMsg.exdevice.ExdeviceEventManager", "notifyOnScanDeviceResult. deviceId=%s, base64(broadcastData)=%s, isCompleted=%s", new Object[] { paramAnonymousString, Base64.encodeToString(paramAnonymousArrayOfByte, 0), Boolean.valueOf(paramAnonymousBoolean) });
+            ((dat)localObject5).aaFZ = a.MediaType_VIDEO;
+            paramdao.aaGg = ((dat)localObject5);
+            paramdao.aaGa = 6;
+            Log.i("MicroMsg.exdevice.ExDeviceUtil", "videoMsg url %s aesKey %s cdn %d Type %s Size %d Md5 %s Name %s type %s", new Object[] { ((dat)localObject5).fileid, ((dat)localObject5).aeskey, Integer.valueOf(((dat)localObject5).aaFZ), ((dat)localObject5).crp, Integer.valueOf(((dat)localObject5).vhE), ((dat)localObject5).Md5, ((dat)localObject5).IGU, ((dat)localObject5).crp });
+            AppMethodBeat.o(274621);
+            return true;
+            ((dat)localObject5).fileid = str2;
+            ((dat)localObject5).aeskey = ((String)localObject7);
+            ((dat)localObject5).Md5 = str1;
           }
         }
-      };
-      ab.i("MicroMsg.exdevice.ScanDeviceLogic", "startScanDevice, brandName=%s", new Object[] { ??? });
-      if (bo.isNullOrNil((String)???)) {
-        ab.i("MicroMsg.exdevice.ScanDeviceLogic", "brand name is null");
       }
-    }
-    for (;;)
-    {
-      paramb.crY.cqS = true;
-      AppMethodBeat.o(19224);
-      return true;
-      label197:
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "invalid btVersion %s, return fail", new Object[] { Integer.valueOf(j) });
-      paramb.crY.cqS = false;
-      AppMethodBeat.o(19224);
+      AppMethodBeat.o(274621);
       return false;
-      localaa.lEk = ((String)???);
-      localaa.lFE = ((aa.a)localObject2);
-      localaa.lFF.clear();
-      ??? = localaa.lFG.iterator();
-      while (((Iterator)???).hasNext())
+      label1968:
+      localObject1 = null;
+      break label113;
+      label1974:
+      Object localObject3 = null;
+      localObject4 = null;
+    }
+  }
+  
+  static Boolean aM(cc paramcc)
+  {
+    AppMethodBeat.i(274593);
+    if ((paramcc == null) || (paramcc.field_msgId == 0L))
+    {
+      paramcc = Boolean.FALSE;
+      AppMethodBeat.o(274593);
+      return paramcc;
+    }
+    boolean bool2 = false;
+    String str = paramcc.field_content;
+    boolean bool1 = bool2;
+    if (paramcc.fxR())
+    {
+      paramcc = k.b.Hf(str);
+      bool1 = bool2;
+      if (paramcc != null)
       {
-        localObject2 = (com.tencent.mm.ai.m)((Iterator)???).next();
-        if (localObject2 != null) {
-          aw.Rc().a((com.tencent.mm.ai.m)localObject2);
+        bool1 = bool2;
+        if (paramcc.type == 6) {
+          bool1 = true;
         }
       }
-      localaa.lFG.clear();
-      synchronized (aa.ceY)
-      {
-        aa.lFH.clear();
-        if (!localaa.lEQ)
-        {
-          localaa.lEQ = true;
-          aw.Rc().a(542, localaa);
-          ad.bqf().a(i, localaa);
-          ab.i("MicroMsg.exdevice.ScanDeviceLogic", "should start scan, startTimer");
-          localaa.gIs.ag(12000L, 12000L);
-        }
-      }
-      ab.w("MicroMsg.exdevice.ScanDeviceLogic", "still scanning. just change brand name and callback");
-      continue;
-      aa.bpV().uW(i);
+    }
+    AppMethodBeat.o(274593);
+    return Boolean.valueOf(bool1);
+  }
+  
+  static Boolean aN(cc paramcc)
+  {
+    AppMethodBeat.i(274596);
+    if ((paramcc == null) || (paramcc.field_msgId == 0L))
+    {
+      paramcc = Boolean.FALSE;
+      AppMethodBeat.o(274596);
+      return paramcc;
+    }
+    boolean bool = false;
+    if (paramcc.getType() == 3) {
+      bool = true;
+    }
+    AppMethodBeat.o(274596);
+    return Boolean.valueOf(bool);
+  }
+  
+  static Boolean aO(cc paramcc)
+  {
+    AppMethodBeat.i(274598);
+    if ((paramcc == null) || (paramcc.field_msgId == 0L))
+    {
+      paramcc = Boolean.FALSE;
+      AppMethodBeat.o(274598);
+      return paramcc;
+    }
+    boolean bool = false;
+    if (paramcc.jbK()) {
+      bool = true;
+    }
+    AppMethodBeat.o(274598);
+    return Boolean.valueOf(bool);
+  }
+  
+  static Boolean aP(cc paramcc)
+  {
+    AppMethodBeat.i(274601);
+    if ((paramcc == null) || (paramcc.field_msgId == 0L))
+    {
+      paramcc = Boolean.FALSE;
+      AppMethodBeat.o(274601);
+      return paramcc;
+    }
+    boolean bool = false;
+    if (paramcc.getType() == 62) {
+      bool = true;
+    }
+    AppMethodBeat.o(274601);
+    return Boolean.valueOf(bool);
+  }
+  
+  static Boolean aQ(cc paramcc)
+  {
+    AppMethodBeat.i(274604);
+    if ((paramcc == null) || (paramcc.field_msgId == 0L))
+    {
+      paramcc = Boolean.FALSE;
+      AppMethodBeat.o(274604);
+      return paramcc;
+    }
+    boolean bool = false;
+    if (paramcc.getType() == 43) {
+      bool = true;
+    }
+    AppMethodBeat.o(274604);
+    return Boolean.valueOf(bool);
+  }
+  
+  /* Error */
+  static String ag(String paramString, long paramLong)
+  {
+    // Byte code:
+    //   0: ldc_w 607
+    //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ifnonnull +11 -> 18
+    //   10: ldc_w 607
+    //   13: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   16: aconst_null
+    //   17: areturn
+    //   18: aload_0
+    //   19: iconst_0
+    //   20: aload_0
+    //   21: ldc_w 609
+    //   24: invokevirtual 127	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   27: invokevirtual 612	java/lang/String:substring	(II)Ljava/lang/String;
+    //   30: astore_3
+    //   31: new 614	java/lang/StringBuilder
+    //   34: dup
+    //   35: ldc_w 616
+    //   38: invokespecial 617	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   41: aload_0
+    //   42: invokevirtual 620	java/lang/String:hashCode	()I
+    //   45: invokevirtual 624	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 627	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: astore 4
+    //   53: new 614	java/lang/StringBuilder
+    //   56: dup
+    //   57: invokespecial 628	java/lang/StringBuilder:<init>	()V
+    //   60: aload_3
+    //   61: invokevirtual 631	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: ldc_w 609
+    //   67: invokevirtual 631	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: aload 4
+    //   72: invokevirtual 631	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 627	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: astore 6
+    //   80: new 110	com/tencent/mm/vfs/u
+    //   83: dup
+    //   84: aload 6
+    //   86: invokespecial 114	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   89: astore_3
+    //   90: lload_1
+    //   91: lconst_0
+    //   92: lcmp
+    //   93: ifne +117 -> 210
+    //   96: new 633	com/tencent/mm/vfs/aa
+    //   99: dup
+    //   100: aload_3
+    //   101: invokespecial 636	com/tencent/mm/vfs/aa:<init>	(Lcom/tencent/mm/vfs/u;)V
+    //   104: astore_3
+    //   105: aload_0
+    //   106: invokestatic 640	com/tencent/mm/vfs/y:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   109: astore_0
+    //   110: aload_0
+    //   111: astore 5
+    //   113: aload_3
+    //   114: astore 4
+    //   116: sipush 1024
+    //   119: newarray byte
+    //   121: astore 7
+    //   123: aload_0
+    //   124: astore 5
+    //   126: aload_3
+    //   127: astore 4
+    //   129: aload_0
+    //   130: aload 7
+    //   132: invokevirtual 646	java/io/InputStream:read	([B)I
+    //   135: iconst_m1
+    //   136: if_icmpeq +96 -> 232
+    //   139: aload_0
+    //   140: astore 5
+    //   142: aload_3
+    //   143: astore 4
+    //   145: aload_3
+    //   146: aload 7
+    //   148: invokevirtual 652	java/io/OutputStream:write	([B)V
+    //   151: goto -28 -> 123
+    //   154: astore 6
+    //   156: aload_0
+    //   157: astore 5
+    //   159: aload_3
+    //   160: astore 4
+    //   162: ldc 138
+    //   164: ldc_w 654
+    //   167: iconst_1
+    //   168: anewarray 4	java/lang/Object
+    //   171: dup
+    //   172: iconst_0
+    //   173: aload 6
+    //   175: invokevirtual 657	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   178: aastore
+    //   179: invokestatic 659	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   182: aload_3
+    //   183: ifnull +11 -> 194
+    //   186: aload_3
+    //   187: invokevirtual 662	java/io/OutputStream:flush	()V
+    //   190: aload_3
+    //   191: invokevirtual 665	java/io/OutputStream:close	()V
+    //   194: aload_0
+    //   195: ifnull +7 -> 202
+    //   198: aload_0
+    //   199: invokevirtual 666	java/io/InputStream:close	()V
+    //   202: ldc_w 607
+    //   205: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   208: aconst_null
+    //   209: areturn
+    //   210: new 668	com/tencent/mm/modelsfs/b
+    //   213: dup
+    //   214: aload_3
+    //   215: lload_1
+    //   216: invokespecial 671	com/tencent/mm/modelsfs/b:<init>	(Lcom/tencent/mm/vfs/u;J)V
+    //   219: astore_3
+    //   220: goto -115 -> 105
+    //   223: astore 6
+    //   225: aconst_null
+    //   226: astore_0
+    //   227: aconst_null
+    //   228: astore_3
+    //   229: goto -73 -> 156
+    //   232: aload_3
+    //   233: invokevirtual 662	java/io/OutputStream:flush	()V
+    //   236: aload_3
+    //   237: invokevirtual 665	java/io/OutputStream:close	()V
+    //   240: aload_0
+    //   241: ifnull +7 -> 248
+    //   244: aload_0
+    //   245: invokevirtual 666	java/io/InputStream:close	()V
+    //   248: ldc_w 607
+    //   251: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   254: aload 6
+    //   256: areturn
+    //   257: astore_0
+    //   258: ldc 138
+    //   260: aload_0
+    //   261: ldc 42
+    //   263: iconst_0
+    //   264: anewarray 4	java/lang/Object
+    //   267: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   270: ldc_w 607
+    //   273: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   276: aconst_null
+    //   277: areturn
+    //   278: astore_0
+    //   279: ldc 138
+    //   281: aload_0
+    //   282: ldc 42
+    //   284: iconst_0
+    //   285: anewarray 4	java/lang/Object
+    //   288: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   291: ldc_w 607
+    //   294: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   297: aconst_null
+    //   298: areturn
+    //   299: astore_0
+    //   300: ldc 138
+    //   302: aload_0
+    //   303: ldc 42
+    //   305: iconst_0
+    //   306: anewarray 4	java/lang/Object
+    //   309: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   312: ldc_w 607
+    //   315: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   318: aconst_null
+    //   319: areturn
+    //   320: astore_0
+    //   321: ldc 138
+    //   323: aload_0
+    //   324: ldc 42
+    //   326: iconst_0
+    //   327: anewarray 4	java/lang/Object
+    //   330: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   333: ldc_w 607
+    //   336: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   339: aconst_null
+    //   340: areturn
+    //   341: astore_0
+    //   342: aconst_null
+    //   343: astore 5
+    //   345: aconst_null
+    //   346: astore_3
+    //   347: aload_3
+    //   348: ifnull +11 -> 359
+    //   351: aload_3
+    //   352: invokevirtual 662	java/io/OutputStream:flush	()V
+    //   355: aload_3
+    //   356: invokevirtual 665	java/io/OutputStream:close	()V
+    //   359: aload 5
+    //   361: ifnull +8 -> 369
+    //   364: aload 5
+    //   366: invokevirtual 666	java/io/InputStream:close	()V
+    //   369: ldc_w 607
+    //   372: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   375: aload_0
+    //   376: athrow
+    //   377: astore_0
+    //   378: ldc 138
+    //   380: aload_0
+    //   381: ldc 42
+    //   383: iconst_0
+    //   384: anewarray 4	java/lang/Object
+    //   387: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   390: ldc_w 607
+    //   393: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   396: aconst_null
+    //   397: areturn
+    //   398: astore_0
+    //   399: ldc 138
+    //   401: aload_0
+    //   402: ldc 42
+    //   404: iconst_0
+    //   405: anewarray 4	java/lang/Object
+    //   408: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   411: ldc_w 607
+    //   414: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   417: aconst_null
+    //   418: areturn
+    //   419: astore_0
+    //   420: aconst_null
+    //   421: astore 5
+    //   423: goto -76 -> 347
+    //   426: astore_0
+    //   427: aload 4
+    //   429: astore_3
+    //   430: goto -83 -> 347
+    //   433: astore 6
+    //   435: aconst_null
+    //   436: astore_0
+    //   437: goto -281 -> 156
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	440	0	paramString	String
+    //   0	440	1	paramLong	long
+    //   30	400	3	localObject1	Object
+    //   51	377	4	localObject2	Object
+    //   111	311	5	str1	String
+    //   78	7	6	str2	String
+    //   154	20	6	localIOException1	java.io.IOException
+    //   223	32	6	localIOException2	java.io.IOException
+    //   433	1	6	localIOException3	java.io.IOException
+    //   121	26	7	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   116	123	154	java/io/IOException
+    //   129	139	154	java/io/IOException
+    //   145	151	154	java/io/IOException
+    //   80	90	223	java/io/IOException
+    //   96	105	223	java/io/IOException
+    //   210	220	223	java/io/IOException
+    //   232	240	257	java/io/IOException
+    //   244	248	278	java/io/IOException
+    //   186	194	299	java/io/IOException
+    //   198	202	320	java/io/IOException
+    //   80	90	341	finally
+    //   96	105	341	finally
+    //   210	220	341	finally
+    //   351	359	377	java/io/IOException
+    //   364	369	398	java/io/IOException
+    //   105	110	419	finally
+    //   116	123	426	finally
+    //   129	139	426	finally
+    //   145	151	426	finally
+    //   162	182	426	finally
+    //   105	110	433	java/io/IOException
+  }
+  
+  /* Error */
+  static byte[] apr(String paramString)
+  {
+    // Byte code:
+    //   0: ldc_w 680
+    //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 138
+    //   8: ldc_w 682
+    //   11: iconst_1
+    //   12: anewarray 4	java/lang/Object
+    //   15: dup
+    //   16: iconst_0
+    //   17: aload_0
+    //   18: aastore
+    //   19: invokestatic 685	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   22: aload_0
+    //   23: aconst_null
+    //   24: invokestatic 690	com/tencent/mm/network/d:a	(Ljava/lang/String;Lcom/tencent/mm/network/d$b;)Lcom/tencent/mm/network/y;
+    //   27: astore_2
+    //   28: aload_2
+    //   29: ldc_w 692
+    //   32: invokevirtual 697	com/tencent/mm/network/y:Rx	(Ljava/lang/String;)V
+    //   35: aload_2
+    //   36: sipush 25000
+    //   39: invokevirtual 700	com/tencent/mm/network/y:xx	(I)V
+    //   42: aload_2
+    //   43: sipush 25000
+    //   46: invokevirtual 703	com/tencent/mm/network/y:xy	(I)V
+    //   49: aload_2
+    //   50: invokevirtual 707	com/tencent/mm/network/y:getInputStream	()Ljava/io/InputStream;
+    //   53: astore_3
+    //   54: aload_2
+    //   55: invokevirtual 710	com/tencent/mm/network/y:getResponseCode	()I
+    //   58: sipush 200
+    //   61: if_icmpne +243 -> 304
+    //   64: new 712	java/io/ByteArrayOutputStream
+    //   67: dup
+    //   68: invokespecial 713	java/io/ByteArrayOutputStream:<init>	()V
+    //   71: astore_0
+    //   72: aload_2
+    //   73: astore 7
+    //   75: aload_3
+    //   76: astore 6
+    //   78: aload_0
+    //   79: astore 5
+    //   81: sipush 1024
+    //   84: newarray byte
+    //   86: astore 4
+    //   88: aload_2
+    //   89: astore 7
+    //   91: aload_3
+    //   92: astore 6
+    //   94: aload_0
+    //   95: astore 5
+    //   97: aload_3
+    //   98: aload 4
+    //   100: invokevirtual 646	java/io/InputStream:read	([B)I
+    //   103: istore_1
+    //   104: iload_1
+    //   105: iconst_m1
+    //   106: if_icmpeq +79 -> 185
+    //   109: aload_2
+    //   110: astore 7
+    //   112: aload_3
+    //   113: astore 6
+    //   115: aload_0
+    //   116: astore 5
+    //   118: aload_0
+    //   119: aload 4
+    //   121: iconst_0
+    //   122: iload_1
+    //   123: invokevirtual 716	java/io/ByteArrayOutputStream:write	([BII)V
+    //   126: goto -38 -> 88
+    //   129: astore 4
+    //   131: aload_2
+    //   132: astore 7
+    //   134: aload_3
+    //   135: astore 6
+    //   137: aload_0
+    //   138: astore 5
+    //   140: ldc 138
+    //   142: aload 4
+    //   144: ldc 42
+    //   146: iconst_0
+    //   147: anewarray 4	java/lang/Object
+    //   150: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   153: aload_0
+    //   154: ifnull +7 -> 161
+    //   157: aload_0
+    //   158: invokevirtual 717	java/io/ByteArrayOutputStream:close	()V
+    //   161: aload_3
+    //   162: ifnull +7 -> 169
+    //   165: aload_3
+    //   166: invokevirtual 666	java/io/InputStream:close	()V
+    //   169: aload_2
+    //   170: ifnull +7 -> 177
+    //   173: aload_2
+    //   174: invokevirtual 720	com/tencent/mm/network/y:disconnect	()V
+    //   177: ldc_w 680
+    //   180: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   183: aconst_null
+    //   184: areturn
+    //   185: aload_2
+    //   186: astore 7
+    //   188: aload_3
+    //   189: astore 6
+    //   191: aload_0
+    //   192: astore 5
+    //   194: aload_0
+    //   195: invokevirtual 717	java/io/ByteArrayOutputStream:close	()V
+    //   198: aload_2
+    //   199: astore 7
+    //   201: aload_3
+    //   202: astore 6
+    //   204: aload_0
+    //   205: astore 5
+    //   207: aload_3
+    //   208: invokevirtual 666	java/io/InputStream:close	()V
+    //   211: aload_2
+    //   212: ifnull +16 -> 228
+    //   215: aload_2
+    //   216: astore 7
+    //   218: aload_3
+    //   219: astore 6
+    //   221: aload_0
+    //   222: astore 5
+    //   224: aload_2
+    //   225: invokevirtual 720	com/tencent/mm/network/y:disconnect	()V
+    //   228: aload_2
+    //   229: astore 7
+    //   231: aload_3
+    //   232: astore 6
+    //   234: aload_0
+    //   235: astore 5
+    //   237: aload_0
+    //   238: invokevirtual 724	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   241: astore 4
+    //   243: aload_0
+    //   244: invokevirtual 717	java/io/ByteArrayOutputStream:close	()V
+    //   247: aload_3
+    //   248: ifnull +7 -> 255
+    //   251: aload_3
+    //   252: invokevirtual 666	java/io/InputStream:close	()V
+    //   255: aload_2
+    //   256: ifnull +7 -> 263
+    //   259: aload_2
+    //   260: invokevirtual 720	com/tencent/mm/network/y:disconnect	()V
+    //   263: ldc_w 680
+    //   266: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   269: aload 4
+    //   271: areturn
+    //   272: astore_0
+    //   273: ldc 138
+    //   275: aload_0
+    //   276: ldc 42
+    //   278: iconst_0
+    //   279: anewarray 4	java/lang/Object
+    //   282: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   285: goto -38 -> 247
+    //   288: astore_0
+    //   289: ldc 138
+    //   291: aload_0
+    //   292: ldc 42
+    //   294: iconst_0
+    //   295: anewarray 4	java/lang/Object
+    //   298: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   301: goto -46 -> 255
+    //   304: aload_3
+    //   305: ifnull +7 -> 312
+    //   308: aload_3
+    //   309: invokevirtual 666	java/io/InputStream:close	()V
+    //   312: aload_2
+    //   313: ifnull -136 -> 177
+    //   316: aload_2
+    //   317: invokevirtual 720	com/tencent/mm/network/y:disconnect	()V
+    //   320: goto -143 -> 177
+    //   323: astore_0
+    //   324: ldc 138
+    //   326: aload_0
+    //   327: ldc 42
+    //   329: iconst_0
+    //   330: anewarray 4	java/lang/Object
+    //   333: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   336: goto -24 -> 312
+    //   339: astore_0
+    //   340: ldc 138
+    //   342: aload_0
+    //   343: ldc 42
+    //   345: iconst_0
+    //   346: anewarray 4	java/lang/Object
+    //   349: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   352: goto -191 -> 161
+    //   355: astore_0
+    //   356: ldc 138
+    //   358: aload_0
+    //   359: ldc 42
+    //   361: iconst_0
+    //   362: anewarray 4	java/lang/Object
+    //   365: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   368: goto -199 -> 169
+    //   371: astore_0
+    //   372: aconst_null
+    //   373: astore 7
+    //   375: aconst_null
+    //   376: astore_3
+    //   377: aconst_null
+    //   378: astore_2
+    //   379: aload_2
+    //   380: ifnull +7 -> 387
+    //   383: aload_2
+    //   384: invokevirtual 717	java/io/ByteArrayOutputStream:close	()V
+    //   387: aload_3
+    //   388: ifnull +7 -> 395
+    //   391: aload_3
+    //   392: invokevirtual 666	java/io/InputStream:close	()V
+    //   395: aload 7
+    //   397: ifnull +8 -> 405
+    //   400: aload 7
+    //   402: invokevirtual 720	com/tencent/mm/network/y:disconnect	()V
+    //   405: ldc_w 680
+    //   408: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   411: aload_0
+    //   412: athrow
+    //   413: astore_2
+    //   414: ldc 138
+    //   416: aload_2
+    //   417: ldc 42
+    //   419: iconst_0
+    //   420: anewarray 4	java/lang/Object
+    //   423: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   426: goto -39 -> 387
+    //   429: astore_2
+    //   430: ldc 138
+    //   432: aload_2
+    //   433: ldc 42
+    //   435: iconst_0
+    //   436: anewarray 4	java/lang/Object
+    //   439: invokestatic 675	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   442: goto -47 -> 395
+    //   445: astore_0
+    //   446: aconst_null
+    //   447: astore_3
+    //   448: aconst_null
+    //   449: astore 4
+    //   451: aload_2
+    //   452: astore 7
+    //   454: aload 4
+    //   456: astore_2
+    //   457: goto -78 -> 379
+    //   460: astore_0
+    //   461: aconst_null
+    //   462: astore 4
+    //   464: aload_2
+    //   465: astore 7
+    //   467: aload 4
+    //   469: astore_2
+    //   470: goto -91 -> 379
+    //   473: astore_0
+    //   474: aload 6
+    //   476: astore_3
+    //   477: aload 5
+    //   479: astore_2
+    //   480: goto -101 -> 379
+    //   483: astore 4
+    //   485: aconst_null
+    //   486: astore_2
+    //   487: aconst_null
+    //   488: astore_3
+    //   489: aconst_null
+    //   490: astore_0
+    //   491: goto -360 -> 131
+    //   494: astore 4
+    //   496: aconst_null
+    //   497: astore_3
+    //   498: aconst_null
+    //   499: astore_0
+    //   500: goto -369 -> 131
+    //   503: astore 4
+    //   505: aconst_null
+    //   506: astore_0
+    //   507: goto -376 -> 131
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	510	0	paramString	String
+    //   103	20	1	i	int
+    //   27	357	2	localy	com.tencent.mm.network.y
+    //   413	4	2	localIOException1	java.io.IOException
+    //   429	23	2	localIOException2	java.io.IOException
+    //   456	31	2	localObject1	Object
+    //   53	445	3	localObject2	Object
+    //   86	34	4	arrayOfByte1	byte[]
+    //   129	14	4	localException1	java.lang.Exception
+    //   241	227	4	arrayOfByte2	byte[]
+    //   483	1	4	localException2	java.lang.Exception
+    //   494	1	4	localException3	java.lang.Exception
+    //   503	1	4	localException4	java.lang.Exception
+    //   79	399	5	str	String
+    //   76	399	6	localObject3	Object
+    //   73	393	7	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   81	88	129	java/lang/Exception
+    //   97	104	129	java/lang/Exception
+    //   118	126	129	java/lang/Exception
+    //   194	198	129	java/lang/Exception
+    //   207	211	129	java/lang/Exception
+    //   224	228	129	java/lang/Exception
+    //   237	243	129	java/lang/Exception
+    //   243	247	272	java/io/IOException
+    //   251	255	288	java/io/IOException
+    //   308	312	323	java/io/IOException
+    //   157	161	339	java/io/IOException
+    //   165	169	355	java/io/IOException
+    //   22	28	371	finally
+    //   383	387	413	java/io/IOException
+    //   391	395	429	java/io/IOException
+    //   28	54	445	finally
+    //   54	72	460	finally
+    //   81	88	473	finally
+    //   97	104	473	finally
+    //   118	126	473	finally
+    //   140	153	473	finally
+    //   194	198	473	finally
+    //   207	211	473	finally
+    //   224	228	473	finally
+    //   237	243	473	finally
+    //   22	28	483	java/lang/Exception
+    //   28	54	494	java/lang/Exception
+    //   54	72	503	java/lang/Exception
+  }
+  
+  static void ee(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(274627);
+    fr localfr = new fr();
+    localfr.hFV.hEl = paramString;
+    if (paramInt >= 100) {}
+    for (localfr.hFV.hFX = ypx;; localfr.hFV.hFX = ypz)
+    {
+      localfr.hFV.progress = paramInt;
+      localfr.publish();
+      AppMethodBeat.o(274627);
+      return;
     }
   }
   
-  final boolean k(List<com.tencent.mm.plugin.exdevice.h.b> paramList, int paramInt)
+  static void gR(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(19227);
-    ab.i("MicroMsg.exdevice.ExdeviceEventManager", "handleWifiDeviceSwitchViewEvent");
-    if (paramList.size() == 0)
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceEventManager", "HardDeviceInfo is null or nil.");
-      AppMethodBeat.o(19227);
-      return false;
-    }
-    int i = -1;
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
-    }
-    for (;;)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = (com.tencent.mm.plugin.exdevice.h.b)paramList.next();
-        localObject = new k(((com.tencent.mm.plugin.exdevice.h.b)localObject).field_brandName, ((com.tencent.mm.plugin.exdevice.h.b)localObject).field_deviceType, ((com.tencent.mm.plugin.exdevice.h.b)localObject).field_deviceID, paramInt);
-        u.bqA().a((ae)localObject);
-      }
-      if (this.lEf) {
-        this.mHandler.removeCallbacks(this.lEg);
-      }
-      this.lEg = new e.c(this, paramList);
-      this.mHandler.postDelayed(this.lEg, 300000L);
-      this.lEf = true;
-      paramInt = 2;
-      continue;
-      if (this.lEf)
-      {
-        this.mHandler.removeCallbacks(this.lEg);
-        this.lEf = false;
-      }
-      paramInt = 0;
-    }
-    AppMethodBeat.o(19227);
-    return true;
-  }
-  
-  public final void o(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(19237);
-    LinkedList localLinkedList;
-    synchronized (this.lDo)
-    {
-      localLinkedList = new LinkedList(this.lDo);
-      ??? = localLinkedList.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((b)((Iterator)???).next()).p(paramString1, paramString2, paramBoolean);
-      }
-    }
-    localLinkedList.clear();
-    ??? = this.lDp.values().iterator();
-    while (((Iterator)???).hasNext()) {
-      ((b)((Iterator)???).next()).p(paramString1, paramString2, paramBoolean);
-    }
-    ab.d("MicroMsg.exdevice.ExdeviceEventManager", "simple BT on scan result: broadcastName=" + paramString1 + ", mac=" + paramString2 + ", isCompleted=" + paramBoolean);
-    ??? = new es();
-    ((es)???).csz.cst = paramString1;
-    ((es)???).csz.mac = paramString2;
-    ((es)???).csz.aLC = paramBoolean;
-    com.tencent.mm.sdk.b.a.ymk.a((com.tencent.mm.sdk.b.b)???, Looper.getMainLooper());
-    AppMethodBeat.o(19237);
-  }
-  
-  public final boolean u(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(19235);
-    if ((bo.isNullOrNil(paramString)) || (bo.ce(paramArrayOfByte)))
-    {
-      if (bo.isNullOrNil(paramString))
-      {
-        paramString = "null";
-        if (!bo.ce(paramArrayOfByte)) {
-          break label79;
-        }
-      }
-      label79:
-      for (i = 0;; i = paramArrayOfByte.length)
-      {
-        ab.e("MicroMsg.exdevice.ExdeviceEventManager", "input error. mac = %s, dataLen = %d", new Object[] { paramString, Integer.valueOf(i) });
-        AppMethodBeat.o(19235);
-        return false;
-        paramString = "mac";
-        break;
-      }
-    }
-    String str;
-    if (bo.isNullOrNil(paramString))
-    {
-      str = "null";
-      if (!bo.ce(paramArrayOfByte)) {
-        break label176;
-      }
-    }
-    long l;
-    label176:
-    for (int i = 0;; i = paramArrayOfByte.length)
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTSendDataToDevice. mac = %s, dataLen = %d", new Object[] { str, Integer.valueOf(i) });
-      l = com.tencent.mm.plugin.exdevice.j.b.LX(paramString);
-      paramString = ad.bqk().lER.jm(l);
-      if (paramString != null) {
-        break label182;
-      }
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "can not find the hardevice connect state");
-      AppMethodBeat.o(19235);
-      return false;
-      str = paramString;
-      break;
-    }
-    label182:
-    if (paramString.crJ != 2)
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceEventManager", "device is not connected.");
-      AppMethodBeat.o(19235);
-      return false;
-    }
-    ad.bqk();
-    boolean bool = h.a(l, paramArrayOfByte, new e.41(this));
-    AppMethodBeat.o(19235);
-    return bool;
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void b(String paramString, byte[] paramArrayOfByte, boolean paramBoolean);
-    
-    public abstract void c(String paramString, int paramInt, long paramLong);
-    
-    public abstract void p(String paramString1, String paramString2, boolean paramBoolean);
+    AppMethodBeat.i(274623);
+    fr localfr = new fr();
+    localfr.hFV.hFX = paramString2;
+    localfr.hFV.hEl = paramString1;
+    localfr.publish();
+    AppMethodBeat.o(274623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.e
  * JD-Core Version:    0.7.0.1
  */

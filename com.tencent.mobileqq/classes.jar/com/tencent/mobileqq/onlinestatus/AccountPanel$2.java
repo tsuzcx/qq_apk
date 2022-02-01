@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import awcx;
-import bacu;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
 
-public class AccountPanel$2
-  implements Runnable
+class AccountPanel$2
+  extends View.AccessibilityDelegate
 {
-  public AccountPanel$2(awcx paramawcx) {}
+  AccountPanel$2(AccountPanel paramAccountPanel, ClickableSpan paramClickableSpan) {}
   
-  public void run()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if ((awcx.a(this.this$0) != null) && (awcx.a(this.this$0) != null))
+    super.sendAccessibilityEvent(paramView, paramInt);
+    if (paramInt == 1)
     {
-      awcx.b(this.this$0, true);
-      awcx.c(this.this$0, false);
-      awcx.a(this.this$0, awcx.a(this.this$0));
-      awcx.a(this.this$0).g(false);
-      bacu.a(awcx.a(this.this$0), false);
+      ClickableSpan localClickableSpan = this.a;
+      if (localClickableSpan != null) {
+        localClickableSpan.onClick(paramView);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.2
  * JD-Core Version:    0.7.0.1
  */

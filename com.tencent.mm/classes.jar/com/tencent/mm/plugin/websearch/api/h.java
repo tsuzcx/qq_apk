@@ -1,23 +1,33 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.app.Activity;
 import android.content.Context;
-import android.widget.LinearLayout;
 import com.tencent.mm.kernel.c.a;
-import java.util.List;
+import java.util.Map;
 
 public abstract interface h
   extends a
 {
-  public abstract int a(Activity paramActivity, String paramString1, String paramString2, List<y> paramList, x paramx);
+  public abstract void W(Context paramContext, String paramString1, String paramString2);
   
-  public abstract f a(Context paramContext, r paramr);
+  public abstract void X(Context paramContext, String paramString1, String paramString2);
   
-  public abstract i a(LinearLayout paramLinearLayout, int paramInt, Activity paramActivity, g paramg);
+  public abstract void a(Context paramContext, int paramInt, String paramString1, String paramString2, Map<String, String> paramMap);
+  
+  public abstract void a(Context paramContext, int paramInt1, String paramString1, String paramString2, Map<String, String> paramMap, String paramString3, int paramInt2);
+  
+  public abstract void a(Context paramContext, int paramInt1, String paramString1, String paramString2, boolean paramBoolean, Map<String, String> paramMap, int paramInt2);
+  
+  public abstract void a(Context paramContext, String paramString1, String paramString2, Map<String, String> paramMap);
+  
+  public abstract void a(ah paramah);
+  
+  public abstract void b(Context paramContext, int paramInt, String paramString1, String paramString2, boolean paramBoolean, Map<String, String> paramMap, String paramString3);
+  
+  public abstract void bg(Context paramContext, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.h
  * JD-Core Version:    0.7.0.1
  */

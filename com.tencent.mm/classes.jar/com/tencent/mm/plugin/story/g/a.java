@@ -1,58 +1,35 @@
 package com.tencent.mm.plugin.story.g;
 
-import a.f.b.j;
-import a.l;
-import a.l.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/report/StoryBehaviorTraceData;", "", "()V", "lock", "Ljava/lang/Object;", "traceJsonArray", "Lorg/json/JSONArray;", "addTrace", "", "aid", "", "checkLength", "", "trace", "Lorg/json/JSONObject;", "getTraceString", "", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/report/StoryBehaviorTraceData;", "", "()V", "lock", "Ljava/lang/Object;", "traceJsonArray", "Lorg/json/JSONArray;", "addTrace", "", "aid", "", "checkLength", "", "trace", "Lorg/json/JSONObject;", "getTraceString", "", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private final Object lock;
-  private JSONArray qfr;
+  JSONArray NRc;
+  final Object lock;
   
   public a()
   {
-    AppMethodBeat.i(109763);
-    this.qfr = new JSONArray();
+    AppMethodBeat.i(119385);
+    this.NRc = new JSONArray();
     this.lock = new Object();
-    AppMethodBeat.o(109763);
+    AppMethodBeat.o(119385);
   }
   
-  public final void FR(int paramInt)
+  public final String gJd()
   {
-    AppMethodBeat.i(109761);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("aid", paramInt);
-    localJSONObject.put("td", this.qfr.length() + 1);
-    if (this.qfr.toString().length() + localJSONObject.toString().length() > 1000) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      if (paramInt != 0) {}
-      synchronized (this.lock)
-      {
-        this.qfr.put(localJSONObject);
-        AppMethodBeat.o(109761);
-        return;
-        paramInt = 1;
-      }
-    }
-  }
-  
-  public final String cgA()
-  {
-    AppMethodBeat.i(109762);
+    AppMethodBeat.i(119384);
     synchronized (this.lock)
     {
-      String str = this.qfr.toString();
-      j.p(str, "traceJsonArray.toString()");
-      str = m.h(str, ",", ";", false);
-      this.qfr = new JSONArray();
-      AppMethodBeat.o(109762);
+      String str = this.NRc.toString();
+      s.s(str, "traceJsonArray.toString()");
+      str = n.m(str, ",", ";", false);
+      this.NRc = new JSONArray();
+      AppMethodBeat.o(119384);
       return str;
     }
   }

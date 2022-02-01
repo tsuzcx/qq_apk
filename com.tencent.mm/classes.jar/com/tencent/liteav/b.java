@@ -1,611 +1,436 @@
 package com.tencent.liteav;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.graphics.SurfaceTexture;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.os.HandlerThread;
-import com.tencent.liteav.basic.d.l;
-import com.tencent.liteav.basic.d.m;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.module.TXCStatus;
-import com.tencent.liteav.renderer.TXCGLSurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
-import java.util.List;
-import javax.microedition.khronos.egl.EGLContext;
+import java.nio.ByteBuffer;
 
 public class b
-  implements com.tencent.liteav.basic.c.a, m, com.tencent.liteav.capturer.b, j
 {
-  WeakReference<com.tencent.liteav.basic.c.a> a;
-  private Context b;
-  private com.tencent.liteav.capturer.a c;
-  private k d;
-  private boolean e;
-  private f f;
-  private int g;
-  private boolean h;
+  private static final String a;
+  private int b;
+  private long c;
+  private a d;
+  private HandlerThread e;
+  private boolean f;
+  private ByteBuffer g;
+  private Bitmap h;
   private int i;
   private int j;
-  private l k;
-  private boolean l;
-  private long m;
-  private long n;
-  private long o;
-  private int p;
-  private Object q;
-  private HandlerThread r;
-  private Handler s;
-  private String t;
+  private WeakReference<b> k;
   
-  public b(Context paramContext, f paramf, l paraml, boolean paramBoolean)
+  static
   {
-    AppMethodBeat.i(146409);
-    this.c = null;
-    this.g = 0;
-    this.h = false;
-    this.i = -1;
-    this.j = -1;
+    AppMethodBeat.i(229356);
+    a = b.class.getSimpleName();
+    AppMethodBeat.o(229356);
+  }
+  
+  public b(b paramb)
+  {
+    AppMethodBeat.i(229328);
+    this.b = 300;
+    this.c = 0L;
+    this.f = false;
+    this.g = null;
+    this.h = null;
+    this.i = 0;
+    this.j = 0;
     this.k = null;
-    this.l = false;
-    this.m = 0L;
-    this.o = 0L;
-    this.p = 0;
-    this.q = new Object();
-    this.r = null;
-    this.s = null;
-    this.t = "";
-    this.c = new com.tencent.liteav.capturer.a();
-    try
-    {
-      this.f = ((f)paramf.clone());
-      this.b = paramContext;
-      this.k = paraml;
-      this.k.setSurfaceTextureListener(this);
-      this.f.P = paramBoolean;
-      AppMethodBeat.o(146409);
-      return;
-    }
-    catch (CloneNotSupportedException paramf)
-    {
-      for (;;)
-      {
-        this.f = new f();
-      }
-    }
+    this.k = new WeakReference(paramb);
+    AppMethodBeat.o(229328);
   }
   
-  private void a(int paramInt, String paramString)
+  private void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67676);
-    com.tencent.liteav.basic.util.b.a(this.a, paramInt, paramString);
-    AppMethodBeat.o(67676);
-  }
-  
-  private void a(int paramInt1, byte[] paramArrayOfByte, float[] paramArrayOfFloat, int paramInt2)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(146416);
-    if (!this.e)
+    AppMethodBeat.i(16710);
+    int m;
+    if (paramInt1 > 0) {
+      if (paramInt1 >= 20) {
+        m = 20;
+      }
+    }
+    for (this.b = (1000 / m);; this.b = 200)
     {
-      AppMethodBeat.o(146416);
+      long l = paramInt2;
+      if (paramInt2 <= 0) {
+        break label79;
+      }
+      this.c = (l * 1000L + System.currentTimeMillis());
+      AppMethodBeat.o(16710);
       return;
-    }
-    if (!this.l)
-    {
-      com.tencent.liteav.basic.util.b.a(this.a, 1007, "首帧画面采集完成");
-      this.l = true;
-      TXCLog.d("CameraCapture", "trtc_render: render first frame");
-    }
-    com.tencent.liteav.basic.structs.b localb = new com.tencent.liteav.basic.structs.b();
-    localb.e = this.c.e();
-    localb.f = this.c.f();
-    localb.g = this.f.a;
-    localb.h = this.f.b;
-    localb.j = this.c.c();
-    localb.k = this.g;
-    if (this.c.d()) {
-      if (!this.f.M)
-      {
-        localb.i = bool;
-        localb.a = paramInt1;
-        localb.c = paramArrayOfFloat;
-        localb.d = this.f.P;
-        localb.m = paramArrayOfByte;
-        localb.b = paramInt2;
-        if ((localb.j != 0) && (localb.j != 180)) {
-          break label399;
-        }
-        localb.g = this.f.b;
+      m = paramInt1;
+      if (paramInt1 > 5) {
+        break;
       }
-    }
-    for (localb.h = this.f.a;; localb.h = this.f.b)
-    {
-      localb.l = com.tencent.liteav.basic.util.b.a(localb.e, localb.f, this.f.b, this.f.a);
-      if (this.d != null) {
-        this.d.b(localb);
-      }
-      this.m += 1L;
-      long l1 = System.currentTimeMillis() - this.n;
-      if (l1 >= 1000L)
-      {
-        double d1 = (this.m - this.o) * 1000.0D / l1;
-        TXCStatus.a(this.t, 1001, this.p, Double.valueOf(d1));
-        this.o = this.m;
-        this.n = (l1 + this.n);
-      }
-      AppMethodBeat.o(146416);
-      return;
-      bool = false;
+      m = 5;
       break;
-      bool = this.f.M;
-      break;
-      label399:
-      localb.g = this.f.a;
     }
-  }
-  
-  private void c(SurfaceTexture paramSurfaceTexture)
-  {
-    AppMethodBeat.i(67675);
-    if ((paramSurfaceTexture != null) && (!this.e) && (this.c != null))
+    label79:
+    if (paramInt2 == 0)
     {
-      this.c.a(this);
-      this.c.a(paramSurfaceTexture);
-      this.c.b(this.f.h);
-      this.c.d(this.f.l);
-      this.c.b(this.f.E);
-      this.c.a(i());
-      this.c.a(this.f.P, this.f.a, this.f.b);
-      if (this.c.c(this.f.m) == 0)
-      {
-        this.e = true;
-        this.n = System.currentTimeMillis();
-        a(1003, "打开摄像头成功");
-        this.l = false;
-        if ((this.h) && (!com.tencent.liteav.audio.b.a().c()))
-        {
-          if (com.tencent.liteav.audio.b.a().a(this.b) == 0) {
-            a(2027, "打开麦克风成功");
-          }
-          this.h = false;
-          AppMethodBeat.o(67675);
-        }
-      }
-      else
-      {
-        this.e = false;
-        a(-1301, "打开摄像头失败，请确认摄像头权限是否打开");
-      }
-    }
-    AppMethodBeat.o(67675);
-  }
-  
-  private int i()
-  {
-    if (!this.f.N) {}
-    switch (this.f.k)
-    {
-    case 3: 
-    case 4: 
-    case 5: 
-    default: 
-      return 7;
-    case 0: 
-      return 4;
-    case 1: 
-      return 5;
-    case 2: 
-      return 6;
-    }
-    return 3;
-  }
-  
-  private void j()
-  {
-    AppMethodBeat.i(146417);
-    a(new b.2(this));
-    AppMethodBeat.o(146417);
-  }
-  
-  private boolean k()
-  {
-    AppMethodBeat.i(146419);
-    for (;;)
-    {
-      int i1;
-      try
-      {
-        if (this.b != null)
-        {
-          List localList = ((ActivityManager)this.b.getSystemService("activity")).getRunningAppProcesses();
-          if (localList == null)
-          {
-            TXCLog.w("CameraCapture", "List of RunningAppProcessInfo is null");
-            AppMethodBeat.o(146419);
-            return false;
-          }
-          i1 = 0;
-          if (i1 < localList.size())
-          {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localList.get(i1);
-            if (localRunningAppProcessInfo == null)
-            {
-              TXCLog.w("CameraCapture", "ActivityManager.RunningAppProcessInfo is null");
-              break label137;
-            }
-            if (!localRunningAppProcessInfo.processName.equals(this.b.getPackageName())) {
-              break label137;
-            }
-            int i2 = localRunningAppProcessInfo.importance;
-            if (i2 != 100) {
-              break label137;
-            }
-            AppMethodBeat.o(146419);
-            return true;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        AppMethodBeat.o(146419);
-        return false;
-      }
-      label137:
-      i1 += 1;
-    }
-  }
-  
-  public int a(int paramInt, float[] paramArrayOfFloat)
-  {
-    AppMethodBeat.i(67679);
-    a(paramInt, null, paramArrayOfFloat, 4);
-    AppMethodBeat.o(67679);
-    return 0;
-  }
-  
-  public void a()
-  {
-    AppMethodBeat.i(67656);
-    TXCLog.i("CameraCapture", "start->enter with getSurfaceTexture:" + this.k.getSurfaceTexture());
-    l locall = this.k;
-    int i1 = this.f.h;
-    if (!this.f.P) {}
-    for (boolean bool = true;; bool = false)
-    {
-      locall.a(i1, bool);
-      c(this.k.getSurfaceTexture());
-      AppMethodBeat.o(67656);
+      this.c = (System.currentTimeMillis() + 300000L);
+      AppMethodBeat.o(16710);
       return;
     }
+    this.c = -1L;
+    AppMethodBeat.o(16710);
   }
   
-  public void a(float paramFloat)
+  private void d()
   {
-    AppMethodBeat.i(67663);
-    this.c.a(paramFloat);
-    AppMethodBeat.o(67663);
+    AppMethodBeat.i(229332);
+    e();
+    this.e = new HandlerThread("TXImageCapturer");
+    this.e.start();
+    this.d = new a(this.e.getLooper(), this.b, this.c);
+    AppMethodBeat.o(229332);
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  private void e()
   {
-    AppMethodBeat.i(67674);
-    if ((this.c != null) && (this.f.E)) {
-      this.c.a(paramFloat1, paramFloat2);
+    AppMethodBeat.i(229333);
+    if (this.d != null)
+    {
+      this.d.removeCallbacksAndMessages(null);
+      this.d = null;
     }
-    AppMethodBeat.o(67674);
+    if (this.e != null)
+    {
+      this.e.quit();
+      this.e = null;
+    }
+    AppMethodBeat.o(229333);
+  }
+  
+  /* Error */
+  private void f()
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 4
+    //   3: iconst_0
+    //   4: istore_2
+    //   5: ldc 132
+    //   7: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: aload_0
+    //   11: getfield 70	com/tencent/liteav/b:k	Ljava/lang/ref/WeakReference;
+    //   14: ifnull +141 -> 155
+    //   17: aload_0
+    //   18: getfield 60	com/tencent/liteav/b:f	Z
+    //   21: ifeq +134 -> 155
+    //   24: aload_0
+    //   25: getfield 70	com/tencent/liteav/b:k	Ljava/lang/ref/WeakReference;
+    //   28: invokevirtual 136	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   31: checkcast 9	com/tencent/liteav/b$b
+    //   34: astore 6
+    //   36: aload 6
+    //   38: ifnull +117 -> 155
+    //   41: aload_0
+    //   42: getfield 64	com/tencent/liteav/b:h	Landroid/graphics/Bitmap;
+    //   45: astore 7
+    //   47: aload_0
+    //   48: getfield 62	com/tencent/liteav/b:g	Ljava/nio/ByteBuffer;
+    //   51: astore 5
+    //   53: aload 5
+    //   55: ifnonnull +215 -> 270
+    //   58: aload 7
+    //   60: ifnull +210 -> 270
+    //   63: aload 7
+    //   65: invokevirtual 142	android/graphics/Bitmap:getWidth	()I
+    //   68: istore_1
+    //   69: aload 7
+    //   71: invokevirtual 145	android/graphics/Bitmap:getHeight	()I
+    //   74: istore_3
+    //   75: iload_3
+    //   76: istore_2
+    //   77: iload_3
+    //   78: istore 4
+    //   80: iload_1
+    //   81: iload_3
+    //   82: imul
+    //   83: iconst_4
+    //   84: imul
+    //   85: invokestatic 151	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
+    //   88: astore 5
+    //   90: iload_3
+    //   91: istore_2
+    //   92: iload_3
+    //   93: istore 4
+    //   95: aload 7
+    //   97: aload 5
+    //   99: invokevirtual 155	android/graphics/Bitmap:copyPixelsToBuffer	(Ljava/nio/Buffer;)V
+    //   102: iload_3
+    //   103: istore_2
+    //   104: iload_3
+    //   105: istore 4
+    //   107: aload 5
+    //   109: invokevirtual 159	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   112: pop
+    //   113: iload_3
+    //   114: istore_2
+    //   115: iload_3
+    //   116: istore 4
+    //   118: aload_0
+    //   119: aload 5
+    //   121: putfield 62	com/tencent/liteav/b:g	Ljava/nio/ByteBuffer;
+    //   124: iload_3
+    //   125: istore_2
+    //   126: aload 7
+    //   128: ifnull +27 -> 155
+    //   131: aload 5
+    //   133: ifnull +22 -> 155
+    //   136: aload 6
+    //   138: aload 7
+    //   140: aload 5
+    //   142: aload_0
+    //   143: getfield 66	com/tencent/liteav/b:i	I
+    //   146: aload_0
+    //   147: getfield 68	com/tencent/liteav/b:j	I
+    //   150: invokeinterface 162 5 0
+    //   155: ldc 132
+    //   157: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   160: return
+    //   161: astore 5
+    //   163: iconst_0
+    //   164: istore_2
+    //   165: iconst_0
+    //   166: istore_1
+    //   167: getstatic 45	com/tencent/liteav/b:a	Ljava/lang/String;
+    //   170: new 164	java/lang/StringBuilder
+    //   173: dup
+    //   174: ldc 166
+    //   176: invokespecial 167	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   179: iload_1
+    //   180: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   183: ldc 173
+    //   185: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: iload_2
+    //   189: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   192: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   195: invokestatic 185	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   198: ldc 132
+    //   200: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   203: return
+    //   204: astore 5
+    //   206: iconst_0
+    //   207: istore_2
+    //   208: iconst_0
+    //   209: istore_1
+    //   210: getstatic 45	com/tencent/liteav/b:a	Ljava/lang/String;
+    //   213: new 164	java/lang/StringBuilder
+    //   216: dup
+    //   217: ldc 187
+    //   219: invokespecial 167	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   222: iload_1
+    //   223: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   226: ldc 173
+    //   228: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: iload_2
+    //   232: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   235: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   238: invokestatic 185	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   241: ldc 132
+    //   243: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   246: return
+    //   247: astore 5
+    //   249: goto -39 -> 210
+    //   252: astore 5
+    //   254: goto -44 -> 210
+    //   257: astore 5
+    //   259: iload 4
+    //   261: istore_2
+    //   262: goto -95 -> 167
+    //   265: astore 5
+    //   267: goto -100 -> 167
+    //   270: iconst_0
+    //   271: istore_2
+    //   272: iconst_0
+    //   273: istore_1
+    //   274: goto -148 -> 126
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	277	0	this	b
+    //   68	206	1	m	int
+    //   4	268	2	n	int
+    //   74	51	3	i1	int
+    //   1	259	4	i2	int
+    //   51	90	5	localByteBuffer	ByteBuffer
+    //   161	1	5	localException1	Exception
+    //   204	1	5	localError1	Error
+    //   247	1	5	localError2	Error
+    //   252	1	5	localError3	Error
+    //   257	1	5	localException2	Exception
+    //   265	1	5	localException3	Exception
+    //   34	103	6	localb	b
+    //   45	94	7	localBitmap	Bitmap
+    // Exception table:
+    //   from	to	target	type
+    //   10	36	161	java/lang/Exception
+    //   41	53	161	java/lang/Exception
+    //   63	69	161	java/lang/Exception
+    //   10	36	204	java/lang/Error
+    //   41	53	204	java/lang/Error
+    //   63	69	204	java/lang/Error
+    //   69	75	247	java/lang/Error
+    //   80	90	247	java/lang/Error
+    //   95	102	247	java/lang/Error
+    //   107	113	247	java/lang/Error
+    //   118	124	247	java/lang/Error
+    //   136	155	252	java/lang/Error
+    //   69	75	257	java/lang/Exception
+    //   80	90	257	java/lang/Exception
+    //   95	102	257	java/lang/Exception
+    //   107	113	257	java/lang/Exception
+    //   118	124	257	java/lang/Exception
+    //   136	155	265	java/lang/Exception
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.f.a = paramInt1;
-    this.f.b = paramInt2;
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture)
-  {
-    AppMethodBeat.i(67677);
-    TXCLog.i("CameraCapture", "onSurfaceTextureAvailable->enter with mListener:" + this.d);
-    c(paramSurfaceTexture);
-    if (this.d != null) {
-      this.d.a(paramSurfaceTexture);
-    }
-    AppMethodBeat.o(67677);
-  }
-  
-  public void a(com.tencent.liteav.basic.c.a parama)
-  {
-    AppMethodBeat.i(146411);
-    this.a = new WeakReference(parama);
-    AppMethodBeat.o(146411);
-  }
-  
-  public void a(com.tencent.liteav.basic.structs.b paramb)
-  {
-    AppMethodBeat.i(146410);
-    if (this.k != null) {
-      this.k.a(paramb.a, paramb.i, this.g, paramb.e, paramb.f, this.c.d());
-    }
-    AppMethodBeat.o(146410);
-  }
-  
-  public void a(k paramk)
-  {
-    this.d = paramk;
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(67668);
-    this.k.a(paramRunnable);
-    AppMethodBeat.o(67668);
-  }
-  
-  public void a(String paramString)
-  {
-    this.t = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    AppMethodBeat.i(67657);
-    c();
-    this.k.a();
-    synchronized (this.q)
+    AppMethodBeat.i(16698);
+    if (this.f)
     {
-      if (this.s != null) {
-        this.s.removeCallbacksAndMessages(null);
-      }
-      if (this.r != null)
-      {
-        TXCLog.w("CameraCapture", "stop camera monitor ");
-        this.r.quit();
-        this.r = null;
-        this.s = null;
-      }
-      AppMethodBeat.o(67657);
+      TXCLog.w(a, "bkgpush: start background publish return when started");
+      AppMethodBeat.o(16698);
       return;
     }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(146418);
-    if (this.k != null) {
-      this.k.a(paramArrayOfByte);
+    this.f = true;
+    b(paramInt1, paramInt2);
+    d();
+    if (this.d != null) {
+      this.d.sendEmptyMessageDelayed(1001, this.b);
     }
-    AppMethodBeat.o(146418);
+    TXCLog.w(a, "bkgpush: start background publish with time:" + (this.c - System.currentTimeMillis()) / 1000L + ", interval:" + this.b);
+    AppMethodBeat.o(16698);
   }
   
-  public void a(byte[] paramArrayOfByte, float[] paramArrayOfFloat)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(146415);
-    a(-1, paramArrayOfByte, paramArrayOfFloat, 3);
-    AppMethodBeat.o(146415);
+    AppMethodBeat.i(229369);
+    if (this.f)
+    {
+      TXCLog.w(a, "bkgpush: start background publish return when started");
+      AppMethodBeat.o(229369);
+      return;
+    }
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap == null) {}
+    try
+    {
+      TXCLog.w(a, "bkgpush: background publish img is empty, add default img " + paramInt3 + "*" + paramInt4);
+      paramBitmap = new ColorDrawable(-16777216);
+      localBitmap = Bitmap.createBitmap(paramInt3, paramInt4, Bitmap.Config.ARGB_8888);
+      paramBitmap.draw(new Canvas(localBitmap));
+      TXCLog.w(a, "bkgpush: generate bitmap " + paramInt3 + "*" + paramInt4);
+      this.h = localBitmap;
+    }
+    catch (Exception paramBitmap)
+    {
+      for (;;)
+      {
+        TXCLog.e(a, "save bitmap failed.", paramBitmap);
+      }
+    }
+    catch (Error paramBitmap)
+    {
+      for (;;)
+      {
+        TXCLog.e(a, "save bitmap failed.", paramBitmap);
+      }
+    }
+    this.i = paramInt3;
+    this.j = paramInt4;
+    a(paramInt1, paramInt2);
+    AppMethodBeat.o(229369);
   }
   
-  public boolean a(int paramInt)
+  public boolean a()
   {
-    AppMethodBeat.i(67662);
-    boolean bool = this.c.c(paramInt);
-    AppMethodBeat.o(67662);
-    return bool;
+    return this.f;
   }
   
   public void b()
   {
-    AppMethodBeat.i(67658);
-    TXCLog.i("CameraCapture", "startCapture->enter with getSurfaceTexture:" + this.k.getSurfaceTexture());
-    c(this.k.getSurfaceTexture());
-    AppMethodBeat.o(67658);
+    AppMethodBeat.i(16693);
+    this.f = false;
+    this.g = null;
+    this.h = null;
+    TXCLog.w(a, "bkgpush: stop background publish");
+    e();
+    AppMethodBeat.o(16693);
   }
   
-  public void b(int paramInt)
+  class a
+    extends Handler
   {
-    AppMethodBeat.i(67664);
-    this.i = paramInt;
-    j();
-    AppMethodBeat.o(67664);
-  }
-  
-  public void b(SurfaceTexture paramSurfaceTexture)
-  {
-    AppMethodBeat.i(67678);
-    TXCLog.i("CameraCapture", "onSurfaceTextureDestroy->enter with mListener:" + this.d);
-    if (this.d != null) {
-      this.d.u();
-    }
-    AppMethodBeat.o(67678);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    AppMethodBeat.i(67660);
-    if ((this.e) && (this.c != null))
+    private int b;
+    private long c;
+    
+    public a(Looper paramLooper, int paramInt, long paramLong)
     {
-      f localf = this.f;
-      if (!paramBoolean) {
-        break label188;
-      }
-      if (this.f.m) {
-        break label183;
-      }
-      paramBoolean = true;
-      localf.m = paramBoolean;
-      this.c.b();
-      this.k.a(false);
-      this.c.b(this.f.h);
-      this.c.a(i());
-      this.c.a(this.f.P, this.f.a, this.f.b);
-      this.c.a(this);
-      this.c.a(this.k.getSurfaceTexture());
-      if (this.c.c(this.f.m) != 0) {
-        break label199;
-      }
-      this.e = true;
-      a(1003, "打开摄像头成功");
+      super();
+      AppMethodBeat.i(229404);
+      this.b = 300;
+      this.c = 0L;
+      this.b = paramInt;
+      this.c = paramLong;
+      TXCLog.w(b.c(), "bkgpush:init publish time delay:" + this.b + ", end:" + this.c);
+      AppMethodBeat.o(229404);
     }
-    for (;;)
+    
+    public void handleMessage(Message paramMessage)
     {
-      this.l = false;
-      AppMethodBeat.o(67660);
-      return;
-      label183:
-      paramBoolean = false;
-      break;
-      label188:
-      paramBoolean = this.f.m;
-      break;
-      label199:
-      this.e = false;
-      a(-1301, "打开摄像头失败，请确认摄像头权限是否打开");
-    }
-  }
-  
-  public void c()
-  {
-    AppMethodBeat.i(67659);
-    TXCLog.i("CameraCapture", "stopCapture->enter with null");
-    this.c.a(null);
-    this.c.b();
-    this.e = false;
-    AppMethodBeat.o(67659);
-  }
-  
-  public void c(int paramInt)
-  {
-    AppMethodBeat.i(67672);
-    if (this.k != null) {
-      this.k.setRendMode(paramInt);
-    }
-    AppMethodBeat.o(67672);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    AppMethodBeat.i(67665);
-    a(new b.1(this, paramBoolean));
-    AppMethodBeat.o(67665);
-  }
-  
-  public void d(int paramInt)
-  {
-    AppMethodBeat.i(67673);
-    if (this.k != null) {
-      this.k.setRendMirror(paramInt);
-    }
-    AppMethodBeat.o(67673);
-  }
-  
-  public boolean d()
-  {
-    return this.e;
-  }
-  
-  public boolean d(boolean paramBoolean)
-  {
-    AppMethodBeat.i(67666);
-    paramBoolean = this.c.a(paramBoolean);
-    AppMethodBeat.o(67666);
-    return paramBoolean;
-  }
-  
-  public int e()
-  {
-    AppMethodBeat.i(67661);
-    int i1 = this.c.a();
-    AppMethodBeat.o(67661);
-    return i1;
-  }
-  
-  public void e(int paramInt)
-  {
-    AppMethodBeat.i(146412);
-    this.j = paramInt;
-    j();
-    AppMethodBeat.o(146412);
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    this.h = paramBoolean;
-  }
-  
-  public EGLContext f()
-  {
-    AppMethodBeat.i(67669);
-    EGLContext localEGLContext = this.k.getGLContext();
-    AppMethodBeat.o(67669);
-    return localEGLContext;
-  }
-  
-  public void f(int paramInt)
-  {
-    AppMethodBeat.i(146413);
-    this.f.h = paramInt;
-    if (this.c != null) {
-      this.c.b(paramInt);
-    }
-    if ((this.k != null) && ((this.k instanceof TXCGLSurfaceView))) {
-      ((TXCGLSurfaceView)this.k).setFPS(paramInt);
-    }
-    AppMethodBeat.o(146413);
-  }
-  
-  public void g(int paramInt)
-  {
-    this.p = paramInt;
-  }
-  
-  public boolean g()
-  {
-    AppMethodBeat.i(146414);
-    if (this.c != null)
-    {
-      boolean bool = this.c.d();
-      AppMethodBeat.o(146414);
-      return bool;
-    }
-    AppMethodBeat.o(146414);
-    return false;
-  }
-  
-  public void h()
-  {
-    AppMethodBeat.i(67680);
-    if (this.c.g() != null) {
-      this.c.b();
-    }
-    synchronized (this.q)
-    {
-      if (this.r == null)
-      {
-        this.r = new HandlerThread("cameraMonitorThread");
-        this.r.start();
-        this.s = new Handler(this.r.getLooper());
-        TXCLog.w("CameraCapture", "start camera monitor ");
+      AppMethodBeat.i(229412);
+      if (paramMessage.what == 1001) {
+        try
+        {
+          b.a(b.this);
+          if ((this.c < 0L) || (System.currentTimeMillis() < this.c))
+          {
+            sendEmptyMessageDelayed(1001, this.b);
+            AppMethodBeat.o(229412);
+            return;
+          }
+          TXCLog.w(b.c(), "bkgpush:stop background publish when timeout");
+          if ((b.b(b.this) != null) && (b.c(b.this)))
+          {
+            paramMessage = (b.b)b.b(b.this).get();
+            if (paramMessage != null) {
+              paramMessage.a();
+            }
+            b.a(b.this, false);
+          }
+          AppMethodBeat.o(229412);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          TXCLog.e(b.c(), "publish image failed." + paramMessage.getMessage());
+        }
       }
-      if (this.s != null) {
-        this.s.postDelayed(new b.3(this), 2000L);
-      }
-      AppMethodBeat.o(67680);
-      return;
+      AppMethodBeat.o(229412);
     }
   }
   
-  public void onNotifyEvent(int paramInt, Bundle paramBundle)
+  public static abstract interface b
   {
-    AppMethodBeat.i(67670);
-    com.tencent.liteav.basic.util.b.a(this.a, paramInt, paramBundle);
-    AppMethodBeat.o(67670);
+    public abstract void a();
+    
+    public abstract void a(Bitmap paramBitmap, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.b
  * JD-Core Version:    0.7.0.1
  */

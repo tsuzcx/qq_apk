@@ -4,15 +4,16 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PhotoSearchBoxPhoto
   extends JceStruct
 {
   static ArrayList<PhotoFeedsData> cache_photos = new ArrayList();
   public String attach_info = "";
-  public boolean hasmore;
-  public ArrayList<PhotoFeedsData> photos;
-  public long total;
+  public boolean hasmore = false;
+  public ArrayList<PhotoFeedsData> photos = null;
+  public long total = 0L;
   
   static
   {
@@ -40,19 +41,21 @@ public final class PhotoSearchBoxPhoto
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.photos != null) {
-      paramJceOutputStream.write(this.photos, 0);
+    Object localObject = this.photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.total, 1);
     paramJceOutputStream.write(this.hasmore, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PhotoSearchBoxPhoto
  * JD-Core Version:    0.7.0.1
  */

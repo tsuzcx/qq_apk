@@ -1,80 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 
 public final class bmh
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String xAL;
+  public String ZUY;
+  public String ZUZ;
+  public String ZVa;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(60061);
+    AppMethodBeat.i(259073);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xAL == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: PhoneNum");
-        AppMethodBeat.o(60061);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZUY != null) {
+        paramVarArgs.g(1, this.ZUY);
       }
-      if (this.xAL != null) {
-        paramVarArgs.e(1, this.xAL);
+      if (this.ZUZ != null) {
+        paramVarArgs.g(2, this.ZUZ);
       }
-      AppMethodBeat.o(60061);
+      if (this.ZVa != null) {
+        paramVarArgs.g(3, this.ZVa);
+      }
+      AppMethodBeat.o(259073);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xAL == null) {
-        break label261;
+      if (this.ZUY == null) {
+        break label330;
       }
     }
-    label261:
-    for (paramInt = e.a.a.b.b.a.f(1, this.xAL) + 0;; paramInt = 0)
+    label330:
+    for (int i = i.a.a.b.b.a.h(1, this.ZUY) + 0;; i = 0)
     {
-      AppMethodBeat.o(60061);
-      return paramInt;
+      paramInt = i;
+      if (this.ZUZ != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.ZUZ);
+      }
+      i = paramInt;
+      if (this.ZVa != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ZVa);
+      }
+      AppMethodBeat.o(259073);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.xAL == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: PhoneNum");
-          AppMethodBeat.o(60061);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(60061);
+        AppMethodBeat.o(259073);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bmh localbmh = (bmh)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(60061);
+          AppMethodBeat.o(259073);
           return -1;
+        case 1: 
+          localbmh.ZUY = locala.ajGk.readString();
+          AppMethodBeat.o(259073);
+          return 0;
+        case 2: 
+          localbmh.ZUZ = locala.ajGk.readString();
+          AppMethodBeat.o(259073);
+          return 0;
         }
-        localbmh.xAL = locala.CLY.readString();
-        AppMethodBeat.o(60061);
+        localbmh.ZVa = locala.ajGk.readString();
+        AppMethodBeat.o(259073);
         return 0;
       }
-      AppMethodBeat.o(60061);
+      AppMethodBeat.o(259073);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bmh
  * JD-Core Version:    0.7.0.1
  */

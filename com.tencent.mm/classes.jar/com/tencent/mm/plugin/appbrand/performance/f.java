@@ -1,52 +1,50 @@
 package com.tencent.mm.plugin.appbrand.performance;
 
-import android.annotation.TargetApi;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@TargetApi(16)
 public final class f
   implements Choreographer.FrameCallback
 {
-  public f.a iAO;
-  private Choreographer iBd;
-  private long iBe;
-  private int iBf;
-  public volatile double iBg;
+  private Choreographer byW;
+  public volatile double mCurrentFps;
   private boolean mEnabled;
   public long mInterval;
+  private long tDV;
+  private int tDW;
+  public a tDX;
   
   public f()
   {
-    AppMethodBeat.i(114391);
-    this.iBe = 0L;
-    this.iBf = 0;
-    this.mEnabled = true;
-    this.iBg = 0.0D;
-    this.iBd = Choreographer.getInstance();
+    AppMethodBeat.i(139905);
+    this.tDV = 0L;
+    this.tDW = 0;
+    this.mEnabled = false;
+    this.mCurrentFps = 0.0D;
+    this.byW = Choreographer.getInstance();
     this.mInterval = 200L;
-    AppMethodBeat.o(114391);
+    AppMethodBeat.o(139905);
   }
   
   public final void doFrame(long paramLong)
   {
     double d1 = 60.0D;
-    AppMethodBeat.i(114394);
+    AppMethodBeat.i(139908);
     double d2;
     if (this.mEnabled)
     {
       paramLong /= 1000000L;
-      if (this.iBe <= 0L) {
+      if (this.tDV <= 0L) {
         break label136;
       }
-      long l = paramLong - this.iBe;
-      this.iBf += 1;
+      long l = paramLong - this.tDV;
+      this.tDW += 1;
       if (l > this.mInterval)
       {
-        d2 = this.iBf * 1000 / l;
+        d2 = this.tDW * 1000 / l;
         if (d2 < 60.0D) {
           break label144;
         }
@@ -54,21 +52,21 @@ public final class f
     }
     for (;;)
     {
-      this.iBe = paramLong;
-      this.iBf = 0;
-      this.iBg = d1;
-      if (this.iAO != null) {
-        this.iAO.u(d1);
+      this.tDV = paramLong;
+      this.tDW = 0;
+      this.mCurrentFps = d1;
+      if (this.tDX != null) {
+        this.tDX.K(d1);
       }
       for (;;)
       {
         if (this.mEnabled) {
-          this.iBd.postFrameCallback(this);
+          this.byW.postFrameCallback(this);
         }
-        AppMethodBeat.o(114394);
+        AppMethodBeat.o(139908);
         return;
         label136:
-        this.iBe = paramLong;
+        this.tDV = paramLong;
       }
       label144:
       d1 = d2;
@@ -77,37 +75,42 @@ public final class f
   
   public final void start()
   {
-    AppMethodBeat.i(114392);
+    AppMethodBeat.i(139906);
     if (this.mEnabled)
     {
-      AppMethodBeat.o(114392);
+      AppMethodBeat.o(139906);
       return;
     }
     this.mEnabled = true;
-    ab.i("FPSMetronome", "[start] stack:%s", new Object[] { bo.dtY() });
-    this.iBd.postFrameCallback(this);
-    AppMethodBeat.o(114392);
+    Log.i("FPSMetronome", "[start] stack:%s", new Object[] { Util.getStack() });
+    this.byW.postFrameCallback(this);
+    AppMethodBeat.o(139906);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(114393);
+    AppMethodBeat.i(139907);
     if (!this.mEnabled)
     {
-      AppMethodBeat.o(114393);
+      AppMethodBeat.o(139907);
       return;
     }
     this.mEnabled = false;
-    this.iBe = 0L;
-    this.iBf = 0;
-    ab.i("FPSMetronome", "[stop] stack:%s", new Object[] { bo.dtY() });
-    this.iBd.removeFrameCallback(this);
-    AppMethodBeat.o(114393);
+    this.tDV = 0L;
+    this.tDW = 0;
+    Log.i("FPSMetronome", "[stop] stack:%s", new Object[] { Util.getStack() });
+    this.byW.removeFrameCallback(this);
+    AppMethodBeat.o(139907);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void K(double paramDouble);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.f
  * JD-Core Version:    0.7.0.1
  */

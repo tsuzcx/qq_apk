@@ -1,15 +1,20 @@
+import EncounterSvc.RespGetEncounterV2;
 import com.tencent.mobileqq.activity.NearPeopleActivity;
-import com.tencent.mobileqq.app.NearHornHandler;
+import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
+import com.tencent.mobileqq.activity.PeopleAroundBaseActivity.BaseLbsObserver;
 
 public class cxf
-  implements Runnable
+  extends PeopleAroundBaseActivity.BaseLbsObserver
 {
-  public cxf(NearPeopleActivity paramNearPeopleActivity) {}
-  
-  public void run()
+  public cxf(NearPeopleActivity paramNearPeopleActivity)
   {
-    if (NearPeopleActivity.a(this.a) != null) {
-      NearPeopleActivity.a(this.a).a("", Long.valueOf(0L), "1", NearPeopleActivity.c(this.a), Boolean.valueOf(false));
+    super(paramNearPeopleActivity);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, int paramInt1, RespGetEncounterV2 paramRespGetEncounterV2, boolean paramBoolean2, int paramInt2, int paramInt3)
+  {
+    if (paramInt2 == PeopleAroundBaseActivity.w) {
+      super.a(paramBoolean1, paramString, paramInt1, paramRespGetEncounterV2, paramBoolean2, paramInt2, paramInt3);
     }
   }
 }

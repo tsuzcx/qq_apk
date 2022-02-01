@@ -1,4 +1,5 @@
 {
+    
     "ReadInjoy_large_cell":
     {
         "view_type":"container",
@@ -22,46 +23,37 @@
             {
                 "$includeComponet": "componet/social_header_partner.geojson"
             },
-
             {
                 "view_type":"container",
                 "layout_type":"layout_relative",
-                "margin_top":"8",
-                "margin_left":"6",
+                "margin_top":"14",
+                "margin_left":"12",
                 "height":{
                     "type":"relative",
-                    "value":"203"
+                    "value":"197"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"363"
+                    "value":"351"
                 },
                 "subviews":[
 
                     {
                         "view_type":"ReadInjoyAsynImageView",
                         "view_id":"id_article_large_imge",
-
                         "margin_left":"0",
                         "margin_top":"0",
-
                         "height":{
-                            "type":"relative",
-                            "value":"203"
+                            "type": "match_parent"
                         },
                         "width":{
-                            "type":"relative",
-                            "value":"363"
+                            "type": "match_parent"
                         },
                         "event_type": "cmd_large_img_click",
                         "attributes":{
-                            "setFrameString:":"-1",
                             "setImageWithURLString:lineup:":["-1","-1"]
                         }
                     },
-
-
-
                     {
                         "view_type":"container",
                         "layout_type":"layout_relative",
@@ -87,7 +79,6 @@
                                     "type": "match_parent"
                                 },
                                 "attributes":{
-                                    "setFrameString:":"-1",
                                     "setCornerRadiusString:":"2.0",
                                     "setBackgroundColorString:":"#80000000"
                                 }
@@ -107,7 +98,6 @@
                                     "value":"12"
                                 },
                                 "attributes":{
-                                    "setFrameString:":"-1",
                                     "loadImageWithPath:":"-1"
 
                                 }
@@ -129,8 +119,6 @@
                                 },
                                 "attributes":{
                                     "setTextAlignmentString:":"2",
-
-                                    "setFrameString:":"-1",
                                     "setTextColorString:":"#FFFFFF",
                                     "setText:":"-1",
                                     "setFontSizeString:":"11"
@@ -155,195 +143,219 @@
                         "attributes":{
                             "loadImageWithPath:":"$red_packet_icon_path"
                         }
-                    }
-                ]
-            },
-
-
-            {
-                "view_type":"container",
-
-                "layout_type":"layout_relative",
-                "margin_left":"6",
-                "margin_top":"-203",
-                "height":{
-                    "type":"relative",
-                    "value":"203"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"363"
-                },
-                "subviews":[
-                    {
-                        "view_type":"UIImageView",
-                        "view_id":"id_large_video_cover",
-                        "height":{
-                            "type":"relative",
-                            "value":"203"
-                        },
-                        "width":{
-                            "type":"relative",
-                            "value":"363"
-                        },
-                        "event_type": "cmd_large_video_click",
-                        "attributes":{
-                            "loadImageWithPath:":"-1"
-
-                        }
-                    },
-
-                    {
-                        "view_type":"UIImageView",
-                        "view_id":"id_large_video_icon",
-                        "align_parent_center": "YES",
-                        "height":{
-                            "type":"relative",
-                            "value":"50"
-                        },
-                        "width":{
-                            "type":"relative",
-                            "value":"50"
-                        },
-                        "attributes":{
-                            "loadImageWithPath:":"-1"
-                        }
                     },
                     {
-                        "view_type":"UILabel",
-                        "view_id":"id_video_play_tips",
-                        "align_parent_top":"YES",
-                        "align_parent_center":"YES",
-
-                        "margin_top": "50",
+                        "view_type":"container",
+                        "layout_type":"layout_relative",
                         "height":{
-                            "type":"relative",
-                            "value":"14"
+                            "type": "match_parent"
                         },
                         "width":{
-                            "type": "wrap_content"
+                            "type": "match_parent"
                         },
-                        "attributes":{
-                            "setFrameString:":"-1",
-                            "setTextColorString:":"#EEFFFFFF",
-                            "setText:":"-1",
-                            "setFontSizeString:":"14"
-                        }
-                    },
-                    {
-                        "view_type": "UIView",
-                        "layout_type": "layout_relative",
-                        "view_id": "id_video_bg",
-                        "align_parent_center": "YES",
-                        "height": {
-                            "type": "relative",
-                            "value": "40"
-                        },
-                        "width": {
-                            "type": "wrap_content"
-                        },
-                        "attributes": {
-                            "setFrameString:": "-1",
-                            "setCornerRadiusString:": "20",
-                            "setBackgroundColorString:": "#80000000"
-                        },
-                        "subviews": [
+                        "subviews":[
                             {
-                                "view_type": "UIImageView",
-                                "view_id": "id_video_play_icon",
-                                "align_parent_left": "YES",
-                                "margin_left": "16",
-                                "margin_top": "13.5",
-                                "height": {
-                                    "type": "relative",
-                                    "value": "13"
+                                "view_type":"UIImageView",
+                                "view_id":"id_large_video_cover",
+                                "margin_right": "0.5",
+                                "height":{
+                                    "type": "match_parent"
                                 },
-                                "width": {
-                                    "type": "relative",
-                                    "value": "12"
+                                "width":{
+                                    "type": "match_parent"
                                 },
-                                "attributes": {
-                                    "setFrameString:": "-1",
-                                    "loadImageWithPath:": "-1"
+                                "event_type": "cmd_large_video_click",
+                                "attributes":{
+                                    "loadImageWithPath:":"-1"
                                 }
                             },
                             {
-                                "view_type": "UILabel",
-                                "view_id": "id_video_paly_text",
-                                "right_of_view": "id_video_play_icon",
-                                "margin_left": "6",
-                                "margin_right": "16",
-                                "margin_top": "12",
-                                "height": {
-                                    "type": "relative",
-                                    "value": "16"
+                                "view_type":"container",
+                                "layout_type":"layout_relative",
+                                "height":{
+                                    "type": "match_parent"
                                 },
-                                "width": {
-                                    "type": "wrap_content"
+                                "width":{
+                                    "type": "match_parent"
                                 },
-                                "attributes": {
-                                    "setTextAlignmentString:": "2",
-                                    "setFrameString:": "-1",
-                                    "setTextColorString:": "#FFFFFF",
-                                    "setText:": "-1",
-                                    "setFontSizeString:": "14"
-                                }
-                            }
+                                "subviews":[
+                                    {
+                                        "view_type":"UIImageView",
+                                        "view_id":"id_large_video_icon",
+                                        "align_parent_center": "YES",
+                                        "height":{
+                                            "type":"relative",
+                                            "value":"50"
+                                        },
+                                        "width":{
+                                            "type":"relative",
+                                            "value":"50"
+                                        },
+                                        "attributes":{
+                                            "loadImageWithPath:":"-1"
+                                        }
+                                    },
+                                    {
+                                        "view_type":"UILabel",
+                                        "view_id":"id_video_play_tips",
+                                        "align_parent_top":"YES",
+                                        "align_parent_center":"YES",
+
+                                        "margin_top": "50",
+                                        "height":{
+                                            "type":"relative",
+                                            "value":"14"
+                                        },
+                                        "width":{
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes":{
+                                            "setTextColorString:":"#EEFFFFFF",
+                                            "setText:":"-1",
+                                            "setFontSizeString:":"14"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIView",
+                                        "layout_type": "layout_relative",
+                                        "view_id": "id_video_bg",
+                                        "align_parent_center": "YES",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "40"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes":{
+                                            "setCornerRadiusString:": "20",
+                                            "setBackgroundColorString:": "#80000000"
+                                        },
+                                        "subviews": [
+                                            {
+                                                "view_type": "UIImageView",
+                                                "view_id": "id_video_play_icon",
+                                                "align_parent_left": "YES",
+                                                "margin_left": "16",
+                                                "margin_top": "13.5",
+                                                "height": {
+                                                    "type": "relative",
+                                                    "value": "13"
+                                                },
+                                                "width": {
+                                                    "type": "relative",
+                                                    "value": "12"
+                                                },
+                                                "attributes": {
+                                                    "loadImageWithPath:": "-1"
+                                                }
+                                            },
+                                            {
+                                                "view_type": "UILabel",
+                                                "view_id": "id_video_paly_text",
+                                                "right_of_view": "id_video_play_icon",
+                                                "margin_left": "6",
+                                                "margin_right": "16",
+                                                "margin_top": "12",
+                                                "height": {
+                                                    "type": "relative",
+                                                    "value": "16"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "attributes": {
+                                                    "setTextAlignmentString:": "2",
+                                                    "setTextColorString:": "#FFFFFF",
+                                                    "setText:": "-1",
+                                                    "setFontSizeString:": "14"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "view_type":"UILabel",
+                                        "view_id":"id_large_video_duration",
+                                        "margin_right":"6",
+                                        "margin_bottom":"6",
+                                        "align_parent_right":"YES",
+                                        "align_parent_bottom":"YES",
+                                        "height":{
+                                            "type":"absolutely",
+                                            "value": "18"
+                                        },
+                                        "width":{
+                                            "type":"absolutely",
+                                            "value": "39"
+                                        },
+                                        "attributes":{
+                                            "setText:":"-1",
+                                            "setBackgroundColorString:":"#52000000",
+                                            "setTextColorString:":"#ffffff",
+                                            "setFontSizeString:":"11",
+                                            "setTextAlignmentString:":"1",
+                                            "setCornerRadiusString:":"4"
+                                        }
+                                    }
+
+                                ]
+                            },
+                            {"$includeComponet": "componet/RIJ_round_corner.geojson"}
                         ]
-                    },
-
-                    {
-                        "view_type":"UILabel",
-                        "view_id":"id_large_video_duration",
-                        "margin_right":"6.5",
-                        "margin_bottom":"5",
-                        "align_parent_right":"YES",
-                        "align_parent_bottom":"YES",
-                        "height":{
-                            "type":"wrap_content"
-                        },
-                        "width":{
-                            "type":"wrap_content"
-                        },
-                        "attributes":{
-                            "setText:":"-1",
-                            "setTextColorString:":"#ffffff",
-
-                            "setFontSizeString:":"12"
-                        }
                     }
-
                 ]
             },
-
             {
                 "view_type":"UILabel",
                 "view_id":"id_artilce_title",
-                "margin_left":"8",
-                "margin_top":"8",
+                "margin_left":"12",
+                "margin_top":"4",
                 "height":{
                     "type":"wrap_content"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"359"
+                    "value":"351"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setText:lineSpace:":["","5"],
                     "setTextColorString:":"-1",
-                    "setFontSizeString:":"17",
+                    "setFontSizeString:":"18",
                     "setNumberOfLinesString:":"2"
                 }
             },
-
+            {
+                "view_type":"PTSRichTextView",
+                "view_id": "id_article_richtext_title",
+                "margin_left":"12",
+                "margin_top":"4",
+                "height":{
+                    "type":"wrap_content"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"351"
+                },
+                "attributes":{
+                    "setBackgroundColorString:" :"#00000000",
+                    "setRichData:":[
+                     {
+                        "name":"div",
+                        "attrs":{
+                            "style":"font-size:18px;line-height: 25px; width:351rpx;color: #242424;-webkit-line-clamp:${rich_text_line}"
+                        },
+                        "children":"$rich_text_info"
+                     }
+                   ]
+                }
+            },
             {"$includeComponet":"componet/article_main_body.geojson"},
             {"$includeComponet":"componet/column_bar.geojson"},
-            {"$includeComponet":"componet/large_image_info_bar.geojson"},
+            {"$includeComponet":"componet/info_bar.geojson"},
             {
                 "view_type": "ReadInJoyAwesomeCommentView",
                 "view_id": "id_awesomeview_mutlilines",
-                "margin_left":"6",
+                "margin_left":"12",
                 "width": {
                     "type": "match_parent"
                 },
@@ -354,25 +366,7 @@
                     "setAwesomeCommentInfo:":"$awesomeCommentInfo"
                 }
             },
-
-            {
-                "view_type":"UIView",
-                "view_id":"id_separator",
-                "margin_left":"6",
-                "margin_top":"7",
-
-                "height":{
-                    "type":"absolutely","value":"0.5"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"359"
-                },
-                "attributes":{
-                    "setFrameString:":"-1",
-                    "setBackgroundColorString:":"#E5E5E5"
-                }
-            }
+            {"$includeComponet":"componet/separator_normal_bottom.geojson"}
         ]
     }
 }

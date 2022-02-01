@@ -39,16 +39,20 @@ public abstract class TextureSurfaceRenderer
   
   private EGLConfig chooseEglConfig()
   {
-    int[] arrayOfInt1 = new int[1];
+    Object localObject = new int[1];
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt2 = getConfig();
-    if (!this.egl.eglChooseConfig(this.eglDisplay, arrayOfInt2, arrayOfEGLConfig, 1, arrayOfInt1)) {
-      throw new IllegalArgumentException("Failed to choose config: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
+    int[] arrayOfInt = getConfig();
+    if (this.egl.eglChooseConfig(this.eglDisplay, arrayOfInt, arrayOfEGLConfig, 1, (int[])localObject))
+    {
+      if (localObject[0] > 0) {
+        return arrayOfEGLConfig[0];
+      }
+      return null;
     }
-    if (arrayOfInt1[0] > 0) {
-      return arrayOfEGLConfig[0];
-    }
-    return null;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Failed to choose config: ");
+    ((StringBuilder)localObject).append(GLUtils.getEGLErrorString(this.egl.eglGetError()));
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   private EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
@@ -79,12 +83,24 @@ public abstract class TextureSurfaceRenderer
     localObject = chooseEglConfig();
     this.eglContext = createContext(this.egl, this.eglDisplay, (EGLConfig)localObject);
     this.eglSurface = this.egl.eglCreateWindowSurface(this.eglDisplay, (EGLConfig)localObject, this.texture, null);
-    if ((this.eglSurface == null) || (this.eglSurface == EGL10.EGL_NO_SURFACE)) {
-      throw new RuntimeException("GL Error: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
+    localObject = this.eglSurface;
+    if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
+    {
+      localObject = this.egl;
+      EGLDisplay localEGLDisplay = this.eglDisplay;
+      EGLSurface localEGLSurface = this.eglSurface;
+      if (((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.eglContext)) {
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GL Make current error: ");
+      ((StringBuilder)localObject).append(GLUtils.getEGLErrorString(this.egl.eglGetError()));
+      throw new RuntimeException(((StringBuilder)localObject).toString());
     }
-    if (!this.egl.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext)) {
-      throw new RuntimeException("GL Make current error: " + GLUtils.getEGLErrorString(this.egl.eglGetError()));
-    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("GL Error: ");
+    ((StringBuilder)localObject).append(GLUtils.getEGLErrorString(this.egl.eglGetError()));
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   private void pingFps()
@@ -95,7 +111,11 @@ public abstract class TextureSurfaceRenderer
     this.frames += 1;
     if (System.currentTimeMillis() - this.lastFpsOutput > 1000L)
     {
-      PlayerUtils.log(2, LOG_TAG, "FPS: " + this.frames);
+      String str = LOG_TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("FPS: ");
+      localStringBuilder.append(this.frames);
+      PlayerUtils.log(2, str, localStringBuilder.toString());
       this.lastFpsOutput = System.currentTimeMillis();
       this.frames = 0;
     }
@@ -125,21 +145,22 @@ public abstract class TextureSurfaceRenderer
   {
     this.running = false;
     PlayerUtils.log(4, LOG_TAG, "start release");
-    synchronized (this.mLock)
+    try
     {
-      try
+      synchronized (this.mLock)
       {
         this.mLock.wait(800L);
-        PlayerUtils.log(4, LOG_TAG, "released");
-        return;
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          PlayerUtils.log(4, LOG_TAG, "interrupted " + PlayerUtils.getPrintableStackTrace(localInterruptedException));
-        }
-      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      String str = LOG_TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("interrupted ");
+      localStringBuilder.append(PlayerUtils.getPrintableStackTrace(localInterruptedException));
+      PlayerUtils.log(4, str, localStringBuilder.toString());
+      PlayerUtils.log(4, LOG_TAG, "released");
+      return;
     }
   }
   
@@ -148,7 +169,7 @@ public abstract class TextureSurfaceRenderer
   {
     // Byte code:
     //   0: iconst_4
-    //   1: getstatic 40	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
+    //   1: getstatic 144	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
     //   4: ldc 236
     //   6: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   9: aload_0
@@ -156,12 +177,12 @@ public abstract class TextureSurfaceRenderer
     //   13: aload_0
     //   14: invokevirtual 240	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:initGLComponents	()V
     //   17: iconst_4
-    //   18: getstatic 40	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
+    //   18: getstatic 144	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
     //   21: ldc 242
     //   23: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   26: aload_0
-    //   27: getfield 47	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:running	Z
-    //   30: ifeq +66 -> 96
+    //   27: getfield 45	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:running	Z
+    //   30: ifeq +61 -> 91
     //   33: invokestatic 192	java/lang/System:currentTimeMillis	()J
     //   36: lstore_1
     //   37: aload_0
@@ -170,11 +191,11 @@ public abstract class TextureSurfaceRenderer
     //   42: invokevirtual 246	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:draw	()Z
     //   45: ifeq +21 -> 66
     //   48: aload_0
-    //   49: getfield 75	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:egl	Ljavax/microedition/khronos/egl/EGL10;
+    //   49: getfield 73	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:egl	Ljavax/microedition/khronos/egl/EGL10;
     //   52: aload_0
-    //   53: getfield 77	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:eglDisplay	Ljavax/microedition/khronos/egl/EGLDisplay;
+    //   53: getfield 75	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:eglDisplay	Ljavax/microedition/khronos/egl/EGLDisplay;
     //   56: aload_0
-    //   57: getfield 130	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
+    //   57: getfield 128	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:eglSurface	Ljavax/microedition/khronos/egl/EGLSurface;
     //   60: invokeinterface 249 3 0
     //   65: pop
     //   66: invokestatic 192	java/lang/System:currentTimeMillis	()J
@@ -192,130 +213,147 @@ public abstract class TextureSurfaceRenderer
     //   84: lload_1
     //   85: invokestatic 254	java/lang/Thread:sleep	(J)V
     //   88: goto -62 -> 26
-    //   91: astore 5
-    //   93: goto -67 -> 26
-    //   96: aload_0
-    //   97: invokevirtual 256	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:deinitGLComponents	()V
-    //   100: aload_0
-    //   101: invokespecial 258	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:deinitEGL	()V
-    //   104: iconst_4
-    //   105: getstatic 40	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
-    //   108: ldc_w 260
-    //   111: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   114: aload_0
-    //   115: getfield 57	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
-    //   118: astore 5
-    //   120: aload 5
-    //   122: monitorenter
-    //   123: aload_0
-    //   124: getfield 57	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
-    //   127: invokevirtual 263	java/lang/Object:notify	()V
-    //   130: aload 5
-    //   132: monitorexit
-    //   133: return
-    //   134: astore 6
-    //   136: aload 5
-    //   138: monitorexit
-    //   139: aload 6
-    //   141: athrow
+    //   91: aload_0
+    //   92: invokevirtual 256	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:deinitGLComponents	()V
+    //   95: aload_0
+    //   96: invokespecial 258	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:deinitEGL	()V
+    //   99: iconst_4
+    //   100: getstatic 144	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
+    //   103: ldc_w 260
+    //   106: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   109: aload_0
+    //   110: getfield 55	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
+    //   113: astore 5
+    //   115: aload 5
+    //   117: monitorenter
+    //   118: aload_0
+    //   119: getfield 55	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
+    //   122: invokevirtual 263	java/lang/Object:notify	()V
+    //   125: aload 5
+    //   127: monitorexit
+    //   128: return
+    //   129: astore 6
+    //   131: aload 5
+    //   133: monitorexit
+    //   134: aload 6
+    //   136: athrow
+    //   137: astore 6
+    //   139: goto +109 -> 248
     //   142: astore 5
-    //   144: bipush 6
-    //   146: getstatic 40	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
-    //   149: new 87	java/lang/StringBuilder
+    //   144: getstatic 144	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
+    //   147: astore 6
+    //   149: new 83	java/lang/StringBuilder
     //   152: dup
-    //   153: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   156: ldc_w 265
-    //   159: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: aload 5
-    //   164: invokevirtual 266	java/lang/Exception:toString	()Ljava/lang/String;
-    //   167: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: ldc_w 268
-    //   173: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: aload 5
-    //   178: invokestatic 231	com/tencent/oskplayer/util/PlayerUtils:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   181: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   187: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   190: iconst_4
-    //   191: getstatic 40	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
-    //   194: ldc_w 260
-    //   197: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   200: aload_0
-    //   201: getfield 57	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
-    //   204: astore 5
-    //   206: aload 5
-    //   208: monitorenter
-    //   209: aload_0
-    //   210: getfield 57	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
-    //   213: invokevirtual 263	java/lang/Object:notify	()V
-    //   216: aload 5
-    //   218: monitorexit
-    //   219: return
-    //   220: astore 6
-    //   222: aload 5
-    //   224: monitorexit
-    //   225: aload 6
-    //   227: athrow
-    //   228: astore 6
-    //   230: iconst_4
-    //   231: getstatic 40	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
-    //   234: ldc_w 260
-    //   237: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   240: aload_0
-    //   241: getfield 57	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
-    //   244: astore 5
-    //   246: aload 5
-    //   248: monitorenter
-    //   249: aload_0
-    //   250: getfield 57	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
-    //   253: invokevirtual 263	java/lang/Object:notify	()V
-    //   256: aload 5
-    //   258: monitorexit
-    //   259: aload 6
-    //   261: athrow
-    //   262: astore 6
+    //   153: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   156: astore 7
+    //   158: aload 7
+    //   160: ldc_w 265
+    //   163: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   166: pop
+    //   167: aload 7
+    //   169: aload 5
+    //   171: invokevirtual 266	java/lang/Exception:toString	()Ljava/lang/String;
+    //   174: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: pop
+    //   178: aload 7
+    //   180: ldc_w 268
+    //   183: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: pop
+    //   187: aload 7
+    //   189: aload 5
+    //   191: invokestatic 229	com/tencent/oskplayer/util/PlayerUtils:getPrintableStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   194: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: pop
+    //   198: bipush 6
+    //   200: aload 6
+    //   202: aload 7
+    //   204: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   207: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   210: iconst_4
+    //   211: getstatic 144	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
+    //   214: ldc_w 260
+    //   217: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   220: aload_0
+    //   221: getfield 55	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
+    //   224: astore 5
+    //   226: aload 5
+    //   228: monitorenter
+    //   229: aload_0
+    //   230: getfield 55	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
+    //   233: invokevirtual 263	java/lang/Object:notify	()V
+    //   236: aload 5
+    //   238: monitorexit
+    //   239: return
+    //   240: astore 6
+    //   242: aload 5
+    //   244: monitorexit
+    //   245: aload 6
+    //   247: athrow
+    //   248: iconst_4
+    //   249: getstatic 144	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:LOG_TAG	Ljava/lang/String;
+    //   252: ldc_w 260
+    //   255: invokestatic 152	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   258: aload_0
+    //   259: getfield 55	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
+    //   262: astore 5
     //   264: aload 5
-    //   266: monitorexit
-    //   267: aload 6
-    //   269: athrow
+    //   266: monitorenter
+    //   267: aload_0
+    //   268: getfield 55	com/tencent/oskplayer/videorenderer/TextureSurfaceRenderer:mLock	Ljava/lang/Object;
+    //   271: invokevirtual 263	java/lang/Object:notify	()V
+    //   274: aload 5
+    //   276: monitorexit
+    //   277: aload 6
+    //   279: athrow
+    //   280: astore 6
+    //   282: aload 5
+    //   284: monitorexit
+    //   285: goto +6 -> 291
+    //   288: aload 6
+    //   290: athrow
+    //   291: goto -3 -> 288
+    //   294: astore 5
+    //   296: goto -270 -> 26
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	270	0	this	TextureSurfaceRenderer
+    //   0	299	0	this	TextureSurfaceRenderer
     //   36	49	1	l1	long
     //   69	5	3	l2	long
-    //   91	1	5	localInterruptedException	InterruptedException
-    //   118	19	5	localObject1	Object
-    //   142	35	5	localException	java.lang.Exception
-    //   204	61	5	localObject2	Object
-    //   134	6	6	localObject3	Object
-    //   220	6	6	localObject4	Object
-    //   228	32	6	localObject5	Object
-    //   262	6	6	localObject6	Object
+    //   113	19	5	localObject1	Object
+    //   142	48	5	localException	java.lang.Exception
+    //   224	59	5	localObject2	Object
+    //   294	1	5	localInterruptedException	InterruptedException
+    //   129	6	6	localObject3	Object
+    //   137	1	6	localObject4	Object
+    //   147	54	6	str	String
+    //   240	38	6	localObject5	Object
+    //   280	9	6	localObject6	Object
+    //   156	47	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   84	88	91	java/lang/InterruptedException
-    //   123	133	134	finally
-    //   136	139	134	finally
+    //   118	128	129	finally
+    //   131	134	129	finally
+    //   0	26	137	finally
+    //   26	66	137	finally
+    //   66	70	137	finally
+    //   84	88	137	finally
+    //   91	99	137	finally
+    //   144	210	137	finally
     //   0	26	142	java/lang/Exception
     //   26	66	142	java/lang/Exception
     //   66	70	142	java/lang/Exception
     //   84	88	142	java/lang/Exception
-    //   96	104	142	java/lang/Exception
-    //   209	219	220	finally
-    //   222	225	220	finally
-    //   0	26	228	finally
-    //   26	66	228	finally
-    //   66	70	228	finally
-    //   84	88	228	finally
-    //   96	104	228	finally
-    //   144	190	228	finally
-    //   249	259	262	finally
-    //   264	267	262	finally
+    //   91	99	142	java/lang/Exception
+    //   229	239	240	finally
+    //   242	245	240	finally
+    //   267	277	280	finally
+    //   282	285	280	finally
+    //   84	88	294	java/lang/InterruptedException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.videorenderer.TextureSurfaceRenderer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
-import avbh;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.NearbyConstants;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.ipc.INearbyProcManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -11,38 +12,39 @@ final class NearbyHybridFragment$2
 {
   public void run()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject = localAppRuntime;
-    if (localAppRuntime != null) {
-      localObject = localAppRuntime.getAppRuntime("module_nearby");
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject1 = localObject2;
+    if (localObject2 != null) {
+      localObject1 = ((AppRuntime)localObject2).getAppRuntime("module_nearby");
     }
-    if ((localObject instanceof NearbyAppInterface))
+    if ((localObject1 instanceof INearbyAppInterface))
     {
-      localObject = (avbh)((NearbyAppInterface)localObject).getManager(214);
-      if (localObject != null)
+      localObject1 = (INearbyProcManager)((INearbyAppInterface)localObject1).getManager(NearbyConstants.g);
+      if (localObject1 != null)
       {
-        NearbyHybridFragment.m = true;
-        ((avbh)localObject).c();
+        NearbyHybridFragment.M = true;
+        ((INearbyProcManager)localObject1).c();
         if (QLog.isColorLevel()) {
           QLog.d("nearby.NearbyHybridFragment", 2, "pre load now plugin!");
         }
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
+      else if (QLog.isColorLevel())
       {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("nearby.NearbyHybridFragment", 2, "pre load now plugin! err npb null;");
-      return;
+        QLog.d("nearby.NearbyHybridFragment", 2, "pre load now plugin! err npb null;");
+      }
     }
-    QLog.d("nearby.NearbyHybridFragment", 2, "pre load now plugin! err runtime null or wrong! app = " + localObject);
+    else if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("pre load now plugin! err runtime null or wrong! app = ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("nearby.NearbyHybridFragment", 2, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.2
  * JD-Core Version:    0.7.0.1
  */

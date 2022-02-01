@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="74.0dip" android:layout_height="34.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:textSize="10.0sp" android:textColor="@color/b53" android:gravity="center" android:id="@id/ax1" android:background="@drawable/jil" android:layout_width="66.0dip" android:layout_height="26.0dip" android:layout_margin="4.0dip" android:checked="true" android:button="@null" android:text="不限" />
+</RelativeLayout>

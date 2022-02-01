@@ -10,7 +10,7 @@ class ApolloGameStateMachine$4
   
   public void run()
   {
-    if ((!ApolloGameStateMachine.a.get()) && (ApolloGameStateMachine.a(this.this$0) != null))
+    if ((!ApolloGameStateMachine.b.get()) && (ApolloGameStateMachine.a(this.this$0) != null))
     {
       ThreadManager.removeJobFromThreadPool(ApolloGameStateMachine.a(this.this$0), 16);
       ThreadManager.excute(ApolloGameStateMachine.a(this.this$0), 16, null, true);
@@ -19,7 +19,7 @@ class ApolloGameStateMachine$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.4
  * JD-Core Version:    0.7.0.1
  */

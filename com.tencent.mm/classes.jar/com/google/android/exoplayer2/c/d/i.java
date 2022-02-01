@@ -7,19 +7,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i
 {
-  private static final int[] aHT;
+  private static final int[] cRL;
   
   static
   {
-    AppMethodBeat.i(95012);
-    aHT = new int[] { x.aS("isom"), x.aS("iso2"), x.aS("iso3"), x.aS("iso4"), x.aS("iso5"), x.aS("iso6"), x.aS("avc1"), x.aS("hvc1"), x.aS("hev1"), x.aS("mp41"), x.aS("mp42"), x.aS("3g2a"), x.aS("3g2b"), x.aS("3gr6"), x.aS("3gs6"), x.aS("3ge6"), x.aS("3gg6"), x.aS("M4V "), x.aS("M4A "), x.aS("f4v "), x.aS("kddi"), x.aS("M4VP"), x.aS("qt  "), x.aS("MSNV") };
-    AppMethodBeat.o(95012);
+    AppMethodBeat.i(92128);
+    cRL = new int[] { x.du("isom"), x.du("iso2"), x.du("iso3"), x.du("iso4"), x.du("iso5"), x.du("iso6"), x.du("avc1"), x.du("hvc1"), x.du("hev1"), x.du("mp41"), x.du("mp42"), x.du("3g2a"), x.du("3g2b"), x.du("3gr6"), x.du("3gs6"), x.du("3ge6"), x.du("3gg6"), x.du("M4V "), x.du("M4A "), x.du("f4v "), x.du("kddi"), x.du("M4VP"), x.du("qt  "), x.du("MSNV") };
+    AppMethodBeat.o(92128);
   }
   
   private static boolean b(f paramf, boolean paramBoolean)
   {
-    AppMethodBeat.i(95010);
-    long l2 = paramf.getLength();
+    AppMethodBeat.i(92126);
+    long l2 = paramf.RU();
     long l1;
     if (l2 != -1L)
     {
@@ -43,26 +43,26 @@ final class i
       if (i < n)
       {
         m = 8;
-        localm.reset(8);
+        localm.iF(8);
         paramf.b(localm.data, 0, 8);
-        l2 = localm.cc();
+        l2 = localm.FT();
         i1 = localm.readInt();
         if (l2 == 1L)
         {
           k = 16;
           paramf.b(localm.data, 8, 8);
-          localm.em(16);
-          l1 = localm.qV();
+          localm.iG(16);
+          l1 = localm.UP();
         }
         while (l1 < k)
         {
-          AppMethodBeat.o(95010);
+          AppMethodBeat.o(92126);
           return false;
           l1 = l2;
           k = m;
           if (l2 == 0L)
           {
-            long l3 = paramf.getLength();
+            long l3 = paramf.RU();
             l1 = l2;
             k = m;
             if (l3 != -1L)
@@ -74,10 +74,10 @@ final class i
         }
         m = i + k;
         i = m;
-        if (i1 == a.aEQ) {
+        if (i1 == a.cOI) {
           continue;
         }
-        if ((i1 != a.aEZ) && (i1 != a.aFb)) {
+        if ((i1 != a.cOR) && (i1 != a.cOT)) {
           break label283;
         }
         bool1 = true;
@@ -88,20 +88,20 @@ final class i
         if ((j == 0) || (paramBoolean != bool1)) {
           break;
         }
-        AppMethodBeat.o(95010);
+        AppMethodBeat.o(92126);
         return true;
         bool1 = bool2;
       } while (m + l1 - k >= n);
       int k = (int)(l1 - k);
       i = m + k;
-      if (i1 == a.aEp)
+      if (i1 == a.cOh)
       {
         if (k < 8)
         {
-          AppMethodBeat.o(95010);
+          AppMethodBeat.o(92126);
           return false;
         }
-        localm.reset(k);
+        localm.iF(k);
         paramf.b(localm.data, 0, k);
         i1 = k / 4;
         m = 0;
@@ -109,9 +109,9 @@ final class i
         if (m < i1)
         {
           if (m == 1) {
-            localm.en(4);
+            localm.iH(4);
           }
-          while (!dy(localm.readInt()))
+          while (!hL(localm.readInt()))
           {
             m += 1;
             break;
@@ -120,63 +120,63 @@ final class i
         }
         if (k == 0)
         {
-          AppMethodBeat.o(95010);
+          AppMethodBeat.o(92126);
           return false;
         }
         j = k;
       }
       else if (k != 0)
       {
-        paramf.dh(k);
+        paramf.hu(k);
       }
     }
-    AppMethodBeat.o(95010);
+    AppMethodBeat.o(92126);
     return false;
   }
   
-  private static boolean dy(int paramInt)
+  public static boolean g(f paramf)
   {
-    AppMethodBeat.i(95011);
-    if (paramInt >>> 8 == x.aS("3gp"))
+    AppMethodBeat.i(92124);
+    boolean bool = b(paramf, true);
+    AppMethodBeat.o(92124);
+    return bool;
+  }
+  
+  public static boolean h(f paramf)
+  {
+    AppMethodBeat.i(92125);
+    boolean bool = b(paramf, false);
+    AppMethodBeat.o(92125);
+    return bool;
+  }
+  
+  private static boolean hL(int paramInt)
+  {
+    AppMethodBeat.i(92127);
+    if (paramInt >>> 8 == x.du("3gp"))
     {
-      AppMethodBeat.o(95011);
+      AppMethodBeat.o(92127);
       return true;
     }
-    int[] arrayOfInt = aHT;
+    int[] arrayOfInt = cRL;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       if (arrayOfInt[i] == paramInt)
       {
-        AppMethodBeat.o(95011);
+        AppMethodBeat.o(92127);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(95011);
+    AppMethodBeat.o(92127);
     return false;
-  }
-  
-  public static boolean g(f paramf)
-  {
-    AppMethodBeat.i(95008);
-    boolean bool = b(paramf, true);
-    AppMethodBeat.o(95008);
-    return bool;
-  }
-  
-  public static boolean h(f paramf)
-  {
-    AppMethodBeat.i(95009);
-    boolean bool = b(paramf, false);
-    AppMethodBeat.o(95009);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.i
  * JD-Core Version:    0.7.0.1
  */

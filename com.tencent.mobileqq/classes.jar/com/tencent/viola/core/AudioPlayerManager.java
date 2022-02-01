@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import com.tencent.viola.utils.ViolaLogUtils;
 
 public class AudioPlayerManager
@@ -32,7 +33,7 @@ public class AudioPlayerManager
   private void initMediaPlayer()
   {
     release();
-    this.mMediaPlayer = new MediaPlayer();
+    this.mMediaPlayer = new ReportMediaPlayer();
     this.mMediaPlayer.setAudioStreamType(3);
     this.mMediaPlayer.setOnBufferingUpdateListener(new AudioPlayerManager.2(this));
     this.mMediaPlayer.setOnPreparedListener(new AudioPlayerManager.3(this));
@@ -66,11 +67,16 @@ public class AudioPlayerManager
     {
       this.mMediaPlayer.pause();
       this.mPlayDurationArray.put(this.mCurrentUniqueId, Integer.valueOf(this.mMediaPlayer.getCurrentPosition()));
-      AudioPlayerManager.AudioManagerListener localAudioManagerListener = (AudioPlayerManager.AudioManagerListener)this.mManagerListenerArray.get(this.mCurrentUniqueId);
-      if (localAudioManagerListener != null) {
-        localAudioManagerListener.playPaused();
+      Object localObject = (AudioPlayerManager.AudioManagerListener)this.mManagerListenerArray.get(this.mCurrentUniqueId);
+      if (localObject != null) {
+        ((AudioPlayerManager.AudioManagerListener)localObject).playPaused();
       }
-      ViolaLogUtils.d("AudioPlayerManager", "pausing,pause audio,data:" + this.mCurrentDataSource + ",pasuedDuration:" + this.mMediaPlayer.getCurrentPosition());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pausing,pause audio,data:");
+      ((StringBuilder)localObject).append(this.mCurrentDataSource);
+      ((StringBuilder)localObject).append(",pasuedDuration:");
+      ((StringBuilder)localObject).append(this.mMediaPlayer.getCurrentPosition());
+      ViolaLogUtils.d("AudioPlayerManager", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -78,55 +84,67 @@ public class AudioPlayerManager
   {
     try
     {
-      String str = (String)this.mAudioUrlArray.get(paramInt);
-      if (TextUtils.isEmpty(str)) {
-        return;
+      Object localObject1 = (String)this.mAudioUrlArray.get(paramInt);
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label377;
       }
-      if ((this.mCurrentUniqueId == paramInt) && (str.equals(this.mCurrentDataSource)))
+      int i = this.mCurrentUniqueId;
+      Object localObject2;
+      if ((i == paramInt) && (((String)localObject1).equals(this.mCurrentDataSource)))
       {
         this.mMediaPlayer.start();
-        localAudioManagerListener = (AudioPlayerManager.AudioManagerListener)this.mManagerListenerArray.get(this.mCurrentUniqueId);
-        if (localAudioManagerListener != null)
-        {
-          if (((Integer)this.mPlayDurationArray.get(this.mCurrentUniqueId, Integer.valueOf(0))).intValue() != 0) {
-            break label142;
+        localObject2 = (AudioPlayerManager.AudioManagerListener)this.mManagerListenerArray.get(this.mCurrentUniqueId);
+        if (localObject2 != null) {
+          if (((Integer)this.mPlayDurationArray.get(this.mCurrentUniqueId, Integer.valueOf(0))).intValue() == 0) {
+            ((AudioPlayerManager.AudioManagerListener)localObject2).playStart();
+          } else {
+            ((AudioPlayerManager.AudioManagerListener)localObject2).playResume();
           }
-          localAudioManagerListener.playStart();
         }
-        for (;;)
-        {
-          timerChange();
-          ViolaLogUtils.d("AudioPlayerManager", "playing,resume current audio,data:" + str + ",startDuration:" + this.mPlayDurationArray.get(this.mCurrentUniqueId));
-          return;
-          label142:
-          localAudioManagerListener.playResume();
+        timerChange();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("playing,resume current audio,data:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(",startDuration:");
+        ((StringBuilder)localObject2).append(this.mPlayDurationArray.get(this.mCurrentUniqueId));
+        ViolaLogUtils.d("AudioPlayerManager", ((StringBuilder)localObject2).toString());
+        return;
+      }
+      if (this.mMediaPlayer.isPlaying())
+      {
+        this.mMediaPlayer.pause();
+        this.mPlayDurationArray.put(this.mCurrentUniqueId, Integer.valueOf(this.mMediaPlayer.getCurrentPosition()));
+        localObject2 = (AudioPlayerManager.AudioManagerListener)this.mManagerListenerArray.get(this.mCurrentUniqueId);
+        if (localObject2 != null) {
+          ((AudioPlayerManager.AudioManagerListener)localObject2).playPaused();
         }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("playing,paused last audio,data:");
+        ((StringBuilder)localObject2).append(this.mCurrentDataSource);
+        ((StringBuilder)localObject2).append(",pasuedDuration:");
+        ((StringBuilder)localObject2).append(this.mMediaPlayer.getCurrentPosition());
+        ViolaLogUtils.d("AudioPlayerManager", ((StringBuilder)localObject2).toString());
       }
-      if (!this.mMediaPlayer.isPlaying()) {
-        break label272;
-      }
+      this.mCurrentUniqueId = paramInt;
+      this.mCurrentDataSource = ((String)localObject1);
+      this.mMediaPlayer.reset();
+      this.mMediaPlayer.setDataSource((String)localObject1);
+      this.mMediaPlayer.prepareAsync();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("playing,play new audio,data:");
+      ((StringBuilder)localObject1).append(this.mCurrentDataSource);
+      ViolaLogUtils.d("AudioPlayerManager", ((StringBuilder)localObject1).toString());
+      return;
     }
     catch (Exception localException)
     {
-      reset();
-      this.mCurrentDataSource = null;
-      this.mCurrentUniqueId = -1;
-      return;
+      label363:
+      label377:
+      break label363;
     }
-    this.mMediaPlayer.pause();
-    this.mPlayDurationArray.put(this.mCurrentUniqueId, Integer.valueOf(this.mMediaPlayer.getCurrentPosition()));
-    AudioPlayerManager.AudioManagerListener localAudioManagerListener = (AudioPlayerManager.AudioManagerListener)this.mManagerListenerArray.get(this.mCurrentUniqueId);
-    if (localAudioManagerListener != null) {
-      localAudioManagerListener.playPaused();
-    }
-    ViolaLogUtils.d("AudioPlayerManager", "playing,paused last audio,data:" + this.mCurrentDataSource + ",pasuedDuration:" + this.mMediaPlayer.getCurrentPosition());
-    label272:
-    this.mCurrentUniqueId = paramInt;
-    this.mCurrentDataSource = localException;
-    this.mMediaPlayer.reset();
-    this.mMediaPlayer.setDataSource(localException);
-    this.mMediaPlayer.prepareAsync();
-    ViolaLogUtils.d("AudioPlayerManager", "playing,play new audio,data:" + this.mCurrentDataSource);
+    reset();
+    this.mCurrentDataSource = null;
+    this.mCurrentUniqueId = -1;
   }
   
   public void prepareData(int paramInt, String paramString, AudioPlayerManager.AudioManagerListener paramAudioManagerListener)
@@ -141,9 +159,10 @@ public class AudioPlayerManager
   
   public void release()
   {
-    if (this.mMediaPlayer != null)
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mMediaPlayer.stop();
+      localMediaPlayer.stop();
       this.mMediaPlayer.reset();
       this.mMediaPlayer.release();
       this.mMediaPlayer = null;
@@ -164,7 +183,7 @@ public class AudioPlayerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.AudioPlayerManager
  * JD-Core Version:    0.7.0.1
  */

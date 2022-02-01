@@ -1,17 +1,31 @@
-import com.tencent.lbsapi.QLBSService;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
 
 public class ffc
   implements Runnable
 {
-  public ffc(QQAppInterface paramQQAppInterface) {}
+  public ffc(QQAppInterface paramQQAppInterface, String paramString, File paramFile) {}
   
   public void run()
   {
-    if (!this.a.m()) {
+    File localFile;
+    if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile))
+    {
+      localFile = new File(QQAppInterface.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getApplicationContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      if (localFile == null) {
+        break label64;
+      }
+    }
+    label64:
+    for (long l = localFile.length();; l = 0L)
+    {
+      QQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(l);
       return;
     }
-    this.a.a.startLocation();
   }
 }
 

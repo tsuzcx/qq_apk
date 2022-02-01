@@ -7,18 +7,18 @@ import com.qq.taf.jce.JceStruct;
 public final class stTroopInfoV2
   extends JceStruct
 {
-  public byte cGroupOption;
-  public long dwCertificationType;
-  public long dwGroupClassExt;
-  public long dwGroupCode;
-  public long dwGroupFlagExt;
-  public long dwGroupOwnerUin;
-  public long dwGroupUin;
-  public int memberNum;
+  public byte cGroupOption = 0;
+  public long dwCertificationType = 0L;
+  public long dwGroupClassExt = 0L;
+  public long dwGroupCode = 0L;
+  public long dwGroupFlagExt = 0L;
+  public long dwGroupOwnerUin = 0L;
+  public long dwGroupUin = 0L;
+  public int memberNum = 0;
   public String strFingerMemo = "";
   public String strGroupMemo = "";
   public String strGroupName = "";
-  public int wGroupFace;
+  public int wGroupFace = 0;
   
   public stTroopInfoV2() {}
   
@@ -63,8 +63,9 @@ public final class stTroopInfoV2
     paramJceOutputStream.write(this.dwGroupOwnerUin, 4);
     paramJceOutputStream.write(this.dwGroupClassExt, 5);
     paramJceOutputStream.write(this.wGroupFace, 6);
-    if (this.strFingerMemo != null) {
-      paramJceOutputStream.write(this.strFingerMemo, 7);
+    String str = this.strFingerMemo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.cGroupOption, 8);
     paramJceOutputStream.write(this.memberNum, 9);
@@ -74,7 +75,7 @@ public final class stTroopInfoV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.stTroopInfoV2
  * JD-Core Version:    0.7.0.1
  */

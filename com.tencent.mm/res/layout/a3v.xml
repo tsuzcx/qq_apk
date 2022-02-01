@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/c5m" android:background="@drawable/q4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="45.0dip">
-        <TextView android:textSize="@dimen/jb" android:textColor="@color/q6" android:id="@id/c5n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ja" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:layout_width="8.0dip" android:layout_height="14.0dip" android:layout_marginRight="@dimen/ja" android:src="@drawable/agr" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <ImageView android:background="@color/ql" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/Link" android:id="@id/hkw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/is0" android:layout_alignParentStart="true" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/FG_1" android:id="@id/etu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/irz" android:layout_alignParentStart="true" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/Link" android:id="@id/jb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/irw" android:layout_marginStart="@dimen/cp" android:layout_alignParentEnd="true" />
+</RelativeLayout>

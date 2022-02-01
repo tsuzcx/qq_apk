@@ -24,14 +24,19 @@ class i
   
   static int b()
   {
-    j = 0;
+    int j = 0;
     String str = "";
+    int i;
     try
     {
       InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq" }).start().getInputStream();
       byte[] arrayOfByte = new byte[24];
-      while (localInputStream.read(arrayOfByte) != -1) {
-        str = str + new String(arrayOfByte);
+      while (localInputStream.read(arrayOfByte) != -1)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(new String(arrayOfByte));
+        str = localStringBuilder.toString();
       }
       localInputStream.close();
       str = str.trim();
@@ -42,25 +47,27 @@ class i
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        StatCommonHelper.a().e(localException);
-        int i = j;
-      }
+      StatCommonHelper.a().e(localException);
+      i = j;
     }
     return i * 1000;
   }
   
   static int c()
   {
-    j = 0;
+    int j = 0;
     String str = "";
+    int i;
     try
     {
       InputStream localInputStream = new ProcessBuilder(new String[] { "/system/bin/cat", "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq" }).start().getInputStream();
       byte[] arrayOfByte = new byte[24];
-      while (localInputStream.read(arrayOfByte) != -1) {
-        str = str + new String(arrayOfByte);
+      while (localInputStream.read(arrayOfByte) != -1)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(new String(arrayOfByte));
+        str = localStringBuilder.toString();
       }
       localInputStream.close();
       str = str.trim();
@@ -71,11 +78,8 @@ class i
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        StatCommonHelper.a().e(localThrowable);
-        int i = j;
-      }
+      StatCommonHelper.a().e(localThrowable);
+      i = j;
     }
     return i * 1000;
   }
@@ -92,22 +96,26 @@ class i
       String[] arrayOfString2 = localBufferedReader.readLine().split("\\s+");
       while (i < arrayOfString2.length)
       {
-        arrayOfString1[0] = (arrayOfString1[0] + arrayOfString2[i] + " ");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(arrayOfString1[0]);
+        localStringBuilder.append(arrayOfString2[i]);
+        localStringBuilder.append(" ");
+        arrayOfString1[0] = localStringBuilder.toString();
         i += 1;
       }
       localBufferedReader.close();
     }
     catch (IOException localIOException)
     {
-      label94:
-      break label94;
+      label107:
+      break label107;
     }
     return arrayOfString1[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.common.i
  * JD-Core Version:    0.7.0.1
  */

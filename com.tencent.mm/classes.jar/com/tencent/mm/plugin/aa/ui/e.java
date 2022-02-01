@@ -1,104 +1,98 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.aa.model.j;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.contact.a.a;
+import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.r;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class e
   extends r
 {
   private String chatroomName;
-  private String[] gpZ;
-  private Cursor gqa;
-  private String query;
+  private List<String> pJZ;
   
-  public e(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
+  public e(o paramo, String paramString)
   {
-    super(paramMMBaseSelectContactUI, null, true, 0);
-    AppMethodBeat.i(40770);
+    super(paramo, null, true, true);
+    AppMethodBeat.i(63553);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((c)g.E(c.class)).YJ().oY(this.chatroomName);
-    if (paramMMBaseSelectContactUI != null) {
-      this.gpZ = bo.er(paramMMBaseSelectContactUI);
-    }
-    AppMethodBeat.o(40770);
+    aNm();
+    AppMethodBeat.o(63553);
   }
   
-  public final void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean)
+  private void bVD()
   {
-    AppMethodBeat.i(40771);
-    ab.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
-    clearCache();
-    this.query = paramString;
-    if (this.gqa != null)
+    AppMethodBeat.i(268621);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if ((this.pJZ != null) && (this.pJZ.size() > 0))
     {
-      this.gqa.close();
-      this.gqa = null;
+      Iterator localIterator = this.pJZ.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (au.bwO(str)) {
+          localArrayList1.add(str);
+        } else {
+          localArrayList2.add(str);
+        }
+      }
+      if (localArrayList1.size() > 0)
+      {
+        this.pJZ.clear();
+        this.pJZ.addAll(localArrayList2);
+        this.pJZ.addAll(localArrayList1);
+      }
     }
-    if ((!bo.isNullOrNil(this.query)) && (this.gpZ != null))
-    {
-      g.RM();
-      this.gqa = ((j)g.E(j.class)).YA().a(this.gpZ, "@all.chatroom", this.query, null, null);
-    }
-    notifyDataSetChanged();
-    cp(paramString, true);
-    AppMethodBeat.o(40771);
+    AppMethodBeat.o(268621);
   }
   
-  public final void finish()
+  public final void aNm()
   {
-    AppMethodBeat.i(40773);
-    super.finish();
-    if (this.gqa != null)
-    {
-      this.gqa.close();
-      this.gqa = null;
+    AppMethodBeat.i(63554);
+    Log.i("MicroMsg.AASelectInitAdapter", "resetData");
+    this.pJZ = j.SA(this.chatroomName);
+    if (ab.IG(this.chatroomName)) {
+      bVD();
     }
-    AppMethodBeat.o(40773);
+    AppMethodBeat.o(63554);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(40774);
-    if (this.gqa == null)
-    {
-      AppMethodBeat.o(40774);
-      return 0;
-    }
-    int i = this.gqa.getCount();
-    AppMethodBeat.o(40774);
+    AppMethodBeat.i(63556);
+    int i = this.pJZ.size();
+    AppMethodBeat.o(63556);
     return i;
   }
   
-  public final a mM(int paramInt)
+  public final a yk(int paramInt)
   {
-    AppMethodBeat.i(40772);
-    com.tencent.mm.ui.contact.a.e locale = null;
-    if (this.gqa.moveToPosition(paramInt))
-    {
-      ad localad = new ad();
-      localad.convertFrom(this.gqa);
-      locale = new com.tencent.mm.ui.contact.a.e(paramInt);
-      locale.contact = localad;
-      locale.Adl = true;
-    }
-    AppMethodBeat.o(40772);
-    return locale;
+    AppMethodBeat.i(63555);
+    Object localObject = (String)this.pJZ.get(paramInt);
+    h.baF();
+    localObject = ((n)h.ax(n.class)).bzA().JE((String)localObject);
+    c localc = new c(paramInt);
+    localc.hCy = this.chatroomName;
+    localc.contact = ((au)localObject);
+    localc.afey = true;
+    AppMethodBeat.o(63555);
+    return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.e
  * JD-Core Version:    0.7.0.1
  */

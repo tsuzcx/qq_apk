@@ -1,98 +1,79 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.luckymoney.a.a;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
 
 public final class j
+  extends com.tencent.mm.bx.a
 {
-  i oiV;
-  private d onp;
+  public String Krq;
+  public String Krr;
+  public int lTH;
   
-  public j()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(42289);
-    init();
-    AppMethodBeat.o(42289);
-  }
-  
-  private void init()
-  {
-    AppMethodBeat.i(42290);
-    this.oiV = new i();
-    g.RM();
-    String str = (String)g.RL().Ru().get(356355, null);
-    if (bo.isNullOrNil(str))
+    AppMethodBeat.i(91251);
+    if (paramInt == 0)
     {
-      this.oiV.oiu = 2000.0D;
-      this.oiV.oir = 100;
-      this.oiV.oiv = 200.0D;
-      this.oiV.oit = 0.01D;
-      this.oiV.ois = 200.0D;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.lTH);
+      if (this.Krq != null) {
+        paramVarArgs.g(2, this.Krq);
+      }
+      if (this.Krr != null) {
+        paramVarArgs.g(3, this.Krr);
+      }
+      AppMethodBeat.o(91251);
+      return 0;
     }
-    for (;;)
+    if (paramInt == 1)
     {
-      ab.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.oiV.oiu + " maxTotalNum:" + this.oiV.oir + " perGroupMaxValue:" + this.oiV.oiv + " perMinValue:" + this.oiV.oit + " perPersonMaxValue:" + this.oiV.ois);
-      AppMethodBeat.o(42290);
-      return;
-      try
-      {
-        this.oiV.parseFrom(str.getBytes("ISO-8859-1"));
-        bNj();
+      int i = i.a.a.b.b.a.cJ(1, this.lTH) + 0;
+      paramInt = i;
+      if (this.Krq != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.Krq);
       }
-      catch (Exception localException)
-      {
-        ab.w("MicroMsg.LuckyMoneyConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
-        this.oiV.oiu = 2000.0D;
-        this.oiV.oir = 100;
-        this.oiV.oiv = 200.0D;
-        this.oiV.oit = 0.01D;
-        this.oiV.ois = 200.0D;
+      i = paramInt;
+      if (this.Krr != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.Krr);
       }
+      AppMethodBeat.o(91251);
+      return i;
     }
-  }
-  
-  final void bNj()
-  {
-    AppMethodBeat.i(42291);
-    if (this.oiV != null)
+    if (paramInt == 2)
     {
-      this.onp = d.Sq(this.oiV.ono);
-      if ((this.onp != null) && (this.onp.omW != null))
-      {
-        ((a)g.E(a.class)).a(this.onp.omW.xjM);
-        g.RL().Ru().set(ac.a.yJl, Integer.valueOf(1));
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
       }
+      AppMethodBeat.o(91251);
+      return 0;
     }
-    AppMethodBeat.o(42291);
-  }
-  
-  public final i bNk()
-  {
-    AppMethodBeat.i(42292);
-    if (this.oiV == null) {
-      init();
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      j localj = (j)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(91251);
+        return -1;
+      case 1: 
+        localj.lTH = locala.ajGk.aar();
+        AppMethodBeat.o(91251);
+        return 0;
+      case 2: 
+        localj.Krq = locala.ajGk.readString();
+        AppMethodBeat.o(91251);
+        return 0;
+      }
+      localj.Krr = locala.ajGk.readString();
+      AppMethodBeat.o(91251);
+      return 0;
     }
-    i locali = this.oiV;
-    AppMethodBeat.o(42292);
-    return locali;
-  }
-  
-  public final d bNl()
-  {
-    AppMethodBeat.i(42293);
-    if (this.onp == null) {
-      init();
-    }
-    d locald = this.onp;
-    AppMethodBeat.o(42293);
-    return locald;
+    AppMethodBeat.o(91251);
+    return -1;
   }
 }
 

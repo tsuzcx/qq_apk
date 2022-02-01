@@ -5,23 +5,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
-import apdv;
-import awge;
-import awhp;
-import awhs;
-import bamp;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.text.QQText;
 
 public class AutoReplyText
-  extends awge
+  extends Entity
   implements Parcelable, Comparable<AutoReplyText>
 {
-  public static final Parcelable.Creator<AutoReplyText> CREATOR = new apdv();
+  public static final Parcelable.Creator<AutoReplyText> CREATOR = new AutoReplyText.1();
   public static final int TEXT_NONE = 2147483647;
-  public int mCheckFlag;
-  @awhp
+  public int mCheckFlag = 0;
+  @notColumn
   private Bundle mExtra;
   public String mRawText;
-  @awhs
+  @unique
   public int mTextId;
   
   public AutoReplyText()
@@ -29,7 +28,7 @@ public class AutoReplyText
     this.mExtra = new Bundle();
   }
   
-  public AutoReplyText(Parcel paramParcel)
+  protected AutoReplyText(Parcel paramParcel)
   {
     this.mTextId = paramParcel.readInt();
     this.mRawText = paramParcel.readString();
@@ -47,58 +46,59 @@ public class AutoReplyText
   public static String trimRawString(String paramString, boolean paramBoolean)
   {
     if (paramString == null) {
-      paramString = "";
+      return "";
     }
-    String str;
-    int i;
+    String str = paramString;
+    if (paramBoolean) {
+      str = paramString.replace("\r\n", " ").replace('\n', ' ').replace('\r', ' ');
+    }
+    int k = str.length();
+    int i = 0;
     int j;
-    do
+    for (;;)
     {
-      return paramString;
-      str = paramString;
-      if (paramBoolean) {
-        str = paramString.replace("\r\n", " ").replace('\n', ' ').replace('\r', ' ');
-      }
-      int k = str.length();
-      i = 0;
-      for (;;)
-      {
-        j = k;
-        if (i >= k) {
-          break;
-        }
-        int m = str.charAt(i);
-        if ((m != 32) && (m != 13))
-        {
-          j = k;
-          if (m != 10) {
-            break;
-          }
-        }
-        i += 1;
-      }
-      while (i < j)
-      {
-        k = str.charAt(j - 1);
-        if ((k != 32) && (k != 13) && (k != 10)) {
-          break;
-        }
-        j -= 1;
-      }
-      if (i > 0) {
+      j = k;
+      if (i >= k) {
         break;
       }
+      int m = str.charAt(i);
+      if ((m != 32) && (m != 13))
+      {
+        j = k;
+        if (m != 10) {
+          break;
+        }
+      }
+      i += 1;
+    }
+    while (i < j)
+    {
+      k = str.charAt(j - 1);
+      if ((k != 32) && (k != 13) && (k != 10)) {
+        break;
+      }
+      j -= 1;
+    }
+    if (i <= 0)
+    {
       paramString = str;
-    } while (j >= str.length());
-    return str.substring(i, j);
+      if (j >= str.length()) {}
+    }
+    else
+    {
+      paramString = str.substring(i, j);
+    }
+    return paramString;
   }
   
   public int compareTo(@NonNull AutoReplyText paramAutoReplyText)
   {
-    if (this.mTextId < paramAutoReplyText.mTextId) {
+    int i = this.mTextId;
+    int j = paramAutoReplyText.mTextId;
+    if (i < j) {
       return -1;
     }
-    if (this.mTextId == paramAutoReplyText.mTextId) {
+    if (i == j) {
       return 0;
     }
     return 1;
@@ -111,15 +111,17 @@ public class AutoReplyText
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (AutoReplyText)paramObject;
-    } while (this.mTextId == paramObject.mTextId);
+      return this.mTextId == paramObject.mTextId;
+    }
     return false;
   }
   
@@ -139,7 +141,7 @@ public class AutoReplyText
   
   public CharSequence getText(int paramInt)
   {
-    return new bamp(getRawText(), 3, paramInt);
+    return new QQText(getRawText(), 3, paramInt);
   }
   
   public int getTextId()
@@ -149,7 +151,7 @@ public class AutoReplyText
   
   public int hashCode()
   {
-    return 177573 + this.mTextId & 0x7FFFFFFF;
+    return this.mTextId + 177573 & 0x7FFFFFFF;
   }
   
   public boolean isChecked()
@@ -159,7 +161,15 @@ public class AutoReplyText
   
   public String toString()
   {
-    return "AutoReplyText{mTextId=" + this.mTextId + ", mRawText='" + this.mRawText + ", mCheckFlag='" + this.mCheckFlag + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AutoReplyText{mTextId=");
+    localStringBuilder.append(this.mTextId);
+    localStringBuilder.append(", mRawText='");
+    localStringBuilder.append(this.mRawText);
+    localStringBuilder.append(", mCheckFlag='");
+    localStringBuilder.append(this.mCheckFlag);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -172,7 +182,7 @@ public class AutoReplyText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.AutoReplyText
  * JD-Core Version:    0.7.0.1
  */

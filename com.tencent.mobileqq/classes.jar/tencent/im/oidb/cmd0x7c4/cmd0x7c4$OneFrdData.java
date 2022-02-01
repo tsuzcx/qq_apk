@@ -20,13 +20,14 @@ public final class cmd0x7c4$OneFrdData
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint64_frd_id", "uint32_reason_id", "bytes_smart_remark", "uint32_gender", "uint32_ages" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, OneFrdData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint64_frd_id", "uint32_reason_id", "bytes_smart_remark", "uint32_gender", "uint32_ages" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro, localInteger, localInteger }, OneFrdData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7c4.cmd0x7c4.OneFrdData
  * JD-Core Version:    0.7.0.1
  */

@@ -7,79 +7,185 @@ import android.content.Intent;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.ext.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bz;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.plugin.ext.SubCoreExt;
+import com.tencent.mm.plugin.ext.key.AESUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cv;
+import com.tencent.mm.storage.cw;
 
-@JgClassChecked(author=32, fComment="checked", lastDate="20141016", reviewer=20, vComment={com.jg.EType.PROVIDERCHECK})
 public class ExtControlProviderEntry
   extends ExtContentProviderBase
 {
-  private static final UriMatcher meo;
-  private String[] mdZ = null;
-  private int mea = -1;
-  private boolean mep = false;
-  private Context meq;
+  private static final UriMatcher zPg;
+  private String[] zOO = null;
+  private int zOP = -1;
+  private boolean zPh = false;
+  private Context zPi;
   
   static
   {
-    AppMethodBeat.i(20347);
+    AppMethodBeat.i(24426);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    meo = localUriMatcher;
-    localUriMatcher.addURI("com.tencent.mm.plugin.ext.entry", "view_profile", 2);
-    meo.addURI("com.tencent.mm.plugin.ext.entry", "to_chatting", 3);
-    meo.addURI("com.tencent.mm.plugin.ext.entry", "to_nearby", 4);
-    meo.addURI("com.tencent.mm.plugin.ext.entry", "sns_comment_detail", 5);
-    meo.addURI("com.tencent.mm.plugin.ext.entry", "share_time_line", 6);
-    AppMethodBeat.o(20347);
+    zPg = localUriMatcher;
+    localUriMatcher.addURI(WeChatAuthorities.AUTHORITIES_PLUGIN_EXT_ENTRY(), "view_profile", 2);
+    zPg.addURI(WeChatAuthorities.AUTHORITIES_PLUGIN_EXT_ENTRY(), "to_chatting", 3);
+    zPg.addURI(WeChatAuthorities.AUTHORITIES_PLUGIN_EXT_ENTRY(), "to_nearby", 4);
+    zPg.addURI(WeChatAuthorities.AUTHORITIES_PLUGIN_EXT_ENTRY(), "sns_comment_detail", 5);
+    zPg.addURI(WeChatAuthorities.AUTHORITIES_PLUGIN_EXT_ENTRY(), "share_time_line", 6);
+    AppMethodBeat.o(24426);
   }
   
   public ExtControlProviderEntry() {}
   
   public ExtControlProviderEntry(String[] paramArrayOfString, int paramInt, Context paramContext)
   {
-    this.mep = true;
-    this.mdZ = paramArrayOfString;
-    this.mea = paramInt;
-    this.meq = paramContext;
+    this.zPh = true;
+    this.zOO = paramArrayOfString;
+    this.zOP = paramInt;
+    this.zPi = paramContext;
   }
   
-  private Cursor a(String[] paramArrayOfString, String paramString)
+  private Cursor A(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(20345);
-    ab.i("MicroMsg.ExtControlEntryProvider", "toChattingUI");
+    AppMethodBeat.i(24423);
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      ab.w("MicroMsg.ExtControlEntryProvider", "wrong args");
-      ej(3, 3601);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(3601);
-      AppMethodBeat.o(20345);
+      Log.w("MicroMsg.ExtControlEntryProvider", "wrong args");
+      Mm(3);
+      AppMethodBeat.o(24423);
+      return null;
+    }
+    paramArrayOfString = paramArrayOfString[0];
+    if ((paramArrayOfString == null) || (paramArrayOfString.length() <= 0))
+    {
+      Log.w("MicroMsg.ExtControlEntryProvider", "contactId == null");
+      Mm(3);
+      AppMethodBeat.o(24423);
+      return null;
+    }
+    try
+    {
+      bh.bCz();
+      paramArrayOfString = com.tencent.mm.model.c.bzA().zc(AESUtil.atw(paramArrayOfString));
+      if ((paramArrayOfString == null) || ((int)paramArrayOfString.maN <= 0) || (this.zPi == null))
+      {
+        Mm(3);
+        AppMethodBeat.o(24423);
+        return null;
+      }
+    }
+    catch (Exception paramArrayOfString)
+    {
+      Log.w("MicroMsg.ExtControlEntryProvider", paramArrayOfString.getMessage());
+      Log.printErrStackTrace("MicroMsg.ExtControlEntryProvider", paramArrayOfString, "", new Object[0]);
+      Mm(3);
+      AppMethodBeat.o(24423);
+      return null;
+    }
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("Contact_User", paramArrayOfString.field_username);
+    com.tencent.mm.br.c.b(this.zPi, "profile", ".ui.ContactInfoUI", localIntent);
+    Mm(0);
+    paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(1);
+    AppMethodBeat.o(24423);
+    return paramArrayOfString;
+  }
+  
+  private Cursor B(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(24425);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
+    {
+      Log.w("MicroMsg.ExtControlEntryProvider", "wrong args");
+      Mm(3);
+      AppMethodBeat.o(24425);
+      return null;
+    }
+    paramArrayOfString = paramArrayOfString[0];
+    if ((paramArrayOfString == null) || (paramArrayOfString.length() <= 0))
+    {
+      Log.w("MicroMsg.ExtControlEntryProvider", "wrong args");
+      Mm(3);
+      AppMethodBeat.o(24425);
+      return null;
+    }
+    long l;
+    try
+    {
+      l = AESUtil.atw(paramArrayOfString);
+      if (l <= 0L)
+      {
+        Mm(3);
+        AppMethodBeat.o(24425);
+        return null;
+      }
+    }
+    catch (Exception paramArrayOfString)
+    {
+      Log.w("MicroMsg.ExtControlEntryProvider", paramArrayOfString.getMessage());
+      Log.printErrStackTrace("MicroMsg.ExtControlEntryProvider", paramArrayOfString, "", new Object[0]);
+      Mm(3);
+      AppMethodBeat.o(24425);
+      return null;
+    }
+    if (this.zPi == null)
+    {
+      Mm(4);
+      AppMethodBeat.o(24425);
+      return null;
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setComponent(new ComponentName(MMApplicationContext.getApplicationId(), "com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI"));
+    ((Intent)localObject).putExtra("INTENT_SNS_LOCAL_ID", (int)l);
+    ((Intent)localObject).addCategory("android.intent.category.DEFAULT");
+    ((Intent)localObject).addFlags(268435456);
+    paramArrayOfString = this.zPi;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramArrayOfString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/ext/provider/ExtControlProviderEntry", "toSnsCommentDetail", "([Ljava/lang/String;)Landroid/database/Cursor;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramArrayOfString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramArrayOfString, "com/tencent/mm/plugin/ext/provider/ExtControlProviderEntry", "toSnsCommentDetail", "([Ljava/lang/String;)Landroid/database/Cursor;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    Mm(0);
+    paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(1);
+    AppMethodBeat.o(24425);
+    return paramArrayOfString;
+  }
+  
+  private Cursor c(String[] paramArrayOfString, String paramString)
+  {
+    AppMethodBeat.i(24424);
+    Log.i("MicroMsg.ExtControlEntryProvider", "toChattingUI");
+    if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
+    {
+      Log.w("MicroMsg.ExtControlEntryProvider", "wrong args");
+      hf(3, 3601);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(3601);
+      AppMethodBeat.o(24424);
       return paramArrayOfString;
     }
-    if (bo.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ab.w("MicroMsg.ExtControlEntryProvider", "callSource == null");
-      ej(3, 3602);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(3602);
-      AppMethodBeat.o(20345);
+      Log.w("MicroMsg.ExtControlEntryProvider", "callSource == null");
+      hf(3, 3602);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(3602);
+      AppMethodBeat.o(24424);
       return paramArrayOfString;
     }
     paramArrayOfString = paramArrayOfString[0];
     if ((paramArrayOfString == null) || (paramArrayOfString.length() <= 0))
     {
-      ab.w("MicroMsg.ExtControlEntryProvider", "contactId == null");
-      ej(3, 3603);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(3603);
-      AppMethodBeat.o(20345);
+      Log.w("MicroMsg.ExtControlEntryProvider", "contactId == null");
+      hf(3, 3603);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(3603);
+      AppMethodBeat.o(24424);
       return paramArrayOfString;
     }
     int i;
@@ -87,161 +193,63 @@ public class ExtControlProviderEntry
     {
       i = 1;
       if (i == 0) {
-        break label286;
+        break label288;
       }
     }
     for (;;)
     {
       try
       {
-        paramArrayOfString = b.btt().asG(paramArrayOfString);
-        if ((paramArrayOfString == null) || (bo.isNullOrNil(paramArrayOfString.field_openId)) || (bo.isNullOrNil(paramArrayOfString.field_username)))
+        paramArrayOfString = SubCoreExt.dNT().byP(paramArrayOfString);
+        if ((paramArrayOfString == null) || (Util.isNullOrNil(paramArrayOfString.field_openId)) || (Util.isNullOrNil(paramArrayOfString.field_username)))
         {
-          ab.e("MicroMsg.ExtControlEntryProvider", "openidInApp is null");
-          ej(3, 3604);
-          paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(3604);
-          AppMethodBeat.o(20345);
+          Log.e("MicroMsg.ExtControlEntryProvider", "openidInApp is null");
+          hf(3, 3604);
+          paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(3604);
+          AppMethodBeat.o(24424);
           return paramArrayOfString;
           i = 0;
           break;
         }
-        aw.aaz();
-        paramArrayOfString = c.YA().arw(paramArrayOfString.field_username);
-        if ((paramArrayOfString != null) && ((int)paramArrayOfString.euF > 0) && (this.meq != null)) {
-          break label350;
+        bh.bCz();
+        paramArrayOfString = com.tencent.mm.model.c.bzA().JE(paramArrayOfString.field_username);
+        if ((paramArrayOfString != null) && ((int)paramArrayOfString.maN > 0) && (this.zPi != null)) {
+          break label352;
         }
-        ab.e("MicroMsg.ExtControlEntryProvider", "wrong args ct");
-        ej(3, 3605);
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(3605);
-        AppMethodBeat.o(20345);
+        Log.e("MicroMsg.ExtControlEntryProvider", "wrong args ct");
+        hf(3, 3605);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(3605);
+        AppMethodBeat.o(24424);
         return paramArrayOfString;
       }
       catch (Exception paramArrayOfString)
       {
-        label286:
-        ab.w("MicroMsg.ExtControlEntryProvider", paramArrayOfString.getMessage());
-        ab.printErrStackTrace("MicroMsg.ExtControlEntryProvider", paramArrayOfString, "", new Object[0]);
-        S(5, 4, 12);
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(12);
-        AppMethodBeat.o(20345);
+        label288:
+        Log.w("MicroMsg.ExtControlEntryProvider", paramArrayOfString.getMessage());
+        Log.printErrStackTrace("MicroMsg.ExtControlEntryProvider", paramArrayOfString, "", new Object[0]);
+        au(5, 4, 12);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(12);
+        AppMethodBeat.o(24424);
         return paramArrayOfString;
       }
-      aw.aaz();
-      paramArrayOfString = c.YA().on(com.tencent.mm.plugin.ext.a.a.Nc(paramArrayOfString));
+      bh.bCz();
+      paramArrayOfString = com.tencent.mm.model.c.bzA().zc(AESUtil.atw(paramArrayOfString));
     }
-    label350:
+    label352:
     paramString = new Intent();
-    paramString.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.chatting.ChattingUI"));
+    paramString.setComponent(new ComponentName(MMApplicationContext.getApplicationId(), "com.tencent.mm.ui.chatting.ChattingUI"));
     paramString.putExtra("Chat_User", paramArrayOfString.field_username);
     paramString.putExtra("finish_direct", true);
     paramString.addFlags(268435456);
     paramString.addFlags(67108864);
-    this.meq.startActivity(paramString);
-    S(4, 0, 1);
-    paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(1);
-    AppMethodBeat.o(20345);
-    return paramArrayOfString;
-  }
-  
-  private Cursor r(String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(20344);
-    if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
-    {
-      ab.w("MicroMsg.ExtControlEntryProvider", "wrong args");
-      vA(3);
-      AppMethodBeat.o(20344);
-      return null;
-    }
-    paramArrayOfString = paramArrayOfString[0];
-    if ((paramArrayOfString == null) || (paramArrayOfString.length() <= 0))
-    {
-      ab.w("MicroMsg.ExtControlEntryProvider", "contactId == null");
-      vA(3);
-      AppMethodBeat.o(20344);
-      return null;
-    }
-    try
-    {
-      aw.aaz();
-      paramArrayOfString = c.YA().on(com.tencent.mm.plugin.ext.a.a.Nc(paramArrayOfString));
-      if ((paramArrayOfString == null) || ((int)paramArrayOfString.euF <= 0) || (this.meq == null))
-      {
-        vA(3);
-        AppMethodBeat.o(20344);
-        return null;
-      }
-    }
-    catch (Exception paramArrayOfString)
-    {
-      ab.w("MicroMsg.ExtControlEntryProvider", paramArrayOfString.getMessage());
-      ab.printErrStackTrace("MicroMsg.ExtControlEntryProvider", paramArrayOfString, "", new Object[0]);
-      vA(3);
-      AppMethodBeat.o(20344);
-      return null;
-    }
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("Contact_User", paramArrayOfString.field_username);
-    d.b(this.meq, "profile", ".ui.ContactInfoUI", localIntent);
-    vA(0);
-    paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(1);
-    AppMethodBeat.o(20344);
-    return paramArrayOfString;
-  }
-  
-  private Cursor s(String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(20346);
-    if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
-    {
-      ab.w("MicroMsg.ExtControlEntryProvider", "wrong args");
-      vA(3);
-      AppMethodBeat.o(20346);
-      return null;
-    }
-    paramArrayOfString = paramArrayOfString[0];
-    if ((paramArrayOfString == null) || (paramArrayOfString.length() <= 0))
-    {
-      ab.w("MicroMsg.ExtControlEntryProvider", "wrong args");
-      vA(3);
-      AppMethodBeat.o(20346);
-      return null;
-    }
-    long l;
-    try
-    {
-      l = com.tencent.mm.plugin.ext.a.a.Nc(paramArrayOfString);
-      if (l <= 0L)
-      {
-        vA(3);
-        AppMethodBeat.o(20346);
-        return null;
-      }
-    }
-    catch (Exception paramArrayOfString)
-    {
-      ab.w("MicroMsg.ExtControlEntryProvider", paramArrayOfString.getMessage());
-      ab.printErrStackTrace("MicroMsg.ExtControlEntryProvider", paramArrayOfString, "", new Object[0]);
-      vA(3);
-      AppMethodBeat.o(20346);
-      return null;
-    }
-    if (this.meq == null)
-    {
-      vA(4);
-      AppMethodBeat.o(20346);
-      return null;
-    }
-    paramArrayOfString = new Intent();
-    paramArrayOfString.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI"));
-    paramArrayOfString.putExtra("INTENT_SNS_LOCAL_ID", (int)l);
-    paramArrayOfString.addCategory("android.intent.category.DEFAULT");
-    paramArrayOfString.addFlags(268435456);
-    this.meq.startActivity(paramArrayOfString);
-    vA(0);
-    paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.Ls(1);
-    AppMethodBeat.o(20346);
+    paramArrayOfString = this.zPi;
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+    com.tencent.mm.hellhoundlib.a.a.b(paramArrayOfString, paramString.aYi(), "com/tencent/mm/plugin/ext/provider/ExtControlProviderEntry", "toChattingUI", "([Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramArrayOfString.startActivity((Intent)paramString.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramArrayOfString, "com/tencent/mm/plugin/ext/provider/ExtControlProviderEntry", "toChattingUI", "([Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    au(4, 0, 1);
+    paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.avy(1);
+    AppMethodBeat.o(24424);
     return paramArrayOfString;
   }
   
@@ -267,122 +275,126 @@ public class ExtControlProviderEntry
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    AppMethodBeat.i(20343);
-    ab.i("MicroMsg.ExtControlEntryProvider", "ExtControlProviderEntry query() mIsLocalUsed :" + this.mep);
-    if (this.mep)
+    AppMethodBeat.i(24422);
+    Log.i("MicroMsg.ExtControlEntryProvider", "ExtControlProviderEntry query() mIsLocalUsed :" + this.zPh);
+    if (this.zPh)
     {
-      a(paramUri, this.meq, this.mea, this.mdZ);
-      if (bo.isNullOrNil(this.mei))
+      a(paramUri, this.zPi, this.zOP, this.zOO);
+      if (Util.isNullOrNil(this.zPa))
       {
-        ab.e("MicroMsg.ExtControlEntryProvider", "AppID == null");
-        ej(3, 7);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(7);
-        AppMethodBeat.o(20343);
+        Log.e("MicroMsg.ExtControlEntryProvider", "AppID == null");
+        hf(3, 7);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.avy(7);
+        AppMethodBeat.o(24422);
         return paramUri;
       }
-      if (bo.isNullOrNil(btD()))
+      if (Util.isNullOrNil(dOe()))
       {
-        ab.e("MicroMsg.ExtControlEntryProvider", "PkgName == null");
-        ej(3, 6);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(6);
-        AppMethodBeat.o(20343);
+        Log.e("MicroMsg.ExtControlEntryProvider", "PkgName == null");
+        hf(3, 6);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.avy(6);
+        AppMethodBeat.o(24422);
         return paramUri;
       }
-      int i = btE();
+      int i = dOf();
       if (i != 1)
       {
-        ab.e("MicroMsg.ExtControlEntryProvider", "invalid appid ! return code = ".concat(String.valueOf(i)));
-        ej(2, i);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(i);
-        AppMethodBeat.o(20343);
+        Log.e("MicroMsg.ExtControlEntryProvider", "invalid appid ! return code = ".concat(String.valueOf(i)));
+        hf(2, i);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.avy(i);
+        AppMethodBeat.o(24422);
         return paramUri;
       }
     }
     else
     {
-      this.meq = getContext();
-      a(paramUri, this.meq, meo);
+      this.zPi = getContext();
+      a(paramUri, this.zPi, zPg);
       if (paramUri == null)
       {
-        vA(3);
-        AppMethodBeat.o(20343);
+        Mm(3);
+        AppMethodBeat.o(24422);
         return null;
       }
-      if ((bo.isNullOrNil(this.mei)) || (bo.isNullOrNil(btD())))
+      if ((Util.isNullOrNil(this.zPa)) || (Util.isNullOrNil(dOe())))
       {
-        vA(3);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(3);
-        AppMethodBeat.o(20343);
+        Mm(3);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.avy(3);
+        AppMethodBeat.o(24422);
         return paramUri;
       }
-      if (!aVH())
+      if (!dak())
       {
-        vA(1);
-        paramUri = this.jLW;
-        AppMethodBeat.o(20343);
+        Mm(1);
+        paramUri = this.vsh;
+        AppMethodBeat.o(24422);
         return paramUri;
       }
-      if (!dO(this.meq))
+      if (!gh(this.zPi))
       {
-        ab.w("MicroMsg.ExtControlEntryProvider", "invalid appid ! return null");
-        vA(2);
-        AppMethodBeat.o(20343);
+        Log.w("MicroMsg.ExtControlEntryProvider", "invalid appid ! return null");
+        Mm(2);
+        AppMethodBeat.o(24422);
         return null;
       }
     }
-    paramArrayOfString1 = bo.nullAsNil(paramUri.getQueryParameter("source"));
-    if (!this.mep) {
-      this.mea = meo.match(paramUri);
+    paramArrayOfString1 = Util.nullAsNil(paramUri.getQueryParameter("source"));
+    if (!this.zPh) {
+      this.zOP = zPg.match(paramUri);
     }
-    switch (this.mea)
+    switch (this.zOP)
     {
     default: 
-      ej(3, 15);
-      AppMethodBeat.o(20343);
+      hf(3, 15);
+      AppMethodBeat.o(24422);
       return null;
     case 2: 
-      paramUri = r(paramArrayOfString2);
-      AppMethodBeat.o(20343);
+      paramUri = A(paramArrayOfString2);
+      AppMethodBeat.o(24422);
       return paramUri;
     case 3: 
-      paramUri = a(paramArrayOfString2, paramArrayOfString1);
-      AppMethodBeat.o(20343);
+      paramUri = c(paramArrayOfString2, paramArrayOfString1);
+      AppMethodBeat.o(24422);
       return paramUri;
     case 4: 
-      if (this.meq == null)
+      if (this.zPi == null)
       {
-        vA(4);
-        AppMethodBeat.o(20343);
+        Mm(4);
+        AppMethodBeat.o(24422);
         return null;
       }
-      paramUri = new Intent();
-      paramUri.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.plugin.nearby.ui.NearbyFriendsUI"));
-      paramUri.addFlags(268435456);
-      this.meq.startActivity(paramUri);
-      vA(0);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(1);
-      AppMethodBeat.o(20343);
+      paramArrayOfString1 = new Intent();
+      paramArrayOfString1.setComponent(new ComponentName(MMApplicationContext.getApplicationId(), "com.tencent.mm.plugin.nearby.ui.NearbyFriendsUI"));
+      paramArrayOfString1.addFlags(268435456);
+      paramUri = this.zPi;
+      paramArrayOfString1 = new com.tencent.mm.hellhoundlib.b.a().cG(paramArrayOfString1);
+      com.tencent.mm.hellhoundlib.a.a.b(paramUri, paramArrayOfString1.aYi(), "com/tencent/mm/plugin/ext/provider/ExtControlProviderEntry", "toNearBy", "()Landroid/database/Cursor;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramUri.startActivity((Intent)paramArrayOfString1.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramUri, "com/tencent/mm/plugin/ext/provider/ExtControlProviderEntry", "toNearBy", "()Landroid/database/Cursor;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      Mm(0);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.avy(1);
+      AppMethodBeat.o(24422);
       return paramUri;
     case 5: 
-      paramUri = s(paramArrayOfString2);
-      AppMethodBeat.o(20343);
+      paramUri = B(paramArrayOfString2);
+      AppMethodBeat.o(24422);
       return paramUri;
     }
     if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0))
     {
-      ab.w("MicroMsg.ExtControlEntryProvider", "wrong args");
-      vA(3);
-      AppMethodBeat.o(20343);
+      Log.w("MicroMsg.ExtControlEntryProvider", "wrong args");
+      Mm(3);
+      AppMethodBeat.o(24422);
       return null;
     }
-    if (this.meq == null)
+    if (this.zPi == null)
     {
-      vA(4);
-      AppMethodBeat.o(20343);
+      Mm(4);
+      AppMethodBeat.o(24422);
       return null;
     }
     paramArrayOfString1 = new Intent();
-    paramArrayOfString1.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareToTimeLineUI"));
+    paramArrayOfString1.setComponent(new ComponentName(MMApplicationContext.getApplicationId(), "com.tencent.mm.ui.tools.ShareToTimeLineUI"));
     paramArrayOfString1.setAction("android.intent.action.SEND");
     paramArrayOfString1.addCategory("android.intent.category.DEFAULT");
     paramArrayOfString1.addFlags(268435456);
@@ -395,10 +407,14 @@ public class ExtControlProviderEntry
       }
       paramArrayOfString1.putExtra("Ksnsupload_empty_img", true);
       paramArrayOfString1.setType("image/*");
-      this.meq.startActivity(paramArrayOfString1);
-      vA(0);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(1);
-      AppMethodBeat.o(20343);
+      paramUri = this.zPi;
+      paramArrayOfString1 = new com.tencent.mm.hellhoundlib.b.a().cG(paramArrayOfString1);
+      com.tencent.mm.hellhoundlib.a.a.b(paramUri, paramArrayOfString1.aYi(), "com/tencent/mm/plugin/ext/provider/ExtControlProviderEntry", "toShareTimeLine", "([Ljava/lang/String;)Landroid/database/Cursor;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramUri.startActivity((Intent)paramArrayOfString1.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramUri, "com/tencent/mm/plugin/ext/provider/ExtControlProviderEntry", "toShareTimeLine", "([Ljava/lang/String;)Landroid/database/Cursor;", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      Mm(0);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.avy(1);
+      AppMethodBeat.o(24422);
       return paramUri;
     }
   }
@@ -410,7 +426,7 @@ public class ExtControlProviderEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.provider.ExtControlProviderEntry
  * JD-Core Version:    0.7.0.1
  */

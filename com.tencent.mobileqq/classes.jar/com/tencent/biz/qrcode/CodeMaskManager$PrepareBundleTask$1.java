@@ -1,7 +1,6 @@
 package com.tencent.biz.qrcode;
 
 import android.os.Bundle;
-import xyd;
 
 class CodeMaskManager$PrepareBundleTask$1
   implements Runnable
@@ -10,23 +9,20 @@ class CodeMaskManager$PrepareBundleTask$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.this$0.a) {
+    if (this.b.this$0.h) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.a.a(CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.this$0));
+    if (this.a == null) {
+      this.b.b.a(CodeMaskManager.a(this.b.this$0));
+    } else {
+      this.b.b.a((Bundle)this.a.clone());
     }
-    for (;;)
-    {
-      CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.this$0);
-      return;
-      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.a.a((Bundle)this.jdField_a_of_type_AndroidOsBundle.clone());
-    }
+    CodeMaskManager.b(this.b.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager.PrepareBundleTask.1
  * JD-Core Version:    0.7.0.1
  */

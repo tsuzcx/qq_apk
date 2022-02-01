@@ -1,20 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.widget.AntiphingToast;
+import java.util.TimerTask;
 
 public class hfe
-  implements Animation.AnimationListener
+  extends TimerTask
 {
   public hfe(AntiphingToast paramAntiphingToast) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    AntiphingToast.a(this.a, true);
+    Message localMessage = new Message();
+    localMessage.what = 1;
+    this.a.a.sendMessage(localMessage);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

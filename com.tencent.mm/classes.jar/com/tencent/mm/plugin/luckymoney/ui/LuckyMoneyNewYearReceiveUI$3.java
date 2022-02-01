@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.luckymoney.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class LuckyMoneyNewYearReceiveUI$3
   implements View.OnClickListener
@@ -12,10 +13,13 @@ final class LuckyMoneyNewYearReceiveUI$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(42786);
-    this.ouD.finish();
-    h.qsU.e(13079, new Object[] { Integer.valueOf(6), Integer.valueOf(2) });
-    AppMethodBeat.o(42786);
+    AppMethodBeat.i(65663);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    LuckyMoneyNewYearReceiveUI.e(this.KEd);
+    a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyNewYearReceiveUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(65663);
   }
 }
 

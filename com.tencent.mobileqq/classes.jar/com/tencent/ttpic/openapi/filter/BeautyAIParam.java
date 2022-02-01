@@ -2,7 +2,7 @@ package com.tencent.ttpic.openapi.filter;
 
 public class BeautyAIParam
 {
-  private static float[][] beautyAITable = { { 0.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, { 0.15F, 0.3F, 0.3F, 0.08F, 0.7F, 0.0F, 0.0F, 0.0F, 0.2F, 0.0F }, { 0.15F, 0.4F, 0.3F, 0.08F, 0.7F, 0.0F, 0.0F, 0.0F, 0.2F, 0.0F }, { 0.15F, 0.4F, 0.3F, 0.08F, 0.7F, 0.5F, 0.4F, 0.5F, 0.3F, 0.0F }, { 0.3F, 0.3F, 0.3F, 0.16F, 0.7F, 0.0F, 0.0F, 0.0F, 0.4F, 1.0F }, { 0.3F, 0.3F, 0.3F, 0.16F, 0.7F, 0.0F, 0.2F, 0.2F, 0.4F, 1.0F }, { 0.3F, 0.3F, 0.3F, 0.16F, 0.7F, 0.7F, 0.7F, 0.7F, 0.6F, 1.0F } };
+  private static float[][] beautyAITable;
   private static float[][] beautyAITableClose;
   private static boolean sNeedAIBeauty = true;
   private float[][] beautyAIMaxTable;
@@ -13,23 +13,26 @@ public class BeautyAIParam
   
   static
   {
-    float[] arrayOfFloat1 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    float[] arrayOfFloat2 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    float[] arrayOfFloat3 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    float[] arrayOfFloat4 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    float[] arrayOfFloat5 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    beautyAITableClose = new float[][] { arrayOfFloat1, arrayOfFloat2, arrayOfFloat3, arrayOfFloat4, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, arrayOfFloat5, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F } };
+    float[] arrayOfFloat1 = { 0.15F, 0.3F, 0.3F, 0.08F, 0.7F, 0.0F, 0.0F, 0.0F, 0.2F, 0.0F };
+    float[] arrayOfFloat2 = { 0.15F, 0.4F, 0.3F, 0.08F, 0.7F, 0.5F, 0.4F, 0.5F, 0.3F, 0.0F };
+    float[] arrayOfFloat3 = { 0.3F, 0.3F, 0.3F, 0.16F, 0.7F, 0.0F, 0.2F, 0.2F, 0.4F, 1.0F };
+    beautyAITable = new float[][] { { 0.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F }, arrayOfFloat1, { 0.15F, 0.4F, 0.3F, 0.08F, 0.7F, 0.0F, 0.0F, 0.0F, 0.2F, 0.0F }, arrayOfFloat2, { 0.3F, 0.3F, 0.3F, 0.16F, 0.7F, 0.0F, 0.0F, 0.0F, 0.4F, 1.0F }, arrayOfFloat3, { 0.3F, 0.3F, 0.3F, 0.16F, 0.7F, 0.7F, 0.7F, 0.7F, 0.6F, 1.0F } };
+    arrayOfFloat1 = new float[] { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
+    arrayOfFloat2 = new float[] { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
+    arrayOfFloat3 = new float[] { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
+    beautyAITableClose = new float[][] { arrayOfFloat1, arrayOfFloat2, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, arrayOfFloat3, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F } };
   }
   
   public BeautyAIParam()
   {
-    float[] arrayOfFloat1 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.9F, 1.0F };
-    float[] arrayOfFloat2 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.29F, 0.29F, 0.9F, 1.0F };
-    this.beautyAIMaxTable = new float[][] { { 0.5F, 0.5F, 0.5F, 0.5F, 1.0F, 0.0F, 0.0F, 0.0F, 0.5F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.71F, 0.57F, 0.71F, 0.8F, 0.0F }, arrayOfFloat1, arrayOfFloat2, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F } };
+    float[] arrayOfFloat1 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.71F, 0.57F, 0.71F, 0.8F, 0.0F };
+    float[] arrayOfFloat2 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F };
+    this.beautyAIMaxTable = new float[][] { { 0.5F, 0.5F, 0.5F, 0.5F, 1.0F, 0.0F, 0.0F, 0.0F, 0.5F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F }, arrayOfFloat1, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.9F, 1.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.29F, 0.29F, 0.9F, 1.0F }, arrayOfFloat2 };
     this.beautyGeneral = new float[] { 0.3F, 0.4F, 0.3F, 0.16F, 0.7F, 0.7F, 0.7F, 0.7F, 0.6F, 0.0F };
     arrayOfFloat1 = new float[] { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
     arrayOfFloat2 = new float[] { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    this.beautyAIMaxTableClose = new float[][] { arrayOfFloat1, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, arrayOfFloat2, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F } };
+    float[] arrayOfFloat3 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+    this.beautyAIMaxTableClose = new float[][] { { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, arrayOfFloat1, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, arrayOfFloat2, arrayOfFloat3 };
     this.beautyGeneralClose = new float[] { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.7F, 0.7F, 0.7F, 0.6F, 0.0F };
     this.personType = 0;
   }
@@ -58,21 +61,14 @@ public class BeautyAIParam
   
   public float getRealValue(BeautyAIParam.AI_TYPE paramAI_TYPE, float paramFloat)
   {
-    float f = paramFloat;
-    if (this.beautyGeneral[paramAI_TYPE.value] != 0.0F)
+    if ((this.beautyGeneral[paramAI_TYPE.value] != 0.0F) && (paramAI_TYPE != BeautyAIParam.AI_TYPE.FACEOFF))
     {
-      f = paramFloat;
-      if (paramAI_TYPE != BeautyAIParam.AI_TYPE.FACEOFF)
-      {
-        if (paramFloat >= this.beautyGeneral[paramAI_TYPE.value]) {
-          break label67;
-        }
-        f = beautyAITable[this.personType][paramAI_TYPE.value] * paramFloat / this.beautyGeneral[paramAI_TYPE.value];
+      if (paramFloat < this.beautyGeneral[paramAI_TYPE.value]) {
+        return beautyAITable[this.personType][paramAI_TYPE.value] * paramFloat / this.beautyGeneral[paramAI_TYPE.value];
       }
+      return beautyAITable[this.personType][paramAI_TYPE.value] + (paramFloat - this.beautyGeneral[paramAI_TYPE.value]) / (1.0F - this.beautyGeneral[paramAI_TYPE.value]) * (this.beautyAIMaxTable[this.personType][paramAI_TYPE.value] - beautyAITable[this.personType][paramAI_TYPE.value]);
     }
-    return f;
-    label67:
-    return beautyAITable[this.personType][paramAI_TYPE.value] + (paramFloat - this.beautyGeneral[paramAI_TYPE.value]) / (1.0F - this.beautyGeneral[paramAI_TYPE.value]) * (this.beautyAIMaxTable[this.personType][paramAI_TYPE.value] - beautyAITable[this.personType][paramAI_TYPE.value]);
+    return paramFloat;
   }
   
   public void setBeautyAITable(float[][] paramArrayOfFloat)
@@ -132,16 +128,22 @@ public class BeautyAIParam
   
   public void setFemalePercent(float paramFloat)
   {
-    beautyAITableClose[4][0] = (paramFloat * 0.3F);
-    beautyAITableClose[5][0] = (paramFloat * 0.3F);
-    beautyAITableClose[6][0] = (paramFloat * 0.3F);
+    float[][] arrayOfFloat = beautyAITableClose;
+    float[] arrayOfFloat1 = arrayOfFloat[4];
+    paramFloat *= 0.3F;
+    arrayOfFloat1[0] = paramFloat;
+    arrayOfFloat[5][0] = paramFloat;
+    arrayOfFloat[6][0] = paramFloat;
   }
   
   public void setMalePercent(float paramFloat)
   {
-    beautyAITableClose[1][0] = (paramFloat * 0.3F);
-    beautyAITableClose[2][0] = (paramFloat * 0.3F);
-    beautyAITableClose[3][0] = (paramFloat * 0.3F);
+    float[][] arrayOfFloat = beautyAITableClose;
+    float[] arrayOfFloat1 = arrayOfFloat[1];
+    paramFloat *= 0.3F;
+    arrayOfFloat1[0] = paramFloat;
+    arrayOfFloat[2][0] = paramFloat;
+    arrayOfFloat[3][0] = paramFloat;
   }
   
   public void setbeautyAIMaxTable(float[][] paramArrayOfFloat)
@@ -151,7 +153,7 @@ public class BeautyAIParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BeautyAIParam
  * JD-Core Version:    0.7.0.1
  */

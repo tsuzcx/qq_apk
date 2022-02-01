@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
+import hlq;
 import hlr;
-import hls;
 
 public class ToastUtil
 {
@@ -39,7 +39,7 @@ public class ToastUtil
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new hls(this, paramInt1, paramInt2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new hlr(this, paramInt1, paramInt2));
   }
   
   public void a(String paramString)
@@ -52,7 +52,7 @@ public class ToastUtil
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new hlr(this, paramString, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new hlq(this, paramString, paramInt));
   }
 }
 

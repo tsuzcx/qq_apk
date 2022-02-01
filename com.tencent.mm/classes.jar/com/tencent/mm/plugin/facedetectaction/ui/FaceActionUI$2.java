@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.facedetectaction.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.facedetectaction.b.d.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.facedetect.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
 
-final class FaceActionUI$2
-  implements d.a
+public final class FaceActionUI$2
+  implements Runnable
 {
-  FaceActionUI$2(FaceActionUI paramFaceActionUI) {}
+  public FaceActionUI$2(FaceActionUI paramFaceActionUI) {}
   
-  public final void Nv(String paramString)
+  public final void run()
   {
-    AppMethodBeat.i(718);
-    ab.i("MicroMsg.FaceActionUI", "onVerifyFinish:   authToken ：%s", new Object[] { paramString });
-    al.d(new FaceActionUI.2.3(this, paramString));
-    AppMethodBeat.o(718);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, String paramString, int paramInt3)
-  {
-    AppMethodBeat.i(719);
-    ab.i("MicroMsg.FaceActionUI", "onError, err: %s, cgiErrCode: %s, cgiErrMsg: %s,retry: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3) });
-    FaceActionUI.b(this.mrl, paramInt1);
-    FaceActionUI.c(this.mrl, paramInt2);
-    FaceActionUI.b(this.mrl, paramString);
-    al.d(new FaceActionUI.2.4(this, paramString, paramInt3, paramInt2));
-    AppMethodBeat.o(719);
-  }
-  
-  public final void aA(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(716);
-    ab.i("MicroMsg.FaceActionUI", "onInitFaceCheckFinish: %s", new Object[] { Integer.valueOf(paramInt) });
-    al.d(new FaceActionUI.2.1(this, paramInt, paramString));
-    AppMethodBeat.o(716);
-  }
-  
-  public final void bvG()
-  {
-    AppMethodBeat.i(717);
-    ab.i("MicroMsg.FaceActionUI", "onStartUpload");
-    al.d(new FaceActionUI.2.2(this));
-    AppMethodBeat.o(717);
+    AppMethodBeat.i(262629);
+    Log.i("MicroMsg.FaceActionUI", "openCameraPreviewFailedAnimation");
+    FaceActionUI.f(this.AaH).setText(a.i.face_open_camera_preview_error);
+    FaceActionUI.h(this.AaH).setText(a.i.face_severe_error_main_btn);
+    FaceActionUI.h(this.AaH).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(262605);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$10$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        Log.i("MicroMsg.FaceActionUI", "click finish");
+        FaceActionUI.2.this.AaH.f("fail", 90016, "", "");
+        a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$10$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(262605);
+      }
+    });
+    FaceActionUI.r(this.AaH).setVisibility(8);
+    FaceActionUI.s(this.AaH).setVisibility(0);
+    FaceActionUI.e(this.AaH).clearAnimation();
+    FaceActionUI.t(this.AaH).setVisibility(0);
+    FaceActionUI.u(this.AaH).setVisibility(8);
+    AppMethodBeat.o(262629);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.ui.FaceActionUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,58 @@
 package com.tencent.mm.plugin.nearby;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.nearby.a.f;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.nearby.model.f;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  private b jRP;
+  private c vyV;
   
   public Plugin()
   {
-    AppMethodBeat.i(55349);
-    this.jRP = new Plugin.1(this);
-    AppMethodBeat.o(55349);
+    AppMethodBeat.i(89751);
+    this.vyV = new c()
+    {
+      public final com.tencent.mm.pluginsdk.c.a al(Context paramAnonymousContext, String paramAnonymousString)
+      {
+        AppMethodBeat.i(89750);
+        paramAnonymousContext = new com.tencent.mm.plugin.nearby.ui.a(paramAnonymousContext);
+        AppMethodBeat.o(89750);
+        return paramAnonymousContext;
+      }
+    };
+    AppMethodBeat.o(89751);
   }
   
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(55350);
+    AppMethodBeat.i(89752);
     a locala = new a();
-    AppMethodBeat.o(55350);
+    AppMethodBeat.o(89752);
     return locala;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(55351);
+    AppMethodBeat.i(89753);
     f localf = new f();
-    AppMethodBeat.o(55351);
+    AppMethodBeat.o(89753);
     return localf;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
-    return this.jRP;
+    return this.vyV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.Plugin
  * JD-Core Version:    0.7.0.1
  */

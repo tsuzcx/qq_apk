@@ -1,25 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.VerifyCodeActivity2;
 
 public class duu
-  implements TextWatcher
+  implements View.OnClickListener
 {
   public duu(VerifyCodeActivity2 paramVerifyCodeActivity2) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if (paramEditable.length() >= 4)
-    {
-      VerifyCodeActivity2.c(this.a, true);
-      return;
-    }
-    VerifyCodeActivity2.d(this.a, false);
+    this.a.d();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

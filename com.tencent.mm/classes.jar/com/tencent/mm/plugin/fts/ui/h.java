@@ -1,104 +1,109 @@
 package com.tencent.mm.plugin.fts.ui;
 
+import android.os.Looper;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ar;
+import com.tencent.mm.plugin.chatroom.a.b;
 import com.tencent.mm.plugin.fts.a.d.e.b;
-import com.tencent.mm.plugin.fts.ui.d.g;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.fts.a.n;
+import com.tencent.mm.plugin.fts.ui.e.f;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.storage.au;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public final class h
   extends d
   implements e.b
 {
-  private ak ipC;
-  private boolean mXb;
-  private g mXe;
+  private MMHandler HwY;
+  private f HyG;
+  private boolean HyH;
   
-  public h(e parame, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public h(e parame, String paramString, int paramInt)
   {
     super(parame);
-    AppMethodBeat.i(61824);
-    this.ipC = new ak();
-    this.mXe = new g(parame.getContext(), this, paramInt1);
-    this.mXe.mSO = paramString2;
-    this.mXe.talker = paramString1;
-    this.mXe.mSN = paramString3;
-    this.mXe.showType = paramInt2;
-    AppMethodBeat.o(61824);
+    AppMethodBeat.i(111906);
+    this.HwY = new MMHandler(Looper.getMainLooper());
+    parame = parame.getContext();
+    HashSet localHashSet = new HashSet();
+    localHashSet.add(Integer.valueOf(160));
+    parame = (f)((n)com.tencent.mm.kernel.h.az(n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt).get(0);
+    parame.Htv = paramString;
+    if (au.bwE(paramString)) {
+      parame.Hyy = ((b)com.tencent.mm.kernel.h.ax(b.class)).bzK().Ju(paramString);
+    }
+    this.HyG = parame;
+    AppMethodBeat.o(111906);
   }
   
-  public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a Wj(int paramInt)
   {
-    AppMethodBeat.i(61828);
-    setCount(parame.wt(0));
+    AppMethodBeat.i(111908);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.HyG.Wj(paramInt);
+    if (locala != null)
+    {
+      locala.Huq = paramInt;
+      locala.pageType = 4;
+    }
+    AppMethodBeat.o(111908);
+    return locala;
+  }
+  
+  public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(265645);
+    setCount(parame.Wi(0));
     notifyDataSetChanged();
-    V(getCount(), true);
-    AppMethodBeat.o(61828);
+    aZ(getCount(), true);
+    AppMethodBeat.o(265645);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(61827);
-    paramBoolean = this.mXe.a(paramView, parama, paramBoolean);
-    if ((parama.mTP) && (!this.mXb))
+    AppMethodBeat.i(111910);
+    this.HyG.a(paramView, parama, paramBoolean);
+    if ((parama.Huy) && (!this.HyH))
     {
-      this.mXb = true;
-      k.c(this.query, true, this.mXe.bCx(), -2);
+      this.HyH = true;
+      l.c(getQuery(), true, this.HyG.fyc(), -2);
     }
-    if (paramBoolean)
-    {
-      clearCache();
-      setCount(this.mXe.wt(0));
-      notifyDataSetChanged();
-      V(getCount(), true);
-    }
-    AppMethodBeat.o(61827);
-    return paramBoolean;
-  }
-  
-  protected final int bCf()
-  {
-    AppMethodBeat.i(156822);
-    int i = this.mXe.bCx();
-    AppMethodBeat.o(156822);
-    return i;
-  }
-  
-  protected final void bCy()
-  {
-    AppMethodBeat.i(61826);
-    this.mXb = false;
-    this.mXe.a(this.query, this.ipC, new HashSet(), 0L);
-    AppMethodBeat.o(61826);
+    AppMethodBeat.o(111910);
+    return false;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(61829);
+    AppMethodBeat.i(111911);
     super.finish();
-    if (!this.mXb)
+    if (!this.HyH)
     {
-      this.mXb = true;
-      k.c(this.query, false, this.mXe.bCx(), -2);
+      this.HyH = true;
+      l.c(getQuery(), false, this.HyG.fyc(), -2);
     }
-    AppMethodBeat.o(61829);
+    AppMethodBeat.o(111911);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a wu(int paramInt)
+  protected final int fxI()
   {
-    AppMethodBeat.i(61825);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.mXe.wu(paramInt);
-    if (locala != null) {
-      locala.pageType = 5;
-    }
-    AppMethodBeat.o(61825);
-    return locala;
+    AppMethodBeat.i(369734);
+    int i = this.HyG.fyc();
+    AppMethodBeat.o(369734);
+    return i;
+  }
+  
+  protected final void fyd()
+  {
+    AppMethodBeat.i(111909);
+    this.HyH = false;
+    this.HyG.a(getQuery(), this.HwY, new HashSet());
+    AppMethodBeat.o(111909);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.h
  * JD-Core Version:    0.7.0.1
  */

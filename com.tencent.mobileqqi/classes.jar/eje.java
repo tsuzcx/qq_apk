@@ -1,39 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RadioButton;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.util.EUCountryUtils;
 
-public class eje
-  implements View.OnClickListener
+class eje
+  implements eji
 {
-  public eje(MainAssistObserver paramMainAssistObserver, RadioButton paramRadioButton1, QQCustomDialog paramQQCustomDialog, RadioButton paramRadioButton2) {}
+  eje(ejd paramejd) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRadioButton.isChecked())
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      }
-      MainAssistObserver.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver, new ejf(this));
-    }
-    do
-    {
-      return;
-      if (!this.b.isChecked()) {
-        break;
-      }
-      EUCountryUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.b.a(), 1);
-      EUCountryUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.b.a(), 2);
-    } while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    return;
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a, 2131563355, 0).a();
+    this.a.a.f();
+  }
+  
+  public void b()
+  {
+    EUCountryUtils.a(this.a.a.a.b.a(), 1);
+    EUCountryUtils.b(this.a.a.a.b.a(), 1);
+    MainAssistObserver.a(this.a.a, -1);
   }
 }
 

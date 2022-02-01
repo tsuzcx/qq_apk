@@ -18,13 +18,16 @@ public final class a
   
   public static int a()
   {
-    switch ()
+    int j = com.tencent.hlyyb.common.a.a.g();
+    int i = 1048576;
+    if (j != 2)
     {
-    case 2: 
-    default: 
-      return 1048576;
+      if (j != 3) {
+        return 1048576;
+      }
+      i = 524288;
     }
-    return 524288;
+    return i;
   }
   
   public static void a(int paramInt)
@@ -44,27 +47,27 @@ public final class a
   public static String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int i;
+    String str;
     if ("mounted".equals(Environment.getExternalStorageState()))
     {
-      i = 1;
-      if (i == 0) {
-        break label98;
-      }
-      str1 = b.d();
+      str = b.d();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      ((StringBuilder)localObject).append("/Download/");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("/HalleyDownload");
+      str = ((StringBuilder)localObject).toString();
     }
-    label98:
-    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/" + str1 + "/HalleyDownload";; str1 = "")
+    else
     {
-      String str2 = str1;
-      if (TextUtils.isEmpty(str1)) {
-        str2 = com.tencent.hlyyb.common.a.a().getFilesDir().toString();
-      }
-      localStringBuilder.append(str2);
-      return localStringBuilder.toString();
-      i = 0;
-      break;
+      str = "";
     }
+    Object localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = com.tencent.hlyyb.common.a.a().getFilesDir().toString();
+    }
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
   }
   
   public static void b(int paramInt)
@@ -109,12 +112,18 @@ public final class a
   
   public static String e(String paramString)
   {
-    return paramString + ".bdcfg";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".bdcfg");
+    return localStringBuilder.toString();
   }
   
   public static String f(String paramString)
   {
-    return paramString + e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(e);
+    return localStringBuilder.toString();
   }
   
   public static boolean g(String paramString)
@@ -124,7 +133,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import nmb;
-import sgi;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.MobileQQ;
 
 class QQAppInterface$21
   implements Runnable
@@ -10,18 +10,12 @@ class QQAppInterface$21
   
   public void run()
   {
-    nmb localnmb = (nmb)this.this$0.getManager(238);
-    if (localnmb != null) {
-      localnmb.a(1);
-    }
-    this.this$0.E();
-    QQAppInterface.b(this.this$0);
-    sgi.b();
+    QQToast.makeText(QQAppInterface.access$3100(this.this$0).getApplicationContext(), 2131887439, 5000).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.21
  * JD-Core Version:    0.7.0.1
  */

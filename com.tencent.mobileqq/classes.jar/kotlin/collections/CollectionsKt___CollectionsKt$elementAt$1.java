@@ -18,12 +18,16 @@ final class CollectionsKt___CollectionsKt$elementAt$1
   @NotNull
   public final Void invoke(int paramInt)
   {
-    throw ((Throwable)new IndexOutOfBoundsException("Collection doesn't contain element at index " + this.$index + '.'));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Collection doesn't contain element at index ");
+    localStringBuilder.append(this.$index);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.CollectionsKt___CollectionsKt.elementAt.1
  * JD-Core Version:    0.7.0.1
  */

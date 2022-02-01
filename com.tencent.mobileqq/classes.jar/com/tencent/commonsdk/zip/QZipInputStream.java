@@ -15,15 +15,15 @@ public class QZipInputStream
   public ZipEntry getNextEntry()
   {
     ZipEntry localZipEntry = super.getNextEntry();
-    if (QZipIOException.isInvalidEntry(localZipEntry)) {
-      throw new QZipIOException();
+    if (!QZipIOException.isInvalidEntry(localZipEntry)) {
+      return localZipEntry;
     }
-    return localZipEntry;
+    throw new QZipIOException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.commonsdk.zip.QZipInputStream
  * JD-Core Version:    0.7.0.1
  */

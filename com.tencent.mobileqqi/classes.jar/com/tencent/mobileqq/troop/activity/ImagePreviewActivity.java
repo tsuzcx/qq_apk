@@ -113,15 +113,15 @@ public class ImagePreviewActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232057);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232055);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232067));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232065));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131232066));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232064));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232056);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232054);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232066));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232064));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131232065));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131232063));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230941));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232058));
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231777));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232057));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131231776));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -239,7 +239,7 @@ public class ImagePreviewActivity
     {
     default: 
       return;
-    case 2131232064: 
+    case 2131232063: 
       if (this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.jdField_a_of_type_Int)))
       {
         this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
@@ -254,7 +254,7 @@ public class ImagePreviewActivity
       this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(this.jdField_a_of_type_Int));
       f();
       return;
-    case 2131232058: 
+    case 2131232057: 
       b();
       return;
     }

@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.websearch.b;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.plugin.websearch.api.an;
-import com.tencent.mm.plugin.websearch.api.d;
-import com.tencent.mm.plugin.websearch.api.e;
-import java.lang.ref.WeakReference;
-import org.xwalk.core.Log;
+import com.tencent.mm.autogen.mmdata.rpt.rh;
+import com.tencent.mm.autogen.mmdata.rpt.rz;
+import com.tencent.mm.plugin.websearch.api.as;
 
 public final class b
-  implements e
 {
-  public final void a(String paramString, d paramd, com.tencent.mm.vending.e.b paramb)
+  public static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, String paramString3, String paramString4, int paramInt4, String paramString5, long paramLong)
   {
-    AppMethodBeat.i(91365);
-    if (TextUtils.isEmpty(paramString))
-    {
-      Log.w("RelevantSearchService", "empty query");
-      if (paramd != null) {
-        paramd.a(false, null, null, null);
-      }
-    }
-    paramd = new WeakReference(paramd);
-    new a(paramString).adl().b(paramb).b(new b.1(this, paramd, paramString));
-    AppMethodBeat.o(91365);
+    AppMethodBeat.i(315392);
+    rh localrh = new rh();
+    localrh.jvB = paramInt1;
+    localrh.jvC = paramInt2;
+    paramString1 = localrh.yh(paramString1).yi(paramString2);
+    paramString1.jgk = paramInt3;
+    paramString1 = paramString1.yj(paramString3).yk(paramString4);
+    paramString1.ikE = paramInt4;
+    paramString1 = paramString1.yl(paramString5);
+    paramString1.izR = paramLong;
+    paramString1.bMH();
+    as.a(localrh);
+    AppMethodBeat.o(315392);
   }
   
-  public final void at(String paramString1, String paramString2, String paramString3)
+  public static void a(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(91366);
-    an.a(paramString1, paramString2, System.currentTimeMillis(), paramString3);
-    AppMethodBeat.o(91366);
-  }
-  
-  public final void e(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    AppMethodBeat.i(91367);
-    an.f(paramString1, paramString2, paramInt, paramString3);
-    AppMethodBeat.o(91367);
+    AppMethodBeat.i(315386);
+    rz localrz = new rz();
+    localrz.izg = paramInt1;
+    localrz.jwY = localrz.F("EnterSceneId", paramString1, true);
+    localrz.ioY = localrz.F("RequestId", paramString2, true);
+    localrz.ioV = paramInt2;
+    localrz.jvE = localrz.F("QueryKey", paramString3, true);
+    localrz.ijk = localrz.F("SessionId", paramString4, true);
+    localrz.jwZ = paramInt3;
+    localrz.jxa = paramLong;
+    localrz.bMH();
+    as.a(localrz);
+    AppMethodBeat.o(315386);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.b.b
  * JD-Core Version:    0.7.0.1
  */

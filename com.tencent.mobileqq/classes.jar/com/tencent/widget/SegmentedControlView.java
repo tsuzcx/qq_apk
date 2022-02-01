@@ -33,20 +33,16 @@ public class SegmentedControlView
       this.b = paramContext.getDrawable(2);
       this.c = paramContext.getDrawable(3);
       this.d = paramContext.getDrawable(4);
-      setOrientation(paramContext.getInt(0, 0));
-      paramContext.recycle();
-      return;
     }
     catch (Exception paramAttributeSet)
     {
-      for (;;)
-      {
-        paramAttributeSet.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.recent", 2, paramAttributeSet.toString());
-        }
+      paramAttributeSet.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, paramAttributeSet.toString());
       }
     }
+    setOrientation(paramContext.getInt(0, 0));
+    paramContext.recycle();
   }
   
   private void b()
@@ -59,7 +55,7 @@ public class SegmentedControlView
       }
       if (this.c != null)
       {
-        i = j - 2;
+        int i = j - 2;
         while (i > 0)
         {
           getChildAt(i).setBackgroundDrawable(this.c);
@@ -70,15 +66,13 @@ public class SegmentedControlView
         getChildAt(j - 1).setBackgroundDrawable(this.b);
       }
     }
-    while ((j != 1) || (this.d == null))
+    else if ((j == 1) && (this.d != null))
     {
-      int i;
-      return;
+      getChildAt(0).setBackgroundDrawable(this.d);
     }
-    getChildAt(0).setBackgroundDrawable(this.d);
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
     b();
@@ -106,7 +100,7 @@ public class SegmentedControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.SegmentedControlView
  * JD-Core Version:    0.7.0.1
  */

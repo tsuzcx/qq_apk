@@ -13,23 +13,26 @@ public final class SharpPUtil
   {
     SharpPDecoder localSharpPDecoder = new SharpPDecoder();
     int i = localSharpPDecoder.parseHeader(paramString);
-    if (i != 0) {
-      Log.d("SharpPUtil", "status: " + i);
-    }
-    do
+    if (i != 0)
     {
+      paramString = new StringBuilder();
+      paramString.append("status: ");
+      paramString.append(i);
+      Log.d("SharpPUtil", paramString.toString());
       return null;
-      i = localSharpPDecoder.getSharpPType();
-    } while ((3 == i) || (4 == i));
-    try
-    {
-      paramString = localSharpPDecoder.decodeSharpP2PNG2(paramString, 4, 1000);
-      return paramString;
     }
-    catch (UnsatisfiedLinkError paramString)
-    {
-      Log.e("SharpPUtil", "sharpP so link error, missing native method.");
-      paramString.printStackTrace();
+    i = localSharpPDecoder.getSharpPType();
+    if ((3 != i) && (4 != i)) {
+      try
+      {
+        paramString = localSharpPDecoder.decodeSharpP2PNG2(paramString, 4, 1000);
+        return paramString;
+      }
+      catch (UnsatisfiedLinkError paramString)
+      {
+        Log.e("SharpPUtil", "sharpP so link error, missing native method.");
+        paramString.printStackTrace();
+      }
     }
     return null;
   }
@@ -40,143 +43,180 @@ public final class SharpPUtil
     // Byte code:
     //   0: bipush 6
     //   2: newarray byte
-    //   4: astore_3
-    //   5: new 74	java/io/FileInputStream
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 77	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   13: astore_1
-    //   14: aload_1
-    //   15: astore_0
-    //   16: aload_1
-    //   17: aload_3
-    //   18: invokevirtual 81	java/io/FileInputStream:read	([B)I
-    //   21: pop
-    //   22: aload_1
-    //   23: ifnull +7 -> 30
-    //   26: aload_1
+    //   4: astore 4
+    //   6: aconst_null
+    //   7: astore_3
+    //   8: aconst_null
+    //   9: astore_1
+    //   10: new 74	java/io/FileInputStream
+    //   13: dup
+    //   14: aload_0
+    //   15: invokespecial 77	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   18: astore_0
+    //   19: aload_0
+    //   20: aload 4
+    //   22: invokevirtual 81	java/io/FileInputStream:read	([B)I
+    //   25: pop
+    //   26: aload_0
     //   27: invokevirtual 84	java/io/FileInputStream:close	()V
-    //   30: new 86	java/lang/String
-    //   33: dup
-    //   34: aload_3
-    //   35: invokespecial 89	java/lang/String:<init>	([B)V
-    //   38: astore_0
-    //   39: ldc 11
-    //   41: new 32	java/lang/StringBuilder
-    //   44: dup
-    //   45: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   48: ldc 91
-    //   50: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: aload_0
+    //   30: goto +125 -> 155
+    //   33: astore_1
+    //   34: new 32	java/lang/StringBuilder
+    //   37: dup
+    //   38: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   41: astore_0
+    //   42: aload_0
+    //   43: ldc 86
+    //   45: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: aload_0
+    //   50: aload_1
+    //   51: invokevirtual 89	java/io/IOException:getMessage	()Ljava/lang/String;
     //   54: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   63: pop
-    //   64: aload_0
-    //   65: ldc 8
-    //   67: invokevirtual 95	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   70: ireturn
-    //   71: astore_0
-    //   72: ldc 11
-    //   74: new 32	java/lang/StringBuilder
-    //   77: dup
-    //   78: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   81: ldc 97
-    //   83: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: aload_0
-    //   87: invokevirtual 100	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   90: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   99: pop
-    //   100: goto -70 -> 30
-    //   103: astore_2
-    //   104: aconst_null
-    //   105: astore_1
-    //   106: aload_1
-    //   107: astore_0
-    //   108: ldc 11
-    //   110: new 32	java/lang/StringBuilder
-    //   113: dup
-    //   114: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   117: ldc 102
-    //   119: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: aload_2
-    //   123: invokevirtual 100	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   126: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   135: pop
-    //   136: aload_1
-    //   137: ifnull -107 -> 30
-    //   140: aload_1
-    //   141: invokevirtual 84	java/io/FileInputStream:close	()V
-    //   144: goto -114 -> 30
-    //   147: astore_0
-    //   148: ldc 11
-    //   150: new 32	java/lang/StringBuilder
-    //   153: dup
-    //   154: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   157: ldc 97
-    //   159: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: aload_0
-    //   163: invokevirtual 100	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   166: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   172: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   175: pop
-    //   176: goto -146 -> 30
-    //   179: astore_1
-    //   180: aconst_null
-    //   181: astore_0
-    //   182: aload_0
-    //   183: ifnull +7 -> 190
-    //   186: aload_0
-    //   187: invokevirtual 84	java/io/FileInputStream:close	()V
-    //   190: aload_1
-    //   191: athrow
-    //   192: astore_0
-    //   193: ldc 11
-    //   195: new 32	java/lang/StringBuilder
-    //   198: dup
-    //   199: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   202: ldc 97
-    //   204: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: aload_0
-    //   208: invokevirtual 100	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   211: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   214: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   217: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   220: pop
-    //   221: goto -31 -> 190
-    //   224: astore_1
-    //   225: goto -43 -> 182
-    //   228: astore_2
-    //   229: goto -123 -> 106
+    //   57: pop
+    //   58: ldc 11
+    //   60: aload_0
+    //   61: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   67: pop
+    //   68: goto +87 -> 155
+    //   71: astore_2
+    //   72: aload_0
+    //   73: astore_1
+    //   74: aload_2
+    //   75: astore_0
+    //   76: goto +127 -> 203
+    //   79: astore_2
+    //   80: goto +10 -> 90
+    //   83: astore_0
+    //   84: goto +119 -> 203
+    //   87: astore_2
+    //   88: aload_3
+    //   89: astore_0
+    //   90: aload_0
+    //   91: astore_1
+    //   92: new 32	java/lang/StringBuilder
+    //   95: dup
+    //   96: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   99: astore_3
+    //   100: aload_0
+    //   101: astore_1
+    //   102: aload_3
+    //   103: ldc 91
+    //   105: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: pop
+    //   109: aload_0
+    //   110: astore_1
+    //   111: aload_3
+    //   112: aload_2
+    //   113: invokevirtual 89	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   116: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: pop
+    //   120: aload_0
+    //   121: astore_1
+    //   122: ldc 11
+    //   124: aload_3
+    //   125: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   131: pop
+    //   132: aload_0
+    //   133: ifnull +22 -> 155
+    //   136: aload_0
+    //   137: invokevirtual 84	java/io/FileInputStream:close	()V
+    //   140: goto +15 -> 155
+    //   143: astore_1
+    //   144: new 32	java/lang/StringBuilder
+    //   147: dup
+    //   148: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   151: astore_0
+    //   152: goto -110 -> 42
+    //   155: new 93	java/lang/String
+    //   158: dup
+    //   159: aload 4
+    //   161: invokespecial 96	java/lang/String:<init>	([B)V
+    //   164: astore_0
+    //   165: new 32	java/lang/StringBuilder
+    //   168: dup
+    //   169: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   172: astore_1
+    //   173: aload_1
+    //   174: ldc 98
+    //   176: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: aload_1
+    //   181: aload_0
+    //   182: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: ldc 11
+    //   188: aload_1
+    //   189: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   192: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   195: pop
+    //   196: aload_0
+    //   197: ldc 8
+    //   199: invokevirtual 102	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   202: ireturn
+    //   203: aload_1
+    //   204: ifnull +45 -> 249
+    //   207: aload_1
+    //   208: invokevirtual 84	java/io/FileInputStream:close	()V
+    //   211: goto +38 -> 249
+    //   214: astore_1
+    //   215: new 32	java/lang/StringBuilder
+    //   218: dup
+    //   219: invokespecial 33	java/lang/StringBuilder:<init>	()V
+    //   222: astore_2
+    //   223: aload_2
+    //   224: ldc 86
+    //   226: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: pop
+    //   230: aload_2
+    //   231: aload_1
+    //   232: invokevirtual 89	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   235: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: pop
+    //   239: ldc 11
+    //   241: aload_2
+    //   242: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   245: invokestatic 52	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   248: pop
+    //   249: goto +5 -> 254
+    //   252: aload_0
+    //   253: athrow
+    //   254: goto -2 -> 252
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	232	0	paramFile	java.io.File
-    //   13	128	1	localFileInputStream	java.io.FileInputStream
-    //   179	12	1	localObject1	Object
-    //   224	1	1	localObject2	Object
-    //   103	20	2	localIOException1	java.io.IOException
-    //   228	1	2	localIOException2	java.io.IOException
-    //   4	31	3	arrayOfByte	byte[]
+    //   0	257	0	paramFile	java.io.File
+    //   9	1	1	localObject1	Object
+    //   33	18	1	localIOException1	java.io.IOException
+    //   73	49	1	localFile	java.io.File
+    //   143	1	1	localIOException2	java.io.IOException
+    //   172	36	1	localStringBuilder1	StringBuilder
+    //   214	18	1	localIOException3	java.io.IOException
+    //   71	4	2	localObject2	Object
+    //   79	1	2	localIOException4	java.io.IOException
+    //   87	26	2	localIOException5	java.io.IOException
+    //   222	20	2	localStringBuilder2	StringBuilder
+    //   7	118	3	localStringBuilder3	StringBuilder
+    //   4	156	4	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   26	30	71	java/io/IOException
-    //   5	14	103	java/io/IOException
-    //   140	144	147	java/io/IOException
-    //   5	14	179	finally
-    //   186	190	192	java/io/IOException
-    //   16	22	224	finally
-    //   108	136	224	finally
-    //   16	22	228	java/io/IOException
+    //   26	30	33	java/io/IOException
+    //   19	26	71	finally
+    //   19	26	79	java/io/IOException
+    //   10	19	83	finally
+    //   92	100	83	finally
+    //   102	109	83	finally
+    //   111	120	83	finally
+    //   122	132	83	finally
+    //   10	19	87	java/io/IOException
+    //   136	140	143	java/io/IOException
+    //   207	211	214	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sharpP.SharpPUtil
  * JD-Core Version:    0.7.0.1
  */

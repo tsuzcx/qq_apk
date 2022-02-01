@@ -17,101 +17,99 @@ public final class bd
   
   public bd(URL paramURL, String paramString)
   {
-    if (as.a("direct_access_use_schedule", 0, 1, 1) == 1) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.e = bool1;
-      bool1 = bool2;
-      if (as.a("direct_https_use_sche", 0, 1, 1) == 1) {
-        bool1 = true;
-      }
-      this.f = bool1;
-      this.g = as.a("direct_access_domain_try_times", 1, 8, 2);
-      this.d = "";
-      this.a = paramURL;
-      this.b = paramString;
-      return;
+    boolean bool2 = false;
+    if (as.a("direct_access_use_schedule", 0, 1, 1) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    this.e = bool1;
+    boolean bool1 = bool2;
+    if (as.a("direct_https_use_sche", 0, 1, 1) == 1) {
+      bool1 = true;
+    }
+    this.f = bool1;
+    this.g = as.a("direct_access_domain_try_times", 1, 8, 2);
+    this.d = "";
+    this.a = paramURL;
+    this.b = paramString;
   }
   
   public final List<ad> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int k = 3;
-    int j = 0;
     ad localad = new ad(this.a.getHost());
+    int k = 3;
     localad.e = 3;
+    int j = 0;
     for (;;)
     {
       try
       {
-        Object localObject = new ArrayList();
+        localObject = new ArrayList();
         if (!paramBoolean1)
         {
           ((List)localObject).add(localad);
           localad.c = 1;
           return localObject;
         }
-        if ((!ao.j()) && (this.e)) {
-          if ((paramBoolean2) && (!this.f))
+        if ((ao.j()) || (!this.e) || ((paramBoolean2) && (!this.f))) {
+          continue;
+        }
+        if ((paramBoolean2) && (Build.VERSION.SDK_INT <= 18))
+        {
+          i = 0;
+          if (i < this.g)
           {
-            break label282;
-            if (i < this.g)
-            {
-              ((List)localObject).add(localad);
-              i += 1;
-              continue;
-            }
-            if (ao.j())
-            {
-              i = 2;
-              localad.c = i;
-              return localObject;
-            }
-            i = k;
-            if (!this.e) {
-              continue;
-            }
-            i = 4;
+            ((List)localObject).add(localad);
+            i += 1;
             continue;
           }
-          else
-          {
-            if ((paramBoolean2) && (Build.VERSION.SDK_INT <= 18))
-            {
-              i = 0;
-              if (i < this.g)
-              {
-                ((List)localObject).add(localad);
-                i += 1;
-                continue;
-              }
-              localad.c = 10;
-              return localObject;
-            }
-            localObject = bb.a(this.a.getHost());
-            List localList = ((al)localObject).c;
-            this.c = ((al)localObject).d;
-            this.d = ((al)localObject).b;
-            return localList;
-          }
+          localad.c = 10;
+          return localObject;
         }
+        localObject = bb.a(this.a.getHost());
+        List localList = ((al)localObject).c;
+        this.c = ((al)localObject).d;
+        this.d = ((al)localObject).b;
+        return localList;
       }
       catch (Exception localException)
       {
-        ArrayList localArrayList = new ArrayList();
-        i = j;
-        if (i < this.g)
-        {
-          localArrayList.add(localad);
-          i += 1;
-          continue;
-        }
-        localad.c = 8;
-        return localArrayList;
+        Object localObject;
+        continue;
+        int i = 0;
+        continue;
+        i = 4;
+        continue;
       }
-      label282:
-      int i = 0;
+      if (i >= this.g) {
+        continue;
+      }
+      ((List)localObject).add(localad);
+      i += 1;
     }
+    if (ao.j())
+    {
+      i = 2;
+    }
+    else
+    {
+      if (this.e) {
+        break label291;
+      }
+      i = k;
+    }
+    localad.c = i;
+    return localObject;
+    localObject = new ArrayList();
+    i = j;
+    while (i < this.g)
+    {
+      ((List)localObject).add(localad);
+      i += 1;
+    }
+    localad.c = 8;
+    return localObject;
   }
 }
 

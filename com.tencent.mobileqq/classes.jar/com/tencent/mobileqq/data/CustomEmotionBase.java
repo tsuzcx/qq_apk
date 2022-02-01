@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class CustomEmotionBase
-  extends awge
+  extends Entity
 {
   public String RomaingType = "init";
-  @awhs
+  @unique
   public int emoId;
   public String emoOriginalPath;
   public String emoPath;

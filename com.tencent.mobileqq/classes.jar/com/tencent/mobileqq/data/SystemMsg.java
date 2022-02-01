@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import azah;
-import bdqa;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.service.message.EmotionCodecUtils;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 
 public class SystemMsg
   extends JceStruct
@@ -33,2584 +33,3339 @@ public class SystemMsg
   public int wSourceSubID;
   
   /* Error */
-  public static SystemMsg decode(com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public static SystemMsg decode(com.tencent.common.app.AppInterface paramAppInterface, String paramString1, String paramString2, int paramInt)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: iconst_0
-    //   4: istore 6
-    //   6: iconst_0
-    //   7: istore 7
-    //   9: iconst_0
-    //   10: istore 8
-    //   12: iconst_0
-    //   13: istore 4
-    //   15: aload_1
-    //   16: ifnull +4536 -> 4552
-    //   19: iload_3
-    //   20: invokestatic 54	com/tencent/mobileqq/data/SystemMsg:isTroopSystemMessage	(I)Z
-    //   23: ifeq +2467 -> 2490
-    //   26: aload_1
-    //   27: invokestatic 60	bdhe:a	(Ljava/lang/String;)[B
-    //   30: astore_2
-    //   31: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   34: dup
-    //   35: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   38: astore_1
-    //   39: aload_1
-    //   40: astore 9
-    //   42: aload_1
-    //   43: astore 10
-    //   45: aload_1
-    //   46: aload_2
-    //   47: invokestatic 65	com/tencent/mobileqq/data/SystemMsg:getTroopCodeFromTroopSysMsg	([B)Ljava/lang/String;
-    //   50: putfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   53: aload_1
-    //   54: astore 9
-    //   56: aload_1
-    //   57: astore 10
-    //   59: aload_1
-    //   60: aload_2
-    //   61: invokestatic 71	com/tencent/mobileqq/data/SystemMsg:getTroopTypeFromTroopSysMsg	([B)B
-    //   64: putfield 73	com/tencent/mobileqq/data/SystemMsg:troopType	B
-    //   67: aload_1
-    //   68: astore 9
-    //   70: aload_1
-    //   71: astore 10
-    //   73: aload_1
-    //   74: aload_2
-    //   75: iload_3
-    //   76: invokestatic 77	com/tencent/mobileqq/data/SystemMsg:getManagerUinFromTroopSysMsg	([BI)Ljava/lang/String;
-    //   79: putfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
-    //   82: aload_1
-    //   83: astore 9
-    //   85: aload_1
-    //   86: astore 10
-    //   88: aload_1
-    //   89: aload_2
-    //   90: iload_3
-    //   91: invokestatic 82	com/tencent/mobileqq/data/SystemMsg:getStrMsgFromTroopSysMsg	([BI)Ljava/lang/String;
-    //   94: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   97: aload_1
-    //   98: astore 9
-    //   100: aload_1
-    //   101: astore 10
-    //   103: aload_1
-    //   104: aload_2
-    //   105: iload_3
-    //   106: invokestatic 88	com/tencent/mobileqq/data/SystemMsg:getTroopOpFromTroopSysMsg	([BI)B
-    //   109: putfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
+    //   0: aconst_null
+    //   1: astore 12
+    //   3: aconst_null
+    //   4: astore 13
+    //   6: aconst_null
+    //   7: astore 11
+    //   9: aload 13
+    //   11: astore 10
+    //   13: aload_1
+    //   14: ifnull +5467 -> 5481
+    //   17: iload_3
+    //   18: invokestatic 54	com/tencent/mobileqq/data/SystemMsg:isTroopSystemMessage	(I)Z
+    //   21: istore 9
+    //   23: iload 9
+    //   25: ifeq +2252 -> 2277
+    //   28: aload_1
+    //   29: invokestatic 60	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   32: astore_2
+    //   33: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   36: dup
+    //   37: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   40: astore_1
+    //   41: aload_1
+    //   42: aload_2
+    //   43: invokestatic 65	com/tencent/mobileqq/data/SystemMsg:getTroopCodeFromTroopSysMsg	([B)Ljava/lang/String;
+    //   46: putfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   49: aload_1
+    //   50: aload_2
+    //   51: invokestatic 71	com/tencent/mobileqq/data/SystemMsg:getTroopTypeFromTroopSysMsg	([B)B
+    //   54: putfield 73	com/tencent/mobileqq/data/SystemMsg:troopType	B
+    //   57: aload_1
+    //   58: aload_2
+    //   59: iload_3
+    //   60: invokestatic 77	com/tencent/mobileqq/data/SystemMsg:getManagerUinFromTroopSysMsg	([BI)Ljava/lang/String;
+    //   63: putfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
+    //   66: aload_1
+    //   67: aload_2
+    //   68: iload_3
+    //   69: invokestatic 82	com/tencent/mobileqq/data/SystemMsg:getStrMsgFromTroopSysMsg	([BI)Ljava/lang/String;
+    //   72: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   75: aload_1
+    //   76: aload_2
+    //   77: iload_3
+    //   78: invokestatic 88	com/tencent/mobileqq/data/SystemMsg:getTroopOpFromTroopSysMsg	([BI)B
+    //   81: putfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
+    //   84: aload_1
+    //   85: aload_2
+    //   86: iload_3
+    //   87: invokestatic 93	com/tencent/mobileqq/data/SystemMsg:getRequestUinFromTroopSysMsg	([BI)Ljava/lang/String;
+    //   90: putfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   93: aload_1
+    //   94: aload_2
+    //   95: iload_3
+    //   96: invokestatic 99	com/tencent/mobileqq/data/SystemMsg:getAuthFromTroopSysMsg	([BI)[B
+    //   99: putfield 101	com/tencent/mobileqq/data/SystemMsg:auth	[B
+    //   102: aload_1
+    //   103: aload_2
+    //   104: iload_3
+    //   105: invokestatic 104	com/tencent/mobileqq/data/SystemMsg:getInviteUinFromTroopSysMsg	([BI)Ljava/lang/String;
+    //   108: putfield 106	com/tencent/mobileqq/data/SystemMsg:inviteMemUin	Ljava/lang/String;
+    //   111: aload_0
     //   112: aload_1
-    //   113: astore 9
-    //   115: aload_1
-    //   116: astore 10
-    //   118: aload_1
-    //   119: aload_2
-    //   120: iload_3
-    //   121: invokestatic 93	com/tencent/mobileqq/data/SystemMsg:getRequestUinFromTroopSysMsg	([BI)Ljava/lang/String;
-    //   124: putfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   127: aload_1
-    //   128: astore 9
-    //   130: aload_1
-    //   131: astore 10
+    //   113: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   116: iconst_1
+    //   117: invokestatic 112	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Z)Ljava/lang/String;
+    //   120: astore_2
+    //   121: aload_0
+    //   122: aload_1
+    //   123: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   126: iconst_1
+    //   127: invokestatic 115	com/tencent/mobileqq/utils/ContactUtils:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Ljava/lang/String;
+    //   130: astore 10
+    //   132: aload_0
     //   133: aload_1
-    //   134: aload_2
-    //   135: iload_3
-    //   136: invokestatic 99	com/tencent/mobileqq/data/SystemMsg:getAuthFromTroopSysMsg	([BI)[B
-    //   139: putfield 101	com/tencent/mobileqq/data/SystemMsg:auth	[B
-    //   142: aload_1
-    //   143: astore 9
-    //   145: aload_1
-    //   146: astore 10
-    //   148: aload_1
-    //   149: aload_2
-    //   150: iload_3
-    //   151: invokestatic 104	com/tencent/mobileqq/data/SystemMsg:getInviteUinFromTroopSysMsg	([BI)Ljava/lang/String;
-    //   154: putfield 106	com/tencent/mobileqq/data/SystemMsg:inviteMemUin	Ljava/lang/String;
-    //   157: aload_1
-    //   158: astore 9
-    //   160: aload_1
-    //   161: astore 10
-    //   163: aload_0
-    //   164: aload_1
-    //   165: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   168: iconst_1
-    //   169: invokestatic 111	bdgc:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
-    //   172: astore_2
-    //   173: aload_1
-    //   174: astore 9
-    //   176: aload_1
-    //   177: astore 10
-    //   179: aload_0
-    //   180: aload_1
-    //   181: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   184: iconst_1
-    //   185: invokestatic 114	bdgc:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
-    //   188: astore 11
-    //   190: aload_1
-    //   191: astore 9
-    //   193: aload_1
-    //   194: astore 10
-    //   196: aload_0
-    //   197: aload_1
-    //   198: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
-    //   201: iconst_1
-    //   202: invokestatic 114	bdgc:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
-    //   205: astore 12
-    //   207: aload_1
-    //   208: astore 9
-    //   210: aload_1
-    //   211: astore 10
-    //   213: aload_0
-    //   214: aload_1
-    //   215: getfield 106	com/tencent/mobileqq/data/SystemMsg:inviteMemUin	Ljava/lang/String;
-    //   218: iconst_1
-    //   219: invokestatic 114	bdgc:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Z)Ljava/lang/String;
-    //   222: astore 13
-    //   224: iload_3
-    //   225: lookupswitch	default:+4329->4554, -1023:+824->1049, -1022:+247->472, -1021:+107->332, -1020:+443->668, 35:+443->668, 36:+107->332, 37:+247->472, 46:+824->1049, 84:+443->668, 85:+107->332, 86:+247->472, 87:+824->1049
-    //   333: astore 9
-    //   335: aload_1
-    //   336: astore 10
-    //   338: aload_1
-    //   339: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
-    //   342: ifnull +74 -> 416
-    //   345: aload_1
-    //   346: astore 9
-    //   348: aload_1
-    //   349: astore 10
-    //   351: aload_1
-    //   352: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
-    //   355: aload 12
-    //   357: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   360: ifne +56 -> 416
-    //   363: aload_1
-    //   364: astore 9
-    //   366: aload_1
-    //   367: astore 10
-    //   369: aload_1
-    //   370: new 122	java/lang/StringBuilder
-    //   373: dup
-    //   374: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   377: aload 12
-    //   379: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   382: ldc 128
-    //   384: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   390: ldc 135
-    //   392: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   395: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   398: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   401: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   404: aload_1
-    //   405: areturn
-    //   406: astore_1
-    //   407: aload 9
-    //   409: astore_0
-    //   410: aload_1
-    //   411: invokevirtual 148	java/io/IOException:printStackTrace	()V
-    //   414: aload_0
-    //   415: areturn
-    //   416: aload_1
-    //   417: astore 9
-    //   419: aload_1
-    //   420: astore 10
-    //   422: aload_1
-    //   423: new 122	java/lang/StringBuilder
-    //   426: dup
-    //   427: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   430: ldc 150
-    //   432: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   435: aload 12
-    //   437: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   440: ldc 152
-    //   442: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   445: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   448: ldc 135
-    //   450: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   453: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   456: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   459: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   462: aload_1
-    //   463: areturn
-    //   464: astore_0
-    //   465: aload_0
-    //   466: invokevirtual 153	java/lang/Exception:printStackTrace	()V
-    //   469: aload 10
-    //   471: areturn
-    //   472: aload_1
-    //   473: astore 9
-    //   475: aload_1
-    //   476: astore 10
-    //   478: aload_1
-    //   479: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   482: ifnull +24 -> 506
-    //   485: aload_1
-    //   486: astore 9
-    //   488: aload_1
-    //   489: astore 10
-    //   491: ldc 39
-    //   493: aload_1
-    //   494: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   497: invokevirtual 156	java/lang/String:trim	()Ljava/lang/String;
-    //   500: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   503: ifeq +103 -> 606
-    //   506: aload_1
-    //   507: astore 9
-    //   509: aload_1
-    //   510: astore 10
-    //   512: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   515: ldc 157
-    //   517: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   520: astore_0
+    //   134: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
+    //   137: iconst_1
+    //   138: invokestatic 115	com/tencent/mobileqq/utils/ContactUtils:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Ljava/lang/String;
+    //   141: astore 11
+    //   143: aload_0
+    //   144: aload_1
+    //   145: getfield 106	com/tencent/mobileqq/data/SystemMsg:inviteMemUin	Ljava/lang/String;
+    //   148: iconst_1
+    //   149: invokestatic 115	com/tencent/mobileqq/utils/ContactUtils:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Ljava/lang/String;
+    //   152: astore 12
+    //   154: iload_3
+    //   155: bipush 46
+    //   157: if_icmpeq +731 -> 888
+    //   160: iload_3
+    //   161: tableswitch	default:+31 -> 192, -1023:+727->888, -1022:+562->723, -1021:+444->605, -1020:+94->255
+    //   193: tableswitch	default:+27 -> 220, 35:+62->255, 36:+412->605, 37:+530->723
+    //   221: tableswitch	default:+31 -> 252, 84:+34->255, 85:+384->605, 86:+502->723, 87:+667->888
+    //   253: iconst_4
+    //   254: <illegal opcode>
+    //   255: aload_1
+    //   256: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   259: ifnull +26 -> 285
+    //   262: ldc 39
+    //   264: aload_1
+    //   265: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   268: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   271: ifeq +6 -> 277
+    //   274: goto +11 -> 285
+    //   277: aload_1
+    //   278: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   281: astore_0
+    //   282: goto +12 -> 294
+    //   285: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   288: ldc 128
+    //   290: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   293: astore_0
+    //   294: aload_1
+    //   295: aload_0
+    //   296: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   299: aload_1
+    //   300: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   303: ifnull +144 -> 447
+    //   306: aload_1
+    //   307: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   310: aload_2
+    //   311: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   314: ifne +133 -> 447
+    //   317: aload_1
+    //   318: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   321: ifnull +67 -> 388
+    //   324: aload_1
+    //   325: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   328: aload 10
+    //   330: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   333: ifne +55 -> 388
+    //   336: new 134	java/lang/StringBuilder
+    //   339: dup
+    //   340: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   343: astore_0
+    //   344: aload_0
+    //   345: aload 10
+    //   347: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: pop
+    //   351: aload_0
+    //   352: ldc 140
+    //   354: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   357: pop
+    //   358: aload_0
+    //   359: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   362: ldc 141
+    //   364: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   367: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   370: pop
+    //   371: aload_0
+    //   372: aload_2
+    //   373: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   376: pop
+    //   377: aload_1
+    //   378: aload_0
+    //   379: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   382: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   385: goto +1874 -> 2259
+    //   388: new 134	java/lang/StringBuilder
+    //   391: dup
+    //   392: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   395: astore_0
+    //   396: aload_0
+    //   397: ldc 149
+    //   399: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   402: pop
+    //   403: aload_0
+    //   404: aload 10
+    //   406: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   409: pop
+    //   410: aload_0
+    //   411: ldc 151
+    //   413: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   416: pop
+    //   417: aload_0
+    //   418: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   421: ldc 141
+    //   423: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   426: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   429: pop
+    //   430: aload_0
+    //   431: aload_2
+    //   432: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   435: pop
+    //   436: aload_1
+    //   437: aload_0
+    //   438: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   441: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   444: goto +1815 -> 2259
+    //   447: aload_1
+    //   448: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   451: ifnull +81 -> 532
+    //   454: aload_1
+    //   455: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   458: aload 10
+    //   460: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   463: ifne +69 -> 532
+    //   466: new 134	java/lang/StringBuilder
+    //   469: dup
+    //   470: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   473: astore_0
+    //   474: aload_0
+    //   475: aload 10
+    //   477: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   480: pop
+    //   481: aload_0
+    //   482: ldc 140
+    //   484: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   487: pop
+    //   488: aload_0
+    //   489: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   492: ldc 141
+    //   494: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   497: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   500: pop
+    //   501: aload_0
+    //   502: ldc 149
+    //   504: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   507: pop
+    //   508: aload_0
+    //   509: aload_2
+    //   510: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   513: pop
+    //   514: aload_0
+    //   515: ldc 149
+    //   517: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   520: pop
     //   521: aload_1
-    //   522: astore 9
-    //   524: aload_1
-    //   525: astore 10
-    //   527: aload_1
-    //   528: aload_0
-    //   529: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   532: aload_1
-    //   533: astore 9
-    //   535: aload_1
-    //   536: astore 10
-    //   538: aload_1
-    //   539: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
-    //   542: ifnull +78 -> 620
-    //   545: aload_1
-    //   546: astore 9
-    //   548: aload_1
-    //   549: astore 10
-    //   551: aload_1
-    //   552: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
-    //   555: aload 12
-    //   557: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   560: ifne +60 -> 620
-    //   563: aload_1
-    //   564: astore 9
-    //   566: aload_1
-    //   567: astore 10
-    //   569: aload_1
-    //   570: new 122	java/lang/StringBuilder
-    //   573: dup
-    //   574: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   577: aload 12
-    //   579: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   582: ldc 128
-    //   584: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   587: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   590: ldc 158
-    //   592: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   595: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   598: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   601: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   604: aload_1
-    //   605: areturn
-    //   606: aload_1
-    //   607: astore 9
-    //   609: aload_1
-    //   610: astore 10
+    //   522: aload_0
+    //   523: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   526: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   529: goto +1730 -> 2259
+    //   532: new 134	java/lang/StringBuilder
+    //   535: dup
+    //   536: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   539: astore_0
+    //   540: aload_0
+    //   541: ldc 149
+    //   543: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   546: pop
+    //   547: aload_0
+    //   548: aload 10
+    //   550: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   553: pop
+    //   554: aload_0
+    //   555: ldc 151
+    //   557: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   560: pop
+    //   561: aload_0
+    //   562: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   565: ldc 141
+    //   567: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   570: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   573: pop
+    //   574: aload_0
+    //   575: ldc 149
+    //   577: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   580: pop
+    //   581: aload_0
+    //   582: aload_2
+    //   583: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   586: pop
+    //   587: aload_0
+    //   588: ldc 149
+    //   590: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   593: pop
+    //   594: aload_1
+    //   595: aload_0
+    //   596: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   599: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   602: goto +1657 -> 2259
+    //   605: aload_1
+    //   606: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
+    //   609: ifnull +61 -> 670
     //   612: aload_1
-    //   613: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   616: astore_0
-    //   617: goto -96 -> 521
-    //   620: aload_1
-    //   621: astore 9
-    //   623: aload_1
-    //   624: astore 10
-    //   626: aload_1
-    //   627: new 122	java/lang/StringBuilder
-    //   630: dup
-    //   631: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   634: ldc 150
-    //   636: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   639: aload 12
-    //   641: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   644: ldc 152
-    //   646: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   649: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   652: ldc 158
-    //   654: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   657: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   660: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   663: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   666: aload_1
-    //   667: areturn
-    //   668: aload_1
-    //   669: astore 9
-    //   671: aload_1
-    //   672: astore 10
-    //   674: aload_1
-    //   675: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   678: ifnull +21 -> 699
-    //   681: aload_1
-    //   682: astore 9
-    //   684: aload_1
-    //   685: astore 10
-    //   687: ldc 39
-    //   689: aload_1
-    //   690: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   693: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   696: ifeq +137 -> 833
-    //   699: aload_1
-    //   700: astore 9
-    //   702: aload_1
-    //   703: astore 10
-    //   705: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   708: ldc 157
-    //   710: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   713: astore_0
-    //   714: aload_1
-    //   715: astore 9
-    //   717: aload_1
-    //   718: astore 10
-    //   720: aload_1
-    //   721: aload_0
-    //   722: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   725: aload_1
-    //   726: astore 9
-    //   728: aload_1
-    //   729: astore 10
-    //   731: aload_1
-    //   732: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   735: ifnull +164 -> 899
-    //   738: aload_1
-    //   739: astore 9
-    //   741: aload_1
-    //   742: astore 10
-    //   744: aload_1
-    //   745: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   748: aload_2
-    //   749: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   752: ifne +147 -> 899
-    //   755: aload_1
-    //   756: astore 9
-    //   758: aload_1
-    //   759: astore 10
-    //   761: aload_1
-    //   762: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   765: ifnull +82 -> 847
-    //   768: aload_1
-    //   769: astore 9
-    //   771: aload_1
-    //   772: astore 10
-    //   774: aload_1
-    //   775: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   778: aload 11
-    //   780: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   783: ifne +64 -> 847
-    //   786: aload_1
-    //   787: astore 9
-    //   789: aload_1
-    //   790: astore 10
-    //   792: aload_1
-    //   793: new 122	java/lang/StringBuilder
-    //   796: dup
-    //   797: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   800: aload 11
-    //   802: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   805: ldc 128
-    //   807: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   810: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   813: ldc 159
-    //   815: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   818: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   821: aload_2
-    //   822: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   825: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   828: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   831: aload_1
-    //   832: areturn
-    //   833: aload_1
-    //   834: astore 9
-    //   836: aload_1
-    //   837: astore 10
-    //   839: aload_1
-    //   840: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   843: astore_0
-    //   844: goto -130 -> 714
-    //   847: aload_1
-    //   848: astore 9
-    //   850: aload_1
-    //   851: astore 10
-    //   853: aload_1
-    //   854: new 122	java/lang/StringBuilder
-    //   857: dup
-    //   858: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   861: ldc 150
-    //   863: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   866: aload 11
-    //   868: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   871: ldc 152
-    //   873: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   876: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   879: ldc 159
-    //   881: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   884: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   887: aload_2
-    //   888: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   891: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   894: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   613: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
+    //   616: aload 11
+    //   618: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   621: ifne +49 -> 670
+    //   624: new 134	java/lang/StringBuilder
+    //   627: dup
+    //   628: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   631: astore_0
+    //   632: aload_0
+    //   633: aload 11
+    //   635: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   638: pop
+    //   639: aload_0
+    //   640: ldc 140
+    //   642: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   645: pop
+    //   646: aload_0
+    //   647: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   650: ldc 152
+    //   652: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   655: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   658: pop
+    //   659: aload_1
+    //   660: aload_0
+    //   661: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   664: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   667: goto +1592 -> 2259
+    //   670: new 134	java/lang/StringBuilder
+    //   673: dup
+    //   674: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   677: astore_0
+    //   678: aload_0
+    //   679: ldc 149
+    //   681: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   684: pop
+    //   685: aload_0
+    //   686: aload 11
+    //   688: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   691: pop
+    //   692: aload_0
+    //   693: ldc 151
+    //   695: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   698: pop
+    //   699: aload_0
+    //   700: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   703: ldc 152
+    //   705: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   708: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   711: pop
+    //   712: aload_1
+    //   713: aload_0
+    //   714: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   717: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   720: goto +1539 -> 2259
+    //   723: aload_1
+    //   724: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   727: ifnull +29 -> 756
+    //   730: ldc 39
+    //   732: aload_1
+    //   733: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   736: invokevirtual 155	java/lang/String:trim	()Ljava/lang/String;
+    //   739: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   742: ifeq +6 -> 748
+    //   745: goto +11 -> 756
+    //   748: aload_1
+    //   749: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   752: astore_0
+    //   753: goto +12 -> 765
+    //   756: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   759: ldc 128
+    //   761: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   764: astore_0
+    //   765: aload_1
+    //   766: aload_0
+    //   767: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   770: aload_1
+    //   771: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
+    //   774: ifnull +61 -> 835
+    //   777: aload_1
+    //   778: getfield 79	com/tencent/mobileqq/data/SystemMsg:managerUin	Ljava/lang/String;
+    //   781: aload 11
+    //   783: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   786: ifne +49 -> 835
+    //   789: new 134	java/lang/StringBuilder
+    //   792: dup
+    //   793: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   796: astore_0
+    //   797: aload_0
+    //   798: aload 11
+    //   800: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   803: pop
+    //   804: aload_0
+    //   805: ldc 140
+    //   807: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   810: pop
+    //   811: aload_0
+    //   812: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   815: ldc 156
+    //   817: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   820: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   823: pop
+    //   824: aload_1
+    //   825: aload_0
+    //   826: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   829: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   832: goto +1427 -> 2259
+    //   835: new 134	java/lang/StringBuilder
+    //   838: dup
+    //   839: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   842: astore_0
+    //   843: aload_0
+    //   844: ldc 149
+    //   846: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   849: pop
+    //   850: aload_0
+    //   851: aload 11
+    //   853: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   856: pop
+    //   857: aload_0
+    //   858: ldc 151
+    //   860: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   863: pop
+    //   864: aload_0
+    //   865: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   868: ldc 156
+    //   870: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   873: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   876: pop
+    //   877: aload_1
+    //   878: aload_0
+    //   879: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   882: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   885: goto +1374 -> 2259
+    //   888: aload_1
+    //   889: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   892: ifnull +26 -> 918
+    //   895: ldc 39
     //   897: aload_1
-    //   898: areturn
-    //   899: aload_1
-    //   900: astore 9
-    //   902: aload_1
-    //   903: astore 10
-    //   905: aload_1
-    //   906: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   909: ifnull +78 -> 987
-    //   912: aload_1
-    //   913: astore 9
-    //   915: aload_1
-    //   916: astore 10
-    //   918: aload_1
-    //   919: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   922: aload 11
-    //   924: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   927: ifne +60 -> 987
-    //   930: aload_1
-    //   931: astore 9
-    //   933: aload_1
-    //   934: astore 10
-    //   936: aload_1
-    //   937: new 122	java/lang/StringBuilder
-    //   940: dup
-    //   941: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   944: aload 11
-    //   946: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   949: ldc 128
-    //   951: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   954: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   957: ldc 159
-    //   959: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   962: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   965: ldc 150
-    //   967: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   898: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   901: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   904: ifeq +6 -> 910
+    //   907: goto +11 -> 918
+    //   910: aload_1
+    //   911: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   914: astore_0
+    //   915: goto +12 -> 927
+    //   918: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   921: ldc 128
+    //   923: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   926: astore_0
+    //   927: aload_1
+    //   928: aload_0
+    //   929: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   932: aload_1
+    //   933: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
+    //   936: iconst_1
+    //   937: if_icmpeq +1019 -> 1956
+    //   940: aload_1
+    //   941: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
+    //   944: iconst_4
+    //   945: if_icmpne +6 -> 951
+    //   948: goto +1008 -> 1956
+    //   951: aload_1
+    //   952: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
+    //   955: iconst_2
+    //   956: if_icmpne +309 -> 1265
+    //   959: aload_1
+    //   960: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   963: ifnull +144 -> 1107
+    //   966: aload_1
+    //   967: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
     //   970: aload_2
-    //   971: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   974: ldc 150
-    //   976: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   979: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   982: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   985: aload_1
-    //   986: areturn
-    //   987: aload_1
-    //   988: astore 9
-    //   990: aload_1
-    //   991: astore 10
-    //   993: aload_1
-    //   994: new 122	java/lang/StringBuilder
-    //   997: dup
-    //   998: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1001: ldc 150
-    //   1003: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1006: aload 11
-    //   1008: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1011: ldc 152
-    //   1013: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1016: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1019: ldc 159
-    //   1021: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1024: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1027: ldc 150
-    //   1029: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   971: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   974: ifne +133 -> 1107
+    //   977: aload_1
+    //   978: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   981: ifnull +67 -> 1048
+    //   984: aload_1
+    //   985: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   988: aload 10
+    //   990: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   993: ifne +55 -> 1048
+    //   996: new 134	java/lang/StringBuilder
+    //   999: dup
+    //   1000: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1003: astore_0
+    //   1004: aload_0
+    //   1005: aload 10
+    //   1007: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1010: pop
+    //   1011: aload_0
+    //   1012: ldc 140
+    //   1014: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1017: pop
+    //   1018: aload_0
+    //   1019: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1022: ldc 157
+    //   1024: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1027: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1030: pop
+    //   1031: aload_0
     //   1032: aload_2
-    //   1033: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1036: ldc 150
-    //   1038: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1041: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1044: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1047: aload_1
-    //   1048: areturn
-    //   1049: aload_1
-    //   1050: astore 9
-    //   1052: aload_1
-    //   1053: astore 10
-    //   1055: aload_1
-    //   1056: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   1059: ifnull +21 -> 1080
-    //   1062: aload_1
-    //   1063: astore 9
-    //   1065: aload_1
-    //   1066: astore 10
-    //   1068: ldc 39
-    //   1070: aload_1
-    //   1071: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   1074: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1077: ifeq +165 -> 1242
-    //   1080: aload_1
-    //   1081: astore 9
-    //   1083: aload_1
-    //   1084: astore 10
-    //   1086: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1089: ldc 157
-    //   1091: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1094: astore_0
-    //   1095: aload_1
-    //   1096: astore 9
-    //   1098: aload_1
-    //   1099: astore 10
-    //   1101: aload_1
-    //   1102: aload_0
-    //   1103: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   1106: aload_1
-    //   1107: astore 9
-    //   1109: aload_1
-    //   1110: astore 10
-    //   1112: aload_1
-    //   1113: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
-    //   1116: iconst_1
-    //   1117: if_icmpeq +17 -> 1134
-    //   1120: aload_1
-    //   1121: astore 9
-    //   1123: aload_1
-    //   1124: astore 10
-    //   1126: aload_1
-    //   1127: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
-    //   1130: iconst_4
-    //   1131: if_icmpne +327 -> 1458
-    //   1134: aload_1
-    //   1135: astore 9
-    //   1137: aload_1
-    //   1138: astore 10
-    //   1140: aload_1
-    //   1141: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   1144: ifnull +164 -> 1308
-    //   1147: aload_1
-    //   1148: astore 9
-    //   1150: aload_1
-    //   1151: astore 10
-    //   1153: aload_1
-    //   1154: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   1157: aload_2
-    //   1158: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1161: ifne +147 -> 1308
-    //   1164: aload_1
-    //   1165: astore 9
-    //   1167: aload_1
-    //   1168: astore 10
-    //   1170: aload_1
-    //   1171: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1174: ifnull +82 -> 1256
-    //   1177: aload_1
-    //   1178: astore 9
-    //   1180: aload_1
-    //   1181: astore 10
-    //   1183: aload_1
-    //   1184: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1187: aload 11
-    //   1189: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1192: ifne +64 -> 1256
-    //   1195: aload_1
-    //   1196: astore 9
-    //   1198: aload_1
-    //   1199: astore 10
-    //   1201: aload_1
-    //   1202: new 122	java/lang/StringBuilder
-    //   1205: dup
-    //   1206: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1209: aload 11
-    //   1211: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1214: ldc 128
-    //   1216: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1219: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1222: ldc 160
-    //   1224: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1227: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1230: aload_2
-    //   1231: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1234: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1237: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1240: aload_1
-    //   1241: areturn
-    //   1242: aload_1
-    //   1243: astore 9
-    //   1245: aload_1
-    //   1246: astore 10
-    //   1248: aload_1
-    //   1249: getfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   1252: astore_0
-    //   1253: goto -158 -> 1095
-    //   1256: aload_1
-    //   1257: astore 9
-    //   1259: aload_1
-    //   1260: astore 10
-    //   1262: aload_1
-    //   1263: new 122	java/lang/StringBuilder
-    //   1266: dup
-    //   1267: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1270: ldc 150
-    //   1272: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1275: aload 11
-    //   1277: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1280: ldc 152
-    //   1282: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1285: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1288: ldc 160
-    //   1290: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1293: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1296: aload_2
-    //   1297: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1300: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1303: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1306: aload_1
-    //   1307: areturn
-    //   1308: aload_1
-    //   1309: astore 9
-    //   1311: aload_1
-    //   1312: astore 10
-    //   1314: aload_1
-    //   1315: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1318: ifnull +78 -> 1396
-    //   1321: aload_1
-    //   1322: astore 9
-    //   1324: aload_1
-    //   1325: astore 10
-    //   1327: aload_1
-    //   1328: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1331: aload 11
-    //   1333: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1336: ifne +60 -> 1396
-    //   1339: aload_1
-    //   1340: astore 9
-    //   1342: aload_1
-    //   1343: astore 10
-    //   1345: aload_1
-    //   1346: new 122	java/lang/StringBuilder
-    //   1349: dup
-    //   1350: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1353: aload 11
-    //   1355: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1358: ldc 128
-    //   1360: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1363: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1366: ldc 160
-    //   1368: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1371: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1374: ldc 150
-    //   1376: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1379: aload_2
-    //   1380: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1383: ldc 150
-    //   1385: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1388: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1391: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1394: aload_1
-    //   1395: areturn
-    //   1396: aload_1
-    //   1397: astore 9
-    //   1399: aload_1
-    //   1400: astore 10
-    //   1402: aload_1
-    //   1403: new 122	java/lang/StringBuilder
-    //   1406: dup
-    //   1407: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1410: ldc 150
-    //   1412: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1415: aload 11
-    //   1417: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1420: ldc 152
-    //   1422: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1425: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1428: ldc 160
-    //   1430: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1433: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1436: ldc 150
-    //   1438: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1441: aload_2
-    //   1442: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1445: ldc 150
-    //   1447: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1450: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1453: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1456: aload_1
-    //   1457: areturn
-    //   1458: aload_1
-    //   1459: astore 9
-    //   1461: aload_1
-    //   1462: astore 10
-    //   1464: aload_1
-    //   1465: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
-    //   1468: iconst_2
-    //   1469: if_icmpne +313 -> 1782
-    //   1472: aload_1
-    //   1473: astore 9
-    //   1475: aload_1
-    //   1476: astore 10
-    //   1478: aload_1
-    //   1479: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   1482: ifnull +150 -> 1632
-    //   1485: aload_1
-    //   1486: astore 9
-    //   1488: aload_1
-    //   1489: astore 10
-    //   1491: aload_1
-    //   1492: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   1495: aload_2
-    //   1496: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1499: ifne +133 -> 1632
-    //   1502: aload_1
-    //   1503: astore 9
-    //   1505: aload_1
-    //   1506: astore 10
-    //   1508: aload_1
-    //   1509: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1512: ifnull +68 -> 1580
-    //   1515: aload_1
-    //   1516: astore 9
-    //   1518: aload_1
-    //   1519: astore 10
-    //   1521: aload_1
-    //   1522: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1525: aload 11
-    //   1527: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1530: ifne +50 -> 1580
-    //   1533: aload_1
-    //   1534: astore 9
-    //   1536: aload_1
-    //   1537: astore 10
-    //   1539: aload_1
-    //   1540: new 122	java/lang/StringBuilder
-    //   1543: dup
-    //   1544: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1547: aload 11
-    //   1549: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1552: ldc 128
-    //   1554: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1557: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1560: ldc 161
-    //   1562: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1565: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1568: aload_2
-    //   1569: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1572: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1575: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1578: aload_1
-    //   1579: areturn
-    //   1580: aload_1
-    //   1581: astore 9
-    //   1583: aload_1
-    //   1584: astore 10
-    //   1586: aload_1
-    //   1587: new 122	java/lang/StringBuilder
-    //   1590: dup
-    //   1591: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1594: ldc 150
-    //   1596: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1599: aload 11
-    //   1601: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1604: ldc 152
-    //   1606: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1609: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1612: ldc 161
-    //   1614: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1617: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1620: aload_2
-    //   1621: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1624: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1627: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1630: aload_1
-    //   1631: areturn
-    //   1632: aload_1
-    //   1633: astore 9
-    //   1635: aload_1
-    //   1636: astore 10
-    //   1638: aload_1
-    //   1639: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1642: ifnull +78 -> 1720
-    //   1645: aload_1
-    //   1646: astore 9
-    //   1648: aload_1
-    //   1649: astore 10
-    //   1651: aload_1
-    //   1652: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1655: aload 11
-    //   1657: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1660: ifne +60 -> 1720
-    //   1663: aload_1
-    //   1664: astore 9
-    //   1666: aload_1
-    //   1667: astore 10
-    //   1669: aload_1
-    //   1670: new 122	java/lang/StringBuilder
-    //   1673: dup
-    //   1674: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1677: aload 11
-    //   1679: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1682: ldc 128
-    //   1684: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1687: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1690: ldc 161
-    //   1692: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1695: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1698: ldc 150
-    //   1700: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1703: aload_2
-    //   1704: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1707: ldc 150
-    //   1709: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1712: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1715: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1718: aload_1
-    //   1719: areturn
-    //   1720: aload_1
-    //   1721: astore 9
-    //   1723: aload_1
-    //   1724: astore 10
-    //   1726: aload_1
-    //   1727: new 122	java/lang/StringBuilder
-    //   1730: dup
-    //   1731: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1734: ldc 150
-    //   1736: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1739: aload 11
-    //   1741: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1744: ldc 152
-    //   1746: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1749: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1752: ldc 161
-    //   1754: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1757: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1760: ldc 150
-    //   1762: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1765: aload_2
-    //   1766: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1769: ldc 150
-    //   1771: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1774: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1777: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1780: aload_1
-    //   1781: areturn
-    //   1782: aload_1
-    //   1783: astore 9
-    //   1785: aload_1
-    //   1786: astore 10
-    //   1788: aload_1
-    //   1789: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
-    //   1792: iconst_3
-    //   1793: if_icmpne +313 -> 2106
-    //   1796: aload_1
-    //   1797: astore 9
-    //   1799: aload_1
-    //   1800: astore 10
-    //   1802: aload_1
-    //   1803: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   1806: ifnull +150 -> 1956
+    //   1033: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1036: pop
+    //   1037: aload_1
+    //   1038: aload_0
+    //   1039: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1042: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1045: goto +1214 -> 2259
+    //   1048: new 134	java/lang/StringBuilder
+    //   1051: dup
+    //   1052: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1055: astore_0
+    //   1056: aload_0
+    //   1057: ldc 149
+    //   1059: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1062: pop
+    //   1063: aload_0
+    //   1064: aload 10
+    //   1066: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1069: pop
+    //   1070: aload_0
+    //   1071: ldc 151
+    //   1073: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1076: pop
+    //   1077: aload_0
+    //   1078: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1081: ldc 157
+    //   1083: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1086: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1089: pop
+    //   1090: aload_0
+    //   1091: aload_2
+    //   1092: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1095: pop
+    //   1096: aload_1
+    //   1097: aload_0
+    //   1098: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1101: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1104: goto +1155 -> 2259
+    //   1107: aload_1
+    //   1108: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1111: ifnull +81 -> 1192
+    //   1114: aload_1
+    //   1115: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1118: aload 10
+    //   1120: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1123: ifne +69 -> 1192
+    //   1126: new 134	java/lang/StringBuilder
+    //   1129: dup
+    //   1130: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1133: astore_0
+    //   1134: aload_0
+    //   1135: aload 10
+    //   1137: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1140: pop
+    //   1141: aload_0
+    //   1142: ldc 140
+    //   1144: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1147: pop
+    //   1148: aload_0
+    //   1149: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1152: ldc 157
+    //   1154: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1157: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1160: pop
+    //   1161: aload_0
+    //   1162: ldc 149
+    //   1164: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1167: pop
+    //   1168: aload_0
+    //   1169: aload_2
+    //   1170: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1173: pop
+    //   1174: aload_0
+    //   1175: ldc 149
+    //   1177: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1180: pop
+    //   1181: aload_1
+    //   1182: aload_0
+    //   1183: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1186: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1189: goto +1070 -> 2259
+    //   1192: new 134	java/lang/StringBuilder
+    //   1195: dup
+    //   1196: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1199: astore_0
+    //   1200: aload_0
+    //   1201: ldc 149
+    //   1203: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1206: pop
+    //   1207: aload_0
+    //   1208: aload 10
+    //   1210: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1213: pop
+    //   1214: aload_0
+    //   1215: ldc 151
+    //   1217: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1220: pop
+    //   1221: aload_0
+    //   1222: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1225: ldc 157
+    //   1227: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1230: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1233: pop
+    //   1234: aload_0
+    //   1235: ldc 149
+    //   1237: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1240: pop
+    //   1241: aload_0
+    //   1242: aload_2
+    //   1243: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1246: pop
+    //   1247: aload_0
+    //   1248: ldc 149
+    //   1250: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1253: pop
+    //   1254: aload_1
+    //   1255: aload_0
+    //   1256: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1259: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1262: goto +997 -> 2259
+    //   1265: aload_1
+    //   1266: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
+    //   1269: iconst_3
+    //   1270: if_icmpne +309 -> 1579
+    //   1273: aload_1
+    //   1274: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   1277: ifnull +144 -> 1421
+    //   1280: aload_1
+    //   1281: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   1284: aload_2
+    //   1285: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1288: ifne +133 -> 1421
+    //   1291: aload_1
+    //   1292: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1295: ifnull +67 -> 1362
+    //   1298: aload_1
+    //   1299: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1302: aload 10
+    //   1304: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1307: ifne +55 -> 1362
+    //   1310: new 134	java/lang/StringBuilder
+    //   1313: dup
+    //   1314: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1317: astore_0
+    //   1318: aload_0
+    //   1319: aload 10
+    //   1321: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1324: pop
+    //   1325: aload_0
+    //   1326: ldc 140
+    //   1328: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1331: pop
+    //   1332: aload_0
+    //   1333: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1336: ldc 158
+    //   1338: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1341: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1344: pop
+    //   1345: aload_0
+    //   1346: aload_2
+    //   1347: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1350: pop
+    //   1351: aload_1
+    //   1352: aload_0
+    //   1353: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1356: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1359: goto +900 -> 2259
+    //   1362: new 134	java/lang/StringBuilder
+    //   1365: dup
+    //   1366: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1369: astore_0
+    //   1370: aload_0
+    //   1371: ldc 149
+    //   1373: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1376: pop
+    //   1377: aload_0
+    //   1378: aload 10
+    //   1380: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1383: pop
+    //   1384: aload_0
+    //   1385: ldc 151
+    //   1387: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1390: pop
+    //   1391: aload_0
+    //   1392: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1395: ldc 158
+    //   1397: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1400: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1403: pop
+    //   1404: aload_0
+    //   1405: aload_2
+    //   1406: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1409: pop
+    //   1410: aload_1
+    //   1411: aload_0
+    //   1412: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1415: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1418: goto +841 -> 2259
+    //   1421: aload_1
+    //   1422: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1425: ifnull +81 -> 1506
+    //   1428: aload_1
+    //   1429: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1432: aload 10
+    //   1434: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1437: ifne +69 -> 1506
+    //   1440: new 134	java/lang/StringBuilder
+    //   1443: dup
+    //   1444: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1447: astore_0
+    //   1448: aload_0
+    //   1449: aload 10
+    //   1451: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1454: pop
+    //   1455: aload_0
+    //   1456: ldc 140
+    //   1458: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1461: pop
+    //   1462: aload_0
+    //   1463: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1466: ldc 158
+    //   1468: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1471: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1474: pop
+    //   1475: aload_0
+    //   1476: ldc 149
+    //   1478: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1481: pop
+    //   1482: aload_0
+    //   1483: aload_2
+    //   1484: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1487: pop
+    //   1488: aload_0
+    //   1489: ldc 149
+    //   1491: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1494: pop
+    //   1495: aload_1
+    //   1496: aload_0
+    //   1497: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1500: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1503: goto +756 -> 2259
+    //   1506: new 134	java/lang/StringBuilder
+    //   1509: dup
+    //   1510: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1513: astore_0
+    //   1514: aload_0
+    //   1515: ldc 149
+    //   1517: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1520: pop
+    //   1521: aload_0
+    //   1522: aload 10
+    //   1524: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1527: pop
+    //   1528: aload_0
+    //   1529: ldc 151
+    //   1531: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1534: pop
+    //   1535: aload_0
+    //   1536: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1539: ldc 158
+    //   1541: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1544: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1547: pop
+    //   1548: aload_0
+    //   1549: ldc 149
+    //   1551: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1554: pop
+    //   1555: aload_0
+    //   1556: aload_2
+    //   1557: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1560: pop
+    //   1561: aload_0
+    //   1562: ldc 149
+    //   1564: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1567: pop
+    //   1568: aload_1
+    //   1569: aload_0
+    //   1570: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1573: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1576: goto +683 -> 2259
+    //   1579: aload_1
+    //   1580: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
+    //   1583: iconst_5
+    //   1584: if_icmpne +675 -> 2259
+    //   1587: aload_1
+    //   1588: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   1591: ifnull +144 -> 1735
+    //   1594: aload_1
+    //   1595: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   1598: aload_2
+    //   1599: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1602: ifne +133 -> 1735
+    //   1605: aload_1
+    //   1606: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1609: ifnull +67 -> 1676
+    //   1612: aload_1
+    //   1613: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1616: aload 10
+    //   1618: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1621: ifne +55 -> 1676
+    //   1624: new 134	java/lang/StringBuilder
+    //   1627: dup
+    //   1628: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1631: astore_0
+    //   1632: aload_0
+    //   1633: aload 10
+    //   1635: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1638: pop
+    //   1639: aload_0
+    //   1640: ldc 140
+    //   1642: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1645: pop
+    //   1646: aload_0
+    //   1647: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1650: ldc 141
+    //   1652: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1655: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1658: pop
+    //   1659: aload_0
+    //   1660: aload_2
+    //   1661: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1664: pop
+    //   1665: aload_1
+    //   1666: aload_0
+    //   1667: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1670: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1673: goto +217 -> 1890
+    //   1676: new 134	java/lang/StringBuilder
+    //   1679: dup
+    //   1680: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1683: astore_0
+    //   1684: aload_0
+    //   1685: ldc 149
+    //   1687: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1690: pop
+    //   1691: aload_0
+    //   1692: aload 10
+    //   1694: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1697: pop
+    //   1698: aload_0
+    //   1699: ldc 151
+    //   1701: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1704: pop
+    //   1705: aload_0
+    //   1706: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1709: ldc 141
+    //   1711: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1714: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1717: pop
+    //   1718: aload_0
+    //   1719: aload_2
+    //   1720: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1723: pop
+    //   1724: aload_1
+    //   1725: aload_0
+    //   1726: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1729: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1732: goto +158 -> 1890
+    //   1735: aload_1
+    //   1736: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1739: ifnull +81 -> 1820
+    //   1742: aload_1
+    //   1743: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1746: aload 10
+    //   1748: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1751: ifne +69 -> 1820
+    //   1754: new 134	java/lang/StringBuilder
+    //   1757: dup
+    //   1758: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1761: astore_0
+    //   1762: aload_0
+    //   1763: aload 10
+    //   1765: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1768: pop
+    //   1769: aload_0
+    //   1770: ldc 140
+    //   1772: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1775: pop
+    //   1776: aload_0
+    //   1777: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1780: ldc 141
+    //   1782: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1785: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1788: pop
+    //   1789: aload_0
+    //   1790: ldc 149
+    //   1792: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1795: pop
+    //   1796: aload_0
+    //   1797: aload_2
+    //   1798: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1801: pop
+    //   1802: aload_0
+    //   1803: ldc 149
+    //   1805: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1808: pop
     //   1809: aload_1
-    //   1810: astore 9
-    //   1812: aload_1
-    //   1813: astore 10
-    //   1815: aload_1
-    //   1816: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   1819: aload_2
-    //   1820: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1823: ifne +133 -> 1956
-    //   1826: aload_1
-    //   1827: astore 9
-    //   1829: aload_1
-    //   1830: astore 10
-    //   1832: aload_1
-    //   1833: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1836: ifnull +68 -> 1904
-    //   1839: aload_1
-    //   1840: astore 9
-    //   1842: aload_1
-    //   1843: astore 10
-    //   1845: aload_1
-    //   1846: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1849: aload 11
-    //   1851: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1854: ifne +50 -> 1904
-    //   1857: aload_1
-    //   1858: astore 9
-    //   1860: aload_1
-    //   1861: astore 10
-    //   1863: aload_1
-    //   1864: new 122	java/lang/StringBuilder
-    //   1867: dup
-    //   1868: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1871: aload 11
-    //   1873: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1876: ldc 128
-    //   1878: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1881: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1884: ldc 162
-    //   1886: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1889: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1892: aload_2
-    //   1893: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1896: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1899: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1902: aload_1
-    //   1903: areturn
-    //   1904: aload_1
-    //   1905: astore 9
-    //   1907: aload_1
-    //   1908: astore 10
-    //   1910: aload_1
-    //   1911: new 122	java/lang/StringBuilder
-    //   1914: dup
-    //   1915: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   1918: ldc 150
-    //   1920: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1923: aload 11
-    //   1925: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1928: ldc 152
-    //   1930: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1933: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1936: ldc 162
-    //   1938: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   1941: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1944: aload_2
-    //   1945: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1948: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1951: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   1954: aload_1
-    //   1955: areturn
+    //   1810: aload_0
+    //   1811: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1814: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1817: goto +73 -> 1890
+    //   1820: new 134	java/lang/StringBuilder
+    //   1823: dup
+    //   1824: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1827: astore_0
+    //   1828: aload_0
+    //   1829: ldc 149
+    //   1831: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1834: pop
+    //   1835: aload_0
+    //   1836: aload 10
+    //   1838: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1841: pop
+    //   1842: aload_0
+    //   1843: ldc 151
+    //   1845: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1848: pop
+    //   1849: aload_0
+    //   1850: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1853: ldc 141
+    //   1855: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1858: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1861: pop
+    //   1862: aload_0
+    //   1863: ldc 149
+    //   1865: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1868: pop
+    //   1869: aload_0
+    //   1870: aload_2
+    //   1871: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1874: pop
+    //   1875: aload_0
+    //   1876: ldc 149
+    //   1878: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1881: pop
+    //   1882: aload_1
+    //   1883: aload_0
+    //   1884: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1887: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1890: new 134	java/lang/StringBuilder
+    //   1893: dup
+    //   1894: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   1897: astore_0
+    //   1898: aload_0
+    //   1899: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1902: ldc 159
+    //   1904: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1907: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1910: pop
+    //   1911: aload_0
+    //   1912: ldc 140
+    //   1914: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1917: pop
+    //   1918: aload_0
+    //   1919: aload 12
+    //   1921: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1924: pop
+    //   1925: aload_0
+    //   1926: ldc 140
+    //   1928: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1931: pop
+    //   1932: aload_0
+    //   1933: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1936: ldc 160
+    //   1938: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   1941: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1944: pop
+    //   1945: aload_1
+    //   1946: aload_0
+    //   1947: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1950: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   1953: goto +306 -> 2259
     //   1956: aload_1
-    //   1957: astore 9
-    //   1959: aload_1
-    //   1960: astore 10
-    //   1962: aload_1
-    //   1963: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1966: ifnull +78 -> 2044
-    //   1969: aload_1
-    //   1970: astore 9
-    //   1972: aload_1
-    //   1973: astore 10
-    //   1975: aload_1
-    //   1976: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   1979: aload 11
-    //   1981: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1984: ifne +60 -> 2044
-    //   1987: aload_1
-    //   1988: astore 9
-    //   1990: aload_1
-    //   1991: astore 10
-    //   1993: aload_1
-    //   1994: new 122	java/lang/StringBuilder
-    //   1997: dup
-    //   1998: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2001: aload 11
-    //   2003: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2006: ldc 128
-    //   2008: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2011: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2014: ldc 162
-    //   2016: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2019: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2022: ldc 150
-    //   2024: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2027: aload_2
-    //   2028: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2031: ldc 150
-    //   2033: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2036: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2039: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   2042: aload_1
-    //   2043: areturn
-    //   2044: aload_1
-    //   2045: astore 9
-    //   2047: aload_1
-    //   2048: astore 10
-    //   2050: aload_1
-    //   2051: new 122	java/lang/StringBuilder
-    //   2054: dup
-    //   2055: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2058: ldc 150
-    //   2060: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2063: aload 11
-    //   2065: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2068: ldc 152
-    //   2070: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2073: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2076: ldc 162
-    //   2078: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2081: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2084: ldc 150
-    //   2086: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2089: aload_2
-    //   2090: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2093: ldc 150
-    //   2095: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2098: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2101: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   1957: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   1960: ifnull +144 -> 2104
+    //   1963: aload_1
+    //   1964: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
+    //   1967: aload_2
+    //   1968: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1971: ifne +133 -> 2104
+    //   1974: aload_1
+    //   1975: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1978: ifnull +67 -> 2045
+    //   1981: aload_1
+    //   1982: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   1985: aload 10
+    //   1987: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1990: ifne +55 -> 2045
+    //   1993: new 134	java/lang/StringBuilder
+    //   1996: dup
+    //   1997: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   2000: astore_0
+    //   2001: aload_0
+    //   2002: aload 10
+    //   2004: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2007: pop
+    //   2008: aload_0
+    //   2009: ldc 140
+    //   2011: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2014: pop
+    //   2015: aload_0
+    //   2016: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2019: ldc 161
+    //   2021: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2024: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2027: pop
+    //   2028: aload_0
+    //   2029: aload_2
+    //   2030: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2033: pop
+    //   2034: aload_1
+    //   2035: aload_0
+    //   2036: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2039: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   2042: goto +217 -> 2259
+    //   2045: new 134	java/lang/StringBuilder
+    //   2048: dup
+    //   2049: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   2052: astore_0
+    //   2053: aload_0
+    //   2054: ldc 149
+    //   2056: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2059: pop
+    //   2060: aload_0
+    //   2061: aload 10
+    //   2063: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2066: pop
+    //   2067: aload_0
+    //   2068: ldc 151
+    //   2070: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2073: pop
+    //   2074: aload_0
+    //   2075: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2078: ldc 161
+    //   2080: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2083: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2086: pop
+    //   2087: aload_0
+    //   2088: aload_2
+    //   2089: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2092: pop
+    //   2093: aload_1
+    //   2094: aload_0
+    //   2095: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2098: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   2101: goto +158 -> 2259
     //   2104: aload_1
-    //   2105: areturn
-    //   2106: aload_1
-    //   2107: astore 9
-    //   2109: aload_1
-    //   2110: astore 10
-    //   2112: aload_1
-    //   2113: getfield 90	com/tencent/mobileqq/data/SystemMsg:op	B
-    //   2116: iconst_5
-    //   2117: if_icmpne +2437 -> 4554
-    //   2120: aload_1
-    //   2121: astore 9
-    //   2123: aload_1
-    //   2124: astore 10
-    //   2126: aload_1
-    //   2127: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   2130: ifnull +208 -> 2338
-    //   2133: aload_1
-    //   2134: astore 9
-    //   2136: aload_1
-    //   2137: astore 10
-    //   2139: aload_1
-    //   2140: getfield 67	com/tencent/mobileqq/data/SystemMsg:troopCode	Ljava/lang/String;
-    //   2143: aload_2
-    //   2144: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2147: ifne +191 -> 2338
-    //   2150: aload_1
-    //   2151: astore 9
-    //   2153: aload_1
-    //   2154: astore 10
-    //   2156: aload_1
-    //   2157: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   2160: ifnull +125 -> 2285
-    //   2163: aload_1
-    //   2164: astore 9
-    //   2166: aload_1
-    //   2167: astore 10
-    //   2169: aload_1
-    //   2170: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   2173: aload 11
-    //   2175: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2178: ifne +107 -> 2285
-    //   2181: aload_1
-    //   2182: astore 9
-    //   2184: aload_1
-    //   2185: astore 10
-    //   2187: aload_1
-    //   2188: new 122	java/lang/StringBuilder
-    //   2191: dup
-    //   2192: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2195: aload 11
-    //   2197: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2200: ldc 128
-    //   2202: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2205: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2208: ldc 159
-    //   2210: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2213: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2216: aload_2
-    //   2217: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2220: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2223: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   2226: aload_1
-    //   2227: astore 9
-    //   2229: aload_1
-    //   2230: astore 10
-    //   2232: aload_1
-    //   2233: new 122	java/lang/StringBuilder
-    //   2236: dup
-    //   2237: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2240: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2243: ldc 163
-    //   2245: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2248: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2251: ldc 128
-    //   2253: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2256: aload 13
-    //   2258: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2261: ldc 128
-    //   2263: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2266: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2269: ldc 164
-    //   2271: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2274: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2277: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2280: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   2283: aload_1
-    //   2284: areturn
+    //   2105: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   2108: ifnull +81 -> 2189
+    //   2111: aload_1
+    //   2112: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
+    //   2115: aload 10
+    //   2117: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2120: ifne +69 -> 2189
+    //   2123: new 134	java/lang/StringBuilder
+    //   2126: dup
+    //   2127: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   2130: astore_0
+    //   2131: aload_0
+    //   2132: aload 10
+    //   2134: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2137: pop
+    //   2138: aload_0
+    //   2139: ldc 140
+    //   2141: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2144: pop
+    //   2145: aload_0
+    //   2146: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2149: ldc 161
+    //   2151: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2154: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2157: pop
+    //   2158: aload_0
+    //   2159: ldc 149
+    //   2161: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2164: pop
+    //   2165: aload_0
+    //   2166: aload_2
+    //   2167: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2170: pop
+    //   2171: aload_0
+    //   2172: ldc 149
+    //   2174: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2177: pop
+    //   2178: aload_1
+    //   2179: aload_0
+    //   2180: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2183: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   2186: goto +73 -> 2259
+    //   2189: new 134	java/lang/StringBuilder
+    //   2192: dup
+    //   2193: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   2196: astore_0
+    //   2197: aload_0
+    //   2198: ldc 149
+    //   2200: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2203: pop
+    //   2204: aload_0
+    //   2205: aload 10
+    //   2207: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2210: pop
+    //   2211: aload_0
+    //   2212: ldc 151
+    //   2214: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2217: pop
+    //   2218: aload_0
+    //   2219: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2222: ldc 161
+    //   2224: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2227: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2230: pop
+    //   2231: aload_0
+    //   2232: ldc 149
+    //   2234: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2237: pop
+    //   2238: aload_0
+    //   2239: aload_2
+    //   2240: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2243: pop
+    //   2244: aload_0
+    //   2245: ldc 149
+    //   2247: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2250: pop
+    //   2251: aload_1
+    //   2252: aload_0
+    //   2253: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2256: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   2259: aload_1
+    //   2260: areturn
+    //   2261: astore_2
+    //   2262: aload_1
+    //   2263: astore_0
+    //   2264: aload_2
+    //   2265: astore_1
+    //   2266: goto +3198 -> 5464
+    //   2269: astore_2
+    //   2270: aload_1
+    //   2271: astore_0
+    //   2272: aload_2
+    //   2273: astore_1
+    //   2274: goto +3200 -> 5474
+    //   2277: new 163	java/io/DataInputStream
+    //   2280: dup
+    //   2281: new 165	java/io/ByteArrayInputStream
+    //   2284: dup
     //   2285: aload_1
-    //   2286: astore 9
-    //   2288: aload_1
-    //   2289: astore 10
-    //   2291: aload_1
-    //   2292: new 122	java/lang/StringBuilder
-    //   2295: dup
-    //   2296: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2299: ldc 150
-    //   2301: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2304: aload 11
-    //   2306: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2309: ldc 152
-    //   2311: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2314: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2317: ldc 159
-    //   2319: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2322: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2325: aload_2
-    //   2326: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2329: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2332: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   2335: goto -109 -> 2226
-    //   2338: aload_1
-    //   2339: astore 9
-    //   2341: aload_1
-    //   2342: astore 10
-    //   2344: aload_1
-    //   2345: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   2348: ifnull +79 -> 2427
-    //   2351: aload_1
-    //   2352: astore 9
-    //   2354: aload_1
-    //   2355: astore 10
-    //   2357: aload_1
-    //   2358: getfield 95	com/tencent/mobileqq/data/SystemMsg:requestUin	Ljava/lang/String;
-    //   2361: aload 11
-    //   2363: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2366: ifne +61 -> 2427
-    //   2369: aload_1
-    //   2370: astore 9
-    //   2372: aload_1
-    //   2373: astore 10
-    //   2375: aload_1
-    //   2376: new 122	java/lang/StringBuilder
-    //   2379: dup
-    //   2380: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2383: aload 11
-    //   2385: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2388: ldc 128
-    //   2390: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2393: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2396: ldc 159
-    //   2398: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2401: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2404: ldc 150
-    //   2406: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2409: aload_2
-    //   2410: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2413: ldc 150
-    //   2415: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2418: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2421: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   2424: goto -198 -> 2226
-    //   2427: aload_1
-    //   2428: astore 9
-    //   2430: aload_1
-    //   2431: astore 10
-    //   2433: aload_1
-    //   2434: new 122	java/lang/StringBuilder
-    //   2437: dup
-    //   2438: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2441: ldc 150
-    //   2443: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2446: aload 11
-    //   2448: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2451: ldc 152
-    //   2453: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2456: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2459: ldc 159
-    //   2461: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2464: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2467: ldc 150
-    //   2469: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2472: aload_2
-    //   2473: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2476: ldc 150
-    //   2478: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2481: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2484: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   2487: goto -261 -> 2226
-    //   2490: new 166	java/io/DataInputStream
-    //   2493: dup
-    //   2494: new 168	java/io/ByteArrayInputStream
-    //   2497: dup
-    //   2498: aload_1
-    //   2499: invokestatic 60	bdhe:a	(Ljava/lang/String;)[B
-    //   2502: invokespecial 171	java/io/ByteArrayInputStream:<init>	([B)V
-    //   2505: invokespecial 174	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   2508: astore 11
-    //   2510: iload_3
-    //   2511: lookupswitch	default:+2045->4556, -2004:+1973->4484, -2003:+1939->4450, -1010:+1520->4031, -1009:+1201->3712, -1008:+897->3408, -1007:+586->3097, -1006:+156->2667, 9:+1939->4450, 187:+156->2667, 188:+586->3097, 189:+897->3408, 190:+1201->3712, 191:+1520->4031, 513:+1973->4484
-    //   2633: getstatic 178	alof:J	Ljava/lang/String;
-    //   2636: invokestatic 182	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   2639: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2642: ifeq +1910 -> 4552
-    //   2645: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   2648: dup
-    //   2649: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   2652: astore_0
-    //   2653: aload_0
-    //   2654: astore 9
-    //   2656: aload_0
-    //   2657: astore 10
-    //   2659: aload_0
-    //   2660: ldc 184
-    //   2662: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   2665: aload_0
-    //   2666: areturn
-    //   2667: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   2670: dup
-    //   2671: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   2674: astore_0
-    //   2675: aload_0
-    //   2676: aload 11
-    //   2678: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   2681: putfield 190	com/tencent/mobileqq/data/SystemMsg:cVession	I
-    //   2684: aload 11
-    //   2686: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   2689: newarray byte
-    //   2691: astore_1
-    //   2692: aload 11
-    //   2694: aload_1
-    //   2695: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   2698: pop
-    //   2699: aload_0
-    //   2700: new 116	java/lang/String
-    //   2703: dup
-    //   2704: aload_1
-    //   2705: invokestatic 199	azah:a	([B)[B
-    //   2708: ldc 201
-    //   2710: invokespecial 204	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   2713: invokevirtual 156	java/lang/String:trim	()Ljava/lang/String;
-    //   2716: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   2719: aload 11
-    //   2721: lconst_1
-    //   2722: invokevirtual 208	java/io/DataInputStream:skip	(J)J
-    //   2725: pop2
-    //   2726: aload_0
-    //   2727: aload 11
-    //   2729: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   2732: putfield 213	com/tencent/mobileqq/data/SystemMsg:wSourceID	I
-    //   2735: aload_0
-    //   2736: aload 11
-    //   2738: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   2741: putfield 215	com/tencent/mobileqq/data/SystemMsg:wSourceSubID	I
-    //   2744: aload 11
-    //   2746: aload 11
-    //   2748: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   2751: i2l
-    //   2752: invokevirtual 208	java/io/DataInputStream:skip	(J)J
-    //   2755: pop2
-    //   2756: aload 11
-    //   2758: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   2761: ifeq +1805 -> 4566
-    //   2764: aload 11
-    //   2766: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   2769: istore_3
-    //   2770: iload_3
-    //   2771: newarray byte
-    //   2773: astore_1
-    //   2774: aload 11
-    //   2776: aload_1
-    //   2777: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   2780: pop
-    //   2781: aload_1
-    //   2782: arraylength
-    //   2783: ifne +173 -> 2956
-    //   2786: aload_0
-    //   2787: new 122	java/lang/StringBuilder
-    //   2790: dup
-    //   2791: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2794: ldc 150
-    //   2796: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2799: aload_2
-    //   2800: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2803: ldc 150
-    //   2805: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2808: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2811: ldc 216
-    //   2813: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2816: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2819: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2822: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   2286: invokestatic 60	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   2289: invokespecial 168	java/io/ByteArrayInputStream:<init>	([B)V
+    //   2292: invokespecial 171	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   2295: astore 14
+    //   2297: iload_3
+    //   2298: sipush -2004
+    //   2301: if_icmpeq +3106 -> 5407
+    //   2304: iload_3
+    //   2305: sipush -2003
+    //   2308: if_icmpeq +3055 -> 5363
+    //   2311: iload_3
+    //   2312: bipush 9
+    //   2314: if_icmpeq +3049 -> 5363
+    //   2317: iload_3
+    //   2318: sipush 513
+    //   2321: if_icmpeq +3086 -> 5407
+    //   2324: iconst_0
+    //   2325: istore 5
+    //   2327: iconst_0
+    //   2328: istore 6
+    //   2330: iconst_0
+    //   2331: istore 7
+    //   2333: iconst_0
+    //   2334: istore 8
+    //   2336: iconst_0
+    //   2337: istore 4
+    //   2339: iload_3
+    //   2340: tableswitch	default:+3194 -> 5534, -1010:+2508->4848, -1009:+1929->4269, -1008:+1388->3728, -1007:+842->3182, -1006:+83->2423
+    //   2377: fconst_2
+    //   2378: astore 10
+    //   2380: aload_2
+    //   2381: getstatic 176	com/tencent/mobileqq/app/AppConstants:QQBROADCAST_MSG_UIN	Ljava/lang/String;
+    //   2384: invokestatic 180	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   2387: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2390: ifeq +3091 -> 5481
+    //   2393: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   2396: dup
+    //   2397: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   2400: astore_1
+    //   2401: aload_1
+    //   2402: astore_0
+    //   2403: aload_1
+    //   2404: astore_2
+    //   2405: aload_1
+    //   2406: ldc 182
+    //   2408: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   2411: aload_1
+    //   2412: areturn
+    //   2413: astore_1
+    //   2414: goto +3050 -> 5464
+    //   2417: astore_1
+    //   2418: aload_2
+    //   2419: astore_0
+    //   2420: goto +3054 -> 5474
+    //   2423: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   2426: dup
+    //   2427: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   2430: astore 10
+    //   2432: aload 10
+    //   2434: astore_1
+    //   2435: aload 10
+    //   2437: astore_0
+    //   2438: aload 10
+    //   2440: aload 14
+    //   2442: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   2445: putfield 188	com/tencent/mobileqq/data/SystemMsg:cVession	I
+    //   2448: aload 10
+    //   2450: astore_1
+    //   2451: aload 10
+    //   2453: astore_0
+    //   2454: aload 14
+    //   2456: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   2459: newarray byte
+    //   2461: astore 11
+    //   2463: aload 10
+    //   2465: astore_1
+    //   2466: aload 10
+    //   2468: astore_0
+    //   2469: aload 14
+    //   2471: aload 11
+    //   2473: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   2476: pop
+    //   2477: aload 10
+    //   2479: astore_1
+    //   2480: aload 10
+    //   2482: astore_0
+    //   2483: aload 10
+    //   2485: new 117	java/lang/String
+    //   2488: dup
+    //   2489: aload 11
+    //   2491: invokestatic 197	com/tencent/mobileqq/service/message/EmotionCodecUtils:a	([B)[B
+    //   2494: ldc 199
+    //   2496: invokespecial 202	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   2499: invokevirtual 155	java/lang/String:trim	()Ljava/lang/String;
+    //   2502: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   2505: aload 10
+    //   2507: astore_1
+    //   2508: aload 10
+    //   2510: astore_0
+    //   2511: aload 14
+    //   2513: lconst_1
+    //   2514: invokevirtual 206	java/io/DataInputStream:skip	(J)J
+    //   2517: pop2
+    //   2518: aload 10
+    //   2520: astore_1
+    //   2521: aload 10
+    //   2523: astore_0
+    //   2524: aload 10
+    //   2526: aload 14
+    //   2528: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   2531: putfield 211	com/tencent/mobileqq/data/SystemMsg:wSourceID	I
+    //   2534: aload 10
+    //   2536: astore_1
+    //   2537: aload 10
+    //   2539: astore_0
+    //   2540: aload 10
+    //   2542: aload 14
+    //   2544: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   2547: putfield 213	com/tencent/mobileqq/data/SystemMsg:wSourceSubID	I
+    //   2550: aload 10
+    //   2552: astore_1
+    //   2553: aload 10
+    //   2555: astore_0
+    //   2556: aload 14
+    //   2558: aload 14
+    //   2560: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   2563: i2l
+    //   2564: invokevirtual 206	java/io/DataInputStream:skip	(J)J
+    //   2567: pop2
+    //   2568: aload 10
+    //   2570: astore_1
+    //   2571: aload 10
+    //   2573: astore_0
+    //   2574: aload 14
+    //   2576: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   2579: ifeq +2992 -> 5571
+    //   2582: aload 10
+    //   2584: astore_1
+    //   2585: aload 10
+    //   2587: astore_0
+    //   2588: aload 14
+    //   2590: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   2593: istore_3
+    //   2594: goto +3 -> 2597
+    //   2597: aload 10
+    //   2599: astore_1
+    //   2600: aload 10
+    //   2602: astore_0
+    //   2603: iload_3
+    //   2604: newarray byte
+    //   2606: astore 11
+    //   2608: aload 10
+    //   2610: astore_1
+    //   2611: aload 10
+    //   2613: astore_0
+    //   2614: aload 14
+    //   2616: aload 11
+    //   2618: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   2621: pop
+    //   2622: aload 10
+    //   2624: astore_1
+    //   2625: aload 10
+    //   2627: astore_0
+    //   2628: aload 11
+    //   2630: arraylength
+    //   2631: ifne +98 -> 2729
+    //   2634: aload 10
+    //   2636: astore_1
+    //   2637: aload 10
+    //   2639: astore_0
+    //   2640: new 134	java/lang/StringBuilder
+    //   2643: dup
+    //   2644: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   2647: astore 11
+    //   2649: aload 10
+    //   2651: astore_1
+    //   2652: aload 10
+    //   2654: astore_0
+    //   2655: aload 11
+    //   2657: ldc 149
+    //   2659: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2662: pop
+    //   2663: aload 10
+    //   2665: astore_1
+    //   2666: aload 10
+    //   2668: astore_0
+    //   2669: aload 11
+    //   2671: aload_2
+    //   2672: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2675: pop
+    //   2676: aload 10
+    //   2678: astore_1
+    //   2679: aload 10
+    //   2681: astore_0
+    //   2682: aload 11
+    //   2684: ldc 149
+    //   2686: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2689: pop
+    //   2690: aload 10
+    //   2692: astore_1
+    //   2693: aload 10
+    //   2695: astore_0
+    //   2696: aload 11
+    //   2698: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2701: ldc 214
+    //   2703: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2706: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2709: pop
+    //   2710: aload 10
+    //   2712: astore_1
+    //   2713: aload 10
+    //   2715: astore_0
+    //   2716: aload 10
+    //   2718: aload 11
+    //   2720: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2723: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   2726: goto +107 -> 2833
+    //   2729: aload 10
+    //   2731: astore_1
+    //   2732: aload 10
+    //   2734: astore_0
+    //   2735: aload 11
+    //   2737: invokestatic 197	com/tencent/mobileqq/service/message/EmotionCodecUtils:a	([B)[B
+    //   2740: pop
+    //   2741: aload 10
+    //   2743: astore_1
+    //   2744: aload 10
+    //   2746: astore_0
+    //   2747: new 134	java/lang/StringBuilder
+    //   2750: dup
+    //   2751: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   2754: astore 11
+    //   2756: aload 10
+    //   2758: astore_1
+    //   2759: aload 10
+    //   2761: astore_0
+    //   2762: aload 11
+    //   2764: ldc 149
+    //   2766: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2769: pop
+    //   2770: aload 10
+    //   2772: astore_1
+    //   2773: aload 10
+    //   2775: astore_0
+    //   2776: aload 11
+    //   2778: aload_2
+    //   2779: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2782: pop
+    //   2783: aload 10
+    //   2785: astore_1
+    //   2786: aload 10
+    //   2788: astore_0
+    //   2789: aload 11
+    //   2791: ldc 149
+    //   2793: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2796: pop
+    //   2797: aload 10
+    //   2799: astore_1
+    //   2800: aload 10
+    //   2802: astore_0
+    //   2803: aload 11
+    //   2805: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2808: ldc 214
+    //   2810: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   2813: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2816: pop
+    //   2817: aload 10
+    //   2819: astore_1
+    //   2820: aload 10
+    //   2822: astore_0
+    //   2823: aload 10
     //   2825: aload 11
-    //   2827: ldc2_w 217
-    //   2830: invokevirtual 208	java/io/DataInputStream:skip	(J)J
-    //   2833: pop2
-    //   2834: aload 11
-    //   2836: aload 11
-    //   2838: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   2841: newarray byte
-    //   2843: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   2846: pop
-    //   2847: aload 11
-    //   2849: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   2852: pop
-    //   2853: aload 11
-    //   2855: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   2858: istore 5
-    //   2860: iload 4
-    //   2862: istore_3
-    //   2863: iload_3
-    //   2864: iload 5
-    //   2866: if_icmpge +229 -> 3095
-    //   2869: aload 11
-    //   2871: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   2874: istore 4
-    //   2876: aload 11
-    //   2878: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   2881: newarray byte
-    //   2883: astore_1
-    //   2884: aload 11
-    //   2886: aload_1
-    //   2887: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   2890: pop
-    //   2891: iload 4
-    //   2893: sipush 1000
-    //   2896: if_icmpne +107 -> 3003
-    //   2899: new 224	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo
-    //   2902: dup
-    //   2903: invokespecial 225	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:<init>	()V
-    //   2906: astore_2
-    //   2907: aload_2
-    //   2908: aload_1
-    //   2909: invokevirtual 229	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   2912: checkcast 224	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo
-    //   2915: astore_1
-    //   2916: aload_1
-    //   2917: ifnull +1642 -> 4559
-    //   2920: aload_0
-    //   2921: aload_1
-    //   2922: getfield 233	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:str_group_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2925: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2928: putfield 240	com/tencent/mobileqq/data/SystemMsg:strGroupName	Ljava/lang/String;
-    //   2931: aload_0
-    //   2932: aload_1
-    //   2933: getfield 243	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:str_group_nick	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   2936: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   2939: putfield 245	com/tencent/mobileqq/data/SystemMsg:strGroupNickName	Ljava/lang/String;
-    //   2942: aload_0
-    //   2943: aload_1
-    //   2944: getfield 249	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:uint64_group_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   2947: invokevirtual 254	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   2950: putfield 256	com/tencent/mobileqq/data/SystemMsg:strGroupUin	J
-    //   2953: goto +1606 -> 4559
-    //   2956: aload_1
-    //   2957: invokestatic 199	azah:a	([B)[B
-    //   2960: pop
-    //   2961: aload_0
-    //   2962: new 122	java/lang/StringBuilder
-    //   2965: dup
-    //   2966: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   2969: ldc 150
-    //   2971: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2974: aload_2
-    //   2975: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2978: ldc 150
-    //   2980: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2983: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2986: ldc 216
-    //   2988: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   2991: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2994: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2997: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   3000: goto -175 -> 2825
-    //   3003: iload 4
-    //   3005: sipush 1001
-    //   3008: if_icmpne +38 -> 3046
-    //   3011: new 258	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo
-    //   3014: dup
-    //   3015: invokespecial 259	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo:<init>	()V
-    //   3018: astore_2
-    //   3019: aload_2
-    //   3020: aload_1
-    //   3021: invokevirtual 260	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3024: checkcast 258	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo
+    //   2827: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2830: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   2833: aload 10
+    //   2835: astore_1
+    //   2836: aload 10
+    //   2838: astore_0
+    //   2839: aload 14
+    //   2841: ldc2_w 215
+    //   2844: invokevirtual 206	java/io/DataInputStream:skip	(J)J
+    //   2847: pop2
+    //   2848: aload 10
+    //   2850: astore_1
+    //   2851: aload 10
+    //   2853: astore_0
+    //   2854: aload 14
+    //   2856: aload 14
+    //   2858: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   2861: newarray byte
+    //   2863: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   2866: pop
+    //   2867: aload 10
+    //   2869: astore_1
+    //   2870: aload 10
+    //   2872: astore_0
+    //   2873: aload 14
+    //   2875: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   2878: pop
+    //   2879: aload 10
+    //   2881: astore_1
+    //   2882: aload 10
+    //   2884: astore_0
+    //   2885: aload 14
+    //   2887: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   2890: istore 5
+    //   2892: iload 4
+    //   2894: istore_3
+    //   2895: aload 10
+    //   2897: astore_0
+    //   2898: iload_3
+    //   2899: iload 5
+    //   2901: if_icmpge +1366 -> 4267
+    //   2904: aload 10
+    //   2906: astore_1
+    //   2907: aload 10
+    //   2909: astore_0
+    //   2910: aload 14
+    //   2912: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   2915: istore 4
+    //   2917: aload 10
+    //   2919: astore_1
+    //   2920: aload 10
+    //   2922: astore_0
+    //   2923: aload 14
+    //   2925: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   2928: newarray byte
+    //   2930: astore_2
+    //   2931: aload 10
+    //   2933: astore_1
+    //   2934: aload 10
+    //   2936: astore_0
+    //   2937: aload 14
+    //   2939: aload_2
+    //   2940: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   2943: pop
+    //   2944: iload 4
+    //   2946: sipush 1000
+    //   2949: if_icmpne +97 -> 3046
+    //   2952: aload 10
+    //   2954: astore_1
+    //   2955: aload 10
+    //   2957: astore_0
+    //   2958: new 222	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo
+    //   2961: dup
+    //   2962: invokespecial 223	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:<init>	()V
+    //   2965: astore 11
+    //   2967: aload 10
+    //   2969: astore_0
+    //   2970: aload 11
+    //   2972: aload_2
+    //   2973: invokevirtual 227	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   2976: checkcast 222	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo
+    //   2979: astore_2
+    //   2980: goto +5 -> 2985
+    //   2983: aconst_null
+    //   2984: astore_2
+    //   2985: aload_2
+    //   2986: ifnull +189 -> 3175
+    //   2989: aload 10
+    //   2991: astore_1
+    //   2992: aload 10
+    //   2994: astore_0
+    //   2995: aload 10
+    //   2997: aload_2
+    //   2998: getfield 231	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:str_group_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3001: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3004: putfield 238	com/tencent/mobileqq/data/SystemMsg:strGroupName	Ljava/lang/String;
+    //   3007: aload 10
+    //   3009: astore_1
+    //   3010: aload 10
+    //   3012: astore_0
+    //   3013: aload 10
+    //   3015: aload_2
+    //   3016: getfield 241	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:str_group_nick	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3019: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3022: putfield 243	com/tencent/mobileqq/data/SystemMsg:strGroupNickName	Ljava/lang/String;
+    //   3025: aload 10
     //   3027: astore_1
-    //   3028: aload_1
-    //   3029: ifnull +1530 -> 4559
-    //   3032: aload_0
-    //   3033: aload_1
-    //   3034: getfield 263	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo:str_tongxunlu_nickname	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3037: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3040: putfield 265	com/tencent/mobileqq/data/SystemMsg:strAddressBookNickName	Ljava/lang/String;
-    //   3043: goto +1516 -> 4559
+    //   3028: aload 10
+    //   3030: astore_0
+    //   3031: aload 10
+    //   3033: aload_2
+    //   3034: getfield 247	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:uint64_group_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   3037: invokevirtual 252	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   3040: putfield 254	com/tencent/mobileqq/data/SystemMsg:strGroupUin	J
+    //   3043: goto +132 -> 3175
     //   3046: iload 4
-    //   3048: sipush 1002
-    //   3051: if_icmpne +1508 -> 4559
-    //   3054: new 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   3057: dup
-    //   3058: invokespecial 268	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
-    //   3061: astore_2
-    //   3062: aload_2
-    //   3063: aload_1
-    //   3064: invokevirtual 269	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3067: checkcast 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   3070: astore_1
-    //   3071: aload_1
-    //   3072: ifnull +1487 -> 4559
-    //   3075: aload_0
-    //   3076: aload_1
-    //   3077: getfield 272	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3080: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3083: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
-    //   3086: goto +1473 -> 4559
-    //   3089: astore_1
-    //   3090: aconst_null
-    //   3091: astore_1
-    //   3092: goto -21 -> 3071
-    //   3095: aload_0
-    //   3096: areturn
-    //   3097: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   3100: dup
-    //   3101: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   3104: astore_0
-    //   3105: aload_0
-    //   3106: aload 11
-    //   3108: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3111: putfield 190	com/tencent/mobileqq/data/SystemMsg:cVession	I
-    //   3114: aload 11
-    //   3116: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3119: pop
-    //   3120: aload 11
-    //   3122: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3125: ifeq +1478 -> 4603
-    //   3128: aload 11
-    //   3130: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3133: istore_3
-    //   3134: iload_3
-    //   3135: newarray byte
-    //   3137: astore_1
+    //   3048: sipush 1001
+    //   3051: if_icmpne +61 -> 3112
+    //   3054: aload 10
+    //   3056: astore_1
+    //   3057: aload 10
+    //   3059: astore_0
+    //   3060: new 256	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo
+    //   3063: dup
+    //   3064: invokespecial 257	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo:<init>	()V
+    //   3067: astore 11
+    //   3069: aload 10
+    //   3071: astore_0
+    //   3072: aload 11
+    //   3074: aload_2
+    //   3075: invokevirtual 258	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   3078: checkcast 256	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo
+    //   3081: astore_2
+    //   3082: goto +5 -> 3087
+    //   3085: aconst_null
+    //   3086: astore_2
+    //   3087: aload_2
+    //   3088: ifnull +87 -> 3175
+    //   3091: aload 10
+    //   3093: astore_1
+    //   3094: aload 10
+    //   3096: astore_0
+    //   3097: aload 10
+    //   3099: aload_2
+    //   3100: getfield 261	tencent/im/s2c/frdsysmsg/FrdSysMsg$TongXunLuNickInfo:str_tongxunlu_nickname	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3103: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3106: putfield 263	com/tencent/mobileqq/data/SystemMsg:strAddressBookNickName	Ljava/lang/String;
+    //   3109: goto +66 -> 3175
+    //   3112: iload 4
+    //   3114: sipush 1002
+    //   3117: if_icmpne +58 -> 3175
+    //   3120: aload 10
+    //   3122: astore_1
+    //   3123: aload 10
+    //   3125: astore_0
+    //   3126: new 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   3129: dup
+    //   3130: invokespecial 266	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
+    //   3133: astore 11
+    //   3135: aload 10
+    //   3137: astore_0
     //   3138: aload 11
-    //   3140: aload_1
-    //   3141: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3144: pop
-    //   3145: aload_1
-    //   3146: arraylength
-    //   3147: ifne +146 -> 3293
-    //   3150: aload_0
-    //   3151: new 122	java/lang/StringBuilder
-    //   3154: dup
-    //   3155: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   3158: ldc 150
-    //   3160: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3163: aload_2
-    //   3164: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3167: ldc 150
-    //   3169: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3172: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3175: ldc_w 273
-    //   3178: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3181: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3184: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3187: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   3190: aload 11
-    //   3192: ldc2_w 217
-    //   3195: invokevirtual 208	java/io/DataInputStream:skip	(J)J
-    //   3198: pop2
-    //   3199: aload 11
-    //   3201: aload 11
-    //   3203: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3206: newarray byte
-    //   3208: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3211: pop
-    //   3212: aload 11
-    //   3214: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3217: istore 4
-    //   3219: iload 5
-    //   3221: istore_3
-    //   3222: iload_3
-    //   3223: iload 4
-    //   3225: if_icmpge +181 -> 3406
-    //   3228: aload 11
-    //   3230: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   3233: istore 5
-    //   3235: aload 11
-    //   3237: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   3240: newarray byte
-    //   3242: astore_1
-    //   3243: aload 11
-    //   3245: aload_1
-    //   3246: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3249: pop
-    //   3250: iload 5
-    //   3252: sipush 1002
-    //   3255: if_icmpne +93 -> 3348
-    //   3258: new 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   3261: dup
-    //   3262: invokespecial 268	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
-    //   3265: astore_2
-    //   3266: aload_2
-    //   3267: aload_1
-    //   3268: invokevirtual 269	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3271: checkcast 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   3274: astore_1
-    //   3275: aload_1
-    //   3276: ifnull +1320 -> 4596
-    //   3279: aload_0
-    //   3280: aload_1
-    //   3281: getfield 272	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3284: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3287: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
-    //   3290: goto +1306 -> 4596
-    //   3293: new 116	java/lang/String
-    //   3296: dup
-    //   3297: aload_1
-    //   3298: invokestatic 199	azah:a	([B)[B
-    //   3301: invokespecial 274	java/lang/String:<init>	([B)V
-    //   3304: pop
-    //   3305: aload_0
-    //   3306: new 122	java/lang/StringBuilder
-    //   3309: dup
-    //   3310: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   3313: ldc 150
-    //   3315: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3318: aload_2
-    //   3319: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3322: ldc 150
-    //   3324: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3327: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3330: ldc_w 273
-    //   3333: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3336: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3339: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3342: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   3345: goto -155 -> 3190
-    //   3348: iload 5
-    //   3350: sipush 1003
-    //   3353: if_icmpne +1243 -> 4596
-    //   3356: new 276	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo
-    //   3359: dup
-    //   3360: invokespecial 277	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:<init>	()V
-    //   3363: astore_2
-    //   3364: aload_2
-    //   3365: aload_1
-    //   3366: invokevirtual 278	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3369: checkcast 276	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo
-    //   3372: astore_1
-    //   3373: aload_1
-    //   3374: ifnull +1222 -> 4596
-    //   3377: aload_0
-    //   3378: aload_1
-    //   3379: getfield 281	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:str_source_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3382: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3385: putfield 43	com/tencent/mobileqq/data/SystemMsg:strGameName	Ljava/lang/String;
-    //   3388: goto +1208 -> 4596
-    //   3391: astore_1
-    //   3392: aload_0
-    //   3393: astore 10
-    //   3395: aload_1
-    //   3396: astore_0
-    //   3397: goto -2932 -> 465
-    //   3400: astore_1
-    //   3401: aconst_null
+    //   3140: aload_2
+    //   3141: invokevirtual 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   3144: checkcast 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   3147: astore_2
+    //   3148: goto +5 -> 3153
+    //   3151: aconst_null
+    //   3152: astore_2
+    //   3153: aload_2
+    //   3154: ifnull +21 -> 3175
+    //   3157: aload 10
+    //   3159: astore_1
+    //   3160: aload 10
+    //   3162: astore_0
+    //   3163: aload 10
+    //   3165: aload_2
+    //   3166: getfield 270	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3169: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3172: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
+    //   3175: iload_3
+    //   3176: iconst_1
+    //   3177: iadd
+    //   3178: istore_3
+    //   3179: goto -284 -> 2895
+    //   3182: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   3185: dup
+    //   3186: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   3189: astore 10
+    //   3191: aload 10
+    //   3193: astore_1
+    //   3194: aload 10
+    //   3196: astore_0
+    //   3197: aload 10
+    //   3199: aload 14
+    //   3201: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   3204: putfield 188	com/tencent/mobileqq/data/SystemMsg:cVession	I
+    //   3207: aload 10
+    //   3209: astore_1
+    //   3210: aload 10
+    //   3212: astore_0
+    //   3213: aload 14
+    //   3215: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   3218: pop
+    //   3219: aload 10
+    //   3221: astore_1
+    //   3222: aload 10
+    //   3224: astore_0
+    //   3225: aload 14
+    //   3227: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   3230: ifeq +2346 -> 5576
+    //   3233: aload 10
+    //   3235: astore_1
+    //   3236: aload 10
+    //   3238: astore_0
+    //   3239: aload 14
+    //   3241: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   3244: istore_3
+    //   3245: goto +3 -> 3248
+    //   3248: aload 10
+    //   3250: astore_1
+    //   3251: aload 10
+    //   3253: astore_0
+    //   3254: iload_3
+    //   3255: newarray byte
+    //   3257: astore 11
+    //   3259: aload 10
+    //   3261: astore_1
+    //   3262: aload 10
+    //   3264: astore_0
+    //   3265: aload 14
+    //   3267: aload 11
+    //   3269: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   3272: pop
+    //   3273: aload 10
+    //   3275: astore_1
+    //   3276: aload 10
+    //   3278: astore_0
+    //   3279: aload 11
+    //   3281: arraylength
+    //   3282: ifne +99 -> 3381
+    //   3285: aload 10
+    //   3287: astore_1
+    //   3288: aload 10
+    //   3290: astore_0
+    //   3291: new 134	java/lang/StringBuilder
+    //   3294: dup
+    //   3295: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   3298: astore 11
+    //   3300: aload 10
+    //   3302: astore_1
+    //   3303: aload 10
+    //   3305: astore_0
+    //   3306: aload 11
+    //   3308: ldc 149
+    //   3310: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3313: pop
+    //   3314: aload 10
+    //   3316: astore_1
+    //   3317: aload 10
+    //   3319: astore_0
+    //   3320: aload 11
+    //   3322: aload_2
+    //   3323: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3326: pop
+    //   3327: aload 10
+    //   3329: astore_1
+    //   3330: aload 10
+    //   3332: astore_0
+    //   3333: aload 11
+    //   3335: ldc 149
+    //   3337: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3340: pop
+    //   3341: aload 10
+    //   3343: astore_1
+    //   3344: aload 10
+    //   3346: astore_0
+    //   3347: aload 11
+    //   3349: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3352: ldc_w 271
+    //   3355: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   3358: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3361: pop
+    //   3362: aload 10
+    //   3364: astore_1
+    //   3365: aload 10
+    //   3367: astore_0
+    //   3368: aload 10
+    //   3370: aload 11
+    //   3372: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3375: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   3378: goto +115 -> 3493
+    //   3381: aload 10
+    //   3383: astore_1
+    //   3384: aload 10
+    //   3386: astore_0
+    //   3387: new 117	java/lang/String
+    //   3390: dup
+    //   3391: aload 11
+    //   3393: invokestatic 197	com/tencent/mobileqq/service/message/EmotionCodecUtils:a	([B)[B
+    //   3396: invokespecial 272	java/lang/String:<init>	([B)V
+    //   3399: pop
+    //   3400: aload 10
     //   3402: astore_1
-    //   3403: goto -30 -> 3373
-    //   3406: aload_0
-    //   3407: areturn
-    //   3408: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   3411: dup
-    //   3412: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   3415: astore_0
-    //   3416: aload_0
-    //   3417: aload 11
-    //   3419: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3422: putfield 190	com/tencent/mobileqq/data/SystemMsg:cVession	I
-    //   3425: aload 11
-    //   3427: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3430: pop
-    //   3431: aload 11
-    //   3433: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3436: ifeq +1189 -> 4625
-    //   3439: aload 11
-    //   3441: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3444: istore_3
-    //   3445: iload_3
-    //   3446: newarray byte
-    //   3448: astore_1
-    //   3449: aload 11
-    //   3451: aload_1
-    //   3452: invokevirtual 194	java/io/DataInputStream:read	([B)I
+    //   3403: aload 10
+    //   3405: astore_0
+    //   3406: new 134	java/lang/StringBuilder
+    //   3409: dup
+    //   3410: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   3413: astore 11
+    //   3415: aload 10
+    //   3417: astore_1
+    //   3418: aload 10
+    //   3420: astore_0
+    //   3421: aload 11
+    //   3423: ldc 149
+    //   3425: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3428: pop
+    //   3429: aload 10
+    //   3431: astore_1
+    //   3432: aload 10
+    //   3434: astore_0
+    //   3435: aload 11
+    //   3437: aload_2
+    //   3438: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3441: pop
+    //   3442: aload 10
+    //   3444: astore_1
+    //   3445: aload 10
+    //   3447: astore_0
+    //   3448: aload 11
+    //   3450: ldc 149
+    //   3452: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3455: pop
-    //   3456: aload_1
-    //   3457: arraylength
-    //   3458: ifne +146 -> 3604
-    //   3461: aload_0
-    //   3462: new 122	java/lang/StringBuilder
-    //   3465: dup
-    //   3466: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   3469: ldc 150
-    //   3471: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3474: aload_2
-    //   3475: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3478: ldc 150
-    //   3480: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3483: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3486: ldc_w 282
-    //   3489: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3492: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3495: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3498: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   3501: aload 11
-    //   3503: ldc2_w 217
-    //   3506: invokevirtual 208	java/io/DataInputStream:skip	(J)J
-    //   3509: pop2
-    //   3510: aload 11
-    //   3512: aload 11
-    //   3514: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3517: newarray byte
-    //   3519: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3522: pop
-    //   3523: aload 11
-    //   3525: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3528: istore 4
-    //   3530: iload 6
-    //   3532: istore_3
-    //   3533: iload_3
-    //   3534: iload 4
-    //   3536: if_icmpge +174 -> 3710
-    //   3539: aload 11
-    //   3541: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   3544: istore 5
-    //   3546: aload 11
-    //   3548: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   3551: newarray byte
-    //   3553: astore_1
-    //   3554: aload 11
-    //   3556: aload_1
-    //   3557: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3560: pop
-    //   3561: iload 5
-    //   3563: sipush 1002
-    //   3566: if_icmpne +86 -> 3652
-    //   3569: new 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   3572: dup
-    //   3573: invokespecial 268	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
-    //   3576: astore_2
-    //   3577: aload_2
-    //   3578: aload_1
-    //   3579: invokevirtual 269	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3582: checkcast 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   3585: astore_1
-    //   3586: aload_1
-    //   3587: ifnull +1031 -> 4618
-    //   3590: aload_0
-    //   3591: aload_1
-    //   3592: getfield 272	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3595: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3598: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
-    //   3601: goto +1017 -> 4618
-    //   3604: aload_1
-    //   3605: invokestatic 199	azah:a	([B)[B
-    //   3608: pop
-    //   3609: aload_0
-    //   3610: new 122	java/lang/StringBuilder
-    //   3613: dup
-    //   3614: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   3617: ldc 150
-    //   3619: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3622: aload_2
-    //   3623: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3626: ldc 150
-    //   3628: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3631: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3634: ldc_w 282
-    //   3637: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3640: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3643: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3646: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   3649: goto -148 -> 3501
-    //   3652: iload 5
-    //   3654: sipush 1003
-    //   3657: if_icmpne +961 -> 4618
-    //   3660: new 276	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo
-    //   3663: dup
-    //   3664: invokespecial 277	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:<init>	()V
-    //   3667: astore_2
-    //   3668: aload_2
-    //   3669: aload_1
-    //   3670: invokevirtual 278	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3673: checkcast 276	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo
-    //   3676: astore_1
-    //   3677: aload_1
-    //   3678: ifnull +940 -> 4618
-    //   3681: aload_0
-    //   3682: aload_1
-    //   3683: getfield 281	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:str_source_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3686: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3689: putfield 43	com/tencent/mobileqq/data/SystemMsg:strGameName	Ljava/lang/String;
-    //   3692: goto +926 -> 4618
-    //   3695: astore_1
-    //   3696: aload_0
-    //   3697: astore 10
-    //   3699: aload_1
-    //   3700: astore_0
-    //   3701: goto -3236 -> 465
-    //   3704: astore_1
-    //   3705: aconst_null
-    //   3706: astore_1
-    //   3707: goto -30 -> 3677
-    //   3710: aload_0
-    //   3711: areturn
-    //   3712: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   3715: dup
-    //   3716: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   3719: astore_0
-    //   3720: aload_0
-    //   3721: aload 11
-    //   3723: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3726: putfield 190	com/tencent/mobileqq/data/SystemMsg:cVession	I
-    //   3729: aload 11
-    //   3731: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3734: newarray byte
-    //   3736: astore_1
-    //   3737: aload 11
-    //   3739: aload_1
-    //   3740: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3743: pop
-    //   3744: new 116	java/lang/String
-    //   3747: dup
-    //   3748: aload_1
-    //   3749: invokestatic 199	azah:a	([B)[B
-    //   3752: invokespecial 274	java/lang/String:<init>	([B)V
-    //   3755: invokevirtual 156	java/lang/String:trim	()Ljava/lang/String;
-    //   3758: astore 9
-    //   3760: aload 9
-    //   3762: ifnull +16 -> 3778
-    //   3765: aload 9
+    //   3456: aload 10
+    //   3458: astore_1
+    //   3459: aload 10
+    //   3461: astore_0
+    //   3462: aload 11
+    //   3464: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3467: ldc_w 271
+    //   3470: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   3473: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3476: pop
+    //   3477: aload 10
+    //   3479: astore_1
+    //   3480: aload 10
+    //   3482: astore_0
+    //   3483: aload 10
+    //   3485: aload 11
+    //   3487: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3490: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   3493: aload 10
+    //   3495: astore_1
+    //   3496: aload 10
+    //   3498: astore_0
+    //   3499: aload 14
+    //   3501: ldc2_w 215
+    //   3504: invokevirtual 206	java/io/DataInputStream:skip	(J)J
+    //   3507: pop2
+    //   3508: aload 10
+    //   3510: astore_1
+    //   3511: aload 10
+    //   3513: astore_0
+    //   3514: aload 14
+    //   3516: aload 14
+    //   3518: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   3521: newarray byte
+    //   3523: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   3526: pop
+    //   3527: aload 10
+    //   3529: astore_1
+    //   3530: aload 10
+    //   3532: astore_0
+    //   3533: aload 14
+    //   3535: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   3538: istore 4
+    //   3540: iload 5
+    //   3542: istore_3
+    //   3543: aload 10
+    //   3545: astore_0
+    //   3546: iload_3
+    //   3547: iload 4
+    //   3549: if_icmpge +718 -> 4267
+    //   3552: aload 10
+    //   3554: astore_1
+    //   3555: aload 10
+    //   3557: astore_0
+    //   3558: aload 14
+    //   3560: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   3563: istore 5
+    //   3565: aload 10
+    //   3567: astore_1
+    //   3568: aload 10
+    //   3570: astore_0
+    //   3571: aload 14
+    //   3573: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   3576: newarray byte
+    //   3578: astore_2
+    //   3579: aload 10
+    //   3581: astore_1
+    //   3582: aload 10
+    //   3584: astore_0
+    //   3585: aload 14
+    //   3587: aload_2
+    //   3588: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   3591: pop
+    //   3592: iload 5
+    //   3594: sipush 1002
+    //   3597: if_icmpne +61 -> 3658
+    //   3600: aload 10
+    //   3602: astore_1
+    //   3603: aload 10
+    //   3605: astore_0
+    //   3606: new 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   3609: dup
+    //   3610: invokespecial 266	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
+    //   3613: astore 11
+    //   3615: aload 10
+    //   3617: astore_0
+    //   3618: aload 11
+    //   3620: aload_2
+    //   3621: invokevirtual 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   3624: checkcast 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   3627: astore_2
+    //   3628: goto +5 -> 3633
+    //   3631: aconst_null
+    //   3632: astore_2
+    //   3633: aload_2
+    //   3634: ifnull +87 -> 3721
+    //   3637: aload 10
+    //   3639: astore_1
+    //   3640: aload 10
+    //   3642: astore_0
+    //   3643: aload 10
+    //   3645: aload_2
+    //   3646: getfield 270	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3649: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3652: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
+    //   3655: goto +66 -> 3721
+    //   3658: iload 5
+    //   3660: sipush 1003
+    //   3663: if_icmpne +58 -> 3721
+    //   3666: aload 10
+    //   3668: astore_1
+    //   3669: aload 10
+    //   3671: astore_0
+    //   3672: new 274	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo
+    //   3675: dup
+    //   3676: invokespecial 275	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:<init>	()V
+    //   3679: astore 11
+    //   3681: aload 10
+    //   3683: astore_0
+    //   3684: aload 11
+    //   3686: aload_2
+    //   3687: invokevirtual 276	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   3690: checkcast 274	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo
+    //   3693: astore_2
+    //   3694: goto +5 -> 3699
+    //   3697: aconst_null
+    //   3698: astore_2
+    //   3699: aload_2
+    //   3700: ifnull +21 -> 3721
+    //   3703: aload 10
+    //   3705: astore_1
+    //   3706: aload 10
+    //   3708: astore_0
+    //   3709: aload 10
+    //   3711: aload_2
+    //   3712: getfield 279	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:str_source_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   3715: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   3718: putfield 43	com/tencent/mobileqq/data/SystemMsg:strGameName	Ljava/lang/String;
+    //   3721: iload_3
+    //   3722: iconst_1
+    //   3723: iadd
+    //   3724: istore_3
+    //   3725: goto -182 -> 3543
+    //   3728: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   3731: dup
+    //   3732: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   3735: astore 10
+    //   3737: aload 10
+    //   3739: astore_1
+    //   3740: aload 10
+    //   3742: astore_0
+    //   3743: aload 10
+    //   3745: aload 14
+    //   3747: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   3750: putfield 188	com/tencent/mobileqq/data/SystemMsg:cVession	I
+    //   3753: aload 10
+    //   3755: astore_1
+    //   3756: aload 10
+    //   3758: astore_0
+    //   3759: aload 14
+    //   3761: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   3764: pop
+    //   3765: aload 10
     //   3767: astore_1
-    //   3768: ldc 39
-    //   3770: aload 9
-    //   3772: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   3775: ifeq +12 -> 3787
-    //   3778: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3781: ldc 157
-    //   3783: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3786: astore_1
-    //   3787: aload_0
-    //   3788: aload_1
-    //   3789: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
-    //   3792: aload 11
-    //   3794: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3797: ifeq +850 -> 4647
-    //   3800: aload 11
-    //   3802: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3805: istore_3
-    //   3806: iload_3
-    //   3807: newarray byte
-    //   3809: astore_1
-    //   3810: aload 11
-    //   3812: aload_1
-    //   3813: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3816: pop
-    //   3817: aload_1
-    //   3818: arraylength
-    //   3819: ifne +152 -> 3971
-    //   3822: aload_0
-    //   3823: new 122	java/lang/StringBuilder
-    //   3826: dup
-    //   3827: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   3830: ldc 150
-    //   3832: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3835: aload_2
-    //   3836: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3839: ldc 150
-    //   3841: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3844: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3847: ldc_w 283
-    //   3850: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   3853: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3856: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3859: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   3862: aload 11
-    //   3864: ldc2_w 217
-    //   3867: invokevirtual 208	java/io/DataInputStream:skip	(J)J
-    //   3870: pop2
-    //   3871: aload 11
-    //   3873: aload 11
-    //   3875: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   3878: newarray byte
-    //   3880: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3883: pop
-    //   3884: aload 11
-    //   3886: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3889: pop
-    //   3890: aload 11
-    //   3892: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   3895: istore 4
-    //   3897: iload 7
-    //   3899: istore_3
-    //   3900: iload_3
-    //   3901: iload 4
-    //   3903: if_icmpge +126 -> 4029
-    //   3906: aload 11
-    //   3908: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   3911: istore 5
-    //   3913: aload 11
-    //   3915: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   3918: newarray byte
-    //   3920: astore_1
-    //   3921: aload 11
-    //   3923: aload_1
-    //   3924: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   3927: pop
-    //   3928: iload 5
-    //   3930: sipush 1002
-    //   3933: if_icmpne +707 -> 4640
-    //   3936: new 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   3939: dup
-    //   3940: invokespecial 268	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
-    //   3943: astore_2
-    //   3944: aload_2
-    //   3945: aload_1
-    //   3946: invokevirtual 269	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   3949: checkcast 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   3952: astore_1
-    //   3953: aload_1
-    //   3954: ifnull +686 -> 4640
-    //   3957: aload_0
-    //   3958: aload_1
-    //   3959: getfield 272	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   3962: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   3965: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
-    //   3968: goto +672 -> 4640
-    //   3971: aload_1
-    //   3972: invokestatic 199	azah:a	([B)[B
-    //   3975: pop
-    //   3976: aload_0
-    //   3977: new 122	java/lang/StringBuilder
-    //   3980: dup
-    //   3981: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   3984: ldc 150
-    //   3986: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3989: aload_2
-    //   3990: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3993: ldc 150
-    //   3995: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3998: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4001: ldc_w 283
-    //   4004: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   4007: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4010: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4013: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   4016: goto -154 -> 3862
-    //   4019: astore_1
-    //   4020: goto -3610 -> 410
-    //   4023: astore_1
-    //   4024: aconst_null
-    //   4025: astore_1
-    //   4026: goto -73 -> 3953
-    //   4029: aload_0
-    //   4030: areturn
-    //   4031: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   4034: dup
-    //   4035: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   4038: astore_0
-    //   4039: aload_0
-    //   4040: astore 9
-    //   4042: aload_0
-    //   4043: astore 10
-    //   4045: aload_0
-    //   4046: new 122	java/lang/StringBuilder
-    //   4049: dup
-    //   4050: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   4053: ldc 150
-    //   4055: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4058: aload_2
-    //   4059: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4062: ldc 150
-    //   4064: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4067: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4070: ldc_w 284
-    //   4073: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   4076: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4079: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4082: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   4085: aload_0
-    //   4086: astore 9
-    //   4088: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   4091: dup
-    //   4092: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   4095: astore_1
-    //   4096: aload_1
-    //   4097: aload 11
-    //   4099: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   4102: putfield 190	com/tencent/mobileqq/data/SystemMsg:cVession	I
-    //   4105: aload 11
-    //   4107: aload 11
-    //   4109: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   4112: newarray byte
-    //   4114: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   4117: pop
-    //   4118: aload_1
-    //   4119: aload 11
-    //   4121: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   4124: putfield 213	com/tencent/mobileqq/data/SystemMsg:wSourceID	I
-    //   4127: aload_1
-    //   4128: aload 11
-    //   4130: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   4133: putfield 215	com/tencent/mobileqq/data/SystemMsg:wSourceSubID	I
-    //   4136: aload 11
-    //   4138: aload 11
-    //   4140: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   4143: i2l
-    //   4144: invokevirtual 208	java/io/DataInputStream:skip	(J)J
-    //   4147: pop2
-    //   4148: aload 11
-    //   4150: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   4153: ifeq +506 -> 4659
-    //   4156: aload 11
-    //   4158: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   4161: istore_3
-    //   4162: iload_3
-    //   4163: newarray byte
-    //   4165: astore_0
-    //   4166: aload 11
-    //   4168: aload_0
-    //   4169: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   4172: pop
-    //   4173: aload_0
-    //   4174: arraylength
-    //   4175: ifne +168 -> 4343
-    //   4178: aload_1
-    //   4179: new 122	java/lang/StringBuilder
-    //   4182: dup
-    //   4183: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   4186: ldc 150
-    //   4188: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4191: aload_2
-    //   4192: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4195: ldc 150
-    //   4197: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4200: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4203: ldc_w 284
-    //   4206: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   4209: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4212: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4215: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   4218: aload 11
-    //   4220: ldc2_w 217
-    //   4223: invokevirtual 208	java/io/DataInputStream:skip	(J)J
-    //   4226: pop2
-    //   4227: aload 11
-    //   4229: aload 11
-    //   4231: invokevirtual 211	java/io/DataInputStream:readUnsignedShort	()I
-    //   4234: newarray byte
-    //   4236: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   4239: pop
-    //   4240: aload 11
-    //   4242: invokevirtual 188	java/io/DataInputStream:readUnsignedByte	()I
-    //   4245: istore 4
-    //   4247: iload 8
-    //   4249: istore_3
-    //   4250: iload_3
-    //   4251: iload 4
-    //   4253: if_icmpge +195 -> 4448
-    //   4256: aload 11
-    //   4258: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   4261: istore 5
-    //   4263: aload 11
-    //   4265: invokevirtual 222	java/io/DataInputStream:readShort	()S
-    //   4268: newarray byte
-    //   4270: astore_0
-    //   4271: aload 11
-    //   4273: aload_0
-    //   4274: invokevirtual 194	java/io/DataInputStream:read	([B)I
-    //   4277: pop
-    //   4278: iload 5
-    //   4280: sipush 1000
-    //   4283: if_icmpne +108 -> 4391
-    //   4286: new 224	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo
-    //   4289: dup
-    //   4290: invokespecial 225	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:<init>	()V
-    //   4293: astore_2
-    //   4294: aload_2
-    //   4295: aload_0
-    //   4296: invokevirtual 229	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4299: checkcast 224	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo
-    //   4302: astore_0
-    //   4303: aload_0
-    //   4304: ifnull +348 -> 4652
-    //   4307: aload_1
-    //   4308: aload_0
-    //   4309: getfield 233	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:str_group_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   4312: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   4315: putfield 240	com/tencent/mobileqq/data/SystemMsg:strGroupName	Ljava/lang/String;
-    //   4318: aload_1
-    //   4319: aload_0
-    //   4320: getfield 243	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:str_group_nick	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   4323: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   4326: putfield 245	com/tencent/mobileqq/data/SystemMsg:strGroupNickName	Ljava/lang/String;
-    //   4329: aload_1
-    //   4330: aload_0
-    //   4331: getfield 249	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:uint64_group_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   4334: invokevirtual 254	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   4337: putfield 256	com/tencent/mobileqq/data/SystemMsg:strGroupUin	J
-    //   4340: goto +312 -> 4652
-    //   4343: aload_0
-    //   4344: invokestatic 199	azah:a	([B)[B
-    //   4347: pop
-    //   4348: aload_1
-    //   4349: new 122	java/lang/StringBuilder
-    //   4352: dup
-    //   4353: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   4356: ldc 150
-    //   4358: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4361: aload_2
-    //   4362: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4365: ldc 150
-    //   4367: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4370: invokestatic 134	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   4373: ldc_w 284
-    //   4376: invokevirtual 139	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   4379: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   4382: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   4385: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   4388: goto -170 -> 4218
-    //   4391: iload 5
-    //   4393: sipush 1002
-    //   4396: if_icmpne +256 -> 4652
-    //   4399: new 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   4402: dup
-    //   4403: invokespecial 268	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
-    //   4406: astore_2
-    //   4407: aload_2
-    //   4408: aload_0
-    //   4409: invokevirtual 269	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   4412: checkcast 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
-    //   4415: astore_0
-    //   4416: aload_0
-    //   4417: ifnull +235 -> 4652
-    //   4420: aload_1
-    //   4421: aload_0
-    //   4422: getfield 272	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   4425: invokevirtual 238	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   4428: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
-    //   4431: goto +221 -> 4652
-    //   4434: astore_2
-    //   4435: aload_1
-    //   4436: astore_0
-    //   4437: aload_2
-    //   4438: astore_1
-    //   4439: goto -4029 -> 410
-    //   4442: astore_0
-    //   4443: aconst_null
-    //   4444: astore_0
-    //   4445: goto -29 -> 4416
-    //   4448: aload_1
-    //   4449: areturn
-    //   4450: aload_2
-    //   4451: getstatic 178	alof:J	Ljava/lang/String;
-    //   4454: invokestatic 182	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   4457: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4460: ifeq +92 -> 4552
-    //   4463: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   4466: dup
-    //   4467: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   4470: astore_0
-    //   4471: aload_0
-    //   4472: astore 9
-    //   4474: aload_0
-    //   4475: astore 10
-    //   4477: aload_0
-    //   4478: aload_1
-    //   4479: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   4482: aload_0
-    //   4483: areturn
-    //   4484: aload_2
-    //   4485: getstatic 178	alof:J	Ljava/lang/String;
-    //   4488: invokestatic 182	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   4491: invokevirtual 120	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4494: ifeq +58 -> 4552
-    //   4497: new 2	com/tencent/mobileqq/data/SystemMsg
-    //   4500: dup
-    //   4501: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
-    //   4504: astore_0
-    //   4505: aload_0
-    //   4506: astore 9
-    //   4508: aload_0
-    //   4509: astore 10
-    //   4511: aload_0
-    //   4512: ldc_w 286
-    //   4515: aload_1
-    //   4516: invokestatic 291	bdqa:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   4519: invokestatic 294	bdqa:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   4522: putfield 145	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
-    //   4525: aload_0
-    //   4526: areturn
+    //   3768: aload 10
+    //   3770: astore_0
+    //   3771: aload 14
+    //   3773: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   3776: ifeq +1805 -> 5581
+    //   3779: aload 10
+    //   3781: astore_1
+    //   3782: aload 10
+    //   3784: astore_0
+    //   3785: aload 14
+    //   3787: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   3790: istore_3
+    //   3791: goto +3 -> 3794
+    //   3794: aload 10
+    //   3796: astore_1
+    //   3797: aload 10
+    //   3799: astore_0
+    //   3800: iload_3
+    //   3801: newarray byte
+    //   3803: astore 11
+    //   3805: aload 10
+    //   3807: astore_1
+    //   3808: aload 10
+    //   3810: astore_0
+    //   3811: aload 14
+    //   3813: aload 11
+    //   3815: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   3818: pop
+    //   3819: aload 10
+    //   3821: astore_1
+    //   3822: aload 10
+    //   3824: astore_0
+    //   3825: aload 11
+    //   3827: arraylength
+    //   3828: ifne +99 -> 3927
+    //   3831: aload 10
+    //   3833: astore_1
+    //   3834: aload 10
+    //   3836: astore_0
+    //   3837: new 134	java/lang/StringBuilder
+    //   3840: dup
+    //   3841: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   3844: astore 11
+    //   3846: aload 10
+    //   3848: astore_1
+    //   3849: aload 10
+    //   3851: astore_0
+    //   3852: aload 11
+    //   3854: ldc 149
+    //   3856: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3859: pop
+    //   3860: aload 10
+    //   3862: astore_1
+    //   3863: aload 10
+    //   3865: astore_0
+    //   3866: aload 11
+    //   3868: aload_2
+    //   3869: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3872: pop
+    //   3873: aload 10
+    //   3875: astore_1
+    //   3876: aload 10
+    //   3878: astore_0
+    //   3879: aload 11
+    //   3881: ldc 149
+    //   3883: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3886: pop
+    //   3887: aload 10
+    //   3889: astore_1
+    //   3890: aload 10
+    //   3892: astore_0
+    //   3893: aload 11
+    //   3895: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3898: ldc_w 280
+    //   3901: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   3904: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3907: pop
+    //   3908: aload 10
+    //   3910: astore_1
+    //   3911: aload 10
+    //   3913: astore_0
+    //   3914: aload 10
+    //   3916: aload 11
+    //   3918: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3921: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   3924: goto +108 -> 4032
+    //   3927: aload 10
+    //   3929: astore_1
+    //   3930: aload 10
+    //   3932: astore_0
+    //   3933: aload 11
+    //   3935: invokestatic 197	com/tencent/mobileqq/service/message/EmotionCodecUtils:a	([B)[B
+    //   3938: pop
+    //   3939: aload 10
+    //   3941: astore_1
+    //   3942: aload 10
+    //   3944: astore_0
+    //   3945: new 134	java/lang/StringBuilder
+    //   3948: dup
+    //   3949: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   3952: astore 11
+    //   3954: aload 10
+    //   3956: astore_1
+    //   3957: aload 10
+    //   3959: astore_0
+    //   3960: aload 11
+    //   3962: ldc 149
+    //   3964: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3967: pop
+    //   3968: aload 10
+    //   3970: astore_1
+    //   3971: aload 10
+    //   3973: astore_0
+    //   3974: aload 11
+    //   3976: aload_2
+    //   3977: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3980: pop
+    //   3981: aload 10
+    //   3983: astore_1
+    //   3984: aload 10
+    //   3986: astore_0
+    //   3987: aload 11
+    //   3989: ldc 149
+    //   3991: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3994: pop
+    //   3995: aload 10
+    //   3997: astore_1
+    //   3998: aload 10
+    //   4000: astore_0
+    //   4001: aload 11
+    //   4003: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4006: ldc_w 280
+    //   4009: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4012: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4015: pop
+    //   4016: aload 10
+    //   4018: astore_1
+    //   4019: aload 10
+    //   4021: astore_0
+    //   4022: aload 10
+    //   4024: aload 11
+    //   4026: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4029: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   4032: aload 10
+    //   4034: astore_1
+    //   4035: aload 10
+    //   4037: astore_0
+    //   4038: aload 14
+    //   4040: ldc2_w 215
+    //   4043: invokevirtual 206	java/io/DataInputStream:skip	(J)J
+    //   4046: pop2
+    //   4047: aload 10
+    //   4049: astore_1
+    //   4050: aload 10
+    //   4052: astore_0
+    //   4053: aload 14
+    //   4055: aload 14
+    //   4057: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   4060: newarray byte
+    //   4062: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   4065: pop
+    //   4066: aload 10
+    //   4068: astore_1
+    //   4069: aload 10
+    //   4071: astore_0
+    //   4072: aload 14
+    //   4074: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   4077: istore 4
+    //   4079: iload 6
+    //   4081: istore_3
+    //   4082: aload 10
+    //   4084: astore_0
+    //   4085: iload_3
+    //   4086: iload 4
+    //   4088: if_icmpge +179 -> 4267
+    //   4091: aload 10
+    //   4093: astore_1
+    //   4094: aload 10
+    //   4096: astore_0
+    //   4097: aload 14
+    //   4099: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   4102: istore 5
+    //   4104: aload 10
+    //   4106: astore_1
+    //   4107: aload 10
+    //   4109: astore_0
+    //   4110: aload 14
+    //   4112: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   4115: newarray byte
+    //   4117: astore_2
+    //   4118: aload 10
+    //   4120: astore_1
+    //   4121: aload 10
+    //   4123: astore_0
+    //   4124: aload 14
+    //   4126: aload_2
+    //   4127: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   4130: pop
+    //   4131: iload 5
+    //   4133: sipush 1002
+    //   4136: if_icmpne +61 -> 4197
+    //   4139: aload 10
+    //   4141: astore_1
+    //   4142: aload 10
+    //   4144: astore_0
+    //   4145: new 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   4148: dup
+    //   4149: invokespecial 266	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
+    //   4152: astore 11
+    //   4154: aload 10
+    //   4156: astore_0
+    //   4157: aload 11
+    //   4159: aload_2
+    //   4160: invokevirtual 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4163: checkcast 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   4166: astore_2
+    //   4167: goto +5 -> 4172
+    //   4170: aconst_null
+    //   4171: astore_2
+    //   4172: aload_2
+    //   4173: ifnull +87 -> 4260
+    //   4176: aload 10
+    //   4178: astore_1
+    //   4179: aload 10
+    //   4181: astore_0
+    //   4182: aload 10
+    //   4184: aload_2
+    //   4185: getfield 270	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   4188: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   4191: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
+    //   4194: goto +66 -> 4260
+    //   4197: iload 5
+    //   4199: sipush 1003
+    //   4202: if_icmpne +58 -> 4260
+    //   4205: aload 10
+    //   4207: astore_1
+    //   4208: aload 10
+    //   4210: astore_0
+    //   4211: new 274	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo
+    //   4214: dup
+    //   4215: invokespecial 275	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:<init>	()V
+    //   4218: astore 11
+    //   4220: aload 10
+    //   4222: astore_0
+    //   4223: aload 11
+    //   4225: aload_2
+    //   4226: invokevirtual 276	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4229: checkcast 274	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo
+    //   4232: astore_2
+    //   4233: goto +5 -> 4238
+    //   4236: aconst_null
+    //   4237: astore_2
+    //   4238: aload_2
+    //   4239: ifnull +21 -> 4260
+    //   4242: aload 10
+    //   4244: astore_1
+    //   4245: aload 10
+    //   4247: astore_0
+    //   4248: aload 10
+    //   4250: aload_2
+    //   4251: getfield 279	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendHelloInfo:str_source_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   4254: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   4257: putfield 43	com/tencent/mobileqq/data/SystemMsg:strGameName	Ljava/lang/String;
+    //   4260: iload_3
+    //   4261: iconst_1
+    //   4262: iadd
+    //   4263: istore_3
+    //   4264: goto -182 -> 4082
+    //   4267: aload_0
+    //   4268: areturn
+    //   4269: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   4272: dup
+    //   4273: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   4276: astore 10
+    //   4278: aload 10
+    //   4280: astore_1
+    //   4281: aload 10
+    //   4283: astore_0
+    //   4284: aload 10
+    //   4286: aload 14
+    //   4288: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   4291: putfield 188	com/tencent/mobileqq/data/SystemMsg:cVession	I
+    //   4294: aload 10
+    //   4296: astore_1
+    //   4297: aload 10
+    //   4299: astore_0
+    //   4300: aload 14
+    //   4302: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   4305: newarray byte
+    //   4307: astore 11
+    //   4309: aload 10
+    //   4311: astore_1
+    //   4312: aload 10
+    //   4314: astore_0
+    //   4315: aload 14
+    //   4317: aload 11
+    //   4319: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   4322: pop
+    //   4323: aload 10
+    //   4325: astore_1
+    //   4326: aload 10
+    //   4328: astore_0
+    //   4329: new 117	java/lang/String
+    //   4332: dup
+    //   4333: aload 11
+    //   4335: invokestatic 197	com/tencent/mobileqq/service/message/EmotionCodecUtils:a	([B)[B
+    //   4338: invokespecial 272	java/lang/String:<init>	([B)V
+    //   4341: invokevirtual 155	java/lang/String:trim	()Ljava/lang/String;
+    //   4344: astore 12
+    //   4346: aload 12
+    //   4348: ifnull +23 -> 4371
+    //   4351: aload 12
+    //   4353: astore 11
+    //   4355: aload 10
+    //   4357: astore_1
+    //   4358: aload 10
+    //   4360: astore_0
+    //   4361: ldc 39
+    //   4363: aload 12
+    //   4365: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4368: ifeq +19 -> 4387
+    //   4371: aload 10
+    //   4373: astore_1
+    //   4374: aload 10
+    //   4376: astore_0
+    //   4377: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4380: ldc 128
+    //   4382: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4385: astore 11
+    //   4387: aload 10
+    //   4389: astore_1
+    //   4390: aload 10
+    //   4392: astore_0
+    //   4393: aload 10
+    //   4395: aload 11
+    //   4397: putfield 84	com/tencent/mobileqq/data/SystemMsg:sMsg	Ljava/lang/String;
+    //   4400: aload 10
+    //   4402: astore_1
+    //   4403: aload 10
+    //   4405: astore_0
+    //   4406: aload 14
+    //   4408: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   4411: ifeq +1175 -> 5586
+    //   4414: aload 10
+    //   4416: astore_1
+    //   4417: aload 10
+    //   4419: astore_0
+    //   4420: aload 14
+    //   4422: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   4425: istore_3
+    //   4426: goto +3 -> 4429
+    //   4429: aload 10
+    //   4431: astore_1
+    //   4432: aload 10
+    //   4434: astore_0
+    //   4435: iload_3
+    //   4436: newarray byte
+    //   4438: astore 11
+    //   4440: aload 10
+    //   4442: astore_1
+    //   4443: aload 10
+    //   4445: astore_0
+    //   4446: aload 14
+    //   4448: aload 11
+    //   4450: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   4453: pop
+    //   4454: aload 10
+    //   4456: astore_1
+    //   4457: aload 10
+    //   4459: astore_0
+    //   4460: aload 11
+    //   4462: arraylength
+    //   4463: ifne +99 -> 4562
+    //   4466: aload 10
+    //   4468: astore_1
+    //   4469: aload 10
+    //   4471: astore_0
+    //   4472: new 134	java/lang/StringBuilder
+    //   4475: dup
+    //   4476: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   4479: astore 11
+    //   4481: aload 10
+    //   4483: astore_1
+    //   4484: aload 10
+    //   4486: astore_0
+    //   4487: aload 11
+    //   4489: ldc 149
+    //   4491: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4494: pop
+    //   4495: aload 10
+    //   4497: astore_1
+    //   4498: aload 10
+    //   4500: astore_0
+    //   4501: aload 11
+    //   4503: aload_2
+    //   4504: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4507: pop
+    //   4508: aload 10
+    //   4510: astore_1
+    //   4511: aload 10
+    //   4513: astore_0
+    //   4514: aload 11
+    //   4516: ldc 149
+    //   4518: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4521: pop
+    //   4522: aload 10
+    //   4524: astore_1
+    //   4525: aload 10
     //   4527: astore_0
-    //   4528: aconst_null
-    //   4529: astore 10
-    //   4531: goto -4066 -> 465
-    //   4534: astore_1
-    //   4535: aload_0
-    //   4536: astore 10
-    //   4538: aload_1
-    //   4539: astore_0
-    //   4540: goto -4075 -> 465
-    //   4543: astore_1
-    //   4544: aconst_null
-    //   4545: astore_0
-    //   4546: goto -4136 -> 410
-    //   4549: astore_1
-    //   4550: aload_0
-    //   4551: areturn
-    //   4552: aconst_null
-    //   4553: areturn
-    //   4554: aload_1
-    //   4555: areturn
-    //   4556: goto -1924 -> 2632
-    //   4559: iload_3
-    //   4560: iconst_1
-    //   4561: iadd
-    //   4562: istore_3
-    //   4563: goto -1700 -> 2863
-    //   4566: iconst_0
-    //   4567: istore_3
-    //   4568: goto -1798 -> 2770
-    //   4571: astore_1
-    //   4572: goto -4162 -> 410
-    //   4575: astore_1
-    //   4576: aconst_null
-    //   4577: astore_1
-    //   4578: goto -1662 -> 2916
-    //   4581: astore_1
-    //   4582: aload_0
-    //   4583: astore 10
-    //   4585: aload_1
-    //   4586: astore_0
-    //   4587: goto -4122 -> 465
-    //   4590: astore_1
-    //   4591: aconst_null
-    //   4592: astore_1
-    //   4593: goto -1565 -> 3028
-    //   4596: iload_3
-    //   4597: iconst_1
-    //   4598: iadd
-    //   4599: istore_3
-    //   4600: goto -1378 -> 3222
-    //   4603: iconst_0
-    //   4604: istore_3
-    //   4605: goto -1471 -> 3134
-    //   4608: astore_1
-    //   4609: goto -4199 -> 410
-    //   4612: astore_1
-    //   4613: aconst_null
-    //   4614: astore_1
-    //   4615: goto -1340 -> 3275
-    //   4618: iload_3
-    //   4619: iconst_1
-    //   4620: iadd
-    //   4621: istore_3
-    //   4622: goto -1089 -> 3533
-    //   4625: iconst_0
-    //   4626: istore_3
-    //   4627: goto -1182 -> 3445
-    //   4630: astore_1
-    //   4631: goto -4221 -> 410
-    //   4634: astore_1
-    //   4635: aconst_null
-    //   4636: astore_1
-    //   4637: goto -1051 -> 3586
-    //   4640: iload_3
-    //   4641: iconst_1
-    //   4642: iadd
-    //   4643: istore_3
-    //   4644: goto -744 -> 3900
-    //   4647: iconst_0
-    //   4648: istore_3
-    //   4649: goto -843 -> 3806
-    //   4652: iload_3
-    //   4653: iconst_1
-    //   4654: iadd
-    //   4655: istore_3
-    //   4656: goto -406 -> 4250
-    //   4659: iconst_0
-    //   4660: istore_3
-    //   4661: goto -499 -> 4162
-    //   4664: astore_0
-    //   4665: aload_1
-    //   4666: areturn
-    //   4667: astore_0
-    //   4668: aconst_null
-    //   4669: astore_0
-    //   4670: goto -367 -> 4303
+    //   4528: aload 11
+    //   4530: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4533: ldc_w 281
+    //   4536: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4539: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4542: pop
+    //   4543: aload 10
+    //   4545: astore_1
+    //   4546: aload 10
+    //   4548: astore_0
+    //   4549: aload 10
+    //   4551: aload 11
+    //   4553: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4556: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   4559: goto +108 -> 4667
+    //   4562: aload 10
+    //   4564: astore_1
+    //   4565: aload 10
+    //   4567: astore_0
+    //   4568: aload 11
+    //   4570: invokestatic 197	com/tencent/mobileqq/service/message/EmotionCodecUtils:a	([B)[B
+    //   4573: pop
+    //   4574: aload 10
+    //   4576: astore_1
+    //   4577: aload 10
+    //   4579: astore_0
+    //   4580: new 134	java/lang/StringBuilder
+    //   4583: dup
+    //   4584: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   4587: astore 11
+    //   4589: aload 10
+    //   4591: astore_1
+    //   4592: aload 10
+    //   4594: astore_0
+    //   4595: aload 11
+    //   4597: ldc 149
+    //   4599: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4602: pop
+    //   4603: aload 10
+    //   4605: astore_1
+    //   4606: aload 10
+    //   4608: astore_0
+    //   4609: aload 11
+    //   4611: aload_2
+    //   4612: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4615: pop
+    //   4616: aload 10
+    //   4618: astore_1
+    //   4619: aload 10
+    //   4621: astore_0
+    //   4622: aload 11
+    //   4624: ldc 149
+    //   4626: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4629: pop
+    //   4630: aload 10
+    //   4632: astore_1
+    //   4633: aload 10
+    //   4635: astore_0
+    //   4636: aload 11
+    //   4638: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4641: ldc_w 281
+    //   4644: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4647: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4650: pop
+    //   4651: aload 10
+    //   4653: astore_1
+    //   4654: aload 10
+    //   4656: astore_0
+    //   4657: aload 10
+    //   4659: aload 11
+    //   4661: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4664: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   4667: aload 10
+    //   4669: astore_1
+    //   4670: aload 10
+    //   4672: astore_0
+    //   4673: aload 14
+    //   4675: ldc2_w 215
+    //   4678: invokevirtual 206	java/io/DataInputStream:skip	(J)J
+    //   4681: pop2
+    //   4682: aload 10
+    //   4684: astore_1
+    //   4685: aload 10
+    //   4687: astore_0
+    //   4688: aload 14
+    //   4690: aload 14
+    //   4692: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   4695: newarray byte
+    //   4697: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   4700: pop
+    //   4701: aload 10
+    //   4703: astore_1
+    //   4704: aload 10
+    //   4706: astore_0
+    //   4707: aload 14
+    //   4709: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   4712: pop
+    //   4713: aload 10
+    //   4715: astore_1
+    //   4716: aload 10
+    //   4718: astore_0
+    //   4719: aload 14
+    //   4721: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   4724: istore 4
+    //   4726: iload 7
+    //   4728: istore_3
+    //   4729: aload 10
+    //   4731: astore_0
+    //   4732: iload_3
+    //   4733: iload 4
+    //   4735: if_icmpge -468 -> 4267
+    //   4738: aload 10
+    //   4740: astore_1
+    //   4741: aload 10
+    //   4743: astore_0
+    //   4744: aload 14
+    //   4746: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   4749: istore 5
+    //   4751: aload 10
+    //   4753: astore_1
+    //   4754: aload 10
+    //   4756: astore_0
+    //   4757: aload 14
+    //   4759: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   4762: newarray byte
+    //   4764: astore_2
+    //   4765: aload 10
+    //   4767: astore_1
+    //   4768: aload 10
+    //   4770: astore_0
+    //   4771: aload 14
+    //   4773: aload_2
+    //   4774: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   4777: pop
+    //   4778: iload 5
+    //   4780: sipush 1002
+    //   4783: if_icmpne +58 -> 4841
+    //   4786: aload 10
+    //   4788: astore_1
+    //   4789: aload 10
+    //   4791: astore_0
+    //   4792: new 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   4795: dup
+    //   4796: invokespecial 266	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
+    //   4799: astore 11
+    //   4801: aload 10
+    //   4803: astore_0
+    //   4804: aload 11
+    //   4806: aload_2
+    //   4807: invokevirtual 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   4810: checkcast 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   4813: astore_2
+    //   4814: goto +5 -> 4819
+    //   4817: aconst_null
+    //   4818: astore_2
+    //   4819: aload_2
+    //   4820: ifnull +21 -> 4841
+    //   4823: aload 10
+    //   4825: astore_1
+    //   4826: aload 10
+    //   4828: astore_0
+    //   4829: aload 10
+    //   4831: aload_2
+    //   4832: getfield 270	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   4835: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   4838: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
+    //   4841: iload_3
+    //   4842: iconst_1
+    //   4843: iadd
+    //   4844: istore_3
+    //   4845: goto -116 -> 4729
+    //   4848: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   4851: dup
+    //   4852: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   4855: astore 10
+    //   4857: aload 10
+    //   4859: astore_1
+    //   4860: aload 10
+    //   4862: astore_0
+    //   4863: new 134	java/lang/StringBuilder
+    //   4866: dup
+    //   4867: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   4870: astore 11
+    //   4872: aload 10
+    //   4874: astore_1
+    //   4875: aload 10
+    //   4877: astore_0
+    //   4878: aload 11
+    //   4880: ldc 149
+    //   4882: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4885: pop
+    //   4886: aload 10
+    //   4888: astore_1
+    //   4889: aload 10
+    //   4891: astore_0
+    //   4892: aload 11
+    //   4894: aload_2
+    //   4895: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4898: pop
+    //   4899: aload 10
+    //   4901: astore_1
+    //   4902: aload 10
+    //   4904: astore_0
+    //   4905: aload 11
+    //   4907: ldc 149
+    //   4909: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4912: pop
+    //   4913: aload 10
+    //   4915: astore_1
+    //   4916: aload 10
+    //   4918: astore_0
+    //   4919: aload 11
+    //   4921: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4924: ldc_w 282
+    //   4927: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   4930: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4933: pop
+    //   4934: aload 10
+    //   4936: astore_1
+    //   4937: aload 10
+    //   4939: astore_0
+    //   4940: aload 10
+    //   4942: aload 11
+    //   4944: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   4947: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   4950: aload 10
+    //   4952: astore_0
+    //   4953: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   4956: dup
+    //   4957: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   4960: astore_1
+    //   4961: aload_1
+    //   4962: aload 14
+    //   4964: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   4967: putfield 188	com/tencent/mobileqq/data/SystemMsg:cVession	I
+    //   4970: aload 14
+    //   4972: aload 14
+    //   4974: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   4977: newarray byte
+    //   4979: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   4982: pop
+    //   4983: aload_1
+    //   4984: aload 14
+    //   4986: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   4989: putfield 211	com/tencent/mobileqq/data/SystemMsg:wSourceID	I
+    //   4992: aload_1
+    //   4993: aload 14
+    //   4995: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   4998: putfield 213	com/tencent/mobileqq/data/SystemMsg:wSourceSubID	I
+    //   5001: aload 14
+    //   5003: aload 14
+    //   5005: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   5008: i2l
+    //   5009: invokevirtual 206	java/io/DataInputStream:skip	(J)J
+    //   5012: pop2
+    //   5013: aload 14
+    //   5015: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   5018: ifeq +573 -> 5591
+    //   5021: aload 14
+    //   5023: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   5026: istore_3
+    //   5027: goto +3 -> 5030
+    //   5030: iload_3
+    //   5031: newarray byte
+    //   5033: astore_0
+    //   5034: aload 14
+    //   5036: aload_0
+    //   5037: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   5040: pop
+    //   5041: aload_0
+    //   5042: arraylength
+    //   5043: ifne +56 -> 5099
+    //   5046: new 134	java/lang/StringBuilder
+    //   5049: dup
+    //   5050: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   5053: astore_0
+    //   5054: aload_0
+    //   5055: ldc 149
+    //   5057: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5060: pop
+    //   5061: aload_0
+    //   5062: aload_2
+    //   5063: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5066: pop
+    //   5067: aload_0
+    //   5068: ldc 149
+    //   5070: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5073: pop
+    //   5074: aload_0
+    //   5075: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   5078: ldc_w 282
+    //   5081: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   5084: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5087: pop
+    //   5088: aload_1
+    //   5089: aload_0
+    //   5090: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5093: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   5096: goto +58 -> 5154
+    //   5099: aload_0
+    //   5100: invokestatic 197	com/tencent/mobileqq/service/message/EmotionCodecUtils:a	([B)[B
+    //   5103: pop
+    //   5104: new 134	java/lang/StringBuilder
+    //   5107: dup
+    //   5108: invokespecial 135	java/lang/StringBuilder:<init>	()V
+    //   5111: astore_0
+    //   5112: aload_0
+    //   5113: ldc 149
+    //   5115: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5118: pop
+    //   5119: aload_0
+    //   5120: aload_2
+    //   5121: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5124: pop
+    //   5125: aload_0
+    //   5126: ldc 149
+    //   5128: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5131: pop
+    //   5132: aload_0
+    //   5133: invokestatic 127	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   5136: ldc_w 282
+    //   5139: invokevirtual 132	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   5142: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5145: pop
+    //   5146: aload_1
+    //   5147: aload_0
+    //   5148: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5151: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   5154: aload 14
+    //   5156: ldc2_w 215
+    //   5159: invokevirtual 206	java/io/DataInputStream:skip	(J)J
+    //   5162: pop2
+    //   5163: aload 14
+    //   5165: aload 14
+    //   5167: invokevirtual 209	java/io/DataInputStream:readUnsignedShort	()I
+    //   5170: newarray byte
+    //   5172: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   5175: pop
+    //   5176: aload 14
+    //   5178: invokevirtual 186	java/io/DataInputStream:readUnsignedByte	()I
+    //   5181: istore 4
+    //   5183: iload 8
+    //   5185: istore_3
+    //   5186: aload_1
+    //   5187: astore_0
+    //   5188: iload_3
+    //   5189: iload 4
+    //   5191: if_icmpge +158 -> 5349
+    //   5194: aload 14
+    //   5196: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   5199: istore 5
+    //   5201: aload 14
+    //   5203: invokevirtual 220	java/io/DataInputStream:readShort	()S
+    //   5206: newarray byte
+    //   5208: astore_0
+    //   5209: aload 14
+    //   5211: aload_0
+    //   5212: invokevirtual 192	java/io/DataInputStream:read	([B)I
+    //   5215: pop
+    //   5216: iload 5
+    //   5218: sipush 1000
+    //   5221: if_icmpne +65 -> 5286
+    //   5224: new 222	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo
+    //   5227: dup
+    //   5228: invokespecial 223	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:<init>	()V
+    //   5231: astore_2
+    //   5232: aload_2
+    //   5233: aload_0
+    //   5234: invokevirtual 227	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   5237: checkcast 222	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo
+    //   5240: astore_0
+    //   5241: goto +5 -> 5246
+    //   5244: aconst_null
+    //   5245: astore_0
+    //   5246: aload_0
+    //   5247: ifnull +84 -> 5331
+    //   5250: aload_1
+    //   5251: aload_0
+    //   5252: getfield 231	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:str_group_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5255: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5258: putfield 238	com/tencent/mobileqq/data/SystemMsg:strGroupName	Ljava/lang/String;
+    //   5261: aload_1
+    //   5262: aload_0
+    //   5263: getfield 241	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:str_group_nick	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5266: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5269: putfield 243	com/tencent/mobileqq/data/SystemMsg:strGroupNickName	Ljava/lang/String;
+    //   5272: aload_1
+    //   5273: aload_0
+    //   5274: getfield 247	tencent/im/s2c/frdsysmsg/FrdSysMsg$GroupInfo:uint64_group_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   5277: invokevirtual 252	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   5280: putfield 254	com/tencent/mobileqq/data/SystemMsg:strGroupUin	J
+    //   5283: goto +48 -> 5331
+    //   5286: iload 5
+    //   5288: sipush 1002
+    //   5291: if_icmpne +40 -> 5331
+    //   5294: new 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   5297: dup
+    //   5298: invokespecial 266	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:<init>	()V
+    //   5301: astore_2
+    //   5302: aload_2
+    //   5303: aload_0
+    //   5304: invokevirtual 267	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   5307: checkcast 265	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo
+    //   5310: astore_0
+    //   5311: goto +5 -> 5316
+    //   5314: aconst_null
+    //   5315: astore_0
+    //   5316: aload_0
+    //   5317: ifnull +14 -> 5331
+    //   5320: aload_1
+    //   5321: aload_0
+    //   5322: getfield 270	tencent/im/s2c/frdsysmsg/FrdSysMsg$FriendMiscInfo:str_fromuin_nick	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   5325: invokevirtual 236	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   5328: putfield 41	com/tencent/mobileqq/data/SystemMsg:strServerFromUinNickName	Ljava/lang/String;
+    //   5331: iload_3
+    //   5332: iconst_1
+    //   5333: iadd
+    //   5334: istore_3
+    //   5335: goto -149 -> 5186
+    //   5338: astore_2
+    //   5339: aload_1
+    //   5340: astore_0
+    //   5341: aload_2
+    //   5342: astore_1
+    //   5343: goto +131 -> 5474
+    //   5346: aload 10
+    //   5348: astore_0
+    //   5349: aload_0
+    //   5350: areturn
+    //   5351: astore_2
+    //   5352: aload_1
+    //   5353: astore_0
+    //   5354: aload_2
+    //   5355: astore_1
+    //   5356: goto +108 -> 5464
+    //   5359: astore_1
+    //   5360: goto +114 -> 5474
+    //   5363: aload 13
+    //   5365: astore 10
+    //   5367: aload_2
+    //   5368: getstatic 176	com/tencent/mobileqq/app/AppConstants:QQBROADCAST_MSG_UIN	Ljava/lang/String;
+    //   5371: invokestatic 180	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   5374: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   5377: ifeq +104 -> 5481
+    //   5380: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   5383: dup
+    //   5384: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   5387: astore 10
+    //   5389: aload 10
+    //   5391: astore_0
+    //   5392: aload 10
+    //   5394: astore_2
+    //   5395: aload 10
+    //   5397: aload_1
+    //   5398: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   5401: aload 10
+    //   5403: astore_1
+    //   5404: goto -2993 -> 2411
+    //   5407: aload 13
+    //   5409: astore 10
+    //   5411: aload_2
+    //   5412: getstatic 176	com/tencent/mobileqq/app/AppConstants:QQBROADCAST_MSG_UIN	Ljava/lang/String;
+    //   5415: invokestatic 180	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   5418: invokevirtual 121	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   5421: ifeq +60 -> 5481
+    //   5424: new 2	com/tencent/mobileqq/data/SystemMsg
+    //   5427: dup
+    //   5428: invokespecial 61	com/tencent/mobileqq/data/SystemMsg:<init>	()V
+    //   5431: astore 10
+    //   5433: aload 10
+    //   5435: astore_0
+    //   5436: aload 10
+    //   5438: astore_2
+    //   5439: aload 10
+    //   5441: ldc_w 284
+    //   5444: aload_1
+    //   5445: invokestatic 290	com/tencent/mobileqq/utils/httputils/PkgTools:getParaVal	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   5448: invokestatic 294	com/tencent/mobileqq/utils/httputils/PkgTools:decodeCgi	(Ljava/lang/String;)Ljava/lang/String;
+    //   5451: putfield 147	com/tencent/mobileqq/data/SystemMsg:message	Ljava/lang/String;
+    //   5454: aload 10
+    //   5456: astore_1
+    //   5457: goto -3046 -> 2411
+    //   5460: astore_1
+    //   5461: aload 11
+    //   5463: astore_0
+    //   5464: aload_1
+    //   5465: invokevirtual 297	java/lang/Exception:printStackTrace	()V
+    //   5468: aload_0
+    //   5469: areturn
+    //   5470: astore_1
+    //   5471: aload 12
+    //   5473: astore_0
+    //   5474: aload_1
+    //   5475: invokevirtual 298	java/io/IOException:printStackTrace	()V
+    //   5478: aload_0
+    //   5479: astore 10
+    //   5481: aload 10
+    //   5483: areturn
+    //   5484: astore_0
+    //   5485: goto -2502 -> 2983
+    //   5488: astore_0
+    //   5489: goto -2404 -> 3085
+    //   5492: astore_0
+    //   5493: goto -2342 -> 3151
+    //   5496: astore_0
+    //   5497: goto -1866 -> 3631
+    //   5500: astore_0
+    //   5501: goto -1804 -> 3697
+    //   5504: astore_0
+    //   5505: goto -1335 -> 4170
+    //   5508: astore_0
+    //   5509: goto -1273 -> 4236
+    //   5512: astore_0
+    //   5513: goto -696 -> 4817
+    //   5516: astore_0
+    //   5517: goto -171 -> 5346
+    //   5520: astore_0
+    //   5521: aload_1
+    //   5522: astore_0
+    //   5523: goto -174 -> 5349
+    //   5526: astore_0
+    //   5527: goto -283 -> 5244
+    //   5530: astore_0
+    //   5531: goto -217 -> 5314
+    //   5534: iload_3
+    //   5535: tableswitch	default:+33 -> 5568, 187:+-3112->2423, 188:+-2353->3182, 189:+-1807->3728, 190:+-1266->4269, 191:+-687->4848
+    //   5569: <illegal opcode>
+    //   5570: l2i
+    //   5571: iconst_0
+    //   5572: istore_3
+    //   5573: goto -2976 -> 2597
+    //   5576: iconst_0
+    //   5577: istore_3
+    //   5578: goto -2330 -> 3248
+    //   5581: iconst_0
+    //   5582: istore_3
+    //   5583: goto -1789 -> 3794
+    //   5586: iconst_0
+    //   5587: istore_3
+    //   5588: goto -1159 -> 4429
+    //   5591: iconst_0
+    //   5592: istore_3
+    //   5593: goto -563 -> 5030
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	4673	0	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
-    //   0	4673	1	paramString1	String
-    //   0	4673	2	paramString2	String
-    //   0	4673	3	paramInt	int
-    //   13	4241	4	i	int
-    //   1	4396	5	j	int
-    //   4	3527	6	k	int
-    //   7	3891	7	m	int
-    //   10	4238	8	n	int
-    //   40	4467	9	localObject1	java.lang.Object
-    //   43	4541	10	localObject2	java.lang.Object
-    //   188	4084	11	localObject3	java.lang.Object
-    //   205	435	12	str1	String
-    //   222	2035	13	str2	String
+    //   0	5596	0	paramAppInterface	com.tencent.common.app.AppInterface
+    //   0	5596	1	paramString1	String
+    //   0	5596	2	paramString2	String
+    //   0	5596	3	paramInt	int
+    //   2337	2855	4	i	int
+    //   2325	2967	5	j	int
+    //   2328	1752	6	k	int
+    //   2331	2396	7	m	int
+    //   2334	2850	8	n	int
+    //   21	3	9	bool	boolean
+    //   11	5471	10	localObject1	Object
+    //   7	5455	11	localObject2	Object
+    //   1	5471	12	str	String
+    //   4	5404	13	localObject3	Object
+    //   2295	2915	14	localDataInputStream	java.io.DataInputStream
     // Exception table:
     //   from	to	target	type
-    //   45	53	406	java/io/IOException
-    //   59	67	406	java/io/IOException
-    //   73	82	406	java/io/IOException
-    //   88	97	406	java/io/IOException
-    //   103	112	406	java/io/IOException
-    //   118	127	406	java/io/IOException
-    //   133	142	406	java/io/IOException
-    //   148	157	406	java/io/IOException
-    //   163	173	406	java/io/IOException
-    //   179	190	406	java/io/IOException
-    //   196	207	406	java/io/IOException
-    //   213	224	406	java/io/IOException
-    //   338	345	406	java/io/IOException
-    //   351	363	406	java/io/IOException
-    //   369	404	406	java/io/IOException
-    //   422	462	406	java/io/IOException
-    //   478	485	406	java/io/IOException
-    //   491	506	406	java/io/IOException
-    //   512	521	406	java/io/IOException
-    //   527	532	406	java/io/IOException
-    //   538	545	406	java/io/IOException
-    //   551	563	406	java/io/IOException
-    //   569	604	406	java/io/IOException
-    //   612	617	406	java/io/IOException
-    //   626	666	406	java/io/IOException
-    //   674	681	406	java/io/IOException
-    //   687	699	406	java/io/IOException
-    //   705	714	406	java/io/IOException
-    //   720	725	406	java/io/IOException
-    //   731	738	406	java/io/IOException
-    //   744	755	406	java/io/IOException
-    //   761	768	406	java/io/IOException
-    //   774	786	406	java/io/IOException
-    //   792	831	406	java/io/IOException
-    //   839	844	406	java/io/IOException
-    //   853	897	406	java/io/IOException
-    //   905	912	406	java/io/IOException
-    //   918	930	406	java/io/IOException
-    //   936	985	406	java/io/IOException
-    //   993	1047	406	java/io/IOException
-    //   1055	1062	406	java/io/IOException
-    //   1068	1080	406	java/io/IOException
-    //   1086	1095	406	java/io/IOException
-    //   1101	1106	406	java/io/IOException
-    //   1112	1120	406	java/io/IOException
-    //   1126	1134	406	java/io/IOException
-    //   1140	1147	406	java/io/IOException
-    //   1153	1164	406	java/io/IOException
-    //   1170	1177	406	java/io/IOException
-    //   1183	1195	406	java/io/IOException
-    //   1201	1240	406	java/io/IOException
-    //   1248	1253	406	java/io/IOException
-    //   1262	1306	406	java/io/IOException
-    //   1314	1321	406	java/io/IOException
-    //   1327	1339	406	java/io/IOException
-    //   1345	1394	406	java/io/IOException
-    //   1402	1456	406	java/io/IOException
-    //   1464	1472	406	java/io/IOException
-    //   1478	1485	406	java/io/IOException
-    //   1491	1502	406	java/io/IOException
-    //   1508	1515	406	java/io/IOException
-    //   1521	1533	406	java/io/IOException
-    //   1539	1578	406	java/io/IOException
-    //   1586	1630	406	java/io/IOException
-    //   1638	1645	406	java/io/IOException
-    //   1651	1663	406	java/io/IOException
-    //   1669	1718	406	java/io/IOException
-    //   1726	1780	406	java/io/IOException
-    //   1788	1796	406	java/io/IOException
-    //   1802	1809	406	java/io/IOException
-    //   1815	1826	406	java/io/IOException
-    //   1832	1839	406	java/io/IOException
-    //   1845	1857	406	java/io/IOException
-    //   1863	1902	406	java/io/IOException
-    //   1910	1954	406	java/io/IOException
-    //   1962	1969	406	java/io/IOException
-    //   1975	1987	406	java/io/IOException
-    //   1993	2042	406	java/io/IOException
-    //   2050	2104	406	java/io/IOException
-    //   2112	2120	406	java/io/IOException
-    //   2126	2133	406	java/io/IOException
-    //   2139	2150	406	java/io/IOException
-    //   2156	2163	406	java/io/IOException
-    //   2169	2181	406	java/io/IOException
-    //   2187	2226	406	java/io/IOException
-    //   2232	2283	406	java/io/IOException
-    //   2291	2335	406	java/io/IOException
-    //   2344	2351	406	java/io/IOException
-    //   2357	2369	406	java/io/IOException
-    //   2375	2424	406	java/io/IOException
-    //   2433	2487	406	java/io/IOException
-    //   2659	2665	406	java/io/IOException
-    //   4045	4085	406	java/io/IOException
-    //   4088	4096	406	java/io/IOException
-    //   4477	4482	406	java/io/IOException
-    //   4511	4525	406	java/io/IOException
-    //   45	53	464	java/lang/Exception
-    //   59	67	464	java/lang/Exception
-    //   73	82	464	java/lang/Exception
-    //   88	97	464	java/lang/Exception
-    //   103	112	464	java/lang/Exception
-    //   118	127	464	java/lang/Exception
-    //   133	142	464	java/lang/Exception
-    //   148	157	464	java/lang/Exception
-    //   163	173	464	java/lang/Exception
-    //   179	190	464	java/lang/Exception
-    //   196	207	464	java/lang/Exception
-    //   213	224	464	java/lang/Exception
-    //   338	345	464	java/lang/Exception
-    //   351	363	464	java/lang/Exception
-    //   369	404	464	java/lang/Exception
-    //   422	462	464	java/lang/Exception
-    //   478	485	464	java/lang/Exception
-    //   491	506	464	java/lang/Exception
-    //   512	521	464	java/lang/Exception
-    //   527	532	464	java/lang/Exception
-    //   538	545	464	java/lang/Exception
-    //   551	563	464	java/lang/Exception
-    //   569	604	464	java/lang/Exception
-    //   612	617	464	java/lang/Exception
-    //   626	666	464	java/lang/Exception
-    //   674	681	464	java/lang/Exception
-    //   687	699	464	java/lang/Exception
-    //   705	714	464	java/lang/Exception
-    //   720	725	464	java/lang/Exception
-    //   731	738	464	java/lang/Exception
-    //   744	755	464	java/lang/Exception
-    //   761	768	464	java/lang/Exception
-    //   774	786	464	java/lang/Exception
-    //   792	831	464	java/lang/Exception
-    //   839	844	464	java/lang/Exception
-    //   853	897	464	java/lang/Exception
-    //   905	912	464	java/lang/Exception
-    //   918	930	464	java/lang/Exception
-    //   936	985	464	java/lang/Exception
-    //   993	1047	464	java/lang/Exception
-    //   1055	1062	464	java/lang/Exception
-    //   1068	1080	464	java/lang/Exception
-    //   1086	1095	464	java/lang/Exception
-    //   1101	1106	464	java/lang/Exception
-    //   1112	1120	464	java/lang/Exception
-    //   1126	1134	464	java/lang/Exception
-    //   1140	1147	464	java/lang/Exception
-    //   1153	1164	464	java/lang/Exception
-    //   1170	1177	464	java/lang/Exception
-    //   1183	1195	464	java/lang/Exception
-    //   1201	1240	464	java/lang/Exception
-    //   1248	1253	464	java/lang/Exception
-    //   1262	1306	464	java/lang/Exception
-    //   1314	1321	464	java/lang/Exception
-    //   1327	1339	464	java/lang/Exception
-    //   1345	1394	464	java/lang/Exception
-    //   1402	1456	464	java/lang/Exception
-    //   1464	1472	464	java/lang/Exception
-    //   1478	1485	464	java/lang/Exception
-    //   1491	1502	464	java/lang/Exception
-    //   1508	1515	464	java/lang/Exception
-    //   1521	1533	464	java/lang/Exception
-    //   1539	1578	464	java/lang/Exception
-    //   1586	1630	464	java/lang/Exception
-    //   1638	1645	464	java/lang/Exception
-    //   1651	1663	464	java/lang/Exception
-    //   1669	1718	464	java/lang/Exception
-    //   1726	1780	464	java/lang/Exception
-    //   1788	1796	464	java/lang/Exception
-    //   1802	1809	464	java/lang/Exception
-    //   1815	1826	464	java/lang/Exception
-    //   1832	1839	464	java/lang/Exception
-    //   1845	1857	464	java/lang/Exception
-    //   1863	1902	464	java/lang/Exception
-    //   1910	1954	464	java/lang/Exception
-    //   1962	1969	464	java/lang/Exception
-    //   1975	1987	464	java/lang/Exception
-    //   1993	2042	464	java/lang/Exception
-    //   2050	2104	464	java/lang/Exception
-    //   2112	2120	464	java/lang/Exception
-    //   2126	2133	464	java/lang/Exception
-    //   2139	2150	464	java/lang/Exception
-    //   2156	2163	464	java/lang/Exception
-    //   2169	2181	464	java/lang/Exception
-    //   2187	2226	464	java/lang/Exception
-    //   2232	2283	464	java/lang/Exception
-    //   2291	2335	464	java/lang/Exception
-    //   2344	2351	464	java/lang/Exception
-    //   2357	2369	464	java/lang/Exception
-    //   2375	2424	464	java/lang/Exception
-    //   2433	2487	464	java/lang/Exception
-    //   2659	2665	464	java/lang/Exception
-    //   4045	4085	464	java/lang/Exception
-    //   4477	4482	464	java/lang/Exception
-    //   4511	4525	464	java/lang/Exception
-    //   3062	3071	3089	java/lang/Exception
-    //   3105	3134	3391	java/lang/Exception
-    //   3134	3190	3391	java/lang/Exception
-    //   3190	3219	3391	java/lang/Exception
-    //   3228	3250	3391	java/lang/Exception
-    //   3258	3266	3391	java/lang/Exception
-    //   3279	3290	3391	java/lang/Exception
-    //   3293	3345	3391	java/lang/Exception
-    //   3356	3364	3391	java/lang/Exception
-    //   3377	3388	3391	java/lang/Exception
-    //   3364	3373	3400	java/lang/Exception
-    //   3416	3445	3695	java/lang/Exception
-    //   3445	3501	3695	java/lang/Exception
-    //   3501	3530	3695	java/lang/Exception
-    //   3539	3561	3695	java/lang/Exception
-    //   3569	3577	3695	java/lang/Exception
-    //   3590	3601	3695	java/lang/Exception
-    //   3604	3649	3695	java/lang/Exception
-    //   3660	3668	3695	java/lang/Exception
-    //   3681	3692	3695	java/lang/Exception
-    //   3668	3677	3704	java/lang/Exception
-    //   3720	3760	4019	java/io/IOException
-    //   3768	3778	4019	java/io/IOException
-    //   3778	3787	4019	java/io/IOException
-    //   3787	3806	4019	java/io/IOException
-    //   3806	3862	4019	java/io/IOException
-    //   3862	3897	4019	java/io/IOException
-    //   3906	3928	4019	java/io/IOException
-    //   3936	3944	4019	java/io/IOException
-    //   3944	3953	4019	java/io/IOException
-    //   3957	3968	4019	java/io/IOException
-    //   3971	4016	4019	java/io/IOException
-    //   3944	3953	4023	java/lang/Exception
-    //   4096	4162	4434	java/io/IOException
-    //   4162	4218	4434	java/io/IOException
-    //   4218	4247	4434	java/io/IOException
-    //   4256	4278	4434	java/io/IOException
-    //   4286	4294	4434	java/io/IOException
-    //   4294	4303	4434	java/io/IOException
-    //   4307	4340	4434	java/io/IOException
-    //   4343	4388	4434	java/io/IOException
-    //   4399	4407	4434	java/io/IOException
-    //   4407	4416	4434	java/io/IOException
-    //   4420	4431	4434	java/io/IOException
-    //   4407	4416	4442	java/lang/Exception
-    //   19	39	4527	java/lang/Exception
-    //   2490	2510	4527	java/lang/Exception
-    //   2632	2653	4527	java/lang/Exception
-    //   2667	2675	4527	java/lang/Exception
-    //   3097	3105	4527	java/lang/Exception
-    //   3408	3416	4527	java/lang/Exception
-    //   3712	3720	4527	java/lang/Exception
-    //   4031	4039	4527	java/lang/Exception
-    //   4450	4471	4527	java/lang/Exception
-    //   4484	4505	4527	java/lang/Exception
-    //   3720	3760	4534	java/lang/Exception
-    //   3768	3778	4534	java/lang/Exception
-    //   3778	3787	4534	java/lang/Exception
-    //   3787	3806	4534	java/lang/Exception
-    //   3806	3862	4534	java/lang/Exception
-    //   3862	3897	4534	java/lang/Exception
-    //   3906	3928	4534	java/lang/Exception
-    //   3936	3944	4534	java/lang/Exception
-    //   3957	3968	4534	java/lang/Exception
-    //   3971	4016	4534	java/lang/Exception
-    //   19	39	4543	java/io/IOException
-    //   2490	2510	4543	java/io/IOException
-    //   2632	2653	4543	java/io/IOException
-    //   2667	2675	4543	java/io/IOException
-    //   3097	3105	4543	java/io/IOException
-    //   3408	3416	4543	java/io/IOException
-    //   3712	3720	4543	java/io/IOException
-    //   4031	4039	4543	java/io/IOException
-    //   4450	4471	4543	java/io/IOException
-    //   4484	4505	4543	java/io/IOException
-    //   4088	4096	4549	java/lang/Exception
-    //   2675	2770	4571	java/io/IOException
-    //   2770	2825	4571	java/io/IOException
-    //   2825	2860	4571	java/io/IOException
-    //   2869	2891	4571	java/io/IOException
-    //   2899	2907	4571	java/io/IOException
-    //   2907	2916	4571	java/io/IOException
-    //   2920	2953	4571	java/io/IOException
-    //   2956	3000	4571	java/io/IOException
-    //   3011	3019	4571	java/io/IOException
-    //   3019	3028	4571	java/io/IOException
-    //   3032	3043	4571	java/io/IOException
-    //   3054	3062	4571	java/io/IOException
-    //   3062	3071	4571	java/io/IOException
-    //   3075	3086	4571	java/io/IOException
-    //   2907	2916	4575	java/lang/Exception
-    //   2675	2770	4581	java/lang/Exception
-    //   2770	2825	4581	java/lang/Exception
-    //   2825	2860	4581	java/lang/Exception
-    //   2869	2891	4581	java/lang/Exception
-    //   2899	2907	4581	java/lang/Exception
-    //   2920	2953	4581	java/lang/Exception
-    //   2956	3000	4581	java/lang/Exception
-    //   3011	3019	4581	java/lang/Exception
-    //   3032	3043	4581	java/lang/Exception
-    //   3054	3062	4581	java/lang/Exception
-    //   3075	3086	4581	java/lang/Exception
-    //   3019	3028	4590	java/lang/Exception
-    //   3105	3134	4608	java/io/IOException
-    //   3134	3190	4608	java/io/IOException
-    //   3190	3219	4608	java/io/IOException
-    //   3228	3250	4608	java/io/IOException
-    //   3258	3266	4608	java/io/IOException
-    //   3266	3275	4608	java/io/IOException
-    //   3279	3290	4608	java/io/IOException
-    //   3293	3345	4608	java/io/IOException
-    //   3356	3364	4608	java/io/IOException
-    //   3364	3373	4608	java/io/IOException
-    //   3377	3388	4608	java/io/IOException
-    //   3266	3275	4612	java/lang/Exception
-    //   3416	3445	4630	java/io/IOException
-    //   3445	3501	4630	java/io/IOException
-    //   3501	3530	4630	java/io/IOException
-    //   3539	3561	4630	java/io/IOException
-    //   3569	3577	4630	java/io/IOException
-    //   3577	3586	4630	java/io/IOException
-    //   3590	3601	4630	java/io/IOException
-    //   3604	3649	4630	java/io/IOException
-    //   3660	3668	4630	java/io/IOException
-    //   3668	3677	4630	java/io/IOException
-    //   3681	3692	4630	java/io/IOException
-    //   3577	3586	4634	java/lang/Exception
-    //   4096	4162	4664	java/lang/Exception
-    //   4162	4218	4664	java/lang/Exception
-    //   4218	4247	4664	java/lang/Exception
-    //   4256	4278	4664	java/lang/Exception
-    //   4286	4294	4664	java/lang/Exception
-    //   4307	4340	4664	java/lang/Exception
-    //   4343	4388	4664	java/lang/Exception
-    //   4399	4407	4664	java/lang/Exception
-    //   4420	4431	4664	java/lang/Exception
-    //   4294	4303	4667	java/lang/Exception
+    //   41	154	2261	java/lang/Exception
+    //   255	274	2261	java/lang/Exception
+    //   277	282	2261	java/lang/Exception
+    //   285	294	2261	java/lang/Exception
+    //   294	385	2261	java/lang/Exception
+    //   388	444	2261	java/lang/Exception
+    //   447	529	2261	java/lang/Exception
+    //   532	602	2261	java/lang/Exception
+    //   605	667	2261	java/lang/Exception
+    //   670	720	2261	java/lang/Exception
+    //   723	745	2261	java/lang/Exception
+    //   748	753	2261	java/lang/Exception
+    //   756	765	2261	java/lang/Exception
+    //   765	832	2261	java/lang/Exception
+    //   835	885	2261	java/lang/Exception
+    //   888	907	2261	java/lang/Exception
+    //   910	915	2261	java/lang/Exception
+    //   918	927	2261	java/lang/Exception
+    //   927	948	2261	java/lang/Exception
+    //   951	1045	2261	java/lang/Exception
+    //   1048	1104	2261	java/lang/Exception
+    //   1107	1189	2261	java/lang/Exception
+    //   1192	1262	2261	java/lang/Exception
+    //   1265	1359	2261	java/lang/Exception
+    //   1362	1418	2261	java/lang/Exception
+    //   1421	1503	2261	java/lang/Exception
+    //   1506	1576	2261	java/lang/Exception
+    //   1579	1673	2261	java/lang/Exception
+    //   1676	1732	2261	java/lang/Exception
+    //   1735	1817	2261	java/lang/Exception
+    //   1820	1890	2261	java/lang/Exception
+    //   1890	1953	2261	java/lang/Exception
+    //   1956	2042	2261	java/lang/Exception
+    //   2045	2101	2261	java/lang/Exception
+    //   2104	2186	2261	java/lang/Exception
+    //   2189	2259	2261	java/lang/Exception
+    //   41	154	2269	java/io/IOException
+    //   255	274	2269	java/io/IOException
+    //   277	282	2269	java/io/IOException
+    //   285	294	2269	java/io/IOException
+    //   294	385	2269	java/io/IOException
+    //   388	444	2269	java/io/IOException
+    //   447	529	2269	java/io/IOException
+    //   532	602	2269	java/io/IOException
+    //   605	667	2269	java/io/IOException
+    //   670	720	2269	java/io/IOException
+    //   723	745	2269	java/io/IOException
+    //   748	753	2269	java/io/IOException
+    //   756	765	2269	java/io/IOException
+    //   765	832	2269	java/io/IOException
+    //   835	885	2269	java/io/IOException
+    //   888	907	2269	java/io/IOException
+    //   910	915	2269	java/io/IOException
+    //   918	927	2269	java/io/IOException
+    //   927	948	2269	java/io/IOException
+    //   951	1045	2269	java/io/IOException
+    //   1048	1104	2269	java/io/IOException
+    //   1107	1189	2269	java/io/IOException
+    //   1192	1262	2269	java/io/IOException
+    //   1265	1359	2269	java/io/IOException
+    //   1362	1418	2269	java/io/IOException
+    //   1421	1503	2269	java/io/IOException
+    //   1506	1576	2269	java/io/IOException
+    //   1579	1673	2269	java/io/IOException
+    //   1676	1732	2269	java/io/IOException
+    //   1735	1817	2269	java/io/IOException
+    //   1820	1890	2269	java/io/IOException
+    //   1890	1953	2269	java/io/IOException
+    //   1956	2042	2269	java/io/IOException
+    //   2045	2101	2269	java/io/IOException
+    //   2104	2186	2269	java/io/IOException
+    //   2189	2259	2269	java/io/IOException
+    //   2405	2411	2413	java/lang/Exception
+    //   5395	5401	2413	java/lang/Exception
+    //   5439	5454	2413	java/lang/Exception
+    //   2405	2411	2417	java/io/IOException
+    //   5395	5401	2417	java/io/IOException
+    //   5439	5454	2417	java/io/IOException
+    //   4961	5027	5338	java/io/IOException
+    //   5030	5096	5338	java/io/IOException
+    //   5099	5154	5338	java/io/IOException
+    //   5154	5183	5338	java/io/IOException
+    //   5194	5216	5338	java/io/IOException
+    //   5224	5232	5338	java/io/IOException
+    //   5232	5241	5338	java/io/IOException
+    //   5250	5283	5338	java/io/IOException
+    //   5294	5302	5338	java/io/IOException
+    //   5302	5311	5338	java/io/IOException
+    //   5320	5331	5338	java/io/IOException
+    //   2438	2448	5351	java/lang/Exception
+    //   2454	2463	5351	java/lang/Exception
+    //   2469	2477	5351	java/lang/Exception
+    //   2483	2505	5351	java/lang/Exception
+    //   2511	2518	5351	java/lang/Exception
+    //   2524	2534	5351	java/lang/Exception
+    //   2540	2550	5351	java/lang/Exception
+    //   2556	2568	5351	java/lang/Exception
+    //   2574	2582	5351	java/lang/Exception
+    //   2588	2594	5351	java/lang/Exception
+    //   2603	2608	5351	java/lang/Exception
+    //   2614	2622	5351	java/lang/Exception
+    //   2628	2634	5351	java/lang/Exception
+    //   2640	2649	5351	java/lang/Exception
+    //   2655	2663	5351	java/lang/Exception
+    //   2669	2676	5351	java/lang/Exception
+    //   2682	2690	5351	java/lang/Exception
+    //   2696	2710	5351	java/lang/Exception
+    //   2716	2726	5351	java/lang/Exception
+    //   2735	2741	5351	java/lang/Exception
+    //   2747	2756	5351	java/lang/Exception
+    //   2762	2770	5351	java/lang/Exception
+    //   2776	2783	5351	java/lang/Exception
+    //   2789	2797	5351	java/lang/Exception
+    //   2803	2817	5351	java/lang/Exception
+    //   2823	2833	5351	java/lang/Exception
+    //   2839	2848	5351	java/lang/Exception
+    //   2854	2867	5351	java/lang/Exception
+    //   2873	2879	5351	java/lang/Exception
+    //   2885	2892	5351	java/lang/Exception
+    //   2910	2917	5351	java/lang/Exception
+    //   2923	2931	5351	java/lang/Exception
+    //   2937	2944	5351	java/lang/Exception
+    //   2958	2967	5351	java/lang/Exception
+    //   2995	3007	5351	java/lang/Exception
+    //   3013	3025	5351	java/lang/Exception
+    //   3031	3043	5351	java/lang/Exception
+    //   3060	3069	5351	java/lang/Exception
+    //   3097	3109	5351	java/lang/Exception
+    //   3126	3135	5351	java/lang/Exception
+    //   3163	3175	5351	java/lang/Exception
+    //   3197	3207	5351	java/lang/Exception
+    //   3213	3219	5351	java/lang/Exception
+    //   3225	3233	5351	java/lang/Exception
+    //   3239	3245	5351	java/lang/Exception
+    //   3254	3259	5351	java/lang/Exception
+    //   3265	3273	5351	java/lang/Exception
+    //   3279	3285	5351	java/lang/Exception
+    //   3291	3300	5351	java/lang/Exception
+    //   3306	3314	5351	java/lang/Exception
+    //   3320	3327	5351	java/lang/Exception
+    //   3333	3341	5351	java/lang/Exception
+    //   3347	3362	5351	java/lang/Exception
+    //   3368	3378	5351	java/lang/Exception
+    //   3387	3400	5351	java/lang/Exception
+    //   3406	3415	5351	java/lang/Exception
+    //   3421	3429	5351	java/lang/Exception
+    //   3435	3442	5351	java/lang/Exception
+    //   3448	3456	5351	java/lang/Exception
+    //   3462	3477	5351	java/lang/Exception
+    //   3483	3493	5351	java/lang/Exception
+    //   3499	3508	5351	java/lang/Exception
+    //   3514	3527	5351	java/lang/Exception
+    //   3533	3540	5351	java/lang/Exception
+    //   3558	3565	5351	java/lang/Exception
+    //   3571	3579	5351	java/lang/Exception
+    //   3585	3592	5351	java/lang/Exception
+    //   3606	3615	5351	java/lang/Exception
+    //   3643	3655	5351	java/lang/Exception
+    //   3672	3681	5351	java/lang/Exception
+    //   3709	3721	5351	java/lang/Exception
+    //   3743	3753	5351	java/lang/Exception
+    //   3759	3765	5351	java/lang/Exception
+    //   3771	3779	5351	java/lang/Exception
+    //   3785	3791	5351	java/lang/Exception
+    //   3800	3805	5351	java/lang/Exception
+    //   3811	3819	5351	java/lang/Exception
+    //   3825	3831	5351	java/lang/Exception
+    //   3837	3846	5351	java/lang/Exception
+    //   3852	3860	5351	java/lang/Exception
+    //   3866	3873	5351	java/lang/Exception
+    //   3879	3887	5351	java/lang/Exception
+    //   3893	3908	5351	java/lang/Exception
+    //   3914	3924	5351	java/lang/Exception
+    //   3933	3939	5351	java/lang/Exception
+    //   3945	3954	5351	java/lang/Exception
+    //   3960	3968	5351	java/lang/Exception
+    //   3974	3981	5351	java/lang/Exception
+    //   3987	3995	5351	java/lang/Exception
+    //   4001	4016	5351	java/lang/Exception
+    //   4022	4032	5351	java/lang/Exception
+    //   4038	4047	5351	java/lang/Exception
+    //   4053	4066	5351	java/lang/Exception
+    //   4072	4079	5351	java/lang/Exception
+    //   4097	4104	5351	java/lang/Exception
+    //   4110	4118	5351	java/lang/Exception
+    //   4124	4131	5351	java/lang/Exception
+    //   4145	4154	5351	java/lang/Exception
+    //   4182	4194	5351	java/lang/Exception
+    //   4211	4220	5351	java/lang/Exception
+    //   4248	4260	5351	java/lang/Exception
+    //   4284	4294	5351	java/lang/Exception
+    //   4300	4309	5351	java/lang/Exception
+    //   4315	4323	5351	java/lang/Exception
+    //   4329	4346	5351	java/lang/Exception
+    //   4361	4371	5351	java/lang/Exception
+    //   4377	4387	5351	java/lang/Exception
+    //   4393	4400	5351	java/lang/Exception
+    //   4406	4414	5351	java/lang/Exception
+    //   4420	4426	5351	java/lang/Exception
+    //   4435	4440	5351	java/lang/Exception
+    //   4446	4454	5351	java/lang/Exception
+    //   4460	4466	5351	java/lang/Exception
+    //   4472	4481	5351	java/lang/Exception
+    //   4487	4495	5351	java/lang/Exception
+    //   4501	4508	5351	java/lang/Exception
+    //   4514	4522	5351	java/lang/Exception
+    //   4528	4543	5351	java/lang/Exception
+    //   4549	4559	5351	java/lang/Exception
+    //   4568	4574	5351	java/lang/Exception
+    //   4580	4589	5351	java/lang/Exception
+    //   4595	4603	5351	java/lang/Exception
+    //   4609	4616	5351	java/lang/Exception
+    //   4622	4630	5351	java/lang/Exception
+    //   4636	4651	5351	java/lang/Exception
+    //   4657	4667	5351	java/lang/Exception
+    //   4673	4682	5351	java/lang/Exception
+    //   4688	4701	5351	java/lang/Exception
+    //   4707	4713	5351	java/lang/Exception
+    //   4719	4726	5351	java/lang/Exception
+    //   4744	4751	5351	java/lang/Exception
+    //   4757	4765	5351	java/lang/Exception
+    //   4771	4778	5351	java/lang/Exception
+    //   4792	4801	5351	java/lang/Exception
+    //   4829	4841	5351	java/lang/Exception
+    //   4863	4872	5351	java/lang/Exception
+    //   4878	4886	5351	java/lang/Exception
+    //   4892	4899	5351	java/lang/Exception
+    //   4905	4913	5351	java/lang/Exception
+    //   4919	4934	5351	java/lang/Exception
+    //   4940	4950	5351	java/lang/Exception
+    //   2438	2448	5359	java/io/IOException
+    //   2454	2463	5359	java/io/IOException
+    //   2469	2477	5359	java/io/IOException
+    //   2483	2505	5359	java/io/IOException
+    //   2511	2518	5359	java/io/IOException
+    //   2524	2534	5359	java/io/IOException
+    //   2540	2550	5359	java/io/IOException
+    //   2556	2568	5359	java/io/IOException
+    //   2574	2582	5359	java/io/IOException
+    //   2588	2594	5359	java/io/IOException
+    //   2603	2608	5359	java/io/IOException
+    //   2614	2622	5359	java/io/IOException
+    //   2628	2634	5359	java/io/IOException
+    //   2640	2649	5359	java/io/IOException
+    //   2655	2663	5359	java/io/IOException
+    //   2669	2676	5359	java/io/IOException
+    //   2682	2690	5359	java/io/IOException
+    //   2696	2710	5359	java/io/IOException
+    //   2716	2726	5359	java/io/IOException
+    //   2735	2741	5359	java/io/IOException
+    //   2747	2756	5359	java/io/IOException
+    //   2762	2770	5359	java/io/IOException
+    //   2776	2783	5359	java/io/IOException
+    //   2789	2797	5359	java/io/IOException
+    //   2803	2817	5359	java/io/IOException
+    //   2823	2833	5359	java/io/IOException
+    //   2839	2848	5359	java/io/IOException
+    //   2854	2867	5359	java/io/IOException
+    //   2873	2879	5359	java/io/IOException
+    //   2885	2892	5359	java/io/IOException
+    //   2910	2917	5359	java/io/IOException
+    //   2923	2931	5359	java/io/IOException
+    //   2937	2944	5359	java/io/IOException
+    //   2958	2967	5359	java/io/IOException
+    //   2970	2980	5359	java/io/IOException
+    //   2995	3007	5359	java/io/IOException
+    //   3013	3025	5359	java/io/IOException
+    //   3031	3043	5359	java/io/IOException
+    //   3060	3069	5359	java/io/IOException
+    //   3072	3082	5359	java/io/IOException
+    //   3097	3109	5359	java/io/IOException
+    //   3126	3135	5359	java/io/IOException
+    //   3138	3148	5359	java/io/IOException
+    //   3163	3175	5359	java/io/IOException
+    //   3197	3207	5359	java/io/IOException
+    //   3213	3219	5359	java/io/IOException
+    //   3225	3233	5359	java/io/IOException
+    //   3239	3245	5359	java/io/IOException
+    //   3254	3259	5359	java/io/IOException
+    //   3265	3273	5359	java/io/IOException
+    //   3279	3285	5359	java/io/IOException
+    //   3291	3300	5359	java/io/IOException
+    //   3306	3314	5359	java/io/IOException
+    //   3320	3327	5359	java/io/IOException
+    //   3333	3341	5359	java/io/IOException
+    //   3347	3362	5359	java/io/IOException
+    //   3368	3378	5359	java/io/IOException
+    //   3387	3400	5359	java/io/IOException
+    //   3406	3415	5359	java/io/IOException
+    //   3421	3429	5359	java/io/IOException
+    //   3435	3442	5359	java/io/IOException
+    //   3448	3456	5359	java/io/IOException
+    //   3462	3477	5359	java/io/IOException
+    //   3483	3493	5359	java/io/IOException
+    //   3499	3508	5359	java/io/IOException
+    //   3514	3527	5359	java/io/IOException
+    //   3533	3540	5359	java/io/IOException
+    //   3558	3565	5359	java/io/IOException
+    //   3571	3579	5359	java/io/IOException
+    //   3585	3592	5359	java/io/IOException
+    //   3606	3615	5359	java/io/IOException
+    //   3618	3628	5359	java/io/IOException
+    //   3643	3655	5359	java/io/IOException
+    //   3672	3681	5359	java/io/IOException
+    //   3684	3694	5359	java/io/IOException
+    //   3709	3721	5359	java/io/IOException
+    //   3743	3753	5359	java/io/IOException
+    //   3759	3765	5359	java/io/IOException
+    //   3771	3779	5359	java/io/IOException
+    //   3785	3791	5359	java/io/IOException
+    //   3800	3805	5359	java/io/IOException
+    //   3811	3819	5359	java/io/IOException
+    //   3825	3831	5359	java/io/IOException
+    //   3837	3846	5359	java/io/IOException
+    //   3852	3860	5359	java/io/IOException
+    //   3866	3873	5359	java/io/IOException
+    //   3879	3887	5359	java/io/IOException
+    //   3893	3908	5359	java/io/IOException
+    //   3914	3924	5359	java/io/IOException
+    //   3933	3939	5359	java/io/IOException
+    //   3945	3954	5359	java/io/IOException
+    //   3960	3968	5359	java/io/IOException
+    //   3974	3981	5359	java/io/IOException
+    //   3987	3995	5359	java/io/IOException
+    //   4001	4016	5359	java/io/IOException
+    //   4022	4032	5359	java/io/IOException
+    //   4038	4047	5359	java/io/IOException
+    //   4053	4066	5359	java/io/IOException
+    //   4072	4079	5359	java/io/IOException
+    //   4097	4104	5359	java/io/IOException
+    //   4110	4118	5359	java/io/IOException
+    //   4124	4131	5359	java/io/IOException
+    //   4145	4154	5359	java/io/IOException
+    //   4157	4167	5359	java/io/IOException
+    //   4182	4194	5359	java/io/IOException
+    //   4211	4220	5359	java/io/IOException
+    //   4223	4233	5359	java/io/IOException
+    //   4248	4260	5359	java/io/IOException
+    //   4284	4294	5359	java/io/IOException
+    //   4300	4309	5359	java/io/IOException
+    //   4315	4323	5359	java/io/IOException
+    //   4329	4346	5359	java/io/IOException
+    //   4361	4371	5359	java/io/IOException
+    //   4377	4387	5359	java/io/IOException
+    //   4393	4400	5359	java/io/IOException
+    //   4406	4414	5359	java/io/IOException
+    //   4420	4426	5359	java/io/IOException
+    //   4435	4440	5359	java/io/IOException
+    //   4446	4454	5359	java/io/IOException
+    //   4460	4466	5359	java/io/IOException
+    //   4472	4481	5359	java/io/IOException
+    //   4487	4495	5359	java/io/IOException
+    //   4501	4508	5359	java/io/IOException
+    //   4514	4522	5359	java/io/IOException
+    //   4528	4543	5359	java/io/IOException
+    //   4549	4559	5359	java/io/IOException
+    //   4568	4574	5359	java/io/IOException
+    //   4580	4589	5359	java/io/IOException
+    //   4595	4603	5359	java/io/IOException
+    //   4609	4616	5359	java/io/IOException
+    //   4622	4630	5359	java/io/IOException
+    //   4636	4651	5359	java/io/IOException
+    //   4657	4667	5359	java/io/IOException
+    //   4673	4682	5359	java/io/IOException
+    //   4688	4701	5359	java/io/IOException
+    //   4707	4713	5359	java/io/IOException
+    //   4719	4726	5359	java/io/IOException
+    //   4744	4751	5359	java/io/IOException
+    //   4757	4765	5359	java/io/IOException
+    //   4771	4778	5359	java/io/IOException
+    //   4792	4801	5359	java/io/IOException
+    //   4804	4814	5359	java/io/IOException
+    //   4829	4841	5359	java/io/IOException
+    //   4863	4872	5359	java/io/IOException
+    //   4878	4886	5359	java/io/IOException
+    //   4892	4899	5359	java/io/IOException
+    //   4905	4913	5359	java/io/IOException
+    //   4919	4934	5359	java/io/IOException
+    //   4940	4950	5359	java/io/IOException
+    //   4953	4961	5359	java/io/IOException
+    //   17	23	5460	java/lang/Exception
+    //   28	41	5460	java/lang/Exception
+    //   2277	2297	5460	java/lang/Exception
+    //   2380	2401	5460	java/lang/Exception
+    //   2423	2432	5460	java/lang/Exception
+    //   3182	3191	5460	java/lang/Exception
+    //   3728	3737	5460	java/lang/Exception
+    //   4269	4278	5460	java/lang/Exception
+    //   4848	4857	5460	java/lang/Exception
+    //   5367	5389	5460	java/lang/Exception
+    //   5411	5433	5460	java/lang/Exception
+    //   17	23	5470	java/io/IOException
+    //   28	41	5470	java/io/IOException
+    //   2277	2297	5470	java/io/IOException
+    //   2380	2401	5470	java/io/IOException
+    //   2423	2432	5470	java/io/IOException
+    //   3182	3191	5470	java/io/IOException
+    //   3728	3737	5470	java/io/IOException
+    //   4269	4278	5470	java/io/IOException
+    //   4848	4857	5470	java/io/IOException
+    //   5367	5389	5470	java/io/IOException
+    //   5411	5433	5470	java/io/IOException
+    //   2970	2980	5484	java/lang/Exception
+    //   3072	3082	5488	java/lang/Exception
+    //   3138	3148	5492	java/lang/Exception
+    //   3618	3628	5496	java/lang/Exception
+    //   3684	3694	5500	java/lang/Exception
+    //   4157	4167	5504	java/lang/Exception
+    //   4223	4233	5508	java/lang/Exception
+    //   4804	4814	5512	java/lang/Exception
+    //   4953	4961	5516	java/lang/Exception
+    //   4961	5027	5520	java/lang/Exception
+    //   5030	5096	5520	java/lang/Exception
+    //   5099	5154	5520	java/lang/Exception
+    //   5154	5183	5520	java/lang/Exception
+    //   5194	5216	5520	java/lang/Exception
+    //   5224	5232	5520	java/lang/Exception
+    //   5250	5283	5520	java/lang/Exception
+    //   5294	5302	5520	java/lang/Exception
+    //   5320	5331	5520	java/lang/Exception
+    //   5232	5241	5526	java/lang/Exception
+    //   5302	5311	5530	java/lang/Exception
   }
   
   public static byte[] getAuthFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramArrayOfByte == null) {}
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
+    }
+    if (paramInt != 46) {}
+    switch (paramInt)
+    {
+    default: 
       switch (paramInt)
       {
-      case -1022: 
-      case -1021: 
-      case 36: 
-      case 37: 
-      case 85: 
-      case 86: 
       default: 
-        return null;
-      case -1023: 
-      case 46: 
-      case 87: 
-        paramInt = getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt);
-        if ((paramInt == 1) || (paramInt == 4))
+        switch (paramInt)
         {
-          paramInt = bdqa.a(paramArrayOfByte[15]) + 15;
-          i = bdqa.a(paramArrayOfByte, paramInt);
-          arrayOfByte = new byte[i];
-          System.arraycopy(paramArrayOfByte, paramInt + 2, arrayOfByte, 0, i);
-          return arrayOfByte;
+        default: 
+          return null;
         }
         break;
-      case -1020: 
-      case 35: 
-      case 84: 
-        paramInt = bdqa.a(paramArrayOfByte[9]);
-        paramInt = bdqa.a(paramArrayOfByte, bdqa.a(paramArrayOfByte[9]) + 10) + (paramInt + 10 + 2);
-        i = bdqa.a(paramArrayOfByte, paramInt);
+      }
+    case -1020: 
+      paramInt = PkgTools.getUnsignedByte(paramArrayOfByte[9]) + 10 + 2 + PkgTools.getShortData(paramArrayOfByte, PkgTools.getUnsignedByte(paramArrayOfByte[9]) + 10);
+      i = PkgTools.getShortData(paramArrayOfByte, paramInt);
+      arrayOfByte = new byte[i];
+      System.arraycopy(paramArrayOfByte, paramInt + 2, arrayOfByte, 0, i);
+      return arrayOfByte;
+    case -1023: 
+      paramInt = getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt);
+      if ((paramInt == 1) || (paramInt == 4)) {
+        break label215;
+      }
+      if (paramInt == 5)
+      {
+        paramInt = PkgTools.getUnsignedByte(paramArrayOfByte[19]) + 19;
+        i = PkgTools.getShortData(paramArrayOfByte, paramInt);
         arrayOfByte = new byte[i];
         System.arraycopy(paramArrayOfByte, paramInt + 2, arrayOfByte, 0, i);
         return arrayOfByte;
       }
-    } while (paramInt != 5);
-    paramInt = bdqa.a(paramArrayOfByte[19]) + 19;
-    int i = bdqa.a(paramArrayOfByte, paramInt);
+      break;
+    }
+    return null;
+    label215:
+    paramInt = PkgTools.getUnsignedByte(paramArrayOfByte[15]) + 15;
+    int i = PkgTools.getShortData(paramArrayOfByte, paramInt);
     byte[] arrayOfByte = new byte[i];
     System.arraycopy(paramArrayOfByte, paramInt + 2, arrayOfByte, 0, i);
     return arrayOfByte;
@@ -2618,17 +3373,16 @@ public class SystemMsg
   
   public static String getInviteUinFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramArrayOfByte == null) {}
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      }
-    } while (getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt) != 5);
-    return String.valueOf(bdqa.a(paramArrayOfByte, 14));
+    }
+    if ((paramInt != -1023) && (paramInt != 46) && (paramInt != 87)) {
+      return null;
+    }
+    if (getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt) == 5) {
+      return String.valueOf(PkgTools.getLongData(paramArrayOfByte, 14));
+    }
+    return null;
   }
   
   public static String getManagerUinFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
@@ -2636,19 +3390,26 @@ public class SystemMsg
     if (paramArrayOfByte == null) {
       return null;
     }
-    switch (paramInt)
-    {
-    case -1020: 
-    case 35: 
-    case 84: 
-    default: 
-      return null;
-    case -1023: 
-    case 46: 
-    case 87: 
-      return String.valueOf(bdqa.a(paramArrayOfByte, 10));
+    if (paramInt != 46) {
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          }
+          break;
+        }
+      case -1020: 
+        return null;
+      case -1022: 
+      case -1021: 
+        return String.valueOf(PkgTools.getLongData(paramArrayOfByte, 5));
+      }
     }
-    return String.valueOf(bdqa.a(paramArrayOfByte, 5));
+    return String.valueOf(PkgTools.getLongData(paramArrayOfByte, 10));
   }
   
   public static String getRequestUinFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
@@ -2656,22 +3417,25 @@ public class SystemMsg
     if (paramArrayOfByte == null) {
       return null;
     }
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case -1023: 
-    case -1022: 
-    case -1021: 
-    case 36: 
-    case 37: 
-    case 46: 
-    case 85: 
-    case 86: 
-    case 87: 
-      return String.valueOf(bdqa.a(paramArrayOfByte, 10));
+    if (paramInt != 46) {
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          default: 
+            return null;
+          }
+          break;
+        }
+      case -1020: 
+        return String.valueOf(PkgTools.getLongData(paramArrayOfByte, 5));
+      }
     }
-    return String.valueOf(bdqa.a(paramArrayOfByte, 5));
+    return String.valueOf(PkgTools.getLongData(paramArrayOfByte, 10));
   }
   
   public static String getStrMsgFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
@@ -2680,32 +3444,44 @@ public class SystemMsg
       return null;
     }
     byte[] arrayOfByte;
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case -1023: 
-    case 46: 
-    case 87: 
-      if (getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt) == 5)
+    if (paramInt != 46) {
+      switch (paramInt)
       {
-        paramInt = bdqa.a(paramArrayOfByte[18]);
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          default: 
+            return null;
+          }
+          break;
+        }
+      case -1022: 
+      case -1021: 
+      case -1020: 
+        paramInt = PkgTools.getUnsignedByte(paramArrayOfByte[9]);
         arrayOfByte = new byte[paramInt];
-        bdqa.a(arrayOfByte, 0, paramArrayOfByte, 19, paramInt);
+        PkgTools.copyData(arrayOfByte, 0, paramArrayOfByte, 10, paramInt);
+        return String.valueOf(PkgTools.utf8Byte2String(EmotionCodecUtils.a(arrayOfByte), 0, paramInt));
       }
-      break;
     }
-    for (paramArrayOfByte = azah.a(arrayOfByte);; paramArrayOfByte = azah.a(arrayOfByte))
+    if (getTroopOpFromTroopSysMsg(paramArrayOfByte, paramInt) == 5)
     {
-      return String.valueOf(bdqa.b(paramArrayOfByte, 0, paramInt));
-      paramInt = bdqa.a(paramArrayOfByte[9]);
+      paramInt = PkgTools.getUnsignedByte(paramArrayOfByte[18]);
       arrayOfByte = new byte[paramInt];
-      bdqa.a(arrayOfByte, 0, paramArrayOfByte, 10, paramInt);
-      return String.valueOf(bdqa.b(azah.a(arrayOfByte), 0, paramInt));
-      paramInt = bdqa.a(paramArrayOfByte[14]);
-      arrayOfByte = new byte[paramInt];
-      bdqa.a(arrayOfByte, 0, paramArrayOfByte, 15, paramInt);
+      PkgTools.copyData(arrayOfByte, 0, paramArrayOfByte, 19, paramInt);
+      paramArrayOfByte = EmotionCodecUtils.a(arrayOfByte);
     }
+    else
+    {
+      paramInt = PkgTools.getUnsignedByte(paramArrayOfByte[14]);
+      arrayOfByte = new byte[paramInt];
+      PkgTools.copyData(arrayOfByte, 0, paramArrayOfByte, 15, paramInt);
+      paramArrayOfByte = EmotionCodecUtils.a(arrayOfByte);
+    }
+    return String.valueOf(PkgTools.utf8Byte2String(paramArrayOfByte, 0, paramInt));
   }
   
   public static String getTroopCodeFromTroopSysMsg(byte[] paramArrayOfByte)
@@ -2713,7 +3489,7 @@ public class SystemMsg
     if (paramArrayOfByte == null) {
       return null;
     }
-    return String.valueOf(bdqa.a(paramArrayOfByte, 0));
+    return String.valueOf(PkgTools.getLongData(paramArrayOfByte, 0));
   }
   
   public static byte getTroopOpFromTroopSysMsg(byte[] paramArrayOfByte, int paramInt)
@@ -2721,50 +3497,79 @@ public class SystemMsg
     if (paramArrayOfByte == null) {
       return -1;
     }
-    switch (paramInt)
-    {
-    case -1022: 
-    case -1021: 
-    case -1020: 
-    case 35: 
-    case 36: 
-    case 37: 
-    case 84: 
-    case 85: 
-    case 86: 
-    default: 
-      return -1;
+    if (paramInt != 46) {
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          }
+          break;
+        }
+      case -1022: 
+      case -1021: 
+      case -1020: 
+        return -1;
+      }
     }
     return paramArrayOfByte[5];
   }
   
   public static int getTroopSystemMsgType(int paramInt)
   {
-    int j = -1023;
-    int i;
-    if ((paramInt == -1020) || (paramInt == 84) || (paramInt == 35)) {
-      i = -1020;
-    }
-    do
+    int j = -1020;
+    int i = j;
+    if (paramInt != -1020)
     {
-      do
-      {
-        do
-        {
-          return i;
-          if ((paramInt == -1021) || (paramInt == 85) || (paramInt == 36)) {
-            return -1021;
-          }
-          if ((paramInt == -1022) || (paramInt == 86) || (paramInt == 37)) {
-            return -1022;
-          }
-          i = j;
-        } while (paramInt == -1023);
-        i = j;
-      } while (paramInt == 87);
       i = j;
-    } while (paramInt == 46);
-    return -1000;
+      if (paramInt != 84)
+      {
+        if (paramInt == 35) {
+          return -1020;
+        }
+        j = -1021;
+        i = j;
+        if (paramInt != -1021)
+        {
+          i = j;
+          if (paramInt != 85)
+          {
+            if (paramInt == 36) {
+              return -1021;
+            }
+            j = -1022;
+            i = j;
+            if (paramInt != -1022)
+            {
+              i = j;
+              if (paramInt != 86)
+              {
+                if (paramInt == 37) {
+                  return -1022;
+                }
+                j = -1023;
+                i = j;
+                if (paramInt != -1023)
+                {
+                  i = j;
+                  if (paramInt != 87)
+                  {
+                    if (paramInt == 46) {
+                      return -1023;
+                    }
+                    return -1000;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return i;
   }
   
   public static byte getTroopTypeFromTroopSysMsg(byte[] paramArrayOfByte)
@@ -2777,20 +3582,44 @@ public class SystemMsg
   
   public static boolean isSystemMessage(int paramInt)
   {
-    if ((paramInt <= -1006) && (paramInt >= -1010)) {}
-    while ((paramInt == -1011) || ((paramInt >= 187) && (paramInt <= 191))) {
+    if ((paramInt <= -1006) && (paramInt >= -1010)) {
       return true;
     }
-    return false;
+    if (paramInt == -1011) {
+      return true;
+    }
+    return (paramInt >= 187) && (paramInt <= 191);
   }
   
   public static boolean isTroopSystemMessage(int paramInt)
   {
-    if ((paramInt <= -1020) && (paramInt >= -1023)) {}
-    while (((paramInt >= 84) && (paramInt <= 87)) || ((paramInt >= 35) && (paramInt <= 37)) || (paramInt == 46) || (paramInt == 45)) {
+    boolean bool2 = true;
+    if ((paramInt <= -1020) && (paramInt >= -1023)) {
       return true;
     }
-    return false;
+    boolean bool1;
+    if (paramInt >= 84)
+    {
+      bool1 = bool2;
+      if (paramInt <= 87) {}
+    }
+    else if (paramInt >= 35)
+    {
+      bool1 = bool2;
+      if (paramInt <= 37) {}
+    }
+    else
+    {
+      bool1 = bool2;
+      if (paramInt != 46)
+      {
+        if (paramInt == 45) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -2817,32 +3646,40 @@ public class SystemMsg
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cVession, 0);
-    if (this.sMsg != null) {
-      paramJceOutputStream.write(this.sMsg, 1);
+    Object localObject = this.sMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.append != null) {
-      paramJceOutputStream.write(this.append, 2);
+    localObject = this.append;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.message != null) {
-      paramJceOutputStream.write(this.message, 3);
+    localObject = this.message;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.troopCode != null) {
-      paramJceOutputStream.write(this.troopCode, 4);
+    localObject = this.troopCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.managerUin != null) {
-      paramJceOutputStream.write(this.managerUin, 5);
+    localObject = this.managerUin;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.requestUin != null) {
-      paramJceOutputStream.write(this.requestUin, 6);
+    localObject = this.requestUin;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.troopType, 7);
     paramJceOutputStream.write(this.op, 8);
-    if (this.auth != null) {
-      paramJceOutputStream.write(this.auth, 9);
+    localObject = this.auth;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
     paramJceOutputStream.write(this.lToMobile, 10);
-    if (this.strNickName != null) {
-      paramJceOutputStream.write(this.strNickName, 11);
+    localObject = this.strNickName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
   }
 }

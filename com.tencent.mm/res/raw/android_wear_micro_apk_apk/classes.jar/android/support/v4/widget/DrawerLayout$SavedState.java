@@ -10,20 +10,20 @@ public class DrawerLayout$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-  int oM = 0;
-  int oN;
-  int oO;
-  int oP;
-  int oQ;
+  int qC = 0;
+  int qD;
+  int qE;
+  int qF;
+  int qG;
   
   public DrawerLayout$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.oM = paramParcel.readInt();
-    this.oN = paramParcel.readInt();
-    this.oO = paramParcel.readInt();
-    this.oP = paramParcel.readInt();
-    this.oQ = paramParcel.readInt();
+    this.qC = paramParcel.readInt();
+    this.qD = paramParcel.readInt();
+    this.qE = paramParcel.readInt();
+    this.qF = paramParcel.readInt();
+    this.qG = paramParcel.readInt();
   }
   
   public DrawerLayout$SavedState(Parcelable paramParcelable)
@@ -34,11 +34,11 @@ public class DrawerLayout$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.oM);
-    paramParcel.writeInt(this.oN);
-    paramParcel.writeInt(this.oO);
-    paramParcel.writeInt(this.oP);
-    paramParcel.writeInt(this.oQ);
+    paramParcel.writeInt(this.qC);
+    paramParcel.writeInt(this.qD);
+    paramParcel.writeInt(this.qE);
+    paramParcel.writeInt(this.qF);
+    paramParcel.writeInt(this.qG);
   }
 }
 

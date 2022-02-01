@@ -9,6 +9,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PhotoFeedsData
   extends JceStruct
@@ -20,14 +21,14 @@ public final class PhotoFeedsData
   static cell_id cache_pss_cell_id;
   static cell_like cache_pss_cell_like;
   static cell_operation cache_pss_cell_operation;
-  public Album album;
-  public int appid;
-  public ArrayList<Photo> photolist;
-  public cell_comm pss_cell_comm;
-  public cell_comment pss_cell_comment;
-  public cell_id pss_cell_id;
-  public cell_like pss_cell_like;
-  public cell_operation pss_cell_operation;
+  public Album album = null;
+  public int appid = 0;
+  public ArrayList<Photo> photolist = null;
+  public cell_comm pss_cell_comm = null;
+  public cell_comment pss_cell_comment = null;
+  public cell_id pss_cell_id = null;
+  public cell_like pss_cell_like = null;
+  public cell_operation pss_cell_operation = null;
   
   static
   {
@@ -69,32 +70,39 @@ public final class PhotoFeedsData
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.appid, 0);
-    if (this.photolist != null) {
-      paramJceOutputStream.write(this.photolist, 1);
+    Object localObject = this.photolist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.album != null) {
-      paramJceOutputStream.write(this.album, 2);
+    localObject = this.album;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.pss_cell_comm != null) {
-      paramJceOutputStream.write(this.pss_cell_comm, 3);
+    localObject = this.pss_cell_comm;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.pss_cell_id != null) {
-      paramJceOutputStream.write(this.pss_cell_id, 4);
+    localObject = this.pss_cell_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.pss_cell_operation != null) {
-      paramJceOutputStream.write(this.pss_cell_operation, 5);
+    localObject = this.pss_cell_operation;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.pss_cell_like != null) {
-      paramJceOutputStream.write(this.pss_cell_like, 6);
+    localObject = this.pss_cell_like;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.pss_cell_comment != null) {
-      paramJceOutputStream.write(this.pss_cell_comment, 7);
+    localObject = this.pss_cell_comment;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PhotoFeedsData
  * JD-Core Version:    0.7.0.1
  */

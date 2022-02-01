@@ -14,46 +14,49 @@ class DOMActionContextImpl$2
   
   public void accept(DomObject paramDomObject)
   {
-    if ((!paramDomObject.hasUpdate()) || (DOMActionContextImpl.access$400(this.this$0))) {
-      return;
-    }
-    if (!Float.isNaN(paramDomObject.flexStyle.minHeight)) {}
-    synchronized (DomObject.LOCK)
+    if (paramDomObject.hasUpdate())
     {
-      if (paramDomObject.flexStyle.minHeight <= paramDomObject.flexLayout.dimensions[1])
-      {
-        paramDomObject.flexStyle.dimensions[1] = paramDomObject.flexStyle.minHeight;
-        float[] arrayOfFloat;
-        if (paramDomObject.flexStyle.margin.get(1) > 0.0F)
+      if (DOMActionContextImpl.access$300(this.this$0)) {
+        return;
+      }
+      if (!Float.isNaN(paramDomObject.flexStyle.minHeight)) {
+        synchronized (DomObject.LOCK)
         {
-          arrayOfFloat = paramDomObject.flexLayout.position;
-          arrayOfFloat[1] -= paramDomObject.flexStyle.margin.get(1);
+          if (paramDomObject.flexStyle.minHeight <= paramDomObject.flexLayout.dimensions[1])
+          {
+            paramDomObject.flexStyle.dimensions[1] = paramDomObject.flexStyle.minHeight;
+            float[] arrayOfFloat;
+            if (paramDomObject.flexStyle.margin.get(1) > 0.0F)
+            {
+              arrayOfFloat = paramDomObject.flexLayout.position;
+              arrayOfFloat[1] -= paramDomObject.flexStyle.margin.get(1);
+            }
+            if (paramDomObject.flexStyle.margin.get(0) > 0.0F)
+            {
+              arrayOfFloat = paramDomObject.flexLayout.position;
+              arrayOfFloat[0] -= paramDomObject.flexStyle.margin.get(0);
+            }
+            if (paramDomObject.flexStyle.margin.get(2) > 0.0F)
+            {
+              arrayOfFloat = paramDomObject.flexLayout.position;
+              arrayOfFloat[2] -= paramDomObject.flexStyle.margin.get(2);
+            }
+            if (paramDomObject.flexStyle.margin.get(3) > 0.0F)
+            {
+              arrayOfFloat = paramDomObject.flexLayout.position;
+              arrayOfFloat[3] -= paramDomObject.flexStyle.margin.get(3);
+            }
+            Layout.layoutNode(DOMActionContextImpl.access$400(this.this$0), paramDomObject, paramDomObject.flexLayout.dimensions[0], null);
+          }
         }
-        if (paramDomObject.flexStyle.margin.get(0) > 0.0F)
-        {
-          arrayOfFloat = paramDomObject.flexLayout.position;
-          arrayOfFloat[0] -= paramDomObject.flexStyle.margin.get(0);
-        }
-        if (paramDomObject.flexStyle.margin.get(2) > 0.0F)
-        {
-          arrayOfFloat = paramDomObject.flexLayout.position;
-          arrayOfFloat[2] -= paramDomObject.flexStyle.margin.get(2);
-        }
-        if (paramDomObject.flexStyle.margin.get(3) > 0.0F)
-        {
-          arrayOfFloat = paramDomObject.flexLayout.position;
-          arrayOfFloat[3] -= paramDomObject.flexStyle.margin.get(3);
-        }
-        Layout.layoutNode(DOMActionContextImpl.access$500(this.this$0), paramDomObject, paramDomObject.flexLayout.dimensions[0], null);
       }
       paramDomObject.layoutAfter();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl.2
  * JD-Core Version:    0.7.0.1
  */

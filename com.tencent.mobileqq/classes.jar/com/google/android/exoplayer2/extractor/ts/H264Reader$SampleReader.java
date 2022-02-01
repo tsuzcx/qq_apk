@@ -49,224 +49,179 @@ final class H264Reader$SampleReader
   
   private void outputSample(int paramInt)
   {
-    if (this.sampleIsKeyframe) {}
-    for (int i = 1;; i = 0)
-    {
-      int j = (int)(this.nalUnitStartPosition - this.samplePosition);
-      this.output.sampleMetadata(this.sampleTimeUs, i, j, paramInt, null);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void appendToNalUnit(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (!this.isFilling) {}
-    int i3;
-    int i4;
-    int i5;
-    NalUnitUtil.SpsData localSpsData;
-    boolean bool2;
-    int i6;
-    boolean bool3;
-    boolean bool1;
-    boolean bool4;
-    label403:
-    int i1;
-    int m;
-    int i2;
-    int n;
-    do
+    if (!this.isFilling) {
+      return;
+    }
+    paramInt2 -= paramInt1;
+    Object localObject = this.buffer;
+    int i = localObject.length;
+    int j = this.bufferLength;
+    if (i < j + paramInt2) {
+      this.buffer = Arrays.copyOf((byte[])localObject, (j + paramInt2) * 2);
+    }
+    System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, this.bufferLength, paramInt2);
+    this.bufferLength += paramInt2;
+    this.bitArray.reset(this.buffer, 0, this.bufferLength);
+    if (!this.bitArray.canReadBits(8)) {
+      return;
+    }
+    this.bitArray.skipBit();
+    int m = this.bitArray.readBits(2);
+    this.bitArray.skipBits(5);
+    if (!this.bitArray.canReadExpGolombCodedNum()) {
+      return;
+    }
+    this.bitArray.readUnsignedExpGolombCodedInt();
+    if (!this.bitArray.canReadExpGolombCodedNum()) {
+      return;
+    }
+    int n = this.bitArray.readUnsignedExpGolombCodedInt();
+    if (!this.detectAccessUnits)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            boolean bool5;
-            boolean bool6;
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          return;
-                          paramInt2 -= paramInt1;
-                          if (this.buffer.length < this.bufferLength + paramInt2) {
-                            this.buffer = Arrays.copyOf(this.buffer, (this.bufferLength + paramInt2) * 2);
-                          }
-                          System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, this.bufferLength, paramInt2);
-                          this.bufferLength = (paramInt2 + this.bufferLength);
-                          this.bitArray.reset(this.buffer, 0, this.bufferLength);
-                        } while (!this.bitArray.canReadBits(8));
-                        this.bitArray.skipBit();
-                        i3 = this.bitArray.readBits(2);
-                        this.bitArray.skipBits(5);
-                      } while (!this.bitArray.canReadExpGolombCodedNum());
-                      this.bitArray.readUnsignedExpGolombCodedInt();
-                    } while (!this.bitArray.canReadExpGolombCodedNum());
-                    i4 = this.bitArray.readUnsignedExpGolombCodedInt();
-                    if (!this.detectAccessUnits)
-                    {
-                      this.isFilling = false;
-                      this.sliceHeader.setSliceType(i4);
-                      return;
-                    }
-                  } while (!this.bitArray.canReadExpGolombCodedNum());
-                  i5 = this.bitArray.readUnsignedExpGolombCodedInt();
-                  if (this.pps.indexOfKey(i5) < 0)
-                  {
-                    this.isFilling = false;
-                    return;
-                  }
-                  paramArrayOfByte = (NalUnitUtil.PpsData)this.pps.get(i5);
-                  localSpsData = (NalUnitUtil.SpsData)this.sps.get(paramArrayOfByte.seqParameterSetId);
-                  if (!localSpsData.separateColorPlaneFlag) {
-                    break;
-                  }
-                } while (!this.bitArray.canReadBits(2));
-                this.bitArray.skipBits(2);
-              } while (!this.bitArray.canReadBits(localSpsData.frameNumLength));
-              bool2 = false;
-              bool5 = false;
-              bool6 = false;
-              i6 = this.bitArray.readBits(localSpsData.frameNumLength);
-              bool3 = bool5;
-              bool1 = bool6;
-              if (localSpsData.frameMbsOnlyFlag) {
-                break;
-              }
-            } while (!this.bitArray.canReadBits(1));
-            bool4 = this.bitArray.readBit();
-            bool2 = bool4;
-            bool3 = bool5;
-            bool1 = bool6;
-            if (!bool4) {
-              break;
-            }
-          } while (!this.bitArray.canReadBits(1));
-          bool1 = this.bitArray.readBit();
-          bool3 = true;
-          bool2 = bool4;
-          if (this.nalUnitType != 5) {
-            break label588;
-          }
-          bool4 = true;
-          paramInt1 = 0;
-          if (!bool4) {
-            break;
-          }
-        } while (!this.bitArray.canReadExpGolombCodedNum());
-        paramInt1 = this.bitArray.readUnsignedExpGolombCodedInt();
-        i1 = 0;
-        m = 0;
-        i2 = 0;
-        n = 0;
-        if (localSpsData.picOrderCountType != 0) {
-          break label594;
-        }
-      } while (!this.bitArray.canReadBits(localSpsData.picOrderCntLsbLength));
-      i1 = this.bitArray.readBits(localSpsData.picOrderCntLsbLength);
-      i = i1;
-      j = m;
-      paramInt2 = i2;
-      k = n;
-      if (!paramArrayOfByte.bottomFieldPicOrderInFramePresentFlag) {
-        break;
-      }
-      i = i1;
-      j = m;
-      paramInt2 = i2;
-      k = n;
-      if (bool2) {
-        break;
-      }
-    } while (!this.bitArray.canReadExpGolombCodedNum());
-    int j = this.bitArray.readSignedExpGolombCodedInt();
-    int k = n;
-    paramInt2 = i2;
-    int i = i1;
-    for (;;)
+      this.isFilling = false;
+      this.sliceHeader.setSliceType(n);
+      return;
+    }
+    if (!this.bitArray.canReadExpGolombCodedNum()) {
+      return;
+    }
+    int i1 = this.bitArray.readUnsignedExpGolombCodedInt();
+    if (this.pps.indexOfKey(i1) < 0)
     {
-      this.sliceHeader.setAll(localSpsData, i3, i4, i6, i5, bool2, bool3, bool1, bool4, paramInt1, i, j, paramInt2, k);
       this.isFilling = false;
       return;
-      label588:
-      bool4 = false;
-      break label403;
-      label594:
-      i = i1;
-      j = m;
-      paramInt2 = i2;
-      k = n;
-      if (localSpsData.picOrderCountType == 1)
+    }
+    paramArrayOfByte = (NalUnitUtil.PpsData)this.pps.get(i1);
+    localObject = (NalUnitUtil.SpsData)this.sps.get(paramArrayOfByte.seqParameterSetId);
+    if (((NalUnitUtil.SpsData)localObject).separateColorPlaneFlag)
+    {
+      if (!this.bitArray.canReadBits(2)) {
+        return;
+      }
+      this.bitArray.skipBits(2);
+    }
+    if (!this.bitArray.canReadBits(((NalUnitUtil.SpsData)localObject).frameNumLength)) {
+      return;
+    }
+    int i2 = this.bitArray.readBits(((NalUnitUtil.SpsData)localObject).frameNumLength);
+    boolean bool1;
+    if (!((NalUnitUtil.SpsData)localObject).frameMbsOnlyFlag)
+    {
+      if (!this.bitArray.canReadBits(1)) {
+        return;
+      }
+      bool1 = this.bitArray.readBit();
+      if (bool1)
       {
-        i = i1;
-        j = m;
-        paramInt2 = i2;
-        k = n;
-        if (!localSpsData.deltaPicOrderAlwaysZeroFlag)
-        {
-          if (!this.bitArray.canReadExpGolombCodedNum()) {
-            break;
-          }
-          i2 = this.bitArray.readSignedExpGolombCodedInt();
-          i = i1;
-          j = m;
-          paramInt2 = i2;
-          k = n;
-          if (paramArrayOfByte.bottomFieldPicOrderInFramePresentFlag)
-          {
-            i = i1;
-            j = m;
-            paramInt2 = i2;
-            k = n;
-            if (!bool2)
-            {
-              if (!this.bitArray.canReadExpGolombCodedNum()) {
-                break;
-              }
-              k = this.bitArray.readSignedExpGolombCodedInt();
-              i = i1;
-              j = m;
-              paramInt2 = i2;
-            }
-          }
+        if (!this.bitArray.canReadBits(1)) {
+          return;
         }
+        bool3 = this.bitArray.readBit();
+        bool2 = true;
+        break label390;
       }
     }
+    else
+    {
+      bool1 = false;
+    }
+    boolean bool2 = false;
+    boolean bool3 = false;
+    label390:
+    boolean bool4;
+    if (this.nalUnitType == 5) {
+      bool4 = true;
+    } else {
+      bool4 = false;
+    }
+    if (bool4)
+    {
+      if (!this.bitArray.canReadExpGolombCodedNum()) {
+        return;
+      }
+      j = this.bitArray.readUnsignedExpGolombCodedInt();
+    }
+    else
+    {
+      j = 0;
+    }
+    if (((NalUnitUtil.SpsData)localObject).picOrderCountType == 0)
+    {
+      if (!this.bitArray.canReadBits(((NalUnitUtil.SpsData)localObject).picOrderCntLsbLength)) {
+        return;
+      }
+      paramInt1 = this.bitArray.readBits(((NalUnitUtil.SpsData)localObject).picOrderCntLsbLength);
+      if ((paramArrayOfByte.bottomFieldPicOrderInFramePresentFlag) && (!bool1))
+      {
+        if (!this.bitArray.canReadExpGolombCodedNum()) {
+          return;
+        }
+        paramInt2 = this.bitArray.readSignedExpGolombCodedInt();
+        break label599;
+      }
+    }
+    else
+    {
+      if ((((NalUnitUtil.SpsData)localObject).picOrderCountType == 1) && (!((NalUnitUtil.SpsData)localObject).deltaPicOrderAlwaysZeroFlag))
+      {
+        if (!this.bitArray.canReadExpGolombCodedNum()) {
+          return;
+        }
+        i = this.bitArray.readSignedExpGolombCodedInt();
+        if ((paramArrayOfByte.bottomFieldPicOrderInFramePresentFlag) && (!bool1))
+        {
+          if (!this.bitArray.canReadExpGolombCodedNum()) {
+            return;
+          }
+          k = this.bitArray.readSignedExpGolombCodedInt();
+          paramInt1 = 0;
+          paramInt2 = 0;
+          break label605;
+        }
+        paramInt1 = 0;
+        paramInt2 = 0;
+        break label602;
+      }
+      paramInt1 = 0;
+    }
+    paramInt2 = 0;
+    label599:
+    i = 0;
+    label602:
+    int k = 0;
+    label605:
+    this.sliceHeader.setAll((NalUnitUtil.SpsData)localObject, m, n, i2, i1, bool1, bool2, bool3, bool4, j, paramInt1, paramInt2, i, k);
+    this.isFilling = false;
   }
   
   public void endNalUnit(long paramLong, int paramInt)
   {
+    int j = this.nalUnitType;
     int i = 0;
-    if ((this.nalUnitType == 9) || ((this.detectAccessUnits) && (H264Reader.SampleReader.SliceHeaderData.access$100(this.sliceHeader, this.previousSliceHeader))))
+    if ((j == 9) || ((this.detectAccessUnits) && (H264Reader.SampleReader.SliceHeaderData.access$100(this.sliceHeader, this.previousSliceHeader))))
     {
       if (this.readingSample) {
-        outputSample((int)(paramLong - this.nalUnitStartPosition) + paramInt);
+        outputSample(paramInt + (int)(paramLong - this.nalUnitStartPosition));
       }
       this.samplePosition = this.nalUnitStartPosition;
       this.sampleTimeUs = this.nalUnitTimeUs;
       this.sampleIsKeyframe = false;
       this.readingSample = true;
     }
-    int j = this.sampleIsKeyframe;
-    if (this.nalUnitType != 5)
+    int k = this.sampleIsKeyframe;
+    j = this.nalUnitType;
+    if (j != 5)
     {
       paramInt = i;
       if (this.allowNonIdrKeyframes)
       {
         paramInt = i;
-        if (this.nalUnitType == 1)
+        if (j == 1)
         {
           paramInt = i;
           if (!this.sliceHeader.isISlice()) {}
@@ -277,7 +232,7 @@ final class H264Reader$SampleReader
     {
       paramInt = 1;
     }
-    this.sampleIsKeyframe = (paramInt | j);
+    this.sampleIsKeyframe = (k | paramInt);
   }
   
   public boolean needsSpsPps()
@@ -307,7 +262,15 @@ final class H264Reader$SampleReader
     this.nalUnitType = paramInt;
     this.nalUnitTimeUs = paramLong2;
     this.nalUnitStartPosition = paramLong1;
-    if (((this.allowNonIdrKeyframes) && (this.nalUnitType == 1)) || ((this.detectAccessUnits) && ((this.nalUnitType == 5) || (this.nalUnitType == 1) || (this.nalUnitType == 2))))
+    if ((!this.allowNonIdrKeyframes) || (this.nalUnitType != 1))
+    {
+      if (this.detectAccessUnits)
+      {
+        paramInt = this.nalUnitType;
+        if ((paramInt != 5) && (paramInt != 1) && (paramInt != 2)) {}
+      }
+    }
+    else
     {
       H264Reader.SampleReader.SliceHeaderData localSliceHeaderData = this.previousSliceHeader;
       this.previousSliceHeader = this.sliceHeader;
@@ -320,7 +283,7 @@ final class H264Reader$SampleReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.H264Reader.SampleReader
  * JD-Core Version:    0.7.0.1
  */

@@ -33,35 +33,31 @@ public final class ReflectiveTypeAdapterFactory$Adapter<T>
     try
     {
       paramJsonReader.beginObject();
-      for (;;)
+      while (paramJsonReader.hasNext())
       {
-        if (!paramJsonReader.hasNext()) {
-          break label103;
-        }
-        localObject2 = paramJsonReader.nextName();
+        Object localObject2 = paramJsonReader.nextName();
         localObject2 = (ReflectiveTypeAdapterFactory.BoundField)this.boundFields.get(localObject2);
         if ((localObject2 != null) && (((ReflectiveTypeAdapterFactory.BoundField)localObject2).deserialized)) {
-          break;
+          ((ReflectiveTypeAdapterFactory.BoundField)localObject2).read(paramJsonReader, localObject1);
+        } else {
+          paramJsonReader.skipValue();
         }
-        paramJsonReader.skipValue();
       }
-    }
-    catch (IllegalStateException paramJsonReader)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        throw new JsonSyntaxException(paramJsonReader);
-        ((ReflectiveTypeAdapterFactory.BoundField)localObject2).read(paramJsonReader, localObject1);
-      }
+      paramJsonReader.endObject();
+      return localObject1;
     }
     catch (IllegalAccessException paramJsonReader)
     {
       throw new AssertionError(paramJsonReader);
     }
-    label103:
-    paramJsonReader.endObject();
-    return localObject1;
+    catch (IllegalStateException paramJsonReader)
+    {
+      paramJsonReader = new JsonSyntaxException(paramJsonReader);
+    }
+    for (;;)
+    {
+      throw paramJsonReader;
+    }
   }
   
   public void write(JsonWriter paramJsonWriter, T paramT)
@@ -85,16 +81,21 @@ public final class ReflectiveTypeAdapterFactory$Adapter<T>
         }
       }
       paramJsonWriter.endObject();
+      return;
     }
     catch (IllegalAccessException paramJsonWriter)
     {
-      throw new AssertionError(paramJsonWriter);
+      paramJsonWriter = new AssertionError(paramJsonWriter);
+    }
+    for (;;)
+    {
+      throw paramJsonWriter;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.Adapter
  * JD-Core Version:    0.7.0.1
  */

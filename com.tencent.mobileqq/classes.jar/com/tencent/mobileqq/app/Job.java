@@ -65,8 +65,9 @@ public class Job
     this.mType = paramInt;
     this.mJob = paramRunnable;
     this.mListener = paramIThreadListener;
-    if (this.mListener != null) {
-      this.mListener.onAdded();
+    paramObject = this.mListener;
+    if (paramObject != null) {
+      paramObject.onAdded();
     }
     this.addPoint = SystemClock.uptimeMillis();
     this.canAutoRetrieve = paramBoolean;
@@ -75,91 +76,111 @@ public class Job
   private void afterRun()
   {
     this.cost = (SystemClock.uptimeMillis() - (this.wait + this.addPoint));
-    if (this.mListener != null) {
-      this.mListener.onPostRun();
+    Object localObject = this.mListener;
+    if (localObject != null) {
+      ((ThreadExcutor.IThreadListener)localObject).onPostRun();
     }
     reportRunningTooLong();
-    if (ThreadSetting.logcatBgTaskMonitor) {
-      ThreadLog.printQLog("ThreadManager", "tsp execute-" + toString());
-    }
-    if (ThreadLog.needRecordJob()) {}
-    switch (this.poolNum)
+    if (ThreadSetting.logcatBgTaskMonitor)
     {
-    case 3: 
-    case 4: 
-    default: 
-      return;
-    case 1: 
-      runningJmapInLight.remove(this.mName);
-      return;
-    case 2: 
-      runningJmapInHeavy.remove(this.mName);
-      return;
-    case 5: 
-      runningJmapInDownload.remove(this.mName);
-      return;
-    case 6: 
-      runningJmapInNormal.remove(this.mName);
-      return;
-    case 7: 
-      runningJmapInDB.remove(this.mName);
-      return;
-    case 8: 
-      runningJmapInFile.remove(this.mName);
-      return;
-    case 9: 
-      runningJmapInNet.remove(this.mName);
-      return;
-    case 10: 
-      runningJmapInAync.remove(this.mName);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tsp execute-");
+      ((StringBuilder)localObject).append(toString());
+      ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject).toString());
     }
-    runningJmapInOther.remove(this.mName);
+    if (ThreadLog.needRecordJob())
+    {
+      int i = this.poolNum;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          switch (i)
+          {
+          default: 
+            return;
+          case 11: 
+            runningJmapInOther.remove(this.mName);
+            return;
+          case 10: 
+            runningJmapInAync.remove(this.mName);
+            return;
+          case 9: 
+            runningJmapInNet.remove(this.mName);
+            return;
+          case 8: 
+            runningJmapInFile.remove(this.mName);
+            return;
+          case 7: 
+            runningJmapInDB.remove(this.mName);
+            return;
+          case 6: 
+            runningJmapInNormal.remove(this.mName);
+            return;
+          }
+          runningJmapInDownload.remove(this.mName);
+          return;
+        }
+        runningJmapInHeavy.remove(this.mName);
+        return;
+      }
+      runningJmapInLight.remove(this.mName);
+    }
   }
   
   private void beforeRun()
   {
     this.wait = (SystemClock.uptimeMillis() - this.addPoint);
     JobReporter.reportJobTime(this.wait);
-    if (this.mListener != null) {
-      this.mListener.onPreRun();
+    Object localObject = this.mListener;
+    if (localObject != null) {
+      ((ThreadExcutor.IThreadListener)localObject).onPreRun();
     }
-    if (ThreadSetting.logcatBgTaskMonitor) {
-      ThreadLog.printQLog("ThreadManager", "tsp execute|" + toString());
-    }
-    if (ThreadLog.needRecordJob()) {}
-    switch (this.poolNum)
+    if (ThreadSetting.logcatBgTaskMonitor)
     {
-    case 3: 
-    case 4: 
-    default: 
-      return;
-    case 1: 
-      runningJmapInLight.add(this.mName);
-      return;
-    case 2: 
-      runningJmapInHeavy.add(this.mName);
-      return;
-    case 5: 
-      runningJmapInDownload.add(this.mName);
-      return;
-    case 6: 
-      runningJmapInNormal.add(this.mName);
-      return;
-    case 7: 
-      runningJmapInDB.add(this.mName);
-      return;
-    case 8: 
-      runningJmapInFile.add(this.mName);
-      return;
-    case 9: 
-      runningJmapInNet.add(this.mName);
-      return;
-    case 10: 
-      runningJmapInAync.add(this.mName);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tsp execute|");
+      ((StringBuilder)localObject).append(toString());
+      ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject).toString());
     }
-    runningJmapInOther.add(this.mName);
+    if (ThreadLog.needRecordJob())
+    {
+      int i = this.poolNum;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          switch (i)
+          {
+          default: 
+            return;
+          case 11: 
+            runningJmapInOther.add(this.mName);
+            return;
+          case 10: 
+            runningJmapInAync.add(this.mName);
+            return;
+          case 9: 
+            runningJmapInNet.add(this.mName);
+            return;
+          case 8: 
+            runningJmapInFile.add(this.mName);
+            return;
+          case 7: 
+            runningJmapInDB.add(this.mName);
+            return;
+          case 6: 
+            runningJmapInNormal.add(this.mName);
+            return;
+          }
+          runningJmapInDownload.add(this.mName);
+          return;
+        }
+        runningJmapInHeavy.add(this.mName);
+        return;
+      }
+      runningJmapInLight.add(this.mName);
+    }
   }
   
   private static long get_RUNNING_TIME_OUT()
@@ -174,56 +195,82 @@ public class Job
   {
     if ((ThreadLog.needReportRunOrBlocking()) && (this.cost >= get_RUNNING_TIME_OUT()) && (ThreadManagerV2.OPEN_RDM_REPORT) && (ThreadManagerV2.sThreadWrapContext != null))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("process_" + ThreadSetting.sProcessId).append(" mjobName_" + this.mName).append(" mType_" + this.mType).append(" cost_" + this.cost);
-      ThreadLog.printQLog("Job", localStringBuilder.toString());
-      ThreadManagerV2.sThreadWrapContext.reportRDMException(new TSPRunTooLongCatchedException("max_reportJobRunningTooLong"), "max_reportJobRunningTooLong", localStringBuilder.toString());
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("process_");
+      localStringBuilder2.append(ThreadSetting.sProcessId);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" mjobName_");
+      localStringBuilder2.append(this.mName);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" mType_");
+      localStringBuilder2.append(this.mType);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" cost_");
+      localStringBuilder2.append(this.cost);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      ThreadLog.printQLog("Job", localStringBuilder1.toString());
+      ThreadManagerV2.sThreadWrapContext.reportRDMException(new TSPRunTooLongCatchedException("max_reportJobRunningTooLong"), "max_reportJobRunningTooLong", localStringBuilder1.toString());
     }
   }
   
   public boolean checkShouldRun()
   {
-    Object localObject;
-    if ((this.canAutoRetrieve) && (this.hasKey))
+    boolean bool3 = this.canAutoRetrieve;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      localObject = get();
-      if (localObject == null) {}
+      bool1 = bool2;
+      if (this.hasKey)
+      {
+        Object localObject = get();
+        if (localObject != null)
+        {
+          try
+          {
+            Field localField = this.mJob.getClass().getDeclaredField("this$0");
+            localField.setAccessible(true);
+            localField.set(this.mJob, localObject);
+            return true;
+          }
+          catch (IllegalAccessException localIllegalAccessException)
+          {
+            ThreadLog.printQLog("Job", this.mName, localIllegalAccessException);
+          }
+          catch (IllegalArgumentException localIllegalArgumentException)
+          {
+            ThreadLog.printQLog("Job", this.mName, localIllegalArgumentException);
+          }
+          catch (NoSuchFieldException localNoSuchFieldException)
+          {
+            ThreadLog.printQLog("Job", this.mName, localNoSuchFieldException);
+          }
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.mName);
+          localStringBuilder.append(" never run, becuse outer object is retrieve already");
+          ThreadLog.printQLog("Job", localStringBuilder.toString());
+        }
+        bool1 = false;
+      }
     }
-    else
-    {
-      try
-      {
-        Field localField = this.mJob.getClass().getDeclaredField("this$0");
-        localField.setAccessible(true);
-        localField.set(this.mJob, localObject);
-        return true;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        ThreadLog.printQLog("Job", this.mName, localNoSuchFieldException);
-        return false;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        ThreadLog.printQLog("Job", this.mName, localIllegalArgumentException);
-        return false;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        ThreadLog.printQLog("Job", this.mName, localIllegalAccessException);
-        return false;
-      }
-    }
-    ThreadLog.printQLog("Job", this.mName + " never run, becuse outer object is retrieve already");
-    return false;
+    return bool1;
   }
   
   public int compareTo(Job paramJob)
   {
-    if (this.mType == paramJob.mType) {
+    int i = this.mType;
+    int j = paramJob.mType;
+    if (i == j) {
       return 0;
     }
-    if (this.mType > paramJob.mType) {
+    if (i > j) {
       return -1;
     }
     return 1;
@@ -231,34 +278,39 @@ public class Job
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (paramObject == null) {
-          return false;
-        }
-        if (getClass() != paramObject.getClass()) {
-          return false;
-        }
-        paramObject = (Job)paramObject;
-        if (this.mJob != null) {
-          break;
-        }
-      } while (paramObject.mJob == null);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
       return false;
-    } while (this.mJob.equals(paramObject.mJob));
-    return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (Job)paramObject;
+    Runnable localRunnable = this.mJob;
+    if (localRunnable == null)
+    {
+      if (paramObject.mJob != null) {
+        return false;
+      }
+    }
+    else if (!localRunnable.equals(paramObject.mJob)) {
+      return false;
+    }
+    return true;
   }
   
   public int hashCode()
   {
-    if (this.mJob == null) {}
-    for (int i = 0;; i = this.mJob.hashCode()) {
-      return i + 31;
+    Runnable localRunnable = this.mJob;
+    int i;
+    if (localRunnable == null) {
+      i = 0;
+    } else {
+      i = localRunnable.hashCode();
     }
+    return 31 + i;
   }
   
   public void run()
@@ -270,19 +322,37 @@ public class Job
       afterRun();
       return;
     }
-    ThreadLog.printQLog("Job", this.mName + " is recycled");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append(" is recycled");
+    ThreadLog.printQLog("Job", localStringBuilder.toString());
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append(" cost=").append(this.cost).append(", ").append(this.mName).append("|pool-").append(this.poolNum).append("|t-id=").append(this.mId).append("|mType=").append(this.mType).append("|wait=").append(this.wait).append("|postCost=").append(this.postCost).append("|bCost=").append(this.blcokingCost);
+    localStringBuilder.append(" cost=");
+    localStringBuilder.append(this.cost);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append("|pool-");
+    localStringBuilder.append(this.poolNum);
+    localStringBuilder.append("|t-id=");
+    localStringBuilder.append(this.mId);
+    localStringBuilder.append("|mType=");
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append("|wait=");
+    localStringBuilder.append(this.wait);
+    localStringBuilder.append("|postCost=");
+    localStringBuilder.append(this.postCost);
+    localStringBuilder.append("|bCost=");
+    localStringBuilder.append(this.blcokingCost);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.Job
  * JD-Core Version:    0.7.0.1
  */

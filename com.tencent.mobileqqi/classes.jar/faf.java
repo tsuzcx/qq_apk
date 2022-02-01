@@ -1,75 +1,15 @@
-import SummaryCard.RespCondSearch;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class faf
-  extends FriendListObserver
+  implements Runnable
 {
-  public faf(ConditionSearchManager paramConditionSearchManager) {}
+  public faf(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
   
-  protected void a(long paramLong, boolean paramBoolean, Object paramObject, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "searchseq = " + this.a.jdField_a_of_type_Long + " | seq = " + paramLong);
-    }
-    if (this.a.jdField_a_of_type_Long != paramLong) {
-      return;
-    }
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      paramObject = (RespCondSearch)paramObject;
-      ConditionSearchManager localConditionSearchManager = this.a;
-      if (paramObject.cEndFlag == 0)
-      {
-        paramBoolean = true;
-        localConditionSearchManager.jdField_c_of_type_Boolean = paramBoolean;
-        this.a.m = paramObject.iPage;
-        this.a.b = paramObject.dwSessionID;
-        if (this.a.jdField_a_of_type_JavaUtilList != null) {
-          break label290;
-        }
-        this.a.jdField_a_of_type_JavaUtilList = paramObject.vUserList;
-      }
-      for (;;)
-      {
-        if ((this.a.n >= 2) || ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() >= 10)) || (!this.a.jdField_c_of_type_Boolean)) {
-          break label330;
-        }
-        paramObject = this.a;
-        paramObject.n += 1;
-        ((FriendListHandler)ConditionSearchManager.a(this.a).a(1)).a(this.a.jdField_a_of_type_Long, this.a.m + 1, this.a.b, this.a.j, this.a.k, this.a.l, this.a.jdField_c_of_type_ArrayOfJavaLangString, this.a.d);
-        return;
-        paramBoolean = false;
-        break;
-        label290:
-        if ((paramObject.vUserList != null) && (!paramObject.vUserList.isEmpty())) {
-          this.a.jdField_a_of_type_JavaUtilList.addAll(paramObject.vUserList);
-        }
-      }
-      label330:
-      if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() < 6)) {
-        this.a.jdField_c_of_type_Boolean = false;
-      }
-      this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
-      return;
-    }
-    if ((paramBoolean) && (paramInt != 0))
-    {
-      this.a.jdField_c_of_type_Boolean = false;
-      this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
-      return;
-    }
-    if (this.a.n == 0)
-    {
-      this.a.a(false, null, this.a.jdField_c_of_type_Boolean);
-      return;
-    }
-    this.a.a(true, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_c_of_type_Boolean);
+    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer);
   }
 }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/its" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/iw" android:paddingBottom="@dimen/m2" android:singleLine="true" style="@style/m7" />
+    <FrameLayout android:id="@id/iu7" android:background="@null" android:visibility="gone" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw">
+        <ImageView android:layout_gravity="center" android:id="@id/f5e" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@drawable/bt0" android:scaleType="fitCenter" />
+        <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/iu5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginBottom="@dimen/cd" android:src="@drawable/azm" />
+    </FrameLayout>
+    <ImageView android:gravity="center" android:id="@id/itq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:src="@drawable/azm" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/it7" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/df" android:src="@drawable/pp" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</merge>

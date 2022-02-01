@@ -5,31 +5,40 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ssp;
 
-public class ServiceAccountFolderManager$7
+class ServiceAccountFolderManager$7
   implements Runnable
 {
-  public ServiceAccountFolderManager$7(ssp paramssp, QQAppInterface paramQQAppInterface) {}
+  ServiceAccountFolderManager$7(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("sp_public_account_with_cuin_" + this.a.getCurrentAccountUin(), 0);
+    Object localObject = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_public_account_with_cuin_");
+    localStringBuilder.append(this.a.getCurrentAccountUin());
+    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_read_time", ssp.b(this.this$0));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", ssp.a(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_read_time", ServiceAccountFolderManager.c(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", ServiceAccountFolderManager.b(this.this$0));
       ((SharedPreferences.Editor)localObject).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("ServiceAccountFolderManager", 2, "setFolderLastReadTime->mFolderLastReadTime:" + ssp.b(this.this$0) + ", mFolderLastEnterTime:" + ssp.a(this.this$0));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setFolderLastReadTime->mFolderLastReadTime:");
+        ((StringBuilder)localObject).append(ServiceAccountFolderManager.c(this.this$0));
+        ((StringBuilder)localObject).append(", mFolderLastEnterTime:");
+        ((StringBuilder)localObject).append(ServiceAccountFolderManager.b(this.this$0));
+        QLog.d("ServiceAccountFolderManager", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.7
  * JD-Core Version:    0.7.0.1
  */

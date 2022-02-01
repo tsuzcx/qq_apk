@@ -10,7 +10,10 @@ class GLTextureView$1
   public void run()
   {
     GLTextureView.access$000(this.this$0).onWindowResize(this.this$0.getWidth(), this.this$0.getHeight());
-    Logger.d("GLTextureView", "TextureView mCheckAlphaTask,alpha:" + GLTextureView.access$100(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TextureView mCheckAlphaTask,alpha:");
+    localStringBuilder.append(GLTextureView.access$100(this.this$0));
+    Logger.d("GLTextureView", localStringBuilder.toString());
     if (GLTextureView.access$100(this.this$0) != 1.0F) {
       GLTextureView.access$200(this.this$0, 1.0F);
     }
@@ -18,7 +21,7 @@ class GLTextureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.view.GLTextureView.1
  * JD-Core Version:    0.7.0.1
  */

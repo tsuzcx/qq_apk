@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/qvip_maproam_layout" android:background="@drawable/common_list_overscoll_top_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/qvip_maproam_result_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:layout_alignParentTop="true" />
+    <com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar android:id="@id/qvip_maproam_searchbar" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="@dimen/roam_seach_bar_height" android:layout_alignTop="@id/qvip_maproam_result_list" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <include android:id="@id/qvip_maproam_float_filter_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/roam_filter_height" android:layout_below="@id/qvip_maproam_searchbar" layout="@layout/qvip_maproam_roam_filter" />
+</RelativeLayout>

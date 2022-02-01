@@ -12,7 +12,7 @@ public class ConnectionEventCreator
   
   public ConnectionEvent createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(89950);
+    AppMethodBeat.i(4972);
     int k = SafeParcelReader.validateObjectHeader(paramParcel);
     int j = 0;
     long l3 = 0L;
@@ -71,7 +71,7 @@ public class ConnectionEventCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, k);
     paramParcel = new ConnectionEvent(j, l3, i, str6, str5, str4, str3, str2, str1, l2, l1);
-    AppMethodBeat.o(89950);
+    AppMethodBeat.o(4972);
     return paramParcel;
   }
   
@@ -82,7 +82,7 @@ public class ConnectionEventCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.ConnectionEventCreator
  * JD-Core Version:    0.7.0.1
  */

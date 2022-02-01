@@ -5,14 +5,15 @@ import android.os.ResultReceiver;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.microapp.ext.GameProxy;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.app.MiniAppStateManager;
-import com.tencent.qqmini.sdk.core.proxy.NavigationProxy;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.NavigationProxy;
 import org.json.JSONObject;
 
+@ProxyService(proxy=NavigationProxy.class)
 public class NavigationProxyImpl
   extends NavigationProxy
 {
-  private void savaShowInfoToDB(MiniAppInfo paramMiniAppInfo)
+  private void a(MiniAppInfo paramMiniAppInfo)
   {
     ThreadManagerV2.excute(new NavigationProxyImpl.1(this, paramMiniAppInfo), 32, null, true);
   }
@@ -24,17 +25,14 @@ public class NavigationProxyImpl
   
   public void onAfterLaunchByAppInfo(JSONObject paramJSONObject)
   {
-    savaShowInfoToDB(MiniAppInfo.createMiniAppInfo(paramJSONObject));
+    a(MiniAppInfo.createMiniAppInfo(paramJSONObject));
   }
   
-  public void onBeforeNavigateToMiniProgram()
-  {
-    MiniAppStateManager.getInstance().notifyChange("hideInput");
-  }
+  public void onBeforeNavigateToMiniProgram() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationProxyImpl
  * JD-Core Version:    0.7.0.1
  */

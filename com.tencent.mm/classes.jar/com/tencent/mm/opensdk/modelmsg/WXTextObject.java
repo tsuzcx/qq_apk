@@ -18,27 +18,30 @@ public class WXTextObject
   
   public WXTextObject(String paramString)
   {
+    AppMethodBeat.i(242982);
     this.text = paramString;
+    AppMethodBeat.o(242982);
   }
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(128282);
-    if ((this.text == null) || (this.text.length() == 0) || (this.text.length() > 10240))
+    AppMethodBeat.i(3982);
+    String str = this.text;
+    if ((str != null) && (str.length() != 0) && (this.text.length() <= 10240))
     {
-      Log.e("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
-      AppMethodBeat.o(128282);
-      return false;
+      AppMethodBeat.o(3982);
+      return true;
     }
-    AppMethodBeat.o(128282);
-    return true;
+    Log.e("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
+    AppMethodBeat.o(3982);
+    return false;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128280);
+    AppMethodBeat.i(3980);
     paramBundle.putString("_wxtextobject_text", this.text);
-    AppMethodBeat.o(128280);
+    AppMethodBeat.o(3980);
   }
   
   public int type()
@@ -48,14 +51,14 @@ public class WXTextObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128281);
+    AppMethodBeat.i(3981);
     this.text = paramBundle.getString("_wxtextobject_text");
-    AppMethodBeat.o(128281);
+    AppMethodBeat.o(3981);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXTextObject
  * JD-Core Version:    0.7.0.1
  */

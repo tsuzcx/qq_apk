@@ -1,24 +1,66 @@
 package com.tencent.tavkit.ciimage;
 
+import android.opengl.GLES20;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tavkit.composition.video.Releasable;
 
 public class CIContext
+  implements Releasable
 {
-  private final String TAG = "CIContext@" + Integer.toHexString(hashCode());
-  private CIImageFilter copyFilter;
-  private CIImageFilter filter;
-  @NonNull
+  private RendererWrapper canvasRenderer;
+  private TextureInfo canvasTexture;
+  private RendererWrapper imageRenderer;
+  private final String mTAG;
   private final RenderContext renderContext;
-  private TextureInfo textureInfo;
   
   public CIContext(@NonNull RenderContext paramRenderContext)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CIContext@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.mTAG = localStringBuilder.toString();
     this.renderContext = paramRenderContext;
+  }
+  
+  private void createCanvasTexture(RenderContext paramRenderContext)
+  {
+    if (isRenderInfoChanged(paramRenderContext))
+    {
+      this.canvasTexture.release();
+      this.canvasTexture = null;
+    }
+    if (this.canvasTexture == null) {
+      this.canvasTexture = newTextureInfo(paramRenderContext.width(), paramRenderContext.height());
+    }
+  }
+  
+  private void createFilter()
+  {
+    if (this.canvasRenderer == null)
+    {
+      this.canvasRenderer = new RendererWrapper();
+      this.canvasRenderer.setOutputTextureInfo(this.canvasTexture);
+    }
+  }
+  
+  private boolean isRenderInfoChanged(RenderContext paramRenderContext)
+  {
+    TextureInfo localTextureInfo = this.canvasTexture;
+    boolean bool = false;
+    if (localTextureInfo == null) {
+      return false;
+    }
+    if ((localTextureInfo.width != paramRenderContext.width()) || (this.canvasTexture.height != paramRenderContext.height())) {
+      bool = true;
+    }
+    return bool;
   }
   
   @NonNull
@@ -29,34 +71,52 @@ public class CIContext
   
   public static TextureInfo newTextureInfo(int paramInt1, int paramInt2)
   {
-    return new TextureInfo(RenderContext.createTexture(3553), 3553, paramInt1, paramInt2, null, 0);
+    return newTextureInfo(paramInt1, paramInt2, false);
   }
   
-  private void setDestImage(TextureInfo paramTextureInfo)
+  @NonNull
+  public static TextureInfo newTextureInfo(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (this.filter == null) {
-      this.filter = new CIImageFilter();
+    TextureInfo localTextureInfo = new TextureInfo(RenderContext.createTexture(3553), 3553, paramInt1, paramInt2, null, 0);
+    localTextureInfo.setFormat(6408);
+    if (paramBoolean)
+    {
+      GLES20.glBindTexture(3553, localTextureInfo.textureID);
+      GLES20.glTexImage2D(3553, 0, localTextureInfo.getFormat(), localTextureInfo.width, localTextureInfo.height, 0, localTextureInfo.getFormat(), 5121, null);
     }
-    this.filter.setOutputTextureInfo(paramTextureInfo);
+    return localTextureInfo;
   }
   
-  public void clear(int paramInt)
+  public static TextureInfo newTextureInfo(CGSize paramCGSize)
   {
-    this.filter.clearBufferBuffer(paramInt);
+    return newTextureInfo(paramCGSize.width, paramCGSize.height);
   }
   
+  @Nullable
   public TextureInfo convertImageToTexture(CIImage paramCIImage, TextureInfo paramTextureInfo)
   {
-    if (paramTextureInfo == null) {
-      return null;
+    if ((paramCIImage != null) && (paramTextureInfo != null))
+    {
+      if (this.imageRenderer == null) {
+        this.imageRenderer = new RendererWrapper();
+      }
+      this.imageRenderer.setOutputTextureInfo(paramTextureInfo);
+      this.imageRenderer.clearBufferBuffer(-16777216);
+      paramCIImage.drawTo(this.imageRenderer);
+      return paramTextureInfo;
     }
-    if (this.copyFilter == null) {
-      this.copyFilter = new CIImageFilter();
-    }
-    this.copyFilter.setOutputTextureInfo(paramTextureInfo);
-    this.copyFilter.clearBufferBuffer(-16777216);
-    paramCIImage.draw(this.copyFilter);
-    return paramTextureInfo;
+    return null;
+  }
+  
+  @NonNull
+  public CMSampleBuffer convertToSampleBuffer(@NonNull CIImage paramCIImage, @NonNull CMTime paramCMTime, @NonNull RenderContext paramRenderContext)
+  {
+    paramRenderContext.makeCurrent();
+    createCanvasTexture(paramRenderContext);
+    createFilter();
+    this.canvasRenderer.clearBufferBuffer(-16777216);
+    paramCIImage.drawTo(this.canvasRenderer);
+    return new CMSampleBuffer(paramCMTime, this.canvasTexture, false);
   }
   
   @NonNull
@@ -67,40 +127,33 @@ public class CIContext
   
   public void release()
   {
-    Logger.d(this.TAG, "release: begin, currentThread = " + Thread.currentThread().getName());
-    if (this.filter != null) {
-      this.filter.release();
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release: begin, currentThread = ");
+    localStringBuilder.append(Thread.currentThread().getName());
+    Logger.d((String)localObject, localStringBuilder.toString());
+    localObject = this.canvasRenderer;
+    if (localObject != null) {
+      ((RendererWrapper)localObject).release();
     }
-    if (this.textureInfo != null) {
-      this.textureInfo.release();
+    localObject = this.canvasTexture;
+    if (localObject != null) {
+      ((TextureInfo)localObject).release();
     }
-    if (this.copyFilter != null) {
-      this.copyFilter.release();
+    localObject = this.imageRenderer;
+    if (localObject != null) {
+      ((RendererWrapper)localObject).release();
     }
-    Logger.d(this.TAG, "release: end, currentThread = " + Thread.currentThread().getName());
-  }
-  
-  @NonNull
-  public CMSampleBuffer renderToSampleBuffer(CIImage paramCIImage, CMTime paramCMTime, RenderContext paramRenderContext)
-  {
-    paramRenderContext.makeCurrent();
-    if ((this.textureInfo != null) && ((this.textureInfo.width != paramRenderContext.width()) || (this.textureInfo.height != paramRenderContext.height())))
-    {
-      this.textureInfo.release();
-      this.textureInfo = null;
-    }
-    if (this.textureInfo == null) {
-      this.textureInfo = newTextureInfo(paramRenderContext.width(), paramRenderContext.height());
-    }
-    setDestImage(this.textureInfo);
-    clear(-16777216);
-    paramCIImage.draw(this.filter);
-    return new CMSampleBuffer(paramCMTime, this.textureInfo, false);
+    localObject = this.mTAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release: end, currentThread = ");
+    localStringBuilder.append(Thread.currentThread().getName());
+    Logger.d((String)localObject, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.CIContext
  * JD-Core Version:    0.7.0.1
  */

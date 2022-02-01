@@ -6,8 +6,8 @@ import java.util.HashMap;
 public final class d
   extends c
 {
-  private static HashMap<String, byte[]> f = null;
-  private static HashMap<String, HashMap<String, byte[]>> g = null;
+  private static HashMap<String, byte[]> f;
+  private static HashMap<String, HashMap<String, byte[]>> g;
   private f e = new f();
   
   public d()
@@ -15,66 +15,79 @@ public final class d
     this.e.a = 2;
   }
   
+  public final void a(int paramInt)
+  {
+    this.e.b = 1;
+  }
+  
   public final <T> void a(String paramString, T paramT)
   {
-    if (paramString.startsWith(".")) {
-      throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
+    if (!paramString.startsWith("."))
+    {
+      super.a(paramString, paramT);
+      return;
     }
-    super.a(paramString, paramT);
+    paramT = new StringBuilder("put name can not startwith . , now is ");
+    paramT.append(paramString);
+    throw new IllegalArgumentException(paramT.toString());
   }
   
   public final void a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new i(paramArrayOfByte, 4);
-      paramArrayOfByte.a(this.b);
-      this.e.a(paramArrayOfByte);
-      HashMap localHashMap;
-      if (this.e.a == 3)
+    if (paramArrayOfByte.length >= 4) {
+      try
       {
+        paramArrayOfByte = new i(paramArrayOfByte, 4);
+        paramArrayOfByte.a(this.b);
+        this.e.a(paramArrayOfByte);
+        int i = this.e.a;
+        HashMap localHashMap;
+        if (i == 3)
+        {
+          paramArrayOfByte = new i(this.e.e);
+          paramArrayOfByte.a(this.b);
+          if (f == null)
+          {
+            localHashMap = new HashMap();
+            f = localHashMap;
+            localHashMap.put("", new byte[0]);
+          }
+          this.d = paramArrayOfByte.a(f, 0, false);
+          return;
+        }
         paramArrayOfByte = new i(this.e.e);
         paramArrayOfByte.a(this.b);
-        if (f == null)
+        if (g == null)
         {
+          g = new HashMap();
           localHashMap = new HashMap();
-          f = localHashMap;
           localHashMap.put("", new byte[0]);
+          g.put("", localHashMap);
         }
-        this.d = paramArrayOfByte.a(f, 0, false);
+        this.a = paramArrayOfByte.a(g, 0, false);
+        new HashMap();
         return;
       }
-      paramArrayOfByte = new i(this.e.e);
-      paramArrayOfByte.a(this.b);
-      if (g == null)
+      catch (Exception paramArrayOfByte)
       {
-        g = new HashMap();
-        localHashMap = new HashMap();
-        localHashMap.put("", new byte[0]);
-        g.put("", localHashMap);
+        throw new RuntimeException(paramArrayOfByte);
       }
-      this.a = paramArrayOfByte.a(g, 0, false);
-      new HashMap();
-      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public final byte[] a()
   {
     if (this.e.a == 2)
     {
-      if (this.e.c.equals("")) {
-        throw new IllegalArgumentException("servantName can not is null");
+      if (!this.e.c.equals(""))
+      {
+        if (this.e.d.equals("")) {
+          throw new IllegalArgumentException("funcName can not is null");
+        }
       }
-      if (this.e.d.equals("")) {
-        throw new IllegalArgumentException("funcName can not is null");
+      else {
+        throw new IllegalArgumentException("servantName can not is null");
       }
     }
     else
@@ -90,25 +103,18 @@ public final class d
     ((j)localObject).a(this.b);
     if (this.e.a == 2) {
       ((j)localObject).a(this.a, 0);
-    }
-    for (;;)
-    {
-      this.e.e = l.a(((j)localObject).a());
-      localObject = new j(0);
-      ((j)localObject).a(this.b);
-      this.e.a((j)localObject);
-      localObject = l.a(((j)localObject).a());
-      int i = localObject.length;
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
-      localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
-      return localByteBuffer.array();
+    } else {
       ((j)localObject).a(this.d, 0);
     }
-  }
-  
-  public final void b(int paramInt)
-  {
-    this.e.b = 1;
+    this.e.e = l.a(((j)localObject).a());
+    localObject = new j(0);
+    ((j)localObject).a(this.b);
+    this.e.a((j)localObject);
+    localObject = l.a(((j)localObject).a());
+    int i = localObject.length + 4;
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
+    localByteBuffer.putInt(i).put((byte[])localObject).flip();
+    return localByteBuffer.array();
   }
   
   public final void b(String paramString)
@@ -129,7 +135,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.d
  * JD-Core Version:    0.7.0.1
  */

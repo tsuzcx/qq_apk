@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@id/jbh" android:paddingLeft="@dimen/jc" android:paddingTop="@dimen/jf" android:paddingBottom="@dimen/jb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bnz" style="@style/vy"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

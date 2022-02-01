@@ -2,10 +2,10 @@
 <LinearLayout android:orientation="vertical" android:id="@id/eg3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/ik2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0sp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ik5" android:background="@drawable/jj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="58.0dip" android:text="@string/h_o" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/a3v" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ijf" android:background="@drawable/jj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="58.0dip" android:text="@string/h_f" />
+        <TextView android:textSize="16.0sp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ik5" android:background="@drawable/common_list_item_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="58.0dip" android:text="@string/h_o" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/a3v" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ijf" android:background="@drawable/common_list_item_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="58.0dip" android:text="@string/h_f" />
     </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/i5n" android:background="@drawable/jj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="58.0dip" android:minHeight="58.0dip">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/i5n" android:background="@drawable/common_list_item_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="58.0dip" android:minHeight="58.0dip">
         <ProgressBar android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="12.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/o7" android:indeterminateBehavior="repeat" />
         <TextView android:textSize="16.0sp" android:textColor="@color/a3v" android:gravity="center" android:layout_gravity="center" android:id="@id/f0v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h_z" />
     </LinearLayout>

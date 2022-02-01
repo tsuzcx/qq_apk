@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <TextView android:text="@string/hwz" android:layout_weight="1.0" style="@style/n_" />
+            <EditText android:id="@id/ikf" android:hint="@string/hws" style="@style/n8" />
+            <View style="@style/ot" />
+            <EditText android:id="@id/ike" android:hint="@string/hwt" style="@style/n8" />
+            <View style="@style/ot" />
+            <TextView android:text="@string/hwu" android:layout_weight="1.0" style="@style/n_" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

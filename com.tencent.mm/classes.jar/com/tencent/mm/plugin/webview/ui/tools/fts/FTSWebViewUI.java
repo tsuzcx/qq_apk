@@ -1,91 +1,91 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import android.app.Activity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.an;
+import com.tencent.mm.plugin.websearch.api.as;
+import com.tencent.mm.plugin.webview.c.i;
 
 public class FTSWebViewUI
   extends FTSBaseWebViewUI
 {
-  private void dfQ()
+  private void iAC()
   {
-    AppMethodBeat.i(8546);
-    if (this.scene == 21) {
-      an.Jw(19);
+    AppMethodBeat.i(80714);
+    if (getScene() == 21) {
+      as.atf(19);
     }
-    AppMethodBeat.o(8546);
+    AppMethodBeat.o(80714);
   }
   
-  public final void aMf()
+  public final void cKX()
   {
-    AppMethodBeat.i(8540);
-    super.aMf();
-    an.Ju(this.scene);
-    if (this.scene == 21) {
-      an.Jw(17);
+    AppMethodBeat.i(80708);
+    super.cKX();
+    as.dD(getScene(), this.sessionId);
+    if (getScene() == 21) {
+      as.atf(17);
     }
-    AppMethodBeat.o(8540);
-  }
-  
-  public final void deE()
-  {
-    AppMethodBeat.i(8547);
-    dfQ();
-    super.deE();
-    AppMethodBeat.o(8547);
+    AppMethodBeat.o(80708);
   }
   
   protected final String getHint()
   {
-    AppMethodBeat.i(8539);
-    String str = getString(2131297065);
-    AppMethodBeat.o(8539);
+    AppMethodBeat.i(80707);
+    String str = getString(c.i.app_search);
+    AppMethodBeat.o(80707);
     return str;
+  }
+  
+  public final void izc()
+  {
+    AppMethodBeat.i(80715);
+    iAC();
+    super.izc();
+    AppMethodBeat.o(80715);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(8544);
+    AppMethodBeat.i(80712);
     super.onBackPressed();
-    dfQ();
-    AppMethodBeat.o(8544);
+    iAC();
+    AppMethodBeat.o(80712);
   }
   
   public void onClickCancelBtn(View paramView)
   {
-    AppMethodBeat.i(8545);
+    AppMethodBeat.i(80713);
     super.onClickCancelBtn(paramView);
     finish();
-    AppMethodBeat.o(8545);
+    AppMethodBeat.o(80713);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(8543);
+    AppMethodBeat.i(80711);
     super.onDestroy();
-    an.cZJ();
-    an.cZK();
-    if (this.scene == 21) {
-      an.Jw(18);
+    as.iql();
+    as.iqm();
+    if (getScene() == 21) {
+      as.atf(18);
     }
-    AppMethodBeat.o(8543);
+    AppMethodBeat.o(80711);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(8542);
+    AppMethodBeat.i(80710);
     super.onPause();
-    an.cZI();
-    AppMethodBeat.o(8542);
+    as.iqk();
+    AppMethodBeat.o(80710);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(8541);
+    AppMethodBeat.i(80709);
     super.onResume();
-    an.cZH();
-    AppMethodBeat.o(8541);
+    as.iqj();
+    AppMethodBeat.o(80709);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -96,7 +96,7 @@ public class FTSWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSWebViewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -30,9 +30,9 @@ public abstract class CapabilityClient
     super(paramContext, Wearable.API, null, paramSettings);
   }
   
-  public abstract Task<Void> addListener(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, Uri paramUri, int paramInt);
+  public abstract Task<Void> addListener(OnCapabilityChangedListener paramOnCapabilityChangedListener, Uri paramUri, int paramInt);
   
-  public abstract Task<Void> addListener(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, String paramString);
+  public abstract Task<Void> addListener(OnCapabilityChangedListener paramOnCapabilityChangedListener, String paramString);
   
   public abstract Task<Void> addLocalCapability(String paramString);
   
@@ -40,9 +40,9 @@ public abstract class CapabilityClient
   
   public abstract Task<CapabilityInfo> getCapability(String paramString, int paramInt);
   
-  public abstract Task<Boolean> removeListener(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener);
+  public abstract Task<Boolean> removeListener(OnCapabilityChangedListener paramOnCapabilityChangedListener);
   
-  public abstract Task<Boolean> removeListener(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, String paramString);
+  public abstract Task<Boolean> removeListener(OnCapabilityChangedListener paramOnCapabilityChangedListener, String paramString);
   
   public abstract Task<Void> removeLocalCapability(String paramString);
   
@@ -51,10 +51,16 @@ public abstract class CapabilityClient
   
   @Retention(RetentionPolicy.SOURCE)
   public static @interface NodeFilterType {}
+  
+  public static abstract interface OnCapabilityChangedListener
+    extends CapabilityApi.CapabilityListener
+  {
+    public abstract void onCapabilityChanged(CapabilityInfo paramCapabilityInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.CapabilityClient
  * JD-Core Version:    0.7.0.1
  */

@@ -3,28 +3,30 @@ package com.tencent.av.business.manager.report;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import lkz;
-import llb;
 
-public class VideoNodeReporter$2
+class VideoNodeReporter$2
   implements Runnable
 {
-  public VideoNodeReporter$2(lkz paramlkz, long paramLong) {}
+  VideoNodeReporter$2(VideoNodeReporter paramVideoNodeReporter, long paramLong) {}
   
   public void run()
   {
-    if (this.this$0.a.size() > 0)
+    if (this.this$0.e.size() > 0)
     {
-      Iterator localIterator = this.this$0.a.iterator();
+      Iterator localIterator = this.this$0.e.iterator();
       while (localIterator.hasNext())
       {
-        llb localllb = (llb)localIterator.next();
-        if (localllb.a == -1L)
+        Object localObject = (VideoNodeReporter.SeesionRecord)localIterator.next();
+        if (((VideoNodeReporter.SeesionRecord)localObject).a == -1L)
         {
-          localllb.a = this.a;
-          this.this$0.a(this.a, 26, this.a);
-          QLog.d("VideoNodeReporter", 1, "updateCallerRoomId  updated roomId = " + this.a);
-          lkz.a(this.this$0, -1L);
+          long l = this.a;
+          ((VideoNodeReporter.SeesionRecord)localObject).a = l;
+          this.this$0.a(l, 26, l);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("updateCallerRoomId  updated roomId = ");
+          ((StringBuilder)localObject).append(this.a);
+          QLog.d("VideoNodeReporter", 1, ((StringBuilder)localObject).toString());
+          VideoNodeReporter.a(this.this$0, -1L);
         }
       }
     }
@@ -32,7 +34,7 @@ public class VideoNodeReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.report.VideoNodeReporter.2
  * JD-Core Version:    0.7.0.1
  */

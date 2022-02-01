@@ -1,49 +1,26 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.t.a;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.appcache.a.a;
+import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgStorageInvalidRecordFixer;", "", "()V", "TAG", "", "removeInvalidReleaseRecords", "", "plugin-appbrand-integration_release"})
-public final class az
+class az
+  extends a
 {
-  public static final az gWZ;
+  public final String qGf;
   
-  static
+  az(String paramString1, int paramInt, String paramString2, String paramString3, a.a parama)
   {
-    AppMethodBeat.i(134468);
-    gWZ = new az();
-    AppMethodBeat.o(134468);
-  }
-  
-  public static final void awh()
-  {
-    AppMethodBeat.i(134467);
-    t.a locala = g.auB();
-    if (locala != null) {
-      try
-      {
-        locala.execSQL("AppBrandWxaPkgManifestRecord", "delete from AppBrandWxaPkgManifestRecord where debugType=0 and version=0");
-        AppMethodBeat.o(134467);
-        return;
-      }
-      catch (Exception localException)
-      {
-        ab.printErrStackTrace("MiroMsg.WxaPkgStorageInvalidRecordFixer", (Throwable)localException, " removeInvalidReleaseRecords", new Object[0]);
-        y localy = y.BMg;
-        AppMethodBeat.o(134467);
-        return;
-      }
-    }
-    AppMethodBeat.o(134467);
+    super(str1, str2 + String.format("debug_%d_%d_%d", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(Util.nullAsNil(parama.append()).hashCode()) }), paramString3, paramString1, String.format("%s_%d_%s", new Object[] { paramString1, Integer.valueOf(paramInt), Util.nullAsNil(parama.append()) }).hashCode(), paramInt);
+    AppMethodBeat.i(320226);
+    this.qGf = paramString2;
+    AppMethodBeat.o(320226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.az
  * JD-Core Version:    0.7.0.1
  */

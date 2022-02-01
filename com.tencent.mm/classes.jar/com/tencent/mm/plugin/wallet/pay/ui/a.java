@@ -2,63 +2,113 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.he;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.autogen.a.kv;
+import com.tencent.mm.autogen.a.kv.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.ui.l;
 
 public final class a
 {
-  private Dialog gKM = null;
+  a Vnb = null;
   private Context mContext;
-  a.a tVH = null;
+  private Dialog tipDialog = null;
   
-  public a(Context paramContext, a.a parama)
+  public a(Context paramContext, a parama)
   {
     this.mContext = paramContext;
-    this.tVH = parama;
+    this.Vnb = parama;
   }
   
-  public final void a(boolean paramBoolean, int paramInt, String paramString)
+  public final void closeTipDialog()
   {
-    AppMethodBeat.i(45954);
-    he localhe = new he();
-    localhe.cwh = null;
-    localhe.cwg.cwi = paramBoolean;
-    if ((paramBoolean) && ((this.gKM == null) || ((this.gKM != null) && (!this.gKM.isShowing()))))
+    AppMethodBeat.i(69304);
+    if (this.tipDialog != null)
     {
-      if (this.gKM != null) {
-        this.gKM.dismiss();
+      this.tipDialog.dismiss();
+      this.tipDialog = null;
+    }
+    AppMethodBeat.o(69304);
+  }
+  
+  public final void d(boolean paramBoolean, int paramInt, String paramString)
+  {
+    AppMethodBeat.i(69303);
+    final kv localkv = new kv();
+    localkv.hMv = null;
+    localkv.hMu.hMw = paramBoolean;
+    if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
+    {
+      if (this.tipDialog != null) {
+        this.tipDialog.dismiss();
       }
-      this.gKM = g.a(this.mContext, false, new a.2(this));
+      this.tipDialog = l.a(this.mContext, false, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(69302);
+          a.this.closeTipDialog();
+          AppMethodBeat.o(69302);
+        }
+      });
     }
-    localhe.cwg.cwj = paramInt;
-    localhe.cwg.cwk = paramString;
-    localhe.callback = new a.1(this, localhe);
-    com.tencent.mm.sdk.b.a.ymk.a(localhe, Looper.getMainLooper());
-    AppMethodBeat.o(45954);
-  }
-  
-  public final void cRP()
-  {
-    AppMethodBeat.i(45955);
-    if (this.gKM != null)
+    localkv.hMu.hMx = paramInt;
+    localkv.hMu.hMy = paramString;
+    localkv.callback = new Runnable()
     {
-      this.gKM.dismiss();
-      this.gKM = null;
-    }
-    AppMethodBeat.o(45955);
+      public final void run()
+      {
+        AppMethodBeat.i(69301);
+        Log.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback");
+        kv.b localb = localkv.hMv;
+        if ((localb != null) && (localb.isSuccess))
+        {
+          Log.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
+          a.this.closeTipDialog();
+          if (a.this.Vnb != null)
+          {
+            a.this.Vnb.g(localb.isSuccess, localb.hMz, localb.hMA);
+            AppMethodBeat.o(69301);
+          }
+        }
+        else
+        {
+          if ((localb != null) && (!localb.isSuccess))
+          {
+            a.this.closeTipDialog();
+            if (a.this.Vnb != null) {
+              a.this.Vnb.g(localb.isSuccess, localb.hMz, localb.hMA);
+            }
+            Log.e("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
+            AppMethodBeat.o(69301);
+            return;
+          }
+          Log.i("MicroMsg.RegenFingerPrintRsaKey", "GenFingerPrintRsaKeyEvent callback, result == null");
+        }
+        AppMethodBeat.o(69301);
+      }
+    };
+    localkv.asyncPublish(Looper.getMainLooper());
+    AppMethodBeat.o(69303);
   }
   
   public final void release()
   {
-    this.tVH = null;
+    this.Vnb = null;
     this.mContext = null;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void g(boolean paramBoolean, String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,11 @@ public class AIAttr
   
   public Object getAvailableData(String paramString)
   {
-    if (this.aiAttrProvider == null) {
+    AIAttrProvider localAIAttrProvider = this.aiAttrProvider;
+    if (localAIAttrProvider == null) {
       return null;
     }
-    return this.aiAttrProvider.getAvailableData(paramString);
+    return localAIAttrProvider.getAvailableData(paramString);
   }
   
   public Object getFaceAttr()
@@ -39,18 +40,20 @@ public class AIAttr
   
   public Object getRealtimeData(String paramString)
   {
-    if (this.aiAttrProvider == null) {
+    AIAttrProvider localAIAttrProvider = this.aiAttrProvider;
+    if (localAIAttrProvider == null) {
       return null;
     }
-    return this.aiAttrProvider.getRealtimeData(paramString);
+    return localAIAttrProvider.getRealtimeData(paramString);
   }
   
   public float[] getRotationMatrix()
   {
-    if (this.aiAttrProvider == null) {
+    AIAttrProvider localAIAttrProvider = this.aiAttrProvider;
+    if (localAIAttrProvider == null) {
       return null;
     }
-    return this.aiAttrProvider.getRotationMatrix();
+    return localAIAttrProvider.getRotationMatrix();
   }
   
   public long getSurfaceTime()
@@ -70,8 +73,9 @@ public class AIAttr
   
   public void setFaceAttr(Object paramObject)
   {
-    if (this.aiAttrProvider != null) {
-      this.aiAttrProvider.setFaceAttr(paramObject);
+    AIAttrProvider localAIAttrProvider = this.aiAttrProvider;
+    if (localAIAttrProvider != null) {
+      localAIAttrProvider.setFaceAttr(paramObject);
     }
   }
   
@@ -108,7 +112,7 @@ public class AIAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.plugin.core.AIAttr
  * JD-Core Version:    0.7.0.1
  */

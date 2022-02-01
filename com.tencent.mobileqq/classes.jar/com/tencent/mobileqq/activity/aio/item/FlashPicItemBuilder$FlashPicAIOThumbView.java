@@ -8,16 +8,11 @@ import com.tencent.mobileqq.widget.BubbleImageView;
 public class FlashPicItemBuilder$FlashPicAIOThumbView
   extends BubbleImageView
 {
-  boolean c;
+  boolean a;
   
   public FlashPicItemBuilder$FlashPicAIOThumbView(Context paramContext)
   {
     super(paramContext);
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
@@ -25,10 +20,15 @@ public class FlashPicItemBuilder$FlashPicAIOThumbView
     super.onLoadSuccessed(paramURLDrawable);
     ThreadManager.postImmediately(new FlashPicItemBuilder.FlashPicAIOThumbView.1(this), null, true);
   }
+  
+  void setCommonFlashPic(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView
  * JD-Core Version:    0.7.0.1
  */

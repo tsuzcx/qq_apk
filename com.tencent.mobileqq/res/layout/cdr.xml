@@ -7,7 +7,7 @@
         <ImageView android:id="@id/cp9" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:src="@drawable/dfw" android:scaleType="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
         <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_below="@id/close">
             <com.qzone.business.plusunion.plusoperation.OverScrollView android:id="@id/iia" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="40.0dip">
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="vertical" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
                     <RelativeLayout android:id="@id/lxf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
                     <RelativeLayout android:id="@id/m58" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
                         <RelativeLayout android:id="@id/m5a" android:background="@drawable/hia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">

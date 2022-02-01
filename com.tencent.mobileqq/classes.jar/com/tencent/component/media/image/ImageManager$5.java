@@ -14,26 +14,31 @@ class ImageManager$5
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      ImageManager.access$200(this.this$0, paramMessage);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 1000) {
+            return;
+          }
+          ImageManager.access$500(this.this$0, paramMessage);
+          return;
+        }
+        ImageManager.access$400(this.this$0, paramMessage);
+        return;
+      }
       ImageManager.access$300(this.this$0, paramMessage);
       return;
-    case 2: 
-      ImageManager.access$400(this.this$0, paramMessage);
-      return;
     }
-    ImageManager.access$500(this.this$0, paramMessage);
+    ImageManager.access$200(this.this$0, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.ImageManager.5
  * JD-Core Version:    0.7.0.1
  */

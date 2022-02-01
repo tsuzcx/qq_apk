@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.wenote.model.a;
 public class s
   extends o
 {
-  public String eSM;
-  public String fBq;
+  public double XAR;
   public double lat;
   public double lng;
-  public double scale;
+  public String oDI;
+  public String poiName;
 }
 
 

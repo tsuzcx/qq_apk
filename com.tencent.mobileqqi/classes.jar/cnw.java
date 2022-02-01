@@ -1,28 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class cnw
-  implements View.OnClickListener
+class cnw
+  implements ActionSheet.OnButtonClickListener
 {
-  public cnw(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  cnw(cnv paramcnv, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramView.getId() == 2131230986)
+    switch (paramInt)
     {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
-      {
-        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-        localActionSheet.a(2131561928, 3);
-        localActionSheet.d(2131561746);
-        localActionSheet.a(new cnx(this, paramView, localActionSheet));
-        localActionSheet.show();
-      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_Cnv.a.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
     }
   }
 }

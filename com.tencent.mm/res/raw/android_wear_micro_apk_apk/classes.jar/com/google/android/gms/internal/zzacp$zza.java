@@ -8,22 +8,22 @@ public final class zzacp$zza
   extends zza
 {
   public static final Parcelable.Creator<zza> CREATOR = new bw();
-  final String PG;
-  final int PH;
+  final String Rv;
+  final int Rw;
   final int versionCode;
   
   zzacp$zza(int paramInt1, String paramString, int paramInt2)
   {
     this.versionCode = paramInt1;
-    this.PG = paramString;
-    this.PH = paramInt2;
+    this.Rv = paramString;
+    this.Rw = paramInt2;
   }
   
   zzacp$zza(String paramString, int paramInt)
   {
     this.versionCode = 1;
-    this.PG = paramString;
-    this.PH = paramInt;
+    this.Rv = paramString;
+    this.Rw = paramInt;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)

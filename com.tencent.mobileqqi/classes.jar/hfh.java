@@ -1,5 +1,5 @@
+import com.tencent.mobileqq.utils.CameraUtil;
 import com.tencent.mobileqq.widget.CameraFrameLayout;
-import com.tencent.mobileqq.widget.CameraPreview;
 
 public class hfh
   implements Runnable
@@ -8,8 +8,14 @@ public class hfh
   
   public void run()
   {
-    if (CameraFrameLayout.a(this.a) != null) {
-      CameraFrameLayout.a(this.a).a(this.a.getWidth(), this.a.getHeight());
+    synchronized (CameraFrameLayout.a(this.a))
+    {
+      if (CameraFrameLayout.a(this.a) != null)
+      {
+        CameraUtil.a(CameraFrameLayout.a(this.a));
+        CameraFrameLayout.a(this.a, null);
+      }
+      return;
     }
   }
 }

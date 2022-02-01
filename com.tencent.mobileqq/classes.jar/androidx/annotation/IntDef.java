@@ -17,7 +17,7 @@ public @interface IntDef
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.annotation.IntDef
  * JD-Core Version:    0.7.0.1
  */

@@ -8,27 +8,27 @@ public class Util4Phone
   
   public static boolean isSupportNeon()
   {
-    AppMethodBeat.i(128386);
+    AppMethodBeat.i(114158);
     boolean bool1 = false;
     try
     {
       boolean bool2 = Util4NativeCommon.isSupportNeon();
       bool1 = bool2;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
         Logger.e("Util4Phone", "isSupportNeon", localThrowable);
       }
     }
-    AppMethodBeat.o(128386);
+    AppMethodBeat.o(114158);
     return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.Util4Phone
  * JD-Core Version:    0.7.0.1
  */

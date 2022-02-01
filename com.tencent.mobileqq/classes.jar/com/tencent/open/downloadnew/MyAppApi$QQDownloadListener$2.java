@@ -1,21 +1,18 @@
 package com.tencent.open.downloadnew;
 
-import bfok;
-import bfpj;
-
-public class MyAppApi$QQDownloadListener$2
+class MyAppApi$QQDownloadListener$2
   implements Runnable
 {
-  public MyAppApi$QQDownloadListener$2(bfpj parambfpj) {}
+  MyAppApi$QQDownloadListener$2(MyAppApi.QQDownloadListener paramQQDownloadListener) {}
   
   public void run()
   {
-    bfok.a().d();
+    DownloadManager.b().h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.QQDownloadListener.2
  * JD-Core Version:    0.7.0.1
  */

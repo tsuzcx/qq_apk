@@ -1,51 +1,67 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azcs;
-import baub;
-import baue;
-import bavg;
-import bdin;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public class PtvTemplateManager$15
+class PtvTemplateManager$15
   implements Runnable
 {
-  PtvTemplateManager$15(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.DoodleInfo paramDoodleInfo) {}
-  
   public void run()
   {
-    if (this.this$0.a(this.a, true)) {
-      this.a.doodleUsable = true;
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      QQAppInterface localQQAppInterface;
-      do
-      {
-        return;
-        localQQAppInterface = this.this$0.a();
-        if (localQQAppInterface != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "reqApp:" + localQQAppInterface);
+      boolean bool;
+      if (this.a != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      QLog.i("PtvTemplateManager", 2, String.format("initBlessSpecialPendantConfigInfo, app[%s], isUpdateedByServer[%s], cur_runnable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.this$0.D), Integer.valueOf(hashCode()) }));
+    }
+    if (this.this$0.D) {
       return;
-      baub localbaub = new baub();
-      localbaub.jdField_a_of_type_Baug = new azcs(this);
-      localbaub.jdField_a_of_type_JavaLangString = this.a.doodleUrl;
-      localbaub.jdField_a_of_type_Int = 0;
-      localbaub.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.b, this.a.doodleName).getPath();
-      localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
-      localQQAppInterface.getNetEngine(0).a(localbaub);
-    } while (!QLog.isColorLevel());
-    QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.a.doodleUrl);
+    }
+    Object localObject1 = PtvTemplateManager.a(this.b);
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      return;
+    }
+    localObject1 = PtvTemplateManager.a(this.this$0, (String)localObject1);
+    if (localObject1 != null)
+    {
+      if (((List)localObject1).isEmpty()) {
+        return;
+      }
+      ??? = ((List)localObject1).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)???).next();
+        if (localPtvTemplateInfo != null)
+        {
+          localPtvTemplateInfo.usable = this.this$0.a(localPtvTemplateInfo);
+          localPtvTemplateInfo.businessID = 1;
+        }
+      }
+      synchronized (this.this$0.C)
+      {
+        if (this.this$0.D) {
+          return;
+        }
+        this.this$0.C.clear();
+        this.this$0.C.addAll((Collection)localObject1);
+        this.this$0.E = true;
+        PtvTemplateManager.a(this.this$0);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.15
  * JD-Core Version:    0.7.0.1
  */

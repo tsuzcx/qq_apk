@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class MsgType0x210SubMsgType0x20
   extends JceStruct
 {
-  public long dwOpType;
-  public long dwType;
-  public long dwUin;
+  public long dwOpType = 0L;
+  public long dwType = 0L;
+  public long dwUin = 0L;
   public String strRemaek = "";
   
   public MsgType0x210SubMsgType0x20() {}
@@ -35,14 +35,15 @@ public final class MsgType0x210SubMsgType0x20
     paramJceOutputStream.write(this.dwOpType, 0);
     paramJceOutputStream.write(this.dwType, 1);
     paramJceOutputStream.write(this.dwUin, 2);
-    if (this.strRemaek != null) {
-      paramJceOutputStream.write(this.strRemaek, 3);
+    String str = this.strRemaek;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.MsgType0x210SubMsgType0x20
  * JD-Core Version:    0.7.0.1
  */

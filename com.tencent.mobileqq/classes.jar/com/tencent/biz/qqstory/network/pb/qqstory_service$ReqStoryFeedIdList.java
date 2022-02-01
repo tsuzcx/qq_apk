@@ -21,13 +21,14 @@ public final class qqstory_service$ReqStoryFeedIdList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50 }, new String[] { "start_cookie", "coordinate", "gps", "client_version", "bind_uin", "bind_uin_login_sig" }, new Object[] { localByteStringMicro, Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L), null }, ReqStoryFeedIdList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50 }, new String[] { "start_cookie", "coordinate", "gps", "client_version", "bind_uin", "bind_uin_login_sig" }, new Object[] { localByteStringMicro, localInteger, null, localInteger, Long.valueOf(0L), null }, ReqStoryFeedIdList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList
  * JD-Core Version:    0.7.0.1
  */

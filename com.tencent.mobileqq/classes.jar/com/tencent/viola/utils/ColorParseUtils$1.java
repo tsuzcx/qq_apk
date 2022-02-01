@@ -1,6 +1,6 @@
 package com.tencent.viola.utils;
 
-final class ColorParseUtils$1
+class ColorParseUtils$1
   implements SingleFunctionParser.FlatMapper<Integer>
 {
   public Integer map(String paramString)
@@ -9,19 +9,15 @@ final class ColorParseUtils$1
     int j = ViolaUtils.parseUnitOrPercent(paramString, 255);
     if (j < 0) {
       i = 0;
+    } else if (j <= 255) {
+      i = j;
     }
-    for (;;)
-    {
-      return Integer.valueOf(i);
-      if (j <= 255) {
-        i = j;
-      }
-    }
+    return Integer.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.ColorParseUtils.1
  * JD-Core Version:    0.7.0.1
  */

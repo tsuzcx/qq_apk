@@ -7,12 +7,11 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import wlj;
 
 public class CardItem$CardVideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardVideoInfo> CREATOR = new wlj();
+  public static final Parcelable.Creator<CardVideoInfo> CREATOR = new CardItem.CardVideoInfo.1();
   private qqstory_struct.CardVideoInfo a;
   
   public CardItem$CardVideoInfo(Parcel paramParcel)
@@ -48,7 +47,7 @@ public class CardItem$CardVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo
  * JD-Core Version:    0.7.0.1
  */

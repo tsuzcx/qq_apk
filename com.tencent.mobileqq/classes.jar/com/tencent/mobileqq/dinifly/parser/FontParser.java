@@ -1,63 +1,53 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.model.Font;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class FontParser
 {
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "fFamily", "fName", "fStyle", "ascent" });
+  
   static Font parse(JsonReader paramJsonReader)
   {
-    String str3 = null;
-    float f = 0.0F;
     paramJsonReader.beginObject();
+    String str3 = null;
     String str2 = null;
-    String str1 = null;
-    label14:
+    String str1 = str2;
+    float f = 0.0F;
     while (paramJsonReader.hasNext())
     {
-      String str4 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str4.hashCode())
+      int i = paramJsonReader.selectName(NAMES);
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label14;
-          if (str4.equals("fFamily"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (str4.equals("fName"))
+            if (i != 3)
             {
-              i = 1;
-              continue;
-              if (str4.equals("fStyle"))
-              {
-                i = 2;
-                continue;
-                if (str4.equals("ascent")) {
-                  i = 3;
-                }
-              }
+              paramJsonReader.skipName();
+              paramJsonReader.skipValue();
+            }
+            else
+            {
+              f = (float)paramJsonReader.nextDouble();
             }
           }
-          break;
+          else {
+            str1 = paramJsonReader.nextString();
+          }
+        }
+        else {
+          str2 = paramJsonReader.nextString();
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      str2 = paramJsonReader.nextString();
-      continue;
-      str3 = paramJsonReader.nextString();
-      continue;
-      f = (float)paramJsonReader.nextDouble();
+      else {
+        str3 = paramJsonReader.nextString();
+      }
     }
     paramJsonReader.endObject();
-    return new Font(str1, str2, str3, f);
+    return new Font(str3, str2, str1, f);
   }
 }
 

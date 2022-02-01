@@ -4,45 +4,59 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import org.java_websocket.WebSocketImpl;
-import org.slf4j.Logger;
 
 public class WebSocketServer$WebSocketWorker
   extends Thread
 {
   private BlockingQueue<WebSocketImpl> iqueue = new LinkedBlockingQueue();
   
-  static
-  {
-    if (!WebSocketServer.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public WebSocketServer$WebSocketWorker(WebSocketServer paramWebSocketServer)
   {
-    setName("WebSocketWorker-" + getId());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WebSocketWorker-");
+    localStringBuilder.append(getId());
+    setName(localStringBuilder.toString());
     setUncaughtExceptionHandler(new WebSocketServer.WebSocketWorker.1(this, paramWebSocketServer));
   }
   
+  /* Error */
   private void doDecode(WebSocketImpl paramWebSocketImpl, ByteBuffer paramByteBuffer)
   {
-    try
-    {
-      paramWebSocketImpl.decode(paramByteBuffer);
-      return;
-    }
-    catch (Exception paramWebSocketImpl)
-    {
-      WebSocketServer.access$000().error("Error while reading from remote connection", paramWebSocketImpl);
-      return;
-    }
-    finally
-    {
-      WebSocketServer.access$200(this.this$0, paramByteBuffer);
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: aload_2
+    //   2: invokevirtual 69	org/java_websocket/WebSocketImpl:decode	(Ljava/nio/ByteBuffer;)V
+    //   5: aload_0
+    //   6: getfield 19	org/java_websocket/server/WebSocketServer$WebSocketWorker:this$0	Lorg/java_websocket/server/WebSocketServer;
+    //   9: aload_2
+    //   10: invokestatic 75	org/java_websocket/server/WebSocketServer:access$200	(Lorg/java_websocket/server/WebSocketServer;Ljava/nio/ByteBuffer;)V
+    //   13: return
+    //   14: astore_1
+    //   15: goto +18 -> 33
+    //   18: astore_1
+    //   19: invokestatic 79	org/java_websocket/server/WebSocketServer:access$000	()Lorg/slf4j/Logger;
+    //   22: ldc 81
+    //   24: aload_1
+    //   25: invokeinterface 87 3 0
+    //   30: goto -25 -> 5
+    //   33: aload_0
+    //   34: getfield 19	org/java_websocket/server/WebSocketServer$WebSocketWorker:this$0	Lorg/java_websocket/server/WebSocketServer;
+    //   37: aload_2
+    //   38: invokestatic 75	org/java_websocket/server/WebSocketServer:access$200	(Lorg/java_websocket/server/WebSocketServer;Ljava/nio/ByteBuffer;)V
+    //   41: goto +5 -> 46
+    //   44: aload_1
+    //   45: athrow
+    //   46: goto -2 -> 44
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	49	0	this	WebSocketWorker
+    //   0	49	1	paramWebSocketImpl	WebSocketImpl
+    //   0	49	2	paramByteBuffer	ByteBuffer
+    // Exception table:
+    //   from	to	target	type
+    //   0	5	14	finally
+    //   19	30	14	finally
+    //   0	5	18	java/lang/Exception
   }
   
   public void put(WebSocketImpl paramWebSocketImpl)
@@ -54,39 +68,37 @@ public class WebSocketServer$WebSocketWorker
   {
     try
     {
-      localWebSocketImpl = (WebSocketImpl)this.iqueue.take();
-    }
-    catch (InterruptedException localInterruptedException)
-    {
       try
       {
         WebSocketImpl localWebSocketImpl;
-        ByteBuffer localByteBuffer = (ByteBuffer)localWebSocketImpl.inQueue.poll();
-        if ((!$assertionsDisabled) && (localByteBuffer == null))
+        for (;;)
         {
-          throw new AssertionError();
-          localInterruptedException = localInterruptedException;
-          Thread.currentThread().interrupt();
-          return;
+          localWebSocketImpl = (WebSocketImpl)this.iqueue.take();
+          try
+          {
+            doDecode(localWebSocketImpl, (ByteBuffer)localWebSocketImpl.inQueue.poll());
+          }
+          catch (RuntimeException localRuntimeException1) {}
         }
-        doDecode(localInterruptedException, localByteBuffer);
+        WebSocketServer.access$100(this.this$0, localWebSocketImpl, localRuntimeException2);
       }
-      catch (RuntimeException localRuntimeException1) {}
-      WebSocketServer.access$100(this.this$0, localInterruptedException, localRuntimeException1);
+      catch (RuntimeException localRuntimeException2)
+      {
+        localWebSocketImpl = null;
+      }
       return;
     }
-    catch (RuntimeException localRuntimeException2)
+    catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        Object localObject = null;
-      }
+      label50:
+      break label50;
     }
+    Thread.currentThread().interrupt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.server.WebSocketServer.WebSocketWorker
  * JD-Core Version:    0.7.0.1
  */

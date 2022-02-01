@@ -19,22 +19,22 @@ class AVSDKLibLoader
   
   public static boolean loadSdkLibrary()
   {
-    if (!sLoadLibrary) {
-      if ((!SoUtil.loadSo("stlport_shared")) || (!SoUtil.loadSo("tmg_xplatform")) || (!SoUtil.loadSo("UDT")) || (!SoUtil.loadSo("qavsdk"))) {
-        break label48;
-      }
-    }
-    label48:
-    for (boolean bool = true;; bool = false)
+    if (!sLoadLibrary)
     {
+      boolean bool;
+      if ((SoUtil.loadSo("stlport_shared")) && (SoUtil.loadSo("tmg_xplatform")) && (SoUtil.loadSo("UDT")) && (SoUtil.loadSo("qavsdk"))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       sLoadLibrary = bool;
-      return sLoadLibrary;
     }
+    return sLoadLibrary;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVSDKLibLoader
  * JD-Core Version:    0.7.0.1
  */

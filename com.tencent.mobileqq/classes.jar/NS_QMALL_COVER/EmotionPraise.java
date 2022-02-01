@@ -18,16 +18,6 @@ public final class EmotionPraise
   public String strPraisePic = "";
   public String strPraiseZip = "";
   
-  static
-  {
-    if (!EmotionPraise.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public EmotionPraise() {}
   
   public EmotionPraise(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -48,18 +38,17 @@ public final class EmotionPraise
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -88,13 +77,40 @@ public final class EmotionPraise
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (EmotionPraise)paramObject;
-    } while ((!JceUtil.equals(this.iItemId, paramObject.iItemId)) || (!JceUtil.equals(this.strName, paramObject.strName)) || (!JceUtil.equals(this.strItemSummary, paramObject.strItemSummary)) || (!JceUtil.equals(this.strPraisePic, paramObject.strPraisePic)) || (!JceUtil.equals(this.strPraiseListPic, paramObject.strPraiseListPic)) || (!JceUtil.equals(this.strPraiseZip, paramObject.strPraiseZip)) || (!JceUtil.equals(this.strEmotion, paramObject.strEmotion)));
-    return true;
+    }
+    paramObject = (EmotionPraise)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.iItemId, paramObject.iItemId))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.strName, paramObject.strName))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.strItemSummary, paramObject.strItemSummary))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.strPraisePic, paramObject.strPraisePic))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.strPraiseListPic, paramObject.strPraiseListPic))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.strPraiseZip, paramObject.strPraiseZip))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.strEmotion, paramObject.strEmotion)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -199,29 +215,35 @@ public final class EmotionPraise
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 1);
+    String str = this.strName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strItemSummary != null) {
-      paramJceOutputStream.write(this.strItemSummary, 2);
+    str = this.strItemSummary;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strPraisePic != null) {
-      paramJceOutputStream.write(this.strPraisePic, 3);
+    str = this.strPraisePic;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strPraiseListPic != null) {
-      paramJceOutputStream.write(this.strPraiseListPic, 4);
+    str = this.strPraiseListPic;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.strPraiseZip != null) {
-      paramJceOutputStream.write(this.strPraiseZip, 5);
+    str = this.strPraiseZip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.strEmotion != null) {
-      paramJceOutputStream.write(this.strEmotion, 6);
+    str = this.strEmotion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.EmotionPraise
  * JD-Core Version:    0.7.0.1
  */

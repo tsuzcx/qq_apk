@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/n5g" android:layout_width="260.0dip" android:layout_height="24.0dip" android:layout_marginTop="12.0dip" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+</RelativeLayout>

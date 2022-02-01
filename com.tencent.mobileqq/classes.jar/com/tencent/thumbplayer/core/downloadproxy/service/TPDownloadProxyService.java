@@ -27,16 +27,16 @@ public class TPDownloadProxyService
       Iterator localIterator = ((ActivityManager)getSystemService("activity")).getRunningAppProcesses().iterator();
       while (localIterator.hasNext())
       {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-        String str = localRunningAppProcessInfo.processName;
+        localObject = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+        String str = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
         if ((!TextUtils.isEmpty(str)) && (str.equals(getPackageName())))
         {
-          if ((this.pid != -1) && (this.pid != localRunningAppProcessInfo.pid))
+          if ((this.pid != -1) && (this.pid != ((ActivityManager.RunningAppProcessInfo)localObject).pid))
           {
-            this.pid = localRunningAppProcessInfo.pid;
+            this.pid = ((ActivityManager.RunningAppProcessInfo)localObject).pid;
             return false;
           }
-          this.pid = localRunningAppProcessInfo.pid;
+          this.pid = ((ActivityManager.RunningAppProcessInfo)localObject).pid;
           TPDLProxyLog.i("TPDownloadProxyService", 0, "tpdlnative", "app main exist!");
           return true;
         }
@@ -44,7 +44,10 @@ public class TPDownloadProxyService
     }
     catch (Throwable localThrowable)
     {
-      TPDLProxyLog.i("TPDownloadProxyService", 0, "tpdlnative", "isExistMainProcess failed, error:" + localThrowable.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isExistMainProcess failed, error:");
+      ((StringBuilder)localObject).append(localThrowable.toString());
+      TPDLProxyLog.i("TPDownloadProxyService", 0, "tpdlnative", ((StringBuilder)localObject).toString());
     }
     return false;
   }
@@ -75,26 +78,24 @@ public class TPDownloadProxyService
   {
     TPDLProxyLog.i("TPDownloadProxyService", 0, "tpdlnative", "on unbind!");
     super.onUnbind(paramIntent);
-    if (!isExistMainProcess()) {}
-    try
-    {
-      TPDownloadProxyNative.getInstance().stopAllDownload(3);
-      TPListenerManager.getInstance().removeAllPlayListener();
-      TPListenerManager.getInstance().removeAllPreLoadListener();
-      return true;
-    }
-    catch (Throwable paramIntent)
-    {
-      for (;;)
+    if (!isExistMainProcess()) {
+      try
+      {
+        TPDownloadProxyNative.getInstance().stopAllDownload(3);
+        TPListenerManager.getInstance().removeAllPlayListener();
+        TPListenerManager.getInstance().removeAllPreLoadListener();
+      }
+      catch (Throwable paramIntent)
       {
         TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", paramIntent.toString());
       }
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.service.TPDownloadProxyService
  * JD-Core Version:    0.7.0.1
  */

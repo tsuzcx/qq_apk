@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="f" parent="@style/f7">
-        <item name="ry">i2</item>
-        <item name="rz">f0</item>
-    </style>
-</resources>

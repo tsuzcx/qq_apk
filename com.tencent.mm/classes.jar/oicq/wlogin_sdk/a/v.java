@@ -5,12 +5,12 @@ public final class v
 {
   public v()
   {
-    this.CMD = 287;
+    this.ajGQ = 287;
   }
   
-  public final Boolean erf()
+  public final Boolean kGl()
   {
-    if (this.CNn < 8) {
+    if (this.ajHA < 8) {
       return Boolean.FALSE;
     }
     return Boolean.TRUE;
@@ -18,7 +18,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.v
  * JD-Core Version:    0.7.0.1
  */

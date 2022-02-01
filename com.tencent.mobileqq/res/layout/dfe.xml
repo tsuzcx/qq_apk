@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:id="@id/n40" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/mlm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_gravity="center" android:id="@id/b9r" android:layout_width="296.0dip" android:layout_height="240.0dip">
+        <ImageView android:id="@id/mmp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff999999" android:id="@id/pt9" android:padding="17.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="举报" />
+        <ImageView android:id="@id/az2" android:padding="12.0dip" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/jf7" android:layout_alignParentRight="true" />
+        <com.tencent.timi.game.ui.widget.TimiRoundImageView android:id="@id/nvh" android:layout_width="82.0dip" android:layout_height="82.0dip" android:layout_marginTop="36.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/qsb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:maxLines="1" android:singleLine="true" android:layout_below="@id/nvh" android:layout_centerHorizontal="true" />
+        <View android:id="@id/lft" android:background="#1affffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/ow0" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/ow0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
+            <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="17.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/obt" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <View android:id="@id/p29" android:background="#1affffff" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+            <FrameLayout android:id="@id/pu6" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="17.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/pu5" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <com.tencent.timi.game.base.ui.TimiGamePageLoadingView android:id="@id/ef6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

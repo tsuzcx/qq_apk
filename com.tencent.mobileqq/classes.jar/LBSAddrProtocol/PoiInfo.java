@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class PoiInfo
   extends JceStruct
 {
-  public int iDistance;
-  public int iDistrictCode;
-  public int iHotValue;
-  public int iLat;
-  public int iLon;
-  public int iType;
-  public long lId;
+  public int iDistance = 0;
+  public int iDistrictCode = 0;
+  public int iHotValue = 0;
+  public int iLat = 0;
+  public int iLon = 0;
+  public int iType = 0;
+  public long lId = 0L;
   public String strAddress = "";
   public String strName = "";
   public String strPhone = "";
@@ -63,14 +63,15 @@ public final class PoiInfo
     paramJceOutputStream.write(this.iLon, 7);
     paramJceOutputStream.write(this.iDistance, 8);
     paramJceOutputStream.write(this.iHotValue, 9);
-    if (this.strPhone != null) {
-      paramJceOutputStream.write(this.strPhone, 10);
+    String str = this.strPhone;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSAddrProtocol.PoiInfo
  * JD-Core Version:    0.7.0.1
  */

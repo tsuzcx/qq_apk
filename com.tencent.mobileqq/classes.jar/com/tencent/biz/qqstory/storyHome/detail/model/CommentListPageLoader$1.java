@@ -1,42 +1,43 @@
 package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.CommentManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.List;
-import uux;
-import uwa;
-import whw;
-import whz;
-import wop;
-import wxe;
 
-public class CommentListPageLoader$1
+class CommentListPageLoader$1
   implements Runnable
 {
   public void run()
   {
-    ??? = ((uux)uwa.a(17)).a(whw.a(this.this$0).jdField_a_of_type_JavaLangString, whw.a(this.this$0).a());
-    whz localwhz = new whz(new ErrorMessage(), whw.a(this.this$0).jdField_a_of_type_JavaLangString, whw.a(this.this$0).jdField_a_of_type_Int);
-    localwhz.d = false;
-    localwhz.jdField_b_of_type_Boolean = true;
-    localwhz.jdField_a_of_type_JavaUtilList = ((List)???);
-    localwhz.jdField_b_of_type_Int = -1;
-    localwhz.jdField_a_of_type_Boolean = true;
-    localwhz.jdField_a_of_type_Int = whw.a(this.this$0).jdField_b_of_type_Int;
+    ??? = ((CommentManager)SuperManager.a(17)).a(CommentListPageLoader.a(this.this$0).a, CommentListPageLoader.a(this.this$0).a());
+    CommentListPageLoader.GetFeedCommentEvent localGetFeedCommentEvent = new CommentListPageLoader.GetFeedCommentEvent(new ErrorMessage(), CommentListPageLoader.a(this.this$0).a, CommentListPageLoader.a(this.this$0).c);
+    localGetFeedCommentEvent.d = false;
+    localGetFeedCommentEvent.b = true;
+    localGetFeedCommentEvent.k = ((List)???);
+    localGetFeedCommentEvent.i = -1;
+    localGetFeedCommentEvent.a = true;
+    localGetFeedCommentEvent.f = CommentListPageLoader.a(this.this$0).d;
     synchronized (this.this$0)
     {
-      if (!this.this$0.jdField_b_of_type_Boolean)
+      if (!this.this$0.e)
       {
-        whw.a(this.this$0, localwhz);
-        wxe.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localwhz);
-        return;
+        CommentListPageLoader.a(this.this$0, localGetFeedCommentEvent);
+        SLog.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localGetFeedCommentEvent);
       }
-      wxe.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
+      else
+      {
+        SLog.d("Q.qqstory.detail:CommentListPageLoader", "load cache data later than load from network");
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

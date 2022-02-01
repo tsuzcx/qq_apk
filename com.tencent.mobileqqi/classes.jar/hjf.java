@@ -1,34 +1,20 @@
-import android.graphics.Bitmap;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.FriendListOpenFrame;
-import com.tencent.open.agent.FriendListOpenFrame.ViewHolder;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.open.agent.SocialFriendChooser;
 
 public class hjf
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public hjf(FriendListOpenFrame paramFriendListOpenFrame, String paramString, Bitmap paramBitmap) {}
+  public hjf(GroupListOpenFrame paramGroupListOpenFrame) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int j = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.a.getChildCount();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        FriendListOpenFrame.ViewHolder localViewHolder = (FriendListOpenFrame.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.a.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_b_of_type_JavaLangString))) {
-          localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.a.g();
     }
+    return true;
   }
 }
 

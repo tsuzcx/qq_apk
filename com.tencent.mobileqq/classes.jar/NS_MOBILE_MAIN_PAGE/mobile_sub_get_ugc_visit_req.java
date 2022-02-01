@@ -53,21 +53,24 @@ public final class mobile_sub_get_ugc_visit_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.appid, 1);
-    if (this.ugcId != null) {
-      paramJceOutputStream.write(this.ugcId, 2);
+    Object localObject = this.ugcId;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 3);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.page != null) {
-      paramJceOutputStream.write(this.page, 4);
+    localObject = this.page;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.is_need_top, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_get_ugc_visit_req
  * JD-Core Version:    0.7.0.1
  */

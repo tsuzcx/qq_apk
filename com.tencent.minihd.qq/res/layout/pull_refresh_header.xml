@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.PullRefreshHeader android:layout_width="fill_parent" android:layout_height="@dimen/refresh_header_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/pull_refresh_header_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_over_header" android:gravity="center" android:layout_gravity="center" android:id="@id/refresh_msg_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/str_refresh_pull" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/skin_over_header" android:gravity="center" android:layout_gravity="center" android:id="@id/refresh_time_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/str_refresh_pull" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:layout_toLeftOf="@id/pull_refresh_header_tv" android:layout_centerVertical="true">
+        <ProgressBar android:layout_gravity="center" android:id="@id/refresh_progress" android:visibility="invisible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+        <ImageView android:layout_gravity="center" android:id="@id/refresh_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
+    </FrameLayout>
+</com.tencent.mobileqq.widget.PullRefreshHeader>

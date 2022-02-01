@@ -12,13 +12,13 @@ public final class ProfFriendInfoRes
 {
   static Map<Short, byte[]> cache_mFieldsInfo;
   static ArrayList<Short> cache_vUnGetFields;
-  public byte cDataCode;
-  public byte cResult;
-  public Map<Short, byte[]> mFieldsInfo;
+  public byte cDataCode = 0;
+  public byte cResult = 0;
+  public Map<Short, byte[]> mFieldsInfo = null;
   public String sSigInfo = "";
-  public long uFriendUin;
-  public ArrayList<Short> vUnGetFields;
-  public short wLevel;
+  public long uFriendUin = 0L;
+  public ArrayList<Short> vUnGetFields = null;
+  public short wLevel = 0;
   
   public ProfFriendInfoRes() {}
   
@@ -35,7 +35,9 @@ public final class ProfFriendInfoRes
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    this.uFriendUin = paramJceInputStream.read(this.uFriendUin, 0, true);
+    long l = this.uFriendUin;
+    Short localShort = Short.valueOf((short)0);
+    this.uFriendUin = paramJceInputStream.read(l, 0, true);
     this.cResult = paramJceInputStream.read(this.cResult, 1, true);
     this.cDataCode = paramJceInputStream.read(this.cDataCode, 2, true);
     if (cache_mFieldsInfo == null)
@@ -43,13 +45,13 @@ public final class ProfFriendInfoRes
       cache_mFieldsInfo = new HashMap();
       byte[] arrayOfByte = (byte[])new byte[1];
       ((byte[])arrayOfByte)[0] = 0;
-      cache_mFieldsInfo.put(Short.valueOf((short)0), arrayOfByte);
+      cache_mFieldsInfo.put(localShort, arrayOfByte);
     }
     this.mFieldsInfo = ((Map)paramJceInputStream.read(cache_mFieldsInfo, 3, true));
     if (cache_vUnGetFields == null)
     {
       cache_vUnGetFields = new ArrayList();
-      cache_vUnGetFields.add(Short.valueOf((short)0));
+      cache_vUnGetFields.add(localShort);
     }
     this.vUnGetFields = ((ArrayList)paramJceInputStream.read(cache_vUnGetFields, 4, true));
     this.sSigInfo = paramJceInputStream.readString(5, true);
@@ -69,7 +71,7 @@ public final class ProfFriendInfoRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfFriendInfoRes
  * JD-Core Version:    0.7.0.1
  */

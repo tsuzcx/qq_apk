@@ -1,24 +1,24 @@
 package com.tencent.av;
 
-import azri;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public final class VideoRecoveryReporter$3
+final class VideoRecoveryReporter$3
   implements Runnable
 {
-  public VideoRecoveryReporter$3(int paramInt, long paramLong) {}
+  VideoRecoveryReporter$3(int paramInt, long paramLong) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("close_reason", String.valueOf(this.jdField_a_of_type_Int));
-    azri.a(BaseApplication.getContext()).a("", "av_recovery_close2", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    localHashMap.put("close_reason", String.valueOf(this.a));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "av_recovery_close2", true, this.b, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoRecoveryReporter.3
  * JD-Core Version:    0.7.0.1
  */

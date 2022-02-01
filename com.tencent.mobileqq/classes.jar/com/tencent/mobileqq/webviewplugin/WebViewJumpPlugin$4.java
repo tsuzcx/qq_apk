@@ -1,25 +1,20 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import android.app.Activity;
-import begz;
-import belw;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
-public class WebViewJumpPlugin$4
+class WebViewJumpPlugin$4
   implements Runnable
 {
-  public WebViewJumpPlugin$4(belw parambelw) {}
+  WebViewJumpPlugin$4(WebViewJumpPlugin paramWebViewJumpPlugin, String paramString1, String paramString2) {}
   
   public void run()
   {
-    Activity localActivity = this.this$0.mRuntime.a();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      localActivity.finish();
-    }
+    MobileReportManager.getInstance().reportH5DomainClick(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin.4
  * JD-Core Version:    0.7.0.1
  */

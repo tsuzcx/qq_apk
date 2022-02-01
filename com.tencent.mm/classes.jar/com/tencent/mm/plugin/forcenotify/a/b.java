@@ -1,32 +1,31 @@
 package com.tencent.mm.plugin.forcenotify.a;
 
-import android.content.Context;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.plugin.messenger.foundation.a.ac;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public abstract interface b
-  extends a, o, s<cm>
+  extends a, ac<dl>, t
 {
-  public abstract void Ol(String paramString);
+  public abstract void aDK(String paramString);
   
-  public abstract long Om(String paramString);
+  public abstract boolean aDL(String paramString);
   
-  public abstract boolean On(String paramString);
+  public abstract boolean aDM(String paramString);
   
-  public abstract void an(String paramString, int paramInt);
+  public abstract String aDN(String paramString);
   
-  public abstract boolean bzH();
+  public abstract long aDO(String paramString);
   
-  public abstract j bzI();
+  public abstract boolean aDP(String paramString);
   
-  public abstract void dW(Context paramContext);
+  public abstract void bB(String paramString, int paramInt);
   
-  public abstract void hO(boolean paramBoolean);
+  public abstract MAutoStorage fwy();
   
-  public abstract boolean hasError();
+  public abstract void vK(boolean paramBoolean);
 }
 
 

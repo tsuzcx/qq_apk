@@ -10,9 +10,9 @@ public class DefaultClock
   
   static
   {
-    AppMethodBeat.i(90167);
+    AppMethodBeat.i(5189);
     zzzk = new DefaultClock();
-    AppMethodBeat.o(90167);
+    AppMethodBeat.o(5189);
   }
   
   public static Clock getInstance()
@@ -22,39 +22,39 @@ public class DefaultClock
   
   public long currentThreadTimeMillis()
   {
-    AppMethodBeat.i(90166);
+    AppMethodBeat.i(5188);
     long l = SystemClock.currentThreadTimeMillis();
-    AppMethodBeat.o(90166);
+    AppMethodBeat.o(5188);
     return l;
   }
   
   public long currentTimeMillis()
   {
-    AppMethodBeat.i(90163);
+    AppMethodBeat.i(5185);
     long l = System.currentTimeMillis();
-    AppMethodBeat.o(90163);
+    AppMethodBeat.o(5185);
     return l;
   }
   
   public long elapsedRealtime()
   {
-    AppMethodBeat.i(90164);
+    AppMethodBeat.i(5186);
     long l = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(90164);
+    AppMethodBeat.o(5186);
     return l;
   }
   
   public long nanoTime()
   {
-    AppMethodBeat.i(90165);
+    AppMethodBeat.i(5187);
     long l = System.nanoTime();
-    AppMethodBeat.o(90165);
+    AppMethodBeat.o(5187);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.DefaultClock
  * JD-Core Version:    0.7.0.1
  */

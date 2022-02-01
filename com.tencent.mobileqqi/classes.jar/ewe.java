@@ -1,41 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class ewe
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
   public ewe(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
+    paramDialogInterface.dismiss();
+    if (Build.VERSION.SDK_INT > 10)
     {
-      paramView = new int[2];
-      VoipDialInterfaceActivity.l(this.a).getLocationInWindow(paramView);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.l(this.a).getLocationOnScreen(paramMotionEvent);
-      paramMotionEvent = new int[2];
-      VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-      VoipDialInterfaceActivity.o(this.a).offsetTopAndBottom(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.l(this.a).getHeight() / 2 - VoipDialInterfaceActivity.o(this.a).getHeight() / 2);
-      VoipDialInterfaceActivity.o(this.a).offsetLeftAndRight(paramView[0] + VoipDialInterfaceActivity.l(this.a).getWidth() / 2 - VoipDialInterfaceActivity.o(this.a).getWidth() / 2);
-      VoipDialInterfaceActivity.o(this.a).setVisibility(0);
+      this.a.startActivity(new Intent("android.settings.SETTINGS"));
+      return;
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    paramView = new int[2];
-    VoipDialInterfaceActivity.l(this.a).getLocationInWindow(paramView);
-    paramMotionEvent = new int[2];
-    VoipDialInterfaceActivity.c(this.a).getLocationInWindow(paramMotionEvent);
-    VoipDialInterfaceActivity.o(this.a).offsetTopAndBottom(-(paramView[1] - paramMotionEvent[1] + VoipDialInterfaceActivity.l(this.a).getHeight() / 2 - VoipDialInterfaceActivity.o(this.a).getHeight() / 2));
-    VoipDialInterfaceActivity.o(this.a).offsetLeftAndRight(-(paramView[0] + VoipDialInterfaceActivity.l(this.a).getWidth() / 2 - VoipDialInterfaceActivity.o(this.a).getWidth() / 2));
-    VoipDialInterfaceActivity.o(this.a).setVisibility(4);
-    VoipDialInterfaceActivity.c(this.a).invalidate();
-    return false;
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

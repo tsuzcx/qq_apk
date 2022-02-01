@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/b4b" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:paddingStart="@dimen/i6">
+        <LinearLayout android:orientation="horizontal" android:id="@id/faq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/a27" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@drawable/b__" android:layout_marginEnd="6.0dip" />
+            <com.tencent.mm.ui.base.EllipsizeTextView android:textSize="@dimen/bd" android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/hga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nickname}" android:singleLine="true" android:layout_weight="1.0" style="@style/ma" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/xo" android:layout_gravity="center_vertical" android:id="@id/euf" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/m2" android:layout_marginEnd="@dimen/i6" />
+        </LinearLayout>
+        <View android:id="@id/fap" android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp">
+            <com.tencent.mm.ui.base.EllipsizeTextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" android:layout_weight="1.0" style="@style/ma" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/xo" android:layout_gravity="center_vertical" android:id="@id/fc_" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/m2" android:layout_marginEnd="@dimen/i6" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/fol" android:paddingTop="@dimen/df" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

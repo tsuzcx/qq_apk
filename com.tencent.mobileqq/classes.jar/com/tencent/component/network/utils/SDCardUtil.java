@@ -16,8 +16,12 @@ public class SDCardUtil
     if (paramFloat < 0.0F) {
       return "";
     }
-    if (paramFloat < 1024.0F) {
-      return String.format("%.2f", new Object[] { Float.valueOf(paramFloat) }) + countToUnit(paramInt);
+    if (paramFloat < 1024.0F)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.format("%.2f", new Object[] { Float.valueOf(paramFloat) }));
+      localStringBuilder.append(countToUnit(paramInt));
+      return localStringBuilder.toString();
     }
     return calcCapUnit(paramInt + 1, paramFloat / 1024.0F);
   }
@@ -76,20 +80,18 @@ public class SDCardUtil
     }
     StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
     long l1;
-    if (Build.VERSION.SDK_INT > 17)
-    {
+    if (Build.VERSION.SDK_INT > 17) {
       l1 = localStatFs.getBlockSizeLong();
-      if (Build.VERSION.SDK_INT <= 17) {
-        break label67;
-      }
-    }
-    label67:
-    for (long l2 = localStatFs.getAvailableBlocksLong();; l2 = localStatFs.getAvailableBlocks())
-    {
-      return l1 * l2;
+    } else {
       l1 = localStatFs.getBlockSize();
-      break;
     }
+    long l2;
+    if (Build.VERSION.SDK_INT > 17) {
+      l2 = localStatFs.getAvailableBlocksLong();
+    } else {
+      l2 = localStatFs.getAvailableBlocks();
+    }
+    return l2 * l1;
   }
   
   public static String getSDCardRemainForDisplay()
@@ -119,7 +121,7 @@ public class SDCardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.SDCardUtil
  * JD-Core Version:    0.7.0.1
  */

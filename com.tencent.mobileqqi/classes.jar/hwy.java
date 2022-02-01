@@ -1,13 +1,14 @@
-import com.tencent.widget.TipsPopupWindow;
+import com.tencent.widget.VerticalGallery;
 
 public class hwy
   implements Runnable
 {
-  public hwy(TipsPopupWindow paramTipsPopupWindow) {}
+  public hwy(VerticalGallery paramVerticalGallery) {}
   
   public void run()
   {
-    TipsPopupWindow.b(this.a);
+    VerticalGallery.a(this.a, false);
+    this.a.B_();
   }
 }
 

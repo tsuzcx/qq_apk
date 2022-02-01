@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:background="@null" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:id="@id/bmn" android:text="@string/bj8" style="@style/hm" />
-        </RelativeLayout>
-        <com.tencent.mm.ui.base.MMHorList android:id="@id/bmo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-</merge>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/et7" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="24.0dip" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/et4" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="28.0dip" />
+    <View android:id="@id/boz" android:layout_width="0.5dip" android:layout_height="18.0dip" app:layout_constraintBottom_toBottomOf="@id/et4" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/et7" style="@style/i7" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/gz" android:gravity="center" android:id="@id/bns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="@string/bkg" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/et4" app:layout_constraintRight_toLeftOf="@id/boz" app:layout_constraintTop_toTopOf="@id/et7" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/gz" android:gravity="center" android:id="@id/bni" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:text="@string/bkw" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/et4" app:layout_constraintLeft_toRightOf="@id/boz" app:layout_constraintTop_toTopOf="@id/et7" />
+    <View android:id="@id/bnt" android:layout_width="0.0dip" android:layout_height="0.5dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" style="@style/i7" />
+</androidx.constraintlayout.widget.ConstraintLayout>

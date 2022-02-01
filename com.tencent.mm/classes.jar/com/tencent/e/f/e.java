@@ -6,35 +6,12 @@ import java.security.NoSuchAlgorithmException;
 
 public final class e
 {
-  public static byte[] awF(String paramString)
+  public static final String aC(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(114611);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(114611);
-      return null;
-    }
-    int j = paramString.length() / 2;
-    byte[] arrayOfByte = new byte[j];
-    paramString = paramString.toCharArray();
-    int i = 0;
-    while (i < j)
-    {
-      int k = i * 2;
-      int m = (byte)"0123456789ABCDEF".indexOf(paramString[k]);
-      arrayOfByte[i] = ((byte)((byte)"0123456789ABCDEF".indexOf(paramString[(k + 1)]) | m << 4));
-      i += 1;
-    }
-    AppMethodBeat.o(114611);
-    return arrayOfByte;
-  }
-  
-  public static final String bytesToHexString(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(114612);
+    AppMethodBeat.i(138475);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(114612);
+      AppMethodBeat.o(138475);
       return null;
     }
     StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
@@ -49,20 +26,43 @@ public final class e
       i += 1;
     }
     paramArrayOfByte = localStringBuffer.toString();
-    AppMethodBeat.o(114612);
+    AppMethodBeat.o(138475);
     return paramArrayOfByte;
   }
   
-  public static byte[] cq(byte[] paramArrayOfByte)
+  public static byte[] bFB(String paramString)
   {
-    AppMethodBeat.i(114613);
+    AppMethodBeat.i(138474);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(138474);
+      return null;
+    }
+    int j = paramString.length() / 2;
+    byte[] arrayOfByte = new byte[j];
+    paramString = paramString.toCharArray();
+    int i = 0;
+    while (i < j)
+    {
+      int k = i * 2;
+      int m = (byte)"0123456789ABCDEF".indexOf(paramString[k]);
+      arrayOfByte[i] = ((byte)((byte)"0123456789ABCDEF".indexOf(paramString[(k + 1)]) | m << 4));
+      i += 1;
+    }
+    AppMethodBeat.o(138474);
+    return arrayOfByte;
+  }
+  
+  public static byte[] md5(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(138476);
     Object localObject = null;
     try
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.update(paramArrayOfByte);
       paramArrayOfByte = localMessageDigest.digest();
-      AppMethodBeat.o(114613);
+      AppMethodBeat.o(138476);
       return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
@@ -83,7 +83,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.e.f.e
  * JD-Core Version:    0.7.0.1
  */

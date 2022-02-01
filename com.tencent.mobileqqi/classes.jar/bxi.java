@@ -1,16 +1,20 @@
 import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxi
-  implements View.OnClickListener
+  implements Runnable
 {
   public bxi(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b.cancel();
+    if ((this.a.d != null) && (this.a.d.isShowing())) {
+      this.a.d.dismiss();
+    }
+    while ((this.a.e == null) || (!this.a.e.isShowing())) {
+      return;
+    }
+    this.a.e.dismiss();
   }
 }
 

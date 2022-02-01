@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.core.ViolaRenderManager;
-import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.action.IRenderTask;
 import com.tencent.viola.ui.action.RenderAction;
 import com.tencent.viola.ui.action.RenderActionTask;
@@ -41,7 +40,9 @@ public class DOMActionContextImpl
   final ConcurrentHashMap<String, DomObject> mRegistry;
   private ViolaRenderManager mRenderManager;
   private DomObject.Consumer mUnregisterDomConsumer;
+  private String nvRootRef;
   private String rootDomRef;
+  private boolean supportNv;
   
   public DOMActionContextImpl(String paramString, ViolaRenderManager paramViolaRenderManager)
   {
@@ -56,46 +57,39 @@ public class DOMActionContextImpl
     this.mApplyStyleConsumer = new DOMActionContextImpl.ApplyStyleConsumer(this, this.mRegistry);
   }
   
-  private void parseAnimation()
-  {
-    Iterator localIterator = this.animations.iterator();
-    while (localIterator.hasNext()) {
-      if (TextUtils.isEmpty((CharSequence)((Pair)localIterator.next()).first)) {}
-    }
-  }
-  
   private void updateDomObj()
   {
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.mAddDom.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      updateDomObj(((DOMActionContextImpl.AddDomInfo)((Map.Entry)localIterator.next()).getValue()).component);
+    Object localObject = this.mAddDom.entrySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      updateDomObj(((DOMActionContextImpl.AddDomInfo)((Map.Entry)((Iterator)localObject).next()).getValue()).component);
     }
-    ViolaLogUtils.d("updateDomObj", "time:" + (System.currentTimeMillis() - l));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("time:");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+    ViolaLogUtils.d("updateDomObj", ((StringBuilder)localObject).toString());
   }
   
   private void updateDomObj(VComponent paramVComponent)
   {
-    if (paramVComponent == null) {}
-    for (;;)
-    {
+    if (paramVComponent == null) {
       return;
-      DomObject localDomObject = (DomObject)this.mRegistry.get(paramVComponent.getRef());
-      if (localDomObject != null)
+    }
+    DomObject localDomObject = (DomObject)this.mRegistry.get(paramVComponent.getRef());
+    if (localDomObject == null) {
+      return;
+    }
+    localDomObject.old();
+    paramVComponent.updateDom(localDomObject);
+    if ((paramVComponent instanceof VComponentContainer))
+    {
+      paramVComponent = (VComponentContainer)paramVComponent;
+      int j = paramVComponent.getChildCount();
+      int i = 0;
+      while (i < j)
       {
-        localDomObject.old();
-        paramVComponent.updateDom(localDomObject);
-        if ((paramVComponent instanceof VComponentContainer))
-        {
-          paramVComponent = (VComponentContainer)paramVComponent;
-          int j = paramVComponent.getChildCount();
-          int i = 0;
-          while (i < j)
-          {
-            updateDomObj(paramVComponent.getChild(i));
-            i += 1;
-          }
-        }
+        updateDomObj(paramVComponent.getChild(i));
+        i += 1;
       }
     }
   }
@@ -115,10 +109,13 @@ public class DOMActionContextImpl
   
   public void batch()
   {
-    if ((!this.mDirty) || (this.mDestroy) || (TextUtils.isEmpty(this.rootDomRef))) {
-      return;
+    if ((this.mDirty) && (!this.mDestroy))
+    {
+      if (TextUtils.isEmpty(this.rootDomRef)) {
+        return;
+      }
+      layout((DomObject)this.mRegistry.get(this.rootDomRef));
     }
-    layout((DomObject)this.mRegistry.get(this.rootDomRef));
   }
   
   public void consumeRenderTasks()
@@ -170,6 +167,11 @@ public class DOMActionContextImpl
     return this.mInstanceId;
   }
   
+  public String getNvRootRef()
+  {
+    return this.nvRootRef;
+  }
+  
   public DomObject.Consumer getRemoveElementConsumer()
   {
     return this.mUnregisterDomConsumer;
@@ -185,37 +187,41 @@ public class DOMActionContextImpl
     return false;
   }
   
+  public boolean isSupportNv()
+  {
+    return this.supportNv;
+  }
+  
   void layout(DomObject paramDomObject)
   {
-    if (paramDomObject == null) {}
-    ViolaInstance localViolaInstance;
-    do
-    {
+    if (paramDomObject == null) {
       return;
-      System.currentTimeMillis();
-      paramDomObject.traverseTree(new DomObject.Consumer[] { new DOMActionContextImpl.1(this) });
-      System.currentTimeMillis();
-      paramDomObject.calculateLayout(this.mLayoutContext);
-      localViolaInstance = ViolaSDKManager.getInstance().getViolaInstance(this.mInstanceId);
-      if (localViolaInstance != null) {}
-      System.currentTimeMillis();
-      paramDomObject.traverseTree(new DomObject.Consumer[] { new DOMActionContextImpl.2(this), new DOMActionContextImpl.ApplyUpdateConsumer(this, null) });
-      if (localViolaInstance != null) {}
-      System.currentTimeMillis();
-      updateDomObj();
-      if (localViolaInstance != null) {}
-      parseAnimation();
-      consumeRenderTasks();
-      this.mAddDom.clear();
-      this.animations.clear();
-      this.mDirty = false;
-    } while (localViolaInstance == null);
+    }
+    paramDomObject.traverseTree(new DomObject.Consumer[] { new DOMActionContextImpl.1(this) });
+    paramDomObject.calculateLayout(this.mLayoutContext);
+    paramDomObject.traverseTree(new DomObject.Consumer[] { new DOMActionContextImpl.2(this), new DOMActionContextImpl.ApplyUpdateConsumer(this, null) });
+    updateDomObj();
+    consumeRenderTasks();
+    this.mAddDom.clear();
+    this.animations.clear();
+    this.mDirty = false;
   }
   
   public void markDirty()
   {
     if ((!this.mDestroy) && (!this.mDirty)) {
       this.mDirty = true;
+    }
+  }
+  
+  public void nvBatch()
+  {
+    if ((this.mDirty) && (!this.mDestroy))
+    {
+      if (TextUtils.isEmpty(this.nvRootRef)) {
+        return;
+      }
+      layout((DomObject)this.mRegistry.get(this.nvRootRef));
     }
   }
   
@@ -235,9 +241,19 @@ public class DOMActionContextImpl
     this.mRegistry.put(paramString, paramDomObject);
   }
   
+  public void setNvRootRef(String paramString)
+  {
+    this.nvRootRef = paramString;
+  }
+  
   public void setRootRef(@NonNull String paramString)
   {
     this.rootDomRef = paramString;
+  }
+  
+  public void supportNv(boolean paramBoolean)
+  {
+    this.supportNv = paramBoolean;
   }
   
   public VComponent unregisterComponent(String paramString)
@@ -252,7 +268,7 @@ public class DOMActionContextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ayuh;
-import ayuu;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
 import java.util.List;
 
 class PublicAccountSearchEngine$1
   implements Runnable
 {
-  PublicAccountSearchEngine$1(PublicAccountSearchEngine paramPublicAccountSearchEngine, ayuu paramayuu, ayuh paramayuh) {}
+  PublicAccountSearchEngine$1(PublicAccountSearchEngine paramPublicAccountSearchEngine, SearchRequest paramSearchRequest, ISearchListener paramISearchListener) {}
   
   public void run()
   {
-    List localList = this.this$0.a(this.jdField_a_of_type_Ayuu);
-    if (this.jdField_a_of_type_Ayuh != null) {
-      this.jdField_a_of_type_Ayuh.a(localList, 1);
+    List localList = this.this$0.a(this.a);
+    ISearchListener localISearchListener = this.b;
+    if (localISearchListener != null) {
+      localISearchListener.a(localList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

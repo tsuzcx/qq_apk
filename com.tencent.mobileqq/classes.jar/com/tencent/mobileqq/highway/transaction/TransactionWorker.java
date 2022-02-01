@@ -47,7 +47,7 @@ public class TransactionWorker
   private static final int[] round_array = { 0, 0, 1, 0, 0, 1, 2 };
   private static final AtomicInteger seqFactory = new AtomicInteger(new Random().nextInt(100000));
   private HwEngine engine;
-  private volatile int index;
+  private volatile int index = 0;
   private SparseArray<ArrayList<Transaction>> transQueues = new SparseArray();
   private ArrayList<Transaction> transWaitForSessionKeyQueue = new ArrayList();
   
@@ -59,43 +59,59 @@ public class TransactionWorker
   private void submitTransactionToTransQuene(Transaction paramTransaction)
   {
     paramTransaction.transationId = seqFactory.incrementAndGet();
-    BdhLogUtil.LogEvent("T", "SubmitTransation : T_Id:" + paramTransaction.transationId + " ukey:" + String.valueOf(paramTransaction.ticket));
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SubmitTransation : T_Id:");
+    ((StringBuilder)localObject).append(paramTransaction.transationId);
+    ((StringBuilder)localObject).append(" ukey:");
+    ((StringBuilder)localObject).append(String.valueOf(paramTransaction.ticket));
+    BdhLogUtil.LogEvent("T", ((StringBuilder)localObject).toString());
+    localObject = this.transQueues;
+    int i = 0;
+    try
     {
-      synchronized (this.transQueues)
-      {
-        if (paramTransaction.mBuzCmdId == 25)
-        {
-          i = 1;
-          if (this.transQueues.get(i) != null)
-          {
-            ((ArrayList)this.transQueues.get(i)).add(paramTransaction);
-            BdhLogUtil.LogEvent("T", "SubmitTransation : T_Id:" + paramTransaction.transationId + " : add to queue[ " + i + "]");
-          }
-          notifyToSend();
-          paramTransaction.startTime = SystemClock.uptimeMillis();
-          return;
-        }
+      if (paramTransaction.mBuzCmdId == 25) {
+        i = 1;
       }
-      int i = 0;
+      if (this.transQueues.get(i) != null)
+      {
+        ((ArrayList)this.transQueues.get(i)).add(paramTransaction);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("SubmitTransation : T_Id:");
+        localStringBuilder.append(paramTransaction.transationId);
+        localStringBuilder.append(" : add to queue[ ");
+        localStringBuilder.append(i);
+        localStringBuilder.append("]");
+        BdhLogUtil.LogEvent("T", localStringBuilder.toString());
+      }
+      notifyToSend();
+      paramTransaction.startTime = SystemClock.uptimeMillis();
+      return;
     }
+    finally {}
   }
   
   private int submitTransactionToWaitForSessionKeyQuene(Transaction paramTransaction)
   {
-    if ((this.engine == null) || (this.engine.app == null) || (this.engine.app.getAccount() == null) || (this.engine.mRequestWorker == null) || (this.engine.mRequestWorker.mRequestHandler == null)) {
-      return -1018;
-    }
-    String str = this.engine.app.getAccount();
-    HwServlet.getConfig(this.engine.app, str, this);
-    try
+    Object localObject = this.engine;
+    if ((localObject != null) && (((HwEngine)localObject).app != null) && (this.engine.app.getAccount() != null) && (this.engine.mRequestWorker != null) && (this.engine.mRequestWorker.mRequestHandler != null))
     {
-      this.transWaitForSessionKeyQueue.add(paramTransaction);
-      paramTransaction.startTimeoutTimer();
-      BdhLogUtil.LogEvent("T", "Submit Trans to transWaitForSessionKeyQueue ,Transaction path:" + paramTransaction.filePath + " transWaitForSessionKeyQueue size:" + this.transWaitForSessionKeyQueue.size());
-      return 0;
+      localObject = this.engine.app.getAccount();
+      HwServlet.getConfig(this.engine.app, (String)localObject, this);
+      try
+      {
+        this.transWaitForSessionKeyQueue.add(paramTransaction);
+        paramTransaction.startTimeoutTimer();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Submit Trans to transWaitForSessionKeyQueue ,Transaction path:");
+        ((StringBuilder)localObject).append(paramTransaction.filePath);
+        ((StringBuilder)localObject).append(" transWaitForSessionKeyQueue size:");
+        ((StringBuilder)localObject).append(this.transWaitForSessionKeyQueue.size());
+        BdhLogUtil.LogEvent("T", ((StringBuilder)localObject).toString());
+        return 0;
+      }
+      finally {}
     }
-    finally {}
+    return -1018;
   }
   
   public void cancelTransaction(Transaction paramTransaction)
@@ -109,7 +125,14 @@ public class TransactionWorker
     int i = this.engine.mRequestWorker.mCurrentRequests;
     int j = this.engine.mTransWorker.getTransactionNum();
     int k = this.engine.mConnManager.connectedConn;
-    QLog.d("E", 1, "EngineInfo : Request:" + i + " TransCnt:" + j + " ConnCnt:" + k);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EngineInfo : Request:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" TransCnt:");
+    localStringBuilder.append(j);
+    localStringBuilder.append(" ConnCnt:");
+    localStringBuilder.append(k);
+    QLog.d("E", 1, localStringBuilder.toString());
   }
   
   int getConnErroCode()
@@ -152,61 +175,75 @@ public class TransactionWorker
   
   public Transaction getTransactionById(int paramInt)
   {
-    Object localObject1 = null;
     SparseArray localSparseArray = this.transQueues;
     int i = 0;
+    Object localObject1 = null;
     for (;;)
     {
       if (i < 3) {}
-      Object localObject4;
-      label97:
-      for (;;)
+      try
       {
-        try
+        Object localObject5 = (ArrayList)this.transQueues.get(i);
+        localObject4 = localObject1;
+        if (localObject5 != null)
         {
-          Object localObject5 = (ArrayList)this.transQueues.get(i);
-          localObject4 = localObject1;
-          if (localObject5 == null) {
-            break;
-          }
           localObject5 = ((ArrayList)localObject5).iterator();
-          localObject4 = localObject1;
-          if (!((Iterator)localObject5).hasNext()) {
-            break;
+          for (;;)
+          {
+            localObject4 = localObject1;
+            if (!((Iterator)localObject5).hasNext()) {
+              break;
+            }
+            localObject4 = (Transaction)((Iterator)localObject5).next();
+            if (((Transaction)localObject4).getTransationId() == paramInt) {
+              localObject1 = localObject4;
+            }
           }
-          localObject4 = (Transaction)((Iterator)localObject5).next();
-          if (((Transaction)localObject4).getTransationId() != paramInt) {
-            break label97;
-          }
-          localObject1 = localObject4;
+          return localObject1;
         }
-        finally {}
-        return localObject1;
       }
-      i += 1;
-      Object localObject3 = localObject4;
+      finally
+      {
+        Object localObject4;
+        for (;;)
+        {
+          throw localObject2;
+        }
+        i += 1;
+        Object localObject3 = localObject4;
+      }
     }
   }
   
   public int getTransactionNum()
   {
     SparseArray localSparseArray = this.transQueues;
-    int j = 0;
     int i = 0;
+    int j = 0;
+    int k;
+    label70:
     for (;;)
     {
-      if (j < 3) {}
+      if (i < 3) {
+        k = j;
+      }
       try
       {
-        if (this.transQueues.get(j) == null) {
-          break label58;
+        if (this.transQueues.get(i) == null) {
+          break label70;
         }
-        i = ((ArrayList)this.transQueues.get(j)).size() + i;
+        k = j + ((ArrayList)this.transQueues.get(i)).size();
       }
-      finally {}
-      return i;
-      label58:
-      j += 1;
+      finally
+      {
+        for (;;)
+        {
+          throw localObject;
+        }
+        i += 1;
+        j = k;
+      }
+      return j;
     }
   }
   
@@ -224,98 +261,110 @@ public class TransactionWorker
   {
     SparseArray localSparseArray = this.transQueues;
     int i = 0;
+    label128:
     for (;;)
     {
-      if (i < 3)
+      if (i < 3) {}
+      try
       {
-        try
-        {
-          Object localObject1 = new ArrayList();
-          if (this.transQueues.get(i) == null) {
-            break label122;
-          }
-          ((ArrayList)localObject1).addAll((Collection)this.transQueues.get(i));
-          localObject1 = ((ArrayList)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            cancelTransaction((Transaction)((Iterator)localObject1).next());
-          }
-          ((ArrayList)this.transQueues.get(i)).clear();
+        Object localObject1 = new ArrayList();
+        if (this.transQueues.get(i) == null) {
+          break label128;
         }
-        finally {}
+        ((ArrayList)localObject1).addAll((Collection)this.transQueues.get(i));
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          cancelTransaction((Transaction)((Iterator)localObject1).next());
+        }
+        ((ArrayList)this.transQueues.get(i)).clear();
       }
-      else
+      finally
       {
-        this.transQueues.clear();
-        this.transWaitForSessionKeyQueue = new ArrayList();
-        return;
+        for (;;)
+        {
+          throw localObject2;
+        }
+        i += 1;
       }
-      label122:
-      i += 1;
+      this.transQueues.clear();
+      this.transWaitForSessionKeyQueue = new ArrayList();
+      return;
     }
   }
   
   public void onGetConfig()
   {
-    if ((this.engine == null) || (this.engine.currentUin == null)) {
-      return;
-    }
-    String str1 = this.engine.currentUin;
-    for (;;)
+    Object localObject1 = this.engine;
+    if (localObject1 != null)
     {
-      Transaction localTransaction;
+      if (((HwEngine)localObject1).currentUin == null) {
+        return;
+      }
+      localObject1 = this.engine.currentUin;
       try
       {
-        byte[] arrayOfByte1 = SessionInfo.getInstance(str1).getHttpconn_sig_session();
-        if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0)) {
-          break label297;
-        }
-        BdhLogUtil.LogEvent("E", "onGetConfig suc,transWaitForSessionKeyQueue size:" + this.transWaitForSessionKeyQueue.size());
-        int i = arrayOfByte1.length;
-        Iterator localIterator2 = this.transWaitForSessionKeyQueue.iterator();
-        if (!localIterator2.hasNext()) {
-          break;
-        }
-        localTransaction = (Transaction)localIterator2.next();
-        localTransaction.ticket = new byte[i];
-        System.arraycopy(arrayOfByte1, 0, localTransaction.ticket, 0, i);
-        if (!localTransaction.needCryptExtendInfo) {
-          break label277;
-        }
-        byte[] arrayOfByte2 = SessionInfo.getInstance(str1).getSessionKey();
-        if ((arrayOfByte2 != null) && (arrayOfByte2.length != 0))
+        byte[] arrayOfByte1 = SessionInfo.getInstance((String)localObject1).getHttpconn_sig_session();
+        if ((arrayOfByte1 != null) && (arrayOfByte1.length != 0))
         {
-          int j = arrayOfByte2.length;
-          byte[] arrayOfByte3 = new byte[j];
-          System.arraycopy(arrayOfByte2, 0, arrayOfByte3, 0, j);
-          localTransaction.extendInfo = new Cryptor().encrypt(localTransaction.extendInfo, arrayOfByte3);
-          submitTransactionToTransQuene(localTransaction);
-          continue;
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("onGetConfig suc,transWaitForSessionKeyQueue size:");
+          ((StringBuilder)localObject3).append(this.transWaitForSessionKeyQueue.size());
+          BdhLogUtil.LogEvent("E", ((StringBuilder)localObject3).toString());
+          int i = arrayOfByte1.length;
+          localObject3 = this.transWaitForSessionKeyQueue.iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            Transaction localTransaction = (Transaction)((Iterator)localObject3).next();
+            localTransaction.ticket = new byte[i];
+            System.arraycopy(arrayOfByte1, 0, localTransaction.ticket, 0, i);
+            if (localTransaction.needCryptExtendInfo)
+            {
+              Object localObject4 = SessionInfo.getInstance((String)localObject1).getSessionKey();
+              if ((localObject4 != null) && (localObject4.length != 0))
+              {
+                int j = localObject4.length;
+                byte[] arrayOfByte2 = new byte[j];
+                System.arraycopy(localObject4, 0, arrayOfByte2, 0, j);
+                localTransaction.extendInfo = new Cryptor().encrypt(localTransaction.extendInfo, arrayOfByte2);
+                submitTransactionToTransQuene(localTransaction);
+              }
+              else
+              {
+                localObject4 = new StringBuilder();
+                ((StringBuilder)localObject4).append("onGetConfig,get sessionKey successfully,but task has mSigSession, not has mSessionKey, transaction path:");
+                ((StringBuilder)localObject4).append(localTransaction.filePath);
+                BdhLogUtil.LogEvent("T", ((StringBuilder)localObject4).toString());
+                HwServlet.getConfig(this.engine.app, (String)localObject1);
+                localTransaction.onTransFailed(-1017, "", 0, 0, 0, null);
+              }
+            }
+            else
+            {
+              submitTransactionToTransQuene(localTransaction);
+            }
+          }
+          this.transWaitForSessionKeyQueue.clear();
         }
-        BdhLogUtil.LogEvent("T", "onGetConfig,get sessionKey successfully,but task has mSigSession, not has mSessionKey, transaction path:" + localTransaction.filePath);
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("onGetConfig failed,transWaitForSessionKeyQueue size:");
+          ((StringBuilder)localObject1).append(this.transWaitForSessionKeyQueue.size());
+          BdhLogUtil.LogEvent("E", ((StringBuilder)localObject1).toString());
+          localObject1 = this.transWaitForSessionKeyQueue.iterator();
+          while (((Iterator)localObject1).hasNext()) {
+            ((Transaction)((Iterator)localObject1).next()).onTransFailed(-1016, "", 0, 0, 0, null);
+          }
+        }
+        return;
       }
       finally {}
-      HwServlet.getConfig(this.engine.app, str2);
-      localTransaction.onTransFailed(-1017, "", 0, 0, 0, null);
-      continue;
-      label277:
-      submitTransactionToTransQuene(localTransaction);
-    }
-    this.transWaitForSessionKeyQueue.clear();
-    for (;;)
-    {
-      return;
-      label297:
-      BdhLogUtil.LogEvent("E", "onGetConfig failed,transWaitForSessionKeyQueue size:" + this.transWaitForSessionKeyQueue.size());
-      Iterator localIterator1 = this.transWaitForSessionKeyQueue.iterator();
-      while (localIterator1.hasNext()) {
-        ((Transaction)localIterator1.next()).onTransFailed(-1016, "", 0, 0, 0, null);
-      }
     }
   }
   
   public void onInit()
   {
-    localSparseArray = this.transQueues;
+    SparseArray localSparseArray = this.transQueues;
     int i = 0;
     for (;;)
     {
@@ -326,7 +375,16 @@ public class TransactionWorker
         this.transQueues.put(i, localArrayList);
         i += 1;
       }
-      finally {}
+      finally
+      {
+        break label49;
+      }
+    }
+    return;
+    label49:
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -334,79 +392,97 @@ public class TransactionWorker
   {
     SparseArray localSparseArray = this.transQueues;
     int i = 0;
+    label78:
     for (;;)
     {
       if (i < 3) {}
       try
       {
         if (this.transQueues.get(i) == null) {
-          break label72;
+          break label78;
         }
         ((ArrayList)this.transQueues.get(i)).remove(paramTransaction);
       }
-      finally {}
+      finally
+      {
+        for (;;)
+        {
+          throw paramTransaction;
+        }
+        i += 1;
+      }
       if (!paramBoolean) {
         this.engine.mRequestWorker.notifyTransactionChange(2, paramTransaction);
       }
       return;
-      label72:
-      i += 1;
     }
   }
   
   public DataTransInfo pullNextSegment(SparseArray<HwNetSegConf> paramSparseArray)
   {
-    Object localObject1 = null;
     SparseArray localSparseArray = this.transQueues;
+    Object localObject1 = null;
     int i = 0;
+    Object localObject2 = localObject1;
     for (;;)
     {
       try
       {
         if (i < round_array.length)
         {
-          Object localObject2 = (ArrayList)this.transQueues.get(round_array[this.index]);
-          if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
+          Object localObject3 = (ArrayList)this.transQueues.get(round_array[this.index]);
+          localObject2 = localObject1;
+          if (localObject3 != null)
           {
-            Iterator localIterator = ((ArrayList)localObject2).iterator();
-            if (localIterator.hasNext())
+            localObject2 = localObject1;
+            if (((ArrayList)localObject3).size() > 0)
             {
-              localObject2 = (Transaction)localIterator.next();
-              HwNetSegConf localHwNetSegConf = (HwNetSegConf)paramSparseArray.get(((Transaction)localObject2).getBuzType());
-              if (localHwNetSegConf == null) {
-                paramSparseArray.get(0);
-              }
-              localObject2 = ((Transaction)localObject2).peekNextSegment(localHwNetSegConf);
-              if (localObject2 == null) {
-                continue;
-              }
-              BdhLogUtil.LogEvent("R", "pullNextSegment : T_Id:" + ((DataTransInfo)localObject2).parent.getTransationId() + " ConfSegNum:" + localHwNetSegConf.segNum + " ConfSegSize:" + localHwNetSegConf.segSize);
-              localObject1 = localObject2;
-              label186:
-              if (this.index >= round_array.length - 1)
+              localObject3 = ((ArrayList)localObject3).iterator();
+              localObject2 = localObject1;
+              if (((Iterator)localObject3).hasNext())
               {
-                this.index = 0;
-                break label244;
-                label207:
-                return localObject1;
-              }
-              else
-              {
-                this.index += 1;
+                localObject2 = (Transaction)((Iterator)localObject3).next();
+                HwNetSegConf localHwNetSegConf = (HwNetSegConf)paramSparseArray.get(((Transaction)localObject2).getBuzType());
+                if (localHwNetSegConf == null) {
+                  paramSparseArray.get(0);
+                }
+                localObject2 = ((Transaction)localObject2).peekNextSegment(localHwNetSegConf);
+                if (localObject2 == null) {
+                  continue;
+                }
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("pullNextSegment : T_Id:");
+                ((StringBuilder)localObject1).append(((DataTransInfo)localObject2).parent.getTransationId());
+                ((StringBuilder)localObject1).append(" ConfSegNum:");
+                ((StringBuilder)localObject1).append(localHwNetSegConf.segNum);
+                ((StringBuilder)localObject1).append(" ConfSegSize:");
+                ((StringBuilder)localObject1).append(localHwNetSegConf.segSize);
+                BdhLogUtil.LogEvent("R", ((StringBuilder)localObject1).toString());
               }
             }
           }
+          if (this.index >= round_array.length - 1) {
+            this.index = 0;
+          } else {
+            this.index += 1;
+          }
+        }
+        else
+        {
+          return localObject2;
         }
       }
-      finally {}
-      label244:
-      do
+      finally
       {
+        continue;
+        throw paramSparseArray;
+        continue;
         i += 1;
+        localObject1 = localObject2;
+      }
+      if (localObject2 == null) {
         break;
-        break label186;
-        break label207;
-      } while (localObject1 == null);
+      }
     }
   }
   
@@ -435,7 +511,11 @@ public class TransactionWorker
         }
       }
     }
-    catch (Throwable paramProbeCallback) {}
+    catch (Throwable paramProbeCallback)
+    {
+      label116:
+      break label116;
+    }
     return false;
   }
   
@@ -467,35 +547,36 @@ public class TransactionWorker
   
   public int submitTransation(Transaction paramTransaction)
   {
-    int i;
-    if ((paramTransaction == null) || (paramTransaction.filePath == null) || (paramTransaction.transationId != -1))
+    if ((paramTransaction != null) && (paramTransaction.filePath != null) && (paramTransaction.transationId == -1))
     {
-      i = 9042;
+      boolean bool;
+      if (this.engine.mConnManager.getCurrentConnNum() > 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      int i = paramTransaction.initSegmentList(this, bool);
+      if (i == 0)
+      {
+        if (paramTransaction.ticket != null)
+        {
+          submitTransactionToTransQuene(paramTransaction);
+          return i;
+        }
+        return submitTransactionToWaitForSessionKeyQuene(paramTransaction);
+      }
       return i;
     }
-    if (this.engine.mConnManager.getCurrentConnNum() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      int j = paramTransaction.initSegmentList(this, bool);
-      i = j;
-      if (j != 0) {
-        break;
-      }
-      if (paramTransaction.ticket == null) {
-        break label75;
-      }
-      submitTransactionToTransQuene(paramTransaction);
-      return j;
-    }
-    label75:
-    return submitTransactionToWaitForSessionKeyQuene(paramTransaction);
+    return 9042;
   }
   
   public void switchToBackupChannel()
   {
     SparseArray localSparseArray = this.transQueues;
     int i = 0;
-    while (i < 3) {
+    for (;;)
+    {
+      if (i < 3) {}
       try
       {
         if (this.transQueues.get(i) != null)
@@ -508,11 +589,19 @@ public class TransactionWorker
             Transaction localTransaction = (Transaction)((Iterator)localObject1).next();
             cancelTransaction(localTransaction);
             localTransaction.onSwitchToBackupChannel();
+            continue;
+            return;
           }
+        }
+      }
+      finally
+      {
+        for (;;)
+        {
+          throw localObject2;
         }
         i += 1;
       }
-      finally {}
     }
   }
   
@@ -524,7 +613,7 @@ public class TransactionWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.TransactionWorker
  * JD-Core Version:    0.7.0.1
  */

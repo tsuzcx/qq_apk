@@ -115,14 +115,15 @@ abstract class ImageTask
   
   protected void setResult(int paramInt, Object... paramVarArgs)
   {
-    if (this.mPreviousTask != null) {
-      this.mPreviousTask.onResult(paramInt, paramVarArgs);
+    ImageTask localImageTask = this.mPreviousTask;
+    if (localImageTask != null) {
+      localImageTask.onResult(paramInt, paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.ImageTask
  * JD-Core Version:    0.7.0.1
  */

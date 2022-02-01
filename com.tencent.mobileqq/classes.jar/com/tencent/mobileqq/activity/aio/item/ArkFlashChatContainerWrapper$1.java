@@ -10,8 +10,8 @@ class ArkFlashChatContainerWrapper$1
   
   public void run()
   {
-    this.this$0.a.getAppFromLocal = true;
-    this.this$0.a.endOfGetApp = System.currentTimeMillis();
+    this.this$0.f.getAppFromLocal = true;
+    this.this$0.f.endOfGetApp = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
       QLog.i("ArkApp", 2, String.format("getAppPathByNameFromLocal.in.wrapper: %h", new Object[] { this }));
     }
@@ -21,7 +21,7 @@ class ArkFlashChatContainerWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.1
  * JD-Core Version:    0.7.0.1
  */

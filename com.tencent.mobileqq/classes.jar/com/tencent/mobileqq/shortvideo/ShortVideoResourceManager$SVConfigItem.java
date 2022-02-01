@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azfg;
-import bdnn;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class ShortVideoResourceManager$SVConfigItem
 {
@@ -21,20 +20,73 @@ public class ShortVideoResourceManager$SVConfigItem
   
   public boolean check64BitReady()
   {
-    return (!bdnn.a(this.arm64v8a_md5)) && (!bdnn.a(this.arm64v8a_url));
+    return (!StringUtil.isEmpty(this.arm64v8a_md5)) && (!StringUtil.isEmpty(this.arm64v8a_url));
   }
   
   public String getSignature()
   {
-    if ((azfg.a()) && (check64BitReady())) {
-      return this.arm64v8a_md5 + '_' + this.versionCode;
+    if ((VideoEnvironment64BitUtils.checkIs64bit()) && (check64BitReady()))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.arm64v8a_md5);
+      localStringBuilder.append('_');
+      localStringBuilder.append(this.versionCode);
+      return localStringBuilder.toString();
     }
-    return this.armv7a_md5 + '_' + this.versionCode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.armv7a_md5);
+    localStringBuilder.append('_');
+    localStringBuilder.append(this.versionCode);
+    return localStringBuilder.toString();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SVConfigItem{name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arm_url='");
+    localStringBuilder.append(this.arm_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", armv7a_url='");
+    localStringBuilder.append(this.armv7a_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", x86_url='");
+    localStringBuilder.append(this.x86_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arm64v8a_url='");
+    localStringBuilder.append(this.arm64v8a_url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arm_md5='");
+    localStringBuilder.append(this.arm_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", armv7a_md5='");
+    localStringBuilder.append(this.armv7a_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", x86_md5='");
+    localStringBuilder.append(this.x86_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arm64v8a_md5='");
+    localStringBuilder.append(this.arm64v8a_md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", versionCode=");
+    localStringBuilder.append(this.versionCode);
+    localStringBuilder.append(", predownload=");
+    localStringBuilder.append(this.predownload);
+    localStringBuilder.append(", extend1='");
+    localStringBuilder.append(this.extend1);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extend2='");
+    localStringBuilder.append(this.extend2);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem
  * JD-Core Version:    0.7.0.1
  */

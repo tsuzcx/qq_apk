@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b3r" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/a2o" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="14.0dip" />
+        <TextView android:textSize="@dimen/hy" android:textStyle="bold" android:textColor="@color/br" android:ellipsize="end" android:gravity="center" android:id="@id/fxo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="14.0dip" android:maxWidth="170.0dip" android:singleLine="true" android:drawablePadding="4.0dip" android:layout_toRightOf="@id/a2o" android:alpha="0.7" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:layout_toLeftOf="@id/e9g" android:layout_toRightOf="@id/a2o" android:layout_below="@id/fxo" android:layout_alignLeft="@id/fxo">
+            <com.tencent.biz.pubaccount.weishi_new.richtext.FeedRichTextView android:textSize="@dimen/hx" android:textColor="@color/ahl" android:id="@id/fxm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.5dip" android:includeFontPadding="false" />
+            <include android:id="@id/it8" layout="@layout/ex" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/e9g" android:paddingTop="14.0dip" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+            <ImageView android:id="@id/e9c" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <TextView android:textSize="@dimen/hy" android:textStyle="bold" android:textColor="@color/black" android:id="@id/e9h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-1.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+    <com.tencent.biz.pubaccount.weishi_new.comment.WsReplyContainer android:orientation="vertical" android:id="@id/i7g" android:paddingLeft="12.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="60.0dip" android:layout_marginBottom="3.0dip" android:layout_below="@id/b3r" android:layout_alignLeft="@id/b3r" />
+    <View android:id="@id/bmt" android:background="@color/f4" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="60.0dip" android:layout_marginTop="9.0dip" android:layout_below="@id/i7g" android:layout_alignLeft="@id/b3r" />
+</merge>

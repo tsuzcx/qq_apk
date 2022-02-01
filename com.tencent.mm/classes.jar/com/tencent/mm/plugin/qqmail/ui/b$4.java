@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.qqmail.b.ai;
+import com.tencent.mm.plugin.qqmail.model.ai;
 
 final class b$4
   implements Runnable
@@ -10,14 +10,14 @@ final class b$4
   
   public final void run()
   {
-    AppMethodBeat.i(68286);
-    this.pMW.b(this.pMX);
-    AppMethodBeat.o(68286);
+    AppMethodBeat.i(123012);
+    b.b(this.NnO, this.NnP);
+    AppMethodBeat.o(123012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.b.4
  * JD-Core Version:    0.7.0.1
  */

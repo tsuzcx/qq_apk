@@ -13,11 +13,11 @@ final class HtmlTextView$3
   
   private static Object a(Editable paramEditable, Class paramClass)
   {
-    AppMethodBeat.i(44014);
+    AppMethodBeat.i(66920);
     paramClass = paramEditable.getSpans(0, paramEditable.length(), paramClass);
     if (paramClass.length == 0)
     {
-      AppMethodBeat.o(44014);
+      AppMethodBeat.o(66920);
       return null;
     }
     int i = paramClass.length;
@@ -26,25 +26,25 @@ final class HtmlTextView$3
       if (paramEditable.getSpanFlags(paramClass[(i - 1)]) == 17)
       {
         paramEditable = paramClass[(i - 1)];
-        AppMethodBeat.o(44014);
+        AppMethodBeat.o(66920);
         return paramEditable;
       }
       i -= 1;
     }
-    AppMethodBeat.o(44014);
+    AppMethodBeat.o(66920);
     return null;
   }
   
   public final void handleTag(boolean paramBoolean, String paramString, Editable paramEditable, XMLReader paramXMLReader)
   {
-    AppMethodBeat.i(44013);
+    AppMethodBeat.i(66919);
     if ((paramString.equalsIgnoreCase("strike")) || (paramString.equals("s")))
     {
       int i = paramEditable.length();
       if (paramBoolean)
       {
         paramEditable.setSpan(new StrikethroughSpan(), i, i, 17);
-        AppMethodBeat.o(44013);
+        AppMethodBeat.o(66919);
         return;
       }
       paramString = a(paramEditable, StrikethroughSpan.class);
@@ -54,12 +54,12 @@ final class HtmlTextView$3
         paramEditable.setSpan(new StrikethroughSpan(), j, i, 33);
       }
     }
-    AppMethodBeat.o(44013);
+    AppMethodBeat.o(66919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.HtmlTextView.3
  * JD-Core Version:    0.7.0.1
  */

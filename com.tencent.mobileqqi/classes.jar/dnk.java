@@ -1,17 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
 
 class dnk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  dnk(dni paramdni) {}
+  dnk(dnh paramdnh) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = SubLoginActivity.a(this.a.a).getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      SubLoginActivity.a(this.a.a).setText("");
-    }
+    SubAccountAssistantForward.b(this.a.a.b);
+    SubAccountAssistantForward.a(this.a.a.b);
+    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
+    this.a.a.finish();
   }
 }
 

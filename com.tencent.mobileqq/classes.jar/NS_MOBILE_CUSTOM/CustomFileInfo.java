@@ -40,11 +40,13 @@ public final class CustomFileInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iFileType, 0);
-    if (this.strFileUrl != null) {
-      paramJceOutputStream.write(this.strFileUrl, 1);
+    String str = this.strFileUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strFileMd5 != null) {
-      paramJceOutputStream.write(this.strFileMd5, 2);
+    str = this.strFileMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.iFileSize, 3);
     paramJceOutputStream.write(this.iImageWidth, 4);
@@ -53,7 +55,7 @@ public final class CustomFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.CustomFileInfo
  * JD-Core Version:    0.7.0.1
  */

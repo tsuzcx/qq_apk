@@ -26,12 +26,18 @@ public abstract class RemoteCommand
   
   public String toString()
   {
-    return "[cmd:" + this.mCmd + ", sync:" + isSynchronized() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[cmd:");
+    localStringBuilder.append(this.mCmd);
+    localStringBuilder.append(", sync:");
+    localStringBuilder.append(isSynchronized());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand
  * JD-Core Version:    0.7.0.1
  */

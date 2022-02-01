@@ -69,23 +69,26 @@ public class EglHandlerThread
   
   public void release()
   {
-    if (!this.initSuccess) {}
-    do
-    {
+    if (!this.initSuccess) {
       return;
-      if (this.eglSurfaceBase != null)
-      {
-        this.eglSurfaceBase.releaseEglSurface();
-        this.eglSurfaceBase = null;
-      }
-    } while (this.eglCore == null);
-    this.eglCore.release();
-    this.eglCore = null;
+    }
+    Object localObject = this.eglSurfaceBase;
+    if (localObject != null)
+    {
+      ((EglSurfaceBase)localObject).releaseEglSurface();
+      this.eglSurfaceBase = null;
+    }
+    localObject = this.eglCore;
+    if (localObject != null)
+    {
+      ((EglCore)localObject).release();
+      this.eglCore = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.eglwraper.EglHandlerThread
  * JD-Core Version:    0.7.0.1
  */

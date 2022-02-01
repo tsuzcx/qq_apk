@@ -34,40 +34,38 @@ public abstract class m<T>
   public m(int paramInt, String paramString, o.a parama)
   {
     u.a locala;
-    if (u.a.a)
-    {
+    if (u.a.a) {
       locala = new u.a();
-      this.a = locala;
-      this.h = true;
-      this.i = false;
-      this.j = false;
-      this.k = false;
-      this.m = null;
-      this.o = new Object();
-      this.b = paramInt;
-      this.c = paramString;
-      this.e = parama;
-      this.l = new q();
-      if (TextUtils.isEmpty(paramString)) {
-        break label129;
-      }
-      paramString = Uri.parse(paramString);
-      if (paramString == null) {
-        break label129;
-      }
-      paramString = paramString.getHost();
-      if (paramString == null) {
-        break label129;
-      }
-    }
-    label129:
-    for (paramInt = paramString.hashCode();; paramInt = 0)
-    {
-      this.d = paramInt;
-      return;
+    } else {
       locala = null;
-      break;
     }
+    this.a = locala;
+    this.h = true;
+    int i1 = 0;
+    this.i = false;
+    this.j = false;
+    this.k = false;
+    this.m = null;
+    this.o = new Object();
+    this.b = paramInt;
+    this.c = paramString;
+    this.e = parama;
+    this.l = new q();
+    paramInt = i1;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = Uri.parse(paramString);
+      paramInt = i1;
+      if (paramString != null)
+      {
+        paramString = paramString.getHost();
+        paramInt = i1;
+        if (paramString != null) {
+          paramInt = paramString.hashCode();
+        }
+      }
+    }
+    this.d = paramInt;
   }
   
   protected static t a(t paramt)
@@ -90,12 +88,18 @@ public abstract class m<T>
         localStringBuilder.append('&');
       }
       paramMap = localStringBuilder.toString().getBytes(paramString);
+      return paramMap;
     }
     catch (UnsupportedEncodingException paramMap)
     {
-      throw new RuntimeException("Encoding not supported: " + paramString, paramMap);
+      localStringBuilder = new StringBuilder("Encoding not supported: ");
+      localStringBuilder.append(paramString);
+      paramMap = new RuntimeException(localStringBuilder.toString(), paramMap);
     }
-    return paramMap;
+    for (;;)
+    {
+      throw paramMap;
+    }
   }
   
   public final int a()
@@ -165,30 +169,29 @@ public abstract class m<T>
   
   public final void b(t paramt)
   {
-    if (this.e != null) {
-      this.e.a(paramt);
+    o.a locala = this.e;
+    if (locala != null) {
+      locala.a(paramt);
     }
   }
   
   final void b(String paramString)
   {
-    if (this.g != null) {
-      this.g.b(this);
+    n localn = this.g;
+    if (localn != null) {
+      localn.b(this);
     }
-    long l1;
     if (u.a.a)
     {
-      l1 = Thread.currentThread().getId();
-      if (Looper.myLooper() != Looper.getMainLooper()) {
+      long l1 = Thread.currentThread().getId();
+      if (Looper.myLooper() != Looper.getMainLooper())
+      {
         new Handler(Looper.getMainLooper()).post(new m.1(this, paramString, l1));
+        return;
       }
+      this.a.a(paramString, l1);
+      this.a.a(toString());
     }
-    else
-    {
-      return;
-    }
-    this.a.a(paramString, l1);
-    this.a.a(toString());
   }
   
   public final String c()
@@ -232,7 +235,9 @@ public abstract class m<T>
   
   public final String j()
   {
-    return "application/x-www-form-urlencoded; charset=" + "UTF-8";
+    StringBuilder localStringBuilder = new StringBuilder("application/x-www-form-urlencoded; charset=");
+    localStringBuilder.append("UTF-8");
+    return localStringBuilder.toString();
   }
   
   public final byte[] k()
@@ -287,17 +292,29 @@ public abstract class m<T>
   
   public String toString()
   {
-    String str2 = "0x" + Integer.toHexString(this.d);
+    Object localObject = new StringBuilder("0x");
+    ((StringBuilder)localObject).append(Integer.toHexString(this.d));
+    String str = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.i) {}
-    for (String str1 = "[X] ";; str1 = "[ ] ") {
-      return str1 + this.c + " " + str2 + " " + m() + " " + this.f;
+    if (this.i) {
+      localObject = "[X] ";
+    } else {
+      localObject = "[ ] ";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(m());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.m
  * JD-Core Version:    0.7.0.1
  */

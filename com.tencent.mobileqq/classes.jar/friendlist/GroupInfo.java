@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupInfo
   extends JceStruct
 {
-  public int friend_count;
-  public byte groupId;
+  public int friend_count = 0;
+  public byte groupId = 0;
   public String groupname = "";
-  public int online_friend_count;
-  public byte seqid;
-  public int sqqOnLine_count;
+  public int online_friend_count = 0;
+  public byte seqid = 0;
+  public int sqqOnLine_count = 0;
   
   public GroupInfo() {}
   
@@ -48,7 +48,7 @@ public final class GroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

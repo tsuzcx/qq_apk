@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.app;
 
-import aoiy;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
 class MessageHandler$16
-  implements Runnable
+  extends SendMessageHandler.SendMessageRunnable
 {
-  MessageHandler$16(MessageHandler paramMessageHandler, boolean paramBoolean) {}
+  MessageHandler$16(MessageHandler paramMessageHandler, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    try
-    {
-      aoiy.b(this.this$0.app, false);
-      aoiy.a(this.this$0.app, false);
-      this.this$0.e(this.a);
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.e("Q.msg.MessageHandler", 1, "sendMsgReadedReportInAll error :", localRuntimeException);
-      throw localRuntimeException;
-    }
+    ToServiceMsg localToServiceMsg = this.this$0.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
+    localToServiceMsg.putWupBuffer(this.a.toByteArray());
+    localToServiceMsg.extraData.putLong("timeOut", this.g);
+    localToServiceMsg.extraData.putLong("startTime", this.b);
+    localToServiceMsg.extraData.putInt("retryIndex", this.m);
+    localToServiceMsg.extraData.putLong("msgSeq", this.c);
+    localToServiceMsg.setEnableFastResend(true);
+    localToServiceMsg.setTimeout(this.g);
+    this.this$0.sendPbReq(localToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.16
  * JD-Core Version:    0.7.0.1
  */

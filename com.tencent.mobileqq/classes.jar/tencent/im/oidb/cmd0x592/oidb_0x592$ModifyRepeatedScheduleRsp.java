@@ -18,14 +18,15 @@ public final class oidb_0x592$ModifyRepeatedScheduleRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint32_result", "bytes_error_msg", "uint32_data_version", "bytes_new_workflow_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, ModifyRepeatedScheduleRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint32_result", "bytes_error_msg", "uint32_data_version", "bytes_new_workflow_id" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2 }, ModifyRepeatedScheduleRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x592.oidb_0x592.ModifyRepeatedScheduleRsp
  * JD-Core Version:    0.7.0.1
  */

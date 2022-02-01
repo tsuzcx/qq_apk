@@ -10,15 +10,21 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class CmShowContentUpdate$STContUpdRsp
   extends MessageMicro<STContUpdRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "app_id", "domain_list", "cont_list", "intervals_ts" }, new Object[] { Integer.valueOf(0), null, null, Integer.valueOf(0) }, STContUpdRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field app_id = PBField.initInt32(0);
   public final PBRepeatMessageField<CmShowContentUpdate.STVerInfo> cont_list = PBField.initRepeatMessage(CmShowContentUpdate.STVerInfo.class);
   public final PBRepeatMessageField<CmShowContentUpdate.STDomainInfo> domain_list = PBField.initRepeatMessage(CmShowContentUpdate.STDomainInfo.class);
   public final PBUInt32Field intervals_ts = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "app_id", "domain_list", "cont_list", "intervals_ts" }, new Object[] { localInteger, null, null, localInteger }, STContUpdRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.clubcontent.CmShowContentUpdate.STContUpdRsp
  * JD-Core Version:    0.7.0.1
  */

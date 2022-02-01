@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class IPCallShareCouponUI$9
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class IPCallShareCouponUI$9
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(22327);
-    IPCallShareCouponUI.d(this.nWj);
-    AppMethodBeat.o(22327);
+    AppMethodBeat.i(25946);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    IPCallShareCouponUI.d(this.JPU);
+    a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(25946);
   }
 }
 

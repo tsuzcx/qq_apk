@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class a
 {
-  protected static a a = null;
+  protected static a a;
   
   public static a a()
   {
@@ -22,8 +22,16 @@ public class a
   
   public void a(com.tencent.tmdownloader.internal.downloadservice.c paramc)
   {
-    Log.i("DBManager", "addDownloadInfo di=" + paramc);
-    Log.i("DBManager", "addDownloadInfo di.filename=" + paramc.j + ",mURL=" + paramc.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addDownloadInfo di=");
+    localStringBuilder.append(paramc);
+    Log.i("DBManager", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addDownloadInfo di.filename=");
+    localStringBuilder.append(paramc.j);
+    localStringBuilder.append(",mURL=");
+    localStringBuilder.append(paramc.b);
+    Log.i("DBManager", localStringBuilder.toString());
     com.tencent.tmdownloader.internal.storage.table.c.a(paramc);
   }
   
@@ -60,7 +68,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.a
  * JD-Core Version:    0.7.0.1
  */

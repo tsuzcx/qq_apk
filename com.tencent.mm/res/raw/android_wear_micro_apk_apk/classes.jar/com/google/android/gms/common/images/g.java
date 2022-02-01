@@ -7,7 +7,7 @@ import java.util.Arrays;
 public final class g
   extends e
 {
-  private WeakReference<a> IS;
+  private WeakReference<a> KH;
   
   public final boolean equals(Object paramObject)
   {
@@ -18,19 +18,19 @@ public final class g
       return true;
     }
     paramObject = (g)paramObject;
-    a locala1 = (a)this.IS.get();
-    a locala2 = (a)paramObject.IS.get();
-    return (locala2 != null) && (locala1 != null) && (b.b(locala2, locala1)) && (b.b(paramObject.IQ, this.IQ));
-  }
-  
-  protected final void gT()
-  {
-    this.IS.get();
+    a locala1 = (a)this.KH.get();
+    a locala2 = (a)paramObject.KH.get();
+    return (locala2 != null) && (locala1 != null) && (b.c(locala2, locala1)) && (b.c(paramObject.KF, this.KF));
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.IQ });
+    return Arrays.hashCode(new Object[] { this.KF });
+  }
+  
+  protected final void hd()
+  {
+    this.KH.get();
   }
 }
 

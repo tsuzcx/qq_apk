@@ -1,0 +1,15 @@
+package com.tencent.mm.emoji.c.c;
+
+import kotlin.Metadata;
+
+@Metadata(d1={""}, d2={"TAG", "", "plugin-emojisdk_release"}, k=2, mv={1, 5, 1}, xi=48)
+public final class k
+{
+  private static final String TAG = "MicroMsg.IEmojiSuggest";
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.emoji.c.c.k
+ * JD-Core Version:    0.7.0.1
+ */

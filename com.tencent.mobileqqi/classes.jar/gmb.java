@@ -1,19 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 import com.tencent.mobileqq.systemmsg.SystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class gmb
-  implements Runnable
+  extends Handler
 {
-  public gmb(SystemMsgController paramSystemMsgController, QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  public void run()
+  public gmb(SystemMsgController paramSystemMsgController, Looper paramLooper)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("unread_system_msg", this.jdField_a_of_type_Int).commit();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((SystemMsgController.a(this.a)) && (SystemMsgController.a(this.a) != null))
+    {
+      SystemMsgController.a(this.a, false);
+      SystemMsgController.a(this.a).a().a(3);
     }
   }
 }

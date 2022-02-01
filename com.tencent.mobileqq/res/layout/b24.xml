@@ -26,7 +26,7 @@
                 <TextView android:textSize="14.0sp" android:textColor="@color/skin_black_theme_version2" android:id="@id/a2l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="1GB" android:layout_below="@id/a2n" android:layout_alignLeft="@id/a2n" />
             </RelativeLayout>
         </LinearLayout>
-        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/ay_" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="@string/hoi" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/ay_" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="@string/hoi" />
         <View android:background="#ffebebed" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="15.0dip" />
         <Button android:enabled="false" android:gravity="center" android:id="@id/ay9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="15.0dip" android:text="@string/hoa" style="@style/bd" />
         <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip">

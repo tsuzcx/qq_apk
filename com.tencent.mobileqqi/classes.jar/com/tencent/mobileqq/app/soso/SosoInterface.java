@@ -5,7 +5,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import fks;
+import fkr;
 import java.util.ArrayList;
 
 public class SosoInterface
@@ -53,7 +53,7 @@ public class SosoInterface
         if (this.b.isEmpty())
         {
           this.b.add(paramOnCellsListener);
-          this.jdField_a_of_type_AndroidTelephonyPhoneStateListener = new fks(this, null);
+          this.jdField_a_of_type_AndroidTelephonyPhoneStateListener = new fkr(this, null);
           ((TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone")).listen(this.jdField_a_of_type_AndroidTelephonyPhoneStateListener, 18);
           return;
         }

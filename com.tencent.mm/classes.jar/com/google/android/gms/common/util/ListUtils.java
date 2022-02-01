@@ -11,7 +11,7 @@ public final class ListUtils
 {
   public static <T> ArrayList<T> copyAndRemoveElementFromListIfPresent(List<T> paramList, T paramT)
   {
-    AppMethodBeat.i(90247);
+    AppMethodBeat.i(5269);
     int j = paramList.size();
     ArrayList localArrayList = new ArrayList(j);
     int i = 0;
@@ -23,13 +23,13 @@ public final class ListUtils
       }
       i += 1;
     }
-    AppMethodBeat.o(90247);
+    AppMethodBeat.o(5269);
     return localArrayList;
   }
   
   public static <T> ArrayList<T> copyAndRemoveElementsFromListIfPresent(List<T> paramList, Collection<T> paramCollection)
   {
-    AppMethodBeat.i(90248);
+    AppMethodBeat.i(5270);
     Preconditions.checkNotNull(paramCollection);
     ArrayList localArrayList = new ArrayList(paramList.size());
     paramList = paramList.iterator();
@@ -40,13 +40,13 @@ public final class ListUtils
         localArrayList.add(localObject);
       }
     }
-    AppMethodBeat.o(90248);
+    AppMethodBeat.o(5270);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.util.ListUtils
  * JD-Core Version:    0.7.0.1
  */

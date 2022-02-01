@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.mmsight;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.model.at;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.y.a;
+import com.tencent.mm.app.f;
+import com.tencent.mm.model.be;
+import com.tencent.mm.modelvideo.ag.a;
+import com.tencent.mm.modelvideo.v;
 import com.tencent.mm.plugin.mmsight.model.a.j;
 import com.tencent.mm.plugin.mmsight.model.m;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class e
-  implements at
+  implements be
 {
-  private m oGb;
-  private c oGc;
-  private c oGd;
+  private m KUf;
+  private IListener KUg;
+  private IListener KUh;
   
   public e()
   {
-    AppMethodBeat.i(76431);
-    this.oGb = new m();
-    this.oGc = new e.1(this);
-    this.oGd = new e.2(this);
-    AppMethodBeat.o(76431);
+    AppMethodBeat.i(89317);
+    this.KUf = new m();
+    this.KUg = new SubCoreMMSight.1(this, f.hfK);
+    this.KUh = new SubCoreMMSight.2(this, f.hfK);
+    AppMethodBeat.o(89317);
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(76432);
-    o.alJ().a(this.oGb);
-    a.ymk.b(this.oGd);
-    a.ymk.c(this.oGc);
-    AppMethodBeat.o(76432);
+    AppMethodBeat.i(89318);
+    v.bOm().a(this.KUf);
+    this.KUh.alive();
+    this.KUg.alive();
+    AppMethodBeat.o(89318);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(76433);
-    o.alJ().b(this.oGb);
-    a.ymk.d(this.oGd);
-    j.oJp.XJ();
-    a.ymk.d(this.oGc);
-    AppMethodBeat.o(76433);
+    AppMethodBeat.i(89319);
+    v.bOm().b(this.KUf);
+    this.KUh.dead();
+    j.KXq.bvG();
+    this.KUg.dead();
+    AppMethodBeat.o(89319);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}

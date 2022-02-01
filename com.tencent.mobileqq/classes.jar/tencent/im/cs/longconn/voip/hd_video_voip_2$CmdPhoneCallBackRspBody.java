@@ -19,15 +19,16 @@ public final class hd_video_voip_2$CmdPhoneCallBackRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40 }, new String[] { "bytes_call_id", "bytes_call_prompt", "bytes_call_phone", "uint32_call_phone_type", "uint32_cb_line_count" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, CmdPhoneCallBackRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40 }, new String[] { "bytes_call_id", "bytes_call_prompt", "bytes_call_phone", "uint32_call_phone_type", "uint32_cb_line_count" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger }, CmdPhoneCallBackRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.CmdPhoneCallBackRspBody
  * JD-Core Version:    0.7.0.1
  */

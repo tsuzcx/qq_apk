@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class MessageForTroopStory
   extends MessageForRichText
@@ -19,7 +19,7 @@ public class MessageForTroopStory
   public static final String KEY_UNION_ID = "key_union_id";
   public static final String KEY_VIDEO_HEIGHT = "key_video_height";
   public static final String KEY_VIDEO_WIDTH = "key_video_width";
-  public static final String MSG_CONTENT = alud.a(2131706972);
+  public static final String MSG_CONTENT = HardCodeUtil.a(2131904464);
   public static final String TAG = "MessageForTroopStory";
   public String compatibleText;
   public int ctrVersion;
@@ -50,184 +50,179 @@ public class MessageForTroopStory
     //   16: getfield 96	com/tencent/mobileqq/data/MessageForTroopStory:msgData	[B
     //   19: invokespecial 99	java/io/ByteArrayInputStream:<init>	([B)V
     //   22: invokespecial 102	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   25: astore_2
-    //   26: aload_2
-    //   27: astore_1
+    //   25: astore_1
+    //   26: aload_1
+    //   27: astore_2
     //   28: aload_0
-    //   29: aload_2
+    //   29: aload_1
     //   30: invokevirtual 106	java/io/ObjectInputStream:readLong	()J
     //   33: putfield 108	com/tencent/mobileqq/data/MessageForTroopStory:uid	J
-    //   36: aload_2
-    //   37: astore_1
+    //   36: aload_1
+    //   37: astore_2
     //   38: aload_0
-    //   39: aload_2
+    //   39: aload_1
     //   40: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   43: putfield 114	com/tencent/mobileqq/data/MessageForTroopStory:unionId	Ljava/lang/String;
-    //   46: aload_2
-    //   47: astore_1
+    //   46: aload_1
+    //   47: astore_2
     //   48: aload_0
-    //   49: aload_2
+    //   49: aload_1
     //   50: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   53: putfield 116	com/tencent/mobileqq/data/MessageForTroopStory:storyId	Ljava/lang/String;
-    //   56: aload_2
-    //   57: astore_1
+    //   56: aload_1
+    //   57: astore_2
     //   58: aload_0
-    //   59: aload_2
+    //   59: aload_1
     //   60: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   63: putfield 118	com/tencent/mobileqq/data/MessageForTroopStory:md5	Ljava/lang/String;
-    //   66: aload_2
-    //   67: astore_1
+    //   66: aload_1
+    //   67: astore_2
     //   68: aload_0
-    //   69: aload_2
+    //   69: aload_1
     //   70: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   73: putfield 120	com/tencent/mobileqq/data/MessageForTroopStory:thumbUrl	Ljava/lang/String;
-    //   76: aload_2
-    //   77: astore_1
+    //   76: aload_1
+    //   77: astore_2
     //   78: aload_0
-    //   79: aload_2
+    //   79: aload_1
     //   80: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   83: putfield 122	com/tencent/mobileqq/data/MessageForTroopStory:doodleUrl	Ljava/lang/String;
-    //   86: aload_2
-    //   87: astore_1
+    //   86: aload_1
+    //   87: astore_2
     //   88: aload_0
-    //   89: aload_2
+    //   89: aload_1
     //   90: invokevirtual 126	java/io/ObjectInputStream:readInt	()I
     //   93: putfield 128	com/tencent/mobileqq/data/MessageForTroopStory:videoWidth	I
-    //   96: aload_2
-    //   97: astore_1
+    //   96: aload_1
+    //   97: astore_2
     //   98: aload_0
-    //   99: aload_2
+    //   99: aload_1
     //   100: invokevirtual 126	java/io/ObjectInputStream:readInt	()I
     //   103: putfield 130	com/tencent/mobileqq/data/MessageForTroopStory:videoHeight	I
-    //   106: aload_2
-    //   107: astore_1
+    //   106: aload_1
+    //   107: astore_2
     //   108: aload_0
-    //   109: aload_2
+    //   109: aload_1
     //   110: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   113: putfield 132	com/tencent/mobileqq/data/MessageForTroopStory:sourceName	Ljava/lang/String;
-    //   116: aload_2
-    //   117: astore_1
+    //   116: aload_1
+    //   117: astore_2
     //   118: aload_0
-    //   119: aload_2
+    //   119: aload_1
     //   120: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   123: putfield 134	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionType	Ljava/lang/String;
-    //   126: aload_2
-    //   127: astore_1
+    //   126: aload_1
+    //   127: astore_2
     //   128: aload_0
-    //   129: aload_2
+    //   129: aload_1
     //   130: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   133: putfield 136	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionData	Ljava/lang/String;
-    //   136: aload_2
-    //   137: astore_1
+    //   136: aload_1
+    //   137: astore_2
     //   138: aload_0
-    //   139: aload_2
+    //   139: aload_1
     //   140: invokevirtual 112	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
     //   143: putfield 138	com/tencent/mobileqq/data/MessageForTroopStory:compatibleText	Ljava/lang/String;
-    //   146: aload_2
-    //   147: astore_1
+    //   146: aload_1
+    //   147: astore_2
     //   148: aload_0
-    //   149: aload_2
+    //   149: aload_1
     //   150: invokevirtual 141	java/io/ObjectInputStream:read	()I
     //   153: putfield 143	com/tencent/mobileqq/data/MessageForTroopStory:ctrVersion	I
-    //   156: aload_2
-    //   157: ifnull +7 -> 164
-    //   160: aload_2
-    //   161: invokevirtual 146	java/io/ObjectInputStream:close	()V
-    //   164: return
-    //   165: astore_3
+    //   156: aload_1
+    //   157: invokevirtual 146	java/io/ObjectInputStream:close	()V
+    //   160: return
+    //   161: astore_3
+    //   162: goto +12 -> 174
+    //   165: astore_1
     //   166: aconst_null
     //   167: astore_2
-    //   168: aload_2
-    //   169: astore_1
-    //   170: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   173: ifeq +14 -> 187
-    //   176: aload_2
-    //   177: astore_1
-    //   178: ldc 51
-    //   180: iconst_2
-    //   181: ldc 154
-    //   183: aload_3
-    //   184: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   187: aload_2
-    //   188: ifnull -24 -> 164
-    //   191: aload_2
-    //   192: invokevirtual 146	java/io/ObjectInputStream:close	()V
-    //   195: return
-    //   196: astore_1
-    //   197: return
-    //   198: astore_2
-    //   199: aconst_null
-    //   200: astore_1
-    //   201: aload_1
-    //   202: ifnull +7 -> 209
-    //   205: aload_1
-    //   206: invokevirtual 146	java/io/ObjectInputStream:close	()V
-    //   209: aload_2
-    //   210: athrow
-    //   211: astore_1
-    //   212: return
-    //   213: astore_1
-    //   214: goto -5 -> 209
-    //   217: astore_2
-    //   218: goto -17 -> 201
-    //   221: astore_3
-    //   222: goto -54 -> 168
+    //   168: goto +34 -> 202
+    //   171: astore_3
+    //   172: aconst_null
+    //   173: astore_1
+    //   174: aload_1
+    //   175: astore_2
+    //   176: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   179: ifeq +14 -> 193
+    //   182: aload_1
+    //   183: astore_2
+    //   184: ldc 51
+    //   186: iconst_2
+    //   187: ldc 154
+    //   189: aload_3
+    //   190: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   193: aload_1
+    //   194: ifnull +6 -> 200
+    //   197: goto -41 -> 156
+    //   200: return
+    //   201: astore_1
+    //   202: aload_2
+    //   203: ifnull +7 -> 210
+    //   206: aload_2
+    //   207: invokevirtual 146	java/io/ObjectInputStream:close	()V
+    //   210: goto +5 -> 215
+    //   213: aload_1
+    //   214: athrow
+    //   215: goto -2 -> 213
+    //   218: astore_1
+    //   219: return
+    //   220: astore_2
+    //   221: goto -11 -> 210
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	225	0	this	MessageForTroopStory
-    //   27	151	1	localObjectInputStream1	java.io.ObjectInputStream
-    //   196	1	1	localIOException1	java.io.IOException
-    //   200	6	1	localObject1	java.lang.Object
-    //   211	1	1	localIOException2	java.io.IOException
-    //   213	1	1	localIOException3	java.io.IOException
-    //   25	167	2	localObjectInputStream2	java.io.ObjectInputStream
-    //   198	12	2	localObject2	java.lang.Object
-    //   217	1	2	localObject3	java.lang.Object
-    //   165	19	3	localException1	java.lang.Exception
-    //   221	1	3	localException2	java.lang.Exception
+    //   0	224	0	this	MessageForTroopStory
+    //   25	132	1	localObjectInputStream	java.io.ObjectInputStream
+    //   165	1	1	localObject1	java.lang.Object
+    //   173	21	1	localObject2	java.lang.Object
+    //   201	13	1	localObject3	java.lang.Object
+    //   218	1	1	localIOException1	java.io.IOException
+    //   27	180	2	localObject4	java.lang.Object
+    //   220	1	2	localIOException2	java.io.IOException
+    //   161	1	3	localException1	java.lang.Exception
+    //   171	19	3	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   7	26	165	java/lang/Exception
-    //   191	195	196	java/io/IOException
-    //   7	26	198	finally
-    //   160	164	211	java/io/IOException
-    //   205	209	213	java/io/IOException
-    //   28	36	217	finally
-    //   38	46	217	finally
-    //   48	56	217	finally
-    //   58	66	217	finally
-    //   68	76	217	finally
-    //   78	86	217	finally
-    //   88	96	217	finally
-    //   98	106	217	finally
-    //   108	116	217	finally
-    //   118	126	217	finally
-    //   128	136	217	finally
-    //   138	146	217	finally
-    //   148	156	217	finally
-    //   170	176	217	finally
-    //   178	187	217	finally
-    //   28	36	221	java/lang/Exception
-    //   38	46	221	java/lang/Exception
-    //   48	56	221	java/lang/Exception
-    //   58	66	221	java/lang/Exception
-    //   68	76	221	java/lang/Exception
-    //   78	86	221	java/lang/Exception
-    //   88	96	221	java/lang/Exception
-    //   98	106	221	java/lang/Exception
-    //   108	116	221	java/lang/Exception
-    //   118	126	221	java/lang/Exception
-    //   128	136	221	java/lang/Exception
-    //   138	146	221	java/lang/Exception
-    //   148	156	221	java/lang/Exception
+    //   28	36	161	java/lang/Exception
+    //   38	46	161	java/lang/Exception
+    //   48	56	161	java/lang/Exception
+    //   58	66	161	java/lang/Exception
+    //   68	76	161	java/lang/Exception
+    //   78	86	161	java/lang/Exception
+    //   88	96	161	java/lang/Exception
+    //   98	106	161	java/lang/Exception
+    //   108	116	161	java/lang/Exception
+    //   118	126	161	java/lang/Exception
+    //   128	136	161	java/lang/Exception
+    //   138	146	161	java/lang/Exception
+    //   148	156	161	java/lang/Exception
+    //   7	26	165	finally
+    //   7	26	171	java/lang/Exception
+    //   28	36	201	finally
+    //   38	46	201	finally
+    //   48	56	201	finally
+    //   58	66	201	finally
+    //   68	76	201	finally
+    //   78	86	201	finally
+    //   88	96	201	finally
+    //   98	106	201	finally
+    //   108	116	201	finally
+    //   118	126	201	finally
+    //   128	136	201	finally
+    //   138	146	201	finally
+    //   148	156	201	finally
+    //   176	182	201	finally
+    //   184	193	201	finally
+    //   156	160	218	java/io/IOException
+    //   206	210	220	java/io/IOException
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
   }
@@ -240,345 +235,293 @@ public class MessageForTroopStory
     //   3: dup
     //   4: invokespecial 169	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore 4
-    //   9: new 171	java/io/ObjectOutputStream
-    //   12: dup
-    //   13: aload 4
-    //   15: invokespecial 174	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   18: astore_2
-    //   19: aload_2
-    //   20: astore_1
-    //   21: aload_2
-    //   22: aload_0
-    //   23: getfield 108	com/tencent/mobileqq/data/MessageForTroopStory:uid	J
-    //   26: invokevirtual 178	java/io/ObjectOutputStream:writeLong	(J)V
-    //   29: aload_2
-    //   30: astore_1
+    //   9: aconst_null
+    //   10: astore_3
+    //   11: aconst_null
+    //   12: astore_1
+    //   13: new 171	java/io/ObjectOutputStream
+    //   16: dup
+    //   17: aload 4
+    //   19: invokespecial 174	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   22: astore_2
+    //   23: aload_2
+    //   24: aload_0
+    //   25: getfield 108	com/tencent/mobileqq/data/MessageForTroopStory:uid	J
+    //   28: invokevirtual 178	java/io/ObjectOutputStream:writeLong	(J)V
     //   31: aload_0
     //   32: getfield 114	com/tencent/mobileqq/data/MessageForTroopStory:unionId	Ljava/lang/String;
-    //   35: ifnonnull +221 -> 256
-    //   38: ldc 180
-    //   40: astore_3
-    //   41: aload_2
-    //   42: astore_1
-    //   43: aload_2
-    //   44: aload_3
-    //   45: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   48: aload_2
-    //   49: astore_1
-    //   50: aload_0
-    //   51: getfield 116	com/tencent/mobileqq/data/MessageForTroopStory:storyId	Ljava/lang/String;
-    //   54: ifnonnull +212 -> 266
-    //   57: ldc 180
-    //   59: astore_3
-    //   60: aload_2
-    //   61: astore_1
-    //   62: aload_2
-    //   63: aload_3
-    //   64: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   67: aload_2
+    //   35: astore_1
+    //   36: ldc 180
+    //   38: astore_3
+    //   39: aload_1
+    //   40: ifnonnull +9 -> 49
+    //   43: ldc 180
+    //   45: astore_1
+    //   46: goto +8 -> 54
+    //   49: aload_0
+    //   50: getfield 114	com/tencent/mobileqq/data/MessageForTroopStory:unionId	Ljava/lang/String;
+    //   53: astore_1
+    //   54: aload_2
+    //   55: aload_1
+    //   56: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   59: aload_0
+    //   60: getfield 116	com/tencent/mobileqq/data/MessageForTroopStory:storyId	Ljava/lang/String;
+    //   63: ifnonnull +9 -> 72
+    //   66: ldc 180
     //   68: astore_1
-    //   69: aload_0
-    //   70: getfield 118	com/tencent/mobileqq/data/MessageForTroopStory:md5	Ljava/lang/String;
-    //   73: ifnonnull +203 -> 276
-    //   76: ldc 180
-    //   78: astore_3
-    //   79: aload_2
-    //   80: astore_1
-    //   81: aload_2
-    //   82: aload_3
-    //   83: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   86: aload_2
-    //   87: astore_1
-    //   88: aload_0
-    //   89: getfield 120	com/tencent/mobileqq/data/MessageForTroopStory:thumbUrl	Ljava/lang/String;
-    //   92: ifnonnull +194 -> 286
-    //   95: ldc 180
-    //   97: astore_3
-    //   98: aload_2
+    //   69: goto +8 -> 77
+    //   72: aload_0
+    //   73: getfield 116	com/tencent/mobileqq/data/MessageForTroopStory:storyId	Ljava/lang/String;
+    //   76: astore_1
+    //   77: aload_2
+    //   78: aload_1
+    //   79: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   82: aload_0
+    //   83: getfield 118	com/tencent/mobileqq/data/MessageForTroopStory:md5	Ljava/lang/String;
+    //   86: ifnonnull +9 -> 95
+    //   89: ldc 180
+    //   91: astore_1
+    //   92: goto +8 -> 100
+    //   95: aload_0
+    //   96: getfield 118	com/tencent/mobileqq/data/MessageForTroopStory:md5	Ljava/lang/String;
     //   99: astore_1
     //   100: aload_2
-    //   101: aload_3
+    //   101: aload_1
     //   102: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   105: aload_2
-    //   106: astore_1
-    //   107: aload_0
-    //   108: getfield 122	com/tencent/mobileqq/data/MessageForTroopStory:doodleUrl	Ljava/lang/String;
-    //   111: ifnonnull +185 -> 296
-    //   114: ldc 180
-    //   116: astore_3
-    //   117: aload_2
-    //   118: astore_1
-    //   119: aload_2
-    //   120: aload_3
-    //   121: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   124: aload_2
-    //   125: astore_1
-    //   126: aload_2
-    //   127: aload_0
-    //   128: getfield 128	com/tencent/mobileqq/data/MessageForTroopStory:videoWidth	I
-    //   131: invokevirtual 188	java/io/ObjectOutputStream:writeInt	(I)V
-    //   134: aload_2
-    //   135: astore_1
-    //   136: aload_2
-    //   137: aload_0
-    //   138: getfield 130	com/tencent/mobileqq/data/MessageForTroopStory:videoHeight	I
-    //   141: invokevirtual 188	java/io/ObjectOutputStream:writeInt	(I)V
-    //   144: aload_2
+    //   105: aload_0
+    //   106: getfield 120	com/tencent/mobileqq/data/MessageForTroopStory:thumbUrl	Ljava/lang/String;
+    //   109: ifnonnull +9 -> 118
+    //   112: ldc 180
+    //   114: astore_1
+    //   115: goto +8 -> 123
+    //   118: aload_0
+    //   119: getfield 120	com/tencent/mobileqq/data/MessageForTroopStory:thumbUrl	Ljava/lang/String;
+    //   122: astore_1
+    //   123: aload_2
+    //   124: aload_1
+    //   125: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   128: aload_0
+    //   129: getfield 122	com/tencent/mobileqq/data/MessageForTroopStory:doodleUrl	Ljava/lang/String;
+    //   132: ifnonnull +9 -> 141
+    //   135: ldc 180
+    //   137: astore_1
+    //   138: goto +8 -> 146
+    //   141: aload_0
+    //   142: getfield 122	com/tencent/mobileqq/data/MessageForTroopStory:doodleUrl	Ljava/lang/String;
     //   145: astore_1
-    //   146: aload_0
-    //   147: getfield 132	com/tencent/mobileqq/data/MessageForTroopStory:sourceName	Ljava/lang/String;
-    //   150: ifnonnull +156 -> 306
-    //   153: ldc 180
-    //   155: astore_3
-    //   156: aload_2
-    //   157: astore_1
-    //   158: aload_2
-    //   159: aload_3
-    //   160: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   163: aload_2
-    //   164: astore_1
-    //   165: aload_0
-    //   166: getfield 134	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionType	Ljava/lang/String;
-    //   169: ifnonnull +147 -> 316
-    //   172: ldc 180
-    //   174: astore_3
-    //   175: aload_2
+    //   146: aload_2
+    //   147: aload_1
+    //   148: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   151: aload_2
+    //   152: aload_0
+    //   153: getfield 128	com/tencent/mobileqq/data/MessageForTroopStory:videoWidth	I
+    //   156: invokevirtual 188	java/io/ObjectOutputStream:writeInt	(I)V
+    //   159: aload_2
+    //   160: aload_0
+    //   161: getfield 130	com/tencent/mobileqq/data/MessageForTroopStory:videoHeight	I
+    //   164: invokevirtual 188	java/io/ObjectOutputStream:writeInt	(I)V
+    //   167: aload_0
+    //   168: getfield 132	com/tencent/mobileqq/data/MessageForTroopStory:sourceName	Ljava/lang/String;
+    //   171: ifnonnull +9 -> 180
+    //   174: ldc 180
     //   176: astore_1
-    //   177: aload_2
-    //   178: aload_3
-    //   179: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   182: aload_2
-    //   183: astore_1
-    //   184: aload_0
-    //   185: getfield 136	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionData	Ljava/lang/String;
-    //   188: ifnonnull +138 -> 326
-    //   191: ldc 180
-    //   193: astore_3
-    //   194: aload_2
-    //   195: astore_1
-    //   196: aload_2
-    //   197: aload_3
-    //   198: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   201: aload_2
-    //   202: astore_1
+    //   177: goto +8 -> 185
+    //   180: aload_0
+    //   181: getfield 132	com/tencent/mobileqq/data/MessageForTroopStory:sourceName	Ljava/lang/String;
+    //   184: astore_1
+    //   185: aload_2
+    //   186: aload_1
+    //   187: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   190: aload_0
+    //   191: getfield 134	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionType	Ljava/lang/String;
+    //   194: ifnonnull +9 -> 203
+    //   197: ldc 180
+    //   199: astore_1
+    //   200: goto +8 -> 208
     //   203: aload_0
-    //   204: getfield 138	com/tencent/mobileqq/data/MessageForTroopStory:compatibleText	Ljava/lang/String;
-    //   207: ifnonnull +129 -> 336
-    //   210: ldc 180
-    //   212: astore_3
-    //   213: aload_2
-    //   214: astore_1
-    //   215: aload_2
-    //   216: aload_3
-    //   217: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
-    //   220: aload_2
-    //   221: astore_1
-    //   222: aload_2
-    //   223: aload_0
-    //   224: getfield 143	com/tencent/mobileqq/data/MessageForTroopStory:ctrVersion	I
-    //   227: invokevirtual 191	java/io/ObjectOutputStream:write	(I)V
-    //   230: aload_2
-    //   231: astore_1
-    //   232: aload_2
-    //   233: invokevirtual 194	java/io/ObjectOutputStream:flush	()V
-    //   236: aload_2
-    //   237: astore_1
-    //   238: aload_0
-    //   239: aload 4
-    //   241: invokevirtual 198	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   244: putfield 96	com/tencent/mobileqq/data/MessageForTroopStory:msgData	[B
-    //   247: aload_2
-    //   248: ifnull +7 -> 255
-    //   251: aload_2
-    //   252: invokevirtual 199	java/io/ObjectOutputStream:close	()V
-    //   255: return
-    //   256: aload_2
-    //   257: astore_1
-    //   258: aload_0
-    //   259: getfield 114	com/tencent/mobileqq/data/MessageForTroopStory:unionId	Ljava/lang/String;
-    //   262: astore_3
-    //   263: goto -222 -> 41
+    //   204: getfield 134	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionType	Ljava/lang/String;
+    //   207: astore_1
+    //   208: aload_2
+    //   209: aload_1
+    //   210: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   213: aload_0
+    //   214: getfield 136	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionData	Ljava/lang/String;
+    //   217: ifnonnull +9 -> 226
+    //   220: ldc 180
+    //   222: astore_1
+    //   223: goto +8 -> 231
+    //   226: aload_0
+    //   227: getfield 136	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionData	Ljava/lang/String;
+    //   230: astore_1
+    //   231: aload_2
+    //   232: aload_1
+    //   233: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   236: aload_0
+    //   237: getfield 138	com/tencent/mobileqq/data/MessageForTroopStory:compatibleText	Ljava/lang/String;
+    //   240: ifnonnull +8 -> 248
+    //   243: aload_3
+    //   244: astore_1
+    //   245: goto +8 -> 253
+    //   248: aload_0
+    //   249: getfield 138	com/tencent/mobileqq/data/MessageForTroopStory:compatibleText	Ljava/lang/String;
+    //   252: astore_1
+    //   253: aload_2
+    //   254: aload_1
+    //   255: invokevirtual 184	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   258: aload_2
+    //   259: aload_0
+    //   260: getfield 143	com/tencent/mobileqq/data/MessageForTroopStory:ctrVersion	I
+    //   263: invokevirtual 191	java/io/ObjectOutputStream:write	(I)V
     //   266: aload_2
-    //   267: astore_1
-    //   268: aload_0
-    //   269: getfield 116	com/tencent/mobileqq/data/MessageForTroopStory:storyId	Ljava/lang/String;
-    //   272: astore_3
-    //   273: goto -213 -> 60
-    //   276: aload_2
-    //   277: astore_1
-    //   278: aload_0
-    //   279: getfield 118	com/tencent/mobileqq/data/MessageForTroopStory:md5	Ljava/lang/String;
-    //   282: astore_3
-    //   283: goto -204 -> 79
-    //   286: aload_2
-    //   287: astore_1
-    //   288: aload_0
-    //   289: getfield 120	com/tencent/mobileqq/data/MessageForTroopStory:thumbUrl	Ljava/lang/String;
+    //   267: invokevirtual 194	java/io/ObjectOutputStream:flush	()V
+    //   270: aload_0
+    //   271: aload 4
+    //   273: invokevirtual 198	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   276: putfield 96	com/tencent/mobileqq/data/MessageForTroopStory:msgData	[B
+    //   279: aload_2
+    //   280: invokevirtual 199	java/io/ObjectOutputStream:close	()V
+    //   283: return
+    //   284: astore_1
+    //   285: goto +48 -> 333
+    //   288: astore_3
+    //   289: goto +16 -> 305
     //   292: astore_3
-    //   293: goto -195 -> 98
-    //   296: aload_2
-    //   297: astore_1
-    //   298: aload_0
-    //   299: getfield 122	com/tencent/mobileqq/data/MessageForTroopStory:doodleUrl	Ljava/lang/String;
-    //   302: astore_3
-    //   303: goto -186 -> 117
-    //   306: aload_2
-    //   307: astore_1
-    //   308: aload_0
-    //   309: getfield 132	com/tencent/mobileqq/data/MessageForTroopStory:sourceName	Ljava/lang/String;
-    //   312: astore_3
-    //   313: goto -157 -> 156
-    //   316: aload_2
-    //   317: astore_1
-    //   318: aload_0
-    //   319: getfield 134	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionType	Ljava/lang/String;
-    //   322: astore_3
-    //   323: goto -148 -> 175
-    //   326: aload_2
-    //   327: astore_1
-    //   328: aload_0
-    //   329: getfield 136	com/tencent/mobileqq/data/MessageForTroopStory:sourceActionData	Ljava/lang/String;
-    //   332: astore_3
-    //   333: goto -139 -> 194
-    //   336: aload_2
-    //   337: astore_1
-    //   338: aload_0
-    //   339: getfield 138	com/tencent/mobileqq/data/MessageForTroopStory:compatibleText	Ljava/lang/String;
-    //   342: astore_3
-    //   343: goto -130 -> 213
-    //   346: astore_3
-    //   347: aconst_null
-    //   348: astore_2
-    //   349: aload_2
-    //   350: astore_1
-    //   351: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   354: ifeq +14 -> 368
-    //   357: aload_2
-    //   358: astore_1
-    //   359: ldc 51
-    //   361: iconst_2
-    //   362: ldc 201
-    //   364: aload_3
-    //   365: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   368: aload_2
-    //   369: ifnull -114 -> 255
-    //   372: aload_2
-    //   373: invokevirtual 199	java/io/ObjectOutputStream:close	()V
-    //   376: return
-    //   377: astore_1
-    //   378: return
-    //   379: astore_2
-    //   380: aconst_null
-    //   381: astore_1
-    //   382: aload_1
-    //   383: ifnull +7 -> 390
-    //   386: aload_1
-    //   387: invokevirtual 199	java/io/ObjectOutputStream:close	()V
-    //   390: aload_2
-    //   391: athrow
-    //   392: astore_1
-    //   393: return
-    //   394: astore_1
-    //   395: goto -5 -> 390
-    //   398: astore_2
-    //   399: goto -17 -> 382
-    //   402: astore_3
-    //   403: goto -54 -> 349
+    //   293: aload_1
+    //   294: astore_2
+    //   295: aload_3
+    //   296: astore_1
+    //   297: goto +36 -> 333
+    //   300: astore_1
+    //   301: aload_3
+    //   302: astore_2
+    //   303: aload_1
+    //   304: astore_3
+    //   305: aload_2
+    //   306: astore_1
+    //   307: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   310: ifeq +14 -> 324
+    //   313: aload_2
+    //   314: astore_1
+    //   315: ldc 51
+    //   317: iconst_2
+    //   318: ldc 201
+    //   320: aload_3
+    //   321: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   324: aload_2
+    //   325: ifnull +7 -> 332
+    //   328: aload_2
+    //   329: invokevirtual 199	java/io/ObjectOutputStream:close	()V
+    //   332: return
+    //   333: aload_2
+    //   334: ifnull +7 -> 341
+    //   337: aload_2
+    //   338: invokevirtual 199	java/io/ObjectOutputStream:close	()V
+    //   341: aload_1
+    //   342: athrow
+    //   343: astore_1
+    //   344: return
+    //   345: astore_2
+    //   346: goto -5 -> 341
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	406	0	this	MessageForTroopStory
-    //   20	339	1	localObjectOutputStream1	java.io.ObjectOutputStream
-    //   377	1	1	localIOException1	java.io.IOException
-    //   381	6	1	localObject1	java.lang.Object
-    //   392	1	1	localIOException2	java.io.IOException
-    //   394	1	1	localIOException3	java.io.IOException
-    //   18	355	2	localObjectOutputStream2	java.io.ObjectOutputStream
-    //   379	12	2	localObject2	java.lang.Object
-    //   398	1	2	localObject3	java.lang.Object
-    //   40	303	3	str	String
-    //   346	19	3	localException1	java.lang.Exception
-    //   402	1	3	localException2	java.lang.Exception
-    //   7	233	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   0	349	0	this	MessageForTroopStory
+    //   12	243	1	str1	String
+    //   284	10	1	localObject1	java.lang.Object
+    //   296	1	1	localObject2	java.lang.Object
+    //   300	4	1	localException1	java.lang.Exception
+    //   306	36	1	localObject3	java.lang.Object
+    //   343	1	1	localIOException1	java.io.IOException
+    //   22	316	2	localObject4	java.lang.Object
+    //   345	1	2	localIOException2	java.io.IOException
+    //   10	234	3	str2	String
+    //   288	1	3	localException2	java.lang.Exception
+    //   292	10	3	localObject5	java.lang.Object
+    //   304	17	3	localObject6	java.lang.Object
+    //   7	265	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type
-    //   9	19	346	java/lang/Exception
-    //   372	376	377	java/io/IOException
-    //   9	19	379	finally
-    //   251	255	392	java/io/IOException
-    //   386	390	394	java/io/IOException
-    //   21	29	398	finally
-    //   31	38	398	finally
-    //   43	48	398	finally
-    //   50	57	398	finally
-    //   62	67	398	finally
-    //   69	76	398	finally
-    //   81	86	398	finally
-    //   88	95	398	finally
-    //   100	105	398	finally
-    //   107	114	398	finally
-    //   119	124	398	finally
-    //   126	134	398	finally
-    //   136	144	398	finally
-    //   146	153	398	finally
-    //   158	163	398	finally
-    //   165	172	398	finally
-    //   177	182	398	finally
-    //   184	191	398	finally
-    //   196	201	398	finally
-    //   203	210	398	finally
-    //   215	220	398	finally
-    //   222	230	398	finally
-    //   232	236	398	finally
-    //   238	247	398	finally
-    //   258	263	398	finally
-    //   268	273	398	finally
-    //   278	283	398	finally
-    //   288	293	398	finally
-    //   298	303	398	finally
-    //   308	313	398	finally
-    //   318	323	398	finally
-    //   328	333	398	finally
-    //   338	343	398	finally
-    //   351	357	398	finally
-    //   359	368	398	finally
-    //   21	29	402	java/lang/Exception
-    //   31	38	402	java/lang/Exception
-    //   43	48	402	java/lang/Exception
-    //   50	57	402	java/lang/Exception
-    //   62	67	402	java/lang/Exception
-    //   69	76	402	java/lang/Exception
-    //   81	86	402	java/lang/Exception
-    //   88	95	402	java/lang/Exception
-    //   100	105	402	java/lang/Exception
-    //   107	114	402	java/lang/Exception
-    //   119	124	402	java/lang/Exception
-    //   126	134	402	java/lang/Exception
-    //   136	144	402	java/lang/Exception
-    //   146	153	402	java/lang/Exception
-    //   158	163	402	java/lang/Exception
-    //   165	172	402	java/lang/Exception
-    //   177	182	402	java/lang/Exception
-    //   184	191	402	java/lang/Exception
-    //   196	201	402	java/lang/Exception
-    //   203	210	402	java/lang/Exception
-    //   215	220	402	java/lang/Exception
-    //   222	230	402	java/lang/Exception
-    //   232	236	402	java/lang/Exception
-    //   238	247	402	java/lang/Exception
-    //   258	263	402	java/lang/Exception
-    //   268	273	402	java/lang/Exception
-    //   278	283	402	java/lang/Exception
-    //   288	293	402	java/lang/Exception
-    //   298	303	402	java/lang/Exception
-    //   308	313	402	java/lang/Exception
-    //   318	323	402	java/lang/Exception
-    //   328	333	402	java/lang/Exception
-    //   338	343	402	java/lang/Exception
+    //   23	36	284	finally
+    //   49	54	284	finally
+    //   54	66	284	finally
+    //   72	77	284	finally
+    //   77	89	284	finally
+    //   95	100	284	finally
+    //   100	112	284	finally
+    //   118	123	284	finally
+    //   123	135	284	finally
+    //   141	146	284	finally
+    //   146	174	284	finally
+    //   180	185	284	finally
+    //   185	197	284	finally
+    //   203	208	284	finally
+    //   208	220	284	finally
+    //   226	231	284	finally
+    //   231	243	284	finally
+    //   248	253	284	finally
+    //   253	279	284	finally
+    //   23	36	288	java/lang/Exception
+    //   49	54	288	java/lang/Exception
+    //   54	66	288	java/lang/Exception
+    //   72	77	288	java/lang/Exception
+    //   77	89	288	java/lang/Exception
+    //   95	100	288	java/lang/Exception
+    //   100	112	288	java/lang/Exception
+    //   118	123	288	java/lang/Exception
+    //   123	135	288	java/lang/Exception
+    //   141	146	288	java/lang/Exception
+    //   146	174	288	java/lang/Exception
+    //   180	185	288	java/lang/Exception
+    //   185	197	288	java/lang/Exception
+    //   203	208	288	java/lang/Exception
+    //   208	220	288	java/lang/Exception
+    //   226	231	288	java/lang/Exception
+    //   231	243	288	java/lang/Exception
+    //   248	253	288	java/lang/Exception
+    //   253	279	288	java/lang/Exception
+    //   13	23	292	finally
+    //   307	313	292	finally
+    //   315	324	292	finally
+    //   13	23	300	java/lang/Exception
+    //   279	283	343	java/io/IOException
+    //   328	332	343	java/io/IOException
+    //   337	341	345	java/io/IOException
   }
   
   public String toDebugString()
   {
-    return "MessageForTroopStory{doodleUrl='" + this.doodleUrl + '\'' + ", uid=" + this.uid + ", unionId='" + this.unionId + '\'' + ", storyId='" + this.storyId + '\'' + ", md5='" + this.md5 + '\'' + ", thumbUrl='" + this.thumbUrl + '\'' + ", videoWidth=" + this.videoWidth + ", videoHeight=" + this.videoHeight + ", sourceName='" + this.sourceName + '\'' + ", sourceActionType='" + this.sourceActionType + '\'' + ", sourceActionData='" + this.sourceActionData + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MessageForTroopStory{doodleUrl='");
+    localStringBuilder.append(this.doodleUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uid=");
+    localStringBuilder.append(this.uid);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.unionId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", storyId='");
+    localStringBuilder.append(this.storyId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", md5='");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", thumbUrl='");
+    localStringBuilder.append(this.thumbUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoWidth=");
+    localStringBuilder.append(this.videoWidth);
+    localStringBuilder.append(", videoHeight=");
+    localStringBuilder.append(this.videoHeight);
+    localStringBuilder.append(", sourceName='");
+    localStringBuilder.append(this.sourceName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", sourceActionType='");
+    localStringBuilder.append(this.sourceActionType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", sourceActionData='");
+    localStringBuilder.append(this.sourceActionData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

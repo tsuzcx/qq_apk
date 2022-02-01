@@ -13,22 +13,12 @@ public final class SvcReqDelLoginInfo
 {
   static ArrayList<DeviceItemDes> cache_vecDeviceItemDes;
   static byte[] cache_vecGuid;
-  public long iAppId;
-  public long iDelMe;
+  public long iAppId = 0L;
+  public long iDelMe = 0L;
   public long iDelType = 1L;
   public String strAppName = "";
-  public ArrayList<DeviceItemDes> vecDeviceItemDes;
-  public byte[] vecGuid;
-  
-  static
-  {
-    if (!SvcReqDelLoginInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public ArrayList<DeviceItemDes> vecDeviceItemDes = null;
+  public byte[] vecGuid = null;
   
   public SvcReqDelLoginInfo() {}
   
@@ -49,18 +39,17 @@ public final class SvcReqDelLoginInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -87,13 +76,36 @@ public final class SvcReqDelLoginInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SvcReqDelLoginInfo)paramObject;
-    } while ((!JceUtil.equals(this.vecGuid, paramObject.vecGuid)) || (!JceUtil.equals(this.strAppName, paramObject.strAppName)) || (!JceUtil.equals(this.vecDeviceItemDes, paramObject.vecDeviceItemDes)) || (!JceUtil.equals(this.iDelType, paramObject.iDelType)) || (!JceUtil.equals(this.iDelMe, paramObject.iDelMe)) || (!JceUtil.equals(this.iAppId, paramObject.iAppId)));
-    return true;
+    }
+    paramObject = (SvcReqDelLoginInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.vecGuid, paramObject.vecGuid))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.strAppName, paramObject.strAppName))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.vecDeviceItemDes, paramObject.vecDeviceItemDes))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.iDelType, paramObject.iDelType))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.iDelMe, paramObject.iDelMe))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.iAppId, paramObject.iAppId)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -207,7 +219,7 @@ public final class SvcReqDelLoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcReqDelLoginInfo
  * JD-Core Version:    0.7.0.1
  */

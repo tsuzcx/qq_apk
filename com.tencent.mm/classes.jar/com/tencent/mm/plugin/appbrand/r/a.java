@@ -1,100 +1,116 @@
 package com.tencent.mm.plugin.appbrand.r;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandTaskProxyUI;
+import com.tencent.mm.plugin.ball.f.b;
+import com.tencent.mm.plugin.multitask.b.c;
+import com.tencent.mm.protocal.protobuf.asy;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.io.IOException;
 
 public final class a
-  extends j<a.a>
+  extends c
 {
-  public static final String[] fkl;
+  private String mFilePath;
+  private asy tmK;
+  private AppBrandTaskProxyUI tmL;
+  private String tmM;
   
-  static
+  public a(com.tencent.mm.plugin.multitask.a.a parama)
   {
-    AppMethodBeat.i(132776);
-    fkl = new String[] { j.getCreateSQLs(a.a.gUb, "AppBrandCommonKVBinaryData") };
-    AppMethodBeat.o(132776);
+    super(parama);
+    AppMethodBeat.i(317599);
+    this.tmK = new asy();
+    this.tmL = null;
+    this.mFilePath = "";
+    this.tmM = "";
+    AppMethodBeat.o(317599);
   }
   
-  public a(e parame)
+  public final void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, AppBrandTaskProxyUI paramAppBrandTaskProxyUI)
   {
-    super(parame, a.a.gUb, "AppBrandCommonKVBinaryData", null);
-  }
-  
-  public final void clear(String paramString)
-  {
-    AppMethodBeat.i(132772);
-    a.a locala = new a.a();
-    locala.field_key = paramString;
-    locala.field_value = new byte[0];
-    super.replace(locala);
-    AppMethodBeat.o(132772);
-  }
-  
-  public final <T extends com.tencent.mm.bv.a> T f(String paramString, Class<T> paramClass)
-  {
-    AppMethodBeat.i(132775);
-    paramString = get(paramString);
-    if (bo.ce(paramString))
+    AppMethodBeat.i(317619);
+    Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "onCreate, filePath:%s fileExt:%s ", new Object[] { paramString1, paramString2 });
+    this.mFilePath = paramString1;
+    this.tmM = paramString2;
+    this.tmL = paramAppBrandTaskProxyUI;
+    super.J(4, b.ahY(paramString1));
+    this.tmK.ZDd = false;
+    this.tmK.filePath = paramString1;
+    this.tmK.lPJ = paramString2;
+    this.tmK.appId = paramString3;
+    this.tmK.processName = paramString4;
+    this.tmK.rvh = paramBoolean;
+    this.tmK.wQW = 0;
+    try
     {
-      AppMethodBeat.o(132775);
-      return null;
+      this.LCE.field_data = this.tmK.toByteArray();
+      gjW();
+      AppMethodBeat.o(317619);
+      return;
+    }
+    catch (IOException paramString1)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.AppBrandFilesMultiTaskHelper", "handleMultiTaskInfoClicked", new Object[] { paramString1 });
+      }
+    }
+  }
+  
+  public final void adR(String paramString)
+  {
+    AppMethodBeat.i(317622);
+    Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "update processName: %s", new Object[] { paramString });
+    if (this.tmK != null) {
+      this.tmK.processName = paramString;
     }
     try
     {
-      com.tencent.mm.bv.a locala = (com.tencent.mm.bv.a)paramClass.newInstance();
-      locala.parseFrom(paramString);
-      AppMethodBeat.o(132775);
-      return locala;
-    }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.AppBrandCommonKVBinaryDataStorage", "getProto class[%s] e = %s", new Object[] { paramClass.getSimpleName(), paramString });
-      AppMethodBeat.o(132775);
-    }
-    return null;
-  }
-  
-  public final byte[] get(String paramString)
-  {
-    AppMethodBeat.i(132774);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(132774);
-      return null;
-    }
-    a.a locala = new a.a();
-    locala.field_key = paramString;
-    if (super.get(locala, new String[0]))
-    {
-      paramString = locala.field_value;
-      AppMethodBeat.o(132774);
-      return paramString;
-    }
-    AppMethodBeat.o(132774);
-    return null;
-  }
-  
-  public final void s(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(132773);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(132773);
+      this.LCE.field_data = this.tmK.toByteArray();
+      gjW();
+      AppMethodBeat.o(317622);
       return;
     }
-    a.a locala = new a.a();
-    locala.field_key = paramString;
-    locala.field_value = paramArrayOfByte;
-    super.replace(locala);
-    AppMethodBeat.o(132773);
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.AppBrandFilesMultiTaskHelper", "updateAppid", new Object[] { paramString });
+      }
+    }
+  }
+  
+  public final boolean cBZ()
+  {
+    return true;
+  }
+  
+  public final boolean cCa()
+  {
+    return true;
+  }
+  
+  public final boolean cCb()
+  {
+    return false;
+  }
+  
+  public final void kd(boolean paramBoolean)
+  {
+    AppMethodBeat.i(317615);
+    if (paramBoolean)
+    {
+      Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "onMenuFloatBallSelected, enter float ball");
+      c(null, true);
+      this.tmL.finishProcess(null);
+    }
+    AppMethodBeat.o(317615);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r.a
  * JD-Core Version:    0.7.0.1
  */

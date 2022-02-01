@@ -18,23 +18,26 @@ class SegmentMediaPlayer$1
     if (SegmentMediaPlayer.access$000(this.this$0)) {
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      SegmentMediaPlayer.access$100(this.this$0);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return;
+        }
+        SegmentMediaPlayer.access$300(this.this$0, ((Long)paramMessage.obj).longValue());
+        return;
+      }
       SegmentMediaPlayer.access$200(this.this$0, (IMediaPlayer)paramMessage.obj);
       return;
     }
-    SegmentMediaPlayer.access$300(this.this$0, ((Long)paramMessage.obj).longValue());
+    SegmentMediaPlayer.access$100(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.player.SegmentMediaPlayer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.util.WeakReferenceHandler;
+import java.util.List;
 
 public class eds
-  implements View.OnClickListener
+  implements Runnable
 {
   public eds(SearchResultDialog paramSearchResultDialog) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    SearchResultDialog.a(this.a).a(SearchResultDialog.b(this.a), paramView, i, 0L);
+    List localList = this.a.a(this.a.getContext(), SearchResultDialog.a(this.a), SearchResultDialog.a(this.a));
+    Message localMessage = SearchResultDialog.a(this.a).obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = localList;
+    SearchResultDialog.a(this.a).sendMessage(localMessage);
   }
 }
 

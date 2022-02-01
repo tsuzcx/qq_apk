@@ -1,108 +1,172 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.protocal.protobuf.bd;
+import com.tencent.mm.protocal.protobuf.bh;
+import com.tencent.mm.protocal.protobuf.fb;
+import com.tencent.mm.protocal.protobuf.fs;
+import com.tencent.mm.protocal.protobuf.ft;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class ar
 {
-  private BroadcastReceiver mKc;
-  int qCf;
-  ar.b rTu;
-  
-  public ar()
+  private static String a(Context paramContext, bh parambh)
   {
-    AppMethodBeat.i(155730);
-    this.mKc = new BroadcastReceiver()
+    AppMethodBeat.i(308432);
+    if (parambh == null)
     {
-      public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+      AppMethodBeat.o(308432);
+      return "";
+    }
+    if (parambh.vhJ == 6)
+    {
+      if (parambh.YCF == null)
       {
-        AppMethodBeat.i(155729);
-        if (paramAnonymousIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE"))
-        {
-          ab.i("MicroMsg.Sns.SnsNetworkMgr", "connChangedBroadcastReceiver");
-          int i = ar.this.qCf;
-          ar.this.qCf = ar.cvE();
-          ab.i("MicroMsg.Sns.SnsNetworkMgr", "network change current:%s change:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(ar.this.qCf) });
-          if ((ar.this.qCf != i) && (ar.this.rTu != null)) {
-            ar.this.rTu.cvF();
-          }
-        }
-        AppMethodBeat.o(155729);
+        AppMethodBeat.o(308432);
+        return "";
       }
-    };
-    this.qCf = cvE();
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-    bzQ();
-    ah.getContext().registerReceiver(this.mKc, localIntentFilter);
-    AppMethodBeat.o(155730);
+      if (a.pFo.y(paramContext, parambh.YCC.oOI))
+      {
+        paramContext = parambh.YCF.YHh;
+        AppMethodBeat.o(308432);
+        return paramContext;
+      }
+      paramContext = parambh.YCF.YHi;
+      AppMethodBeat.o(308432);
+      return paramContext;
+    }
+    paramContext = parambh.YCD;
+    AppMethodBeat.o(308432);
+    return paramContext;
   }
   
-  static int cvE()
+  public static void a(Context paramContext, bo parambo, bh parambh)
   {
-    AppMethodBeat.i(155731);
-    int i;
-    if (!at.isConnected(ah.getContext())) {
-      i = ar.a.rTw;
+    AppMethodBeat.i(98141);
+    String str2;
+    String str1;
+    if ((parambh != null) && (parambh.YCC != null) && (h.bpL(parambh.YCC.oOI)))
+    {
+      parambo.RCf = false;
+      str2 = "";
+      if ((parambh.YCG != null) && (parambh.YCH != null)) {
+        if (a.pFo.y(paramContext, parambh.YCC.oOI))
+        {
+          paramContext = parambh.YCG;
+          str1 = LocaleUtil.getApplicationLanguage();
+          if (!str1.equals("zh_CN")) {
+            break label167;
+          }
+          str1 = paramContext.YHf;
+        }
+      }
     }
     for (;;)
     {
-      ab.i("MicroMsg.Sns.SnsNetworkMgr", "currentNetworkStatus:%s", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(155731);
-      return i;
-      if (at.isWifi(ah.getContext()))
+      label97:
+      switch (parambh.vhJ)
       {
-        i = ar.a.WIFI;
+      default: 
+        parambo.RCf = false;
       }
-      else if (at.is2G(ah.getContext()))
+      for (;;)
       {
-        i = ar.a.rTx;
+        for (;;)
+        {
+          if (Util.isNullOrNil(str1))
+          {
+            Log.e("MicroMsg.OpenActionContent", "text can not load ?");
+            parambo.RCf = false;
+          }
+          AppMethodBeat.o(98141);
+          return;
+          paramContext = parambh.YCH;
+          break;
+          label167:
+          if ((str1.equals("zh_TW")) || (str1.equals("zh_HK")))
+          {
+            str1 = paramContext.YHg;
+            break label97;
+          }
+          str1 = paramContext.YHe;
+          break label97;
+          String str3 = a(paramContext, parambh);
+          str1 = str2;
+          try
+          {
+            if (Util.isNullOrNil(str3)) {
+              break label97;
+            }
+            int i = paramContext.getResources().getIdentifier(str3, "string", paramContext.getPackageName());
+            str1 = str2;
+            if (i <= 0) {
+              break label97;
+            }
+            str1 = paramContext.getString(i);
+          }
+          catch (Exception paramContext)
+          {
+            str1 = str2;
+          }
+        }
+        parambo.RCg = str1;
+        parambo.RCf = true;
+        continue;
+        if (parambh.IJG == 1)
+        {
+          parambo.RCg = str1;
+          parambo.RCf = true;
+          continue;
+          parambo.RCg = str1;
+          parambo.RCf = true;
+        }
       }
-      else if (at.is3G(ah.getContext()))
-      {
-        i = ar.a.rTy;
-      }
-      else if (at.is4G(ah.getContext()))
-      {
-        i = ar.a.rTz;
-      }
-      else
-      {
-        ab.i("MicroMsg.Sns.SnsNetworkMgr", "failed and return 4g");
-        i = ar.a.rTz;
-      }
-    }
-  }
-  
-  public final boolean bTw()
-  {
-    return (this.qCf == ar.a.rTx) || (this.qCf == ar.a.rTy);
-  }
-  
-  public final boolean blP()
-  {
-    return this.qCf == ar.a.WIFI;
-  }
-  
-  public final void bzQ()
-  {
-    AppMethodBeat.i(155732);
-    try
-    {
-      ah.getContext().unregisterReceiver(this.mKc);
-      AppMethodBeat.o(155732);
+      parambo.RCf = false;
+      AppMethodBeat.o(98141);
       return;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
+  }
+  
+  public static int b(Context paramContext, bh parambh)
+  {
+    AppMethodBeat.i(98140);
+    if (parambh == null)
     {
-      AppMethodBeat.o(155732);
+      AppMethodBeat.o(98140);
+      return 0;
     }
+    if (parambh.vhJ == 6)
+    {
+      if (parambh.YCE == null)
+      {
+        AppMethodBeat.o(98140);
+        return 0;
+      }
+      if (parambh.YCC == null)
+      {
+        AppMethodBeat.o(98140);
+        return 0;
+      }
+      if (a.pFo.y(paramContext, parambh.YCC.oOI))
+      {
+        i = parambh.YCE.YGN;
+        AppMethodBeat.o(98140);
+        return i;
+      }
+      i = parambh.YCE.YGO;
+      AppMethodBeat.o(98140);
+      return i;
+    }
+    int i = parambh.IJG;
+    AppMethodBeat.o(98140);
+    return i;
   }
 }
 

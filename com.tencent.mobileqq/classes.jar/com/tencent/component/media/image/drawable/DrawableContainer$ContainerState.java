@@ -20,35 +20,37 @@ abstract class DrawableContainer$ContainerState
   
   DrawableContainer$ContainerState(ContainerState paramContainerState, DrawableContainer paramDrawableContainer, Resources paramResources)
   {
-    if ((paramContainerState != null) && (paramContainerState.mDrawable != null) && (paramContainerState.mDrawable.getConstantState() != null)) {
-      if (paramResources == null) {
-        break label63;
-      }
-    }
-    label63:
-    for (this.mDrawable = paramContainerState.mDrawable.getConstantState().newDrawable(paramResources);; this.mDrawable = paramContainerState.mDrawable.getConstantState().newDrawable())
+    if (paramContainerState != null)
     {
-      this.mDrawable.setCallback(paramDrawableContainer);
-      this.mCanConstantState = true;
-      this.mCheckedConstantState = true;
-      return;
+      Drawable localDrawable = paramContainerState.mDrawable;
+      if ((localDrawable != null) && (localDrawable.getConstantState() != null))
+      {
+        if (paramResources != null) {
+          this.mDrawable = paramContainerState.mDrawable.getConstantState().newDrawable(paramResources);
+        } else {
+          this.mDrawable = paramContainerState.mDrawable.getConstantState().newDrawable();
+        }
+        this.mDrawable.setCallback(paramDrawableContainer);
+        this.mCanConstantState = true;
+        this.mCheckedConstantState = true;
+      }
     }
   }
   
   boolean canConstantState()
   {
-    if (!this.mCheckedConstantState) {
-      if (this.mDrawable.getConstantState() == null) {
-        break label34;
-      }
-    }
-    label34:
-    for (boolean bool = true;; bool = false)
+    if (!this.mCheckedConstantState)
     {
+      boolean bool;
+      if (this.mDrawable.getConstantState() != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.mCanConstantState = bool;
       this.mCheckedConstantState = true;
-      return this.mCanConstantState;
     }
+    return this.mCanConstantState;
   }
   
   public int getChangingConfigurations()
@@ -58,7 +60,7 @@ abstract class DrawableContainer$ContainerState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.DrawableContainer.ContainerState
  * JD-Core Version:    0.7.0.1
  */

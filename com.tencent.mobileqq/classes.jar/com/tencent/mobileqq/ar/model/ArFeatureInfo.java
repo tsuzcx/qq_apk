@@ -3,27 +3,26 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anfo;
 
 public class ArFeatureInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArFeatureInfo> CREATOR = new anfo();
-  public long a;
+  public static final Parcelable.Creator<ArFeatureInfo> CREATOR = new ArFeatureInfo.1();
   public String a;
-  public String b;
+  public long b;
   public String c;
   public String d;
+  public String e;
   
   public ArFeatureInfo() {}
   
-  public ArFeatureInfo(Parcel paramParcel)
+  protected ArFeatureInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.b = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readLong();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
+    this.e = paramParcel.readString();
   }
   
   public int describeContents()
@@ -34,27 +33,37 @@ public class ArFeatureInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ArFeatureInfo{");
-    localStringBuffer.append("featureMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", featureSize=").append(this.jdField_a_of_type_Long).append('\'');
-    localStringBuffer.append(", featureUrl=").append(this.b).append('\'');
-    localStringBuffer.append(", featurefileName=").append(this.c).append('\'');
-    localStringBuffer.append(", modelRootDir=").append(this.d).append('\'');
+    localStringBuffer.append("featureMd5='");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", featureSize=");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", featureUrl=");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", featurefileName=");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", modelRootDir=");
+    localStringBuffer.append(this.e);
+    localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.a);
+    paramParcel.writeLong(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
+    paramParcel.writeString(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArFeatureInfo
  * JD-Core Version:    0.7.0.1
  */

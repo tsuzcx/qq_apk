@@ -33,18 +33,18 @@ final class OperatorZip$ZipSubscriber
   
   public void onNext(Observable[] paramArrayOfObservable)
   {
-    if ((paramArrayOfObservable == null) || (paramArrayOfObservable.length == 0))
+    if ((paramArrayOfObservable != null) && (paramArrayOfObservable.length != 0))
     {
-      this.child.onCompleted();
+      this.started = true;
+      this.zipper.start(paramArrayOfObservable, this.producer);
       return;
     }
-    this.started = true;
-    this.zipper.start(paramArrayOfObservable, this.producer);
+    this.child.onCompleted();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorZip.ZipSubscriber
  * JD-Core Version:    0.7.0.1
  */

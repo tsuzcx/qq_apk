@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import hbu;
+import hbt;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -49,7 +49,7 @@ public class FileSystemTool
       for (;;)
       {
         e += 1;
-        paramString1 = new hbu(e, paramString2, jdField_a_of_type_JavaIoFileInputStream, jdField_a_of_type_JavaIoFileOutputStream);
+        paramString1 = new hbt(e, paramString2, jdField_a_of_type_JavaIoFileInputStream, jdField_a_of_type_JavaIoFileOutputStream);
         jdField_a_of_type_JavaUtilVector.addElement(paramString1);
         return e;
         localFile.createNewFile();
@@ -78,11 +78,11 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      hbu localhbu = (hbu)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localhbu.a() == paramInt) {
+      hbt localhbt = (hbt)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localhbt.a() == paramInt) {
         try
         {
-          int j = localhbu.jdField_a_of_type_JavaIoFileInputStream.available();
+          int j = localhbt.jdField_a_of_type_JavaIoFileInputStream.available();
           return j;
         }
         catch (IOException localIOException) {}
@@ -100,9 +100,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      hbu localhbu = (hbu)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localhbu.a() == paramInt) {
-        return localhbu.a();
+      hbt localhbt = (hbt)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localhbt.a() == paramInt) {
+        return localhbt.a();
       }
       i += 1;
     }
@@ -122,9 +122,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      hbu localhbu = (hbu)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localhbu.a() == paramInt) {
-        return localhbu.a(paramLong);
+      hbt localhbt = (hbt)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localhbt.a() == paramInt) {
+        return localhbt.a(paramLong);
       }
       i += 1;
     }
@@ -139,9 +139,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      hbu localhbu = (hbu)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localhbu.a() == paramInt) {
-        return localhbu.b();
+      hbt localhbt = (hbt)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localhbt.a() == paramInt) {
+        return localhbt.b();
       }
       i += 1;
     }
@@ -167,7 +167,7 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      ((hbu)jdField_a_of_type_JavaUtilVector.elementAt(i)).a();
+      ((hbt)jdField_a_of_type_JavaUtilVector.elementAt(i)).a();
       jdField_a_of_type_JavaUtilVector.removeElementAt(i);
       i += 1;
     }
@@ -180,10 +180,10 @@ public class FileSystemTool
     {
       if (i < jdField_a_of_type_JavaUtilVector.size())
       {
-        hbu localhbu = (hbu)jdField_a_of_type_JavaUtilVector.elementAt(i);
-        if (localhbu.a() == paramInt)
+        hbt localhbt = (hbt)jdField_a_of_type_JavaUtilVector.elementAt(i);
+        if (localhbt.a() == paramInt)
         {
-          localhbu.a();
+          localhbt.a();
           jdField_a_of_type_JavaUtilVector.removeElementAt(i);
         }
       }
@@ -209,12 +209,12 @@ public class FileSystemTool
       int i = 0;
       while (i < jdField_a_of_type_JavaUtilVector.size())
       {
-        hbu localhbu = (hbu)jdField_a_of_type_JavaUtilVector.elementAt(i);
-        if (localhbu.a() == paramInt) {}
+        hbt localhbt = (hbt)jdField_a_of_type_JavaUtilVector.elementAt(i);
+        if (localhbt.a() == paramInt) {}
         try
         {
-          localhbu.b();
-          jdField_a_of_type_JavaUtilVector.removeElement(localhbu);
+          localhbt.b();
+          jdField_a_of_type_JavaUtilVector.removeElement(localhbt);
           return true;
         }
         catch (Exception localException) {}
@@ -235,7 +235,7 @@ public class FileSystemTool
       if (i >= jdField_a_of_type_JavaUtilVector.size()) {
         break label51;
       }
-      if (((hbu)jdField_a_of_type_JavaUtilVector.elementAt(i)).a().equals(paramString)) {
+      if (((hbt)jdField_a_of_type_JavaUtilVector.elementAt(i)).a().equals(paramString)) {
         break;
       }
       i += 1;
@@ -266,9 +266,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      hbu localhbu = (hbu)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localhbu.a() == paramInt) {
-        return localhbu.c();
+      hbt localhbt = (hbt)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localhbt.a() == paramInt) {
+        return localhbt.c();
       }
       i += 1;
     }
@@ -284,7 +284,7 @@ public class FileSystemTool
       int i = 0;
       while (i < jdField_a_of_type_JavaUtilVector.size())
       {
-        if (((hbu)jdField_a_of_type_JavaUtilVector.elementAt(i)).a() == paramInt) {
+        if (((hbt)jdField_a_of_type_JavaUtilVector.elementAt(i)).a() == paramInt) {
           return true;
         }
         i += 1;
@@ -300,9 +300,9 @@ public class FileSystemTool
     int i = 0;
     while (i < jdField_a_of_type_JavaUtilVector.size())
     {
-      hbu localhbu = (hbu)jdField_a_of_type_JavaUtilVector.elementAt(i);
-      if (localhbu.a() == paramInt) {
-        return localhbu.a();
+      hbt localhbt = (hbt)jdField_a_of_type_JavaUtilVector.elementAt(i);
+      if (localhbt.a() == paramInt) {
+        return localhbt.a();
       }
       i += 1;
     }

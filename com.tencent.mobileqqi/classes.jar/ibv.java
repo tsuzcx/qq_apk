@@ -1,46 +1,20 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
+import cooperation.qzone.QZoneStatisticsSettingActivity;
+import cooperation.qzone.widget.RadioPreference;
 
-public final class ibv
-  extends AccountObserver
+public class ibv
+  implements Preference.OnPreferenceClickListener
 {
-  public ibv(String paramString, BusinessObserver paramBusinessObserver) {}
+  public ibv(QZoneStatisticsSettingActivity paramQZoneStatisticsSettingActivity) {}
   
-  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
+  public boolean onPreferenceClick(Preference paramPreference)
   {
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          if (this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver != null) {
-            this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.a(1, true, localOpenID);
-          }
-        }
-        i += 1;
-      }
-    }
+    QZoneStatisticsSettingActivity.a(this.a, 0);
+    ((RadioPreference)paramPreference).a(true);
+    paramPreference = ((RadioPreference)paramPreference).getKey();
+    QZoneStatisticsSettingActivity.a(this.a, paramPreference, 0);
+    return false;
   }
 }
 

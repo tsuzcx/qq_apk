@@ -21,12 +21,15 @@ class PriorityThreadFactory
     if (this.threadIndex > 10000) {
       this.threadIndex = 0;
     }
-    return new Thread(paramRunnable, this.mName + this.threadIndex);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append(this.threadIndex);
+    return new Thread(paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PriorityThreadFactory
  * JD-Core Version:    0.7.0.1
  */

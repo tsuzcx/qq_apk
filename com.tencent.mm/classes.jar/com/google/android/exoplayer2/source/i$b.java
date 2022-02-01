@@ -1,82 +1,91 @@
 package com.google.android.exoplayer2.source;
 
+import com.google.android.exoplayer2.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class i$b
+final class i$b
+  extends a
 {
-  public static final b aPW;
-  public final int aPX;
-  public final int aPY;
-  public final int aPZ;
+  private final int cZM;
+  private final w cZP;
+  private final int cZQ;
+  private final int loopCount;
   
-  static
+  public i$b(w paramw, int paramInt)
   {
-    AppMethodBeat.i(95514);
-    aPW = new b(-1, -1, -1);
-    AppMethodBeat.o(95514);
-  }
-  
-  public i$b(int paramInt)
-  {
-    this(paramInt, -1, -1);
-  }
-  
-  public i$b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.aPX = paramInt1;
-    this.aPY = paramInt2;
-    this.aPZ = paramInt3;
-  }
-  
-  public final b dM(int paramInt)
-  {
-    AppMethodBeat.i(95512);
-    if (this.aPX == paramInt)
+    super(paramInt);
+    AppMethodBeat.i(210339);
+    this.cZP = paramw;
+    this.cZM = paramw.QX();
+    this.cZQ = paramw.QW();
+    this.loopCount = paramInt;
+    if (paramInt <= 2147483647 / this.cZM) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(95512);
-      return this;
+      com.google.android.exoplayer2.i.a.checkState(bool, "LoopingMediaSource contains too many periods");
+      AppMethodBeat.o(210339);
+      return;
     }
-    b localb = new b(paramInt, this.aPY, this.aPZ);
-    AppMethodBeat.o(95512);
-    return localb;
   }
   
-  public final boolean equals(Object paramObject)
+  public final int QW()
   {
-    AppMethodBeat.i(95513);
-    if (this == paramObject)
-    {
-      AppMethodBeat.o(95513);
-      return true;
-    }
-    if ((paramObject == null) || (getClass() != paramObject.getClass()))
-    {
-      AppMethodBeat.o(95513);
-      return false;
-    }
-    paramObject = (b)paramObject;
-    if ((this.aPX == paramObject.aPX) && (this.aPY == paramObject.aPY) && (this.aPZ == paramObject.aPZ))
-    {
-      AppMethodBeat.o(95513);
-      return true;
-    }
-    AppMethodBeat.o(95513);
-    return false;
+    return this.cZQ * this.loopCount;
   }
   
-  public final int hashCode()
+  public final int QX()
   {
-    return ((this.aPX + 527) * 31 + this.aPY) * 31 + this.aPZ;
+    return this.cZM * this.loopCount;
   }
   
-  public final boolean pi()
+  protected final w SL()
   {
-    return this.aPY != -1;
+    return this.cZP;
+  }
+  
+  protected final int bh(Object paramObject)
+  {
+    AppMethodBeat.i(210345);
+    if (!(paramObject instanceof Integer))
+    {
+      AppMethodBeat.o(210345);
+      return -1;
+    }
+    int i = ((Integer)paramObject).intValue();
+    AppMethodBeat.o(210345);
+    return i;
+  }
+  
+  protected final int ib(int paramInt)
+  {
+    return paramInt / this.cZM;
+  }
+  
+  protected final int ic(int paramInt)
+  {
+    return paramInt / this.cZQ;
+  }
+  
+  protected final int id(int paramInt)
+  {
+    return this.cZM * paramInt;
+  }
+  
+  protected final int ie(int paramInt)
+  {
+    return this.cZQ * paramInt;
+  }
+  
+  protected final Object jdMethod_if(int paramInt)
+  {
+    AppMethodBeat.i(210350);
+    AppMethodBeat.o(210350);
+    return Integer.valueOf(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.i.b
  * JD-Core Version:    0.7.0.1
  */

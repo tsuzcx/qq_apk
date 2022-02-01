@@ -6,32 +6,32 @@ public final class r
 {
   public static void b(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(10631);
+    AppMethodBeat.i(4098);
     if (!paramBoolean)
     {
       paramString = new IllegalStateException(paramString);
-      AppMethodBeat.o(10631);
+      AppMethodBeat.o(4098);
       throw paramString;
     }
-    AppMethodBeat.o(10631);
+    AppMethodBeat.o(4098);
   }
   
   public static <T> T zza(T paramT, String paramString)
   {
-    AppMethodBeat.i(10630);
+    AppMethodBeat.i(4097);
     if (paramT == null)
     {
       paramT = new NullPointerException(paramString);
-      AppMethodBeat.o(10630);
+      AppMethodBeat.o(4097);
       throw paramT;
     }
-    AppMethodBeat.o(10630);
+    AppMethodBeat.o(4097);
     return paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.components.r
  * JD-Core Version:    0.7.0.1
  */

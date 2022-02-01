@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class sweet_req_comm
   extends JceStruct
 {
-  static int cache_pf = 0;
-  static int cache_src = 0;
-  public long loveuin;
-  public long opuin;
-  public int pf;
+  static int cache_pf;
+  static int cache_src;
+  public long loveuin = 0L;
+  public long opuin = 0L;
+  public int pf = 0;
   public String qua = "";
-  public int src;
-  public long uin;
+  public int src = 0;
+  public long uin = 0L;
   
   public sweet_req_comm() {}
   
@@ -43,8 +43,9 @@ public final class sweet_req_comm
     paramJceOutputStream.write(this.opuin, 0);
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.loveuin, 2);
-    if (this.qua != null) {
-      paramJceOutputStream.write(this.qua, 3);
+    String str = this.qua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.src, 4);
     paramJceOutputStream.write(this.pf, 5);
@@ -52,7 +53,7 @@ public final class sweet_req_comm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_BASE.sweet_req_comm
  * JD-Core Version:    0.7.0.1
  */

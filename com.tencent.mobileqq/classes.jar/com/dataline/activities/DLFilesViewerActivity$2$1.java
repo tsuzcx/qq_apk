@@ -1,21 +1,20 @@
 package com.dataline.activities;
 
-import ac;
-import dm;
+import com.dataline.util.DatalineFilesAdapter;
 
-public class DLFilesViewerActivity$2$1
+class DLFilesViewerActivity$2$1
   implements Runnable
 {
-  public DLFilesViewerActivity$2$1(ac paramac, long paramLong, float paramFloat) {}
+  DLFilesViewerActivity$2$1(DLFilesViewerActivity.2 param2, long paramLong, float paramFloat) {}
   
   public void run()
   {
-    DLFilesViewerActivity.a(this.jdField_a_of_type_Ac.a).a(this.jdField_a_of_type_Long, DLFilesViewerActivity.a(this.jdField_a_of_type_Ac.a), this.jdField_a_of_type_Float);
+    DLFilesViewerActivity.b(this.c.a).a(this.a, DLFilesViewerActivity.e(this.c.a), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.DLFilesViewerActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

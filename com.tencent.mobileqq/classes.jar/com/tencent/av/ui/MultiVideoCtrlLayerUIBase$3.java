@@ -11,20 +11,20 @@ class MultiVideoCtrlLayerUIBase$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_AndroidViewViewGroup == null) || (this.this$0.jdField_d_of_type_AndroidWidgetTextView == null) || (this.this$0.jdField_a_of_type_AndroidContentResResources == null))
+    if ((this.this$0.an != null) && (this.this$0.as != null) && (this.this$0.aj != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.this$0.jdField_d_of_type_JavaLangString, 2, "SetTitleMaxWidth Failed --> RootView Or TitleView Or Resource is NULL");
-      }
+      int i = this.this$0.aj.getDimensionPixelSize(2131300030);
+      this.this$0.as.setMaxWidth(i);
       return;
     }
-    int i = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131299012);
-    this.this$0.jdField_d_of_type_AndroidWidgetTextView.setMaxWidth(i);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.this$0.X, 2, "SetTitleMaxWidth Failed --> RootView Or TitleView Or Resource is NULL");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,36 @@
 package com.tencent.mm.emoji.b;
 
-import a.f.b.j;
-import a.l;
-import android.content.Context;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.loader.g.a.c;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/panel/MMContextThemeWrapper;", "Landroid/view/ContextThemeWrapper;", "base", "Landroid/content/Context;", "themeResId", "", "(Landroid/content/Context;I)V", "inflater", "Landroid/view/LayoutInflater;", "getSystemService", "", "name", "", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "isLegal", "", "uniqueValue", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends ContextThemeWrapper
+  implements c
 {
-  private LayoutInflater exe;
+  final EmojiGroupInfo mgd;
   
-  public a(Context paramContext, int paramInt)
+  public a(EmojiGroupInfo paramEmojiGroupInfo)
   {
-    super(paramContext, paramInt);
-    AppMethodBeat.i(63251);
-    AppMethodBeat.o(63251);
+    AppMethodBeat.i(105380);
+    this.mgd = paramEmojiGroupInfo;
+    AppMethodBeat.o(105380);
   }
   
-  public final Object getSystemService(String paramString)
+  public final String aUt()
   {
-    AppMethodBeat.i(63250);
-    j.q(paramString, "name");
-    if (j.e("layout_inflater", paramString))
-    {
-      if (this.exe == null)
-      {
-        Object localObject = super.getSystemService(paramString);
-        paramString = localObject;
-        if (!(localObject instanceof LayoutInflater)) {
-          paramString = null;
-        }
-        this.exe = w.b((LayoutInflater)paramString);
-      }
-      paramString = this.exe;
-      AppMethodBeat.o(63250);
-      return paramString;
-    }
-    paramString = super.getSystemService(paramString);
-    AppMethodBeat.o(63250);
-    return paramString;
+    AppMethodBeat.i(105379);
+    String str = this.mgd.field_productID;
+    s.s(str, "groupInfo.productID");
+    AppMethodBeat.o(105379);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.b.a
  * JD-Core Version:    0.7.0.1
  */

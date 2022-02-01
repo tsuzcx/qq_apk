@@ -1,16 +1,19 @@
 package com.tencent.mobileqq.mini.widget;
 
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.profilecard.BaseMiniAppProfileCardView;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class MiniAppProfileCardView
-  extends LinearLayout
+  extends BaseMiniAppProfileCardView
 {
   private ColorStateList attrValue;
   private int colorInt;
@@ -42,8 +45,8 @@ public class MiniAppProfileCardView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131561191, this, true);
-    this.mListView = ((HorizontalListView)findViewById(2131372331));
+    this.mLayoutInflater.inflate(2131627707, this, true);
+    this.mListView = ((HorizontalListView)findViewById(2131440725));
     this.mAdapter = new MiniAppProfileCardView.HorzionAdapter(this);
     this.mListView.setAdapter(this.mAdapter);
     this.mListView.setVisibility(0);
@@ -51,8 +54,25 @@ public class MiniAppProfileCardView
   
   public void setData(ArrayList<MiniAppInfo> paramArrayList)
   {
-    if (this.mAdapter != null) {
-      this.mAdapter.setData(paramArrayList);
+    MiniAppProfileCardView.HorzionAdapter localHorzionAdapter = this.mAdapter;
+    if (localHorzionAdapter != null) {
+      localHorzionAdapter.setData(paramArrayList);
+    }
+  }
+  
+  public void setData(List<INTERFACE.StApiAppInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localArrayList.add(MiniAppInfo.from((INTERFACE.StApiAppInfo)paramList.next()));
+      }
+      setData(localArrayList);
     }
   }
   
@@ -70,7 +90,7 @@ public class MiniAppProfileCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardView
  * JD-Core Version:    0.7.0.1
  */

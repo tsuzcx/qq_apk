@@ -22,13 +22,14 @@ public final class qqstory_group$RspGetGroupHotRankVideo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48 }, new String[] { "result", "video_card_list", "is_end", "next_cookie", "seq", "total" }, new Object[] { null, null, Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0) }, RspGetGroupHotRankVideo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48 }, new String[] { "result", "video_card_list", "is_end", "next_cookie", "seq", "total" }, new Object[] { null, null, localInteger, localByteStringMicro, Long.valueOf(0L), localInteger }, RspGetGroupHotRankVideo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo
  * JD-Core Version:    0.7.0.1
  */

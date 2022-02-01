@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.content.ContentValues;
-import arby;
 
-public class FileManagerProxy$3
+class FileManagerProxy$3
   implements Runnable
 {
-  public FileManagerProxy$3(arby paramarby, ContentValues paramContentValues, long paramLong) {}
+  FileManagerProxy$3(FileManagerProxy paramFileManagerProxy, ContentValues paramContentValues, long paramLong) {}
   
   public void run()
   {
     try
     {
-      this.this$0.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
+      this.this$0.a(FileManagerEntity.tableName(), this.a, "nSessionId=?", new String[] { String.valueOf(this.b) }, null);
       return;
     }
     catch (Exception localException)
@@ -23,7 +22,7 @@ public class FileManagerProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy.3
  * JD-Core Version:    0.7.0.1
  */

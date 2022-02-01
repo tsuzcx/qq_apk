@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/bsg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="15.0dip" android:textColor="@color/yf" android:ellipsize="end" android:id="@id/kif" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:importantForAccessibility="no" />
+</FrameLayout>

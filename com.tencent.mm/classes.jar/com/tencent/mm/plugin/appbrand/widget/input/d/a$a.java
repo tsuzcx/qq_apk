@@ -1,17 +1,12 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
-import java.util.ArrayList;
+import kotlin.Metadata;
 
-public final class a$a
-{
-  public int jqn;
-  public int jqo;
-  public String jqp;
-  public ArrayList<a.b> jqq;
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/input/panel/AppBrandInputNewSmileyPanel$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class a$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.a.a
  * JD-Core Version:    0.7.0.1
  */

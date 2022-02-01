@@ -8,8 +8,8 @@ public final class ReqOffFilePack
   extends JceStruct
 {
   static byte[] cache_vBody;
-  public long lUIN;
-  public byte[] vBody;
+  public long lUIN = 0L;
+  public byte[] vBody = null;
   
   public ReqOffFilePack() {}
   
@@ -38,7 +38,7 @@ public final class ReqOffFilePack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqOffFilePack
  * JD-Core Version:    0.7.0.1
  */

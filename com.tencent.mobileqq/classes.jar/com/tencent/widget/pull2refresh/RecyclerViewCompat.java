@@ -6,15 +6,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
-import bifa;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecyclerViewCompat
   extends RecyclerView
 {
-  private bifa jdField_a_of_type_Bifa;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static final String TAG = "RecyclerViewCompat";
+  private boolean mIsInterruptedFling = false;
+  private boolean mIsInterruptedPreFling = false;
+  private RecyclerViewCompat.OnFlingListener mOnFlingListener;
   
   public RecyclerViewCompat(Context paramContext)
   {
@@ -31,16 +31,11 @@ public class RecyclerViewCompat
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public bifa a()
-  {
-    return this.jdField_a_of_type_Bifa;
-  }
-  
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    if (this.b)
+    if (this.mIsInterruptedFling)
     {
-      this.b = false;
+      this.mIsInterruptedFling = false;
       return false;
     }
     return super.dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
@@ -48,9 +43,9 @@ public class RecyclerViewCompat
   
   public boolean dispatchNestedPreFling(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mIsInterruptedPreFling)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.mIsInterruptedPreFling = false;
       return false;
     }
     return super.dispatchNestedPreFling(paramFloat1, paramFloat2);
@@ -58,62 +53,70 @@ public class RecyclerViewCompat
   
   public boolean fling(int paramInt1, int paramInt2)
   {
-    boolean bool1 = false;
     int j = paramInt1;
     int k = paramInt2;
-    if (this.jdField_a_of_type_Bifa != null)
+    if (this.mOnFlingListener != null)
     {
-      if (getLayoutManager() == null) {
-        QLog.e("RecyclerViewCompat", 2, "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
-      }
-      boolean bool3;
-      boolean bool2;
-      int i;
-      do
+      Object localObject = getLayoutManager();
+      boolean bool1 = false;
+      if (localObject == null)
       {
-        do
-        {
-          return false;
-        } while (isLayoutFrozen());
-        RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
-        bool3 = localLayoutManager.canScrollHorizontally();
-        bool2 = localLayoutManager.canScrollVertically();
-        if (bool3)
-        {
-          i = paramInt1;
-          if (Math.abs(paramInt1) >= getMinFlingVelocity()) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        if (bool2)
-        {
-          paramInt1 = paramInt2;
-          if (Math.abs(paramInt2) >= getMinFlingVelocity()) {}
-        }
-        else
-        {
-          paramInt1 = 0;
-        }
-      } while ((i == 0) && (paramInt1 == 0));
+        QLog.e("RecyclerViewCompat", 2, "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
+        return false;
+      }
+      if (isLayoutFrozen()) {
+        return false;
+      }
+      localObject = getLayoutManager();
+      boolean bool3 = ((RecyclerView.LayoutManager)localObject).canScrollHorizontally();
+      boolean bool2 = ((RecyclerView.LayoutManager)localObject).canScrollVertically();
+      int i;
+      if (bool3)
+      {
+        i = paramInt1;
+        if (Math.abs(paramInt1) >= getMinFlingVelocity()) {}
+      }
+      else
+      {
+        i = 0;
+      }
+      if (bool2)
+      {
+        paramInt1 = paramInt2;
+        if (Math.abs(paramInt2) >= getMinFlingVelocity()) {}
+      }
+      else
+      {
+        paramInt1 = 0;
+      }
+      if ((i == 0) && (paramInt1 == 0)) {
+        return false;
+      }
+      float f1 = i;
+      float f2 = paramInt1;
       j = i;
       k = paramInt1;
-      if (!dispatchNestedPreFling(i, paramInt1))
+      if (!dispatchNestedPreFling(f1, f2))
       {
         if ((bool3) || (bool2)) {
           bool1 = true;
         }
-        dispatchNestedFling(i, paramInt1, bool1);
-        if ((this.jdField_a_of_type_Bifa != null) && (this.jdField_a_of_type_Bifa.a(i, paramInt1))) {
+        dispatchNestedFling(f1, f2, bool1);
+        localObject = this.mOnFlingListener;
+        if ((localObject != null) && (((RecyclerViewCompat.OnFlingListener)localObject).onFling(f1, f2))) {
           return true;
         }
-        this.jdField_a_of_type_Boolean = true;
-        this.b = true;
+        this.mIsInterruptedPreFling = true;
+        this.mIsInterruptedFling = true;
         return super.fling(i, paramInt1);
       }
     }
     return super.fling(j, k);
+  }
+  
+  public RecyclerViewCompat.OnFlingListener getOnFlingListener()
+  {
+    return this.mOnFlingListener;
   }
   
   public void setAdapter(RecyclerView.Adapter paramAdapter)
@@ -121,14 +124,14 @@ public class RecyclerViewCompat
     super.setAdapter(paramAdapter);
   }
   
-  public void setOnFlingListener(bifa parambifa)
+  public void setOnFlingListener(RecyclerViewCompat.OnFlingListener paramOnFlingListener)
   {
-    this.jdField_a_of_type_Bifa = parambifa;
+    this.mOnFlingListener = paramOnFlingListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.RecyclerViewCompat
  * JD-Core Version:    0.7.0.1
  */

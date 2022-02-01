@@ -1,25 +1,27 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.plugin.topstory.ui.c.f;
+import com.tencent.mm.plugin.topstory.ui.c.g;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 
 final class h$2
-  implements n.c
+  implements u.g
 {
   h$2(h paramh) {}
   
-  public final void onCreateMMMenu(l paraml)
+  public final void onCreateMMMenu(s params)
   {
-    AppMethodBeat.i(1714);
-    paraml.aw(0, 2131304539, 2131231024);
-    paraml.aw(1, 2131304538, 2131231038);
-    AppMethodBeat.o(1714);
+    AppMethodBeat.i(126073);
+    params.bx(0, c.g.video_share_to_friend, c.f.bottomsheet_icon_transmit);
+    params.bx(1, c.g.video_share_to_sns, c.f.bottomsheet_icon_moment);
+    AppMethodBeat.o(126073);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.h.2
  * JD-Core Version:    0.7.0.1
  */

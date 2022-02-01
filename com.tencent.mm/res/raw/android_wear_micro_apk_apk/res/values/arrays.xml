@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="a">
-        <item>@drawable/bi</item>
-        <item>@drawable/b8</item>
-        <item>@drawable/b2</item>
-        <item>@drawable/as</item>
+    <array name="emoji_bg">
+        <item>@drawable/robot_bg</item>
+        <item>@drawable/monmon_bg</item>
+        <item>@drawable/luoxiaohei_bg</item>
+        <item>@drawable/ali_bg</item>
     </array>
-    <string-array name="b">
+    <string-array name="emoji_code">
         <item></item>
         <item></item>
         <item></item>
@@ -177,13 +177,13 @@
         <item></item>
         <item></item>
     </string-array>
-    <array name="c">
-        <item>@drawable/bh</item>
-        <item>@drawable/b7</item>
-        <item>@drawable/b1</item>
-        <item>@drawable/ar</item>
+    <array name="emoji_icon_list">
+        <item>@drawable/robot</item>
+        <item>@drawable/monmon</item>
+        <item>@drawable/luoxiaohei</item>
+        <item>@drawable/ali</item>
     </array>
-    <string-array name="d">
+    <string-array name="emoji_name_ch">
         <item>笑脸</item>
         <item>开心</item>
         <item>大笑</item>
@@ -354,7 +354,7 @@
         <item>商标</item>
         <item>合十</item>
     </string-array>
-    <string-array name="e">
+    <string-array name="emoji_name_en">
         <item>Laugh</item>
         <item>Happy</item>
         <item>Big Smile</item>
@@ -525,13 +525,13 @@
         <item>Trademark</item>
         <item>Worship</item>
     </string-array>
-    <string-array name="f">
-        <item>@string/x</item>
-        <item>@string/w</item>
-        <item>@string/v</item>
-        <item>@string/u</item>
+    <string-array name="emoji_name_list">
+        <item>@string/emoji_name_robot_six</item>
+        <item>@string/emoji_name_meme</item>
+        <item>@string/emoji_name_luoxiaohei</item>
+        <item>@string/emoji_name_fox</item>
     </string-array>
-    <string-array name="g">
+    <string-array name="emoji_name_tw">
         <item>笑臉</item>
         <item>開心</item>
         <item>大笑</item>
@@ -702,13 +702,13 @@
         <item>商標</item>
         <item>合十</item>
     </string-array>
-    <string-array name="h">
+    <string-array name="emoji_product_id_list">
         <item>com.tencent.xin.emoticon.botg</item>
         <item>com.tencent.xin.emoticon.monmong</item>
         <item>com.tencent.xin.emoticon.luoxiaoheig</item>
         <item>com.tencent.xin.emoticon.ali2g</item>
     </string-array>
-    <string-array name="i">
+    <string-array name="md5_ali">
         <item>de0f3a34ec58236af60cbc29fed904d6</item>
         <item>356496728f331698c3f6caf8979df444</item>
         <item>0b6f650235aa3834cb5edd7c4d1fff5e</item>
@@ -734,12 +734,12 @@
         <item>959705c9814203e36783ec9a27ca9920</item>
         <item>97d5be6e3437a51ef1c0351244ec69cd</item>
     </string-array>
-    <string-array name="j">
+    <string-array name="md5_heartbeat">
         <item>1c44d6268f9e4fdf8819965a2cf45ad0</item>
         <item>fb2fd734a0725221b1a06946bb95df82</item>
         <item>d29f49e37e0aed76bda996bd51bc10c4</item>
     </string-array>
-    <string-array name="k">
+    <string-array name="md5_luoxiaohei">
         <item>d81165aed31982289572e07e68992d94</item>
         <item>939e43ddf1036613e06f6f36e442246a</item>
         <item>af1794bf4f5d56ccb7d0df45e282a6e8</item>
@@ -757,7 +757,7 @@
         <item>d5cf8c001338f661d7269eec171ceb43</item>
         <item>5b4da175735b9a6738fd4a3b829f480d</item>
     </string-array>
-    <string-array name="l">
+    <string-array name="md5_monmon">
         <item>a8ff583c64ca57f376c5bf8455ee5024</item>
         <item>cc1b6efe4b348bd78514ebc3c0fe9a77</item>
         <item>beb8ff41eb5398f7eee9593f17e1b6d4</item>
@@ -775,7 +775,7 @@
         <item>d852fd8e192ed2039b3ae362a02a1de9</item>
         <item>817a1cb89b9ed6dd3e0e88bf0c7fcc54</item>
     </string-array>
-    <string-array name="m">
+    <string-array name="md5_robot">
         <item>15cd4d77f3253111cffef9637fc28724</item>
         <item>d57f5125a17cd05a44c875ef849fa206</item>
         <item>f3327604e6e01e2c184f0a32b322326f</item>
@@ -793,7 +793,7 @@
         <item>219f5d14155f50fc67614ed721e5887c</item>
         <item>cde21b0be371295a7243b96e0c76c8f9</item>
     </string-array>
-    <string-array name="n">
+    <string-array name="merge_smiley_code_smiley">
         <item>/::)</item>
         <item>/::~</item>
         <item>/::B</item>
@@ -895,7 +895,7 @@
         <item>/:skip</item>
         <item>/:oY</item>
     </string-array>
-    <string-array name="o">
+    <string-array name="merge_smiley_softbank_emoji">
         <item></item>
         <item></item>
         <item></item>
@@ -917,7 +917,7 @@
         <item></item>
         <item></item>
     </string-array>
-    <string-array name="p">
+    <string-array name="merge_smiley_unicode_emoji">
         <item>0xd83d 0xde04</item>
         <item>0xd83d 0xde37</item>
         <item>0xd83d 0xde02</item>
@@ -939,18 +939,18 @@
         <item>0xd83c 0xdf89</item>
         <item>0xd83c 0xdf81</item>
     </string-array>
-    <string-array name="q">
-        <item>@string/ag</item>
-        <item>@string/af</item>
-        <item>@string/ae</item>
+    <string-array name="oversea_reply_choices">
+        <item>@string/oversea_reply_choice_yes</item>
+        <item>@string/oversea_reply_choice_no</item>
+        <item>@string/oversea_reply_choice_maybe</item>
     </string-array>
-    <array name="r">
+    <array name="progress_spinner_sequence">
         <item>#fff4b400</item>
         <item>#ffdb4437</item>
         <item>#ff4285f4</item>
         <item>#ff0f9d58</item>
     </array>
-    <string-array name="s">
+    <string-array name="smiley_values">
         <item>/::)</item>
         <item>/::~</item>
         <item>/::B</item>
@@ -1057,7 +1057,7 @@
         <item>/:&lt;&amp;</item>
         <item>/:&amp;></item>
     </string-array>
-    <string-array name="t">
+    <string-array name="smiley_values_ch">
         <item>[微笑]</item>
         <item>[撇嘴]</item>
         <item>[色]</item>
@@ -1164,7 +1164,7 @@
         <item>[左太极]</item>
         <item>[右太极]</item>
     </string-array>
-    <string-array name="u">
+    <string-array name="smiley_values_en">
         <item>[Smile]</item>
         <item>[Grimace]</item>
         <item>[Drool]</item>
@@ -1271,7 +1271,7 @@
         <item>[TaiChi L]</item>
         <item>[TaiChi R]</item>
     </string-array>
-    <string-array name="v">
+    <string-array name="smiley_values_old">
         <item>/微笑</item>
         <item>/撇嘴</item>
         <item>/色</item>
@@ -1378,7 +1378,7 @@
         <item>/左太极</item>
         <item>/右太极</item>
     </string-array>
-    <string-array name="w">
+    <string-array name="smiley_values_th">
         <item>[ยิ้ม]</item>
         <item>[หน้าบูด]</item>
         <item>[น้ำลายไหล]</item>
@@ -1485,7 +1485,7 @@
         <item>[หญิงต่อสู้]</item>
         <item>[ชายต่อสู้]</item>
     </string-array>
-    <string-array name="x">
+    <string-array name="smiley_values_tw">
         <item>[微笑]</item>
         <item>[撇嘴]</item>
         <item>[色]</item>
@@ -1592,7 +1592,7 @@
         <item>[左太極]</item>
         <item>[右太極]</item>
     </string-array>
-    <string-array name="y">
+    <string-array name="sms_content">
         <item>微信验证码</item>
         <item>微信驗證碼</item>
         <item>Verification code from WeChat</item>

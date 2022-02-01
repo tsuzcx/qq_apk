@@ -23,13 +23,14 @@ public final class Qworkflow$TimTodoNotification
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48 }, new String[] { "enum_notice_type", "bytes_todo_id", "uint64_author_uin", "bytes_title", "uint64_remind_start", "uint64_remind_end" }, new Object[] { Integer.valueOf(1), localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L) }, TimTodoNotification.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48 }, new String[] { "enum_notice_type", "bytes_todo_id", "uint64_author_uin", "bytes_title", "uint64_remind_start", "uint64_remind_end" }, new Object[] { Integer.valueOf(1), localByteStringMicro1, localLong, localByteStringMicro2, localLong, localLong }, TimTodoNotification.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.TimTodoNotification
  * JD-Core Version:    0.7.0.1
  */

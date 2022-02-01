@@ -1,36 +1,33 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ListView;
+import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.tools.l;
 
 final class FMessageConversationUI$4
-  implements AdapterView.OnItemLongClickListener
+  implements View.OnTouchListener
 {
-  FMessageConversationUI$4(FMessageConversationUI paramFMessageConversationUI, l paraml) {}
+  FMessageConversationUI$4(FMessageConversationUI paramFMessageConversationUI) {}
   
-  public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(25361);
-    if (paramInt < FMessageConversationUI.b(this.sYg).getHeaderViewsCount())
+    AppMethodBeat.i(292034);
+    switch (paramMotionEvent.getAction())
     {
-      ab.w("MicroMsg.FMessageConversationUI", "on header view long click, ignore");
-      AppMethodBeat.o(25361);
-      return true;
     }
-    int i = FMessageConversationUI.b(this.sYg).getHeaderViewsCount();
-    this.jSq.a(paramView, paramInt - i, paramLong, this.sYg, FMessageConversationUI.c(this.sYg));
-    AppMethodBeat.o(25361);
-    return true;
+    for (;;)
+    {
+      AppMethodBeat.o(292034);
+      return false;
+      FMessageConversationUI.a(this.SGh, (int)paramMotionEvent.getRawX());
+      FMessageConversationUI.b(this.SGh, (int)paramMotionEvent.getRawY());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.friend.FMessageConversationUI.4
  * JD-Core Version:    0.7.0.1
  */

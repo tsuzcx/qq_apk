@@ -1,16 +1,19 @@
 package com.tencent.token.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.token.ch;
+import com.tencent.token.aaz;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cy;
-import com.tencent.token.do;
-import com.tencent.token.utils.x;
+import com.tencent.token.so;
+import com.tencent.token.sw;
+import com.tencent.token.tg;
+import com.tencent.token.tt;
 
 public class SettingTokenActivity
   extends BaseActivity
@@ -20,26 +23,31 @@ public class SettingTokenActivity
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131166012)
     {
-    case 2131559259: 
-    default: 
-      return;
-    case 2131559258: 
-      ch.a().a(System.currentTimeMillis(), 6);
-      com.tencent.token.global.j.a();
-      if ((cy.a().c()) && (cy.a().e() == 1)) {}
-      for (paramView = new Intent(this, StartPwdDigitSelActivity.class);; paramView = new Intent(this, StartPwdGestureIndexActivity.class))
+      if (i != 2131166014)
       {
-        startActivity(paramView);
-        cy.a().b("startpwd_tip_newflag");
+        if (i != 2131166019)
+        {
+          if (i != 2131166022) {
+            return;
+          }
+          so.a().a(System.currentTimeMillis(), 6);
+          if ((sw.a().c()) && (sw.a().a == 1)) {
+            paramView = new Intent(this, StartPwdDigitSelActivity.class);
+          } else {
+            paramView = new Intent(this, StartPwdGestureIndexActivity.class);
+          }
+          startActivity(paramView);
+          sw.a();
+          sw.d("startpwd_tip_newflag");
+          return;
+        }
+        startActivity(new Intent(this, AssistantRecommendFriendQrcode.class));
         return;
       }
-    case 2131559260: 
       startActivity(new Intent(this, CorrectTokenActivity.class));
-      return;
-    case 2131559261: 
-      startActivity(new Intent(this, AssistantRecommendFriendQrcode.class));
       return;
     }
     startActivity(new Intent(this, AboutActivity.class));
@@ -48,33 +56,41 @@ public class SettingTokenActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968760);
-    findViewById(2131559258).setOnClickListener(this);
-    findViewById(2131559260).setOnClickListener(this);
-    findViewById(2131559261).setOnClickListener(this);
-    findViewById(2131559262).setOnClickListener(this);
-    this.mTokenPwdTxt = ((TextView)findViewById(2131559259));
+    setContentView(2131296455);
+    findViewById(2131166022).setOnClickListener(this);
+    findViewById(2131166014).setOnClickListener(this);
+    findViewById(2131166019).setOnClickListener(this);
+    findViewById(2131166012).setOnClickListener(this);
+    this.mTokenPwdTxt = ((TextView)findViewById(2131166023));
   }
   
   public void onResume()
   {
     super.onResume();
-    if (!com.tencent.token.core.bean.j.b().c()) {
-      findViewById(2131559264).setVisibility(4);
+    Object localObject = tg.b();
+    int j = ((tg)localObject).a;
+    int i = 1;
+    if ((j == 0) || (1 == ((tg)localObject).a)) {
+      i = 0;
     }
-    QQUser localQQUser = x.f();
-    if ((cy.a().c()) || ((do.a().h()) && (localQQUser != null) && (localQQUser.mIsRegisterFacePwd)))
+    if (i == 0) {
+      findViewById(2131165789).setVisibility(4);
+    }
+    localObject = aaz.f();
+    if ((!sw.a().c()) && ((!tt.a().d()) || (localObject == null) || (!((QQUser)localObject).mIsRegisterFacePwd)))
     {
-      this.mTokenPwdTxt.setText(2131231443);
-      this.mTokenPwdTxt.setTextColor(getResources().getColor(2131492937));
+      this.mTokenPwdTxt.setText(2131493595);
+      this.mTokenPwdTxt.setTextColor(getResources().getColor(2130968770));
     }
-    for (;;)
+    else
     {
-      com.tencent.token.core.bean.j.b().d();
-      return;
-      this.mTokenPwdTxt.setText(2131231442);
-      this.mTokenPwdTxt.setTextColor(getResources().getColor(2131493035));
+      this.mTokenPwdTxt.setText(2131493596);
+      this.mTokenPwdTxt.setTextColor(getResources().getColor(2130968670));
     }
+    tg.b();
+    localObject = tg.a().edit();
+    ((SharedPreferences.Editor)localObject).putBoolean("sp_new_key", false);
+    ((SharedPreferences.Editor)localObject).commit();
   }
 }
 

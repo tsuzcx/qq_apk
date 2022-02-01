@@ -36,14 +36,14 @@ class OperatorReplay$BoundedReplayBuffer<T>
     for (;;)
     {
       localNode = (OperatorReplay.Node)localNode.get();
-      Object localObject;
-      if (localNode != null)
-      {
-        localObject = leaveTransform(localNode.value);
-        if ((!this.nl.isCompleted(localObject)) && (!this.nl.isError(localObject))) {}
+      if (localNode == null) {
+        break;
       }
-      else
-      {
+      Object localObject = leaveTransform(localNode.value);
+      if (this.nl.isCompleted(localObject)) {
+        break;
+      }
+      if (this.nl.isError(localObject)) {
         return;
       }
       paramCollection.add(this.nl.getValue(localObject));
@@ -100,11 +100,13 @@ class OperatorReplay$BoundedReplayBuffer<T>
   final void removeFirst()
   {
     OperatorReplay.Node localNode = (OperatorReplay.Node)((OperatorReplay.Node)get()).get();
-    if (localNode == null) {
-      throw new IllegalStateException("Empty list!");
+    if (localNode != null)
+    {
+      this.size -= 1;
+      setFirst(localNode);
+      return;
     }
-    this.size -= 1;
-    setFirst(localNode);
+    throw new IllegalStateException("Empty list!");
   }
   
   final void removeSome(int paramInt)
@@ -121,98 +123,92 @@ class OperatorReplay$BoundedReplayBuffer<T>
   
   public final void replay(OperatorReplay.InnerProducer<T> paramInnerProducer)
   {
-    for (;;)
+    try
     {
-      long l2;
-      try
+      if (paramInnerProducer.emitting)
       {
-        if (paramInnerProducer.emitting)
-        {
-          paramInnerProducer.missed = true;
+        paramInnerProducer.missed = true;
+        return;
+      }
+      paramInnerProducer.emitting = true;
+      for (;;)
+      {
+        if (paramInnerProducer.isUnsubscribed()) {
           return;
         }
-        paramInnerProducer.emitting = true;
-        if (paramInnerProducer.isUnsubscribed()) {
-          break;
-        }
-        l2 = paramInnerProducer.get();
-        if (l2 == 9223372036854775807L)
-        {
+        long l1 = paramInnerProducer.get();
+        int i;
+        if (l1 == 9223372036854775807L) {
           i = 1;
-          OperatorReplay.Node localNode = (OperatorReplay.Node)paramInnerProducer.index();
-          Object localObject1 = localNode;
-          if (localNode == null)
-          {
-            localObject1 = (OperatorReplay.Node)get();
-            paramInnerProducer.index = localObject1;
-            paramInnerProducer.addTotalRequested(((OperatorReplay.Node)localObject1).index);
-          }
-          if (paramInnerProducer.isUnsubscribed()) {
-            break;
-          }
-          l1 = 0L;
-          if (l2 == 0L) {
-            break label252;
-          }
+        } else {
+          i = 0;
+        }
+        OperatorReplay.Node localNode = (OperatorReplay.Node)paramInnerProducer.index();
+        Object localObject1 = localNode;
+        if (localNode == null)
+        {
+          localObject1 = (OperatorReplay.Node)get();
+          paramInnerProducer.index = localObject1;
+          paramInnerProducer.addTotalRequested(((OperatorReplay.Node)localObject1).index);
+        }
+        if (paramInnerProducer.isUnsubscribed()) {
+          return;
+        }
+        long l2 = 0L;
+        while (l1 != 0L)
+        {
           localNode = (OperatorReplay.Node)((OperatorReplay.Node)localObject1).get();
-          if (localNode == null) {
-            break label252;
-          }
-          localObject1 = leaveTransform(localNode.value);
-          try
+          if (localNode != null)
           {
-            if (!this.nl.accept(paramInnerProducer.child, localObject1)) {
-              break label228;
+            localObject1 = leaveTransform(localNode.value);
+            try
+            {
+              if (this.nl.accept(paramInnerProducer.child, localObject1))
+              {
+                paramInnerProducer.index = null;
+                return;
+              }
+              l2 += 1L;
+              l1 -= 1L;
+              if (paramInnerProducer.isUnsubscribed()) {
+                return;
+              }
+              localObject1 = localNode;
             }
-            paramInnerProducer.index = null;
+            catch (Throwable localThrowable)
+            {
+              paramInnerProducer.index = null;
+              Exceptions.throwIfFatal(localThrowable);
+              paramInnerProducer.unsubscribe();
+              if ((!this.nl.isError(localObject1)) && (!this.nl.isCompleted(localObject1))) {
+                paramInnerProducer.child.onError(OnErrorThrowable.addValueAsLastCause(localThrowable, this.nl.getValue(localObject1)));
+              }
+              return;
+            }
+          }
+        }
+        if (l2 != 0L)
+        {
+          paramInnerProducer.index = localObject1;
+          if (i == 0) {
+            paramInnerProducer.produced(l2);
+          }
+        }
+        try
+        {
+          if (!paramInnerProducer.missed)
+          {
+            paramInnerProducer.emitting = false;
             return;
           }
-          catch (Throwable localThrowable2)
-          {
-            paramInnerProducer.index = null;
-            Exceptions.throwIfFatal(localThrowable2);
-            paramInnerProducer.unsubscribe();
-            if (this.nl.isError(localObject1)) {
-              break;
-            }
-          }
-          if (this.nl.isCompleted(localObject1)) {
-            break;
-          }
-          paramInnerProducer.child.onError(OnErrorThrowable.addValueAsLastCause(localThrowable2, this.nl.getValue(localObject1)));
-          return;
+          paramInnerProducer.missed = false;
         }
+        finally {}
       }
-      finally {}
-      int i = 0;
-      continue;
-      label228:
-      if (paramInnerProducer.isUnsubscribed()) {
-        break;
-      }
-      l2 -= 1L;
-      long l1 = 1L + l1;
-      Throwable localThrowable1 = localThrowable2;
-      continue;
-      label252:
-      if (l1 != 0L)
-      {
-        paramInnerProducer.index = localThrowable1;
-        if (i == 0) {
-          paramInnerProducer.produced(l1);
-        }
-      }
-      try
-      {
-        if (!paramInnerProducer.missed)
-        {
-          paramInnerProducer.emitting = false;
-          return;
-        }
-      }
-      finally {}
-      paramInnerProducer.missed = false;
+      throw localObject3;
     }
+    finally {}
+    for (;;) {}
   }
   
   final void setFirst(OperatorReplay.Node paramNode)
@@ -226,7 +222,7 @@ class OperatorReplay$BoundedReplayBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorReplay.BoundedReplayBuffer
  * JD-Core Version:    0.7.0.1
  */

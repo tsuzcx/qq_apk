@@ -1,27 +1,64 @@
 package com.tencent.mobileqq.troop.utils;
 
-import android.content.Context;
-import bcnu;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import com.tencent.mobileqq.troop.troopgag.api.ITroopGagService;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class TroopGagMgr$2
-  implements Runnable
+class TroopGagMgr$2
+  extends TroopObserver
 {
-  public TroopGagMgr$2(bcnu parambcnu, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  TroopGagMgr$2(TroopGagMgr paramTroopGagMgr) {}
   
-  public void run()
+  protected void onOIDB0X899_0_Ret(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
-      return;
+      localObject = new StringBuilder(150);
+      ((StringBuilder)localObject).append("onOIDB0X899_0_Ret");
+      ((StringBuilder)localObject).append("| isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("| troopuin = ");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append("| nFlag = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("| strErorMsg = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("TroopGagMgr", 2, ((StringBuilder)localObject).toString());
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130839407, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    if (((paramInt1 == 6) || (paramInt1 == 3)) && (paramBoolean))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        paramString = (oidb_0x899.memberlist)paramList.next();
+        if ((paramString != null) && (paramString.uint64_member_uin.has()) && (paramString.uint32_shutup_timestap.has()))
+        {
+          paramLong2 = paramString.uint32_shutup_timestap.get();
+          long l = paramString.uint64_member_uin.get();
+          paramString = (ITroopGagService)this.a.b.getRuntimeService(ITroopGagService.class, "");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramLong1);
+          ((StringBuilder)localObject).append("");
+          localObject = ((StringBuilder)localObject).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(l);
+          localStringBuilder.append("");
+          paramString.saveAndUpdateTroopMemberGagStatus((String)localObject, localStringBuilder.toString(), paramLong2);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGagMgr.2
  * JD-Core Version:    0.7.0.1
  */

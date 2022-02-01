@@ -13,15 +13,18 @@ public class TPDownloadParamData
   private int clipNo = 1;
   private String currentFormat;
   private int currentFormatID;
+  private String decKey;
   private List<Map<String, String>> defInfoList;
   private int dlType;
   private String downloadFileID;
   private int endTimeMS;
-  private Map<String, String> extInfoMap;
+  private int expectDelay;
+  private Map<String, Object> extInfoMap;
   private boolean extraParam;
   private long fileDuration;
   private String fileMD5;
   private long fileSize;
+  public String flowId;
   private Map<String, Integer> formatInfo;
   private int fp2p;
   private boolean isCharge;
@@ -29,12 +32,17 @@ public class TPDownloadParamData
   private String linkVid;
   private String m3u8;
   private boolean needEncryptCache;
+  private String nonce;
+  private ArrayList<String> pcdnUrlList;
+  private ArrayList<Integer> pcdnVtList;
   private String playDefinition;
   private long preloadDuration;
   private long preloadSize;
+  private String randoms;
   private String savePath;
   private boolean selfAdaption = false;
   private int starTimeMS;
+  private int taskType;
   private int testid;
   private long tm;
   public String url;
@@ -97,6 +105,11 @@ public class TPDownloadParamData
     return this.currentFormatID;
   }
   
+  public String getDecKey()
+  {
+    return this.decKey;
+  }
+  
   public List<Map<String, String>> getDefInfoList()
   {
     return this.defInfoList;
@@ -117,7 +130,12 @@ public class TPDownloadParamData
     return this.endTimeMS;
   }
   
-  public Map<String, String> getExtInfoMap()
+  public int getExceptDelay()
+  {
+    return this.expectDelay;
+  }
+  
+  public Map<String, Object> getExtInfoMap()
   {
     return this.extInfoMap;
   }
@@ -135,6 +153,11 @@ public class TPDownloadParamData
   public long getFileSize()
   {
     return this.fileSize;
+  }
+  
+  public String getFlowId()
+  {
+    return this.flowId;
   }
   
   public Map<String, Integer> getFormatInfo()
@@ -157,6 +180,21 @@ public class TPDownloadParamData
     return this.m3u8;
   }
   
+  public String getNonce()
+  {
+    return this.nonce;
+  }
+  
+  public ArrayList<String> getPcdnUrlList()
+  {
+    return this.pcdnUrlList;
+  }
+  
+  public ArrayList<Integer> getPcdnVtList()
+  {
+    return this.pcdnVtList;
+  }
+  
   public String getPlayDefinition()
   {
     return this.playDefinition;
@@ -172,6 +210,11 @@ public class TPDownloadParamData
     return this.preloadSize;
   }
   
+  public String getRandoms()
+  {
+    return this.randoms;
+  }
+  
   public String getSavePath()
   {
     return this.savePath;
@@ -185,6 +228,11 @@ public class TPDownloadParamData
   public int getStarTimeMS()
   {
     return this.starTimeMS;
+  }
+  
+  public int getTaskType()
+  {
+    return this.taskType;
   }
   
   public int getTestid()
@@ -287,6 +335,11 @@ public class TPDownloadParamData
     this.currentFormatID = paramInt;
   }
   
+  public void setDecKey(String paramString)
+  {
+    this.decKey = paramString;
+  }
+  
   public void setDefInfoList(List<Map<String, String>> paramList)
   {
     this.defInfoList = paramList;
@@ -307,7 +360,12 @@ public class TPDownloadParamData
     this.endTimeMS = paramInt;
   }
   
-  public void setExtInfoMap(Map<String, String> paramMap)
+  public void setExpectDelay(int paramInt)
+  {
+    this.expectDelay = paramInt;
+  }
+  
+  public void setExtInfoMap(Map<String, Object> paramMap)
   {
     this.extInfoMap = paramMap;
   }
@@ -330,6 +388,11 @@ public class TPDownloadParamData
   public void setFileSize(long paramLong)
   {
     this.fileSize = paramLong;
+  }
+  
+  public void setFlowId(String paramString)
+  {
+    this.flowId = paramString;
   }
   
   public void setFormatInfo(Map<String, Integer> paramMap)
@@ -357,9 +420,24 @@ public class TPDownloadParamData
     this.needEncryptCache = paramBoolean;
   }
   
+  public void setNonce(String paramString)
+  {
+    this.nonce = paramString;
+  }
+  
   public void setOffline(boolean paramBoolean)
   {
     this.isOffline = paramBoolean;
+  }
+  
+  public void setPcdnUrlList(ArrayList<String> paramArrayList)
+  {
+    this.pcdnUrlList = paramArrayList;
+  }
+  
+  public void setPcdnVtList(ArrayList<Integer> paramArrayList)
+  {
+    this.pcdnVtList = paramArrayList;
   }
   
   public void setPlayDefinition(String paramString)
@@ -377,6 +455,11 @@ public class TPDownloadParamData
     this.preloadSize = paramLong;
   }
   
+  public void setRandoms(String paramString)
+  {
+    this.randoms = paramString;
+  }
+  
   public void setSavePath(String paramString)
   {
     this.savePath = paramString;
@@ -390,6 +473,11 @@ public class TPDownloadParamData
   public void setStarTimeMS(int paramInt)
   {
     this.starTimeMS = paramInt;
+  }
+  
+  public void setTaskType(int paramInt)
+  {
+    this.taskType = paramInt;
   }
   
   public void setTestid(int paramInt)
@@ -434,7 +522,7 @@ public class TPDownloadParamData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.api.proxy.TPDownloadParamData
  * JD-Core Version:    0.7.0.1
  */

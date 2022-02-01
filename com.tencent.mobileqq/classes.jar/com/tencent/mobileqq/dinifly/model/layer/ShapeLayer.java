@@ -3,7 +3,7 @@ package com.tencent.mobileqq.dinifly.model.layer;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.content.ContentGroup;
 import com.tencent.mobileqq.dinifly.model.KeyPath;

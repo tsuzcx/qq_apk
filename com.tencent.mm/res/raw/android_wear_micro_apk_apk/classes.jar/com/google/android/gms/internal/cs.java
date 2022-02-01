@@ -5,15 +5,15 @@ import com.google.android.gms.common.api.e;
 public final class cs
   implements e
 {
-  public static final cs Qz = new cs();
-  private final boolean GK = false;
-  private final boolean GM = false;
-  private final String GN = null;
-  private final String GO = null;
-  private final boolean QA = false;
-  private final boolean QB = false;
-  private final Long QC = null;
-  private final Long QD = null;
+  public static final cs So = new cs();
+  private final boolean IB = false;
+  private final String IC = null;
+  private final String ID = null;
+  private final boolean Iz = false;
+  private final boolean Sp = false;
+  private final boolean Sq = false;
+  private final Long Sr = null;
+  private final Long Ss = null;
   
   static
   {
@@ -22,44 +22,44 @@ public final class cs
   
   private cs(boolean paramBoolean1, boolean paramBoolean2, String paramString1, boolean paramBoolean3, String paramString2, boolean paramBoolean4, Long paramLong1, Long paramLong2) {}
   
-  public final boolean fY()
+  public final boolean gj()
   {
-    return this.GK;
+    return this.Iz;
   }
   
-  public final boolean ga()
+  public final boolean gl()
   {
-    return this.GM;
+    return this.IB;
   }
   
-  public final String gb()
+  public final String gm()
   {
-    return this.GN;
+    return this.IC;
   }
   
-  public final String gd()
+  public final String gn()
   {
-    return this.GO;
+    return this.ID;
   }
   
-  public final boolean jF()
+  public final boolean jO()
   {
-    return this.QA;
+    return this.Sp;
   }
   
-  public final boolean jG()
+  public final boolean jP()
   {
-    return this.QB;
+    return this.Sq;
   }
   
-  public final Long jH()
+  public final Long jQ()
   {
-    return this.QC;
+    return this.Sr;
   }
   
-  public final Long jI()
+  public final Long jR()
   {
-    return this.QD;
+    return this.Ss;
   }
 }
 

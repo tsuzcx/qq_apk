@@ -1,200 +1,216 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import a.f.a.a;
-import a.f.b.j;
-import a.l;
-import android.content.Context;
 import android.view.MotionEvent;
-import android.view.ViewConfiguration;
+import android.view.VelocityTracker;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mm.plugin.story.g.h;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollHelper;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "downX", "", "downY", "isLongPressed", "", "isTouchEnd", "isTouchMoved", "longClickEnable", "getLongClickEnable", "()Z", "setLongClickEnable", "(Z)V", "longPressRunnable", "Ljava/lang/Runnable;", "longPressedTimeout", "", "onClick", "Lkotlin/Function0;", "", "getOnClick", "()Lkotlin/jvm/functions/Function0;", "setOnClick", "(Lkotlin/jvm/functions/Function0;)V", "onLongClick", "getOnLongClick", "setOnLongClick", "scrollConsumers", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollConsumer;", "Lkotlin/collections/HashSet;", "scrollType", "touchSlop", "addScrollConsumer", "consumer", "cancelLongPress", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "getScrollType", "onNestedPreFling", "velocityX", "velocityY", "onNestedPreScroll", "scrollX", "scrollY", "consumed", "", "onStopNestedScroll", "removeScrollConsumer", "trackTouchEvent", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GallerySwipeBackConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "galleryView", "Landroid/view/View;", "galleryScaleListener", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "(Landroid/view/View;Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;)V", "consumed", "", "currScrollType", "", "downX", "", "downY", "getGalleryScaleListener", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "getGalleryView", "()Landroid/view/View;", "maxDownX", "moveExitY", "totalMovedX", "totalMovedY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "touchRelease", "touchTranslate", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
+  extends com.tencent.mm.ui.o.a
 {
-  private static String TAG;
-  public static final f.a sSp;
-  private float bTE;
-  private float bTF;
-  private final int nwj;
-  final Runnable oOd;
-  private final int sSh;
-  private boolean sSi;
-  private boolean sSj;
-  private boolean sSk;
-  public int sSl;
-  a<Boolean> sSm;
-  boolean sSn;
-  private final HashSet<e> sSo;
+  public static final f.a SAP;
+  private static final String TAG;
+  private final View SAQ;
+  private final StoryGalleryView.b SAR;
+  private int SAS;
+  private final int SAT;
+  private float SAU;
+  private float SAV;
+  private boolean SAW;
+  private int SAx;
+  private VelocityTracker doL;
+  private float fif;
+  private float fig;
   
   static
   {
-    AppMethodBeat.i(110737);
-    sSp = new f.a((byte)0);
-    TAG = "MicroMsg.GalleryScrollHelper";
-    AppMethodBeat.o(110737);
+    AppMethodBeat.i(120378);
+    SAP = new f.a((byte)0);
+    TAG = "MicroMsg.GallerySwipeBackConsumer";
+    AppMethodBeat.o(120378);
   }
   
-  public f(Context paramContext)
+  public f(View paramView, StoryGalleryView.b paramb)
   {
-    AppMethodBeat.i(110736);
-    this.sSn = true;
-    this.oOd = ((Runnable)new f.b(this));
-    this.sSo = new HashSet();
-    paramContext = ViewConfiguration.get(paramContext);
-    this.sSh = (ViewConfiguration.getLongPressTimeout() + 100);
-    j.p(paramContext, "config");
-    this.nwj = paramContext.getScaledTouchSlop();
-    AppMethodBeat.o(110736);
+    AppMethodBeat.i(120377);
+    this.SAQ = paramView;
+    this.SAR = paramb;
+    this.SAS = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 32);
+    this.SAT = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 96);
+    AppMethodBeat.o(120377);
   }
   
-  public final void N(MotionEvent paramMotionEvent)
+  private final void Jg()
+  {
+    AppMethodBeat.i(120376);
+    VelocityTracker localVelocityTracker = this.doL;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.clear();
+    }
+    localVelocityTracker = this.doL;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.recycle();
+    }
+    this.doL = null;
+    AppMethodBeat.o(120376);
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent, boolean paramBoolean, int paramInt)
   {
     int i = 1;
-    boolean bool = false;
-    AppMethodBeat.i(110734);
-    j.q(paramMotionEvent, "event");
+    boolean bool = true;
+    AppMethodBeat.i(120375);
+    s.u(paramMotionEvent, "event");
+    if (this.doL == null) {
+      this.doL = VelocityTracker.obtain();
+    }
+    VelocityTracker localVelocityTracker = this.doL;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.addMovement(paramMotionEvent);
+    }
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(110734);
-      return;
-      this.bTE = paramMotionEvent.getX();
-      this.bTF = paramMotionEvent.getY();
-      this.sSi = false;
-      this.sSj = false;
-      this.sSk = false;
-      this.sSl = 0;
-      al.p(this.oOd, this.sSh);
-      ab.d(TAG, "downX:" + this.bTE + "  downY:" + this.bTF);
-      AppMethodBeat.o(110734);
-      return;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      float f3 = f1 - this.bTE;
-      float f4 = f2 - this.bTF;
-      if (!this.sSj)
+      paramBoolean = this.SAW;
+      AppMethodBeat.o(120375);
+      return paramBoolean;
+      this.fif = paramMotionEvent.getRawX();
+      this.fig = paramMotionEvent.getRawY();
+      continue;
+      if (paramBoolean)
       {
-        if ((Math.abs(f1 - this.bTE) > this.nwj) || (Math.abs(f2 - this.bTF) > this.nwj)) {
-          bool = true;
-        }
-        this.sSj = bool;
-      }
-      if (this.sSj)
-      {
-        al.ae(this.oOd);
-        if (this.sSl == 0)
+        this.SAx = paramInt;
+        if (paramInt == 8)
         {
-          if (Math.abs(f4) <= Math.abs(f3)) {
-            break label332;
-          }
-          if (f4 >= 0.0F) {
-            break label326;
-          }
+          paramBoolean = bool;
+          if (this.fif < this.SAS) {}
         }
-      }
-      for (;;)
-      {
-        this.sSl = i;
-        ab.d(TAG, "scrollType " + this.sSl + " move: " + f3 + ", " + f4);
-        AppMethodBeat.o(110734);
-        return;
-        label326:
-        i = 2;
-        continue;
-        label332:
-        if (f3 < 0.0F) {
-          i = 4;
-        } else {
-          i = 8;
-        }
-      }
-      al.ae(this.oOd);
-      this.sSl = 0;
-      this.sSk = true;
-    }
-  }
-  
-  public final void a(e parame)
-  {
-    AppMethodBeat.i(110733);
-    j.q(parame, "consumer");
-    this.sSo.add(parame);
-    AppMethodBeat.o(110733);
-  }
-  
-  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    boolean bool1 = false;
-    AppMethodBeat.i(110735);
-    j.q(paramMotionEvent, "event");
-    ab.d(TAG, "dispatchTouchEvent " + paramMotionEvent.getAction() + ", " + paramMotionEvent.getX() + ' ' + paramMotionEvent.getY());
-    int i = this.sSl;
-    int j;
-    boolean bool2;
-    switch (paramMotionEvent.getActionMasked())
-    {
-    default: 
-      j = 1;
-      if (this.sSi) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if (j != 0)
+        else
         {
-          Iterator localIterator = this.sSo.iterator();
+          if (paramInt != 2) {
+            break label277;
+          }
+          paramBoolean = bool;
+        }
+        label154:
+        this.SAW = paramBoolean;
+        float f1 = paramMotionEvent.getRawX();
+        float f2 = paramMotionEvent.getRawY();
+        this.SAU = (f1 - this.fif);
+        this.SAV = (f2 - this.fig);
+        if (this.SAW)
+        {
+          this.SAQ.animate().cancel();
+          if (this.SAx == 2) {}
+          for (f1 = this.SAV;; f1 = this.SAU * this.SAQ.getHeight() / this.SAQ.getWidth())
+          {
+            f2 = f1;
+            if (f1 < 0.0F) {
+              f2 = 0.0F;
+            }
+            this.SAQ.setTranslationY(f2);
+            f1 = f2 / this.SAQ.getHeight();
+            this.SAR.dv(0.8F - f1);
+            break;
+            label277:
+            paramBoolean = false;
+            break label154;
+          }
+          if (this.SAW)
+          {
+            paramMotionEvent = this.doL;
+            if (paramMotionEvent != null) {
+              paramMotionEvent.computeCurrentVelocity(1000);
+            }
+            paramMotionEvent = this.doL;
+            if (paramMotionEvent != null) {
+              break label439;
+            }
+            f1 = 0.0F;
+            label344:
+            paramMotionEvent = this.doL;
+            if (paramMotionEvent != null) {
+              break label448;
+            }
+            f2 = 0.0F;
+            label356:
+            if (this.SAx != 2) {
+              break label462;
+            }
+            paramInt = i;
+            if (this.SAV <= this.SAT)
+            {
+              if (f2 <= 0.0F) {
+                break label457;
+              }
+              paramInt = i;
+            }
+            label390:
+            if (paramInt == 0) {
+              break label499;
+            }
+            paramMotionEvent = h.SqZ;
+            h.ano(13);
+            this.SAR.bkW();
+          }
           for (;;)
           {
-            bool2 = bool1;
-            if (!localIterator.hasNext()) {
-              break;
+            this.SAx = 0;
+            this.SAU = 0.0F;
+            this.SAV = 0.0F;
+            this.SAW = false;
+            Jg();
+            break;
+            label439:
+            f1 = paramMotionEvent.getXVelocity();
+            break label344;
+            label448:
+            f2 = paramMotionEvent.getYVelocity();
+            break label356;
+            label457:
+            paramInt = 0;
+            break label390;
+            label462:
+            paramInt = i;
+            if (this.SAU > this.SAQ.getWidth() / 2) {
+              break label390;
             }
-            e locale = (e)localIterator.next();
-            bool2 = bool1;
-            if (bool1) {
-              break;
+            paramInt = i;
+            if (f1 > 50.0F) {
+              break label390;
             }
-            if ((this.sSj) && ((locale.cFW() & i) == 0)) {
-              break label273;
-            }
-            bool1 = locale.a(paramMotionEvent, this.sSj, i) | bool1;
+            paramInt = 0;
+            break label390;
+            label499:
+            this.SAQ.animate().translationY(0.0F).start();
           }
+          this.SAx = 0;
+          this.SAQ.setTranslationY(0.0F);
+          this.SAU = 0.0F;
+          this.SAV = 0.0F;
+          this.SAW = false;
+          Jg();
         }
       }
-      break;
-    case 2: 
-      label206:
-      if (!this.sSk) {}
-      break;
     }
-    for (i = 0;; i = 1)
-    {
-      int k = this.sSl;
-      ab.d(TAG, "scrollType " + this.sSl);
-      j = i;
-      i = k;
-      break;
-      i = 15;
-      j = 1;
-      break;
-      AppMethodBeat.o(110735);
-      return bool2;
-      label273:
-      break label206;
-    }
+  }
+  
+  public final int hAc()
+  {
+    return 10;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.f
  * JD-Core Version:    0.7.0.1
  */

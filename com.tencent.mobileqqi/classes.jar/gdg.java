@@ -1,12 +1,26 @@
+import MyCarrier.Carrier;
+import com.tencent.mobileqq.activity.QQSettingMe.UpdateMyBusinessReceiver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.mybusiness.MyBusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+
 public class gdg
+  extends MyBusinessObserver
 {
-  public int a;
-  public String a;
+  public gdg(MyBusinessManager paramMyBusinessManager) {}
   
-  public gdg()
+  public void a(boolean paramBoolean, Carrier paramCarrier, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MyBusinessManager", 4, "onCarrierQuery refreshTimeSpan = " + paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (this.a.jdField_a_of_type_Int > 86400) {
+      this.a.jdField_a_of_type_Int = 86400;
+    }
+    this.a.a(paramCarrier);
+    QQSettingMe.UpdateMyBusinessReceiver.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
   }
 }
 

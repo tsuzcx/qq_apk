@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/magicface_receive_top_bg" android:background="#ccffffff" android:layout_width="fill_parent" android:layout_height="43.0dip" android:layout_alignParentTop="true" />
+    <Button android:id="@id/magicface_receive_sound" android:background="@drawable/qvip_emoji_sound_new_emo_voice3" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="24.0dip" android:layout_marginLeft="9.0dip" android:layout_marginTop="9.0dip" />
+    <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/magicface_receive_tip" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/qvip_magicface_tip" />
+        <TextView android:textSize="@dimen/textSize18sp" android:textColor="@color/black" android:id="@id/magicface_receive_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_centerHorizontal="true" />
+    </LinearLayout>
+    <Button android:id="@id/magicface_receive_close" android:background="@drawable/qvip_magicface_close" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
+</RelativeLayout>

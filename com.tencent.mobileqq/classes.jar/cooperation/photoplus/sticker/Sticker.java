@@ -1,8 +1,8 @@
 package cooperation.photoplus.sticker;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import cooperation.photoplus.PhotoPlusManager;
 import java.io.File;
@@ -16,7 +16,7 @@ import org.json.JSONTokener;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class Sticker
-  extends awge
+  extends Entity
 {
   public static final String JSON_SUFFIX = ".json";
   public static final String PNG_SUFFIX = ".png";
@@ -24,7 +24,7 @@ public class Sticker
   public static final String THUMB_SUFFIX = "_thumb";
   public static final int TYPE_BASIC = 0;
   public static final int TYPE_NORMAL = 1;
-  @awhs
+  @unique
   public String id;
   public String md5;
   public int priority;
@@ -70,27 +70,47 @@ public class Sticker
   
   public String getImageFileName()
   {
-    return this.id + ".png";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(".png");
+    return localStringBuilder.toString();
   }
   
   public String getJsonFileName()
   {
-    return this.id + ".json";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(".json");
+    return localStringBuilder.toString();
   }
   
   public String getThumbImageFileName()
   {
-    return this.id + "_thumb" + ".png";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.id);
+    localStringBuilder.append("_thumb");
+    localStringBuilder.append(".png");
+    return localStringBuilder.toString();
   }
   
   public String getUnzippedDir()
   {
-    return this.id + File.separator + this.version + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public String getZipFilePath()
   {
-    return this.id + File.separator + this.version + ".zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
   public JSONObject toJsonObject()
@@ -99,12 +119,24 @@ public class Sticker
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("id", this.id);
-      localJSONObject.put("thumbPath", PhotoPlusManager.a + getUnzippedDir() + getThumbImageFileName());
-      localJSONObject.put("path", PhotoPlusManager.a + getUnzippedDir() + getImageFileName());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(PhotoPlusManager.a);
+      localStringBuilder.append(getUnzippedDir());
+      localStringBuilder.append(getThumbImageFileName());
+      localJSONObject.put("thumbPath", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(PhotoPlusManager.a);
+      localStringBuilder.append(getUnzippedDir());
+      localStringBuilder.append(getImageFileName());
+      localJSONObject.put("path", localStringBuilder.toString());
       localJSONObject.put("version", this.version);
       localJSONObject.put("priority", this.priority);
       localJSONObject.put("type", this.type);
-      localJSONObject.put("jsonPath", PhotoPlusManager.a + getUnzippedDir() + getJsonFileName());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(PhotoPlusManager.a);
+      localStringBuilder.append(getUnzippedDir());
+      localStringBuilder.append(getJsonFileName());
+      localJSONObject.put("jsonPath", localStringBuilder.toString());
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -121,7 +153,7 @@ public class Sticker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.photoplus.sticker.Sticker
  * JD-Core Version:    0.7.0.1
  */

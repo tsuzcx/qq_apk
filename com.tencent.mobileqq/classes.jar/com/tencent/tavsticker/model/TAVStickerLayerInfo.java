@@ -6,72 +6,72 @@ import java.util.List;
 
 public class TAVStickerLayerInfo
 {
-  private List<TAVStickerLayerInfo.TAVStickerImageEffect> mImageEffects = new ArrayList();
-  private int mLayerIndex = 0;
-  private TAVStickerLayerType mLayerType = TAVStickerLayerType.Unknown;
-  private List<TAVStickerLayerInfo.TAVStickerTimeEffect> mTimeEffects = new ArrayList();
-  private CMTimeRange mTimeRange = CMTimeRange.CMTimeRangeInvalid;
-  private List<TAVStickerLayerInfo.TAVStickerUserData> mUserDataList = new ArrayList();
+  private List<TAVStickerLayerInfo.TAVStickerImageEffect> imageEffects = new ArrayList();
+  private int layerIndex = 0;
+  private TAVStickerLayerType layerType = TAVStickerLayerType.Unknown;
+  private List<TAVStickerLayerInfo.TAVStickerTimeEffect> timeEffects = new ArrayList();
+  private CMTimeRange timeRange = CMTimeRange.CMTimeRangeInvalid;
+  private List<TAVStickerLayerInfo.TAVStickerUserData> userDataList = new ArrayList();
   
   public TAVStickerLayerInfo(int paramInt, TAVStickerLayerType paramTAVStickerLayerType, CMTimeRange paramCMTimeRange, List<TAVStickerLayerInfo.TAVStickerTimeEffect> paramList, List<TAVStickerLayerInfo.TAVStickerImageEffect> paramList1, List<TAVStickerLayerInfo.TAVStickerUserData> paramList2)
   {
-    this.mLayerIndex = paramInt;
+    this.layerIndex = paramInt;
     if (paramTAVStickerLayerType != null) {
-      this.mLayerType = paramTAVStickerLayerType;
+      this.layerType = paramTAVStickerLayerType;
     }
     if (paramCMTimeRange != null) {
-      this.mTimeRange = paramCMTimeRange;
+      this.timeRange = paramCMTimeRange;
     }
     if (paramList != null)
     {
-      this.mTimeEffects.clear();
-      this.mTimeEffects.addAll(paramList);
+      this.timeEffects.clear();
+      this.timeEffects.addAll(paramList);
     }
     if (paramList1 != null)
     {
-      this.mImageEffects.clear();
-      this.mImageEffects.addAll(paramList1);
+      this.imageEffects.clear();
+      this.imageEffects.addAll(paramList1);
     }
     if (paramList2 != null)
     {
-      this.mUserDataList.clear();
-      this.mUserDataList.addAll(paramList2);
+      this.userDataList.clear();
+      this.userDataList.addAll(paramList2);
     }
   }
   
   public List<TAVStickerLayerInfo.TAVStickerImageEffect> getImageEffects()
   {
-    return this.mImageEffects;
+    return this.imageEffects;
   }
   
   public int getLayerIndex()
   {
-    return this.mLayerIndex;
+    return this.layerIndex;
   }
   
   public TAVStickerLayerType getLayerType()
   {
-    return this.mLayerType;
+    return this.layerType;
   }
   
   public List<TAVStickerLayerInfo.TAVStickerTimeEffect> getTimeEffects()
   {
-    return this.mTimeEffects;
+    return this.timeEffects;
   }
   
   public CMTimeRange getTimeRange()
   {
-    return this.mTimeRange;
+    return this.timeRange;
   }
   
   public List<TAVStickerLayerInfo.TAVStickerUserData> getUserDataList()
   {
-    return this.mUserDataList;
+    return this.userDataList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerLayerInfo
  * JD-Core Version:    0.7.0.1
  */

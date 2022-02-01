@@ -114,7 +114,7 @@ public class RenderScript
   
   public static RenderScript create(Context arg0, int paramInt, RenderScript.ContextType paramContextType)
   {
-    RenderScript localRenderScript = new RenderScript(???);
+    Object localObject = new RenderScript(???);
     if (shouldThunk())
     {
       Log.v("RenderScript_jni", "RS native mode");
@@ -134,35 +134,39 @@ public class RenderScript
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          try
-          {
-            System.loadLibrary("RSSupport");
-            System.loadLibrary("rsjni");
-            sInitialized = true;
-            Log.v("RenderScript_jni", "RS compat mode");
-            localRenderScript.mDev = localRenderScript.nDeviceCreate();
-            localRenderScript.mContext = localRenderScript.nContextCreate(localRenderScript.mDev, 0, paramInt, paramContextType.mID);
-            if (localRenderScript.mContext != 0) {
-              break;
-            }
-            throw new RSDriverException("Failed to create RS context.");
-          }
-          catch (UnsatisfiedLinkError paramContextType)
-          {
-            Log.e("RenderScript_jni", "Error loading RS jni library: " + paramContextType);
-            throw new RSRuntimeException("Error loading RS jni library: " + paramContextType);
-          }
-          localException = localException;
-          Log.e("RenderScript_jni", "No GC methods");
-          sUseGCHooks = false;
-        }
+        label120:
+        break label120;
       }
+      Log.e("RenderScript_jni", "No GC methods");
+      sUseGCHooks = false;
+      try
+      {
+        System.loadLibrary("RSSupport");
+        System.loadLibrary("rsjni");
+        sInitialized = true;
+      }
+      catch (UnsatisfiedLinkError paramContextType)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Error loading RS jni library: ");
+        ((StringBuilder)localObject).append(paramContextType);
+        Log.e("RenderScript_jni", ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Error loading RS jni library: ");
+        ((StringBuilder)localObject).append(paramContextType);
+        throw new RSRuntimeException(((StringBuilder)localObject).toString());
+      }
+      Log.v("RenderScript_jni", "RS compat mode");
+      ((RenderScript)localObject).mDev = ((RenderScript)localObject).nDeviceCreate();
+      ((RenderScript)localObject).mContext = ((RenderScript)localObject).nContextCreate(((RenderScript)localObject).mDev, 0, paramInt, paramContextType.mID);
+      if (((RenderScript)localObject).mContext != 0)
+      {
+        ((RenderScript)localObject).mMessageThread = new RenderScript.MessageThread((RenderScript)localObject);
+        ((RenderScript)localObject).mMessageThread.start();
+        return localObject;
+      }
+      throw new RSDriverException("Failed to create RS context.");
     }
-    localRenderScript.mMessageThread = new RenderScript.MessageThread(localRenderScript);
-    localRenderScript.mMessageThread.start();
-    return localRenderScript;
   }
   
   public static RenderScript create(Context paramContext, RenderScript.ContextType paramContextType)
@@ -180,15 +184,13 @@ public class RenderScript
   static boolean shouldThunk()
   {
     if (thunk == 0) {
-      if ((Build.VERSION.SDK_INT < 18) || (SystemProperties.getInt("debug.rs.forcecompat", 0) != 0)) {
-        break label37;
+      if ((Build.VERSION.SDK_INT >= 18) && (SystemProperties.getInt("debug.rs.forcecompat", 0) == 0)) {
+        thunk = 1;
+      } else {
+        thunk = -1;
       }
     }
-    label37:
-    for (thunk = 1; thunk == 1; thunk = -1) {
-      return true;
-    }
-    return false;
+    return thunk == 1;
   }
   
   public void contextDump()
@@ -201,11 +203,12 @@ public class RenderScript
   {
     validate();
     nContextDeinitToClient(this.mContext);
-    this.mMessageThread.mRun = false;
+    RenderScript.MessageThread localMessageThread = this.mMessageThread;
+    localMessageThread.mRun = false;
     try
     {
-      this.mMessageThread.join();
-      label27:
+      localMessageThread.join();
+      label26:
       nContextDestroy();
       this.mContext = 0;
       nDeviceDestroy(this.mDev);
@@ -214,7 +217,7 @@ public class RenderScript
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label27;
+      break label26;
     }
   }
   
@@ -1009,124 +1012,34 @@ public class RenderScript
     }
   }
   
-  /* Error */
   void nScriptForEach(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 311	android/support/v8/renderscript/RenderScript:validate	()V
-    //   6: aload 5
-    //   8: ifnonnull +19 -> 27
-    //   11: aload_0
-    //   12: aload_0
-    //   13: getfield 230	android/support/v8/renderscript/RenderScript:mContext	I
-    //   16: iload_1
-    //   17: iload_2
-    //   18: iload_3
-    //   19: iload 4
-    //   21: invokevirtual 577	android/support/v8/renderscript/RenderScript:rsnScriptForEach	(IIIII)V
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: return
-    //   27: aload_0
-    //   28: aload_0
-    //   29: getfield 230	android/support/v8/renderscript/RenderScript:mContext	I
-    //   32: iload_1
-    //   33: iload_2
-    //   34: iload_3
-    //   35: iload 4
-    //   37: aload 5
-    //   39: invokevirtual 580	android/support/v8/renderscript/RenderScript:rsnScriptForEach	(IIIII[B)V
-    //   42: goto -18 -> 24
-    //   45: astore 5
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload 5
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	this	RenderScript
-    //   0	52	1	paramInt1	int
-    //   0	52	2	paramInt2	int
-    //   0	52	3	paramInt3	int
-    //   0	52	4	paramInt4	int
-    //   0	52	5	paramArrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   2	6	45	finally
-    //   11	24	45	finally
-    //   27	42	45	finally
+    try
+    {
+      validate();
+      if (paramArrayOfByte == null) {
+        rsnScriptForEach(this.mContext, paramInt1, paramInt2, paramInt3, paramInt4);
+      } else {
+        rsnScriptForEach(this.mContext, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte);
+      }
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   void nScriptForEachClipped(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 311	android/support/v8/renderscript/RenderScript:validate	()V
-    //   6: aload 5
-    //   8: ifnonnull +31 -> 39
-    //   11: aload_0
-    //   12: aload_0
-    //   13: getfield 230	android/support/v8/renderscript/RenderScript:mContext	I
-    //   16: iload_1
-    //   17: iload_2
-    //   18: iload_3
-    //   19: iload 4
-    //   21: iload 6
-    //   23: iload 7
-    //   25: iload 8
-    //   27: iload 9
-    //   29: iload 10
-    //   31: iload 11
-    //   33: invokevirtual 586	android/support/v8/renderscript/RenderScript:rsnScriptForEachClipped	(IIIIIIIIIII)V
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: return
-    //   39: aload_0
-    //   40: aload_0
-    //   41: getfield 230	android/support/v8/renderscript/RenderScript:mContext	I
-    //   44: iload_1
-    //   45: iload_2
-    //   46: iload_3
-    //   47: iload 4
-    //   49: aload 5
-    //   51: iload 6
-    //   53: iload 7
-    //   55: iload 8
-    //   57: iload 9
-    //   59: iload 10
-    //   61: iload 11
-    //   63: invokevirtual 589	android/support/v8/renderscript/RenderScript:rsnScriptForEachClipped	(IIIII[BIIIIII)V
-    //   66: goto -30 -> 36
-    //   69: astore 5
-    //   71: aload_0
-    //   72: monitorexit
-    //   73: aload 5
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	this	RenderScript
-    //   0	76	1	paramInt1	int
-    //   0	76	2	paramInt2	int
-    //   0	76	3	paramInt3	int
-    //   0	76	4	paramInt4	int
-    //   0	76	5	paramArrayOfByte	byte[]
-    //   0	76	6	paramInt5	int
-    //   0	76	7	paramInt6	int
-    //   0	76	8	paramInt7	int
-    //   0	76	9	paramInt8	int
-    //   0	76	10	paramInt9	int
-    //   0	76	11	paramInt10	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	6	69	finally
-    //   11	36	69	finally
-    //   39	66	69	finally
+    try
+    {
+      validate();
+      if (paramArrayOfByte == null) {
+        rsnScriptForEachClipped(this.mContext, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+      } else {
+        rsnScriptForEachClipped(this.mContext, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+      }
+      return;
+    }
+    finally {}
   }
   
   int nScriptGroupCreate(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, int[] paramArrayOfInt5)
@@ -1586,14 +1499,15 @@ public class RenderScript
   
   void validate()
   {
-    if (this.mContext == 0) {
-      throw new RSInvalidStateException("Calling RS with no Context active.");
+    if (this.mContext != 0) {
+      return;
     }
+    throw new RSInvalidStateException("Calling RS with no Context active.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.RenderScript
  * JD-Core Version:    0.7.0.1
  */

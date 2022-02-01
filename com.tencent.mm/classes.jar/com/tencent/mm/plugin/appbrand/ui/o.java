@@ -1,171 +1,197 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.content.MutableContextWrapper;
+import android.content.ServiceConnection;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.app.Application;
+import com.tencent.mm.plugin.appbrand.af.a;
 import com.tencent.mm.ui.af;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
-public enum o
+public final class o
+  extends MutableContextWrapper
 {
-  @Deprecated
-  public static void a(Window paramWindow)
-  {
-    AppMethodBeat.i(87384);
-    af.a(paramWindow);
-    AppMethodBeat.o(87384);
-  }
+  private boolean udS;
+  private ContextThemeWrapper udT;
+  private ab udU;
   
-  @Deprecated
-  public static boolean a(Window paramWindow, boolean paramBoolean)
+  private o(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(87385);
-    paramBoolean = af.a(paramWindow, paramBoolean);
-    AppMethodBeat.o(87385);
-    return paramBoolean;
-  }
-  
-  public static int[] aMu()
-  {
-    AppMethodBeat.i(87383);
-    Display localDisplay = ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay();
-    int i = localDisplay.getWidth();
-    int j = localDisplay.getHeight();
-    AppMethodBeat.o(87383);
-    return new int[] { i, j };
-  }
-  
-  private static int b(Window paramWindow, boolean paramBoolean)
-  {
-    AppMethodBeat.i(87390);
-    int i = paramWindow.getDecorView().getSystemUiVisibility();
-    int j;
-    if (paramBoolean)
-    {
-      j = i | 0x400 | 0x100;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j | 0x200 | 0x2;
-      }
-      j = i | 0x4;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j | 0x1000;
-      }
+    super(paramContext);
+    AppMethodBeat.i(177763);
+    this.udS = false;
+    this.udT = new a(paramContext.getApplicationContext(), paramInt);
+    if (!(paramContext instanceof ContextThemeWrapper)) {
+      super.setBaseContext(this.udT);
     }
     for (;;)
     {
-      ab.i("MicroMsg.AppBrandUIUtil", "hy: setting ui visibility: %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(87390);
-      return i;
-      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
-      }
-      j = i & 0xFFFFFFFB;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j & 0xFFFFEFFF;
-      }
+      this.udS = (paramContext instanceof AppBrandUI);
+      AppMethodBeat.o(177763);
+      return;
+      paramContext.setTheme(paramInt);
     }
   }
   
-  public static boolean b(Window paramWindow)
+  public static o fj(Context paramContext)
   {
-    AppMethodBeat.i(87386);
-    if ((paramWindow == null) || (paramWindow.getDecorView() == null))
-    {
-      AppMethodBeat.o(87386);
-      return false;
-    }
-    if ((Build.VERSION.SDK_INT >= 23) && ((paramWindow.getDecorView().getSystemUiVisibility() & 0x2000) != 0))
-    {
-      AppMethodBeat.o(87386);
-      return true;
-    }
-    AppMethodBeat.o(87386);
-    return false;
+    AppMethodBeat.i(48774);
+    paramContext = new o(paramContext, ac.cLF());
+    AppMethodBeat.o(48774);
+    return paramContext;
   }
   
-  public static void c(Window paramWindow, boolean paramBoolean)
+  public final ab cLq()
   {
-    AppMethodBeat.i(87392);
-    if (paramBoolean)
+    AppMethodBeat.i(322232);
+    if (this.udU == null) {
+      this.udU = new ab(this);
+    }
+    ab localab = this.udU;
+    AppMethodBeat.o(322232);
+    return localab;
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    AppMethodBeat.i(48777);
+    if ("layout_inflater".equals(paramString))
     {
-      i = b(paramWindow, true);
-      paramWindow.getDecorView().setSystemUiVisibility(i);
-      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new o.1(paramWindow));
-      paramWindow.addFlags(1024);
-      AppMethodBeat.o(87392);
+      paramString = this.udT.getSystemService(paramString);
+      AppMethodBeat.o(48777);
+      return paramString;
+    }
+    paramString = super.getSystemService(paramString);
+    AppMethodBeat.o(48777);
+    return paramString;
+  }
+  
+  public final void setBaseContext(final Context paramContext)
+  {
+    AppMethodBeat.i(48776);
+    if (paramContext == getBaseContext())
+    {
+      AppMethodBeat.o(48776);
       return;
     }
-    int i = b(paramWindow, false);
-    paramWindow.getDecorView().setSystemUiVisibility(i);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
-    paramWindow.clearFlags(1024);
-    AppMethodBeat.o(87392);
+    if (this.udS) {
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandRuntimePersistentContextWrapper", "setBaseContext hash:%d, new:%s, old:%s, stack:%s", new Object[] { Integer.valueOf(hashCode()), paramContext, super.getBaseContext(), android.util.Log.getStackTraceString(new Throwable()) });
+    }
+    if ((paramContext instanceof Activity))
+    {
+      super.setBaseContext(paramContext);
+      this.udS = true;
+      ((Application)getApplicationContext()).registerActivityLifecycleCallbacks(new a()
+      {
+        public final void onActivityDestroyed(Activity paramAnonymousActivity)
+        {
+          AppMethodBeat.i(322128);
+          if (paramContext == paramAnonymousActivity)
+          {
+            ((Application)o.this.getApplicationContext()).unregisterActivityLifecycleCallbacks(this);
+            h.ahAA.o(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(322135);
+                if (o.1.this.val$context == o.this.getBaseContext())
+                {
+                  com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandRuntimePersistentContextWrapper", "onActivityPostDestroyed auto release ref to %s", new Object[] { o.1.this.val$context });
+                  o.a(o.this, o.a(o.this));
+                }
+                AppMethodBeat.o(322135);
+              }
+            }, 0L);
+          }
+          AppMethodBeat.o(322128);
+        }
+      });
+    }
+    for (;;)
+    {
+      this.udU = null;
+      AppMethodBeat.o(48776);
+      return;
+      super.setBaseContext(this.udT);
+    }
   }
   
-  public static boolean cy(View paramView)
+  public final void unbindService(ServiceConnection paramServiceConnection)
   {
-    AppMethodBeat.i(87389);
-    if (Build.VERSION.SDK_INT < 24)
+    AppMethodBeat.i(48778);
+    try
     {
-      AppMethodBeat.o(87389);
-      return false;
-    }
-    if (paramView == null)
-    {
-      AppMethodBeat.o(87389);
-      return false;
-    }
-    paramView = a.hr(paramView.getContext());
-    if ((paramView != null) && (paramView.isInMultiWindowMode()))
-    {
-      AppMethodBeat.o(87389);
-      return true;
-    }
-    AppMethodBeat.o(87389);
-    return false;
-  }
-  
-  public static void de(Context paramContext)
-  {
-    AppMethodBeat.i(141711);
-    Activity localActivity = a.hr(paramContext);
-    if ((localActivity != null) && (localActivity.getWindow() != null))
-    {
-      c(localActivity.getWindow(), true);
-      AppMethodBeat.o(141711);
+      super.unbindService(paramServiceConnection);
+      AppMethodBeat.o(48778);
       return;
     }
-    ab.w("MicroMsg.AppBrandUIUtil", "configFullScreen with context(%s), get NULL activity", new Object[] { paramContext });
-    AppMethodBeat.o(141711);
+    catch (IllegalArgumentException paramServiceConnection)
+    {
+      com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
+      AppMethodBeat.o(48778);
+    }
   }
   
-  public static boolean u(Activity paramActivity)
+  public final void unregisterReceiver(BroadcastReceiver paramBroadcastReceiver)
   {
-    AppMethodBeat.i(87387);
-    if ((Build.VERSION.SDK_INT >= 24) && (paramActivity != null) && (paramActivity.isInMultiWindowMode()))
+    AppMethodBeat.i(322264);
+    try
     {
-      AppMethodBeat.o(87387);
-      return true;
+      super.unregisterReceiver(paramBroadcastReceiver);
+      AppMethodBeat.o(322264);
+      return;
     }
-    AppMethodBeat.o(87387);
-    return false;
+    catch (IllegalArgumentException paramBroadcastReceiver)
+    {
+      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrandRuntimePersistentContextWrapper", "unregisterReceiver IllegalArgumentException %s", new Object[] { paramBroadcastReceiver });
+      AppMethodBeat.o(322264);
+    }
+  }
+  
+  static final class a
+    extends ContextThemeWrapper
+  {
+    private volatile LayoutInflater mInflater;
+    
+    public a(Context paramContext, int paramInt)
+    {
+      super(paramInt);
+    }
+    
+    public final Object getSystemService(String paramString)
+    {
+      AppMethodBeat.i(177762);
+      if ("layout_inflater".equals(paramString)) {
+        try
+        {
+          if (this.mInflater == null)
+          {
+            this.mInflater = ((LayoutInflater)getApplicationContext().getSystemService(paramString)).cloneInContext(this);
+            af.c(this.mInflater);
+          }
+          paramString = this.mInflater;
+          return paramString;
+        }
+        finally
+        {
+          AppMethodBeat.o(177762);
+        }
+      }
+      paramString = super.getSystemService(paramString);
+      AppMethodBeat.o(177762);
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.o
  * JD-Core Version:    0.7.0.1
  */

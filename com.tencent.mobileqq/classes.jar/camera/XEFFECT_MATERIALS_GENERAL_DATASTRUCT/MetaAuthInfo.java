@@ -26,17 +26,19 @@ public final class MetaAuthInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 0);
+    String str = this.appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.encyptedStr != null) {
-      paramJceOutputStream.write(this.encyptedStr, 1);
+    str = this.encyptedStr;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaAuthInfo
  * JD-Core Version:    0.7.0.1
  */

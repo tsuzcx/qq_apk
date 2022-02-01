@@ -19,9 +19,7 @@ public class RegTLV
   
   public void setByte(byte paramByte)
   {
-    byte[] arrayOfByte = new byte[1];
-    arrayOfByte[0] = paramByte;
-    setData(arrayOfByte, arrayOfByte.length);
+    setData(new byte[] { paramByte }, 1);
   }
   
   public void setData(byte[] paramArrayOfByte, int paramInt)
@@ -44,21 +42,21 @@ public class RegTLV
   {
     byte[] arrayOfByte = new byte[4];
     util.int32_to_buf(arrayOfByte, 0, paramInt);
-    setData(arrayOfByte, arrayOfByte.length);
+    setData(arrayOfByte, 4);
   }
   
   public void setLong(long paramLong)
   {
     byte[] arrayOfByte = new byte[8];
     util.int64_to_buf(arrayOfByte, 0, paramLong);
-    setData(arrayOfByte, arrayOfByte.length);
+    setData(arrayOfByte, 8);
   }
   
   public void setShort(int paramInt)
   {
     byte[] arrayOfByte = new byte[2];
     util.int16_to_buf(arrayOfByte, 0, paramInt);
-    setData(arrayOfByte, arrayOfByte.length);
+    setData(arrayOfByte, 2);
   }
 }
 

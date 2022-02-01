@@ -1,0 +1,16 @@
+package kotlin.reflect.jvm.internal.impl.load.java.structure;
+
+import org.jetbrains.annotations.NotNull;
+
+public abstract interface JavaMember
+  extends JavaAnnotationOwner, JavaModifierListOwner, JavaNamedElement
+{
+  @NotNull
+  public abstract JavaClass getContainingClass();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
+ * Qualified Name:     kotlin.reflect.jvm.internal.impl.load.java.structure.JavaMember
+ * JD-Core Version:    0.7.0.1
+ */

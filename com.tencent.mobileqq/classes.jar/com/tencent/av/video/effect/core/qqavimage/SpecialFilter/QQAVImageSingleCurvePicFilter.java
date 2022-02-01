@@ -14,8 +14,10 @@ public class QQAVImageSingleCurvePicFilter
   
   public void setBitmap(int paramInt, Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {}
-    while (paramBitmap == null) {
+    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {
+      return;
+    }
+    if (paramBitmap == null) {
       return;
     }
     this.mFilterSourceTexture2 = OpenGlUtils.loadTexture(paramBitmap, this.mFilterSourceTexture2, false);
@@ -23,7 +25,7 @@ public class QQAVImageSingleCurvePicFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.SpecialFilter.QQAVImageSingleCurvePicFilter
  * JD-Core Version:    0.7.0.1
  */

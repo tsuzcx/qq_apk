@@ -1,43 +1,52 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.net.LinkProperties;
-import android.net.Network;
-import android.net.NetworkCapabilities;
-import android.os.Handler;
-import com.tencent.mobileqq.msf.core.net.l.a;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class g$a
-  extends l.a
+  implements ThreadFactory
 {
-  g$a(g paramg) {}
+  private static final AtomicInteger a = new AtomicInteger(1);
+  private final ThreadGroup b;
+  private final AtomicInteger c = new AtomicInteger(1);
+  private final String d;
   
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
+  g$a(String paramString)
   {
-    this.a.b = null;
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {
+      localObject = ((SecurityManager)localObject).getThreadGroup();
+    } else {
+      localObject = Thread.currentThread().getThreadGroup();
+    }
+    this.b = ((ThreadGroup)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("-pool-");
+    ((StringBuilder)localObject).append(a.getAndIncrement());
+    ((StringBuilder)localObject).append("-thread-");
+    this.d = ((StringBuilder)localObject).toString();
   }
   
-  public void onAvailable(Network paramNetwork)
+  public Thread newThread(Runnable paramRunnable)
   {
-    g.a(this.a, false);
-    this.a.b = paramNetwork;
-    g.d(this.a).removeMessages(1);
-    paramNetwork = g.d(this.a).obtainMessage(2);
-    g.d(this.a).sendMessageAtFrontOfQueue(paramNetwork);
+    ThreadGroup localThreadGroup = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.c.getAndIncrement());
+    paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
+    }
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
+    }
+    return paramRunnable;
   }
-  
-  public void onCapabilitiesChanged(Network paramNetwork, NetworkCapabilities paramNetworkCapabilities) {}
-  
-  public void onLinkPropertiesChanged(Network paramNetwork, LinkProperties paramLinkProperties) {}
-  
-  public void onLosing(Network paramNetwork, int paramInt) {}
-  
-  public void onLost(Network paramNetwork) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -26,11 +26,13 @@ public class TAVMovieClip
   public TAVClip convertToClip()
   {
     TAVClip localTAVClip = new TAVClip(this.resource.convertToResource());
-    if (this.videoConfiguration != null) {
-      localTAVClip.setVideoConfiguration(this.videoConfiguration.convertToConfiguration());
+    Object localObject = this.videoConfiguration;
+    if (localObject != null) {
+      localTAVClip.setVideoConfiguration(((TAVMovieVideoConfiguration)localObject).convertToConfiguration());
     }
-    if (this.audioConfiguration != null) {
-      localTAVClip.setAudioConfiguration(this.audioConfiguration.convertToConfiguration());
+    localObject = this.audioConfiguration;
+    if (localObject != null) {
+      localTAVClip.setAudioConfiguration(((TAVMovieAudioConfiguration)localObject).convertToConfiguration());
     }
     localTAVClip.setStartTime(this.startTime);
     return localTAVClip;
@@ -68,8 +70,9 @@ public class TAVMovieClip
   
   public void release()
   {
-    if ((this.resource != null) && ((this.resource instanceof TAVMovieImageResource))) {
-      ((TAVMovieImageResource)this.resource).release();
+    TAVMovieResource localTAVMovieResource = this.resource;
+    if ((localTAVMovieResource != null) && ((localTAVMovieResource instanceof TAVMovieImageResource))) {
+      ((TAVMovieImageResource)localTAVMovieResource).release();
     }
   }
   
@@ -100,7 +103,7 @@ public class TAVMovieClip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavmovie.base.TAVMovieClip
  * JD-Core Version:    0.7.0.1
  */

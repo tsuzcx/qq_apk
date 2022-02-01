@@ -23,17 +23,19 @@ public final class b
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bh != 0) {
-      paramJceOutputStream.write(this.bh, 0);
+    int i = this.bh;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.bi != 0) {
-      paramJceOutputStream.write(this.bi, 1);
+    i = this.bi;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Protocol.MConch.b
  * JD-Core Version:    0.7.0.1
  */

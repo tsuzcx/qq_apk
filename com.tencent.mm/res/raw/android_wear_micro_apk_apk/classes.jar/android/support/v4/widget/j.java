@@ -2,11 +2,12 @@ package android.support.v4.widget;
 
 import android.widget.EdgeEffect;
 
-class j
+final class j
+  extends k
 {
-  public void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+  public final void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
   {
-    paramEdgeEffect.onPull(paramFloat1);
+    paramEdgeEffect.onPull(paramFloat1, paramFloat2);
   }
 }
 

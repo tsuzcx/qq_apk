@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/li7" android:layout_width="fill_parent" android:layout_height="256.0dip">
+        <com.tencent.gdtad.views.video.GdtVideoCommonView android:id="@id/koo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:layout_gravity="bottom|center" android:id="@id/ln4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/hn9" />
+        <RelativeLayout android:layout_gravity="bottom" android:id="@id/m6a" android:background="@drawable/hhn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="90.0dip">
+            <com.tencent.image.URLImageView android:id="@id/dgu" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/mbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_toRightOf="@id/dgu" android:layout_centerVertical="true" />
+            <Button android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/l8e" android:background="@drawable/hho" android:clickable="true" android:layout_width="90.0dip" android:layout_height="30.0dip" android:layout_marginRight="@dimen/mw" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView android:id="@id/crt" android:layout_width="fill_parent" android:layout_height="1024.0dip">
+        <View android:id="@id/lxq" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar android:id="@id/l1w" android:background="#fff9f9f9" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_below="@id/lxq">
+            <RelativeLayout android:id="@id/a43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+                <ImageView android:id="@id/a4a" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cno" android:antialias="false" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <TextView android:textSize="15.0sp" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxEms="8" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/fdl" android:background="@drawable/n6" android:paddingLeft="8.0dip" android:paddingTop="5.0dip" android:paddingRight="8.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="在APP中打开" android:maxLines="1" android:drawableLeft="@drawable/cnx" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar>
+        <FrameLayout android:id="@id/ioc" android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_below="@id/l1w" />
+        <FrameLayout android:id="@id/l1y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ioc" />
+    </com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView>
+</LinearLayout>

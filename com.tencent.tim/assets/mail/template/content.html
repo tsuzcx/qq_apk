@@ -1,0 +1,927 @@
+<!main_head!>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" id="viewport"
+			content="initial-scale=1 ,user-scalable=yes, maximum-scale=3.0">
+		<meta http-equiv="Content-Security-Policy"
+			content="default-src 'self' file:; img-src file: http: https: cid: 'self' data:; style-src * 'unsafe-inline';font-src *; script-src 'self' file:;">
+        <meta http-equiv="X-WebKit-CSP"
+            content="default-src 'self' file:; img-src file: http: https: cid: 'self' data:; style-src * 'unsafe-inline';font-src *; script-src 'self' file:;">
+		<meta name="format-detection" content="telephone=no">
+		<style>
+			/*通用样式*/
+			html,body {
+				margin: 0;
+				word-break: break-word;
+				font-size: 18px;
+				background-color: white;
+			}
+			h1,h2,h3,h4 {
+				/*最大字体的时候也不会大于22px，这里就不支持了*/
+				font-size: 22px;
+				font-weight: normal;
+				margin: 0;
+				padding: 0;
+			}
+			blockquote {
+				-webkit-margin-before: 0 !important;
+				-webkit-margin-after: 0 !important;
+				-webkit-margin-start: 0 !important;
+				-webkit-margin-end: 0 !important;
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+			}
+			a {
+				color: #138cdf;
+				text-decoration: underline;
+			}
+			ul {
+				padding-right: 0 !important;
+				width: auto !important;
+			}
+			/*禁用iframe*/
+			iframe {
+				display:none;
+			}
+			/*给4.4用的顶层填充区域*/
+			#qqmailTitleBarFillDiv {
+				width: 30px;
+				height: 0px;
+				color: #0ff;
+				background: #fff;
+			}
+			/*这里也是有点噁心*/
+			/*表格缩放*/
+			/*.mailcontent >*/ .qmTableArea {
+				/*用auto，不用hidden，为了避免js错误或者处理慢的时候，被截的内容也无法看*/
+				overflow: auto;
+			}
+			.qmFixedTableArea > table {
+				margin-left: 0 !important;
+				margin-right: 0 !important; 
+				/*这里不加100%，因为加了会导致写入的width=xxx失效*/
+			}
+			.qmFixedTableWidthForAll table {
+				width: auto !important; /*由js来决定哪个width height需要定义*/
+			}
+			/*假如图片外面的另外td100%，所在td没有width就有问题，例如facebook。用这个补救？*/
+			.qmFixedTableWidthForAll/*.qmTableArea*/ td {
+				width: auto !important;
+			}
+			/*表格内的图片max-width:100%会导致众多广告邮件混乱，用!important确保覆盖下面的.mailcontent_scale img*/
+			/*.qmTableArea 其实不需要这个，要了在保存逻辑那里反而有问题*/ table img {
+				max-width: none !important; 
+			}
+			/*用单表格限制宽带的使用，让图片宽带限制。而且这个css需要在.qmTableArea table img 下面，确保覆盖*/
+			/*
+			还是不能这样，导致只有图片的td由于line-height原因会出现白色分割条，例如foxmail的那封体验邮件
+			.qmFixedTableWidthForAll table img {
+				max-width: 100%!important;
+			}
+			*/
+			/*表格不允许再有marginLeft与marginRight了*/
+			.qmTableArea .qmTableArea {
+				overflow: visible;
+			}
+			/*强制表格不处理（给加了qmTableArea的使用）*/
+			.qmNoTableScale .qmTableArea {
+				overflow: visible;
+			}
+			/*.qmNoTableScale table img {
+				max-width: 100%!important; 
+			}*/
+			/*正文样式*/
+			.mailcontent {
+				margin: 16px 16px 5px !important;
+				line-height: 1.5;
+				font-size:16px;
+			}
+			.mailcontent:after {
+				content: " ";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			.mailcontent img {
+				vertical-align: middle; /*border:5px solid red;*/
+				line-height: 1;
+			}
+			/* 如果元素有背景之类的样式，这样强制把左右padding干掉效果奇差，需要解决什么问题麻烦找cszheng看看有没有其他解决方法，不要直接这样写死。
+						.mailcontent > div, .mailcontent > p {vwidth:auto!important;height:auto!important;  margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;}
+						*/
+			/*这里比较危险，会导致div，p 原来的width height 无效，第一层的div与p的margin-left, margin-right，padding-left, padding-right不要*
+			.mailcontent_beforescale {
+				visibility: hidden;
+			}
+			/*图片样式 为了图片不撑大影响缩放*/
+			.mailcontent_beforescale img {
+				max-width: 40px;
+				max-height: 40px;
+			}
+			/*表格内图片需要特殊处理，在上面*/
+			.mailcontent_scale img {
+				max-width: 100%;
+			}
+			.qqmail_nobgimg * {
+				background-image: none;
+			}
+			.qqmail_img_spacer {
+
+			}
+			table .qqmail_img_spacer { /*表格下不显示*/
+				border: none;
+			}
+			/* 签名小字一下 */
+			.mail-footer {
+				color: #444;
+				font-size: 16px;
+			}
+			/* 下载剩余内容的操作块 */
+			.qqmail_loadall {
+				border-top: 1px solid #ebebeb;
+				background: #fbfbfb;
+				background-image:-webkit-gradient(
+						linear,
+						left top,
+						left bottom,
+						color-stop(0, #fbfbfb),
+						color-stop(1, #ffffff));
+				padding: 24px 0 !important;
+				margin-top: 20px !important;
+				text-align: center;
+				clear: both;
+			}
+			.qqmail_loadall a:link,.qqmail_loadall a:visited, .qqmail_loadall a:active, .qqmail_loadall span {
+				display: inline-block;
+				line-height: 34px !important;
+				font-size: 16px;
+				text-decoration: none;
+				color: #515151;
+				padding: 0 30px !important;
+				margin: 0 auto;
+				border-radius: 4px;
+				background: #ebebeb;
+				border: 1px solid #cdcdcd;
+			}
+			.qqmail_loadall span {
+				background: #fefefe;
+			}
+			/* 从手机端上传的图片上下加margin */
+			.ios-upload-image,.android-upload-image {
+				margin: 4px 0 !important;
+			}
+			/*记事本录音样式 */
+			.qqmail_audio_init,.qqmail_audio_playing,.qqmail_audio_loading {
+				border-radius: 8px;
+				margin: 14px 1px 4px !important;
+				border: 1px solid #cacaca;
+				padding: 11px 10px 12px 0px !important;
+				overflow: hidden;
+				_zoom: 1;
+				position: relative;
+				height: 32px;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-user-select: none;
+			}
+			.qqmail_audio_icon {
+				display: block;
+				width: 32px;
+				height: 32px;
+				float: left;
+				background-size: 32px 32px;
+				margin-left: 14px;
+				background-image: url(file:///android_asset/icon_recorder_end_2x.png);
+			}
+			.qqmail_audio_title {
+				display: block;
+				margin: 0 0 0px 54px !important;
+				font-size: 15px;
+				height: 17px;
+				line-height: 18px !important;
+				font-weight: bold;
+				color: #000000;
+				overflow: hidden;
+				text-overflow: ellipsize;
+			}
+			.qqmail_audio_size {
+				display: block;
+				margin-left: 54px !important;
+				font-size: 13px;
+				height: 15px;
+				line-height: 16px !important;
+				color: #b8b8b8;
+				overflow: hidden;
+				text-overflow: ellipsize;
+			}
+			.qqmail_audio_playing .qqmail_audio_icon {
+				background-image:
+					url(file:///android_asset/icon_recorder_playing_2x.png);
+			}
+			.qqmail_audio_loading .qqmail_audio_icon {
+				background-image: url(file:///android_asset/icon_recorder_loading.gif);
+			}
+			.qqmail_audio_playing .qqmail_audio_title,.qqmail_audio_loading .qqmail_audio_title,.qqmail_audio_title:active,.qqmail_audio_init:active .qqmail_audio_title
+				{
+				color: #b8b8b8;
+			}
+			.qqmail_audio_playing .qqmail_audio_size,.qqmail_audio_loading .qqmail_audio_size
+				{
+				color: #b8b8b8;
+			}
+			.qqmail_audio_init {
+				background-color: #f6f6f6;
+			}
+			.qqmail_audio_playing,.qqmail_audio_loading,.qqmail_audio_init:active {
+				background-color: #ffffff;
+			}
+			/*.qqmail_audio_init + br, .qqmail_audio_playing + br, .qqmail_audio_loading + br {display:none;}*/
+			/*垃圾邮件*/
+			.qqmail_no_garbage {
+				display: none;
+			}
+			.qqmail_normail_grabage {
+				background: yellow;
+			}
+			.qqmail_servious_grabage {
+				background: red;
+			}
+		</style>
+		<script src="file:///android_asset/mail/js/lib.js"></script>
+		<script src="file:///android_asset/mail/js/readmail.js"></script>
+	</head>
+	<body>
+		<div class="mailcontent mailcontent_beforescale qqmail_nobgimg" id="mailcontent">
+<!/main_head!>
+<!main_tail!><!-- -->
+		</div>
+	</body>
+</html>
+<!/main_tail!>
+
+<!compose_original_head!>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" id="viewport"
+			content="initial-scale=1 ,user-scalable=yes, maximum-scale=3.0">
+		<meta http-equiv="Content-Security-Policy"
+			content="default-src 'self' file:; img-src *; style-src * 'unsafe-inline';font-src *; script-src 'self' file:;">
+		<meta http-equiv="X-WebKit-CSP"
+            content="default-src 'self' file:; img-src *; style-src * 'unsafe-inline';font-src *; script-src 'self' file:;">
+		<meta name="format-detection" content="telephone=no">
+		<style>
+		.qqmail_mask {
+			position: absolute;
+			left: 0;
+			top: 0;
+			background: #fff;
+			opacity: 0.5;
+			bottom: 0;
+			right: 0;
+		}
+
+		blockquote {
+			-webkit-margin-before: 0 !important;
+			-webkit-margin-after: 0 !important;
+			-webkit-margin-start: 0 !important;
+			-webkit-margin-end: 0 !important;
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+		</style>
+		<script src="file:///android_asset/mail/js/lib.js"></script>
+		<script src="file:///android_asset/mail/js/compose_original.js"></script>
+	</head>
+	<body>
+<!/compose_original_head!>
+<!compose_original_tail!>
+		<div class="qqmail_mask" style="display: none;"></div>
+	</body>
+</html>
+<!/compose_original_tail!>
+
+<!composeGroupMailItem!>
+<div>
+	<div style="background-color: #F2F2F2;">
+		<b>$floor$&nbsp;$name$&nbsp;($uin$)</b>
+	</div>
+	<div>$time$</div>
+	<div>$content$</div>
+	<br>
+</div>
+<!/composeGroupMailItem!>
+
+<!audio!>
+<div class="qqmail_audio_init" title="$audio_title$" src="$audio_src$" size="$audio_size$">
+	<span class="qqmail_audio_icon"></span>
+	<span class="qqmail_audio_title" ignore>$audio_display_title$</span>
+	<span class="qqmail_audio_size" ignore>$audio_display_size$</span>
+</div>
+<!/audio!>
+
+<!groupMailWrapper!>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.mui_nowrap {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.group_floor {
+	font-size: 16px;
+	line-height: 1.5;
+	margin: 0 0 .8em;
+}
+
+.floor_info {
+	color: #A0A0A0;
+	background: #F2F2F2;
+	padding: .4em .8em;
+	font-size: .9em;
+	-webkit-border-radius: 5px;
+}
+
+.floor_info b {
+	float: right;
+	font-weight: normal;
+}
+
+.floor_info strong {
+	color: #666;
+}
+
+.floor_info strong span {
+	font-weight: normal;
+}
+
+.floor_content {
+	padding: 1em .72em .5em;
+}
+
+.mui_nowrap strong {
+	color: #333;
+	font-weight: bold;
+}
+
+.vote_box {
+	margin: 0 0 .8em;
+}
+
+.vote_box .vote_prompt {
+	font-size: .8em;
+	color: #333;
+	background: #F4F4F4;
+	padding: .7em .8em;
+}
+
+.vote_box .vote_subject {
+	font-size: 1.0em;
+	padding: .8em 0 .3em 0;
+	font-weight: bold;
+	color: #000;
+}
+
+.vote_box ol {
+	padding: 5px 0 0 30px;
+	font-size: .9em;
+	color: #798699;
+	line-height: 1.6;
+}
+
+.vote_box ol,.vote_box ol li {
+	list-style: decimal outside none;
+}
+
+.vote_box .v_opt {
+	position: relative;
+	width: 100%;
+	font-size: 0.9em;
+}
+
+.vote_box .v_opt .vote_item_title {
+	color: #333;
+	max-width: 14em;
+	padding-top: .5em;
+}
+
+.vote_box .v_opt .vote_item_title_result {
+	padding-top: .8em;
+}
+
+.vote_box .v_opt .vote_item_percent {
+    color: #a0a0a0;
+    min-width: 3em;
+    vertical-align: bottom;
+    text-align: right;
+}
+
+.vote_box .v_opt .v_probar {
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
+
+.vote_box .v_opt .vote_name_list {
+    color: #a0a0a0;
+    font-size: 0.8em;
+    vertical-align: top; 
+}
+
+.vote_box .v_opt .item_sep {
+    padding: 0.6em 0em 0em;
+	border-bottom: 1px solid #e1e2e3;
+}
+
+.vote_box .v_opt .item_sep_result {
+    padding-top: 0.8em;
+}
+
+.vote_box .v_opt .item_radio {
+    width: 1.5em; 
+	vertical-align: top;
+	padding-top: 0.8em;
+	padding-right: 0.4em;
+}
+
+.vote_box .v_opt .item_radio .input_radio {
+	position: relative;
+	-webkit-appearance: none;
+	border: 1px solid #a4a5a9;
+	width: 20px;
+	height: 20px;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	border-radius: 50%;
+	outline: none;
+}
+
+.vote_box .v_opt .item_radio .input_radio:checked {
+	border-color: #2b85d0;
+}
+
+.vote_box .v_opt .item_radio .input_radio:checked:after {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #2b85d0;
+	top: 50%;
+	left: 50%;
+	content: " ";
+	margin-left: -5px;
+	margin-top: -5px;
+}
+.vote_box .v_opt .vote_result {
+	display: block;
+    height: 0.35em;
+    overflow: hidden;
+    background: #F2F2F2;
+    -webkit-background-clip: padding-box;
+    -webkit-border-radius: 2px;
+}
+
+.vote_box .v_opt .v_r_color {
+	display: block;
+    height: 100%;
+    width: 0%;
+    background: #2b85d0;
+}
+
+.vote_box .v_opt .voter {
+	color: #a0a0a0;
+}
+
+.vote_box .v_tool {
+	margin: 5px 0;
+	color: #798699;
+}
+
+.vote_box .v_tool .v_btn {
+	font-size: 16px;
+	margin: 0 10px 0 0;
+	padding: 3px 10px;
+	font-size: larger;
+}
+
+.vote_box .v_btn_submit {
+    margin-top:.8em;
+	color: #fff;
+	font-size: 1.0em;
+	height: 2.2em;
+	width: 100%; 
+	border: none; 
+	background: #2b85d0; 
+	-webkit-border-radius: 3px;
+}
+
+.vote_box .v_btn_submit:active {
+    background: #166db6;
+}
+
+.vote_box .v_btn_submit:disabled {
+    background-color: #CCC;
+	color:#ACA899;
+}
+
+</style>
+$content$
+<!/groupMailWrapper!>
+
+<!groupMailItem!>
+<div class="group_floor">
+	<div class="floor_info">
+		<p class="mui_nowrap">
+			<b>$floor$</b> <strong> $name$ <span>($uin$)</span>
+			</strong>
+		</p>
+		<span class="mh_info_time">$time$</span>
+	</div>
+	<div class="floor_content">$content$</div>
+</div>
+<!/groupMailItem!>
+
+<!groupMailOffItem!>
+<div class="group_floor">
+	<div class="floor_content">$content$</div>
+</div>
+<!/groupMailOffItem!>
+
+<!groupMailVote!>
+<div class="vote_box" id="vote_content">
+	<div class="vote_prompt">
+	    $name$发起了一次$type$投票,
+	    <span style="display:$notVotedPrompt$">目前已有 $count$人参与， 点击查看<a href="qqmail://view_group_vote_result">投票结果</a>。</span>
+	    <span style="display:$votedPrompt$">您已经投票。</span>
+	</div>
+	<h3 class="vote_subject">$subject$</h3>
+	<table class="v_opt">$voteOption$
+	</table>
+	<a id="vote_btn" style="display:$notVotedPrompt$" href="qqmail://view_group_vote_btn/" target="_blank"><button class="v_btn_submit" type="button">立即投票</button></a>
+</div>
+<!/groupMailVote!>
+
+<!groupMailVoteOption!>
+<tr name="vote_option">
+    <td class="item_radio">
+        <input type="radio" name="option_radio" id="vote_1" value="$voteId$" class="input_radio" /> 
+    </td>
+	<td colspan="2" class="vote_item_title">$name$</td>
+</tr>
+<tr>
+    <td><ol style="display:none;"></ol></td>
+    <td class="item_sep"></td>
+</tr>
+<!/groupMailVoteOption!>
+
+<!groupMailVoteResultOption!>
+<tr>
+	<td colspan="2" class="vote_item_title vote_item_title_result"><label>$name$</label></td>
+	<td class="vote_item_percent">$percent$%</td>
+</tr>
+<tr>
+    <td colspan="3" class="v_probar">
+        <span class="vote_result"><b class="v_r_color" style="width: $percent$%;"></b></span>
+    </td>
+</tr>
+<tr>
+	<td colspan="3" class="vote_name_list">($count$人投票$voterList$)</td>
+</tr>
+<tr>
+    <td colspan="3" class="item_sep item_sep_result"></td>
+<tr>
+<!/groupMailVoteResultOption!>
+
+<!groupMailVoteResultView!>
+<div class="vote_box" id="vote_content">
+	<h3 class="vote_subject">$subject$</h3>
+	<table class="v_opt">$voteOption$
+	</table>
+</div>
+<!/groupMailVoteResultView!>
+
+<!bigattachItem!>
+<div style="padding: 10px 0; font-size: 12px;">
+	<!--<div title="$name$&#10;&#13;文件大小：$size$&#10;&#13;到期时间：$expire$" class="bigatt_bt">-->
+	<div title="$size$, $expire$ 到期" class="bigatt_bt">
+		<div style="float: left; margin: 2px 8px 0 0;">
+			<a target="_blank" href="$download$"><img border="0" src="$icon$" /></a>
+		</div>
+		<div class="name_big">
+			<span class='qqmailbgattach' expiretime="$expireTime$"
+				downloadlink="$download$"> <a style="color: #000;"
+				target="_blank" href="$download$">$name$</a><span
+				style="color: #A0A0A0;"> ($size$, $expire$ 到期)</span>
+			</span>
+			<div class="down_big">
+				<a target="_blank" href="$download$">进入下载页面</a><span
+					style="display: none;">：$download$</span>
+			</div>
+		</div>
+	</div>
+</div>
+<!/bigattachItem!>
+
+<!bigattachItemWrapper!>
+<div id="QQMailBigAttach"
+	style="padding: 2px; margin-bottom: 15px; background-color: #E0ECF9; width: auto; font-size: 14px;">
+	<hr style="display: none;" />
+	<div style="text-align: left; padding: 6px 0pt 10px 6px;">
+		<b style="font-size: 14px;"> <img border="0" align="absmiddle"
+			style="margin-right: 4px;"
+			src="http://res.mail.qq.com/zh_CN/htmledition/images/icon_att.gif" />
+			从QQ邮箱发来的超大附件
+		</b>
+	</div>
+	<div style="padding: 0pt 8px 6px 12px; background: #fff;">
+		<div style="clear: both;">$content$</div>
+	</div>
+</div>
+<!/bigattachItemWrapper!>
+
+<!editAttachItem!>
+<div style="padding:10px 0;font-size:12px;">
+	<div title="$filename.DATA$ 文件大小：$filesize.DATA$" class="editatt_bt">
+		<div style="float:left;margin:2px 8px 0 0;">
+			<a target="_blank" href="https://mail.qq.com/cgi-bin/docedit_read?func=3rdread&key=$key.DATA$">
+				<img src="http://res.mail.qq.com/zh_CN/htmledition/images/fj/fu_$icon.DATA$.gif" border="0">
+			</a>
+		</div>
+		<div class="name_edit">
+			<span class='qqmaileditattach' qqmail_editattach_dockey="$key.DATA$" qqmail_editattach_name="$encodename.DATA$" qqmail_editattach_size="$bytelen.DATA$">
+				<a style="color:#000;" target="_blank" href="https://mail.qq.com/cgi-bin/docedit_read?func=3rdread&key=$key.DATA$">$filename.DATA$</a>
+				<span style="color:#A0A0A0;">($filesize.DATA$)</span>
+			</span>
+			<div class="detail_edit">
+				<a target="_blank" href="https://mail.qq.com/cgi-bin/docedit_read?func=3rdread&key=$key.DATA$" style="color: #054977">进入查看页面</a>
+				<span style="display:none;">https://mail.qq.com/cgi-bin/docedit_read?func=3rdread&key=$key.DATA$</span>
+			</div>
+		</div>
+	</div>
+</div>
+<!/editAttachItem!>
+
+<!editAttachItemWrapper!>
+<div id="QQMailEditAttach" style="padding: 2px; margin-bottom: 15px;background-color:#E0ECF9;width:auto;font-family:Verdana,Arial,Tahoma;font-size:14px;">
+	<hr style="display:none;">
+	<div style="text-align:left;padding: 6px 0pt 10px 6px;">
+		<b style="font-size: 14px;">
+			<img style="margin-right:4px;" src="http://res.mail.qq.com/zh_CN/htmledition/images/icon_att.gif" align="absmiddle" border="0">从QQ邮箱发来的编辑文档</b>
+	</div>
+	<div style="padding: 0pt 8px 6px 12px;background:#fff;">
+		<div style="clear:both;">$content$</div>
+	</div>
+</div>
+<!/editAttachItemWrapper!>
+
+<!main_head_system_mail!>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" id="viewport"
+			content="initial-scale=1 ,user-scalable=yes, maximum-scale=3.0">
+		<meta name="format-detection" content="telephone=no">
+		<style>
+			/*通用样式*/
+			html,body {
+				margin: 0;
+				word-break: break-word;
+				font-size: 18px;
+				background-color: white;
+			}
+			h1,h2,h3,h4 {
+				/*最大字体的时候也不会大于22px，这里就不支持了*/
+				font-size: 22px;
+				font-weight: normal;
+				margin: 0;
+				padding: 0;
+			}
+			blockquote {
+				-webkit-margin-before: 0 !important;
+				-webkit-margin-after: 0 !important;
+				-webkit-margin-start: 0 !important;
+				-webkit-margin-end: 0 !important;
+				margin-left: 0 !important;
+				margin-right: 0 !important;
+			}
+			a {
+				color: #138cdf;
+				text-decoration: underline;
+			}
+			ul {
+				padding-right: 0 !important;
+				width: auto !important;
+			}
+			/*给4.4用的顶层填充区域*/
+			#qqmailTitleBarFillDiv {
+				width: 30px;
+				height: 0px;
+				color: #0ff;
+				background: #fff;
+			}
+			/*这里也是有点噁心*/
+			/*表格缩放*/
+			/*.mailcontent >*/ .qmTableArea {
+				/*用auto，不用hidden，为了避免js错误或者处理慢的时候，被截的内容也无法看*/
+				overflow: auto;
+			}
+			.qmFixedTableArea > table {
+				margin-left: 0 !important;
+				margin-right: 0 !important; 
+				/*这里不加100%，因为加了会导致写入的width=xxx失效*/
+			}
+			.qmFixedTableWidthForAll table {
+				width: auto !important; /*由js来决定哪个width height需要定义*/
+			}
+			/*假如图片外面的另外td100%，所在td没有width就有问题，例如facebook。用这个补救？*/
+			.qmFixedTableWidthForAll/*.qmTableArea*/ td {
+				width: auto !important;
+			}
+			/*表格内的图片max-width:100%会导致众多广告邮件混乱，用!important确保覆盖下面的.mailcontent_scale img*/
+			/*.qmTableArea 其实不需要这个，要了在保存逻辑那里反而有问题*/ table img {
+				max-width: none !important; 
+			}
+			/*用单表格限制宽带的使用，让图片宽带限制。而且这个css需要在.qmTableArea table img 下面，确保覆盖*/
+			/*
+			还是不能这样，导致只有图片的td由于line-height原因会出现白色分割条，例如foxmail的那封体验邮件
+			.qmFixedTableWidthForAll table img {
+				max-width: 100%!important;
+			}
+			*/
+			/*表格不允许再有marginLeft与marginRight了*/
+			.qmTableArea .qmTableArea {
+				overflow: visible;
+			}
+			/*强制表格不处理（给加了qmTableArea的使用）*/
+			.qmNoTableScale .qmTableArea {
+				overflow: visible;
+			}
+			/*.qmNoTableScale table img {
+				max-width: 100%!important; 
+			}*/
+			/*正文样式*/
+			.mailcontent {
+				margin: 16px 16px 5px !important;
+				line-height: 1.5;
+			}
+			.mailcontent:after {
+				content: " ";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			.mailcontent img {
+				vertical-align: middle; /*border:5px solid red;*/
+				line-height:1;
+			}
+			/* 如果元素有背景之类的样式，这样强制把左右padding干掉效果奇差，需要解决什么问题麻烦找cszheng看看有没有其他解决方法，不要直接这样写死。
+						.mailcontent > div, .mailcontent > p {vwidth:auto!important;height:auto!important;  margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;}
+						*/
+			/*这里比较危险，会导致div，p 原来的width height 无效，第一层的div与p的margin-left, margin-right，padding-left, padding-right不要*
+			.mailcontent_beforescale {
+				visibility: hidden;
+			}
+			/*图片样式 为了图片不撑大影响缩放*/
+			.mailcontent_beforescale img {
+				max-width: 40px;
+				max-height: 40px;
+			}
+			/*表格内图片需要特殊处理，在上面*/
+			.mailcontent_scale img {
+				max-width: 100%;
+			}
+			.qqmail_nobgimg * {
+				background-image: none;
+			}
+			.qqmail_img_spacer {
+
+			}
+			table .qqmail_img_spacer { /*表格下不显示*/
+				border: none;
+			}
+			/* 签名小字一下 */
+			.mail-footer {
+				color: #444;
+				font-size: 16px;
+			}
+			/* 下载剩余内容的操作块 */
+			.qqmail_loadall {
+				border-top: 1px solid #ebebeb;
+				background: #fbfbfb;
+				background-image:-webkit-gradient(
+						linear,
+						left top,
+						left bottom,
+						color-stop(0, #fbfbfb),
+						color-stop(1, #ffffff));
+				padding: 24px 0 !important;
+				margin-top: 20px !important;
+				text-align: center;
+				clear: both;
+			}
+			.qqmail_loadall a:link,.qqmail_loadall a:visited, .qqmail_loadall a:active, .qqmail_loadall span {
+				display: inline-block;
+				line-height: 34px !important;
+				font-size: 16px;
+				text-decoration: none;
+				color: #515151;
+				padding: 0 30px !important;
+				margin: 0 auto;
+				border-radius: 4px;
+				background: #ebebeb;
+				border: 1px solid #cdcdcd;
+			}
+			.qqmail_loadall span {
+				background: #fefefe;
+			}
+			/* 从手机端上传的图片上下加margin */
+			.ios-upload-image,.android-upload-image {
+				margin: 4px 0 !important;
+			}
+			/*记事本录音样式 */
+			.qqmail_audio_init,.qqmail_audio_playing,.qqmail_audio_loading {
+				border-radius: 8px;
+				margin: 14px 1px 4px !important;
+				border: 1px solid #cacaca;
+				padding: 11px 10px 12px 0px !important;
+				overflow: hidden;
+				_zoom: 1;
+				position: relative;
+				height: 32px;
+				-webkit-tap-highlight-color: transparent;
+				-webkit-user-select: none;
+			}
+			.qqmail_audio_icon {
+				display: block;
+				width: 32px;
+				height: 32px;
+				float: left;
+				background-size: 32px 32px;
+				margin-left: 14px;
+				background-image: url(file:///android_asset/icon_recorder_end_2x.png);
+			}
+			.qqmail_audio_title {
+				display: block;
+				margin: 0 0 0px 54px !important;
+				font-size: 15px;
+				height: 17px;
+				line-height: 18px !important;
+				font-weight: bold;
+				color: #000000;
+				overflow: hidden;
+				text-overflow: ellipsize;
+			}
+			.qqmail_audio_size {
+				display: block;
+				margin-left: 54px !important;
+				font-size: 13px;
+				height: 15px;
+				line-height: 16px !important;
+				color: #b8b8b8;
+				overflow: hidden;
+				text-overflow: ellipsize;
+			}
+			.qqmail_audio_playing .qqmail_audio_icon {
+				background-image:
+					url(file:///android_asset/icon_recorder_playing_2x.png);
+			}
+			.qqmail_audio_loading .qqmail_audio_icon {
+				background-image: url(file:///android_asset/icon_recorder_loading.gif);
+			}
+			.qqmail_audio_playing .qqmail_audio_title,.qqmail_audio_loading .qqmail_audio_title,.qqmail_audio_title:active,.qqmail_audio_init:active .qqmail_audio_title
+				{
+				color: #b8b8b8;
+			}
+			.qqmail_audio_playing .qqmail_audio_size,.qqmail_audio_loading .qqmail_audio_size
+				{
+				color: #b8b8b8;
+			}
+			.qqmail_audio_init {
+				background-color: #f6f6f6;
+			}
+			.qqmail_audio_playing,.qqmail_audio_loading,.qqmail_audio_init:active {
+				background-color: #ffffff;
+			}
+			/*.qqmail_audio_init + br, .qqmail_audio_playing + br, .qqmail_audio_loading + br {display:none;}*/
+			/*垃圾邮件*/
+			.qqmail_no_garbage {
+				display: none;
+			}
+			.qqmail_normail_grabage {
+				background: yellow;
+			}
+			.qqmail_servious_grabage {
+				background: red;
+			}
+		</style>
+		<script src="file:///android_asset/mail/js/lib.js"></script>
+		<script src="file:///android_asset/mail/js/readmail.js"></script>
+	</head>
+	<body>
+		<div class="mailcontent mailcontent_beforescale qqmail_nobgimg" id="mailcontent">
+<!/main_head_system_mail!>

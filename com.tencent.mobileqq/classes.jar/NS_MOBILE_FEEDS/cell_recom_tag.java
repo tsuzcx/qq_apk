@@ -8,9 +8,9 @@ public final class cell_recom_tag
   extends JceStruct
 {
   static s_event_tag cache_tagData = new s_event_tag();
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
-  public s_event_tag tagData;
+  public s_event_tag tagData = null;
   
   public cell_recom_tag() {}
   
@@ -30,18 +30,20 @@ public final class cell_recom_tag
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.tagData != null) {
-      paramJceOutputStream.write(this.tagData, 0);
+    Object localObject = this.tagData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.action_type, 1);
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 2);
+    localObject = this.action_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_recom_tag
  * JD-Core Version:    0.7.0.1
  */

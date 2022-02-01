@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ac1" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentBottom="true">
+        <Button android:id="@id/cqm" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/f7b" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/i_" />
+        <Button android:id="@id/bd1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_marginBottom="20.0dip" android:text="@string/cud" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/i0" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/jt2" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
+        <Button android:id="@id/a4c" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="17.0dip" android:scaleType="centerInside" android:text="" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" style="@style/j8" />
+        <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cty" android:layout_centerInParent="true" style="@style/ja" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/fqy" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ac1" android:layout_below="@id/jt2" />
+</RelativeLayout>

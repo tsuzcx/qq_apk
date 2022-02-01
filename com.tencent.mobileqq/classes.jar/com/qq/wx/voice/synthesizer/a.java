@@ -28,15 +28,13 @@ final class a
   
   protected final int a(Context paramContext, String paramString)
   {
-    int i = 0;
     if (InfoSynthesizer.b.b == null) {
-      i = -1;
+      return -1;
     }
-    do
-    {
-      return i;
-      InfoSynthesizer.b.a = this;
-    } while (this.b);
+    InfoSynthesizer.b.a = this;
+    if (this.b) {
+      return 0;
+    }
     InfoSynthesizer.a = paramString;
     InfoSynthesizer.c.init(paramContext);
     InfoSynthesizer.d.init(paramContext);
@@ -61,28 +59,27 @@ final class a
       return -1;
     }
     InfoSynthesizer.b.a();
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      InfoSynthesizer.b.a(-402);
-      return -1;
-    }
-    try
-    {
-      if (paramString.getBytes("gbk").length > InfoSynthesizer.f)
+    if ((paramString != null) && (!paramString.isEmpty())) {
+      try
       {
-        InfoSynthesizer.b.a(-403);
+        if (paramString.getBytes("gbk").length > InfoSynthesizer.f)
+        {
+          InfoSynthesizer.b.a(-403);
+          return -1;
+        }
+        this.a = new InnerHttp(paramString);
+        new Thread(this.a).start();
+        return 0;
+      }
+      catch (UnsupportedEncodingException paramString)
+      {
+        paramString.printStackTrace();
+        InfoSynthesizer.b.a(-404);
         return -1;
       }
     }
-    catch (UnsupportedEncodingException paramString)
-    {
-      paramString.printStackTrace();
-      InfoSynthesizer.b.a(-404);
-      return -1;
-    }
-    this.a = new InnerHttp(paramString);
-    new Thread(this.a).start();
-    return 0;
+    InfoSynthesizer.b.a(-402);
+    return -1;
   }
   
   protected final void a()
@@ -109,7 +106,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.synthesizer.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,53 @@
 package c.t.m.g;
 
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationUtils;
+
 final class eq$a
 {
-  public static final a d = new a();
-  final Object a;
-  public String b;
-  public long c;
-  private final int e;
-  private final byte[] f;
-  private final String g;
-  private int h = 1;
+  double a;
+  double b;
+  long c;
+  int d;
+  private double e;
   
-  private eq$a()
+  static a a(TencentLocation paramTencentLocation)
   {
-    this.e = 0;
-    this.f = null;
-    this.g = null;
-    this.a = null;
+    a locala = new a();
+    locala.a = paramTencentLocation.getLatitude();
+    locala.b = paramTencentLocation.getLongitude();
+    locala.c = paramTencentLocation.getTime();
+    locala.e = paramTencentLocation.getSpeed();
+    boolean bool = TencentLocationUtils.isFromGps(paramTencentLocation);
+    int i = 2;
+    if (bool)
+    {
+      if (paramTencentLocation.getAccuracy() < 100.0F) {
+        i = 3;
+      }
+      locala.d = i;
+      return locala;
+    }
+    if (paramTencentLocation.getAccuracy() >= 500.0F) {
+      i = 1;
+    }
+    locala.d = i;
+    return locala;
   }
   
-  eq$a(int paramInt, byte[] paramArrayOfByte, String paramString, Object paramObject)
+  public final String toString()
   {
-    this.e = paramInt;
-    this.f = paramArrayOfByte;
-    this.g = paramString;
-    this.a = paramObject;
-    if (3 == paramInt) {
-      this.h = 3;
-    }
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.eq.a
  * JD-Core Version:    0.7.0.1
  */

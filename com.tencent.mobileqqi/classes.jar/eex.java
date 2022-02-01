@@ -1,48 +1,14 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
 import com.tencent.mobileqq.activity.contact.newfriend.RecommendListView;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class eex
-  extends FriendListObserver
+  implements Runnable
 {
-  public eex(RecommendListView paramRecommendListView) {}
+  public eex(RecommendListView paramRecommendListView, View paramView) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (!RecommendListView.a(this.a)) {}
-    while (!paramBoolean) {
-      return;
-    }
-    RecommendListView.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (!RecommendListView.a(this.a)) {}
-    while (!paramBoolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_Efb.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!RecommendListView.a(this.a)) {}
-    while (!paramBoolean1) {
-      return;
-    }
-    RecommendListView.a(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (!RecommendListView.a(this.a)) {}
-    while ((!paramBoolean) || (paramString == null)) {
-      return;
-    }
-    Drawable localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString, (byte)3);
-    this.a.jdField_a_of_type_Efb.a(paramString, localDrawable);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

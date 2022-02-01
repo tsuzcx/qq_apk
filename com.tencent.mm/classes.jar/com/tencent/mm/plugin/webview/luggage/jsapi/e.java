@@ -1,61 +1,62 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.n;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.plugin.webview.luggage.c.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class e
-  extends bh<n>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(6284);
-    ab.i("MicroMsg.JsApiCancelDownloadTask", "invokeInMM");
-    paramContext = b.BJ(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(160421);
+    Log.i("MicroMsg.Predownload.WebViewJsApiBatchPreloadMiniProgram", "invokeInOwn");
+    Object localObject = paramb.eiZ.eif;
+    if (localObject == null)
     {
-      parama.c("fail", null);
-      AppMethodBeat.o(6284);
+      AppMethodBeat.o(160421);
       return;
     }
-    long l = paramContext.optLong("download_id");
-    if (l <= 0L)
+    localObject = ((IAppBrandBatchPreloadController)h.ax(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
+    if (!Util.isNullOrNil((String)localObject))
     {
-      ab.e("MicroMsg.JsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
-      parama.c("invalid_downloadid", null);
-      AppMethodBeat.o(6284);
+      if ("ok".equalsIgnoreCase((String)localObject))
+      {
+        paramb.a("", null);
+        AppMethodBeat.o(160421);
+        return;
+      }
+      paramb.a((String)localObject, null);
+      AppMethodBeat.o(160421);
       return;
     }
-    if (f.bjl().iz(l) > 0)
-    {
-      parama.c(null, null);
-      AppMethodBeat.o(6284);
-      return;
-    }
-    parama.c("fail", null);
-    AppMethodBeat.o(6284);
+    paramb.a("error", null);
+    AppMethodBeat.o(160421);
   }
   
-  public final void b(a<n>.a parama) {}
-  
-  public final int bjL()
+  public final int dgI()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "cancelDownloadTask";
+    return "batchPreloadMiniProgram";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.e
  * JD-Core Version:    0.7.0.1
  */

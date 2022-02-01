@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.masssend.ui;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.l;
 import com.tencent.mm.pluginsdk.ui.chat.j;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
@@ -16,35 +17,32 @@ public final class d
     this.context = paramContext;
   }
   
-  public final void B(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(22888);
-    Toast.makeText(this.context, this.context.getString(2131301526), 0).show();
-    AppMethodBeat.o(22888);
-  }
+  public final void cSg() {}
   
-  public final void C(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(22889);
-    Toast.makeText(this.context, this.context.getString(2131301526), 0).show();
-    AppMethodBeat.o(22889);
-  }
+  public final void cSh() {}
   
-  public final boolean bPD()
+  public final boolean cSi()
   {
     return false;
   }
   
-  public final boolean bPE()
+  public final boolean cSj()
   {
     return false;
   }
   
-  public final void bPF() {}
+  public final void o(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(26512);
+    Toast.makeText(this.context, this.context.getString(R.l.gNs), 0).show();
+    AppMethodBeat.o(26512);
+  }
+  
+  public final void y(boolean paramBoolean, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.d
  * JD-Core Version:    0.7.0.1
  */

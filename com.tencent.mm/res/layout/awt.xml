@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/lp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:background="@drawable/ij" android:paddingLeft="@dimen/gc" android:paddingTop="@dimen/gc" style="@style/lo">
-        <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <RelativeLayout android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/gc" android:layout_marginBottom="@dimen/fx">
-                <ImageView android:id="@id/eof" android:background="@null" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="@dimen/g6" android:layout_height="@dimen/g6" android:src="@raw/icons_outlined_at" android:scaleType="fitXY" />
-                <ImageView android:id="@id/eog" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a66" android:layout_alignTop="@id/eof" android:layout_alignRight="@id/eof" />
-            </RelativeLayout>
-            <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/h6" android:layout_gravity="bottom" android:id="@id/eoh" android:background="@drawable/a9f" android:paddingLeft="@dimen/gc" android:paddingRight="@dimen/gc" android:layout_width="0.0dip" android:layout_marginTop="@dimen/gc" android:maxHeight="@dimen/eh" android:minHeight="@dimen/ej" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/r1" style="@style/lb" />
-            <ImageButton android:layout_gravity="bottom" android:id="@id/d5b" android:background="@null" android:layout_width="@dimen/g6" android:layout_height="@dimen/g6" android:layout_marginLeft="@dimen/gc" android:layout_marginBottom="@dimen/fx" android:src="@drawable/jx" android:scaleType="fitXY" android:contentDescription="@string/aka" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/gc" android:paddingRight="@dimen/gc" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <Button android:textSize="@dimen/n5" android:textColor="#1a000000" android:id="@id/eoi" android:background="@drawable/a11" android:layout_width="wrap_content" android:layout_height="@dimen/em" android:layout_marginBottom="12.0dip" android:minWidth="@dimen/eo" android:text="@string/u5" />
-            <Button android:id="@id/eoj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/em" android:layout_marginBottom="12.0dip" android:minWidth="@dimen/eo" android:text="@string/u5" style="@style/ns" />
-        </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/l2x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/gv">
+        <TextView android:textSize="@dimen/g4" android:textColor="@color/w3" android:ellipsize="end" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
+    <TextView android:textSize="@dimen/g4" android:textColor="@color/w3" android:ellipsize="end" android:id="@id/ko8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/gv" android:maxLines="2" />
+    <TextView android:textSize="@dimen/gw" android:textColor="@color/w0" android:ellipsize="end" android:id="@id/c21" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
 </LinearLayout>

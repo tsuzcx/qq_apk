@@ -1,0 +1,28 @@
+package com.tencent.qqmail.bottle.fragment;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmail.bottle.fragment.adapter.BottleListAdapter;
+
+class BottleListFragment$15
+  implements View.OnClickListener
+{
+  BottleListFragment$15(BottleListFragment paramBottleListFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if (BottleListFragment.access$100(this.this$0).getCursor() == null)
+    {
+      BottleListFragment.access$1400(this.this$0);
+      this.this$0.refreshData();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes10.jar
+ * Qualified Name:     com.tencent.qqmail.bottle.fragment.BottleListFragment.15
+ * JD-Core Version:    0.7.0.1
+ */

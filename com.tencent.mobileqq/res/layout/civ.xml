@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/mnz" android:background="@drawable/eev" android:layout_width="168.0dip" android:layout_height="224.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/mny" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/eey" android:layout_alignParentRight="true" />
-    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/mnx" android:layout_width="66.0dip" android:layout_height="66.0dip" android:layout_marginTop="34.0dip" android:layout_centerHorizontal="true" app:authIconHeight="18.0dip" app:authIconWidth="18.0dip" />
-    <TextView android:textSize="15.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/mo2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="18.0dip" android:maxLines="1" android:maxEms="5" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/mnx" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="12.0dip" android:textColor="#ff82848c" android:ellipsize="end" android:gravity="center" android:id="@id/mo0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:maxLines="2" android:includeFontPadding="false" android:layout_below="@id/mo2" android:layout_centerHorizontal="true" />
-    <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="13.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/mo1" android:layout_width="120.0dip" android:layout_height="40.0dip" android:layout_marginTop="10.0dip" android:layout_below="@id/mo0" android:layout_centerHorizontal="true" app:qcircle_follow_res="@drawable/eeu" app:qcircle_follow_text_color="@color/bp" app:qcircle_un_follow_res="@drawable/eet" app:qcircle_un_follow_text_color="@color/al3" />
-</RelativeLayout>
+<LinearLayout android:orientation="horizontal" android:id="@id/o13" android:background="@drawable/dqq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dsa" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/ms">
+        <ImageView android:layout_width="@dimen/mv" android:layout_height="@dimen/mv" android:layout_marginLeft="16.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/9h" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/aqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="添加成员" />
+    </LinearLayout>
+</LinearLayout>

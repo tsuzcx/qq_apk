@@ -12,17 +12,21 @@ class QZoneShareActivity$7
   
   public void run()
   {
-    if ((this.this$0.app != null) && (QZoneShareActivity.a(this.this$0).a > 0L) && (!TextUtils.isEmpty(QZoneShareActivity.a(this.this$0).i)) && (!this.this$0.a(this.this$0.app, QZoneShareActivity.a(this.this$0).a, QZoneShareActivity.a(this.this$0).i))) {
-      return;
+    if ((this.this$0.app != null) && (QZoneShareActivity.access$300(this.this$0).appid > 0L) && (!TextUtils.isEmpty(QZoneShareActivity.access$300(this.this$0).pkgname)))
+    {
+      QZoneShareActivity localQZoneShareActivity = this.this$0;
+      if (!localQZoneShareActivity.checkAppinfoLocked(localQZoneShareActivity.app, QZoneShareActivity.access$300(this.this$0).appid, QZoneShareActivity.access$300(this.this$0).pkgname)) {
+        return;
+      }
     }
-    int i = this.this$0.b();
-    int j = this.this$0.a();
+    int i = this.this$0.getContentWordCount();
+    int j = this.this$0.getMaxWordCnt();
     ThreadManager.getUIHandler().post(new QZoneShareActivity.7.1(this, i, j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.7
  * JD-Core Version:    0.7.0.1
  */

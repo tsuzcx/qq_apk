@@ -2,8 +2,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.ChatBackgroundSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.PredownloadTest;
 
 public class bvb
   implements View.OnClickListener
@@ -12,10 +11,8 @@ public class bvb
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, ChatBackgroundSettingActivity.class);
-    paramView.putExtra("bg_replace_entrance", 8);
+    paramView = new Intent(this.a, PredownloadTest.class);
     this.a.startActivity(paramView);
-    ReportController.b(this.a.b, "CliOper", "", "", "Trends_tab", "Enter_background", 0, 0, "", "", "", "");
   }
 }
 

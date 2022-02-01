@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.comment;
 
-import wuv;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
 
 class StoryInputBarView$5
   implements Runnable
@@ -12,12 +12,12 @@ class StoryInputBarView$5
     if (StoryInputBarView.a(this.this$0) != null) {
       StoryInputBarView.a(this.this$0).e();
     }
-    StoryInputBarView.b(this.this$0);
+    StoryInputBarView.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.StoryInputBarView.5
  * JD-Core Version:    0.7.0.1
  */

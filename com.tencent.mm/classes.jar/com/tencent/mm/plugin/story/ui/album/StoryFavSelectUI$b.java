@@ -1,23 +1,18 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import a.l;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "storyFavInfo", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "position", "", "checked", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class StoryFavSelectUI$b
-  implements MenuItem.OnMenuItemClickListener
+  extends u
+  implements q<StoryFavoritePanel.c, Integer, Boolean, ah>
 {
-  StoryFavSelectUI$b(StoryFavSelectUI paramStoryFavSelectUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  StoryFavSelectUI$b(StoryFavSelectUI paramStoryFavSelectUI)
   {
-    AppMethodBeat.i(110187);
-    StoryFavSelectUI.a(this.sJA);
-    this.sJA.finish();
-    AppMethodBeat.o(110187);
-    return true;
+    super(3);
   }
 }
 

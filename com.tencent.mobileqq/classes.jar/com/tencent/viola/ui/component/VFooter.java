@@ -23,37 +23,45 @@ public class VFooter
   
   public void addEvent(String paramString)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != -226130051)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if (i != 3227604)
       {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("pulling"))
+        if ((i == 1085444827) && (paramString.equals("refresh")))
         {
-          i = 0;
-          continue;
-          if (paramString.equals("idle"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("refresh")) {
-              i = 2;
-            }
-          }
+          i = 2;
+          break label70;
         }
-        break;
+      }
+      else if (paramString.equals("idle"))
+      {
+        i = 1;
+        break label70;
       }
     }
-    this.mAppendEvents.add(paramString);
-    return;
-    this.mAppendEvents.add(paramString);
-    return;
+    else if (paramString.equals("pulling"))
+    {
+      i = 0;
+      break label70;
+    }
+    i = -1;
+    label70:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          super.addEvent(paramString);
+          return;
+        }
+        this.mAppendEvents.add(paramString);
+        return;
+      }
+      this.mAppendEvents.add(paramString);
+      return;
+    }
     this.mAppendEvents.add(paramString);
   }
   
@@ -89,20 +97,14 @@ public class VFooter
     }
   }
   
-  public boolean resetAttr(String paramString)
+  protected boolean resetAttr(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!super.resetAttr(paramString))
+    if ((!super.resetAttr(paramString)) && (paramString.equals("refreshStick")))
     {
-      bool1 = bool2;
-      if (paramString.equals("refreshStick"))
-      {
-        setRefreshStick(false);
-        bool1 = true;
-      }
+      setRefreshStick(false);
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   @VComponentProp(name="refreshStick")
@@ -113,7 +115,7 @@ public class VFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VFooter
  * JD-Core Version:    0.7.0.1
  */

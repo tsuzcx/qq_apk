@@ -26,14 +26,15 @@ public final class intchk$CheckItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50 }, new String[] { "uint32_check_item_id", "uint32_check_type", "bytes_module_name", "uint32_start_offset", "uint32_end_offset", "bytes_match_pattern" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, CheckItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50 }, new String[] { "uint32_check_item_id", "uint32_check_type", "bytes_module_name", "uint32_start_offset", "uint32_end_offset", "bytes_match_pattern" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2 }, CheckItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.intchk.CheckItem
  * JD-Core Version:    0.7.0.1
  */

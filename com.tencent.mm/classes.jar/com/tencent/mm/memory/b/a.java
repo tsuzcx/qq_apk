@@ -8,113 +8,113 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.i;
-import com.tencent.mm.memory.n;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.memory.h;
+import com.tencent.mm.memory.m;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class a
   extends Drawable
-  implements i
+  implements h
 {
   boolean DEBUG;
-  protected final Paint feS;
-  private final ak feT;
-  protected n feU;
-  private Runnable feV;
+  protected final Paint nOA;
+  private final MMHandler nOB;
+  protected m nOC;
+  private Runnable nOD;
   protected String tag;
   
-  public a(String paramString, n paramn)
+  public a(String paramString, m paramm)
   {
-    AppMethodBeat.i(115476);
-    this.feS = new Paint();
+    AppMethodBeat.i(156523);
+    this.nOA = new Paint();
     this.DEBUG = false;
-    this.feV = new a.1(this);
+    this.nOD = new a.1(this);
     this.tag = paramString;
-    this.feU = paramn;
-    this.feS.setAntiAlias(true);
-    this.feS.setFilterBitmap(false);
-    this.feS.setColor(-1118482);
-    this.feT = new ak(Looper.getMainLooper());
-    AppMethodBeat.o(115476);
+    this.nOC = paramm;
+    this.nOA.setAntiAlias(true);
+    this.nOA.setFilterBitmap(false);
+    this.nOA.setColor(-1118482);
+    this.nOB = new MMHandler(Looper.getMainLooper());
+    AppMethodBeat.o(156523);
   }
   
-  public final void XO()
+  public final void bvM()
   {
-    AppMethodBeat.i(115478);
-    if (this.feU != null) {
-      this.feU.XO();
+    AppMethodBeat.i(156525);
+    if (this.nOC != null) {
+      this.nOC.bvM();
     }
-    AppMethodBeat.o(115478);
+    AppMethodBeat.o(156525);
   }
   
-  public final void XP()
+  public final void bvN()
   {
-    AppMethodBeat.i(115479);
-    if (this.feU != null) {
-      this.feU.XP();
+    AppMethodBeat.i(156526);
+    if (this.nOC != null) {
+      this.nOC.bvN();
     }
-    AppMethodBeat.o(115479);
+    AppMethodBeat.o(156526);
   }
   
-  public final n Yi()
+  public final m bwj()
   {
-    if (this.feU != null) {
-      return this.feU;
+    if (this.nOC != null) {
+      return this.nOC;
     }
     return null;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(115477);
+    AppMethodBeat.i(156524);
     Rect localRect = getBounds();
-    n localn = this.feU;
-    if ((localn == null) || (localn.isRecycled()))
+    m localm = this.nOC;
+    if ((localm == null) || (localm.bvS()))
     {
       paramCanvas.drawColor(-1118482);
-      AppMethodBeat.o(115477);
+      AppMethodBeat.o(156524);
       return;
     }
-    Paint localPaint = this.feS;
-    paramCanvas.drawBitmap(localn.bitmap, null, localRect, localPaint);
-    AppMethodBeat.o(115477);
+    Paint localPaint = this.nOA;
+    paramCanvas.drawBitmap(localm.bitmap, null, localRect, localPaint);
+    AppMethodBeat.o(156524);
   }
   
   public int getIntrinsicHeight()
   {
-    AppMethodBeat.i(115481);
-    if (this.feU == null)
+    AppMethodBeat.i(156528);
+    if (this.nOC == null)
     {
-      AppMethodBeat.o(115481);
+      AppMethodBeat.o(156528);
       return 0;
     }
-    n localn = this.feU;
-    if ((localn != null) && (!localn.isRecycled()))
+    m localm = this.nOC;
+    if ((localm != null) && (!localm.bvS()))
     {
-      int i = localn.bitmap.getHeight();
-      AppMethodBeat.o(115481);
+      int i = localm.bitmap.getHeight();
+      AppMethodBeat.o(156528);
       return i;
     }
-    AppMethodBeat.o(115481);
+    AppMethodBeat.o(156528);
     return 0;
   }
   
   public int getIntrinsicWidth()
   {
-    AppMethodBeat.i(115480);
-    if (this.feU == null)
+    AppMethodBeat.i(156527);
+    if (this.nOC == null)
     {
-      AppMethodBeat.o(115480);
+      AppMethodBeat.o(156527);
       return 0;
     }
-    n localn = this.feU;
-    if ((localn != null) && (!localn.isRecycled()))
+    m localm = this.nOC;
+    if ((localm != null) && (!localm.bvS()))
     {
-      int i = localn.bitmap.getWidth();
-      AppMethodBeat.o(115480);
+      int i = localm.bitmap.getWidth();
+      AppMethodBeat.o(156527);
       return i;
     }
-    AppMethodBeat.o(115480);
+    AppMethodBeat.o(156527);
     return 0;
   }
   
@@ -129,25 +129,25 @@ public class a
   
   public String toString()
   {
-    AppMethodBeat.i(115482);
+    AppMethodBeat.i(156529);
     if (this.DEBUG)
     {
       String str2 = super.toString() + " code: " + hashCode();
       str1 = str2;
-      if (this.feU != null) {
-        str1 = str2 + this.feU;
+      if (this.nOC != null) {
+        str1 = str2 + this.nOC;
       }
-      AppMethodBeat.o(115482);
+      AppMethodBeat.o(156529);
       return str1;
     }
     String str1 = super.toString();
-    AppMethodBeat.o(115482);
+    AppMethodBeat.o(156529);
     return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<vector android:tint="?72" android:height="24.0dip" android:width="24.0dip" android:viewportWidth="24.0" android:viewportHeight="24.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape>
-            <corners android:radius="4.5dip" />
-            <solid android:color="#ff3e3f40" />
-        </shape>
-    </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape>
-                <corners android:radius="4.5dip" />
-                <solid android:color="@color/dg" />
-            </shape>
-        </clip>
-    </item>
-</layer-list>
+    <path android:fillColor="@android:color/white" android:pathData="M10,6l-1.4,1.4 4.599999,4.6 -4.599999,4.6 1.4,1.4 6,-6z" />
+</vector>

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aknx;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.model.ApolloActionData;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.qphone.base.util.QLog;
 
 class ApolloLinearLayout$1
   implements Runnable
@@ -12,15 +12,22 @@ class ApolloLinearLayout$1
   
   public void run()
   {
-    if ((this.this$0.a == null) || (this.this$0.a.a == null)) {
-      return;
+    if (ApolloLinearLayout.d(this.this$0) != null)
+    {
+      if (ApolloLinearLayout.d(this.this$0).d == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadApolloRes : ");
+      localStringBuilder.append(this.a.actionId);
+      QLog.e("cm_res", 1, localStringBuilder.toString());
+      this.this$0.b.a(this.a, 4, null);
     }
-    ((aknx)this.this$0.a.a.getManager(153)).a(this.a, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

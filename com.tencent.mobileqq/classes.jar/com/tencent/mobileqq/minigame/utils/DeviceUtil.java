@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.utils;
 
 import android.os.Build.VERSION;
-import bdgk;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class DeviceUtil
@@ -13,15 +13,15 @@ public class DeviceUtil
       if (Build.VERSION.SDK_INT < 18) {
         return 0;
       }
-      int k = bdgk.b();
+      int k = DeviceInfoUtil.h();
       if (k <= 0) {
         return -1;
       }
-      int m = (int)(bdgk.b() / 100000L);
+      int m = (int)(DeviceInfoUtil.l() / 100000L);
       if (m <= 0) {
         return -1;
       }
-      int n = (int)(bdgk.d() / 1048576L);
+      int n = (int)(DeviceInfoUtil.a() / 1048576L);
       if (n <= 0) {
         return -1;
       }
@@ -30,7 +30,16 @@ public class DeviceUtil
       if (j > 50) {
         i = 50;
       }
-      QLog.d("getDeviceBenchmarkLevel", 1, "getDeviceBenchmarkLevel coreNum:" + k + " cpuFreq:" + m + " ramSize:" + n + " score:" + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDeviceBenchmarkLevel coreNum:");
+      localStringBuilder.append(k);
+      localStringBuilder.append(" cpuFreq:");
+      localStringBuilder.append(m);
+      localStringBuilder.append(" ramSize:");
+      localStringBuilder.append(n);
+      localStringBuilder.append(" score:");
+      localStringBuilder.append(i);
+      QLog.d("getDeviceBenchmarkLevel", 1, localStringBuilder.toString());
       return i;
     }
     catch (Throwable localThrowable)
@@ -42,7 +51,7 @@ public class DeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.DeviceUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.open.appstore.notice;
 
 import android.content.Context;
-import bfkr;
-import bflg;
-import bflp;
-import bfms;
-import bfqa;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.open.appstore.dl.DownloadManagerV2;
+import com.tencent.open.appstore.report.AppCenterReporter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.common.IntentFactory;
 
 class NoticeReceiver$1
   implements Runnable
@@ -16,38 +16,55 @@ class NoticeReceiver$1
   
   public void run()
   {
-    DownloadInfo localDownloadInfo = bfkr.a().b(this.jdField_a_of_type_JavaLangString);
-    if (localDownloadInfo == null) {
-      bflp.b("NoticeReceiver", "downloadInfo is null.");
-    }
-    do
+    DownloadInfo localDownloadInfo = DownloadManagerV2.a().b(this.a);
+    if (localDownloadInfo == null)
     {
+      LogUtility.b("NoticeReceiver", "downloadInfo is null.");
       return;
-      if ((bfqa.b + "." + this.b).equals(this.c))
-      {
-        bfkr.a().a(this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if ((bfqa.jdField_a_of_type_JavaLangString + "." + this.b).equals(this.c))
-      {
-        bfkr.a().b(localDownloadInfo);
-        return;
-      }
-      if ((bfqa.c + "." + this.b).equals(this.c))
-      {
-        bfkr.a().b(localDownloadInfo);
-        return;
-      }
-    } while (!(bfqa.d + "." + this.b).equals(this.c));
-    bfms.a(this.jdField_a_of_type_AndroidContentContext, bfkr.a().a(localDownloadInfo.b), localDownloadInfo.m, localDownloadInfo.a("big_brother_ref_source_key"));
-    localDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-    bfkr.a().a(localDownloadInfo, true);
-    bflg.c(localDownloadInfo);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.b);
+    localStringBuilder.append(".");
+    localStringBuilder.append(this.b);
+    if (localStringBuilder.toString().equals(this.c))
+    {
+      DownloadManagerV2.a().e(this.a);
+      return;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.a);
+    localStringBuilder.append(".");
+    localStringBuilder.append(this.b);
+    if (localStringBuilder.toString().equals(this.c))
+    {
+      DownloadManagerV2.a().b(localDownloadInfo);
+      return;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.c);
+    localStringBuilder.append(".");
+    localStringBuilder.append(this.b);
+    if (localStringBuilder.toString().equals(this.c))
+    {
+      DownloadManagerV2.a().b(localDownloadInfo);
+      return;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.d);
+    localStringBuilder.append(".");
+    localStringBuilder.append(this.b);
+    if (localStringBuilder.toString().equals(this.c))
+    {
+      AppUtil.a(this.d, DownloadManagerV2.a().d(localDownloadInfo.b), localDownloadInfo.r, localDownloadInfo.a("big_brother_ref_source_key"), localDownloadInfo.a("hideInstallSuccessPage"));
+      localDownloadInfo.R = BaseApplicationImpl.getApplication().getQQProcessName();
+      DownloadManagerV2.a().b(localDownloadInfo, true);
+      AppCenterReporter.c(localDownloadInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.notice.NoticeReceiver.1
  * JD-Core Version:    0.7.0.1
  */

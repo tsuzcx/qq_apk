@@ -28,46 +28,39 @@ public class TraeAudioCodecList
   {
     this.mLock.lock();
     int i = 0;
-    TraeAudioCodecList.CodecInfo localCodecInfo;
-    if (i < this._sessionInfoList.size())
+    while (i < this._sessionInfoList.size())
     {
       localCodecInfo = (TraeAudioCodecList.CodecInfo)this._sessionInfoList.get(i);
-      if (localCodecInfo.sessionId != paramLong) {}
-    }
-    for (;;)
-    {
-      this.mLock.unlock();
-      return localCodecInfo;
+      if (localCodecInfo.sessionId == paramLong) {
+        break label56;
+      }
       i += 1;
-      break;
-      localCodecInfo = null;
     }
+    TraeAudioCodecList.CodecInfo localCodecInfo = null;
+    label56:
+    this.mLock.unlock();
+    return localCodecInfo;
   }
   
   public void remove(long paramLong)
   {
     this.mLock.lock();
     int i = 0;
-    for (;;)
+    while (i < this._sessionInfoList.size())
     {
-      if (i < this._sessionInfoList.size())
+      if (((TraeAudioCodecList.CodecInfo)this._sessionInfoList.get(i)).sessionId == paramLong)
       {
-        if (((TraeAudioCodecList.CodecInfo)this._sessionInfoList.get(i)).sessionId == paramLong) {
-          this._sessionInfoList.remove(i);
-        }
-      }
-      else
-      {
-        this.mLock.unlock();
-        return;
+        this._sessionInfoList.remove(i);
+        break;
       }
       i += 1;
     }
+    this.mLock.unlock();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.audio.TraeAudioCodecList
  * JD-Core Version:    0.7.0.1
  */

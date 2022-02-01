@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="18.0dip" android:width="18.0dip" android:viewportWidth="36.0" android:viewportHeight="36.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/ey_" />
-    <item android:drawable="@drawable/eyb" />
-</selector>
+    <path android:fillColor="#ffffffff" android:pathData="M-122,-559h856v1852h-856z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    <path android:fillColor="#ffc2c2c2" android:pathData="M18,0C27.941,0 36,8.059 36,18C36,27.941 27.941,36 18,36C8.059,36 0,27.941 0,18C0,8.059 8.059,0 18,0ZM18,3C9.7159,3 3,9.7159 3,18C3,26.2841 9.7159,33 18,33C26.2841,33 33,26.2841 33,18C33,9.7159 26.2841,3 18,3ZM18.5,14C19.0523,14 19.5,14.4477 19.5,15L19.5,27C19.5,27.5523 19.0523,28 18.5,28L17.5,28C16.9477,28 16.5,27.5523 16.5,27L16.5,15C16.5,14.4477 16.9477,14 17.5,14L18.5,14ZM18.05,8C19.2926,8 20.3,9.0074 20.3,10.25C20.3,11.4926 19.2926,12.5 18.05,12.5C16.8074,12.5 15.8,11.4926 15.8,10.25C15.8,9.0074 16.8074,8 18.05,8Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="nonZero" />
+</vector>

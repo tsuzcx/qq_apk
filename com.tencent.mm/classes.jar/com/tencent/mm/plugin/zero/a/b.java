@@ -4,7 +4,7 @@ public abstract interface b
 {
   public abstract void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt);
   
-  public abstract void aVN();
+  public abstract void daw();
 }
 
 

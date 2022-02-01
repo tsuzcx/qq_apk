@@ -13,20 +13,20 @@ public final class s_event_tag
   static s_join_list cache_join_list = new s_join_list();
   public String backgd_picurl = "";
   public String count_desc = "";
-  public Map<String, String> extendInfo;
+  public Map<String, String> extendInfo = null;
   public String id = "";
-  public boolean is_default;
-  public s_join_list join_list;
-  public int pic_height;
+  public boolean is_default = false;
+  public s_join_list join_list = null;
+  public int pic_height = 0;
   public String pic_url = "";
-  public int pic_width;
+  public int pic_width = 0;
   public String show_desc = "";
   public String show_txt = "";
-  public long time;
+  public long time = 0L;
   public String title = "";
-  public long uin;
-  public boolean update_flag;
-  public long view_count;
+  public long uin = 0L;
+  public boolean update_flag = false;
+  public long view_count = 0L;
   
   static
   {
@@ -80,43 +80,52 @@ public final class s_event_tag
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.time, 1);
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 2);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 3);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.show_txt != null) {
-      paramJceOutputStream.write(this.show_txt, 4);
+    localObject = this.show_txt;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.show_desc != null) {
-      paramJceOutputStream.write(this.show_desc, 5);
+    localObject = this.show_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 6);
+    localObject = this.pic_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.pic_width, 7);
     paramJceOutputStream.write(this.pic_height, 8);
-    if (this.count_desc != null) {
-      paramJceOutputStream.write(this.count_desc, 9);
+    localObject = this.count_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.join_list != null) {
-      paramJceOutputStream.write(this.join_list, 10);
+    localObject = this.join_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
     paramJceOutputStream.write(this.is_default, 11);
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 12);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
     paramJceOutputStream.write(this.view_count, 13);
-    if (this.backgd_picurl != null) {
-      paramJceOutputStream.write(this.backgd_picurl, 14);
+    localObject = this.backgd_picurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.update_flag, 15);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_event_tag
  * JD-Core Version:    0.7.0.1
  */

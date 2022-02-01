@@ -6,19 +6,25 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.cg.e;
-import com.tencent.mm.g.a.kr;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.autogen.a.pg;
+import com.tencent.mm.autogen.a.pg.b;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.modelavatar.q;
 import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.protocal.protobuf.azr;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.report.service.l;
+import com.tencent.mm.pluginsdk.event.IListenerNetScene;
+import com.tencent.mm.protocal.protobuf.dgy;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
+import com.tencent.mm.storagebase.e;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,136 +34,238 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-@JgClassChecked(author=32, fComment="checked", lastDate="20141016", reviewer=20, vComment={com.jg.EType.PROVIDERCHECK})
 public final class ExtControlProviderNearBy
   extends ExtContentProviderBase
-  implements d.a
+  implements AvatarStorage.a
 {
+  private static final String AUTHORITY;
   private static final String[] COLUMNS;
-  private static boolean ezJ;
-  private static final UriMatcher meK;
-  private static ap meM;
-  private boolean bmx;
-  private b.a dZA;
-  private com.tencent.mm.pluginsdk.c.b efx;
-  private com.tencent.mm.modelgeo.d fwu;
-  private int meD;
-  private List<azr> meE;
-  private e meF;
-  private Set<String> meG;
-  private CountDownLatch meH;
-  private CountDownLatch meI;
-  private azr meJ;
-  private boolean meL;
+  private static boolean mtE;
+  private static final UriMatcher zPC;
+  private static MTimerHandler zPE;
+  private IListenerNetScene lAz;
+  private b.a lsF;
+  private boolean mhq;
+  private com.tencent.mm.modelgeo.d owr;
+  private CountDownLatch zPA;
+  private dgy zPB;
+  private boolean zPD;
+  private int zPv;
+  private List<dgy> zPw;
+  private e zPx;
+  private Set<String> zPy;
+  private CountDownLatch zPz;
   
   static
   {
-    AppMethodBeat.i(20376);
+    AppMethodBeat.i(24455);
     COLUMNS = new String[] { "nickname", "avatar", "distance", "signature", "sex" };
+    AUTHORITY = WeChatAuthorities.AUTHORITIES_PLUGIN_EXT_NEARBY();
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    meK = localUriMatcher;
-    localUriMatcher.addURI("com.tencent.mm.plugin.ext.NearBy", "male", 1);
-    meK.addURI("com.tencent.mm.plugin.ext.NearBy", "female", 2);
-    meK.addURI("com.tencent.mm.plugin.ext.NearBy", "all", 0);
-    ezJ = false;
-    meM = new ap(new ExtControlProviderNearBy.1(), false);
-    AppMethodBeat.o(20376);
+    zPC = localUriMatcher;
+    localUriMatcher.addURI(AUTHORITY, "male", 1);
+    zPC.addURI(AUTHORITY, "female", 2);
+    zPC.addURI(AUTHORITY, "all", 0);
+    mtE = false;
+    zPE = new MTimerHandler(new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(24441);
+        ExtControlProviderNearBy.aAs();
+        AppMethodBeat.o(24441);
+        return false;
+      }
+    }, false);
+    AppMethodBeat.o(24455);
   }
   
   public ExtControlProviderNearBy()
   {
-    AppMethodBeat.i(20366);
-    this.meL = false;
-    this.efx = new ExtControlProviderNearBy.3(this);
-    this.dZA = new ExtControlProviderNearBy.4(this);
-    AppMethodBeat.o(20366);
-  }
-  
-  private azr Ne(String paramString)
-  {
-    AppMethodBeat.i(20369);
-    if ((paramString == null) || (paramString.length() <= 0))
+    AppMethodBeat.i(24445);
+    this.zPD = false;
+    this.lAz = new IListenerNetScene()
     {
-      ab.e("MicroMsg.ExtControlProviderNearBy", "username is null or nill");
-      AppMethodBeat.o(20369);
-      return null;
-    }
-    Iterator localIterator = this.meE.iterator();
-    while (localIterator.hasNext())
-    {
-      azr localazr = (azr)localIterator.next();
-      if (localazr.jJA.equals(paramString))
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, IEvent paramAnonymousIEvent)
       {
-        AppMethodBeat.o(20369);
-        return localazr;
+        AppMethodBeat.i(24443);
+        if ((paramAnonymousIEvent instanceof pg))
+        {
+          if (ExtControlProviderNearBy.c(ExtControlProviderNearBy.this) == null)
+          {
+            AppMethodBeat.o(24443);
+            return;
+          }
+          paramAnonymousString = (pg)paramAnonymousIEvent;
+          Log.i("MicroMsg.ExtControlProviderNearBy", "get lbsfriend errcode: " + paramAnonymousInt2 + ", errType: " + paramAnonymousInt1);
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
+            break label273;
+          }
+          ExtControlProviderNearBy.a(ExtControlProviderNearBy.this, paramAnonymousString.hSo.hSu);
+          if ((ExtControlProviderNearBy.d(ExtControlProviderNearBy.this) != null) && (ExtControlProviderNearBy.d(ExtControlProviderNearBy.this).size() != 0)) {
+            break label146;
+          }
+          Log.e("MicroMsg.ExtControlProviderNearBy", "get lbsfriend list size:0");
+          ExtControlProviderNearBy.c(ExtControlProviderNearBy.this).countDown();
+        }
+        for (;;)
+        {
+          ExtControlProviderNearBy.f(ExtControlProviderNearBy.this);
+          AppMethodBeat.o(24443);
+          return;
+          label146:
+          if (ExtControlProviderNearBy.d(ExtControlProviderNearBy.this).size() > 10)
+          {
+            Log.i("MicroMsg.ExtControlProviderNearBy", "get lbsfriend size > 10," + ExtControlProviderNearBy.d(ExtControlProviderNearBy.this).size());
+            ExtControlProviderNearBy.d(ExtControlProviderNearBy.this).subList(10, ExtControlProviderNearBy.d(ExtControlProviderNearBy.this).size()).clear();
+          }
+          ExtControlProviderNearBy.a(ExtControlProviderNearBy.this, new CountDownLatch(ExtControlProviderNearBy.d(ExtControlProviderNearBy.this).size()));
+          ExtControlProviderNearBy.c(ExtControlProviderNearBy.this).countDown();
+          ExtControlProviderNearBy.e(ExtControlProviderNearBy.this);
+          continue;
+          label273:
+          Log.e("MicroMsg.ExtControlProviderNearBy", "get lbsfriend failed: errCode = " + paramAnonymousInt2 + ", errType=" + paramAnonymousInt1);
+          ExtControlProviderNearBy.c(ExtControlProviderNearBy.this).countDown();
+        }
       }
-    }
-    AppMethodBeat.o(20369);
-    return null;
+    };
+    this.lsF = new b.a()
+    {
+      public final boolean onGetLocation(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2, double paramAnonymousDouble3)
+      {
+        AppMethodBeat.i(274334);
+        if (ExtControlProviderNearBy.g(ExtControlProviderNearBy.this))
+        {
+          AppMethodBeat.o(274334);
+          return false;
+        }
+        ExtControlProviderNearBy.h(ExtControlProviderNearBy.this);
+        if (!paramAnonymousBoolean)
+        {
+          Log.e("MicroMsg.ExtControlProviderNearBy", "get location failed");
+          ExtControlProviderNearBy.f(ExtControlProviderNearBy.this);
+          ExtControlProviderNearBy.c(ExtControlProviderNearBy.this).countDown();
+          AppMethodBeat.o(274334);
+          return false;
+        }
+        pg localpg = new pg();
+        localpg.hSn.hHC = ExtControlProviderNearBy.i(ExtControlProviderNearBy.this);
+        localpg.hSn.longitude = paramAnonymousFloat1;
+        localpg.hSn.latitude = paramAnonymousFloat2;
+        localpg.hSn.hSp = ((int)paramAnonymousDouble2);
+        localpg.hSn.hSq = paramAnonymousInt;
+        localpg.hSn.hSr = "";
+        localpg.hSn.hSs = "";
+        if (localpg.publish()) {
+          Log.i("MicroMsg.ExtControlProviderNearBy", "do get nearby friend");
+        }
+        AppMethodBeat.o(274334);
+        return false;
+      }
+    };
+    AppMethodBeat.o(24445);
   }
   
-  private void a(azr paramazr)
+  private void a(dgy paramdgy)
   {
-    AppMethodBeat.i(20370);
-    if ((paramazr == null) || (paramazr.jJA == null))
+    AppMethodBeat.i(24449);
+    if ((paramdgy == null) || (paramdgy.UserName == null))
     {
-      ab.e("MicroMsg.ExtControlProviderNearBy", "lbsContactInfo is null or lbsContactInfo's userName is null");
-      AppMethodBeat.o(20370);
+      Log.e("MicroMsg.ExtControlProviderNearBy", "lbsContactInfo is null or lbsContactInfo's userName is null");
+      AppMethodBeat.o(24449);
       return;
     }
-    this.meG.add(paramazr.jJA);
-    Bitmap localBitmap = com.tencent.mm.ah.b.b(paramazr.jJA, false, -1);
-    ab.i("MicroMsg.ExtControlProviderNearBy", "countDownLatchGet now count: " + this.meI.getCount());
+    this.zPy.add(paramdgy.UserName);
+    Bitmap localBitmap = com.tencent.mm.modelavatar.d.a(paramdgy.UserName, false, -1, null);
+    Log.i("MicroMsg.ExtControlProviderNearBy", "countDownLatchGet now count: " + this.zPA.getCount());
     if (localBitmap != null)
     {
-      ab.i("MicroMsg.ExtControlProviderNearBy", "countDownLatchGet countDown now");
+      Log.i("MicroMsg.ExtControlProviderNearBy", "countDownLatchGet countDown now");
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       byte[] arrayOfByte = new byte[0];
       if (localBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream)) {
         arrayOfByte = localByteArrayOutputStream.toByteArray();
       }
-      this.meG.remove(paramazr.jJA);
-      this.meF.addRow(new Object[] { paramazr.jKG, arrayOfByte, paramazr.xpd, paramazr.gwS, Integer.valueOf(paramazr.gwP) });
-      ab.i("MicroMsg.ExtControlProviderNearBy", "bitmap recycle %s", new Object[] { localBitmap });
+      this.zPy.remove(paramdgy.UserName);
+      this.zPx.addRow(new Object[] { paramdgy.vhX, arrayOfByte, paramdgy.aaMl, paramdgy.pSi, Integer.valueOf(paramdgy.pSf) });
+      Log.i("MicroMsg.ExtControlProviderNearBy", "bitmap recycle %s", new Object[] { localBitmap });
       localBitmap.recycle();
     }
-    AppMethodBeat.o(20370);
+    AppMethodBeat.o(24449);
   }
   
-  private void btH()
+  private dgy aty(String paramString)
   {
-    AppMethodBeat.i(20372);
-    if (this.meG.size() > 0)
+    AppMethodBeat.i(24448);
+    if ((paramString == null) || (paramString.length() <= 0))
     {
-      Iterator localIterator = this.meG.iterator();
+      Log.e("MicroMsg.ExtControlProviderNearBy", "username is null or nill");
+      AppMethodBeat.o(24448);
+      return null;
+    }
+    Iterator localIterator = this.zPw.iterator();
+    while (localIterator.hasNext())
+    {
+      dgy localdgy = (dgy)localIterator.next();
+      if (localdgy.UserName.equals(paramString))
+      {
+        AppMethodBeat.o(24448);
+        return localdgy;
+      }
+    }
+    AppMethodBeat.o(24448);
+    return null;
+  }
+  
+  private void dOi()
+  {
+    AppMethodBeat.i(24451);
+    if (this.zPy.size() > 0)
+    {
+      Iterator localIterator = this.zPy.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        ab.i("MicroMsg.ExtControlProviderNearBy", "add lbsfriend has no avatar: ".concat(String.valueOf(str)));
-        this.meJ = Ne(str);
-        if ((this.meJ != null) && (this.meJ.jJA != null)) {
-          this.meF.addRow(new Object[] { this.meJ.jKG, null, this.meJ.xpd, this.meJ.gwS, Integer.valueOf(this.meJ.gwP) });
+        Log.i("MicroMsg.ExtControlProviderNearBy", "add lbsfriend has no avatar: ".concat(String.valueOf(str)));
+        this.zPB = aty(str);
+        if ((this.zPB != null) && (this.zPB.UserName != null)) {
+          this.zPx.addRow(new Object[] { this.zPB.vhX, null, this.zPB.aaMl, this.zPB.pSi, Integer.valueOf(this.zPB.pSf) });
         }
       }
-      AppMethodBeat.o(20372);
+      AppMethodBeat.o(24451);
       return;
     }
-    ab.i("MicroMsg.ExtControlProviderNearBy", "all user has got avatar");
-    AppMethodBeat.o(20372);
+    Log.i("MicroMsg.ExtControlProviderNearBy", "all user has got avatar");
+    AppMethodBeat.o(24451);
   }
   
-  private static void dR(boolean paramBoolean)
+  private static void iK(boolean paramBoolean)
   {
-    AppMethodBeat.i(20367);
+    AppMethodBeat.i(24446);
     if (paramBoolean)
     {
-      ezJ = true;
-      meM.ag(15000L, 15000L);
-      AppMethodBeat.o(20367);
+      mtE = true;
+      zPE.startTimer(15000L);
+      AppMethodBeat.o(24446);
       return;
     }
-    meM.ag(0L, 0L);
-    AppMethodBeat.o(20367);
+    zPE.startTimer(0L);
+    AppMethodBeat.o(24446);
+  }
+  
+  public final void LM(String paramString)
+  {
+    AppMethodBeat.i(24450);
+    Log.i("MicroMsg.ExtControlProviderNearBy", "notifyChanged: ".concat(String.valueOf(paramString)));
+    if (this.mhq)
+    {
+      Log.i("MicroMsg.ExtControlProviderNearBy", "has finished");
+      AppMethodBeat.o(24450);
+      return;
+    }
+    a(aty(paramString));
+    this.zPA.countDown();
+    AppMethodBeat.o(24450);
   }
   
   public final int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -167,22 +275,22 @@ public final class ExtControlProviderNearBy
   
   public final String getType(Uri paramUri)
   {
-    AppMethodBeat.i(20373);
-    this.meD = -1;
-    switch (meK.match(paramUri))
+    AppMethodBeat.i(24452);
+    this.zPv = -1;
+    switch (zPC.match(paramUri))
     {
     default: 
-      this.meD = -1;
+      this.zPv = -1;
     }
     for (;;)
     {
-      AppMethodBeat.o(20373);
+      AppMethodBeat.o(24452);
       return null;
-      this.meD = 1;
+      this.zPv = 1;
       continue;
-      this.meD = 3;
+      this.zPv = 3;
       continue;
-      this.meD = 4;
+      this.zPv = 4;
     }
   }
   
@@ -198,124 +306,121 @@ public final class ExtControlProviderNearBy
   
   public final Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    AppMethodBeat.i(20368);
-    ab.i("MicroMsg.ExtControlProviderNearBy", "query() ".concat(String.valueOf(paramUri)));
+    AppMethodBeat.i(24447);
+    Log.i("MicroMsg.ExtControlProviderNearBy", "query() ".concat(String.valueOf(paramUri)));
     a(paramUri, getContext(), 15);
     if (paramUri == null)
     {
-      vA(3);
-      AppMethodBeat.o(20368);
+      Mm(3);
+      AppMethodBeat.o(24447);
       return null;
     }
-    if ((bo.isNullOrNil(this.mei)) || (bo.isNullOrNil(btD())))
+    if ((Util.isNullOrNil(this.zPa)) || (Util.isNullOrNil(dOe())))
     {
-      vA(3);
-      AppMethodBeat.o(20368);
+      Mm(3);
+      AppMethodBeat.o(24447);
       return null;
     }
-    if (ezJ)
+    if (mtE)
     {
-      ab.w("MicroMsg.ExtControlProviderNearBy", "isDoingRequest, return null");
-      vA(5);
-      AppMethodBeat.o(20368);
+      Log.w("MicroMsg.ExtControlProviderNearBy", "isDoingRequest, return null");
+      Mm(5);
+      AppMethodBeat.o(24447);
       return null;
     }
-    dR(true);
-    if (!aVH())
+    iK(true);
+    if (!dak())
     {
-      dR(false);
-      vA(1);
-      paramUri = this.jLW;
-      AppMethodBeat.o(20368);
+      iK(false);
+      Mm(1);
+      paramUri = this.vsh;
+      AppMethodBeat.o(24447);
       return paramUri;
     }
-    if (!dO(getContext()))
+    if (!gh(getContext()))
     {
-      ab.w("MicroMsg.ExtControlProviderNearBy", "invalid appid ! return null");
-      dR(false);
-      vA(2);
-      AppMethodBeat.o(20368);
+      Log.w("MicroMsg.ExtControlProviderNearBy", "invalid appid ! return null");
+      iK(false);
+      Mm(2);
+      AppMethodBeat.o(24447);
       return null;
     }
-    ab.i("MicroMsg.ExtControlProviderNearBy", "find type = " + this.meD);
+    Log.i("MicroMsg.ExtControlProviderNearBy", "find type = " + this.zPv);
     getType(paramUri);
-    if (this.meD < 0)
+    if (this.zPv < 0)
     {
-      ab.e("MicroMsg.ExtControlProviderNearBy", "unkown uri, return null");
-      dR(false);
-      vA(3);
-      AppMethodBeat.o(20368);
+      Log.e("MicroMsg.ExtControlProviderNearBy", "unkown uri, return null");
+      iK(false);
+      Mm(3);
+      AppMethodBeat.o(24447);
       return null;
     }
     for (;;)
     {
       try
       {
-        this.meE = new ArrayList();
-        this.meF = new e(COLUMNS, (byte)0);
-        this.meH = new CountDownLatch(1);
-        this.meI = null;
-        this.meG = new HashSet();
-        this.meE = new ArrayList();
-        this.bmx = false;
-        ab.v("MicroMsg.ExtControlProviderNearBy", "start()");
-        if (aw.RG()) {
+        this.zPw = new ArrayList();
+        this.zPx = new e(COLUMNS, (byte)0);
+        this.zPz = new CountDownLatch(1);
+        this.zPA = null;
+        this.zPy = new HashSet();
+        this.zPw = new ArrayList();
+        this.mhq = false;
+        Log.v("MicroMsg.ExtControlProviderNearBy", "start()");
+        if (bh.baz()) {
           continue;
         }
-        ab.i("MicroMsg.ExtControlProviderNearBy", "!MMCore.hasSetUin()");
-        ab.i("MicroMsg.ExtControlProviderNearBy", "wait for get lbs info");
-        if (!this.meH.await(15000L, TimeUnit.MILLISECONDS)) {
-          ab.w("MicroMsg.ExtControlProviderNearBy", "countDownLatchWait time out");
+        Log.i("MicroMsg.ExtControlProviderNearBy", "!MMCore.hasSetUin()");
+        Log.i("MicroMsg.ExtControlProviderNearBy", "wait for get lbs info");
+        if (!this.zPz.await(15000L, TimeUnit.MILLISECONDS)) {
+          Log.w("MicroMsg.ExtControlProviderNearBy", "countDownLatchWait time out");
         }
-        if (this.meI == null) {
+        if (this.zPA == null) {
           continue;
         }
-        ab.i("MicroMsg.ExtControlProviderNearBy", "get lbs info success, wait for get lbs friend");
-        if (!this.meI.await(15000L, TimeUnit.MILLISECONDS)) {
-          ab.w("MicroMsg.ExtControlProviderNearBy", "countDownLatchGet time out");
+        Log.i("MicroMsg.ExtControlProviderNearBy", "get lbs info success, wait for get lbs friend");
+        if (!this.zPA.await(15000L, TimeUnit.MILLISECONDS)) {
+          Log.w("MicroMsg.ExtControlProviderNearBy", "countDownLatchGet time out");
         }
       }
       catch (Exception paramUri)
       {
-        ab.w("MicroMsg.ExtControlProviderNearBy", paramUri.getMessage());
-        ab.printErrStackTrace("MicroMsg.ExtControlProviderNearBy", paramUri, "", new Object[0]);
-        vA(4);
+        Log.w("MicroMsg.ExtControlProviderNearBy", paramUri.getMessage());
+        Log.printErrStackTrace("MicroMsg.ExtControlProviderNearBy", paramUri, "", new Object[0]);
+        Mm(4);
         continue;
-        ab.i("MicroMsg.ExtControlProviderNearBy", "not init countDownGet. return null");
+        Log.i("MicroMsg.ExtControlProviderNearBy", "not init countDownGet. return null");
         continue;
-        vA(4);
-        continue;
-      }
-      dR(false);
-      o.acQ().b(this);
-      this.bmx = true;
-      btH();
-      if ((this.meF == null) || (this.meF.getCount() <= 0)) {
+        Mm(4);
         continue;
       }
-      vA(0);
-      ab.i("MicroMsg.ExtControlProviderNearBy", "return now");
-      paramUri = this.meF;
-      AppMethodBeat.o(20368);
+      iK(false);
+      q.bFp().b(this);
+      this.mhq = true;
+      dOi();
+      if ((this.zPx == null) || (this.zPx.getCount() <= 0)) {
+        continue;
+      }
+      Mm(0);
+      Log.i("MicroMsg.ExtControlProviderNearBy", "return now");
+      paramUri = this.zPx;
+      AppMethodBeat.o(24447);
       return paramUri;
-      com.tencent.mm.pluginsdk.c.b.a(kr.class.getName(), this.efx);
-      al.d(new ExtControlProviderNearBy.2(this));
+      IListenerNetScene.a(pg.class.getName(), this.lAz);
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(24442);
+          if (ExtControlProviderNearBy.a(ExtControlProviderNearBy.this) == null) {
+            ExtControlProviderNearBy.a(ExtControlProviderNearBy.this, com.tencent.mm.modelgeo.d.bJl());
+          }
+          ExtControlProviderNearBy.a(ExtControlProviderNearBy.this).a(ExtControlProviderNearBy.b(ExtControlProviderNearBy.this), true, false);
+          l.kK(22, 10);
+          AppMethodBeat.o(24442);
+        }
+      });
     }
-  }
-  
-  public final void re(String paramString)
-  {
-    AppMethodBeat.i(20371);
-    ab.i("MicroMsg.ExtControlProviderNearBy", "notifyChanged: ".concat(String.valueOf(paramString)));
-    if (this.bmx)
-    {
-      ab.i("MicroMsg.ExtControlProviderNearBy", "has finished");
-      AppMethodBeat.o(20371);
-      return;
-    }
-    a(Ne(paramString));
-    this.meI.countDown();
-    AppMethodBeat.o(20371);
   }
   
   public final int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
@@ -325,7 +430,7 @@ public final class ExtControlProviderNearBy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.provider.ExtControlProviderNearBy
  * JD-Core Version:    0.7.0.1
  */

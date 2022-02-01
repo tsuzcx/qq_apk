@@ -9,7 +9,7 @@ public final class ModFriendGroup
   extends JceStruct
 {
   static ArrayList<FriendGroup> cache_vMsgFrdGroup;
-  public ArrayList<FriendGroup> vMsgFrdGroup;
+  public ArrayList<FriendGroup> vMsgFrdGroup = null;
   
   public ModFriendGroup() {}
   
@@ -31,14 +31,15 @@ public final class ModFriendGroup
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vMsgFrdGroup != null) {
-      paramJceOutputStream.write(this.vMsgFrdGroup, 0);
+    ArrayList localArrayList = this.vMsgFrdGroup;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.ModFriendGroup
  * JD-Core Version:    0.7.0.1
  */

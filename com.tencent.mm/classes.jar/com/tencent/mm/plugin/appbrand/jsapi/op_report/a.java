@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.appbrand.jsapi.op_report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
 
 final class a
-  extends p
+  extends s
 {
   private static final int CTRL_INDEX = 246;
   private static final String NAME = "onStartReportPageData";
-  private static final a hVp;
+  private static final a snc;
   
   static
   {
-    AppMethodBeat.i(102004);
-    hVp = new a();
-    AppMethodBeat.o(102004);
+    AppMethodBeat.i(147208);
+    snc = new a();
+    AppMethodBeat.o(147208);
   }
   
-  static void k(c paramc)
+  static void q(f paramf)
   {
     try
     {
-      AppMethodBeat.i(102003);
-      hVp.i(paramc).aBz();
-      AppMethodBeat.o(102003);
+      AppMethodBeat.i(147207);
+      snc.h(paramf).cpV();
+      AppMethodBeat.o(147207);
       return;
     }
     finally
     {
-      paramc = finally;
-      throw paramc;
+      paramf = finally;
+      throw paramf;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.op_report.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b8q" android:background="@drawable/sq" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bf5" android:paddingLeft="@dimen/atb" android:paddingRight="@dimen/atb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/f_emosm_indicator_normal" android:scaleType="center" android:layout_centerVertical="true" android:contentDescription="@string/aa0" />
+        <ImageView android:id="@id/j6w" android:background="@drawable/t8" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/cq9" android:layout_toRightOf="@id/bf5" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/t6" android:layout_gravity="center" android:id="@id/j72" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/q1_" android:includeFontPadding="false" android:layout_toRightOf="@id/j6w" android:layout_centerVertical="true" />
+        <TextView android:id="@id/bmt" android:background="@color/aai" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignLeft="@id/j72" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <Button android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/khk" android:background="#ffff3b30" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="@dimen/atc" android:layout_height="fill_parent" android:text="@string/e0n" />
+</LinearLayout>

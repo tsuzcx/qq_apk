@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:gravity="left" android:id="@id/fcz" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/l5" android:layout_marginRight="@dimen/l2" android:layout_marginBottom="@dimen/l2" android:text="@string/ftu" style="@style/w2" />
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fgv" android:imeOptions="actionNext" wallet:titleText="@string/fic" wallet:contentHint="@string/fi_" style="@style/vz" />
-    <TextView android:id="@id/fh4" android:visibility="visible" android:text="@string/fib" style="@style/vv" />
-    <Button android:id="@id/fhn" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/dv" android:layout_marginRight="@dimen/l2" android:text="@string/fu4" style="@style/nq" />
-    <include layout="@layout/l_" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/azn" android:layout_width="fill_parent" android:layout_height="500.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <FrameLayout android:layout_gravity="left" android:id="@id/fcv" android:layout_width="90.0dip" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/fcu" android:background="@drawable/aqy" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="@dimen/bv" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/BW_0_Alpha_0_9" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b2o" />
+        <FrameLayout android:layout_gravity="right" android:id="@id/kx4" android:background="@drawable/aqy" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/gm" android:gravity="center" android:layout_gravity="center" android:id="@id/kx3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b2t" />
+        </FrameLayout>
+    </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/ahh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="always" />
 </LinearLayout>

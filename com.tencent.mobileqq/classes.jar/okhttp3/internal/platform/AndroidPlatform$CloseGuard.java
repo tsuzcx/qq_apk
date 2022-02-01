@@ -17,38 +17,39 @@ final class AndroidPlatform$CloseGuard
   
   static CloseGuard get()
   {
-    Object localObject1 = null;
+    Object localObject2 = null;
     try
     {
-      Object localObject3 = Class.forName("dalvik.system.CloseGuard");
-      localMethod2 = ((Class)localObject3).getMethod("get", new Class[0]);
-      localMethod1 = ((Class)localObject3).getMethod("open", new Class[] { String.class });
-      localObject3 = ((Class)localObject3).getMethod("warnIfOpen", new Class[0]);
-      localObject1 = localObject3;
+      localObject1 = Class.forName("dalvik.system.CloseGuard");
+      Method localMethod = ((Class)localObject1).getMethod("get", new Class[0]);
+      localObject3 = ((Class)localObject1).getMethod("open", new Class[] { String.class });
+      localObject1 = ((Class)localObject1).getMethod("warnIfOpen", new Class[0]);
+      localObject2 = localMethod;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Method localMethod1;
-        Object localObject2 = null;
-        Method localMethod2 = null;
-      }
+      Object localObject1;
+      Object localObject3;
+      label51:
+      break label51;
     }
-    return new CloseGuard(localMethod2, localMethod1, localObject1);
+    localObject1 = null;
+    localObject3 = localObject1;
+    return new CloseGuard(localObject2, (Method)localObject3, (Method)localObject1);
   }
   
   Object createAndOpen(String paramString)
   {
-    if (this.getMethod != null) {
-      try
-      {
-        Object localObject = this.getMethod.invoke(null, new Object[0]);
-        this.openMethod.invoke(localObject, new Object[] { paramString });
-        return localObject;
-      }
-      catch (Exception paramString) {}
+    Object localObject = this.getMethod;
+    if (localObject != null) {}
+    try
+    {
+      localObject = ((Method)localObject).invoke(null, new Object[0]);
+      this.openMethod.invoke(localObject, new Object[] { paramString });
+      return localObject;
     }
+    catch (Exception paramString) {}
+    return null;
     return null;
   }
   
@@ -68,7 +69,7 @@ final class AndroidPlatform$CloseGuard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.platform.AndroidPlatform.CloseGuard
  * JD-Core Version:    0.7.0.1
  */

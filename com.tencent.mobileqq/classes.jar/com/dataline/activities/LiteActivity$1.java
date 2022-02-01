@@ -7,12 +7,13 @@ class LiteActivity$1
   
   public void run()
   {
-    this.this$0.e(this.this$0.getIntent());
+    LiteActivity localLiteActivity = this.this$0;
+    localLiteActivity.e(localLiteActivity.getIntent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.1
  * JD-Core Version:    0.7.0.1
  */

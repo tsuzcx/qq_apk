@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMWebView android:id="@id/webview" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/bf3" android:layout_alignParentTop="true" />
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/o6g" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/nwr" android:layout_alignParentTop="true" />
+    <HorizontalScrollView android:id="@id/nwr" android:background="@color/aos" android:paddingLeft="@dimen/bf9" android:paddingRight="@dimen/bf9" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/bf3" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mg9" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </HorizontalScrollView>
+    <ImageView android:id="@id/bri" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bfa" android:layout_marginBottom="@dimen/bf_" android:src="@drawable/goa" android:layout_above="@id/nwr" android:layout_alignParentRight="true" />
+</RelativeLayout>

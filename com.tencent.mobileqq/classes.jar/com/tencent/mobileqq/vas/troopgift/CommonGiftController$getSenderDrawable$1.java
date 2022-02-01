@@ -1,0 +1,39 @@
+package com.tencent.mobileqq.vas.troopgift;
+
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.app.face.FaceDrawable.OnLoadingStateChangeListener;
+import com.tencent.mobileqq.utils.ImageUtil;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "curState", "onLoadingStateChanged"}, k=3, mv={1, 1, 16})
+final class CommonGiftController$getSenderDrawable$1
+  implements FaceDrawable.OnLoadingStateChangeListener
+{
+  CommonGiftController$getSenderDrawable$1(CommonGiftController paramCommonGiftController, TroopGiftData paramTroopGiftData, Drawable paramDrawable) {}
+  
+  public final void onLoadingStateChanged(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 1)
+    {
+      Object localObject1 = (AppInterface)this.a.m().app;
+      Object localObject2 = this.b.giftData.dataForClient.sendUin;
+      Drawable localDrawable = this.c;
+      localObject2 = FaceDrawable.getFaceDrawable((AppInterface)localObject1, 1, (String)localObject2, 3, localDrawable, localDrawable);
+      localObject1 = CommonGiftController.a(this.a);
+      localObject2 = ImageUtil.b((Drawable)localObject2);
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "ImageUtil.drawableToBitmap(senderDrawable)");
+      ((TroopGiftComboView)localObject1).setSenderAvatar((Bitmap)localObject2);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     com.tencent.mobileqq.vas.troopgift.CommonGiftController.getSenderDrawable.1
+ * JD-Core Version:    0.7.0.1
+ */

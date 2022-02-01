@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_1" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_2" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_3" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_4" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_5" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_6" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_7" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_8" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_9" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_10" />
+    <item android:duration="44" android:drawable="@drawable/qzone_skin_timeline_11" />
+</animation-list>

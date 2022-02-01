@@ -1,44 +1,77 @@
 package com.tencent.turingfd.sdk.xq;
 
 import android.content.Context;
-import android.net.Proxy;
-import android.os.Build.VERSION;
-import java.net.HttpURLConnection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class throw
+  extends Thread
 {
-  public HttpURLConnection Ib = null;
-  public boolean Jb = false;
+  public throw(Map paramMap, CanisMajor paramCanisMajor) {}
   
-  public static String j(Context paramContext)
+  public void run()
   {
-    if (Build.VERSION.SDK_INT >= 14) {}
-    for (int i = 1; i != 0; i = 0) {
-      return System.getProperty("http.proxyHost");
-    }
-    return Proxy.getHost(paramContext);
-  }
-  
-  public static int k(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 14) {}
-    for (int i = 1; i != 0; i = 0) {
+    Object localObject5 = CanisMinor.a;
+    Map localMap = this.a;
+    int i;
+    long l;
+    label268:
+    synchronized (((CanisMinor)localObject5).e)
+    {
       try
       {
-        i = Integer.parseInt(System.getProperty("http.proxyPort"));
-        return i;
+        Context localContext = const.a;
+        i = 0;
+        CanisMinor.do localdo = null;
+        boolean bool = false;
+        try
+        {
+          if (i < ((CanisMinor)localObject5).g)
+          {
+            if (i != 0) {
+              bool = true;
+            }
+            localdo = ((CanisMinor)localObject5).a(localMap, localContext, bool);
+            l = localdo.a;
+            if (l != 0L) {
+              break label268;
+            }
+          }
+          localObject5 = localdo;
+          if (localdo == null) {
+            localObject5 = new CanisMinor.do(-10000000L, new HashMap());
+          }
+        }
+        finally
+        {
+          localObject2 = localObject1.toString();
+          localObject5 = Date.a;
+          localObject5 = new HashMap();
+          ((HashMap)localObject5).put("602", localObject2);
+          Date.a(localContext, (Map)localObject5);
+          localObject5 = new CanisMinor.do(-6000000L, new HashMap());
+        }
+        Object localObject2 = ((CanisMinor.do)localObject5).b;
+        if (localObject2 != null)
+        {
+          ??? = this.b;
+          l = ((CanisMinor.do)localObject5).a;
+          ((TuringSecurityService.do)???).a(l, (Map)localObject2);
+          return;
+        }
+        localObject2 = this.b;
+        l = ((CanisMinor.do)localObject5).a;
+        localObject5 = new HashMap();
+        ((TuringSecurityService.do)localObject2).a(l, (Map)localObject5);
+        return;
       }
-      catch (NumberFormatException paramContext)
-      {
-        return -1;
-      }
+      finally {}
     }
-    return Proxy.getPort(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.throw
  * JD-Core Version:    0.7.0.1
  */

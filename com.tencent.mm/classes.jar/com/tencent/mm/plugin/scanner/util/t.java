@@ -1,15 +1,22 @@
 package com.tencent.mm.plugin.scanner.util;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.e;
-import com.tencent.mm.plugin.card.c.b;
+import com.tencent.mm.k.f;
+import com.tencent.mm.k.i;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.card.b.b;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.k;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,188 +28,58 @@ import org.json.JSONObject;
 
 public final class t
 {
-  public static String qDP = "title";
-  public static String qDQ = "tip";
-  public static String qDR = "buttonTitle";
+  public static String PjO = "title";
+  public static String PjP = "tip";
+  public static String PjQ = "buttonTitle";
+  private static Boolean PjR = null;
+  private static Boolean PjS = null;
   
-  public static boolean P(ArrayList<t.a> paramArrayList)
+  public static boolean Ii(int paramInt)
   {
-    AppMethodBeat.i(81498);
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    AppMethodBeat.i(52072);
+    b localb = (b)h.ax(b.class);
+    if (localb != null)
     {
-      ab.e("MicroMsg.ScannerUtil", "list == null || list.size() == 0");
-      AppMethodBeat.o(81498);
-      return false;
+      boolean bool = localb.Ii(paramInt);
+      AppMethodBeat.o(52072);
+      return bool;
     }
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      t.a locala = (t.a)paramArrayList.get(i);
-      if ((locala != null) && (sX(locala.iFL)))
-      {
-        AppMethodBeat.o(81498);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(81498);
+    AppMethodBeat.o(52072);
     return false;
   }
   
-  public static int YP(String paramString)
+  public static a aVm(String paramString)
   {
-    AppMethodBeat.i(81494);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(81494);
-      return 0;
-    }
-    if (("EAN-13".equals(paramString)) || ("EAN_13".equals(paramString)))
-    {
-      AppMethodBeat.o(81494);
-      return 4;
-    }
-    if (("EAN-8".equals(paramString)) || ("EAN_8".equals(paramString)))
-    {
-      AppMethodBeat.o(81494);
-      return 3;
-    }
-    if ("EAN-2".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 1;
-    }
-    if ("EAN-5".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 2;
-    }
-    if (("UPC-A".equals(paramString)) || ("UPC_A".equals(paramString)))
-    {
-      AppMethodBeat.o(81494);
-      return 5;
-    }
-    if (("UPC-E".equals(paramString)) || ("UPC_E".equals(paramString)))
-    {
-      AppMethodBeat.o(81494);
-      return 6;
-    }
-    if (("CODE-39".equals(paramString)) || ("CODE_39".equals(paramString)))
-    {
-      AppMethodBeat.o(81494);
-      return 9;
-    }
-    if (("CODE-93".equals(paramString)) || ("CODE_93".equals(paramString)))
-    {
-      AppMethodBeat.o(81494);
-      return 10;
-    }
-    if (("CODE-128".equals(paramString)) || ("CODE_128".equals(paramString)))
-    {
-      AppMethodBeat.o(81494);
-      return 11;
-    }
-    if ("COMPOSITE".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 12;
-    }
-    if (("I/25".equals(paramString)) || ("ITF".equals(paramString)))
-    {
-      AppMethodBeat.o(81494);
-      return 13;
-    }
-    if ("DATABAR".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 7;
-    }
-    if ("DATABAR-EXP".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 8;
-    }
-    if ("RSS_14".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 15;
-    }
-    if ("RSS_EXPANDED".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 16;
-    }
-    if ("MAXICODE".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 18;
-    }
-    if ("PDF_417".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 20;
-    }
-    if ("QR_CODE".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 19;
-    }
-    if ("CODABAR".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 17;
-    }
-    if ("ISBN10".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 14;
-    }
-    if ("DATA_MATRIX".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 21;
-    }
-    if ("WX_CODE".equals(paramString))
-    {
-      AppMethodBeat.o(81494);
-      return 22;
-    }
-    AppMethodBeat.o(81494);
-    return 0;
-  }
-  
-  public static t.a YQ(String paramString)
-  {
-    AppMethodBeat.i(81496);
+    AppMethodBeat.i(52073);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(81496);
+      AppMethodBeat.o(52073);
       return null;
     }
     try
     {
       paramString = new JSONObject(paramString);
-      t.a locala = new t.a();
-      locala.kml = paramString.optString("card_tp_id");
-      locala.iFL = paramString.optInt("card_type");
-      locala.cHo = paramString.optString("card_ext");
-      AppMethodBeat.o(81496);
+      a locala = new a();
+      locala.wsy = paramString.optString("card_tp_id");
+      locala.tNW = paramString.optInt("card_type");
+      locala.iaJ = paramString.optString("card_ext");
+      AppMethodBeat.o(52073);
       return locala;
     }
     catch (JSONException paramString)
     {
-      ab.printErrStackTrace("MicroMsg.ScannerUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(81496);
+      Log.printErrStackTrace("MicroMsg.ScannerUtil", paramString, "", new Object[0]);
+      AppMethodBeat.o(52073);
     }
     return null;
   }
   
-  public static ArrayList<t.a> YR(String paramString)
+  public static ArrayList<a> aVn(String paramString)
   {
-    AppMethodBeat.i(81497);
+    AppMethodBeat.i(52074);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(81497);
+      AppMethodBeat.o(52074);
       return null;
     }
     try
@@ -210,8 +87,8 @@ public final class t
       paramString = new JSONObject(paramString).optJSONArray("card_list");
       if ((paramString == null) || (paramString.length() == 0))
       {
-        ab.e("MicroMsg.ScannerUtil", "parseCardListItemArray cardItemListJson is null");
-        AppMethodBeat.o(81497);
+        Log.e("MicroMsg.ScannerUtil", "parseCardListItemArray cardItemListJson is null");
+        AppMethodBeat.o(52074);
         return null;
       }
       ArrayList localArrayList = new ArrayList();
@@ -219,61 +96,167 @@ public final class t
       while (i < paramString.length())
       {
         JSONObject localJSONObject = paramString.optJSONObject(i);
-        t.a locala = new t.a();
-        locala.kml = localJSONObject.optString("card_tp_id");
-        locala.iFL = localJSONObject.optInt("card_type");
-        locala.cHo = localJSONObject.optString("card_ext");
+        a locala = new a();
+        locala.wsy = localJSONObject.optString("card_tp_id");
+        locala.tNW = localJSONObject.optInt("card_type");
+        locala.iaJ = localJSONObject.optString("card_ext");
         localArrayList.add(locala);
         i += 1;
       }
-      AppMethodBeat.o(81497);
+      AppMethodBeat.o(52074);
       return localArrayList;
     }
     catch (JSONException paramString)
     {
-      ab.printErrStackTrace("MicroMsg.ScannerUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(81497);
+      Log.printErrStackTrace("MicroMsg.ScannerUtil", paramString, "", new Object[0]);
+      AppMethodBeat.o(52074);
     }
     return null;
   }
   
-  public static void aP(Context paramContext, String paramString)
+  public static boolean aiG(int paramInt)
   {
-    AppMethodBeat.i(81499);
-    h.a(paramContext, paramString, null, false, new t.1());
-    AppMethodBeat.o(81499);
+    return (paramInt == 1) || (paramInt == 8) || (paramInt == 4);
   }
   
-  public static boolean cjO()
+  public static boolean aiH(int paramInt)
   {
-    AppMethodBeat.i(81501);
-    int i = ((a)com.tencent.mm.kernel.g.E(a.class)).Nq().getInt("EnableNewOCRTranslation", 0);
-    Object localObject = ((a)com.tencent.mm.kernel.g.E(a.class)).Nq().getValue("NewOCRTranslationSupportUserLanguage");
-    if (i == 1) {}
-    for (boolean bool = true;; bool = false)
+    return paramInt == 12;
+  }
+  
+  public static boolean aiI(int paramInt)
+  {
+    return paramInt == 3;
+  }
+  
+  public static void bK(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(52076);
+    k.a(paramContext, paramString, null, false, new DialogInterface.OnClickListener()
     {
-      ab.i("MicroMsg.ScannerUtil", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool), localObject, aa.dsG() });
-      if ((i != 1) || (bo.isNullOrNil((String)localObject))) {
-        break;
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(52071);
+        paramAnonymousDialogInterface.dismiss();
+        AppMethodBeat.o(52071);
       }
-      localObject = ((String)localObject).split(";");
-      if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(aa.dsG()))) {
-        break;
-      }
-      AppMethodBeat.o(81501);
-      return true;
+    });
+    AppMethodBeat.o(52076);
+  }
+  
+  public static boolean by(ArrayList<a> paramArrayList)
+  {
+    AppMethodBeat.i(52075);
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      Log.e("MicroMsg.ScannerUtil", "list == null || list.size() == 0");
+      AppMethodBeat.o(52075);
+      return false;
     }
-    AppMethodBeat.o(81501);
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      a locala = (a)paramArrayList.get(i);
+      if ((locala != null) && (Ii(locala.tNW)))
+      {
+        AppMethodBeat.o(52075);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(52075);
     return false;
   }
   
-  public static String ge(String paramString1, String paramString2)
+  public static boolean gPB()
   {
-    AppMethodBeat.i(81500);
-    Object localObject2 = com.tencent.mm.m.g.Nq().getValue("ScanBookWording");
-    ab.i("MicroMsg.ScannerUtil", "scan image dynamic wording: " + bo.nullAsNil((String)localObject2));
+    AppMethodBeat.i(314189);
+    if (PjS == null) {
+      gUq();
+    }
+    boolean bool = PjS.booleanValue();
+    AppMethodBeat.o(314189);
+    return bool;
+  }
+  
+  public static boolean gUm()
+  {
+    AppMethodBeat.i(52078);
+    int i = ((a)h.ax(a.class)).aRC().getInt("EnableNewOCRTranslation", 0);
+    Object localObject = ((a)h.ax(a.class)).aRC().getValue("PicTranslationSupportUserLanguage");
+    if (i == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.ScannerUtil", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool), localObject, LocaleUtil.getApplicationLanguage() });
+      if ((i != 1) || (Util.isNullOrNil((String)localObject))) {
+        break;
+      }
+      localObject = ((String)localObject).split(";");
+      if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(LocaleUtil.getApplicationLanguage()))) {
+        break;
+      }
+      AppMethodBeat.o(52078);
+      return true;
+    }
+    AppMethodBeat.o(52078);
+    return false;
+  }
+  
+  public static void gUn()
+  {
+    AppMethodBeat.i(314178);
+    gUp();
+    gUq();
+    AppMethodBeat.o(314178);
+  }
+  
+  public static boolean gUo()
+  {
+    AppMethodBeat.i(52079);
+    Log.i("MicroMsg.ScannerUtil", "alvinluo showScanGoodsTab %b", new Object[] { PjR });
+    if (PjR == null) {
+      gUp();
+    }
+    boolean bool = PjR.booleanValue();
+    AppMethodBeat.o(52079);
+    return bool;
+  }
+  
+  private static void gUp()
+  {
+    AppMethodBeat.i(52080);
+    int i = ((c)h.ax(c.class)).a(c.a.zfW, 0);
+    if (i != 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PjR = Boolean.valueOf(bool);
+      Log.i("MicroMsg.ScannerUtil", "alvinluo updateShowScanGoodsTabSwitch clicfg_disable_scan_goods_tab config: %d, show: %b", new Object[] { Integer.valueOf(i), PjR });
+      AppMethodBeat.o(52080);
+      return;
+    }
+  }
+  
+  private static void gUq()
+  {
+    AppMethodBeat.i(314197);
+    int i = ((c)h.ax(c.class)).a(c.a.zgd, 0);
+    if ((i != 0) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PjS = Boolean.valueOf(bool);
+      Log.i("MicroMsg.ScannerUtil", "alvinluo updateEnableMultiCode clicfg_scan_code_multi_code_enable config: %d, enable: %b", new Object[] { Integer.valueOf(i), PjS });
+      AppMethodBeat.o(314197);
+      return;
+    }
+  }
+  
+  public static String lI(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(52077);
+    Object localObject2 = i.aRC().getValue("ScanBookWording");
+    Log.i("MicroMsg.ScannerUtil", "scan image dynamic wording: " + Util.nullAsNil((String)localObject2));
     Object localObject1 = paramString2;
-    if (!bo.isNullOrNil((String)localObject2))
+    if (!Util.isNullOrNil((String)localObject2))
     {
       localObject2 = ((String)localObject2).split("&");
       localObject1 = paramString2;
@@ -291,27 +274,20 @@ public final class t
         }
         paramString1 = (String)((Map)localObject1).get(paramString1);
         localObject1 = paramString2;
-        if (!bo.isNullOrNil(paramString1)) {
+        if (!Util.isNullOrNil(paramString1)) {
           localObject1 = paramString1;
         }
       }
     }
-    AppMethodBeat.o(81500);
+    AppMethodBeat.o(52077);
     return localObject1;
   }
   
-  public static boolean sX(int paramInt)
+  public static final class a
   {
-    AppMethodBeat.i(81495);
-    b localb = (b)com.tencent.mm.kernel.g.E(b.class);
-    if (localb != null)
-    {
-      boolean bool = localb.sX(paramInt);
-      AppMethodBeat.o(81495);
-      return bool;
-    }
-    AppMethodBeat.o(81495);
-    return false;
+    public String iaJ;
+    public int tNW;
+    public String wsy;
   }
 }
 

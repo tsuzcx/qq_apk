@@ -1,290 +1,309 @@
 package com.tencent.mm.plugin.story.g;
 
-import com.tencent.mars.comm.NetStatusUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.story.h.f;
+import com.tencent.mm.plugin.story.h.g;
 import com.tencent.mm.plugin.story.h.n;
-import com.tencent.mm.plugin.story.model.d.i;
-import com.tencent.mm.plugin.story.model.j.b;
-import com.tencent.mm.plugin.story.model.s;
-import com.tencent.mm.plugin.story.ui.view.gallery.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.story.model.StoryCore;
+import com.tencent.mm.plugin.story.model.StoryCore.b;
+import com.tencent.mm.plugin.story.model.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/report/StoryBrowseIDKeyStat;", "", "()V", "ID", "", "TAG", "", "canReport", "", "currentUser", "Lcom/tencent/mm/plugin/story/report/StoryBrowseIDKeyStat$CurrentPlayer;", "enterFromDoubleClick", "enterWithCache", "hasStartHttp", "hascanPlayCall", "isWaiting", "last_selectedColumn", "", "last_selectedRow", "markStoryId", "noCachecurrentUser", "onCreateTime", "onPlayCostTime", "onPlayUser", "onResumeTime", "onSelectItemReport", "onStayTime", "onVideoPlay", "unReadList", "", "canPlay", "", "user", "storyId", "chattingDoubleCheck", "chattingDoubleCheckHasCache", "chattingDoubleCheckNoCache", "chattingRight", "chattingRightHasCache", "chattingRightNoCache", "checkCanPlay", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "cacheSecondsDowngrade", "checkStayTime", "clean", "enter", "unreadList", "finish", "markInit", "markResumeTime", "onDestroy", "onSelectItem", "group", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "selectedRow", "selectedColumn", "onVideoWaiting", "playUser", "preLoadVideo", "startHttp", "CurrentPlayer", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/report/StoryBrowseIDKeyStat;", "", "()V", "ID", "", "TAG", "", "canReport", "", "currentUser", "Lcom/tencent/mm/plugin/story/report/StoryBrowseIDKeyStat$CurrentPlayer;", "enterFromDoubleClick", "enterWithCache", "hasStartHttp", "hascanPlayCall", "isWaiting", "last_selectedColumn", "", "last_selectedRow", "markStoryId", "noCachecurrentUser", "onCreateTime", "onPlayCostTime", "onPlayUser", "onResumeTime", "onSelectItemReport", "onStayTime", "onVideoPlay", "unReadList", "", "canPlay", "", "user", "storyId", "chattingDoubleCheck", "chattingDoubleCheckHasCache", "chattingDoubleCheckNoCache", "chattingRight", "chattingRightHasCache", "chattingRightNoCache", "checkCanPlay", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "cacheSecondsDowngrade", "checkStayTime", "clean", "enter", "unreadList", "finish", "markInit", "markResumeTime", "onDestroy", "onSelectItem", "group", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "selectedRow", "selectedColumn", "onVideoWaiting", "playUser", "preLoadVideo", "startHttp", "CurrentPlayer", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  private static boolean eBr;
+  private static long Fpo;
+  private static long Fpp;
+  private static long SqC;
+  public static final c SqL;
+  public static a SqM;
+  private static a SqN;
+  private static boolean SqO;
+  private static long SqP;
+  private static boolean SqQ;
+  public static boolean SqR;
+  private static long SqS;
+  private static boolean SqT;
+  private static List<String> SqU;
+  private static long Sqr;
+  private static long Sqs;
+  private static int Sqx;
+  private static int Sqy;
+  private static boolean Sqz;
   private static boolean isWaiting;
-  private static long sDF;
-  private static long sDG;
-  private static long sDH;
-  private static long sDM;
-  private static int sDN;
-  private static int sDO;
-  private static boolean sDP;
-  private static long sDS;
-  public static c.a sEc;
-  private static c.a sEd;
-  private static boolean sEe;
-  private static long sEf;
-  private static boolean sEg;
-  public static boolean sEh;
-  private static long sEi;
-  private static boolean sEj;
-  private static List<String> sEk;
-  public static final c sEl;
+  private static boolean mwk;
   
   static
   {
-    AppMethodBeat.i(109796);
-    sEl = new c();
-    AppMethodBeat.o(109796);
+    AppMethodBeat.i(119418);
+    SqL = new c();
+    AppMethodBeat.o(119418);
   }
   
-  public static void aH(String paramString, long paramLong)
+  public static void bJ(String paramString, long paramLong)
   {
-    AppMethodBeat.i(109794);
-    a.f.b.j.q(paramString, "user");
-    if (sDM <= 0L)
+    AppMethodBeat.i(119416);
+    s.u(paramString, "user");
+    if (Fpo <= 0L)
     {
-      AppMethodBeat.o(109794);
+      AppMethodBeat.o(119416);
       return;
     }
-    if (sDF != paramLong)
+    if (Sqr != paramLong)
     {
-      sDF = 0L;
-      ab.i("MicroMsg.StoryBrowseIDKeyStat", "reset storyId markStoryId: " + sDF + " storyId " + paramLong);
-      AppMethodBeat.o(109794);
+      Sqr = 0L;
+      Log.i("MicroMsg.StoryBrowseIDKeyStat", "reset storyId markStoryId: " + Sqr + " storyId " + paramLong);
+      AppMethodBeat.o(119416);
       return;
     }
-    sDH = bo.aoy();
-    ab.v("MicroMsg.StoryBrowseIDKeyStat", "playUser onResumeTime " + sDH);
-    c.a locala = sEd;
-    if ((locala != null) && (a.f.b.j.e(locala.cDt, paramString)))
+    Sqs = Util.nowMilliSecond();
+    Log.v("MicroMsg.StoryBrowseIDKeyStat", s.X("playUser onResumeTime ", Long.valueOf(Sqs)));
+    a locala = SqN;
+    if ((locala != null) && (s.p(locala.hVQ, paramString)))
     {
-      Object localObject = com.tencent.mm.plugin.story.model.j.svi;
-      localObject = j.b.cAC().acU(paramString);
-      ab.i("MicroMsg.StoryBrowseIDKeyStat", "preLoadCache > 0 then " + paramString + " preload " + bo.hk(((f)localObject).cES()) + " canPlay: " + sEg);
-      if (((f)localObject).cES() > 0L)
+      Object localObject = StoryCore.SjP;
+      localObject = StoryCore.b.hvS().bbJ(paramString);
+      Log.i("MicroMsg.StoryBrowseIDKeyStat", "preLoadCache > 0 then " + paramString + " preload " + Util.getSizeKB(((f)localObject).hzl()) + " canPlay: " + SqQ);
+      if (((f)localObject).hzl() > 0L)
       {
         if (locala.scene != 1) {
-          break label249;
+          break label242;
         }
-        h.qsU.j(988L, 21L, 1L);
-        if (sEg) {
-          h.qsU.j(988L, 27L, 1L);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 21L, 1L);
+        if (SqQ) {
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 27L, 1L);
         }
       }
     }
     for (;;)
     {
-      sEc = null;
-      sEd = null;
-      AppMethodBeat.o(109794);
+      SqM = null;
+      SqN = null;
+      AppMethodBeat.o(119416);
       return;
-      label249:
+      label242:
       if (locala.scene == 2)
       {
-        h.qsU.j(988L, 22L, 1L);
-        if (sEg) {
-          h.qsU.j(988L, 28L, 1L);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 22L, 1L);
+        if (SqQ) {
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 28L, 1L);
         }
       }
     }
   }
   
-  public static void ads(String paramString)
+  public static void bcb(String paramString)
   {
-    AppMethodBeat.i(109786);
-    a.f.b.j.q(paramString, "user");
-    ab.i("MicroMsg.StoryBrowseIDKeyStat", "chattingRightNoCache ".concat(String.valueOf(paramString)));
-    sEe = false;
-    sEd = new c.a(paramString, 1);
-    h.qsU.j(988L, 15L, 1L);
-    AppMethodBeat.o(109786);
+    AppMethodBeat.i(119408);
+    s.u(paramString, "user");
+    Log.i("MicroMsg.StoryBrowseIDKeyStat", s.X("chattingRightNoCache ", paramString));
+    SqO = false;
+    SqN = new a(paramString, 1);
+    com.tencent.mm.plugin.report.service.h.OAn.p(988L, 15L, 1L);
+    AppMethodBeat.o(119408);
   }
   
-  public static void adt(String paramString)
+  public static void bcc(String paramString)
   {
-    AppMethodBeat.i(109787);
-    a.f.b.j.q(paramString, "user");
-    ab.i("MicroMsg.StoryBrowseIDKeyStat", "chattingDoubleCheckNoCache ".concat(String.valueOf(paramString)));
-    sEe = false;
-    sEd = new c.a(paramString, 2);
-    h.qsU.j(988L, 16L, 1L);
-    AppMethodBeat.o(109787);
+    AppMethodBeat.i(119409);
+    s.u(paramString, "user");
+    Log.i("MicroMsg.StoryBrowseIDKeyStat", s.X("chattingDoubleCheckNoCache ", paramString));
+    SqO = false;
+    SqN = new a(paramString, 2);
+    com.tencent.mm.plugin.report.service.h.OAn.p(988L, 16L, 1L);
+    AppMethodBeat.o(119409);
   }
   
-  public static void b(ArrayList<ArrayList<com.tencent.mm.plugin.story.model.d.g>> paramArrayList, int paramInt1, int paramInt2)
+  public static void clean()
   {
-    AppMethodBeat.i(109789);
-    a.f.b.j.q(paramArrayList, "group");
-    if (sDM <= 0L)
+    AppMethodBeat.i(119404);
+    SqR = false;
+    mwk = true;
+    Fpp = 0L;
+    SqQ = false;
+    SqP = 0L;
+    Sqs = 0L;
+    Fpo = 0L;
+    Sqz = false;
+    Sqx = -1;
+    Sqy = -1;
+    SqC = 0L;
+    SqT = false;
+    isWaiting = false;
+    SqU = (List)new ArrayList();
+    SqM = new a("", 1);
+    AppMethodBeat.o(119404);
+  }
+  
+  public static void g(ArrayList<ArrayList<com.tencent.mm.plugin.story.model.d.h>> paramArrayList, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(119411);
+    s.u(paramArrayList, "group");
+    if (Fpo <= 0L)
     {
-      AppMethodBeat.o(109789);
+      AppMethodBeat.o(119411);
       return;
     }
-    ab.v("MicroMsg.StoryBrowseIDKeyStat", " last_selectedColumn:" + sDO + ",last_selectedRow:" + sDN + " selectedRow:" + paramInt1 + ",selectedColumn:" + paramInt2);
+    Log.v("MicroMsg.StoryBrowseIDKeyStat", " last_selectedColumn:" + Sqy + ",last_selectedRow:" + Sqx + " selectedRow:" + paramInt1 + ",selectedColumn:" + paramInt2);
     int i;
     int j;
     if (paramArrayList.size() > 0) {
       if ((((ArrayList)paramArrayList.get(paramInt1)).size() > 0) && (paramInt2 + 1 < ((ArrayList)paramArrayList.get(paramInt1)).size()))
       {
-        if (!sDP) {
-          h.qsU.j(988L, 42L, 1L);
+        if (!Sqz) {
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 42L, 1L);
         }
         i = 1;
         if (paramInt1 + 1 < paramArrayList.size())
         {
-          if (!sDP) {
-            h.qsU.j(988L, 43L, 1L);
+          if (!Sqz) {
+            com.tencent.mm.plugin.report.service.h.OAn.p(988L, 43L, 1L);
           }
           j = 1;
           label176:
-          sDP = true;
+          Sqz = true;
         }
       }
     }
     for (;;)
     {
-      if ((sDO != -1) && (sDN != -1))
+      if ((Sqy != -1) && (Sqx != -1))
       {
         if (isWaiting)
         {
-          h.qsU.j(988L, 40L, 1L);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 40L, 1L);
           isWaiting = false;
         }
-        if (paramInt1 != sDN)
+        if (paramInt1 == Sqx) {
+          break label726;
+        }
+        if (i != 0) {
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 46L, 1L);
+        }
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 47L, 1L);
+        i = paramInt1 - Sqx;
+        if (i != 1) {
+          break label552;
+        }
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 90L, 1L);
+        if (paramArrayList.size() <= 0) {}
+      }
+      int k;
+      for (i = 0;; i = k)
+      {
+        k = i + 1;
+        if ((paramInt1 + i < paramArrayList.size()) && (((ArrayList)paramArrayList.get(paramInt1 + i)).size() > 0))
         {
-          if (i != 0) {
-            h.qsU.j(988L, 46L, 1L);
-          }
-          h.qsU.j(988L, 47L, 1L);
-          i = paramInt1 - sDN;
-          if (i == 1)
+          Object localObject1 = ((com.tencent.mm.plugin.story.model.d.h)((ArrayList)paramArrayList.get(paramInt1 + i)).get(0)).Smr;
+          if ((localObject1 != null) && (((com.tencent.mm.plugin.story.model.d.j)localObject1).username != null) && (SqU != null))
           {
-            h.qsU.j(988L, 90L, 1L);
-            if (paramArrayList.size() <= 0) {
-              break label734;
+            Object localObject2 = SqU;
+            if ((localObject2 == null) || (((List)localObject2).contains(((com.tencent.mm.plugin.story.model.d.j)localObject1).username) != true)) {
+              break label618;
             }
-            i = 0;
-            label291:
-            if (i >= 3) {
-              break label734;
-            }
-            if ((paramInt1 + i < paramArrayList.size()) && (((ArrayList)paramArrayList.get(paramInt1 + i)).size() > 0))
+            j = 1;
+            label396:
+            if (j != 0)
             {
-              Object localObject1 = ((com.tencent.mm.plugin.story.model.d.g)((ArrayList)paramArrayList.get(paramInt1 + i)).get(0)).syr;
-              if ((localObject1 != null) && (((i)localObject1).username != null) && (sEk != null))
+              localObject2 = r.Slb;
+              localObject1 = r.a((com.tencent.mm.plugin.story.model.d.j)localObject1);
+              if (!((n)localObject1).hzD())
               {
-                Object localObject2 = sEk;
-                if ((localObject2 != null) && (((List)localObject2).contains(((i)localObject1).username) == true))
-                {
-                  localObject2 = s.swk;
-                  localObject1 = s.a((i)localObject1);
-                  if (!((n)localObject1).cFk())
-                  {
-                    if (((n)localObject1).field_totalSize <= 0) {
-                      break label576;
-                    }
-                    float f = ((n)localObject1).field_cacheSize / ((n)localObject1).field_totalSize;
-                    localObject1 = p.sUH;
-                    if (f * 100.0F < p.cGg().sTc) {
-                      break label576;
-                    }
-                  }
-                  j = 1;
-                  label459:
-                  if (j == 1)
-                  {
-                    if (i != 0) {
-                      break label582;
-                    }
-                    h.qsU.j(988L, 80L, 1L);
-                  }
-                  label483:
-                  if (i != 0) {
-                    break label626;
-                  }
-                  h.qsU.j(988L, 84L, 1L);
+                if (((n)localObject1).field_totalSize <= 0) {
+                  break label624;
+                }
+                float f = ((n)localObject1).field_cacheSize / ((n)localObject1).field_totalSize;
+                localObject1 = com.tencent.mm.plugin.story.ui.view.gallery.j.SCD;
+                if (f * 100.0F < com.tencent.mm.plugin.story.ui.view.gallery.j.hAl().SBq) {
+                  break label624;
                 }
               }
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            break label291;
-            if (i == 2)
-            {
-              h.qsU.j(988L, 91L, 1L);
-              break;
-            }
-            if (i == 3)
-            {
-              h.qsU.j(988L, 92L, 1L);
-              break;
-            }
-            if (i < 4) {
-              break;
-            }
-            h.qsU.j(988L, 93L, 1L);
-            break;
-            label576:
-            j = 0;
-            break label459;
-            label582:
-            if (i == 1)
-            {
-              h.qsU.j(988L, 81L, 1L);
-              break label483;
-            }
-            if (i != 2) {
-              break label483;
-            }
-            h.qsU.j(988L, 82L, 1L);
-            break label483;
-            label626:
-            if (i == 1) {
-              h.qsU.j(988L, 85L, 1L);
-            } else if (i == 2) {
-              h.qsU.j(988L, 86L, 1L);
+              j = 1;
+              label467:
+              if (j != 1) {}
             }
           }
         }
-        else if (paramInt2 != sDO)
+        switch (i)
         {
-          if (j != 0) {
-            h.qsU.j(988L, 44L, 1L);
+        default: 
+          label528:
+          switch (i)
+          {
+          default: 
+            label500:
+            if (k < 3) {
+              continue;
+            }
           }
-          h.qsU.j(988L, 45L, 1L);
-          i = paramInt2 - sDO;
-          if (i != 1) {
-            break label752;
-          }
-          h.qsU.j(988L, 94L, 1L);
+          break;
         }
-      }
-      for (;;)
-      {
-        label734:
-        cCF();
-        sDO = paramInt2;
-        sDN = paramInt1;
-        AppMethodBeat.o(109789);
-        return;
-        label752:
-        if (i == 2) {
-          h.qsU.j(988L, 95L, 1L);
-        } else if (i == 3) {
-          h.qsU.j(988L, 96L, 1L);
-        } else if (i >= 4) {
-          h.qsU.j(988L, 97L, 1L);
+        for (;;)
+        {
+          hxF();
+          Sqy = paramInt2;
+          Sqx = paramInt1;
+          AppMethodBeat.o(119411);
+          return;
+          label552:
+          if (i == 2)
+          {
+            com.tencent.mm.plugin.report.service.h.OAn.p(988L, 91L, 1L);
+            break;
+          }
+          if (i == 3)
+          {
+            com.tencent.mm.plugin.report.service.h.OAn.p(988L, 92L, 1L);
+            break;
+          }
+          if (i < 4) {
+            break;
+          }
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 93L, 1L);
+          break;
+          label618:
+          j = 0;
+          break label396;
+          label624:
+          j = 0;
+          break label467;
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 80L, 1L);
+          break label500;
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 81L, 1L);
+          break label500;
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 82L, 1L);
+          break label500;
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 84L, 1L);
+          break label528;
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 85L, 1L);
+          break label528;
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 86L, 1L);
+          break label528;
+          label726:
+          if (paramInt2 != Sqy)
+          {
+            if (j != 0) {
+              com.tencent.mm.plugin.report.service.h.OAn.p(988L, 44L, 1L);
+            }
+            com.tencent.mm.plugin.report.service.h.OAn.p(988L, 45L, 1L);
+            i = paramInt2 - Sqy;
+            if (i == 1) {
+              com.tencent.mm.plugin.report.service.h.OAn.p(988L, 94L, 1L);
+            } else if (i == 2) {
+              com.tencent.mm.plugin.report.service.h.OAn.p(988L, 95L, 1L);
+            } else if (i == 3) {
+              com.tencent.mm.plugin.report.service.h.OAn.p(988L, 96L, 1L);
+            } else if (i >= 4) {
+              com.tencent.mm.plugin.report.service.h.OAn.p(988L, 97L, 1L);
+            }
+          }
         }
       }
       j = 0;
@@ -296,214 +315,208 @@ public final class c
     }
   }
   
-  public static void cCB()
+  public static void hxA()
   {
-    AppMethodBeat.i(109793);
-    ab.v("MicroMsg.StoryBrowseIDKeyStat", "makeResumeTime onResumeTime " + sDG + " onPlayUser " + sDH);
-    sDG = bo.aoy();
-    AppMethodBeat.o(109793);
+    AppMethodBeat.i(119415);
+    Log.v("MicroMsg.StoryBrowseIDKeyStat", "makeResumeTime onResumeTime " + Fpp + " onPlayUser " + Sqs);
+    Fpp = Util.nowMilliSecond();
+    AppMethodBeat.o(119415);
   }
   
-  public static void cCC()
+  public static void hxB()
   {
-    AppMethodBeat.i(109795);
-    sDM = bo.aoy();
-    AppMethodBeat.o(109795);
+    AppMethodBeat.i(119417);
+    Fpo = Util.nowMilliSecond();
+    AppMethodBeat.o(119417);
   }
   
-  public static void cCD()
+  public static void hxD()
   {
-    AppMethodBeat.i(109784);
-    ab.i("MicroMsg.StoryBrowseIDKeyStat", "chattingRightHasCache");
-    sEe = true;
-    h.qsU.j(988L, 11L, 1L);
-    AppMethodBeat.o(109784);
+    AppMethodBeat.i(119406);
+    Log.i("MicroMsg.StoryBrowseIDKeyStat", "chattingRightHasCache");
+    SqO = true;
+    com.tencent.mm.plugin.report.service.h.OAn.p(988L, 11L, 1L);
+    AppMethodBeat.o(119406);
   }
   
-  public static void cCE()
+  public static void hxE()
   {
-    AppMethodBeat.i(109785);
-    ab.i("MicroMsg.StoryBrowseIDKeyStat", "chattingDoubleCheckHasCache");
-    sEe = true;
-    h.qsU.j(988L, 12L, 1L);
-    AppMethodBeat.o(109785);
+    AppMethodBeat.i(119407);
+    Log.i("MicroMsg.StoryBrowseIDKeyStat", "chattingDoubleCheckHasCache");
+    SqO = true;
+    com.tencent.mm.plugin.report.service.h.OAn.p(988L, 12L, 1L);
+    AppMethodBeat.o(119407);
   }
   
-  private static void cCF()
+  private static void hxF()
   {
-    AppMethodBeat.i(109790);
-    ab.v("MicroMsg.StoryBrowseIDKeyStat", "checkStayTime1 onStayTime " + sDS + " hasStartHttp " + sEj + " onPlayCostTime: " + sEf);
-    if ((sDS == 0L) && (sEj))
+    AppMethodBeat.i(119412);
+    Log.v("MicroMsg.StoryBrowseIDKeyStat", "checkStayTime1 onStayTime " + SqC + " hasStartHttp " + SqT + " onPlayCostTime: " + SqP);
+    if ((SqC == 0L) && (SqT))
     {
-      if (sEf == 0L)
+      if (SqP == 0L)
       {
-        sDS = bo.hl(sDG);
-        h.qsU.j(988L, 63L, 1L);
-        h.qsU.j(988L, 62L, sDS);
-        AppMethodBeat.o(109790);
+        SqC = Util.milliSecondsToNow(Fpp);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 63L, 1L);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 62L, SqC);
+        AppMethodBeat.o(119412);
         return;
       }
-      sDS = bo.hl(sEi);
-      h.qsU.j(988L, 61L, 1L);
-      h.qsU.j(988L, 60L, sDS);
+      SqC = Util.milliSecondsToNow(SqS);
+      com.tencent.mm.plugin.report.service.h.OAn.p(988L, 61L, 1L);
+      com.tencent.mm.plugin.report.service.h.OAn.p(988L, 60L, SqC);
     }
-    AppMethodBeat.o(109790);
+    AppMethodBeat.o(119412);
   }
   
-  public static void cCG()
+  public static void hxG()
   {
-    AppMethodBeat.i(109792);
-    if (sDM <= 0L)
+    AppMethodBeat.i(119414);
+    if (Fpo <= 0L)
     {
-      AppMethodBeat.o(109792);
+      AppMethodBeat.o(119414);
       return;
     }
-    ab.i("MicroMsg.StoryBrowseIDKeyStat", "startHttp");
-    sEj = true;
-    AppMethodBeat.o(109792);
+    Log.i("MicroMsg.StoryBrowseIDKeyStat", "startHttp");
+    SqT = true;
+    AppMethodBeat.o(119414);
   }
   
-  public static void clean()
+  public static void lk(List<String> paramList)
   {
-    AppMethodBeat.i(109782);
-    sEh = false;
-    eBr = true;
-    sDG = 0L;
-    sEg = false;
-    sEf = 0L;
-    sDH = 0L;
-    sDM = 0L;
-    sDP = false;
-    sDN = -1;
-    sDO = -1;
-    sDS = 0L;
-    sEj = false;
-    isWaiting = false;
-    sEk = (List)new ArrayList();
-    sEc = new c.a("", 1);
-    AppMethodBeat.o(109782);
+    AppMethodBeat.i(119405);
+    s.u(paramList, "unreadList");
+    SqU = paramList;
+    AppMethodBeat.o(119405);
   }
   
-  public static void dE(List<String> paramList)
+  public static void onDestroy()
   {
-    AppMethodBeat.i(109783);
-    a.f.b.j.q(paramList, "unreadList");
-    sEk = paramList;
-    AppMethodBeat.o(109783);
+    AppMethodBeat.i(119413);
+    if (Fpo <= 0L)
+    {
+      AppMethodBeat.o(119413);
+      return;
+    }
+    hxF();
+    AppMethodBeat.o(119413);
   }
   
-  public static void mG(long paramLong)
+  public static void vQ(long paramLong)
   {
-    sDF = paramLong;
+    Sqr = paramLong;
   }
   
-  public static void mI(long paramLong)
+  public static void vS(long paramLong)
   {
-    if (sDM <= 0L) {}
-    while ((paramLong == 0L) || (paramLong != sDF) || (sEf > 0L) || (sDG <= 0L)) {
+    if (Fpo <= 0L) {}
+    while ((paramLong == 0L) || (paramLong != Sqr) || (SqP > 0L) || (Fpp <= 0L)) {
       return;
     }
     isWaiting = true;
   }
   
-  public static void mJ(long paramLong)
+  public static void vT(long paramLong)
   {
-    AppMethodBeat.i(109788);
-    if (sDM <= 0L)
+    AppMethodBeat.i(119410);
+    if (Fpo <= 0L)
     {
-      AppMethodBeat.o(109788);
+      AppMethodBeat.o(119410);
       return;
     }
-    sEg = true;
-    if (sEf <= 0L) {
-      ab.v("MicroMsg.StoryBrowseIDKeyStat", "storyId  " + paramLong + " markStoryId " + sDF + " onPlayCostTime " + sEf + " onResumeTime " + sDG + "  onPlayUser " + sDH);
+    SqQ = true;
+    if (SqP <= 0L) {
+      Log.v("MicroMsg.StoryBrowseIDKeyStat", "storyId  " + paramLong + " markStoryId " + Sqr + " onPlayCostTime " + SqP + " onResumeTime " + Fpp + "  onPlayUser " + Sqs);
     }
-    if ((paramLong != 0L) && (paramLong == sDF) && (sEf <= 0L) && (sDG > 0L))
+    if ((paramLong != 0L) && (paramLong == Sqr) && (SqP <= 0L) && (Fpp > 0L))
     {
-      sEf = bo.hl(sDG);
-      sEi = bo.aoy();
-      ab.i("MicroMsg.StoryBrowseIDKeyStat", "canPlay " + sEf);
+      SqP = Util.milliSecondsToNow(Fpp);
+      SqS = Util.nowMilliSecond();
+      Log.i("MicroMsg.StoryBrowseIDKeyStat", s.X("canPlay ", Long.valueOf(SqP)));
       isWaiting = false;
-      if (sEh) {
-        if (sEe)
+      if (SqR) {
+        if (SqO)
         {
-          h.qsU.j(988L, 32L, sEf);
-          h.qsU.j(988L, 33L, 1L);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 32L, SqP);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 33L, 1L);
         }
       }
       for (;;)
       {
-        h.qsU.j(988L, 71L, sEf);
-        h.qsU.j(988L, 70L, 1L);
-        if ((NetStatusUtil.isWifi(ah.getContext())) || (NetStatusUtil.is4G(ah.getContext())))
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 71L, SqP);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 70L, 1L);
+        if ((NetStatusUtil.isWifi(MMApplicationContext.getContext())) || (NetStatusUtil.is4G(MMApplicationContext.getContext())))
         {
-          h.qsU.j(988L, 73L, sEf);
-          h.qsU.j(988L, 72L, 1L);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 73L, SqP);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 72L, 1L);
         }
-        if (sEf > 400L) {
+        if (SqP > 400L) {
           break;
         }
-        h.qsU.j(988L, 100L, sEf);
-        AppMethodBeat.o(109788);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 100L, SqP);
+        AppMethodBeat.o(119410);
         return;
-        h.qsU.j(988L, 36L, sEf);
-        h.qsU.j(988L, 37L, 1L);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 36L, SqP);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 37L, 1L);
         continue;
-        if (sEe)
+        if (SqO)
         {
-          h.qsU.j(988L, 30L, sEf);
-          h.qsU.j(988L, 31L, 1L);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 30L, SqP);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 31L, 1L);
         }
         else
         {
-          h.qsU.j(988L, 34L, sEf);
-          h.qsU.j(988L, 35L, 1L);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 34L, SqP);
+          com.tencent.mm.plugin.report.service.h.OAn.p(988L, 35L, 1L);
         }
       }
-      if (sEf <= 800L)
+      if (SqP <= 800L)
       {
-        h.qsU.j(988L, 101L, sEf);
-        AppMethodBeat.o(109788);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 101L, SqP);
+        AppMethodBeat.o(119410);
         return;
       }
-      if (sEf <= 1600L)
+      if (SqP <= 1600L)
       {
-        h.qsU.j(988L, 102L, sEf);
-        AppMethodBeat.o(109788);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 102L, SqP);
+        AppMethodBeat.o(119410);
         return;
       }
-      if (sEf <= 3200L)
+      if (SqP <= 3200L)
       {
-        h.qsU.j(988L, 103L, sEf);
-        AppMethodBeat.o(109788);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 103L, SqP);
+        AppMethodBeat.o(119410);
         return;
       }
-      if (sEf <= 5000L)
+      if (SqP <= 5000L)
       {
-        h.qsU.j(988L, 104L, sEf);
-        AppMethodBeat.o(109788);
+        com.tencent.mm.plugin.report.service.h.OAn.p(988L, 104L, SqP);
+        AppMethodBeat.o(119410);
         return;
       }
-      h.qsU.j(988L, 105L, sEf);
+      com.tencent.mm.plugin.report.service.h.OAn.p(988L, 105L, SqP);
     }
-    AppMethodBeat.o(109788);
+    AppMethodBeat.o(119410);
   }
   
-  public static void onDestroy()
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/report/StoryBrowseIDKeyStat$CurrentPlayer;", "", "user", "", "scene", "", "(Ljava/lang/String;I)V", "getScene", "()I", "getUser", "()Ljava/lang/String;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    AppMethodBeat.i(109791);
-    if (sDM <= 0L)
+    final String hVQ;
+    final int scene;
+    
+    public a(String paramString, int paramInt)
     {
-      AppMethodBeat.o(109791);
-      return;
+      AppMethodBeat.i(119403);
+      this.hVQ = paramString;
+      this.scene = paramInt;
+      AppMethodBeat.o(119403);
     }
-    cCF();
-    AppMethodBeat.o(109791);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.g.c
  * JD-Core Version:    0.7.0.1
  */

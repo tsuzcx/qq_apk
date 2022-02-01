@@ -1,390 +1,323 @@
 package com.tencent.liteav.renderer;
 
 import android.graphics.SurfaceTexture;
-import android.opengl.GLUtils;
+import android.view.Surface;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.c;
+import com.tencent.liteav.basic.util.TXCCommonUtil;
+import com.tencent.liteav.basic.util.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 class b
   extends Thread
 {
-  private int a;
-  private int b;
-  private WeakReference<a> c;
-  private EGL10 d;
-  private EGLContext e;
-  private EGLDisplay f;
-  private EGLSurface g;
-  private EGLConfig h;
-  private WeakReference<SurfaceTexture> i;
-  private boolean j;
-  private int k;
-  private int l;
-  private Object m;
+  private WeakReference<a> a;
+  private volatile boolean b;
+  private int c;
+  private int d;
+  private final Semaphore e;
+  private boolean f;
+  private c g;
+  private com.tencent.liteav.basic.opengl.b h;
+  private Object i;
   
   b(WeakReference<a> paramWeakReference)
   {
-    AppMethodBeat.i(146751);
-    this.a = 12440;
-    this.b = 4;
-    this.j = false;
-    this.k = 1280;
-    this.l = 720;
-    this.m = new Object();
-    this.c = paramWeakReference;
-    AppMethodBeat.o(146751);
+    AppMethodBeat.i(16890);
+    this.b = false;
+    this.c = 1280;
+    this.d = 720;
+    this.e = new Semaphore(0);
+    this.f = false;
+    this.g = null;
+    this.h = null;
+    this.i = null;
+    this.a = paramWeakReference;
+    AppMethodBeat.o(16890);
   }
   
-  private EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext)
+  private boolean a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67270);
-    paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, paramEGLContext, new int[] { this.a, 2, 12344 });
-    AppMethodBeat.o(67270);
-    return paramEGL10;
-  }
-  
-  private void d()
-  {
-    AppMethodBeat.i(67264);
+    AppMethodBeat.i(229693);
     try
     {
-      a locala = (a)this.c.get();
-      if (locala != null) {
-        locala.c();
-      }
-      AppMethodBeat.o(67264);
-      return;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(67264);
-    }
-  }
-  
-  private void e()
-  {
-    AppMethodBeat.i(146753);
-    try
-    {
-      a locala = (a)this.c.get();
-      if (locala != null) {
-        locala.d();
-      }
-      AppMethodBeat.o(146753);
-      return;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(146753);
-    }
-  }
-  
-  private boolean f()
-  {
-    AppMethodBeat.i(146754);
-    try
-    {
-      if (this.c != null)
+      if (this.a != null)
       {
-        a locala = (a)this.c.get();
+        a locala = (a)this.a.get();
         if (locala != null)
         {
-          boolean bool = locala.e();
-          AppMethodBeat.o(146754);
+          boolean bool = locala.b(paramInt1, paramInt2);
+          AppMethodBeat.o(229693);
           return bool;
         }
       }
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(146754);
+      TXCLog.e("TXCVideoRenderThread", "drawFrame failed." + localException.getMessage());
+      AppMethodBeat.o(229693);
     }
     return false;
   }
   
+  private e f()
+  {
+    AppMethodBeat.i(229683);
+    if (this.h != null)
+    {
+      locale = this.h.f();
+      AppMethodBeat.o(229683);
+      return locale;
+    }
+    if (this.g != null)
+    {
+      locale = this.g.c();
+      AppMethodBeat.o(229683);
+      return locale;
+    }
+    TXCOpenGlUtils.a("getSurfaceSize");
+    e locale = new e(0, 0);
+    AppMethodBeat.o(229683);
+    return locale;
+  }
+  
   private void g()
   {
-    AppMethodBeat.i(67267);
-    if (this.c != null)
+    AppMethodBeat.i(16897);
+    try
     {
-      a locala = (a)this.c.get();
+      a locala = (a)this.a.get();
       if (locala != null) {
-        locala.o();
+        locala.a(this);
       }
+      AppMethodBeat.o(16897);
+      return;
     }
-    AppMethodBeat.o(67267);
+    catch (Exception localException)
+    {
+      TXCLog.e("TXCVideoRenderThread", "init texture render failed.", localException);
+      AppMethodBeat.o(16897);
+    }
   }
   
   private void h()
   {
-    AppMethodBeat.i(67268);
-    if (this.c != null)
+    AppMethodBeat.i(16898);
+    try
     {
-      a locala = (a)this.c.get();
+      a locala = (a)this.a.get();
       if (locala != null) {
-        locala.p();
+        locala.b(this);
       }
+      AppMethodBeat.o(16898);
+      return;
     }
-    AppMethodBeat.o(67268);
+    catch (Exception localException)
+    {
+      TXCLog.e("TXCVideoRenderThread", "destroy texture render failed", localException);
+      AppMethodBeat.o(16898);
+    }
   }
   
   private void i()
   {
-    AppMethodBeat.i(67269);
-    Object localObject = (a)this.c.get();
-    if (localObject == null)
+    AppMethodBeat.i(16899);
+    if (this.a != null)
     {
-      AppMethodBeat.o(67269);
-      return;
-    }
-    this.d = ((EGL10)EGLContext.getEGL());
-    this.f = this.d.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    int[] arrayOfInt = new int[2];
-    this.d.eglInitialize(this.f, arrayOfInt);
-    this.h = k();
-    localObject = ((a)localObject).f();
-    if (localObject != null) {
-      this.i = new WeakReference(localObject);
-    }
-    int n;
-    int i1;
-    for (this.g = this.d.eglCreateWindowSurface(this.f, this.h, localObject, null);; this.g = this.d.eglCreatePbufferSurface(this.f, this.h, new int[] { 12375, n, 12374, i1, 12344 }))
-    {
-      this.e = a(this.d, this.f, this.h, EGL10.EGL_NO_CONTEXT);
-      TXCLog.w("TXCVideoRenderThread", "vrender: init egl @context=" + this.e + ",surface=" + this.g);
-      try
-      {
-        if ((this.g != null) && (this.g != EGL10.EGL_NO_SURFACE)) {
-          break;
-        }
-        localObject = new RuntimeException("GL error:" + GLUtils.getEGLErrorString(this.d.eglGetError()));
-        AppMethodBeat.o(67269);
-        throw ((Throwable)localObject);
+      a locala = (a)this.a.get();
+      if (locala != null) {
+        locala.j();
       }
-      catch (Exception localException)
-      {
-        AppMethodBeat.o(67269);
-        return;
-      }
-      n = this.k;
-      i1 = this.l;
     }
-    if (!this.d.eglMakeCurrent(this.f, this.g, this.g, this.e))
-    {
-      RuntimeException localRuntimeException = new RuntimeException("GL Make current Error" + GLUtils.getEGLErrorString(this.d.eglGetError()));
-      AppMethodBeat.o(67269);
-      throw localRuntimeException;
-    }
-    AppMethodBeat.o(67269);
+    AppMethodBeat.o(16899);
   }
   
   private void j()
   {
-    AppMethodBeat.i(146755);
-    EGL10 localEGL10 = this.d;
-    EGLDisplay localEGLDisplay = this.f;
-    EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
-    localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
-    this.d.eglDestroyContext(this.f, this.e);
-    this.d.eglDestroySurface(this.f, this.g);
-    this.d.eglTerminate(this.f);
-    this.i = null;
-    TXCLog.w("TXCVideoRenderThread", "vrender: uninit egl @context=" + this.e + ",surface=" + this.g);
-    AppMethodBeat.o(146755);
+    AppMethodBeat.i(16900);
+    if (this.a != null)
+    {
+      a locala = (a)this.a.get();
+      if (locala != null) {
+        locala.k();
+      }
+    }
+    AppMethodBeat.o(16900);
   }
   
-  private EGLConfig k()
+  private void k()
   {
-    AppMethodBeat.i(146756);
-    Object localObject = new int[1];
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = l();
-    if (!this.d.eglChooseConfig(this.f, arrayOfInt, arrayOfEGLConfig, 1, (int[])localObject))
+    AppMethodBeat.i(229698);
+    Object localObject = (a)this.a.get();
+    if (localObject == null)
     {
-      localObject = new IllegalArgumentException("Failed to choose config:" + GLUtils.getEGLErrorString(this.d.eglGetError()));
-      AppMethodBeat.o(146756);
-      throw ((Throwable)localObject);
+      AppMethodBeat.o(229698);
+      return;
     }
-    if (localObject[0] > 0)
+    localObject = ((a)localObject).c();
+    if (localObject != null) {}
+    for (localObject = new Surface((SurfaceTexture)localObject);; localObject = null)
     {
-      localObject = arrayOfEGLConfig[0];
-      AppMethodBeat.o(146756);
+      if ((this.i == null) || ((this.i instanceof javax.microedition.khronos.egl.EGLContext))) {
+        this.h = com.tencent.liteav.basic.opengl.b.a(null, (javax.microedition.khronos.egl.EGLContext)this.i, (Surface)localObject, this.c, this.d);
+      }
+      for (;;)
+      {
+        TXCLog.w("TXCVideoRenderThread", "vrender: init egl share context " + this.i + ", create context" + a());
+        e();
+        AppMethodBeat.o(229698);
+        return;
+        this.g = c.a(null, (android.opengl.EGLContext)this.i, (Surface)localObject, this.c, this.d);
+      }
+    }
+  }
+  
+  private void l()
+  {
+    AppMethodBeat.i(229699);
+    TXCLog.w("TXCVideoRenderThread", "vrender: uninit egl " + a());
+    if (this.h != null)
+    {
+      this.h.c();
+      this.h = null;
+    }
+    if (this.g != null)
+    {
+      this.g.d();
+      this.g = null;
+    }
+    AppMethodBeat.o(229699);
+  }
+  
+  public Object a()
+  {
+    AppMethodBeat.i(229705);
+    Object localObject;
+    if (this.h != null)
+    {
+      localObject = this.h.d();
+      AppMethodBeat.o(229705);
       return localObject;
     }
-    AppMethodBeat.o(146756);
+    if (this.g != null)
+    {
+      localObject = this.g.f();
+      AppMethodBeat.o(229705);
+      return localObject;
+    }
+    AppMethodBeat.o(229705);
     return null;
   }
   
-  private int[] l()
+  public void a(Object paramObject)
   {
-    return new int[] { 12352, this.b, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12326, 0, 12344 };
-  }
-  
-  public EGLContext a()
-  {
-    return this.e;
+    this.i = paramObject;
   }
   
   public void b()
   {
-    AppMethodBeat.i(146752);
-    this.j = false;
+    AppMethodBeat.i(16892);
+    this.b = false;
     c();
-    AppMethodBeat.o(146752);
+    AppMethodBeat.o(16892);
   }
   
   public void c()
   {
-    AppMethodBeat.i(67263);
-    synchronized (this.m)
-    {
-      this.m.notifyAll();
-      AppMethodBeat.o(67263);
-      return;
-    }
+    AppMethodBeat.i(16893);
+    this.e.release();
+    AppMethodBeat.o(16893);
   }
   
-  /* Error */
+  public void d()
+  {
+    AppMethodBeat.i(16894);
+    if (this.h != null) {
+      this.h.a();
+    }
+    if (this.g != null) {
+      this.g.e();
+    }
+    AppMethodBeat.o(16894);
+  }
+  
+  public void e()
+  {
+    AppMethodBeat.i(16895);
+    if (this.h != null) {
+      this.h.b();
+    }
+    if (this.g != null) {
+      this.g.b();
+    }
+    AppMethodBeat.o(16895);
+  }
+  
   public void run()
   {
-    // Byte code:
-    //   0: ldc 242
-    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: new 149	java/lang/StringBuilder
-    //   9: dup
-    //   10: ldc 244
-    //   12: invokespecial 154	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   15: aload_0
-    //   16: invokevirtual 248	com/tencent/liteav/renderer/b:getId	()J
-    //   19: invokevirtual 251	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   22: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokevirtual 254	com/tencent/liteav/renderer/b:setName	(Ljava/lang/String;)V
-    //   28: aload_0
-    //   29: iconst_1
-    //   30: putfield 45	com/tencent/liteav/renderer/b:j	Z
-    //   33: aload_0
-    //   34: invokespecial 256	com/tencent/liteav/renderer/b:i	()V
-    //   37: aload_0
-    //   38: invokespecial 257	com/tencent/liteav/renderer/b:d	()V
-    //   41: aload_0
-    //   42: invokespecial 259	com/tencent/liteav/renderer/b:g	()V
-    //   45: aload_0
-    //   46: getfield 45	com/tencent/liteav/renderer/b:j	Z
-    //   49: ifeq +119 -> 168
-    //   52: aload_0
-    //   53: invokespecial 261	com/tencent/liteav/renderer/b:f	()Z
-    //   56: ifeq +62 -> 118
-    //   59: aload_0
-    //   60: getfield 106	com/tencent/liteav/renderer/b:d	Ljavax/microedition/khronos/egl/EGL10;
-    //   63: ifnull +55 -> 118
-    //   66: aload_0
-    //   67: getfield 115	com/tencent/liteav/renderer/b:f	Ljavax/microedition/khronos/egl/EGLDisplay;
-    //   70: ifnull +48 -> 118
-    //   73: aload_0
-    //   74: getfield 138	com/tencent/liteav/renderer/b:g	Ljavax/microedition/khronos/egl/EGLSurface;
-    //   77: ifnull +41 -> 118
-    //   80: aload_0
-    //   81: getfield 56	com/tencent/liteav/renderer/b:c	Ljava/lang/ref/WeakReference;
-    //   84: ifnonnull +70 -> 154
-    //   87: aconst_null
-    //   88: astore_1
-    //   89: aload_1
-    //   90: ifnull +28 -> 118
-    //   93: aload_1
-    //   94: invokevirtual 127	com/tencent/liteav/renderer/a:f	()Landroid/graphics/SurfaceTexture;
-    //   97: ifnull +21 -> 118
-    //   100: aload_0
-    //   101: getfield 106	com/tencent/liteav/renderer/b:d	Ljavax/microedition/khronos/egl/EGL10;
-    //   104: aload_0
-    //   105: getfield 115	com/tencent/liteav/renderer/b:f	Ljavax/microedition/khronos/egl/EGLDisplay;
-    //   108: aload_0
-    //   109: getfield 138	com/tencent/liteav/renderer/b:g	Ljavax/microedition/khronos/egl/EGLSurface;
-    //   112: invokeinterface 264 3 0
-    //   117: pop
-    //   118: aload_0
-    //   119: getfield 54	com/tencent/liteav/renderer/b:m	Ljava/lang/Object;
-    //   122: astore_1
-    //   123: aload_1
-    //   124: monitorenter
-    //   125: aload_0
-    //   126: getfield 54	com/tencent/liteav/renderer/b:m	Ljava/lang/Object;
-    //   129: invokevirtual 267	java/lang/Object:wait	()V
-    //   132: aload_1
-    //   133: monitorexit
-    //   134: goto -89 -> 45
-    //   137: astore_2
-    //   138: aload_1
-    //   139: monitorexit
-    //   140: ldc 242
-    //   142: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   145: aload_2
-    //   146: athrow
-    //   147: astore_1
-    //   148: ldc 242
-    //   150: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   153: return
-    //   154: aload_0
-    //   155: getfield 56	com/tencent/liteav/renderer/b:c	Ljava/lang/ref/WeakReference;
-    //   158: invokevirtual 79	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   161: checkcast 81	com/tencent/liteav/renderer/a
-    //   164: astore_1
-    //   165: goto -76 -> 89
-    //   168: aload_0
-    //   169: invokespecial 269	com/tencent/liteav/renderer/b:h	()V
-    //   172: aload_0
-    //   173: invokespecial 271	com/tencent/liteav/renderer/b:e	()V
-    //   176: aload_0
-    //   177: invokespecial 273	com/tencent/liteav/renderer/b:j	()V
-    //   180: ldc 242
-    //   182: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   185: return
-    //   186: astore_1
-    //   187: ldc 242
-    //   189: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   192: aload_1
-    //   193: athrow
-    //   194: astore_2
-    //   195: goto -63 -> 132
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	198	0	this	b
-    //   147	1	1	localException	Exception
-    //   164	1	1	locala	a
-    //   186	7	1	localObject2	Object
-    //   137	9	2	localObject3	Object
-    //   194	1	2	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   125	132	137	finally
-    //   132	134	137	finally
-    //   138	140	137	finally
-    //   28	45	147	java/lang/Exception
-    //   45	87	147	java/lang/Exception
-    //   93	118	147	java/lang/Exception
-    //   118	125	147	java/lang/Exception
-    //   140	147	147	java/lang/Exception
-    //   154	165	147	java/lang/Exception
-    //   168	180	147	java/lang/Exception
-    //   28	45	186	finally
-    //   45	87	186	finally
-    //   93	118	186	finally
-    //   118	125	186	finally
-    //   140	147	186	finally
-    //   154	165	186	finally
-    //   168	180	186	finally
-    //   125	132	194	java/lang/InterruptedException
+    AppMethodBeat.i(16891);
+    setName("VRender-" + getId());
+    try
+    {
+      this.b = true;
+      k();
+      g();
+      i();
+      label46:
+      if (this.b)
+      {
+        Object localObject1 = f();
+        if (a(((e)localObject1).a, ((e)localObject1).b)) {
+          if (this.a != null) {
+            break label185;
+          }
+        }
+        label185:
+        for (localObject1 = null;; localObject1 = (a)this.a.get())
+        {
+          if ((localObject1 != null) && (((a)localObject1).c() != null)) {
+            d();
+          }
+          if (!this.f)
+          {
+            long l1 = System.currentTimeMillis();
+            long l2 = TXCCommonUtil.sStartTime;
+            TXCLog.i("TXCVideoRenderThread", "[statistics firstFrame cost]. firstFrame display cost: " + (l1 - l2) + "," + this);
+            TXCCommonUtil.sStartTime = 0L;
+            this.f = true;
+          }
+          if (!this.b) {
+            break label46;
+          }
+          if (!this.e.tryAcquire(500L, TimeUnit.MILLISECONDS)) {
+            break;
+          }
+          break label46;
+        }
+      }
+      j();
+      h();
+      l();
+      return;
+    }
+    catch (Exception localException)
+    {
+      TXCLog.e("TXCVideoRenderThread", "render failed.", localException);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(16891);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.renderer.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/ja1" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Table" android:maxLines="2" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/elj" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Main Action" android:maxLines="2" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/j5x" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Sub Action" android:maxLines="2" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/ch" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="Action Name" android:maxLines="2" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+</LinearLayout>

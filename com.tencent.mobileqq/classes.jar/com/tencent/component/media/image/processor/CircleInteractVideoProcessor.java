@@ -47,43 +47,50 @@ public class CircleInteractVideoProcessor
     try
     {
       paramDrawable = ImageManager.getInstance().getBitmap(i, i, Bitmap.Config.ARGB_8888);
-      if (Build.VERSION.SDK_INT >= 12) {
-        paramDrawable.getBitmap().setHasAlpha(true);
-      }
-      Canvas localCanvas = new Canvas(paramDrawable.getBitmap());
-      RectF localRectF = new RectF(0.0F, 0.0F, i, i);
-      Path localPath = new Path();
-      Paint localPaint = new Paint();
-      int j = Math.min(localCanvas.getWidth(), localCanvas.getHeight());
-      localPath.addCircle(localCanvas.getWidth() / 2, localCanvas.getHeight() / 2, j / 2, Path.Direction.CW);
-      localPaint.setAntiAlias(true);
-      localCanvas.drawPath(localPath, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      localCanvas.drawBitmap(((BitmapReference)localObject).getBitmap(), null, localRectF, localPaint);
-      ((BitmapReference)localObject).release();
-      if (this.mRingWidth > 0.0F)
-      {
-        localObject = new Paint();
-        ((Paint)localObject).setAntiAlias(true);
-        ((Paint)localObject).setColor(this.mColor);
-        ((Paint)localObject).setStrokeWidth(this.mRingWidth);
-        ((Paint)localObject).setStyle(Paint.Style.STROKE);
-        localCanvas.drawOval(new RectF(this.mRingWidth, this.mRingWidth, i - this.mRingWidth, i - this.mRingWidth), (Paint)localObject);
-      }
-      return new BitmapRefDrawable(paramDrawable);
     }
     catch (OutOfMemoryError paramDrawable)
     {
-      for (;;)
-      {
-        paramDrawable = BitmapReference.getBitmapReference(Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_4444));
-      }
+      label45:
+      Canvas localCanvas;
+      float f;
+      RectF localRectF;
+      Path localPath;
+      Paint localPaint;
+      int j;
+      break label45;
     }
+    paramDrawable = BitmapReference.getBitmapReference(Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_4444));
+    if (Build.VERSION.SDK_INT >= 12) {
+      paramDrawable.getBitmap().setHasAlpha(true);
+    }
+    localCanvas = new Canvas(paramDrawable.getBitmap());
+    f = i;
+    localRectF = new RectF(0.0F, 0.0F, f, f);
+    localPath = new Path();
+    localPaint = new Paint();
+    j = Math.min(localCanvas.getWidth(), localCanvas.getHeight());
+    localPath.addCircle(localCanvas.getWidth() / 2, localCanvas.getHeight() / 2, j / 2, Path.Direction.CW);
+    localPaint.setAntiAlias(true);
+    localCanvas.drawPath(localPath, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(((BitmapReference)localObject).getBitmap(), null, localRectF, localPaint);
+    ((BitmapReference)localObject).release();
+    if (this.mRingWidth > 0.0F)
+    {
+      localObject = new Paint();
+      ((Paint)localObject).setAntiAlias(true);
+      ((Paint)localObject).setColor(this.mColor);
+      ((Paint)localObject).setStrokeWidth(this.mRingWidth);
+      ((Paint)localObject).setStyle(Paint.Style.STROKE);
+      j = this.mRingWidth;
+      localCanvas.drawOval(new RectF(j, j, i - j, i - j), (Paint)localObject);
+    }
+    return new BitmapRefDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.processor.CircleInteractVideoProcessor
  * JD-Core Version:    0.7.0.1
  */

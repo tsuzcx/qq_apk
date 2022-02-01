@@ -1,15 +1,18 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.RecentUser;
 
 class RecentItemPublicAccountChatMsgData$1
   implements Runnable
 {
+  RecentItemPublicAccountChatMsgData$1(RecentItemPublicAccountChatMsgData paramRecentItemPublicAccountChatMsgData, QQAppInterface paramQQAppInterface, PubAccountTips.PubAccountTipsMsg paramPubAccountTipsMsg) {}
+  
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq, "extLong", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.extLong));
+    PubAccountTips.a(this.a, this.this$0.mUser.uin, this.b, null);
   }
 }
 

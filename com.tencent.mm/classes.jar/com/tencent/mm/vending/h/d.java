@@ -7,40 +7,38 @@ import com.tencent.mm.vending.i.b;
 
 public abstract class d
 {
-  public static final h AOW = new h(Looper.getMainLooper(), "Vending.UI");
-  public static final h AOX = new h(b.dQw().a.getLooper(), "Vending.LOGIC");
-  public static final h AOY = new h(a.dQv().a.getLooper(), "Vending.HEAVY_WORK");
+  public static final h HEAVY_WORK;
+  public static final h LOGIC;
+  public static final h UI = new h(Looper.getMainLooper(), "Vending.UI");
   
   static
   {
-    g.a();
+    LOGIC = new h(b.jJZ().agvC.getLooper(), "Vending.LOGIC");
+    HEAVY_WORK = new h(a.jJY().agvA.getLooper(), "Vending.HEAVY_WORK");
+    g.jJW();
   }
   
-  public static d dQu()
+  public static d current()
   {
-    try
-    {
-      d locald = g.dQu();
-      return locald;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return g.current();
   }
+  
+  public static d find(String paramString)
+  {
+    return g.bDR(paramString);
+  }
+  
+  public abstract void arrange(Runnable paramRunnable);
+  
+  public abstract void arrangeInterval(Runnable paramRunnable, long paramLong);
   
   public abstract void cancel();
   
   public abstract String getType();
-  
-  public abstract void n(Runnable paramRunnable, long paramLong);
-  
-  public abstract void o(Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.h.d
  * JD-Core Version:    0.7.0.1
  */

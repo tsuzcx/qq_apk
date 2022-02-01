@@ -1,23 +1,40 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.recent.RecentOptionBar;
 
 public class eow
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
+  private long jdField_a_of_type_Long;
+  
   public eow(RecentOptionBar paramRecentOptionBar) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    RecentOptionBar.a(this.a).setVisibility(8);
-    RecentOptionBar.b(this.a).setVisibility(8);
-    RecentOptionBar.b(this.a).setOnClickListener(null);
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) < 500L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    boolean bool = false;
+    switch (paramView.getId())
+    {
+    default: 
+      bool = true;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.a(bool);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.c();
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.e();
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.b();
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptionBar.d();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

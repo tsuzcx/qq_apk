@@ -31,41 +31,48 @@ final class FileTreeWalk$FileTreeWalkIterator
   private final FileTreeWalk.DirectoryState directoryState(File paramFile)
   {
     FileWalkDirection localFileWalkDirection = FileTreeWalk.access$getDirection$p(this.this$0);
-    switch (FileTreeWalk.FileTreeWalkIterator.WhenMappings.$EnumSwitchMapping$0[localFileWalkDirection.ordinal()])
+    int i = FileTreeWalk.FileTreeWalkIterator.WhenMappings.$EnumSwitchMapping$0[localFileWalkDirection.ordinal()];
+    if (i != 1)
     {
-    default: 
+      if (i == 2) {
+        return (FileTreeWalk.DirectoryState)new FileTreeWalk.FileTreeWalkIterator.BottomUpDirectoryState(this, paramFile);
+      }
       throw new NoWhenBranchMatchedException();
-    case 1: 
-      return (FileTreeWalk.DirectoryState)new FileTreeWalk.FileTreeWalkIterator.TopDownDirectoryState(this, paramFile);
     }
-    return (FileTreeWalk.DirectoryState)new FileTreeWalk.FileTreeWalkIterator.BottomUpDirectoryState(this, paramFile);
+    return (FileTreeWalk.DirectoryState)new FileTreeWalk.FileTreeWalkIterator.TopDownDirectoryState(this, paramFile);
   }
   
   private final File gotoNext()
   {
+    File localFile;
     for (;;)
     {
       FileTreeWalk.WalkState localWalkState = (FileTreeWalk.WalkState)this.state.peek();
-      File localFile;
-      if (localWalkState != null)
+      if (localWalkState == null) {
+        break label89;
+      }
+      localFile = localWalkState.step();
+      if (localFile == null)
       {
-        localFile = localWalkState.step();
-        if (localFile == null) {
-          this.state.pop();
-        }
+        this.state.pop();
       }
       else
       {
-        return null;
+        if ((Intrinsics.areEqual(localFile, localWalkState.getRoot())) || (!localFile.isDirectory())) {
+          break;
+        }
+        if (this.state.size() >= FileTreeWalk.access$getMaxDepth$p(this.this$0)) {
+          return localFile;
+        }
+        this.state.push(directoryState(localFile));
       }
-      if ((Intrinsics.areEqual(localFile, localWalkState.getRoot())) || (!localFile.isDirectory()) || (this.state.size() >= FileTreeWalk.access$getMaxDepth$p(this.this$0))) {
-        return localFile;
-      }
-      this.state.push(directoryState(localFile));
     }
+    return localFile;
+    label89:
+    return null;
   }
   
-  public void computeNext()
+  protected void computeNext()
   {
     File localFile = gotoNext();
     if (localFile != null)
@@ -78,7 +85,7 @@ final class FileTreeWalk$FileTreeWalkIterator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.FileTreeWalk.FileTreeWalkIterator
  * JD-Core Version:    0.7.0.1
  */

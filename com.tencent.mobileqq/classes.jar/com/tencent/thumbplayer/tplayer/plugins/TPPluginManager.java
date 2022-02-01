@@ -1,24 +1,29 @@
 package com.tencent.thumbplayer.tplayer.plugins;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class TPPluginManager
   implements ITPPluginManager
 {
-  private ArrayList<ITPPluginBase> mPluginList = new ArrayList();
+  private CopyOnWriteArrayList<ITPPluginBase> mPluginList = new CopyOnWriteArrayList();
   
-  public ITPPluginManager addPlugin(ITPPluginBase paramITPPluginBase)
+  public void addPlugin(ITPPluginBase paramITPPluginBase)
   {
-    if (this.mPluginList == null) {
-      this.mPluginList = new ArrayList();
-    }
-    if (!this.mPluginList.contains(paramITPPluginBase))
+    try
     {
-      paramITPPluginBase.onAttach();
-      this.mPluginList.add(paramITPPluginBase);
+      CopyOnWriteArrayList localCopyOnWriteArrayList = this.mPluginList;
+      if (localCopyOnWriteArrayList == null) {
+        return;
+      }
+      if (!this.mPluginList.contains(paramITPPluginBase))
+      {
+        paramITPPluginBase.onAttach();
+        this.mPluginList.add(paramITPPluginBase);
+      }
+      return;
     }
-    return this;
+    finally {}
   }
   
   public void onAttach() {}
@@ -27,48 +32,75 @@ public class TPPluginManager
   
   public void onEvent(int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.mPluginList != null)
+    try
     {
-      Iterator localIterator = this.mPluginList.iterator();
-      while (localIterator.hasNext())
+      if (this.mPluginList != null)
       {
-        ITPPluginBase localITPPluginBase = (ITPPluginBase)localIterator.next();
-        if (localITPPluginBase != null) {
-          localITPPluginBase.onEvent(paramInt1, paramInt2, paramInt3, paramString, paramObject);
+        Iterator localIterator = this.mPluginList.iterator();
+        while (localIterator.hasNext())
+        {
+          ITPPluginBase localITPPluginBase = (ITPPluginBase)localIterator.next();
+          if (localITPPluginBase != null) {
+            localITPPluginBase.onEvent(paramInt1, paramInt2, paramInt3, paramString, paramObject);
+          }
         }
       }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
   public void release()
   {
-    if (this.mPluginList != null)
+    try
     {
-      Iterator localIterator = this.mPluginList.iterator();
-      while (localIterator.hasNext())
+      if (this.mPluginList != null)
       {
-        ITPPluginBase localITPPluginBase = (ITPPluginBase)localIterator.next();
-        if (localITPPluginBase != null) {
-          localITPPluginBase.onDetach();
+        Iterator localIterator = this.mPluginList.iterator();
+        while (localIterator.hasNext())
+        {
+          ITPPluginBase localITPPluginBase = (ITPPluginBase)localIterator.next();
+          if (localITPPluginBase != null) {
+            localITPPluginBase.onDetach();
+          }
         }
-        localIterator.remove();
+        this.mPluginList.clear();
       }
+      this.mPluginList = null;
+      return;
     }
-    this.mPluginList = null;
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void removePlugin(ITPPluginBase paramITPPluginBase)
   {
-    if (this.mPluginList != null)
+    try
     {
-      paramITPPluginBase.onDetach();
-      this.mPluginList.remove(paramITPPluginBase);
+      if (this.mPluginList != null)
+      {
+        paramITPPluginBase.onDetach();
+        this.mPluginList.remove(paramITPPluginBase);
+      }
+      return;
+    }
+    finally
+    {
+      paramITPPluginBase = finally;
+      throw paramITPPluginBase;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.TPPluginManager
  * JD-Core Version:    0.7.0.1
  */

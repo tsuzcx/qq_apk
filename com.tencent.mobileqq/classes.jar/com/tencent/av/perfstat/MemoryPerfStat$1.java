@@ -1,27 +1,26 @@
 package com.tencent.av.perfstat;
 
-import bhtd;
 import com.tencent.common.app.BaseApplicationImpl;
-import luy;
+import com.tencent.util.WeakReferenceHandler;
 
-public class MemoryPerfStat$1
+class MemoryPerfStat$1
   implements Runnable
 {
-  public MemoryPerfStat$1(luy paramluy) {}
+  MemoryPerfStat$1(MemoryPerfStat paramMemoryPerfStat) {}
   
   public void run()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    luy.a(this.this$0, localBaseApplicationImpl);
-    luy.a(this.this$0);
-    if (luy.a(this.this$0) == 1) {
-      luy.a(this.this$0).sendEmptyMessageDelayed(1, 30000L);
+    MemoryPerfStat.a(this.this$0, localBaseApplicationImpl);
+    MemoryPerfStat.a(this.this$0);
+    if (MemoryPerfStat.b(this.this$0) == 1) {
+      MemoryPerfStat.c(this.this$0).sendEmptyMessageDelayed(1, 30000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.perfstat.MemoryPerfStat.1
  * JD-Core Version:    0.7.0.1
  */

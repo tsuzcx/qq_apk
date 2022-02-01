@@ -19,24 +19,17 @@ public final class MappingTrackSelector$SelectionOverride
   
   public boolean containsTrack(int paramInt)
   {
-    boolean bool2 = false;
     int[] arrayOfInt = this.tracks;
     int j = arrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfInt[i] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (arrayOfInt[i] == paramInt) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public TrackSelection createTrackSelection(TrackGroupArray paramTrackGroupArray)
@@ -46,7 +39,7 @@ public final class MappingTrackSelector$SelectionOverride
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.MappingTrackSelector.SelectionOverride
  * JD-Core Version:    0.7.0.1
  */

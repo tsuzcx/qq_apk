@@ -1,26 +1,23 @@
+import android.os.Handler;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import android.support.v7.app.ActionBar;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.widget.QQTabWidget.onTabWidgetTouchMoveListener;
-import com.tencent.qphone.base.util.QLog;
 
 public class dju
-  implements QQTabWidget.onTabWidgetTouchMoveListener
+  extends ViewPager.SimpleOnPageChangeListener
 {
   public dju(SplashActivity paramSplashActivity) {}
   
-  public void a()
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    int i = GesturePWDUtils.getGesturePWDState(this.a, this.a.b.a());
-    int j = GesturePWDUtils.getGesturePWDMode(this.a, this.a.b.a());
-    if ((i == 2) && (j == 20))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("mainactivity", 2, "gesturepwd manual move.");
-      }
-      SplashActivity.c(this.a);
-      this.a.overridePendingTransition(2130968598, 2130968595);
-    }
+    this.a.supportInvalidateOptionsMenu();
+    this.a.getSupportActionBar().setSelectedNavigationItem(paramInt);
+    new Handler().postDelayed(new djv(this, paramInt), 500L);
+    this.a.i();
   }
 }
 

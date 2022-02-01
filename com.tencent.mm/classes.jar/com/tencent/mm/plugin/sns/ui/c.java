@@ -1,64 +1,70 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.a;
-import com.tencent.mm.plugin.sns.storage.a.b;
-import com.tencent.mm.plugin.sns.storage.a.b.a;
-import com.tencent.mm.plugin.sns.storage.b.a;
-import com.tencent.mm.plugin.sns.storage.b.b;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.data.e;
+import com.tencent.mm.plugin.sns.storage.ADInfo;
+import com.tencent.mm.plugin.sns.storage.ADInfo.c;
+import com.tencent.mm.plugin.sns.storage.ADInfo.c.a;
+import com.tencent.mm.plugin.sns.storage.ADXml;
+import com.tencent.mm.plugin.sns.storage.ADXml.e;
+import com.tencent.mm.plugin.sns.storage.ADXml.f;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 public final class c
   extends BaseAdapter
 {
-  public int hAu;
+  private String Kca;
+  public e Rag;
   private final Context mContext;
-  private String nZZ;
-  public com.tencent.mm.plugin.sns.data.b rDX;
+  public int rBp;
   
-  public c(Context paramContext, com.tencent.mm.plugin.sns.data.b paramb)
+  public c(Context paramContext, e parame)
   {
-    AppMethodBeat.i(38073);
-    this.rDX = null;
-    this.nZZ = null;
-    this.hAu = 0;
+    AppMethodBeat.i(97694);
+    this.Rag = null;
+    this.Kca = null;
+    this.rBp = 0;
     this.mContext = paramContext;
-    this.rDX = paramb;
-    this.nZZ = aa.gP(ah.getContext());
-    AppMethodBeat.o(38073);
+    this.Rag = parame;
+    this.Kca = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
+    AppMethodBeat.o(97694);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(38074);
-    if (this.hAu == 1)
+    AppMethodBeat.i(97695);
+    if (this.rBp == 1)
     {
-      i = this.rDX.rba.scr.rpz.cqj().size();
-      AppMethodBeat.o(38074);
+      i = this.Rag.QmD.RFi.adUnlikeInfo.hiy().size();
+      AppMethodBeat.o(97695);
       return i;
     }
     int i = 0;
-    if (this.rDX.rba.scq.rqK != null) {
-      i = this.rDX.rba.scq.rqK.list.size();
+    if (this.Rag.QmD.RFh.adFeedbackInfo != null) {
+      i = this.Rag.QmD.RFh.adFeedbackInfo.list.size();
     }
-    AppMethodBeat.o(38074);
+    AppMethodBeat.o(97695);
     return i + 1;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(38076);
-    Object localObject = this.rDX.rba.scr.rpz.cqj().get(paramInt);
-    AppMethodBeat.o(38076);
+    AppMethodBeat.i(97697);
+    Object localObject = this.Rag.QmD.RFi.adUnlikeInfo.hiy().get(paramInt);
+    AppMethodBeat.o(97697);
     return localObject;
   }
   
@@ -69,117 +75,117 @@ public final class c
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(38075);
+    AppMethodBeat.i(97696);
     View localView = paramView;
     if (paramView == null) {
-      localView = View.inflate(this.mContext, 2130968633, null);
+      localView = View.inflate(this.mContext, b.g.ad_unlike_reason_item, null);
     }
-    localView.setTag(this.rDX);
+    localView.setTag(this.Rag);
     paramViewGroup = "";
     Object localObject;
-    if (this.hAu == 1)
+    if (this.rBp == 1)
     {
-      localObject = (a.b.a)getItem(paramInt);
-      if ("zh_CN".equals(this.nZZ))
+      localObject = (ADInfo.c.a)getItem(paramInt);
+      if ("zh_CN".equals(this.Kca))
       {
-        paramViewGroup = ((a.b.a)localObject).rpJ;
+        paramViewGroup = ((ADInfo.c.a)localObject).QHh;
         paramView = paramViewGroup;
-        if (bo.isNullOrNil(paramViewGroup)) {
-          paramView = ((a.b.a)localObject).rpL;
+        if (Util.isNullOrNil(paramViewGroup)) {
+          paramView = ((ADInfo.c.a)localObject).QHj;
         }
-        label87:
-        paramViewGroup = (TextView)localView.findViewById(2131821051);
-        if (!this.rDX.rba.scr.rpD) {
-          break label457;
-        }
-        paramViewGroup.setTextColor(Color.parseColor("#3A3A3A"));
-        label123:
-        paramViewGroup.setText(paramView);
-        paramView = localView.findViewById(2131821052);
-        if (paramInt != getCount() - 1) {
+        label88:
+        paramViewGroup = (TextView)localView.findViewById(b.f.ad_unlike_reason_tv);
+        if (!this.Rag.QmD.RFi.forbidClick) {
           break label469;
+        }
+        paramViewGroup.setTextColor(this.mContext.getResources().getColor(b.c.BW_0_Alpha_0_2));
+        label133:
+        paramViewGroup.setText(paramView);
+        paramView = localView.findViewById(b.f.ad_unlike_reason_sep);
+        if (paramInt != getCount() - 1) {
+          break label489;
         }
       }
     }
-    label310:
-    label457:
+    label321:
     label469:
+    label489:
     for (paramInt = 8;; paramInt = 0)
     {
       paramView.setVisibility(paramInt);
-      AppMethodBeat.o(38075);
+      AppMethodBeat.o(97696);
       return localView;
-      if (("zh_TW".equals(this.nZZ)) || ("zh_HK".equals(this.nZZ)))
+      if (("zh_TW".equals(this.Kca)) || ("zh_HK".equals(this.Kca)))
       {
-        paramViewGroup = ((a.b.a)localObject).rpK;
+        paramViewGroup = ((ADInfo.c.a)localObject).QHi;
         break;
       }
-      paramViewGroup = ((a.b.a)localObject).rpL;
+      paramViewGroup = ((ADInfo.c.a)localObject).QHj;
       break;
       if (paramInt == 0)
       {
         paramView = paramViewGroup;
-        if (this.rDX == null) {
-          break label87;
+        if (this.Rag == null) {
+          break label88;
         }
         paramView = paramViewGroup;
-        if (this.rDX.rba.scq == null) {
-          break label87;
+        if (this.Rag.QmD.RFh == null) {
+          break label88;
         }
-        paramView = this.rDX.rba.scr;
-        if ("zh_CN".equals(this.nZZ)) {
-          paramView = paramView.rpA;
+        paramView = this.Rag.QmD.RFi;
+        if ("zh_CN".equals(this.Kca)) {
+          paramView = paramView.adDislikeInfoTitle_cn;
         }
         for (;;)
         {
-          if (bo.isNullOrNil(paramView)) {
-            break label310;
+          if (Util.isNullOrNil(paramView)) {
+            break label321;
           }
           break;
-          if (("zh_TW".equals(this.nZZ)) || ("zh_HK".equals(this.nZZ))) {
-            paramView = paramView.rpC;
+          if (("zh_TW".equals(this.Kca)) || ("zh_HK".equals(this.Kca))) {
+            paramView = paramView.adDislikeInfoTitle_tw;
           } else {
-            paramView = paramView.rpB;
+            paramView = paramView.adDislikeInfoTitle_en;
           }
         }
-        paramView = this.mContext.getString(2131303764);
-        break label87;
+        paramView = this.mContext.getString(b.j.sns_ad_unlike);
+        break label88;
       }
-      localObject = this.rDX.rba.scq.rqK;
+      localObject = this.Rag.QmD.RFh.adFeedbackInfo;
       paramView = paramViewGroup;
       if (localObject == null) {
-        break label87;
+        break label88;
       }
       paramView = paramViewGroup;
-      if (paramInt > ((b.a)localObject).list.size()) {
-        break label87;
+      if (paramInt > ((ADXml.e)localObject).list.size()) {
+        break label88;
       }
-      localObject = (b.b)((b.a)localObject).list.get(paramInt - 1);
-      if ("zh_CN".equals(this.nZZ)) {
-        paramViewGroup = ((b.b)localObject).rqT;
+      localObject = (ADXml.f)((ADXml.e)localObject).list.get(paramInt - 1);
+      if ("zh_CN".equals(this.Kca)) {
+        paramViewGroup = ((ADXml.f)localObject).QHC;
       }
       for (;;)
       {
         paramView = paramViewGroup;
-        if (!bo.isNullOrNil(paramViewGroup)) {
+        if (!Util.isNullOrNil(paramViewGroup)) {
           break;
         }
-        paramView = ((b.b)localObject).rkp;
+        paramView = ((ADXml.f)localObject).QBc;
         break;
-        if (("zh_TW".equals(this.nZZ)) || ("zh_HK".equals(this.nZZ))) {
-          paramViewGroup = ((b.b)localObject).rqU;
+        if (("zh_TW".equals(this.Kca)) || ("zh_HK".equals(this.Kca))) {
+          paramViewGroup = ((ADXml.f)localObject).QHD;
         } else {
-          paramViewGroup = ((b.b)localObject).rkp;
+          paramViewGroup = ((ADXml.f)localObject).QBc;
         }
       }
-      paramViewGroup.setTextColor(Color.parseColor("#576B95"));
-      break label123;
+      paramViewGroup.setTextColor(this.mContext.getResources().getColor(b.c.Link));
+      break label133;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.c
  * JD-Core Version:    0.7.0.1
  */

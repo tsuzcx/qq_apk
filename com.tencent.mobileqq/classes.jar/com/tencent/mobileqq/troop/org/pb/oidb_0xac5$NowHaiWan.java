@@ -19,15 +19,16 @@ public final class oidb_0xac5$NowHaiWan
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "bytes_title", "bytes_url", "uint32_status", "bytes_icon", "uint32_type" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0) }, NowHaiWan.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "bytes_title", "bytes_url", "uint32_status", "bytes_icon", "uint32_type" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger }, NowHaiWan.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.org.pb.oidb_0xac5.NowHaiWan
  * JD-Core Version:    0.7.0.1
  */

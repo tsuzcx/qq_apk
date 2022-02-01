@@ -1,22 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class cvg
-  implements DialogInterface.OnClickListener
+public class cvg
+  implements Runnable
 {
-  cvg(cve paramcve) {}
+  public cvg(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    SubAccountAssistantForward.b(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b);
-    SubAccountAssistantForward.c(this.a.a.b);
-    SubAccountAssistantForward.d(this.a.a.b);
-    SubAccountAssistantForward.a(this.a.a.b, this.a.a, this.a.a.b.getAccount());
-    this.a.a.finish();
+    try
+    {
+      if ((LoginVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        LoginVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.a(), this.a.d()));
+        LoginVerifyCodeActivity.a(this.a).b(2131562645);
+      }
+      if ((LoginVerifyCodeActivity.a(this.a) != null) && (!LoginVerifyCodeActivity.a(this.a).isShowing())) {
+        LoginVerifyCodeActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

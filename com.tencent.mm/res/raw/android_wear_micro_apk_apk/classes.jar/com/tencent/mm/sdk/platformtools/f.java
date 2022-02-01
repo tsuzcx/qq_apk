@@ -9,9 +9,9 @@ import android.util.Log;
 
 public final class f
 {
-  private static g Xj;
-  private static g Xk;
-  private static final String Xl;
+  private static g Zl;
+  private static g Zm;
+  private static final String Zn;
   private static int level = 6;
   
   static
@@ -22,46 +22,46 @@ public final class f
       
       public final void g(String paramAnonymousString1, String paramAnonymousString2)
       {
-        if (f.ln() <= 0) {
+        if (f.lA() <= 0) {
           Log.v(paramAnonymousString1, paramAnonymousString2);
         }
       }
       
+      public final int getLogLevel()
+      {
+        return f.lA();
+      }
+      
       public final void h(String paramAnonymousString1, String paramAnonymousString2)
       {
-        if (f.ln() <= 2) {
+        if (f.lA() <= 2) {
           Log.i(paramAnonymousString1, paramAnonymousString2);
         }
       }
       
       public final void i(String paramAnonymousString1, String paramAnonymousString2)
       {
-        if (f.ln() <= 1) {
+        if (f.lA() <= 1) {
           Log.d(paramAnonymousString1, paramAnonymousString2);
         }
       }
       
       public final void j(String paramAnonymousString1, String paramAnonymousString2)
       {
-        if (f.ln() <= 3) {
+        if (f.lA() <= 3) {
           Log.w(paramAnonymousString1, paramAnonymousString2);
         }
       }
       
       public final void k(String paramAnonymousString1, String paramAnonymousString2)
       {
-        if (f.ln() <= 4) {
+        if (f.lA() <= 4) {
           Log.e(paramAnonymousString1, paramAnonymousString2);
         }
       }
-      
-      public final int lo()
-      {
-        return f.ln();
-      }
     };
-    Xj = (g)localObject;
-    Xk = (g)localObject;
+    Zl = (g)localObject;
+    Zm = (g)localObject;
     localObject = new StringBuilder();
     try
     {
@@ -79,7 +79,7 @@ public final class f
       ((StringBuilder)localObject).append("] TAGS:[" + Build.TAGS);
       ((StringBuilder)localObject).append("] TYPE:[" + Build.TYPE);
       ((StringBuilder)localObject).append("] USER:[" + Build.USER + "]");
-      Xl = ((StringBuilder)localObject).toString();
+      Zn = ((StringBuilder)localObject).toString();
       return;
     }
     catch (Throwable localThrowable)
@@ -93,7 +93,7 @@ public final class f
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if ((Xk != null) && (Xk.lo() <= 4)) {
+    if ((Zm != null) && (Zm.getLogLevel() <= 4)) {
       if (paramVarArgs != null) {
         break label69;
       }
@@ -104,7 +104,7 @@ public final class f
       if (paramString2 == null) {
         paramVarArgs = "";
       }
-      paramString2 = Xk;
+      paramString2 = Zm;
       Process.myTid();
       Process.myPid();
       Thread.currentThread().getId();
@@ -118,7 +118,7 @@ public final class f
   
   public static void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if ((Xk != null) && (Xk.lo() <= 4))
+    if ((Zm != null) && (Zm.getLogLevel() <= 4))
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
@@ -126,7 +126,7 @@ public final class f
         paramString2 = "";
       }
       paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
-      paramString2 = Xk;
+      paramString2 = Zm;
       Process.myTid();
       Process.myPid();
       Thread.currentThread().getId();
@@ -137,7 +137,7 @@ public final class f
   
   public static void b(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if ((Xk != null) && (Xk.lo() <= 3)) {
+    if ((Zm != null) && (Zm.getLogLevel() <= 3)) {
       if (paramVarArgs != null) {
         break label69;
       }
@@ -148,7 +148,7 @@ public final class f
       if (paramString2 == null) {
         paramVarArgs = "";
       }
-      paramString2 = Xk;
+      paramString2 = Zm;
       Process.myTid();
       Process.myPid();
       Thread.currentThread().getId();
@@ -167,7 +167,7 @@ public final class f
   
   public static void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if ((Xk != null) && (Xk.lo() <= 2)) {
+    if ((Zm != null) && (Zm.getLogLevel() <= 2)) {
       if (paramVarArgs != null) {
         break label69;
       }
@@ -178,7 +178,7 @@ public final class f
       if (paramString2 == null) {
         paramVarArgs = "";
       }
-      paramString2 = Xk;
+      paramString2 = Zm;
       Process.myTid();
       Process.myPid();
       Thread.currentThread().getId();
@@ -197,19 +197,26 @@ public final class f
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if ((Xk != null) && (Xk.lo() <= 0))
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
+    if ((Zm != null) && (Zm.getLogLevel() <= 1)) {
+      if (paramVarArgs != null) {
+        break label69;
       }
-      paramVarArgs = Xk;
+    }
+    for (;;)
+    {
+      paramVarArgs = paramString2;
+      if (paramString2 == null) {
+        paramVarArgs = "";
+      }
+      paramString2 = Zm;
       Process.myTid();
       Process.myPid();
       Thread.currentThread().getId();
       Looper.getMainLooper().getThread().getId();
-      paramVarArgs.g(paramString1, paramString2);
+      paramString2.i(paramString1, paramVarArgs);
+      return;
+      label69:
+      paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
   
@@ -218,17 +225,27 @@ public final class f
     c(paramString1, paramString2, null);
   }
   
-  public static void f(String paramString1, String paramString2)
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if ((Xk != null) && (Xk.lo() <= 1))
+    if ((Zm != null) && (Zm.getLogLevel() <= 0))
     {
-      g localg = Xk;
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
+      }
+      paramVarArgs = Zm;
       Process.myTid();
       Process.myPid();
       Thread.currentThread().getId();
       Looper.getMainLooper().getThread().getId();
-      localg.i(paramString1, paramString2);
+      paramVarArgs.g(paramString1, paramString2);
     }
+  }
+  
+  public static void f(String paramString1, String paramString2)
+  {
+    d(paramString1, paramString2, null);
   }
 }
 

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/icons_outlined_keyboard" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/icons_outlined_keyboard" />
-    <item android:state_focused="false" android:drawable="@raw/icons_outlined_keyboard" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/a19" />
+        </shape>
+    </item>
 </selector>

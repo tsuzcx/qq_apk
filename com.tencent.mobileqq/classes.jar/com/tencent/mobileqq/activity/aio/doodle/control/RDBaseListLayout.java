@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
-import afbz;
-import afcb;
-import afcc;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -21,11 +18,11 @@ import java.util.List;
 public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int = -1;
-  private RDBaseListLayout<TItemData, TItemViewHolder>.afcb jdField_a_of_type_Afcb;
-  private View jdField_a_of_type_AndroidViewView;
-  private ArrayList<TItemData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b = 0;
+  private RDBaseListLayout<TItemData, TItemViewHolder>.RDBaseListAdapter a;
+  private ArrayList<TItemData> b = new ArrayList();
+  private int c = -1;
+  private int d = 0;
+  private View e;
   
   public RDBaseListLayout(Context paramContext)
   {
@@ -42,34 +39,15 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private RDBaseListLayout<TItemData, TItemViewHolder>.afcc a(View paramView)
-  {
-    if (paramView == null) {
-      return null;
-    }
-    for (Object localObject = paramView;; localObject = (View)localObject)
-    {
-      localObject = ((View)localObject).getTag();
-      if ((localObject != null) && ((localObject instanceof afcc))) {
-        return (afcc)localObject;
-      }
-      localObject = paramView.getParent();
-      if (!(localObject instanceof View)) {
-        break;
-      }
-    }
-    return null;
-  }
-  
   private void a(int paramInt)
   {
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidViewView = new HorizontalListView(getContext());
-      ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setOverScrollMode(2);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Afcb);
-      addView(this.jdField_a_of_type_AndroidViewView);
+      this.e = new HorizontalListView(getContext());
+      ((HorizontalListView)this.e).setOverScrollMode(2);
+      this.e.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+      ((HorizontalListView)this.e).setAdapter(this.a);
+      addView(this.e);
       return;
     }
     ScrollView localScrollView = new ScrollView(getContext());
@@ -79,184 +57,222 @@ public abstract class RDBaseListLayout<TItemData, TItemViewHolder>
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     localScrollView.addView(localLinearLayout);
     localLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidViewView = new ListView(getContext());
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    ((ListView)this.jdField_a_of_type_AndroidViewView).setAdapter(this.jdField_a_of_type_Afcb);
-    localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    this.e = new ListView(getContext());
+    this.e.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+    ((ListView)this.e).setAdapter(this.a);
+    localLinearLayout.addView(this.e);
   }
   
-  public int a()
+  private RDBaseListLayout<TItemData, TItemViewHolder>.ViewTagData b(View paramView)
   {
-    return this.jdField_a_of_type_Int;
+    if (paramView == null) {
+      return null;
+    }
+    for (Object localObject = paramView;; localObject = (View)localObject)
+    {
+      localObject = ((View)localObject).getTag();
+      if ((localObject != null) && ((localObject instanceof RDBaseListLayout.ViewTagData))) {
+        return (RDBaseListLayout.ViewTagData)localObject;
+      }
+      localObject = paramView.getParent();
+      if (!(localObject instanceof View)) {
+        break;
+      }
+    }
+    return null;
   }
   
   public int a(View paramView)
   {
-    paramView = a(paramView);
+    paramView = b(paramView);
     if (paramView != null) {
-      return paramView.jdField_a_of_type_Int;
+      return paramView.b;
     }
     return -1;
   }
   
-  public TItemData a(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
   public abstract TItemViewHolder a(int paramInt, TItemData paramTItemData);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt, TItemData paramTItemData);
   
   public abstract void a(int paramInt, @NonNull TItemData paramTItemData, @NonNull TItemViewHolder paramTItemViewHolder);
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return;
-    }
-    if ((!paramBoolean) && (this.jdField_a_of_type_Int >= 0))
+    if (paramInt >= 0)
     {
-      ((afbz)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a(false);
-      this.jdField_a_of_type_Int = -1;
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    ((afbz)localObject).a(true);
-    ((afbz)localObject).a(true);
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ListView)) {
-      ((ListView)this.jdField_a_of_type_AndroidViewView).setSelection(paramInt);
-    }
-    for (;;)
-    {
-      a(paramInt, localObject);
-      this.jdField_a_of_type_Int = paramInt;
-      c();
-      return;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof HorizontalListView))
-      {
-        ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setSelection(paramInt);
-        ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).smoothScrollToPosition(paramInt, 0, 1);
+      if (paramInt >= this.b.size()) {
+        return;
       }
+      if (!paramBoolean)
+      {
+        int i = this.c;
+        if (i >= 0)
+        {
+          ((RDBaseItemData)this.b.get(i)).a(false);
+          this.c = -1;
+        }
+      }
+      Object localObject1 = this.b.get(paramInt);
+      Object localObject2 = (RDBaseItemData)localObject1;
+      ((RDBaseItemData)localObject2).a(true);
+      ((RDBaseItemData)localObject2).a(true);
+      localObject2 = this.e;
+      if ((localObject2 instanceof ListView))
+      {
+        ((ListView)localObject2).setSelection(paramInt);
+      }
+      else if ((localObject2 instanceof HorizontalListView))
+      {
+        ((HorizontalListView)localObject2).setSelection(paramInt);
+        ((HorizontalListView)this.e).smoothScrollToPosition(paramInt, 0, 1);
+      }
+      b(paramInt, localObject1);
+      this.c = paramInt;
+      d();
     }
   }
   
   public void a(TItemData paramTItemData, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramTItemData);
+    this.b.add(paramTItemData);
     if (paramBoolean) {
-      c();
+      d();
     }
   }
   
   public void a(List<TItemData> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.b.addAll(paramList);
     if (paramBoolean) {
-      c();
+      d();
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    ArrayList localArrayList = this.b;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
     if (paramBoolean) {
-      c();
+      d();
     }
   }
   
   public abstract boolean a();
   
-  public boolean a(int paramInt)
-  {
-    this.b = paramInt;
-    this.jdField_a_of_type_Afcb = new afcb(this, null);
-    this.jdField_a_of_type_Afcb.a();
-    a(this.b);
-    boolean bool = a();
-    if (bool) {
-      this.jdField_a_of_type_Afcb.notifyDataSetChanged();
-    }
-    return bool;
-  }
+  public abstract void b();
   
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void b()
-  {
-    a();
-    if (this.jdField_a_of_type_Afcb != null) {
-      this.jdField_a_of_type_Afcb.b();
-    }
-  }
+  public abstract void b(int paramInt, TItemData paramTItemData);
   
   public void b(TItemData paramTItemData, boolean paramBoolean)
   {
     int i = 0;
-    for (;;)
+    while (i < this.b.size())
     {
-      Object localObject;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      Object localObject = this.b.get(i);
+      if (paramTItemData.equals(localObject))
       {
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (!paramTItemData.equals(localObject)) {
-          break label150;
-        }
-        if ((!paramBoolean) && (this.jdField_a_of_type_Int >= 0))
+        if (!paramBoolean)
         {
-          ((afbz)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a(false);
-          this.jdField_a_of_type_Int = -1;
+          int j = this.c;
+          if (j >= 0)
+          {
+            ((RDBaseItemData)this.b.get(j)).a(false);
+            this.c = -1;
+          }
         }
-        ((afbz)localObject).a(true);
-        if (!(this.jdField_a_of_type_AndroidViewView instanceof ListView)) {
-          break label113;
+        ((RDBaseItemData)localObject).a(true);
+        paramTItemData = this.e;
+        if ((paramTItemData instanceof ListView))
+        {
+          ((ListView)paramTItemData).setSelection(i);
         }
-        ((ListView)this.jdField_a_of_type_AndroidViewView).setSelection(i);
-      }
-      for (;;)
-      {
-        a(i, localObject);
-        this.jdField_a_of_type_Int = i;
-        c();
+        else if ((paramTItemData instanceof HorizontalListView))
+        {
+          ((HorizontalListView)paramTItemData).setSelection(i);
+          ((HorizontalListView)this.e).smoothScrollToPosition(i, 0, 1);
+        }
+        b(i, localObject);
+        this.c = i;
+        d();
         return;
-        label113:
-        if ((this.jdField_a_of_type_AndroidViewView instanceof HorizontalListView))
-        {
-          ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).setSelection(i);
-          ((HorizontalListView)this.jdField_a_of_type_AndroidViewView).smoothScrollToPosition(i, 0, 1);
-        }
       }
-      label150:
       i += 1;
     }
   }
   
+  public boolean b(int paramInt)
+  {
+    this.d = paramInt;
+    this.a = new RDBaseListLayout.RDBaseListAdapter(this, null);
+    this.a.a();
+    a(this.d);
+    boolean bool = a();
+    if (bool) {
+      this.a.notifyDataSetChanged();
+    }
+    return bool;
+  }
+  
+  public TItemData c(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return this.b.get(paramInt);
+    }
+    return null;
+  }
+  
   public void c()
   {
-    if (this.jdField_a_of_type_Afcb != null) {
-      this.jdField_a_of_type_Afcb.notifyDataSetChanged();
+    b();
+    RDBaseListLayout.RDBaseListAdapter localRDBaseListAdapter = this.a;
+    if (localRDBaseListAdapter != null) {
+      localRDBaseListAdapter.b();
     }
+  }
+  
+  public void d()
+  {
+    RDBaseListLayout.RDBaseListAdapter localRDBaseListAdapter = this.a;
+    if (localRDBaseListAdapter != null) {
+      localRDBaseListAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.b.size();
+  }
+  
+  public TItemData getSelectData()
+  {
+    if ((this.c >= 0) && (!this.b.isEmpty())) {
+      return this.b.get(this.c);
+    }
+    return null;
+  }
+  
+  public int getSelectIndex()
+  {
+    return this.c;
+  }
+  
+  public int getType()
+  {
+    return this.d;
   }
   
   public void setOverScrollMode(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setOverScrollMode(paramInt);
+    View localView = this.e;
+    if (localView != null) {
+      localView.setOverScrollMode(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.support.annotation.Nullable;
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableColorValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
@@ -11,22 +9,21 @@ import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableScaleValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableShapeValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableTextFrame;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
 import com.tencent.mobileqq.dinifly.utils.Utils;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.List;
 
 public class AnimatableValueParser
 {
-  @Nullable
   private static <T> List<Keyframe<T>> parse(JsonReader paramJsonReader, float paramFloat, LottieComposition paramLottieComposition, ValueParser<T> paramValueParser)
   {
-    return KeyframesParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser);
+    return KeyframesParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false);
   }
   
-  @Nullable
   private static <T> List<Keyframe<T>> parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition, ValueParser<T> paramValueParser)
   {
-    return KeyframesParser.parse(paramJsonReader, paramLottieComposition, 1.0F, paramValueParser);
+    return KeyframesParser.parse(paramJsonReader, paramLottieComposition, 1.0F, paramValueParser, false);
   }
   
   static AnimatableColorValue parseColor(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
@@ -46,10 +43,13 @@ public class AnimatableValueParser
   
   public static AnimatableFloatValue parseFloat(JsonReader paramJsonReader, LottieComposition paramLottieComposition, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (float f = Utils.dpScale();; f = 1.0F) {
-      return new AnimatableFloatValue(parse(paramJsonReader, f, paramLottieComposition, FloatParser.INSTANCE));
+    float f;
+    if (paramBoolean) {
+      f = Utils.dpScale();
+    } else {
+      f = 1.0F;
     }
+    return new AnimatableFloatValue(parse(paramJsonReader, f, paramLottieComposition, FloatParser.INSTANCE));
   }
   
   static AnimatableGradientColorValue parseGradientColor(JsonReader paramJsonReader, LottieComposition paramLottieComposition, int paramInt)
@@ -64,7 +64,7 @@ public class AnimatableValueParser
   
   static AnimatablePointValue parsePoint(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    return new AnimatablePointValue(parse(paramJsonReader, Utils.dpScale(), paramLottieComposition, PointFParser.INSTANCE));
+    return new AnimatablePointValue(KeyframesParser.parse(paramJsonReader, paramLottieComposition, Utils.dpScale(), PointFParser.INSTANCE, true));
   }
   
   static AnimatableScaleValue parseScale(JsonReader paramJsonReader, LottieComposition paramLottieComposition)

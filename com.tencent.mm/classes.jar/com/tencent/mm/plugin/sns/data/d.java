@@ -1,30 +1,34 @@
 package com.tencent.mm.plugin.sns.data;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cds;
-import java.util.concurrent.ConcurrentHashMap;
-
 public final class d
 {
-  public ConcurrentHashMap<String, CharSequence> rbi;
+  public String hHB;
+  public boolean isAd = false;
+  public int oTP;
+  public int scene;
+  public String userName;
   
-  public d()
+  public d(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(35794);
-    this.rbi = new ConcurrentHashMap();
-    AppMethodBeat.o(35794);
+    this.isAd = paramBoolean;
+    this.userName = paramString1;
+    this.hHB = paramString2;
+    this.scene = paramInt;
+    this.oTP = -1;
   }
   
-  public final void a(cds paramcds, CharSequence paramCharSequence)
+  public d(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(35795);
-    this.rbi.put(paramcds.xNY + "-" + paramcds.xOa + "-" + paramcds.ntu, paramCharSequence);
-    AppMethodBeat.o(35795);
+    this.isAd = paramBoolean;
+    this.userName = paramString1;
+    this.hHB = paramString2;
+    this.scene = paramInt1;
+    this.oTP = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.d
  * JD-Core Version:    0.7.0.1
  */

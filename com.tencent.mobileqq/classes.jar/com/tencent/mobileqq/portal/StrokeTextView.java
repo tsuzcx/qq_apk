@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.portal;
 
-import aepi;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,21 +9,22 @@ import android.os.Build.VERSION;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
 public class StrokeTextView
   extends TextView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
+  private TextPaint a;
+  private boolean b = false;
+  private int c;
   private int d;
+  private int e;
+  private float f;
+  private float g;
+  private float h;
+  private int i;
   
   public StrokeTextView(Context paramContext)
   {
@@ -41,9 +41,9 @@ public class StrokeTextView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidTextTextPaint = getPaint();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = aepi.a(2.0F, getResources());
+    this.a = getPaint();
+    this.b = false;
+    this.e = AIOUtils.b(2.0F, getResources());
     if (Build.VERSION.SDK_INT > 11) {
       setLayerType(1, null);
     }
@@ -51,87 +51,90 @@ public class StrokeTextView
   
   private void a(int paramInt)
   {
+    int k = 1;
+    int j;
     try
     {
       Field localField = TextView.class.getDeclaredField("mCurTextColor");
       localField.setAccessible(true);
       localField.set(this, Integer.valueOf(paramInt));
       localField.setAccessible(false);
-      i = 0;
+      j = 0;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
+      j = k;
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("StrokeTextView", 2, "innerSetTextColor, exception=" + localThrowable.getMessage());
-          localThrowable.printStackTrace();
-        }
-        int i = 1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("innerSetTextColor, exception=");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.d("StrokeTextView", 2, localStringBuilder.toString());
+        localThrowable.printStackTrace();
+        j = k;
       }
-      this.jdField_a_of_type_Boolean = false;
-      setTextColor(this.jdField_a_of_type_Int);
-      setShadowLayer(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.d);
-      invalidate();
     }
-    if (i == 0)
+    if (j == 0)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt);
+      this.a.setColor(paramInt);
       return;
     }
+    this.b = false;
+    setTextColor(this.c);
+    setShadowLayer(this.f, this.g, this.h, this.i);
+    invalidate();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      a(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.d);
+      a(this.d);
+      this.a.setStrokeWidth(this.e);
+      this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.a.setShadowLayer(this.f, this.g, this.h, this.i);
       super.onDraw(paramCanvas);
-      a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(0.0F);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidTextTextPaint.setFakeBoldText(false);
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      a(this.c);
+      this.a.setStrokeWidth(0.0F);
+      this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.a.setFakeBoldText(false);
+      this.a.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
     }
     super.onDraw(paramCanvas);
   }
   
   public void setInnerTextColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     setTextColor(paramInt);
   }
   
   public void setShadow(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.d = paramInt;
+    this.f = paramFloat1;
+    this.g = paramFloat2;
+    this.h = paramFloat3;
+    this.i = paramInt;
   }
   
   public void setStrokeColor(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void setStrokeEnable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public void setStrokeSize(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void setTextBold(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setFakeBoldText(paramBoolean);
+    this.a.setFakeBoldText(paramBoolean);
   }
   
   public void setTypeface(Typeface paramTypeface)
@@ -141,7 +144,7 @@ public class StrokeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.StrokeTextView
  * JD-Core Version:    0.7.0.1
  */

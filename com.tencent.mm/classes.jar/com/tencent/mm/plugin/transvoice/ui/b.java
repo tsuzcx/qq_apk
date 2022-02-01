@@ -1,23 +1,24 @@
 package com.tencent.mm.plugin.transvoice.ui;
 
-import a.f.b.j;
-import a.l;
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.design.widget.CoordinatorLayout;
+import android.os.Message;
 import android.support.design.widget.MMBottomSheetBehavior;
 import android.support.design.widget.MMBottomSheetBehavior.a;
 import android.support.design.widget.MMBottomSheetBehavior.b;
-import android.support.v7.app.e;
+import android.text.Editable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.inputmethod.InputConnection;
@@ -26,265 +27,917 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import android.widget.TextView.OnEditorActionListener;
+import android.widget.TextView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.u;
-import com.tencent.mm.cj.a.a;
+import com.tencent.mm.api.ae;
+import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.modelvoiceaddr.g;
 import com.tencent.mm.modelvoiceaddr.g.b;
 import com.tencent.mm.modelvoiceaddr.h;
 import com.tencent.mm.plugin.transvoice.a.c;
-import com.tencent.mm.plugin.transvoice.a.c.a;
+import com.tencent.mm.plugin.transvoice.a.d;
+import com.tencent.mm.plugin.transvoice.a.e;
+import com.tencent.mm.plugin.transvoice.a.f;
+import com.tencent.mm.plugin.transvoice.a.g;
+import com.tencent.mm.plugin.transvoice.model.c.a;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ak.a;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.MMEditText;
+import com.tencent.mm.ui.widget.a.e.a;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSheetBehavior", "Landroid/support/design/widget/MMBottomSheetBehavior;", "Landroid/view/View;", "bottomSheetCoordinatorLayout", "Landroid/support/design/widget/CoordinatorLayout;", "btnLayout", "canCloseKeyboard", "", "canClosePanel", "canHideKeyboard", "closeInputMethod", "Landroid/widget/ImageView;", "closePanel", "container", "Lcom/tencent/mm/modelvoiceaddr/ShortSentenceContainer;", "curTxt", "", "getCurTxt", "()Ljava/lang/String;", "setCurTxt", "(Ljava/lang/String;)V", "dotCounter", "", "dotStr", "emojiRoot", "Landroid/widget/FrameLayout;", "hasClick", "inputMethodLayout", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoicePanelLayout;", "inputMode", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$InputMode;", "isEdited", "isKeyboardShown", "keyboardHeight", "langType", "languageChoiceDialog", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog;", "mNewVoiceInputReport", "Lcom/tencent/mm/modelvoiceaddr/voicereport/NewVoiceInputReportManager;", "mVoiceIdSet", "", "needSendTxtMsg", "onLanguageItemClick", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "overTimeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "panelDragOpeMode", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$PanelDragOpeMode;", "reporter", "Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "sendTxtMsg", "Landroid/widget/Button;", "sendVoiceMsg", "showImeRunnable", "Ljava/lang/Runnable;", "smileyItem", "smileyOpener", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "talker", "getTalker", "setTalker", "targetView", "tmpClickChangeLangTypeTime", "", "transCancelable", "transMore", "transPanelAction", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "getTransPanelAction", "()Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "setTransPanelAction", "(Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;)V", "transSP", "Landroid/content/SharedPreferences;", "kotlin.jvm.PlatformType", "txtEditView", "Lcom/tencent/mm/ui/widget/MMEditText;", "txtMsg4Send", "updateDotTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "voiceAddr", "Lcom/tencent/mm/plugin/transvoice/model/SceneVoiceInputAddr2;", "value", "voiceFileName", "getVoiceFileName", "setVoiceFileName", "voiceLen", "getVoiceLen", "()J", "setVoiceLen", "(J)V", "voiceMsgSend", "cgiReport", "", "msg", "closeInputMethodBtnVisibility", "visible", "closeTransPanel", "exitType", "delPunctuation", "getContentTxt", "init", "initSmileyPanel", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "refreshBottomPanelHeight", "resetTransPanel", "saveTransLangTypeByTalker", "type", "setBottomBtnVisibility", "setKeyboardVisibility", "setSmileyItemVisibility", "setSmileyPanelVisibility", "show", "startTrans", "updateCurTxt", "updateTransLangTypeByTalker", "Companion", "InputMode", "PanelDragOpeMode", "TransPanelAction", "plugin-transvoice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSheetBehavior", "Landroid/support/design/widget/MMBottomSheetBehavior;", "Landroid/view/View;", "bottomSheetCoordinatorLayout", "Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "btnLayout", "canCloseKeyboard", "", "canClosePanel", "canHideKeyboard", "closeInputMethod", "Landroid/widget/ImageView;", "closePanel", "container", "Lcom/tencent/mm/modelvoiceaddr/ShortSentenceContainer;", "curTxt", "", "getCurTxt", "()Ljava/lang/String;", "setCurTxt", "(Ljava/lang/String;)V", "dotCounter", "", "dotStr", "emojiRoot", "Landroid/widget/FrameLayout;", "hasClick", "inputMethodLayout", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoicePanelLayout;", "inputMode", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$InputMode;", "isEdited", "isKeyboardShown", "keyboardHeight", "langType", "languageChoiceDialog", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog;", "mNewVoiceInputReport", "Lcom/tencent/mm/modelvoiceaddr/voicereport/NewVoiceInputReportManager;", "mVoiceIdSet", "", "needSendTxtMsg", "onLanguageItemClick", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "overTimeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "panelDragOpeMode", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$PanelDragOpeMode;", "reporter", "Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "sendTxtMsg", "Landroid/widget/Button;", "sendVoiceMsg", "showImeRunnable", "Ljava/lang/Runnable;", "smileyItem", "smileyOpener", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "talker", "getTalker", "setTalker", "targetView", "tmpClickChangeLangTypeTime", "", "transCancelable", "transMore", "transPanelAction", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "getTransPanelAction", "()Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "setTransPanelAction", "(Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;)V", "transSP", "Landroid/content/SharedPreferences;", "kotlin.jvm.PlatformType", "txtEditView", "Lcom/tencent/mm/ui/widget/MMEditText;", "txtMsg4Send", "updateDotTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "voiceAddr", "Lcom/tencent/mm/plugin/transvoice/model/SceneVoiceInputAddr2;", "value", "voiceFileName", "getVoiceFileName", "setVoiceFileName", "voiceLen", "getVoiceLen", "()J", "setVoiceLen", "(J)V", "voiceMsgSend", "cgiReport", "", "msg", "closeInputMethodBtnVisibility", "visible", "closeTransPanel", "exitType", "delPunctuation", "getContentTxt", "init", "initSmileyPanel", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "refreshBottomPanelHeight", "resetTransPanel", "saveTransLangTypeByTalker", "type", "setBottomBtnVisibility", "setKeyboardVisibility", "setSmileyItemVisibility", "setSmileyPanelVisibility", "show", "startTrans", "updateCurTxt", "updateTransLangTypeByTalker", "Companion", "InputMode", "PanelDragOpeMode", "TransPanelAction", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends e
+  extends androidx.appcompat.app.e
 {
-  public static int tqA;
-  public static final b.a tqB;
-  private ChatFooterPanel eys;
-  public h gaW;
-  public int gbb;
-  private final Runnable lzz;
-  public boolean mxI;
-  private FrameLayout sMg;
-  private boolean sMn;
-  private int sMo;
+  public static final b.a TVJ;
+  public static int TWs;
+  boolean FzT;
+  private FrameLayout SxL;
+  private boolean SxS;
+  private MMBottomSheetBehavior<View> TUA;
+  private boolean TUB;
+  private a.b TUC;
+  private ImageView TUx;
+  final com.tencent.mm.plugin.transvoice.model.c TVK;
+  long TVL;
+  boolean TVM;
+  private TransVoicePanelLayout TVN;
+  private MMEditText TVO;
+  private ImageView TVP;
+  private ImageView TVQ;
+  private View TVR;
+  private View TVS;
+  private ImageView TVT;
+  private Button TVU;
+  private Button TVV;
+  com.tencent.mm.plugin.transvoice.model.b TVW;
+  private b TVX;
+  public long TVY;
+  private String TVZ;
+  private boolean TWa;
+  private String TWb;
+  private int TWc;
+  MTimerHandler TWd;
+  private boolean TWe;
+  private a TWf;
+  MMHandler TWg;
+  private SharedPreferences TWh;
+  private CoordinatorLayout TWi;
+  private b.c TWj;
+  private boolean TWk;
+  private boolean TWl;
+  private boolean TWm;
+  private String TWn;
+  private final com.tencent.mm.modelvoiceaddr.b.b TWo;
+  private List<String> TWp;
+  String TWq;
+  public d TWr;
+  private ChatFooterPanel moD;
+  private View nmf;
+  h pfc;
+  int pfh;
+  private int sNb;
   public String talker;
-  private View targetView;
-  private ImageView tpG;
-  public MMBottomSheetBehavior<View> tpN;
-  private boolean tpO;
-  private a.b tpP;
-  public final c tpS;
-  long tpT;
-  public boolean tpU;
-  private TransVoicePanelLayout tpV;
-  private MMEditText tpW;
-  private ImageView tpX;
-  private ImageView tpY;
-  private View tpZ;
-  private View tqa;
-  private ImageView tqb;
-  private Button tqc;
-  private Button tqd;
-  public com.tencent.mm.plugin.transvoice.a.b tqe;
-  private b.b tqf;
-  public long tqg;
-  public String tqh;
-  private boolean tqi;
-  private String tqj;
-  private int tqk;
-  public ap tql;
-  private boolean tqm;
-  private a tqn;
-  public ak tqo;
-  public SharedPreferences tqp;
-  private CoordinatorLayout tqq;
-  private b.c tqr;
-  private boolean tqs;
-  private boolean tqt;
-  private boolean tqu;
-  private String tqv;
-  private final com.tencent.mm.modelvoiceaddr.b.b tqw;
-  private List<String> tqx;
-  String tqy;
-  public b.d tqz;
+  private final Runnable ymo;
   
   static
   {
-    AppMethodBeat.i(155270);
-    tqB = new b.a((byte)0);
-    tqA = -1;
-    AppMethodBeat.o(155270);
+    AppMethodBeat.i(102605);
+    TVJ = new b.a((byte)0);
+    TWs = -1;
+    AppMethodBeat.o(102605);
   }
   
-  public b(final Context paramContext)
+  public b(Context paramContext)
   {
-    super(paramContext, 2131493698);
-    AppMethodBeat.i(155269);
-    c.a locala = c.tpD;
-    this.tpS = c.cKY();
-    this.gbb = 1;
-    this.tqf = b.b.tqC;
-    this.tqj = "";
-    this.tqp = paramContext.getSharedPreferences("voice2txt_sp", 0);
-    this.tqr = b.c.tqG;
-    this.tqv = "";
-    eS();
-    this.tqw = new com.tencent.mm.modelvoiceaddr.b.b();
-    this.lzz = ((Runnable)new w(this, paramContext));
-    this.tqy = "";
-    AppMethodBeat.o(155269);
+    super(paramContext, a.g.TransDialog);
+    AppMethodBeat.i(102604);
+    c.a locala = com.tencent.mm.plugin.transvoice.model.c.TUa;
+    this.TVK = com.tencent.mm.plugin.transvoice.model.c.hPD();
+    this.pfh = g.pfF;
+    this.TVX = b.TWt;
+    this.TWb = "";
+    this.TWh = paramContext.getSharedPreferences("voice2txt_sp", 0);
+    this.TWj = b.c.TWx;
+    this.TWn = "";
+    bU();
+    this.TWo = new com.tencent.mm.modelvoiceaddr.b.b();
+    this.ymo = new b..ExternalSyntheticLambda13(paramContext, this);
+    this.TWq = "";
+    AppMethodBeat.o(102604);
   }
   
-  private final void GX(int paramInt)
-  {
-    AppMethodBeat.i(155265);
-    if (isShowing())
-    {
-      this.tpS.GV(paramInt);
-      cLb();
-      dismiss();
-      b.d locald = this.tqz;
-      if (locald != null) {
-        locald.cLc();
-      }
-      if (!this.tqi)
-      {
-        locald = this.tqz;
-        if (locald != null) {
-          locald.aez(this.tqh);
-        }
-      }
-      this.tqi = false;
-    }
-    AppMethodBeat.o(155265);
-  }
+  private static final void E(DialogInterface paramDialogInterface) {}
   
-  private final void mG(boolean paramBoolean)
+  private final void FI(boolean paramBoolean)
   {
-    AppMethodBeat.i(155263);
+    AppMethodBeat.i(102598);
+    ImageView localImageView;
     if (paramBoolean)
     {
-      localImageView = this.tpX;
+      localImageView = this.TVP;
       if (localImageView != null)
       {
         localImageView.setVisibility(4);
-        AppMethodBeat.o(155263);
-        return;
+        AppMethodBeat.o(102598);
       }
-      AppMethodBeat.o(155263);
-      return;
     }
-    ImageView localImageView = this.tpX;
-    if (localImageView != null)
+    else
     {
-      localImageView.setVisibility(0);
-      AppMethodBeat.o(155263);
+      localImageView = this.TVP;
+      if (localImageView != null) {
+        localImageView.setVisibility(0);
+      }
+    }
+    AppMethodBeat.o(102598);
+  }
+  
+  private final void FJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(262542);
+    View localView;
+    if (paramBoolean)
+    {
+      localView = this.TVS;
+      if (localView != null)
+      {
+        localView.setVisibility(0);
+        AppMethodBeat.o(262542);
+      }
+    }
+    else
+    {
+      localView = this.TVS;
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+    }
+    AppMethodBeat.o(262542);
+  }
+  
+  private final void FK(boolean paramBoolean)
+  {
+    AppMethodBeat.i(262544);
+    View localView;
+    if (paramBoolean)
+    {
+      localView = this.TVR;
+      if (localView != null)
+      {
+        localView.setVisibility(0);
+        AppMethodBeat.o(262544);
+      }
+    }
+    else
+    {
+      localView = this.TVR;
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+    }
+    AppMethodBeat.o(262544);
+  }
+  
+  private final void FL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(262547);
+    ChatFooterPanel localChatFooterPanel;
+    if (paramBoolean)
+    {
+      localChatFooterPanel = this.moD;
+      if (localChatFooterPanel != null)
+      {
+        localChatFooterPanel.setVisibility(0);
+        AppMethodBeat.o(262547);
+      }
+    }
+    else
+    {
+      localChatFooterPanel = this.moD;
+      if (localChatFooterPanel != null) {
+        localChatFooterPanel.setVisibility(4);
+      }
+    }
+    AppMethodBeat.o(262547);
+  }
+  
+  private static final void a(Context paramContext, b paramb)
+  {
+    AppMethodBeat.i(262573);
+    s.u(paramContext, "$context");
+    s.u(paramb, "this$0");
+    paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
+    if (paramContext != null) {
+      paramContext.showSoftInput((View)paramb.TVO, 0);
+    }
+    AppMethodBeat.o(262573);
+  }
+  
+  private static final void a(b paramb, DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(262572);
+    s.u(paramb, "this$0");
+    Log.d("MicroMsg.TransVoiceDialog", "onDismiss.");
+    String str;
+    if (paramb.TWm)
+    {
+      paramb.TWm = false;
+      if (!Util.isNullOrNil(paramb.TWn))
+      {
+        paramDialogInterface = paramb.TWr;
+        if (paramDialogInterface != null) {
+          paramDialogInterface.beT(paramb.TWn);
+        }
+        str = paramb.TWn;
+        paramDialogInterface = paramb.TWp;
+        if (paramDialogInterface != null) {
+          break label195;
+        }
+        paramDialogInterface = null;
+        Log.i("MicroMsg.TransVoiceDialog", "cgiReport size = %s", new Object[] { paramDialogInterface });
+        paramDialogInterface = com.tencent.mm.model.newabtest.d.bEt().Fd("100235");
+        if ((paramDialogInterface == null) || (!paramDialogInterface.isValid())) {
+          break label208;
+        }
+      }
+    }
+    label195:
+    label208:
+    for (int i = Util.getInt((String)paramDialogInterface.iWZ().get("MMVoipVadOn"), 0);; i = 0)
+    {
+      Log.i("MicroMsg.TransVoiceDialog", "cgiReport: abTestFlag = [%s]", new Object[] { Integer.valueOf(i) });
+      paramb.TWo.a(paramb.TWp, str, String.valueOf(i));
+      paramb = paramb.TWp;
+      if (paramb != null) {
+        paramb.clear();
+      }
+      AppMethodBeat.o(262572);
+      return;
+      paramDialogInterface = Integer.valueOf(paramDialogInterface.size());
+      break;
+    }
+  }
+  
+  private static final void a(b paramb, View paramView)
+  {
+    AppMethodBeat.i(262555);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    paramb.TVK.TUs = 1;
+    paramb.FzT = true;
+    if (paramb.TWe)
+    {
+      paramb.TWe = false;
+      paramb.TVK.TUq = 0;
+      paramb.TVK.TUm = System.currentTimeMillis();
+      paramView = paramb.TVW;
+      if (paramView != null) {
+        paramView.bj(false, true);
+      }
+      paramView = paramb.TVR;
+      if (paramView != null) {
+        paramView.setVisibility(0);
+      }
+      paramView = paramb.TWg;
+      if (paramView != null) {
+        paramView.removeMessages(5000);
+      }
+      paramView = paramb.TWd;
+      if (paramView != null) {
+        paramView.stopTimer();
+      }
+      paramView = paramb.TVO;
+      if (paramView != null) {
+        paramView.setText((CharSequence)paramb.TWq);
+      }
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(262555);
+  }
+  
+  private static final void a(b paramb, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(262551);
+    s.u(paramb, "this$0");
+    paramb.SxS = paramBoolean;
+    Log.d("MicroMsg.TransVoiceDialog", "isKeyboardShow %s.", new Object[] { Boolean.valueOf(paramBoolean) });
+    Object localObject;
+    int i;
+    if (paramBoolean)
+    {
+      paramb.TVX = b.TWv;
+      localObject = paramb.TUA;
+      if ((localObject != null) && (3 == ((MMBottomSheetBehavior)localObject).mState))
+      {
+        i = 1;
+        if (i != 0) {
+          paramb.TWj = b.c.TWy;
+        }
+        localObject = paramb.TVO;
+        if (localObject != null) {
+          ((MMEditText)localObject).setCursorVisible(true);
+        }
+        paramb.FJ(true);
+        paramb.FK(false);
+        paramb.FL(false);
+        localObject = paramb.TVT;
+        if (localObject != null) {
+          ((ImageView)localObject).setImageResource(a.c.chatting_setmode_biaoqing_btn);
+        }
+        paramb.FI(true);
+        if ((paramb.sNb != paramInt) && (paramInt != 0))
+        {
+          paramb.sNb = paramInt;
+          j.H(paramb.getContext(), paramInt);
+          paramInt = KeyBoardUtil.getValidPanelHeight(paramb.getContext());
+          localObject = paramb.moD;
+          if (localObject != null) {
+            ((ChatFooterPanel)localObject).setPortHeightPx(paramInt);
+          }
+          paramb = paramb.moD;
+          if (paramb != null) {
+            break label378;
+          }
+        }
+      }
+    }
+    label378:
+    for (paramb = null;; paramb = paramb.getLayoutParams())
+    {
+      if (paramb != null) {
+        paramb.height = paramInt;
+      }
+      AppMethodBeat.o(262551);
+      return;
+      i = 0;
+      break;
+      localObject = paramb.TUA;
+      if ((localObject != null) && (3 == ((MMBottomSheetBehavior)localObject).mState)) {}
+      for (i = 1;; i = 0)
+      {
+        if ((i != 0) && (b.TWu != paramb.TVX)) {
+          paramb.TWj = b.c.TWx;
+        }
+        localObject = paramb.TVX;
+        switch (e.$EnumSwitchMapping$0[localObject.ordinal()])
+        {
+        case 1: 
+        default: 
+          break;
+        case 2: 
+          paramb.TVX = b.TWt;
+          if (b.c.TWy == paramb.TWj) {
+            break;
+          }
+          paramb.FJ(false);
+          paramb.FK(true);
+          localObject = paramb.moD;
+          if (localObject != null) {
+            ((ChatFooterPanel)localObject).setVisibility(8);
+          }
+          localObject = paramb.TVO;
+          if (localObject != null) {
+            ((MMEditText)localObject).setCursorVisible(false);
+          }
+          paramb.FI(false);
+          break;
+        }
+      }
+    }
+  }
+  
+  private static final boolean a(b paramb)
+  {
+    AppMethodBeat.i(262566);
+    s.u(paramb, "this$0");
+    int i = paramb.TWc;
+    paramb.TWc += 1;
+    Object localObject;
+    switch (i % 3)
+    {
+    default: 
+      localObject = paramb.TWq;
+      if (((String)localObject).length() <= 3) {
+        break;
+      }
+    }
+    for (i = ((String)localObject).length() - 3;; i = 0)
+    {
+      String str = s.X((String)localObject, paramb.TWb);
+      localObject = new SpannableString((CharSequence)str);
+      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(paramb.getContext().getResources().getColor(com.tencent.mm.plugin.transvoice.a.a.BW_0_Alpha_0_3)), i, str.length(), 18);
+      paramb = paramb.TVO;
+      if (paramb != null) {
+        paramb.setText((CharSequence)localObject);
+      }
+      AppMethodBeat.o(262566);
+      return true;
+      paramb.TWb = "·";
+      break;
+      paramb.TWb = "··";
+      break;
+      paramb.TWb = "···";
+      break;
+    }
+  }
+  
+  private static final boolean a(b paramb, Message paramMessage)
+  {
+    AppMethodBeat.i(262571);
+    s.u(paramb, "this$0");
+    s.u(paramMessage, "it");
+    if (paramMessage.what == 5000)
+    {
+      paramb.TVK.TUl = 1;
+      paramb.TVK.TUm = System.currentTimeMillis();
+      paramb.TVK.TUq = 0;
+      paramMessage = paramb.TWd;
+      if (paramMessage != null) {
+        paramMessage.stopTimer();
+      }
+      paramMessage = paramb.TVW;
+      if (paramMessage != null) {
+        paramMessage.bj(false, false);
+      }
+      if (!Util.isNullOrNil(paramb.TWq))
+      {
+        paramMessage = paramb.TVO;
+        if (paramMessage != null) {
+          paramMessage.setFocusable(true);
+        }
+        paramMessage = paramb.TVO;
+        if (paramMessage != null) {
+          paramMessage.setFocusableInTouchMode(true);
+        }
+      }
+      paramMessage = paramb.TVO;
+      if (paramMessage != null) {
+        paramMessage.setText((CharSequence)paramb.TWq);
+      }
+      paramb = paramb.TVR;
+      if (paramb != null) {
+        paramb.setVisibility(0);
+      }
+    }
+    AppMethodBeat.o(262571);
+    return true;
+  }
+  
+  private static final boolean a(b paramb, TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(262553);
+    s.u(paramb, "this$0");
+    if ((4 == paramInt) || (66 == paramKeyEvent.getAction()))
+    {
+      paramb.hPR();
+      AppMethodBeat.o(262553);
+      return true;
+    }
+    AppMethodBeat.o(262553);
+    return false;
+  }
+  
+  private final void apv(int paramInt)
+  {
+    AppMethodBeat.i(102600);
+    if (isShowing())
+    {
+      this.TVK.setExitType(paramInt);
+      hPQ();
+      dismiss();
+      d locald = this.TWr;
+      if (locald != null) {
+        locald.hPS();
+      }
+      if (!this.TWa)
+      {
+        locald = this.TWr;
+        if (locald != null) {
+          locald.beU(this.TVZ);
+        }
+      }
+      this.TWa = false;
+    }
+    AppMethodBeat.o(102600);
+  }
+  
+  private static final void b(b paramb, View paramView)
+  {
+    AppMethodBeat.i(262558);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    paramb.apv(6);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(262558);
+  }
+  
+  private static final void c(b paramb, View paramView)
+  {
+    AppMethodBeat.i(262560);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    paramb.TVL = System.currentTimeMillis();
+    paramView = paramb.TWf;
+    if (paramView != null) {
+      paramView.pfh = paramb.pfh;
+    }
+    paramView = paramb.TWf;
+    if (paramView != null) {
+      paramView.hPF();
+    }
+    paramb = paramb.TWf;
+    if (paramb != null) {
+      paramb.show();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(262560);
+  }
+  
+  private static final void d(b paramb, View paramView)
+  {
+    AppMethodBeat.i(262562);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    paramView = paramb.TVX;
+    switch (e.$EnumSwitchMapping$0[paramView.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(262562);
+      return;
+      paramb.setKeyboardVisibility(false);
+      continue;
+      paramb.TVX = b.TWt;
+      paramb.FJ(false);
+      paramb.FK(true);
+      paramView = paramb.moD;
+      if (paramView != null) {
+        paramView.setVisibility(8);
+      }
+      paramView = paramb.TVO;
+      if (paramView != null) {
+        paramView.setCursorVisible(false);
+      }
+      paramb.FI(false);
+      continue;
+      paramb.TVX = b.TWt;
+      paramb.apv(6);
+    }
+  }
+  
+  private static final void e(b paramb, View paramView)
+  {
+    AppMethodBeat.i(262565);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    if (paramb.SxS)
+    {
+      paramb.TVX = b.TWu;
+      paramb.setKeyboardVisibility(false);
+      paramb.FL(true);
+      paramb = paramb.TVT;
+      if (paramb != null) {
+        paramb.setImageResource(a.c.chatting_setmode_keyboard_btn);
+      }
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(262565);
+      return;
+      paramb.TVX = b.TWv;
+      paramb.setKeyboardVisibility(true);
+      paramb.FL(false);
+      paramb = paramb.TVT;
+      if (paramb != null) {
+        paramb.setImageResource(a.c.chatting_setmode_biaoqing_btn);
+      }
+    }
+  }
+  
+  private static final void f(b paramb, View paramView)
+  {
+    AppMethodBeat.i(262567);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    Log.i("MicroMsg.TransVoiceDialog", "sendVoiceMsg onClick.");
+    paramView = paramb.TWr;
+    if ((paramView != null) && (true == paramView.e(paramb.TVZ, Long.valueOf(paramb.TVY)))) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        paramb.TWa = true;
+      }
+      paramb.apv(7);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(262567);
       return;
     }
-    AppMethodBeat.o(155263);
+  }
+  
+  private static final void g(b paramb, View paramView)
+  {
+    AppMethodBeat.i(262568);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    paramb.hPR();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(262568);
+  }
+  
+  private final void hPR()
+  {
+    AppMethodBeat.i(262550);
+    this.TVK.TUk = this.pfh;
+    Object localObject = this.TVO;
+    if (localObject == null)
+    {
+      localObject = null;
+      localObject = String.valueOf(localObject);
+      if (Util.isNullOrNil((String)localObject)) {
+        break label89;
+      }
+      this.TVK.TUo = ((String)localObject).length();
+      this.TWm = true;
+    }
+    for (this.TWn = ((String)localObject);; this.TWn = "")
+    {
+      if (!this.TVM) {
+        break label107;
+      }
+      apv(8);
+      AppMethodBeat.o(262550);
+      return;
+      localObject = ((MMEditText)localObject).getText();
+      break;
+      label89:
+      this.TVK.TUo = 0;
+    }
+    label107:
+    apv(5);
+    AppMethodBeat.o(262550);
   }
   
   private final void setKeyboardVisibility(boolean paramBoolean)
   {
-    AppMethodBeat.i(155264);
-    ab.d("MicroMsg.TransVoiceDialog", "setKeyboardVisibility, %s.", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(102599);
+    Log.d("MicroMsg.TransVoiceDialog", "setKeyboardVisibility, %s.", new Object[] { Boolean.valueOf(paramBoolean) });
+    InputMethodManager localInputMethodManager;
     if (paramBoolean)
     {
-      localObject = this.targetView;
+      localObject = this.nmf;
       if (localObject != null) {
-        ((View)localObject).removeCallbacks(this.lzz);
+        ((View)localObject).removeCallbacks(this.ymo);
       }
-      localObject = this.targetView;
+      localObject = this.nmf;
       if (localObject != null)
       {
-        ((View)localObject).post(this.lzz);
-        AppMethodBeat.o(155264);
-        return;
+        ((View)localObject).post(this.ymo);
+        AppMethodBeat.o(102599);
       }
-      AppMethodBeat.o(155264);
+    }
+    else
+    {
+      localObject = this.nmf;
+      if (localObject != null) {
+        ((View)localObject).removeCallbacks(this.ymo);
+      }
+      localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
+      if (localInputMethodManager != null)
+      {
+        localObject = this.TVO;
+        if (localObject != null) {
+          break label134;
+        }
+      }
+    }
+    label134:
+    for (Object localObject = null;; localObject = ((MMEditText)localObject).getWindowToken())
+    {
+      localInputMethodManager.hideSoftInputFromWindow((IBinder)localObject, 0);
+      AppMethodBeat.o(102599);
       return;
     }
-    Object localObject = this.targetView;
-    if (localObject != null) {
-      ((View)localObject).removeCallbacks(this.lzz);
-    }
-    InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
-    if (localInputMethodManager != null)
+  }
+  
+  public final void beR(String paramString)
+  {
+    AppMethodBeat.i(185255);
+    if (!Util.isNullOrNil(paramString))
     {
-      localObject = this.tpW;
-      if (localObject != null) {}
-      for (localObject = ((MMEditText)localObject).getWindowToken();; localObject = null)
+      this.TVZ = paramString;
+      com.tencent.mm.cj.a.a locala = com.tencent.mm.cj.a.adtq;
+      s.checkNotNull(paramString);
+      s.u(paramString, "<set-?>");
+      com.tencent.mm.cj.a.bzA(paramString);
+    }
+    AppMethodBeat.o(185255);
+  }
+  
+  public final void beS(String paramString)
+  {
+    AppMethodBeat.i(102602);
+    s.u(paramString, "<set-?>");
+    this.TWq = paramString;
+    AppMethodBeat.o(102602);
+  }
+  
+  public final void c(h paramh)
+  {
+    AppMethodBeat.i(185256);
+    s.u(paramh, "container");
+    Object localObject = getWindow();
+    if (localObject != null) {
+      ((Window)localObject).setDimAmount(0.5F);
+    }
+    localObject = this.TUA;
+    if (localObject != null) {
+      ((MMBottomSheetBehavior)localObject).aL();
+    }
+    this.TVM = false;
+    this.FzT = false;
+    int i = this.TWh.getInt(this.talker, 0);
+    localObject = this.TWf;
+    s.checkNotNull(localObject);
+    localObject = ((a)localObject).TUy;
+    s.checkNotNull(localObject);
+    if (((ArrayList)localObject).contains(Integer.valueOf(i))) {
+      this.pfh = i;
+    }
+    do
+    {
+      for (;;)
       {
-        localInputMethodManager.hideSoftInputFromWindow((IBinder)localObject, 0);
-        AppMethodBeat.o(155264);
+        this.TVK.TUj = this.pfh;
+        hPQ();
+        localObject = this.TWg;
+        if (localObject != null) {
+          ((MMHandler)localObject).sendEmptyMessageDelayed(5000, 5000L);
+        }
+        localObject = this.TWd;
+        if (localObject != null) {
+          ((MTimerHandler)localObject).startTimer(500L);
+        }
+        this.pfc = paramh;
+        this.TVW = new com.tencent.mm.plugin.transvoice.model.b(paramh, this.pfh, (g.b)new k(this));
+        paramh = this.TVW;
+        if (paramh != null) {
+          paramh.start();
+        }
+        AppMethodBeat.o(185256);
         return;
+        localObject = this.TWf;
+        s.checkNotNull(localObject);
+        localObject = ((a)localObject).TUy;
+        s.checkNotNull(localObject);
+        if (((ArrayList)localObject).size() > 0)
+        {
+          localObject = this.TWf;
+          s.checkNotNull(localObject);
+          localObject = ((a)localObject).TUy;
+          s.checkNotNull(localObject);
+          localObject = ((ArrayList)localObject).get(0);
+          s.s(localObject, "languageChoiceDialog!!.langTypeArr!![0]");
+          this.pfh = ((Number)localObject).intValue();
+        }
+        else
+        {
+          localObject = LocaleUtil.getCurrentLanguage(getContext());
+          if (localObject != null) {
+            switch (((String)localObject).hashCode())
+            {
+            default: 
+              break;
+            case 3241: 
+              if (((String)localObject).equals("en")) {
+                this.pfh = g.pfH;
+              }
+              break;
+            }
+          }
+        }
+      }
+    } while (!((String)localObject).equals("zh_HK"));
+    for (;;)
+    {
+      this.pfh = g.pfF;
+      break;
+      if (!((String)localObject).equals("zh_TW")) {
+        if ((goto 101) || (!((String)localObject).equals("zh_CN"))) {
+          break;
+        }
       }
     }
-    AppMethodBeat.o(155264);
   }
   
-  public final void aex(String paramString)
+  final void hPQ()
   {
-    AppMethodBeat.i(155267);
-    j.q(paramString, "<set-?>");
-    this.tqy = paramString;
-    AppMethodBeat.o(155267);
-  }
-  
-  public final void cLb()
-  {
-    AppMethodBeat.i(155266);
-    this.tqy = "";
-    this.tqk = 0;
-    this.tqj = "";
-    this.tqm = false;
-    Object localObject = this.tpW;
+    AppMethodBeat.i(102601);
+    this.TWq = "";
+    this.TWc = 0;
+    this.TWb = "";
+    this.TWe = false;
+    Object localObject = this.TVO;
     if (localObject != null) {
       ((MMEditText)localObject).setText((CharSequence)"");
     }
-    localObject = this.tpW;
+    localObject = this.TVO;
     if (localObject != null) {
       ((MMEditText)localObject).setCursorVisible(false);
     }
-    localObject = this.tpW;
+    localObject = this.TVO;
     if (localObject != null) {
       ((MMEditText)localObject).setFocusable(false);
     }
-    localObject = this.tpW;
+    localObject = this.TVO;
     if (localObject != null) {
       ((MMEditText)localObject).setFocusableInTouchMode(false);
     }
-    localObject = this.tpZ;
+    localObject = this.TVR;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = this.tqa;
+    localObject = this.TVS;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
     setKeyboardVisibility(false);
-    localObject = this.sMg;
+    localObject = this.moD;
     if (localObject != null) {
-      ((FrameLayout)localObject).setVisibility(8);
+      ((ChatFooterPanel)localObject).setVisibility(8);
     }
-    mG(false);
-    localObject = this.tqo;
+    FI(false);
+    localObject = this.TWg;
     if (localObject != null) {
-      ((ak)localObject).removeMessages(5000);
+      ((MMHandler)localObject).removeMessages(5000);
     }
-    this.tqr = b.c.tqG;
-    this.tpO = false;
-    this.tqs = false;
-    this.tqt = false;
-    AppMethodBeat.o(155266);
+    this.TWj = b.c.TWx;
+    this.TUB = false;
+    this.TWk = false;
+    this.TWl = false;
+    AppMethodBeat.o(102601);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(155262);
-    GX(6);
+    AppMethodBeat.i(102597);
+    apv(6);
     super.onBackPressed();
-    AppMethodBeat.o(155262);
+    AppMethodBeat.o(102597);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(155261);
-    this.targetView = LayoutInflater.from(getContext()).inflate(2130971039, null, false);
+    AppMethodBeat.i(102596);
+    this.nmf = LayoutInflater.from(getContext()).inflate(a.e.TTJ, null, false);
     Object localObject = new ViewGroup.LayoutParams(-1, -1);
-    setContentView(this.targetView, (ViewGroup.LayoutParams)localObject);
+    View localView = this.nmf;
+    s.checkNotNull(localView);
+    setContentView(localView, (ViewGroup.LayoutParams)localObject);
     super.onCreate(paramBundle);
     paramBundle = getWindow();
     if (paramBundle != null)
@@ -293,446 +946,653 @@ public final class b
       paramBundle.setLayout(-1, -1);
       paramBundle.setSoftInputMode(34);
       paramBundle.setDimAmount(0.5F);
-      paramBundle.setWindowAnimations(2131493120);
+      paramBundle.setWindowAnimations(a.g.BottomToTopSlowAnimation);
     }
-    paramBundle = this.targetView;
-    if (paramBundle != null)
+    paramBundle = this.nmf;
+    if (paramBundle == null)
     {
-      paramBundle = (TransVoicePanelLayout)paramBundle.findViewById(2131828630);
-      this.tpV = paramBundle;
-      paramBundle = this.tpV;
+      paramBundle = null;
+      this.TVN = paramBundle;
+      paramBundle = this.TVN;
       if (paramBundle != null) {
-        paramBundle.setOnInputPanelChange((TransVoicePanelLayout.a)new b.h(this));
+        paramBundle.setOnInputPanelChange(new b..ExternalSyntheticLambda10(this));
       }
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1006;
-      }
-      paramBundle = (CoordinatorLayout)paramBundle.findViewById(2131825348);
-      label160:
-      this.tqq = paramBundle;
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1011;
-      }
-      paramBundle = paramBundle.findViewById(2131825349);
-      label182:
-      this.tpN = MMBottomSheetBehavior.r(paramBundle);
-      paramBundle = this.tpN;
+      paramBundle = this.nmf;
       if (paramBundle != null) {
-        paramBundle.a((MMBottomSheetBehavior.a)new o(this));
+        break label918;
       }
-      paramBundle = this.tpN;
+      paramBundle = null;
+      label145:
+      this.TWi = paramBundle;
+      paramBundle = this.nmf;
       if (paramBundle != null) {
-        paramBundle.a((MMBottomSheetBehavior.b)new b.p(this));
+        break label932;
       }
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1016;
+      paramBundle = null;
+      label161:
+      this.TUA = MMBottomSheetBehavior.c(paramBundle);
+      paramBundle = this.TUA;
+      if (paramBundle != null) {
+        paramBundle.cb = ((MMBottomSheetBehavior.a)new g(this));
       }
-      paramBundle = (MMEditText)paramBundle.findViewById(2131828634);
-      label258:
-      this.tpW = paramBundle;
-      paramBundle = this.tpW;
+      paramBundle = this.TUA;
+      if (paramBundle != null) {
+        paramBundle.cj = ((MMBottomSheetBehavior.b)new h(this));
+      }
+      paramBundle = this.nmf;
+      if (paramBundle != null) {
+        break label943;
+      }
+      paramBundle = null;
+      label228:
+      this.TVO = paramBundle;
+      paramBundle = this.TVO;
       if (paramBundle != null)
       {
         paramBundle.setCursorVisible(false);
-        paramBundle.setOnEditorActionListener((TextView.OnEditorActionListener)new b.e(this));
+        paramBundle.setOnEditorActionListener(new b..ExternalSyntheticLambda9(this));
         paramBundle.setMaxLines(2147483647);
         paramBundle.setHorizontallyScrolling(false);
-        paramBundle.setOnClickListener((View.OnClickListener)new f(this));
-        paramBundle.addTextChangedListener((TextWatcher)new b.g(this));
+        paramBundle.setOnClickListener(new b..ExternalSyntheticLambda6(this));
+        paramBundle.addTextChangedListener((TextWatcher)new i(this));
       }
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
+      paramBundle = this.nmf;
+      if (paramBundle != null) {
+        break label957;
+      }
+      paramBundle = null;
+      label309:
+      this.TUx = paramBundle;
+      paramBundle = this.TUx;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener(new b..ExternalSyntheticLambda3(this));
+      }
+      paramBundle = this.nmf;
+      if (paramBundle != null) {
+        break label971;
+      }
+      paramBundle = null;
+      label346:
+      this.TVP = paramBundle;
+      paramBundle = this.TVP;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener(new b..ExternalSyntheticLambda7(this));
+      }
+      paramBundle = this.nmf;
+      if (paramBundle != null) {
+        break label985;
+      }
+      paramBundle = null;
+      label383:
+      this.TVQ = paramBundle;
+      paramBundle = this.TVQ;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener(new b..ExternalSyntheticLambda8(this));
+      }
+      paramBundle = this.nmf;
+      if (paramBundle != null) {
+        break label999;
+      }
+      paramBundle = null;
+      label420:
+      this.TVR = paramBundle;
+      paramBundle = this.nmf;
+      if (paramBundle != null) {
+        break label1010;
+      }
+      paramBundle = null;
+      label436:
+      this.TVS = paramBundle;
+      paramBundle = this.nmf;
+      if (paramBundle != null) {
         break label1021;
       }
-      paramBundle = (ImageView)paramBundle.findViewById(2131825351);
-      label354:
-      this.tpG = paramBundle;
-      paramBundle = this.tpG;
-      if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new b.q(this));
-      }
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1026;
-      }
-      paramBundle = (ImageView)paramBundle.findViewById(2131828632);
-      label403:
-      this.tpX = paramBundle;
-      paramBundle = this.tpX;
-      if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new b.r(this));
-      }
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1031;
-      }
-      paramBundle = (ImageView)paramBundle.findViewById(2131828633);
+      paramBundle = null;
       label452:
-      this.tpY = paramBundle;
-      paramBundle = this.tpY;
+      this.TVT = paramBundle;
+      paramBundle = this.TVT;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new b.s(this));
+        paramBundle.setOnClickListener(new b..ExternalSyntheticLambda2(this));
       }
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1036;
-      }
-      paramBundle = paramBundle.findViewById(2131828636);
-      label498:
-      this.tpZ = paramBundle;
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1041;
-      }
-      paramBundle = paramBundle.findViewById(2131828639);
-      label520:
-      this.tqa = paramBundle;
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1046;
-      }
-      paramBundle = (ImageView)paramBundle.findViewById(2131828640);
-      label545:
-      this.tqb = paramBundle;
-      paramBundle = this.tqb;
+      paramBundle = this.nmf;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new b.t(this));
+        break label1035;
       }
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1051;
-      }
-      paramBundle = (FrameLayout)paramBundle.findViewById(2131828641);
-      label594:
-      this.sMg = paramBundle;
-      this.eys = ((ChatFooterPanel)u.aW(getContext()));
-      this.sMo = x.gL(getContext());
-      paramBundle = new FrameLayout.LayoutParams(-1, this.sMo);
-      localObject = this.sMg;
+      paramBundle = null;
+      label489:
+      this.SxL = paramBundle;
+      this.moD = ((ChatFooterPanel)ae.co(getContext()));
+      this.sNb = KeyBoardUtil.getValidPanelHeight(getContext());
+      paramBundle = new FrameLayout.LayoutParams(-1, this.sNb);
+      localObject = this.SxL;
       if (localObject != null) {
-        ((FrameLayout)localObject).addView((View)this.eys, (ViewGroup.LayoutParams)paramBundle);
+        ((FrameLayout)localObject).addView((View)this.moD, (ViewGroup.LayoutParams)paramBundle);
       }
-      paramBundle = this.eys;
+      paramBundle = this.moD;
       if (paramBundle != null) {
-        paramBundle.setPortHeightPx(this.sMo);
+        paramBundle.setPortHeightPx(this.sNb);
       }
-      paramBundle = this.eys;
+      paramBundle = this.moD;
       if (paramBundle != null) {
-        paramBundle.setEntranceScene(ChatFooterPanel.vQy);
+        paramBundle.setEntranceScene(ChatFooterPanel.XYl);
       }
-      paramBundle = this.eys;
+      paramBundle = this.moD;
       if (paramBundle != null) {
-        paramBundle.Az();
+        paramBundle.iKh();
       }
-      paramBundle = this.eys;
+      paramBundle = this.moD;
       if (paramBundle != null) {
         paramBundle.onResume();
       }
-      paramBundle = this.eys;
+      paramBundle = this.moD;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.eys;
+      paramBundle = this.moD;
       if (paramBundle != null) {
-        paramBundle.AB();
+        paramBundle.setShowSend(true);
       }
-      paramBundle = this.eys;
+      paramBundle = this.moD;
       if (paramBundle != null) {
-        paramBundle.setOnTextOperationListener((ChatFooterPanel.a)new v(this));
+        paramBundle.setOnTextOperationListener((ChatFooterPanel.a)new j(this));
       }
-      this.tql = new ap((ap.a)new b.u(this), true);
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1056;
-      }
-      paramBundle = (Button)paramBundle.findViewById(2131828637);
-      label814:
-      this.tqc = paramBundle;
-      paramBundle = this.tqc;
+      this.TWd = new MTimerHandler(new b..ExternalSyntheticLambda12(this), true);
+      paramBundle = this.nmf;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new b.i(this));
+        break label1049;
       }
-      paramBundle = this.targetView;
-      if (paramBundle == null) {
-        break label1061;
+      paramBundle = null;
+      label698:
+      this.TVU = paramBundle;
+      paramBundle = this.TVU;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener(new b..ExternalSyntheticLambda5(this));
+      }
+      paramBundle = this.nmf;
+      if (paramBundle != null) {
+        break label1063;
+      }
+      paramBundle = null;
+      label735:
+      this.TVV = paramBundle;
+      paramBundle = this.TVV;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener(new b..ExternalSyntheticLambda4(this));
+      }
+      paramBundle = this.TVU;
+      if (paramBundle != null) {
+        break label1077;
+      }
+      paramBundle = null;
+      label772:
+      aw.a((Paint)paramBundle, 0.8F);
+      paramBundle = this.TVV;
+      if (paramBundle != null) {
+        break label1085;
       }
     }
-    label1026:
-    label1031:
-    label1036:
-    label1041:
-    label1046:
-    label1051:
-    label1056:
-    label1061:
-    for (paramBundle = (Button)paramBundle.findViewById(2131828638);; paramBundle = null)
+    label918:
+    label932:
+    label943:
+    label1077:
+    label1085:
+    for (paramBundle = null;; paramBundle = paramBundle.getPaint())
     {
-      this.tqd = paramBundle;
-      paramBundle = this.tqd;
-      if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new b.j(this));
-      }
-      this.tpP = ((a.b)new b.k(this));
+      aw.a((Paint)paramBundle, 0.8F);
+      this.TUC = ((a.b)new f(this));
       paramBundle = getContext();
-      j.p(paramBundle, "context");
-      this.tqn = new a(paramBundle);
-      paramBundle = this.tqn;
+      s.s(paramBundle, "context");
+      this.TWf = new a(paramBundle);
+      paramBundle = this.TWf;
       if (paramBundle != null)
       {
-        paramBundle.setOnDismissListener((DialogInterface.OnDismissListener)b.l.tqK);
-        paramBundle.tpP = this.tpP;
+        paramBundle.setOnDismissListener(b..ExternalSyntheticLambda1.INSTANCE);
+        paramBundle.TUC = this.TUC;
       }
-      this.tqo = new ak((ak.a)new b.m(this));
-      setOnDismissListener((DialogInterface.OnDismissListener)new b.n(this));
-      AppMethodBeat.o(155261);
+      this.TWg = new MMHandler(new b..ExternalSyntheticLambda11(this));
+      setOnDismissListener(new b..ExternalSyntheticLambda0(this));
+      AppMethodBeat.o(102596);
       return;
-      paramBundle = null;
+      paramBundle = (TransVoicePanelLayout)paramBundle.findViewById(a.d.TTo);
       break;
-      label1006:
-      paramBundle = null;
-      break label160;
-      label1011:
-      paramBundle = null;
-      break label182;
-      label1016:
-      paramBundle = null;
-      break label258;
+      paramBundle = (CoordinatorLayout)paramBundle.findViewById(a.d.TTi);
+      break label145;
+      paramBundle = paramBundle.findViewById(a.d.TTA);
+      break label161;
+      paramBundle = (MMEditText)paramBundle.findViewById(a.d.TTD);
+      break label228;
+      label957:
+      paramBundle = (ImageView)paramBundle.findViewById(a.d.TTm);
+      break label309;
+      label971:
+      paramBundle = (ImageView)paramBundle.findViewById(a.d.TTE);
+      break label346;
+      label985:
+      paramBundle = (ImageView)paramBundle.findViewById(a.d.TTl);
+      break label383;
+      label999:
+      paramBundle = paramBundle.findViewById(a.d.TTz);
+      break label420;
+      label1010:
+      paramBundle = paramBundle.findViewById(a.d.TTB);
+      break label436;
       label1021:
-      paramBundle = null;
-      break label354;
-      paramBundle = null;
-      break label403;
-      paramBundle = null;
+      paramBundle = (ImageView)paramBundle.findViewById(a.d.TTC);
       break label452;
-      paramBundle = null;
-      break label498;
-      paramBundle = null;
-      break label520;
-      paramBundle = null;
-      break label545;
-      paramBundle = null;
-      break label594;
-      paramBundle = null;
-      break label814;
+      paramBundle = (FrameLayout)paramBundle.findViewById(a.d.TTn);
+      break label489;
+      paramBundle = (Button)paramBundle.findViewById(a.d.TTj);
+      break label698;
+      paramBundle = (Button)paramBundle.findViewById(a.d.TTk);
+      break label735;
+      paramBundle = paramBundle.getPaint();
+      break label772;
     }
   }
   
   public final void show()
   {
-    AppMethodBeat.i(155843);
-    a.a locala = com.tencent.mm.cj.a.yTb;
-    com.tencent.mm.cj.a.pX(true);
+    AppMethodBeat.i(102603);
+    com.tencent.mm.cj.a.a locala = com.tencent.mm.cj.a.adtq;
+    com.tencent.mm.cj.a.KP(true);
     super.show();
-    AppMethodBeat.o(155843);
+    AppMethodBeat.o(102603);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$4$2"})
-  static final class f
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$InputMode;", "", "(Ljava/lang/String;I)V", "INPUT_NONE", "INPUT_EMOJI", "INPUT_KEYBOARD", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(102558);
+      TWt = new b("INPUT_NONE", 0);
+      TWu = new b("INPUT_EMOJI", 1);
+      TWv = new b("INPUT_KEYBOARD", 2);
+      TWw = new b[] { TWt, TWu, TWv };
+      AppMethodBeat.o(102558);
+    }
+    
+    private b() {}
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "", "onTransPanelClose", "", "onTxtMsgSend", "txt", "", "onVoiceMsgDelete", "fileName", "onVoiceMsgSend", "", "fileLength", "", "(Ljava/lang/String;Ljava/lang/Long;)Z", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface d
+  {
+    public abstract void beT(String paramString);
+    
+    public abstract void beU(String paramString);
+    
+    public abstract boolean e(String paramString, Long paramLong);
+    
+    public abstract void hPS();
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$12", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "onLanguageItemClick", "", "langType", "", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
+    implements a.b
   {
     f(b paramb) {}
     
-    public final void onClick(View paramView)
+    public final void app(int paramInt)
     {
-      AppMethodBeat.i(156319);
-      b.p(this.tqJ).tpB = 1;
-      b.r(this.tqJ);
-      if (b.s(this.tqJ))
-      {
-        b.j(this.tqJ, false);
-        b.p(this.tqJ).tpz = 0;
-        b.p(this.tqJ).tpv = System.currentTimeMillis();
-        paramView = b.t(this.tqJ);
-        if (paramView != null) {
-          paramView.cancel(true);
-        }
-        paramView = b.u(this.tqJ);
-        if (paramView != null) {
-          paramView.setVisibility(0);
-        }
-        paramView = b.v(this.tqJ);
-        if (paramView != null) {
-          paramView.removeMessages(5000);
-        }
-        paramView = b.w(this.tqJ);
-        if (paramView != null) {
-          paramView.stopTimer();
-        }
-        paramView = b.e(this.tqJ);
-        if (paramView != null)
-        {
-          paramView.setText((CharSequence)this.tqJ.tqy);
-          AppMethodBeat.o(156319);
-          return;
-        }
+      AppMethodBeat.i(102571);
+      Object localObject1 = b.o(this.TWA);
+      if (localObject1 != null) {
+        ((a)localObject1).dismiss();
       }
-      AppMethodBeat.o(156319);
+      b.a(this.TWA, paramInt);
+      if (paramInt == b.p(this.TWA))
+      {
+        AppMethodBeat.o(102571);
+        return;
+      }
+      if (NetStatusUtil.isConnected(this.TWA.getContext()))
+      {
+        localObject1 = this.TWA;
+        ((b)localObject1).TVM = false;
+        ((b)localObject1).FzT = false;
+        ((b)localObject1).TVK.TUi = ((b)localObject1).TVL;
+        ((b)localObject1).TVK.TUl = 0;
+        ((b)localObject1).TVK.TUm = 0L;
+        ((b)localObject1).TVK.TUn = 0;
+        ((b)localObject1).TVK.TUq = 0;
+        ((b)localObject1).TVK.TUr = 0;
+        ((b)localObject1).TVK.TUs = 0;
+        ((b)localObject1).hPQ();
+        Object localObject2 = ((b)localObject1).TWg;
+        if (localObject2 != null) {
+          ((MMHandler)localObject2).sendEmptyMessageDelayed(5000, 5000L);
+        }
+        localObject2 = ((b)localObject1).TWd;
+        if (localObject2 != null) {
+          ((MTimerHandler)localObject2).startTimer(500L);
+        }
+        ((b)localObject1).pfh = paramInt;
+        long l2 = System.nanoTime() & 0xFFFFFFFF;
+        long l1 = l2;
+        if (l2 < 0L) {
+          l1 = Math.abs(l2);
+        }
+        localObject2 = new h(String.valueOf(l1));
+        h localh = ((b)localObject1).pfc;
+        if (localh != null) {
+          localh.a((h)localObject2);
+        }
+        ((b)localObject1).TVW = new com.tencent.mm.plugin.transvoice.model.b((h)localObject2, paramInt, (g.b)new b.l((b)localObject1));
+        localObject1 = ((b)localObject1).TVW;
+        if (localObject1 != null) {
+          ((com.tencent.mm.plugin.transvoice.model.b)localObject1).start();
+        }
+        AppMethodBeat.o(102571);
+        return;
+      }
+      localObject1 = new e.a(this.TWA.getContext());
+      ((e.a)localObject1).bDw(this.TWA.getContext().getResources().getString(a.f.app_network_unavailable));
+      ((e.a)localObject1).bDC(this.TWA.getContext().getResources().getString(a.f.gOB));
+      ((e.a)localObject1).aET(this.TWA.getContext().getResources().getColor(com.tencent.mm.plugin.transvoice.a.a.Link_100));
+      ((e.a)localObject1).jHH().show();
+      AppMethodBeat.o(102571);
     }
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$2", "Landroid/support/design/widget/MMBottomSheetBehavior$BottomSheetCallback;", "onSlide", "", "bottomSheet", "Landroid/view/View;", "slideOffset", "", "onStateChanged", "newState", "", "plugin-transvoice_release"})
-  public static final class o
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$2", "Landroid/support/design/widget/MMBottomSheetBehavior$BottomSheetCallback;", "onSlide", "", "bottomSheet", "Landroid/view/View;", "slideOffset", "", "onStateChanged", "newState", "", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class g
     extends MMBottomSheetBehavior.a
   {
-    public final void b(View paramView, float paramFloat)
+    g(b paramb) {}
+    
+    private static final void C(b paramb)
     {
-      AppMethodBeat.i(155240);
-      j.q(paramView, "bottomSheet");
-      ab.d("MicroMsg.TransVoiceDialog", "slideOffset: %f, panelDragOpeMode: %s.", new Object[] { Float.valueOf(paramFloat), b.d(this.tqJ) });
-      paramView = b.c(this.tqJ);
-      if (paramView != null)
+      AppMethodBeat.i(262522);
+      s.u(paramb, "this$0");
+      paramb = b.m(paramb);
+      if (paramb != null) {
+        paramb.requestLayout();
+      }
+      AppMethodBeat.o(262522);
+    }
+    
+    public final void c(View paramView, float paramFloat)
+    {
+      AppMethodBeat.i(102576);
+      s.u(paramView, "bottomSheet");
+      Log.d("MicroMsg.TransVoiceDialog", "slideOffset: %f, panelDragOpeMode: %s.", new Object[] { Float.valueOf(paramFloat), b.b(this.TWA) });
+      paramView = b.c(this.TWA);
+      int i;
+      if ((paramView != null) && (paramView.mState == 1))
       {
-        if (paramView.getState() != 1) {
-          break label305;
+        i = 1;
+        if (i == 0) {
+          break label309;
         }
-        if (b.c.tqG == b.d(this.tqJ))
+        if (b.c.TWx == b.b(this.TWA))
         {
-          paramView = this.tqJ;
+          paramView = this.TWA;
           if (0.7F < paramFloat) {
-            break label239;
+            break label248;
           }
           bool = true;
-          b.f(paramView, bool);
-          paramView = this.tqJ.getWindow();
+          label93:
+          b.a(paramView, bool);
+          paramView = this.TWA.getWindow();
           if (paramView != null) {
             paramView.setDimAmount((float)(0.5D - (1.0F - paramFloat) / 2.0D));
           }
         }
-        if (b.c.tqH != b.d(this.tqJ)) {
-          break label305;
+        if (b.c.TWy != b.b(this.TWA)) {
+          break label309;
         }
-        paramView = this.tqJ;
+        paramView = this.TWA;
         if (0.8F < paramFloat) {
-          break label244;
+          break label254;
         }
       }
-      label239:
-      label244:
+      label248:
+      label254:
       for (boolean bool = true;; bool = false)
       {
-        b.g(paramView, bool);
+        b.b(paramView, bool);
         if (0.9F < paramFloat) {
-          break label255;
+          break label260;
         }
-        if (b.l(this.tqJ)) {
-          break label305;
+        if (b.d(this.TWA)) {
+          break label309;
         }
-        b.h(this.tqJ, true);
-        b.i(this.tqJ, false);
-        b.b(this.tqJ, false);
-        b.c(this.tqJ, false);
-        b.d(this.tqJ, false);
-        paramView = b.f(this.tqJ);
+        b.c(this.TWA, true);
+        b.d(this.TWA, false);
+        b.e(this.TWA, false);
+        b.f(this.TWA, false);
+        b.e(this.TWA);
+        paramView = b.f(this.TWA);
         if (paramView == null) {
-          break label249;
+          break label309;
         }
-        paramView.setImageResource(2130838345);
-        AppMethodBeat.o(155240);
+        paramView.setImageResource(a.c.chatting_setmode_biaoqing_btn);
+        AppMethodBeat.o(102576);
         return;
-        AppMethodBeat.o(155240);
-        return;
-        bool = false;
+        i = 0;
         break;
+        bool = false;
+        break label93;
       }
-      label249:
-      AppMethodBeat.o(155240);
-      return;
-      label255:
-      if (b.l(this.tqJ))
+      label260:
+      if (b.d(this.TWA))
       {
-        b.h(this.tqJ, false);
-        b.i(this.tqJ, true);
-        b.b(this.tqJ, true);
-        b.c(this.tqJ, false);
-        b.d(this.tqJ, false);
+        b.c(this.TWA, false);
+        b.d(this.TWA, true);
+        b.e(this.TWA, true);
+        b.f(this.TWA, false);
+        b.e(this.TWA);
       }
-      label305:
-      AppMethodBeat.o(155240);
+      label309:
+      AppMethodBeat.o(102576);
     }
     
-    @SuppressLint({"SwitchIntDef"})
-    public final void j(View paramView, int paramInt)
+    public final void e(View paramView, int paramInt)
     {
-      AppMethodBeat.i(155241);
-      j.q(paramView, "bottomSheet");
-      ab.d("MicroMsg.TransVoiceDialog", "newState: %d, panelDragOpeMode: %s, canClosePanel: %s, canHideKeyboard: %s, canCloseKeyboard: %s.", new Object[] { Integer.valueOf(paramInt), b.d(this.tqJ), Boolean.valueOf(b.j(this.tqJ)), Boolean.valueOf(b.l(this.tqJ)), Boolean.valueOf(b.k(this.tqJ)) });
+      AppMethodBeat.i(102577);
+      s.u(paramView, "bottomSheet");
+      Log.d("MicroMsg.TransVoiceDialog", "newState: %d, panelDragOpeMode: %s, canClosePanel: %s, canHideKeyboard: %s, canCloseKeyboard: %s.", new Object[] { Integer.valueOf(paramInt), b.b(this.TWA), Boolean.valueOf(b.g(this.TWA)), Boolean.valueOf(b.d(this.TWA)), Boolean.valueOf(b.h(this.TWA)) });
       switch (paramInt)
       {
       }
       while ((1 != paramInt) && (3 != paramInt)) {
-        if (!b.j(this.tqJ))
+        if (!b.g(this.TWA))
         {
-          paramView = this.tqJ.getWindow();
+          paramView = this.TWA.getWindow();
           if (paramView != null) {
             paramView.setDimAmount(0.5F);
           }
-          paramView = b.c(this.tqJ);
+          paramView = b.c(this.TWA);
           if (paramView != null)
           {
-            paramView.bC();
-            AppMethodBeat.o(155241);
+            paramView.aL();
+            AppMethodBeat.o(102577);
             return;
-            b.f(this.tqJ, false);
-            b.h(this.tqJ, false);
-            b.g(this.tqJ, false);
+            b.a(this.TWA, false);
+            b.c(this.TWA, false);
+            b.b(this.TWA, false);
             continue;
-            if ((b.c.tqG == b.d(this.tqJ)) && (b.j(this.tqJ))) {
-              b.b(this.tqJ, 6);
+            if ((b.c.TWx == b.b(this.TWA)) && (b.g(this.TWA))) {
+              b.i(this.TWA);
             }
-            if ((b.c.tqH == b.d(this.tqJ)) && (b.l(this.tqJ))) {
-              if (b.k(this.tqJ))
+            if ((b.c.TWy == b.b(this.TWA)) && (b.d(this.TWA))) {
+              if (b.h(this.TWA))
               {
-                b.a(this.tqJ, b.c.tqG);
-                b.c(this.tqJ, true);
-                b.b(this.tqJ, false);
-                paramView = b.g(this.tqJ);
+                b.a(this.TWA, b.c.TWx);
+                b.f(this.TWA, true);
+                b.e(this.TWA, false);
+                paramView = b.j(this.TWA);
                 if (paramView != null) {
                   paramView.setVisibility(8);
                 }
-                paramView = b.e(this.tqJ);
+                paramView = b.k(this.TWA);
                 if (paramView != null) {
                   paramView.setCursorVisible(false);
                 }
-                b.e(this.tqJ, false);
-                paramView = b.m(this.tqJ);
+                b.l(this.TWA);
+                paramView = b.m(this.TWA);
                 if (paramView != null) {
-                  paramView.postDelayed((Runnable)new b.o.a(this), 200L);
+                  paramView.postDelayed(new b.g..ExternalSyntheticLambda0(this.TWA), 200L);
                 }
               }
               else
               {
-                b.i(this.tqJ, true);
-                b.b(this.tqJ, true);
-                b.c(this.tqJ, false);
-                b.d(this.tqJ, false);
+                b.d(this.TWA, true);
+                b.e(this.TWA, true);
+                b.f(this.TWA, false);
+                b.e(this.TWA);
               }
             }
-          }
-          else
-          {
-            AppMethodBeat.o(155241);
           }
         }
         else
         {
-          b.b(this.tqJ, 6);
+          b.i(this.TWA);
         }
       }
-      AppMethodBeat.o(155241);
+      AppMethodBeat.o(102577);
     }
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$initSmileyPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-transvoice_release"})
-  public static final class v
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$3", "Landroid/support/design/widget/MMBottomSheetBehavior$ExternalTouchHelper;", "downY", "", "getDownY", "()F", "setDownY", "(F)V", "onInterceptTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onNeedJudge", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class h
+    implements MMBottomSheetBehavior.b
+  {
+    private float fig;
+    
+    h(b paramb) {}
+    
+    public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+    {
+      Boolean localBoolean = null;
+      AppMethodBeat.i(102578);
+      s.u(paramMotionEvent, "event");
+      s.u(paramMotionEvent, "event");
+      Object localObject = b.n(this.TWA);
+      MMEditText localMMEditText;
+      int i;
+      if (localObject != null)
+      {
+        localMMEditText = b.k(this.TWA);
+        s.checkNotNull(localMMEditText);
+        if (true == ((CoordinatorLayout)localObject).d((View)localMMEditText, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+        {
+          i = 1;
+          if (i != 0)
+          {
+            localObject = b.k(this.TWA);
+            if (localObject != null) {
+              break label244;
+            }
+            localObject = null;
+            label95:
+            localMMEditText = b.k(this.TWA);
+            if (localMMEditText != null) {
+              break label258;
+            }
+            label109:
+            Log.d("MicroMsg.TransVoiceDialog", "can scroll up, %s.", new Object[] { localObject });
+            Log.d("MicroMsg.TransVoiceDialog", "can scroll down, %s.", new Object[] { localBoolean });
+            Log.d("MicroMsg.TransVoiceDialog", "action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
+            switch (paramMotionEvent.getAction())
+            {
+            }
+          }
+        }
+      }
+      label244:
+      float f;
+      label258:
+      do
+      {
+        for (;;)
+        {
+          AppMethodBeat.o(102578);
+          return false;
+          i = 0;
+          break;
+          localObject = Boolean.valueOf(((MMEditText)localObject).canScrollVertically(-1));
+          break label95;
+          localBoolean = Boolean.valueOf(localMMEditText.canScrollVertically(1));
+          break label109;
+          this.fig = paramMotionEvent.getY();
+        }
+        f = paramMotionEvent.getY() - this.fig;
+        Log.d("MicroMsg.TransVoiceDialog", "yOffset: %f.", new Object[] { Float.valueOf(f) });
+        if (f > 0.0F)
+        {
+          bool = s.p(Boolean.TRUE, localObject);
+          AppMethodBeat.o(102578);
+          return bool;
+        }
+      } while (f >= 0.0F);
+      boolean bool = s.p(Boolean.TRUE, localBoolean);
+      AppMethodBeat.o(102578);
+      return bool;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$4$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class i
+    implements TextWatcher
+  {
+    i(b paramb) {}
+    
+    public final void afterTextChanged(Editable paramEditable)
+    {
+      int i = 0;
+      AppMethodBeat.i(262519);
+      if ((!b.x(this.TWA)) && (b.y(this.TWA)))
+      {
+        b.z(this.TWA);
+        b.s(this.TWA).TUr = 1;
+      }
+      Object localObject = b.A(this.TWA);
+      if (localObject != null) {
+        if (Util.isNullOrNil((CharSequence)paramEditable)) {
+          break label115;
+        }
+      }
+      label115:
+      for (boolean bool = true;; bool = false)
+      {
+        ((Button)localObject).setEnabled(bool);
+        localObject = b.B(this.TWA);
+        if (localObject != null)
+        {
+          if (Util.isNullOrNil((CharSequence)paramEditable)) {
+            i = 4;
+          }
+          ((ImageView)localObject).setVisibility(i);
+        }
+        AppMethodBeat.o(262519);
+        return;
+      }
+    }
+    
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+    
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$initSmileyPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class j
     implements ChatFooterPanel.a
   {
-    public final void aRo()
+    j(b paramb) {}
+    
+    public final void aWL()
     {
-      AppMethodBeat.i(155250);
-      Object localObject = b.e(this.tqJ);
+      AppMethodBeat.i(102586);
+      b.q(this.TWA);
+      AppMethodBeat.o(102586);
+    }
+    
+    public final void aWM()
+    {
+      AppMethodBeat.i(102585);
+      Object localObject = b.k(this.TWA);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
@@ -740,164 +1600,241 @@ public final class b
           ((InputConnection)localObject).sendKeyEvent(new KeyEvent(0, 67));
         }
       }
-      localObject = b.e(this.tqJ);
+      localObject = b.k(this.TWA);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
-        if (localObject != null)
-        {
+        if (localObject != null) {
           ((InputConnection)localObject).sendKeyEvent(new KeyEvent(1, 67));
-          AppMethodBeat.o(155250);
-          return;
         }
       }
-      AppMethodBeat.o(155250);
+      AppMethodBeat.o(102585);
     }
     
     public final void append(String paramString)
     {
-      AppMethodBeat.i(155249);
-      MMEditText localMMEditText = b.e(this.tqJ);
-      if (localMMEditText != null)
-      {
-        localMMEditText.avk(paramString);
-        AppMethodBeat.o(155249);
-        return;
+      AppMethodBeat.i(102584);
+      MMEditText localMMEditText = b.k(this.TWA);
+      if (localMMEditText != null) {
+        localMMEditText.bDt(paramString);
       }
-      AppMethodBeat.o(155249);
+      AppMethodBeat.o(102584);
     }
     
-    public final void bag()
-    {
-      AppMethodBeat.i(155251);
-      b.o(this.tqJ);
-      AppMethodBeat.o(155251);
-    }
-    
-    public final void fT(boolean paramBoolean) {}
+    public final void fp(boolean paramBoolean) {}
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
-  static final class w
-    implements Runnable
-  {
-    w(b paramb, Context paramContext) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(155252);
-      InputMethodManager localInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
-      if (localInputMethodManager != null)
-      {
-        localInputMethodManager.showSoftInput((View)b.e(this.tqJ), 0);
-        AppMethodBeat.o(155252);
-        return;
-      }
-      AppMethodBeat.o(155252);
-    }
-  }
-  
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$startTrans$1", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-transvoice_release"})
-  public static final class x
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$startTrans$1", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class k
     implements g.b
   {
-    public final void amK()
-    {
-      AppMethodBeat.i(155255);
-      ab.d("MicroMsg.TransVoiceDialog", "onRecordFin.");
-      AppMethodBeat.o(155255);
-    }
-    
-    public final void amO()
-    {
-      AppMethodBeat.i(155256);
-      ab.d("MicroMsg.TransVoiceDialog", "onRecognizeFinish.");
-      b.j(this.tqJ, false);
-      b.p(this.tqJ).tpz = 1;
-      b.p(this.tqJ).tpv = System.currentTimeMillis();
-      Object localObject = b.v(this.tqJ);
-      if (localObject != null) {
-        ((ak)localObject).removeMessages(5000);
-      }
-      localObject = b.w(this.tqJ);
-      if (localObject != null) {
-        ((ap)localObject).stopTimer();
-      }
-      b.I(this.tqJ);
-      localObject = b.u(this.tqJ);
-      if (localObject != null)
-      {
-        ((View)localObject).setVisibility(0);
-        AppMethodBeat.o(155256);
-        return;
-      }
-      AppMethodBeat.o(155256);
-    }
+    k(b paramb) {}
     
     public final void b(String[] paramArrayOfString, List<String> paramList)
     {
-      AppMethodBeat.i(155253);
-      ab.d("MicroMsg.TransVoiceDialog", "onRes.");
-      b.a(this.tqJ, paramList);
-      paramList = b.v(this.tqJ);
+      AppMethodBeat.i(102588);
+      Log.i("MicroMsg.TransVoiceDialog", "onRes.");
+      b.a(this.TWA, paramList);
+      paramList = b.r(this.TWA);
       if (paramList != null) {
         paramList.removeMessages(5000);
       }
-      paramList = b.v(this.tqJ);
+      paramList = b.r(this.TWA);
       if (paramList != null) {
         paramList.sendEmptyMessageDelayed(5000, 5000L);
       }
       if (paramArrayOfString != null)
       {
         paramList = paramArrayOfString[0];
-        if (paramList != null)
-        {
-          if (((CharSequence)paramList).length() > 0) {}
-          for (int i = 1; i == 1; i = 0)
+        if (paramList != null) {
+          if (((CharSequence)paramList).length() > 0)
           {
-            this.tqJ.aex(paramArrayOfString[0]);
-            ab.d("MicroMsg.TransVoiceDialog", "onRes, curTxt: %s.", new Object[] { this.tqJ.tqy });
-            b.p(this.tqJ).tpw = this.tqJ.tqy.length();
-            if (b.s(this.tqJ)) {
-              break;
+            i = 1;
+            if (i != 1) {
+              break label230;
             }
-            b.j(this.tqJ, true);
-            paramArrayOfString = b.e(this.tqJ);
-            if (paramArrayOfString != null) {
-              paramArrayOfString.setFocusable(true);
-            }
-            paramArrayOfString = b.e(this.tqJ);
-            if (paramArrayOfString != null) {
-              paramArrayOfString.setFocusableInTouchMode(true);
-            }
-            paramArrayOfString = b.e(this.tqJ);
-            if (paramArrayOfString == null) {
-              break;
-            }
-            paramArrayOfString.requestFocus();
-            AppMethodBeat.o(155253);
-            return;
           }
         }
       }
-      AppMethodBeat.o(155253);
-      return;
-      AppMethodBeat.o(155253);
+      label230:
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0)
+        {
+          this.TWA.beS(paramArrayOfString[0]);
+          Log.d("MicroMsg.TransVoiceDialog", "onRes, curTxt: %s.", new Object[] { this.TWA.TWq });
+          b.s(this.TWA).TUn = this.TWA.TWq.length();
+          if (!b.t(this.TWA))
+          {
+            b.g(this.TWA, true);
+            paramArrayOfString = b.k(this.TWA);
+            if (paramArrayOfString != null) {
+              paramArrayOfString.setFocusable(true);
+            }
+            paramArrayOfString = b.k(this.TWA);
+            if (paramArrayOfString != null) {
+              paramArrayOfString.setFocusableInTouchMode(true);
+            }
+            paramArrayOfString = b.k(this.TWA);
+            if (paramArrayOfString != null) {
+              paramArrayOfString.requestFocus();
+            }
+          }
+        }
+        AppMethodBeat.o(102588);
+        return;
+        i = 0;
+        break;
+      }
+    }
+    
+    public final void bPD()
+    {
+      AppMethodBeat.i(102591);
+      Log.i("MicroMsg.TransVoiceDialog", "onRecognizeFinish.");
+      b.g(this.TWA, false);
+      b.s(this.TWA).TUq = 1;
+      b.s(this.TWA).TUm = System.currentTimeMillis();
+      Object localObject = b.r(this.TWA);
+      if (localObject != null) {
+        ((MMHandler)localObject).removeMessages(5000);
+      }
+      localObject = b.u(this.TWA);
+      if (localObject != null) {
+        ((MTimerHandler)localObject).stopTimer();
+      }
+      b.v(this.TWA);
+      localObject = b.w(this.TWA);
+      if (localObject != null) {
+        ((View)localObject).setVisibility(0);
+      }
+      AppMethodBeat.o(102591);
+    }
+    
+    public final void bPz()
+    {
+      AppMethodBeat.i(102590);
+      Log.d("MicroMsg.TransVoiceDialog", "onRecordFin.");
+      AppMethodBeat.o(102590);
     }
     
     public final void c(int paramInt1, int paramInt2, int paramInt3, long paramLong)
     {
-      AppMethodBeat.i(155254);
-      ab.d("MicroMsg.TransVoiceDialog", "onError, errType: %d, errCode: %d, localCode: %d, voiceid: %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
-      b.p(this.tqJ).tpz = 0;
-      b.p(this.tqJ).tpv = System.currentTimeMillis();
-      AppMethodBeat.o(155254);
+      AppMethodBeat.i(102589);
+      Log.i("MicroMsg.TransVoiceDialog", "onError, errType: %d, errCode: %d, localCode: %d, voiceid: %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
+      b.s(this.TWA).TUq = 0;
+      b.s(this.TWA).TUm = System.currentTimeMillis();
+      AppMethodBeat.o(102589);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$startTrans$2", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-transvoice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class l
+    implements g.b
+  {
+    l(b paramb) {}
+    
+    public final void b(String[] paramArrayOfString, List<String> paramList)
+    {
+      AppMethodBeat.i(102592);
+      Log.d("MicroMsg.TransVoiceDialog", "onRes.");
+      b.a(this.TWA, paramList);
+      paramList = b.r(this.TWA);
+      if (paramList != null) {
+        paramList.removeMessages(5000);
+      }
+      paramList = b.r(this.TWA);
+      if (paramList != null) {
+        paramList.sendEmptyMessageDelayed(5000, 5000L);
+      }
+      if (paramArrayOfString != null)
+      {
+        paramList = paramArrayOfString[0];
+        if (paramList != null) {
+          if (((CharSequence)paramList).length() > 0)
+          {
+            i = 1;
+            if (i != 1) {
+              break label230;
+            }
+          }
+        }
+      }
+      label230:
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0)
+        {
+          this.TWA.beS(paramArrayOfString[0]);
+          Log.d("MicroMsg.TransVoiceDialog", "onRes, curTxt: %s.", new Object[] { this.TWA.TWq });
+          b.s(this.TWA).TUn = this.TWA.TWq.length();
+          if (!b.t(this.TWA))
+          {
+            b.g(this.TWA, true);
+            paramArrayOfString = b.k(this.TWA);
+            if (paramArrayOfString != null) {
+              paramArrayOfString.setFocusable(true);
+            }
+            paramArrayOfString = b.k(this.TWA);
+            if (paramArrayOfString != null) {
+              paramArrayOfString.setFocusableInTouchMode(true);
+            }
+            paramArrayOfString = b.k(this.TWA);
+            if (paramArrayOfString != null) {
+              paramArrayOfString.requestFocus();
+            }
+          }
+        }
+        AppMethodBeat.o(102592);
+        return;
+        i = 0;
+        break;
+      }
+    }
+    
+    public final void bPD()
+    {
+      AppMethodBeat.i(102595);
+      Log.d("MicroMsg.TransVoiceDialog", "onRecognizeFinish.");
+      b.g(this.TWA, false);
+      b.s(this.TWA).TUq = 1;
+      b.s(this.TWA).TUm = System.currentTimeMillis();
+      Object localObject = b.r(this.TWA);
+      if (localObject != null) {
+        ((MMHandler)localObject).removeMessages(5000);
+      }
+      localObject = b.u(this.TWA);
+      if (localObject != null) {
+        ((MTimerHandler)localObject).stopTimer();
+      }
+      b.v(this.TWA);
+      localObject = b.w(this.TWA);
+      if (localObject != null) {
+        ((View)localObject).setVisibility(0);
+      }
+      AppMethodBeat.o(102595);
+    }
+    
+    public final void bPz()
+    {
+      AppMethodBeat.i(102594);
+      Log.d("MicroMsg.TransVoiceDialog", "onRecordFin.");
+      AppMethodBeat.o(102594);
+    }
+    
+    public final void c(int paramInt1, int paramInt2, int paramInt3, long paramLong)
+    {
+      AppMethodBeat.i(102593);
+      Log.d("MicroMsg.TransVoiceDialog", "onError, errType: %d, errCode: %d, localCode: %d, voiceid: %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
+      b.s(this.TWA).TUq = 0;
+      b.s(this.TWA).TUm = System.currentTimeMillis();
+      AppMethodBeat.o(102593);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.ui.b
  * JD-Core Version:    0.7.0.1
  */

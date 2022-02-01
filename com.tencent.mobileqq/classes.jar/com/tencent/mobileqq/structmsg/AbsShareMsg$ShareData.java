@@ -21,7 +21,7 @@ public class AbsShareMsg$ShareData
   public String pkgName;
   public byte shortUrlStatus = 0;
   public String sourceIconBig;
-  public int status;
+  public int status = 0;
   public byte version = 1;
   
   public boolean isFinish()
@@ -47,27 +47,23 @@ public class AbsShareMsg$ShareData
     paramObjectOutput.writeByte(this.imageUrlStatus);
     paramObjectOutput.writeByte(this.shortUrlStatus);
     paramObjectOutput.writeInt(this.status);
-    if (this.pkgName == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.sourceIconBig != null) {
-        break label93;
-      }
+    String str2 = this.pkgName;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label93:
-    for (String str = "";; str = this.sourceIconBig)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = this.pkgName;
-      break;
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.sourceIconBig;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramObjectOutput.writeUTF(str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsShareMsg.ShareData
  * JD-Core Version:    0.7.0.1
  */

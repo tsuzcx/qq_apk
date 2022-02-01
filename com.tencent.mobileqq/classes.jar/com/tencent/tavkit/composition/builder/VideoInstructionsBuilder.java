@@ -94,19 +94,26 @@ class VideoInstructionsBuilder
   
   private void fixLastLayerDuration(List<List<TAVVideoCompositionLayerInstruction>> paramList)
   {
-    if ((paramList == null) || (paramList.size() != 1)) {}
-    do
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() != 1) {
+        return;
+      }
       paramList = (List)paramList.get(0);
-    } while ((paramList == null) || (paramList.isEmpty()));
-    TAVVideoCompositionLayerInstruction localTAVVideoCompositionLayerInstruction = (TAVVideoCompositionLayerInstruction)paramList.get(paramList.size() - 1);
-    CMTime localCMTime = this.builderModel.getTavComposition().getFrameDuration();
-    paramList = localCMTime;
-    if (localCMTime == null) {
-      paramList = new CMTime(1L, 30);
+      if (paramList != null)
+      {
+        if (paramList.isEmpty()) {
+          return;
+        }
+        TAVVideoCompositionLayerInstruction localTAVVideoCompositionLayerInstruction = (TAVVideoCompositionLayerInstruction)paramList.get(paramList.size() - 1);
+        CMTime localCMTime = this.builderModel.getTavComposition().getFrameDuration();
+        paramList = localCMTime;
+        if (localCMTime == null) {
+          paramList = new CMTime(1L, 30);
+        }
+        localTAVVideoCompositionLayerInstruction.setTimeRange(new CMTimeRange(localTAVVideoCompositionLayerInstruction.getTimeRange().getStart(), localTAVVideoCompositionLayerInstruction.getTimeRange().getDuration().add(paramList)));
+      }
     }
-    localTAVVideoCompositionLayerInstruction.setTimeRange(new CMTimeRange(localTAVVideoCompositionLayerInstruction.getTimeRange().getStart(), localTAVVideoCompositionLayerInstruction.getTimeRange().getDuration().add(paramList)));
   }
   
   @NonNull
@@ -190,7 +197,7 @@ class VideoInstructionsBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.VideoInstructionsBuilder
  * JD-Core Version:    0.7.0.1
  */

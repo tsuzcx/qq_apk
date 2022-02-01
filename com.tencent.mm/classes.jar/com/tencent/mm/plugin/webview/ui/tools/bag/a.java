@@ -2,85 +2,117 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.content.Context;
 import android.graphics.PointF;
+import android.os.Vibrator;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.widget.e;
 
 public final class a
 {
-  static final int vhf;
-  boolean mIsShowing;
+  static final int WZK;
+  boolean LCZ;
+  a WZL;
+  final b WZM;
+  boolean WZN;
+  PointF WZO;
+  boolean WZP;
+  boolean WZQ;
   int mScreenHeight;
   int mScreenWidth;
-  a.a vhg;
-  final a.b vhh;
-  boolean vhi;
-  PointF vhj;
-  boolean vhk;
-  boolean vhl;
   
   static
   {
-    int i = b.vhv;
-    vhf = i * i;
+    int i = b.WZY;
+    WZK = i * i;
   }
   
-  public a(a.b paramb)
+  public a(b paramb)
   {
-    AppMethodBeat.i(8145);
-    this.vhj = new PointF();
-    this.vhh = paramb;
-    paramb = (WindowManager)ah.getContext().getSystemService("window");
+    AppMethodBeat.i(80412);
+    this.WZO = new PointF();
+    this.WZM = paramb;
+    paramb = (WindowManager)MMApplicationContext.getContext().getSystemService("window");
     WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    if (d.fv(26)) {}
+    if (d.rb(26)) {}
     for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
       localLayoutParams.format = 1;
       localLayoutParams.flags = 40;
       localLayoutParams.gravity = 85;
-      localLayoutParams.width = b.vhw;
-      localLayoutParams.height = b.vhw;
+      localLayoutParams.width = b.WZZ;
+      localLayoutParams.height = b.WZZ;
       localLayoutParams.x = 0;
       localLayoutParams.y = 0;
-      this.vhg = new a.a(ah.getContext());
+      this.WZL = new a(MMApplicationContext.getContext());
       try
       {
-        this.vhg.setVisibility(8);
-        paramb.addView(this.vhg, localLayoutParams);
-        AppMethodBeat.o(8145);
+        this.WZL.setVisibility(8);
+        paramb.addView(this.WZL, localLayoutParams);
+        AppMethodBeat.o(80412);
         return;
       }
       catch (Exception paramb)
       {
-        ab.e("MicroMsg.BagCancelController", "showCanceller add failed %s", new Object[] { paramb });
-        AppMethodBeat.o(8145);
+        Log.e("MicroMsg.BagCancelController", "showCanceller add failed %s", new Object[] { paramb });
+        AppMethodBeat.o(80412);
       }
     }
   }
   
-  public final void dfa()
+  static final class a
+    extends FrameLayout
   {
-    AppMethodBeat.i(8146);
-    WindowManager localWindowManager = (WindowManager)ah.getContext().getSystemService("window");
-    try
+    Vibrator cqQ;
+    View mContentView;
+    ImageView yBc;
+    
+    public a(Context paramContext)
     {
-      localWindowManager.removeView(this.vhg);
-      AppMethodBeat.o(8146);
-      return;
+      super();
+      AppMethodBeat.i(80409);
+      this.cqQ = ((Vibrator)paramContext.getSystemService("vibrator"));
+      LayoutInflater.from(paramContext).inflate(c.g.webview_bag_canceller, this);
+      this.yBc = ((ImageView)findViewById(c.f.bg));
+      paramContext = (RelativeLayout.LayoutParams)this.yBc.getLayoutParams();
+      paramContext.height = b.WZY;
+      paramContext.width = b.WZY;
+      this.yBc.setLayoutParams(paramContext);
+      this.mContentView = findViewById(c.f.content);
+      AppMethodBeat.o(80409);
     }
-    catch (Exception localException)
+    
+    final void bb(float paramFloat1, float paramFloat2)
     {
-      ab.e("MicroMsg.BagCancelController", "whenBagUnAttach remove failed %s", new Object[] { localException });
-      AppMethodBeat.o(8146);
+      AppMethodBeat.i(80410);
+      ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 1.0F, 1, 1.0F);
+      localScaleAnimation.setFillAfter(true);
+      localScaleAnimation.setDuration(50L);
+      this.yBc.startAnimation(localScaleAnimation);
+      AppMethodBeat.o(80410);
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void izB();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.exdevice.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.exdevice.model.c;
+import com.tencent.mm.plugin.exdevice.model.d;
 
 public final class u
 {
-  private static u lIF = null;
-  private c lIG;
-  private f lIH;
+  private static u yvA = null;
+  private d yvB;
+  private f yvC;
   
   public static void a(m paramm)
   {
-    AppMethodBeat.i(19628);
-    bqA().lCQ = paramm;
-    AppMethodBeat.o(19628);
+    AppMethodBeat.i(23696);
+    dGE().yps = paramm;
+    AppMethodBeat.o(23696);
   }
   
-  public static c bqA()
+  private static u dGC()
   {
-    AppMethodBeat.i(19629);
-    if (bqy().lIG == null) {
-      bqy().lIG = c.bpE();
+    AppMethodBeat.i(23694);
+    if (yvA == null) {
+      yvA = new u();
     }
-    c localc = bqy().lIG;
-    AppMethodBeat.o(19629);
-    return localc;
-  }
-  
-  private static u bqy()
-  {
-    AppMethodBeat.i(19626);
-    if (lIF == null) {
-      lIF = new u();
-    }
-    u localu = lIF;
-    AppMethodBeat.o(19626);
+    u localu = yvA;
+    AppMethodBeat.o(23694);
     return localu;
   }
   
-  public static f bqz()
+  public static f dGD()
   {
-    AppMethodBeat.i(19627);
-    if (bqy().lIH == null) {
-      bqy().lIH = new f();
+    AppMethodBeat.i(23695);
+    if (dGC().yvC == null) {
+      dGC().yvC = new f();
     }
-    f localf = bqy().lIH;
-    AppMethodBeat.o(19627);
+    f localf = dGC().yvC;
+    AppMethodBeat.o(23695);
     return localf;
+  }
+  
+  public static d dGE()
+  {
+    AppMethodBeat.i(23697);
+    if (dGC().yvB == null) {
+      dGC().yvB = d.dFr();
+    }
+    d locald = dGC().yvB;
+    AppMethodBeat.o(23697);
+    return locald;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.u
  * JD-Core Version:    0.7.0.1
  */

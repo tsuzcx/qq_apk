@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,31 +22,31 @@ public final class operation_forward_req
   static ArrayList<String> cache_srcSubid = new ArrayList();
   static Map<String, String> cache_stored_extend_info;
   static Map<String, String> cache_xcxMapEx;
-  public int appid;
-  public Map<Integer, String> busi_param;
+  public int appid = 0;
+  public Map<Integer, String> busi_param = null;
   public String category = "";
   public String ciphertext = "";
   public String dstAlbumId = "";
-  public int dstAlbumType;
-  public int iUrlInfoFrm;
-  public int isverified;
-  public int operatemask;
-  public long ownUin;
-  public Map<String, ArrayList<String>> photoids;
+  public int dstAlbumType = 0;
+  public int iUrlInfoFrm = 0;
+  public int isverified = 0;
+  public int operatemask = 0;
+  public long ownUin = 0L;
+  public Map<String, ArrayList<String>> photoids = null;
   public String reason = "";
-  public share_tail_info sharetailinfo;
-  public int source;
+  public share_tail_info sharetailinfo = null;
+  public int source = 0;
   public String srcAbstract = "";
   public String srcId = "";
-  public ArrayList<String> srcImages;
-  public int srcPicNum;
-  public ArrayList<String> srcSubid;
+  public ArrayList<String> srcImages = null;
+  public int srcPicNum = 0;
+  public ArrayList<String> srcSubid = null;
   public String srcTitle = "";
-  public Map<String, String> stored_extend_info;
-  public int subid;
-  public long uin;
-  public Map<String, String> xcxMapEx;
-  public int xcxZZType;
+  public Map<String, String> stored_extend_info = null;
+  public int subid = 0;
+  public long uin = 0L;
+  public Map<String, String> xcxMapEx = null;
+  public int xcxZZType = 0;
   
   static
   {
@@ -130,60 +131,74 @@ public final class operation_forward_req
     paramJceOutputStream.write(this.subid, 1);
     paramJceOutputStream.write(this.uin, 2);
     paramJceOutputStream.write(this.ownUin, 3);
-    if (this.srcId != null) {
-      paramJceOutputStream.write(this.srcId, 4);
+    Object localObject = this.srcId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.srcSubid != null) {
-      paramJceOutputStream.write(this.srcSubid, 5);
+    localObject = this.srcSubid;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.reason != null) {
-      paramJceOutputStream.write(this.reason, 6);
+    localObject = this.reason;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.srcTitle != null) {
-      paramJceOutputStream.write(this.srcTitle, 7);
+    localObject = this.srcTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.srcAbstract != null) {
-      paramJceOutputStream.write(this.srcAbstract, 8);
+    localObject = this.srcAbstract;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.srcImages != null) {
-      paramJceOutputStream.write(this.srcImages, 9);
+    localObject = this.srcImages;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
     paramJceOutputStream.write(this.srcPicNum, 10);
     paramJceOutputStream.write(this.source, 11);
     paramJceOutputStream.write(this.isverified, 12);
-    if (this.category != null) {
-      paramJceOutputStream.write(this.category, 13);
+    localObject = this.category;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.operatemask, 14);
-    if (this.dstAlbumId != null) {
-      paramJceOutputStream.write(this.dstAlbumId, 15);
+    localObject = this.dstAlbumId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.dstAlbumType, 16);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 17);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 17);
     }
-    if (this.photoids != null) {
-      paramJceOutputStream.write(this.photoids, 18);
+    localObject = this.photoids;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 18);
     }
     paramJceOutputStream.write(this.iUrlInfoFrm, 19);
-    if (this.ciphertext != null) {
-      paramJceOutputStream.write(this.ciphertext, 20);
+    localObject = this.ciphertext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
     paramJceOutputStream.write(this.xcxZZType, 21);
-    if (this.xcxMapEx != null) {
-      paramJceOutputStream.write(this.xcxMapEx, 22);
+    localObject = this.xcxMapEx;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 22);
     }
-    if (this.stored_extend_info != null) {
-      paramJceOutputStream.write(this.stored_extend_info, 23);
+    localObject = this.stored_extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 23);
     }
-    if (this.sharetailinfo != null) {
-      paramJceOutputStream.write(this.sharetailinfo, 24);
+    localObject = this.sharetailinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 24);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_forward_req
  * JD-Core Version:    0.7.0.1
  */

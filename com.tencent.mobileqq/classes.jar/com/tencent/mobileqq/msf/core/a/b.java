@@ -18,13 +18,16 @@ public class b
     }
     catch (Exception paramInputStream)
     {
-      QLog.d("MSF.C.ConfigManager", 1, " " + paramInputStream, paramInputStream);
+      paramMap = new StringBuilder();
+      paramMap.append(" ");
+      paramMap.append(paramInputStream);
+      QLog.d("MSF.C.ConfigManager", 1, paramMap.toString(), paramInputStream);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.a.b
  * JD-Core Version:    0.7.0.1
  */

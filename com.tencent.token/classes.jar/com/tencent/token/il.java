@@ -1,16 +1,17 @@
 package com.tencent.token;
 
-import java.util.List;
-import javax.net.ssl.X509TrustManager;
-
-public abstract class il
+public abstract interface il
 {
-  public static il a(X509TrustManager paramX509TrustManager)
-  {
-    return ih.c().a(paramX509TrustManager);
-  }
+  public abstract void a(id paramid);
   
-  public abstract List a(List paramList, String paramString);
+  public static abstract interface a
+  {
+    public abstract void a(if paramif);
+    
+    public abstract boolean a();
+    
+    public abstract if getItemData();
+  }
 }
 
 

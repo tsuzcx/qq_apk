@@ -2,7 +2,7 @@
 <merge android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/bat" android:layout_width="fill_parent" android:layout_height="105.0dip" />
+        <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/bat" android:layout_width="fill_parent" android:layout_height="105.0dip" />
         <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="12.0dip" android:text="@string/pw7" android:lines="1" android:layout_below="@id/bat" />
         <TextView android:textSize="13.0sp" android:textColor="#ff9d9d9d" android:ellipsize="end" android:id="@id/bg6" android:paddingBottom="25.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginRight="12.0dip" android:text="123人参与" android:lines="1" android:layout_below="@id/title" android:layout_alignLeft="@id/title" />
     </RelativeLayout>

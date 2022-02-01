@@ -11,10 +11,10 @@ public class FailOnTimeout$Builder
   
   public FailOnTimeout build(Statement paramStatement)
   {
-    if (paramStatement == null) {
-      throw new NullPointerException("statement cannot be null");
+    if (paramStatement != null) {
+      return new FailOnTimeout(this, paramStatement, null);
     }
-    return new FailOnTimeout(this, paramStatement, null);
+    throw new NullPointerException("statement cannot be null");
   }
   
   public Builder withLookingForStuckThread(boolean paramBoolean)
@@ -25,20 +25,22 @@ public class FailOnTimeout$Builder
   
   public Builder withTimeout(long paramLong, TimeUnit paramTimeUnit)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("timeout must be non-negative");
-    }
-    if (paramTimeUnit == null) {
+    if (paramLong >= 0L)
+    {
+      if (paramTimeUnit != null)
+      {
+        this.timeout = paramLong;
+        this.unit = paramTimeUnit;
+        return this;
+      }
       throw new NullPointerException("TimeUnit cannot be null");
     }
-    this.timeout = paramLong;
-    this.unit = paramTimeUnit;
-    return this;
+    throw new IllegalArgumentException("timeout must be non-negative");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.statements.FailOnTimeout.Builder
  * JD-Core Version:    0.7.0.1
  */

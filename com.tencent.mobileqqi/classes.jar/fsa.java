@@ -1,14 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
 
 public class fsa
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnCancelListener
 {
   public fsa(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
     this.a.a.a(null);
     LocalFileBrowserActivity.a(this.a);

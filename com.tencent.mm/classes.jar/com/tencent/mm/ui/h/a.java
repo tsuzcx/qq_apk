@@ -1,84 +1,24 @@
 package com.tencent.mm.ui.h;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Rect;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/emoji/EmojiInfoSpan;", "", "start", "", "end", "processEmojiType", "(III)V", "currentText", "", "getCurrentText", "()Ljava/lang/CharSequence;", "setCurrentText", "(Ljava/lang/CharSequence;)V", "getEnd", "()I", "getProcessEmojiType", "getStart", "compareCharSequenceContent", "", "newText", "stashCurrentText", "", "text", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static b App;
-  private static b Apq;
+  private final int afuR;
+  public CharSequence afuS;
+  private final int end;
+  private final int start;
   
-  @TargetApi(11)
-  public static void b(Activity paramActivity, View paramView)
+  public a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107423);
-    View localView = paramActivity.getWindow().getDecorView();
-    App = b.iz(paramActivity);
-    Apq = b.iz(paramActivity);
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    Rect localRect = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    int i = localRect.top;
-    int j = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
-    int k = arrayOfInt[1];
-    App.setHeight(k - i - j);
-    k = dh(paramActivity)[1];
-    int m = arrayOfInt[1];
-    int n = paramView.getHeight();
-    Apq.setHeight(k - m - n);
-    App.showAtLocation(localView, 48, 0, j + i);
-    Apq.showAtLocation(localView, 80, 0, 0);
-    AppMethodBeat.o(107423);
-  }
-  
-  private static int[] dh(Context paramContext)
-  {
-    AppMethodBeat.i(107425);
-    int[] arrayOfInt = new int[2];
-    if ((paramContext instanceof Activity))
-    {
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-      arrayOfInt[0] = localDisplayMetrics.widthPixels;
-      arrayOfInt[1] = localDisplayMetrics.heightPixels;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(107425);
-      return arrayOfInt;
-      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-      arrayOfInt[0] = paramContext.getWidth();
-      arrayOfInt[1] = paramContext.getHeight();
-    }
-  }
-  
-  public static void dismiss()
-  {
-    AppMethodBeat.i(107424);
-    if (App != null)
-    {
-      App.setAnimationStyle(-1);
-      App.dismiss();
-      App = null;
-    }
-    if (Apq != null)
-    {
-      Apq.setAnimationStyle(-1);
-      Apq.dismiss();
-      Apq = null;
-    }
-    AppMethodBeat.o(107424);
+    AppMethodBeat.i(249050);
+    this.start = paramInt1;
+    this.end = paramInt2;
+    this.afuR = 1;
+    this.afuS = ((CharSequence)"");
+    AppMethodBeat.o(249050);
   }
 }
 

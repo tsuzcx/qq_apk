@@ -8,40 +8,40 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import junit.framework.Assert;
 
 public class AsyncMaskImageView
   extends ImageView
 {
+  MMHandler Rba;
+  Runnable Rbb;
   private int a;
   private int b;
   private boolean enable;
   private int g;
   private int r;
-  ak rER;
-  Runnable rES;
   
   public AsyncMaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(38131);
+    AppMethodBeat.i(97755);
     this.a = 90;
     this.r = 0;
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.rER = new ak();
-    this.rES = new AsyncMaskImageView.1(this);
+    this.Rba = new MMHandler();
+    this.Rbb = new AsyncMaskImageView.1(this);
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(38130);
+        AppMethodBeat.i(97754);
         if (!AsyncMaskImageView.a(AsyncMaskImageView.this))
         {
-          AppMethodBeat.o(38130);
+          AppMethodBeat.o(97754);
           return false;
         }
         AsyncMaskImageView localAsyncMaskImageView = AsyncMaskImageView.this;
@@ -50,53 +50,53 @@ public class AsyncMaskImageView
         }
         while ((!localAsyncMaskImageView.isClickable()) && (!localAsyncMaskImageView.isLongClickable()))
         {
-          AppMethodBeat.o(38130);
+          AppMethodBeat.o(97754);
           return true;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localAsyncMaskImageView.rER.removeCallbacks(localAsyncMaskImageView.rES);
+          localAsyncMaskImageView.Rba.removeCallbacks(localAsyncMaskImageView.Rbb);
           continue;
-          localAsyncMaskImageView.rER.post(localAsyncMaskImageView.rES);
+          localAsyncMaskImageView.Rba.post(localAsyncMaskImageView.Rbb);
         }
-        AppMethodBeat.o(38130);
+        AppMethodBeat.o(97754);
         return false;
       }
     });
-    AppMethodBeat.o(38131);
+    AppMethodBeat.o(97755);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(38134);
+    AppMethodBeat.i(97758);
     super.onAttachedToWindow();
-    ab.d("MicroMsg.MaskImageView", "onAttachedToWindow");
-    AppMethodBeat.o(38134);
+    Log.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    AppMethodBeat.o(97758);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(38135);
+    AppMethodBeat.i(97759);
     super.onDetachedFromWindow();
-    ab.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
-    AppMethodBeat.o(38135);
+    Log.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    AppMethodBeat.o(97759);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(38132);
+    AppMethodBeat.i(97756);
     super.onDraw(paramCanvas);
     if (isPressed()) {
       paramCanvas.drawARGB(this.a, this.r, this.g, this.b);
     }
-    AppMethodBeat.o(38132);
+    AppMethodBeat.o(97756);
   }
   
   @Deprecated
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    AppMethodBeat.i(38133);
+    AppMethodBeat.i(97757);
     Assert.assertTrue(false);
-    AppMethodBeat.o(38133);
+    AppMethodBeat.o(97757);
   }
   
   public void settouchEnable(boolean paramBoolean)
@@ -106,7 +106,7 @@ public class AsyncMaskImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AsyncMaskImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.os.Looper;
 import com.tencent.mobileqq.app.Job;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
+import java.lang.reflect.Field;
 
 public class QzoneBaseThread
 {
@@ -19,111 +20,64 @@ public class QzoneBaseThread
     this.handler = new BaseHandler(this.thread.getLooper());
   }
   
-  /* Error */
   private Pair<Object, Runnable> breakRefChain(Runnable paramRunnable)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 46	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: ldc 48
-    //   8: invokevirtual 54	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   11: astore_3
-    //   12: aload_3
-    //   13: iconst_1
-    //   14: invokevirtual 60	java/lang/reflect/Field:setAccessible	(Z)V
-    //   17: aload_3
-    //   18: aload_1
-    //   19: invokevirtual 64	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   22: astore_2
-    //   23: aload_3
-    //   24: aload_1
-    //   25: aconst_null
-    //   26: invokevirtual 68	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   29: new 70	com/tencent/util/Pair
-    //   32: dup
-    //   33: aload_2
-    //   34: aload_1
-    //   35: invokespecial 72	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   38: areturn
-    //   39: astore 4
-    //   41: aconst_null
-    //   42: astore_3
-    //   43: aload_3
-    //   44: astore_2
-    //   45: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   48: ifeq -19 -> 29
-    //   51: ldc 80
-    //   53: iconst_2
-    //   54: ldc 82
-    //   56: aload 4
-    //   58: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   61: aload_3
-    //   62: astore_2
-    //   63: goto -34 -> 29
-    //   66: astore 4
-    //   68: aconst_null
-    //   69: astore_3
-    //   70: aload_3
-    //   71: astore_2
-    //   72: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   75: ifeq -46 -> 29
-    //   78: ldc 80
-    //   80: iconst_2
-    //   81: ldc 88
-    //   83: aload 4
-    //   85: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   88: aload_3
-    //   89: astore_2
-    //   90: goto -61 -> 29
-    //   93: astore 4
-    //   95: aconst_null
-    //   96: astore_3
-    //   97: aload_3
-    //   98: astore_2
-    //   99: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   102: ifeq -73 -> 29
-    //   105: ldc 80
-    //   107: iconst_2
-    //   108: ldc 90
-    //   110: aload 4
-    //   112: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   115: aload_3
-    //   116: astore_2
-    //   117: goto -88 -> 29
-    //   120: astore 4
-    //   122: aload_2
-    //   123: astore_3
-    //   124: goto -27 -> 97
-    //   127: astore 4
-    //   129: aload_2
-    //   130: astore_3
-    //   131: goto -61 -> 70
-    //   134: astore 4
-    //   136: aload_2
-    //   137: astore_3
-    //   138: goto -95 -> 43
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	141	0	this	QzoneBaseThread
-    //   0	141	1	paramRunnable	Runnable
-    //   4	133	2	localObject1	Object
-    //   11	127	3	localObject2	Object
-    //   39	18	4	localNoSuchFieldException1	java.lang.NoSuchFieldException
-    //   66	18	4	localIllegalArgumentException1	java.lang.IllegalArgumentException
-    //   93	18	4	localIllegalAccessException1	java.lang.IllegalAccessException
-    //   120	1	4	localIllegalAccessException2	java.lang.IllegalAccessException
-    //   127	1	4	localIllegalArgumentException2	java.lang.IllegalArgumentException
-    //   134	1	4	localNoSuchFieldException2	java.lang.NoSuchFieldException
-    // Exception table:
-    //   from	to	target	type
-    //   5	23	39	java/lang/NoSuchFieldException
-    //   5	23	66	java/lang/IllegalArgumentException
-    //   5	23	93	java/lang/IllegalAccessException
-    //   23	29	120	java/lang/IllegalAccessException
-    //   23	29	127	java/lang/IllegalArgumentException
-    //   23	29	134	java/lang/NoSuchFieldException
+    Object localObject1 = paramRunnable.getClass();
+    Object localObject2;
+    try
+    {
+      localObject2 = ((Class)localObject1).getDeclaredField("this$0");
+      ((Field)localObject2).setAccessible(true);
+      localObject1 = ((Field)localObject2).get(paramRunnable);
+      try
+      {
+        ((Field)localObject2).set(paramRunnable, null);
+      }
+      catch (IllegalAccessException localIllegalAccessException1)
+      {
+        localObject2 = localObject1;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException1)
+      {
+        localObject2 = localObject1;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException1)
+      {
+        localObject2 = localObject1;
+      }
+      localObject1 = localObject2;
+    }
+    catch (IllegalAccessException localIllegalAccessException2)
+    {
+      localObject2 = null;
+      localObject1 = localObject2;
+      if (!QLog.isColorLevel()) {
+        break label131;
+      }
+      QLog.d("ThreadManager", 2, "IllegalAccessException", localIllegalAccessException2);
+      localObject1 = localObject2;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException2)
+    {
+      localObject2 = null;
+      localObject1 = localObject2;
+      if (!QLog.isColorLevel()) {
+        break label131;
+      }
+      QLog.d("ThreadManager", 2, "IllegalArgumentException", localIllegalArgumentException2);
+      localObject1 = localObject2;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException2)
+    {
+      localObject2 = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ThreadManager", 2, "NoSuchFieldException", localNoSuchFieldException2);
+      localObject1 = localObject2;
+    }
+    label131:
+    return new Pair(localObject1, paramRunnable);
   }
   
   private Runnable buildJob(Runnable paramRunnable, boolean paramBoolean)
@@ -136,7 +90,10 @@ public class QzoneBaseThread
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      QLog.e("ThreadManager", 1, "buildJob " + paramRunnable, localOutOfMemoryError);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("buildJob ");
+      localStringBuilder.append(paramRunnable);
+      QLog.e("ThreadManager", 1, localStringBuilder.toString(), localOutOfMemoryError);
     }
     return null;
   }
@@ -198,7 +155,7 @@ public class QzoneBaseThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.thread.QzoneBaseThread
  * JD-Core Version:    0.7.0.1
  */

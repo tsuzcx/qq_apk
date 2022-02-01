@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.utils;
 
-import bdjq;
-import bdjs;
 import java.lang.ref.WeakReference;
 
-public class QQCustomArkDialog$2$1
+class QQCustomArkDialog$2$1
   implements Runnable
 {
-  public QQCustomArkDialog$2$1(bdjs parambdjs, WeakReference paramWeakReference, int paramInt) {}
+  QQCustomArkDialog$2$1(QQCustomArkDialog.2 param2, WeakReference paramWeakReference, int paramInt) {}
   
   public void run()
   {
-    bdjq localbdjq = (bdjq)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbdjq == null) {
+    QQCustomArkDialog localQQCustomArkDialog = (QQCustomArkDialog)this.a.get();
+    if (localQQCustomArkDialog == null) {
       return;
     }
-    bdjq.a(localbdjq, this.jdField_a_of_type_Int);
+    QQCustomArkDialog.a(localQQCustomArkDialog, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ public final class ReqHeader
   extends JceStruct
 {
   static int cache_eUinType;
-  public int eUinType;
-  public int iClientIp;
-  public int iServerIp;
+  public int eUinType = 0;
+  public int iClientIp = 0;
+  public int iServerIp = 0;
   public short shVersion = 2;
   public String strAuthName = "";
   public String strAuthPassword = "";
@@ -57,7 +57,7 @@ public final class ReqHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSAddrProtocol.ReqHeader
  * JD-Core Version:    0.7.0.1
  */

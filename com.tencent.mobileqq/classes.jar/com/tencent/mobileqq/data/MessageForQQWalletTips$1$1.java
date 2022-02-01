@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import amdu;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.api.handler.ITroopMemberCardHandler;
 import java.lang.ref.WeakReference;
 
 class MessageForQQWalletTips$1$1
@@ -11,11 +12,11 @@ class MessageForQQWalletTips$1$1
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips$1.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.a.get();
     if (localQQAppInterface == null) {
       return;
     }
-    ((amdu)localQQAppInterface.a(20)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips$1.jdField_a_of_type_JavaLangString), Long.parseLong(this.jdField_a_of_type_JavaLangString));
+    ((ITroopMemberCardHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER)).a(Long.parseLong(this.b.c), Long.parseLong(this.a));
   }
 }
 

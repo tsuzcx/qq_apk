@@ -19,17 +19,20 @@ class MessageProgressTextView$RefreshProgressRunnable
   
   public void run()
   {
-    this.this$0.a = null;
-    if (!this.this$0.b)
+    MessageProgressTextView localMessageProgressTextView = this.this$0;
+    localMessageProgressTextView.e = null;
+    if (!localMessageProgressTextView.d)
     {
-      this.a += this.b;
-      MessageProgressTextView.a(this.this$0, this.a, this.b);
+      int i = this.a;
+      int j = this.b;
+      this.a = (i + j);
+      MessageProgressTextView.a(this.this$0, this.a, j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.MessageProgressTextView.RefreshProgressRunnable
  * JD-Core Version:    0.7.0.1
  */

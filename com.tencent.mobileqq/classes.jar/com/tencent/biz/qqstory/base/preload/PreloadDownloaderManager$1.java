@@ -1,23 +1,22 @@
 package com.tencent.biz.qqstory.base.preload;
 
-import unu;
-import uoe;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.CacheCleaner;
 
-public class PreloadDownloaderManager$1
+class PreloadDownloaderManager$1
   implements Runnable
 {
-  public PreloadDownloaderManager$1(unu paramunu) {}
+  PreloadDownloaderManager$1(PreloadDownloaderManager paramPreloadDownloaderManager) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b();
-    this.this$0.jdField_a_of_type_JavaLangRunnable = null;
-    uoe.a().a();
+    this.this$0.b.b();
+    this.this$0.d = null;
+    CacheCleaner.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager.1
  * JD-Core Version:    0.7.0.1
  */

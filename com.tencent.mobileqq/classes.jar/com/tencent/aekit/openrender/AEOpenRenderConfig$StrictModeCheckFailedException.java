@@ -7,12 +7,12 @@ class AEOpenRenderConfig$StrictModeCheckFailedException
   
   public AEOpenRenderConfig$StrictModeCheckFailedException(String paramString)
   {
-    super("[StrictMode] " + paramString);
+    super(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.AEOpenRenderConfig.StrictModeCheckFailedException
  * JD-Core Version:    0.7.0.1
  */

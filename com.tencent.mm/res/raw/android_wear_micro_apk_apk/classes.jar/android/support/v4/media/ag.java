@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.app.h;
+import android.support.v4.app.i;
 import android.support.v4.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,11 +15,11 @@ import android.util.Log;
 final class ag
   extends Handler
 {
-  private final ad hx = new ad(this.ha);
+  private final ad jw = new ad(this.iY);
   
   ag(MediaBrowserServiceCompat paramMediaBrowserServiceCompat) {}
   
-  private void a(Runnable paramRunnable)
+  private void c(Runnable paramRunnable)
   {
     if (Thread.currentThread() == getLooper().getThread())
     {
@@ -36,7 +36,7 @@ final class ag
     switch (paramMessage.what)
     {
     default: 
-      Log.w("MBServiceCompat", "Unhandled message: " + paramMessage + "\n  Service version: 1\n  Client version: " + paramMessage.arg1);
+      Log.w("MBServiceCompat", "Unhandled message: " + paramMessage + "\n  Service version: 2\n  Client version: " + paramMessage.arg1);
     }
     ad localad;
     String str;
@@ -48,12 +48,12 @@ final class ag
         do
         {
           return;
-          localad = this.hx;
+          localad = this.jw;
           str = ((Bundle)localObject1).getString("data_package_name");
           int m = ((Bundle)localObject1).getInt("data_calling_uid");
           localObject1 = ((Bundle)localObject1).getBundle("data_root_hints");
           paramMessage = new af(paramMessage.replyTo);
-          localObject2 = localad.ha;
+          localObject2 = localad.iY;
           int j = k;
           int n;
           int i;
@@ -81,56 +81,56 @@ final class ag
             }
             i += 1;
           }
-          localad.ha.gV.a(new ad.1(localad, paramMessage, str, (Bundle)localObject1, m));
+          localad.iY.iT.c(new ad.1(localad, paramMessage, str, (Bundle)localObject1, m));
           return;
-          localObject1 = this.hx;
+          localObject1 = this.jw;
           paramMessage = new af(paramMessage.replyTo);
-          ((ad)localObject1).ha.gV.a(new ad.2((ad)localObject1, paramMessage));
+          ((ad)localObject1).iY.iT.c(new ad.2((ad)localObject1, paramMessage));
           return;
-          localad = this.hx;
+          localad = this.jw;
           str = ((Bundle)localObject1).getString("data_media_item_id");
-          localObject2 = h.a((Bundle)localObject1, "data_callback_token");
+          localObject2 = i.a((Bundle)localObject1, "data_callback_token");
           localObject1 = ((Bundle)localObject1).getBundle("data_options");
           paramMessage = new af(paramMessage.replyTo);
-          localad.ha.gV.a(new ad.3(localad, paramMessage, str, (IBinder)localObject2, (Bundle)localObject1));
+          localad.iY.iT.c(new ad.3(localad, paramMessage, str, (IBinder)localObject2, (Bundle)localObject1));
           return;
-          localad = this.hx;
+          localad = this.jw;
           str = ((Bundle)localObject1).getString("data_media_item_id");
-          localObject1 = h.a((Bundle)localObject1, "data_callback_token");
+          localObject1 = i.a((Bundle)localObject1, "data_callback_token");
           paramMessage = new af(paramMessage.replyTo);
-          localad.ha.gV.a(new ad.4(localad, paramMessage, str, (IBinder)localObject1));
+          localad.iY.iT.c(new ad.4(localad, paramMessage, str, (IBinder)localObject1));
           return;
-          localad = this.hx;
+          localad = this.jw;
           str = ((Bundle)localObject1).getString("data_media_item_id");
           localObject1 = (ResultReceiver)((Bundle)localObject1).getParcelable("data_result_receiver");
           paramMessage = new af(paramMessage.replyTo);
         } while ((TextUtils.isEmpty(str)) || (localObject1 == null));
-        localad.ha.gV.a(new ad.5(localad, paramMessage, str, (ResultReceiver)localObject1));
+        localad.iY.iT.c(new ad.5(localad, paramMessage, str, (ResultReceiver)localObject1));
         return;
-        localad = this.hx;
+        localad = this.jw;
         paramMessage = new af(paramMessage.replyTo);
         localObject1 = ((Bundle)localObject1).getBundle("data_root_hints");
-        localad.ha.gV.a(new ad.6(localad, paramMessage, (Bundle)localObject1));
+        localad.iY.iT.c(new ad.6(localad, paramMessage, (Bundle)localObject1));
         return;
-        localObject1 = this.hx;
+        localObject1 = this.jw;
         paramMessage = new af(paramMessage.replyTo);
-        ((ad)localObject1).ha.gV.a(new ad.7((ad)localObject1, paramMessage));
+        ((ad)localObject1).iY.iT.c(new ad.7((ad)localObject1, paramMessage));
         return;
-        localad = this.hx;
+        localad = this.jw;
         str = ((Bundle)localObject1).getString("data_search_query");
         localObject2 = ((Bundle)localObject1).getBundle("data_search_extras");
         localObject1 = (ResultReceiver)((Bundle)localObject1).getParcelable("data_result_receiver");
         paramMessage = new af(paramMessage.replyTo);
       } while ((TextUtils.isEmpty(str)) || (localObject1 == null));
-      localad.ha.gV.a(new ad.8(localad, paramMessage, str, (Bundle)localObject2, (ResultReceiver)localObject1));
+      localad.iY.iT.c(new ad.8(localad, paramMessage, str, (Bundle)localObject2, (ResultReceiver)localObject1));
       return;
-      localad = this.hx;
+      localad = this.jw;
       str = ((Bundle)localObject1).getString("data_custom_action");
       localObject2 = ((Bundle)localObject1).getBundle("data_custom_action_extras");
       localObject1 = (ResultReceiver)((Bundle)localObject1).getParcelable("data_result_receiver");
       paramMessage = new af(paramMessage.replyTo);
     } while ((TextUtils.isEmpty(str)) || (localObject1 == null));
-    localad.ha.gV.a(new ad.9(localad, paramMessage, str, (Bundle)localObject2, (ResultReceiver)localObject1));
+    localad.iY.iT.c(new ad.9(localad, paramMessage, str, (Bundle)localObject2, (ResultReceiver)localObject1));
   }
   
   public final boolean sendMessageAtTime(Message paramMessage, long paramLong)

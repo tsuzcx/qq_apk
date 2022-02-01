@@ -1,28 +1,31 @@
 package com.tencent.mobileqq.app;
 
-import ayzl;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
 class MessageHandler$3
-  implements Runnable
+  extends SendMessageHandler.SendMessageRunnable
 {
-  MessageHandler$3(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord) {}
+  MessageHandler$3(MessageHandler paramMessageHandler, msg_svc.PbSendMsgReq paramPbSendMsgReq, int paramInt, long paramLong) {}
   
   public void run()
   {
-    if (this.this$0.app.a().b(this.a))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.e);
-      }
-      this.this$0.notifyUI(8022, true, new String[] { this.a.frienduin });
-    }
+    ToServiceMsg localToServiceMsg = this.this$0.createToServiceMsg("MessageSvc.PbReceiptRead", null);
+    localToServiceMsg.putWupBuffer(this.a.toByteArray());
+    localToServiceMsg.extraData.putLong("msgSeq", this.b);
+    localToServiceMsg.extraData.putInt("msgtype", 2);
+    localToServiceMsg.extraData.putString("uin", Long.toString(this.c));
+    localToServiceMsg.extraData.putLong("timeOut", this.g);
+    localToServiceMsg.extraData.putInt("retryIndex", this.m);
+    localToServiceMsg.setTimeout(this.g);
+    this.this$0.sendPbReq(localToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.3
  * JD-Core Version:    0.7.0.1
  */

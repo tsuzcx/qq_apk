@@ -71,59 +71,55 @@ public final class AdtsExtractor
     ParsableByteArray localParsableByteArray = new ParsableByteArray(10);
     ParsableBitArray localParsableBitArray = new ParsableBitArray(localParsableByteArray.data);
     int i = 0;
-    paramExtractorInput.peekFully(localParsableByteArray.data, 0, 10);
-    localParsableByteArray.setPosition(0);
-    int k;
-    int j;
-    int m;
-    if (localParsableByteArray.readUnsignedInt24() != ID3_TAG)
-    {
-      paramExtractorInput.resetPeekPosition();
-      paramExtractorInput.advancePeekPosition(i);
-      k = 0;
-      j = 0;
-      m = i;
-    }
     for (;;)
     {
-      label79:
-      paramExtractorInput.peekFully(localParsableByteArray.data, 0, 2);
+      paramExtractorInput.peekFully(localParsableByteArray.data, 0, 10);
       localParsableByteArray.setPosition(0);
-      if ((localParsableByteArray.readUnsignedShort() & 0xFFF6) != 65520)
+      if (localParsableByteArray.readUnsignedInt24() != ID3_TAG)
       {
         paramExtractorInput.resetPeekPosition();
-        m += 1;
-        if (m - i < 8192) {}
-      }
-      int n;
-      do
-      {
-        return false;
-        localParsableByteArray.skipBytes(3);
-        j = localParsableByteArray.readSynchSafeInt();
-        i += j + 10;
-        paramExtractorInput.advancePeekPosition(j);
-        break;
-        paramExtractorInput.advancePeekPosition(m);
-        k = 0;
-        j = 0;
-        break label79;
-        k += 1;
-        if ((k >= 4) && (j > 188)) {
-          return true;
+        paramExtractorInput.advancePeekPosition(i);
+        j = i;
+        int m = 0;
+        int k = 0;
+        for (;;)
+        {
+          paramExtractorInput.peekFully(localParsableByteArray.data, 0, 2);
+          localParsableByteArray.setPosition(0);
+          if ((localParsableByteArray.readUnsignedShort() & 0xFFF6) != 65520)
+          {
+            paramExtractorInput.resetPeekPosition();
+            j += 1;
+            if (j - i >= 8192) {
+              return false;
+            }
+            paramExtractorInput.advancePeekPosition(j);
+            break;
+          }
+          m += 1;
+          if ((m >= 4) && (k > 188)) {
+            return true;
+          }
+          paramExtractorInput.peekFully(localParsableByteArray.data, 0, 4);
+          localParsableBitArray.setPosition(14);
+          int n = localParsableBitArray.readBits(13);
+          if (n <= 6) {
+            return false;
+          }
+          paramExtractorInput.advancePeekPosition(n - 6);
+          k += n;
         }
-        paramExtractorInput.peekFully(localParsableByteArray.data, 0, 4);
-        localParsableBitArray.setPosition(14);
-        n = localParsableBitArray.readBits(13);
-      } while (n <= 6);
-      paramExtractorInput.advancePeekPosition(n - 6);
-      j += n;
+      }
+      localParsableByteArray.skipBytes(3);
+      int j = localParsableByteArray.readSynchSafeInt();
+      i += j + 10;
+      paramExtractorInput.advancePeekPosition(j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.AdtsExtractor
  * JD-Core Version:    0.7.0.1
  */

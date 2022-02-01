@@ -21,121 +21,115 @@ public final class HybridBinarizer
   
   private static int[][] calculateBlackPoints(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    int k = 8;
     int i6 = paramInt4 - 8;
     int i7 = paramInt3 - 8;
     int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { paramInt2, paramInt1 });
-    int i1 = 0;
-    int i3;
-    label68:
-    int i;
-    int n;
-    int j;
-    int k;
-    int m;
-    label122:
-    int i4;
-    if (i1 < paramInt2)
+    int m = 0;
+    while (m < paramInt2)
     {
-      paramInt4 = i1 << 3;
-      int i2 = paramInt4;
+      paramInt4 = m << 3;
+      int n = paramInt4;
       if (paramInt4 > i6) {
-        i2 = i6;
+        n = i6;
       }
-      i3 = 0;
-      if (i3 < paramInt1)
+      int i1 = 0;
+      while (i1 < paramInt1)
       {
-        i = i3 << 3;
+        int i = i1 << 3;
         paramInt4 = i;
         if (i > i7) {
           paramInt4 = i7;
         }
-        n = 0;
-        j = 255;
-        i = 0;
-        k = 0;
-        m = i2 * paramInt3 + paramInt4;
-        paramInt4 = n;
-        if (k < 8)
+        i = n * paramInt3 + paramInt4;
+        int j = 0;
+        paramInt4 = 0;
+        int i2 = 0;
+        int i3 = 255;
+        while (j < k)
         {
-          n = 0;
-          label132:
-          if (n < 8)
+          int i4 = 0;
+          while (i4 < k)
           {
-            i4 = paramArrayOfByte[(m + n)] & 0xFF;
-            if (i4 >= j) {
-              break label437;
+            k = paramArrayOfByte[(i + i4)] & 0xFF;
+            i5 = paramInt4 + k;
+            paramInt4 = i3;
+            if (k < i3) {
+              paramInt4 = k;
             }
-            j = i4;
+            i3 = i2;
+            if (k > i2) {
+              i3 = k;
+            }
+            i4 += 1;
+            k = 8;
+            i2 = i3;
+            i3 = paramInt4;
+            paramInt4 = i5;
           }
-        }
-      }
-    }
-    label431:
-    label437:
-    for (;;)
-    {
-      if (i4 > i) {
-        i = i4;
-      }
-      for (;;)
-      {
-        n += 1;
-        paramInt4 += i4;
-        break label132;
-        if (i - j > 24)
-        {
-          n = m + paramInt3;
-          m = k + 1;
-          k = n;
-          for (;;)
+          if (i2 - i3 > 24)
           {
-            i5 = k;
-            i4 = m;
-            n = paramInt4;
-            if (m >= 8) {
-              break;
-            }
-            n = 0;
-            while (n < 8)
+            k = j + 1;
+            i += paramInt3;
+            j = paramInt4;
+            paramInt4 = i;
+            i = k;
+            for (;;)
             {
-              paramInt4 += (paramArrayOfByte[(k + n)] & 0xFF);
-              n += 1;
+              i5 = i;
+              i4 = paramInt4;
+              k = j;
+              if (i >= 8) {
+                break;
+              }
+              k = 0;
+              while (k < 8)
+              {
+                j += (paramArrayOfByte[(paramInt4 + k)] & 0xFF);
+                k += 1;
+              }
+              i += 1;
+              paramInt4 += paramInt3;
             }
-            m += 1;
-            k += paramInt3;
           }
+          k = paramInt4;
+          i4 = i;
+          int i5 = j;
+          j = 8;
+          paramInt4 = k;
+          i5 += 1;
+          i = i4 + paramInt3;
+          k = j;
+          j = i5;
         }
-        n = paramInt4;
-        i4 = k;
-        int i5 = m;
-        m = i5 + paramInt3;
-        paramInt4 = n;
-        k = i4 + 1;
-        break label122;
         paramInt4 >>= 6;
-        if (i - j <= 24)
+        if (i2 - i3 <= 24)
         {
-          paramInt4 = j / 2;
-          if ((i1 <= 0) || (i3 <= 0)) {
-            break label431;
-          }
-          i = (arrayOfInt[(i1 - 1)][i3] + arrayOfInt[i1][(i3 - 1)] * 2 + arrayOfInt[(i1 - 1)][(i3 - 1)]) / 4;
-          if (j >= i) {
-            break label431;
-          }
+          i = i3 / 2;
           paramInt4 = i;
+          if (m > 0)
+          {
+            paramInt4 = i;
+            if (i1 > 0)
+            {
+              paramInt4 = m - 1;
+              j = arrayOfInt[paramInt4][i1];
+              int[] arrayOfInt1 = arrayOfInt[m];
+              i2 = i1 - 1;
+              j = (j + arrayOfInt1[i2] * 2 + arrayOfInt[paramInt4][i2]) / 4;
+              paramInt4 = i;
+              if (i3 < j) {
+                paramInt4 = j;
+              }
+            }
+          }
         }
-        for (;;)
-        {
-          arrayOfInt[i1][i3] = paramInt4;
-          i3 += 1;
-          break label68;
-          i1 += 1;
-          break;
-          return arrayOfInt;
-        }
+        arrayOfInt[m][i1] = paramInt4;
+        i1 += 1;
       }
+      m += 1;
     }
+    return arrayOfInt;
   }
   
   private static void calculateThresholdForBlock(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[][] paramArrayOfInt, BitMatrix paramBitMatrix)
@@ -145,31 +139,25 @@ public final class HybridBinarizer
     paramInt4 = 0;
     while (paramInt4 < paramInt2)
     {
-      int j = paramInt4 << 3;
-      int i = j;
-      if (j > i1) {
+      int i = paramInt4 << 3;
+      if (i > i1) {
         i = i1;
       }
       int i3 = cap(paramInt4, 2, paramInt2 - 3);
-      j = 0;
+      int j = 0;
       while (j < paramInt1)
       {
-        int m = j << 3;
-        int k = m;
-        if (m > i2) {
+        int k = j << 3;
+        if (k > i2) {
           k = i2;
         }
         int i4 = cap(j, 2, paramInt1 - 3);
+        int m = -2;
         int n = 0;
-        m = -2;
         while (m <= 2)
         {
           int[] arrayOfInt = paramArrayOfInt[(i3 + m)];
-          int i5 = arrayOfInt[(i4 - 2)];
-          int i6 = arrayOfInt[(i4 - 1)];
-          int i7 = arrayOfInt[i4];
-          int i8 = arrayOfInt[(i4 + 1)];
-          n += arrayOfInt[(i4 + 2)] + (i5 + i6 + i7 + i8);
+          n += arrayOfInt[(i4 - 2)] + arrayOfInt[(i4 - 1)] + arrayOfInt[i4] + arrayOfInt[(i4 + 1)] + arrayOfInt[(i4 + 2)];
           m += 1;
         }
         thresholdBlock(paramArrayOfByte, k, i, n / 25, paramInt3, paramBitMatrix);
@@ -184,10 +172,11 @@ public final class HybridBinarizer
     if (paramInt1 < paramInt2) {
       return paramInt2;
     }
+    paramInt2 = paramInt1;
     if (paramInt1 > paramInt3) {
-      return paramInt3;
+      paramInt2 = paramInt3;
     }
-    return paramInt1;
+    return paramInt2;
   }
   
   private static void thresholdBlock(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, BitMatrix paramBitMatrix)
@@ -216,13 +205,13 @@ public final class HybridBinarizer
   
   public BitMatrix getBlackMatrix()
   {
-    if (this.matrix != null) {
-      return this.matrix;
+    Object localObject = this.matrix;
+    if (localObject != null) {
+      return localObject;
     }
-    Object localObject = getLuminanceSource();
+    localObject = getLuminanceSource();
     int m = ((LuminanceSource)localObject).getWidth();
     int n = ((LuminanceSource)localObject).getHeight();
-    BitMatrix localBitMatrix;
     if ((m >= 40) && (n >= 40))
     {
       localObject = ((LuminanceSource)localObject).getMatrix();
@@ -237,17 +226,20 @@ public final class HybridBinarizer
         j = k + 1;
       }
       int[][] arrayOfInt = calculateBlackPoints((byte[])localObject, i, j, m, n);
-      localBitMatrix = new BitMatrix(m, n);
+      BitMatrix localBitMatrix = new BitMatrix(m, n);
       calculateThresholdForBlock((byte[])localObject, i, j, m, n, arrayOfInt, localBitMatrix);
+      this.matrix = localBitMatrix;
     }
-    for (this.matrix = localBitMatrix;; this.matrix = super.getBlackMatrix()) {
-      return this.matrix;
+    else
+    {
+      this.matrix = super.getBlackMatrix();
     }
+    return this.matrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.common.HybridBinarizer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,19 @@
 package com.tencent.mobileqq.mini.entry;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bekq;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 final class MiniAppUtils$5
   extends Handler
 {
-  MiniAppUtils$5(Looper paramLooper, Context paramContext, String paramString1, String paramString2)
+  MiniAppUtils$5(Looper paramLooper, boolean paramBoolean, AsyncResult paramAsyncResult)
   {
     super(paramLooper);
   }
@@ -18,20 +21,69 @@ final class MiniAppUtils$5
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bekq))
+    WebSoCgiService.WebSoCgiState localWebSoCgiState;
+    if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
-      bekq localbekq = (bekq)paramMessage.obj;
-      if (localbekq.c == 0)
-      {
-        QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbekq.d);
+      localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
+      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localWebSoCgiState });
+      if (localWebSoCgiState.i == 0) {
+        try
+        {
+          JSONObject localJSONObject = new JSONObject();
+          paramMessage = localWebSoCgiState.d;
+          if (paramMessage != null)
+          {
+            if (this.val$returnAsJSON)
+            {
+              localJSONObject.put("data", new JSONObject(localWebSoCgiState.d));
+            }
+            else
+            {
+              if (localWebSoCgiState.g) {
+                paramMessage = Base64Util.encodeToString(localWebSoCgiState.d.getBytes(), 0);
+              } else {
+                paramMessage = localWebSoCgiState.d;
+              }
+              localJSONObject.put("data", paramMessage);
+            }
+          }
+          else {
+            localJSONObject.put("data", "");
+          }
+          localJSONObject.put("statusCode", localWebSoCgiState.f);
+          localJSONObject.put("wnsCode", localWebSoCgiState.i);
+          localJSONObject.put("header", localWebSoCgiState.c);
+          this.val$listener.onReceiveResult(true, localJSONObject);
+          return;
+        }
+        catch (JSONException paramMessage)
+        {
+          QLog.e("MiniAppUtils", 1, "handleMessage wnsCgiRequest exception ", paramMessage);
+          this.val$listener.onReceiveResult(false, null);
+          return;
+        }
       }
+      paramMessage = new JSONObject();
+    }
+    try
+    {
+      paramMessage.put("wnsCode", localWebSoCgiState.i);
+      label227:
+      this.val$listener.onReceiveResult(false, paramMessage);
+      return;
+      QLog.e("MiniAppUtils", 1, new Object[] { "handleMessage wnsCgiRequest ", " invalid msg.obj" });
+      this.val$listener.onReceiveResult(false, null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label227;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.5
  * JD-Core Version:    0.7.0.1
  */

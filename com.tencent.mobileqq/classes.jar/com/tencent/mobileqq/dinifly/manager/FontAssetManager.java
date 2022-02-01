@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.FontAssetDelegate;
 import com.tencent.mobileqq.dinifly.model.MutablePair;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public class FontAssetManager
     this.delegate = paramFontAssetDelegate;
     if (!(paramCallback instanceof View))
     {
-      Log.w("LOTTIE", "LottieDrawable must be inside of a view for images to work.");
+      Logger.warning("LottieDrawable must be inside of a view for images to work.");
       this.assetManager = null;
       return;
     }
@@ -41,68 +41,71 @@ public class FontAssetManager
       return localObject1;
     }
     Object localObject3 = null;
-    if (this.delegate != null) {
-      localObject3 = this.delegate.fetchFont(paramString);
+    localObject1 = this.delegate;
+    if (localObject1 != null) {
+      localObject3 = ((FontAssetDelegate)localObject1).fetchFont(paramString);
     }
+    Object localObject4 = this.delegate;
     localObject1 = localObject3;
-    String str;
-    if (this.delegate != null)
+    Object localObject2;
+    if (localObject4 != null)
     {
       localObject1 = localObject3;
       if (localObject3 == null)
       {
-        str = this.delegate.getFontPath(paramString);
+        localObject4 = ((FontAssetDelegate)localObject4).getFontPath(paramString);
         localObject1 = localObject3;
-        if (str == null) {}
-      }
-    }
-    try
-    {
-      localObject1 = Typeface.createFromAsset(this.assetManager, str);
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = "fonts/" + paramString + this.defaultFontFileExtension;
-      }
-    }
-    catch (RuntimeException localRuntimeException1)
-    {
-      try
-      {
-        localObject3 = Typeface.createFromAsset(this.assetManager, (String)localObject3);
-        this.fontFamilies.put(paramString, localObject3);
-        return localObject3;
-        localRuntimeException1 = localRuntimeException1;
-        localRuntimeException1.printStackTrace();
-        localObject2 = localObject3;
-      }
-      catch (RuntimeException localRuntimeException2)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          localRuntimeException2.printStackTrace();
-          Object localObject4 = localObject2;
+        if (localObject4 != null) {
+          try
+          {
+            localObject1 = Typeface.createFromAsset(this.assetManager, (String)localObject4);
+          }
+          catch (RuntimeException localRuntimeException1)
+          {
+            localRuntimeException1.printStackTrace();
+            localObject2 = Typeface.DEFAULT;
+          }
         }
       }
     }
+    localObject3 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("fonts/");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(this.defaultFontFileExtension);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      try
+      {
+        localObject3 = Typeface.createFromAsset(this.assetManager, (String)localObject2);
+      }
+      catch (RuntimeException localRuntimeException2)
+      {
+        localRuntimeException2.printStackTrace();
+        localObject3 = Typeface.DEFAULT;
+      }
+    }
+    this.fontFamilies.put(paramString, localObject3);
+    return localObject3;
   }
   
   private Typeface typefaceForStyle(Typeface paramTypeface, String paramString)
   {
-    int i = 0;
     boolean bool1 = paramString.contains("Italic");
     boolean bool2 = paramString.contains("Bold");
+    int i;
     if ((bool1) && (bool2)) {
       i = 3;
+    } else if (bool1) {
+      i = 2;
+    } else if (bool2) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    while (paramTypeface.getStyle() == i)
-    {
+    if (paramTypeface.getStyle() == i) {
       return paramTypeface;
-      if (bool1) {
-        i = 2;
-      } else if (bool2) {
-        i = 1;
-      }
     }
     return Typeface.create(paramTypeface, i);
   }

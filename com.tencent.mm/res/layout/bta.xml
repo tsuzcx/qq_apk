@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c1w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="RecyclerView示例" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c1u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="NestScrollView示例" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c1s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="CoordinatorLayout示例" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c1t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="ListView示例" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c1y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="StaggeredGridLayoutManager示例" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c1x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="PageSnapHelper示例" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c1v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="无更多数据示例" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/c1z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="属性设置示例" style="@style/oh" />
+</LinearLayout>

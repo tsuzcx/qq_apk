@@ -2,7 +2,7 @@ package com.tencent.mm.ui.tools;
 
 public abstract interface MMGestureGallery$f
 {
-  public abstract void bdW();
+  public abstract void singleClickOver();
 }
 
 

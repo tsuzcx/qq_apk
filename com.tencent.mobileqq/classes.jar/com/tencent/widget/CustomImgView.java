@@ -48,7 +48,7 @@ public class CustomImgView
     this.b.setDuplicateParentStateEnabled(true);
   }
   
-  public Drawable a()
+  public Drawable getDrawable()
   {
     return this.a.getDrawable();
   }
@@ -86,14 +86,15 @@ public class CustomImgView
   
   public void setURLDrawableListener(URLDrawableDownListener paramURLDrawableDownListener)
   {
-    if ((this.a != null) && ((this.a instanceof URLImageView))) {
-      ((URLImageView)this.a).setURLDrawableDownListener(paramURLDrawableDownListener);
+    ImageView localImageView = this.a;
+    if ((localImageView != null) && ((localImageView instanceof URLImageView))) {
+      ((URLImageView)localImageView).setURLDrawableDownListener(paramURLDrawableDownListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.CustomImgView
  * JD-Core Version:    0.7.0.1
  */

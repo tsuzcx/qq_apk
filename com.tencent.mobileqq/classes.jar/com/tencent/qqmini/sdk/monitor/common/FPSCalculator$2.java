@@ -1,46 +1,39 @@
 package com.tencent.qqmini.sdk.monitor.common;
 
-import android.annotation.TargetApi;
 import android.os.Handler;
-import android.view.Choreographer;
-import bhbe;
-import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.Vector;
 
-public class FPSCalculator$2
+class FPSCalculator$2
   implements Runnable
 {
-  public FPSCalculator$2(bhbe parambhbe) {}
+  FPSCalculator$2(FPSCalculator paramFPSCalculator) {}
   
-  @TargetApi(16)
   public void run()
   {
+    Object localObject1 = FPSCalculator.access$400(this.this$0);
+    int i = 0;
+    try
+    {
+      while (i < FPSCalculator.access$500(this.this$0).size())
+      {
+        FPSCalculator.GetFPSListener localGetFPSListener = (FPSCalculator.GetFPSListener)FPSCalculator.access$500(this.this$0).get(i);
+        FPSCalculator.access$602(this.this$0, System.currentTimeMillis());
+        localGetFPSListener.onInfo(FPSCalculator.access$600(this.this$0), 60.0D);
+        i += 1;
+      }
+      FPSCalculator.access$300(this.this$0).postDelayed(FPSCalculator.access$700(this.this$0), 500L);
+      return;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        if (bhbe.a(this.this$0) == null) {
-          continue;
-        }
-        bhbe.a(this.this$0).removeFrameCallback(bhbe.a(this.this$0));
-        bhbe.a(this.this$0).postFrameCallback(bhbe.a(this.this$0));
-      }
-      catch (Exception localException)
-      {
-        if (!QMLog.isColorLevel()) {
-          continue;
-        }
-        QMLog.d("FPSCalculator", "Choreographer.getInstance", localException);
-        continue;
-      }
-      bhbe.a(this.this$0).removeCallbacks(bhbe.a(this.this$0));
-      return;
-      bhbe.a(this.this$0, Choreographer.getInstance());
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.common.FPSCalculator.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
-import android.content.Context;
-import android.view.ViewParent;
-import android.widget.FrameLayout;
+import android.view.animation.Interpolator;
+import com.tencent.util.AnimateUtils;
+import com.tencent.widget.ListView;
 
 public class hwk
-  extends FrameLayout
+  implements Interpolator
 {
-  public hwk(Context paramContext)
-  {
-    super(paramContext);
-  }
+  private hwk(ListView paramListView) {}
   
-  private void a(ViewParent paramViewParent)
+  public float getInterpolation(float paramFloat)
   {
-    this.mParent = paramViewParent;
+    return AnimateUtils.a(paramFloat);
   }
 }
 

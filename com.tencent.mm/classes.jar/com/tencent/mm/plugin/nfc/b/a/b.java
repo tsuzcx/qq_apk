@@ -5,62 +5,62 @@ import android.nfc.tech.IsoDep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.nfc.a.a;
 import com.tencent.mm.plugin.nfc.a.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   implements d
 {
-  private IsoDep pgt;
+  private IsoDep Mtn;
   
   public b(Tag paramTag)
   {
-    AppMethodBeat.i(23038);
+    AppMethodBeat.i(26665);
     if (paramTag == null)
     {
-      ab.e("MicroMsg.ApduEngineIsoDep", "[NFC]tag is null");
+      Log.e("MicroMsg.ApduEngineIsoDep", "[NFC]tag is null");
       paramTag = new IllegalStateException("tag is null");
-      AppMethodBeat.o(23038);
+      AppMethodBeat.o(26665);
       throw paramTag;
     }
-    this.pgt = IsoDep.get(paramTag);
-    AppMethodBeat.o(23038);
+    this.Mtn = IsoDep.get(paramTag);
+    AppMethodBeat.o(26665);
   }
   
   public final c a(a parama)
   {
-    AppMethodBeat.i(23043);
-    if (this.pgt == null)
+    AppMethodBeat.i(26670);
+    if (this.Mtn == null)
     {
-      ab.e("MicroMsg.ApduEngineIsoDep", "[NFC]IsoDep is null");
+      Log.e("MicroMsg.ApduEngineIsoDep", "[NFC]IsoDep is null");
       parama = new IllegalStateException("IsoDep is null");
-      AppMethodBeat.o(23043);
+      AppMethodBeat.o(26670);
       throw parama;
     }
-    connect();
+    cmB();
     Object localObject = null;
     a locala = parama;
     parama = (a)localObject;
     c localc;
     for (;;)
     {
-      localc = new c(this.pgt.transceive(locala.getBytes()));
+      localc = new c(this.Mtn.transceive(locala.getBytes()));
       localObject = parama;
-      if (localc.pgd.length != 0)
+      if (localc.MsX.length != 0)
       {
-        if (localc.pgd.length - 2 <= 0) {
+        if (localc.MsX.length - 2 <= 0) {
           localObject = localc;
         }
       }
       else
       {
         label92:
-        AppMethodBeat.o(23043);
+        AppMethodBeat.o(26670);
         return localObject;
       }
-      if (localc.bWV() != 108) {
+      if (localc.gtn() != 108) {
         break;
       }
-      locala.AI(localc.bWW());
+      locala.aeN(localc.gto());
     }
     if (parama == null) {
       parama = localc;
@@ -68,54 +68,54 @@ public final class b
     for (;;)
     {
       localObject = parama;
-      if (localc.bWV() != 97) {
+      if (localc.gtn() != 97) {
         break label92;
       }
-      locala = new a((byte[])com.tencent.mm.plugin.nfc.a.b.pgl.clone());
+      locala = new a((byte[])com.tencent.mm.plugin.nfc.a.b.Mtf.clone());
       break;
       parama.a(localc);
     }
   }
   
-  public final boolean bWZ()
+  public final void close()
   {
-    AppMethodBeat.i(23042);
-    close();
-    connect();
-    AppMethodBeat.o(23042);
+    AppMethodBeat.i(26667);
+    if (this.Mtn.isConnected()) {
+      this.Mtn.close();
+    }
+    AppMethodBeat.o(26667);
+  }
+  
+  public final boolean cmB()
+  {
+    AppMethodBeat.i(26666);
+    if (!this.Mtn.isConnected()) {
+      this.Mtn.connect();
+    }
+    AppMethodBeat.o(26666);
     return true;
   }
   
-  public final void close()
+  public final boolean gtr()
   {
-    AppMethodBeat.i(23040);
-    if (this.pgt.isConnected()) {
-      this.pgt.close();
-    }
-    AppMethodBeat.o(23040);
-  }
-  
-  public final boolean connect()
-  {
-    AppMethodBeat.i(23039);
-    if (!this.pgt.isConnected()) {
-      this.pgt.connect();
-    }
-    AppMethodBeat.o(23039);
+    AppMethodBeat.i(26669);
+    close();
+    cmB();
+    AppMethodBeat.o(26669);
     return true;
   }
   
   public final boolean isConnected()
   {
-    AppMethodBeat.i(23041);
-    boolean bool = this.pgt.isConnected();
-    AppMethodBeat.o(23041);
+    AppMethodBeat.i(26668);
+    boolean bool = this.Mtn.isConnected();
+    AppMethodBeat.o(26668);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc.b.a.b
  * JD-Core Version:    0.7.0.1
  */

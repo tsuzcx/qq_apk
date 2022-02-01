@@ -1,190 +1,118 @@
 package com.tencent.mm.modelvideo;
 
+import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.video.c;
-import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.g.d;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.exx;
+import com.tencent.mm.protocal.protobuf.exy;
+import com.tencent.mm.protocal.protobuf.fnq;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class i
-  implements f.a
+  extends p
+  implements m
 {
-  LinkedList<bi> fWm;
-  long fWn;
-  private int fWo;
-  private int fWp;
-  public boolean fWq;
-  public boolean fWr;
-  private boolean fWs;
-  private boolean fWt;
-  f fWu;
-  long fWv;
+  private h callback;
+  private String clientId;
+  private long oYW;
+  private z oYX;
+  private d oYY;
+  private c rr;
   
-  public i()
+  public i(long paramLong, z paramz, d paramd, String paramString)
   {
-    AppMethodBeat.i(50718);
-    this.fWm = new LinkedList();
-    this.fWn = 0L;
-    this.fWo = 0;
-    this.fWp = 0;
-    this.fWq = false;
-    this.fWr = false;
-    this.fWs = false;
-    this.fWt = false;
-    this.fWu = null;
-    this.fWv = 0L;
-    AppMethodBeat.o(50718);
+    AppMethodBeat.i(126838);
+    this.oYW = -1L;
+    this.oYX = null;
+    this.oYY = null;
+    this.clientId = "";
+    Log.i("MicroMsg.NetSceneMassUploadSight", "massSendId %d, clientId %s", new Object[] { Long.valueOf(paramLong), paramString });
+    this.oYW = paramLong;
+    this.oYX = paramz;
+    this.oYY = paramd;
+    this.clientId = paramString;
+    AppMethodBeat.o(126838);
   }
   
-  public final void a(f paramf, boolean paramBoolean, int paramInt1, int paramInt2)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(50721);
-    if (paramf == null)
+    int i = 0;
+    AppMethodBeat.i(126839);
+    this.callback = paramh;
+    paramh = new c.a();
+    paramh.otE = new exx();
+    paramh.otF = new exy();
+    paramh.uri = "/cgi-bin/micromsg-bin/sendsight";
+    paramh.funcId = 245;
+    this.rr = paramh.bEF();
+    paramh = (exx)c.b.b(this.rr.otB);
+    paramh.aesKey = this.oYY.field_aesKey;
+    paramh.QCC = this.clientId;
+    paramh.md5 = this.oYX.ibd;
+    paramh.playtime = this.oYX.omT;
+    v.bOh();
+    Object localObject = aa.PY(this.oYX.getFileName());
+    BitmapFactory.Options localOptions = BitmapUtil.getImageOptions((String)localObject);
+    if (localOptions != null)
     {
-      ab.e("MicroMsg.PreloadVideoService", "%d on preload finish but scene is null?", new Object[] { Integer.valueOf(hashCode()) });
-      AppMethodBeat.o(50721);
-      return;
+      paramh.thumbWidth = localOptions.outWidth;
+      paramh.thumbHeight = localOptions.outHeight;
     }
-    if (this.fWu != paramf) {
-      ab.w("MicroMsg.PreloadVideoService", "%d on preload finish, but scene callback not same object.", new Object[] { Integer.valueOf(hashCode()) });
-    }
-    ab.i("MicroMsg.PreloadVideoService", "%d preload video[%s] finish success[%b] range[%d, %d]", new Object[] { Integer.valueOf(hashCode()), paramf.alv(), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    g.RO().ac(new i.3(this, paramf));
-    AppMethodBeat.o(50721);
-  }
-  
-  public final void a(String paramString1, int paramInt1, long paramLong, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6)
-  {
-    AppMethodBeat.i(50724);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(bo.aox()).append(",");
-    localStringBuffer.append(bo.aox()).append(",");
-    localStringBuffer.append(0).append(",");
-    localStringBuffer.append(paramString1).append(",");
-    localStringBuffer.append(paramInt1).append(",");
-    localStringBuffer.append(0).append(",");
-    localStringBuffer.append(paramLong).append(",");
-    localStringBuffer.append(",");
-    localStringBuffer.append(paramString2).append(",");
-    localStringBuffer.append(paramString3).append(",");
-    localStringBuffer.append(paramInt2).append(",");
-    localStringBuffer.append(paramString4).append(",");
-    localStringBuffer.append(paramString5).append(",");
-    localStringBuffer.append(c.aeA(paramString6));
-    paramString1 = localStringBuffer.toString();
-    ab.d("MicroMsg.PreloadVideoService", "%d rpt content[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1 });
-    new com.tencent.mm.g.b.a.z(paramString1).ake();
-    AppMethodBeat.o(50724);
-  }
-  
-  public final void alw()
-  {
-    AppMethodBeat.i(50720);
-    g.RO().ac(new i.2(this));
-    AppMethodBeat.o(50720);
-  }
-  
-  public final void di(boolean paramBoolean)
-  {
-    AppMethodBeat.i(50722);
-    if (paramBoolean)
-    {
-      this.fWo = ((Integer)g.RL().Ru().get(ac.a.yGN, Integer.valueOf(0))).intValue();
-      this.fWo += 1;
-      g.RL().Ru().set(ac.a.yGN, Integer.valueOf(this.fWo));
-      AppMethodBeat.o(50722);
-      return;
-    }
-    this.fWp = ((Integer)g.RL().Ru().get(ac.a.yGO, Integer.valueOf(0))).intValue();
-    this.fWp += 1;
-    g.RL().Ru().set(ac.a.yGO, Integer.valueOf(this.fWp));
-    AppMethodBeat.o(50722);
-  }
-  
-  public final boolean dj(boolean paramBoolean)
-  {
-    int k = 100;
-    AppMethodBeat.i(50723);
-    this.fWn = ((Long)g.RL().Ru().get(ac.a.yGM, Long.valueOf(-1L))).longValue();
-    if (bo.hl(this.fWn) >= 86400000L)
-    {
-      this.fWn = bo.aoy();
-      g.RL().Ru().set(ac.a.yGM, Long.valueOf(this.fWn));
-      g.RL().Ru().set(ac.a.yGN, Integer.valueOf(0));
-      g.RL().Ru().set(ac.a.yGO, Integer.valueOf(0));
-      this.fWt = false;
-      this.fWs = false;
-    }
-    this.fWo = ((Integer)g.RL().Ru().get(ac.a.yGN, Integer.valueOf(0))).intValue();
-    this.fWp = ((Integer)g.RL().Ru().get(ac.a.yGO, Integer.valueOf(0))).intValue();
-    int j;
-    int i;
-    if (paramBoolean)
-    {
-      j = this.fWo;
-      i = ((a)g.E(a.class)).Nq().getInt("C2CMaxPreloadVideo", 100);
-      if (i > 0) {
-        break label392;
-      }
-      i = k;
-    }
-    label392:
     for (;;)
     {
-      boolean bool;
-      if (j >= i)
-      {
-        bool = true;
-        label218:
-        ab.i("MicroMsg.PreloadVideoService", "%d check more preload count result[%b] config[%d] hadPreloadCount[%d %d %d] ", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.fWo), Integer.valueOf(this.fWp) });
-        if (bool)
-        {
-          if (!paramBoolean) {
-            break label363;
-          }
-          if (!this.fWs)
-          {
-            this.fWs = true;
-            h.qsU.idkeyStat(354L, 127L, 1L, false);
-          }
-        }
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(50723);
-        return bool;
-        j = this.fWp;
-        i = ((a)g.E(a.class)).Nq().getInt("SnsMaxPreloadVideo", 100);
+      paramh.oZp = this.oYX.paZ;
+      localObject = Util.nullAs(this.oYX.pbj, "").split(",");
+      if ((localObject != null) && (localObject.length > 0)) {
         break;
-        bool = false;
-        break label218;
-        label363:
-        if (!this.fWt)
-        {
-          this.fWt = true;
-          h.qsU.idkeyStat(354L, 128L, 1L, false);
-        }
       }
+      Log.e("MicroMsg.NetSceneMassUploadSight", "cdn upload video done, massSendId[%d], split username fail", new Object[] { Long.valueOf(this.oYW) });
+      AppMethodBeat.o(126839);
+      return -1;
+      Log.w("MicroMsg.NetSceneMassUploadSight", "sight send getImageOptions for thumb failed path:%s", new Object[] { localObject });
     }
+    int j = localObject.length;
+    while (i < j)
+    {
+      localOptions = localObject[i];
+      fnq localfnq = new fnq();
+      localfnq.username = localOptions;
+      paramh.abzx.add(localfnq);
+      i += 1;
+    }
+    paramh.url = this.oYY.field_fileId;
+    paramh.omT = this.oYX.osy;
+    i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(126839);
+    return i;
   }
   
-  public final void stopDownload()
+  public final int getType()
   {
-    AppMethodBeat.i(50719);
-    ab.i("MicroMsg.PreloadVideoService", "%d stop download", new Object[] { Integer.valueOf(hashCode()) });
-    g.RO().ac(new i.1(this));
-    AppMethodBeat.o(50719);
+    return 245;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(126840);
+    Log.i("MicroMsg.NetSceneMassUploadSight", "cdntra onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " useCdnTransClientId:" + this.clientId + " massSendId " + this.oYW);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(126840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvideo.i
  * JD-Core Version:    0.7.0.1
  */

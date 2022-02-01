@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.dinifly.model;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.RestrictTo;
-import android.support.annotation.VisibleForTesting;
-import android.util.LruCache;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
+import androidx.annotation.VisibleForTesting;
+import androidx.collection.LruCache;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
 public class LottieCompositionCache
 {
   private static final LottieCompositionCache INSTANCE = new LottieCompositionCache();
@@ -47,7 +46,6 @@ public class LottieCompositionCache
     }
   }
   
-  @RequiresApi(api=21)
   public void resize(int paramInt)
   {
     this.cache.resize(paramInt);

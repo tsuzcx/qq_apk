@@ -1,555 +1,853 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.YuvImage;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.b.c.a;
+import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.plugin.mmsight.model.f;
 import com.tencent.mm.plugin.mmsight.model.o;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.plugin.sight.base.f;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i.b;
+import java.io.ByteArrayOutputStream;
 
 public final class l
   implements d
 {
-  private String cqq;
-  private boolean eLc;
-  boolean fcC;
-  private f fcP;
-  String fca;
-  private int fcb;
-  private float fcc;
-  int fcd;
-  float fce;
-  private int fch;
-  private int fci;
-  int fcj;
-  int fck;
-  int fcl;
-  s fcm;
-  int fcn;
-  String fco;
-  boolean fcp;
-  private String fcq;
-  private boolean fcr;
-  VideoTransPara fcu;
-  boolean fcw;
-  boolean fcx;
-  int fcy;
-  d.a fcz;
-  c fdd;
-  p fde;
-  e fdg;
-  private HandlerThread fdh;
-  ak fdi;
-  int fdj;
-  int fdk;
-  boolean fdl;
-  private int fdm;
-  private boolean fdn;
-  public boolean fdo;
+  private a KXt;
   private String mFileName;
-  private l.a oJs;
+  private boolean mGp;
+  private String md5;
+  boolean nKe;
+  String nLB;
+  boolean nLC;
+  private String nLD;
+  private boolean nLE;
+  VideoTransPara nLH;
+  boolean nLJ;
+  int nLK;
+  d.a nLL;
+  boolean nLO;
+  String nLm;
+  private int nLn;
+  private float nLo;
+  int nLp;
+  float nLq;
+  private int nLt;
+  private int nLu;
+  int nLv;
+  int nLw;
+  int nLx;
+  s nLy;
+  int nLz;
+  private HandlerThread nMA;
+  MMHandler nMB;
+  int nMC;
+  int nMD;
+  boolean nME;
+  private boolean nMF;
+  private int nMG;
+  private boolean nMH;
+  public boolean nMI;
+  boolean nMK;
+  private com.tencent.mm.plugin.mmsight.model.g nMg;
+  c nMw;
+  p nMx;
+  e nMz;
   String thumbPath;
   
   public l(VideoTransPara paramVideoTransPara)
   {
-    AppMethodBeat.i(76606);
-    this.oJs = null;
-    this.fca = "";
-    this.fcb = 0;
-    this.fcc = 0.0F;
-    this.fcd = -1;
-    this.fce = -1.0F;
-    this.fch = 480;
-    this.fci = 640;
-    this.fcj = 1600000;
-    this.fck = 480;
-    this.fcl = 640;
-    this.fcn = 0;
-    this.fco = null;
-    this.fdh = null;
-    this.fdi = null;
-    this.fdj = -1;
-    this.fdk = -1;
-    this.fdl = false;
+    AppMethodBeat.i(89518);
+    this.KXt = null;
+    this.nLm = "";
+    this.nLn = 0;
+    this.nLo = 0.0F;
+    this.nLp = -1;
+    this.nLq = -1.0F;
+    this.nLt = 480;
+    this.nLu = 640;
+    this.nLv = 1600000;
+    this.nLw = 480;
+    this.nLx = 640;
+    this.nLz = 0;
+    this.nLB = null;
+    this.nMA = null;
+    this.nMB = null;
+    this.nMC = -1;
+    this.nMD = -1;
+    this.nME = false;
+    this.nMF = false;
     this.thumbPath = null;
-    this.fcq = null;
-    this.fcr = false;
-    this.fcp = false;
-    this.eLc = false;
-    this.fdm = -1;
-    this.fcw = false;
-    this.cqq = "";
-    this.fcx = false;
-    this.fcy = 0;
-    this.fdn = false;
-    this.fcC = true;
-    this.fdo = false;
-    this.fcP = new l.1(this);
-    this.fcu = paramVideoTransPara;
-    this.fch = paramVideoTransPara.width;
-    this.fci = paramVideoTransPara.height;
-    this.fcj = paramVideoTransPara.videoBitrate;
-    k.bRq();
-    int i = k.bRs();
-    if (i == -1) {}
-    for (this.fcj = paramVideoTransPara.videoBitrate;; this.fcj = i)
+    this.nLD = null;
+    this.nLE = false;
+    this.nLC = false;
+    this.mGp = false;
+    this.nMG = -1;
+    this.nLJ = false;
+    this.md5 = "";
+    this.nKe = false;
+    this.nLK = 0;
+    this.nMH = false;
+    this.nLO = true;
+    this.nMI = false;
+    this.nMK = false;
+    this.nMg = new com.tencent.mm.plugin.mmsight.model.g()
     {
-      this.fcm = new s();
-      this.eLc = false;
-      ab.d("MicroMsg.MMSightFFMpegRecorder", "create MMSightFFMpegRecorder, targetWidth: %s, targetHeight: %s, targetRate: %s,  defaultRate: %s", new Object[] { Integer.valueOf(this.fch), Integer.valueOf(this.fci), Integer.valueOf(this.fcj), Integer.valueOf(i) });
-      AppMethodBeat.o(76606);
+      public final boolean onFrameData(byte[] paramAnonymousArrayOfByte)
+      {
+        AppMethodBeat.i(89506);
+        if ((paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length <= 0))
+        {
+          AppMethodBeat.o(89506);
+          return false;
+        }
+        if (l.this.nLy.KXM == d.c.KWC)
+        {
+          Object localObject = l.this;
+          if ((!((l)localObject).nLC) && (((l)localObject).nLO))
+          {
+            ((l)localObject).nLC = true;
+            byte[] arrayOfByte = new byte[paramAnonymousArrayOfByte.length];
+            System.arraycopy(paramAnonymousArrayOfByte, 0, arrayOfByte, 0, paramAnonymousArrayOfByte.length);
+            ThreadPool.post(new l.7((l)localObject, arrayOfByte), "BigSightMediaCodecMP4MuxRecorder_saveThumb");
+          }
+          if (l.this.nMB != null)
+          {
+            localObject = Message.obtain();
+            ((Message)localObject).what = 1;
+            ((Message)localObject).obj = paramAnonymousArrayOfByte;
+            l.this.nMB.sendMessage((Message)localObject);
+          }
+          AppMethodBeat.o(89506);
+          return true;
+        }
+        AppMethodBeat.o(89506);
+        return false;
+      }
+    };
+    this.nLH = paramVideoTransPara;
+    this.nLt = paramVideoTransPara.width;
+    this.nLu = paramVideoTransPara.height;
+    this.nLv = paramVideoTransPara.videoBitrate;
+    k.gcB();
+    int i = k.gcC();
+    if (i == -1) {}
+    for (this.nLv = paramVideoTransPara.videoBitrate;; this.nLv = i)
+    {
+      this.nLy = new s();
+      this.mGp = false;
+      Log.d("MicroMsg.MMSightFFMpegRecorder", "create MMSightFFMpegRecorder, targetWidth: %s, targetHeight: %s, targetRate: %s,  defaultRate: %s", new Object[] { Integer.valueOf(this.nLt), Integer.valueOf(this.nLu), Integer.valueOf(this.nLv), Integer.valueOf(i) });
+      AppMethodBeat.o(89518);
       return;
     }
   }
   
-  private boolean kl(int paramInt)
+  private boolean uv(int paramInt)
   {
-    AppMethodBeat.i(76615);
-    long l = bo.yB();
-    this.fdl = com.tencent.mm.plugin.mmsight.model.j.oHG.fdl;
-    this.fcn = paramInt;
+    AppMethodBeat.i(89527);
+    long l = Util.currentTicks();
+    this.nME = com.tencent.mm.plugin.mmsight.model.j.KVJ.nME;
+    this.nLz = paramInt;
     int j;
     label65:
     int n;
     int m;
-    if (!this.fdl) {
+    if (!this.nME) {
       if ((paramInt == 0) || (paramInt == 180))
       {
-        i = this.fck;
+        i = this.nLw;
         if ((paramInt != 0) && (paramInt != 180)) {
-          break label173;
+          break label178;
         }
-        j = this.fcl;
-        k = this.fch;
-        n = this.fci;
+        j = this.nLx;
+        k = this.nLt;
+        n = this.nLu;
         m = i;
         i = n;
       }
     }
     for (;;)
     {
-      n = this.fcj;
-      j = SightVideoJNI.initDataBufferForMMSightLock(m, j, paramInt, k, i, this.fcu.fps, n, this.fcu.fzW, 8, this.fcu.fzV, 23.0F, this.fdl, true, this.fcu.duration, false);
+      n = this.nLv;
+      j = SightVideoJNI.initDataBufferForMMSightLock(m, j, paramInt, k, i, this.nLH.fps, n, this.nLH.oBP, 8, this.nLH.oBO, 23.0F, this.nME, true, this.nLH.duration, false, false, this.nMK);
       if (j >= 0) {
-        break label296;
+        break label301;
       }
-      ab.e("MicroMsg.MMSightFFMpegRecorder", "init failed!");
-      com.tencent.mm.plugin.mmsight.model.k.bQY();
-      AppMethodBeat.o(76615);
+      Log.e("MicroMsg.MMSightFFMpegRecorder", "init failed!");
+      com.tencent.mm.plugin.mmsight.model.k.gck();
+      AppMethodBeat.o(89527);
       return false;
-      i = this.fcl;
+      i = this.nLx;
       break;
-      label173:
-      j = this.fck;
+      label178:
+      j = this.nLw;
       break label65;
       if ((paramInt == 0) || (paramInt == 180))
       {
-        i = this.fck;
-        label197:
+        i = this.nLw;
+        label202:
         if ((paramInt != 0) && (paramInt != 180)) {
-          break label264;
+          break label269;
         }
-        j = this.fcl;
-        label213:
+        j = this.nLx;
+        label218:
         if ((paramInt != 0) && (paramInt != 180)) {
-          break label272;
+          break label277;
         }
       }
-      label264:
-      label272:
-      for (k = this.fch;; k = this.fci)
+      label269:
+      label277:
+      for (k = this.nLt;; k = this.nLu)
       {
         if ((paramInt != 0) && (paramInt != 180)) {
-          break label281;
+          break label286;
         }
-        n = this.fci;
+        n = this.nLu;
         m = i;
         i = n;
         break;
-        i = this.fcl;
-        break label197;
-        j = this.fck;
-        break label213;
+        i = this.nLx;
+        break label202;
+        j = this.nLw;
+        break label218;
       }
-      label281:
-      n = this.fch;
+      label286:
+      n = this.nLt;
       m = i;
       i = n;
     }
-    label296:
-    this.fdm = j;
-    this.fde = new p(this.fdl, paramInt, k, i);
-    int k = this.fde.zt(j);
+    label301:
+    this.nMG = j;
+    this.nMx = new p(this.nME, paramInt, k, i, this.nMF);
+    int k = this.nMx.abe(j);
     paramInt = 0;
     int i = -1;
     if (CaptureMMProxy.getInstance() != null) {
-      i = CaptureMMProxy.getInstance().getInt(ac.a.yEc, -1);
+      i = CaptureMMProxy.getInstance().getInt(at.a.acOF, -1);
     }
+    boolean bool;
     if (i < 0)
     {
-      this.fdd = new g(this.fcu.audioSampleRate, this.fcu.fzT, this.fcu.eRF);
-      this.fdd.jn(this.fdn);
-      paramInt = this.fdd.t(j, com.tencent.mm.plugin.sight.base.d.Zm(this.fca));
-      if ((k < 0) || (paramInt < 0))
+      paramInt = this.nLH.audioSampleRate;
+      i = this.nLH.audioBitrate;
+      m = this.nLH.audioChannelCount;
+      if (this.nLH.oCn == 1) {}
+      for (bool = true;; bool = false)
       {
-        ab.e("MicroMsg.MMSightFFMpegRecorder", "init yuv or aac recorder error!! %d %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt) });
-        if ((paramInt < 0) && (k >= 0))
-        {
-          ab.w("MicroMsg.MMSightFFMpegRecorder", "aac init error, try mediarecorder now");
-          this.fdd.clear();
-          this.fdd = new i(this.fcu.audioSampleRate, this.fcu.fzT, this.fcu.eRF);
-          this.fdd.jn(this.fdn);
-          paramInt = this.fdd.t(j, com.tencent.mm.plugin.sight.base.d.Zm(this.fca));
-          ab.w("MicroMsg.MMSightFFMpegRecorder", "MMSightAACMediaRecorder init ret: %s", new Object[] { Integer.valueOf(paramInt) });
-          if (paramInt >= 0)
-          {
-            AppMethodBeat.o(76615);
-            return true;
-          }
+        this.nMw = new g(paramInt, i, m, com.tencent.mm.plugin.sight.base.c.aP(true, bool));
+        this.nMw.yt(this.nMH);
+        paramInt = this.nMw.L(j, f.aVV(this.nLm));
+        if ((k >= 0) && (paramInt >= 0)) {
+          break label856;
         }
-        SightVideoJNI.releaseBigSightDataBufferLock(j);
-        com.tencent.mm.plugin.mmsight.model.k.bQY();
-        AppMethodBeat.o(76615);
-        return false;
+        Log.e("MicroMsg.MMSightFFMpegRecorder", "init yuv or aac recorder error!! %d %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt) });
+        if ((paramInt >= 0) || (k < 0)) {
+          break;
+        }
+        Log.w("MicroMsg.MMSightFFMpegRecorder", "aac init error, try mediarecorder now");
+        this.nMw.clear();
+        this.nMw = new i(this.nLH.audioSampleRate, this.nLH.audioBitrate, this.nLH.audioChannelCount);
+        this.nMw.yt(this.nMH);
+        paramInt = this.nMw.L(j, f.aVV(this.nLm));
+        Log.w("MicroMsg.MMSightFFMpegRecorder", "MMSightAACMediaRecorder init ret: %s", new Object[] { Integer.valueOf(paramInt) });
+        if (paramInt < 0) {
+          break;
+        }
+        AppMethodBeat.o(89527);
+        return true;
       }
+      SightVideoJNI.releaseBigSightDataBufferLock(j);
+      com.tencent.mm.plugin.mmsight.model.k.gck();
+      AppMethodBeat.o(89527);
+      return false;
     }
-    else
+    if (i == 1)
     {
-      if (i == 1)
+      paramInt = this.nLH.audioSampleRate;
+      i = this.nLH.audioBitrate;
+      m = this.nLH.audioChannelCount;
+      if (this.nLH.oCn == 1)
       {
-        this.fdd = new g(this.fcu.audioSampleRate, this.fcu.fzT, this.fcu.eRF);
-        this.fdd.jn(this.fdn);
-        paramInt = this.fdd.t(j, com.tencent.mm.plugin.sight.base.d.Zm(this.fca));
-      }
-      while ((k < 0) || (paramInt < 0))
-      {
-        ab.e("MicroMsg.MMSightFFMpegRecorder", "init yuv or aac recorder error!! %d %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt) });
-        SightVideoJNI.releaseBigSightDataBufferLock(j);
-        com.tencent.mm.plugin.mmsight.model.k.bQY();
-        AppMethodBeat.o(76615);
-        return false;
-        if (i == 2)
-        {
-          this.fdd = new i(this.fcu.audioSampleRate, this.fcu.fzT, this.fcu.eRF);
-          this.fdd.jn(this.fdn);
-          paramInt = this.fdd.t(j, com.tencent.mm.plugin.sight.base.d.Zm(this.fca));
-        }
+        bool = true;
+        this.nMw = new g(paramInt, i, m, com.tencent.mm.plugin.sight.base.c.aP(true, bool));
+        this.nMw.yt(this.nMH);
+        paramInt = this.nMw.L(j, f.aVV(this.nLm));
       }
     }
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "initImpl used %sms", new Object[] { Long.valueOf(bo.av(l)) });
-    AppMethodBeat.o(76615);
+    for (;;)
+    {
+      if ((k >= 0) && (paramInt >= 0)) {
+        break label856;
+      }
+      Log.e("MicroMsg.MMSightFFMpegRecorder", "init yuv or aac recorder error!! %d %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt) });
+      SightVideoJNI.releaseBigSightDataBufferLock(j);
+      com.tencent.mm.plugin.mmsight.model.k.gck();
+      AppMethodBeat.o(89527);
+      return false;
+      bool = false;
+      break;
+      if (i == 2)
+      {
+        this.nMw = new i(this.nLH.audioSampleRate, this.nLH.audioBitrate, this.nLH.audioChannelCount);
+        this.nMw.yt(this.nMH);
+        paramInt = this.nMw.L(j, f.aVV(this.nLm));
+      }
+    }
+    label856:
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "initImpl used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+    AppMethodBeat.o(89527);
     return true;
   }
   
-  private boolean ko(int paramInt)
+  private boolean uy(int paramInt)
   {
-    AppMethodBeat.i(76608);
-    if ((this.oJs != null) && (!this.oJs.fdx))
+    AppMethodBeat.i(89520);
+    if ((this.KXt != null) && (!this.KXt.nMS))
     {
-      if (!this.oJs.fdu)
+      if (!this.KXt.nMP)
       {
-        this.oJs.callback = null;
-        this.oJs.fdw = true;
-        this.oJs.fdv = true;
-        com.tencent.mm.sdk.g.d.ysm.remove(this.oJs);
+        this.KXt.callback = null;
+        this.KXt.nMR = true;
+        this.KXt.nMQ = true;
+        this.KXt.cancel();
       }
-      synchronized (this.oJs.fdy)
+      synchronized (this.KXt.nMT)
       {
         SightVideoJNI.releaseBigSightDataBufferLock(paramInt);
-        if (this.oJs.fds != paramInt) {
-          SightVideoJNI.releaseBigSightDataBufferLock(this.oJs.fds);
+        if (this.KXt.nMN != paramInt) {
+          SightVideoJNI.releaseBigSightDataBufferLock(this.KXt.nMN);
         }
-        AppMethodBeat.o(76608);
+        AppMethodBeat.o(89520);
         return true;
       }
     }
-    AppMethodBeat.o(76608);
+    AppMethodBeat.o(89520);
     return false;
   }
   
-  public final String Al()
+  public final void A(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(76612);
-    String str = bo.bf(this.cqq, "");
-    AppMethodBeat.o(76612);
-    return str;
-  }
-  
-  public final void G(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(76622);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "resume, cameraOrientation: %s", new Object[] { Integer.valueOf(paramInt1) });
-    if ((this.fcm != null) && (this.fcm.oJP == d.c.oIO))
+    AppMethodBeat.i(89519);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "setSize, width: %s, height: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.nLt = paramInt3;
+    this.nLu = paramInt4;
+    this.nLw = paramInt1;
+    this.nLx = paramInt2;
+    if (j.KXq.m(Integer.valueOf(paramInt1 * paramInt2 * 3 / 2)) == null)
     {
-      if (this.fde != null) {
-        this.fde.G(paramInt1, paramInt2, paramInt3);
-      }
-      this.fcm.a(d.c.oIG);
-    }
-    AppMethodBeat.o(76622);
-  }
-  
-  public final boolean XA()
-  {
-    return this.fcw;
-  }
-  
-  public final c.a XB()
-  {
-    AppMethodBeat.i(76623);
-    if (this.fdd != null)
-    {
-      c.a locala = this.fdd.bRl();
-      AppMethodBeat.o(76623);
-      return locala;
-    }
-    AppMethodBeat.o(76623);
-    return null;
-  }
-  
-  public final void XC()
-  {
-    this.fcC = false;
-  }
-  
-  final void XE()
-  {
-    if (this.oJs != null) {
-      this.oJs.fdv = true;
-    }
-  }
-  
-  final void XF()
-  {
-    AppMethodBeat.i(76618);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "ashutest::pcm ready");
-    if ((this.oJs != null) && (!this.oJs.fdx)) {
-      ab.e("MicroMsg.MMSightFFMpegRecorder", "ashutest::OnPcmReady, last encode thread[%s] status error!!! MUST NOT BE HERE", new Object[] { this.oJs });
-    }
-    synchronized (this.oJs.fdy)
-    {
-      ko(this.oJs.fds);
-      if (this.fcm.oJP != d.c.oIN)
+      Log.i("MicroMsg.MMSightFFMpegRecorder", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(3) });
+      long l = Util.currentTicks();
+      paramInt3 = 0;
+      while (paramInt3 < 3)
       {
-        ab.w("MicroMsg.MMSightFFMpegRecorder", "ashutest::not MediaStatus.Initialized, maybe canceled by user");
-        AppMethodBeat.o(76618);
-        return;
+        j.KXq.as(new byte[paramInt1 * paramInt2 * 3 / 2]);
+        paramInt3 += 1;
       }
+      Log.i("MicroMsg.MMSightFFMpegRecorder", "preloadCameraData used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
     }
-    this.fcm.a(d.c.oIG);
-    this.oJs = new l.a(this);
-    this.oJs.fds = this.fdm;
-    com.tencent.mm.sdk.g.d.f(this.oJs, "SightCustomAsyncMediaRecorder_encode_" + bo.yB());
-    AppMethodBeat.o(76618);
+    AppMethodBeat.o(89519);
   }
   
-  public final long Xf()
+  public final void Hd(String paramString)
   {
-    AppMethodBeat.i(76613);
-    long l = this.fde.UQ();
-    AppMethodBeat.o(76613);
-    return l;
+    this.thumbPath = paramString;
   }
   
-  public final String Xi()
+  public final void He(String paramString)
   {
-    return this.thumbPath;
+    this.nLD = paramString;
   }
   
-  public final String Xu()
+  /* Error */
+  public final void J(final Runnable paramRunnable)
   {
-    return this.fcq;
-  }
-  
-  public final float Xv()
-  {
-    return this.fcc;
-  }
-  
-  public final d.c Xw()
-  {
-    return this.fcm.oJP;
-  }
-  
-  public final int Xx()
-  {
-    AppMethodBeat.i(76619);
-    int i = Math.round(this.fcb / 1000.0F);
-    AppMethodBeat.o(76619);
-    return i;
-  }
-  
-  public final Point Xy()
-  {
-    AppMethodBeat.i(76620);
-    Point localPoint = new Point(this.fck, this.fcl);
-    AppMethodBeat.o(76620);
-    return localPoint;
-  }
-  
-  public final int Xz()
-  {
-    return this.fcn;
+    // Byte code:
+    //   0: ldc_w 490
+    //   3: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 98	com/tencent/mm/plugin/mmsight/model/a/l:KXt	Lcom/tencent/mm/plugin/mmsight/model/a/l$a;
+    //   10: ifnonnull +125 -> 135
+    //   13: iconst_1
+    //   14: istore_2
+    //   15: aload_0
+    //   16: getfield 98	com/tencent/mm/plugin/mmsight/model/a/l:KXt	Lcom/tencent/mm/plugin/mmsight/model/a/l$a;
+    //   19: ifnull +121 -> 140
+    //   22: aload_0
+    //   23: getfield 98	com/tencent/mm/plugin/mmsight/model/a/l:KXt	Lcom/tencent/mm/plugin/mmsight/model/a/l$a;
+    //   26: getfield 275	com/tencent/mm/plugin/mmsight/model/a/l$a:nMP	Z
+    //   29: ifeq +111 -> 140
+    //   32: iconst_1
+    //   33: istore_3
+    //   34: aload_0
+    //   35: getfield 98	com/tencent/mm/plugin/mmsight/model/a/l:KXt	Lcom/tencent/mm/plugin/mmsight/model/a/l$a;
+    //   38: ifnull +107 -> 145
+    //   41: aload_0
+    //   42: getfield 98	com/tencent/mm/plugin/mmsight/model/a/l:KXt	Lcom/tencent/mm/plugin/mmsight/model/a/l$a;
+    //   45: getfield 455	com/tencent/mm/plugin/mmsight/model/a/l$a:nMQ	Z
+    //   48: ifeq +97 -> 145
+    //   51: iconst_1
+    //   52: istore 4
+    //   54: ldc 201
+    //   56: ldc_w 492
+    //   59: iconst_3
+    //   60: anewarray 4	java/lang/Object
+    //   63: dup
+    //   64: iconst_0
+    //   65: iload_2
+    //   66: invokestatic 497	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   69: aastore
+    //   70: dup
+    //   71: iconst_1
+    //   72: iload_3
+    //   73: invokestatic 497	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   76: aastore
+    //   77: dup
+    //   78: iconst_2
+    //   79: iload 4
+    //   81: invokestatic 497	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   84: aastore
+    //   85: invokestatic 259	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   88: aload_0
+    //   89: getfield 98	com/tencent/mm/plugin/mmsight/model/a/l:KXt	Lcom/tencent/mm/plugin/mmsight/model/a/l$a;
+    //   92: ifnull +71 -> 163
+    //   95: aload_0
+    //   96: getfield 98	com/tencent/mm/plugin/mmsight/model/a/l:KXt	Lcom/tencent/mm/plugin/mmsight/model/a/l$a;
+    //   99: getfield 275	com/tencent/mm/plugin/mmsight/model/a/l$a:nMP	Z
+    //   102: ifeq +61 -> 163
+    //   105: aload_0
+    //   106: getfield 98	com/tencent/mm/plugin/mmsight/model/a/l:KXt	Lcom/tencent/mm/plugin/mmsight/model/a/l$a;
+    //   109: getfield 459	com/tencent/mm/plugin/mmsight/model/a/l$a:nMT	Ljava/lang/Object;
+    //   112: astore 5
+    //   114: aload 5
+    //   116: monitorenter
+    //   117: aload_0
+    //   118: invokevirtual 305	com/tencent/mm/plugin/mmsight/model/a/l:reset	()V
+    //   121: aload_1
+    //   122: invokestatic 311	com/tencent/mm/sdk/platformtools/MMHandlerThread:postToMainThread	(Ljava/lang/Runnable;)V
+    //   125: aload 5
+    //   127: monitorexit
+    //   128: ldc_w 490
+    //   131: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   134: return
+    //   135: iconst_0
+    //   136: istore_2
+    //   137: goto -122 -> 15
+    //   140: iconst_0
+    //   141: istore_3
+    //   142: goto -108 -> 34
+    //   145: iconst_0
+    //   146: istore 4
+    //   148: goto -94 -> 54
+    //   151: astore_1
+    //   152: aload 5
+    //   154: monitorexit
+    //   155: ldc_w 490
+    //   158: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   161: aload_1
+    //   162: athrow
+    //   163: ldc 201
+    //   165: ldc_w 499
+    //   168: iconst_2
+    //   169: anewarray 4	java/lang/Object
+    //   172: dup
+    //   173: iconst_0
+    //   174: aload_0
+    //   175: getfield 164	com/tencent/mm/plugin/mmsight/model/a/l:nMI	Z
+    //   178: invokestatic 497	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   181: aastore
+    //   182: dup
+    //   183: iconst_1
+    //   184: aload_0
+    //   185: getfield 130	com/tencent/mm/plugin/mmsight/model/a/l:nMB	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   188: aastore
+    //   189: invokestatic 259	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   192: aload_0
+    //   193: getfield 164	com/tencent/mm/plugin/mmsight/model/a/l:nMI	Z
+    //   196: ifeq +34 -> 230
+    //   199: aload_0
+    //   200: getfield 130	com/tencent/mm/plugin/mmsight/model/a/l:nMB	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   203: ifnull +27 -> 230
+    //   206: aload_0
+    //   207: getfield 130	com/tencent/mm/plugin/mmsight/model/a/l:nMB	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   210: new 10	com/tencent/mm/plugin/mmsight/model/a/l$2
+    //   213: dup
+    //   214: aload_0
+    //   215: aload_1
+    //   216: invokespecial 501	com/tencent/mm/plugin/mmsight/model/a/l$2:<init>	(Lcom/tencent/mm/plugin/mmsight/model/a/l;Ljava/lang/Runnable;)V
+    //   219: invokevirtual 507	com/tencent/mm/sdk/platformtools/MMHandler:post	(Ljava/lang/Runnable;)Z
+    //   222: pop
+    //   223: ldc_w 490
+    //   226: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   229: return
+    //   230: new 12	com/tencent/mm/plugin/mmsight/model/a/l$3
+    //   233: dup
+    //   234: aload_0
+    //   235: aload_1
+    //   236: invokespecial 508	com/tencent/mm/plugin/mmsight/model/a/l$3:<init>	(Lcom/tencent/mm/plugin/mmsight/model/a/l;Ljava/lang/Runnable;)V
+    //   239: ldc_w 510
+    //   242: invokestatic 515	com/tencent/mm/sdk/thread/ThreadPool:post	(Ljava/lang/Runnable;Ljava/lang/String;)V
+    //   245: ldc_w 490
+    //   248: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   251: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	252	0	this	l
+    //   0	252	1	paramRunnable	Runnable
+    //   14	123	2	bool1	boolean
+    //   33	109	3	bool2	boolean
+    //   52	95	4	bool3	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   117	128	151	finally
   }
   
   public final void a(d.a parama)
   {
-    this.fcz = parama;
+    this.nLL = parama;
   }
   
-  public final void ag(float paramFloat)
+  public final void ae(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(76625);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "overrideFps: %s", new Object[] { Float.valueOf(paramFloat) });
-    this.fce = paramFloat;
-    AppMethodBeat.o(76625);
+    AppMethodBeat.i(89534);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "resume, cameraOrientation: %s", new Object[] { Integer.valueOf(paramInt1) });
+    if ((this.nLy != null) && (this.nLy.KXM == d.c.KWK))
+    {
+      if (this.nMx != null) {
+        this.nMx.ae(paramInt1, paramInt2, paramInt3);
+      }
+      this.nLy.a(d.c.KWC);
+    }
+    AppMethodBeat.o(89534);
   }
   
   public final int b(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    AppMethodBeat.i(76617);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "request start, last status %s, cameraOrientation: %s, isLandscape: %s, degree: %s", new Object[] { this.fcm.oJP, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
-    this.fcx = paramBoolean;
-    this.fcb = 0;
-    this.fcy = paramInt2;
-    this.fcm.a(d.c.oIF);
-    String str = this.fca;
-    if (this.oJs == null)
+    AppMethodBeat.i(89529);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "request start, last status %s, cameraOrientation: %s, isLandscape: %s, degree: %s", new Object[] { this.nLy.KXM, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
+    this.nKe = paramBoolean;
+    this.nLn = 0;
+    this.nLK = paramInt2;
+    this.nLy.a(d.c.KWB);
+    String str = this.nLm;
+    if (this.KXt == null)
     {
       paramBoolean = true;
-      if ((this.oJs != null) && (!this.oJs.fdx)) {
+      if ((this.KXt != null) && (!this.KXt.nMS)) {
         break label179;
       }
     }
     label179:
     for (boolean bool = true;; bool = false)
     {
-      ab.i("MicroMsg.MMSightFFMpegRecorder", "initialize: filePath[%s], encodeThread null[%B], encodeThreadFinish[%B]", new Object[] { str, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
-      if ((this.oJs == null) || (this.oJs.fdx)) {
+      Log.i("MicroMsg.MMSightFFMpegRecorder", "initialize: filePath[%s], encodeThread null[%B], encodeThreadFinish[%B]", new Object[] { str, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
+      if ((this.KXt == null) || (this.KXt.nMS)) {
         break label185;
       }
-      ab.w("MicroMsg.MMSightFFMpegRecorder", "ERROR, status, wait last encode thread finish!!! MUST NOT BE HERE");
-      AppMethodBeat.o(76617);
+      Log.w("MicroMsg.MMSightFFMpegRecorder", "ERROR, status, wait last encode thread finish!!! MUST NOT BE HERE");
+      AppMethodBeat.o(89529);
       return -1;
       paramBoolean = false;
       break;
     }
     label185:
-    if (bo.isNullOrNil(this.fca))
+    if (Util.isNullOrNil(this.nLm))
     {
-      ab.e("MicroMsg.MMSightFFMpegRecorder", "start error, mCurRecordPath is null!!");
-      AppMethodBeat.o(76617);
+      Log.e("MicroMsg.MMSightFFMpegRecorder", "start error, mCurRecordPath is null!!");
+      AppMethodBeat.o(89529);
       return -1;
     }
-    this.mFileName = com.tencent.mm.vfs.e.avM(this.fca);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "mCurRecordPath: %s", new Object[] { this.fca });
-    this.fcn = paramInt1;
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "start, cameraOrientation: %s", new Object[] { Integer.valueOf(this.fcn) });
-    if (!this.eLc)
+    this.mFileName = y.bEq(this.nLm);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "mCurRecordPath: %s", new Object[] { this.nLm });
+    this.nLz = paramInt1;
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "start, cameraOrientation: %s", new Object[] { Integer.valueOf(this.nLz) });
+    if (!this.mGp)
     {
-      kl(paramInt1);
-      this.eLc = true;
+      uv(paramInt1);
+      this.mGp = true;
     }
-    this.fde.start();
-    if (!this.fdn)
+    this.nMx.start();
+    if (!this.nMH)
     {
-      paramInt1 = this.fdd.a(new l.5(this));
-      ab.i("MicroMsg.MMSightFFMpegRecorder", "start aac recorder ret: %d", new Object[] { Integer.valueOf(paramInt1) });
-      this.fdh = com.tencent.mm.sdk.g.d.ey("BigSightWriteCameraData", 0);
-      this.fdh.start();
-      this.fdi = new l.6(this, this.fdh.getLooper());
-      this.fcw = false;
+      paramInt1 = this.nMw.a(new c.a()
+      {
+        public final void buO()
+        {
+          AppMethodBeat.i(89510);
+          l.this.buO();
+          AppMethodBeat.o(89510);
+        }
+      });
+      Log.i("MicroMsg.MMSightFFMpegRecorder", "start aac recorder ret: %d", new Object[] { Integer.valueOf(paramInt1) });
+      this.nMA = com.tencent.threadpool.c.d.jw("BigSightWriteCameraData", 0);
+      this.nMA.start();
+      this.nMB = new MMHandler(this.nMA.getLooper())
+      {
+        public final void handleMessage(Message paramAnonymousMessage)
+        {
+          AppMethodBeat.i(89511);
+          if (l.this.nMC == -1)
+          {
+            l.this.nMC = Process.myTid();
+            Log.i("MicroMsg.MMSightFFMpegRecorder", "writeCameraTid: %s", new Object[] { Integer.valueOf(l.this.nMC) });
+          }
+          l locall;
+          byte[] arrayOfByte;
+          int k;
+          int j;
+          int i;
+          if (paramAnonymousMessage.what == 1)
+          {
+            l.this.nMw.gcw();
+            locall = l.this;
+            arrayOfByte = (byte[])paramAnonymousMessage.obj;
+            if (!locall.nME) {
+              break label146;
+            }
+            paramAnonymousMessage = locall.nMx;
+            k = arrayOfByte.length;
+            j = locall.nLw;
+            i = locall.nLx;
+          }
+          for (;;)
+          {
+            paramAnonymousMessage.h(arrayOfByte, k, j, i);
+            j.KXq.as(arrayOfByte);
+            locall.nLJ = true;
+            AppMethodBeat.o(89511);
+            return;
+            label146:
+            paramAnonymousMessage = locall.nMx;
+            k = arrayOfByte.length;
+            if ((locall.nLz == 0) || (locall.nLz == 180)) {}
+            for (i = locall.nLw;; i = locall.nLx)
+            {
+              if ((locall.nLz != 0) && (locall.nLz != 180)) {
+                break label225;
+              }
+              m = locall.nLx;
+              j = i;
+              i = m;
+              break;
+            }
+            label225:
+            int m = locall.nLw;
+            j = i;
+            i = m;
+          }
+        }
+      };
+      this.nLJ = false;
       if (paramInt1 == 0) {
         break label441;
       }
-      this.fcm.a(d.c.oIM);
+      this.nLy.a(d.c.KWI);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.mmsight.model.k.bQX();
-      ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markFFMpegCapture");
-      h.qsU.idkeyStat(440L, 1L, 1L, false);
-      if (this.fdn) {
-        XF();
+      com.tencent.mm.plugin.mmsight.model.k.gcj();
+      Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markFFMpegCapture");
+      h.OAn.idkeyStat(440L, 1L, 1L, false);
+      if (this.nMH) {
+        buO();
       }
-      AppMethodBeat.o(76617);
+      AppMethodBeat.o(89529);
       return paramInt1;
       paramInt1 = 0;
       break;
       label441:
-      this.fcm.a(d.c.oIN);
+      this.nLy.a(d.c.KWJ);
     }
   }
   
-  public final void cG(boolean paramBoolean)
+  public final void bq(float paramFloat)
   {
-    this.fdn = paramBoolean;
+    AppMethodBeat.i(89537);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "overrideFps: %s", new Object[] { Float.valueOf(paramFloat) });
+    this.nLq = paramFloat;
+    AppMethodBeat.o(89537);
+  }
+  
+  public final String buA()
+  {
+    return this.nLD;
+  }
+  
+  public final float buB()
+  {
+    return this.nLo;
+  }
+  
+  public final long buC()
+  {
+    AppMethodBeat.i(89525);
+    long l = this.nMx.bpj();
+    AppMethodBeat.o(89525);
+    return l;
+  }
+  
+  public final d.c buD()
+  {
+    return this.nLy.KXM;
+  }
+  
+  public final int buE()
+  {
+    AppMethodBeat.i(89531);
+    int i = Math.round(this.nLn / 1000.0F);
+    AppMethodBeat.o(89531);
+    return i;
+  }
+  
+  public final Point buF()
+  {
+    AppMethodBeat.i(89532);
+    Point localPoint = new Point(this.nLw, this.nLx);
+    AppMethodBeat.o(89532);
+    return localPoint;
+  }
+  
+  public final int buG()
+  {
+    return this.nLz;
+  }
+  
+  public final boolean buH()
+  {
+    return this.nLJ;
+  }
+  
+  public final com.tencent.mm.audio.b.c.a buI()
+  {
+    AppMethodBeat.i(89535);
+    if (this.nMw != null)
+    {
+      com.tencent.mm.audio.b.c.a locala = this.nMw.gcx();
+      AppMethodBeat.o(89535);
+      return locala;
+    }
+    AppMethodBeat.o(89535);
+    return null;
+  }
+  
+  public final void buJ()
+  {
+    this.nLO = false;
+  }
+  
+  final void buN()
+  {
+    if (this.KXt != null) {
+      this.KXt.nMQ = true;
+    }
+  }
+  
+  final void buO()
+  {
+    AppMethodBeat.i(89530);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "ashutest::pcm ready");
+    if ((this.KXt != null) && (!this.KXt.nMS)) {
+      Log.e("MicroMsg.MMSightFFMpegRecorder", "ashutest::OnPcmReady, last encode thread[%s] status error!!! MUST NOT BE HERE", new Object[] { this.KXt });
+    }
+    synchronized (this.KXt.nMT)
+    {
+      uy(this.KXt.nMN);
+      if (this.nLy.KXM != d.c.KWJ)
+      {
+        Log.w("MicroMsg.MMSightFFMpegRecorder", "ashutest::not MediaStatus.Initialized, maybe canceled by user");
+        AppMethodBeat.o(89530);
+        return;
+      }
+    }
+    this.nLy.a(d.c.KWC);
+    this.KXt = new a();
+    this.KXt.nMN = this.nMG;
+    ThreadPool.post(this.KXt, "SightCustomAsyncMediaRecorder_encode_" + Util.currentTicks(), 5);
+    AppMethodBeat.o(89530);
+  }
+  
+  public final String bud()
+  {
+    return this.thumbPath;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(76610);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "cancel");
-    this.fcm.a(d.c.oII);
+    AppMethodBeat.i(89522);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "cancel");
+    this.nLy.a(d.c.KWE);
     clear();
-    this.fcm.a(d.c.oIJ);
-    AppMethodBeat.o(76610);
+    this.nLy.a(d.c.KWF);
+    AppMethodBeat.o(89522);
   }
   
   public final void clear()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(76609);
+    AppMethodBeat.i(89521);
     int i = -1;
-    if (this.fde != null)
+    if (this.nMx != null)
     {
-      i = this.fde.oJG;
+      i = this.nMx.KXD;
       if (i < 0)
       {
-        ab.v("MicroMsg.MMSightFFMpegRecorder", "call clear, but bufID error");
-        AppMethodBeat.o(76609);
+        Log.v("MicroMsg.MMSightFFMpegRecorder", "call clear, but bufID error");
+        AppMethodBeat.o(89521);
         return;
       }
-      this.fde.stop();
+      this.nMx.stop();
     }
-    if (this.fdd != null) {
-      this.fdd.a(null);
+    if (this.nMw != null) {
+      this.nMw.a(null);
     }
     boolean bool1;
-    if (this.oJs == null)
+    if (this.KXt == null)
     {
       bool1 = true;
-      if ((this.oJs == null) || (!this.oJs.fdw)) {
+      if ((this.KXt == null) || (!this.KXt.nMR)) {
         break label177;
       }
     }
     for (;;)
     {
-      ab.v("MicroMsg.MMSightFFMpegRecorder", "ashutest::clear bufID %d, encodeRunnable null ? %B, markCancel %B", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      if ((i >= 0) && (!ko(i)))
+      Log.v("MicroMsg.MMSightFFMpegRecorder", "ashutest::clear bufID %d, encodeRunnable null ? %B, markCancel %B", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if ((i >= 0) && (!uy(i)))
       {
         SightVideoJNI.releaseRecorderBufferRef("clear");
         SightVideoJNI.releaseBigSightDataBufferLock(i);
       }
-      if (this.fdh != null) {
-        this.fdh.quit();
+      if (this.nMA != null) {
+        this.nMA.quit();
       }
-      AppMethodBeat.o(76609);
+      AppMethodBeat.o(89521);
       return;
       bool1 = false;
       break;
       label177:
       bool2 = false;
     }
+  }
+  
+  public final void gI(boolean paramBoolean)
+  {
+    this.nMH = paramBoolean;
   }
   
   public final String getFileName()
@@ -559,161 +857,318 @@ public final class l
   
   public final String getFilePath()
   {
-    return this.fca;
+    return this.nLm;
   }
   
-  public final f getFrameDataCallback()
+  public final com.tencent.mm.plugin.mmsight.model.g getFrameDataCallback()
   {
-    return this.fcP;
+    return this.nMg;
+  }
+  
+  public final String getMd5()
+  {
+    AppMethodBeat.i(89524);
+    String str = Util.nullAs(this.md5, "");
+    AppMethodBeat.o(89524);
+    return str;
   }
   
   public final boolean isLandscape()
   {
-    return this.fcx;
-  }
-  
-  public final boolean km(int paramInt)
-  {
-    AppMethodBeat.i(76616);
-    if (!this.eLc)
-    {
-      ab.i("MicroMsg.MMSightFFMpegRecorder", "preInit, cameraOrientation: %s", new Object[] { Integer.valueOf(paramInt) });
-      boolean bool = kl(paramInt);
-      this.eLc = true;
-      ab.i("MicroMsg.MMSightFFMpegRecorder", "initImpl result: %s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(76616);
-      return bool;
-    }
-    AppMethodBeat.o(76616);
-    return true;
-  }
-  
-  public final void kn(int paramInt)
-  {
-    AppMethodBeat.i(76624);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "overrideDurationMs: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.fcd = paramInt;
-    AppMethodBeat.o(76624);
-  }
-  
-  public final void mV(String paramString)
-  {
-    this.thumbPath = paramString;
-  }
-  
-  public final void mW(String paramString)
-  {
-    this.fcq = paramString;
+    return this.nKe;
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(76621);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "pause");
-    if ((this.fcm != null) && (this.fcm.oJP == d.c.oIG)) {
-      this.fcm.a(d.c.oIO);
+    AppMethodBeat.i(89533);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "pause");
+    if ((this.nLy != null) && (this.nLy.KXM == d.c.KWC)) {
+      this.nLy.a(d.c.KWK);
     }
-    AppMethodBeat.o(76621);
+    AppMethodBeat.o(89533);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(76614);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "reset");
-    this.fcm.oJP = d.c.oIJ;
-    this.fcw = false;
-    if (this.fdd != null) {
-      this.fdd.clear();
+    AppMethodBeat.i(89526);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "reset");
+    this.nLy.KXM = d.c.KWF;
+    this.nLJ = false;
+    if (this.nMw != null) {
+      this.nMw.clear();
     }
-    if (this.fde != null) {
-      this.fde.clear();
+    if (this.nMx != null) {
+      this.nMx.clear();
     }
     clear();
-    AppMethodBeat.o(76614);
-  }
-  
-  public final void s(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(76607);
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "setSize, width: %s, height: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.fch = paramInt3;
-    this.fci = paramInt4;
-    this.fck = paramInt1;
-    this.fcl = paramInt2;
-    if (j.oJp.f(Integer.valueOf(paramInt1 * paramInt2 * 3 / 2)) == null)
-    {
-      ab.i("MicroMsg.MMSightFFMpegRecorder", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(3) });
-      long l = bo.yB();
-      paramInt3 = 0;
-      while (paramInt3 < 3)
-      {
-        j.oJp.O(new byte[paramInt1 * paramInt2 * 3 / 2]);
-        paramInt3 += 1;
-      }
-      ab.i("MicroMsg.MMSightFFMpegRecorder", "preloadCameraData used %sms", new Object[] { Long.valueOf(bo.av(l)) });
-    }
-    AppMethodBeat.o(76607);
+    AppMethodBeat.o(89526);
   }
   
   public final void setFilePath(String paramString)
   {
-    this.fca = paramString;
+    this.nLm = paramString;
+  }
+  
+  public final void setMirror(boolean paramBoolean)
+  {
+    this.nMF = paramBoolean;
   }
   
   public final void setMute(boolean paramBoolean) {}
   
-  public final void u(Runnable paramRunnable)
+  public final boolean uw(int paramInt)
   {
-    AppMethodBeat.i(76611);
-    boolean bool1;
-    if (this.oJs == null) {
-      bool1 = true;
-    }
-    for (;;)
+    AppMethodBeat.i(89528);
+    if (!this.mGp)
     {
-      boolean bool2;
-      label34:
-      boolean bool3;
-      if ((this.oJs != null) && (this.oJs.fdu))
+      Log.i("MicroMsg.MMSightFFMpegRecorder", "preInit, cameraOrientation: %s", new Object[] { Integer.valueOf(paramInt) });
+      boolean bool = uv(paramInt);
+      this.mGp = true;
+      Log.i("MicroMsg.MMSightFFMpegRecorder", "initImpl result: %s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(89528);
+      return bool;
+    }
+    AppMethodBeat.o(89528);
+    return true;
+  }
+  
+  public final void ux(int paramInt)
+  {
+    AppMethodBeat.i(89536);
+    Log.i("MicroMsg.MMSightFFMpegRecorder", "overrideDurationMs: %s", new Object[] { Integer.valueOf(paramInt) });
+    this.nLp = paramInt;
+    AppMethodBeat.o(89536);
+  }
+  
+  final class a
+    extends b
+  {
+    Runnable callback;
+    int duration;
+    float eGw;
+    int nMN;
+    volatile boolean nMO;
+    boolean nMP;
+    boolean nMQ;
+    boolean nMR;
+    boolean nMS;
+    final Object nMT;
+    volatile int nzX;
+    
+    public a()
+    {
+      AppMethodBeat.i(89516);
+      this.nzX = 0;
+      this.nMO = true;
+      this.nMP = false;
+      this.nMQ = false;
+      this.nMR = false;
+      this.nMS = false;
+      this.nMT = new Object();
+      this.callback = null;
+      synchronized (this.nMT)
       {
-        bool2 = true;
-        if ((this.oJs == null) || (!this.oJs.fdv)) {
-          break label145;
+        try
+        {
+          String str2 = y.bEo(l.this.nLm);
+          String str1 = str2;
+          if (!str2.endsWith("/")) {
+            str1 = str2 + "/";
+          }
+          l.this.nLB = (str1 + "tempRotate.mp4");
         }
-        bool3 = true;
-        ab.i("MicroMsg.MMSightFFMpegRecorder", "stop, encodeThread null ? %B, has trigger finish ? %B, has finish callback ? %B", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-        if ((this.oJs == null) || (!this.oJs.fdu)) {
-          break;
+        catch (Exception this$1)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.MMSightFFMpegRecorder", "retrieve file name error: %s", new Object[] { l.this.getMessage() });
+          }
         }
-      }
-      synchronized (this.oJs.fdy)
-      {
-        reset();
-        al.d(paramRunnable);
-        AppMethodBeat.o(76611);
+        AppMethodBeat.o(89516);
         return;
-        bool1 = false;
-        continue;
-        bool2 = false;
-        break label34;
-        label145:
-        bool3 = false;
       }
     }
-    ab.i("MicroMsg.MMSightFFMpegRecorder", "stopOnCameraDataThread: %s, writeCameraDataHandler: %s", new Object[] { Boolean.valueOf(this.fdo), this.fdi });
-    if ((this.fdo) && (this.fdi != null))
+    
+    public final String getKey()
     {
-      this.fdi.post(new l.2(this, paramRunnable));
-      AppMethodBeat.o(76611);
-      return;
+      return "MicroMsg.MMSightFFMpegRecorder";
     }
-    com.tencent.mm.sdk.g.d.post(new l.3(this, paramRunnable), "MMSightFFMpegRecorder_stop");
-    AppMethodBeat.o(76611);
+    
+    public final void run()
+    {
+      AppMethodBeat.i(89517);
+      if (l.this.nMD == -1)
+      {
+        l.this.nMD = Process.myTid();
+        Process.setThreadPriority(Process.myTid(), -2);
+        Log.i("MicroMsg.MMSightFFMpegRecorder", "encodeTid: %s", new Object[] { Integer.valueOf(l.this.nMD) });
+      }
+      int i;
+      int j;
+      for (;;)
+      {
+        synchronized (this.nMT)
+        {
+          if (this.nMQ) {
+            break label201;
+          }
+          l = Util.currentTicks();
+          i = SightVideoJNI.triggerEncode(this.nMN, Math.max(0, this.nzX), false);
+          Log.i("MicroMsg.MMSightFFMpegRecorder", "ing: trgger encode use %dms, Encode index[%d, %d), threadId: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(this.nzX), Integer.valueOf(i), Long.valueOf(Thread.currentThread().getId()) });
+          j = Math.abs(i - this.nzX);
+          if (j > 5) {}
+        }
+        try
+        {
+          Thread.sleep(100L);
+          this.nzX = i;
+          continue;
+          localObject2 = finally;
+          AppMethodBeat.o(89517);
+          throw localObject2;
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.MMSightFFMpegRecorder", "thread sleep error");
+          }
+        }
+      }
+      label201:
+      long l = Util.currentTicks();
+      if (!this.nMR) {
+        this.nzX = SightVideoJNI.triggerEncode(this.nMN, this.nzX, true);
+      }
+      Log.i("MicroMsg.MMSightFFMpegRecorder", "end: trgger encode use %dms, curEncode index %d, markCancel %B, threadId: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(this.nzX), Boolean.valueOf(this.nMR), Long.valueOf(Thread.currentThread().getId()) });
+      if (!this.nMR)
+      {
+        i = Math.max(1000, this.duration);
+        if (l.this.nLp > 0) {
+          i = l.this.nLp;
+        }
+        float f = this.eGw;
+        if (l.this.nLq > 0.0F) {
+          f = l.this.nLq;
+        }
+        l.this.nMz = new m(this.nMN, l.this.nLm, f, l.this.nLv, i, l.this.nLH.audioSampleRate, false, true, false);
+        l = Util.currentTicks();
+        boolean bool = l.this.nMz.yu(l.this.nMK);
+        Log.i("MicroMsg.MMSightFFMpegRecorder", "mux used %sms, success: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Boolean.valueOf(bool) });
+        if (!bool)
+        {
+          Log.e("MicroMsg.MMSightFFMpegRecorder", "mux failed!");
+          SightVideoJNI.releaseBigSightDataBufferLock(this.nMN);
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(89513);
+              if (l.this.nLL != null) {
+                l.this.nLL.cba();
+              }
+              AppMethodBeat.o(89513);
+            }
+          });
+          Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markFFMpegCaptureMuxError");
+          h.OAn.idkeyStat(440L, 30L, 1L, false);
+          AppMethodBeat.o(89517);
+          return;
+        }
+        if (((l.this.nKe) && (l.this.nME)) || ((!l.this.nME) && (!l.this.nKe)) || ((l.this.nKe) && (Math.abs(l.this.nLz - l.this.nLK) == 0)) || (l.this.nLK == 180))
+        {
+          l = Util.currentTicks();
+          if ((l.this.nME) || (l.this.nKe)) {
+            break label903;
+          }
+          i = l.this.nLz;
+        }
+      }
+      for (;;)
+      {
+        j = i;
+        if (l.this.nLK == 180)
+        {
+          j = i;
+          if (!l.this.nME)
+          {
+            i += 180;
+            j = i;
+            if (i > 360) {
+              j = i - 360;
+            }
+          }
+        }
+        final String str;
+        if (j > 0)
+        {
+          SightVideoJNI.tagRotateVideoVFS(l.this.nLm, l.this.nLB, j);
+          Log.i("MicroMsg.MMSightFFMpegRecorder", "tagRotateVideo used %sms, cameraOrientation: %s, isLandscape: %s, deviceDegree: %s, rotateDegree: %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(l.this.nLz), Boolean.valueOf(l.this.nKe), Integer.valueOf(l.this.nLK), Integer.valueOf(j) });
+          str = l.this.nLB;
+        }
+        try
+        {
+          y.O(l.this.nLB, l.this.nLm, false);
+          ThreadPool.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(89515);
+              try
+              {
+                y.deleteFile(str);
+                AppMethodBeat.o(89515);
+                return;
+              }
+              catch (Exception localException)
+              {
+                Log.e("MicroMsg.MMSightFFMpegRecorder", "stop, delete old file error: %s", new Object[] { localException.getMessage() });
+                AppMethodBeat.o(89515);
+              }
+            }
+          }, "BigSightFFMpegRecorder_tagRotate_after_process");
+          Log.i("MicroMsg.MMSightFFMpegRecorder", "tag rotate used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+          SightVideoJNI.releaseBigSightDataBufferLock(this.nMN);
+          Log.i("MicroMsg.MMSightFFMpegRecorder", "all finish, callback: %s", new Object[] { this.callback });
+          l.this.reset();
+          MMHandlerThread.postToMainThread(this.callback);
+          this.nMS = true;
+          l.this.nMD = -1;
+          l.this.nMC = -1;
+          AppMethodBeat.o(89517);
+          return;
+        }
+        catch (Exception localException2)
+        {
+          label903:
+          Log.e("MicroMsg.MMSightFFMpegRecorder", "stop, copy file error");
+          SightVideoJNI.releaseBigSightDataBufferLock(this.nMN);
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(89514);
+              if (l.this.nLL != null) {
+                l.this.nLL.cba();
+              }
+              AppMethodBeat.o(89514);
+            }
+          });
+          AppMethodBeat.o(89517);
+          return;
+        }
+        if (l.this.nME) {
+          i = l.this.nLK;
+        } else {
+          i = 180;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.l
  * JD-Core Version:    0.7.0.1
  */

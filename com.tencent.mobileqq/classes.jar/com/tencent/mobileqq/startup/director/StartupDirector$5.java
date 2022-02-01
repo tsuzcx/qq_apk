@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.startup.director;
 
-import aznp;
 import mqq.app.AppActivity;
 
-public class StartupDirector$5
+class StartupDirector$5
   implements Runnable
 {
-  public StartupDirector$5(aznp paramaznp, AppActivity paramAppActivity) {}
+  StartupDirector$5(StartupDirector paramStartupDirector, AppActivity paramAppActivity) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class StartupDirector$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.director.StartupDirector.5
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import java.util.List;
 public abstract interface v
   extends w
 {
-  public abstract List<t> ky();
+  public abstract List<t> kH();
 }
 
 

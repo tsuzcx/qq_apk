@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="27" android:drawable="@drawable/skin_aio_panel_ptt_nor" />
+    <item android:duration="27" android:drawable="@drawable/gri" />
+    <item android:duration="27" android:drawable="@drawable/grn" />
+    <item android:duration="27" android:drawable="@drawable/gro" />
+    <item android:duration="27" android:drawable="@drawable/grp" />
+    <item android:duration="27" android:drawable="@drawable/grq" />
+    <item android:duration="27" android:drawable="@drawable/grr" />
+    <item android:duration="27" android:drawable="@drawable/grs" />
+    <item android:duration="27" android:drawable="@drawable/grt" />
+    <item android:duration="27" android:drawable="@drawable/gru" />
+    <item android:duration="27" android:drawable="@drawable/grj" />
+    <item android:duration="27" android:drawable="@drawable/grk" />
+    <item android:duration="27" android:drawable="@drawable/grl" />
+    <item android:duration="27" android:drawable="@drawable/grm" />
+    <item android:duration="27" android:drawable="@drawable/skin_aio_panel_ptt_press" />
+</animation-list>

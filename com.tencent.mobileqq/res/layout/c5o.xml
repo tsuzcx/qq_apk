@@ -2,7 +2,7 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/lbw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/lbx" android:layout_width="142.0dip" android:layout_height="121.0dip" android:src="@drawable/hkv" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/lbx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hkv" android:layout_centerHorizontal="true" />
         <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/jmp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/j6e" android:layout_below="@id/lbx" android:layout_centerHorizontal="true" />
     </RelativeLayout>
     <ImageView android:gravity="center" android:id="@id/lbv" android:layout_width="56.0dip" android:layout_height="56.0dip" android:layout_marginLeft="27.0dip" android:layout_marginTop="15.0dip" android:src="@drawable/hkx" android:scaleType="centerInside" android:layout_alignParentLeft="true" />

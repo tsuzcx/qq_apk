@@ -9,8 +9,8 @@ class ChatHistoryTroopMemberFragment$36
   
   public void run()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, this.b);
-    ChatHistoryTroopMemberFragment.a(this.this$0, localList, this.b);
+    List localList = this.a.subList(this.b, this.c);
+    ChatHistoryTroopMemberFragment.a(this.this$0, localList, this.c);
   }
 }
 

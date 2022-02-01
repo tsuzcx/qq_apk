@@ -10,9 +10,9 @@ public final class GetAlbumAbilityResp
 {
   static int cache_result;
   static ArrayList<stAlbumAbiInfo> cache_vecAlbumAbiUins;
-  public int result;
-  public long uin;
-  public ArrayList<stAlbumAbiInfo> vecAlbumAbiUins;
+  public int result = 0;
+  public long uin = 0L;
+  public ArrayList<stAlbumAbiInfo> vecAlbumAbiUins = null;
   
   public GetAlbumAbilityResp() {}
   
@@ -45,7 +45,7 @@ public final class GetAlbumAbilityResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetAlbumAbilityResp
  * JD-Core Version:    0.7.0.1
  */

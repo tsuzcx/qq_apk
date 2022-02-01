@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/pa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/buk" android:background="@color/pa" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
-    <ListView android:id="@id/bul" android:background="@color/pa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/oz" android:dividerHeight="@dimen/hv" style="@style/mn" />
-    <include android:id="@id/bum" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/zm" />
-    <TextView android:gravity="center_horizontal" android:id="@id/bun" android:background="@color/a6q" android:paddingTop="@dimen/l6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/brs" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/l6" android:layout_width="120.0dip" android:layout_height="120.0dip">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/g3r" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="31.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/l7" style="@android:style/Widget.ProgressBar" />
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/al6" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/b30" />
+    </LinearLayout>
 </FrameLayout>

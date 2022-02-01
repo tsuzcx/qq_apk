@@ -1,148 +1,149 @@
 package kotlinx.coroutines.a;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicLongFieldUpdater;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import java.util.concurrent.CancellationException;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.d.d;
+import kotlin.d.f;
+import kotlin.g.a.b;
+import kotlinx.coroutines.cb;
+import kotlinx.coroutines.cc;
+import kotlinx.coroutines.ci;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/internal/LockFreeTaskQueue;", "E", "", "singleConsumer", "", "(Z)V", "_cur", "Lkotlinx/atomicfu/AtomicRef;", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "Lkotlinx/coroutines/internal/Core;", "isEmpty", "()Z", "size", "", "getSize", "()I", "addLast", "element", "(Ljava/lang/Object;)Z", "close", "", "map", "", "R", "transform", "Lkotlin/Function1;", "removeFirstOrNull", "()Ljava/lang/Object;", "removeFirstOrNullIf", "predicate", "(Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/ChannelCoroutine;", "E", "Lkotlinx/coroutines/AbstractCoroutine;", "", "Lkotlinx/coroutines/channels/Channel;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "_channel", "initParentJob", "", "active", "(Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/channels/Channel;ZZ)V", "get_channel", "()Lkotlinx/coroutines/channels/Channel;", "channel", "getChannel", "isClosedForReceive", "()Z", "isClosedForSend", "isEmpty", "onReceive", "Lkotlinx/coroutines/selects/SelectClause1;", "getOnReceive", "()Lkotlinx/coroutines/selects/SelectClause1;", "onReceiveCatching", "Lkotlinx/coroutines/channels/ChannelResult;", "getOnReceiveCatching", "onReceiveOrNull", "getOnReceiveOrNull", "onSend", "Lkotlinx/coroutines/selects/SelectClause2;", "Lkotlinx/coroutines/channels/SendChannel;", "getOnSend", "()Lkotlinx/coroutines/selects/SelectClause2;", "cancel", "cause", "", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "cancelInternal", "close", "invokeOnClose", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "iterator", "Lkotlinx/coroutines/channels/ChannelIterator;", "offer", "element", "(Ljava/lang/Object;)Z", "poll", "()Ljava/lang/Object;", "receive", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "receiveCatching", "receiveCatching-JP2dKIU", "receiveOrNull", "send", "(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "tryReceive", "tryReceive-PtdJZtk", "trySend", "trySend-JP2dKIU", "(Ljava/lang/Object;)Ljava/lang/Object;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public class i<E>
+  extends kotlinx.coroutines.a<ah>
+  implements h<E>
 {
-  static
+  private final h<E> ajxE;
+  
+  public i(f paramf, h<E> paramh)
   {
-    AppMethodBeat.i(118450);
-    CJl = AtomicReferenceFieldUpdater.newUpdater(i.class, Object.class, "CJk");
-    AppMethodBeat.o(118450);
+    super(paramf, true);
+    this.ajxE = paramh;
   }
   
-  public i()
+  public final boolean Ij()
   {
-    AppMethodBeat.i(118449);
-    this.CJk = new j(8, false);
-    AppMethodBeat.o(118449);
+    AppMethodBeat.i(189313);
+    boolean bool = this.ajxE.Ij();
+    AppMethodBeat.o(189313);
+    return bool;
   }
   
-  public final void close()
+  public final void T(Throwable paramThrowable)
   {
-    AppMethodBeat.i(118446);
+    AppMethodBeat.i(189382);
+    paramThrowable = ci.a((ci)this, paramThrowable);
+    this.ajxE.a(paramThrowable);
+    U((Throwable)paramThrowable);
+    AppMethodBeat.o(189382);
+  }
+  
+  public final void a(CancellationException paramCancellationException)
+  {
+    AppMethodBeat.i(189374);
+    if (isCancelled())
+    {
+      AppMethodBeat.o(189374);
+      return;
+    }
+    if (paramCancellationException == null) {
+      paramCancellationException = (CancellationException)new cc(ci.a((ci)this), null, (cb)this);
+    }
     for (;;)
     {
-      j localj = (j)this.CJk;
-      long l = localj.CJm;
-      if ((l & 0x0) == 0L) {
-        if ((0x0 & l) == 0L) {}
-      }
-      for (int i = 0;; i = 1)
-      {
-        if (i == 0) {
-          break label74;
-        }
-        AppMethodBeat.o(118446);
-        return;
-        if (!j.CJn.compareAndSet(localj, l, l | 0x0)) {
-          break;
-        }
-      }
-      label74:
-      CJl.compareAndSet(this, localj, localj.eqm());
+      T((Throwable)paramCancellationException);
+      AppMethodBeat.o(189374);
+      return;
     }
   }
   
-  public final boolean ei(E paramE)
+  public final Object aA(d<? super E> paramd)
   {
-    AppMethodBeat.i(118447);
-    a.f.b.j.q(paramE, "element");
-    for (;;)
-    {
-      j localj = (j)this.CJk;
-      switch (localj.ej(paramE))
-      {
-      default: 
-        break;
-      case 0: 
-        AppMethodBeat.o(118447);
-        return true;
-      case 2: 
-        AppMethodBeat.o(118447);
-        return false;
-      case 1: 
-        CJl.compareAndSet(this, localj, localj.eqm());
-      }
-    }
+    AppMethodBeat.i(189349);
+    paramd = this.ajxE.aA(paramd);
+    AppMethodBeat.o(189349);
+    return paramd;
   }
   
-  public final E eqc()
+  public final Object aB(d<? super l<? extends E>> paramd)
   {
-    AppMethodBeat.i(118448);
-    for (;;)
+    AppMethodBeat.i(189359);
+    paramd = this.ajxE.aB(paramd);
+    if (paramd == kotlin.d.a.a.aiwj)
     {
-      j localj = (j)this.CJk;
-      long l = localj.CJm;
-      Object localObject1;
-      if ((0x0 & l) != 0L) {
-        localObject1 = j.CJq;
-      }
-      for (;;)
-      {
-        if (localObject1 == j.CJq) {
-          break label231;
-        }
-        AppMethodBeat.o(118448);
-        return localObject1;
-        localObject1 = j.CJr;
-        int i = (int)((0x3FFFFFFF & l) >> 0);
-        if (((int)((0xC0000000 & l) >> 30) & j.a(localj)) == (j.a(localj) & i))
-        {
-          localObject1 = null;
-        }
-        else
-        {
-          localObject1 = j.b(localj).get(j.a(localj) & i);
-          if (localObject1 == null)
-          {
-            if (!j.c(localj)) {
-              break;
-            }
-            localObject1 = null;
-            continue;
-          }
-          if ((localObject1 instanceof j.b))
-          {
-            localObject1 = null;
-          }
-          else
-          {
-            int j = i + 1 & 0x3FFFFFFF;
-            Object localObject2 = j.CJn;
-            Object localObject3 = j.CJr;
-            if (((AtomicLongFieldUpdater)localObject2).compareAndSet(localj, l, j.a.N(l, j)))
-            {
-              j.b(localj).set(j.a(localj) & i, null);
-            }
-            else
-            {
-              if (!j.c(localj)) {
-                break;
-              }
-              localObject2 = localj;
-              do
-              {
-                localObject3 = j.a((j)localObject2, i, j);
-                localObject2 = localObject3;
-              } while (localObject3 != null);
-            }
-          }
-        }
-      }
-      label231:
-      CJl.compareAndSet(this, localj, localj.eqm());
+      AppMethodBeat.o(189359);
+      return paramd;
     }
+    AppMethodBeat.o(189359);
+    return paramd;
+  }
+  
+  public final Object b(E paramE, d<? super ah> paramd)
+  {
+    AppMethodBeat.i(189366);
+    paramE = this.ajxE.b(paramE, paramd);
+    AppMethodBeat.o(189366);
+    return paramE;
+  }
+  
+  public final Object iV(E paramE)
+  {
+    AppMethodBeat.i(189340);
+    paramE = this.ajxE.iV(paramE);
+    AppMethodBeat.o(189340);
+    return paramE;
+  }
+  
+  public final boolean k(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(189319);
+    boolean bool = this.ajxE.k(paramThrowable);
+    AppMethodBeat.o(189319);
+    return bool;
+  }
+  
+  public final Object kCV()
+  {
+    AppMethodBeat.i(189333);
+    Object localObject = this.ajxE.kCV();
+    AppMethodBeat.o(189333);
+    return localObject;
+  }
+  
+  public final j<E> kCW()
+  {
+    AppMethodBeat.i(189323);
+    j localj = this.ajxE.kCW();
+    AppMethodBeat.o(189323);
+    return localj;
+  }
+  
+  protected final h<E> kDp()
+  {
+    return this.ajxE;
+  }
+  
+  public final boolean offer(E paramE)
+  {
+    AppMethodBeat.i(189298);
+    boolean bool = this.ajxE.offer(paramE);
+    AppMethodBeat.o(189298);
+    return bool;
+  }
+  
+  public final void p(b<? super Throwable, ah> paramb)
+  {
+    AppMethodBeat.i(189305);
+    this.ajxE.p(paramb);
+    AppMethodBeat.o(189305);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.i
  * JD-Core Version:    0.7.0.1
  */

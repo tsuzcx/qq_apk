@@ -19,14 +19,15 @@ public final class cmd0x938$FloatButtonConfig
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40 }, new String[] { "bytes_button_wording", "bytes_button_image_url", "uint32_button_word_color", "uint32_button_back_color", "uint32_like_count" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, FloatButtonConfig.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40 }, new String[] { "bytes_button_wording", "bytes_button_image_url", "uint32_button_word_color", "uint32_button_back_color", "uint32_like_count" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger }, FloatButtonConfig.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x938.cmd0x938.FloatButtonConfig
  * JD-Core Version:    0.7.0.1
  */

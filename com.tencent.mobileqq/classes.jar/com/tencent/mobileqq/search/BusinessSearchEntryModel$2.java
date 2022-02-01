@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.search;
 
-import aygw;
-import aylz;
-import bhta;
+import com.tencent.mobileqq.search.model.BusinessSearchEntryDataModel;
+import com.tencent.util.UiThreadUtil;
 
-public class BusinessSearchEntryModel$2
+class BusinessSearchEntryModel$2
   implements Runnable
 {
-  public BusinessSearchEntryModel$2(aygw paramaygw, aylz paramaylz) {}
+  BusinessSearchEntryModel$2(BusinessSearchEntryModel paramBusinessSearchEntryModel, BusinessSearchEntryDataModel paramBusinessSearchEntryDataModel) {}
   
   public void run()
   {
-    this.a.a();
-    bhta.a(new BusinessSearchEntryModel.2.1(this));
+    this.a.c();
+    UiThreadUtil.a(new BusinessSearchEntryModel.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.BusinessSearchEntryModel.2
  * JD-Core Version:    0.7.0.1
  */

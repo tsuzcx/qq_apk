@@ -4,11 +4,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import com.tencent.pts.core.PTSAppInstance;
+import com.tencent.pts.ui.vnode.PTSNodeView;
 import com.tencent.pts.ui.vnode.PTSNodeVirtual;
 import com.tencent.pts.utils.PTSAnimationUtil.AnimationInfo;
 import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSTimeCostUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -77,23 +79,25 @@ public class PTSRecyclerViewAdapter
   
   private void saveUniqueIDToNodeInfoMap(List<PTSNodeInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        addIDToNodeInfoMap((PTSNodeInfo)paramList.next());
+      }
     }
-    PTSTimeCostUtil.start("[saveUniqueIDToNodeInfoMap]");
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      addIDToNodeInfoMap((PTSNodeInfo)paramList.next());
-    }
-    PTSTimeCostUtil.end("[saveUniqueIDToNodeInfoMap]");
   }
   
   public void animation(PTSNodeInfo paramPTSNodeInfo, PTSAnimationUtil.AnimationInfo paramAnimationInfo) {}
   
   public int getItemCount()
   {
-    if (this.mData != null) {
-      return this.mData.size();
+    List localList = this.mData;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
@@ -108,11 +112,13 @@ public class PTSRecyclerViewAdapter
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        paramInt = this.mData.size() + paramInt;
-        PTSLog.e("PTSRecyclerViewAdapter", "[getItemViewType], e = " + localNumberFormatException + ", ptsCellType = " + paramInt);
-      }
+      paramInt += this.mData.size();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getItemViewType], e = ");
+      localStringBuilder.append(localNumberFormatException);
+      localStringBuilder.append(", ptsCellType = ");
+      localStringBuilder.append(paramInt);
+      PTSLog.e("PTSRecyclerViewAdapter", localStringBuilder.toString());
     }
     if (this.mViewTypeToNodeInfoMap.get(paramInt) == null) {
       this.mViewTypeToNodeInfoMap.put(paramInt, localPTSNodeInfo);
@@ -122,93 +128,135 @@ public class PTSRecyclerViewAdapter
   
   public void insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
   {
-    PTSNodeInfo localPTSNodeInfo = getNodeInfoByID(paramPTSNodeInfo.getParentID());
-    if (localPTSNodeInfo != null) {
-      localPTSNodeInfo.addChild(paramPTSNodeInfo);
-    }
-    for (;;)
+    Object localObject = getNodeInfoByID(paramPTSNodeInfo.getParentID());
+    if (localObject != null)
     {
-      addIDToNodeInfoMap(paramPTSNodeInfo);
-      return;
-      if (paramInt > this.mData.size())
-      {
-        PTSLog.e("PTSRecyclerViewAdapter", "[insert] insertIndex error, insertIndex = " + paramInt);
-        this.mData.add(paramPTSNodeInfo);
-      }
-      else
-      {
-        this.mData.add(paramInt, paramPTSNodeInfo);
-      }
+      ((PTSNodeInfo)localObject).addChild(paramPTSNodeInfo);
     }
+    else if (paramInt > this.mData.size())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[insert] insertIndex error, insertIndex = ");
+      ((StringBuilder)localObject).append(paramInt);
+      PTSLog.e("PTSRecyclerViewAdapter", ((StringBuilder)localObject).toString());
+      this.mData.add(paramPTSNodeInfo);
+    }
+    else
+    {
+      this.mData.add(paramInt, paramPTSNodeInfo);
+    }
+    addIDToNodeInfoMap(paramPTSNodeInfo);
   }
   
   public void modify(PTSNodeInfo paramPTSNodeInfo)
   {
     PTSNodeInfo localPTSNodeInfo1 = getNodeInfoByID(paramPTSNodeInfo.getParentID());
-    int i;
+    int i = 0;
+    int j = 0;
     if (localPTSNodeInfo1 != null)
     {
       List localList = localPTSNodeInfo1.getChildren();
-      i = 0;
-      if (i < localList.size())
+      i = j;
+      while (i < localList.size())
       {
         PTSNodeInfo localPTSNodeInfo2 = (PTSNodeInfo)localList.get(i);
-        if (!localPTSNodeInfo2.equals(paramPTSNodeInfo)) {
-          break label82;
-        }
-        paramPTSNodeInfo.addChildren(localPTSNodeInfo2.getChildren());
-        localPTSNodeInfo1.setChild(i, paramPTSNodeInfo);
-        addIDToNodeInfoMap(paramPTSNodeInfo);
-        PTSLog.d("PTSRecyclerViewAdapter", "[modify] update child.");
-      }
-    }
-    for (;;)
-    {
-      return;
-      label82:
-      i += 1;
-      break;
-      i = 0;
-      while (i < this.mData.size())
-      {
-        localPTSNodeInfo1 = (PTSNodeInfo)this.mData.get(i);
-        if (localPTSNodeInfo1.equals(paramPTSNodeInfo))
+        if (localPTSNodeInfo2.equals(paramPTSNodeInfo))
         {
-          paramPTSNodeInfo.addChildren(localPTSNodeInfo1.getChildren());
-          this.mData.set(i, paramPTSNodeInfo);
+          paramPTSNodeInfo.addChildren(localPTSNodeInfo2.getChildren());
+          localPTSNodeInfo1.setChild(i, paramPTSNodeInfo);
           addIDToNodeInfoMap(paramPTSNodeInfo);
-          PTSLog.d("PTSRecyclerViewAdapter", "[modify] update mData child.");
+          PTSLog.d("PTSRecyclerViewAdapter", "[modify] update child.");
           return;
         }
         i += 1;
       }
     }
+    while (i < this.mData.size())
+    {
+      localPTSNodeInfo1 = (PTSNodeInfo)this.mData.get(i);
+      if (localPTSNodeInfo1.equals(paramPTSNodeInfo))
+      {
+        paramPTSNodeInfo.addChildren(localPTSNodeInfo1.getChildren());
+        this.mData.set(i, paramPTSNodeInfo);
+        addIDToNodeInfoMap(paramPTSNodeInfo);
+        PTSLog.d("PTSRecyclerViewAdapter", "[modify] update mData child.");
+        return;
+      }
+      i += 1;
+    }
   }
   
   public void onBindViewHolder(@NonNull PTSRecyclerViewAdapter.PTSViewHolder paramPTSViewHolder, int paramInt)
   {
-    PTSTimeCostUtil.start("[onBindViewHolder], position = " + paramInt);
     PTSNodeInfo localPTSNodeInfo = (PTSNodeInfo)this.mData.get(paramInt);
     bindNodeInfo(paramPTSViewHolder, localPTSNodeInfo, this.mAppInstance);
-    PTSLog.d("PTSRecyclerViewAdapter", "[onBindViewHolder] position = " + paramInt + ", nodeInfo = " + localPTSNodeInfo);
-    PTSTimeCostUtil.end("[onBindViewHolder], position = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onBindViewHolder] position = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", nodeInfo = ");
+    localStringBuilder.append(localPTSNodeInfo);
+    PTSLog.d("PTSRecyclerViewAdapter", localStringBuilder.toString());
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramPTSViewHolder, paramInt, getItemId(paramInt));
   }
   
   @NonNull
   public PTSRecyclerViewAdapter.PTSViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    PTSTimeCostUtil.start("[onCreateViewHolder], viewType = " + paramInt);
-    Object localObject = (PTSNodeInfo)this.mViewTypeToNodeInfoMap.get(paramInt);
-    if (localObject == null) {
-      throw new IllegalArgumentException("[onCreateViewHolder], no this viewType.");
+    Object localObject1 = (PTSNodeInfo)this.mViewTypeToNodeInfoMap.get(paramInt);
+    if (localObject1 == null)
+    {
+      PTSLog.e("PTSRecyclerViewAdapter", "[onCreateViewHolder], no this viewType.");
+      if (PTSLog.isDebug()) {
+        throw new IllegalArgumentException("[onCreateViewHolder], no this viewType.");
+      }
     }
-    paramViewGroup = new HashMap();
-    localObject = PTSNodeFactory.buildVirtualNodeBFS((PTSNodeInfo)localObject, this.mAppInstance, paramViewGroup);
-    if (localObject == null) {
-      throw new IllegalArgumentException("[onCreateViewHolder], create null parent node.");
+    Object localObject5 = new HashMap();
+    Object localObject4 = PTSNodeFactory.buildVirtualNodeBFS((PTSNodeInfo)localObject1, this.mAppInstance, (HashMap)localObject5);
+    localObject1 = localObject4;
+    if (localObject4 == null)
+    {
+      PTSLog.e("PTSRecyclerViewAdapter", "[onCreateViewHolder], create null parent node.");
+      if (!PTSLog.isDebug()) {
+        localObject1 = new PTSNodeView(this.mAppInstance);
+      } else {
+        throw new IllegalArgumentException("[onCreateViewHolder], create null parent node.");
+      }
     }
-    PTSTimeCostUtil.end("[onCreateViewHolder], viewType = " + paramInt);
-    return new PTSRecyclerViewAdapter.PTSViewHolder((PTSNodeVirtual)localObject, paramViewGroup);
+    localObject4 = null;
+    Object localObject3;
+    try
+    {
+      localObject1 = new PTSRecyclerViewAdapter.PTSViewHolder((PTSNodeVirtual)localObject1, (HashMap)localObject5);
+    }
+    catch (Exception localException)
+    {
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("[onCreateViewHolder], viewType = ");
+      ((StringBuilder)localObject5).append(paramInt);
+      ((StringBuilder)localObject5).append(", e = ");
+      ((StringBuilder)localObject5).append(localException);
+      PTSLog.e("PTSRecyclerViewAdapter", ((StringBuilder)localObject5).toString());
+      Object localObject2 = localObject4;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append("[onCreateViewHolder], viewType = ");
+      ((StringBuilder)localObject5).append(paramInt);
+      ((StringBuilder)localObject5).append(", e = ");
+      ((StringBuilder)localObject5).append(localIllegalArgumentException);
+      PTSLog.e("PTSRecyclerViewAdapter", ((StringBuilder)localObject5).toString());
+      localObject3 = localObject4;
+    }
+    localObject4 = localObject3;
+    if (localObject3 == null)
+    {
+      paramViewGroup = new FrameLayout(paramViewGroup.getContext());
+      paramViewGroup.setVisibility(8);
+      localObject4 = new PTSRecyclerViewAdapter.PTSViewHolder(paramViewGroup);
+      PTSLog.i("PTSRecyclerViewAdapter", "[onCreateViewHolder], use empty container.");
+    }
+    return localObject4;
   }
   
   public void onLayoutTempPatchFinished()
@@ -222,17 +270,12 @@ public class PTSRecyclerViewAdapter
     if (localPTSNodeInfo1 != null)
     {
       PTSNodeInfo localPTSNodeInfo2 = getNodeInfoByID(localPTSNodeInfo1.getParentID());
-      if (localPTSNodeInfo2 == null) {
-        break label37;
+      if (localPTSNodeInfo2 != null) {
+        localPTSNodeInfo2.removeChild(localPTSNodeInfo1);
+      } else {
+        this.mData.remove(localPTSNodeInfo1);
       }
-      localPTSNodeInfo2.removeChild(localPTSNodeInfo1);
-    }
-    for (;;)
-    {
       removeIDToNodeInfoMap(localPTSNodeInfo1);
-      return;
-      label37:
-      this.mData.remove(localPTSNodeInfo1);
     }
   }
   
@@ -246,7 +289,7 @@ public class PTSRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.PTSRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ public final class aj
     c.c(paramParcel, 5, paramConnectionConfiguration.getRole());
     c.a(paramParcel, 6, paramConnectionConfiguration.isEnabled());
     c.a(paramParcel, 7, paramConnectionConfiguration.isConnected());
-    c.a(paramParcel, 8, paramConnectionConfiguration.ks());
-    c.a(paramParcel, 9, paramConnectionConfiguration.kt());
-    c.a(paramParcel, 10, paramConnectionConfiguration.kq());
+    c.a(paramParcel, 8, paramConnectionConfiguration.kB());
+    c.a(paramParcel, 9, paramConnectionConfiguration.kC());
+    c.a(paramParcel, 10, paramConnectionConfiguration.kz());
     c.v(paramParcel, i);
   }
 }

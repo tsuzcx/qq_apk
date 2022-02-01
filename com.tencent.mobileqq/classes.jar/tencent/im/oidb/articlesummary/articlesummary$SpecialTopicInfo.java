@@ -28,13 +28,15 @@ public final class articlesummary$SpecialTopicInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 56, 64, 72, 80, 88 }, new String[] { "str_header_icon_url", "str_header_title", "rpt_jumps", "str_header_jump_url", "uint32_posttime", "bytes_recommend_reason", "uint64_puin", "uint32_icon_shape", "uint64_algorithm_id", "uint32_strategy_id", "uint64_topic_id" }, new Object[] { "", "", null, "", Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, SpecialTopicInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 56, 64, 72, 80, 88 }, new String[] { "str_header_icon_url", "str_header_title", "rpt_jumps", "str_header_jump_url", "uint32_posttime", "bytes_recommend_reason", "uint64_puin", "uint32_icon_shape", "uint64_algorithm_id", "uint32_strategy_id", "uint64_topic_id" }, new Object[] { "", "", null, "", localInteger, localByteStringMicro, localLong, localInteger, localLong, localInteger, localLong }, SpecialTopicInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.SpecialTopicInfo
  * JD-Core Version:    0.7.0.1
  */

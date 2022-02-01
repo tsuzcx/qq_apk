@@ -136,10 +136,11 @@ public class TVK_PlayerVideoInfo
   
   public String getOtherParams(String paramString)
   {
-    if (this.w == null) {
+    Map localMap = this.w;
+    if (localMap == null) {
       return null;
     }
-    return (String)this.w.get(paramString);
+    return (String)localMap.get(paramString);
   }
   
   public int getPayType()
@@ -287,21 +288,30 @@ public class TVK_PlayerVideoInfo
   
   public void setPid(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      if (this.v == null) {
-        this.v = new HashMap();
+    }
+    if (this.v == null) {
+      this.v = new HashMap();
+    }
+    Map localMap;
+    if (this.c == 1)
+    {
+      localMap = this.v;
+      if (localMap != null) {
+        localMap.put("livepid", paramString);
       }
-      if ((this.c == 1) && (this.v != null)) {
-        this.v.put("livepid", paramString);
+    }
+    if (this.u == null) {
+      this.u = new HashMap();
+    }
+    if (this.c == 1)
+    {
+      localMap = this.u;
+      if (localMap != null) {
+        localMap.put("livepid", paramString);
       }
-      if (this.u == null) {
-        this.u = new HashMap();
-      }
-    } while ((this.c != 1) || (this.u == null));
-    this.u.put("livepid", paramString);
+    }
   }
   
   public void setPlayMode(String paramString)
@@ -340,21 +350,19 @@ public class TVK_PlayerVideoInfo
       return;
     }
     String str1 = paramString;
-    if (paramString.length() > 1024) {}
-    try
-    {
-      str1 = paramString.substring(0, 1024);
-      this.s = str1;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    String str2;
+    if (paramString.length() > 1024) {
+      try
+      {
+        str1 = paramString.substring(0, 1024);
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
-        String str2 = paramString;
+        str2 = paramString;
       }
     }
+    this.s = str2;
   }
   
   public void setReportInfoMap(Map<String, String> paramMap)
@@ -394,7 +402,7 @@ public class TVK_PlayerVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.servlet;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.os.Bundle;
-import bdpd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -10,6 +9,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -32,51 +32,64 @@ public class MiniAppSSOCmdObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    PROTOCAL.StQWebRsp localStQWebRsp;
     if (paramBoolean)
     {
-      paramBundle = (FromServiceMsg)paramBundle.getParcelable("msg");
-      if (paramBundle == null) {
-        break label272;
+      localObject1 = (FromServiceMsg)paramBundle.getParcelable("msg");
+      if (localObject1 == null) {
+        return;
       }
-      localStQWebRsp = new PROTOCAL.StQWebRsp();
-    }
-    for (;;)
-    {
+      paramBundle = new PROTOCAL.StQWebRsp();
       try
       {
-        localStQWebRsp.mergeFrom(bdpd.b(paramBundle.getWupBuffer()));
-        MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal localMiniAppCmdCallbackInternal = (MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal)CALLBACK_MAP.remove(Integer.valueOf((int)localStQWebRsp.Seq.get()));
+        paramBundle.mergeFrom(WupUtil.b(((FromServiceMsg)localObject1).getWupBuffer()));
+        MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal localMiniAppCmdCallbackInternal = (MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal)CALLBACK_MAP.remove(Integer.valueOf((int)paramBundle.Seq.get()));
         if (localMiniAppCmdCallbackInternal != null)
         {
-          if (localMiniAppCmdCallbackInternal.getResponseClass() != null)
+          Object localObject2 = localMiniAppCmdCallbackInternal.getResponseClass();
+          boolean bool = false;
+          if (localObject2 != null)
           {
-            MessageMicro localMessageMicro = (MessageMicro)localMiniAppCmdCallbackInternal.getResponseClass().newInstance();
-            localMessageMicro.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-            if ((!paramBundle.isSuccess()) || (localStQWebRsp.retCode.get() != 0L) || (localStQWebRsp.busiBuff.get().size() <= 0)) {
-              break label273;
+            localObject2 = (MessageMicro)localMiniAppCmdCallbackInternal.getResponseClass().newInstance();
+            ((MessageMicro)localObject2).mergeFrom(paramBundle.busiBuff.get().toByteArray());
+            paramBoolean = bool;
+            if (((FromServiceMsg)localObject1).isSuccess())
+            {
+              paramBoolean = bool;
+              if (paramBundle.retCode.get() == 0L)
+              {
+                paramBoolean = bool;
+                if (paramBundle.busiBuff.get().size() > 0) {
+                  paramBoolean = true;
+                }
+              }
             }
-            paramBoolean = true;
-            localMiniAppCmdCallbackInternal.onReceived(paramBoolean, localMessageMicro);
+            localMiniAppCmdCallbackInternal.onReceived(paramBoolean, (MessageMicro)localObject2);
             return;
           }
           QLog.e("MiniAppSSOCmdObserver", 2, new Object[] { "onReceive", " cmdCallback target class must provided" });
           return;
         }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onReceive no cmdCallback for ");
+        ((StringBuilder)localObject1).append(paramBundle.Seq.get());
+        QLog.e("MiniAppSSOCmdObserver", 2, ((StringBuilder)localObject1).toString());
+        return;
       }
       catch (Exception paramBundle)
       {
         QLog.e("MiniAppSSOCmdObserver", 1, "onReceive", paramBundle);
         return;
       }
-      QLog.e("MiniAppSSOCmdObserver", 2, "onReceive no cmdCallback for " + localStQWebRsp.Seq.get());
-      return;
-      QLog.d("MiniAppSSOCmdObserver", 2, "onReceive() called failed with: i = [" + paramInt + "], b = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
-      label272:
-      return;
-      label273:
-      paramBoolean = false;
     }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onReceive() called failed with: i = [");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append("], b = [");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    ((StringBuilder)localObject1).append("], bundle = [");
+    ((StringBuilder)localObject1).append(paramBundle);
+    ((StringBuilder)localObject1).append("]");
+    QLog.d("MiniAppSSOCmdObserver", 2, ((StringBuilder)localObject1).toString());
   }
   
   void sendSSOCmdRequest(String paramString1, String paramString2, MessageMicro<?> paramMessageMicro, MiniAppSSOCmdHelper.MiniAppCmdCallbackInternal<?> paramMiniAppCmdCallbackInternal)
@@ -102,7 +115,7 @@ public class MiniAppSSOCmdObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdObserver
  * JD-Core Version:    0.7.0.1
  */

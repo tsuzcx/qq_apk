@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import awhp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.persistence.notColumn;
 import java.io.File;
 
 public class MessageForFile
@@ -13,11 +14,11 @@ public class MessageForFile
   public long fileSize;
   public String fileSizeString;
   public String fileType;
-  @awhp
+  @notColumn
   public long originalMsgUid;
-  @awhp
+  @notColumn
   public long originalTime;
-  @awhp
+  @notColumn
   public long originalmsgShseq;
   public int status;
   public String[] tempMsg;
@@ -29,34 +30,47 @@ public class MessageForFile
     if ((this.msg != null) && (this.msg.length() > 0) && (this.msg.charAt(0) == '\026'))
     {
       this.tempMsg = this.msg.split("\\|");
-      String str;
-      if (this.tempMsg.length > 0)
+      Object localObject = this.tempMsg;
+      if (localObject.length > 0)
       {
-        str = this.tempMsg[0];
-        if ((str != null) && (str.length() > 0))
+        localObject = localObject[0];
+        if ((localObject != null) && (((String)localObject).length() > 0))
         {
-          int i = str.lastIndexOf(File.separator);
-          if (i == -1) {
-            break label94;
+          int i = ((String)localObject).lastIndexOf(File.separator);
+          if (i != -1)
+          {
+            this.fileName = ((String)localObject).substring(i + 1);
+            return;
           }
-          this.fileName = str.substring(i + 1);
+          this.fileName = ((String)localObject);
         }
       }
-      return;
-      label94:
-      this.fileName = str;
-      return;
     }
-    this.tempMsg = null;
+    else
+    {
+      this.tempMsg = null;
+    }
   }
   
   public String getSummaryMsg()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(alud.a(2131706961));
-    if (this.fileName == null) {}
-    for (String str = "";; str = this.fileName) {
-      return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131904454));
+    String str2 = this.fileName;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString();
+  }
+  
+  public boolean hasFileName()
+  {
+    if (TextUtils.isEmpty(this.fileName)) {
+      return false;
+    }
+    return !this.fileName.trim().equalsIgnoreCase("null");
   }
   
   public boolean isSupportReply()
@@ -64,7 +78,7 @@ public class MessageForFile
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     try
     {

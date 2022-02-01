@@ -1,12 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.service.c;
-
 public final class ah
-  extends a<c>
 {
-  public static final int CTRL_INDEX = 627;
-  public static final String NAME = "chooseShareGroup";
+  public String data;
+  public String event;
+  public int src;
+  
+  public ah(String paramString1, String paramString2, int paramInt)
+  {
+    this.event = paramString1;
+    this.data = paramString2;
+    this.src = paramInt;
+  }
 }
 
 

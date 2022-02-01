@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bix">0.0dip</dimen>
+    <dimen name="bjj">1.0dip</dimen>
+    <item type="dimen" name="bk6">0.48</item>
+    <item type="dimen" name="bk7">0.48</item>
+    <item type="dimen" name="bk8">0.16</item>
+    <item type="dimen" name="bk9">0.48</item>
+    <item type="dimen" name="bka">0.24</item>
+    <item type="dimen" name="bkb">0.24</item>
+    <item type="dimen" name="bkc">0.08</item>
+    <item type="dimen" name="bkd">0.24</item>
+    <dimen name="bm2">0.0dip</dimen>
+    <dimen name="bm5">0.0dip</dimen>
+    <dimen name="bm6">12.0dip</dimen>
+</resources>

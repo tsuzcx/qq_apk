@@ -1,6 +1,9 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.DoodleActivity;
+import com.tencent.mobileqq.widget.DoodleTextView;
 
 public class civ
   implements View.OnClickListener
@@ -9,7 +12,11 @@ public class civ
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
+    this.a.b();
   }
 }
 

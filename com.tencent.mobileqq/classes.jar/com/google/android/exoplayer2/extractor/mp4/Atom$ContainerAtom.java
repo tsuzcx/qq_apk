@@ -31,39 +31,31 @@ final class Atom$ContainerAtom
   
   public int getChildAtomOfTypeCount(int paramInt)
   {
-    int k = 0;
-    int m = this.leafChildren.size();
+    int n = this.leafChildren.size();
+    int m = 0;
     int j = 0;
-    int i = 0;
-    if (j < m)
+    int k;
+    for (int i = 0; j < n; i = k)
     {
-      if (((Atom.LeafAtom)this.leafChildren.get(j)).type != paramInt) {
-        break label111;
+      k = i;
+      if (((Atom.LeafAtom)this.leafChildren.get(j)).type == paramInt) {
+        k = i + 1;
+      }
+      j += 1;
+    }
+    n = this.containerChildren.size();
+    j = i;
+    i = m;
+    while (i < n)
+    {
+      k = j;
+      if (((ContainerAtom)this.containerChildren.get(i)).type == paramInt) {
+        k = j + 1;
       }
       i += 1;
-    }
-    label108:
-    label111:
-    for (;;)
-    {
-      j += 1;
-      break;
-      m = this.containerChildren.size();
       j = k;
-      if (j < m)
-      {
-        if (((ContainerAtom)this.containerChildren.get(j)).type != paramInt) {
-          break label108;
-        }
-        i += 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        return i;
-      }
     }
+    return j;
   }
   
   public ContainerAtom getContainerAtomOfType(int paramInt)
@@ -98,12 +90,18 @@ final class Atom$ContainerAtom
   
   public String toString()
   {
-    return getAtomTypeString(this.type) + " leaves: " + Arrays.toString(this.leafChildren.toArray()) + " containers: " + Arrays.toString(this.containerChildren.toArray());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getAtomTypeString(this.type));
+    localStringBuilder.append(" leaves: ");
+    localStringBuilder.append(Arrays.toString(this.leafChildren.toArray()));
+    localStringBuilder.append(" containers: ");
+    localStringBuilder.append(Arrays.toString(this.containerChildren.toArray()));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.Atom.ContainerAtom
  * JD-Core Version:    0.7.0.1
  */

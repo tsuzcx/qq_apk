@@ -1,71 +1,58 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.content.Context;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.media.MediaPlayer;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.Window;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.MMActivity;
 
-public final class k
+public class k
 {
-  static void a(Context paramContext, k.a parama)
+  private int KIA;
+  public int KIz;
+  public MMActivity pVV;
+  
+  public k(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(43075);
-    if ((paramContext == null) || (parama == null))
+    AppMethodBeat.i(65941);
+    this.pVV = paramMMActivity;
+    if (fYW())
     {
-      ab.e("MicroMsg.LuckySoundUtil", "play Err context:%s pathId:%d speekeron:%s looping:%b", new Object[] { paramContext, Integer.valueOf(2131301188), parama, Boolean.FALSE });
-      AppMethodBeat.o(43075);
-      return;
+      paramMMActivity = paramMMActivity.getWindow();
+      paramMMActivity.addFlags(-2147483648);
+      this.KIA = paramMMActivity.getStatusBarColor();
     }
-    if (!a.Mx())
-    {
-      AppMethodBeat.o(43075);
-      return;
+    AppMethodBeat.o(65941);
+  }
+  
+  public static boolean fYW()
+  {
+    return Build.VERSION.SDK_INT >= 21;
+  }
+  
+  protected void Q(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(65942);
+    if (this.pVV.getSupportActionBar() != null) {
+      this.pVV.getSupportActionBar().setBackgroundDrawable(paramDrawable);
     }
-    if (!a.MB())
-    {
-      AppMethodBeat.o(43075);
-      return;
-    }
-    String str = paramContext.getString(2131301188);
-    com.tencent.mm.compatible.b.k localk = new com.tencent.mm.compatible.b.k();
-    if (parama != k.a.oxx) {
-      if (parama != k.a.oxy) {
-        break label240;
-      }
-    }
-    for (int i = 5;; i = 0)
-    {
-      localk.setAudioStreamType(i);
-      ab.i("MicroMsg.LuckySoundUtil", "play start mp:%d path:%s context:%s pathId:%d speakerOn:%s looping:%b ", new Object[] { Integer.valueOf(localk.hashCode()), str, paramContext, Integer.valueOf(2131301188), parama, Boolean.FALSE });
-      try
-      {
-        paramContext = paramContext.getAssets().openFd(str);
-        localk.setDataSource(paramContext.getFileDescriptor(), paramContext.getStartOffset(), paramContext.getLength());
-        paramContext.close();
-        localk.setLooping(false);
-        localk.prepare();
-        localk.start();
-        localk.setOnErrorListener(new k.1());
-        localk.setOnCompletionListener(new k.2(str));
-        AppMethodBeat.o(43075);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        label240:
-        ab.e("MicroMsg.LuckySoundUtil", "play failed pathId:%d e:%s", new Object[] { Integer.valueOf(2131301188), paramContext.getMessage() });
-        ab.printErrStackTrace("MicroMsg.LuckySoundUtil", paramContext, "", new Object[0]);
-        AppMethodBeat.o(43075);
-      }
-    }
+    AppMethodBeat.o(65942);
+  }
+  
+  public static final class a
+  {
+    public Drawable KIB;
+    public int KIC;
+    public int KID;
+    public int KIE;
+    public int uOk;
+    public int uxS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.k
  * JD-Core Version:    0.7.0.1
  */

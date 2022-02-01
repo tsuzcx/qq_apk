@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/qq_ls_single_recent_item" android:background="@drawable/qq_ls_bg_item" android:paddingTop="15.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="19.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qq_ls_dot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/qq_ls_dot" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/qq_ls_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:text="" android:maxLines="10" />
+</LinearLayout>

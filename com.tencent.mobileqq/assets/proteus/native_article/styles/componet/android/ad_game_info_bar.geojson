@@ -16,7 +16,7 @@
   "event_type": "cmd_native_detail_ad_click",
   "subviews": [
     {
-      "view_type": "ReadinjoyNativeArticleAdDownloadView",
+      "view_type": "ReadInJoyAdDownloadView",
       "view_id": "id_view_AdDownloadView",
       "height": {
         "type": "relative",
@@ -31,7 +31,6 @@
       "event_type": "cmd_native_inner_game_button_click",
       "margin_right": "15",
       "attributes": {
-        "setFrameString:": "-1",
         "setFeedsModel:": "$innerGameModel",
         "setDownloadBtnStyle:": {
           "buttonTextColor": "#12B7F5 ",

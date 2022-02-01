@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/ald" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_marginTop="5.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/e_1" android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:gravity="center" android:id="@id/jin" android:background="@drawable/ald" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/r6m" android:layout_weight="1.0" />
+        <View android:id="@id/ea0" android:background="#ffdedede" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:gravity="center" android:id="@id/jg3" android:background="@drawable/ald" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/fum" android:layout_weight="1.0" />
+        <View android:id="@id/ea1" android:background="#ffdedede" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:gravity="center" android:id="@id/jim" android:background="@drawable/ald" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/r6k" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

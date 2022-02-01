@@ -1,17 +1,19 @@
 package com.tencent.token;
 
-import java.util.TimerTask;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginListener;
+import android.support.v4.app.Fragment;
+import java.util.List;
 
-class cu
-  extends TimerTask
+public final class cu
 {
-  cu(cp paramcp) {}
+  final List<Fragment> a;
+  final List<cu> b;
+  final List<bz> c;
   
-  public void run()
+  cu(List<Fragment> paramList, List<cu> paramList1, List<bz> paramList2)
   {
-    this.a.e.OnCloseCode(null, null, 0L, new WUserSigInfo(), null, 8192);
+    this.a = paramList;
+    this.b = paramList1;
+    this.c = paramList2;
   }
 }
 

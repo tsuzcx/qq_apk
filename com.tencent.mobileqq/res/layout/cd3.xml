@@ -8,7 +8,7 @@
         </RelativeLayout>
     </FrameLayout>
     <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/m43" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfAnimationStyle="cd6" ptf:ptfDrawableStart="@drawable/ci9" ptf:ptfHeaderBackground="@color/ajr" ptf:ptfHeaderSubTextColor="#ffffffff" ptf:ptfHeaderTextColor="#ffffffff" ptf:ptfMode="g5g" xmlns:ptf="http://schemas.android.com/apk/res-auto" />
+        <com.tencent.mobileqq.qqexpand.widget.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/m43" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfAnimationStyle="cd6" ptf:ptfDrawableStart="@drawable/ci9" ptf:ptfHeaderBackground="@color/ajr" ptf:ptfHeaderSubTextColor="#ffffffff" ptf:ptfHeaderTextColor="#ffffffff" ptf:ptfMode="g5g" xmlns:ptf="http://schemas.android.com/apk/res-auto" />
         <include android:id="@id/m42" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/au7" />
     </FrameLayout>
 </LinearLayout>

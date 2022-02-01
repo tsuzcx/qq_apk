@@ -25,20 +25,23 @@ class MethodRoadie$1
       localFuture.get(0L, TimeUnit.MILLISECONDS);
       return;
     }
-    catch (TimeoutException localTimeoutException)
-    {
-      this.this$0.addFailure(new TestTimedOutException(this.val$timeout, TimeUnit.MILLISECONDS));
-      return;
-    }
     catch (Exception localException)
     {
       this.this$0.addFailure(localException);
+      return;
+      this.this$0.addFailure(new TestTimedOutException(this.val$timeout, TimeUnit.MILLISECONDS));
+      return;
+    }
+    catch (TimeoutException localTimeoutException)
+    {
+      label70:
+      break label70;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.MethodRoadie.1
  * JD-Core Version:    0.7.0.1
  */

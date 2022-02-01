@@ -1,20 +1,5 @@
 package com.tencent.mobileqq.apollo.store;
 
-import aepi;
-import akpl;
-import akrb;
-import aldl;
-import aldp;
-import aldq;
-import aldr;
-import alds;
-import aldt;
-import aldv;
-import alen;
-import alep;
-import algj;
-import aliu;
-import alud;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.TargetApi;
@@ -42,469 +27,284 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import atxi;
-import atxn;
-import bdgk;
-import begg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.apollo.res.api.IApolloResHelper;
+import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
+import com.tencent.mobileqq.apollo.statistics.product.DtReportParamsBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.GlobalImageCache;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRenderInterfaceImpl;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderCallback;
+import com.tencent.mobileqq.magicface.drawable.IMessageHandler;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
+@RoutePage(desc="厘米秀商店GuestsStateActivity", path="/cmshow/store/guestStateActivity")
 public class ApolloGuestsStateActivity
   extends BaseActivity
-  implements alep, View.OnClickListener, atxi, begg
+  implements View.OnClickListener, IApolloGuestsView, IMessageHandler, WebUiBaseInterface
 {
-  public float a;
-  int jdField_a_of_type_Int = 0;
-  public akrb a;
-  private aldl jdField_a_of_type_Aldl;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  private SparseArray<alen> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  View jdField_a_of_type_AndroidViewView;
-  public Button a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public RelativeLayout a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ApolloTextureView a;
-  String jdField_a_of_type_JavaLangString;
-  List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  float jdField_b_of_type_Float = 0.0F;
-  public int b;
-  private ObjectAnimator jdField_b_of_type_AndroidAnimationObjectAnimator;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  public float c;
-  int jdField_c_of_type_Int;
-  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int;
-  boolean jdField_d_of_type_Boolean;
+  public static final String APOLLO_TODAY_HAS_VOTE = "apollo_today_has_vote";
+  public static final String CARD_BG_URL = "https://cmshow.gtimg.cn/client/img/apollo_aio_bg_v3.png";
+  public static final int MSG_INIT_DRESS_TAG = 1;
+  public static final int MSG_SET_ROLE_BACKGROUND = 5;
+  public static final int MSG_VISIBLE_PAAISENUM = 2;
+  public static final int MSG_ZAN_COUNT_GET = 0;
+  public static final String SP_KEY = "cmshow_zan";
+  public static final String TAG = "[cmshow]ApolloGuestsStateActivity";
+  protected ActionSheet actionSheet;
+  List<View> dressTag = new ArrayList();
+  TextView mAddNumber;
+  float mApolloWidth = 0.0F;
+  RelativeLayout mApprovalLayout;
+  LinearLayout mBottomLayout;
+  Button mButtonRight;
+  private ImageView mCloseImageView;
+  float mDensity = 0.0F;
+  View mDialog;
+  float mDialogHeight = 0.0F;
+  private SparseArray<DressDescriptionItem> mDressDescriptionMaps = new SparseArray();
+  private ObjectAnimator mFlowScaleAnimator;
+  private ObjectAnimator mFlowShrinkAnimator;
+  int mFrom;
+  Handler mHandler;
+  boolean mHasPraised;
+  boolean mIsActionPlay = false;
+  boolean mIsClosing;
+  boolean mIsDesdroy = false;
+  boolean mIsMyCard = false;
+  int mManWidth = 0;
+  String mNick;
+  TextView mPraiseNumberText;
+  private ApolloGuestsPresenter mPresenter;
+  ImageView mProgress;
+  public IRenderCallback mRenderCallback = new ApolloGuestsStateActivity.4(this);
+  int mRoleId = 0;
+  private RelativeLayout mRootView;
+  RelativeLayout mSurfaceLayout;
+  ApolloTextureView mSurfaceView;
+  String mUin;
+  int praiseNumber;
   
-  public ApolloGuestsStateActivity()
+  private void addDressDescriptions(List<DressDescriptionItem> paramList)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Akrb = new aldr(this);
-  }
-  
-  private Drawable a(int paramInt)
-  {
-    int j = 2130838507;
-    int i;
-    if (paramInt == 1) {
-      i = 2130838506;
-    }
-    for (;;)
+    if (paramList != null)
     {
-      return super.getResources().getDrawable(i);
-      i = j;
-      if (paramInt == 2) {
-        i = j;
+      if (paramList.isEmpty()) {
+        return;
       }
-    }
-  }
-  
-  private void c(List<alen> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    int i;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      Object localObject1 = this.dressTag;
+      int i;
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView((View)this.jdField_a_of_type_JavaUtilList.get(i));
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    DisplayMetrics localDisplayMetrics = super.getResources().getDisplayMetrics();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      alen localalen = (alen)paramList.next();
-      if (!TextUtils.isEmpty(localalen.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(localalen.jdField_a_of_type_Int, localalen);
-        TextView localTextView = new TextView(this);
-        localTextView.setId(localalen.jdField_a_of_type_Int);
-        localTextView.setText(localalen.jdField_a_of_type_JavaLangString);
-        localTextView.setTextSize(10.0F);
-        localTextView.setTextColor(-1);
-        localTextView.setGravity(17);
-        label228:
-        RelativeLayout.LayoutParams localLayoutParams;
-        int j;
-        if (localalen.jdField_a_of_type_Boolean)
+        i = 0;
+        while (i < this.dressTag.size())
         {
-          localTextView.setTag("isRole");
-          localTextView.setOnClickListener(this);
-          localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-          localLayoutParams.addRule(15, -1);
-          i = 0;
-          Drawable localDrawable = a(localalen.g);
-          if (localalen.g != 0)
-          {
-            localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
-            localTextView.setCompoundDrawables(localDrawable, null, null, null);
-          }
-          if (localalen.jdField_b_of_type_Int != 0) {
-            break label548;
-          }
-          ApolloUtil.a(localTextView, 2130838438);
-          localTextView.setPadding((int)(5.0F * localDisplayMetrics.density), 0, (int)(19.0F * localDisplayMetrics.density), 0);
-          localTextView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-          j = localTextView.getMeasuredWidth();
-          i = localTextView.getMeasuredHeight();
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloGuestsStateActivity", 2, "textview measure wiidth=" + localTextView.getMeasuredWidth());
-          }
-          localArrayList2.add(localTextView);
-          localLayoutParams.addRule(9, -1);
-          localLayoutParams.leftMargin = Math.max(localalen.jdField_c_of_type_Int - j, 0);
+          this.mSurfaceLayout.removeView((View)this.dressTag.get(i));
+          i += 1;
         }
-        for (;;)
+        this.dressTag.clear();
+      }
+      localObject1 = super.getResources().getDisplayMetrics();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DressDescriptionItem localDressDescriptionItem = (DressDescriptionItem)paramList.next();
+        if (!TextUtils.isEmpty(localDressDescriptionItem.b))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloGuestsStateActivity", 2, "tag textview height = " + i);
+          this.mDressDescriptionMaps.put(localDressDescriptionItem.a, localDressDescriptionItem);
+          TextView localTextView = new TextView(this);
+          localTextView.setId(localDressDescriptionItem.a);
+          localTextView.setText(localDressDescriptionItem.b);
+          localTextView.setTextSize(10.0F);
+          localTextView.setTextColor(-1);
+          localTextView.setGravity(17);
+          if (localDressDescriptionItem.l) {
+            localTextView.setTag("isRole");
+          } else {
+            localTextView.setTag("isDress");
           }
-          localLayoutParams.addRule(12, -1);
-          localLayoutParams.bottomMargin = Math.max(localalen.jdField_d_of_type_Int - i / 2, 0);
-          if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) {
-            break;
-          }
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(localTextView, localLayoutParams);
-          localTextView.setVisibility(0);
-          this.jdField_a_of_type_JavaUtilList.add(localTextView);
-          break;
-          localTextView.setTag("isDress");
-          break label228;
-          label548:
-          if (localalen.jdField_b_of_type_Int == 1)
+          localTextView.setOnClickListener(this);
+          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+          localLayoutParams.addRule(15, -1);
+          Object localObject2 = getTagByType(localDressDescriptionItem.h);
+          if (localDressDescriptionItem.h != 0)
           {
-            ApolloUtil.a(localTextView, 2130838439);
-            localTextView.setPadding((int)(19.0F * localDisplayMetrics.density), 0, (int)(5.0F * localDisplayMetrics.density), 0);
+            ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
+            localTextView.setCompoundDrawables((Drawable)localObject2, null, null, null);
+          }
+          int j;
+          if (localDressDescriptionItem.c == 0)
+          {
+            ApolloUtilImpl.setBackgroundSafety(localTextView, 2130838570);
+            localTextView.setPadding((int)(((DisplayMetrics)localObject1).density * 5.0F), 0, (int)(((DisplayMetrics)localObject1).density * 19.0F), 0);
+            localTextView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+            j = localTextView.getMeasuredWidth();
+            i = localTextView.getMeasuredHeight();
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("textview measure wiidth=");
+              ((StringBuilder)localObject2).append(localTextView.getMeasuredWidth());
+              QLog.d("[cmshow]ApolloGuestsStateActivity", 2, ((StringBuilder)localObject2).toString());
+            }
+            localArrayList2.add(localTextView);
+            localLayoutParams.addRule(9, -1);
+            localLayoutParams.leftMargin = Math.max(localDressDescriptionItem.d - j, 0);
+          }
+          else if (localDressDescriptionItem.c == 1)
+          {
+            ApolloUtilImpl.setBackgroundSafety(localTextView, 2130838571);
+            localTextView.setPadding((int)(((DisplayMetrics)localObject1).density * 19.0F), 0, (int)(((DisplayMetrics)localObject1).density * 5.0F), 0);
             localTextView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
             j = localTextView.getMeasuredWidth();
             i = localTextView.getMeasuredHeight();
             localArrayList1.add(localTextView);
             localLayoutParams.addRule(11, -1);
-            localLayoutParams.rightMargin = Math.max(localalen.jdField_c_of_type_Int - j, 0);
+            localLayoutParams.rightMargin = Math.max(localDressDescriptionItem.d - j, 0);
+          }
+          else
+          {
+            i = 0;
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("tag textview height = ");
+            ((StringBuilder)localObject2).append(i);
+            QLog.d("[cmshow]ApolloGuestsStateActivity", 2, ((StringBuilder)localObject2).toString());
+          }
+          localLayoutParams.addRule(12, -1);
+          localLayoutParams.bottomMargin = Math.max(localDressDescriptionItem.e - i / 2, 0);
+          if (this.mSurfaceView != null)
+          {
+            this.mSurfaceLayout.addView(localTextView, localLayoutParams);
+            localTextView.setVisibility(0);
+            this.dressTag.add(localTextView);
           }
         }
       }
+      checkTagLocation(localArrayList1);
+      checkTagLocation(localArrayList2);
     }
-    a(localArrayList1);
-    a(localArrayList2);
   }
   
-  private void f()
+  private void doApolloDtReport(String paramString)
+  {
+    ApolloDtReportUtil.a("aio", "sprite_flower", paramString, new DtReportParamsBuilder().a(0).b(ApolloDtReportUtil.a(this.mFrom)).d(this.mIsMyCard ^ true).c(this.mUin).a());
+  }
+  
+  private Drawable getTagByType(int paramInt)
+  {
+    int i = 2130838640;
+    if (paramInt == 1) {
+      paramInt = 2130838639;
+    } else {
+      paramInt = i;
+    }
+    return super.getResources().getDrawable(paramInt);
+  }
+  
+  private void playSendFlowerAnimation()
   {
     PropertyValuesHolder localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, 1.8F, 1.2F });
     PropertyValuesHolder localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, 1.8F, 1.2F });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidWidgetButton, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2 });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(500L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new aldq(this));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    this.mFlowScaleAnimator = ObjectAnimator.ofPropertyValuesHolder(this.mButtonRight, new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2 });
+    this.mFlowScaleAnimator.setDuration(500L);
+    this.mFlowScaleAnimator.addListener(new ApolloGuestsStateActivity.3(this));
+    this.mFlowScaleAnimator.start();
   }
   
-  @TargetApi(11)
-  public void a()
+  public void checkTagLocation(List<TextView> paramList)
   {
-    b();
-  }
-  
-  void a(int paramInt)
-  {
-    super.runOnUiThread(new ApolloGuestsStateActivity.2(this, paramInt));
-  }
-  
-  void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    if (paramList != null)
     {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
-      localMessage.arg1 = paramInt1;
-      localMessage.arg2 = paramInt2;
-      localMessage.sendToTarget();
-    }
-  }
-  
-  public void a(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        int i;
-        int j;
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_a_of_type_AndroidWidgetTextView.setText("" + paramMessage.arg1);
-          } while (paramMessage.arg1 >= paramMessage.arg2);
-          i = paramMessage.arg1;
-          j = paramMessage.arg2;
-          String str = String.valueOf(j);
-          paramMessage = str;
-          if (j == 99999) {
-            paramMessage = str + "+";
-          }
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage);
-          j -= i;
-        } while ((j <= 0) || (i == 0));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362620));
-        this.jdField_b_of_type_AndroidWidgetTextView.setText("+" + j);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (paramList.size() <= 0) {
         return;
-        c((List)paramMessage.obj);
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloGuestsStateActivity", 2, "dress tag list=" + ((List)paramMessage.obj).toString());
-      return;
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    paramMessage = new BitmapDrawable(paramMessage);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramMessage);
-    BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_Int + "apollo_cmshow_background", paramMessage);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_c_of_type_Int = paramInt1;
-    if (this.jdField_a_of_type_Boolean) {
-      a(this.jdField_c_of_type_Int, paramInt2);
-    }
-    for (;;)
-    {
-      this.jdField_c_of_type_Int = paramInt2;
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    }
-  }
-  
-  public void a(List<TextView> paramList)
-  {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    for (;;)
-    {
-      return;
+      }
       int i = 0;
       while (i < paramList.size() - 1)
       {
-        TextView localTextView1 = (TextView)paramList.get(i);
-        TextView localTextView2 = (TextView)paramList.get(i + 1);
-        RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)localTextView1.getLayoutParams();
-        RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)localTextView2.getLayoutParams();
-        if (localLayoutParams1.bottomMargin - localLayoutParams2.bottomMargin < localTextView1.getMeasuredHeight())
+        Object localObject = (TextView)paramList.get(i);
+        int j = i + 1;
+        TextView localTextView = (TextView)paramList.get(j);
+        RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)((TextView)localObject).getLayoutParams();
+        RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+        i = j;
+        if (localLayoutParams1.bottomMargin - localLayoutParams2.bottomMargin < ((TextView)localObject).getMeasuredHeight())
         {
-          int j = localTextView1.getMeasuredHeight();
-          localLayoutParams2.bottomMargin -= j;
-          localTextView2.requestLayout();
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloGuestsStateActivity", 2, "tag location modify move distence=" + j);
+          int k = ((TextView)localObject).getMeasuredHeight();
+          localLayoutParams2.bottomMargin -= k;
+          localTextView.requestLayout();
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("tag location modify move distence=");
+            ((StringBuilder)localObject).append(k);
+            QLog.d("[cmshow]ApolloGuestsStateActivity", 2, ((StringBuilder)localObject).toString());
+            i = j;
           }
         }
-        i += 1;
       }
     }
   }
   
-  public void a(int[] paramArrayOfInt, int paramInt)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    float f = (float)Math.max(bdgk.h(), bdgk.g()) / 3.25F / 368.0F;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) {}
-    akpl localakpl;
-    do
-    {
+    if (paramInt1 != 3) {
       return;
-      localakpl = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl();
-    } while (localakpl == null);
-    localakpl.a(1, null, paramInt, f, this.jdField_a_of_type_Float, 0.0F);
-    if (paramInt == 0) {
-      localakpl.a(1, null, aldv.a(paramInt), null);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender() == null)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().setRenderCallback(this.jdField_a_of_type_Akrb);
-      paramArrayOfInt = algj.a(4, -1, this.jdField_a_of_type_Int, true);
-      localakpl.a(1, null, 5, 0, paramArrayOfInt[0], paramArrayOfInt[1]);
-      this.jdField_b_of_type_Boolean = true;
+    if (paramInt2 != -1) {
       return;
-      if ((paramInt > 0) && (paramArrayOfInt != null)) {
-        localakpl.a(1, null, paramArrayOfInt, this.jdField_a_of_type_Aldl);
-      }
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidViewView = super.getLayoutInflater().inflate(2131558645, null, false);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(super.getResources().getColor(2131166819));
-    long l1 = Math.max(bdgk.h(), bdgk.g());
-    long l2 = Math.min(bdgk.h(), bdgk.g());
-    float f1 = (float)(l1 / 1.52D);
-    float f2 = (float)(l2 / 1.27D);
-    this.jdField_b_of_type_Float = f1;
-    Object localObject = new RelativeLayout.LayoutParams((int)f2, (int)f1);
-    ((RelativeLayout.LayoutParams)localObject).addRule(13);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-    localObject = new ImageView(this);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(l1 / 16.68D + 0.5D), (int)(l1 / 16.68D + 0.5D));
-    localLayoutParams.addRule(12);
-    localLayoutParams.addRule(14);
-    localLayoutParams.bottomMargin = ((int)(l1 / 19.899999999999999D + 0.5D));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localObject);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    ((ImageView)localObject).setBackgroundResource(2130838343);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = AnimationUtils.loadAnimation(this, 2130772008);
-    this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
-    localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((int)(this.jdField_b_of_type_Float + 0.5F));
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ((int)(f2 + 0.5F));
-    localObject = aldt.a(true, aliu.k + "apollo_aio_bg_v3.png", (URLDrawable.URLDrawableOptions)localObject, "https://cmshow.gtimg.cn/client/img/apollo_aio_bg_v3.png");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = new ApolloTextureView(this, null);
-    localObject = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367373));
-    ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).bottomMargin = ((int)((float)l1 / 5.03F + 0.5F));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.requestLayout();
-    ((RelativeLayout.LayoutParams)localObject).addRule(14);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.init(new alds(this));
-    c();
-  }
-  
-  public void b(int paramInt)
-  {
-    a(paramInt);
-  }
-  
-  public void b(List<alen> paramList)
-  {
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (paramList != null))
-    {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-      localMessage.obj = paramList;
-      localMessage.sendToTarget();
-    }
-  }
-  
-  public void c()
-  {
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371139);
-    this.jdField_b_of_type_JavaLangString = super.getIntent().getStringExtra("extra_guest_nick");
-    this.jdField_a_of_type_JavaLangString = super.getIntent().getStringExtra("extra_guest_uin");
-    this.jdField_d_of_type_Int = super.getIntent().getIntExtra("extra_guest_from", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsStateActivity", 2, "nickname = " + this.jdField_b_of_type_JavaLangString + " uin=" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_JavaLangString.equals(super.getAppInterface().getCurrentAccountUin())) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    QQAppInterface localQQAppInterface = this.app;
-    int j = this.jdField_d_of_type_Int;
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 0;
-      VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "yy_dresscheck", j, i, new String[0]);
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        break label349;
-      }
-      ((TextView)localObject).setText(this.jdField_b_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362601));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377934));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362737));
-      d();
-      localObject = Calendar.getInstance();
-      if ((BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0).getBoolean(super.getAppInterface().getCurrentAccountUin() + "apollo_today_has_vote" + this.jdField_a_of_type_JavaLangString + ((Calendar)localObject).get(1) + ((Calendar)localObject).get(2) + ((Calendar)localObject).get(5), false)) && (Build.VERSION.SDK_INT >= 11))
-      {
-        this.jdField_d_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidWidgetButton.setAlpha(0.5F);
-      }
-      return;
-      i = 1;
-      break;
-      label349:
-      ((TextView)localObject).setText(" ");
-    }
-  }
-  
-  @TargetApi(11)
-  public void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131362619));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(new aldp(this));
-  }
-  
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    switch (paramInt1)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramInt2 != -1);
-    Intent localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramIntent.getExtras()));
     super.startActivity(localIntent);
     super.finish();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     getWindow().addFlags(16777216);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler = atxn.a(this);
-    this.jdField_c_of_type_Float = super.getResources().getDisplayMetrics().density;
-    a();
-    this.jdField_a_of_type_Aldl = new aldl(this, (QQAppInterface)super.getAppInterface(), this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
-    this.jdField_a_of_type_Aldl.a();
-    super.setContentView(this.jdField_c_of_type_AndroidWidgetRelativeLayout);
+    this.mHandler = PngFrameManager.a(this);
+    this.mDensity = super.getResources().getDisplayMetrics().density;
+    initUI();
+    this.mPresenter = new ApolloGuestsPresenter(this, (QQAppInterface)super.getAppInterface(), this, this.mUin, this.mSurfaceView);
+    this.mPresenter.a();
+    super.setContentView(this.mRootView);
     super.setImmersiveStatus();
     if (this.mSystemBarComp != null)
     {
@@ -515,47 +315,245 @@ public class ApolloGuestsStateActivity
     return false;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null))
+    Object localObject = this.mSurfaceView;
+    if ((localObject != null) && (((ApolloTextureView)localObject).getRenderImpl() != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().c();
+      this.mSurfaceView.getRenderImpl().a();
+      this.mSurfaceView.getRenderImpl().c();
     }
-    if (this.jdField_a_of_type_Aldl != null)
+    localObject = this.mPresenter;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Aldl.e();
-      this.jdField_a_of_type_Aldl = null;
+      ((ApolloGuestsPresenter)localObject).e();
+      this.mPresenter = null;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList = null;
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.dressTag.clear();
+    this.dressTag = null;
+    localObject = this.mHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_Akrb = null;
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null)
+    this.mHandler = null;
+    this.mRenderCallback = null;
+    localObject = this.mFlowScaleAnimator;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+      ((ObjectAnimator)localObject).cancel();
+      this.mFlowScaleAnimator = null;
     }
-    if (this.jdField_b_of_type_AndroidAnimationObjectAnimator != null)
+    localObject = this.mFlowShrinkAnimator;
+    if (localObject != null)
     {
-      this.jdField_b_of_type_AndroidAnimationObjectAnimator.cancel();
-      this.jdField_b_of_type_AndroidAnimationObjectAnimator = null;
+      ((ObjectAnimator)localObject).cancel();
+      this.mFlowShrinkAnimator = null;
     }
   }
   
-  public void e()
+  public void handleMsg(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
+    int i = paramMessage.what;
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 5) {
+            return;
+          }
+          paramMessage = (Bitmap)paramMessage.obj;
+          if (paramMessage != null)
+          {
+            paramMessage = new BitmapDrawable(paramMessage);
+            this.mDialog.setBackgroundDrawable(paramMessage);
+            localObject = GlobalImageCache.a;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(this.mRoleId);
+            localStringBuilder.append("apollo_cmshow_background");
+            ((MQLruCache)localObject).put(localStringBuilder.toString(), paramMessage);
+          }
+        }
+      }
+      else
+      {
+        addDressDescriptions((List)paramMessage.obj);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("dress tag list=");
+          ((StringBuilder)localObject).append(((List)paramMessage.obj).toString());
+          QLog.d("[cmshow]ApolloGuestsStateActivity", 2, ((StringBuilder)localObject).toString());
+        }
+      }
     }
+    else
+    {
+      localObject = this.mPraiseNumberText;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramMessage.arg1);
+      ((TextView)localObject).setText(localStringBuilder.toString());
+      if (paramMessage.arg1 < paramMessage.arg2)
+      {
+        i = paramMessage.arg1;
+        int j = paramMessage.arg2;
+        localObject = String.valueOf(j);
+        paramMessage = (Message)localObject;
+        if (j == 99999)
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append((String)localObject);
+          paramMessage.append("+");
+          paramMessage = paramMessage.toString();
+        }
+        this.mPraiseNumberText.setText(paramMessage);
+        j -= i;
+        if ((j > 0) && (i != 0))
+        {
+          this.mAddNumber = ((TextView)this.mDialog.findViewById(2131428434));
+          paramMessage = this.mAddNumber;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("+");
+          ((StringBuilder)localObject).append(j);
+          paramMessage.setText(((StringBuilder)localObject).toString());
+          this.mAddNumber.setVisibility(0);
+        }
+      }
+    }
+  }
+  
+  @TargetApi(11)
+  public void initBottomBtn()
+  {
+    this.mButtonRight = ((Button)this.mDialog.findViewById(2131428433));
+    this.mButtonRight.setOnClickListener(this);
+    this.mButtonRight.setOnTouchListener(new ApolloGuestsStateActivity.1(this));
+  }
+  
+  public void initCommonView()
+  {
+    Object localObject1 = (TextView)this.mDialog.findViewById(2131439295);
+    this.mNick = super.getIntent().getStringExtra("extra_guest_nick");
+    this.mUin = super.getIntent().getStringExtra("extra_guest_uin");
+    this.mFrom = super.getIntent().getIntExtra("extra_guest_from", 0);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("nickname = ");
+      ((StringBuilder)localObject2).append(this.mNick);
+      ((StringBuilder)localObject2).append(" uin=");
+      ((StringBuilder)localObject2).append(this.mUin);
+      QLog.d("[cmshow]ApolloGuestsStateActivity", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (this.mUin.equals(super.getAppInterface().getCurrentAccountUin())) {
+      this.mIsMyCard = true;
+    }
+    VipUtils.a(this.app, "cmshow", "Apollo", "yy_dresscheck", this.mFrom, this.mIsMyCard ^ true, new String[0]);
+    if (!TextUtils.isEmpty(this.mNick)) {
+      ((TextView)localObject1).setText(this.mNick);
+    } else {
+      ((TextView)localObject1).setText(" ");
+    }
+    this.mPraiseNumberText = ((TextView)this.mDialog.findViewById(2131428414));
+    this.mProgress = ((ImageView)this.mDialog.findViewById(2131447459));
+    this.mApprovalLayout = ((RelativeLayout)this.mDialog.findViewById(2131428683));
+    initBottomBtn();
+    localObject1 = Calendar.getInstance();
+    Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.getAppInterface().getCurrentAccountUin());
+    localStringBuilder.append("apollo_today_has_vote");
+    localStringBuilder.append(this.mUin);
+    localStringBuilder.append(((Calendar)localObject1).get(1));
+    localStringBuilder.append(((Calendar)localObject1).get(2));
+    localStringBuilder.append(((Calendar)localObject1).get(5));
+    if ((((SharedPreferences)localObject2).getBoolean(localStringBuilder.toString(), false)) && (Build.VERSION.SDK_INT >= 11))
+    {
+      this.mHasPraised = true;
+      this.mButtonRight.setAlpha(0.5F);
+    }
+    doApolloDtReport("expose");
+  }
+  
+  public void initNoAIUI()
+  {
+    this.mDialog = super.getLayoutInflater().inflate(2131624183, null, false);
+    this.mRootView = new RelativeLayout(this);
+    this.mRootView.setBackgroundColor(super.getResources().getColor(2131167894));
+    long l1 = Math.max(DeviceInfoUtil.C(), DeviceInfoUtil.B());
+    long l2 = Math.min(DeviceInfoUtil.C(), DeviceInfoUtil.B());
+    double d1 = l1;
+    Double.isNaN(d1);
+    float f1 = (float)(d1 / 1.52D);
+    double d2 = l2;
+    Double.isNaN(d2);
+    float f2 = (float)(d2 / 1.27D);
+    this.mDialogHeight = f1;
+    Object localObject = new RelativeLayout.LayoutParams((int)f2, (int)f1);
+    ((RelativeLayout.LayoutParams)localObject).addRule(13);
+    this.mRootView.addView(this.mDialog, (ViewGroup.LayoutParams)localObject);
+    localObject = new ImageView(this);
+    Double.isNaN(d1);
+    int i = (int)(d1 / 16.68D + 0.5D);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
+    localLayoutParams.addRule(12);
+    localLayoutParams.addRule(14);
+    Double.isNaN(d1);
+    localLayoutParams.bottomMargin = ((int)(d1 / 19.899999999999999D + 0.5D));
+    this.mCloseImageView = ((ImageView)localObject);
+    this.mCloseImageView.setOnClickListener(this);
+    ((ImageView)localObject).setBackgroundResource(2130838470);
+    this.mRootView.addView((View)localObject, localLayoutParams);
+    localObject = AnimationUtils.loadAnimation(this, 2130772024);
+    this.mDialog.startAnimation((Animation)localObject);
+    localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((int)(this.mDialogHeight + 0.5F));
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ((int)(f2 + 0.5F));
+    localObject = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getDrawable(true, "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/apollo_aio_bg_v3.png", (URLDrawable.URLDrawableOptions)localObject, "https://cmshow.gtimg.cn/client/img/apollo_aio_bg_v3.png");
+    this.mDialog.setBackgroundDrawable((Drawable)localObject);
+    this.mSurfaceView = new ApolloTextureView(this, null);
+    this.mSurfaceLayout = ((RelativeLayout)this.mDialog.findViewById(2131434462));
+    ((RelativeLayout.LayoutParams)this.mSurfaceLayout.getLayoutParams()).bottomMargin = ((int)((float)l1 / 5.03F + 0.5F));
+    this.mSurfaceLayout.requestLayout();
+    localObject = new RelativeLayout.LayoutParams(-1, -1);
+    ((RelativeLayout.LayoutParams)localObject).addRule(14);
+    this.mSurfaceLayout.addView(this.mSurfaceView, (ViewGroup.LayoutParams)localObject);
+    this.mSurfaceView.init(new ApolloGuestsStateActivity.CMShowOnApolloViewListener(this));
+    if (BaseApplicationImpl.sProcessId == 7) {
+      this.mSurfaceView.setDumplicateCreateRenderThread(true);
+    }
+    initCommonView();
+  }
+  
+  @TargetApi(11)
+  public void initUI()
+  {
+    initNoAIUI();
+  }
+  
+  public void onApprovalGet(String paramString, int paramInt1, int paramInt2)
+  {
+    this.praiseNumber = paramInt1;
+    if (this.mIsMyCard) {
+      updateZan(this.praiseNumber, paramInt2);
+    } else {
+      this.mPraiseNumberText.setText(paramString);
+    }
+    this.praiseNumber = paramInt2;
+  }
+  
+  public void onApprovalSet(int paramInt)
+  {
+    postFresh(paramInt);
   }
   
   @TargetApi(14)
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     if (!isFinishing())
     {
@@ -568,13 +566,14 @@ public class ApolloGuestsStateActivity
   @TargetApi(14)
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_b_of_type_AndroidWidgetImageView)
+    if (paramView == this.mCloseImageView)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null))
+      paramView = this.mSurfaceView;
+      if ((paramView != null) && (paramView.getRenderImpl() != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
-        this.jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(8);
+        this.mSurfaceView.getRenderImpl().a();
+        this.mIsDesdroy = true;
+        this.mSurfaceView.setVisibility(8);
       }
       if (!isFinishing())
       {
@@ -582,57 +581,147 @@ public class ApolloGuestsStateActivity
         overridePendingTransition(0, 0);
       }
     }
-    do
+    else
     {
-      return;
-      if (paramView.getId() != 2131362619) {
-        break label245;
-      }
-      if (this.jdField_a_of_type_Boolean)
+      if (paramView.getId() == 2131428433)
       {
-        if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        if (this.mIsMyCard)
+        {
+          paramView = this.mAddNumber;
+          if (paramView != null) {
+            paramView.setVisibility(8);
+          }
+          VipUtils.a(this.app, "cmshow", "Apollo", "y_dresscheckflower", this.mFrom, 0, new String[0]);
+          paramView = new Intent(this, QQBrowserActivity.class);
+          paramView.putExtra("url", "https://cmshow.qq.com/apollo/html/details.html?_bid=2282&_wv=3&seq=-1");
+          startActivity(paramView);
+          return;
         }
-        VipUtils.a(this.app, "cmshow", "Apollo", "y_dresscheckflower", this.jdField_d_of_type_Int, 0, new String[0]);
-        paramView = new Intent(this, QQBrowserActivity.class);
-        paramView.putExtra("url", "https://cmshow.qq.com/apollo/html/details.html?_bid=2282&_wv=3&seq=-1");
-        startActivity(paramView);
+        doApolloDtReport("click_flower");
+        if (this.mHasPraised)
+        {
+          QQToast.makeText(this, 1, HardCodeUtil.a(2131898638), 0).show(super.getResources().getDimensionPixelSize(2131299920));
+          if (QLog.isColorLevel()) {
+            QLog.d("[cmshow]ApolloGuestsStateActivity", 2, "today is flowered");
+          }
+          return;
+        }
+        VipUtils.a(this.app, "cmshow", "Apollo", "y_dresscheckflower", this.mFrom, 1, new String[0]);
+        this.mHasPraised = true;
+        playSendFlowerAnimation();
+        this.mPresenter.b();
         return;
       }
-      if (!this.jdField_d_of_type_Boolean) {
-        break;
-      }
-      QQToast.a(this, 1, alud.a(2131700773), 0).b(super.getResources().getDimensionPixelSize(2131298914));
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloGuestsStateActivity", 2, "today is flowered");
-    return;
-    VipUtils.a(this.app, "cmshow", "Apollo", "y_dresscheckflower", this.jdField_d_of_type_Int, 1, new String[0]);
-    this.jdField_d_of_type_Boolean = true;
-    f();
-    this.jdField_a_of_type_Aldl.b();
-    return;
-    label245:
-    int i = paramView.getId();
-    Object localObject = (alen)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    VipUtils.a(this.app, "cmshow", "Apollo", "dresscheckclick", this.jdField_d_of_type_Int, 0, new String[] { "" + i });
-    if ("isRole".equals((String)paramView.getTag())) {}
-    for (paramView = "&view=role," + this.jdField_a_of_type_Int;; paramView = "&dressId=" + i + "&roleId=" + this.jdField_a_of_type_Int)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("extra_key_url_append", paramView);
-      ApolloUtil.a(this, (Intent)localObject, "mycmshow", aliu.ah, null);
-      return;
-      if ((((alen)localObject).i > 0) && (((alen)localObject).j == 1))
+      int i = paramView.getId();
+      Object localObject1 = (DressDescriptionItem)this.mDressDescriptionMaps.get(i);
+      Object localObject2 = this.app;
+      int j = this.mFrom;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(i);
+      VipUtils.a((AppInterface)localObject2, "cmshow", "Apollo", "dresscheckclick", j, 0, new String[] { localStringBuilder.toString() });
+      doApolloDtReport("click_store");
+      if ("isRole".equals((String)paramView.getTag()))
       {
-        ApolloUtil.a(this, "&id=" + ((alen)localObject).i + "&type=" + 4, "aio");
-        return;
+        paramView = new StringBuilder();
+        paramView.append("&view=role,");
+        paramView.append(this.mRoleId);
+        paramView = paramView.toString();
       }
+      else
+      {
+        if ((((DressDescriptionItem)localObject1).j > 0) && (((DressDescriptionItem)localObject1).k == 1))
+        {
+          paramView = new StringBuilder();
+          paramView.append("&id=");
+          paramView.append(((DressDescriptionItem)localObject1).j);
+          paramView.append("&type=");
+          paramView.append(4);
+          ApolloUtilImpl.openCollectCard(this, paramView.toString(), "aio");
+          return;
+        }
+        paramView = new StringBuilder();
+        paramView.append("&dressId=");
+        paramView.append(i);
+        paramView.append("&roleId=");
+        paramView.append(this.mRoleId);
+        paramView = paramView.toString();
+      }
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("extra_key_url_append", paramView);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("openApolloStore urlPara :");
+      ((StringBuilder)localObject2).append(paramView);
+      QLog.d("[cmshow]ApolloGuestsStateActivity", 1, ((StringBuilder)localObject2).toString());
+      ((IApolloUtil)QRoute.api(IApolloUtil.class)).openApolloStore(this, (Intent)localObject1, "mycmshow", ApolloConstant.H, null);
+    }
+  }
+  
+  public void onDressChange()
+  {
+    if (this.mSurfaceView.getRenderImpl() != null) {
+      this.mSurfaceView.getRenderImpl().a();
+    }
+  }
+  
+  public void onLoadApolloInfo(int[] paramArrayOfInt, int paramInt)
+  {
+    float f = (float)Math.max(DeviceInfoUtil.C(), DeviceInfoUtil.B()) / 3.25F / 368.0F;
+    Object localObject = this.mSurfaceView;
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((ApolloTextureView)localObject).getRenderImpl();
+    if (localObject == null) {
+      return;
+    }
+    ((ApolloRenderInterfaceImpl)localObject).a(1, null, paramInt, f, this.mApolloWidth, 0.0F);
+    if (paramInt == 0) {
+      ((ApolloRenderInterfaceImpl)localObject).a(1, null, ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(paramInt), null);
+    } else if ((paramInt > 0) && (paramArrayOfInt != null)) {
+      ((ApolloRenderInterfaceImpl)localObject).a(1, null, paramArrayOfInt, this.mPresenter);
+    }
+    this.mRoleId = paramInt;
+    if ((!this.mIsActionPlay) && (this.mSurfaceView.getRender() != null))
+    {
+      this.mSurfaceView.getRender().setRenderCallback(this.mRenderCallback);
+      paramArrayOfInt = ApolloActionHelperImpl.getActionRscPath(4, -1, this.mRoleId, true);
+      ((ApolloRenderInterfaceImpl)localObject).a(1, null, 5, 0, paramArrayOfInt[0], paramArrayOfInt[1]);
+      this.mIsActionPlay = true;
+    }
+  }
+  
+  public void onTagLoad(List<DressDescriptionItem> paramList)
+  {
+    Object localObject = this.mHandler;
+    if ((localObject != null) && (paramList != null))
+    {
+      localObject = ((Handler)localObject).obtainMessage(1);
+      ((Message)localObject).obj = paramList;
+      ((Message)localObject).sendToTarget();
+    }
+  }
+  
+  void postFresh(int paramInt)
+  {
+    super.runOnUiThread(new ApolloGuestsStateActivity.2(this, paramInt));
+  }
+  
+  void updateZan(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.mHandler;
+    if (localObject != null)
+    {
+      localObject = ((Handler)localObject).obtainMessage(0);
+      ((Message)localObject).arg1 = paramInt1;
+      ((Message)localObject).arg2 = paramInt2;
+      ((Message)localObject).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity
  * JD-Core Version:    0.7.0.1
  */

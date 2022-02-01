@@ -1,211 +1,237 @@
 package com.tencent.mm.plugin.fts.b;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bg;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.j;
+import com.tencent.mm.plugin.fts.a.a;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.d;
+import com.tencent.mm.plugin.fts.a.h;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.wcdb.database.SQLiteStatement;
+import java.util.Iterator;
+import java.util.List;
 
 public final class b
-  extends com.tencent.mm.plugin.fts.a.b
+  extends a
 {
-  m ezf;
-  private c<bg> fAZ;
-  com.tencent.mm.plugin.fts.c.b mUI;
-  private c mUc;
+  private SQLiteStatement HwA;
+  public SQLiteStatement HwB;
+  public SQLiteStatement Hwv;
+  public SQLiteStatement Hww;
+  private SQLiteStatement Hwx;
+  public SQLiteStatement Hwy;
+  public SQLiteStatement Hwz;
   
-  public b()
+  public final void A(String paramString, List<Long> paramList)
   {
-    AppMethodBeat.i(136724);
-    this.mUc = new b.1(this);
-    this.fAZ = new b.2(this);
-    AppMethodBeat.o(136724);
-  }
-  
-  public static com.tencent.mm.vfs.b bCk()
-  {
-    AppMethodBeat.i(136728);
-    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(new com.tencent.mm.vfs.b(com.tencent.mm.compatible.util.e.eQw, "fts"), "feature");
-    if (!localb.exists()) {
-      localb.mkdirs();
-    }
-    AppMethodBeat.o(136728);
-    return localb;
-  }
-  
-  public static com.tencent.mm.vfs.b bCl()
-  {
-    AppMethodBeat.i(136729);
-    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(bCk(), "fts_feature");
-    if (!localb.exists()) {
-      localb.mkdirs();
-    }
-    AppMethodBeat.o(136729);
-    return localb;
-  }
-  
-  /* Error */
-  static int bCm()
-  {
-    // Byte code:
-    //   0: ldc_w 291
-    //   3: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 56	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
-    //   9: invokevirtual 297	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   12: astore_2
-    //   13: iconst_m1
-    //   14: istore_0
-    //   15: new 299	java/io/BufferedReader
-    //   18: dup
-    //   19: new 301	java/io/InputStreamReader
-    //   22: dup
-    //   23: aload_2
-    //   24: ldc_w 303
-    //   27: invokevirtual 309	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   30: invokespecial 312	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   33: invokespecial 315	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   36: astore_3
-    //   37: aload_3
-    //   38: astore_2
-    //   39: aload_3
-    //   40: invokevirtual 318	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   43: invokestatic 193	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   46: invokevirtual 196	java/lang/Integer:intValue	()I
-    //   49: istore_1
-    //   50: iload_1
-    //   51: istore_0
-    //   52: aload_3
-    //   53: invokestatic 324	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   56: ldc_w 291
-    //   59: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   62: iload_0
-    //   63: ireturn
-    //   64: astore 4
-    //   66: aconst_null
-    //   67: astore_3
-    //   68: aload_3
-    //   69: astore_2
-    //   70: ldc 84
-    //   72: aload 4
-    //   74: aload 4
-    //   76: invokevirtual 327	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   79: iconst_0
-    //   80: anewarray 78	java/lang/Object
-    //   83: invokestatic 331	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   86: aload_3
-    //   87: invokestatic 324	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   90: goto -34 -> 56
-    //   93: astore_3
-    //   94: aconst_null
-    //   95: astore_2
-    //   96: aload_2
-    //   97: invokestatic 324	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   100: ldc_w 291
-    //   103: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   106: aload_3
-    //   107: athrow
-    //   108: astore_3
-    //   109: goto -13 -> 96
-    //   112: astore 4
-    //   114: goto -46 -> 68
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   14	49	0	i	int
-    //   49	2	1	j	int
-    //   12	85	2	localObject1	Object
-    //   36	51	3	localBufferedReader	java.io.BufferedReader
-    //   93	14	3	localObject2	Object
-    //   108	1	3	localObject3	Object
-    //   64	11	4	localException1	Exception
-    //   112	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   15	37	64	java/lang/Exception
-    //   15	37	93	finally
-    //   39	50	108	finally
-    //   70	86	108	finally
-    //   39	50	112	java/lang/Exception
-  }
-  
-  static int k(com.tencent.mm.vfs.b paramb)
-  {
-    AppMethodBeat.i(136730);
-    paramb = new com.tencent.mm.vfs.b(paramb, "version.info");
-    int i = -1;
-    for (;;)
+    AppMethodBeat.i(52785);
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      try
-      {
-        if (!paramb.exists()) {
-          continue;
-        }
-        int j = Integer.parseInt(com.tencent.mm.vfs.e.cS(j.p(paramb.dQJ())), 10);
-        i = j;
+      AppMethodBeat.o(52785);
+      return;
+    }
+    boolean bool = this.HqR.inTransaction();
+    if (!bool) {
+      this.HqR.beginTransaction();
+    }
+    this.Hwy.bindString(1, paramString);
+    paramString = paramList.iterator();
+    while (paramString.hasNext())
+    {
+      long l = ((Long)paramString.next()).longValue();
+      this.Hwy.bindLong(2, l);
+      this.Hwy.execute();
+    }
+    if (!bool) {
+      this.HqR.commit();
+    }
+    AppMethodBeat.o(52785);
+  }
+  
+  public final Cursor a(j paramj, String paramString, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  {
+    AppMethodBeat.i(52792);
+    String str = paramj.fxx();
+    if (Util.isNullOrNil(paramString))
+    {
+      paramj = "";
+      if ((paramArrayOfInt1 == null) || (paramArrayOfInt1.length <= 0)) {
+        break label196;
       }
-      catch (Exception paramb)
-      {
-        ab.printErrStackTrace("MicroMsg.FTS.FTS5SearchFeatureLogic", paramb, "getFeatureVersion", new Object[0]);
-        continue;
+      paramString = " AND type IN " + d.G(paramArrayOfInt1);
+      label50:
+      if ((paramArrayOfInt2 == null) || (paramArrayOfInt2.length <= 0)) {
+        break label202;
       }
-      AppMethodBeat.o(136730);
-      return i;
-      ab.i("MicroMsg.FTS.FTS5SearchFeatureLogic", "version file %s not exist", new Object[] { j.p(paramb.dQJ()) });
+    }
+    label196:
+    label202:
+    for (paramArrayOfInt1 = " AND subtype IN " + d.G(paramArrayOfInt2);; paramArrayOfInt1 = "")
+    {
+      paramj = String.format("SELECT aux_index, type, subtype FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s'" + paramj + paramString + paramArrayOfInt1 + " AND status >= 0 ORDER BY subtype;", new Object[] { fxn(), fxo(), fxn(), fxo(), fxo(), str });
+      paramj = this.HqR.rawQuery(paramj, null);
+      AppMethodBeat.o(52792);
+      return paramj;
+      paramj = String.format(" AND aux_index = '%s'", new Object[] { paramString });
+      break;
+      paramString = "";
+      break label50;
     }
   }
   
-  public final boolean Pp()
+  public final void aEA(String paramString)
   {
-    AppMethodBeat.i(136727);
-    this.mUc.dead();
-    this.fAZ.dead();
-    this.mUI = null;
-    this.ezf = null;
-    AppMethodBeat.o(136727);
+    AppMethodBeat.i(52786);
+    this.HwA.bindString(1, paramString);
+    this.HwA.execute();
+    AppMethodBeat.o(52786);
+  }
+  
+  public final Cursor aEB(String paramString)
+  {
+    AppMethodBeat.i(52787);
+    paramString = this.HqR.rawQuery("SELECT DISTINCT chatroom FROM FTS5ChatRoomMembers WHERE member=?;", new String[] { paramString });
+    AppMethodBeat.o(52787);
+    return paramString;
+  }
+  
+  public final void aEC(String paramString)
+  {
+    AppMethodBeat.i(52789);
+    this.Hwx.bindString(1, paramString);
+    this.Hwx.execute();
+    AppMethodBeat.o(52789);
+  }
+  
+  public final void aXv()
+  {
+    AppMethodBeat.i(52783);
+    if (aXw()) {
+      this.HqR.aG(-102L, 5L);
+    }
+    this.HqR.execSQL("CREATE TABLE IF NOT EXISTS FTS5ChatRoomMembers (chatroom TEXT, member TEXT);");
+    this.HqR.execSQL("CREATE INDEX IF NOT EXISTS FTS5ChatRoomMembers_chatroom ON FTS5ChatRoomMembers(chatroom);");
+    this.HqR.execSQL("CREATE INDEX IF NOT EXISTS FTS5ChatRoomMembers_member ON FTS5ChatRoomMembers(member);");
+    this.HqR.execSQL("CREATE TABLE IF NOT EXISTS FTS5ContactLabels (user TEXT, label_id INTEGER);");
+    this.HqR.execSQL("CREATE INDEX IF NOT EXISTS FTS5ContactLabels_user ON FTS5ContactLabels(user);");
+    this.HqR.execSQL("CREATE INDEX IF NOT EXISTS FTS5ContactLabels_label ON FTS5ContactLabels(label_id);");
+    this.Hwv = this.HqR.compileStatement("INSERT INTO FTS5ChatRoomMembers (chatroom, member) VALUES (?, ?);");
+    this.Hww = this.HqR.compileStatement("DELETE FROM FTS5ChatRoomMembers WHERE chatroom=? AND member=?;");
+    this.Hwx = this.HqR.compileStatement("DELETE FROM FTS5ChatRoomMembers WHERE chatroom=?;");
+    this.Hwy = this.HqR.compileStatement("INSERT INTO FTS5ContactLabels (user, label_id) VALUES (?, ?);");
+    this.Hwz = this.HqR.compileStatement("DELETE FROM FTS5ContactLabels WHERE user=? AND label_id=?;");
+    this.HwA = this.HqR.compileStatement("DELETE FROM FTS5ContactLabels WHERE user=?;");
+    this.HwB = this.HqR.compileStatement("SELECT changes();");
+    AppMethodBeat.o(52783);
+  }
+  
+  public final boolean aXw()
+  {
+    AppMethodBeat.i(52791);
+    if (!iV(-102, 5))
+    {
+      AppMethodBeat.o(52791);
+      return true;
+    }
+    AppMethodBeat.o(52791);
+    return false;
+  }
+  
+  public final boolean aXx()
+  {
+    AppMethodBeat.i(52784);
+    super.aXx();
+    this.Hwv.close();
+    this.Hww.close();
+    this.Hwx.close();
+    this.Hwy.close();
+    this.Hwz.close();
+    this.HwA.close();
+    this.HwB.close();
+    AppMethodBeat.o(52784);
     return true;
   }
   
-  public final a a(i parami)
+  public final boolean b(j paramj)
   {
-    AppMethodBeat.i(136725);
-    parami = new b.c(this, parami, (byte)0);
-    parami = this.ezf.a(-65536, parami);
-    AppMethodBeat.o(136725);
-    return parami;
+    AppMethodBeat.i(52793);
+    paramj = String.format("SELECT 1 FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND type=131072 LIMIT 1;", new Object[] { fxn(), fxo(), fxn(), fxo(), fxo(), paramj.fxy() });
+    paramj = this.HqR.rawQuery(paramj, null);
+    boolean bool = paramj.moveToNext();
+    paramj.close();
+    AppMethodBeat.o(52793);
+    return bool;
+  }
+  
+  public final String dRh()
+  {
+    AppMethodBeat.i(52790);
+    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0);", new Object[] { fxn() });
+    AppMethodBeat.o(52790);
+    return str;
+  }
+  
+  public final boolean fxr()
+  {
+    return true;
+  }
+  
+  public final String getLogTag()
+  {
+    return "MicroMsg.FTS.FTS5ContactStorage";
   }
   
   public final String getName()
   {
-    return "FTS5SearchFeatureLogic";
+    return "FTS5ContactStorage";
   }
   
-  public final boolean onCreate()
+  public final int getPriority()
   {
-    AppMethodBeat.i(136726);
-    if (!((n)g.G(n.class)).isFTSContextReady())
+    return 3;
+  }
+  
+  public final String getTableName()
+  {
+    return "Contact";
+  }
+  
+  public final int getType()
+  {
+    return 3;
+  }
+  
+  public final void j(String paramString, String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(52788);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
-      ab.i("MicroMsg.FTS.FTS5SearchFeatureLogic", "Create Fail!");
-      AppMethodBeat.o(136726);
-      return false;
+      AppMethodBeat.o(52788);
+      return;
     }
-    ab.i("MicroMsg.FTS.FTS5SearchFeatureLogic", "Create Success!");
-    this.ezf = ((n)g.G(n.class)).getFTSTaskDaemon();
-    this.mUI = ((com.tencent.mm.plugin.fts.c.b)((n)g.G(n.class)).getFTSIndexStorage(17));
-    this.mUc.alive();
-    this.fAZ.alive();
-    this.ezf.a(131132, new b.b(this, (byte)0));
-    this.ezf.a(131133, new b.a(this, (byte)0));
-    AppMethodBeat.o(136726);
-    return true;
+    boolean bool = this.HqR.inTransaction();
+    if (!bool) {
+      this.HqR.beginTransaction();
+    }
+    this.Hwv.bindString(1, paramString);
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramString = paramArrayOfString[i];
+      this.Hwv.bindString(2, paramString);
+      this.Hwv.execute();
+      i += 1;
+    }
+    if (!bool) {
+      this.HqR.commit();
+    }
+    AppMethodBeat.o(52788);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.b
  * JD-Core Version:    0.7.0.1
  */

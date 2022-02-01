@@ -13,20 +13,26 @@ class b
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QLog.d("MsfWtloginHelper", 2, " onServiceConnected service:" + paramComponentName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" onServiceConnected service:");
+    localStringBuilder.append(paramComponentName);
+    QLog.d("MsfWtloginHelper", 2, localStringBuilder.toString());
     this.a._baseService = IWtloginService.Stub.asInterface(paramIBinder);
     MsfWtloginHelper.access$000(this.a);
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    QLog.d("MsfWtloginHelper", 2, " onServiceDisconnected " + paramComponentName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" onServiceDisconnected ");
+    localStringBuilder.append(paramComponentName);
+    QLog.d("MsfWtloginHelper", 2, localStringBuilder.toString());
     this.a._baseService = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.wtlogin.b
  * JD-Core Version:    0.7.0.1
  */

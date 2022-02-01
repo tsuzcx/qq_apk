@@ -52,26 +52,31 @@ public final class CSFileUpdateReq
   public final void writeTo(l paraml)
   {
     paraml.a(this.vItems, 0);
-    if (this.sAppId != null) {
-      paraml.a(this.sAppId, 1);
+    String str = this.sAppId;
+    if (str != null) {
+      paraml.a(str, 1);
     }
-    if (this.sSDKVersion != null) {
-      paraml.a(this.sSDKVersion, 2);
+    str = this.sSDKVersion;
+    if (str != null) {
+      paraml.a(str, 2);
     }
-    if (this.sCity != null) {
-      paraml.a(this.sCity, 3);
+    str = this.sCity;
+    if (str != null) {
+      paraml.a(str, 3);
     }
-    if (this.sEngineVersion != null) {
-      paraml.a(this.sEngineVersion, 4);
+    str = this.sEngineVersion;
+    if (str != null) {
+      paraml.a(str, 4);
     }
-    if (this.sId != null) {
-      paraml.a(this.sId, 5);
+    str = this.sId;
+    if (str != null) {
+      paraml.a(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.conf.CSFileUpdateReq
  * JD-Core Version:    0.7.0.1
  */

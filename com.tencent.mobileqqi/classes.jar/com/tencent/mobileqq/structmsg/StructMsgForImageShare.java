@@ -31,8 +31,8 @@ import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
-import gkr;
-import glb;
+import gkq;
+import gla;
 import java.io.File;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -44,7 +44,7 @@ public class StructMsgForImageShare
   extends AbsShareMsg
 {
   private static final int F = 288;
-  private static View.OnClickListener a = new glb();
+  private static View.OnClickListener a = new gla();
   public int mIsSend = 1;
   public int mMsgType = 0;
   public long mUniseq = 0L;
@@ -466,11 +466,11 @@ public class StructMsgForImageShare
     this.mCompatibleText = paramObjectInput.readUTF();
   }
   
-  protected void toContentXml(gkr paramgkr)
+  protected void toContentXml(gkq paramgkq)
   {
     Iterator localIterator = iterator();
     while (localIterator.hasNext()) {
-      ((AbsStructMsgElement)localIterator.next()).a(paramgkr);
+      ((AbsStructMsgElement)localIterator.next()).a(paramgkq);
     }
   }
   

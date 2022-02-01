@@ -1,190 +1,120 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
 import java.util.LinkedList;
 
 public final class axc
-  extends buy
+  extends com.tencent.mm.bx.a
 {
-  public String cqf;
-  public String npZ;
-  public String scope;
-  public String signature;
-  public String url;
-  public String xmo;
-  public String xmq;
-  public String xmr;
-  public b xms;
-  public int xmt;
+  public FinderContact contact;
+  public int displayFlag;
+  public int eQp;
+  public boolean hHq;
+  public String hJS;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(10198);
+    AppMethodBeat.i(168954);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.contact != null)
       {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.contact.computeSize());
+        this.contact.writeFields(paramVarArgs);
       }
-      if (this.url != null) {
-        paramVarArgs.e(2, this.url);
+      paramVarArgs.bS(2, this.eQp);
+      if (this.hJS != null) {
+        paramVarArgs.g(3, this.hJS);
       }
-      if (this.npZ != null) {
-        paramVarArgs.e(3, this.npZ);
+      paramVarArgs.di(4, this.hHq);
+      paramVarArgs.bS(5, this.displayFlag);
+      if (this.username != null) {
+        paramVarArgs.g(6, this.username);
       }
-      if (this.xmo != null) {
-        paramVarArgs.e(4, this.xmo);
-      }
-      if (this.cqf != null) {
-        paramVarArgs.e(5, this.cqf);
-      }
-      if (this.xmq != null) {
-        paramVarArgs.e(6, this.xmq);
-      }
-      if (this.signature != null) {
-        paramVarArgs.e(7, this.signature);
-      }
-      if (this.xmr != null) {
-        paramVarArgs.e(8, this.xmr);
-      }
-      if (this.xms != null) {
-        paramVarArgs.c(9, this.xms);
-      }
-      paramVarArgs.aO(10, this.xmt);
-      if (this.scope != null) {
-        paramVarArgs.e(11, this.scope);
-      }
-      AppMethodBeat.o(10198);
+      AppMethodBeat.o(168954);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label923;
+      if (this.contact == null) {
+        break label536;
       }
     }
-    label923:
-    for (int i = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label536:
+    for (paramInt = i.a.a.a.qC(1, this.contact.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.eQp);
       paramInt = i;
-      if (this.url != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.url);
+      if (this.hJS != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.hJS);
       }
-      i = paramInt;
-      if (this.npZ != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.npZ);
-      }
+      i = paramInt + (i.a.a.b.b.a.ko(4) + 1) + i.a.a.b.b.a.cJ(5, this.displayFlag);
       paramInt = i;
-      if (this.xmo != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.xmo);
+      if (this.username != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.username);
       }
-      i = paramInt;
-      if (this.cqf != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.cqf);
-      }
-      paramInt = i;
-      if (this.xmq != null) {
-        paramInt = i + e.a.a.b.b.a.f(6, this.xmq);
-      }
-      i = paramInt;
-      if (this.signature != null) {
-        i = paramInt + e.a.a.b.b.a.f(7, this.signature);
-      }
-      paramInt = i;
-      if (this.xmr != null) {
-        paramInt = i + e.a.a.b.b.a.f(8, this.xmr);
-      }
-      i = paramInt;
-      if (this.xms != null) {
-        i = paramInt + e.a.a.b.b.a.b(9, this.xms);
-      }
-      i += e.a.a.b.b.a.bl(10, this.xmt);
-      paramInt = i;
-      if (this.scope != null) {
-        paramInt = i + e.a.a.b.b.a.f(11, this.scope);
-      }
-      AppMethodBeat.o(10198);
+      AppMethodBeat.o(168954);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(10198);
+        AppMethodBeat.o(168954);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         axc localaxc = (axc)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(10198);
+          AppMethodBeat.o(168954);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localaxc.BaseRequest = ((hq)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            FinderContact localFinderContact = new FinderContact();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localFinderContact.parseFrom((byte[])localObject);
+            }
+            localaxc.contact = localFinderContact;
             paramInt += 1;
           }
-          AppMethodBeat.o(10198);
+          AppMethodBeat.o(168954);
           return 0;
         case 2: 
-          localaxc.url = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(10198);
+          localaxc.eQp = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(168954);
           return 0;
         case 3: 
-          localaxc.npZ = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(10198);
+          localaxc.hJS = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(168954);
           return 0;
         case 4: 
-          localaxc.xmo = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(10198);
+          localaxc.hHq = ((i.a.a.a.a)localObject).ajGk.aai();
+          AppMethodBeat.o(168954);
           return 0;
         case 5: 
-          localaxc.cqf = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(10198);
-          return 0;
-        case 6: 
-          localaxc.xmq = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(10198);
-          return 0;
-        case 7: 
-          localaxc.signature = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(10198);
-          return 0;
-        case 8: 
-          localaxc.xmr = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(10198);
-          return 0;
-        case 9: 
-          localaxc.xms = ((e.a.a.a.a)localObject1).CLY.eqS();
-          AppMethodBeat.o(10198);
-          return 0;
-        case 10: 
-          localaxc.xmt = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(10198);
+          localaxc.displayFlag = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(168954);
           return 0;
         }
-        localaxc.scope = ((e.a.a.a.a)localObject1).CLY.readString();
-        AppMethodBeat.o(10198);
+        localaxc.username = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(168954);
         return 0;
       }
-      AppMethodBeat.o(10198);
+      AppMethodBeat.o(168954);
       return -1;
     }
   }

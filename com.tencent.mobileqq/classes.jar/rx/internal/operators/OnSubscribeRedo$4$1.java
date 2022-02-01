@@ -28,14 +28,13 @@ class OnSubscribeRedo$4$1
   {
     if (!this.this$1.val$child.isUnsubscribed())
     {
-      if (this.this$1.val$consumerCapacity.get() > 0L) {
+      if (this.this$1.val$consumerCapacity.get() > 0L)
+      {
         this.this$1.val$worker.schedule(this.this$1.val$subscribeToSource);
+        return;
       }
+      this.this$1.val$resumeBoundary.compareAndSet(false, true);
     }
-    else {
-      return;
-    }
-    this.this$1.val$resumeBoundary.compareAndSet(false, true);
   }
   
   public void setProducer(Producer paramProducer)
@@ -45,7 +44,7 @@ class OnSubscribeRedo$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeRedo.4.1
  * JD-Core Version:    0.7.0.1
  */

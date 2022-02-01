@@ -1,22 +1,42 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import alwd;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.qphone.base.util.QLog;
 
 class AddContactsView$11
-  implements Runnable
+  extends LBSObserver
 {
   AddContactsView$11(AddContactsView paramAddContactsView) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    Object localObject = (alwd)this.this$0.a.getManager(159);
-    int i = ((alwd)localObject).a();
-    localObject = ((alwd)localObject).b();
-    ThreadManager.getUIHandler().post(new AddContactsView.11.1(this, i, (ArrayList)localObject));
+    if (paramBoolean) {
+      this.a.B = paramLBSInfo.a();
+    }
+    if ((this.a.B == null) || (this.a.B.length != 4)) {
+      this.a.B = new String[] { "-1", "-1", "-1", "-1" };
+    }
+    if (this.a.s) {
+      this.a.f();
+    }
+    if (!"-1".equals(this.a.B[0]))
+    {
+      this.a.B[3] = "0";
+      this.a.r.a(this.a.B);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramLBSInfo = new StringBuilder();
+      paramLBSInfo.append("onGetUserLocation|isSuccess : ");
+      paramLBSInfo.append(paramBoolean);
+      paramLBSInfo.append(", autoReqLocation : ");
+      paramLBSInfo.append(this.a.s);
+      paramLBSInfo.append(", locationCodes[0] : ");
+      paramLBSInfo.append(this.a.B[0]);
+      QLog.d("AddContactsView", 2, paramLBSInfo.toString());
+    }
   }
 }
 

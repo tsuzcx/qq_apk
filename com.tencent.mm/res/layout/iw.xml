@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/acu" layout="@layout/l4" />
-    <ImageView android:id="@id/ae1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <LinearLayout style="@style/lj">
+        <EditText android:id="@id/a_6" android:hint="@string/ama" android:inputType="number" style="@style/n9" />
+        <View style="@style/n5" />
+        <EditText android:id="@id/a_5" android:hint="@string/am_" style="@style/n8" />
+    </LinearLayout>
+</LinearLayout>

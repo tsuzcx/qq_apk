@@ -1,33 +1,33 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import android.os.Build;
-import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
+import androidx.viewpager.widget.ViewPager.PageTransformer;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import wxe;
 
 public class ThreeDTransformer
   implements ViewPager.PageTransformer
 {
-  float jdField_a_of_type_Float;
   public int a;
-  HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  boolean jdField_a_of_type_Boolean = true;
-  boolean b = true;
-  boolean c = false;
-  boolean d = false;
-  boolean e = "HUAWEI".equalsIgnoreCase(Build.MANUFACTURER);
+  float b;
+  boolean c = true;
+  boolean d = true;
+  boolean e = false;
+  boolean f = false;
+  boolean g = "HUAWEI".equalsIgnoreCase(Build.MANUFACTURER);
+  HashMap<Integer, Integer> h = new HashMap();
   
   public ThreeDTransformer(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.c = paramBoolean1;
-    this.d = paramBoolean2;
+    this.e = paramBoolean1;
+    this.f = paramBoolean2;
   }
   
   private void a(View paramView)
   {
-    if (this.e)
+    if (this.g)
     {
       paramView.setScaleX(1.0F);
       paramView.setTranslationX(0.0F);
@@ -38,75 +38,79 @@ public class ThreeDTransformer
   
   private void a(View paramView, float paramFloat)
   {
-    int i;
-    boolean bool;
-    label144:
-    StringBuilder localStringBuilder;
-    if ((this.jdField_a_of_type_Int == 0) && (paramFloat < 0.0F) && (paramFloat >= -1.0F))
+    if ((this.a == 0) && (paramFloat < 0.0F) && (paramFloat >= -1.0F))
     {
-      i = paramView.hashCode();
-      if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)) == null)
+      int i = paramView.hashCode();
+      if (this.h.get(Integer.valueOf(i)) == null)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(0));
-        wxe.b("ThreeDTransformer", "mInitMatcher viewId: " + i + " | count: " + 0);
+        this.h.put(Integer.valueOf(i), Integer.valueOf(0));
+        paramView = new StringBuilder();
+        paramView.append("mInitMatcher viewId: ");
+        paramView.append(i);
+        paramView.append(" | count: ");
+        paramView.append(0);
+        SLog.b("ThreeDTransformer", paramView.toString());
+      }
+      else
+      {
+        this.a = i;
+        this.b = paramFloat;
+        this.h.clear();
+        paramView = new StringBuilder();
+        paramView.append("initDrawingView pos: ");
+        paramView.append(this.a);
+        SLog.b("ThreeDTransformer", paramView.toString());
+        return;
       }
     }
-    else if ((this.jdField_a_of_type_Int != 0) && (paramFloat < 0.0F) && (paramFloat >= -1.0F) && (this.b))
+    if ((this.a != 0) && (paramFloat < 0.0F) && (paramFloat >= -1.0F) && (this.d))
     {
-      if (paramFloat >= this.jdField_a_of_type_Float) {
-        break label233;
+      boolean bool;
+      if (paramFloat < this.b) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label239;
+      this.c = bool;
+      if (this.c) {
+        a();
+      } else {
+        b();
       }
-      a();
-      this.b = false;
-      localStringBuilder = new StringBuilder().append("initDrawingView direction: ");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label246;
+      this.d = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initDrawingView direction: ");
+      if (this.c) {
+        paramView = "toLeft";
+      } else {
+        paramView = "toRight";
       }
-    }
-    label233:
-    label239:
-    label246:
-    for (paramView = "toLeft";; paramView = "toRight")
-    {
-      wxe.b("ThreeDTransformer", paramView);
-      return;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Float = paramFloat;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      wxe.b("ThreeDTransformer", "initDrawingView pos: " + this.jdField_a_of_type_Int);
-      return;
-      bool = false;
-      break;
-      b();
-      break label144;
+      localStringBuilder.append(paramView);
+      SLog.b("ThreeDTransformer", localStringBuilder.toString());
     }
   }
   
   private void a(View paramView, float paramFloat, boolean paramBoolean)
   {
+    boolean bool = this.c;
     float f2 = 0.0F;
     float f1 = 0.0F;
-    if (this.jdField_a_of_type_Boolean)
+    if (bool)
     {
-      if (this.d)
+      if (this.f)
       {
         if (paramBoolean) {
           f1 = paramView.getMeasuredWidth();
         }
         paramView.setPivotX(f1);
         paramView.setPivotY(paramView.getMeasuredHeight() * 0.5F);
-        paramView.setRotationY(20.0F * paramFloat);
+        paramView.setRotationY(paramFloat * 20.0F);
         return;
       }
       paramView.setRotationY(0.0F);
       return;
     }
-    if (this.c)
+    if (this.e)
     {
       f1 = f2;
       if (paramBoolean) {
@@ -114,7 +118,7 @@ public class ThreeDTransformer
       }
       paramView.setPivotX(f1);
       paramView.setPivotY(paramView.getMeasuredHeight() * 0.5F);
-      paramView.setRotationY(20.0F * paramFloat);
+      paramView.setRotationY(paramFloat * 20.0F);
       return;
     }
     paramView.setRotationY(0.0F);
@@ -122,38 +126,50 @@ public class ThreeDTransformer
   
   private void b(View paramView, float paramFloat)
   {
-    if (this.jdField_a_of_type_Int == paramView.hashCode())
+    if (this.a == paramView.hashCode())
     {
-      this.jdField_a_of_type_Float = paramFloat;
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreeDTransformer", 2, "mlastPos: " + this.jdField_a_of_type_Float + " | mDragingViewID: " + this.jdField_a_of_type_Int);
+      this.b = paramFloat;
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("mlastPos: ");
+        paramView.append(this.b);
+        paramView.append(" | mDragingViewID: ");
+        paramView.append(this.a);
+        QLog.d("ThreeDTransformer", 2, paramView.toString());
       }
       if ((paramFloat <= -1.0F) || (paramFloat >= 0.0F))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ThreeDTransformer", 2, "is OVER");
         }
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_a_of_type_Float = 0.0F;
-        this.b = true;
+        this.a = 0;
+        this.b = 0.0F;
+        this.d = true;
       }
     }
   }
   
   private void b(View paramView, float paramFloat, boolean paramBoolean)
   {
-    float f2 = (float)(Math.sin((1.0F + paramFloat) * 3.141592653589793D) * 0.1599999964237213D);
-    float f1 = (float)(Math.sin((1.0F - paramFloat) * 3.141592653589793D) * 0.1599999964237213D);
-    f2 += 1.0F + paramFloat;
-    paramFloat = f1 + (1.0F - paramFloat);
-    if (this.jdField_a_of_type_Boolean)
+    float f1 = paramFloat + 1.0F;
+    double d1 = f1;
+    Double.isNaN(d1);
+    float f2 = (float)(Math.sin(d1 * 3.141592653589793D) * 0.1599999964237213D);
+    paramFloat = 1.0F - paramFloat;
+    d1 = paramFloat;
+    Double.isNaN(d1);
+    float f3 = (float)(Math.sin(d1 * 3.141592653589793D) * 0.1599999964237213D);
+    f1 += f2;
+    paramFloat += f3;
+    if (this.c)
     {
-      if (this.d)
+      if (this.f)
       {
         if (paramBoolean)
         {
-          paramView.setScaleX(f2);
-          paramView.setTranslationX((1.0F - f2) * paramView.getMeasuredWidth() / 2.0F);
+          paramView.setScaleX(f1);
+          paramView.setTranslationX(paramView.getMeasuredWidth() * (1.0F - f1) / 2.0F);
           return;
         }
         paramView.setScaleX(paramFloat);
@@ -164,12 +180,12 @@ public class ThreeDTransformer
       paramView.setTranslationX(0.0F);
       return;
     }
-    if (this.c)
+    if (this.e)
     {
       if (paramBoolean)
       {
-        paramView.setScaleX(f2);
-        paramView.setTranslationX((1.0F - f2) * paramView.getMeasuredWidth() / 2.0F);
+        paramView.setScaleX(f1);
+        paramView.setTranslationX(paramView.getMeasuredWidth() * (1.0F - f1) / 2.0F);
         return;
       }
       paramView.setScaleX(paramFloat);
@@ -190,49 +206,44 @@ public class ThreeDTransformer
     paramView.setScaleX(1.0F);
     paramView.setTranslationX(0.0F);
     paramView.setTranslationY(0.0F);
-    if ((!this.c) && (!this.d))
+    if ((!this.e) && (!this.f))
     {
       a(paramView);
       return;
     }
     a(paramView, paramFloat);
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.a == 0)
     {
       a(paramView);
       return;
     }
     if (paramFloat <= -1.0F) {
       a(paramView);
-    }
-    for (;;)
+    } else if (paramFloat <= 0.0F)
     {
-      b(paramView, paramFloat);
-      return;
-      if (paramFloat <= 0.0F)
-      {
-        if (this.e) {
-          b(paramView, paramFloat, true);
-        } else {
-          a(paramView, paramFloat, true);
-        }
-      }
-      else if (paramFloat < 1.0F)
-      {
-        if (this.e) {
-          b(paramView, paramFloat, false);
-        } else {
-          a(paramView, paramFloat, false);
-        }
-      }
-      else {
-        a(paramView);
+      if (this.g) {
+        b(paramView, paramFloat, true);
+      } else {
+        a(paramView, paramFloat, true);
       }
     }
+    else if (paramFloat < 1.0F)
+    {
+      if (this.g) {
+        b(paramView, paramFloat, false);
+      } else {
+        a(paramView, paramFloat, false);
+      }
+    }
+    else {
+      a(paramView);
+    }
+    b(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.ThreeDTransformer
  * JD-Core Version:    0.7.0.1
  */

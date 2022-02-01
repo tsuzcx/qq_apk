@@ -29,7 +29,8 @@ public class ReleaseLooperHandler
   
   private void checkEnd()
   {
-    if ((this.mWhatList != null) && (this.mWhatList.size() == 0)) {
+    List localList = this.mWhatList;
+    if ((localList != null) && (localList.size() == 0)) {
       ThreadUtils.postDelayed(new ReleaseLooperHandler.1(this), 10000L);
     }
   }
@@ -40,10 +41,14 @@ public class ReleaseLooperHandler
     {
       if (this.mQueueHandler == null)
       {
-        TsLog.i("init queue " + this.mThreadName + " thread handler");
-        HandlerThread localHandlerThread = new HandlerThread(this.mThreadName);
-        localHandlerThread.start();
-        this.mQueueLooper = localHandlerThread.getLooper();
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("init queue ");
+        ((StringBuilder)localObject1).append(this.mThreadName);
+        ((StringBuilder)localObject1).append(" thread handler");
+        TsLog.i(((StringBuilder)localObject1).toString());
+        localObject1 = new HandlerThread(this.mThreadName);
+        ((HandlerThread)localObject1).start();
+        this.mQueueLooper = ((HandlerThread)localObject1).getLooper();
         this.mWhatList = new ArrayList();
         this.mQueueHandler = new CntHandler(this.mQueueLooper, this, this);
       }
@@ -51,8 +56,8 @@ public class ReleaseLooperHandler
     }
     finally
     {
-      localObject = finally;
-      throw localObject;
+      localObject2 = finally;
+      throw localObject2;
     }
   }
   
@@ -66,7 +71,11 @@ public class ReleaseLooperHandler
         this.mWhatList.clear();
         this.mWhatList = null;
         this.mQueueLooper.quit();
-        TsLog.i("end queue " + this.mThreadName + " thread handler");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("end queue ");
+        localStringBuilder.append(this.mThreadName);
+        localStringBuilder.append(" thread handler");
+        TsLog.i(localStringBuilder.toString());
       }
       return;
     }
@@ -108,11 +117,12 @@ public class ReleaseLooperHandler
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.mCallbackList != null)
+    Object localObject = this.mCallbackList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mCallbackList.iterator();
-      while (localIterator.hasNext()) {
-        if (((Handler.Callback)localIterator.next()).handleMessage(paramMessage)) {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((Handler.Callback)((Iterator)localObject).next()).handleMessage(paramMessage)) {
           return true;
         }
       }
@@ -160,9 +170,14 @@ public class ReleaseLooperHandler
         }
       }
       this.mQueueHandler.removeMessages(paramInt);
+      checkEnd();
+      return;
     }
     finally {}
-    checkEnd();
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public final boolean sendEmptyMessage(int paramInt)
@@ -231,7 +246,7 @@ public class ReleaseLooperHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler
  * JD-Core Version:    0.7.0.1
  */

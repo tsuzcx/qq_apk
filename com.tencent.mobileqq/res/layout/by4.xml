@@ -4,7 +4,7 @@
     <RelativeLayout android:id="@id/idl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_alignParentBottom="true">
         <View android:id="@id/ioe" android:background="@drawable/skin_setting_strip_line_theme_version2" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentTop="true" />
         <LinearLayout android:orientation="horizontal" android:id="@id/ee_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_centerVertical="true">
-            <CheckBox android:id="@id/as2" android:background="@drawable/nj" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:button="@null" />
+            <CheckBox android:id="@id/as2" android:background="@drawable/0x" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:button="@null" />
             <TextView android:textSize="@dimen/ayo" android:textColor="@color/skin_blue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:text="@string/a7k" />
         </LinearLayout>
     </RelativeLayout>

@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agnh;
-import agni;
 import com.tencent.ark.ArkDebugger;
 import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class ArkDebugChatPie$1
+class ArkDebugChatPie$1
   implements Runnable
 {
-  public ArkDebugChatPie$1(agnh paramagnh) {}
+  ArkDebugChatPie$1(ArkDebugChatPie paramArkDebugChatPie) {}
   
   public void run()
   {
     ArkDebugger.Create();
-    ArkDebugger.SetCallback(new agni(this));
-    agnh.a(this.this$0, ArkAppCenter.c());
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.c());
+    ArkDebugger.SetCallback(new ArkDebugChatPie.1.1(this));
+    ArkDebugChatPie localArkDebugChatPie = this.this$0;
+    ArkDebugChatPie.c(localArkDebugChatPie, ArkDebugChatPie.b(localArkDebugChatPie));
+    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkDebugChatPie.b(this.this$0));
     ArkDispatchTask.getInstance().postToMainThread(new ArkDebugChatPie.1.2(this));
   }
 }

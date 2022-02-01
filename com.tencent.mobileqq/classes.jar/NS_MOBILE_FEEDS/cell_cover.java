@@ -32,19 +32,21 @@ public final class cell_cover
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cover_id != null) {
-      paramJceOutputStream.write(this.cover_id, 0);
+    String str = this.cover_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.cover_ts, 1);
     paramJceOutputStream.write(this.cover_type, 2);
-    if (this.cover_music_h5url != null) {
-      paramJceOutputStream.write(this.cover_music_h5url, 3);
+    str = this.cover_music_h5url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_cover
  * JD-Core Version:    0.7.0.1
  */

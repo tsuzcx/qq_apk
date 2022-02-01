@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<animated-vector android:drawable="@drawable/a8"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <target android:name="icon" android:animation="@anim/g" />
-    <target android:name="generic_confirmation" android:animation="@anim/f" />
-</animated-vector>

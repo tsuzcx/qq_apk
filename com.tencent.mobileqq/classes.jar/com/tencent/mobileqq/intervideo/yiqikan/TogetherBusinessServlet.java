@@ -29,35 +29,28 @@ public class TogetherBusinessServlet
   private TogetherBusinessServlet.ResultInfo a(aio_media_open.ResultInfo paramResultInfo)
   {
     int i;
-    boolean bool;
-    if (!paramResultInfo.uint32_result.has())
-    {
+    if (!paramResultInfo.uint32_result.has()) {
       i = -1;
-      if (paramResultInfo.bool_show_err.has()) {
-        break label59;
-      }
-      bool = false;
-      label24:
-      if (paramResultInfo.bytes_errmsg.has()) {
-        break label70;
-      }
-    }
-    label59:
-    label70:
-    for (paramResultInfo = "";; paramResultInfo = paramResultInfo.bytes_errmsg.get().toStringUtf8())
-    {
-      return new TogetherBusinessServlet.ResultInfo(i, paramResultInfo, bool);
+    } else {
       i = paramResultInfo.uint32_result.get();
-      break;
-      bool = paramResultInfo.bool_show_err.get();
-      break label24;
     }
+    boolean bool;
+    if (!paramResultInfo.bool_show_err.has()) {
+      bool = false;
+    } else {
+      bool = paramResultInfo.bool_show_err.get();
+    }
+    if (!paramResultInfo.bytes_errmsg.has()) {
+      paramResultInfo = "";
+    } else {
+      paramResultInfo = paramResultInfo.bytes_errmsg.get().toStringUtf8();
+    }
+    return new TogetherBusinessServlet.ResultInfo(i, paramResultInfo, bool);
   }
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg.getResultCode() == 1000) {}
-    for (;;)
+    if (paramFromServiceMsg.getResultCode() == 1000)
     {
       try
       {
@@ -66,56 +59,50 @@ public class TogetherBusinessServlet
         ((ByteBuffer)localObject).get(paramFromServiceMsg);
         aio_media_open.RspOpenIdentify localRspOpenIdentify = new aio_media_open.RspOpenIdentify();
         localRspOpenIdentify.mergeFrom(paramFromServiceMsg);
-        if (!localRspOpenIdentify.bytes_button_text.has())
-        {
+        boolean bool = localRspOpenIdentify.bytes_button_text.has();
+        localObject = "";
+        if (!bool) {
           paramFromServiceMsg = "";
-          if (!localRspOpenIdentify.bytes_confirm_text.has())
-          {
-            localObject = "";
-            if (!localRspOpenIdentify.msg_result.has()) {
-              break label291;
-            }
-            localResultInfo = a((aio_media_open.ResultInfo)localRspOpenIdentify.msg_result.get());
-            if (localRspOpenIdentify.uint32_business_type.has()) {
-              continue;
-            }
-            i = 0;
-            paramFromServiceMsg = new TogetherBusinessServlet.RspOpenIdentify(localResultInfo, paramFromServiceMsg, (String)localObject, i);
-            localObject = new Bundle();
-            ((Bundle)localObject).putSerializable("QQAIOMediaSvc.open_identify", paramFromServiceMsg);
-            if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
-              QLog.d("TogetherBusinessServlet", 2, new Object[] { "handleIdentifyPackage succsss=", paramFromServiceMsg });
-            }
-            notifyObserver(paramIntent, 12, true, (Bundle)localObject, null);
-          }
-        }
-        else
-        {
+        } else {
           paramFromServiceMsg = localRspOpenIdentify.bytes_button_text.get().toStringUtf8();
-          continue;
         }
-        localObject = localRspOpenIdentify.bytes_confirm_text.get().toStringUtf8();
-        continue;
-        int i = localRspOpenIdentify.uint32_business_type.get();
-        continue;
-        QLog.d("TogetherBusinessServlet", 2, "handleIdentifyPackage error=", paramFromServiceMsg);
+        if (localRspOpenIdentify.bytes_confirm_text.has()) {
+          localObject = localRspOpenIdentify.bytes_confirm_text.get().toStringUtf8();
+        }
+        TogetherBusinessServlet.ResultInfo localResultInfo = null;
+        if (localRspOpenIdentify.msg_result.has()) {
+          localResultInfo = a((aio_media_open.ResultInfo)localRspOpenIdentify.msg_result.get());
+        }
+        int i;
+        if (!localRspOpenIdentify.uint32_business_type.has()) {
+          i = 0;
+        } else {
+          i = localRspOpenIdentify.uint32_business_type.get();
+        }
+        paramFromServiceMsg = new TogetherBusinessServlet.RspOpenIdentify(localResultInfo, paramFromServiceMsg, (String)localObject, i);
+        localObject = new Bundle();
+        ((Bundle)localObject).putSerializable("QQAIOMediaSvc.open_identify", paramFromServiceMsg);
+        if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
+          QLog.d("TogetherBusinessServlet", 2, new Object[] { "handleIdentifyPackage succsss=", paramFromServiceMsg });
+        }
+        notifyObserver(paramIntent, 12, true, (Bundle)localObject, null);
+        return;
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
         notifyObserver(paramIntent, 12, false, null, null);
         if (!QLog.isColorLevel()) {
-          break;
+          return;
         }
       }
-      return;
+      QLog.d("TogetherBusinessServlet", 2, "handleIdentifyPackage error=", paramFromServiceMsg);
+    }
+    else
+    {
       notifyObserver(paramIntent, 12, false, null, null);
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherBusinessServlet", 2, "handleIdentifyPackage not ok");
       }
-      QLog.d("TogetherBusinessServlet", 2, "handleIdentifyPackage not ok");
-      return;
-      label291:
-      TogetherBusinessServlet.ResultInfo localResultInfo = null;
     }
   }
   
@@ -150,64 +137,57 @@ public class TogetherBusinessServlet
   
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg.getResultCode() == 1000) {}
-    for (;;)
+    if (paramFromServiceMsg.getResultCode() == 1000)
     {
       try
       {
-        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        Object localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
         paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
         ((ByteBuffer)localObject).get(paramFromServiceMsg);
-        localObject = new aio_media_open.RspOpenStart();
-        ((aio_media_open.RspOpenStart)localObject).mergeFrom(paramFromServiceMsg);
+        aio_media_open.RspOpenStart localRspOpenStart = new aio_media_open.RspOpenStart();
+        localRspOpenStart.mergeFrom(paramFromServiceMsg);
         int i;
-        if (!((aio_media_open.RspOpenStart)localObject).enum_jump_type.has())
-        {
+        if (!localRspOpenStart.enum_jump_type.has()) {
           i = -1;
-          if (!((aio_media_open.RspOpenStart)localObject).bytes_jump_url.has())
-          {
-            paramFromServiceMsg = "";
-            if (!((aio_media_open.RspOpenStart)localObject).msg_result.has()) {
-              break label284;
-            }
-            localObject = a((aio_media_open.ResultInfo)((aio_media_open.RspOpenStart)localObject).msg_result.get());
-            paramFromServiceMsg = new TogetherBusinessServlet.RspOpenStart((TogetherBusinessServlet.ResultInfo)localObject, i, paramFromServiceMsg);
-            localObject = new Bundle();
-            ((Bundle)localObject).putSerializable("QQAIOMediaSvc.open_start", paramFromServiceMsg);
-            if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
-              QLog.d("TogetherBusinessServlet", 2, new Object[] { "handleStartPackage succsss=", paramFromServiceMsg });
-            }
-            if (paramIntent.getBundleExtra("bundle") != null) {
-              ((Bundle)localObject).putBundle("bundle", paramIntent.getBundleExtra("bundle"));
-            }
-            notifyObserver(paramIntent, 13, true, (Bundle)localObject, null);
-          }
+        } else {
+          i = localRspOpenStart.enum_jump_type.get();
         }
-        else
-        {
-          i = ((aio_media_open.RspOpenStart)localObject).enum_jump_type.get();
-          continue;
+        if (!localRspOpenStart.bytes_jump_url.has()) {
+          paramFromServiceMsg = "";
+        } else {
+          paramFromServiceMsg = localRspOpenStart.bytes_jump_url.get().toStringUtf8();
         }
-        paramFromServiceMsg = ((aio_media_open.RspOpenStart)localObject).bytes_jump_url.get().toStringUtf8();
-        continue;
-        QLog.d("TogetherBusinessServlet", 2, "handleStartPackage error=", paramFromServiceMsg);
+        localObject = null;
+        if (localRspOpenStart.msg_result.has()) {
+          localObject = a((aio_media_open.ResultInfo)localRspOpenStart.msg_result.get());
+        }
+        paramFromServiceMsg = new TogetherBusinessServlet.RspOpenStart((TogetherBusinessServlet.ResultInfo)localObject, i, paramFromServiceMsg);
+        localObject = new Bundle();
+        ((Bundle)localObject).putSerializable("QQAIOMediaSvc.open_start", paramFromServiceMsg);
+        if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
+          QLog.d("TogetherBusinessServlet", 2, new Object[] { "handleStartPackage succsss=", paramFromServiceMsg });
+        }
+        if (paramIntent.getBundleExtra("bundle") != null) {
+          ((Bundle)localObject).putBundle("bundle", paramIntent.getBundleExtra("bundle"));
+        }
+        notifyObserver(paramIntent, 13, true, (Bundle)localObject, null);
+        return;
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
         notifyObserver(paramIntent, 13, false, null, null);
         if (!QLog.isColorLevel()) {
-          break;
+          return;
         }
       }
-      return;
+      QLog.d("TogetherBusinessServlet", 2, "handleStartPackage error=", paramFromServiceMsg);
+    }
+    else
+    {
       notifyObserver(paramIntent, 13, false, null, null);
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherBusinessServlet", 2, "handleStartPackage not ok");
       }
-      QLog.d("TogetherBusinessServlet", 2, "handleStartPackage not ok");
-      return;
-      label284:
-      Object localObject = null;
     }
   }
   
@@ -234,52 +214,56 @@ public class TogetherBusinessServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     String str2 = paramFromServiceMsg.getServiceCmd();
-    String str1;
     if (QLog.isColorLevel())
     {
       boolean bool = paramFromServiceMsg.isSuccess();
-      StringBuilder localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-      if (bool)
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resp:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" is ");
+      String str1;
+      if (bool) {
         str1 = "";
-        QLog.d("TogetherBusinessServlet", 2, str1 + " success");
+      } else {
+        str1 = "not";
       }
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" success");
+      QLog.d("TogetherBusinessServlet", 2, localStringBuilder.toString());
     }
-    else
+    if ("QQAIOMediaSvc.open_identify".equals(str2))
     {
-      if (!"QQAIOMediaSvc.open_identify".equals(str2)) {
-        break label98;
-      }
       a(paramIntent, paramFromServiceMsg);
-    }
-    label98:
-    while (!"QQAIOMediaSvc.open_start".equals(str2))
-    {
       return;
-      str1 = "not";
-      break;
     }
-    b(paramIntent, paramFromServiceMsg);
+    if ("QQAIOMediaSvc.open_start".equals(str2)) {
+      b(paramIntent, paramFromServiceMsg);
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     String str = paramIntent.getStringExtra("cmd");
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessServlet", 2, "req:" + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("req:");
+      localStringBuilder.append(str);
+      QLog.d("TogetherBusinessServlet", 2, localStringBuilder.toString());
     }
-    if ("QQAIOMediaSvc.open_identify".equals(str)) {
+    if ("QQAIOMediaSvc.open_identify".equals(str))
+    {
       a(paramIntent, paramPacket);
-    }
-    while (!"QQAIOMediaSvc.open_start".equals(str)) {
       return;
     }
-    b(paramIntent, paramPacket);
+    if ("QQAIOMediaSvc.open_start".equals(str)) {
+      b(paramIntent, paramPacket);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet
  * JD-Core Version:    0.7.0.1
  */

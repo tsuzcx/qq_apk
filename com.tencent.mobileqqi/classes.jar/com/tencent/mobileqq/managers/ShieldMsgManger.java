@@ -9,7 +9,7 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import gbe;
+import gbd;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -37,7 +37,7 @@ public class ShieldMsgManger
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       throw new IllegalArgumentException("ShieldMsgManger this.app = null");
     }
-    new gbe(this).start();
+    new gbd(this).start();
   }
   
   private String a(String paramString)

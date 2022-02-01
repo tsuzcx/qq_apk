@@ -1,25 +1,21 @@
 package com.tencent.open.agent;
 
-import android.graphics.Bitmap;
-import bhta;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class OpenSelectPermissionFragment$1
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   OpenSelectPermissionFragment$1(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bitmap localBitmap = OpenSelectPermissionFragment.a(this.this$0).a(String.valueOf(OpenSelectPermissionFragment.a(this.this$0)));
-    if (localBitmap != null) {
-      bhta.a(new OpenSelectPermissionFragment.1.1(this, localBitmap));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenSelectPermissionFragment.1
  * JD-Core Version:    0.7.0.1
  */

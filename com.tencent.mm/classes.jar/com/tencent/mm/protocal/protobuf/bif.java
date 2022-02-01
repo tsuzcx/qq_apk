@@ -1,67 +1,101 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bif
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public String gfL;
+  public String ZRm;
+  public int status;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(80134);
+    AppMethodBeat.i(257404);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.gfL != null) {
-        paramVarArgs.e(1, this.gfL);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(80134);
+      paramVarArgs.bS(2, this.status);
+      if (this.ZRm != null) {
+        paramVarArgs.g(3, this.ZRm);
+      }
+      AppMethodBeat.o(257404);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.gfL == null) {
-        break label213;
+      if (this.BaseResponse == null) {
+        break label388;
       }
     }
-    label213:
-    for (paramInt = e.a.a.b.b.a.f(1, this.gfL) + 0;; paramInt = 0)
+    label388:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(80134);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.status);
+      paramInt = i;
+      if (this.ZRm != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.ZRm);
+      }
+      AppMethodBeat.o(257404);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(80134);
+        AppMethodBeat.o(257404);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         bif localbif = (bif)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(80134);
+          AppMethodBeat.o(257404);
           return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localbif.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(257404);
+          return 0;
+        case 2: 
+          localbif.status = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(257404);
+          return 0;
         }
-        localbif.gfL = locala.CLY.readString();
-        AppMethodBeat.o(80134);
+        localbif.ZRm = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(257404);
         return 0;
       }
-      AppMethodBeat.o(80134);
+      AppMethodBeat.o(257404);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bif
  * JD-Core Version:    0.7.0.1
  */

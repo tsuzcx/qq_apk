@@ -5,12 +5,12 @@ import android.view.animation.Interpolator;
 public final class aj
 {
   private Interpolator mInterpolator = null;
-  private int uH = 0;
-  private int uI = 0;
-  private int uJ = -2147483648;
-  private int uK = -1;
-  private boolean uL = false;
-  private int uM = 0;
+  private boolean wA = false;
+  private int wB = 0;
+  private int ww = 0;
+  private int wx = 0;
+  private int wy = -2147483648;
+  private int wz = -1;
   
   public aj()
   {
@@ -21,21 +21,21 @@ public final class aj
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, Interpolator paramInterpolator)
   {
-    this.uH = paramInt1;
-    this.uI = paramInt2;
-    this.uJ = paramInt3;
+    this.ww = paramInt1;
+    this.wx = paramInt2;
+    this.wy = paramInt3;
     this.mInterpolator = paramInterpolator;
-    this.uL = true;
+    this.wA = true;
   }
   
-  public final void ax(int paramInt)
+  public final void aJ(int paramInt)
   {
-    this.uK = paramInt;
+    this.wz = paramInt;
   }
   
-  final boolean dX()
+  final boolean el()
   {
-    return this.uK >= 0;
+    return this.wz >= 0;
   }
 }
 

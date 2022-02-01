@@ -4,17 +4,18 @@ public final class eg
 {
   public static <T> T a(T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new NullPointerException();
   }
   
   public static void a(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new IllegalArgumentException();
+    if (paramBoolean) {
+      return;
     }
+    throw new IllegalArgumentException();
   }
 }
 

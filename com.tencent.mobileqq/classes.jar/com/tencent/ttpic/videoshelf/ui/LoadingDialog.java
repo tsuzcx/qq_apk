@@ -1,18 +1,18 @@
 package com.tencent.ttpic.videoshelf.ui;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.ttpic.videoshelf.R.id;
 import com.tencent.ttpic.videoshelf.R.layout;
 import com.tencent.ttpic.videoshelf.R.style;
 
 public class LoadingDialog
-  extends Dialog
+  extends ReportDialog
 {
   private final ProgressBar mProgress;
   private final TextView mTip;
@@ -51,7 +51,7 @@ public class LoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.ui.LoadingDialog
  * JD-Core Version:    0.7.0.1
  */

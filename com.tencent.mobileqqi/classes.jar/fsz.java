@@ -1,15 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerActivity;
 import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class fsz
-  implements View.OnClickListener
+  implements AdapterView.OnItemSelectedListener
 {
   public fsz(BaseFileViewerController paramBaseFileViewerController) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.g(paramView);
+    this.a.a.a(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

@@ -1,41 +1,40 @@
 package com.tencent.biz;
 
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import myl;
+import java.util.ArrayList;
 
-public class AuthorizeConfig$5
+class AuthorizeConfig$5
   implements Runnable
 {
-  public AuthorizeConfig$5(myl parammyl, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
+  AuthorizeConfig$5(AuthorizeConfig paramAuthorizeConfig, String paramString, long paramLong) {}
   
   public void run()
   {
-    try
+    this.this$0.o();
+    if (QLog.isColorLevel())
     {
-      if (this.jdField_a_of_type_MqqManagerTicketManager != null) {
-        if ((this.jdField_a_of_type_MqqManagerTicketManager.GetPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, this.this$0.a) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_JavaLangString)))) {
-          break label84;
-        }
+      int i = 0;
+      if (this.this$0.C != null) {
+        i = this.this$0.C.size();
       }
-      label84:
-      for (boolean bool = true;; bool = false)
-      {
-        QLog.d("AuthorizeConfig", 1, "pre hits result : " + bool);
-        return;
-      }
-      return;
+      QLog.d("AuthorizeConfig", 2, new Object[] { "[preload] preloadPskey list:", Integer.valueOf(i), " waitPt4Token:", Boolean.valueOf(AuthorizeConfig.a(this.this$0)) });
     }
-    catch (Exception localException)
+    if (!AuthorizeConfig.a(this.this$0))
     {
-      QLog.e("AuthorizeConfig", 1, "preload k exception ");
+      this.this$0.p();
+      SharedPreferences.Editor localEditor = this.this$0.w.edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lastPreloadPskey");
+      localStringBuilder.append(this.a);
+      localEditor.putLong(localStringBuilder.toString(), this.b).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.5
  * JD-Core Version:    0.7.0.1
  */

@@ -28,8 +28,12 @@ class AvatarPendantManager$PendantInfoLruCache
   {
     if (size() > this.maxCapacity)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantManager", 2, "entryRemoved key=" + paramEntry.getKey());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("entryRemoved key=");
+        localStringBuilder.append(paramEntry.getKey());
+        QLog.d("AvatarPendantManager", 2, localStringBuilder.toString());
       }
       ((PendantInfo)paramEntry.getValue()).a(true);
       return true;
@@ -39,7 +43,7 @@ class AvatarPendantManager$PendantInfoLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.AvatarPendantManager.PendantInfoLruCache
  * JD-Core Version:    0.7.0.1
  */

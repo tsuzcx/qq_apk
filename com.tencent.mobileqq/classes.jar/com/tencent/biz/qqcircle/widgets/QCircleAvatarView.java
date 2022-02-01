@@ -1,35 +1,44 @@
 package com.tencent.biz.qqcircle.widgets;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bdaq;
-import bdbk;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.R.styleable;
+import android.widget.ImageView;
+import androidx.annotation.Nullable;
+import com.tencent.biz.qqcircle.QCirclePluginGlobalInfo;
+import com.tencent.biz.qqcircle.QCirclePluginUtil;
+import com.tencent.biz.qqcircle.richframework.widget.SquareImageView;
+import com.tencent.biz.qqcircle.utils.DisplayUtil;
+import com.tencent.biz.qqcircle.utils.QCircleDrawableCacheUtils;
+import com.tencent.biz.qqcircle.utils.ViewUtils;
+import com.tencent.mobileqq.biz.qcircle.R.styleable;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.mobileqq.qcircle.api.data.Option;
+import com.tencent.mobileqq.qcircle.api.helper.HostUIHelper;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import cooperation.qqcircle.picload.QCircleFeedPicLoader;
+import cooperation.qqcircle.picload.avatar.AvatarOption;
+import cooperation.qqcircle.picload.avatar.QCircleAvatarLoader;
+import feedcloud.FeedCloudMeta.StIconInfo;
 import feedcloud.FeedCloudMeta.StUser;
-import tql;
-import tra;
 
 public class QCircleAvatarView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
-  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private SquareImageView jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView;
+  private static final int j = 2130845204;
+  private QCircleRoundImageView a;
+  private SquareImageView b;
   private int c;
   private int d;
-  private int e = 2130843537;
+  private int e;
+  private int f;
+  private boolean g;
+  private int h;
+  private int i;
   
   public QCircleAvatarView(Context paramContext)
   {
@@ -47,96 +56,127 @@ public class QCircleAvatarView
     a(paramContext, paramAttributeSet);
   }
   
+  private void setAvatar(FeedCloudMeta.StUser paramStUser)
+  {
+    if (paramStUser != null)
+    {
+      if (this.a == null) {
+        return;
+      }
+      String str = paramStUser.icon.iconUrl.get();
+      if (!TextUtils.isEmpty(str))
+      {
+        QCircleFeedPicLoader.g().loadImage(new Option().setTargetView(this.a).setUrl(str), null);
+        return;
+      }
+      if (!TextUtils.isEmpty(paramStUser.id.get())) {
+        setAvatarByUin(paramStUser.id.get());
+      }
+    }
+  }
+  
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.QCircleAvatarView);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cn);
     if (paramContext != null)
     {
-      this.jdField_a_of_type_Int = ((int)paramContext.getDimension(2, bdaq.a(getContext(), 24.0F)));
-      this.jdField_b_of_type_Int = ((int)paramContext.getDimension(1, bdaq.a(getContext(), 24.0F)));
-      this.c = paramContext.getColor(3, 0);
-      this.d = ((int)paramContext.getDimension(4, 0.0F));
-      this.jdField_a_of_type_Boolean = paramContext.getBoolean(0, true);
+      this.c = ((int)paramContext.getDimension(R.styleable.cs, ViewUtils.a(24.0F)));
+      this.d = ((int)paramContext.getDimension(R.styleable.cp, ViewUtils.a(24.0F)));
+      this.e = paramContext.getColor(R.styleable.ct, 0);
+      this.f = ((int)paramContext.getDimension(R.styleable.cu, 0.0F));
+      this.g = paramContext.getBoolean(R.styleable.co, true);
+      this.h = ((int)paramContext.getDimension(R.styleable.cr, 0.0F));
+      this.i = ((int)paramContext.getDimension(R.styleable.cq, 0.0F));
       paramContext.recycle();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = new SquareImageView(getContext(), null, 0);
+    this.a = new QCircleRoundImageView(getContext(), null, 0);
     paramContext = new ViewGroup.LayoutParams(-1, -1);
-    if (this.d != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setPadding(this.d, this.d, this.d, this.d);
+    int k = this.f;
+    if (k != 0) {
+      this.a.setPadding(k, k, k, k);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setLayoutParams(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(90);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(getResources().getDrawable(2130840085));
-    if (this.c != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundColor(this.c);
+    this.a.setLayoutParams(paramContext);
+    this.a.setRoundRect(DisplayUtil.e() / 2);
+    this.a.setBackgroundDrawable(null);
+    k = this.e;
+    if (k != 0) {
+      this.a.setBackgroundColor(k);
     }
-    super.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
+    super.addView(this.a);
   }
   
-  public void setAuthDrawable(int paramInt)
+  public ImageView getAvatarView()
   {
-    this.e = paramInt;
-    if (this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundResource(paramInt);
-    }
+    return this.a;
   }
   
-  public void setAvatar(AppInterface paramAppInterface, String paramString)
+  public void setAvatarByUin(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundDrawable(bdbk.a(paramAppInterface, 1, 4, paramString));
+    if (this.a != null)
+    {
+      FeedCloudMeta.StUser localStUser = new FeedCloudMeta.StUser();
+      localStUser.id.set(paramString);
+      if ((!QCirclePluginUtil.b(localStUser)) && (QCircleConfigHelper.ag()))
+      {
+        paramString = new AvatarOption().setUin(paramString);
+        paramString.setTargetView(this.a).setLoadingDrawable(QCircleDrawableCacheUtils.a(j)).setFromPreLoad(false);
+        QCircleAvatarLoader.g().loadAvatar(paramString);
+        return;
+      }
+      this.a.setImageDrawable(QCirclePluginGlobalInfo.a(paramString));
+      this.a.setTag(HostUIHelper.getInstance().getHostResourceId("id", "qcircle_avatar_tag_id"), paramString);
     }
   }
   
-  public void setAvatarUrl(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView != null) {
-      tql.a(paramString, this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-    }
-  }
-  
-  public void setIsAuth(boolean paramBoolean)
+  public void setIsAuth(int paramInt)
   {
     Object localObject;
-    if (this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView == null)
+    if (this.b == null)
     {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = new SquareImageView(getContext(), null, 0);
-      localObject = new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      this.b = new SquareImageView(getContext(), null, 0);
+      localObject = new FrameLayout.LayoutParams(this.c, this.d);
       ((FrameLayout.LayoutParams)localObject).gravity = 85;
-      this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(90);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setBackgroundResource(this.e);
-      localObject = this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label121;
+      ((FrameLayout.LayoutParams)localObject).rightMargin = this.h;
+      ((FrameLayout.LayoutParams)localObject).bottomMargin = this.i;
+      this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.b.setRoundRect(90);
+      QCircleFeedPicLoader.g().loadImage(new Option().setUrl(QCircleConfigHelper.y()).setTargetView(this.b), null);
+      localObject = this.b;
+      int k;
+      if (this.g) {
+        k = 0;
+      } else {
+        k = 8;
       }
+      ((SquareImageView)localObject).setVisibility(k);
+      super.addView(this.b);
     }
-    label121:
-    for (int i = 0;; i = 8)
+    if ((this.g) && (paramInt != 0))
     {
-      ((SquareImageView)localObject).setVisibility(i);
-      super.addView(this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView);
-      if ((!this.jdField_a_of_type_Boolean) || (!paramBoolean)) {
-        break;
+      if (paramInt == 2) {
+        localObject = QCircleConfigHelper.z();
+      } else {
+        localObject = QCircleConfigHelper.y();
       }
-      this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(0);
+      QCircleFeedPicLoader.g().loadImage(new Option().setUrl((String)localObject).setTargetView(this.b), null);
+      this.b.setVisibility(0);
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView.setVisibility(8);
+    this.b.setVisibility(8);
   }
   
-  public void setUser(AppInterface paramAppInterface, FeedCloudMeta.StUser paramStUser)
+  public void setUser(FeedCloudMeta.StUser paramStUser)
   {
-    if ((paramStUser != null) && (!TextUtils.isEmpty(paramStUser.id.get())))
-    {
-      setAvatar(paramAppInterface, paramStUser.id.get());
-      setIsAuth(tra.c(paramStUser));
+    if (paramStUser == null) {
+      return;
     }
+    setAvatar(paramStUser);
+    setIsAuth(QCirclePluginUtil.e(paramStUser));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleAvatarView
  * JD-Core Version:    0.7.0.1
  */

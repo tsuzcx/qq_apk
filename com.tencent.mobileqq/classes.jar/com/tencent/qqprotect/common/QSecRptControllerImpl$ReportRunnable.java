@@ -1,7 +1,5 @@
 package com.tencent.qqprotect.common;
 
-import bhmu;
-import bhmy;
 import com.tencent.ims.SafeReport.LogItem;
 import com.tencent.ims.SafeReport.ReqBody;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -16,7 +14,7 @@ import java.util.Vector;
 class QSecRptControllerImpl$ReportRunnable
   implements Runnable
 {
-  private Vector<bhmy> a = new Vector();
+  private Vector<QSecRptItem> a = new Vector();
   
   private QSecRptControllerImpl$ReportRunnable(QSecRptControllerImpl paramQSecRptControllerImpl) {}
   
@@ -26,52 +24,63 @@ class QSecRptControllerImpl$ReportRunnable
     {
       try
       {
-        if (this.a == null) {
-          break label298;
-        }
-        if (this.a.isEmpty()) {
-          return;
-        }
-        localObject2 = new SafeReport.ReqBody();
-        Iterator localIterator = this.a.iterator();
-        int i = 0;
-        int j = 0;
-        if (localIterator.hasNext())
+        if (this.a != null)
         {
-          Object localObject3 = (bhmy)localIterator.next();
-          if (localObject3 == null) {
-            continue;
+          if (this.a.isEmpty()) {
+            return;
           }
-          Object localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = new SafeReport.ReqBody();
-          }
-          String str = bhmu.a(bhmu.a(((bhmy)localObject3).jdField_a_of_type_Int));
-          localObject2 = new SafeReport.LogItem();
-          ((SafeReport.LogItem)localObject2).uint32_rpt_id.set(((bhmy)localObject3).jdField_a_of_type_Int);
-          localObject3 = str + "," + ((bhmy)localObject3).b + "," + ((bhmy)localObject3).jdField_a_of_type_JavaLangString;
-          ((SafeReport.LogItem)localObject2).bytes_rpt_data.set(ByteStringMicro.copyFrom(((String)localObject3).getBytes()));
-          ((SafeReport.ReqBody)localObject1).LogItem_reportdata.add((MessageMicro)localObject2);
-          j += 1;
-          i = ((String)localObject3).length() + i;
-          if ((j == 20) || (i > 1024))
+          Object localObject1 = new SafeReport.ReqBody();
+          Iterator localIterator = this.a.iterator();
+          break label332;
+          if (localIterator.hasNext())
           {
+            Object localObject3 = (QSecRptItem)localIterator.next();
+            if (localObject3 == null) {
+              continue;
+            }
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new SafeReport.ReqBody();
+            }
+            String str = QSecRptController.b(QSecRptController.a(((QSecRptItem)localObject3).a));
+            localObject2 = new SafeReport.LogItem();
+            ((SafeReport.LogItem)localObject2).uint32_rpt_id.set(((QSecRptItem)localObject3).a);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str);
+            localStringBuilder.append(",");
+            localStringBuilder.append(((QSecRptItem)localObject3).b);
+            localStringBuilder.append(",");
+            localStringBuilder.append(((QSecRptItem)localObject3).c);
+            localObject3 = localStringBuilder.toString();
+            ((SafeReport.LogItem)localObject2).bytes_rpt_data.set(ByteStringMicro.copyFrom(((String)localObject3).getBytes()));
+            ((SafeReport.ReqBody)localObject1).LogItem_reportdata.add((MessageMicro)localObject2);
+            int k = i + 1;
+            int m = j + ((String)localObject3).length();
+            if (k != 20)
+            {
+              i = k;
+              localObject2 = localObject1;
+              j = m;
+              if (m <= 1024) {
+                continue;
+              }
+            }
             if (QLog.isColorLevel()) {
-              QLog.d("QSRPT", 2, String.format("sending...item count: %d, package size: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
+              QLog.d("QSRPT", 2, String.format("sending...item count: %d, package size: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) }));
             }
             QSecRptControllerImpl.a(this.this$0, (SafeReport.ReqBody)localObject1);
             localObject1 = null;
-            i = 0;
-            j = 0;
-            break label299;
+          }
+          else
+          {
+            if ((i > 0) && (localObject2 != null)) {
+              QSecRptControllerImpl.a(this.this$0, (SafeReport.ReqBody)localObject2);
+            }
+            this.a.removeAllElements();
           }
         }
         else
         {
-          if ((j > 0) && (localObject2 != null)) {
-            QSecRptControllerImpl.a(this.this$0, (SafeReport.ReqBody)localObject2);
-          }
-          this.a.removeAllElements();
           return;
         }
       }
@@ -80,17 +89,16 @@ class QSecRptControllerImpl$ReportRunnable
         localException.printStackTrace();
         return;
       }
-      break label299;
-      label298:
-      return;
-      label299:
+      label332:
+      int i = 0;
+      int j = 0;
       Object localObject2 = localException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.common.QSecRptControllerImpl.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

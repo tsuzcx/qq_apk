@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$t
+final class c$t
   extends c.g
 {
-  public c$t()
+  c$t()
   {
-    super("cancelDownloadTask", "cancel_download_task", 39, false);
+    super("batchPreloadMiniProgram", "batchPreloadMiniProgram", 366, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.t
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,28 @@
 package cooperation.qzone.contentbox;
 
-import apfo;
-import bjiy;
-import bjjg;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QZoneCommonServlet;
 import com.tencent.mobileqq.data.QzoneCommonIntent;
+import cooperation.qzone.contentbox.model.QZoneMsgReq;
+import mqq.app.AppRuntime;
 
-public class QZoneMsgManager$1
+class QZoneMsgManager$1
   implements Runnable
 {
-  public QZoneMsgManager$1(bjiy parambjiy, QQAppInterface paramQQAppInterface) {}
+  QZoneMsgManager$1(QZoneMsgManager paramQZoneMsgManager, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    bjjg localbjjg = new bjjg(this.a.getLongAccountUin(), "", this.this$0.a(1), 2);
-    localbjjg.a(1);
-    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(this.a.getApplication(), apfo.class);
-    localQzoneCommonIntent.setRequest(localbjjg);
+    QZoneMsgReq localQZoneMsgReq = new QZoneMsgReq(this.val$app.getLongAccountUin(), "", this.this$0.getLoadNum(1), 2);
+    localQZoneMsgReq.setType(1);
+    QzoneCommonIntent localQzoneCommonIntent = new QzoneCommonIntent(this.val$app.getApplication(), QZoneCommonServlet.class);
+    localQzoneCommonIntent.setRequest(localQZoneMsgReq);
     localQzoneCommonIntent.setObserver(this.this$0);
-    this.a.startServlet(localQzoneCommonIntent);
+    this.val$app.startServlet(localQzoneCommonIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgManager.1
  * JD-Core Version:    0.7.0.1
  */

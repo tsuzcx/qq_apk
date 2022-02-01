@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.dinifly.model;
 
 import android.graphics.PointF;
-import android.support.annotation.RestrictTo;
+import androidx.annotation.RestrictTo;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
 public class CubicCurveData
 {
   private final PointF controlPoint1;

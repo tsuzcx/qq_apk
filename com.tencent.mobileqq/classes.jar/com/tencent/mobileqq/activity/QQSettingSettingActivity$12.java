@@ -1,20 +1,28 @@
 package com.tencent.mobileqq.activity;
 
-import azqs;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQSettingSettingActivity$12
-  implements Runnable
+  extends FriendListObserver
 {
   QQSettingSettingActivity$12(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    azqs.b(this.this$0.app, "dc00898", "", "", "0X8008122", "0X8008122", 0, 0, "", "", "", "");
+    if (paramBoolean)
+    {
+      if (paramString == null) {
+        return;
+      }
+      paramString = this.a;
+      paramString.a(paramString.app.getCurrentAccountUin());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.12
  * JD-Core Version:    0.7.0.1
  */

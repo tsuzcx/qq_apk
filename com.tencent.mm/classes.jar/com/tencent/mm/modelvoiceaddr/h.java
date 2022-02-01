@@ -1,122 +1,183 @@
 package com.tencent.mm.modelvoiceaddr;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.crg;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.fzh;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public final class h
 {
-  String gbP;
-  public LinkedHashMap<String, h.a> gbQ;
-  final ReadWriteLock gbR;
-  private StringBuilder gbS;
+  String pgb;
+  LinkedHashMap<String, a> pgc;
+  final ReadWriteLock pgd;
+  private StringBuilder pge;
   
   public h(String paramString)
   {
-    AppMethodBeat.i(116747);
-    this.gbR = new ReentrantReadWriteLock();
-    this.gbS = new StringBuilder();
-    this.gbQ = new LinkedHashMap();
-    this.gbP = paramString;
-    AppMethodBeat.o(116747);
+    AppMethodBeat.i(148591);
+    this.pgd = new ReentrantReadWriteLock();
+    this.pge = new StringBuilder();
+    this.pgc = new LinkedHashMap();
+    this.pgb = paramString;
+    AppMethodBeat.o(148591);
   }
   
   public final boolean a(h paramh)
   {
-    AppMethodBeat.i(155554);
-    Iterator localIterator = this.gbQ.values().iterator();
+    AppMethodBeat.i(148599);
+    this.pgd.readLock().lock();
+    Iterator localIterator = this.pgc.values().iterator();
     while (localIterator.hasNext())
     {
-      h.a locala1 = (h.a)localIterator.next();
-      h.a locala2 = new h.a(this, paramh.gbP);
-      locala2.gbW = locala1.gbW;
-      paramh.gbQ.put(locala2.gbT, locala2);
+      a locala1 = (a)localIterator.next();
+      a locala2 = new a(paramh.pgb);
+      locala2.pgi = locala1.pgi;
+      paramh.pgc.put(locala2.pgf, locala2);
     }
-    AppMethodBeat.o(155554);
+    this.pgd.readLock().unlock();
+    AppMethodBeat.o(148599);
     return true;
   }
   
-  public final void aj(List<crg> paramList)
+  public final LinkedList<etl> bPE()
   {
-    AppMethodBeat.i(116751);
+    AppMethodBeat.i(148592);
+    LinkedList localLinkedList = new LinkedList();
+    this.pgd.readLock().lock();
+    Iterator localIterator = this.pgc.values().iterator();
+    while (localIterator.hasNext())
+    {
+      a locala = (a)localIterator.next();
+      if (locala.pgg) {
+        localLinkedList.add(new etl().btH(locala.pgf));
+      }
+    }
+    this.pgd.readLock().unlock();
+    AppMethodBeat.o(148592);
+    return localLinkedList;
+  }
+  
+  public final boolean bPF()
+  {
+    AppMethodBeat.i(148594);
+    this.pgd.readLock().lock();
+    if (this.pgc.size() == 0)
+    {
+      Log.i("MicroMsg.ShortSentenceContainer", "isAllRespEnd innerContainer.size() == 0");
+      this.pgd.readLock().unlock();
+      AppMethodBeat.o(148594);
+      return true;
+    }
+    Iterator localIterator = this.pgc.values().iterator();
+    a locala;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      locala = (a)localIterator.next();
+      Log.d("MicroMsg.ShortSentenceContainer", "isAllRespEnd voiceId:%s isRequestEnd:%s isResponseEnd:%s", new Object[] { locala.pgf, Boolean.valueOf(locala.pgh), Boolean.valueOf(locala.pgl) });
+    } while (locala.pgl);
+    for (boolean bool = false;; bool = true)
+    {
+      this.pgd.readLock().unlock();
+      AppMethodBeat.o(148594);
+      return bool;
+    }
+  }
+  
+  public final void bPG()
+  {
+    AppMethodBeat.i(148597);
+    Log.i("MicroMsg.ShortSentenceContainer", "createNewShortSentence");
+    this.pgd.writeLock().lock();
+    a locala = new a();
+    this.pgc.put(locala.pgf, locala);
+    this.pgd.writeLock().unlock();
+    AppMethodBeat.o(148597);
+  }
+  
+  public final void cl(List<fzh> paramList)
+  {
+    AppMethodBeat.i(148595);
     int i;
     Object localObject;
     if (paramList == null)
     {
       i = 0;
-      this.gbR.readLock().lock();
-      if (this.gbQ.size() != 0) {
+      this.pgd.readLock().lock();
+      if (this.pgc.size() != 0) {
         break label112;
       }
-      this.gbR.readLock().unlock();
+      this.pgd.readLock().unlock();
       localObject = "[]";
     }
     for (;;)
     {
-      ab.d("MicroMsg.ShortSentenceContainer", "updateVoiceInfoResult respVTList size %s innerContainer %s", new Object[] { Integer.valueOf(i), localObject });
+      Log.d("MicroMsg.ShortSentenceContainer", "updateVoiceInfoResult respVTList size %s innerContainer %s", new Object[] { Integer.valueOf(i), localObject });
       if ((paramList != null) && (paramList.size() != 0)) {
         break label259;
       }
-      ab.i("MicroMsg.ShortSentenceContainer", "respList == null");
-      AppMethodBeat.o(116751);
+      Log.i("MicroMsg.ShortSentenceContainer", "respList == null");
+      AppMethodBeat.o(148595);
       return;
       i = paramList.size();
       break;
       label112:
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      localIterator = this.gbQ.values().iterator();
+      localIterator = this.pgc.values().iterator();
       while (localIterator.hasNext()) {
-        ((StringBuilder)localObject).append(((h.a)localIterator.next()).gbT).append(", ");
+        ((StringBuilder)localObject).append(((a)localIterator.next()).pgf).append(", ");
       }
       if (((StringBuilder)localObject).length() <= 3)
       {
-        this.gbR.readLock().unlock();
+        this.pgd.readLock().unlock();
         localObject = "]";
       }
       else
       {
         ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 2);
-        this.gbR.readLock().unlock();
+        this.pgd.readLock().unlock();
         localObject = "]";
       }
     }
     label259:
-    this.gbR.readLock().lock();
+    this.pgd.readLock().lock();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
-      crg localcrg = (crg)localIterator.next();
-      if (localcrg == null)
+      fzh localfzh = (fzh)localIterator.next();
+      if (localfzh == null)
       {
-        ab.i("MicroMsg.ShortSentenceContainer", "setFetchedVoiceInfoResult voiceTransCell is null.");
+        Log.i("MicroMsg.ShortSentenceContainer", "setFetchedVoiceInfoResult voiceTransCell is null.");
       }
       else
       {
-        h.a locala = (h.a)this.gbQ.get(localcrg.wAs);
+        a locala = (a)this.pgc.get(localfzh.YWC);
         if (locala == null)
         {
-          ab.i("MicroMsg.ShortSentenceContainer", "voiceInfoContainer not found the voiceId %s", new Object[] { localcrg.wAs });
+          Log.i("MicroMsg.ShortSentenceContainer", "voiceInfoContainer not found the voiceId %s", new Object[] { localfzh.YWC });
         }
-        else if (localcrg == null)
+        else if (localfzh == null)
         {
-          ab.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo cell is null");
+          Log.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo cell is null");
         }
         else
         {
-          String str1 = localcrg.wAs;
-          i = localcrg.xZO;
+          String str1 = localfzh.YWC;
+          i = localfzh.abWG;
           label411:
           boolean bool1;
           label422:
@@ -126,19 +187,19 @@ public final class h
           boolean bool3;
           int k;
           int m;
-          if ((localcrg.xWZ == null) || (localcrg.xWZ.getBuffer() == null))
+          if ((localfzh.abRI == null) || (localfzh.abRI.aaxD == null))
           {
             paramList = null;
-            if (localcrg.fKi == 0) {
+            if (localfzh.oOu == 0) {
               break label622;
             }
             bool1 = true;
-            j = localcrg.fKi;
-            str2 = locala.gbT;
-            bool2 = locala.gbU;
-            bool3 = locala.gbV;
-            k = locala.gbW;
-            m = locala.gbY;
+            j = localfzh.oOu;
+            str2 = locala.pgf;
+            bool2 = locala.pgg;
+            bool3 = locala.pgh;
+            k = locala.pgi;
+            m = locala.pgk;
             if (locala.data != null) {
               break label628;
             }
@@ -147,48 +208,48 @@ public final class h
           label628:
           for (localObject = null;; localObject = Integer.valueOf(locala.data.length()))
           {
-            ab.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo get {cell} %s, seq %s, text %s, endFlag %s, endFlag %s {currentInfo} %s, isRequestStart %s, isRequestEnd %s, voiceFileMark %s, seq %s, data %s, isResponseEnd %s", new Object[] { str1, Integer.valueOf(i), paramList, Boolean.valueOf(bool1), Integer.valueOf(j), str2, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(k), Integer.valueOf(m), localObject, Boolean.valueOf(locala.gbZ) });
-            if ((localcrg.xZO >= locala.gbY) && (!locala.gbZ)) {
+            Log.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo get {cell} %s, seq %s, text %s, endFlag %s, endFlag %s {currentInfo} %s, isRequestStart %s, isRequestEnd %s, voiceFileMark %s, seq %s, data %s, isResponseEnd %s", new Object[] { str1, Integer.valueOf(i), paramList, Boolean.valueOf(bool1), Integer.valueOf(j), str2, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(k), Integer.valueOf(m), localObject, Boolean.valueOf(locala.pgl) });
+            if ((localfzh.abWG >= locala.pgk) && (!locala.pgl)) {
               break label644;
             }
-            ab.d("MicroMsg.ShortSentenceContainer", "update seq not fit.");
+            Log.d("MicroMsg.ShortSentenceContainer", "update seq not fit.");
             break;
-            paramList = Integer.valueOf(localcrg.xWZ.getILen());
+            paramList = Integer.valueOf(localfzh.abRI.abwJ);
             break label411;
             bool1 = false;
             break label422;
           }
           label644:
-          locala.gbY = localcrg.xZO;
-          if ((localcrg.xWZ == null) || (localcrg.xWZ.getBuffer() == null))
+          locala.pgk = localfzh.abWG;
+          if ((localfzh.abRI == null) || (localfzh.abRI.aaxD == null))
           {
             paramList = null;
             label675:
             locala.data = paramList;
-            if (localcrg.fKi == 0) {
-              break label811;
+            if (localfzh.oOu == 0) {
+              break label813;
             }
             bool1 = true;
             label692:
-            locala.gbZ = bool1;
-            paramList = localcrg.wAs;
-            j = locala.gbY;
-            bool1 = locala.gbZ;
+            locala.pgl = bool1;
+            paramList = localfzh.YWC;
+            j = locala.pgk;
+            bool1 = locala.pgl;
             if (locala.data != null) {
-              break label817;
+              break label819;
             }
           }
-          label811:
-          label817:
+          label813:
+          label819:
           for (i = -1;; i = locala.data.length())
           {
-            ab.i("MicroMsg.ShortSentenceContainer", "update VoiceId = %s,respSeq = %s,isResponseEnd = %s,data.length = %s", new Object[] { paramList, Integer.valueOf(j), Boolean.valueOf(bool1), Integer.valueOf(i) });
-            if (localcrg.fKi != 2) {
+            Log.i("MicroMsg.ShortSentenceContainer", "update VoiceId = %s,respSeq = %s,isResponseEnd = %s,data.length = %s", new Object[] { paramList, Integer.valueOf(j), Boolean.valueOf(bool1), Integer.valueOf(i) });
+            if (localfzh.oOu != 2) {
               break;
             }
-            ab.e("MicroMsg.ShortSentenceContainer", "update cell.EndFlag = 2 VoiceId = %s", new Object[] { localcrg.wAs });
+            Log.e("MicroMsg.ShortSentenceContainer", "update cell.EndFlag = 2 VoiceId = %s", new Object[] { localfzh.YWC });
             break;
-            paramList = localcrg.xWZ.getBuffer().dqj();
+            paramList = localfzh.abRI.aaxD.ZV();
             break label675;
             bool1 = false;
             break label692;
@@ -196,148 +257,161 @@ public final class h
         }
       }
     }
-    this.gbR.readLock().unlock();
-    AppMethodBeat.o(116751);
-  }
-  
-  public final LinkedList<bwc> amP()
-  {
-    AppMethodBeat.i(116748);
-    LinkedList localLinkedList = new LinkedList();
-    this.gbR.readLock().lock();
-    Iterator localIterator = this.gbQ.values().iterator();
-    while (localIterator.hasNext())
-    {
-      h.a locala = (h.a)localIterator.next();
-      if (locala.gbU) {
-        localLinkedList.add(new bwc().aoF(locala.gbT));
-      }
-    }
-    this.gbR.readLock().unlock();
-    AppMethodBeat.o(116748);
-    return localLinkedList;
-  }
-  
-  public final boolean amQ()
-  {
-    AppMethodBeat.i(116750);
-    this.gbR.readLock().lock();
-    if (this.gbQ.size() == 0)
-    {
-      ab.i("MicroMsg.ShortSentenceContainer", "isAllRespEnd innerContainer.size() == 0");
-      AppMethodBeat.o(116750);
-      return false;
-    }
-    Iterator localIterator = this.gbQ.values().iterator();
-    h.a locala;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      locala = (h.a)localIterator.next();
-      ab.d("MicroMsg.ShortSentenceContainer", "isAllRespEnd voiceId:%s isRequestEnd:%s isResponseEnd:%s", new Object[] { locala.gbT, Boolean.valueOf(locala.gbV), Boolean.valueOf(locala.gbZ) });
-    } while (locala.gbZ);
-    for (boolean bool = false;; bool = true)
-    {
-      this.gbR.readLock().unlock();
-      AppMethodBeat.o(116750);
-      return bool;
-    }
-  }
-  
-  public final void amR()
-  {
-    AppMethodBeat.i(155553);
-    ab.i("MicroMsg.ShortSentenceContainer", "createNewShortSentence");
-    this.gbR.writeLock().lock();
-    h.a locala = new h.a(this);
-    this.gbQ.put(locala.gbT, locala);
-    this.gbR.writeLock().unlock();
-    AppMethodBeat.o(155553);
+    this.pgd.readLock().unlock();
+    AppMethodBeat.o(148595);
   }
   
   public final String getResult()
   {
-    AppMethodBeat.i(116749);
-    this.gbS.setLength(0);
-    this.gbR.readLock().lock();
-    Object localObject = this.gbQ.values().iterator();
+    AppMethodBeat.i(148593);
+    this.pge.setLength(0);
+    this.pgd.readLock().lock();
+    Object localObject = this.pgc.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
-      h.a locala = (h.a)((Iterator)localObject).next();
+      a locala = (a)((Iterator)localObject).next();
       if (locala.data != null) {
-        this.gbS.append(locala.data);
+        this.pge.append(locala.data);
       }
     }
-    this.gbR.readLock().unlock();
-    localObject = this.gbS.toString();
-    AppMethodBeat.o(116749);
+    this.pgd.readLock().unlock();
+    localObject = this.pge.toString();
+    AppMethodBeat.o(148593);
     return localObject;
   }
   
-  public final void mt(int paramInt)
+  public final boolean isValid()
   {
-    AppMethodBeat.i(116752);
-    ab.i("MicroMsg.ShortSentenceContainer", "cutShortSentence markEnd:%s", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(185490);
+    if ((this.pgc == null) || (this.pgc.isEmpty()))
+    {
+      AppMethodBeat.o(185490);
+      return false;
+    }
+    AppMethodBeat.o(185490);
+    return true;
+  }
+  
+  public final void xl(int paramInt)
+  {
+    AppMethodBeat.i(148596);
+    Log.i("MicroMsg.ShortSentenceContainer", "cutShortSentence markEnd:%s", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt < 0)
     {
       localObject = new IllegalStateException("splitShortSentence file mark less than zero. mark: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(116752);
+      AppMethodBeat.o(148596);
       throw ((Throwable)localObject);
     }
-    this.gbR.readLock().lock();
-    if (this.gbQ.size() == 0)
+    this.pgd.readLock().lock();
+    if (this.pgc.size() == 0)
     {
-      ab.e("MicroMsg.ShortSentenceContainer", "splitShortSentence there is no last one");
-      AppMethodBeat.o(116752);
+      Log.e("MicroMsg.ShortSentenceContainer", "splitShortSentence there is no last one");
+      this.pgd.readLock().unlock();
+      AppMethodBeat.o(148596);
       return;
     }
-    Iterator localIterator = this.gbQ.values().iterator();
-    for (Object localObject = null; localIterator.hasNext(); localObject = (h.a)localIterator.next()) {}
+    Iterator localIterator = this.pgc.values().iterator();
+    for (Object localObject = null; localIterator.hasNext(); localObject = (a)localIterator.next()) {}
     if (localObject == null)
     {
       localObject = new IllegalStateException("splitShortSentence last info is null");
-      AppMethodBeat.o(116752);
+      AppMethodBeat.o(148596);
       throw ((Throwable)localObject);
     }
-    ab.d("MicroMsg.ShortSentenceContainer", "cutShortSentence voiceFileMarkEnd:%s voiceId:%s markEnd:%s", new Object[] { Integer.valueOf(((h.a)localObject).gbW), ((h.a)localObject).gbT, Integer.valueOf(paramInt) });
-    ((h.a)localObject).gbW = paramInt;
-    this.gbR.readLock().unlock();
-    AppMethodBeat.o(116752);
+    Log.d("MicroMsg.ShortSentenceContainer", "cutShortSentence voiceFileMarkEnd:%s voiceId:%s markEnd:%s", new Object[] { Integer.valueOf(((a)localObject).pgi), ((a)localObject).pgf, Integer.valueOf(paramInt) });
+    ((a)localObject).pgi = paramInt;
+    this.pgd.readLock().unlock();
+    AppMethodBeat.o(148596);
   }
   
-  public final h.a mu(int paramInt)
+  public final a xm(int paramInt)
   {
-    AppMethodBeat.i(116753);
-    this.gbR.readLock().lock();
-    if (this.gbQ.size() == 0)
+    AppMethodBeat.i(148598);
+    this.pgd.readLock().lock();
+    if (this.pgc.size() == 0)
     {
-      AppMethodBeat.o(116753);
+      this.pgd.readLock().unlock();
+      AppMethodBeat.o(148598);
       return null;
     }
-    Iterator localIterator = this.gbQ.values().iterator();
-    h.a locala;
+    Iterator localIterator = this.pgc.values().iterator();
+    a locala;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      locala = (h.a)localIterator.next();
-      ab.d("MicroMsg.ShortSentenceContainer", "locateCurrentShortSentence oldOffset = %s voiceFileMarkEnd = %s info.isRequestEnd = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.gbW), Boolean.valueOf(locala.gbV) });
-    } while ((locala.gbV) || (paramInt > locala.gbW));
+      locala = (a)localIterator.next();
+      Log.d("MicroMsg.ShortSentenceContainer", "locateCurrentShortSentence oldOffset = %s voiceFileMarkEnd = %s info.isRequestEnd = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.pgi), Boolean.valueOf(locala.pgh) });
+    } while ((locala.pgh) || (paramInt > locala.pgi));
     for (;;)
     {
-      this.gbR.readLock().unlock();
-      AppMethodBeat.o(116753);
+      this.pgd.readLock().unlock();
+      AppMethodBeat.o(148598);
       return locala;
       locala = null;
+    }
+  }
+  
+  public final class a
+  {
+    public String data;
+    public String pgf;
+    public boolean pgg;
+    public boolean pgh;
+    public int pgi;
+    public int pgj;
+    public int pgk;
+    public boolean pgl;
+    
+    public a()
+    {
+      AppMethodBeat.i(148588);
+      this.pgg = false;
+      this.pgh = false;
+      this.pgi = 2147483647;
+      this.pgj = 0;
+      this.pgk = -1;
+      this.data = null;
+      this.pgl = false;
+      this.pgf = QU(h.this.pgb);
+      AppMethodBeat.o(148588);
+    }
+    
+    public a(String paramString)
+    {
+      AppMethodBeat.i(148589);
+      this.pgg = false;
+      this.pgh = false;
+      this.pgi = 2147483647;
+      this.pgj = 0;
+      this.pgk = -1;
+      this.data = null;
+      this.pgl = false;
+      this.pgf = QU(paramString);
+      AppMethodBeat.o(148589);
+    }
+    
+    private static String QU(String paramString)
+    {
+      AppMethodBeat.i(148590);
+      long l3 = 0xFFFFFFFF & System.currentTimeMillis();
+      long l4 = 0xFFFFFFFF & new Random(System.currentTimeMillis()).nextInt();
+      long l2 = l3 << 32 | l4;
+      long l1 = l2;
+      if (l2 < 0L) {
+        l1 = Math.abs(l2);
+      }
+      String str = paramString + l1;
+      Log.i("MicroMsg.ShortSentenceContainer", "finally random = %s(%s) time = %s(%s) id = %s(%s) session = %s strId = %s", new Object[] { Long.valueOf(l4), Long.toBinaryString(l4), Long.valueOf(l3), Long.toBinaryString(l3), Long.valueOf(l1), Long.toBinaryString(l1), paramString, str });
+      AppMethodBeat.o(148590);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.h
  * JD-Core Version:    0.7.0.1
  */

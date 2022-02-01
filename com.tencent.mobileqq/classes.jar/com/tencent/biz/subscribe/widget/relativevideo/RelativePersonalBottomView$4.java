@@ -14,14 +14,14 @@ class RelativePersonalBottomView$4
     if (this.a != null)
     {
       ViewGroup.LayoutParams localLayoutParams = this.this$0.getLayoutParams();
-      localLayoutParams.height = (ImmersiveUtils.b() - this.a.getHeight());
+      localLayoutParams.height = (ImmersiveUtils.getScreenHeight() - this.a.getHeight());
       this.this$0.setLayoutParams(localLayoutParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView.4
  * JD-Core Version:    0.7.0.1
  */

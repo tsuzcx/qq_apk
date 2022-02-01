@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        <RelativeLayout android:orientation="vertical" android:id="@id/e1n" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/a6i" android:gravity="center_horizontal" android:id="@id/e1o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fyb" android:layout_centerVertical="true" />
-            <View android:id="@id/e1p" android:background="@color/a6o" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout android:orientation="vertical" android:id="@id/e1q" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/a5l" android:gravity="center_horizontal" android:id="@id/e1r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fyc" android:layout_centerVertical="true" />
-            <View android:id="@id/e1s" android:background="@color/a6o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-    </LinearLayout>
-    <View android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="@dimen/fq" />
-    <RelativeLayout android:id="@id/e1t" android:layout_width="fill_parent" android:layout_height="400.0dip">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:id="@id/e1u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fxz" android:layout_centerInParent="true" />
-        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/e1v" android:background="@null" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a4b" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/a0a" android:dividerHeight="@dimen/fs" android:headerDividersEnabled="true" style="@style/q1" />
-        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/e1w" android:background="@null" android:focusable="true" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a4b" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/a0a" android:dividerHeight="@dimen/fs" android:headerDividersEnabled="true" style="@style/q1" />
-    </RelativeLayout>
-</LinearLayout>
+<com.tencent.mm.view.HardTouchableLayout android:id="@id/br9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/e5_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/btk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.google.android.material.appbar.AppBarLayout android:orientation="vertical" android:id="@id/wg" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="10.0dip" app:expanded="true">
+            <FrameLayout android:layout_gravity="start|center" android:id="@id/eui" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/b9" app:layout_scrollFlags="j40|cmt" />
+            <FrameLayout android:id="@id/kcv" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.view.HardTouchableLayout android:id="@id/kcu" android:background="@drawable/an1" android:paddingTop="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/iw">
+                    <com.google.android.material.tabs.TabLayout android:layout_gravity="start" android:id="@id/kct" android:layout_width="wrap_content" android:layout_height="@dimen/d0" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicator="@drawable/a42" app:tabIndicatorColor="@color/a7b" app:tabIndicatorHeight="2.0dip" app:tabMode="j4k" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/a7b" app:tabTextColor="@color/m4" />
+                </com.tencent.mm.view.HardTouchableLayout>
+                <View android:layout_gravity="bottom" android:id="@id/kdc" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            </FrameLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <com.tencent.mm.plugin.finder.view.FinderViewPager android:id="@id/l8k" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a4l" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <include android:id="@id/i5o" android:visibility="visible" layout="@layout/a8h" />
+    <include layout="@layout/aod" />
+</com.tencent.mm.view.HardTouchableLayout>

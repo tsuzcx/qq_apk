@@ -19,15 +19,17 @@ public final class TrackOutput$CryptoData
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (CryptoData)paramObject;
-    } while ((this.cryptoMode == paramObject.cryptoMode) && (this.encryptedBlocks == paramObject.encryptedBlocks) && (this.clearBlocks == paramObject.clearBlocks) && (Arrays.equals(this.encryptionKey, paramObject.encryptionKey)));
+      return (this.cryptoMode == paramObject.cryptoMode) && (this.encryptedBlocks == paramObject.encryptedBlocks) && (this.clearBlocks == paramObject.clearBlocks) && (Arrays.equals(this.encryptionKey, paramObject.encryptionKey));
+    }
     return false;
   }
   
@@ -38,7 +40,7 @@ public final class TrackOutput$CryptoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.TrackOutput.CryptoData
  * JD-Core Version:    0.7.0.1
  */

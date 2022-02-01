@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils.MyBar;
 
 public final class gxm
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public gxm(QQAppInterface paramQQAppInterface, List paramList) {}
-  
-  public void run()
+  public TroopBarUtils.MyBar a(Parcel paramParcel)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localEntityManager.a((Entity)localIterator.next());
-    }
-    localEntityManager.a();
+    return new TroopBarUtils.MyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarUtils.MyBar[] a(int paramInt)
+  {
+    return null;
   }
 }
 

@@ -20,30 +20,43 @@ public class QQCardJsPlugin
     return false;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {}
-    do
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramString3)) {
         return false;
-        if (QLog.isColorLevel()) {
-          QLog.d("QQCardJsPlugin", 2, "handleJsRequest pkgName=" + paramString2 + " method=" + paramString3);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("handleJsRequest pkgName=");
+        paramJsBridgeListener.append(paramString2);
+        paramJsBridgeListener.append(" method=");
+        paramJsBridgeListener.append(paramString3);
+        QLog.d("QQCardJsPlugin", 2, paramJsBridgeListener.toString());
+      }
+      if (!"qqcard".equals(paramString2))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramJsBridgeListener = new StringBuilder();
+          paramJsBridgeListener.append("can not handle objectname:");
+          paramJsBridgeListener.append(paramString2);
+          QLog.i("QQCardJsPlugin", 2, paramJsBridgeListener.toString());
         }
-        if ("qqcard".equals(paramString2)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QQCardJsPlugin", 2, "can not handle objectname:" + paramString2);
-      return false;
-    } while (!"openQQCard".equals(paramString3));
-    return openQQCard();
+        return false;
+      }
+      if ("openQQCard".equals(paramString3)) {
+        return openQQCard();
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQCardJsPlugin
  * JD-Core Version:    0.7.0.1
  */

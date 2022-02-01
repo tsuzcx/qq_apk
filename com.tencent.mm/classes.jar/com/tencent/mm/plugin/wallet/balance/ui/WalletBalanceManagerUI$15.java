@@ -1,34 +1,32 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtDetailUI;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.wallet_core.ui.i;
+import com.tencent.mm.wallet_core.ui.k;
 
 final class WalletBalanceManagerUI$15
-  implements View.OnClickListener
+  extends k
 {
-  WalletBalanceManagerUI$15(WalletBalanceManagerUI paramWalletBalanceManagerUI) {}
+  WalletBalanceManagerUI$15(WalletBalanceManagerUI paramWalletBalanceManagerUI, am paramam) {}
   
-  public final void onClick(View paramView)
+  public final void dr(View paramView)
   {
-    AppMethodBeat.i(45441);
-    g.RM();
-    g.RL().Ru().set(ac.a.yHk, Integer.valueOf(-1));
-    paramView = new Intent(this.tOJ, WalletLqtDetailUI.class);
-    paramView.putExtra("key_account_type", 1);
-    this.tOJ.startActivity(paramView);
-    AppMethodBeat.o(45441);
+    AppMethodBeat.i(316301);
+    h.baF();
+    h.baE().ban().set(at.a.acSy, Integer.valueOf(-1));
+    i.o(this.VcP, this.VcT.ijt(), true);
+    AppMethodBeat.o(316301);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI.15
  * JD-Core Version:    0.7.0.1
  */

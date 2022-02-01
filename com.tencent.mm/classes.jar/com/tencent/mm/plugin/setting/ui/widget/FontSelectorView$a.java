@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.setting.ui.widget;
 
 public abstract interface FontSelectorView$a
 {
-  public abstract void Da(int paramInt);
+  public abstract void mL(int paramInt);
 }
 
 

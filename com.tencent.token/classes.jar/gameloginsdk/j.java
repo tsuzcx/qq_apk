@@ -8,10 +8,10 @@ public class j
     {
     default: 
       return 0;
-    case 1: 
-      return 2;
+    case 2: 
+      return 1;
     }
-    return 1;
+    return 2;
   }
   
   static int b(int paramInt)
@@ -20,10 +20,10 @@ public class j
     {
     default: 
       return 0;
-    case 1: 
-      return 2;
+    case 2: 
+      return 1;
     }
-    return 1;
+    return 2;
   }
   
   static int c(int paramInt)
@@ -32,25 +32,26 @@ public class j
     {
     default: 
       return 0;
-    case 1: 
-      return 1;
+    case 2: 
+      return 2;
     }
-    return 2;
+    return 1;
   }
   
   static int d(int paramInt)
   {
     switch (paramInt)
     {
-    case 0: 
     default: 
       return 99;
-    case 1: 
-      return 1;
+    case 3: 
+      return 3;
     case 2: 
       return 2;
+    case 1: 
+      return 1;
     }
-    return 3;
+    return 99;
   }
 }
 

@@ -1,25 +1,32 @@
-import android.os.Bundle;
+import android.app.NotificationManager;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import com.tencent.qphone.base.util.QLog;
 
 public class fdq
-  extends SendMessageHandler.SendMessageRunnable
+  implements Runnable
 {
-  public fdq(MessageHandler paramMessageHandler, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq, long paramLong1, long paramLong2) {}
+  public fdq(MessageHandler paramMessageHandler, NotificationManager paramNotificationManager) {}
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("PbMessageSvc.PbMsgReadedReport");
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray());
-    localToServiceMsg.extraData.putLong("timeOut", this.e);
-    localToServiceMsg.extraData.putLong("startTime", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putInt("retryIndex", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putLong("msgSeq", this.b);
-    localToServiceMsg.setEnableFastResend(true);
-    localToServiceMsg.setTimeout(this.e);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
+    try
+    {
+      Thread.sleep(5000L);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.msg.MessageHandler", 4, "PConline time expired cancel now");
+      }
+      this.jdField_a_of_type_AndroidAppNotificationManager.cancel(MessageHandler.bO);
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, false);
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.MessageHandler", 2, "PConline thread Interrupt");
+      }
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, null);
+    }
   }
 }
 

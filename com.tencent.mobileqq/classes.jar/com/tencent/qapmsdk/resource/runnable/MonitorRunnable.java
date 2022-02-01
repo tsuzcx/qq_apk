@@ -4,61 +4,50 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import com.tencent.qapmsdk.common.thread.ThreadManager;
 import com.tencent.qapmsdk.resource.ResourceMonitor;
+import com.tencent.qapmsdk.resource.RunTimeEnv;
 import com.tencent.qapmsdk.resource.meta.PerfItem;
 import java.util.Vector;
 
 public class MonitorRunnable
   implements Runnable
 {
+  private static final long MILLS_SECOND = 1000L;
+  private static final long SPAN_DEBUG = 1000L;
+  private static final long SPAN_PUBLIC = 5000L;
   @Nullable
-  private static volatile MonitorRunnable instance = null;
-  private long delayTime = 1000L;
-  Handler handler = new Handler(ThreadManager.getMonitorThreadLooper());
-  private boolean isRun;
+  private static volatile MonitorRunnable instance;
+  private Handler handler = new Handler(ThreadManager.getMonitorThreadLooper());
+  private boolean isRunning = false;
   
-  private MonitorRunnable(boolean paramBoolean)
+  private long getDelayTime()
   {
-    this.isRun = paramBoolean;
+    if (RunTimeEnv.isPublishMode()) {
+      return 5000L;
+    }
+    return 1000L;
   }
   
-  @Nullable
-  public static MonitorRunnable getInstance(boolean paramBoolean)
+  public static MonitorRunnable getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new MonitorRunnable(paramBoolean);
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new MonitorRunnable();
+        }
       }
-      instance.setState(paramBoolean);
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
-  private void setState(boolean paramBoolean)
+  public void collectPerfItemRightNow()
   {
-    this.isRun = paramBoolean;
-    if (ResourceMonitor.getInstance().isPublicMode()) {
-      this.delayTime = 5000L;
-    }
-  }
-  
-  public PerfItem forceSampleOnce()
-  {
-    PerfItem localPerfItem = ResourceMonitor.getInstance().samplePerfValue(new PerfItem());
-    localPerfItem.eventTime = (System.currentTimeMillis() / 1000.0D);
-    return localPerfItem;
-  }
-  
-  public void run()
-  {
-    if (this.isRun)
+    Object localObject = ResourceMonitor.getInstance().samplePerfValue(new PerfItem());
+    ((PerfItem)localObject).eventTime = (System.currentTimeMillis() / 1000L);
+    if (RunTimeEnv.isResourceMode())
     {
-      Object localObject = forceSampleOnce();
       ResourceMonitor.immediatePerfItems.add(localObject);
-      localObject = getInstance(true);
-      this.handler.postDelayed((Runnable)localObject, this.delayTime);
       if (ResourceMonitor.immediatePerfItems.size() > 900)
       {
         localObject = DumpSampleFileRunnable.getInstance();
@@ -66,10 +55,32 @@ public class MonitorRunnable
       }
     }
   }
+  
+  public void run()
+  {
+    collectPerfItemRightNow();
+    if (this.isRunning) {
+      this.handler.postDelayed(this, getDelayTime());
+    }
+  }
+  
+  public void start()
+  {
+    if (!this.isRunning)
+    {
+      this.isRunning = true;
+      this.handler.post(this);
+    }
+  }
+  
+  public void stop()
+  {
+    this.isRunning = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.runnable.MonitorRunnable
  * JD-Core Version:    0.7.0.1
  */

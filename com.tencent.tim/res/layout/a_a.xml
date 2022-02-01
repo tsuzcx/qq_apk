@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout android:id="@id/head_layout" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="4.0dip" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/d3a" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/com" android:layout_centerInParent="true" />
+        <ImageView android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/b1u" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/j18" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/b26" />
+        <ImageView android:id="@id/kmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/drr" android:layout_alignRight="@id/d3a" android:layout_alignBottom="@id/d3a" />
+    </com.tencent.mobileqq.widget.presseffect.PressEffectRelativeLayout>
+    <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="14.0dip" android:textColor="#d9000000" android:id="@id/f9z" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/gss" android:singleLine="true" android:layout_below="@id/head_layout" android:layout_centerHorizontal="true" />
+</RelativeLayout>

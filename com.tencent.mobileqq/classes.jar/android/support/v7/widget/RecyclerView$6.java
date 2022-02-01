@@ -7,32 +7,35 @@ class RecyclerView$6
   
   void dispatchUpdate(AdapterHelper.UpdateOp paramUpdateOp)
   {
-    switch (paramUpdateOp.cmd)
+    int i = paramUpdateOp.cmd;
+    if (i != 1)
     {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    case 1: 
-      this.this$0.mLayout.onItemsAdded(this.this$0, paramUpdateOp.positionStart, paramUpdateOp.itemCount);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 4)
+        {
+          if (i != 8) {
+            return;
+          }
+          this.this$0.mLayout.onItemsMoved(this.this$0, paramUpdateOp.positionStart, paramUpdateOp.itemCount, 1);
+          return;
+        }
+        this.this$0.mLayout.onItemsUpdated(this.this$0, paramUpdateOp.positionStart, paramUpdateOp.itemCount, paramUpdateOp.payload);
+        return;
+      }
       this.this$0.mLayout.onItemsRemoved(this.this$0, paramUpdateOp.positionStart, paramUpdateOp.itemCount);
       return;
-    case 4: 
-      this.this$0.mLayout.onItemsUpdated(this.this$0, paramUpdateOp.positionStart, paramUpdateOp.itemCount, paramUpdateOp.payload);
-      return;
     }
-    this.this$0.mLayout.onItemsMoved(this.this$0, paramUpdateOp.positionStart, paramUpdateOp.itemCount, 1);
+    this.this$0.mLayout.onItemsAdded(this.this$0, paramUpdateOp.positionStart, paramUpdateOp.itemCount);
   }
   
   public RecyclerView.ViewHolder findViewHolder(int paramInt)
   {
     RecyclerView.ViewHolder localViewHolder = this.this$0.findViewHolderForPosition(paramInt, true);
-    if (localViewHolder == null) {}
-    while (this.this$0.mChildHelper.isHidden(localViewHolder.itemView)) {
+    if (localViewHolder == null) {
+      return null;
+    }
+    if (this.this$0.mChildHelper.isHidden(localViewHolder.itemView)) {
       return null;
     }
     return localViewHolder;
@@ -59,9 +62,10 @@ class RecyclerView$6
   public void offsetPositionsForRemovingInvisible(int paramInt1, int paramInt2)
   {
     this.this$0.offsetPositionRecordsForRemove(paramInt1, paramInt2, true);
-    this.this$0.mItemsAddedOrRemoved = true;
-    RecyclerView.State localState = this.this$0.mState;
-    RecyclerView.State.access$1702(localState, RecyclerView.State.access$1700(localState) + paramInt2);
+    Object localObject = this.this$0;
+    ((RecyclerView)localObject).mItemsAddedOrRemoved = true;
+    localObject = ((RecyclerView)localObject).mState;
+    RecyclerView.State.access$1702((RecyclerView.State)localObject, RecyclerView.State.access$1700((RecyclerView.State)localObject) + paramInt2);
   }
   
   public void offsetPositionsForRemovingLaidOutOrNewView(int paramInt1, int paramInt2)

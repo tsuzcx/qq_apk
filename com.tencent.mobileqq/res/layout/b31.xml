@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@id/ic3" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/ebs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" />
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/m9d" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" android:layout_marginBottom="@dimen/al1" formItem:bgType="abp" formItem:switchChecked="true" formItem:switchText="@string/vou" />
+    <com.tencent.widget.XListView android:id="@id/ebs" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" android:layout_below="@id/m9d" />
     <TextView android:textSize="16.0dip" android:textColor="@color/skin_blue_item" android:gravity="center" android:id="@id/cbn" android:background="@drawable/jm" android:visibility="gone" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/fty" android:singleLine="true" android:layout_alignParentBottom="true" android:contentDescription="@string/hwt" />
 </RelativeLayout>

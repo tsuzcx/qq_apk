@@ -12,12 +12,12 @@ class PushBroadcastReceiver$2
     if (QLog.isColorLevel()) {
       QLog.d("notification", 2, "PushBroadcastReceiver processIntent removeNotification");
     }
-    this.a.i();
+    this.a.removeNotification();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PushBroadcastReceiver.2
  * JD-Core Version:    0.7.0.1
  */

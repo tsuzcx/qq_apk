@@ -9,9 +9,9 @@ import com.tencent.mm.view.SmileySubGrid;
 public class EmojiDetailGridView
   extends SmileySubGrid
 {
-  private String liu;
-  private EmojiDetailScrollView llW;
-  private volatile boolean llX = true;
+  private String xOk;
+  private EmojiDetailScrollView xSn;
+  private volatile boolean xSo = true;
   
   public EmojiDetailGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,38 +25,38 @@ public class EmojiDetailGridView
   
   public String getProductId()
   {
-    return this.liu;
+    return this.xOk;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(53367);
+    AppMethodBeat.i(108927);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
-    AppMethodBeat.o(53367);
+    AppMethodBeat.o(108927);
   }
   
   public void setEmojiDetailScrollView(EmojiDetailScrollView paramEmojiDetailScrollView)
   {
-    this.llW = paramEmojiDetailScrollView;
+    this.xSn = paramEmojiDetailScrollView;
   }
   
   public void setProductId(String paramString)
   {
-    this.liu = paramString;
+    this.xOk = paramString;
   }
   
   public void setScrollEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(53368);
-    if (this.llW != null) {
-      this.llW.setScrollEnable(paramBoolean);
+    AppMethodBeat.i(108928);
+    if (this.xSn != null) {
+      this.xSn.setScrollEnable(paramBoolean);
     }
-    AppMethodBeat.o(53368);
+    AppMethodBeat.o(108928);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiDetailGridView
  * JD-Core Version:    0.7.0.1
  */

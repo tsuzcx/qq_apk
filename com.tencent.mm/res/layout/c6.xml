@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/p4" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="48.0dip" android:layout_marginBottom="24.0dip" android:scaleType="fitCenter" />
-    <TextView android:textSize="@dimen/du" android:textColor="@color/h6" android:gravity="center" android:id="@id/p5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cwy" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center" android:id="@id/r0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="24.0dip" />
-    <Button android:textSize="@dimen/m2" android:gravity="center" android:id="@id/r1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:text="进入首页" style="@style/pc" />
-</LinearLayout>
+<com.tencent.mm.plugin.sns.ui.widget.SnsDrawGestureView android:layout_gravity="left" android:id="@id/jt_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

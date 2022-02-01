@@ -1,0 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+
+public class edh
+  implements DialogInterface.OnClickListener
+{
+  public edh(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.minihd.qq\assets\exlibs.2.jar\classes.jar
+ * Qualified Name:     edh
+ * JD-Core Version:    0.7.0.1
+ */

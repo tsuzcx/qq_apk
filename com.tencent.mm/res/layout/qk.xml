@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.ui.base.MaskLayout android:id="@id/b3v" android:clipChildren="false" android:clipToPadding="false" style="@style/gy"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="14.0dip" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/b3f" android:paddingTop="@dimen/dv" android:paddingBottom="@dimen/dv" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxLines="3" android:paddingStart="@dimen/m7" android:paddingEnd="@dimen/m7" />
-</LinearLayout>
+    <com.tencent.mm.ui.chatting.view.ChattingAvatarImageView android:id="@id/b3s" android:focusable="false" style="@style/h0" />
+    <ViewStub android:id="@id/b8l" android:layout="@layout/ql" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_alignParentBottom="true" />
+</com.tencent.mm.ui.base.MaskLayout>

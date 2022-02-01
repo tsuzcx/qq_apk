@@ -13,8 +13,8 @@ public class EmojiLayout
   extends RelativeLayout
   implements aa
 {
-  public MMGIFImageView afD;
-  private String afE;
+  public MMGIFImageView ajf;
+  private String ajg;
   
   public EmojiLayout(Context paramContext)
   {
@@ -31,47 +31,47 @@ public class EmojiLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void fK()
+  public final void fU()
   {
-    this.afD.setScaleX(1.3F);
-    this.afD.setScaleY(1.3F);
-    this.afD.start();
+    this.ajf.setScaleX(1.3F);
+    this.ajf.setScaleY(1.3F);
+    this.ajf.start();
   }
   
-  public final void fL()
+  public final void fV()
   {
-    this.afD.setScaleX(0.8F);
-    this.afD.setScaleY(0.8F);
-    MMGIFImageView localMMGIFImageView = this.afD;
+    this.ajf.setScaleX(0.8F);
+    this.ajf.setScaleY(0.8F);
+    MMGIFImageView localMMGIFImageView = this.ajf;
     if ((localMMGIFImageView.getDrawable() != null) && ((localMMGIFImageView.getDrawable() instanceof com.tencent.mm.wear.app.emoji.gif.b))) {
       ((com.tencent.mm.wear.app.emoji.gif.b)localMMGIFImageView.getDrawable()).pause();
     }
   }
   
-  public final String nm()
+  public final String nZ()
   {
-    return this.afE;
+    return this.ajg;
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.afD = ((MMGIFImageView)findViewById(2131558444));
+    this.ajf = ((MMGIFImageView)findViewById(2131558445));
   }
   
-  public final void p(String paramString1, String paramString2)
+  public final void q(String paramString1, String paramString2)
   {
     d.c("MicroMsg.EmojiLayout", "md5: %s, productId: %s", new Object[] { paramString1, paramString2 });
-    this.afE = paramString1;
+    this.ajg = paramString1;
     a locala = new a();
-    locala.acL = this.afD;
-    locala.acM = 2130837533;
+    locala.agm = this.ajf;
+    locala.agn = 2130837533;
     locala.type = 1;
-    locala.acI = paramString2;
-    locala.acJ = paramString1;
-    locala.width = this.afD.getMeasuredWidth();
-    locala.height = this.afD.getMeasuredHeight();
-    h.me().a(locala);
+    locala.agj = paramString2;
+    locala.agk = paramString1;
+    locala.width = this.ajf.getMeasuredWidth();
+    locala.height = this.ajf.getMeasuredHeight();
+    h.mR().a(locala);
   }
 }
 

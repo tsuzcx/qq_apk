@@ -9,36 +9,26 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bdoo;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class MultiCardMaskView
   extends View
 {
-  private float jdField_a_of_type_Float = bdoo.b(12.0F);
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean = true;
+  private Path a;
+  private RectF b;
+  private float c = ViewUtils.dpToPx(12.0F);
+  private boolean d = true;
   
   public MultiCardMaskView(Context paramContext)
   {
     super(paramContext);
-    a();
+    b();
   }
   
   public MultiCardMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet, 0);
-    a();
-  }
-  
-  private void a()
-  {
-    setWillNotDraw(false);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    if ((Build.VERSION.SDK_INT <= 18) || (a())) {
-      setLayerType(1, null);
-    }
+    b();
   }
   
   private boolean a()
@@ -46,21 +36,34 @@ public class MultiCardMaskView
     return (Build.VERSION.SDK_INT == 24) && ("Xiaomi".equals(Build.MANUFACTURER)) && ("MIX".equals(Build.MODEL));
   }
   
+  private void b()
+  {
+    setWillNotDraw(false);
+    this.a = new Path();
+    this.b = new RectF();
+    if ((Build.VERSION.SDK_INT <= 18) || (a())) {
+      setLayerType(1, null);
+    }
+  }
+  
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      this.a.reset();
+      this.b.set(0.0F, 0.0F, getWidth(), getHeight());
+      Path localPath = this.a;
+      RectF localRectF = this.b;
+      float f = this.c;
+      localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
+      paramCanvas.clipPath(this.a);
     }
     super.draw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardMaskView
  * JD-Core Version:    0.7.0.1
  */

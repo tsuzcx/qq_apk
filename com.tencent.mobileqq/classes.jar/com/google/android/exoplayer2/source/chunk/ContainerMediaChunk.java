@@ -60,21 +60,34 @@ public class ContainerMediaChunk
       try
       {
         localObject1 = new DefaultExtractorInput(this.dataSource, ((DataSpec)localObject1).absoluteStreamPosition, this.dataSource.open((DataSpec)localObject1));
-        Object localObject3;
         if (this.bytesLoaded == 0)
         {
           localObject3 = getOutput();
           ((BaseMediaChunkOutput)localObject3).setSampleOffsetUs(this.sampleOffsetUs);
           this.extractorWrapper.init((ChunkExtractorWrapper.TrackOutputProvider)localObject3);
         }
+      }
+      finally
+      {
+        Object localObject3;
         int i;
-        try
+        Util.closeQuietly(this.dataSource);
+        continue;
+        throw localObject2;
+        continue;
+        if (i == 1) {
+          continue;
+        }
+        boolean bool = true;
+        continue;
+      }
+      try
+      {
+        localObject3 = this.extractorWrapper.extractor;
+        bool = false;
+        i = 0;
+        if ((i == 0) && (!this.loadCanceled))
         {
-          localObject3 = this.extractorWrapper.extractor;
-          i = 0;
-          if ((i != 0) || (this.loadCanceled)) {
-            break label180;
-          }
           i = ((Extractor)localObject3).read((ExtractorInput)localObject1, null);
           continue;
           Assertions.checkState(bool);
@@ -83,28 +96,17 @@ public class ContainerMediaChunk
           this.loadCompleted = true;
           return;
         }
-        finally
-        {
-          this.bytesLoaded = ((int)(((ExtractorInput)localObject1).getPosition() - this.dataSpec.absoluteStreamPosition));
-        }
-        bool = false;
-        continue;
-        if (i == 1) {
-          continue;
-        }
       }
       finally
       {
-        Util.closeQuietly(this.dataSource);
+        this.bytesLoaded = ((int)(((ExtractorInput)localObject1).getPosition() - this.dataSpec.absoluteStreamPosition));
       }
-      label180:
-      boolean bool = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.ContainerMediaChunk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/j4h" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/f7r" android:paddingLeft="@dimen/d0" android:paddingRight="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/gyh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d_" style="@style/kn" />
+            <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/gyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" style="@style/zp" />
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0">
+                <View android:id="@id/krn" android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginBottom="@dimen/df" app:layout_constraintBottom_toTopOf="@id/b0v" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+                <ImageView android:id="@id/b0v" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@drawable/b__" app:layout_constraintBottom_toBottomOf="@id/ago" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toLeftOf="@id/gyf" app:layout_constraintTop_toTopOf="@id/krn" />
+                <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:textColorHint="@color/xo" android:id="@id/gyf" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/d_" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/cd" android:singleLine="true" android:textCursorDrawable="@drawable/a8b" app:layout_constraintBottom_toBottomOf="@id/b0v" app:layout_constraintLeft_toRightOf="@id/b0v" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/b0v" />
+                <View android:id="@id/ago" android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginTop="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/b0v" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/b19" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+                <TextView android:ellipsize="end" android:id="@id/b1_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" style="@style/zn" />
+                <TextView android:textSize="@dimen/hq" android:textColor="@color/a1c" android:id="@id/b1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="@string/lla" />
+            </LinearLayout>
+            <View android:id="@id/ah6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <Button android:enabled="false" android:layout_gravity="center_horizontal" android:id="@id/hfl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c2" android:text="@string/z9" style="@style/oh" />
+        </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+    </ScrollView>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:gravity="center" android:id="@id/ckw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" style="@style/ok" />
+</FrameLayout>

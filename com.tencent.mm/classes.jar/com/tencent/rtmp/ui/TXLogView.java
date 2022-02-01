@@ -31,7 +31,7 @@ public class TXLogView
   public TXLogView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(65560);
+    AppMethodBeat.i(14285);
     this.a = new StringBuffer("");
     this.f = 3000;
     this.g = false;
@@ -70,20 +70,20 @@ public class TXLogView
     addView(this.d);
     addView(this.e);
     setVisibility(8);
-    AppMethodBeat.o(65560);
+    AppMethodBeat.o(14285);
   }
   
   public static int a(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(65561);
+    AppMethodBeat.i(14286);
     int i = (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-    AppMethodBeat.o(65561);
+    AppMethodBeat.o(14286);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.ui.TXLogView
  * JD-Core Version:    0.7.0.1
  */

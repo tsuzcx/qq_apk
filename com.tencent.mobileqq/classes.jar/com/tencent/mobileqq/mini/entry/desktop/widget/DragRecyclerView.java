@@ -12,9 +12,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.ScaleAnimation;
-import bdoo;
-import bidr;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,26 +22,26 @@ import java.util.List;
 public class DragRecyclerView
   extends RecyclerView
 {
-  int SCROLL_OFFSET = bdoo.a(20.0F);
+  int SCROLL_OFFSET = ViewUtils.dip2px(20.0F);
   boolean autoScrollEnable = false;
   int autoScrollOffsetX = 0;
   boolean autoScrollStatus = false;
   protected List<DragRecyclerView> children = new ArrayList();
-  private RecyclerView.ViewHolder currDragViewHolder;
+  private RecyclerView.ViewHolder currDragViewHolder = null;
   int hasScrolledOffsetX = 0;
-  protected boolean isDragging;
-  private int lastDragX;
-  private int lastDragY;
-  private boolean mAutoScrollEnable;
-  private boolean mCanAutoScroll;
-  private DragRecyclerView.DragDeleteListener mDeleteDragListener;
-  private boolean mIsDeletePrepared;
+  protected boolean isDragging = false;
+  private int lastDragX = 0;
+  private int lastDragY = 0;
+  private boolean mAutoScrollEnable = false;
+  private boolean mCanAutoScroll = false;
+  private DragRecyclerView.DragDeleteListenerWrapper mDeleteDragListener;
+  private boolean mIsDeletePrepared = false;
   private DragRecyclerView.OnItemChangeListener mOnItemChangeListener;
   private Handler mainHandler = new Handler(Looper.myLooper());
   boolean oritationRight = true;
   private ScaleAnimation revertAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
   int startAutoScrollOffset = 0;
-  bidr touchHelper = new DragRecyclerView.MiniItemTouchHelper(this, new DragRecyclerView.4(this));
+  ItemTouchHelper touchHelper = new DragRecyclerView.MiniItemTouchHelper(this, new DragRecyclerView.4(this));
   private boolean up;
   private ScaleAnimation zoomAnimation = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
   
@@ -91,108 +91,90 @@ public class DragRecyclerView
         this.mDeleteDragListener.onDeleteDragFinish();
       }
     }
-    catch (Throwable localThrowable2)
+    catch (Throwable localThrowable1)
     {
-      try
-      {
-        if ((this.mIsDeletePrepared) && (this.mOnItemChangeListener != null) && (this.currDragViewHolder != null) && (this.currDragViewHolder.getAdapterPosition() >= 0)) {
-          this.mOnItemChangeListener.onItemDelete(this.currDragViewHolder.getAdapterPosition());
-        }
-      }
-      catch (Throwable localThrowable2)
-      {
-        try
-        {
-          for (;;)
-          {
-            if ((this.mOnItemChangeListener != null) && (this.currDragViewHolder != null)) {
-              this.mOnItemChangeListener.onDragFinish(this.currDragViewHolder, this.currDragViewHolder.getAdapterPosition());
-            }
-            this.mAutoScrollEnable = false;
-            this.startAutoScrollOffset = 0;
-            this.isDragging = false;
-            this.mIsDeletePrepared = false;
-            this.lastDragX = 0;
-            this.lastDragY = 0;
-            this.currDragViewHolder = null;
-            return;
-            localThrowable1 = localThrowable1;
-            QLog.e("DragRecycleView", 1, localThrowable1, new Object[0]);
-            continue;
-            localThrowable2 = localThrowable2;
-            QLog.e("DragRecycleView", 1, localThrowable2, new Object[0]);
-          }
-        }
-        catch (Throwable localThrowable3)
-        {
-          for (;;)
-          {
-            QLog.e("DragRecycleView", 1, localThrowable3, new Object[0]);
-          }
-        }
+      QLog.e("DragRecycleView", 1, localThrowable1, new Object[0]);
+    }
+    try
+    {
+      if ((this.mIsDeletePrepared) && (this.mOnItemChangeListener != null) && (this.currDragViewHolder != null) && (this.currDragViewHolder.getAdapterPosition() >= 0)) {
+        this.mOnItemChangeListener.onItemDelete(this.currDragViewHolder.getAdapterPosition());
       }
     }
+    catch (Throwable localThrowable2)
+    {
+      QLog.e("DragRecycleView", 1, localThrowable2, new Object[0]);
+    }
+    try
+    {
+      if ((this.mOnItemChangeListener != null) && (this.currDragViewHolder != null)) {
+        this.mOnItemChangeListener.onDragFinish(this.currDragViewHolder, this.currDragViewHolder.getAdapterPosition());
+      }
+    }
+    catch (Throwable localThrowable3)
+    {
+      QLog.e("DragRecycleView", 1, localThrowable3, new Object[0]);
+    }
+    this.mAutoScrollEnable = false;
+    this.startAutoScrollOffset = 0;
+    this.isDragging = false;
+    this.mIsDeletePrepared = false;
+    this.lastDragX = 0;
+    this.lastDragY = 0;
+    this.currDragViewHolder = null;
   }
   
   private void onDragMove(int paramInt1, int paramInt2)
   {
-    if (!this.isDragging) {}
-    label7:
-    label100:
-    do
+    if (!this.isDragging) {
+      return;
+    }
+    if ((Math.abs(this.lastDragX - paramInt1) < ViewUtils.dpToPx(3.0F)) && (Math.abs(this.lastDragY - paramInt2) < ViewUtils.dpToPx(3.0F))) {
+      return;
+    }
+    this.lastDragX = paramInt1;
+    this.lastDragY = paramInt2;
+    DragRecyclerView.OnItemChangeListener localOnItemChangeListener = this.mOnItemChangeListener;
+    if (localOnItemChangeListener != null) {
+      localOnItemChangeListener.onDragMove(this.lastDragX, this.lastDragY);
+    }
+    if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131297319)) {
+      this.mCanAutoScroll = true;
+    } else {
+      this.mCanAutoScroll = false;
+    }
+    localOnItemChangeListener = this.mOnItemChangeListener;
+    boolean bool;
+    if (localOnItemChangeListener != null) {
+      bool = localOnItemChangeListener.isItemDeleteable(this.currDragViewHolder.getAdapterPosition());
+    } else {
+      bool = false;
+    }
+    if ((bool) && (this.mDeleteDragListener != null))
     {
-      do
+      localOnItemChangeListener = this.mOnItemChangeListener;
+      if ((localOnItemChangeListener != null) && (localOnItemChangeListener.isMoveToDeleteArea(paramInt1, paramInt2)))
       {
-        break label7;
-        break label7;
-        for (;;)
+        if (!this.mIsDeletePrepared)
         {
-          return;
-          if ((Math.abs(this.lastDragX - paramInt1) >= bdoo.b(3.0F)) || (Math.abs(this.lastDragY - paramInt2) >= bdoo.b(3.0F)))
-          {
-            this.lastDragX = paramInt1;
-            this.lastDragY = paramInt2;
-            if (this.mOnItemChangeListener != null) {
-              this.mOnItemChangeListener.onDragMove(this.lastDragX, this.lastDragY);
-            }
-            if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131296818))
-            {
-              this.mCanAutoScroll = true;
-              if (this.mOnItemChangeListener == null) {
-                break label209;
-              }
-            }
-            for (boolean bool = this.mOnItemChangeListener.isItemDeleteable(this.currDragViewHolder.getAdapterPosition());; bool = false)
-            {
-              if ((!bool) || (this.mDeleteDragListener == null)) {
-                break label212;
-              }
-              if ((this.mOnItemChangeListener == null) || (!this.mOnItemChangeListener.isMoveToDeleteArea(paramInt1, paramInt2))) {
-                break label214;
-              }
-              if (this.mIsDeletePrepared) {
-                break;
-              }
-              this.mIsDeletePrepared = true;
-              this.mDeleteDragListener.onDeleteDragComplete();
-              if (this.mOnItemChangeListener == null) {
-                break;
-              }
-              this.mOnItemChangeListener.onItemPrepared(this.currDragViewHolder.getAdapterPosition());
-              return;
-              this.mCanAutoScroll = false;
-              break label100;
-            }
+          this.mIsDeletePrepared = true;
+          this.mDeleteDragListener.onDeleteDragComplete();
+          localOnItemChangeListener = this.mOnItemChangeListener;
+          if (localOnItemChangeListener != null) {
+            localOnItemChangeListener.onItemPrepared(this.currDragViewHolder.getAdapterPosition());
           }
         }
-      } while (!this.mIsDeletePrepared);
-      this.mIsDeletePrepared = false;
-      this.mDeleteDragListener.onDeleteDragStart();
-    } while (this.mOnItemChangeListener == null);
-    label209:
-    label212:
-    label214:
-    this.mOnItemChangeListener.onItemPrepared(-1);
+      }
+      else if (this.mIsDeletePrepared)
+      {
+        this.mIsDeletePrepared = false;
+        this.mDeleteDragListener.onDeleteDragStart();
+        localOnItemChangeListener = this.mOnItemChangeListener;
+        if (localOnItemChangeListener != null) {
+          localOnItemChangeListener.onItemPrepared(-1);
+        }
+      }
+    }
   }
   
   private void onDragStart(RecyclerView.ViewHolder paramViewHolder)
@@ -201,24 +183,31 @@ public class DragRecyclerView
     this.currDragViewHolder = paramViewHolder;
     if (paramViewHolder != null)
     {
-      QLog.i("DragRecycleView", 1, "onDragStart index:" + paramViewHolder.getAdapterPosition());
-      if (this.mOnItemChangeListener != null) {
-        this.mOnItemChangeListener.onDragStart(paramViewHolder, paramViewHolder.getAdapterPosition());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDragStart index:");
+      ((StringBuilder)localObject).append(paramViewHolder.getAdapterPosition());
+      QLog.i("DragRecycleView", 1, ((StringBuilder)localObject).toString());
+      localObject = this.mOnItemChangeListener;
+      if (localObject != null) {
+        ((DragRecyclerView.OnItemChangeListener)localObject).onDragStart(paramViewHolder, paramViewHolder.getAdapterPosition());
       }
-      if (this.mOnItemChangeListener == null) {
-        break label115;
+      localObject = this.mOnItemChangeListener;
+      boolean bool;
+      if (localObject != null) {
+        bool = ((DragRecyclerView.OnItemChangeListener)localObject).isItemDeleteable(paramViewHolder.getAdapterPosition());
+      } else {
+        bool = false;
+      }
+      if (bool)
+      {
+        paramViewHolder = this.mDeleteDragListener;
+        if (paramViewHolder != null) {
+          paramViewHolder.onDeleteDragStart();
+        }
       }
     }
-    label115:
-    for (boolean bool = this.mOnItemChangeListener.isItemDeleteable(paramViewHolder.getAdapterPosition());; bool = false)
-    {
-      if ((bool) && (this.mDeleteDragListener != null)) {
-        this.mDeleteDragListener.onDeleteDragStart();
-      }
-      this.mAutoScrollEnable = true;
-      doAutoScroolToBottom();
-      return;
-    }
+    this.mAutoScrollEnable = true;
+    doAutoScroolToBottom();
   }
   
   private void zoomView(View paramView)
@@ -244,7 +233,7 @@ public class DragRecyclerView
       View localView = getChildAt(i);
       float f1 = ViewCompat.getTranslationX(localView);
       float f2 = ViewCompat.getTranslationY(localView);
-      if ((paramFloat1 >= localView.getLeft() + f1) && (paramFloat1 <= f1 + localView.getRight()) && (paramFloat2 >= localView.getTop() + f2) && (paramFloat2 <= localView.getBottom() + f2)) {
+      if ((paramFloat1 >= localView.getLeft() + f1) && (paramFloat1 <= localView.getRight() + f1) && (paramFloat2 >= localView.getTop() + f2) && (paramFloat2 <= localView.getBottom() + f2)) {
         return localView;
       }
       i -= 1;
@@ -290,16 +279,17 @@ public class DragRecyclerView
   {
     if (this.isDragging)
     {
-      switch (paramMotionEvent.getAction())
+      int i = paramMotionEvent.getAction();
+      if (i != 1)
       {
-      }
-      for (;;)
-      {
-        return true;
-        onDragFinish();
-        continue;
+        if (i != 2) {
+          return true;
+        }
         onDragMove((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+        return true;
       }
+      onDragFinish();
+      return true;
     }
     Iterator localIterator = this.children.iterator();
     while (localIterator.hasNext())
@@ -308,10 +298,10 @@ public class DragRecyclerView
       if (localDragRecyclerView.isDragging)
       {
         localDragRecyclerView.onTouchEventFromParent(paramMotionEvent, 0);
-        if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-          return super.onTouchEvent(paramMotionEvent);
+        if ((paramMotionEvent.getAction() != 1) && (paramMotionEvent.getAction() != 3)) {
+          return true;
         }
-        return true;
+        return super.onTouchEvent(paramMotionEvent);
       }
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -319,22 +309,24 @@ public class DragRecyclerView
   
   public boolean onTouchEventFromParent(MotionEvent paramMotionEvent, int paramInt)
   {
-    boolean bool = false;
-    if (this.isDragging)
+    boolean bool2 = this.isDragging;
+    boolean bool1 = false;
+    if (bool2)
     {
       this.mAutoScrollEnable = false;
-      switch (paramMotionEvent.getAction())
+      int i = paramMotionEvent.getAction();
+      bool1 = true;
+      if (i != 1)
       {
+        if (i != 2) {
+          return true;
+        }
+        onDragMove((int)paramMotionEvent.getX() - getLeft(), (int)paramMotionEvent.getY() - getTop() - paramInt);
+        return true;
       }
-    }
-    for (;;)
-    {
-      bool = true;
-      return bool;
       onDragFinish();
-      continue;
-      onDragMove((int)paramMotionEvent.getX() - getLeft(), (int)paramMotionEvent.getY() - getTop() - paramInt);
     }
+    return bool1;
   }
   
   public void setAutoScrollEnable(boolean paramBoolean)
@@ -350,23 +342,26 @@ public class DragRecyclerView
   
   public void setDragDeleteListener(DragRecyclerView.DragDeleteListener paramDragDeleteListener)
   {
-    this.mDeleteDragListener = paramDragDeleteListener;
+    this.mDeleteDragListener = new DragRecyclerView.DragDeleteListenerWrapper(this, paramDragDeleteListener);
   }
   
   public void startAutoScrollX(boolean paramBoolean)
   {
-    if (!this.autoScrollEnable) {}
-    while ((this.autoScrollStatus) && (this.oritationRight == paramBoolean)) {
+    if (!this.autoScrollEnable) {
       return;
     }
-    this.autoScrollStatus = true;
-    this.oritationRight = paramBoolean;
-    if (paramBoolean) {}
-    for (int i = this.SCROLL_OFFSET;; i = this.SCROLL_OFFSET * -1)
+    if ((!this.autoScrollStatus) || (this.oritationRight != paramBoolean))
     {
+      this.autoScrollStatus = true;
+      this.oritationRight = paramBoolean;
+      int i;
+      if (paramBoolean) {
+        i = this.SCROLL_OFFSET;
+      } else {
+        i = this.SCROLL_OFFSET * -1;
+      }
       this.autoScrollOffsetX = i;
       smoothScrollBy(this.autoScrollOffsetX, 0);
-      return;
     }
   }
   
@@ -389,7 +384,7 @@ public class DragRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView
  * JD-Core Version:    0.7.0.1
  */

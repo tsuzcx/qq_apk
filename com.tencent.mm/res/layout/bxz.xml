@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:paddingLeft="@dimen/d0" android:paddingRight="@dimen/d0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/d6" android:src="@raw/icons_filled_error" app:iconColor="@color/Yellow" />
+    <TextView android:textStyle="bold" android:ellipsize="end" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:text="@string/f22" android:singleLine="true" style="@style/kn" />
+    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/f23" style="@style/z8" />
+    <View android:id="@id/ah6" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hfl" android:layout_marginBottom="@dimen/c2" android:text="@string/zp" style="@style/op" />
+</LinearLayout>

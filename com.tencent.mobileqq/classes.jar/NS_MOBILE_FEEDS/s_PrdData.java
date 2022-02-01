@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_PrdData
   extends JceStruct
 {
-  public int iType;
+  public int iType = 0;
   public String strColorBegin = "";
   public String strColorEnd = "";
   public String strResUrl = "";
@@ -33,20 +33,23 @@ public final class s_PrdData
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iType, 0);
-    if (this.strResUrl != null) {
-      paramJceOutputStream.write(this.strResUrl, 1);
+    String str = this.strResUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strColorBegin != null) {
-      paramJceOutputStream.write(this.strColorBegin, 2);
+    str = this.strColorBegin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strColorEnd != null) {
-      paramJceOutputStream.write(this.strColorEnd, 3);
+    str = this.strColorEnd;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_PrdData
  * JD-Core Version:    0.7.0.1
  */

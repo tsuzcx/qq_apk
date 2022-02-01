@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class UniteGrayTip$BusinessData
   extends MessageMicro<BusinessData>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 66, 74, 82 }, new String[] { "haveRead", "subType", "masterUin", "extUin", "taskId", "editState", "editTime", "editMsgData", "caidanAnimUrl", "caidanAnimUrlMd5" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", "", Integer.valueOf(0), Long.valueOf(0L), "", "", "" }, BusinessData.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField caidanAnimUrl = PBField.initString("");
   public final PBStringField caidanAnimUrlMd5 = PBField.initString("");
   public final PBStringField editMsgData = PBField.initString("");
@@ -21,10 +21,16 @@ public final class UniteGrayTip$BusinessData
   public final PBStringField masterUin = PBField.initString("");
   public final PBUInt32Field subType = PBField.initUInt32(0);
   public final PBStringField taskId = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 66, 74, 82 }, new String[] { "haveRead", "subType", "masterUin", "extUin", "taskId", "editState", "editTime", "editMsgData", "caidanAnimUrl", "caidanAnimUrlMd5" }, new Object[] { localInteger, localInteger, "", "", "", localInteger, Long.valueOf(0L), "", "", "" }, BusinessData.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     localpb.uniteGrayTip.UniteGrayTip.BusinessData
  * JD-Core Version:    0.7.0.1
  */

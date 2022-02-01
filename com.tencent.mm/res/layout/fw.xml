@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:weightSum="1.0"
+<RelativeLayout android:id="@id/jzv" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/w6" android:gravity="left" android:id="@id/a3m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:includeFontPadding="false" />
-    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="15.0dip" android:textColor="@color/w_" android:gravity="right" android:layout_gravity="center|right" android:id="@id/a3n" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-</LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center" android:id="@id/kka" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/i8f" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a75" />
+        <TextView android:textSize="32.0dip" android:textColor="@color/al2" android:layout_gravity="center" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SPLASH" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/sw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/uj" />
+</RelativeLayout>

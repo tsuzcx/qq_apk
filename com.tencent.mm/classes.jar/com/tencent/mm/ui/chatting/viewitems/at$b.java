@@ -1,72 +1,47 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.c.b.h;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.R.h;
 
-public final class at$b
-  extends at.a
+final class at$b
+  extends c.a
 {
-  public final View a(LayoutInflater paramLayoutInflater, View paramView)
-  {
-    AppMethodBeat.i(33432);
-    Object localObject;
-    if (paramView != null)
-    {
-      localObject = paramView;
-      if (paramView.getTag() != null) {}
-    }
-    else
-    {
-      localObject = new w(paramLayoutInflater, 2130969089);
-      ((View)localObject).setTag(new at.d().fl((View)localObject));
-    }
-    AppMethodBeat.o(33432);
-    return localObject;
-  }
+  TextView aeQc;
+  TextView aeUc;
+  View aeUd;
+  ImageView aeUe;
+  ImageView aeUf;
+  TextView aeUg;
+  TextView aeUh;
+  TextView qfH;
   
-  public final void a(c.a parama, int paramInt, a parama1, bi parambi, String paramString)
+  public final c.a lM(View paramView)
   {
-    AppMethodBeat.i(33433);
-    parama = (at.d)parama;
-    paramString = c(parama1);
-    if (parama != null)
-    {
-      parama.jYu.setTag(new az(parambi, parama1.dJG(), paramInt, null, '\000'));
-      parama.jYu.setOnLongClickListener(paramString);
-      parama.jYu.setOnTouchListener(((h)parama1.ay(h.class)).dHi());
-    }
-    AppMethodBeat.o(33433);
-  }
-  
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bi parambi)
-  {
-    return false;
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, a parama, bi parambi)
-  {
-    return false;
-  }
-  
-  public final boolean aK(int paramInt, boolean paramBoolean)
-  {
-    return paramInt == -1879048187;
-  }
-  
-  public final boolean b(View paramView, a parama, bi parambi)
-  {
-    return false;
+    AppMethodBeat.i(37298);
+    super.create(paramView);
+    this.timeTV = ((TextView)paramView.findViewById(R.h.fAm));
+    this.aeQc = ((TextView)paramView.findViewById(R.h.fAp));
+    this.qfH = ((TextView)paramView.findViewById(R.h.fAs));
+    this.aeUc = ((TextView)paramView.findViewById(R.h.fxy));
+    this.clickArea = paramView.findViewById(R.h.chatting_click_area);
+    this.aeUh = ((TextView)paramView.findViewById(R.h.fzo));
+    this.aeUd = paramView.findViewById(R.h.fyl);
+    this.aeUe = ((ImageView)paramView.findViewById(R.h.fvF));
+    this.aeUf = ((ImageView)paramView.findViewById(R.h.fym));
+    this.aeUg = ((TextView)paramView.findViewById(R.h.fvG));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.fxt));
+    this.maskView = paramView.findViewById(R.h.fzn);
+    AppMethodBeat.o(37298);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.at.b
  * JD-Core Version:    0.7.0.1
  */

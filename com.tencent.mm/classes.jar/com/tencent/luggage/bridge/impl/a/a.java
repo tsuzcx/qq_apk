@@ -1,24 +1,28 @@
 package com.tencent.luggage.bridge.impl.a;
 
-import com.tencent.mm.plugin.appbrand.e.a.a;
-import com.tencent.mm.plugin.appbrand.e.a.b;
+import com.tencent.mm.plugin.appbrand.f.a.a;
+import com.tencent.mm.plugin.appbrand.f.a.c;
+import java.util.Map;
 
 public abstract class a
-  implements a.b
+  implements a.a
 {
-  public void a(String paramString, a.a parama)
+  public void a(String paramString, a.c paramc)
   {
-    if (parama != null) {
-      parama.P(new byte[0]);
-    }
+    a(paramString, null, paramc);
+  }
+  
+  public void a(String paramString, Map<String, String> paramMap, a.c paramc)
+  {
+    a(paramString, paramc);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof a.b)) {
+    if (!(paramObject instanceof a.a)) {
       return false;
     }
-    if (tX().equalsIgnoreCase(((a.b)paramObject).tX())) {
+    if (key().equalsIgnoreCase(((a.a)paramObject).key())) {
       return true;
     }
     return super.equals(paramObject);

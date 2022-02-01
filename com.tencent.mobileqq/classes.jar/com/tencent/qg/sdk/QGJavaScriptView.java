@@ -55,9 +55,10 @@ public class QGJavaScriptView
   
   private void checkRenderThreadState()
   {
-    if (this.mGLThread != null) {
-      throw new IllegalStateException("setRenderer has already been called for this instance.");
+    if (this.mGLThread == null) {
+      return;
     }
+    throw new IllegalStateException("setRenderer has already been called for this instance.");
   }
   
   public static String getErrorString(int paramInt)
@@ -65,37 +66,40 @@ public class QGJavaScriptView
     switch (paramInt)
     {
     default: 
-      return "0x" + Integer.toHexString(paramInt);
-    case 12288: 
-      return "EGL_SUCCESS";
-    case 12289: 
-      return "EGL_NOT_INITIALIZED";
-    case 12290: 
-      return "EGL_BAD_ACCESS";
-    case 12291: 
-      return "EGL_BAD_ALLOC";
-    case 12292: 
-      return "EGL_BAD_ATTRIBUTE";
-    case 12293: 
-      return "EGL_BAD_CONFIG";
-    case 12294: 
-      return "EGL_BAD_CONTEXT";
-    case 12295: 
-      return "EGL_BAD_CURRENT_SURFACE";
-    case 12296: 
-      return "EGL_BAD_DISPLAY";
-    case 12297: 
-      return "EGL_BAD_MATCH";
-    case 12298: 
-      return "EGL_BAD_NATIVE_PIXMAP";
-    case 12299: 
-      return "EGL_BAD_NATIVE_WINDOW";
-    case 12300: 
-      return "EGL_BAD_PARAMETER";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0x");
+      localStringBuilder.append(Integer.toHexString(paramInt));
+      return localStringBuilder.toString();
+    case 12302: 
+      return "EGL_CONTEXT_LOST";
     case 12301: 
       return "EGL_BAD_SURFACE";
+    case 12300: 
+      return "EGL_BAD_PARAMETER";
+    case 12299: 
+      return "EGL_BAD_NATIVE_WINDOW";
+    case 12298: 
+      return "EGL_BAD_NATIVE_PIXMAP";
+    case 12297: 
+      return "EGL_BAD_MATCH";
+    case 12296: 
+      return "EGL_BAD_DISPLAY";
+    case 12295: 
+      return "EGL_BAD_CURRENT_SURFACE";
+    case 12294: 
+      return "EGL_BAD_CONTEXT";
+    case 12293: 
+      return "EGL_BAD_CONFIG";
+    case 12292: 
+      return "EGL_BAD_ATTRIBUTE";
+    case 12291: 
+      return "EGL_BAD_ALLOC";
+    case 12290: 
+      return "EGL_BAD_ACCESS";
+    case 12289: 
+      return "EGL_NOT_INITIALIZED";
     }
-    return "EGL_CONTEXT_LOST";
+    return "EGL_SUCCESS";
   }
   
   private void init()
@@ -138,28 +142,29 @@ public class QGJavaScriptView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.mDetached) && (this.mRenderer != null)) {
-      if (this.mGLThread == null) {
-        break label74;
-      }
-    }
-    label74:
-    for (int i = this.mGLThread.getRenderMode();; i = 1)
+    if ((this.mDetached) && (this.mRenderer != null))
     {
+      QGJavaScriptView.GLThread localGLThread = this.mGLThread;
+      int i;
+      if (localGLThread != null) {
+        i = localGLThread.getRenderMode();
+      } else {
+        i = 1;
+      }
       this.mGLThread = new QGJavaScriptView.GLThread(this.mThisWeakRef);
       if (i != 1) {
         this.mGLThread.setRenderMode(i);
       }
       this.mGLThread.start();
-      this.mDetached = false;
-      return;
     }
+    this.mDetached = false;
   }
   
   protected void onDetachedFromWindow()
   {
-    if (this.mGLThread != null) {
-      this.mGLThread.requestExitAndWait();
+    QGJavaScriptView.GLThread localGLThread = this.mGLThread;
+    if (localGLThread != null) {
+      localGLThread.requestExitAndWait();
     }
     this.mDetached = true;
     super.onDetachedFromWindow();
@@ -281,14 +286,15 @@ public class QGJavaScriptView
   
   public void surfaceRedrawNeededAsync(SurfaceHolder paramSurfaceHolder, Runnable paramRunnable)
   {
-    if (this.mGLThread != null) {
-      this.mGLThread.requestRenderAndNotify(paramRunnable);
+    paramSurfaceHolder = this.mGLThread;
+    if (paramSurfaceHolder != null) {
+      paramSurfaceHolder.requestRenderAndNotify(paramRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.QGJavaScriptView
  * JD-Core Version:    0.7.0.1
  */

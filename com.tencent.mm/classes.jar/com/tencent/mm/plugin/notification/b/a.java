@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.notification.b;
 
-import com.tencent.mm.model.an;
+import android.app.Notification;
 
 public abstract interface a
-  extends com.tencent.mm.kernel.b.a
+  extends com.tencent.mm.kernel.c.a
 {
-  public abstract an getNotification();
+  public abstract void aKX();
   
-  public abstract void setNotification(an paraman);
+  public abstract void e(Notification paramNotification);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.b.a
  * JD-Core Version:    0.7.0.1
  */

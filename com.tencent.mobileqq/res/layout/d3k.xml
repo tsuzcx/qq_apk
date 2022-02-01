@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.immersive.QFSBlockContainer android:id="@id/nh1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/d3m" />
+    <com.tencent.biz.qqcircle.immersive.personal.widget.QFSPersonalFeedHintView android:id="@id/pf7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

@@ -1,46 +1,38 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dsu
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public dsu(TroopRequestActivity paramTroopRequestActivity, ActionSheet paramActionSheet) {}
+  public dsu(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    default: 
       return;
-      if (NetworkUtil.e(BaseApplication.getContext())) {}
-      try
-      {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b.a();
-        ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, "", TroopRequestActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), paramView, false);
-        for (;;)
-        {
-          label66:
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "report", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.p, TroopRequestActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity), "", "");
-          break;
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131562449, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.d());
-        }
+    case 0: 
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
       }
-      catch (Exception paramView)
-      {
-        break label66;
+      QQToast.a(this.a, this.a.getString(2131562880), 0).b(this.a.d());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      if (TroopRequestActivity.a(this.a) != null) {
+        TroopRequestActivity.a(this.a).dismiss();
       }
+      QQToast.a(this.a, this.a.getString(2131561435), 0).b(this.a.d());
+      return;
     }
+    paramMessage = (String)paramMessage.obj;
+    this.a.a.setText(paramMessage + "");
   }
 }
 

@@ -136,13 +136,6 @@ public class AddContactsActivity
     ((FormSimpleItem)localObject).a(true);
     ((FormSimpleItem)localObject).setOnClickListener(this);
     ((FormSimpleItem)localObject).setVisibility(8);
-    localObject = (FormSimpleItem)findViewById(2131231075);
-    ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130837618));
-    ((FormSimpleItem)localObject).setLeftText(getString(2131562264));
-    ((FormSimpleItem)localObject).setContentDescription(getString(2131562264));
-    ((FormSimpleItem)localObject).setBgType(3);
-    ((FormSimpleItem)localObject).a(true);
-    ((FormSimpleItem)localObject).setOnClickListener(this);
     localObject = (FormSimpleItem)findViewById(2131231074);
     ((FormSimpleItem)localObject).setLeftIcon(getResources().getDrawable(2130837621));
     ((FormSimpleItem)localObject).setLeftText(getString(2131562331));
@@ -163,11 +156,11 @@ public class AddContactsActivity
     if (this.jdField_a_of_type_JavaLangString.indexOf("@") != -1)
     {
       if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(this.jdField_a_of_type_JavaLangString).matches()) {
-        break label120;
+        break label119;
       }
       a(getResources().getString(2131559028));
     }
-    label120:
+    label119:
     do
     {
       return;

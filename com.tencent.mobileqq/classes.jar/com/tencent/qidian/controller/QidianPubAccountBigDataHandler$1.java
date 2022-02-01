@@ -1,20 +1,18 @@
 package com.tencent.qidian.controller;
 
-import bfzr;
-
-public class QidianPubAccountBigDataHandler$1
+class QidianPubAccountBigDataHandler$1
   implements Runnable
 {
-  public QidianPubAccountBigDataHandler$1(bfzr parambfzr) {}
+  QidianPubAccountBigDataHandler$1(QidianPubAccountBigDataHandler paramQidianPubAccountBigDataHandler) {}
   
   public void run()
   {
-    bfzr.a(this.this$0);
+    QidianPubAccountBigDataHandler.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianPubAccountBigDataHandler.1
  * JD-Core Version:    0.7.0.1
  */

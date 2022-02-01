@@ -10,8 +10,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.IThreadManager;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -46,37 +47,43 @@ public class NativeGifIndex8
   
   public NativeGifIndex8(File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
   {
-    if (paramFile == null) {
-      throw new NullPointerException("Source is null");
-    }
-    loadLibrary();
-    this.mSrcGifFile = paramFile.getAbsolutePath();
-    this.mCacheFirstFrame = paramBoolean1;
-    if (!paramFile.exists())
+    if (paramFile != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("NativeGifIndex8", 2, this.mSrcGifFile + " doesn't exist");
+      loadLibrary();
+      this.mSrcGifFile = paramFile.getAbsolutePath();
+      this.mCacheFirstFrame = paramBoolean1;
+      if (!paramFile.exists())
+      {
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          paramFile = URLDrawable.depImp.mLog;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.mSrcGifFile);
+          localStringBuilder.append(" doesn't exist");
+          paramFile.e("NativeGifIndex8", 2, localStringBuilder.toString());
+        }
+        return;
       }
-      return;
-    }
-    this.mExtData = new int[2];
-    if (mIsGIFEngineAvaliable)
-    {
-      this.mGifHandler = nativeInit(this.mSrcGifFile, paramBoolean2);
-      initSize(paramInt1, paramInt2);
-      nativeSetDestSize(this.mGifHandler, this.mReqWidth, this.mReqHeight);
-      nativeSetLoopCount(this.mGifHandler, -1);
-      this.mFrameNumber = nativeGetFrameNum(this.mGifHandler);
-      this.mExtData[0] = 0;
-    }
-    for (;;)
-    {
+      this.mExtData = new int[2];
+      if (mIsGIFEngineAvaliable)
+      {
+        this.mGifHandler = nativeInit(this.mSrcGifFile, paramBoolean2);
+        initSize(paramInt1, paramInt2);
+        nativeSetDestSize(this.mGifHandler, this.mReqWidth, this.mReqHeight);
+        nativeSetLoopCount(this.mGifHandler, -1);
+        this.mFrameNumber = nativeGetFrameNum(this.mGifHandler);
+        this.mExtData[0] = 0;
+      }
+      else
+      {
+        this.mFrameNumber = 1;
+        this.mExtData[0] = 100;
+      }
       this.mDefaultRoundCorner = paramFloat;
       init(paramBoolean1);
       return;
-      this.mFrameNumber = 1;
-      this.mExtData[0] = 100;
     }
+    throw new NullPointerException("Source is null");
   }
   
   public static Rect getImageSize(File paramFile, boolean paramBoolean)
@@ -92,29 +99,36 @@ public class NativeGifIndex8
       nativeGetHeight(i);
       nativeUnInit(i);
     }
-    for (;;)
+    else
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(paramFile.getPath(), localOptions);
-      return new Rect(0, 0, localOptions.outWidth, localOptions.outHeight);
       localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       BitmapFactory.decodeFile(paramFile.getPath(), localOptions);
       i = localOptions.outWidth;
       i = localOptions.outHeight;
     }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramFile.getPath(), localOptions);
+    return new Rect(0, 0, localOptions.outWidth, localOptions.outHeight);
   }
   
   public static String getSoLibPath(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
-    {
+    Object localObject = null;
+    if (paramContext == null) {
       return null;
-      paramContext = paramContext.getFilesDir();
-    } while (paramContext == null);
-    return paramContext.getParent() + "/txlib/";
+    }
+    File localFile = paramContext.getFilesDir();
+    paramContext = localObject;
+    if (localFile != null)
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(localFile.getParent());
+      paramContext.append("/txlib/");
+      paramContext = paramContext.toString();
+    }
+    return paramContext;
   }
   
   private void init(boolean paramBoolean)
@@ -133,40 +147,36 @@ public class NativeGifIndex8
   private void initSize(int paramInt1, int paramInt2)
   {
     Rect localRect = getImageSize();
-    int m = localRect.width();
-    int k = localRect.height();
-    int j = k;
-    int i = m;
-    float f1;
-    float f2;
+    int k = localRect.width();
+    int m = localRect.height();
+    int j = m;
+    int i = k;
     if (paramInt1 > 0)
     {
-      j = k;
-      i = m;
+      j = m;
+      i = k;
       if (paramInt2 > 0)
       {
-        f1 = paramInt1 / m;
-        f2 = paramInt2 / k;
+        float f1 = paramInt1;
+        float f3 = k;
+        f1 /= f3;
+        float f2 = paramInt2;
+        float f4 = m;
+        f2 /= f4;
         if (f1 >= f2) {
-          break label109;
+          f1 = f2;
+        }
+        j = m;
+        i = k;
+        if (f1 < 1.0F)
+        {
+          i = (int)(f3 * f1);
+          j = (int)(f4 * f1);
         }
       }
     }
-    for (;;)
-    {
-      j = k;
-      i = m;
-      if (f1 < 1.0F)
-      {
-        i = (int)(m * f1);
-        j = (int)(k * f1);
-      }
-      this.mReqWidth = i;
-      this.mReqHeight = j;
-      return;
-      label109:
-      f1 = f2;
-    }
+    this.mReqWidth = i;
+    this.mReqHeight = j;
   }
   
   public static boolean isGifEngineAvail()
@@ -177,51 +187,71 @@ public class NativeGifIndex8
   
   private static void loadLibrary()
   {
-    boolean bool2 = false;
-    Object localObject = null;
-    boolean bool1 = bool2;
+    Object localObject2;
+    Object localObject1;
     if (URLDrawable.mApplicationContext != null)
     {
-      SharedPreferences localSharedPreferences = URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4);
-      localObject = localSharedPreferences;
-      bool1 = bool2;
-      if (localSharedPreferences != null)
+      localObject2 = URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4);
+      localObject1 = localObject2;
+      if (localObject2 != null)
       {
-        bool1 = localSharedPreferences.getBoolean("gif_so_is_update", false);
-        localObject = localSharedPreferences;
+        bool = ((SharedPreferences)localObject2).getBoolean("gif_so_is_update", false);
+        localObject1 = localObject2;
+        break label41;
       }
     }
-    if (((!mIsLibLoaded) && (URLDrawable.mApplicationContext != null)) || (bool1)) {}
-    try
+    else
     {
-      System.load(getSoLibPath(URLDrawable.mApplicationContext) + "libkIndexGif.so");
-      mIsGIFEngineAvaliable = true;
-      if (localObject != null) {
-        localObject.edit().putBoolean("gif_so_is_update", false).commit();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeGifIndex8", 2, "libkIndexGif.so is loaded. gifIsUpdate:" + bool1);
-      }
+      localObject1 = null;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    boolean bool = false;
+    label41:
+    if (((!mIsLibLoaded) && (URLDrawable.mApplicationContext != null)) || (bool))
     {
-      for (;;)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("NativeGifIndex8", 2, "loadLibrary(): " + localUnsatisfiedLinkError.getMessage());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(getSoLibPath(URLDrawable.mApplicationContext));
+        ((StringBuilder)localObject2).append("libkIndexGif.so");
+        System.load(((StringBuilder)localObject2).toString());
+        mIsGIFEngineAvaliable = true;
+        if (localObject1 != null) {
+          ((SharedPreferences)localObject1).edit().putBoolean("gif_so_is_update", false).commit();
+        }
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          localObject1 = URLDrawable.depImp.mLog;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("libkIndexGif.so is loaded. gifIsUpdate:");
+          ((StringBuilder)localObject2).append(bool);
+          ((ILog)localObject1).d("NativeGifIndex8", 2, ((StringBuilder)localObject2).toString());
         }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("NativeGifIndex8", 2, "loadLibrary(): " + localException.getMessage());
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          localObject2 = URLDrawable.depImp.mLog;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadLibrary(): ");
+          localStringBuilder.append(localException.getMessage());
+          ((ILog)localObject2).e("NativeGifIndex8", 2, localStringBuilder.toString());
         }
       }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        StringBuilder localStringBuilder;
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          localObject2 = URLDrawable.depImp.mLog;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadLibrary(): ");
+          localStringBuilder.append(localUnsatisfiedLinkError.getMessage());
+          ((ILog)localObject2).e("NativeGifIndex8", 2, localStringBuilder.toString());
+        }
+      }
+      mIsLibLoaded = true;
     }
-    mIsLibLoaded = true;
   }
   
   private static native Bitmap nativeDecodeNext(int[] paramArrayOfInt, int paramInt);
@@ -253,78 +283,92 @@ public class NativeGifIndex8
   protected void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
   {
     initHandlerAndRunnable();
-    if ((this.mFrameNumber <= 1) || (!paramBoolean)) {
-      if ((this.mCurrentFrameBitmap != null) && (!this.mCurrentFrameBitmap.isRecycled())) {
-        paramCanvas.drawBitmap(this.mCurrentFrameBitmap, null, paramRect, paramPaint);
-      }
-    }
-    do
+    if ((this.mFrameNumber > 1) && (paramBoolean))
     {
-      return;
-      URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
-      return;
-      if ((this.mCurrentFrameBitmap != null) && (!this.mCurrentFrameBitmap.isRecycled())) {}
-      try
-      {
-        paramCanvas.drawBitmap(this.mCurrentFrameBitmap, null, paramRect, paramPaint);
-        if ((this.mLastBitmap != null) && (!this.mLastBitmap.isRecycled()) && (!this.mIsFirstBitmap))
+      localBitmap = this.mCurrentFrameBitmap;
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+        try
         {
-          this.mLastBitmap.recycle();
-          this.mIsFirstBitmap = false;
+          paramCanvas.drawBitmap(this.mCurrentFrameBitmap, null, paramRect, paramPaint);
         }
-        if ((this.mCurrentFrameBitmap != null) && (!this.mCurrentFrameBitmap.isRecycled())) {
-          this.mLastBitmap = this.mCurrentFrameBitmap;
-        }
-        if (!sPaused)
+        catch (Throwable paramCanvas)
         {
-          executeNewTask();
-          return;
-        }
-      }
-      catch (Throwable paramCanvas)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("NativeGifIndex8", 2, paramCanvas.getMessage());
+          if (URLDrawable.depImp.mLog.isColorLevel()) {
+            URLDrawable.depImp.mLog.w("NativeGifIndex8", 2, paramCanvas.getMessage());
           }
           URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
         }
       }
-    } while (this.mIsInPendingAction);
-    sPendingActions.add(new WeakReference(this));
-    this.mIsInPendingAction = true;
+      paramCanvas = this.mLastBitmap;
+      if ((paramCanvas != null) && (!paramCanvas.isRecycled()) && (!this.mIsFirstBitmap))
+      {
+        this.mLastBitmap.recycle();
+        this.mIsFirstBitmap = false;
+      }
+      paramCanvas = this.mCurrentFrameBitmap;
+      if ((paramCanvas != null) && (!paramCanvas.isRecycled())) {
+        this.mLastBitmap = this.mCurrentFrameBitmap;
+      }
+      if (!sPaused)
+      {
+        executeNewTask();
+        return;
+      }
+      if (!this.mIsInPendingAction)
+      {
+        sPendingActions.add(new WeakReference(this));
+        this.mIsInPendingAction = true;
+      }
+      return;
+    }
+    Bitmap localBitmap = this.mCurrentFrameBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      paramCanvas.drawBitmap(this.mCurrentFrameBitmap, null, paramRect, paramPaint);
+      return;
+    }
+    URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
   }
   
   protected void executeNewTask()
   {
-    long l1;
-    long l2;
     if (this.mDecodeNextFrameEnd)
     {
       this.mDecodeNextFrameEnd = false;
-      l1 = SystemClock.uptimeMillis();
-      l2 = this.mExtData[0];
-    }
-    try
-    {
-      ThreadManagerV2.excute(new NativeGifIndex8.NativeDecodeFrameTask(this, l1 + l2), 64, null, true);
-      return;
-    }
-    catch (RejectedExecutionException localRejectedExecutionException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("URLDrawable_", 2, "executeNewTask->" + localRejectedExecutionException.getMessage());
+      long l1 = SystemClock.uptimeMillis();
+      long l2 = this.mExtData[0];
+      try
+      {
+        URLDrawable.depImp.mThreadManager.executeOnFileThreadExcutor(new NativeGifIndex8.NativeDecodeFrameTask(this, l1 + l2), null, true);
+        return;
       }
-      URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("URLDrawable_", 2, "executeNewTask->" + localException.getMessage());
+      catch (Exception localException)
+      {
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          localILog = URLDrawable.depImp.mLog;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("executeNewTask->");
+          localStringBuilder.append(localException.getMessage());
+          localILog.e("URLDrawable_", 2, localStringBuilder.toString());
+        }
+        URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
+        return;
       }
-      URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
+      catch (RejectedExecutionException localRejectedExecutionException)
+      {
+        ILog localILog;
+        StringBuilder localStringBuilder;
+        if (URLDrawable.depImp.mLog.isColorLevel())
+        {
+          localILog = URLDrawable.depImp.mLog;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("executeNewTask->");
+          localStringBuilder.append(localRejectedExecutionException.getMessage());
+          localILog.e("URLDrawable_", 2, localStringBuilder.toString());
+        }
+        URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4).edit().putBoolean("use_new_gif_so", false).commit();
+      }
     }
   }
   
@@ -340,8 +384,8 @@ public class NativeGifIndex8
   
   public int getByteSize()
   {
-    if (mIsGIFEngineAvaliable) {}
-    return (int)(0L + Utils.getBitmapSize(this.mCurrentFrameBitmap) + Utils.getBitmapSize(this.mFirstFrameBitmap));
+    boolean bool = mIsGIFEngineAvaliable;
+    return (int)(Utils.getBitmapSize(this.mCurrentFrameBitmap) + 0L + Utils.getBitmapSize(this.mFirstFrameBitmap));
   }
   
   public NativeGifIOException.NativeGifError getError()
@@ -359,177 +403,102 @@ public class NativeGifIndex8
   
   public Rect getImageSize()
   {
+    int i;
     int j;
-    if (mIsGIFEngineAvaliable) {
-      j = nativeGetWidth(this.mGifHandler);
-    }
-    BitmapFactory.Options localOptions;
-    for (int i = nativeGetHeight(this.mGifHandler);; i = localOptions.outHeight)
+    if (mIsGIFEngineAvaliable)
     {
-      return new Rect(0, 0, j, i);
-      localOptions = new BitmapFactory.Options();
+      i = nativeGetWidth(this.mGifHandler);
+      j = nativeGetHeight(this.mGifHandler);
+    }
+    else
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       BitmapFactory.decodeFile(this.mSrcGifFile, localOptions);
-      j = localOptions.outWidth;
+      i = localOptions.outWidth;
+      j = localOptions.outHeight;
     }
+    return new Rect(0, 0, i, j);
   }
   
-  /* Error */
   protected void getNextFrame()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 35	com/tencent/image/NativeGifIndex8:mIsGIFEngineAvaliable	Z
-    //   5: istore_2
-    //   6: iload_2
-    //   7: ifeq +117 -> 124
-    //   10: aload_0
-    //   11: aload_0
-    //   12: getfield 98	com/tencent/image/NativeGifIndex8:mExtData	[I
-    //   15: aload_0
-    //   16: getfield 47	com/tencent/image/NativeGifIndex8:mGifHandler	I
-    //   19: invokestatic 373	com/tencent/image/NativeGifIndex8:nativeDecodeNext	([II)Landroid/graphics/Bitmap;
-    //   22: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   25: aload_0
-    //   26: getfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   29: ifnull +12 -> 41
-    //   32: aload_0
-    //   33: getfield 98	com/tencent/image/NativeGifIndex8:mExtData	[I
-    //   36: iconst_1
-    //   37: iaload
-    //   38: ifeq +38 -> 76
-    //   41: getstatic 214	com/tencent/image/URLDrawable:mApplicationContext	Landroid/content/Context;
-    //   44: ldc 216
-    //   46: iconst_4
-    //   47: invokevirtual 220	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   50: astore_3
-    //   51: aload_3
-    //   52: ifnull +24 -> 76
-    //   55: aload_3
-    //   56: invokeinterface 241 1 0
-    //   61: ldc_w 291
-    //   64: iconst_0
-    //   65: invokeinterface 247 3 0
-    //   70: invokeinterface 250 1 0
-    //   75: pop
-    //   76: aload_0
-    //   77: monitorexit
-    //   78: return
-    //   79: astore_3
-    //   80: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   83: ifeq -58 -> 25
-    //   86: ldc 13
-    //   88: iconst_2
-    //   89: aload_3
-    //   90: invokevirtual 374	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   93: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   96: goto -71 -> 25
-    //   99: astore_3
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: aload_3
-    //   103: athrow
-    //   104: astore_3
-    //   105: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   108: ifeq -83 -> 25
-    //   111: ldc 13
-    //   113: iconst_2
-    //   114: aload_3
-    //   115: invokevirtual 375	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
-    //   118: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   121: goto -96 -> 25
-    //   124: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   127: ifeq +12 -> 139
-    //   130: ldc 13
-    //   132: iconst_2
-    //   133: ldc_w 377
-    //   136: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   139: aload_0
-    //   140: getfield 110	com/tencent/image/NativeGifIndex8:mReqHeight	I
-    //   143: ifle -67 -> 76
-    //   146: aload_0
-    //   147: getfield 108	com/tencent/image/NativeGifIndex8:mReqWidth	I
-    //   150: istore_1
-    //   151: iload_1
-    //   152: ifle -76 -> 76
-    //   155: aload_0
-    //   156: aload_0
-    //   157: getfield 71	com/tencent/image/NativeGifIndex8:mSrcGifFile	Ljava/lang/String;
-    //   160: invokestatic 380	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   163: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   166: aload_0
-    //   167: aload_0
-    //   168: getfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   171: aload_0
-    //   172: getfield 108	com/tencent/image/NativeGifIndex8:mReqWidth	I
-    //   175: aload_0
-    //   176: getfield 110	com/tencent/image/NativeGifIndex8:mReqHeight	I
-    //   179: iconst_1
-    //   180: invokestatic 384	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   183: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
-    //   186: goto -110 -> 76
-    //   189: astore_3
-    //   190: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   193: ifeq -117 -> 76
-    //   196: ldc 13
-    //   198: iconst_2
-    //   199: new 82	java/lang/StringBuilder
-    //   202: dup
-    //   203: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   206: ldc_w 386
-    //   209: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: aload_3
-    //   213: invokevirtual 374	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   216: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   225: goto -149 -> 76
-    //   228: astore_3
-    //   229: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   232: ifeq -156 -> 76
-    //   235: ldc 13
-    //   237: iconst_2
-    //   238: new 82	java/lang/StringBuilder
-    //   241: dup
-    //   242: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   245: ldc_w 388
-    //   248: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   251: aload_3
-    //   252: invokevirtual 303	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   255: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   264: goto -188 -> 76
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	267	0	this	NativeGifIndex8
-    //   150	2	1	i	int
-    //   5	2	2	bool	boolean
-    //   50	6	3	localSharedPreferences	SharedPreferences
-    //   79	11	3	localOutOfMemoryError1	OutOfMemoryError
-    //   99	4	3	localObject	Object
-    //   104	11	3	localIllegalArgumentException	java.lang.IllegalArgumentException
-    //   189	24	3	localOutOfMemoryError2	OutOfMemoryError
-    //   228	24	3	localThrowable	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   10	25	79	java/lang/OutOfMemoryError
-    //   2	6	99	finally
-    //   10	25	99	finally
-    //   25	41	99	finally
-    //   41	51	99	finally
-    //   55	76	99	finally
-    //   80	96	99	finally
-    //   105	121	99	finally
-    //   124	139	99	finally
-    //   139	151	99	finally
-    //   155	186	99	finally
-    //   190	225	99	finally
-    //   229	264	99	finally
-    //   10	25	104	java/lang/IllegalArgumentException
-    //   155	186	189	java/lang/OutOfMemoryError
-    //   155	186	228	java/lang/Throwable
+    try
+    {
+      boolean bool = mIsGIFEngineAvaliable;
+      if (bool)
+      {
+        try
+        {
+          this.mCurrentFrameBitmap = nativeDecodeNext(this.mExtData, this.mGifHandler);
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          if (URLDrawable.depImp.mLog.isColorLevel()) {
+            URLDrawable.depImp.mLog.w("NativeGifIndex8", 2, localIllegalArgumentException.getMessage());
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError1)
+        {
+          if (URLDrawable.depImp.mLog.isColorLevel()) {
+            URLDrawable.depImp.mLog.w("NativeGifIndex8", 2, localOutOfMemoryError1.getMessage());
+          }
+        }
+        if ((this.mCurrentFrameBitmap == null) || (this.mExtData[1] != 0))
+        {
+          SharedPreferences localSharedPreferences = URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4);
+          if (localSharedPreferences != null) {
+            localSharedPreferences.edit().putBoolean("use_new_gif_so", false).commit();
+          }
+        }
+      }
+      else
+      {
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.w("NativeGifIndex8", 2, "mIsGIFEngineAvaliable is false.");
+        }
+        if (this.mReqHeight <= 0) {
+          break label373;
+        }
+        int i = this.mReqWidth;
+        if (i <= 0) {
+          break label373;
+        }
+        try
+        {
+          this.mCurrentFrameBitmap = BitmapFactory.decodeFile(this.mSrcGifFile);
+          this.mCurrentFrameBitmap = Bitmap.createScaledBitmap(this.mCurrentFrameBitmap, this.mReqWidth, this.mReqHeight, true);
+        }
+        catch (Throwable localThrowable)
+        {
+          if (URLDrawable.depImp.mLog.isColorLevel())
+          {
+            localILog = URLDrawable.depImp.mLog;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getNextFrame failed, ");
+            localStringBuilder.append(localThrowable.getMessage());
+            localILog.e("NativeGifIndex8", 2, localStringBuilder.toString());
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          ILog localILog;
+          StringBuilder localStringBuilder;
+          if (URLDrawable.depImp.mLog.isColorLevel())
+          {
+            localILog = URLDrawable.depImp.mLog;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getNextFrame failed,[oom], ");
+            localStringBuilder.append(localOutOfMemoryError2.getMessage());
+            localILog.e("NativeGifIndex8", 2, localStringBuilder.toString());
+          }
+        }
+      }
+      return;
+      label373:
+      return;
+    }
+    finally {}
   }
   
   public int getWidth()
@@ -542,7 +511,7 @@ public class NativeGifIndex8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.NativeGifIndex8
  * JD-Core Version:    0.7.0.1
  */

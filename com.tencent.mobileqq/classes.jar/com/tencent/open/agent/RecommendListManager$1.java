@@ -12,12 +12,12 @@ class RecommendListManager$1
   
   public void run()
   {
-    ((ImageView)((View)this.this$0.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131367819)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    ((ImageView)((View)this.this$0.c.get(this.a)).findViewById(2131435219)).setImageBitmap(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.RecommendListManager.1
  * JD-Core Version:    0.7.0.1
  */

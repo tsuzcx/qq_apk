@@ -1,40 +1,19 @@
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cmj
-  extends OpenIdObserver
+  implements View.OnClickListener
 {
   public cmj(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onClick(View paramView)
   {
-    if ((this.a.isFinishing()) || (this.a.c)) {}
-    do
-    {
-      return;
-      ForwardRecentActivity.a(this.a).e();
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardRecentActivity", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(this.a.v)) {
-          this.a.a();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("ForwardRecentActivity", 2, "openIdObserver fail");
-      }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.f != 11));
-    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
+    ForwardRecentActivity.a(this.a).a(String.valueOf(AppConstants.P), -1, "", this.a.getString(2131559075));
+    ReportController.b(this.a.b, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
   }
 }
 

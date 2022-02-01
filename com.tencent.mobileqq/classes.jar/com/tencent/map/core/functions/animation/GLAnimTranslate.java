@@ -21,19 +21,17 @@ public class GLAnimTranslate
   
   protected void performDraw(GL10 paramGL10, long paramLong)
   {
-    float f4 = this.b;
-    float f5 = this.a;
-    float f1 = this.d;
-    float f2 = this.c;
-    float f3 = this.a;
-    f4 = (f4 - f5) * (float)paramLong / (float)this.duration;
-    f5 = this.c;
-    paramGL10.glTranslatef(f4 + f3, (f1 - f2) * (float)paramLong / (float)this.duration + f5, 0.0F);
+    float f1 = this.b;
+    float f2 = this.a;
+    float f3 = this.d;
+    float f4 = this.c;
+    float f5 = (float)paramLong;
+    paramGL10.glTranslatef(f2 + (f1 - f2) * f5 / (float)this.duration, this.c + (f3 - f4) * f5 / (float)this.duration, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GLAnimTranslate
  * JD-Core Version:    0.7.0.1
  */

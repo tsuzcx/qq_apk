@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<translate android:fromYDelta="100.0%" android:toYDelta="0.0"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<set android:background="#ff000000" android:interpolator="@android:anim/accelerate_decelerate_interpolator" android:shareInterpolator="true" android:zAdjustment="normal"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha android:duration="@integer/f" android:fromAlpha="1.0" android:toAlpha="0.6" />
+    <scale android:duration="@integer/j" android:pivotX="50.0%p" android:pivotY="100.0%p" android:fromXScale="1.0" android:toXScale="0.95" android:fromYScale="1.0" android:toYScale="0.975" />
+</set>

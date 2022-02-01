@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.history;
 
-import ahzy;
 import android.os.Message;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,26 +7,21 @@ import com.tencent.mobileqq.data.MessageRecord;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class ChatHistoryC2CLinkFragment$3$1
+class ChatHistoryC2CLinkFragment$3$1
   implements Runnable
 {
-  public ChatHistoryC2CLinkFragment$3$1(ahzy paramahzy, List paramList) {}
+  ChatHistoryC2CLinkFragment$3$1(ChatHistoryC2CLinkFragment.3 param3, List paramList) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_Ahzy.a.b.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+    if (this.a.size() == 1) {
+      this.b.b.u.getMessageFacade().a((MessageRecord)this.a.get(0), false);
+    } else if (this.a.size() > 1) {
+      this.b.b.u.getMessageFacade().a(this.a, false);
     }
-    for (;;)
-    {
-      Message localMessage = this.jdField_a_of_type_Ahzy.a.a.obtainMessage(2);
-      localMessage.obj = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_Ahzy.a.a.sendMessage(localMessage);
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_Ahzy.a.b.a().a(this.jdField_a_of_type_JavaUtilList, false);
-      }
-    }
+    Message localMessage = this.b.b.K.obtainMessage(2);
+    localMessage.obj = this.a;
+    this.b.b.K.sendMessage(localMessage);
   }
 }
 

@@ -8,113 +8,113 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends JceStruct
 {
-  static b Bjr;
-  public String Bjb = "";
-  public String Bjc = "";
-  public String Bjd = "";
-  public int Bje = 0;
-  public int Bjf = 0;
-  public b Bjg = null;
-  public int Bjh = 0;
-  public int Bji = 0;
-  public int Bjj = 0;
-  public int Bjk = 0;
-  public short Bjl = 0;
-  public String Bjm = "";
-  public int Bjn = 0;
-  public String Bjo = "";
-  public String Bjp = "";
-  public String Bjq = "";
-  public String eAx = "";
-  public String fgl = "";
+  static b ahsK;
+  public String YDY = "";
+  public int ahsA = 0;
+  public int ahsB = 0;
+  public int ahsC = 0;
+  public int ahsD = 0;
+  public short ahsE = 0;
+  public String ahsF = "";
+  public int ahsG = 0;
+  public String ahsH = "";
+  public String ahsI = "";
+  public String ahsJ = "";
+  public String ahsv = "";
+  public String ahsw = "";
+  public int ahsx = 0;
+  public int ahsy = 0;
+  public b ahsz = null;
+  public String aid = "";
   public String guid = "";
-  public String gzN = "";
   public String imei = "";
   public String imsi = "";
   public String ip = "";
-  public String kmA = "";
   public double latitude = 0.0D;
   public double longitude = 0.0D;
-  public String rpv = "";
+  public String pVo = "";
+  public String uuid = "";
+  public String vid = "";
+  public String wsM = "";
   
   static
   {
-    AppMethodBeat.i(114486);
-    Bjr = new b();
-    AppMethodBeat.o(114486);
+    AppMethodBeat.i(138327);
+    ahsK = new b();
+    AppMethodBeat.o(138327);
   }
   
   public final JceStruct newInit()
   {
-    AppMethodBeat.i(114483);
+    AppMethodBeat.i(138324);
     c localc = new c();
-    AppMethodBeat.o(114483);
+    AppMethodBeat.o(138324);
     return localc;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(114485);
+    AppMethodBeat.i(138326);
     this.imei = paramJceInputStream.readString(0, true);
-    this.gzN = paramJceInputStream.readString(1, false);
-    this.kmA = paramJceInputStream.readString(2, false);
+    this.pVo = paramJceInputStream.readString(1, false);
+    this.wsM = paramJceInputStream.readString(2, false);
     this.ip = paramJceInputStream.readString(3, false);
-    this.Bjb = paramJceInputStream.readString(4, false);
-    this.Bjc = paramJceInputStream.readString(5, false);
-    this.Bjd = paramJceInputStream.readString(6, false);
-    this.Bje = paramJceInputStream.read(this.Bje, 7, false);
-    this.Bjf = paramJceInputStream.read(this.Bjf, 8, false);
-    this.Bjg = ((b)paramJceInputStream.read(Bjr, 9, false));
+    this.ahsv = paramJceInputStream.readString(4, false);
+    this.ahsw = paramJceInputStream.readString(5, false);
+    this.YDY = paramJceInputStream.readString(6, false);
+    this.ahsx = paramJceInputStream.read(this.ahsx, 7, false);
+    this.ahsy = paramJceInputStream.read(this.ahsy, 8, false);
+    this.ahsz = ((b)paramJceInputStream.read(ahsK, 9, false));
     this.guid = paramJceInputStream.readString(10, false);
     this.imsi = paramJceInputStream.readString(11, false);
-    this.Bjh = paramJceInputStream.read(this.Bjh, 12, false);
-    this.Bji = paramJceInputStream.read(this.Bji, 13, false);
-    this.Bjj = paramJceInputStream.read(this.Bjj, 14, false);
-    this.Bjk = paramJceInputStream.read(this.Bjk, 15, false);
-    this.eAx = paramJceInputStream.readString(16, false);
-    this.Bjl = paramJceInputStream.read(this.Bjl, 17, false);
+    this.ahsA = paramJceInputStream.read(this.ahsA, 12, false);
+    this.ahsB = paramJceInputStream.read(this.ahsB, 13, false);
+    this.ahsC = paramJceInputStream.read(this.ahsC, 14, false);
+    this.ahsD = paramJceInputStream.read(this.ahsD, 15, false);
+    this.uuid = paramJceInputStream.readString(16, false);
+    this.ahsE = paramJceInputStream.read(this.ahsE, 17, false);
     this.longitude = paramJceInputStream.read(this.longitude, 18, false);
     this.latitude = paramJceInputStream.read(this.latitude, 19, false);
-    this.Bjm = paramJceInputStream.readString(20, false);
-    this.Bjn = paramJceInputStream.read(this.Bjn, 21, false);
-    this.Bjo = paramJceInputStream.readString(22, false);
-    this.fgl = paramJceInputStream.readString(23, false);
-    this.rpv = paramJceInputStream.readString(24, false);
-    this.Bjp = paramJceInputStream.readString(25, false);
-    this.Bjq = paramJceInputStream.readString(26, false);
-    AppMethodBeat.o(114485);
+    this.ahsF = paramJceInputStream.readString(20, false);
+    this.ahsG = paramJceInputStream.read(this.ahsG, 21, false);
+    this.ahsH = paramJceInputStream.readString(22, false);
+    this.vid = paramJceInputStream.readString(23, false);
+    this.aid = paramJceInputStream.readString(24, false);
+    this.ahsI = paramJceInputStream.readString(25, false);
+    this.ahsJ = paramJceInputStream.readString(26, false);
+    AppMethodBeat.o(138326);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(114484);
+    AppMethodBeat.i(138325);
     paramJceOutputStream.write(this.imei, 0);
-    if (this.gzN != null) {
-      paramJceOutputStream.write(this.gzN, 1);
+    if (this.pVo != null) {
+      paramJceOutputStream.write(this.pVo, 1);
     }
-    if (this.kmA != null) {
-      paramJceOutputStream.write(this.kmA, 2);
+    if (this.wsM != null) {
+      paramJceOutputStream.write(this.wsM, 2);
     }
     if (this.ip != null) {
       paramJceOutputStream.write(this.ip, 3);
     }
-    if (this.Bjb != null) {
-      paramJceOutputStream.write(this.Bjb, 4);
+    if (this.ahsv != null) {
+      paramJceOutputStream.write(this.ahsv, 4);
     }
-    if (this.Bjc != null) {
-      paramJceOutputStream.write(this.Bjc, 5);
+    if (this.ahsw != null) {
+      paramJceOutputStream.write(this.ahsw, 5);
     }
-    if (this.Bjd != null) {
-      paramJceOutputStream.write(this.Bjd, 6);
+    if (this.YDY != null) {
+      paramJceOutputStream.write(this.YDY, 6);
     }
-    if (this.Bje != 0) {
-      paramJceOutputStream.write(this.Bje, 7);
+    if (this.ahsx != 0) {
+      paramJceOutputStream.write(this.ahsx, 7);
     }
-    if (this.Bjf != 0) {
-      paramJceOutputStream.write(this.Bjf, 8);
+    if (this.ahsy != 0) {
+      paramJceOutputStream.write(this.ahsy, 8);
     }
-    if (this.Bjg != null) {
-      paramJceOutputStream.write(this.Bjg, 9);
+    if (this.ahsz != null) {
+      paramJceOutputStream.write(this.ahsz, 9);
     }
     if (this.guid != null) {
       paramJceOutputStream.write(this.guid, 10);
@@ -122,23 +122,23 @@ public final class c
     if (this.imsi != null) {
       paramJceOutputStream.write(this.imsi, 11);
     }
-    if (this.Bjh != 0) {
-      paramJceOutputStream.write(this.Bjh, 12);
+    if (this.ahsA != 0) {
+      paramJceOutputStream.write(this.ahsA, 12);
     }
-    if (this.Bji != 0) {
-      paramJceOutputStream.write(this.Bji, 13);
+    if (this.ahsB != 0) {
+      paramJceOutputStream.write(this.ahsB, 13);
     }
-    if (this.Bjj != 0) {
-      paramJceOutputStream.write(this.Bjj, 14);
+    if (this.ahsC != 0) {
+      paramJceOutputStream.write(this.ahsC, 14);
     }
-    if (this.Bjk != 0) {
-      paramJceOutputStream.write(this.Bjk, 15);
+    if (this.ahsD != 0) {
+      paramJceOutputStream.write(this.ahsD, 15);
     }
-    if (this.eAx != null) {
-      paramJceOutputStream.write(this.eAx, 16);
+    if (this.uuid != null) {
+      paramJceOutputStream.write(this.uuid, 16);
     }
-    if (this.Bjl != 0) {
-      paramJceOutputStream.write(this.Bjl, 17);
+    if (this.ahsE != 0) {
+      paramJceOutputStream.write(this.ahsE, 17);
     }
     if (this.longitude != 0.0D) {
       paramJceOutputStream.write(this.longitude, 18);
@@ -146,33 +146,33 @@ public final class c
     if (this.latitude != 0.0D) {
       paramJceOutputStream.write(this.latitude, 19);
     }
-    if (this.Bjm != null) {
-      paramJceOutputStream.write(this.Bjm, 20);
+    if (this.ahsF != null) {
+      paramJceOutputStream.write(this.ahsF, 20);
     }
-    if (this.Bjn != 0) {
-      paramJceOutputStream.write(this.Bjn, 21);
+    if (this.ahsG != 0) {
+      paramJceOutputStream.write(this.ahsG, 21);
     }
-    if (this.Bjo != null) {
-      paramJceOutputStream.write(this.Bjo, 22);
+    if (this.ahsH != null) {
+      paramJceOutputStream.write(this.ahsH, 22);
     }
-    if (this.fgl != null) {
-      paramJceOutputStream.write(this.fgl, 23);
+    if (this.vid != null) {
+      paramJceOutputStream.write(this.vid, 23);
     }
-    if (this.rpv != null) {
-      paramJceOutputStream.write(this.rpv, 24);
+    if (this.aid != null) {
+      paramJceOutputStream.write(this.aid, 24);
     }
-    if (this.Bjp != null) {
-      paramJceOutputStream.write(this.Bjp, 25);
+    if (this.ahsI != null) {
+      paramJceOutputStream.write(this.ahsI, 25);
     }
-    if (this.Bjq != null) {
-      paramJceOutputStream.write(this.Bjq, 26);
+    if (this.ahsJ != null) {
+      paramJceOutputStream.write(this.ahsJ, 26);
     }
-    AppMethodBeat.o(114484);
+    AppMethodBeat.o(138325);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.c.a.c
  * JD-Core Version:    0.7.0.1
  */

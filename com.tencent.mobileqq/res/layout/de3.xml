@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/gwg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="即将开启直播" />
+        <com.tencent.timi.game.ui.pag.TimiGamePAGView android:layout_gravity="center_horizontal" android:id="@id/n0k" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="16.0dip" />
+    </LinearLayout>
+</FrameLayout>

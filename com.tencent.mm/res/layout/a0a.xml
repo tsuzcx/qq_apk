@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/q1"
+<RelativeLayout android:orientation="horizontal" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/r2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ListView android:id="@id/bvr" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
-            <TextView android:id="@id/a8b" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/lf" />
-            <TextView android:id="@id/bvs" android:paddingTop="40.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="49.0dip" style="@style/lf" />
-        </RelativeLayout>
-        <LinearLayout android:gravity="center_vertical" android:id="@id/bvt" android:background="@drawable/vw" android:visibility="gone" style="@style/mp">
-            <TextView android:id="@id/bvu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="@string/d36" android:singleLine="false" android:layout_weight="1.0" style="@style/lg" />
-        </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/fn6" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/kn3" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/g" android:minWidth="68.0dip" android:text="@string/kqd" android:singleLine="true" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/i0x" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/m9" android:singleLine="true" />
     </LinearLayout>
-</LinearLayout>
+    <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:id="@id/ewf" android:background="@null" android:paddingRight="32.0dip" android:layout_height="fill_parent" android:minHeight="48.0dip" android:singleLine="true" android:layout_toRightOf="@id/fn6" style="@style/n9" />
+    <ImageView android:id="@id/f74" android:background="@null" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="wrap_content" android:src="@drawable/bd2" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

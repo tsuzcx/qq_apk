@@ -1,81 +1,52 @@
 package com.tencent.mm.cf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.vending.h.d;
 
-public final class a<T>
-  implements b.a<T>
+public final class a
+  extends d
 {
-  private final String mName;
-  private T mValue;
-  private HashSet<Object<T>> ywo;
-  private final Object ywp;
+  private MMHandler handler;
+  private String serialTag;
   
-  private a(String paramString)
+  public a(String paramString)
   {
-    AppMethodBeat.i(58946);
-    this.ywp = new Object();
-    this.mName = paramString;
-    this.ywo = new HashSet();
-    AppMethodBeat.o(58946);
+    AppMethodBeat.i(179439);
+    this.handler = new MMHandler(paramString);
+    this.serialTag = this.handler.getSerialTag();
+    AppMethodBeat.o(179439);
   }
   
-  a(String paramString, T paramT)
+  public final void arrange(Runnable paramRunnable)
   {
-    this(paramString);
-    this.mValue = paramT;
+    AppMethodBeat.i(179440);
+    this.handler.post(paramRunnable);
+    AppMethodBeat.o(179440);
   }
   
-  public final T get()
+  public final void arrangeInterval(Runnable paramRunnable, long paramLong)
   {
-    return this.mValue;
+    AppMethodBeat.i(179441);
+    this.handler.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(179441);
   }
   
-  public final String name()
+  public final void cancel()
   {
-    return this.mName;
+    AppMethodBeat.i(179442);
+    this.handler.removeCallbacksAndMessages(null);
+    AppMethodBeat.o(179442);
   }
   
-  final void set(T arg1)
+  public final String getType()
   {
-    AppMethodBeat.i(58947);
-    Object localObject1 = this.mValue;
-    int i;
-    if ((??? == localObject1) || ((??? != null) && (???.equals(localObject1)))) {
-      i = 1;
-    }
-    while (i == 0)
-    {
-      this.mValue = ???;
-      synchronized (this.ywp)
-      {
-        localObject1 = this.ywo.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label87;
-        }
-        ((Iterator)localObject1).next();
-      }
-      i = 0;
-      continue;
-      label87:
-      AppMethodBeat.o(58947);
-      return;
-    }
-    AppMethodBeat.o(58947);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(58948);
-    String str = "Status: " + this.mName;
-    AppMethodBeat.o(58948);
-    return str;
+    return this.serialTag;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.cf.a
  * JD-Core Version:    0.7.0.1
  */

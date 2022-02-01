@@ -1,24 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class cym
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public cym(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131561654), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    paramCompoundButton = this.a.b;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, i, "", "", "", "");
-      return;
-    }
+    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
   }
 }
 

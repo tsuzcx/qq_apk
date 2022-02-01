@@ -10,10 +10,10 @@ import android.widget.ImageView;
 public class VolumeIndicateView
   extends ImageView
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private int b;
+  private Bitmap a;
+  private Rect b = new Rect();
+  private int c;
+  private int d;
   
   public VolumeIndicateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,64 +22,73 @@ public class VolumeIndicateView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int m = 0;
-    int k;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.a != null)
     {
-      k = getWidth();
-      j = getHeight();
-      if (this.b != 3) {
-        break label79;
+      int n = getWidth();
+      int m = getHeight();
+      int i2 = this.d;
+      int i = 0;
+      int i1 = 0;
+      int k;
+      int j;
+      if (i2 == 3)
+      {
+        i = n - this.c * n / 10000 - 1;
+        k = m;
+        j = n;
       }
-      i = k - this.jdField_a_of_type_Int * k / 10000 - 1;
+      for (;;)
+      {
+        m = 0;
+        break;
+        if (i2 == 4)
+        {
+          j = n * this.c / 10000 + 1;
+          k = m;
+          i = i1;
+        }
+        else
+        {
+          if (i2 == 1)
+          {
+            i1 = m - this.c * m / 10000 - 1;
+            j = n;
+            k = m;
+            m = i1;
+            break;
+          }
+          j = n;
+          k = m;
+          i = i1;
+          if (i2 == 2)
+          {
+            k = m * this.c / 10000 + 1;
+            j = n;
+            i = i1;
+          }
+        }
+      }
+      this.b.set(i, m, j, k);
+      paramCanvas.drawBitmap(this.a, null, this.b, null);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(i, m, k, j);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
-      super.onDraw(paramCanvas);
-      return;
-      label79:
-      if (this.b == 4)
-      {
-        k = k * this.jdField_a_of_type_Int / 10000 + 1;
-        i = 0;
-      }
-      else if (this.b == 1)
-      {
-        m = this.jdField_a_of_type_Int * j / 10000;
-        i = 0;
-        m = j - m - 1;
-      }
-      else if (this.b == 2)
-      {
-        j = j * this.jdField_a_of_type_Int / 10000 + 1;
-        i = 0;
-      }
-      else
-      {
-        i = 0;
-      }
-    }
+    super.onDraw(paramCanvas);
   }
   
   public void setIndicateVolumeBitmap(Bitmap paramBitmap, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.b = paramInt;
+    this.a = paramBitmap;
+    this.d = paramInt;
   }
   
   public void setLevel(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateView
  * JD-Core Version:    0.7.0.1
  */

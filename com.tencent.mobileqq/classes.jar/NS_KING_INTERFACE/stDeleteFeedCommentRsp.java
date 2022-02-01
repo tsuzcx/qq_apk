@@ -10,17 +10,7 @@ public final class stDeleteFeedCommentRsp
   extends JceStruct
   implements Cloneable
 {
-  public int ret;
-  
-  static
-  {
-    if (!stDeleteFeedCommentRsp.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public int ret = 0;
   
   public stDeleteFeedCommentRsp() {}
   
@@ -36,18 +26,17 @@ public final class stDeleteFeedCommentRsp
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -109,7 +98,7 @@ public final class stDeleteFeedCommentRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stDeleteFeedCommentRsp
  * JD-Core Version:    0.7.0.1
  */

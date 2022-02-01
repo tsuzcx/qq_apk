@@ -15,16 +15,16 @@ public class FirebaseInitProvider
 {
   public void attachInfo(Context paramContext, ProviderInfo paramProviderInfo)
   {
-    AppMethodBeat.i(10637);
+    AppMethodBeat.i(4104);
     Preconditions.checkNotNull(paramProviderInfo, "FirebaseInitProvider ProviderInfo cannot be null.");
     if ("com.google.firebase.firebaseinitprovider".equals(paramProviderInfo.authority))
     {
       paramContext = new IllegalStateException("Incorrect provider authority in manifest. Most likely due to a missing applicationId variable in application's build.gradle.");
-      AppMethodBeat.o(10637);
+      AppMethodBeat.o(4104);
       throw paramContext;
     }
     super.attachInfo(paramContext, paramProviderInfo);
-    AppMethodBeat.o(10637);
+    AppMethodBeat.o(4104);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -44,9 +44,9 @@ public class FirebaseInitProvider
   
   public boolean onCreate()
   {
-    AppMethodBeat.i(10638);
-    a.ac(getContext());
-    AppMethodBeat.o(10638);
+    AppMethodBeat.i(4105);
+    a.aS(getContext());
+    AppMethodBeat.o(4105);
     return false;
   }
   
@@ -62,7 +62,7 @@ public class FirebaseInitProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.provider.FirebaseInitProvider
  * JD-Core Version:    0.7.0.1
  */

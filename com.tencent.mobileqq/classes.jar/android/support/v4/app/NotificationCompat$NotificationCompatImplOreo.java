@@ -16,19 +16,13 @@ class NotificationCompat$NotificationCompatImplOreo
       NotificationCompat.Action localAction = (NotificationCompat.Action)localIterator.next();
       localNotificationCompatOreo.addAction(localAction.icon, localAction.title, localAction.actionIntent);
     }
-    if (paramBuilder.mStyle != null)
-    {
-      if (!(paramBuilder.mStyle instanceof NotificationCompat.BigTextStyle)) {
-        break label176;
+    if (paramBuilder.mStyle != null) {
+      if ((paramBuilder.mStyle instanceof NotificationCompat.BigTextStyle))
+      {
+        paramBuilder = (NotificationCompat.BigTextStyle)paramBuilder.mStyle;
+        localNotificationCompatOreo.addBigTextStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mBigText);
       }
-      paramBuilder = (NotificationCompat.BigTextStyle)paramBuilder.mStyle;
-      localNotificationCompatOreo.addBigTextStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mBigText);
-    }
-    for (;;)
-    {
-      return localNotificationCompatOreo.build();
-      label176:
-      if ((paramBuilder.mStyle instanceof NotificationCompat.InboxStyle))
+      else if ((paramBuilder.mStyle instanceof NotificationCompat.InboxStyle))
       {
         paramBuilder = (NotificationCompat.InboxStyle)paramBuilder.mStyle;
         localNotificationCompatOreo.addInboxStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mTexts);
@@ -39,6 +33,7 @@ class NotificationCompat$NotificationCompatImplOreo
         localNotificationCompatOreo.addBigPictureStyle(paramBuilder.mBigContentTitle, paramBuilder.mSummaryTextSet, paramBuilder.mSummaryText, paramBuilder.mPicture, paramBuilder.mBigLargeIcon, paramBuilder.mBigLargeIconSet);
       }
     }
+    return localNotificationCompatOreo.build();
   }
 }
 

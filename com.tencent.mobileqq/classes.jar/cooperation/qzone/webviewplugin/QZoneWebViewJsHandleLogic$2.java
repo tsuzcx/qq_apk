@@ -2,30 +2,33 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import begz;
-import bjsa;
-import bjxh;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qzonehub.api.IQzoneShareApi;
 import java.util.Map;
 
-public final class QZoneWebViewJsHandleLogic$2
+final class QZoneWebViewJsHandleLogic$2
   implements Runnable
 {
-  public QZoneWebViewJsHandleLogic$2(begz parambegz, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  QZoneWebViewJsHandleLogic$2(WebViewPlugin.PluginRuntime paramPluginRuntime, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_Begz.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {
-      return;
+    Object localObject = this.val$runtime.d();
+    if (localObject != null)
+    {
+      if (((Activity)localObject).isFinishing()) {
+        return;
+      }
+      localObject = (Bitmap)this.val$wrapper.remove("image");
+      ((IQzoneShareApi)QRoute.api(IQzoneShareApi.class)).addObserver(QZoneWebViewJsHandleLogic.wxShareListener);
+      ((IQzoneShareApi)QRoute.api(IQzoneShareApi.class)).shareMiniProgram(this.val$title, (Bitmap)localObject, this.val$description, this.val$webpageUrl, this.val$path, this.val$userName, null, 0);
     }
-    localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    bjsa.a().a(bjxh.a);
-    bjsa.a().a(this.jdField_a_of_type_JavaLangString, (Bitmap)localObject, this.b, this.c, this.d, this.e, null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic.2
  * JD-Core Version:    0.7.0.1
  */

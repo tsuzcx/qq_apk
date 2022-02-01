@@ -69,24 +69,27 @@ public final class ByteStreamsKt
   @InlineOnly
   private static final ByteArrayInputStream byteInputStream(@NotNull String paramString, Charset paramCharset)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.getBytes(paramCharset);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
+      return new ByteArrayInputStream(paramString);
     }
-    paramString = paramString.getBytes(paramCharset);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
-    return new ByteArrayInputStream(paramString);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   public static final long copyTo(@NotNull InputStream paramInputStream, @NotNull OutputStream paramOutputStream, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramInputStream, "$this$copyTo");
     Intrinsics.checkParameterIsNotNull(paramOutputStream, "out");
-    long l = 0L;
     byte[] arrayOfByte = new byte[paramInt];
-    for (paramInt = paramInputStream.read(arrayOfByte); paramInt >= 0; paramInt = paramInputStream.read(arrayOfByte))
+    paramInt = paramInputStream.read(arrayOfByte);
+    long l = 0L;
+    while (paramInt >= 0)
     {
       paramOutputStream.write(arrayOfByte, 0, paramInt);
       l += paramInt;
+      paramInt = paramInputStream.read(arrayOfByte);
     }
     return l;
   }
@@ -148,7 +151,7 @@ public final class ByteStreamsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.ByteStreamsKt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/d99" android:background="@color/BW_97" android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="144.0dip" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/gg" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ko8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:singleLine="true" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/cd" />
+            <com.tencent.mm.plugin.finder.view.FinderFeedAlbumView android:id="@id/cy7" android:layout_width="134.0dip" android:layout_height="134.0dip" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/bv" app:cornerRadius="@dimen/bv" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b5z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" android:layout_marginBottom="@dimen/bv">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b6c" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/icons_outlined_finder_icon" app:iconColor="@color/Orange" />
+                <TextView android:textSize="8.0dip" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ese" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+</LinearLayout>

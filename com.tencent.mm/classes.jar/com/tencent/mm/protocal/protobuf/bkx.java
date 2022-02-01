@@ -3,137 +3,106 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bkx
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String city;
-  public double latitude;
-  public double longitude;
-  public String province;
-  public long wmP;
-  public String wmQ;
-  public String wmR;
-  public String wmS;
-  public String wmT;
+  public String ZTY;
+  public String description;
+  public String mdZ;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(80154);
+    AppMethodBeat.i(259434);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.province != null) {
-        paramVarArgs.e(1, this.province);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.title != null) {
+        paramVarArgs.g(1, this.title);
       }
-      if (this.city != null) {
-        paramVarArgs.e(2, this.city);
+      if (this.description != null) {
+        paramVarArgs.g(2, this.description);
       }
-      paramVarArgs.f(3, this.latitude);
-      paramVarArgs.f(4, this.longitude);
-      paramVarArgs.am(5, this.wmP);
-      if (this.wmQ != null) {
-        paramVarArgs.e(6, this.wmQ);
+      if (this.mdZ != null) {
+        paramVarArgs.g(3, this.mdZ);
       }
-      if (this.wmR != null) {
-        paramVarArgs.e(7, this.wmR);
+      if (this.url != null) {
+        paramVarArgs.g(4, this.url);
       }
-      if (this.wmS != null) {
-        paramVarArgs.e(8, this.wmS);
+      if (this.ZTY != null) {
+        paramVarArgs.g(5, this.ZTY);
       }
-      if (this.wmT != null) {
-        paramVarArgs.e(9, this.wmT);
-      }
-      AppMethodBeat.o(80154);
+      AppMethodBeat.o(259434);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.province == null) {
-        break label656;
+      if (this.title == null) {
+        break label450;
       }
     }
-    label656:
-    for (paramInt = e.a.a.b.b.a.f(1, this.province) + 0;; paramInt = 0)
+    label450:
+    for (int i = i.a.a.b.b.a.h(1, this.title) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.city != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.city);
-      }
-      i = i + (e.a.a.b.b.a.eW(3) + 8) + (e.a.a.b.b.a.eW(4) + 8) + e.a.a.b.b.a.p(5, this.wmP);
       paramInt = i;
-      if (this.wmQ != null) {
-        paramInt = i + e.a.a.b.b.a.f(6, this.wmQ);
+      if (this.description != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.description);
       }
       i = paramInt;
-      if (this.wmR != null) {
-        i = paramInt + e.a.a.b.b.a.f(7, this.wmR);
+      if (this.mdZ != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.mdZ);
       }
       paramInt = i;
-      if (this.wmS != null) {
-        paramInt = i + e.a.a.b.b.a.f(8, this.wmS);
+      if (this.url != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.url);
       }
       i = paramInt;
-      if (this.wmT != null) {
-        i = paramInt + e.a.a.b.b.a.f(9, this.wmT);
+      if (this.ZTY != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.ZTY);
       }
-      AppMethodBeat.o(80154);
+      AppMethodBeat.o(259434);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(80154);
+        AppMethodBeat.o(259434);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bkx localbkx = (bkx)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(80154);
+          AppMethodBeat.o(259434);
           return -1;
         case 1: 
-          localbkx.province = locala.CLY.readString();
-          AppMethodBeat.o(80154);
+          localbkx.title = locala.ajGk.readString();
+          AppMethodBeat.o(259434);
           return 0;
         case 2: 
-          localbkx.city = locala.CLY.readString();
-          AppMethodBeat.o(80154);
+          localbkx.description = locala.ajGk.readString();
+          AppMethodBeat.o(259434);
           return 0;
         case 3: 
-          localbkx.latitude = Double.longBitsToDouble(locala.CLY.emy());
-          AppMethodBeat.o(80154);
+          localbkx.mdZ = locala.ajGk.readString();
+          AppMethodBeat.o(259434);
           return 0;
         case 4: 
-          localbkx.longitude = Double.longBitsToDouble(locala.CLY.emy());
-          AppMethodBeat.o(80154);
-          return 0;
-        case 5: 
-          localbkx.wmP = locala.CLY.sm();
-          AppMethodBeat.o(80154);
-          return 0;
-        case 6: 
-          localbkx.wmQ = locala.CLY.readString();
-          AppMethodBeat.o(80154);
-          return 0;
-        case 7: 
-          localbkx.wmR = locala.CLY.readString();
-          AppMethodBeat.o(80154);
-          return 0;
-        case 8: 
-          localbkx.wmS = locala.CLY.readString();
-          AppMethodBeat.o(80154);
+          localbkx.url = locala.ajGk.readString();
+          AppMethodBeat.o(259434);
           return 0;
         }
-        localbkx.wmT = locala.CLY.readString();
-        AppMethodBeat.o(80154);
+        localbkx.ZTY = locala.ajGk.readString();
+        AppMethodBeat.o(259434);
         return 0;
       }
-      AppMethodBeat.o(80154);
+      AppMethodBeat.o(259434);
       return -1;
     }
   }

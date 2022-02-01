@@ -5,134 +5,136 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.i;
 import com.tencent.mm.cache.c;
+import com.tencent.mm.cache.f;
 
 public final class d
   extends b
 {
-  private float anT;
-  private float anU;
-  private float cdT;
-  private boolean cdU;
-  private boolean cdw;
-  private float cdx;
-  private float cdy;
+  private Path cja;
+  private float hpU;
+  private boolean hpV;
+  private boolean hpW;
+  private float hpx;
+  private float hpy;
   public int mColor;
-  private Path ou;
+  private float wT;
+  private float wU;
   
   public d()
   {
-    AppMethodBeat.i(116178);
-    this.cdU = true;
-    this.cdw = false;
-    this.mColor = com.tencent.mm.view.footer.a.ATm[2];
-    this.ou = new Path();
-    AppMethodBeat.o(116178);
+    AppMethodBeat.i(9148);
+    this.hpV = true;
+    this.hpW = false;
+    this.mColor = com.tencent.mm.view.footer.a.agLQ[2];
+    this.cja = new Path();
+    AppMethodBeat.o(9148);
   }
   
-  public final void CA()
+  public final a aEy()
   {
-    AppMethodBeat.i(116182);
-    bt(true);
-    AppMethodBeat.o(116182);
+    return a.hoK;
   }
   
-  public final a Cz()
+  public final void aEz()
   {
-    return a.ccM;
+    AppMethodBeat.i(9152);
+    ec(true);
+    AppMethodBeat.o(9152);
   }
   
-  public final boolean o(MotionEvent paramMotionEvent)
+  public final void onAlive()
   {
-    AppMethodBeat.i(116180);
-    if (!CG())
+    AppMethodBeat.i(9149);
+    super.onAlive();
+    this.hpU = this.hoR.getInitScale();
+    AppMethodBeat.o(9149);
+  }
+  
+  public final boolean onDispatchTouch(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(9150);
+    if (!aEF())
     {
-      AppMethodBeat.o(116180);
+      AppMethodBeat.o(9150);
       return false;
     }
-    if (this.cdb != null) {
-      this.cdb.o(paramMotionEvent);
+    if (this.hpb != null) {
+      this.hpb.onDispatchTouch(paramMotionEvent);
     }
-    float[] arrayOfFloat = B(paramMotionEvent.getX(), paramMotionEvent.getY());
+    float[] arrayOfFloat = ad(paramMotionEvent.getX(), paramMotionEvent.getY());
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      boolean bool = this.cdU;
-      AppMethodBeat.o(116180);
+      boolean bool = this.hpV;
+      AppMethodBeat.o(9150);
       return bool;
-      if (this.ccU.contains((int)arrayOfFloat[0], (int)arrayOfFloat[1]))
+      if (getAliveRect().contains((int)arrayOfFloat[0], (int)arrayOfFloat[1]))
       {
         float f = arrayOfFloat[0];
-        this.cdx = f;
-        this.anT = f;
+        this.hpx = f;
+        this.wT = f;
         f = arrayOfFloat[1];
-        this.cdy = f;
-        this.anU = f;
+        this.hpy = f;
+        this.wU = f;
       }
-      for (this.cdU = true;; this.cdU = false)
+      for (this.hpV = true;; this.hpV = false)
       {
-        this.cdw = false;
+        this.hpW = false;
         break;
       }
-      if ((this.cdU) && (this.cdw))
+      if ((this.hpV) && (this.hpW))
       {
-        if (CB() == null)
+        if (aEA() == null)
         {
-          AppMethodBeat.o(116180);
+          AppMethodBeat.o(9150);
           return false;
         }
-        CB().add(new com.tencent.mm.y.b(new Path(this.ou), this.cdT / this.ccS.getInitScale() / this.ccS.getCurScale(), this.mColor));
-        bt(false);
-        c.Jg().b(com.tencent.mm.api.e.bVW);
+        aEA().add(new com.tencent.mm.ab.b(new Path(this.cja), this.hoR.getInitScale() / this.hoR.getCurScale(), this.mColor));
+        ec(false);
+        c.aLA().b(i.hdO);
       }
-      CJ();
-      this.ou.reset();
-      this.cdw = false;
-      this.cdU = false;
+      aEI();
+      this.cja.reset();
+      this.hpW = false;
+      this.hpV = false;
       continue;
-      if ((this.cdU) && (this.cdw))
+      if ((this.hpV) && (this.hpW))
       {
-        this.cdx = this.anT;
-        this.cdy = this.anU;
-        this.anT = arrayOfFloat[0];
-        this.anU = arrayOfFloat[1];
-        this.ou.quadTo(this.cdx, this.cdy, (this.anT + this.cdx) / 2.0F, (this.anU + this.cdy) / 2.0F);
-        CI();
+        this.hpx = this.wT;
+        this.hpy = this.wU;
+        this.wT = arrayOfFloat[0];
+        this.wU = arrayOfFloat[1];
+        this.cja.quadTo(this.hpx, this.hpy, (this.wT + this.hpx) / 2.0F, (this.wU + this.hpy) / 2.0F);
+        aEH();
       }
-      else if ((this.cdU) && (!this.cdw))
+      else if ((this.hpV) && (!this.hpW))
       {
-        this.ou.moveTo(arrayOfFloat[0], arrayOfFloat[1]);
-        this.cdw = true;
+        this.cja.moveTo(arrayOfFloat[0], arrayOfFloat[1]);
+        this.hpW = true;
       }
     }
   }
   
   public final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(116181);
+    AppMethodBeat.i(9151);
     paramCanvas.save();
-    paramCanvas.clipRect(this.ccU);
-    b(paramCanvas);
-    if (!this.ou.isEmpty()) {
-      new com.tencent.mm.y.b(this.ou, this.cdT / this.ccS.getInitScale() / this.ccS.getCurScale(), this.mColor).draw(paramCanvas);
+    paramCanvas.clipRect(getAliveRect());
+    h(paramCanvas);
+    if (!this.cja.isEmpty()) {
+      new com.tencent.mm.ab.b(this.cja, this.hoR.getInitScale() / this.hoR.getCurScale(), this.mColor).draw(paramCanvas);
     }
     paramCanvas.restore();
-    AppMethodBeat.o(116181);
-  }
-  
-  public final void zy()
-  {
-    AppMethodBeat.i(116179);
-    super.zy();
-    this.cdT = this.ccS.getInitScale();
-    AppMethodBeat.o(116179);
+    AppMethodBeat.o(9151);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.e.d
  * JD-Core Version:    0.7.0.1
  */

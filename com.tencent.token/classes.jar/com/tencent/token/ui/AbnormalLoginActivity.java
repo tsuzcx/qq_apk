@@ -2,34 +2,32 @@ package com.tencent.token.ui;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
+import com.tencent.token.aay;
+import com.tencent.token.yo;
 
 public class AbnormalLoginActivity
   extends BaseActivity
 {
-  private b mAdapter;
+  private yo mAdapter;
   private ListView mListView;
-  
-  static
-  {
-    if (!AbnormalLoginActivity.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968603);
-    this.mListView = ((ListView)findViewById(2131558521));
-    assert (this.mListView != null);
-    this.mAdapter = new b(this);
+    setContentView(2131296283);
+    this.mListView = ((ListView)findViewById(2131165774));
+    this.mAdapter = new yo(this);
     this.mListView.setScrollingCacheEnabled(true);
     this.mListView.setAdapter(this.mAdapter);
-    findViewById(2131558523).setOnClickListener(new a(this));
+    findViewById(2131165191).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        aay.a(AbnormalLoginActivity.this);
+      }
+    });
   }
   
   protected void onDestroy()

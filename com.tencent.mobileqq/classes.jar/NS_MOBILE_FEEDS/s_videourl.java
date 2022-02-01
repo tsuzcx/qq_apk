@@ -8,8 +8,8 @@ public final class s_videourl
   extends JceStruct
 {
   public String url = "";
-  public byte videoprior;
-  public int videorate;
+  public byte videoprior = 0;
+  public int videorate = 0;
   
   public s_videourl() {}
   
@@ -29,8 +29,9 @@ public final class s_videourl
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 0);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.videoprior, 1);
     paramJceOutputStream.write(this.videorate, 2);
@@ -38,7 +39,7 @@ public final class s_videourl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_videourl
  * JD-Core Version:    0.7.0.1
  */

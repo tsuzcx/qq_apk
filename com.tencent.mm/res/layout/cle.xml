@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/m26" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|top" android:id="@id/l33" android:layout_width="@dimen/cv" android:layout_height="9.0dip" android:src="@raw/icons_pop_arrow" android:rotation="180.0" app:iconColor="@color/yf" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/knh" android:background="@drawable/cap" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/cd">
+        <ImageView android:id="@id/efw" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@drawable/b__" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <ImageView android:id="@id/m27" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@drawable/b__" android:layout_marginStart="@dimen/bv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toEndOf="@id/efw" app:layout_constraintTop_toTopOf="hr_" />
+        <ImageView android:id="@id/m28" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@drawable/b__" android:layout_marginStart="@dimen/bv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toEndOf="@id/m27" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/y6" android:ellipsize="middle" android:id="@id/ko0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="240.0dip" android:singleLine="true" android:layout_marginStart="@dimen/ayv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toEndOf="@id/m28" app:layout_constraintTop_toTopOf="hr_" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

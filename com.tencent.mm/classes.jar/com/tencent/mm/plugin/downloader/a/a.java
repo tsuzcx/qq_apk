@@ -4,41 +4,40 @@ public final class a
 {
   public static int DOWNLOAD_ERR_URL_INVALID;
   public static int SERVICE_INVALID;
-  public static int kVA = 901;
-  public static int kVl = 101;
-  public static int kVm = 102;
-  public static int kVn = 103;
-  public static int kVo = 104;
-  public static int kVp = 201;
-  public static int kVq = 202;
-  public static int kVr;
-  public static int kVs;
-  public static int kVt;
-  public static int kVu;
-  public static int kVv;
-  public static int kVw;
-  public static int kVx;
-  public static int kVy;
-  public static int kVz;
+  public static int xkA = 806;
+  public static int xkB = 901;
+  public static int xkm = 101;
+  public static int xkn = 102;
+  public static int xko = 103;
+  public static int xkp = 104;
+  public static int xkq = 201;
+  public static int xkr = 202;
+  public static int xks;
+  public static int xkt;
+  public static int xku;
+  public static int xkv;
+  public static int xkw;
+  public static int xkx;
+  public static int xky;
+  public static int xkz;
   
   static
   {
     SERVICE_INVALID = 203;
-    kVr = 204;
-    kVs = 205;
-    kVt = 206;
+    xks = 204;
+    xkt = 205;
+    xku = 206;
     DOWNLOAD_ERR_URL_INVALID = 700;
-    kVu = 801;
-    kVv = 802;
-    kVw = 803;
-    kVx = 804;
-    kVy = 805;
-    kVz = 806;
+    xkv = 801;
+    xkw = 802;
+    xkx = 803;
+    xky = 804;
+    xkz = 805;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.a.a
  * JD-Core Version:    0.7.0.1
  */

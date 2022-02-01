@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/tenpay_paysuccess_screen" android:background="@color/qb_tenpay_pagebg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qb_tenpay_common_title_bar" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/qb_tenpay_success_title_layout" android:background="@color/qb_tenpay_white_color" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:background="@drawable/qb_tenpay_ico_ok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" />
+                <TextView android:textSize="20.0sp" android:textColor="@color/qb_tenpay_green_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_pay_success" />
+            </LinearLayout>
+            <RelativeLayout android:id="@id/qb_tenpay_success_ivr_title_layout" android:background="@color/qb_tenpay_white_color" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="93.0dip">
+                <ImageView android:id="@id/tenpay_success_image_sigh" android:background="@drawable/qb_tenpay_ico_sigh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="15.0dip" android:layout_alignParentLeft="true" />
+                <TextView android:textSize="22.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_success_sigh_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="10.0dip" android:text="@string/qb_tenpay_pay_success_examine" android:layout_toRightOf="@id/tenpay_success_image_sigh" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/qb_tenpay_chose_other_title_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="@string/qb_tenpay_pay_success_tips" android:layout_below="@id/tenpay_success_sigh_title" android:layout_alignLeft="@id/tenpay_success_sigh_title" />
+            </RelativeLayout>
+            <View style="@style/qb_tenpay_line" />
+            <LinearLayout android:orientation="vertical" android:background="@color/qb_tenpay_white_color" android:paddingLeft="15.0dip" android:paddingTop="14.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_thin_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_success_busy_name" />
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_black_color" android:gravity="right" android:id="@id/tenpay_success_busy_name" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_thin_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_success_goods_name" />
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_black_color" android:gravity="right" android:id="@id/tenpay_success_goods_name" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" />
+                </LinearLayout>
+                <View android:layout_marginTop="14.0dip" style="@style/qb_tenpay_border_dash" />
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip">
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_thin_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_success_paytype" />
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_black_color" android:gravity="right" android:id="@id/tenpay_success_pay_type" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+                <LinearLayout android:id="@id/qb_tenpay_success_trade_dingdan_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_thin_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_success_listid" />
+                    <TextView android:textSize="13.0sp" android:textColor="@color/qb_tenpay_black_color" android:gravity="right" android:id="@id/tenpay_success_trans_id" android:paddingLeft="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+                <LinearLayout android:id="@id/qb_tenpay_success_trade_time_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_thin_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_success_trans_time" />
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_black_color" android:gravity="right" android:id="@id/tenpay_success_trans_time" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+                <View android:layout_marginTop="14.0dip" style="@style/qb_tenpay_border_dash" />
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip">
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_thin_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_success_paymoney" />
+                    <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="@color/qb_tenpay_black_color" android:gravity="right" android:id="@id/tenpay_success_total_fee" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+                </LinearLayout>
+                <TextView android:textSize="14.0sp" android:textColor="#ffa6a6a6" android:gravity="right" android:id="@id/price_txt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+                <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip">
+                    <TextView android:textSize="14.0sp" android:textColor="#ffff7700" android:gravity="right" android:id="@id/tenpay_cut_fee" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+                </LinearLayout>
+            </LinearLayout>
+            <View style="@style/qb_tenpay_border_waves" />
+            <LinearLayout android:gravity="center_vertical" android:id="@id/subscribe_layout" android:paddingLeft="15.0dip" android:paddingRight="1.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip">
+                <CheckBox android:id="@id/subscribe_check" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:button="@drawable/cm_blue_check_bg" />
+                <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/subscribe_text" android:paddingLeft="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/refund_layout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_thin_color" android:id="@id/before_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_refund_color" android:id="@id/refund_textview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_success_paymoney" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_thin_color" android:id="@id/after_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <com.qwallet.view.AdView android:gravity="center" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="15.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/qb_tenpay_success_save_layout" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="10.0dip" android:layout_weight="1.0">
+                <Button android:textSize="18.0sp" android:textColor="@color/qb_tenpay_blue_wathet_color" android:gravity="center" android:id="@id/tenpay_save_btn" android:background="@drawable/qvip_pay_common_btn_white" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/qb_tenpay_save_pic_text" />
+                <Button android:visibility="invisible" android:layout_marginBottom="10.0dip" android:text="@null" style="@style/qb_tenpay_btn_submit" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <TextView android:textSize="13.0dip" android:textColor="@color/qb_tenpay_disable_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_question" />
+                <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+                    <TextView android:textSize="13.0dip" android:textColor="@color/qb_tenpay_disable_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_service_tel" />
+                    <TextView android:textColor="@color/qb_tenpay_dialog_link_blue" android:id="@id/cft_tel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="常见问题" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

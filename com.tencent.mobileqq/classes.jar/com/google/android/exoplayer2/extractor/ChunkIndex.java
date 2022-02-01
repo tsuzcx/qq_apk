@@ -19,9 +19,10 @@ public final class ChunkIndex
     this.durationsUs = paramArrayOfLong2;
     this.timesUs = paramArrayOfLong3;
     this.length = paramArrayOfInt.length;
-    if (this.length > 0)
+    int i = this.length;
+    if (i > 0)
     {
-      this.durationUs = (paramArrayOfLong2[(this.length - 1)] + paramArrayOfLong3[(this.length - 1)]);
+      this.durationUs = (paramArrayOfLong2[(i - 1)] + paramArrayOfLong3[(i - 1)]);
       return;
     }
     this.durationUs = 0L;
@@ -41,10 +42,13 @@ public final class ChunkIndex
   {
     int i = getChunkIndex(paramLong);
     SeekPoint localSeekPoint = new SeekPoint(this.timesUs[i], this.offsets[i]);
-    if ((localSeekPoint.timeUs >= paramLong) || (i == this.length - 1)) {
-      return new SeekMap.SeekPoints(localSeekPoint);
+    if ((localSeekPoint.timeUs < paramLong) && (i != this.length - 1))
+    {
+      long[] arrayOfLong = this.timesUs;
+      i += 1;
+      return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(arrayOfLong[i], this.offsets[i]));
     }
-    return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(this.timesUs[(i + 1)], this.offsets[(i + 1)]));
+    return new SeekMap.SeekPoints(localSeekPoint);
   }
   
   public boolean isSeekable()
@@ -54,7 +58,7 @@ public final class ChunkIndex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ChunkIndex
  * JD-Core Version:    0.7.0.1
  */

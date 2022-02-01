@@ -1,12 +1,15 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
-import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.DataRangeTracker;
+import com.tencent.qqmusic.mediaplayer.DataRangeTracker.LockJudgerCallback;
+import com.tencent.qqmusic.mediaplayer.downstream.FileDataSink;
 import com.tencent.qqmusic.mediaplayer.downstream.IDataSink;
 import com.tencent.qqmusic.mediaplayer.formatdetector.FormatDetector;
+import com.tencent.qqmusic.mediaplayer.network.DefaultMediaHTTPService;
 import com.tencent.qqmusic.mediaplayer.perf.Collectable;
 import com.tencent.qqmusic.mediaplayer.perf.ErrorUploadCollector;
 import com.tencent.qqmusic.mediaplayer.perf.PlayerInfoCollector;
@@ -41,7 +44,9 @@ public class CacheDataSource
   private long[] costs;
   private long currentLoadStartPosition;
   private Chunk currentLoadingChunk;
-  private CacheDataSource.Listener listener;
+  private volatile boolean isToReleaseLock;
+  private volatile boolean isWaitingForFirstPiece;
+  private Listener listener;
   private boolean loadFinished;
   private final Loader loader;
   private long nextContinuousPosition;
@@ -51,24 +56,46 @@ public class CacheDataSource
   private TimerTask pendingTask;
   private Timer restartHandler;
   
-  public CacheDataSource(IDataSource paramIDataSource1, IDataSource paramIDataSource2, IDataSink paramIDataSink, Looper paramLooper)
+  public CacheDataSource(final IDataSource paramIDataSource1, IDataSource paramIDataSource2, final IDataSink paramIDataSink, Looper paramLooper)
   {
-    this(paramIDataSource2, new CacheDataSource.1(paramLooper, paramIDataSource1, paramIDataSink));
-    AppMethodBeat.i(104521);
-    AppMethodBeat.o(104521);
+    this(paramIDataSource2, new Loader.Factory()
+    {
+      public Loader createLoader(Loader.Listener paramAnonymousListener)
+      {
+        AppMethodBeat.i(76493);
+        paramAnonymousListener = new DefaultLoader(CacheDataSource.this, new DummyUriLoader(null), paramAnonymousListener)
+        {
+          protected IDataSink createCacheSink(StreamingRequest paramAnonymous2StreamingRequest)
+          {
+            return CacheDataSource.1.this.val$cacheSink;
+          }
+          
+          protected IDataSource createUpStream(StreamingRequest paramAnonymous2StreamingRequest)
+          {
+            return CacheDataSource.1.this.val$upStream;
+          }
+        };
+        AppMethodBeat.o(76493);
+        return paramAnonymousListener;
+      }
+    });
+    AppMethodBeat.i(76546);
+    AppMethodBeat.o(76546);
   }
   
   public CacheDataSource(IDataSource paramIDataSource, Loader.Factory paramFactory)
   {
-    AppMethodBeat.i(104522);
+    AppMethodBeat.i(76547);
     this.currentLoadStartPosition = -9223372036854775808L;
+    this.isWaitingForFirstPiece = false;
     this.costs = new long[profiles.length];
+    this.isToReleaseLock = false;
     this.cacheSource = paramIDataSource;
     this.cachedDataTracker = new DataRangeTracker();
     this.opened = false;
     this.loadFinished = false;
-    this.loader = paramFactory.createLoader(new CacheDataSource.LoaderListener(this, null));
-    AppMethodBeat.o(104522);
+    this.loader = paramFactory.createLoader(new LoaderListener(null));
+    AppMethodBeat.o(76547);
   }
   
   private void clearState()
@@ -78,7 +105,7 @@ public class CacheDataSource
   
   private boolean isCached(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(104534);
+    AppMethodBeat.i(76559);
     long l2 = this.loader.getUpstreamSize();
     long l1 = paramLong;
     int i = paramInt;
@@ -99,7 +126,7 @@ public class CacheDataSource
       }
     }
     boolean bool = this.cachedDataTracker.isCached(l1, i);
-    AppMethodBeat.o(104534);
+    AppMethodBeat.o(76559);
     return bool;
   }
   
@@ -107,18 +134,16 @@ public class CacheDataSource
   
   private void onReadDiscontinuity(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(104531);
+    AppMethodBeat.i(76556);
     if (paramLong == this.currentLoadStartPosition)
     {
-      Logger.i("CacheDataSource", "[onReadDiscontinuity] same same position as current load. skip.");
-      AppMethodBeat.o(104531);
+      AppMethodBeat.o(76556);
       return;
     }
     long l = paramLong - this.currentLoadStartPosition;
     if ((l >= 0L) && (l < 8192L))
     {
-      Logger.i("CacheDataSource", "[onReadDiscontinuity] position diff is too small(" + l + "). skip.");
-      AppMethodBeat.o(104531);
+      AppMethodBeat.o(76556);
       return;
     }
     synchronized (this.cachedDataTracker)
@@ -126,33 +151,29 @@ public class CacheDataSource
       paramLong = Math.max(paramLong, this.cachedDataTracker.findStart(paramLong));
       if (this.currentLoadStartPosition == paramLong)
       {
-        Logger.i("CacheDataSource", "[onReadDiscontinuity] loadStartPosition is the same as current load. skip.");
-        AppMethodBeat.o(104531);
+        AppMethodBeat.o(76556);
         return;
       }
     }
     l = paramLong - this.currentLoadStartPosition;
     if ((l >= 0L) && (l < 8192L))
     {
-      Logger.i("CacheDataSource", "[onReadDiscontinuity] loadStartPosition diff is too small(" + l + "). skip.");
-      AppMethodBeat.o(104531);
+      AppMethodBeat.o(76556);
       return;
     }
     if (paramLong == getSize())
     {
-      Logger.i("CacheDataSource", "[onReadDiscontinuity] no need to load from end. skip.");
-      AppMethodBeat.o(104531);
+      AppMethodBeat.o(76556);
       return;
     }
     ??? = this.currentLoadingChunk;
     if ((paramBoolean) && (??? != null) && (((Chunk)???).contains(paramLong)))
     {
-      Logger.i("CacheDataSource", String.format("[onReadDiscontinuity] position is cached and loadStartPosition(%d) is under loading(%s). skip.", new Object[] { Long.valueOf(paramLong), ??? }));
-      AppMethodBeat.o(104531);
+      AppMethodBeat.o(76556);
       return;
     }
     restartLoading(paramLong);
-    AppMethodBeat.o(104531);
+    AppMethodBeat.o(76556);
   }
   
   private void reportProfiling() {}
@@ -163,65 +184,64 @@ public class CacheDataSource
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 273
-    //   5: invokestatic 123	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc 52
-    //   10: ldc_w 275
-    //   13: lload_1
-    //   14: invokestatic 278	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   17: invokevirtual 282	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   20: invokestatic 212	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   23: aload_0
-    //   24: lload_1
-    //   25: putfield 284	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:pendingStartPositionByte	J
-    //   28: aload_0
-    //   29: iconst_0
-    //   30: putfield 144	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:loadFinished	Z
-    //   33: aload_0
-    //   34: getfield 155	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:loader	Lcom/tencent/qqmusic/mediaplayer/upstream/Loader;
-    //   37: invokeinterface 287 1 0
-    //   42: ifeq +28 -> 70
-    //   45: aload_0
-    //   46: getfield 140	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:cachedDataTracker	Lcom/tencent/qqmusic/mediaplayer/DataRangeTracker;
-    //   49: invokevirtual 290	com/tencent/qqmusic/mediaplayer/DataRangeTracker:block	()V
-    //   52: aload_0
-    //   53: getfield 155	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:loader	Lcom/tencent/qqmusic/mediaplayer/upstream/Loader;
-    //   56: invokeinterface 293 1 0
-    //   61: ldc_w 273
-    //   64: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   2: ldc 249
+    //   4: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 67
+    //   9: ldc 251
+    //   11: lload_1
+    //   12: invokestatic 255	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   15: invokevirtual 259	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   18: invokestatic 264	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: aload_0
+    //   22: lload_1
+    //   23: putfield 266	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:pendingStartPositionByte	J
+    //   26: aload_0
+    //   27: iconst_0
+    //   28: putfield 163	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:loadFinished	Z
+    //   31: aload_0
+    //   32: getfield 174	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:loader	Lcom/tencent/qqmusic/mediaplayer/upstream/Loader;
+    //   35: invokeinterface 269 1 0
+    //   40: ifeq +27 -> 67
+    //   43: aload_0
+    //   44: getfield 159	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:cachedDataTracker	Lcom/tencent/qqmusic/mediaplayer/DataRangeTracker;
+    //   47: invokevirtual 272	com/tencent/qqmusic/mediaplayer/DataRangeTracker:block	()V
+    //   50: aload_0
+    //   51: getfield 174	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:loader	Lcom/tencent/qqmusic/mediaplayer/upstream/Loader;
+    //   54: invokeinterface 275 1 0
+    //   59: ldc 249
+    //   61: invokestatic 141	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: aload_0
+    //   65: monitorexit
+    //   66: return
     //   67: aload_0
-    //   68: monitorexit
-    //   69: return
-    //   70: aload_0
-    //   71: invokespecial 295	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:clearState	()V
-    //   74: aload_0
-    //   75: invokespecial 169	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:startLoadingIfNeeded	()Z
-    //   78: pop
-    //   79: ldc_w 273
-    //   82: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   85: goto -18 -> 67
-    //   88: astore_3
-    //   89: aload_0
-    //   90: monitorexit
-    //   91: aload_3
-    //   92: athrow
+    //   68: invokespecial 277	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:clearState	()V
+    //   71: aload_0
+    //   72: invokespecial 198	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:startLoadingIfNeeded	()Z
+    //   75: pop
+    //   76: ldc 249
+    //   78: invokestatic 141	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: goto -17 -> 64
+    //   84: astore_3
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: aload_3
+    //   88: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	93	0	this	CacheDataSource
-    //   0	93	1	paramLong	long
-    //   88	4	3	localObject	Object
+    //   0	89	0	this	CacheDataSource
+    //   0	89	1	paramLong	long
+    //   84	4	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	67	88	finally
-    //   70	85	88	finally
+    //   2	64	84	finally
+    //   67	81	84	finally
   }
   
-  @SuppressLint({"DefaultLocale"})
-  private void scheduleRestart(long paramLong1, long paramLong2)
+  private void scheduleRestart(final long paramLong1, long paramLong2)
   {
     try
     {
-      AppMethodBeat.i(104535);
+      AppMethodBeat.i(76560);
       Logger.i("CacheDataSource", String.format("[scheduleRestart] position: %d, delay: %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
       if (this.restartHandler == null) {
         this.restartHandler = new Timer("CacheDataSource.Restart");
@@ -231,9 +251,18 @@ public class CacheDataSource
         this.pendingTask.cancel();
         this.restartHandler.purge();
       }
-      this.pendingTask = new CacheDataSource.2(this, paramLong1);
+      this.pendingTask = new TimerTask()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(212365);
+          Logger.i("CacheDataSource", "[scheduleRestart] restart loading from position: " + paramLong1);
+          CacheDataSource.access$200(CacheDataSource.this, paramLong1);
+          AppMethodBeat.o(212365);
+        }
+      };
       this.restartHandler.schedule(this.pendingTask, paramLong2);
-      AppMethodBeat.o(104535);
+      AppMethodBeat.o(76560);
       return;
     }
     finally {}
@@ -246,12 +275,12 @@ public class CacheDataSource
       long l;
       try
       {
-        AppMethodBeat.i(104532);
+        AppMethodBeat.i(76557);
         boolean bool;
         if (this.loadFinished)
         {
           bool = false;
-          AppMethodBeat.o(104532);
+          AppMethodBeat.o(76557);
           return bool;
         }
         l = this.pendingStartPositionByte;
@@ -268,7 +297,7 @@ public class CacheDataSource
           this.cachedDataTracker.unblock();
           this.loader.startLoading(localChunk);
           bool = true;
-          AppMethodBeat.o(104532);
+          AppMethodBeat.o(76557);
           continue;
         }
         Logger.i("CacheDataSource", "[startLoadingIfNeeded] start a pending load: ".concat(String.valueOf(l)));
@@ -280,7 +309,7 @@ public class CacheDataSource
       if (l == -9223372036854775808L)
       {
         localObject2 = new IllegalStateException("pendingStartPositionByte must be set!");
-        AppMethodBeat.o(104532);
+        AppMethodBeat.o(76557);
         throw ((Throwable)localObject2);
       }
       Logger.i("CacheDataSource", "[startLoadingIfNeeded] restart a pending load: ".concat(String.valueOf(l)));
@@ -293,7 +322,7 @@ public class CacheDataSource
   public void accept(PlayerInfoCollector paramPlayerInfoCollector)
   {
     int k = 1;
-    AppMethodBeat.i(104536);
+    AppMethodBeat.i(76561);
     int i = 1;
     long l = 0L;
     while (i < profiles.length)
@@ -320,23 +349,24 @@ public class CacheDataSource
       paramPlayerInfoCollector.putLong("CacheDataSource." + profiles[j], arrayOfLong[j] / 1000000L);
       j += 1;
     }
-    AppMethodBeat.o(104536);
+    AppMethodBeat.o(76561);
   }
   
   public void close()
   {
-    AppMethodBeat.i(104529);
+    AppMethodBeat.i(76554);
     Logger.i("CacheDataSource", "[close] enter.");
     if (!this.opened)
     {
-      AppMethodBeat.o(104529);
+      Logger.i("CacheDataSource", "[close] not opened. return");
+      AppMethodBeat.o(76554);
       return;
     }
     this.cachedDataTracker.abandonLock();
     try
     {
       this.loader.shutdown();
-      label44:
+      label52:
       this.cacheSource.close();
       if (this.listener != null) {
         this.listener.onTransferEnd();
@@ -344,12 +374,12 @@ public class CacheDataSource
       reportProfiling();
       this.opened = false;
       Logger.i("CacheDataSource", "[close] exit");
-      AppMethodBeat.o(104529);
+      AppMethodBeat.o(76554);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label44;
+      break label52;
     }
   }
   
@@ -360,16 +390,16 @@ public class CacheDataSource
     {
       try
       {
-        AppMethodBeat.i(104530);
+        AppMethodBeat.i(76555);
         if (!this.opened)
         {
           Logger.w("CacheDataSource", "[continueLoadIfNeeded] not opened!");
-          AppMethodBeat.o(104530);
+          AppMethodBeat.o(76555);
           return bool;
         }
         if (this.pendingRestartPositionByte == -9223372036854775808L)
         {
-          AppMethodBeat.o(104530);
+          AppMethodBeat.o(76555);
           continue;
         }
         if (!this.loadFinished) {
@@ -377,7 +407,7 @@ public class CacheDataSource
         }
       }
       finally {}
-      AppMethodBeat.o(104530);
+      AppMethodBeat.o(76555);
       continue;
       label78:
       long l = this.pendingRestartPositionByte;
@@ -385,15 +415,15 @@ public class CacheDataSource
       scheduleRestart(l, 0L);
       Logger.i("CacheDataSource", "[continueLoadIfNeeded] schedule restart from: ".concat(String.valueOf(l)));
       bool = true;
-      AppMethodBeat.o(104530);
+      AppMethodBeat.o(76555);
     }
   }
   
   public AudioFormat.AudioType getAudioType()
   {
-    AppMethodBeat.i(104528);
+    AppMethodBeat.i(76553);
     AudioFormat.AudioType localAudioType = FormatDetector.getAudioFormat(this, false);
-    AppMethodBeat.o(104528);
+    AppMethodBeat.o(76553);
     return localAudioType;
   }
   
@@ -409,32 +439,36 @@ public class CacheDataSource
   
   public long getSize()
   {
-    AppMethodBeat.i(104527);
-    long l = this.loader.getUpstreamSize();
-    AppMethodBeat.o(104527);
+    AppMethodBeat.i(76552);
+    long l = 0L;
+    if (this.loader != null) {
+      l = this.loader.getUpstreamSize();
+    }
+    AppMethodBeat.o(76552);
     return l;
   }
   
   public boolean isCacheFileComplete()
   {
-    AppMethodBeat.i(104523);
-    long l = this.cachedDataTracker.getContinuousEnd();
-    if ((l != -1L) && (l == this.loader.getUpstreamSize() - 1L))
+    AppMethodBeat.i(76548);
+    long l1 = this.cachedDataTracker.getContinuousStart();
+    long l2 = this.cachedDataTracker.getContinuousEnd();
+    if ((l2 != -1L) && (l2 == this.loader.getUpstreamSize() - 1L) && (l1 == 0L))
     {
-      AppMethodBeat.o(104523);
+      AppMethodBeat.o(76548);
       return true;
     }
-    AppMethodBeat.o(104523);
+    AppMethodBeat.o(76548);
     return false;
   }
   
   public void open()
   {
-    AppMethodBeat.i(104525);
+    AppMethodBeat.i(76550);
     Logger.i("CacheDataSource", "[open] enter.");
     if (this.opened)
     {
-      AppMethodBeat.o(104525);
+      AppMethodBeat.o(76550);
       return;
     }
     this.nextContinuousPosition = 0L;
@@ -446,126 +480,454 @@ public class CacheDataSource
       this.listener.onTransferStart();
     }
     this.opened = true;
+    Logger.i("CacheDataSource", "[open] opened = true;");
     Logger.i("CacheDataSource", "[open] exit");
-    AppMethodBeat.o(104525);
+    AppMethodBeat.o(76550);
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(104526);
-    paramInt1 = -1;
-    if (paramLong < 0L) {
-      try
+    AppMethodBeat.i(76551);
+    int i = -1;
+    boolean bool;
+    try
+    {
+      if (!this.opened)
       {
-        Logger.e("CacheDataSource", "[readAt] invalid position: ".concat(String.valueOf(paramLong)));
-        paramArrayOfByte = new IOException("invalid position: ".concat(String.valueOf(paramLong)));
+        Logger.e("CacheDataSource", "[readAt] not opened!");
+        this.cachedDataTracker.abandonLock();
+        paramArrayOfByte = new IOException("[readAt] not opened!");
+        AppMethodBeat.o(76551);
         throw paramArrayOfByte;
       }
-      catch (Throwable paramArrayOfByte)
+    }
+    finally
+    {
+      try
       {
         Logger.e("CacheDataSource", "[readAt] error occurred: ".concat(String.valueOf(paramLong)), paramArrayOfByte);
+        AppMethodBeat.o(76551);
         throw paramArrayOfByte;
       }
       finally
       {
-        AppMethodBeat.o(104526);
+        AppMethodBeat.o(76551);
       }
-    }
-    this.cachedDataTracker.setFileTotalSize(getSize());
-    boolean bool = isCached(paramLong, paramInt2);
-    if (paramLong == this.nextContinuousPosition)
-    {
-      onReadContinuity(paramLong);
-      if (this.listener != null) {
-        this.listener.onBytesTransferring(paramLong, paramInt2);
-      }
-      if (bool) {
-        paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, 0, paramInt2);
-      }
-      if (paramInt1 >= 0) {
-        break label448;
-      }
-      if (this.loader.isLoading()) {
-        break label341;
-      }
-      paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, 0, paramInt2);
-      Logger.e("CacheDataSource", "[readAt] load not started: " + paramLong + ", size: " + paramInt2 + ", read: " + paramInt1);
-      label242:
-      if (paramInt1 <= 0) {
-        break label457;
-      }
-      this.nextContinuousPosition = (paramInt1 + paramLong);
-      break label451;
-    }
-    for (;;)
-    {
-      if (this.listener != null)
+      if (paramLong < 0L)
       {
-        if (i == 0) {
-          break label432;
+        Logger.e("CacheDataSource", "[readAt] invalid position: ".concat(String.valueOf(paramLong)));
+        paramArrayOfByte = new IOException("invalid position: ".concat(String.valueOf(paramLong)));
+        AppMethodBeat.o(76551);
+        throw paramArrayOfByte;
+      }
+      this.cachedDataTracker.setFileTotalSize(getSize());
+      bool = isCached(paramLong, paramInt2);
+      if (paramLong != this.nextContinuousPosition) {
+        break label339;
+      }
+    }
+    onReadContinuity(paramLong);
+    if (this.listener != null) {
+      this.listener.onBytesTransferring(paramLong, paramInt2);
+    }
+    if (bool) {
+      i = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
+    }
+    if (i < 0)
+    {
+      if (!this.loader.isLoading())
+      {
+        paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
+        Logger.e("CacheDataSource", "[readAt] load not started: " + paramLong + ", size: " + paramInt2 + ", read: " + paramInt1);
+        if (paramInt1 <= 0) {
+          break label493;
         }
-        this.listener.onBytesTransferError(paramLong, paramInt2, paramInt1);
+        this.nextContinuousPosition = (paramInt1 + paramLong);
+        bool = false;
       }
       for (;;)
       {
         for (;;)
         {
-          AppMethodBeat.o(104526);
+          label302:
+          if (this.listener != null)
+          {
+            if (!bool) {
+              break label539;
+            }
+            this.listener.onBytesTransferError(paramLong, paramInt2, paramInt1);
+          }
+          label330:
+          AppMethodBeat.o(76551);
           return paramInt1;
-          Logger.i("CacheDataSource", "[readAt] onReadDiscontinuity. expected: " + this.nextContinuousPosition + ", actual: " + paramLong);
+          label339:
           onReadDiscontinuity(paramLong, bool);
           break;
-          label341:
+          Logger.w("CacheDataSource", "[readAt] load has started, lock util data has been downloaded : " + paramLong + ", size: " + paramInt2 + ", read: " + i);
           if (this.listener != null) {
             this.listener.onBufferStarted(paramLong);
           }
           try
           {
-            this.cachedDataTracker.lock(paramLong, paramInt2, getBufferTimeout(paramLong, paramInt2));
+            this.cachedDataTracker.lock(paramLong, paramInt2, getBufferTimeout(paramLong, paramInt2), new DataRangeTracker.LockJudgerCallback()
+            {
+              public boolean isToAbandonLock()
+              {
+                AppMethodBeat.i(212363);
+                boolean bool = CacheDataSource.this.isToReleaseLock;
+                AppMethodBeat.o(212363);
+                return bool;
+              }
+            });
             if (this.listener != null) {
               this.listener.onBufferEnded();
             }
-            paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, 0, paramInt2);
+            paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
           }
           catch (InterruptedException paramArrayOfByte)
           {
             paramArrayOfByte = new IOException("interrupted!", paramArrayOfByte);
-            AppMethodBeat.o(104526);
+            AppMethodBeat.o(76551);
             throw paramArrayOfByte;
           }
         }
-        label432:
-        this.listener.onBytesTransferred(paramLong, paramInt1);
-      }
-      label448:
-      break label242;
-      label451:
-      label457:
-      do
-      {
-        i = 0;
-        break;
-        if (paramInt1 < 0)
-        {
-          i = 1;
-          break;
+        label493:
+        if (paramInt1 >= 0) {
+          break label562;
         }
-      } while (paramInt2 == 0);
-      int i = 1;
+        bool = true;
+        Logger.e("CacheDataSource", "[readAt]: read error! read < 0， read = ".concat(String.valueOf(paramInt1)));
+      }
+    }
+    for (;;)
+    {
+      Logger.e("CacheDataSource", "[readAt]: read error! read = 0, hasError = ".concat(String.valueOf(bool)));
+      break label302;
+      label539:
+      this.listener.onBytesTransferred(paramLong, paramInt1);
+      break label330;
+      paramInt1 = i;
+      break;
+      label562:
+      if (paramInt2 != 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
     }
   }
   
-  public void setListener(CacheDataSource.Listener paramListener)
+  public void releaseLock()
+  {
+    AppMethodBeat.i(212369);
+    Logger.i("CacheDataSource", "[releaseLock]");
+    this.isToReleaseLock = true;
+    AppMethodBeat.o(212369);
+  }
+  
+  public void setListener(Listener paramListener)
   {
     this.listener = paramListener;
   }
   
-  public boolean wait(int paramInt, long paramLong)
+  protected boolean waitForFirstPiece(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(104524);
-    boolean bool = this.cachedDataTracker.lock(0L, paramInt, paramLong);
-    AppMethodBeat.o(104524);
+    AppMethodBeat.i(212370);
+    this.isWaitingForFirstPiece = true;
+    boolean bool = this.cachedDataTracker.lock(0L, paramInt, paramLong, null);
+    this.isWaitingForFirstPiece = false;
+    AppMethodBeat.o(212370);
     return bool;
+  }
+  
+  public static class Factory
+  {
+    private static Loader.Factory createDefaultLoaderFactory(final File paramFile, UriLoader paramUriLoader)
+    {
+      AppMethodBeat.i(76503);
+      paramFile = new Loader.Factory()
+      {
+        public final Loader createLoader(Loader.Listener paramAnonymousListener)
+        {
+          AppMethodBeat.i(76545);
+          paramAnonymousListener = new DefaultLoader(Looper.getMainLooper(), this.val$uriLoader, paramAnonymousListener)
+          {
+            protected IDataSink createCacheSink(StreamingRequest paramAnonymous2StreamingRequest)
+            {
+              AppMethodBeat.i(76495);
+              paramAnonymous2StreamingRequest = new FileDataSink(CacheDataSource.Factory.2.this.val$bufferFile.getAbsolutePath());
+              AppMethodBeat.o(76495);
+              return paramAnonymous2StreamingRequest;
+            }
+            
+            protected IDataSource createUpStream(StreamingRequest paramAnonymous2StreamingRequest)
+            {
+              AppMethodBeat.i(76494);
+              paramAnonymous2StreamingRequest = new HttpDataSource(paramAnonymous2StreamingRequest.uri, paramAnonymous2StreamingRequest.headers, new DefaultMediaHTTPService());
+              AppMethodBeat.o(76494);
+              return paramAnonymous2StreamingRequest;
+            }
+          };
+          AppMethodBeat.o(76545);
+          return paramAnonymousListener;
+        }
+      };
+      AppMethodBeat.o(76503);
+      return paramFile;
+    }
+    
+    public static CacheDataSource createFromLoader(File paramFile, Loader.Factory paramFactory)
+    {
+      AppMethodBeat.i(76498);
+      paramFile = new CacheDataSource(new FileDataSource(paramFile.getAbsolutePath()), paramFactory);
+      AppMethodBeat.o(76498);
+      return paramFile;
+    }
+    
+    public static CacheDataSource createFromUri(File paramFile, Uri paramUri)
+    {
+      AppMethodBeat.i(76501);
+      paramFile = createFromUriLoader(paramFile, new DummyUriLoader(paramUri));
+      AppMethodBeat.o(76501);
+      return paramFile;
+    }
+    
+    /* Error */
+    public static CacheDataSource createFromUriLoader(UriLoader paramUriLoader, final String paramString)
+    {
+      // Byte code:
+      //   0: ldc 66
+      //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_1
+      //   6: ifnull +64 -> 70
+      //   9: aload_1
+      //   10: invokevirtual 72	java/lang/String:isEmpty	()Z
+      //   13: ifne +57 -> 70
+      //   16: ldc 74
+      //   18: ldc 76
+      //   20: new 40	java/io/File
+      //   23: dup
+      //   24: aload_1
+      //   25: invokespecial 77	java/io/File:<init>	(Ljava/lang/String;)V
+      //   28: invokestatic 81	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;
+      //   31: astore_1
+      //   32: aload_1
+      //   33: invokestatic 85	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$Factory:ensureFile	(Ljava/io/File;)V
+      //   36: aload_1
+      //   37: aload_0
+      //   38: invokestatic 87	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$Factory:createDefaultLoaderFactory	(Ljava/io/File;Lcom/tencent/qqmusic/mediaplayer/upstream/UriLoader;)Lcom/tencent/qqmusic/mediaplayer/upstream/Loader$Factory;
+      //   41: astore_0
+      //   42: new 6	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource
+      //   45: dup
+      //   46: new 9	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$Factory$1
+      //   49: dup
+      //   50: aload_1
+      //   51: invokevirtual 44	java/io/File:getAbsolutePath	()Ljava/lang/String;
+      //   54: aload_1
+      //   55: invokespecial 90	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$Factory$1:<init>	(Ljava/lang/String;Ljava/io/File;)V
+      //   58: aload_0
+      //   59: invokespecial 50	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:<init>	(Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;Lcom/tencent/qqmusic/mediaplayer/upstream/Loader$Factory;)V
+      //   62: astore_0
+      //   63: ldc 66
+      //   65: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   68: aload_0
+      //   69: areturn
+      //   70: ldc 74
+      //   72: ldc 76
+      //   74: invokestatic 93	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+      //   77: astore_1
+      //   78: goto -46 -> 32
+      //   81: astore_0
+      //   82: new 95	com/tencent/qqmusic/mediaplayer/upstream/DataSourceException
+      //   85: dup
+      //   86: bipush 248
+      //   88: ldc 97
+      //   90: aload_0
+      //   91: invokespecial 100	com/tencent/qqmusic/mediaplayer/upstream/DataSourceException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
+      //   94: astore_0
+      //   95: ldc 66
+      //   97: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   100: aload_0
+      //   101: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	102	0	paramUriLoader	UriLoader
+      //   0	102	1	paramString	String
+      // Exception table:
+      //   from	to	target	type
+      //   9	32	81	java/io/IOException
+      //   32	36	81	java/io/IOException
+      //   70	78	81	java/io/IOException
+    }
+    
+    public static CacheDataSource createFromUriLoader(File paramFile, UriLoader paramUriLoader)
+    {
+      AppMethodBeat.i(76500);
+      paramUriLoader = createDefaultLoaderFactory(paramFile, paramUriLoader);
+      paramFile = new CacheDataSource(new FileDataSource(paramFile.getAbsolutePath()), paramUriLoader);
+      AppMethodBeat.o(76500);
+      return paramFile;
+    }
+    
+    private static void ensureFile(File paramFile)
+    {
+      AppMethodBeat.i(76502);
+      paramFile.delete();
+      if (!paramFile.createNewFile())
+      {
+        paramFile = new IOException("failed to create file!");
+        AppMethodBeat.o(76502);
+        throw paramFile;
+      }
+      AppMethodBeat.o(76502);
+    }
+  }
+  
+  public static abstract interface Listener
+    extends TransferListener
+  {
+    public abstract void onBufferEnded();
+    
+    public abstract void onBufferStarted(long paramLong);
+    
+    public abstract long onStreamingError(IOException paramIOException);
+    
+    public abstract void onStreamingFinished();
+    
+    public abstract void onUpStreamTransfer(long paramLong1, long paramLong2);
+  }
+  
+  class LoaderListener
+    implements Loader.Listener
+  {
+    private long loadedPosition = -9223372036854775808L;
+    
+    private LoaderListener() {}
+    
+    /* Error */
+    public void onLoadCancelled(boolean paramBoolean)
+    {
+      // Byte code:
+      //   0: aload_0
+      //   1: monitorenter
+      //   2: ldc 33
+      //   4: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   7: ldc 41
+      //   9: ldc 43
+      //   11: iload_1
+      //   12: invokestatic 49	java/lang/String:valueOf	(Z)Ljava/lang/String;
+      //   15: invokevirtual 53	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+      //   18: invokestatic 58	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   21: iload_1
+      //   22: ifne +46 -> 68
+      //   25: aload_0
+      //   26: getfield 17	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$LoaderListener:this$0	Lcom/tencent/qqmusic/mediaplayer/upstream/CacheDataSource;
+      //   29: invokestatic 62	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:access$300	(Lcom/tencent/qqmusic/mediaplayer/upstream/CacheDataSource;)Z
+      //   32: ifne +13 -> 45
+      //   35: aload_0
+      //   36: getfield 17	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$LoaderListener:this$0	Lcom/tencent/qqmusic/mediaplayer/upstream/CacheDataSource;
+      //   39: invokestatic 66	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:access$400	(Lcom/tencent/qqmusic/mediaplayer/upstream/CacheDataSource;)Lcom/tencent/qqmusic/mediaplayer/DataRangeTracker;
+      //   42: invokevirtual 71	com/tencent/qqmusic/mediaplayer/DataRangeTracker:abandonLock	()V
+      //   45: ldc 33
+      //   47: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   50: aload_0
+      //   51: monitorexit
+      //   52: return
+      //   53: astore_2
+      //   54: aload_0
+      //   55: new 76	java/io/IOException
+      //   58: dup
+      //   59: ldc 78
+      //   61: aload_2
+      //   62: invokespecial 81	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+      //   65: invokevirtual 85	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$LoaderListener:onLoadError	(Ljava/io/IOException;)V
+      //   68: aload_0
+      //   69: getfield 17	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$LoaderListener:this$0	Lcom/tencent/qqmusic/mediaplayer/upstream/CacheDataSource;
+      //   72: invokestatic 66	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:access$400	(Lcom/tencent/qqmusic/mediaplayer/upstream/CacheDataSource;)Lcom/tencent/qqmusic/mediaplayer/DataRangeTracker;
+      //   75: invokevirtual 71	com/tencent/qqmusic/mediaplayer/DataRangeTracker:abandonLock	()V
+      //   78: ldc 33
+      //   80: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   83: goto -33 -> 50
+      //   86: astore_2
+      //   87: aload_0
+      //   88: monitorexit
+      //   89: aload_2
+      //   90: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	91	0	this	LoaderListener
+      //   0	91	1	paramBoolean	boolean
+      //   53	9	2	localIllegalStateException	IllegalStateException
+      //   86	4	2	localObject	Object
+      // Exception table:
+      //   from	to	target	type
+      //   25	45	53	java/lang/IllegalStateException
+      //   2	21	86	finally
+      //   25	45	86	finally
+      //   45	50	86	finally
+      //   54	68	86	finally
+      //   68	83	86	finally
+    }
+    
+    public void onLoadCompleted()
+    {
+      AppMethodBeat.i(76566);
+      CacheDataSource.access$502(CacheDataSource.this, -9223372036854775808L);
+      CacheDataSource.access$602(CacheDataSource.this, null);
+      CacheDataSource.access$702(CacheDataSource.this, true);
+      CacheDataSource.this.cachedDataTracker.abandonLock();
+      if (CacheDataSource.this.listener != null) {
+        CacheDataSource.this.listener.onStreamingFinished();
+      }
+      AppMethodBeat.o(76566);
+    }
+    
+    public void onLoadError(IOException paramIOException)
+    {
+      AppMethodBeat.i(76568);
+      Logger.e("CacheDataSource", "[onLoadError] enter.", paramIOException);
+      if (this.loadedPosition == -9223372036854775808L) {}
+      for (long l1 = 0L;; l1 = this.loadedPosition)
+      {
+        CacheDataSource.this.pendingRestartPositionByte = this.loadedPosition;
+        if (CacheDataSource.this.listener == null) {
+          break label139;
+        }
+        long l2 = CacheDataSource.this.listener.onStreamingError(paramIOException);
+        if (l2 < 0L) {
+          break;
+        }
+        CacheDataSource.access$1100(CacheDataSource.this, l1, l2);
+        CacheDataSource.this.pendingRestartPositionByte = -9223372036854775808L;
+        AppMethodBeat.o(76568);
+        return;
+      }
+      CacheDataSource.access$502(CacheDataSource.this, -9223372036854775808L);
+      CacheDataSource.access$602(CacheDataSource.this, null);
+      CacheDataSource.this.cachedDataTracker.abandonLock();
+      AppMethodBeat.o(76568);
+      return;
+      label139:
+      CacheDataSource.access$502(CacheDataSource.this, -9223372036854775808L);
+      CacheDataSource.access$602(CacheDataSource.this, null);
+      CacheDataSource.this.cachedDataTracker.abandonLock();
+      AppMethodBeat.o(76568);
+    }
+    
+    public void onLoadProgress(long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(76567);
+      this.loadedPosition = paramLong2;
+      CacheDataSource.this.cachedDataTracker.addRange(paramLong1, paramLong2, CacheDataSource.this.isWaitingForFirstPiece);
+      Loader localLoader = CacheDataSource.this.loader;
+      CacheDataSource.Listener localListener = CacheDataSource.this.listener;
+      if ((localListener != null) && (localLoader != null))
+      {
+        CacheDataSource.this.cachedDataTracker.setFileTotalSize(localLoader.getUpstreamSize());
+        localListener.onUpStreamTransfer(paramLong2, localLoader.getUpstreamSize());
+      }
+      AppMethodBeat.o(76567);
+    }
   }
 }
 

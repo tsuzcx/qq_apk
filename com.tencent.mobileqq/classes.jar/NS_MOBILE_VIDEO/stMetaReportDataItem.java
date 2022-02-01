@@ -10,7 +10,7 @@ public final class stMetaReportDataItem
   extends JceStruct
 {
   static Map<String, String> cache_strData = new HashMap();
-  public Map<String, String> strData;
+  public Map<String, String> strData = null;
   
   static
   {
@@ -36,7 +36,7 @@ public final class stMetaReportDataItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.stMetaReportDataItem
  * JD-Core Version:    0.7.0.1
  */

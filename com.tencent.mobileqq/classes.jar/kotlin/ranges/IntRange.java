@@ -25,7 +25,19 @@ public final class IntRange
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof IntRange)) && (((isEmpty()) && (((IntRange)paramObject).isEmpty())) || ((getFirst() == ((IntRange)paramObject).getFirst()) && (getLast() == ((IntRange)paramObject).getLast())));
+    if ((paramObject instanceof IntRange)) {
+      if ((!isEmpty()) || (!((IntRange)paramObject).isEmpty()))
+      {
+        int i = getFirst();
+        paramObject = (IntRange)paramObject;
+        if ((i != paramObject.getFirst()) || (getLast() != paramObject.getLast())) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   @NotNull
@@ -56,12 +68,16 @@ public final class IntRange
   @NotNull
   public String toString()
   {
-    return getFirst() + ".." + getLast();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getFirst());
+    localStringBuilder.append("..");
+    localStringBuilder.append(getLast());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.IntRange
  * JD-Core Version:    0.7.0.1
  */

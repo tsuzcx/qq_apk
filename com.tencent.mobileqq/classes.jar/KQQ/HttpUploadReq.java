@@ -9,8 +9,8 @@ public final class HttpUploadReq
 {
   static byte[] cache_vEncryptUploadInfo;
   static byte[] cache_vFileData;
-  public byte[] vEncryptUploadInfo;
-  public byte[] vFileData;
+  public byte[] vEncryptUploadInfo = null;
+  public byte[] vFileData = null;
   
   public HttpUploadReq() {}
   
@@ -44,7 +44,7 @@ public final class HttpUploadReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.HttpUploadReq
  * JD-Core Version:    0.7.0.1
  */

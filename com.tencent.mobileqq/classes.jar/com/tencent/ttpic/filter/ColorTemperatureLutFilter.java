@@ -29,7 +29,8 @@ public class ColorTemperatureLutFilter
   {
     Bitmap localBitmap1 = FeatureUtils.getEncryptedBitmap("assets://raw/sh/", FeatureManager.getResourceDir(), "color_cold_lut.png");
     Bitmap localBitmap2 = FeatureUtils.getEncryptedBitmap("assets://raw/sh/", FeatureManager.getResourceDir(), "color_warm_lut.png");
-    GlUtil.glGenTextures(this.mTextures.length, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     GlUtil.loadTexture(this.mTextures[0], localBitmap1);
     GlUtil.loadTexture(this.mTextures[1], localBitmap2);
     if (BitmapUtils.isLegal(localBitmap1)) {
@@ -43,7 +44,8 @@ public class ColorTemperatureLutFilter
   
   public void clearGLSLSelf()
   {
-    GlUtil.glDeleteTextures(this.mTextures.length, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    GlUtil.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     super.clearGLSLSelf();
   }
   
@@ -79,7 +81,7 @@ public class ColorTemperatureLutFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.ColorTemperatureLutFilter
  * JD-Core Version:    0.7.0.1
  */

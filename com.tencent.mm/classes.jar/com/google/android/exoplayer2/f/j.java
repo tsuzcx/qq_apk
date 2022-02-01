@@ -14,211 +14,163 @@ public final class j
   extends com.google.android.exoplayer2.a
   implements Handler.Callback
 {
-  private final k aMM;
-  private final Handler aNH;
-  private boolean aNl;
-  private boolean aNm;
-  private final j.a aTM;
-  private final g aTN;
-  private int aTO;
-  private Format aTP;
-  private e aTQ;
-  private h aTR;
-  private i aTS;
-  private i aTT;
-  private int aTU;
+  private final k cWD;
+  private boolean cXc;
+  private boolean cXd;
+  private final Handler cXy;
+  private final a ddH;
+  private final g ddI;
+  private int ddJ;
+  private Format ddK;
+  private e ddL;
+  private h ddM;
+  private i ddN;
+  private i ddO;
+  private int ddP;
   
-  public j(j.a parama, Looper paramLooper)
+  public j(a parama, Looper paramLooper)
   {
-    this(parama, paramLooper, g.aTK);
+    this(parama, paramLooper, g.ddF);
   }
   
-  private j(j.a parama, Looper paramLooper, g paramg)
+  private j(a parama, Looper paramLooper, g paramg)
   {
     super(3);
-    AppMethodBeat.i(95657);
-    this.aTM = ((j.a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    AppMethodBeat.i(92825);
+    this.ddH = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
     if (paramLooper == null) {}
     for (parama = null;; parama = new Handler(paramLooper, this))
     {
-      this.aNH = parama;
-      this.aTN = paramg;
-      this.aMM = new k();
-      AppMethodBeat.o(95657);
+      this.cXy = parama;
+      this.ddI = paramg;
+      this.cWD = new k();
+      AppMethodBeat.o(92825);
       return;
     }
   }
   
-  private void pI()
+  private void TE()
   {
-    AppMethodBeat.i(95663);
-    this.aTR = null;
-    this.aTU = -1;
-    if (this.aTS != null)
+    AppMethodBeat.i(92831);
+    this.ddM = null;
+    this.ddP = -1;
+    if (this.ddN != null)
     {
-      this.aTS.release();
-      this.aTS = null;
+      this.ddN.release();
+      this.ddN = null;
     }
-    if (this.aTT != null)
+    if (this.ddO != null)
     {
-      this.aTT.release();
-      this.aTT = null;
+      this.ddO.release();
+      this.ddO = null;
     }
-    AppMethodBeat.o(95663);
+    AppMethodBeat.o(92831);
   }
   
-  private void pJ()
+  private void TF()
   {
-    AppMethodBeat.i(95664);
-    pI();
-    this.aTQ.release();
-    this.aTQ = null;
-    this.aTO = 0;
-    AppMethodBeat.o(95664);
+    AppMethodBeat.i(92833);
+    releaseDecoder();
+    this.ddL = this.ddI.k(this.ddK);
+    AppMethodBeat.o(92833);
   }
   
-  private void pK()
+  private long TG()
   {
-    AppMethodBeat.i(95665);
-    pJ();
-    this.aTQ = this.aTN.k(this.aTP);
-    AppMethodBeat.o(95665);
-  }
-  
-  private long pL()
-  {
-    AppMethodBeat.i(95666);
-    if ((this.aTU == -1) || (this.aTU >= this.aTS.pH()))
+    AppMethodBeat.i(92834);
+    if ((this.ddP == -1) || (this.ddP >= this.ddN.TD()))
     {
-      AppMethodBeat.o(95666);
+      AppMethodBeat.o(92834);
       return 9223372036854775807L;
     }
-    long l = this.aTS.dT(this.aTU);
-    AppMethodBeat.o(95666);
+    long l = this.ddN.in(this.ddP);
+    AppMethodBeat.o(92834);
     return l;
   }
   
-  private void v(List<a> paramList)
+  private void ak(List<a> paramList)
   {
-    AppMethodBeat.i(95667);
-    if (this.aNH != null)
+    AppMethodBeat.i(92835);
+    if (this.cXy != null)
     {
-      this.aNH.obtainMessage(0, paramList).sendToTarget();
-      AppMethodBeat.o(95667);
+      this.cXy.obtainMessage(0, paramList).sendToTarget();
+      AppMethodBeat.o(92835);
       return;
     }
-    w(paramList);
-    AppMethodBeat.o(95667);
+    al(paramList);
+    AppMethodBeat.o(92835);
   }
   
-  private void w(List<a> paramList)
+  private void al(List<a> paramList)
   {
-    AppMethodBeat.i(95669);
-    this.aTM.r(paramList);
-    AppMethodBeat.o(95669);
+    AppMethodBeat.i(92837);
+    this.ddH.ag(paramList);
+    AppMethodBeat.o(92837);
   }
   
-  public final void a(Format[] paramArrayOfFormat, long paramLong)
+  private void releaseDecoder()
   {
-    AppMethodBeat.i(95659);
-    this.aTP = paramArrayOfFormat[0];
-    if (this.aTQ != null)
+    AppMethodBeat.i(92832);
+    TE();
+    this.ddL.release();
+    this.ddL = null;
+    this.ddJ = 0;
+    AppMethodBeat.o(92832);
+  }
+  
+  public final void B(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(92829);
+    if (this.cXd)
     {
-      this.aTO = 1;
-      AppMethodBeat.o(95659);
+      AppMethodBeat.o(92829);
       return;
     }
-    this.aTQ = this.aTN.k(this.aTP);
-    AppMethodBeat.o(95659);
-  }
-  
-  public final int b(Format paramFormat)
-  {
-    AppMethodBeat.i(95658);
-    if (this.aTN.g(paramFormat))
-    {
-      AppMethodBeat.o(95658);
-      return 4;
-    }
-    if (com.google.android.exoplayer2.i.j.aI(paramFormat.awK))
-    {
-      AppMethodBeat.o(95658);
-      return 1;
-    }
-    AppMethodBeat.o(95658);
-    return 0;
-  }
-  
-  public final void b(long paramLong, boolean paramBoolean)
-  {
-    AppMethodBeat.i(95660);
-    v(Collections.emptyList());
-    this.aNl = false;
-    this.aNm = false;
-    if (this.aTO != 0)
-    {
-      pK();
-      AppMethodBeat.o(95660);
-      return;
-    }
-    pI();
-    this.aTQ.flush();
-    AppMethodBeat.o(95660);
-  }
-  
-  public final void f(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(95661);
-    if (this.aNm)
-    {
-      AppMethodBeat.o(95661);
-      return;
-    }
-    if (this.aTT == null) {
-      this.aTQ.aa(paramLong1);
+    if (this.ddO == null) {
+      this.ddL.cy(paramLong1);
     }
     Object localObject;
     try
     {
-      this.aTT = ((i)this.aTQ.nH());
-      if (this.state != 2)
+      this.ddO = ((i)this.ddL.RB());
+      if (getState() != 2)
       {
-        AppMethodBeat.o(95661);
+        AppMethodBeat.o(92829);
         return;
       }
     }
     catch (f localf1)
     {
-      localObject = com.google.android.exoplayer2.e.b(localf1, this.index);
-      AppMethodBeat.o(95661);
+      localObject = com.google.android.exoplayer2.e.b(localf1, getIndex());
+      AppMethodBeat.o(92829);
       throw ((Throwable)localObject);
     }
-    if (this.aTS != null)
+    if (this.ddN != null)
     {
-      paramLong2 = pL();
+      paramLong2 = TG();
       for (i = 0; paramLong2 <= paramLong1; i = 1)
       {
-        this.aTU += 1;
-        paramLong2 = pL();
+        this.ddP += 1;
+        paramLong2 = TG();
       }
     }
     int i = 0;
     int j = i;
-    if (this.aTT != null)
+    if (this.ddO != null)
     {
-      if (!this.aTT.nE()) {
+      if (!this.ddO.Ry()) {
         break label239;
       }
       j = i;
       if (i == 0)
       {
         j = i;
-        if (pL() == 9223372036854775807L)
+        if (TG() == 9223372036854775807L)
         {
-          if (this.aTO != 2) {
+          if (this.ddJ != 2) {
             break label223;
           }
-          pK();
+          TF();
           j = i;
         }
       }
@@ -226,97 +178,159 @@ public final class j
     for (;;)
     {
       if (j != 0) {
-        v(this.aTS.ac(paramLong1));
+        ak(this.ddN.cA(paramLong1));
       }
-      if (this.aTO != 2) {
+      if (this.ddJ != 2) {
         break;
       }
-      AppMethodBeat.o(95661);
+      AppMethodBeat.o(92829);
       return;
       label223:
-      pI();
-      this.aNm = true;
+      TE();
+      this.cXd = true;
       j = i;
       continue;
       label239:
       j = i;
-      if (this.aTT.aAT <= paramLong1)
+      if (this.ddO.timeUs <= paramLong1)
       {
-        if (this.aTS != null) {
-          this.aTS.release();
+        if (this.ddN != null) {
+          this.ddN.release();
         }
-        this.aTS = this.aTT;
-        this.aTT = null;
-        this.aTU = this.aTS.ab(paramLong1);
+        this.ddN = this.ddO;
+        this.ddO = null;
+        this.ddP = this.ddN.cz(paramLong1);
         j = 1;
       }
     }
     try
     {
-      i = a(this.aMM, this.aTR, false);
+      i = a(this.cWD, this.ddM, false);
       if (i == -4) {
-        if (this.aTR.nE())
+        if (this.ddM.Ry())
         {
-          this.aNl = true;
-          this.aTQ.P(this.aTR);
-          this.aTR = null;
+          this.cXc = true;
+          this.ddL.bg(this.ddM);
+          this.ddM = null;
         }
       }
       com.google.android.exoplayer2.e locale;
       while (i != -3) {
         for (;;)
         {
-          if (this.aNl) {
+          if (this.cXc) {
             break label508;
           }
-          if (this.aTR == null)
+          if (this.ddM == null)
           {
-            this.aTR = ((h)this.aTQ.nG());
-            localObject = this.aTR;
+            this.ddM = ((h)this.ddL.RA());
+            localObject = this.ddM;
             if (localObject == null)
             {
-              AppMethodBeat.o(95661);
+              AppMethodBeat.o(92829);
               return;
             }
           }
-          if (this.aTO != 1) {
+          if (this.ddJ != 1) {
             break;
           }
-          this.aTR.flags = 4;
-          this.aTQ.P(this.aTR);
-          this.aTR = null;
-          this.aTO = 2;
-          AppMethodBeat.o(95661);
+          this.ddM.flags = 4;
+          this.ddL.bg(this.ddM);
+          this.ddM = null;
+          this.ddJ = 2;
+          AppMethodBeat.o(92829);
           return;
-          this.aTR.awY = this.aMM.axd.awY;
-          this.aTR.nJ();
+          this.ddM.cGY = this.cWD.cHc.cGY;
+          this.ddM.RD();
         }
       }
     }
     catch (f localf2)
     {
-      locale = com.google.android.exoplayer2.e.b(localf2, this.index);
-      AppMethodBeat.o(95661);
+      locale = com.google.android.exoplayer2.e.b(localf2, getIndex());
+      AppMethodBeat.o(92829);
       throw locale;
     }
-    AppMethodBeat.o(95661);
+    AppMethodBeat.o(92829);
     return;
     label508:
-    AppMethodBeat.o(95661);
+    AppMethodBeat.o(92829);
+  }
+  
+  public final boolean QU()
+  {
+    return this.cXd;
+  }
+  
+  public final void Qw()
+  {
+    AppMethodBeat.i(92830);
+    this.ddK = null;
+    ak(Collections.emptyList());
+    releaseDecoder();
+    AppMethodBeat.o(92830);
+  }
+  
+  public final void a(Format[] paramArrayOfFormat, long paramLong)
+  {
+    AppMethodBeat.i(92827);
+    this.ddK = paramArrayOfFormat[0];
+    if (this.ddL != null)
+    {
+      this.ddJ = 1;
+      AppMethodBeat.o(92827);
+      return;
+    }
+    this.ddL = this.ddI.k(this.ddK);
+    AppMethodBeat.o(92827);
+  }
+  
+  public final int b(Format paramFormat)
+  {
+    AppMethodBeat.i(92826);
+    if (this.ddI.g(paramFormat))
+    {
+      AppMethodBeat.o(92826);
+      return 4;
+    }
+    if (com.google.android.exoplayer2.i.j.dg(paramFormat.cGN))
+    {
+      AppMethodBeat.o(92826);
+      return 1;
+    }
+    AppMethodBeat.o(92826);
+    return 0;
+  }
+  
+  public final void f(long paramLong, boolean paramBoolean)
+  {
+    AppMethodBeat.i(92828);
+    ak(Collections.emptyList());
+    this.cXc = false;
+    this.cXd = false;
+    if (this.ddJ != 0)
+    {
+      TF();
+      AppMethodBeat.o(92828);
+      return;
+    }
+    TE();
+    this.ddL.flush();
+    AppMethodBeat.o(92828);
   }
   
   public final boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(95668);
+    AppMethodBeat.i(92836);
     switch (paramMessage.what)
     {
     default: 
       paramMessage = new IllegalStateException();
-      AppMethodBeat.o(95668);
+      AppMethodBeat.o(92836);
       throw paramMessage;
     }
-    w((List)paramMessage.obj);
-    AppMethodBeat.o(95668);
+    al((List)paramMessage.obj);
+    AppMethodBeat.o(92836);
     return true;
   }
   
@@ -325,23 +339,14 @@ public final class j
     return true;
   }
   
-  public final void mF()
+  public static abstract interface a
   {
-    AppMethodBeat.i(95662);
-    this.aTP = null;
-    v(Collections.emptyList());
-    pJ();
-    AppMethodBeat.o(95662);
-  }
-  
-  public final boolean nd()
-  {
-    return this.aNm;
+    public abstract void ag(List<a> paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.j
  * JD-Core Version:    0.7.0.1
  */

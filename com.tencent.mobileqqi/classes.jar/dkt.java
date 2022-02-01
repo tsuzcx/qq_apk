@@ -1,52 +1,26 @@
-import android.text.TextUtils;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.StrangerManageActivity;
-import com.tencent.mobileqq.activity.StrangerManageActivity.StrangeManagerListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class dkt
-  extends FriendListObserver
+  implements View.OnClickListener
 {
   public dkt(StrangerManageActivity paramStrangerManageActivity) {}
   
-  protected void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.b.a().equals(paramString)) {
-      return;
-    }
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    if (i >= 0)
+    paramView = this.a;
+    if (this.a.a == null)
     {
-      if (TextUtils.equals(((Stranger)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, paramString)) {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
+      this.a.a = ((ActionSheet)ActionSheetHelper.a(paramView, null));
+      this.a.a.a(2131562553);
+      this.a.a.a(2131561964, 3);
+      this.a.a.d(2131561746);
+      this.a.a.a(paramView);
     }
-    else
-    {
-      EntityManager localEntityManager = this.a.b.a().createEntityManager();
-      paramString = (Stranger)localEntityManager.a(Stranger.class, paramString);
-      if (paramString != null) {
-        localEntityManager.b(paramString);
-      }
-      paramString = StrangerManageActivity.c(this.a);
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        break label155;
-      }
-    }
-    label155:
-    for (boolean bool = true;; bool = false)
-    {
-      paramString.setEnabled(bool);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityStrangerManageActivity$StrangeManagerListAdapter.notifyDataSetChanged();
-      return;
-      i -= 1;
-      break;
-    }
+    this.a.a.show();
   }
 }
 

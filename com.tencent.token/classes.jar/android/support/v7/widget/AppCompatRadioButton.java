@@ -4,96 +4,91 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.widget.TintableCompoundButton;
-import android.support.v7.appcompat.R.attr;
-import android.support.v7.content.res.AppCompatResources;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
+import com.tencent.token.gq;
+import com.tencent.token.hg.a;
+import com.tencent.token.hi;
+import com.tencent.token.ix;
+import com.tencent.token.jd;
+import com.tencent.token.jt;
 
 public class AppCompatRadioButton
   extends RadioButton
-  implements TintableCompoundButton
+  implements gq
 {
-  private final AppCompatCompoundButtonHelper mCompoundButtonHelper = new AppCompatCompoundButtonHelper(this);
-  private final AppCompatTextHelper mTextHelper;
-  
-  public AppCompatRadioButton(Context paramContext)
-  {
-    this(paramContext, null);
-  }
+  private final ix a = new ix(this);
+  private final jd b;
   
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.radioButtonStyle);
+    this(paramContext, paramAttributeSet, hg.a.radioButtonStyle);
   }
   
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
-    this.mCompoundButtonHelper.loadFromAttributes(paramAttributeSet, paramInt);
-    this.mTextHelper = new AppCompatTextHelper(this);
-    this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
+    this.a.a(paramAttributeSet, paramInt);
+    this.b = new jd(this);
+    this.b.a(paramAttributeSet, paramInt);
   }
   
   public int getCompoundPaddingLeft()
   {
     int j = super.getCompoundPaddingLeft();
+    ix localix = this.a;
     int i = j;
-    if (this.mCompoundButtonHelper != null) {
-      i = this.mCompoundButtonHelper.getCompoundPaddingLeft(j);
+    if (localix != null) {
+      i = localix.a(j);
     }
     return i;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportButtonTintList()
   {
-    if (this.mCompoundButtonHelper != null) {
-      return this.mCompoundButtonHelper.getSupportButtonTintList();
+    ix localix = this.a;
+    if (localix != null) {
+      return localix.a;
     }
     return null;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    if (this.mCompoundButtonHelper != null) {
-      return this.mCompoundButtonHelper.getSupportButtonTintMode();
+    ix localix = this.a;
+    if (localix != null) {
+      return localix.b;
     }
     return null;
   }
   
-  public void setButtonDrawable(@DrawableRes int paramInt)
+  public void setButtonDrawable(int paramInt)
   {
-    setButtonDrawable(AppCompatResources.getDrawable(getContext(), paramInt));
+    setButtonDrawable(hi.b(getContext(), paramInt));
   }
   
   public void setButtonDrawable(Drawable paramDrawable)
   {
     super.setButtonDrawable(paramDrawable);
-    if (this.mCompoundButtonHelper != null) {
-      this.mCompoundButtonHelper.onSetButtonDrawable();
+    paramDrawable = this.a;
+    if (paramDrawable != null) {
+      paramDrawable.a();
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportButtonTintList(@Nullable ColorStateList paramColorStateList)
+  public void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    if (this.mCompoundButtonHelper != null) {
-      this.mCompoundButtonHelper.setSupportButtonTintList(paramColorStateList);
+    ix localix = this.a;
+    if (localix != null) {
+      localix.a(paramColorStateList);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportButtonTintMode(@Nullable PorterDuff.Mode paramMode)
+  public void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.mCompoundButtonHelper != null) {
-      this.mCompoundButtonHelper.setSupportButtonTintMode(paramMode);
+    ix localix = this.a;
+    if (localix != null) {
+      localix.a(paramMode);
     }
   }
 }

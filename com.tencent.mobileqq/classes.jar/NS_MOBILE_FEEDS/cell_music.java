@@ -8,15 +8,15 @@ public final class cell_music
   extends JceStruct
 {
   public String coverurl = "";
-  public int height;
+  public int height = 0;
   public String musicMId = "";
   public String musicMUrl = "";
   public String musicType = "";
   public String musicid = "";
-  public int musictime;
+  public int musictime = 0;
   public String musicurl = "";
   public String title = "";
-  public int width;
+  public int width = 0;
   
   public cell_music() {}
   
@@ -50,35 +50,42 @@ public final class cell_music
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.musicid != null) {
-      paramJceOutputStream.write(this.musicid, 0);
+    String str = this.musicid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.musicurl != null) {
-      paramJceOutputStream.write(this.musicurl, 1);
+    str = this.musicurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.coverurl != null) {
-      paramJceOutputStream.write(this.coverurl, 2);
+    str = this.coverurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.width, 3);
     paramJceOutputStream.write(this.height, 4);
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 5);
+    str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.musictime, 6);
-    if (this.musicMId != null) {
-      paramJceOutputStream.write(this.musicMId, 7);
+    str = this.musicMId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.musicType != null) {
-      paramJceOutputStream.write(this.musicType, 8);
+    str = this.musicType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.musicMUrl != null) {
-      paramJceOutputStream.write(this.musicMUrl, 9);
+    str = this.musicMUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_music
  * JD-Core Version:    0.7.0.1
  */

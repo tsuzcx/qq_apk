@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class group_activity_info$GroupActInfo
   extends MessageMicro<GroupActInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 64 }, new String[] { "act_id", "title", "summary", "url", "small_pic", "big_pic", "start_time", "end_time" }, new Object[] { Long.valueOf(0L), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0) }, GroupActInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field act_id = PBField.initUInt64(0L);
   public final PBStringField big_pic = PBField.initString("");
   public final PBUInt32Field end_time = PBField.initUInt32(0);
@@ -19,10 +19,16 @@ public final class group_activity_info$GroupActInfo
   public final PBStringField summary = PBField.initString("");
   public final PBStringField title = PBField.initString("");
   public final PBStringField url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 56, 64 }, new String[] { "act_id", "title", "summary", "url", "small_pic", "big_pic", "start_time", "end_time" }, new Object[] { Long.valueOf(0L), "", "", "", "", "", localInteger, localInteger }, GroupActInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.troop.group_activity_info.GroupActInfo
  * JD-Core Version:    0.7.0.1
  */

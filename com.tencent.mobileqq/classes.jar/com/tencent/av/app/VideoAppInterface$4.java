@@ -1,31 +1,25 @@
 package com.tencent.av.app;
 
-import com.tencent.av.gaudio.AVNotifyCenter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import lrq;
 
 class VideoAppInterface$4
-  implements Runnable
+  extends BroadcastReceiver
 {
   VideoAppInterface$4(VideoAppInterface paramVideoAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (VideoAppInterface.a(this.this$0).a())
-    {
-      String str = VideoAppInterface.a(this.this$0).a();
-      AVNotifyCenter.a(this.this$0.getCurrentAccountUin(), str);
-      VideoAppInterface.a(this.this$0).a();
-      if (QLog.isColorLevel()) {
-        QLog.i(VideoAppInterface.c(), 2, "saveBeautyConfig, config[" + str + "]");
-      }
-    }
-    VideoAppInterface.b(this.this$0, null);
+    paramContext = paramIntent.getAction();
+    QLog.d(VideoAppInterface.C(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    System.exit(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface.4
  * JD-Core Version:    0.7.0.1
  */

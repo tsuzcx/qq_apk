@@ -1,7 +1,6 @@
 package com.tencent.thumbplayer.core.downloadproxy.api;
 
 import android.content.Context;
-import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPProxyAdapterManager;
 import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils;
@@ -10,17 +9,18 @@ public class TPDownloadProxyHelper
 {
   private static final String FILE_NAME = "TPDownloadProxyHelper";
   private static Context applicationContext;
-  private static ITPOfflineVinfoAdapter offlineVinfoAdapter = null;
+  private static ITPOfflineVinfoAdapter offlineVinfoAdapter;
   
   public static String checkVideoStatus(String paramString1, String paramString2)
   {
     if (!TPDownloadProxyFactory.canUseService()) {
       return "";
     }
-    if (offlineVinfoAdapter != null) {
-      return offlineVinfoAdapter.checkVideoStatus(paramString1, paramString2);
+    ITPOfflineVinfoAdapter localITPOfflineVinfoAdapter = offlineVinfoAdapter;
+    if (localITPOfflineVinfoAdapter != null) {
+      return localITPOfflineVinfoAdapter.checkVideoStatus(paramString1, paramString2);
     }
-    return TPProxyAdapterManager.getInstance().checkVideoStatus(paramString1, paramString2);
+    return "";
   }
   
   public static Context getContext()
@@ -40,7 +40,10 @@ public class TPDownloadProxyHelper
     }
     catch (Throwable paramString1)
     {
-      TPDLProxyLog.e("TPDownloadProxyHelper", 0, "tpdlnative", "get exttag failed, error:" + paramString1.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append("get exttag failed, error:");
+      paramString2.append(paramString1.toString());
+      TPDLProxyLog.e("TPDownloadProxyHelper", 0, "tpdlnative", paramString2.toString());
     }
     return "";
   }
@@ -52,15 +55,11 @@ public class TPDownloadProxyHelper
   
   public static int getRecordDuration(String paramString1, String paramString2)
   {
-    if (offlineVinfoAdapter != null) {
-      return offlineVinfoAdapter.getRecordDuration(paramString1, paramString2);
+    ITPOfflineVinfoAdapter localITPOfflineVinfoAdapter = offlineVinfoAdapter;
+    if (localITPOfflineVinfoAdapter != null) {
+      return localITPOfflineVinfoAdapter.getRecordDuration(paramString1, paramString2);
     }
-    return TPProxyAdapterManager.getInstance().getRecordDuration(paramString1, paramString2);
-  }
-  
-  public static boolean isReadyForDownload()
-  {
-    return TPDownloadProxyFactory.isReadyForDownload();
+    return -1;
   }
   
   public static boolean isReadyForPlay()
@@ -83,19 +82,29 @@ public class TPDownloadProxyHelper
     offlineVinfoAdapter = paramITPOfflineVinfoAdapter;
   }
   
-  public static void setTPProxyAdapter(ITPProxyAdapter paramITPProxyAdapter)
-  {
-    TPProxyAdapterManager.getInstance().setProxyAdapter(paramITPProxyAdapter);
-  }
+  public static void setTPProxyAdapter(ITPProxyAdapter paramITPProxyAdapter) {}
   
   public static void setUseService(boolean paramBoolean)
   {
     TPDownloadProxyFactory.setUseService(paramBoolean);
   }
   
-  public static void updateProxyMessage(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
+  public static void setUserData(String paramString, Object paramObject)
   {
-    TPProxyAdapterManager.getInstance().updateProxyMessage(paramInt, paramObject1, paramObject2, paramObject3, paramObject4);
+    if (TPDownloadProxyNative.getInstance().isNativeLoaded()) {
+      try
+      {
+        TPDownloadProxyNative.getInstance().setUserData(paramString, paramObject.toString());
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        paramObject = new StringBuilder();
+        paramObject.append("setUserData failed, error:");
+        paramObject.append(paramString.toString());
+        TPDLProxyLog.e("TPDownloadProxyHelper", 0, "tpdlnative", paramObject.toString());
+      }
+    }
   }
   
   public static long verifyOfflineCacheSync(String paramString1, int paramInt, String paramString2, String paramString3)
@@ -110,14 +119,17 @@ public class TPDownloadProxyHelper
     }
     catch (Throwable paramString1)
     {
-      TPDLProxyLog.e("TPDownloadProxyHelper", 0, "tpdlnative", "verify offline cache failed, error:" + paramString1.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append("verify offline cache failed, error:");
+      paramString2.append(paramString1.toString());
+      TPDLProxyLog.e("TPDownloadProxyHelper", 0, "tpdlnative", paramString2.toString());
     }
     return -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyHelper
  * JD-Core Version:    0.7.0.1
  */

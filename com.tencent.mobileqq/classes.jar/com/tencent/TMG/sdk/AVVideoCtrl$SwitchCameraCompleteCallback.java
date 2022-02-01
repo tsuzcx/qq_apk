@@ -8,12 +8,15 @@ public class AVVideoCtrl$SwitchCameraCompleteCallback
   
   protected void onComplete(int paramInt1, int paramInt2)
   {
-    Log.d("SdkJni", "SwitchCameraCompleteCallback.OnComplete. result = " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SwitchCameraCompleteCallback.OnComplete. result = ");
+    localStringBuilder.append(paramInt2);
+    Log.d("SdkJni", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback
  * JD-Core Version:    0.7.0.1
  */

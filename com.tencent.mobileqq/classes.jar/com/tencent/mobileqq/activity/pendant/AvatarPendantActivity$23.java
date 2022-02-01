@@ -1,13 +1,16 @@
 package com.tencent.mobileqq.activity.pendant;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class AvatarPendantActivity$23
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  AvatarPendantActivity$23(AvatarPendantActivity paramAvatarPendantActivity, String paramString) {}
+  AvatarPendantActivity$23(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AvatarPendantActivity.b(this.this$0, this.a);
+    this.c.a(this.a, false, this.b);
   }
 }
 

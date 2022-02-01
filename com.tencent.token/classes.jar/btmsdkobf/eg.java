@@ -15,7 +15,7 @@ public final class eg
     if (paramString2 == null) {
       str = "(null)";
     }
-    Log.println(paramInt, "TMSDK_" + paramString1, str);
+    Log.println(paramInt, "TMSDK_".concat(String.valueOf(paramString1)), str);
   }
   
   public static void e(String paramString1, String paramString2)

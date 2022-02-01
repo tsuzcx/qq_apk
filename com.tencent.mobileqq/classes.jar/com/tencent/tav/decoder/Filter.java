@@ -7,7 +7,6 @@ import com.tencent.tav.coremedia.TextureInfo;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.util.Arrays;
 
 public class Filter
 {
@@ -100,9 +99,10 @@ public class Filter
     this.triangleVertices.rewind();
     this.triangleVertices.put(new float[] { f1, f2 + f3, f4, f5, f6 + f7, f8 + f9, f10 + f11, f12 });
     GLES20.glGetIntegerv(2978, this.defaultViewport, 0);
-    if (this.frameBuffer != -1)
+    int i = this.frameBuffer;
+    if (i != -1)
     {
-      GLES20.glBindFramebuffer(36160, this.frameBuffer);
+      GLES20.glBindFramebuffer(36160, i);
       GLES20.glGetIntegerv(2978, this.defaultViewport, 0);
       GLES20.glViewport(0, 0, this.rendererWidth, this.rendererHeight);
     }
@@ -111,10 +111,8 @@ public class Filter
     GLES20.glUniformMatrix3fv(this.stMatrixHandle, 1, false, DecoderUtils.toOpenGL2DMatrix(paramMatrix2), 0);
     GLES20.glUniform1f(this.uAlphaHandle, paramFloat);
     prepareDraw(paramTextureInfo, DecoderUtils.toOpenGL2DMatrix(paramMatrix1));
-    int i = this.bgColor;
-    int j = this.bgColor;
-    int k = this.bgColor;
-    GLES20.glClearColor(((i & 0xFF0000) >> 16) / 255.0F, ((j & 0xFF00) >> 8) / 255.0F, (k & 0xFF) / 255.0F, 1.0F);
+    i = this.bgColor;
+    GLES20.glClearColor(((0xFF0000 & i) >> 16) / 255.0F, ((0xFF00 & i) >> 8) / 255.0F, (i & 0xFF) / 255.0F, 1.0F);
     GLES20.glClear(16640);
     GLES20.glDrawArrays(5, 0, 4);
     RenderContext.checkEglError("glDrawArrays");
@@ -122,7 +120,8 @@ public class Filter
     if (this.frameBuffer != -1)
     {
       GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(this.defaultViewport[0], this.defaultViewport[1], this.defaultViewport[2], this.defaultViewport[3]);
+      paramTextureInfo = this.defaultViewport;
+      GLES20.glViewport(paramTextureInfo[0], paramTextureInfo[1], paramTextureInfo[2], paramTextureInfo[3]);
     }
     if (!this.renderForScreen) {
       return this._textureInfo;
@@ -137,15 +136,16 @@ public class Filter
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (paramObject.getClass() != getClass()) {
-        return false;
-      }
-      paramObject = (Filter)paramObject;
-    } while ((this.rendererHeight == paramObject.rendererHeight) && (this.rendererWidth == paramObject.rendererWidth) && (this.renderForScreen == paramObject.renderForScreen));
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
+    paramObject = (Filter)paramObject;
+    if ((this.rendererHeight == paramObject.rendererHeight) && (this.rendererWidth == paramObject.rendererWidth)) {
+      return this.renderForScreen == paramObject.renderForScreen;
+    }
     return false;
   }
   
@@ -172,19 +172,7 @@ public class Filter
   
   public int hashCode()
   {
-    int j = this.program;
-    int k = this.uScreenSizeHandle;
-    int m = this.uTextureSizeHandle;
-    int n = this.uMatrixHandle;
-    int i1 = this.uAlphaHandle;
-    int i2 = this.stMatrixHandle;
-    int i3 = this.aPositionHandle;
-    int i4 = this.rendererWidth;
-    int i5 = this.rendererHeight;
-    if (this.renderForScreen) {}
-    for (int i = 1;; i = 0) {
-      return ((i + (((((((((j + 0) * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31) * 31 + this.frameBuffer) * 31 + Arrays.hashCode(this.defaultViewport);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:632)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:629)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   protected void initShaderForTextureInfo(TextureInfo paramTextureInfo)
@@ -201,51 +189,52 @@ public class Filter
   {
     this.triangleVertices = ByteBuffer.allocateDirect(64).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.program = Program.createProgram(paramString1, paramString2, this.shaderIndexes);
-    if (this.program == 0) {
-      new RuntimeException("failed creating program").printStackTrace();
-    }
-    do
+    int i = this.program;
+    if (i == 0)
     {
+      new RuntimeException("failed creating program").printStackTrace();
       return;
-      this.aPositionHandle = GLES20.glGetAttribLocation(this.program, "aPosition");
-      RenderContext.checkEglError("glGetAttribLocation aPosition");
-      if (this.aPositionHandle == -1)
-      {
-        new RuntimeException("Could not get attribute location for aPosition").printStackTrace();
-        return;
-      }
-      this.uMatrixHandle = GLES20.glGetUniformLocation(this.program, "uMatrix");
-      RenderContext.checkEglError("glGetUniformLocation uMatrix");
-      if (this.uMatrixHandle == -1)
-      {
-        new RuntimeException("Could not get uniform location for uMatrix").printStackTrace();
-        return;
-      }
-      this.uAlphaHandle = GLES20.glGetUniformLocation(this.program, "uAlpha");
-      RenderContext.checkEglError("glGetUniformLocation uAlpha");
-      if (this.uAlphaHandle == -1)
-      {
-        new RuntimeException("Could not get uniform location for uAlpha").printStackTrace();
-        return;
-      }
-      this.stMatrixHandle = GLES20.glGetUniformLocation(this.program, "stMatrix");
-      RenderContext.checkEglError("glGetUniformLocation stMatrix");
-      if (this.stMatrixHandle == -1)
-      {
-        new RuntimeException("Could not get uniform location for stMatrix").printStackTrace();
-        return;
-      }
-      this.uScreenSizeHandle = GLES20.glGetUniformLocation(this.program, "uScreenSize");
-      RenderContext.checkEglError("glGetUniformLocation uScreenSize");
-      if (this.uScreenSizeHandle == -1)
-      {
-        new RuntimeException("Could not get uniform location for uScreenSize").printStackTrace();
-        return;
-      }
-      this.uTextureSizeHandle = GLES20.glGetUniformLocation(this.program, "uTextureSize");
-      RenderContext.checkEglError("glGetUniformLocation uTextureSize");
-    } while (this.uTextureSizeHandle != -1);
-    new RuntimeException("Could not get uniform location for uTextureSize").printStackTrace();
+    }
+    this.aPositionHandle = GLES20.glGetAttribLocation(i, "aPosition");
+    RenderContext.checkEglError("glGetAttribLocation aPosition");
+    if (this.aPositionHandle == -1)
+    {
+      new RuntimeException("Could not get attribute location for aPosition").printStackTrace();
+      return;
+    }
+    this.uMatrixHandle = GLES20.glGetUniformLocation(this.program, "uMatrix");
+    RenderContext.checkEglError("glGetUniformLocation uMatrix");
+    if (this.uMatrixHandle == -1)
+    {
+      new RuntimeException("Could not get uniform location for uMatrix").printStackTrace();
+      return;
+    }
+    this.uAlphaHandle = GLES20.glGetUniformLocation(this.program, "uAlpha");
+    RenderContext.checkEglError("glGetUniformLocation uAlpha");
+    if (this.uAlphaHandle == -1)
+    {
+      new RuntimeException("Could not get uniform location for uAlpha").printStackTrace();
+      return;
+    }
+    this.stMatrixHandle = GLES20.glGetUniformLocation(this.program, "stMatrix");
+    RenderContext.checkEglError("glGetUniformLocation stMatrix");
+    if (this.stMatrixHandle == -1)
+    {
+      new RuntimeException("Could not get uniform location for stMatrix").printStackTrace();
+      return;
+    }
+    this.uScreenSizeHandle = GLES20.glGetUniformLocation(this.program, "uScreenSize");
+    RenderContext.checkEglError("glGetUniformLocation uScreenSize");
+    if (this.uScreenSizeHandle == -1)
+    {
+      new RuntimeException("Could not get uniform location for uScreenSize").printStackTrace();
+      return;
+    }
+    this.uTextureSizeHandle = GLES20.glGetUniformLocation(this.program, "uTextureSize");
+    RenderContext.checkEglError("glGetUniformLocation uTextureSize");
+    if (this.uTextureSizeHandle == -1) {
+      new RuntimeException("Could not get uniform location for uTextureSize").printStackTrace();
+    }
   }
   
   protected void prepareDraw(TextureInfo paramTextureInfo, float[] paramArrayOfFloat)
@@ -264,27 +253,34 @@ public class Filter
   
   public void release()
   {
-    if (this.frameBuffer != -1)
+    int i = this.frameBuffer;
+    if (i != -1)
     {
-      GLES20.glDeleteFramebuffers(1, new int[] { this.frameBuffer }, 0);
+      GLES20.glDeleteFramebuffers(1, new int[] { i }, 0);
       this.frameBuffer = -1;
     }
-    if (this._textureInfo != null)
+    Object localObject = this._textureInfo;
+    if (localObject != null)
     {
-      GLES20.glDeleteTextures(1, new int[] { this._textureInfo.textureID }, 0);
+      GLES20.glDeleteTextures(1, new int[] { ((TextureInfo)localObject).textureID }, 0);
       this._textureInfo = null;
     }
-    if (this.program > 0)
+    i = this.program;
+    if (i > 0)
     {
-      GLES20.glDeleteProgram(this.program);
+      GLES20.glDeleteProgram(i);
       this.program = 0;
     }
-    int i = 0;
-    while (i < this.shaderIndexes.length)
+    i = 0;
+    for (;;)
     {
-      if (this.shaderIndexes[i] > 0)
+      localObject = this.shaderIndexes;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i] > 0)
       {
-        GLES20.glDeleteShader(this.shaderIndexes[i]);
+        GLES20.glDeleteShader(localObject[i]);
         this.shaderIndexes[i] = 0;
       }
       i += 1;
@@ -318,7 +314,7 @@ public class Filter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.Filter
  * JD-Core Version:    0.7.0.1
  */

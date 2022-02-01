@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import aaqp;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.ipc.GdtIPCManager;
 
 class GdtInitializeOnToolProcessStep$1
   implements Runnable
@@ -13,8 +13,11 @@ class GdtInitializeOnToolProcessStep$1
     try
     {
       long l = System.currentTimeMillis();
-      aaqp.a().a(BaseApplicationImpl.getContext());
-      GdtInitializeOnToolProcessStep.a("GdtInitializeOnToolProcessStep", "ipc register durationMillis:" + (System.currentTimeMillis() - l), null);
+      GdtIPCManager.a().a(BaseApplicationImpl.getContext());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ipc register durationMillis:");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      GdtInitializeOnToolProcessStep.a("GdtInitializeOnToolProcessStep", localStringBuilder.toString(), null);
       return;
     }
     catch (Throwable localThrowable)
@@ -25,7 +28,7 @@ class GdtInitializeOnToolProcessStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.GdtInitializeOnToolProcessStep.1
  * JD-Core Version:    0.7.0.1
  */

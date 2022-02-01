@@ -212,7 +212,9 @@ public class AnimationView
     if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister != null) {
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister.e();
     }
+    paramCanvas.save();
     this.jdField_e_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     paramCanvas.restore();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_c_of_type_AndroidGraphicsRect);
   }

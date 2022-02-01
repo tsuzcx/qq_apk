@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/mood_priv" android:background="#ffefeff4" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/albumEdit" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:gravity="center_vertical" android:id="@id/allview" android:background="#ffffffff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="40.0dip" android:text="所有人" />
+                    <ImageView android:id="@id/all_go_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/qzone_icon_img_check" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/all_top_line" android:background="#ffcbcaca" android:layout_width="fill_parent" android:layout_height="1.0px" />
+                </RelativeLayout>
+                <RelativeLayout android:gravity="center_vertical" android:id="@id/friendview" android:background="#ffffffff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="40.0dip" android:text="QQ好友" />
+                    <ImageView android:id="@id/friend_go_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/qzone_icon_img_check" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/friend_top_line" android:background="#ffcbcaca" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="40.0dip" />
+                </RelativeLayout>
+                <RelativeLayout android:gravity="center_vertical" android:id="@id/question_view" android:background="#ffffffff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="40.0dip" android:text="回答问题" />
+                    <ImageView android:id="@id/question_go_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/qzone_icon_img_check" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/question_top_line" android:background="#ffcbcaca" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="40.0dip" />
+                </RelativeLayout>
+                <RelativeLayout android:gravity="center_vertical" android:id="@id/myselfview" android:background="#ffffffff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="40.0dip" android:text="仅自己" />
+                    <ImageView android:id="@id/myself_go_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/qzone_icon_img_check" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/myself_top_line" android:background="#ffcbcaca" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="40.0dip" />
+                    <ImageView android:id="@id/myself_btm_line" android:background="#ffcbcaca" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

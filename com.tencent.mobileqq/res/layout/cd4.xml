@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/a4f" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.richmediabrowser.view.page.DragView android:id="@id/bq8" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.richmediabrowser.view.page.DragGallery android:id="@id/gallery" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </com.tencent.richmediabrowser.view.page.DragView>
-    <RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/g2h" android:visibility="invisible" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/fp" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:id="@id/cs9" android:background="@color/jo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/krm" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/ie" android:layout_width="fill_parent" android:layout_height="130.0dip" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/46" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/krm">
+        <RelativeLayout android:id="@id/cs7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/fi" android:layout_width="69.0dip" android:layout_height="69.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/fz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/fi" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ccffffff" android:ellipsize="end" android:gravity="center" android:id="@id/e4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" android:layout_below="@id/fz" android:layout_centerHorizontal="true" />
+            <Button android:textSize="18.0sp" android:textColor="@color/ai2" android:id="@id/g6" android:background="@drawable/nd" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_below="@id/e4" android:layout_centerHorizontal="true" />
+            <FrameLayout android:id="@id/4p" android:layout_width="fill_parent" android:layout_height="9.0dip" />
+            <FrameLayout android:id="@id/nl3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="9.0dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <include layout="@layout/cdh" />
+    <FrameLayout android:id="@id/r09" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/r08" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/cf4" />
+    <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

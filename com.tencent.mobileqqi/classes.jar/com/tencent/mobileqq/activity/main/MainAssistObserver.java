@@ -65,6 +65,7 @@ import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
+import ehs;
 import eht;
 import ehu;
 import ehv;
@@ -81,20 +82,19 @@ import eif;
 import eig;
 import eih;
 import eii;
-import eij;
+import eil;
 import eim;
-import ein;
-import eiu;
+import eit;
+import eiv;
 import eiw;
 import eix;
 import eiy;
-import eiz;
+import ejb;
 import ejc;
 import ejd;
-import eje;
-import ejg;
+import ejf;
+import ejh;
 import eji;
-import ejj;
 import java.io.PrintStream;
 import java.util.Timer;
 import mqq.app.AppRuntime;
@@ -107,26 +107,26 @@ import protocol.KQQConfig.UpgradeInfo;
 public class MainAssistObserver
 {
   public int a;
-  Handler jdField_a_of_type_AndroidOsHandler = new ein(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new eim(this, Looper.getMainLooper());
   public SplashActivity a;
-  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new eii(this);
+  private ConfigObserver jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new eih(this);
   public FriendListObserver a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new eiz(this);
-  private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = new eig(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new eiy(this);
+  private MsgTabUnreadListener jdField_a_of_type_ComTencentMobileqqAppMsgTabUnreadListener = new eif(this);
   public PrivacyDeclareHelper.Callback a;
-  private SecSigObserver jdField_a_of_type_ComTencentMobileqqAppSecSigObserver = new eij(this);
+  private SecSigObserver jdField_a_of_type_ComTencentMobileqqAppSecSigObserver = new eii(this);
   private UpgradeDetailWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper;
-  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new eid(this);
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new eih(this);
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new eic(this);
-  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new eib(this);
+  private ResourcePluginListener jdField_a_of_type_ComTencentMobileqqConfigResourcePluginListener = new eic(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new eig(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new eib(this);
+  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new eia(this);
   SdCardChangeListener jdField_a_of_type_ComTencentMobileqqObserverSdCardChangeListener = null;
   public MainAcitivityReportHelper a;
   public QQCustomDialog a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new eie(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new eid(this);
   public boolean a;
   public int b;
-  private ResourcePluginListener jdField_b_of_type_ComTencentMobileqqConfigResourcePluginListener = new eif(this);
+  private ResourcePluginListener jdField_b_of_type_ComTencentMobileqqConfigResourcePluginListener = new eie(this);
   private QQCustomDialog jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private int c = 0;
   
@@ -134,8 +134,8 @@ public class MainAssistObserver
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Int = 131072257;
-    this.jdField_a_of_type_ComTencentMobileqqAppPrivacyDeclareHelper$Callback = new eia(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eim(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppPrivacyDeclareHelper$Callback = new ehz(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new eil(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity = paramSplashActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper = UpgradeController.a().a();
@@ -147,13 +147,13 @@ public class MainAssistObserver
     ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a(0)).b(paramInt);
   }
   
-  private void a(ejj paramejj)
+  private void a(eji parameji)
   {
     LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).inflate(2130903218, null);
-    TextView localTextView = (TextView)localLinearLayout.findViewById(2131231660);
-    Button localButton = (Button)localLinearLayout.findViewById(2131231661);
+    TextView localTextView = (TextView)localLinearLayout.findViewById(2131231659);
+    Button localButton = (Button)localLinearLayout.findViewById(2131231660);
     localButton.setEnabled(false);
-    localTextView.setOnClickListener(new ejg(this, localTextView, localButton));
+    localTextView.setOnClickListener(new ejf(this, localTextView, localButton));
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230);
     localQQCustomDialog.addView(localLinearLayout);
     localQQCustomDialog.setTitle(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563352));
@@ -161,8 +161,8 @@ public class MainAssistObserver
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.setBottomLayoutGone();
     localQQCustomDialog.setCanceledOnTouchOutside(false);
-    localQQCustomDialog.setOnDismissListener(new eji(this));
-    localButton.setOnClickListener(new ehu(this, localTextView, paramejj, localQQCustomDialog));
+    localQQCustomDialog.setOnDismissListener(new ejh(this));
+    localButton.setOnClickListener(new eht(this, localTextView, parameji, localQQCustomDialog));
     localQQCustomDialog.show();
   }
   
@@ -213,20 +213,20 @@ public class MainAssistObserver
   private void m()
   {
     LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).inflate(2130903220, null);
-    Object localObject = (RadioGroup)localLinearLayout.findViewById(2131231664);
-    RadioButton localRadioButton1 = (RadioButton)localLinearLayout.findViewById(2131231665);
-    RadioButton localRadioButton2 = (RadioButton)localLinearLayout.findViewById(2131231666);
-    Button localButton = (Button)localLinearLayout.findViewById(2131231663);
+    Object localObject = (RadioGroup)localLinearLayout.findViewById(2131231663);
+    RadioButton localRadioButton1 = (RadioButton)localLinearLayout.findViewById(2131231664);
+    RadioButton localRadioButton2 = (RadioButton)localLinearLayout.findViewById(2131231665);
+    Button localButton = (Button)localLinearLayout.findViewById(2131231662);
     localButton.setEnabled(false);
-    ((RadioGroup)localObject).setOnCheckedChangeListener(new ejc(this, localRadioButton1, localRadioButton2, localButton));
+    ((RadioGroup)localObject).setOnCheckedChangeListener(new ejb(this, localRadioButton1, localRadioButton2, localButton));
     localObject = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230);
     ((QQCustomDialog)localObject).addView(localLinearLayout);
     ((QQCustomDialog)localObject).setDividerGone();
     ((QQCustomDialog)localObject).setCancelable(false);
     ((QQCustomDialog)localObject).setBottomLayoutGone();
     ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
-    ((QQCustomDialog)localObject).setOnDismissListener(new ejd(this, localRadioButton2));
-    localButton.setOnClickListener(new eje(this, localRadioButton1, (QQCustomDialog)localObject, localRadioButton2));
+    ((QQCustomDialog)localObject).setOnDismissListener(new ejc(this, localRadioButton2));
+    localButton.setOnClickListener(new ejd(this, localRadioButton1, (QQCustomDialog)localObject, localRadioButton2));
     ((QQCustomDialog)localObject).show();
   }
   
@@ -238,11 +238,11 @@ public class MainAssistObserver
     localQQCustomDialog.setDividerGone();
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
+    ehw localehw = new ehw(this);
     ehx localehx = new ehx(this);
-    ehy localehy = new ehy(this);
-    localQQCustomDialog.setOnDismissListener(new ehz(this));
-    localQQCustomDialog.setPositiveButton(2131562463, localehx);
-    localQQCustomDialog.setNegativeButton(2131561842, localehy);
+    localQQCustomDialog.setOnDismissListener(new ehy(this));
+    localQQCustomDialog.setPositiveButton(2131562463, localehw);
+    localQQCustomDialog.setNegativeButton(2131561842, localehx);
     localQQCustomDialog.show();
   }
   
@@ -336,7 +336,7 @@ public class MainAssistObserver
   public void a(SplashActivity paramSplashActivity)
   {
     if (!paramSplashActivity.permissionManager.checkPermission("android.permission.WRITE_EXTERNAL_STORAGE")) {
-      paramSplashActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new eiu(this, paramSplashActivity));
+      paramSplashActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.WRITE_EXTERNAL_STORAGE", 300) }).requests(new eit(this, paramSplashActivity));
     }
   }
   
@@ -435,7 +435,7 @@ public class MainAssistObserver
   
   public void c()
   {
-    ThreadManager.a().schedule(new eht(this), 500L);
+    ThreadManager.a().schedule(new ehs(this), 500L);
   }
   
   public void d()
@@ -453,14 +453,14 @@ public class MainAssistObserver
   
   public void e()
   {
-    new Timer().schedule(new eiy(this), 500L);
+    new Timer().schedule(new eix(this), 500L);
   }
   
   public void f()
   {
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230).setTitle(null).setMessage(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563349));
-    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563363), new ehv(this));
-    localQQCustomDialog.setNegativeButton(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131561842), new ehw(this));
+    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563363), new ehu(this));
+    localQQCustomDialog.setNegativeButton(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131561842), new ehv(this));
     localQQCustomDialog.show();
   }
   
@@ -640,7 +640,7 @@ public class MainAssistObserver
     label167:
     for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563130);; localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131563043))
     {
-      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, str, (String)localObject, 2131561746, 2131562791, new eiw(this), new eix(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, str, (String)localObject, 2131561746, 2131562791, new eiv(this), new eiw(this)).show();
       return;
     }
   }

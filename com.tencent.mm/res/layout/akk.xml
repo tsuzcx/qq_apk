@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/bfj" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/dng" android:padding="0.0dip" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:listSelector="@drawable/l_" android:divider="#ffb2b2b5" android:dividerHeight="1.0px" android:overScrollMode="never" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/jl2" android:background="@drawable/a54" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="@dimen/d_" android:layout_height="@dimen/a6y" app:cornerRadius="@dimen/bv" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <ImageView android:id="@id/jl3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

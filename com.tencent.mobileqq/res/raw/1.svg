@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch Beta 47 (45292) - http://www.bohemiancoding.com/sketch -->
+    <title>Actionbar_icon_dark_close</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Demo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.3" opacity="0.900000036">
+        <g id="Actionbar_icon_dark_close" fill="#000000">
+            <g id="Combined-Shape">
+                <g>
+                    <path d="M36,60 C22.745166,60 12,49.254834 12,36 C12,22.745166 22.745166,12 36,12 C49.254834,12 60,22.745166 60,36 C60,49.254834 49.254834,60 36,60 Z M36,32.9388715 L27.0611285,24 L24,27.0611285 L32.9388715,36 L24,44.9388715 L27.0611285,48 L36,39.0611285 L44.9388715,48 L48,44.9388715 L39.0611285,36 L48,27.0611285 L44.9388715,24 L36,32.9388715 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -4,11 +4,11 @@ import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import bidv;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
 
 class DragRecyclerView$4
-  extends bidv
+  extends ItemTouchHelper.Callback
 {
   DragRecyclerView$4(DragRecyclerView paramDragRecyclerView) {}
   
@@ -78,7 +78,7 @@ class DragRecyclerView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView.4
  * JD-Core Version:    0.7.0.1
  */

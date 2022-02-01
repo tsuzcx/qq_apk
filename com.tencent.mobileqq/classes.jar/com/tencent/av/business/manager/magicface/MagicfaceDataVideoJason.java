@@ -1,7 +1,7 @@
 package com.tencent.av.business.manager.magicface;
 
 import android.graphics.Point;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import java.util.ArrayList;
 
 public class MagicfaceDataVideoJason
@@ -15,22 +15,22 @@ public class MagicfaceDataVideoJason
   public static final String VIDEO_SRC_MIRROR = "mirror";
   public static final String VIDEO_SRC_NORMAL = "normal";
   static Point emptyPoint = new Point(0, 0);
-  public String common_id;
+  String common_id;
   int exptype = 0;
-  public int fps = 8;
-  public int frame_count = 0;
-  public boolean hasMirrorRes = false;
-  public boolean hasbackground = false;
-  public int height = 0;
-  public int lastLocationIndex = -1;
-  public int location_x;
-  public int location_y;
-  public boolean persistent = false;
+  int fps = 8;
+  int frame_count = 0;
+  boolean hasMirrorRes = false;
+  boolean hasbackground = false;
+  int height = 0;
+  int lastLocationIndex = -1;
+  protected int location_x = 0;
+  protected int location_y = 0;
+  boolean persistent = false;
   public ArrayList<Point> pointArrayList = new ArrayList();
-  public int repeat_count = 1;
-  public String src_prefix;
-  public String tips;
-  public int width = 0;
+  int repeat_count = 1;
+  String src_prefix;
+  String tips;
+  int width = 0;
   boolean withdeco = false;
   
   public Point getLocation(int paramInt)
@@ -39,27 +39,71 @@ public class MagicfaceDataVideoJason
     if (k == 0) {
       return emptyPoint;
     }
-    if (AudioHelper.a(14) == 1) {}
-    for (int i = paramInt;; i = (int)(Math.random() * k))
+    int i;
+    if (AudioHelper.a(14) == 1)
     {
-      int j = i;
-      if (i == paramInt) {
-        j = i + 1;
-      }
-      paramInt = j % k;
-      this.lastLocationIndex = paramInt;
-      return (Point)this.pointArrayList.get(paramInt);
+      i = paramInt;
     }
+    else
+    {
+      double d1 = Math.random();
+      double d2 = k;
+      Double.isNaN(d2);
+      i = (int)(d1 * d2);
+    }
+    int j = i;
+    if (i == paramInt) {
+      j = i + 1;
+    }
+    paramInt = j % k;
+    this.lastLocationIndex = paramInt;
+    return (Point)this.pointArrayList.get(paramInt);
   }
   
   public String toString()
   {
-    return "MagicfaceDataVideoJason{src_prefix='" + this.src_prefix + '\'' + ", withdeco=" + this.withdeco + ", persistent=" + this.persistent + ", hasMirrorRes=" + this.hasMirrorRes + ", location_x=" + this.location_x + ", location_y=" + this.location_y + ", width=" + this.width + ", height=" + this.height + ", fps=" + this.fps + ", frame_count=" + this.frame_count + ", repeat_count=" + this.repeat_count + ", exptype=" + this.exptype + ", common_id='" + this.common_id + '\'' + ", hasbackground='" + this.hasbackground + '\'' + ", pointArrayList='" + this.pointArrayList.size() + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MagicfaceDataVideoJason{src_prefix='");
+    localStringBuilder.append(this.src_prefix);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", withdeco=");
+    localStringBuilder.append(this.withdeco);
+    localStringBuilder.append(", persistent=");
+    localStringBuilder.append(this.persistent);
+    localStringBuilder.append(", hasMirrorRes=");
+    localStringBuilder.append(this.hasMirrorRes);
+    localStringBuilder.append(", location_x=");
+    localStringBuilder.append(this.location_x);
+    localStringBuilder.append(", location_y=");
+    localStringBuilder.append(this.location_y);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", fps=");
+    localStringBuilder.append(this.fps);
+    localStringBuilder.append(", frame_count=");
+    localStringBuilder.append(this.frame_count);
+    localStringBuilder.append(", repeat_count=");
+    localStringBuilder.append(this.repeat_count);
+    localStringBuilder.append(", exptype=");
+    localStringBuilder.append(this.exptype);
+    localStringBuilder.append(", common_id='");
+    localStringBuilder.append(this.common_id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasbackground='");
+    localStringBuilder.append(this.hasbackground);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pointArrayList='");
+    localStringBuilder.append(this.pointArrayList.size());
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason
  * JD-Core Version:    0.7.0.1
  */

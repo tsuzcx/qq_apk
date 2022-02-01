@@ -33,17 +33,12 @@ public class AutoBgFrameLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    Drawable localDrawable;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      Drawable localDrawable = getBackground();
-      if (localDrawable != null)
+      if ((i == 1) || (i == 3))
       {
-        localDrawable.setColorFilter(a);
-        continue;
         localDrawable = getBackground();
         if (localDrawable != null)
         {
@@ -52,11 +47,19 @@ public class AutoBgFrameLayout
         }
       }
     }
+    else
+    {
+      localDrawable = getBackground();
+      if (localDrawable != null) {
+        localDrawable.setColorFilter(a);
+      }
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AutoBgFrameLayout
  * JD-Core Version:    0.7.0.1
  */

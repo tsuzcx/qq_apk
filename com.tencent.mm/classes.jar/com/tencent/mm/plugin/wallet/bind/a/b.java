@@ -1,28 +1,21 @@
 package com.tencent.mm.plugin.wallet.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet.a.s;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wallet.model.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class b
-  extends u
+  extends w
 {
-  private f callback;
-  private com.tencent.mm.ai.b rr;
-  private String tSr;
-  
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(45727);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(45727);
-    return i;
+    AppMethodBeat.i(69064);
+    AppMethodBeat.o(69064);
+    throw null;
   }
   
   public final int getType()
@@ -30,18 +23,19 @@ public final class b
     return 621;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(142354);
-    ab.d("MicroMsg.NetSceneSetMainBankCard", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    AppMethodBeat.i(69063);
+    Log.d("MicroMsg.NetSceneSetMainBankCard", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      s.cRG();
-      s.cRH();
-      am.afm(this.tSr);
+      p.ifO();
+      p.ifP();
+      AppMethodBeat.o(69063);
+      throw null;
     }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(142354);
+    AppMethodBeat.o(69063);
+    throw null;
   }
 }
 

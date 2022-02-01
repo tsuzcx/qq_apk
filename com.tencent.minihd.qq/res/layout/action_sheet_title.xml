@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/qq_dialog_title_textsize" android:textColor="@android:color/black" android:gravity="left" android:id="@id/action_sheet_title" android:paddingLeft="@dimen/common_32dp" android:paddingRight="@dimen/common_32dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/common_32dp" style="@style/action_sheet_title_style" />
+    <TextView android:gravity="left" android:id="@id/action_sheet_secondary_title" android:paddingLeft="@dimen/common_32dp" android:paddingRight="@dimen/common_32dp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/action_sheet_title" style="@style/action_sheet_secondary_title_style" />
+</RelativeLayout>

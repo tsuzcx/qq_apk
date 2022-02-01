@@ -57,7 +57,7 @@ public class DebugModeLine
     while (i < j)
     {
       Vec3f localVec3f = (Vec3f)paramList.get(i);
-      localArrayList.add(new Vec3f(-(this.width - 2.0F * localVec3f.x) / this.width, (this.height - 2.0F * localVec3f.y) / this.height, localVec3f.z));
+      localArrayList.add(new Vec3f(-(this.width - localVec3f.x * 2.0F) / this.width, (this.height - localVec3f.y * 2.0F) / this.height, localVec3f.z));
       i += 1;
     }
     this.bb = ByteBuffer.allocateDirect(320).order(ByteOrder.nativeOrder()).asFloatBuffer();
@@ -160,17 +160,12 @@ public class DebugModeLine
       this.bb.put(((Vec3f)localArrayList.get(11)).x);
       this.bb.put(((Vec3f)localArrayList.get(11)).y);
     }
-    float f;
     if ((((Vec3f)localArrayList.get(1)).z > 0.0F) && (((Vec3f)localArrayList.get(8)).z > 0.0F) && (((Vec3f)localArrayList.get(11)).z > 0.0F))
     {
       this.bb.put(((Vec3f)localArrayList.get(1)).x);
       this.bb.put(((Vec3f)localArrayList.get(1)).y);
-      paramList = this.bb;
-      f = ((Vec3f)localArrayList.get(11)).x;
-      paramList.put((((Vec3f)localArrayList.get(8)).x + f) / 2.0F);
-      paramList = this.bb;
-      f = ((Vec3f)localArrayList.get(11)).y;
-      paramList.put((((Vec3f)localArrayList.get(8)).y + f) / 2.0F);
+      this.bb.put((((Vec3f)localArrayList.get(11)).x + ((Vec3f)localArrayList.get(8)).x) / 2.0F);
+      this.bb.put((((Vec3f)localArrayList.get(11)).y + ((Vec3f)localArrayList.get(8)).y) / 2.0F);
     }
     if ((((Vec3f)localArrayList.get(8)).z > 0.0F) && (((Vec3f)localArrayList.get(11)).z > 0.0F))
     {
@@ -213,18 +208,14 @@ public class DebugModeLine
     {
       this.testBuffer.put(((Vec3f)localArrayList.get(2)).x);
       this.testBuffer.put(((Vec3f)localArrayList.get(2)).y);
-      paramList = this.testBuffer;
-      f = ((Vec3f)localArrayList.get(2)).x;
-      paramList.put((((Vec3f)localArrayList.get(3)).x + f) / 2.0F);
-      paramList = this.testBuffer;
-      f = ((Vec3f)localArrayList.get(2)).y;
-      paramList.put((((Vec3f)localArrayList.get(3)).y + f) / 2.0F);
+      this.testBuffer.put((((Vec3f)localArrayList.get(2)).x + ((Vec3f)localArrayList.get(3)).x) / 2.0F);
+      this.testBuffer.put((((Vec3f)localArrayList.get(2)).y + ((Vec3f)localArrayList.get(3)).y) / 2.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.tempDir.DebugModeLine
  * JD-Core Version:    0.7.0.1
  */

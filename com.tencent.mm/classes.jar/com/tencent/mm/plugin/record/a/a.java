@@ -9,13 +9,13 @@ public abstract interface a
   
   public abstract e getRecordMsgCDNStorage();
   
-  public abstract h getRecordMsgService();
+  public abstract i getRecordMsgService();
   
-  public abstract g getRecordMsgStorage();
+  public abstract h getRecordMsgStorage();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.a
  * JD-Core Version:    0.7.0.1
  */

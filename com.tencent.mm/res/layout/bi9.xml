@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="end|center|top" android:id="@id/a1z" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cv" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" />
+</RelativeLayout>

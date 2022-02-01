@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/searchbox" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/qq_cond_search_icon" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/qq_dating_destination_search_hint" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/no_restraint" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qq_dating_no_restraint" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/check_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/boss_unipay_ic_select" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray3" android:id="@id/may_go_to" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="8.0dip" android:text="@string/qq_dating_destination_may_go_to" android:contentDescription="@string/qq_dating_destination_may_go_to" />
+</LinearLayout>

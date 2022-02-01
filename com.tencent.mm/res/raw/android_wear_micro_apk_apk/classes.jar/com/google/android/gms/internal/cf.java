@@ -5,19 +5,19 @@ import android.os.Process;
 final class cf
   implements Runnable
 {
-  private final Runnable Qf;
-  private final int eK;
+  private final Runnable RU;
+  private final int gz;
   
   public cf(Runnable paramRunnable, int paramInt)
   {
-    this.Qf = paramRunnable;
-    this.eK = paramInt;
+    this.RU = paramRunnable;
+    this.gz = paramInt;
   }
   
   public final void run()
   {
-    Process.setThreadPriority(this.eK);
-    this.Qf.run();
+    Process.setThreadPriority(this.gz);
+    this.RU.run();
   }
 }
 

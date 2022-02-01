@@ -8,7 +8,7 @@ public final class stSetSwitchRsp
   extends JceStruct
 {
   static stRspComm cache_rspComm = new stRspComm();
-  public stRspComm rspComm;
+  public stRspComm rspComm = null;
   
   public stSetSwitchRsp() {}
   
@@ -24,14 +24,15 @@ public final class stSetSwitchRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.rspComm != null) {
-      paramJceOutputStream.write(this.rspComm, 0);
+    stRspComm localstRspComm = this.rspComm;
+    if (localstRspComm != null) {
+      paramJceOutputStream.write(localstRspComm, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_WEISHI_QQ_PROFILE.stSetSwitchRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -2,19 +2,19 @@ package com.tencent.mm.wear.app.a;
 
 public final class d
 {
-  public int aaw = 0;
-  public String aax;
+  public int adX = 0;
+  public String adY;
   
   d() {}
   
   d(int paramInt)
   {
-    this.aaw = paramInt;
+    this.adX = paramInt;
   }
   
   public final String toString()
   {
-    return String.format("Result: [code=%d errMsg=%s]", new Object[] { Integer.valueOf(this.aaw), this.aax });
+    return String.format("Result: [code=%d errMsg=%s]", new Object[] { Integer.valueOf(this.adX), this.adY });
   }
 }
 

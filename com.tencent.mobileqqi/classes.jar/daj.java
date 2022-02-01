@@ -1,23 +1,33 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.activity.PublicAccountActivity;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
 
 public class daj
-  extends SearchResultDialog
+  implements Animation.AnimationListener
 {
-  public daj(PublicAccountActivity paramPublicAccountActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public daj(PublicAccountActivity paramPublicAccountActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramQQAppInterface, paramInt);
+    try
+    {
+      PublicAccountActivity.a(this.a).show();
+      label10:
+      PublicAccountActivity.a(this.a).setAnimation(null);
+      PublicAccountActivity.b(this.a).setVisibility(8);
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      break label10;
+    }
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    return a(paramContext, paramQQAppInterface, 0L, 0);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

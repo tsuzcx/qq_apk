@@ -6,130 +6,113 @@ import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewModel;
 import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.ark.Logger;
 import com.tencent.ark.ark.ApplicationCallback;
 import java.lang.ref.WeakReference;
 
 public class ArkModel
   extends ArkViewModel
 {
-  private static final ArkEnvironmentManager ENV = ;
   private static final String TAG = "ArkApp.ArkModel";
   private String mAppPath = null;
   public ArkAppInfo.TimeRecord mExtraTimerRecord = new ArkAppInfo.TimeRecord(this.mTimeRecord);
-  private WeakReference<ArkModel> mWeakThis = new WeakReference(this);
+  private String mResPath = null;
+  private final WeakReference<ArkModel> mWeakThis = new WeakReference(this);
   
   public ArkModel(ark.ApplicationCallback paramApplicationCallback, boolean paramBoolean)
   {
     super(paramApplicationCallback, paramBoolean);
   }
   
-  private void loadArkApp(String paramString1, int paramInt, String paramString2)
+  private void loadArkApp(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     boolean bool1;
-    if (paramInt != 0)
-    {
+    if (paramInt != 0) {
       bool1 = true;
-      if (paramInt != -2) {
-        break label117;
-      }
-    }
-    String str1;
-    String str2;
-    String str3;
-    label117:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-      str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-      str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
-      ArkUtil.createDir(str1);
-      ArkUtil.createDir(str2);
-      ArkUtil.createDir(str3);
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label123;
-      }
-      ENV.logE("ArkApp.ArkModel", String.format("ArkTemp.loadArkApp app=null mAppInfo.appName=%s, mAppInfo.appView=%s, appPath=%s", new Object[] { this.mAppInfo.name, this.mAppInfo.view, paramString1 }));
-      return;
+    } else {
       bool1 = false;
-      break;
     }
-    label123:
-    doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
+    boolean bool2;
+    if (paramInt == -2) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+    String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString2 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
+    }
+    ArkUtil.createDir(str1);
+    ArkUtil.createDir(str2);
+    ArkUtil.createDir(paramString2);
+    if (TextUtils.isEmpty(paramString1)) {
+      Logger.logE("ArkApp.ArkModel", String.format("ArkTemp.loadArkApp app=null mAppInfo.appName=%s, mAppInfo.appView=%s, appPath=%s", new Object[] { this.mAppInfo.name, this.mAppInfo.view, paramString1 }));
+    }
+    doLoadArkApp(paramString1, str1, str2, paramString2, bool1, bool2, paramInt, paramString3);
   }
   
-  public void onFirstDrawEnd()
+  protected void onFirstDrawEnd()
   {
     super.onFirstDrawEnd();
     ArkDispatchTask.getInstance().postToArkThread(new ArkModel.1(this));
   }
   
-  public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
+  protected boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
   {
     this.mExtraTimerRecord.beginOfGetApp = System.currentTimeMillis();
-    Object localObject1 = "";
-    String str1;
-    String str2;
-    boolean bool;
+    String str;
     if (!TextUtils.isEmpty(this.mAppPath))
     {
-      localObject1 = this.mAppPath;
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkModel.2(this, (String)localObject1));
-        return true;
-      }
+      str = this.mAppPath;
     }
     else
     {
-      ArkAppMgr.AppPathInfo localAppPathInfo = ArkAppMgr.getInstance().getAppPathInfoByNameFromLocal(this.mAppInfo.name, this.mAppInfo.view, this.mAppInfo.appMinVersion, true);
-      str1 = "";
-      str2 = "";
-      if (localAppPathInfo == null) {
-        break label331;
-      }
-      localObject2 = localAppPathInfo.path;
-      localObject1 = localObject2;
-      if (localAppPathInfo.appTempInfo == null) {
-        break label331;
-      }
-      str1 = localAppPathInfo.appTempInfo.template;
-      str2 = localAppPathInfo.appTempInfo.templateView;
-      this.mAppInfo.view = str2;
-      localObject1 = localObject2;
-      bool = true;
+      str = ArkAppMgr.getInstance().getAppPathFromCache(this.mAppInfo.name, this.mAppInfo.appMinVersion);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLoadApp:mAppInfo.name=");
+      ((StringBuilder)localObject).append(this.mAppInfo.name);
+      ((StringBuilder)localObject).append(",view=");
+      ((StringBuilder)localObject).append(this.mAppInfo.view);
+      ((StringBuilder)localObject).append(",path=");
+      ((StringBuilder)localObject).append(str);
+      Logger.logI("ArkApp.ArkModel", ((StringBuilder)localObject).toString());
     }
-    for (Object localObject2 = str2;; localObject2 = str2)
+    if (!TextUtils.isEmpty(str))
     {
-      ENV.logI("ArkApp.ArkModel", "onLoadApp:mAppInfo.name=" + this.mAppInfo.name + ",view=" + this.mAppInfo.view + ",isTempApp=" + bool + ",template=" + str1 + ",templateView=" + (String)localObject2 + ",appPath=" + (String)localObject1);
-      break;
-      localObject2 = this.mViewImpl;
-      if (localObject2 != null) {
-        ((ArkViewImplement)localObject2).onLoading();
-      }
-      ENV.logI("ArkApp.ArkModel", String.format("onLoadApp:mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, localObject1, localObject2 }));
-      ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.view, paramAppInfo.appMinVersion, null, new ArkModel.AppPathCallback(this.mWeakThis));
-      return false;
-      label331:
-      bool = false;
+      ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkModel.2(this, str));
+      return true;
     }
-  }
-  
-  public void onLoadReport(int paramInt)
-  {
-    if (this.mAppInfo != null) {
-      ArkAppReport.platformEventReport(this.mAppInfo.name, "ArkAppLoadState", paramInt, 0, 0L, 0L, 0L, this.mAppInfo.view, "");
+    Object localObject = this.mViewImpl;
+    if (localObject != null) {
+      ((ArkViewImplement)localObject).onLoading();
     }
+    Logger.logI("ArkApp.ArkModel", String.format("onLoadApp:mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, str, localObject }));
+    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.appMinVersion, new ArkModel.AppPathCallback(this.mWeakThis));
+    return false;
   }
   
   public void setAppPath(String paramString)
   {
     this.mAppPath = paramString;
-    ENV.logE("ArkApp.ArkModel", "setAppPath:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAppPath:");
+    localStringBuilder.append(paramString);
+    Logger.logE("ArkApp.ArkModel", localStringBuilder.toString());
+  }
+  
+  public void setResPath(String paramString)
+  {
+    this.mResPath = paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setResPath:");
+    localStringBuilder.append(paramString);
+    Logger.logE("ArkApp.ArkModel", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.ArkModel
  * JD-Core Version:    0.7.0.1
  */

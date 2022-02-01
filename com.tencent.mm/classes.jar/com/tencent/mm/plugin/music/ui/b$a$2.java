@@ -13,18 +13,18 @@ final class b$a$2
   
   public final Shader resize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(105074);
+    AppMethodBeat.i(63213);
     float f = paramInt2;
-    paramInt1 = this.pbQ;
+    paramInt1 = this.LPF;
     Object localObject = Shader.TileMode.REPEAT;
     localObject = new LinearGradient(0.0F, 0.0F, 0.0F, f, new int[] { paramInt1, 0 }, new float[] { 0.0F, 1.0F }, (Shader.TileMode)localObject);
-    AppMethodBeat.o(105074);
+    AppMethodBeat.o(63213);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.b.a.2
  * JD-Core Version:    0.7.0.1
  */

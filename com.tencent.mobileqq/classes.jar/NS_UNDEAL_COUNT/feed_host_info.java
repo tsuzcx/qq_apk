@@ -4,18 +4,19 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class feed_host_info
   extends JceStruct
 {
   static yellow_info cache_OpuinYellowInfo = new yellow_info();
   static ArrayList<feed_info> cache_vec_feedInfos = new ArrayList();
-  public yellow_info OpuinYellowInfo;
+  public yellow_info OpuinYellowInfo = null;
   public String actiondesc = "";
   public String nickname = "";
   public String strWords = "";
-  public long uUin;
-  public ArrayList<feed_info> vec_feedInfos;
+  public long uUin = 0L;
+  public ArrayList<feed_info> vec_feedInfos = null;
   
   static
   {
@@ -48,26 +49,31 @@ public final class feed_host_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uUin, 0);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 1);
+    Object localObject = this.nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.actiondesc != null) {
-      paramJceOutputStream.write(this.actiondesc, 2);
+    localObject = this.actiondesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.vec_feedInfos != null) {
-      paramJceOutputStream.write(this.vec_feedInfos, 3);
+    localObject = this.vec_feedInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.OpuinYellowInfo != null) {
-      paramJceOutputStream.write(this.OpuinYellowInfo, 4);
+    localObject = this.OpuinYellowInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.strWords != null) {
-      paramJceOutputStream.write(this.strWords, 5);
+    localObject = this.strWords;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.feed_host_info
  * JD-Core Version:    0.7.0.1
  */

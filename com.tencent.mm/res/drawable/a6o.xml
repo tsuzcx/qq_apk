@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/voice_transform_text_finish_pressed" />
-    <item android:state_selected="true" android:drawable="@raw/voice_transform_text_finish_pressed" />
-    <item android:drawable="@raw/voice_transform_text_finish_normal" />
-</selector>
+    <corners android:radius="0.0dip" />
+    <padding android:left="2.0dip" android:top="2.0dip" android:right="2.0dip" android:bottom="2.0dip" />
+    <solid android:color="@color/al2" />
+    <stroke android:width="1.0px" android:color="#ffbfbfbf" android:dashWidth="0.0dip" />
+</shape>

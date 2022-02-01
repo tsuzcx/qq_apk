@@ -89,7 +89,7 @@
                     "margin_bottom": "5",
                     "height": {
                       "type": "relative",
-                      "value": "16"
+                      "value": "28"
                     },
                     "width": {
                       "type": "match_parent"
@@ -135,15 +135,15 @@
                         }
                       },
                       {
-                        "view_type": "ReadinjoyNativeArticleAdDownloadView",
+                        "view_type": "ReadInJoyAdDownloadView",
                         "view_id": "id_view_AdDownloadView",
                         "height": {
                           "type": "relative",
-                          "value": "30"
+                          "value": "25"
                         },
                         "width": {
                           "type": "relative",
-                          "value": "82"
+                          "value": "62"
                         },
                         "align_parent_center_vertical": "YES",
                         "left_of_view": "id_dislike_button",
@@ -167,7 +167,7 @@
                           "progressStyle:": {
                             "style": "1",
                             "showProgress": "1",
-                            "width": "82",
+                            "width": "50",
                             "height": "20",
                             "textColor": "#ffffff",
                             "textSize": "12",

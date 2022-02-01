@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="80.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/icon_container" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <RelativeLayout android:id="@id/head_rl" android:background="@drawable/skin_shape_face_wrapper" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_centerInParent="true">
+            <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:focusable="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" android:contentDescription="@null" />
+        </RelativeLayout>
+        <ImageView android:id="@id/photo_select_item_selected_icon_iv" android:clickable="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@null" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center" android:id="@id/name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/icon_container" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/qvip_pay_wallet_text_hint" android:ellipsize="end" android:gravity="center" android:id="@id/birthday" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/name" android:layout_centerHorizontal="true" />
+</RelativeLayout>

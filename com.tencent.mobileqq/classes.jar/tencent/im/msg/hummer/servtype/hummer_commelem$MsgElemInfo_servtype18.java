@@ -20,14 +20,15 @@ public final class hummer_commelem$MsgElemInfo_servtype18
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40 }, new String[] { "uint64_current_amount", "uint64_total_amount", "bytes_listid", "bytes_auth_key", "uint32_number" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, MsgElemInfo_servtype18.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40 }, new String[] { "uint64_current_amount", "uint64_total_amount", "bytes_listid", "bytes_auth_key", "uint32_number" }, new Object[] { localLong, localLong, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, MsgElemInfo_servtype18.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype18
  * JD-Core Version:    0.7.0.1
  */

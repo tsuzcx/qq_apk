@@ -11,15 +11,15 @@ final class IPCallShareCouponCardUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(22283);
-    this.nVC.finish();
-    AppMethodBeat.o(22283);
+    AppMethodBeat.i(25903);
+    this.JPm.finish();
+    AppMethodBeat.o(25903);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallShareCouponCardUI.1
  * JD-Core Version:    0.7.0.1
  */

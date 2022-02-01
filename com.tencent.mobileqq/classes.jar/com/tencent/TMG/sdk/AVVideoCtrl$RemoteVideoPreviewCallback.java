@@ -14,7 +14,7 @@ public class AVVideoCtrl$RemoteVideoPreviewCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback
  * JD-Core Version:    0.7.0.1
  */

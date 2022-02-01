@@ -1,9 +1,8 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 public abstract interface aq
-  extends ap
 {
-  public abstract void setAppBrandWebViewClient(ae paramae);
+  public abstract void c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

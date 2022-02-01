@@ -9,10 +9,10 @@ public final class RespFavorite
 {
   static RespHead cache_stHeader;
   static byte[] cache_vNotice;
-  public byte cOpType;
-  public long lMID;
-  public RespHead stHeader;
-  public byte[] vNotice;
+  public byte cOpType = 0;
+  public long lMID = 0L;
+  public RespHead stHeader = null;
+  public byte[] vNotice = null;
   
   public RespFavorite() {}
   
@@ -45,14 +45,15 @@ public final class RespFavorite
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.lMID, 1);
     paramJceOutputStream.write(this.cOpType, 2);
-    if (this.vNotice != null) {
-      paramJceOutputStream.write(this.vNotice, 3);
+    byte[] arrayOfByte = this.vNotice;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespFavorite
  * JD-Core Version:    0.7.0.1
  */

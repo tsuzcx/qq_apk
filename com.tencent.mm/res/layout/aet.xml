@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/b_0" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dcr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.TabIconView android:gravity="center" android:id="@id/sg" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_centerInParent="true" />
-            <TextView android:id="@id/dcs" android:visibility="invisible" android:layout_marginLeft="-8.0dip" android:layout_toRightOf="@id/sg" android:layout_alignTop="@id/sg" style="@style/v8" />
-            <ImageView android:id="@id/l0" android:visibility="invisible" android:layout_marginTop="1.0dip" android:layout_marginRight="-3.0dip" android:layout_alignTop="@id/sg" android:layout_alignRight="@id/sg" style="@style/v9" />
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/e6" android:textColor="@color/a6q" android:gravity="center" android:id="@id/dct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cy3" />
-    </LinearLayout>
-</RelativeLayout>
+<com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/ddc" android:background="@color/a1q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <View android:id="@id/dda" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/ddb" app:layout_constraintHeight_percent="0.25" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/ddb" android:background="@drawable/ac2" android:clickable="true" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintHeight_percent="0.75" app:layout_constraintLeft_toLeftOf="hr_">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/aes" />
+        </com.tencent.mm.live.view.LiveBottomSheetPanel>
+        <com.tencent.mm.plugin.finder.live.view.FinderLiveExtendReadingEditView android:id="@id/dxs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.tencent.mm.view.TouchableLayout>

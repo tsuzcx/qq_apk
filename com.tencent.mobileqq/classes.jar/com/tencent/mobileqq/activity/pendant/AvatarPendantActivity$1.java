@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import aipi;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 class AvatarPendantActivity$1
-  implements Runnable
+  extends CardObserver
 {
   AvatarPendantActivity$1(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
   {
-    try
+    if (!paramBoolean)
     {
-      aipi.a(this.this$0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AvatarPendantActivity", 1, "onCreate, showSettingResultDialog exception=", localException);
+      int i = 2131916287;
+      if (paramInt == 1503) {
+        i = 2131897181;
+      }
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, i, 0).show(this.a.getTitleBarHeight());
     }
   }
 }

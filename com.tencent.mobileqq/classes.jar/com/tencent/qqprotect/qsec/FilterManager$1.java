@@ -1,12 +1,9 @@
 package com.tencent.qqprotect.qsec;
 
-import bhnu;
-import bhof;
-
-public class FilterManager$1
+class FilterManager$1
   implements Runnable
 {
-  public FilterManager$1(bhnu parambhnu, bhof parambhof) {}
+  FilterManager$1(FilterManager paramFilterManager, IScanner paramIScanner) {}
   
   public void run()
   {
@@ -15,7 +12,7 @@ public class FilterManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.FilterManager.1
  * JD-Core Version:    0.7.0.1
  */

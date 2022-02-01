@@ -1,58 +1,14 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView.MagicfaceGestureListener;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class gar
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  public gar(MagicfaceContainerView paramMagicfaceContainerView) {}
+  public gar(MagicfaceViewController paramMagicfaceViewController) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (MagicfaceContainerView.a(this.a) != null) {
-      MagicfaceContainerView.a(this.a).a(5);
-    }
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (MagicfaceContainerView.a(this.a) != null) {
-        MagicfaceContainerView.a(this.a).a(0);
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (MagicfaceContainerView.a(this.a) == null);
-        MagicfaceContainerView.a(this.a).a(1);
-        return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
-        }
-      } while (MagicfaceContainerView.a(this.a) == null);
-      MagicfaceContainerView.a(this.a).a(2);
-      return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (MagicfaceContainerView.a(this.a) == null));
-    MagicfaceContainerView.a(this.a).a(3);
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (MagicfaceContainerView.a(this.a) != null) {
-      MagicfaceContainerView.a(this.a).a(4);
-    }
-    return false;
+    MagicfaceViewController.a(this.a).d();
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.ttpic.openapi.model;
 
-import com.google.gson.JsonObject;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.offlineset.beans.AIBeautyParamsJsonBean;
 import com.tencent.ttpic.offlineset.beans.AIBeautyParamsJsonBean.BeautyConfigSet;
@@ -79,33 +78,27 @@ public class CameraBeautyParams
     {
       arrayOfString[i] = getAgeSexBeautyConfigValue(paramString1[i]);
       j = 0;
-      if (j < 7)
+      while (j < 7)
       {
         if (!arrayOfString[i][j].equals("")) {
           arrayOfFloat1[i][j] = (Float.parseFloat(json2Array(arrayOfString[i][j], paramString2)) / 100.0F);
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
+        } else {
           arrayOfFloat1[i][j] = 0;
         }
+        j += 1;
       }
       i += 1;
     }
     arrayOfString[9] = getAgeSexBeautyConfigValue(paramString1[9]);
     i = 0;
-    if (i < 7)
+    while (i < 7)
     {
       if (arrayOfString[9][i].equals("true")) {
         arrayOfFloat1[9][i] = 1065353216;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         arrayOfFloat1[9][i] = 0;
       }
+      i += 1;
     }
     i = 0;
     while (i < 7)
@@ -152,37 +145,29 @@ public class CameraBeautyParams
   
   private static boolean isInWholeFaceParam(int paramInt)
   {
-    boolean bool2 = false;
     int[] arrayOfInt = RESHAPE_WHOLE_FACE_PARAM;
     int j = arrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramInt == arrayOfInt[i]) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramInt == arrayOfInt[i]) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   private String json2Array(String paramString1, String paramString2)
   {
-    String str = "";
     try
     {
-      JsonObject localJsonObject = GsonUtils.json2JsonObject(paramString1);
-      paramString1 = str;
-      if (localJsonObject != null) {
-        paramString1 = GsonUtils.getStringUnsafe(localJsonObject, paramString2);
+      paramString1 = GsonUtils.json2JsonObject(paramString1);
+      if (paramString1 != null)
+      {
+        paramString1 = GsonUtils.getStringUnsafe(paramString1, paramString2);
+        return paramString1;
       }
-      return paramString1;
     }
     catch (Exception paramString1)
     {
@@ -216,26 +201,18 @@ public class CameraBeautyParams
   
   public boolean needRenderWholeFace()
   {
-    boolean bool2 = false;
     int[] arrayOfInt = RESHAPE_WHOLE_FACE_PARAM;
     int j = arrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        int k = arrayOfInt[i];
-        if (Math.abs(this.mProgress[k]) > 0.001D) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      int k = arrayOfInt[i];
+      if (Math.abs(this.mProgress[k]) > 0.001D) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public void setAIBeautyValid(boolean paramBoolean)
@@ -264,170 +241,158 @@ public class CameraBeautyParams
     {
     default: 
       return;
-    case 1: 
-      this.mProgress[22] = paramFloat;
-      return;
-    case 2: 
-      this.mProgress[4] = (0.5F * paramFloat);
-      return;
-    case 3: 
-      this.mProgress[6] = (0.35F * paramFloat);
-      return;
-    case 4: 
-      this.mProgress[5] = paramFloat;
-      return;
-    case 5: 
-      this.mProgress[12] = (-paramFloat);
-      return;
-    case 6: 
-      this.mProgress[17] = paramFloat;
-      return;
-    case 7: 
-      this.mProgress[18] = (0.5F * paramFloat);
-      return;
-    case 8: 
-      this.mProgress[19] = (0.5F * paramFloat);
-      return;
-    case 9: 
-      this.mProgress[8] = paramFloat;
-      return;
-    case 10: 
-      this.mProgress[10] = paramFloat;
-      return;
-    case 11: 
-      this.mProgress[13] = paramFloat;
-      return;
-    case 12: 
-      this.mProgress[14] = paramFloat;
+    case 14: 
+      this.mProgress[24] = paramFloat;
       return;
     case 13: 
       this.mProgress[7] = paramFloat;
       return;
+    case 12: 
+      this.mProgress[14] = paramFloat;
+      return;
+    case 11: 
+      this.mProgress[13] = paramFloat;
+      return;
+    case 10: 
+      this.mProgress[10] = paramFloat;
+      return;
+    case 9: 
+      this.mProgress[8] = paramFloat;
+      return;
+    case 8: 
+      this.mProgress[19] = (paramFloat * 0.5F);
+      return;
+    case 7: 
+      this.mProgress[18] = (paramFloat * 0.5F);
+      return;
+    case 6: 
+      this.mProgress[17] = paramFloat;
+      return;
+    case 5: 
+      this.mProgress[12] = (-paramFloat);
+      return;
+    case 4: 
+      this.mProgress[5] = paramFloat;
+      return;
+    case 3: 
+      this.mProgress[6] = (paramFloat * 0.35F);
+      return;
+    case 2: 
+      this.mProgress[4] = (paramFloat * 0.5F);
+      return;
     }
-    this.mProgress[24] = paramFloat;
+    this.mProgress[22] = paramFloat;
   }
   
   public void setParam4Pitu(int paramInt, float paramFloat)
   {
-    if (paramInt == BeautyRealConfig.TYPE.FOREHEAD.value) {
-      this.mProgress[22] = paramFloat;
-    }
-    do
+    if (paramInt == BeautyRealConfig.TYPE.FOREHEAD.value)
     {
+      this.mProgress[22] = paramFloat;
       return;
-      if (paramInt == BeautyRealConfig.TYPE.EYE.value)
-      {
-        this.mProgress[4] = (0.5F * paramFloat);
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.EYE_DISTANCE.value)
-      {
-        this.mProgress[6] = paramFloat;
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.EYE_ANGLE.value)
-      {
-        this.mProgress[5] = paramFloat;
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.MOUTH_SHAPE.value)
-      {
-        this.mProgress[12] = (-paramFloat);
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.CHIN.value)
-      {
-        this.mProgress[17] = paramFloat;
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.FACE_THIN.value)
-      {
-        this.mProgress[18] = paramFloat;
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.FACE_V.value)
-      {
-        this.mProgress[19] = (0.5F * paramFloat);
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.NOSE_WING.value)
-      {
-        this.mProgress[8] = paramFloat;
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.NOSE_POSITION.value)
-      {
-        this.mProgress[10] = paramFloat;
-        return;
-      }
-      if (paramInt == BeautyRealConfig.TYPE.LIPS_THICKNESS.value)
-      {
-        this.mProgress[13] = paramFloat;
-        return;
-      }
-    } while (paramInt != BeautyRealConfig.TYPE.LIPS_WIDTH.value);
-    this.mProgress[14] = paramFloat;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.EYE.value)
+    {
+      this.mProgress[4] = (paramFloat * 0.5F);
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.EYE_DISTANCE.value)
+    {
+      this.mProgress[6] = paramFloat;
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.EYE_ANGLE.value)
+    {
+      this.mProgress[5] = paramFloat;
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.MOUTH_SHAPE.value)
+    {
+      this.mProgress[12] = (-paramFloat);
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.CHIN.value)
+    {
+      this.mProgress[17] = paramFloat;
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.FACE_THIN.value)
+    {
+      this.mProgress[18] = paramFloat;
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.FACE_V.value)
+    {
+      this.mProgress[19] = (paramFloat * 0.5F);
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.NOSE_WING.value)
+    {
+      this.mProgress[8] = paramFloat;
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.NOSE_POSITION.value)
+    {
+      this.mProgress[10] = paramFloat;
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.LIPS_THICKNESS.value)
+    {
+      this.mProgress[13] = paramFloat;
+      return;
+    }
+    if (paramInt == BeautyRealConfig.TYPE.LIPS_WIDTH.value) {
+      this.mProgress[14] = paramFloat;
+    }
   }
   
   public void updateAgeSexBeautyConfig(AIBeautyParamsJsonBean paramAIBeautyParamsJsonBean)
   {
-    if ((paramAIBeautyParamsJsonBean == null) || (paramAIBeautyParamsJsonBean.aiBeautySets == null)) {}
-    label308:
-    label462:
-    for (;;)
+    if (paramAIBeautyParamsJsonBean != null)
     {
-      return;
+      if (paramAIBeautyParamsJsonBean.aiBeautySets == null) {
+        return;
+      }
       HashMap localHashMap = getParamHashmap();
       float[][] arrayOfFloat1 = (float[][])Array.newInstance(Float.TYPE, new int[] { 7, 10 });
       float[][] arrayOfFloat2 = (float[][])Array.newInstance(Float.TYPE, new int[] { 7, 10 });
       int i = 0;
-      float[] arrayOfFloat3;
-      float[] arrayOfFloat4;
-      Iterator localIterator;
-      AIBeautyParamsJsonBean.BeautyConfigSet localBeautyConfigSet;
-      if (i < 7)
+      while (i < 7)
       {
-        arrayOfFloat3 = arrayOfFloat1[i];
-        arrayOfFloat4 = arrayOfFloat2[i];
-        localIterator = paramAIBeautyParamsJsonBean.aiBeautySets.iterator();
-        for (;;)
+        float[] arrayOfFloat3 = arrayOfFloat1[i];
+        float[] arrayOfFloat4 = arrayOfFloat2[i];
+        Iterator localIterator = paramAIBeautyParamsJsonBean.aiBeautySets.iterator();
+        while (localIterator.hasNext())
         {
-          if (localIterator.hasNext())
-          {
-            localBeautyConfigSet = (AIBeautyParamsJsonBean.BeautyConfigSet)localIterator.next();
-            if (localBeautyConfigSet != null) {
-              if (localBeautyConfigSet.isCurrent(new int[] { 0, 6, 16, 36, 6, 16, 36 }[i], new int[] { 0, 2, 2, 2, 1, 1, 1 }[i])) {
-                label208:
-                if (localBeautyConfigSet == null)
-                {
-                  LogUtils.e("CameraBeautyParams", "updateAgeSexBeautyConfig|paramSetting is null");
-                  i = 0;
-                }
-              }
+          localBeautyConfigSet = (AIBeautyParamsJsonBean.BeautyConfigSet)localIterator.next();
+          if (localBeautyConfigSet != null) {
+            if (localBeautyConfigSet.isCurrent(new int[] { 0, 6, 16, 36, 6, 16, 36 }[i], new int[] { 0, 2, 2, 2, 1, 1, 1 }[i])) {
+              break label217;
             }
           }
         }
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          break label462;
+        AIBeautyParamsJsonBean.BeautyConfigSet localBeautyConfigSet = null;
+        label217:
+        if (localBeautyConfigSet == null) {
+          LogUtils.e("CameraBeautyParams", "updateAgeSexBeautyConfig|paramSetting is null");
         }
-        this.mBeautyAIParam.setBeautyAITable(arrayOfFloat1);
-        this.mBeautyAIParam.setbeautyAIMaxTable(arrayOfFloat2);
-        return;
-        if (localBeautyConfigSet.faceCosmetic) {}
-        for (int j = 1065353216;; j = 0)
+        for (;;)
         {
+          i = 0;
+          break label442;
+          int j;
+          if (localBeautyConfigSet.faceCosmetic) {
+            j = 1065353216;
+          } else {
+            j = 0;
+          }
           arrayOfFloat3[9] = j;
           arrayOfFloat4[9] = arrayOfFloat3[9];
           localIterator = localHashMap.entrySet().iterator();
           if (localIterator != null) {
-            break label308;
+            break;
           }
           LogUtils.e("CameraBeautyParams", "updateAgeSexBeautyConfig|iterator is null");
-          i = 0;
-          break;
         }
         while (localIterator.hasNext())
         {
@@ -445,10 +410,13 @@ public class CameraBeautyParams
           }
         }
         i += 1;
-        break;
-        localBeautyConfigSet = null;
-        break label208;
-        i = 1;
+      }
+      i = 1;
+      label442:
+      if (i != 0)
+      {
+        this.mBeautyAIParam.setBeautyAITable(arrayOfFloat1);
+        this.mBeautyAIParam.setbeautyAIMaxTable(arrayOfFloat2);
       }
     }
   }
@@ -573,7 +541,7 @@ public class CameraBeautyParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.CameraBeautyParams
  * JD-Core Version:    0.7.0.1
  */

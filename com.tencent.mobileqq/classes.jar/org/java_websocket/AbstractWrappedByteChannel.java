@@ -29,23 +29,26 @@ public class AbstractWrappedByteChannel
   
   public boolean isBlocking()
   {
-    if ((this.channel instanceof SocketChannel)) {
-      return ((SocketChannel)this.channel).isBlocking();
+    ByteChannel localByteChannel = this.channel;
+    if ((localByteChannel instanceof SocketChannel)) {
+      return ((SocketChannel)localByteChannel).isBlocking();
     }
-    if ((this.channel instanceof WrappedByteChannel)) {
-      return ((WrappedByteChannel)this.channel).isBlocking();
+    if ((localByteChannel instanceof WrappedByteChannel)) {
+      return ((WrappedByteChannel)localByteChannel).isBlocking();
     }
     return false;
   }
   
   public boolean isNeedRead()
   {
-    return ((this.channel instanceof WrappedByteChannel)) && (((WrappedByteChannel)this.channel).isNeedRead());
+    ByteChannel localByteChannel = this.channel;
+    return ((localByteChannel instanceof WrappedByteChannel)) && (((WrappedByteChannel)localByteChannel).isNeedRead());
   }
   
   public boolean isNeedWrite()
   {
-    return ((this.channel instanceof WrappedByteChannel)) && (((WrappedByteChannel)this.channel).isNeedWrite());
+    ByteChannel localByteChannel = this.channel;
+    return ((localByteChannel instanceof WrappedByteChannel)) && (((WrappedByteChannel)localByteChannel).isNeedWrite());
   }
   
   public boolean isOpen()
@@ -60,8 +63,9 @@ public class AbstractWrappedByteChannel
   
   public int readMore(ByteBuffer paramByteBuffer)
   {
-    if ((this.channel instanceof WrappedByteChannel)) {
-      return ((WrappedByteChannel)this.channel).readMore(paramByteBuffer);
+    ByteChannel localByteChannel = this.channel;
+    if ((localByteChannel instanceof WrappedByteChannel)) {
+      return ((WrappedByteChannel)localByteChannel).readMore(paramByteBuffer);
     }
     return 0;
   }
@@ -73,14 +77,15 @@ public class AbstractWrappedByteChannel
   
   public void writeMore()
   {
-    if ((this.channel instanceof WrappedByteChannel)) {
-      ((WrappedByteChannel)this.channel).writeMore();
+    ByteChannel localByteChannel = this.channel;
+    if ((localByteChannel instanceof WrappedByteChannel)) {
+      ((WrappedByteChannel)localByteChannel).writeMore();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.AbstractWrappedByteChannel
  * JD-Core Version:    0.7.0.1
  */

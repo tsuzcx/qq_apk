@@ -10,7 +10,7 @@ public final class GetRichSigRes
 {
   static ArrayList<ResRichSigInfo> cache_vstSigInfo;
   public byte cResult = -1;
-  public ArrayList<ResRichSigInfo> vstSigInfo;
+  public ArrayList<ResRichSigInfo> vstSigInfo = null;
   
   public GetRichSigRes() {}
   
@@ -35,14 +35,15 @@ public final class GetRichSigRes
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cResult, 1);
-    if (this.vstSigInfo != null) {
-      paramJceOutputStream.write(this.vstSigInfo, 2);
+    ArrayList localArrayList = this.vstSigInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.GetRichSigRes
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,6 @@ import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.stats.ConnectionTracker;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-@VisibleForTesting
 public final class zzii
   extends zzhh
 {
@@ -32,18 +30,18 @@ public final class zzii
   protected zzii(zzgl paramzzgl)
   {
     super(paramzzgl);
-    AppMethodBeat.i(69276);
+    AppMethodBeat.i(1799);
     this.zzapc = new ArrayList();
     this.zzapb = new zzjm(paramzzgl.zzbt());
     this.zzaox = new zziw(this);
     this.zzapa = new zzij(this, paramzzgl);
     this.zzapd = new zzio(this, paramzzgl);
-    AppMethodBeat.o(69276);
+    AppMethodBeat.o(1799);
   }
   
   private final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    AppMethodBeat.i(69294);
+    AppMethodBeat.i(1817);
     zzab();
     if (this.zzaoy != null)
     {
@@ -52,70 +50,70 @@ public final class zzii
       zzab();
       zzdf();
     }
-    AppMethodBeat.o(69294);
+    AppMethodBeat.o(1817);
   }
   
   private final void zzcu()
   {
-    AppMethodBeat.i(69290);
+    AppMethodBeat.i(1813);
     zzab();
     this.zzapb.start();
     this.zzapa.zzh(((Long)zzew.zzaho.get()).longValue());
-    AppMethodBeat.o(69290);
+    AppMethodBeat.o(1813);
   }
   
   private final void zzcv()
   {
-    AppMethodBeat.i(69295);
+    AppMethodBeat.i(1818);
     zzab();
     if (!isConnected())
     {
-      AppMethodBeat.o(69295);
+      AppMethodBeat.o(1818);
       return;
     }
     zzge().zzit().log("Inactivity, disconnecting from the service");
     disconnect();
-    AppMethodBeat.o(69295);
+    AppMethodBeat.o(1818);
   }
   
   private final void zzf(Runnable paramRunnable)
   {
-    AppMethodBeat.i(69296);
+    AppMethodBeat.i(1819);
     zzab();
     if (isConnected())
     {
       paramRunnable.run();
-      AppMethodBeat.o(69296);
+      AppMethodBeat.o(1819);
       return;
     }
     if (this.zzapc.size() >= 1000L)
     {
       zzge().zzim().log("Discarding data. Max runnable queue size reached");
-      AppMethodBeat.o(69296);
+      AppMethodBeat.o(1819);
       return;
     }
     this.zzapc.add(paramRunnable);
     this.zzapd.zzh(60000L);
     zzdf();
-    AppMethodBeat.o(69296);
+    AppMethodBeat.o(1819);
   }
   
   private final zzdz zzk(boolean paramBoolean)
   {
-    AppMethodBeat.i(69298);
+    AppMethodBeat.i(1821);
     zzfb localzzfb = zzfv();
     if (paramBoolean) {}
     for (Object localObject = zzge().zziv();; localObject = null)
     {
       localObject = localzzfb.zzbi((String)localObject);
-      AppMethodBeat.o(69298);
+      AppMethodBeat.o(1821);
       return localObject;
     }
   }
   
   private final void zzkg()
   {
-    AppMethodBeat.i(69297);
+    AppMethodBeat.i(1820);
     zzab();
     zzge().zzit().zzg("Processing queued up service tasks", Integer.valueOf(this.zzapc.size()));
     Iterator localIterator = this.zzapc.iterator();
@@ -133,73 +131,71 @@ public final class zzii
     }
     this.zzapc.clear();
     this.zzapd.cancel();
-    AppMethodBeat.o(69297);
+    AppMethodBeat.o(1820);
   }
   
   public final void disconnect()
   {
-    AppMethodBeat.i(69293);
+    AppMethodBeat.i(1816);
     zzab();
     zzch();
     try
     {
       ConnectionTracker.getInstance().unbindService(getContext(), this.zzaox);
-      label27:
+      label28:
       this.zzaoy = null;
-      AppMethodBeat.o(69293);
+      AppMethodBeat.o(1816);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      break label27;
+      break label28;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      break label27;
+      break label28;
     }
   }
   
   public final boolean isConnected()
   {
-    AppMethodBeat.i(69277);
+    AppMethodBeat.i(1800);
     zzab();
     zzch();
     if (this.zzaoy != null)
     {
-      AppMethodBeat.o(69277);
+      AppMethodBeat.o(1800);
       return true;
     }
-    AppMethodBeat.o(69277);
+    AppMethodBeat.o(1800);
     return false;
   }
   
   protected final void resetAnalyticsData()
   {
-    AppMethodBeat.i(69286);
+    AppMethodBeat.i(1809);
     zzab();
     zzch();
     zzdz localzzdz = zzk(false);
     zzfz().resetAnalyticsData();
     zzf(new zzik(this, localzzdz));
-    AppMethodBeat.o(69286);
+    AppMethodBeat.o(1809);
   }
   
-  @VisibleForTesting
   protected final void zza(zzey paramzzey)
   {
-    AppMethodBeat.i(69292);
+    AppMethodBeat.i(1815);
     zzab();
     Preconditions.checkNotNull(paramzzey);
     this.zzaoy = paramzzey;
     zzcu();
     zzkg();
-    AppMethodBeat.o(69292);
+    AppMethodBeat.o(1815);
   }
   
-  @VisibleForTesting
   final void zza(zzey paramzzey, AbstractSafeParcelable paramAbstractSafeParcelable, zzdz paramzzdz)
   {
-    AppMethodBeat.i(69279);
+    AppMethodBeat.i(1802);
     zzab();
     zzch();
     int j = 0;
@@ -262,50 +258,50 @@ public final class zzii
       }
       j += 1;
       break;
-      AppMethodBeat.o(69279);
+      AppMethodBeat.o(1802);
       return;
     }
   }
   
   public final void zza(AtomicReference<String> paramAtomicReference)
   {
-    AppMethodBeat.i(69287);
+    AppMethodBeat.i(1810);
     zzab();
     zzch();
     zzf(new zzil(this, paramAtomicReference, zzk(false)));
-    AppMethodBeat.o(69287);
+    AppMethodBeat.o(1810);
   }
   
   protected final void zza(AtomicReference<List<zzed>> paramAtomicReference, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(69282);
+    AppMethodBeat.i(1805);
     zzab();
     zzch();
     zzf(new zzis(this, paramAtomicReference, paramString1, paramString2, paramString3, zzk(false)));
-    AppMethodBeat.o(69282);
+    AppMethodBeat.o(1805);
   }
   
   protected final void zza(AtomicReference<List<zzjx>> paramAtomicReference, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    AppMethodBeat.i(69283);
+    AppMethodBeat.i(1806);
     zzab();
     zzch();
     zzf(new zzit(this, paramAtomicReference, paramString1, paramString2, paramString3, paramBoolean, zzk(false)));
-    AppMethodBeat.o(69283);
+    AppMethodBeat.o(1806);
   }
   
   protected final void zza(AtomicReference<List<zzjx>> paramAtomicReference, boolean paramBoolean)
   {
-    AppMethodBeat.i(69285);
+    AppMethodBeat.i(1808);
     zzab();
     zzch();
     zzf(new zziv(this, paramAtomicReference, zzk(false), paramBoolean));
-    AppMethodBeat.o(69285);
+    AppMethodBeat.o(1808);
   }
   
   protected final void zzb(zzeu paramzzeu, String paramString)
   {
-    AppMethodBeat.i(69280);
+    AppMethodBeat.i(1803);
     Preconditions.checkNotNull(paramzzeu);
     zzab();
     zzch();
@@ -313,37 +309,37 @@ public final class zzii
     for (boolean bool = true;; bool = false)
     {
       zzf(new zziq(this, true, bool, paramzzeu, zzk(true), paramString));
-      AppMethodBeat.o(69280);
+      AppMethodBeat.o(1803);
       return;
     }
   }
   
   protected final void zzb(zzie paramzzie)
   {
-    AppMethodBeat.i(69289);
+    AppMethodBeat.i(1812);
     zzab();
     zzch();
     zzf(new zzin(this, paramzzie));
-    AppMethodBeat.o(69289);
+    AppMethodBeat.o(1812);
   }
   
   protected final void zzb(zzjx paramzzjx)
   {
-    AppMethodBeat.i(69284);
+    AppMethodBeat.i(1807);
     zzab();
     zzch();
     if (zzfz().zza(paramzzjx)) {}
     for (boolean bool = true;; bool = false)
     {
       zzf(new zziu(this, bool, paramzzjx, zzk(true)));
-      AppMethodBeat.o(69284);
+      AppMethodBeat.o(1807);
       return;
     }
   }
   
   protected final void zzd(zzed paramzzed)
   {
-    AppMethodBeat.i(69281);
+    AppMethodBeat.i(1804);
     Preconditions.checkNotNull(paramzzed);
     zzab();
     zzch();
@@ -351,7 +347,7 @@ public final class zzii
     for (boolean bool = true;; bool = false)
     {
       zzf(new zzir(this, true, bool, new zzed(paramzzed), zzk(true), paramzzed));
-      AppMethodBeat.o(69281);
+      AppMethodBeat.o(1804);
       return;
     }
   }
@@ -359,12 +355,12 @@ public final class zzii
   final void zzdf()
   {
     int j = 1;
-    AppMethodBeat.i(69291);
+    AppMethodBeat.i(1814);
     zzab();
     zzch();
     if (isConnected())
     {
-      AppMethodBeat.o(69291);
+      AppMethodBeat.o(1814);
       return;
     }
     boolean bool2;
@@ -385,7 +381,7 @@ public final class zzii
         break label423;
       }
       this.zzaox.zzkh();
-      AppMethodBeat.o(69291);
+      AppMethodBeat.o(1814);
       return;
     }
     boolean bool1;
@@ -465,11 +461,11 @@ public final class zzii
       localObject = new Intent("com.google.android.gms.measurement.START");
       ((Intent)localObject).setComponent(new ComponentName(getContext(), "com.google.android.gms.measurement.AppMeasurementService"));
       this.zzaox.zzc((Intent)localObject);
-      AppMethodBeat.o(69291);
+      AppMethodBeat.o(1814);
       return;
     }
     zzge().zzim().log("Unable to use remote or local measurement implementation. Please register the AppMeasurementService service in the app manifest");
-    AppMethodBeat.o(69291);
+    AppMethodBeat.o(1814);
   }
   
   protected final boolean zzhf()
@@ -479,20 +475,20 @@ public final class zzii
   
   protected final void zzkb()
   {
-    AppMethodBeat.i(69288);
+    AppMethodBeat.i(1811);
     zzab();
     zzch();
     zzf(new zzim(this, zzk(true)));
-    AppMethodBeat.o(69288);
+    AppMethodBeat.o(1811);
   }
   
   protected final void zzke()
   {
-    AppMethodBeat.i(69278);
+    AppMethodBeat.i(1801);
     zzab();
     zzch();
     zzf(new zzip(this, zzk(true)));
-    AppMethodBeat.o(69278);
+    AppMethodBeat.o(1801);
   }
   
   final Boolean zzkf()
@@ -502,7 +498,7 @@ public final class zzii
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzii
  * JD-Core Version:    0.7.0.1
  */

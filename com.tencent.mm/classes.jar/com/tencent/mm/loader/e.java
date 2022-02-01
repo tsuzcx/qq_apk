@@ -1,23 +1,24 @@
 package com.tencent.mm.loader;
 
-import a.f.b.j;
-import a.l;
 import android.graphics.Bitmap;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/LoaderFactory;", "", "()V", "instance", "Lcom/tencent/mm/loader/DefaultImageLoader;", "Lcom/tencent/mm/loader/Loader;", "T", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "configuration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Landroid/graphics/Bitmap;", "libimageloader_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/loader/LoaderFactory;", "", "()V", "defaultImageLoader", "Lcom/tencent/mm/loader/DefaultImageLoader;", "instance", "Lcom/tencent/mm/loader/Loader;", "T", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "configuration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Landroid/graphics/Bitmap;", "instanceDefault", "", "newInstance", "libimageloader_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  public static final e eME = new e();
+  public static final e noo = new e();
+  private static a nop = new a((com.tencent.mm.loader.b.d)new com.tencent.mm.loader.b.c());
   
-  public static a SX()
+  public static <T extends com.tencent.mm.loader.g.a.c> d<T> a(com.tencent.mm.loader.b.d<T, Bitmap> paramd)
   {
-    return new a((com.tencent.mm.loader.c.d)new com.tencent.mm.loader.c.c());
+    s.u(paramd, "configuration");
+    return (d)new c(paramd);
   }
   
-  public static <T extends com.tencent.mm.loader.h.a.c> d<T> a(com.tencent.mm.loader.c.d<T, Bitmap> paramd)
+  public static a blh()
   {
-    j.q(paramd, "configuration");
-    return (d)new c(paramd);
+    return nop;
   }
 }
 

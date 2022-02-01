@@ -22,8 +22,9 @@ class ApkgManager$7
   
   private boolean enablePipeline()
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = false;
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_download_pipeline_enable", 0) > 0) {
+    if (localQzoneConfig.getConfig("qqminiapp", "mini_app_download_pipeline_enable", 0) > 0) {
       bool = true;
     }
     return bool;
@@ -31,40 +32,46 @@ class ApkgManager$7
   
   public void onRecvData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong, int paramInt3, boolean paramBoolean)
   {
-    if (!enablePipeline()) {}
-    for (;;)
-    {
+    if (!enablePipeline()) {
       return;
-      if ((!this.completed) && (paramInt3 == 0) && (paramLong > 0L))
+    }
+    if (this.completed) {
+      return;
+    }
+    if (paramInt3 == 0)
+    {
+      if (paramLong <= 0L) {
+        return;
+      }
+      if (this.totalContent == null) {
+        this.totalContent = new byte[(int)paramLong * 2];
+      }
+      try
       {
-        if (this.totalContent == null) {
-          this.totalContent = new byte[(int)paramLong * 2];
-        }
-        try
-        {
-          ApkgManager.7.ApkgUnpackFileInfo localApkgUnpackFileInfo1 = (ApkgManager.7.ApkgUnpackFileInfo)this.mapFileInfo.get("/app-config.json");
-          ApkgManager.7.ApkgUnpackFileInfo localApkgUnpackFileInfo2 = (ApkgManager.7.ApkgUnpackFileInfo)this.mapFileInfo.get("/app-service.js");
-          if ((localApkgUnpackFileInfo1 != null) && (localApkgUnpackFileInfo1.isCompleted()) && (localApkgUnpackFileInfo2 != null) && (localApkgUnpackFileInfo2.isCompleted()))
-          {
-            this.completed = true;
-            if (this.val$listener == null) {
-              continue;
-            }
-            this.val$listener.onFakeApkgInfo(localApkgUnpackFileInfo1.fileContent, localApkgUnpackFileInfo2.fileContent);
-          }
-        }
-        catch (Exception paramArrayOfByte)
+        ApkgManager.7.ApkgUnpackFileInfo localApkgUnpackFileInfo1 = (ApkgManager.7.ApkgUnpackFileInfo)this.mapFileInfo.get("/app-config.json");
+        ApkgManager.7.ApkgUnpackFileInfo localApkgUnpackFileInfo2 = (ApkgManager.7.ApkgUnpackFileInfo)this.mapFileInfo.get("/app-service.js");
+        if ((localApkgUnpackFileInfo1 != null) && (localApkgUnpackFileInfo1.isCompleted()) && (localApkgUnpackFileInfo2 != null) && (localApkgUnpackFileInfo2.isCompleted()))
         {
           this.completed = true;
-          QLog.e("ApkgManager", 1, "to download OnResponseDataListener error.", paramArrayOfByte);
+          if (this.val$listener == null) {
+            return;
+          }
+          this.val$listener.onFakeApkgInfo(localApkgUnpackFileInfo1.fileContent, localApkgUnpackFileInfo2.fileContent);
           return;
         }
+        System.arraycopy(paramArrayOfByte, paramInt1, this.totalContent, this.index, paramInt2);
+        this.index += paramInt2;
+        unpackFileContent("/app-config.json");
+        unpackFileContent("/app-service.js");
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        this.completed = true;
+        QLog.e("ApkgManager", 1, "to download OnResponseDataListener error.", paramArrayOfByte);
       }
     }
-    System.arraycopy(paramArrayOfByte, paramInt1, this.totalContent, this.index, paramInt2);
-    this.index += paramInt2;
-    unpackFileContent("/app-config.json");
-    unpackFileContent("/app-service.js");
+    else {}
   }
   
   public final int readInt(byte[] paramArrayOfByte, int paramInt)
@@ -73,82 +80,90 @@ class ApkgManager$7
     int j = paramArrayOfByte[(paramInt + 1)] & 0xFF;
     int k = paramArrayOfByte[(paramInt + 2)] & 0xFF;
     paramInt = paramArrayOfByte[(paramInt + 3)] & 0xFF;
-    if ((i | j | k | paramInt) < 0) {
-      throw new EOFException();
+    if ((i | j | k | paramInt) >= 0) {
+      return (i << 24) + (j << 16) + (k << 8) + (paramInt << 0);
     }
-    return (i << 24) + (j << 16) + (k << 8) + (paramInt << 0);
+    throw new EOFException();
   }
   
   boolean unpackFileContent(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    Object localObject;
-    label319:
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    int i = this.index;
+    if (i < 17) {
+      return false;
+    }
+    int j = 18;
+    if ((i >= 18) && (this.fileCount <= 0))
     {
-      do
+      this.indexAreaLength = readInt(this.totalContent, 5);
+      this.fileCount = readInt(this.totalContent, 14);
+    }
+    if (this.index < this.indexAreaLength + 18 - 1) {
+      return false;
+    }
+    StringBuilder localStringBuilder;
+    if (!this.mapFileInfo.containsKey(paramString))
+    {
+      i = 0;
+      while (i < this.fileCount)
       {
-        do
+        int k = readInt(this.totalContent, j);
+        j += 4;
+        localObject = new String(this.totalContent, j, k);
+        j += k;
+        k = readInt(this.totalContent, j);
+        j += 4;
+        int m = readInt(this.totalContent, j);
+        j += 4;
+        if (((String)localObject).equals(paramString))
         {
-          return false;
-        } while (this.index < 17);
-        if ((this.index >= 18) && (this.fileCount <= 0))
-        {
-          this.indexAreaLength = readInt(this.totalContent, 5);
-          this.fileCount = readInt(this.totalContent, 14);
-        }
-      } while (this.index < this.indexAreaLength + 18 - 1);
-      int j;
-      int i;
-      if (!this.mapFileInfo.containsKey(paramString))
-      {
-        j = 18;
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i < this.fileCount)
-        {
-          int k = readInt(this.totalContent, j);
-          j += 4;
-          localObject = new String(this.totalContent, j, k);
-          j += k;
-          k = readInt(this.totalContent, j);
-          j += 4;
-          int m = readInt(this.totalContent, j);
-          j += 4;
-          if (((String)localObject).equals(paramString))
-          {
-            QLog.e("ApkgManager", 1, "to download file=" + (String)localObject + " offset=" + k + " size=" + m + " currRecvLength=" + this.index);
-            localObject = new ApkgManager.7.ApkgUnpackFileInfo(this);
-            ((ApkgManager.7.ApkgUnpackFileInfo)localObject).filename = paramString;
-            ((ApkgManager.7.ApkgUnpackFileInfo)localObject).offset = k;
-            ((ApkgManager.7.ApkgUnpackFileInfo)localObject).length = m;
-            this.mapFileInfo.put(paramString, localObject);
-          }
-        }
-        else
-        {
-          localObject = (ApkgManager.7.ApkgUnpackFileInfo)this.mapFileInfo.get(paramString);
-          if (localObject == null) {
-            break;
-          }
-          if (TextUtils.isEmpty(((ApkgManager.7.ApkgUnpackFileInfo)localObject).fileContent)) {
-            break label319;
-          }
-          return true;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("to download file=");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(" offset=");
+          localStringBuilder.append(k);
+          localStringBuilder.append(" size=");
+          localStringBuilder.append(m);
+          localStringBuilder.append(" currRecvLength=");
+          localStringBuilder.append(this.index);
+          QLog.e("ApkgManager", 1, localStringBuilder.toString());
+          localObject = new ApkgManager.7.ApkgUnpackFileInfo(this);
+          ((ApkgManager.7.ApkgUnpackFileInfo)localObject).filename = paramString;
+          ((ApkgManager.7.ApkgUnpackFileInfo)localObject).offset = k;
+          ((ApkgManager.7.ApkgUnpackFileInfo)localObject).length = m;
+          this.mapFileInfo.put(paramString, localObject);
+          break;
         }
         i += 1;
       }
-    } while (this.index < ((ApkgManager.7.ApkgUnpackFileInfo)localObject).offset + ((ApkgManager.7.ApkgUnpackFileInfo)localObject).length);
-    ((ApkgManager.7.ApkgUnpackFileInfo)localObject).fileContent = new String(this.totalContent, ((ApkgManager.7.ApkgUnpackFileInfo)localObject).offset, ((ApkgManager.7.ApkgUnpackFileInfo)localObject).length);
-    QLog.e("ApkgManager", 1, "to download and unpack sub file is done! " + paramString + " : " + ((ApkgManager.7.ApkgUnpackFileInfo)localObject).fileContent.substring(0, 100));
-    return true;
+    }
+    Object localObject = (ApkgManager.7.ApkgUnpackFileInfo)this.mapFileInfo.get(paramString);
+    if (localObject != null)
+    {
+      if (!TextUtils.isEmpty(((ApkgManager.7.ApkgUnpackFileInfo)localObject).fileContent)) {
+        return true;
+      }
+      if (this.index >= ((ApkgManager.7.ApkgUnpackFileInfo)localObject).offset + ((ApkgManager.7.ApkgUnpackFileInfo)localObject).length)
+      {
+        ((ApkgManager.7.ApkgUnpackFileInfo)localObject).fileContent = new String(this.totalContent, ((ApkgManager.7.ApkgUnpackFileInfo)localObject).offset, ((ApkgManager.7.ApkgUnpackFileInfo)localObject).length);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("to download and unpack sub file is done! ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" : ");
+        localStringBuilder.append(((ApkgManager.7.ApkgUnpackFileInfo)localObject).fileContent.substring(0, 100));
+        QLog.e("ApkgManager", 1, localStringBuilder.toString());
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.7
  * JD-Core Version:    0.7.0.1
  */

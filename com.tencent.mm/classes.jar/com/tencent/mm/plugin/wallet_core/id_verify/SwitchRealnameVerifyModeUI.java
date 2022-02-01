@@ -1,13 +1,9 @@
 package com.tencent.mm.plugin.wallet_core.id_verify;
 
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
 import android.view.KeyEvent;
@@ -17,22 +13,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.am.p;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.c.d;
-import com.tencent.mm.plugin.wallet_core.id_verify.model.b;
-import com.tencent.mm.plugin.wallet_core.ui.s;
-import com.tencent.mm.plugin.wallet_core.ui.s.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.a;
-import com.tencent.mm.wallet_core.c;
-import com.tencent.mm.wallet_core.c.f;
-import com.tencent.mm.wallet_core.c.k;
+import com.tencent.mm.plugin.wallet_core.ui.w;
+import com.tencent.mm.plugin.wallet_core.ui.w.a;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.model.g;
+import com.tencent.mm.wallet_core.model.m;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.wallet_core.ui.i;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,84 +42,45 @@ public class SwitchRealnameVerifyModeUI
   extends WalletBaseUI
   implements View.OnClickListener
 {
-  private int gyl;
-  private s oAh;
-  private boolean ubw;
-  private long ucA;
-  private View ucB;
-  private View ucC;
-  private View ucD;
-  private TextView ucE;
-  private TextView ucF;
-  private TextView ucG;
-  private TextView ucH;
-  private TextView ucI;
-  private TextView ucJ;
-  private TextView ucK;
-  private TextView ucL;
-  private TextView ucM;
-  private String ucN;
-  private String ucO;
-  private String ucP;
-  private boolean ucQ;
-  private boolean ucR;
-  private int ucz;
+  private w KLQ;
+  private boolean VxE;
+  private int VyQ;
+  private long VyR;
+  private View VyS;
+  private View VyT;
+  private View VyU;
+  private TextView VyV;
+  private TextView VyW;
+  private TextView VyX;
+  private TextView VyY;
+  private TextView VyZ;
+  private TextView Vza;
+  private TextView Vzb;
+  private TextView Vzc;
+  private TextView Vzd;
+  private String Vze;
+  private String Vzf;
+  private String Vzg;
+  private boolean Vzh;
+  private boolean Vzi;
+  private int mEntryScene;
   
   public SwitchRealnameVerifyModeUI()
   {
-    AppMethodBeat.i(46598);
-    this.ucz = 500;
-    this.ucA = 0L;
-    this.gyl = 0;
-    this.ucR = false;
-    this.oAh = new s();
-    this.ubw = false;
-    AppMethodBeat.o(46598);
+    AppMethodBeat.i(70026);
+    this.VyQ = 500;
+    this.VyR = 0L;
+    this.mEntryScene = 0;
+    this.Vzi = false;
+    this.KLQ = new w();
+    this.VxE = false;
+    AppMethodBeat.o(70026);
   }
   
-  private static JSONObject cTc()
+  private boolean HG(boolean paramBoolean)
   {
-    AppMethodBeat.i(46609);
-    com.tencent.mm.kernel.g.RM();
-    Object localObject = com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yCo, "");
-    if (localObject != null)
-    {
-      localObject = (String)localObject;
-      if (!bo.isNullOrNil((String)localObject)) {
-        try
-        {
-          localObject = new JSONObject((String)localObject);
-          long l1 = System.currentTimeMillis() / 1000L;
-          long l2 = ((JSONObject)localObject).getLong("timestamp");
-          long l3 = ((JSONObject)localObject).getLong("cache_time");
-          ab.i("MicroMsg.SwitchRealnameVerifyModeUI", " dddd time=" + l1 + ";timestamp=" + l2 + ";cachetime=" + l3);
-          if (l1 - l2 > l3)
-          {
-            ab.e("MicroMsg.SwitchRealnameVerifyModeUI", "wording data from cache is out of date");
-            AppMethodBeat.o(46609);
-            return null;
-          }
-          AppMethodBeat.o(46609);
-          return localObject;
-        }
-        catch (JSONException localJSONException)
-        {
-          ab.printErrStackTrace("MicroMsg.SwitchRealnameVerifyModeUI", localJSONException, "", new Object[0]);
-          ab.e("MicroMsg.SwitchRealnameVerifyModeUI", "parse wording data form cache error");
-          AppMethodBeat.o(46609);
-          return null;
-        }
-      }
-    }
-    ab.i("MicroMsg.SwitchRealnameVerifyModeUI", "cache is null");
-    AppMethodBeat.o(46609);
-    return null;
-  }
-  
-  private boolean nF(boolean paramBoolean)
-  {
-    AppMethodBeat.i(46610);
-    Object localObject2 = cTc();
+    AppMethodBeat.i(70037);
+    Object localObject2 = ihQ();
     Object localObject1 = localObject2;
     if (paramBoolean)
     {
@@ -128,250 +91,296 @@ public class SwitchRealnameVerifyModeUI
     }
     if (localObject1 != null)
     {
-      localObject2 = bo.bf(((JSONObject)localObject1).optString("cache_header_titles", getString(2131304213)), getString(2131304213));
-      if (this.ucR)
+      localObject2 = Util.nullAs(((JSONObject)localObject1).optString("cache_header_titles", getString(a.i.switch_realname_default_tip)), getString(a.i.switch_realname_default_tip));
+      if (this.Vzi)
       {
-        this.ucK.setText(2131305549);
+        this.Vzb.setText(a.i.wallet_real_name_verify_title_from_pwd_desc);
         if (!((JSONObject)localObject1).optBoolean("isShowBindCardVerify", false)) {
-          break label536;
+          break label526;
         }
-        this.ucL.setText(((JSONObject)localObject1).optString("bindCardVerifyTitle"));
-        this.ucM.setText(((JSONObject)localObject1).optString("bindCardVerifySubtitle"));
-        this.ucD.setVisibility(0);
-        label115:
+        this.Vzc.setText(((JSONObject)localObject1).optString("bindCardVerifyTitle"));
+        this.Vzd.setText(((JSONObject)localObject1).optString("bindCardVerifySubtitle"));
+        this.VyU.setVisibility(0);
+        label118:
         if (!((JSONObject)localObject1).optBoolean("isShowBindCard", false)) {
-          break label548;
+          break label538;
         }
-        this.ucE.setText(((JSONObject)localObject1).optString("bindcardTitle", getString(2131304214)));
-        this.ucF.setText(((JSONObject)localObject1).optString("bindcardSubTitle", getString(2131304215)));
-        this.ucB.setVisibility(0);
-        label172:
+        this.VyV.setText(((JSONObject)localObject1).optString("bindcardTitle", getString(a.i.switch_realname_verify_mode_bindcard)));
+        this.VyW.setText(((JSONObject)localObject1).optString("bindcardSubTitle", getString(a.i.switch_realname_verify_mode_bindcard_tip)));
+        this.VyS.setVisibility(0);
+        label176:
         if (!((JSONObject)localObject1).optBoolean("isShowBindId", false)) {
-          break label560;
+          break label550;
         }
-        this.ucG.setText(((JSONObject)localObject1).optString("bindIdTitle", getString(2131304216)));
-        this.ucH.setText(((JSONObject)localObject1).optString("bindIdSubTitle", getString(2131304217)));
-        this.ucC.setVisibility(0);
-        label233:
-        this.ucO = ((JSONObject)localObject1).optString("bindCardVerifyAlertViewRightBtnTxt", "");
-        this.ucP = ((JSONObject)localObject1).optString("bindCardVerifyAlertViewContent", "");
-        this.ucQ = ((JSONObject)localObject1).optBoolean("isShowBindCardVerifyAlertView", false);
+        this.VyX.setText(((JSONObject)localObject1).optString("bindIdTitle", getString(a.i.switch_realname_verify_mode_id_verify)));
+        this.VyY.setText(((JSONObject)localObject1).optString("bindIdSubTitle", getString(a.i.switch_realname_verify_mode_id_verify_tip)));
+        this.VyT.setVisibility(0);
+        label234:
+        this.Vzf = ((JSONObject)localObject1).optString("bindCardVerifyAlertViewRightBtnTxt", "");
+        this.Vzg = ((JSONObject)localObject1).optString("bindCardVerifyAlertViewContent", "");
+        this.Vzh = ((JSONObject)localObject1).optBoolean("isShowBindCardVerifyAlertView", false);
         localObject2 = ((JSONObject)localObject1).optString("extral_wording", "");
-        if (bo.isNullOrNil((String)localObject2)) {
-          break label572;
+        if (Util.isNullOrNil((String)localObject2)) {
+          break label562;
         }
-        this.ucI.setText((CharSequence)localObject2);
-        this.ucI.setVisibility(0);
-        label304:
-        this.ucO = ((JSONObject)localObject1).optString("bindCardVerifyAlertViewRightBtnTxt", "");
-        this.ucP = ((JSONObject)localObject1).optString("bindCardVerifyAlertViewContent");
-        this.ucQ = ((JSONObject)localObject1).optBoolean("isShowBindCardVerifyAlertView", false);
+        this.VyZ.setText((CharSequence)localObject2);
+        this.VyZ.setVisibility(0);
+        label301:
+        this.Vzf = ((JSONObject)localObject1).optString("bindCardVerifyAlertViewRightBtnTxt", "");
+        this.Vzg = ((JSONObject)localObject1).optString("bindCardVerifyAlertViewContent");
+        this.Vzh = ((JSONObject)localObject1).optBoolean("isShowBindCardVerifyAlertView", false);
         paramBoolean = ((JSONObject)localObject1).optBoolean("question_answer_switch", false);
-        this.ucN = ((JSONObject)localObject1).optString("question_answer_url", "");
-        if ((paramBoolean) && (!bo.isNullOrNil(this.ucN))) {
-          addIconOptionMenu(0, 2130840873, new SwitchRealnameVerifyModeUI.7(this));
+        this.Vze = ((JSONObject)localObject1).optString("question_answer_url", "");
+        if ((paramBoolean) && (!Util.isNullOrNil(this.Vze))) {
+          addIconOptionMenu(0, a.e.wallet_qanda_icon, new MenuItem.OnMenuItemClickListener()
+          {
+            public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+            {
+              AppMethodBeat.i(70024);
+              i.f(18, Util.nowSecond(), SwitchRealnameVerifyModeUI.a(SwitchRealnameVerifyModeUI.this));
+              i.p(SwitchRealnameVerifyModeUI.this.getContext(), SwitchRealnameVerifyModeUI.d(SwitchRealnameVerifyModeUI.this), false);
+              AppMethodBeat.o(70024);
+              return true;
+            }
+          });
         }
         if (!((JSONObject)localObject1).optBoolean("isShowCapitalSecurity", false)) {
-          break label584;
+          break label574;
         }
-        localObject1 = new SpannableString("#  " + getContext().getResources().getString(2131305318));
-        localObject2 = getContext().getResources().getDrawable(2130839138);
+        localObject1 = new SpannableString("#  " + getContext().getResources().getString(a.i.wallet_offline_un_open_tip));
+        localObject2 = getContext().getResources().getDrawable(a.e.icon_shield_pay);
         ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
         ((SpannableString)localObject1).setSpan(new ImageSpan((Drawable)localObject2), 0, 1, 18);
-        this.ucJ.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
-        this.ucJ.setOnClickListener(new SwitchRealnameVerifyModeUI.8(this));
-        this.ucJ.setVisibility(0);
+        this.Vza.setText((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
+        this.Vza.setOnClickListener(new SwitchRealnameVerifyModeUI.8(this));
+        this.Vza.setVisibility(0);
       }
       for (;;)
       {
-        AppMethodBeat.o(46610);
+        AppMethodBeat.o(70037);
         return true;
-        this.ucK.setText((CharSequence)localObject2);
+        this.Vzb.setText((CharSequence)localObject2);
         break;
-        label536:
-        this.ucD.setVisibility(8);
-        break label115;
-        label548:
-        this.ucB.setVisibility(8);
-        break label172;
-        label560:
-        this.ucC.setVisibility(8);
-        break label233;
-        label572:
-        this.ucI.setVisibility(8);
-        break label304;
-        label584:
-        this.ucJ.setVisibility(8);
+        label526:
+        this.VyU.setVisibility(8);
+        break label118;
+        label538:
+        this.VyS.setVisibility(8);
+        break label176;
+        label550:
+        this.VyT.setVisibility(8);
+        break label234;
+        label562:
+        this.VyZ.setVisibility(8);
+        break label301;
+        label574:
+        this.Vza.setVisibility(8);
       }
     }
-    AppMethodBeat.o(46610);
+    AppMethodBeat.o(70037);
     return paramBoolean;
+  }
+  
+  private static JSONObject ihQ()
+  {
+    AppMethodBeat.i(70036);
+    h.baF();
+    Object localObject = h.baE().ban().get(at.a.acMK, "");
+    if (localObject != null)
+    {
+      localObject = (String)localObject;
+      if (!Util.isNullOrNil((String)localObject)) {
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          long l1 = System.currentTimeMillis() / 1000L;
+          long l2 = ((JSONObject)localObject).getLong("timestamp");
+          long l3 = ((JSONObject)localObject).getLong("cache_time");
+          Log.i("MicroMsg.SwitchRealnameVerifyModeUI", " dddd time=" + l1 + ";timestamp=" + l2 + ";cachetime=" + l3);
+          if (l1 - l2 > l3)
+          {
+            Log.e("MicroMsg.SwitchRealnameVerifyModeUI", "wording data from cache is out of date");
+            AppMethodBeat.o(70036);
+            return null;
+          }
+          AppMethodBeat.o(70036);
+          return localObject;
+        }
+        catch (JSONException localJSONException)
+        {
+          Log.printErrStackTrace("MicroMsg.SwitchRealnameVerifyModeUI", localJSONException, "", new Object[0]);
+          Log.e("MicroMsg.SwitchRealnameVerifyModeUI", "parse wording data form cache error");
+          AppMethodBeat.o(70036);
+          return null;
+        }
+      }
+    }
+    Log.i("MicroMsg.SwitchRealnameVerifyModeUI", "cache is null");
+    AppMethodBeat.o(70036);
+    return null;
   }
   
   public int getLayoutId()
   {
-    return 2130971241;
+    return a.g.wallet_realname_verify_mode_ui;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(46608);
+    AppMethodBeat.i(70031);
     setMMTitle("");
-    this.ucB = findViewById(2131829375);
-    this.ucC = findViewById(2131829379);
-    this.ucD = findViewById(2131829371);
-    this.ucC.setOnClickListener(this);
-    this.ucB.setOnClickListener(this);
-    this.ucD.setOnClickListener(this);
-    this.ucE = ((TextView)findViewById(2131829376));
-    this.ucF = ((TextView)findViewById(2131829377));
-    this.ucG = ((TextView)findViewById(2131829380));
-    this.ucH = ((TextView)findViewById(2131829381));
-    this.ucI = ((TextView)findViewById(2131829382));
-    this.ucJ = ((TextView)findViewById(2131829253));
-    this.ucL = ((TextView)findViewById(2131829372));
-    this.ucM = ((TextView)findViewById(2131829373));
-    this.ucK = ((TextView)findViewById(2131829370));
-    if (this.ucR) {
-      this.ucK.setText(2131305549);
+    this.VyS = findViewById(a.f.switch_to_bindcard);
+    this.VyT = findViewById(a.f.switch_to_verify_id);
+    this.VyU = findViewById(a.f.switch_to_verifycard);
+    this.VyT.setOnClickListener(this);
+    this.VyS.setOnClickListener(this);
+    this.VyU.setOnClickListener(this);
+    this.VyV = ((TextView)findViewById(a.f.bind_card_title));
+    this.VyW = ((TextView)findViewById(a.f.bind_card_sub_title));
+    this.VyX = ((TextView)findViewById(a.f.bind_id_title));
+    this.VyY = ((TextView)findViewById(a.f.bind_id_sub_title));
+    this.VyZ = ((TextView)findViewById(a.f.extral_wording));
+    this.Vza = ((TextView)findViewById(a.f.safe_pay_tip));
+    this.Vzc = ((TextView)findViewById(a.f.verify_card_title));
+    this.Vzd = ((TextView)findViewById(a.f.verify_card_sub_title));
+    this.Vzb = ((TextView)findViewById(a.f.switch_real_name_tv));
+    if (this.Vzi) {
+      this.Vzb.setText(a.i.wallet_real_name_verify_title_from_pwd_desc);
     }
-    nF(false);
-    b localb = new b();
+    HG(false);
+    com.tencent.mm.plugin.wallet_core.id_verify.model.e locale = new com.tencent.mm.plugin.wallet_core.id_verify.model.e("");
     addSceneEndListener(1666);
-    doSceneProgress(localb);
+    doSceneProgress(locale);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(46590);
+        AppMethodBeat.i(70018);
         paramAnonymousMenuItem = SwitchRealnameVerifyModeUI.this.getProcess();
         if (paramAnonymousMenuItem != null)
         {
-          com.tencent.mm.wallet_core.ui.e.a(14, bo.aox(), SwitchRealnameVerifyModeUI.a(SwitchRealnameVerifyModeUI.this));
-          paramAnonymousMenuItem.e(SwitchRealnameVerifyModeUI.this, 0);
-          AppMethodBeat.o(46590);
+          i.f(14, Util.nowSecond(), SwitchRealnameVerifyModeUI.a(SwitchRealnameVerifyModeUI.this));
+          paramAnonymousMenuItem.i(SwitchRealnameVerifyModeUI.this, 0);
+          AppMethodBeat.o(70018);
           return true;
         }
         SwitchRealnameVerifyModeUI.this.finish();
-        AppMethodBeat.o(46590);
+        AppMethodBeat.o(70018);
         return false;
       }
     });
-    AppMethodBeat.o(46608);
+    AppMethodBeat.o(70031);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(46605);
+    AppMethodBeat.i(70033);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 1)
     {
       if (paramInt2 == -1)
       {
-        this.oAh.bOM();
-        AppMethodBeat.o(46605);
+        this.KLQ.agree();
+        AppMethodBeat.o(70033);
         return;
       }
-      this.oAh.cancel();
+      this.KLQ.cancel();
     }
-    AppMethodBeat.o(46605);
+    AppMethodBeat.o(70033);
   }
   
   public void onClick(final View paramView)
   {
-    AppMethodBeat.i(46606);
-    if (System.currentTimeMillis() - this.ucA <= this.ucz)
+    AppMethodBeat.i(70034);
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/id_verify/SwitchRealnameVerifyModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (System.currentTimeMillis() - this.VyR <= this.VyQ)
     {
-      ab.e("MicroMsg.SwitchRealnameVerifyModeUI", "process pass");
-      AppMethodBeat.o(46606);
+      Log.e("MicroMsg.SwitchRealnameVerifyModeUI", "process pass");
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/id_verify/SwitchRealnameVerifyModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(70034);
       return;
     }
-    this.ucA = System.currentTimeMillis();
-    this.oAh.a(new s.a()
+    this.VyR = System.currentTimeMillis();
+    this.KLQ.a(new w.a()
     {
-      public final void bOM()
+      public final void agree()
       {
-        AppMethodBeat.i(46591);
+        AppMethodBeat.i(70019);
         SwitchRealnameVerifyModeUI.this.onClickImp(paramView);
         SwitchRealnameVerifyModeUI.b(SwitchRealnameVerifyModeUI.this);
-        AppMethodBeat.o(46591);
-      }
-      
-      public final void bON()
-      {
-        AppMethodBeat.i(46593);
-        SwitchRealnameVerifyModeUI.this.onClickImp(paramView);
-        AppMethodBeat.o(46593);
+        AppMethodBeat.o(70019);
       }
       
       public final void cancel()
       {
-        AppMethodBeat.i(46592);
-        SwitchRealnameVerifyModeUI.c(SwitchRealnameVerifyModeUI.this).coy = false;
-        AppMethodBeat.o(46592);
+        AppMethodBeat.i(70020);
+        SwitchRealnameVerifyModeUI.c(SwitchRealnameVerifyModeUI.this).hBY = false;
+        AppMethodBeat.o(70020);
       }
-    }, this.ubw);
-    AppMethodBeat.o(46606);
+      
+      public final void nothing()
+      {
+        AppMethodBeat.i(70021);
+        SwitchRealnameVerifyModeUI.this.onClickImp(paramView);
+        AppMethodBeat.o(70021);
+      }
+    }, this.VxE);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/id_verify/SwitchRealnameVerifyModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(70034);
   }
   
   public void onClickImp(View paramView)
   {
-    AppMethodBeat.i(46607);
+    AppMethodBeat.i(70035);
     int i = paramView.getId();
     paramView = getProcess();
     Bundle localBundle;
     if (paramView != null)
     {
-      localBundle = paramView.mEJ;
-      if (i != 2131829375) {
+      localBundle = paramView.hPH;
+      if (i != a.f.switch_to_bindcard) {
         break label235;
       }
-      com.tencent.mm.wallet_core.ui.e.a(15, bo.aox(), this.gyl);
+      i.f(15, Util.nowSecond(), this.mEntryScene);
       if (localBundle.getInt("realname_scene") == 1)
       {
         if (getIntent() == null)
         {
           paramView = "";
-          if (bo.isNullOrNil("")) {
-            paramView = getString(2131305682);
+          if (Util.isNullOrNil("")) {
+            paramView = getString(a.i.wallet_unknown_err);
           }
-          h.a(this, paramView, null, false, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(46595);
-              SwitchRealnameVerifyModeUI.this.finish();
-              AppMethodBeat.o(46595);
-            }
-          });
-          AppMethodBeat.o(46607);
+          k.a(this, paramView, null, false, new SwitchRealnameVerifyModeUI.6(this));
+          AppMethodBeat.o(70035);
           return;
         }
         addSceneEndListener(580);
         doSceneForceProgress(new d(getIntent().getStringExtra("appId"), getIntent().getStringExtra("timeStamp"), getIntent().getStringExtra("nonceStr"), getIntent().getStringExtra("packageExt"), getIntent().getStringExtra("signtype"), getIntent().getStringExtra("paySignature"), getIntent().getStringExtra("url"), 8, "idCardRealnameVerify", getIntent().getIntExtra("pay_channel", 0)));
-        AppMethodBeat.o(46607);
+        AppMethodBeat.o(70035);
         return;
       }
       localBundle.putInt("real_name_verify_mode", 1);
     }
     for (;;)
     {
-      a.j(this, localBundle);
-      AppMethodBeat.o(46607);
+      com.tencent.mm.wallet_core.a.k(this, localBundle);
+      AppMethodBeat.o(70035);
       return;
       label235:
-      if (i == 2131829379)
+      if (i == a.f.switch_to_verify_id)
       {
-        com.tencent.mm.wallet_core.ui.e.a(17, bo.aox(), this.gyl);
+        i.f(17, Util.nowSecond(), this.mEntryScene);
         localBundle.putInt("real_name_verify_mode", 2);
       }
-      else if (i == 2131829371)
+      else if (i == a.f.switch_to_verifycard)
       {
-        com.tencent.mm.wallet_core.ui.e.a(16, bo.aox(), this.gyl);
-        if ((this.ucQ) && (!bo.isNullOrNil(this.ucP)))
+        i.f(16, Util.nowSecond(), this.mEntryScene);
+        if ((this.Vzh) && (!Util.isNullOrNil(this.Vzg)))
         {
-          h.a(this, this.ucP, "", this.ucO, false, new SwitchRealnameVerifyModeUI.5(this, paramView));
-          AppMethodBeat.o(46607);
+          k.a(this, this.Vzg, "", this.Vzf, false, new SwitchRealnameVerifyModeUI.5(this, paramView));
+          AppMethodBeat.o(70035);
           return;
         }
         localBundle.putInt("real_name_verify_mode", 3);
@@ -382,7 +391,7 @@ public class SwitchRealnameVerifyModeUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(46602);
+    AppMethodBeat.i(70030);
     super.onCreate(paramBundle);
     if ((getIntent().getExtras().getBoolean("is_from_new_cashier")) && (getProcess() == null))
     {
@@ -392,98 +401,99 @@ public class SwitchRealnameVerifyModeUI
         finish();
       }
     }
-    this.ucR = getInput().getBoolean("key_from_set_pwd", false);
+    this.Vzi = getInput().getBoolean("key_from_set_pwd", false);
     initView();
     getProcess();
-    this.gyl = getInput().getInt("entry_scene", this.gyl);
-    com.tencent.mm.wallet_core.ui.e.a(13, bo.aox(), this.gyl);
-    if (this.ucR) {
-      setMMTitle(2131305548);
+    this.mEntryScene = getInput().getInt("entry_scene", this.mEntryScene);
+    i.f(13, Util.nowSecond(), this.mEntryScene);
+    if (this.Vzi) {
+      setMMTitle(a.i.wallet_real_name_verify_title_from_pwd);
     }
-    this.oAh.uuu = new SwitchRealnameVerifyModeUI.1(this);
-    AppMethodBeat.o(46602);
+    this.KLQ.VTP = new SwitchRealnameVerifyModeUI.1(this);
+    AppMethodBeat.o(70030);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(46601);
+    AppMethodBeat.i(70029);
     super.onDestroy();
-    AppMethodBeat.o(46601);
+    AppMethodBeat.o(70029);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(46611);
+    AppMethodBeat.i(70038);
     if (paramInt == 4)
     {
-      c localc = getProcess();
-      if (localc != null)
+      com.tencent.mm.wallet_core.e locale = getProcess();
+      if (locale != null)
       {
-        com.tencent.mm.wallet_core.ui.e.a(14, bo.aox(), this.gyl);
-        localc.e(this, 0);
-        AppMethodBeat.o(46611);
+        i.f(14, Util.nowSecond(), this.mEntryScene);
+        locale.i(this, 0);
+        AppMethodBeat.o(70038);
         return true;
       }
       finish();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(46611);
+    AppMethodBeat.o(70038);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(46600);
+    AppMethodBeat.i(70028);
     super.onPause();
-    this.oAh.onPause();
-    AppMethodBeat.o(46600);
+    this.KLQ.onPause();
+    AppMethodBeat.o(70028);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(46599);
+    AppMethodBeat.i(70027);
     super.onResume();
-    this.oAh.onResume();
-    AppMethodBeat.o(46599);
+    this.KLQ.onResume();
+    AppMethodBeat.o(70027);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(46604);
-    if ((paramm instanceof d))
+    AppMethodBeat.i(70032);
+    if ((paramp instanceof d))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        com.tencent.mm.pluginsdk.wallet.g.ana(((d)paramm).cSW());
+        com.tencent.mm.pluginsdk.wallet.e.brZ(((d)paramp).ihJ());
         removeSceneEndListener(580);
+        ((d)paramp).getToken();
         paramString = getProcess();
         if (paramString != null)
         {
-          paramString = paramString.mEJ;
+          paramString = paramString.hPH;
           paramString.putInt("real_name_verify_mode", 1);
-          a.j(this, paramString);
+          com.tencent.mm.wallet_core.a.k(this, paramString);
         }
-        AppMethodBeat.o(46604);
+        AppMethodBeat.o(70032);
         return true;
       }
     }
-    else if ((paramm instanceof b))
+    else if ((paramp instanceof com.tencent.mm.plugin.wallet_core.id_verify.model.e))
     {
       removeSceneEndListener(1666);
-      nF(true);
-      paramString = (b)paramm;
-      this.ubw = paramString.ubw;
+      HG(true);
+      paramString = (com.tencent.mm.plugin.wallet_core.id_verify.model.e)paramp;
+      this.VxE = paramString.VxE;
       if (paramString.jumpRemind == null) {}
-      for (paramInt1 = 0; (paramInt1 != 0) && (paramString.jumpRemind.a(this, new f()
+      for (paramInt1 = 0; (paramInt1 != 0) && (paramString.jumpRemind.a(this, new g()
           {
-            public final void bOi() {}
+            public final void fWQ() {}
           })); paramInt1 = 1)
       {
-        AppMethodBeat.o(46604);
+        AppMethodBeat.o(70032);
         return true;
       }
     }
-    AppMethodBeat.o(46604);
+    AppMethodBeat.o(70032);
     return false;
   }
   
@@ -495,7 +505,7 @@ public class SwitchRealnameVerifyModeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.SwitchRealnameVerifyModeUI
  * JD-Core Version:    0.7.0.1
  */

@@ -6,32 +6,32 @@ import java.lang.reflect.Array;
 
 public final class e<E>
 {
-  private final Class<? extends E> BbZ;
-  public int Bca;
-  public E[] Bcb;
-  public int[] Bcc;
-  public int[] Bcd;
-  public int[] Bce;
+  private final Class<? extends E> ahbP;
+  public int ahbQ;
+  public E[] ahbR;
+  public int[] ahbS;
+  public int[] ahbT;
+  public int[] ahbU;
   
   e(Class<? extends E> paramClass)
   {
-    this.BbZ = paramClass;
-    this.Bca = 0;
+    this.ahbP = paramClass;
+    this.ahbQ = 0;
   }
   
   public final void a(Spanned paramSpanned, int paramInt)
   {
-    AppMethodBeat.i(3258);
-    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.BbZ);
+    AppMethodBeat.i(39760);
+    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.ahbP);
     int i = arrayOfObject.length;
-    if ((i > 0) && ((this.Bcb == null) || (this.Bcb.length < i)))
+    if ((i > 0) && ((this.ahbR == null) || (this.ahbR.length < i)))
     {
-      this.Bcb = ((Object[])Array.newInstance(this.BbZ, i));
-      this.Bcc = new int[i];
-      this.Bcd = new int[i];
-      this.Bce = new int[i];
+      this.ahbR = ((Object[])Array.newInstance(this.ahbP, i));
+      this.ahbS = new int[i];
+      this.ahbT = new int[i];
+      this.ahbU = new int[i];
     }
-    this.Bca = 0;
+    this.ahbQ = 0;
     paramInt = 0;
     while (paramInt < i)
     {
@@ -41,24 +41,24 @@ public final class e<E>
       if (j != k)
       {
         int m = paramSpanned.getSpanFlags(localObject);
-        this.Bcb[this.Bca] = localObject;
-        this.Bcc[this.Bca] = j;
-        this.Bcd[this.Bca] = k;
-        this.Bce[this.Bca] = m;
-        this.Bca += 1;
+        this.ahbR[this.ahbQ] = localObject;
+        this.ahbS[this.ahbQ] = j;
+        this.ahbT[this.ahbQ] = k;
+        this.ahbU[this.ahbQ] = m;
+        this.ahbQ += 1;
       }
       paramInt += 1;
     }
-    AppMethodBeat.o(3258);
+    AppMethodBeat.o(39760);
   }
   
-  public final E ik(int paramInt1, int paramInt2)
+  public final E pD(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.Bca)
+    while (i < this.ahbQ)
     {
-      if ((this.Bcc[i] < paramInt2) && (this.Bcd[i] > paramInt1)) {
-        return this.Bcb[i];
+      if ((this.ahbS[i] < paramInt2) && (this.ahbT[i] > paramInt1)) {
+        return this.ahbR[i];
       }
       i += 1;
     }
@@ -67,7 +67,7 @@ public final class e<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser.GridViewAdapter;
+import com.tencent.open.agent.FriendChooser.SearchResultAdapter;
 import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 
 public class hjb
   implements ImageLoader.ImageLoadListener
 {
-  public hjb(FriendChooser.GridViewAdapter paramGridViewAdapter, ImageView paramImageView) {}
+  public hjb(FriendChooser.SearchResultAdapter paramSearchResultAdapter, ImageView paramImageView) {}
   
   public void a(String paramString, Bitmap paramBitmap)
   {

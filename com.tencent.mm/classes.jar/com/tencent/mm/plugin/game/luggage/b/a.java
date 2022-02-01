@@ -1,50 +1,74 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bi;
 import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> laz;
+  private static LinkedList<Class<? extends com.tencent.luggage.d.b>> Iuu;
   
-  private static void ai(Class<? extends com.tencent.luggage.d.a> paramClass)
+  private static void bS(Class<? extends com.tencent.luggage.d.b> paramClass)
   {
-    AppMethodBeat.i(135865);
-    laz.add(paramClass);
-    AppMethodBeat.o(135865);
+    AppMethodBeat.i(83050);
+    Iuu.add(paramClass);
+    AppMethodBeat.o(83050);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bjM()
+  public static LinkedList<Class<? extends com.tencent.luggage.d.b>> fEv()
   {
     try
     {
-      AppMethodBeat.i(135864);
-      laz = new LinkedList();
-      ai(f.class);
-      ai(h.class);
-      ai(i.class);
-      ai(j.class);
-      ai(k.class);
-      ai(p.class);
-      ai(q.class);
-      ai(r.class);
-      ai(w.class);
-      ai(u.class);
-      ai(v.class);
-      ai(m.class);
-      ai(c.class);
-      ai(b.class);
-      ai(o.class);
-      ai(g.class);
-      ai(n.class);
-      ai(e.class);
-      ai(s.class);
-      ai(d.class);
-      ai(t.class);
-      ai(l.class);
-      ai(x.class);
-      LinkedList localLinkedList = laz;
-      AppMethodBeat.o(135864);
+      AppMethodBeat.i(83049);
+      Iuu = new LinkedList();
+      bS(h.class);
+      bS(n.class);
+      bS(o.class);
+      bS(q.class);
+      bS(r.class);
+      bS(ab.class);
+      bS(ad.class);
+      bS(af.class);
+      bS(aq.class);
+      bS(al.class);
+      bS(am.class);
+      bS(w.class);
+      bS(c.class);
+      bS(b.class);
+      bS(z.class);
+      bS(m.class);
+      bS(x.class);
+      bS(g.class);
+      bS(ah.class);
+      bS(e.class);
+      bS(ai.class);
+      bS(v.class);
+      bS(au.class);
+      bS(bi.class);
+      bS(d.class);
+      bS(p.class);
+      bS(ae.class);
+      bS(ag.class);
+      bS(ar.class);
+      bS(as.class);
+      bS(u.class);
+      bS(ao.class);
+      bS(ac.class);
+      bS(an.class);
+      bS(k.class);
+      bS(t.class);
+      bS(s.class);
+      bS(aj.class);
+      bS(aa.class);
+      bS(at.class);
+      bS(y.class);
+      bS(j.class);
+      bS(l.class);
+      bS(ap.class);
+      bS(f.class);
+      bS(ak.class);
+      LinkedList localLinkedList = Iuu;
+      AppMethodBeat.o(83049);
       return localLinkedList;
     }
     finally
@@ -56,7 +80,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,66 +13,66 @@ public final class SpliceInsertCommand
   extends SpliceCommand
 {
   public static final Parcelable.Creator<SpliceInsertCommand> CREATOR;
-  public final long aOm;
-  public final boolean aOn;
-  public final boolean aOo;
-  public final boolean aOp;
-  public final boolean aOq;
-  public final long aOr;
-  public final long aOs;
-  public final List<a> aOt;
-  public final boolean aOu;
-  public final long aOv;
-  public final int aOw;
-  public final int aOx;
-  public final int aOy;
+  public final long cYb;
+  public final boolean cYc;
+  public final boolean cYd;
+  public final boolean cYe;
+  public final boolean cYf;
+  public final long cYg;
+  public final long cYh;
+  public final List<a> cYi;
+  public final boolean cYj;
+  public final long cYk;
+  public final int cYl;
+  public final int cYm;
+  public final int cYn;
   
   static
   {
-    AppMethodBeat.i(95370);
-    CREATOR = new SpliceInsertCommand.1();
-    AppMethodBeat.o(95370);
+    AppMethodBeat.i(92492);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(92492);
   }
   
   private SpliceInsertCommand(long paramLong1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, long paramLong2, long paramLong3, List<a> paramList, boolean paramBoolean5, long paramLong4, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(95366);
-    this.aOm = paramLong1;
-    this.aOn = paramBoolean1;
-    this.aOo = paramBoolean2;
-    this.aOp = paramBoolean3;
-    this.aOq = paramBoolean4;
-    this.aOr = paramLong2;
-    this.aOs = paramLong3;
-    this.aOt = Collections.unmodifiableList(paramList);
-    this.aOu = paramBoolean5;
-    this.aOv = paramLong4;
-    this.aOw = paramInt1;
-    this.aOx = paramInt2;
-    this.aOy = paramInt3;
-    AppMethodBeat.o(95366);
+    AppMethodBeat.i(92488);
+    this.cYb = paramLong1;
+    this.cYc = paramBoolean1;
+    this.cYd = paramBoolean2;
+    this.cYe = paramBoolean3;
+    this.cYf = paramBoolean4;
+    this.cYg = paramLong2;
+    this.cYh = paramLong3;
+    this.cYi = Collections.unmodifiableList(paramList);
+    this.cYj = paramBoolean5;
+    this.cYk = paramLong4;
+    this.cYl = paramInt1;
+    this.cYm = paramInt2;
+    this.cYn = paramInt3;
+    AppMethodBeat.o(92488);
   }
   
   private SpliceInsertCommand(Parcel paramParcel)
   {
-    AppMethodBeat.i(95367);
-    this.aOm = paramParcel.readLong();
+    AppMethodBeat.i(92489);
+    this.cYb = paramParcel.readLong();
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.aOn = bool1;
+      this.cYc = bool1;
       if (paramParcel.readByte() != 1) {
         break label166;
       }
       bool1 = true;
       label48:
-      this.aOo = bool1;
+      this.cYd = bool1;
       if (paramParcel.readByte() != 1) {
         break label172;
       }
       bool1 = true;
       label65:
-      this.aOp = bool1;
+      this.cYe = bool1;
       if (paramParcel.readByte() != 1) {
         break label178;
       }
@@ -83,9 +83,9 @@ public final class SpliceInsertCommand
     label178:
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.aOq = bool1;
-      this.aOr = paramParcel.readLong();
-      this.aOs = paramParcel.readLong();
+      this.cYf = bool1;
+      this.cYg = paramParcel.readLong();
+      this.cYh = paramParcel.readLong();
       int j = paramParcel.readInt();
       localArrayList = new ArrayList(j);
       int i = 0;
@@ -101,24 +101,24 @@ public final class SpliceInsertCommand
       bool1 = false;
       break label65;
     }
-    this.aOt = Collections.unmodifiableList(localArrayList);
+    this.cYi = Collections.unmodifiableList(localArrayList);
     if (paramParcel.readByte() == 1) {}
     for (bool1 = bool2;; bool1 = false)
     {
-      this.aOu = bool1;
-      this.aOv = paramParcel.readLong();
-      this.aOw = paramParcel.readInt();
-      this.aOx = paramParcel.readInt();
-      this.aOy = paramParcel.readInt();
-      AppMethodBeat.o(95367);
+      this.cYj = bool1;
+      this.cYk = paramParcel.readLong();
+      this.cYl = paramParcel.readInt();
+      this.cYm = paramParcel.readInt();
+      this.cYn = paramParcel.readInt();
+      AppMethodBeat.o(92489);
       return;
     }
   }
   
   static SpliceInsertCommand a(m paramm, long paramLong, u paramu)
   {
-    AppMethodBeat.i(95368);
-    long l3 = paramm.cc();
+    AppMethodBeat.i(92490);
+    long l3 = paramm.FT();
     boolean bool5;
     boolean bool1;
     boolean bool3;
@@ -195,7 +195,7 @@ public final class SpliceInsertCommand
         if (!bool2) {
           l2 = TimeSignalCommand.c(paramm, paramLong);
         }
-        localArrayList.add(new a(m, l2, paramu.ah(l2), (byte)0));
+        localArrayList.add(new a(m, l2, paramu.cG(l2), (byte)0));
         j += 1;
       }
       bool5 = false;
@@ -214,7 +214,7 @@ public final class SpliceInsertCommand
       if ((0x80 & paramLong) != 0L)
       {
         bool4 = true;
-        paramLong = (paramLong & 1L) << 32 | paramm.cc();
+        paramLong = (paramLong & 1L) << 32 | paramm.FT();
         label297:
         i = paramm.readUnsignedShort();
         j = paramm.readUnsignedByte();
@@ -223,8 +223,8 @@ public final class SpliceInsertCommand
     }
     for (;;)
     {
-      paramm = new SpliceInsertCommand(l3, bool5, bool1, bool3, bool2, l1, paramu.ah(l1), (List)localObject, bool4, paramLong, i, j, k);
-      AppMethodBeat.o(95368);
+      paramm = new SpliceInsertCommand(l3, bool5, bool1, bool3, bool2, l1, paramu.cG(l1), (List)localObject, bool4, paramLong, i, j, k);
+      AppMethodBeat.o(92490);
       return paramm;
       bool4 = false;
       break;
@@ -240,25 +240,25 @@ public final class SpliceInsertCommand
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(95369);
-    paramParcel.writeLong(this.aOm);
-    if (this.aOn)
+    AppMethodBeat.i(92491);
+    paramParcel.writeLong(this.cYb);
+    if (this.cYc)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.aOo) {
+      if (!this.cYd) {
         break label170;
       }
       paramInt = 1;
       label39:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.aOp) {
+      if (!this.cYe) {
         break label175;
       }
       paramInt = 1;
       label54:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.aOq) {
+      if (!this.cYf) {
         break label180;
       }
     }
@@ -268,17 +268,17 @@ public final class SpliceInsertCommand
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.aOr);
-      paramParcel.writeLong(this.aOs);
-      int j = this.aOt.size();
+      paramParcel.writeLong(this.cYg);
+      paramParcel.writeLong(this.cYh);
+      int j = this.cYi.size();
       paramParcel.writeInt(j);
       paramInt = 0;
       while (paramInt < j)
       {
-        a locala = (a)this.aOt.get(paramInt);
-        paramParcel.writeInt(locala.aOz);
-        paramParcel.writeLong(locala.aOA);
-        paramParcel.writeLong(locala.aOB);
+        a locala = (a)this.cYi.get(paramInt);
+        paramParcel.writeInt(locala.cYo);
+        paramParcel.writeLong(locala.cYp);
+        paramParcel.writeLong(locala.cYq);
         paramInt += 1;
       }
       paramInt = 0;
@@ -288,36 +288,36 @@ public final class SpliceInsertCommand
       paramInt = 0;
       break label54;
     }
-    if (this.aOu) {}
+    if (this.cYj) {}
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.aOv);
-      paramParcel.writeInt(this.aOw);
-      paramParcel.writeInt(this.aOx);
-      paramParcel.writeInt(this.aOy);
-      AppMethodBeat.o(95369);
+      paramParcel.writeLong(this.cYk);
+      paramParcel.writeInt(this.cYl);
+      paramParcel.writeInt(this.cYm);
+      paramParcel.writeInt(this.cYn);
+      AppMethodBeat.o(92491);
       return;
     }
   }
   
   public static final class a
   {
-    public final long aOA;
-    public final long aOB;
-    public final int aOz;
+    public final int cYo;
+    public final long cYp;
+    public final long cYq;
     
     a(int paramInt, long paramLong1, long paramLong2)
     {
-      this.aOz = paramInt;
-      this.aOA = paramLong1;
-      this.aOB = paramLong2;
+      this.cYo = paramInt;
+      this.cYp = paramLong1;
+      this.cYq = paramLong2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.scte35.SpliceInsertCommand
  * JD-Core Version:    0.7.0.1
  */

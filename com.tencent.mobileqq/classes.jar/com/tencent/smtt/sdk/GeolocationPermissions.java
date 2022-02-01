@@ -4,16 +4,16 @@ import java.util.Set;
 
 public class GeolocationPermissions
 {
-  private static GeolocationPermissions mInstance;
+  private static GeolocationPermissions a;
   
-  private static GeolocationPermissions createInstance()
+  private static GeolocationPermissions a()
   {
     try
     {
-      if (mInstance == null) {
-        mInstance = new GeolocationPermissions();
+      if (a == null) {
+        a = new GeolocationPermissions();
       }
-      GeolocationPermissions localGeolocationPermissions = mInstance;
+      GeolocationPermissions localGeolocationPermissions = a;
       return localGeolocationPermissions;
     }
     finally {}
@@ -21,15 +21,15 @@ public class GeolocationPermissions
   
   public static GeolocationPermissions getInstance()
   {
-    return createInstance();
+    return a();
   }
   
   public void allow(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().geolocationPermissionsAllow(paramString);
+      localx.c().g(paramString);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().allow(paramString);
@@ -37,10 +37,10 @@ public class GeolocationPermissions
   
   public void clear(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().geolocationPermissionsClear(paramString);
+      localx.c().f(paramString);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().clear(paramString);
@@ -48,10 +48,10 @@ public class GeolocationPermissions
   
   public void clearAll()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().geolocationPermissionsClearAll();
+      localx.c().o();
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().clearAll();
@@ -59,10 +59,10 @@ public class GeolocationPermissions
   
   public void getAllowed(String paramString, ValueCallback<Boolean> paramValueCallback)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().geolocationPermissionsGetAllowed(paramString, paramValueCallback);
+      localx.c().c(paramString, paramValueCallback);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().getAllowed(paramString, paramValueCallback);
@@ -70,10 +70,10 @@ public class GeolocationPermissions
   
   public void getOrigins(ValueCallback<Set<String>> paramValueCallback)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().geolocationPermissionsGetOrigins(paramValueCallback);
+      localx.c().b(paramValueCallback);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().getOrigins(paramValueCallback);
@@ -81,7 +81,7 @@ public class GeolocationPermissions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.GeolocationPermissions
  * JD-Core Version:    0.7.0.1
  */

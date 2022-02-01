@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.emoji.ui.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 import java.util.List;
 
 final class FTSEmojiDetailPageUI$12
-  implements n.c
+  implements u.g
 {
   FTSEmojiDetailPageUI$12(FTSEmojiDetailPageUI paramFTSEmojiDetailPageUI, List paramList1, List paramList2) {}
   
-  public final void onCreateMMMenu(l paraml)
+  public final void onCreateMMMenu(s params)
   {
-    AppMethodBeat.i(53550);
-    paraml.setHeaderTitle("");
+    AppMethodBeat.i(109113);
+    params.setHeaderTitle("");
     int i = 0;
-    while (i < this.loL.size())
+    while (i < this.xVu.size())
     {
-      paraml.e(((Integer)this.loL.get(i)).intValue(), (CharSequence)this.loM.get(i));
+      params.c(((Integer)this.xVu.get(i)).intValue(), (CharSequence)this.xVv.get(i));
       i += 1;
     }
-    AppMethodBeat.o(53550);
+    AppMethodBeat.o(109113);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.fts.FTSEmojiDetailPageUI.12
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.d;
-import com.tencent.mm.wallet_core.c.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.e;
+import com.tencent.mm.wallet_core.model.j;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,52 +16,47 @@ import org.json.JSONObject;
 
 public abstract class n
   extends p
-  implements i
+  implements j
 {
-  private static int AXR = 0;
-  protected Map<String, String> AXP = new HashMap();
-  public int AXQ = 0;
-  private boolean AXS = false;
-  public int AXT = 0;
-  public int AXU = 0;
-  public String AXV = null;
-  public JSONObject AXW = null;
-  private boolean AXX = false;
-  public int AXY = -1;
-  protected int cLI;
-  public RealnameGuideHelper plg;
-  private String plh;
-  private String pli;
-  private String plj;
-  private String plk;
-  private String pll;
-  public String tYb;
-  public int uju = 0;
+  private static int agUh = 0;
+  public RealnameGuideHelper MyJ;
+  private String MyK;
+  private String MyL;
+  private String MyM;
+  private String MyN;
+  private String MyO;
+  public int VHg = 0;
+  public String Vpz;
+  protected Map<String, String> agUf = new HashMap();
+  public int agUg = 0;
+  private boolean agUi = false;
+  public int agUj = 0;
+  public int agUk = 0;
+  public String agUl = null;
+  public JSONObject agUm = null;
+  private boolean agUn = false;
+  public int agUo = -1;
+  protected int igp;
   
   protected final void a(Orders paramOrders, Authen paramAuthen)
   {
-    List localList = paramOrders.ujl;
+    List localList = paramOrders.VGX;
     String str = null;
     if (localList.size() > 0) {
-      str = ((Orders.Commodity)localList.get(0)).cnJ;
+      str = ((Orders.Commodity)localList.get(0)).hAU;
     }
-    b(paramOrders.cnI, str, paramAuthen.pVo.cCD, paramAuthen.pVo.cCy, paramAuthen.poq, paramAuthen.por);
+    b(paramOrders.hAT, str, paramAuthen.Nxi.hUR, paramAuthen.Nxi.channel, paramAuthen.hAk, paramAuthen.MDt);
   }
   
   protected final void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
   {
-    AXR += 1;
-    this.AXP.put("req_key", paramString1);
-    this.AXP.put("transaction_id", paramString2);
-    this.AXP.put("pay_scene", String.valueOf(paramInt1));
-    this.AXP.put("bank_type", paramString3);
-    this.AXP.put("channel", String.valueOf(paramInt2));
-    this.AXP.put("bind_serial", paramString4);
-  }
-  
-  public boolean cRN()
-  {
-    return false;
+    agUh += 1;
+    this.agUf.put("req_key", paramString1);
+    this.agUf.put("transaction_id", paramString2);
+    this.agUf.put("pay_scene", String.valueOf(paramInt1));
+    this.agUf.put("bank_type", paramString3);
+    this.agUf.put("channel", String.valueOf(paramInt2));
+    this.agUf.put("bind_serial", paramString4);
   }
   
   public boolean canRetry()
@@ -69,37 +64,42 @@ public abstract class n
     return false;
   }
   
-  public final Map<String, String> dSL()
+  public boolean ifV()
   {
-    return this.AXP;
+    return false;
   }
   
-  public final boolean dSM()
+  public final Map<String, String> jPi()
   {
-    return this.AXQ == 1;
+    return this.agUf;
+  }
+  
+  public final boolean jPj()
+  {
+    return this.agUg == 1;
   }
   
   public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    if (!this.AXS)
+    if (!this.agUi)
     {
-      this.AXU = paramInt;
-      this.AXV = paramString;
-      this.AXW = paramJSONObject;
-      this.AXS = true;
+      this.agUk = paramInt;
+      this.agUl = paramString;
+      this.agUm = paramJSONObject;
+      this.agUi = true;
       if (paramJSONObject != null) {
-        this.AXQ = paramJSONObject.optInt("query_order_flag", 0);
+        this.agUg = paramJSONObject.optInt("query_order_flag", 0);
       }
     }
     Object localObject;
     if ((paramJSONObject != null) && (paramJSONObject.has("real_name_info")))
     {
       localObject = paramJSONObject.optJSONObject("real_name_info");
-      this.plh = ((JSONObject)localObject).optString("guide_flag");
-      this.pli = ((JSONObject)localObject).optString("guide_wording");
-      this.plj = ((JSONObject)localObject).optString("left_button_wording");
-      this.plk = ((JSONObject)localObject).optString("right_button_wording");
-      this.pll = ((JSONObject)localObject).optString("upload_credit_url");
+      this.MyK = ((JSONObject)localObject).optString("guide_flag");
+      this.MyL = ((JSONObject)localObject).optString("guide_wording");
+      this.MyM = ((JSONObject)localObject).optString("left_button_wording");
+      this.MyN = ((JSONObject)localObject).optString("right_button_wording");
+      this.MyO = ((JSONObject)localObject).optString("upload_credit_url");
     }
     for (int i = 1;; i = 0)
     {
@@ -114,42 +114,42 @@ public abstract class n
         {
           localJSONObject = paramJSONObject.optJSONObject("set_pwd_info");
           localObject = new SetPwdInfo();
-          ((SetPwdInfo)localObject).opB = localJSONObject.optString("guide_wording");
-          ((SetPwdInfo)localObject).opC = localJSONObject.optString("left_button_wording");
-          ((SetPwdInfo)localObject).opD = localJSONObject.optString("right_button_wording");
-          ((SetPwdInfo)localObject).ueS = localJSONObject.optInt("send_pwd_msg");
+          ((SetPwdInfo)localObject).KuO = localJSONObject.optString("guide_wording");
+          ((SetPwdInfo)localObject).rGU = localJSONObject.optString("left_button_wording");
+          ((SetPwdInfo)localObject).right_button_wording = localJSONObject.optString("right_button_wording");
+          ((SetPwdInfo)localObject).VCy = localJSONObject.optInt("send_pwd_msg");
           j = 1;
         }
       }
-      if ((j != 0) && (("1".equals(this.plh)) || ("2".equals(this.plh)) || (localObject != null)))
+      if ((j != 0) && (("1".equals(this.MyK)) || ("2".equals(this.MyK)) || (localObject != null)))
       {
-        this.plg = new RealnameGuideHelper();
-        this.plg.a(this.plh, (SetPwdInfo)localObject, this.pli, this.plj, this.plk, this.pll, this.cLI);
+        this.MyJ = new RealnameGuideHelper();
+        this.MyJ.a(this.MyK, (SetPwdInfo)localObject, this.MyL, this.MyM, this.MyN, this.MyO, this.igp);
       }
-      this.tYb = paramJSONObject.optString("forget_pwd_url", "");
-      this.AXY = paramJSONObject.optInt("is_clear_failure", -1);
-      ab.i("MicroMsg.NetSceneTenpayDelayQueryBase", "forget_pwd_url %s", new Object[] { this.tYb });
-      this.AXX = true;
+      this.Vpz = paramJSONObject.optString("forget_pwd_url", "");
+      this.agUo = paramJSONObject.optInt("is_clear_failure", -1);
+      Log.i("MicroMsg.NetSceneTenpayDelayQueryBase", "forget_pwd_url %s", new Object[] { this.Vpz });
+      this.agUn = true;
       super.onGYNetEnd(paramInt, paramString, paramJSONObject);
       return;
     }
   }
   
-  public void onGYNetEnd2(d paramd, JSONObject paramJSONObject)
+  public void onGYNetEnd2(e parame, JSONObject paramJSONObject)
   {
-    ab.i("MicroMsg.NetSceneTenpayDelayQueryBase", "always callback: %s,%s", new Object[] { Integer.valueOf(paramd.errCode), paramd.errMsg });
-    super.onGYNetEnd2(paramd, paramJSONObject);
-    if ((!this.AXX) && (!this.AXS))
+    Log.i("MicroMsg.NetSceneTenpayDelayQueryBase", "always callback: %s,%s", new Object[] { Integer.valueOf(parame.errCode), parame.errMsg });
+    super.onGYNetEnd2(parame, paramJSONObject);
+    if ((!this.agUn) && (!this.agUi))
     {
-      this.AXT = paramd.errType;
-      this.AXU = paramd.errCode;
-      this.AXV = paramd.errMsg;
+      this.agUj = parame.errType;
+      this.agUk = parame.errCode;
+      this.agUl = parame.errMsg;
       if (paramJSONObject != null)
       {
-        this.AXQ = paramJSONObject.optInt("query_order_flag", 0);
-        this.AXW = paramJSONObject;
+        this.agUg = paramJSONObject.optInt("query_order_flag", 0);
+        this.agUm = paramJSONObject;
       }
-      this.AXS = true;
+      this.agUi = true;
     }
   }
 }

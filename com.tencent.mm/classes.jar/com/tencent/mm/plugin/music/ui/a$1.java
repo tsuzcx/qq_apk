@@ -6,10 +6,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.e;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.aw.f;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 final class a$1
@@ -19,28 +20,34 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(105055);
-    paramView = com.tencent.mm.aw.a.aiz();
-    if ((paramView != null) && (paramView.fKI) && (!TextUtils.isEmpty(paramView.fKJ)))
+    AppMethodBeat.i(63194);
+    Object localObject = new b();
+    ((b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/MusicBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    paramView = com.tencent.mm.aw.a.bLn();
+    if ((paramView != null) && (paramView.oOU) && (!TextUtils.isEmpty(paramView.oOV)))
     {
-      paramView = paramView.fKJ;
-      ab.i("MusicBanner", "barBackToWebView is true, start to jump Url:%s", new Object[] { paramView });
-      Intent localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramView);
-      d.b((Context)this.pbw.vUD.get(), "webview", ".ui.tools.WebViewUI", localIntent);
-      AppMethodBeat.o(105055);
-      return;
+      paramView = paramView.oOV;
+      Log.i("MusicBanner", "barBackToWebView is true, start to jump Url:%s", new Object[] { paramView });
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("rawUrl", paramView);
+      c.b((Context)this.LPm.Ydi.get(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
     }
-    paramView = new Intent();
-    h.qsU.e(11992, new Object[] { Integer.valueOf(1) });
-    paramView.putExtra("key_scene", 1);
-    d.b((Context)this.pbw.vUD.get(), "music", ".ui.MusicMainUI", paramView);
-    AppMethodBeat.o(105055);
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/MusicBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(63194);
+      return;
+      paramView = new Intent();
+      h.OAn.b(11992, new Object[] { Integer.valueOf(1) });
+      paramView.putExtra("key_scene", 1);
+      c.b((Context)this.LPm.Ydi.get(), "mv", ".ui.MusicMvMainUI", paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.a.1
  * JD-Core Version:    0.7.0.1
  */

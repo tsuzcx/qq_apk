@@ -1,90 +1,44 @@
 package com.tencent.mobileqq.emosm.web;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
-import apon;
-import apoo;
-import apqh;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.video.VipVideoManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class MessengerService$IncomingHandler$15
-  extends IPicDownloadListener
+class MessengerService$IncomingHandler$15
+  implements TVK_SDKMgr.InstallListener
 {
-  public MessengerService$IncomingHandler$15(apqh paramapqh, Bundle paramBundle, apon paramapon, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
+  MessengerService$IncomingHandler$15(MessengerService.IncomingHandler paramIncomingHandler, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
+  public void onInstallProgress(float paramFloat)
   {
-    int i = 0;
-    if (paramList2 != null)
+    int i = (int)Math.floor(paramFloat * 100.0F);
+    if (i > VipVideoManager.a)
     {
-      try
-      {
-        if (paramList2.isEmpty()) {
-          break label183;
-        }
-        j = paramList2.size();
-        if ((paramList1 == null) || (paramList1.isEmpty())) {
-          break label152;
-        }
-        i = paramList1.size();
-        this.val$reqbundle.putInt("result", 2);
-      }
-      catch (JSONException paramList1)
-      {
-        for (;;)
-        {
-          int j;
-          Object localObject;
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
-          }
-          return;
-          this.val$reqbundle.putInt("result", 1);
-        }
-      }
-      catch (Exception paramList1)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
-        return;
-      }
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("succeedNum", i);
-      ((JSONObject)localObject).put("failedNum", j);
-      this.val$reqbundle.putString("data", ((JSONObject)localObject).toString());
-      paramList2 = paramList2.iterator();
-      while (paramList2.hasNext())
-      {
-        localObject = (CustomEmotionData)paramList2.next();
-        this.val$fdb.a((CustomEmotionBase)localObject);
-      }
+      VipVideoManager.a = i;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("status", 1);
+      localBundle.putFloat("progress", i);
+      this.a.putBundle("response", localBundle);
+      this.b.a(this.a);
     }
-    label152:
-    label183:
-    do
-    {
-      this.val$reqbundle.putInt("result", 0);
-      this.val$service.a(this.val$reqbundle);
-      this.val$service.getApplicationContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
-      paramList2 = this.val$qqApp.getHandler(ChatActivity.class);
-      if (paramList2 != null) {
-        paramList2.obtainMessage(10).sendToTarget();
-      }
-      paramList2 = (apoo)this.val$qqApp.getManager(103);
-    } while ((paramList2 == null) || (paramList1 == null) || (paramList1.isEmpty()));
-    paramList2.b(paramList1);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", 2);
+    localBundle.putInt("errCode", paramInt);
+    this.a.putBundle("response", localBundle);
+    this.b.a(this.a);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", 3);
+    localBundle.putBoolean("result", true);
+    this.a.putBundle("response", localBundle);
+    this.b.a(this.a);
   }
 }
 

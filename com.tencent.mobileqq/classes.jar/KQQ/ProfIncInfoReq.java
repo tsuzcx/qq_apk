@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfIncInfoReq
   extends JceStruct
 {
-  public int iReloadFlag;
-  public int iRetIncomPlete;
-  public long iUin;
+  public int iReloadFlag = 0;
+  public int iRetIncomPlete = 0;
+  public long iUin = 0L;
   
   public ProfIncInfoReq() {}
   
@@ -36,7 +36,7 @@ public final class ProfIncInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfIncInfoReq
  * JD-Core Version:    0.7.0.1
  */

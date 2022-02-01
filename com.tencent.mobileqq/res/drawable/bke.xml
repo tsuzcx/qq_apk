@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="48.0dip" android:width="48.0dip" android:viewportWidth="96.0" android:viewportHeight="96.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/ef_" />
-    <item android:drawable="@drawable/ef9" />
-</selector>
+    <path android:fillColor="#ff222222" android:pathData="M78.2,13C81.9555,13 85,16.0445 85,19.8L85,60.2C85,63.9555 81.9555,67 78.2,67L58.667,67L30,85L30,67L17.8,67C14.0445,67 11,63.9555 11,60.2L11,19.8C11,16.0445 14.0445,13 17.8,13L78.2,13ZM78.2,19L17.8,19C17.3922,19 17.0556,19.3052 17.0062,19.6996L17,19.8L17,60.2C17,60.6078 17.3052,60.9444 17.6996,60.9938L17.8,61L36,61L36,74.147L56.9395,61L78.2,61C78.6078,61 78.9444,60.6948 78.9938,60.3004L79,60.2L79,19.8C79,19.3922 78.6948,19.0556 78.3004,19.0062L78.2,19Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="nonZero" />
+</vector>

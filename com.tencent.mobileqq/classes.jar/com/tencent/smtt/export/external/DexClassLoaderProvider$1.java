@@ -15,31 +15,40 @@ final class DexClassLoaderProvider$1
   {
     try
     {
-      ArrayList localArrayList = new ArrayList(4);
-      localArrayList.add(0, this.val$dexName);
-      localArrayList.add(1, this.val$dexPath);
-      localArrayList.add(2, this.val$optimizedDirectory);
-      localArrayList.add(3, this.val$libraryPath);
+      localObject = new ArrayList(4);
+      ((ArrayList)localObject).add(0, this.val$dexName);
+      ((ArrayList)localObject).add(1, this.val$dexPath);
+      ((ArrayList)localObject).add(2, this.val$optimizedDirectory);
+      ((ArrayList)localObject).add(3, this.val$libraryPath);
       Intent localIntent = new Intent(DexClassLoaderProvider.access$000(), DexClassLoaderProviderService.class);
-      localIntent.putStringArrayListExtra("dex2oat", localArrayList);
+      localIntent.putStringArrayListExtra("dex2oat", (ArrayList)localObject);
       DexClassLoaderProvider.access$000().startService(localIntent);
-      Log.d("dexloader", "shouldUseDexLoaderService(" + this.val$dexName + ", " + localIntent + ")");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shouldUseDexLoaderService(");
+      ((StringBuilder)localObject).append(this.val$dexName);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(localIntent);
+      ((StringBuilder)localObject).append(")");
+      Log.d("dexloader", ((StringBuilder)localObject).toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("after shouldUseDexLoaderService exception: ");
+      ((StringBuilder)localObject).append(localThrowable);
+      Log.e("dexloader", ((StringBuilder)localObject).toString());
       return;
     }
     catch (SecurityException localSecurityException)
     {
       Log.e("dexloader", "start DexLoaderService exception", localSecurityException);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("dexloader", "after shouldUseDexLoaderService exception: " + localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.export.external.DexClassLoaderProvider.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,15 @@ import java.util.Arrays;
 
 public final class ag
 {
-  private final String Kr;
-  private final String Ks;
-  private final ComponentName Kt;
+  private final String Mg;
+  private final String Mh;
+  private final ComponentName Mi;
   
   public ag(String paramString1, String paramString2)
   {
-    this.Kr = d.l(paramString1);
-    this.Ks = d.l(paramString2);
-    this.Kt = null;
+    this.Mg = d.l(paramString1);
+    this.Mh = d.l(paramString2);
+    this.Mi = null;
   }
   
   public final boolean equals(Object paramObject)
@@ -27,39 +27,39 @@ public final class ag
         return false;
       }
       paramObject = (ag)paramObject;
-    } while ((b.b(this.Kr, paramObject.Kr)) && (b.b(this.Kt, paramObject.Kt)));
+    } while ((b.c(this.Mg, paramObject.Mg)) && (b.c(this.Mi, paramObject.Mi)));
     return false;
   }
   
   public final ComponentName getComponentName()
   {
-    return this.Kt;
+    return this.Mi;
   }
   
   public final String getPackage()
   {
-    return this.Ks;
+    return this.Mh;
+  }
+  
+  public final Intent hH()
+  {
+    if (this.Mg != null) {
+      return new Intent(this.Mg).setPackage(this.Mh);
+    }
+    return new Intent().setComponent(this.Mi);
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.Kr, this.Kt });
-  }
-  
-  public final Intent hx()
-  {
-    if (this.Kr != null) {
-      return new Intent(this.Kr).setPackage(this.Ks);
-    }
-    return new Intent().setComponent(this.Kt);
+    return Arrays.hashCode(new Object[] { this.Mg, this.Mi });
   }
   
   public final String toString()
   {
-    if (this.Kr == null) {
-      return this.Kt.flattenToString();
+    if (this.Mg == null) {
+      return this.Mi.flattenToString();
     }
-    return this.Kr;
+    return this.Mg;
   }
 }
 

@@ -3,10 +3,9 @@ package com.tencent.mobileqq.utils.confighandler;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bdpf;
-import becr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.vipav.api.VipFunCallUtil;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.TreeMap;
@@ -14,7 +13,7 @@ import java.util.TreeMap;
 public class QAVFunCallHandler
   extends NormalConfigHandler<QAVFunCallConfig>
 {
-  NormalConfigHandler.GetConfigListen<QAVFunCallConfig> mGetConfigListen = new bdpf(this);
+  NormalConfigHandler.GetConfigListen<QAVFunCallConfig> mGetConfigListen = new QAVFunCallHandler.1(this);
   
   public QAVFunCallHandler(String paramString)
   {
@@ -46,31 +45,29 @@ public class QAVFunCallHandler
     return 382;
   }
   
-  public void onGetConfig(AppInterface paramAppInterface)
+  void onGetConfig(AppInterface paramAppInterface)
   {
     QAVFunCallConfig localQAVFunCallConfig = (QAVFunCallConfig)getConfig();
-    if (localQAVFunCallConfig == null) {}
-    for (;;)
-    {
+    if (localQAVFunCallConfig == null) {
       return;
-      Iterator localIterator = localQAVFunCallConfig.fcItems.values().iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = localQAVFunCallConfig.fcItems.values().iterator();
+    while (localIterator.hasNext())
+    {
+      QAVFunCallConfig.FCItem localFCItem = (QAVFunCallConfig.FCItem)localIterator.next();
+      if (!ConfigUtil.isExpired(localFCItem.end))
       {
-        QAVFunCallConfig.FCItem localFCItem = (QAVFunCallConfig.FCItem)localIterator.next();
-        if (!ConfigUtil.isExpired(localFCItem.end))
+        int i = localFCItem.fcid;
+        if ((i != 0) && (!TextUtils.isEmpty(localFCItem.media)))
         {
-          int i = localFCItem.fcid;
-          if ((i != 0) && (!TextUtils.isEmpty(localFCItem.media)))
+          Object localObject = VipFunCallUtil.a(paramAppInterface, 0, String.valueOf(i));
+          if ((localObject != null) && ((((SharedPreferences)localObject).getLong("local_version", 0L) != localQAVFunCallConfig.serverVer) || (TextUtils.isEmpty(((SharedPreferences)localObject).getString("_6", null)))))
           {
-            Object localObject = becr.a(paramAppInterface, 0, String.valueOf(i));
-            if ((localObject != null) && ((((SharedPreferences)localObject).getLong("local_version", 0L) != localQAVFunCallConfig.serverVer) || (TextUtils.isEmpty(((SharedPreferences)localObject).getString("_6", null)))))
-            {
-              localObject = ((SharedPreferences)localObject).edit();
-              ((SharedPreferences.Editor)localObject).putInt("callId", i);
-              ((SharedPreferences.Editor)localObject).putLong("local_version", localQAVFunCallConfig.serverVer);
-              ((SharedPreferences.Editor)localObject).putString("_6", localFCItem.media);
-              ((SharedPreferences.Editor)localObject).commit();
-            }
+            localObject = ((SharedPreferences)localObject).edit();
+            ((SharedPreferences.Editor)localObject).putInt("callId", i);
+            ((SharedPreferences.Editor)localObject).putLong("local_version", localQAVFunCallConfig.serverVer);
+            ((SharedPreferences.Editor)localObject).putString("_6", localFCItem.media);
+            ((SharedPreferences.Editor)localObject).commit();
           }
         }
       }
@@ -93,7 +90,7 @@ public class QAVFunCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler
  * JD-Core Version:    0.7.0.1
  */

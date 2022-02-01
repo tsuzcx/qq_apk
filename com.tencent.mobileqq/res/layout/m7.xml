@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/jj" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="27.0dip"
+<RelativeLayout android:background="@drawable/common_list_item_background" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="27.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="13.0dip" android:textColor="@color/ia" android:gravity="center|left" android:id="@id/bmd" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="27.0dip" android:layout_centerVertical="true" />
 </RelativeLayout>

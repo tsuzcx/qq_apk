@@ -1,8 +1,10 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class cfc
   extends BroadcastReceiver
@@ -11,14 +13,14 @@ public class cfc
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
-    {
-      this.a.a.a(7, 2);
-      this.a.a.e = paramIntent.getStringExtra("loginInfo");
-      this.a.a.a(null);
-      return;
-    }
-    this.a.a.b();
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.a.A = i;
+    this.a.a.d = paramContext;
+    this.a.a.a(13, 2);
+    this.a.a.a(null);
+    new Handler().postDelayed(new cfd(this), i);
+    ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 

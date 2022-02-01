@@ -1,88 +1,46 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.w;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.asy;
-import com.tencent.mm.protocal.protobuf.asz;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.d;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mm.autogen.b.r;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-public class l
+public final class l
+  extends r
 {
-  private static volatile l hbk;
-  public final Set<l.b> hbl;
-  public volatile asz hbm;
-  public final Object mLock;
+  public static final IAutoDBItem.MAutoDBInfo DB_INFO;
+  public static final String[] qDJ;
   
-  public l()
+  static
   {
-    AppMethodBeat.i(129566);
-    this.mLock = new Object();
-    this.hbl = new HashSet();
-    this.hbm = null;
-    AppMethodBeat.o(129566);
+    int i = 0;
+    AppMethodBeat.i(44503);
+    qDJ = new String[] { "username", "versionType" };
+    DB_INFO = aJm();
+    String str = " PRIMARY KEY ( ";
+    Object localObject1 = qDJ;
+    int j = localObject1.length;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
+      i += 1;
+    }
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = DB_INFO;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    AppMethodBeat.o(44503);
   }
   
-  public static l axc()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(129567);
-    if (hbk == null) {}
-    try
-    {
-      if (hbk == null) {
-        hbk = new l();
-      }
-      l locall = hbk;
-      AppMethodBeat.o(129567);
-      return locall;
-    }
-    finally
-    {
-      AppMethodBeat.o(129567);
-    }
-  }
-  
-  public static boolean enabled()
-  {
-    AppMethodBeat.i(129569);
-    if (g.RG())
-    {
-      Object localObject = com.tencent.mm.model.c.c.abU().me("100328");
-      if (((com.tencent.mm.storage.c)localObject).isValid())
-      {
-        localObject = l.a.ns(bo.getInt((String)((com.tencent.mm.storage.c)localObject).dvN().get("isOpenGameEntry"), 0));
-        if ((localObject != null) && (localObject == l.a.hbp))
-        {
-          AppMethodBeat.o(129569);
-          return true;
-        }
-      }
-    }
-    AppMethodBeat.o(129569);
-    return false;
-  }
-  
-  public final void refresh()
-  {
-    AppMethodBeat.i(129568);
-    this.hbm = null;
-    b.a locala = new b.a();
-    locala.funcId = 1841;
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/getwxagame";
-    locala.fsX = new asy();
-    locala.fsY = new asz();
-    w.a(locala.ado(), new l.1(this));
-    AppMethodBeat.o(129568);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.l
  * JD-Core Version:    0.7.0.1
  */

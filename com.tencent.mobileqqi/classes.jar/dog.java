@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistSetGuideActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class dog
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dog(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public dog(TroopAssistSetGuideActivity paramTroopAssistSetGuideActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.equals("conversation"))) {
-      this.a.d();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131234640: 
+      TroopAssistSetGuideActivity.a(this.a);
+      ReportController.b(this.a.b, "CliOper", "", "", "Grp_helper", "Clk_not_set", 0, 0, "", "", "", "");
+      return;
     }
+    TroopAssistSetGuideActivity.b(this.a);
+    ReportController.b(this.a.b, "CliOper", "", "", "Grp_helper", "Clk_quiet_mode", 0, 0, "", "", "", "");
   }
 }
 

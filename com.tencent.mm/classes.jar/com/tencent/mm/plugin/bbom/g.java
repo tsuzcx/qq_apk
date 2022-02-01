@@ -8,19 +8,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.TrafficStatsReceiver;
 import com.tencent.mm.modelfriend.AddrBookObserver;
 import com.tencent.mm.modelstat.WatchDogPushReceiver;
-import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.zero.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
-  implements com.tencent.mm.plugin.zero.a.a
+  implements a
 {
-  private AddrBookObserver jMD;
-  private WatchDogPushReceiver jME;
-  private TrafficStatsReceiver jMF;
+  private AddrBookObserver vsV;
+  private WatchDogPushReceiver vsW;
+  private TrafficStatsReceiver vsX;
   
   public final void a(Service paramService)
   {
-    AppMethodBeat.i(18256);
+    AppMethodBeat.i(22357);
     boolean bool1;
     if (Build.VERSION.SDK_INT < 26) {
       bool1 = true;
@@ -29,19 +29,19 @@ public final class g
     {
       boolean bool2 = bool1;
       if (!bool1) {
-        bool2 = b.o(paramService.getApplicationContext(), "android.permission.READ_CONTACTS");
+        bool2 = com.tencent.mm.pluginsdk.permission.b.s(paramService.getApplicationContext(), "android.permission.READ_CONTACTS");
       }
       if (bool2) {}
       try
       {
-        this.jMD = new AddrBookObserver(paramService);
-        paramService.getContentResolver().registerContentObserver(com.tencent.mm.pluginsdk.a.dkO(), true, this.jMD);
-        this.jME = new WatchDogPushReceiver();
-        paramService.registerReceiver(this.jME, new IntentFilter("com.tencent.mm.WatchDogPushReceiver"));
-        this.jMF = new TrafficStatsReceiver();
-        paramService.registerReceiver(this.jMF, new IntentFilter("com.tencent.mm.TrafficStatsReceiver"));
-        TrafficStatsReceiver.bz(paramService);
-        AppMethodBeat.o(18256);
+        this.vsV = new AddrBookObserver(paramService);
+        paramService.getContentResolver().registerContentObserver(com.tencent.mm.pluginsdk.b.iGs(), true, this.vsV);
+        this.vsW = new WatchDogPushReceiver();
+        paramService.registerReceiver(this.vsW, new IntentFilter("com.tencent.mm.WatchDogPushReceiver"));
+        this.vsX = new TrafficStatsReceiver();
+        paramService.registerReceiver(this.vsX, new IntentFilter("com.tencent.mm.TrafficStatsReceiver"));
+        TrafficStatsReceiver.cU(paramService);
+        AppMethodBeat.o(22357);
         return;
         bool1 = false;
       }
@@ -49,8 +49,8 @@ public final class g
       {
         for (;;)
         {
-          this.jMD = null;
-          ab.e("MicroMsg.CoreService", "onCreate registerContentObserver() Exception = %s", new Object[] { localException.getMessage() });
+          this.vsV = null;
+          Log.e("MicroMsg.CoreService", "onCreate registerContentObserver() Exception = %s", new Object[] { localException.getMessage() });
         }
       }
     }
@@ -58,16 +58,16 @@ public final class g
   
   public final void b(Service paramService)
   {
-    AppMethodBeat.i(18257);
-    if (this.jMD != null)
+    AppMethodBeat.i(22358);
+    if (this.vsV != null)
     {
-      paramService.getContentResolver().unregisterContentObserver(this.jMD);
-      this.jMD = null;
+      paramService.getContentResolver().unregisterContentObserver(this.vsV);
+      this.vsV = null;
     }
-    paramService.unregisterReceiver(this.jME);
-    paramService.unregisterReceiver(this.jMF);
-    TrafficStatsReceiver.bA(paramService);
-    AppMethodBeat.o(18257);
+    paramService.unregisterReceiver(this.vsW);
+    paramService.unregisterReceiver(this.vsX);
+    TrafficStatsReceiver.cV(paramService);
+    AppMethodBeat.o(22358);
   }
 }
 

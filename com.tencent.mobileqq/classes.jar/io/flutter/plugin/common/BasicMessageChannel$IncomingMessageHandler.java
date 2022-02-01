@@ -1,8 +1,8 @@
 package io.flutter.plugin.common;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import java.nio.ByteBuffer;
 
 final class BasicMessageChannel$IncomingMessageHandler
@@ -35,7 +35,7 @@ final class BasicMessageChannel$IncomingMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.common.BasicMessageChannel.IncomingMessageHandler
  * JD-Core Version:    0.7.0.1
  */

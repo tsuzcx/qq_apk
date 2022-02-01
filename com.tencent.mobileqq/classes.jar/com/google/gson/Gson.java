@@ -131,17 +131,18 @@ public final class Gson
     if (paramObject != null) {
       try
       {
-        if (paramJsonReader.peek() != JsonToken.END_DOCUMENT) {
-          throw new JsonIOException("JSON document was not fully consumed.");
+        if (paramJsonReader.peek() == JsonToken.END_DOCUMENT) {
+          return;
         }
-      }
-      catch (MalformedJsonException paramObject)
-      {
-        throw new JsonSyntaxException(paramObject);
+        throw new JsonIOException("JSON document was not fully consumed.");
       }
       catch (IOException paramObject)
       {
         throw new JsonIOException(paramObject);
+      }
+      catch (MalformedJsonException paramObject)
+      {
+        throw new JsonSyntaxException(paramObject);
       }
     }
   }
@@ -158,9 +159,13 @@ public final class Gson
   
   static void checkValidFloatingPoint(double paramDouble)
   {
-    if ((Double.isNaN(paramDouble)) || (Double.isInfinite(paramDouble))) {
-      throw new IllegalArgumentException(paramDouble + " is not a valid double value as per JSON specification. To override this behavior, use GsonBuilder.serializeSpecialFloatingPointValues() method.");
+    if ((!Double.isNaN(paramDouble)) && (!Double.isInfinite(paramDouble))) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramDouble);
+    localStringBuilder.append(" is not a valid double value as per JSON specification. To override this behavior, use GsonBuilder.serializeSpecialFloatingPointValues() method.");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   private TypeAdapter<Number> doubleAdapter(boolean paramBoolean)
@@ -215,11 +220,11 @@ public final class Gson
   public <T> T fromJson(JsonReader paramJsonReader, Type paramType)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_1
-    //   3: invokevirtual 435	com/google/gson/stream/JsonReader:isLenient	()Z
-    //   6: istore 4
+    //   0: aload_1
+    //   1: invokevirtual 435	com/google/gson/stream/JsonReader:isLenient	()Z
+    //   4: istore 4
+    //   6: iconst_1
+    //   7: istore_3
     //   8: aload_1
     //   9: iconst_1
     //   10: invokevirtual 439	com/google/gson/stream/JsonReader:setLenient	(Z)V
@@ -241,56 +246,57 @@ public final class Gson
     //   39: aload_2
     //   40: areturn
     //   41: astore_2
-    //   42: iload_3
-    //   43: ifeq +11 -> 54
-    //   46: aload_1
-    //   47: iload 4
-    //   49: invokevirtual 439	com/google/gson/stream/JsonReader:setLenient	(Z)V
-    //   52: aconst_null
-    //   53: areturn
-    //   54: new 329	com/google/gson/JsonSyntaxException
-    //   57: dup
-    //   58: aload_2
-    //   59: invokespecial 332	com/google/gson/JsonSyntaxException:<init>	(Ljava/lang/Throwable;)V
-    //   62: athrow
-    //   63: astore_2
-    //   64: aload_1
-    //   65: iload 4
-    //   67: invokevirtual 439	com/google/gson/stream/JsonReader:setLenient	(Z)V
-    //   70: aload_2
-    //   71: athrow
-    //   72: astore_2
-    //   73: new 329	com/google/gson/JsonSyntaxException
-    //   76: dup
-    //   77: aload_2
-    //   78: invokespecial 332	com/google/gson/JsonSyntaxException:<init>	(Ljava/lang/Throwable;)V
-    //   81: athrow
-    //   82: astore_2
-    //   83: new 329	com/google/gson/JsonSyntaxException
-    //   86: dup
-    //   87: aload_2
-    //   88: invokespecial 332	com/google/gson/JsonSyntaxException:<init>	(Ljava/lang/Throwable;)V
-    //   91: athrow
+    //   42: goto +45 -> 87
+    //   45: astore_2
+    //   46: new 332	com/google/gson/JsonSyntaxException
+    //   49: dup
+    //   50: aload_2
+    //   51: invokespecial 333	com/google/gson/JsonSyntaxException:<init>	(Ljava/lang/Throwable;)V
+    //   54: athrow
+    //   55: astore_2
+    //   56: new 332	com/google/gson/JsonSyntaxException
+    //   59: dup
+    //   60: aload_2
+    //   61: invokespecial 333	com/google/gson/JsonSyntaxException:<init>	(Ljava/lang/Throwable;)V
+    //   64: athrow
+    //   65: astore_2
+    //   66: iload_3
+    //   67: ifeq +11 -> 78
+    //   70: aload_1
+    //   71: iload 4
+    //   73: invokevirtual 439	com/google/gson/stream/JsonReader:setLenient	(Z)V
+    //   76: aconst_null
+    //   77: areturn
+    //   78: new 332	com/google/gson/JsonSyntaxException
+    //   81: dup
+    //   82: aload_2
+    //   83: invokespecial 333	com/google/gson/JsonSyntaxException:<init>	(Ljava/lang/Throwable;)V
+    //   86: athrow
+    //   87: aload_1
+    //   88: iload 4
+    //   90: invokevirtual 439	com/google/gson/stream/JsonReader:setLenient	(Z)V
+    //   93: aload_2
+    //   94: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	92	0	this	Gson
-    //   0	92	1	paramJsonReader	JsonReader
-    //   0	92	2	paramType	Type
-    //   1	42	3	i	int
-    //   6	60	4	bool	boolean
+    //   0	95	0	this	Gson
+    //   0	95	1	paramJsonReader	JsonReader
+    //   0	95	2	paramType	Type
+    //   7	60	3	i	int
+    //   4	85	4	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   13	18	41	java/io/EOFException
-    //   20	33	41	java/io/EOFException
-    //   13	18	63	finally
-    //   20	33	63	finally
-    //   54	63	63	finally
-    //   73	82	63	finally
-    //   83	92	63	finally
-    //   13	18	72	java/lang/IllegalStateException
-    //   20	33	72	java/lang/IllegalStateException
-    //   13	18	82	java/io/IOException
-    //   20	33	82	java/io/IOException
+    //   13	18	41	finally
+    //   20	33	41	finally
+    //   46	55	41	finally
+    //   56	65	41	finally
+    //   78	87	41	finally
+    //   13	18	45	java/io/IOException
+    //   20	33	45	java/io/IOException
+    //   13	18	55	java/lang/IllegalStateException
+    //   20	33	55	java/lang/IllegalStateException
+    //   13	18	65	java/io/EOFException
+    //   20	33	65	java/io/EOFException
   }
   
   public <T> T fromJson(Reader paramReader, Class<T> paramClass)
@@ -325,67 +331,63 @@ public final class Gson
   
   public <T> TypeAdapter<T> getAdapter(TypeToken<T> paramTypeToken)
   {
-    Object localObject3 = this.typeTokenCache;
-    if (paramTypeToken == null) {}
-    for (Object localObject1 = NULL_KEY_SURROGATE;; localObject1 = paramTypeToken)
-    {
-      localObject1 = (TypeAdapter)((Map)localObject3).get(localObject1);
-      if (localObject1 == null) {
-        break;
-      }
+    Object localObject2 = this.typeTokenCache;
+    if (paramTypeToken == null) {
+      localObject1 = NULL_KEY_SURROGATE;
+    } else {
+      localObject1 = paramTypeToken;
+    }
+    Object localObject1 = (TypeAdapter)((Map)localObject2).get(localObject1);
+    if (localObject1 != null) {
       return localObject1;
     }
-    localObject3 = (Map)this.calls.get();
+    localObject2 = (Map)this.calls.get();
     int i = 0;
-    if (localObject3 == null)
+    localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localObject3 = new HashMap();
-      this.calls.set(localObject3);
+      localObject1 = new HashMap();
+      this.calls.set(localObject1);
       i = 1;
     }
-    for (;;)
+    localObject2 = (Gson.FutureTypeAdapter)((Map)localObject1).get(paramTypeToken);
+    if (localObject2 != null) {
+      return localObject2;
+    }
+    try
     {
-      for (;;)
+      localObject2 = new Gson.FutureTypeAdapter();
+      ((Map)localObject1).put(paramTypeToken, localObject2);
+      Iterator localIterator = this.factories.iterator();
+      while (localIterator.hasNext())
       {
-        Object localObject4 = (Gson.FutureTypeAdapter)((Map)localObject3).get(paramTypeToken);
-        localObject1 = localObject4;
-        if (localObject4 != null) {
-          break;
-        }
-        try
+        TypeAdapter localTypeAdapter = ((TypeAdapterFactory)localIterator.next()).create(this, paramTypeToken);
+        if (localTypeAdapter != null)
         {
-          localObject1 = new Gson.FutureTypeAdapter();
-          ((Map)localObject3).put(paramTypeToken, localObject1);
-          Iterator localIterator = this.factories.iterator();
-          for (;;)
-          {
-            if (localIterator.hasNext())
-            {
-              localObject4 = ((TypeAdapterFactory)localIterator.next()).create(this, paramTypeToken);
-              if (localObject4 != null)
-              {
-                ((Gson.FutureTypeAdapter)localObject1).setDelegate((TypeAdapter)localObject4);
-                this.typeTokenCache.put(paramTypeToken, localObject4);
-                ((Map)localObject3).remove(paramTypeToken);
-                localObject1 = localObject4;
-                if (i == 0) {
-                  break;
-                }
-                this.calls.remove();
-                return localObject4;
-              }
-            }
-          }
-          throw new IllegalArgumentException("GSON cannot handle " + paramTypeToken);
-        }
-        finally
-        {
-          ((Map)localObject3).remove(paramTypeToken);
+          ((Gson.FutureTypeAdapter)localObject2).setDelegate(localTypeAdapter);
+          this.typeTokenCache.put(paramTypeToken, localTypeAdapter);
+          ((Map)localObject1).remove(paramTypeToken);
           if (i != 0) {
             this.calls.remove();
           }
+          return localTypeAdapter;
         }
       }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("GSON cannot handle ");
+      ((StringBuilder)localObject2).append(paramTypeToken);
+      throw new IllegalArgumentException(((StringBuilder)localObject2).toString());
+    }
+    finally
+    {
+      ((Map)localObject1).remove(paramTypeToken);
+      if (i != 0) {
+        this.calls.remove();
+      }
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
   
@@ -400,8 +402,8 @@ public final class Gson
     if (!this.factories.contains(paramTypeAdapterFactory)) {
       localObject1 = this.jsonAdapterFactory;
     }
-    paramTypeAdapterFactory = this.factories.iterator();
     int i = 0;
+    paramTypeAdapterFactory = this.factories.iterator();
     while (paramTypeAdapterFactory.hasNext())
     {
       Object localObject2 = (TypeAdapterFactory)paramTypeAdapterFactory.next();
@@ -419,7 +421,14 @@ public final class Gson
         }
       }
     }
-    throw new IllegalArgumentException("GSON cannot serialize " + paramTypeToken);
+    paramTypeAdapterFactory = new StringBuilder();
+    paramTypeAdapterFactory.append("GSON cannot serialize ");
+    paramTypeAdapterFactory.append(paramTypeToken);
+    paramTypeAdapterFactory = new IllegalArgumentException(paramTypeAdapterFactory.toString());
+    for (;;)
+    {
+      throw paramTypeAdapterFactory;
+    }
   }
   
   public boolean htmlSafe()
@@ -474,29 +483,75 @@ public final class Gson
     return localStringWriter.toString();
   }
   
+  /* Error */
   public void toJson(JsonElement paramJsonElement, JsonWriter paramJsonWriter)
   {
-    boolean bool1 = paramJsonWriter.isLenient();
-    paramJsonWriter.setLenient(true);
-    boolean bool2 = paramJsonWriter.isHtmlSafe();
-    paramJsonWriter.setHtmlSafe(this.htmlSafe);
-    boolean bool3 = paramJsonWriter.getSerializeNulls();
-    paramJsonWriter.setSerializeNulls(this.serializeNulls);
-    try
-    {
-      Streams.write(paramJsonElement, paramJsonWriter);
-      return;
-    }
-    catch (IOException paramJsonElement)
-    {
-      throw new JsonIOException(paramJsonElement);
-    }
-    finally
-    {
-      paramJsonWriter.setLenient(bool1);
-      paramJsonWriter.setHtmlSafe(bool2);
-      paramJsonWriter.setSerializeNulls(bool3);
-    }
+    // Byte code:
+    //   0: aload_2
+    //   1: invokevirtual 590	com/google/gson/stream/JsonWriter:isLenient	()Z
+    //   4: istore_3
+    //   5: aload_2
+    //   6: iconst_1
+    //   7: invokevirtual 591	com/google/gson/stream/JsonWriter:setLenient	(Z)V
+    //   10: aload_2
+    //   11: invokevirtual 594	com/google/gson/stream/JsonWriter:isHtmlSafe	()Z
+    //   14: istore 4
+    //   16: aload_2
+    //   17: aload_0
+    //   18: getfield 113	com/google/gson/Gson:htmlSafe	Z
+    //   21: invokevirtual 597	com/google/gson/stream/JsonWriter:setHtmlSafe	(Z)V
+    //   24: aload_2
+    //   25: invokevirtual 600	com/google/gson/stream/JsonWriter:getSerializeNulls	()Z
+    //   28: istore 5
+    //   30: aload_2
+    //   31: aload_0
+    //   32: getfield 109	com/google/gson/Gson:serializeNulls	Z
+    //   35: invokevirtual 560	com/google/gson/stream/JsonWriter:setSerializeNulls	(Z)V
+    //   38: aload_1
+    //   39: aload_2
+    //   40: invokestatic 604	com/google/gson/internal/Streams:write	(Lcom/google/gson/JsonElement;Lcom/google/gson/stream/JsonWriter;)V
+    //   43: aload_2
+    //   44: iload_3
+    //   45: invokevirtual 591	com/google/gson/stream/JsonWriter:setLenient	(Z)V
+    //   48: aload_2
+    //   49: iload 4
+    //   51: invokevirtual 597	com/google/gson/stream/JsonWriter:setHtmlSafe	(Z)V
+    //   54: aload_2
+    //   55: iload 5
+    //   57: invokevirtual 560	com/google/gson/stream/JsonWriter:setSerializeNulls	(Z)V
+    //   60: return
+    //   61: astore_1
+    //   62: goto +13 -> 75
+    //   65: astore_1
+    //   66: new 322	com/google/gson/JsonIOException
+    //   69: dup
+    //   70: aload_1
+    //   71: invokespecial 330	com/google/gson/JsonIOException:<init>	(Ljava/lang/Throwable;)V
+    //   74: athrow
+    //   75: aload_2
+    //   76: iload_3
+    //   77: invokevirtual 591	com/google/gson/stream/JsonWriter:setLenient	(Z)V
+    //   80: aload_2
+    //   81: iload 4
+    //   83: invokevirtual 597	com/google/gson/stream/JsonWriter:setHtmlSafe	(Z)V
+    //   86: aload_2
+    //   87: iload 5
+    //   89: invokevirtual 560	com/google/gson/stream/JsonWriter:setSerializeNulls	(Z)V
+    //   92: aload_1
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	this	Gson
+    //   0	94	1	paramJsonElement	JsonElement
+    //   0	94	2	paramJsonWriter	JsonWriter
+    //   4	73	3	bool1	boolean
+    //   14	68	4	bool2	boolean
+    //   28	60	5	bool3	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   38	43	61	finally
+    //   66	75	61	finally
+    //   38	43	65	java/io/IOException
   }
   
   public void toJson(JsonElement paramJsonElement, Appendable paramAppendable)
@@ -522,30 +577,82 @@ public final class Gson
     toJson(JsonNull.INSTANCE, paramAppendable);
   }
   
+  /* Error */
   public void toJson(Object paramObject, Type paramType, JsonWriter paramJsonWriter)
   {
-    paramType = getAdapter(TypeToken.get(paramType));
-    boolean bool1 = paramJsonWriter.isLenient();
-    paramJsonWriter.setLenient(true);
-    boolean bool2 = paramJsonWriter.isHtmlSafe();
-    paramJsonWriter.setHtmlSafe(this.htmlSafe);
-    boolean bool3 = paramJsonWriter.getSerializeNulls();
-    paramJsonWriter.setSerializeNulls(this.serializeNulls);
-    try
-    {
-      paramType.write(paramJsonWriter, paramObject);
-      return;
-    }
-    catch (IOException paramObject)
-    {
-      throw new JsonIOException(paramObject);
-    }
-    finally
-    {
-      paramJsonWriter.setLenient(bool1);
-      paramJsonWriter.setHtmlSafe(bool2);
-      paramJsonWriter.setSerializeNulls(bool3);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_2
+    //   2: invokestatic 442	com/google/gson/reflect/TypeToken:get	(Ljava/lang/reflect/Type;)Lcom/google/gson/reflect/TypeToken;
+    //   5: invokevirtual 446	com/google/gson/Gson:getAdapter	(Lcom/google/gson/reflect/TypeToken;)Lcom/google/gson/TypeAdapter;
+    //   8: astore_2
+    //   9: aload_3
+    //   10: invokevirtual 590	com/google/gson/stream/JsonWriter:isLenient	()Z
+    //   13: istore 4
+    //   15: aload_3
+    //   16: iconst_1
+    //   17: invokevirtual 591	com/google/gson/stream/JsonWriter:setLenient	(Z)V
+    //   20: aload_3
+    //   21: invokevirtual 594	com/google/gson/stream/JsonWriter:isHtmlSafe	()Z
+    //   24: istore 5
+    //   26: aload_3
+    //   27: aload_0
+    //   28: getfield 113	com/google/gson/Gson:htmlSafe	Z
+    //   31: invokevirtual 597	com/google/gson/stream/JsonWriter:setHtmlSafe	(Z)V
+    //   34: aload_3
+    //   35: invokevirtual 600	com/google/gson/stream/JsonWriter:getSerializeNulls	()Z
+    //   38: istore 6
+    //   40: aload_3
+    //   41: aload_0
+    //   42: getfield 109	com/google/gson/Gson:serializeNulls	Z
+    //   45: invokevirtual 560	com/google/gson/stream/JsonWriter:setSerializeNulls	(Z)V
+    //   48: aload_2
+    //   49: aload_3
+    //   50: aload_1
+    //   51: invokevirtual 617	com/google/gson/TypeAdapter:write	(Lcom/google/gson/stream/JsonWriter;Ljava/lang/Object;)V
+    //   54: aload_3
+    //   55: iload 4
+    //   57: invokevirtual 591	com/google/gson/stream/JsonWriter:setLenient	(Z)V
+    //   60: aload_3
+    //   61: iload 5
+    //   63: invokevirtual 597	com/google/gson/stream/JsonWriter:setHtmlSafe	(Z)V
+    //   66: aload_3
+    //   67: iload 6
+    //   69: invokevirtual 560	com/google/gson/stream/JsonWriter:setSerializeNulls	(Z)V
+    //   72: return
+    //   73: astore_1
+    //   74: goto +13 -> 87
+    //   77: astore_1
+    //   78: new 322	com/google/gson/JsonIOException
+    //   81: dup
+    //   82: aload_1
+    //   83: invokespecial 330	com/google/gson/JsonIOException:<init>	(Ljava/lang/Throwable;)V
+    //   86: athrow
+    //   87: aload_3
+    //   88: iload 4
+    //   90: invokevirtual 591	com/google/gson/stream/JsonWriter:setLenient	(Z)V
+    //   93: aload_3
+    //   94: iload 5
+    //   96: invokevirtual 597	com/google/gson/stream/JsonWriter:setHtmlSafe	(Z)V
+    //   99: aload_3
+    //   100: iload 6
+    //   102: invokevirtual 560	com/google/gson/stream/JsonWriter:setSerializeNulls	(Z)V
+    //   105: aload_1
+    //   106: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	107	0	this	Gson
+    //   0	107	1	paramObject	Object
+    //   0	107	2	paramType	Type
+    //   0	107	3	paramJsonWriter	JsonWriter
+    //   13	76	4	bool1	boolean
+    //   24	71	5	bool2	boolean
+    //   38	63	6	bool3	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   48	54	73	finally
+    //   78	87	73	finally
+    //   48	54	77	java/io/IOException
   }
   
   public void toJson(Object paramObject, Type paramType, Appendable paramAppendable)
@@ -578,12 +685,19 @@ public final class Gson
   
   public String toString()
   {
-    return "{serializeNulls:" + this.serializeNulls + ",factories:" + this.factories + ",instanceCreators:" + this.constructorConstructor + "}";
+    StringBuilder localStringBuilder = new StringBuilder("{serializeNulls:");
+    localStringBuilder.append(this.serializeNulls);
+    localStringBuilder.append(",factories:");
+    localStringBuilder.append(this.factories);
+    localStringBuilder.append(",instanceCreators:");
+    localStringBuilder.append(this.constructorConstructor);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.Gson
  * JD-Core Version:    0.7.0.1
  */

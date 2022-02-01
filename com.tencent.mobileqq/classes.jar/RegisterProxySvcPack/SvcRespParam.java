@@ -9,21 +9,25 @@ import java.util.ArrayList;
 public final class SvcRespParam
   extends JceStruct
 {
+  public static ArrayList<Long> cache_gameboxAppids;
   public static ArrayList<OnlineInfos> cache_vOnlineInfo;
-  public int PCstat;
-  public int iIsSupportC2CRoamMsg;
-  public int iIsSupportDataLine;
-  public int iIsSupportPrintable;
-  public int iIsSupportViewPCFile;
-  public int iPCClientType;
-  public int iPcVersion;
-  public ArrayList<OnlineInfo> onlineInfos;
+  public int PCstat = 0;
+  public ArrayList<Long> gameboxAppids;
+  public int iGuildSwitchFlag = 0;
+  public int iGuildUdcFlag = 0;
+  public int iIsSupportC2CRoamMsg = 0;
+  public int iIsSupportDataLine = 0;
+  public int iIsSupportPrintable = 0;
+  public int iIsSupportViewPCFile = 0;
+  public int iPCClientType = 0;
+  public int iPcVersion = 0;
+  public ArrayList<OnlineInfo> onlineInfos = null;
   public ArrayList<OnlineInfos> onlineinfos;
-  public long uRoamFlag;
+  public long uRoamFlag = 0L;
   
   public SvcRespParam() {}
   
-  public SvcRespParam(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, ArrayList<OnlineInfo> paramArrayList, int paramInt7)
+  public SvcRespParam(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, ArrayList<OnlineInfo> paramArrayList, int paramInt7, int paramInt8, int paramInt9, ArrayList<Long> paramArrayList1)
   {
     this.PCstat = paramInt1;
     this.iIsSupportC2CRoamMsg = paramInt2;
@@ -33,6 +37,9 @@ public final class SvcRespParam
     this.iPcVersion = paramInt6;
     this.uRoamFlag = paramLong;
     this.iPCClientType = paramInt7;
+    this.iGuildUdcFlag = paramInt8;
+    this.iGuildSwitchFlag = paramInt9;
+    this.gameboxAppids = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -53,16 +60,30 @@ public final class SvcRespParam
     try
     {
       this.onlineinfos = ((ArrayList)paramJceInputStream.read(cache_vOnlineInfo, 7, false));
-      this.iPCClientType = paramJceInputStream.read(this.iPCClientType, 8, false);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        QLog.d("==read info  onlineinfos===", 2, "", localException);
-      }
+      localException.printStackTrace();
+      QLog.d("==read info  onlineinfos===", 2, "", localException);
+    }
+    this.iPCClientType = paramJceInputStream.read(this.iPCClientType, 8, false);
+    this.iGuildUdcFlag = paramJceInputStream.read(this.iGuildUdcFlag, 9, false);
+    this.iGuildSwitchFlag = paramJceInputStream.read(this.iGuildSwitchFlag, 10, false);
+    if (cache_gameboxAppids == null)
+    {
+      cache_gameboxAppids = new ArrayList();
+      Long localLong = new Long(1L);
+      cache_gameboxAppids.add(localLong);
+    }
+    try
+    {
+      this.gameboxAppids = ((ArrayList)paramJceInputStream.read(cache_gameboxAppids, 11, false));
+      return;
+    }
+    catch (Exception paramJceInputStream)
+    {
+      paramJceInputStream.printStackTrace();
+      QLog.d("==read info  gameboxAppids===", 1, "", paramJceInputStream);
     }
   }
   
@@ -77,11 +98,14 @@ public final class SvcRespParam
     paramJceOutputStream.write(this.uRoamFlag, 6);
     paramJceOutputStream.write(this.onlineinfos, 7);
     paramJceOutputStream.write(this.iPCClientType, 8);
+    paramJceOutputStream.write(this.iGuildUdcFlag, 9);
+    paramJceOutputStream.write(this.iGuildSwitchFlag, 10);
+    paramJceOutputStream.write(this.gameboxAppids, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.SvcRespParam
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="25" android:drawable="@drawable/skin_aio_panel_plus_nor" />
+    <item android:duration="25" android:drawable="@drawable/gqv" />
+    <item android:duration="25" android:drawable="@drawable/gr1" />
+    <item android:duration="25" android:drawable="@drawable/gr2" />
+    <item android:duration="25" android:drawable="@drawable/gr3" />
+    <item android:duration="25" android:drawable="@drawable/gr4" />
+    <item android:duration="25" android:drawable="@drawable/gr5" />
+    <item android:duration="25" android:drawable="@drawable/gr6" />
+    <item android:duration="25" android:drawable="@drawable/gr7" />
+    <item android:duration="25" android:drawable="@drawable/gr8" />
+    <item android:duration="25" android:drawable="@drawable/gqw" />
+    <item android:duration="25" android:drawable="@drawable/gqx" />
+    <item android:duration="25" android:drawable="@drawable/gqy" />
+    <item android:duration="25" android:drawable="@drawable/gqz" />
+    <item android:duration="25" android:drawable="@drawable/gr0" />
+    <item android:duration="25" android:drawable="@drawable/skin_aio_panel_plus_press" />
+</animation-list>

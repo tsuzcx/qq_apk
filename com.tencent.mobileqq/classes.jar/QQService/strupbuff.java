@@ -11,10 +11,10 @@ public final class strupbuff
   extends JceStruct
 {
   static Map<String, ArrayList<byte[]>> cache_logstring;
-  public byte encoding;
-  public Map<String, ArrayList<byte[]>> logstring;
+  public byte encoding = 0;
+  public Map<String, ArrayList<byte[]>> logstring = null;
   public String prefix = "";
-  public int seqno;
+  public int seqno = 0;
   
   public strupbuff() {}
   
@@ -46,8 +46,9 @@ public final class strupbuff
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.logstring, 0);
-    if (this.prefix != null) {
-      paramJceOutputStream.write(this.prefix, 1);
+    String str = this.prefix;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.encoding, 2);
     paramJceOutputStream.write(this.seqno, 3);
@@ -55,7 +56,7 @@ public final class strupbuff
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.strupbuff
  * JD-Core Version:    0.7.0.1
  */

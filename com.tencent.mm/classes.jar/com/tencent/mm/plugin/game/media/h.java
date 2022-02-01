@@ -1,191 +1,260 @@
 package com.tencent.mm.plugin.game.media;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import androidx.recyclerview.widget.GridLayoutManager.b;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.pluginsdk.ui.tools.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.game.autogen.b.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.widget.GameGridLayoutManager;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
 
 public final class h
-  implements f
+  extends RecyclerView
 {
-  private static void a(Context paramContext, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, String paramString6, int paramInt2, Bundle paramBundle)
+  private int IyG;
+  private int IyH;
+  a IyI;
+  private boolean IyJ;
+  private boolean IyK;
+  private Set<Integer> IyL;
+  private View xWS;
+  
+  public h(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(151867);
-    ab.i("MicroMsg.GameVideoEditorLauncher", "goToEditor, from[%d], businessType[%s], appid[%s], videoPath[%s], videoUrl[%s], needEdit[%b], gameInfo[%s]", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, paramString3, paramString4, Boolean.valueOf(paramBoolean), paramString6 });
-    Intent localIntent = new Intent();
-    localIntent.putExtra("from", paramInt1);
-    localIntent.putExtra("business_type", paramString1);
-    localIntent.putExtra("appid", paramString2);
-    localIntent.putExtra("video_path", paramString3);
-    localIntent.putExtra("video_url", paramString4);
-    localIntent.putExtra("thumb_url", paramString5);
-    localIntent.putExtra("game_info", paramString6);
-    localIntent.putExtra("minigame_ext_data", paramBundle);
-    paramString5 = paramContext;
-    if (paramContext == null) {
-      paramString5 = ah.getContext();
-    }
-    int i = 0;
-    boolean bool = true;
-    if (paramInt1 == 1) {
-      if ((!bo.isNullOrNil(paramString3)) && (e.cN(paramString3)))
-      {
-        i = 0;
-        paramBoolean = bool;
-      }
-    }
-    for (;;)
+    super(paramContext);
+    AppMethodBeat.i(276819);
+    this.IyL = new HashSet();
+    this.IyG = paramInt1;
+    this.IyH = paramInt2;
+    this.IyI = new a(getContext());
+    getContext();
+    paramContext = new GameGridLayoutManager();
+    paramContext.bWq = new GridLayoutManager.b()
     {
-      localIntent.putExtra("need_edit", paramBoolean);
-      if (i == 0) {
-        break label349;
-      }
-      if ((paramInt1 != 1) || (!bo.isNullOrNil(paramString4))) {
-        break;
-      }
-      i.c(paramString1, "videoUrl is null", paramString2, -3, "videoUrl is null");
-      AppMethodBeat.o(151867);
-      return;
-      if (!bo.isNullOrNil(paramString4))
+      public final int fJ(int paramAnonymousInt)
       {
-        if (paramBoolean)
+        AppMethodBeat.i(40976);
+        paramAnonymousInt = h.a(h.this).getItemViewType(paramAnonymousInt);
+        if ((paramAnonymousInt == 2147483647) || (paramAnonymousInt == 2147483646) || (paramAnonymousInt == 1) || (paramAnonymousInt == 2))
         {
-          i = 1;
-          paramBoolean = bool;
+          AppMethodBeat.o(40976);
+          return 2;
         }
-        else
-        {
-          i = 0;
-          paramBoolean = false;
-        }
+        AppMethodBeat.o(40976);
+        return 1;
       }
-      else
-      {
-        i.c(paramString1, "videoPath and videoUrl is invalid", paramString2, -3, "videoPath and videoUrl is invalid");
-        paramBoolean = bool;
-        continue;
-        paramBoolean = bool;
-        if (paramInt1 == 4)
-        {
-          i = 1;
-          paramBoolean = bool;
-        }
-      }
-    }
-    if ((paramString5 instanceof Activity))
-    {
-      d.b(paramString5, "game", ".media.GameVideoDownloadUI", localIntent, paramInt2);
-      AppMethodBeat.o(151867);
-      return;
-    }
-    d.b(ah.getContext(), "game", ".media.GameVideoDownloadUI", localIntent);
-    AppMethodBeat.o(151867);
-    return;
-    label349:
-    if ((paramString5 instanceof Activity))
-    {
-      d.b(paramString5, "game", ".media.GameVideoEditorProxyUI", localIntent, paramInt2);
-      AppMethodBeat.o(151867);
-      return;
-    }
-    d.b(ah.getContext(), "game", ".media.GameVideoEditorProxyUI", localIntent);
-    AppMethodBeat.o(151867);
+    };
+    setLayoutManager(paramContext);
+    a(new h.b());
+    this.xWS = LayoutInflater.from(getContext()).inflate(h.f.HZn, this, false);
+    this.xWS.setVisibility(8);
+    paramContext = this.IyI;
+    View localView = this.xWS;
+    paramContext.IyO.add(localView);
+    setAdapter(this.IyI);
+    AppMethodBeat.o(276819);
   }
   
-  public final void U(String paramString1, String paramString2, String paramString3)
+  public final boolean Xs(int paramInt)
   {
-    AppMethodBeat.i(151863);
-    ab.i("MicroMsg.GameVideoEditorLauncher", "businessType:%s; appid:%s; extInfo:%s", new Object[] { paramString1, paramString2, paramString3 });
-    for (;;)
+    AppMethodBeat.i(40992);
+    int i = ((LinearLayoutManager)getLayoutManager()).Jw();
+    if ((paramInt == 0) && (this.IyJ) && (i >= this.IyI.getItemCount() - 2))
     {
-      try
-      {
-        localObject = new JSONObject(paramString3);
-        str1 = ((JSONObject)localObject).optString("videoPath");
-        str2 = ((JSONObject)localObject).optString("videoUrl");
-        str3 = ((JSONObject)localObject).optString("thumbUrl");
-        if (((JSONObject)localObject).optInt("needEdit", 0) == 1)
-        {
-          bool = true;
-          paramString3 = "";
-        }
-      }
-      catch (Exception paramString3)
-      {
-        Object localObject;
-        String str1;
-        String str2;
-        String str3;
-        i.c(paramString1, "json is invalid", paramString2, -3, "json is invalid");
-        AppMethodBeat.o(151863);
-        return;
-      }
-      try
-      {
-        localObject = URLEncoder.encode(((JSONObject)localObject).optString("gameInfo"), "UTF-8");
-        paramString3 = (String)localObject;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        ab.i("MicroMsg.GameVideoEditorLauncher", "err:%s", new Object[] { localUnsupportedEncodingException.getMessage() });
-        continue;
-      }
-      a(null, 1, paramString1, paramString2, str1, str2, str3, bool, paramString3, 0, null);
-      AppMethodBeat.o(151863);
-      return;
-      boolean bool = false;
+      this.xWS.setVisibility(0);
+      AppMethodBeat.o(40992);
+      return true;
     }
+    AppMethodBeat.o(40992);
+    return false;
   }
   
-  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public final e Xt(int paramInt)
   {
-    AppMethodBeat.i(151864);
-    JSONObject localJSONObject = new JSONObject();
-    try
+    AppMethodBeat.i(40993);
+    e locale = this.IyI.Xt(paramInt);
+    AppMethodBeat.o(40993);
+    return locale;
+  }
+  
+  public final void b(LinkedList<e> paramLinkedList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(40991);
+    this.IyJ = paramBoolean1;
+    this.IyK = paramBoolean2;
+    this.xWS.setVisibility(8);
+    a locala = this.IyI;
+    locala.IyP.clear();
+    locala.IyP.addAll(paramLinkedList);
+    locala.bZE.notifyChanged();
+    AppMethodBeat.o(40991);
+  }
+  
+  public final void setOnItemClickListener(com.tencent.mm.plugin.appbrand.widget.recyclerview.b paramb)
+  {
+    this.IyI.uRc = paramb;
+  }
+  
+  final class a
+    extends RecyclerView.a<h.c>
+  {
+    LinkedList<View> IyN;
+    LinkedList<View> IyO;
+    LinkedList<e> IyP;
+    private Context mContext;
+    private ViewGroup uQY;
+    private ViewGroup uQZ;
+    com.tencent.mm.plugin.appbrand.widget.recyclerview.b uRc;
+    
+    a(Context paramContext)
     {
-      localJSONObject.put("appName", paramString2);
-      a(paramContext, 2, null, paramString1, paramString3, null, null, true, localJSONObject.toString(), 1000, paramBundle);
-      AppMethodBeat.o(151864);
-      return;
+      AppMethodBeat.i(40979);
+      this.IyN = new LinkedList();
+      this.IyO = new LinkedList();
+      this.IyP = new LinkedList();
+      this.mContext = paramContext;
+      AppMethodBeat.o(40979);
     }
-    catch (JSONException paramString2)
+    
+    private int Ke(int paramInt)
     {
+      AppMethodBeat.i(40983);
+      if ((paramInt < 0) || (paramInt >= this.IyP.size()))
+      {
+        AppMethodBeat.o(40983);
+        return paramInt;
+      }
+      int j = 0;
+      int i = 0;
+      if (j < paramInt + 1)
+      {
+        e locale = (e)this.IyP.get(j);
+        if ((locale.Idj) || (locale.Idk)) {
+          break label85;
+        }
+        i += 1;
+      }
+      label85:
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.GameVideoEditorLauncher", paramString2, "hy: put appname failed!", new Object[0]);
+        j += 1;
+        break;
+        AppMethodBeat.o(40983);
+        return i;
       }
     }
-  }
-  
-  public final void ap(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(151865);
-    a(paramContext, 3, null, null, paramString, null, null, true, null, 4377, null);
-    AppMethodBeat.o(151865);
-  }
-  
-  public final void b(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    AppMethodBeat.i(151866);
-    a(paramContext, 4, null, paramString3, null, paramString1, paramString2, true, null, paramInt, null);
-    AppMethodBeat.o(151866);
+    
+    private void g(int paramInt1, int paramInt2, String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(40984);
+      if (h.d(h.this) == 8762) {}
+      for (int i = 7;; i = 6)
+      {
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("videoid", paramString2);
+        com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), h.d(h.this), paramInt1, paramInt2, paramString1, h.e(h.this), com.tencent.mm.game.report.b.a.a(i, localHashMap));
+        AppMethodBeat.o(40984);
+        return;
+      }
+    }
+    
+    public final e Xt(int paramInt)
+    {
+      AppMethodBeat.i(40982);
+      if ((paramInt < 0) || (paramInt >= this.IyP.size()))
+      {
+        AppMethodBeat.o(40982);
+        return null;
+      }
+      e locale = (e)this.IyP.get(paramInt);
+      AppMethodBeat.o(40982);
+      return locale;
+    }
+    
+    public final int getItemCount()
+    {
+      int j = 0;
+      AppMethodBeat.i(40980);
+      int k = this.IyP.size();
+      int i;
+      if (this.IyN.isEmpty())
+      {
+        i = 0;
+        if (!this.IyO.isEmpty()) {
+          break label55;
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(40980);
+        return i + k + j;
+        i = 1;
+        break;
+        label55:
+        j = 1;
+      }
+    }
+    
+    public final int getItemViewType(int paramInt)
+    {
+      AppMethodBeat.i(40981);
+      if ((paramInt < 0) || (paramInt >= getItemCount()))
+      {
+        AppMethodBeat.o(40981);
+        return 0;
+      }
+      if ((paramInt == 0) && (!this.IyN.isEmpty()))
+      {
+        AppMethodBeat.o(40981);
+        return 2147483647;
+      }
+      if ((paramInt == getItemCount() - 1) && (!this.IyO.isEmpty()))
+      {
+        AppMethodBeat.o(40981);
+        return 2147483646;
+      }
+      if (this.IyN.isEmpty()) {}
+      for (int i = 0;; i = 1)
+      {
+        paramInt -= i;
+        if ((paramInt >= 0) && (paramInt < this.IyP.size())) {
+          break;
+        }
+        AppMethodBeat.o(40981);
+        return 0;
+      }
+      e locale = (e)this.IyP.get(paramInt);
+      if ((locale != null) && (locale.Idj))
+      {
+        AppMethodBeat.o(40981);
+        return 1;
+      }
+      if ((locale != null) && (locale.Idk))
+      {
+        AppMethodBeat.o(40981);
+        return 2;
+      }
+      AppMethodBeat.o(40981);
+      return 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class czn
-  extends Handler
+  implements Runnable
 {
-  private WeakReference a;
+  public czn(PortraitImageview paramPortraitImageview) {}
   
-  public czn(PermisionPrivacyActivity paramPermisionPrivacyActivity)
+  public void run()
   {
-    this.a = new WeakReference(paramPermisionPrivacyActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((PermisionPrivacyActivity)this.a.get() == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    }
-    throw new RuntimeException("Unknown message: " + paramMessage.what);
+    this.a.postInvalidate();
   }
 }
 

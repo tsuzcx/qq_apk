@@ -7,7 +7,7 @@ class ShortVideoPlayActivity$19
   
   public void run()
   {
-    this.this$0.b(this.a);
+    this.this$0.innerChangePlayerState(this.a);
   }
 }
 

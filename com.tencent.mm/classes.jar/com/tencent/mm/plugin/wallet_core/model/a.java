@@ -1,28 +1,25 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public abstract class a
+public final class a
 {
-  private Runnable ueT = new a.1(this);
+  public String rGU;
+  public String right_button_wording;
+  public String wYO;
+  public String wording;
   
-  protected abstract void a(a parama);
-  
-  public final void b(a parama)
+  public final boolean ihT()
   {
-    a(parama);
-  }
-  
-  protected abstract void bOR();
-  
-  public void release()
-  {
-    al.ae(this.ueT);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void r(Object... paramVarArgs);
+    AppMethodBeat.i(70205);
+    if ((!Util.isNullOrNil(this.wording)) && (!Util.isNullOrNil(this.rGU)) && (!Util.isNullOrNil(this.right_button_wording)) && (!Util.isNullOrNil(this.wYO)))
+    {
+      AppMethodBeat.o(70205);
+      return true;
+    }
+    AppMethodBeat.o(70205);
+    return false;
   }
 }
 

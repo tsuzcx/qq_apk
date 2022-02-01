@@ -28,15 +28,16 @@ public class hd
   
   public static hd a(IThreadPool paramIThreadPool)
   {
-    if (sN == null) {}
-    try
-    {
-      if ((sN == null) && (paramIThreadPool != null)) {
-        sN = new hd(paramIThreadPool);
+    if (sN == null) {
+      try
+      {
+        if ((sN == null) && (paramIThreadPool != null)) {
+          sN = new hd(paramIThreadPool);
+        }
       }
-      return sN;
+      finally {}
     }
-    finally {}
+    return sN;
   }
   
   private void fm()
@@ -56,13 +57,17 @@ public class hd
   
   private Handler getHandler()
   {
-    if ((this.mHandler == null) && (this.sd != null))
+    if (this.mHandler == null)
     {
-      HandlerThread localHandlerThread = this.sd.newFreeHandlerThread("MsgHandler", 5);
-      if (localHandlerThread != null)
+      Object localObject = this.sd;
+      if (localObject != null)
       {
-        localHandlerThread.start();
-        this.mHandler = new Handler(localHandlerThread.getLooper());
+        localObject = ((IThreadPool)localObject).newFreeHandlerThread("MsgHandler", 5);
+        if (localObject != null)
+        {
+          ((HandlerThread)localObject).start();
+          this.mHandler = new Handler(((HandlerThread)localObject).getLooper());
+        }
       }
     }
     return this.mHandler;
@@ -109,6 +114,8 @@ public class hd
   public void a(d paramd)
   {
     int j;
+    int i;
+    label123:
     synchronized (this.sP)
     {
       j = this.sP.size();
@@ -116,69 +123,58 @@ public class hd
       if (i < j)
       {
         ArrayList localArrayList = (ArrayList)this.sP.valueAt(i);
-        if (localArrayList == null) {
-          break label121;
+        if (localArrayList != null)
+        {
+          localArrayList.remove(paramd);
+          break label123;
+          if (i >= 0)
+          {
+            paramd = (ArrayList)this.sP.valueAt(i);
+            if ((paramd == null) || (paramd.size() > 0)) {
+              break label137;
+            }
+            this.sP.removeAt(i);
+            break label137;
+          }
+          if (this.sP.size() <= 0) {
+            unregister();
+          }
+          return;
         }
-        localArrayList.remove(paramd);
       }
-    }
-    int i = j - 1;
-    for (;;)
-    {
-      if (i >= 0)
-      {
-        paramd = (ArrayList)this.sP.valueAt(i);
-        if ((paramd != null) && (paramd.size() <= 0)) {
-          this.sP.removeAt(i);
-        }
-      }
-      else
-      {
-        if (this.sP.size() <= 0) {
-          unregister();
-        }
-        return;
-        label121:
-        i += 1;
-        break;
-      }
-      i -= 1;
     }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    label99:
-    for (;;)
-    {
+    if (paramIntent == null) {
       return;
-      if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramIntent.getAction())) {}
-      for (int i = 101;; i = -1)
-      {
-        if (i < 0) {
-          break label99;
-        }
-        Object localObject = (ArrayList)this.sP.get(i);
-        if (localObject == null) {
-          break;
-        }
-        paramContext = getHandler();
-        if (paramContext == null) {
-          break;
-        }
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          paramContext.post(new hd.1(this, (d)((Iterator)localObject).next(), i, paramIntent));
-        }
-        break;
-      }
+    }
+    paramContext = paramIntent.getAction();
+    int i = -1;
+    if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) {
+      i = 101;
+    }
+    if (i < 0) {
+      return;
+    }
+    Object localObject = (ArrayList)this.sP.get(i);
+    if (localObject == null) {
+      return;
+    }
+    paramContext = getHandler();
+    if (paramContext == null) {
+      return;
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      paramContext.post(new hd.1(this, (d)((Iterator)localObject).next(), i, paramIntent));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.hd
  * JD-Core Version:    0.7.0.1
  */

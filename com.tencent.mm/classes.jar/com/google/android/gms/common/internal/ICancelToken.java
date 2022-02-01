@@ -54,16 +54,16 @@ public abstract interface ICancelToken
       
       public void cancel()
       {
-        AppMethodBeat.i(89667);
+        AppMethodBeat.i(4689);
         transactOneway(2, obtainAndWriteInterfaceToken());
-        AppMethodBeat.o(89667);
+        AppMethodBeat.o(4689);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ICancelToken
  * JD-Core Version:    0.7.0.1
  */

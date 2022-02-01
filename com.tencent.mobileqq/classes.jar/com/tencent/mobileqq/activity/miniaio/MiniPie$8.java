@@ -1,16 +1,30 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aijq;
+import android.app.Activity;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel.DispatchKeyEventListener;
 
-public class MiniPie$8
-  implements Runnable
+class MiniPie$8
+  implements IEmoticonMainPanel.DispatchKeyEventListener
 {
-  public MiniPie$8(aijq paramaijq) {}
+  MiniPie$8(MiniPie paramMiniPie) {}
   
-  public void run()
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    this.this$0.s();
-    this.this$0.z();
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.z))
+    {
+      this.a.A.removeView(this.a.y.getView());
+      paramKeyEvent = this.a;
+      paramKeyEvent.z = false;
+      paramKeyEvent = ((Activity)paramKeyEvent.b).getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      ((Activity)this.a.b).getWindow().setAttributes(paramKeyEvent);
+      return true;
+    }
+    return false;
   }
 }
 

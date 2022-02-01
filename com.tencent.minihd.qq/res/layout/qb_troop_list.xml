@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.SlideDetectListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/qb_troop_list_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@color/transparent" android:divider="@null" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray2" android:gravity="center|left" android:id="@id/troop_seperator_name" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/troop_list_seperator_height" android:singleLine="true" />
+</RelativeLayout>

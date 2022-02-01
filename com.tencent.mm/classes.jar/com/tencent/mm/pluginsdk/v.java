@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk;
 
 public abstract interface v
 {
-  public abstract Object dkU();
+  public abstract Object iGK();
   
-  public abstract Object dkV();
+  public abstract Object iGL();
 }
 
 

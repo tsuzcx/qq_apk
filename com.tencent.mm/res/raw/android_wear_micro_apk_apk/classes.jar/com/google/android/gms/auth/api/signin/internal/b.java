@@ -2,34 +2,34 @@ package com.google.android.gms.auth.api.signin.internal;
 
 public final class b
 {
-  static int GV = 31;
-  private int GW = 1;
+  static int IK = 31;
+  private int IL = 1;
   
-  public final int gi()
+  public final b A(Object paramObject)
   {
-    return this.GW;
-  }
-  
-  public final b r(Object paramObject)
-  {
-    int j = GV;
-    int k = this.GW;
+    int j = IK;
+    int k = this.IL;
     if (paramObject == null) {}
     for (int i = 0;; i = paramObject.hashCode())
     {
-      this.GW = (i + k * j);
+      this.IL = (i + k * j);
       return this;
     }
   }
   
-  public final b u(boolean paramBoolean)
+  public final int gs()
   {
-    int j = GV;
-    int k = this.GW;
+    return this.IL;
+  }
+  
+  public final b x(boolean paramBoolean)
+  {
+    int j = IK;
+    int k = this.IL;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      this.GW = (i + k * j);
+      this.IL = (i + k * j);
       return this;
     }
   }

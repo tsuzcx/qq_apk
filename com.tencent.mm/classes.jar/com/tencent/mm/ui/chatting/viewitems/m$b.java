@@ -1,80 +1,109 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.content.res.Resources;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiView;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class m$b
-  extends c
+  extends c.a
 {
-  private a zzP;
+  public static Map<String, WeakReference<b>> aePO;
+  ImageView aeNG;
+  RTChattingEmojiView aePJ;
+  ImageView aePK;
+  ProgressBar aePL;
+  ImageView aePM;
+  TextView aePN;
   
-  public final View a(LayoutInflater paramLayoutInflater, View paramView)
+  static
   {
-    AppMethodBeat.i(32969);
-    Object localObject;
-    if (paramView != null)
+    AppMethodBeat.i(36923);
+    aePO = new HashMap();
+    AppMethodBeat.o(36923);
+  }
+  
+  public static void y(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(36922);
+    if (!aePO.containsKey(paramString))
     {
-      localObject = paramView;
-      if (paramView.getTag() != null) {}
+      Log.i("AppMsgEmojiItemHolder", "no contain attchid:%s");
+      AppMethodBeat.o(36922);
+      return;
     }
-    else
+    paramString = (b)((WeakReference)aePO.get(paramString)).get();
+    if (paramString != null) {
+      switch (paramInt2)
+      {
+      }
+    }
+    for (;;)
     {
-      localObject = new w(paramLayoutInflater, 2130969070);
-      ((View)localObject).setTag(new m.a().fd((View)localObject));
+      AppMethodBeat.o(36922);
+      return;
+      paramString.aePL.setVisibility(8);
+      paramString.aePN.setVisibility(8);
+      paramString.aePM.setVisibility(8);
+      AppMethodBeat.o(36922);
+      return;
+      paramString.aePL.setVisibility(8);
+      paramString.aePN.setVisibility(8);
+      paramString.aePM.setVisibility(0);
+      paramString.aePL.setProgress(paramInt1);
+      paramString.aePM.setImageResource(R.g.emoji_download_failed_btn);
+      AppMethodBeat.o(36922);
+      return;
+      paramString.aePL.setVisibility(0);
+      paramString.aePN.setVisibility(8);
+      paramString.aePM.setVisibility(8);
+      paramString.aePL.setProgress(0);
     }
-    AppMethodBeat.o(32969);
-    return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, bi parambi, String paramString)
+  public final c.a P(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(32970);
-    this.zzP = parama1;
-    m.a.a((m.a)parama, paramInt, parama1, parambi, this);
-    AppMethodBeat.o(32970);
-  }
-  
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bi parambi)
-  {
-    AppMethodBeat.i(32971);
-    int i = ((az)paramView.getTag()).position;
-    if (parambi != null) {
-      paramContextMenu.add(i, 100, 0, this.zzP.zJz.getMMResources().getString(2131298232));
+    AppMethodBeat.i(36921);
+    super.create(paramView);
+    this.timeTV = ((TextView)paramView.findViewById(R.h.fAm));
+    this.aePJ = ((RTChattingEmojiView)paramView.findViewById(R.h.fxz));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.fxt));
+    this.maskView = paramView.findViewById(R.h.fzn);
+    this.aePL = ((ProgressBar)paramView.findViewById(R.h.fxH));
+    this.aePM = ((ImageView)paramView.findViewById(R.h.fAk));
+    this.aePN = ((TextView)paramView.findViewById(R.h.fAd));
+    if (!paramBoolean)
+    {
+      this.uploadingPB = ((ProgressBar)paramView.findViewById(R.h.gbo));
+      this.stateIV = ((ImageView)paramView.findViewById(R.h.fAj));
+      this.aeNG = ((ImageView)paramView.findViewById(R.h.chatting_status_tick));
     }
-    AppMethodBeat.o(32971);
-    return false;
+    if (this.aePK != null) {
+      ((ViewGroup)this.aePK.getParent()).setBackgroundDrawable(null);
+    }
+    this.userTV = ((TextView)paramView.findViewById(R.h.fAr));
+    AppMethodBeat.o(36921);
+    return this;
   }
   
-  public final boolean a(MenuItem paramMenuItem, a parama, bi parambi)
+  public final View getMainContainerView()
   {
-    return false;
-  }
-  
-  public final boolean aK(int paramInt, boolean paramBoolean)
-  {
-    return (!paramBoolean) && (paramInt == 704643121);
-  }
-  
-  public final boolean b(View paramView, a parama, bi parambi)
-  {
-    return false;
-  }
-  
-  final boolean dLp()
-  {
-    return false;
+    return this.aePJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.m.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,10 @@ import android.graphics.BitmapRegionDecoder;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.HandlerThread;
 import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.image.api.IThreadManager;
+import com.tencent.image.api.URLDrawableDepWrap;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 
@@ -29,7 +31,7 @@ public final class RegionBitmap
   public RegionBitmap(String paramString)
   {
     if (this.mWorkHandler == null) {
-      this.mWorkHandler = new RegionBitmap.WorkHandler(this, ThreadManagerV2.getFileThreadLooper());
+      this.mWorkHandler = new RegionBitmap.WorkHandler(this, URLDrawable.depImp.mThreadManager.getFileThread().getLooper());
     }
     this.mImagePath = paramString;
   }
@@ -65,6 +67,11 @@ public final class RegionBitmap
           }
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramCanvas;
     }
   }
   
@@ -87,12 +94,13 @@ public final class RegionBitmap
     }
     this.mCurrentTaskTime = SystemClock.uptimeMillis();
     paramRegionDrawableData.mTaskTime = this.mCurrentTaskTime;
-    this.mWorkHandler.sendMessage(this.mWorkHandler.obtainMessage(1, paramRegionDrawableData));
+    RegionBitmap.WorkHandler localWorkHandler = this.mWorkHandler;
+    localWorkHandler.sendMessage(localWorkHandler.obtainMessage(1, paramRegionDrawableData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.RegionBitmap
  * JD-Core Version:    0.7.0.1
  */

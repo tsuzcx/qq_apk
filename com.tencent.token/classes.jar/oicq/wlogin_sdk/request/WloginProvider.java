@@ -9,13 +9,15 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import oicq.wlogin_sdk.tools.util;
 
 public class WloginProvider
   extends ContentProvider
 {
-  private WloginProvider.a a;
+  private a a;
   private SQLiteDatabase b = null;
   private final String c = "wlogin_provider.db";
   private final int d = 4;
@@ -28,14 +30,13 @@ public class WloginProvider
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    switch (this.i.match(paramUri))
+    if (this.i.match(paramUri) == 1)
     {
-    default: 
-      throw new IllegalArgumentException("Unnown URI" + paramUri);
+      int k = this.b.delete("rsa_pubkey", paramString, paramArrayOfString);
+      this.h.getContentResolver().notifyChange(paramUri, null);
+      return k;
     }
-    int k = this.b.delete("rsa_pubkey", paramString, paramArrayOfString);
-    this.h.getContentResolver().notifyChange(paramUri, null);
-    return k;
+    throw new IllegalArgumentException("Unnown URI".concat(String.valueOf(paramUri)));
   }
   
   public String getType(Uri paramUri)
@@ -45,51 +46,80 @@ public class WloginProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    if (this.i.match(paramUri) != 1) {
-      throw new IllegalArgumentException("Unknown URI " + paramUri);
-    }
-    long l = this.b.insert("rsa_pubkey", null, paramContentValues);
-    if (l > 0L)
+    if (this.i.match(paramUri) == 1)
     {
-      paramUri = ContentUris.withAppendedId(this.j, l);
-      this.h.getContentResolver().notifyChange(paramUri, null);
-      return paramUri;
+      long l = this.b.insert("rsa_pubkey", null, paramContentValues);
+      if (l > 0L)
+      {
+        paramUri = ContentUris.withAppendedId(this.j, l);
+        this.h.getContentResolver().notifyChange(paramUri, null);
+        return paramUri;
+      }
+      throw new SQLException("Failed to insert row into ".concat(String.valueOf(paramUri)));
     }
-    throw new SQLException("Failed to insert row into " + paramUri);
+    throw new IllegalArgumentException("Unknown URI ".concat(String.valueOf(paramUri)));
   }
   
   public boolean onCreate()
   {
     this.h = getContext();
     this.f = "oicq.wlogin_sdk.WloginProvider";
-    this.j = Uri.parse("content://" + this.f + "/" + "rsa_pubkey");
+    StringBuilder localStringBuilder = new StringBuilder("content://");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("/rsa_pubkey");
+    this.j = Uri.parse(localStringBuilder.toString());
     this.i.addURI(this.f, "rsa_pubkey", 1);
     util.LOGI("oncreated!");
-    this.a = new WloginProvider.a(this, this.h, "wlogin_provider.db", null, 4);
+    this.a = new a(this.h, "wlogin_provider.db", null, 4);
     this.b = this.a.getWritableDatabase();
     return this.b != null;
   }
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    switch (this.i.match(paramUri))
+    if (this.i.match(paramUri) == 1)
     {
-    default: 
-      throw new IllegalArgumentException("Unnown URI" + paramUri);
+      paramArrayOfString1 = this.b.query("rsa_pubkey", paramArrayOfString1, paramString1, paramArrayOfString2, null, null, paramString2);
+      paramArrayOfString1.setNotificationUri(this.h.getContentResolver(), paramUri);
+      return paramArrayOfString1;
     }
-    paramArrayOfString1 = this.b.query("rsa_pubkey", paramArrayOfString1, paramString1, paramArrayOfString2, null, null, paramString2);
-    paramArrayOfString1.setNotificationUri(this.h.getContentResolver(), paramUri);
-    return paramArrayOfString1;
+    throw new IllegalArgumentException("Unnown URI".concat(String.valueOf(paramUri)));
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    switch (this.i.match(paramUri))
-    {
-    default: 
-      throw new IllegalArgumentException("Unnown URI" + paramUri);
+    if (this.i.match(paramUri) == 1) {
+      return this.b.update("rsa_pubkey", paramContentValues, paramString, paramArrayOfString);
     }
-    return this.b.update("rsa_pubkey", paramContentValues, paramString, paramArrayOfString);
+    throw new IllegalArgumentException("Unnown URI".concat(String.valueOf(paramUri)));
+  }
+  
+  class a
+    extends SQLiteOpenHelper
+  {
+    public a(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
+    {
+      super(paramString, paramCursorFactory, paramInt);
+    }
+    
+    public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+    {
+      try
+      {
+        paramSQLiteDatabase.execSQL(String.format("CREATE TABLE %s (id INTEGER PRIMARY KEY AUTOINCREMENT, appid INTEGER, subappid INTEGER, pubkey TEXT, pubkey_md5 TEXT)", new Object[] { "rsa_pubkey" }));
+        return;
+      }
+      catch (Exception paramSQLiteDatabase)
+      {
+        util.printException(paramSQLiteDatabase, "");
+      }
+    }
+    
+    public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+    {
+      paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS rsa_pubkey");
+      onCreate(paramSQLiteDatabase);
+    }
   }
 }
 

@@ -1,20 +1,15 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class gpw
-  implements View.OnTouchListener
+  implements ActionSheet.OnDismissListener
 {
   public gpw(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss()
   {
-    if (this.a.a != null) {
-      this.a.a.onTouchEvent(paramMotionEvent);
-    }
-    return false;
+    ReportController.b(this.a.b, "P_CliOper", "Grp_nearby", "", "nearbygrp_list", "Clk_order", 0, 0, "3", "", "", "");
   }
 }
 

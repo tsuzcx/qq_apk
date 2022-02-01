@@ -1,40 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aepi;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.RectF;
-import android.graphics.Xfermode;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
 
 public class PttAudioPlayView
-  extends View
+  extends PttThemeBaseView
 {
-  private final int jdField_a_of_type_Int = 12;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private PorterDuff.Mode jdField_a_of_type_AndroidGraphicsPorterDuff$Mode = PorterDuff.Mode.SRC_ATOP;
-  private Xfermode jdField_a_of_type_AndroidGraphicsXfermode;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private int jdField_c_of_type_Int = -1;
-  Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  private int d = 8;
-  private int e;
-  private int f = 1;
-  private int g;
-  private int h = 2130838099;
+  Bitmap a;
+  Bitmap b;
+  private final int v = 12;
+  private boolean w = false;
+  private int x = 2130838203;
   
   public PttAudioPlayView(Context paramContext)
   {
@@ -66,137 +46,71 @@ public class PttAudioPlayView
     a(paramInt2);
   }
   
-  private void a(int paramInt)
+  protected void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
-    this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
-    this.d = aepi.a(paramInt, getContext().getResources());
+    super.a(paramInt);
+    this.a = BitmapFactory.decodeResource(getResources(), this.x);
+    this.b = BitmapFactory.decodeResource(getResources(), 2130838204);
   }
   
-  public void a()
+  protected void a(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    if (!this.w)
+    {
+      paramCanvas.drawBitmap(this.b, null, this.g, this.q);
+      return;
     }
-    if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    if ((this.jdField_c_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_c_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_c_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = null;
+    paramCanvas.drawBitmap(this.a, null, this.g, this.q);
   }
   
-  public boolean a()
+  protected boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    Bitmap localBitmap = this.b;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      localBitmap = this.a;
+      if ((localBitmap != null) && (!localBitmap.isRecycled()) && (this.k != null) && (!this.k.isRecycled())) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void b()
   {
-    if (this.jdField_c_of_type_Int < 0)
-    {
-      this.jdField_b_of_type_Int = ((getMeasuredWidth() - getPaddingRight() + getPaddingLeft()) / 2);
-      this.jdField_c_of_type_Int = ((getMeasuredHeight() + getPaddingTop() - getPaddingBottom()) / 2);
-      if (this.jdField_b_of_type_Int < 0) {
-        this.jdField_b_of_type_Int = 0;
-      }
-      if (this.jdField_c_of_type_Int < 0) {
-        this.jdField_c_of_type_Int = 0;
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.ARGB_8888);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.h);
-      this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838100);
-      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    super.b();
+    Bitmap localBitmap = this.a;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      this.a.recycle();
     }
-    if (this.e != 0) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
+    localBitmap = this.b;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      this.b.recycle();
     }
-    int i = paramCanvas.saveLayer(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight(), null, 31);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    RectF localRectF = new RectF(this.jdField_b_of_type_Int - this.d, this.jdField_c_of_type_Int - this.d, this.jdField_b_of_type_Int + this.d, this.jdField_c_of_type_Int + this.d);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_c_of_type_AndroidGraphicsBitmap == null) || (this.jdField_c_of_type_AndroidGraphicsBitmap.isRecycled()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PttAudioPlayView", 2, "onDraw bitmapPlay is null or Recycled");
-        }
-        return;
-      }
-      paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, null, localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    for (;;)
-    {
-      if (this.g != 0)
-      {
-        if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("PttAudioPlayView", 2, "onDraw bitmapSrc is null or Recycled");
-          return;
-          if ((this.jdField_b_of_type_AndroidGraphicsBitmap == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled()))
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("PttAudioPlayView", 2, "onDraw bitmapPause is null or Recycled");
-            return;
-          }
-          paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, null, localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-          continue;
-        }
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-        localRectF = new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.g);
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawRect(localRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsXfermode);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_Int - this.d, this.jdField_c_of_type_Int - this.d, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      }
-    }
-    paramCanvas.restoreToCount(i);
+    this.a = null;
+    this.b = null;
+  }
+  
+  public boolean getPlayState()
+  {
+    return this.w;
   }
   
   public void setPlayState(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.w = paramBoolean;
+    this.u = true;
     invalidate();
   }
   
   public void setPttPauseOrStopDrawable(@DrawableRes int paramInt)
   {
-    this.h = paramInt;
-  }
-  
-  public void setThemeColor(int paramInt)
-  {
-    int i = 0;
-    if (this.g != paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttAudioPlayView", 2, "selectColor " + Integer.toHexString(this.g) + "this=" + this);
-      }
-      this.g = paramInt;
-      i = 1;
-    }
-    if (i != 0) {
-      invalidate();
-    }
+    this.x = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioPlayView
  * JD-Core Version:    0.7.0.1
  */

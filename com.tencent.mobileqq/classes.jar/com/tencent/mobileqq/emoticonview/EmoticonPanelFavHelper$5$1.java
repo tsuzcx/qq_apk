@@ -1,54 +1,67 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apnw;
-import apvd;
-import apvf;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend;
+import com.tencent.mobileqq.emosm.favroaming.EmoAddedAuthCallback;
+import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public class EmoticonPanelFavHelper$5$1
+class EmoticonPanelFavHelper$5$1
   implements Runnable
 {
-  public EmoticonPanelFavHelper$5$1(apvf paramapvf, Object paramObject) {}
+  EmoticonPanelFavHelper$5$1(EmoticonPanelFavHelper.5 param5, Object paramObject) {}
   
   public void run()
   {
-    int i = ((Integer)this.jdField_a_of_type_JavaLangObject).intValue();
-    switch (i)
+    int j = ((Integer)this.val$data).intValue();
+    switch (j)
     {
     default: 
-      i = 0;
-      if (i != 0) {
-        QQToast.a(BaseApplicationImpl.sApplication, 1, i, 0).b(this.jdField_a_of_type_Apvf.a.a.f);
+      break;
+    case 7: 
+    case 8: 
+      boolean bool = CameraEmoAllSend.b;
+      i = 2;
+      QLog.e("FavEmoRoamingObserver", 1, new Object[] { "update panel, over limit flag:", Boolean.valueOf(bool), " ret:", Integer.valueOf(j), " isResumed:", Boolean.valueOf(((EmoticonPanelController)this.this$1.this$0.mPanelController).isResumed()) });
+      if (!CameraEmoAllSend.b)
+      {
+        if (!((EmoticonPanelController)this.this$1.this$0.mPanelController).isResumed()) {
+          return;
+        }
+        CameraEmoAllSend.b = true;
+        if (j == 7) {
+          i = 1;
+        }
+        EmoAddedAuthCallback.b(((EmoticonPanelController)this.this$1.this$0.mPanelController).app.getQQAppInterface(), ((EmoticonPanelController)this.this$1.this$0.mPanelController).context, i);
+      }
+      else
+      {
+        return;
       }
       break;
+    case 6: 
+      i = 2131888868;
+      break;
+    case 5: 
+      i = 2131888867;
+      break;
+    case 4: 
+      i = 2131897765;
+      break;
+    case 3: 
+      i = 2131897766;
+      break;
+    case 2: 
+      i = 2131897759;
+      break;
+    case 1: 
+      i = 2131897758;
+      break;
     }
-    do
-    {
-      return;
-      i = 2131692067;
-      break;
-      i = 2131692069;
-      break;
-      i = 2131692071;
-      break;
-      i = 2131692070;
-      break;
-      i = 2131692066;
-      break;
-      i = 2131692068;
-      break;
-      QLog.e("FavEmoRoamingObserver", 1, new Object[] { "update panel, over limit flag:", Boolean.valueOf(CameraEmoAllSend.b), " ret:", Integer.valueOf(i), " isResumed:", Boolean.valueOf(this.jdField_a_of_type_Apvf.a.a.j) });
-    } while ((CameraEmoAllSend.b) || (!this.jdField_a_of_type_Apvf.a.a.j));
-    CameraEmoAllSend.b = true;
-    if (i == 7) {}
-    for (i = 1;; i = 2)
-    {
-      apnw.a(this.jdField_a_of_type_Apvf.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Apvf.a.a.jdField_a_of_type_AndroidContentContext, i);
-      i = 0;
-      break;
+    int i = 0;
+    if (i != 0) {
+      QQToast.makeText(MobileQQ.getContext(), 1, i, 0).show(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
     }
   }
 }

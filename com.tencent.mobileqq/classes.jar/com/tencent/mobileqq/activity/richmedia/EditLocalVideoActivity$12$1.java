@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajom;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public class EditLocalVideoActivity$12$1
+class EditLocalVideoActivity$12$1
   implements Runnable
 {
-  public EditLocalVideoActivity$12$1(ajom paramajom) {}
+  EditLocalVideoActivity$12$1(EditLocalVideoActivity.12 param12) {}
   
   public void run()
   {
-    if (EditLocalVideoActivity.a(this.a.a) != null)
+    if (EditLocalVideoActivity.q(this.a.b) != null)
     {
-      EditLocalVideoActivity.a(this.a.a).seekTo(0);
-      EditLocalVideoActivity.a(this.a.a).start();
+      EditLocalVideoActivity.q(this.a.b).seekTo(0);
+      EditLocalVideoActivity.q(this.a.b).start();
     }
   }
 }

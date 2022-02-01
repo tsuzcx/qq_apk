@@ -8,7 +8,7 @@ public final class ReqCommonCard
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public ReqHead stHeader;
+  public ReqHead stHeader = null;
   public int uFaceTimeStamp = -1;
   
   public ReqCommonCard() {}
@@ -36,7 +36,7 @@ public final class ReqCommonCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqCommonCard
  * JD-Core Version:    0.7.0.1
  */

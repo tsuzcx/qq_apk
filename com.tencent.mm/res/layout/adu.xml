@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/dam" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/cu7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginBottom="5.0dip" style="@style/a0t" />
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:background="@drawable/b__" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:maxWidth="230.0dip" android:minWidth="40.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a6q" android:id="@id/dan" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="4" />
-            <TextView android:textColor="@color/a6q" android:id="@id/cu8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:minWidth="40.0dip" android:maxLines="4" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/nh" android:textColor="@color/a6q" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/dao" android:background="@drawable/sn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cq6" />
-    </LinearLayout>
-</FrameLayout>
+    <ImageView android:id="@id/fde" android:visibility="gone" android:layout_width="144.0dip" android:layout_height="144.0dip" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/d74" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+</RelativeLayout>

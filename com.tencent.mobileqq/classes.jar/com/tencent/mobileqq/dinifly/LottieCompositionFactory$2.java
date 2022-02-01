@@ -6,11 +6,11 @@ import java.util.concurrent.Callable;
 final class LottieCompositionFactory$2
   implements Callable<LottieResult<LottieComposition>>
 {
-  LottieCompositionFactory$2(Context paramContext, String paramString) {}
+  LottieCompositionFactory$2(Context paramContext, String paramString1, String paramString2) {}
   
   public LottieResult<LottieComposition> call()
   {
-    return LottieCompositionFactory.fromAssetSync(this.val$appContext, this.val$fileName);
+    return LottieCompositionFactory.fromAssetSync(this.val$appContext, this.val$fileName, this.val$cacheKey);
   }
 }
 

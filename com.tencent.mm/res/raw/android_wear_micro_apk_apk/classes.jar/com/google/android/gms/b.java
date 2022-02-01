@@ -2,9 +2,9 @@ package com.google.android.gms;
 
 public final class b
 {
-  public static final int FO = 2131427377;
-  public static final int FP = 2131427378;
-  public static final int FQ = 2131427379;
+  public static final int HD = 2131427377;
+  public static final int HE = 2131427378;
+  public static final int HF = 2131427379;
 }
 
 

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import fib;
+import fia;
 
 public class GetGeneralSettings
   extends AsyncStep
@@ -18,7 +18,7 @@ public class GetGeneralSettings
     {
       if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fib(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fia(this, null);
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver, true);
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.a(bool)) {

@@ -1,129 +1,99 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.z;
+import com.tencent.mm.protocal.protobuf.evt;
+import com.tencent.mm.protocal.protobuf.evu;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.IOException;
+import java.util.LinkedList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class am
 {
-  private static am uKc;
-  public am.a uKa;
-  private boolean uKb;
+  public static evu Wpw;
   
-  static
+  public static String cwe()
   {
-    AppMethodBeat.i(124212);
-    uKc = new am();
-    AppMethodBeat.o(124212);
+    AppMethodBeat.i(117724);
+    String str = "key_pb_history_list" + z.bAM();
+    AppMethodBeat.o(117724);
+    return str;
   }
   
-  private am()
+  public static evu iqd()
   {
-    AppMethodBeat.i(124209);
-    Object localObject = (String)g.RL().Ru().get(ac.a.yHx, "");
-    this.uKa = new am.a();
-    am.a locala = this.uKa;
+    AppMethodBeat.i(117723);
+    Object localObject;
+    if (Wpw == null)
+    {
+      localObject = cwe();
+      Wpw = new evu();
+      localObject = MMApplicationContext.getContext().getSharedPreferences("fts_history_search_sp", 0).getString((String)localObject, "");
+      if (!Util.isNullOrNil((String)localObject)) {
+        localObject = Base64.decode(((String)localObject).getBytes(), 0);
+      }
+    }
     try
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("&");
-        locala.id = bo.p(localObject[0], new Object[0]);
-        locala.uKd = bo.apV(localObject[1]);
-        locala.uKe = bo.apV(localObject[2]);
-        locala.ghy = bo.apW(localObject[3]);
-        locala.uJc = bo.apV(localObject[4]);
-        locala.type = bo.apV(localObject[5]);
-        locala.text = localObject[6];
-        locala.cDz = localObject[7];
-        locala.timestamp = bo.apW(localObject[8]);
-        locala.uKf = bo.apV(localObject[9]);
-        locala.fJQ = bo.apW(localObject[10]);
-        locala.uKg = bo.apV(localObject[11]);
-      }
-      AppMethodBeat.o(124209);
-      return;
+      Wpw.parseFrom((byte[])localObject);
+      label67:
+      localObject = Wpw;
+      AppMethodBeat.o(117723);
+      return localObject;
     }
-    catch (Exception localException)
+    catch (IOException localIOException)
     {
-      ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchRedPointMgr", localException, "", new Object[0]);
-      AppMethodBeat.o(124209);
+      break label67;
     }
   }
   
-  public static am cZF()
+  public static String iqe()
   {
-    return uKc;
-  }
-  
-  public static long cZG()
-  {
-    AppMethodBeat.i(124211);
-    Object localObject = g.RL().Ru().get(ac.a.yJV, null);
-    if (localObject == null)
+    AppMethodBeat.i(117725);
+    evu localevu = iqd();
+    int j = localevu.vgO.size();
+    Object localObject = new JSONObject();
+    try
     {
-      AppMethodBeat.o(124211);
-      return 0L;
+      JSONArray localJSONArray1 = new JSONArray();
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONArray localJSONArray2 = new JSONArray();
+      int i = 0;
+      while ((i < localevu.vgO.size()) && (i < j))
+      {
+        evt localevt = (evt)localevu.vgO.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("word", localevt.YWK);
+        localJSONArray2.put(localJSONObject2);
+        i += 1;
+      }
+      localJSONObject1.put("items", localJSONArray2);
+      localJSONObject1.put("count", localJSONArray2.length());
+      localJSONObject1.put("type", 4);
+      localJSONArray1.put(localJSONObject1);
+      ((JSONObject)localObject).put("data", localJSONArray1);
+      ((JSONObject)localObject).put("ret", 0);
     }
-    long l = ((Long)localObject).longValue();
-    AppMethodBeat.o(124211);
-    return l;
-  }
-  
-  public final void Jt(int paramInt)
-  {
-    int i = 0;
-    AppMethodBeat.i(151922);
-    if (this.uKa != null)
+    catch (JSONException localJSONException)
     {
-      boolean bool = this.uKa.isValid();
-      if ((this.uKb) && (paramInt == 1) && (!bool))
-      {
-        AppMethodBeat.o(151922);
-        return;
-      }
-      String str2 = this.uKa.id;
-      if (str2 != null)
-      {
-        str1 = str2;
-        if (!str2.equals("null")) {}
-      }
-      else
-      {
-        str1 = "";
-      }
-      if (bool) {
-        i = 1;
-      }
-      String str1 = String.format("%d,%d,%s,%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), str1, Long.valueOf(System.currentTimeMillis()) });
-      ab.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "report websearch reddot 17513: ".concat(String.valueOf(str1)));
-      com.tencent.mm.plugin.report.e.qrI.kvStat(17513, str1);
-      if ((paramInt == 1) && (!bool)) {
-        this.uKb = true;
-      }
+      label177:
+      break label177;
     }
-    AppMethodBeat.o(151922);
-  }
-  
-  public final void save()
-  {
-    AppMethodBeat.i(124210);
-    if (this.uKa == null) {}
-    for (String str = "";; str = this.uKa.aCR())
-    {
-      g.RL().Ru().set(ac.a.yHx, str);
-      AppMethodBeat.o(124210);
-      return;
-    }
+    localObject = ((JSONObject)localObject).toString();
+    AppMethodBeat.o(117725);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.am
  * JD-Core Version:    0.7.0.1
  */

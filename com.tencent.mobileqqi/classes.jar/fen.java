@@ -1,15 +1,23 @@
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.RecommendContactMsg;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.RecommendContact;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.Vector;
 
 public class fen
-  implements Comparator
+  implements Runnable
 {
-  public fen(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public fen(PhoneContactManagerImp paramPhoneContactManagerImp, String paramString) {}
   
-  public int a(RecommendContactMsg paramRecommendContactMsg1, RecommendContactMsg paramRecommendContactMsg2)
+  public void run()
   {
-    return paramRecommendContactMsg1.friendStatus - paramRecommendContactMsg2.friendStatus;
+    Entity localEntity = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).a(RecommendContact.class, this.jdField_a_of_type_JavaLangString);
+    if (localEntity != null)
+    {
+      PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).b(localEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a.remove(localEntity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.i();
   }
 }
 

@@ -18,10 +18,12 @@ public class SniSSLSocketFactory
   
   public static void ensureSupportSNI(Socket paramSocket, String paramString)
   {
-    if ((paramSocket != null) && ((paramSocket instanceof SSLSocket))) {}
-    for (paramSocket = (SSLSocket)paramSocket;; paramSocket = null)
-    {
-      if (paramSocket != null) {}
+    if ((paramSocket != null) && ((paramSocket instanceof SSLSocket))) {
+      paramSocket = (SSLSocket)paramSocket;
+    } else {
+      paramSocket = null;
+    }
+    if (paramSocket != null) {
       try
       {
         SniSSLSocketFactory.HostNameSetter.setServerNameIndication(paramString, paramSocket);
@@ -30,7 +32,6 @@ public class SniSSLSocketFactory
       catch (Exception paramSocket)
       {
         paramSocket.printStackTrace();
-        return;
       }
     }
   }
@@ -52,7 +53,7 @@ public class SniSSLSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.http.base.SniSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

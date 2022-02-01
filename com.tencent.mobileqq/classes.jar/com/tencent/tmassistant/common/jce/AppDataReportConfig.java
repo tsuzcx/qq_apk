@@ -36,14 +36,15 @@ public final class AppDataReportConfig
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.frequency, 0);
-    if (this.mapSpecialPkgs != null) {
-      paramJceOutputStream.write(this.mapSpecialPkgs, 1);
+    Map localMap = this.mapSpecialPkgs;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.AppDataReportConfig
  * JD-Core Version:    0.7.0.1
  */

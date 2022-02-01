@@ -15,17 +15,17 @@ public final class zzzt
   
   static zzzt zztm()
   {
-    AppMethodBeat.i(3588);
+    AppMethodBeat.i(40378);
     zzzt localzzzt = new zzzt("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either that the input has been truncated or that an embedded message misreported its own length.");
-    AppMethodBeat.o(3588);
+    AppMethodBeat.o(40378);
     return localzzzt;
   }
   
   static zzzt zztn()
   {
-    AppMethodBeat.i(3589);
+    AppMethodBeat.i(40379);
     zzzt localzzzt = new zzzt("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
-    AppMethodBeat.o(3589);
+    AppMethodBeat.o(40379);
     return localzzzt;
   }
 }

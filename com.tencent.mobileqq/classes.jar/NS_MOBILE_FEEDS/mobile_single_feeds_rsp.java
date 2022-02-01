@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,9 +13,9 @@ public final class mobile_single_feeds_rsp
 {
   static ArrayList<single_feed> cache_all_feeds_data = new ArrayList();
   static Map<String, String> cache_stMapExtendinfo;
-  public ArrayList<single_feed> all_feeds_data;
-  public long next_keep_alive_time;
-  public Map<String, String> stMapExtendinfo;
+  public ArrayList<single_feed> all_feeds_data = null;
+  public long next_keep_alive_time = 0L;
+  public Map<String, String> stMapExtendinfo = null;
   
   static
   {
@@ -42,18 +43,20 @@ public final class mobile_single_feeds_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.all_feeds_data != null) {
-      paramJceOutputStream.write(this.all_feeds_data, 0);
+    Object localObject = this.all_feeds_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.next_keep_alive_time, 1);
-    if (this.stMapExtendinfo != null) {
-      paramJceOutputStream.write(this.stMapExtendinfo, 2);
+    localObject = this.stMapExtendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_single_feeds_rsp
  * JD-Core Version:    0.7.0.1
  */

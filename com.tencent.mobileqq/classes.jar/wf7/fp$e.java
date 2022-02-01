@@ -10,25 +10,26 @@ class fp$e
   
   public void a(CurrentSessionItem paramCurrentSessionItem)
   {
-    switch (paramCurrentSessionItem.eW)
+    int i = paramCurrentSessionItem.eW;
+    if (i != 0)
     {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 4) {
+          return;
+        }
+        fp.a(this.ra, -9);
+        return;
+      }
       fp.a(this.ra, paramCurrentSessionItem);
       return;
-    case 0: 
-      fp.b(this.ra, paramCurrentSessionItem);
-      return;
     }
-    fp.a(this.ra, -9);
+    fp.b(this.ra, paramCurrentSessionItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.fp.e
  * JD-Core Version:    0.7.0.1
  */

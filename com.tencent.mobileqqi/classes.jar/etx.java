@@ -11,9 +11,12 @@ public class etx
   
   public void onClick(View paramView)
   {
-    VoipDialInterfaceActivity.a(this.a).setCursorVisible(true);
-    VoipDialInterfaceActivity.b(this.a).setCursorVisible(false);
-    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(VoipDialInterfaceActivity.b(this.a).getWindowToken(), 0);
+    if (VoipDialInterfaceActivity.a(this.a).getText().toString().trim().length() >= 0)
+    {
+      VoipDialInterfaceActivity.a(this.a).setCursorVisible(true);
+      VoipDialInterfaceActivity.a(this.a, true);
+    }
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(VoipDialInterfaceActivity.a(this.a).getWindowToken(), 0);
   }
 }
 

@@ -26,14 +26,15 @@ public abstract class UploadedTexture
   
   private void freeBitmap()
   {
-    if (this.mBitmap != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      onFreeBitmap(this.mBitmap);
-      this.mBitmap = null;
-      return;
+    boolean bool;
+    if (this.mBitmap != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.assertTrue(bool);
+    onFreeBitmap(this.mBitmap);
+    this.mBitmap = null;
   }
   
   private Bitmap getBitmap()
@@ -41,9 +42,10 @@ public abstract class UploadedTexture
     if (this.mBitmap == null)
     {
       this.mBitmap = onGetBitmap();
-      if (this.mBitmap != null)
+      Bitmap localBitmap = this.mBitmap;
+      if (localBitmap != null)
       {
-        int i = this.mBitmap.getWidth();
+        int i = localBitmap.getWidth();
         int j = this.mBitmap.getHeight();
         if (this.mWidth == -1) {
           setTextureSize(i, j);
@@ -65,48 +67,48 @@ public abstract class UploadedTexture
   
   private void uploadToCanvas(GLCanvas paramGLCanvas)
   {
-    boolean bool2 = false;
     Bitmap localBitmap = getBitmap();
-    if (localBitmap != null) {
+    if (localBitmap != null) {}
+    for (;;)
+    {
       try
       {
         int i = localBitmap.getWidth();
         int j = localBitmap.getHeight();
         int k = getTextureWidth();
         int m = getTextureHeight();
-        boolean bool1 = bool2;
-        if (i <= k)
-        {
-          bool1 = bool2;
-          if (j <= m) {
-            bool1 = true;
-          }
+        if ((i > k) || (j > m)) {
+          break label165;
         }
-        Assert.assertTrue(bool1);
+        bool = true;
+        Assert.assertTrue(bool);
         paramGLCanvas.setTextureParameters(this);
-        if ((i == k) && (j == m)) {
+        if ((i == k) && (j == m))
+        {
           paramGLCanvas.initializeTexture(this, localBitmap);
         }
-        for (;;)
+        else
         {
-          freeBitmap();
-          setAssociatedCanvas(paramGLCanvas);
-          this.mState = 1;
-          this.mContentValid = true;
-          return;
           i = GLUtils.getInternalFormat(localBitmap);
           j = GLUtils.getType(localBitmap);
           paramGLCanvas.initializeTextureSize(this, i, j);
           paramGLCanvas.texSubImage2D(this, 0, 0, localBitmap, i, j);
         }
-        this.mState = -1;
+        freeBitmap();
+        setAssociatedCanvas(paramGLCanvas);
+        this.mState = 1;
+        this.mContentValid = true;
+        return;
       }
       finally
       {
         freeBitmap();
       }
+      this.mState = -1;
+      throw new RuntimeException("Texture load fail, no bitmap");
+      label165:
+      boolean bool = false;
     }
-    throw new RuntimeException("Texture load fail, no bitmap");
   }
   
   public int getSourceHeight()
@@ -212,30 +214,31 @@ public abstract class UploadedTexture
   
   public void updateContent(GLCanvas paramGLCanvas)
   {
-    if (!isLoaded()) {
+    if (!isLoaded())
+    {
       if (this.mThrottled)
       {
-        i = sUploadedCount + 1;
+        int i = sUploadedCount + 1;
         sUploadedCount = i;
-        if (i <= 100) {}
+        if (i > 100) {
+          return;
+        }
       }
-    }
-    while (this.mContentValid)
-    {
-      int i;
-      return;
       uploadToCanvas(paramGLCanvas);
       return;
     }
-    Bitmap localBitmap = getBitmap();
-    paramGLCanvas.texSubImage2D(this, 0, 0, localBitmap, GLUtils.getInternalFormat(localBitmap), GLUtils.getType(localBitmap));
-    freeBitmap();
-    this.mContentValid = true;
+    if (!this.mContentValid)
+    {
+      Bitmap localBitmap = getBitmap();
+      paramGLCanvas.texSubImage2D(this, 0, 0, localBitmap, GLUtils.getInternalFormat(localBitmap), GLUtils.getType(localBitmap));
+      freeBitmap();
+      this.mContentValid = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.texture.UploadedTexture
  * JD-Core Version:    0.7.0.1
  */

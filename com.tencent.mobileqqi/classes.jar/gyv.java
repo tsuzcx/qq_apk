@@ -1,27 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
 
 public class gyv
-  extends Handler
+  implements View.OnClickListener
 {
   public gyv(MediaControllerX paramMediaControllerX) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
-    int i;
-    do
-    {
-      return;
-      this.a.c();
-      return;
-      i = MediaControllerX.a(this.a);
-    } while ((MediaControllerX.b(this.a)) || (!MediaControllerX.a(this.a)) || (!MediaControllerX.a(this.a).a()));
-    sendMessageDelayed(obtainMessage(2), 1000 - i % 1000);
+    MediaControllerX.b(this.a);
+    this.a.a(5000);
   }
 }
 

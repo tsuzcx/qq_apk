@@ -1,93 +1,174 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.IntentFilter.MalformedMimeTypeException;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.nfc.NfcAdapter;
-import android.nfc.tech.IsoDep;
-import android.nfc.tech.NfcA;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Debug;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.g;
-import android.support.v4.app.k;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.b.a;
-import com.tencent.mm.ac.b.b;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.x;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ag.b.a;
+import com.tencent.mm.ag.b.b;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.sdk.platformtools.AndroidOSafety;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.component.glocom.GloUIComponentActivity;
+import com.tencent.mm.ui.tools.k;
+import com.tencent.mm.ui.vas.f;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
-import com.tencent.mm.ui.widget.SwipeBackLayout.a;
-import com.tencent.mm.ui.widget.h;
-import com.tencent.mm.ui.widget.h.a;
-import com.tencent.mm.vending.e.c;
+import com.tencent.mm.ui.widget.SwipeBackLayout.b;
+import com.tencent.mm.ui.widget.l;
+import com.tencent.mm.ui.widget.l.a;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MMFragmentActivity
-  extends AppCompatActivity
-  implements SwipeBackLayout.a, h.a, com.tencent.mm.vending.e.b
+  extends GloUIComponentActivity
+  implements SwipeBackLayout.b, l.a, com.tencent.mm.vending.e.b
 {
-  public static final long ANIMATION_DURATION = 320L;
+  public static final long ANIMATION_DURATION = 260L;
   public static final String EXTRA_USE_SYSTEM_DEFAULT_ENTER_EXIT_ANIM = "extra_use_system_default_enter_exit_anim";
   private static final String TAG = "MicroMsg.MMFragmentActivity";
   public static final float WIDTH_SETTLE_FACT = 3.5F;
+  public static com.tencent.mm.ui.vas.d.a aReporter;
+  private static List<MMFragmentActivity.d> interceptors;
   String className;
   private Resources customResources;
   private a mActivityAnimStyle;
   private View mContentViewForSwipeBack;
+  private List<b> mDispatchedTouchListeners;
   private boolean mIsPaused;
   private com.tencent.mm.vending.a.a mLifeCycleKeeper;
-  private b mNfcFilterHelper;
+  private MMFragmentActivity.e mNfcFilterHelper;
   private SwipeBackLayout mSwipeBackLayout;
   private boolean mSwiping;
+  private MMFragmentActivity.c onActResult;
   ArrayList<WeakReference<MMFragment>> record;
   private boolean updateResource;
   
+  static
+  {
+    AppMethodBeat.i(249094);
+    interceptors = new CopyOnWriteArrayList();
+    com.tencent.mm.ui.vas.d.a.a locala = com.tencent.mm.ui.vas.d.a.afRn;
+    aReporter = com.tencent.mm.ui.vas.d.a.a.jEu();
+    AppMethodBeat.o(249094);
+  }
+  
   public MMFragmentActivity()
   {
-    AppMethodBeat.i(106054);
+    AppMethodBeat.i(141406);
     this.record = new ArrayList();
     this.mLifeCycleKeeper = new com.tencent.mm.vending.a.a();
+    this.onActResult = null;
     this.mActivityAnimStyle = new a();
     this.updateResource = false;
     this.mContentViewForSwipeBack = null;
-    AppMethodBeat.o(106054);
+    this.mDispatchedTouchListeners = new ArrayList();
+    AppMethodBeat.o(141406);
+  }
+  
+  public static void addInterceptor(MMFragmentActivity.d paramd)
+  {
+    AppMethodBeat.i(249068);
+    interceptors.add(paramd);
+    AppMethodBeat.o(249068);
+  }
+  
+  private static int getSlideLeftInAnim()
+  {
+    return com.tencent.mm.ah.a.a.slide_left_in_ease;
+  }
+  
+  private static int getSlideLeftOutAnim()
+  {
+    return com.tencent.mm.ah.a.a.slide_left_out_ease;
+  }
+  
+  private static int getSlideRightInAnim()
+  {
+    return com.tencent.mm.ah.a.a.slide_right_in_ease;
+  }
+  
+  private static int getSlideRightOutAnim()
+  {
+    return com.tencent.mm.ah.a.a.slide_right_out_ease;
+  }
+  
+  public static boolean isVASActivity(Intent paramIntent)
+  {
+    AppMethodBeat.i(249071);
+    if ((paramIntent != null) && (com.tencent.mm.ui.vas.c.isVASActivity(paramIntent)))
+    {
+      AppMethodBeat.o(249071);
+      return true;
+    }
+    AppMethodBeat.o(249071);
+    return false;
+  }
+  
+  public void addDispatchedTouchListener(b paramb)
+  {
+    AppMethodBeat.i(249277);
+    Iterator localIterator = this.mDispatchedTouchListeners.iterator();
+    b localb;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localb = (b)localIterator.next();
+    } while ((localb != paramb) && (!localb.key().equals(paramb.key())));
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        this.mDispatchedTouchListeners.add(paramb);
+      }
+      AppMethodBeat.o(249277);
+      return;
+    }
   }
   
   public String appendMemLog()
   {
-    AppMethodBeat.i(106057);
+    AppMethodBeat.i(141409);
     long l1 = Runtime.getRuntime().totalMemory();
     long l2 = Runtime.getRuntime().freeMemory();
     String str = String.format("Runtime: [%s:%s:%s] Native: [%s:%s:%s] ", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l1 - l2), Long.valueOf(Debug.getNativeHeapSize()), Long.valueOf(Debug.getNativeHeapAllocatedSize()), Long.valueOf(Debug.getNativeHeapFreeSize()) });
-    AppMethodBeat.o(106057);
+    AppMethodBeat.o(141409);
     return str;
   }
   
@@ -98,45 +179,57 @@ public class MMFragmentActivity
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(106100);
+    AppMethodBeat.i(141454);
     if (isSupportNavigationSwipeBack())
     {
       SwipeBackLayout localSwipeBackLayout = getSwipeBackLayout();
-      if ((paramKeyEvent.getKeyCode() == 4) && (localSwipeBackLayout != null) && (localSwipeBackLayout.doA()))
+      if ((paramKeyEvent.getKeyCode() == 4) && (localSwipeBackLayout != null) && (localSwipeBackLayout.iMy()))
       {
-        ab.w("ashutest", "ashutest::IS SwipeBack ING, ignore KeyBack Event");
-        AppMethodBeat.o(106100);
+        Log.w("ashutest", "ashutest::IS SwipeBack ING, ignore KeyBack Event");
+        AppMethodBeat.o(141454);
         return true;
       }
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(106100);
+    AppMethodBeat.o(141454);
+    return bool;
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(249284);
+    Iterator localIterator = this.mDispatchedTouchListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((b)localIterator.next()).n(paramMotionEvent);
+    }
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(249284);
     return bool;
   }
   
   public boolean enableActivityAnimation()
   {
-    AppMethodBeat.i(106079);
+    AppMethodBeat.i(141431);
     Intent localIntent = getIntent();
     if (localIntent != null) {}
-    for (boolean bool = com.tencent.mm.sdk.platformtools.w.a(localIntent, "extra_use_system_default_enter_exit_anim", false);; bool = false)
+    for (boolean bool = IntentUtil.getBooleanExtra(localIntent, "extra_use_system_default_enter_exit_anim", false);; bool = false)
     {
       if (bool)
       {
-        AppMethodBeat.o(106079);
+        AppMethodBeat.o(141431);
         return false;
       }
-      AppMethodBeat.o(106079);
+      AppMethodBeat.o(141431);
       return true;
     }
   }
   
   public void finish()
   {
-    AppMethodBeat.i(106082);
+    AppMethodBeat.i(141434);
     super.finish();
     initActivityCloseAnimation();
-    AppMethodBeat.o(106082);
+    AppMethodBeat.o(141434);
   }
   
   public boolean forceRemoveNoMatchOnPath()
@@ -144,58 +237,75 @@ public class MMFragmentActivity
     return false;
   }
   
+  public int getActionBarHeightFromTheme()
+  {
+    AppMethodBeat.i(249248);
+    int i = com.tencent.mm.compatible.util.a.di(this);
+    AppMethodBeat.o(249248);
+    return i;
+  }
+  
   public MMFragment getCurrentFragmet()
   {
-    AppMethodBeat.i(106075);
+    AppMethodBeat.i(141427);
     int i = this.record.size();
     if (i == 0)
     {
-      AppMethodBeat.o(106075);
+      AppMethodBeat.o(141427);
       return null;
     }
     MMFragment localMMFragment = (MMFragment)((WeakReference)this.record.get(i - 1)).get();
     if ((localMMFragment != null) && (localMMFragment.isShowing()))
     {
-      AppMethodBeat.o(106075);
+      AppMethodBeat.o(141427);
       return localMMFragment;
     }
-    AppMethodBeat.o(106075);
+    AppMethodBeat.o(141427);
     return null;
   }
   
   public final Resources getOriginalResources()
   {
-    AppMethodBeat.i(155335);
+    AppMethodBeat.i(141449);
     Resources localResources = super.getResources();
-    AppMethodBeat.o(155335);
+    AppMethodBeat.o(141449);
     return localResources;
   }
   
   public Resources getResources()
   {
-    AppMethodBeat.i(106096);
-    if ((ah.getContext().getAssets() != null) && (ah.getResources() != null))
+    AppMethodBeat.i(141448);
+    if ((getAssets() != null) && (MMApplicationContext.getResources() != null))
     {
       if ((!this.updateResource) || (this.customResources == null))
       {
         Object localObject2 = getBaseContext().getResources();
-        this.customResources = ah.getResources();
-        if (((this.customResources instanceof com.tencent.mm.cc.b)) && (localObject2 != null))
+        this.customResources = MMApplicationContext.getResources();
+        if (((this.customResources instanceof com.tencent.mm.ce.d)) && (localObject2 != null))
         {
-          localObject1 = (com.tencent.mm.cc.b)this.customResources;
-          localObject2 = ((com.tencent.mm.cc.b)localObject1).yjj.c(((Resources)localObject2).getConfiguration());
-          ((com.tencent.mm.cc.b)localObject1).getConfiguration().updateFrom((Configuration)localObject2);
+          localObject1 = (com.tencent.mm.ce.d)this.customResources;
+          localObject2 = ((com.tencent.mm.ce.d)localObject1).acma.h(((Resources)localObject2).getConfiguration());
+          com.tencent.mm.ce.e.a((Configuration)localObject2, aw.f(this.customResources));
+          ((com.tencent.mm.ce.d)localObject1).getConfiguration().updateFrom((Configuration)localObject2);
           this.customResources = ((Resources)localObject1);
           this.updateResource = true;
         }
       }
       localObject1 = this.customResources;
-      AppMethodBeat.o(106096);
+      AppMethodBeat.o(141448);
       return localObject1;
     }
     Object localObject1 = super.getResources();
-    AppMethodBeat.o(106096);
+    AppMethodBeat.o(141448);
     return localObject1;
+  }
+  
+  public ActionBar getSupportActionBar()
+  {
+    AppMethodBeat.i(249274);
+    ActionBar localActionBar = com.tencent.mm.ui.widget.d.c(super.getSupportActionBar());
+    AppMethodBeat.o(249274);
+    return localActionBar;
   }
   
   public SwipeBackLayout getSwipeBackLayout()
@@ -205,120 +315,192 @@ public class MMFragmentActivity
   
   public Object getSystemService(String paramString)
   {
-    AppMethodBeat.i(106095);
-    if (("clipboard".equals(paramString)) && (getApplicationContext() != null))
+    AppMethodBeat.i(141447);
+    if ((("clipboard".equals(paramString)) || ("power".equals(paramString))) && (getApplicationContext() != null))
     {
       paramString = getApplicationContext().getSystemService(paramString);
-      AppMethodBeat.o(106095);
+      AppMethodBeat.o(141447);
       return paramString;
     }
     Object localObject = super.getSystemService(paramString);
     if ("layout_inflater".equals(paramString))
     {
-      paramString = w.b((LayoutInflater)localObject);
-      AppMethodBeat.o(106095);
+      paramString = af.b((LayoutInflater)localObject);
+      AppMethodBeat.o(141447);
       return paramString;
     }
-    AppMethodBeat.o(106095);
+    AppMethodBeat.o(141447);
     return localObject;
   }
   
   public WindowManager getWindowManager()
   {
-    AppMethodBeat.i(156397);
+    AppMethodBeat.i(141457);
+    Object localObject1;
+    if (!isDestroyed())
+    {
+      localObject1 = super.getWindowManager();
+      AppMethodBeat.o(141457);
+      return localObject1;
+    }
     try
     {
-      Object localObject = new Throwable().getStackTrace();
-      if ((localObject != null) && (localObject.length >= 2) && (localObject[1].getMethodName().equals("handleDestroyActivity")))
+      localObject1 = new Throwable().getStackTrace();
+      if ((localObject1 != null) && (localObject1.length >= 2) && (localObject1[1].getMethodName().equals("handleDestroyActivity")))
       {
-        localObject = com.tencent.mm.plugin.crashfix.b.a.a.a(super.getWindowManager());
-        AppMethodBeat.o(156397);
-        return localObject;
+        localObject1 = com.tencent.mm.plugin.crashfix.b.a.a.a(super.getWindowManager());
+        AppMethodBeat.o(141457);
+        return localObject1;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      ab.e("MicroMsg.MMFragmentActivity", localThrowable.getMessage());
+      Log.e("MicroMsg.MMFragmentActivity", localObject2.getMessage());
       WindowManager localWindowManager = super.getWindowManager();
-      AppMethodBeat.o(156397);
+      AppMethodBeat.o(141457);
       return localWindowManager;
+    }
+  }
+  
+  public void hideVKB()
+  {
+    AppMethodBeat.i(249262);
+    View localView = getCurrentFocus();
+    if (localView == null)
+    {
+      hideVKB(getWindow().getDecorView());
+      AppMethodBeat.o(249262);
+      return;
+    }
+    hideVKB(localView);
+    AppMethodBeat.o(249262);
+  }
+  
+  public void hideVKB(View paramView)
+  {
+    AppMethodBeat.i(249267);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(249267);
+      return;
+    }
+    InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
+    if (localInputMethodManager == null)
+    {
+      AppMethodBeat.o(249267);
+      return;
+    }
+    paramView = paramView.getWindowToken();
+    if (paramView == null)
+    {
+      AppMethodBeat.o(249267);
+      return;
+    }
+    try
+    {
+      localInputMethodManager.hideSoftInputFromWindow(paramView, 0);
+      AppMethodBeat.o(249267);
+      return;
+    }
+    catch (IllegalArgumentException paramView)
+    {
+      Log.e("MicroMsg.MMFragmentActivity", "hide VKB(View) exception %s", new Object[] { paramView });
+      AppMethodBeat.o(249267);
     }
   }
   
   protected void initActivityCloseAnimation()
   {
-    AppMethodBeat.i(106081);
+    int i = 0;
+    AppMethodBeat.i(141433);
     if (enableActivityAnimation())
     {
-      if (com.tencent.mm.ui.base.b.ax(getClass()))
+      if (com.tencent.mm.ui.base.b.cl(getClass()))
       {
-        super.overridePendingTransition(a.zcd, a.zce);
-        AppMethodBeat.o(106081);
+        if (aw.jkS())
+        {
+          super.overridePendingTransition(0, 0);
+          AppMethodBeat.o(141433);
+          return;
+        }
+        super.overridePendingTransition(a.adFt, a.adFu);
+        AppMethodBeat.o(141433);
         return;
       }
-      if ((com.tencent.mm.ui.base.b.au(getClass()) & 0x4) != 0) {}
-      for (int i = 1; i == 0; i = 0)
+      if ((com.tencent.mm.ui.base.b.ci(getClass()) & 0x4) != 0) {
+        i = 1;
+      }
+      if (i == 0)
       {
-        com.tencent.mm.ui.base.b.ig(this);
-        AppMethodBeat.o(106081);
+        com.tencent.mm.ui.base.b.nf(this);
+        AppMethodBeat.o(141433);
         return;
       }
-      com.tencent.mm.ui.base.b.ih(this);
+      com.tencent.mm.ui.base.b.ng(this);
     }
-    AppMethodBeat.o(106081);
+    AppMethodBeat.o(141433);
   }
   
   protected void initActivityOpenAnimation(Intent paramIntent)
   {
-    AppMethodBeat.i(106080);
+    AppMethodBeat.i(141432);
     if (enableActivityAnimation())
     {
+      int i;
       if (paramIntent == null)
       {
         paramIntent = null;
         if (paramIntent == null) {
-          break label95;
+          break label114;
         }
-        paramIntent = com.tencent.mm.ui.base.b.e(paramIntent);
-        if ((com.tencent.mm.ui.base.b.atu(paramIntent) & 0x2) != 0) {
-          break label68;
+        paramIntent = com.tencent.mm.ui.base.b.f(paramIntent);
+        if ((com.tencent.mm.ui.base.b.bzW(paramIntent) & 0x2) != 0) {
+          break label70;
         }
+        i = 1;
       }
-      label68:
-      for (int i = 1;; i = 0)
+      for (;;)
       {
-        if (i == 0) {
-          break label73;
+        if (i != 0)
+        {
+          if (aw.jkS())
+          {
+            super.overridePendingTransition(0, 0);
+            AppMethodBeat.o(141432);
+            return;
+            paramIntent = paramIntent.getComponent();
+            break;
+            label70:
+            i = 0;
+            continue;
+          }
+          super.overridePendingTransition(a.adFr, a.adFs);
+          AppMethodBeat.o(141432);
+          return;
         }
-        super.overridePendingTransition(a.zcb, a.zcc);
-        AppMethodBeat.o(106080);
-        return;
-        paramIntent = paramIntent.getComponent();
-        break;
       }
-      label73:
-      if (!com.tencent.mm.ui.base.b.atw(paramIntent))
+      if (!com.tencent.mm.ui.base.b.bzY(paramIntent))
       {
-        com.tencent.mm.ui.base.b.ie(this);
-        AppMethodBeat.o(106080);
+        com.tencent.mm.ui.base.b.nd(this);
+        AppMethodBeat.o(141432);
         return;
       }
-      com.tencent.mm.ui.base.b.ih(this);
+      com.tencent.mm.ui.base.b.ng(this);
     }
-    label95:
-    AppMethodBeat.o(106080);
+    label114:
+    AppMethodBeat.o(141432);
   }
   
   public boolean initNavigationSwipeBack()
   {
-    AppMethodBeat.i(106093);
-    if (com.tencent.mm.compatible.util.d.fv(19))
+    AppMethodBeat.i(141445);
+    if (com.tencent.mm.compatible.util.d.rb(19))
     {
-      if ((!com.tencent.mm.ui.base.b.aw(getClass())) || (!convertActivityFromTranslucent())) {
+      if ((!com.tencent.mm.ui.base.b.ck(getClass())) || (!convertActivityFromTranslucent())) {
         break label60;
       }
-      if (al.isMainThread()) {
-        com.tencent.mm.ui.base.b.aD(this);
+      if (MMHandlerThread.isMainThread()) {
+        com.tencent.mm.ui.base.b.bZ(this);
       }
     }
     label60:
@@ -326,50 +508,60 @@ public class MMFragmentActivity
     while (isSupportNavigationSwipeBack())
     {
       initSwipeBack();
-      AppMethodBeat.o(106093);
+      AppMethodBeat.o(141445);
       return true;
-      if ((com.tencent.mm.ui.base.b.au(getClass()) & 0x10) != 0) {}
+      if ((com.tencent.mm.ui.base.b.ci(getClass()) & 0x10) != 0) {}
       for (int i = 1;; i = 0)
       {
-        if ((i == 0) || (!al.isMainThread())) {
+        if ((i == 0) || (!MMHandlerThread.isMainThread())) {
           break label95;
         }
-        com.tencent.mm.ui.base.b.aD(this);
+        com.tencent.mm.ui.base.b.bZ(this);
         break;
       }
     }
-    AppMethodBeat.o(106093);
+    AppMethodBeat.o(141445);
     return false;
   }
   
   protected void initSwipeBack()
   {
-    AppMethodBeat.i(106094);
-    ViewGroup localViewGroup1 = (ViewGroup)getWindow().getDecorView();
-    this.mSwipeBackLayout = ((SwipeBackLayout)LayoutInflater.from(this).inflate(2130970980, localViewGroup1, false));
+    AppMethodBeat.i(141446);
+    ViewGroup localViewGroup = (ViewGroup)getWindow().getDecorView();
+    this.mSwipeBackLayout = ((SwipeBackLayout)LayoutInflater.from(this).inflate(a.h.swipeback_layout, localViewGroup, false));
     this.mSwipeBackLayout.init();
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
     getWindow().getDecorView().setBackgroundDrawable(null);
-    ViewGroup localViewGroup2 = (ViewGroup)localViewGroup1.getChildAt(0);
-    localViewGroup2.setBackgroundResource(2131690605);
-    localViewGroup1.removeView(localViewGroup2);
-    this.mSwipeBackLayout.addView(localViewGroup2);
-    this.mSwipeBackLayout.setContentView(localViewGroup2);
-    localViewGroup1.addView(this.mSwipeBackLayout);
+    View localView = localViewGroup.getChildAt(0);
+    localView.setBackgroundResource(a.d.transparent);
+    localViewGroup.removeView(localView);
+    this.mSwipeBackLayout.addView(localView);
+    this.mSwipeBackLayout.setContentView(localView);
+    localViewGroup.addView(this.mSwipeBackLayout);
     this.mSwipeBackLayout.setSwipeGestureDelegate(this);
-    AppMethodBeat.o(106094);
+    AppMethodBeat.o(141446);
+  }
+  
+  protected boolean isCallSuperOnSaveInstanceState()
+  {
+    return false;
   }
   
   public boolean isHideStatusBar()
   {
-    AppMethodBeat.i(106092);
-    if ((com.tencent.mm.ui.base.b.au(getClass()) & 0x20) != 0)
+    AppMethodBeat.i(141444);
+    if ((com.tencent.mm.ui.base.b.ci(getClass()) & 0x20) != 0)
     {
-      AppMethodBeat.o(106092);
+      AppMethodBeat.o(141444);
       return true;
     }
-    AppMethodBeat.o(106092);
+    AppMethodBeat.o(141444);
     return false;
+  }
+  
+  public boolean isNfcFilterEnabled()
+  {
+    return true;
   }
   
   public boolean isPaused()
@@ -377,20 +569,20 @@ public class MMFragmentActivity
     return this.mIsPaused;
   }
   
-  public final boolean isSupportNavigationSwipeBack()
+  public boolean isSupportNavigationSwipeBack()
   {
-    AppMethodBeat.i(106091);
-    if ((com.tencent.mm.compatible.util.d.fv(19)) && (com.tencent.mm.compatible.i.b.Mg()))
+    AppMethodBeat.i(141443);
+    if ((com.tencent.mm.compatible.util.d.rb(19)) && (com.tencent.mm.compatible.h.a.aPR()))
     {
-      if ((supportNavigationSwipeBack()) && (com.tencent.mm.ui.base.b.aw(getClass())))
+      if ((supportNavigationSwipeBack()) && (com.tencent.mm.ui.base.b.ck(getClass())))
       {
-        AppMethodBeat.o(106091);
+        AppMethodBeat.o(141443);
         return true;
       }
-      AppMethodBeat.o(106091);
+      AppMethodBeat.o(141443);
       return false;
     }
-    AppMethodBeat.o(106091);
+    AppMethodBeat.o(141443);
     return false;
   }
   
@@ -401,9 +593,28 @@ public class MMFragmentActivity
   
   public void keep(com.tencent.mm.vending.e.a parama)
   {
-    AppMethodBeat.i(106055);
-    this.mLifeCycleKeeper.ANE.keep(parama);
-    AppMethodBeat.o(106055);
+    AppMethodBeat.i(141407);
+    this.mLifeCycleKeeper.agtx.keep(parama);
+    AppMethodBeat.o(141407);
+  }
+  
+  public void mmStartActivityForResult(MMFragmentActivity.c paramc, Intent paramIntent, int paramInt)
+  {
+    AppMethodBeat.i(141458);
+    this.onActResult = paramc;
+    startActivityForResult(paramIntent, paramInt);
+    AppMethodBeat.o(141458);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(141459);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (this.onActResult != null) {
+      this.onActResult.mmOnActivityResult(paramInt1, paramInt2, paramIntent);
+    }
+    this.onActResult = null;
+    AppMethodBeat.o(141459);
   }
   
   public void onCancel()
@@ -413,106 +624,106 @@ public class MMFragmentActivity
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(106101);
+    AppMethodBeat.i(141455);
     super.onConfigurationChanged(paramConfiguration);
     if (getSupportActionBar() != null)
     {
-      paramConfiguration = (ViewGroup)findViewById(2131820955);
+      paramConfiguration = (ViewGroup)findViewById(a.g.decor_content_parent);
       if (paramConfiguration != null)
       {
-        paramConfiguration = paramConfiguration.findViewById(2131820957);
+        paramConfiguration = paramConfiguration.findViewById(a.g.action_bar);
         if ((paramConfiguration != null) && ((paramConfiguration instanceof Toolbar)))
         {
           paramConfiguration = (Toolbar)paramConfiguration;
           ViewGroup.LayoutParams localLayoutParams = paramConfiguration.getLayoutParams();
           if (localLayoutParams != null) {
-            localLayoutParams.height = com.tencent.mm.compatible.util.a.bL(this);
+            localLayoutParams.height = getActionBarHeightFromTheme();
           }
           paramConfiguration.setLayoutParams(localLayoutParams);
         }
       }
     }
-    AppMethodBeat.o(106101);
+    AppMethodBeat.o(141455);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(106056);
+    AppMethodBeat.i(141408);
     this.className = getClass().getName();
-    ad.bK(3, this.className);
+    au.eb(3, this.className);
     super.onCreate(paramBundle);
-    this.mNfcFilterHelper = new b((byte)0);
-    paramBundle = this.mNfcFilterHelper;
-    try
+    if (isNfcFilterEnabled())
     {
-      paramBundle.zcf = NfcAdapter.getDefaultAdapter(paramBundle.zcj);
-      paramBundle.init();
-      ab.i("MicroMsg.MMFragmentActivity", "checktask onCreate:%s#0x%x, taskid:%d, task:%s appendMemLog:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), Integer.valueOf(getTaskId()), bo.hm(this), appendMemLog() });
-      AppMethodBeat.o(106056);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.MMFragmentActivity", localThrowable, "", new Object[0]);
+      paramBundle = new MMFragmentActivity.1(this);
+      if ((ChannelUtil.shouldShowGprsAlert) && (MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getBoolean("gprs_alert", true))) {
+        break label143;
       }
+      paramBundle.run();
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.MMFragmentActivity", "checktask onCreate:%s#0x%x, taskid:%d, task:%s appendMemLog:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), Integer.valueOf(getTaskId()), Util.getActivityTaskInfo(this), appendMemLog() });
+      AppMethodBeat.o(141408);
+      return;
+      label143:
+      keep(new MMFragmentActivity.2(this, paramBundle));
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(106058);
-    ab.i("MicroMsg.MMFragmentActivity", "checktask onDestroy:%s#0x%x task:%s appendMemLog:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), bo.hm(this), appendMemLog() });
-    this.mLifeCycleKeeper.ANE.dead();
+    AppMethodBeat.i(141410);
+    Log.i("MicroMsg.MMFragmentActivity", "checktask onDestroy:%s#0x%x task:%s appendMemLog:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), Util.getActivityTaskInfo(this), appendMemLog() });
+    this.mLifeCycleKeeper.agtx.dead();
+    this.mDispatchedTouchListeners.clear();
     super.onDestroy();
     if (("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT == 24)) {}
     try
     {
-      if (b.a.eMx == null)
+      if (b.a.mHW == null)
       {
-        localObject = Class.forName("android.rms.iaware.FastgrabConfigReader");
-        b.a.eMx = (Class)localObject;
-        localObject = ((Class)localObject).getDeclaredField("mFastgrabConfigReader");
-        b.a.field_mFastgrabConfigReader = (Field)localObject;
-        ((Field)localObject).setAccessible(true);
-        localObject = b.a.eMx.getDeclaredField("mContext");
-        b.a.field_mContext = (Field)localObject;
-        ((Field)localObject).setAccessible(true);
+        localObject1 = Class.forName("android.rms.iaware.FastgrabConfigReader");
+        b.a.mHW = (Class)localObject1;
+        localObject1 = ((Class)localObject1).getDeclaredField("mFastgrabConfigReader");
+        b.a.field_mFastgrabConfigReader = (Field)localObject1;
+        ((Field)localObject1).setAccessible(true);
+        localObject1 = b.a.mHW.getDeclaredField("mContext");
+        b.a.field_mContext = (Field)localObject1;
+        ((Field)localObject1).setAccessible(true);
       }
-      localObject = b.a.field_mFastgrabConfigReader.get(b.a.eMx);
-      if (b.a.field_mContext.get(localObject) == this) {
-        b.a.field_mContext.set(localObject, null);
+      localObject1 = b.a.field_mFastgrabConfigReader.get(b.a.mHW);
+      if (b.a.field_mContext.get(localObject1) == this) {
+        b.a.field_mContext.set(localObject1, null);
       }
     }
-    catch (Throwable localThrowable3)
+    finally
     {
-      Object localObject;
-      label168:
-      break label168;
+      Object localObject1;
+      label177:
+      break label177;
     }
     if (("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT == 24)) {}
     for (;;)
     {
       try
       {
-        if (b.b.aqP == null)
+        if (b.b.clazz == null)
         {
-          localObject = Class.forName("android.gestureboost.GestureBoostManager");
-          b.b.aqP = (Class)localObject;
-          localObject = ((Class)localObject).getDeclaredField("sGestureBoostManager");
-          b.b.eMy = (Field)localObject;
-          ((Field)localObject).setAccessible(true);
-          localObject = b.b.aqP.getDeclaredField("mContext");
-          b.b.eMz = (Field)localObject;
-          ((Field)localObject).setAccessible(true);
+          localObject1 = Class.forName("android.gestureboost.GestureBoostManager");
+          b.b.clazz = (Class)localObject1;
+          localObject1 = ((Class)localObject1).getDeclaredField("sGestureBoostManager");
+          b.b.mHX = (Field)localObject1;
+          ((Field)localObject1).setAccessible(true);
+          localObject1 = b.b.clazz.getDeclaredField("mContext");
+          b.b.mHY = (Field)localObject1;
+          ((Field)localObject1).setAccessible(true);
         }
-        localObject = b.b.eMy.get(null);
-        if (localObject != null) {
-          b.b.eMz.set(localObject, null);
+        localObject1 = b.b.mHX.get(null);
+        if (localObject1 != null) {
+          b.b.mHY.set(localObject1, null);
         }
       }
-      catch (Throwable localThrowable2)
+      finally
       {
         continue;
       }
@@ -520,16 +731,16 @@ public class MMFragmentActivity
       {
         if ((Build.VERSION.SDK_INT >= 23) && (Build.MANUFACTURER.equalsIgnoreCase("samsung")))
         {
-          localObject = ah.getContext().getSystemService(Class.forName("com.samsung.android.content.clipboard.SemClipboardManager"));
-          Field localField = localObject.getClass().getDeclaredField("mContext");
+          localObject1 = MMApplicationContext.getContext().getSystemService(Class.forName("com.samsung.android.content.clipboard.SemClipboardManager"));
+          Field localField = localObject1.getClass().getDeclaredField("mContext");
           localField.setAccessible(true);
-          localField.set(localObject, ah.getContext());
+          localField.set(localObject1, MMApplicationContext.getContext());
         }
-        ab.i("MicroMsg.MMFragmentActivity", "Activity dump [%s]", new Object[] { com.tencent.mm.ac.a.SU() });
-        AppMethodBeat.o(106058);
+        Log.i("MicroMsg.MMFragmentActivity", "Activity dump [%s]", new Object[] { com.tencent.mm.ag.a.bbZ() });
+        AppMethodBeat.o(141410);
         return;
       }
-      catch (Throwable localThrowable1) {}
+      finally {}
     }
   }
   
@@ -540,8 +751,8 @@ public class MMFragmentActivity
   
   public void onPause()
   {
-    AppMethodBeat.i(106061);
-    ad.bK(2, this.className);
+    AppMethodBeat.i(141413);
+    au.eb(2, this.className);
     this.mIsPaused = true;
     super.onPause();
     if (isSupportNavigationSwipeBack())
@@ -550,86 +761,70 @@ public class MMFragmentActivity
         getSwipeBackLayout().setEnableGesture(false);
       }
       if (!isFinishing()) {
-        h.a(this);
+        l.a(this);
       }
     }
-    b localb;
+    MMFragmentActivity.e locale;
     if (this.mNfcFilterHelper != null)
     {
-      localb = this.mNfcFilterHelper;
-      if (localb.zcf == null) {}
+      locale = this.mNfcFilterHelper;
+      if (locale.adFv == null) {}
     }
     try
     {
-      localb.zcf.disableForegroundDispatch(localb.zcj);
-      this.mLifeCycleKeeper.ANF.dead();
-      AppMethodBeat.o(106061);
+      Log.i("MicroMsg.MMFragmentActivity", "[NFC] disableForegroundDispatch");
+      locale.adFv.disableForegroundDispatch(locale.adFp);
+      this.mLifeCycleKeeper.agty.dead();
+      AppMethodBeat.o(141413);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.e("MicroMsg.MMFragmentActivity", "lo-nfc-onPause: exp:" + localException.getLocalizedMessage());
+        Log.e("MicroMsg.MMFragmentActivity", "lo-nfc-onPause: exp:" + localException.getLocalizedMessage());
       }
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(106062);
-    ad.bK(1, this.className);
+    AppMethodBeat.i(141414);
+    au.eb(1, this.className);
     this.mIsPaused = false;
     super.onResume();
     if (isSupportNavigationSwipeBack())
     {
-      h.b(this);
+      l.b(this);
       onSwipe(1.0F);
       if (getSwipeBackLayout() != null)
       {
         getSwipeBackLayout().setEnableGesture(true);
-        getSwipeBackLayout().AEZ = false;
+        getSwipeBackLayout().mqz = false;
       }
     }
-    if (this.mNfcFilterHelper != null)
-    {
-      b localb = this.mNfcFilterHelper;
-      if (localb.zcf != null)
-      {
-        if ((localb.zcg == null) || (localb.zch == null) || (localb.zci == null)) {
-          localb.init();
-        }
-        try
-        {
-          localb.zcf.enableForegroundDispatch(localb.zcj, localb.zcg, localb.zch, localb.zci);
-          AppMethodBeat.o(106062);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ab.e("MicroMsg.MMFragmentActivity", "lo-nfc-onResume: exp:" + localException.getLocalizedMessage());
-        }
-      }
+    if (this.mNfcFilterHelper != null) {
+      this.mNfcFilterHelper.onResume();
     }
-    AppMethodBeat.o(106062);
+    AppMethodBeat.o(141414);
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(106076);
-    if (Build.VERSION.SDK_INT < 11) {
+    AppMethodBeat.i(141428);
+    if ((Build.VERSION.SDK_INT < 11) || (isCallSuperOnSaveInstanceState())) {
       super.onSaveInstanceState(paramBundle);
     }
-    AppMethodBeat.o(106076);
+    AppMethodBeat.o(141428);
   }
   
   public void onSettle(boolean paramBoolean, int paramInt)
   {
-    long l = 160L;
-    AppMethodBeat.i(106098);
-    ab.v("ashutest", "ashutest:: on settle %B, speed %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    long l = 130L;
+    AppMethodBeat.i(141452);
+    Log.v("ashutest", "ashutest:: on settle %B, speed %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (this.mContentViewForSwipeBack == null) {
-      this.mContentViewForSwipeBack = af.a(getWindow(), getSupportActionBar().getCustomView());
+      this.mContentViewForSwipeBack = aw.a(getWindow(), getSupportActionBar().getCustomView());
     }
     View localView = this.mContentViewForSwipeBack;
     if (paramBoolean)
@@ -637,75 +832,75 @@ public class MMFragmentActivity
       if (paramInt > 0) {}
       for (;;)
       {
-        j.a(localView, l, 0.0F, null);
-        AppMethodBeat.o(106098);
+        k.a(localView, l, 0.0F, null);
+        AppMethodBeat.o(141452);
         return;
-        l = 320L;
+        l = 260L;
       }
     }
     if (paramInt > 0) {}
     for (;;)
     {
-      j.a(localView, l, localView.getWidth() * -1 / 3.5F, null);
-      AppMethodBeat.o(106098);
+      k.a(localView, l, localView.getWidth() * -1 / 3.5F, null);
+      AppMethodBeat.o(141452);
       return;
-      l = 320L;
+      l = 260L;
     }
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(106060);
+    AppMethodBeat.i(141412);
     super.onStart();
-    AppMethodBeat.o(106060);
+    AppMethodBeat.o(141412);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(106059);
-    this.mLifeCycleKeeper.ANG.dead();
+    AppMethodBeat.i(141411);
+    this.mLifeCycleKeeper.agtz.dead();
     super.onStop();
-    AppMethodBeat.o(106059);
+    AppMethodBeat.o(141411);
   }
   
   public void onSwipe(float paramFloat)
   {
-    AppMethodBeat.i(106097);
-    ab.v("ashutest", "ashutest::on swipe %f, duration %d", new Object[] { Float.valueOf(paramFloat), Long.valueOf(320L) });
+    AppMethodBeat.i(141451);
+    Log.v("ashutest", "ashutest::on swipe %f, duration %d", new Object[] { Float.valueOf(paramFloat), Long.valueOf(260L) });
     Window localWindow;
     if (this.mContentViewForSwipeBack == null)
     {
       localWindow = getWindow();
       if (getSupportActionBar() == null) {
-        break label95;
+        break label96;
       }
     }
-    label95:
+    label96:
     for (View localView = getSupportActionBar().getCustomView();; localView = null)
     {
-      this.mContentViewForSwipeBack = af.a(localWindow, localView);
+      this.mContentViewForSwipeBack = aw.a(localWindow, localView);
       localView = this.mContentViewForSwipeBack;
       if (Float.compare(1.0F, paramFloat) > 0) {
         break;
       }
-      j.t(localView, 0.0F);
-      AppMethodBeat.o(106097);
+      k.r(localView, 0.0F);
+      AppMethodBeat.o(141451);
       return;
     }
-    j.t(localView, localView.getWidth() / 3.5F * (1.0F - paramFloat) * -1.0F);
-    AppMethodBeat.o(106097);
+    k.r(localView, localView.getWidth() / 3.5F * (1.0F - paramFloat) * -1.0F);
+    AppMethodBeat.o(141451);
   }
   
   public void onSwipeBack()
   {
-    AppMethodBeat.i(106099);
+    AppMethodBeat.i(141453);
     if (!isFinishing()) {
       finish();
     }
     getWindow().getDecorView().setVisibility(8);
     overridePendingTransition(0, 0);
     this.mSwiping = false;
-    AppMethodBeat.o(106099);
+    AppMethodBeat.o(141453);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -716,134 +911,269 @@ public class MMFragmentActivity
   
   public boolean popBackStackImmediate()
   {
-    AppMethodBeat.i(106073);
+    AppMethodBeat.i(141425);
     if (this.record.size() == 0)
     {
-      AppMethodBeat.o(106073);
+      AppMethodBeat.o(141425);
       return false;
     }
     this.record.remove(this.record.size() - 1);
     boolean bool = getSupportFragmentManager().popBackStackImmediate();
-    AppMethodBeat.o(106073);
+    AppMethodBeat.o(141425);
     return bool;
   }
   
   public void putActivityCloseAnimation(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106078);
+    AppMethodBeat.i(141430);
     if (enableActivityAnimation())
     {
-      a.zcd = paramInt1;
-      a.zce = paramInt2;
+      a.adFt = paramInt1;
+      a.adFu = paramInt2;
     }
     super.overridePendingTransition(paramInt1, paramInt2);
-    AppMethodBeat.o(106078);
+    AppMethodBeat.o(141430);
   }
   
   public void putActivityOpenAnimation(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106077);
+    AppMethodBeat.i(141429);
     if (enableActivityAnimation())
     {
-      a.zcb = paramInt1;
-      a.zcc = paramInt2;
+      a.adFr = paramInt1;
+      a.adFs = paramInt2;
     }
     super.overridePendingTransition(paramInt1, paramInt2);
-    AppMethodBeat.o(106077);
+    AppMethodBeat.o(141429);
   }
   
-  @TargetApi(11)
+  public void removeDispatchedTouchListener(b paramb)
+  {
+    AppMethodBeat.i(249280);
+    this.mDispatchedTouchListeners.remove(paramb);
+    AppMethodBeat.o(249280);
+  }
+  
+  public void setMMOnFragmentActivityResult(MMFragmentActivity.c paramc)
+  {
+    this.onActResult = paramc;
+  }
+  
+  public void setRequestedOrientation(int paramInt)
+  {
+    AppMethodBeat.i(141450);
+    if (!AndroidOSafety.safety(this, paramInt))
+    {
+      Log.e("MicroMsg.MMFragmentActivity", "AndroidOSafety.safety false ignore setRequestedOrientation %s for activity %s", new Object[] { Integer.valueOf(paramInt), this });
+      AppMethodBeat.o(141450);
+      return;
+    }
+    try
+    {
+      super.setRequestedOrientation(paramInt);
+      AppMethodBeat.o(141450);
+      return;
+    }
+    finally
+    {
+      Log.printErrStackTrace("MicroMsg.MMFragmentActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
+      AppMethodBeat.o(141450);
+    }
+  }
+  
+  public void showVKB()
+  {
+    AppMethodBeat.i(249271);
+    InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
+    if (localInputMethodManager == null)
+    {
+      AppMethodBeat.o(249271);
+      return;
+    }
+    View localView = getCurrentFocus();
+    if (localView == null)
+    {
+      AppMethodBeat.o(249271);
+      return;
+    }
+    if (localView.getWindowToken() == null)
+    {
+      AppMethodBeat.o(249271);
+      return;
+    }
+    localInputMethodManager.toggleSoftInput(0, 2);
+    AppMethodBeat.o(249271);
+  }
+  
   public void startActivities(Intent[] paramArrayOfIntent)
   {
-    AppMethodBeat.i(106084);
+    AppMethodBeat.i(141436);
     super.startActivities(paramArrayOfIntent);
     initActivityOpenAnimation(null);
-    AppMethodBeat.o(106084);
+    AppMethodBeat.o(141436);
   }
   
-  @TargetApi(16)
   public void startActivities(Intent[] paramArrayOfIntent, Bundle paramBundle)
   {
-    AppMethodBeat.i(106083);
-    if (d.a(this, this.mIsPaused, paramArrayOfIntent, new Object[] { paramBundle }))
+    AppMethodBeat.i(141435);
+    if (e.a(this, this.mIsPaused, paramArrayOfIntent, new Object[] { paramBundle }))
     {
-      AppMethodBeat.o(106083);
+      AppMethodBeat.o(141435);
       return;
     }
     super.startActivities(paramArrayOfIntent, paramBundle);
     initActivityOpenAnimation(null);
-    AppMethodBeat.o(106083);
+    AppMethodBeat.o(141435);
   }
   
   public void startActivity(Intent paramIntent)
   {
-    AppMethodBeat.i(106085);
+    AppMethodBeat.i(141437);
+    Iterator localIterator = interceptors.iterator();
+    while (localIterator.hasNext())
+    {
+      MMFragmentActivity.d locald = (MMFragmentActivity.d)localIterator.next();
+      if (paramIntent.getComponent() != null) {}
+      for (String str = paramIntent.getComponent().getClassName(); locald.e(this, Util.nullAsNil(str), paramIntent); str = "")
+      {
+        AppMethodBeat.o(141437);
+        return;
+      }
+    }
     super.startActivity(paramIntent);
     initActivityOpenAnimation(paramIntent);
-    AppMethodBeat.o(106085);
+    AppMethodBeat.o(141437);
   }
   
-  @TargetApi(16)
   public void startActivity(Intent paramIntent, Bundle paramBundle)
   {
-    AppMethodBeat.i(106086);
+    AppMethodBeat.i(141438);
     super.startActivity(paramIntent, paramBundle);
     initActivityOpenAnimation(paramIntent);
-    AppMethodBeat.o(106086);
+    AppMethodBeat.o(141438);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(106087);
+    AppMethodBeat.i(141439);
     super.startActivityForResult(paramIntent, paramInt);
     initActivityOpenAnimation(paramIntent);
-    AppMethodBeat.o(106087);
+    AppMethodBeat.o(141439);
   }
   
-  @TargetApi(16)
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(106088);
-    if (d.a(this, this.mIsPaused, new Intent[] { paramIntent }, new Object[] { Integer.valueOf(paramInt), paramBundle }))
+    AppMethodBeat.i(141440);
+    Iterator localIterator = interceptors.iterator();
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.o(106088);
+      MMFragmentActivity.d locald = (MMFragmentActivity.d)localIterator.next();
+      if (paramIntent.getComponent() != null) {}
+      for (String str = paramIntent.getComponent().getClassName(); locald.e(this, Util.nullAsNil(str), paramIntent); str = "")
+      {
+        AppMethodBeat.o(141440);
+        return;
+      }
+    }
+    if (e.a(this, this.mIsPaused, new Intent[] { paramIntent }, new Object[] { Integer.valueOf(paramInt), paramBundle }))
+    {
+      AppMethodBeat.o(141440);
       return;
     }
-    super.startActivityForResult(paramIntent, paramInt, paramBundle);
-    initActivityOpenAnimation(paramIntent);
-    AppMethodBeat.o(106088);
+    boolean bool = isVASActivity(paramIntent);
+    aReporter.a(paramIntent, this, bool);
+    if (bool) {
+      startVASActivityForResult(paramIntent, paramInt, paramBundle);
+    }
+    for (;;)
+    {
+      initActivityOpenAnimation(paramIntent);
+      AppMethodBeat.o(141440);
+      return;
+      super.startActivityForResult(paramIntent, paramInt, paramBundle);
+    }
   }
   
   public void startActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(106089);
+    AppMethodBeat.i(249208);
+    Iterator localIterator = interceptors.iterator();
+    while (localIterator.hasNext())
+    {
+      MMFragmentActivity.d locald = (MMFragmentActivity.d)localIterator.next();
+      if (paramIntent.getComponent() != null) {}
+      for (String str = paramIntent.getComponent().getClassName(); locald.e(this, Util.nullAsNil(str), paramIntent); str = "")
+      {
+        AppMethodBeat.o(249208);
+        return;
+      }
+    }
     super.startActivityFromFragment(paramFragment, paramIntent, paramInt);
     initActivityOpenAnimation(paramIntent);
-    AppMethodBeat.o(106089);
+    AppMethodBeat.o(249208);
   }
   
   public void startActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(106090);
-    if (d.a(this, this.mIsPaused, new Intent[] { paramIntent }, new Object[] { paramFragment, Integer.valueOf(paramInt) }))
+    AppMethodBeat.i(249213);
+    Iterator localIterator = interceptors.iterator();
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.o(106090);
+      MMFragmentActivity.d locald = (MMFragmentActivity.d)localIterator.next();
+      if (paramIntent.getComponent() != null) {}
+      for (String str = paramIntent.getComponent().getClassName(); locald.e(this, Util.nullAsNil(str), paramIntent); str = "")
+      {
+        AppMethodBeat.o(249213);
+        return;
+      }
+    }
+    if (e.a(this, this.mIsPaused, new Intent[] { paramIntent }, new Object[] { paramFragment, Integer.valueOf(paramInt) }))
+    {
+      AppMethodBeat.o(249213);
       return;
     }
     super.startActivityFromFragment(paramFragment, paramIntent, paramInt, paramBundle);
-    AppMethodBeat.o(106090);
+    AppMethodBeat.o(249213);
+  }
+  
+  protected void startVASActivity(Intent paramIntent, Bundle paramBundle)
+  {
+    AppMethodBeat.i(249186);
+    try
+    {
+      f.a(this, Class.forName(paramIntent.getComponent().getClassName()), paramIntent, paramBundle);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(249186);
+    }
+  }
+  
+  protected void startVASActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(249193);
+    try
+    {
+      f.a(this, Class.forName(paramIntent.getComponent().getClassName()), paramIntent, paramBundle, paramInt);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(249193);
+    }
   }
   
   public void supportInvalidateOptionsMenu()
   {
-    AppMethodBeat.i(106102);
+    AppMethodBeat.i(141456);
     if ((getCurrentFragmet() != null) && (getCurrentFragmet().interceptSupportInvalidateOptionsMenu()))
     {
-      AppMethodBeat.o(106102);
+      AppMethodBeat.o(141456);
       return;
     }
     super.supportInvalidateOptionsMenu();
-    AppMethodBeat.o(106102);
+    AppMethodBeat.o(141456);
   }
   
   public boolean supportNavigationSwipeBack()
@@ -853,297 +1183,273 @@ public class MMFragmentActivity
   
   public void switchFragment(Fragment paramFragment, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(106074);
+    AppMethodBeat.i(249154);
     if ((paramFragment == null) || (paramInt1 == 0))
     {
-      AppMethodBeat.o(106074);
+      AppMethodBeat.o(249154);
       return;
     }
-    g localg = getSupportFragmentManager();
-    k localk = localg.beginTransaction();
+    FragmentManager localFragmentManager = getSupportFragmentManager();
+    r localr = localFragmentManager.beginTransaction();
     if (paramBoolean2) {
-      localk.m(paramInt2, paramInt3);
+      localr.aJ(paramInt2, paramInt3);
     }
-    if (localg.findFragmentById(paramInt1) != null) {
+    if (localFragmentManager.findFragmentById(paramInt1) != null) {
       if (paramFragment.isHidden()) {
-        localk.c(paramFragment);
+        localr.c(paramFragment);
       }
     }
     for (;;)
     {
       if (paramBoolean1) {
-        localk.F(null);
+        localr.aI(null);
       }
-      localk.commit();
-      localg.executePendingTransactions();
-      AppMethodBeat.o(106074);
+      localr.FW();
+      localFragmentManager.executePendingTransactions();
+      AppMethodBeat.o(249154);
       return;
-      localk.a(paramInt1, paramFragment, paramFragment.getTag());
+      localr.a(paramInt1, paramFragment, paramFragment.getTag());
     }
   }
   
   public void switchFragmentActivity(Fragment paramFragment)
   {
-    AppMethodBeat.i(106071);
+    AppMethodBeat.i(249147);
     if (paramFragment == null)
     {
-      AppMethodBeat.o(106071);
+      AppMethodBeat.o(249147);
       return;
     }
     switchFragmentActivity(paramFragment, paramFragment.getId());
-    AppMethodBeat.o(106071);
+    AppMethodBeat.o(249147);
   }
   
   public void switchFragmentActivity(Fragment paramFragment, int paramInt)
   {
-    AppMethodBeat.i(106072);
-    switchFragment(paramFragment, paramInt, true, true, 2131034217, 2131034222);
+    AppMethodBeat.i(249148);
+    switchFragment(paramFragment, paramInt, true, true, com.tencent.mm.ah.a.a.pop_in, com.tencent.mm.ah.a.a.pop_out);
     this.record.add(new WeakReference((MMFragment)paramFragment));
-    AppMethodBeat.o(106072);
+    AppMethodBeat.o(249148);
   }
   
   public void switchFragmentInternalBackwardWithAnim(Fragment paramFragment)
   {
-    AppMethodBeat.i(106067);
+    AppMethodBeat.i(249137);
     switchFragmentInternalBackwardWithAnim(paramFragment, paramFragment.getId());
-    AppMethodBeat.o(106067);
+    AppMethodBeat.o(249137);
   }
   
   public void switchFragmentInternalBackwardWithAnim(Fragment paramFragment, int paramInt)
   {
-    AppMethodBeat.i(106068);
-    switchFragment(paramFragment, paramInt, false, true, 2131034262, 2131034267);
-    AppMethodBeat.o(106068);
+    AppMethodBeat.i(249139);
+    switchFragment(paramFragment, paramInt, false, true, com.tencent.mm.ah.a.a.slide_left_in, com.tencent.mm.ah.a.a.slide_right_out);
+    AppMethodBeat.o(249139);
   }
   
   public void switchFragmentInternalBackwardWithAnimLeftSelfView(Fragment paramFragment, int paramInt, View paramView)
   {
-    AppMethodBeat.i(106070);
-    switchFragment(paramFragment, paramInt, false, true, 0, 2131034267);
+    AppMethodBeat.i(249146);
+    switchFragment(paramFragment, paramInt, false, true, 0, com.tencent.mm.ah.a.a.slide_right_out);
     if (paramView == null)
     {
-      AppMethodBeat.o(106070);
+      AppMethodBeat.o(249146);
       return;
     }
-    paramFragment = AnimationUtils.loadAnimation(this, 2131034262);
+    paramFragment = AnimationUtils.loadAnimation(this, com.tencent.mm.ah.a.a.slide_left_in);
     if (paramFragment != null) {
       paramView.startAnimation(paramFragment);
     }
     paramView.setVisibility(0);
-    AppMethodBeat.o(106070);
+    AppMethodBeat.o(249146);
   }
   
   public void switchFragmentInternalBackwardWithAnimLeftSelfView(Fragment paramFragment, View paramView)
   {
-    AppMethodBeat.i(106069);
+    AppMethodBeat.i(249143);
     if (paramFragment == null)
     {
-      AppMethodBeat.o(106069);
+      AppMethodBeat.o(249143);
       return;
     }
     switchFragmentInternalBackwardWithAnimLeftSelfView(paramFragment, paramFragment.getId(), paramView);
-    AppMethodBeat.o(106069);
+    AppMethodBeat.o(249143);
   }
   
   public void switchFragmentInternalFarwardWithAnim(Fragment paramFragment)
   {
-    AppMethodBeat.i(106065);
+    AppMethodBeat.i(249132);
     if (paramFragment == null)
     {
-      AppMethodBeat.o(106065);
+      AppMethodBeat.o(249132);
       return;
     }
     switchFragmentInternalFarwardWithAnim(paramFragment, paramFragment.getId());
-    AppMethodBeat.o(106065);
+    AppMethodBeat.o(249132);
   }
   
   public void switchFragmentInternalFarwardWithAnim(Fragment paramFragment, int paramInt)
   {
-    AppMethodBeat.i(106066);
-    switchFragment(paramFragment, paramInt, false, true, 2131034266, 2131034263);
-    AppMethodBeat.o(106066);
+    AppMethodBeat.i(249135);
+    switchFragment(paramFragment, paramInt, false, true, com.tencent.mm.ah.a.a.slide_right_in, com.tencent.mm.ah.a.a.slide_left_out);
+    AppMethodBeat.o(249135);
   }
   
   public void switchFragmentInternalWithoutAnim(Fragment paramFragment)
   {
-    AppMethodBeat.i(106063);
+    AppMethodBeat.i(249126);
     if (paramFragment == null)
     {
-      AppMethodBeat.o(106063);
+      AppMethodBeat.o(249126);
       return;
     }
     switchFragmentInternalWithoutAnim(paramFragment, paramFragment.getId());
-    AppMethodBeat.o(106063);
+    AppMethodBeat.o(249126);
   }
   
   public void switchFragmentInternalWithoutAnim(Fragment paramFragment, int paramInt)
   {
-    AppMethodBeat.i(106064);
+    AppMethodBeat.i(249129);
     switchFragment(paramFragment, paramInt, false, false, 0, 0);
-    AppMethodBeat.o(106064);
+    AppMethodBeat.o(249129);
   }
   
   protected com.tencent.mm.vending.e.b theCreate()
   {
-    return this.mLifeCycleKeeper.ANE;
+    return this.mLifeCycleKeeper.agtx;
   }
   
   protected com.tencent.mm.vending.e.b theResume()
   {
-    return this.mLifeCycleKeeper.ANF;
+    return this.mLifeCycleKeeper.agty;
   }
   
   protected com.tencent.mm.vending.e.b theStart()
   {
-    return this.mLifeCycleKeeper.ANF;
+    return this.mLifeCycleKeeper.agty;
   }
   
-  public static final class a
+  public static class a
   {
-    public static int zbX;
-    public static int zbY;
-    public static int zbZ;
-    public static int zca;
-    public static int zcb;
-    public static int zcc;
-    public static int zcd;
-    public static int zce;
+    public static int adFr;
+    public static int adFs;
+    public static int adFt;
+    public static int adFu;
+    public static int upU;
+    public static int upV;
+    public static int upW;
+    public static int upX;
     
     static
     {
-      int j = 2131034130;
-      AppMethodBeat.i(106052);
-      boolean bool2 = com.tencent.mm.compatible.util.d.fv(19);
-      boolean bool1 = com.tencent.mm.compatible.i.b.Mg() & bool2;
+      AppMethodBeat.i(141404);
+      boolean bool2 = com.tencent.mm.compatible.util.d.rb(19);
+      boolean bool1 = com.tencent.mm.compatible.h.a.aPR() & bool2;
       if (bool1)
       {
-        i = 2131034266;
-        zbX = i;
+        i = com.tencent.mm.ah.a.a.slide_right_in;
+        upU = i;
         if (!bool1) {
           break label102;
         }
-        i = 2131034263;
-        label38:
-        zbY = i;
-        i = j;
-        if (bool1) {
-          i = 2131034262;
-        }
-        zbZ = i;
+        i = com.tencent.mm.ah.a.a.slide_left_out;
+        label37:
+        upV = i;
         if (!bool1) {
-          break label108;
+          break label109;
+        }
+        i = com.tencent.mm.ah.a.a.slide_left_in;
+        label49:
+        upW = i;
+        if (!bool1) {
+          break label116;
         }
       }
       label102:
-      label108:
-      for (int i = 2131034267;; i = 2131034222)
+      label109:
+      label116:
+      for (int i = com.tencent.mm.ah.a.a.slide_right_out;; i = com.tencent.mm.ah.a.a.pop_out)
       {
-        zca = i;
-        zcb = zbX;
-        zcc = zbY;
-        zcd = zbZ;
-        zce = zca;
-        AppMethodBeat.o(106052);
+        upX = i;
+        adFr = upU;
+        adFs = upV;
+        adFt = upW;
+        adFu = upX;
+        AppMethodBeat.o(141404);
         return;
-        i = 2131034217;
+        i = com.tencent.mm.ah.a.a.pop_in;
         break;
-        i = 2131034130;
-        break label38;
+        i = com.tencent.mm.ah.a.a.anim_not_change;
+        break label37;
+        i = com.tencent.mm.ah.a.a.anim_not_change;
+        break label49;
       }
     }
     
-    public static void dCz()
+    public static void jka()
     {
-      int j = 2131034130;
-      AppMethodBeat.i(106051);
-      x localx = ac.erz;
-      boolean bool = x.LY();
-      ab.i("MicroMsg.MMFragmentActivity", "lm: setAnimationStyle swipbackType = ".concat(String.valueOf(bool)));
-      if (!bool)
-      {
-        AppMethodBeat.o(106051);
-        return;
-      }
-      bool = com.tencent.mm.compatible.util.d.fv(19);
-      bool = com.tencent.mm.compatible.i.b.Mg() & bool;
-      ab.i("MicroMsg.MMFragmentActivity", "lm: setAnimationStyle supportSwipe = ".concat(String.valueOf(bool)));
+      AppMethodBeat.i(141403);
+      z localz = com.tencent.mm.compatible.deviceinfo.af.lYd;
+      boolean bool = z.aPB();
+      Log.i("MicroMsg.MMFragmentActivity", "lm: setAnimationStyle swipbackType = ".concat(String.valueOf(bool)));
       if (bool)
       {
-        i = 2131034266;
-        zbX = i;
+        bool = com.tencent.mm.compatible.util.d.rb(19);
+        bool = com.tencent.mm.compatible.h.a.aPR() & bool;
+        Log.i("MicroMsg.MMFragmentActivity", "lm: setAnimationStyle supportSwipe = ".concat(String.valueOf(bool)));
         if (!bool) {
-          break label148;
+          break label135;
         }
-        i = 2131034263;
-        label84:
-        zbY = i;
-        i = j;
-        if (bool) {
-          i = 2131034262;
-        }
-        zbZ = i;
+        i = MMFragmentActivity.access$200();
+        upU = i;
         if (!bool) {
-          break label154;
+          break label142;
+        }
+        i = MMFragmentActivity.access$300();
+        label77:
+        upV = i;
+        if (!bool) {
+          break label149;
+        }
+        i = MMFragmentActivity.access$400();
+        label89:
+        upW = i;
+        if (!bool) {
+          break label156;
         }
       }
-      label148:
-      label154:
-      for (int i = 2131034267;; i = 2131034222)
+      label135:
+      label142:
+      label149:
+      label156:
+      for (int i = MMFragmentActivity.access$500();; i = com.tencent.mm.ah.a.a.pop_out)
       {
-        zca = i;
-        zcb = zbX;
-        zcc = zbY;
-        zcd = zbZ;
-        zce = zca;
-        AppMethodBeat.o(106051);
+        upX = i;
+        adFr = upU;
+        adFs = upV;
+        adFt = upW;
+        adFu = upX;
+        AppMethodBeat.o(141403);
         return;
-        i = 2131034217;
+        i = com.tencent.mm.ah.a.a.pop_in;
         break;
-        i = 2131034130;
-        break label84;
+        i = com.tencent.mm.ah.a.a.anim_not_change;
+        break label77;
+        i = com.tencent.mm.ah.a.a.anim_not_change;
+        break label89;
       }
     }
   }
   
-  final class b
+  public static abstract interface b
   {
-    NfcAdapter zcf = null;
-    PendingIntent zcg;
-    IntentFilter[] zch;
-    String[][] zci;
+    public abstract String key();
     
-    private b() {}
-    
-    final void init()
-    {
-      AppMethodBeat.i(106053);
-      Object localObject = new Intent();
-      ((Intent)localObject).setClassName(ah.getPackageName(), "com.tencent.mm.plugin.nfc_open.ui.NfcWebViewUI");
-      ((Intent)localObject).addFlags(536870912);
-      this.zcg = PendingIntent.getActivity(MMFragmentActivity.this, 0, (Intent)localObject, 0);
-      localObject = new IntentFilter("android.nfc.action.NDEF_DISCOVERED");
-      try
-      {
-        ((IntentFilter)localObject).addDataType("*/*");
-        IntentFilter localIntentFilter = new IntentFilter("android.nfc.action.TECH_DISCOVERED");
-        localIntentFilter.addDataScheme("vnd.android.nfc");
-        this.zch = new IntentFilter[] { localObject, localIntentFilter, new IntentFilter("android.nfc.action.TAG_DISCOVERED") };
-        this.zci = new String[][] { { NfcA.class.getName(), IsoDep.class.getName() } };
-        AppMethodBeat.o(106053);
-        return;
-      }
-      catch (IntentFilter.MalformedMimeTypeException localMalformedMimeTypeException)
-      {
-        RuntimeException localRuntimeException = new RuntimeException("fail", localMalformedMimeTypeException);
-        AppMethodBeat.o(106053);
-        throw localRuntimeException;
-      }
-    }
+    public abstract void n(MotionEvent paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.MMFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

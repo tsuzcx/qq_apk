@@ -1,29 +1,20 @@
+import android.widget.Button;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.util.Utils;
 
 public class cvi
   implements Runnable
 {
-  public cvi(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  public cvi(LoginVerifyCodeActivity paramLoginVerifyCodeActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    try
+    String str = Utils.c(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity) != null))
     {
-      if ((LoginVerifyCodeActivity.a(this.a) != null) && (LoginVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        LoginVerifyCodeActivity.a(this.a).dismiss();
-        LoginVerifyCodeActivity.a(this.a).cancel();
-      }
-      LoginVerifyCodeActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity).setText(str);
+      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity).setEnabled(true);
     }
   }
 }

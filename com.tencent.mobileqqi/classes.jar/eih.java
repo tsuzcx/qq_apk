@@ -1,12 +1,17 @@
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class eih
-  extends FMObserver
+  extends ConfigObserver
 {
   public eih(MainAssistObserver paramMainAssistObserver) {}
   
-  protected void b() {}
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  {
+    MainAssistObserver.a(this.a, paramUpgradeDetailWrapper);
+    this.a.g();
+  }
 }
 
 

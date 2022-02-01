@@ -31,14 +31,15 @@ public final class mobile_get_config_req
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.scene, 1);
-    if (this.cookies != null) {
-      paramJceOutputStream.write(this.cookies, 2);
+    String str = this.cookies;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QMF_PROTOCAL.mobile_get_config_req
  * JD-Core Version:    0.7.0.1
  */

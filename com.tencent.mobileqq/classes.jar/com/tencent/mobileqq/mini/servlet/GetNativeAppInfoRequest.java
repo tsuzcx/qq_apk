@@ -27,16 +27,20 @@ public class GetNativeAppInfoRequest
   
   public static INTERFACE.StGetNAppForJumpRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetNAppForJumpRsp localStGetNAppForJumpRsp = new INTERFACE.StGetNAppForJumpRsp();
+    Object localObject = new INTERFACE.StGetNAppForJumpRsp();
     try
     {
-      localStGetNAppForJumpRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetNAppForJumpRsp;
+      ((INTERFACE.StGetNAppForJumpRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetAppInfoByIdRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetAppInfoByIdRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -49,7 +53,7 @@ public class GetNativeAppInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetNativeAppInfoRequest
  * JD-Core Version:    0.7.0.1
  */

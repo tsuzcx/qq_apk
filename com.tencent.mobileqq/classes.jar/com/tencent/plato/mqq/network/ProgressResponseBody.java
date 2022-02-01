@@ -49,19 +49,17 @@ public class ProgressResponseBody
   
   public BufferedSource source()
   {
-    if (this.mBufferedSource == null) {}
-    try
-    {
-      this.mBufferedSource = Okio.buffer(source(this.mResponseBody.source()));
-      return this.mBufferedSource;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (this.mBufferedSource == null) {
+      try
+      {
+        this.mBufferedSource = Okio.buffer(source(this.mResponseBody.source()));
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    return this.mBufferedSource;
   }
   
   public long totalBytesRead()
@@ -71,7 +69,7 @@ public class ProgressResponseBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.plato.mqq.network.ProgressResponseBody
  * JD-Core Version:    0.7.0.1
  */

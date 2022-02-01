@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.pubaccount.weishi_new.view.WSFeedsLinearLayout android:orientation="vertical" android:background="@color/gg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/qyj" android:layout_width="fill_parent" android:layout_height="48.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabLayout android:id="@id/r2j" android:layout_width="fill_parent" android:layout_height="48.0dip" />
+        <com.tencent.biz.pubaccount.weishi_new.view.WSViewPager android:id="@id/r31" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+</com.tencent.biz.pubaccount.weishi_new.view.WSFeedsLinearLayout>

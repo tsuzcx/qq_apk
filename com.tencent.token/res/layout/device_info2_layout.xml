@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/realname_shake_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="手机型号：" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/text_gray" android:id="@id/phone_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="value" />
+    </LinearLayout>
+    <include layout="@layout/item_divide" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/realname_shake_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="系统名称：" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/text_gray" android:id="@id/system_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="value" />
+    </LinearLayout>
+    <include layout="@layout/item_divide" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/realname_shake_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="系统版本：" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/text_gray" android:id="@id/system_ver" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="value" />
+    </LinearLayout>
+    <include layout="@layout/item_divide" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/item_bg_sel" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/realname_shake_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="存储空间：" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/text_size_15" android:textColor="@color/text_gray" android:id="@id/sdcard_size" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="12.0dip" android:text="value" />
+    </LinearLayout>
+</LinearLayout>

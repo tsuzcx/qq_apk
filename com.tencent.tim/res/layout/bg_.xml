@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ha_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
+        <ImageView android:background="@drawable/qzone_skin_icon_share_to_qq" android:layout_width="41.0dip" android:layout_height="41.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="14.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="20.0sp" android:textColor="@color/qzone_skin_common_black2white_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="直接分享到QQ" />
+    </LinearLayout>
+    <com.qzone.widget.CommonLine android:background="#ffaaaaaa" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="65.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:alpha="0.2" />
+    <LinearLayout android:id="@id/cj" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:background="@drawable/qzone_skin_icon_share_to_wx" android:layout_width="41.0dip" android:layout_height="41.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="14.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="20.0sp" android:textColor="@color/qzone_skin_common_black2white_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rld" />
+    </LinearLayout>
+    <com.qzone.widget.CommonLine android:background="#ffaaaaaa" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="65.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:alpha="0.2" />
+    <LinearLayout android:id="@id/ck" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="130.0dip">
+        <ImageView android:background="@drawable/qzone_skin_icon_share_to_wx_circle" android:layout_width="41.0dip" android:layout_height="41.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="14.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="20.0sp" android:textColor="@color/qzone_skin_common_black2white_color" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rm5" />
+    </LinearLayout>
+</LinearLayout>

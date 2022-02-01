@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import avop;
-
 class NearbyProfileEditTribePanel$16$1
   implements Runnable
 {
@@ -9,12 +7,12 @@ class NearbyProfileEditTribePanel$16$1
   
   public void run()
   {
-    avop.a(this.a.this$0);
+    NearbyProfileEditTribePanel.d(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.16.1
  * JD-Core Version:    0.7.0.1
  */

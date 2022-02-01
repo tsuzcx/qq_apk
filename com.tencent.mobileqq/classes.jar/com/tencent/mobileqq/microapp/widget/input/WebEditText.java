@@ -14,12 +14,11 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.FrameLayout.LayoutParams;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.microapp.appbrand.a.a.y;
+import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.microapp.appbrand.a.a.f;
 import com.tencent.mobileqq.microapp.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.microapp.appbrand.page.PageWebview;
-import com.tencent.mobileqq.microapp.ui.NavigationBar;
 import com.tencent.mobileqq.microapp.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -66,110 +65,90 @@ public class WebEditText
     this.h = new WeakReference(paramPageWebview);
   }
   
-  public boolean a(y paramy, AbsAppBrandPage paramAbsAppBrandPage, String paramString)
+  public boolean a(f paramf, AbsAppBrandPage paramAbsAppBrandPage, String paramString)
   {
-    int j = 2;
-    if ((TextUtils.isEmpty(paramString)) || (paramAbsAppBrandPage == null)) {
-      return false;
-    }
-    Object localObject1 = super.getContext();
-    paramString = new JSONObject(paramString);
-    Object localObject2 = paramString.optString("type");
-    boolean bool = paramString.optBoolean("isPassword");
-    int i;
-    if (("number".equals(localObject2)) || ("digit".equals(localObject2)) || ("idcard".equals(localObject2))) {
-      i = 2;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      super.setInputType(i);
-      localObject2 = paramString.optString("confirmType");
-      if ("send".equals(localObject2))
-      {
-        i = 4;
-        label107:
-        setImeOptions(i);
-        i = paramString.optInt("maxLength", -1);
-        if (i != -1) {
-          super.setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
-        }
-        localObject2 = paramString.optJSONObject("style");
-        if (localObject2 != null)
-        {
-          float f1 = DisplayUtil.getDensity((Context)localObject1);
-          this.c = ((int)(((JSONObject)localObject2).optInt("width") * f1));
-          this.d = ((int)(((JSONObject)localObject2).optInt("height") * f1));
-          this.f = ((int)(((JSONObject)localObject2).optInt("left") * f1));
-          this.e = ((int)(f1 * ((JSONObject)localObject2).optInt("top")) + paramAbsAppBrandPage.getNavBar().getHeight());
-          super.setTextSize(((JSONObject)localObject2).optInt("fontSize", 16));
-          ((JSONObject)localObject2).optString("fontWeight", "normal");
-          this.a = ((JSONObject)localObject2).optString("color", "#FFFFFFFF");
-          this.b = ((JSONObject)localObject2).optString("backgroundColor", "#FFFFFFFF");
-          ((JSONObject)localObject2).optInt("marginBottom");
-          ((JSONObject)localObject2).optString("textAlign", "left");
-        }
-        paramAbsAppBrandPage = paramString.optString("placeholder");
-        localObject1 = paramString.optJSONObject("placeholderStyle");
-        if (localObject1 != null) {
-          super.setHintTextColor(Color.parseColor(((JSONObject)localObject1).optString("color", "#FFFFFFFF")));
-        }
-        if (paramString.optBoolean("adjustPosition")) {
-          paramy.b().getWindow().setSoftInputMode(32);
-        }
-        paramy = paramString.optString("defaultValue");
-        if (TextUtils.isEmpty(paramy)) {
-          break label485;
-        }
-        super.setText(paramy);
+      if (paramAbsAppBrandPage == null) {
+        return false;
       }
-      for (;;)
+      Object localObject = super.getContext();
+      paramAbsAppBrandPage = new JSONObject(paramString);
+      paramString = paramAbsAppBrandPage.optString("type");
+      boolean bool1 = paramAbsAppBrandPage.optBoolean("isPassword");
+      boolean bool2 = "number".equals(paramString);
+      int j = 2;
+      if ((!bool2) && (!"digit".equals(paramString)) && (!"idcard".equals(paramString)))
       {
-        super.setTextColor(com.tencent.mobileqq.microapp.b.a.h(this.a));
-        super.setBackgroundColor(com.tencent.mobileqq.microapp.b.a.h(this.b));
-        super.setGravity(19);
-        super.setHint(paramAbsAppBrandPage);
-        return true;
-        if (!bool) {
-          break label495;
+        if (bool1) {
+          i = 129;
+        } else {
+          i = 1;
         }
-        i = 129;
-        break;
-        if ("search".equals(localObject2))
-        {
-          i = 3;
-          break label107;
-        }
-        if ("next".equals(localObject2))
-        {
-          i = 5;
-          break label107;
-        }
+      }
+      else {
+        i = 2;
+      }
+      super.setInputType(i);
+      paramString = paramAbsAppBrandPage.optString("confirmType");
+      if ("send".equals(paramString)) {
+        i = 4;
+      } else if ("search".equals(paramString)) {
+        i = 3;
+      } else if ("next".equals(paramString)) {
+        i = 5;
+      } else if ("go".equals(paramString)) {
         i = j;
-        if ("go".equals(localObject2)) {
-          break label107;
-        }
+      } else {
         i = 6;
-        break label107;
-        label485:
+      }
+      setImeOptions(i);
+      int i = paramAbsAppBrandPage.optInt("maxLength", -1);
+      if (i != -1) {
+        super.setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
+      }
+      paramString = paramAbsAppBrandPage.optJSONObject("style");
+      if (paramString != null)
+      {
+        float f1 = DisplayUtil.getDensity((Context)localObject);
+        this.c = ((int)(paramString.optInt("width") * f1));
+        this.d = ((int)(paramString.optInt("height") * f1));
+        this.f = ((int)(paramString.optInt("left") * f1));
+        super.setTextSize(paramString.optInt("fontSize", 16));
+        paramString.optString("fontWeight", "normal");
+        this.a = paramString.optString("color", "#FFFFFFFF");
+        this.b = paramString.optString("backgroundColor", "#FFFFFFFF");
+        paramString.optInt("marginBottom");
+        paramString.optString("textAlign", "left");
+      }
+      paramString = paramAbsAppBrandPage.optString("placeholder");
+      localObject = paramAbsAppBrandPage.optJSONObject("placeholderStyle");
+      if (localObject != null) {
+        super.setHintTextColor(Color.parseColor(((JSONObject)localObject).optString("color", "#FFFFFFFF")));
+      }
+      if (paramAbsAppBrandPage.optBoolean("adjustPosition")) {
+        paramf.b().getWindow().setSoftInputMode(32);
+      }
+      paramf = paramAbsAppBrandPage.optString("defaultValue");
+      if (!TextUtils.isEmpty(paramf)) {
+        super.setText(paramf);
+      } else {
         super.setText("");
       }
-      label495:
-      i = 1;
+      super.setTextColor(c.p(this.a));
+      super.setBackgroundColor(c.p(this.b));
+      super.setGravity(19);
+      super.setHint(paramString);
+      return true;
     }
-  }
-  
-  public FrameLayout.LayoutParams b(int paramInt)
-  {
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.c, this.d);
-    localLayoutParams.leftMargin = this.f;
-    localLayoutParams.topMargin = (this.e - paramInt);
-    return localLayoutParams;
+    return false;
   }
   
   public PageWebview b()
   {
-    if (this.h != null) {
-      return (PageWebview)this.h.get();
+    WeakReference localWeakReference = this.h;
+    if (localWeakReference != null) {
+      return (PageWebview)localWeakReference.get();
     }
     return null;
   }
@@ -204,12 +183,16 @@ public class WebEditText
     if (a.a().a(this.g))
     {
       super.requestFocus();
-      if (QLog.isColorLevel()) {
-        QLog.d("WebEditText", 2, "showSoftInput for inputId=" + this.g);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showSoftInput for inputId=");
+        ((StringBuilder)localObject).append(this.g);
+        QLog.d("WebEditText", 2, ((StringBuilder)localObject).toString());
       }
-      InputMethodManager localInputMethodManager = (InputMethodManager)super.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.showSoftInput(this, 2);
+      Object localObject = (InputMethodManager)super.getContext().getSystemService("input_method");
+      if (localObject != null) {
+        ((InputMethodManager)localObject).showSoftInput(this, 2);
       }
     }
   }
@@ -227,18 +210,23 @@ public class WebEditText
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("WebEditText{");
-    localStringBuilder.append("mWebInputWidth=").append(this.c);
-    localStringBuilder.append(", mWebInputHeight=").append(this.d);
-    localStringBuilder.append(", mWebInputTop=").append(this.e);
-    localStringBuilder.append(", mWebInputLeft=").append(this.f);
-    localStringBuilder.append(", mInputId=").append(this.g);
+    localStringBuilder.append("mWebInputWidth=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mWebInputHeight=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mWebInputTop=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", mWebInputLeft=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", mInputId=");
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.input.WebEditText
  * JD-Core Version:    0.7.0.1
  */

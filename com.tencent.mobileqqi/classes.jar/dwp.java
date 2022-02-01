@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
 
-public final class dwp
-  implements Parcelable.Creator
+public class dwp
+  implements Runnable
 {
-  public SessionInfo a(Parcel paramParcel)
-  {
-    return new SessionInfo(paramParcel);
-  }
+  public dwp(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
   
-  public SessionInfo[] a(int paramInt)
+  public void run()
   {
-    return new SessionInfo[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

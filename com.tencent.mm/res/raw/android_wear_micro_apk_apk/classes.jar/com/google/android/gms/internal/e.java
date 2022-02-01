@@ -2,7 +2,7 @@ package com.google.android.gms.internal;
 
 public abstract interface e
 {
-  public abstract void x(boolean paramBoolean);
+  public abstract void A(boolean paramBoolean);
 }
 
 

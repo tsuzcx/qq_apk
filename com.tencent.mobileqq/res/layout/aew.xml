@@ -13,7 +13,7 @@
         </RelativeLayout>
     </LinearLayout>
     <FrameLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j_o" android:layout_alignParentBottom="true">
-        <android.support.v4.view.ViewPager android:id="@id/kmf" android:persistentDrawingCache="animation" android:layout_width="fill_parent" android:layout_height="fill_parent" android:flipInterval="300" />
+        <androidx.viewpager.widget.ViewPager android:id="@id/kmf" android:persistentDrawingCache="animation" android:layout_width="fill_parent" android:layout_height="fill_parent" android:flipInterval="300" />
         <RelativeLayout android:id="@id/f_i" android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <TextView android:textSize="14.0sp" android:textColor="@color/wa" android:id="@id/f_j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eeo" android:layout_centerInParent="true" />
             <ImageView android:layout_width="90.0dip" android:layout_height="90.0dip" android:src="@drawable/dx8" android:layout_above="@id/f_j" android:layout_centerHorizontal="true" />

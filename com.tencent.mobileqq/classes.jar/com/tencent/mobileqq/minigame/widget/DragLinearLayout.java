@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdoo;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class DragLinearLayout
   extends RelativeLayout
@@ -17,7 +17,7 @@ public class DragLinearLayout
   private float downX;
   private float downY;
   private int height;
-  private boolean isDrag;
+  private boolean isDrag = false;
   int left;
   int right;
   private int screenHeight;
@@ -52,8 +52,8 @@ public class DragLinearLayout
   
   private void initScreenConfig()
   {
-    this.screenWidth = bdoo.a();
-    this.screenHeight = bdoo.b();
+    this.screenWidth = ViewUtils.getScreenWidth();
+    this.screenHeight = ViewUtils.getScreenHeight();
   }
   
   public int getStatusBarHeight()
@@ -80,71 +80,82 @@ public class DragLinearLayout
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
     if (isEnabled())
     {
-      switch (paramMotionEvent.getAction())
+      int i = paramMotionEvent.getAction();
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        return true;
-        this.isDrag = false;
-        this.downX = paramMotionEvent.getX();
-        this.downY = paramMotionEvent.getY();
-        continue;
-        float f1 = paramMotionEvent.getX() - this.downX;
-        float f2 = paramMotionEvent.getY() - this.downY;
-        if ((Math.abs(f1) > 30.0F) || (Math.abs(f2) > 30.0F))
+        if (i != 1)
         {
-          this.isDrag = true;
-          this.left = ((int)(f1 + getLeft()));
-          this.right = (this.left + this.width);
-          this.top = ((int)(getTop() + f2));
-          this.bottom = (this.top + this.height);
-          if (this.left >= 0) {
-            break label271;
-          }
-          this.left = 0;
-          this.right = (this.left + this.width);
-          label202:
-          if (this.top >= 0) {
-            break label306;
-          }
-          this.top = 0;
-          this.bottom = (this.top + this.height);
-        }
-        for (;;)
-        {
-          localLayoutParams.setMargins(this.left, this.top, this.screenWidth - this.right, this.screenHeight - this.bottom);
-          setLayoutParams(localLayoutParams);
-          bringToFront();
-          break;
-          label271:
-          if (this.right <= this.screenWidth) {
-            break label202;
-          }
-          this.right = this.screenWidth;
-          this.left = (this.right - this.width);
-          break label202;
-          label306:
-          if (this.bottom > this.screenHeight)
+          if (i != 2)
           {
-            this.bottom = this.screenHeight;
-            this.top = (this.bottom - this.height);
+            if (i != 3) {
+              return true;
+            }
+            setPressed(false);
+            return true;
           }
+          float f1 = paramMotionEvent.getX() - this.downX;
+          float f2 = paramMotionEvent.getY() - this.downY;
+          if ((Math.abs(f1) > 30.0F) || (Math.abs(f2) > 30.0F))
+          {
+            this.isDrag = true;
+            this.left = ((int)(getLeft() + f1));
+            this.right = (this.left + this.width);
+            this.top = ((int)(getTop() + f2));
+            this.bottom = (this.top + this.height);
+            int j;
+            if (this.left < 0)
+            {
+              this.left = 0;
+              this.right = (this.left + this.width);
+            }
+            else
+            {
+              i = this.right;
+              j = this.screenWidth;
+              if (i > j)
+              {
+                this.right = j;
+                this.left = (this.right - this.width);
+              }
+            }
+            if (this.top < 0)
+            {
+              this.top = 0;
+              this.bottom = (this.top + this.height);
+            }
+            else
+            {
+              i = this.bottom;
+              j = this.screenHeight;
+              if (i > j)
+              {
+                this.bottom = j;
+                this.top = (this.bottom - this.height);
+              }
+            }
+            localLayoutParams.setMargins(this.left, this.top, this.screenWidth - this.right, this.screenHeight - this.bottom);
+            setLayoutParams(localLayoutParams);
+          }
+          bringToFront();
+          return true;
         }
         setPressed(false);
         localLayoutParams.setMargins(this.left, this.top, this.screenWidth - this.right, this.screenHeight - this.bottom - getStatusBarHeight());
         setLayoutParams(localLayoutParams);
         bringToFront();
-        continue;
-        setPressed(false);
+        return true;
       }
+      this.isDrag = false;
+      this.downX = paramMotionEvent.getX();
+      this.downY = paramMotionEvent.getY();
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.widget.DragLinearLayout
  * JD-Core Version:    0.7.0.1
  */

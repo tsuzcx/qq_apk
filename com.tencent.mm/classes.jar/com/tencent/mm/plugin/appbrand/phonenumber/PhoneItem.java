@@ -1,49 +1,54 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f.b.j;
-import a.l;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "mobile", "", "showMobile", "encryptedData", "iv", "needAuth", "", "allowSendSms", "isWechat", "isCheck", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZ)V", "getAllowSendSms", "()Z", "getEncryptedData", "()Ljava/lang/String;", "setCheck", "(Z)V", "setWechat", "getIv", "getMobile", "getNeedAuth", "getShowMobile", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "describeContents", "", "equals", "other", "", "hashCode", "toJSONStr", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Landroid/os/Parcelable;", "mobile", "", "showMobile", "encryptedData", "iv", "cloud_id", "needAuth", "", "allowSendSms", "isWechat", "isCheck", "data", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZLjava/lang/String;)V", "getAllowSendSms", "()Z", "getCloud_id", "()Ljava/lang/String;", "getData", "setData", "(Ljava/lang/String;)V", "getEncryptedData", "setCheck", "(Z)V", "setWechat", "getIv", "getMobile", "getNeedAuth", "getShowMobile", "component1", "component10", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "describeContents", "", "equals", "other", "", "hashCode", "toJSONStr", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PhoneItem
   implements Parcelable
 {
   public static final Parcelable.Creator<PhoneItem> CREATOR;
-  public static final PhoneItem.a iDu;
-  public final String aRj;
-  final String czF;
-  final String iDo;
-  public final String iDp;
-  public final boolean iDq;
-  final boolean iDr;
-  public boolean iDs;
-  boolean iDt;
+  public static final a tGI;
+  public String data;
+  public final String dbg;
+  public final String hRk;
+  final String tGJ;
+  public final String tGK;
+  public final String tGL;
+  public final boolean tGM;
+  final boolean tGN;
+  public boolean tGO;
+  public boolean tGP;
   
   static
   {
-    AppMethodBeat.i(134804);
-    iDu = new PhoneItem.a((byte)0);
-    CREATOR = (Parcelable.Creator)new PhoneItem.b();
-    AppMethodBeat.o(134804);
+    AppMethodBeat.i(148075);
+    tGI = new a((byte)0);
+    CREATOR = (Parcelable.Creator)new b();
+    AppMethodBeat.o(148075);
   }
   
-  public PhoneItem(Parcel paramParcel) {}
-  
-  public PhoneItem(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public PhoneItem(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString6)
   {
-    AppMethodBeat.i(134802);
-    this.czF = paramString1;
-    this.iDo = paramString2;
-    this.iDp = paramString3;
-    this.aRj = paramString4;
-    this.iDq = paramBoolean1;
-    this.iDr = paramBoolean2;
-    this.iDs = paramBoolean3;
-    this.iDt = paramBoolean4;
-    AppMethodBeat.o(134802);
+    AppMethodBeat.i(318927);
+    this.hRk = paramString1;
+    this.tGJ = paramString2;
+    this.tGK = paramString3;
+    this.dbg = paramString4;
+    this.tGL = paramString5;
+    this.tGM = paramBoolean1;
+    this.tGN = paramBoolean2;
+    this.tGO = paramBoolean3;
+    this.tGP = paramBoolean4;
+    this.data = paramString6;
+    AppMethodBeat.o(318927);
   }
   
   public final int describeContents()
@@ -53,19 +58,19 @@ public final class PhoneItem
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(134800);
+    AppMethodBeat.i(148071);
     if ((paramObject instanceof PhoneItem))
     {
-      if ((j.e(((PhoneItem)paramObject).czF, this.czF)) && (((PhoneItem)paramObject).iDs == this.iDs))
+      if ((s.p(((PhoneItem)paramObject).hRk, this.hRk)) && (((PhoneItem)paramObject).tGO == this.tGO))
       {
-        AppMethodBeat.o(134800);
+        AppMethodBeat.o(148071);
         return true;
       }
-      AppMethodBeat.o(134800);
+      AppMethodBeat.o(148071);
       return false;
     }
     boolean bool = super.equals(paramObject);
-    AppMethodBeat.o(134800);
+    AppMethodBeat.o(148071);
     return bool;
   }
   
@@ -76,57 +81,103 @@ public final class PhoneItem
   
   public final String toString()
   {
-    AppMethodBeat.i(134805);
-    String str = "PhoneItem(mobile=" + this.czF + ", showMobile=" + this.iDo + ", encryptedData=" + this.iDp + ", iv=" + this.aRj + ", needAuth=" + this.iDq + ", allowSendSms=" + this.iDr + ", isWechat=" + this.iDs + ", isCheck=" + this.iDt + ")";
-    AppMethodBeat.o(134805);
+    AppMethodBeat.i(148076);
+    String str = "PhoneItem(mobile=" + this.hRk + ", showMobile=" + this.tGJ + ", encryptedData=" + this.tGK + ", iv=" + this.dbg + ", cloud_id=" + this.tGL + ", needAuth=" + this.tGM + ", allowSendSms=" + this.tGN + ", isWechat=" + this.tGO + ", isCheck=" + this.tGP + ", data=" + this.data + ')';
+    AppMethodBeat.o(148076);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(134801);
-    j.q(paramParcel, "dest");
-    paramParcel.writeString(this.czF);
-    paramParcel.writeString(this.iDo);
-    paramParcel.writeString(this.iDp);
-    paramParcel.writeString(this.aRj);
-    if (this.iDq)
+    AppMethodBeat.i(148072);
+    s.u(paramParcel, "out");
+    paramParcel.writeString(this.hRk);
+    paramParcel.writeString(this.tGJ);
+    paramParcel.writeString(this.tGK);
+    paramParcel.writeString(this.dbg);
+    paramParcel.writeString(this.tGL);
+    if (this.tGM)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.iDr) {
-        break label112;
+      if (!this.tGN) {
+        break label128;
       }
       paramInt = 1;
-      label68:
+      label76:
       paramParcel.writeInt(paramInt);
-      if (!this.iDs) {
-        break label117;
+      if (!this.tGO) {
+        break label133;
       }
       paramInt = 1;
-      label82:
+      label90:
       paramParcel.writeInt(paramInt);
-      if (!this.iDt) {
-        break label122;
+      if (!this.tGP) {
+        break label138;
       }
     }
-    label112:
-    label117:
-    label122:
+    label128:
+    label133:
+    label138:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(134801);
+      paramParcel.writeString(this.data);
+      AppMethodBeat.o(148072);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label68;
+      break label76;
       paramInt = 0;
-      break label82;
+      break label90;
     }
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem$Companion;", "", "()V", "TAG", "", "parseFromJson", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "jsonStr", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static PhoneItem afx(String paramString)
+    {
+      AppMethodBeat.i(148070);
+      s.u(paramString, "jsonStr");
+      try
+      {
+        Object localObject2 = new JSONObject(paramString);
+        Object localObject1 = ((JSONObject)localObject2).optString("mobile");
+        String str1 = ((JSONObject)localObject2).optString("show_mobile");
+        boolean bool1 = ((JSONObject)localObject2).optBoolean("need_auth", true);
+        boolean bool2 = ((JSONObject)localObject2).optBoolean("allow_send_sms", true);
+        String str2 = ((JSONObject)localObject2).optString("encryptedData");
+        String str3 = ((JSONObject)localObject2).optString("iv");
+        boolean bool3 = ((JSONObject)localObject2).optBoolean("is_wechat", false);
+        boolean bool4 = ((JSONObject)localObject2).optBoolean("is_check", false);
+        String str4 = ((JSONObject)localObject2).optString("cloud_id", "");
+        localObject2 = ((JSONObject)localObject2).optString("data", "");
+        s.s(localObject1, "mobile");
+        s.s(str1, "showMobile");
+        s.s(str2, "encryptedData");
+        s.s(str3, "iv");
+        s.s(str4, "cloud_id");
+        s.s(localObject2, "data");
+        localObject1 = new PhoneItem((String)localObject1, str1, str2, str3, str4, bool1, bool2, bool3, bool4, (String)localObject2);
+        AppMethodBeat.o(148070);
+        return localObject1;
+      }
+      catch (JSONException localJSONException)
+      {
+        Log.e("MicroMsg.PhoneItem", "jsonStr:%s", new Object[] { paramString });
+        AppMethodBeat.o(148070);
+      }
+      return null;
+    }
+  }
+  
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements Parcelable.Creator<PhoneItem>
+  {}
 }
 
 

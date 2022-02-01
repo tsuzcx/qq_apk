@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="64.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/m2o" android:layout_width="300.0dip" android:layout_height="200.0dip" android:src="@color/Orange_BG_100" />
+        <ImageView android:layout_gravity="center" android:id="@id/m2p" android:layout_width="64.0dip" android:layout_height="64.0dip" android:src="@color/Orange_100_CARE" />
+    </FrameLayout>
+    <EditText android:id="@id/lyl" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+    <EditText android:id="@id/lym" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+    <TextView android:textSize="21.0dip" android:textColor="@color/xd" android:id="@id/is_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_marginTop="@dimen/cp" android:text="开始" style="@style/oh" />
+</LinearLayout>

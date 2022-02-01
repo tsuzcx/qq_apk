@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/jv" android:layout_marginEnd="@dimen/jv"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="168.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/j47" android:background="@drawable/a_d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/jx" android:layout_marginBottom="@dimen/jw" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/a88" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="56.0" keybutton:functionCode="@integer/ai" keybutton:imeKeyBackground="@drawable/a_c" keybutton:imeKeyMarginBottom="@dimen/jt" keybutton:imeKeyMarginDp="true" keybutton:imeKeyMarginTop="@dimen/jt" keybutton:keyType="@integer/ak" keybutton:key_text_color="@color/zs" keybutton:key_text_size="@dimen/ae9" keybutton:key_view_type="@integer/b1" keybutton:text="@string/jsn" />
+</LinearLayout>

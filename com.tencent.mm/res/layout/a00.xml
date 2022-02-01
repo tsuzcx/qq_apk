@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/os" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/age" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.mm.plugin.fav.ui.widget.FavVideoView android:id="@id/xe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-        <include layout="@layout/yy" />
+<LinearLayout android:gravity="center" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/ie" android:paddingStart="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fas" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" />
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/cp">
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/cp">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/fbk" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="聊天中的文件" android:maxLines="1" android:layout_weight="1.0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/jaf" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_done" app:iconColor="@color/aks" />
+        </LinearLayout>
+        <View android:id="@id/fb7" android:layout_height="0.5dip" android:layout_alignParentBottom="true" style="@style/i7" />
     </RelativeLayout>
 </LinearLayout>

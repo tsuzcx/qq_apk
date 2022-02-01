@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bcto;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -17,29 +16,33 @@ public class UsingTimeReportManager
   extends BroadcastReceiver
   implements Manager
 {
-  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private List<bcto> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private AppInterface a;
+  private List<UsingTimeReportManager.IStateChangeCallBack> b = new ArrayList();
+  private IntentFilter c;
   
   public UsingTimeReportManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter();
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("mqq.intent.action.QQ_BACKGROUND");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("mqq.intent.action.QQ_FOREGROUND");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    this.a = paramAppInterface;
+    this.c = new IntentFilter();
+    this.c.addAction("android.intent.action.SCREEN_OFF");
+    this.c.addAction("mqq.intent.action.QQ_BACKGROUND");
+    this.c.addAction("mqq.intent.action.QQ_FOREGROUND");
+    this.c.addAction("mqq.intent.action.ACCOUNT_KICKED");
     try
     {
       paramAppInterface = paramAppInterface.getApp();
-      if (paramAppInterface != null) {
-        paramAppInterface.registerReceiver(this, this.jdField_a_of_type_AndroidContentIntentFilter);
+      if (paramAppInterface != null)
+      {
+        paramAppInterface.registerReceiver(this, this.c);
+        return;
       }
-      return;
     }
     catch (Exception paramAppInterface)
     {
-      QLog.e("UsingTimeReportManager", 1, "init," + paramAppInterface.toString(), paramAppInterface);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init,");
+      localStringBuilder.append(paramAppInterface.toString());
+      QLog.e("UsingTimeReportManager", 1, localStringBuilder.toString(), paramAppInterface);
     }
   }
   
@@ -48,13 +51,18 @@ public class UsingTimeReportManager
     try
     {
       Object localObject1 = new ArrayList();
-      ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
+      ((List)localObject1).addAll(this.b);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bcto)((Iterator)localObject1).next()).c();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).d();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   private void c()
@@ -62,13 +70,18 @@ public class UsingTimeReportManager
     try
     {
       Object localObject1 = new ArrayList();
-      ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
+      ((List)localObject1).addAll(this.b);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bcto)((Iterator)localObject1).next()).d();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).e();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void a()
@@ -76,44 +89,49 @@ public class UsingTimeReportManager
     try
     {
       Object localObject1 = new ArrayList();
-      ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
+      ((List)localObject1).addAll(this.b);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bcto)((Iterator)localObject1).next()).e();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).f();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
-  public void a(bcto parambcto)
+  public void a(UsingTimeReportManager.IStateChangeCallBack paramIStateChangeCallBack)
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambcto)) {
-        this.jdField_a_of_type_JavaUtilList.add(parambcto);
+      if (!this.b.contains(paramIStateChangeCallBack)) {
+        this.b.add(paramIStateChangeCallBack);
       }
       return;
     }
     finally
     {
-      parambcto = finally;
-      throw parambcto;
+      paramIStateChangeCallBack = finally;
+      throw paramIStateChangeCallBack;
     }
   }
   
-  public void b(bcto parambcto)
+  public void b(UsingTimeReportManager.IStateChangeCallBack paramIStateChangeCallBack)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(parambcto)) {
-        this.jdField_a_of_type_JavaUtilList.remove(parambcto);
+      if (this.b.contains(paramIStateChangeCallBack)) {
+        this.b.remove(paramIStateChangeCallBack);
       }
       return;
     }
     finally
     {
-      parambcto = finally;
-      throw parambcto;
+      paramIStateChangeCallBack = finally;
+      throw paramIStateChangeCallBack;
     }
   }
   
@@ -121,20 +139,20 @@ public class UsingTimeReportManager
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
       try
       {
-        BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+        BaseApplication localBaseApplication = this.a.getApp();
         if (localBaseApplication != null) {
           localBaseApplication.unregisterReceiver(this);
         }
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.e("UsingTimeReportManager", 1, "unInit" + localException.toString(), localException);
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("unInit");
+        localStringBuilder.append(localException.toString());
+        QLog.e("UsingTimeReportManager", 1, localStringBuilder.toString(), localException);
       }
       return;
     }
@@ -144,34 +162,34 @@ public class UsingTimeReportManager
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
-      b();
-    }
-    do
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
+      b();
       return;
-      if ("android.intent.action.SCREEN_ON".equals(paramContext))
-      {
-        c();
-        return;
-      }
-      if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext))
-      {
-        b();
-        return;
-      }
-      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
-      {
-        c();
-        return;
-      }
-    } while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext));
-    a();
+    }
+    if ("android.intent.action.SCREEN_ON".equals(paramContext))
+    {
+      c();
+      return;
+    }
+    if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext))
+    {
+      b();
+      return;
+    }
+    if ("mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
+    {
+      c();
+      return;
+    }
+    if ("mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.UsingTimeReportManager
  * JD-Core Version:    0.7.0.1
  */

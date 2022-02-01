@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import ahvc;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -8,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqpj;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.api.ITabViewEvent;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.widget.HeaderScrollHelper.ScrollableContainer;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Set;
@@ -22,15 +22,16 @@ import mqq.os.MqqHandler;
 
 public class QfileBaseTabView
   extends RelativeLayout
-  implements ahvc, aqpj
+  implements IBaseTabViewEvent, ITabViewEvent, HeaderScrollHelper.ScrollableContainer
 {
-  View a;
-  public QQAppInterface a;
-  public BaseFileAssistantActivity a;
-  protected Runnable a;
-  public int d;
-  public boolean d;
-  boolean e = true;
+  public BaseFileAssistantActivity C;
+  protected BaseQQAppInterface D;
+  View E;
+  boolean F;
+  protected boolean G = true;
+  protected int H = -1;
+  boolean I = true;
+  protected Runnable J = null;
   
   public QfileBaseTabView(Context paramContext)
   {
@@ -45,79 +46,47 @@ public class QfileBaseTabView
   public QfileBaseTabView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app;
+    this.C = ((BaseFileAssistantActivity)paramContext);
+    this.D = ((BaseQQAppInterface)this.C.getAppRuntime());
   }
   
-  public int a()
+  protected boolean A()
   {
-    return 0;
+    return getActivity().C();
   }
   
-  public View a()
+  protected boolean B()
   {
-    return null;
+    return (A()) || (z());
   }
   
-  public BaseFileAssistantActivity a()
+  protected void C()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
+    getActivity().B();
   }
   
-  public ListView a()
-  {
-    return null;
-  }
-  
-  protected void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSystemService("layout_inflater")).inflate(paramInt, null);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    addView(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void a(FileInfo paramFileInfo) {}
+  public void a() {}
   
   public void a(FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(Runnable paramRunnable)
+  protected void a(Runnable paramRunnable)
   {
-    a().runOnUiThread(paramRunnable);
+    getActivity().runOnUiThread(paramRunnable);
   }
   
   public void a(ArrayList<FileManagerEntity> paramArrayList) {}
   
   public void a(Set<FileInfo> paramSet) {}
   
-  public boolean a(FileInfo paramFileInfo)
-  {
-    return false;
-  }
-  
-  public boolean a(FileManagerEntity paramFileManagerEntity)
-  {
-    return false;
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
   public void b() {}
+  
+  public void b(FileInfo paramFileInfo) {}
   
   public void b(ArrayList<WeiYunFileInfo> paramArrayList) {}
   
-  public boolean b()
+  public boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    return this.e;
+    return false;
   }
   
   public boolean b(WeiYunFileInfo paramWeiYunFileInfo)
@@ -129,28 +98,43 @@ public class QfileBaseTabView
   
   public void c(ArrayList<FileManagerEntity> paramArrayList) {}
   
-  public boolean c()
+  public boolean c(FileInfo paramFileInfo)
   {
-    return this.jdField_a_of_type_JavaLangRunnable == null;
+    return false;
   }
+  
+  public void ci_() {}
   
   public void d() {}
   
-  protected boolean d()
+  protected BaseFileAssistantActivity getActivity()
   {
-    return a().c();
+    return this.C;
   }
   
-  public void e() {}
-  
-  protected boolean e()
+  public int getFootHeight()
   {
-    return a().e();
+    return 0;
   }
   
-  public boolean f()
+  public ListView getListView()
   {
-    return (e()) || (d());
+    return null;
+  }
+  
+  public View getScrollableView()
+  {
+    return null;
+  }
+  
+  public int getSortType()
+  {
+    return this.H;
+  }
+  
+  public int[] getSupportSortType()
+  {
+    return null;
   }
   
   public void i() {}
@@ -161,41 +145,31 @@ public class QfileBaseTabView
   
   public void n() {}
   
-  public void p() {}
-  
-  public void q()
+  protected void setContentView(int paramInt)
   {
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public void r()
-  {
-    this.e = false;
-    new Handler().postDelayed(new QfileBaseTabView.1(this), 2000L);
-  }
-  
-  public void s()
-  {
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
-    {
-      ThreadManager.getFileThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
-    }
+    this.E = ((LayoutInflater)this.C.getSystemService("layout_inflater")).inflate(paramInt, null);
+    this.E.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    addView(this.E);
   }
   
   public void setEditbarButton(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+    this.C.a(paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5);
+  }
+  
+  protected void setEnableDelete(boolean paramBoolean)
+  {
+    this.F = paramBoolean;
   }
   
   public void setExpandGroup(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.G = paramBoolean;
   }
   
   public void setFromWeiXin(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.i(paramBoolean);
+    this.C.i(paramBoolean);
   }
   
   public void setPos(int paramInt1, int paramInt2) {}
@@ -204,19 +178,49 @@ public class QfileBaseTabView
   
   public void setSortType(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.H = paramInt;
   }
   
-  public void t()
+  public void t() {}
+  
+  public void u()
   {
-    a().l();
+    this.G = false;
   }
   
-  public void u() {}
+  protected boolean v()
+  {
+    return this.I;
+  }
+  
+  protected void w()
+  {
+    this.I = false;
+    new Handler().postDelayed(new QfileBaseTabView.1(this), 2000L);
+  }
+  
+  public void x()
+  {
+    if (this.J != null)
+    {
+      ThreadManager.getFileThreadHandler().removeCallbacks(this.J);
+      this.J = null;
+    }
+  }
+  
+  public boolean y()
+  {
+    return this.J == null;
+  }
+  
+  protected boolean z()
+  {
+    return getActivity().q();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.QfileBaseTabView
  * JD-Core Version:    0.7.0.1
  */

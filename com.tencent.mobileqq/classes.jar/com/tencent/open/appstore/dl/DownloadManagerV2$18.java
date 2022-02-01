@@ -1,24 +1,24 @@
 package com.tencent.open.appstore.dl;
 
-import bfox;
-import bfpq;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.UpdateManager;
 
-public class DownloadManagerV2$18
+class DownloadManagerV2$18
   implements Runnable
 {
   public void run()
   {
-    if (bfpq.a()) {
-      bfpq.a().a();
+    if (UpdateManager.a()) {
+      UpdateManager.b().c();
     }
-    if (bfox.d()) {
-      bfox.a().h();
+    if (MyAppApi.r()) {
+      MyAppApi.l().s();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.18
  * JD-Core Version:    0.7.0.1
  */

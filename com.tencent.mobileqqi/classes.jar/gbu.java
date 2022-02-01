@@ -1,28 +1,15 @@
-import android.view.View;
 import com.tencent.mobileqq.maproam.activity.RoamingActivity;
-import com.tencent.mobileqq.maproam.data.LocationDetail;
-import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnSearchResultItemClick;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnRoamResultObserver;
+import java.util.List;
 
 public class gbu
-  implements RoamSearchDialog.OnSearchResultItemClick
+  implements RoamSearchDialog.OnRoamResultObserver
 {
   public gbu(RoamingActivity paramRoamingActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, LocationDetail paramLocationDetail)
-  {
-    if (paramLocationDetail != null)
-    {
-      if ((this.a.a != null) && (this.a.a.a != null)) {
-        this.a.a.a.dismiss();
-      }
-      double d1 = paramLocationDetail.a;
-      double d2 = paramLocationDetail.b;
-      RoamingActivity.a(this.a, d1, d2, paramLocationDetail.c);
-    }
-  }
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(int paramInt, List paramList) {}
 }
 
 

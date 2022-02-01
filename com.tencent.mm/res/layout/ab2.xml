@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="@dimen/a5y" android:layout_height="@dimen/a5u"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/cx2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bey" />
+<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/dyg" android:focusable="false" android:visibility="visible" android:clickable="false" android:layout_width="wrap_content" android:layout_height="@dimen/dc" android:layout_marginTop="@dimen/cp" android:layout_centerHorizontal="true" />
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <View android:id="@id/d9s" android:background="@drawable/wo" android:visibility="visible" android:layout_width="@dimen/cm" android:layout_height="@dimen/d_" android:alpha="0.0" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g17" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/finder_live_icon" android:layout_marginEnd="@dimen/bv" app:iconColor="@android:color/white" />
+            <TextView android:textSize="20.0dip" android:textColor="@color/az" android:id="@id/dkk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dkv" android:shadowColor="@color/y5" android:shadowDy="1.0" android:shadowRadius="3.0" />
+        </LinearLayout>
+    </FrameLayout>
 </RelativeLayout>

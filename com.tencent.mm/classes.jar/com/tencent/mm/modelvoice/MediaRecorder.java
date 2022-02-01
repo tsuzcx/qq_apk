@@ -1,12 +1,24 @@
 package com.tencent.mm.modelvoice;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.g.b;
 import com.tencent.mm.pointers.PByteArray;
 
 public class MediaRecorder
 {
-  public static long fZo = 0L;
-  public static long fZp = 0L;
-  public static final int[] fZq = { 13, 14, 16, 18, 20, 21, 27, 32 };
+  public static long pdg;
+  public static long pdh;
+  public static final int[] pdi;
+  
+  static
+  {
+    AppMethodBeat.i(177009);
+    g.b.init();
+    pdg = 0L;
+    pdh = 0L;
+    pdi = new int[] { 13, 14, 16, 18, 20, 21, 27, 32 };
+    AppMethodBeat.o(177009);
+  }
   
   public static native int SetVoiceSilkControl(int paramInt1, int paramInt2, long paramLong);
   
@@ -36,7 +48,7 @@ public class MediaRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.modelvoice.MediaRecorder
  * JD-Core Version:    0.7.0.1
  */

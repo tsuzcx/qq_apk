@@ -1,5 +1,7 @@
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.international.activity.FeedbackActivity;
 
 public class fzg
@@ -9,8 +11,13 @@ public class fzg
   
   public void onClick(View paramView)
   {
-    FeedbackActivity.a(this.a);
-    this.a.finish();
+    paramView = FeedbackActivity.a(this.a).getEditableText().toString().trim();
+    if (TextUtils.isEmpty(paramView)) {
+      return;
+    }
+    FeedbackActivity.b(this.a);
+    paramView.trim();
+    FeedbackActivity.a(this.a, paramView);
   }
 }
 

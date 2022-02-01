@@ -29,10 +29,12 @@ public final class e_character_type
   public static final int _CLIENT_PROTOCOL_SWITCH = 34;
   public static final int _DETAIL_PAGE_TOP = 33;
   public static final int _FollowButtonStyle = 9;
+  public static final int _HalfScreenPageEnable = 100476;
   public static final int _LocationAdvStyle = 14;
   public static final int _MiniProgramContainerJumptype = 31;
   public static final int _NegativeHideNextAd = 24;
   public static final int _RankingFeeds = 0;
+  public static final int _ReportGdtImpressionBy50ViewAndOneSecond = 94692;
   public static final int _SWITCH_TO_CANVAS_LANDING_PAGE = 35;
   public static final int _SingleAdvContainerStyle = 1;
   public static final int _SinglePicAdvStyle = 4;
@@ -46,7 +48,7 @@ public final class e_character_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_character_type
  * JD-Core Version:    0.7.0.1
  */

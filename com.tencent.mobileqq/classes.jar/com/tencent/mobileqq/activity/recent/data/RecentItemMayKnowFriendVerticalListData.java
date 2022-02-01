@@ -6,7 +6,7 @@ import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemMayKnowFriendVerticalListData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public int age = -1;
   public int gender = -1;
@@ -27,18 +27,18 @@ public class RecentItemMayKnowFriendVerticalListData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    paramQQAppInterface = a();
-    if (paramQQAppInterface.uin.equals("sp_uin_for_title")) {}
-    for (this.mMenuFlag = 0;; this.mMenuFlag = 1)
+    paramQQAppInterface = e();
+    if (paramQQAppInterface.uin.equals("sp_uin_for_title")) {
+      this.mMenuFlag = 0;
+    } else {
+      this.mMenuFlag = 1;
+    }
+    if ((paramQQAppInterface.extraInfo instanceof MayKnowRecommend))
     {
-      if ((paramQQAppInterface.extraInfo instanceof MayKnowRecommend))
-      {
-        paramQQAppInterface = (MayKnowRecommend)paramQQAppInterface.extraInfo;
-        this.mLastMsg = paramQQAppInterface.recommendReason;
-        this.gender = paramQQAppInterface.gender;
-        this.age = paramQQAppInterface.age;
-      }
-      return;
+      paramQQAppInterface = (MayKnowRecommend)paramQQAppInterface.extraInfo;
+      this.mLastMsg = paramQQAppInterface.recommendReason;
+      this.gender = paramQQAppInterface.gender;
+      this.age = paramQQAppInterface.age;
     }
   }
 }

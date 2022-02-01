@@ -6,30 +6,30 @@ import android.os.Bundle;
 public abstract class PresenterActivity
   extends Activity
 {
-  private d YT = new d();
+  private d act = new d();
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.YT.b(getIntent(), this);
+    this.act.b(getIntent(), this);
   }
   
   protected void onDestroy()
   {
-    this.YT.onDestroy();
+    this.act.onDestroy();
     super.onDestroy();
   }
   
   protected void onPause()
   {
-    this.YT.onPause();
+    this.act.onPause();
     super.onPause();
   }
   
   protected void onResume()
   {
     super.onResume();
-    this.YT.onResume();
+    this.act.onResume();
   }
 }
 

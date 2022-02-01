@@ -24,9 +24,9 @@ import com.tencent.mobileqq.startup.step.SetPermission;
 import com.tencent.mobileqq.startup.step.Step;
 import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.qphone.base.util.QLog;
+import gjv;
 import gjw;
 import gjx;
-import gjy;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.app.AppActivity;
@@ -424,7 +424,7 @@ public class StartupDirector
     {
       paramAppActivity.setContentView(localTextView);
       InjectUtils.a(paramAppActivity, "SuicideFailed", Integer.toString(this.o));
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new gjy(this, paramAppActivity), 8000L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new gjx(this, paramAppActivity), 8000L);
       return;
       localTextView.setText("程序启动失败，请稍候重试.");
     }
@@ -456,7 +456,7 @@ public class StartupDirector
       long l5 = SystemClock.uptimeMillis();
       long l6 = BaseApplicationImpl.b;
       paramBoolean = this.jdField_g_of_type_Boolean;
-      ThreadManager.b().postDelayed(new gjw(this, paramBoolean, l1, l2 - l3, l4, l5 - l6), 10000L);
+      ThreadManager.b().postDelayed(new gjv(this, paramBoolean, l1, l2 - l3, l4, l5 - l6), 10000L);
     }
     BaseApplicationImpl.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector = null;
   }
@@ -516,7 +516,7 @@ public class StartupDirector
       if (QLog.isColorLevel()) {
         QLog.i("AutoMonitor", 2, "start:" + BaseApplicationImpl.b + ", end:" + SystemClock.uptimeMillis());
       }
-      ThreadManager.b().postDelayed(new gjx(this, i1), 10000L);
+      ThreadManager.b().postDelayed(new gjw(this, i1), 10000L);
     }
   }
   

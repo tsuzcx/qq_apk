@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import aqge;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import com.tencent.mobileqq.app.automator.Automator;
 
 public class LimitChatSettingStep
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    aqge.a(this.a.app);
-    return super.a();
+    return super.doStep();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.LimitChatSettingStep
  * JD-Core Version:    0.7.0.1
  */

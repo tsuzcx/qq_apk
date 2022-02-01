@@ -17,13 +17,14 @@ public final class oidb_0x8f8$SubCmd07SetFeedsFlagReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_feeds_id", "uint32_flag", "uint32_theme_state" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, SubCmd07SetFeedsFlagReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_feeds_id", "uint32_flag", "uint32_theme_state" }, new Object[] { localByteStringMicro, localInteger, localInteger }, SubCmd07SetFeedsFlagReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f8.oidb_0x8f8.SubCmd07SetFeedsFlagReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aevg;
-import aevj;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
@@ -14,61 +12,47 @@ class FloorJumperSet$Animator
   
   public void run()
   {
-    Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.this$0.f.iterator();
     long l1 = -1L;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      Object localObject = (aevg)localIterator.next();
-      long l2 = ((aevg)localObject).a();
+      FloorJumper localFloorJumper = (FloorJumper)localIterator.next();
+      long l2 = localFloorJumper.e();
       if (l2 >= 0L)
       {
-        if (l1 < 0L) {}
-        for (l1 = l2;; l1 = Math.min(l1, l2)) {
-          break;
+        if (l1 < 0L) {
+          l1 = l2;
+        } else {
+          l1 = Math.min(l1, l2);
         }
       }
-      localIterator.remove();
-      if (QLog.isColorLevel()) {
-        QLog.d("FloorJumperSet", 2, "removed businessId:" + ((aevg)localObject).c);
-      }
-      if (((aevg)localObject).c == 1)
+      else
       {
-        localObject = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
-        do
+        localIterator.remove();
+        if (QLog.isColorLevel())
         {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-        } while (((aevg)((Iterator)localObject).next()).c != 1);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("removed businessId:");
+          localStringBuilder.append(localFloorJumper.h);
+          QLog.d("FloorJumperSet", 2, localStringBuilder.toString());
+        }
       }
     }
-    for (int i = 1;; i = 0)
+    if (l1 >= 0L)
     {
-      if ((i == 0) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a != null)) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
+      if (FloorJumperSet.a(this.this$0) == 0L) {
+        this.this$0.b.postDelayed(this, l1);
       }
-      break;
-      if (l1 >= 0L)
-      {
-        if (FloorJumperSet.a(this.this$0) == 0L) {
-          this.this$0.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this, l1);
-        }
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      }
-      do
-      {
-        return;
-        this.this$0.d();
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      } while (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a == null);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
+      this.this$0.a.invalidate();
       return;
     }
+    this.this$0.d();
+    this.this$0.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FloorJumperSet.Animator
  * JD-Core Version:    0.7.0.1
  */

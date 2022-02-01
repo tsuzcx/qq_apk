@@ -1,27 +1,27 @@
 package Wallet;
 
-import bdgk;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class JudgeDownloadReq
   extends JceStruct
 {
   static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
-  public float fMaxCPUFreq;
-  public float fMinCPUFreq;
+  public float fMaxCPUFreq = 0.0F;
+  public float fMinCPUFreq = 0.0F;
   public int iActId = 1001;
-  public int iCores;
-  public long iMemory;
+  public int iCores = 0;
+  public long iMemory = 0L;
   public int iPlatForm = 1;
-  public int iRetryTimes;
+  public int iRetryTimes = 0;
   public int iType = 1;
-  public long iUin;
+  public long iUin = 0L;
   public String sPhoneType = "";
   public String sQQVersion = "";
-  public ArrayList<ResInfo> vecResInfo;
+  public ArrayList<ResInfo> vecResInfo = null;
   
   static
   {
@@ -29,18 +29,18 @@ public final class JudgeDownloadReq
     cache_vecResInfo.add(localResInfo);
   }
   
-  public static JudgeDownloadReq createReq(ArrayList<ResInfo> paramArrayList, long paramLong, int paramInt)
+  public static JudgeDownloadReq createReq(ArrayList<ResInfo> paramArrayList, long paramLong1, int paramInt1, String paramString1, String paramString2, float paramFloat1, float paramFloat2, int paramInt2, long paramLong2)
   {
     JudgeDownloadReq localJudgeDownloadReq = new JudgeDownloadReq();
-    localJudgeDownloadReq.iUin = paramLong;
+    localJudgeDownloadReq.iUin = paramLong1;
     localJudgeDownloadReq.vecResInfo = paramArrayList;
-    localJudgeDownloadReq.sPhoneType = bdgk.i();
-    localJudgeDownloadReq.sQQVersion = bdgk.c();
-    localJudgeDownloadReq.fMinCPUFreq = ((float)bdgk.a());
-    localJudgeDownloadReq.fMaxCPUFreq = ((float)bdgk.b());
-    localJudgeDownloadReq.iCores = bdgk.b();
-    localJudgeDownloadReq.iMemory = (bdgk.d() / 1024L);
-    localJudgeDownloadReq.iRetryTimes = paramInt;
+    localJudgeDownloadReq.sPhoneType = paramString1;
+    localJudgeDownloadReq.sQQVersion = paramString2;
+    localJudgeDownloadReq.fMinCPUFreq = paramFloat1;
+    localJudgeDownloadReq.fMaxCPUFreq = paramFloat2;
+    localJudgeDownloadReq.iCores = paramInt2;
+    localJudgeDownloadReq.iMemory = paramLong2;
+    localJudgeDownloadReq.iRetryTimes = paramInt1;
     return localJudgeDownloadReq;
   }
   
@@ -64,15 +64,18 @@ public final class JudgeDownloadReq
   {
     paramJceOutputStream.write(this.iActId, 0);
     paramJceOutputStream.write(this.iUin, 1);
-    if (this.vecResInfo != null) {
-      paramJceOutputStream.write(this.vecResInfo, 2);
+    Object localObject = this.vecResInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.sQQVersion != null) {
-      paramJceOutputStream.write(this.sQQVersion, 3);
+    localObject = this.sQQVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.iType, 4);
-    if (this.sPhoneType != null) {
-      paramJceOutputStream.write(this.sPhoneType, 5);
+    localObject = this.sPhoneType;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.fMinCPUFreq, 6);
     paramJceOutputStream.write(this.fMaxCPUFreq, 7);
@@ -84,7 +87,7 @@ public final class JudgeDownloadReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.JudgeDownloadReq
  * JD-Core Version:    0.7.0.1
  */

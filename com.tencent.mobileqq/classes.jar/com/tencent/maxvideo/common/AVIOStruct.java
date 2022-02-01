@@ -40,12 +40,41 @@ public class AVIOStruct
   
   public String toString()
   {
-    return "AVIOStruct [pBlockIndex=" + this.pBlockIndex + ", pFrameIndex=" + this.pFrameIndex + ", pCodec=" + this.pCodec + ", pControlFlag=" + this.pControlFlag + ", vWidth=" + this.vWidth + ", vHeight=" + this.vHeight + ", vOrientation=" + this.vOrientation + ", vFPS=" + this.vFPS + ", vFormat=" + this.vFormat + ", vBitrate=" + this.vBitrate + ", aSampleRate=" + this.aSampleRate + ", aChannel=" + this.aChannel + ", aFormat=" + this.aFormat + ", aBitrate=" + this.aBitrate + "]";
+    StringBuilder localStringBuilder = new StringBuilder("AVIOStruct [pBlockIndex=");
+    localStringBuilder.append(this.pBlockIndex);
+    localStringBuilder.append(", pFrameIndex=");
+    localStringBuilder.append(this.pFrameIndex);
+    localStringBuilder.append(", pCodec=");
+    localStringBuilder.append(this.pCodec);
+    localStringBuilder.append(", pControlFlag=");
+    localStringBuilder.append(this.pControlFlag);
+    localStringBuilder.append(", vWidth=");
+    localStringBuilder.append(this.vWidth);
+    localStringBuilder.append(", vHeight=");
+    localStringBuilder.append(this.vHeight);
+    localStringBuilder.append(", vOrientation=");
+    localStringBuilder.append(this.vOrientation);
+    localStringBuilder.append(", vFPS=");
+    localStringBuilder.append(this.vFPS);
+    localStringBuilder.append(", vFormat=");
+    localStringBuilder.append(this.vFormat);
+    localStringBuilder.append(", vBitrate=");
+    localStringBuilder.append(this.vBitrate);
+    localStringBuilder.append(", aSampleRate=");
+    localStringBuilder.append(this.aSampleRate);
+    localStringBuilder.append(", aChannel=");
+    localStringBuilder.append(this.aChannel);
+    localStringBuilder.append(", aFormat=");
+    localStringBuilder.append(this.aFormat);
+    localStringBuilder.append(", aBitrate=");
+    localStringBuilder.append(this.aBitrate);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.maxvideo.common.AVIOStruct
  * JD-Core Version:    0.7.0.1
  */

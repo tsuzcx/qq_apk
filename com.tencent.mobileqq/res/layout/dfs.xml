@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n3h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="9.0dip" android:minHeight="70.0dip">
+        <ImageView android:id="@id/ps7" android:layout_width="47.0dip" android:layout_height="47.0dip" />
+        <include android:id="@id/nb2" layout="@layout/dfr" />
+        <include android:id="@id/q0_" layout="@layout/dfr" />
+        <include android:id="@id/qcz" layout="@layout/dfr" />
+    </LinearLayout>
+    <TextView android:textSize="10.0dip" android:textColor="#ffa2a4a9" android:gravity="center" android:id="@id/nvt" android:layout_width="wrap_content" android:layout_height="@dimen/br_" android:text="@string/zfm" android:includeFontPadding="false" android:layout_below="@id/n3h" />
+    <FrameLayout android:gravity="center_vertical" android:id="@id/pwt" android:layout_width="wrap_content" android:layout_height="@dimen/br_" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/nvt" android:layout_below="@id/n3h">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/pwx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <TextView android:textSize="10.0dip" android:textColor="#ff29190a" android:gravity="center" android:id="@id/nvs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/zg0" android:includeFontPadding="false" />
+    </FrameLayout>
+    <TextView android:textSize="10.0dip" android:textColor="#ff29190a" android:gravity="center" android:id="@id/p0o" android:layout_width="wrap_content" android:layout_height="@dimen/br_" android:includeFontPadding="false" android:layout_below="@id/n3h" android:layout_alignParentRight="true" />
+    <TextView android:textSize="10.0dip" android:textColor="#ffa2a4a9" android:gravity="center" android:id="@id/p0p" android:layout_width="wrap_content" android:layout_height="@dimen/br_" android:layout_marginRight="4.0dip" android:text="@string/zfn" android:includeFontPadding="false" android:layout_toLeftOf="@id/p0o" android:layout_below="@id/n3h" />
+</merge>

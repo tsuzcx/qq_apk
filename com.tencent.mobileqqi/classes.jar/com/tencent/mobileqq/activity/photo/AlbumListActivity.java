@@ -23,11 +23,11 @@ import cooperation.qqfav.QfavHelper;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QzonePluginProxyActivity;
 import cooperation.zebra.ZebraPluginProxyActivity;
+import ely;
 import elz;
 import ema;
 import emb;
 import emc;
-import emd;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -44,9 +44,9 @@ public class AlbumListActivity
   private Dialog jdField_a_of_type_AndroidAppDialog;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public XListView a;
-  public emd a;
+  public emc a;
   ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new emb(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new ema(this);
   boolean jdField_a_of_type_Boolean = true;
   public int b;
   TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -61,9 +61,9 @@ public class AlbumListActivity
   private void a(List paramList)
   {
     int i = 0;
-    this.jdField_a_of_type_Emd.a(paramList);
+    this.jdField_a_of_type_Emc.a(paramList);
     if ((paramList == null) || (paramList.size() == 0)) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(findViewById(2131232884));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(findViewById(2131232883));
     }
     int j;
     int k;
@@ -71,7 +71,7 @@ public class AlbumListActivity
     {
       this.jdField_a_of_type_Boolean = false;
       j = AlbumUtil.a();
-      k = this.jdField_a_of_type_Emd.getCount();
+      k = this.jdField_a_of_type_Emc.getCount();
       if (k != 0) {
         break label113;
       }
@@ -82,7 +82,7 @@ public class AlbumListActivity
         QLog.d("SelectPhotoTrace", 2, "AlbumListActivity,start to position,firstVisiblePos is:" + i);
       }
       this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
-      this.jdField_a_of_type_Emd.notifyDataSetChanged();
+      this.jdField_a_of_type_Emc.notifyDataSetChanged();
       return;
       label113:
       if (j > k - 1) {
@@ -162,22 +162,22 @@ public class AlbumListActivity
   @TargetApi(9)
   private void e()
   {
-    this.jdField_a_of_type_Emd = new emd(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232883));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Emd);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new emc(this, null));
+    this.jdField_a_of_type_Emc = new emc(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232882));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Emc);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new emb(this, null));
     if (Build.VERSION.SDK_INT > 8) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231456));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231380));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231376));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231455));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231379));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231375));
     this.jdField_c_of_type_AndroidWidgetTextView.setText(2131560963);
     getSupportActionBar().setTitle(2131560963);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(getResources().getString(2131558985));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ema(this));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new elz(this));
   }
   
   private void f()
@@ -375,10 +375,10 @@ public class AlbumListActivity
   public void onResume()
   {
     super.onResume();
-    elz localelz = new elz(this);
+    ely localely = new ely(this);
     if ((AlbumUtil.a() == null) || (jdField_a_of_type_Long < AlbumUtil.a()))
     {
-      localelz.execute(new Object[] { "" });
+      localely.execute(new Object[] { "" });
       return;
     }
     a(a());

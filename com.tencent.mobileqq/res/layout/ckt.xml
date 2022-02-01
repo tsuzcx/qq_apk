@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:background="@drawable/gnt" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/mzn" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.luggage.opensdk.ui.QRCodeTransferQRDisplayWidget android:layout_gravity="center_horizontal" android:id="@id/po5" android:layout_width="142.0dip" android:layout_height="142.0dip" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/close" android:background="?agh" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginTop="16.099976dip" android:layout_marginRight="15.699982dip" android:src="@drawable/jmr" android:scaleType="fitXY" />
+</FrameLayout>

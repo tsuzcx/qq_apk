@@ -9,7 +9,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@VisibleForTesting
 public final class JsonUtils
 {
   private static final Pattern zzaae;
@@ -17,29 +16,29 @@ public final class JsonUtils
   
   static
   {
-    AppMethodBeat.i(90246);
+    AppMethodBeat.i(5268);
     zzaae = Pattern.compile("\\\\.");
     zzaaf = Pattern.compile("[\\\\\"/\b\f\n\r\t]");
-    AppMethodBeat.o(90246);
+    AppMethodBeat.o(5268);
   }
   
   public static boolean areJsonStringsEquivalent(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(90244);
+    AppMethodBeat.i(5266);
     if ((paramString1 == null) && (paramString2 == null))
     {
-      AppMethodBeat.o(90244);
+      AppMethodBeat.o(5266);
       return true;
     }
     if ((paramString1 == null) || (paramString2 == null))
     {
-      AppMethodBeat.o(90244);
+      AppMethodBeat.o(5266);
       return false;
     }
     try
     {
       bool = areJsonValuesEquivalent(new JSONObject(paramString1), new JSONObject(paramString2));
-      AppMethodBeat.o(90244);
+      AppMethodBeat.o(5266);
       return bool;
     }
     catch (JSONException localJSONException)
@@ -47,12 +46,12 @@ public final class JsonUtils
       try
       {
         boolean bool = areJsonValuesEquivalent(new JSONArray(paramString1), new JSONArray(paramString2));
-        AppMethodBeat.o(90244);
+        AppMethodBeat.o(5266);
         return bool;
       }
       catch (JSONException paramString1)
       {
-        AppMethodBeat.o(90244);
+        AppMethodBeat.o(5266);
       }
     }
     return false;
@@ -60,15 +59,15 @@ public final class JsonUtils
   
   public static boolean areJsonValuesEquivalent(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(90245);
+    AppMethodBeat.i(5267);
     if ((paramObject1 == null) && (paramObject2 == null))
     {
-      AppMethodBeat.o(90245);
+      AppMethodBeat.o(5267);
       return true;
     }
     if ((paramObject1 == null) || (paramObject2 == null))
     {
-      AppMethodBeat.o(90245);
+      AppMethodBeat.o(5267);
       return false;
     }
     if (((paramObject1 instanceof JSONObject)) && ((paramObject2 instanceof JSONObject)))
@@ -77,7 +76,7 @@ public final class JsonUtils
       paramObject2 = (JSONObject)paramObject2;
       if (paramObject1.length() != paramObject2.length())
       {
-        AppMethodBeat.o(90245);
+        AppMethodBeat.o(5267);
         return false;
       }
       Iterator localIterator = paramObject1.keys();
@@ -86,7 +85,7 @@ public final class JsonUtils
         String str = (String)localIterator.next();
         if (!paramObject2.has(str))
         {
-          AppMethodBeat.o(90245);
+          AppMethodBeat.o(5267);
           return false;
         }
         try
@@ -94,17 +93,17 @@ public final class JsonUtils
           bool = areJsonValuesEquivalent(paramObject1.get(str), paramObject2.get(str));
           if (!bool)
           {
-            AppMethodBeat.o(90245);
+            AppMethodBeat.o(5267);
             return false;
           }
         }
         catch (JSONException paramObject1)
         {
-          AppMethodBeat.o(90245);
+          AppMethodBeat.o(5267);
           return false;
         }
       }
-      AppMethodBeat.o(90245);
+      AppMethodBeat.o(5267);
       return true;
     }
     if (((paramObject1 instanceof JSONArray)) && ((paramObject2 instanceof JSONArray)))
@@ -113,7 +112,7 @@ public final class JsonUtils
       paramObject2 = (JSONArray)paramObject2;
       if (paramObject1.length() != paramObject2.length())
       {
-        AppMethodBeat.o(90245);
+        AppMethodBeat.o(5267);
         return false;
       }
       int i = 0;
@@ -124,28 +123,28 @@ public final class JsonUtils
           bool = areJsonValuesEquivalent(paramObject1.get(i), paramObject2.get(i));
           if (!bool)
           {
-            AppMethodBeat.o(90245);
+            AppMethodBeat.o(5267);
             return false;
           }
         }
         catch (JSONException paramObject1)
         {
-          AppMethodBeat.o(90245);
+          AppMethodBeat.o(5267);
           return false;
         }
         i += 1;
       }
-      AppMethodBeat.o(90245);
+      AppMethodBeat.o(5267);
       return true;
     }
     boolean bool = paramObject1.equals(paramObject2);
-    AppMethodBeat.o(90245);
+    AppMethodBeat.o(5267);
     return bool;
   }
   
   public static String escapeString(String paramString)
   {
-    AppMethodBeat.i(90243);
+    AppMethodBeat.i(5265);
     if (!TextUtils.isEmpty(paramString))
     {
       Matcher localMatcher = zzaaf.matcher(paramString);
@@ -196,21 +195,21 @@ public final class JsonUtils
       }
       if (localObject1 == null)
       {
-        AppMethodBeat.o(90243);
+        AppMethodBeat.o(5265);
         return paramString;
       }
       localMatcher.appendTail(localObject1);
       paramString = localObject1.toString();
-      AppMethodBeat.o(90243);
+      AppMethodBeat.o(5265);
       return paramString;
     }
-    AppMethodBeat.o(90243);
+    AppMethodBeat.o(5265);
     return paramString;
   }
   
   public static String unescapeString(String paramString)
   {
-    AppMethodBeat.i(90242);
+    AppMethodBeat.i(5264);
     if (!TextUtils.isEmpty(paramString))
     {
       String str = UnicodeUtils.unescape(paramString);
@@ -226,7 +225,7 @@ public final class JsonUtils
         {
         default: 
           paramString = new IllegalStateException("Found an escaped character that should never be.");
-          AppMethodBeat.o(90242);
+          AppMethodBeat.o(5264);
           throw paramString;
         case '"': 
           localMatcher.appendReplacement((StringBuffer)localObject, "\"");
@@ -263,21 +262,21 @@ public final class JsonUtils
       }
       if (paramString == null)
       {
-        AppMethodBeat.o(90242);
+        AppMethodBeat.o(5264);
         return str;
       }
       localMatcher.appendTail(paramString);
       paramString = paramString.toString();
-      AppMethodBeat.o(90242);
+      AppMethodBeat.o(5264);
       return paramString;
     }
-    AppMethodBeat.o(90242);
+    AppMethodBeat.o(5264);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.util.JsonUtils
  * JD-Core Version:    0.7.0.1
  */

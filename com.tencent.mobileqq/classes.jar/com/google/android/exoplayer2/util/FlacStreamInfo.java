@@ -34,8 +34,7 @@ public final class FlacStreamInfo
     this.sampleRate = paramArrayOfByte.readBits(20);
     this.channels = (paramArrayOfByte.readBits(3) + 1);
     this.bitsPerSample = (paramArrayOfByte.readBits(5) + 1);
-    long l = paramArrayOfByte.readBits(4);
-    this.totalSamples = (paramArrayOfByte.readBits(32) & 0xFFFFFFFF | (l & 0xF) << 32);
+    this.totalSamples = ((paramArrayOfByte.readBits(4) & 0xF) << 32 | paramArrayOfByte.readBits(32) & 0xFFFFFFFF);
   }
   
   public int bitRate()
@@ -55,7 +54,7 @@ public final class FlacStreamInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.FlacStreamInfo
  * JD-Core Version:    0.7.0.1
  */

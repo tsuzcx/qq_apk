@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqcircle.transition.QCircleTransitionLayout android:orientation="vertical" android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout android:id="@id/nbp" android:background="@color/qcircle_skin_color_bg_detailspage" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/pxz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.biz.qqcircle.widgets.QCircleLayerStatusView android:id="@id/q8h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/p3m" android:layout_width="30.0dip" android:layout_height="30.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" />
+        <ViewStub android:id="@id/myk" android:visibility="gone" android:layout="@layout/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:id="@id/qzm" android:layout="@layout/cwa" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+        <ViewStub android:id="@id/qzn" android:layout="@layout/cwb" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+        <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView android:id="@id/pb9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:id="@id/nck" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ViewStub android:id="@id/qzq" android:layout="@layout/d18" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/qzo" android:layout="@layout/cyg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+        <LinearLayout android:layout_gravity="bottom|center|right" android:orientation="horizontal" android:id="@id/pc7" android:background="@drawable/is0" android:layout_width="78.0dip" android:layout_height="72.0dip" android:layout_marginBottom="164.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="24.0dip" android:src="@drawable/iry" />
+            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:text="发布" />
+        </LinearLayout>
+    </com.tencent.biz.qqcircle.transition.QCircleTransitionInnerLayout>
+</com.tencent.biz.qqcircle.transition.QCircleTransitionLayout>

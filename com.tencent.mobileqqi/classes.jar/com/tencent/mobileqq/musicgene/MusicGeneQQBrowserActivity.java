@@ -16,13 +16,13 @@ import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
 import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
 import com.tencent.mobileqq.structmsg.StructMsgElementFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import gcz;
+import gcy;
 
 public class MusicGeneQQBrowserActivity
   extends QQBrowserActivity
 {
   private static final String jdField_a_of_type_JavaLangString = MusicGeneQQBrowserActivity.class.getSimpleName();
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new gcz(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new gcy(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView = null;
   private boolean jdField_a_of_type_Boolean = false;
   private View jdField_b_of_type_AndroidViewView = null;
@@ -87,7 +87,7 @@ public class MusicGeneQQBrowserActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    paramBundle = findViewById(2131231448);
+    paramBundle = findViewById(2131231447);
     if (paramBundle != null)
     {
       paramBundle.setVisibility(8);

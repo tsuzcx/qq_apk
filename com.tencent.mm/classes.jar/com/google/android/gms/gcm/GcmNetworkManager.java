@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
-import android.support.v4.e.a;
 import android.text.TextUtils;
+import androidx.b.a;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.util.CollectionUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -16,30 +16,27 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.concurrent.GuardedBy;
 
 public class GcmNetworkManager
 {
   public static final int RESULT_FAILURE = 2;
   public static final int RESULT_RESCHEDULE = 1;
   public static final int RESULT_SUCCESS = 0;
-  @GuardedBy("GcmNetworkManager.class")
   private static GcmNetworkManager zzg;
   private final Context zzh;
-  @GuardedBy("this")
   private final Map<String, Map<String, Boolean>> zzi;
   
   private GcmNetworkManager(Context paramContext)
   {
-    AppMethodBeat.i(69936);
+    AppMethodBeat.i(3612);
     this.zzi = new a();
     this.zzh = paramContext;
-    AppMethodBeat.o(69936);
+    AppMethodBeat.o(3612);
   }
   
   public static GcmNetworkManager getInstance(Context paramContext)
   {
-    AppMethodBeat.i(69935);
+    AppMethodBeat.i(3611);
     try
     {
       if (zzg == null) {
@@ -50,45 +47,45 @@ public class GcmNetworkManager
     }
     finally
     {
-      AppMethodBeat.o(69935);
+      AppMethodBeat.o(3611);
     }
   }
   
   private final zzn zzd()
   {
-    AppMethodBeat.i(69937);
+    AppMethodBeat.i(3613);
     if (GoogleCloudMessaging.zzf(this.zzh) < 5000000)
     {
       localObject = new zzo();
-      AppMethodBeat.o(69937);
+      AppMethodBeat.o(3613);
       return localObject;
     }
     Object localObject = new zzm(this.zzh);
-    AppMethodBeat.o(69937);
+    AppMethodBeat.o(3613);
     return localObject;
   }
   
   static void zzd(String paramString)
   {
-    AppMethodBeat.i(69941);
+    AppMethodBeat.i(3617);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new IllegalArgumentException("Must provide a valid tag.");
-      AppMethodBeat.o(69941);
+      AppMethodBeat.o(3617);
       throw paramString;
     }
     if (100 < paramString.length())
     {
       paramString = new IllegalArgumentException("Tag is larger than max permissible tag length (100)");
-      AppMethodBeat.o(69941);
+      AppMethodBeat.o(3617);
       throw paramString;
     }
-    AppMethodBeat.o(69941);
+    AppMethodBeat.o(3617);
   }
   
   private final boolean zze(String paramString)
   {
-    AppMethodBeat.i(69942);
+    AppMethodBeat.i(3618);
     Preconditions.checkNotNull(paramString, "GcmTaskService must not be null.");
     Object localObject2 = this.zzh.getPackageManager();
     if (localObject2 == null)
@@ -97,7 +94,7 @@ public class GcmNetworkManager
       if (CollectionUtils.isEmpty((Collection)localObject1))
       {
         String.valueOf(paramString).concat(" is not available. This may cause the task to be lost.");
-        AppMethodBeat.o(69942);
+        AppMethodBeat.o(3618);
         return true;
       }
     }
@@ -116,39 +113,39 @@ public class GcmNetworkManager
       localObject2 = (ResolveInfo)((Iterator)localObject1).next();
       if ((((ResolveInfo)localObject2).serviceInfo != null) && (((ResolveInfo)localObject2).serviceInfo.enabled))
       {
-        AppMethodBeat.o(69942);
+        AppMethodBeat.o(3618);
         return true;
       }
     }
     paramString = new IllegalArgumentException(String.valueOf(paramString).length() + 118 + "The GcmTaskService class you provided " + paramString + " does not seem to support receiving com.google.android.gms.gcm.ACTION_TASK_READY");
-    AppMethodBeat.o(69942);
+    AppMethodBeat.o(3618);
     throw paramString;
   }
   
   public void cancelAllTasks(Class<? extends GcmTaskService> paramClass)
   {
-    AppMethodBeat.i(69940);
+    AppMethodBeat.i(3616);
     paramClass = new ComponentName(this.zzh, paramClass);
     zze(paramClass.getClassName());
     zzd().zzd(paramClass);
-    AppMethodBeat.o(69940);
+    AppMethodBeat.o(3616);
   }
   
   public void cancelTask(String paramString, Class<? extends GcmTaskService> paramClass)
   {
-    AppMethodBeat.i(69939);
+    AppMethodBeat.i(3615);
     paramClass = new ComponentName(this.zzh, paramClass);
     zzd(paramString);
     zze(paramClass.getClassName());
     zzd().zzd(paramClass, paramString);
-    AppMethodBeat.o(69939);
+    AppMethodBeat.o(3615);
   }
   
   public void schedule(Task paramTask)
   {
     try
     {
-      AppMethodBeat.i(69938);
+      AppMethodBeat.i(3614);
       zze(paramTask.getServiceName());
       if (zzd().zzd(paramTask))
       {
@@ -157,7 +154,7 @@ public class GcmNetworkManager
           localMap.put(paramTask.getTag(), Boolean.TRUE);
         }
       }
-      AppMethodBeat.o(69938);
+      AppMethodBeat.o(3614);
       return;
     }
     finally {}
@@ -169,45 +166,45 @@ public class GcmNetworkManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 264
-    //   5: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: sipush 3619
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 39	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
+    //   9: getfield 34	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
     //   12: aload_2
-    //   13: invokeinterface 246 2 0
-    //   18: checkcast 242	java/util/Map
+    //   13: invokeinterface 234 2 0
+    //   18: checkcast 230	java/util/Map
     //   21: astore 5
     //   23: aload 5
     //   25: astore 4
     //   27: aload 5
     //   29: ifnonnull +25 -> 54
-    //   32: new 36	android/support/v4/e/a
+    //   32: new 31	androidx/b/a
     //   35: dup
-    //   36: invokespecial 37	android/support/v4/e/a:<init>	()V
+    //   36: invokespecial 32	androidx/b/a:<init>	()V
     //   39: astore 4
     //   41: aload_0
-    //   42: getfield 39	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
+    //   42: getfield 34	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
     //   45: aload_2
     //   46: aload 4
-    //   48: invokeinterface 262 3 0
+    //   48: invokeinterface 250 3 0
     //   53: pop
     //   54: aload 4
     //   56: aload_1
-    //   57: getstatic 267	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   60: invokeinterface 262 3 0
+    //   57: getstatic 254	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   60: invokeinterface 250 3 0
     //   65: ifnonnull +15 -> 80
     //   68: iconst_1
     //   69: istore_3
-    //   70: ldc_w 264
-    //   73: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: sipush 3619
+    //   73: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_0
     //   77: monitorexit
     //   78: iload_3
     //   79: ireturn
     //   80: iconst_0
     //   81: istore_3
-    //   82: ldc_w 264
-    //   85: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   82: sipush 3619
+    //   85: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: goto -12 -> 76
     //   91: astore_1
     //   92: aload_0
@@ -237,34 +234,34 @@ public class GcmNetworkManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 269
-    //   5: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: sipush 3620
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 39	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
+    //   9: getfield 34	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
     //   12: aload_2
-    //   13: invokeinterface 246 2 0
-    //   18: checkcast 242	java/util/Map
+    //   13: invokeinterface 234 2 0
+    //   18: checkcast 230	java/util/Map
     //   21: astore 4
     //   23: aload 4
     //   25: ifnull +41 -> 66
     //   28: aload 4
     //   30: aload_1
-    //   31: invokeinterface 272 2 0
+    //   31: invokeinterface 258 2 0
     //   36: ifnull +39 -> 75
     //   39: iconst_1
     //   40: istore_3
     //   41: iload_3
     //   42: ifeq +24 -> 66
     //   45: aload 4
-    //   47: invokeinterface 274 1 0
+    //   47: invokeinterface 260 1 0
     //   52: ifeq +14 -> 66
     //   55: aload_0
-    //   56: getfield 39	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
+    //   56: getfield 34	com/google/android/gms/gcm/GcmNetworkManager:zzi	Ljava/util/Map;
     //   59: aload_2
-    //   60: invokeinterface 272 2 0
+    //   60: invokeinterface 258 2 0
     //   65: pop
-    //   66: ldc_w 269
-    //   69: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: sipush 3620
+    //   69: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: aload_0
     //   73: monitorexit
     //   74: return
@@ -295,9 +292,9 @@ public class GcmNetworkManager
   {
     try
     {
-      AppMethodBeat.i(69946);
+      AppMethodBeat.i(3622);
       boolean bool = this.zzi.containsKey(paramString);
-      AppMethodBeat.o(69946);
+      AppMethodBeat.o(3622);
       return bool;
     }
     finally
@@ -313,22 +310,22 @@ public class GcmNetworkManager
     {
       try
       {
-        AppMethodBeat.i(69945);
+        AppMethodBeat.i(3621);
         paramString2 = (Map)this.zzi.get(paramString2);
         if (paramString2 != null)
         {
           paramString1 = (Boolean)paramString2.get(paramString1);
           if (paramString1 == null)
           {
-            AppMethodBeat.o(69945);
+            AppMethodBeat.o(3621);
             bool = false;
             return bool;
           }
           bool = paramString1.booleanValue();
-          AppMethodBeat.o(69945);
+          AppMethodBeat.o(3621);
           continue;
         }
-        AppMethodBeat.o(69945);
+        AppMethodBeat.o(3621);
       }
       finally {}
       boolean bool = false;
@@ -337,7 +334,7 @@ public class GcmNetworkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmNetworkManager
  * JD-Core Version:    0.7.0.1
  */

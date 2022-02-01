@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIODraftHelper;
 import com.tencent.mobileqq.data.DraftTextInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
@@ -19,20 +20,24 @@ class GetTextDraftJob$1
       QLog.i("GetTextDraftJob", 1, "base chat pie has been recycled");
       return;
     }
-    if (QLog.isColorLevel())
-    {
-      if (this.a == null) {
-        break label89;
-      }
-      QLog.i("GetTextDraftJob", 2, "source seq=" + this.a.sourceMsgSeq);
-    }
-    for (;;)
-    {
-      localBaseChatPie.a.post(new GetTextDraftJob.1.1(this, localBaseChatPie));
+    AIODraftHelper localAIODraftHelper = (AIODraftHelper)localBaseChatPie.q(111);
+    if (localAIODraftHelper == null) {
       return;
-      label89:
-      QLog.i("GetTextDraftJob", 2, "draft text info is null");
     }
+    if (QLog.isColorLevel()) {
+      if (this.a != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("source seq=");
+        localStringBuilder.append(this.a.sourceMsgSeq);
+        QLog.i("GetTextDraftJob", 2, localStringBuilder.toString());
+      }
+      else
+      {
+        QLog.i("GetTextDraftJob", 2, "draft text info is null");
+      }
+    }
+    localBaseChatPie.Y.post(new GetTextDraftJob.1.1(this, localAIODraftHelper));
   }
 }
 

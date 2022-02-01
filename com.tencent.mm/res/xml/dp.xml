@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hp" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d6" android:text="@string/bte" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/FG_0" android:id="@id/c2k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/c2" android:layout_marginRight="@dimen/d0" android:text="@string/btf" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_below="@id/c2k" android:paddingStart="@dimen/d0" android:paddingEnd="@dimen/d0">
+        <include android:id="@id/hhl" layout="@layout/b14" />
+        <include android:id="@id/j0r" layout="@layout/b14" />
+    </LinearLayout>
+</RelativeLayout>

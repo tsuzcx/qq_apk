@@ -1,27 +1,37 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import awcx;
-import awdg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import androidx.lifecycle.MutableLiveData;
+import com.tencent.mobileqq.onlinestatus.viewmodel.AccountPanelViewModel;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.AppRuntime.Status;
 
-public class AccountPanel$3
-  implements Runnable
+class AccountPanel$3
+  implements DialogInterface.OnClickListener
 {
-  public AccountPanel$3(awcx paramawcx) {}
+  AccountPanel$3(AccountPanel paramAccountPanel, AppRuntime.Status paramStatus, long paramLong, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, awcx.a(this.this$0).getHeight());
-    localTranslateAnimation.setDuration(200L);
-    localTranslateAnimation.setFillAfter(true);
-    awcx.a(this.this$0).startAnimation(localTranslateAnimation);
-    localTranslateAnimation.setAnimationListener(new awdg(this));
+    if (!NetworkUtil.isNetworkAvailable(AccountPanel.a(this.d)))
+    {
+      AccountPanel.d(this.d).i().setValue(Boolean.valueOf(true));
+      QQToast.makeText(AccountPanel.a(this.d), 1, 2131916775, 1).show();
+      return;
+    }
+    AccountPanel.d(this.d).a(this.a, this.b, true);
+    if (AccountPanel.e(this.d) != null) {
+      AccountPanel.e(this.d).a(this.c);
+    }
+    ReportController.b(AccountPanel.c(this.d), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.3
  * JD-Core Version:    0.7.0.1
  */

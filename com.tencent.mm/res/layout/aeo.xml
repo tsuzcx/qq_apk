@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/dcm" android:background="@drawable/a67" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dd7" android:background="@color/UN_BW_0_Alpha_0_5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/dcn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/dco" android:visibility="invisible" style="@style/he" />
-    <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/dcp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/dcq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="22.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center" android:id="@id/hs2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cm" android:text="@string/e1x" />
+    <TextView android:textSize="32.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center" android:id="@id/hs3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_0" android:gravity="center" android:id="@id/isb" android:background="@drawable/yf" android:paddingLeft="@dimen/d1" android:paddingTop="@dimen/df" android:paddingRight="@dimen/d1" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:text="@string/e1u" />
 </LinearLayout>

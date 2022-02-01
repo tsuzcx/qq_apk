@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto" xmlns:tipsBar="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.TipsBar android:id="@id/j6c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" tipsBar:barType="l2w" tipsBar:iconHeight="22.0dip" tipsBar:iconWidth="22.0dip" tipsBar:tipsIcon="@drawable/h34" />
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/b_" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/accountLinearlayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/akz" />
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/akz">
+                <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/j68" android:layout_width="fill_parent" android:layout_height="wrap_content" tipsBar:bgType="iwf" tipsBar:leftText="@string/hrx" tipsBar:showArrow="true" />
+                <com.tencent.widget.ThemeImageView android:id="@id/o1p" android:padding="2.0dip" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="55.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <com.tencent.widget.ThemeImageView android:id="@id/o1q" android:padding="2.0dip" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="@dimen/al0" android:text="@string/hqx" android:contentDescription="@string/hqx" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/mim" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" tipsBar:bgType="iwf" tipsBar:switchChecked="true" tipsBar:switchText="@string/ymw" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="@dimen/b8w" android:text="@string/vyc" android:contentDescription="@string/vyc" />
+            <com.tencent.mobileqq.widget.AccountOnlineStatusFormSimpleItem android:id="@id/fd7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" tipsBar:bgType="iwf" tipsBar:leftText="@string/bx7" tipsBar:rightText="@string/hpt" tipsBar:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/logoutBtn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/akz" android:contentDescription="@string/aa8" tipsBar:bgType="jsv" tipsBar:leftText="@string/c6n" tipsBar:showArrow="false" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/h2q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="退出QQ按钮" tipsBar:bgType="abp" tipsBar:leftText="@string/xfp" tipsBar:showArrow="false" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

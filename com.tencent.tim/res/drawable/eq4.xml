@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="150" android:drawable="@drawable/gtb" />
+    <item android:duration="150" android:drawable="@drawable/gtc" />
+    <item android:duration="150" android:drawable="@drawable/gtd" />
+    <item android:duration="150" android:drawable="@drawable/gte" />
+    <item android:duration="150" android:drawable="@drawable/gtf" />
+    <item android:duration="150" android:drawable="@drawable/gtg" />
+    <item android:duration="150" android:drawable="@drawable/gtj" />
+    <item android:duration="150" android:drawable="@drawable/gtk" />
+    <item android:duration="150" android:drawable="@drawable/gtl" />
+</animation-list>

@@ -20,14 +20,14 @@ public class Bosses
     {
       if (sBoss != null)
       {
-        Boss localBoss1 = sBoss;
-        return localBoss1;
+        localBoss = sBoss;
+        return localBoss;
       }
+      sBoss = new BossImp(sApp, sLooper);
+      Boss localBoss = sBoss;
+      return localBoss;
     }
     finally {}
-    sBoss = new BossImp(sApp, sLooper);
-    Boss localBoss2 = sBoss;
-    return localBoss2;
   }
   
   public static void init(Context paramContext)
@@ -54,7 +54,7 @@ public class Bosses
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.Bosses
  * JD-Core Version:    0.7.0.1
  */

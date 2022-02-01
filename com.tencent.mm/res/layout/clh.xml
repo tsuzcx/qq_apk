@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/m0v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/m0u" android:layout_width="227.0dip" android:layout_height="48.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/a8h" android:layout_width="227.0dip" android:layout_height="48.0dip" android:src="@raw/finder_live_olympic_cert_bubble_bg" app:iconColor="@color/i" />
+        <com.tencent.mm.plugin.finder.live.olympic.widget.OlympicTextView android:textSize="15.0dip" android:textColor="@color/alp" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lsu" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</FrameLayout>

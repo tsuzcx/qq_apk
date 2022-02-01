@@ -17,8 +17,8 @@ final class g
     {
     default: 
       return;
-    case 1: 
-      b.a().onTaskPendingMainloop(d.a(this.b));
+    case 7: 
+      b.a().onTaskCompletedMainloop(d.a(this.b));
       synchronized (d.b(this.b))
       {
         Iterator localIterator1 = d.b(this.b).iterator();
@@ -26,13 +26,13 @@ final class g
         {
           localDownloaderTaskListener = (DownloaderTaskListener)localIterator1.next();
           if (localDownloaderTaskListener != null) {
-            localDownloaderTaskListener.onTaskPendingMainloop(d.a(this.b));
+            localDownloaderTaskListener.onTaskCompletedMainloop(d.a(this.b));
           }
         }
+        return;
       }
-      return;
-    case 2: 
-      b.a().onTaskStartedMainloop(d.a(this.b));
+    case 6: 
+      b.a().onTaskFailedMainloop(d.a(this.b));
       synchronized (d.b(this.b))
       {
         Iterator localIterator2 = d.b(this.b).iterator();
@@ -40,13 +40,13 @@ final class g
         {
           localDownloaderTaskListener = (DownloaderTaskListener)localIterator2.next();
           if (localDownloaderTaskListener != null) {
-            localDownloaderTaskListener.onTaskStartedMainloop(d.a(this.b));
+            localDownloaderTaskListener.onTaskFailedMainloop(d.a(this.b));
           }
         }
+        return;
       }
-      return;
-    case 3: 
-      b.a().onTaskDetectedMainloop(d.a(this.b));
+    case 5: 
+      b.a().onTaskPausedMainloop(d.a(this.b));
       synchronized (d.b(this.b))
       {
         Iterator localIterator3 = d.b(this.b).iterator();
@@ -54,11 +54,11 @@ final class g
         {
           localDownloaderTaskListener = (DownloaderTaskListener)localIterator3.next();
           if (localDownloaderTaskListener != null) {
-            localDownloaderTaskListener.onTaskDetectedMainloop(d.a(this.b));
+            localDownloaderTaskListener.onTaskPausedMainloop(d.a(this.b));
           }
         }
+        return;
       }
-      return;
     case 4: 
       b.a().onTaskReceivedMainloop(d.a(this.b));
       synchronized (d.b(this.b))
@@ -71,10 +71,10 @@ final class g
             localDownloaderTaskListener.onTaskReceivedMainloop(d.a(this.b));
           }
         }
+        return;
       }
-      return;
-    case 5: 
-      b.a().onTaskPausedMainloop(d.a(this.b));
+    case 3: 
+      b.a().onTaskDetectedMainloop(d.a(this.b));
       synchronized (d.b(this.b))
       {
         Iterator localIterator5 = d.b(this.b).iterator();
@@ -82,13 +82,13 @@ final class g
         {
           localDownloaderTaskListener = (DownloaderTaskListener)localIterator5.next();
           if (localDownloaderTaskListener != null) {
-            localDownloaderTaskListener.onTaskPausedMainloop(d.a(this.b));
+            localDownloaderTaskListener.onTaskDetectedMainloop(d.a(this.b));
           }
         }
+        return;
       }
-      return;
-    case 6: 
-      b.a().onTaskFailedMainloop(d.a(this.b));
+    case 2: 
+      b.a().onTaskStartedMainloop(d.a(this.b));
       synchronized (d.b(this.b))
       {
         Iterator localIterator6 = d.b(this.b).iterator();
@@ -96,13 +96,13 @@ final class g
         {
           localDownloaderTaskListener = (DownloaderTaskListener)localIterator6.next();
           if (localDownloaderTaskListener != null) {
-            localDownloaderTaskListener.onTaskFailedMainloop(d.a(this.b));
+            localDownloaderTaskListener.onTaskStartedMainloop(d.a(this.b));
           }
         }
+        return;
       }
-      return;
     }
-    b.a().onTaskCompletedMainloop(d.a(this.b));
+    b.a().onTaskPendingMainloop(d.a(this.b));
     synchronized (d.b(this.b))
     {
       Iterator localIterator7 = d.b(this.b).iterator();
@@ -110,15 +110,16 @@ final class g
       {
         localDownloaderTaskListener = (DownloaderTaskListener)localIterator7.next();
         if (localDownloaderTaskListener != null) {
-          localDownloaderTaskListener.onTaskCompletedMainloop(d.a(this.b));
+          localDownloaderTaskListener.onTaskPendingMainloop(d.a(this.b));
         }
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.g
  * JD-Core Version:    0.7.0.1
  */

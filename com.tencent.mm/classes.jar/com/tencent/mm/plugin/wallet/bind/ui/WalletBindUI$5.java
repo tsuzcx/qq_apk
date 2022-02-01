@@ -11,14 +11,14 @@ final class WalletBindUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(45800);
-    this.tTw.finish();
-    AppMethodBeat.o(45800);
+    AppMethodBeat.i(315572);
+    this.VkQ.finish();
+    AppMethodBeat.o(315572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBindUI.5
  * JD-Core Version:    0.7.0.1
  */

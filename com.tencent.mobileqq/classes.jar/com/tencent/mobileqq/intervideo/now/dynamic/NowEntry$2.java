@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.intervideo.now.dynamic;
 
-import ateb;
 import com.tencent.image.URLDrawable;
 
-public class NowEntry$2
+class NowEntry$2
   implements Runnable
 {
-  public NowEntry$2(ateb paramateb, URLDrawable paramURLDrawable) {}
+  NowEntry$2(NowEntry paramNowEntry, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class NowEntry$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowEntry.2
  * JD-Core Version:    0.7.0.1
  */

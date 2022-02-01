@@ -1,24 +1,38 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
-import atqr;
-import atrh;
-import bdgm;
-import bdjz;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public final class LocationDialogUtil$8
+final class LocationDialogUtil$8
   implements Runnable
 {
+  LocationDialogUtil$8(Activity paramActivity) {}
+  
   public void run()
   {
-    bdjz localbdjz = bdgm.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131720158) + this.jdField_a_of_type_JavaLangString, 2131694953, 2131690648, new atrh(this), null);
-    atqr.a(this.jdField_a_of_type_AndroidAppActivity, localbdjz);
+    Object localObject = this.a;
+    localObject = DialogUtil.a((Context)localObject, 230, null, ((Activity)localObject).getResources().getString(2131916661), 2131916381, 2131887648, null, new LocationDialogUtil.8.1(this));
+    ((QQCustomDialog)localObject).setCancelable(false);
+    if (!String.valueOf(this.a.hashCode()).equals(LocationDialogUtil.a()))
+    {
+      LocationDialogUtil.a(this.a, (QQCustomDialog)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationDialogUtil", 2, new Object[] { "showRoomJoinLimitedDialog#run: invoked. ", " currentDialogActivityHash: ", LocationDialogUtil.a() });
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("LocationDialogUtil", 2, new Object[] { "run: invoked. ", " same hash currentDialogActivityHash: ", LocationDialogUtil.a(), " activity: ", Integer.valueOf(this.a.hashCode()) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/ehq" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/ehp" android:focusable="false" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+    <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/t" android:textColor="@color/az" android:id="@id/hqz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_centerHorizontal="true" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/buy" />
+    <RelativeLayout android:id="@id/l86" android:background="@drawable/azx" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar android:id="@id/l79" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" />
+        <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/l59" android:visibility="visible" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cp" android:src="@raw/icons_outlined_close" android:layout_below="@id/l79" android:elevation="@dimen/avq" app:iconColor="@color/az" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/f3s" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/jz3" android:background="@drawable/aoh" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/df" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_centerVertical="true">
+            <TextView android:textSize="12.0dip" android:textColor="@color/al6" android:ellipsize="middle" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/idy" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fn9" android:singleLine="true" android:includeFontPadding="false" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/az" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/f57" android:background="@drawable/aq0" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cr" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_more" app:iconColor="@color/az" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/c9m" android:background="@drawable/aq0" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cd" android:layout_toLeftOf="@id/f57" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_download" android:elevation="@dimen/avq" app:iconColor="@color/az" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/ei0" android:background="@drawable/aq0" android:visibility="visible" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cd" android:layout_toLeftOf="@id/c9m" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_search_logo" app:iconColor="@color/az" />
+        </FrameLayout>
+    </RelativeLayout>
+    <com.tencent.mm.plugin.scanner.MultiCodeMaskView android:id="@id/h36" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

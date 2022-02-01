@@ -1,18 +1,12 @@
 package com.tencent.mm.vending.base;
 
-public final class Vending$d
+public abstract interface Vending$d
 {
-  private _Index b;
-  
-  Vending$d(_Index param_Index)
-  {
-    Object localObject;
-    this.b = localObject;
-  }
+  public abstract void hpU();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vending.base.Vending.d
  * JD-Core Version:    0.7.0.1
  */

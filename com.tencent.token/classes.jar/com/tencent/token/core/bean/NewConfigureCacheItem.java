@@ -1,7 +1,7 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.dr;
-import com.tencent.token.es;
+import com.tencent.token.abj;
+import com.tencent.token.tu;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class NewConfigureCacheItem
   private static final long serialVersionUID = 1072983214720279022L;
   public int mClickVersion = 0;
   public int mClientVersion = 0;
-  public ArrayList mConfIDs = new ArrayList();
+  public ArrayList<Integer> mConfIDs = new ArrayList();
   public String mConfKey;
   
   public NewConfigureCacheItem(String paramString)
@@ -19,16 +19,19 @@ public class NewConfigureCacheItem
     this.mConfKey = paramString;
   }
   
-  public void a()
+  public final void a()
   {
-    if (this.mClickVersion == this.mClientVersion) {
+    int i = this.mClickVersion;
+    int j = this.mClientVersion;
+    if (i == j) {
       return;
     }
-    this.mClickVersion = this.mClientVersion;
-    if (this.mConfIDs != null) {
-      this.mConfIDs.clear();
+    this.mClickVersion = j;
+    ArrayList localArrayList = this.mConfIDs;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
-    dr.a().h.a();
+    tu.a().h.b();
   }
 }
 

@@ -1,20 +1,18 @@
 package com.tencent.superplayer.api;
 
+import android.app.Activity;
+
 public abstract interface ISPlayerPreLoader
 {
-  public abstract void destory();
+  public abstract void release();
   
-  public abstract void setPreDownloadListener(ISPlayerPreLoader.Listener paramListener);
+  public abstract int startPreloadTask(Activity paramActivity, SuperPlayerVideoInfo paramSuperPlayerVideoInfo);
   
-  public abstract void startPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong);
-  
-  public abstract void startPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void stopPreDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo);
+  public abstract void stopPreloadTask(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.ISPlayerPreLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
 package com.tencent.richmediabrowser.animation;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
+import android.widget.RelativeLayout;
+import com.tencent.richmediabrowser.api.BrowserParamsBuilder;
 import com.tencent.richmediabrowser.model.BrowserAnimation;
-import com.tencent.richmediabrowser.model.IBrowserModel;
+import com.tencent.richmediabrowser.model.MainBrowserModel;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.MainBrowserPresenter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -20,51 +22,71 @@ public class AnimationManager
   AnimationView animationView;
   View bgView;
   int densityDpi;
-  View gallery;
-  Activity mContext;
-  IBrowserModel model;
+  private MainBrowserPresenter mMainBrowserPresenter;
+  RelativeLayout mRoot;
+  MainBrowserModel model;
+  View recyclerView;
   View rootView;
   
-  public AnimationManager(Activity paramActivity, IBrowserModel paramIBrowserModel)
+  public AnimationManager(Context paramContext, MainBrowserModel paramMainBrowserModel, RelativeLayout paramRelativeLayout)
   {
-    this.mContext = paramActivity;
-    this.model = paramIBrowserModel;
-    this.densityDpi = paramActivity.getResources().getDisplayMetrics().densityDpi;
+    this.mRoot = paramRelativeLayout;
+    this.model = paramMainBrowserModel;
+    this.densityDpi = paramContext.getResources().getDisplayMetrics().densityDpi;
+  }
+  
+  private Rect getAnimationEndDstRect()
+  {
+    MainBrowserPresenter localMainBrowserPresenter = this.mMainBrowserPresenter;
+    if (localMainBrowserPresenter != null) {
+      return localMainBrowserPresenter.getAnimationEndDstRect();
+    }
+    return null;
   }
   
   private Drawable makeAnimationRect(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, BrowserAnimation paramBrowserAnimation, boolean paramBoolean)
   {
-    if (paramBrowserAnimation == null) {}
-    Rect localRect;
-    do
-    {
+    if (paramBrowserAnimation == null) {
       return null;
-      paramRect1 = paramBrowserAnimation.getAnimationDrawable();
-      localRect = paramBrowserAnimation.getThumbRect();
-    } while ((localRect == null) || (paramRect1 == null) || (!paramBrowserAnimation.needAnimation(paramBoolean)));
-    int i = this.gallery.getWidth();
-    int j = this.gallery.getHeight();
-    int k = paramRect1.getIntrinsicWidth();
-    int m = paramRect1.getIntrinsicHeight();
-    paramRect2.set(0, 0, k, m);
-    paramRect3.set(localRect);
-    paramRect4.set(AnimationUtils.getAnimationEndDstRect(k, m, i, j, null));
-    return paramRect1;
+    }
+    Drawable localDrawable = paramBrowserAnimation.getAnimationDrawable();
+    paramRect1 = paramBrowserAnimation.getThumbRect();
+    if ((paramRect1 != null) && (localDrawable != null))
+    {
+      if (!paramBrowserAnimation.needAnimation(paramBoolean)) {
+        return null;
+      }
+      int i = this.recyclerView.getWidth();
+      int j = this.recyclerView.getHeight();
+      int k = localDrawable.getIntrinsicWidth();
+      int m = localDrawable.getIntrinsicHeight();
+      paramRect2.set(0, 0, k, m);
+      paramRect3.set(paramRect1);
+      paramRect2 = getAnimationEndDstRect();
+      paramRect1 = paramRect2;
+      if (paramRect2 == null) {
+        paramRect1 = AnimationUtils.getAnimationEndDstRect(k, m, i, j);
+      }
+      paramRect4.set(paramRect1);
+      return localDrawable;
+    }
+    return null;
   }
   
   public void init()
   {
-    this.gallery = this.mContext.findViewById(2131367020);
-    this.animationView = ((AnimationView)this.mContext.findViewById(2131362576));
-    this.rootView = this.mContext.findViewById(2131376034);
-    this.bgView = this.mContext.findViewById(2131363034);
+    this.recyclerView = this.mRoot.findViewById(2131444517);
+    this.animationView = ((AnimationView)this.mRoot.findViewById(2131428368));
+    this.rootView = this.mRoot.findViewById(2131445137);
+    this.bgView = this.mRoot.findViewById(2131429234);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.animationView != null) {
-      this.animationView.onDestroy();
+    AnimationView localAnimationView = this.animationView;
+    if (localAnimationView != null) {
+      localAnimationView.onDestroy();
     }
   }
   
@@ -106,104 +128,115 @@ public class AnimationManager
     }
   }
   
+  public void setMainBrowserPresenter(MainBrowserPresenter paramMainBrowserPresenter)
+  {
+    this.mMainBrowserPresenter = paramMainBrowserPresenter;
+  }
+  
   public boolean startEnterAnimation()
   {
-    boolean bool = true;
-    if (isAnimating()) {
+    boolean bool2 = isAnimating();
+    boolean bool1 = true;
+    if (bool2) {
       return true;
     }
-    if (this.gallery == null) {
+    if (this.recyclerView == null) {
       init();
     }
     Rect localRect1 = new Rect();
     Rect localRect2 = new Rect();
     Object localObject = this.model.getSelectedItem();
-    if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null)) {
-      return false;
-    }
-    localObject = RichMediaBrowserManager.getInstance().getBrowserAnimation(((RichMediaBrowserInfo)localObject).baseData);
-    Rect localRect3 = ((BrowserAnimation)localObject).getStartSrcRect();
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = makeAnimationRect(null, localRect4, localRect1, localRect2, (BrowserAnimation)localObject, true);
-    this.mIsAnimating = true;
-    if (localDrawable != null)
+    if (localObject != null)
     {
-      this.isRectAnimation = bool;
-      if (this.isRectAnimation) {
-        break label147;
+      if (((RichMediaBrowserInfo)localObject).baseData == null) {
+        return false;
       }
-      this.animationView.setVisibility(4);
-    }
-    for (;;)
-    {
+      localObject = this.mMainBrowserPresenter.getParamsBuilder().a(((RichMediaBrowserInfo)localObject).baseData);
+      if (localObject == null) {
+        return false;
+      }
+      Rect localRect3 = ((BrowserAnimation)localObject).getStartSrcRect();
+      Rect localRect4 = new Rect();
+      Drawable localDrawable = makeAnimationRect(null, localRect4, localRect1, localRect2, (BrowserAnimation)localObject, true);
+      this.mIsAnimating = true;
+      if (localDrawable == null) {
+        bool1 = false;
+      }
+      this.isRectAnimation = bool1;
+      if (!this.isRectAnimation)
+      {
+        this.animationView.setVisibility(4);
+      }
+      else
+      {
+        this.animationView.setVisibility(0);
+        this.animationView.setAnimationListener(this);
+        this.animationView.isImgCenterCropMode = ((BrowserAnimation)localObject).isImgCenterCropMode;
+        if (localRect3 == null) {
+          this.animationView.startEnterAnimation(localDrawable, localRect1, localRect2, ((BrowserAnimation)localObject).getCutValue(), this.animationDuring);
+        } else {
+          this.animationView.startEnterAnimationFreeMode(localDrawable, localRect3, localRect4, localRect1, localRect2, this.animationDuring);
+        }
+      }
       return this.isRectAnimation;
-      bool = false;
-      break;
-      label147:
-      this.animationView.setVisibility(0);
-      this.animationView.setAnimationListener(this);
-      this.animationView.isImgCenterCropMode = ((BrowserAnimation)localObject).isImgCenterCropMode;
-      if (localRect3 == null) {
-        this.animationView.startEnterAnimation(localDrawable, localRect1, localRect2, ((BrowserAnimation)localObject).getCutValue(), this.animationDuring);
-      } else {
-        this.animationView.startEnterAnimationFreeMode(localDrawable, localRect3, localRect4, localRect1, localRect2, this.animationDuring);
-      }
     }
+    return false;
   }
   
   public boolean startExitAnimation()
   {
-    if (isAnimating()) {
+    boolean bool2 = isAnimating();
+    boolean bool1 = true;
+    if (bool2) {
       return true;
     }
-    if (this.gallery == null) {
+    if (this.recyclerView == null) {
       init();
     }
     Rect localRect1 = new Rect();
     Rect localRect2 = new Rect();
     Object localObject = this.model.getSelectedItem();
-    if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null)) {
-      return false;
-    }
-    localObject = RichMediaBrowserManager.getInstance().getBrowserAnimation(((RichMediaBrowserInfo)localObject).baseData);
-    if (localObject == null) {
-      return false;
-    }
-    Rect localRect3 = ((BrowserAnimation)localObject).getStartSrcRect();
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = makeAnimationRect(localRect3, localRect4, localRect1, localRect2, (BrowserAnimation)localObject, false);
-    this.mIsAnimating = true;
-    boolean bool;
-    if (localDrawable != null)
+    if (localObject != null)
     {
-      bool = true;
-      this.isRectAnimation = bool;
-      if (this.isRectAnimation) {
-        break label155;
+      if (((RichMediaBrowserInfo)localObject).baseData == null) {
+        return false;
       }
-      this.animationView.setVisibility(4);
-    }
-    for (;;)
-    {
-      return this.isRectAnimation;
-      bool = false;
-      break;
-      label155:
-      this.animationView.setVisibility(0);
-      this.animationView.setAnimationListener(this);
-      this.animationView.isImgCenterCropMode = ((BrowserAnimation)localObject).isImgCenterCropMode;
-      this.animationView.startBackAnimation(localDrawable, localRect1, localRect2, ((BrowserAnimation)localObject).getCutValue(), ((BrowserAnimation)localObject).getStartX(), ((BrowserAnimation)localObject).getStartY(), this.animationDuring);
-      if (localRect3 == null) {
+      localObject = this.mMainBrowserPresenter.getParamsBuilder().a(((RichMediaBrowserInfo)localObject).baseData);
+      if (localObject == null) {
+        return false;
+      }
+      Rect localRect3 = ((BrowserAnimation)localObject).getStartSrcRect();
+      Rect localRect4 = new Rect();
+      Drawable localDrawable = makeAnimationRect(localRect3, localRect4, localRect1, localRect2, (BrowserAnimation)localObject, false);
+      this.mIsAnimating = true;
+      if (localDrawable == null) {
+        bool1 = false;
+      }
+      this.isRectAnimation = bool1;
+      if (!this.isRectAnimation)
+      {
+        this.animationView.setVisibility(4);
+      }
+      else
+      {
+        this.animationView.setVisibility(0);
+        this.animationView.setAnimationListener(this);
+        this.animationView.isImgCenterCropMode = ((BrowserAnimation)localObject).isImgCenterCropMode;
         this.animationView.startBackAnimation(localDrawable, localRect1, localRect2, ((BrowserAnimation)localObject).getCutValue(), ((BrowserAnimation)localObject).getStartX(), ((BrowserAnimation)localObject).getStartY(), this.animationDuring);
-      } else {
-        this.animationView.startBackAnimationFreeMode(localDrawable, localRect3, localRect4, localRect1, localRect2, this.animationDuring);
+        if (localRect3 == null) {
+          this.animationView.startBackAnimation(localDrawable, localRect1, localRect2, ((BrowserAnimation)localObject).getCutValue(), ((BrowserAnimation)localObject).getStartX(), ((BrowserAnimation)localObject).getStartY(), this.animationDuring);
+        } else {
+          this.animationView.startBackAnimationFreeMode(localDrawable, localRect3, localRect4, localRect1, localRect2, this.animationDuring);
+        }
       }
+      return this.isRectAnimation;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.animation.AnimationManager
  * JD-Core Version:    0.7.0.1
  */

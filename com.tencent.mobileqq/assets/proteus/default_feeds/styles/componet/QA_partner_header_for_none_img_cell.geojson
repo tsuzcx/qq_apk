@@ -29,7 +29,7 @@
             "visible_depend_on_children": "YES",
             "align_parent_top": "YES",
             "align_parent_left":"YES",
-            "margin_left":"9",
+            "margin_left":"19",
             "margin_top": "10",
             "height":{
                 "type":"absolutely",
@@ -55,8 +55,7 @@
                         "value": "43"
                     },
                     "attributes": {
-                        "loadAvatarByUin:": "$qa_partner_avator_uin",
-                        "setFrameString:": "-1"
+                        "loadAvatarByUin:": "$qa_partner_avator_uin"
                     }
                 },
                 

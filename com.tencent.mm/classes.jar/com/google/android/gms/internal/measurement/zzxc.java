@@ -28,47 +28,47 @@ public final class zzxc
   
   public final zzws<Double> zzb(String paramString, double paramDouble)
   {
-    AppMethodBeat.i(69774);
+    AppMethodBeat.i(2297);
     paramString = zzws.zzb(this, paramString, paramDouble);
-    AppMethodBeat.o(69774);
+    AppMethodBeat.o(2297);
     return paramString;
   }
   
   public final zzws<Integer> zzd(String paramString, int paramInt)
   {
-    AppMethodBeat.i(69773);
+    AppMethodBeat.i(2296);
     paramString = zzws.zzb(this, paramString, paramInt);
-    AppMethodBeat.o(69773);
+    AppMethodBeat.o(2296);
     return paramString;
   }
   
   public final zzws<Long> zze(String paramString, long paramLong)
   {
-    AppMethodBeat.i(69771);
+    AppMethodBeat.i(2294);
     paramString = zzws.zzb(this, paramString, paramLong);
-    AppMethodBeat.o(69771);
+    AppMethodBeat.o(2294);
     return paramString;
   }
   
   public final zzws<Boolean> zzf(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(69772);
+    AppMethodBeat.i(2295);
     paramString = zzws.zzb(this, paramString, paramBoolean);
-    AppMethodBeat.o(69772);
+    AppMethodBeat.o(2295);
     return paramString;
   }
   
   public final zzws<String> zzv(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(69775);
+    AppMethodBeat.i(2298);
     paramString1 = zzws.zzb(this, paramString1, paramString2);
-    AppMethodBeat.o(69775);
+    AppMethodBeat.o(2298);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzxc
  * JD-Core Version:    0.7.0.1
  */

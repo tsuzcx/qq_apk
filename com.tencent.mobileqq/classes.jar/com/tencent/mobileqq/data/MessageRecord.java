@@ -1,32 +1,31 @@
 package com.tencent.mobileqq.data;
 
-import abti;
 import android.text.TextUtils;
-import aojt;
-import awge;
-import awhp;
-import ayzl;
-import bbpd;
-import bdeu;
-import bdil;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.imcore.message.InitMsgModule;
+import com.tencent.imcore.message.UinMD5Cache;
+import com.tencent.mobileqq.app.message.RecordForTest;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
+import com.tencent.mobileqq.troop.data.MessageInfo;
+import com.tencent.mobileqq.util.MessageRecordUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
-import nav;
-import nlo;
 import org.json.JSONObject;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="time,senderuin,msgData,istroop,shmsgseq,msgseq")
 public class MessageRecord
-  extends awge
+  extends Entity
 {
   public static final int EXTRA_STREAM_PTT_FLAG = 10001;
   public static final int MIN_VERSION_CODE_SUPPORT_IMAGE_MD5_TRANS = 2;
-  public static final int MSG_TYPE_0x7F = -2006;
+  public static final int MSG_TYPE_0X7F = -2006;
   public static final int MSG_TYPE_ACTIVATE_FRIENDS = -5003;
   public static final int MSG_TYPE_ACTIVITY = -4002;
   public static final int MSG_TYPE_AIO_FOR_LOCATION_SHARE = -2076;
@@ -71,6 +70,7 @@ public class MessageRecord
   public static final int MSG_TYPE_DISC_PTT_FREQ_CALL_TIP = -1017;
   public static final int MSG_TYPE_ENTER_TROOP = -4003;
   public static final int MSG_TYPE_FAILED_MSG = -2013;
+  public static final int MSG_TYPE_FAKE_EMOTION = -7008;
   public static final int MSG_TYPE_FILE_RECEIPT = -3008;
   public static final int MSG_TYPE_FLASH_CHAT = -5013;
   public static final int MSG_TYPE_FOLD_MSG_GRAY_TIPS = -5011;
@@ -84,6 +84,7 @@ public class MessageRecord
   public static final int MSG_TYPE_GRAY_TIPS = -5000;
   public static final int MSG_TYPE_GRAY_TIPS_TAB_VISIBLE = -5001;
   public static final int MSG_TYPE_GROUPDISC_FILE = -2014;
+  public static final int MSG_TYPE_GUILD_WELCOME_TIPS = -4028;
   public static final int MSG_TYPE_HIBOOM = -5014;
   public static final int MSG_TYPE_HOMEWORK_PRAISE = -2043;
   public static final int MSG_TYPE_HONGBAO_KEYWORDS_TIPS = -1045;
@@ -104,7 +105,6 @@ public class MessageRecord
   public static final int MSG_TYPE_MEDAL_NEWS = -2062;
   public static final int MSG_TYPE_MEDIA_EMO = -2001;
   public static final int MSG_TYPE_MEDIA_FILE = -2005;
-  public static final int MSG_TYPE_MEDIA_FUNNY_FACE = -2010;
   public static final int MSG_TYPE_MEDIA_LIGHTVIDEO = -2071;
   public static final int MSG_TYPE_MEDIA_MARKFACE = -2007;
   public static final int MSG_TYPE_MEDIA_MULTI09 = -2003;
@@ -141,6 +141,8 @@ public class MessageRecord
   public static final int MSG_TYPE_PSTN_CALL = -2046;
   public static final int MSG_TYPE_PTT_QSECRETARY = -1031;
   public static final int MSG_TYPE_PUBLIC_ACCOUNT = -3006;
+  public static final int MSG_TYPE_PUSH_REMINDER = -7090;
+  public static final int MSG_TYPE_QCIRCLE_NEWEST_FEED = -2077;
   public static final int MSG_TYPE_QLINK_AP_CREATE_SUC_TIPS = -3011;
   public static final int MSG_TYPE_QLINK_FILE_TIPS = -3009;
   public static final int MSG_TYPE_QLINK_SEND_FILE_TIPS = -3010;
@@ -233,29 +235,34 @@ public class MessageRecord
   public static final String[] QUERY_OLD_TABLE_FIELDS_ARRAY = { "_id", "extraflag", "frienduin", "isread", "issend", "istroop", "msg", "msgId", "msgseq", "msgtype", "selfuin", "senderuin", "shmsgseq", "time" };
   public static final int SEND_FAIL_CODE_DEFAULT = 0;
   public static final int SEND_FAIL_CODE_GOLDMSG_ERROR = -900;
-  @awhp
-  public nlo advertisementItem;
-  @awhp
-  public ArrayList<MessageForText.AtTroopMemberInfo> atInfoList;
-  @awhp
-  public ArrayList<MessageForText.AtTroopMemberInfo> atInfoTempList;
+  private static final String TAG = "MessageRecord";
+  public static MessageRecord.Callback sCallback = new MessageRecordDummyCallback();
+  @notColumn
+  public Object advertisementItem = null;
+  @RecordForTest
+  @notColumn
+  public ArrayList<AtTroopMemberInfo> atInfoList;
+  @notColumn
+  public ArrayList<AtTroopMemberInfo> atInfoTempList;
   public int extInt;
   public int extLong;
   public String extStr;
   public int extraflag;
   public String frienduin;
-  @awhp
-  public boolean isBlessMsg;
-  @awhp
-  public boolean isCheckNeedShowInListTypeMsg;
-  @awhp
-  public boolean isMultiMsg;
-  @awhp
-  public boolean isOpenTroopMessage;
-  @awhp
-  public boolean isReMultiMsg;
-  @awhp
-  public boolean isReplySource;
+  @notColumn
+  public boolean isBlessMsg = false;
+  @notColumn
+  public boolean isCheckNeedShowInListTypeMsg = false;
+  @notColumn
+  public boolean isFolded = true;
+  @notColumn
+  public boolean isMultiMsg = false;
+  @notColumn
+  public boolean isOpenTroopMessage = false;
+  @notColumn
+  public boolean isReMultiMsg = false;
+  @notColumn
+  public boolean isReplySource = false;
   public boolean isValid = true;
   public boolean isread;
   public int issend;
@@ -264,25 +271,25 @@ public class MessageRecord
   public int longMsgId;
   public int longMsgIndex;
   public JSONObject mExJsonObject;
-  @awhp
+  @notColumn
   public int mIsShowQidianTips;
-  @awhp
-  public bbpd mMessageInfo;
-  @awhp
+  @notColumn
+  public MessageInfo mMessageInfo;
+  @notColumn
   public long mQidianMasterUin;
-  @awhp
+  @notColumn
   public int mQidianTaskId;
-  @awhp
+  @notColumn
   public String mQidianTipText;
-  @awhp
+  @notColumn
   public int mRobotFlag;
-  @awhp
+  @notColumn
   public String msg;
-  @awhp
+  @notColumn
   public String msg2;
-  @awhp
+  @notColumn
   public long msgBackupMsgRandom;
-  @awhp
+  @notColumn
   public long msgBackupMsgSeq;
   public byte[] msgData;
   @Deprecated
@@ -290,26 +297,31 @@ public class MessageRecord
   public long msgUid;
   public long msgseq;
   public int msgtype;
-  @awhp
-  public boolean needNeedShowInList;
-  @awhp
+  @notColumn
+  public boolean needNeedShowInList = false;
+  @notColumn
   public boolean needUpdateMsgTag = true;
   public String selfuin;
   public int sendFailCode;
   public String senderuin;
   public long shmsgseq;
-  @awhp
-  public boolean stickerHidden;
-  @awhp
-  public EmojiStickerManager.StickerInfo stickerInfo;
+  @notColumn
+  public boolean stickerHidden = false;
+  @notColumn
+  public Object stickerInfo;
   public long time;
   public long uniseq;
   public int versionCode = 3;
-  @awhp
+  @notColumn
   public int vipBubbleDiyTextId;
   public long vipBubbleID;
-  @awhp
+  @notColumn
   public int vipSubBubbleId;
+  
+  static
+  {
+    InitMsgModule.a();
+  }
   
   public MessageRecord()
   {
@@ -373,14 +385,6 @@ public class MessageRecord
     paramMessageRecord1.vipSubBubbleId = paramMessageRecord2.vipSubBubbleId;
   }
   
-  public static long getDatabaseMsgID(long paramLong)
-  {
-    if (getVersionCode(paramLong) > 0) {
-      return paramLong;
-    }
-    return -100L - paramLong;
-  }
-  
   public static long getLogicMsgID(long paramLong, int paramInt)
   {
     if (paramInt > 0) {
@@ -391,47 +395,103 @@ public class MessageRecord
   
   public static String getOldTableName(String paramString, int paramInt)
   {
-    String str = "friend";
-    switch (paramInt)
+    String str;
+    if (paramInt != 1)
     {
+      if (paramInt != 1006)
+      {
+        if (paramInt != 3000) {
+          str = "friend";
+        } else {
+          str = "discusssion";
+        }
+      }
+      else {
+        str = "contact";
+      }
     }
-    for (;;)
-    {
-      return "mr_" + str + "_" + abti.a(paramString);
+    else {
       str = "troop";
-      continue;
-      str = "discusssion";
-      continue;
-      str = "contact";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mr_");
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(getUinMD5(paramString));
+    return localStringBuilder.toString();
   }
   
   public static String getTableName(String paramString, int paramInt)
   {
-    String str = "friend";
-    switch (paramInt)
+    String str;
+    if (paramInt != 1)
     {
+      if (paramInt != 1006)
+      {
+        if (paramInt != 1026)
+        {
+          if (paramInt != 1036)
+          {
+            if (paramInt != 3000)
+            {
+              if (paramInt != 9501)
+              {
+                if (paramInt != 10007)
+                {
+                  if (paramInt != 10014)
+                  {
+                    if (paramInt != 1033)
+                    {
+                      if (paramInt != 1034) {
+                        str = "friend";
+                      } else {
+                        str = "confess_b";
+                      }
+                    }
+                    else {
+                      str = "confess_a";
+                    }
+                  }
+                  else {
+                    str = "guild";
+                  }
+                }
+                else {
+                  str = "temp_game_msg";
+                }
+              }
+              else {
+                str = "devicemsg";
+              }
+            }
+            else {
+              str = "discusssion";
+            }
+          }
+          else {
+            str = "cmgame_temp";
+          }
+        }
+        else {
+          str = "troop_hctopic";
+        }
+      }
+      else {
+        str = "contact";
+      }
     }
-    while (!TextUtils.isEmpty(paramString))
-    {
-      return "mr_" + str + "_" + abti.a(paramString) + "_New";
-      str = "temp_game_msg";
-      continue;
-      str = "troop_hctopic";
-      continue;
+    else {
       str = "troop";
-      continue;
-      str = "discusssion";
-      continue;
-      str = "contact";
-      continue;
-      str = "devicemsg";
-      continue;
-      str = "confess_a";
-      continue;
-      str = "confess_b";
-      continue;
-      str = "cmgame_temp";
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mr_");
+      localStringBuilder.append(str);
+      localStringBuilder.append("_");
+      localStringBuilder.append(getUinMD5(paramString));
+      localStringBuilder.append("_New");
+      return localStringBuilder.toString();
     }
     return "MessageRecord_frienduin_null";
   }
@@ -462,15 +522,60 @@ public class MessageRecord
     if (paramString.startsWith("mr_confess_b")) {
       return 1034;
     }
+    if (paramString.startsWith("mr_guild")) {
+      return 10014;
+    }
     return 0;
   }
   
-  public static int getVersionCode(long paramLong)
+  private static String getUinMD5(String paramString)
   {
-    if (paramLong < 0L) {
-      return 0;
+    return UinMD5Cache.a(paramString);
+  }
+  
+  private void initInner(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, int paramInt1, int paramInt2, long paramLong2)
+  {
+    this.selfuin = paramString1;
+    this.frienduin = paramString2;
+    this.senderuin = paramString3;
+    this.msg = paramString4;
+    long l = paramLong1;
+    if (paramLong1 <= 0L) {
+      l = (int)NetConnInfoCenter.getServerTime();
     }
-    return 3;
+    this.time = l;
+    this.msgtype = paramInt1;
+    this.istroop = paramInt2;
+    this.msgseq = paramLong2;
+  }
+  
+  private void onUpdateExtraFlag(int paramInt1, int paramInt2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUpdateExtraFlag() called with: from = [");
+    localStringBuilder.append(MessageRecordInfo.a(paramInt1));
+    localStringBuilder.append("], to = [");
+    localStringBuilder.append(MessageRecordInfo.a(paramInt2));
+    localStringBuilder.append("], ");
+    localStringBuilder.append(toString());
+    QLog.i("MessageRecord", 1, localStringBuilder.toString(), new RuntimeException());
+  }
+  
+  private void onUpdateSendFailCode(int paramInt1, int paramInt2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUpdateSendFailCode() called with: from = [");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("], to = [");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("], ");
+    localStringBuilder.append(toString());
+    QLog.i("MessageRecord", 1, localStringBuilder.toString(), new RuntimeException());
+  }
+  
+  public static void setCallback(MessageRecord.Callback paramCallback)
+  {
+    sCallback = paramCallback;
   }
   
   public void createMessageUniseq()
@@ -484,19 +589,46 @@ public class MessageRecord
   
   public String getBaseInfoString()
   {
-    if (isLongMsg()) {}
-    for (int i = 69;; i = 0)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(i + 256);
-      localStringBuilder.append("MessageRecord BaseInfo=friendUin:").append(this.frienduin).append(",_id:").append(getId()).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",uniseq:").append(this.uniseq).append(",time:").append(this.time).append(",extraFlag:").append(this.extraflag).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bdeu.a(this.msg));
-      if (isLongMsg()) {
-        localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
-      }
-      return localStringBuilder.toString();
+    int i;
+    if (isLongMsg()) {
+      i = 69;
+    } else {
+      i = 0;
     }
+    StringBuilder localStringBuilder = new StringBuilder(i + 256);
+    localStringBuilder.append("MessageRecord BaseInfo=friendUin:");
+    localStringBuilder.append(MsfSdkUtils.getShortUin(this.frienduin));
+    localStringBuilder.append(",_id:");
+    localStringBuilder.append(getId());
+    localStringBuilder.append(",shmsgseq:");
+    localStringBuilder.append(this.shmsgseq);
+    localStringBuilder.append(",uid:");
+    localStringBuilder.append(this.msgUid);
+    localStringBuilder.append(",uniseq:");
+    localStringBuilder.append(this.uniseq);
+    localStringBuilder.append(",time:");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(",extraFlag:");
+    localStringBuilder.append(MessageRecordInfo.a(this.extraflag));
+    localStringBuilder.append(",istroop:");
+    localStringBuilder.append(this.istroop);
+    localStringBuilder.append(",msgType:");
+    localStringBuilder.append(this.msgtype);
+    localStringBuilder.append(",msg:");
+    localStringBuilder.append(getLogColorContent());
+    if (isLongMsg())
+    {
+      localStringBuilder.append(",longMsgId:");
+      localStringBuilder.append(this.longMsgId);
+      localStringBuilder.append(",longMsgCount:");
+      localStringBuilder.append(this.longMsgCount);
+      localStringBuilder.append(",longMsgIndex:");
+      localStringBuilder.append(this.longMsgIndex);
+    }
+    return localStringBuilder.toString();
   }
   
-  public Class<? extends awge> getClassForTable()
+  protected Class<? extends Entity> getClassForTable()
   {
     return MessageRecord.class;
   }
@@ -527,8 +659,10 @@ public class MessageRecord
       if (this.mExJsonObject == null) {
         this.mExJsonObject = new JSONObject(this.extStr);
       }
-      if (this.mExJsonObject.has(paramString)) {
-        return this.mExJsonObject.getString(paramString);
+      if (this.mExJsonObject.has(paramString))
+      {
+        paramString = this.mExJsonObject.getString(paramString);
+        return paramString;
       }
       return "";
     }
@@ -543,34 +677,52 @@ public class MessageRecord
   
   public String getExtInfoString()
   {
-    if (this.mExJsonObject == null) {
+    JSONObject localJSONObject = this.mExJsonObject;
+    if (localJSONObject == null) {
       return "";
     }
-    return this.mExJsonObject.toString();
+    return localJSONObject.toString();
   }
   
   public int getExtraKey()
   {
-    return (0x3FFFF8 & this.extLong) >>> 3;
+    return (this.extLong & 0x3FFFF8) >>> 3;
   }
   
   public String getLogColorContent()
   {
-    return bdeu.a(this.msg);
+    return MessageRecordUtil.a(this.msg);
   }
   
   public String getLongMsgInfoString()
   {
-    if (isLongMsg()) {}
-    for (int i = 69;; i = 0)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(i + 129);
-      localStringBuilder.append("MessageRecord LongMsgInfo=friendUin:").append(this.frienduin).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bdeu.a(this.msg)).append(",time:").append(this.time);
-      if (isLongMsg()) {
-        localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
-      }
-      return localStringBuilder.toString();
+    int i;
+    if (isLongMsg()) {
+      i = 69;
+    } else {
+      i = 0;
     }
+    StringBuilder localStringBuilder = new StringBuilder(i + 129);
+    localStringBuilder.append("MessageRecord LongMsgInfo=friendUin:");
+    localStringBuilder.append(this.frienduin);
+    localStringBuilder.append(",istroop:");
+    localStringBuilder.append(this.istroop);
+    localStringBuilder.append(",msgType:");
+    localStringBuilder.append(this.msgtype);
+    localStringBuilder.append(",msg:");
+    localStringBuilder.append(getLogColorContent());
+    localStringBuilder.append(",time:");
+    localStringBuilder.append(this.time);
+    if (isLongMsg())
+    {
+      localStringBuilder.append(",longMsgId:");
+      localStringBuilder.append(this.longMsgId);
+      localStringBuilder.append(",longMsgCount:");
+      localStringBuilder.append(this.longMsgCount);
+      localStringBuilder.append(",longMsgIndex:");
+      localStringBuilder.append(this.longMsgIndex);
+    }
+    return localStringBuilder.toString();
   }
   
   public int getPttStreamFlag()
@@ -585,61 +737,61 @@ public class MessageRecord
   
   public String getTableName()
   {
-    if (this.isMultiMsg) {
-      return "mr_multimessage";
-    }
-    return getTableName(this.frienduin, this.istroop);
+    return sCallback.b(this);
+  }
+  
+  public long getTime()
+  {
+    return this.time;
   }
   
   public String getUserLogString()
   {
     StringBuilder localStringBuilder = new StringBuilder(133);
     localStringBuilder.append("MessageRecord=");
-    if ((this.frienduin != null) && (this.frienduin.length() >= 4)) {
-      localStringBuilder.append("friendUin:").append(this.frienduin.substring(this.frienduin.length() - 4));
+    String str = this.frienduin;
+    if ((str != null) && (str.length() >= 4))
+    {
+      localStringBuilder.append("friendUin:");
+      str = this.frienduin;
+      localStringBuilder.append(str.substring(str.length() - 4));
     }
-    if ((this.senderuin != null) && (this.senderuin.length() >= 4)) {
-      localStringBuilder.append("senderuin:").append(this.senderuin.substring(this.senderuin.length() - 4));
+    str = this.senderuin;
+    if ((str != null) && (str.length() >= 4))
+    {
+      localStringBuilder.append("senderuin:");
+      str = this.senderuin;
+      localStringBuilder.append(str.substring(str.length() - 4));
     }
-    localStringBuilder.append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",time:").append(this.time).append(",shmsgseq:").append(this.shmsgseq);
+    localStringBuilder.append(",istroop:");
+    localStringBuilder.append(this.istroop);
+    localStringBuilder.append(",msgType:");
+    localStringBuilder.append(this.msgtype);
+    localStringBuilder.append(",time:");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(",shmsgseq:");
+    localStringBuilder.append(this.shmsgseq);
     return localStringBuilder.toString();
   }
   
   public void init(long paramLong1, long paramLong2, long paramLong3, String paramString, long paramLong4, int paramInt1, int paramInt2, long paramLong5)
   {
-    this.selfuin = String.valueOf(paramLong1);
-    this.frienduin = String.valueOf(paramLong2);
-    this.senderuin = String.valueOf(paramLong3);
-    this.msg = paramString;
-    paramLong1 = paramLong4;
-    if (paramLong4 <= 0L) {
-      paramLong1 = (int)ayzl.a();
-    }
-    this.time = paramLong1;
-    this.msgtype = paramInt1;
-    this.istroop = paramInt2;
-    this.msgseq = paramLong5;
+    initInner(String.valueOf(paramLong1), String.valueOf(paramLong2), String.valueOf(paramLong3), paramString, paramLong4, paramInt1, paramInt2, paramLong5);
   }
   
   public void init(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, int paramInt1, int paramInt2, long paramLong2)
   {
-    this.selfuin = paramString1;
-    this.frienduin = paramString2;
-    this.senderuin = paramString3;
-    this.msg = paramString4;
-    long l = paramLong1;
-    if (paramLong1 <= 0L) {
-      l = (int)ayzl.a();
-    }
-    this.time = l;
-    this.msgtype = paramInt1;
-    this.istroop = paramInt2;
-    this.msgseq = paramLong2;
+    initInner(paramString1, paramString2, paramString3, paramString4, paramLong1, paramInt1, paramInt2, paramLong2);
   }
   
   public boolean isLongMsg()
   {
     return this.longMsgCount > 1;
+  }
+  
+  public boolean isSelf()
+  {
+    return MessageRecordInfo.b(this.issend);
   }
   
   public boolean isSelfConfessor()
@@ -649,21 +801,17 @@ public class MessageRecord
   
   public boolean isSend()
   {
-    if ((nav.a(this)) && (nav.b(this))) {}
-    while ((aojt.a(this)) && (aojt.b(this))) {
-      return true;
-    }
-    return bdil.a(this.issend);
+    return sCallback.a(this);
   }
   
   public boolean isSendFromLocal()
   {
-    return bdil.b(this.issend);
+    return MessageRecordInfo.c(this.issend);
   }
   
   public boolean isSendFromOtherTerminal()
   {
-    return bdil.c(this.issend);
+    return MessageRecordInfo.d(this.issend);
   }
   
   public boolean isSupportFTS()
@@ -673,17 +821,68 @@ public class MessageRecord
   
   public boolean needVipBubble()
   {
-    return (this.istroop == 0) || (this.istroop == 1) || (this.istroop == 3000) || (this.istroop == 1000) || (this.istroop == 1004) || (this.istroop == 1006) || (this.istroop == 1001) || (this.istroop == 10002) || (this.istroop == 10004) || (this.istroop == 1010) || (this.istroop == 1020) || (this.istroop == 10008);
+    int i = this.istroop;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (i != 0)
+    {
+      bool1 = bool2;
+      if (i != 1)
+      {
+        bool1 = bool2;
+        if (i != 3000)
+        {
+          bool1 = bool2;
+          if (i != 1000)
+          {
+            bool1 = bool2;
+            if (i != 1004)
+            {
+              bool1 = bool2;
+              if (i != 1006)
+              {
+                bool1 = bool2;
+                if (i != 1001)
+                {
+                  bool1 = bool2;
+                  if (i != 10002)
+                  {
+                    bool1 = bool2;
+                    if (i != 10004)
+                    {
+                      bool1 = bool2;
+                      if (i != 1010)
+                      {
+                        bool1 = bool2;
+                        if (i != 1020)
+                        {
+                          if (i == 10008) {
+                            return true;
+                          }
+                          bool1 = false;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     try
     {
-      if ((this.versionCode > 0) && (this.msgData != null)) {
+      if ((this.versionCode > 0) && (this.msgData != null))
+      {
         this.msg = new String(this.msgData, "UTF-8");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -691,21 +890,24 @@ public class MessageRecord
     }
   }
   
-  public void postwrite() {}
+  protected void postwrite() {}
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.msg != null) {}
-    try
-    {
-      if ((this.versionCode > 0) && (this.msg != null)) {
-        this.msgData = this.msg.getBytes("UTF-8");
+    String str = this.msg;
+    if (str != null) {
+      try
+      {
+        if ((this.versionCode > 0) && (str != null))
+        {
+          this.msgData = str.getBytes("UTF-8");
+          return;
+        }
       }
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      localUnsupportedEncodingException.printStackTrace();
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
     }
   }
   
@@ -748,15 +950,16 @@ public class MessageRecord
         localJSONObject = new JSONObject();
         localJSONObject.put(paramString1, paramString2);
         this.extStr = localJSONObject.toString();
+        this.mExJsonObject = localJSONObject;
       }
-      for (this.mExJsonObject = localJSONObject;; this.mExJsonObject = localJSONObject)
+      else
       {
-        this.extLong |= 0x1;
-        return;
         localJSONObject = new JSONObject(this.extStr);
         localJSONObject.put(paramString1, paramString2);
         this.extStr = localJSONObject.toString();
+        this.mExJsonObject = localJSONObject;
       }
+      this.extLong |= 0x1;
       return;
     }
     catch (Exception paramString1)
@@ -769,7 +972,17 @@ public class MessageRecord
   
   public void setConfessTopicId(int paramInt)
   {
-    this.extLong |= paramInt << 3;
+    this.extLong = (paramInt << 3 | this.extLong);
+  }
+  
+  public void setExtraFlag(int paramInt)
+  {
+    int i = this.extraflag;
+    if (i == paramInt) {
+      return;
+    }
+    this.extraflag = paramInt;
+    onUpdateExtraFlag(i, paramInt);
   }
   
   public void setPttStreamFlag(int paramInt)
@@ -794,24 +1007,79 @@ public class MessageRecord
     this.extLong &= 0xFFDFFFFF;
   }
   
+  public void setSendFailCode(int paramInt)
+  {
+    int i = this.sendFailCode;
+    if (i == paramInt) {
+      return;
+    }
+    this.sendFailCode = paramInt;
+    onUpdateSendFailCode(i, paramInt);
+  }
+  
   public String toString()
   {
     int j = getClass().getSimpleName().length();
-    if (isLongMsg()) {}
-    for (int i = 69;; i = 0)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(i + (j + 39 + 9 + 10 + 11 + 10 + 11 + 10 + 10 + 10 + 5 + 19 + 6 + 19 + 8 + 5 + 8 + 5 + 11 + 10 + 14 + 10 + 9 + 5 + 9 + 10 + 5 + 14 + 10 + 19 + 8 + 19 + 12 + 5 + 8 + 19));
-      localStringBuilder.append("-----Dump MessageRecord-----,classname:").append(getClass().getSimpleName()).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",shmsgseq:").append(this.shmsgseq).append(",uid:").append(this.msgUid).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",isSend:").append(this.issend).append(",extraFlag:").append(this.extraflag).append(",sendFailCode:").append(this.sendFailCode).append(",istroop:").append(this.istroop).append(",msgType:").append(this.msgtype).append(",msg:").append(bdeu.a(this.msg)).append(",bubbleid:").append(this.vipBubbleID).append(",subBubbleId:").append(this.vipSubBubbleId).append(",uniseq:").append(this.uniseq).append(",isMultiMsg:").append(this.isMultiMsg).append(",msgseq:").append(this.msgseq);
-      if (isLongMsg()) {
-        localStringBuilder.append(",longMsgId:").append(this.longMsgId).append(",longMsgCount:").append(this.longMsgCount).append(",longMsgIndex:").append(this.longMsgIndex);
-      }
-      return localStringBuilder.toString();
+    int i;
+    if (isLongMsg()) {
+      i = 69;
+    } else {
+      i = 0;
     }
+    StringBuilder localStringBuilder = new StringBuilder(j + 39 + 9 + 10 + 11 + 10 + 11 + 10 + 10 + 10 + 5 + 19 + 6 + 19 + 8 + 5 + 8 + 5 + 11 + 10 + 14 + 10 + 9 + 5 + 9 + 10 + 5 + 14 + 10 + 19 + 8 + 19 + 12 + 5 + 8 + 19 + i);
+    localStringBuilder.append("-----Dump MessageRecord-----,classname:");
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append(",selfUin:");
+    localStringBuilder.append(MsfSdkUtils.getShortUin(this.selfuin));
+    localStringBuilder.append(",friendUin:");
+    localStringBuilder.append(MsfSdkUtils.getShortUin(this.frienduin));
+    localStringBuilder.append(",senderUin:");
+    localStringBuilder.append(MsfSdkUtils.getShortUin(this.senderuin));
+    localStringBuilder.append(",shmsgseq:");
+    localStringBuilder.append(this.shmsgseq);
+    localStringBuilder.append(",uid:");
+    localStringBuilder.append(this.msgUid);
+    localStringBuilder.append(",time:");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(",isRead:");
+    localStringBuilder.append(this.isread);
+    localStringBuilder.append(",isSend:");
+    localStringBuilder.append(this.issend);
+    localStringBuilder.append(",extraFlag:");
+    localStringBuilder.append(MessageRecordInfo.a(this.extraflag));
+    localStringBuilder.append(",sendFailCode:");
+    localStringBuilder.append(this.sendFailCode);
+    localStringBuilder.append(",istroop:");
+    localStringBuilder.append(this.istroop);
+    localStringBuilder.append(",msgType:");
+    localStringBuilder.append(this.msgtype);
+    localStringBuilder.append(",msg:");
+    localStringBuilder.append(getLogColorContent());
+    localStringBuilder.append(",bubbleid:");
+    localStringBuilder.append(this.vipBubbleID);
+    localStringBuilder.append(",subBubbleId:");
+    localStringBuilder.append(this.vipSubBubbleId);
+    localStringBuilder.append(",uniseq:");
+    localStringBuilder.append(this.uniseq);
+    localStringBuilder.append(",isMultiMsg:");
+    localStringBuilder.append(this.isMultiMsg);
+    localStringBuilder.append(",msgseq:");
+    localStringBuilder.append(this.msgseq);
+    if (isLongMsg())
+    {
+      localStringBuilder.append(",longMsgId:");
+      localStringBuilder.append(this.longMsgId);
+      localStringBuilder.append(",longMsgCount:");
+      localStringBuilder.append(this.longMsgCount);
+      localStringBuilder.append(",longMsgIndex:");
+      localStringBuilder.append(this.longMsgIndex);
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageRecord
  * JD-Core Version:    0.7.0.1
  */

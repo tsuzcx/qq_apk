@@ -1,24 +1,34 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.k;
-import com.tencent.mm.g.a.qz;
-import com.tencent.mm.g.a.qz.b;
-import com.tencent.mm.model.r;
+import com.tencent.mm.autogen.a.xl;
+import com.tencent.mm.autogen.a.xl.b;
+import com.tencent.mm.ay.l;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.findersdk.a.ca;
+import com.tencent.mm.plugin.findersdk.a.cn;
 import com.tencent.mm.plugin.game.api.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.websearch.api.m;
-import com.tencent.mm.pluginsdk.f.f.a;
-import com.tencent.mm.protocal.protobuf.aek;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
+import com.tencent.mm.plugin.setting.ui.b.a.a;
+import com.tencent.mm.pluginsdk.platformtools.d.a;
+import com.tencent.mm.protocal.protobuf.cas;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -30,444 +40,986 @@ import java.util.Set;
 public class SettingsManageFindMoreUI
   extends MMPreference
 {
-  private HashMap<Integer, Integer> guf;
-  private long kRf;
-  private HashMap<Integer, Integer> qIM;
-  private HashMap<Integer, Integer> qIN;
-  private int qIO;
+  protected HashMap<Integer, Integer> PtG;
+  protected HashMap<Integer, Integer> PtH;
+  protected int PtI;
+  protected boolean PtJ;
+  protected boolean PtK;
+  private boolean PtL;
+  protected boolean PtM;
+  protected HashMap<Integer, Integer> pPy;
+  protected long xct;
   
   public SettingsManageFindMoreUI()
   {
-    AppMethodBeat.i(127271);
-    this.guf = new HashMap();
-    this.qIM = new HashMap();
-    this.qIN = new HashMap();
-    AppMethodBeat.o(127271);
+    AppMethodBeat.i(74209);
+    this.pPy = new HashMap();
+    this.PtG = new HashMap();
+    this.PtH = new HashMap();
+    this.PtJ = false;
+    this.PtK = false;
+    this.PtL = false;
+    this.PtM = false;
+    AppMethodBeat.o(74209);
   }
   
-  private void C(boolean paramBoolean, int paramInt)
+  private void a(WeChatBrands.Business.Entries paramEntries, String paramString)
   {
-    AppMethodBeat.i(127278);
-    ab.i("MicroMsg.SettingsManageFindMoreUI", "switch plugin flag, open %s, flag %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(299004);
+    if (paramEntries.restricted())
+    {
+      if (paramEntries.banned())
+      {
+        getPreferenceScreen().eh(paramString, true);
+        AppMethodBeat.o(299004);
+        return;
+      }
+      paramString = (CheckBoxPreference)getPreferenceScreen().bAi(paramString);
+      paramString.jne();
+      paramString.setOnClickListener(new SettingsManageFindMoreUI.5(this, paramEntries));
+    }
+    AppMethodBeat.o(299004);
+  }
+  
+  private void ah(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(74216);
+    Log.i("MicroMsg.SettingsManageFindMoreUI", "switch plugin flag, open %s, flag %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (!paramBoolean)
     {
-      this.qIO |= paramInt;
-      AppMethodBeat.o(127278);
+      this.PtI |= paramInt;
+      AppMethodBeat.o(74216);
       return;
     }
-    this.qIO &= (paramInt ^ 0xFFFFFFFF);
-    AppMethodBeat.o(127278);
+    this.PtI &= (paramInt ^ 0xFFFFFFFF);
+    AppMethodBeat.o(74216);
   }
   
-  private boolean Dc(int paramInt)
+  private void b(boolean paramBoolean, long paramLong, int paramInt)
   {
-    return (this.kRf & paramInt) != 0L;
-  }
-  
-  private boolean Dd(int paramInt)
-  {
-    return (this.qIO & paramInt) == 0;
-  }
-  
-  private void bJP()
-  {
-    AppMethodBeat.i(127279);
-    Iterator localIterator = this.qIN.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      int i = ((Integer)localIterator.next()).intValue();
-      if ((this.qIM.containsKey(Integer.valueOf(i))) && (this.qIM.get(Integer.valueOf(i)) != this.qIN.get(Integer.valueOf(i))))
-      {
-        com.tencent.mm.plugin.report.service.h.qsU.e(15185, new Object[] { Integer.valueOf(i), this.qIN.get(Integer.valueOf(i)) });
-        if (i == 0) {
-          if (((Integer)this.qIN.get(Integer.valueOf(i))).intValue() == 0) {
-            com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yLm, Integer.valueOf(-1));
-          } else if (((Integer)this.qIN.get(Integer.valueOf(i))).intValue() == 1) {
-            com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yLm, Integer.valueOf(1));
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(127279);
-  }
-  
-  private void g(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(127276);
-    ab.i("MicroMsg.SettingsManageFindMoreUI", "switch ext change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
+    AppMethodBeat.i(164133);
+    Log.i("MicroMsg.SettingsManageFindMoreUI", "switch ext change : open = " + paramBoolean + " item value = " + paramLong + " functionId = " + paramInt);
     if (paramBoolean)
     {
-      this.kRf &= (paramInt1 ^ 0xFFFFFFFF);
+      this.xct &= (0xFFFFFFFF ^ paramLong);
       if (!paramBoolean) {
-        break label103;
+        break label107;
       }
     }
-    label103:
-    for (paramInt1 = 1;; paramInt1 = 2)
+    label107:
+    for (int i = 1;; i = 2)
     {
-      this.guf.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
-      AppMethodBeat.o(127276);
+      this.pPy.put(Integer.valueOf(paramInt), Integer.valueOf(i));
+      AppMethodBeat.o(164133);
       return;
-      this.kRf |= paramInt1;
+      this.xct |= paramLong;
       break;
     }
   }
   
+  private boolean ju(long paramLong)
+  {
+    return (this.xct & paramLong) != 0L;
+  }
+  
+  private boolean uk(long paramLong)
+  {
+    return (this.PtI & paramLong) == 0L;
+  }
+  
+  public final void CM(boolean paramBoolean)
+  {
+    AppMethodBeat.i(299096);
+    b(paramBoolean, 2097152L, 50);
+    AppMethodBeat.o(299096);
+  }
+  
+  protected final void CN(boolean paramBoolean)
+  {
+    AppMethodBeat.i(299100);
+    ((com.tencent.mm.plugin.welab.a.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.welab.a.a.a.class)).dP("labs_browse", paramBoolean);
+    if (paramBoolean)
+    {
+      this.xct &= 0xFBFFFFFF;
+      AppMethodBeat.o(299100);
+      return;
+    }
+    this.xct |= 0x4000000;
+    AppMethodBeat.o(299100);
+  }
+  
+  protected final void CO(boolean paramBoolean)
+  {
+    AppMethodBeat.i(299102);
+    b(paramBoolean, 34359738368L, 57);
+    AppMethodBeat.o(299102);
+  }
+  
+  public final void a(final CheckBoxPreference paramCheckBoxPreference, final boolean paramBoolean1, final boolean paramBoolean2)
+  {
+    AppMethodBeat.i(299087);
+    if (!paramBoolean1)
+    {
+      if ((((com.tencent.mm.plugin.websearch.api.i)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.websearch.api.i.class)).b(this, new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(298791);
+          if (paramCheckBoxPreference != null) {
+            paramCheckBoxPreference.setChecked(false);
+          }
+          if (!paramBoolean2) {
+            SettingsManageFindMoreUI.this.CM(paramBoolean1);
+          }
+          AppMethodBeat.o(298791);
+        }
+      })) && (paramCheckBoxPreference != null)) {
+        MMHandlerThread.postToMainThreadDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(298801);
+            if (paramCheckBoxPreference != null) {
+              paramCheckBoxPreference.setChecked(true);
+            }
+            AppMethodBeat.o(298801);
+          }
+        }, 500L);
+      }
+      AppMethodBeat.o(299087);
+      return;
+    }
+    if (!paramBoolean2) {
+      CM(paramBoolean1);
+    }
+    AppMethodBeat.o(299087);
+  }
+  
+  protected void cIX()
+  {
+    AppMethodBeat.i(74217);
+    Iterator localIterator = this.PtH.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      int i = ((Integer)localIterator.next()).intValue();
+      if ((this.PtG.containsKey(Integer.valueOf(i))) && (this.PtG.get(Integer.valueOf(i)) != this.PtH.get(Integer.valueOf(i))))
+      {
+        com.tencent.mm.plugin.report.service.h.OAn.b(15185, new Object[] { Integer.valueOf(i), this.PtH.get(Integer.valueOf(i)), Integer.valueOf(1) });
+        if (i == 0) {
+          if (((Integer)this.PtH.get(Integer.valueOf(i))).intValue() == 0) {
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.acYm, Integer.valueOf(-1));
+          } else if (((Integer)this.PtH.get(Integer.valueOf(i))).intValue() == 1) {
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.acYm, Integer.valueOf(1));
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(74217);
+  }
+  
   public com.tencent.mm.ui.base.preference.h createAdapter(SharedPreferences paramSharedPreferences)
   {
-    AppMethodBeat.i(127273);
+    AppMethodBeat.i(74211);
     paramSharedPreferences = new com.tencent.mm.ui.base.preference.a(this, getListView(), paramSharedPreferences);
-    AppMethodBeat.o(127273);
+    AppMethodBeat.o(74211);
     return paramSharedPreferences;
   }
   
   public void finish()
   {
-    AppMethodBeat.i(127277);
+    AppMethodBeat.i(74215);
     super.finish();
-    ab.i("MicroMsg.SettingsManageFindMoreUI", "oplog extstatus:" + this.kRf + ",pluginFlag:" + this.qIO);
-    com.tencent.mm.kernel.g.RL().Ru().set(147457, Long.valueOf(this.kRf));
-    com.tencent.mm.kernel.g.RL().Ru().set(34, Integer.valueOf(this.qIO));
-    Iterator localIterator = this.guf.entrySet().iterator();
-    while (localIterator.hasNext())
+    if (gVO())
     {
-      Object localObject = (Map.Entry)localIterator.next();
-      int i = ((Integer)((Map.Entry)localObject).getKey()).intValue();
-      int j = ((Integer)((Map.Entry)localObject).getValue()).intValue();
-      localObject = new aek();
-      ((aek)localObject).wXn = i;
-      ((aek)localObject).pKC = j;
-      ((j)com.tencent.mm.kernel.g.E(j.class)).Yz().c(new j.a(23, (com.tencent.mm.bv.a)localObject));
-      ab.d("MicroMsg.SettingsManageFindMoreUI", "switch  " + i + " " + j);
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "oplog extstatus:" + this.xct + ",pluginFlag:" + this.PtI);
+      com.tencent.mm.kernel.h.baE().ban().B(147457, Long.valueOf(this.xct));
+      com.tencent.mm.kernel.h.baE().ban().B(34, Integer.valueOf(this.PtI));
+      Iterator localIterator = this.pPy.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (Map.Entry)localIterator.next();
+        int i = ((Integer)((Map.Entry)localObject).getKey()).intValue();
+        int j = ((Integer)((Map.Entry)localObject).getValue()).intValue();
+        localObject = new cas();
+        ((cas)localObject).aajJ = i;
+        ((cas)localObject).NkL = j;
+        ((n)com.tencent.mm.kernel.h.ax(n.class)).bzz().d(new k.a(23, (com.tencent.mm.bx.a)localObject));
+        Log.d("MicroMsg.SettingsManageFindMoreUI", "switch  " + i + " " + j);
+      }
+      this.pPy.clear();
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzz().d(new l("", "", "", "", "", "", "", "", this.PtI, "", ""));
     }
-    this.guf.clear();
-    ((j)com.tencent.mm.kernel.g.E(j.class)).Yz().c(new k("", "", "", "", "", "", "", "", this.qIO, "", ""));
-    bJP();
-    AppMethodBeat.o(127277);
+    cIX();
+    AppMethodBeat.o(74215);
+  }
+  
+  protected void gVL()
+  {
+    AppMethodBeat.i(299053);
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().bAi("settings_search_switch");
+    localCheckBoxPreference.adZV = false;
+    if (ju(2097152L))
+    {
+      localCheckBoxPreference.setChecked(false);
+      this.PtG.put(Integer.valueOf(3), Integer.valueOf(0));
+    }
+    for (;;)
+    {
+      a(WeChatBrands.Business.Entries.MeSetDiscoverySearch, "settings_search_switch");
+      AppMethodBeat.o(299053);
+      return;
+      localCheckBoxPreference.setChecked(true);
+      this.PtG.put(Integer.valueOf(3), Integer.valueOf(1));
+    }
+  }
+  
+  protected void gVM()
+  {
+    AppMethodBeat.i(299058);
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().bAi("settings_look_switch");
+    localCheckBoxPreference.adZV = false;
+    boolean bool1;
+    if (!ju(67108864L))
+    {
+      bool1 = true;
+      if (!com.tencent.mm.au.b.OE((String)com.tencent.mm.kernel.h.baE().ban().d(274436, null))) {
+        break label259;
+      }
+      getPreferenceScreen().eh("settings_look_switch", true);
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "european user");
+      bool1 = false;
+    }
+    label259:
+    for (boolean bool2 = false;; bool2 = true)
+    {
+      boolean bool3 = ((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu();
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "isInExperiment %s ,openLook %s, isTeenMode:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
+      if ((bool2) && (bool1) && (!bool3))
+      {
+        localCheckBoxPreference.setChecked(true);
+        this.PtG.put(Integer.valueOf(10), Integer.valueOf(1));
+      }
+      for (;;)
+      {
+        a(WeChatBrands.Business.Entries.MeSetDiscoveryLooks, "settings_look_switch");
+        AppMethodBeat.o(299058);
+        return;
+        bool1 = false;
+        break;
+        if ((!bool2) || (bool3))
+        {
+          getPreferenceScreen().eh("settings_look_switch", true);
+        }
+        else
+        {
+          getPreferenceScreen().eh("settings_look_switch", false);
+          localCheckBoxPreference.setChecked(false);
+          this.PtG.put(Integer.valueOf(10), Integer.valueOf(0));
+        }
+      }
+    }
+  }
+  
+  protected void gVN()
+  {
+    AppMethodBeat.i(299063);
+    boolean bool = ((cn)com.tencent.mm.kernel.h.az(cn.class)).showFinderEntry();
+    Log.i("MicroMsg.SettingsManageFindMoreUI", "showFinder %s", new Object[] { Boolean.valueOf(bool) });
+    if ((((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu()) && (((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).eZD() == 2)) {}
+    for (int i = 1; (!bool) || (i != 0); i = 0)
+    {
+      getPreferenceScreen().eh("settings_finder_switch", true);
+      AppMethodBeat.o(299063);
+      return;
+    }
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().bAi("settings_finder_switch");
+    localCheckBoxPreference.adZV = false;
+    if (ju(34359738368L))
+    {
+      localCheckBoxPreference.setChecked(false);
+      this.PtG.put(Integer.valueOf(11), Integer.valueOf(0));
+    }
+    for (;;)
+    {
+      a(WeChatBrands.Business.Entries.MeSetDiscoveryChannels, "settings_finder_switch");
+      AppMethodBeat.o(299063);
+      return;
+      localCheckBoxPreference.setChecked(true);
+      this.PtG.put(Integer.valueOf(11), Integer.valueOf(1));
+    }
+  }
+  
+  protected boolean gVO()
+  {
+    return true;
   }
   
   public int getResourceId()
   {
-    return 2131165283;
+    AppMethodBeat.i(299021);
+    boolean bool = ab.bBX();
+    this.PtL = bool;
+    if (bool)
+    {
+      i = b.k.settings_pref_manage_findmoreui_wechat_out;
+      AppMethodBeat.o(299021);
+      return i;
+    }
+    int i = b.k.settings_pref_manage_findmoreui;
+    AppMethodBeat.o(299021);
+    return i;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(127275);
-    setMMTitle(2131303298);
-    setBackBtn(new SettingsManageFindMoreUI.3(this));
-    Object localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_sns_switch");
-    ((Preference)localObject).zsk = false;
-    boolean bool1 = Dd(32768);
-    ab.i("MicroMsg.SettingsManageFindMoreUI", "openSns %s", new Object[] { Boolean.valueOf(bool1) });
-    label150:
-    label223:
+    AppMethodBeat.i(74213);
+    setMMTitle(b.i.settings_manage_findmoreui);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(298797);
+        SettingsManageFindMoreUI.this.finish();
+        AppMethodBeat.o(298797);
+        return true;
+      }
+    });
+    Object localObject1 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_sns_switch");
+    ((Preference)localObject1).adZV = false;
+    boolean bool1 = uk(32768L);
+    Log.i("MicroMsg.SettingsManageFindMoreUI", "openSns %s", new Object[] { Boolean.valueOf(bool1) });
+    label165:
     boolean bool2;
+    label268:
+    label351:
+    label496:
+    Object localObject2;
     if (bool1)
     {
-      ((CheckBoxPreference)localObject).vxW = true;
-      this.qIM.put(Integer.valueOf(0), Integer.valueOf(1));
-      localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_scan_switch");
-      ((Preference)localObject).zsk = false;
-      if (!Dc(1048576)) {
-        break label945;
+      ((CheckBoxPreference)localObject1).setChecked(true);
+      this.PtG.put(Integer.valueOf(0), Integer.valueOf(1));
+      gVN();
+      bool1 = ((cn)com.tencent.mm.kernel.h.az(cn.class)).getFinderUtilApi().fgE();
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "showFinderLiveEntry %s", new Object[] { Boolean.valueOf(bool1) });
+      localObject1 = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+      if (!com.tencent.mm.plugin.finder.nearby.abtest.a.eEl()) {
+        break label1281;
       }
-      ((CheckBoxPreference)localObject).vxW = false;
-      this.qIM.put(Integer.valueOf(1), Integer.valueOf(0));
-      localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_shake_switch");
-      ((Preference)localObject).zsk = false;
-      bool1 = Dd(256);
-      ab.i("MicroMsg.SettingsManageFindMoreUI", "openShake %s", new Object[] { Boolean.valueOf(bool1) });
+      getPreferenceScreen().eh("settings_finder_live_switch", true);
+      bool2 = ((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu();
+      if ((bool1) && (!bool2)) {
+        break label1298;
+      }
+      getPreferenceScreen().eh("settings_finder_live_switch", true);
+      getPreferenceScreen().eh("settings_finder_live_above_look_switch", true);
+      localObject1 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_scan_switch");
+      ((Preference)localObject1).adZV = false;
+      if (!ju(1048576L)) {
+        break label1403;
+      }
+      ((CheckBoxPreference)localObject1).setChecked(false);
+      this.PtG.put(Integer.valueOf(1), Integer.valueOf(0));
+      a(WeChatBrands.Business.Entries.GlobalScan, "settings_scan_switch");
+      localObject1 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_shake_switch");
+      ((Preference)localObject1).adZV = false;
+      bool1 = uk(256L);
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "openShake %s", new Object[] { Boolean.valueOf(bool1) });
       if (!bool1) {
-        break label969;
+        break label1427;
       }
-      ((CheckBoxPreference)localObject).vxW = true;
-      this.qIM.put(Integer.valueOf(2), Integer.valueOf(1));
-      localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_look_switch");
-      ((Preference)localObject).zsk = false;
-      if (Dc(67108864)) {
-        break label993;
+      ((CheckBoxPreference)localObject1).setChecked(true);
+      this.PtG.put(Integer.valueOf(2), Integer.valueOf(1));
+      a(WeChatBrands.Business.Entries.MeSetDiscoveryShake, "settings_shake_switch");
+      if (!((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu()) {
+        break label1451;
+      }
+      getPreferenceScreen().eh("settings_shake_switch", true);
+      label392:
+      gVM();
+      gVL();
+      if (!((cn)com.tencent.mm.kernel.h.az(cn.class)).getFinderUtilApi().fgF()) {
+        break label1573;
+      }
+      getPreferenceScreen().eh("settings_nearby_switch", true);
+      localObject1 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_nearby_live_friend_switch");
+      ((Preference)localObject1).adZV = false;
+      if (!((cn)com.tencent.mm.kernel.h.az(cn.class)).getFinderUtilApi().fgE()) {
+        break label1468;
+      }
+      ((CheckBoxPreference)localObject1).setTitle(getContext().getResources().getString(b.i.find_friends_by_nearby_title));
+      localObject2 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_nearby_live_friend_person_switch");
+      ((Preference)localObject2).adZV = false;
+      if (ju(70368744177664L)) {
+        break label1488;
       }
       bool1 = true;
-      label256:
-      if (!com.tencent.mm.au.b.tM((String)com.tencent.mm.kernel.g.RL().Ru().get(274436, null))) {
-        break label1279;
+      label531:
+      bool2 = uk(512L);
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "openNearbyLiveFriends:%s openNearbyLiveFriendsPerson:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if (!bool1) {
+        break label1493;
       }
-      getPreferenceScreen().cl("settings_look_switch", true);
-      ab.i("MicroMsg.SettingsManageFindMoreUI", "european user");
-      bool2 = false;
-      bool1 = false;
+      ((CheckBoxPreference)localObject1).setChecked(true);
+      this.PtG.put(Integer.valueOf(5), Integer.valueOf(1));
+      getPreferenceScreen().eh("settings_nearby_live_friend_person_switch", false);
+      label604:
+      if (!bool2) {
+        break label1531;
+      }
+      ((CheckBoxPreference)localObject2).setChecked(true);
+      this.PtG.put(Integer.valueOf(4), Integer.valueOf(1));
+      label630:
+      a(WeChatBrands.Business.Entries.MeSetDiscoveryNearbyLiveFriends, "settings_nearby_live_friend_switch");
+      a(WeChatBrands.Business.Entries.MeSetDiscoveryNearbyLiveFriendsPerson, "settings_nearby_live_friend_person_switch");
+      if (!((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu()) {
+        break label1556;
+      }
+      getPreferenceScreen().eh("settings_nearby_live_friend_switch", true);
+      getPreferenceScreen().eh("settings_nearby_live_friend_person_switch", true);
+      label695:
+      localObject1 = com.tencent.mm.pluginsdk.platformtools.d.XUQ;
+      if ((localObject1 == null) || (!((d.a)localObject1).hAQ())) {
+        break label1938;
+      }
     }
-    label410:
-    label559:
-    label591:
-    label1233:
-    for (;;)
+    label1281:
+    label1801:
+    label1938:
+    for (bool1 = true;; bool1 = false)
     {
-      ab.i("MicroMsg.SettingsManageFindMoreUI", "isInExperiment %s ,openLook %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      if ((bool2) && (bool1))
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "showShopping %s", new Object[] { Boolean.valueOf(bool1) });
+      bool2 = ((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu();
+      localObject1 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_shopping_switch");
+      ((Preference)localObject1).adZV = false;
+      if ((bool1) && (!bool2))
       {
-        ((CheckBoxPreference)localObject).vxW = true;
-        this.qIM.put(Integer.valueOf(10), Integer.valueOf(1));
-        label359:
-        localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_search_switch");
-        ((Preference)localObject).zsk = false;
-        if (!Dc(2097152)) {
-          break label1056;
+        getPreferenceScreen().eh("settings_shopping_switch", false);
+        label791:
+        if (!ju(4194304L)) {
+          break label1776;
         }
-        ((CheckBoxPreference)localObject).vxW = false;
-        this.qIM.put(Integer.valueOf(3), Integer.valueOf(0));
-        localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_nearby_switch");
-        ((Preference)localObject).zsk = false;
-        bool1 = Dd(512);
-        ab.i("MicroMsg.SettingsManageFindMoreUI", "openNearby %s", new Object[] { Boolean.valueOf(bool1) });
+        ((CheckBoxPreference)localObject1).setChecked(false);
+        this.PtG.put(Integer.valueOf(6), Integer.valueOf(0));
+        label823:
+        a(WeChatBrands.Business.Entries.MeSetDiscoveryShop, "settings_shopping_switch");
+        localObject1 = b.a.fCn();
+        localObject2 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_game_switch");
+        ((Preference)localObject2).adZV = false;
+        bool1 = ((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu();
+        if ((localObject1 == null) || (!((com.tencent.mm.plugin.game.api.b)localObject1).fBZ()) || (bool1)) {
+          break label1827;
+        }
+        if (!ju(8388608L)) {
+          break label1801;
+        }
+        ((CheckBoxPreference)localObject2).setChecked(false);
+        this.PtG.put(Integer.valueOf(7), Integer.valueOf(0));
+        label925:
+        a(WeChatBrands.Business.Entries.MeSetDiscoveryGame, "settings_game_switch");
+        localObject1 = new xl();
+        ((xl)localObject1).iaO.iaQ = true;
+        ((xl)localObject1).publish();
+        bool2 = ((xl)localObject1).iaP.iaR;
+        if ((!((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu()) || (((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).eZD() != 2)) {
+          break label1844;
+        }
+        bool1 = true;
+        label1001:
+        Log.i("MicroMsg.SettingsManageFindMoreUI", "shouldShowMiniProgram %s, isTeenModeAndNotAccessRight:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+        localObject1 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_miniprogram_switch");
+        ((Preference)localObject1).adZV = false;
+        if ((!bool2) || (bool1)) {
+          break label1874;
+        }
+        if (!ju(16777216L)) {
+          break label1849;
+        }
+        ((CheckBoxPreference)localObject1).setChecked(false);
+        this.PtG.put(Integer.valueOf(8), Integer.valueOf(0));
+        label1088:
+        a(WeChatBrands.Business.Entries.MeSetDiscoveryAppbrand, "settings_miniprogram_switch");
+        localObject1 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_wechatout_switch");
+        if (com.tencent.mm.k.i.aRC().getInt("WCOEntranceSwitch", 0) <= 0) {
+          break label1891;
+        }
+        bool1 = true;
+        label1129:
+        Log.i("MicroMsg.SettingsManageFindMoreUI", "showWeChatOut %s", new Object[] { Boolean.valueOf(bool1) });
         if (!bool1) {
-          break label1080;
+          break label1921;
         }
-        ((CheckBoxPreference)localObject).vxW = true;
-        this.qIM.put(Integer.valueOf(4), Integer.valueOf(1));
-        label483:
-        localObject = com.tencent.mm.pluginsdk.f.f.vMG;
-        if ((localObject == null) || (!((f.a)localObject).cGM())) {
-          break label1274;
+        ((Preference)localObject1).adZV = false;
+        if (!ju(33554432L)) {
+          break label1896;
         }
+        ((CheckBoxPreference)localObject1).setChecked(false);
+        this.PtG.put(Integer.valueOf(9), Integer.valueOf(0));
       }
-      label993:
-      label1145:
-      label1274:
-      for (bool1 = true;; bool1 = false)
+      for (;;)
       {
-        ab.i("MicroMsg.SettingsManageFindMoreUI", "showShopping %s", new Object[] { Boolean.valueOf(bool1) });
-        localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_shopping_switch");
-        ((Preference)localObject).zsk = false;
-        CheckBoxPreference localCheckBoxPreference;
-        if (bool1)
+        a(WeChatBrands.Business.Entries.MeSetDiscoveryWeChatOut, "settings_wechatout_switch");
+        localObject1 = getPreferenceScreen().bAi("settings_switch_bottom_tip");
+        if (com.tencent.mm.au.b.OE((String)com.tencent.mm.kernel.h.baE().ban().d(274436, null))) {
+          ((Preference)localObject1).setTitle(b.i.settings_manage_plugin_eu_hint);
+        }
+        getPreferenceScreen().notifyDataSetChanged();
+        AppMethodBeat.o(74213);
+        return;
+        ((CheckBoxPreference)localObject1).setChecked(false);
+        this.PtG.put(Integer.valueOf(0), Integer.valueOf(0));
+        break;
+        getPreferenceScreen().eh("settings_finder_live_above_look_switch", true);
+        break label165;
+        label1298:
+        localObject1 = getPreferenceScreen();
+        localObject2 = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+        localObject1 = (CheckBoxPreference)((com.tencent.mm.ui.base.preference.f)localObject1).bAi(com.tencent.mm.plugin.finder.nearby.abtest.a.eEm());
+        ((Preference)localObject1).adZV = false;
+        if (ju(9007199254740992L))
         {
-          getPreferenceScreen().cl("settings_shopping_switch", false);
-          if (!Dc(4194304)) {
-            break label1120;
-          }
-          ((CheckBoxPreference)localObject).vxW = false;
-          this.qIM.put(Integer.valueOf(6), Integer.valueOf(0));
-          localObject = b.a.bEX();
-          localCheckBoxPreference = (CheckBoxPreference)getPreferenceScreen().atx("settings_game_switch");
-          localCheckBoxPreference.zsk = false;
-          if ((localObject == null) || (!((com.tencent.mm.plugin.game.api.b)localObject).bEM())) {
-            break label1171;
-          }
-          if (!Dc(8388608)) {
-            break label1145;
-          }
-          localCheckBoxPreference.vxW = false;
-          this.qIM.put(Integer.valueOf(7), Integer.valueOf(0));
-          localObject = new qz();
-          ((qz)localObject).cHs.cHu = true;
-          com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-          bool1 = ((qz)localObject).cHt.cHv;
-          ab.i("MicroMsg.SettingsManageFindMoreUI", "shouldShowMiniProgram %s", new Object[] { Boolean.valueOf(bool1) });
-          localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_miniprogram_switch");
-          ((Preference)localObject).zsk = false;
-          if (!bool1) {
-            break label1212;
-          }
-          if (!Dc(16777216)) {
-            break label1187;
-          }
-          ((CheckBoxPreference)localObject).vxW = false;
-          this.qIM.put(Integer.valueOf(8), Integer.valueOf(0));
-          localObject = (CheckBoxPreference)getPreferenceScreen().atx("settings_wechatout_switch");
-          if (com.tencent.mm.m.g.Nq().getInt("WCOEntranceSwitch", 0) <= 0) {
-            break label1228;
-          }
-          bool1 = true;
-          ab.i("MicroMsg.SettingsManageFindMoreUI", "showWeChatOut %s", new Object[] { Boolean.valueOf(bool1) });
-          if (!bool1) {
-            break label1258;
-          }
-          ((Preference)localObject).zsk = false;
-          if (!Dc(33554432)) {
-            break label1233;
-          }
-          ((CheckBoxPreference)localObject).vxW = false;
-          this.qIM.put(Integer.valueOf(9), Integer.valueOf(0));
+          ((CheckBoxPreference)localObject1).setChecked(false);
+          this.PtG.put(Integer.valueOf(13), Integer.valueOf(0));
         }
         for (;;)
         {
-          localObject = getPreferenceScreen().atx("settings_switch_bottom_tip");
-          if (com.tencent.mm.au.b.tM((String)com.tencent.mm.kernel.g.RL().Ru().get(274436, null))) {
-            ((Preference)localObject).setTitle(2131303302);
-          }
-          getPreferenceScreen().notifyDataSetChanged();
-          AppMethodBeat.o(127275);
-          return;
-          ((CheckBoxPreference)localObject).vxW = false;
-          this.qIM.put(Integer.valueOf(0), Integer.valueOf(0));
+          localObject1 = WeChatBrands.Business.Entries.MeSetDiscoveryFinderLive;
+          localObject2 = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+          a((WeChatBrands.Business.Entries)localObject1, com.tencent.mm.plugin.finder.nearby.abtest.a.eEm());
           break;
-          ((CheckBoxPreference)localObject).vxW = true;
-          this.qIM.put(Integer.valueOf(1), Integer.valueOf(1));
-          break label150;
-          ((CheckBoxPreference)localObject).vxW = false;
-          this.qIM.put(Integer.valueOf(2), Integer.valueOf(0));
-          break label223;
-          bool1 = false;
-          break label256;
-          if (!bool2)
-          {
-            getPreferenceScreen().cl("settings_look_switch", true);
-            break label359;
-          }
-          getPreferenceScreen().cl("settings_look_switch", false);
-          ((CheckBoxPreference)localObject).vxW = false;
-          this.qIM.put(Integer.valueOf(10), Integer.valueOf(0));
-          break label359;
-          ((CheckBoxPreference)localObject).vxW = true;
-          this.qIM.put(Integer.valueOf(3), Integer.valueOf(1));
-          break label410;
-          ((CheckBoxPreference)localObject).vxW = false;
-          this.qIM.put(Integer.valueOf(4), Integer.valueOf(0));
-          break label483;
-          getPreferenceScreen().cl("settings_shopping_switch", true);
-          break label559;
-          ((CheckBoxPreference)localObject).vxW = true;
-          this.qIM.put(Integer.valueOf(6), Integer.valueOf(1));
-          break label591;
-          localCheckBoxPreference.vxW = true;
-          this.qIM.put(Integer.valueOf(7), Integer.valueOf(1));
-          break label664;
-          getPreferenceScreen().cl("settings_game_switch", true);
-          break label664;
-          ((CheckBoxPreference)localObject).vxW = true;
-          this.qIM.put(Integer.valueOf(8), Integer.valueOf(1));
-          break label772;
-          getPreferenceScreen().cl("settings_miniprogram_switch", true);
-          break label772;
-          bool1 = false;
-          break label803;
-          ((CheckBoxPreference)localObject).vxW = true;
-          this.qIM.put(Integer.valueOf(9), Integer.valueOf(1));
-          continue;
-          getPreferenceScreen().cl("settings_wechatout_switch", true);
+          ((CheckBoxPreference)localObject1).setChecked(true);
+          this.PtG.put(Integer.valueOf(13), Integer.valueOf(1));
         }
+        label1403:
+        ((CheckBoxPreference)localObject1).setChecked(true);
+        this.PtG.put(Integer.valueOf(1), Integer.valueOf(1));
+        break label268;
+        label1427:
+        ((CheckBoxPreference)localObject1).setChecked(false);
+        this.PtG.put(Integer.valueOf(2), Integer.valueOf(0));
+        break label351;
+        label1451:
+        getPreferenceScreen().eh("settings_shake_switch", false);
+        break label392;
+        label1468:
+        ((CheckBoxPreference)localObject1).setTitle(getContext().getResources().getString(b.i.nearby_live_friend_title));
+        break label496;
+        label1488:
+        bool1 = false;
+        break label531;
+        label1493:
+        ((CheckBoxPreference)localObject1).setChecked(false);
+        this.PtG.put(Integer.valueOf(5), Integer.valueOf(0));
+        getPreferenceScreen().eh("settings_nearby_live_friend_person_switch", true);
+        break label604;
+        label1531:
+        ((CheckBoxPreference)localObject2).setChecked(false);
+        this.PtG.put(Integer.valueOf(4), Integer.valueOf(0));
+        break label630;
+        label1556:
+        getPreferenceScreen().eh("settings_nearby_live_friend_switch", false);
+        break label695;
+        label1573:
+        getPreferenceScreen().eh("settings_nearby_live_friend_switch", true);
+        getPreferenceScreen().eh("settings_nearby_live_friend_person_switch", true);
+        localObject1 = (CheckBoxPreference)getPreferenceScreen().bAi("settings_nearby_switch");
+        ((Preference)localObject1).adZV = false;
+        bool1 = uk(512L);
+        Log.i("MicroMsg.SettingsManageFindMoreUI", "openNearby %s", new Object[] { Boolean.valueOf(bool1) });
+        if (bool1)
+        {
+          ((CheckBoxPreference)localObject1).setChecked(true);
+          this.PtG.put(Integer.valueOf(4), Integer.valueOf(1));
+        }
+        for (;;)
+        {
+          a(WeChatBrands.Business.Entries.MeSetDiscoveryNearby, "settings_nearby_switch");
+          if (!((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu()) {
+            break label1742;
+          }
+          getPreferenceScreen().eh("settings_nearby_switch", true);
+          break;
+          ((CheckBoxPreference)localObject1).setChecked(false);
+          this.PtG.put(Integer.valueOf(4), Integer.valueOf(0));
+        }
+        label1742:
+        getPreferenceScreen().eh("settings_nearby_switch", false);
+        break label695;
+        getPreferenceScreen().eh("settings_shopping_switch", true);
+        break label791;
+        label1776:
+        ((CheckBoxPreference)localObject1).setChecked(true);
+        this.PtG.put(Integer.valueOf(6), Integer.valueOf(1));
+        break label823;
+        ((CheckBoxPreference)localObject2).setChecked(true);
+        this.PtG.put(Integer.valueOf(7), Integer.valueOf(1));
+        break label925;
+        label1827:
+        getPreferenceScreen().eh("settings_game_switch", true);
+        break label925;
+        label1844:
+        bool1 = false;
+        break label1001;
+        label1849:
+        ((CheckBoxPreference)localObject1).setChecked(true);
+        this.PtG.put(Integer.valueOf(8), Integer.valueOf(1));
+        break label1088;
+        label1874:
+        getPreferenceScreen().eh("settings_miniprogram_switch", true);
+        break label1088;
+        label1891:
+        bool1 = false;
+        break label1129;
+        label1896:
+        ((CheckBoxPreference)localObject1).setChecked(true);
+        this.PtG.put(Integer.valueOf(9), Integer.valueOf(1));
+        continue;
+        getPreferenceScreen().eh("settings_wechatout_switch", true);
       }
-      label1120:
-      label1258:
-      label1279:
-      bool2 = true;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(127272);
+    AppMethodBeat.i(74210);
     super.onCreate(paramBundle);
-    this.kRf = r.Zs();
-    this.qIO = r.Zy();
-    ab.i("MicroMsg.SettingsManageFindMoreUI", "onCreate extStatus %d, pluginFlag %d", new Object[] { Long.valueOf(this.kRf), Integer.valueOf(this.qIO) });
-    initView();
-    AppMethodBeat.o(127272);
+    boolean bool;
+    if (com.tencent.mm.k.i.aRC().getInt("ExtFunctionSwitchEntry", 0) == 1)
+    {
+      bool = true;
+      this.PtK = bool;
+      this.PtJ = z.bBK().booleanValue();
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "onCreate isShowWechatUserDialog = " + this.PtK + "， isOverseaNewUser = " + this.PtJ);
+      this.xct = z.bAR();
+      this.PtL = ab.bBX();
+      paramBundle = LocaleUtil.getCurrentLanguage(this);
+      if ((!"zh_CN".equals(paramBundle)) && (!"zh_HK".equals(paramBundle)) && (!"zh_TW".equals(paramBundle))) {
+        break label189;
+      }
+    }
+    label189:
+    for (this.PtM = true;; this.PtM = false)
+    {
+      this.PtI = z.bBf();
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "onCreate extStatus %d, pluginFlag %d", new Object[] { Long.valueOf(this.xct), Integer.valueOf(this.PtI) });
+      initView();
+      AppMethodBeat.o(74210);
+      return;
+      bool = false;
+      break;
+    }
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(final com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
-    int j = 0;
-    AppMethodBeat.i(127274);
+    AppMethodBeat.i(74212);
     if (!(paramPreference instanceof CheckBoxPreference))
     {
-      AppMethodBeat.o(127274);
+      AppMethodBeat.o(74212);
       return true;
     }
     paramf = (CheckBoxPreference)paramPreference;
     paramPreference = paramPreference.mKey;
-    ab.i("MicroMsg.SettingsManageFindMoreUI", "click pref key %s", new Object[] { paramPreference });
+    Log.i("MicroMsg.SettingsManageFindMoreUI", "click pref key %s", new Object[] { paramPreference });
     int i = -1;
     if (paramPreference.equals("settings_sns_switch"))
     {
-      C(paramf.isChecked(), 32768);
       i = 0;
+      ah(paramf.isChecked(), 32768);
+      if (!paramf.isChecked()) {
+        break label985;
+      }
     }
-    for (;;)
+    label650:
+    label985:
+    for (int j = 1;; j = 0)
     {
-      if (paramf.isChecked()) {
-        j = 1;
-      }
       if (i >= 0) {
-        this.qIN.put(Integer.valueOf(i), Integer.valueOf(j));
+        this.PtH.put(Integer.valueOf(i), Integer.valueOf(j));
       }
-      AppMethodBeat.o(127274);
+      AppMethodBeat.o(74212);
       return true;
       if (paramPreference.equals("settings_scan_switch"))
       {
-        g(paramf.isChecked(), 1048576, 49);
+        if (!WeChatBrands.Business.Entries.GlobalScan.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
         i = 1;
+        b(paramf.isChecked(), 1048576L, 49);
+        break;
       }
-      else if (paramPreference.equals("settings_search_switch"))
+      if (paramPreference.equals("settings_search_switch"))
       {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoverySearch.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        if ((this.PtL) && (this.PtK) && (paramf.isChecked()))
+        {
+          com.tencent.mm.plugin.setting.ui.b.a.a(this, 2097152L, paramf, new a.a()
+          {
+            public final void cjC()
+            {
+              AppMethodBeat.i(298778);
+              CheckBoxPreference localCheckBoxPreference = paramf;
+              if (!paramf.isChecked()) {}
+              for (boolean bool = true;; bool = false)
+              {
+                localCheckBoxPreference.Hy(bool);
+                AppMethodBeat.o(298778);
+                return;
+              }
+            }
+            
+            public final void onSuccess()
+            {
+              AppMethodBeat.i(298775);
+              Log.d("MicroMsg.SettingsManageFindMoreUI", "switchSosData checkPref.isChecked() = " + paramf.isChecked() + ", extStatus = " + z.bAR());
+              SettingsManageFindMoreUI.this.CM(paramf.isChecked());
+              HashMap localHashMap = SettingsManageFindMoreUI.this.PtH;
+              if (paramf.isChecked()) {}
+              for (int i = 1;; i = 0)
+              {
+                localHashMap.put(Integer.valueOf(3), Integer.valueOf(i));
+                AppMethodBeat.o(298775);
+                return;
+              }
+            }
+          }, 2);
+          break;
+        }
+        i = 3;
+        a(paramf, paramf.isChecked(), false);
+        break;
+      }
+      if (paramPreference.equals("settings_shopping_switch"))
+      {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryShop.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        i = 6;
+        b(paramf.isChecked(), 4194304L, 51);
+        break;
+      }
+      if (paramPreference.equals("settings_game_switch"))
+      {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryGame.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        i = 7;
+        b(paramf.isChecked(), 8388608L, 52);
+        paramPreference = com.tencent.mm.plugin.report.service.h.OAn;
+        if (paramf.isChecked()) {}
+        for (l = 0L;; l = 1L)
+        {
+          paramPreference.idkeyStat(848L, l, 1L, false);
+          break;
+        }
+      }
+      if (paramPreference.equals("settings_miniprogram_switch"))
+      {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryAppbrand.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        i = 8;
+        b(paramf.isChecked(), 16777216L, 53);
+        break;
+      }
+      if (paramPreference.equals("settings_wechatout_switch"))
+      {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryWeChatOut.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        i = 9;
+        b(paramf.isChecked(), 33554432L, 54);
+        break;
+      }
+      if (paramPreference.equals("settings_shake_switch"))
+      {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryShake.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        i = 2;
+        ah(paramf.isChecked(), 256);
+        break;
+      }
+      if (paramPreference.equals("settings_nearby_switch"))
+      {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryNearby.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        i = 4;
+        ah(paramf.isChecked(), 512);
+        break;
+      }
+      if (paramPreference.equals("settings_nearby_live_friend_switch"))
+      {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryNearbyLiveFriends.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        b(paramf.isChecked(), 70368744177664L, 61);
+        paramPreference = getPreferenceScreen();
+        boolean bool;
         if (!paramf.isChecked())
         {
-          if (((m)com.tencent.mm.kernel.g.E(m.class)).b(this, new SettingsManageFindMoreUI.1(this, paramf))) {
-            al.p(new SettingsManageFindMoreUI.2(this, paramf), 500L);
+          bool = true;
+          label605:
+          paramPreference.eh("settings_nearby_live_friend_person_switch", bool);
+          paramPreference = com.tencent.mm.plugin.setting.a.b.Por;
+          if (!paramf.isChecked()) {
+            break label650;
           }
-          i = 3;
         }
-        else
+        for (l = 1L;; l = 0L)
         {
-          g(paramf.isChecked(), 2097152, 50);
-          i = 3;
+          com.tencent.mm.plugin.setting.a.b.bd(12L, l);
+          i = 5;
+          break;
+          bool = false;
+          break label605;
         }
       }
-      else if (paramPreference.equals("settings_shopping_switch"))
+      if (paramPreference.equals("settings_nearby_live_friend_person_switch"))
       {
-        i = 6;
-        g(paramf.isChecked(), 4194304, 51);
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryNearbyLiveFriendsPerson.checkAvailable(this))
+        {
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        ah(paramf.isChecked(), 512);
+        paramPreference = com.tencent.mm.plugin.setting.a.b.Por;
+        if (paramf.isChecked()) {}
+        for (l = 1L;; l = 0L)
+        {
+          com.tencent.mm.plugin.setting.a.b.bd(13L, l);
+          i = 12;
+          break;
+        }
       }
-      else
+      if (paramPreference.equals("settings_look_switch"))
       {
-        if (paramPreference.equals("settings_game_switch"))
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryLooks.checkAvailable(this))
         {
-          g(paramf.isChecked(), 8388608, 52);
-          paramPreference = com.tencent.mm.plugin.report.service.h.qsU;
-          if (paramf.isChecked()) {}
-          for (long l = 0L;; l = 1L)
+          AppMethodBeat.o(74212);
+          return true;
+        }
+        if ((this.PtL) && (this.PtK) && (paramf.isChecked()))
+        {
+          com.tencent.mm.plugin.setting.ui.b.a.a(this, 67108864L, paramf, new a.a()
           {
-            paramPreference.idkeyStat(848L, l, 1L, false);
-            i = 7;
-            break;
-          }
+            public final void cjC()
+            {
+              AppMethodBeat.i(298789);
+              CheckBoxPreference localCheckBoxPreference = paramf;
+              if (!paramf.isChecked()) {}
+              for (boolean bool = true;; bool = false)
+              {
+                localCheckBoxPreference.Hy(bool);
+                AppMethodBeat.o(298789);
+                return;
+              }
+            }
+            
+            public final void onSuccess()
+            {
+              AppMethodBeat.i(298786);
+              Log.d("MicroMsg.SettingsManageFindMoreUI", "switchDiscoveryLooks checkPref.isChecked() = " + paramf.isChecked() + ", extStatus = " + z.bAR());
+              SettingsManageFindMoreUI.this.CN(paramf.isChecked());
+              HashMap localHashMap = SettingsManageFindMoreUI.this.PtH;
+              if (paramf.isChecked()) {}
+              for (int i = 1;; i = 0)
+              {
+                localHashMap.put(Integer.valueOf(10), Integer.valueOf(i));
+                AppMethodBeat.o(298786);
+                return;
+              }
+            }
+          }, 2);
+          break;
         }
-        if (paramPreference.equals("settings_miniprogram_switch"))
+        i = 10;
+        CN(paramf.isChecked());
+        break;
+      }
+      if (paramPreference.equals("settings_finder_switch"))
+      {
+        if (!WeChatBrands.Business.Entries.MeSetDiscoveryChannels.checkAvailable(this))
         {
-          i = 8;
-          g(paramf.isChecked(), 16777216, 53);
+          AppMethodBeat.o(74212);
+          return true;
         }
-        else if (paramPreference.equals("settings_wechatout_switch"))
+        if ((this.PtL) && (this.PtK) && (paramf.isChecked()))
         {
-          i = 9;
-          g(paramf.isChecked(), 33554432, 54);
-        }
-        else if (paramPreference.equals("settings_shake_switch"))
-        {
-          i = 2;
-          C(paramf.isChecked(), 256);
-        }
-        else if (paramPreference.equals("settings_nearby_switch"))
-        {
-          i = 4;
-          C(paramf.isChecked(), 512);
-        }
-        else if (paramPreference.equals("settings_look_switch"))
-        {
-          ((com.tencent.mm.plugin.welab.a.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.welab.a.a.a.class)).bR("labs_browse", paramf.isChecked());
-          if (paramf.isChecked())
+          com.tencent.mm.plugin.setting.ui.b.a.a(this, 34359738368L, paramf, new a.a()
           {
-            this.kRf &= 0xFBFFFFFF;
-            i = 10;
-          }
-          else
-          {
-            this.kRf |= 0x4000000;
-            i = 10;
-          }
+            public final void cjC()
+            {
+              AppMethodBeat.i(298795);
+              CheckBoxPreference localCheckBoxPreference = paramf;
+              if (!paramf.isChecked()) {}
+              for (boolean bool = true;; bool = false)
+              {
+                localCheckBoxPreference.Hy(bool);
+                AppMethodBeat.o(298795);
+                return;
+              }
+            }
+            
+            public final void onSuccess()
+            {
+              AppMethodBeat.i(298792);
+              Log.d("MicroMsg.SettingsManageFindMoreUI", "switchFinder checkPref.isChecked() = " + paramf.isChecked() + ", extStatus = " + z.bAR());
+              SettingsManageFindMoreUI.this.CO(paramf.isChecked());
+              HashMap localHashMap = SettingsManageFindMoreUI.this.PtH;
+              if (paramf.isChecked()) {}
+              for (int i = 1;; i = 0)
+              {
+                localHashMap.put(Integer.valueOf(11), Integer.valueOf(i));
+                AppMethodBeat.o(298792);
+                return;
+              }
+            }
+          }, 2);
+          break;
         }
+        i = 11;
+        CO(paramf.isChecked());
+        break;
+      }
+      com.tencent.mm.plugin.finder.nearby.abtest.a locala = com.tencent.mm.plugin.finder.nearby.abtest.a.EHr;
+      if (!paramPreference.equals(com.tencent.mm.plugin.finder.nearby.abtest.a.eEm())) {
+        break;
+      }
+      if (!WeChatBrands.Business.Entries.MeSetDiscoveryFinderLive.checkAvailable(this))
+      {
+        AppMethodBeat.o(74212);
+        return true;
+      }
+      b(paramf.isChecked(), 9007199254740992L, 65);
+      Log.i("MicroMsg.SettingsManageFindMoreUI", "switch finderlive 65");
+      paramPreference = com.tencent.mm.plugin.setting.a.b.Por;
+      if (paramf.isChecked()) {}
+      for (long l = 1L;; l = 0L)
+      {
+        com.tencent.mm.plugin.setting.a.b.bd(14L, l);
+        i = 13;
+        break;
       }
     }
   }
@@ -480,7 +1032,7 @@ public class SettingsManageFindMoreUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsManageFindMoreUI
  * JD-Core Version:    0.7.0.1
  */

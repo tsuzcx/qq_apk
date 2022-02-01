@@ -3,9 +3,9 @@ package com.tencent.mobileqq.app.automator;
 public class LinearGroup
   extends StepGroup
 {
-  protected int a()
+  protected int doStep()
   {
-    while (this.a != 8)
+    while (this.mResult != 8)
     {
       AsyncStep localAsyncStep = a();
       if (localAsyncStep == null) {
@@ -18,7 +18,7 @@ public class LinearGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.LinearGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,12 @@
 package cooperation.liveroom;
 
 import android.os.Bundle;
-import beae;
-import beag;
-import beaj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -27,8 +28,8 @@ public class LiveRoomDownloadManager
   
   public void download(List<String> paramList, Map<String, File> paramMap, boolean paramBoolean, LiveRoomDownloadManager.DownloadCallback paramDownloadCallback)
   {
-    beaj localbeaj = ((beag)((BrowserAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web")).getManager(47)).a(1);
-    if (localbeaj != null)
+    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((BrowserAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web")).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    if (localDownloaderInterface != null)
     {
       Bundle localBundle = new Bundle();
       paramDownloadCallback = new LiveRoomDownloadManager.1(this, paramDownloadCallback);
@@ -38,22 +39,22 @@ public class LiveRoomDownloadManager
         while (paramList.hasNext())
         {
           Object localObject = (String)paramList.next();
-          localObject = new beae((String)localObject, (File)paramMap.get(localObject));
-          ((beae)localObject).j = true;
-          ((beae)localObject).p = false;
-          localbeaj.a((beae)localObject, paramDownloadCallback, localBundle);
+          localObject = new DownloadTask((String)localObject, (File)paramMap.get(localObject));
+          ((DownloadTask)localObject).D = true;
+          ((DownloadTask)localObject).N = false;
+          localDownloaderInterface.startDownload((DownloadTask)localObject, paramDownloadCallback, localBundle);
         }
       }
-      paramList = new beae(paramList, paramMap, "LiveRoomDownloadManager");
-      paramList.j = true;
-      paramList.p = false;
-      localbeaj.a(paramList, paramDownloadCallback, localBundle);
+      paramList = new DownloadTask(paramList, paramMap, "LiveRoomDownloadManager");
+      paramList.D = true;
+      paramList.N = false;
+      localDownloaderInterface.startDownload(paramList, paramDownloadCallback, localBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomDownloadManager
  * JD-Core Version:    0.7.0.1
  */

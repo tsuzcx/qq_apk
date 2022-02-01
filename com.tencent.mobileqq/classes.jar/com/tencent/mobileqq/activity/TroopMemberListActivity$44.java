@@ -1,59 +1,41 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Handler;
-import android.os.Message;
-import awgf;
-import awgg;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.onlinemember.api.TroopOnlineMemberObserver;
 import java.util.List;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.UserInfo;
 
 class TroopMemberListActivity$44
-  implements Runnable
+  extends TroopOnlineMemberObserver
 {
   TroopMemberListActivity$44(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString, List<String> paramList)
   {
-    for (;;)
-    {
-      Object localObject3;
-      try
-      {
-        localObject3 = this.this$0.app.getEntityManagerFactory().createEntityManager();
-        if (localObject3 == null) {
-          break label168;
-        }
-        Object localObject1 = ((awgf)localObject3).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.b }, null, null, null, null);
-        ((awgf)localObject3).a();
-        if (localObject1 == null) {
-          break label165;
-        }
-        localObject3 = new ArrayList(((List)localObject1).size());
-        localObject1 = ((List)localObject1).iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          ((ArrayList)localObject3).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
-          continue;
-        }
-        localMessage = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      }
-      finally {}
-      localMessage.what = 8;
-      localMessage.obj = new Object[] { Boolean.valueOf(this.this$0.jdField_a_of_type_Boolean), localObject3 };
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      label165:
-      return;
-      label168:
-      Message localMessage = null;
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.mTroopUin)) && (this.a.mSortType == 1) && (paramList != null)) {
+      ThreadManager.getUIHandler().post(new TroopMemberListActivity.44.1(this, paramList));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString, List<String> paramList)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.mTroopUin)) && (this.a.mSortType == 5) && (paramList != null)) {
+      ThreadManager.getUIHandler().post(new TroopMemberListActivity.44.2(this, paramList));
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString, List<oidb_0xa2a.UserInfo> paramList)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.mTroopUin)) && (this.a.mSortType == 8) && (paramList != null)) {
+      ThreadManager.getUIHandler().post(new TroopMemberListActivity.44.3(this, paramList));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.44
  * JD-Core Version:    0.7.0.1
  */

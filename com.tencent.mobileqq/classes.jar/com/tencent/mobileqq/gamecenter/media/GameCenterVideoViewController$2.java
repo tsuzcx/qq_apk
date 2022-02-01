@@ -1,21 +1,26 @@
 package com.tencent.mobileqq.gamecenter.media;
 
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class GameCenterVideoViewController$2
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
   GameCenterVideoViewController$2(GameCenterVideoViewController paramGameCenterVideoViewController) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QQToast.a(this.this$0.getContext(), 1, this.this$0.getContext().getString(2131718836), 0).b(0);
+    GameCenterVideoViewController.access$000(this.a).setShown(paramBoolean);
+    if (GameCenterVideoViewController.access$100(this.a) != null) {
+      GameCenterVideoViewController.access$100(this.a).a(paramBoolean, GameCenterVideoViewController.access$200(this.a));
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -69,29 +69,29 @@ public class CloudFileAdapter
         paramView = paramViewGroup;
         try
         {
-          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131232740));
+          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131232739));
           paramView = paramViewGroup;
           localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudFileBrowserActivity.c);
           paramView = paramViewGroup;
           localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localCloudFileItemHolder1);
           paramView = paramViewGroup;
-          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131232741));
+          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131232740));
           paramView = paramViewGroup;
-          localCloudFileItemHolder1.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131232742));
+          localCloudFileItemHolder1.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131232741));
           paramView = paramViewGroup;
-          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232744));
+          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131232743));
           paramView = paramViewGroup;
-          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232743));
+          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131232742));
           paramView = paramViewGroup;
-          localCloudFileItemHolder1.b = ((TextView)paramViewGroup.findViewById(2131232745));
+          localCloudFileItemHolder1.b = ((TextView)paramViewGroup.findViewById(2131232744));
           paramView = paramViewGroup;
-          localCloudFileItemHolder1.c = ((TextView)paramViewGroup.findViewById(2131232746));
+          localCloudFileItemHolder1.c = ((TextView)paramViewGroup.findViewById(2131232745));
           paramView = paramViewGroup;
-          localCloudFileItemHolder1.d = ((TextView)paramViewGroup.findViewById(2131231883));
+          localCloudFileItemHolder1.d = ((TextView)paramViewGroup.findViewById(2131231882));
           paramView = paramViewGroup;
           localCloudFileItemHolder1.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramViewGroup.findViewById(2131230987));
           paramView = paramViewGroup;
-          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131231701));
+          localCloudFileItemHolder1.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131231700));
           paramView = paramViewGroup;
           paramViewGroup.setTag(localCloudFileItemHolder1);
           paramView = paramViewGroup;

@@ -9,6 +9,8 @@ public abstract interface IBaseService
   
   public abstract int getMsfConnectedNetType();
   
+  public abstract int onKillProcess();
+  
   public abstract int onProcessViewableChanged(boolean paramBoolean, long paramLong, String paramString);
   
   public abstract FromServiceMsg sendSyncToServiceMsg(ToServiceMsg paramToServiceMsg);
@@ -17,7 +19,7 @@ public abstract interface IBaseService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.remote.IBaseService
  * JD-Core Version:    0.7.0.1
  */

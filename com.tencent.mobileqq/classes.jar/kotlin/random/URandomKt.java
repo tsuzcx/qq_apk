@@ -18,19 +18,31 @@ public final class URandomKt
   @ExperimentalUnsignedTypes
   public static final void checkUIntRangeBounds-J1ME1BU(int paramInt1, int paramInt2)
   {
-    if (UnsignedKt.uintCompare(paramInt2, paramInt1) > 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(RandomKt.boundsErrorMessage(UInt.box-impl(paramInt1), UInt.box-impl(paramInt2)).toString()));
+    int i;
+    if (UnsignedKt.uintCompare(paramInt2, paramInt1) > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0) {
+      return;
+    }
+    throw ((Throwable)new IllegalArgumentException(RandomKt.boundsErrorMessage(UInt.box-impl(paramInt1), UInt.box-impl(paramInt2)).toString()));
   }
   
   @ExperimentalUnsignedTypes
   public static final void checkULongRangeBounds-eb3DHEI(long paramLong1, long paramLong2)
   {
-    if (UnsignedKt.ulongCompare(paramLong2, paramLong1) > 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(RandomKt.boundsErrorMessage(ULong.box-impl(paramLong1), ULong.box-impl(paramLong2)).toString()));
+    int i;
+    if (UnsignedKt.ulongCompare(paramLong2, paramLong1) > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0) {
+      return;
+    }
+    throw ((Throwable)new IllegalArgumentException(RandomKt.boundsErrorMessage(ULong.box-impl(paramLong1), ULong.box-impl(paramLong2)).toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -78,16 +90,20 @@ public final class URandomKt
   {
     Intrinsics.checkParameterIsNotNull(paramRandom, "$this$nextUInt");
     Intrinsics.checkParameterIsNotNull(paramUIntRange, "range");
-    if (paramUIntRange.isEmpty()) {
-      throw ((Throwable)new IllegalArgumentException("Cannot get random in empty range: " + paramUIntRange));
+    if (!paramUIntRange.isEmpty())
+    {
+      if (UnsignedKt.uintCompare(paramUIntRange.getLast(), -1) < 0) {
+        return nextUInt-a8DCA5k(paramRandom, paramUIntRange.getFirst(), UInt.constructor-impl(paramUIntRange.getLast() + 1));
+      }
+      if (UnsignedKt.uintCompare(paramUIntRange.getFirst(), 0) > 0) {
+        return UInt.constructor-impl(nextUInt-a8DCA5k(paramRandom, UInt.constructor-impl(paramUIntRange.getFirst() - 1), paramUIntRange.getLast()) + 1);
+      }
+      return nextUInt(paramRandom);
     }
-    if (UnsignedKt.uintCompare(paramUIntRange.getLast(), -1) < 0) {
-      return nextUInt-a8DCA5k(paramRandom, paramUIntRange.getFirst(), UInt.constructor-impl(paramUIntRange.getLast() + 1));
-    }
-    if (UnsignedKt.uintCompare(paramUIntRange.getFirst(), 0) > 0) {
-      return UInt.constructor-impl(nextUInt-a8DCA5k(paramRandom, UInt.constructor-impl(paramUIntRange.getFirst() - 1), paramUIntRange.getLast()) + 1);
-    }
-    return nextUInt(paramRandom);
+    paramRandom = new StringBuilder();
+    paramRandom.append("Cannot get random in empty range: ");
+    paramRandom.append(paramUIntRange);
+    throw ((Throwable)new IllegalArgumentException(paramRandom.toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -121,16 +137,23 @@ public final class URandomKt
   {
     Intrinsics.checkParameterIsNotNull(paramRandom, "$this$nextULong");
     Intrinsics.checkParameterIsNotNull(paramULongRange, "range");
-    if (paramULongRange.isEmpty()) {
-      throw ((Throwable)new IllegalArgumentException("Cannot get random in empty range: " + paramULongRange));
+    if (!paramULongRange.isEmpty())
+    {
+      if (UnsignedKt.ulongCompare(paramULongRange.getLast(), -1L) < 0) {
+        return nextULong-jmpaW-c(paramRandom, paramULongRange.getFirst(), ULong.constructor-impl(paramULongRange.getLast() + ULong.constructor-impl(0xFFFFFFFF & 1)));
+      }
+      if (UnsignedKt.ulongCompare(paramULongRange.getFirst(), 0L) > 0)
+      {
+        long l1 = paramULongRange.getFirst();
+        long l2 = 0xFFFFFFFF & 1;
+        return ULong.constructor-impl(nextULong-jmpaW-c(paramRandom, ULong.constructor-impl(l1 - ULong.constructor-impl(l2)), paramULongRange.getLast()) + ULong.constructor-impl(l2));
+      }
+      return nextULong(paramRandom);
     }
-    if (UnsignedKt.ulongCompare(paramULongRange.getLast(), -1L) < 0) {
-      return nextULong-jmpaW-c(paramRandom, paramULongRange.getFirst(), ULong.constructor-impl(paramULongRange.getLast() + ULong.constructor-impl(1 & 0xFFFFFFFF)));
-    }
-    if (UnsignedKt.ulongCompare(paramULongRange.getFirst(), 0L) > 0) {
-      return ULong.constructor-impl(nextULong-jmpaW-c(paramRandom, ULong.constructor-impl(paramULongRange.getFirst() - ULong.constructor-impl(1 & 0xFFFFFFFF)), paramULongRange.getLast()) + ULong.constructor-impl(1 & 0xFFFFFFFF));
-    }
-    return nextULong(paramRandom);
+    paramRandom = new StringBuilder();
+    paramRandom.append("Cannot get random in empty range: ");
+    paramRandom.append(paramULongRange);
+    throw ((Throwable)new IllegalArgumentException(paramRandom.toString()));
   }
   
   @ExperimentalUnsignedTypes
@@ -152,7 +175,7 @@ public final class URandomKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.random.URandomKt
  * JD-Core Version:    0.7.0.1
  */

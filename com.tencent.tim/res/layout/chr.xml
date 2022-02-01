@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/e9a" android:paddingLeft="@dimen/bse" android:paddingTop="15.0dip" android:paddingRight="@dimen/bsf" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.qqmail.card.view.CircularImageView android:id="@id/m23" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginRight="8.0dip" android:scaleType="centerCrop" app:border="true" app:border_color="@color/au1" app:border_width="1.0px" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="16.0sp" android:textColor="@color/aii" android:id="@id/m3p" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/ni3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+                <TextView android:textSize="13.0sp" android:textColor="@color/atu" android:id="@id/fgi" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="13.0sp" android:textColor="@color/ats" android:id="@id/bmt" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="|" />
+                <TextView android:textSize="13.0sp" android:textColor="@color/atu" android:id="@id/fc0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/nvz" android:paddingLeft="@dimen/bic" android:paddingTop="16.0dip" android:paddingRight="@dimen/bic" android:paddingBottom="18.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="top" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:text="@string/xmq" style="@style/ahd" />
+            <TextView android:id="@id/nid" style="@style/ahc" />
+        </LinearLayout>
+        <LinearLayout android:gravity="top" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip">
+            <TextView android:text="@string/xms" style="@style/ahd" />
+            <TextView android:id="@id/nig" style="@style/ahc" />
+        </LinearLayout>
+        <LinearLayout android:gravity="top" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip">
+            <TextView android:text="@string/xmr" style="@style/ahd" />
+            <TextView android:id="@id/nif" style="@style/ahc" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

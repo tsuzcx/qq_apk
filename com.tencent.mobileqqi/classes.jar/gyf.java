@@ -1,32 +1,34 @@
-import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
+import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
 import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView.AutoLocationCallback;
-import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapController;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
 
 public class gyf
-  extends Handler
+  extends SOSOMapLBSApiListener
 {
-  public gyf(AutoLocationMapView paramAutoLocationMapView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public gyf(AutoLocationMapView paramAutoLocationMapView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.clearAllOverlays();
-    if (paramMessage.arg1 == 0)
+    super(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  {
+    SOSOMapLBSApi.getInstance().removeLocationUpdate();
+    Message localMessage = this.a.a.obtainMessage(1);
+    if (paramSOSOMapLBSApiResult.Info == 1)
     {
-      Object localObject = this.a.getController();
-      ((MapController)localObject).setCenter(localGeoPoint);
-      ((MapController)localObject).setZoom(this.a.getMaxZoomLevel());
-      localObject = new gyh(BitmapManager.a(this.a.getContext().getResources(), 2130838399), localGeoPoint);
-      this.a.addOverlay((Overlay)localObject);
+      paramSOSOMapLBSApiResult = new GeoPoint((int)(paramSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(paramSOSOMapLBSApiResult.Longitude * 1000000.0D));
+      localMessage.arg1 = 0;
+      localMessage.obj = paramSOSOMapLBSApiResult;
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
+    for (;;)
+    {
+      localMessage.sendToTarget();
+      return;
+      localMessage.arg2 = -1;
     }
   }
 }

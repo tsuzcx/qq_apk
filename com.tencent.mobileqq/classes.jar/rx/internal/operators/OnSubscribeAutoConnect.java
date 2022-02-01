@@ -18,13 +18,15 @@ public final class OnSubscribeAutoConnect<T>
   
   public OnSubscribeAutoConnect(ConnectableObservable<? extends T> paramConnectableObservable, int paramInt, Action1<? super Subscription> paramAction1)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("numberOfSubscribers > 0 required");
+    if (paramInt > 0)
+    {
+      this.source = paramConnectableObservable;
+      this.numberOfSubscribers = paramInt;
+      this.connection = paramAction1;
+      this.clients = new AtomicInteger();
+      return;
     }
-    this.source = paramConnectableObservable;
-    this.numberOfSubscribers = paramInt;
-    this.connection = paramAction1;
-    this.clients = new AtomicInteger();
+    throw new IllegalArgumentException("numberOfSubscribers > 0 required");
   }
   
   public void call(Subscriber<? super T> paramSubscriber)
@@ -37,7 +39,7 @@ public final class OnSubscribeAutoConnect<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeAutoConnect
  * JD-Core Version:    0.7.0.1
  */

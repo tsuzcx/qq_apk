@@ -8,93 +8,93 @@ import java.util.Collections;
 public final class k
   implements h
 {
-  private boolean aBO;
-  private com.google.android.exoplayer2.c.m aCe;
-  private final s aKF;
-  private final n aKI;
-  private final n aKJ;
-  private final com.google.android.exoplayer2.i.m aKM;
-  private String aKf;
-  private final boolean[] aKu;
-  private long aKw;
-  private long aKy;
-  private k.a aLm;
-  private final n aLn;
-  private final n aLo;
-  private final n aLp;
+  private boolean cLK;
+  private com.google.android.exoplayer2.c.m cMa;
+  private String cTX;
+  private final n cUA;
+  private final com.google.android.exoplayer2.i.m cUD;
+  private final boolean[] cUl;
+  private long cUn;
+  private long cUp;
+  private final s cUw;
+  private final n cUz;
+  private a cVd;
+  private final n cVe;
+  private final n cVf;
+  private final n cVg;
   
   public k(s params)
   {
-    AppMethodBeat.i(95128);
-    this.aKF = params;
-    this.aKu = new boolean[3];
-    this.aLn = new n(32);
-    this.aKI = new n(33);
-    this.aKJ = new n(34);
-    this.aLo = new n(39);
-    this.aLp = new n(40);
-    this.aKM = new com.google.android.exoplayer2.i.m();
-    AppMethodBeat.o(95128);
+    AppMethodBeat.i(92250);
+    this.cUw = params;
+    this.cUl = new boolean[3];
+    this.cVe = new n(32);
+    this.cUz = new n(33);
+    this.cUA = new n(34);
+    this.cVf = new n(39);
+    this.cVg = new n(40);
+    this.cUD = new com.google.android.exoplayer2.i.m();
+    AppMethodBeat.o(92250);
   }
   
   private void e(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(95132);
-    if (this.aBO) {
-      this.aLm.g(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.i(92254);
+    if (this.cLK) {
+      this.cVd.g(paramArrayOfByte, paramInt1, paramInt2);
     }
     for (;;)
     {
-      this.aLo.f(paramArrayOfByte, paramInt1, paramInt2);
-      this.aLp.f(paramArrayOfByte, paramInt1, paramInt2);
-      AppMethodBeat.o(95132);
+      this.cVf.f(paramArrayOfByte, paramInt1, paramInt2);
+      this.cVg.f(paramArrayOfByte, paramInt1, paramInt2);
+      AppMethodBeat.o(92254);
       return;
-      this.aLn.f(paramArrayOfByte, paramInt1, paramInt2);
-      this.aKI.f(paramArrayOfByte, paramInt1, paramInt2);
-      this.aKJ.f(paramArrayOfByte, paramInt1, paramInt2);
+      this.cVe.f(paramArrayOfByte, paramInt1, paramInt2);
+      this.cUz.f(paramArrayOfByte, paramInt1, paramInt2);
+      this.cUA.f(paramArrayOfByte, paramInt1, paramInt2);
     }
   }
   
+  public final void Si()
+  {
+    AppMethodBeat.i(92251);
+    com.google.android.exoplayer2.i.k.c(this.cUl);
+    this.cVe.reset();
+    this.cUz.reset();
+    this.cUA.reset();
+    this.cVf.reset();
+    this.cVg.reset();
+    a locala = this.cVd;
+    locala.cVj = false;
+    locala.cVk = false;
+    locala.cVl = false;
+    locala.cUN = false;
+    locala.cVm = false;
+    this.cUn = 0L;
+    AppMethodBeat.o(92251);
+  }
+  
+  public final void Sj() {}
+  
   public final void a(g paramg, v.d paramd)
   {
-    AppMethodBeat.i(95130);
-    paramd.ox();
-    this.aKf = paramd.oz();
-    this.aCe = paramg.dm(paramd.oy());
-    this.aLm = new k.a(this.aCe);
-    this.aKF.a(paramg, paramd);
-    AppMethodBeat.o(95130);
+    AppMethodBeat.i(92252);
+    paramd.Sv();
+    this.cTX = paramd.Sw();
+    this.cMa = paramg.hz(paramd.getTrackId());
+    this.cVd = new a(this.cMa);
+    this.cUw.a(paramg, paramd);
+    AppMethodBeat.o(92252);
   }
   
-  public final void d(long paramLong, boolean paramBoolean)
+  public final void h(long paramLong, boolean paramBoolean)
   {
-    this.aKy = paramLong;
+    this.cUp = paramLong;
   }
-  
-  public final void ol()
-  {
-    AppMethodBeat.i(95129);
-    com.google.android.exoplayer2.i.k.a(this.aKu);
-    this.aLn.reset();
-    this.aKI.reset();
-    this.aKJ.reset();
-    this.aLo.reset();
-    this.aLp.reset();
-    k.a locala = this.aLm;
-    locala.aLs = false;
-    locala.aLt = false;
-    locala.aLu = false;
-    locala.aKW = false;
-    locala.aLv = false;
-    this.aKw = 0L;
-    AppMethodBeat.o(95129);
-  }
-  
-  public final void om() {}
   
   public final void t(com.google.android.exoplayer2.i.m paramm)
   {
-    AppMethodBeat.i(95131);
+    AppMethodBeat.i(92253);
     int i;
     label58:
     int i5;
@@ -118,13 +118,13 @@ public final class k
     int i1;
     int i9;
     int i7;
-    if (paramm.qM() > 0)
+    if (paramm.UF() > 0)
     {
       i = paramm.position;
       int i3 = paramm.limit;
       byte[] arrayOfByte1 = paramm.data;
-      this.aKw += paramm.qM();
-      this.aCe.a(paramm, paramm.qM());
+      this.cUn += paramm.UF();
+      this.cMa.a(paramm, paramm.UF());
       int i4;
       int i6;
       long l1;
@@ -132,160 +132,160 @@ public final class k
       long l2;
       if (i < i3)
       {
-        i4 = com.google.android.exoplayer2.i.k.a(arrayOfByte1, i, i3, this.aKu);
+        i4 = com.google.android.exoplayer2.i.k.a(arrayOfByte1, i, i3, this.cUl);
         if (i4 == i3)
         {
           e(arrayOfByte1, i, i3);
-          AppMethodBeat.o(95131);
+          AppMethodBeat.o(92253);
           return;
         }
-        i5 = com.google.android.exoplayer2.i.k.j(arrayOfByte1, i4);
+        i5 = com.google.android.exoplayer2.i.k.l(arrayOfByte1, i4);
         j = i4 - i;
         if (j > 0) {
           e(arrayOfByte1, i, i4);
         }
         i6 = i3 - i4;
-        l1 = this.aKw - i6;
+        l1 = this.cUn - i6;
         if (j >= 0) {
           break label542;
         }
         k = -j;
-        l2 = this.aKy;
-        if (!this.aBO) {
+        l2 = this.cUp;
+        if (!this.cLK) {
           break label628;
         }
-        localObject1 = this.aLm;
-        if ((!((k.a)localObject1).aLv) || (!((k.a)localObject1).aLt)) {
+        localObject1 = this.cVd;
+        if ((!((a)localObject1).cVm) || (!((a)localObject1).cVk)) {
           break label548;
         }
-        ((k.a)localObject1).aKA = ((k.a)localObject1).aLq;
-        ((k.a)localObject1).aLv = false;
+        ((a)localObject1).cUr = ((a)localObject1).cVh;
+        ((a)localObject1).cVm = false;
       }
       do
       {
         for (;;)
         {
-          if (this.aLo.dJ(k))
+          if (this.cVf.hX(k))
           {
-            i = com.google.android.exoplayer2.i.k.h(this.aLo.nalData, this.aLo.aLD);
-            this.aKM.l(this.aLo.nalData, i);
-            this.aKM.en(5);
-            this.aKF.a(l2, this.aKM);
+            i = com.google.android.exoplayer2.i.k.j(this.cVf.nalData, this.cVf.cVu);
+            this.cUD.n(this.cVf.nalData, i);
+            this.cUD.iH(5);
+            this.cUw.a(l2, this.cUD);
           }
-          if (this.aLp.dJ(k))
+          if (this.cVg.hX(k))
           {
-            i = com.google.android.exoplayer2.i.k.h(this.aLp.nalData, this.aLp.aLD);
-            this.aKM.l(this.aLp.nalData, i);
-            this.aKM.en(5);
-            this.aKF.a(l2, this.aKM);
+            i = com.google.android.exoplayer2.i.k.j(this.cVg.nalData, this.cVg.cVu);
+            this.cUD.n(this.cVg.nalData, i);
+            this.cUD.iH(5);
+            this.cUw.a(l2, this.cUD);
           }
-          l2 = this.aKy;
-          if (!this.aBO) {
+          l2 = this.cUp;
+          if (!this.cLK) {
             break label1743;
           }
-          localObject1 = this.aLm;
-          ((k.a)localObject1).aLt = false;
-          ((k.a)localObject1).aLu = false;
-          ((k.a)localObject1).aKT = l2;
-          ((k.a)localObject1).aLr = 0;
-          ((k.a)localObject1).aKS = l1;
+          localObject1 = this.cVd;
+          ((a)localObject1).cVk = false;
+          ((a)localObject1).cVl = false;
+          ((a)localObject1).cUK = l2;
+          ((a)localObject1).cVi = 0;
+          ((a)localObject1).cUJ = l1;
           if (i5 >= 32)
           {
-            if ((!((k.a)localObject1).aLv) && (((k.a)localObject1).aKW))
+            if ((!((a)localObject1).cVm) && (((a)localObject1).cUN))
             {
-              ((k.a)localObject1).dH(i6);
-              ((k.a)localObject1).aKW = false;
+              ((a)localObject1).hV(i6);
+              ((a)localObject1).cUN = false;
             }
             if (i5 <= 34)
             {
-              if (((k.a)localObject1).aLv) {
+              if (((a)localObject1).cVm) {
                 break label1725;
               }
               bool = true;
-              ((k.a)localObject1).aLu = bool;
-              ((k.a)localObject1).aLv = true;
+              ((a)localObject1).cVl = bool;
+              ((a)localObject1).cVm = true;
             }
           }
           if ((i5 < 16) || (i5 > 21)) {
             break label1731;
           }
           bool = true;
-          ((k.a)localObject1).aLq = bool;
-          if ((!((k.a)localObject1).aLq) && (i5 > 9)) {
+          ((a)localObject1).cVh = bool;
+          if ((!((a)localObject1).cVh) && (i5 > 9)) {
             break label1737;
           }
           bool = true;
-          ((k.a)localObject1).aLs = bool;
-          this.aLo.dI(i5);
-          this.aLp.dI(i5);
+          ((a)localObject1).cVj = bool;
+          this.cVf.hW(i5);
+          this.cVg.hW(i5);
           i = i4 + 3;
           break label58;
           break;
           k = 0;
           break label161;
-          if ((((k.a)localObject1).aLu) || (((k.a)localObject1).aLt))
+          if ((((a)localObject1).cVl) || (((a)localObject1).cVk))
           {
-            if (((k.a)localObject1).aKW) {
-              ((k.a)localObject1).dH((int)(l1 - ((k.a)localObject1).aKS) + i6);
+            if (((a)localObject1).cUN) {
+              ((a)localObject1).hV((int)(l1 - ((a)localObject1).cUJ) + i6);
             }
-            ((k.a)localObject1).aKz = ((k.a)localObject1).aKS;
-            ((k.a)localObject1).aKr = ((k.a)localObject1).aKT;
-            ((k.a)localObject1).aKW = true;
-            ((k.a)localObject1).aKA = ((k.a)localObject1).aLq;
+            ((a)localObject1).cUq = ((a)localObject1).cUJ;
+            ((a)localObject1).cUj = ((a)localObject1).cUK;
+            ((a)localObject1).cUN = true;
+            ((a)localObject1).cUr = ((a)localObject1).cVh;
           }
         }
-        this.aLn.dJ(k);
-        this.aKI.dJ(k);
-        this.aKJ.dJ(k);
-      } while ((!this.aLn.aLC) || (!this.aKI.aLC) || (!this.aKJ.aLC));
-      localObject1 = this.aCe;
-      str = this.aKf;
-      localObject2 = this.aLn;
-      n localn1 = this.aKI;
-      n localn2 = this.aKJ;
-      arrayOfByte2 = new byte[((n)localObject2).aLD + localn1.aLD + localn2.aLD];
-      System.arraycopy(((n)localObject2).nalData, 0, arrayOfByte2, 0, ((n)localObject2).aLD);
-      System.arraycopy(localn1.nalData, 0, arrayOfByte2, ((n)localObject2).aLD, localn1.aLD);
-      System.arraycopy(localn2.nalData, 0, arrayOfByte2, ((n)localObject2).aLD + localn1.aLD, localn2.aLD);
-      localObject2 = new com.google.android.exoplayer2.i.n(localn1.nalData, 0, localn1.aLD);
-      ((com.google.android.exoplayer2.i.n)localObject2).dE(44);
-      n = ((com.google.android.exoplayer2.i.n)localObject2).dD(3);
-      ((com.google.android.exoplayer2.i.n)localObject2).qK();
-      ((com.google.android.exoplayer2.i.n)localObject2).dE(88);
-      ((com.google.android.exoplayer2.i.n)localObject2).dE(8);
+        this.cVe.hX(k);
+        this.cUz.hX(k);
+        this.cUA.hX(k);
+      } while ((!this.cVe.cVt) || (!this.cUz.cVt) || (!this.cUA.cVt));
+      localObject1 = this.cMa;
+      str = this.cTX;
+      localObject2 = this.cVe;
+      n localn1 = this.cUz;
+      n localn2 = this.cUA;
+      arrayOfByte2 = new byte[((n)localObject2).cVu + localn1.cVu + localn2.cVu];
+      System.arraycopy(((n)localObject2).nalData, 0, arrayOfByte2, 0, ((n)localObject2).cVu);
+      System.arraycopy(localn1.nalData, 0, arrayOfByte2, ((n)localObject2).cVu, localn1.cVu);
+      System.arraycopy(localn2.nalData, 0, arrayOfByte2, ((n)localObject2).cVu + localn1.cVu, localn2.cVu);
+      localObject2 = new com.google.android.exoplayer2.i.n(localn1.nalData, 0, localn1.cVu);
+      ((com.google.android.exoplayer2.i.n)localObject2).hR(44);
+      n = ((com.google.android.exoplayer2.i.n)localObject2).hQ(3);
+      ((com.google.android.exoplayer2.i.n)localObject2).UD();
+      ((com.google.android.exoplayer2.i.n)localObject2).hR(88);
+      ((com.google.android.exoplayer2.i.n)localObject2).hR(8);
       i = 0;
       m = 0;
       while (m < n)
       {
         j = i;
-        if (((com.google.android.exoplayer2.i.n)localObject2).oj()) {
+        if (((com.google.android.exoplayer2.i.n)localObject2).Sg()) {
           j = i + 89;
         }
         i = j;
-        if (((com.google.android.exoplayer2.i.n)localObject2).oj()) {
+        if (((com.google.android.exoplayer2.i.n)localObject2).Sg()) {
           i = j + 8;
         }
         m += 1;
       }
-      ((com.google.android.exoplayer2.i.n)localObject2).dE(i);
+      ((com.google.android.exoplayer2.i.n)localObject2).hR(i);
       if (n > 0) {
-        ((com.google.android.exoplayer2.i.n)localObject2).dE((8 - n) * 2);
+        ((com.google.android.exoplayer2.i.n)localObject2).hR((8 - n) * 2);
       }
-      ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      int i10 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
+      ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      int i10 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
       if (i10 == 3) {
-        ((com.google.android.exoplayer2.i.n)localObject2).qK();
+        ((com.google.android.exoplayer2.i.n)localObject2).UD();
       }
-      i2 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      i1 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
+      i2 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      i1 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
       m = i2;
       j = i1;
-      if (((com.google.android.exoplayer2.i.n)localObject2).oj())
+      if (((com.google.android.exoplayer2.i.n)localObject2).Sg())
       {
-        m = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        i9 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        i7 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        i8 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
+        m = ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        i9 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        i7 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        i8 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
         if ((i10 == 1) || (i10 == 2))
         {
           i = 2;
@@ -300,10 +300,10 @@ public final class k
       }
       else
       {
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        i7 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        if (!((com.google.android.exoplayer2.i.n)localObject2).oj()) {
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        i7 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        if (!((com.google.android.exoplayer2.i.n)localObject2).Sg()) {
           break label1150;
         }
         i = 0;
@@ -313,9 +313,9 @@ public final class k
         if (i > n) {
           break label1157;
         }
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
         i += 1;
         continue;
         i = 1;
@@ -327,13 +327,13 @@ public final class k
         i = n;
       }
       label1157:
-      ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      if ((((com.google.android.exoplayer2.i.n)localObject2).oj()) && (((com.google.android.exoplayer2.i.n)localObject2).oj()))
+      ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      if ((((com.google.android.exoplayer2.i.n)localObject2).Sg()) && (((com.google.android.exoplayer2.i.n)localObject2).Sg()))
       {
         i = 0;
         while (i < 4)
@@ -341,9 +341,9 @@ public final class k
           n = 0;
           if (n < 6)
           {
-            if (!((com.google.android.exoplayer2.i.n)localObject2).oj())
+            if (!((com.google.android.exoplayer2.i.n)localObject2).Sg())
             {
-              ((com.google.android.exoplayer2.i.n)localObject2).qZ();
+              ((com.google.android.exoplayer2.i.n)localObject2).UT();
               label1242:
               if (i != 3) {
                 break label1313;
@@ -356,12 +356,12 @@ public final class k
               break;
               i2 = Math.min(64, 1 << (i << 1) + 4);
               if (i > 1) {
-                ((com.google.android.exoplayer2.i.n)localObject2).qY();
+                ((com.google.android.exoplayer2.i.n)localObject2).US();
               }
               i1 = 0;
               while (i1 < i2)
               {
-                ((com.google.android.exoplayer2.i.n)localObject2).qY();
+                ((com.google.android.exoplayer2.i.n)localObject2).US();
                 i1 += 1;
               }
               break label1242;
@@ -370,15 +370,15 @@ public final class k
           i += 1;
         }
       }
-      ((com.google.android.exoplayer2.i.n)localObject2).dE(2);
-      if (((com.google.android.exoplayer2.i.n)localObject2).oj())
+      ((com.google.android.exoplayer2.i.n)localObject2).hR(2);
+      if (((com.google.android.exoplayer2.i.n)localObject2).Sg())
       {
-        ((com.google.android.exoplayer2.i.n)localObject2).dE(8);
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        ((com.google.android.exoplayer2.i.n)localObject2).qK();
+        ((com.google.android.exoplayer2.i.n)localObject2).hR(8);
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        ((com.google.android.exoplayer2.i.n)localObject2).UD();
       }
-      int i8 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
+      int i8 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
       bool = false;
       i1 = 0;
       i = 0;
@@ -388,7 +388,7 @@ public final class k
         if (i == 0) {
           break label1784;
         }
-        bool = ((com.google.android.exoplayer2.i.n)localObject2).oj();
+        bool = ((com.google.android.exoplayer2.i.n)localObject2).Sg();
       }
     }
     label1725:
@@ -400,8 +400,8 @@ public final class k
     {
       if (bool)
       {
-        ((com.google.android.exoplayer2.i.n)localObject2).qK();
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
+        ((com.google.android.exoplayer2.i.n)localObject2).UD();
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
         i2 = 0;
         for (;;)
         {
@@ -409,20 +409,20 @@ public final class k
           if (i2 > i1) {
             break;
           }
-          if (((com.google.android.exoplayer2.i.n)localObject2).oj()) {
-            ((com.google.android.exoplayer2.i.n)localObject2).qK();
+          if (((com.google.android.exoplayer2.i.n)localObject2).Sg()) {
+            ((com.google.android.exoplayer2.i.n)localObject2).UD();
           }
           i2 += 1;
         }
       }
-      i1 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-      i9 = ((com.google.android.exoplayer2.i.n)localObject2).qZ();
+      i1 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
+      i9 = ((com.google.android.exoplayer2.i.n)localObject2).UT();
       i2 = i1 + i9;
       n = 0;
       while (n < i1)
       {
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        ((com.google.android.exoplayer2.i.n)localObject2).qK();
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        ((com.google.android.exoplayer2.i.n)localObject2).UD();
         n += 1;
       }
       i1 = 0;
@@ -432,32 +432,32 @@ public final class k
         if (i1 >= i9) {
           break;
         }
-        ((com.google.android.exoplayer2.i.n)localObject2).qZ();
-        ((com.google.android.exoplayer2.i.n)localObject2).qK();
+        ((com.google.android.exoplayer2.i.n)localObject2).UT();
+        ((com.google.android.exoplayer2.i.n)localObject2).UD();
         i1 += 1;
       }
       i += 1;
       i1 = n;
       break label1382;
-      if (((com.google.android.exoplayer2.i.n)localObject2).oj())
+      if (((com.google.android.exoplayer2.i.n)localObject2).Sg())
       {
         i = 0;
-        while (i < ((com.google.android.exoplayer2.i.n)localObject2).qZ())
+        while (i < ((com.google.android.exoplayer2.i.n)localObject2).UT())
         {
-          ((com.google.android.exoplayer2.i.n)localObject2).dE(i7 + 4 + 1);
+          ((com.google.android.exoplayer2.i.n)localObject2).hR(i7 + 4 + 1);
           i += 1;
         }
       }
-      ((com.google.android.exoplayer2.i.n)localObject2).dE(2);
+      ((com.google.android.exoplayer2.i.n)localObject2).hR(2);
       float f2 = 1.0F;
       float f1;
-      if ((((com.google.android.exoplayer2.i.n)localObject2).oj()) && (((com.google.android.exoplayer2.i.n)localObject2).oj()))
+      if ((((com.google.android.exoplayer2.i.n)localObject2).Sg()) && (((com.google.android.exoplayer2.i.n)localObject2).Sg()))
       {
-        i = ((com.google.android.exoplayer2.i.n)localObject2).dD(8);
+        i = ((com.google.android.exoplayer2.i.n)localObject2).hQ(8);
         if (i == 255)
         {
-          i = ((com.google.android.exoplayer2.i.n)localObject2).dD(16);
-          n = ((com.google.android.exoplayer2.i.n)localObject2).dD(16);
+          i = ((com.google.android.exoplayer2.i.n)localObject2).hQ(16);
+          n = ((com.google.android.exoplayer2.i.n)localObject2).hQ(16);
           f1 = f2;
           if (i != 0)
           {
@@ -471,11 +471,11 @@ public final class k
       for (;;)
       {
         ((com.google.android.exoplayer2.c.m)localObject1).f(Format.a(str, "video/hevc", m, j, Collections.singletonList(arrayOfByte2), f1));
-        this.aBO = true;
+        this.cLK = true;
         break;
-        if (i < com.google.android.exoplayer2.i.k.baS.length)
+        if (i < com.google.android.exoplayer2.i.k.dkt.length)
         {
-          f1 = com.google.android.exoplayer2.i.k.baS[i];
+          f1 = com.google.android.exoplayer2.i.k.dkt[i];
           continue;
           bool = false;
           break label453;
@@ -483,21 +483,79 @@ public final class k
           break label483;
           bool = false;
           break label508;
-          this.aLn.dI(i5);
-          this.aKI.dI(i5);
-          this.aKJ.dI(i5);
+          this.cVe.hW(i5);
+          this.cUz.hW(i5);
+          this.cUA.hW(i5);
           break label515;
-          AppMethodBeat.o(95131);
+          AppMethodBeat.o(92253);
           return;
         }
         f1 = 1.0F;
       }
     }
   }
+  
+  static final class a
+  {
+    private final com.google.android.exoplayer2.c.m cMa;
+    long cUJ;
+    long cUK;
+    boolean cUN;
+    long cUj;
+    long cUq;
+    boolean cUr;
+    boolean cVh;
+    int cVi;
+    boolean cVj;
+    boolean cVk;
+    boolean cVl;
+    boolean cVm;
+    
+    public a(com.google.android.exoplayer2.c.m paramm)
+    {
+      this.cMa = paramm;
+    }
+    
+    public final void g(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+    {
+      if (this.cVj)
+      {
+        int i = paramInt1 + 2 - this.cVi;
+        if (i >= paramInt2) {
+          break label55;
+        }
+        if ((paramArrayOfByte[i] & 0x80) == 0) {
+          break label49;
+        }
+      }
+      label49:
+      for (boolean bool = true;; bool = false)
+      {
+        this.cVk = bool;
+        this.cVj = false;
+        return;
+      }
+      label55:
+      this.cVi += paramInt2 - paramInt1;
+    }
+    
+    final void hV(int paramInt)
+    {
+      AppMethodBeat.i(92249);
+      if (this.cUr) {}
+      for (int i = 1;; i = 0)
+      {
+        int j = (int)(this.cUJ - this.cUq);
+        this.cMa.a(this.cUj, i, j, paramInt, null);
+        AppMethodBeat.o(92249);
+        return;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.k
  * JD-Core Version:    0.7.0.1
  */

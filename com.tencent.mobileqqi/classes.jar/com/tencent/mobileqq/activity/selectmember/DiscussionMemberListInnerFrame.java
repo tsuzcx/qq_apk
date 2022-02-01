@@ -24,9 +24,9 @@ import com.tencent.mobileqq.widget.IndexView;
 import com.tencent.mobileqq.widget.IndexView.OnIndexChangedListener;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 import com.tencent.mobileqq.widget.PinnedDividerListView.OnLayoutListener;
+import epv;
 import epw;
 import epx;
-import epy;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -38,13 +38,13 @@ public class DiscussionMemberListInnerFrame
   private static final int jdField_a_of_type_Int = 1;
   private static final int jdField_b_of_type_Int = 2;
   Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new epw(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new epv(this);
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   public LinearLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private IndexView jdField_a_of_type_ComTencentMobileqqWidgetIndexView;
   public PinnedDividerListView a;
-  private epx jdField_a_of_type_Epx;
+  private epw jdField_a_of_type_Epw;
   private String jdField_a_of_type_JavaLangString = "";
   public List a;
   private String jdField_b_of_type_JavaLangString;
@@ -74,8 +74,8 @@ public class DiscussionMemberListInnerFrame
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131234430));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131234431));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131234429));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131234430));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(new String[] { "$", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" });
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230734));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setTextView(this.jdField_a_of_type_AndroidWidgetTextView);
@@ -83,9 +83,9 @@ public class DiscussionMemberListInnerFrame
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelector(2131361815);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnLayoutListener(this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903944, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233087));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233086));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this);
-    ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233086)).setVisibility(8);
+    ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233085)).setVisibility(8);
   }
   
   private void h()
@@ -124,13 +124,13 @@ public class DiscussionMemberListInnerFrame
     super.a(paramBundle);
     setContentView(2130903953);
     g();
-    this.jdField_a_of_type_Epx = new epx(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Epx);
+    this.jdField_a_of_type_Epw = new epw(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Epw);
   }
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.q() > 0) || ((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.q() == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount() < this.jdField_a_of_type_Epx.getCount() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.k()))) && (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c()))
+    if (((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.q() > 0) || ((this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.q() == 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount() < this.jdField_a_of_type_Epw.getCount() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.k()))) && (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c()))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
@@ -149,7 +149,7 @@ public class DiscussionMemberListInnerFrame
     do
     {
       return;
-      i = this.jdField_a_of_type_Epx.a(paramString);
+      i = this.jdField_a_of_type_Epw.a(paramString);
     } while (i == -1);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(i + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.k());
   }
@@ -165,44 +165,44 @@ public class DiscussionMemberListInnerFrame
     while (!this.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
     {
       h();
-      this.jdField_a_of_type_Epx.a();
+      this.jdField_a_of_type_Epw.a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
       this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
       return;
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_AndroidContentContext.getString(2131559020), this.c);
     }
-    this.jdField_a_of_type_Epx.notifyDataSetChanged();
+    this.jdField_a_of_type_Epw.notifyDataSetChanged();
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Epx != null) {
-      this.jdField_a_of_type_Epx.b();
+    if (this.jdField_a_of_type_Epw != null) {
+      this.jdField_a_of_type_Epw.b();
     }
     super.d();
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Epx.notifyDataSetChanged();
+    this.jdField_a_of_type_Epw.notifyDataSetChanged();
   }
   
   public void onClick(View paramView)
   {
-    epy localepy = (epy)paramView.getTag();
-    if ((localepy != null) && (localepy.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localepy.c != null) && (localepy.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
+    epx localepx = (epx)paramView.getTag();
+    if ((localepx != null) && (localepx.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localepx.c != null) && (localepx.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
     {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localepy.jdField_a_of_type_JavaLangString, localepy.c.getText().toString(), 2, this.jdField_b_of_type_JavaLangString);
-      localepy.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-      if (localepy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        paramView.setContentDescription(localepy.c.getText().toString() + "已选中,双击取消");
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localepx.jdField_a_of_type_JavaLangString, localepx.c.getText().toString(), 2, this.jdField_b_of_type_JavaLangString);
+      localepx.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+      if (localepx.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        paramView.setContentDescription(localepx.c.getText().toString() + "已选中,双击取消");
       }
     }
     else
     {
       return;
     }
-    paramView.setContentDescription(localepy.c.getText().toString() + "未选中,双击选中");
+    paramView.setContentDescription(localepx.c.getText().toString() + "未选中,双击选中");
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)

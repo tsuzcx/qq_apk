@@ -3,7 +3,7 @@ package com.tencent.mm.b.a;
 public final class d
   extends com.tencent.mm.sdk.a.d
 {
-  public e UY = new e();
+  public e WO = new e();
   
   public d()
   {
@@ -12,8 +12,8 @@ public final class d
   
   private d(byte paramByte)
   {
-    this.WQ = false;
-    this.WP = null;
+    this.YS = false;
+    this.YK = null;
   }
 }
 

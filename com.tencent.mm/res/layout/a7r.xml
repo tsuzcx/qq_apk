@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/amu" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textColor="@android:color/white" android:id="@id/kw0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/fo9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="2.5dip">
+        <View android:background="@color/BW_100_Alpha_0_3" android:layout_width="0.5dip" android:layout_height="14.0dip" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fo1" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@raw/icons_filled_like" android:layout_marginStart="2.0dip" android:layout_marginEnd="2.0dip" app:iconColor="@android:color/white" />
+        <TextView android:textSize="@dimen/fa" android:textColor="@android:color/white" android:id="@id/fnw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

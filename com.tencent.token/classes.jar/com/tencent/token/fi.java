@@ -1,43 +1,22 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
+import android.view.View;
 
-public class fi
+public abstract interface fi
 {
-  public static byte[] a(int paramInt)
-  {
-    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
-  }
+  public abstract boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean);
   
-  public static byte[] a(ArrayList paramArrayList)
-  {
-    int k = paramArrayList.size();
-    int i = 0;
-    int j = k * 4 + 4;
-    while (i < k)
-    {
-      j += ((byte[])paramArrayList.get(i)).length;
-      i += 1;
-    }
-    byte[] arrayOfByte = new byte[j];
-    System.arraycopy(a(k), 0, arrayOfByte, 0, 4);
-    i = 0;
-    while (i < k)
-    {
-      System.arraycopy(a(((byte[])paramArrayList.get(i)).length), 0, arrayOfByte, i * 4 + 4, 4);
-      i += 1;
-    }
-    i = 0;
-    j = k * 4 + 4;
-    while (i < k)
-    {
-      int m = ((byte[])paramArrayList.get(i)).length;
-      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, m);
-      j += m;
-      i += 1;
-    }
-    return arrayOfByte;
-  }
+  public abstract boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2);
+  
+  public abstract void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt);
+  
+  public abstract void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt);
+  
+  public abstract boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt);
+  
+  public abstract void onStopNestedScroll(View paramView);
 }
 
 

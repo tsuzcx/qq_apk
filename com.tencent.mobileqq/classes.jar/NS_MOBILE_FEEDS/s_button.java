@@ -11,22 +11,23 @@ public final class s_button
 {
   static Map<String, String> cache_extendinfo;
   static Map<Integer, Integer> cache_stMapABTest = new HashMap();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public int animation_duration;
+  public int animation_duration = 0;
   public String animation_url = "";
-  public int appear_time;
+  public int appear_time = 0;
   public String button_background_img = "";
   public String button_icon = "";
   public String button_img = "";
-  public int duration_time;
-  public Map<String, String> extendinfo;
-  public Map<Integer, Integer> stMapABTest;
+  public int duration_time = 0;
+  public Map<String, String> extendinfo = null;
+  public Map<Integer, Integer> stMapABTest = null;
   public String text = "";
   
   static
   {
-    cache_stMapABTest.put(Integer.valueOf(0), Integer.valueOf(0));
+    Integer localInteger = Integer.valueOf(0);
+    cache_stMapABTest.put(localInteger, localInteger);
     cache_extendinfo = new HashMap();
     cache_extendinfo.put("", "");
   }
@@ -67,39 +68,47 @@ public final class s_button
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 0);
+    Object localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.actiontype, 1);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 2);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.button_img != null) {
-      paramJceOutputStream.write(this.button_img, 3);
+    localObject = this.button_img;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.button_background_img != null) {
-      paramJceOutputStream.write(this.button_background_img, 4);
+    localObject = this.button_background_img;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.button_icon != null) {
-      paramJceOutputStream.write(this.button_icon, 5);
+    localObject = this.button_icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.stMapABTest != null) {
-      paramJceOutputStream.write(this.stMapABTest, 6);
+    localObject = this.stMapABTest;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
     paramJceOutputStream.write(this.appear_time, 7);
     paramJceOutputStream.write(this.duration_time, 8);
-    if (this.animation_url != null) {
-      paramJceOutputStream.write(this.animation_url, 9);
+    localObject = this.animation_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.animation_duration, 10);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 11);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_button
  * JD-Core Version:    0.7.0.1
  */

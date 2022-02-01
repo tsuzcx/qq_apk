@@ -6,6 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontStyleActionArg;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -14,7 +15,7 @@ public final class t
 {
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
-    AppMethodBeat.i(103244);
+    AppMethodBeat.i(144927);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -26,7 +27,7 @@ public final class t
     }
     for (;;)
     {
-      AppMethodBeat.o(103244);
+      AppMethodBeat.o(144927);
       return true;
       if (!paramString.equals("oblique")) {
         break;
@@ -43,59 +44,59 @@ public final class t
       }
       i = 2;
       break;
-      paramd.heB.ny(2);
-      paramd.heC.ny(2);
+      paramd.qTi.zC(2);
+      paramd.qTj.zC(2);
       continue;
-      paramd.heB.ny(2);
-      paramd.heC.ny(2);
+      paramd.qTi.zC(2);
+      paramd.qTj.zC(2);
       continue;
-      paramd.heB.ny(0);
-      paramd.heC.ny(0);
+      paramd.qTi.zC(0);
+      paramd.qTj.zC(0);
     }
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103245);
+    AppMethodBeat.i(144928);
     paramCanvas = (SetFontStyleActionArg)paramDrawActionArg;
     if (paramCanvas == null)
     {
-      AppMethodBeat.o(103245);
+      AppMethodBeat.o(144928);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.hfc);
-    AppMethodBeat.o(103245);
+    boolean bool = b(paramd, paramCanvas.fontStyle);
+    AppMethodBeat.o(144928);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103243);
+    AppMethodBeat.i(144926);
     if (paramJSONArray.length() == 0)
     {
-      AppMethodBeat.o(103243);
+      AppMethodBeat.o(144926);
       return false;
     }
     try
     {
       paramCanvas = paramJSONArray.getString(0);
       boolean bool = b(paramd, paramCanvas);
-      AppMethodBeat.o(103243);
+      AppMethodBeat.o(144926);
       return bool;
     }
     catch (JSONException paramd)
     {
-      com.tencent.luggage.g.d.i("MicroMsg.SetFontStyle", "get 'fontStyle' error.");
-      AppMethodBeat.o(103243);
+      Log.i("MicroMsg.SetFontStyle", "get 'fontStyle' error.");
+      AppMethodBeat.o(144926);
     }
     return false;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg cjY()
   {
-    AppMethodBeat.i(103242);
+    AppMethodBeat.i(144925);
     SetFontStyleActionArg localSetFontStyleActionArg = new SetFontStyleActionArg();
-    AppMethodBeat.o(103242);
+    AppMethodBeat.o(144925);
     return localSetFontStyleActionArg;
   }
   
@@ -106,7 +107,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.t
  * JD-Core Version:    0.7.0.1
  */

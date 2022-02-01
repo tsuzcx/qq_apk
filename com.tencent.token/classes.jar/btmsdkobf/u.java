@@ -10,12 +10,12 @@ import java.util.Map;
 public final class u
   extends JceStruct
 {
-  static ArrayList aK = new ArrayList();
-  static Map aL;
-  public ArrayList aG = null;
+  static ArrayList<String> aK = new ArrayList();
+  static Map<String, String> aL;
+  public ArrayList<String> aG = null;
   public int aH = 0;
   public boolean aI = false;
-  public Map aJ = null;
+  public Map<String, String> aJ = null;
   public int apn = 0;
   public int ay = 0;
   
@@ -26,12 +26,12 @@ public final class u
     aL.put("", "");
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new u();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.ay = paramJceInputStream.read(this.ay, 0, true);
     this.aG = ((ArrayList)paramJceInputStream.read(aK, 1, true));
@@ -41,17 +41,19 @@ public final class u
     this.aJ = ((Map)paramJceInputStream.read(aL, 5, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ay, 0);
     paramJceOutputStream.write(this.aG, 1);
     paramJceOutputStream.write(this.aH, 2);
-    if (this.aI) {
-      paramJceOutputStream.write(this.aI, 3);
+    boolean bool = this.aI;
+    if (bool) {
+      paramJceOutputStream.write(bool, 3);
     }
     paramJceOutputStream.write(this.apn, 4);
-    if (this.aJ != null) {
-      paramJceOutputStream.write(this.aJ, 5);
+    Map localMap = this.aJ;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 5);
     }
   }
 }

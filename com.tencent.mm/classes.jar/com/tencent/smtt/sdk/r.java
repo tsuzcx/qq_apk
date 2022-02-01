@@ -1,230 +1,125 @@
 package com.tencent.smtt.sdk;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Message;
-import android.view.View;
-import android.webkit.ValueCallback;
+import android.content.Context;
+import android.graphics.SurfaceTexture;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.FileChooserParams;
-import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.export.external.interfaces.QuotaUpdater;
-import com.tencent.smtt.export.external.proxy.X5ProxyWebChromeClient;
+import com.tencent.smtt.export.external.DexLoader;
 
 class r
-  extends X5ProxyWebChromeClient
 {
-  private WebView a;
-  private WebChromeClient b;
+  private DexLoader a;
+  private Object b;
   
-  public r(IX5WebChromeClient paramIX5WebChromeClient, WebView paramWebView, WebChromeClient paramWebChromeClient)
+  public r(DexLoader paramDexLoader, Context paramContext)
   {
-    super(paramIX5WebChromeClient);
-    this.a = paramWebView;
-    this.b = paramWebChromeClient;
+    AppMethodBeat.i(219502);
+    this.a = null;
+    this.b = null;
+    this.a = paramDexLoader;
+    this.b = this.a.newInstance("com.tencent.tbs.player.TbsMediaPlayerProxy", new Class[] { Context.class }, new Object[] { paramContext });
+    AppMethodBeat.o(219502);
   }
   
-  public Bitmap getDefaultVideoPoster()
+  public void a(float paramFloat)
   {
-    AppMethodBeat.i(139070);
-    Bitmap localBitmap = this.b.getDefaultVideoPoster();
-    AppMethodBeat.o(139070);
-    return localBitmap;
+    AppMethodBeat.i(219528);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setVolume", new Class[] { Float.TYPE }, new Object[] { Float.valueOf(paramFloat) });
+    AppMethodBeat.o(219528);
   }
   
-  public void getVisitedHistory(ValueCallback<String[]> paramValueCallback) {}
-  
-  public void onCloseWindow(IX5WebViewBase paramIX5WebViewBase)
+  public void a(int paramInt)
   {
-    AppMethodBeat.i(139071);
-    this.a.a(paramIX5WebViewBase);
-    this.b.onCloseWindow(this.a);
-    AppMethodBeat.o(139071);
+    AppMethodBeat.i(219538);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "subtitle", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(219538);
   }
   
-  public void onConsoleMessage(String paramString1, int paramInt, String paramString2) {}
-  
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public void a(long paramLong)
   {
-    AppMethodBeat.i(139072);
-    boolean bool = this.b.onConsoleMessage(paramConsoleMessage);
-    AppMethodBeat.o(139072);
-    return bool;
+    AppMethodBeat.i(219559);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "seek", new Class[] { Long.TYPE }, new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(219559);
   }
   
-  public boolean onCreateWindow(IX5WebViewBase paramIX5WebViewBase, boolean paramBoolean1, boolean paramBoolean2, Message paramMessage)
+  public void a(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(139073);
-    paramIX5WebViewBase = this.a;
-    paramIX5WebViewBase.getClass();
-    paramIX5WebViewBase = new WebView.WebViewTransport(paramIX5WebViewBase);
-    paramMessage = Message.obtain(paramMessage.getTarget(), new s(this, paramIX5WebViewBase, paramMessage));
-    paramMessage.obj = paramIX5WebViewBase;
-    paramBoolean1 = this.b.onCreateWindow(this.a, paramBoolean1, paramBoolean2, paramMessage);
-    AppMethodBeat.o(139073);
-    return paramBoolean1;
+    AppMethodBeat.i(219513);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setSurfaceTexture", new Class[] { SurfaceTexture.class }, new Object[] { paramSurfaceTexture });
+    AppMethodBeat.o(219513);
   }
   
-  public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, QuotaUpdater paramQuotaUpdater)
+  public void a(TbsMediaPlayer.TbsMediaPlayerListener paramTbsMediaPlayerListener)
   {
-    AppMethodBeat.i(139069);
-    this.b.onExceededDatabaseQuota(paramString1, paramString2, paramLong1, paramLong2, paramLong3, new r.a(this, paramQuotaUpdater));
-    AppMethodBeat.o(139069);
+    AppMethodBeat.i(219517);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setPlayerListener", new Class[] { Object.class }, new Object[] { paramTbsMediaPlayerListener });
+    AppMethodBeat.o(219517);
   }
   
-  public void onGeolocationPermissionsHidePrompt()
+  public void a(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(139074);
-    this.b.onGeolocationPermissionsHidePrompt();
-    AppMethodBeat.o(139074);
+    AppMethodBeat.i(219533);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "startPlay", new Class[] { String.class, Bundle.class }, new Object[] { paramString, paramBundle });
+    AppMethodBeat.o(219533);
   }
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  public boolean a()
   {
-    AppMethodBeat.i(139075);
-    this.b.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
-    AppMethodBeat.o(139075);
+    AppMethodBeat.i(55178);
+    if (this.b != null)
+    {
+      AppMethodBeat.o(55178);
+      return true;
+    }
+    AppMethodBeat.o(55178);
+    return false;
   }
   
-  public void onHideCustomView()
+  public float b()
   {
-    AppMethodBeat.i(139076);
-    this.b.onHideCustomView();
-    AppMethodBeat.o(139076);
+    AppMethodBeat.i(219523);
+    Float localFloat = (Float)this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "getVolume", new Class[0], new Object[0]);
+    if (localFloat != null)
+    {
+      float f = localFloat.floatValue();
+      AppMethodBeat.o(219523);
+      return f;
+    }
+    AppMethodBeat.o(219523);
+    return 0.0F;
   }
   
-  public boolean onJsAlert(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
+  public void b(int paramInt)
   {
-    AppMethodBeat.i(139077);
-    this.a.a(paramIX5WebViewBase);
-    boolean bool = this.b.onJsAlert(this.a, paramString1, paramString2, paramJsResult);
-    AppMethodBeat.o(139077);
-    return bool;
+    AppMethodBeat.i(219542);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "audio", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(219542);
   }
   
-  public boolean onJsBeforeUnload(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
+  public void c()
   {
-    AppMethodBeat.i(139080);
-    this.a.a(paramIX5WebViewBase);
-    boolean bool = this.b.onJsBeforeUnload(this.a, paramString1, paramString2, paramJsResult);
-    AppMethodBeat.o(139080);
-    return bool;
+    AppMethodBeat.i(219548);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "pause", new Class[0], new Object[0]);
+    AppMethodBeat.o(219548);
   }
   
-  public boolean onJsConfirm(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
+  public void d()
   {
-    AppMethodBeat.i(139078);
-    this.a.a(paramIX5WebViewBase);
-    boolean bool = this.b.onJsConfirm(this.a, paramString1, paramString2, paramJsResult);
-    AppMethodBeat.o(139078);
-    return bool;
+    AppMethodBeat.i(219553);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "play", new Class[0], new Object[0]);
+    AppMethodBeat.o(219553);
   }
   
-  public boolean onJsPrompt(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  public void e()
   {
-    AppMethodBeat.i(139079);
-    this.a.a(paramIX5WebViewBase);
-    boolean bool = this.b.onJsPrompt(this.a, paramString1, paramString2, paramString3, paramJsPromptResult);
-    AppMethodBeat.o(139079);
-    return bool;
-  }
-  
-  public boolean onJsTimeout()
-  {
-    AppMethodBeat.i(139081);
-    boolean bool = this.b.onJsTimeout();
-    AppMethodBeat.o(139081);
-    return bool;
-  }
-  
-  public void onProgressChanged(IX5WebViewBase paramIX5WebViewBase, int paramInt)
-  {
-    AppMethodBeat.i(139082);
-    this.a.a(paramIX5WebViewBase);
-    this.b.onProgressChanged(this.a, paramInt);
-    AppMethodBeat.o(139082);
-  }
-  
-  public void onReachedMaxAppCacheSize(long paramLong1, long paramLong2, QuotaUpdater paramQuotaUpdater)
-  {
-    AppMethodBeat.i(139083);
-    this.b.onReachedMaxAppCacheSize(paramLong1, paramLong2, new r.a(this, paramQuotaUpdater));
-    AppMethodBeat.o(139083);
-  }
-  
-  public void onReceivedIcon(IX5WebViewBase paramIX5WebViewBase, Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(139084);
-    this.a.a(paramIX5WebViewBase);
-    this.b.onReceivedIcon(this.a, paramBitmap);
-    AppMethodBeat.o(139084);
-  }
-  
-  public void onReceivedTitle(IX5WebViewBase paramIX5WebViewBase, String paramString)
-  {
-    AppMethodBeat.i(139086);
-    this.a.a(paramIX5WebViewBase);
-    this.b.onReceivedTitle(this.a, paramString);
-    AppMethodBeat.o(139086);
-  }
-  
-  public void onReceivedTouchIconUrl(IX5WebViewBase paramIX5WebViewBase, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(139085);
-    this.a.a(paramIX5WebViewBase);
-    this.b.onReceivedTouchIconUrl(this.a, paramString, paramBoolean);
-    AppMethodBeat.o(139085);
-  }
-  
-  public void onRequestFocus(IX5WebViewBase paramIX5WebViewBase)
-  {
-    AppMethodBeat.i(139087);
-    this.a.a(paramIX5WebViewBase);
-    this.b.onRequestFocus(this.a);
-    AppMethodBeat.o(139087);
-  }
-  
-  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    AppMethodBeat.i(139089);
-    this.b.onShowCustomView(paramView, paramInt, paramCustomViewCallback);
-    AppMethodBeat.o(139089);
-  }
-  
-  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    AppMethodBeat.i(139088);
-    this.b.onShowCustomView(paramView, paramCustomViewCallback);
-    AppMethodBeat.o(139088);
-  }
-  
-  public boolean onShowFileChooser(IX5WebViewBase paramIX5WebViewBase, ValueCallback<Uri[]> paramValueCallback, IX5WebChromeClient.FileChooserParams paramFileChooserParams)
-  {
-    AppMethodBeat.i(139091);
-    paramValueCallback = new u(this, paramValueCallback);
-    paramFileChooserParams = new v(this, paramFileChooserParams);
-    this.a.a(paramIX5WebViewBase);
-    boolean bool = this.b.onShowFileChooser(this.a, paramValueCallback, paramFileChooserParams);
-    AppMethodBeat.o(139091);
-    return bool;
-  }
-  
-  public void openFileChooser(ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(139090);
-    this.b.openFileChooser(new t(this, paramValueCallback), paramString1, paramString2);
-    AppMethodBeat.o(139090);
+    AppMethodBeat.i(219565);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "close", new Class[0], new Object[0]);
+    AppMethodBeat.o(219565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.r
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h52" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a4f" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_bar_height" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.DragView android:id="@id/bq8" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.emotionintegrate.EmotionGallery android:id="@id/gallery" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        </com.tencent.widget.DragView>
+        <ImageView android:id="@id/k0" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/k2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/oq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/k2" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/ou" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+                <com.tencent.mobileqq.activity.contact.connections.TriangleView android:id="@id/c3l" android:layout_width="9.0dip" android:layout_height="5.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:translationY="1.0dip" android:rotation="180.0" />
+                <RelativeLayout android:id="@id/ov" android:layout_width="wrap_content" android:layout_height="37.0dip" android:layout_below="@id/c3l" android:layout_centerHorizontal="true">
+                    <com.tencent.mobileqq.activity.aio.item.PttAudioPlayView android:id="@id/ow" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="3.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                    <com.tencent.mobileqq.activity.aio.item.PttAudioWaveView android:id="@id/ox" android:layout_width="39.0dip" android:layout_height="37.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="18.0dip" android:layout_toRightOf="@id/ow" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/k3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/ou" android:layout_centerHorizontal="true" />
+            <Button android:id="@id/l9d" android:background="@drawable/hky" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/k3" android:layout_alignBottom="@id/k3" android:layout_marginStart="5.0dip" android:layout_toEndOf="@id/k3" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <include android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/is" />
+    <RelativeLayout android:id="@id/bvp" android:background="#fff7f7f7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/bh9" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/c0i" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/a64" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bft" android:layout_alignRight="@id/bh9" android:layout_alignBottom="@id/bh9" />
+        <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/bh_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ大表情" android:layout_toRightOf="@id/bh9" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff999999" android:id="@id/bh8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:drawableRight="@drawable/bvw" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

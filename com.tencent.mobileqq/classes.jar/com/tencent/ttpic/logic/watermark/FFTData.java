@@ -14,10 +14,11 @@ public class FFTData
   
   public FFTData()
   {
-    if (BUFFER_SIZE > 0)
+    int i = BUFFER_SIZE;
+    if (i > 0)
     {
-      this.mFFTBuffer = new int[BUFFER_SIZE];
-      this.mFFTSize = BUFFER_SIZE;
+      this.mFFTBuffer = new int[i];
+      this.mFFTSize = i;
       return;
     }
     this.mFFTBuffer = new int[1024];
@@ -38,20 +39,22 @@ public class FFTData
   
   public FFTData(int paramInt1, int paramInt2)
   {
-    if (paramInt1 > 0) {
-      this.mFFTBuffer = new int[paramInt1];
-    }
-    for (this.mFFTSize = paramInt1;; this.mFFTSize = 1024)
+    if (paramInt1 > 0)
     {
-      this.mFFTFreqMax = paramInt2;
-      return;
-      this.mFFTBuffer = new int[1024];
+      this.mFFTBuffer = new int[paramInt1];
+      this.mFFTSize = paramInt1;
     }
+    else
+    {
+      this.mFFTBuffer = new int[1024];
+      this.mFFTSize = 1024;
+    }
+    this.mFFTFreqMax = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.logic.watermark.FFTData
  * JD-Core Version:    0.7.0.1
  */

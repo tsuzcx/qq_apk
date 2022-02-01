@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import begg;
-import begz;
-import bels;
-import bety;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebViewProviderInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class EmojiJsPlugin$8
   implements Runnable
@@ -12,17 +12,18 @@ class EmojiJsPlugin$8
   
   public void run()
   {
-    begg localbegg = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbegg != null) && ((localbegg instanceof bels)))
+    WebUiUtils.WebViewProviderInterface localWebViewProviderInterface = this.this$0.mRuntime.e();
+    if ((localWebViewProviderInterface != null) && (localWebViewProviderInterface.getWebTitleBarInterface() != null))
     {
-      this.this$0.progressDialog = new bety(this.this$0.mRuntime.a(), ((bels)localbegg).b());
+      EmojiJsPlugin localEmojiJsPlugin = this.this$0;
+      localEmojiJsPlugin.progressDialog = new QQProgressDialog(localEmojiJsPlugin.mRuntime.d(), localWebViewProviderInterface.getWebTitleBarInterface().m());
       this.this$0.progressDialog.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

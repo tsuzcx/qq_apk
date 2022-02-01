@@ -7,6 +7,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
+import com.tencent.mobileqq.widget.FormResHelper;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.widget.MultiImageTextView;
 
@@ -20,162 +21,158 @@ public class GameRankFormItem
     super(paramContext);
   }
   
-  public void a()
+  protected void a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetMultiImageTextView == null) {}
-    label282:
-    label319:
-    label448:
-    do
-    {
-      do
-      {
-        return;
-        b();
-        if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
-          this.jdField_d_of_type_AndroidWidgetTextView.setMaxWidth(this.o);
-        }
-        if (this.jdField_a_of_type_Int <= 0) {
-          break;
-        }
-        if (this.jdField_d_of_type_JavaLangCharSequence == null) {
-          this.jdField_d_of_type_JavaLangCharSequence = "";
-        }
-        this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setVisibility(0);
-        if (this.jdField_a_of_type_Int >= 4)
-        {
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setText(this.jdField_d_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setTextColor(b(getResources(), this.m));
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setContentDescription(this.jdField_d_of_type_JavaLangCharSequence + String.valueOf(this.jdField_a_of_type_Int));
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setMaxWidth(this.n);
-          if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (!this.jdField_a_of_type_Boolean)) {
-            break label448;
-          }
-          if ((this.k <= 0) || (this.l <= 0)) {
-            break label428;
-          }
-          this.b.setBounds(0, 0, this.b.getIntrinsicWidth(), this.b.getIntrinsicHeight());
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.k, this.l);
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, this.b, null);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablePadding(8);
-          return;
-          if (this.jdField_a_of_type_Int <= 0) {
-            break;
-          }
-          Object localObject = getResources();
-          int i;
-          CharSequence localCharSequence;
-          TextPaint localTextPaint;
-          int k;
-          if (this.jdField_a_of_type_Int == 1)
-          {
-            i = 2130843337;
-            localObject = ((Resources)localObject).getDrawable(i);
-            localCharSequence = this.jdField_d_of_type_JavaLangCharSequence;
-            localTextPaint = this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.getPaint();
-            k = this.n;
-            if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-              break label412;
-            }
-            i = 0;
-            if (!this.jdField_a_of_type_Boolean) {
-              break label423;
-            }
-          }
-          for (int j = this.b.getIntrinsicWidth();; j = 0)
-          {
-            localCharSequence = TextUtils.ellipsize(localCharSequence, localTextPaint, k - i - j - ((Drawable)localObject).getIntrinsicWidth(), TextUtils.TruncateAt.END);
-            this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setText(localCharSequence);
-            this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.a((Drawable)localObject, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight()).b();
-            break;
-            if (this.jdField_a_of_type_Int == 2)
-            {
-              i = 2130843338;
-              break label282;
-            }
-            i = 2130843339;
-            break label282;
-            i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-            break label319;
-          }
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, this.b, null);
-        }
-        if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!this.jdField_a_of_type_Boolean))
-        {
-          if ((this.k > 0) && (this.l > 0))
-          {
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.k, this.l);
-            this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
-          }
-          for (;;)
-          {
-            this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablePadding(8);
-            return;
-            this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
-          }
-        }
-        if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (this.jdField_a_of_type_Boolean))
-        {
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.b, null);
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablePadding(8);
-          return;
-        }
-      } while ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) || (this.jdField_a_of_type_Boolean));
-      this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablePadding(0);
+    if (this.D == null) {
       return;
-      this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setText("");
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setVisibility(0);
-        if ((this.k > 0) && (this.l > 0))
-        {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.k, this.l);
-          this.b.setBounds(0, 0, this.b.getIntrinsicWidth(), this.b.getIntrinsicHeight());
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, this.b, null);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablePadding(8);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, this.b, null);
-        }
+    }
+    c();
+    if (this.C != null) {
+      this.C.setMaxWidth(this.F);
+    }
+    if (this.a > 0)
+    {
+      if (this.t == null) {
+        this.t = "";
       }
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (!this.jdField_a_of_type_Boolean))
+      this.D.setVisibility(0);
+      int i = this.a;
+      if (i >= 4)
       {
-        this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setVisibility(0);
-        if ((this.k > 0) && (this.l > 0))
-        {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.k, this.l);
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablePadding(0);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
-        }
+        localObject1 = this.D;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.t);
+        ((StringBuilder)localObject2).append(String.valueOf(this.a));
+        ((MultiImageTextView)localObject1).setText(((StringBuilder)localObject2).toString());
       }
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (this.jdField_a_of_type_Boolean))
+      else if (i > 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.b, null);
-        this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setCompoundDrawablePadding(0);
+        localObject1 = getResources();
+        i = this.a;
+        if (i == 1) {
+          i = 2130844862;
+        } else if (i == 2) {
+          i = 2130844863;
+        } else {
+          i = 2130844864;
+        }
+        localObject1 = ((Resources)localObject1).getDrawable(i);
+        localObject2 = this.t;
+        TextPaint localTextPaint = this.D.getPaint();
+        int k = this.E;
+        if (this.u == null) {
+          i = 0;
+        } else {
+          i = this.u.getIntrinsicWidth();
+        }
+        int j;
+        if (this.y) {
+          j = this.z.getIntrinsicWidth();
+        } else {
+          j = 0;
+        }
+        localObject2 = TextUtils.ellipsize((CharSequence)localObject2, localTextPaint, k - i - j - ((Drawable)localObject1).getIntrinsicWidth(), TextUtils.TruncateAt.END);
+        this.D.setText((CharSequence)localObject2);
+        this.D.a((Drawable)localObject1, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight()).c();
+      }
+      this.D.setTextColor(FormResHelper.a(getResources(), this.x));
+      Object localObject1 = this.D;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.t);
+      ((StringBuilder)localObject2).append(String.valueOf(this.a));
+      ((MultiImageTextView)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
+      this.D.setMaxWidth(this.E);
+      if ((this.u != null) && (this.y))
+      {
+        if ((this.v > 0) && (this.w > 0))
+        {
+          this.z.setBounds(0, 0, this.z.getIntrinsicWidth(), this.z.getIntrinsicHeight());
+          this.u.setBounds(0, 0, this.v, this.w);
+          this.D.setCompoundDrawables(this.u, null, this.z, null);
+        }
+        else
+        {
+          this.D.setCompoundDrawablesWithIntrinsicBounds(this.u, null, this.z, null);
+        }
+        this.D.setCompoundDrawablePadding(8);
         return;
       }
-    } while ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) || (this.jdField_a_of_type_Boolean));
-    label412:
-    label423:
-    label428:
-    this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.setVisibility(8);
+      if ((this.u != null) && (!this.y))
+      {
+        if ((this.v > 0) && (this.w > 0))
+        {
+          this.u.setBounds(0, 0, this.v, this.w);
+          this.D.setCompoundDrawables(this.u, null, null, null);
+        }
+        else
+        {
+          this.D.setCompoundDrawablesWithIntrinsicBounds(this.u, null, null, null);
+        }
+        this.D.setCompoundDrawablePadding(8);
+        return;
+      }
+      if ((this.u == null) && (this.y))
+      {
+        this.D.setCompoundDrawablesWithIntrinsicBounds(null, null, this.z, null);
+        this.D.setCompoundDrawablePadding(8);
+        return;
+      }
+      if ((this.u == null) && (!this.y))
+      {
+        this.D.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        this.D.setCompoundDrawablePadding(0);
+      }
+    }
+    else
+    {
+      this.D.setText("");
+      if ((this.u != null) && (this.y))
+      {
+        this.D.setVisibility(0);
+        if ((this.v > 0) && (this.w > 0))
+        {
+          this.u.setBounds(0, 0, this.v, this.w);
+          this.z.setBounds(0, 0, this.z.getIntrinsicWidth(), this.z.getIntrinsicHeight());
+          this.D.setCompoundDrawables(this.u, null, this.z, null);
+        }
+        else
+        {
+          this.D.setCompoundDrawablesWithIntrinsicBounds(this.u, null, this.z, null);
+        }
+        this.D.setCompoundDrawablePadding(8);
+        return;
+      }
+      if ((this.u != null) && (!this.y))
+      {
+        this.D.setVisibility(0);
+        if ((this.v > 0) && (this.w > 0))
+        {
+          this.u.setBounds(0, 0, this.v, this.w);
+          this.D.setCompoundDrawables(this.u, null, null, null);
+        }
+        else
+        {
+          this.D.setCompoundDrawablesWithIntrinsicBounds(this.u, null, null, null);
+        }
+        this.D.setCompoundDrawablePadding(0);
+        return;
+      }
+      if ((this.u == null) && (this.y))
+      {
+        this.D.setVisibility(0);
+        this.D.setCompoundDrawablesWithIntrinsicBounds(null, null, this.z, null);
+        this.D.setCompoundDrawablePadding(0);
+        return;
+      }
+      if ((this.u == null) && (!this.y)) {
+        this.D.setVisibility(8);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.GameRankFormItem
  * JD-Core Version:    0.7.0.1
  */

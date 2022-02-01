@@ -4,87 +4,88 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int jJu;
-  public LinkedList<b> qsj;
+  public LinkedList<b> OzF;
+  public int vgN;
   
   public a()
   {
-    AppMethodBeat.i(72700);
-    this.qsj = new LinkedList();
-    AppMethodBeat.o(72700);
+    AppMethodBeat.i(143816);
+    this.OzF = new LinkedList();
+    AppMethodBeat.o(143816);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72701);
+    AppMethodBeat.i(143817);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.jJu);
-      paramVarArgs.e(2, 8, this.qsj);
-      AppMethodBeat.o(72701);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.vgN);
+      paramVarArgs.e(2, 8, this.OzF);
+      AppMethodBeat.o(143817);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.jJu);
-      i = e.a.a.a.c(2, 8, this.qsj);
-      AppMethodBeat.o(72701);
+      paramInt = i.a.a.b.b.a.cJ(1, this.vgN);
+      i = i.a.a.a.c(2, 8, this.OzF);
+      AppMethodBeat.o(143817);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.qsj.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      this.OzF.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(72701);
+      AppMethodBeat.o(143817);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       a locala = (a)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(72701);
+        AppMethodBeat.o(143817);
         return -1;
       case 1: 
-        locala.jJu = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(72701);
+        locala.vgN = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(143817);
         return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new b();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((b)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        locala.qsj.add(localObject1);
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        b localb = new b();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localb.parseFrom((byte[])localObject);
+        }
+        locala.OzF.add(localb);
         paramInt += 1;
       }
-      AppMethodBeat.o(72701);
+      AppMethodBeat.o(143817);
       return 0;
     }
-    AppMethodBeat.o(72701);
+    AppMethodBeat.o(143817);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.a
  * JD-Core Version:    0.7.0.1
  */

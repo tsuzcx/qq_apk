@@ -34,50 +34,21 @@ public class da
     c();
   }
   
-  /* Error */
   public static da a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 43	c/t/m/g/da:f	Lc/t/m/g/da;
-    //   6: ifnonnull +19 -> 25
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: new 2	c/t/m/g/da
-    //   15: dup
-    //   16: invokespecial 105	c/t/m/g/da:<init>	()V
-    //   19: putstatic 43	c/t/m/g/da:f	Lc/t/m/g/da;
-    //   22: ldc 2
-    //   24: monitorexit
-    //   25: getstatic 43	c/t/m/g/da:f	Lc/t/m/g/da;
-    //   28: astore_0
-    //   29: ldc 2
-    //   31: monitorexit
-    //   32: aload_0
-    //   33: areturn
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: athrow
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   28	5	0	localda	da
-    //   34	5	0	localObject1	Object
-    //   40	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	25	34	finally
-    //   35	38	34	finally
-    //   3	12	40	finally
-    //   25	29	40	finally
-    //   38	40	40	finally
+    try
+    {
+      if (f == null) {
+        try
+        {
+          f = new da();
+        }
+        finally {}
+      }
+      da localda = f;
+      return localda;
+    }
+    finally {}
   }
   
   private final Object a(String paramString, Class<?> paramClass)
@@ -85,23 +56,23 @@ public class da
     if (!this.i) {
       c();
     }
-    if (!this.g.containsKey(paramClass)) {
-      throw new IllegalStateException("The property \"" + paramString + "\" don't support class type \"" + paramClass.toString() + "\"");
-    }
-    Object localObject2 = (String)this.h.get(paramString);
-    Object localObject1;
-    if (localObject2 != null)
+    Object localObject2;
+    if (this.g.containsKey(paramClass))
     {
-      localObject1 = localObject2;
-      if (((String)localObject2).length() != 0) {}
-    }
-    else
-    {
-      localObject1 = (String)e.get(paramString);
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = "";
+      localObject2 = (String)this.h.get(paramString);
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if (((String)localObject2).length() != 0) {}
+      }
+      else
+      {
+        localObject1 = (String)e.get(paramString);
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = "";
+      }
     }
     try
     {
@@ -110,14 +81,26 @@ public class da
     }
     catch (Throwable localThrowable)
     {
-      try
-      {
-        paramString = b((String)e.get(paramString), paramClass);
-        return paramString;
-      }
-      catch (Throwable paramString) {}
+      label82:
+      label99:
+      break label82;
+    }
+    try
+    {
+      paramString = b((String)e.get(paramString), paramClass);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      break label99;
     }
     return this.g.get(paramClass);
+    Object localObject1 = new StringBuilder("The property \"");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("\" don't support class type \"");
+    ((StringBuilder)localObject1).append(paramClass.toString());
+    ((StringBuilder)localObject1).append("\"");
+    throw new IllegalStateException(((StringBuilder)localObject1).toString());
   }
   
   protected static void a(String paramString)
@@ -147,25 +130,23 @@ public class da
   
   private static Object b(String paramString, Class<?> paramClass)
   {
-    Object localObject;
     if (paramClass == Integer.class) {
-      localObject = Integer.valueOf(Integer.parseInt(paramString));
+      return Integer.valueOf(Integer.parseInt(paramString));
     }
-    do
-    {
-      return localObject;
-      if (paramClass == Long.class) {
-        return Long.valueOf(Long.parseLong(paramString));
-      }
-      if (paramClass == Boolean.class) {
-        return Boolean.valueOf(Boolean.parseBoolean(paramString));
-      }
-      if (paramClass == Float.class) {
-        return Float.valueOf(Float.parseFloat(paramString));
-      }
-      localObject = paramString;
-    } while (paramClass != Double.class);
-    return Double.valueOf(Double.parseDouble(paramString));
+    if (paramClass == Long.class) {
+      return Long.valueOf(Long.parseLong(paramString));
+    }
+    if (paramClass == Boolean.class) {
+      return Boolean.valueOf(Boolean.parseBoolean(paramString));
+    }
+    if (paramClass == Float.class) {
+      return Float.valueOf(Float.parseFloat(paramString));
+    }
+    Object localObject = paramString;
+    if (paramClass == Double.class) {
+      localObject = Double.valueOf(Double.parseDouble(paramString));
+    }
+    return localObject;
   }
   
   private static void b(String paramString1, String paramString2)
@@ -190,46 +171,50 @@ public class da
   private static void d()
   {
     SharedPreferences localSharedPreferences = db.a().b();
-    if (localSharedPreferences == null) {}
-    String str;
-    do
-    {
+    if (localSharedPreferences == null) {
       return;
-      str = (String)dy.b(localSharedPreferences, "app_version", "");
-    } while ((c.length() <= 0) || (c.equals(str)));
-    co.a("clear sp > pre:" + str + ",now:" + c);
-    localSharedPreferences.edit().clear().apply();
-    dy.a(localSharedPreferences, "app_version", c);
+    }
+    String str = (String)dy.b(localSharedPreferences, "app_version", "");
+    if ((c.length() > 0) && (!c.equals(str)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder("clear sp > pre:");
+      localStringBuilder.append(str);
+      localStringBuilder.append(",now:");
+      localStringBuilder.append(c);
+      co.a(localStringBuilder.toString());
+      localSharedPreferences.edit().clear().apply();
+      dy.a(localSharedPreferences, "app_version", c);
+    }
   }
   
   private void f(String paramString)
   {
-    if (e.get(paramString) == null) {}
-    for (;;)
-    {
+    if (e.get(paramString) == null) {
       return;
-      try
-      {
-        SharedPreferences localSharedPreferences = db.a().b();
-        if (localSharedPreferences != null)
-        {
-          this.h.put(paramString, localSharedPreferences.getString(paramString, g(paramString)));
-          return;
-        }
+    }
+    try
+    {
+      SharedPreferences localSharedPreferences = db.a().b();
+      if (localSharedPreferences != null) {
+        this.h.put(paramString, localSharedPreferences.getString(paramString, g(paramString)));
       }
-      catch (Throwable paramString)
-      {
-        co.b(paramString.toString());
-      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      co.b(paramString.toString());
     }
   }
   
   private static String g(String paramString)
   {
-    if (!e.containsKey(paramString)) {
-      throw new NullPointerException("Not exists property name \"" + paramString + "\"");
+    if (e.containsKey(paramString)) {
+      return (String)e.get(paramString);
     }
-    return (String)e.get(paramString);
+    StringBuilder localStringBuilder = new StringBuilder("Not exists property name \"");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("\"");
+    throw new NullPointerException(localStringBuilder.toString());
   }
   
   public final int b(String paramString)
@@ -244,12 +229,14 @@ public class da
       co.a("---> read xml: failed,not init finish!");
       return;
     }
-    Iterator localIterator = e.keySet().iterator();
-    while (localIterator.hasNext()) {
-      f((String)localIterator.next());
+    Object localObject = e.keySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      f((String)((Iterator)localObject).next());
     }
     this.i = true;
-    co.a("---> read xml:" + this.h.toString());
+    localObject = new StringBuilder("---> read xml:");
+    ((StringBuilder)localObject).append(this.h.toString());
+    co.a(((StringBuilder)localObject).toString());
   }
   
   public final long c(String paramString)
@@ -269,22 +256,27 @@ public class da
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (paramObject == null)
-    {
+    if (paramObject == null) {
       paramObservable = null;
-      if ((paramObservable != null) && (paramObservable.length() != 0)) {
-        break label26;
-      }
-    }
-    for (;;)
-    {
-      return;
+    } else {
       paramObservable = (String)paramObject;
-      break;
-      label26:
-      paramObject = "update [" + paramObservable + "] : " + (String)this.h.get(paramObservable) + " --> ";
+    }
+    if (paramObservable != null)
+    {
+      if (paramObservable.length() == 0) {
+        return;
+      }
+      paramObject = new StringBuilder("update [");
+      paramObject.append(paramObservable);
+      paramObject.append("] : ");
+      paramObject.append((String)this.h.get(paramObservable));
+      paramObject.append(" --> ");
+      paramObject = paramObject.toString();
       f(paramObservable);
-      co.a(paramObject + (String)this.h.get(paramObservable));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append((String)this.h.get(paramObservable));
+      co.a(localStringBuilder.toString());
       paramObservable = (List)this.d.get(paramObservable);
       if ((paramObservable != null) && (!paramObservable.isEmpty()))
       {
@@ -298,7 +290,7 @@ public class da
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.da
  * JD-Core Version:    0.7.0.1
  */

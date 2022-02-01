@@ -1,102 +1,115 @@
 package android.support.v4.widget;
 
-import android.graphics.Rect;
-import android.support.v4.view.a;
-import android.support.v4.view.a.f;
-import android.support.v4.view.r;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.accessibility.AccessibilityEvent;
-import java.util.List;
+import android.support.v4.b.o;
+import android.support.v4.b.p;
+import android.support.v4.b.r;
+import java.util.ArrayList;
+import java.util.HashSet;
 
-final class e
-  extends a
+public final class e<T>
 {
-  private final Rect oI = new Rect();
+  private final o<ArrayList<T>> pO = new p(10);
+  private final r<T, ArrayList<T>> pP = new r();
+  private final ArrayList<T> pQ = new ArrayList();
+  private final HashSet<T> pR = new HashSet();
   
-  e(DrawerLayout paramDrawerLayout) {}
-  
-  public final void a(View paramView, android.support.v4.view.a.e parame)
+  private void a(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
   {
-    if (DrawerLayout.ob) {
-      super.a(paramView, parame);
-    }
-    for (;;)
-    {
-      parame.setClassName(DrawerLayout.class.getName());
-      parame.setFocusable(false);
-      parame.setFocused(false);
-      parame.a(f.mu);
-      parame.a(f.mv);
+    if (paramArrayList.contains(paramT)) {
       return;
-      Object localObject1 = android.support.v4.view.a.e.a(parame);
-      super.a(paramView, (android.support.v4.view.a.e)localObject1);
-      parame.setSource(paramView);
-      Object localObject2 = r.j(paramView);
-      if ((localObject2 instanceof View)) {
-        parame.setParent((View)localObject2);
-      }
-      localObject2 = this.oI;
-      ((android.support.v4.view.a.e)localObject1).getBoundsInParent((Rect)localObject2);
-      parame.setBoundsInParent((Rect)localObject2);
-      ((android.support.v4.view.a.e)localObject1).getBoundsInScreen((Rect)localObject2);
-      parame.setBoundsInScreen((Rect)localObject2);
-      parame.setVisibleToUser(((android.support.v4.view.a.e)localObject1).isVisibleToUser());
-      parame.setPackageName(((android.support.v4.view.a.e)localObject1).getPackageName());
-      parame.setClassName(((android.support.v4.view.a.e)localObject1).getClassName());
-      parame.setContentDescription(((android.support.v4.view.a.e)localObject1).getContentDescription());
-      parame.setEnabled(((android.support.v4.view.a.e)localObject1).isEnabled());
-      parame.setClickable(((android.support.v4.view.a.e)localObject1).isClickable());
-      parame.setFocusable(((android.support.v4.view.a.e)localObject1).isFocusable());
-      parame.setFocused(((android.support.v4.view.a.e)localObject1).isFocused());
-      parame.setAccessibilityFocused(((android.support.v4.view.a.e)localObject1).isAccessibilityFocused());
-      parame.setSelected(((android.support.v4.view.a.e)localObject1).isSelected());
-      parame.setLongClickable(((android.support.v4.view.a.e)localObject1).isLongClickable());
-      parame.addAction(((android.support.v4.view.a.e)localObject1).getActions());
-      ((android.support.v4.view.a.e)localObject1).recycle();
-      paramView = (ViewGroup)paramView;
-      int j = paramView.getChildCount();
+    }
+    if (paramHashSet.contains(paramT)) {
+      throw new RuntimeException("This graph contains cyclic dependencies");
+    }
+    paramHashSet.add(paramT);
+    ArrayList localArrayList = (ArrayList)this.pP.get(paramT);
+    if (localArrayList != null)
+    {
       int i = 0;
+      int j = localArrayList.size();
       while (i < j)
       {
-        localObject1 = paramView.getChildAt(i);
-        if (DrawerLayout.I((View)localObject1)) {
-          parame.addChild((View)localObject1);
-        }
+        a(localArrayList.get(i), paramArrayList, paramHashSet);
         i += 1;
       }
     }
+    paramHashSet.remove(paramT);
+    paramArrayList.add(paramT);
   }
   
-  public final boolean dispatchPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  public final ArrayList<T> cg()
   {
-    if (paramAccessibilityEvent.getEventType() == 32)
+    this.pQ.clear();
+    this.pR.clear();
+    int i = 0;
+    int j = this.pP.size();
+    while (i < j)
     {
-      paramView = paramAccessibilityEvent.getText();
-      paramAccessibilityEvent = this.oH.cd();
-      if (paramAccessibilityEvent != null)
-      {
-        int i = this.oH.D(paramAccessibilityEvent);
-        paramAccessibilityEvent = this.oH.I(i);
-        if (paramAccessibilityEvent != null) {
-          paramView.add(paramAccessibilityEvent);
-        }
-      }
-      return true;
+      a(this.pP.keyAt(i), this.pQ, this.pR);
+      i += 1;
     }
-    return super.dispatchPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
+    return this.pQ;
   }
   
-  public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  public final void clear()
   {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(DrawerLayout.class.getName());
+    int j = this.pP.size();
+    int i = 0;
+    while (i < j)
+    {
+      ArrayList localArrayList = (ArrayList)this.pP.valueAt(i);
+      if (localArrayList != null)
+      {
+        localArrayList.clear();
+        this.pO.t(localArrayList);
+      }
+      i += 1;
+    }
+    this.pP.clear();
   }
   
-  public final boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
+  public final boolean contains(T paramT)
   {
-    if ((DrawerLayout.ob) || (DrawerLayout.I(paramView))) {
-      return super.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
+    return this.pP.containsKey(paramT);
+  }
+  
+  public final void f(T paramT1, T paramT2)
+  {
+    if ((!this.pP.containsKey(paramT1)) || (!this.pP.containsKey(paramT2))) {
+      throw new IllegalArgumentException("All nodes must be present in the graph before being added as an edge");
+    }
+    ArrayList localArrayList2 = (ArrayList)this.pP.get(paramT1);
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
+    {
+      localArrayList2 = (ArrayList)this.pO.bC();
+      localArrayList1 = localArrayList2;
+      if (localArrayList2 == null) {
+        localArrayList1 = new ArrayList();
+      }
+      this.pP.put(paramT1, localArrayList1);
+    }
+    localArrayList1.add(paramT2);
+  }
+  
+  public final void x(T paramT)
+  {
+    if (!this.pP.containsKey(paramT)) {
+      this.pP.put(paramT, null);
+    }
+  }
+  
+  public final boolean y(T paramT)
+  {
+    int j = this.pP.size();
+    int i = 0;
+    while (i < j)
+    {
+      ArrayList localArrayList = (ArrayList)this.pP.valueAt(i);
+      if ((localArrayList != null) && (localArrayList.contains(paramT))) {
+        return true;
+      }
+      i += 1;
     }
     return false;
   }

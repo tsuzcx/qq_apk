@@ -1,4 +1,11 @@
-public class glg {}
+import java.nio.ByteBuffer;
+
+public class glg
+{
+  public long a;
+  public ByteBuffer a;
+  public long b;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar

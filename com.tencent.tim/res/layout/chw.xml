@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/o3b" android:layout_marginTop="20.0dip" style="@style/af9">
+        <Button android:id="@id/mvh" android:text="@string/ydz" style="@style/af6" />
+        <Button android:id="@id/miw" android:text="@string/ydw" style="@style/af8" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/nyb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout style="@style/aea">
+            <TextView android:text="@string/wa9" style="@style/af1" />
+            <EditText android:id="@id/ny4" android:hint="@string/w_o" android:inputType="textWebEmailAddress" style="@style/aez" />
+            <Button android:id="@id/mkn" style="@style/af0" />
+            <ImageView android:id="@id/ny6" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+        </RelativeLayout>
+        <RelativeLayout style="@style/ae9">
+            <TextView android:id="@id/oaq" android:text="@string/w_e" style="@style/af1" />
+            <EditText android:id="@id/oao" android:hint="@string/y8f" android:inputType="textWebEmailAddress" style="@style/aez" />
+            <Button android:id="@id/mkp" style="@style/af0" />
+            <ImageView android:id="@id/oap" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+        </RelativeLayout>
+        <RelativeLayout style="@style/ae8">
+            <TextView android:text="@string/password" style="@style/af1" />
+            <EditText android:id="@id/password_input" android:hint="@string/y8f" android:inputType="textPassword" style="@style/aez" />
+            <Button android:id="@id/mkl" style="@style/af0" />
+            <ImageView android:id="@id/ni9" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/nya" style="@style/ae8">
+            <TextView android:text="@string/wak" style="@style/af1" />
+            <CheckBox android:id="@id/o13" style="@style/aex" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/ny9" style="@style/aea">
+            <TextView android:text="@string/ydy" style="@style/af1" />
+            <EditText android:id="@id/mst" android:hint="@string/ydx" android:inputType="textWebEmailAddress" style="@style/aez" />
+            <Button android:id="@id/mkk" style="@style/af0" />
+            <ImageView android:id="@id/msu" android:visibility="gone" android:contentDescription="@string/b9f" style="@style/aew" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

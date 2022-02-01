@@ -1,41 +1,70 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import ajao;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.microapp.sdk.BaseLibInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 final class h
-  extends g.a
+  implements PreloadManager.OnGetPathListener
 {
-  h(g paramg, int paramInt, MiniAppConfig paramMiniAppConfig)
-  {
-    super(paramInt);
-  }
+  h(g paramg, c paramc, String paramString, g.a parama) {}
   
-  public void a(g.d paramd)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((this.a != null) && (!TextUtils.isEmpty(this.a.baseLibInfo.baseLibUrl)) && (!TextUtils.isEmpty(this.a.baseLibInfo.baseLibKey)))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApkgManager", 2, "initApkgByConfig - base lib is not ready");
-      }
-      long l = System.currentTimeMillis();
-      ajao localajao = ajao.a(BaseApplicationImpl.getApplication().getRuntime());
-      DownloadParam localDownloadParam = new DownloadParam();
-      localDownloadParam.filePos = 1;
-      localDownloadParam.url = this.a.baseLibInfo.baseLibUrl;
-      localajao.a(localDownloadParam, new i(this, paramd, l));
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downloadSubPack | getResPath : resCode=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("pathRes=");
+      ((StringBuilder)localObject).append(paramPathResult);
+      QLog.d("ApkgManager", 1, ((StringBuilder)localObject).toString());
     }
-    g.a(this.b, paramd, 1, null, "miniConfig not valid");
+    if (paramInt == 0)
+    {
+      localObject = g.a(this.a.f.config);
+      boolean bool = c.a(new File(paramPathResult.filePath).getAbsolutePath(), (String)localObject, this.b);
+      if (QLog.isColorLevel())
+      {
+        paramPathResult = new StringBuilder();
+        paramPathResult.append("downloadSubPack | getResPath :hasUnpack=");
+        paramPathResult.append(bool);
+        paramPathResult.append("folderPath=");
+        paramPathResult.append((String)localObject);
+        paramPathResult.append("subRoot=");
+        paramPathResult.append(this.b);
+        QLog.d("ApkgManager", 1, paramPathResult.toString());
+      }
+      if (bool)
+      {
+        paramPathResult = this.c;
+        if (paramPathResult != null) {
+          paramPathResult.onInitApkgInfo$76ec3a73(0, this.a);
+        }
+      }
+      else
+      {
+        paramPathResult = this.c;
+        if (paramPathResult != null) {
+          paramPathResult.onInitApkgInfo$76ec3a73(1, null);
+        }
+      }
+    }
+    else
+    {
+      paramPathResult = this.c;
+      if (paramPathResult != null) {
+        paramPathResult.onInitApkgInfo$76ec3a73(1, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.h
  * JD-Core Version:    0.7.0.1
  */

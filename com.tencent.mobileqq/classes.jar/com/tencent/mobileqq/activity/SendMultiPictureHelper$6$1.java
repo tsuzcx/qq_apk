@@ -1,32 +1,29 @@
 package com.tencent.mobileqq.activity;
 
-import adws;
-import adwy;
-import adwz;
-import aqwn;
-import bdin;
-import bdjz;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.util.ArrayList;
 
-public class SendMultiPictureHelper$6$1
+class SendMultiPictureHelper$6$1
   implements Runnable
 {
-  public SendMultiPictureHelper$6$1(adwy paramadwy) {}
+  SendMultiPictureHelper$6$1(SendMultiPictureHelper.6 param6) {}
   
   public void run()
   {
-    if (bdin.d(this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
+    if (NetworkUtil.isNetSupport(this.a.a.a)) {
       return;
     }
-    this.a.a.jdField_d_of_type_Boolean = true;
-    adws.a(this.a.a);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.a.a.jdField_a_of_type_Aqru);
+    this.a.a.s = true;
+    SendMultiPictureHelper.a(this.a.a);
+    this.a.a.b.getFileManagerNotifyCenter().deleteObserver(this.a.a.v);
     int i = 1;
-    while (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.a.d.size())
     {
-      this.a.a.a((adwz)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i), this.a.a.c, this.a.a.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_JavaLangString);
-      this.a.a.jdField_a_of_type_Bdjz.setMessage(String.format(this.a.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_Int + i), Integer.valueOf(this.a.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
+      this.a.a.a((SendMultiPictureHelper.SendingFileInfo)this.a.a.d.get(i), this.a.a.k, this.a.a.i, this.a.a.h);
+      this.a.a.c.setMessage(String.format(this.a.a.o, new Object[] { Integer.valueOf(this.a.a.e + i), Integer.valueOf(this.a.a.f), Integer.valueOf(0) }));
       i += 1;
     }
     this.a.a.c();
@@ -34,7 +31,7 @@ public class SendMultiPictureHelper$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1
  * JD-Core Version:    0.7.0.1
  */

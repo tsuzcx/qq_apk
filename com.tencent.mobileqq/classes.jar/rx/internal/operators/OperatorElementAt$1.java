@@ -18,12 +18,14 @@ class OperatorElementAt$1
       {
         this.val$child.onNext(this.this$0.defaultValue);
         this.val$child.onCompleted();
+        return;
       }
+      Subscriber localSubscriber = this.val$child;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.this$0.index);
+      localStringBuilder.append(" is out of bounds");
+      localSubscriber.onError(new IndexOutOfBoundsException(localStringBuilder.toString()));
     }
-    else {
-      return;
-    }
-    this.val$child.onError(new IndexOutOfBoundsException(this.this$0.index + " is out of bounds"));
   }
   
   public void onError(Throwable paramThrowable)
@@ -50,7 +52,7 @@ class OperatorElementAt$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorElementAt.1
  * JD-Core Version:    0.7.0.1
  */

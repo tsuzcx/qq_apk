@@ -1,26 +1,32 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelvoiceaddr.h;
-import com.tencent.mm.plugin.transvoice.a.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class ChatFooter$10
-  implements a.a
+  implements View.OnClickListener
 {
   ChatFooter$10(ChatFooter paramChatFooter) {}
   
-  public final void b(h paramh)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(155417);
-    ab.d("MicroMsg.ChatFooter", "onCutFinish.");
-    ChatFooter.a(this.vXU, paramh);
-    AppMethodBeat.o(155417);
+    AppMethodBeat.i(31503);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    ChatFooter.s(this.YiY);
+    Log.i("MicroMsg.ChatFooter", "close ime guide");
+    a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(31503);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChatFooter.10
  * JD-Core Version:    0.7.0.1
  */

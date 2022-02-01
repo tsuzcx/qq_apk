@@ -8,6 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import unite.DynamicSearch.ResultItemGroup;
 
 public final class DynamicTabSearch$RspBody
   extends MessageMicro<RspBody>
@@ -26,16 +27,17 @@ public final class DynamicTabSearch$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 72, 810 }, new String[] { "result_code", "error_msg", "item_groups", "is_end", "cookie", "search_ver", "hot_words", "sub_hot_top_wording", "dont_need_merge", "extension" }, new Object[] { Integer.valueOf(0), "", null, Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4 }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 72, 810 }, new String[] { "result_code", "error_msg", "item_groups", "is_end", "cookie", "search_ver", "hot_words", "sub_hot_top_wording", "dont_need_merge", "extension" }, new Object[] { localInteger, "", null, localInteger, localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, localInteger, localByteStringMicro4 }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     pb.unite.search.DynamicTabSearch.RspBody
  * JD-Core Version:    0.7.0.1
  */

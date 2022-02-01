@@ -1,22 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.HelloListActivity;
-import com.tencent.mobileqq.activity.NearPeopleActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class cpy
-  implements View.OnClickListener
+  extends FriendListObserver
 {
   public cpy(HelloListActivity paramHelloListActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    if (HelloListActivity.a(this.a) == HelloListActivity.b)
-    {
-      HelloListActivity.a(this.a);
-      return;
+    if (paramBoolean) {
+      this.a.a(0);
     }
-    this.a.startActivity(new Intent(this.a.getBaseContext(), NearPeopleActivity.class).putExtra(NearPeopleActivity.a, NearPeopleActivity.g));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.a(0);
+    }
   }
 }
 

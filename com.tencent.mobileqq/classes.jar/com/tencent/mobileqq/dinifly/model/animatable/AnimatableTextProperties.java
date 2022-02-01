@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.model.animatable;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public class AnimatableTextProperties
 {

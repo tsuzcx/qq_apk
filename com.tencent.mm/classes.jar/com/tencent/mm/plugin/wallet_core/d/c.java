@@ -2,194 +2,106 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.plugin.wallet_core.model.BankcardScene;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  extends j<Bankcard>
+  extends MAutoStorage<BankcardScene>
 {
   public static final String[] SQL_CREATE;
-  private List<Object> aTm;
-  public e db;
+  public ISQLiteDatabase db;
+  private List<Object> listeners;
   
   static
   {
-    AppMethodBeat.i(47071);
-    SQL_CREATE = new String[] { j.getCreateSQLs(Bankcard.info, "WalletBankcard") };
-    AppMethodBeat.o(47071);
+    AppMethodBeat.i(70599);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(BankcardScene.info, "WalletBankcardScene") };
+    AppMethodBeat.o(70599);
   }
   
-  public c(e parame)
+  public c(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, Bankcard.info, "WalletBankcard", null);
-    AppMethodBeat.i(47059);
-    this.aTm = new LinkedList();
-    this.db = parame;
-    AppMethodBeat.o(47059);
+    super(paramISQLiteDatabase, BankcardScene.info, "WalletBankcardScene", BankcardScene.INDEX_CREATE);
+    AppMethodBeat.i(70591);
+    this.listeners = new LinkedList();
+    this.db = paramISQLiteDatabase;
+    AppMethodBeat.o(70591);
   }
   
-  public final boolean aql()
+  public final boolean a(BankcardScene paramBankcardScene)
   {
-    AppMethodBeat.i(47067);
-    boolean bool = this.db.execSQL("WalletBankcard", "delete from WalletBankcard");
-    AppMethodBeat.o(47067);
+    AppMethodBeat.i(70593);
+    if (super.insert(paramBankcardScene))
+    {
+      paramBankcardScene = this.listeners.iterator();
+      while (paramBankcardScene.hasNext()) {
+        paramBankcardScene.next();
+      }
+      AppMethodBeat.o(70593);
+      return true;
+    }
+    AppMethodBeat.o(70593);
+    return false;
+  }
+  
+  public final ArrayList<BankcardScene> aso(int paramInt)
+  {
+    ArrayList localArrayList = null;
+    AppMethodBeat.i(301087);
+    Object localObject = "select * from WalletBankcardScene where scene=".concat(String.valueOf(paramInt));
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(301087);
+      return null;
+    }
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localArrayList = new ArrayList();
+      do
+      {
+        BankcardScene localBankcardScene = new BankcardScene();
+        localBankcardScene.convertFrom((Cursor)localObject);
+        localArrayList.add(localBankcardScene);
+      } while (((Cursor)localObject).moveToNext());
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(301087);
+    return localArrayList;
+  }
+  
+  public final boolean asp(int paramInt)
+  {
+    AppMethodBeat.i(70595);
+    String str = "delete from WalletBankcardScene where scene=".concat(String.valueOf(paramInt));
+    boolean bool = this.db.execSQL("WalletBankcardScene", str);
+    AppMethodBeat.o(70595);
     return bool;
   }
   
-  public final ArrayList<Bankcard> cUF()
+  public final boolean lZ(List<BankcardScene> paramList)
   {
-    ArrayList localArrayList = null;
-    AppMethodBeat.i(47060);
-    Object localObject = "select * from WalletBankcard where cardType <= 7 OR cardType & " + Bankcard.ufF + " != 0";
-    localObject = this.db.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(47060);
-      return null;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localArrayList = new ArrayList();
-      do
-      {
-        Bankcard localBankcard = new Bankcard();
-        localBankcard.convertFrom((Cursor)localObject);
-        localArrayList.add(localBankcard);
-      } while (((Cursor)localObject).moveToNext());
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(47060);
-    return localArrayList;
-  }
-  
-  public final Bankcard cVg()
-  {
-    Bankcard localBankcard = null;
-    AppMethodBeat.i(47061);
-    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.ufB + " != 0 ";
-    localObject = this.db.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(47061);
-      return null;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localBankcard = new Bankcard();
-      localBankcard.convertFrom((Cursor)localObject);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(47061);
-    return localBankcard;
-  }
-  
-  public final Bankcard cVh()
-  {
-    Bankcard localBankcard = null;
-    AppMethodBeat.i(47062);
-    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.ufE + " != 0 ";
-    localObject = this.db.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(47062);
-      return null;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localBankcard = new Bankcard();
-      localBankcard.convertFrom((Cursor)localObject);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(47062);
-    return localBankcard;
-  }
-  
-  public final ArrayList<Bankcard> cVi()
-  {
-    ArrayList localArrayList = null;
-    AppMethodBeat.i(47063);
-    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.ufA + " != 0 ";
-    localObject = this.db.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(47063);
-      return null;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localArrayList = new ArrayList();
-      do
-      {
-        Bankcard localBankcard = new Bankcard();
-        localBankcard.convertFrom((Cursor)localObject);
-        localArrayList.add(localBankcard);
-      } while (((Cursor)localObject).moveToNext());
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(47063);
-    return localArrayList;
-  }
-  
-  public final Bankcard cVj()
-  {
-    Bankcard localBankcard = null;
-    AppMethodBeat.i(47064);
-    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.ufC + " != 0 ";
-    localObject = this.db.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(47064);
-      return null;
-    }
-    if (((Cursor)localObject).moveToNext())
-    {
-      localBankcard = new Bankcard();
-      localBankcard.convertFrom((Cursor)localObject);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(47064);
-    return localBankcard;
-  }
-  
-  public final boolean dY(List<Bankcard> paramList)
-  {
-    AppMethodBeat.i(47065);
+    AppMethodBeat.i(70592);
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      super.insert((Bankcard)paramList.next());
+      super.insert((BankcardScene)paramList.next());
     }
-    paramList = this.aTm.iterator();
+    paramList = this.listeners.iterator();
     while (paramList.hasNext()) {
       paramList.next();
     }
-    AppMethodBeat.o(47065);
+    AppMethodBeat.o(70592);
     return true;
-  }
-  
-  public final boolean f(Bankcard paramBankcard)
-  {
-    AppMethodBeat.i(47066);
-    if (super.insert(paramBankcard))
-    {
-      paramBankcard = this.aTm.iterator();
-      while (paramBankcard.hasNext()) {
-        paramBankcard.next();
-      }
-      AppMethodBeat.o(47066);
-      return true;
-    }
-    AppMethodBeat.o(47066);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.c
  * JD-Core Version:    0.7.0.1
  */

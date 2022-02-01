@@ -1,6 +1,6 @@
 package com.tencent.thumbplayer.core.drm.httpclient;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +14,7 @@ public final class HttpDataSource$InvalidResponseCodeException
   
   public HttpDataSource$InvalidResponseCodeException(int paramInt, @Nullable String paramString, Map<String, List<String>> paramMap, DataSpec paramDataSpec)
   {
-    super("Response code: " + paramInt, paramDataSpec, 1);
+    super(localStringBuilder.toString(), paramDataSpec, 1);
     this.responseCode = paramInt;
     this.responseMessage = paramString;
     this.headerFields = paramMap;
@@ -22,7 +22,7 @@ public final class HttpDataSource$InvalidResponseCodeException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.drm.httpclient.HttpDataSource.InvalidResponseCodeException
  * JD-Core Version:    0.7.0.1
  */

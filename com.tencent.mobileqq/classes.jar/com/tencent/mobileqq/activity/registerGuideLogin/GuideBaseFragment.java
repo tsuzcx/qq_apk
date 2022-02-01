@@ -1,31 +1,30 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import adic;
-import ajmz;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.LoginUserPrivateHelper;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.QBaseFragment;
+import mqq.app.AppRuntime;
 
 public class GuideBaseFragment
-  extends Fragment
+  extends QBaseFragment
 {
-  protected adic a;
-  protected ajmz a;
-  public BaseActivity a;
-  public QQAppInterface a;
-  public String a;
+  protected AppRuntime a;
+  protected QBaseActivity b;
+  protected GuideBaseFragment.GuideCallBack c;
+  protected String d;
+  protected LoginUserPrivateHelper e;
   
   public GuideBaseFragment() {}
   
   @SuppressLint({"ValidFragment"})
-  public GuideBaseFragment(QQAppInterface paramQQAppInterface)
+  public GuideBaseFragment(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Adic = new adic();
+    this.a = paramAppRuntime;
+    this.e = new LoginUserPrivateHelper();
   }
   
   public Dialog a(int paramInt)
@@ -35,30 +34,30 @@ public class GuideBaseFragment
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.d;
   }
   
   public void a(int paramInt, Dialog paramDialog) {}
   
-  public void a(ajmz paramajmz)
-  {
-    this.jdField_a_of_type_Ajmz = paramajmz;
-  }
-  
   public void a(Intent paramIntent) {}
   
-  public void a(boolean paramBoolean) {}
+  public void a(GuideBaseFragment.GuideCallBack paramGuideCallBack)
+  {
+    this.c = paramGuideCallBack;
+  }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getActivity();
+    this.b = getQBaseActivity();
   }
   
   public void onDetach()
   {
     super.onDetach();
   }
+  
+  public void onMultiWindowModeChanged(boolean paramBoolean) {}
 }
 
 

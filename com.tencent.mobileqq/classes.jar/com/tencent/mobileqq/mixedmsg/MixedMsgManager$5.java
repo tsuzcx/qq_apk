@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.mixedmsg;
 
-import awih;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.api.IPicHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public final class MixedMsgManager$5
+class MixedMsgManager$5
   implements Runnable
 {
-  public MixedMsgManager$5(MessageForPic paramMessageForPic) {}
+  MixedMsgManager$5(MixedMsgManager paramMixedMsgManager, MessageForPic paramMessageForPic) {}
   
   public void run()
   {
-    awih.b(this.a);
+    ((IPicHelper)QRoute.api(IPicHelper.class)).cachePicToDisk(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager.5
  * JD-Core Version:    0.7.0.1
  */

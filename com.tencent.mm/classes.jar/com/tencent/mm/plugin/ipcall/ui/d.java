@@ -5,81 +5,77 @@ import android.graphics.Bitmap;
 import android.os.Looper;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.plugin.ipcall.a.a;
+import com.tencent.mm.sdk.platformtools.LruCache;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 
 public final class d
 {
+  QueueWorkerThread JLj;
+  LruCache<String, WeakReference<Bitmap>> cache;
   Context context;
-  ae<String, WeakReference<Bitmap>> evq;
-  private ak faV;
-  az nRu;
+  private MMHandler mRi;
   
   public d(Context paramContext)
   {
-    AppMethodBeat.i(22021);
-    this.evq = new ae(50);
-    this.faV = new ak(Looper.getMainLooper());
-    this.nRu = new az(5, "IPCallAddressAvatarLoader", 1, Looper.getMainLooper());
+    AppMethodBeat.i(25637);
+    this.cache = new LruCache(50);
+    this.mRi = new MMHandler(Looper.getMainLooper());
+    this.JLj = new QueueWorkerThread(5, "IPCallAddressAvatarLoader", 1, Looper.getMainLooper());
     this.context = paramContext;
-    AppMethodBeat.o(22021);
+    AppMethodBeat.o(25637);
   }
   
-  private static String Rn(String paramString)
+  private static String aJj(String paramString)
   {
-    AppMethodBeat.i(22029);
+    AppMethodBeat.i(25645);
     paramString = paramString + "@username";
-    AppMethodBeat.o(22029);
+    AppMethodBeat.o(25645);
     return paramString;
   }
   
-  private static String Ro(String paramString)
+  private static String aJk(String paramString)
   {
-    AppMethodBeat.i(22030);
+    AppMethodBeat.i(25646);
     paramString = paramString + "@contactId";
-    AppMethodBeat.o(22030);
+    AppMethodBeat.o(25646);
     return paramString;
   }
   
   private boolean b(String paramString1, String paramString2, ImageView paramImageView)
   {
-    AppMethodBeat.i(22027);
-    boolean bool = g(eU(paramString1, paramString2), paramImageView);
-    AppMethodBeat.o(22027);
+    AppMethodBeat.i(25643);
+    boolean bool = i(jK(paramString1, paramString2), paramImageView);
+    AppMethodBeat.o(25643);
     return bool;
-  }
-  
-  private boolean d(String paramString, ImageView paramImageView)
-  {
-    AppMethodBeat.i(22024);
-    boolean bool = g(Ro(paramString), paramImageView);
-    AppMethodBeat.o(22024);
-    return bool;
-  }
-  
-  public static String eU(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(22031);
-    paramString1 = paramString1 + "@" + paramString2 + "@contactId@username";
-    AppMethodBeat.o(22031);
-    return paramString1;
   }
   
   private boolean f(String paramString, ImageView paramImageView)
   {
-    AppMethodBeat.i(22026);
-    boolean bool = g(Rn(paramString), paramImageView);
-    AppMethodBeat.o(22026);
+    AppMethodBeat.i(25640);
+    boolean bool = i(aJk(paramString), paramImageView);
+    AppMethodBeat.o(25640);
     return bool;
   }
   
-  private boolean g(String paramString, ImageView paramImageView)
+  private boolean h(String paramString, ImageView paramImageView)
   {
-    AppMethodBeat.i(22028);
-    Object localObject = (WeakReference)this.evq.get(paramString);
+    AppMethodBeat.i(25642);
+    boolean bool = i(aJj(paramString), paramImageView);
+    AppMethodBeat.o(25642);
+    return bool;
+  }
+  
+  private boolean i(String paramString, ImageView paramImageView)
+  {
+    AppMethodBeat.i(25644);
+    Object localObject = (WeakReference)this.cache.get(paramString);
     if (localObject != null)
     {
       localObject = (Bitmap)((WeakReference)localObject).get();
@@ -88,60 +84,137 @@ public final class d
         if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
           paramImageView.setImageBitmap((Bitmap)localObject);
         }
-        AppMethodBeat.o(22028);
+        AppMethodBeat.o(25644);
         return true;
       }
     }
-    AppMethodBeat.o(22028);
+    AppMethodBeat.o(25644);
     return false;
   }
   
-  public final void a(String paramString1, String paramString2, ImageView paramImageView)
+  public static String jK(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(22022);
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)) || (paramImageView == null))
+    AppMethodBeat.i(25647);
+    paramString1 = paramString1 + "@" + paramString2 + "@contactId@username";
+    AppMethodBeat.o(25647);
+    return paramString1;
+  }
+  
+  public final void a(final String paramString1, final String paramString2, final ImageView paramImageView)
+  {
+    AppMethodBeat.i(25638);
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (paramImageView == null))
     {
-      AppMethodBeat.o(22022);
+      AppMethodBeat.o(25638);
       return;
     }
-    String str = eU(paramString1, paramString2);
+    final String str = jK(paramString1, paramString2);
     paramImageView.setTag(str);
     if (!b(paramString1, paramString2, paramImageView)) {
-      this.nRu.e(new d.1(this, paramString1, str, paramImageView, paramString2));
+      this.JLj.add(new QueueWorkerThread.ThreadObject()
+      {
+        private boolean hKy = false;
+        
+        public final boolean doInBackground()
+        {
+          AppMethodBeat.i(25631);
+          Bitmap localBitmap = a.br(d.this.context, paramString1);
+          if (localBitmap != null)
+          {
+            d.this.cache.put(str, new WeakReference(localBitmap));
+            this.hKy = true;
+            d.a(d.this, paramImageView, str, localBitmap);
+          }
+          AppMethodBeat.o(25631);
+          return true;
+        }
+        
+        public final boolean onPostExecute()
+        {
+          AppMethodBeat.i(25632);
+          if (!this.hKy)
+          {
+            d locald = d.this;
+            String str2 = paramString1;
+            String str1 = paramString2;
+            ImageView localImageView = paramImageView;
+            str2 = d.jK(str2, str1);
+            locald.JLj.add(new d.2(locald, str1, localImageView, str2));
+          }
+          AppMethodBeat.o(25632);
+          return true;
+        }
+      });
     }
-    AppMethodBeat.o(22022);
+    AppMethodBeat.o(25638);
   }
   
-  public final void c(String paramString, ImageView paramImageView)
+  public final void e(final String paramString, final ImageView paramImageView)
   {
-    AppMethodBeat.i(22023);
-    if ((bo.isNullOrNil(paramString)) || (paramImageView == null))
+    AppMethodBeat.i(25639);
+    if ((Util.isNullOrNil(paramString)) || (paramImageView == null))
     {
-      AppMethodBeat.o(22023);
+      AppMethodBeat.o(25639);
       return;
     }
-    String str = Ro(paramString);
-    paramImageView.setTag(str);
-    if (!d(paramString, paramImageView)) {
-      this.nRu.e(new d.3(this, paramString, paramImageView, str));
-    }
-    AppMethodBeat.o(22023);
-  }
-  
-  public final void e(String paramString, ImageView paramImageView)
-  {
-    AppMethodBeat.i(22025);
-    if ((bo.isNullOrNil(paramString)) || (paramImageView == null))
-    {
-      AppMethodBeat.o(22025);
-      return;
-    }
-    String str = Rn(paramString);
+    final String str = aJk(paramString);
     paramImageView.setTag(str);
     if (!f(paramString, paramImageView)) {
-      this.nRu.e(new d.4(this, paramString, paramImageView, str));
+      this.JLj.add(new QueueWorkerThread.ThreadObject()
+      {
+        public final boolean doInBackground()
+        {
+          AppMethodBeat.i(25634);
+          Bitmap localBitmap = a.br(d.this.context, paramString);
+          d.a(d.this, paramImageView, str, localBitmap);
+          AppMethodBeat.o(25634);
+          return true;
+        }
+        
+        public final boolean onPostExecute()
+        {
+          return true;
+        }
+      });
     }
-    AppMethodBeat.o(22025);
+    AppMethodBeat.o(25639);
+  }
+  
+  public final void g(final String paramString, final ImageView paramImageView)
+  {
+    AppMethodBeat.i(25641);
+    if ((Util.isNullOrNil(paramString)) || (paramImageView == null))
+    {
+      AppMethodBeat.o(25641);
+      return;
+    }
+    final String str = aJj(paramString);
+    paramImageView.setTag(str);
+    if (!h(paramString, paramImageView)) {
+      this.JLj.add(new QueueWorkerThread.ThreadObject()
+      {
+        public final boolean doInBackground()
+        {
+          AppMethodBeat.i(25635);
+          Bitmap localBitmap2 = com.tencent.mm.modelavatar.d.a(paramString, false, -1, null);
+          Bitmap localBitmap1 = localBitmap2;
+          if (localBitmap2 == null)
+          {
+            q.bFp();
+            localBitmap1 = AvatarStorage.LI(paramString);
+          }
+          d.a(d.this, paramImageView, str, localBitmap1);
+          AppMethodBeat.o(25635);
+          return true;
+        }
+        
+        public final boolean onPostExecute()
+        {
+          return false;
+        }
+      });
+    }
+    AppMethodBeat.o(25641);
   }
 }
 

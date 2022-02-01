@@ -1,6 +1,6 @@
 package com.tencent.ttpic.filament;
 
-class VertexForTriangle
+public class VertexForTriangle
 {
   public final int color;
   public final float x;
@@ -17,7 +17,7 @@ class VertexForTriangle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filament.VertexForTriangle
  * JD-Core Version:    0.7.0.1
  */

@@ -7,22 +7,21 @@ public final class ep
 {
   public static dt a(fe paramfe)
   {
-    int i = 1;
     try
     {
       paramfe.f();
-      i = 0;
-      paramfe = (dt)fc.P.a(paramfe);
-      return paramfe;
-    }
-    catch (EOFException paramfe)
-    {
-      if (i != 0) {
-        return dv.a;
+      int i = 0;
+      try
+      {
+        paramfe = (dt)fc.P.a(paramfe);
+        return paramfe;
       }
-      throw new eb(paramfe);
+      catch (EOFException paramfe) {}
+      if (i == 0) {
+        break label65;
+      }
     }
-    catch (fh paramfe)
+    catch (NumberFormatException paramfe)
     {
       throw new eb(paramfe);
     }
@@ -30,10 +29,17 @@ public final class ep
     {
       throw new du(paramfe);
     }
-    catch (NumberFormatException paramfe)
+    catch (fh paramfe)
     {
       throw new eb(paramfe);
     }
+    catch (EOFException paramfe)
+    {
+      i = 1;
+    }
+    return dv.a;
+    label65:
+    throw new eb(paramfe);
   }
   
   public static void a(dt paramdt, fg paramfg)

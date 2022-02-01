@@ -17,19 +17,22 @@ class DragAdapter$4
   public void onAnimationEnd(Animation paramAnimation)
   {
     this.this$0.mDragMirrorLayout.setVisibility(4);
-    if (this.val$tempDragVh != null) {
-      this.val$tempDragVh.itemView.setVisibility(0);
-    }
-    try
+    paramAnimation = this.val$tempDragVh;
+    if (paramAnimation != null)
     {
-      if ((this.val$tempDragVh instanceof MiniAppDesktopAdapter.MicroAppViewHolder)) {
-        this.this$0.updateHolder((MiniAppDesktopAdapter.MicroAppViewHolder)this.val$tempDragVh, (DesktopAppInfo)this.this$0.mData.get(this.val$tempDragVh.getAdapterPosition()), this.val$tempDragVh.getAdapterPosition());
+      paramAnimation.itemView.setVisibility(0);
+      try
+      {
+        if ((this.val$tempDragVh instanceof MiniAppDesktopAdapter.MicroAppViewHolder))
+        {
+          this.this$0.updateHolder((MiniAppDesktopAdapter.MicroAppViewHolder)this.val$tempDragVh, (DesktopAppInfo)this.this$0.mData.get(this.val$tempDragVh.getAdapterPosition()), this.val$tempDragVh.getAdapterPosition());
+          return;
+        }
       }
-      return;
-    }
-    catch (Throwable paramAnimation)
-    {
-      QLog.e("DragAdapter", 1, paramAnimation, new Object[0]);
+      catch (Throwable paramAnimation)
+      {
+        QLog.e("DragAdapter", 1, paramAnimation, new Object[0]);
+      }
     }
   }
   
@@ -39,7 +42,7 @@ class DragAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter.4
  * JD-Core Version:    0.7.0.1
  */

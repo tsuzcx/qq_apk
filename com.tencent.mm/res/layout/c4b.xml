@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:id="@id/g3n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ImageView android:id="@id/na" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/anj" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/jef" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/ifp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_marginBottom="8.0dip">
+        <TextView android:layout_gravity="center" android:background="@color/abn" android:layout_width="wrap_content" android:layout_height="2.0dip" android:layout_marginLeft="60.0dip" android:layout_weight="1.0" />
+        <TextView android:textColor="@color/xo" android:gravity="center" android:id="@id/ifq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jgh" />
+        <TextView android:layout_gravity="center" android:background="@color/abn" android:layout_width="wrap_content" android:layout_height="2.0dip" android:layout_marginRight="60.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:id="@id/g3f" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="25.0dip" android:layout_marginBottom="5.0dip">
+        <ImageView android:gravity="center" android:layout_gravity="center" android:background="@drawable/bd6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

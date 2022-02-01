@@ -27,10 +27,10 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
 import com.tencent.ttpic.openapi.util.MatrixUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.io.File;
@@ -70,23 +70,32 @@ public class NonFit2DFilter
   public NonFit2DFilter(StickerItem paramStickerItem, String paramString)
   {
     super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
-    if (paramStickerItem == null) {
-      throw new IllegalArgumentException("items length error!");
+    if (paramStickerItem != null)
+    {
+      this.nonFitItems = paramStickerItem;
+      this.ItemLength = 1;
+      this.dataPath = paramString;
+      this.materialId = VideoMaterial.getMaterialId(paramString);
+      this.mNeedSetPosition = true;
+      this.nonFitItems.playCount = 1;
+      setCurrentItem(paramStickerItem, 0);
+      this.realWidth = paramStickerItem.width;
+      this.realHeight = paramStickerItem.height;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dataPath:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", materialId:");
+      localStringBuilder.append(this.materialId);
+      localStringBuilder.append(", ItemLength:");
+      localStringBuilder.append(this.ItemLength);
+      filterLog(localStringBuilder.toString());
+      initParams();
+      if (paramStickerItem.anchorPoint != null) {
+        this.anchor = new PointF(paramStickerItem.anchorPoint[0], paramStickerItem.anchorPoint[1]);
+      }
+      return;
     }
-    this.nonFitItems = paramStickerItem;
-    this.ItemLength = 1;
-    this.dataPath = paramString;
-    this.materialId = VideoMaterialUtil.getMaterialId(paramString);
-    this.mNeedSetPosition = true;
-    this.nonFitItems.playCount = 1;
-    setCurrentItem(paramStickerItem, 0);
-    this.realWidth = paramStickerItem.width;
-    this.realHeight = paramStickerItem.height;
-    filterLog("dataPath:" + paramString + ", materialId:" + this.materialId + ", ItemLength:" + this.ItemLength);
-    initParams();
-    if (paramStickerItem.anchorPoint != null) {
-      this.anchor = new PointF(paramStickerItem.anchorPoint[0], paramStickerItem.anchorPoint[1]);
-    }
+    throw new IllegalArgumentException("items length error!");
   }
   
   public static void filterLog(String paramString)
@@ -99,74 +108,94 @@ public class NonFit2DFilter
   private int getCount(long paramLong)
   {
     int j;
-    if (this.nonFitItems.playCount == 0)
-    {
-      i = 1;
-      j = (int)((paramLong - this.frameStartTime) / Math.max(this.item.frameDuration, 1.0D));
-      if (j >= this.item.frames * (this.playCount + 1)) {
-        this.playCount += 1;
-      }
-      j %= Math.max(this.item.frames, 1);
-      if (i != 0) {
-        break label160;
-      }
-      if ((!this.mAlwayslastFrame) && (j >= this.mItemCount)) {
-        break label154;
-      }
+    if (this.nonFitItems.playCount == 0) {
+      j = 1;
+    } else {
+      j = 0;
     }
-    label154:
-    for (int i = this.item.frames - 1;; i = j)
+    double d1 = paramLong - this.frameStartTime;
+    double d2 = Math.max(this.item.frameDuration, 1.0D);
+    Double.isNaN(d1);
+    int i = (int)(d1 / d2);
+    int k = this.item.frames;
+    int m = this.playCount;
+    if (i >= k * (m + 1)) {
+      this.playCount = (m + 1);
+    }
+    k = i % Math.max(this.item.frames, 1);
+    i = k;
+    if (j == 0)
     {
-      this.mItemCount = i;
-      j = i;
-      if (i >= this.item.frames - 1)
+      if (!this.mAlwayslastFrame)
+      {
+        j = k;
+        if (k >= this.mItemCount) {}
+      }
+      else
       {
         j = this.item.frames - 1;
+      }
+      this.mItemCount = j;
+      i = j;
+      if (j >= this.item.frames - 1)
+      {
+        i = this.item.frames - 1;
         this.mAlwayslastFrame = true;
       }
-      return j;
-      i = 0;
-      break;
     }
-    label160:
-    return j;
+    return i;
   }
   
   private static float getDist(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    return (float)Math.sqrt((paramFloat1 - paramFloat3) * (paramFloat1 - paramFloat3) + (paramFloat2 - paramFloat4) * (paramFloat2 - paramFloat4));
+    paramFloat1 -= paramFloat3;
+    paramFloat2 -= paramFloat4;
+    return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
   }
   
   private int getNextFrame(int paramInt)
   {
-    boolean bool2 = true;
     Object localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-    if ((localObject == null) || (!BitmapUtils.isLegal((Bitmap)localObject)))
+    if ((localObject != null) && (BitmapUtils.isLegal((Bitmap)localObject)))
     {
-      localObject = FileUtils.genSeperateFileDir(this.dataPath) + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
+      paramInt = 0;
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FileUtils.genSeperateFileDir(this.dataPath));
+      ((StringBuilder)localObject).append(this.item.subFolder);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.id);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(".png");
+      localObject = ((StringBuilder)localObject).toString();
       localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+      paramInt = 1;
     }
-    for (paramInt = 1;; paramInt = 0)
+    boolean bool;
+    if (BitmapUtils.isLegal((Bitmap)localObject))
     {
-      if (BitmapUtils.isLegal((Bitmap)localObject))
-      {
-        GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
-        if (paramInt != 0) {
-          ((Bitmap)localObject).recycle();
-        }
+      GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+      if (paramInt != 0) {
+        ((Bitmap)localObject).recycle();
       }
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("getNextFrame load cache:");
-        if (paramInt == 0) {}
-        for (;;)
-        {
-          filterLog(bool2 + ", updateTexture:" + bool1 + ",bitmap content:" + BitmapUtils.isLegal((Bitmap)localObject));
-          return this.tex[0];
-          bool2 = false;
-        }
-      }
+      bool = true;
     }
+    else
+    {
+      bool = false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getNextFrame load cache:");
+    localStringBuilder.append(paramInt ^ 0x1);
+    localStringBuilder.append(", updateTexture:");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(",bitmap content:");
+    localStringBuilder.append(BitmapUtils.isLegal((Bitmap)localObject));
+    filterLog(localStringBuilder.toString());
+    return this.tex[0];
   }
   
   public static int getScreenHeight(Context paramContext)
@@ -192,7 +221,10 @@ public class NonFit2DFilter
       filterLog("updateTextureParam return!");
       return;
     }
-    filterLog("updateTextureParam" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateTextureParam");
+    localStringBuilder.append(i);
+    filterLog(localStringBuilder.toString());
     addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(i), 33986));
     this.lastImageIndex = i;
   }
@@ -201,7 +233,8 @@ public class NonFit2DFilter
   {
     filterLog("TimGestureLog: ApplyGLSLFilter Create Shader");
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public PointF ScreenPonitToGLPoint(float paramFloat1, float paramFloat2)
@@ -210,67 +243,170 @@ public class NonFit2DFilter
     DisplayMetrics localDisplayMetrics = getScreenWH(SdkContext.getInstance().getApplication());
     float f1 = this.width / localDisplayMetrics.widthPixels;
     float f2 = this.height / localDisplayMetrics.heightPixels;
-    localPointF.x = (f1 * paramFloat1);
-    localPointF.y = (f2 * paramFloat2);
+    localPointF.x = (paramFloat1 * f1);
+    localPointF.y = (paramFloat2 * f2);
     return localPointF;
   }
   
   public void adjustPosition()
   {
-    if (this.width / this.height >= 0.75D) {}
-    for (double d1 = this.width / 720.0D;; d1 = this.height / 960.0D)
+    double d1 = this.width;
+    double d2 = this.height;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    if (d1 / d2 >= 0.75D)
     {
-      this.mScaleFactor = (this.item.scaleFactor / 960.0F);
-      if (this.mScaleFactor == 0.0F) {
-        this.mScaleFactor = 1.0F;
-      }
-      this.mScaleFactor *= 1.2F;
-      float f1 = this.mShowPosition.x - (float)(this.anchor.x * d1 * this.mScaleFactor);
-      float f2 = this.mShowPosition.y - (float)(this.anchor.y * d1 * this.mScaleFactor);
-      float f3 = (float)(f1 + this.item.width * d1 * this.mScaleFactor);
-      double d2 = f2;
-      float f4 = (float)(d1 * this.item.height * this.mScaleFactor + d2);
-      float f5 = f1 / this.width;
-      f5 = f4 / this.height;
-      f5 = f3 / this.width;
-      f5 = f2 / this.height;
-      setPositions(AlgoUtils.calPositions(f1, f4, f3, f2, this.width, this.height));
-      return;
+      d1 = this.width;
+      d2 = 720.0D;
+      Double.isNaN(d1);
     }
+    else
+    {
+      d1 = this.height;
+      d2 = 960.0D;
+      Double.isNaN(d1);
+    }
+    d1 /= d2;
+    this.mScaleFactor = (this.item.scaleFactor / 960.0F);
+    if (this.mScaleFactor == 0.0F) {
+      this.mScaleFactor = 1.0F;
+    }
+    this.mScaleFactor *= 1.2F;
+    float f1 = this.mShowPosition.x;
+    d2 = this.anchor.x;
+    Double.isNaN(d2);
+    double d3 = this.mScaleFactor;
+    Double.isNaN(d3);
+    f1 -= (float)(d2 * d1 * d3);
+    float f2 = this.mShowPosition.y;
+    d2 = this.anchor.y;
+    Double.isNaN(d2);
+    d3 = this.mScaleFactor;
+    Double.isNaN(d3);
+    f2 -= (float)(d2 * d1 * d3);
+    d2 = f1;
+    d3 = this.item.width;
+    Double.isNaN(d3);
+    double d4 = this.mScaleFactor;
+    Double.isNaN(d4);
+    Double.isNaN(d2);
+    float f3 = (float)(d2 + d3 * d1 * d4);
+    d2 = f2;
+    d3 = this.item.height;
+    Double.isNaN(d3);
+    d4 = this.mScaleFactor;
+    Double.isNaN(d4);
+    Double.isNaN(d2);
+    float f4 = (float)(d2 + d3 * d1 * d4);
+    int i = this.width;
+    i = this.height;
+    i = this.width;
+    i = this.height;
+    setPositions(AlgoUtils.calPositions(f1, f4, f3, f2, this.width, this.height));
   }
   
   public void adjustPosition(double paramDouble1, double paramDouble2)
   {
-    if ((this.item == null) || (this.item.position == null) || (this.item.position.length < 2)) {
-      setPositions(GlUtil.EMPTY_POSITIONS);
-    }
-    for (;;)
+    Object localObject = this.item;
+    if ((localObject != null) && (((StickerItem)localObject).position != null) && (this.item.position.length >= 2))
     {
-      return;
+      paramDouble1 = this.width;
+      paramDouble2 = this.height;
+      Double.isNaN(paramDouble1);
+      Double.isNaN(paramDouble2);
       int j;
+      double d1;
       int i;
-      if (this.width / this.height >= 0.75D)
+      float f1;
+      float f2;
+      double d2;
+      if (paramDouble1 / paramDouble2 >= 0.75D)
       {
-        paramDouble1 = this.width / 720.0D;
-        j = (int)(this.width / 0.75D);
-        int k = (int)(j * this.item.position[1]);
-        i = (int)(this.width * this.item.position[0]);
+        paramDouble1 = this.width;
+        Double.isNaN(paramDouble1);
+        paramDouble1 /= 720.0D;
+        paramDouble2 = this.width;
+        Double.isNaN(paramDouble2);
+        j = (int)(paramDouble2 / 0.75D);
+        paramDouble2 = j;
+        d1 = this.item.position[1];
+        Double.isNaN(paramDouble2);
+        int k = (int)(paramDouble2 * d1);
+        paramDouble2 = this.width;
+        d1 = this.item.position[0];
+        Double.isNaN(paramDouble2);
+        i = (int)(paramDouble2 * d1);
         j = k - (j - this.height) / 2;
-        setPositions(AlgoUtils.calPositions(i, (float)(j + this.item.height * paramDouble1), (float)(i + this.item.width * paramDouble1), j, this.width, this.height));
-        this.anchor.x = ((float)(i + this.item.width * paramDouble1 / 2.0D));
+        f1 = i;
+        paramDouble2 = j;
+        d1 = this.item.height;
+        Double.isNaN(d1);
+        Double.isNaN(paramDouble2);
+        f2 = (float)(d1 * paramDouble1 + paramDouble2);
+        d1 = i;
+        d2 = this.item.width;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        setPositions(AlgoUtils.calPositions(f1, f2, (float)(d2 * paramDouble1 + d1), j, this.width, this.height));
+        localObject = this.anchor;
+        d2 = this.item.width;
+        Double.isNaN(d2);
+        d2 = d2 * paramDouble1 / 2.0D;
+        Double.isNaN(d1);
+        ((PointF)localObject).x = ((float)(d1 + d2));
+        localObject = this.anchor;
+        d1 = this.item.height;
+        Double.isNaN(d1);
+        paramDouble1 = d1 * paramDouble1 / 2.0D;
+        Double.isNaN(paramDouble2);
+        ((PointF)localObject).y = ((float)(paramDouble2 + paramDouble1));
       }
-      for (this.anchor.y = ((float)(j + this.item.height * paramDouble1 / 2.0D)); SLog.isEnable(); this.anchor.y = ((float)(i + this.item.height * paramDouble1 / 2.0D)))
+      else
       {
-        SLog.d("GestureTestUse", "should nerver run this clause");
-        return;
-        paramDouble1 = this.height / 960.0D;
-        j = (int)(this.height * 0.75D);
-        i = (int)(this.height * this.item.position[1]);
-        j = (int)(j * this.item.position[0]) - (j - this.width) / 2;
-        setPositions(AlgoUtils.calPositions(j, (float)(i + this.item.height * paramDouble1), (float)(j + this.item.width * paramDouble1), i, this.width, this.height));
-        this.anchor.x = ((float)(j + this.item.width * paramDouble1 / 2.0D));
+        paramDouble1 = this.height;
+        Double.isNaN(paramDouble1);
+        paramDouble1 /= 960.0D;
+        paramDouble2 = this.height;
+        Double.isNaN(paramDouble2);
+        j = (int)(paramDouble2 * 0.75D);
+        paramDouble2 = this.height;
+        d1 = this.item.position[1];
+        Double.isNaN(paramDouble2);
+        i = (int)(paramDouble2 * d1);
+        paramDouble2 = j;
+        d1 = this.item.position[0];
+        Double.isNaN(paramDouble2);
+        j = (int)(paramDouble2 * d1) - (j - this.width) / 2;
+        f1 = j;
+        paramDouble2 = i;
+        d1 = this.item.height;
+        Double.isNaN(d1);
+        Double.isNaN(paramDouble2);
+        f2 = (float)(d1 * paramDouble1 + paramDouble2);
+        d1 = j;
+        d2 = this.item.width;
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        setPositions(AlgoUtils.calPositions(f1, f2, (float)(d2 * paramDouble1 + d1), i, this.width, this.height));
+        localObject = this.anchor;
+        d2 = this.item.width;
+        Double.isNaN(d2);
+        d2 = d2 * paramDouble1 / 2.0D;
+        Double.isNaN(d1);
+        ((PointF)localObject).x = ((float)(d1 + d2));
+        localObject = this.anchor;
+        d1 = this.item.height;
+        Double.isNaN(d1);
+        paramDouble1 = d1 * paramDouble1 / 2.0D;
+        Double.isNaN(paramDouble2);
+        ((PointF)localObject).y = ((float)(paramDouble2 + paramDouble1));
       }
+      if (SLog.isEnable()) {
+        SLog.d("GestureTestUse", "should nerver run this clause");
+      }
+      return;
     }
+    setPositions(GlUtil.EMPTY_POSITIONS);
   }
   
   public boolean canUseBlendMode()
@@ -286,14 +422,16 @@ public class NonFit2DFilter
     clearTextureParam();
     destroyAudio();
     super.clearGLSLSelf();
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearTextureParam()
   {
-    if (this.mTextureParam != null)
+    UniformParam.TextureBitmapParam localTextureBitmapParam = this.mTextureParam;
+    if (localTextureBitmapParam != null)
     {
-      this.mTextureParam.clear();
+      localTextureBitmapParam.clear();
       this.mTextureParam = null;
     }
     setPositions(GlUtil.EMPTY_POSITIONS);
@@ -316,6 +454,8 @@ public class NonFit2DFilter
     addParam(new UniformParam.IntParam("texNeedTransform", -1));
     addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
     addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.Float2fParam("displacement", 0.0F, 0.0F));
+    addParam(new UniformParam.IntParam("displacementEnableLut", 0));
     addParam(new UniformParam.TextureParam("inputImageTexture3", 0, 33987));
     addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
     addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
@@ -347,11 +487,15 @@ public class NonFit2DFilter
   
   public boolean isAnimationPlay(long paramLong)
   {
-    if (this.frameStartTime == 0L) {}
-    while (paramLong - this.frameStartTime <= this.item.frames * this.item.frameDuration) {
+    long l = this.frameStartTime;
+    if (l == 0L) {
       return true;
     }
-    return false;
+    double d1 = paramLong - l;
+    double d2 = this.item.frames;
+    double d3 = this.item.frameDuration;
+    Double.isNaN(d2);
+    return d1 <= d2 * d3;
   }
   
   public boolean isHasCleared()
@@ -383,48 +527,56 @@ public class NonFit2DFilter
     this.initialized = false;
     destroyAudio();
     VideoMemoryManager.getInstance().reset(paramStickerItem.id);
-    filterLog("currentItem id:" + this.item.id);
+    paramStickerItem = new StringBuilder();
+    paramStickerItem.append("currentItem id:");
+    paramStickerItem.append(this.item.id);
+    filterLog(paramStickerItem.toString());
   }
   
   protected void updateActionTriggered(long paramLong)
   {
-    boolean bool = true;
     if (this.item != null)
     {
-      if (this.initialized) {
-        break label212;
+      boolean bool2 = this.initialized;
+      boolean bool1 = true;
+      if (!bool2)
+      {
+        this.initialized = true;
+        this.frameStartTime = paramLong;
       }
-      this.initialized = true;
-      this.frameStartTime = paramLong;
-    }
-    for (;;)
-    {
-      String str;
-      if ((!TextUtils.isEmpty(this.dataPath)) && (!TextUtils.isEmpty(this.item.id)) && (!TextUtils.isEmpty(this.item.audio))) {
+      else
+      {
+        bool1 = false;
+      }
+      if ((!TextUtils.isEmpty(this.dataPath)) && (!TextUtils.isEmpty(this.item.id)) && (!TextUtils.isEmpty(this.item.audio)))
+      {
         if ((this.mPlayer == null) && (!VideoPrefsUtil.getMaterialMute()))
         {
-          str = this.dataPath + File.separator + this.item.id + File.separator + this.item.audio;
-          if (!str.startsWith("assets://")) {
-            break label179;
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.dataPath);
+          ((StringBuilder)localObject).append(File.separator);
+          ((StringBuilder)localObject).append(this.item.id);
+          ((StringBuilder)localObject).append(File.separator);
+          ((StringBuilder)localObject).append(this.item.audio);
+          localObject = ((StringBuilder)localObject).toString();
+          if (((String)localObject).startsWith("assets://")) {
+            this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), ((String)localObject).replace("assets://", ""), false);
+          } else {
+            this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), (String)localObject, false);
           }
+          filterLog("mPlayer init!");
         }
-      }
-      label179:
-      for (this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), str.replace("assets://", ""), false);; this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), str, false))
-      {
-        filterLog("mPlayer init!");
-        if (!VideoPrefsUtil.getMaterialMute()) {
-          break;
+        if (VideoPrefsUtil.getMaterialMute())
+        {
+          PlayerUtil.stopPlayer(this.mPlayer);
+          return;
         }
-        PlayerUtil.stopPlayer(this.mPlayer);
-        return;
+        PlayerUtil.startPlayer(this.mPlayer, bool1);
       }
-      PlayerUtil.startPlayer(this.mPlayer, bool);
-      return;
+    }
+    else
+    {
       PlayerUtil.stopPlayer(this.mPlayer);
-      return;
-      label212:
-      bool = false;
     }
   }
   
@@ -453,11 +605,21 @@ public class NonFit2DFilter
   
   public void updatePreview(Object paramObject)
   {
-    if ((paramObject instanceof PTDetectInfo)) {}
-    for (paramObject = (PTDetectInfo)paramObject; paramObject == null; paramObject = null) {
+    if ((paramObject instanceof PTDetectInfo)) {
+      paramObject = (PTDetectInfo)paramObject;
+    } else {
+      paramObject = null;
+    }
+    if (paramObject == null) {
       return;
     }
-    filterLog("initialized:" + this.initialized + ", frameStartTime:" + this.frameStartTime + ", needChange:");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initialized:");
+    localStringBuilder.append(this.initialized);
+    localStringBuilder.append(", frameStartTime:");
+    localStringBuilder.append(this.frameStartTime);
+    localStringBuilder.append(", needChange:");
+    filterLog(localStringBuilder.toString());
     updateActionTriggered(paramObject.timestamp);
     updatePositions(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle);
     updateTextureParam(paramObject.timestamp);
@@ -470,7 +632,7 @@ public class NonFit2DFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.NonFit2DFilter
  * JD-Core Version:    0.7.0.1
  */

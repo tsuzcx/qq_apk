@@ -5,12 +5,12 @@ public class TinkerRuntimeException
 {
   public TinkerRuntimeException(String paramString)
   {
-    super("Tinker Exception:" + paramString);
+    super("Tinker Exception:".concat(String.valueOf(paramString)));
   }
   
   public TinkerRuntimeException(String paramString, Throwable paramThrowable)
   {
-    super("Tinker Exception:" + paramString, paramThrowable);
+    super("Tinker Exception:".concat(String.valueOf(paramString)), paramThrowable);
   }
 }
 

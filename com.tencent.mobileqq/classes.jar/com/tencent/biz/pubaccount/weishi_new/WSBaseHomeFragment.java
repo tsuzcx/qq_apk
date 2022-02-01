@@ -1,182 +1,130 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bieg;
-import biep;
-import bifb;
+import com.tencent.biz.pubaccount.weishi_new.combo.WSComboExpHelper;
+import com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSView;
+import com.tencent.widget.pull2refresh.BaseAdapter;
+import com.tencent.widget.pull2refresh.LoadingMoreHelper;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import com.tencent.widget.pull2refresh.XRecyclerView;
-import tat;
-import taw;
-import tba;
-import tiv;
 
-public abstract class WSBaseHomeFragment<V extends tat, P extends taw<V>, M>
+public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPresenter<V>, M>
   extends WSBaseFragment<V, P>
-  implements tiv<M>
+  implements IWSView<M>
 {
-  public Context a;
-  protected View a;
-  public XRecyclerView a;
-  protected boolean a;
-  private View b;
-  
-  private int a(int[] paramArrayOfInt)
-  {
-    int i = paramArrayOfInt[0];
-    int m = paramArrayOfInt.length;
-    int j = 0;
-    if (j < m)
-    {
-      int k = paramArrayOfInt[j];
-      if (k <= i) {
-        break label39;
-      }
-      i = k;
-    }
-    label39:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
-  }
+  protected Context f;
+  protected View g;
+  protected XRecyclerView h;
+  protected boolean i = false;
+  private View j;
   
   private void b(View paramView)
   {
-    this.b = paramView.findViewById(2131367696);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)paramView.findViewById(2131380321));
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null)
+    if (this.e) {
+      paramView.setBackgroundColor(this.f.getResources().getColor(2131165564));
+    }
+    this.j = paramView.findViewById(2131435084);
+    this.h = ((XRecyclerView)paramView.findViewById(2131450306));
+    paramView = this.h;
+    if (paramView != null)
     {
-      paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
+      paramView = paramView.getLoadMoreLayoutHelper();
       if (paramView != null) {
-        paramView.a(12);
+        paramView.setPreLoaderCount(12);
       }
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(new tba(this));
-      paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
-      if (a() != null) {
-        paramView.setAdapter(a());
+      this.h.setRefreshCallback(new WSBaseHomeFragment.1(this));
+      paramView = this.h.getRecyclerView();
+      if (p() != null) {
+        paramView.setAdapter(p());
       }
-      if (a() != null) {
-        paramView.setLayoutManager(a());
+      if (q() != null) {
+        paramView.setLayoutManager(q());
       }
     }
   }
   
-  protected int a()
-  {
-    return -1;
-  }
-  
-  protected abstract RecyclerView.LayoutManager a();
-  
-  protected abstract bieg a();
-  
-  public abstract void a();
-  
-  public void a(int paramInt) {}
+  public void a(int paramInt, String paramString) {}
   
   protected abstract void a(Bundle paramBundle);
   
   protected abstract void a(View paramView);
   
-  public abstract void a(XRecyclerView paramXRecyclerView, int paramInt);
+  protected abstract void a(XRecyclerView paramXRecyclerView, int paramInt);
   
-  public abstract void a(XRecyclerView paramXRecyclerView, boolean paramBoolean);
+  protected abstract void a(XRecyclerView paramXRecyclerView, boolean paramBoolean);
   
-  public void a(boolean paramBoolean) {}
-  
-  protected int b()
+  protected boolean aN_()
   {
-    int j = -1;
-    int i = j;
-    RecyclerView.LayoutManager localLayoutManager;
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null)
-    {
-      i = j;
-      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a() != null)
-      {
-        localLayoutManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().getLayoutManager();
-        if (!(localLayoutManager instanceof StaggeredGridLayoutManager)) {
-          break label71;
-        }
-        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)localLayoutManager).getSpanCount()];
-        ((StaggeredGridLayoutManager)localLayoutManager).findLastVisibleItemPositions(arrayOfInt);
-        i = a(arrayOfInt);
-      }
+    if (WSComboExpHelper.a.a()) {
+      return false;
     }
-    label71:
-    do
-    {
-      return i;
-      i = j;
-    } while (!(localLayoutManager instanceof LinearLayoutManager));
-    return ((LinearLayoutManager)localLayoutManager).findLastVisibleItemPosition();
+    return super.aN_();
   }
   
-  protected int c()
+  protected int n()
   {
-    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter;
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null)
-    {
-      localRecyclerViewWithHeaderFooter = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
-      if ((localRecyclerViewWithHeaderFooter != null) && (localRecyclerViewWithHeaderFooter.getAdapter() != null) && (a() != null)) {}
-    }
-    else
-    {
-      return 0;
-    }
-    return ((bifb)localRecyclerViewWithHeaderFooter.getAdapter()).a();
+    return -1;
   }
   
-  public abstract void c();
-  
-  public void d()
-  {
-    if ((this.b != null) && (this.b.getVisibility() == 0)) {
-      this.b.setVisibility(8);
-    }
-  }
+  protected abstract void o();
   
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = getActivity();
+    this.f = getBaseActivity();
     if (getArguments() != null) {
       a(getArguments());
     }
-    if (a() != -1) {}
-    for (this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559856, paramViewGroup, false)) {
-      return this.jdField_a_of_type_AndroidViewView;
+    if (n() != -1) {
+      this.g = paramLayoutInflater.inflate(n(), paramViewGroup, false);
+    } else {
+      this.g = paramLayoutInflater.inflate(2131626058, paramViewGroup, false);
     }
+    return this.g;
   }
   
   public void onViewCreated(View paramView, @Nullable Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    b(this.jdField_a_of_type_AndroidViewView);
-    a(this.jdField_a_of_type_AndroidViewView);
-    c();
+    b(this.g);
+    a(this.g);
+    t();
   }
   
-  public void setUserVisibleHint(boolean paramBoolean)
+  protected abstract BaseAdapter p();
+  
+  protected abstract RecyclerView.LayoutManager q();
+  
+  public void r()
   {
-    super.setUserVisibleHint(paramBoolean);
-    this.jdField_a_of_type_Boolean = getUserVisibleHint();
+    View localView = this.j;
+    if ((localView != null) && (!localView.isShown())) {
+      this.j.setVisibility(0);
+    }
+  }
+  
+  public void s() {}
+  
+  public abstract void t();
+  
+  public void u()
+  {
+    View localView = this.j;
+    if ((localView != null) && (localView.isShown())) {
+      this.j.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment
  * JD-Core Version:    0.7.0.1
  */

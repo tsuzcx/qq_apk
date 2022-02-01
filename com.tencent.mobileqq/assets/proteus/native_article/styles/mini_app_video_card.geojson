@@ -1,0 +1,301 @@
+{
+    "mini_app_video_card": {
+        "view_type": "UIView",
+        "view_id": "container_wrap",
+        "layout_type": "layout_relative",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "event_type": "cmd_url_click_card_report",
+        "data_attributes": {
+            "setLocalInfo:": {
+                "expose_T": "0X800B98F",
+                "click_T": "0X800B990"
+            },
+            "setRemoteInfo:": {
+                "rowkey": "$exRowkey",
+                "mini_program_name": "$mini_program_name",
+                "movie_name": "$movie_name"
+            }
+        },
+        "attributes": {
+            "setAttatchInfo:": "$jump_url"
+        },
+        "subviews": [
+            {
+                "view_type": "UIView",
+                "view_id": "id_native_image_video_container",
+                "layout_type": "layout_relative",
+                "margin_left": "16",
+                "margin_right": "16",
+                "margin_top": "16",
+                "default_visible": "YES",
+                "height": {
+                    "type": "relative",
+                    "value": "93"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "#F5F6FA"
+                },
+                "subviews": [
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_recommend_title",
+                        "margin_top": "8",
+                        "margin_left": "12",
+                        "margin_right": "12",
+                        "left_of_view": "id_recommend_cover_img",
+                        "align_parent_left": "YES",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "201"
+                        },
+                        "attributes": {
+                            "setTextColorString:": "#242424",
+                            "setText:": "$video_title",
+                            "setFontSizeString:ratio:":["16", "$attribute_text_size_ratio"],
+                            "setNumberOfLinesString:": "2"
+                        }
+                    },
+                    {
+                        "view_type": "UIView",
+                        "view_id": "category_container",
+                        "layout_type": "layout_relative",
+                        "direction": "horizontal",
+                        "align_parent_left": "YES",
+                        "align_parent_bottom": "YES",
+                        "left_of_view": "id_recommend_cover_img",
+                        "margin_left": "12",
+                        "margin_bottom": "8",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "16"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "201"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_watch_later_view",
+                                "align_parent_center_vertical": "YES",
+                                "visible_depend_on_children":"YES",
+                                "layout_type":"layout_relative",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "20"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setCornerRadiusString:":"10",
+                                    "setBackgroundColorString:":"#19979797"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UIButton",
+                                        "align_parent_center_vertical": "YES",
+                                        "event_type": "cmd_watch_later_click",
+                                        "view_id": "id_watch_later_button_wechat",
+                                        "default_visible":"YES",
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "58"
+                                        },
+                                        "attributes": {
+                                            "setScaleType:":"3",
+                                            "setTitle:": "$watch_later_text",
+                                            "setSelectedString:": "$watch_later_selected",
+                                            "setImages:colors:direction:forStates:": [
+                                                [
+                                                    "watch_later",
+                                                    "watch_later_active"
+                                                ],
+                                                [
+                                                    "#444444",
+                                                    "#444444"
+                                                ],
+                                                [
+                                                    "0",
+                                                    "0"
+                                                ],
+                                                [
+                                                    "0",
+                                                    "4"
+                                                ]
+                                            ],
+                                            "setFontSizeString:": "10",
+                                            "setInnerMargin:": "-2"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "ReadInjoyAsynImageView",
+                                "view_id": "arrow_icon",
+                                "layout_type": "layout_relative",
+                                "default_visible": "YES",
+                                "align_parent_center_vertical": "YES",
+                                "align_parent_right": "YES",
+                                "margin_left": "2",
+                                "margin_right": "12",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "10"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "10"
+                                },
+                                "attributes": {
+                                    "setImageWithURLString:lineup:": [
+                                        "https://pub.idqqimg.com/pc/misc/files/20200624/76d72f09adc6457f8dd265b9e6f2769b.png",
+                                        "1"
+                                    ]
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "category_relative_tag",
+                                "default_visible": "YES",
+                                "align_parent_center_vertical": "YES",
+                                "left_of_view":"arrow_icon",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setText:": "免费看正片",
+                                    "setTextColorString:": "#40A0FF",
+                                    "setFontSizeString:": "11",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_relative",
+                        "margin_right": "8",
+                        "margin_bottom": "8",
+                        "margin_top": "8",
+                        "align_parent_right": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "77"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "110"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "ReadInjoyAsynImageView",
+                                "view_id": "id_recommend_cover_img",
+                                "height": {
+                                    "type": "match_parent"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "attributes": {
+                                    "setScaleType:": "2",
+                                    "setImageWithURLString:lineup:": [
+                                        "$cover_url",
+                                        "-1"
+                                    ]
+                                }
+                            },
+                            {"$includeComponet": "componet/RIJ_round_corner.geojson"}
+                        ]
+                    },
+                    {
+                        "view_type": "UIView",
+                        "view_id": "video_container",
+                        "layout_type": "layout_relative",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "margin_right": "12",
+                        "margin_bottom": "12",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "15"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setAttatchInfo:": "-1",
+                            "setBackgroundColorString:": "#66000000"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "ReadInjoyAsynImageView",
+                                "view_id": "video_play_icon",
+                                "layout_type": "layout_relative",
+                                "default_visible": "YES",
+                                "align_parent_center_vertical": "YES",
+                                "margin_left": "4",
+                                "margin_right": "4",
+                                "align_parent_left": "YES",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "10"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "10"
+                                },
+                                "attributes": {
+                                    "setImageWithURLString:lineup:": [
+                                        "https://pub.idqqimg.com/pc/misc/files/20200624/397f6c6c7aec429e969378e600ce5386.png",
+                                        "1"
+                                    ]
+                                }
+                            },
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "video_time",
+                                "margin_right": "3",
+                                "right_of_view": "video_play_icon",
+                                "align_parent_center_vertical": "YES",
+                                "margin_bottom": "6",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setText:": "$duration",
+                                    "setTextColorString:": "#FFFFFF",
+                                    "setFontSizeString:": "10",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -16,11 +16,11 @@ public class a
   
   public Object clone()
   {
-    AppMethodBeat.i(146740);
+    AppMethodBeat.i(14448);
     try
     {
       a locala = (a)super.clone();
-      AppMethodBeat.o(146740);
+      AppMethodBeat.o(14448);
       return locala;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)

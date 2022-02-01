@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="color" name="white" id="0x7f010000" />
+    <public type="drawable" name="now_room_bkg" id="0x7f020000" />
+    <public type="drawable" name="qq_nearby_nowlive_loading" id="0x7f020003" />
+    <public type="drawable" name="qq_nearby_loading_image" id="0x7f020001" />
+    <public type="drawable" name="qq_nearby_now_loading_error" id="0x7f020002" />
+    <public type="id" name="download_progress_bar" id="0x7f030000" />
+    <public type="id" name="error_icon" id="0x7f030001" />
+    <public type="id" name="load_progress_bar" id="0x7f030002" />
+    <public type="id" name="loading_tips" id="0x7f030003" />
+    <public type="id" name="progress_container" id="0x7f030004" />
+    <public type="id" name="progress_text" id="0x7f030005" />
+    <public type="id" name="room_bkg" id="0x7f030006" />
+    <public type="id" name="try_again" id="0x7f030007" />
+    <public type="layout" name="now_loading_view" id="0x7f040000" />
+    <public type="string" name="app_name" id="0x7f050000" />
+    <public type="string" name="qb_now_first_tips" id="0x7f050001" />
+</resources>

@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.facetoface;
 
-import aepi;
-import alto;
-import alud;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,16 +10,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aqko;
-import aqkt;
-import aqkw;
-import aqkx;
-import azqs;
-import bdhj;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import mqq.app.MobileQQ;
 
@@ -30,12 +28,12 @@ public class Face2FaceTroopDetailView
   extends Face2FaceDetailBaseView
   implements View.OnClickListener
 {
-  protected Button a;
-  protected ImageView a;
-  protected TextView a;
-  public aqkw a;
-  protected TextView b;
-  protected TextView c;
+  protected Face2FaceUserData o;
+  protected ImageView p;
+  protected TextView q;
+  protected TextView r;
+  protected TextView s;
+  protected Button t;
   
   public Face2FaceTroopDetailView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,150 +42,178 @@ public class Face2FaceTroopDetailView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131378369);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377188);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378468));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378515));
-    this.c = ((TextView)super.findViewById(2131378475));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131362130));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView);
-    this.e = super.findViewById(2131375746);
+    this.a = super.findViewById(2131447939);
+    this.b = super.findViewById(2131446522);
+    this.q = ((TextView)super.findViewById(2131448053));
+    this.r = ((TextView)super.findViewById(2131448117));
+    this.s = ((TextView)super.findViewById(2131448071));
+    this.t = ((Button)super.findViewById(2131427824));
+    this.p = ((ImageView)this.a);
+    this.f = super.findViewById(2131444743);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      this.e.setPadding(aepi.a(10.0F, this.e.getResources()), aepi.a(15.0F, this.e.getResources()) + ImmersiveUtils.getStatusBarHeight(this.e.getContext()), aepi.a(10.0F, this.e.getResources()), aepi.a(15.0F, this.e.getResources()));
+      this.f.setPadding(AIOUtils.b(10.0F, this.f.getResources()), AIOUtils.b(15.0F, this.f.getResources()) + ImmersiveUtils.getStatusBarHeight(this.f.getContext()), AIOUtils.b(10.0F, this.f.getResources()), AIOUtils.b(15.0F, this.f.getResources()));
     }
-    this.e.setOnClickListener(this);
+    this.f.setOnClickListener(this);
     super.setOnClickListener(this);
   }
   
   public void a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
-    String str;
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onJoinTroopSucc, ret=").append(paramInt).append(",errInfo=").append(paramString1).append(",troopUin=").append(paramString2).append(",mUserData.nearbyUin=");
-      if (this.jdField_a_of_type_Aqkw != null)
-      {
-        str = this.jdField_a_of_type_Aqkw.e;
-        QLog.d("Face2FaceTroopDetailView", 2, str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onJoinTroopSucc, ret=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",errInfo=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",troopUin=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",mUserData.nearbyUin=");
+      localObject = this.o;
+      if (localObject != null) {
+        localObject = ((Face2FaceUserData)localObject).f;
+      } else {
+        localObject = null;
       }
+      localStringBuilder.append((String)localObject);
+      QLog.d("Face2FaceTroopDetailView", 2, localStringBuilder.toString());
     }
-    else if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Aqkw instanceof aqkt)) && (paramString2 != null) && (paramString2.equals(this.jdField_a_of_type_Aqkw.e)))
+    if (this.m)
     {
-      if (paramInt != 0) {
-        break label166;
-      }
-      setBtnEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131692383);
-      if (!paramBoolean) {
-        QQToast.a(super.getContext(), 2, alud.a(2131704670), 1).a();
-      }
-      super.c();
-    }
-    label166:
-    do
-    {
-      return;
-      str = null;
-      break;
-      if (paramInt == -5)
+      localObject = this.o;
+      if (((localObject instanceof Face2FaceGroupProfile)) && (paramString2 != null) && (paramString2.equals(((Face2FaceUserData)localObject).f)))
       {
-        this.jdField_a_of_type_Aqko.a((aqkt)this.jdField_a_of_type_Aqkw);
-        super.c();
+        if (paramInt == 0)
+        {
+          setBtnEnabled(false);
+          this.t.setText(2131889157);
+          if (!paramBoolean) {
+            QQToast.makeText(super.getContext(), 2, HardCodeUtil.a(2131902307), 1).show();
+          }
+          super.c();
+          return;
+        }
+        if (paramInt == -5)
+        {
+          this.n.a((Face2FaceGroupProfile)this.o);
+          super.c();
+        }
+        if (!paramBoolean)
+        {
+          paramString2 = paramString1;
+          if (TextUtils.isEmpty(paramString1)) {
+            paramString2 = HardCodeUtil.a(2131902324);
+          }
+          QQToast.makeText(super.getContext(), 1, paramString2, 1).show();
+        }
       }
-    } while (paramBoolean);
-    paramString2 = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      paramString2 = alud.a(2131704687);
     }
-    QQToast.a(super.getContext(), 1, paramString2, 1).a();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.e) {
+    if (paramView == this.f)
+    {
       super.c();
     }
-    while ((paramView != this.jdField_a_of_type_AndroidWidgetButton) || (this.jdField_a_of_type_Aqko == null) || (!(this.jdField_a_of_type_Aqkw instanceof aqkt))) {
-      return;
+    else if ((paramView == this.t) && (this.n != null))
+    {
+      Object localObject = this.o;
+      if ((localObject instanceof Face2FaceGroupProfile))
+      {
+        localObject = (Face2FaceGroupProfile)localObject;
+        this.n.a((Face2FaceGroupProfile)localObject, 1);
+        ReportController.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_guest", "Clk_join", 0, 0, ((Face2FaceGroupProfile)localObject).f, this.n.a().getCurrentAccountUin(), "", "");
+      }
     }
-    paramView = (aqkt)this.jdField_a_of_type_Aqkw;
-    this.jdField_a_of_type_Aqko.a(paramView, 1);
-    azqs.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_guest", "Clk_join", 0, 0, paramView.e, this.jdField_a_of_type_Aqko.a().getCurrentAccountUin(), "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setBindData(aqkw paramaqkw, View.OnClickListener paramOnClickListener)
+  public void setBindData(Face2FaceUserData paramFace2FaceUserData, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Aqkw = paramaqkw;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Aqko.a();
-    if ((paramaqkw instanceof aqkt))
+    this.o = paramFace2FaceUserData;
+    QQAppInterface localQQAppInterface = this.n.a();
+    Object localObject2;
+    Object localObject1;
+    if ((paramFace2FaceUserData instanceof Face2FaceGroupProfile))
     {
-      localObject2 = (aqkt)paramaqkw;
-      localObject1 = this.jdField_a_of_type_Aqko.a().a(paramaqkw.e, (byte)3, false, false);
-      paramaqkw = (aqkw)localObject1;
+      localObject2 = (Face2FaceGroupProfile)paramFace2FaceUserData;
+      localObject1 = this.n.a().getTroopFaceBitmap(paramFace2FaceUserData.f, (byte)3, false, false);
+      paramFace2FaceUserData = (Face2FaceUserData)localObject1;
       if (localObject1 == null) {
-        paramaqkw = bdhj.f();
+        paramFace2FaceUserData = ImageUtil.g();
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(paramaqkw));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(((aqkt)localObject2).a);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("(" + ((aqkt)localObject2).e + ")");
-      localObject1 = ((aqkt)localObject2).c;
-      paramaqkw = (aqkw)localObject1;
+      this.p.setBackgroundDrawable(new BitmapDrawable(paramFace2FaceUserData));
+      this.q.setText(((Face2FaceGroupProfile)localObject2).a);
+      paramFace2FaceUserData = this.r;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("(");
+      ((StringBuilder)localObject1).append(((Face2FaceGroupProfile)localObject2).f);
+      ((StringBuilder)localObject1).append(")");
+      paramFace2FaceUserData.setText(((StringBuilder)localObject1).toString());
+      localObject1 = ((Face2FaceGroupProfile)localObject2).c;
+      paramFace2FaceUserData = (Face2FaceUserData)localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramaqkw = ((aqkt)localObject2).b;
+        paramFace2FaceUserData = ((Face2FaceGroupProfile)localObject2).b;
       }
-      paramaqkw = localQQAppInterface.getApplication().getString(2131692391, new Object[] { paramaqkw });
-      this.c.setText(paramaqkw);
-      this.c.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_Aqko.a(((aqkt)localObject2).e))
+      paramFace2FaceUserData = localQQAppInterface.getApplication().getString(2131889165, new Object[] { paramFace2FaceUserData });
+      this.s.setText(paramFace2FaceUserData);
+      this.s.setVisibility(0);
+      this.r.setVisibility(0);
+      if (this.n.a(((Face2FaceGroupProfile)localObject2).f))
       {
         setBtnEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131692383);
+        this.t.setText(2131889157);
       }
-    }
-    while (!(paramaqkw instanceof aqkx)) {
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-        return;
         setBtnEnabled(true);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131692382);
+        this.t.setText(2131889156);
       }
     }
-    Object localObject2 = localQQAppInterface.a(paramaqkw.e, (byte)3, true);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = bdhj.a();
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject1));
-    localObject1 = (aqkx)paramaqkw;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((aqkx)localObject1).a);
-    paramaqkw = ((alto)localQQAppInterface.getManager(51)).e(paramaqkw.e);
-    if ((paramaqkw != null) && (!TextUtils.isEmpty(paramaqkw.remark)))
+    else if ((paramFace2FaceUserData instanceof Face2FaceUserProfile))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("(" + paramaqkw.remark + ")");
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.c.setVisibility(8);
+      localObject2 = localQQAppInterface.getFaceBitmap(paramFace2FaceUserData.f, (byte)3, true);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = ImageUtil.k();
+      }
+      this.p.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject1));
+      localObject1 = (Face2FaceUserProfile)paramFace2FaceUserData;
+      this.q.setText(((Face2FaceUserProfile)localObject1).a);
+      paramFace2FaceUserData = ((FriendsManager)localQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramFace2FaceUserData.f);
+      if ((paramFace2FaceUserData != null) && (!TextUtils.isEmpty(paramFace2FaceUserData.remark)))
+      {
+        localObject1 = this.r;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("(");
+        ((StringBuilder)localObject2).append(paramFace2FaceUserData.remark);
+        ((StringBuilder)localObject2).append(")");
+        ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
+        this.r.setVisibility(0);
+      }
+      else
+      {
+        this.r.setVisibility(8);
+      }
+      this.s.setVisibility(8);
       setBtnEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131692384);
-      break;
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.t.setText(2131889158);
     }
+    this.p.setOnClickListener(paramOnClickListener);
   }
   
   public void setBtnEnabled(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839108);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+      this.t.setBackgroundResource(2130839460);
+      this.t.setOnClickListener(this);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839124);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(null);
+    this.t.setBackgroundResource(2130839476);
+    this.t.setOnClickListener(null);
   }
 }
 

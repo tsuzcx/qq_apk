@@ -1,145 +1,169 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class bq
+  extends MAutoStorage<bp>
+  implements e
 {
-  int bsY;
-  public String name;
-  int status;
-  public a yOV;
-  private int yOW;
+  public static final String[] SQL_CREATE;
+  private static final String[] acGS;
+  public ISQLiteDatabase db;
   
-  public bq()
+  static
   {
-    this.bsY = 135;
-    this.name = "";
-    this.yOV = null;
-    this.yOV = null;
-    this.name = "";
-    this.status = 0;
-    this.yOW = 0;
+    AppMethodBeat.i(117170);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(bp.info, "fmessage_msginfo") };
+    acGS = new String[] { "CREATE INDEX IF NOT EXISTS  fmessageTalkerIndex ON fmessage_msginfo ( talker )" };
+    AppMethodBeat.o(117170);
   }
   
-  public bq(String paramString, boolean paramBoolean, int paramInt)
+  public bq(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(60231);
-    this.bsY = 135;
-    this.name = "";
-    this.yOV = null;
-    this.yOV = new a(paramString);
-    this.name = paramString;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    super(paramISQLiteDatabase, bp.info, "fmessage_msginfo", acGS);
+    this.db = paramISQLiteDatabase;
+  }
+  
+  public final bp aLv(String paramString)
+  {
+    AppMethodBeat.i(117163);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      this.status = (i | 0x2);
-      this.yOW = paramInt;
-      AppMethodBeat.o(60231);
-      return;
+      Log.e("MicroMsg.FMessageMsgInfoStorage", "getLastFMsg fail, talker is null");
+      AppMethodBeat.o(117163);
+      return null;
     }
+    paramString = "select * from fmessage_msginfo where talker = '" + Util.escapeSqlValue(paramString) + "' order by createTime DESC limit 1";
+    paramString = this.db.rawQuery(paramString, null, 2);
+    bp localbp = new bp();
+    if (paramString.moveToFirst()) {
+      localbp.convertFrom(paramString);
+    }
+    paramString.close();
+    AppMethodBeat.o(117163);
+    return localbp;
   }
   
-  public final void convertFrom(Cursor paramCursor)
+  public final boolean aLw(String paramString)
   {
-    AppMethodBeat.i(60232);
-    if ((this.bsY & 0x2) != 0)
+    AppMethodBeat.i(117168);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      this.name = paramCursor.getString(1);
-      if (this.yOV == null) {
-        this.yOV = new a(this.name);
-      }
+      Log.e("MicroMsg.FMessageMsgInfoStorage", "deleteByTalker fail, talker is null");
+      AppMethodBeat.o(117168);
+      return false;
     }
-    if ((this.bsY & 0x4) != 0) {
-      this.status = paramCursor.getInt(2);
-    }
-    if ((this.bsY & 0x80) != 0) {
-      this.yOW = paramCursor.getInt(7);
-    }
-    AppMethodBeat.o(60232);
+    paramString = "delete from fmessage_msginfo where talker = '" + Util.escapeSqlValue(paramString) + "'";
+    boolean bool = this.db.execSQL("fmessage_msginfo", paramString);
+    AppMethodBeat.o(117168);
+    return bool;
   }
   
-  public final ContentValues convertTo()
+  public final boolean b(bp parambp)
   {
-    AppMethodBeat.i(60233);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x2) != 0) {
-      localContentValues.put("name", this.name);
-    }
-    if ((this.bsY & 0x4) != 0) {
-      localContentValues.put("status", Integer.valueOf(this.status));
-    }
-    if ((this.bsY & 0x80) != 0) {
-      localContentValues.put("int_reserved1", Integer.valueOf(this.yOW));
-    }
-    AppMethodBeat.o(60233);
-    return localContentValues;
-  }
-  
-  public final boolean dyH()
-  {
-    return (this.status & 0x2) != 0;
-  }
-  
-  public final boolean dyI()
-  {
-    return this.yOW == 1;
-  }
-  
-  public final boolean isEnable()
-  {
-    return (this.status & 0x1) != 0;
-  }
-  
-  public final void setEnable(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    AppMethodBeat.i(117166);
+    if (parambp == null)
     {
-      int j = this.status;
-      if (paramBoolean) {}
-      for (int i = 1;; i = 0)
-      {
-        this.status = (i | j);
-        return;
-      }
+      Log.e("MicroMsg.FMessageMsgInfoStorage", "insert fail, fmsgInfo is null");
+      AppMethodBeat.o(117166);
+      return false;
     }
-    this.status &= 0xFFFFFFFE;
+    if (super.insert(parambp))
+    {
+      doNotify(parambp.systemRowid);
+      AppMethodBeat.o(117166);
+      return true;
+    }
+    AppMethodBeat.o(117166);
+    return false;
   }
   
-  public static final class a
+  public final bp[] bym(String paramString)
   {
-    private String cDt;
-    private String vGN;
-    
-    public a(String paramString)
+    AppMethodBeat.i(117162);
+    Log.d("MicroMsg.FMessageMsgInfoStorage", "getLastFMessageMsgInfo");
+    paramString = "select *, rowid from fmessage_msginfo  where talker = '" + Util.escapeSqlValue(paramString) + "' order by createTime DESC limit 3";
+    paramString = this.db.rawQuery(paramString, null, 2);
+    ArrayList localArrayList = new ArrayList();
+    while (paramString.moveToNext())
     {
-      AppMethodBeat.i(60230);
-      int i = paramString.indexOf("@");
-      if (i >= 0)
-      {
-        this.cDt = paramString.substring(0, i);
-        this.vGN = paramString.substring(i);
-        AppMethodBeat.o(60230);
-        return;
-      }
-      this.cDt = paramString;
-      this.vGN = "";
-      AppMethodBeat.o(60230);
+      bp localbp = new bp();
+      localbp.convertFrom(paramString);
+      localArrayList.add(localbp);
     }
-    
-    public final String asA(String paramString)
+    paramString.close();
+    paramString = (bp[])localArrayList.toArray(new bp[localArrayList.size()]);
+    AppMethodBeat.o(117162);
+    return paramString;
+  }
+  
+  public final bp byn(String paramString)
+  {
+    AppMethodBeat.i(117164);
+    paramString = iG(paramString, 1);
+    if ((paramString != null) && (paramString.length > 0))
     {
-      if (this.vGN != null) {
-        paramString = this.vGN;
-      }
+      paramString = paramString[0];
+      AppMethodBeat.o(117164);
       return paramString;
     }
+    AppMethodBeat.o(117164);
+    return null;
+  }
+  
+  public final List<bp> gbe()
+  {
+    AppMethodBeat.i(117167);
+    Log.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, type = 0");
+    ArrayList localArrayList = new ArrayList();
+    Cursor localCursor = this.db.rawQuery("select *, rowid from fmessage_msginfo where type = 0", null, 2);
+    while (localCursor.moveToNext())
+    {
+      bp localbp = new bp();
+      localbp.convertFrom(localCursor);
+      localArrayList.add(localbp);
+    }
+    localCursor.close();
+    Log.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, size = " + localArrayList.size());
+    AppMethodBeat.o(117167);
+    return localArrayList;
+  }
+  
+  public final bp[] iG(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(117165);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      Log.e("MicroMsg.FMessageMsgInfoStorage", "getLastRecvFMsg fail, talker is null");
+      AppMethodBeat.o(117165);
+      return null;
+    }
+    paramString = "select * from fmessage_msginfo where isSend != 1 and talker = '" + Util.escapeSqlValue(paramString) + "' order by createTime DESC limit " + paramInt;
+    paramString = this.db.rawQuery(paramString, null, 2);
+    ArrayList localArrayList = new ArrayList();
+    while (paramString.moveToNext())
+    {
+      bp localbp = new bp();
+      localbp.convertFrom(paramString);
+      localArrayList.add(localbp);
+    }
+    paramString.close();
+    paramString = (bp[])localArrayList.toArray(new bp[localArrayList.size()]);
+    AppMethodBeat.o(117165);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bq
  * JD-Core Version:    0.7.0.1
  */

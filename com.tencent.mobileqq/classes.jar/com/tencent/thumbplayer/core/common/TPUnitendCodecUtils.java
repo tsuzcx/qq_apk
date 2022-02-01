@@ -1,151 +1,281 @@
 package com.tencent.thumbplayer.core.common;
 
+import android.media.MediaCodecInfo;
+import android.media.MediaCodecInfo.CodecCapabilities;
+import android.media.MediaCodecInfo.CodecProfileLevel;
+import android.media.MediaCodecList;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import java.util.HashMap;
 
 public class TPUnitendCodecUtils
 {
-  private static HashMap<String, String> mSecureDecoderNameMaps = null;
+  private static int DolbyVisionProfileDvavPen = 1;
+  private static int DolbyVisionProfileDvavPer = 0;
+  private static int DolbyVisionProfileDvavSe = 9;
+  private static int DolbyVisionProfileDvheDen = 3;
+  private static int DolbyVisionProfileDvheDer = 2;
+  private static int DolbyVisionProfileDvheDtb = 7;
+  private static int DolbyVisionProfileDvheDth = 6;
+  private static int DolbyVisionProfileDvheDtr = 4;
+  private static int DolbyVisionProfileDvheSt = 8;
+  private static int DolbyVisionProfileDvheStn = 5;
+  private static HashMap<String, String> mSecureDecoderNameMaps;
   
-  /* Error */
+  public static int convertOmxProfileToDolbyVision(int paramInt)
+  {
+    int i;
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 8)
+          {
+            if (paramInt != 16)
+            {
+              if (paramInt != 32)
+              {
+                if (paramInt != 64)
+                {
+                  if (paramInt != 128)
+                  {
+                    if (paramInt != 256)
+                    {
+                      if (paramInt != 512) {
+                        i = 0;
+                      } else {
+                        i = DolbyVisionProfileDvavSe;
+                      }
+                    }
+                    else {
+                      i = DolbyVisionProfileDvheSt;
+                    }
+                  }
+                  else {
+                    i = DolbyVisionProfileDvheDtb;
+                  }
+                }
+                else {
+                  i = DolbyVisionProfileDvheDth;
+                }
+              }
+              else {
+                i = DolbyVisionProfileDvheStn;
+              }
+            }
+            else {
+              i = DolbyVisionProfileDvheDtr;
+            }
+          }
+          else {
+            i = DolbyVisionProfileDvheDen;
+          }
+        }
+        else {
+          i = DolbyVisionProfileDvheDer;
+        }
+      }
+      else {
+        i = DolbyVisionProfileDvavPen;
+      }
+    }
+    else {
+      i = DolbyVisionProfileDvavPer;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("convertOmxProfileToDolbyVision omxProfile:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" dolbyVisionProfile:");
+    localStringBuilder.append(i);
+    TPNativeLog.printLog(2, "TPUnitendCodecUtils", localStringBuilder.toString());
+    return i;
+  }
+  
+  public static String getDolbyVisionDecoderName(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        boolean bool = TextUtils.equals("video/dolby-vision", paramString);
+        if (!bool) {
+          return null;
+        }
+        paramInt2 = Build.VERSION.SDK_INT;
+        if (paramInt2 < 21) {
+          return null;
+        }
+        MediaCodecInfo[] arrayOfMediaCodecInfo = new MediaCodecList(1).getCodecInfos();
+        if (arrayOfMediaCodecInfo == null) {
+          return null;
+        }
+        int j = arrayOfMediaCodecInfo.length;
+        localObject1 = null;
+        paramInt2 = 0;
+        localObject2 = localObject1;
+        if (paramInt2 < j)
+        {
+          localMediaCodecInfo = arrayOfMediaCodecInfo[paramInt2];
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getDolbyVisionDecoderName name:");
+          ((StringBuilder)localObject2).append(localMediaCodecInfo.getName());
+          TPNativeLog.printLog(2, "TPUnitendCodecUtils", ((StringBuilder)localObject2).toString());
+          bool = localMediaCodecInfo.isEncoder();
+          if (!bool) {}
+        }
+      }
+      finally
+      {
+        Object localObject2;
+        MediaCodecInfo localMediaCodecInfo;
+        MediaCodecInfo.CodecCapabilities localCodecCapabilities;
+        MediaCodecInfo.CodecProfileLevel[] arrayOfCodecProfileLevel;
+        int k;
+        continue;
+        throw paramString;
+        continue;
+      }
+      try
+      {
+        localCodecCapabilities = localMediaCodecInfo.getCapabilitiesForType(paramString);
+      }
+      catch (Exception localException)
+      {
+        continue;
+        Object localObject3 = localObject1;
+        continue;
+        i += 1;
+        continue;
+      }
+      localCodecCapabilities = null;
+      if (localCodecCapabilities != null)
+      {
+        arrayOfCodecProfileLevel = localCodecCapabilities.profileLevels;
+        i = 0;
+        localObject2 = localObject1;
+        if (i < arrayOfCodecProfileLevel.length)
+        {
+          k = convertOmxProfileToDolbyVision(arrayOfCodecProfileLevel[i].profile);
+          if (k != paramInt1) {
+            break label418;
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getDolbyVisionDecoderName i:");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(" profile:");
+          ((StringBuilder)localObject2).append(k);
+          ((StringBuilder)localObject2).append(" dvProfile:");
+          ((StringBuilder)localObject2).append(paramInt1);
+          ((StringBuilder)localObject2).append(" bSecure:");
+          ((StringBuilder)localObject2).append(paramBoolean);
+          ((StringBuilder)localObject2).append(" name:");
+          ((StringBuilder)localObject2).append(localMediaCodecInfo.getName());
+          TPNativeLog.printLog(2, "TPUnitendCodecUtils", ((StringBuilder)localObject2).toString());
+          if (paramBoolean)
+          {
+            if (!localCodecCapabilities.isFeatureSupported("secure-playback")) {
+              break label418;
+            }
+            localObject1 = localMediaCodecInfo.getName();
+            break label411;
+          }
+          localObject1 = localMediaCodecInfo.getName();
+          break label411;
+        }
+        localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          paramString = new StringBuilder();
+          paramString.append("getDolbyVisionDecoderName name:");
+          paramString.append((String)localObject2);
+          TPNativeLog.printLog(2, "TPUnitendCodecUtils", paramString.toString());
+          continue;
+        }
+      }
+      paramInt2 += 1;
+    }
+    return localObject2;
+  }
+  
   public static String getSecureDecoderName(String paramString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: ldc 2
-    //   8: monitorenter
-    //   9: ldc 21
-    //   11: aload_0
-    //   12: invokestatic 27	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   15: ifne +24 -> 39
-    //   18: ldc 29
-    //   20: aload_0
-    //   21: invokestatic 27	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   24: istore_3
-    //   25: iload_3
-    //   26: ifne +13 -> 39
-    //   29: aload 6
-    //   31: astore 4
-    //   33: ldc 2
-    //   35: monitorexit
-    //   36: aload 4
-    //   38: areturn
-    //   39: getstatic 11	com/tencent/thumbplayer/core/common/TPUnitendCodecUtils:mSecureDecoderNameMaps	Ljava/util/HashMap;
-    //   42: ifnonnull +13 -> 55
-    //   45: new 31	java/util/HashMap
-    //   48: dup
-    //   49: invokespecial 32	java/util/HashMap:<init>	()V
-    //   52: putstatic 11	com/tencent/thumbplayer/core/common/TPUnitendCodecUtils:mSecureDecoderNameMaps	Ljava/util/HashMap;
-    //   55: getstatic 11	com/tencent/thumbplayer/core/common/TPUnitendCodecUtils:mSecureDecoderNameMaps	Ljava/util/HashMap;
-    //   58: aload_0
-    //   59: invokevirtual 36	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   62: ifeq +18 -> 80
-    //   65: getstatic 11	com/tencent/thumbplayer/core/common/TPUnitendCodecUtils:mSecureDecoderNameMaps	Ljava/util/HashMap;
-    //   68: aload_0
-    //   69: invokevirtual 40	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   72: checkcast 42	java/lang/String
-    //   75: astore 4
-    //   77: goto -44 -> 33
-    //   80: new 44	android/media/MediaCodecList
-    //   83: dup
-    //   84: iconst_1
-    //   85: invokespecial 47	android/media/MediaCodecList:<init>	(I)V
-    //   88: astore 7
-    //   90: aload 6
-    //   92: astore 4
-    //   94: aload 7
-    //   96: ifnull -63 -> 33
-    //   99: aload 7
-    //   101: invokevirtual 51	android/media/MediaCodecList:getCodecInfos	()[Landroid/media/MediaCodecInfo;
-    //   104: astore 7
-    //   106: aload 6
-    //   108: astore 4
-    //   110: aload 7
-    //   112: ifnull -79 -> 33
-    //   115: aload 7
-    //   117: arraylength
-    //   118: istore_2
-    //   119: iconst_0
-    //   120: istore_1
-    //   121: aload 5
-    //   123: astore 4
-    //   125: iload_1
-    //   126: iload_2
-    //   127: if_icmpge +56 -> 183
-    //   130: aload 7
-    //   132: iload_1
-    //   133: aaload
-    //   134: astore 6
-    //   136: aload 6
-    //   138: invokevirtual 57	android/media/MediaCodecInfo:isEncoder	()Z
-    //   141: istore_3
-    //   142: iload_3
-    //   143: ifeq +10 -> 153
-    //   146: iload_1
-    //   147: iconst_1
-    //   148: iadd
-    //   149: istore_1
-    //   150: goto -29 -> 121
-    //   153: aload 6
-    //   155: aload_0
-    //   156: invokevirtual 61	android/media/MediaCodecInfo:getCapabilitiesForType	(Ljava/lang/String;)Landroid/media/MediaCodecInfo$CodecCapabilities;
-    //   159: astore 4
-    //   161: aload 4
-    //   163: ifnull -17 -> 146
-    //   166: aload 4
-    //   168: ldc 63
-    //   170: invokevirtual 69	android/media/MediaCodecInfo$CodecCapabilities:isFeatureSupported	(Ljava/lang/String;)Z
-    //   173: ifeq -27 -> 146
-    //   176: aload 6
-    //   178: invokevirtual 73	android/media/MediaCodecInfo:getName	()Ljava/lang/String;
-    //   181: astore 4
-    //   183: getstatic 11	com/tencent/thumbplayer/core/common/TPUnitendCodecUtils:mSecureDecoderNameMaps	Ljava/util/HashMap;
-    //   186: aload_0
-    //   187: aload 4
-    //   189: invokevirtual 77	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   192: pop
-    //   193: goto -160 -> 33
-    //   196: astore_0
-    //   197: ldc 2
-    //   199: monitorexit
-    //   200: aload_0
-    //   201: athrow
-    //   202: astore 4
-    //   204: aconst_null
-    //   205: astore 4
-    //   207: goto -46 -> 161
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	210	0	paramString	String
-    //   120	30	1	i	int
-    //   118	10	2	j	int
-    //   24	119	3	bool	boolean
-    //   31	157	4	localObject1	Object
-    //   202	1	4	localException	java.lang.Exception
-    //   205	1	4	localObject2	Object
-    //   1	121	5	localObject3	Object
-    //   4	173	6	localObject4	Object
-    //   88	43	7	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	25	196	finally
-    //   39	55	196	finally
-    //   55	77	196	finally
-    //   80	90	196	finally
-    //   99	106	196	finally
-    //   115	119	196	finally
-    //   136	142	196	finally
-    //   153	161	196	finally
-    //   166	183	196	finally
-    //   183	193	196	finally
-    //   153	161	202	java/lang/Exception
+    try
+    {
+      bool = TextUtils.equals("video/avc", paramString);
+      localObject2 = null;
+      if ((!bool) && (!TextUtils.equals("video/hevc", paramString)))
+      {
+        bool = TextUtils.equals("video/dolby-vision", paramString);
+        if (!bool) {
+          return null;
+        }
+      }
+      if (mSecureDecoderNameMaps == null) {
+        mSecureDecoderNameMaps = new HashMap();
+      }
+      if (mSecureDecoderNameMaps.containsKey(paramString))
+      {
+        paramString = (String)mSecureDecoderNameMaps.get(paramString);
+        return paramString;
+      }
+      arrayOfMediaCodecInfo = new MediaCodecList(1).getCodecInfos();
+      if (arrayOfMediaCodecInfo == null) {
+        return null;
+      }
+      j = arrayOfMediaCodecInfo.length;
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
+      {
+        boolean bool;
+        Object localObject2;
+        MediaCodecInfo[] arrayOfMediaCodecInfo;
+        int j;
+        int i;
+        Object localObject1;
+        MediaCodecInfo localMediaCodecInfo;
+        for (;;)
+        {
+          label152:
+          throw paramString;
+        }
+        i += 1;
+      }
+    }
+    localObject1 = localObject2;
+    if (i < j)
+    {
+      localMediaCodecInfo = arrayOfMediaCodecInfo[i];
+      bool = localMediaCodecInfo.isEncoder();
+      if (bool) {}
+    }
+    else
+    {
+      try
+      {
+        localObject1 = localMediaCodecInfo.getCapabilitiesForType(paramString);
+      }
+      catch (Exception localException)
+      {
+        break label152;
+      }
+      localObject1 = null;
+      if ((localObject1 != null) && (((MediaCodecInfo.CodecCapabilities)localObject1).isFeatureSupported("secure-playback")))
+      {
+        localObject1 = localMediaCodecInfo.getName();
+        mSecureDecoderNameMaps.put(paramString, localObject1);
+        return localObject1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPUnitendCodecUtils
  * JD-Core Version:    0.7.0.1
  */

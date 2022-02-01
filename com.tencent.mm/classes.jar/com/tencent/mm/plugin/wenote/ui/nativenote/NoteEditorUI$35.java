@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NoteEditorUI$35
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  NoteEditorUI$35(NoteEditorUI paramNoteEditorUI, String paramString) {}
+  NoteEditorUI$35(NoteEditorUI paramNoteEditorUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(27045);
-    this.vCx.j(this.voX, false, false);
-    AppMethodBeat.o(27045);
+    AppMethodBeat.i(275233);
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(275233);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI.35
  * JD-Core Version:    0.7.0.1
  */

@@ -3,15 +3,13 @@ package com.tencent.av.service;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import lyp;
+import com.tencent.avcore.jni.data.AVCorePbInfo;
 
 public class AVPbInfo
+  extends AVCorePbInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AVPbInfo> CREATOR = new lyp();
-  public String bindId;
-  public int bindIdType;
-  public String phoneNum;
+  public static final Parcelable.Creator<AVPbInfo> CREATOR = new AVPbInfo.1();
   
   public AVPbInfo() {}
   
@@ -36,7 +34,7 @@ public class AVPbInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.AVPbInfo
  * JD-Core Version:    0.7.0.1
  */

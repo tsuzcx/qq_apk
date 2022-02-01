@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import akdb;
-
-public class ShortVideoPlayActivity$13$1
+class ShortVideoPlayActivity$13$1
   implements Runnable
 {
-  public ShortVideoPlayActivity$13$1(akdb paramakdb) {}
+  ShortVideoPlayActivity$13$1(ShortVideoPlayActivity.13 param13) {}
   
   public void run()
   {
-    this.a.a.b();
+    this.a.a.onCreateVideoSdkView();
   }
 }
 

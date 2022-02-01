@@ -10,153 +10,183 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.plugin.fts.a.f;
-import com.tencent.mm.protocal.protobuf.azs;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.dgz;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.HashMap;
 
 public final class b
   extends a
 {
-  private String color;
-  private boolean peW;
-  com.tencent.mm.plugin.nearlife.b.a pfd;
-  private com.tencent.mm.plugin.nearlife.b.a pfe;
-  String pff;
-  private HashMap<String, Integer> pfg;
+  private boolean FyH;
+  private boolean MqG;
+  com.tencent.mm.plugin.nearlife.b.b MqN;
+  private com.tencent.mm.plugin.nearlife.b.b MqO;
+  String MqP;
+  private HashMap<String, Integer> MqQ;
+  private String nRQ;
   
-  public b(Context paramContext, View.OnClickListener paramOnClickListener, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2)
+  public b(Context paramContext, View.OnClickListener paramOnClickListener, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, boolean paramBoolean3)
   {
     super(paramContext, paramOnClickListener, paramString1, paramBoolean2);
-    AppMethodBeat.i(22949);
-    this.pfg = new HashMap();
-    this.peW = true;
-    this.pfe = new com.tencent.mm.plugin.nearlife.b.a("", new azs());
-    this.pfe.pdW = "NotCheckIn";
-    this.pfe.Title = paramContext.getString(2131301744);
-    this.peW = paramBoolean1;
-    this.color = paramString2;
-    this.pfg.put(this.pfe.pdW, Integer.valueOf(2));
+    AppMethodBeat.i(267279);
+    this.MqQ = new HashMap();
+    this.MqG = true;
+    this.FyH = false;
+    this.MqO = new com.tencent.mm.plugin.nearlife.b.b("", new dgz());
+    this.MqO.MpI = "NotCheckIn";
+    this.MqO.hAP = paramContext.getString(R.l.gOk);
+    this.MqG = paramBoolean1;
+    this.nRQ = paramString2;
+    this.MqQ.put(this.MqO.MpI, Integer.valueOf(2));
     if ((!paramBoolean2) && (paramBoolean1))
     {
-      a(this.pfe, 0);
+      a(this.MqO, 0);
       notifyDataSetChanged();
     }
-    AppMethodBeat.o(22949);
+    this.FyH = paramBoolean3;
+    AppMethodBeat.o(267279);
   }
   
-  private Spannable Sm(String paramString)
+  private Spannable aKp(String paramString)
   {
-    AppMethodBeat.i(22952);
-    paramString = f.a(paramString, this.pej);
-    AppMethodBeat.o(22952);
+    AppMethodBeat.i(26576);
+    paramString = f.b(paramString, this.MpV);
+    AppMethodBeat.o(26576);
     return paramString;
-  }
-  
-  public final com.tencent.mm.plugin.nearlife.b.a fB(String paramString1, String paramString2)
-  {
-    int i = 1;
-    AppMethodBeat.i(22950);
-    com.tencent.mm.plugin.nearlife.b.a locala;
-    if (this.pfd == null)
-    {
-      this.pfd = new com.tencent.mm.plugin.nearlife.b.a("", new azs());
-      this.pfd.pdW = "City";
-      this.pfg.put(this.pfd.pdW, Integer.valueOf(1));
-      locala = this.pfd;
-      if (!this.peW) {
-        break label116;
-      }
-    }
-    for (;;)
-    {
-      a(locala, i);
-      this.pfd.Title = paramString1;
-      this.pfd.ohe = paramString2;
-      notifyDataSetChanged();
-      paramString1 = this.pfd;
-      AppMethodBeat.o(22950);
-      return paramString1;
-      label116:
-      i = 0;
-    }
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(22951);
-    com.tencent.mm.plugin.nearlife.b.a locala;
+    AppMethodBeat.i(26575);
+    com.tencent.mm.plugin.nearlife.b.b localb;
     if (paramView == null)
     {
-      paramViewGroup = new b.a(this);
-      paramView = View.inflate(this.mContext, 2130970340, null);
-      paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131826469));
-      paramViewGroup.nUy = ((TextView)paramView.findViewById(2131826481));
-      paramViewGroup.hsI = ((TextView)paramView.findViewById(2131826482));
-      paramViewGroup.pfi = ((LinearLayout)paramView.findViewById(2131826191));
-      paramViewGroup.pfj = ((WeImageView)paramView.findViewById(2131826483));
-      if (this.color != null) {
-        paramViewGroup.pfj.setIconColor(Color.parseColor(this.color));
+      paramViewGroup = new a();
+      paramView = View.inflate(this.mContext, R.i.gmq, null);
+      paramViewGroup.titleTv = ((TextView)paramView.findViewById(R.h.fMM));
+      paramViewGroup.JOl = ((TextView)paramView.findViewById(R.h.fML));
+      paramViewGroup.descTv = ((TextView)paramView.findViewById(R.h.fMK));
+      paramViewGroup.MqS = ((LinearLayout)paramView.findViewById(R.h.root_content));
+      paramViewGroup.MqT = ((WeImageView)paramView.findViewById(R.h.fVK));
+      if (this.nRQ != null) {
+        paramViewGroup.MqT.setIconColor(Color.parseColor(this.nRQ));
       }
-      paramViewGroup.pfi.setOnClickListener(this.bTw);
+      paramViewGroup.MqS.setOnClickListener(this.fhU);
       paramView.setTag(paramViewGroup);
-      locala = AF(paramInt);
-      if (!this.pfg.containsKey(locala.pdW)) {
-        break label481;
+      localb = aeA(paramInt);
+      if (!this.MqQ.containsKey(localb.MpI)) {
+        break label554;
       }
     }
-    label256:
-    label481:
-    for (int i = ((Integer)this.pfg.get(locala.pdW)).intValue();; i = 0)
+    label264:
+    label554:
+    for (int i = ((Integer)this.MqQ.get(localb.MpI)).intValue();; i = 0)
     {
-      paramViewGroup.pfj.setVisibility(8);
+      paramViewGroup.MqT.setVisibility(8);
       paramViewGroup.type = i;
-      paramViewGroup.pfh = locala;
-      if ((!bo.isNullOrNil(this.pff)) && (this.pff.equals(locala.pdW))) {
-        paramViewGroup.pfj.setVisibility(0);
+      paramViewGroup.MqR = localb;
+      if ((!Util.isNullOrNil(this.MqP)) && (this.MqP.equals(localb.MpI))) {
+        paramViewGroup.MqT.setVisibility(0);
       }
       switch (i)
       {
       default: 
         paramViewGroup.position = paramInt;
-        paramViewGroup.pdW = locala.pdW;
-        if (this.peo)
+        paramViewGroup.MpI = localb.MpI;
+        if (this.HQr)
         {
-          paramViewGroup.titleTv.setText(Sm(locala.Title));
-          paramViewGroup.hsI.setText(Sm(cq(locala.peb)));
+          paramViewGroup.titleTv.setText(aKp(localb.hAP));
+          paramViewGroup.descTv.setText(aKp(ji(localb.MpN)));
         }
         break;
       }
       for (;;)
       {
-        paramViewGroup.nUy.setVisibility(8);
-        AppMethodBeat.o(22951);
-        return paramView;
-        paramViewGroup = (b.a)paramView.getTag();
-        break;
-        paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(2131689763));
-        paramViewGroup.hsI.setVisibility(8);
-        break label256;
-        paramViewGroup.hsI.setVisibility(8);
-        paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(2131690489));
-        if (!bo.isNullOrNil(this.pff)) {
-          break label256;
+        paramViewGroup.JOl.setVisibility(8);
+        if (this.FyH)
+        {
+          paramViewGroup.MqS.setBackground(this.mContext.getDrawable(R.g.mm_listitem_dark_mode));
+          paramViewGroup.titleTv.setTextColor(Color.parseColor("#CCFFFFFF"));
+          paramViewGroup.descTv.setTextColor(Color.parseColor("#80FFFFFF"));
+          paramViewGroup.JOl.setTextColor(Color.parseColor("#CCFFFFFF"));
         }
-        paramViewGroup.pfj.setVisibility(0);
-        break label256;
-        paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(2131689763));
-        paramViewGroup.hsI.setVisibility(0);
-        break label256;
-        paramViewGroup.titleTv.setText(locala.Title);
-        paramViewGroup.hsI.setText(cq(locala.peb));
+        AppMethodBeat.o(26575);
+        return paramView;
+        paramViewGroup = (a)paramView.getTag();
+        break;
+        paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(R.e.normal_text_color));
+        paramViewGroup.descTv.setVisibility(8);
+        break label264;
+        paramViewGroup.descTv.setVisibility(8);
+        paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(R.e.sns_link_color));
+        if (!Util.isNullOrNil(this.MqP)) {
+          break label264;
+        }
+        paramViewGroup.MqT.setVisibility(0);
+        break label264;
+        paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(R.e.normal_text_color));
+        paramViewGroup.descTv.setVisibility(0);
+        break label264;
+        paramViewGroup.titleTv.setText(localb.hAP);
+        paramViewGroup.descTv.setText(ji(localb.MpN));
       }
     }
+  }
+  
+  public final com.tencent.mm.plugin.nearlife.b.b kG(String paramString1, String paramString2)
+  {
+    int i = 1;
+    AppMethodBeat.i(26574);
+    com.tencent.mm.plugin.nearlife.b.b localb;
+    if (this.MqN == null)
+    {
+      this.MqN = new com.tencent.mm.plugin.nearlife.b.b("", new dgz());
+      this.MqN.MpI = "City";
+      this.MqQ.put(this.MqN.MpI, Integer.valueOf(1));
+      localb = this.MqN;
+      if (!this.MqG) {
+        break label117;
+      }
+    }
+    for (;;)
+    {
+      a(localb, i);
+      this.MqN.hAP = paramString1;
+      this.MqN.hOG = paramString2;
+      notifyDataSetChanged();
+      paramString1 = this.MqN;
+      AppMethodBeat.o(26574);
+      return paramString1;
+      label117:
+      i = 0;
+    }
+  }
+  
+  final class a
+  {
+    TextView JOl;
+    String MpI;
+    com.tencent.mm.plugin.nearlife.b.b MqR;
+    LinearLayout MqS;
+    WeImageView MqT;
+    TextView descTv;
+    int position;
+    TextView titleTv;
+    int type;
+    
+    a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.b
  * JD-Core Version:    0.7.0.1
  */

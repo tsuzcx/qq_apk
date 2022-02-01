@@ -4,23 +4,26 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.base.a;
 
-@a(7)
+@com.tencent.mm.ui.base.a(7)
 public class TaskRedirectUI
-  extends Activity
+  extends HellActivity
 {
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(35279);
+    AppMethodBeat.i(39486);
     super.onCreate(paramBundle);
     paramBundle = new Intent(this, LauncherUI.class);
     paramBundle.addFlags(268435456);
     paramBundle.addFlags(67108864);
-    startActivity(paramBundle);
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().cG(paramBundle);
+    com.tencent.mm.hellhoundlib.a.a.b(this, paramBundle.aYi(), "com/tencent/mm/ui/transmit/TaskRedirectUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramBundle.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/transmit/TaskRedirectUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
-    AppMethodBeat.o(35279);
+    AppMethodBeat.o(39486);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -31,7 +34,7 @@ public class TaskRedirectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.TaskRedirectUI
  * JD-Core Version:    0.7.0.1
  */

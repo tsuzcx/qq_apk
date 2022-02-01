@@ -17,21 +17,15 @@ public final class ByteStreamsKt$iterator$1
   
   private final void prepareNext()
   {
-    boolean bool = true;
     if ((!this.nextPrepared) && (!this.finished))
     {
       this.nextByte = this.$this_iterator.read();
+      boolean bool = true;
       this.nextPrepared = true;
       if (this.nextByte != -1) {
-        break label46;
+        bool = false;
       }
-    }
-    for (;;)
-    {
       this.finished = bool;
-      return;
-      label46:
-      bool = false;
     }
   }
   
@@ -53,18 +47,19 @@ public final class ByteStreamsKt$iterator$1
   public boolean hasNext()
   {
     prepareNext();
-    return !this.finished;
+    return this.finished ^ true;
   }
   
   public byte nextByte()
   {
     prepareNext();
-    if (this.finished) {
-      throw ((Throwable)new NoSuchElementException("Input stream is over."));
+    if (!this.finished)
+    {
+      byte b = (byte)this.nextByte;
+      this.nextPrepared = false;
+      return b;
     }
-    byte b = (byte)this.nextByte;
-    this.nextPrepared = false;
-    return b;
+    throw ((Throwable)new NoSuchElementException("Input stream is over."));
   }
   
   public final void setFinished(boolean paramBoolean)
@@ -84,7 +79,7 @@ public final class ByteStreamsKt$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.ByteStreamsKt.iterator.1
  * JD-Core Version:    0.7.0.1
  */

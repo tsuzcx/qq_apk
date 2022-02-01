@@ -1,43 +1,33 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-public final class c$b
+@Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+final class c$b
+  extends u
+  implements a<MultiProcessMMKV>
 {
-  public static final HashMap<Integer, Integer> vJq;
+  public static final b XNt;
   
   static
   {
-    AppMethodBeat.i(114654);
-    HashMap localHashMap = new HashMap();
-    vJq = localHashMap;
-    localHashMap.put(Integer.valueOf(22), Integer.valueOf(64));
-    vJq.put(Integer.valueOf(9), Integer.valueOf(64));
-    vJq.put(Integer.valueOf(3), Integer.valueOf(64));
-    vJq.put(Integer.valueOf(23), Integer.valueOf(64));
-    vJq.put(Integer.valueOf(25), Integer.valueOf(64));
-    vJq.put(Integer.valueOf(13), Integer.valueOf(64));
-    vJq.put(Integer.valueOf(29), Integer.valueOf(256));
-    vJq.put(Integer.valueOf(34), Integer.valueOf(512));
-    vJq.put(Integer.valueOf(6), Integer.valueOf(512));
-    vJq.put(Integer.valueOf(35), Integer.valueOf(1024));
-    vJq.put(Integer.valueOf(36), Integer.valueOf(4096));
-    vJq.put(Integer.valueOf(37), Integer.valueOf(32768));
-    vJq.put(Integer.valueOf(38), Integer.valueOf(32768));
-    vJq.put(Integer.valueOf(42), Integer.valueOf(131072));
-    vJq.put(Integer.valueOf(40), Integer.valueOf(65536));
-    vJq.put(Integer.valueOf(41), Integer.valueOf(65536));
-    vJq.put(Integer.valueOf(46), Integer.valueOf(262144));
-    vJq.put(Integer.valueOf(48), Integer.valueOf(524288));
-    vJq.put(Integer.valueOf(51), Integer.valueOf(1048576));
-    vJq.put(Integer.valueOf(52), Integer.valueOf(2097152));
-    AppMethodBeat.o(114654);
+    AppMethodBeat.i(124766);
+    XNt = new b();
+    AppMethodBeat.o(124766);
+  }
+  
+  c$b()
+  {
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.c.b
  * JD-Core Version:    0.7.0.1
  */

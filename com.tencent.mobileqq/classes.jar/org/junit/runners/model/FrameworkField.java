@@ -10,10 +10,12 @@ public class FrameworkField
   
   FrameworkField(Field paramField)
   {
-    if (paramField == null) {
-      throw new NullPointerException("FrameworkField cannot be created without an underlying field.");
+    if (paramField != null)
+    {
+      this.field = paramField;
+      return;
     }
-    this.field = paramField;
+    throw new NullPointerException("FrameworkField cannot be created without an underlying field.");
   }
   
   public Object get(Object paramObject)
@@ -68,7 +70,7 @@ public class FrameworkField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runners.model.FrameworkField
  * JD-Core Version:    0.7.0.1
  */

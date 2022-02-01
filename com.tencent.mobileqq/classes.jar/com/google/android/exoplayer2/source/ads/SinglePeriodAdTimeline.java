@@ -14,23 +14,20 @@ final class SinglePeriodAdTimeline
   public SinglePeriodAdTimeline(Timeline paramTimeline, AdPlaybackState paramAdPlaybackState)
   {
     super(paramTimeline);
-    if (paramTimeline.getPeriodCount() == 1)
-    {
+    int i = paramTimeline.getPeriodCount();
+    boolean bool2 = false;
+    if (i == 1) {
       bool1 = true;
-      Assertions.checkState(bool1);
-      if (paramTimeline.getWindowCount() != 1) {
-        break label48;
-      }
-    }
-    label48:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assertions.checkState(bool1);
-      this.adPlaybackState = paramAdPlaybackState;
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    Assertions.checkState(bool1);
+    boolean bool1 = bool2;
+    if (paramTimeline.getWindowCount() == 1) {
+      bool1 = true;
+    }
+    Assertions.checkState(bool1);
+    this.adPlaybackState = paramAdPlaybackState;
   }
   
   public Timeline.Period getPeriod(int paramInt, Timeline.Period paramPeriod, boolean paramBoolean)
@@ -51,7 +48,7 @@ final class SinglePeriodAdTimeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ads.SinglePeriodAdTimeline
  * JD-Core Version:    0.7.0.1
  */

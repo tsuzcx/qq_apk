@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:paddingLeft="@dimen/common_32dp" android:paddingTop="@dimen/common_16dp" android:paddingRight="@dimen/common_32dp" android:paddingBottom="@dimen/common_16dp" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/black_5_per_alpha" android:layout_width="wrap_content" android:layout_height="1.0dip" /> />
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.5dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/like_btn" android:background="@drawable/qq_profilecard_zan_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="567" android:singleLine="true" android:drawableLeft="@drawable/skin_card_icon_zan" android:drawablePadding="3.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <FrameLayout android:id="@id/iv_reddot" android:background="@drawable/skin_tips_newmessage_small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="6.0dip" android:minHeight="6.0dip" android:layout_alignRight="@id/like_btn" android:layout_alignParentTop="true" android:contentDescription="@string/contentdes_baseview_reddot">
+        <TextView android:textSize="11.0dip" android:textColor="@android:color/white" android:id="@id/new_vote_num" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+13" />
+    </FrameLayout>
+</merge>

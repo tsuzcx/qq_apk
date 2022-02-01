@@ -13,44 +13,38 @@ final class MiniAppReportManager2$2
   public void run()
   {
     int i = 0;
-    for (;;)
+    try
     {
-      try
+      MiniAppReportManager2.access$002(false);
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      Iterator localIterator = MiniAppReportManager2.launchStateMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        MiniAppReportManager2.access$002(false);
-        long l = NetConnInfoCenter.getServerTimeMillis();
-        Iterator localIterator = MiniAppReportManager2.launchStateMap.entrySet().iterator();
-        if (localIterator.hasNext())
-        {
-          Object localObject = (Map.Entry)localIterator.next();
-          String str = (String)((Map.Entry)localObject).getKey();
-          localObject = (MiniAppReportManager2.AppLaunchState)((Map.Entry)localObject).getValue();
-          if ((((MiniAppReportManager2.AppLaunchState)localObject).launchResult == 0) && (l - ((MiniAppReportManager2.AppLaunchState)localObject).activeTime > MiniAppReportManager2.LAUNCH_TIME_OUT)) {
-            MiniAppReportManager2.access$100((MiniAppReportManager2.AppLaunchState)localObject);
-          }
-          if (((MiniAppReportManager2.AppLaunchState)localObject).launchResult == 0) {
-            i = 1;
-          }
+        Object localObject = (Map.Entry)localIterator.next();
+        String str = (String)((Map.Entry)localObject).getKey();
+        localObject = (MiniAppReportManager2.AppLaunchState)((Map.Entry)localObject).getValue();
+        if ((((MiniAppReportManager2.AppLaunchState)localObject).launchResult == 0) && (l - ((MiniAppReportManager2.AppLaunchState)localObject).activeTime > MiniAppReportManager2.LAUNCH_TIME_OUT)) {
+          MiniAppReportManager2.access$100((MiniAppReportManager2.AppLaunchState)localObject);
         }
-        else
-        {
-          if (i != 0) {
-            MiniAppReportManager2.access$200();
-          }
-          return;
+        if (((MiniAppReportManager2.AppLaunchState)localObject).launchResult == 0) {
+          i = 1;
         }
       }
-      catch (Throwable localThrowable)
+      if (i != 0)
       {
-        QLog.e("MiniAppReportManager2", 2, localThrowable.getStackTrace());
+        MiniAppReportManager2.access$200();
         return;
       }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MiniAppReportManager2", 2, "", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager2.2
  * JD-Core Version:    0.7.0.1
  */

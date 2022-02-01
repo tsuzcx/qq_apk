@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bqg" android:background="@drawable/b5z" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:id="@id/bqh" android:background="@drawable/nq" android:layout_width="62.0dip" android:layout_height="fill_parent" android:alpha="0.75" />
-        <RelativeLayout android:background="@drawable/b5t" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bqi" android:layout_marginLeft="@dimen/a2e" style="@style/if" />
-            <ImageView android:id="@id/bqj" android:layout_marginRight="@dimen/a2e" android:layout_alignParentRight="true" style="@style/if" />
-            <ImageView android:id="@id/bqk" android:layout_marginLeft="@dimen/a2e" android:layout_alignParentBottom="true" style="@style/if" />
-            <ImageView android:id="@id/bql" android:layout_marginRight="@dimen/a2e" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/if" />
-            <ImageView android:id="@id/bqm" android:layout_marginTop="@dimen/a2e" style="@style/ig" />
-            <ImageView android:id="@id/bqn" android:layout_marginBottom="@dimen/a2e" android:layout_alignParentBottom="true" style="@style/ig" />
-            <ImageView android:id="@id/bqo" android:layout_marginTop="@dimen/a2e" android:layout_alignParentRight="true" style="@style/ig" />
-            <ImageView android:id="@id/bqp" android:layout_marginBottom="@dimen/a2e" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/ig" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/bqq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<RelativeLayout android:orientation="vertical" android:background="@color/g_" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bus" android:padding="@dimen/df" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:layout_marginTop="@dimen/d5" android:src="@raw/actionbar_icon_light_back" app:iconColor="@color/az" />
+    <RelativeLayout android:gravity="center" android:id="@id/but" android:layout_width="fill_parent" android:layout_height="@dimen/d5" android:layout_marginTop="@dimen/d1" android:layout_marginBottom="@dimen/d6" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/az" android:id="@id/jss" android:padding="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/we" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cv" />
+        <Button android:textStyle="bold" android:id="@id/bv0" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/au4" android:layout_centerVertical="true" android:paddingEnd="12.0dip" android:layout_marginStart="20.0dip" android:layout_marginEnd="@dimen/a3d" android:layout_alignParentEnd="true" style="@style/oi" />
     </RelativeLayout>
-</merge>
+    <androidx.constraintlayout.widget.ConstraintLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_above="@id/but" android:layout_below="@id/bus">
+        <FrameLayout android:layout_gravity="center" android:id="@id/bv5" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintDimensionRatio="9:16" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <ImageView android:id="@id/bv3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="-3.0dip" android:layout_marginBottom="-3.0dip" android:src="@drawable/bsy" android:layout_marginStart="-3.0dip" android:layout_marginEnd="-3.0dip" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

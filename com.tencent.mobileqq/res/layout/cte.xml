@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/q61" android:layout_width="12.0dip" android:layout_height="12.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/q62" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/q63" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/q64" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/q65" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+</LinearLayout>

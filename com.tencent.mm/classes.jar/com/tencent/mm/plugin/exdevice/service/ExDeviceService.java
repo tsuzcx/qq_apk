@@ -6,22 +6,23 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.IBinder;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.k;
+import com.tencent.mm.hellhoundlib.b.c;
+import com.tencent.mm.kernel.m;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.service.MMService;
 
-@k
+@m
 public class ExDeviceService
   extends MMService
 {
-  private h.a lIu = null;
+  private h.a yvf = null;
   
-  private static boolean bqp()
+  private static boolean dGi()
   {
-    AppMethodBeat.i(19569);
-    PackageManager localPackageManager = ah.getContext().getPackageManager();
+    AppMethodBeat.i(23637);
+    PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
     try
     {
       localPackageManager.getPackageInfo("com.google.android.wearable.app.cn", 1);
@@ -35,20 +36,20 @@ public class ExDeviceService
         boolean bool = false;
       }
     }
-    ab.i("MicroMsg.exdevice.ExDeviceService", "isInstallWearApp %b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(19569);
+    Log.i("MicroMsg.exdevice.ExDeviceService", "isInstallWearApp %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(23637);
     return bool;
   }
   
-  public final IBinder It()
+  public final IBinder aKF()
   {
-    AppMethodBeat.i(19570);
-    ab.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onBind");
-    if (this.lIu == null) {
-      this.lIu = new y();
+    AppMethodBeat.i(23638);
+    Log.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onBind");
+    if (this.yvf == null) {
+      this.yvf = new y();
     }
-    h.a locala = this.lIu;
-    AppMethodBeat.o(19570);
+    h.a locala = this.yvf;
+    AppMethodBeat.o(23638);
     return locala;
   }
   
@@ -59,29 +60,33 @@ public class ExDeviceService
   
   public final void onCreate()
   {
-    AppMethodBeat.i(19567);
-    ab.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onCreate");
+    AppMethodBeat.i(23635);
+    Log.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onCreate");
     super.onCreate();
-    AppMethodBeat.o(19567);
+    AppMethodBeat.o(23635);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(19568);
-    ab.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onDestroy");
+    AppMethodBeat.i(23636);
+    Log.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onDestroy");
     Java2CExDevice.closeBluetoothAccessoryLib();
     super.onDestroy();
-    if (!bqp())
+    if (!dGi())
     {
-      ab.i("MicroMsg.exdevice.ExDeviceService", "kill exdevice process now");
-      Process.killProcess(Process.myPid());
+      Log.i("MicroMsg.exdevice.ExDeviceService", "kill exdevice process now");
+      com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/exdevice/service/ExDeviceService", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)locala.sb(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/exdevice/service/ExDeviceService", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     }
-    AppMethodBeat.o(19568);
+    AppMethodBeat.o(23636);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.ExDeviceService
  * JD-Core Version:    0.7.0.1
  */

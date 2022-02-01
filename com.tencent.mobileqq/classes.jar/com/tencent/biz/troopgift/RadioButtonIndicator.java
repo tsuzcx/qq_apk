@@ -3,24 +3,23 @@ package com.tencent.biz.troopgift;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.common.config.AppSetting;
-import yve;
-import ywr;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class RadioButtonIndicator
   extends RadioGroup
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, ywr
+  implements View.OnClickListener, ViewPager.OnPageChangeListener, absMultiViewPager.OnPagerSizeChangeListener
 {
-  protected int a;
   protected ViewPager a;
-  public int b;
+  protected int b = 2130840106;
+  public int c;
   
   public RadioButtonIndicator(Context paramContext)
   {
@@ -30,19 +29,18 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130839459;
   }
   
   public RadioButton a(int paramInt)
   {
-    yve localyve = new yve(this, getContext());
-    localyve.setButtonDrawable(this.jdField_a_of_type_Int);
-    localyve.setPadding(10, 0, 10, 0);
-    localyve.setClickable(true);
-    if ((AppSetting.c) && (Build.VERSION.SDK_INT > 16)) {
-      ViewCompat.setImportantForAccessibility(localyve, 2);
+    RadioButtonIndicator.1 local1 = new RadioButtonIndicator.1(this, getContext());
+    local1.setButtonDrawable(this.b);
+    local1.setPadding(10, 0, 10, 0);
+    local1.setClickable(true);
+    if ((AppSetting.e) && (Build.VERSION.SDK_INT > 16)) {
+      ViewCompat.setImportantForAccessibility(local1, 2);
     }
-    return localyve;
+    return local1;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -53,9 +51,11 @@ public class RadioButtonIndicator
   public void onClick(View paramView)
   {
     int i = ((Integer)paramView.getTag()).intValue();
-    if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null) {
-      this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(i);
+    ViewPager localViewPager = this.a;
+    if (localViewPager != null) {
+      localViewPager.setCurrentItem(i);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -72,7 +72,7 @@ public class RadioButtonIndicator
   
   public void setButtonResourceId(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void setButtons(int paramInt)
@@ -90,18 +90,18 @@ public class RadioButtonIndicator
       addView(localRadioButton);
       i += 1;
     }
-    this.b = paramInt;
+    this.c = paramInt;
     ((RadioButton)getChildAt(0)).setChecked(true);
   }
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
+    this.a = paramViewPager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.RadioButtonIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,99 @@
 package com.tencent.mobileqq.triton.api;
 
-import com.tencent.mobileqq.triton.engine.TTEngine;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
-import com.tencent.mobileqq.triton.sdk.APIProxy;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
+import com.tencent.mobileqq.triton.model.DebugConfig;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.functions.Function1;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@TTNativeModule(name="TTChannel")
-public class TTChannel
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/api/TTChannel;", "", "mDebugConfig", "Lcom/tencent/mobileqq/triton/model/DebugConfig;", "(Lcom/tencent/mobileqq/triton/model/DebugConfig;)V", "onRenderErrorCallback", "Lkotlin/Function0;", "", "getOnRenderErrorCallback", "()Lkotlin/jvm/functions/Function0;", "setOnRenderErrorCallback", "(Lkotlin/jvm/functions/Function0;)V", "onScriptErrorCallback", "Lkotlin/Function1;", "", "getOnScriptErrorCallback", "()Lkotlin/jvm/functions/Function1;", "setOnScriptErrorCallback", "(Lkotlin/jvm/functions/Function1;)V", "g_frameNoChangeLimit", "", "g_noPresentDurationLimit", "g_noPresentTouchLimit", "g_onErrorDialog", "g_presentDetectInterval", "handleJavaScriptException", "bytes", "Companion", "Triton_release"}, k=1, mv={1, 1, 16})
+@TritonKeep
+public final class TTChannel
 {
-  static final String NAME = "TTChannel";
-  private APIProxy apiProxy;
-  private TTEngine mTritonEngine;
+  public static final TTChannel.Companion Companion = new TTChannel.Companion(null);
+  @NotNull
+  public static final String NAME = "TTChannel";
+  private final DebugConfig mDebugConfig;
+  @Nullable
+  private Function0<Unit> onRenderErrorCallback;
+  @Nullable
+  private Function1<? super byte[], Unit> onScriptErrorCallback;
   
-  public TTChannel(TTEngine paramTTEngine)
+  public TTChannel(@NotNull DebugConfig paramDebugConfig)
   {
-    this.mTritonEngine = paramTTEngine;
+    this.mDebugConfig = paramDebugConfig;
   }
   
-  @TTNativeCall
-  public int g_blackScreenDetectInterval()
+  @TritonKeep
+  public final int g_frameNoChangeLimit()
   {
-    return this.mTritonEngine.getQQEnv().blackScreenDetectInterval();
+    return this.mDebugConfig.getFrameNoChangeToCheckLimit();
   }
   
-  @TTNativeCall
-  public boolean g_errorDialogEnable()
+  @TritonKeep
+  public final int g_noPresentDurationLimit()
   {
-    return this.mTritonEngine.getQQEnv().gameErrorDialogEnable();
+    return (int)this.mDebugConfig.getNoPresentDurationToCheckLimitMillis();
   }
   
-  @TTNativeCall
-  public int g_frameNoChangeLimit()
+  @TritonKeep
+  public final int g_noPresentTouchLimit()
   {
-    return this.mTritonEngine.getQQEnv().frameNoChangeLimit();
+    return this.mDebugConfig.getNoPresentTouchLimit();
   }
   
-  @TTNativeCall
-  public int g_jsErrorDetectInterval()
+  @TritonKeep
+  public final void g_onErrorDialog()
   {
-    return this.mTritonEngine.getQQEnv().jsErrorDetectInterval();
-  }
-  
-  @TTNativeCall
-  public int g_noPresentDurationLimit()
-  {
-    return this.mTritonEngine.getQQEnv().noPresentDurationLimit();
-  }
-  
-  @TTNativeCall
-  public int g_noPresentTouchLimit()
-  {
-    return this.mTritonEngine.getQQEnv().noPresentTouchLimit();
-  }
-  
-  @TTNativeCall
-  public void g_onErrorDialog()
-  {
-    this.mTritonEngine.getQQEnv().showGameErrorDialog(this.mTritonEngine.getAttachedActivity(), new TTChannel.1(this));
-  }
-  
-  @TTNativeCall
-  public int g_presentDetectInterval()
-  {
-    return this.mTritonEngine.getQQEnv().presentDetectInterval();
-  }
-  
-  public APIProxy getApiProxy()
-  {
-    return this.apiProxy;
-  }
-  
-  @TTNativeCall
-  public void handleJavaScriptException(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null) {
-      this.mTritonEngine.getQQEnv().reportDC04266(23, new String(paramArrayOfByte));
+    Object localObject = this.onRenderErrorCallback;
+    if (localObject != null) {
+      localObject = (Unit)((Function0)localObject).invoke();
     }
   }
   
-  public native void nativeAuthDialogCallback(long paramLong, int paramInt, String paramString);
-  
-  public native void nativeCancelErrorDialog(long paramLong);
-  
-  public native void nativeConfirmErrorDialog();
-  
-  public void setApiProxy(APIProxy paramAPIProxy)
+  @TritonKeep
+  public final int g_presentDetectInterval()
   {
-    this.apiProxy = paramAPIProxy;
+    return (int)this.mDebugConfig.getPresentDetectIntervalMillis();
+  }
+  
+  @Nullable
+  public final Function0<Unit> getOnRenderErrorCallback()
+  {
+    return this.onRenderErrorCallback;
+  }
+  
+  @Nullable
+  public final Function1<byte[], Unit> getOnScriptErrorCallback()
+  {
+    return this.onScriptErrorCallback;
+  }
+  
+  @TritonKeep
+  public final void handleJavaScriptException(@Nullable byte[] paramArrayOfByte)
+  {
+    Function1 localFunction1 = this.onScriptErrorCallback;
+    if (localFunction1 != null) {
+      paramArrayOfByte = (Unit)localFunction1.invoke(paramArrayOfByte);
+    }
+  }
+  
+  public final void setOnRenderErrorCallback(@Nullable Function0<Unit> paramFunction0)
+  {
+    this.onRenderErrorCallback = paramFunction0;
+  }
+  
+  public final void setOnScriptErrorCallback(@Nullable Function1<? super byte[], Unit> paramFunction1)
+  {
+    this.onScriptErrorCallback = paramFunction1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.api.TTChannel
  * JD-Core Version:    0.7.0.1
  */

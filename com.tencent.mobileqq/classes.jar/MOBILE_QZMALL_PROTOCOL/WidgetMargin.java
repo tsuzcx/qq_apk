@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class WidgetMargin
   extends JceStruct
 {
-  public int iToRightBorderMargin;
-  public int iToTopBorderMargin;
+  public int iToRightBorderMargin = 0;
+  public int iToTopBorderMargin = 0;
   
   public WidgetMargin() {}
   
@@ -32,7 +32,7 @@ public final class WidgetMargin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.WidgetMargin
  * JD-Core Version:    0.7.0.1
  */

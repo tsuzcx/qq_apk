@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajlh;
 import android.content.Context;
 import android.content.Intent;
-import bdeu;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.util.Utils;
 import java.util.Locale;
 
 public class RecentItemNoticeData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public String from;
   public Intent intent;
@@ -35,7 +35,7 @@ public class RecentItemNoticeData
     this.time = paramLong2;
     this.mDisplayTime = paramLong2;
     this.mTitleName = String.format(Locale.getDefault(), "%s:%s", new Object[] { paramString3, paramString1 });
-    this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
+    this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
   }
   
   public void a(Intent paramIntent)
@@ -46,40 +46,58 @@ public class RecentItemNoticeData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.c)
+    if (AppSetting.e)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
       if (this.mUnreadNum != 0) {
-        break label102;
+        if (this.mUnreadNum == 1)
+        {
+          paramQQAppInterface.append("有一条未读");
+        }
+        else if (this.mUnreadNum == 2)
+        {
+          paramQQAppInterface.append("有两条未读");
+        }
+        else if (this.mUnreadNum > 0)
+        {
+          paramQQAppInterface.append("有");
+          paramQQAppInterface.append(this.mUnreadNum);
+          paramQQAppInterface.append("条未读");
+        }
       }
-    }
-    for (;;)
-    {
-      if (this.mMsgExtroInfo != null) {
-        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+      if (this.mMsgExtroInfo != null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(this.mMsgExtroInfo);
+        paramContext.append(",");
+        paramQQAppInterface.append(paramContext.toString());
       }
-      paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+      paramQQAppInterface.append(this.mLastMsg);
+      paramQQAppInterface.append(' ');
+      paramQQAppInterface.append(this.mShowTime);
       this.mContentDesc = paramQQAppInterface.toString();
-      return;
-      label102:
-      if (this.mUnreadNum == 1) {
-        paramQQAppInterface.append("有一条未读");
-      } else if (this.mUnreadNum == 2) {
-        paramQQAppInterface.append("有两条未读");
-      } else if (this.mUnreadNum > 0) {
-        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
-      }
     }
   }
   
-  public boolean a(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2)
+  public boolean b(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2)
   {
-    if (this.type != paramInt) {}
-    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bdeu.a(this.wording, paramString1)) || (!bdeu.a(this.url, paramString2)) || (!bdeu.a(this.from, paramString3))) {
+    if (this.type != paramInt) {
       return false;
     }
-    return true;
+    if (this.uin != paramLong1) {
+      return false;
+    }
+    if (this.time != paramLong2) {
+      return false;
+    }
+    if (!Utils.a(this.wording, paramString1)) {
+      return false;
+    }
+    if (!Utils.a(this.url, paramString2)) {
+      return false;
+    }
+    return Utils.a(this.from, paramString3);
   }
 }
 

@@ -1,138 +1,92 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Typeface;
-import android.os.Environment;
-import android.text.method.ScrollingMovementMethod;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsfs.FileOp;
-import com.tencent.mm.modelsfs.SFSContext.Statistics;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.h;
-import java.io.File;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
   implements a
 {
   static
   {
-    AppMethodBeat.i(16137);
-    b.a(new g(), new String[] { "//disablesfs", "//exportsfs", "//sfsstat" });
-    AppMethodBeat.o(16137);
+    AppMethodBeat.i(20180);
+    b.a(new g(), new String[] { "//normsg" });
+    AppMethodBeat.o(20180);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(16136);
-    paramString = paramArrayOfString[0];
-    switch (paramString.hashCode())
+    AppMethodBeat.i(20179);
+    if (!CrashReportFactory.hasDebuger())
     {
-    default: 
-      label48:
-      i = -1;
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        AppMethodBeat.o(16136);
-        return false;
-        if (!paramString.equals("//disablesfs")) {
-          break label48;
-        }
-        i = 0;
-        continue;
-        if (!paramString.equals("//exportsfs")) {
-          break label48;
-        }
-        i = 1;
-        continue;
-        if (!paramString.equals("//sfsstat")) {
-          break label48;
-        }
-        i = 2;
-      }
-    }
-    paramString = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MicroMsg/disable-sfs");
-    try
-    {
-      if ((paramArrayOfString.length > 0) && (!paramArrayOfString[1].equals("0"))) {
-        paramString.createNewFile();
-      }
-      for (;;)
-      {
-        paramArrayOfString = new StringBuilder("Use SFS: ");
-        if (paramString.exists()) {
-          break;
-        }
-        bool = true;
-        Toast.makeText(paramContext, Boolean.toString(bool), 0).show();
-        AppMethodBeat.o(16136);
-        return true;
-        paramString.delete();
-      }
-    }
-    catch (Exception paramArrayOfString)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.SFSCommand", paramArrayOfString, "Failed to operate flag file.", new Object[0]);
-        continue;
-        boolean bool = false;
-      }
-    }
-    if (paramArrayOfString.length <= 1)
-    {
-      AppMethodBeat.o(16136);
+      AppMethodBeat.o(20179);
       return false;
     }
-    paramArrayOfString = paramArrayOfString[1];
-    FileOp.ua(paramArrayOfString);
-    Toast.makeText(paramContext, paramArrayOfString, 0).show();
-    AppMethodBeat.o(16136);
-    return true;
-    long l1 = System.currentTimeMillis();
-    paramString = FileOp.ajh();
-    paramArrayOfString = new StringBuilder(8192);
-    paramString = paramString.entrySet().iterator();
-    while (paramString.hasNext())
+    if (paramArrayOfString.length < 2)
     {
-      Map.Entry localEntry = (Map.Entry)paramString.next();
-      paramArrayOfString.append("===== ").append((String)localEntry.getKey()).append(" =====\n").append(((SFSContext.Statistics)localEntry.getValue()).toString()).append("\n\n");
+      AppMethodBeat.o(20179);
+      return false;
     }
-    long l2 = System.currentTimeMillis();
-    paramArrayOfString.append("elapsed: ").append(l2 - l1).append(" ms");
-    paramString = new TextView(paramContext);
-    paramString.setText(paramArrayOfString);
-    paramString.setGravity(8388627);
-    paramString.setTextSize(1, 10.0F);
-    paramString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    paramString.setTextColor(-16744704);
-    paramString.setTypeface(Typeface.MONOSPACE);
-    paramString.setMovementMethod(new ScrollingMovementMethod());
-    int i = paramContext.getResources().getDimensionPixelSize(2131427772);
-    paramString.setPadding(i, i, i, i);
-    h.a(paramContext, null, paramString, null);
-    AppMethodBeat.o(16136);
-    return true;
+    try
+    {
+      if (paramArrayOfString.length >= 3) {
+        Integer.valueOf(paramArrayOfString[2]).intValue();
+      }
+      label50:
+      paramString = paramArrayOfString[1].toLowerCase();
+      long l1 = System.nanoTime();
+      int i = -1;
+      switch (paramString.hashCode())
+      {
+      }
+      for (;;)
+      {
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(20179);
+          return false;
+          if (paramString.equals("testrpp"))
+          {
+            i = 0;
+            continue;
+            if (paramString.equals("oaid")) {
+              i = 1;
+            }
+          }
+          break;
+        }
+      }
+      com.tencent.mm.plugin.secinforeport.a.d.Pmb.kZ(0, 1008);
+      Toast.makeText(paramContext, "info is reported.", 0).show();
+      for (;;)
+      {
+        long l2 = System.nanoTime();
+        paramArrayOfString = String.format("[NorMsgTest] cmd: %s, time: %d ns.", new Object[] { paramArrayOfString[1], Long.valueOf(l2 - l1) });
+        Log.i("MicroMsg.NorMsgTest", paramArrayOfString);
+        Toast.makeText(paramContext, paramArrayOfString, 0).show();
+        AppMethodBeat.o(20179);
+        return true;
+        paramString = com.tencent.mm.plugin.normsg.a.d.MtP.aPk();
+        Toast.makeText(paramContext, "oaid: ".concat(String.valueOf(paramString)), 1).show();
+        Log.i("MicroMsg.NorMsgTest", "[+] oaid: %s", new Object[] { paramString });
+      }
+    }
+    catch (Exception paramString)
+    {
+      break label50;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.g
  * JD-Core Version:    0.7.0.1
  */

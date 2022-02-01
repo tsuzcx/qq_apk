@@ -1,12 +1,12 @@
 package com.google.android.gms.common.images.internal;
 
 import android.graphics.drawable.Drawable;
-import android.support.v4.e.g;
+import androidx.b.e;
 import com.google.android.gms.common.internal.Objects;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class PostProcessedResourceCache
-  extends g<PostProcessedResource, Drawable>
+  extends e<PostProcessedResource, Drawable>
 {
   public PostProcessedResourceCache()
   {
@@ -40,16 +40,16 @@ public final class PostProcessedResourceCache
     
     public final int hashCode()
     {
-      AppMethodBeat.i(61296);
+      AppMethodBeat.i(11788);
       int i = Objects.hashCode(new Object[] { Integer.valueOf(this.resId), Integer.valueOf(this.postProcessingFlags) });
-      AppMethodBeat.o(61296);
+      AppMethodBeat.o(11788);
       return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.images.internal.PostProcessedResourceCache
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,18 @@ final class QuotaFileSystem$DirEntry
   
   public String toString()
   {
-    return "children: " + this.childCount + " [" + this.entry + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("children: ");
+    localStringBuilder.append(this.childCount);
+    localStringBuilder.append(" [");
+    localStringBuilder.append(this.entry);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.QuotaFileSystem.DirEntry
  * JD-Core Version:    0.7.0.1
  */

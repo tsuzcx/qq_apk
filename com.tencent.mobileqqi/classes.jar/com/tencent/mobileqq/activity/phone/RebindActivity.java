@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import elu;
+import elt;
 
 public class RebindActivity
   extends DialogBaseActivity
@@ -32,11 +32,11 @@ public class RebindActivity
   private void e()
   {
     setTitle(getResources().getString(2131558982));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232050));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232049));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131559977, new Object[] { this.d, getIntent().getStringExtra("k_uin"), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a() }));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232051));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232050));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232052));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232051));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -49,7 +49,7 @@ public class RebindActivity
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new elu(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new elt(this);
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.b(this.e, this.d, this.jdField_b_of_type_Int);

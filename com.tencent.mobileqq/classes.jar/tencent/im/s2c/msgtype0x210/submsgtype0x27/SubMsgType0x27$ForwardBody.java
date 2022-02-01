@@ -50,13 +50,14 @@ public final class SubMsgType0x27$ForwardBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 178, 186, 202, 210, 1602, 1610, 1618, 1626, 1634, 1642, 1682, 1690, 1698, 1714, 16002 }, new String[] { "uint32_notify_type", "uint32_op_type", "msg_add_group", "msg_del_group", "msg_mod_group_name", "msg_mod_group_sort", "msg_mod_friend_group", "msg_mod_profile", "msg_mod_friend_remark", "msg_mod_long_nick", "msg_mod_custom_face", "msg_mod_group_profile", "msg_mod_group_member_profile", "msg_del_friend", "msg_roam_priv", "msg_grp_msg_roam_flag", "msg_conf_msg_roam_flag", "msg_mod_rich_long_nick", "msg_bin_pkg", "msg_mod_friend_rings", "msg_mod_conf_profile", "msg_mod_friend_flag", "msg_appointment_notify", "msg_daren_notify", "msg_new_comein_user_notify", "msg_push_search_dev", "msg_push_report_dev", "msg_qq_pay_push", "bytes_redpoint_info", "msg_hot_friend_notify", "msg_praise_rank_notify", "msg_campus_notify", "msg_mod_rich_long_nick_ex", "msg_chat_match_info", "msg_frd_custom_online_status_change", "msg_fanpanzi_notify" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, localByteStringMicro, null, null, null, null, null, null, null }, ForwardBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 178, 186, 202, 210, 1602, 1610, 1618, 1626, 1634, 1642, 1682, 1690, 1698, 1714, 16002 }, new String[] { "uint32_notify_type", "uint32_op_type", "msg_add_group", "msg_del_group", "msg_mod_group_name", "msg_mod_group_sort", "msg_mod_friend_group", "msg_mod_profile", "msg_mod_friend_remark", "msg_mod_long_nick", "msg_mod_custom_face", "msg_mod_group_profile", "msg_mod_group_member_profile", "msg_del_friend", "msg_roam_priv", "msg_grp_msg_roam_flag", "msg_conf_msg_roam_flag", "msg_mod_rich_long_nick", "msg_bin_pkg", "msg_mod_friend_rings", "msg_mod_conf_profile", "msg_mod_friend_flag", "msg_appointment_notify", "msg_daren_notify", "msg_new_comein_user_notify", "msg_push_search_dev", "msg_push_report_dev", "msg_qq_pay_push", "bytes_redpoint_info", "msg_hot_friend_notify", "msg_praise_rank_notify", "msg_campus_notify", "msg_mod_rich_long_nick_ex", "msg_chat_match_info", "msg_frd_custom_online_status_change", "msg_fanpanzi_notify" }, new Object[] { localInteger, localInteger, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, localByteStringMicro, null, null, null, null, null, null, null }, ForwardBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.ForwardBody
  * JD-Core Version:    0.7.0.1
  */

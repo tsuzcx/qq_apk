@@ -8,7 +8,7 @@ public final class QzmallProfileDecoGetRsp
   extends JceStruct
 {
   static byte[] cache_vecBuff = (byte[])new byte[1];
-  public byte[] vecBuff;
+  public byte[] vecBuff = null;
   
   static
   {
@@ -29,14 +29,15 @@ public final class QzmallProfileDecoGetRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecBuff != null) {
-      paramJceOutputStream.write(this.vecBuff, 0);
+    byte[] arrayOfByte = this.vecBuff;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallProfileDecoGetRsp
  * JD-Core Version:    0.7.0.1
  */

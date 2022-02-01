@@ -7,12 +7,12 @@ class LpReportManager$1
   
   public void run()
   {
-    LpReportManager.access$000(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo, this.jdField_a_of_type_Boolean, this.b);
+    LpReportManager.access$000(this.this$0, this.val$subtype, this.val$info, this.val$isNeedSample, this.val$isReportNow);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportManager.1
  * JD-Core Version:    0.7.0.1
  */

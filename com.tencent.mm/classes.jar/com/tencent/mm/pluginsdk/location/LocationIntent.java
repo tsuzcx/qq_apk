@@ -10,42 +10,42 @@ public class LocationIntent
   implements Parcelable
 {
   public static final Parcelable.Creator<LocationIntent> CREATOR;
-  public int cyX = 0;
-  public String eSM = "";
-  public Addr fBK = null;
+  public String Kcb;
+  public String Kcd;
+  public String XOv = "";
+  public int XOw = 0;
+  public int hQp = 0;
   public String label = "";
   public double lat;
   public double lng;
-  public String oaa;
-  public String oac;
-  public String vJU = "";
-  public int vJV = 0;
+  public Addr oEd = null;
+  public String poiName = "";
   
   static
   {
-    AppMethodBeat.i(79209);
-    CREATOR = new LocationIntent.1();
-    AppMethodBeat.o(79209);
+    AppMethodBeat.i(151630);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(151630);
   }
   
-  public final String SU()
+  public final String bbZ()
   {
-    AppMethodBeat.i(79207);
+    AppMethodBeat.i(151628);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append("lat " + this.lat + ";");
     ((StringBuffer)localObject).append("lng " + this.lng + ";");
-    ((StringBuffer)localObject).append("scale " + this.cyX + ";");
+    ((StringBuffer)localObject).append("scale " + this.hQp + ";");
     ((StringBuffer)localObject).append("label " + this.label + ";");
-    ((StringBuffer)localObject).append("poiname " + this.eSM + ";");
-    ((StringBuffer)localObject).append("infourl " + this.vJU + ";");
-    ((StringBuffer)localObject).append("locTypeId " + this.oaa + ";");
-    ((StringBuffer)localObject).append("poiType " + this.vJV + ";");
-    if (this.fBK != null) {
-      ((StringBuffer)localObject).append("addr " + this.fBK.toString() + ";");
+    ((StringBuffer)localObject).append("poiname " + this.poiName + ";");
+    ((StringBuffer)localObject).append("infourl " + this.XOv + ";");
+    ((StringBuffer)localObject).append("locTypeId " + this.Kcb + ";");
+    ((StringBuffer)localObject).append("poiType " + this.XOw + ";");
+    if (this.oEd != null) {
+      ((StringBuffer)localObject).append("addr " + this.oEd.toString() + ";");
     }
-    ((StringBuffer)localObject).append("poiid " + this.oac + ";");
+    ((StringBuffer)localObject).append("poiid " + this.Kcd + ";");
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(79207);
+    AppMethodBeat.o(151628);
     return localObject;
   }
   
@@ -56,23 +56,23 @@ public class LocationIntent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(79208);
+    AppMethodBeat.i(151629);
     paramParcel.writeDouble(this.lat);
     paramParcel.writeDouble(this.lng);
-    paramParcel.writeInt(this.cyX);
+    paramParcel.writeInt(this.hQp);
     paramParcel.writeString(this.label);
-    paramParcel.writeString(this.eSM);
-    paramParcel.writeString(this.vJU);
-    paramParcel.writeString(this.oaa);
-    paramParcel.writeInt(this.vJV);
-    paramParcel.writeParcelable(this.fBK, paramInt);
-    paramParcel.writeString(this.oac);
-    AppMethodBeat.o(79208);
+    paramParcel.writeString(this.poiName);
+    paramParcel.writeString(this.XOv);
+    paramParcel.writeString(this.Kcb);
+    paramParcel.writeInt(this.XOw);
+    paramParcel.writeParcelable(this.oEd, paramInt);
+    paramParcel.writeString(this.Kcd);
+    AppMethodBeat.o(151629);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.location.LocationIntent
  * JD-Core Version:    0.7.0.1
  */

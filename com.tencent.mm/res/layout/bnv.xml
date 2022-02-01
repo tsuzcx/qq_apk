@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j5" android:paddingStart="@dimen/m2" android:paddingEnd="@dimen/m2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/hyq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/hyr" android:padding="3.0dip" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/big_select_tick" android:contentDescription="@string/fxp" android:layout_marginStart="@dimen/m2" app:iconColor="@color/aks" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/hyn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="5.0dip" android:layout_toStartOf="@id/hyq">
+        <TextView android:textColor="@color/a7b" android:id="@id/hyp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gay" android:singleLine="false" style="@style/ma" />
+        <TextView android:textColor="@color/xo" android:id="@id/hyo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="false" style="@style/m_" />
+    </LinearLayout>
+</RelativeLayout>

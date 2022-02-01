@@ -73,7 +73,7 @@ public class CustomMenuBar
     }
     paramContext.setLayoutParams(new LinearLayout.LayoutParams(-1, -1, 1.0F));
     super.addView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131231668));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131231667));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
   }
   
@@ -94,9 +94,9 @@ public class CustomMenuBar
     Object localObject = paramMenuItem.a();
     Drawable localDrawable = paramMenuItem.a();
     View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(2130903223, null);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131231669);
-    TextView localTextView = (TextView)localView.findViewById(2131231670);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131231671);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131231668);
+    TextView localTextView = (TextView)localView.findViewById(2131231669);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131231670);
     if (localDrawable != null)
     {
       localImageView2.setImageDrawable(localDrawable);

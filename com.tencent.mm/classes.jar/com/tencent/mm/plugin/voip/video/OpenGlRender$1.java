@@ -1,63 +1,64 @@
 package com.tencent.mm.plugin.voip.video;
 
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.model.s;
-import com.tencent.mm.plugin.voip.video.b.d;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.media.g.d;
+import com.tencent.mm.plugin.voip.model.t;
+import com.tencent.mm.plugin.voip.video.b.e;
+import com.tencent.mm.sdk.platformtools.Log;
 
-final class OpenGlRender$1
+public final class OpenGlRender$1
   implements Runnable
 {
-  OpenGlRender$1(OpenGlRender paramOpenGlRender) {}
+  public OpenGlRender$1(OpenGlRender paramOpenGlRender) {}
   
   public final void run()
   {
-    AppMethodBeat.i(5069);
-    ??? = d.cPX();
+    AppMethodBeat.i(115641);
+    ??? = e.idb();
     try
     {
-      if (((d)???).mSurfaceTexture != null)
+      if (((e)???).UQM != null)
       {
-        s locals2 = s.tyN;
-        s.cNC();
-        GLES20.glDeleteTextures(1, new int[] { ((d)???).textureId }, 0);
-        ((d)???).mSurfaceTexture.release();
-        ((d)???).mSurfaceTexture = null;
-        ab.i("MicroMsg.VoipHardDecodeUtil", "uninit surface texture");
+        t localt2 = t.UBA;
+        t.hXU();
+        if (((e)???).UFV != null) {
+          ((e)???).UFV.close();
+        }
+        ((e)???).UQM.release();
+        ((e)???).UQM = null;
+        Log.i("MicroMsg.VoipHardDecodeUtil", "uninit surface texture");
       }
-      ab.i(OpenGlRender.access$000(), "releaseSurfaceTexture call finish");
     }
     catch (Exception localException1)
     {
-      s locals1;
-      synchronized (OpenGlRender.cPJ())
+      t localt1;
+      synchronized (OpenGlRender.icm())
       {
         try
         {
-          OpenGlRender.cPJ().notifyAll();
-          AppMethodBeat.o(5069);
+          OpenGlRender.icm().notifyAll();
+          AppMethodBeat.o(115641);
           return;
           localException1 = localException1;
-          ab.printErrStackTrace("MicroMsg.VoipHardDecodeUtil", localException1, "uninitSurfaceTexture error", new Object[0]);
-          locals1 = s.tyN;
-          s.cND();
+          Log.printErrStackTrace("MicroMsg.VoipHardDecodeUtil", localException1, "uninitSurfaceTexture error", new Object[0]);
+          localt1 = t.UBA;
+          t.hXV();
         }
         catch (Exception localException2)
         {
           for (;;)
           {
-            ab.printErrStackTrace(OpenGlRender.access$000(), localException2, "", new Object[0]);
+            Log.printErrStackTrace(OpenGlRender.access$000(), localException2, "", new Object[0]);
           }
         }
       }
     }
+    Log.i(OpenGlRender.access$000(), "releaseSurfaceTexture call finish");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.OpenGlRender.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,129 +1,178 @@
 package com.tencent.biz.qqcircle.widgets;
 
 import android.content.Context;
-import android.os.Message;
-import android.support.annotation.NonNull;
+import android.os.Handler;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SeekBar;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.tencent.biz.qcircleshadow.lib.QCircleHostConstants._TVK_PlayerMsg;
+import com.tencent.biz.qqcircle.QCirclePluginGlobalInfo;
+import com.tencent.biz.qqcircle.events.QCircleVideoDetailsFragmentExitEvent;
+import com.tencent.biz.qqcircle.report.QCirclePluginReportUtil;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.superplayer.api.ISuperPlayer;
+import cooperation.qqcircle.report.QCircleLpReportDc05507;
+import cooperation.qqcircle.report.QCircleLpReportDc05507.DataBuilder;
 import feedcloud.FeedCloudMeta.StFeed;
-import tzw;
-import ugu;
-import vwa;
-import vwf;
-import vxe;
-import ynq;
+import feedcloud.FeedCloudMeta.StUser;
+import java.util.ArrayList;
 
 public class QCircleFeedCleanPlayView
-  extends BaseVideoView
+  extends QCircleBaseVideoView
+  implements SimpleEventReceiver
 {
-  private int jdField_a_of_type_Int;
-  ugu jdField_a_of_type_Ugu;
-  private vwf jdField_a_of_type_Vwf;
-  private ynq jdField_a_of_type_Ynq;
-  private boolean d;
+  private int h;
+  private boolean i;
+  private SeekBar j;
   
   public QCircleFeedCleanPlayView(@NonNull Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int a()
+  public QCircleFeedCleanPlayView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    return 0;
+    super(paramContext, paramAttributeSet);
   }
   
-  public SeekBar a()
+  public QCircleFeedCleanPlayView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    return null;
+    super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public boolean A()
   {
-    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)a();
-    if (localStFeed != null)
-    {
-      String str = "";
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        str = paramInt2 + ":" + paramInt1;
-      }
-      tzw.a(2, 7, 1, this.jdField_a_of_type_Int, paramLong1, paramLong2, this.d, str, localStFeed, tzw.a(localStFeed));
+    if (getSuperPlayer() != null) {
+      return getSuperPlayer().isPausing();
     }
+    return false;
   }
   
   protected void a(long paramLong1, long paramLong2) {}
   
-  public void a(Context paramContext, View paramView) {}
-  
-  public void a(Object paramObject) {}
-  
-  public void a(vwa paramvwa)
+  public void a(ISuperPlayer paramISuperPlayer)
   {
-    super.a(paramvwa);
-    a().setXYaxis(2);
-    if (this.jdField_a_of_type_Vwf != null) {
-      this.jdField_a_of_type_Vwf.a(paramvwa);
+    super.a(paramISuperPlayer);
+    paramISuperPlayer.setXYaxis(QCircleHostConstants._TVK_PlayerMsg.PLAYER_SCALE_ORIGINAL_FULLSCREEN());
+  }
+  
+  public void b(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  {
+    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)getData();
+    if (localStFeed != null)
+    {
+      Object localObject;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        localObject = "";
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(paramInt1);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      QCircleLpReportDc05507.report(new QCircleLpReportDc05507.DataBuilder(QCirclePluginReportUtil.d(localStFeed)).setActionType(2).setSubActionType(7).setToUin(localStFeed.poster.id.get()).setPosition(this.h).setPlayScene(1).setVideoPlayTime(paramLong1).setVideoSoloTime(paramLong2).setIsAutoPlay(this.i).setErrorCode((String)localObject).setPageId(getPageId()).setfpageid(getParentPageId()));
     }
   }
   
   protected void b(long paramLong1, long paramLong2) {}
   
-  protected void d() {}
+  protected void bindData(Object paramObject, int paramInt) {}
   
-  public boolean d()
+  public void e()
   {
-    if (a() != null) {
-      return a().a();
-    }
-    return false;
+    getMainHandler().post(new QCircleFeedCleanPlayView.1(this));
   }
   
-  protected void f()
+  public ArrayList<Class> getEventClass()
   {
-    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)a();
+    return new ArrayList();
+  }
+  
+  public int getLayoutId()
+  {
+    return 0;
+  }
+  
+  protected String getLogTag()
+  {
+    return "QCircleFeedCleanPlayView";
+  }
+  
+  public SeekBar getProgressBar()
+  {
+    SeekBar localSeekBar = this.j;
+    if (localSeekBar != null) {
+      return localSeekBar;
+    }
+    return null;
+  }
+  
+  protected void j()
+  {
+    FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)getData();
     if (localStFeed != null) {
-      tzw.a(2, 4, 1, this.jdField_a_of_type_Int, 0L, 0L, true, "", localStFeed, tzw.a(localStFeed));
+      QCircleLpReportDc05507.report(new QCircleLpReportDc05507.DataBuilder(QCirclePluginReportUtil.d(localStFeed)).setActionType(2).setSubActionType(4).setToUin(localStFeed.poster.id.get()).setPosition(this.h).setPlayScene(1).setVideoPlayTime(0L).setVideoSoloTime(0L).setIsAutoPlay(true).setErrorCode("").setPageId(getPageId()).setfpageid(getParentPageId()));
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  protected void onAttachedToWindow()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (this.jdField_a_of_type_Ynq != null) {
-        this.jdField_a_of_type_Ynq.a("", paramMessage.arg2, paramMessage.arg1);
-      }
-    }
+    super.onAttachedToWindow();
+    SimpleEventBus.getInstance().registerReceiver(this);
   }
   
-  public void setFeedPresenter(ugu paramugu)
+  protected void onDetachedFromWindow()
   {
-    this.jdField_a_of_type_Ugu = paramugu;
+    super.onDetachedFromWindow();
+    SimpleEventBus.getInstance().unRegisterReceiver(this);
+  }
+  
+  protected void onInitView(Context paramContext, View paramView) {}
+  
+  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if (((paramSimpleBaseEvent instanceof QCircleVideoDetailsFragmentExitEvent)) && ((getData() instanceof FeedCloudMeta.StFeed))) {
+      a(QCirclePluginGlobalInfo.f(((FeedCloudMeta.StFeed)getData()).id.get()));
+    }
   }
   
   public void setIsAutoPlay(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.i = paramBoolean;
   }
   
-  public void setOnPreparedListener(vwf paramvwf)
+  public void setPos(int paramInt)
   {
-    this.jdField_a_of_type_Vwf = paramvwf;
+    this.h = paramInt;
   }
   
-  public void setOnProgressListener(ynq paramynq)
+  public void setProgressBar(SeekBar paramSeekBar)
   {
-    this.jdField_a_of_type_Ynq = paramynq;
+    if (paramSeekBar != null) {
+      this.j = paramSeekBar;
+    }
+  }
+  
+  public boolean z()
+  {
+    if (getSuperPlayer() != null) {
+      return getSuperPlayer().isPlaying();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleFeedCleanPlayView
  * JD-Core Version:    0.7.0.1
  */

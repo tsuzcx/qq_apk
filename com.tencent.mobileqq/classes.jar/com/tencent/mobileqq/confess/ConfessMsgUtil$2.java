@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.confess;
 
-import aojg;
-
-public final class ConfessMsgUtil$2
+final class ConfessMsgUtil$2
   implements Runnable
 {
-  public ConfessMsgUtil$2(aojg paramaojg) {}
+  ConfessMsgUtil$2(FrdConfessInfo paramFrdConfessInfo) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public final class ConfessMsgUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessMsgUtil.2
  * JD-Core Version:    0.7.0.1
  */

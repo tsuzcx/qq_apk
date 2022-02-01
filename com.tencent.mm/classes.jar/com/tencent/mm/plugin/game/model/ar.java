@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.game.d.bn;
-import com.tencent.mm.plugin.game.d.bo;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.game.protobuf.bz;
+import com.tencent.mm.plugin.game.protobuf.ca;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ar
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public final b lFp;
+  private h callback;
+  public final c mtC;
   
   public ar(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(111448);
-    ab.i("MicroMsg.NetSceneGetMoreGameList", "offset: %d, limit: %d, type: %d, cat: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(15), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bn();
-    ((b.a)localObject).fsY = new bo();
-    ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetmoregamelist";
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.lFp = ((b.a)localObject).ado();
-    localObject = (bn)this.lFp.fsV.fta;
-    ((bn)localObject).nsV = paramInt1;
-    ((bn)localObject).nsW = 15;
-    ((bn)localObject).nsa = aa.dsG();
-    ((bn)localObject).ntd = paramInt2;
-    ((bn)localObject).nte = paramInt3;
-    AppMethodBeat.o(111448);
+    AppMethodBeat.i(41613);
+    Log.i("MicroMsg.NetSceneGetMoreGameList", "offset: %d, limit: %d, type: %d, cat: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(15), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new bz();
+    ((c.a)localObject).otF = new ca();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetmoregamelist";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (bz)c.b.b(this.mtC.otB);
+    ((bz)localObject).IKo = paramInt1;
+    ((bz)localObject).IKp = 15;
+    ((bz)localObject).IJD = LocaleUtil.getApplicationLanguage();
+    ((bz)localObject).IKw = paramInt2;
+    ((bz)localObject).IKx = paramInt3;
+    AppMethodBeat.o(41613);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(111449);
-    this.callback = paramf;
-    int i = dispatch(parame, this.lFp, this);
-    AppMethodBeat.o(111449);
+    AppMethodBeat.i(41614);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
+    AppMethodBeat.o(41614);
     return i;
   }
   
@@ -56,12 +56,12 @@ public final class ar
     return 1220;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(111450);
-    ab.i("MicroMsg.NetSceneGetMoreGameList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    AppMethodBeat.i(41615);
+    Log.i("MicroMsg.NetSceneGetMoreGameList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(111450);
+    AppMethodBeat.o(41615);
   }
 }
 

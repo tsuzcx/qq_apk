@@ -44,71 +44,60 @@ public class QQAVImageWrongEraseFilter
   
   private void checkErrorElem(boolean paramBoolean)
   {
-    int k = 0;
     int i = 0;
-    int j;
+    int j = 0;
+    int k;
     float[] arrayOfFloat;
     if (paramBoolean)
     {
-      j = this.mRandom.nextInt(2) + 1;
-      int m = this.mRandom.nextInt(2) + 1;
-      k = j + m + 6;
+      int n = this.mRandom.nextInt(2) + 1;
+      int m = this.mRandom.nextInt(2) + 1 + n;
+      k = m + 6;
       arrayOfFloat = new float[k * 4];
-      int n;
-      while (i < j)
+      for (;;)
       {
-        n = i * 4;
-        arrayOfFloat[n] = this.mRandom.nextInt(2);
-        arrayOfFloat[(n + 1)] = (this.mRandom.nextInt(10) / 10.0F);
-        arrayOfFloat[(n + 2)] = 1.0F;
-        arrayOfFloat[(n + 3)] = (50.0F * this.mDensity);
+        i = n;
+        if (j >= n) {
+          break;
+        }
+        i = j * 4;
+        arrayOfFloat[i] = this.mRandom.nextInt(2);
+        arrayOfFloat[(i + 1)] = (this.mRandom.nextInt(10) / 10.0F);
+        arrayOfFloat[(i + 2)] = 1.0F;
+        arrayOfFloat[(i + 3)] = (this.mDensity * 50.0F);
+        j += 1;
+      }
+      for (;;)
+      {
+        j = m;
+        if (i >= m) {
+          break;
+        }
+        j = i * 4;
+        arrayOfFloat[j] = this.mRandom.nextInt(2);
+        arrayOfFloat[(j + 1)] = (this.mRandom.nextInt(10) / 10.0F);
+        arrayOfFloat[(j + 2)] = getRandomWidthRate();
+        arrayOfFloat[(j + 3)] = (this.mDensity * 35.0F);
         i += 1;
       }
-      i = j;
-      while (i < j + m)
+      while (j < k)
       {
-        n = i * 4;
-        arrayOfFloat[n] = this.mRandom.nextInt(2);
-        arrayOfFloat[(n + 1)] = (this.mRandom.nextInt(10) / 10.0F);
-        arrayOfFloat[(n + 2)] = getRandomWidthRate();
-        arrayOfFloat[(n + 3)] = (35.0F * this.mDensity);
-        i += 1;
-      }
-      i = j + m;
-      while (i < j + m + 6)
-      {
-        n = i * 4;
-        arrayOfFloat[n] = this.mRandom.nextInt(2);
-        arrayOfFloat[(n + 1)] = (this.mRandom.nextInt(10) / 10.0F);
-        arrayOfFloat[(n + 2)] = getRandomWidthRate();
-        arrayOfFloat[(n + 3)] = getRandomHeight();
-        i += 1;
+        i = j * 4;
+        arrayOfFloat[i] = this.mRandom.nextInt(2);
+        arrayOfFloat[(i + 1)] = (this.mRandom.nextInt(10) / 10.0F);
+        arrayOfFloat[(i + 2)] = getRandomWidthRate();
+        arrayOfFloat[(i + 3)] = getRandomHeight();
+        j += 1;
       }
       setInteger(this.mErrorNumLocation, k);
       setArrayVec4(this.mErrorElemArrayLocation, k, arrayOfFloat);
       i = k;
-      if (i > 0) {
-        switch (this.mRandom.nextInt(3))
-        {
-        default: 
-          i = -1;
-          j = -1;
-        }
-      }
     }
-    for (;;)
+    else
     {
-      if (j > -1) {
-        setInteger(this.mErrorRedLocation, j);
-      }
-      if (i > -1) {
-        setInteger(this.mErrorGreenLocation, i);
-      }
-      return;
       j = this.mRandom.nextInt(11);
       setInteger(this.mErrorNumLocation, j);
       arrayOfFloat = new float[j * 4];
-      i = k;
       while (i < j)
       {
         k = i * 4;
@@ -120,15 +109,32 @@ public class QQAVImageWrongEraseFilter
       }
       setArrayVec4(this.mErrorElemArrayLocation, j, arrayOfFloat);
       i = j;
-      break;
+    }
+    if (i > 0)
+    {
+      j = this.mRandom.nextInt(3);
+      if (j != 0)
+      {
+        if (j != 1) {
+          if (j == 2) {}
+        }
+        for (j = -1;; j = this.mRandom.nextInt(i))
+        {
+          i = -1;
+          break;
+          i = this.mRandom.nextInt(i);
+          j = -1;
+          break;
+        }
+      }
       j = this.mRandom.nextInt(i);
       i = this.mRandom.nextInt(i);
-      continue;
-      j = this.mRandom.nextInt(i);
-      i = -1;
-      continue;
-      i = this.mRandom.nextInt(i);
-      j = -1;
+      if (j > -1) {
+        setInteger(this.mErrorRedLocation, j);
+      }
+      if (i > -1) {
+        setInteger(this.mErrorGreenLocation, i);
+      }
     }
   }
   
@@ -140,23 +146,37 @@ public class QQAVImageWrongEraseFilter
   private float getRandomHeight()
   {
     int i = this.mRandom.nextInt(5);
-    float f = 0.0F;
-    switch (i)
+    float f;
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4) {
+              f = 0.0F;
+            } else {
+              f = 50.0F;
+            }
+          }
+          else {
+            f = 35.0F;
+          }
+        }
+        else {
+          f = 25.0F;
+        }
+      }
+      else {
+        f = 20.0F;
+      }
     }
-    for (;;)
-    {
-      return f * this.mDensity;
+    else {
       f = 10.0F;
-      continue;
-      f = 20.0F;
-      continue;
-      f = 25.0F;
-      continue;
-      f = 35.0F;
-      continue;
-      f = 50.0F;
     }
+    return f * this.mDensity;
   }
   
   private float getRandomWidthRate()
@@ -165,88 +185,86 @@ public class QQAVImageWrongEraseFilter
     if (i >= 3) {
       return 1.0F;
     }
-    switch (i)
+    if (i != 0)
     {
-    default: 
-      return 0.0F;
-    case 0: 
-      return 0.2F;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return 0.0F;
+          }
+          return 0.7F;
+        }
+        return 0.6F;
+      }
       return 0.4F;
-    case 2: 
-      return 0.6F;
     }
-    return 0.7F;
+    return 0.2F;
   }
   
   public void onDraw2(int paramInt1, int paramInt2)
   {
     long l = System.currentTimeMillis() - this.mStartTimeMills;
-    label52:
-    label87:
-    label106:
-    int i;
     if ((l > 3000L) && (l < 3250L))
     {
       checkErrorElem(true);
-      if (this.mTime >= 0.0F)
-      {
-        this.mTime -= 1.0F;
-        setFloat(this.mTimeLocation, this.mTime);
-        if (this.mTime % 100.0F >= 4.0F) {
-          break label235;
-        }
-        setFloat(this.mWaveHeightLocation, 0.87F);
-        if (this.mNoise >= 10) {
-          break label248;
-        }
-        this.mNoise += 1;
-        setFloat(this.mNoiseLocation, this.mNoise);
-        super.onDraw2(paramInt1, paramInt2);
-      }
     }
     else
     {
       this.mFrame += 1;
-      if ((this.mFrame == 2) || (this.mFrame == 5)) {
-        i = 1;
+      i = this.mFrame;
+      if ((i != 2) && (i != 5)) {
+        if (i == 14)
+        {
+          this.mFrame = 0;
+        }
+        else
+        {
+          i = 0;
+          break label91;
+        }
       }
-    }
-    for (;;)
-    {
+      i = 1;
+      label91:
       if (i != 0)
       {
         if (!this.mErrorTwo)
         {
           checkErrorElem(false);
-          if (this.mRandom.nextInt(10) <= 6) {
-            break;
+          if (this.mRandom.nextInt(10) > 6) {
+            this.mErrorTwo = true;
           }
-          this.mErrorTwo = true;
-          break;
-          if (this.mFrame != 14) {
-            break label256;
-          }
-          this.mFrame = 0;
-          i = 1;
-          continue;
         }
-        this.mErrorTwo = false;
-        break;
+        else
+        {
+          this.mErrorTwo = false;
+        }
       }
-      clearError();
-      break;
-      this.mTime = 1000000.0F;
-      break label52;
-      label235:
-      setFloat(this.mWaveHeightLocation, 0.004F);
-      break label87;
-      label248:
-      this.mNoise = 0;
-      break label106;
-      label256:
-      i = 0;
+      else {
+        clearError();
+      }
     }
+    float f = this.mTime;
+    if (f >= 0.0F) {
+      this.mTime = (f - 1.0F);
+    } else {
+      this.mTime = 1000000.0F;
+    }
+    setFloat(this.mTimeLocation, this.mTime);
+    if (this.mTime % 100.0F < 4.0F) {
+      setFloat(this.mWaveHeightLocation, 0.87F);
+    } else {
+      setFloat(this.mWaveHeightLocation, 0.004F);
+    }
+    int i = this.mNoise;
+    if (i < 10) {
+      this.mNoise = (i + 1);
+    } else {
+      this.mNoise = 0;
+    }
+    setFloat(this.mNoiseLocation, this.mNoise);
+    super.onDraw2(paramInt1, paramInt2);
   }
   
   public void onInit()
@@ -269,8 +287,10 @@ public class QQAVImageWrongEraseFilter
   {
     super.onOutputSizeChanged(paramInt1, paramInt2);
     setFloat(this.mWidthLocation, paramInt1);
-    setFloat(this.mHeightLocation, paramInt2);
-    this.mDensity = (paramInt2 / this.mDisplay.heightPixels * this.mDisplay.density);
+    paramInt1 = this.mHeightLocation;
+    float f = paramInt2;
+    setFloat(paramInt1, f);
+    this.mDensity = (f / this.mDisplay.heightPixels * this.mDisplay.density);
   }
   
   protected void setArrayVec4(int paramInt1, int paramInt2, float[] paramArrayOfFloat)
@@ -280,7 +300,7 @@ public class QQAVImageWrongEraseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.filter.qqavimage.specialeffects.QQAVImageWrongEraseFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/nx3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+    <TextView android:textColor="#aaa6a6a6" android:layout_gravity="center_horizontal" android:id="@id/nx1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="搜索文件、聊天记录、收藏、联系人等" />
+</LinearLayout>

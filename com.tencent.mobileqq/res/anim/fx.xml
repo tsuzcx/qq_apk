@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:ordering="sequentially"
+<set android:duration="250" android:fillAfter="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <set android:ordering="together">
-        <scale android:duration="125" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="0.8" android:toXScale="1.1" android:fromYScale="0.8" android:toYScale="1.1" />
-    </set>
-    <set android:ordering="together">
-        <scale android:duration="125" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="1.1" android:toXScale="1.0" android:fromYScale="1.1" android:toYScale="1.0" />
-    </set>
+    <alpha android:fromAlpha="0.0" android:toAlpha="1.0" />
+    <scale android:pivotX="0.0%" android:pivotY="0.0%" android:fromXScale="1.0" android:toXScale="1.0" android:fromYScale="0.0" android:toYScale="1.0" />
 </set>

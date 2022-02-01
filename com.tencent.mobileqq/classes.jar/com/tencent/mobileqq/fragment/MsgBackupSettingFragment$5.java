@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.fragment;
 
-import android.support.v4.app.FragmentActivity;
-import aujq;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msgbackup.transport.MsgBackupEndPoint;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupNotifier;
 import com.tencent.qphone.base.util.QLog;
@@ -16,19 +15,30 @@ class MsgBackupSettingFragment$5
   public void run()
   {
     QLog.d("MsgBackup", 1, "loadSo start");
-    MsgBackupJniProxy localMsgBackupJniProxy = new MsgBackupJniProxy(this.this$0.getActivity());
+    Object localObject = new MsgBackupJniProxy(this.this$0.getBaseActivity());
     QLog.d("MsgBackup", 1, "loadSo end");
-    long l = localMsgBackupJniProxy.createSession(1, Long.parseLong(this.this$0.getActivity().app.getCurrentAccountUin()), new MsgBackupNotifier());
-    QLog.d("MsgBackup", 1, "createSession end, session = " + l);
-    MsgBackupSettingFragment.a(this.this$0, new MsgBackupEndPoint());
-    MsgBackupSettingFragment.b(this.this$0, new MsgBackupEndPoint());
-    int i = localMsgBackupJniProxy.start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
-    QLog.d("MsgBackup", 1, "after start called with ret = " + i + ", ipv4 = " + aujq.a(MsgBackupSettingFragment.a(this.this$0).ipv4) + ", port = " + MsgBackupSettingFragment.a(this.this$0).port);
+    int i = NetConnInfoCenter.getActiveNetIpFamily(true);
+    long l = ((MsgBackupJniProxy)localObject).createSession(1, Long.parseLong(this.this$0.getBaseActivity().app.getCurrentAccountUin()), i, new MsgBackupNotifier());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createSession end, session = ");
+    localStringBuilder.append(l);
+    QLog.d("MsgBackup", 1, localStringBuilder.toString());
+    i = ((MsgBackupJniProxy)localObject).start(l, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.d(this.this$0), MsgBackupSettingFragment.e(this.this$0));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("start ret = ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(", ip = ");
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.c(this.this$0)[0]);
+    ((StringBuilder)localObject).append(", udpport = ");
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.d(this.this$0));
+    ((StringBuilder)localObject).append(", tcpport = ");
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.e(this.this$0));
+    QLog.d("MsgBackup", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MsgBackupSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

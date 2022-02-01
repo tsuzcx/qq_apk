@@ -1,122 +1,139 @@
 package com.tencent.mm.ui.contact;
 
+import android.app.Activity;
+import android.content.res.Resources;
+import android.database.Cursor;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.e;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mm.an.a.c;
+import com.tencent.mm.an.a.k;
+import com.tencent.mm.api.m;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.selectcontact.a.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
-import java.util.Map;
 
 public final class s
-  extends r
+  extends u
 {
-  private List<String> AdC;
-  private Map<String, String> AdQ;
-  private List<String> AdR;
-  private n.a Adj;
-  private ak handler;
+  private List<String> afeX;
+  private p.a afew;
+  private MMHandler handler;
+  private Cursor pKb;
   private String query;
+  private String vEu;
   
-  public s(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean, String paramString)
+  public s(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
   {
-    super(paramMMBaseSelectContactUI, paramList, paramBoolean, 0);
-    AppMethodBeat.i(105251);
-    this.AdQ = new HashMap();
-    this.AdR = new ArrayList();
-    this.handler = new ak(Looper.getMainLooper());
-    this.AdC = paramList;
-    if (!bo.isNullOrNil(paramString))
-    {
-      this.AdR = bo.P(paramString.split(","));
-      if (this.AdR != null)
-      {
-        paramMMBaseSelectContactUI = this.AdR.iterator();
-        while (paramMMBaseSelectContactUI.hasNext())
-        {
-          paramList = (String)paramMMBaseSelectContactUI.next();
-          paramString = ((b)g.E(b.class)).nE(paramList);
-          if (!bo.isNullOrNil(paramString)) {
-            this.AdQ.put(paramString, paramList);
-          }
-        }
-      }
-    }
-    Kc();
-    AppMethodBeat.o(105251);
+    super(paramMMBaseSelectContactUI, null, false, 0);
+    AppMethodBeat.i(102864);
+    this.handler = new MMHandler(Looper.getMainLooper());
+    this.afeX = null;
+    this.vEu = paramString;
+    Log.i("MicroMsg.MMSearchContactAdapter", "Create!");
+    aNi();
+    AppMethodBeat.o(102864);
   }
   
-  private void Kc()
+  private void aNi()
   {
-    AppMethodBeat.i(105253);
+    AppMethodBeat.i(102866);
+    Log.i("MicroMsg.MMSearchContactAdapter", "initData!");
     this.query = null;
     clearCache();
-    AppMethodBeat.o(105253);
+    AppMethodBeat.o(102866);
   }
   
-  public final void a(n.a parama)
+  public final void a(p.a parama)
   {
-    this.Adj = parama;
+    this.afew = parama;
   }
   
-  protected final boolean c(a parama)
+  protected final boolean d(com.tencent.mm.ui.contact.a.a parama)
   {
     return true;
   }
   
-  public final void cp(String paramString, boolean paramBoolean)
+  public final void eo(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(105252);
-    if (this.Adj != null) {
-      this.Adj.w(paramString, getCount(), paramBoolean);
+    AppMethodBeat.i(102865);
+    if (this.afew != null) {
+      this.afew.h(paramString, getCount(), paramBoolean);
     }
-    AppMethodBeat.o(105252);
+    AppMethodBeat.o(102865);
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(105256);
+    AppMethodBeat.i(102869);
     super.finish();
-    Kc();
-    AppMethodBeat.o(105256);
+    Log.i("MicroMsg.MMSearchContactAdapter", "finish!");
+    aNi();
+    AppMethodBeat.o(102869);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(105254);
-    if (this.AdR == null)
+    AppMethodBeat.i(102867);
+    if (this.pKb == null)
     {
-      AppMethodBeat.o(105254);
+      AppMethodBeat.o(102867);
       return 0;
     }
-    int i = this.AdR.size();
-    AppMethodBeat.o(105254);
+    int i = this.pKb.getCount();
+    AppMethodBeat.o(102867);
     return i;
   }
   
-  protected final a mM(int paramInt)
+  protected final com.tencent.mm.ui.contact.a.a yk(int paramInt)
   {
-    AppMethodBeat.i(105255);
-    e locale = new e(paramInt);
-    locale.query = this.query;
-    g.RM();
-    locale.contact = ((j)g.E(j.class)).YA().aru((String)this.AdR.get(paramInt));
-    locale.Adl = cni();
-    AppMethodBeat.o(105255);
-    return locale;
+    AppMethodBeat.i(102868);
+    com.tencent.mm.ui.bizchat.a locala = null;
+    c localc;
+    if ((paramInt >= 0) && (this.pKb.moveToPosition(paramInt)))
+    {
+      locala = new com.tencent.mm.ui.bizchat.a(paramInt);
+      localc = new c();
+      localc.convertFrom(this.pKb);
+      if (locala.vEb == -1L)
+      {
+        locala.vEb = localc.field_bizChatLocalId;
+        if (!localc.bHx()) {
+          break label156;
+        }
+        locala.pJG = localc.field_chatName;
+        locala.nnS = localc.field_headImageUrl;
+        locala.username = localc.field_brandUserName;
+        if (Util.isNullOrNil(locala.pJG)) {
+          locala.pJG = this.afex.getActivity().getResources().getString(a.h.select_contact_room_head_name);
+        }
+        if (Util.isNullOrNil(locala.username)) {
+          locala.username = localc.field_brandUserName;
+        }
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(102868);
+      return locala;
+      label156:
+      k localk = ((m)h.ax(m.class)).hM(localc.field_bizChatServId);
+      if (localk == null) {
+        break;
+      }
+      locala.pJG = localk.field_userName;
+      locala.nnS = localk.field_headImageUrl;
+      locala.username = localk.field_brandUserName;
+      break;
+      Log.e("MicroMsg.MMSearchContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.s
  * JD-Core Version:    0.7.0.1
  */

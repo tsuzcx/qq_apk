@@ -10,11 +10,11 @@ public final class s_likeman
   static s_PolyPraise cache_cpolyPraise = new s_PolyPraise();
   static s_CustomPraise cache_customPraise;
   static s_user cache_user = new s_user();
-  public s_PolyPraise cpolyPraise;
-  public s_CustomPraise customPraise;
+  public s_PolyPraise cpolyPraise = null;
+  public s_CustomPraise customPraise = null;
   public String refer = "";
-  public int superflag;
-  public s_user user;
+  public int superflag = 0;
+  public s_user user = null;
   
   static
   {
@@ -43,24 +43,28 @@ public final class s_likeman
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 0);
+    Object localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.refer != null) {
-      paramJceOutputStream.write(this.refer, 1);
+    localObject = this.refer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.superflag, 2);
-    if (this.customPraise != null) {
-      paramJceOutputStream.write(this.customPraise, 3);
+    localObject = this.customPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.cpolyPraise != null) {
-      paramJceOutputStream.write(this.cpolyPraise, 4);
+    localObject = this.cpolyPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_likeman
  * JD-Core Version:    0.7.0.1
  */

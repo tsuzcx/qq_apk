@@ -2,369 +2,347 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.database.DataSetObserver;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.TintableBackgroundView;
-import android.support.v7.appcompat.R.attr;
-import android.support.v7.content.res.AppCompatResources;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.ThemedSpinnerAdapter;
+import com.tencent.token.fn;
+import com.tencent.token.fo;
+import com.tencent.token.hg.a;
+import com.tencent.token.hi;
+import com.tencent.token.io;
+import com.tencent.token.iw;
+import com.tencent.token.jj;
+import com.tencent.token.jl;
+import com.tencent.token.kc;
 
 public class AppCompatSpinner
   extends Spinner
-  implements TintableBackgroundView
+  implements fn
 {
-  private static final int[] ATTRS_ANDROID_SPINNERMODE = { 16843505 };
-  private static final int MAX_ITEMS_MEASURED = 15;
-  private static final int MODE_DIALOG = 0;
-  private static final int MODE_DROPDOWN = 1;
-  private static final int MODE_THEME = -1;
-  private static final String TAG = "AppCompatSpinner";
-  private final AppCompatBackgroundHelper mBackgroundTintHelper;
-  private int mDropDownWidth;
-  private ForwardingListener mForwardingListener;
-  private AppCompatSpinner.DropdownPopup mPopup;
-  private final Context mPopupContext;
-  private final boolean mPopupSet;
-  private SpinnerAdapter mTempAdapter;
-  private final Rect mTempRect;
-  
-  public AppCompatSpinner(Context paramContext)
-  {
-    this(paramContext, null);
-  }
-  
-  public AppCompatSpinner(Context paramContext, int paramInt)
-  {
-    this(paramContext, null, R.attr.spinnerStyle, paramInt);
-  }
+  private static final int[] a = { 16843505 };
+  private final iw b;
+  private final Context c;
+  private jl d;
+  private SpinnerAdapter e;
+  private final boolean f;
+  private b g;
+  private int h;
+  private final Rect i;
   
   public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.spinnerStyle);
+    this(paramContext, paramAttributeSet, hg.a.spinnerStyle);
   }
   
   public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
+    this(paramContext, paramAttributeSet, paramInt, (byte)0);
+  }
+  
+  private AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
+  {
     this(paramContext, paramAttributeSet, paramInt, -1);
   }
   
-  public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
-  {
-    this(paramContext, paramAttributeSet, paramInt1, paramInt2, null);
-  }
-  
   /* Error */
-  public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2, android.content.res.Resources.Theme paramTheme)
+  private AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     // Byte code:
     //   0: aload_0
     //   1: aload_1
     //   2: aload_2
     //   3: iload_3
-    //   4: invokespecial 65	android/widget/Spinner:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    //   4: invokespecial 61	android/widget/Spinner:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
     //   7: aload_0
-    //   8: new 67	android/graphics/Rect
+    //   8: new 63	android/graphics/Rect
     //   11: dup
-    //   12: invokespecial 69	android/graphics/Rect:<init>	()V
-    //   15: putfield 71	android/support/v7/widget/AppCompatSpinner:mTempRect	Landroid/graphics/Rect;
+    //   12: invokespecial 65	android/graphics/Rect:<init>	()V
+    //   15: putfield 67	android/support/v7/widget/AppCompatSpinner:i	Landroid/graphics/Rect;
     //   18: aload_1
     //   19: aload_2
-    //   20: getstatic 76	android/support/v7/appcompat/R$styleable:Spinner	[I
+    //   20: getstatic 72	com/tencent/token/hg$j:Spinner	[I
     //   23: iload_3
     //   24: iconst_0
-    //   25: invokestatic 82	android/support/v7/widget/TintTypedArray:obtainStyledAttributes	(Landroid/content/Context;Landroid/util/AttributeSet;[III)Landroid/support/v7/widget/TintTypedArray;
-    //   28: astore 10
+    //   25: invokestatic 77	com/tencent/token/jw:a	(Landroid/content/Context;Landroid/util/AttributeSet;[III)Lcom/tencent/token/jw;
+    //   28: astore 8
     //   30: aload_0
-    //   31: new 84	android/support/v7/widget/AppCompatBackgroundHelper
+    //   31: new 79	com/tencent/token/iw
     //   34: dup
     //   35: aload_0
-    //   36: invokespecial 87	android/support/v7/widget/AppCompatBackgroundHelper:<init>	(Landroid/view/View;)V
-    //   39: putfield 89	android/support/v7/widget/AppCompatSpinner:mBackgroundTintHelper	Landroid/support/v7/widget/AppCompatBackgroundHelper;
-    //   42: aload 5
-    //   44: ifnull +277 -> 321
-    //   47: aload_0
-    //   48: new 91	android/support/v7/view/ContextThemeWrapper
-    //   51: dup
-    //   52: aload_1
-    //   53: aload 5
-    //   55: invokespecial 94	android/support/v7/view/ContextThemeWrapper:<init>	(Landroid/content/Context;Landroid/content/res/Resources$Theme;)V
-    //   58: putfield 96	android/support/v7/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   61: aload_0
-    //   62: getfield 96	android/support/v7/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   65: ifnull +176 -> 241
-    //   68: iload 4
-    //   70: istore 7
-    //   72: iload 4
-    //   74: iconst_m1
-    //   75: if_icmpne +63 -> 138
-    //   78: aload_1
-    //   79: aload_2
-    //   80: getstatic 41	android/support/v7/widget/AppCompatSpinner:ATTRS_ANDROID_SPINNERMODE	[I
-    //   83: iload_3
-    //   84: iconst_0
-    //   85: invokevirtual 101	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
-    //   88: astore 8
-    //   90: iload 4
-    //   92: istore 6
-    //   94: aload 8
-    //   96: astore 5
-    //   98: aload 8
-    //   100: iconst_0
-    //   101: invokevirtual 107	android/content/res/TypedArray:hasValue	(I)Z
-    //   104: ifeq +16 -> 120
-    //   107: aload 8
-    //   109: astore 5
-    //   111: aload 8
-    //   113: iconst_0
-    //   114: iconst_0
-    //   115: invokevirtual 111	android/content/res/TypedArray:getInt	(II)I
-    //   118: istore 6
-    //   120: iload 6
-    //   122: istore 7
-    //   124: aload 8
-    //   126: ifnull +12 -> 138
-    //   129: aload 8
-    //   131: invokevirtual 114	android/content/res/TypedArray:recycle	()V
-    //   134: iload 6
-    //   136: istore 7
-    //   138: iload 7
-    //   140: iconst_1
-    //   141: if_icmpne +100 -> 241
-    //   144: new 116	android/support/v7/widget/AppCompatSpinner$DropdownPopup
-    //   147: dup
-    //   148: aload_0
-    //   149: aload_0
-    //   150: getfield 96	android/support/v7/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   153: aload_2
-    //   154: iload_3
-    //   155: invokespecial 119	android/support/v7/widget/AppCompatSpinner$DropdownPopup:<init>	(Landroid/support/v7/widget/AppCompatSpinner;Landroid/content/Context;Landroid/util/AttributeSet;I)V
-    //   158: astore 5
-    //   160: aload_0
-    //   161: getfield 96	android/support/v7/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   164: aload_2
-    //   165: getstatic 76	android/support/v7/appcompat/R$styleable:Spinner	[I
-    //   168: iload_3
-    //   169: iconst_0
-    //   170: invokestatic 82	android/support/v7/widget/TintTypedArray:obtainStyledAttributes	(Landroid/content/Context;Landroid/util/AttributeSet;[III)Landroid/support/v7/widget/TintTypedArray;
-    //   173: astore 8
-    //   175: aload_0
-    //   176: aload 8
-    //   178: getstatic 122	android/support/v7/appcompat/R$styleable:Spinner_android_dropDownWidth	I
-    //   181: bipush 254
-    //   183: invokevirtual 125	android/support/v7/widget/TintTypedArray:getLayoutDimension	(II)I
-    //   186: putfield 127	android/support/v7/widget/AppCompatSpinner:mDropDownWidth	I
-    //   189: aload 5
-    //   191: aload 8
-    //   193: getstatic 130	android/support/v7/appcompat/R$styleable:Spinner_android_popupBackground	I
-    //   196: invokevirtual 134	android/support/v7/widget/TintTypedArray:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   199: invokevirtual 138	android/support/v7/widget/AppCompatSpinner$DropdownPopup:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   202: aload 5
-    //   204: aload 10
-    //   206: getstatic 141	android/support/v7/appcompat/R$styleable:Spinner_android_prompt	I
-    //   209: invokevirtual 145	android/support/v7/widget/TintTypedArray:getString	(I)Ljava/lang/String;
-    //   212: invokevirtual 149	android/support/v7/widget/AppCompatSpinner$DropdownPopup:setPromptText	(Ljava/lang/CharSequence;)V
-    //   215: aload 8
-    //   217: invokevirtual 150	android/support/v7/widget/TintTypedArray:recycle	()V
-    //   220: aload_0
-    //   221: aload 5
-    //   223: putfield 152	android/support/v7/widget/AppCompatSpinner:mPopup	Landroid/support/v7/widget/AppCompatSpinner$DropdownPopup;
-    //   226: aload_0
-    //   227: new 154	android/support/v7/widget/AppCompatSpinner$1
-    //   230: dup
-    //   231: aload_0
-    //   232: aload_0
-    //   233: aload 5
-    //   235: invokespecial 157	android/support/v7/widget/AppCompatSpinner$1:<init>	(Landroid/support/v7/widget/AppCompatSpinner;Landroid/view/View;Landroid/support/v7/widget/AppCompatSpinner$DropdownPopup;)V
-    //   238: putfield 159	android/support/v7/widget/AppCompatSpinner:mForwardingListener	Landroid/support/v7/widget/ForwardingListener;
-    //   241: aload 10
-    //   243: getstatic 162	android/support/v7/appcompat/R$styleable:Spinner_android_entries	I
-    //   246: invokevirtual 166	android/support/v7/widget/TintTypedArray:getTextArray	(I)[Ljava/lang/CharSequence;
-    //   249: astore 5
-    //   251: aload 5
-    //   253: ifnull +28 -> 281
-    //   256: new 168	android/widget/ArrayAdapter
-    //   259: dup
-    //   260: aload_1
-    //   261: ldc 169
-    //   263: aload 5
-    //   265: invokespecial 172	android/widget/ArrayAdapter:<init>	(Landroid/content/Context;I[Ljava/lang/Object;)V
-    //   268: astore_1
-    //   269: aload_1
-    //   270: getstatic 177	android/support/v7/appcompat/R$layout:support_simple_spinner_dropdown_item	I
-    //   273: invokevirtual 181	android/widget/ArrayAdapter:setDropDownViewResource	(I)V
-    //   276: aload_0
-    //   277: aload_1
-    //   278: invokevirtual 185	android/support/v7/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
-    //   281: aload 10
-    //   283: invokevirtual 150	android/support/v7/widget/TintTypedArray:recycle	()V
-    //   286: aload_0
-    //   287: iconst_1
-    //   288: putfield 187	android/support/v7/widget/AppCompatSpinner:mPopupSet	Z
-    //   291: aload_0
-    //   292: getfield 189	android/support/v7/widget/AppCompatSpinner:mTempAdapter	Landroid/widget/SpinnerAdapter;
-    //   295: ifnull +16 -> 311
-    //   298: aload_0
-    //   299: aload_0
-    //   300: getfield 189	android/support/v7/widget/AppCompatSpinner:mTempAdapter	Landroid/widget/SpinnerAdapter;
-    //   303: invokevirtual 185	android/support/v7/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
-    //   306: aload_0
-    //   307: aconst_null
-    //   308: putfield 189	android/support/v7/widget/AppCompatSpinner:mTempAdapter	Landroid/widget/SpinnerAdapter;
-    //   311: aload_0
-    //   312: getfield 89	android/support/v7/widget/AppCompatSpinner:mBackgroundTintHelper	Landroid/support/v7/widget/AppCompatBackgroundHelper;
-    //   315: aload_2
-    //   316: iload_3
-    //   317: invokevirtual 193	android/support/v7/widget/AppCompatBackgroundHelper:loadFromAttributes	(Landroid/util/AttributeSet;I)V
-    //   320: return
-    //   321: aload 10
-    //   323: getstatic 196	android/support/v7/appcompat/R$styleable:Spinner_popupTheme	I
-    //   326: iconst_0
-    //   327: invokevirtual 199	android/support/v7/widget/TintTypedArray:getResourceId	(II)I
-    //   330: istore 6
-    //   332: iload 6
-    //   334: ifeq +20 -> 354
-    //   337: aload_0
-    //   338: new 91	android/support/v7/view/ContextThemeWrapper
-    //   341: dup
-    //   342: aload_1
-    //   343: iload 6
-    //   345: invokespecial 201	android/support/v7/view/ContextThemeWrapper:<init>	(Landroid/content/Context;I)V
-    //   348: putfield 96	android/support/v7/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   351: goto -290 -> 61
-    //   354: getstatic 206	android/os/Build$VERSION:SDK_INT	I
-    //   357: bipush 23
-    //   359: if_icmpge +15 -> 374
-    //   362: aload_1
-    //   363: astore 5
-    //   365: aload_0
-    //   366: aload 5
-    //   368: putfield 96	android/support/v7/widget/AppCompatSpinner:mPopupContext	Landroid/content/Context;
-    //   371: goto -310 -> 61
-    //   374: aconst_null
-    //   375: astore 5
-    //   377: goto -12 -> 365
-    //   380: astore 9
-    //   382: aconst_null
-    //   383: astore 8
-    //   385: aload 8
-    //   387: astore 5
-    //   389: ldc 21
-    //   391: ldc 208
-    //   393: aload 9
-    //   395: invokestatic 214	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   398: pop
-    //   399: iload 4
-    //   401: istore 7
-    //   403: aload 8
-    //   405: ifnull -267 -> 138
-    //   408: aload 8
-    //   410: invokevirtual 114	android/content/res/TypedArray:recycle	()V
-    //   413: iload 4
-    //   415: istore 7
-    //   417: goto -279 -> 138
-    //   420: astore_1
-    //   421: aconst_null
-    //   422: astore 5
-    //   424: aload 5
-    //   426: ifnull +8 -> 434
-    //   429: aload 5
-    //   431: invokevirtual 114	android/content/res/TypedArray:recycle	()V
-    //   434: aload_1
-    //   435: athrow
-    //   436: astore_1
-    //   437: goto -13 -> 424
-    //   440: astore 9
-    //   442: goto -57 -> 385
+    //   36: invokespecial 82	com/tencent/token/iw:<init>	(Landroid/view/View;)V
+    //   39: putfield 84	android/support/v7/widget/AppCompatSpinner:b	Lcom/tencent/token/iw;
+    //   42: aload 8
+    //   44: getstatic 87	com/tencent/token/hg$j:Spinner_popupTheme	I
+    //   47: iconst_0
+    //   48: invokevirtual 90	com/tencent/token/jw:g	(II)I
+    //   51: istore 5
+    //   53: iload 5
+    //   55: ifeq +18 -> 73
+    //   58: new 92	com/tencent/token/hq
+    //   61: dup
+    //   62: aload_1
+    //   63: iload 5
+    //   65: invokespecial 95	com/tencent/token/hq:<init>	(Landroid/content/Context;I)V
+    //   68: astore 7
+    //   70: goto +20 -> 90
+    //   73: getstatic 100	android/os/Build$VERSION:SDK_INT	I
+    //   76: bipush 23
+    //   78: if_icmpge +9 -> 87
+    //   81: aload_1
+    //   82: astore 7
+    //   84: goto +6 -> 90
+    //   87: aconst_null
+    //   88: astore 7
+    //   90: aload_0
+    //   91: aload 7
+    //   93: putfield 102	android/support/v7/widget/AppCompatSpinner:c	Landroid/content/Context;
+    //   96: aload_0
+    //   97: getfield 102	android/support/v7/widget/AppCompatSpinner:c	Landroid/content/Context;
+    //   100: ifnull +203 -> 303
+    //   103: aload_1
+    //   104: aload_2
+    //   105: getstatic 41	android/support/v7/widget/AppCompatSpinner:a	[I
+    //   108: iload_3
+    //   109: iconst_0
+    //   110: invokevirtual 108	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    //   113: astore 7
+    //   115: iload 4
+    //   117: istore 5
+    //   119: aload 7
+    //   121: iconst_0
+    //   122: invokevirtual 114	android/content/res/TypedArray:hasValue	(I)Z
+    //   125: ifeq +12 -> 137
+    //   128: aload 7
+    //   130: iconst_0
+    //   131: iconst_0
+    //   132: invokevirtual 117	android/content/res/TypedArray:getInt	(II)I
+    //   135: istore 5
+    //   137: iload 5
+    //   139: istore 6
+    //   141: aload 7
+    //   143: ifnull +54 -> 197
+    //   146: iload 5
+    //   148: istore 4
+    //   150: aload 7
+    //   152: invokevirtual 120	android/content/res/TypedArray:recycle	()V
+    //   155: iload 4
+    //   157: istore 6
+    //   159: goto +38 -> 197
+    //   162: astore_1
+    //   163: goto +7 -> 170
+    //   166: astore_1
+    //   167: aconst_null
+    //   168: astore 7
+    //   170: aload 7
+    //   172: ifnull +8 -> 180
+    //   175: aload 7
+    //   177: invokevirtual 120	android/content/res/TypedArray:recycle	()V
+    //   180: aload_1
+    //   181: athrow
+    //   182: aconst_null
+    //   183: astore 7
+    //   185: iload 4
+    //   187: istore 6
+    //   189: aload 7
+    //   191: ifnull +6 -> 197
+    //   194: goto -44 -> 150
+    //   197: iload 6
+    //   199: iconst_1
+    //   200: if_icmpne +103 -> 303
+    //   203: new 13	android/support/v7/widget/AppCompatSpinner$b
+    //   206: dup
+    //   207: aload_0
+    //   208: aload_0
+    //   209: getfield 102	android/support/v7/widget/AppCompatSpinner:c	Landroid/content/Context;
+    //   212: aload_2
+    //   213: iload_3
+    //   214: invokespecial 123	android/support/v7/widget/AppCompatSpinner$b:<init>	(Landroid/support/v7/widget/AppCompatSpinner;Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    //   217: astore 7
+    //   219: aload_0
+    //   220: getfield 102	android/support/v7/widget/AppCompatSpinner:c	Landroid/content/Context;
+    //   223: aload_2
+    //   224: getstatic 72	com/tencent/token/hg$j:Spinner	[I
+    //   227: iload_3
+    //   228: iconst_0
+    //   229: invokestatic 77	com/tencent/token/jw:a	(Landroid/content/Context;Landroid/util/AttributeSet;[III)Lcom/tencent/token/jw;
+    //   232: astore 9
+    //   234: aload_0
+    //   235: aload 9
+    //   237: getstatic 126	com/tencent/token/hg$j:Spinner_android_dropDownWidth	I
+    //   240: bipush 254
+    //   242: invokevirtual 128	com/tencent/token/jw:f	(II)I
+    //   245: putfield 130	android/support/v7/widget/AppCompatSpinner:h	I
+    //   248: aload 7
+    //   250: aload 9
+    //   252: getstatic 133	com/tencent/token/hg$j:Spinner_android_popupBackground	I
+    //   255: invokevirtual 136	com/tencent/token/jw:a	(I)Landroid/graphics/drawable/Drawable;
+    //   258: invokevirtual 139	android/support/v7/widget/AppCompatSpinner$b:a	(Landroid/graphics/drawable/Drawable;)V
+    //   261: aload 7
+    //   263: aload 8
+    //   265: getstatic 142	com/tencent/token/hg$j:Spinner_android_prompt	I
+    //   268: invokevirtual 145	com/tencent/token/jw:d	(I)Ljava/lang/String;
+    //   271: putfield 148	android/support/v7/widget/AppCompatSpinner$b:a	Ljava/lang/CharSequence;
+    //   274: aload 9
+    //   276: getfield 151	com/tencent/token/jw:a	Landroid/content/res/TypedArray;
+    //   279: invokevirtual 120	android/content/res/TypedArray:recycle	()V
+    //   282: aload_0
+    //   283: aload 7
+    //   285: putfield 153	android/support/v7/widget/AppCompatSpinner:g	Landroid/support/v7/widget/AppCompatSpinner$b;
+    //   288: aload_0
+    //   289: new 8	android/support/v7/widget/AppCompatSpinner$1
+    //   292: dup
+    //   293: aload_0
+    //   294: aload_0
+    //   295: aload 7
+    //   297: invokespecial 156	android/support/v7/widget/AppCompatSpinner$1:<init>	(Landroid/support/v7/widget/AppCompatSpinner;Landroid/view/View;Landroid/support/v7/widget/AppCompatSpinner$b;)V
+    //   300: putfield 158	android/support/v7/widget/AppCompatSpinner:d	Lcom/tencent/token/jl;
+    //   303: getstatic 161	com/tencent/token/hg$j:Spinner_android_entries	I
+    //   306: istore 4
+    //   308: aload 8
+    //   310: getfield 151	com/tencent/token/jw:a	Landroid/content/res/TypedArray;
+    //   313: iload 4
+    //   315: invokevirtual 165	android/content/res/TypedArray:getTextArray	(I)[Ljava/lang/CharSequence;
+    //   318: astore 7
+    //   320: aload 7
+    //   322: ifnull +28 -> 350
+    //   325: new 167	android/widget/ArrayAdapter
+    //   328: dup
+    //   329: aload_1
+    //   330: ldc 168
+    //   332: aload 7
+    //   334: invokespecial 171	android/widget/ArrayAdapter:<init>	(Landroid/content/Context;I[Ljava/lang/Object;)V
+    //   337: astore_1
+    //   338: aload_1
+    //   339: getstatic 176	com/tencent/token/hg$g:support_simple_spinner_dropdown_item	I
+    //   342: invokevirtual 180	android/widget/ArrayAdapter:setDropDownViewResource	(I)V
+    //   345: aload_0
+    //   346: aload_1
+    //   347: invokevirtual 184	android/support/v7/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
+    //   350: aload 8
+    //   352: getfield 151	com/tencent/token/jw:a	Landroid/content/res/TypedArray;
+    //   355: invokevirtual 120	android/content/res/TypedArray:recycle	()V
+    //   358: aload_0
+    //   359: iconst_1
+    //   360: putfield 186	android/support/v7/widget/AppCompatSpinner:f	Z
+    //   363: aload_0
+    //   364: getfield 188	android/support/v7/widget/AppCompatSpinner:e	Landroid/widget/SpinnerAdapter;
+    //   367: astore_1
+    //   368: aload_1
+    //   369: ifnull +13 -> 382
+    //   372: aload_0
+    //   373: aload_1
+    //   374: invokevirtual 184	android/support/v7/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
+    //   377: aload_0
+    //   378: aconst_null
+    //   379: putfield 188	android/support/v7/widget/AppCompatSpinner:e	Landroid/widget/SpinnerAdapter;
+    //   382: aload_0
+    //   383: getfield 84	android/support/v7/widget/AppCompatSpinner:b	Lcom/tencent/token/iw;
+    //   386: aload_2
+    //   387: iload_3
+    //   388: invokevirtual 191	com/tencent/token/iw:a	(Landroid/util/AttributeSet;I)V
+    //   391: return
+    //   392: astore 7
+    //   394: goto -212 -> 182
+    //   397: astore 9
+    //   399: goto -214 -> 185
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	445	0	this	AppCompatSpinner
-    //   0	445	1	paramContext	Context
-    //   0	445	2	paramAttributeSet	AttributeSet
-    //   0	445	3	paramInt1	int
-    //   0	445	4	paramInt2	int
-    //   0	445	5	paramTheme	android.content.res.Resources.Theme
-    //   92	252	6	i	int
-    //   70	346	7	j	int
-    //   88	321	8	localObject	java.lang.Object
-    //   380	14	9	localException1	java.lang.Exception
-    //   440	1	9	localException2	java.lang.Exception
-    //   28	294	10	localTintTypedArray	TintTypedArray
+    //   0	402	0	this	AppCompatSpinner
+    //   0	402	1	paramContext	Context
+    //   0	402	2	paramAttributeSet	AttributeSet
+    //   0	402	3	paramInt1	int
+    //   0	402	4	paramInt2	int
+    //   51	96	5	j	int
+    //   139	62	6	k	int
+    //   68	265	7	localObject	Object
+    //   392	1	7	localException1	java.lang.Exception
+    //   28	323	8	localjw1	com.tencent.token.jw
+    //   232	43	9	localjw2	com.tencent.token.jw
+    //   397	1	9	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   78	90	380	java/lang/Exception
-    //   78	90	420	finally
-    //   98	107	436	finally
-    //   111	120	436	finally
-    //   389	399	436	finally
-    //   98	107	440	java/lang/Exception
-    //   111	120	440	java/lang/Exception
+    //   119	137	162	finally
+    //   103	115	166	finally
+    //   103	115	392	java/lang/Exception
+    //   119	137	397	java/lang/Exception
   }
   
-  int compatMeasureContentWidth(SpinnerAdapter paramSpinnerAdapter, Drawable paramDrawable)
+  final int a(SpinnerAdapter paramSpinnerAdapter, Drawable paramDrawable)
   {
+    int m = 0;
     if (paramSpinnerAdapter == null) {
       return 0;
     }
-    int n = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 0);
-    int i1 = View.MeasureSpec.makeMeasureSpec(getMeasuredHeight(), 0);
-    int i = Math.max(0, getSelectedItemPosition());
-    int i2 = Math.min(paramSpinnerAdapter.getCount(), i + 15);
-    int j = Math.max(0, i - (15 - (i2 - i)));
+    int i2 = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 0);
+    int i3 = View.MeasureSpec.makeMeasureSpec(getMeasuredHeight(), 0);
+    int j = Math.max(0, getSelectedItemPosition());
+    int i4 = Math.min(paramSpinnerAdapter.getCount(), j + 15);
+    int k = Math.max(0, j - (15 - (i4 - j)));
     View localView = null;
-    int k = 0;
-    i = 0;
-    if (j < i2)
+    j = 0;
+    while (k < i4)
     {
-      int m = paramSpinnerAdapter.getItemViewType(j);
-      if (m == i) {
-        break label204;
+      int i1 = paramSpinnerAdapter.getItemViewType(k);
+      int n = m;
+      if (i1 != m)
+      {
+        localView = null;
+        n = i1;
       }
-      localView = null;
-      i = m;
-    }
-    label204:
-    for (;;)
-    {
-      localView = paramSpinnerAdapter.getView(j, localView, this);
+      localView = paramSpinnerAdapter.getView(k, localView, this);
       if (localView.getLayoutParams() == null) {
         localView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
       }
-      localView.measure(n, i1);
-      k = Math.max(k, localView.getMeasuredWidth());
-      j += 1;
-      break;
-      if (paramDrawable != null)
-      {
-        paramDrawable.getPadding(this.mTempRect);
-        return this.mTempRect.left + this.mTempRect.right + k;
-      }
-      return k;
+      localView.measure(i2, i3);
+      j = Math.max(j, localView.getMeasuredWidth());
+      k += 1;
+      m = n;
     }
+    k = j;
+    if (paramDrawable != null)
+    {
+      paramDrawable.getPadding(this.i);
+      k = j + (this.i.left + this.i.right);
+    }
+    return k;
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.applySupportBackgroundTint();
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.d();
     }
   }
   
   public int getDropDownHorizontalOffset()
   {
-    if (this.mPopup != null) {
-      return this.mPopup.getHorizontalOffset();
+    b localb = this.g;
+    if (localb != null) {
+      return localb.g;
     }
     if (Build.VERSION.SDK_INT >= 16) {
       return super.getDropDownHorizontalOffset();
@@ -374,8 +352,9 @@ public class AppCompatSpinner
   
   public int getDropDownVerticalOffset()
   {
-    if (this.mPopup != null) {
-      return this.mPopup.getVerticalOffset();
+    b localb = this.g;
+    if (localb != null) {
+      return localb.g();
     }
     if (Build.VERSION.SDK_INT >= 16) {
       return super.getDropDownVerticalOffset();
@@ -385,8 +364,8 @@ public class AppCompatSpinner
   
   public int getDropDownWidth()
   {
-    if (this.mPopup != null) {
-      return this.mDropDownWidth;
+    if (this.g != null) {
+      return this.h;
     }
     if (Build.VERSION.SDK_INT >= 16) {
       return super.getDropDownWidth();
@@ -396,8 +375,9 @@ public class AppCompatSpinner
   
   public Drawable getPopupBackground()
   {
-    if (this.mPopup != null) {
-      return this.mPopup.getBackground();
+    b localb = this.g;
+    if (localb != null) {
+      return localb.q.getBackground();
     }
     if (Build.VERSION.SDK_INT >= 16) {
       return super.getPopupBackground();
@@ -407,8 +387,8 @@ public class AppCompatSpinner
   
   public Context getPopupContext()
   {
-    if (this.mPopup != null) {
-      return this.mPopupContext;
+    if (this.g != null) {
+      return this.c;
     }
     if (Build.VERSION.SDK_INT >= 23) {
       return super.getPopupContext();
@@ -418,28 +398,27 @@ public class AppCompatSpinner
   
   public CharSequence getPrompt()
   {
-    if (this.mPopup != null) {
-      return this.mPopup.getHintText();
+    b localb = this.g;
+    if (localb != null) {
+      return localb.a;
     }
     return super.getPrompt();
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintList();
+    iw localiw = this.b;
+    if (localiw != null) {
+      return localiw.b();
     }
     return null;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintMode();
+    iw localiw = this.b;
+    if (localiw != null) {
+      return localiw.c();
     }
     return null;
   }
@@ -447,22 +426,24 @@ public class AppCompatSpinner
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.mPopup != null) && (this.mPopup.isShowing())) {
-      this.mPopup.dismiss();
+    b localb = this.g;
+    if ((localb != null) && (localb.q.isShowing())) {
+      this.g.c();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.mPopup != null) && (View.MeasureSpec.getMode(paramInt1) == -2147483648)) {
-      setMeasuredDimension(Math.min(Math.max(getMeasuredWidth(), compatMeasureContentWidth(getAdapter(), getBackground())), View.MeasureSpec.getSize(paramInt1)), getMeasuredHeight());
+    if ((this.g != null) && (View.MeasureSpec.getMode(paramInt1) == -2147483648)) {
+      setMeasuredDimension(Math.min(Math.max(getMeasuredWidth(), a(getAdapter(), getBackground())), View.MeasureSpec.getSize(paramInt1)), getMeasuredHeight());
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.mForwardingListener != null) && (this.mForwardingListener.onTouch(this, paramMotionEvent))) {
+    jl localjl = this.d;
+    if ((localjl != null) && (localjl.onTouch(this, paramMotionEvent))) {
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -470,10 +451,11 @@ public class AppCompatSpinner
   
   public boolean performClick()
   {
-    if (this.mPopup != null)
+    b localb = this.g;
+    if (localb != null)
     {
-      if (!this.mPopup.isShowing()) {
-        this.mPopup.show();
+      if (!localb.q.isShowing()) {
+        this.g.b();
       }
       return true;
     }
@@ -482,110 +464,378 @@ public class AppCompatSpinner
   
   public void setAdapter(SpinnerAdapter paramSpinnerAdapter)
   {
-    if (!this.mPopupSet) {
-      this.mTempAdapter = paramSpinnerAdapter;
+    if (!this.f)
+    {
+      this.e = paramSpinnerAdapter;
+      return;
     }
-    do
+    super.setAdapter(paramSpinnerAdapter);
+    if (this.g != null)
     {
-      return;
-      super.setAdapter(paramSpinnerAdapter);
-    } while (this.mPopup == null);
-    if (this.mPopupContext == null) {}
-    for (Context localContext = getContext();; localContext = this.mPopupContext)
-    {
-      this.mPopup.setAdapter(new AppCompatSpinner.DropDownAdapter(paramSpinnerAdapter, localContext.getTheme()));
-      return;
+      Context localContext2 = this.c;
+      Context localContext1 = localContext2;
+      if (localContext2 == null) {
+        localContext1 = getContext();
+      }
+      this.g.a(new a(paramSpinnerAdapter, localContext1.getTheme()));
     }
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundDrawable(paramDrawable);
+    paramDrawable = this.b;
+    if (paramDrawable != null) {
+      paramDrawable.a();
     }
   }
   
-  public void setBackgroundResource(@DrawableRes int paramInt)
+  public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundResource(paramInt);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramInt);
     }
   }
   
   public void setDropDownHorizontalOffset(int paramInt)
   {
-    if (this.mPopup != null) {
-      this.mPopup.setHorizontalOffset(paramInt);
-    }
-    while (Build.VERSION.SDK_INT < 16) {
+    b localb = this.g;
+    if (localb != null)
+    {
+      localb.g = paramInt;
       return;
     }
-    super.setDropDownHorizontalOffset(paramInt);
+    if (Build.VERSION.SDK_INT >= 16) {
+      super.setDropDownHorizontalOffset(paramInt);
+    }
   }
   
   public void setDropDownVerticalOffset(int paramInt)
   {
-    if (this.mPopup != null) {
-      this.mPopup.setVerticalOffset(paramInt);
-    }
-    while (Build.VERSION.SDK_INT < 16) {
+    b localb = this.g;
+    if (localb != null)
+    {
+      localb.a(paramInt);
       return;
     }
-    super.setDropDownVerticalOffset(paramInt);
+    if (Build.VERSION.SDK_INT >= 16) {
+      super.setDropDownVerticalOffset(paramInt);
+    }
   }
   
   public void setDropDownWidth(int paramInt)
   {
-    if (this.mPopup != null) {
-      this.mDropDownWidth = paramInt;
-    }
-    while (Build.VERSION.SDK_INT < 16) {
+    if (this.g != null)
+    {
+      this.h = paramInt;
       return;
     }
-    super.setDropDownWidth(paramInt);
+    if (Build.VERSION.SDK_INT >= 16) {
+      super.setDropDownWidth(paramInt);
+    }
   }
   
   public void setPopupBackgroundDrawable(Drawable paramDrawable)
   {
-    if (this.mPopup != null) {
-      this.mPopup.setBackgroundDrawable(paramDrawable);
-    }
-    while (Build.VERSION.SDK_INT < 16) {
+    b localb = this.g;
+    if (localb != null)
+    {
+      localb.a(paramDrawable);
       return;
     }
-    super.setPopupBackgroundDrawable(paramDrawable);
+    if (Build.VERSION.SDK_INT >= 16) {
+      super.setPopupBackgroundDrawable(paramDrawable);
+    }
   }
   
-  public void setPopupBackgroundResource(@DrawableRes int paramInt)
+  public void setPopupBackgroundResource(int paramInt)
   {
-    setPopupBackgroundDrawable(AppCompatResources.getDrawable(getPopupContext(), paramInt));
+    setPopupBackgroundDrawable(hi.b(getPopupContext(), paramInt));
   }
   
   public void setPrompt(CharSequence paramCharSequence)
   {
-    if (this.mPopup != null)
+    b localb = this.g;
+    if (localb != null)
     {
-      this.mPopup.setPromptText(paramCharSequence);
+      localb.a = paramCharSequence;
       return;
     }
     super.setPrompt(paramCharSequence);
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportBackgroundTintList(@Nullable ColorStateList paramColorStateList)
+  public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramColorStateList);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode paramMode)
+  public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
+    iw localiw = this.b;
+    if (localiw != null) {
+      localiw.a(paramMode);
+    }
+  }
+  
+  static final class a
+    implements ListAdapter, SpinnerAdapter
+  {
+    private SpinnerAdapter a;
+    private ListAdapter b;
+    
+    public a(SpinnerAdapter paramSpinnerAdapter, Resources.Theme paramTheme)
+    {
+      this.a = paramSpinnerAdapter;
+      if ((paramSpinnerAdapter instanceof ListAdapter)) {
+        this.b = ((ListAdapter)paramSpinnerAdapter);
+      }
+      if ((paramTheme != null) && (Build.VERSION.SDK_INT >= 23) && ((paramSpinnerAdapter instanceof ThemedSpinnerAdapter)))
+      {
+        paramSpinnerAdapter = (ThemedSpinnerAdapter)paramSpinnerAdapter;
+        if (paramSpinnerAdapter.getDropDownViewTheme() != paramTheme) {
+          paramSpinnerAdapter.setDropDownViewTheme(paramTheme);
+        }
+      }
+    }
+    
+    public final boolean areAllItemsEnabled()
+    {
+      ListAdapter localListAdapter = this.b;
+      if (localListAdapter != null) {
+        return localListAdapter.areAllItemsEnabled();
+      }
+      return true;
+    }
+    
+    public final int getCount()
+    {
+      SpinnerAdapter localSpinnerAdapter = this.a;
+      if (localSpinnerAdapter == null) {
+        return 0;
+      }
+      return localSpinnerAdapter.getCount();
+    }
+    
+    public final View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      SpinnerAdapter localSpinnerAdapter = this.a;
+      if (localSpinnerAdapter == null) {
+        return null;
+      }
+      return localSpinnerAdapter.getDropDownView(paramInt, paramView, paramViewGroup);
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      SpinnerAdapter localSpinnerAdapter = this.a;
+      if (localSpinnerAdapter == null) {
+        return null;
+      }
+      return localSpinnerAdapter.getItem(paramInt);
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      SpinnerAdapter localSpinnerAdapter = this.a;
+      if (localSpinnerAdapter == null) {
+        return -1L;
+      }
+      return localSpinnerAdapter.getItemId(paramInt);
+    }
+    
+    public final int getItemViewType(int paramInt)
+    {
+      return 0;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      return getDropDownView(paramInt, paramView, paramViewGroup);
+    }
+    
+    public final int getViewTypeCount()
+    {
+      return 1;
+    }
+    
+    public final boolean hasStableIds()
+    {
+      SpinnerAdapter localSpinnerAdapter = this.a;
+      return (localSpinnerAdapter != null) && (localSpinnerAdapter.hasStableIds());
+    }
+    
+    public final boolean isEmpty()
+    {
+      return getCount() == 0;
+    }
+    
+    public final boolean isEnabled(int paramInt)
+    {
+      ListAdapter localListAdapter = this.b;
+      if (localListAdapter != null) {
+        return localListAdapter.isEnabled(paramInt);
+      }
+      return true;
+    }
+    
+    public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+    {
+      SpinnerAdapter localSpinnerAdapter = this.a;
+      if (localSpinnerAdapter != null) {
+        localSpinnerAdapter.registerDataSetObserver(paramDataSetObserver);
+      }
+    }
+    
+    public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+    {
+      SpinnerAdapter localSpinnerAdapter = this.a;
+      if (localSpinnerAdapter != null) {
+        localSpinnerAdapter.unregisterDataSetObserver(paramDataSetObserver);
+      }
+    }
+  }
+  
+  final class b
+    extends ListPopupWindow
+  {
+    CharSequence a;
+    ListAdapter b;
+    final Rect c = new Rect();
+    
+    public b(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+    {
+      super(paramAttributeSet, paramInt);
+      this.k = AppCompatSpinner.this;
+      f();
+      this.j = 0;
+      this.l = new AdapterView.OnItemClickListener()
+      {
+        public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppCompatSpinner.this.setSelection(paramAnonymousInt);
+          if (AppCompatSpinner.this.getOnItemClickListener() != null) {
+            AppCompatSpinner.this.performItemClick(paramAnonymousView, paramAnonymousInt, AppCompatSpinner.b.this.b.getItemId(paramAnonymousInt));
+          }
+          AppCompatSpinner.b.this.c();
+        }
+      };
+    }
+    
+    final void a()
+    {
+      Object localObject = this.q.getBackground();
+      int i = 0;
+      if (localObject != null)
+      {
+        ((Drawable)localObject).getPadding(AppCompatSpinner.b(AppCompatSpinner.this));
+        if (kc.a(AppCompatSpinner.this)) {
+          i = AppCompatSpinner.b(AppCompatSpinner.this).right;
+        } else {
+          i = -AppCompatSpinner.b(AppCompatSpinner.this).left;
+        }
+      }
+      else
+      {
+        localObject = AppCompatSpinner.b(AppCompatSpinner.this);
+        AppCompatSpinner.b(AppCompatSpinner.this).right = 0;
+        ((Rect)localObject).left = 0;
+      }
+      int n = AppCompatSpinner.this.getPaddingLeft();
+      int i1 = AppCompatSpinner.this.getPaddingRight();
+      int i2 = AppCompatSpinner.this.getWidth();
+      if (AppCompatSpinner.c(AppCompatSpinner.this) == -2)
+      {
+        int k = AppCompatSpinner.this.a((SpinnerAdapter)this.b, this.q.getBackground());
+        int m = AppCompatSpinner.this.getContext().getResources().getDisplayMetrics().widthPixels - AppCompatSpinner.b(AppCompatSpinner.this).left - AppCompatSpinner.b(AppCompatSpinner.this).right;
+        int j = k;
+        if (k > m) {
+          j = m;
+        }
+        b(Math.max(j, i2 - n - i1));
+      }
+      else if (AppCompatSpinner.c(AppCompatSpinner.this) == -1)
+      {
+        b(i2 - n - i1);
+      }
+      else
+      {
+        b(AppCompatSpinner.c(AppCompatSpinner.this));
+      }
+      if (kc.a(AppCompatSpinner.this)) {
+        i += i2 - i1 - this.f;
+      } else {
+        i += n;
+      }
+      this.g = i;
+    }
+    
+    public final void a(ListAdapter paramListAdapter)
+    {
+      super.a(paramListAdapter);
+      this.b = paramListAdapter;
+    }
+    
+    public final void b()
+    {
+      boolean bool = this.q.isShowing();
+      a();
+      h();
+      super.b();
+      this.e.setChoiceMode(1);
+      int i = AppCompatSpinner.this.getSelectedItemPosition();
+      Object localObject = this.e;
+      if ((this.q.isShowing()) && (localObject != null))
+      {
+        ((jj)localObject).setListSelectionHidden(false);
+        ((jj)localObject).setSelection(i);
+        if (((jj)localObject).getChoiceMode() != 0) {
+          ((jj)localObject).setItemChecked(i, true);
+        }
+      }
+      if (bool) {
+        return;
+      }
+      localObject = AppCompatSpinner.this.getViewTreeObserver();
+      if (localObject != null)
+      {
+        final ViewTreeObserver.OnGlobalLayoutListener local2 = new ViewTreeObserver.OnGlobalLayoutListener()
+        {
+          public final void onGlobalLayout()
+          {
+            AppCompatSpinner.b localb = AppCompatSpinner.b.this;
+            AppCompatSpinner localAppCompatSpinner = localb.d;
+            int i;
+            if ((fo.s(localAppCompatSpinner)) && (localAppCompatSpinner.getGlobalVisibleRect(localb.c))) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            if (i == 0)
+            {
+              AppCompatSpinner.b.this.c();
+              return;
+            }
+            AppCompatSpinner.b.this.a();
+            AppCompatSpinner.b.a(AppCompatSpinner.b.this);
+          }
+        };
+        ((ViewTreeObserver)localObject).addOnGlobalLayoutListener(local2);
+        a(new PopupWindow.OnDismissListener()
+        {
+          public final void onDismiss()
+          {
+            ViewTreeObserver localViewTreeObserver = AppCompatSpinner.this.getViewTreeObserver();
+            if (localViewTreeObserver != null) {
+              localViewTreeObserver.removeGlobalOnLayoutListener(local2);
+            }
+          }
+        });
+      }
     }
   }
 }

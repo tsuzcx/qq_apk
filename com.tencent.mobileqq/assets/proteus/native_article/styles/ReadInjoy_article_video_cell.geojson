@@ -26,7 +26,6 @@
                     "value": "345"
                 },
                 "attributes": {
-                    "setFrameString:": "-1",
                     "setImageWithURLString:lineup:": [
                         "$articleImageUrl",
                         "$lineup"
@@ -49,8 +48,7 @@
                     "type":"relative",
                     "value":"50"
                 },
-                "attributes": { 
-                    "setFrameString:": "-1",
+                "attributes": {
                     "loadImageWithPath:": "$play_icon"
                 }
             }

@@ -27,14 +27,15 @@ public final class mobile_adv_report_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret_code, 0);
-    if (this.error_msg != null) {
-      paramJceOutputStream.write(this.error_msg, 1);
+    String str = this.error_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ADV_REPORT.mobile_adv_report_rsp
  * JD-Core Version:    0.7.0.1
  */

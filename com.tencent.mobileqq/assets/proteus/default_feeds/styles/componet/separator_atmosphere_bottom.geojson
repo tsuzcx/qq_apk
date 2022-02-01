@@ -1,0 +1,14 @@
+{
+    "view_type":"UIView",
+    "view_id":"id_separator_normal_bottom",
+    "default_visible":"YES",
+    "margin_left":"12",
+    "margin_top":"10",
+    "width":{
+        "type":"relative",
+        "value":"351"
+    },
+    "attributes":{
+        "setBackgroundColorString:":"#EEEEEE"
+    }
+}

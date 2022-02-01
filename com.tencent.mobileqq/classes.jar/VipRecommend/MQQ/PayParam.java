@@ -8,16 +8,16 @@ public final class PayParam
   extends JceStruct
 {
   public String app_id = "";
-  public int maxUpMonth;
+  public int maxUpMonth = 0;
   public String offerid = "";
-  public int openMode;
-  public int openMonth;
-  public int openServicePrice;
-  public int openType;
-  public int pay_item;
+  public int openMode = 0;
+  public int openMonth = 0;
+  public int openServicePrice = 0;
+  public int openType = 0;
+  public int pay_item = 0;
   public String product_id = "";
   public String product_type = "";
-  public int qq_product_id;
+  public int qq_product_id = 0;
   public String qq_product_name = "";
   public String serviceName = "";
   public String serviceType = "";
@@ -69,36 +69,43 @@ public final class PayParam
     paramJceOutputStream.write(this.openMode, 1);
     paramJceOutputStream.write(this.openMonth, 2);
     paramJceOutputStream.write(this.maxUpMonth, 3);
-    if (this.offerid != null) {
-      paramJceOutputStream.write(this.offerid, 4);
+    String str = this.offerid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.serviceType != null) {
-      paramJceOutputStream.write(this.serviceType, 5);
+    str = this.serviceType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.serviceName != null) {
-      paramJceOutputStream.write(this.serviceName, 6);
+    str = this.serviceName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.openType, 7);
     paramJceOutputStream.write(this.openServicePrice, 8);
-    if (this.app_id != null) {
-      paramJceOutputStream.write(this.app_id, 9);
+    str = this.app_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.product_id != null) {
-      paramJceOutputStream.write(this.product_id, 10);
+    str = this.product_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.product_type != null) {
-      paramJceOutputStream.write(this.product_type, 11);
+    str = this.product_type;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
     paramJceOutputStream.write(this.pay_item, 12);
     paramJceOutputStream.write(this.qq_product_id, 13);
-    if (this.qq_product_name != null) {
-      paramJceOutputStream.write(this.qq_product_name, 14);
+    str = this.qq_product_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VipRecommend.MQQ.PayParam
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@
         "layout_type":"layout_relative",
         "height":{
             "type":"relative",
-            "value":"46"
+            "value":"61"
         },
         "width":{
             "type":"relative",
@@ -16,6 +16,7 @@
                 "view_type":"UIView",
                 "view_id":"id_operate_bg",
                 "default_visible":"YES",
+                "margin_top":"3",
                 "height":{
                     "type":"match_parent"
                 },
@@ -27,20 +28,19 @@
                 }
             },
             {
-                "view_type": "UIView",
-                "view_id": "id_label_separator_line_top",
+                "view_type":"UIView",
+                "view_id":"id_label_separator_line_top",
                 "default_visible":"YES",
-                "margin_left": "0",
-                "margin_top": "0",
-                "height": {
-                    "type": "absolutely",
-                    "value": "0.5"
+                "margin_left":"0",
+                "margin_top":"3",
+                "height":{
+                    "type":"absolutely",
+                    "value":"0.5"
                 },
-                "width": {
-                    "type": "match_parent"
+                "width":{
+                    "type":"match_parent"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setBackgroundColorString:":"#E6E6E6"
                 }
             },
@@ -49,21 +49,31 @@
                 "view_id":"id_write_comment_layout",
                 "layout_type":"layout_relative",
                 "event_type":"cmd_write_comment_click",
-                "align_parent_center_vertical":"YES",
                 "default_visible":"YES",
                 "align_parent_left":"YES",
-                "margin_left":"18",
+                "margin_left":"16",
+                "margin_top":"15",
                 "height":{
                     "type":"relative",
-                    "value":"30"
+                    "value":"32"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"141"
+                    "value":"135"
                 },
                 "attributes":{
                     "setBackgroundColorString:":"#0D000000",
-                    "setCornerRadiusString:":"15"
+                    "setCornerRadiusString:":"15",
+                    "setDTElementID:withParams:":[
+                        "write_comment_button",
+                        {
+                            "rowkey":"$dt_rowkey",
+                            "content_type":"5",
+                            "dt_pgid":"1",
+                            "actionid":"click_write_comment",
+                            "click_type":"single"
+                        }
+                    ]
                 },
                 "subviews":[
                     {
@@ -71,17 +81,17 @@
                         "view_id":"id_write_comment",
                         "default_visible":"YES",
                         "align_parent_center_vertical":"YES",
-                        "margin_left":"6",
+                        "margin_left":"13",
                         "height":{
                             "type":"relative",
-                            "value":"24"
+                            "value":"14"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"24"
+                            "value":"14"
                         },
                         "attributes":{
-                            "loadImageWithPath:": "NativeArticleWriteComment"
+                            "loadImageWithPath:":"NativeArticleWriteComment"
                         }
                     },
                     {
@@ -100,129 +110,265 @@
                         "attributes":{
                             "setText:":"写评论...",
                             "setTextColorString:":"#66000000",
-                            "setFontSizeString:":"14"
+                            "setFontSizeString:":"12"
                         }
                     }
                 ]
             },
             {
-                "view_type":"UIButton",
-                "view_id":"id_comment",
-                "event_type":"cmd_comment_click",
+                "view_type":"UIView",
+                "view_id":"id_comment_layout",
+                "default_visible":"YES",
                 "right_of_view":"id_write_comment_layout",
-                "margin_left":"7",
-                "default_visible":"YES",
-                "align_parent_center_vertical":"YES",
-                "height":{
-                        "type":"relative",
-				        "value":"46"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"46"
-                },
-                "attributes":{
-                    "setImage:": "NativeArticleComment"
-                }
-            },
-            {
-                "view_type":"UILabel",
-                "view_id":"id_comment_count",
                 "event_type":"cmd_comment_click",
-                "above_of_view":"id_comment",
-                "right_of_view":"id_comment",
-                "padding_left":"3.5",
-                "padding_right":"3.5",
-                "margin_left":"-20",
-                "margin_bottom":"-20.5",
+                "direction":"vertical",
+                "margin_left":"20",
                 "height":{
-                    "type":"relative",
-                    "value":"11"
+                    "type":"match_parent"
                 },
                 "width":{
-                    "type":"wrap_content"
+                    "type":"relative",
+                    "value":"31"
                 },
-                "attributes":{
-                    "setText:":"$comment_count",
-                    "setTextColorString:":"$count_txt_color",
-                    "setBackgroundColorString:":"$count_bg_color",
-                    "setCornerRadiusString:":"5.5",
-                    "setTextAlignmentString:":"1",
-                    "setAndroidFontFilePath:iOSFontName:size:":[
-                        "",
-                        "PingFangSC-Medium",
-                        "10"
-                    ]
-                }
+                "subviews":[
+                    {
+                        "view_type":"UIButton",
+                        "view_id":"id_comment",
+                        "event_type":"cmd_comment_click",
+                        "default_visible":"YES",
+                        "margin_top":"11",
+                        "align_parent_center_horizontal":"YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "attributes":{
+                            "setImage:":"NativeArticleComment",
+                            "setDTElementID:withParams:":[
+                                "comment_button",
+                                {
+                                    "rowkey":"$dt_rowkey",
+                                    "content_type":"5",
+                                    "dt_pgid":"1",
+                                    "actionid":"click_comment",
+                                    "click_type":"single"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_operation_comment_txt",
+                        "default_visible":"YES",
+                        "align_parent_center_horizontal":"YES",
+                        "margin_top":"2",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"$comment_count",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
             },
             {
-                "view_type":"ReadInJoyLikeButton",
-                "view_id":"id_like",
-                "right_of_view":"id_comment",
-                "margin_left":"4",
-                "align_parent_center_vertical":"YES",
+                "view_type":"UIView",
+                "view_id":"id_like_layout",
+                "default_visible":"YES",
+                "right_of_view":"id_comment_layout",
                 "event_type":"cmd_like_click",
+                "direction":"vertical",
+                "margin_left":"20",
                 "height":{
-                        "type":"relative",
-				        "value":"46"
+                    "type":"match_parent"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"46"
+                    "value":"31"
                 },
-                "attributes":{
-                    "setImages:colors:direction:forStates:":[
-                        ["$like_normalstate_image","NativeArticleLikeEnable"],
-                        ["#000000","#000000"],
-                        ["0","0"],
-                        ["0","1"]
-                    ]
-                }
+                "subviews":[
+                    {
+                        "view_type":"ReadInJoyLikeButton",
+                        "view_id":"id_like",
+                        "margin_top":"11",
+                        "event_type":"cmd_like_click",
+                        "align_parent_center_horizontal":"YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "attributes":{
+                            "setImages:colors:direction:forStates:":[
+                                [
+                                    "$like_normalstate_image",
+                                    "NativeArticleLikeEnable"
+                                ],
+                                [
+                                    "#000000",
+                                    "#000000"
+                                ],
+                                [
+                                    "0",
+                                    "0"
+                                ],
+                                [
+                                    "0",
+                                    "1"
+                                ]
+                            ],
+                            "setDTElementID:withParams:":[
+                                "like_button",
+                                {
+                                    "rowkey":"$dt_rowkey",
+                                    "content_type":"5",
+                                    "dt_pgid":"1",
+                                    "actionid":"$dt_like_actionid",
+                                    "click_type":"single"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_operation_like_txt",
+                        "default_visible":"YES",
+                        "align_parent_center_horizontal":"YES",
+                        "margin_top":"2",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"$like_count",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
             },
             {
-                "view_type":"UIButton",
-                "view_id":"id_collect",
-                "right_of_view":"id_like",
-                "margin_left":"4",
+                "view_type":"UIView",
+                "view_id":"id_coin_layout",
                 "default_visible":"YES",
-                "event_type":"cmd_collect_click",
-                "align_parent_center_vertical":"YES",
+                "right_of_view":"id_like_layout",
+                "event_type":"cmd_coin_click",
+                "layout_type":"layout_relative",
+                "margin_left":"9",
                 "height":{
-                        "type":"relative",
-				        "value":"46"
+                    "type":"match_parent"
                 },
                 "width":{
                     "type":"relative",
                     "value":"46"
                 },
-                "attributes":{
-                    "setImages:colors:direction:forStates:":[
-                        ["$collect_normalstate_image","NativeArticleCollectionEnable"],
-                        ["#000000","#000000"],
-                        ["0","0"],
-                        ["0","1"]
-                    ]
-                }
+                "subviews":[
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_operation_coin",
+                        "align_parent_center_horizontal":"YES",
+                        "event_type":"cmd_coin_click",
+                        "default_visible":"YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"46"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"46"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:": "$coin_img_status"
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_operation_coin_txt",
+                        "default_visible":"YES",
+                        "align_parent_center_horizontal":"YES",
+                        "margin_top":"37",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"$coin_count",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
             },
             {
-                "view_type":"UIButton",
-                "view_id":"id_biu",
-                "right_of_view":"id_collect",
-                "margin_left":"4",
-                "event_type":"cmd_biu_click",
+                "view_type":"UIView",
+                "view_id":"id_share_layout",
                 "default_visible":"YES",
-                "align_parent_center_vertical":"YES",
+                "right_of_view":"id_coin_layout",
+                "event_type":"cmd_share_click",
+                "direction":"vertical",
+                "margin_left":"9",
                 "height":{
-                        "type":"relative",
-				        "value":"46"
+                    "type":"match_parent"
                 },
                 "width":{
                     "type":"relative",
-                    "value":"46"
+                    "value":"31"
                 },
-                "attributes":{
-                    "setImage:": "NativeArticleBiu"
-                }
+                "subviews":[
+                    {
+                        "view_type":"UIButton",
+                        "view_id":"id_share",
+                        "default_visible":"YES",
+                        "margin_top":"11",
+                        "event_type":"cmd_share_click",
+                        "align_parent_center_horizontal":"YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"24"
+                        },
+                        "attributes":{
+                            "setImage:":"share_bottom_icon"
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_operation_share_txt",
+                        "default_visible":"YES",
+                        "align_parent_center_horizontal":"YES",
+                        "margin_top":"2",
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "attributes":{
+                            "setText:":"$share_count",
+                            "setTextColorString:":"#444444",
+                            "setFontSizeString:":"10"
+                        }
+                    }
+                ]
             }
         ]
     }

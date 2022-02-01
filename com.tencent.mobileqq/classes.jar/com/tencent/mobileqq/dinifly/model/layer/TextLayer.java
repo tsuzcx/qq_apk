@@ -8,10 +8,9 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.util.LongSparseArray;
-import android.support.v4.util.SparseArrayCompat;
+import androidx.annotation.Nullable;
+import androidx.collection.LongSparseArray;
+import androidx.collection.SparseArrayCompat;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
@@ -20,6 +19,7 @@ import com.tencent.mobileqq.dinifly.animation.content.ContentGroup;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.animation.keyframe.TextKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.animation.keyframe.TransformKeyframeAnimation;
+import com.tencent.mobileqq.dinifly.animation.keyframe.ValueCallbackKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.model.DocumentData;
 import com.tencent.mobileqq.dinifly.model.DocumentData.Justification;
 import com.tencent.mobileqq.dinifly.model.Font;
@@ -37,13 +37,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequiresApi(api=16)
 public class TextLayer
   extends BaseLayer
 {
   private final LongSparseArray<String> codePointCache = new LongSparseArray();
   @Nullable
   private BaseKeyframeAnimation<Integer, Integer> colorAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<Integer, Integer> colorCallbackAnimation;
   private final LottieComposition composition;
   private final Map<FontCharacter, List<ContentGroup>> contentsForCharacter = new HashMap();
   private final Paint fillPaint = new TextLayer.1(this, 1);
@@ -53,12 +54,22 @@ public class TextLayer
   private final StringBuilder stringBuilder = new StringBuilder(2);
   @Nullable
   private BaseKeyframeAnimation<Integer, Integer> strokeColorAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<Integer, Integer> strokeColorCallbackAnimation;
   private final Paint strokePaint = new TextLayer.2(this, 1);
   @Nullable
   private BaseKeyframeAnimation<Float, Float> strokeWidthAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<Float, Float> strokeWidthCallbackAnimation;
   private final TextKeyframeAnimation textAnimation;
   @Nullable
+  private BaseKeyframeAnimation<Float, Float> textSizeAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<Float, Float> textSizeCallbackAnimation;
+  @Nullable
   private BaseKeyframeAnimation<Float, Float> trackingAnimation;
+  @Nullable
+  private BaseKeyframeAnimation<Float, Float> trackingCallbackAnimation;
   
   TextLayer(LottieDrawable paramLottieDrawable, Layer paramLayer)
   {
@@ -97,56 +108,57 @@ public class TextLayer
   
   private void applyJustification(DocumentData.Justification paramJustification, Canvas paramCanvas, float paramFloat)
   {
-    switch (TextLayer.3.$SwitchMap$com$tencent$mobileqq$dinifly$model$DocumentData$Justification[paramJustification.ordinal()])
+    int i = TextLayer.3.$SwitchMap$com$tencent$mobileqq$dinifly$model$DocumentData$Justification[paramJustification.ordinal()];
+    if (i != 1)
     {
-    case 1: 
-    default: 
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        paramCanvas.translate(-paramFloat / 2.0F, 0.0F);
+        return;
+      }
       paramCanvas.translate(-paramFloat, 0.0F);
-      return;
     }
-    paramCanvas.translate(-paramFloat / 2.0F, 0.0F);
   }
   
   private String codePointToString(String paramString, int paramInt)
   {
-    int i = paramString.codePointAt(paramInt);
-    int j = Character.charCount(i) + paramInt;
-    int k;
-    for (;;)
+    int j = paramString.codePointAt(paramInt);
+    int i = Character.charCount(j) + paramInt;
+    while (i < paramString.length())
     {
-      if (j < paramString.length())
-      {
-        k = paramString.codePointAt(j);
-        if (isModifier(k)) {}
+      int k = paramString.codePointAt(i);
+      if (!isModifier(k)) {
+        break;
       }
-      else
-      {
-        if (!this.codePointCache.containsKey(i)) {
-          break;
-        }
-        return (String)this.codePointCache.get(i);
-      }
-      j += Character.charCount(k);
-      i = i * 31 + k;
+      i += Character.charCount(k);
+      j = j * 31 + k;
+    }
+    LongSparseArray localLongSparseArray = this.codePointCache;
+    long l = j;
+    if (localLongSparseArray.containsKey(l)) {
+      return (String)this.codePointCache.get(l);
     }
     this.stringBuilder.setLength(0);
-    while (paramInt < j)
+    while (paramInt < i)
     {
-      k = paramString.codePointAt(paramInt);
-      this.stringBuilder.appendCodePoint(k);
-      paramInt += Character.charCount(k);
+      j = paramString.codePointAt(paramInt);
+      this.stringBuilder.appendCodePoint(j);
+      paramInt += Character.charCount(j);
     }
     paramString = this.stringBuilder.toString();
-    this.codePointCache.put(i, paramString);
+    this.codePointCache.put(l, paramString);
     return paramString;
   }
   
   private void drawCharacter(String paramString, Paint paramPaint, Canvas paramCanvas)
   {
-    if (paramPaint.getColor() == 0) {}
-    while ((paramPaint.getStyle() == Paint.Style.STROKE) && (paramPaint.getStrokeWidth() == 0.0F)) {
+    if (paramPaint.getColor() == 0) {
+      return;
+    }
+    if ((paramPaint.getStyle() == Paint.Style.STROKE) && (paramPaint.getStrokeWidth() == 0.0F)) {
       return;
     }
     paramCanvas.drawText(paramString, 0, paramString.length(), 0.0F, 0.0F, paramPaint);
@@ -156,12 +168,12 @@ public class TextLayer
   {
     paramFontCharacter = getContentsForCharacter(paramFontCharacter);
     int i = 0;
-    if (i < paramFontCharacter.size())
+    while (i < paramFontCharacter.size())
     {
       Path localPath = ((ContentGroup)paramFontCharacter.get(i)).getPath();
       localPath.computeBounds(this.rectF, false);
       this.matrix.set(paramMatrix);
-      this.matrix.preTranslate(0.0F, (float)-paramDocumentData.baselineShift * Utils.dpScale());
+      this.matrix.preTranslate(0.0F, -paramDocumentData.baselineShift * Utils.dpScale());
       this.matrix.preScale(paramFloat, paramFloat);
       localPath.transform(this.matrix);
       if (paramDocumentData.strokeOverFill)
@@ -169,13 +181,12 @@ public class TextLayer
         drawGlyph(localPath, this.fillPaint, paramCanvas);
         drawGlyph(localPath, this.strokePaint, paramCanvas);
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         drawGlyph(localPath, this.strokePaint, paramCanvas);
         drawGlyph(localPath, this.fillPaint, paramCanvas);
       }
+      i += 1;
     }
   }
   
@@ -194,35 +205,21 @@ public class TextLayer
   private void drawFontTextLine(String paramString, DocumentData paramDocumentData, Canvas paramCanvas, float paramFloat)
   {
     int i = 0;
-    int j;
-    float f2;
-    float f1;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
       String str = codePointToString(paramString, i);
-      j = str.length();
+      i += str.length();
       drawCharacterFromFont(str, paramDocumentData, paramCanvas);
-      f2 = this.fillPaint.measureText(str, 0, 1);
-      f1 = paramDocumentData.tracking / 10.0F;
-      if (this.trackingAnimation == null) {
-        break label109;
-      }
-      f1 = ((Float)this.trackingAnimation.getValue()).floatValue() + f1;
-    }
-    label109:
-    for (;;)
-    {
-      paramCanvas.translate(f1 * paramFloat + f2, 0.0F);
-      i = j + i;
-      break;
-      return;
+      paramCanvas.translate(this.fillPaint.measureText(str) + paramFloat, 0.0F);
     }
   }
   
   private void drawGlyph(Path paramPath, Paint paramPaint, Canvas paramCanvas)
   {
-    if (paramPaint.getColor() == 0) {}
-    while ((paramPaint.getStyle() == Paint.Style.STROKE) && (paramPaint.getStrokeWidth() == 0.0F)) {
+    if (paramPaint.getColor() == 0) {
+      return;
+    }
+    if ((paramPaint.getStyle() == Paint.Style.STROKE) && (paramPaint.getStrokeWidth() == 0.0F)) {
       return;
     }
     paramCanvas.drawPath(paramPath, paramPaint);
@@ -231,44 +228,55 @@ public class TextLayer
   private void drawGlyphTextLine(String paramString, DocumentData paramDocumentData, Matrix paramMatrix, Font paramFont, Canvas paramCanvas, float paramFloat1, float paramFloat2)
   {
     int i = 0;
-    float f2;
-    float f3;
-    float f1;
     while (i < paramString.length())
     {
       int j = FontCharacter.hashFor(paramString.charAt(i), paramFont.getFamily(), paramFont.getStyle());
-      FontCharacter localFontCharacter = (FontCharacter)this.composition.getCharacters().get(j);
-      if (localFontCharacter == null)
+      Object localObject = (FontCharacter)this.composition.getCharacters().get(j);
+      if (localObject != null)
       {
-        i += 1;
-      }
-      else
-      {
-        drawCharacterAsGlyph(localFontCharacter, paramMatrix, paramFloat2, paramDocumentData, paramCanvas);
-        f2 = (float)localFontCharacter.getWidth();
-        f3 = Utils.dpScale();
-        f1 = paramDocumentData.tracking / 10.0F;
-        if (this.trackingAnimation == null) {
-          break label152;
+        drawCharacterAsGlyph((FontCharacter)localObject, paramMatrix, paramFloat2, paramDocumentData, paramCanvas);
+        float f3 = (float)((FontCharacter)localObject).getWidth();
+        float f4 = Utils.dpScale();
+        float f2 = paramDocumentData.tracking / 10.0F;
+        localObject = this.trackingCallbackAnimation;
+        if (localObject != null) {}
+        for (float f1 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue();; f1 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue())
+        {
+          f1 = f2 + f1;
+          break;
+          localObject = this.trackingAnimation;
+          f1 = f2;
+          if (localObject == null) {
+            break;
+          }
         }
-        f1 = ((Float)this.trackingAnimation.getValue()).floatValue() + f1;
+        paramCanvas.translate(f3 * paramFloat2 * f4 * paramFloat1 + f1 * paramFloat1, 0.0F);
       }
-    }
-    label152:
-    for (;;)
-    {
-      paramCanvas.translate(f1 * paramFloat1 + f2 * paramFloat2 * f3 * paramFloat1, 0.0F);
-      break;
-      return;
+      i += 1;
     }
   }
   
   private void drawTextGlyphs(DocumentData paramDocumentData, Matrix paramMatrix, Font paramFont, Canvas paramCanvas)
   {
-    float f1 = (float)paramDocumentData.size / 100.0F;
+    Object localObject = this.textSizeCallbackAnimation;
+    float f1;
+    if (localObject != null)
+    {
+      f1 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue();
+    }
+    else
+    {
+      localObject = this.textSizeAnimation;
+      if (localObject != null) {
+        f1 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue();
+      } else {
+        f1 = paramDocumentData.size;
+      }
+    }
+    f1 /= 100.0F;
     float f2 = Utils.getScale(paramMatrix);
-    Object localObject = paramDocumentData.text;
-    float f3 = (float)paramDocumentData.lineHeight * Utils.dpScale();
+    localObject = paramDocumentData.text;
+    float f3 = paramDocumentData.lineHeight * Utils.dpScale();
     localObject = getTextLines((String)localObject);
     int j = ((List)localObject).size();
     int i = 0;
@@ -288,38 +296,65 @@ public class TextLayer
   
   private void drawTextWithFont(DocumentData paramDocumentData, Font paramFont, Matrix paramMatrix, Canvas paramCanvas)
   {
-    float f1 = Utils.getScale(paramMatrix);
+    Utils.getScale(paramMatrix);
     Typeface localTypeface = this.lottieDrawable.getTypeface(paramFont.getFamily(), paramFont.getStyle());
-    if (localTypeface == null) {}
-    for (;;)
-    {
+    if (localTypeface == null) {
       return;
-      String str = paramDocumentData.text;
-      TextDelegate localTextDelegate = this.lottieDrawable.getTextDelegate();
-      paramFont = str;
-      if (localTextDelegate != null) {
-        paramFont = localTextDelegate.getTextInternal(str);
+    }
+    paramMatrix = paramDocumentData.text;
+    TextDelegate localTextDelegate = this.lottieDrawable.getTextDelegate();
+    paramFont = paramMatrix;
+    if (localTextDelegate != null) {
+      paramFont = localTextDelegate.getTextInternal(paramMatrix);
+    }
+    this.fillPaint.setTypeface(localTypeface);
+    paramMatrix = this.textSizeCallbackAnimation;
+    if (paramMatrix != null)
+    {
+      f1 = ((Float)paramMatrix.getValue()).floatValue();
+    }
+    else
+    {
+      paramMatrix = this.textSizeAnimation;
+      if (paramMatrix != null) {
+        f1 = ((Float)paramMatrix.getValue()).floatValue();
+      } else {
+        f1 = paramDocumentData.size;
       }
-      this.fillPaint.setTypeface(localTypeface);
-      this.fillPaint.setTextSize((float)(paramDocumentData.size * Utils.dpScale()));
-      this.strokePaint.setTypeface(this.fillPaint.getTypeface());
-      this.strokePaint.setTextSize(this.fillPaint.getTextSize());
-      float f2 = (float)paramDocumentData.lineHeight;
-      f2 = Utils.dpScale() * f2;
-      paramFont = getTextLines(paramFont);
-      int j = paramFont.size();
-      int i = 0;
-      while (i < j)
-      {
-        str = (String)paramFont.get(i);
-        float f3 = this.strokePaint.measureText(str);
-        applyJustification(paramDocumentData.justification, paramCanvas, f3);
-        f3 = (j - 1) * f2 / 2.0F;
-        paramCanvas.translate(0.0F, i * f2 - f3);
-        drawFontTextLine(str, paramDocumentData, paramCanvas, f1);
-        paramCanvas.setMatrix(paramMatrix);
-        i += 1;
+    }
+    this.fillPaint.setTextSize(Utils.dpScale() * f1);
+    this.strokePaint.setTypeface(this.fillPaint.getTypeface());
+    this.strokePaint.setTextSize(this.fillPaint.getTextSize());
+    float f4 = paramDocumentData.lineHeight * Utils.dpScale();
+    float f3 = paramDocumentData.tracking / 10.0F;
+    paramMatrix = this.trackingCallbackAnimation;
+    if (paramMatrix != null) {}
+    for (float f2 = ((Float)paramMatrix.getValue()).floatValue();; f2 = ((Float)paramMatrix.getValue()).floatValue())
+    {
+      f2 = f3 + f2;
+      break;
+      paramMatrix = this.trackingAnimation;
+      f2 = f3;
+      if (paramMatrix == null) {
+        break;
       }
+    }
+    float f1 = f2 * Utils.dpScale() * f1 / 100.0F;
+    paramFont = getTextLines(paramFont);
+    int j = paramFont.size();
+    int i = 0;
+    while (i < j)
+    {
+      paramMatrix = (String)paramFont.get(i);
+      f2 = this.strokePaint.measureText(paramMatrix);
+      f3 = paramMatrix.length() - 1;
+      paramCanvas.save();
+      applyJustification(paramDocumentData.justification, paramCanvas, f2 + f3 * f1);
+      f2 = (j - 1) * f4 / 2.0F;
+      paramCanvas.translate(0.0F, i * f4 - f2);
+      drawFontTextLine(paramMatrix, paramDocumentData, paramCanvas, f1);
+      paramCanvas.restore();
+      i += 1;
     }
   }
   
@@ -346,17 +381,24 @@ public class TextLayer
   {
     float f = 0.0F;
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
       int j = FontCharacter.hashFor(paramString.charAt(i), paramFont.getFamily(), paramFont.getStyle());
       FontCharacter localFontCharacter = (FontCharacter)this.composition.getCharacters().get(j);
-      if (localFontCharacter == null) {}
-      for (;;)
+      if (localFontCharacter != null)
       {
-        i += 1;
-        break;
-        f = (float)(f + localFontCharacter.getWidth() * paramFloat1 * Utils.dpScale() * paramFloat2);
+        double d1 = f;
+        double d2 = localFontCharacter.getWidth();
+        double d3 = paramFloat1;
+        Double.isNaN(d3);
+        double d4 = Utils.dpScale();
+        Double.isNaN(d4);
+        double d5 = paramFloat2;
+        Double.isNaN(d5);
+        Double.isNaN(d1);
+        f = (float)(d1 + d2 * d3 * d4 * d5);
       }
+      i += 1;
     }
     return f;
   }
@@ -374,31 +416,92 @@ public class TextLayer
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
     super.addValueCallback(paramT, paramLottieValueCallback);
-    if ((paramT == LottieProperty.COLOR) && (this.colorAnimation != null)) {
-      this.colorAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    do
+    if (paramT == LottieProperty.COLOR)
     {
+      paramT = this.colorCallbackAnimation;
+      if (paramT != null) {
+        removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
+      {
+        this.colorCallbackAnimation = null;
+        return;
+      }
+      this.colorCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.colorCallbackAnimation.addUpdateListener(this);
+      addAnimation(this.colorCallbackAnimation);
       return;
-      if ((paramT == LottieProperty.STROKE_COLOR) && (this.strokeColorAnimation != null))
+    }
+    if (paramT == LottieProperty.STROKE_COLOR)
+    {
+      paramT = this.strokeColorCallbackAnimation;
+      if (paramT != null) {
+        removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
       {
-        this.strokeColorAnimation.setValueCallback(paramLottieValueCallback);
+        this.strokeColorCallbackAnimation = null;
         return;
       }
-      if ((paramT == LottieProperty.STROKE_WIDTH) && (this.strokeWidthAnimation != null))
+      this.strokeColorCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.strokeColorCallbackAnimation.addUpdateListener(this);
+      addAnimation(this.strokeColorCallbackAnimation);
+      return;
+    }
+    if (paramT == LottieProperty.STROKE_WIDTH)
+    {
+      paramT = this.strokeWidthCallbackAnimation;
+      if (paramT != null) {
+        removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
       {
-        this.strokeWidthAnimation.setValueCallback(paramLottieValueCallback);
+        this.strokeWidthCallbackAnimation = null;
         return;
       }
-    } while ((paramT != LottieProperty.TEXT_TRACKING) || (this.trackingAnimation == null));
-    this.trackingAnimation.setValueCallback(paramLottieValueCallback);
+      this.strokeWidthCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.strokeWidthCallbackAnimation.addUpdateListener(this);
+      addAnimation(this.strokeWidthCallbackAnimation);
+      return;
+    }
+    if (paramT == LottieProperty.TEXT_TRACKING)
+    {
+      paramT = this.trackingCallbackAnimation;
+      if (paramT != null) {
+        removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
+      {
+        this.trackingCallbackAnimation = null;
+        return;
+      }
+      this.trackingCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.trackingCallbackAnimation.addUpdateListener(this);
+      addAnimation(this.trackingCallbackAnimation);
+      return;
+    }
+    if (paramT == LottieProperty.TEXT_SIZE)
+    {
+      paramT = this.textSizeCallbackAnimation;
+      if (paramT != null) {
+        removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
+      {
+        this.textSizeCallbackAnimation = null;
+        return;
+      }
+      this.textSizeCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.textSizeCallbackAnimation.addUpdateListener(this);
+      addAnimation(this.textSizeCallbackAnimation);
+    }
   }
   
   void drawLayer(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     paramCanvas.save();
     if (!this.lottieDrawable.useTextGlyphs()) {
-      paramCanvas.setMatrix(paramMatrix);
+      paramCanvas.concat(paramMatrix);
     }
     DocumentData localDocumentData = (DocumentData)this.textAnimation.getValue();
     Font localFont = (Font)this.composition.getFonts().get(localDocumentData.fontName);
@@ -407,51 +510,66 @@ public class TextLayer
       paramCanvas.restore();
       return;
     }
-    if (this.colorAnimation != null)
+    BaseKeyframeAnimation localBaseKeyframeAnimation = this.colorCallbackAnimation;
+    if (localBaseKeyframeAnimation != null)
     {
-      this.fillPaint.setColor(((Integer)this.colorAnimation.getValue()).intValue());
-      if (this.strokeColorAnimation == null) {
-        break label223;
-      }
-      this.strokePaint.setColor(((Integer)this.strokeColorAnimation.getValue()).intValue());
-      label118:
-      if (this.transform.getOpacity() != null) {
-        break label238;
-      }
-      paramInt = 100;
-      label131:
-      paramInt = paramInt * 255 / 100;
-      this.fillPaint.setAlpha(paramInt);
-      this.strokePaint.setAlpha(paramInt);
-      if (this.strokeWidthAnimation == null) {
-        break label258;
-      }
-      this.strokePaint.setStrokeWidth(((Float)this.strokeWidthAnimation.getValue()).floatValue());
-      label183:
-      if (!this.lottieDrawable.useTextGlyphs()) {
-        break label289;
-      }
-      drawTextGlyphs(localDocumentData, paramMatrix, localFont, paramCanvas);
+      this.fillPaint.setColor(((Integer)localBaseKeyframeAnimation.getValue()).intValue());
     }
-    for (;;)
+    else
     {
-      paramCanvas.restore();
-      return;
-      this.fillPaint.setColor(localDocumentData.color);
-      break;
-      label223:
-      this.strokePaint.setColor(localDocumentData.strokeColor);
-      break label118;
-      label238:
+      localBaseKeyframeAnimation = this.colorAnimation;
+      if (localBaseKeyframeAnimation != null) {
+        this.fillPaint.setColor(((Integer)localBaseKeyframeAnimation.getValue()).intValue());
+      } else {
+        this.fillPaint.setColor(localDocumentData.color);
+      }
+    }
+    localBaseKeyframeAnimation = this.strokeColorCallbackAnimation;
+    if (localBaseKeyframeAnimation != null)
+    {
+      this.strokePaint.setColor(((Integer)localBaseKeyframeAnimation.getValue()).intValue());
+    }
+    else
+    {
+      localBaseKeyframeAnimation = this.strokeColorAnimation;
+      if (localBaseKeyframeAnimation != null) {
+        this.strokePaint.setColor(((Integer)localBaseKeyframeAnimation.getValue()).intValue());
+      } else {
+        this.strokePaint.setColor(localDocumentData.strokeColor);
+      }
+    }
+    if (this.transform.getOpacity() == null) {
+      paramInt = 100;
+    } else {
       paramInt = ((Integer)this.transform.getOpacity().getValue()).intValue();
-      break label131;
-      label258:
-      float f = Utils.getScale(paramMatrix);
-      this.strokePaint.setStrokeWidth((float)(localDocumentData.strokeWidth * Utils.dpScale() * f));
-      break label183;
-      label289:
+    }
+    paramInt = paramInt * 255 / 100;
+    this.fillPaint.setAlpha(paramInt);
+    this.strokePaint.setAlpha(paramInt);
+    localBaseKeyframeAnimation = this.strokeWidthCallbackAnimation;
+    if (localBaseKeyframeAnimation != null)
+    {
+      this.strokePaint.setStrokeWidth(((Float)localBaseKeyframeAnimation.getValue()).floatValue());
+    }
+    else
+    {
+      localBaseKeyframeAnimation = this.strokeWidthAnimation;
+      if (localBaseKeyframeAnimation != null)
+      {
+        this.strokePaint.setStrokeWidth(((Float)localBaseKeyframeAnimation.getValue()).floatValue());
+      }
+      else
+      {
+        float f = Utils.getScale(paramMatrix);
+        this.strokePaint.setStrokeWidth(localDocumentData.strokeWidth * Utils.dpScale() * f);
+      }
+    }
+    if (this.lottieDrawable.useTextGlyphs()) {
+      drawTextGlyphs(localDocumentData, paramMatrix, localFont, paramCanvas);
+    } else {
       drawTextWithFont(localDocumentData, localFont, paramMatrix, paramCanvas);
     }
+    paramCanvas.restore();
   }
   
   public void getBounds(RectF paramRectF, Matrix paramMatrix, boolean paramBoolean)

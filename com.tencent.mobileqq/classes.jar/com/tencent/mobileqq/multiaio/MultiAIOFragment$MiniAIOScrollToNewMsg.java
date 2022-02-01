@@ -7,9 +7,9 @@ import com.tencent.qphone.base.util.QLog;
 class MultiAIOFragment$MiniAIOScrollToNewMsg
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  private int a;
   private int b;
+  private boolean c;
   
   private MultiAIOFragment$MiniAIOScrollToNewMsg(MultiAIOFragment paramMultiAIOFragment) {}
   
@@ -17,12 +17,19 @@ class MultiAIOFragment$MiniAIOScrollToNewMsg
   {
     if (this.b != paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAioFragment", 2, "setPosition() from = [" + this.b + "], to = [" + paramInt + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPosition() from = [");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append("], to = [");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("]");
+        QLog.d("MultiAioFragment", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Int = this.b;
+      this.a = this.b;
       this.b = paramInt;
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
     }
   }
   
@@ -31,41 +38,49 @@ class MultiAIOFragment$MiniAIOScrollToNewMsg
     if (QLog.isColorLevel()) {
       QLog.d("MultiAioFragment", 2, "run() called MiniAIOScrollToNewMsg");
     }
-    MultiAIOFragment.a(this.this$0).b(this.b);
-    MultiAIOFragment.a(this.this$0).b();
-    if ((this.jdField_a_of_type_Int != this.b) && (this.jdField_a_of_type_Boolean) && (MultiAIOFragment.b(this.this$0) != null))
+    MultiAIOFragment.i(this.this$0).b(this.b);
+    MultiAIOFragment.c(this.this$0).c();
+    if ((this.a != this.b) && (this.c) && (MultiAIOFragment.j(this.this$0) != null))
     {
-      if (!MultiAIOFragment.b(this.this$0).equals(MultiAIOFragment.a(this.this$0))) {
-        break label159;
+      StringBuilder localStringBuilder;
+      if (MultiAIOFragment.j(this.this$0).equals(MultiAIOFragment.d(this.this$0)))
+      {
+        MultiAIOFragment.a("0X8009F7E", 1);
       }
-      MultiAIOFragment.a("0X8009F7E", 1);
-    }
-    label159:
-    while (!MultiAIOFragment.b(this.this$0).equals(MultiAIOFragment.a(this.this$0)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAioFragment", 2, "run() MiniAIOScrollToNewMsg pageChanged from = " + this.jdField_a_of_type_Int + " to = " + this.b + ", view = " + MultiAIOFragment.b(this.this$0));
+      else if (MultiAIOFragment.j(this.this$0).equals(MultiAIOFragment.c(this.this$0)))
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("run() MiniAIOScrollToNewMsg mClickAvatarTab = ");
+          localStringBuilder.append(MultiAIOFragment.k(this.this$0));
+          QLog.d("MultiAioFragment", 2, localStringBuilder.toString());
+        }
+        if (MultiAIOFragment.k(this.this$0)) {
+          MultiAIOFragment.a("0X8009F7E", 3);
+        } else {
+          MultiAIOFragment.a("0X8009F7E", 2);
+        }
+        MultiAIOFragment.a(this.this$0, false);
       }
-      this.jdField_a_of_type_Boolean = false;
-      return;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("run() MiniAIOScrollToNewMsg pageChanged from = ");
+        localStringBuilder.append(this.a);
+        localStringBuilder.append(" to = ");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(", view = ");
+        localStringBuilder.append(MultiAIOFragment.j(this.this$0));
+        QLog.d("MultiAioFragment", 2, localStringBuilder.toString());
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "run() MiniAIOScrollToNewMsg mClickAvatarTab = " + MultiAIOFragment.a(this.this$0));
-    }
-    if (MultiAIOFragment.a(this.this$0)) {
-      MultiAIOFragment.a("0X8009F7E", 3);
-    }
-    for (;;)
-    {
-      MultiAIOFragment.a(this.this$0, false);
-      break;
-      MultiAIOFragment.a("0X8009F7E", 2);
-    }
+    this.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.MiniAIOScrollToNewMsg
  * JD-Core Version:    0.7.0.1
  */

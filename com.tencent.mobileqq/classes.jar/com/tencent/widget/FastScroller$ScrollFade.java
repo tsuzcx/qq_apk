@@ -5,48 +5,52 @@ import android.os.SystemClock;
 public class FastScroller$ScrollFade
   implements Runnable
 {
-  long a;
-  long b;
+  static final int ALPHA_MAX = 208;
+  static final long FADE_DURATION = 200L;
+  long mFadeDuration;
+  long mStartTime;
   
   public FastScroller$ScrollFade(FastScroller paramFastScroller) {}
   
-  int a()
+  int getAlpha()
   {
-    if (this.this$0.b() != 4) {
+    if (this.this$0.getState() != 4) {
       return 208;
     }
-    long l = SystemClock.uptimeMillis();
-    if (l > this.a + this.b) {
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.mStartTime;
+    long l3 = this.mFadeDuration;
+    if (l1 > l2 + l3) {
       return 0;
     }
-    return (int)(208L - (l - this.a) * 208L / this.b);
-  }
-  
-  void a()
-  {
-    this.b = 200L;
-    this.a = SystemClock.uptimeMillis();
-    this.this$0.b(4);
+    return (int)(208L - (l1 - l2) * 208L / l3);
   }
   
   public void run()
   {
-    if (this.this$0.b() != 4)
+    if (this.this$0.getState() != 4)
     {
-      a();
+      startFade();
       return;
     }
-    if (a() > 0)
+    if (getAlpha() > 0)
     {
-      this.this$0.a.invalidate();
+      this.this$0.mList.invalidate();
       return;
     }
-    this.this$0.b(0);
+    this.this$0.setState(0);
+  }
+  
+  void startFade()
+  {
+    this.mFadeDuration = 200L;
+    this.mStartTime = SystemClock.uptimeMillis();
+    this.this$0.setState(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.FastScroller.ScrollFade
  * JD-Core Version:    0.7.0.1
  */

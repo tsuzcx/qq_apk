@@ -30,9 +30,9 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareManager;
-import fzt;
+import fzs;
+import fzu;
 import fzv;
-import fzw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -213,13 +213,13 @@ public class QQApiPlugin
       if (("2".equals(localObject3)) || ("3".equals(localObject3)))
       {
         localObject1 = new HashMap(1);
-        localObject2 = new fzt(this, (Map)localObject1, str3, (String)localObject2, str1, str2, (String)localObject3, str4);
+        localObject2 = new fzs(this, (Map)localObject1, str3, (String)localObject2, str1, str2, (String)localObject3, str4);
         if (TextUtils.isEmpty(paramString))
         {
           ((Runnable)localObject2).run();
           return;
         }
-        ThreadManager.a(new fzv(this, paramString, (Map)localObject1, (Runnable)localObject2));
+        ThreadManager.a(new fzu(this, paramString, (Map)localObject1, (Runnable)localObject2));
         return;
       }
       localObject3 = new Intent();
@@ -249,7 +249,7 @@ public class QQApiPlugin
       if (localJSONObject.has("report")) {
         ((Intent)localObject3).putExtra("report", localJSONObject.getString("report"));
       }
-      ((Intent)localObject3).putExtra("openerProc", MobileQQ.getMobileQQ().getProcessName());
+      ((Intent)localObject3).putExtra("openerProc", MobileQQ.getMobileQQ().getProcessNames());
       ((Intent)localObject3).putExtra("k_back", localJSONObject.optBoolean("back", false));
       l = localJSONObject.optLong("appid", 0L);
       if (l <= 0L) {
@@ -271,7 +271,7 @@ public class QQApiPlugin
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       ((Intent)localObject3).putExtra("struct_share_key_source_name", Long.toString(l));
-      Share.a(paramString, this.jdField_a_of_type_AndroidContentContext, paramString.getAccount(), l, 3000L, new fzw(this, (Intent)localObject3));
+      Share.a(paramString, this.jdField_a_of_type_AndroidContentContext, paramString.getAccount(), l, 3000L, new fzv(this, (Intent)localObject3));
       return;
       int j = localJSONObject.optInt("req_type", 1);
       i = j;
@@ -395,7 +395,7 @@ public class QQApiPlugin
         if (paramString.has("report")) {
           localIntent.putExtra("report", paramString.getString("report"));
         }
-        localIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getProcessName());
+        localIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getProcessNames());
         startActivityForResult(localIntent, (byte)1);
         return;
       }

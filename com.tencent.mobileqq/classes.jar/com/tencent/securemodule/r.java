@@ -21,16 +21,6 @@ public final class r
   public k h = null;
   public String i = "";
   
-  static
-  {
-    if (!r.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      l = bool;
-      return;
-    }
-  }
-  
   public r()
   {
     a(this.a);
@@ -91,18 +81,20 @@ public final class r
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (l) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (l) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public void d(String paramString)
@@ -114,13 +106,48 @@ public final class r
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (r)paramObject;
-    } while ((!JceUtil.equals(this.a, paramObject.a)) || (!JceUtil.equals(this.b, paramObject.b)) || (!JceUtil.equals(this.c, paramObject.c)) || (!JceUtil.equals(this.d, paramObject.d)) || (!JceUtil.equals(this.e, paramObject.e)) || (!JceUtil.equals(this.f, paramObject.f)) || (!JceUtil.equals(this.g, paramObject.g)) || (!JceUtil.equals(this.h, paramObject.h)) || (!JceUtil.equals(this.i, paramObject.i)));
-    return true;
+    }
+    paramObject = (r)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.a, paramObject.a))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.b, paramObject.b))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.c, paramObject.c))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.d, paramObject.d))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.e, paramObject.e))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.f, paramObject.f))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.g, paramObject.g))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.h, paramObject.h))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.i, paramObject.i)) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -159,28 +186,33 @@ public final class r
   {
     paramJceOutputStream.write(this.a, 0);
     paramJceOutputStream.write(this.b, 1);
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    Object localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.d, 3);
     paramJceOutputStream.write(this.e, 4);
-    if (this.f != null) {
-      paramJceOutputStream.write(this.f, 5);
+    localObject = this.f;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 6);
+    localObject = this.g;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.h != null) {
-      paramJceOutputStream.write(this.h, 7);
+    localObject = this.h;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.i != null) {
-      paramJceOutputStream.write(this.i, 8);
+    localObject = this.i;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.r
  * JD-Core Version:    0.7.0.1
  */

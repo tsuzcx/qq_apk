@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/ay9" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ky3" android:background="@drawable/b4w" android:paddingLeft="@dimen/ay_" android:paddingTop="@dimen/ay6" android:paddingRight="@dimen/ay_" android:paddingBottom="@dimen/ay6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fls" android:background="@drawable/b4w" android:layout_width="130.0dip" android:layout_height="130.0dip" android:layout_centerInParent="true">
+        <ImageView android:id="@id/f5n" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="21.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/ay9" android:textColor="@color/alf" android:id="@id/kj6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" />
+        <com.tencent.xweb.extension.video.VideoDotPercentIndicator android:id="@id/i8e" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ay6" />
+    </LinearLayout>
+</RelativeLayout>

@@ -28,10 +28,12 @@ public final class a
   
   public final void addNewTask(DownloaderTask paramDownloaderTask)
   {
-    if (!(paramDownloaderTask instanceof i)) {
-      throw new RuntimeException("DownloaderTask should be created by Downloader.createNewTask");
+    if ((paramDownloaderTask instanceof i))
+    {
+      b.a().a(paramDownloaderTask);
+      return;
     }
-    b.a().a(paramDownloaderTask);
+    throw new RuntimeException("DownloaderTask should be created by Downloader.createNewTask");
   }
   
   public final DownloaderTask createNewTask(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, DownloaderTaskListener paramDownloaderTaskListener)
@@ -59,29 +61,21 @@ public final class a
   
   public final DownloaderTask createNewTask(String paramString1, String paramString2, String paramString3, DownloaderTaskListener paramDownloaderTaskListener, long paramLong, String paramString4)
   {
-    String str = "";
-    if (TextUtils.isEmpty(paramString1))
-    {
+    String str;
+    if (TextUtils.isEmpty(paramString1)) {
       str = "url is empty.";
-      if (!com.tencent.hlyyb.common.b.b.a(paramString2)) {
-        break label84;
-      }
+    } else if (paramDownloaderTaskListener == null) {
+      str = "listener is null.";
+    } else {
+      str = "";
+    }
+    if (com.tencent.hlyyb.common.b.b.a(paramString2)) {
       paramString2 = com.tencent.hlyyb.downloader.a.a.b();
     }
-    label84:
-    for (;;)
-    {
-      if (!"".equals(str))
-      {
-        throw new HalleyException(str);
-        if (paramDownloaderTaskListener != null) {
-          break;
-        }
-        str = "listener is null.";
-        break;
-      }
+    if ("".equals(str)) {
       return new i(new c(paramString1, paramLong), paramString2, paramString3, paramDownloaderTaskListener, paramLong, paramString4);
     }
+    throw new HalleyException(str);
   }
   
   public final void deleteTask(DownloaderTask paramDownloaderTask, boolean paramBoolean)
@@ -198,7 +192,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -24,9 +24,9 @@ import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
-import gkr;
+import gkq;
+import gkt;
 import gku;
-import gkv;
 import java.io.File;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -37,9 +37,9 @@ public class StructMsgForAudioShare
   extends AbsShareMsg
   implements QQPlayerService.QQPlayerCallback
 {
-  private static View.OnClickListener a = new gku();
+  private static View.OnClickListener a = new gkt();
   private WeakReference mCoverImage;
-  private View.OnClickListener musicShareCoverClikListener = new gkv(this);
+  private View.OnClickListener musicShareCoverClikListener = new gku(this);
   
   StructMsgForAudioShare()
   {
@@ -348,31 +348,31 @@ public class StructMsgForAudioShare
     this.mCompatibleText = paramObjectInput.readUTF();
   }
   
-  protected void toContentXml(gkr paramgkr)
+  protected void toContentXml(gkq paramgkq)
   {
-    paramgkr.startTag(null, "item");
-    paramgkr.attribute(null, "layout", String.valueOf(this.mContentLayout));
-    paramgkr.startTag(null, "audio");
+    paramgkq.startTag(null, "item");
+    paramgkq.attribute(null, "layout", String.valueOf(this.mContentLayout));
+    paramgkq.startTag(null, "audio");
     if (this.mContentCover == null)
     {
       str = "";
-      paramgkr.attribute(null, "cover", str);
+      paramgkq.attribute(null, "cover", str);
       if (this.mContentSrc != null) {
         break label173;
       }
       str = "";
       label66:
-      paramgkr.attribute(null, "src", str);
-      paramgkr.endTag(null, "audio");
-      paramgkr.startTag(null, "title");
+      paramgkq.attribute(null, "src", str);
+      paramgkq.endTag(null, "audio");
+      paramgkq.startTag(null, "title");
       if (this.mContentTitle != null) {
         break label181;
       }
       str = "";
       label105:
-      paramgkr.text(str);
-      paramgkr.endTag(null, "title");
-      paramgkr.startTag(null, "summary");
+      paramgkq.text(str);
+      paramgkq.endTag(null, "title");
+      paramgkq.startTag(null, "summary");
       if (this.mContentSummary != null) {
         break label189;
       }
@@ -382,9 +382,9 @@ public class StructMsgForAudioShare
     label189:
     for (String str = "";; str = this.mContentSummary)
     {
-      paramgkr.text(str);
-      paramgkr.endTag(null, "summary");
-      paramgkr.endTag(null, "item");
+      paramgkq.text(str);
+      paramgkq.endTag(null, "summary");
+      paramgkq.endTag(null, "item");
       return;
       str = this.mContentCover;
       break;

@@ -12,73 +12,77 @@ public final class FriendInfo
   static int cache_eNetworkType;
   static VipBaseInfo cache_oVipInfo;
   static byte[] cache_vecCardID;
+  static byte[] cache_vecExtOnlineBusinessInfo;
   static byte[] cache_vecExtSnsFrdData;
   static byte[] cache_vecIMGroupID = (byte[])new byte[1];
   static byte[] cache_vecIntimateInfo;
   static byte[] cache_vecMSFGroupID;
   static byte[] cache_vecMusicInfo;
   static byte[] cache_vecMutualMarkData;
+  static byte[] cache_vecPoiInfo;
   static byte[] cache_vecRing;
-  public byte cApolloFlag;
-  public byte cCentiShow3DFlag;
-  public byte cKingOfGloryFlag;
-  public byte cNetwork;
-  public byte cNewLoverDiamondFlag;
-  public byte cOlympicTorch;
-  public byte cSex;
-  public byte cShowNameplate;
-  public byte cSpecialFlag;
-  public byte detalStatusFlag;
+  public byte cApolloFlag = 0;
+  public byte cCentiShow3DFlag = 0;
+  public byte cKingOfGloryFlag = 0;
+  public byte cNetwork = 0;
+  public byte cNewLoverDiamondFlag = 0;
+  public byte cOlympicTorch = 0;
+  public byte cSex = 0;
+  public byte cShowNameplate = 0;
+  public byte cSpecialFlag = 0;
+  public byte detalStatusFlag = 0;
   public int eIconType = 0;
   public int eNetworkType = 0;
-  public short faceId;
-  public long friendUin;
-  public byte groupId;
-  public int iBatteryStatus;
-  public int iTermType;
-  public byte isIphoneOnline;
-  public byte isMqqOnLine;
-  public byte isRemark;
-  public byte memberLevel;
+  public short faceId = 0;
+  public long friendUin = 0L;
+  public byte groupId = 0;
+  public int iBatteryStatus = 0;
+  public int iTermType = 0;
+  public byte isIphoneOnline = 0;
+  public byte isMqqOnLine = 0;
+  public byte isRemark = 0;
+  public byte memberLevel = 0;
   public String nick = "";
-  public VipBaseInfo oVipInfo;
+  public VipBaseInfo oVipInfo = null;
   public String remark = "";
   public String sDOVId = "";
   public String sShowName = "";
-  public byte sqqOnLineState;
-  public byte sqqOnLineStateV2;
-  public byte sqqtype;
+  public byte sqqOnLineState = 0;
+  public byte sqqOnLineStateV2 = 0;
+  public byte sqqtype = 0;
   public byte status = 20;
   public String strEimId = "";
   public String strEimMobile = "";
   public String strMasterUin = "";
   public String strTermDesc = "";
-  public long uAbiFlag;
-  public long uApolloSignTime;
-  public long uApolloTimestamp;
-  public long uBothFlag;
-  public long uColorRing;
-  public long uExtOnlineStatus;
-  public long uFaceStoreId;
-  public long uFontEffect;
-  public long uFounderFont;
-  public long uGameAppid;
-  public long uGameLastLoginTime;
-  public long uLastMedalUpdateTime;
-  public long uLaviUin;
-  public long uTagUpdateTime;
-  public long uVipFont;
-  public long ulBitSet;
-  public long ulFaceAddonId;
-  public long ulKingOfGloryRank;
-  public byte[] vecCardID;
-  public byte[] vecExtSnsFrdData;
-  public byte[] vecIMGroupID;
-  public byte[] vecIntimateInfo;
-  public byte[] vecMSFGroupID;
-  public byte[] vecMusicInfo;
-  public byte[] vecMutualMarkData;
-  public byte[] vecRing;
+  public long uAbiFlag = 0L;
+  public long uApolloSignTime = 0L;
+  public long uApolloTimestamp = 0L;
+  public long uBothFlag = 0L;
+  public long uColorRing = 0L;
+  public long uExtOnlineStatus = 0L;
+  public long uFaceStoreId = 0L;
+  public long uFontEffect = 0L;
+  public long uFounderFont = 0L;
+  public long uGameAppid = 0L;
+  public long uGameLastLoginTime = 0L;
+  public long uLastMedalUpdateTime = 0L;
+  public long uLaviUin = 0L;
+  public long uTagUpdateTime = 0L;
+  public long uVipFont = 0L;
+  public long ulBitSet = 0L;
+  public long ulFaceAddonId = 0L;
+  public long ulKingOfGloryRank = 0L;
+  public byte[] vecCardID = null;
+  public byte[] vecExtOnlineBusinessInfo = null;
+  public byte[] vecExtSnsFrdData = null;
+  public byte[] vecIMGroupID = null;
+  public byte[] vecIntimateInfo = null;
+  public byte[] vecMSFGroupID = null;
+  public byte[] vecMusicInfo = null;
+  public byte[] vecMutualMarkData = null;
+  public byte[] vecPoiInfo = null;
+  public byte[] vecRing = null;
   
   static
   {
@@ -100,11 +104,15 @@ public final class FriendInfo
     ((byte[])cache_vecMutualMarkData)[0] = 0;
     cache_vecMusicInfo = (byte[])new byte[1];
     ((byte[])cache_vecMusicInfo)[0] = 0;
+    cache_vecPoiInfo = (byte[])new byte[1];
+    ((byte[])cache_vecPoiInfo)[0] = 0;
+    cache_vecExtOnlineBusinessInfo = (byte[])new byte[1];
+    ((byte[])cache_vecExtOnlineBusinessInfo)[0] = 0;
   }
   
   public FriendInfo() {}
   
-  public FriendInfo(long paramLong1, byte paramByte1, short paramShort, String paramString1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, byte paramByte7, byte paramByte8, byte paramByte9, String paramString2, byte paramByte10, String paramString3, byte paramByte11, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, VipBaseInfo paramVipBaseInfo, byte paramByte12, byte[] paramArrayOfByte3, long paramLong2, long paramLong3, int paramInt2, long paramLong4, int paramInt3, String paramString4, long paramLong5, byte paramByte13, long paramLong6, byte paramByte14, long paramLong7, String paramString5, String paramString6, byte paramByte15, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, byte[] paramArrayOfByte4, long paramLong13, byte paramByte16, long paramLong14, String paramString7, long paramLong15, long paramLong16, long paramLong17, String paramString8, long paramLong18, byte paramByte17, byte[] paramArrayOfByte5, byte paramByte18, byte paramByte19, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, long paramLong19, int paramInt4, byte[] paramArrayOfByte8)
+  public FriendInfo(long paramLong1, byte paramByte1, short paramShort, String paramString1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, byte paramByte7, byte paramByte8, byte paramByte9, String paramString2, byte paramByte10, String paramString3, byte paramByte11, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, VipBaseInfo paramVipBaseInfo, byte paramByte12, byte[] paramArrayOfByte3, long paramLong2, long paramLong3, int paramInt2, long paramLong4, int paramInt3, String paramString4, long paramLong5, byte paramByte13, long paramLong6, byte paramByte14, long paramLong7, String paramString5, String paramString6, byte paramByte15, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, byte[] paramArrayOfByte4, long paramLong13, byte paramByte16, long paramLong14, String paramString7, long paramLong15, long paramLong16, long paramLong17, String paramString8, long paramLong18, byte paramByte17, byte[] paramArrayOfByte5, byte paramByte18, byte paramByte19, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, long paramLong19, int paramInt4, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10)
   {
     this.friendUin = paramLong1;
     this.groupId = paramByte1;
@@ -166,6 +174,8 @@ public final class FriendInfo
     this.uExtOnlineStatus = paramLong19;
     this.iBatteryStatus = paramInt4;
     this.vecMusicInfo = paramArrayOfByte8;
+    this.vecPoiInfo = paramArrayOfByte9;
+    this.vecExtOnlineBusinessInfo = paramArrayOfByte10;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -230,6 +240,8 @@ public final class FriendInfo
     this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 57, false);
     this.iBatteryStatus = paramJceInputStream.read(this.iBatteryStatus, 58, false);
     this.vecMusicInfo = ((byte[])paramJceInputStream.read(cache_vecMusicInfo, 59, false));
+    this.vecPoiInfo = ((byte[])paramJceInputStream.read(cache_vecPoiInfo, 60, false));
+    this.vecExtOnlineBusinessInfo = ((byte[])paramJceInputStream.read(cache_vecExtOnlineBusinessInfo, 61, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -246,46 +258,55 @@ public final class FriendInfo
     paramJceOutputStream.write(this.isIphoneOnline, 9);
     paramJceOutputStream.write(this.detalStatusFlag, 10);
     paramJceOutputStream.write(this.sqqOnLineStateV2, 11);
-    if (this.sShowName != null) {
-      paramJceOutputStream.write(this.sShowName, 12);
+    Object localObject = this.sShowName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.isRemark, 13);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 14);
+    localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.cSpecialFlag, 15);
-    if (this.vecIMGroupID != null) {
-      paramJceOutputStream.write(this.vecIMGroupID, 16);
+    localObject = this.vecIMGroupID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 16);
     }
-    if (this.vecMSFGroupID != null) {
-      paramJceOutputStream.write(this.vecMSFGroupID, 17);
+    localObject = this.vecMSFGroupID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 17);
     }
     paramJceOutputStream.write(this.iTermType, 18);
-    if (this.oVipInfo != null) {
-      paramJceOutputStream.write(this.oVipInfo, 19);
+    localObject = this.oVipInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 19);
     }
     paramJceOutputStream.write(this.cNetwork, 20);
-    if (this.vecRing != null) {
-      paramJceOutputStream.write(this.vecRing, 21);
+    localObject = this.vecRing;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 21);
     }
     paramJceOutputStream.write(this.uAbiFlag, 22);
     paramJceOutputStream.write(this.ulFaceAddonId, 23);
     paramJceOutputStream.write(this.eNetworkType, 24);
     paramJceOutputStream.write(this.uVipFont, 25);
     paramJceOutputStream.write(this.eIconType, 26);
-    if (this.strTermDesc != null) {
-      paramJceOutputStream.write(this.strTermDesc, 27);
+    localObject = this.strTermDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 27);
     }
     paramJceOutputStream.write(this.uColorRing, 28);
     paramJceOutputStream.write(this.cApolloFlag, 29);
     paramJceOutputStream.write(this.uApolloTimestamp, 30);
     paramJceOutputStream.write(this.cSex, 31);
     paramJceOutputStream.write(this.uFounderFont, 32);
-    if (this.strEimId != null) {
-      paramJceOutputStream.write(this.strEimId, 33);
+    localObject = this.strEimId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 33);
     }
-    if (this.strEimMobile != null) {
-      paramJceOutputStream.write(this.strEimMobile, 34);
+    localObject = this.strEimMobile;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 34);
     }
     paramJceOutputStream.write(this.cOlympicTorch, 35);
     paramJceOutputStream.write(this.uApolloSignTime, 36);
@@ -293,44 +314,59 @@ public final class FriendInfo
     paramJceOutputStream.write(this.uTagUpdateTime, 38);
     paramJceOutputStream.write(this.uGameLastLoginTime, 39);
     paramJceOutputStream.write(this.uGameAppid, 40);
-    if (this.vecCardID != null) {
-      paramJceOutputStream.write(this.vecCardID, 41);
+    localObject = this.vecCardID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 41);
     }
     paramJceOutputStream.write(this.ulBitSet, 42);
     paramJceOutputStream.write(this.cKingOfGloryFlag, 43);
     paramJceOutputStream.write(this.ulKingOfGloryRank, 44);
-    if (this.strMasterUin != null) {
-      paramJceOutputStream.write(this.strMasterUin, 45);
+    localObject = this.strMasterUin;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 45);
     }
     paramJceOutputStream.write(this.uLastMedalUpdateTime, 46);
     paramJceOutputStream.write(this.uFaceStoreId, 47);
     paramJceOutputStream.write(this.uFontEffect, 48);
-    if (this.sDOVId != null) {
-      paramJceOutputStream.write(this.sDOVId, 49);
+    localObject = this.sDOVId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 49);
     }
     paramJceOutputStream.write(this.uBothFlag, 50);
     paramJceOutputStream.write(this.cCentiShow3DFlag, 51);
-    if (this.vecIntimateInfo != null) {
-      paramJceOutputStream.write(this.vecIntimateInfo, 52);
+    localObject = this.vecIntimateInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 52);
     }
     paramJceOutputStream.write(this.cShowNameplate, 53);
     paramJceOutputStream.write(this.cNewLoverDiamondFlag, 54);
-    if (this.vecExtSnsFrdData != null) {
-      paramJceOutputStream.write(this.vecExtSnsFrdData, 55);
+    localObject = this.vecExtSnsFrdData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 55);
     }
-    if (this.vecMutualMarkData != null) {
-      paramJceOutputStream.write(this.vecMutualMarkData, 56);
+    localObject = this.vecMutualMarkData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 56);
     }
     paramJceOutputStream.write(this.uExtOnlineStatus, 57);
     paramJceOutputStream.write(this.iBatteryStatus, 58);
-    if (this.vecMusicInfo != null) {
-      paramJceOutputStream.write(this.vecMusicInfo, 59);
+    localObject = this.vecMusicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 59);
+    }
+    localObject = this.vecPoiInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 60);
+    }
+    localObject = this.vecExtOnlineBusinessInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 61);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.FriendInfo
  * JD-Core Version:    0.7.0.1
  */

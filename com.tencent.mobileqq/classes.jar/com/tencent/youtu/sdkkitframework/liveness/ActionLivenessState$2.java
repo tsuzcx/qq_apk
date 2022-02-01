@@ -5,14 +5,19 @@ import java.util.HashMap;
 class ActionLivenessState$2
   extends HashMap<String, Object>
 {
-  ActionLivenessState$2(ActionLivenessState paramActionLivenessState)
+  ActionLivenessState$2(ActionLivenessState paramActionLivenessState, String paramString)
   {
-    put("ui_tips", ActionLivenessState.access$100(this.this$0, ActionLivenessState.access$000(this.this$0)));
+    paramActionLivenessState = new StringBuilder();
+    paramActionLivenessState.append("动作库版本异常！目标版本：");
+    paramActionLivenessState.append(ActionLivenessState.access$000(this.this$0));
+    paramActionLivenessState.append(" 当前版本：");
+    paramActionLivenessState.append(this.val$realVersion);
+    put("version_tips", paramActionLivenessState.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ActionLivenessState.2
  * JD-Core Version:    0.7.0.1
  */

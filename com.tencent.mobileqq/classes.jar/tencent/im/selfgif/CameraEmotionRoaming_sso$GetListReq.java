@@ -20,7 +20,7 @@ public final class CameraEmotionRoaming_sso$GetListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.selfgif.CameraEmotionRoaming_sso.GetListReq
  * JD-Core Version:    0.7.0.1
  */

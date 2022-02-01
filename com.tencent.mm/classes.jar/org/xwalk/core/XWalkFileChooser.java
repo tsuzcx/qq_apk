@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.os.Parcelable;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.c;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -43,16 +44,16 @@ public class XWalkFileChooser
   
   private boolean canWriteExternalStorage()
   {
-    AppMethodBeat.i(85636);
+    AppMethodBeat.i(154731);
     try
     {
       boolean bool = Arrays.asList(this.mActivity.getPackageManager().getPackageInfo(this.mActivity.getPackageName(), 4096).requestedPermissions).contains("android.permission.WRITE_EXTERNAL_STORAGE");
-      AppMethodBeat.o(85636);
+      AppMethodBeat.o(154731);
       return bool;
     }
     catch (NullPointerException localNullPointerException)
     {
-      AppMethodBeat.o(85636);
+      AppMethodBeat.o(154731);
       return false;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -64,11 +65,11 @@ public class XWalkFileChooser
   
   private File createImageFile()
   {
-    AppMethodBeat.i(85637);
+    AppMethodBeat.i(154732);
     if (!Environment.getExternalStorageState().equals("mounted"))
     {
       Log.e("XWalkFileChooser", "External storage is not mounted.");
-      AppMethodBeat.o(85637);
+      AppMethodBeat.o(154732);
       return null;
     }
     Object localObject = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -81,35 +82,35 @@ public class XWalkFileChooser
     {
       localObject = File.createTempFile((String)localObject, ".jpg", localFile);
       Log.d("XWalkFileChooser", "Created image file: " + ((File)localObject).getAbsolutePath());
-      AppMethodBeat.o(85637);
+      AppMethodBeat.o(154732);
       return localObject;
     }
     catch (IOException localIOException)
     {
       Log.e("XWalkFileChooser", "Unable to create Image File, please make sure permission 'WRITE_EXTERNAL_STORAGE' was added.");
-      AppMethodBeat.o(85637);
+      AppMethodBeat.o(154732);
     }
     return null;
   }
   
   private boolean deleteImageFile()
   {
-    AppMethodBeat.i(85638);
+    AppMethodBeat.i(154733);
     if ((this.mCameraPhotoPath == null) || (!this.mCameraPhotoPath.contains("file:")))
     {
-      AppMethodBeat.o(85638);
+      AppMethodBeat.o(154733);
       return false;
     }
     String str = this.mCameraPhotoPath.split("file:")[1];
     boolean bool = new File(str).delete();
     Log.d("XWalkFileChooser", "Delete image file: " + str + " result: " + bool);
-    AppMethodBeat.o(85638);
+    AppMethodBeat.o(154733);
     return bool;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(85635);
+    AppMethodBeat.i(154730);
     if ((paramInt1 == 1) && (this.mFilePathCallback != null))
     {
       Log.d("XWalkFileChooser", "Activity result: ".concat(String.valueOf(paramInt2)));
@@ -131,7 +132,7 @@ public class XWalkFileChooser
     }
     else
     {
-      AppMethodBeat.o(85635);
+      AppMethodBeat.o(154730);
       return;
     }
     paramIntent = paramIntent.getDataString();
@@ -152,108 +153,108 @@ public class XWalkFileChooser
   
   public boolean showFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(85634);
+    AppMethodBeat.i(154729);
     this.mFilePathCallback = paramValueCallback;
-    Intent localIntent1 = new Intent("android.media.action.IMAGE_CAPTURE");
-    paramValueCallback = localIntent1;
-    if (localIntent1.resolveActivity(this.mActivity.getPackageManager()) != null)
+    paramValueCallback = new Intent("android.media.action.IMAGE_CAPTURE");
+    Object localObject;
+    if (paramValueCallback.resolveActivity(this.mActivity.getPackageManager()) != null)
     {
-      paramValueCallback = createImageFile();
-      if (paramValueCallback == null) {
-        break label222;
+      localObject = createImageFile();
+      if (localObject != null)
+      {
+        this.mCameraPhotoPath = ("file:" + ((File)localObject).getAbsolutePath());
+        paramValueCallback.putExtra("PhotoPath", this.mCameraPhotoPath);
+        paramValueCallback.putExtra("output", Uri.fromFile((File)localObject));
       }
-      this.mCameraPhotoPath = ("file:" + paramValueCallback.getAbsolutePath());
-      localIntent1.putExtra("PhotoPath", this.mCameraPhotoPath);
-      localIntent1.putExtra("output", Uri.fromFile(paramValueCallback));
-    }
-    Intent localIntent2;
-    Intent localIntent3;
-    ArrayList localArrayList;
-    label222:
-    for (paramValueCallback = localIntent1;; paramValueCallback = null)
-    {
-      localIntent2 = new Intent("android.media.action.VIDEO_CAPTURE");
-      localIntent3 = new Intent("android.provider.MediaStore.RECORD_SOUND");
-      localIntent1 = new Intent("android.intent.action.GET_CONTENT");
-      localIntent1.addCategory("android.intent.category.OPENABLE");
-      localArrayList = new ArrayList();
-      if ((paramString1.contains(",")) || (paramString1.contains("*/*"))) {
-        break label325;
-      }
-      if (!paramString2.equals("true")) {
-        break label297;
-      }
-      if (!paramString1.startsWith("image/")) {
-        break;
-      }
-      if (paramValueCallback == null) {
-        break label325;
-      }
-      this.mActivity.startActivityForResult(paramValueCallback, 1);
-      Log.d("XWalkFileChooser", "Started taking picture");
-      AppMethodBeat.o(85634);
-      return true;
-    }
-    if (paramString1.startsWith("video/"))
-    {
-      this.mActivity.startActivityForResult(localIntent2, 1);
-      Log.d("XWalkFileChooser", "Started camcorder");
-      AppMethodBeat.o(85634);
-      return true;
-    }
-    if (paramString1.startsWith("audio/"))
-    {
-      this.mActivity.startActivityForResult(localIntent3, 1);
-      Log.d("XWalkFileChooser", "Started sound recorder");
-      AppMethodBeat.o(85634);
-      return true;
-      label297:
-      if (!paramString1.startsWith("image/")) {
-        break label449;
-      }
-      if (paramValueCallback != null) {
-        localArrayList.add(paramValueCallback);
-      }
-      localIntent1.setType("image/*");
     }
     for (;;)
     {
-      label325:
-      if ((localArrayList.isEmpty()) && (canWriteExternalStorage()))
-      {
-        if (paramValueCallback != null) {
-          localArrayList.add(paramValueCallback);
+      Intent localIntent1 = new Intent("android.media.action.VIDEO_CAPTURE");
+      Intent localIntent2 = new Intent("android.provider.MediaStore.RECORD_SOUND");
+      localObject = new Intent("android.intent.action.GET_CONTENT");
+      ((Intent)localObject).addCategory("android.intent.category.OPENABLE");
+      ArrayList localArrayList = new ArrayList();
+      if ((!paramString1.contains(",")) && (!paramString1.contains("*/*"))) {
+        if (paramString2.equals("true"))
+        {
+          if (paramString1.startsWith("image/"))
+          {
+            if (paramValueCallback != null)
+            {
+              com.tencent.mm.hellhoundlib.a.a.a(this.mActivity, c.a(1, new com.tencent.mm.hellhoundlib.b.a()).cG(paramValueCallback).aYi(), "org/xwalk/core/XWalkFileChooser", "showFileChooser", "(Landroid/webkit/ValueCallback;Ljava/lang/String;Ljava/lang/String;)Z", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
+              Log.d("XWalkFileChooser", "Started taking picture");
+              AppMethodBeat.o(154729);
+              return true;
+              paramValueCallback = null;
+            }
+          }
+          else
+          {
+            if (paramString1.startsWith("video/"))
+            {
+              com.tencent.mm.hellhoundlib.a.a.a(this.mActivity, c.a(1, new com.tencent.mm.hellhoundlib.b.a()).cG(localIntent1).aYi(), "org/xwalk/core/XWalkFileChooser", "showFileChooser", "(Landroid/webkit/ValueCallback;Ljava/lang/String;Ljava/lang/String;)Z", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
+              Log.d("XWalkFileChooser", "Started camcorder");
+              AppMethodBeat.o(154729);
+              return true;
+            }
+            if (paramString1.startsWith("audio/"))
+            {
+              com.tencent.mm.hellhoundlib.a.a.a(this.mActivity, c.a(1, new com.tencent.mm.hellhoundlib.b.a()).cG(localIntent2).aYi(), "org/xwalk/core/XWalkFileChooser", "showFileChooser", "(Landroid/webkit/ValueCallback;Ljava/lang/String;Ljava/lang/String;)Z", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
+              Log.d("XWalkFileChooser", "Started sound recorder");
+              AppMethodBeat.o(154729);
+              return true;
+            }
+          }
         }
-        localArrayList.add(localIntent2);
-        localArrayList.add(localIntent3);
-        localIntent1.setType("*/*");
+        else
+        {
+          if (!paramString1.startsWith("image/")) {
+            break label583;
+          }
+          if (paramValueCallback != null) {
+            localArrayList.add(paramValueCallback);
+          }
+          ((Intent)localObject).setType("image/*");
+        }
       }
-      paramValueCallback = new Intent("android.intent.action.CHOOSER");
-      paramValueCallback.putExtra("android.intent.extra.INTENT", localIntent1);
-      if (!localArrayList.isEmpty()) {
-        paramValueCallback.putExtra("android.intent.extra.INITIAL_INTENTS", (Parcelable[])localArrayList.toArray(new Intent[0]));
-      }
-      this.mActivity.startActivityForResult(paramValueCallback, 1);
-      Log.d("XWalkFileChooser", "Started chooser");
-      AppMethodBeat.o(85634);
-      return true;
-      label449:
-      if (paramString1.startsWith("video/"))
+      for (;;)
       {
-        localArrayList.add(localIntent2);
-        localIntent1.setType("video/*");
-      }
-      else if (paramString1.startsWith("audio/"))
-      {
-        localArrayList.add(localIntent3);
-        localIntent1.setType("audio/*");
+        if ((localArrayList.isEmpty()) && (canWriteExternalStorage()))
+        {
+          if (paramValueCallback != null) {
+            localArrayList.add(paramValueCallback);
+          }
+          localArrayList.add(localIntent1);
+          localArrayList.add(localIntent2);
+          ((Intent)localObject).setType("*/*");
+        }
+        paramValueCallback = new Intent("android.intent.action.CHOOSER");
+        paramValueCallback.putExtra("android.intent.extra.INTENT", (Parcelable)localObject);
+        if (!localArrayList.isEmpty()) {
+          paramValueCallback.putExtra("android.intent.extra.INITIAL_INTENTS", (Parcelable[])localArrayList.toArray(new Intent[0]));
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this.mActivity, c.a(1, new com.tencent.mm.hellhoundlib.b.a()).cG(paramValueCallback).aYi(), "org/xwalk/core/XWalkFileChooser", "showFileChooser", "(Landroid/webkit/ValueCallback;Ljava/lang/String;Ljava/lang/String;)Z", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
+        Log.d("XWalkFileChooser", "Started chooser");
+        AppMethodBeat.o(154729);
+        return true;
+        label583:
+        if (paramString1.startsWith("video/"))
+        {
+          localArrayList.add(localIntent1);
+          ((Intent)localObject).setType("video/*");
+        }
+        else if (paramString1.startsWith("audio/"))
+        {
+          localArrayList.add(localIntent2);
+          ((Intent)localObject).setType("audio/*");
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.xwalk.core.XWalkFileChooser
  * JD-Core Version:    0.7.0.1
  */

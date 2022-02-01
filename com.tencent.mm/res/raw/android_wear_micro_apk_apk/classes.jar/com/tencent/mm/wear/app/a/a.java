@@ -25,8 +25,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public final class a
   implements c
 {
-  private com.google.android.gms.common.api.p aaq = new q(MMApplication.getContext()).a(z.Qw).gA();
-  private ReentrantLock aar = new ReentrantLock();
+  private com.google.android.gms.common.api.p adR = new q(MMApplication.getContext()).a(z.Sl).gK();
+  private ReentrantLock adS = new ReentrantLock();
   
   /* Error */
   private d a(String paramString1, String paramString2, String paramString3)
@@ -46,7 +46,7 @@ public final class a
     //   24: invokespecial 71	com/tencent/mm/wear/app/a/d:<init>	(I)V
     //   27: areturn
     //   28: aload_0
-    //   29: invokespecial 51	com/tencent/mm/wear/app/a/a:lL	()Lcom/google/android/gms/common/api/p;
+    //   29: invokespecial 51	com/tencent/mm/wear/app/a/a:my	()Lcom/google/android/gms/common/api/p;
     //   32: invokevirtual 76	com/google/android/gms/common/api/p:isConnected	()Z
     //   35: ifne +13 -> 48
     //   38: new 67	com/tencent/mm/wear/app/a/d
@@ -59,14 +59,14 @@ public final class a
     //   52: invokespecial 78	com/tencent/mm/wear/app/a/d:<init>	()V
     //   55: astore 4
     //   57: aload_0
-    //   58: getfield 46	com/tencent/mm/wear/app/a/a:aar	Ljava/util/concurrent/locks/ReentrantLock;
+    //   58: getfield 46	com/tencent/mm/wear/app/a/a:adS	Ljava/util/concurrent/locks/ReentrantLock;
     //   61: ldc2_w 79
     //   64: getstatic 86	java/util/concurrent/TimeUnit:SECONDS	Ljava/util/concurrent/TimeUnit;
     //   67: invokevirtual 90	java/util/concurrent/locks/ReentrantLock:tryLock	(JLjava/util/concurrent/TimeUnit;)Z
     //   70: pop
-    //   71: getstatic 94	com/google/android/gms/wearable/z:SC	Lcom/google/android/gms/wearable/b;
+    //   71: getstatic 94	com/google/android/gms/wearable/z:Ur	Lcom/google/android/gms/wearable/b;
     //   74: aload_0
-    //   75: invokespecial 51	com/tencent/mm/wear/app/a/a:lL	()Lcom/google/android/gms/common/api/p;
+    //   75: invokespecial 51	com/tencent/mm/wear/app/a/a:my	()Lcom/google/android/gms/common/api/p;
     //   78: aload_2
     //   79: aload_1
     //   80: invokeinterface 99 4 0
@@ -79,15 +79,15 @@ public final class a
     //   101: invokeinterface 112 1 0
     //   106: astore 7
     //   108: aload 7
-    //   110: invokevirtual 117	com/google/android/gms/common/api/Status:gm	()Z
+    //   110: invokevirtual 117	com/google/android/gms/common/api/Status:gw	()Z
     //   113: ifne +71 -> 184
     //   116: aload 4
     //   118: ldc 77
-    //   120: putfield 121	com/tencent/mm/wear/app/a/d:aaw	I
+    //   120: putfield 121	com/tencent/mm/wear/app/a/d:adX	I
     //   123: aload 4
     //   125: aload 7
-    //   127: invokevirtual 125	com/google/android/gms/common/api/Status:gG	()Ljava/lang/String;
-    //   130: putfield 129	com/tencent/mm/wear/app/a/d:aax	Ljava/lang/String;
+    //   127: invokevirtual 125	com/google/android/gms/common/api/Status:gQ	()Ljava/lang/String;
+    //   130: putfield 129	com/tencent/mm/wear/app/a/d:adY	Ljava/lang/String;
     //   133: ldc 131
     //   135: ldc 133
     //   137: iconst_2
@@ -101,18 +101,18 @@ public final class a
     //   152: dup
     //   153: iconst_1
     //   154: aload 7
-    //   156: invokevirtual 125	com/google/android/gms/common/api/Status:gG	()Ljava/lang/String;
+    //   156: invokevirtual 125	com/google/android/gms/common/api/Status:gQ	()Ljava/lang/String;
     //   159: aastore
     //   160: invokestatic 148	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   163: aload_0
-    //   164: getfield 46	com/tencent/mm/wear/app/a/a:aar	Ljava/util/concurrent/locks/ReentrantLock;
+    //   164: getfield 46	com/tencent/mm/wear/app/a/a:adS	Ljava/util/concurrent/locks/ReentrantLock;
     //   167: invokevirtual 151	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   170: aload 4
     //   172: areturn
     //   173: astore_1
     //   174: aload 4
     //   176: ldc 68
-    //   178: putfield 121	com/tencent/mm/wear/app/a/d:aaw	I
+    //   178: putfield 121	com/tencent/mm/wear/app/a/d:adX	I
     //   181: aload 4
     //   183: areturn
     //   184: new 153	com/tencent/mm/wear/app/a/b
@@ -123,23 +123,23 @@ public final class a
     //   193: astore 7
     //   195: aload 7
     //   197: aload_2
-    //   198: putfield 159	com/tencent/mm/wear/app/a/b:aau	Ljava/lang/String;
+    //   198: putfield 159	com/tencent/mm/wear/app/a/b:adV	Ljava/lang/String;
     //   201: aload 7
     //   203: aload_3
-    //   204: putfield 162	com/tencent/mm/wear/app/a/b:aas	Ljava/lang/String;
+    //   204: putfield 162	com/tencent/mm/wear/app/a/b:adT	Ljava/lang/String;
     //   207: aload 7
     //   209: aload_1
-    //   210: putfield 165	com/tencent/mm/wear/app/a/b:aat	Ljava/lang/String;
-    //   213: getstatic 94	com/google/android/gms/wearable/z:SC	Lcom/google/android/gms/wearable/b;
+    //   210: putfield 165	com/tencent/mm/wear/app/a/b:adU	Ljava/lang/String;
+    //   213: getstatic 94	com/google/android/gms/wearable/z:Ur	Lcom/google/android/gms/wearable/b;
     //   216: aload_0
-    //   217: invokespecial 51	com/tencent/mm/wear/app/a/a:lL	()Lcom/google/android/gms/common/api/p;
+    //   217: invokespecial 51	com/tencent/mm/wear/app/a/a:my	()Lcom/google/android/gms/common/api/p;
     //   220: aload 7
     //   222: invokeinterface 168 3 0
     //   227: pop
     //   228: aload 6
     //   230: invokeinterface 172 1 0
     //   235: aload_0
-    //   236: invokespecial 51	com/tencent/mm/wear/app/a/a:lL	()Lcom/google/android/gms/common/api/p;
+    //   236: invokespecial 51	com/tencent/mm/wear/app/a/a:my	()Lcom/google/android/gms/common/api/p;
     //   239: aload 5
     //   241: invokestatic 178	android/net/Uri:fromFile	(Ljava/io/File;)Landroid/net/Uri;
     //   244: invokeinterface 183 3 0
@@ -163,7 +163,7 @@ public final class a
     //   279: astore_1
     //   280: aload 4
     //   282: ldc 68
-    //   284: putfield 121	com/tencent/mm/wear/app/a/d:aaw	I
+    //   284: putfield 121	com/tencent/mm/wear/app/a/d:adX	I
     //   287: goto -117 -> 170
     // Local variable table:
     //   start	length	slot	name	signature
@@ -183,60 +183,60 @@ public final class a
   
   private d a(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    if (!lL().isConnected()) {
+    if (!my().isConnected()) {
       return new d(131072);
     }
     locald = new d();
     try
     {
-      this.aar.tryLock(10L, TimeUnit.SECONDS);
-      com.tencent.mm.wear.a.c.d.e("MicroMsg.GlobalConnection", "send message item", new Object[0]);
-      paramString1 = ((r)z.SA.a(lL(), paramString1, paramString2, paramArrayOfByte).a(2L, TimeUnit.SECONDS)).gC();
+      this.adS.tryLock(10L, TimeUnit.SECONDS);
+      com.tencent.mm.wear.a.c.d.d("MicroMsg.GlobalConnection", "send message item", new Object[0]);
+      paramString1 = ((r)z.Up.a(my(), paramString1, paramString2, paramArrayOfByte).a(2L, TimeUnit.SECONDS)).gM();
       return locald;
     }
     catch (InterruptedException paramString1)
     {
       try
       {
-        this.aar.unlock();
-        if (!paramString1.gm())
+        this.adS.unlock();
+        if (!paramString1.gw())
         {
-          locald.aaw = 131072;
-          locald.aax = paramString1.gG();
-          com.tencent.mm.wear.a.c.d.a("MicroMsg.GlobalConnection", "send message not success errorCode=%d | errorMsg=%s", new Object[] { Integer.valueOf(paramString1.getStatusCode()), paramString1.gG() });
+          locald.adX = 131072;
+          locald.adY = paramString1.gQ();
+          com.tencent.mm.wear.a.c.d.a("MicroMsg.GlobalConnection", "send message not success errorCode=%d | errorMsg=%s", new Object[] { Integer.valueOf(paramString1.getStatusCode()), paramString1.gQ() });
         }
         return locald;
       }
       catch (Throwable paramString1)
       {
-        locald.aaw = 65536;
+        locald.adX = 65536;
       }
       paramString1 = paramString1;
-      locald.aaw = 65536;
+      locald.adX = 65536;
       return locald;
     }
   }
   
-  private com.google.android.gms.common.api.p lL()
+  private com.google.android.gms.common.api.p my()
   {
-    if (!this.aaq.isConnected())
+    if (!this.adR.isConnected())
     {
       com.tencent.mm.wear.a.c.d.c("MicroMsg.GlobalConnection", "connect to google api client", new Object[0]);
-      ConnectionResult localConnectionResult = this.aaq.a(TimeUnit.SECONDS);
-      if (!localConnectionResult.gm()) {
+      ConnectionResult localConnectionResult = this.adR.a(TimeUnit.SECONDS);
+      if (!localConnectionResult.gw()) {
         com.tencent.mm.wear.a.c.d.a("MicroMsg.GlobalConnection", "google api client connect error, code=%d, ", new Object[] { Integer.valueOf(localConnectionResult.getErrorCode()) });
       }
     }
-    return this.aaq;
+    return this.adR;
   }
   
-  private HashSet<String> lM()
+  private HashSet<String> mz()
   {
     HashSet localHashSet = new HashSet();
-    Object localObject = (v)z.SB.c(lL()).a(30L, TimeUnit.SECONDS);
+    Object localObject = (v)z.Uq.c(my()).a(30L, TimeUnit.SECONDS);
     if (localObject != null)
     {
-      localObject = ((v)localObject).ky().iterator();
+      localObject = ((v)localObject).kH().iterator();
       while (((Iterator)localObject).hasNext()) {
         localHashSet.add(((com.google.android.gms.wearable.t)((Iterator)localObject).next()).getId());
       }
@@ -246,13 +246,13 @@ public final class a
   
   public final d a(String paramString, byte[] paramArrayOfByte)
   {
-    Object localObject = lM();
+    Object localObject = mz();
     d locald1 = new d();
     localObject = ((HashSet)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       d locald2 = a((String)((Iterator)localObject).next(), paramString, paramArrayOfByte);
-      if (locald2.aaw != 0) {
+      if (locald2.adX != 0) {
         return locald2;
       }
     }
@@ -261,74 +261,74 @@ public final class a
   
   public final byte[] a(Asset paramAsset)
   {
-    paramAsset = (i)z.Sy.a(lL(), paramAsset).a(30L, TimeUnit.SECONDS);
-    Status localStatus = paramAsset.gC();
-    if (!localStatus.gm()) {
-      com.tencent.mm.wear.a.c.d.a("MicroMsg.GlobalConnection", "read asset data not success errorCode=%d | errorMsg=%s", new Object[] { Integer.valueOf(localStatus.getStatusCode()), localStatus.gG() });
+    paramAsset = (i)z.Un.a(my(), paramAsset).a(30L, TimeUnit.SECONDS);
+    Status localStatus = paramAsset.gM();
+    if (!localStatus.gw()) {
+      com.tencent.mm.wear.a.c.d.a("MicroMsg.GlobalConnection", "read asset data not success errorCode=%d | errorMsg=%s", new Object[] { Integer.valueOf(localStatus.getStatusCode()), localStatus.gQ() });
     }
     return com.tencent.mm.wear.a.f.c.b(paramAsset.getInputStream());
   }
   
   public final d b(String paramString, byte[] paramArrayOfByte)
   {
-    if (!lL().isConnected()) {
+    if (!my().isConnected()) {
       return new d(131072);
     }
     paramString = y.v(paramString);
-    paramString.kx().putLong("key_timestamp", System.currentTimeMillis());
-    paramString.kx().a("key_data", Asset.e(paramArrayOfByte));
-    paramArrayOfByte = paramString.kC();
+    paramString.kG().putLong("key_timestamp", System.currentTimeMillis());
+    paramString.kG().a("key_data", Asset.e(paramArrayOfByte));
+    paramArrayOfByte = paramString.kL();
     paramString = new d();
     try
     {
-      this.aar.tryLock(10L, TimeUnit.SECONDS);
-      com.tencent.mm.wear.a.c.d.e("MicroMsg.GlobalConnection", "put data item", new Object[0]);
-      z.Sy.a(lL(), paramArrayOfByte);
+      this.adS.tryLock(10L, TimeUnit.SECONDS);
+      com.tencent.mm.wear.a.c.d.d("MicroMsg.GlobalConnection", "put data item", new Object[0]);
+      z.Un.a(my(), paramArrayOfByte);
       return paramString;
     }
     catch (InterruptedException paramArrayOfByte)
     {
       try
       {
-        this.aar.unlock();
+        this.adS.unlock();
         com.tencent.mm.wear.a.c.d.c("MicroMsg.GlobalConnection", "send data request path=%s | length=%d", new Object[] { paramArrayOfByte.getUri().getPath(), Integer.valueOf(paramArrayOfByte.getData().length) });
         return paramString;
       }
       catch (Throwable paramArrayOfByte)
       {
-        paramString.aaw = 65536;
+        paramString.adX = 65536;
       }
       paramArrayOfByte = paramArrayOfByte;
-      paramString.aaw = 65536;
+      paramString.adX = 65536;
       return paramString;
     }
   }
   
   public final boolean e(Uri paramUri)
   {
-    z.Sy.b(lL(), paramUri);
+    z.Un.b(my(), paramUri);
     com.tencent.mm.wear.a.c.d.c("MicroMsg.GlobalConnection", "delete data item %s", new Object[] { paramUri });
     return true;
   }
   
-  public final d l(String paramString1, String paramString2)
+  public final d m(String paramString1, String paramString2)
   {
-    Object localObject = lM();
+    Object localObject = mz();
     d locald1 = new d();
     localObject = ((HashSet)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       d locald2 = a(paramString1, (String)((Iterator)localObject).next(), paramString2);
-      if (locald2.aaw != 0) {
+      if (locald2.adX != 0) {
         return locald2;
       }
     }
     return locald1;
   }
   
-  public final String lN()
+  public final String mA()
   {
-    return ((w)z.SB.b(lL()).a(30L, TimeUnit.SECONDS)).kz().getId();
+    return ((w)z.Uq.b(my()).a(30L, TimeUnit.SECONDS)).kI().getId();
   }
 }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/db"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.feed.RCLinearLayout android:orientation="horizontal" android:layout_width="@dimen/db" android:layout_height="@dimen/db">
+        <ImageView android:id="@id/jn4" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+    </com.tencent.mm.plugin.finder.feed.RCLinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cd" android:layout_weight="1.0">
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/jn5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" android:maxLines="2" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/jn3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="{desc}" android:maxLines="1" />
+    </LinearLayout>
+    <LinearLayout android:gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cd">
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/jn6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:text="{price}" android:maxLines="1" android:layout_weight="1.0" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/jn2" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginTop="2.0dip" android:text="{count}" android:maxLines="1" android:layout_weight="1.0" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/s8" android:ellipsize="end" android:id="@id/jn7" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginTop="6.0dip" android:text="{state}" android:maxLines="1" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

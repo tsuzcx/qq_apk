@@ -51,7 +51,19 @@ public class SubPkgInfo
   
   public String toString()
   {
-    return "SubPkgInfo{subPkgName='" + this.subPkgName + '\'' + ", downloadUrl='" + this.downloadUrl + '\'' + ", independent=" + this.independent + ", fileSize=" + this.fileSize + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SubPkgInfo{subPkgName='");
+    localStringBuilder.append(this.subPkgName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadUrl='");
+    localStringBuilder.append(this.downloadUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", independent=");
+    localStringBuilder.append(this.independent);
+    localStringBuilder.append(", fileSize=");
+    localStringBuilder.append(this.fileSize);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -64,7 +76,7 @@ public class SubPkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.SubPkgInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/b8b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPager android:id="@id/hyo" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/mtj" android:background="@drawable/ey_" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/bpt" />
+    <com.tencent.image.URLImageView android:id="@id/qfv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bpr" android:scaleType="fitXY" />
+    <com.tencent.mobileqq.kandian.biz.xtab.RIJXTabBar android:id="@id/mti" android:layout_width="fill_parent" android:layout_height="@dimen/bpr" android:layout_marginTop="@dimen/bps" />
+    <ViewStub android:id="@id/hzs" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

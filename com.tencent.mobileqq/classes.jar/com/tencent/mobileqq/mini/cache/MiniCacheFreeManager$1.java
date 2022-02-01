@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.cache;
 
-import alud;
 import android.app.Activity;
-import bdgm;
-import bdjz;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniCacheFreeManager$1
@@ -14,19 +14,16 @@ final class MiniCacheFreeManager$1
   
   public void run()
   {
-    if ((this.val$activity == null) || (this.val$activity.isFinishing())) {
-      QLog.e("MiniCacheFreeManager", 1, "freeCacheDialog activity is null");
-    }
-    for (;;)
+    Object localObject = this.val$activity;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      return;
       try
       {
-        bdjz localbdjz = bdgm.a(this.val$activity, 230, null, this.val$dialogContext, alud.a(2131710614), alud.a(2131710615), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
-        localbdjz.setCanceledOnTouchOutside(false);
+        localObject = DialogUtil.a(this.val$activity, 230, null, this.val$dialogContext, HardCodeUtil.a(2131898212), HardCodeUtil.a(2131899883), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
+        ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
         if ((this.val$activity != null) && (!this.val$activity.isFinishing()))
         {
-          localbdjz.show();
+          ((QQCustomDialog)localObject).show();
           return;
         }
       }
@@ -34,12 +31,14 @@ final class MiniCacheFreeManager$1
       {
         QLog.e("MiniCacheFreeManager", 1, "freeCacheDialog exception ", localException);
       }
+      return;
     }
+    QLog.e("MiniCacheFreeManager", 1, "freeCacheDialog activity is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.cache.MiniCacheFreeManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ public final class HttpUploadReq
   static byte[] cache_v10MMd5;
   static byte[] cache_vEncryptUsrInfo;
   static byte[] cache_vFileData;
-  public DefineAvatarInfo AvatarInfo;
-  public byte ifUpQQAvatar;
+  public DefineAvatarInfo AvatarInfo = null;
+  public byte ifUpQQAvatar = 0;
   public String strFileName = "";
-  public int uFileSize;
-  public int uFromPos;
-  public int uLength;
-  public byte[] v10MMd5;
-  public byte[] vEncryptUsrInfo;
-  public byte[] vFileData;
+  public int uFileSize = 0;
+  public int uFromPos = 0;
+  public int uLength = 0;
+  public byte[] v10MMd5 = null;
+  public byte[] vEncryptUsrInfo = null;
+  public byte[] vFileData = null;
   
   public HttpUploadReq() {}
   
@@ -76,17 +76,19 @@ public final class HttpUploadReq
     paramJceOutputStream.write(this.uLength, 4);
     paramJceOutputStream.write(this.vFileData, 5);
     paramJceOutputStream.write(this.ifUpQQAvatar, 6);
-    if (this.AvatarInfo != null) {
-      paramJceOutputStream.write(this.AvatarInfo, 7);
+    Object localObject = this.AvatarInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.strFileName != null) {
-      paramJceOutputStream.write(this.strFileName, 8);
+    localObject = this.strFileName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.HttpUploadReq
  * JD-Core Version:    0.7.0.1
  */

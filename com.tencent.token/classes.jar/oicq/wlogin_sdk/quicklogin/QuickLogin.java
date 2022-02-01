@@ -17,33 +17,33 @@ public class QuickLogin
       localIntent = new Intent();
       localIntent.setClassName(paramActivity, paramQuickLoginParam.webViewActivityClassName);
     }
-    for (;;)
+    else
     {
-      localIntent.putExtra("appid", paramLong1);
-      localIntent.putExtra("subappid", paramLong2);
-      if ((paramQuickLoginParam != null) && (paramQuickLoginParam.userAccount != null) && (paramQuickLoginParam.userAccount.length() != 0))
-      {
-        localIntent.putExtra("account", paramQuickLoginParam.userAccount);
-        localIntent.putExtra("isUserAccountLocked", paramQuickLoginParam.isUserAccountLocked);
-      }
-      if (paramQuickLoginParam != null) {
-        localIntent.putExtra("forceWebLogin", paramQuickLoginParam.forceWebLogin);
-      }
-      if (paramQuickLoginParam != null)
-      {
-        localIntent.putExtra("titleBackgroundColor", paramQuickLoginParam.titleBackgroundColor);
-        localIntent.putExtra("titleTextColor", paramQuickLoginParam.titleTextColor);
-        localIntent.putExtra("finishAnimEnter", paramQuickLoginParam.finishAnimEnter);
-        localIntent.putExtra("finishAnimExit", paramQuickLoginParam.finishAnimExit);
-      }
-      util.LOGI("before startActivityForResult for web", "");
-      paramActivity.startActivityForResult(localIntent, 1202);
-      if ((paramQuickLoginParam != null) && ((paramQuickLoginParam.startAnimEnter != 0) || (paramQuickLoginParam.startAnimExit != 0))) {
-        paramActivity.overridePendingTransition(paramQuickLoginParam.startAnimEnter, paramQuickLoginParam.startAnimExit);
-      }
-      return -2000;
       localIntent = new Intent(paramActivity, QuickLoginWebViewActivity.class);
     }
+    localIntent.putExtra("appid", paramLong1);
+    localIntent.putExtra("subappid", paramLong2);
+    if ((paramQuickLoginParam != null) && (paramQuickLoginParam.userAccount != null) && (paramQuickLoginParam.userAccount.length() != 0))
+    {
+      localIntent.putExtra("account", paramQuickLoginParam.userAccount);
+      localIntent.putExtra("isUserAccountLocked", paramQuickLoginParam.isUserAccountLocked);
+    }
+    if (paramQuickLoginParam != null) {
+      localIntent.putExtra("forceWebLogin", paramQuickLoginParam.forceWebLogin);
+    }
+    if (paramQuickLoginParam != null)
+    {
+      localIntent.putExtra("titleBackgroundColor", paramQuickLoginParam.titleBackgroundColor);
+      localIntent.putExtra("titleTextColor", paramQuickLoginParam.titleTextColor);
+      localIntent.putExtra("finishAnimEnter", paramQuickLoginParam.finishAnimEnter);
+      localIntent.putExtra("finishAnimExit", paramQuickLoginParam.finishAnimExit);
+    }
+    util.LOGI("before startActivityForResult for web", "");
+    paramActivity.startActivityForResult(localIntent, 1202);
+    if ((paramQuickLoginParam != null) && ((paramQuickLoginParam.startAnimEnter != 0) || (paramQuickLoginParam.startAnimExit != 0))) {
+      paramActivity.overridePendingTransition(paramQuickLoginParam.startAnimEnter, paramQuickLoginParam.startAnimExit);
+    }
+    return -2000;
   }
   
   private static int a(Context paramContext, Activity paramActivity, String paramString1, long paramLong1, long paramLong2, String paramString2)
@@ -69,7 +69,13 @@ public class QuickLogin
     ((Intent)localObject).putExtra("key_params", paramString1);
     ((Intent)localObject).putExtra("key_action", "action_quick_login");
     util.LOGI("before startActivityForResult for qq", "");
+    paramContext = new StringBuilder("quickLogin startActivityForResult start ");
+    paramContext.append(System.currentTimeMillis());
+    util.LOGI(paramContext.toString(), "");
     paramActivity.startActivityForResult((Intent)localObject, 1201);
+    paramContext = new StringBuilder("quickLogin startActivityForResult end ");
+    paramContext.append(System.currentTimeMillis());
+    util.LOGI(paramContext.toString(), "");
     return -2001;
   }
   
@@ -80,7 +86,14 @@ public class QuickLogin
     }
     try
     {
-      if (true == util.isMQQExist(paramContext))
+      StringBuilder localStringBuilder = new StringBuilder("quickLogin isMQQExist start ");
+      localStringBuilder.append(System.currentTimeMillis());
+      util.LOGI(localStringBuilder.toString(), "");
+      boolean bool = util.isMQQExist(paramContext);
+      localStringBuilder = new StringBuilder("quickLogin isMQQExist end ");
+      localStringBuilder.append(System.currentTimeMillis());
+      util.LOGI(localStringBuilder.toString(), "");
+      if (true == bool)
       {
         util.LOGI("login through qq", "");
         return a(paramContext, paramActivity, "com.tencent.mobileqq", paramLong1, paramLong2, paramString);
@@ -95,18 +108,15 @@ public class QuickLogin
         util.LOGI("login through tim", "");
         return a(paramContext, paramActivity, "com.tencent.tim", paramLong1, paramLong2, paramString);
       }
-      if (true == util.isPackageExist(paramContext, "com.tencent.qim"))
-      {
-        util.LOGI("login through qim", "");
-        return a(paramContext, paramActivity, "com.tencent.qim", paramLong1, paramLong2, paramString);
-      }
       util.LOGI("login through web", "");
       int i = a(paramActivity, paramLong1, paramLong2, paramQuickLoginParam);
       return i;
     }
     catch (Exception paramContext)
     {
-      util.LOGI("login through web as exception occurred " + paramContext.getMessage(), "");
+      paramString = new StringBuilder("login through web as exception occurred ");
+      paramString.append(paramContext.getMessage());
+      util.LOGI(paramString.toString(), "");
     }
     return a(paramActivity, paramLong1, paramLong2, paramQuickLoginParam);
   }

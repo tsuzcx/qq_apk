@@ -39,24 +39,30 @@ public class EffectProcessor
   
   public void process(EffectFrame paramEffectFrame)
   {
-    if (this.mOffscreenGLContext == null) {
-      if (this.mProcessCallback != null)
+    EffectProcessor.ProcessCallback localProcessCallback;
+    if (this.mOffscreenGLContext == null)
+    {
+      localProcessCallback = this.mProcessCallback;
+      if (localProcessCallback != null)
       {
-        this.mProcessCallback.onComplete(paramEffectFrame);
+        localProcessCallback.onComplete(paramEffectFrame);
         this.mProcessCallback.onError(paramEffectFrame, 1, "no opengl context!");
       }
     }
-    do
+    else
     {
-      return;
-      if ((paramEffectFrame != null) && (paramEffectFrame.frameData != null) && (paramEffectFrame.frameData.length != 0) && (paramEffectFrame.frameWidth != 0) && (paramEffectFrame.frameHeight != 0) && (paramEffectFrame.frameFormat != null)) {
-        break;
+      if ((paramEffectFrame != null) && (paramEffectFrame.frameData != null) && (paramEffectFrame.frameData.length != 0) && (paramEffectFrame.frameWidth != 0) && (paramEffectFrame.frameHeight != 0) && (paramEffectFrame.frameFormat != null))
+      {
+        this.mOffscreenGLContext.post(new EffectProcessor.4(this, paramEffectFrame));
+        return;
       }
-    } while (this.mProcessCallback == null);
-    this.mProcessCallback.onComplete(paramEffectFrame);
-    this.mProcessCallback.onError(paramEffectFrame, 1, "invalid input frame!");
-    return;
-    this.mOffscreenGLContext.post(new EffectProcessor.4(this, paramEffectFrame));
+      localProcessCallback = this.mProcessCallback;
+      if (localProcessCallback != null)
+      {
+        localProcessCallback.onComplete(paramEffectFrame);
+        this.mProcessCallback.onError(paramEffectFrame, 1, "invalid input frame!");
+      }
+    }
   }
   
   public void setBeauty20Render(Beauty20Render paramBeauty20Render)
@@ -106,7 +112,7 @@ public class EffectProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.process.EffectProcessor
  * JD-Core Version:    0.7.0.1
  */

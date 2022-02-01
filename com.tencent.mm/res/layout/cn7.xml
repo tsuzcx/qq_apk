@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/iwl" android:paddingBottom="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/d4" android:minHeight="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/m3y" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/fcj" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" />
+        <TextView android:textSize="@dimen/cd" android:textColor="@color/FG_2" android:ellipsize="end" android:gravity="center" android:id="@id/kxh" android:layout_width="@dimen/d4" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:minHeight="@dimen/cd" android:maxLines="1" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fcg" android:visibility="gone" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/bv" android:src="@raw/icons_filled_back2" android:rotation="270.0" android:layout_marginStart="@dimen/bv" app:iconColor="@color/FG_2" />
+</LinearLayout>

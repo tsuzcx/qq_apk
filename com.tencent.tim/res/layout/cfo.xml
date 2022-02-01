@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="115.0dip" android:layout_height="115.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.story.view.AnimationQIMCircleProgress android:layout_gravity="center" android:id="@id/lck" android:visibility="visible" android:layout_width="86.0dip" android:layout_height="86.0dip" />
+    <ImageView android:layout_gravity="center" android:id="@id/n74" android:layout_width="95.0dip" android:layout_height="95.0dip" android:scaleType="fitXY" />
+    <ImageView android:layout_gravity="center" android:id="@id/n6x" android:layout_width="95.0dip" android:layout_height="95.0dip" android:scaleType="fitXY" />
+</merge>

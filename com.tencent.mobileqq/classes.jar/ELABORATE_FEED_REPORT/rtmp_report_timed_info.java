@@ -7,18 +7,18 @@ import com.qq.taf.jce.JceStruct;
 public final class rtmp_report_timed_info
   extends JceStruct
 {
-  static int cache_play_status = 0;
-  public long anchor_svr_delay;
-  public double app_memory_usage;
-  public long audience_svr_delay;
+  static int cache_play_status;
+  public long anchor_svr_delay = 0L;
+  public double app_memory_usage = 0.0D;
+  public long audience_svr_delay = 0L;
   public String audio_play_err_code = "";
-  public double cpu_usage;
-  public double downstream_audio_bitrate;
-  public double downstream_total_bitrate;
-  public double downstream_video_bitrate;
-  public long lTime;
+  public double cpu_usage = 0.0D;
+  public double downstream_audio_bitrate = 0.0D;
+  public double downstream_total_bitrate = 0.0D;
+  public double downstream_video_bitrate = 0.0D;
+  public long lTime = 0L;
   public String play_err_code = "";
-  public int play_status;
+  public int play_status = 0;
   public String video_play_err_code = "";
   
   public rtmp_report_timed_info() {}
@@ -65,21 +65,24 @@ public final class rtmp_report_timed_info
     paramJceOutputStream.write(this.play_status, 5);
     paramJceOutputStream.write(this.app_memory_usage, 6);
     paramJceOutputStream.write(this.cpu_usage, 7);
-    if (this.audio_play_err_code != null) {
-      paramJceOutputStream.write(this.audio_play_err_code, 8);
+    String str = this.audio_play_err_code;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.video_play_err_code != null) {
-      paramJceOutputStream.write(this.video_play_err_code, 9);
+    str = this.video_play_err_code;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.play_err_code != null) {
-      paramJceOutputStream.write(this.play_err_code, 10);
+    str = this.play_err_code;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
     paramJceOutputStream.write(this.lTime, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.rtmp_report_timed_info
  * JD-Core Version:    0.7.0.1
  */

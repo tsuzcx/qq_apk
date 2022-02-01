@@ -2,23 +2,23 @@ package com.tencent.av.smallscreen;
 
 import com.tencent.av.VideoController;
 
-public class SmallScreenService$OnSelectMemberActivityIsResumeChangedRunnable
+class SmallScreenService$OnSelectMemberActivityIsResumeChangedRunnable
   implements Runnable
 {
-  public long a = 0L;
+  long a = 0L;
   
   SmallScreenService$OnSelectMemberActivityIsResumeChangedRunnable(SmallScreenService paramSmallScreenService) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!this.this$0.a.o())) {
+    if ((this.this$0.v != null) && (!this.this$0.v.ag())) {
       this.this$0.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenService.OnSelectMemberActivityIsResumeChangedRunnable
  * JD-Core Version:    0.7.0.1
  */

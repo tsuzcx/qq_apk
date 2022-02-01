@@ -9,7 +9,10 @@ public final class NioUtils
   
   public static ByteBuffer createDirectByteBuffer(int paramInt)
   {
-    QLog.d("NioUtils", 0, "createDirectByteBuffer len = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createDirectByteBuffer len = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("NioUtils", 0, localStringBuilder.toString());
     return ByteBuffer.allocateDirect(paramInt);
   }
   
@@ -34,7 +37,7 @@ public final class NioUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.utils.NioUtils
  * JD-Core Version:    0.7.0.1
  */

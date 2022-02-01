@@ -20,9 +20,9 @@ public class GaoGuangLanZiFilter
     localBaseFilter2.addParam(new TextureResParam("inputImageTexture2", "sh/gaoguanglanzi.png", 33986));
     setNextFilter(localBaseFilter2, null);
     BaseFilter localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(57));
-    localBaseFilter1.addParam(new UniformParam.FloatsParam("shadowsShift", new float[] { -0.1176471F * 0.45F, 0.0F, 0.1960784F * 0.346F }));
-    localBaseFilter1.addParam(new UniformParam.FloatsParam("midtonesShift", new float[] { -0.1176471F * 0.45F, 0.0F, 0.1960784F * 0.346F }));
-    localBaseFilter1.addParam(new UniformParam.FloatsParam("highlightsShift", new float[] { 0.45F * -0.2784314F, 0.0F, 0.346F * 0.3921569F }));
+    localBaseFilter1.addParam(new UniformParam.FloatsParam("shadowsShift", new float[] { -0.05294118F, 0.0F, 0.06784314F }));
+    localBaseFilter1.addParam(new UniformParam.FloatsParam("midtonesShift", new float[] { -0.05294118F, 0.0F, 0.06784314F }));
+    localBaseFilter1.addParam(new UniformParam.FloatsParam("highlightsShift", new float[] { -0.1252941F, 0.0F, 0.1356863F }));
     localBaseFilter1.addParam(new UniformParam.IntParam("preserveLuminosity", 1));
     localBaseFilter2.setNextFilter(localBaseFilter1, null);
     localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(60));
@@ -35,7 +35,7 @@ public class GaoGuangLanZiFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.ttpic.GaoGuangLanZiFilter
  * JD-Core Version:    0.7.0.1
  */

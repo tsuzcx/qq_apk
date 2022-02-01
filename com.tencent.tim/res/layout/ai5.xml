@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/result_layout" android:background="@drawable/bg_texture" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/search_result_list" android:background="@drawable/qfile_file_activity_div" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:transcriptMode="disabled" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/ef4" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray3" android:gravity="center_horizontal" android:id="@id/ef6" android:paddingTop="100.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:text="@string/cuy" android:drawableLeft="@drawable/jt" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/git" android:background="@android:color/transparent" android:paddingBottom="100.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/gid" android:layout_width="110.0dip" android:layout_height="90.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/xd" android:gravity="center" android:id="@id/gig" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/gid" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

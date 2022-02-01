@@ -19,13 +19,17 @@ class em$2$2
         return;
       }
     }
-    try
+    for (;;)
     {
-      em.g(this.np.nm).a(new em.2.2.1(this));
-      return;
-    }
-    catch (Exception localException)
-    {
+      try
+      {
+        em.g(this.np.nm).a(new em.2.2.1(this));
+        return;
+      }
+      catch (Exception localException)
+      {
+        continue;
+      }
       synchronized (em.h(this.np.nm))
       {
         em.b(this.np.nm, false);
@@ -37,7 +41,7 @@ class em$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.em.2.2
  * JD-Core Version:    0.7.0.1
  */

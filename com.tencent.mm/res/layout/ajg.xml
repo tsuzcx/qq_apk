@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.MultiTalkRoomPopupNav android:id="@id/dkc" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMWebView android:id="@id/lmj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/cp" android:layout_above="@id/fnl" />
+    <FrameLayout android:background="@drawable/a2m" android:layout_width="fill_parent" android:layout_height="@dimen/cg" android:layout_alignParentBottom="true" />
+    <Button android:textSize="17.0dip" android:id="@id/fnl" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginBottom="@dimen/d6" android:text="@string/e2p" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/oh" />
+</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:id="@id/r19" android:background="@drawable/gnx" android:padding="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/r1_" android:paddingTop="8.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/r1a" android:layout_width="180.0dip" android:layout_height="180.0dip" android:scaleType="fitXY" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/av9" android:gravity="center" android:layout_gravity="center" android:id="@id/r1d" android:background="@drawable/gnv" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zp0" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/r1b" android:layout_width="40.0dip" android:layout_height="40.0dip" android:indeterminate="true" />
+        </FrameLayout>
+        <View android:layout_width="fill_parent" android:layout_height="24.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/kb" android:gravity="center|top" android:layout_gravity="center" android:id="@id/r1c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/z1e" android:singleLine="false" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/r14" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/r16" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_margin="25.0dip" />
+        <TextView android:textSize="15.0dip" android:textColor="#00000000" android:gravity="center" android:id="@id/r18" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View android:layout_width="fill_parent" android:layout_height="24.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/kb" android:gravity="center|top" android:id="@id/r17" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0dip" android:gravity="center" android:layout_gravity="center" android:id="@id/r15" android:padding="3.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
+</FrameLayout>

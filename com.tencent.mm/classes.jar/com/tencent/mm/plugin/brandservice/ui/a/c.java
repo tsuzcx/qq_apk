@@ -2,15 +2,17 @@ package com.tencent.mm.plugin.brandservice.ui.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.a.o;
 import com.tencent.mm.plugin.fts.a.c.b;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.storage.au;
 import java.util.HashSet;
 import java.util.List;
 
@@ -22,63 +24,68 @@ public final class c
     super(paramContext, paramb, paramInt);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(ak paramak, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.c a(MMHandler paramMMHandler, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(14088);
-    String str = this.query;
-    b localb = b.mTt;
-    paramak = i.a(str, new int[] { 131076 }, null, -1, paramHashSet, localb, this, paramak);
-    paramak = ((n)g.G(n.class)).search(2, paramak);
-    AppMethodBeat.o(14088);
-    return paramak;
+    AppMethodBeat.i(5825);
+    paramHashSet.add("gh_43f2581f6fd6");
+    paramHashSet.addAll(au.iZM());
+    if (1 == ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.ztC, 1)) {
+      paramHashSet.add("gh_579db1f2cf89");
+    }
+    String str = getQuery();
+    b localb = b.Hue;
+    paramMMHandler = l.a(str, new int[] { 131076 }, null, -1, paramHashSet, localb, this, paramMMHandler);
+    paramMMHandler = ((n)h.az(n.class)).search(2, paramMMHandler);
+    AppMethodBeat.o(5825);
+    return paramMMHandler;
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt1, int paramInt2, l paraml, e.a parama)
+  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt1, int paramInt2, o paramo, e.a parama)
   {
-    AppMethodBeat.i(14091);
+    AppMethodBeat.i(5828);
     a locala = new a(paramInt2);
-    locala.hrL = paraml;
-    locala.mRX = parama.mRX;
-    locala.es(paraml.type, paraml.mRU);
-    AppMethodBeat.o(14091);
+    locala.rpp = paramo;
+    locala.FWt = parama.FWt;
+    locala.iW(paramo.type, paramo.subtype);
+    AppMethodBeat.o(5828);
     return locala;
   }
   
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
-    AppMethodBeat.i(14090);
-    int i = paramInt - parama.mTy - 1;
-    l locall = null;
-    Object localObject = locall;
-    if (i < parama.mTC.size())
+    AppMethodBeat.i(5827);
+    int i = paramInt - parama.Huj - 1;
+    o localo = null;
+    Object localObject = localo;
+    if (i < parama.tbH.size())
     {
-      localObject = locall;
+      localObject = localo;
       if (i >= 0)
       {
-        locall = (l)parama.mTC.get(i);
-        localObject = a(131076, paramInt, locall, parama);
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).es(locall.type, locall.mRU);
+        localo = (o)parama.tbH.get(i);
+        localObject = a(131076, paramInt, localo, parama);
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).iW(localo.type, localo.subtype);
       }
     }
     if (localObject != null) {
-      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mTJ = (i + 1);
+      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).Hur = (i + 1);
     }
-    AppMethodBeat.o(14090);
+    AppMethodBeat.o(5827);
     return localObject;
   }
   
-  public final void a(j paramj, HashSet<String> paramHashSet)
+  public final void a(m paramm, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(14089);
-    if (bU(paramj.mSW))
+    AppMethodBeat.i(5826);
+    if (hS(paramm.HtF))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -7;
-      paramHashSet.mRX = paramj.mRX;
-      paramHashSet.mTC = paramj.mSW;
-      this.mVO.add(paramHashSet);
+      paramHashSet.FWt = paramm.FWt;
+      paramHashSet.tbH = paramm.HtF;
+      this.HwJ.add(paramHashSet);
     }
-    AppMethodBeat.o(14089);
+    AppMethodBeat.o(5826);
   }
   
   public final int getType()
@@ -88,7 +95,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

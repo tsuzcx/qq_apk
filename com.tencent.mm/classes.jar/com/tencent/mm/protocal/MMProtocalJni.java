@@ -23,7 +23,7 @@ public final class MMProtocalJni
   
   public static native boolean mergeSyncKey(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, PByteArray paramPByteArray);
   
-  public static native boolean pack(byte[] paramArrayOfByte1, PByteArray paramPByteArray, byte[] paramArrayOfByte2, int paramInt1, byte[] paramArrayOfByte3, String paramString, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, int paramInt5, int paramInt6, int paramInt7);
+  public static native boolean pack(byte[] paramArrayOfByte1, PByteArray paramPByteArray, byte[] paramArrayOfByte2, int paramInt1, byte[] paramArrayOfByte3, String paramString, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, int paramInt5, int paramInt6, int paramInt7, int paramInt8);
   
   public static native boolean packDoubleHybrid(PByteArray paramPByteArray, byte[] paramArrayOfByte1, String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, int paramInt4, int paramInt5);
   
@@ -37,6 +37,8 @@ public final class MMProtocalJni
   
   public static native boolean setClientPackVersion(int paramInt);
   
+  public static native void setDeviceTypeId(int paramInt);
+  
   public static native void setIsLite(boolean paramBoolean);
   
   public static native boolean setProtocalJniLogLevel(int paramInt);
@@ -47,7 +49,7 @@ public final class MMProtocalJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.MMProtocalJni
  * JD-Core Version:    0.7.0.1
  */

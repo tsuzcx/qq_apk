@@ -10,4 +10,5 @@
     <FrameLayout android:id="@id/hgt" android:background="@drawable/g0u" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="5.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
         <ImageView android:id="@id/hgu" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="23.5dip" android:layout_marginTop="15.5dip" android:src="@drawable/g0v" />
     </FrameLayout>
+    <FrameLayout android:id="@id/nfo" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </cooperation.qzone.QZoneTopGestureLayout>

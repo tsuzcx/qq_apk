@@ -1,273 +1,212 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.platformtools.v;
-import com.tencent.mm.platformtools.v.a;
-import com.tencent.mm.platformtools.v.b;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.autogen.a.hs;
+import com.tencent.mm.autogen.a.hs.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.MultiTouchImageView;
+import com.tencent.mm.ui.tools.MMGestureGallery;
+import com.tencent.mm.ui.tools.MMGestureGallery.b;
 
 public final class d
-  implements v
 {
-  private int height;
-  private String mwm;
-  private String url;
-  private int width;
+  a Agp;
+  int Agq;
+  int Agr;
+  private ValueAnimator Ags;
+  MMActivity activity;
+  float ayc;
+  float ayd;
+  View lBX;
+  ImageView pIB;
+  MMGestureGallery pIt;
+  float scaleX;
+  float scaleY;
+  int thumbHeight;
+  int thumbWidth;
   
-  public d(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public d(MMGestureGallery paramMMGestureGallery, MMActivity paramMMActivity, a parama)
   {
-    this.mwm = paramString1;
-    this.url = paramString2;
-    this.width = paramInt1;
-    this.height = paramInt2;
+    AppMethodBeat.i(106668);
+    this.pIt = paramMMGestureGallery;
+    this.activity = paramMMActivity;
+    this.Agp = parama;
+    this.pIB = ((ImageView)this.activity.findViewById(q.e.gallery_bg));
+    this.lBX = this.activity.findViewById(q.e.root_container);
+    this.pIt.setGalleryScaleListener(new MMGestureGallery.b()
+    {
+      public final void aC(float paramAnonymousFloat1, float paramAnonymousFloat2) {}
+      
+      public final void onGalleryScale(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      {
+        float f2 = 1.0F;
+        AppMethodBeat.i(106664);
+        if ((d.this.pIt == null) || (d.this.Agp == null))
+        {
+          AppMethodBeat.o(106664);
+          return;
+        }
+        if (d.this.pIt.getHeight() != 0) {}
+        for (float f1 = 1.0F - paramAnonymousFloat2 / d.this.pIt.getHeight();; f1 = 1.0F)
+        {
+          if (f1 > 1.0F) {
+            f1 = f2;
+          }
+          for (;;)
+          {
+            Log.d("MicroMsg.FavDragLogic", "onGalleryScale tx: %f, ty: %f, scale: %f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Float.valueOf(f1) });
+            MultiTouchImageView localMultiTouchImageView = d.this.Agp.dRC();
+            if (localMultiTouchImageView == null) {
+              break;
+            }
+            localMultiTouchImageView.setPivotX(d.this.pIt.getWidth() / 2);
+            localMultiTouchImageView.setPivotY(d.this.pIt.getHeight() / 2);
+            localMultiTouchImageView.setScaleX(f1);
+            localMultiTouchImageView.setScaleY(f1);
+            localMultiTouchImageView.setTranslationX(paramAnonymousFloat1);
+            localMultiTouchImageView.setTranslationY(paramAnonymousFloat2);
+            d.this.lBX.setAlpha(f1);
+            AppMethodBeat.o(106664);
+            return;
+          }
+          Log.d("MicroMsg.FavDragLogic", "runDragAnimation contentView is null !!");
+          AppMethodBeat.o(106664);
+          return;
+        }
+      }
+    });
+    this.Ags = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.Ags.setDuration(200L).setInterpolator(new DecelerateInterpolator(1.2F));
+    this.Ags.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        AppMethodBeat.i(106665);
+        if (d.this.pIt == null)
+        {
+          AppMethodBeat.o(106665);
+          return;
+        }
+        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+        paramAnonymousValueAnimator = (RelativeLayout.LayoutParams)d.this.pIt.getLayoutParams();
+        paramAnonymousValueAnimator.leftMargin = ((int)(d.this.Agq * f));
+        paramAnonymousValueAnimator.topMargin = ((int)(d.this.Agr * f));
+        paramAnonymousValueAnimator.rightMargin = ((int)(d.this.lBX.getWidth() * f - d.this.thumbWidth * f - paramAnonymousValueAnimator.leftMargin));
+        paramAnonymousValueAnimator.bottomMargin = ((int)(d.this.lBX.getHeight() * f - d.this.thumbHeight * f - paramAnonymousValueAnimator.topMargin));
+        d.this.pIt.setLayoutParams(paramAnonymousValueAnimator);
+        Log.d("MicroMsg.FavDragLogic", "onAnimationUpdate leftMargin:%s, topMargin:%s, rightMargin:%s, bottomMargin:%s", new Object[] { Integer.valueOf(paramAnonymousValueAnimator.leftMargin), Integer.valueOf(paramAnonymousValueAnimator.topMargin), Integer.valueOf(paramAnonymousValueAnimator.rightMargin), Integer.valueOf(paramAnonymousValueAnimator.bottomMargin) });
+        if ((d.this.Agp != null) && (d.this.Agp.dRC() != null))
+        {
+          paramAnonymousValueAnimator = d.this.Agp.dRC();
+          paramAnonymousValueAnimator.setTranslationX(d.this.ayc * (1.0F - f));
+          paramAnonymousValueAnimator.setTranslationY(d.this.ayd * (1.0F - f));
+          paramAnonymousValueAnimator.setScaleX((1.0F - f) * d.this.scaleX + f);
+          paramAnonymousValueAnimator.setScaleY((1.0F - f) * d.this.scaleY + f);
+          d.this.pIB.setAlpha(1.0F - f);
+          Log.d("MicroMsg.FavDragLogic", "onAnimationUpdate value:%s TranslationX:%s, TranslationY:%s, ScaleX:%s, ScaleY:%s", new Object[] { Float.valueOf(f), Float.valueOf(d.this.ayc * (1.0F - f)), Float.valueOf(d.this.ayd * (1.0F - f)), Float.valueOf((1.0F - f) * d.this.scaleX + f), Float.valueOf(f + (1.0F - f) * d.this.scaleY) });
+        }
+        AppMethodBeat.o(106665);
+      }
+    });
+    this.Ags.addListener(new AnimatorListenerAdapter()
+    {
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(106667);
+        super.onAnimationEnd(paramAnonymousAnimator);
+        if (d.this.activity == null)
+        {
+          AppMethodBeat.o(106667);
+          return;
+        }
+        d.this.activity.finish();
+        paramAnonymousAnimator = d.this.activity;
+        int i = q.a.anim_not_change;
+        paramAnonymousAnimator.overridePendingTransition(i, i);
+        AppMethodBeat.o(106667);
+      }
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(106666);
+        super.onAnimationStart(paramAnonymousAnimator);
+        if (d.this.Agp == null)
+        {
+          AppMethodBeat.o(106666);
+          return;
+        }
+        paramAnonymousAnimator = d.this.Agp.dRC();
+        if (paramAnonymousAnimator != null)
+        {
+          if (paramAnonymousAnimator.getScale() > 1.0F) {
+            paramAnonymousAnimator.jma();
+          }
+          d.this.ayc = paramAnonymousAnimator.getTranslationX();
+          d.this.ayd = paramAnonymousAnimator.getTranslationY();
+          d.this.scaleX = paramAnonymousAnimator.getScaleX();
+          d.this.scaleY = paramAnonymousAnimator.getScaleY();
+          Log.d("MicroMsg.FavDragLogic", "onAnimationStart() scale:%s translationX:%s translationY:%s scaleX:%s scaleY:%s", new Object[] { Float.valueOf(paramAnonymousAnimator.getScale()), Float.valueOf(d.this.ayc), Float.valueOf(d.this.ayd), Float.valueOf(d.this.scaleX), Float.valueOf(d.this.scaleY) });
+        }
+        AppMethodBeat.o(106666);
+      }
+    });
+    AppMethodBeat.o(106668);
   }
   
-  public final void W(String paramString, boolean paramBoolean) {}
-  
-  /* Error */
-  public final Bitmap a(Bitmap paramBitmap, v.a parama, String paramString)
+  public final void onDestroy()
   {
-    // Byte code:
-    //   0: ldc 35
-    //   2: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_1
-    //   6: astore_3
-    //   7: getstatic 47	com/tencent/mm/platformtools/v$a:gjx	Lcom/tencent/mm/platformtools/v$a;
-    //   10: aload_2
-    //   11: if_acmpne +147 -> 158
-    //   14: aload_1
-    //   15: astore_3
-    //   16: ldc 49
-    //   18: ldc 51
-    //   20: iconst_1
-    //   21: anewarray 4	java/lang/Object
-    //   24: dup
-    //   25: iconst_0
-    //   26: aload_0
-    //   27: getfield 21	com/tencent/mm/plugin/fav/ui/d:url	Ljava/lang/String;
-    //   30: aastore
-    //   31: invokestatic 57	com/tencent/mm/sdk/platformtools/ab:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   34: aload_1
-    //   35: astore_3
-    //   36: new 59	com/tencent/mm/vfs/b
-    //   39: dup
-    //   40: invokestatic 65	com/tencent/mm/plugin/fav/a/b:bvW	()Ljava/lang/String;
-    //   43: invokespecial 68	com/tencent/mm/vfs/b:<init>	(Ljava/lang/String;)V
-    //   46: astore_2
-    //   47: aload_1
-    //   48: astore_3
-    //   49: aload_2
-    //   50: invokevirtual 72	com/tencent/mm/vfs/b:exists	()Z
-    //   53: ifne +10 -> 63
-    //   56: aload_1
-    //   57: astore_3
-    //   58: aload_2
-    //   59: invokevirtual 75	com/tencent/mm/vfs/b:mkdirs	()Z
-    //   62: pop
-    //   63: aload_1
-    //   64: astore_2
-    //   65: aload_1
-    //   66: astore_3
-    //   67: aload_0
-    //   68: getfield 23	com/tencent/mm/plugin/fav/ui/d:width	I
-    //   71: ifle +30 -> 101
-    //   74: aload_1
-    //   75: astore_2
-    //   76: aload_1
-    //   77: astore_3
-    //   78: aload_0
-    //   79: getfield 25	com/tencent/mm/plugin/fav/ui/d:height	I
-    //   82: ifle +19 -> 101
-    //   85: aload_1
-    //   86: astore_3
-    //   87: aload_1
-    //   88: aload_0
-    //   89: getfield 23	com/tencent/mm/plugin/fav/ui/d:width	I
-    //   92: aload_0
-    //   93: getfield 25	com/tencent/mm/plugin/fav/ui/d:height	I
-    //   96: iconst_1
-    //   97: invokestatic 81	com/tencent/mm/sdk/platformtools/d:b	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   100: astore_2
-    //   101: aload_2
-    //   102: astore_3
-    //   103: new 59	com/tencent/mm/vfs/b
-    //   106: dup
-    //   107: aload_0
-    //   108: invokevirtual 84	com/tencent/mm/plugin/fav/ui/d:aon	()Ljava/lang/String;
-    //   111: invokespecial 68	com/tencent/mm/vfs/b:<init>	(Ljava/lang/String;)V
-    //   114: astore_1
-    //   115: aload_2
-    //   116: astore_3
-    //   117: aload_1
-    //   118: invokevirtual 87	com/tencent/mm/vfs/b:createNewFile	()Z
-    //   121: pop
-    //   122: new 89	com/tencent/mm/vfs/f
-    //   125: dup
-    //   126: aload_1
-    //   127: invokespecial 92	com/tencent/mm/vfs/f:<init>	(Lcom/tencent/mm/vfs/b;)V
-    //   130: astore_1
-    //   131: aload_1
-    //   132: astore_3
-    //   133: aload_2
-    //   134: getstatic 98	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   137: bipush 100
-    //   139: aload_1
-    //   140: invokevirtual 104	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   143: pop
-    //   144: aload_1
-    //   145: astore_3
-    //   146: aload_1
-    //   147: invokevirtual 107	com/tencent/mm/vfs/f:flush	()V
-    //   150: aload_2
-    //   151: astore_3
-    //   152: aload_1
-    //   153: invokevirtual 110	com/tencent/mm/vfs/f:close	()V
-    //   156: aload_2
-    //   157: astore_3
-    //   158: ldc 35
-    //   160: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   163: aload_3
-    //   164: areturn
-    //   165: astore 4
-    //   167: aconst_null
-    //   168: astore_1
-    //   169: aload_1
-    //   170: astore_3
-    //   171: ldc 49
-    //   173: aload 4
-    //   175: ldc 115
-    //   177: iconst_0
-    //   178: anewarray 4	java/lang/Object
-    //   181: invokestatic 119	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   184: aload_2
-    //   185: astore_3
-    //   186: aload_1
-    //   187: ifnull -29 -> 158
-    //   190: aload_2
-    //   191: astore_3
-    //   192: aload_1
-    //   193: invokevirtual 110	com/tencent/mm/vfs/f:close	()V
-    //   196: aload_2
-    //   197: astore_3
-    //   198: goto -40 -> 158
-    //   201: astore_1
-    //   202: ldc 49
-    //   204: aload_1
-    //   205: ldc 115
-    //   207: iconst_0
-    //   208: anewarray 4	java/lang/Object
-    //   211: invokestatic 119	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   214: goto -56 -> 158
-    //   217: astore_1
-    //   218: aconst_null
-    //   219: astore 4
-    //   221: aload 4
-    //   223: ifnull +10 -> 233
-    //   226: aload_2
-    //   227: astore_3
-    //   228: aload 4
-    //   230: invokevirtual 110	com/tencent/mm/vfs/f:close	()V
-    //   233: aload_2
-    //   234: astore_3
-    //   235: ldc 35
-    //   237: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   240: aload_2
-    //   241: astore_3
-    //   242: aload_1
-    //   243: athrow
-    //   244: astore_1
-    //   245: aload_3
-    //   246: astore 4
-    //   248: goto -27 -> 221
-    //   251: astore 4
-    //   253: goto -84 -> 169
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	256	0	this	d
-    //   0	256	1	paramBitmap	Bitmap
-    //   0	256	2	parama	v.a
-    //   0	256	3	paramString	String
-    //   165	9	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   219	28	4	str	String
-    //   251	1	4	localFileNotFoundException2	java.io.FileNotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   122	131	165	java/io/FileNotFoundException
-    //   16	34	201	java/io/IOException
-    //   36	47	201	java/io/IOException
-    //   49	56	201	java/io/IOException
-    //   58	63	201	java/io/IOException
-    //   67	74	201	java/io/IOException
-    //   78	85	201	java/io/IOException
-    //   87	101	201	java/io/IOException
-    //   103	115	201	java/io/IOException
-    //   117	122	201	java/io/IOException
-    //   152	156	201	java/io/IOException
-    //   192	196	201	java/io/IOException
-    //   228	233	201	java/io/IOException
-    //   235	240	201	java/io/IOException
-    //   242	244	201	java/io/IOException
-    //   122	131	217	finally
-    //   133	144	244	finally
-    //   146	150	244	finally
-    //   171	184	244	finally
-    //   133	144	251	java/io/FileNotFoundException
-    //   146	150	251	java/io/FileNotFoundException
+    this.pIt = null;
+    this.activity = null;
+    this.Agp = null;
   }
   
-  public final void a(v.a parama, String paramString) {}
-  
-  public final v.b aom()
+  public final void pq(boolean paramBoolean)
   {
-    return null;
+    AppMethodBeat.i(106669);
+    if (this.pIt == null)
+    {
+      Log.i("MicroMsg.FavDragLogic", "goBack() gallery == null");
+      AppMethodBeat.o(106669);
+      return;
+    }
+    this.thumbWidth = 0;
+    this.thumbHeight = 0;
+    this.Agq = (this.pIt.getWidth() / 2);
+    this.Agr = (this.pIt.getHeight() / 2);
+    if ((!paramBoolean) && (this.Agp != null))
+    {
+      hs localhs = new hs();
+      localhs.hIO.hIQ = this.Agp.dRD();
+      localhs.publish();
+      this.thumbWidth = localhs.hIP.hBL;
+      this.thumbHeight = localhs.hIP.hBM;
+      this.Agq = localhs.hIP.hBJ;
+      this.Agr = localhs.hIP.hBK;
+    }
+    if ((this.Agq == 0) && (this.Agr == 0))
+    {
+      this.Agq = (this.pIt.getWidth() / 2);
+      this.Agr = (this.pIt.getHeight() / 2);
+    }
+    Log.i("MicroMsg.FavDragLogic", "thumbLeft %d, thumbTop %d, thumbWidth %d, thumbHeight %d", new Object[] { Integer.valueOf(this.Agq), Integer.valueOf(this.Agr), Integer.valueOf(this.thumbWidth), Integer.valueOf(this.thumbHeight) });
+    this.Ags.start();
+    AppMethodBeat.o(106669);
   }
   
-  public final String aon()
+  public static abstract interface a
   {
-    AppMethodBeat.i(73997);
-    String str = b.bvW() + g.w(this.url.getBytes());
-    AppMethodBeat.o(73997);
-    return str;
-  }
-  
-  public final String aoo()
-  {
-    return this.url;
-  }
-  
-  public final String aop()
-  {
-    return this.mwm;
-  }
-  
-  public final boolean aoq()
-  {
-    return true;
-  }
-  
-  public final boolean aor()
-  {
-    return false;
-  }
-  
-  public final Bitmap aos()
-  {
-    AppMethodBeat.i(73998);
-    Bitmap localBitmap = BitmapFactory.decodeResource(ah.getContext().getResources(), 2130839823);
-    AppMethodBeat.o(73998);
-    return localBitmap;
-  }
-  
-  public final void aot() {}
-  
-  public final String getCacheKey()
-  {
-    return this.mwm;
+    public abstract MultiTouchImageView dRC();
+    
+    public abstract String dRD();
   }
 }
 

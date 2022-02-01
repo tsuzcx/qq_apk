@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awge;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.ArrayList;
 import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="cid,bid,source_id")
 public class CouponEntity
-  extends awge
+  extends Entity
 {
   public static final int VERIFY_TYPE_BARCODE = 2;
   public static final int VERIFY_TYPE_DIGITAL_CODE = 1;
@@ -19,7 +19,7 @@ public class CouponEntity
   public int cid;
   public String detail;
   public long etime;
-  public boolean isNew;
+  public boolean isNew = false;
   public int is_read_able;
   public int is_valid;
   public String name;
@@ -29,9 +29,9 @@ public class CouponEntity
   public long rcv_time;
   public String rebate;
   public String shids;
-  @awhp
+  @notColumn
   public CharSequence shopData;
-  @awhp
+  @notColumn
   private List<Integer> shopList;
   public int source_id;
   public long stime;

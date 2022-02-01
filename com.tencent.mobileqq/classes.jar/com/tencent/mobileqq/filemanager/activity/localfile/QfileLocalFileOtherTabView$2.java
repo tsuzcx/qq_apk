@@ -12,11 +12,11 @@ class QfileLocalFileOtherTabView$2
   
   public void run()
   {
-    Object localObject = this.this$0.a(this.a.d());
-    if (!this.this$0.c.containsKey(localObject)) {
-      this.this$0.c.put(localObject, new ArrayList());
+    Object localObject = this.this$0.a(this.a.e());
+    if (!this.this$0.l.containsKey(localObject)) {
+      this.this$0.l.put(localObject, new ArrayList());
     }
-    localObject = (List)this.this$0.c.get(localObject);
+    localObject = (List)this.this$0.l.get(localObject);
     if (((List)localObject).contains(this.a) == true) {
       return;
     }
@@ -26,7 +26,7 @@ class QfileLocalFileOtherTabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView.2
  * JD-Core Version:    0.7.0.1
  */

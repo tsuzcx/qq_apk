@@ -1,10 +1,9 @@
 package com.tencent.biz.pubaccount.NativeAd.adapter;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import nnu;
+import androidx.viewpager.widget.ViewPager;
 
 public class VerticleViewPager
   extends ViewPager
@@ -31,7 +30,7 @@ public class VerticleViewPager
   
   private void a()
   {
-    setPageTransformer(true, new nnu(this, null));
+    setPageTransformer(true, new VerticleViewPager.VerticalPageTransformer(this, null));
     setOverScrollMode(2);
   }
   
@@ -49,7 +48,7 @@ public class VerticleViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager
  * JD-Core Version:    0.7.0.1
  */

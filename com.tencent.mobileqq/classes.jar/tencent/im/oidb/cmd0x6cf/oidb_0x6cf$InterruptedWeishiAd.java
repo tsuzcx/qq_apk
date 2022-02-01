@@ -23,15 +23,16 @@ public final class oidb_0x6cf$InterruptedWeishiAd
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50, 58, 64, 74 }, new String[] { "bytes_show_positon", "uint32_is_show_in_switch", "uint32_is_show_in_play_end", "uint32_show_after_play_time", "bytes_ad_url", "bytes_common_data", "msg_ecommerce_entrance_info", "uint32_interrupted_ad_type", "appInfo" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, null, Integer.valueOf(0), null }, InterruptedWeishiAd.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50, 58, 64, 74 }, new String[] { "bytes_show_positon", "uint32_is_show_in_switch", "uint32_is_show_in_play_end", "uint32_show_after_play_time", "bytes_ad_url", "bytes_common_data", "msg_ecommerce_entrance_info", "uint32_interrupted_ad_type", "appInfo" }, new Object[] { localByteStringMicro1, localInteger, localInteger, localInteger, localByteStringMicro2, localByteStringMicro3, null, localInteger, null }, InterruptedWeishiAd.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6cf.oidb_0x6cf.InterruptedWeishiAd
  * JD-Core Version:    0.7.0.1
  */

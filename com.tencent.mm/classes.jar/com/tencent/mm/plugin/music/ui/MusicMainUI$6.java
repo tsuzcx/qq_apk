@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.music.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.music.model.d;
-import com.tencent.mm.ui.base.h.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class MusicMainUI$6
-  implements h.c
+  implements View.OnClickListener
 {
-  MusicMainUI$6(MusicMainUI paramMusicMainUI, String paramString1, String paramString2, int paramInt) {}
+  MusicMainUI$6(MusicMainUI paramMusicMainUI) {}
   
-  public final void iA(int paramInt)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(105101);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(105101);
-      return;
-      d.M(this.val$appId, this.pcg, this.gSl);
-    }
+    AppMethodBeat.i(63232);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/music/ui/MusicMainUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    MusicMainUI.e(this.LQd);
+    a.a(this, "com/tencent/mm/plugin/music/ui/MusicMainUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(63232);
   }
 }
 

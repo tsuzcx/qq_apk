@@ -5,68 +5,39 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
-import xyd;
-import ybk;
 
 class CodeMaskManager$PrepareBundleTask
   extends Thread
 {
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  xyd jdField_a_of_type_Xyd;
+  AtomicBoolean a = new AtomicBoolean(false);
+  CodeMaskManager.Callback b;
+  Bundle c;
   
-  CodeMaskManager$PrepareBundleTask(CodeMaskManager paramCodeMaskManager, xyd paramxyd, Bundle paramBundle)
+  CodeMaskManager$PrepareBundleTask(CodeMaskManager paramCodeMaskManager, CodeMaskManager.Callback paramCallback, Bundle paramBundle)
   {
     super("qr_code_mask_prepare_thread");
-    this.jdField_a_of_type_Xyd = paramxyd;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.b = paramCallback;
+    this.c = paramBundle;
   }
   
   Bundle a()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrsz"))
+      if (this.c.containsKey("qrsz"))
       {
-        Object localObject1 = ((QRDisplayActivity)this.this$0.jdField_a_of_type_AndroidAppActivity).a();
-        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-        if (!bool) {
-          try
-          {
-            localObject1 = ybk.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
-            if (localObject1 == null) {
-              return null;
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localObject2 = null;
-            }
-          }
-        }
+        localObject = ((QRDisplayActivity)this.this$0.c).j();
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+        if (bool) {}
       }
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("bkgUrl"))
-      {
-        localObject2 = CodeMaskManager.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle.getString("bkgUrl"));
-        this.jdField_a_of_type_AndroidOsBundle.putParcelable("bkg", (Parcelable)localObject2);
-        this.jdField_a_of_type_AndroidOsBundle.remove("bkgUrl");
-      }
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrbkgUrl"))
-      {
-        localObject2 = CodeMaskManager.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle.getString("qrbkgUrl"));
-        this.jdField_a_of_type_AndroidOsBundle.putParcelable("qrbkg", (Parcelable)localObject2);
-        this.jdField_a_of_type_AndroidOsBundle.remove("qrbkgUrl");
-      }
-      Object localObject2 = this.jdField_a_of_type_AndroidOsBundle;
-      return localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
+      Object localObject;
       if (QLog.isColorLevel()) {
         QLog.d("CodeMaskManager", 2, localOutOfMemoryError.getMessage());
       }
@@ -75,22 +46,48 @@ class CodeMaskManager$PrepareBundleTask
     }
     catch (IOException localIOException)
     {
-      label184:
-      break label184;
+      label52:
+      return null;
     }
+    try
+    {
+      localObject = QRUtils.a((String)localObject, this.c.getInt("qrsz"));
+    }
+    catch (Exception localException)
+    {
+      break label52;
+    }
+    localObject = null;
+    if (localObject == null) {
+      return null;
+    }
+    if (this.c.containsKey("bkgUrl"))
+    {
+      localObject = CodeMaskManager.a(this.this$0, this.c.getString("bkgUrl"));
+      this.c.putParcelable("bkg", (Parcelable)localObject);
+      this.c.remove("bkgUrl");
+    }
+    if (this.c.containsKey("qrbkgUrl"))
+    {
+      localObject = CodeMaskManager.a(this.this$0, this.c.getString("qrbkgUrl"));
+      this.c.putParcelable("qrbkg", (Parcelable)localObject);
+      this.c.remove("qrbkgUrl");
+    }
+    localObject = this.c;
+    return localObject;
   }
   
   public void run()
   {
     Bundle localBundle = a();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.post(new CodeMaskManager.PrepareBundleTask.1(this, localBundle));
+    if (this.a.compareAndSet(false, true)) {
+      this.this$0.g.post(new CodeMaskManager.PrepareBundleTask.1(this, localBundle));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager.PrepareBundleTask
  * JD-Core Version:    0.7.0.1
  */

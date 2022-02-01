@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class setUserFlagRsp
   extends JceStruct
 {
-  public int ret;
+  public int ret = 0;
   
   public setUserFlagRsp() {}
   
@@ -28,7 +28,7 @@ public final class setUserFlagRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ProfileLogic.QC.setUserFlagRsp
  * JD-Core Version:    0.7.0.1
  */

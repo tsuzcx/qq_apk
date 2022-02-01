@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,13 +16,13 @@ public final class stSimpleGetFeedListRsp
   static Map<String, Integer> cache_followinfo;
   static stMyVideoInfo cache_my_vinfo = new stMyVideoInfo();
   public String attach_info = "";
-  public byte clearcache;
-  public stGlobalConfig config;
-  public ArrayList<stSimpleMetaFeed> feeds;
-  public Map<String, Integer> followinfo;
+  public byte clearcache = 0;
+  public stGlobalConfig config = null;
+  public ArrayList<stSimpleMetaFeed> feeds = null;
+  public Map<String, Integer> followinfo = null;
   public String gdt_args = "";
   public boolean is_finished = true;
-  public stMyVideoInfo my_vinfo;
+  public stMyVideoInfo my_vinfo = null;
   public String session = "";
   public String trace_id = "";
   
@@ -65,37 +66,45 @@ public final class stSimpleGetFeedListRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 0);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.feeds != null) {
-      paramJceOutputStream.write(this.feeds, 1);
+    localObject = this.feeds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.is_finished, 2);
-    if (this.followinfo != null) {
-      paramJceOutputStream.write(this.followinfo, 3);
+    localObject = this.followinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.clearcache, 4);
-    if (this.config != null) {
-      paramJceOutputStream.write(this.config, 5);
+    localObject = this.config;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.gdt_args != null) {
-      paramJceOutputStream.write(this.gdt_args, 6);
+    localObject = this.gdt_args;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.my_vinfo != null) {
-      paramJceOutputStream.write(this.my_vinfo, 7);
+    localObject = this.my_vinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.session != null) {
-      paramJceOutputStream.write(this.session, 8);
+    localObject = this.session;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.trace_id != null) {
-      paramJceOutputStream.write(this.trace_id, 9);
+    localObject = this.trace_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleGetFeedListRsp
  * JD-Core Version:    0.7.0.1
  */

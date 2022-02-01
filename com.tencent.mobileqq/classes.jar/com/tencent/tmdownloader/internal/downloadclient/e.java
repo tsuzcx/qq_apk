@@ -11,33 +11,31 @@ class e
   
   public void run()
   {
-    if (c.a(this.a) == null) {}
-    for (;;)
-    {
+    if (c.a(this.a) == null) {
       return;
-      Object localObject = new SyncSDKHandShakeRequest();
-      ((SyncSDKHandShakeRequest)localObject).extra = "hello YYB";
-      localObject = c.a((JceStruct)localObject, "");
-      if ((localObject != null) && (localObject.length > 0)) {
-        try
+    }
+    Object localObject = new SyncSDKHandShakeRequest();
+    ((SyncSDKHandShakeRequest)localObject).extra = "hello YYB";
+    localObject = c.a((JceStruct)localObject, "");
+    if ((localObject != null) && (localObject.length > 0)) {
+      try
+      {
+        if (c.a(this.a) != null)
         {
-          if (c.a(this.a) != null)
-          {
-            c.a(this.a).b((byte[])localObject);
-            return;
-          }
+          c.a(this.a).b((byte[])localObject);
+          return;
         }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
-        }
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,66 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.byd;
-import com.tencent.mm.protocal.protobuf.bye;
-import com.tencent.mm.protocal.protobuf.cpg;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cqx;
+import com.tencent.mm.protocal.protobuf.cqy;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private String cnv;
-  public byte[] qEE;
-  public bye qEH;
+  public cqy PnG;
+  private h callback;
+  private final c rr;
   
-  public i(String paramString)
+  public i()
   {
-    this.cnv = paramString;
+    AppMethodBeat.i(298542);
+    c.a locala = new c.a();
+    locala.otE = new cqx();
+    locala.otF = new cqy();
+    locala.funcId = 2745;
+    locala.uri = "/cgi-bin/mmpay-bin/getreceiptassisstatus";
+    this.rr = locala.bEF();
+    AppMethodBeat.o(298542);
   }
   
-  public i(byte[] paramArrayOfByte)
+  public final int doScene(g paramg, h paramh)
   {
-    this.qEE = paramArrayOfByte;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(126856);
-    this.callback = paramf;
-    paramf = new b.a();
-    byd localbyd = new byd();
-    localbyd.cnv = this.cnv;
-    if (this.qEE != null) {
-      localbyd.xgp = aa.ac(this.qEE).getBuffer();
-    }
-    paramf.fsX = localbyd;
-    paramf.fsY = new bye();
-    paramf.funcId = getType();
-    paramf.uri = "/cgi-bin/mmbiz-bin/searchuserauth";
-    paramf.reqCmdId = 0;
-    paramf.respCmdId = 0;
-    int i = dispatch(parame, paramf.ado(), this);
-    AppMethodBeat.o(126856);
+    AppMethodBeat.i(298547);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(298547);
     return i;
   }
   
   public final int getType()
   {
-    return 1169;
+    return 2745;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(126857);
-    this.qEH = ((bye)((b)paramq).fsW.fta);
-    if (this.qEH.wPc != null)
-    {
-      paramInt3 = this.qEH.wPc.csV;
-      paramString = this.qEH.wPc.csW;
+    AppMethodBeat.i(298551);
+    Log.w("MicroMsg.NetSceneGetReceipAssistStatus", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.PnG = ((cqy)c.c.b(((c)params).otC));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(126857);
+    AppMethodBeat.o(298551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.i
  * JD-Core Version:    0.7.0.1
  */

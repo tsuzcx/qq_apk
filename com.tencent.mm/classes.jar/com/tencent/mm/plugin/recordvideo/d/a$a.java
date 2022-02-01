@@ -1,37 +1,9 @@
 package com.tencent.mm.plugin.recordvideo.d;
 
-import a.f.b.j;
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.sdk.f.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
-final class a$a
-  implements Runnable
-{
-  a$a(RecordConfigProvider paramRecordConfigProvider) {}
-  
-  public final void run()
-  {
-    AppMethodBeat.i(155504);
-    Object localObject = g.RL();
-    j.p(localObject, "MMKernel.storage()");
-    if (((com.tencent.mm.kernel.e)localObject).Ru().getBoolean(ac.a.yEJ, true))
-    {
-      localObject = d.TY("mp4");
-      com.tencent.mm.vfs.e.C(this.qfw.qbB, (String)localObject);
-      b.a((String)localObject, ah.getContext());
-    }
-    com.tencent.mm.vfs.e.deleteFile(this.qfw.qbA);
-    AppMethodBeat.o(155504);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/recorder/CameraKitRecorder$Companion;", "", "()V", "MEDIA_FILE_ERROR", "", "MEDIA_RECORD_ERROR", "MEDIA_RECORD_NULL", "MEDIA_RECORD_SUCCESS", "MEDIA_RECORD_TIME_NOT_ENOUGH", "TAG", "", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class a$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

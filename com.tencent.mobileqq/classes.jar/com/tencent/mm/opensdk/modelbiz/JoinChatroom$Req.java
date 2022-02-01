@@ -2,7 +2,7 @@ package com.tencent.mm.opensdk.modelbiz;
 
 import android.os.Bundle;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class JoinChatroom$Req
   extends BaseReq
@@ -13,7 +13,7 @@ public class JoinChatroom$Req
   
   public boolean checkArgs()
   {
-    return !d.b(this.groupId);
+    return !b.b(this.groupId);
   }
   
   public int getType()
@@ -32,7 +32,7 @@ public class JoinChatroom$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.JoinChatroom.Req
  * JD-Core Version:    0.7.0.1
  */

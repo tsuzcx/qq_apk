@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.structmsg;
 
-import aepi;
-import aetk;
-import alud;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,27 +13,26 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aurc;
-import awfa;
-import azah;
-import azqs;
-import azur;
-import azus;
-import azvd;
-import azve;
-import azvf;
-import azwj;
-import azwm;
-import baqn;
-import bayu;
-import bdff;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.music.QQPlayerCallback;
 import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService;
+import com.tencent.mobileqq.onlinestatus.manager.IOnlineMusicStatusManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.service.message.MessageUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.AppShareIDUtil;
+import com.tencent.open.sdk.report.SdkShareReporter;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -44,23 +40,24 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.lang.ref.WeakReference;
 import java.util.Date;
-import syb;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class StructMsgForAudioShare
   extends AbsShareMsg
-  implements aurc
+  implements QQPlayerCallback
 {
-  private static View.OnClickListener a = new azve();
+  private static View.OnClickListener a = new StructMsgForAudioShare.1();
   private WeakReference<URLImageView> mCoverImage;
   private boolean mIsShowCommentLayout;
-  private View.OnClickListener musicShareCoverClikListener = new azvf(this);
+  private View.OnClickListener musicShareCoverClikListener = new StructMsgForAudioShare.2(this);
   
-  public StructMsgForAudioShare()
+  StructMsgForAudioShare()
   {
     this.mMsgServiceID = 2;
   }
   
-  public StructMsgForAudioShare(Bundle paramBundle)
+  StructMsgForAudioShare(Bundle paramBundle)
   {
     super(paramBundle);
     this.mContentSrc = paramBundle.getString("audio_url");
@@ -69,9 +66,9 @@ public class StructMsgForAudioShare
     this.mMsgAction = "web";
   }
   
-  public StructMsgForAudioShare(azwj paramazwj)
+  StructMsgForAudioShare(StructMsgNode paramStructMsgNode)
   {
-    super(paramazwj);
+    super(paramStructMsgNode);
     this.mMsgServiceID = 2;
   }
   
@@ -80,14 +77,17 @@ public class StructMsgForAudioShare
     StructMsgForAudioShare localStructMsgForAudioShare = new StructMsgForAudioShare();
     localStructMsgForAudioShare.mMsgServiceID = 2;
     localStructMsgForAudioShare.fwFlag = 0;
-    localStructMsgForAudioShare.mContentCover = "http://url.cn/R3i1JD";
+    localStructMsgForAudioShare.mContentCover = "https://url.cn/R3i1JD";
     localStructMsgForAudioShare.mContentLayout = 2;
-    localStructMsgForAudioShare.mContentSrc = "http://url.cn/JpkdzT";
-    localStructMsgForAudioShare.mContentSummary = alud.a(2131714994);
-    localStructMsgForAudioShare.mContentTitle = (alud.a(2131714997) + new Date());
-    localStructMsgForAudioShare.mMsgUrl = "http://y.qq.com/i/song.html?songid=625023&source=qq";
+    localStructMsgForAudioShare.mContentSrc = "https://url.cn/JpkdzT";
+    localStructMsgForAudioShare.mContentSummary = HardCodeUtil.a(2131911911);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131911914));
+    localStringBuilder.append(new Date());
+    localStructMsgForAudioShare.mContentTitle = localStringBuilder.toString();
+    localStructMsgForAudioShare.mMsgUrl = "https://y.qq.com/i/song.html?songid=625023&source=qq";
     localStructMsgForAudioShare.mSourceName = "QQ音乐";
-    localStructMsgForAudioShare.mMsgBrief = alud.a(2131715006);
+    localStructMsgForAudioShare.mMsgBrief = HardCodeUtil.a(2131911923);
     localStructMsgForAudioShare.mMsgAction = "web";
     localStructMsgForAudioShare.mMsgActionData = "y.qq.com";
     localStructMsgForAudioShare.mMsg_A_ActionData = "com.tencent.qqmusic";
@@ -95,40 +95,49 @@ public class StructMsgForAudioShare
     localStructMsgForAudioShare.mSourceAction = "app";
     localStructMsgForAudioShare.mMsgTemplateID = 1;
     localStructMsgForAudioShare.mSourceAppid = 100497308L;
-    localStructMsgForAudioShare.mSourceUrl = "http://web.p.qq.com/qqmpmobile/aio/app.html?id=100497308";
-    localStructMsgForAudioShare.mSourceIcon = "http://p.qpic.cn/qqconnect_app_logo/1LlgQzJVOyA9xucianwgfHru8JA97ERytRa0lHcRRGGw/0";
+    localStructMsgForAudioShare.mSourceUrl = "https://web.p.qq.com/qqmpmobile/aio/app.html?id=100497308";
+    localStructMsgForAudioShare.mSourceIcon = "https://p.qpic.cn/qqconnect_app_logo/1LlgQzJVOyA9xucianwgfHru8JA97ERytRa0lHcRRGGw/0";
     return localStructMsgForAudioShare;
   }
   
   public static void onClickEvent(Context paramContext, StructMsgForAudioShare paramStructMsgForAudioShare)
   {
-    int j = 1;
-    if ("web".equals(paramStructMsgForAudioShare.mMsgAction))
+    boolean bool = "web".equals(paramStructMsgForAudioShare.mMsgAction);
+    int i = 1;
+    if (bool)
     {
-      awfa.a().a = 1;
-      Intent localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("url", paramStructMsgForAudioShare.mMsgUrl);
-      localIntent.putExtra("param_force_internal_browser", true);
-      localIntent.putExtra("isAppShare", true);
-      localIntent.putExtra("appShareID", bdff.a(paramStructMsgForAudioShare.mSourceAppid));
+      ((IOnlineMusicStatusManager)((IOnlineStatusManagerService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class)).a(1);
+      localObject = new Intent(paramContext, QQBrowserDelegationActivity.class);
+      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_aio");
+      ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
+      ((Intent)localObject).putExtra("url", paramStructMsgForAudioShare.mMsgUrl);
+      ((Intent)localObject).putExtra("param_force_internal_browser", true);
+      ((Intent)localObject).putExtra("isAppShare", true);
+      ((Intent)localObject).putExtra("appShareID", AppShareIDUtil.c(paramStructMsgForAudioShare.mSourceAppid));
       paramContext.sendBroadcast(new Intent("qqplayer_exit_action"));
-      syb.a(paramStructMsgForAudioShare.message, localIntent, paramStructMsgForAudioShare.mMsgUrl);
-      paramContext.startActivity(localIntent);
-      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramStructMsgForAudioShare.mMsgUrl, "", "", "");
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(paramStructMsgForAudioShare.message, (Intent)localObject, paramStructMsgForAudioShare.mMsgUrl);
+      paramContext.startActivity((Intent)localObject);
+      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramStructMsgForAudioShare.mMsgUrl, "", "", "");
     }
-    for (int i = 1;; i = 0)
+    else
     {
-      if (i != 0) {}
-      for (i = j;; i = 0)
-      {
-        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForAudioShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForAudioShare.msgId, paramStructMsgForAudioShare.templateIDForPortal, "", paramStructMsgForAudioShare.mMsgUrl);
-        paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForAudioShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForAudioShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(azus.a(paramStructMsgForAudioShare.mMsgUrl));
-        azqs.b(null, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForAudioShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
-        return;
-      }
+      i = 0;
     }
+    paramContext = paramStructMsgForAudioShare.uin;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramStructMsgForAudioShare.msgId);
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", paramContext, "0X80055C7", "0X80055C7", 0, i, ((StringBuilder)localObject).toString(), paramStructMsgForAudioShare.templateIDForPortal, "", paramStructMsgForAudioShare.mMsgUrl);
+    paramContext = new StringBuilder();
+    paramContext.append("MSGID=");
+    paramContext.append(Long.toString(paramStructMsgForAudioShare.msgId));
+    paramContext.append(";TEPLATEID=");
+    paramContext.append(paramStructMsgForAudioShare.templateIDForPortal);
+    paramContext.append(";ARTICALID=");
+    paramContext.append("");
+    paramContext.append(";REFERRER=");
+    paramContext.append(AbsStructMsgElement.a(paramStructMsgForAudioShare.mMsgUrl));
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForAudioShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
   }
   
   public View.OnClickListener getOnClickListener()
@@ -138,55 +147,50 @@ public class StructMsgForAudioShare
   
   public View getPreDialogView(Context paramContext, View paramView)
   {
-    ImageView localImageView;
-    Object localObject;
-    TextView localTextView;
-    String str1;
-    if (paramView != null)
+    if (paramView == null) {
+      paramView = LayoutInflater.from(paramContext).inflate(2131629318, null);
+    }
+    ImageView localImageView = (ImageView)paramView.findViewById(2131435545);
+    Object localObject = (TextView)paramView.findViewById(2131448814);
+    TextView localTextView = (TextView)paramView.findViewById(2131448780);
+    String str1 = this.mContentCover;
+    String str2 = this.mContentTitle;
+    String str3 = this.mContentSummary;
+    ((TextView)localObject).setText(str2);
+    localTextView.setText(str3);
+    boolean bool = TextUtils.isEmpty(str2);
+    int i = 2;
+    if (!bool)
     {
-      localImageView = (ImageView)paramView.findViewById(2131368094);
-      localObject = (TextView)paramView.findViewById(2131379043);
-      localTextView = (TextView)paramView.findViewById(2131379018);
-      str1 = this.mContentCover;
-      String str2 = this.mContentTitle;
-      String str3 = this.mContentSummary;
-      ((TextView)localObject).setText(str2);
-      localTextView.setText(str3);
-      if (TextUtils.isEmpty(str2)) {
-        break label158;
-      }
       localTextView.setMaxLines(2);
       ((TextView)localObject).setVisibility(0);
-      label92:
-      if (!TextUtils.isEmpty(str3)) {
-        break label174;
-      }
     }
-    label158:
-    label174:
-    for (int i = 3;; i = 2)
+    else
     {
-      ((TextView)localObject).setMaxLines(i);
-      localObject = paramContext.getResources().getDrawable(2130849869);
-      localImageView.setBackgroundDrawable(null);
-      if (!TextUtils.isEmpty(str1)) {
-        break label179;
-      }
-      localImageView.setImageDrawable((Drawable)localObject);
-      return paramView;
-      paramView = LayoutInflater.from(paramContext).inflate(2131562674, null);
-      break;
       ((TextView)localObject).setVisibility(8);
       localTextView.setMaxLines(4);
-      break label92;
     }
-    label179:
-    if ((!str1.startsWith("http://")) && (!str1.startsWith("https://"))) {}
-    for (paramContext = Uri.fromFile(new File(str1)).toString();; paramContext = str1)
+    if (TextUtils.isEmpty(str3)) {
+      i = 3;
+    }
+    ((TextView)localObject).setMaxLines(i);
+    localObject = paramContext.getResources().getDrawable(2130852676);
+    localImageView.setBackgroundDrawable(null);
+    if (TextUtils.isEmpty(str1))
     {
-      localImageView.setImageDrawable(URLDrawable.getDrawable(paramContext, (Drawable)localObject, (Drawable)localObject));
+      localImageView.setImageDrawable((Drawable)localObject);
       return paramView;
     }
+    paramContext = str1;
+    if (!str1.startsWith("http://"))
+    {
+      paramContext = str1;
+      if (!str1.startsWith("https://")) {
+        paramContext = Uri.fromFile(new File(str1)).toString();
+      }
+    }
+    localImageView.setImageDrawable(URLDrawable.getDrawable(paramContext, (Drawable)localObject, (Drawable)localObject));
+    return paramView;
   }
   
   public String getToken()
@@ -194,101 +198,101 @@ public class StructMsgForAudioShare
     return QQPlayerService.a(1, String.valueOf(this.uniseq));
   }
   
-  public View getView(Context paramContext, View paramView, aetk paramaetk, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle)
   {
     if (this.mMsgException)
     {
-      paramContext = getVersionExceptionView(paramContext, paramView, paramaetk, paramBundle);
-      paramContext.setId(2131377139);
-      paramContext.setTag(2131377139, this);
+      paramContext = getVersionExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle);
+      paramContext.setId(2131446476);
+      paramContext.setTag(2131446476, this);
       return paramContext;
     }
     paramBundle = paramContext.getResources();
-    paramView = LayoutInflater.from(paramContext).inflate(2131562671, null);
-    paramaetk = (URLImageView)paramView.findViewById(2131368094);
-    this.mCoverImage = new WeakReference(paramaetk);
-    Object localObject1 = (TextView)paramView.findViewById(2131379043);
-    Object localObject2 = (TextView)paramView.findViewById(2131379018);
+    paramView = LayoutInflater.from(paramContext).inflate(2131629315, null);
+    paramOnLongClickAndTouchListener = (URLImageView)paramView.findViewById(2131435545);
+    this.mCoverImage = new WeakReference(paramOnLongClickAndTouchListener);
+    Object localObject1 = (TextView)paramView.findViewById(2131448814);
+    Object localObject2 = (TextView)paramView.findViewById(2131448780);
     ((TextView)localObject1).setText(this.mContentTitle);
     ((TextView)localObject2).setText(this.mContentSummary);
-    int i;
-    if (!TextUtils.isEmpty(this.mContentTitle))
+    boolean bool2 = TextUtils.isEmpty(this.mContentTitle);
+    boolean bool1 = false;
+    if (!bool2)
     {
       ((TextView)localObject2).setMaxLines(2);
       ((TextView)localObject1).setVisibility(0);
-      if (!TextUtils.isEmpty(this.mContentSummary)) {
-        break label344;
-      }
+    }
+    else
+    {
+      ((TextView)localObject1).setVisibility(8);
+      ((TextView)localObject2).setMaxLines(4);
+    }
+    int i;
+    if (TextUtils.isEmpty(this.mContentSummary)) {
       i = 3;
-      label151:
-      ((TextView)localObject1).setMaxLines(i);
-      paramaetk.setVisibility(0);
-      if (!QQPlayerService.a(this)) {
-        break label350;
-      }
-      paramaetk.setImageResource(2130845019);
-      paramaetk.setContentDescription(paramBundle.getString(2131690326));
-      label189:
-      if (TextUtils.isEmpty(this.mContentCover)) {
-        break label418;
-      }
+    } else {
+      i = 2;
+    }
+    ((TextView)localObject1).setMaxLines(i);
+    paramOnLongClickAndTouchListener.setVisibility(0);
+    if (QQPlayerService.d(this))
+    {
+      paramOnLongClickAndTouchListener.setImageResource(2130847050);
+      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131887113));
+    }
+    else
+    {
+      paramOnLongClickAndTouchListener.setImageResource(2130847049);
+      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131887111));
+    }
+    if (!TextUtils.isEmpty(this.mContentCover))
+    {
       localObject1 = this.mContentCover;
-      localObject2 = paramBundle.getDrawable(2130849869);
+      localObject2 = paramBundle.getDrawable(2130852676);
     }
     for (;;)
     {
       try
       {
-        i = aepi.a(70.0F, paramBundle);
+        i = AIOUtils.b(70.0F, paramBundle);
         paramBundle = URLDrawable.getDrawable((String)localObject1, i, i, (Drawable)localObject2, (Drawable)localObject2);
-        if (baqn.b((String)localObject1)) {
-          break label444;
+        if ((AbsDownloader.hasFile((String)localObject1)) || (!URLDrawableHelper.isMobileNetAndAutodownDisabled(paramContext))) {
+          break label455;
         }
-        if (bayu.a(paramContext)) {
-          continue;
-        }
+        paramBundle.setAutoDownload(bool1);
+        paramOnLongClickAndTouchListener.setBackgroundDrawable(paramBundle);
       }
       catch (Exception paramContext)
       {
-        label344:
-        label350:
         if (!QLog.isColorLevel()) {
-          continue;
+          break label382;
         }
-        QLog.d("AudioShareMsg", 2, "getView " + paramContext.getMessage());
-        continue;
       }
-      paramBundle.setAutoDownload(bool);
-      paramaetk.setBackgroundDrawable(paramBundle);
+      paramBundle = new StringBuilder();
+      paramBundle.append("getView ");
+      paramBundle.append(paramContext.getMessage());
+      QLog.d("AudioShareMsg", 2, paramBundle.toString());
+      break label382;
+      paramOnLongClickAndTouchListener.setBackgroundResource(2130852676);
+      label382:
       paramContext = paramView.getLayoutParams();
       if (paramContext == null)
       {
-        paramContext = new RelativeLayout.LayoutParams(BaseChatItemLayout.A, -2);
-        paramView.setLayoutParams(paramContext);
-        paramaetk.setTag(this);
-        paramaetk.setOnClickListener(this.musicShareCoverClikListener);
-        paramView.setId(2131377139);
-        paramView.setTag(2131377139, this);
-        return paramView;
-        ((TextView)localObject1).setVisibility(8);
-        ((TextView)localObject2).setMaxLines(4);
-        break;
-        i = 2;
-        break label151;
-        paramaetk.setImageResource(2130845018);
-        paramaetk.setContentDescription(paramBundle.getString(2131690324));
-        break label189;
-        bool = false;
-        continue;
-        label418:
-        paramaetk.setBackgroundResource(2130849869);
-        continue;
+        paramContext = new RelativeLayout.LayoutParams(BaseChatItemLayout.B, -2);
       }
-      paramContext.width = BaseChatItemLayout.A;
-      paramContext.height = -2;
-      continue;
-      label444:
-      boolean bool = true;
+      else
+      {
+        paramContext.width = BaseChatItemLayout.B;
+        paramContext.height = -2;
+      }
+      paramView.setLayoutParams(paramContext);
+      paramOnLongClickAndTouchListener.setTag(this);
+      paramOnLongClickAndTouchListener.setOnClickListener(this.musicShareCoverClikListener);
+      paramView.setId(2131446476);
+      paramView.setTag(2131446476, this);
+      return paramView;
+      label455:
+      bool1 = true;
     }
   }
   
@@ -296,44 +300,48 @@ public class StructMsgForAudioShare
   
   public void onPlayStateChanged(int paramInt)
   {
-    if ((this.mCoverImage == null) || (this.mCoverImage.get() == null)) {
-      return;
-    }
-    URLImageView localURLImageView = (URLImageView)this.mCoverImage.get();
-    Resources localResources = localURLImageView.getContext().getResources();
-    if ((paramInt == 2) || (paramInt == 1))
+    Object localObject = this.mCoverImage;
+    if (localObject != null)
     {
-      localURLImageView.post(new StructMsgForAudioShare.3(this, localURLImageView));
-      localURLImageView.setContentDescription(localResources.getString(2131690326));
-      return;
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
+      localObject = (URLImageView)this.mCoverImage.get();
+      Resources localResources = ((URLImageView)localObject).getContext().getResources();
+      if ((paramInt != 2) && (paramInt != 1))
+      {
+        ((URLImageView)localObject).post(new StructMsgForAudioShare.4(this, (URLImageView)localObject));
+        ((URLImageView)localObject).setContentDescription(localResources.getString(2131887111));
+        return;
+      }
+      ((URLImageView)localObject).post(new StructMsgForAudioShare.3(this, (URLImageView)localObject));
+      ((URLImageView)localObject).setContentDescription(localResources.getString(2131887113));
     }
-    localURLImageView.post(new StructMsgForAudioShare.4(this, localURLImageView));
-    localURLImageView.setContentDescription(localResources.getString(2131690324));
   }
   
-  protected boolean parseContentNode(azwj paramazwj)
+  protected boolean parseContentNode(StructMsgNode paramStructMsgNode)
   {
-    if (paramazwj == null) {}
-    do
+    if (paramStructMsgNode == null) {
+      return true;
+    }
+    this.mContentLayout = StructMsgUtils.a(paramStructMsgNode.a("layout"));
+    if ((paramStructMsgNode != null) && (paramStructMsgNode.a() >= 3))
     {
-      do
+      StructMsgNode localStructMsgNode = paramStructMsgNode.a(0);
+      if (localStructMsgNode != null)
       {
-        return true;
-        this.mContentLayout = azwm.a(paramazwj.a("layout"));
-      } while ((paramazwj == null) || (paramazwj.a() < 3));
-      azwj localazwj = paramazwj.a(0);
-      if (localazwj != null)
-      {
-        this.mContentCover = localazwj.a("cover");
-        this.mContentSrc = localazwj.a("src");
+        this.mContentCover = localStructMsgNode.a("cover");
+        this.mContentSrc = localStructMsgNode.a("src");
       }
-      localazwj = paramazwj.a(1);
-      if (localazwj != null) {
-        this.mContentTitle = azah.a(azvd.a(localazwj), false);
+      localStructMsgNode = paramStructMsgNode.a(1);
+      if (localStructMsgNode != null) {
+        this.mContentTitle = MessageUtils.a(StructMsgFactory.a(localStructMsgNode), false);
       }
-      paramazwj = paramazwj.a(2);
-    } while (paramazwj == null);
-    this.mContentSummary = azah.a(azvd.a(paramazwj), false);
+      paramStructMsgNode = paramStructMsgNode.a(2);
+      if (paramStructMsgNode != null) {
+        this.mContentSummary = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
+      }
+    }
     return true;
   }
   
@@ -370,62 +378,62 @@ public class StructMsgForAudioShare
           this.mHasSource = true;
         }
       }
-      else if (i >= 2)
+      else
       {
-        this.mMsgTemplateID = paramObjectInput.readInt();
-        this.mMsgAction = paramObjectInput.readUTF();
-        this.mMsgActionData = paramObjectInput.readUTF();
-        this.mMsg_A_ActionData = paramObjectInput.readUTF();
-        this.mMsg_I_ActionData = paramObjectInput.readUTF();
-        this.mMsgUrl = paramObjectInput.readUTF();
-        this.mMsgBrief = paramObjectInput.readUTF();
-        this.mContentLayout = paramObjectInput.readInt();
-        this.mContentCover = paramObjectInput.readUTF();
-        this.mContentSrc = paramObjectInput.readUTF();
-        this.mContentTitle = paramObjectInput.readUTF();
-        this.mContentSummary = paramObjectInput.readUTF();
-        this.mSourceAppid = paramObjectInput.readLong();
-        this.mSourceIcon = paramObjectInput.readUTF();
-        this.mSourceName = paramObjectInput.readUTF();
-        this.mSourceUrl = paramObjectInput.readUTF();
-        this.mSourceAction = paramObjectInput.readUTF();
-        this.mSourceActionData = paramObjectInput.readUTF();
-        this.mSource_A_ActionData = paramObjectInput.readUTF();
-        this.mSource_I_ActionData = paramObjectInput.readUTF();
-        this.fwFlag = paramObjectInput.readInt();
-        this.mFlag = paramObjectInput.readInt();
-        this.mHasSource = paramObjectInput.readBoolean();
-        this.mCommentText = paramObjectInput.readUTF();
-        if (i >= 3)
+        if (i >= 2)
         {
+          this.mMsgTemplateID = paramObjectInput.readInt();
+          this.mMsgAction = paramObjectInput.readUTF();
+          this.mMsgActionData = paramObjectInput.readUTF();
+          this.mMsg_A_ActionData = paramObjectInput.readUTF();
+          this.mMsg_I_ActionData = paramObjectInput.readUTF();
+          this.mMsgUrl = paramObjectInput.readUTF();
+          this.mMsgBrief = paramObjectInput.readUTF();
+          this.mContentLayout = paramObjectInput.readInt();
+          this.mContentCover = paramObjectInput.readUTF();
+          this.mContentSrc = paramObjectInput.readUTF();
+          this.mContentTitle = paramObjectInput.readUTF();
+          this.mContentSummary = paramObjectInput.readUTF();
+          this.mSourceAppid = paramObjectInput.readLong();
+          this.mSourceIcon = paramObjectInput.readUTF();
+          this.mSourceName = paramObjectInput.readUTF();
+          this.mSourceUrl = paramObjectInput.readUTF();
+          this.mSourceAction = paramObjectInput.readUTF();
+          this.mSourceActionData = paramObjectInput.readUTF();
+          this.mSource_A_ActionData = paramObjectInput.readUTF();
+          this.mSource_I_ActionData = paramObjectInput.readUTF();
+          this.fwFlag = paramObjectInput.readInt();
+          this.mFlag = paramObjectInput.readInt();
+          this.mHasSource = paramObjectInput.readBoolean();
+          this.mCommentText = paramObjectInput.readUTF();
+          if (i < 3) {
+            return;
+          }
           this.mCompatibleText = paramObjectInput.readUTF();
           this.msgId = paramObjectInput.readLong();
           this.mPromotionType = paramObjectInput.readInt();
           this.mPromotionMsg = paramObjectInput.readUTF();
           this.mPromotionMenus = paramObjectInput.readUTF();
           this.mPromotionMenuDestructiveIndex = paramObjectInput.readInt();
-          if (i >= 5)
-          {
-            this.source_puin = paramObjectInput.readUTF();
-            if (i >= 7)
-            {
-              this.adverSign = paramObjectInput.readInt();
-              this.adverKey = paramObjectInput.readUTF();
-              this.index = paramObjectInput.readUTF();
-              this.index_name = paramObjectInput.readUTF();
-              this.index_type = paramObjectInput.readUTF();
-              if (i >= 15)
-              {
-                this.forwardType = paramObjectInput.readInt();
-                this.shareData.readExternal(paramObjectInput);
-                if (i >= 16) {}
-              }
-            }
+          if (i < 5) {
+            return;
           }
+          this.source_puin = paramObjectInput.readUTF();
+          if (i < 7) {
+            return;
+          }
+          this.adverSign = paramObjectInput.readInt();
+          this.adverKey = paramObjectInput.readUTF();
+          this.index = paramObjectInput.readUTF();
+          this.index_name = paramObjectInput.readUTF();
+          this.index_type = paramObjectInput.readUTF();
+          if (i < 15) {
+            return;
+          }
+          this.forwardType = paramObjectInput.readInt();
+          this.shareData.readExternal(paramObjectInput);
+          return;
         }
-      }
-      else
-      {
         this.mMsgException = true;
         return;
       }
@@ -440,57 +448,46 @@ public class StructMsgForAudioShare
   
   public void report(Object paramObject)
   {
-    azqs.b(null, "dc00898", "", "", "0X800A62F", "0X800A62F", 0, 0, "2", ForwardUtils.b(this.uinType), this.mContentTitle, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, new Object[] { "音乐曝光=0X800A62F, type=", "2", ", title=", this.mContentTitle, ", uinType=", ForwardUtils.b(this.uinType) });
-    }
+    SdkShareReporter.a("2", this.uinType, this.mContentTitle, this.mSourceAppid);
   }
   
-  protected void toContentXml(azur paramazur)
+  protected void toContentXml(AbsStructMsg.XmlSerializerWithFilter paramXmlSerializerWithFilter)
   {
-    paramazur.startTag(null, "item");
-    paramazur.attribute(null, "layout", String.valueOf(this.mContentLayout));
-    paramazur.startTag(null, "audio");
-    if (this.mContentCover == null)
-    {
-      str = "";
-      paramazur.attribute(null, "cover", str);
-      if (this.mContentSrc != null) {
-        break label169;
-      }
-      str = "";
-      label64:
-      paramazur.attribute(null, "src", str);
-      paramazur.endTag(null, "audio");
-      paramazur.startTag(null, "title");
-      if (this.mContentTitle != null) {
-        break label177;
-      }
-      str = "";
-      label102:
-      paramazur.text(str);
-      paramazur.endTag(null, "title");
-      paramazur.startTag(null, "summary");
-      if (this.mContentSummary != null) {
-        break label185;
-      }
+    paramXmlSerializerWithFilter.startTag(null, "item");
+    paramXmlSerializerWithFilter.attribute(null, "layout", String.valueOf(this.mContentLayout));
+    paramXmlSerializerWithFilter.startTag(null, "audio");
+    Object localObject = this.mContentCover;
+    String str = "";
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = this.mContentCover;
     }
-    label169:
-    label177:
-    label185:
-    for (String str = "";; str = this.mContentSummary)
-    {
-      paramazur.text(str);
-      paramazur.endTag(null, "summary");
-      paramazur.endTag(null, "item");
-      return;
-      str = this.mContentCover;
-      break;
-      str = this.mContentSrc;
-      break label64;
-      str = this.mContentTitle;
-      break label102;
+    paramXmlSerializerWithFilter.attribute(null, "cover", (String)localObject);
+    if (this.mContentSrc == null) {
+      localObject = "";
+    } else {
+      localObject = this.mContentSrc;
     }
+    paramXmlSerializerWithFilter.attribute(null, "src", (String)localObject);
+    paramXmlSerializerWithFilter.endTag(null, "audio");
+    paramXmlSerializerWithFilter.startTag(null, "title");
+    if (this.mContentTitle == null) {
+      localObject = "";
+    } else {
+      localObject = this.mContentTitle;
+    }
+    paramXmlSerializerWithFilter.text((String)localObject);
+    paramXmlSerializerWithFilter.endTag(null, "title");
+    paramXmlSerializerWithFilter.startTag(null, "summary");
+    if (this.mContentSummary == null) {
+      localObject = str;
+    } else {
+      localObject = this.mContentSummary;
+    }
+    paramXmlSerializerWithFilter.text((String)localObject);
+    paramXmlSerializerWithFilter.endTag(null, "summary");
+    paramXmlSerializerWithFilter.endTag(null, "item");
   }
   
   public void writeExternal(ObjectOutput paramObjectOutput)
@@ -498,259 +495,186 @@ public class StructMsgForAudioShare
     paramObjectOutput.writeInt(this.mMsgServiceID);
     paramObjectOutput.writeInt(this.mVersion);
     paramObjectOutput.writeInt(this.mMsgTemplateID);
-    if (this.mMsgAction == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.mMsgActionData != null) {
-        break label606;
-      }
-      str = "";
-      label57:
-      paramObjectOutput.writeUTF(str);
-      if (this.mMsg_A_ActionData != null) {
-        break label614;
-      }
-      str = "";
-      label74:
-      paramObjectOutput.writeUTF(str);
-      if (this.mMsg_I_ActionData != null) {
-        break label622;
-      }
-      str = "";
-      label91:
-      paramObjectOutput.writeUTF(str);
-      if (this.mMsgUrl != null) {
-        break label630;
-      }
-      str = "";
-      label108:
-      paramObjectOutput.writeUTF(str);
-      if (this.mMsgBrief != null) {
-        break label638;
-      }
-      str = "";
-      label125:
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeInt(this.mContentLayout);
-      if (this.mContentCover != null) {
-        break label646;
-      }
-      str = "";
-      label152:
-      paramObjectOutput.writeUTF(str);
-      if (this.mContentSrc != null) {
-        break label654;
-      }
-      str = "";
-      label169:
-      paramObjectOutput.writeUTF(str);
-      if (this.mContentTitle != null) {
-        break label662;
-      }
-      str = "";
-      label186:
-      paramObjectOutput.writeUTF(str);
-      if (this.mContentSummary != null) {
-        break label674;
-      }
-      str = "";
-      label203:
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeLong(this.mSourceAppid);
-      if (this.mSourceIcon != null) {
-        break label686;
-      }
-      str = "";
-      label230:
-      paramObjectOutput.writeUTF(str);
-      if (this.mSourceName != null) {
-        break label694;
-      }
-      str = "";
-      label247:
-      paramObjectOutput.writeUTF(str);
-      if (this.mSourceUrl != null) {
-        break label702;
-      }
-      str = "";
-      label264:
-      paramObjectOutput.writeUTF(str);
-      if (this.mSourceAction != null) {
-        break label710;
-      }
-      str = "";
-      label281:
-      paramObjectOutput.writeUTF(str);
-      if (this.mSourceActionData != null) {
-        break label718;
-      }
-      str = "";
-      label298:
-      paramObjectOutput.writeUTF(str);
-      if (this.mSource_A_ActionData != null) {
-        break label726;
-      }
-      str = "";
-      label315:
-      paramObjectOutput.writeUTF(str);
-      if (this.mSource_I_ActionData != null) {
-        break label734;
-      }
-      str = "";
-      label332:
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeInt(this.fwFlag);
-      paramObjectOutput.writeInt(this.mFlag);
-      paramObjectOutput.writeBoolean(this.mHasSource);
-      if (this.mCommentText != null) {
-        break label742;
-      }
-      str = "";
-      label379:
-      paramObjectOutput.writeUTF(str);
-      if (this.mCompatibleText != null) {
-        break label750;
-      }
-      str = "";
-      label396:
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeLong(this.msgId);
-      paramObjectOutput.writeInt(this.mPromotionType);
-      if (this.mPromotionMsg != null) {
-        break label758;
-      }
-      str = "";
-      label433:
-      paramObjectOutput.writeUTF(str);
-      if (this.mPromotionMenus != null) {
-        break label766;
-      }
-      str = "";
-      label450:
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeInt(this.mPromotionMenuDestructiveIndex);
-      if (this.source_puin != null) {
-        break label774;
-      }
-      str = "";
-      label477:
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeInt(this.adverSign);
-      if (this.adverKey != null) {
-        break label782;
-      }
-      str = "";
-      label504:
-      paramObjectOutput.writeUTF(str);
-      if (this.index != null) {
-        break label790;
-      }
-      str = "";
-      label521:
-      paramObjectOutput.writeUTF(str);
-      if (this.index_name != null) {
-        break label798;
-      }
-      str = "";
-      label538:
-      paramObjectOutput.writeUTF(str);
-      if (this.index_type != null) {
-        break label806;
-      }
-      str = "";
-      label555:
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeInt(this.forwardType);
-      this.shareData.writeExternal(paramObjectOutput);
-      if (this.mCommonData != null) {
-        break label814;
-      }
+    Object localObject = this.mMsgAction;
+    String str = "";
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = this.mMsgAction;
     }
-    label646:
-    label654:
-    label662:
-    label674:
-    label806:
-    label814:
-    for (String str = "";; str = this.mCommonData)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = this.mMsgAction;
-      break;
-      label606:
-      str = this.mMsgActionData;
-      break label57;
-      label614:
-      str = this.mMsg_A_ActionData;
-      break label74;
-      label622:
-      str = this.mMsg_I_ActionData;
-      break label91;
-      label630:
-      str = this.mMsgUrl;
-      break label108;
-      label638:
-      str = this.mMsgBrief;
-      break label125;
-      str = this.mContentCover;
-      break label152;
-      str = this.mContentSrc;
-      break label169;
-      str = azah.a(this.mContentTitle, false);
-      break label186;
-      str = azah.a(this.mContentSummary, false);
-      break label203;
-      label686:
-      str = this.mSourceIcon;
-      break label230;
-      label694:
-      str = this.mSourceName;
-      break label247;
-      label702:
-      str = this.mSourceUrl;
-      break label264;
-      label710:
-      str = this.mSourceAction;
-      break label281;
-      label718:
-      str = this.mSourceActionData;
-      break label298;
-      label726:
-      str = this.mSource_A_ActionData;
-      break label315;
-      label734:
-      str = this.mSource_I_ActionData;
-      break label332;
-      label742:
-      str = this.mCommentText;
-      break label379;
-      label750:
-      str = this.mCompatibleText;
-      break label396;
-      label758:
-      str = this.mPromotionMsg;
-      break label433;
-      label766:
-      str = this.mPromotionMenus;
-      break label450;
-      str = this.source_puin;
-      break label477;
-      str = this.adverKey;
-      break label504;
-      str = this.index;
-      break label521;
-      str = this.index_name;
-      break label538;
-      str = this.index_type;
-      break label555;
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mMsgActionData == null) {
+      localObject = "";
+    } else {
+      localObject = this.mMsgActionData;
     }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mMsg_A_ActionData == null) {
+      localObject = "";
+    } else {
+      localObject = this.mMsg_A_ActionData;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mMsg_I_ActionData == null) {
+      localObject = "";
+    } else {
+      localObject = this.mMsg_I_ActionData;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mMsgUrl == null) {
+      localObject = "";
+    } else {
+      localObject = this.mMsgUrl;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mMsgBrief == null) {
+      localObject = "";
+    } else {
+      localObject = this.mMsgBrief;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    paramObjectOutput.writeInt(this.mContentLayout);
+    if (this.mContentCover == null) {
+      localObject = "";
+    } else {
+      localObject = this.mContentCover;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mContentSrc == null) {
+      localObject = "";
+    } else {
+      localObject = this.mContentSrc;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mContentTitle == null) {
+      localObject = "";
+    } else {
+      localObject = MessageUtils.a(this.mContentTitle, false);
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mContentSummary == null) {
+      localObject = "";
+    } else {
+      localObject = MessageUtils.a(this.mContentSummary, false);
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    paramObjectOutput.writeLong(this.mSourceAppid);
+    if (this.mSourceIcon == null) {
+      localObject = "";
+    } else {
+      localObject = this.mSourceIcon;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mSourceName == null) {
+      localObject = "";
+    } else {
+      localObject = this.mSourceName;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mSourceUrl == null) {
+      localObject = "";
+    } else {
+      localObject = this.mSourceUrl;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mSourceAction == null) {
+      localObject = "";
+    } else {
+      localObject = this.mSourceAction;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mSourceActionData == null) {
+      localObject = "";
+    } else {
+      localObject = this.mSourceActionData;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mSource_A_ActionData == null) {
+      localObject = "";
+    } else {
+      localObject = this.mSource_A_ActionData;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mSource_I_ActionData == null) {
+      localObject = "";
+    } else {
+      localObject = this.mSource_I_ActionData;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    paramObjectOutput.writeInt(this.fwFlag);
+    paramObjectOutput.writeInt(this.mFlag);
+    paramObjectOutput.writeBoolean(this.mHasSource);
+    if (this.mCommentText == null) {
+      localObject = "";
+    } else {
+      localObject = this.mCommentText;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mCompatibleText == null) {
+      localObject = "";
+    } else {
+      localObject = this.mCompatibleText;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    paramObjectOutput.writeLong(this.msgId);
+    paramObjectOutput.writeInt(this.mPromotionType);
+    if (this.mPromotionMsg == null) {
+      localObject = "";
+    } else {
+      localObject = this.mPromotionMsg;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.mPromotionMenus == null) {
+      localObject = "";
+    } else {
+      localObject = this.mPromotionMenus;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    paramObjectOutput.writeInt(this.mPromotionMenuDestructiveIndex);
+    if (this.source_puin == null) {
+      localObject = "";
+    } else {
+      localObject = this.source_puin;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    paramObjectOutput.writeInt(this.adverSign);
+    if (this.adverKey == null) {
+      localObject = "";
+    } else {
+      localObject = this.adverKey;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.index == null) {
+      localObject = "";
+    } else {
+      localObject = this.index;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.index_name == null) {
+      localObject = "";
+    } else {
+      localObject = this.index_name;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.index_type == null) {
+      localObject = "";
+    } else {
+      localObject = this.index_type;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    paramObjectOutput.writeInt(this.forwardType);
+    this.shareData.writeExternal(paramObjectOutput);
+    if (this.mCommonData == null) {
+      localObject = str;
+    } else {
+      localObject = this.mCommonData;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForAudioShare
  * JD-Core Version:    0.7.0.1
  */

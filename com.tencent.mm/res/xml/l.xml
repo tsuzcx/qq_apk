@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <Preference android:title="@string/zx" android:key="backup_move_to_device" android:layout="@layout/afi" />
-    <Preference android:title="@string/a2d" android:key="backup_to_pc" android:layout="@layout/afi" />
+    <PreferenceTitleCategory android:key="backup_select_ext_time_title" android:title="@string/adq" />
+    <RadioCheckPreference android:key="backup_select_ext_time_all" android:title="@string/ae9" />
+    <RadioCheckPreference android:key="backup_select_ext_time_some" android:title="@string/ae_" />
+    <Preference android:key="backup_select_begin_time" android:title="@string/aec" />
+    <Preference android:key="backup_select_end_time" android:title="@string/aeb" />
+    <PreferenceSmallCategory />
+    <PreferenceTitleCategory android:key="backup_select_ext_content_title" android:title="@string/adp" />
+    <RadioCheckPreference android:key="backup_select_ext_content_all_msg" android:title="@string/ae6" />
+    <RadioCheckPreference android:key="backup_select_ext_content_text_only" android:title="@string/ae7" />
 </PreferenceScreen>

@@ -2,71 +2,72 @@ package com.tencent.mm.plugin.offline;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vv;
-import com.tencent.mm.plugin.offline.a.s;
-import com.tencent.mm.plugin.offline.a.s.a;
-import com.tencent.mm.plugin.offline.a.s.c;
-import com.tencent.mm.plugin.offline.a.s.e;
-import com.tencent.mm.plugin.offline.a.s.f;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.adr;
+import com.tencent.mm.plugin.offline.a.u;
+import com.tencent.mm.plugin.offline.a.u.a;
+import com.tencent.mm.plugin.offline.a.u.d;
+import com.tencent.mm.plugin.offline.a.u.f;
+import com.tencent.mm.plugin.offline.a.u.g;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.ui.i;
 import java.util.List;
 
 public final class m
-  implements s.a
+  implements u.a
 {
-  c opW;
+  IListener Kvi;
   
   public m()
   {
-    AppMethodBeat.i(43378);
-    this.opW = new m.1(this);
-    a.ymk.c(this.opW);
-    k.bYF();
-    k.bYG().a(this);
-    AppMethodBeat.o(43378);
+    AppMethodBeat.i(66276);
+    this.Kvi = new WearOfflineLogic.1(this, f.hfK);
+    this.Kvi.alive();
+    k.gvj();
+    k.gvk().a(this);
+    AppMethodBeat.o(66276);
   }
   
-  private static void aU(int paramInt, String paramString)
+  private static void cu(int paramInt, String paramString)
   {
-    AppMethodBeat.i(43379);
-    vv localvv = new vv();
-    localvv.cNa.cNc = paramInt;
-    localvv.cNa.action = 4;
-    localvv.cNa.content = paramString;
-    a.ymk.l(localvv);
-    AppMethodBeat.o(43379);
+    AppMethodBeat.i(66277);
+    adr localadr = new adr();
+    localadr.ihS.ihU = paramInt;
+    localadr.ihS.action = 4;
+    localadr.ihS.content = paramString;
+    localadr.publish();
+    AppMethodBeat.o(66277);
   }
   
-  public final boolean a(s.c paramc)
+  public final boolean onNotify(u.d paramd)
   {
-    AppMethodBeat.i(43380);
-    if (paramc.plW == 6)
+    AppMethodBeat.i(66278);
+    if (paramd.MzB == 6)
     {
-      paramc = (s.f)paramc;
-      if ((paramc.pme.ujl != null) && (paramc.pme.ujl.size() > 0))
+      paramd = (u.g)paramd;
+      if ((paramd.MzL.VGX != null) && (paramd.MzL.VGX.size() > 0))
       {
-        paramc = (Orders.Commodity)paramc.pme.ujl.get(0);
-        aU(0, ah.getContext().getString(2131305713, new Object[] { e.e(paramc.kNS, paramc.ppp) }));
+        paramd = (Orders.Commodity)paramd.MzL.VGX.get(0);
+        cu(0, MMApplicationContext.getContext().getString(a.i.wallet_wear_pay_result_info, new Object[] { i.e(paramd.wZe, paramd.MEq) }));
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(43380);
+      AppMethodBeat.o(66278);
       return false;
-      aU(9, ah.getContext().getString(2131305711));
+      cu(9, MMApplicationContext.getContext().getString(a.i.wallet_wear_pay_error));
       continue;
-      if (paramc.plW == 8) {
-        aU(6, ah.getContext().getString(2131305711));
-      } else if (paramc.plW == 5) {
-        aU(7, bo.bf(((s.e)paramc).pma, ""));
-      } else if (paramc.plW == 4) {
-        aU(8, ah.getContext().getString(2131305712));
+      if (paramd.MzB == 8) {
+        cu(6, MMApplicationContext.getContext().getString(a.i.wallet_wear_pay_error));
+      } else if (paramd.MzB == 5) {
+        cu(7, Util.nullAs(((u.f)paramd).MzG, ""));
+      } else if (paramd.MzB == 4) {
+        cu(8, MMApplicationContext.getContext().getString(a.i.wallet_wear_pay_freeze_error));
       }
     }
   }

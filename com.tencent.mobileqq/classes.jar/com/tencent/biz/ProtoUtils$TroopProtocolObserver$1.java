@@ -1,21 +1,20 @@
 package com.tencent.biz;
 
 import android.os.Bundle;
-import nac;
 
-public class ProtoUtils$TroopProtocolObserver$1
+class ProtoUtils$TroopProtocolObserver$1
   implements Runnable
 {
-  public ProtoUtils$TroopProtocolObserver$1(nac paramnac, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  ProtoUtils$TroopProtocolObserver$1(ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    nac.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    ProtoUtils.TroopProtocolObserver.access$100(this.this$0, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.ProtoUtils.TroopProtocolObserver.1
  * JD-Core Version:    0.7.0.1
  */

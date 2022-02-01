@@ -10,9 +10,9 @@ import java.util.Iterator;
 
 public final class JsVirtualMachine
 {
-  private final Context mContext;
-  private final HashSet<WeakReference<JsVirtualMachine.X5JsContextFallback>> mJsContexts = new HashSet();
-  private final IX5JsVirtualMachine mVirtualMachine;
+  private final Context a;
+  private final IX5JsVirtualMachine b;
+  private final HashSet<WeakReference<JsVirtualMachine.a>> c = new HashSet();
   
   public JsVirtualMachine(Context paramContext)
   {
@@ -21,94 +21,93 @@ public final class JsVirtualMachine
   
   public JsVirtualMachine(Context paramContext, Looper paramLooper)
   {
-    this.mContext = paramContext;
-    this.mVirtualMachine = X5JsCore.createVirtualMachine(paramContext, paramLooper);
+    this.a = paramContext;
+    this.b = X5JsCore.a(paramContext, paramLooper);
   }
   
-  protected IX5JsContext createJsContext()
+  protected IX5JsContext a()
   {
-    if (this.mVirtualMachine == null)
+    Object localObject = this.b;
+    if (localObject == null)
     {
-      JsVirtualMachine.X5JsContextFallback localX5JsContextFallback = new JsVirtualMachine.X5JsContextFallback(this.mContext);
-      this.mJsContexts.add(new WeakReference(localX5JsContextFallback));
-      return localX5JsContextFallback;
+      localObject = new JsVirtualMachine.a(this.a);
+      this.c.add(new WeakReference(localObject));
+      return localObject;
     }
-    return this.mVirtualMachine.createJsContext();
+    return ((IX5JsVirtualMachine)localObject).createJsContext();
   }
   
   public void destroy()
   {
-    if (this.mVirtualMachine != null) {
-      this.mVirtualMachine.destroy();
-    }
-    for (;;)
+    Object localObject = this.b;
+    if (localObject != null)
     {
+      ((IX5JsVirtualMachine)localObject).destroy();
       return;
-      Iterator localIterator = this.mJsContexts.iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.X5JsContextFallback)localWeakReference.get()).destroy();
-        }
+    }
+    localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if (localWeakReference.get() != null) {
+        ((JsVirtualMachine.a)localWeakReference.get()).destroy();
       }
     }
   }
   
   public Looper getLooper()
   {
-    if (this.mVirtualMachine != null) {
-      return this.mVirtualMachine.getLooper();
+    IX5JsVirtualMachine localIX5JsVirtualMachine = this.b;
+    if (localIX5JsVirtualMachine != null) {
+      return localIX5JsVirtualMachine.getLooper();
     }
     return Looper.myLooper();
   }
   
   public boolean isFallback()
   {
-    return this.mVirtualMachine == null;
+    return this.b == null;
   }
   
   public void onPause()
   {
-    if (this.mVirtualMachine != null) {
-      this.mVirtualMachine.onPause();
-    }
-    for (;;)
+    Object localObject = this.b;
+    if (localObject != null)
     {
+      ((IX5JsVirtualMachine)localObject).onPause();
       return;
-      Iterator localIterator = this.mJsContexts.iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.X5JsContextFallback)localWeakReference.get()).onPause();
-        }
+    }
+    localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if (localWeakReference.get() != null) {
+        ((JsVirtualMachine.a)localWeakReference.get()).a();
       }
     }
   }
   
   public void onResume()
   {
-    if (this.mVirtualMachine != null) {
-      this.mVirtualMachine.onResume();
-    }
-    for (;;)
+    Object localObject = this.b;
+    if (localObject != null)
     {
+      ((IX5JsVirtualMachine)localObject).onResume();
       return;
-      Iterator localIterator = this.mJsContexts.iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.X5JsContextFallback)localWeakReference.get()).onResume();
-        }
+    }
+    localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if (localWeakReference.get() != null) {
+        ((JsVirtualMachine.a)localWeakReference.get()).b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsVirtualMachine
  * JD-Core Version:    0.7.0.1
  */

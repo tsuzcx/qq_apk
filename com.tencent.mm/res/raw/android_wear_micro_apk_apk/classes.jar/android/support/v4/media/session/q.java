@@ -2,19 +2,19 @@ package android.support.v4.media.session;
 
 public final class q
 {
-  private final int ih;
-  private final int ii;
-  private final int ij;
-  private final int ik;
-  private final int il;
+  private final int kf;
+  private final int kg;
+  private final int kh;
+  private final int ki;
+  private final int kj;
   
   q(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.ih = paramInt1;
-    this.ii = paramInt2;
-    this.ij = paramInt3;
-    this.ik = paramInt4;
-    this.il = paramInt5;
+    this.kf = paramInt1;
+    this.kg = paramInt2;
+    this.kh = paramInt3;
+    this.ki = paramInt4;
+    this.kj = paramInt5;
   }
 }
 

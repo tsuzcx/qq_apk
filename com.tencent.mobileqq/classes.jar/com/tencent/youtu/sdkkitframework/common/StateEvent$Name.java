@@ -10,12 +10,15 @@ public class StateEvent$Name
   public static final String EXTRA_MESSAGE = "extra_message";
   public static final String MESSAGE = "message";
   public static final String PROCESS_RESULT = "process_action";
+  public static final String STATE_STATS = "state_stats";
   public static final String UI_ACTION = "ui_action";
+  public static final String UI_EXTRA_TIPS = "ui_extra_tips";
   public static final String UI_TIPS = "ui_tips";
+  public static final String WARNING_TIPS = "version_tips";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.StateEvent.Name
  * JD-Core Version:    0.7.0.1
  */

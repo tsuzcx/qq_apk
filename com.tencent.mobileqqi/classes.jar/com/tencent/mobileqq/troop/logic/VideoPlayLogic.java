@@ -58,7 +58,8 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.util.VersionUtils;
 import com.tencent.util.WeakReferenceHandler;
-import gwt;
+import gws;
+import gwv;
 import gww;
 import gwx;
 import gwy;
@@ -67,7 +68,6 @@ import gxa;
 import gxb;
 import gxc;
 import gxd;
-import gxe;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +81,7 @@ public class VideoPlayLogic
   private static final int jdField_e_of_type_Int = 3;
   private Context jdField_a_of_type_AndroidContentContext = null;
   protected final Handler a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new gxc(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new gxb(this);
   private View jdField_a_of_type_AndroidViewView = null;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation = null;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
@@ -89,14 +89,14 @@ public class VideoPlayLogic
   private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new gxd(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new gxc(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   private StructMsgForGeneralShare jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare = null;
   private MediaControllerX jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX = null;
   private MessageSubtitleView jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView = null;
   private VideoViewX jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX = null;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new gxb(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new gxa(this);
   private String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = false;
@@ -303,8 +303,8 @@ public class VideoPlayLogic
     Uri localUri = Uri.parse((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_f_of_type_Int));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX = new MediaControllerX(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setMediaControllerListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setOnSwitchSubTitleBtnClickListener(new gxe(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setonOutLinkBtnClickListener(new gww(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setOnSwitchSubTitleBtnClickListener(new gxd(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.setonOutLinkBtnClickListener(new gwv(this));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetVideoViewX.setMediaController(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX);
     if (!this.jdField_i_of_type_Boolean) {
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaControllerX.a();
@@ -378,7 +378,7 @@ public class VideoPlayLogic
       m();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(this.jdField_a_of_type_JavaLangString, new gxa(this));
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(this.jdField_a_of_type_JavaLangString, new gwz(this));
   }
   
   private void l()
@@ -409,7 +409,7 @@ public class VideoPlayLogic
   private void n()
   {
     Object localObject1 = null;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131231448);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131231447);
     if (localObject2 != null) {
       localObject1 = (View)((View)localObject2).getParent();
     }
@@ -581,7 +581,7 @@ public class VideoPlayLogic
   public void a(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
     if (paramCharSequence2 != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new gwz(this, paramCharSequence1, paramCharSequence2));
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new gwy(this, paramCharSequence1, paramCharSequence2));
     }
   }
   
@@ -634,7 +634,7 @@ public class VideoPlayLogic
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131559634));
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        new gwt(this, paramString).execute(new Void[0]);
+        new gws(this, paramString).execute(new Void[0]);
         return;
       }
     }
@@ -645,7 +645,7 @@ public class VideoPlayLogic
     }
     if (TroopFileUtils.a(this.jdField_a_of_type_AndroidContentContext) != 2)
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131560332), this.jdField_a_of_type_AndroidContentContext.getString(2131560430), 2131561746, 2131560431, new gwx(this), new gwy(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131560332), this.jdField_a_of_type_AndroidContentContext.getString(2131560430), 2131561746, 2131560431, new gww(this), new gwx(this)).show();
       return;
     }
     k();

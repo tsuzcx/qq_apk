@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import adtx;
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
-public class RegisterActivity$13$2
+class RegisterActivity$13$2
   implements Runnable
 {
-  public RegisterActivity$13$2(adtx paramadtx) {}
+  RegisterActivity$13$2(RegisterActivity.13 param13) {}
   
   public void run()
   {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, alud.a(2131713752));
+    RegisterActivity.e(this.a.a);
+    RegisterActivity.a(this.a.a, HardCodeUtil.a(2131910836));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.13.2
  * JD-Core Version:    0.7.0.1
  */

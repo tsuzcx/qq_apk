@@ -3,16 +3,16 @@ package com.tencent.mm.sandbox.monitor;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class CrashUploadAlarmReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ab.d("MicroMsg.CrashUploadAlarmReceiver", "dkcrash AlarmReceiver.onReceive");
-    if (a.drs() == 0) {
-      ExceptionMonitorService.gz(paramContext);
+    Log.i("MicroMsg.CrashUploadAlarmReceiver", "dkcrash AlarmReceiver.onReceive");
+    if ((a.iRZ() == 0) || (a.iSa() == 0)) {
+      b.my(paramContext);
     }
   }
 }

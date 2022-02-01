@@ -1,6 +1,5 @@
 package com.tencent.bugly.crashreport.common.strategy;
 
-import android.text.TextUtils;
 import com.tencent.bugly.proguard.p;
 import com.tencent.bugly.proguard.x;
 import com.tencent.bugly.proguard.z;
@@ -13,67 +12,49 @@ final class a$1
   
   public final void run()
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject2 = p.a().a(a.a, null, true);
+      if (localObject2 != null)
       {
-        Object localObject2 = p.a().a(a.a, null, true);
-        if (localObject2 != null)
-        {
-          localObject1 = (byte[])((Map)localObject2).get("device");
-          localObject2 = (byte[])((Map)localObject2).get("gateway");
-          if (localObject1 != null) {
-            com.tencent.bugly.crashreport.common.info.a.a(a.a(this.a)).e(new String((byte[])localObject1));
-          }
-          if (localObject2 != null) {
-            com.tencent.bugly.crashreport.common.info.a.a(a.a(this.a)).d(new String((byte[])localObject2));
-          }
+        localObject1 = (byte[])((Map)localObject2).get("device");
+        localObject2 = (byte[])((Map)localObject2).get("gateway");
+        if (localObject1 != null) {
+          com.tencent.bugly.crashreport.common.info.a.a(a.a(this.a)).e(new String((byte[])localObject1));
         }
-        Object localObject1 = this.a;
-        localObject2 = this.a;
-        a.a((a)localObject1, a.d());
-        if (a.b(this.a) != null)
+        if (localObject2 != null) {
+          com.tencent.bugly.crashreport.common.info.a.a(a.a(this.a)).d(new String((byte[])localObject2));
+        }
+      }
+      Object localObject1 = this.a;
+      localObject2 = this.a;
+      a.a((a)localObject1, a.d());
+      if (a.b(this.a) != null) {
+        if ((!z.a(a.e())) && (z.c(a.e())))
         {
-          if ((z.a(a.e())) || (!z.c(a.e()))) {
-            continue;
-          }
+          a.b(this.a).q = a.e();
           a.b(this.a).r = a.e();
-          a.b(this.a).s = a.e();
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        if (x.a(localThrowable)) {
-          continue;
+        else
+        {
+          a.b(this.a).q = StrategyBean.b;
+          a.b(this.a).r = StrategyBean.c;
         }
-        localThrowable.printStackTrace();
-        continue;
-        if (!TextUtils.isEmpty(a.b(this.a).r)) {
-          continue;
-        }
-        a.b(this.a).r = StrategyBean.b;
-        if (!TextUtils.isEmpty(a.b(this.a).s)) {
-          continue;
-        }
-        a.b(this.a).s = StrategyBean.c;
-        continue;
-      }
-      this.a.a(a.b(this.a), false);
-      return;
-      if ((com.tencent.bugly.crashreport.common.info.a.b() == null) || (!"oversea".equals(com.tencent.bugly.crashreport.common.info.a.b().A))) {
-        continue;
-      }
-      if (("http://android.bugly.qq.com/rqd/async".equals(a.b(this.a).s)) || ("http://aexception.bugly.qq.com:8012/rqd/async".equals(a.b(this.a).s)) || (TextUtils.isEmpty(a.b(this.a).s)))
-      {
-        a.b(this.a).r = StrategyBean.b;
-        a.b(this.a).s = StrategyBean.c;
       }
     }
+    catch (Throwable localThrowable)
+    {
+      if (!x.a(localThrowable)) {
+        localThrowable.printStackTrace();
+      }
+    }
+    a locala = this.a;
+    locala.a(a.b(locala), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.common.strategy.a.1
  * JD-Core Version:    0.7.0.1
  */

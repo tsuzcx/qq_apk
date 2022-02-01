@@ -374,19 +374,19 @@ public class DownloadStrictTask
     }
     for (;;)
     {
-      Object localObject2 = null;
+      FileOutputStream localFileOutputStream = null;
       String str = null;
       BytesBufferPool.BytesBuffer localBytesBuffer = sBytesBufferPool.get();
       long l2 = 0L;
-      long l6 = this.mContentLength;
+      long l5 = this.mContentLength;
       long l4 = System.currentTimeMillis();
-      Object localObject1 = localObject2;
+      Object localObject = localFileOutputStream;
       try
       {
         File localFile = new File(paramDownloadResult.getPath());
-        localObject1 = localObject2;
+        localObject = localFileOutputStream;
         DownloadTask.TaskHelper.ensureFile(localFile, false);
-        localObject1 = localObject2;
+        localObject = localFileOutputStream;
         boolean bool = paramJobContext.isCancelled();
         if (bool)
         {
@@ -407,10 +407,10 @@ public class DownloadStrictTask
             this.mResumeDownloadProcessor.onDownloadResult(this.mUrl, true);
           }
           str = generateStorageName();
-          localObject1 = generateStoragePath(str);
+          localObject = generateStoragePath(str);
           str = generateStoragePath(str, false);
-          if (ensureStorageSpace((String)localObject1, this.mContentLength)) {
-            paramDownloadResult.setPath((String)localObject1);
+          if (ensureStorageSpace((String)localObject, this.mContentLength)) {
+            paramDownloadResult.setPath((String)localObject);
           }
           for (;;)
           {
@@ -418,7 +418,7 @@ public class DownloadStrictTask
               FileUtil.delete(new File(paramDownloadResult.getPath()));
             }
             break;
-            if ((TextUtils.equals((CharSequence)localObject1, str)) || (!ensureStorageSpace(str, this.mContentLength))) {
+            if ((TextUtils.equals((CharSequence)localObject, str)) || (!ensureStorageSpace(str, this.mContentLength))) {
               break label354;
             }
             paramDownloadResult.setPath(str);
@@ -427,34 +427,34 @@ public class DownloadStrictTask
           paramDownloadResult.getStatus().setFailed(2);
           return false;
         }
-        localObject1 = localObject2;
+        localObject = localFileOutputStream;
         paramHttpResponse = paramHttpResponse.getEntity().getContent();
-        localObject1 = paramHttpResponse;
-        paramJobContext = new FileOutputStream(localFile, true);
+        localObject = paramHttpResponse;
+        localFileOutputStream = new FileOutputStream(localFile, true);
         l1 = l2;
         try
         {
           new ArrayList();
           l1 = l2;
-          long l5 = localFile.length();
+          long l6 = localFile.length();
           for (;;)
           {
             l1 = l2;
             paramInt = paramHttpResponse.read(localBytesBuffer.data, 0, localBytesBuffer.data.length);
             if (paramInt <= 0)
             {
-              if (l6 <= 0L)
+              if (l5 <= 0L)
               {
                 l1 = l2;
-                notifyDownloadProgress(this.mUrlKey, l6 + l5, 1.0F);
+                notifyDownloadProgress(this.mUrlKey, l5 + l6, 1.0F);
               }
               l1 = l2;
-              paramDownloadResult.getContent().size = (l2 + l5);
+              paramDownloadResult.getContent().size = (l2 + l6);
               if (paramHttpResponse != null) {
                 paramHttpResponse.close();
               }
-              if (paramJobContext != null) {
-                paramJobContext.close();
+              if (localFileOutputStream != null) {
+                localFileOutputStream.close();
               }
               sBytesBufferPool.recycle(localBytesBuffer);
               if (this.pNetworkFlowStatistics != null) {
@@ -463,25 +463,25 @@ public class DownloadStrictTask
               return true;
             }
             l1 = l2;
-            paramJobContext.write(localBytesBuffer.data, 0, paramInt);
+            localFileOutputStream.write(localBytesBuffer.data, 0, paramInt);
             long l3 = l2 + paramInt;
             l1 = l3;
             paramDownloadResult.getContent().size = l3;
             l2 = l3;
-            if (l6 > 0L)
+            if (l5 > 0L)
             {
               l1 = l3;
-              notifyDownloadProgress(this.mUrlKey, l6 + l5, (float)(l3 + l5) / (float)(l6 + l5));
+              notifyDownloadProgress(this.mUrlKey, l5 + l6, (float)(l3 + l6) / (float)(l5 + l6));
               l2 = l3;
             }
           }
-          if (localObject1 == null) {
-            break label637;
+          if (paramHttpResponse == null) {
+            break label639;
           }
         }
         finally
         {
-          localObject1 = paramHttpResponse;
+          paramDownloadResult = localFileOutputStream;
         }
       }
       finally
@@ -489,21 +489,21 @@ public class DownloadStrictTask
         for (;;)
         {
           long l1 = l2;
-          paramJobContext = str;
-          paramDownloadResult = paramHttpResponse;
+          paramHttpResponse = (HttpResponse)localObject;
+          paramDownloadResult = str;
         }
       }
     }
-    ((InputStream)localObject1).close();
-    label637:
-    if (paramJobContext != null) {
-      paramJobContext.close();
+    paramHttpResponse.close();
+    label639:
+    if (paramDownloadResult != null) {
+      paramDownloadResult.close();
     }
     sBytesBufferPool.recycle(localBytesBuffer);
     if (this.pNetworkFlowStatistics != null) {
       this.pNetworkFlowStatistics.onDownloadFlow(NetworkManager.getApnValue(), l1, System.currentTimeMillis() - l4);
     }
-    throw paramDownloadResult;
+    throw paramJobContext;
   }
   
   private void initExtraStrategy()

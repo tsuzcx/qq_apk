@@ -1,49 +1,27 @@
 package com.tencent.mm.plugin.ext.openapi.provider;
 
-import android.database.MatrixCursor;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bj;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.protocal.protobuf.cuo;
+import com.tencent.mm.protocal.protobuf.fuq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.SyncTask;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 final class ExtControlProviderOpenApi$1
-  extends bj<MatrixCursor>
+  extends SyncTask<Cursor>
 {
-  ExtControlProviderOpenApi$1(ExtControlProviderOpenApi paramExtControlProviderOpenApi, String[] paramArrayOfString)
+  ExtControlProviderOpenApi$1(ExtControlProviderOpenApi paramExtControlProviderOpenApi, Cursor paramCursor, String[] paramArrayOfString)
   {
-    super(20000L, null);
-  }
-  
-  private MatrixCursor btB()
-  {
-    AppMethodBeat.i(20310);
-    try
-    {
-      ab.d("MicroMsg.ExtControlProviderOpenApi", "syncTaskCur run ");
-      fi localfi = new fi();
-      localfi.ctn.ctp = this.eut;
-      localfi.callback = new ExtControlProviderOpenApi.1.1(this, localfi);
-      if (!com.tencent.mm.sdk.b.a.ymk.l(localfi))
-      {
-        ab.i("MicroMsg.ExtControlProviderOpenApi", "getWifiList publish getWifiListEvent fail");
-        cv(com.tencent.mm.pluginsdk.d.a.a.Ls(8));
-      }
-      AppMethodBeat.o(20310);
-      return null;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.ExtControlProviderOpenApi", "exception in getWifiList syncTaskCur.", new Object[] { localException });
-        cv(com.tencent.mm.pluginsdk.d.a.a.Ls(12));
-      }
-    }
+    super(20000L, paramCursor, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.openapi.provider.ExtControlProviderOpenApi.1
  * JD-Core Version:    0.7.0.1
  */

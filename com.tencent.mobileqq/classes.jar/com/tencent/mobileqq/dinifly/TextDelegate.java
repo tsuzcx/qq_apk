@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
+import androidx.annotation.VisibleForTesting;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,35 +34,33 @@ public class TextDelegate
     this.animationView = null;
   }
   
-  private String getText(String paramString)
+  private void invalidate()
+  {
+    Object localObject = this.animationView;
+    if (localObject != null) {
+      ((DiniFlyAnimationView)localObject).invalidate();
+    }
+    localObject = this.drawable;
+    if (localObject != null) {
+      ((LottieDrawable)localObject).invalidateSelf();
+    }
+  }
+  
+  public String getText(String paramString)
   {
     return paramString;
   }
   
-  private void invalidate()
-  {
-    if (this.animationView != null) {
-      this.animationView.invalidate();
-    }
-    if (this.drawable != null) {
-      this.drawable.invalidateSelf();
-    }
-  }
-  
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public final String getTextInternal(String paramString)
   {
-    Object localObject;
     if ((this.cacheText) && (this.stringMap.containsKey(paramString))) {
-      localObject = (String)this.stringMap.get(paramString);
+      return (String)this.stringMap.get(paramString);
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = getText(paramString);
-      localObject = str;
-    } while (!this.cacheText);
-    this.stringMap.put(paramString, str);
+    String str = getText(paramString);
+    if (this.cacheText) {
+      this.stringMap.put(paramString, str);
+    }
     return str;
   }
   

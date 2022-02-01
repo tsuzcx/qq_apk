@@ -1,22 +1,21 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
-import uvy;
-import uwa;
-import vta;
+import com.tencent.biz.qqstory.model.StoryPromoteTaskManager;
+import com.tencent.biz.qqstory.model.SuperManager;
 
-public class PromoteWidgetController$3
+class PromoteWidgetController$3
   implements Runnable
 {
-  public PromoteWidgetController$3(vta paramvta, long paramLong) {}
+  PromoteWidgetController$3(PromoteWidgetController paramPromoteWidgetController, long paramLong) {}
   
   public void run()
   {
-    ((uvy)uwa.a(29)).a(this.a);
+    ((StoryPromoteTaskManager)SuperManager.a(29)).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.PromoteWidgetController.3
  * JD-Core Version:    0.7.0.1
  */

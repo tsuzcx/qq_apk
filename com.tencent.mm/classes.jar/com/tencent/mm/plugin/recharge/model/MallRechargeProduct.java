@@ -9,53 +9,53 @@ public class MallRechargeProduct
   implements Parcelable
 {
   public static final Parcelable.Creator<MallRechargeProduct> CREATOR;
+  public int BCM;
+  public String NwI;
+  public float NwJ;
+  public float NwK;
+  public int NwL;
+  public final boolean NwM;
+  public boolean NwN;
+  public boolean UN;
   public String appId;
-  public String cqx;
-  public int fnf;
-  public boolean isDefault;
-  public String loz;
-  public String pUM;
-  public String pUN;
-  public float pUO;
-  public float pUP;
-  public boolean pUQ;
-  public int pUR;
-  public int pUS;
-  public final boolean pUT;
-  public boolean pUU;
+  public boolean oBZ;
+  public int omE;
+  public String productId;
+  public String qBb;
+  public String xVh;
   
   static
   {
-    AppMethodBeat.i(44192);
-    CREATOR = new MallRechargeProduct.1();
-    AppMethodBeat.o(44192);
+    AppMethodBeat.i(67100);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(67100);
   }
   
   public MallRechargeProduct(Parcel paramParcel)
   {
-    AppMethodBeat.i(44190);
-    this.pUO = 0.0F;
-    this.pUP = 0.0F;
-    this.pUU = true;
-    this.pUM = paramParcel.readString();
+    AppMethodBeat.i(67098);
+    this.NwJ = 0.0F;
+    this.NwK = 0.0F;
+    this.NwN = true;
+    this.qBb = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.cqx = paramParcel.readString();
-    this.loz = paramParcel.readString();
-    this.pUN = paramParcel.readString();
-    this.pUO = paramParcel.readFloat();
-    this.pUP = paramParcel.readFloat();
+    this.productId = paramParcel.readString();
+    this.xVh = paramParcel.readString();
+    this.NwI = paramParcel.readString();
+    this.NwJ = paramParcel.readFloat();
+    this.NwK = paramParcel.readFloat();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.pUQ = bool1;
-      this.pUR = paramParcel.readInt();
-      this.pUS = paramParcel.readInt();
+      this.UN = bool1;
+      this.NwL = paramParcel.readInt();
+      this.BCM = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label162;
       }
       bool1 = true;
       label123:
-      this.isDefault = bool1;
+      this.oBZ = bool1;
       if (paramParcel.readInt() != 1) {
         break label167;
       }
@@ -64,9 +64,9 @@ public class MallRechargeProduct
     label167:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.pUT = bool1;
-      this.fnf = paramParcel.readInt();
-      AppMethodBeat.o(44190);
+      this.NwM = bool1;
+      this.omE = paramParcel.readInt();
+      AppMethodBeat.o(67098);
       return;
       bool1 = false;
       break;
@@ -77,27 +77,27 @@ public class MallRechargeProduct
   
   public MallRechargeProduct(boolean paramBoolean)
   {
-    this.pUO = 0.0F;
-    this.pUP = 0.0F;
-    this.pUU = true;
-    this.pUT = paramBoolean;
+    this.NwJ = 0.0F;
+    this.NwK = 0.0F;
+    this.NwN = true;
+    this.NwM = paramBoolean;
   }
   
   public static void a(MallRechargeProduct paramMallRechargeProduct1, MallRechargeProduct paramMallRechargeProduct2)
   {
     paramMallRechargeProduct2.appId = paramMallRechargeProduct1.appId;
-    paramMallRechargeProduct2.pUM = paramMallRechargeProduct1.pUM;
-    paramMallRechargeProduct2.cqx = paramMallRechargeProduct1.cqx;
-    paramMallRechargeProduct2.loz = paramMallRechargeProduct1.loz;
-    paramMallRechargeProduct2.pUN = paramMallRechargeProduct1.pUN;
-    paramMallRechargeProduct2.pUO = paramMallRechargeProduct1.pUO;
-    paramMallRechargeProduct2.pUP = paramMallRechargeProduct1.pUP;
-    paramMallRechargeProduct2.pUQ = paramMallRechargeProduct1.pUQ;
-    paramMallRechargeProduct2.pUR = paramMallRechargeProduct1.pUR;
-    paramMallRechargeProduct2.pUS = paramMallRechargeProduct1.pUS;
-    paramMallRechargeProduct2.isDefault = paramMallRechargeProduct1.isDefault;
-    paramMallRechargeProduct2.pUU = paramMallRechargeProduct1.pUU;
-    paramMallRechargeProduct2.fnf = paramMallRechargeProduct1.fnf;
+    paramMallRechargeProduct2.qBb = paramMallRechargeProduct1.qBb;
+    paramMallRechargeProduct2.productId = paramMallRechargeProduct1.productId;
+    paramMallRechargeProduct2.xVh = paramMallRechargeProduct1.xVh;
+    paramMallRechargeProduct2.NwI = paramMallRechargeProduct1.NwI;
+    paramMallRechargeProduct2.NwJ = paramMallRechargeProduct1.NwJ;
+    paramMallRechargeProduct2.NwK = paramMallRechargeProduct1.NwK;
+    paramMallRechargeProduct2.UN = paramMallRechargeProduct1.UN;
+    paramMallRechargeProduct2.NwL = paramMallRechargeProduct1.NwL;
+    paramMallRechargeProduct2.BCM = paramMallRechargeProduct1.BCM;
+    paramMallRechargeProduct2.oBZ = paramMallRechargeProduct1.oBZ;
+    paramMallRechargeProduct2.NwN = paramMallRechargeProduct1.NwN;
+    paramMallRechargeProduct2.omE = paramMallRechargeProduct1.omE;
   }
   
   public int describeContents()
@@ -107,33 +107,33 @@ public class MallRechargeProduct
   
   public final boolean isValid()
   {
-    return (!this.pUQ) || (this.pUR > 0);
+    return (!this.UN) || (this.NwL > 0);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(44191);
-    paramParcel.writeString(this.pUM);
+    AppMethodBeat.i(67099);
+    paramParcel.writeString(this.qBb);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.cqx);
-    paramParcel.writeString(this.loz);
-    paramParcel.writeString(this.pUN);
-    paramParcel.writeFloat(this.pUO);
-    paramParcel.writeFloat(this.pUP);
-    if (this.pUQ)
+    paramParcel.writeString(this.productId);
+    paramParcel.writeString(this.xVh);
+    paramParcel.writeString(this.NwI);
+    paramParcel.writeFloat(this.NwJ);
+    paramParcel.writeFloat(this.NwK);
+    if (this.UN)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.pUR);
-      paramParcel.writeInt(this.pUS);
-      if (!this.isDefault) {
+      paramParcel.writeInt(this.NwL);
+      paramParcel.writeInt(this.BCM);
+      if (!this.oBZ) {
         break label140;
       }
       paramInt = 1;
       label102:
       paramParcel.writeInt(paramInt);
-      if (!this.pUT) {
+      if (!this.NwM) {
         break label145;
       }
     }
@@ -142,8 +142,8 @@ public class MallRechargeProduct
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.fnf);
-      AppMethodBeat.o(44191);
+      paramParcel.writeInt(this.omE);
+      AppMethodBeat.o(67099);
       return;
       paramInt = 0;
       break;
@@ -154,7 +154,7 @@ public class MallRechargeProduct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.MallRechargeProduct
  * JD-Core Version:    0.7.0.1
  */

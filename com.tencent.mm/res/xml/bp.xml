@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/e_7" />
-    <CheckBoxPreference android:title="@string/vd" android:key="settings_find_me_by_weixin" />
-    <CheckBoxPreference android:title="@string/s9" android:key="settings_find_me_by_mobile" />
-    <CheckBoxPreference android:title="@string/tp" android:key="settings_find_me_by_QQ" />
-    <CheckBoxPreference android:title="@string/rm" android:key="settings_find_me_by_google" />
-    <Preference android:title="@string/ee7" android:layout="@layout/ah7" />
-    <PreferenceTitleCategory android:title="@string/e_6" android:key="settings_friend_verify" />
-    <CheckBoxPreference android:title="@string/e9l" android:key="settings_add_me_by_chatroom" />
-    <CheckBoxPreference android:title="@string/e9n" android:key="settings_add_me_by_qrcode" />
-    <CheckBoxPreference android:title="@string/e9m" android:key="settings_add_me_by_namecard" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory />
+    <CheckBoxPreference android:key="room_msg_show_username" android:layout="@layout/bdi" android:title="@string/i7t" />
+    <com.tencent.mm.chatroom.ui.preference.SignaturePreference android:key="room_name" android:layout="@layout/bdi" android:title="@string/i7u" />
+    <PreferenceCategory />
+    <CheckBoxPreference android:key="room_msg_notify" android:layout="@layout/bdi" android:title="@string/i7r" />
+    <CheckBoxPreference android:key="room_show_msg_count" android:layout="@layout/bdi" android:title="@string/i7y" />
+    <PreferenceCategory />
+    <Preference android:key="room_set_chatting_background" android:layout="@layout/bdi" android:title="@string/i99" />
+    <PreferenceCategory />
+    <Preference android:key="room_clear_chatting_history" android:layout="@layout/bdi" android:title="@string/i63" />
 </PreferenceScreen>

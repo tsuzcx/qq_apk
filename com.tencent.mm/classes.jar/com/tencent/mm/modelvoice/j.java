@@ -1,8 +1,8 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import junit.framework.Assert;
@@ -10,7 +10,7 @@ import junit.framework.Assert;
 public final class j
   implements b
 {
-  private RandomAccessFile aZl = null;
+  private RandomAccessFile file = null;
   private String fileName = "";
   
   public j(String paramString)
@@ -18,14 +18,14 @@ public final class j
     this.fileName = paramString;
   }
   
-  private boolean dk(boolean paramBoolean)
+  private boolean hs(boolean paramBoolean)
   {
-    AppMethodBeat.i(55789);
+    AppMethodBeat.i(130042);
     if (this.fileName.length() >= 0)
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (this.aZl != null) {
+      if (this.file != null) {
         break label91;
       }
     }
@@ -33,18 +33,18 @@ public final class j
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ab.d("MicroMsg.SilkFileOperator", "Open file:" + this.aZl + " forWrite:" + paramBoolean);
+      Log.d("MicroMsg.SilkFileOperator", "Open file:" + this.file + " forWrite:" + paramBoolean);
       try
       {
-        this.aZl = e.cr(this.fileName, paramBoolean);
-        AppMethodBeat.o(55789);
+        this.file = y.eA(this.fileName, paramBoolean);
+        AppMethodBeat.o(130042);
         return true;
       }
       catch (Exception localException)
       {
-        ab.e("MicroMsg.SilkFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
-        this.aZl = null;
-        AppMethodBeat.o(55789);
+        Log.e("MicroMsg.SilkFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
+        this.file = null;
+        AppMethodBeat.o(130042);
       }
       bool = false;
       break;
@@ -52,62 +52,62 @@ public final class j
     return false;
   }
   
-  public final void amh()
+  public final void bOT()
   {
-    AppMethodBeat.i(55788);
-    if (this.aZl != null) {
+    AppMethodBeat.i(130041);
+    if (this.file != null) {
       try
       {
-        this.aZl.close();
-        this.aZl = null;
-        ab.d("MicroMsg.SilkFileOperator", "Close :" + this.fileName);
-        AppMethodBeat.o(55788);
+        this.file.close();
+        this.file = null;
+        Log.d("MicroMsg.SilkFileOperator", "Close :" + this.fileName);
+        AppMethodBeat.o(130041);
         return;
       }
       catch (IOException localIOException) {}
     }
-    AppMethodBeat.o(55788);
+    AppMethodBeat.o(130041);
   }
   
-  public final g cJ(int paramInt1, int paramInt2)
+  public final g eQ(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(55790);
+    AppMethodBeat.i(130043);
     g localg = new g();
     if ((paramInt1 < 0) || (paramInt2 <= 0))
     {
       localg.ret = -3;
-      AppMethodBeat.o(55790);
+      AppMethodBeat.o(130043);
       return localg;
     }
-    if ((this.aZl == null) && (!dk(false)))
+    if ((this.file == null) && (!hs(false)))
     {
       localg.ret = -2;
-      AppMethodBeat.o(55790);
+      AppMethodBeat.o(130043);
       return localg;
     }
     localg.buf = new byte[paramInt2];
     try
     {
-      long l = this.aZl.length();
-      this.aZl.seek(paramInt1);
-      int i = this.aZl.read(localg.buf, 0, paramInt2);
-      ab.d("MicroMsg.SilkFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt1 + " readRet:" + i + " fileNow:" + this.aZl.getFilePointer() + " fileSize:" + l);
+      long l = this.file.length();
+      this.file.seek(paramInt1);
+      int i = this.file.read(localg.buf, 0, paramInt2);
+      Log.d("MicroMsg.SilkFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt1 + " readRet:" + i + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
       paramInt2 = i;
       if (i < 0) {
         paramInt2 = 0;
       }
-      localg.ckj = paramInt2;
-      localg.fXX = (paramInt2 + paramInt1);
+      localg.hxg = paramInt2;
+      localg.pbK = (paramInt2 + paramInt1);
       localg.ret = 0;
-      AppMethodBeat.o(55790);
+      AppMethodBeat.o(130043);
       return localg;
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.SilkFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt1 + "  failed:[" + localException.getMessage() + "] ");
-      amh();
+      Log.e("MicroMsg.SilkFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt1 + "  failed:[" + localException.getMessage() + "] ");
+      bOT();
       localg.ret = -1;
-      AppMethodBeat.o(55790);
+      AppMethodBeat.o(130043);
     }
     return localg;
   }
@@ -117,35 +117,27 @@ public final class j
     return 4;
   }
   
-  public final int getSampleRate()
-  {
-    AppMethodBeat.i(55792);
-    int i = MediaRecorder.SilkGetEncSampleRate(cJ(0, 1).buf, MediaRecorder.fZo);
-    AppMethodBeat.o(55792);
-    return i;
-  }
-  
-  public final int write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int y(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(55791);
+    AppMethodBeat.i(130044);
     if ((paramArrayOfByte.length > 0) && (paramInt1 > 0)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      if ((this.aZl != null) || (dk(true))) {
+      if ((this.file != null) || (hs(true))) {
         break;
       }
-      AppMethodBeat.o(55791);
+      AppMethodBeat.o(130044);
       return -1;
     }
     for (;;)
     {
       try
       {
-        this.aZl.seek(paramInt2);
-        this.aZl.write(paramArrayOfByte, 0, paramInt1);
-        long l = this.aZl.getFilePointer();
+        this.file.seek(paramInt2);
+        this.file.write(paramArrayOfByte, 0, paramInt1);
+        long l = this.file.getFilePointer();
         int i = (int)l;
         paramInt1 = paramInt2 + paramInt1;
         if (i == paramInt1)
@@ -157,15 +149,15 @@ public final class j
           }
           bool1 = bool2;
           Assert.assertTrue(bool1);
-          AppMethodBeat.o(55791);
+          AppMethodBeat.o(130044);
           return paramInt1;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        ab.e("MicroMsg.SilkFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + paramInt2 + " failed:[" + paramArrayOfByte.getMessage() + "]");
-        amh();
-        AppMethodBeat.o(55791);
+        Log.e("MicroMsg.SilkFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + paramInt2 + " failed:[" + paramArrayOfByte.getMessage() + "]");
+        bOT();
+        AppMethodBeat.o(130044);
         return -3;
       }
       bool1 = false;
@@ -177,7 +169,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvoice.j
  * JD-Core Version:    0.7.0.1
  */

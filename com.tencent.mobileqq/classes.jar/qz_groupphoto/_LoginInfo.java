@@ -9,11 +9,11 @@ public final class _LoginInfo
 {
   public String strAuthKey = "";
   public String strCookie = "";
-  public long uAuthOption;
-  public long uAuthType;
-  public long uHostUin;
-  public long uPtId;
-  public long uUserIpNet;
+  public long uAuthOption = 0L;
+  public long uAuthType = 0L;
+  public long uHostUin = 0L;
+  public long uPtId = 0L;
+  public long uUserIpNet = 0L;
   
   public _LoginInfo() {}
   
@@ -42,21 +42,23 @@ public final class _LoginInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uAuthType, 0);
-    if (this.strAuthKey != null) {
-      paramJceOutputStream.write(this.strAuthKey, 1);
+    String str = this.strAuthKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uUserIpNet, 2);
     paramJceOutputStream.write(this.uHostUin, 3);
     paramJceOutputStream.write(this.uPtId, 4);
-    if (this.strCookie != null) {
-      paramJceOutputStream.write(this.strCookie, 5);
+    str = this.strCookie;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.uAuthOption, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qz_groupphoto._LoginInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:padding="0.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="0.0dip" style="@style/n6"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/eol" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ListView android:id="@android:id/list" android:layout_height="400.0dip" style="@style/mn" />
-        <TextView android:textColor="@color/rf" android:gravity="bottom|center|left" android:id="@id/eom" android:paddingLeft="@dimen/n0" android:text="@string/eoy" style="@style/nn" />
-        <com.tencent.mm.plugin.sns.ui.SnsEditText android:gravity="top" android:id="@id/eon" android:background="@color/a6q" android:padding="@dimen/l2" android:layout_width="fill_parent" android:layout_height="150.0dip" android:maxLines="4" android:minLines="4" android:singleLine="false" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/r1" style="@style/lb" />
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/a7e" android:paddingLeft="32.0dip" android:paddingTop="40.0dip" android:paddingRight="32.0dip" android:paddingBottom="26.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="17.0dip" android:textColor="@color/m4" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fca" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/xo" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/fc_" android:singleLine="false" />
+        <com.tencent.mm.plugin.game.commlib.view.FixAspectRatioImageView android:id="@id/ei8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:scaleType="fitCenter" app:fix_ratio="0.5627" />
+        <Button android:textSize="17.0dip" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/ei9" android:background="@drawable/a76" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="40.0dip" android:text="@string/f9r" />
     </LinearLayout>
-</ScrollView>
+</FrameLayout>

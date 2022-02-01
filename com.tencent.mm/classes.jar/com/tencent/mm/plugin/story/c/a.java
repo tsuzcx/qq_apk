@@ -1,29 +1,48 @@
 package com.tencent.mm.plugin.story.c;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/config/EditorConfig;", "", "()V", "autoPlayAudio", "", "getAutoPlayAudio", "()Z", "setAutoPlayAudio", "(Z)V", "scene", "Lcom/tencent/mm/plugin/story/config/VideoMusicBussId;", "getScene", "()Lcom/tencent/mm/plugin/story/config/VideoMusicBussId;", "setScene", "(Lcom/tencent/mm/plugin/story/config/VideoMusicBussId;)V", "showLyrics", "getShowLyrics", "setShowLyrics", "showTipPanel", "getShowTipPanel", "setShowTipPanel", "enableAutoPlayAudio", "enableLyrics", "enableTipPanel", "plugin-story_release"})
-public final class a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant;", "", "ElementName", "ModuleName", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface a
 {
-  public boolean sre;
-  public boolean srf;
-  public boolean srg;
-  public d srh = d.srr;
-  
-  public final a a(d paramd)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "", "(Ljava/lang/String;I)V", "ELEMENT_CAMERA", "ELEMENT_ENCODER", "ELEMENT_PROCESS_TYPE", "ELEMENT_ENTRANCE", "ELEMENT_POST", "ELEMENT_BASIC", "ELEMENT_VISITOR", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum a
   {
-    AppMethodBeat.i(150984);
-    j.q(paramd, "scene");
-    this.srh = paramd;
-    AppMethodBeat.o(150984);
-    return this;
+    static
+    {
+      AppMethodBeat.i(118567);
+      Siz = new a("ELEMENT_CAMERA", 0);
+      SiA = new a("ELEMENT_ENCODER", 1);
+      SiB = new a("ELEMENT_PROCESS_TYPE", 2);
+      SiC = new a("ELEMENT_ENTRANCE", 3);
+      SiD = new a("ELEMENT_POST", 4);
+      SiE = new a("ELEMENT_BASIC", 5);
+      SiF = new a("ELEMENT_VISITOR", 6);
+      SiG = new a[] { Siz, SiA, SiB, SiC, SiD, SiE, SiF };
+      AppMethodBeat.o(118567);
+    }
+    
+    private a() {}
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ModuleName;", "", "(Ljava/lang/String;I)V", "MODEL_STORY", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(118570);
+      SiH = new b("MODEL_STORY");
+      SiI = new b[] { SiH };
+      AppMethodBeat.o(118570);
+    }
+    
+    private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.story.c.a
  * JD-Core Version:    0.7.0.1
  */

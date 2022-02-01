@@ -22,26 +22,23 @@ public class ColorUtil
     paramString1 = new int[localArrayList.size()];
     paramString2 = new int[localArrayList.size()][];
     int i = 0;
-    if (i < localArrayList.size())
+    while (i < localArrayList.size())
     {
       paramString3 = (Pair)localArrayList.get(i);
       paramString1[i] = ((Integer)paramString3.second).intValue();
       if (((Integer)paramString3.first).intValue() != -2147483648) {
         paramString2[i] = { ((Integer)paramString3.first).intValue() };
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         paramString2[i] = new int[0];
       }
+      i += 1;
     }
     return new ColorStateList(paramString2, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ColorUtil
  * JD-Core Version:    0.7.0.1
  */

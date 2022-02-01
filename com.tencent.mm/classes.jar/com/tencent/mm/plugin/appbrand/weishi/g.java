@@ -1,53 +1,32 @@
 package com.tencent.mm.plugin.appbrand.weishi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class g
+  extends IEvent
 {
-  public static boolean J(i parami)
+  public a uvT;
+  
+  public g()
   {
-    AppMethodBeat.i(133642);
-    if (parami != null)
-    {
-      boolean bool = "wxfe02ecfe70800f46".equalsIgnoreCase(parami.mAppId);
-      AppMethodBeat.o(133642);
-      return bool;
-    }
-    AppMethodBeat.o(133642);
-    return false;
+    this((byte)0);
   }
   
-  public static void aOu()
+  private g(byte paramByte)
   {
-    AppMethodBeat.i(155945);
-    if (ah.brt())
-    {
-      aOv();
-      AppMethodBeat.o(155945);
-      return;
-    }
-    XIPCInvoker.a("com.tencent.mm", new IPCString("wxfe02ecfe70800f46"), g.a.class, new g.1());
-    AppMethodBeat.o(155945);
+    AppMethodBeat.i(49345);
+    this.uvT = new a();
+    this.order = false;
+    this.callback = null;
+    AppMethodBeat.o(49345);
   }
   
-  static void aOv()
-  {
-    AppMethodBeat.i(155946);
-    ab.i("MicroMsg.AppBrandWeishiUtil", "doSendEventAppBrandWeishiUIReady");
-    f localf = new f();
-    a.ymk.l(localf);
-    AppMethodBeat.o(155946);
-  }
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.weishi.g
  * JD-Core Version:    0.7.0.1
  */

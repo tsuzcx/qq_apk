@@ -1,16 +1,80 @@
+import android.content.Context;
+import android.os.SystemClock;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import android.view.View.OnClickListener;
+import com.tencent.biz.common.util.Util;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class gko
-  extends URLDrawableDownListener.Adapter
+  implements View.OnClickListener
 {
+  private long jdField_a_of_type_Long = 0L;
+  
   public gko(AbsShareMsg paramAbsShareMsg) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    paramView.setBackgroundDrawable(null);
+    if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long < 1000L) {}
+    Object localObject;
+    AbsShareMsg localAbsShareMsg;
+    Context localContext;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+          localObject = paramView.getTag();
+        } while ((localObject == null) || (!AbsShareMsg.class.isInstance(localObject)));
+        localAbsShareMsg = (AbsShareMsg)localObject;
+        localContext = paramView.getContext();
+      } while (!ChatActivity.class.isInstance(localContext));
+      localObject = ((ChatActivity)localContext).a();
+    } while (localObject == null);
+    gkp localgkp = new gkp(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, (QQAppInterface)localObject, paramView);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAction;
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "mSourceOnClickListener sourceAction = " + paramView);
+    }
+    if ("app".equals(paramView)) {
+      if (localgkp.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData)) {
+        paramView = "run";
+      }
+    }
+    for (;;)
+    {
+      Util.a((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uin, "sourceclick", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, paramView);
+      return;
+      if (localgkp.a((ChatActivity)localContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, localAbsShareMsg.mSourceName, localAbsShareMsg.mSourceActionData, localAbsShareMsg.mSource_A_ActionData))
+      {
+        paramView = "setup";
+      }
+      else
+      {
+        localgkp.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl);
+        paramView = "setup";
+        continue;
+        if ("web".equals(paramView))
+        {
+          localgkp.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl);
+          paramView = "setup";
+        }
+        else if ("plugin".equals(paramView))
+        {
+          localgkp.c(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData);
+          paramView = "plugin";
+        }
+        else
+        {
+          localgkp.a(paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData);
+        }
+      }
+    }
   }
 }
 

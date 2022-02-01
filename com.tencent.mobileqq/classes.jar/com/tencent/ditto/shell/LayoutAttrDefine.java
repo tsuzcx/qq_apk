@@ -115,13 +115,15 @@ public class LayoutAttrDefine
   public static final String TTT_CLICK_REPORT_KEY = "ttt_report_area";
   @DittoJsonElement(valueStyles={"gone - 不可见, 不参与布局", "visible", "invisible - 不可见, 但是有占位"})
   public static final String VISIBILITY = "visibility";
+  @DittoJsonElement("Linear Area Layout 中空白占比的权重")
+  public static final String WEIGHT = "weight";
   @DittoJsonElement(valueStyles={"px", "dp", "match_parent", "wrap_content"})
   public static final String Width = "width";
   public static final int WrapContent = -2;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.shell.LayoutAttrDefine
  * JD-Core Version:    0.7.0.1
  */

@@ -5,16 +5,16 @@ import android.os.IBinder;
 final class c
   implements a
 {
-  private IBinder KE;
+  private IBinder Mt;
   
   c(IBinder paramIBinder)
   {
-    this.KE = paramIBinder;
+    this.Mt = paramIBinder;
   }
   
   public final IBinder asBinder()
   {
-    return this.KE;
+    return this.Mt;
   }
 }
 

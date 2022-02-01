@@ -15,17 +15,27 @@ public class RedPointConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("taskId").append(":").append(this.taskId);
-    localStringBuilder.append("|").append("redPointId:").append(this.redPointId);
-    localStringBuilder.append("|").append("passThroughLevel:").append(this.passThroughLevel);
-    localStringBuilder.append("|").append("bindLevel:").append(this.bindLevel);
-    localStringBuilder.append("|").append("priority:").append(this.priority);
+    localStringBuilder.append("taskId");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.taskId);
+    localStringBuilder.append("|");
+    localStringBuilder.append("redPointId:");
+    localStringBuilder.append(this.redPointId);
+    localStringBuilder.append("|");
+    localStringBuilder.append("passThroughLevel:");
+    localStringBuilder.append(this.passThroughLevel);
+    localStringBuilder.append("|");
+    localStringBuilder.append("bindLevel:");
+    localStringBuilder.append(this.bindLevel);
+    localStringBuilder.append("|");
+    localStringBuilder.append("priority:");
+    localStringBuilder.append(this.priority);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.RedPointConfig
  * JD-Core Version:    0.7.0.1
  */

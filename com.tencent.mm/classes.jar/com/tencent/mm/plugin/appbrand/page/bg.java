@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.graphics.Canvas;
-
 public abstract interface bg
 {
-  public abstract boolean a(Canvas paramCanvas);
+  public abstract String aeU(String paramString);
 }
 
 

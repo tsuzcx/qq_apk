@@ -1,84 +1,63 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
-import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import androidx.viewpager.widget.PagerAdapter;
+import com.tencent.biz.pubaccount.accountdetail.handler.AccountDetailBaseItemClickHandler;
+import com.tencent.biz.pubaccount.api.IPublicAccountConfigAttr.PaConfigInfo;
+import com.tencent.biz.pubaccount.api.impl.PublicAccountConfigAttrImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nhu;
-import nik;
-import npn;
-import npo;
 
 public class AccountDetailBannerViewWrapper
-  extends nik
+  extends AccountDetailCustomModuleBaseWrapper
 {
-  public AccountDetailBannerViewWrapper(Context paramContext, ArrayList<npo> paramArrayList, nhu paramnhu, String paramString1, String paramString2)
+  public AccountDetailBannerViewWrapper(Context paramContext, ArrayList<IPublicAccountConfigAttr.PaConfigInfo> paramArrayList, AccountDetailBaseItemClickHandler paramAccountDetailBaseItemClickHandler, String paramString1, String paramString2)
   {
-    super(paramContext, paramArrayList, paramnhu, paramString1, paramString2);
+    super(paramContext, paramArrayList, paramAccountDetailBaseItemClickHandler, paramString1, paramString2);
   }
   
-  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, npn paramnpn, int paramInt, nhu paramnhu, String paramString1, String paramString2)
+  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, PublicAccountConfigAttrImpl paramPublicAccountConfigAttrImpl, int paramInt, AccountDetailBaseItemClickHandler paramAccountDetailBaseItemClickHandler, String paramString1, String paramString2)
   {
-    paramViewGroup = a(paramnpn, paramInt);
+    paramViewGroup = a(paramPublicAccountConfigAttrImpl, paramInt);
     if (paramViewGroup.isEmpty())
     {
-      paramContext = paramView;
-      if (QLog.isDevelopLevel())
-      {
+      if (QLog.isDevelopLevel()) {
         QLog.d("AccountDetailBannerViewWrapper", 2, "createView return convertView!");
-        paramContext = paramView;
+      }
+      return paramView;
+    }
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
+    {
+      paramView = (RelativeLayout)paramView;
+      paramPublicAccountConfigAttrImpl = paramView.getTag();
+      if ((paramPublicAccountConfigAttrImpl != null) && ((paramPublicAccountConfigAttrImpl instanceof AccountDetailBannerViewWrapper)) && (((AccountDetailBannerViewWrapper)paramPublicAccountConfigAttrImpl).a(paramViewGroup)))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("AccountDetailBannerViewWrapper", 2, "createView reuse!");
+        }
+        return paramView;
       }
     }
-    do
-    {
-      return paramContext;
-      if ((paramView == null) || (!(paramView instanceof RelativeLayout))) {
-        break;
-      }
-      paramView = (RelativeLayout)paramView;
-      paramnpn = paramView.getTag();
-      if ((paramnpn == null) || (!(paramnpn instanceof AccountDetailBannerViewWrapper)) || (!((AccountDetailBannerViewWrapper)paramnpn).a(paramViewGroup))) {
-        break;
-      }
-      paramContext = paramView;
-    } while (!QLog.isDevelopLevel());
-    QLog.d("AccountDetailBannerViewWrapper", 2, "createView reuse!");
-    return paramView;
     if (QLog.isDevelopLevel()) {
       QLog.d("AccountDetailBannerViewWrapper", 2, "createView new create!");
     }
-    paramContext = new AccountDetailBannerViewWrapper(paramContext, paramViewGroup, paramnhu, paramString1, paramString2);
+    paramContext = new AccountDetailBannerViewWrapper(paramContext, paramViewGroup, paramAccountDetailBaseItemClickHandler, paramString1, paramString2);
     paramView = paramContext.a();
     paramView.setTag(paramContext);
     return paramView;
-  }
-  
-  private View a(npo paramnpo)
-  {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    localURLImageView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    localURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(paramnpo.e, null, null, true));
-    localURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
-    localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localRelativeLayout.addView(localURLImageView);
-    localRelativeLayout.setTag(paramnpo);
-    localRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    return localRelativeLayout;
   }
   
   private RelativeLayout a()
@@ -86,28 +65,28 @@ public class AccountDetailBannerViewWrapper
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailBannerViewWrapper", 2, "buildView!");
     }
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int i = aepi.a(160.0F, localResources);
-    int j = aepi.a(20.0F, localResources);
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    Resources localResources = this.b.getResources();
+    int i = AIOUtils.b(160.0F, localResources);
+    int j = AIOUtils.b(20.0F, localResources);
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.b);
     localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, i + j));
     localRelativeLayout.setPadding(0, j, 0, 0);
-    AccountDetailBannerViewPager localAccountDetailBannerViewPager = new AccountDetailBannerViewPager(this.jdField_a_of_type_AndroidContentContext);
+    AccountDetailBannerViewPager localAccountDetailBannerViewPager = new AccountDetailBannerViewPager(this.b);
     localAccountDetailBannerViewPager.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     localRelativeLayout.addView(localAccountDetailBannerViewPager);
     ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(a((npo)((Iterator)localObject).next()));
+      localArrayList.add(b((IPublicAccountConfigAttr.PaConfigInfo)((Iterator)localObject).next()));
     }
     localObject = new AccountDetailBannerViewWrapper.ViewPagerAdapter();
     ((AccountDetailBannerViewWrapper.ViewPagerAdapter)localObject).a(localArrayList);
     localAccountDetailBannerViewPager.setAdapter((PagerAdapter)localObject);
-    localObject = new AccountDetailBannerIndicator(this.jdField_a_of_type_AndroidContentContext, localArrayList.size());
+    localObject = new AccountDetailBannerIndicator(this.b, localArrayList.size());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(14, -1);
     localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, aepi.a(10.0F, localResources));
+    localLayoutParams.setMargins(0, 0, 0, AIOUtils.b(10.0F, localResources));
     ((AccountDetailBannerIndicator)localObject).setLayoutParams(localLayoutParams);
     localRelativeLayout.addView((View)localObject);
     localAccountDetailBannerViewPager.setIndicator((AccountDetailBannerIndicator)localObject);
@@ -116,10 +95,25 @@ public class AccountDetailBannerViewWrapper
     localRelativeLayout.setOnClickListener(null);
     return localRelativeLayout;
   }
+  
+  private View b(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo)
+  {
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.b);
+    localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+    URLImageView localURLImageView = new URLImageView(this.b);
+    localURLImageView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    localURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(paramPaConfigInfo.k, null, null, true));
+    localURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
+    localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localRelativeLayout.addView(localURLImageView);
+    localRelativeLayout.setTag(paramPaConfigInfo);
+    localRelativeLayout.setOnClickListener(this.f);
+    return localRelativeLayout;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewWrapper
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailBannerViewWrapper
  * JD-Core Version:    0.7.0.1
  */

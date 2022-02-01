@@ -26,19 +26,22 @@ public class LoginData
   public static Bundle getLoginBundle(LoginData paramLoginData)
   {
     Bundle localBundle = new Bundle();
-    if (paramLoginData.mLoginType == LoginType.WTLOGIN) {}
-    try
-    {
-      localBundle.putLong("QQ", Long.parseLong(paramLoginData.mUserId));
-      localBundle.putLong("WTAPPID", paramLoginData.mLoginAppid);
-      localBundle.putByteArray("A2", paramLoginData.mKey);
-      localBundle.putByteArray("SKEY", paramLoginData.mSkey);
-      localBundle.putByteArray("ST", paramLoginData.mST);
-      localBundle.putByteArray("STKEY", paramLoginData.mSTkey);
-      if (paramLoginData.mLoginType != LoginType.QQConnect) {}
+    if (paramLoginData.mLoginType == LoginType.WTLOGIN) {
+      try
+      {
+        localBundle.putLong("QQ", Long.parseLong(paramLoginData.mUserId));
+        localBundle.putLong("WTAPPID", paramLoginData.mLoginAppid);
+        localBundle.putByteArray("A2", paramLoginData.mKey);
+        localBundle.putByteArray("SKEY", paramLoginData.mSkey);
+        localBundle.putByteArray("ST", paramLoginData.mST);
+        localBundle.putByteArray("STKEY", paramLoginData.mSTkey);
+      }
+      catch (NumberFormatException localNumberFormatException1)
+      {
+        localNumberFormatException1.printStackTrace();
+      }
     }
-    catch (NumberFormatException localNumberFormatException1)
-    {
+    if (paramLoginData.mLoginType == LoginType.QQConnect) {
       try
       {
         localBundle.putByteArray("A2", paramLoginData.mKey);
@@ -46,29 +49,27 @@ public class LoginData
         localBundle.putByteArray("ST", paramLoginData.mST);
         localBundle.putByteArray("STKEY", paramLoginData.mSTkey);
         localBundle.putLong("QQ", Long.parseLong(paramLoginData.mUserId));
-        localBundle.putString("UID", paramLoginData.mUserId);
-        localBundle.putByteArray("KEY", paramLoginData.mKey);
-        localBundle.putString("AUTH_APP_ID", paramLoginData.authAppId);
-        localBundle.putString("ORIGINAL_ID", paramLoginData.mOriginalId);
-        localBundle.putByteArray("ORIGINAL_KEY", paramLoginData.mOriginalKey);
-        localBundle.putInt("ORIGINAL_LOGIN_TYPE", AccountUtil.getOriginalAccountType(paramLoginData.mOriginalLoginType));
-        localBundle.putInt("platform", AccountUtil.getAccountType(paramLoginData.mLoginType));
-        localBundle.putString("ORIGINAL_ID", paramLoginData.mOriginalId);
-        localBundle.putString("ORIGINAL_ID", paramLoginData.mOriginalId);
-        localBundle.putString("QBID", paramLoginData.mQBId);
-        return localBundle;
-        localNumberFormatException1 = localNumberFormatException1;
-        localNumberFormatException1.printStackTrace();
       }
       catch (NumberFormatException localNumberFormatException2)
       {
-        for (;;)
-        {
-          XLog.e("NowLogin", "QQConnect login happen NumberFormatException e = " + localNumberFormatException2.getMessage());
-          localNumberFormatException2.printStackTrace();
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QQConnect login happen NumberFormatException e = ");
+        localStringBuilder.append(localNumberFormatException2.getMessage());
+        XLog.e("NowLogin", localStringBuilder.toString());
+        localNumberFormatException2.printStackTrace();
       }
     }
+    localBundle.putString("UID", paramLoginData.mUserId);
+    localBundle.putByteArray("KEY", paramLoginData.mKey);
+    localBundle.putString("AUTH_APP_ID", paramLoginData.authAppId);
+    localBundle.putString("ORIGINAL_ID", paramLoginData.mOriginalId);
+    localBundle.putByteArray("ORIGINAL_KEY", paramLoginData.mOriginalKey);
+    localBundle.putInt("ORIGINAL_LOGIN_TYPE", AccountUtil.getOriginalAccountType(paramLoginData.mOriginalLoginType));
+    localBundle.putInt("platform", AccountUtil.getAccountType(paramLoginData.mLoginType));
+    localBundle.putString("ORIGINAL_ID", paramLoginData.mOriginalId);
+    localBundle.putString("ORIGINAL_ID", paramLoginData.mOriginalId);
+    localBundle.putString("QBID", paramLoginData.mQBId);
+    return localBundle;
   }
   
   public String getAuthAppId()
@@ -188,7 +189,7 @@ public class LoginData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.common.login.LoginData
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class ReqUpdateQQFace
 {
   static FaceInfo cache_stFaceInfo;
   static ReqHead cache_stHeader;
-  public int bPicType;
-  public FaceInfo stFaceInfo;
-  public ReqHead stHeader;
+  public int bPicType = 0;
+  public FaceInfo stFaceInfo = null;
+  public ReqHead stHeader = null;
   
   public ReqUpdateQQFace() {}
   
@@ -44,7 +44,7 @@ public final class ReqUpdateQQFace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqUpdateQQFace
  * JD-Core Version:    0.7.0.1
  */

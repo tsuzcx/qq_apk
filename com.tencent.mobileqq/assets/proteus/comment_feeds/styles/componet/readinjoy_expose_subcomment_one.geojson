@@ -6,7 +6,7 @@
     "height":{
         "type":"wrap_content"
     },
-    "width":{ 
+    "width":{
         "type":"match_parent"
     },
     "attributes":{
@@ -23,13 +23,13 @@
     },
     "subviews":[
         {
-            "margin_top":"12",
-            "margin_bottom":"12",
-            "margin_left":"9",
-            "margin_right":"9",
-            "view_type":"QQRIJRichTextView",
+            "margin_top":"10",
+            "margin_left":"12",
+            "margin_right":"12",
+            "margin_bottom":"10",
+            "view_type":"RIJCommentRichTextView",
             "view_id":"id_comment_expose_subcomment_one",
-            "align_parent_center_vertical": "YES",
+            "event_type":"cmd_expose_subcommment_one",
             "height":{
                 "type":"wrap_content"
             },
@@ -37,9 +37,86 @@
                 "type":"match_parent"
             },
             "attributes":{
-                "setFontSizeString:":"15",
-                "setCommentModel:":"$subcomment_one"
+                "setCommentModel:":"$subcomment_one",
+                "setRichData:": [
+                    {
+                        "name": "div",
+                        "attrs": {
+                            "class": "div_class",
+                            "style": "line-height: 24px; width:351px;color: #aa0000;-webkit-line-clamp:${subcomment_one_text_line}"
+                        },
+                        "truncationAttrs": {
+                            "text": "更多",
+                            "href": "$subcomment_one_more_url",
+                            "color": "#376099",
+                            "font-size": "16px"
+                        },
+                        "children": [
+                            {
+                              "name": "a",
+                              "attrs": {
+                                  "href": "$subcomment_one_nick_url",
+                                  "style": "line-height: 24px; color: #376099;font-size:15px",
+                                  "ratio": "$subcomment_one_ratio"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "text": "$subcomment_one_nick_name"
+                                }
+                              ]
+                            },
+                            {
+                                "name": "img",
+                                "attrs": {
+                                  "style": "width:${subcomment_one_tag_icon_width}; height:15px",
+                                  "src": "$subcomment_one_tag_icon_path"
+                                }
+                            },
+                            {
+                                "name": "text",
+                                "attrs": {
+                                    "class": "div_class",
+                                    "style": "line-height: 24px; color: #000000;font-size:15px;",
+                                    "ratio": "$subcomment_one_ratio"
+                                },
+                                "children": [
+                                    {
+                                        "type": "text",
+                                        "text": "$subcomment_one_reply"
+                                    }
+                                ]
+                            },
+                            {
+                              "name": "a",
+                              "attrs": {
+                                  "href": "$subcomment_one_to_nick_url",
+                                  "style": "line-height: 24px; color: #376099;font-size:15px",
+                                  "ratio": "$subcomment_one_ratio"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "text": "$subcomment_one_to_nick_name"
+                                }
+                              ]
+                            },
+                            {
+                                "name": "div",
+                                "attrs": {
+                                    "class": "div_class",
+                                    "style": "line-height: 24px; color: #000000;font-size:15px;",
+                                    "ratio": "$subcomment_one_ratio"
+                                },
+                                "children": "$subcomment_one_rpt_data_info"
+                            }
+                        ]
+                    }
+                ]
             }
+        },
+        {
+            "$includeComponet": "componet/RIJ_author_like_sub_one.geojson"
         }
     ]
 }

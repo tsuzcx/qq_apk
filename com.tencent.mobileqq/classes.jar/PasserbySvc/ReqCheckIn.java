@@ -10,8 +10,8 @@ public final class ReqCheckIn
 {
   static ReqHeader cache_stHeader;
   static ReqUserInfo cache_stUserInfo;
-  public ReqHeader stHeader;
-  public ReqUserInfo stUserInfo;
+  public ReqHeader stHeader = null;
+  public ReqUserInfo stUserInfo = null;
   
   public ReqCheckIn() {}
   
@@ -41,7 +41,7 @@ public final class ReqCheckIn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PasserbySvc.ReqCheckIn
  * JD-Core Version:    0.7.0.1
  */

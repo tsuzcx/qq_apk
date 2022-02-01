@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,7 +41,7 @@ public class ExtConfigInfo
   
   public static ExtConfigInfo from(INTERFACE.StExtConfigInfo paramStExtConfigInfo)
   {
-    ExtConfigInfo localExtConfigInfo = new ExtConfigInfo();
+    localExtConfigInfo = new ExtConfigInfo();
     if (paramStExtConfigInfo == null) {
       return localExtConfigInfo;
     }
@@ -60,17 +60,8 @@ public class ExtConfigInfo
         {
           UserAuthScope localUserAuthScope = UserAuthScope.from((MiniUserAuth.StUserAuthScope)paramStExtConfigInfo.next());
           localExtConfigInfo.userAuthScopes.add(localUserAuthScope);
-          continue;
-          return localExtConfigInfo;
         }
       }
-    }
-    catch (Exception paramStExtConfigInfo)
-    {
-      QMLog.e("ExtConfigInfo", "merge from error", paramStExtConfigInfo);
-    }
-    for (;;)
-    {
       paramStExtConfigInfo = ((MiniUserAuth.StApiScopeConfig)localObject).apiToScope.get();
       if (paramStExtConfigInfo != null)
       {
@@ -81,18 +72,23 @@ public class ExtConfigInfo
           localExtConfigInfo.apiScopeEntries.add(localObject);
         }
       }
+      return localExtConfigInfo;
+    }
+    catch (Exception paramStExtConfigInfo)
+    {
+      QMLog.e("ExtConfigInfo", "merge from error", paramStExtConfigInfo);
     }
   }
   
   public static ExtConfigInfo fromJson(JSONObject paramJSONObject)
   {
-    int j = 0;
     ExtConfigInfo localExtConfigInfo = new ExtConfigInfo();
     if (paramJSONObject != null)
     {
       localExtConfigInfo.configKey = paramJSONObject.optString("configKey");
       localExtConfigInfo.configVersion = paramJSONObject.optString("configVersion");
       Object localObject = paramJSONObject.optJSONArray("userAuthScopes");
+      int j = 0;
       int i;
       if (localObject != null)
       {
@@ -131,24 +127,24 @@ public class ExtConfigInfo
     {
       localJSONObject.put("configKey", this.configKey);
       localJSONObject.put("configVersion", this.configVersion);
-      JSONArray localJSONArray1 = new JSONArray();
-      localIterator = this.userAuthScopes.iterator();
+      JSONArray localJSONArray = new JSONArray();
+      Iterator localIterator = this.userAuthScopes.iterator();
       while (localIterator.hasNext()) {
-        localJSONArray1.put(((UserAuthScope)localIterator.next()).toJson());
+        localJSONArray.put(((UserAuthScope)localIterator.next()).toJson());
       }
-      localJSONObject.put("userAuthScopes", localException);
+      localJSONObject.put("userAuthScopes", localJSONArray);
+      localJSONArray = new JSONArray();
+      localIterator = this.apiScopeEntries.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((ApiScopeEntry)localIterator.next()).toJson());
+      }
+      localJSONObject.put("apiScopeEntries", localJSONArray);
+      return localJSONObject;
     }
     catch (Exception localException)
     {
       QMLog.e("ExtConfigInfo", "toJson error", localException);
-      return localJSONObject;
     }
-    JSONArray localJSONArray2 = new JSONArray();
-    Iterator localIterator = this.apiScopeEntries.iterator();
-    while (localIterator.hasNext()) {
-      localJSONArray2.put(((ApiScopeEntry)localIterator.next()).toJson());
-    }
-    localJSONObject.put("apiScopeEntries", localJSONArray2);
     return localJSONObject;
   }
   
@@ -162,7 +158,19 @@ public class ExtConfigInfo
   
   public String toString()
   {
-    return "ExtConfigInfo{configKey='" + this.configKey + '\'' + ", configVersion='" + this.configVersion + '\'' + ", userAuthScopes=" + this.userAuthScopes + ", apiScopeEntries=" + this.apiScopeEntries + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtConfigInfo{configKey='");
+    localStringBuilder.append(this.configKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", configVersion='");
+    localStringBuilder.append(this.configVersion);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", userAuthScopes=");
+    localStringBuilder.append(this.userAuthScopes);
+    localStringBuilder.append(", apiScopeEntries=");
+    localStringBuilder.append(this.apiScopeEntries);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -175,7 +183,7 @@ public class ExtConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo
  * JD-Core Version:    0.7.0.1
  */

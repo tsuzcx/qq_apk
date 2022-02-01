@@ -1,70 +1,18 @@
 package com.tencent.mobileqq.app.automator;
 
-import amhg;
-
 public class StepGroup
   extends AsyncStep
 {
-  protected AsyncStep[] a;
-  protected String[] a;
-  public String b;
-  public int e;
-  
-  private String a(String paramString)
-  {
-    Object localObject = paramString.toCharArray();
-    int n = localObject.length;
-    int j;
-    int i1;
-    int k;
-    if (localObject[0] == '{')
-    {
-      j = 125;
-      i1 = localObject[0];
-      k = 0;
-    }
-    int i;
-    for (int m = 0;; m = i)
-    {
-      if (k >= n) {
-        break label147;
-      }
-      if (localObject[k] == i1) {
-        i = m + 1;
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          break label135;
-        }
-        localObject = paramString.substring(0, k + 1);
-        do
-        {
-          return localObject;
-          if (localObject[0] == '[')
-          {
-            j = 93;
-            break;
-          }
-          localObject = paramString;
-        } while (paramString.indexOf(",") == -1);
-        return paramString.substring(0, paramString.indexOf(","));
-        i = m;
-        if (localObject[k] == j) {
-          i = m - 1;
-        }
-      }
-      label135:
-      k += 1;
-    }
-    label147:
-    return "";
-  }
+  protected AsyncStep[] b;
+  public String c;
+  public int d;
+  protected String[] e;
   
   private String[] a(String paramString)
   {
+    int j = paramString.length();
     int i = 0;
-    if (paramString.length() <= 2) {
+    if (j <= 2) {
       return new String[0];
     }
     String str2 = paramString.substring(1, paramString.length() - 1);
@@ -72,75 +20,114 @@ public class StepGroup
     StringBuilder localStringBuilder = new StringBuilder(50);
     for (paramString = str2; i < k; paramString = str2.substring(i, k))
     {
-      int j = i;
+      j = i;
       String str1 = paramString;
       if (paramString.startsWith(","))
       {
         j = i + 1;
         str1 = str2.substring(j, k);
       }
-      paramString = a(str1);
-      localStringBuilder.append(paramString).append("-");
+      paramString = b(str1);
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("-");
       i = j + paramString.length();
     }
     return localStringBuilder.toString().split("-");
   }
   
+  private String b(String paramString)
+  {
+    char[] arrayOfChar = paramString.toCharArray();
+    int n = arrayOfChar.length;
+    int j;
+    if (arrayOfChar[0] == '{')
+    {
+      j = 125;
+    }
+    else
+    {
+      if (arrayOfChar[0] != '[') {
+        break label121;
+      }
+      j = 93;
+    }
+    int i1 = arrayOfChar[0];
+    int k = 0;
+    int i;
+    for (int m = 0; k < n; m = i)
+    {
+      if (arrayOfChar[k] == i1)
+      {
+        i = m + 1;
+      }
+      else
+      {
+        i = m;
+        if (arrayOfChar[k] == j) {
+          i = m - 1;
+        }
+      }
+      if (i == 0) {
+        return paramString.substring(0, k + 1);
+      }
+      k += 1;
+    }
+    return "";
+    label121:
+    if (paramString.indexOf(",") == -1) {
+      return paramString;
+    }
+    return paramString.substring(0, paramString.indexOf(","));
+  }
+  
   public AsyncStep a()
   {
-    if (this.e < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+    int i = this.d;
+    if (i < this.e.length)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e] = amhg.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.e]);
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.e].jdField_a_of_type_ArrayOfJavaLangObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-      AsyncStep[] arrayOfAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep;
-      int i = this.e;
-      this.e = (i + 1);
+      this.b[i] = StepFactory.a(this.mAutomator, this.e[this.d]);
+      this.b[this.d].mParams = this.mParams;
+      AsyncStep[] arrayOfAsyncStep = this.b;
+      i = this.d;
+      this.d = (i + 1);
       return arrayOfAsyncStep[i];
     }
     return null;
   }
   
-  public void a()
+  public void onCreate()
   {
-    this.jdField_b_of_type_Long = 2147483647L;
-    this.jdField_a_of_type_ArrayOfJavaLangString = a(this.jdField_b_of_type_JavaLangString);
-    this.e = 0;
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = new AsyncStep[this.jdField_a_of_type_ArrayOfJavaLangString.length];
+    this.mTimeout = 2147483647L;
+    this.e = a(this.c);
+    this.d = 0;
+    this.b = new AsyncStep[this.e.length];
   }
   
-  public void a(int paramInt)
+  public void setResult(int paramInt)
   {
     if (paramInt != 4) {
-      super.a(paramInt);
+      super.setResult(paramInt);
     }
-    AsyncStep[] arrayOfAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep;
-    int j;
-    int i;
+    AsyncStep[] arrayOfAsyncStep = this.b;
     if (((paramInt == 8) || (paramInt == 4)) && (arrayOfAsyncStep != null))
     {
-      j = arrayOfAsyncStep.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      AsyncStep localAsyncStep;
-      if (i < j)
+      int j = arrayOfAsyncStep.length;
+      int i = 0;
+      while (i < j)
       {
-        localAsyncStep = arrayOfAsyncStep[i];
-        if (localAsyncStep != null) {}
+        AsyncStep localAsyncStep = arrayOfAsyncStep[i];
+        if (localAsyncStep == null) {
+          return;
+        }
+        localAsyncStep.setResult(paramInt);
+        i += 1;
       }
-      else
-      {
-        return;
-      }
-      localAsyncStep.a(paramInt);
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.StepGroup
  * JD-Core Version:    0.7.0.1
  */

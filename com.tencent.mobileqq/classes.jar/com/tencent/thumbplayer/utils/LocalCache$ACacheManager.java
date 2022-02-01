@@ -71,7 +71,11 @@ public class LocalCache$ACacheManager
   
   private File newFile(String paramString)
   {
-    return new File(this.cacheDir, paramString.hashCode() + "");
+    File localFile = this.cacheDir;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.hashCode());
+    localStringBuilder.append("");
+    return new File(localFile, localStringBuilder.toString());
   }
   
   private void put(File paramFile)
@@ -99,59 +103,51 @@ public class LocalCache$ACacheManager
   
   private long removeNext()
   {
-    File localFile = null;
-    long l1;
-    if (this.lastUsageDates.isEmpty())
-    {
-      l1 = 0L;
-      return l1;
+    if (this.lastUsageDates.isEmpty()) {
+      return 0L;
     }
     Object localObject1 = this.lastUsageDates.entrySet();
-    label206:
+    synchronized (this.lastUsageDates)
+    {
+      Iterator localIterator = ((Set)localObject1).iterator();
+      localObject1 = null;
+      Object localObject3 = null;
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (localObject1 == null)
+        {
+          localObject1 = (File)localEntry.getKey();
+          localObject3 = (Long)localEntry.getValue();
+        }
+        else
+        {
+          Long localLong = (Long)localEntry.getValue();
+          if (localLong.longValue() < ((Long)localObject3).longValue())
+          {
+            localObject1 = (File)localEntry.getKey();
+            localObject3 = localLong;
+          }
+        }
+      }
+      if (localObject1 == null) {
+        return 0L;
+      }
+      long l = calculateSize((File)localObject1);
+      if ((localObject1 != null) && (((File)localObject1).delete())) {
+        this.lastUsageDates.remove(localObject1);
+      }
+      return l;
+    }
     for (;;)
     {
-      synchronized (this.lastUsageDates)
-      {
-        Iterator localIterator = ((Set)localObject1).iterator();
-        localObject1 = null;
-        if (localIterator.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (localFile == null)
-          {
-            localFile = (File)localEntry.getKey();
-            localObject1 = (Long)localEntry.getValue();
-            break label206;
-          }
-          Long localLong = (Long)localEntry.getValue();
-          if (localLong.longValue() >= ((Long)localObject1).longValue()) {
-            break label206;
-          }
-          localFile = (File)localEntry.getKey();
-          localObject1 = localLong;
-          break label206;
-        }
-        if (localFile == null) {
-          return 0L;
-        }
-      }
-      long l2 = calculateSize(localFile);
-      l1 = l2;
-      if (localFile == null) {
-        break;
-      }
-      l1 = l2;
-      if (!localFile.delete()) {
-        break;
-      }
-      this.lastUsageDates.remove(localFile);
-      return l2;
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.LocalCache.ACacheManager
  * JD-Core Version:    0.7.0.1
  */

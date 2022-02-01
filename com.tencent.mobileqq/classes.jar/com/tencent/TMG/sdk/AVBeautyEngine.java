@@ -22,7 +22,10 @@ public class AVBeautyEngine
   
   public static boolean isEnableBeauty()
   {
-    QLog.d("SdkJni", 0, "isEnable = " + VcSystemInfo.isBeautySupported());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isEnable = ");
+    localStringBuilder.append(VcSystemInfo.isBeautySupported());
+    QLog.d("SdkJni", 0, localStringBuilder.toString());
     return VcSystemInfo.isBeautySupported();
   }
   
@@ -81,7 +84,7 @@ public class AVBeautyEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVBeautyEngine
  * JD-Core Version:    0.7.0.1
  */

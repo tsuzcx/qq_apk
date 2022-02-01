@@ -84,19 +84,15 @@ public class TransformParser
       if (j != -1)
       {
         int i = j;
-        for (;;)
-        {
-          if ((i >= paramString.length()) || (paramString.charAt(i) != ' '))
-          {
-            if ((i >= paramString.length()) || (paramString.charAt(i) == ' ')) {
-              break;
-            }
-            ArrayList localArrayList = new ArrayList(2);
-            localArrayList.add(paramString.substring(0, j).trim());
-            localArrayList.add(paramString.substring(i, paramString.length()).trim());
-            return parsePivot(localArrayList, paramInt1, paramInt2, paramInt3);
-          }
+        while ((i < paramString.length()) && (paramString.charAt(i) == ' ')) {
           i += 1;
+        }
+        if ((i < paramString.length()) && (paramString.charAt(i) != ' '))
+        {
+          ArrayList localArrayList = new ArrayList(2);
+          localArrayList.add(paramString.substring(0, j).trim());
+          localArrayList.add(paramString.substring(i, paramString.length()).trim());
+          return parsePivot(localArrayList, paramInt1, paramInt2, paramInt3);
         }
       }
     }
@@ -111,47 +107,43 @@ public class TransformParser
   private static float parsePivotX(String paramString, int paramInt1, int paramInt2)
   {
     String str;
-    if ("left".equals(paramString)) {
+    if ("left".equals(paramString))
+    {
       str = "0%";
     }
-    for (;;)
+    else if ("right".equals(paramString))
     {
-      return parsePercentOrPx(str, paramInt1, paramInt2);
-      if ("right".equals(paramString))
-      {
-        str = "100%";
-      }
-      else
-      {
-        str = paramString;
-        if ("center".equals(paramString)) {
-          str = "50%";
-        }
+      str = "100%";
+    }
+    else
+    {
+      str = paramString;
+      if ("center".equals(paramString)) {
+        str = "50%";
       }
     }
+    return parsePercentOrPx(str, paramInt1, paramInt2);
   }
   
   private static float parsePivotY(String paramString, int paramInt1, int paramInt2)
   {
     String str;
-    if ("top".equals(paramString)) {
+    if ("top".equals(paramString))
+    {
       str = "0%";
     }
-    for (;;)
+    else if ("bottom".equals(paramString))
     {
-      return parsePercentOrPx(str, paramInt1, paramInt2);
-      if ("bottom".equals(paramString))
-      {
-        str = "100%";
-      }
-      else
-      {
-        str = paramString;
-        if ("center".equals(paramString)) {
-          str = "50%";
-        }
+      str = "100%";
+    }
+    else
+    {
+      str = paramString;
+      if ("center".equals(paramString)) {
+        str = "50%";
       }
     }
+    return parsePercentOrPx(str, paramInt1, paramInt2);
   }
   
   public static Map<Property<View, Float>, Float> parseTransForm(@Nullable String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -178,7 +170,7 @@ public class TransformParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.animation.TransformParser
  * JD-Core Version:    0.7.0.1
  */

@@ -19,26 +19,25 @@ public final class b
   extends Drawable
   implements Animatable
 {
-  private boolean abY = true;
-  private boolean abZ = false;
-  private volatile long aca;
-  private final int[] acb = new int[6];
-  private float acc = 1.0F;
-  private float acd = 1.0F;
-  private boolean ace;
-  private final Rect acf = new Rect();
-  private int[] acg;
-  private int ach = 0;
-  private int aci = -1;
-  private float acj;
-  private long ack = 0L;
-  private long acl = 0L;
-  private long acm = 0L;
-  private long acn = 0L;
-  private long aco;
-  private long acp = 0L;
-  private com.tencent.mm.wear.a.b.a acq = new com.tencent.mm.wear.a.b.a();
-  private final Runnable acr = new Runnable()
+  private boolean afA = false;
+  private volatile long afB;
+  private final int[] afC = new int[6];
+  private float afD = 1.0F;
+  private float afE = 1.0F;
+  private boolean afF;
+  private final Rect afG = new Rect();
+  private int[] afH;
+  private int afI = 0;
+  private int afJ = -1;
+  private float afK;
+  private long afL = 0L;
+  private long afM = 0L;
+  private long afN = 0L;
+  private long afO = 0L;
+  private long afP;
+  private long afQ = 0L;
+  private com.tencent.mm.wear.a.b.a afR = new com.tencent.mm.wear.a.b.a();
+  private final Runnable afS = new Runnable()
   {
     public final void run()
     {
@@ -49,7 +48,7 @@ public final class b
       }
     }
   };
-  private final com.tencent.mm.wear.app.g.a acs = new com.tencent.mm.wear.app.g.a()
+  private final com.tencent.mm.wear.app.g.a afT = new com.tencent.mm.wear.app.g.a()
   {
     protected final void execute()
     {
@@ -62,7 +61,7 @@ public final class b
       return "StartTask";
     }
   };
-  private final com.tencent.mm.wear.app.g.a act = new com.tencent.mm.wear.app.g.a()
+  private final com.tencent.mm.wear.app.g.a afU = new com.tencent.mm.wear.app.g.a()
   {
     protected final void execute()
     {
@@ -74,7 +73,7 @@ public final class b
       return "ResetTask";
     }
   };
-  private final com.tencent.mm.wear.app.g.a acu = new com.tencent.mm.wear.app.g.a()
+  private final com.tencent.mm.wear.app.g.a afV = new com.tencent.mm.wear.app.g.a()
   {
     protected final void execute()
     {
@@ -86,7 +85,7 @@ public final class b
       return "SaveRemainderTask";
     }
   };
-  private final Runnable acv = new Runnable()
+  private final Runnable afW = new Runnable()
   {
     public final void run()
     {
@@ -102,7 +101,7 @@ public final class b
       {
         b.c(b.this, b.i(b.this) - b.j(b.this) - b.k(b.this));
         if (b.e(b.this) < 0L) {
-          d.e("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(b.j(b.this)), Long.valueOf(b.k(b.this)), Long.valueOf(b.e(b.this)), Long.valueOf(b.i(b.this)), Integer.valueOf(b.h(b.this)[5]) });
+          d.d("MicroMsg.GIF.MMGIFDrawable", "Render time:%d InvalidateUseTime:%d NextRealInvalidateTime:%d mNextFrameDuration:%d mCurrentFrameIndex:%d", new Object[] { Long.valueOf(b.j(b.this)), Long.valueOf(b.k(b.this)), Long.valueOf(b.e(b.this)), Long.valueOf(b.i(b.this)), Integer.valueOf(b.h(b.this)[5]) });
         }
       }
       b localb = b.this;
@@ -114,15 +113,16 @@ public final class b
       b.d(b.this, b.h(b.this)[4]);
     }
   };
-  private final Paint nC = new Paint(6);
+  private boolean afz = true;
+  private final Paint pq = new Paint(6);
   
   private b(AssetFileDescriptor paramAssetFileDescriptor)
   {
     if (paramAssetFileDescriptor == null) {
       throw new NullPointerException("assert file descritptor is null.");
     }
-    this.aca = MMGIFJNI.openByFileDescroptor(paramAssetFileDescriptor.getFileDescriptor(), paramAssetFileDescriptor.getStartOffset(), this.acb);
-    mC();
+    this.afB = MMGIFJNI.openByFileDescroptor(paramAssetFileDescriptor.getFileDescriptor(), paramAssetFileDescriptor.getStartOffset(), this.afC);
+    no();
   }
   
   public b(Resources paramResources, int paramInt)
@@ -135,8 +135,8 @@ public final class b
     if (paramInputStream == null) {
       throw new NullPointerException("input stream is null.");
     }
-    this.aca = MMGIFJNI.openByInputStrem(paramInputStream, this.acb);
-    mC();
+    this.afB = MMGIFJNI.openByInputStrem(paramInputStream, this.afC);
+    no();
   }
   
   public b(String paramString)
@@ -144,8 +144,8 @@ public final class b
     if (TextUtils.isEmpty(paramString)) {
       throw new NullPointerException("file path is null.");
     }
-    this.aca = MMGIFJNI.openByFilePath(paramString, this.acb);
-    mC();
+    this.afB = MMGIFJNI.openByFilePath(paramString, this.afC);
+    no();
   }
   
   public b(byte[] paramArrayOfByte)
@@ -154,52 +154,52 @@ public final class b
       throw new NullPointerException("bytes is null.");
     }
     d.c("MicroMsg.GIF.MMGIFDrawable", "MMGIFDrawable: openByByteArray", new Object[0]);
-    this.aca = MMGIFJNI.openByByteArray(paramArrayOfByte, this.acb);
-    mC();
+    this.afB = MMGIFJNI.openByByteArray(paramArrayOfByte, this.afC);
+    no();
   }
   
-  private void mC()
+  private void no()
   {
-    d.c("MicroMsg.GIF.MMGIFDrawable", "gif info pointer:%d", new Object[] { Long.valueOf(this.aca) });
-    this.ach = this.acb[2];
-    this.acg = new int[this.acb[0] * this.acb[1]];
-    this.acj = com.tencent.mm.f.a.w(MMApplication.getContext());
+    d.c("MicroMsg.GIF.MMGIFDrawable", "gif info pointer:%d", new Object[] { Long.valueOf(this.afB) });
+    this.afI = this.afC[2];
+    this.afH = new int[this.afC[0] * this.afC[1]];
+    this.afK = com.tencent.mm.f.a.x(MMApplication.getContext());
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (this.ace)
+    if (this.afF)
     {
-      this.acf.set(getBounds());
-      this.acc = (this.acf.width() / this.acb[0]);
-      this.acd = (this.acf.height() / this.acb[1]);
-      this.ace = false;
+      this.afG.set(getBounds());
+      this.afD = (this.afG.width() / this.afC[0]);
+      this.afE = (this.afG.height() / this.afC[1]);
+      this.afF = false;
     }
-    if (this.nC.getShader() == null)
+    if (this.pq.getShader() == null)
     {
-      if (this.acn == 0L) {
-        this.acn = System.currentTimeMillis();
+      if (this.afO == 0L) {
+        this.afO = System.currentTimeMillis();
       }
-      paramCanvas.scale(this.acc, this.acd);
-      int[] arrayOfInt = this.acg;
+      paramCanvas.scale(this.afD, this.afE);
+      int[] arrayOfInt = this.afH;
       if (arrayOfInt != null) {
-        paramCanvas.drawBitmap(arrayOfInt, 0, this.acb[0], 0.0F, 0.0F, this.acb[0], this.acb[1], true, this.nC);
+        paramCanvas.drawBitmap(arrayOfInt, 0, this.afC[0], 0.0F, 0.0F, this.afC[0], this.afC[1], true, this.pq);
       }
       for (;;)
       {
-        this.aco = (System.currentTimeMillis() - this.acn);
-        if ((this.acb[4] < 0) || (this.acb[2] <= 0)) {
+        this.afP = (System.currentTimeMillis() - this.afO);
+        if ((this.afC[4] < 0) || (this.afC[2] <= 0)) {
           break;
         }
-        h.mf().e(this.acv);
+        h.mS().o(this.afW);
         return;
         d.a("MicroMsg.GIF.MMGIFDrawable", "colors is null.", new Object[0]);
       }
-      d.a("MicroMsg.GIF.MMGIFDrawable", "framecount:%d errorcode:%d no post", new Object[] { Integer.valueOf(this.acb[2]), Integer.valueOf(this.acb[4]) });
+      d.a("MicroMsg.GIF.MMGIFDrawable", "framecount:%d errorcode:%d no post", new Object[] { Integer.valueOf(this.afC[2]), Integer.valueOf(this.afC[4]) });
       return;
     }
     d.c("MicroMsg.GIF.MMGIFDrawable", "colors drawRect ", new Object[0]);
-    paramCanvas.drawRect(this.acf, this.nC);
+    paramCanvas.drawRect(this.afG, this.pq);
   }
   
   protected final void finalize()
@@ -218,12 +218,12 @@ public final class b
   
   public final int getIntrinsicHeight()
   {
-    return (int)(this.acb[1] * this.acj);
+    return (int)(this.afC[1] * this.afK);
   }
   
   public final int getIntrinsicWidth()
   {
-    return (int)(this.acb[0] * this.acj);
+    return (int)(this.afC[0] * this.afK);
   }
   
   public final int getOpacity()
@@ -233,59 +233,59 @@ public final class b
   
   public final boolean isRunning()
   {
-    return this.abY;
+    return this.afz;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.ace = true;
+    this.afF = true;
   }
   
   public final void pause()
   {
-    this.abY = false;
+    this.afz = false;
   }
   
   public final void recycle()
   {
-    d.e("MicroMsg.GIF.MMGIFDrawable", "recycle", new Object[0]);
-    this.abZ = true;
-    this.abY = false;
-    long l = this.aca;
-    this.aca = 0L;
+    d.d("MicroMsg.GIF.MMGIFDrawable", "recycle", new Object[0]);
+    this.afA = true;
+    this.afz = false;
+    long l = this.afB;
+    this.afB = 0L;
     MMGIFJNI.recycle(l);
-    this.acg = null;
+    this.afH = null;
   }
   
   public final void reset()
   {
-    this.abZ = false;
-    this.abY = true;
-    com.tencent.mm.wear.a.b.a.aiT.postDelayed(this.act, 300L);
+    this.afA = false;
+    this.afz = true;
+    com.tencent.mm.wear.a.b.a.amv.postDelayed(this.afU, 300L);
   }
   
   public final void setAlpha(int paramInt)
   {
-    this.nC.setAlpha(paramInt);
+    this.pq.setAlpha(paramInt);
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.nC.setColorFilter(paramColorFilter);
+    this.pq.setColorFilter(paramColorFilter);
   }
   
   public final void start()
   {
-    this.abY = true;
-    h.mf().e(this.acs);
+    this.afz = true;
+    h.mS().o(this.afT);
   }
   
   public final void stop()
   {
-    d.e("MicroMsg.GIF.MMGIFDrawable", "stop", new Object[0]);
-    this.abY = false;
-    h.mf().e(this.acu);
+    d.d("MicroMsg.GIF.MMGIFDrawable", "stop", new Object[0]);
+    this.afz = false;
+    h.mS().o(this.afV);
   }
 }
 

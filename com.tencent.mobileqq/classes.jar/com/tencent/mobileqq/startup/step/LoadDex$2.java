@@ -1,10 +1,5 @@
 package com.tencent.mobileqq.startup.step;
 
-import azpf;
-import azsj;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
 class LoadDex$2
   implements Runnable
 {
@@ -12,26 +7,12 @@ class LoadDex$2
   
   public void run()
   {
-    try
-    {
-      QQAppInterface.a().a();
-      azpf.b(29, this.this$0.mDirector, null).step();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LoadDex", 2, "", localThrowable);
-        }
-      }
-    }
+    Step.AmStepFactory.b(16, this.this$0.mDirector, null).step();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadDex.2
  * JD-Core Version:    0.7.0.1
  */

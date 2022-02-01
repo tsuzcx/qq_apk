@@ -22,30 +22,32 @@ public final class IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnintercepted$$i
   }
   
   @Nullable
-  public Object invokeSuspend(@NotNull Object paramObject)
+  protected Object invokeSuspend(@NotNull Object paramObject)
   {
-    switch (this.label)
+    int i = this.label;
+    if (i != 0)
     {
-    default: 
-      throw ((Throwable)new IllegalStateException("This coroutine had already completed".toString()));
-    case 0: 
-      this.label = 1;
-      ResultKt.throwOnFailure(paramObject);
-      paramObject = (Continuation)this;
-      Function1 localFunction1 = this.$this_createCoroutineUnintercepted$inlined;
-      if (localFunction1 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type (kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
+      if (i == 1)
+      {
+        this.label = 2;
+        ResultKt.throwOnFailure(paramObject);
+        return paramObject;
       }
+      throw ((Throwable)new IllegalStateException("This coroutine had already completed".toString()));
+    }
+    this.label = 1;
+    ResultKt.throwOnFailure(paramObject);
+    paramObject = (Continuation)this;
+    Function1 localFunction1 = this.$this_createCoroutineUnintercepted$inlined;
+    if (localFunction1 != null) {
       return ((Function1)TypeIntrinsics.beforeCheckcastToFunctionOfArity(localFunction1, 1)).invoke(paramObject);
     }
-    this.label = 2;
-    ResultKt.throwOnFailure(paramObject);
-    return paramObject;
+    throw new TypeCastException("null cannot be cast to non-null type (kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt.createCoroutineUnintercepted..inlined.createCoroutineFromSuspendFunction.IntrinsicsKt__IntrinsicsJvmKt.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/dr8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/lj" android:id="@id/dg9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
-    <com.tencent.mm.plugin.mmsight.api.MMSightRecordView android:id="@id/dg_" android:layout_width="300.0dip" android:layout_height="450.0dip" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/ahw" android:layout_width="125.0dip" android:layout_height="78.0dip" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <Button android:id="@id/dga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="take picture" android:layout_below="@id/dg_" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/dgb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="start record" android:layout_below="@id/dga" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/dgc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="switch camera" android:layout_below="@id/dgb" android:layout_centerHorizontal="true" />
+    <org.libpag.PAGView android:id="@id/gc2" android:layout_width="@dimen/c2" android:layout_height="@dimen/c2" />
+    <com.tencent.mm.plugin.finder.live.view.FinderLiveGiftTextView android:textColor="@color/al6" android:id="@id/bf9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:includeFontPadding="false" android:layout_marginStart="-12.0dip" android:layout_toEndOf="@id/gc2" />
 </RelativeLayout>

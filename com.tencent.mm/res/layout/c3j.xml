@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/cp" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/jtl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="55.0dip" android:text="@string/jci" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/jtj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/jch" android:layout_below="@id/jtl" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+    <Button android:id="@id/jtk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="69.0dip" android:layout_marginBottom="66.0dip" android:text="@string/zq" android:layout_below="@id/jtj" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" style="@style/op" />
+</RelativeLayout>

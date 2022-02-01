@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.microapp.apkg;
 
 import Wallet.ApkgConfig;
-import ajeu;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.sdk.LaunchParam;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -34,35 +35,38 @@ public final class a
     String str = a(paramQQAppInterface);
     try
     {
-      paramQQAppInterface = (a)ajeu.a(str);
-      Object localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        localObject = new a();
-      }
-      ((a)localObject).a = str;
-      ((a)localObject).b = new byte[0];
-      if (((a)localObject).d == null) {
-        ((a)localObject).d = new HashMap();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApkgConfigHolder", 2, "readApkgConfigHolder:" + localObject);
-      }
-      return localObject;
+      paramQQAppInterface = (a)QWalletTools.readObject(str);
     }
     catch (Throwable paramQQAppInterface)
     {
-      for (;;)
-      {
-        paramQQAppInterface.printStackTrace();
-        paramQQAppInterface = null;
-      }
+      paramQQAppInterface.printStackTrace();
+      paramQQAppInterface = null;
     }
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null) {
+      localObject = new a();
+    }
+    ((a)localObject).a = str;
+    ((a)localObject).b = new byte[0];
+    if (((a)localObject).d == null) {
+      ((a)localObject).d = new HashMap();
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("readApkgConfigHolder:");
+      paramQQAppInterface.append(localObject);
+      QLog.d("ApkgConfigHolder", 2, paramQQAppInterface.toString());
+    }
+    return localObject;
   }
   
   private static String a(AppRuntime paramAppRuntime)
   {
     StringBuilder localStringBuilder = new StringBuilder(paramAppRuntime.getApplication().getFilesDir().getPath());
-    localStringBuilder.append("/miniapp/").append(paramAppRuntime.getAccount()).append("/");
+    localStringBuilder.append("/miniapp/");
+    localStringBuilder.append(paramAppRuntime.getAccount());
+    localStringBuilder.append("/");
     localStringBuilder.append(".ApkgConfigs");
     return localStringBuilder.toString();
   }
@@ -71,15 +75,15 @@ public final class a
   {
     if (paramApkgConfig != null)
     {
-      PreloadManager.a(paramApkgConfig.apkg_url, false, 0);
+      PreloadManager.deleteRes(paramApkgConfig.apkg_url, false, 0);
       if (paramApkgConfig.sub_apkg_urls != null)
       {
         Iterator localIterator = paramApkgConfig.sub_apkg_urls.values().iterator();
         while (localIterator.hasNext()) {
-          PreloadManager.a((String)localIterator.next(), false, 0);
+          PreloadManager.deleteRes((String)localIterator.next(), false, 0);
         }
       }
-      com.tencent.mobileqq.microapp.b.a.a(g.a(paramApkgConfig), false);
+      c.a(g.a(paramApkgConfig), false);
     }
   }
   
@@ -95,6 +99,7 @@ public final class a
     }
     int j = 0;
     int i = j;
+    Iterator localIterator;
     ApkgConfig localApkgConfig;
     if (!TextUtils.isEmpty(paramLaunchParam.extraKey))
     {
@@ -115,43 +120,43 @@ public final class a
       }
     }
     j = i;
-    if (i == 0) {
-      switch (paramLaunchParam.scene)
+    if (i == 0)
+    {
+      j = paramLaunchParam.scene;
+      if ((j != 1207) && (j != 1208))
       {
-      default: 
         this.c.remove(paramLaunchParam.miniAppId);
         j = i;
       }
-    }
-    do
-    {
-      if (j == 0) {
-        break;
-      }
-      a();
-      return;
-      j = i;
-    } while (TextUtils.isEmpty(paramLaunchParam.extraKey));
-    Iterator localIterator = this.c.entrySet().iterator();
-    label193:
-    if (localIterator.hasNext())
-    {
-      localApkgConfig = ((a.a)((Map.Entry)localIterator.next()).getValue()).a;
-      if ((paramLaunchParam.scene == 1207) && (paramLaunchParam.extraKey.equals(localApkgConfig.qq_qr_code)))
+      else
       {
-        localIterator.remove();
-        i = 1;
+        j = i;
+        if (!TextUtils.isEmpty(paramLaunchParam.extraKey))
+        {
+          localIterator = this.c.entrySet().iterator();
+          j = i;
+          if (localIterator.hasNext())
+          {
+            localApkgConfig = ((a.a)((Map.Entry)localIterator.next()).getValue()).a;
+            if ((paramLaunchParam.scene == 1207) && (paramLaunchParam.extraKey.equals(localApkgConfig.qq_qr_code))) {
+              localIterator.remove();
+            }
+            for (;;)
+            {
+              j = 1;
+              break label285;
+              if ((paramLaunchParam.scene != 1208) || (!paramLaunchParam.extraKey.equals(localApkgConfig.wx_qr_code))) {
+                break;
+              }
+              localIterator.remove();
+            }
+          }
+        }
       }
     }
-    for (;;)
-    {
-      j = i;
-      break;
-      if ((paramLaunchParam.scene != 1208) || (!paramLaunchParam.extraKey.equals(localApkgConfig.wx_qr_code))) {
-        break label193;
-      }
-      localIterator.remove();
-      i = 1;
+    label285:
+    if (j != 0) {
+      a();
     }
   }
   
@@ -191,61 +196,52 @@ public final class a
   
   public ApkgConfig b(LaunchParam paramLaunchParam)
   {
-    label4:
-    Iterator localIterator;
-    ApkgConfig localApkgConfig;
-    if (paramLaunchParam == null)
-    {
-      break label165;
+    Iterator localIterator = null;
+    if (paramLaunchParam == null) {
       return null;
     }
-    else
+    Object localObject;
+    if ((!TextUtils.isEmpty(paramLaunchParam.extraKey)) && (paramLaunchParam.scene == 1207))
     {
-      if ((!TextUtils.isEmpty(paramLaunchParam.extraKey)) && (paramLaunchParam.scene == 1207))
+      localObject = this.d.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localIterator = this.d.entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          localApkgConfig = ((a.a)((Map.Entry)localIterator.next()).getValue()).a;
-          if (paramLaunchParam.extraKey.equals(localApkgConfig.qq_qr_code)) {
-            return localApkgConfig;
-          }
-        }
-      }
-      switch (paramLaunchParam.scene)
-      {
-      default: 
-        paramLaunchParam = (a.a)this.c.get(paramLaunchParam.miniAppId);
-        if (paramLaunchParam == null) {
-          break;
+        ApkgConfig localApkgConfig = ((a.a)((Map.Entry)((Iterator)localObject).next()).getValue()).a;
+        if (paramLaunchParam.extraKey.equals(localApkgConfig.qq_qr_code)) {
+          return localApkgConfig;
         }
       }
     }
-    for (paramLaunchParam = paramLaunchParam.a;; paramLaunchParam = null)
+    int i = paramLaunchParam.scene;
+    if ((i != 1207) && (i != 1208))
     {
+      localObject = (a.a)this.c.get(paramLaunchParam.miniAppId);
+      paramLaunchParam = localIterator;
+      if (localObject != null) {
+        paramLaunchParam = ((a.a)localObject).a;
+      }
       return paramLaunchParam;
-      if (TextUtils.isEmpty(paramLaunchParam.extraKey)) {
-        break label4;
-      }
-      localIterator = this.c.entrySet().iterator();
-      label165:
-      if (!localIterator.hasNext()) {
-        break label4;
-      }
-      localApkgConfig = ((a.a)((Map.Entry)localIterator.next()).getValue()).a;
-      if ((paramLaunchParam.scene == 1207) && (paramLaunchParam.extraKey.equals(localApkgConfig.qq_qr_code))) {
-        return localApkgConfig;
-      }
-      if ((paramLaunchParam.scene != 1208) || (!paramLaunchParam.extraKey.equals(localApkgConfig.wx_qr_code))) {
-        break;
-      }
-      return localApkgConfig;
     }
+    if (!TextUtils.isEmpty(paramLaunchParam.extraKey))
+    {
+      localIterator = this.c.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = ((a.a)((Map.Entry)localIterator.next()).getValue()).a;
+        if ((paramLaunchParam.scene == 1207) && (paramLaunchParam.extraKey.equals(((ApkgConfig)localObject).qq_qr_code))) {
+          return localObject;
+        }
+        if ((paramLaunchParam.scene == 1208) && (paramLaunchParam.extraKey.equals(((ApkgConfig)localObject).wx_qr_code))) {
+          return localObject;
+        }
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.a
  * JD-Core Version:    0.7.0.1
  */

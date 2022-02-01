@@ -2,8 +2,6 @@ package com.tencent.qqprotect.singleupdate;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bhpp;
-import bhpq;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.io.IOException;
@@ -14,13 +12,16 @@ public class QPSupportUpdCfg
 {
   static String CFG_FILEPATH;
   public QPSupportUpdCfg.QPUpdFileItem[] fileItem;
-  public int iConfigFileVersion;
+  public int iConfigFileVersion = 0;
   public int iRequestTime = 24;
   
   QPSupportUpdCfg()
   {
     Object localObject = BaseApplication.getContext();
-    CFG_FILEPATH = ((Context)localObject).getFilesDir().getAbsoluteFile() + "/TxSingleUpd/SupportUpd.cfg";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((Context)localObject).getFilesDir().getAbsoluteFile());
+    localStringBuilder.append("/TxSingleUpd/SupportUpd.cfg");
+    CFG_FILEPATH = localStringBuilder.toString();
     localObject = new File(CFG_FILEPATH);
     if (!((File)localObject).exists())
     {
@@ -28,19 +29,15 @@ public class QPSupportUpdCfg
       this.fileItem[0] = new QPSupportUpdCfg.QPUpdFileItem(this);
       this.fileItem[0].strFilePath = new String(CFG_FILEPATH);
       this.fileItem[0].strFileHash = new String("");
-    }
-    try
-    {
-      ((File)localObject).createNewFile();
-      WriteConfigFile();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      try
+      {
+        ((File)localObject).createNewFile();
+      }
+      catch (IOException localIOException)
       {
         localIOException.printStackTrace();
       }
+      WriteConfigFile();
     }
   }
   
@@ -51,720 +48,781 @@ public class QPSupportUpdCfg
   
   public static boolean deleteCfg()
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (CFG_FILEPATH != null)
+    Object localObject = CFG_FILEPATH;
+    if (localObject != null)
     {
-      File localFile = new File(CFG_FILEPATH);
-      bool1 = bool2;
-      if (localFile.exists()) {
-        bool1 = localFile.delete();
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {
+        return ((File)localObject).delete();
       }
     }
-    return bool1;
+    return true;
   }
   
   public boolean CheckFileState()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.fileItem == null)
-    {
-      bool1 = true;
-      return bool1;
+    if (this.fileItem == null) {
+      return true;
     }
     int i = 0;
     for (;;)
     {
-      for (;;)
+      Object localObject = this.fileItem;
+      if (i >= localObject.length) {
+        break;
+      }
+      File localFile = new File(localObject[i].strFilePath);
+      if (!localFile.exists()) {
+        return false;
+      }
+      localObject = null;
+      try
       {
-        if (i >= this.fileItem.length) {
-          break label126;
+        if (a(localFile)) {
+          localObject = MD5FileUtil.a(this.fileItem[i].strFilePath);
         }
-        File localFile = new File(this.fileItem[i].strFilePath);
-        bool1 = bool2;
-        if (!localFile.exists()) {
-          break;
-        }
-        String str = null;
-        try
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          if (a(localFile)) {
-            str = bhpp.a(this.fileItem[i].strFilePath);
-          }
-          if (!TextUtils.isEmpty(str))
-          {
-            boolean bool3 = TextUtils.equals(str, this.fileItem[i].strFileHash);
-            bool1 = bool2;
-            if (!bool3) {
-              break;
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
+          boolean bool = TextUtils.equals((CharSequence)localObject, this.fileItem[i].strFileHash);
+          if (!bool) {
+            return false;
           }
         }
       }
-      i += 1;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        i += 1;
+      }
     }
-    label126:
     return true;
   }
   
   public boolean IsFileInConfigFile(String paramString)
   {
-    paramString = bhpq.a(paramString);
-    if (this.fileItem == null) {}
-    for (;;)
-    {
+    paramString = QPUpdFileOperation.b(paramString);
+    QPSupportUpdCfg.QPUpdFileItem[] arrayOfQPUpdFileItem = this.fileItem;
+    if (arrayOfQPUpdFileItem == null) {
       return false;
-      int j = this.fileItem.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (paramString.equalsIgnoreCase(bhpq.a(this.fileItem[i].strFilePath))) {
-          return true;
-        }
-        i += 1;
-      }
     }
+    int j = arrayOfQPUpdFileItem.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (paramString.equalsIgnoreCase(QPUpdFileOperation.b(this.fileItem[i].strFilePath))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   /* Error */
   public boolean ReadConfigFile(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: new 38	java/io/File
-    //   6: dup
-    //   7: aload_1
-    //   8: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore_1
-    //   12: aload_1
-    //   13: invokevirtual 63	java/io/File:exists	()Z
-    //   16: ifne +5 -> 21
-    //   19: iconst_0
-    //   20: ireturn
-    //   21: new 140	java/io/FileInputStream
-    //   24: dup
-    //   25: aload_1
-    //   26: invokespecial 143	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   29: astore 6
-    //   31: new 145	java/io/DataInputStream
-    //   34: dup
-    //   35: aload 6
-    //   37: invokespecial 148	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   40: astore_1
-    //   41: aload_0
-    //   42: aload_1
-    //   43: invokevirtual 152	java/io/DataInputStream:readInt	()I
-    //   46: putfield 154	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iConfigFileVersion	I
-    //   49: aload_0
-    //   50: aload_1
-    //   51: invokevirtual 152	java/io/DataInputStream:readInt	()I
-    //   54: putfield 21	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iRequestTime	I
-    //   57: aload_1
-    //   58: invokevirtual 152	java/io/DataInputStream:readInt	()I
-    //   61: istore_2
-    //   62: iload_2
-    //   63: bipush 100
-    //   65: if_icmpgt +311 -> 376
-    //   68: iload_2
-    //   69: ifge +304 -> 373
-    //   72: goto +304 -> 376
-    //   75: iload_2
-    //   76: ifeq +141 -> 217
-    //   79: aload_0
-    //   80: iload_2
-    //   81: anewarray 65	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem
-    //   84: putfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   87: iconst_0
-    //   88: istore_3
-    //   89: iload_3
-    //   90: iload_2
-    //   91: if_icmpge +126 -> 217
-    //   94: aload_0
-    //   95: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   98: iload_3
-    //   99: new 65	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem
-    //   102: dup
-    //   103: aload_0
-    //   104: invokespecial 70	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:<init>	(Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg;)V
-    //   107: aastore
-    //   108: sipush 512
-    //   111: newarray byte
-    //   113: astore 5
-    //   115: aload_1
-    //   116: invokevirtual 152	java/io/DataInputStream:readInt	()I
-    //   119: istore 4
+    //   0: new 42	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_1
+    //   9: aload_1
+    //   10: invokevirtual 67	java/io/File:exists	()Z
+    //   13: ifne +5 -> 18
+    //   16: iconst_0
+    //   17: ireturn
+    //   18: new 145	java/io/FileInputStream
+    //   21: dup
+    //   22: aload_1
+    //   23: invokespecial 148	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   26: astore 5
+    //   28: new 150	java/io/DataInputStream
+    //   31: dup
+    //   32: aload 5
+    //   34: invokespecial 153	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   37: astore_1
+    //   38: aload_1
+    //   39: astore 6
+    //   41: aload 5
+    //   43: astore 7
+    //   45: aload_0
+    //   46: aload_1
+    //   47: invokevirtual 157	java/io/DataInputStream:readInt	()I
+    //   50: putfield 23	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iConfigFileVersion	I
+    //   53: aload_1
+    //   54: astore 6
+    //   56: aload 5
+    //   58: astore 7
+    //   60: aload_0
+    //   61: aload_1
+    //   62: invokevirtual 157	java/io/DataInputStream:readInt	()I
+    //   65: putfield 25	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iRequestTime	I
+    //   68: aload_1
+    //   69: astore 6
+    //   71: aload 5
+    //   73: astore 7
+    //   75: aload_1
+    //   76: invokevirtual 157	java/io/DataInputStream:readInt	()I
+    //   79: istore_3
+    //   80: iload_3
+    //   81: bipush 100
+    //   83: if_icmpgt +385 -> 468
+    //   86: iload_3
+    //   87: istore_2
+    //   88: iload_3
+    //   89: ifge +6 -> 95
+    //   92: goto +376 -> 468
+    //   95: iload_2
+    //   96: ifeq +225 -> 321
+    //   99: aload_1
+    //   100: astore 6
+    //   102: aload 5
+    //   104: astore 7
+    //   106: aload_0
+    //   107: iload_2
+    //   108: anewarray 69	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem
+    //   111: putfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   114: iconst_0
+    //   115: istore_3
+    //   116: iload_3
+    //   117: iload_2
+    //   118: if_icmpge +203 -> 321
     //   121: aload_1
-    //   122: aload 5
-    //   124: iconst_0
-    //   125: iload 4
-    //   127: invokevirtual 158	java/io/DataInputStream:read	([BII)I
-    //   130: pop
-    //   131: new 72	java/lang/String
-    //   134: dup
-    //   135: aload 5
-    //   137: invokespecial 161	java/lang/String:<init>	([B)V
-    //   140: astore 5
-    //   142: aload_0
-    //   143: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   146: iload_3
-    //   147: aaload
-    //   148: aload 5
-    //   150: iconst_0
-    //   151: iload 4
-    //   153: invokevirtual 165	java/lang/String:substring	(II)Ljava/lang/String;
-    //   156: putfield 76	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
-    //   159: sipush 128
-    //   162: newarray byte
-    //   164: astore 5
-    //   166: aload_1
-    //   167: invokevirtual 152	java/io/DataInputStream:readInt	()I
-    //   170: istore 4
-    //   172: aload_1
-    //   173: aload 5
-    //   175: iconst_0
-    //   176: iload 4
-    //   178: invokevirtual 158	java/io/DataInputStream:read	([BII)I
-    //   181: pop
-    //   182: new 72	java/lang/String
-    //   185: dup
-    //   186: aload 5
-    //   188: invokespecial 161	java/lang/String:<init>	([B)V
-    //   191: astore 5
-    //   193: aload_0
-    //   194: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   197: iload_3
-    //   198: aaload
-    //   199: aload 5
-    //   201: iconst_0
-    //   202: iload 4
-    //   204: invokevirtual 165	java/lang/String:substring	(II)Ljava/lang/String;
-    //   207: putfield 81	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
-    //   210: iload_3
-    //   211: iconst_1
-    //   212: iadd
-    //   213: istore_3
-    //   214: goto -125 -> 89
-    //   217: aload 6
-    //   219: ifnull +8 -> 227
-    //   222: aload 6
-    //   224: invokevirtual 168	java/io/FileInputStream:close	()V
-    //   227: aload_1
-    //   228: ifnull +7 -> 235
-    //   231: aload_1
-    //   232: invokevirtual 169	java/io/DataInputStream:close	()V
-    //   235: iconst_1
-    //   236: ireturn
-    //   237: astore 6
-    //   239: aconst_null
-    //   240: astore_1
-    //   241: aload 6
-    //   243: invokevirtual 170	java/lang/Throwable:printStackTrace	()V
-    //   246: aload 5
-    //   248: ifnull +8 -> 256
-    //   251: aload 5
-    //   253: invokevirtual 168	java/io/FileInputStream:close	()V
-    //   256: aload_1
-    //   257: ifnull -238 -> 19
-    //   260: aload_1
-    //   261: invokevirtual 169	java/io/DataInputStream:close	()V
-    //   264: iconst_0
-    //   265: ireturn
-    //   266: astore_1
-    //   267: iconst_0
-    //   268: ireturn
-    //   269: astore 5
-    //   271: aconst_null
-    //   272: astore_1
-    //   273: aconst_null
-    //   274: astore 6
-    //   276: aload 6
-    //   278: ifnull +8 -> 286
-    //   281: aload 6
-    //   283: invokevirtual 168	java/io/FileInputStream:close	()V
-    //   286: aload_1
-    //   287: ifnull +7 -> 294
+    //   122: astore 6
+    //   124: aload 5
+    //   126: astore 7
+    //   128: aload_0
+    //   129: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   132: iload_3
+    //   133: new 69	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem
+    //   136: dup
+    //   137: aload_0
+    //   138: invokespecial 74	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:<init>	(Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg;)V
+    //   141: aastore
+    //   142: aload_1
+    //   143: astore 6
+    //   145: aload 5
+    //   147: astore 7
+    //   149: sipush 512
+    //   152: newarray byte
+    //   154: astore 8
+    //   156: aload_1
+    //   157: astore 6
+    //   159: aload 5
+    //   161: astore 7
+    //   163: aload_1
+    //   164: invokevirtual 157	java/io/DataInputStream:readInt	()I
+    //   167: istore 4
+    //   169: aload_1
+    //   170: astore 6
+    //   172: aload 5
+    //   174: astore 7
+    //   176: aload_1
+    //   177: aload 8
+    //   179: iconst_0
+    //   180: iload 4
+    //   182: invokevirtual 161	java/io/DataInputStream:read	([BII)I
+    //   185: pop
+    //   186: aload_1
+    //   187: astore 6
+    //   189: aload 5
+    //   191: astore 7
+    //   193: new 76	java/lang/String
+    //   196: dup
+    //   197: aload 8
+    //   199: invokespecial 164	java/lang/String:<init>	([B)V
+    //   202: astore 8
+    //   204: aload_1
+    //   205: astore 6
+    //   207: aload 5
+    //   209: astore 7
+    //   211: aload_0
+    //   212: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   215: iload_3
+    //   216: aaload
+    //   217: aload 8
+    //   219: iconst_0
+    //   220: iload 4
+    //   222: invokevirtual 168	java/lang/String:substring	(II)Ljava/lang/String;
+    //   225: putfield 80	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
+    //   228: aload_1
+    //   229: astore 6
+    //   231: aload 5
+    //   233: astore 7
+    //   235: sipush 128
+    //   238: newarray byte
+    //   240: astore 8
+    //   242: aload_1
+    //   243: astore 6
+    //   245: aload 5
+    //   247: astore 7
+    //   249: aload_1
+    //   250: invokevirtual 157	java/io/DataInputStream:readInt	()I
+    //   253: istore 4
+    //   255: aload_1
+    //   256: astore 6
+    //   258: aload 5
+    //   260: astore 7
+    //   262: aload_1
+    //   263: aload 8
+    //   265: iconst_0
+    //   266: iload 4
+    //   268: invokevirtual 161	java/io/DataInputStream:read	([BII)I
+    //   271: pop
+    //   272: aload_1
+    //   273: astore 6
+    //   275: aload 5
+    //   277: astore 7
+    //   279: new 76	java/lang/String
+    //   282: dup
+    //   283: aload 8
+    //   285: invokespecial 164	java/lang/String:<init>	([B)V
+    //   288: astore 8
     //   290: aload_1
-    //   291: invokevirtual 169	java/io/DataInputStream:close	()V
-    //   294: aload 5
-    //   296: athrow
-    //   297: astore 5
-    //   299: goto -72 -> 227
-    //   302: astore_1
-    //   303: goto -68 -> 235
-    //   306: astore 5
-    //   308: goto -52 -> 256
-    //   311: astore 6
-    //   313: goto -27 -> 286
-    //   316: astore_1
-    //   317: goto -23 -> 294
-    //   320: astore 5
-    //   322: aconst_null
-    //   323: astore_1
-    //   324: goto -48 -> 276
-    //   327: astore 5
-    //   329: goto -53 -> 276
-    //   332: astore 7
-    //   334: aload 5
-    //   336: astore 6
-    //   338: aload 7
-    //   340: astore 5
-    //   342: goto -66 -> 276
-    //   345: astore 7
-    //   347: aconst_null
-    //   348: astore_1
-    //   349: aload 6
-    //   351: astore 5
-    //   353: aload 7
-    //   355: astore 6
-    //   357: goto -116 -> 241
-    //   360: astore 7
-    //   362: aload 6
-    //   364: astore 5
-    //   366: aload 7
-    //   368: astore 6
-    //   370: goto -129 -> 241
-    //   373: goto -298 -> 75
-    //   376: iconst_0
-    //   377: istore_2
-    //   378: goto -303 -> 75
+    //   291: astore 6
+    //   293: aload 5
+    //   295: astore 7
+    //   297: aload_0
+    //   298: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   301: iload_3
+    //   302: aaload
+    //   303: aload 8
+    //   305: iconst_0
+    //   306: iload 4
+    //   308: invokevirtual 168	java/lang/String:substring	(II)Ljava/lang/String;
+    //   311: putfield 85	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
+    //   314: iload_3
+    //   315: iconst_1
+    //   316: iadd
+    //   317: istore_3
+    //   318: goto -202 -> 116
+    //   321: aload 5
+    //   323: invokevirtual 171	java/io/FileInputStream:close	()V
+    //   326: aload_1
+    //   327: invokevirtual 172	java/io/DataInputStream:close	()V
+    //   330: iconst_1
+    //   331: ireturn
+    //   332: astore 8
+    //   334: goto +36 -> 370
+    //   337: astore_1
+    //   338: aconst_null
+    //   339: astore 6
+    //   341: goto +69 -> 410
+    //   344: astore 8
+    //   346: aconst_null
+    //   347: astore_1
+    //   348: goto +22 -> 370
+    //   351: astore_1
+    //   352: aconst_null
+    //   353: astore 5
+    //   355: aload 5
+    //   357: astore 6
+    //   359: goto +51 -> 410
+    //   362: astore 8
+    //   364: aconst_null
+    //   365: astore 5
+    //   367: aload 5
+    //   369: astore_1
+    //   370: aload_1
+    //   371: astore 6
+    //   373: aload 5
+    //   375: astore 7
+    //   377: aload 8
+    //   379: invokevirtual 173	java/lang/Throwable:printStackTrace	()V
+    //   382: aload 5
+    //   384: ifnull +11 -> 395
+    //   387: aload 5
+    //   389: invokevirtual 171	java/io/FileInputStream:close	()V
+    //   392: goto +3 -> 395
+    //   395: aload_1
+    //   396: ifnull +7 -> 403
+    //   399: aload_1
+    //   400: invokevirtual 172	java/io/DataInputStream:close	()V
+    //   403: iconst_0
+    //   404: ireturn
+    //   405: astore_1
+    //   406: aload 7
+    //   408: astore 5
+    //   410: aload 5
+    //   412: ifnull +11 -> 423
+    //   415: aload 5
+    //   417: invokevirtual 171	java/io/FileInputStream:close	()V
+    //   420: goto +3 -> 423
+    //   423: aload 6
+    //   425: ifnull +8 -> 433
+    //   428: aload 6
+    //   430: invokevirtual 172	java/io/DataInputStream:close	()V
+    //   433: goto +5 -> 438
+    //   436: aload_1
+    //   437: athrow
+    //   438: goto -2 -> 436
+    //   441: astore 5
+    //   443: goto -117 -> 326
+    //   446: astore_1
+    //   447: goto -117 -> 330
+    //   450: astore 5
+    //   452: goto -57 -> 395
+    //   455: astore_1
+    //   456: iconst_0
+    //   457: ireturn
+    //   458: astore 5
+    //   460: goto -37 -> 423
+    //   463: astore 5
+    //   465: goto -32 -> 433
+    //   468: iconst_0
+    //   469: istore_2
+    //   470: goto -375 -> 95
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	381	0	this	QPSupportUpdCfg
-    //   0	381	1	paramString	String
-    //   61	317	2	i	int
-    //   88	126	3	j	int
-    //   119	84	4	k	int
-    //   1	251	5	localObject1	Object
-    //   269	26	5	localObject2	Object
-    //   297	1	5	localIOException1	IOException
-    //   306	1	5	localIOException2	IOException
-    //   320	1	5	localObject3	Object
-    //   327	8	5	localObject4	Object
-    //   340	25	5	localObject5	Object
-    //   29	194	6	localFileInputStream	java.io.FileInputStream
-    //   237	5	6	localThrowable1	java.lang.Throwable
-    //   274	8	6	localObject6	Object
-    //   311	1	6	localIOException3	IOException
-    //   336	33	6	localObject7	Object
-    //   332	7	7	localObject8	Object
-    //   345	9	7	localThrowable2	java.lang.Throwable
-    //   360	7	7	localThrowable3	java.lang.Throwable
+    //   0	473	0	this	QPSupportUpdCfg
+    //   0	473	1	paramString	String
+    //   87	383	2	i	int
+    //   79	239	3	j	int
+    //   167	140	4	k	int
+    //   26	390	5	localObject1	Object
+    //   441	1	5	localIOException1	IOException
+    //   450	1	5	localIOException2	IOException
+    //   458	1	5	localIOException3	IOException
+    //   463	1	5	localIOException4	IOException
+    //   39	390	6	localObject2	Object
+    //   43	364	7	localObject3	Object
+    //   154	150	8	localObject4	Object
+    //   332	1	8	localThrowable1	java.lang.Throwable
+    //   344	1	8	localThrowable2	java.lang.Throwable
+    //   362	16	8	localThrowable3	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   21	31	237	java/lang/Throwable
-    //   260	264	266	java/io/IOException
-    //   21	31	269	finally
-    //   222	227	297	java/io/IOException
-    //   231	235	302	java/io/IOException
-    //   251	256	306	java/io/IOException
-    //   281	286	311	java/io/IOException
-    //   290	294	316	java/io/IOException
-    //   31	41	320	finally
-    //   41	62	327	finally
-    //   79	87	327	finally
-    //   94	210	327	finally
-    //   241	246	332	finally
-    //   31	41	345	java/lang/Throwable
-    //   41	62	360	java/lang/Throwable
-    //   79	87	360	java/lang/Throwable
-    //   94	210	360	java/lang/Throwable
+    //   45	53	332	java/lang/Throwable
+    //   60	68	332	java/lang/Throwable
+    //   75	80	332	java/lang/Throwable
+    //   106	114	332	java/lang/Throwable
+    //   128	142	332	java/lang/Throwable
+    //   149	156	332	java/lang/Throwable
+    //   163	169	332	java/lang/Throwable
+    //   176	186	332	java/lang/Throwable
+    //   193	204	332	java/lang/Throwable
+    //   211	228	332	java/lang/Throwable
+    //   235	242	332	java/lang/Throwable
+    //   249	255	332	java/lang/Throwable
+    //   262	272	332	java/lang/Throwable
+    //   279	290	332	java/lang/Throwable
+    //   297	314	332	java/lang/Throwable
+    //   28	38	337	finally
+    //   28	38	344	java/lang/Throwable
+    //   18	28	351	finally
+    //   18	28	362	java/lang/Throwable
+    //   45	53	405	finally
+    //   60	68	405	finally
+    //   75	80	405	finally
+    //   106	114	405	finally
+    //   128	142	405	finally
+    //   149	156	405	finally
+    //   163	169	405	finally
+    //   176	186	405	finally
+    //   193	204	405	finally
+    //   211	228	405	finally
+    //   235	242	405	finally
+    //   249	255	405	finally
+    //   262	272	405	finally
+    //   279	290	405	finally
+    //   297	314	405	finally
+    //   377	382	405	finally
+    //   321	326	441	java/io/IOException
+    //   326	330	446	java/io/IOException
+    //   387	392	450	java/io/IOException
+    //   399	403	455	java/io/IOException
+    //   415	420	458	java/io/IOException
+    //   428	433	463	java/io/IOException
   }
   
   /* Error */
   public boolean WriteConfigFile()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: iconst_0
-    //   3: istore_1
-    //   4: new 38	java/io/File
-    //   7: dup
-    //   8: getstatic 56	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:CFG_FILEPATH	Ljava/lang/String;
-    //   11: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
-    //   14: astore_2
-    //   15: aload_2
-    //   16: invokevirtual 63	java/io/File:exists	()Z
+    //   0: new 42	java/io/File
+    //   3: dup
+    //   4: getstatic 60	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:CFG_FILEPATH	Ljava/lang/String;
+    //   7: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: astore_3
+    //   11: aload_3
+    //   12: invokevirtual 67	java/io/File:exists	()Z
+    //   15: istore_2
+    //   16: iconst_0
+    //   17: istore_1
+    //   18: iload_2
     //   19: ifeq +12 -> 31
-    //   22: aload_2
-    //   23: invokevirtual 106	java/io/File:delete	()Z
+    //   22: aload_3
+    //   23: invokevirtual 109	java/io/File:delete	()Z
     //   26: ifne +5 -> 31
     //   29: iconst_0
     //   30: ireturn
-    //   31: new 174	java/io/FileOutputStream
+    //   31: new 177	java/io/FileOutputStream
     //   34: dup
-    //   35: getstatic 56	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:CFG_FILEPATH	Ljava/lang/String;
-    //   38: invokespecial 175	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   41: astore_2
-    //   42: new 177	java/io/DataOutputStream
+    //   35: getstatic 60	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:CFG_FILEPATH	Ljava/lang/String;
+    //   38: invokespecial 178	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   41: astore_3
+    //   42: new 180	java/io/DataOutputStream
     //   45: dup
-    //   46: aload_2
-    //   47: invokespecial 180	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   50: astore_3
-    //   51: aload_3
-    //   52: astore 4
-    //   54: aload_2
-    //   55: astore 5
-    //   57: aload_3
-    //   58: aload_0
-    //   59: getfield 154	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iConfigFileVersion	I
-    //   62: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
-    //   65: aload_3
-    //   66: astore 4
-    //   68: aload_2
-    //   69: astore 5
-    //   71: aload_3
-    //   72: aload_0
-    //   73: getfield 21	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iRequestTime	I
-    //   76: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
-    //   79: aload_3
-    //   80: astore 4
-    //   82: aload_2
-    //   83: astore 5
-    //   85: aload_0
-    //   86: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   89: ifnonnull +32 -> 121
-    //   92: aload_3
-    //   93: astore 4
-    //   95: aload_2
-    //   96: astore 5
+    //   46: aload_3
+    //   47: invokespecial 183	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   50: astore 6
+    //   52: aload_3
+    //   53: astore 4
+    //   55: aload 6
+    //   57: astore 5
+    //   59: aload 6
+    //   61: aload_0
+    //   62: getfield 23	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iConfigFileVersion	I
+    //   65: invokevirtual 187	java/io/DataOutputStream:writeInt	(I)V
+    //   68: aload_3
+    //   69: astore 4
+    //   71: aload 6
+    //   73: astore 5
+    //   75: aload 6
+    //   77: aload_0
+    //   78: getfield 25	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:iRequestTime	I
+    //   81: invokevirtual 187	java/io/DataOutputStream:writeInt	(I)V
+    //   84: aload_3
+    //   85: astore 4
+    //   87: aload 6
+    //   89: astore 5
+    //   91: aload_0
+    //   92: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   95: ifnonnull +19 -> 114
     //   98: aload_3
-    //   99: iconst_0
-    //   100: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
-    //   103: aload_2
-    //   104: ifnull +7 -> 111
-    //   107: aload_2
-    //   108: invokevirtual 185	java/io/FileOutputStream:close	()V
-    //   111: aload_3
-    //   112: ifnull +7 -> 119
-    //   115: aload_3
-    //   116: invokevirtual 186	java/io/DataOutputStream:close	()V
-    //   119: iconst_1
-    //   120: ireturn
-    //   121: aload_3
-    //   122: astore 4
-    //   124: aload_2
-    //   125: astore 5
-    //   127: aload_3
-    //   128: aload_0
-    //   129: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   132: arraylength
-    //   133: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
-    //   136: aload_3
-    //   137: astore 4
-    //   139: aload_2
-    //   140: astore 5
-    //   142: iload_1
-    //   143: aload_0
-    //   144: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   147: arraylength
-    //   148: if_icmpge -45 -> 103
-    //   151: aload_3
-    //   152: astore 4
-    //   154: aload_2
-    //   155: astore 5
-    //   157: aload_3
-    //   158: aload_0
-    //   159: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   162: iload_1
-    //   163: aaload
-    //   164: getfield 76	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
-    //   167: invokevirtual 188	java/lang/String:length	()I
-    //   170: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
-    //   173: aload_3
-    //   174: astore 4
-    //   176: aload_2
-    //   177: astore 5
-    //   179: aload_3
+    //   99: astore 4
+    //   101: aload 6
+    //   103: astore 5
+    //   105: aload 6
+    //   107: iconst_0
+    //   108: invokevirtual 187	java/io/DataOutputStream:writeInt	(I)V
+    //   111: goto +139 -> 250
+    //   114: aload_3
+    //   115: astore 4
+    //   117: aload 6
+    //   119: astore 5
+    //   121: aload 6
+    //   123: aload_0
+    //   124: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   127: arraylength
+    //   128: invokevirtual 187	java/io/DataOutputStream:writeInt	(I)V
+    //   131: aload_3
+    //   132: astore 4
+    //   134: aload 6
+    //   136: astore 5
+    //   138: iload_1
+    //   139: aload_0
+    //   140: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   143: arraylength
+    //   144: if_icmpge +106 -> 250
+    //   147: aload_3
+    //   148: astore 4
+    //   150: aload 6
+    //   152: astore 5
+    //   154: aload 6
+    //   156: aload_0
+    //   157: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   160: iload_1
+    //   161: aaload
+    //   162: getfield 80	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
+    //   165: invokevirtual 189	java/lang/String:length	()I
+    //   168: invokevirtual 187	java/io/DataOutputStream:writeInt	(I)V
+    //   171: aload_3
+    //   172: astore 4
+    //   174: aload 6
+    //   176: astore 5
+    //   178: aload 6
     //   180: aload_0
-    //   181: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   181: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
     //   184: iload_1
     //   185: aaload
-    //   186: getfield 76	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
-    //   189: invokevirtual 192	java/lang/String:getBytes	()[B
-    //   192: invokevirtual 195	java/io/DataOutputStream:write	([B)V
+    //   186: getfield 80	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFilePath	Ljava/lang/String;
+    //   189: invokevirtual 193	java/lang/String:getBytes	()[B
+    //   192: invokevirtual 196	java/io/DataOutputStream:write	([B)V
     //   195: aload_3
     //   196: astore 4
-    //   198: aload_2
-    //   199: astore 5
-    //   201: aload_3
-    //   202: aload_0
-    //   203: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   206: iload_1
-    //   207: aaload
-    //   208: getfield 81	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
-    //   211: invokevirtual 188	java/lang/String:length	()I
-    //   214: invokevirtual 184	java/io/DataOutputStream:writeInt	(I)V
-    //   217: aload_3
-    //   218: astore 4
-    //   220: aload_2
-    //   221: astore 5
-    //   223: aload_3
-    //   224: aload_0
-    //   225: getfield 67	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
-    //   228: iload_1
-    //   229: aaload
-    //   230: getfield 81	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
-    //   233: invokevirtual 192	java/lang/String:getBytes	()[B
-    //   236: invokevirtual 195	java/io/DataOutputStream:write	([B)V
-    //   239: iload_1
-    //   240: iconst_1
-    //   241: iadd
-    //   242: istore_1
-    //   243: goto -107 -> 136
-    //   246: astore_2
-    //   247: aload_2
-    //   248: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   251: goto -140 -> 111
-    //   254: astore_2
-    //   255: aload_2
-    //   256: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   259: goto -140 -> 119
-    //   262: astore 4
-    //   264: aconst_null
-    //   265: astore_2
-    //   266: aload 4
-    //   268: invokevirtual 196	java/io/FileNotFoundException:printStackTrace	()V
-    //   271: aload_3
-    //   272: ifnull +7 -> 279
-    //   275: aload_3
-    //   276: invokevirtual 185	java/io/FileOutputStream:close	()V
-    //   279: aload_2
-    //   280: ifnull -161 -> 119
-    //   283: aload_2
-    //   284: invokevirtual 186	java/io/DataOutputStream:close	()V
-    //   287: goto -168 -> 119
-    //   290: astore_2
-    //   291: aload_2
-    //   292: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   295: goto -176 -> 119
-    //   298: astore_3
-    //   299: aload_3
-    //   300: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   303: goto -24 -> 279
-    //   306: astore 6
-    //   308: aconst_null
-    //   309: astore_3
-    //   310: aconst_null
-    //   311: astore_2
-    //   312: aload_3
-    //   313: astore 4
-    //   315: aload_2
-    //   316: astore 5
-    //   318: aload 6
-    //   320: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   323: aload_2
-    //   324: ifnull +7 -> 331
-    //   327: aload_2
-    //   328: invokevirtual 185	java/io/FileOutputStream:close	()V
-    //   331: aload_3
-    //   332: ifnull -213 -> 119
-    //   335: aload_3
-    //   336: invokevirtual 186	java/io/DataOutputStream:close	()V
-    //   339: goto -220 -> 119
-    //   342: astore_2
-    //   343: aload_2
-    //   344: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   347: goto -228 -> 119
-    //   350: astore_2
-    //   351: aload_2
-    //   352: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   355: goto -24 -> 331
-    //   358: astore_3
-    //   359: aconst_null
-    //   360: astore 4
-    //   362: aconst_null
-    //   363: astore_2
-    //   364: aload_2
-    //   365: ifnull +7 -> 372
-    //   368: aload_2
-    //   369: invokevirtual 185	java/io/FileOutputStream:close	()V
-    //   372: aload 4
-    //   374: ifnull +8 -> 382
-    //   377: aload 4
-    //   379: invokevirtual 186	java/io/DataOutputStream:close	()V
+    //   198: aload 6
+    //   200: astore 5
+    //   202: aload 6
+    //   204: aload_0
+    //   205: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   208: iload_1
+    //   209: aaload
+    //   210: getfield 85	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
+    //   213: invokevirtual 189	java/lang/String:length	()I
+    //   216: invokevirtual 187	java/io/DataOutputStream:writeInt	(I)V
+    //   219: aload_3
+    //   220: astore 4
+    //   222: aload 6
+    //   224: astore 5
+    //   226: aload 6
+    //   228: aload_0
+    //   229: getfield 71	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg:fileItem	[Lcom/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem;
+    //   232: iload_1
+    //   233: aaload
+    //   234: getfield 85	com/tencent/qqprotect/singleupdate/QPSupportUpdCfg$QPUpdFileItem:strFileHash	Ljava/lang/String;
+    //   237: invokevirtual 193	java/lang/String:getBytes	()[B
+    //   240: invokevirtual 196	java/io/DataOutputStream:write	([B)V
+    //   243: iload_1
+    //   244: iconst_1
+    //   245: iadd
+    //   246: istore_1
+    //   247: goto -116 -> 131
+    //   250: aload_3
+    //   251: invokevirtual 197	java/io/FileOutputStream:close	()V
+    //   254: goto +8 -> 262
+    //   257: astore_3
+    //   258: aload_3
+    //   259: invokevirtual 91	java/io/IOException:printStackTrace	()V
+    //   262: aload 6
+    //   264: invokevirtual 198	java/io/DataOutputStream:close	()V
+    //   267: goto +177 -> 444
+    //   270: astore 7
+    //   272: aload_3
+    //   273: astore 8
+    //   275: aload 6
+    //   277: astore_3
+    //   278: goto +68 -> 346
+    //   281: astore 7
+    //   283: aload_3
+    //   284: astore 8
+    //   286: aload 6
+    //   288: astore_3
+    //   289: goto +107 -> 396
+    //   292: astore 4
+    //   294: aconst_null
+    //   295: astore 5
+    //   297: goto +158 -> 455
+    //   300: astore 7
+    //   302: aconst_null
+    //   303: astore 4
+    //   305: aload_3
+    //   306: astore 8
+    //   308: aload 4
+    //   310: astore_3
+    //   311: goto +35 -> 346
+    //   314: astore 7
+    //   316: aconst_null
+    //   317: astore 4
+    //   319: aload_3
+    //   320: astore 8
+    //   322: aload 4
+    //   324: astore_3
+    //   325: goto +71 -> 396
+    //   328: astore 4
+    //   330: aconst_null
+    //   331: astore 5
+    //   333: aload 5
+    //   335: astore_3
+    //   336: goto +119 -> 455
+    //   339: astore 7
+    //   341: aconst_null
+    //   342: astore_3
+    //   343: aload_3
+    //   344: astore 8
+    //   346: aload 8
+    //   348: astore 4
+    //   350: aload_3
+    //   351: astore 5
+    //   353: aload 7
+    //   355: invokevirtual 91	java/io/IOException:printStackTrace	()V
+    //   358: aload 8
+    //   360: ifnull +18 -> 378
+    //   363: aload 8
+    //   365: invokevirtual 197	java/io/FileOutputStream:close	()V
+    //   368: goto +10 -> 378
+    //   371: astore 4
+    //   373: aload 4
+    //   375: invokevirtual 91	java/io/IOException:printStackTrace	()V
+    //   378: aload_3
+    //   379: ifnull +65 -> 444
     //   382: aload_3
-    //   383: athrow
-    //   384: astore_2
-    //   385: aload_2
-    //   386: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   389: goto -17 -> 372
-    //   392: astore_2
-    //   393: aload_2
-    //   394: invokevirtual 90	java/io/IOException:printStackTrace	()V
-    //   397: goto -15 -> 382
-    //   400: astore_3
-    //   401: aconst_null
-    //   402: astore 4
-    //   404: goto -40 -> 364
-    //   407: astore_3
-    //   408: aload 5
-    //   410: astore_2
-    //   411: goto -47 -> 364
-    //   414: astore 4
-    //   416: aload_3
-    //   417: astore 5
-    //   419: aload 4
-    //   421: astore_3
-    //   422: aload_2
-    //   423: astore 4
-    //   425: aload 5
-    //   427: astore_2
-    //   428: goto -64 -> 364
-    //   431: astore 6
-    //   433: aconst_null
-    //   434: astore_3
-    //   435: goto -123 -> 312
-    //   438: astore 6
-    //   440: goto -128 -> 312
-    //   443: astore 4
-    //   445: aconst_null
-    //   446: astore 5
-    //   448: aload_2
-    //   449: astore_3
-    //   450: aload 5
-    //   452: astore_2
-    //   453: goto -187 -> 266
-    //   456: astore 4
-    //   458: aload_2
-    //   459: astore 5
-    //   461: aload_3
-    //   462: astore_2
-    //   463: aload 5
-    //   465: astore_3
-    //   466: goto -200 -> 266
+    //   383: invokevirtual 198	java/io/DataOutputStream:close	()V
+    //   386: goto +58 -> 444
+    //   389: astore 7
+    //   391: aconst_null
+    //   392: astore_3
+    //   393: aload_3
+    //   394: astore 8
+    //   396: aload 8
+    //   398: astore 4
+    //   400: aload_3
+    //   401: astore 5
+    //   403: aload 7
+    //   405: invokevirtual 199	java/io/FileNotFoundException:printStackTrace	()V
+    //   408: aload 8
+    //   410: ifnull +18 -> 428
+    //   413: aload 8
+    //   415: invokevirtual 197	java/io/FileOutputStream:close	()V
+    //   418: goto +10 -> 428
+    //   421: astore 4
+    //   423: aload 4
+    //   425: invokevirtual 91	java/io/IOException:printStackTrace	()V
+    //   428: aload_3
+    //   429: ifnull +15 -> 444
+    //   432: aload_3
+    //   433: invokevirtual 198	java/io/DataOutputStream:close	()V
+    //   436: goto +8 -> 444
+    //   439: astore_3
+    //   440: aload_3
+    //   441: invokevirtual 91	java/io/IOException:printStackTrace	()V
+    //   444: iconst_1
+    //   445: ireturn
+    //   446: astore 6
+    //   448: aload 4
+    //   450: astore_3
+    //   451: aload 6
+    //   453: astore 4
+    //   455: aload_3
+    //   456: ifnull +15 -> 471
+    //   459: aload_3
+    //   460: invokevirtual 197	java/io/FileOutputStream:close	()V
+    //   463: goto +8 -> 471
+    //   466: astore_3
+    //   467: aload_3
+    //   468: invokevirtual 91	java/io/IOException:printStackTrace	()V
+    //   471: aload 5
+    //   473: ifnull +16 -> 489
+    //   476: aload 5
+    //   478: invokevirtual 198	java/io/DataOutputStream:close	()V
+    //   481: goto +8 -> 489
+    //   484: astore_3
+    //   485: aload_3
+    //   486: invokevirtual 91	java/io/IOException:printStackTrace	()V
+    //   489: goto +6 -> 495
+    //   492: aload 4
+    //   494: athrow
+    //   495: goto -3 -> 492
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	469	0	this	QPSupportUpdCfg
-    //   3	240	1	i	int
-    //   14	207	2	localObject1	Object
-    //   246	2	2	localIOException1	IOException
-    //   254	2	2	localIOException2	IOException
-    //   265	19	2	localObject2	Object
-    //   290	2	2	localIOException3	IOException
-    //   311	17	2	localObject3	Object
-    //   342	2	2	localIOException4	IOException
-    //   350	2	2	localIOException5	IOException
-    //   363	6	2	localObject4	Object
-    //   384	2	2	localIOException6	IOException
-    //   392	2	2	localIOException7	IOException
-    //   410	53	2	localObject5	Object
-    //   1	275	3	localDataOutputStream1	java.io.DataOutputStream
-    //   298	2	3	localIOException8	IOException
-    //   309	27	3	localObject6	Object
-    //   358	25	3	localObject7	Object
-    //   400	1	3	localObject8	Object
-    //   407	10	3	localObject9	Object
-    //   421	45	3	localObject10	Object
-    //   52	167	4	localDataOutputStream2	java.io.DataOutputStream
-    //   262	5	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   313	90	4	localObject11	Object
-    //   414	6	4	localObject12	Object
-    //   423	1	4	localObject13	Object
-    //   443	1	4	localFileNotFoundException2	java.io.FileNotFoundException
-    //   456	1	4	localFileNotFoundException3	java.io.FileNotFoundException
-    //   55	409	5	localObject14	Object
-    //   306	13	6	localIOException9	IOException
-    //   431	1	6	localIOException10	IOException
-    //   438	1	6	localIOException11	IOException
+    //   0	498	0	this	QPSupportUpdCfg
+    //   17	230	1	i	int
+    //   15	4	2	bool	boolean
+    //   10	241	3	localObject1	Object
+    //   257	16	3	localIOException1	IOException
+    //   277	156	3	localObject2	Object
+    //   439	2	3	localIOException2	IOException
+    //   450	10	3	localObject3	Object
+    //   466	2	3	localIOException3	IOException
+    //   484	2	3	localIOException4	IOException
+    //   53	168	4	localObject4	Object
+    //   292	1	4	localObject5	Object
+    //   303	20	4	localObject6	Object
+    //   328	1	4	localObject7	Object
+    //   348	1	4	localObject8	Object
+    //   371	3	4	localIOException5	IOException
+    //   398	1	4	localObject9	Object
+    //   421	28	4	localIOException6	IOException
+    //   453	40	4	localObject10	Object
+    //   57	420	5	localObject11	Object
+    //   50	237	6	localDataOutputStream	java.io.DataOutputStream
+    //   446	6	6	localObject12	Object
+    //   270	1	7	localIOException7	IOException
+    //   281	1	7	localFileNotFoundException1	java.io.FileNotFoundException
+    //   300	1	7	localIOException8	IOException
+    //   314	1	7	localFileNotFoundException2	java.io.FileNotFoundException
+    //   339	15	7	localIOException9	IOException
+    //   389	15	7	localFileNotFoundException3	java.io.FileNotFoundException
+    //   273	141	8	localObject13	Object
     // Exception table:
     //   from	to	target	type
-    //   107	111	246	java/io/IOException
-    //   115	119	254	java/io/IOException
-    //   31	42	262	java/io/FileNotFoundException
-    //   283	287	290	java/io/IOException
-    //   275	279	298	java/io/IOException
-    //   31	42	306	java/io/IOException
-    //   335	339	342	java/io/IOException
-    //   327	331	350	java/io/IOException
-    //   31	42	358	finally
-    //   368	372	384	java/io/IOException
-    //   377	382	392	java/io/IOException
-    //   42	51	400	finally
-    //   57	65	407	finally
-    //   71	79	407	finally
-    //   85	92	407	finally
-    //   98	103	407	finally
-    //   127	136	407	finally
-    //   142	151	407	finally
-    //   157	173	407	finally
-    //   179	195	407	finally
-    //   201	217	407	finally
-    //   223	239	407	finally
-    //   318	323	407	finally
-    //   266	271	414	finally
-    //   42	51	431	java/io/IOException
-    //   57	65	438	java/io/IOException
-    //   71	79	438	java/io/IOException
-    //   85	92	438	java/io/IOException
-    //   98	103	438	java/io/IOException
-    //   127	136	438	java/io/IOException
-    //   142	151	438	java/io/IOException
-    //   157	173	438	java/io/IOException
-    //   179	195	438	java/io/IOException
-    //   201	217	438	java/io/IOException
-    //   223	239	438	java/io/IOException
-    //   42	51	443	java/io/FileNotFoundException
-    //   57	65	456	java/io/FileNotFoundException
-    //   71	79	456	java/io/FileNotFoundException
-    //   85	92	456	java/io/FileNotFoundException
-    //   98	103	456	java/io/FileNotFoundException
-    //   127	136	456	java/io/FileNotFoundException
-    //   142	151	456	java/io/FileNotFoundException
-    //   157	173	456	java/io/FileNotFoundException
-    //   179	195	456	java/io/FileNotFoundException
-    //   201	217	456	java/io/FileNotFoundException
-    //   223	239	456	java/io/FileNotFoundException
+    //   250	254	257	java/io/IOException
+    //   59	68	270	java/io/IOException
+    //   75	84	270	java/io/IOException
+    //   91	98	270	java/io/IOException
+    //   105	111	270	java/io/IOException
+    //   121	131	270	java/io/IOException
+    //   138	147	270	java/io/IOException
+    //   154	171	270	java/io/IOException
+    //   178	195	270	java/io/IOException
+    //   202	219	270	java/io/IOException
+    //   226	243	270	java/io/IOException
+    //   59	68	281	java/io/FileNotFoundException
+    //   75	84	281	java/io/FileNotFoundException
+    //   91	98	281	java/io/FileNotFoundException
+    //   105	111	281	java/io/FileNotFoundException
+    //   121	131	281	java/io/FileNotFoundException
+    //   138	147	281	java/io/FileNotFoundException
+    //   154	171	281	java/io/FileNotFoundException
+    //   178	195	281	java/io/FileNotFoundException
+    //   202	219	281	java/io/FileNotFoundException
+    //   226	243	281	java/io/FileNotFoundException
+    //   42	52	292	finally
+    //   42	52	300	java/io/IOException
+    //   42	52	314	java/io/FileNotFoundException
+    //   31	42	328	finally
+    //   31	42	339	java/io/IOException
+    //   363	368	371	java/io/IOException
+    //   31	42	389	java/io/FileNotFoundException
+    //   413	418	421	java/io/IOException
+    //   262	267	439	java/io/IOException
+    //   382	386	439	java/io/IOException
+    //   432	436	439	java/io/IOException
+    //   59	68	446	finally
+    //   75	84	446	finally
+    //   91	98	446	finally
+    //   105	111	446	finally
+    //   121	131	446	finally
+    //   138	147	446	finally
+    //   154	171	446	finally
+    //   178	195	446	finally
+    //   202	219	446	finally
+    //   226	243	446	finally
+    //   353	358	446	finally
+    //   403	408	446	finally
+    //   459	463	466	java/io/IOException
+    //   476	481	484	java/io/IOException
   }
   
   public void addFileItem(String paramString1, File paramFile, String paramString2)
   {
-    if (this.fileItem == null) {}
-    for (int i = 1;; i = this.fileItem.length + 1)
-    {
-      QPSupportUpdCfg.QPUpdFileItem[] arrayOfQPUpdFileItem = this.fileItem;
-      this.fileItem = new QPSupportUpdCfg.QPUpdFileItem[i];
-      int j = 0;
-      while (j < i - 1)
-      {
-        this.fileItem[j] = arrayOfQPUpdFileItem[j];
-        j += 1;
-      }
+    QPSupportUpdCfg.QPUpdFileItem[] arrayOfQPUpdFileItem = this.fileItem;
+    int i;
+    if (arrayOfQPUpdFileItem == null) {
+      i = 1;
+    } else {
+      i = arrayOfQPUpdFileItem.length + 1;
     }
-    this.fileItem[(i - 1)] = new QPSupportUpdCfg.QPUpdFileItem(this);
-    this.fileItem[(i - 1)].strFilePath = paramString2;
-    this.fileItem[(i - 1)].strFileHash = "00000000000000000000000000000000";
+    arrayOfQPUpdFileItem = this.fileItem;
+    this.fileItem = new QPSupportUpdCfg.QPUpdFileItem[i];
+    int j = 0;
+    int k;
+    for (;;)
+    {
+      k = i - 1;
+      if (j >= k) {
+        break;
+      }
+      this.fileItem[j] = arrayOfQPUpdFileItem[j];
+      j += 1;
+    }
+    this.fileItem[k] = new QPSupportUpdCfg.QPUpdFileItem(this);
+    arrayOfQPUpdFileItem = this.fileItem;
+    arrayOfQPUpdFileItem[k].strFilePath = paramString2;
+    arrayOfQPUpdFileItem[k].strFileHash = "00000000000000000000000000000000";
     if (a(paramFile))
     {
-      paramString1 = bhpp.a(paramString1);
+      paramString1 = MD5FileUtil.a(paramString1);
       if (paramString1 != null) {
-        this.fileItem[(i - 1)].strFileHash = paramString1;
+        this.fileItem[k].strFileHash = paramString1;
       }
     }
   }
   
   public boolean addFileItem(String paramString, File paramFile)
   {
-    boolean bool = false;
+    boolean bool = paramFile.exists();
     int k = 0;
-    if (paramFile.exists()) {
-      if (this.fileItem == null) {
-        break label167;
-      }
-    }
-    label167:
-    for (int i = this.fileItem.length;; i = 0)
+    if (bool)
     {
-      QPSupportUpdCfg.QPUpdFileItem[] arrayOfQPUpdFileItem = new QPSupportUpdCfg.QPUpdFileItem[i + 1];
+      QPSupportUpdCfg.QPUpdFileItem[] arrayOfQPUpdFileItem = this.fileItem;
+      int i;
+      if (arrayOfQPUpdFileItem != null) {
+        i = arrayOfQPUpdFileItem.length;
+      } else {
+        i = 0;
+      }
+      arrayOfQPUpdFileItem = new QPSupportUpdCfg.QPUpdFileItem[i + 1];
       int j = 0;
       while (j < arrayOfQPUpdFileItem.length)
       {
@@ -783,7 +841,7 @@ public class QPSupportUpdCfg
       arrayOfQPUpdFileItem[i].strFileHash = "00000000000000000000000000000000";
       if (a(paramFile))
       {
-        paramString = bhpp.a(paramString);
+        paramString = MD5FileUtil.a(paramString);
         if (paramString != null) {
           arrayOfQPUpdFileItem[i].strFileHash = paramString;
         }
@@ -791,28 +849,28 @@ public class QPSupportUpdCfg
       arrayOfQPUpdFileItem[i].strFilePath = paramFile.getAbsolutePath();
       this.fileItem = arrayOfQPUpdFileItem;
       WriteConfigFile();
-      bool = true;
-      return bool;
+      return true;
     }
+    return false;
   }
   
   public String getFileDstPath(String paramString)
   {
-    paramString = bhpq.a(paramString);
-    if (this.fileItem == null) {}
-    for (;;)
-    {
+    paramString = QPUpdFileOperation.b(paramString);
+    QPSupportUpdCfg.QPUpdFileItem[] arrayOfQPUpdFileItem = this.fileItem;
+    if (arrayOfQPUpdFileItem == null) {
       return null;
-      int j = this.fileItem.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (paramString.equalsIgnoreCase(bhpq.a(this.fileItem[i].strFilePath))) {
-          return this.fileItem[i].strFilePath;
-        }
-        i += 1;
-      }
     }
+    int j = arrayOfQPUpdFileItem.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (paramString.equalsIgnoreCase(QPUpdFileOperation.b(this.fileItem[i].strFilePath))) {
+        return this.fileItem[i].strFilePath;
+      }
+      i += 1;
+    }
+    return null;
   }
   
   public String getFileHash(String paramString)
@@ -826,31 +884,32 @@ public class QPSupportUpdCfg
   
   public int getFileIndexInConfigFile(String paramString)
   {
-    paramString = bhpq.a(paramString);
-    if (this.fileItem == null) {}
-    for (;;)
-    {
+    paramString = QPUpdFileOperation.b(paramString);
+    QPSupportUpdCfg.QPUpdFileItem[] arrayOfQPUpdFileItem = this.fileItem;
+    if (arrayOfQPUpdFileItem == null) {
       return -1;
-      int j = this.fileItem.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (paramString.equalsIgnoreCase(bhpq.a(this.fileItem[i].strFilePath)))
-        {
-          paramString = this.fileItem[i].strFilePath;
-          return i;
-        }
-        i += 1;
-      }
     }
+    int j = arrayOfQPUpdFileItem.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (paramString.equalsIgnoreCase(QPUpdFileOperation.b(this.fileItem[i].strFilePath)))
+      {
+        paramString = this.fileItem[i].strFilePath;
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
   }
   
   public int getFileItemCount()
   {
-    if (this.fileItem == null) {
+    QPSupportUpdCfg.QPUpdFileItem[] arrayOfQPUpdFileItem = this.fileItem;
+    if (arrayOfQPUpdFileItem == null) {
       return 0;
     }
-    return this.fileItem.length;
+    return arrayOfQPUpdFileItem.length;
   }
   
   public void updateCfgHash()
@@ -859,33 +918,31 @@ public class QPSupportUpdCfg
       return;
     }
     int i = 0;
-    label10:
-    if (i < this.fileItem.length) {
-      if (!bhpq.a(this.fileItem[i].strFilePath).equalsIgnoreCase("SupportUpd.cfg")) {
-        break label46;
-      }
-    }
     for (;;)
     {
-      i += 1;
-      break label10;
-      break;
-      label46:
-      Object localObject = new File(this.fileItem[i].strFilePath);
-      this.fileItem[i].strFileHash = "00000000000000000000000000000000";
-      if (a((File)localObject))
+      Object localObject = this.fileItem;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (!QPUpdFileOperation.b(localObject[i].strFilePath).equalsIgnoreCase("SupportUpd.cfg"))
       {
-        localObject = bhpp.a(this.fileItem[i].strFilePath);
-        if (localObject != null) {
-          this.fileItem[i].strFileHash = ((String)localObject);
+        localObject = new File(this.fileItem[i].strFilePath);
+        this.fileItem[i].strFileHash = "00000000000000000000000000000000";
+        if (a((File)localObject))
+        {
+          localObject = MD5FileUtil.a(this.fileItem[i].strFilePath);
+          if (localObject != null) {
+            this.fileItem[i].strFileHash = ((String)localObject);
+          }
         }
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSupportUpdCfg
  * JD-Core Version:    0.7.0.1
  */

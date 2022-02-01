@@ -1,45 +1,70 @@
 package com.tencent.mm.compatible.util;
 
-import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.media.AudioAttributes;
+import android.media.AudioAttributes.Builder;
+import android.media.AudioFocusRequest;
+import android.media.AudioFocusRequest.Builder;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-@TargetApi(8)
 public final class c
   implements b.b
 {
   private Context context;
-  b.a esl;
-  private AudioManager.OnAudioFocusChangeListener esm;
+  public b.a lYP;
+  private AudioManager.OnAudioFocusChangeListener lYQ;
   private AudioManager mAudioManager;
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(93065);
-    this.esm = new c.1(this);
-    this.context = paramContext;
-    AppMethodBeat.o(93065);
+    AppMethodBeat.i(155870);
+    this.lYQ = new AudioManager.OnAudioFocusChangeListener()
+    {
+      public final void onAudioFocusChange(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(155869);
+        if (c.this.lYP != null)
+        {
+          Log.d("MicroMsg.AudioFocusHelper", "jacks change: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          c.this.lYP.onChange(paramAnonymousInt);
+        }
+        AppMethodBeat.o(155869);
+      }
+    };
+    Context localContext = paramContext;
+    if ((paramContext instanceof Activity)) {
+      localContext = MMApplicationContext.getContext();
+    }
+    this.context = localContext;
+    AppMethodBeat.o(155870);
   }
   
-  public final boolean Mh()
+  public final void a(b.a parama)
   {
-    AppMethodBeat.i(93067);
+    this.lYP = parama;
+  }
+  
+  public final boolean aPS()
+  {
+    AppMethodBeat.i(155872);
     if ((this.mAudioManager == null) && (this.context != null)) {
       this.mAudioManager = ((AudioManager)this.context.getSystemService("audio"));
     }
     boolean bool;
     if (this.mAudioManager != null) {
-      if (1 == this.mAudioManager.abandonAudioFocus(this.esm)) {
+      if (1 == this.mAudioManager.abandonAudioFocus(this.lYQ)) {
         bool = true;
       }
     }
     for (;;)
     {
-      ab.b("MicroMsg.AudioFocusHelper", "jacks abandonFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.esm.hashCode()) });
-      AppMethodBeat.o(93067);
+      AppMethodBeat.o(155872);
       return bool;
       bool = false;
       continue;
@@ -47,27 +72,48 @@ public final class c
     }
   }
   
-  public final void a(b.a parama)
+  public final int aPT()
   {
-    this.esl = parama;
+    AppMethodBeat.i(240847);
+    if ((this.mAudioManager == null) && (this.context != null)) {
+      this.mAudioManager = ((AudioManager)this.context.getSystemService("audio"));
+    }
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      Object localObject = new AudioAttributes.Builder().setContentType(2).setUsage(1).build();
+      localObject = new AudioFocusRequest.Builder(1).setAudioAttributes((AudioAttributes)localObject).setAcceptsDelayedFocusGain(true).setOnAudioFocusChangeListener(this.lYQ).build();
+      i = this.mAudioManager.requestAudioFocus((AudioFocusRequest)localObject);
+      AppMethodBeat.o(240847);
+      return i;
+    }
+    int i = this.mAudioManager.requestAudioFocus(this.lYQ, 3, 1);
+    AppMethodBeat.o(240847);
+    return i;
+  }
+  
+  public final void b(b.a parama)
+  {
+    if (this.lYP == parama) {
+      this.lYP = null;
+    }
   }
   
   public final boolean requestFocus()
   {
-    AppMethodBeat.i(93066);
+    AppMethodBeat.i(155871);
     if ((this.mAudioManager == null) && (this.context != null)) {
       this.mAudioManager = ((AudioManager)this.context.getSystemService("audio"));
     }
     boolean bool;
     if (this.mAudioManager != null) {
-      if (1 == this.mAudioManager.requestAudioFocus(this.esm, 3, 2)) {
+      if (1 == this.mAudioManager.requestAudioFocus(this.lYQ, 3, 2)) {
         bool = true;
       }
     }
     for (;;)
     {
-      ab.b("MicroMsg.AudioFocusHelper", "jacks requestFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.esm.hashCode()) });
-      AppMethodBeat.o(93066);
+      Log.printInfoStack("MicroMsg.AudioFocusHelper", "jacks requestFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.lYQ.hashCode()) });
+      AppMethodBeat.o(155871);
       return bool;
       bool = false;
       continue;

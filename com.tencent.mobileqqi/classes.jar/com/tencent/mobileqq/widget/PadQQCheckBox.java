@@ -32,8 +32,8 @@ public class PadQQCheckBox
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(1, true);
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(0);
     LayoutInflater.from(paramContext).inflate(2130903297, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232008));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232009));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131232007));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232008));
     setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     paramAttributeSet.recycle();

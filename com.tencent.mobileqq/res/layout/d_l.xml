@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/nc_" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="fic" app:layout_constraintBottom_toTopOf="@id/nbm" app:layout_constraintTop_toTopOf="fic" />
+    <FrameLayout android:id="@id/nbe" android:background="@drawable/jm5" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/nbm" />
+    <TextView android:textSize="@dimen/aym" android:textStyle="bold" android:textColor="@color/8o" android:id="@id/kbp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:shadowColor="@color/7n" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="2.0" app:layout_constraintBottom_toTopOf="@id/nbm" app:layout_constraintEnd_toEndOf="fic" app:layout_constraintStart_toStartOf="fic" />
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/nbm" android:background="@drawable/glq" android:layout_width="fill_parent" android:layout_height="@dimen/bs0" app:layout_constraintBottom_toBottomOf="fic" app:layout_constraintEnd_toEndOf="fic" app:layout_constraintStart_toStartOf="fic">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/oif" android:layout_width="fill_parent" android:layout_height="60.0dip">
+                <ImageView android:id="@id/o4n" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/j67" android:layout_alignParentLeft="true" />
+                <ImageView android:id="@id/o4o" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/jru" android:layout_alignParentRight="true" />
+                <ImageView android:id="@id/o4r" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/js0" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_gravity="bottom" android:id="@id/pv3" android:layout_width="fill_parent" android:layout_height="180.0dip">
+                <com.tencent.mobileqq.wink.editor.clipping.timeline.widget.panel.TimelinePanel android:id="@id/qyn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/oe9" />
+                <com.tencent.mobileqq.wink.editor.clipping.timeline.reorder.ReorderContainerView android:id="@id/pt2" android:visibility="invisible" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/oe9" android:overScrollMode="never" />
+                <FrameLayout android:id="@id/nbd" android:background="@drawable/h_n" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="21.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true">
+                    <ImageView android:layout_gravity="center" android:id="@id/o4m" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/jsj" />
+                </FrameLayout>
+                <View android:background="#33ffffff" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/oe9" />
+                <LinearLayout android:id="@id/oe9" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="34.0dip" android:layout_alignParentBottom="true">
+                    <FrameLayout android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                        <RelativeLayout android:layout_gravity="center" android:id="@id/r0w" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                            <ImageView android:id="@id/o94" android:layout_width="16.0dip" android:layout_height="fill_parent" android:src="@drawable/js5" android:scaleType="centerInside" />
+                            <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/qp7" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:text="变速" android:layout_toRightOf="@id/o94" />
+                        </RelativeLayout>
+                    </FrameLayout>
+                    <View android:layout_gravity="center" android:layout_width="1.0dip" android:layout_height="9.0dip" />
+                    <FrameLayout android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                        <RelativeLayout android:layout_gravity="center" android:id="@id/r0v" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                            <ImageView android:id="@id/o65" android:layout_width="16.0dip" android:layout_height="fill_parent" android:src="@drawable/jrx" android:scaleType="centerInside" />
+                            <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/qk7" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:text="删除" android:layout_toRightOf="@id/o65" />
+                        </RelativeLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

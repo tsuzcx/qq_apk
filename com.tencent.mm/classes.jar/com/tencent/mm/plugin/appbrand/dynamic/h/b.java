@@ -1,77 +1,114 @@
 package com.tencent.mm.plugin.appbrand.dynamic.h;
 
+import android.os.Bundle;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.BaseIPCService;
 import com.tencent.mm.ipcinvoker.e;
 import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.wx_extension.b.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.l;
+import com.tencent.mm.ipcinvoker.wx_extension.c.b.a;
+import com.tencent.mm.ipcinvoker.wx_extension.service.SupportProcessIPCService;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsMpProcessIPCService;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public final class b
 {
-  private static final ap hqy;
+  private static final MTimerHandler rnr;
   
   static
   {
-    AppMethodBeat.i(10953);
-    hqy = new ap(new b.1(), true);
-    AppMethodBeat.o(10953);
+    AppMethodBeat.i(121434);
+    rnr = new MTimerHandler(new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(121426);
+        BaseIPCService localBaseIPCService = l.aYt().Fa(SupportProcessIPCService.PROCESS_NAME);
+        if (localBaseIPCService != null) {
+          localBaseIPCService.fw(false);
+        }
+        AppMethodBeat.o(121426);
+        return false;
+      }
+    }, true);
+    AppMethodBeat.o(121434);
   }
   
-  public static void aAb()
+  public static void ase()
   {
-    AppMethodBeat.i(10950);
-    if (!e.lZ("com.tencent.mm:support"))
+    AppMethodBeat.i(121432);
+    if (!i.EW(SupportProcessIPCService.PROCESS_NAME))
     {
-      ab.i("MicroMsg.DynamicProcessPerformance", "try to kill process failed, current process is not the support process.");
-      AppMethodBeat.o(10950);
+      Log.i("MicroMsg.DynamicProcessPerformance", "try to kill process failed, current process is not the support process.");
+      AppMethodBeat.o(121432);
       return;
     }
-    int i = b.a.PY().size();
+    Log.i("MicroMsg.DynamicProcessPerformance", "kill support process");
+    rnr.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(121427);
+        com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+        Object localObject = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/appbrand/dynamic/performance/DynamicProcessPerformance$2", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        Process.killProcess(((Integer)locala.sb(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/appbrand/dynamic/performance/DynamicProcessPerformance$2", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        AppMethodBeat.o(121427);
+      }
+    }, 500L);
+    AppMethodBeat.o(121432);
+  }
+  
+  public static void cnW()
+  {
+    AppMethodBeat.i(121431);
+    if (!i.EW(SupportProcessIPCService.PROCESS_NAME))
+    {
+      Log.i("MicroMsg.DynamicProcessPerformance", "try to kill process failed, current process is not the support process.");
+      AppMethodBeat.o(121431);
+      return;
+    }
+    int i = b.a.aYK().size();
     if (i != 0)
     {
-      ab.i("MicroMsg.DynamicProcessPerformance", "try to exit process, but has many tasks(%d) running. Abort it.", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(10950);
+      Log.i("MicroMsg.DynamicProcessPerformance", "try to exit process, but has many tasks(%d) running. Abort it.", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(121431);
       return;
     }
-    ab.i("MicroMsg.DynamicProcessPerformance", "post delayed(60s) to kill the support process.");
-    hqy.ag(60000L, 60000L);
-    AppMethodBeat.o(10950);
+    Log.i("MicroMsg.DynamicProcessPerformance", "post delayed(60s) to kill the support process.");
+    rnr.startTimer(60000L);
+    AppMethodBeat.o(121431);
   }
   
-  public static void aAc()
+  public static void cnX()
   {
-    AppMethodBeat.i(10951);
-    if (!e.lZ("com.tencent.mm:support"))
-    {
-      ab.i("MicroMsg.DynamicProcessPerformance", "try to kill process failed, current process is not the support process.");
-      AppMethodBeat.o(10951);
-      return;
+    AppMethodBeat.i(121433);
+    Log.i("MicroMsg.DynamicProcessPerformance", "killAllProcess");
+    String str = ToolsProcessIPCService.PROCESS_NAME;
+    if (e.aYp().ET(str)) {
+      j.a(ToolsProcessIPCService.PROCESS_NAME, null, c.class, new f() {});
     }
-    ab.i("MicroMsg.DynamicProcessPerformance", "kill support process");
-    hqy.postDelayed(new b.2(), 500L);
-    AppMethodBeat.o(10951);
-  }
-  
-  public static void aAd()
-  {
-    AppMethodBeat.i(10952);
-    ab.i("MicroMsg.DynamicProcessPerformance", "killAllProcess");
-    if (com.tencent.mm.ipcinvoker.b.PK().lX("com.tencent.mm:tools")) {
-      f.a("com.tencent.mm:tools", null, c.class, new b.3());
+    str = ToolsMpProcessIPCService.PROCESS_NAME;
+    if (e.aYp().ET(str)) {
+      j.a(ToolsMpProcessIPCService.PROCESS_NAME, null, c.class, new f() {});
     }
-    if (com.tencent.mm.ipcinvoker.b.PK().lX("com.tencent.mm:toolsmp")) {
-      f.a("com.tencent.mm:toolsmp", null, c.class, new b.4());
+    str = SupportProcessIPCService.PROCESS_NAME;
+    if (e.aYp().ET(str)) {
+      j.a(SupportProcessIPCService.PROCESS_NAME, null, c.class, new f() {});
     }
-    if (com.tencent.mm.ipcinvoker.b.PK().lX("com.tencent.mm:support")) {
-      f.a("com.tencent.mm:support", null, c.class, new b.5());
-    }
-    AppMethodBeat.o(10952);
+    AppMethodBeat.o(121433);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.h.b
  * JD-Core Version:    0.7.0.1
  */

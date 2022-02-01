@@ -81,19 +81,24 @@ public class SharpPDecoderWrapper
     ((SharpPDecoder.SharpPOutFrame)localObject).dstWidth = paramInt2;
     ((SharpPDecoder.SharpPOutFrame)localObject).dstHeight = paramInt3;
     ((SharpPDecoder.SharpPOutFrame)localObject).fmt = paramInt1;
-    int i = 0;
     paramInt1 = 0;
-    while (paramInt1 < paramSharpPFeature.layerNum)
+    int j;
+    for (int i = 0; paramInt1 < paramSharpPFeature.layerNum; i = j)
     {
       int k = decodeImageInNative(l, paramInt1, (SharpPDecoder.SharpPOutFrame)localObject);
-      int j = i;
+      j = i;
       if (k != 0)
       {
-        ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:layerNo=" + paramInt1 + ",status=" + k });
+        ILog localILog = ImageManagerEnv.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decodeSharpP error:layerNo=");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(",status=");
+        localStringBuilder.append(k);
+        localILog.e("SharpPDecoderWrapper", new Object[] { localStringBuilder.toString() });
         j = i + 1;
       }
       paramInt1 += 1;
-      i = j;
     }
     closeDecoderInNative(l);
     if (i != paramSharpPFeature.layerNum) {
@@ -110,18 +115,26 @@ public class SharpPDecoderWrapper
   public int decodeOneFrameInNative(long paramLong, int paramInt, Bitmap paramBitmap, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger)
   {
     int i = decodeImageToBitmapInNative(paramLong, paramInt, paramBitmap, paramWriteableInteger.realInt);
-    if (i != 0) {
-      ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:frameIndex=" + paramInt + ",status=" + i });
+    if (i != 0)
+    {
+      paramBitmap = ImageManagerEnv.getLogger();
+      paramWriteableInteger = new StringBuilder();
+      paramWriteableInteger.append("decodeSharpP error:frameIndex=");
+      paramWriteableInteger.append(paramInt);
+      paramWriteableInteger.append(",status=");
+      paramWriteableInteger.append(i);
+      paramBitmap.e("SharpPDecoderWrapper", new Object[] { paramWriteableInteger.toString() });
     }
     return i;
   }
   
   public Bitmap decodeOneFrameWithAlphaInNative(long paramLong, int paramInt1, int paramInt2, int paramInt3, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
   {
-    if ((this.byteBuffer == null) || ((this.byteBuffer != null) && (this.byteBuffer.length < paramInt2 * paramInt3))) {
+    int[] arrayOfInt = this.byteBuffer;
+    if ((arrayOfInt == null) || ((arrayOfInt != null) && (arrayOfInt.length < paramInt2 * paramInt3))) {
       this.byteBuffer = new int[paramInt2 * paramInt3];
     }
-    int[] arrayOfInt = this.byteBuffer;
+    arrayOfInt = this.byteBuffer;
     Object localObject = this.mDecoder;
     localObject.getClass();
     localObject = new SharpPDecoder.SharpPOutFrame((SharpPDecoder)localObject);
@@ -132,7 +145,11 @@ public class SharpPDecoderWrapper
     paramInt1 = decodeImageInNative(paramLong, paramInt1, (SharpPDecoder.SharpPOutFrame)localObject);
     if (paramInt1 != 0)
     {
-      ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP gif alpha mode error:status=" + paramInt1 });
+      paramWriteableInteger = ImageManagerEnv.getLogger();
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("decodeSharpP gif alpha mode error:status=");
+      paramBitmap.append(paramInt1);
+      paramWriteableInteger.e("SharpPDecoderWrapper", new Object[] { paramBitmap.toString() });
       return null;
     }
     paramWriteableInteger.realInt = Integer.valueOf(((SharpPDecoder.SharpPOutFrame)localObject).delayTime);
@@ -155,36 +172,40 @@ public class SharpPDecoderWrapper
     if (l == 0L)
     {
       ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpPInNative error:hDec=0" });
+      return null;
+    }
+    paramString = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
+    paramConfig = new Integer(0);
+    paramInt1 = 0;
+    paramInt2 = 0;
+    while (paramInt2 < paramSharpPFeature.layerNum)
+    {
+      int i = decodeImageToBitmapInNative(l, paramInt2, paramString, paramConfig);
+      if (i != 0)
+      {
+        ILog localILog = ImageManagerEnv.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decodeSharpP error:layerNo=");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append(",status=");
+        localStringBuilder.append(i);
+        localILog.e("SharpPDecoderWrapper", new Object[] { localStringBuilder.toString() });
+        paramInt1 += 1;
+      }
+      paramInt2 += 1;
+    }
+    closeDecoderInNative(l);
+    if (paramInt1 == paramSharpPFeature.layerNum) {
       paramString = null;
     }
-    do
-    {
-      return paramString;
-      paramString = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
-      paramInt2 = 0;
-      paramConfig = new Integer(0);
-      paramInt1 = 0;
-      while (paramInt1 < paramSharpPFeature.layerNum)
-      {
-        int j = decodeImageToBitmapInNative(l, paramInt1, paramString, paramConfig);
-        int i = paramInt2;
-        if (j != 0)
-        {
-          ImageManagerEnv.getLogger().e("SharpPDecoderWrapper", new Object[] { "decodeSharpP error:layerNo=" + paramInt1 + ",status=" + j });
-          i = paramInt2 + 1;
-        }
-        paramInt1 += 1;
-        paramInt2 = i;
-      }
-      closeDecoderInNative(l);
-    } while (paramInt2 != paramSharpPFeature.layerNum);
-    return null;
+    return paramString;
   }
   
   public int getAllocationByteCount()
   {
-    if (this.byteBuffer != null) {
-      return this.byteBuffer.length;
+    int[] arrayOfInt = this.byteBuffer;
+    if (arrayOfInt != null) {
+      return arrayOfInt.length;
     }
     return 0;
   }
@@ -196,7 +217,7 @@ public class SharpPDecoderWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sharpP.SharpPDecoderWrapper
  * JD-Core Version:    0.7.0.1
  */

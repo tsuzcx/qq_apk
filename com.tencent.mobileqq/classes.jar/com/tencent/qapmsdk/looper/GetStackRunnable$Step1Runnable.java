@@ -26,6 +26,7 @@ class GetStackRunnable$Step1Runnable
         this.stepHandler.post(this.this$0);
         return;
       }
+      Object localObject;
       if (l2 < -10L)
       {
         localObject = new GetStackRunnable.Step2Runnable(this.this$0, this.stepHandler, this.mi, l1);
@@ -33,13 +34,13 @@ class GetStackRunnable$Step1Runnable
         return;
       }
       l2 = SystemClock.uptimeMillis() - l1;
-      if ((l2 < GetStackRunnable.access$000(this.this$0) - 10) || (l2 > 100000L))
+      if ((l2 >= GetStackRunnable.access$000(this.this$0) - 10) && (l2 <= 100000L))
       {
-        this.stepHandler.post(this.this$0);
+        localObject = new GetStackRunnable.Step3Runnable(this.this$0, this.stepHandler, this.mi, l1);
+        this.stepHandler.postDelayed((Runnable)localObject, 200L);
         return;
       }
-      Object localObject = new GetStackRunnable.Step3Runnable(this.this$0, this.stepHandler, this.mi, l1);
-      this.stepHandler.postDelayed((Runnable)localObject, 200L);
+      this.stepHandler.post(this.this$0);
       return;
     }
     this.stepHandler.post(this.this$0);
@@ -47,7 +48,7 @@ class GetStackRunnable$Step1Runnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.GetStackRunnable.Step1Runnable
  * JD-Core Version:    0.7.0.1
  */

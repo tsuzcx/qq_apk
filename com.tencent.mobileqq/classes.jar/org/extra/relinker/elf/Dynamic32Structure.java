@@ -9,20 +9,20 @@ public class Dynamic32Structure
   public Dynamic32Structure(ElfParser paramElfParser, Elf.Header paramHeader, long paramLong, int paramInt)
   {
     ByteBuffer localByteBuffer = ByteBuffer.allocate(4);
-    if (paramHeader.bigEndian) {}
-    for (paramHeader = ByteOrder.BIG_ENDIAN;; paramHeader = ByteOrder.LITTLE_ENDIAN)
-    {
-      localByteBuffer.order(paramHeader);
-      paramLong = paramInt * 8 + paramLong;
-      this.tag = paramElfParser.readWord(localByteBuffer, paramLong);
-      this.val = paramElfParser.readWord(localByteBuffer, paramLong + 4L);
-      return;
+    if (paramHeader.bigEndian) {
+      paramHeader = ByteOrder.BIG_ENDIAN;
+    } else {
+      paramHeader = ByteOrder.LITTLE_ENDIAN;
     }
+    localByteBuffer.order(paramHeader);
+    paramLong += paramInt * 8;
+    this.tag = paramElfParser.readWord(localByteBuffer, paramLong);
+    this.val = paramElfParser.readWord(localByteBuffer, paramLong + 4L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.extra.relinker.elf.Dynamic32Structure
  * JD-Core Version:    0.7.0.1
  */

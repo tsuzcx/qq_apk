@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/qav_multi_video_friend_item_width" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qav_gaudio_face" android:layout_width="@dimen/multi_video_item_faceW" android:layout_height="@dimen/multi_video_item_faceW" android:src="@drawable/h001" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/qav_white" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/qav_gaudio_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/qav_gaudio_member_name_margin_top" android:maxWidth="50.0dip" android:singleLine="true" android:layout_below="@id/qav_gaudio_face" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/qav_gaudio_speaking_icon" android:visibility="gone" android:layout_width="@dimen/qav_gaudio_speaking_icon_width" android:layout_height="@dimen/qav_gaudio_speaking_icon_width" android:layout_marginTop="6.0dip" android:src="@drawable/qav_gvideo_speaking" android:layout_toRightOf="@id/qav_gaudio_name" android:layout_below="@id/qav_gaudio_face" />
+</RelativeLayout>

@@ -1,23 +1,18 @@
 import android.net.Uri;
-import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
 
 public class fnc
 {
   public static final int a = 0;
   public static final Uri a;
-  public static final String a = "raw_contact_id=?";
   public static final String[] a;
-  public static final int b = 1;
-  public static final String b = "mimetype = ?";
-  public static final String[] b = { "raw_contact_id", "data1" };
-  public static final int c = 2;
-  public static final int d = 0;
-  public static final int e = 1;
+  public static final int b = 2;
+  public static final int c = 3;
   
   static
   {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
+    jdField_a_of_type_AndroidNetUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "data1", "display_name", "contact_id", "raw_contact_id" };
   }
 }
 

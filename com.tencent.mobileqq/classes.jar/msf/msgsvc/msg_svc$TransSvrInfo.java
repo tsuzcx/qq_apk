@@ -19,14 +19,15 @@ public final class msg_svc$TransSvrInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_sub_type", "int32_ret_code", "bytes_err_msg", "bytes_trans_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, TransSvrInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_sub_type", "int32_ret_code", "bytes_err_msg", "bytes_trans_info" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, TransSvrInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.TransSvrInfo
  * JD-Core Version:    0.7.0.1
  */

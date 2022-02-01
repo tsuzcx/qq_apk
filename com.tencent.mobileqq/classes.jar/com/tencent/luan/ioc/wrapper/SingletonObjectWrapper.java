@@ -31,10 +31,10 @@ public class SingletonObjectWrapper<T>
         paramInjector = new ObjectHolder(this.object, false);
         return paramInjector;
       }
+      this.object = this.constructor.newInstance(paramInjector);
+      return new ObjectHolder(this.object, this.constructor.needInject());
     }
     finally {}
-    this.object = this.constructor.newInstance(paramInjector);
-    return new ObjectHolder(this.object, this.constructor.needInject());
   }
   
   public boolean needCache()
@@ -44,7 +44,7 @@ public class SingletonObjectWrapper<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.ioc.wrapper.SingletonObjectWrapper
  * JD-Core Version:    0.7.0.1
  */

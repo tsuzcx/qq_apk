@@ -11,11 +11,11 @@ public final class GetPhotoSearchRsp
   static PhotoSearchBoxPhoto cache_photo_search_box_photo = new PhotoSearchBoxPhoto();
   static s_outshare cache_shareinfo = new s_outshare();
   public String msg = "";
-  public PhotoSearchBox photo_search_box;
-  public PhotoSearchBoxPhoto photo_search_box_photo;
-  public int ret;
-  public long share_ctime;
-  public s_outshare shareinfo;
+  public PhotoSearchBox photo_search_box = null;
+  public PhotoSearchBoxPhoto photo_search_box_photo = null;
+  public int ret = 0;
+  public long share_ctime = 0L;
+  public s_outshare shareinfo = null;
   
   public GetPhotoSearchRsp() {}
   
@@ -42,24 +42,28 @@ public final class GetPhotoSearchRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.photo_search_box != null) {
-      paramJceOutputStream.write(this.photo_search_box, 2);
+    localObject = this.photo_search_box;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.photo_search_box_photo != null) {
-      paramJceOutputStream.write(this.photo_search_box_photo, 3);
+    localObject = this.photo_search_box_photo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.shareinfo != null) {
-      paramJceOutputStream.write(this.shareinfo, 4);
+    localObject = this.shareinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.share_ctime, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetPhotoSearchRsp
  * JD-Core Version:    0.7.0.1
  */

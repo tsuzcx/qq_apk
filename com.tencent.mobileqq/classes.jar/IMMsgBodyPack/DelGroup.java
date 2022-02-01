@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class DelGroup
   extends JceStruct
 {
-  public long dwGroupID;
+  public long dwGroupID = 0L;
   
   public DelGroup() {}
   
@@ -28,7 +28,7 @@ public final class DelGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.DelGroup
  * JD-Core Version:    0.7.0.1
  */

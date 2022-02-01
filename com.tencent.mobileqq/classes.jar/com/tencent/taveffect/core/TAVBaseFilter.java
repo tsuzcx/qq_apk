@@ -41,8 +41,9 @@ public abstract class TAVBaseFilter
   
   protected <T extends TAVBaseFilter> T cloneFilter(T paramT)
   {
-    if (this.timeRange != null) {
-      paramT.setTimeRange(new TAVTimeRange(this.timeRange.start(), this.timeRange.duration()));
+    TAVTimeRange localTAVTimeRange = this.timeRange;
+    if (localTAVTimeRange != null) {
+      paramT.setTimeRange(new TAVTimeRange(localTAVTimeRange.start(), this.timeRange.duration()));
     }
     paramT.setRendererWidth(this.rendererWidth);
     paramT.setRendererWidth(this.rendererHeight);
@@ -72,10 +73,11 @@ public abstract class TAVBaseFilter
   
   protected boolean isValid(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (this.timeRange == null) {
+    TAVTimeRange localTAVTimeRange = this.timeRange;
+    if (localTAVTimeRange == null) {
       return true;
     }
-    return this.timeRange.contain(paramTAVTextureInfo.frameTimeUs);
+    return localTAVTimeRange.contain(paramTAVTextureInfo.frameTimeUs);
   }
   
   public void onProcess(TAVTextureInfo paramTAVTextureInfo) {}
@@ -104,7 +106,7 @@ public abstract class TAVBaseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.core.TAVBaseFilter
  * JD-Core Version:    0.7.0.1
  */

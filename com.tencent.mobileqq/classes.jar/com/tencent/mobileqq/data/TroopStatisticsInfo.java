@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class TroopStatisticsInfo
-  extends awge
+  extends Entity
 {
   public long count;
-  @awhs
+  @unique
   public String troopUin;
 }
 

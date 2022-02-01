@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.report;
 
 import android.os.Process;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.report.service.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.b.f;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatSomeFeatureSwitch;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.Assert;
 
 public abstract class a
 {
-  private static boolean qrC = false;
-  private static int qrE = 1;
-  private StringBuffer qrD = new StringBuffer();
+  private static int OyV = 1;
+  private static final f<Integer, Long> zNn = new com.tencent.mm.b.h(50);
   
-  public static List<String> Yq(String paramString)
+  public static List<String> aUn(String paramString)
   {
     ArrayList localArrayList2 = new ArrayList();
     try
@@ -37,152 +36,206 @@ public abstract class a
     }
     catch (Exception paramString)
     {
-      ab.printErrStackTrace("MicroMsg.AbsReportStruct", paramString, "check to report list error [%s]", new Object[] { paramString.toString() });
+      Log.printErrStackTrace("MicroMsg.AbsReportStruct", paramString, "check to report list error [%s]", new Object[] { paramString.toString() });
       localArrayList1 = null;
     }
   }
   
-  public static int chG()
+  private boolean gNF()
   {
-    int i = Process.myPid();
-    StringBuilder localStringBuilder = new StringBuilder().append(i).append("_").append(bo.aoy()).append("_");
-    i = qrE;
-    qrE = i + 1;
-    return Math.abs(i.hashCode());
+    boolean bool2 = false;
+    int i = getId();
+    Log.d("MicroMsg.AbsReportStruct", "reportWithAccountReady %d %s", new Object[] { Integer.valueOf(getId()), aIF() });
+    String str = aIE();
+    boolean bool1 = bool2;
+    if (i > 0)
+    {
+      bool1 = bool2;
+      if (!Util.isNullOrNil(str)) {
+        bool1 = com.tencent.mm.plugin.report.service.h.OAn.cH(getId(), str);
+      }
+    }
+    return bool1;
   }
   
-  private void fZ(String paramString1, String paramString2)
+  public static int gNH()
   {
-    ab.w("MicroMsg.AbsReportStruct", "error report [%d] msg[%s %s]", new Object[] { Integer.valueOf(getId()), paramString1, paramString2 });
-    this.qrD.append(paramString1).append(":").append(paramString2).append("\r\n");
+    int i = Process.myPid();
+    StringBuilder localStringBuilder = new StringBuilder().append(i).append("_").append(Util.nowMilliSecond()).append("_");
+    i = OyV;
+    OyV = i + 1;
+    return Math.abs(i.hashCode());
   }
   
   protected static boolean getBoolean(String paramString)
   {
     boolean bool = false;
-    if (bo.getInt(paramString, 0) != 0) {
+    if (Util.getInt(paramString, 0) != 0) {
       bool = true;
     }
     return bool;
   }
   
-  public static void ky(boolean paramBoolean)
+  private void lB(String paramString1, String paramString2)
   {
-    qrC = paramBoolean;
+    Log.w("MicroMsg.AbsReportStruct", "error report [%d] msg[%s %s]", new Object[] { Integer.valueOf(getId()), paramString1, paramString2 });
   }
   
-  public static String s(Object... paramVarArgs)
+  public final String F(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (paramVarArgs.length <= 0)
-    {
-      ab.w("MicroMsg.AbsReportStruct", "vals is null, use '' as value");
-      return "";
+    if (Util.isNullOrNil(paramString2)) {}
+    while (!paramString2.contains(",")) {
+      return paramString2;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = paramVarArgs.length - 1;
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuilder.append(String.valueOf(paramVarArgs[i])).append(',');
-      i += 1;
+    if ((!WeChatSomeFeatureSwitch.blockCNMobile()) && (paramBoolean) && ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED))) {
+      Assert.fail("value contain comma, please confirm your logic.log id:" + getId() + " field:" + paramString1 + " value:" + paramString2);
     }
-    localStringBuilder.append(String.valueOf(paramVarArgs[j]));
-    return localStringBuilder.toString();
+    for (;;)
+    {
+      return paramString2.replace(',', ' ');
+      lB(paramString1, "value contain comma, please confirm your logic. value :".concat(String.valueOf(paramString2)));
+    }
   }
   
-  public abstract String Ff();
+  public abstract String aIE();
   
-  public abstract String Fg();
+  public abstract String aIF();
   
-  protected final boolean Yp(String paramString)
+  protected final boolean aUm(String paramString)
   {
-    if (bo.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      fZ("", "check rpt value is null.");
+      lB("", "check rpt value is null.");
       return false;
     }
     if (paramString.length() >= 7168)
     {
-      fZ("", "check rpt value more than 7k.");
+      lB("", "check rpt value more than 7k.");
       return false;
     }
     return true;
   }
   
-  protected final boolean aA(String paramString, long paramLong)
-  {
-    boolean bool = true;
-    if (paramLong <= 151473600L)
-    {
-      bool = false;
-      fZ(paramString, String.valueOf(paramLong));
-    }
-    return bool;
-  }
-  
-  public final boolean ake()
+  public final boolean bMH()
   {
     int i = getId();
-    String str = Ff();
-    ab.v("MicroMsg.AbsReportStruct", "report %d %s", new Object[] { Integer.valueOf(getId()), Ff() });
-    if ((i > 0) && (!bo.isNullOrNil(str)))
+    Log.d("MicroMsg.AbsReportStruct", "report %d %s", new Object[] { Integer.valueOf(getId()), aIF() });
+    String str = aIE();
+    if ((i > 0) && (!Util.isNullOrNil(str)))
     {
-      h.qsU.kvStat(getId(), Ff());
-      if (qrC) {
-        j.chT().ad(Ff(), Fg(), "\r\n\r\n error:\r\n" + this.qrD.toString());
-      }
+      com.tencent.mm.plugin.report.service.h.OAn.kvStat(getId(), str);
       return true;
     }
     return false;
   }
   
-  protected final boolean ay(String paramString, long paramLong)
+  protected final boolean bw(String paramString, long paramLong)
   {
     if (paramLong <= 0L)
     {
-      fZ(paramString, String.valueOf(paramLong));
+      lB(paramString, String.valueOf(paramLong));
       return false;
     }
     if (paramLong >= 3600000L)
     {
-      fZ(paramString, String.valueOf(paramLong));
+      lB(paramString, String.valueOf(paramLong));
       return false;
     }
     return true;
   }
   
-  protected final boolean az(String paramString, long paramLong)
+  protected final boolean bx(String paramString, long paramLong)
+  {
+    if (paramLong <= 0L)
+    {
+      lB(paramString, String.valueOf(paramLong));
+      return false;
+    }
+    if (paramLong >= 3600L)
+    {
+      lB(paramString, String.valueOf(paramLong));
+      return false;
+    }
+    return true;
+  }
+  
+  protected final boolean by(String paramString, long paramLong)
   {
     boolean bool = true;
     if (paramLong <= 151473600000L)
     {
       bool = false;
-      fZ(paramString, String.valueOf(paramLong));
+      lB(paramString, String.valueOf(paramLong));
     }
     return bool;
   }
   
-  public abstract int getId();
-  
-  protected final String t(String paramString1, String paramString2, boolean paramBoolean)
+  protected final boolean bz(String paramString, long paramLong)
   {
-    if (bo.isNullOrNil(paramString2)) {}
-    while (!paramString2.contains(",")) {
-      return paramString2;
-    }
-    if ((paramBoolean) && ((f.DEBUG) || (f.IS_FLAVOR_RED))) {
-      Assert.assertTrue("value contain comma, please confirm your logic.log id:" + getId() + " field:" + paramString1 + " value:" + paramString2, false);
-    }
-    for (;;)
+    boolean bool = true;
+    if (paramLong <= 151473600L)
     {
-      return paramString2.replace(',', ' ');
-      fZ(paramString1, "value contain comma, please confirm your logic. value :".concat(String.valueOf(paramString2)));
+      bool = false;
+      lB(paramString, String.valueOf(paramLong));
+    }
+    return bool;
+  }
+  
+  public final boolean gNE()
+  {
+    int i = getId();
+    Log.d("MicroMsg.AbsReportStruct", "report %d %s", new Object[] { Integer.valueOf(getId()), aIF() });
+    String str = aIE();
+    if ((i > 0) && (!Util.isNullOrNil(str)))
+    {
+      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.OAn;
+      com.tencent.mm.plugin.report.service.h.d(getId(), str, false, true);
+      return true;
+    }
+    return false;
+  }
+  
+  public final boolean gNG()
+  {
+    int i = getId();
+    String str = aIE();
+    Long localLong;
+    if ((i > 0) && (!Util.isNullOrNil(str)))
+    {
+      str = i + "," + str;
+      i = str.hashCode();
+      localLong = (Long)zNn.get(Integer.valueOf(i));
+      if (localLong == null) {
+        break label156;
+      }
+    }
+    label156:
+    for (long l = localLong.longValue();; l = 0L)
+    {
+      boolean bool1;
+      if (Util.milliSecondsToNow(l) < 300000L)
+      {
+        Log.v("MicroMsg.AbsReportStruct", "clock report [%s] less than 5 min, don't report", new Object[] { str });
+        bool1 = false;
+      }
+      boolean bool2;
+      do
+      {
+        return bool1;
+        bool2 = gNF();
+        bool1 = bool2;
+      } while (!bool2);
+      zNn.put(Integer.valueOf(i), Long.valueOf(Util.nowMilliSecond()));
+      return bool2;
+      return false;
     }
   }
+  
+  public abstract int getId();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.report.a
  * JD-Core Version:    0.7.0.1
  */

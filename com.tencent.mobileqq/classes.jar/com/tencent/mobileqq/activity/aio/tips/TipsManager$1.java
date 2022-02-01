@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aepc;
-import ahan;
-import ahap;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
 import java.util.Observer;
 
-public class TipsManager$1
+class TipsManager$1
   implements Runnable
 {
-  public TipsManager$1(ahap paramahap, ahan paramahan, Object[] paramArrayOfObject) {}
+  TipsManager$1(TipsManager paramTipsManager, TipsBarTask paramTipsBarTask, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    View localView = this.jdField_a_of_type_Ahan.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
-    ahap.a(this.this$0).a(localView, this.jdField_a_of_type_Ahan);
-    ahap.a(this.this$0, this.jdField_a_of_type_Ahan);
-    if (ahap.a(this.this$0) != null) {
-      ahap.a(this.this$0).update(null, null);
+    Object localObject = this.a.a(this.b);
+    TipsManager.a(this.this$0).a((View)localObject, this.this$0.b, this.a);
+    localObject = this.this$0;
+    ((TipsManager)localObject).b = this.a;
+    if (TipsManager.b((TipsManager)localObject) != null) {
+      TipsManager.b(this.this$0).update(null, null);
     }
   }
 }

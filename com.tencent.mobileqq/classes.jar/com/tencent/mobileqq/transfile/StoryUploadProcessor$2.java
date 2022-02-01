@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.transfile;
 
-import baxx;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
-import wxe;
 
-public final class StoryUploadProcessor$2
+final class StoryUploadProcessor$2
   implements Runnable
 {
   public void run()
   {
-    byte[] arrayOfByte2 = null;
-    String str = QQStoryContext.a().a();
+    String str = QQStoryContext.a().g();
     for (;;)
     {
       try
       {
-        if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
+        byte[] arrayOfByte1 = SessionInfo.getInstance(str).getHttpconn_sig_session();
+        byte[] arrayOfByte2 = null;
+        if (arrayOfByte1 != null)
         {
           int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
-          byte[] arrayOfByte1 = new byte[i];
+          arrayOfByte1 = new byte[i];
           System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, arrayOfByte1, 0, i);
           if (SessionInfo.getInstance(str).getSessionKey() != null)
           {
@@ -31,8 +31,8 @@ public final class StoryUploadProcessor$2
           if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0) || (arrayOfByte2 == null) || (arrayOfByte2.length == 0))
           {
             QQStoryContext.a();
-            HwServlet.getConfig(QQStoryContext.a(), str);
-            wxe.d(baxx.a, "pull session key");
+            HwServlet.getConfig(QQStoryContext.k(), str);
+            SLog.d(StoryUploadProcessor.TAG, "pull session key");
           }
           return;
         }
@@ -44,7 +44,7 @@ public final class StoryUploadProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StoryUploadProcessor.2
  * JD-Core Version:    0.7.0.1
  */

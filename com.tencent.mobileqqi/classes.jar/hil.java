@@ -1,14 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.AuthorityActivity.AccountInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import mqq.observer.BusinessObserver;
 
-class hil
-  implements DialogInterface.OnClickListener
+public class hil
+  implements BusinessObserver
 {
-  hil(hik paramhik) {}
+  public hil(AuthorityActivity paramAuthorityActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a.equals(localObject)) {}
+    for (;;)
+    {
+      return;
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      if (paramBoolean)
+      {
+        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+        try
+        {
+          localObject = paramBundle.getByteArray("data");
+          paramBundle = (Bundle)localObject;
+          if (!this.a.i) {
+            paramBundle = this.a.b((byte[])localObject);
+          }
+          if (paramBundle != null)
+          {
+            localGetAppinfoResponse.mergeFrom(paramBundle);
+            if ((localGetAppinfoResponse.has()) && (localGetAppinfoResponse.ret.get() == 0))
+            {
+              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+              paramBundle.what = 3;
+              paramBundle.obj = localGetAppinfoResponse;
+              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+      }
+    }
   }
 }
 

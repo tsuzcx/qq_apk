@@ -1,34 +1,37 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.l;
 import android.view.animation.Interpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator;", "Landroid/view/animation/Interpolator;", "()V", "mTension", "", "getInterpolation", "t", "Companion", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator;", "Landroid/view/animation/Interpolator;", "()V", "mTension", "", "getInterpolation", "t", "Companion", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class RadarSpecialSmoothScrollView$a
   implements Interpolator
 {
-  private static final float pRN = 1.3F;
-  public static final RadarSpecialSmoothScrollView.a.a pRO;
-  private final float pRM = pRN;
+  public static final a Ntj;
+  private static final float Ntl;
+  private final float Ntk = Ntl;
   
   static
   {
-    AppMethodBeat.i(103008);
-    pRO = new RadarSpecialSmoothScrollView.a.a((byte)0);
-    pRN = 1.3F;
-    AppMethodBeat.o(103008);
+    AppMethodBeat.i(138654);
+    Ntj = new a((byte)0);
+    Ntl = 1.3F;
+    AppMethodBeat.o(138654);
   }
   
   public final float getInterpolation(float paramFloat)
   {
     paramFloat -= 1.0F;
-    return (paramFloat * (this.pRM + 1.0F) + this.pRM) * (paramFloat * paramFloat) + 1.0F;
+    return (paramFloat * (this.Ntk + 1.0F) + this.Ntk) * (paramFloat * paramFloat) + 1.0F;
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator$Companion;", "", "()V", "DEFAULT_TENSION", "", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarSpecialSmoothScrollView.a
  * JD-Core Version:    0.7.0.1
  */

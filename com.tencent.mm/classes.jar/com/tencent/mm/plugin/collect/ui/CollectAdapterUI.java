@@ -1,15 +1,14 @@
 package com.tencent.mm.plugin.collect.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.am.p;
+import com.tencent.mm.br.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -24,25 +23,25 @@ public class CollectAdapterUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(41167);
+    AppMethodBeat.i(64028);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
-    g.RM();
-    int i = ((Integer)g.RL().Ru().get(ac.a.yCE, Integer.valueOf(0))).intValue();
-    ab.i("MicroMsg.CollectAdapterUI", "walletRegion: %s", new Object[] { Integer.valueOf(i) });
+    h.baF();
+    int i = ((Integer)h.baE().ban().get(at.a.acNa, Integer.valueOf(0))).intValue();
+    Log.i("MicroMsg.CollectAdapterUI", "walletRegion: %s", new Object[] { Integer.valueOf(i) });
     if (i == 8) {
-      d.b(this, "collect", ".ui.CollectHKMainUI", getIntent());
+      c.b(this, "collect", ".ui.CollectHKMainUI", getIntent());
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(41167);
+      AppMethodBeat.o(64028);
       return;
-      d.b(this, "collect", ".ui.CollectMainUI", getIntent());
+      c.b(this, "collect", ".ui.CollectMainUI", getIntent());
     }
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -55,7 +54,7 @@ public class CollectAdapterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectAdapterUI
  * JD-Core Version:    0.7.0.1
  */

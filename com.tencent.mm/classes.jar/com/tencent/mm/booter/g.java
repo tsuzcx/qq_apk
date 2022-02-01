@@ -3,62 +3,66 @@ package com.tencent.mm.booter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.a.l;
-import com.tencent.mm.a.o;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.g.a.hn;
-import com.tencent.mm.g.a.mc;
-import com.tencent.mm.g.a.sf;
+import com.tencent.mm.autogen.a.lg;
+import com.tencent.mm.autogen.a.ri;
+import com.tencent.mm.autogen.a.zd;
+import com.tencent.mm.b.l;
+import com.tencent.mm.b.o;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.jni.utils.UtilsJni;
-import com.tencent.mm.network.t;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.network.a;
+import com.tencent.mm.network.ag;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.protocal.MMProtocalJni;
+import com.tencent.mm.protocal.aa.b;
+import com.tencent.mm.protocal.ad;
 import com.tencent.mm.protocal.l.c;
-import com.tencent.mm.protocal.protobuf.bgj;
-import com.tencent.mm.protocal.t.b;
-import com.tencent.mm.protocal.y.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac;
+import com.tencent.mm.protocal.protobuf.duk;
+import com.tencent.mm.protocal.v.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 
 public final class g
 {
-  public static String I(byte[] paramArrayOfByte)
+  public static int Cm(String paramString)
   {
-    AppMethodBeat.i(57815);
-    if (bo.ce(paramArrayOfByte))
+    AppMethodBeat.i(131934);
+    paramString = y.bi(paramString + "/syncResp.ini", 0, -1);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(57815);
-      return "buf is nullOrNil";
+      AppMethodBeat.o(131934);
+      return 0;
     }
-    if (paramArrayOfByte.length == 1)
+    try
     {
-      paramArrayOfByte = "buf.len is 1: " + Integer.toHexString(paramArrayOfByte[0]);
-      AppMethodBeat.o(57815);
-      return paramArrayOfByte;
+      int i = Integer.parseInt(new String(paramString));
+      AppMethodBeat.o(131934);
+      return i;
     }
-    paramArrayOfByte = "buf last two[len:" + paramArrayOfByte.length + "]: %s, %s" + Integer.toHexString(paramArrayOfByte[(paramArrayOfByte.length - 2)] & 0xFF) + ", " + Integer.toHexString(paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF);
-    AppMethodBeat.o(57815);
-    return paramArrayOfByte;
+    catch (NumberFormatException paramString)
+    {
+      AppMethodBeat.o(131934);
+    }
+    return 0;
   }
   
   public static boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong)
   {
-    AppMethodBeat.i(57809);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifySyncMgr", "dealWithNotify Here, MM should NOT bOotEd , opType:%d respType:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(131930);
+    Log.i("MicroMsg.NotifySyncMgr", "dealWithNotify Here, MM should NOT bOotEd , opType:%d respType:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 1)
     {
-      fX(2L);
-      AppMethodBeat.o(57809);
+      hf(2L);
+      AppMethodBeat.o(131930);
       return true;
     }
     if (paramInt1 != 2)
     {
-      AppMethodBeat.o(57809);
+      AppMethodBeat.o(131930);
       return false;
     }
     switch (paramInt2)
@@ -66,28 +70,28 @@ public final class g
     }
     for (;;)
     {
-      AppMethodBeat.o(57809);
+      AppMethodBeat.o(131930);
       return true;
-      fX(7L);
+      hf(7L);
       continue;
-      if ((bo.ce(paramArrayOfByte1)) || (paramArrayOfByte1.length <= 8))
+      if ((Util.isNullOrNil(paramArrayOfByte1)) || (paramArrayOfByte1.length <= 8))
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NotifySyncMgr", "dkpush dealWithNotify respBuf error ");
+        Log.e("MicroMsg.NotifySyncMgr", "dkpush dealWithNotify respBuf error ");
       }
       else
       {
-        int i = o.r(paramArrayOfByte1, 0);
-        paramInt1 = o.r(paramArrayOfByte1, 4);
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NotifySyncMgr", "dkpush: flag:" + i + " bufLen:" + paramInt1 + " dump:" + bo.V(paramArrayOfByte1, 8));
+        int i = o.t(paramArrayOfByte1, 0);
+        paramInt1 = o.t(paramArrayOfByte1, 4);
+        Log.d("MicroMsg.NotifySyncMgr", "dkpush: flag:" + i + " bufLen:" + paramInt1 + " dump:" + Util.dumpHexBuf(paramArrayOfByte1, 0, 8));
         if (paramInt1 != paramArrayOfByte1.length - 8)
         {
-          com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NotifySyncMgr", "dkpush: respBuf length error len:" + paramArrayOfByte1.length);
+          Log.e("MicroMsg.NotifySyncMgr", "dkpush: respBuf length error len:" + paramArrayOfByte1.length);
         }
         else
         {
           byte[] arrayOfByte = new byte[paramInt1];
           System.arraycopy(paramArrayOfByte1, 8, arrayOfByte, 0, paramInt1);
-          t.b localb = new t.b();
+          v.b localb = new v.b();
           PByteArray localPByteArray2 = new PByteArray();
           PByteArray localPByteArray1 = new PByteArray();
           PInt localPInt1 = new PInt();
@@ -100,91 +104,91 @@ public final class g
             bool1 = MMProtocalJni.unpack(localPByteArray1, arrayOfByte, paramArrayOfByte2, localPByteArray2, localPInt1, localPInt3, paramArrayOfByte1, localPInt2);
             if (paramArrayOfByte1.value != 0)
             {
-              paramArrayOfByte2 = new hn();
-              paramArrayOfByte2.cwF.cwG = paramArrayOfByte1.value;
-              boolean bool2 = com.tencent.mm.sdk.b.a.ymk.l(paramArrayOfByte2);
-              com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifySyncMgr", "summerdiz publish GetDisasterInfoEvent noticeid[%d] publish[%b]", new Object[] { Integer.valueOf(paramArrayOfByte1.value), Boolean.valueOf(bool2) });
+              paramArrayOfByte2 = new lg();
+              paramArrayOfByte2.hMY.hMZ = paramArrayOfByte1.value;
+              boolean bool2 = paramArrayOfByte2.publish();
+              Log.i("MicroMsg.NotifySyncMgr", "summerdiz publish GetDisasterInfoEvent noticeid[%d] publish[%b]", new Object[] { Integer.valueOf(paramArrayOfByte1.value), Boolean.valueOf(bool2) });
               paramArrayOfByte1.value = 0;
             }
-            if ((localPInt3.value == 13) && (com.tencent.mm.network.ab.anF() != null) && (com.tencent.mm.network.ab.anF().gdz != null))
+            if ((localPInt3.value == 13) && (ag.bRx() != null) && (ag.bRx().poh != null))
             {
-              paramArrayOfByte2 = com.tencent.mm.network.ab.anF().gdz.jN(3);
+              paramArrayOfByte2 = ag.bRx().poh.sA(3);
               localPByteArray1.value = UtilsJni.AesGcmDecryptWithUncompress(paramArrayOfByte2, localPByteArray1.value);
               if (paramArrayOfByte2 == null)
               {
                 paramInt1 = -1;
-                label461:
+                label459:
                 paramArrayOfByte2 = localPByteArray1.value;
                 if (localPByteArray1.value != null) {
-                  break label627;
+                  break label622;
                 }
                 paramInt2 = -1;
-                label477:
-                com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifySyncMgr", "summerdiz dealWithPushResp unpack AES_GCM_ENCRYPT serverSession[%s] new pr[%s, %s]", new Object[] { Integer.valueOf(paramInt1), paramArrayOfByte2, Integer.valueOf(paramInt2) });
+                label475:
+                Log.i("MicroMsg.NotifySyncMgr", "summerdiz dealWithPushResp unpack AES_GCM_ENCRYPT serverSession[%s] new pr[%s, %s]", new Object[] { Integer.valueOf(paramInt1), paramArrayOfByte2, Integer.valueOf(paramInt2) });
               }
             }
             else
             {
               if (bool1) {
-                break label637;
+                break label632;
               }
-              com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NotifySyncMgr", "unpack push resp failed");
+              Log.e("MicroMsg.NotifySyncMgr", "unpack push resp failed");
             }
           }
           catch (Exception paramArrayOfByte2)
           {
-            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NotifySyncMgr", "unpack push resp failed: %s", new Object[] { paramArrayOfByte2 });
-            com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.NotifySyncMgr", paramArrayOfByte2, "", new Object[0]);
+            Log.e("MicroMsg.NotifySyncMgr", "unpack push resp failed: %s", new Object[] { paramArrayOfByte2 });
+            Log.printErrStackTrace("MicroMsg.NotifySyncMgr", paramArrayOfByte2, "", new Object[0]);
           }
           while (paramArrayOfByte1.value != 0)
           {
-            paramArrayOfByte2 = new hn();
-            paramArrayOfByte2.cwF.cwG = paramArrayOfByte1.value;
-            bool1 = com.tencent.mm.sdk.b.a.ymk.l(paramArrayOfByte2);
-            com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifySyncMgr", "summerdiz publish GetDisasterInfoEvent noticeid[%d] publish[%b]", new Object[] { Integer.valueOf(paramArrayOfByte1.value), Boolean.valueOf(bool1) });
+            paramArrayOfByte2 = new lg();
+            paramArrayOfByte2.hMY.hMZ = paramArrayOfByte1.value;
+            bool1 = paramArrayOfByte2.publish();
+            Log.i("MicroMsg.NotifySyncMgr", "summerdiz publish GetDisasterInfoEvent noticeid[%d] publish[%b]", new Object[] { Integer.valueOf(paramArrayOfByte1.value), Boolean.valueOf(bool1) });
             paramArrayOfByte1.value = 0;
             break;
             paramInt1 = paramArrayOfByte2.length;
-            break label461;
-            label627:
+            break label459;
+            label622:
             paramInt2 = localPByteArray1.value.length;
-            break label477;
-            label637:
+            break label475;
+            label632:
             localb.setHeadExtFlags(localPInt2.value);
             if (localPInt1.value == -13)
             {
               localb.setRetCode(localPInt1.value);
-              com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NotifySyncMgr", "unpack push resp failed session timeout");
+              Log.e("MicroMsg.NotifySyncMgr", "unpack push resp failed session timeout");
               break;
             }
             paramInt1 = localb.fromProtoBuf(localPByteArray1.value);
-            com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NotifySyncMgr", "bufToResp using protobuf ok");
+            Log.d("MicroMsg.NotifySyncMgr", "bufToResp using protobuf ok");
             localb.setRetCode(paramInt1);
             localb.setBufferSize(arrayOfByte.length);
-            paramArrayOfByte2 = bo.apQ(ah.getContext().getSharedPreferences("notify_sync_pref", h.Mp()).getString("notify_sync_key_keybuf", ""));
-            arrayOfByte = aa.a(localb.wiN.wFR);
-            if ((bo.ce(arrayOfByte)) || (!com.tencent.mm.protocal.ab.k(paramArrayOfByte2, arrayOfByte)))
+            paramArrayOfByte2 = Util.decodeHexString(MMApplicationContext.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.aQe()).getString("notify_sync_key_keybuf", ""));
+            arrayOfByte = com.tencent.mm.platformtools.w.a(localb.YyA.ZdD);
+            if ((Util.isNullOrNil(arrayOfByte)) || (!ad.p(paramArrayOfByte2, arrayOfByte)))
             {
-              com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NotifySyncMgr", "compareKeybuf syncKey failed");
+              Log.e("MicroMsg.NotifySyncMgr", "compareKeybuf syncKey failed");
               break;
             }
-            new com.tencent.mm.modelmulti.b(localb, i, paramLong).doScene(com.tencent.mm.network.ab.anF(), new g.1());
+            new com.tencent.mm.modelmulti.g(localb, i, paramLong).doScene(ag.bRx(), new g.1());
           }
           if (paramArrayOfByte1 == null) {}
-          for (paramLong = 7L;; paramLong = o.r(paramArrayOfByte1, 0))
+          for (paramLong = 7L;; paramLong = o.t(paramArrayOfByte1, 0))
           {
-            fX(paramLong);
+            hf(paramLong);
             break;
           }
-          paramArrayOfByte2 = new y.b();
+          paramArrayOfByte2 = new aa.b();
           try
           {
             paramArrayOfByte2.fromProtoBuf(paramArrayOfByte1);
-            fX(paramArrayOfByte2.wiX);
+            hf(paramArrayOfByte2.YyK);
           }
           catch (Exception paramArrayOfByte1)
           {
-            com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.NotifySyncMgr", paramArrayOfByte1, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.NotifySyncMgr", paramArrayOfByte1, "", new Object[0]);
           }
         }
       }
@@ -193,110 +197,103 @@ public final class g
   
   public static byte[] a(PInt paramPInt, int paramInt)
   {
-    AppMethodBeat.i(57811);
-    String str = ig(paramInt);
-    int j = kw(str);
+    AppMethodBeat.i(131932);
+    String str = qf(paramInt);
+    int j = Cm(str);
     int i = 1;
     while (i <= j)
     {
       Object localObject3 = str + "/syncResp.bin" + i;
-      if (e.cN((String)localObject3))
+      if (y.ZC((String)localObject3))
       {
-        Object localObject2 = e.j((String)localObject3, 0, -1);
+        Object localObject2 = y.bi((String)localObject3, 0, -1);
         Object localObject1 = localObject2;
-        if (bo.ce((byte[])localObject2))
+        if (Util.isNullOrNil((byte[])localObject2))
         {
-          com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.NotifySyncMgr", "readFile getdata null, read again");
-          localObject1 = e.j((String)localObject3, 0, -1);
+          Log.w("MicroMsg.NotifySyncMgr", "readFile getdata null, read again");
+          localObject1 = y.bi((String)localObject3, 0, -1);
         }
-        localObject2 = com.tencent.mm.a.g.w((q.bP(true) + paramInt).getBytes());
-        localObject3 = l.c((byte[])localObject1, ((String)localObject2).getBytes());
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifySyncMgr", "readFile, index:[%d of %d], dump data:%s -> %s, key:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), I((byte[])localObject1), I((byte[])localObject3), I(((String)localObject2).getBytes()) });
-        if (!bo.ce((byte[])localObject3))
+        localObject2 = com.tencent.mm.b.g.getMessageDigest((q.eD(true) + paramInt).getBytes());
+        localObject3 = l.d((byte[])localObject1, ((String)localObject2).getBytes());
+        Log.i("MicroMsg.NotifySyncMgr", "readFile, index:[%d of %d], dump data:%s -> %s, key:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), ai((byte[])localObject1), ai((byte[])localObject3), ai(((String)localObject2).getBytes()) });
+        if (!Util.isNullOrNil((byte[])localObject3))
         {
           paramPInt.value = i;
-          AppMethodBeat.o(57811);
+          AppMethodBeat.o(131932);
           return localObject3;
         }
       }
       i += 1;
     }
-    AppMethodBeat.o(57811);
+    AppMethodBeat.o(131932);
     return null;
   }
   
-  public static void bT(int paramInt1, int paramInt2)
+  public static String ai(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(57812);
-    String str = ig(paramInt2);
-    paramInt2 = kw(str);
-    e.deleteFile(str + "/syncResp.bin" + paramInt1);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifySyncMgr", "consumeData delIndex:%d, total index:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(131936);
+    if (Util.isNullOrNil(paramArrayOfByte))
+    {
+      AppMethodBeat.o(131936);
+      return "buf is nullOrNil";
+    }
+    if (paramArrayOfByte.length == 1)
+    {
+      paramArrayOfByte = "buf.len is 1: " + Integer.toHexString(paramArrayOfByte[0]);
+      AppMethodBeat.o(131936);
+      return paramArrayOfByte;
+    }
+    paramArrayOfByte = "buf last two[len:" + paramArrayOfByte.length + "]: %s, %s" + Integer.toHexString(paramArrayOfByte[(paramArrayOfByte.length - 2)] & 0xFF) + ", " + Integer.toHexString(paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF);
+    AppMethodBeat.o(131936);
+    return paramArrayOfByte;
+  }
+  
+  public static void dy(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(131933);
+    String str = qf(paramInt2);
+    paramInt2 = Cm(str);
+    y.deleteFile(str + "/syncResp.bin" + paramInt1);
+    Log.i("MicroMsg.NotifySyncMgr", "consumeData delIndex:%d, total index:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == paramInt2)
     {
-      e.deleteFile(str + "/syncResp.ini");
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifySyncMgr", "consumeData: has consme all respdata");
+      y.deleteFile(str + "/syncResp.ini");
+      Log.i("MicroMsg.NotifySyncMgr", "consumeData: has consme all respdata");
     }
-    AppMethodBeat.o(57812);
+    AppMethodBeat.o(131933);
   }
   
-  private static void fX(long paramLong)
+  private static void hf(long paramLong)
   {
-    AppMethodBeat.i(57810);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NotifySyncMgr", "dealWithSelector, selector = ".concat(String.valueOf(paramLong)));
-    Object localObject;
+    AppMethodBeat.i(131931);
+    Log.i("MicroMsg.NotifySyncMgr", "dealWithSelector, selector = ".concat(String.valueOf(paramLong)));
     if ((0x100 & paramLong) != 0L)
     {
-      localObject = new sf();
-      ((sf)localObject).cIz.cpG = 4;
-      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+      zd localzd = new zd();
+      localzd.icq.sourceType = 4;
+      localzd.publish();
     }
-    if ((0x200000 & paramLong) != 0L)
-    {
-      localObject = new mc();
-      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+    if ((0x200000 & paramLong) != 0L) {
+      new ri().publish();
     }
-    if ((0xFFFFFEFF & paramLong & 0xFFDFFFFF & 0x2) != 0L) {
-      new com.tencent.mm.modelmulti.b().doScene(com.tencent.mm.network.ab.anF(), new g.2());
+    if ((0xFEFFFFFF & paramLong & 0xFFFFFFDF & 0xFFFFFEFF & 0xFFDFFFFF & 0x2) != 0L) {
+      new com.tencent.mm.modelmulti.g().doScene(ag.bRx(), new g.2());
     }
-    AppMethodBeat.o(57810);
+    AppMethodBeat.o(131931);
   }
   
-  public static String ig(int paramInt)
+  public static String qf(int paramInt)
   {
-    AppMethodBeat.i(57814);
-    String str = com.tencent.mm.a.g.w("mm".concat(String.valueOf(paramInt)).getBytes());
-    str = ac.eQv + str + "/pushSyncResp";
-    e.cQ(str);
-    AppMethodBeat.o(57814);
+    AppMethodBeat.i(131935);
+    String str = f.sB(paramInt) + "pushSyncResp";
+    y.bDX(str);
+    AppMethodBeat.o(131935);
     return str;
-  }
-  
-  public static int kw(String paramString)
-  {
-    AppMethodBeat.i(57813);
-    paramString = e.j(paramString + "/syncResp.ini", 0, -1);
-    if (bo.ce(paramString))
-    {
-      AppMethodBeat.o(57813);
-      return 0;
-    }
-    try
-    {
-      int i = Integer.parseInt(new String(paramString));
-      AppMethodBeat.o(57813);
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      AppMethodBeat.o(57813);
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@
     "view_id":"id_column_root",
     "layout_type":"layout_linear",
     "direction": "horizontal",
-    "margin_top": "8",
-    "margin_left": "6",
+    "margin_top": "4",
+    "margin_left": "12",
     "margin_right": "6",
     "event_type":"column_entrances_click",
     "visible_depend_on_children": "YES",
@@ -18,6 +18,11 @@
     "attributes":{
         "setCornerRadiusString:": "4",
         "setBackgroundColorString:": "#F5F6FA"
+    },
+    "data_attributes": {
+        "setLocalInfo:": {
+            "click_column": "1"
+        }
     },
     "subviews": [
         {
@@ -91,7 +96,7 @@
                 "value":"12"
             },
             "attributes":{
-                "setImageWithURLString:lineup:":["http://pub.idqqimg.com/pc/misc/files/20200227/a2a146da4174460fa9662061fdd144f5.png","1"]
+                "setImageWithURLString:lineup:":["https://pub.idqqimg.com/pc/misc/files/20200227/a2a146da4174460fa9662061fdd144f5.png","1"]
             }
         }
     ]

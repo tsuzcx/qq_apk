@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/arb" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ab2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <FrameLayout style="@style/ab0">
+        <ImageView android:layout_gravity="top" android:id="@id/aq6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/bfm" android:adjustViewBounds="true" />
+        <com.tencent.qqmail.utilities.ui.DividerTextView android:layout_gravity="bottom" android:id="@id/aqs" android:layout_height="@dimen/bfm" qm:lineStyle="o0i" style="@style/ab1" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/mjr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gon" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/aos" android:ellipsize="none" android:gravity="center_horizontal" android:id="@id/mjs" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="热门" android:singleLine="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</RelativeLayout>

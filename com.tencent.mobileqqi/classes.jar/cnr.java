@@ -1,22 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class cnr
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public cnr(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public cnr(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.a.startAnimation(this.a.b);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

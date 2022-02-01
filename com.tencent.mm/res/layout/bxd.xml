@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/bt9" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:overScrollMode="always" />
+</LinearLayout>

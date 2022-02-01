@@ -11,7 +11,7 @@ public final class stWeishiDengtaReportReq
 {
   static Map<String, String> cache_params = new HashMap();
   public String eventName = "";
-  public Map<String, String> params;
+  public Map<String, String> params = null;
   
   static
   {
@@ -34,17 +34,19 @@ public final class stWeishiDengtaReportReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.eventName != null) {
-      paramJceOutputStream.write(this.eventName, 0);
+    Object localObject = this.eventName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.params != null) {
-      paramJceOutputStream.write(this.params, 1);
+    localObject = this.params;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stWeishiDengtaReportReq
  * JD-Core Version:    0.7.0.1
  */

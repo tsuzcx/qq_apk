@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|top" android:orientation="vertical" android:background="@drawable/asi" android:layout_width="150.0dip" android:layout_height="150.0dip" android:minWidth="150.0dip" android:minHeight="150.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:src="@raw/app_brand_wifi_icon" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a6q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/p3" />
-    <ProgressBar android:id="@id/ya" android:layout_width="36.0dip" android:layout_height="8.0dip" android:layout_marginTop="20.0dip" android:max="100" android:progress="0" style="@style/dj" />
+<LinearLayout android:orientation="horizontal" android:id="@id/eki" android:background="@drawable/b4g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.luggage.game.widget.input.WAGamePanelInputEditText android:textColor="@color/a7b" android:layout_gravity="bottom" android:id="@id/ekk" android:layout_width="0.0dip" android:layout_marginTop="8.0dip" android:maxHeight="84.0dip" android:minHeight="32.0dip" android:hint="@null" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" style="@style/a62" />
+    <Button android:id="@id/ekj" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="8.0dip" android:minWidth="44.0dip" style="@style/oi" />
 </LinearLayout>

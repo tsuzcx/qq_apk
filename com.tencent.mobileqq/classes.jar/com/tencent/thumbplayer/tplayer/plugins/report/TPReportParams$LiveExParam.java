@@ -39,8 +39,10 @@ public class TPReportParams$LiveExParam
   int prePlayLengthInt;
   int reconnectCntInt;
   long reportTimeLong;
+  String spanId;
   int streamIdInt;
   int testSpeedInt;
+  String tuid;
   String userIpString;
   String userQQString;
   
@@ -88,13 +90,15 @@ public class TPReportParams$LiveExParam
     paramITPReportProperties.put("fullecode", this.fullErrCodeString);
     paramITPReportProperties.put("get_stream_data_duration", this.getStreamDurationInt);
     paramITPReportProperties.put("get_sync_frame_duration", this.getSyncFrameDurationInt);
+    paramITPReportProperties.put("spanId", this.spanId);
+    paramITPReportProperties.put("tuid", this.tuid);
   }
   
   public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportParams.LiveExParam
  * JD-Core Version:    0.7.0.1
  */

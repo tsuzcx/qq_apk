@@ -43,7 +43,7 @@ public final class DatabaseUtils
   
   public static void appendEscapedSQLString(StringBuilder paramStringBuilder, String paramString)
   {
-    AppMethodBeat.i(12123);
+    AppMethodBeat.i(2804);
     paramStringBuilder.append('\'');
     if (paramString.indexOf('\'') != -1)
     {
@@ -61,31 +61,31 @@ public final class DatabaseUtils
     }
     paramStringBuilder.append(paramString);
     paramStringBuilder.append('\'');
-    AppMethodBeat.o(12123);
+    AppMethodBeat.o(2804);
   }
   
   public static String[] appendSelectionArgs(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    AppMethodBeat.i(12167);
+    AppMethodBeat.i(2848);
     if ((paramArrayOfString1 == null) || (paramArrayOfString1.length == 0))
     {
-      AppMethodBeat.o(12167);
+      AppMethodBeat.o(2848);
       return paramArrayOfString2;
     }
     String[] arrayOfString = new String[paramArrayOfString1.length + paramArrayOfString2.length];
     System.arraycopy(paramArrayOfString1, 0, arrayOfString, 0, paramArrayOfString1.length);
     System.arraycopy(paramArrayOfString2, 0, arrayOfString, paramArrayOfString1.length, paramArrayOfString2.length);
-    AppMethodBeat.o(12167);
+    AppMethodBeat.o(2848);
     return arrayOfString;
   }
   
   public static final void appendValueToSql(StringBuilder paramStringBuilder, Object paramObject)
   {
-    AppMethodBeat.i(12125);
+    AppMethodBeat.i(2806);
     if (paramObject == null)
     {
       paramStringBuilder.append("NULL");
-      AppMethodBeat.o(12125);
+      AppMethodBeat.o(2806);
       return;
     }
     if ((paramObject instanceof Boolean))
@@ -93,36 +93,36 @@ public final class DatabaseUtils
       if (((Boolean)paramObject).booleanValue())
       {
         paramStringBuilder.append('1');
-        AppMethodBeat.o(12125);
+        AppMethodBeat.o(2806);
         return;
       }
       paramStringBuilder.append('0');
-      AppMethodBeat.o(12125);
+      AppMethodBeat.o(2806);
       return;
     }
     appendEscapedSQLString(paramStringBuilder, paramObject.toString());
-    AppMethodBeat.o(12125);
+    AppMethodBeat.o(2806);
   }
   
   public static void bindObjectToProgram(SQLiteProgram paramSQLiteProgram, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(12121);
+    AppMethodBeat.i(2802);
     if (paramObject == null)
     {
       paramSQLiteProgram.bindNull(paramInt);
-      AppMethodBeat.o(12121);
+      AppMethodBeat.o(2802);
       return;
     }
     if (((paramObject instanceof Double)) || ((paramObject instanceof Float)))
     {
       paramSQLiteProgram.bindDouble(paramInt, ((Number)paramObject).doubleValue());
-      AppMethodBeat.o(12121);
+      AppMethodBeat.o(2802);
       return;
     }
     if ((paramObject instanceof Number))
     {
       paramSQLiteProgram.bindLong(paramInt, ((Number)paramObject).longValue());
-      AppMethodBeat.o(12121);
+      AppMethodBeat.o(2802);
       return;
     }
     if ((paramObject instanceof Boolean))
@@ -130,52 +130,52 @@ public final class DatabaseUtils
       if (((Boolean)paramObject).booleanValue())
       {
         paramSQLiteProgram.bindLong(paramInt, 1L);
-        AppMethodBeat.o(12121);
+        AppMethodBeat.o(2802);
         return;
       }
       paramSQLiteProgram.bindLong(paramInt, 0L);
-      AppMethodBeat.o(12121);
+      AppMethodBeat.o(2802);
       return;
     }
     if ((paramObject instanceof byte[]))
     {
       paramSQLiteProgram.bindBlob(paramInt, (byte[])paramObject);
-      AppMethodBeat.o(12121);
+      AppMethodBeat.o(2802);
       return;
     }
     paramSQLiteProgram.bindString(paramInt, paramObject.toString());
-    AppMethodBeat.o(12121);
+    AppMethodBeat.o(2802);
   }
   
   public static String concatenateWhere(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(12126);
+    AppMethodBeat.i(2807);
     if (TextUtils.isEmpty(paramString1))
     {
-      AppMethodBeat.o(12126);
+      AppMethodBeat.o(2807);
       return paramString2;
     }
     if (TextUtils.isEmpty(paramString2))
     {
-      AppMethodBeat.o(12126);
+      AppMethodBeat.o(2807);
       return paramString1;
     }
     paramString1 = "(" + paramString1 + ") AND (" + paramString2 + ")";
-    AppMethodBeat.o(12126);
+    AppMethodBeat.o(2807);
     return paramString1;
   }
   
   public static void createDbFromSqlStatements(android.content.Context paramContext, String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(12164);
+    AppMethodBeat.i(2845);
     createDbFromSqlStatements(paramContext, paramString1, null, null, paramInt, paramString2);
-    AppMethodBeat.o(12164);
+    AppMethodBeat.o(2845);
   }
   
   public static void createDbFromSqlStatements(android.content.Context paramContext, String paramString1, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, int paramInt, String paramString2)
   {
     int i = 0;
-    AppMethodBeat.i(12163);
+    AppMethodBeat.i(2844);
     paramContext = com.tencent.wcdb.support.Context.openOrCreateDatabase(paramContext, paramString1, paramArrayOfByte, paramSQLiteCipherSpec, 0, null);
     paramString1 = TextUtils.split(paramString2, ";\n");
     int j = paramString1.length;
@@ -189,46 +189,46 @@ public final class DatabaseUtils
     }
     paramContext.setVersion(paramInt);
     paramContext.close();
-    AppMethodBeat.o(12163);
+    AppMethodBeat.o(2844);
   }
   
   public static void cursorDoubleToContentValues(Cursor paramCursor, String paramString1, ContentValues paramContentValues, String paramString2)
   {
-    AppMethodBeat.i(12146);
+    AppMethodBeat.i(2827);
     int i = paramCursor.getColumnIndex(paramString1);
     if (!paramCursor.isNull(i))
     {
       paramContentValues.put(paramString2, Double.valueOf(paramCursor.getDouble(i)));
-      AppMethodBeat.o(12146);
+      AppMethodBeat.o(2827);
       return;
     }
     paramContentValues.put(paramString2, null);
-    AppMethodBeat.o(12146);
+    AppMethodBeat.o(2827);
   }
   
   public static void cursorDoubleToContentValuesIfPresent(Cursor paramCursor, ContentValues paramContentValues, String paramString)
   {
-    AppMethodBeat.i(12162);
+    AppMethodBeat.i(2843);
     int i = paramCursor.getColumnIndex(paramString);
     if ((i != -1) && (!paramCursor.isNull(i))) {
       paramContentValues.put(paramString, Double.valueOf(paramCursor.getDouble(i)));
     }
-    AppMethodBeat.o(12162);
+    AppMethodBeat.o(2843);
   }
   
   public static void cursorDoubleToCursorValues(Cursor paramCursor, String paramString, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(12145);
+    AppMethodBeat.i(2826);
     cursorDoubleToContentValues(paramCursor, paramString, paramContentValues, paramString);
-    AppMethodBeat.o(12145);
+    AppMethodBeat.o(2826);
   }
   
   public static void cursorFillWindow(Cursor paramCursor, int paramInt, CursorWindow paramCursorWindow)
   {
-    AppMethodBeat.i(12122);
+    AppMethodBeat.i(2803);
     if ((paramInt < 0) || (paramInt >= paramCursor.getCount()))
     {
-      AppMethodBeat.o(12122);
+      AppMethodBeat.o(2803);
       return;
     }
     int j = paramCursor.getPosition();
@@ -269,7 +269,7 @@ public final class DatabaseUtils
           break;
         }
         paramCursor.moveToPosition(j);
-        AppMethodBeat.o(12122);
+        AppMethodBeat.o(2803);
         return;
         bool = paramCursorWindow.putNull(paramInt, i);
         continue;
@@ -296,87 +296,87 @@ public final class DatabaseUtils
   
   public static void cursorFloatToContentValuesIfPresent(Cursor paramCursor, ContentValues paramContentValues, String paramString)
   {
-    AppMethodBeat.i(12161);
+    AppMethodBeat.i(2842);
     int i = paramCursor.getColumnIndex(paramString);
     if ((i != -1) && (!paramCursor.isNull(i))) {
       paramContentValues.put(paramString, Float.valueOf(paramCursor.getFloat(i)));
     }
-    AppMethodBeat.o(12161);
+    AppMethodBeat.o(2842);
   }
   
   public static void cursorIntToContentValues(Cursor paramCursor, String paramString, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(12141);
+    AppMethodBeat.i(2822);
     cursorIntToContentValues(paramCursor, paramString, paramContentValues, paramString);
-    AppMethodBeat.o(12141);
+    AppMethodBeat.o(2822);
   }
   
   public static void cursorIntToContentValues(Cursor paramCursor, String paramString1, ContentValues paramContentValues, String paramString2)
   {
-    AppMethodBeat.i(12142);
+    AppMethodBeat.i(2823);
     int i = paramCursor.getColumnIndex(paramString1);
     if (!paramCursor.isNull(i))
     {
       paramContentValues.put(paramString2, Integer.valueOf(paramCursor.getInt(i)));
-      AppMethodBeat.o(12142);
+      AppMethodBeat.o(2823);
       return;
     }
     paramContentValues.put(paramString2, null);
-    AppMethodBeat.o(12142);
+    AppMethodBeat.o(2823);
   }
   
   public static void cursorIntToContentValuesIfPresent(Cursor paramCursor, ContentValues paramContentValues, String paramString)
   {
-    AppMethodBeat.i(12160);
+    AppMethodBeat.i(2841);
     int i = paramCursor.getColumnIndex(paramString);
     if ((i != -1) && (!paramCursor.isNull(i))) {
       paramContentValues.put(paramString, Integer.valueOf(paramCursor.getInt(i)));
     }
-    AppMethodBeat.o(12160);
+    AppMethodBeat.o(2841);
   }
   
   public static void cursorLongToContentValues(Cursor paramCursor, String paramString, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(12143);
+    AppMethodBeat.i(2824);
     cursorLongToContentValues(paramCursor, paramString, paramContentValues, paramString);
-    AppMethodBeat.o(12143);
+    AppMethodBeat.o(2824);
   }
   
   public static void cursorLongToContentValues(Cursor paramCursor, String paramString1, ContentValues paramContentValues, String paramString2)
   {
-    AppMethodBeat.i(12144);
+    AppMethodBeat.i(2825);
     int i = paramCursor.getColumnIndex(paramString1);
     if (!paramCursor.isNull(i))
     {
       paramContentValues.put(paramString2, Long.valueOf(paramCursor.getLong(i)));
-      AppMethodBeat.o(12144);
+      AppMethodBeat.o(2825);
       return;
     }
     paramContentValues.put(paramString2, null);
-    AppMethodBeat.o(12144);
+    AppMethodBeat.o(2825);
   }
   
   public static void cursorLongToContentValuesIfPresent(Cursor paramCursor, ContentValues paramContentValues, String paramString)
   {
-    AppMethodBeat.i(12158);
+    AppMethodBeat.i(2839);
     int i = paramCursor.getColumnIndex(paramString);
     if ((i != -1) && (!paramCursor.isNull(i))) {
       paramContentValues.put(paramString, Long.valueOf(paramCursor.getLong(i)));
     }
-    AppMethodBeat.o(12158);
+    AppMethodBeat.o(2839);
   }
   
   public static int cursorPickFillWindowStartPosition(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12148);
+    AppMethodBeat.i(2829);
     paramInt1 = Math.max(paramInt1 - paramInt2 / 3, 0);
-    AppMethodBeat.o(12148);
+    AppMethodBeat.o(2829);
     return paramInt1;
   }
   
   public static void cursorRowToContentValues(Cursor paramCursor, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(12147);
+    AppMethodBeat.i(2828);
     AbstractWindowedCursor localAbstractWindowedCursor;
     String[] arrayOfString;
     int i;
@@ -405,60 +405,60 @@ public final class DatabaseUtils
       paramContentValues.put(arrayOfString[i], paramCursor.getString(i));
     }
     label98:
-    AppMethodBeat.o(12147);
+    AppMethodBeat.o(2828);
   }
   
   public static void cursorShortToContentValuesIfPresent(Cursor paramCursor, ContentValues paramContentValues, String paramString)
   {
-    AppMethodBeat.i(12159);
+    AppMethodBeat.i(2840);
     int i = paramCursor.getColumnIndex(paramString);
     if ((i != -1) && (!paramCursor.isNull(i))) {
       paramContentValues.put(paramString, Short.valueOf(paramCursor.getShort(i)));
     }
-    AppMethodBeat.o(12159);
+    AppMethodBeat.o(2840);
   }
   
   public static void cursorStringToContentValues(Cursor paramCursor, String paramString, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(12138);
+    AppMethodBeat.i(2819);
     cursorStringToContentValues(paramCursor, paramString, paramContentValues, paramString);
-    AppMethodBeat.o(12138);
+    AppMethodBeat.o(2819);
   }
   
   public static void cursorStringToContentValues(Cursor paramCursor, String paramString1, ContentValues paramContentValues, String paramString2)
   {
-    AppMethodBeat.i(12140);
+    AppMethodBeat.i(2821);
     paramContentValues.put(paramString2, paramCursor.getString(paramCursor.getColumnIndexOrThrow(paramString1)));
-    AppMethodBeat.o(12140);
+    AppMethodBeat.o(2821);
   }
   
   public static void cursorStringToContentValuesIfPresent(Cursor paramCursor, ContentValues paramContentValues, String paramString)
   {
-    AppMethodBeat.i(12157);
+    AppMethodBeat.i(2838);
     int i = paramCursor.getColumnIndex(paramString);
     if ((i != -1) && (!paramCursor.isNull(i))) {
       paramContentValues.put(paramString, paramCursor.getString(i));
     }
-    AppMethodBeat.o(12157);
+    AppMethodBeat.o(2838);
   }
   
   public static void cursorStringToInsertHelper(Cursor paramCursor, String paramString, InsertHelper paramInsertHelper, int paramInt)
   {
-    AppMethodBeat.i(12139);
+    AppMethodBeat.i(2820);
     paramInsertHelper.bind(paramInt, paramCursor.getString(paramCursor.getColumnIndexOrThrow(paramString)));
-    AppMethodBeat.o(12139);
+    AppMethodBeat.o(2820);
   }
   
   public static void dumpCurrentRow(Cursor paramCursor)
   {
-    AppMethodBeat.i(12134);
+    AppMethodBeat.i(2815);
     dumpCurrentRow(paramCursor, System.out);
-    AppMethodBeat.o(12134);
+    AppMethodBeat.o(2815);
   }
   
   public static void dumpCurrentRow(Cursor paramCursor, PrintStream paramPrintStream)
   {
-    AppMethodBeat.i(12135);
+    AppMethodBeat.i(2816);
     String[] arrayOfString = paramCursor.getColumnNames();
     paramPrintStream.println(paramCursor.getPosition() + " {");
     int j = arrayOfString.length;
@@ -482,12 +482,12 @@ public final class DatabaseUtils
       }
     }
     paramPrintStream.println("}");
-    AppMethodBeat.o(12135);
+    AppMethodBeat.o(2816);
   }
   
   public static void dumpCurrentRow(Cursor paramCursor, StringBuilder paramStringBuilder)
   {
-    AppMethodBeat.i(12136);
+    AppMethodBeat.i(2817);
     String[] arrayOfString = paramCursor.getColumnNames();
     paramStringBuilder.append(paramCursor.getPosition() + " {\n");
     int j = arrayOfString.length;
@@ -511,29 +511,29 @@ public final class DatabaseUtils
       }
     }
     paramStringBuilder.append("}\n");
-    AppMethodBeat.o(12136);
+    AppMethodBeat.o(2817);
   }
   
   public static String dumpCurrentRowToString(Cursor paramCursor)
   {
-    AppMethodBeat.i(12137);
+    AppMethodBeat.i(2818);
     StringBuilder localStringBuilder = new StringBuilder();
     dumpCurrentRow(paramCursor, localStringBuilder);
     paramCursor = localStringBuilder.toString();
-    AppMethodBeat.o(12137);
+    AppMethodBeat.o(2818);
     return paramCursor;
   }
   
   public static void dumpCursor(Cursor paramCursor)
   {
-    AppMethodBeat.i(12130);
+    AppMethodBeat.i(2811);
     dumpCursor(paramCursor, System.out);
-    AppMethodBeat.o(12130);
+    AppMethodBeat.o(2811);
   }
   
   public static void dumpCursor(Cursor paramCursor, PrintStream paramPrintStream)
   {
-    AppMethodBeat.i(12131);
+    AppMethodBeat.i(2812);
     paramPrintStream.println(">>>>> Dumping cursor ".concat(String.valueOf(paramCursor)));
     if (paramCursor != null)
     {
@@ -545,12 +545,12 @@ public final class DatabaseUtils
       paramCursor.moveToPosition(i);
     }
     paramPrintStream.println("<<<<<");
-    AppMethodBeat.o(12131);
+    AppMethodBeat.o(2812);
   }
   
   public static void dumpCursor(Cursor paramCursor, StringBuilder paramStringBuilder)
   {
-    AppMethodBeat.i(12132);
+    AppMethodBeat.i(2813);
     paramStringBuilder.append(">>>>> Dumping cursor " + paramCursor + "\n");
     if (paramCursor != null)
     {
@@ -562,16 +562,16 @@ public final class DatabaseUtils
       paramCursor.moveToPosition(i);
     }
     paramStringBuilder.append("<<<<<\n");
-    AppMethodBeat.o(12132);
+    AppMethodBeat.o(2813);
   }
   
   public static String dumpCursorToString(Cursor paramCursor)
   {
-    AppMethodBeat.i(12133);
+    AppMethodBeat.i(2814);
     StringBuilder localStringBuilder = new StringBuilder();
     dumpCursor(paramCursor, localStringBuilder);
     paramCursor = localStringBuilder.toString();
-    AppMethodBeat.o(12133);
+    AppMethodBeat.o(2814);
     return paramCursor;
   }
   
@@ -594,7 +594,7 @@ public final class DatabaseUtils
   
   private static int extractSqlCode(String paramString)
   {
-    AppMethodBeat.i(12165);
+    AppMethodBeat.i(2846);
     int i = 0;
     int j = 0;
     if (i < 3)
@@ -611,51 +611,51 @@ public final class DatabaseUtils
         break;
         k = m;
       } while (m < 128);
-      AppMethodBeat.o(12165);
+      AppMethodBeat.o(2846);
       return 0;
     }
-    AppMethodBeat.o(12165);
+    AppMethodBeat.o(2846);
     return j;
   }
   
   public static int findRowIdColumnIndex(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12168);
+    AppMethodBeat.i(2849);
     int j = paramArrayOfString.length;
     int i = 0;
     while (i < j)
     {
       if (paramArrayOfString[i].equals("_id"))
       {
-        AppMethodBeat.o(12168);
+        AppMethodBeat.o(2849);
         return i;
       }
       i += 1;
     }
-    AppMethodBeat.o(12168);
+    AppMethodBeat.o(2849);
     return -1;
   }
   
   public static String getCollationKey(String paramString)
   {
-    AppMethodBeat.i(12127);
+    AppMethodBeat.i(2808);
     paramString = getCollationKeyInBytes(paramString);
     try
     {
       paramString = new String(paramString, 0, getKeyLen(paramString), "ISO8859_1");
-      AppMethodBeat.o(12127);
+      AppMethodBeat.o(2808);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(12127);
+      AppMethodBeat.o(2808);
     }
     return "";
   }
   
   private static byte[] getCollationKeyInBytes(String paramString)
   {
-    AppMethodBeat.i(12129);
+    AppMethodBeat.i(2810);
     if (mColl == null)
     {
       Collator localCollator = Collator.getInstance();
@@ -663,16 +663,16 @@ public final class DatabaseUtils
       localCollator.setStrength(0);
     }
     paramString = mColl.getCollationKey(paramString).toByteArray();
-    AppMethodBeat.o(12129);
+    AppMethodBeat.o(2810);
     return paramString;
   }
   
   public static String getHexCollationKey(String paramString)
   {
-    AppMethodBeat.i(12128);
+    AppMethodBeat.i(2809);
     paramString = getCollationKeyInBytes(paramString);
     paramString = new String(encodeHex(paramString), 0, getKeyLen(paramString) * 2);
-    AppMethodBeat.o(12128);
+    AppMethodBeat.o(2809);
     return paramString;
   }
   
@@ -686,50 +686,50 @@ public final class DatabaseUtils
   
   public static int getSqlStatementType(String paramString)
   {
-    AppMethodBeat.i(12166);
+    AppMethodBeat.i(2847);
     paramString = paramString.trim();
     if (paramString.length() < 3)
     {
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 99;
     }
     switch (extractSqlCode(paramString))
     {
     default: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 99;
     case 4998483: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 1;
     case 4477013: 
     case 4998468: 
     case 5260626: 
     case 5459529: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 2;
     case 5526593: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 3;
     case 4476485: 
     case 5066563: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 5;
     case 5001042: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 6;
     case 4670786: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 4;
     case 4280912: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 7;
     case 4543043: 
     case 5198404: 
     case 5524545: 
-      AppMethodBeat.o(12166);
+      AppMethodBeat.o(2847);
       return 8;
     }
-    AppMethodBeat.o(12166);
+    AppMethodBeat.o(2847);
     return 9;
   }
   
@@ -752,7 +752,7 @@ public final class DatabaseUtils
   
   public static long longForQuery(SQLiteDatabase paramSQLiteDatabase, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12153);
+    AppMethodBeat.i(2834);
     paramSQLiteDatabase = paramSQLiteDatabase.compileStatement(paramString);
     try
     {
@@ -762,201 +762,201 @@ public final class DatabaseUtils
     finally
     {
       paramSQLiteDatabase.close();
-      AppMethodBeat.o(12153);
+      AppMethodBeat.o(2834);
     }
   }
   
   public static long longForQuery(SQLiteStatement paramSQLiteStatement, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12154);
+    AppMethodBeat.i(2835);
     paramSQLiteStatement.bindAllArgsAsStrings(paramArrayOfString);
     long l = paramSQLiteStatement.simpleQueryForLong();
-    AppMethodBeat.o(12154);
+    AppMethodBeat.o(2835);
     return l;
   }
   
   public static boolean objectEquals(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(12114);
+    AppMethodBeat.i(2795);
     if ((paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2))))
     {
-      AppMethodBeat.o(12114);
+      AppMethodBeat.o(2795);
       return true;
     }
-    AppMethodBeat.o(12114);
+    AppMethodBeat.o(2795);
     return false;
   }
   
   public static boolean queryIsEmpty(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    AppMethodBeat.i(12152);
+    AppMethodBeat.i(2833);
     if (longForQuery(paramSQLiteDatabase, "select exists(select 1 from " + paramString + ")", null) == 0L)
     {
-      AppMethodBeat.o(12152);
+      AppMethodBeat.o(2833);
       return true;
     }
-    AppMethodBeat.o(12152);
+    AppMethodBeat.o(2833);
     return false;
   }
   
   public static long queryNumEntries(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    AppMethodBeat.i(12149);
+    AppMethodBeat.i(2830);
     long l = queryNumEntries(paramSQLiteDatabase, paramString, null, null);
-    AppMethodBeat.o(12149);
+    AppMethodBeat.o(2830);
     return l;
   }
   
   public static long queryNumEntries(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(12150);
+    AppMethodBeat.i(2831);
     long l = queryNumEntries(paramSQLiteDatabase, paramString1, paramString2, null);
-    AppMethodBeat.o(12150);
+    AppMethodBeat.o(2831);
     return l;
   }
   
   public static long queryNumEntries(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12151);
+    AppMethodBeat.i(2832);
     if (!TextUtils.isEmpty(paramString2)) {}
     for (paramString2 = " where ".concat(String.valueOf(paramString2));; paramString2 = "")
     {
       long l = longForQuery(paramSQLiteDatabase, "select count(*) from " + paramString1 + paramString2, paramArrayOfString);
-      AppMethodBeat.o(12151);
+      AppMethodBeat.o(2832);
       return l;
     }
   }
   
   private static final int readExceptionCode(Parcel paramParcel)
   {
-    AppMethodBeat.i(12116);
+    AppMethodBeat.i(2797);
     int i = paramParcel.readInt();
     if (i == -128)
     {
       if (paramParcel.readInt() == 0) {
         Log.e("WCDB.DatabaseUtils", "Unexpected zero-sized Parcel reply header.");
       }
-      AppMethodBeat.o(12116);
+      AppMethodBeat.o(2797);
       return 0;
     }
-    AppMethodBeat.o(12116);
+    AppMethodBeat.o(2797);
     return i;
   }
   
   public static final void readExceptionFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(12117);
+    AppMethodBeat.i(2798);
     int i = readExceptionCode(paramParcel);
     if (i == 0)
     {
-      AppMethodBeat.o(12117);
+      AppMethodBeat.o(2798);
       return;
     }
     readExceptionFromParcel(paramParcel, paramParcel.readString(), i);
-    AppMethodBeat.o(12117);
+    AppMethodBeat.o(2798);
   }
   
   private static final void readExceptionFromParcel(Parcel paramParcel, String paramString, int paramInt)
   {
-    AppMethodBeat.i(12120);
+    AppMethodBeat.i(2801);
     switch (paramInt)
     {
     case 10: 
     default: 
       paramParcel.readException(paramInt, paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       return;
     case 2: 
       paramParcel = new IllegalArgumentException(paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       throw paramParcel;
     case 3: 
       paramParcel = new UnsupportedOperationException(paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       throw paramParcel;
     case 4: 
       paramParcel = new SQLiteAbortException(paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       throw paramParcel;
     case 5: 
       paramParcel = new SQLiteConstraintException(paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       throw paramParcel;
     case 6: 
       paramParcel = new SQLiteDatabaseCorruptException(paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       throw paramParcel;
     case 7: 
       paramParcel = new SQLiteFullException(paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       throw paramParcel;
     case 8: 
       paramParcel = new SQLiteDiskIOException(paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       throw paramParcel;
     case 9: 
       paramParcel = new SQLiteException(paramString);
-      AppMethodBeat.o(12120);
+      AppMethodBeat.o(2801);
       throw paramParcel;
     }
     paramParcel = new OperationCanceledException(paramString);
-    AppMethodBeat.o(12120);
+    AppMethodBeat.o(2801);
     throw paramParcel;
   }
   
   public static void readExceptionWithFileNotFoundExceptionFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(12118);
+    AppMethodBeat.i(2799);
     int i = readExceptionCode(paramParcel);
     if (i == 0)
     {
-      AppMethodBeat.o(12118);
+      AppMethodBeat.o(2799);
       return;
     }
     String str = paramParcel.readString();
     if (i == 1)
     {
       paramParcel = new FileNotFoundException(str);
-      AppMethodBeat.o(12118);
+      AppMethodBeat.o(2799);
       throw paramParcel;
     }
     readExceptionFromParcel(paramParcel, str, i);
-    AppMethodBeat.o(12118);
+    AppMethodBeat.o(2799);
   }
   
   public static void readExceptionWithOperationApplicationExceptionFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(12119);
+    AppMethodBeat.i(2800);
     int i = readExceptionCode(paramParcel);
     if (i == 0)
     {
-      AppMethodBeat.o(12119);
+      AppMethodBeat.o(2800);
       return;
     }
     String str = paramParcel.readString();
     if (i == 10)
     {
       paramParcel = new OperationApplicationException(str);
-      AppMethodBeat.o(12119);
+      AppMethodBeat.o(2800);
       throw paramParcel;
     }
     readExceptionFromParcel(paramParcel, str, i);
-    AppMethodBeat.o(12119);
+    AppMethodBeat.o(2800);
   }
   
   public static String sqlEscapeString(String paramString)
   {
-    AppMethodBeat.i(12124);
+    AppMethodBeat.i(2805);
     StringBuilder localStringBuilder = new StringBuilder();
     appendEscapedSQLString(localStringBuilder, paramString);
     paramString = localStringBuilder.toString();
-    AppMethodBeat.o(12124);
+    AppMethodBeat.o(2805);
     return paramString;
   }
   
   public static String stringForQuery(SQLiteDatabase paramSQLiteDatabase, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12155);
+    AppMethodBeat.i(2836);
     paramSQLiteDatabase = paramSQLiteDatabase.compileStatement(paramString);
     try
     {
@@ -966,22 +966,22 @@ public final class DatabaseUtils
     finally
     {
       paramSQLiteDatabase.close();
-      AppMethodBeat.o(12155);
+      AppMethodBeat.o(2836);
     }
   }
   
   public static String stringForQuery(SQLiteStatement paramSQLiteStatement, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12156);
+    AppMethodBeat.i(2837);
     paramSQLiteStatement.bindAllArgsAsStrings(paramArrayOfString);
     paramSQLiteStatement = paramSQLiteStatement.simpleQueryForString();
-    AppMethodBeat.o(12156);
+    AppMethodBeat.o(2837);
     return paramSQLiteStatement;
   }
   
   public static final void writeExceptionToParcel(Parcel paramParcel, Exception paramException)
   {
-    AppMethodBeat.i(12115);
+    AppMethodBeat.i(2796);
     int i;
     int j;
     if ((paramException instanceof FileNotFoundException))
@@ -996,7 +996,7 @@ public final class DatabaseUtils
       if (j != 0) {
         Log.e("WCDB.DatabaseUtils", "Writing exception to parcel", new Object[] { paramException });
       }
-      AppMethodBeat.o(12115);
+      AppMethodBeat.o(2796);
       return;
       if ((paramException instanceof IllegalArgumentException))
       {
@@ -1054,7 +1054,7 @@ public final class DatabaseUtils
     }
     paramParcel.writeException(paramException);
     Log.e("WCDB.DatabaseUtils", "Writing exception to parcel", new Object[] { paramException });
-    AppMethodBeat.o(12115);
+    AppMethodBeat.o(2796);
   }
   
   @Deprecated
@@ -1079,7 +1079,7 @@ public final class DatabaseUtils
     private void buildSQL()
     {
       Object localObject1 = null;
-      AppMethodBeat.i(12096);
+      AppMethodBeat.i(2777);
       StringBuilder localStringBuilder1 = new StringBuilder(128);
       localStringBuilder1.append("INSERT INTO ");
       localStringBuilder1.append(this.mTableName);
@@ -1148,7 +1148,7 @@ public final class DatabaseUtils
           if (localObject1 != null) {
             localObject1.close();
           }
-          AppMethodBeat.o(12096);
+          AppMethodBeat.o(2777);
         }
         continue;
         label347:
@@ -1159,12 +1159,12 @@ public final class DatabaseUtils
       }
       localStringBuilder1.append(localStringBuilder2);
       this.mInsertSQL = localStringBuilder1.toString();
-      AppMethodBeat.o(12096);
+      AppMethodBeat.o(2777);
     }
     
     private SQLiteStatement getStatement(boolean paramBoolean)
     {
-      AppMethodBeat.i(12097);
+      AppMethodBeat.i(2778);
       if (paramBoolean)
       {
         if (this.mReplaceStatement == null)
@@ -1176,7 +1176,7 @@ public final class DatabaseUtils
           this.mReplaceStatement = this.mDb.compileStatement((String)localObject);
         }
         localObject = this.mReplaceStatement;
-        AppMethodBeat.o(12097);
+        AppMethodBeat.o(2778);
         return localObject;
       }
       if (this.mInsertStatement == null)
@@ -1187,7 +1187,7 @@ public final class DatabaseUtils
         this.mInsertStatement = this.mDb.compileStatement(this.mInsertSQL);
       }
       Object localObject = this.mInsertStatement;
-      AppMethodBeat.o(12097);
+      AppMethodBeat.o(2778);
       return localObject;
     }
     
@@ -1195,7 +1195,7 @@ public final class DatabaseUtils
     private long insertInternal(ContentValues paramContentValues, boolean paramBoolean)
     {
       // Byte code:
-      //   0: sipush 12098
+      //   0: sipush 2779
       //   3: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   6: aload_0
       //   7: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
@@ -1251,7 +1251,7 @@ public final class DatabaseUtils
       //   131: aload_0
       //   132: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
       //   135: invokevirtual 215	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-      //   138: sipush 12098
+      //   138: sipush 2779
       //   141: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   144: ldc2_w 216
       //   147: lreturn
@@ -1264,7 +1264,7 @@ public final class DatabaseUtils
       //   161: aload_0
       //   162: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
       //   165: invokevirtual 215	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-      //   168: sipush 12098
+      //   168: sipush 2779
       //   171: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   174: lload_3
       //   175: lreturn
@@ -1272,7 +1272,7 @@ public final class DatabaseUtils
       //   177: aload_0
       //   178: getfield 40	com/tencent/wcdb/DatabaseUtils$InsertHelper:mDb	Lcom/tencent/wcdb/database/SQLiteDatabase;
       //   181: invokevirtual 215	com/tencent/wcdb/database/SQLiteDatabase:endTransaction	()V
-      //   184: sipush 12098
+      //   184: sipush 2779
       //   187: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   190: aload_1
       //   191: athrow
@@ -1299,81 +1299,81 @@ public final class DatabaseUtils
     
     public void bind(int paramInt, double paramDouble)
     {
-      AppMethodBeat.i(12100);
+      AppMethodBeat.i(2781);
       this.mPreparedStatement.bindDouble(paramInt, paramDouble);
-      AppMethodBeat.o(12100);
+      AppMethodBeat.o(2781);
     }
     
     public void bind(int paramInt, float paramFloat)
     {
-      AppMethodBeat.i(12101);
+      AppMethodBeat.i(2782);
       this.mPreparedStatement.bindDouble(paramInt, paramFloat);
-      AppMethodBeat.o(12101);
+      AppMethodBeat.o(2782);
     }
     
     public void bind(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(12103);
+      AppMethodBeat.i(2784);
       this.mPreparedStatement.bindLong(paramInt1, paramInt2);
-      AppMethodBeat.o(12103);
+      AppMethodBeat.o(2784);
     }
     
     public void bind(int paramInt, long paramLong)
     {
-      AppMethodBeat.i(12102);
+      AppMethodBeat.i(2783);
       this.mPreparedStatement.bindLong(paramInt, paramLong);
-      AppMethodBeat.o(12102);
+      AppMethodBeat.o(2783);
     }
     
     public void bind(int paramInt, String paramString)
     {
-      AppMethodBeat.i(12107);
+      AppMethodBeat.i(2788);
       if (paramString == null)
       {
         this.mPreparedStatement.bindNull(paramInt);
-        AppMethodBeat.o(12107);
+        AppMethodBeat.o(2788);
         return;
       }
       this.mPreparedStatement.bindString(paramInt, paramString);
-      AppMethodBeat.o(12107);
+      AppMethodBeat.o(2788);
     }
     
     public void bind(int paramInt, boolean paramBoolean)
     {
-      AppMethodBeat.i(12104);
+      AppMethodBeat.i(2785);
       SQLiteStatement localSQLiteStatement = this.mPreparedStatement;
       if (paramBoolean) {}
       for (long l = 1L;; l = 0L)
       {
         localSQLiteStatement.bindLong(paramInt, l);
-        AppMethodBeat.o(12104);
+        AppMethodBeat.o(2785);
         return;
       }
     }
     
     public void bind(int paramInt, byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(12106);
+      AppMethodBeat.i(2787);
       if (paramArrayOfByte == null)
       {
         this.mPreparedStatement.bindNull(paramInt);
-        AppMethodBeat.o(12106);
+        AppMethodBeat.o(2787);
         return;
       }
       this.mPreparedStatement.bindBlob(paramInt, paramArrayOfByte);
-      AppMethodBeat.o(12106);
+      AppMethodBeat.o(2787);
     }
     
     public void bindNull(int paramInt)
     {
-      AppMethodBeat.i(12105);
+      AppMethodBeat.i(2786);
       this.mPreparedStatement.bindNull(paramInt);
-      AppMethodBeat.o(12105);
+      AppMethodBeat.o(2786);
     }
     
     public void close()
     {
-      AppMethodBeat.i(12113);
+      AppMethodBeat.i(2794);
       if (this.mInsertStatement != null)
       {
         this.mInsertStatement.close();
@@ -1386,16 +1386,16 @@ public final class DatabaseUtils
       }
       this.mInsertSQL = null;
       this.mColumns = null;
-      AppMethodBeat.o(12113);
+      AppMethodBeat.o(2794);
     }
     
     public long execute()
     {
-      AppMethodBeat.i(12109);
+      AppMethodBeat.i(2790);
       if (this.mPreparedStatement == null)
       {
         IllegalStateException localIllegalStateException = new IllegalStateException("you must prepare this inserter before calling execute");
-        AppMethodBeat.o(12109);
+        AppMethodBeat.o(2790);
         throw localIllegalStateException;
       }
       try
@@ -1411,62 +1411,62 @@ public final class DatabaseUtils
       finally
       {
         this.mPreparedStatement = null;
-        AppMethodBeat.o(12109);
+        AppMethodBeat.o(2790);
       }
     }
     
     public int getColumnIndex(String paramString)
     {
-      AppMethodBeat.i(12099);
+      AppMethodBeat.i(2780);
       getStatement(false);
       Integer localInteger = (Integer)this.mColumns.get(paramString);
       if (localInteger == null)
       {
         paramString = new IllegalArgumentException("column '" + paramString + "' is invalid");
-        AppMethodBeat.o(12099);
+        AppMethodBeat.o(2780);
         throw paramString;
       }
       int i = localInteger.intValue();
-      AppMethodBeat.o(12099);
+      AppMethodBeat.o(2780);
       return i;
     }
     
     public long insert(ContentValues paramContentValues)
     {
-      AppMethodBeat.i(12108);
+      AppMethodBeat.i(2789);
       long l = insertInternal(paramContentValues, false);
-      AppMethodBeat.o(12108);
+      AppMethodBeat.o(2789);
       return l;
     }
     
     public void prepareForInsert()
     {
-      AppMethodBeat.i(12110);
+      AppMethodBeat.i(2791);
       this.mPreparedStatement = getStatement(false);
       this.mPreparedStatement.clearBindings();
-      AppMethodBeat.o(12110);
+      AppMethodBeat.o(2791);
     }
     
     public void prepareForReplace()
     {
-      AppMethodBeat.i(12111);
+      AppMethodBeat.i(2792);
       this.mPreparedStatement = getStatement(true);
       this.mPreparedStatement.clearBindings();
-      AppMethodBeat.o(12111);
+      AppMethodBeat.o(2792);
     }
     
     public long replace(ContentValues paramContentValues)
     {
-      AppMethodBeat.i(12112);
+      AppMethodBeat.i(2793);
       long l = insertInternal(paramContentValues, true);
-      AppMethodBeat.o(12112);
+      AppMethodBeat.o(2793);
       return l;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.DatabaseUtils
  * JD-Core Version:    0.7.0.1
  */

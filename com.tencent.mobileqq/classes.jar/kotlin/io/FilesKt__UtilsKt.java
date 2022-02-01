@@ -23,97 +23,88 @@ class FilesKt__UtilsKt
     Intrinsics.checkParameterIsNotNull(paramFile1, "$this$copyRecursively");
     Intrinsics.checkParameterIsNotNull(paramFile2, "target");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "onError");
-    if (!paramFile1.exists())
-    {
-      if ((OnErrorAction)paramFunction2.invoke(paramFile1, new NoSuchFileException(paramFile1, null, "The source file doesn't exist.", 2, null)) != OnErrorAction.TERMINATE) {}
-      for (paramBoolean = true;; paramBoolean = false) {
-        return paramBoolean;
-      }
+    if (!paramFile1.exists()) {
+      return (OnErrorAction)paramFunction2.invoke(paramFile1, new NoSuchFileException(paramFile1, null, "The source file doesn't exist.", 2, null)) != OnErrorAction.TERMINATE;
     }
-    try
+    for (;;)
     {
-      Iterator localIterator = FilesKt.walkTopDown(paramFile1).onFail((Function2)new FilesKt__UtilsKt.copyRecursively.2(paramFunction2)).iterator();
-      Object localObject1;
-      Object localObject2;
-      for (;;)
+      int i;
+      try
       {
+        Iterator localIterator = FilesKt.walkTopDown(paramFile1).onFail((Function2)new FilesKt__UtilsKt.copyRecursively.2(paramFunction2)).iterator();
         if (localIterator.hasNext())
         {
-          localObject1 = (File)localIterator.next();
+          Object localObject1 = (File)localIterator.next();
           if (!((File)localObject1).exists())
           {
-            if ((OnErrorAction)paramFunction2.invoke(localObject1, new NoSuchFileException((File)localObject1, null, "The source file doesn't exist.", 2, null)) == OnErrorAction.TERMINATE) {
-              return false;
+            if ((OnErrorAction)paramFunction2.invoke(localObject1, new NoSuchFileException((File)localObject1, null, "The source file doesn't exist.", 2, null)) != OnErrorAction.TERMINATE) {
+              continue;
             }
+            return false;
           }
-          else
+          Object localObject2 = new File(paramFile2, FilesKt.toRelativeString((File)localObject1, paramFile1));
+          if (((File)localObject2).exists())
           {
-            localObject2 = new File(paramFile2, FilesKt.toRelativeString((File)localObject1, paramFile1));
-            if (((File)localObject2).exists())
+            if (!((File)localObject1).isDirectory()) {
+              break label335;
+            }
+            if (!((File)localObject2).isDirectory())
             {
-              if (!((File)localObject1).isDirectory()) {
-                break label343;
+              break label335;
+              if (((File)localObject2).isDirectory())
+              {
+                if (FilesKt.deleteRecursively((File)localObject2)) {
+                  break label345;
+                }
+                break label339;
               }
-              if (!((File)localObject2).isDirectory()) {
-                break label343;
+              if (((File)localObject2).delete()) {
+                break label345;
+              }
+              break label339;
+              if (i != 0)
+              {
+                if ((OnErrorAction)paramFunction2.invoke(localObject2, new FileAlreadyExistsException((File)localObject1, (File)localObject2, "The destination file already exists.")) != OnErrorAction.TERMINATE) {
+                  continue;
+                }
+                return false;
               }
             }
           }
-        }
-      }
-      for (;;)
-      {
-        label192:
-        if (i != 0)
-        {
-          if ((OnErrorAction)paramFunction2.invoke(localObject2, new FileAlreadyExistsException((File)localObject1, (File)localObject2, "The destination file already exists.")) != OnErrorAction.TERMINATE) {
-            break;
-          }
-          return false;
-        }
-        label343:
-        do
-        {
-          if (((File)localObject2).isDirectory())
-          {
-            if (FilesKt.deleteRecursively((File)localObject2)) {
-              break label353;
-            }
-            i = 1;
-            break label192;
-          }
-          if (((File)localObject2).delete()) {
-            break label359;
-          }
-          i = 1;
-          break label192;
           if (((File)localObject1).isDirectory())
           {
             ((File)localObject2).mkdirs();
-            break;
+            continue;
           }
           if (FilesKt.copyTo$default((File)localObject1, (File)localObject2, paramBoolean, 0, 4, null).length() == ((File)localObject1).length()) {
-            break;
+            continue;
           }
           localObject1 = (OnErrorAction)paramFunction2.invoke(localObject1, new IOException("Source file wasn't copied completely, length of destination file differs."));
           localObject2 = OnErrorAction.TERMINATE;
           if (localObject1 != localObject2) {
-            break;
+            continue;
           }
           return false;
+        }
+        else
+        {
           return true;
-        } while (paramBoolean);
-        int i = 1;
+        }
+      }
+      catch (TerminateException paramFile1)
+      {
+        return false;
+      }
+      label335:
+      if (!paramBoolean)
+      {
+        label339:
+        i = 1;
         continue;
-        label353:
-        i = 0;
-        continue;
-        label359:
+        label345:
         i = 0;
       }
-      return false;
     }
-    catch (TerminateException paramFile1) {}
   }
   
   /* Error */
@@ -129,149 +120,177 @@ class FilesKt__UtilsKt
     //   9: invokestatic 77	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
     //   12: aload_0
     //   13: invokevirtual 85	java/io/File:exists	()Z
-    //   16: ifne +20 -> 36
-    //   19: new 87	kotlin/io/NoSuchFileException
-    //   22: dup
-    //   23: aload_0
-    //   24: aconst_null
-    //   25: ldc 89
-    //   27: iconst_2
-    //   28: aconst_null
-    //   29: invokespecial 92	kotlin/io/NoSuchFileException:<init>	(Ljava/io/File;Ljava/io/File;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-    //   32: checkcast 188	java/lang/Throwable
-    //   35: athrow
-    //   36: aload_1
-    //   37: invokevirtual 85	java/io/File:exists	()Z
-    //   40: ifeq +44 -> 84
-    //   43: iload_2
-    //   44: ifne +18 -> 62
-    //   47: new 143	kotlin/io/FileAlreadyExistsException
-    //   50: dup
-    //   51: aload_0
-    //   52: aload_1
-    //   53: ldc 145
-    //   55: invokespecial 148	kotlin/io/FileAlreadyExistsException:<init>	(Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V
-    //   58: checkcast 188	java/lang/Throwable
-    //   61: athrow
-    //   62: aload_1
-    //   63: invokevirtual 154	java/io/File:delete	()Z
-    //   66: ifne +18 -> 84
-    //   69: new 143	kotlin/io/FileAlreadyExistsException
-    //   72: dup
-    //   73: aload_0
-    //   74: aload_1
-    //   75: ldc 192
-    //   77: invokespecial 148	kotlin/io/FileAlreadyExistsException:<init>	(Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V
-    //   80: checkcast 188	java/lang/Throwable
-    //   83: athrow
-    //   84: aload_0
-    //   85: invokevirtual 141	java/io/File:isDirectory	()Z
-    //   88: ifeq +25 -> 113
+    //   16: ifeq +251 -> 267
+    //   19: aload_1
+    //   20: invokevirtual 85	java/io/File:exists	()Z
+    //   23: ifeq +47 -> 70
+    //   26: iload_2
+    //   27: ifeq +28 -> 55
+    //   30: aload_1
+    //   31: invokevirtual 147	java/io/File:delete	()Z
+    //   34: ifeq +6 -> 40
+    //   37: goto +33 -> 70
+    //   40: new 149	kotlin/io/FileAlreadyExistsException
+    //   43: dup
+    //   44: aload_0
+    //   45: aload_1
+    //   46: ldc 192
+    //   48: invokespecial 154	kotlin/io/FileAlreadyExistsException:<init>	(Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V
+    //   51: checkcast 188	java/lang/Throwable
+    //   54: athrow
+    //   55: new 149	kotlin/io/FileAlreadyExistsException
+    //   58: dup
+    //   59: aload_0
+    //   60: aload_1
+    //   61: ldc 151
+    //   63: invokespecial 154	kotlin/io/FileAlreadyExistsException:<init>	(Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V
+    //   66: checkcast 188	java/lang/Throwable
+    //   69: athrow
+    //   70: aload_0
+    //   71: invokevirtual 141	java/io/File:isDirectory	()Z
+    //   74: ifeq +27 -> 101
+    //   77: aload_1
+    //   78: invokevirtual 157	java/io/File:mkdirs	()Z
+    //   81: ifeq +5 -> 86
+    //   84: aload_1
+    //   85: areturn
+    //   86: new 194	kotlin/io/FileSystemException
+    //   89: dup
+    //   90: aload_0
     //   91: aload_1
-    //   92: invokevirtual 157	java/io/File:mkdirs	()Z
-    //   95: ifne +114 -> 209
-    //   98: new 194	kotlin/io/FileSystemException
-    //   101: dup
-    //   102: aload_0
-    //   103: aload_1
-    //   104: ldc 196
-    //   106: invokespecial 197	kotlin/io/FileSystemException:<init>	(Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V
-    //   109: checkcast 188	java/lang/Throwable
-    //   112: athrow
-    //   113: aload_1
-    //   114: invokevirtual 201	java/io/File:getParentFile	()Ljava/io/File;
-    //   117: astore 4
-    //   119: aload 4
-    //   121: ifnull +9 -> 130
-    //   124: aload 4
-    //   126: invokevirtual 157	java/io/File:mkdirs	()Z
-    //   129: pop
-    //   130: new 203	java/io/FileInputStream
-    //   133: dup
-    //   134: aload_0
-    //   135: invokespecial 206	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   138: checkcast 208	java/io/Closeable
-    //   141: astore 5
-    //   143: aconst_null
-    //   144: checkcast 188	java/lang/Throwable
-    //   147: astore 4
-    //   149: aload 5
-    //   151: checkcast 203	java/io/FileInputStream
-    //   154: astore 7
-    //   156: new 210	java/io/FileOutputStream
-    //   159: dup
-    //   160: aload_1
-    //   161: invokespecial 211	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   164: checkcast 208	java/io/Closeable
-    //   167: astore 6
+    //   92: ldc 196
+    //   94: invokespecial 197	kotlin/io/FileSystemException:<init>	(Ljava/io/File;Ljava/io/File;Ljava/lang/String;)V
+    //   97: checkcast 188	java/lang/Throwable
+    //   100: athrow
+    //   101: aload_1
+    //   102: invokevirtual 201	java/io/File:getParentFile	()Ljava/io/File;
+    //   105: astore 4
+    //   107: aload 4
+    //   109: ifnull +9 -> 118
+    //   112: aload 4
+    //   114: invokevirtual 157	java/io/File:mkdirs	()Z
+    //   117: pop
+    //   118: new 203	java/io/FileInputStream
+    //   121: dup
+    //   122: aload_0
+    //   123: invokespecial 206	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   126: checkcast 208	java/io/Closeable
+    //   129: astore 7
+    //   131: aconst_null
+    //   132: checkcast 188	java/lang/Throwable
+    //   135: astore 5
+    //   137: aload 5
+    //   139: astore 4
+    //   141: aload 7
+    //   143: checkcast 203	java/io/FileInputStream
+    //   146: astore 9
+    //   148: aload 5
+    //   150: astore 4
+    //   152: new 210	java/io/FileOutputStream
+    //   155: dup
+    //   156: aload_1
+    //   157: invokespecial 211	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   160: checkcast 208	java/io/Closeable
+    //   163: astore 8
+    //   165: aload 5
+    //   167: astore 4
     //   169: aconst_null
     //   170: checkcast 188	java/lang/Throwable
-    //   173: astore_0
-    //   174: aload 6
-    //   176: checkcast 210	java/io/FileOutputStream
-    //   179: astore 8
-    //   181: aload 7
-    //   183: checkcast 213	java/io/InputStream
-    //   186: aload 8
-    //   188: checkcast 215	java/io/OutputStream
-    //   191: iload_3
-    //   192: invokestatic 220	kotlin/io/ByteStreamsKt:copyTo	(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
-    //   195: pop2
-    //   196: aload 6
-    //   198: aload_0
-    //   199: invokestatic 226	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   202: aload 5
-    //   204: aload 4
-    //   206: invokestatic 226	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   209: aload_1
-    //   210: areturn
-    //   211: astore_0
-    //   212: aload_0
-    //   213: athrow
-    //   214: astore_1
-    //   215: aload 6
-    //   217: aload_0
+    //   173: astore 6
+    //   175: aload 6
+    //   177: astore_0
+    //   178: aload 8
+    //   180: checkcast 210	java/io/FileOutputStream
+    //   183: astore 4
+    //   185: aload 6
+    //   187: astore_0
+    //   188: aload 9
+    //   190: checkcast 213	java/io/InputStream
+    //   193: aload 4
+    //   195: checkcast 215	java/io/OutputStream
+    //   198: iload_3
+    //   199: invokestatic 220	kotlin/io/ByteStreamsKt:copyTo	(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
+    //   202: pop2
+    //   203: aload 5
+    //   205: astore 4
+    //   207: aload 8
+    //   209: aload 6
+    //   211: invokestatic 226	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   214: aload 7
+    //   216: aload 5
     //   218: invokestatic 226	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   221: aload_1
-    //   222: athrow
-    //   223: astore_0
-    //   224: aload_0
-    //   225: athrow
-    //   226: astore_1
-    //   227: aload 5
-    //   229: aload_0
-    //   230: invokestatic 226	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   233: aload_1
-    //   234: athrow
-    //   235: astore_1
-    //   236: aload 4
-    //   238: astore_0
-    //   239: goto -12 -> 227
-    //   242: astore_1
-    //   243: goto -28 -> 215
+    //   222: areturn
+    //   223: astore_1
+    //   224: goto +8 -> 232
+    //   227: astore_1
+    //   228: aload_1
+    //   229: astore_0
+    //   230: aload_1
+    //   231: athrow
+    //   232: aload 5
+    //   234: astore 4
+    //   236: aload 8
+    //   238: aload_0
+    //   239: invokestatic 226	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   242: aload 5
+    //   244: astore 4
+    //   246: aload_1
+    //   247: athrow
+    //   248: astore_0
+    //   249: goto +9 -> 258
+    //   252: astore_0
+    //   253: aload_0
+    //   254: astore 4
+    //   256: aload_0
+    //   257: athrow
+    //   258: aload 7
+    //   260: aload 4
+    //   262: invokestatic 226	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   265: aload_0
+    //   266: athrow
+    //   267: new 87	kotlin/io/NoSuchFileException
+    //   270: dup
+    //   271: aload_0
+    //   272: aconst_null
+    //   273: ldc 89
+    //   275: iconst_2
+    //   276: aconst_null
+    //   277: invokespecial 92	kotlin/io/NoSuchFileException:<init>	(Ljava/io/File;Ljava/io/File;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    //   280: checkcast 188	java/lang/Throwable
+    //   283: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	246	0	paramFile1	File
-    //   0	246	1	paramFile2	File
-    //   0	246	2	paramBoolean	boolean
-    //   0	246	3	paramInt	int
-    //   117	120	4	localObject	Object
-    //   141	87	5	localCloseable1	java.io.Closeable
-    //   167	49	6	localCloseable2	java.io.Closeable
-    //   154	28	7	localFileInputStream	java.io.FileInputStream
-    //   179	8	8	localFileOutputStream	java.io.FileOutputStream
+    //   0	284	0	paramFile1	File
+    //   0	284	1	paramFile2	File
+    //   0	284	2	paramBoolean	boolean
+    //   0	284	3	paramInt	int
+    //   105	156	4	localObject	Object
+    //   135	108	5	localThrowable1	Throwable
+    //   173	37	6	localThrowable2	Throwable
+    //   129	130	7	localCloseable1	java.io.Closeable
+    //   163	74	8	localCloseable2	java.io.Closeable
+    //   146	43	9	localFileInputStream	java.io.FileInputStream
     // Exception table:
     //   from	to	target	type
-    //   174	196	211	java/lang/Throwable
-    //   212	214	214	finally
-    //   149	174	223	java/lang/Throwable
-    //   196	202	223	java/lang/Throwable
-    //   215	223	223	java/lang/Throwable
-    //   224	226	226	finally
-    //   149	174	235	finally
-    //   196	202	235	finally
-    //   215	223	235	finally
-    //   174	196	242	finally
+    //   178	185	223	finally
+    //   188	203	223	finally
+    //   230	232	223	finally
+    //   178	185	227	java/lang/Throwable
+    //   188	203	227	java/lang/Throwable
+    //   141	148	248	finally
+    //   152	165	248	finally
+    //   169	175	248	finally
+    //   207	214	248	finally
+    //   236	242	248	finally
+    //   246	248	248	finally
+    //   256	258	248	finally
+    //   141	148	252	java/lang/Throwable
+    //   152	165	252	java/lang/Throwable
+    //   169	175	252	java/lang/Throwable
+    //   207	214	252	java/lang/Throwable
+    //   236	242	252	java/lang/Throwable
+    //   246	248	252	java/lang/Throwable
   }
   
   @NotNull
@@ -285,7 +304,11 @@ class FilesKt__UtilsKt
       Intrinsics.checkExpressionValueIsNotNull(paramString1, "dir");
       return paramString1;
     }
-    throw ((Throwable)new IOException("Unable to create temporary directory " + paramString1 + '.'));
+    paramString2 = new StringBuilder();
+    paramString2.append("Unable to create temporary directory ");
+    paramString2.append(paramString1);
+    paramString2.append('.');
+    throw ((Throwable)new IOException(paramString2.toString()));
   }
   
   @NotNull
@@ -301,12 +324,13 @@ class FilesKt__UtilsKt
   {
     Intrinsics.checkParameterIsNotNull(paramFile, "$this$deleteRecursively");
     paramFile = ((Sequence)FilesKt.walkBottomUp(paramFile)).iterator();
-    boolean bool = true;
-    if (paramFile.hasNext())
+    for (boolean bool = true;; bool = false)
     {
+      if (!paramFile.hasNext()) {
+        return bool;
+      }
       File localFile = (File)paramFile.next();
-      if (((localFile.delete()) || (!localFile.exists())) && (bool)) {}
-      for (bool = true;; bool = false) {
+      if (((localFile.delete()) || (!localFile.exists())) && (bool)) {
         break;
       }
     }
@@ -389,27 +413,28 @@ class FilesKt__UtilsKt
     {
       File localFile = (File)paramList.next();
       String str = localFile.getName();
-      if (str == null) {}
-      do
+      if (str != null)
       {
-        do
+        int i = str.hashCode();
+        if (i != 46)
         {
-          for (;;)
+          if ((i == 1472) && (str.equals("..")))
           {
-            localList.add(localFile);
-            break;
-            switch (str.hashCode())
+            if ((!localList.isEmpty()) && ((Intrinsics.areEqual(((File)CollectionsKt.last(localList)).getName(), "..") ^ true)))
             {
+              localList.remove(localList.size() - 1);
+              continue;
             }
+            localList.add(localFile);
           }
-        } while (!str.equals("."));
-        break;
-      } while (!str.equals(".."));
-      if ((!localList.isEmpty()) && ((Intrinsics.areEqual(((File)CollectionsKt.last(localList)).getName(), "..") ^ true))) {
-        localList.remove(localList.size() - 1);
-      } else {
-        localList.add(localFile);
+        }
+        else {
+          if (str.equals(".")) {
+            continue;
+          }
+        }
       }
+      localList.add(localFile);
     }
     return localList;
   }
@@ -461,21 +486,25 @@ class FilesKt__UtilsKt
     }
     paramFile1 = paramFile1.toString();
     Intrinsics.checkExpressionValueIsNotNull(paramFile1, "this.toString()");
+    Object localObject = (CharSequence)paramFile1;
     int i;
-    if (((CharSequence)paramFile1).length() == 0)
-    {
+    if (((CharSequence)localObject).length() == 0) {
       i = 1;
-      if ((i == 0) && (!StringsKt.endsWith$default((CharSequence)paramFile1, File.separatorChar, false, 2, null))) {
-        break label102;
-      }
-    }
-    label102:
-    for (paramFile1 = new File(paramFile1 + paramFile2);; paramFile1 = new File(paramFile1 + File.separatorChar + paramFile2))
-    {
-      return paramFile1;
+    } else {
       i = 0;
-      break;
     }
+    if ((i == 0) && (!StringsKt.endsWith$default((CharSequence)localObject, File.separatorChar, false, 2, null)))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramFile1);
+      ((StringBuilder)localObject).append(File.separatorChar);
+      ((StringBuilder)localObject).append(paramFile2);
+      return new File(((StringBuilder)localObject).toString());
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramFile1);
+    ((StringBuilder)localObject).append(paramFile2);
+    return new File(((StringBuilder)localObject).toString());
   }
   
   @NotNull
@@ -492,10 +521,12 @@ class FilesKt__UtilsKt
     Intrinsics.checkParameterIsNotNull(paramFile1, "$this$resolveSibling");
     Intrinsics.checkParameterIsNotNull(paramFile2, "relative");
     FilePathComponents localFilePathComponents = FilesKt.toComponents(paramFile1);
-    if (localFilePathComponents.getSize() == 0) {}
-    for (paramFile1 = new File("..");; paramFile1 = localFilePathComponents.subPath(0, localFilePathComponents.getSize() - 1)) {
-      return FilesKt.resolve(FilesKt.resolve(localFilePathComponents.getRoot(), paramFile1), paramFile2);
+    if (localFilePathComponents.getSize() == 0) {
+      paramFile1 = new File("..");
+    } else {
+      paramFile1 = localFilePathComponents.subPath(0, localFilePathComponents.getSize() - 1);
     }
+    return FilesKt.resolve(FilesKt.resolve(localFilePathComponents.getRoot(), paramFile1), paramFile2);
   }
   
   @NotNull
@@ -512,8 +543,10 @@ class FilesKt__UtilsKt
     Intrinsics.checkParameterIsNotNull(paramFile2, "other");
     paramFile1 = FilesKt.toComponents(paramFile1);
     paramFile2 = FilesKt.toComponents(paramFile2);
-    if ((Intrinsics.areEqual(paramFile1.getRoot(), paramFile2.getRoot()) ^ true)) {}
-    while (paramFile1.getSize() < paramFile2.getSize()) {
+    if ((Intrinsics.areEqual(paramFile1.getRoot(), paramFile2.getRoot()) ^ true)) {
+      return false;
+    }
+    if (paramFile1.getSize() < paramFile2.getSize()) {
       return false;
     }
     return paramFile1.getSegments().subList(0, paramFile2.getSize()).equals(paramFile2.getSegments());
@@ -531,49 +564,51 @@ class FilesKt__UtilsKt
   {
     Intrinsics.checkParameterIsNotNull(paramFile1, "$this$toRelativeString");
     Intrinsics.checkParameterIsNotNull(paramFile2, "base");
-    String str = toRelativeStringOrNull$FilesKt__UtilsKt(paramFile1, paramFile2);
-    if (str != null) {
-      return str;
+    Object localObject = toRelativeStringOrNull$FilesKt__UtilsKt(paramFile1, paramFile2);
+    if (localObject != null) {
+      return localObject;
     }
-    throw ((Throwable)new IllegalArgumentException("this and base files have different roots: " + paramFile1 + " and " + paramFile2 + '.'));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("this and base files have different roots: ");
+    ((StringBuilder)localObject).append(paramFile1);
+    ((StringBuilder)localObject).append(" and ");
+    ((StringBuilder)localObject).append(paramFile2);
+    ((StringBuilder)localObject).append('.');
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString()));
   }
   
   private static final String toRelativeStringOrNull$FilesKt__UtilsKt(@NotNull File paramFile1, File paramFile2)
   {
     Object localObject = normalize$FilesKt__UtilsKt(FilesKt.toComponents(paramFile1));
     paramFile2 = normalize$FilesKt__UtilsKt(FilesKt.toComponents(paramFile2));
-    if ((Intrinsics.areEqual(((FilePathComponents)localObject).getRoot(), paramFile2.getRoot()) ^ true)) {}
-    int k;
-    int m;
-    int i;
-    for (;;)
-    {
+    if ((Intrinsics.areEqual(((FilePathComponents)localObject).getRoot(), paramFile2.getRoot()) ^ true)) {
       return null;
-      k = paramFile2.getSize();
-      m = ((FilePathComponents)localObject).getSize();
-      int j = Math.min(m, k);
-      i = 0;
-      while ((i < j) && (Intrinsics.areEqual((File)((FilePathComponents)localObject).getSegments().get(i), (File)paramFile2.getSegments().get(i)))) {
-        i += 1;
-      }
-      paramFile1 = new StringBuilder();
-      j = k - 1;
-      if (j < i) {
-        break;
-      }
-      while (!Intrinsics.areEqual(((File)paramFile2.getSegments().get(j)).getName(), ".."))
+    }
+    int k = paramFile2.getSize();
+    int m = ((FilePathComponents)localObject).getSize();
+    int i = 0;
+    int j = Math.min(m, k);
+    while ((i < j) && (Intrinsics.areEqual((File)((FilePathComponents)localObject).getSegments().get(i), (File)paramFile2.getSegments().get(i)))) {
+      i += 1;
+    }
+    paramFile1 = new StringBuilder();
+    j = k - 1;
+    if (j >= i) {
+      for (;;)
       {
+        if (Intrinsics.areEqual(((File)paramFile2.getSegments().get(j)).getName(), "..")) {
+          return null;
+        }
         paramFile1.append("..");
         if (j != i) {
           paramFile1.append(File.separatorChar);
         }
         if (j == i) {
-          break label180;
+          break;
         }
         j -= 1;
       }
     }
-    label180:
     if (i < m)
     {
       if (i < k) {
@@ -590,7 +625,7 @@ class FilesKt__UtilsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.FilesKt__UtilsKt
  * JD-Core Version:    0.7.0.1
  */

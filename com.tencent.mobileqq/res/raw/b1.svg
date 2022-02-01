@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+    height="96px"
+    version="1.1"
+    viewBox="0 0 96 96"
+    width="96px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>back_icon_normal</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+        sketch:type="MSPage">
+        <g
+            fill="#FFFFFF"
+            id="#ffffffff"
+            transform="translate(24.000000, 23.000000)"
+            sketch:type="MSLayerGroup">
+            <path
+                d="M1,25.0199584 C9.01499063,17.016632 17.0299813,9.0033264 25.0549656,1 C26.4740787,2.43700624 27.8931918,3.87401247 29.2923173,5.32099792 C23.7357901,10.8694387 18.179263,16.4079002 12.6327295,21.956341 C24.755153,21.9663202 36.8775765,21.956341 49,21.9663202 L49,28.0137214 L12.5827608,28.0137214 C18.1292942,33.6120582 23.7257964,39.1505198 29.2923173,44.7288981 C27.8732042,46.1559252 26.4440974,47.572973 25.0149906,49 C17.0099938,41.0066528 9.00499688,33.0133056 1,25.0199584 L1,25.0199584 Z"
+                id="Shape"
+                sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

@@ -1,103 +1,202 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class am
-  extends com.tencent.mm.bv.a
+  extends erp
 {
-  public String content;
-  public String crs;
-  public String pxP;
-  public String username;
+  public String YBb;
+  public String YBc;
+  public int YBd;
+  public int YBe;
+  public fhj YBf;
+  public String from_username;
+  public String iaI;
+  public String iaJ;
+  public int iaK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28297);
+    AppMethodBeat.i(113922);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.e(1, this.username);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.iaI == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: card_id");
+        AppMethodBeat.o(113922);
+        throw paramVarArgs;
       }
-      if (this.crs != null) {
-        paramVarArgs.e(2, this.crs);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.pxP != null) {
-        paramVarArgs.e(3, this.pxP);
+      if (this.from_username != null) {
+        paramVarArgs.g(2, this.from_username);
       }
-      if (this.content != null) {
-        paramVarArgs.e(4, this.content);
+      paramVarArgs.bS(3, this.iaK);
+      if (this.iaI != null) {
+        paramVarArgs.g(4, this.iaI);
       }
-      AppMethodBeat.o(28297);
+      if (this.iaJ != null) {
+        paramVarArgs.g(5, this.iaJ);
+      }
+      if (this.YBb != null) {
+        paramVarArgs.g(6, this.YBb);
+      }
+      if (this.YBc != null) {
+        paramVarArgs.g(7, this.YBc);
+      }
+      paramVarArgs.bS(8, this.YBd);
+      paramVarArgs.bS(9, this.YBe);
+      if (this.YBf != null)
+      {
+        paramVarArgs.qD(10, this.YBf.computeSize());
+        this.YBf.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(113922);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label404;
+      if (this.BaseRequest == null) {
+        break label906;
       }
     }
-    label404:
-    for (int i = e.a.a.b.b.a.f(1, this.username) + 0;; i = 0)
+    label906:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.from_username != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.from_username);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.iaK);
       paramInt = i;
-      if (this.crs != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.crs);
+      if (this.iaI != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.iaI);
       }
       i = paramInt;
-      if (this.pxP != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.pxP);
+      if (this.iaJ != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.iaJ);
       }
       paramInt = i;
-      if (this.content != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.content);
+      if (this.YBb != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.YBb);
       }
-      AppMethodBeat.o(28297);
+      i = paramInt;
+      if (this.YBc != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.YBc);
+      }
+      i = i + i.a.a.b.b.a.cJ(8, this.YBd) + i.a.a.b.b.a.cJ(9, this.YBe);
+      paramInt = i;
+      if (this.YBf != null) {
+        paramInt = i + i.a.a.a.qC(10, this.YBf.computeSize());
+      }
+      AppMethodBeat.o(113922);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(28297);
+        if (this.iaI == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: card_id");
+          AppMethodBeat.o(113922);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(113922);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         am localam = (am)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(28297);
+          AppMethodBeat.o(113922);
           return -1;
         case 1: 
-          localam.username = locala.CLY.readString();
-          AppMethodBeat.o(28297);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localam.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(113922);
           return 0;
         case 2: 
-          localam.crs = locala.CLY.readString();
-          AppMethodBeat.o(28297);
+          localam.from_username = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(113922);
           return 0;
         case 3: 
-          localam.pxP = locala.CLY.readString();
-          AppMethodBeat.o(28297);
+          localam.iaK = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(113922);
+          return 0;
+        case 4: 
+          localam.iaI = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(113922);
+          return 0;
+        case 5: 
+          localam.iaJ = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(113922);
+          return 0;
+        case 6: 
+          localam.YBb = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(113922);
+          return 0;
+        case 7: 
+          localam.YBc = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(113922);
+          return 0;
+        case 8: 
+          localam.YBd = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(113922);
+          return 0;
+        case 9: 
+          localam.YBe = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(113922);
           return 0;
         }
-        localam.content = locala.CLY.readString();
-        AppMethodBeat.o(28297);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new fhj();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((fhj)localObject2).parseFrom((byte[])localObject1);
+          }
+          localam.YBf = ((fhj)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(113922);
         return 0;
       }
-      AppMethodBeat.o(28297);
+      AppMethodBeat.o(113922);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.am
  * JD-Core Version:    0.7.0.1
  */

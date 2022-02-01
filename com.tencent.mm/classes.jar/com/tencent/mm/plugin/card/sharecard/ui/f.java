@@ -6,41 +6,44 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
 {
-  View iCk;
-  private MMActivity jpX;
-  b krp;
-  ImageView krt;
-  TextView kru;
-  TextView krv;
+  View plc;
+  private MMActivity wry;
+  b wxM;
+  ImageView wxQ;
+  TextView wxR;
+  TextView wxS;
   
   public f(MMActivity paramMMActivity, View paramView)
   {
-    this.jpX = paramMMActivity;
-    this.iCk = paramView;
+    this.wry = paramMMActivity;
+    this.plc = paramView;
   }
   
-  public final void bJ()
+  public final void updateView()
   {
-    AppMethodBeat.i(88157);
-    this.kru.setVisibility(0);
-    this.krt.setImageDrawable(this.jpX.getResources().getDrawable(2130838130));
-    this.kru.setText(2131298028);
-    this.krv.setText(2131298027);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.krt.getLayoutParams();
-    localLayoutParams.topMargin = this.jpX.getResources().getDimensionPixelOffset(2131428194);
-    this.krt.setLayoutParams(localLayoutParams);
-    this.krt.invalidate();
-    AppMethodBeat.o(88157);
+    AppMethodBeat.i(113091);
+    this.wxR.setVisibility(0);
+    this.wxQ.setImageDrawable(this.wry.getResources().getDrawable(a.c.wen));
+    this.wxR.setText(a.g.wpS);
+    this.wxS.setText(a.g.wpR);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.wxQ.getLayoutParams();
+    localLayoutParams.topMargin = this.wry.getResources().getDimensionPixelOffset(a.b.wed);
+    this.wxQ.setLayoutParams(localLayoutParams);
+    this.wxQ.invalidate();
+    AppMethodBeat.o(113091);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.f
  * JD-Core Version:    0.7.0.1
  */

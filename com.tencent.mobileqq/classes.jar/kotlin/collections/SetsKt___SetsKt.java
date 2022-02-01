@@ -11,7 +11,7 @@ import kotlin.sequences.Sequence;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"minus", "", "T", "element", "(Ljava/util/Set;Ljava/lang/Object;)Ljava/util/Set;", "elements", "", "(Ljava/util/Set;[Ljava/lang/Object;)Ljava/util/Set;", "", "Lkotlin/sequences/Sequence;", "minusElement", "plus", "plusElement", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/SetsKt")
-public class SetsKt___SetsKt
+class SetsKt___SetsKt
   extends SetsKt__SetsKt
 {
   @NotNull
@@ -19,13 +19,13 @@ public class SetsKt___SetsKt
   {
     Intrinsics.checkParameterIsNotNull(paramSet, "$this$minus");
     Intrinsics.checkParameterIsNotNull(paramIterable, "elements");
-    paramIterable = CollectionsKt.convertToSetForSetOperationWith(paramIterable, (Iterable)paramSet);
+    Object localObject1 = (Iterable)paramSet;
+    paramIterable = CollectionsKt.convertToSetForSetOperationWith(paramIterable, (Iterable)localObject1);
     if (paramIterable.isEmpty()) {
-      return CollectionsKt.toSet((Iterable)paramSet);
+      return CollectionsKt.toSet((Iterable)localObject1);
     }
     if ((paramIterable instanceof Set))
     {
-      Object localObject1 = (Iterable)paramSet;
       paramSet = (Collection)new LinkedHashSet();
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
@@ -48,31 +48,31 @@ public class SetsKt___SetsKt
     Intrinsics.checkParameterIsNotNull(paramSet, "$this$minus");
     LinkedHashSet localLinkedHashSet = new LinkedHashSet(MapsKt.mapCapacity(paramSet.size()));
     paramSet = ((Iterable)paramSet).iterator();
-    int i = 0;
-    label104:
-    for (;;)
+    int j = 0;
+    while (paramSet.hasNext())
     {
-      if (paramSet.hasNext())
+      Object localObject = paramSet.next();
+      int m = 1;
+      int k = j;
+      int i = m;
+      if (j == 0)
       {
-        Object localObject = paramSet.next();
-        int j;
-        if ((i == 0) && (Intrinsics.areEqual(localObject, paramT)))
+        k = j;
+        i = m;
+        if (Intrinsics.areEqual(localObject, paramT))
         {
-          j = 0;
-          i = 1;
-        }
-        for (;;)
-        {
-          if (j == 0) {
-            break label104;
-          }
-          ((Collection)localLinkedHashSet).add(localObject);
-          break;
-          j = 1;
+          k = 1;
+          i = 0;
         }
       }
-      return (Set)localLinkedHashSet;
+      j = k;
+      if (i != 0)
+      {
+        ((Collection)localLinkedHashSet).add(localObject);
+        j = k;
+      }
     }
+    return (Set)localLinkedHashSet;
   }
   
   @NotNull
@@ -107,14 +107,20 @@ public class SetsKt___SetsKt
     Intrinsics.checkParameterIsNotNull(paramSet, "$this$plus");
     Intrinsics.checkParameterIsNotNull(paramIterable, "elements");
     Object localObject = CollectionsKt.collectionSizeOrNull(paramIterable);
-    if (localObject != null) {}
-    for (int i = ((Number)localObject).intValue() + paramSet.size();; i = paramSet.size() * 2)
+    int i;
+    if (localObject != null)
     {
-      localObject = new LinkedHashSet(MapsKt.mapCapacity(i));
-      ((LinkedHashSet)localObject).addAll((Collection)paramSet);
-      CollectionsKt.addAll((Collection)localObject, paramIterable);
-      return (Set)localObject;
+      i = ((Number)localObject).intValue();
+      i = paramSet.size() + i;
     }
+    else
+    {
+      i = paramSet.size() * 2;
+    }
+    localObject = new LinkedHashSet(MapsKt.mapCapacity(i));
+    ((LinkedHashSet)localObject).addAll((Collection)paramSet);
+    CollectionsKt.addAll((Collection)localObject, paramIterable);
+    return (Set)localObject;
   }
   
   @NotNull
@@ -157,7 +163,7 @@ public class SetsKt___SetsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.SetsKt___SetsKt
  * JD-Core Version:    0.7.0.1
  */

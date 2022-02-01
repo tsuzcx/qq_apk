@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/p64" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <Button android:textSize="@dimen/ii" android:textColor="@color/rm" android:gravity="center|left" android:id="@id/mth" android:background="@null" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="22.0dip" android:text="@string/dmn" android:drawableLeft="@drawable/dej" android:drawablePadding="8.0dip" android:contentDescription="@string/dmn" />
+    </LinearLayout>
+    <View android:id="@id/e_1" android:background="#19ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/p64" />
+    <com.tencent.av.ui.effect.view.MaterialRecyclerView android:id="@id/orl" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/e_1" />
+</RelativeLayout>

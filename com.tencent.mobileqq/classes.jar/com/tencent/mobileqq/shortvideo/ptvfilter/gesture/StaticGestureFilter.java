@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.opengl.GLES20;
 import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.UniformParam.Float2fParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
 import com.tencent.aekit.openrender.UniformParam.TextureParam;
@@ -19,9 +20,9 @@ import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.io.File;
 import java.util.List;
@@ -55,7 +56,7 @@ public class StaticGestureFilter
     super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
     this.dataPath = paramString;
     paramStickerItem.playCount = 1;
-    this.materialId = VideoMaterialUtil.getMaterialId(paramString);
+    this.materialId = VideoMaterial.getMaterialId(paramString);
     setCurrentItem(paramStickerItem, 0);
     initParams();
   }
@@ -69,44 +70,61 @@ public class StaticGestureFilter
   
   private int getCount(long paramLong)
   {
-    if (this.item.playCount == 0) {}
-    int i = (int)((paramLong - this.frameStartTime) / Math.max(this.item.frameDuration, 1.0D));
-    if (i >= this.item.frames * (this.playCount + 1)) {
-      this.playCount += 1;
+    int i = this.item.playCount;
+    double d1 = paramLong - this.frameStartTime;
+    double d2 = Math.max(this.item.frameDuration, 1.0D);
+    Double.isNaN(d1);
+    i = (int)(d1 / d2);
+    int j = this.item.frames;
+    int k = this.playCount;
+    if (i >= j * (k + 1)) {
+      this.playCount = (k + 1);
     }
     return i % Math.max(this.item.frames, 1);
   }
   
   private int getNextFrame(int paramInt)
   {
-    boolean bool2 = true;
     Object localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
     if (localObject == null)
     {
-      localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.dataPath);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.subFolder);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.id);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(".png");
+      localObject = ((StringBuilder)localObject).toString();
       localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+      paramInt = 1;
     }
-    for (paramInt = 1;; paramInt = 0)
+    else
     {
-      if (BitmapUtils.isLegal((Bitmap)localObject))
-      {
-        GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
-        if (paramInt != 0) {
-          ((Bitmap)localObject).recycle();
-        }
-      }
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        localObject = new StringBuilder().append("getNextFrame load cache:");
-        if (paramInt == 0) {}
-        for (;;)
-        {
-          filterLog(bool2 + ", updateTexture:" + bool1);
-          return this.tex[0];
-          bool2 = false;
-        }
-      }
+      paramInt = 0;
     }
+    boolean bool;
+    if (BitmapUtils.isLegal((Bitmap)localObject))
+    {
+      GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+      if (paramInt != 0) {
+        ((Bitmap)localObject).recycle();
+      }
+      bool = true;
+    }
+    else
+    {
+      bool = false;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getNextFrame load cache:");
+    ((StringBuilder)localObject).append(paramInt ^ 0x1);
+    ((StringBuilder)localObject).append(", updateTexture:");
+    ((StringBuilder)localObject).append(bool);
+    filterLog(((StringBuilder)localObject).toString());
+    return this.tex[0];
   }
   
   private void resetAnimationStatus(long paramLong)
@@ -124,10 +142,22 @@ public class StaticGestureFilter
     int i = getCount(paramLong);
     if (i == this.lastImageIndex)
     {
-      filterLog("updateTextureParam return! + lastImageIndex:" + this.lastImageIndex + ";count is" + i + ":timestamp:=" + paramLong + ":framestartTimes " + this.frameStartTime);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateTextureParam return! + lastImageIndex:");
+      localStringBuilder.append(this.lastImageIndex);
+      localStringBuilder.append(";count is");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":timestamp:=");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(":framestartTimes ");
+      localStringBuilder.append(this.frameStartTime);
+      filterLog(localStringBuilder.toString());
       return;
     }
-    filterLog("updateTextureParam" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateTextureParam");
+    localStringBuilder.append(i);
+    filterLog(localStringBuilder.toString());
     addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(i), 33986));
     this.lastImageIndex = i;
   }
@@ -135,7 +165,8 @@ public class StaticGestureFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void OnDrawFrameGLSL()
@@ -163,14 +194,16 @@ public class StaticGestureFilter
     destroyAudio();
     this.mLastReconizeTime = 0L;
     super.clearGLSLSelf();
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearTextureParam()
   {
-    if (this.mTextureParam != null)
+    UniformParam.TextureBitmapParam localTextureBitmapParam = this.mTextureParam;
+    if (localTextureBitmapParam != null)
     {
-      this.mTextureParam.clear();
+      localTextureBitmapParam.clear();
       this.mTextureParam = null;
     }
     setPositions(GlUtil.EMPTY_POSITIONS);
@@ -190,7 +223,11 @@ public class StaticGestureFilter
   
   public boolean hasAnimationEnd(long paramLong)
   {
-    return paramLong - this.frameStartTime > this.item.frames * this.item.frameDuration;
+    double d1 = paramLong - this.frameStartTime;
+    double d2 = this.item.frames;
+    double d3 = this.item.frameDuration;
+    Double.isNaN(d2);
+    return d1 > d2 * d3;
   }
   
   public boolean haveAnimationStart()
@@ -203,11 +240,20 @@ public class StaticGestureFilter
     addParam(new UniformParam.IntParam("texNeedTransform", -1));
     addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
     addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+    addParam(new UniformParam.Float2fParam("displacement", 0.0F, 0.0F));
+    addParam(new UniformParam.IntParam("displacementEnableLut", 0));
   }
   
   public String printControllerInfo()
   {
-    return "mGestureAnimType:=" + this.mGestureAnimType + ";" + this.mGestureAnimGapTime + ";" + this.mGesturePointIndex;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mGestureAnimType:=");
+    localStringBuilder.append(this.mGestureAnimType);
+    localStringBuilder.append(";");
+    localStringBuilder.append(this.mGestureAnimGapTime);
+    localStringBuilder.append(";");
+    localStringBuilder.append(this.mGesturePointIndex);
+    return localStringBuilder.toString();
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
@@ -232,7 +278,10 @@ public class StaticGestureFilter
     this.mAlwayslastFrame = false;
     destroyAudio();
     VideoMemoryManager.getInstance().reset(paramStickerItem.id);
-    filterLog("currentItem id:" + this.item.id);
+    paramStickerItem = new StringBuilder();
+    paramStickerItem.append("currentItem id:");
+    paramStickerItem.append(this.item.id);
+    filterLog(paramStickerItem.toString());
   }
   
   public boolean setRenderMode(int paramInt)
@@ -244,53 +293,59 @@ public class StaticGestureFilter
   
   public void updatePreview(Object paramObject)
   {
-    int j = 1;
-    if ((paramObject instanceof PTDetectInfo)) {}
-    for (paramObject = (PTDetectInfo)paramObject; paramObject == null; paramObject = null) {
+    if ((paramObject instanceof PTDetectInfo)) {
+      paramObject = (PTDetectInfo)paramObject;
+    } else {
+      paramObject = null;
+    }
+    if (paramObject == null) {
       return;
     }
-    if ((this.item.getTriggerTypeInt() == 1001) && (this.item.type == 1)) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((this.item.getTriggerTypeInt() == 1001) && (this.item.type == 1)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j = i;
+    if (i == 0)
     {
-      if (i == 0)
+      GestureKeyInfo localGestureKeyInfo = GestureMgrRecognize.getInstance().getGestureInfo();
+      if ((localGestureKeyInfo != null) && (localGestureKeyInfo.vaild) && (localGestureKeyInfo.type.equalsIgnoreCase(GestureFilterManager.sGestureType)))
       {
-        GestureKeyInfo localGestureKeyInfo = GestureMgrRecognize.getInstance().getGestureInfo();
-        if ((localGestureKeyInfo != null) && (localGestureKeyInfo.vaild) && (localGestureKeyInfo.type.equalsIgnoreCase(GestureFilterManager.sGestureType)))
-        {
-          if (this.mLastReconizeTime == 0L) {
-            this.frameStartTime = paramObject.timestamp;
-          }
-          this.mLastReconizeTime = paramObject.timestamp;
-          i = j;
+        if (this.mLastReconizeTime == 0L) {
+          this.frameStartTime = paramObject.timestamp;
         }
+        this.mLastReconizeTime = paramObject.timestamp;
+        j = 1;
       }
-      for (;;)
+      else
       {
-        if (i != 0)
-        {
-          if (hasAnimationEnd(paramObject.timestamp)) {
-            resetAnimationStatus(paramObject.timestamp);
-          }
-          adjustPosition();
-          updateTextureParam(paramObject.timestamp);
-          return;
-        }
-        if ((hasAnimationEnd(paramObject.timestamp)) || (this.frameStartTime == 0L))
-        {
-          clearTextureParam();
-          this.frameStartTime = 0L;
-          this.mLastReconizeTime = 0L;
-          return;
-        }
-        adjustPosition();
-        updateTextureParam(paramObject.timestamp);
-        if (!SLog.isEnable()) {
-          break;
-        }
+        j = 0;
+      }
+    }
+    if (j != 0)
+    {
+      if (hasAnimationEnd(paramObject.timestamp)) {
+        resetAnimationStatus(paramObject.timestamp);
+      }
+      adjustPosition();
+      updateTextureParam(paramObject.timestamp);
+      return;
+    }
+    if ((!hasAnimationEnd(paramObject.timestamp)) && (this.frameStartTime != 0L))
+    {
+      adjustPosition();
+      updateTextureParam(paramObject.timestamp);
+      if (SLog.isEnable()) {
         SLog.d("StaticGestureFilter", "updatePreview continue");
-        return;
-        i = 0;
       }
+    }
+    else
+    {
+      clearTextureParam();
+      this.frameStartTime = 0L;
+      this.mLastReconizeTime = 0L;
     }
   }
   
@@ -302,7 +357,7 @@ public class StaticGestureFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.StaticGestureFilter
  * JD-Core Version:    0.7.0.1
  */

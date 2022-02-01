@@ -1,13 +1,11 @@
 package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
-import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.be;
-import com.tencent.mm.protocal.protobuf.bf;
-import com.tencent.mm.protocal.protobuf.cjr;
-import com.tencent.mm.protocal.protobuf.ckn;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.bt;
+import com.tencent.mm.protocal.protobuf.bu;
+import com.tencent.mm.protocal.protobuf.fme;
+import com.tencent.mm.protocal.protobuf.fns;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.b;
 import java.util.Iterator;
@@ -15,136 +13,62 @@ import java.util.LinkedList;
 
 public final class g
 {
-  public f lZU;
+  public f zBy;
   
-  public static be Mh(String paramString)
+  public static com.tencent.mm.vending.j.c<fme, Integer> a(bu parambu, bt parambt)
   {
-    AppMethodBeat.i(152271);
-    bf localbf = c.brA();
-    paramString = b(localbf, paramString, null);
-    int i = ((Integer)paramString.get(0)).intValue();
-    int j = ((Integer)paramString.get(1)).intValue();
-    if ((i < 0) || (j < 0))
+    AppMethodBeat.i(121899);
+    if ((parambu == null) || (parambu.YDy.isEmpty()))
     {
-      AppMethodBeat.o(152271);
+      AppMethodBeat.o(121899);
       return null;
     }
-    paramString = (be)((cjr)localbf.wnv.get(i)).xTI.get(j);
-    AppMethodBeat.o(152271);
-    return paramString;
-  }
-  
-  public static be a(bf parambf, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(73375);
-    if (parambf == null)
-    {
-      AppMethodBeat.o(73375);
-      return null;
-    }
-    ab.d("TaskRecordWrapper", "habbyge-mali, doPopRealActivity: " + paramString1 + "=" + paramString2);
-    int i = parambf.wnv.size() - 1;
+    int i = parambu.YDy.size() - 1;
     while (i >= 0)
     {
-      cjr localcjr = (cjr)parambf.wnv.get(i);
-      int j = localcjr.xTI.size() - 1;
-      while (j >= 0)
+      fme localfme = (fme)parambu.YDy.get(i);
+      if ((localfme != null) && (!localfme.abMA.isEmpty()))
       {
-        be localbe = (be)localcjr.xTI.get(j);
-        if (h.l(localbe.wnr.activityName, localbe.wnr.wXg, paramString1, paramString2))
-        {
-          ab.d("TaskRecordWrapper", "habbyge-mali, doPopRealActivity.pop YES: " + paramString1 + "=" + paramString2);
-          localcjr.xTI.remove(j);
-          if (localcjr.xTI.isEmpty()) {
-            parambf.wnv.remove(i);
-          }
-          AppMethodBeat.o(73375);
-          return localbe;
-        }
-        ab.e("TaskRecordWrapper", "habbyge-mali, doPopRealActivity.pop NOT: " + paramString1 + "/" + localbe.wnr.activityName);
-        j -= 1;
-      }
-      i -= 1;
-    }
-    AppMethodBeat.o(73375);
-    return null;
-  }
-  
-  public static com.tencent.mm.vending.j.c<cjr, Integer> a(bf parambf, be parambe)
-  {
-    AppMethodBeat.i(73376);
-    if ((parambf == null) || (parambf.wnv.isEmpty()) || (parambe == null))
-    {
-      AppMethodBeat.o(73376);
-      return null;
-    }
-    int i = parambf.wnv.size() - 1;
-    while (i >= 0)
-    {
-      cjr localcjr = (cjr)parambf.wnv.get(i);
-      if ((localcjr != null) && (!localcjr.xTI.isEmpty()))
-      {
-        int j = localcjr.xTI.size() - 1;
+        int j = localfme.abMA.size() - 1;
         while (j >= 0)
         {
-          be localbe = (be)localcjr.xTI.get(j);
-          if ((localbe != null) && (h.a(parambe.wnr, localbe.wnr)))
+          bt localbt = (bt)localfme.abMA.get(j);
+          if ((localbt != null) && (h.a(parambt.YDs, localbt.YDs)))
           {
-            ab.d("TaskRecordWrapper", "habbyge-mali, getTaskOfActivity 2: " + localbe.wnr.activityName + "/" + localbe.wnr.wXg);
-            parambf = a.C(localcjr, Integer.valueOf(i));
-            AppMethodBeat.o(73376);
-            return parambf;
+            parambu = a.U(localfme, Integer.valueOf(i));
+            AppMethodBeat.o(121899);
+            return parambu;
           }
           j -= 1;
         }
       }
       i -= 1;
     }
-    AppMethodBeat.o(73376);
+    AppMethodBeat.o(121899);
     return null;
   }
   
-  static void a(bf parambf, be parambe, boolean paramBoolean)
+  static com.tencent.mm.vending.j.c<Integer, Integer> a(bu parambu, String paramString)
   {
-    AppMethodBeat.i(73378);
-    if (parambe == null)
+    AppMethodBeat.i(299993);
+    if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(73378);
-      return;
+      parambu = a.U(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(299993);
+      return parambu;
     }
-    cjr localcjr = new cjr();
-    localcjr.xTH = paramBoolean;
-    localcjr.xTI.addLast(parambe);
-    parambe = parambf;
-    if (parambf == null) {
-      parambe = new bf();
-    }
-    parambe.wnv.addLast(localcjr);
-    AppMethodBeat.o(73378);
-  }
-  
-  public static com.tencent.mm.vending.j.c<Integer, Integer> b(bf parambf, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(73383);
-    if (TextUtils.isEmpty(paramString1))
+    if (parambu == null)
     {
-      parambf = a.C(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(73383);
-      return parambf;
+      parambu = com.tencent.mm.vending.j.c.U(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(299993);
+      return parambu;
     }
-    ab.d("TaskRecordWrapper", "habbyge-mali, search: " + paramString1 + "/" + paramString2);
-    if (parambf == null)
-    {
-      parambf = com.tencent.mm.vending.j.c.C(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(73383);
-      return parambf;
-    }
-    int i = parambf.wnv.size();
+    int i = parambu.YDy.size();
     if (i <= 0)
     {
-      parambf = com.tencent.mm.vending.j.c.C(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(73383);
-      return parambf;
+      parambu = com.tencent.mm.vending.j.c.U(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(299993);
+      return parambu;
     }
     i -= 1;
     int k = -1;
@@ -152,289 +76,259 @@ public final class g
     int m;
     if (i >= 0)
     {
-      cjr localcjr = (cjr)parambf.wnv.get(i);
-      m = localcjr.xTI.size() - 1;
-      label154:
+      fme localfme = (fme)parambu.YDy.get(i);
+      m = localfme.abMA.size() - 1;
+      label123:
       if (m < 0) {
-        break label267;
+        break label220;
       }
-      be localbe = (be)localcjr.xTI.get(m);
-      if (h.l(paramString1, paramString2, localbe.wnr.activityName, localbe.wnr.wXg))
+      if (paramString.equals(((bt)localfme.abMA.get(m)).YDs.AtM))
       {
         k = m;
         j = i;
       }
     }
-    label267:
+    label220:
     for (;;)
     {
       i -= 1;
       break;
       m -= 1;
-      break label154;
+      break label123;
       if (j == -1)
       {
-        parambf = com.tencent.mm.vending.j.c.C(Integer.valueOf(-1), Integer.valueOf(-1));
-        AppMethodBeat.o(73383);
-        return parambf;
+        parambu = com.tencent.mm.vending.j.c.U(Integer.valueOf(-1), Integer.valueOf(-1));
+        AppMethodBeat.o(299993);
+        return parambu;
       }
-      parambf = a.C(Integer.valueOf(j), Integer.valueOf(k));
-      AppMethodBeat.o(73383);
-      return parambf;
+      parambu = a.U(Integer.valueOf(j), Integer.valueOf(k));
+      AppMethodBeat.o(299993);
+      return parambu;
     }
   }
   
-  static void b(bf parambf, be parambe)
+  static void a(bu parambu, bt parambt, boolean paramBoolean)
   {
-    AppMethodBeat.i(73377);
-    ab.d("TaskRecordWrapper", "habbyge-mali, push: " + parambe.wnr.activityName);
-    cjr localcjr1 = null;
-    if (!parambf.wnv.isEmpty())
-    {
-      ab.d("TaskRecordWrapper", "habbyge-mali, push: stack.taskRecords NOT NULL");
-      localcjr1 = (cjr)parambf.wnv.getLast();
+    AppMethodBeat.i(121901);
+    fme localfme = new fme();
+    localfme.abMz = paramBoolean;
+    localfme.abMA.addLast(parambt);
+    parambt = parambu;
+    if (parambu == null) {
+      parambt = new bu();
     }
-    cjr localcjr2 = localcjr1;
-    if (localcjr1 == null)
-    {
-      localcjr2 = new cjr();
-      parambf.wnv.addLast(localcjr2);
-    }
-    localcjr2.xTI.addLast(parambe);
-    AppMethodBeat.o(73377);
+    parambt.YDy.addLast(localfme);
+    AppMethodBeat.o(121901);
   }
   
-  static boolean b(bf parambf)
+  private static void a(bu parambu, fme paramfme)
   {
-    AppMethodBeat.i(73379);
-    if (parambf == null)
+    AppMethodBeat.i(121905);
+    if ((paramfme.abMA.isEmpty()) && (!parambu.YDy.isEmpty())) {
+      parambu.YDy.removeLast();
+    }
+    AppMethodBeat.o(121905);
+  }
+  
+  public static bt arg(String paramString)
+  {
+    AppMethodBeat.i(121911);
+    bu localbu = c.dJe();
+    paramString = a(localbu, paramString);
+    int i = ((Integer)paramString.get(0)).intValue();
+    int j = ((Integer)paramString.get(1)).intValue();
+    if ((i < 0) || (j < 0))
     {
-      AppMethodBeat.o(73379);
+      AppMethodBeat.o(121911);
+      return null;
+    }
+    paramString = (bt)((fme)localbu.YDy.get(i)).abMA.get(j);
+    AppMethodBeat.o(121911);
+    return paramString;
+  }
+  
+  static void b(bu parambu, bt parambt)
+  {
+    AppMethodBeat.i(121900);
+    fme localfme1 = null;
+    if (!parambu.YDy.isEmpty()) {
+      localfme1 = (fme)parambu.YDy.getLast();
+    }
+    fme localfme2 = localfme1;
+    if (localfme1 == null)
+    {
+      localfme2 = new fme();
+      parambu.YDy.addLast(localfme2);
+    }
+    localfme2.abMA.addLast(parambt);
+    AppMethodBeat.o(121900);
+  }
+  
+  static boolean b(bu parambu)
+  {
+    AppMethodBeat.i(121902);
+    if (parambu == null)
+    {
+      AppMethodBeat.o(121902);
       return false;
     }
-    cjr localcjr = null;
-    if (!parambf.wnv.isEmpty()) {
-      localcjr = (cjr)parambf.wnv.getLast();
+    fme localfme = null;
+    if (!parambu.YDy.isEmpty()) {
+      localfme = (fme)parambu.YDy.getLast();
     }
-    if ((localcjr != null) && (localcjr.xTH))
+    if ((localfme != null) && (localfme.abMz))
     {
-      AppMethodBeat.o(73379);
+      AppMethodBeat.o(121902);
       return true;
     }
-    AppMethodBeat.o(73379);
+    AppMethodBeat.o(121902);
     return false;
   }
   
-  public static com.tencent.mm.vending.j.c<bf, be> brI()
+  static bt c(bu parambu)
   {
-    AppMethodBeat.i(73384);
-    Object localObject = c.brA();
-    localObject = a.C(localObject, c((bf)localObject));
-    AppMethodBeat.o(73384);
+    AppMethodBeat.i(121906);
+    if (parambu == null)
+    {
+      AppMethodBeat.o(121906);
+      return null;
+    }
+    if (!parambu.YDy.isEmpty()) {}
+    for (parambu = (fme)parambu.YDy.getLast();; parambu = null)
+    {
+      if (parambu == null)
+      {
+        AppMethodBeat.o(121906);
+        return null;
+      }
+      if (parambu.abMA.isEmpty())
+      {
+        AppMethodBeat.o(121906);
+        return null;
+      }
+      parambu = (bt)parambu.abMA.getLast();
+      AppMethodBeat.o(121906);
+      return parambu;
+    }
+  }
+  
+  static com.tencent.mm.vending.j.c<Integer, Integer> c(bu parambu, bt parambt)
+  {
+    AppMethodBeat.i(121907);
+    parambu = a(parambu, parambt.YDs.AtM);
+    AppMethodBeat.o(121907);
+    return parambu;
+  }
+  
+  static LinkedList<fme> d(bu parambu)
+  {
+    if (parambu == null) {
+      return null;
+    }
+    return parambu.YDy;
+  }
+  
+  public static com.tencent.mm.vending.j.c<bu, bt> dJm()
+  {
+    AppMethodBeat.i(121909);
+    Object localObject = c.dJe();
+    localObject = a.U(localObject, e((bu)localObject));
+    AppMethodBeat.o(121909);
     return localObject;
   }
   
-  public static be c(bf parambf)
+  public static bt e(bu parambu)
   {
-    AppMethodBeat.i(73385);
-    if (parambf == null)
+    AppMethodBeat.i(121910);
+    if (parambu == null)
     {
-      AppMethodBeat.o(73385);
+      AppMethodBeat.o(121910);
       return null;
     }
-    if (!parambf.wnv.isEmpty()) {}
-    for (parambf = (cjr)parambf.wnv.getLast();; parambf = null)
+    if (!parambu.YDy.isEmpty()) {}
+    for (parambu = (fme)parambu.YDy.getLast();; parambu = null)
     {
-      if (parambf == null)
+      if (parambu == null)
       {
-        AppMethodBeat.o(73385);
+        AppMethodBeat.o(121910);
         return null;
       }
-      if (parambf.xTI.isEmpty())
+      if (parambu.abMA.isEmpty())
       {
-        AppMethodBeat.o(73385);
+        AppMethodBeat.o(121910);
         return null;
       }
-      parambf = (be)parambf.xTI.getLast();
-      AppMethodBeat.o(73385);
-      return parambf;
+      parambu = (bt)parambu.abMA.getLast();
+      AppMethodBeat.o(121910);
+      return parambu;
     }
   }
   
-  static com.tencent.mm.vending.j.c<Integer, Integer> c(bf parambf, be parambe)
+  final void a(bu parambu, int paramInt, bt parambt)
   {
-    AppMethodBeat.i(73382);
-    parambf = b(parambf, parambe.wnr.activityName, parambe.wnr.wXg);
-    AppMethodBeat.o(73382);
-    return parambf;
-  }
-  
-  final void a(Activity paramActivity, be parambe)
-  {
-    AppMethodBeat.i(152268);
-    ab.d("TaskRecordWrapper", "habbyge-mali, singleInstanceMode: " + parambe.wnr.activityName);
-    bf localbf = c.brA();
-    be localbe1 = c(localbf);
-    if (localbf == null) {}
-    for (LinkedList localLinkedList = null; localLinkedList == null; localLinkedList = localbf.wnv)
+    AppMethodBeat.i(121903);
+    if (parambu == null)
     {
-      ab.d("TaskRecordWrapper", "habbyge-mali, singleInstanceMode: allTaskRecords == null");
-      a(localbf, parambe, true);
-      c.a(localbf);
-      if (this.lZU != null) {
-        this.lZU.a(paramActivity, parambe, localbe1);
-      }
-      AppMethodBeat.o(152268);
+      AppMethodBeat.o(121903);
       return;
     }
-    int i = 0;
-    int j = localLinkedList.size() - 1;
-    label123:
-    int k;
-    if (j >= 0)
-    {
-      cjr localcjr = (cjr)localLinkedList.get(j);
-      if ((localcjr == null) || (!localcjr.xTH)) {
-        break label281;
-      }
-      k = localcjr.xTI.size() - 1;
-      label165:
-      if (k < 0) {
-        break label281;
-      }
-      be localbe2 = (be)localcjr.xTI.get(k);
-      if ((localbe2 != null) && (h.a(parambe.wnr, localbe2.wnr)))
-      {
-        localLinkedList.addLast((cjr)localLinkedList.remove(j));
-        i = 1;
-      }
-    }
-    label281:
-    for (;;)
-    {
-      j -= 1;
-      break label123;
-      k -= 1;
-      break label165;
-      if (i != 0) {
-        break;
-      }
-      ab.d("TaskRecordWrapper", "habbyge-mali, singleInstanceMode: findThisTask NOT: " + parambe.wnr.activityName);
-      a(localbf, parambe, true);
-      break;
-    }
-  }
-  
-  final void a(bf parambf, int paramInt, be parambe)
-  {
-    AppMethodBeat.i(152270);
-    ab.d("TaskRecordWrapper", "habbyge-mali, pop_int: ".concat(String.valueOf(paramInt)));
-    if (parambf == null)
-    {
-      AppMethodBeat.o(152270);
-      return;
-    }
-    cjr localcjr = (cjr)parambf.wnv.getLast();
-    int i = localcjr.xTI.size();
+    fme localfme = (fme)parambu.YDy.getLast();
+    int i = localfme.abMA.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
-      AppMethodBeat.o(152270);
+      AppMethodBeat.o(121903);
       return;
     }
-    ab.d("TaskRecordWrapper", "habbyge-mali, pop_int activityCount = ".concat(String.valueOf(i)));
     i -= 1;
     while (i >= paramInt)
     {
-      be localbe = (be)localcjr.xTI.remove(i);
-      ab.d("TaskRecordWrapper", "habbyge-mali, pop_int_activity: " + localbe.wnr.activityName);
-      if (this.lZU != null) {
-        this.lZU.b(localbe, parambe);
+      bt localbt = (bt)localfme.abMA.remove(i);
+      if (this.zBy != null)
+      {
+        localbt.YDs.timestamp = parambt.YDs.timestamp;
+        this.zBy.c(localbt, parambt);
       }
       i -= 1;
     }
-    if ((localcjr.xTI.isEmpty()) && (!parambf.wnv.isEmpty())) {
-      parambf.wnv.removeLast();
-    }
-    AppMethodBeat.o(152270);
+    a(parambu, localfme);
+    AppMethodBeat.o(121903);
   }
   
-  final void b(bf parambf, int paramInt, be parambe)
+  final void b(bu parambu, int paramInt, bt parambt)
   {
-    AppMethodBeat.i(73381);
-    ab.d("TaskRecordWrapper", "habbyge-mali, popTask: " + paramInt + "/" + parambe.wnr.activityName);
-    if (parambf == null)
+    AppMethodBeat.i(121904);
+    if (parambu == null)
     {
-      AppMethodBeat.o(73381);
+      AppMethodBeat.o(121904);
       return;
     }
-    int i = parambf.wnv.size();
+    int i = parambu.YDy.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
-      AppMethodBeat.o(73381);
+      AppMethodBeat.o(121904);
       return;
     }
-    ab.d("TaskRecordWrapper", "habbyge-mali, popTask taskCount = ".concat(String.valueOf(i)));
     i -= 1;
     while (i >= paramInt)
     {
-      Iterator localIterator = ((cjr)parambf.wnv.remove(i)).xTI.iterator();
+      Iterator localIterator = ((fme)parambu.YDy.remove(i)).abMA.iterator();
       while (localIterator.hasNext())
       {
-        be localbe = (be)localIterator.next();
-        if (this.lZU != null) {
-          this.lZU.b(localbe, parambe);
+        bt localbt = (bt)localIterator.next();
+        if (this.zBy != null)
+        {
+          localbt.YDs.timestamp = parambt.YDs.timestamp;
+          this.zBy.c(localbt, parambt);
         }
       }
       i -= 1;
     }
-    AppMethodBeat.o(73381);
-  }
-  
-  final boolean b(Activity paramActivity, be parambe)
-  {
-    AppMethodBeat.i(152269);
-    if (TextUtils.isEmpty(parambe.wnr.activityName))
-    {
-      AppMethodBeat.o(152269);
-      return false;
-    }
-    ab.d("TaskRecordWrapper", "habbyge-mali, flagNewTask: " + parambe.wnr.activityName);
-    bf localbf = c.brA();
-    be localbe = c(localbf);
-    Object localObject = a(localbf, parambe);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(152269);
-      return false;
-    }
-    cjr localcjr = (cjr)((b)localObject).get(0);
-    int i = ((Integer)((com.tencent.mm.vending.j.c)localObject).get(1)).intValue();
-    localbf.wnv.remove(i);
-    localbf.wnv.addLast(localcjr);
-    localObject = (be)localcjr.xTI.getLast();
-    if ((localObject != null) && (!h.a(((be)localObject).wnr, parambe.wnr)))
-    {
-      ab.e("TaskRecordWrapper", "habbyge-mali, flagNewTask: " + parambe.wnr.activityName + "/" + ((be)localObject).wnr.activityName);
-      i = localcjr.xTI.size() - 1;
-      while ((i >= 0) && (!h.a(((be)localcjr.xTI.get(i)).wnr, parambe.wnr)))
-      {
-        localcjr.xTI.remove(i);
-        i -= 1;
-      }
-    }
-    c.a(localbf);
-    if (this.lZU != null)
-    {
-      ab.d("TaskRecordWrapper", "habbyge-mali, activityRecord: " + parambe.wnr.activityName);
-      this.lZU.a(paramActivity, parambe, localbe);
-    }
-    AppMethodBeat.o(152269);
-    return true;
+    AppMethodBeat.o(121904);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.g
  * JD-Core Version:    0.7.0.1
  */

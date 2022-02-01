@@ -38,7 +38,7 @@
                         },
                         "default_visible": "YES",
                         "align_parent_center_vertical": "YES",
-                        "margin_left": "8",
+                        "margin_left": "16",
                         "attributes": {
                             "loadImageWithPath:": "$title_icon_url"
                         }
@@ -55,7 +55,7 @@
                         },
                         "default_visible": "YES",
                         "margin_left": "4",
-                        "margin_right": "76.5",
+                        "margin_right": "68.5",
                         "align_parent_center_vertical": "YES",
                         "right_of_view": "id_title_icon",
                         "attributes": {
@@ -79,7 +79,7 @@
                         "default_visible": "NO",
                         "align_parent_center_vertical": "YES",
                         "align_parent_right": "YES",
-                        "margin_right": "8",
+                        "margin_right": "16",
                         "attributes": {
                             "setTextColorString:": "#737373",
                             "setFontSizeString:": "12",
@@ -107,8 +107,8 @@
                     "setScrollBounceString:": "1",
                     "setEdgeDragString:": "1",
                     "setScrollInsetLeft:right:top:bottom:": [
-                        "0",
-                        "6",
+                        "8",
+                        "8",
                         "0",
                         "0"
                     ],
@@ -117,9 +117,6 @@
             },
             {
                 "$includeComponet": "componet/multi_video_tail.geojson"
-            },
-            {
-                "$includeComponet": "componet/separator.geojson"
             }
         ]
     }

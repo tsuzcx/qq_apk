@@ -98,12 +98,32 @@ public class bs
   
   public String toString()
   {
-    return "WifiInfo{mNetworkId=" + this.gi + ", mConfig=" + this.gj + ", mLevel=" + this.gk + ", mAppearTime=" + this.gl + ", mScanResult=" + this.gm + ", mHaveConfSinceAppera=" + this.gn + ", mNewWifiConfig=" + this.go + ", mSignalStartTime=" + this.gp + ", mSignalRecords=" + this.gq + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WifiInfo{mNetworkId=");
+    localStringBuilder.append(this.gi);
+    localStringBuilder.append(", mConfig=");
+    localStringBuilder.append(this.gj);
+    localStringBuilder.append(", mLevel=");
+    localStringBuilder.append(this.gk);
+    localStringBuilder.append(", mAppearTime=");
+    localStringBuilder.append(this.gl);
+    localStringBuilder.append(", mScanResult=");
+    localStringBuilder.append(this.gm);
+    localStringBuilder.append(", mHaveConfSinceAppera=");
+    localStringBuilder.append(this.gn);
+    localStringBuilder.append(", mNewWifiConfig=");
+    localStringBuilder.append(this.go);
+    localStringBuilder.append(", mSignalStartTime=");
+    localStringBuilder.append(this.gp);
+    localStringBuilder.append(", mSignalRecords=");
+    localStringBuilder.append(this.gq);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.bs
  * JD-Core Version:    0.7.0.1
  */

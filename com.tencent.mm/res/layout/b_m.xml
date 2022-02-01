@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/u_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/al2" android:paddingLeft="@dimen/ahk" android:paddingTop="@dimen/iq" android:paddingRight="@dimen/ahk" android:paddingBottom="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fvo" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="156.0dip" android:src="@raw/wxa_lucky_money_complete_icon" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/dt" android:textColor="@color/h9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/ga8" android:layout_below="@id/fvo" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/fvp" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="127.0dip" android:text="@string/ga9" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/np" />
+    <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/ggr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a2v" android:ellipsize="end" android:id="@id/ggq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/ggo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="16.0dip" android:singleLine="true" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a2v" android:ellipsize="end" android:id="@id/ggp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" />
+    </LinearLayout>
 </RelativeLayout>

@@ -12,23 +12,23 @@ import android.hardware.SensorManager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.qphone.base.util.QLog;
-import wxe;
 
 public class ShakeImageView
   extends ImageView
   implements SensorEventListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F };
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float c = 1.0F;
+  float[] a = { 0.0F, 0.0F, 0.0F };
+  private SensorManager b;
+  private Sensor c;
+  private Bitmap d;
+  private int e;
+  private int f;
+  private float g;
+  private float h;
+  private Paint i;
+  private float j = 1.0F;
   
   public ShakeImageView(Context paramContext)
   {
@@ -50,22 +50,22 @@ public class ShakeImageView
   
   public static float a(float paramFloat1, float paramFloat2)
   {
-    return (int)(0.3F * (paramFloat1 - paramFloat2) + paramFloat2);
+    return (int)(paramFloat2 + (paramFloat1 - paramFloat2) * 0.3F);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)getContext().getSystemService("sensor"));
+    this.i = new Paint();
+    this.i.setAntiAlias(true);
+    this.b = ((SensorManager)getContext().getSystemService("sensor"));
   }
   
   private float[] a(SensorEvent paramSensorEvent)
   {
-    this.jdField_a_of_type_ArrayOfFloat[0] = a(paramSensorEvent.values[0] * 50.0F, this.jdField_a_of_type_ArrayOfFloat[0]);
-    this.jdField_a_of_type_ArrayOfFloat[1] = a(paramSensorEvent.values[1] * 50.0F, this.jdField_a_of_type_ArrayOfFloat[1]);
-    this.jdField_a_of_type_ArrayOfFloat[2] = a(paramSensorEvent.values[2] * 50.0F, this.jdField_a_of_type_ArrayOfFloat[2]);
-    return this.jdField_a_of_type_ArrayOfFloat;
+    this.a[0] = a(paramSensorEvent.values[0] * 50.0F, this.a[0]);
+    this.a[1] = a(paramSensorEvent.values[1] * 50.0F, this.a[1]);
+    this.a[2] = a(paramSensorEvent.values[2] * 50.0F, this.a[2]);
+    return this.a;
   }
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
@@ -73,114 +73,127 @@ public class ShakeImageView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      wxe.e("ShakeImageView", "onAttachedToWindow but mSensorManager is null.");
+    if (this.b == null) {
+      SLog.e("ShakeImageView", "onAttachedToWindow but mSensorManager is null.");
     }
-    if ((getVisibility() != 8) && (this.jdField_a_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager != null))
+    if ((getVisibility() != 8) && (this.c != null))
     {
-      this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(9);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_a_of_type_AndroidHardwareSensor, 1);
+      SensorManager localSensorManager = this.b;
+      if (localSensorManager != null)
+      {
+        this.c = localSensorManager.getDefaultSensor(9);
+        this.b.registerListener(this, this.c, 1);
+      }
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      wxe.e("ShakeImageView", "onDetachedFromWindow but mSensorManager is null.");
+    if (this.b == null) {
+      SLog.e("ShakeImageView", "onDetachedFromWindow but mSensorManager is null.");
     }
-    if ((this.jdField_a_of_type_AndroidHardwareSensor != null) && (this.jdField_a_of_type_AndroidHardwareSensorManager != null)) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
+    if (this.c != null)
+    {
+      SensorManager localSensorManager = this.b;
+      if (localSensorManager != null) {
+        localSensorManager.unregisterListener(this);
+      }
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    float f3 = 0.0F;
     System.currentTimeMillis();
-    float f2;
-    float f1;
-    if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    int k = this.e;
+    if ((k > 0) && (this.f > 0) && (this.d != null))
     {
-      int i = (this.jdField_a_of_type_Int - getMeasuredWidth()) / 2;
-      int j = (this.jdField_b_of_type_Int - getMeasuredHeight()) / 2;
-      f2 = -i - this.jdField_a_of_type_Float * i / 400.0F * this.c;
-      f1 = f2;
-      if (f2 < -i * 2) {
-        f1 = -i * 2;
+      int m = (k - getMeasuredWidth()) / 2;
+      k = (this.f - getMeasuredHeight()) / 2;
+      int n = -m;
+      float f1 = n - this.g * m / 400.0F * this.j;
+      float f2 = n * 2;
+      if (f1 < f2) {
+        f1 = f2;
       }
       f2 = f1;
       if (f1 > 0.0F) {
         f2 = 0.0F;
       }
-      float f4 = -j - this.jdField_b_of_type_Float * j / 400.0F * this.c;
-      f1 = f4;
-      if (f4 < -j * 2) {
-        f1 = -j * 2;
+      m = -k;
+      f1 = m - this.h * k / 400.0F * this.j;
+      float f3 = m * 2;
+      if (f1 < f3) {
+        f1 = f3;
       }
-      if (f1 <= 0.0F) {
-        break label179;
+      f3 = f1;
+      if (f1 > 0.0F) {
+        f3 = 0.0F;
       }
-      f1 = f3;
+      paramCanvas.drawBitmap(this.d, f2, f3, this.i);
     }
-    label179:
-    for (;;)
-    {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, f2, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      System.currentTimeMillis();
-      return;
-    }
+    System.currentTimeMillis();
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
     paramSensorEvent = a(paramSensorEvent);
-    this.jdField_a_of_type_Float = paramSensorEvent[0];
-    this.jdField_b_of_type_Float = paramSensorEvent[1];
+    this.g = paramSensorEvent[0];
+    this.h = paramSensorEvent[1];
     invalidate();
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if ((getVisibility() != 8) && (this.jdField_a_of_type_AndroidHardwareSensor == null))
+    if ((getVisibility() != 8) && (this.c == null))
     {
-      this.jdField_a_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(9);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, this.jdField_a_of_type_AndroidHardwareSensor, 1);
+      this.c = this.b.getDefaultSensor(9);
+      this.b.registerListener(this, this.c, 1);
     }
   }
   
   public void setImage(Bitmap paramBitmap, int paramInt1, int paramInt2, float paramFloat)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (paramFloat >= 0.0F) {}
-    for (this.c = 1.0F; (paramBitmap.getWidth() == paramInt1) && (paramBitmap.getHeight() == paramInt2); this.c = -1.0F)
+    this.e = paramInt1;
+    this.f = paramInt2;
+    if (paramFloat >= 0.0F) {
+      this.j = 1.0F;
+    } else {
+      this.j = -1.0F;
+    }
+    if ((paramBitmap.getWidth() == paramInt1) && (paramBitmap.getHeight() == paramInt2))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.d = paramBitmap;
       return;
     }
     paramFloat = paramInt1 / paramBitmap.getWidth();
-    float f = paramInt2 / paramBitmap.getHeight();
-    Matrix localMatrix = new Matrix();
-    localMatrix.postScale(paramFloat, f);
+    float f1 = paramInt2 / paramBitmap.getHeight();
+    Object localObject = new Matrix();
+    ((Matrix)localObject).postScale(paramFloat, f1);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, false);
+      this.d = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, false);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      QLog.e("ShakeImageView", 1, "setImage OutOfMemory: " + localOutOfMemoryError.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setImage OutOfMemory: ");
+      localStringBuilder.append(localOutOfMemoryError.getMessage());
+      QLog.e("ShakeImageView", 1, localStringBuilder.toString());
       System.gc();
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, false);
+        this.d = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, false);
         return;
       }
       catch (OutOfMemoryError paramBitmap)
       {
-        QLog.e("ShakeImageView", 1, "setImage OutOfMemory again: " + paramBitmap.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setImage OutOfMemory again: ");
+        ((StringBuilder)localObject).append(paramBitmap.getMessage());
+        QLog.e("ShakeImageView", 1, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -189,257 +202,239 @@ public class ShakeImageView
   public void setImage(java.lang.String paramString, int paramInt1, int paramInt2, float paramFloat)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aload_0
-    //   4: iload_2
-    //   5: putfield 119	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_Int	I
-    //   8: aload_0
-    //   9: iload_3
-    //   10: putfield 121	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_b_of_type_Int	I
-    //   13: fload 4
-    //   15: fconst_0
-    //   16: fcmpl
-    //   17: iflt +75 -> 92
-    //   20: aload_0
-    //   21: fconst_1
-    //   22: putfield 22	com/tencent/mobileqq/profile/view/ShakeImageView:c	F
-    //   25: new 208	java/io/BufferedInputStream
-    //   28: dup
-    //   29: new 210	java/io/FileInputStream
-    //   32: dup
-    //   33: aload_1
-    //   34: invokespecial 213	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   37: invokespecial 216	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   40: astore_1
-    //   41: aload_1
-    //   42: astore 6
-    //   44: aload_1
-    //   45: invokestatic 222	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   48: astore 7
-    //   50: aload_1
-    //   51: astore 6
-    //   53: aload 7
-    //   55: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
-    //   58: iload_2
-    //   59: if_icmpne +42 -> 101
+    //   0: aload_0
+    //   1: iload_2
+    //   2: putfield 125	com/tencent/mobileqq/profile/view/ShakeImageView:e	I
+    //   5: aload_0
+    //   6: iload_3
+    //   7: putfield 127	com/tencent/mobileqq/profile/view/ShakeImageView:f	I
+    //   10: fload 4
+    //   12: fconst_0
+    //   13: fcmpl
+    //   14: iflt +11 -> 25
+    //   17: aload_0
+    //   18: fconst_1
+    //   19: putfield 29	com/tencent/mobileqq/profile/view/ShakeImageView:j	F
+    //   22: goto +9 -> 31
+    //   25: aload_0
+    //   26: ldc 162
+    //   28: putfield 29	com/tencent/mobileqq/profile/view/ShakeImageView:j	F
+    //   31: aconst_null
+    //   32: astore 7
+    //   34: aconst_null
+    //   35: astore 6
+    //   37: new 214	java/io/BufferedInputStream
+    //   40: dup
+    //   41: new 216	java/io/FileInputStream
+    //   44: dup
+    //   45: aload_1
+    //   46: invokespecial 219	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   49: invokespecial 222	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   52: astore_1
+    //   53: aload_1
+    //   54: astore 6
+    //   56: aload_1
+    //   57: invokestatic 228	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   60: astore 7
     //   62: aload_1
     //   63: astore 6
     //   65: aload 7
-    //   67: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
-    //   70: iload_3
-    //   71: if_icmpne +30 -> 101
+    //   67: invokevirtual 167	android/graphics/Bitmap:getWidth	()I
+    //   70: iload_2
+    //   71: if_icmpne +27 -> 98
     //   74: aload_1
     //   75: astore 6
-    //   77: aload_0
-    //   78: aload 7
-    //   80: putfield 123	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   83: aload_1
-    //   84: ifnull +7 -> 91
-    //   87: aload_1
-    //   88: invokevirtual 225	java/io/BufferedInputStream:close	()V
-    //   91: return
-    //   92: aload_0
-    //   93: ldc 164
-    //   95: putfield 22	com/tencent/mobileqq/profile/view/ShakeImageView:c	F
-    //   98: goto -73 -> 25
+    //   77: aload 7
+    //   79: invokevirtual 170	android/graphics/Bitmap:getHeight	()I
+    //   82: iload_3
+    //   83: if_icmpne +15 -> 98
+    //   86: aload_1
+    //   87: astore 6
+    //   89: aload_0
+    //   90: aload 7
+    //   92: putfield 129	com/tencent/mobileqq/profile/view/ShakeImageView:d	Landroid/graphics/Bitmap;
+    //   95: goto +91 -> 186
+    //   98: aload_1
+    //   99: astore 6
     //   101: iload_2
     //   102: i2f
-    //   103: fstore 4
-    //   105: aload_1
-    //   106: astore 6
-    //   108: fload 4
-    //   110: aload 7
-    //   112: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
-    //   115: i2f
-    //   116: fdiv
-    //   117: fstore 4
-    //   119: aload_1
-    //   120: astore 6
-    //   122: iload_3
-    //   123: i2f
-    //   124: aload 7
-    //   126: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
-    //   129: i2f
-    //   130: fdiv
-    //   131: fstore 5
-    //   133: aload_1
-    //   134: astore 6
-    //   136: new 166	android/graphics/Matrix
-    //   139: dup
-    //   140: invokespecial 167	android/graphics/Matrix:<init>	()V
-    //   143: astore 8
-    //   145: aload_1
-    //   146: astore 6
-    //   148: aload 8
-    //   150: fload 4
-    //   152: fload 5
-    //   154: invokevirtual 171	android/graphics/Matrix:postScale	(FF)Z
-    //   157: pop
-    //   158: aload_1
-    //   159: astore 6
-    //   161: aload_0
-    //   162: aload 7
-    //   164: iconst_0
-    //   165: iconst_0
-    //   166: aload 7
-    //   168: invokevirtual 160	android/graphics/Bitmap:getWidth	()I
-    //   171: aload 7
-    //   173: invokevirtual 163	android/graphics/Bitmap:getHeight	()I
-    //   176: aload 8
-    //   178: iconst_0
-    //   179: invokestatic 175	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   182: putfield 123	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   185: aload_1
-    //   186: astore 6
-    //   188: aload 7
-    //   190: invokevirtual 228	android/graphics/Bitmap:recycle	()V
-    //   193: goto -110 -> 83
-    //   196: astore 6
-    //   198: aload_0
-    //   199: aconst_null
-    //   200: putfield 123	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   203: ldc 78
-    //   205: iconst_1
-    //   206: ldc 230
-    //   208: aload 6
-    //   210: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   213: aload_1
-    //   214: ifnull -123 -> 91
-    //   217: aload_1
-    //   218: invokevirtual 225	java/io/BufferedInputStream:close	()V
-    //   221: return
-    //   222: astore_1
-    //   223: ldc 78
-    //   225: iconst_1
-    //   226: ldc 230
-    //   228: aload_1
-    //   229: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   232: return
-    //   233: astore_1
-    //   234: ldc 78
-    //   236: iconst_1
-    //   237: ldc 230
-    //   239: aload_1
-    //   240: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   243: return
-    //   244: astore 7
-    //   246: aconst_null
-    //   247: astore_1
-    //   248: aload_1
-    //   249: astore 6
-    //   251: ldc 78
-    //   253: iconst_1
-    //   254: ldc 230
-    //   256: aload 7
-    //   258: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   261: aload_1
-    //   262: ifnull -171 -> 91
-    //   265: aload_1
-    //   266: invokevirtual 225	java/io/BufferedInputStream:close	()V
-    //   269: return
-    //   270: astore_1
-    //   271: ldc 78
-    //   273: iconst_1
-    //   274: ldc 230
+    //   103: aload 7
+    //   105: invokevirtual 167	android/graphics/Bitmap:getWidth	()I
+    //   108: i2f
+    //   109: fdiv
+    //   110: fstore 4
+    //   112: aload_1
+    //   113: astore 6
+    //   115: iload_3
+    //   116: i2f
+    //   117: aload 7
+    //   119: invokevirtual 170	android/graphics/Bitmap:getHeight	()I
+    //   122: i2f
+    //   123: fdiv
+    //   124: fstore 5
+    //   126: aload_1
+    //   127: astore 6
+    //   129: new 172	android/graphics/Matrix
+    //   132: dup
+    //   133: invokespecial 173	android/graphics/Matrix:<init>	()V
+    //   136: astore 8
+    //   138: aload_1
+    //   139: astore 6
+    //   141: aload 8
+    //   143: fload 4
+    //   145: fload 5
+    //   147: invokevirtual 177	android/graphics/Matrix:postScale	(FF)Z
+    //   150: pop
+    //   151: aload_1
+    //   152: astore 6
+    //   154: aload_0
+    //   155: aload 7
+    //   157: iconst_0
+    //   158: iconst_0
+    //   159: aload 7
+    //   161: invokevirtual 167	android/graphics/Bitmap:getWidth	()I
+    //   164: aload 7
+    //   166: invokevirtual 170	android/graphics/Bitmap:getHeight	()I
+    //   169: aload 8
+    //   171: iconst_0
+    //   172: invokestatic 181	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   175: putfield 129	com/tencent/mobileqq/profile/view/ShakeImageView:d	Landroid/graphics/Bitmap;
+    //   178: aload_1
+    //   179: astore 6
+    //   181: aload 7
+    //   183: invokevirtual 231	android/graphics/Bitmap:recycle	()V
+    //   186: aload_1
+    //   187: invokevirtual 234	java/io/BufferedInputStream:close	()V
+    //   190: return
+    //   191: astore 7
+    //   193: goto +21 -> 214
+    //   196: astore 7
+    //   198: goto +53 -> 251
+    //   201: astore_1
+    //   202: goto +80 -> 282
+    //   205: astore 6
+    //   207: aload 7
+    //   209: astore_1
+    //   210: aload 6
+    //   212: astore 7
+    //   214: aload_1
+    //   215: astore 6
+    //   217: ldc 85
+    //   219: iconst_1
+    //   220: ldc 236
+    //   222: aload 7
+    //   224: invokestatic 239	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   227: aload_1
+    //   228: ifnull +52 -> 280
+    //   231: aload_1
+    //   232: invokevirtual 234	java/io/BufferedInputStream:close	()V
+    //   235: return
+    //   236: astore_1
+    //   237: ldc 85
+    //   239: iconst_1
+    //   240: ldc 236
+    //   242: aload_1
+    //   243: invokestatic 239	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   246: return
+    //   247: astore 7
+    //   249: aconst_null
+    //   250: astore_1
+    //   251: aload_1
+    //   252: astore 6
+    //   254: aload_0
+    //   255: aconst_null
+    //   256: putfield 129	com/tencent/mobileqq/profile/view/ShakeImageView:d	Landroid/graphics/Bitmap;
+    //   259: aload_1
+    //   260: astore 6
+    //   262: ldc 85
+    //   264: iconst_1
+    //   265: ldc 236
+    //   267: aload 7
+    //   269: invokestatic 239	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   272: aload_1
+    //   273: ifnull +7 -> 280
     //   276: aload_1
-    //   277: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   277: invokevirtual 234	java/io/BufferedInputStream:close	()V
     //   280: return
     //   281: astore_1
-    //   282: aconst_null
-    //   283: astore 6
-    //   285: aload 6
-    //   287: ifnull +8 -> 295
-    //   290: aload 6
-    //   292: invokevirtual 225	java/io/BufferedInputStream:close	()V
-    //   295: aload_1
-    //   296: athrow
-    //   297: astore 6
-    //   299: ldc 78
-    //   301: iconst_1
-    //   302: ldc 230
-    //   304: aload 6
-    //   306: invokestatic 233	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   309: goto -14 -> 295
-    //   312: astore_1
-    //   313: goto -28 -> 285
-    //   316: astore 7
-    //   318: aload_1
-    //   319: astore 6
-    //   321: aload 7
-    //   323: astore_1
-    //   324: goto -39 -> 285
-    //   327: astore 7
-    //   329: goto -81 -> 248
-    //   332: astore 6
-    //   334: aload 7
-    //   336: astore_1
-    //   337: goto -139 -> 198
+    //   282: aload 6
+    //   284: ifnull +23 -> 307
+    //   287: aload 6
+    //   289: invokevirtual 234	java/io/BufferedInputStream:close	()V
+    //   292: goto +15 -> 307
+    //   295: astore 6
+    //   297: ldc 85
+    //   299: iconst_1
+    //   300: ldc 236
+    //   302: aload 6
+    //   304: invokestatic 239	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   307: aload_1
+    //   308: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	340	0	this	ShakeImageView
-    //   0	340	1	paramString	java.lang.String
-    //   0	340	2	paramInt1	int
-    //   0	340	3	paramInt2	int
-    //   0	340	4	paramFloat	float
-    //   131	22	5	f	float
-    //   42	145	6	str1	java.lang.String
-    //   196	13	6	localException1	java.lang.Exception
-    //   249	42	6	str2	java.lang.String
-    //   297	8	6	localIOException	java.io.IOException
-    //   319	1	6	str3	java.lang.String
-    //   332	1	6	localException2	java.lang.Exception
-    //   1	188	7	localBitmap	Bitmap
-    //   244	13	7	localOutOfMemoryError1	OutOfMemoryError
-    //   316	6	7	localObject	java.lang.Object
-    //   327	8	7	localOutOfMemoryError2	OutOfMemoryError
-    //   143	34	8	localMatrix	Matrix
+    //   0	309	0	this	ShakeImageView
+    //   0	309	1	paramString	java.lang.String
+    //   0	309	2	paramInt1	int
+    //   0	309	3	paramInt2	int
+    //   0	309	4	paramFloat	float
+    //   124	22	5	f1	float
+    //   35	145	6	str1	java.lang.String
+    //   205	6	6	localOutOfMemoryError1	OutOfMemoryError
+    //   215	73	6	str2	java.lang.String
+    //   295	8	6	localIOException	java.io.IOException
+    //   32	150	7	localBitmap	Bitmap
+    //   191	1	7	localOutOfMemoryError2	OutOfMemoryError
+    //   196	12	7	localException1	java.lang.Exception
+    //   212	11	7	localObject	Object
+    //   247	21	7	localException2	java.lang.Exception
+    //   136	34	8	localMatrix	Matrix
     // Exception table:
     //   from	to	target	type
-    //   44	50	196	java/lang/Exception
-    //   53	62	196	java/lang/Exception
+    //   56	62	191	java/lang/OutOfMemoryError
+    //   65	74	191	java/lang/OutOfMemoryError
+    //   77	86	191	java/lang/OutOfMemoryError
+    //   89	95	191	java/lang/OutOfMemoryError
+    //   101	112	191	java/lang/OutOfMemoryError
+    //   115	126	191	java/lang/OutOfMemoryError
+    //   129	138	191	java/lang/OutOfMemoryError
+    //   141	151	191	java/lang/OutOfMemoryError
+    //   154	178	191	java/lang/OutOfMemoryError
+    //   181	186	191	java/lang/OutOfMemoryError
+    //   56	62	196	java/lang/Exception
     //   65	74	196	java/lang/Exception
-    //   77	83	196	java/lang/Exception
-    //   108	119	196	java/lang/Exception
-    //   122	133	196	java/lang/Exception
-    //   136	145	196	java/lang/Exception
-    //   148	158	196	java/lang/Exception
-    //   161	185	196	java/lang/Exception
-    //   188	193	196	java/lang/Exception
-    //   217	221	222	java/io/IOException
-    //   87	91	233	java/io/IOException
-    //   25	41	244	java/lang/OutOfMemoryError
-    //   265	269	270	java/io/IOException
-    //   25	41	281	finally
-    //   290	295	297	java/io/IOException
-    //   44	50	312	finally
-    //   53	62	312	finally
-    //   65	74	312	finally
-    //   77	83	312	finally
-    //   108	119	312	finally
-    //   122	133	312	finally
-    //   136	145	312	finally
-    //   148	158	312	finally
-    //   161	185	312	finally
-    //   188	193	312	finally
-    //   251	261	312	finally
-    //   198	213	316	finally
-    //   44	50	327	java/lang/OutOfMemoryError
-    //   53	62	327	java/lang/OutOfMemoryError
-    //   65	74	327	java/lang/OutOfMemoryError
-    //   77	83	327	java/lang/OutOfMemoryError
-    //   108	119	327	java/lang/OutOfMemoryError
-    //   122	133	327	java/lang/OutOfMemoryError
-    //   136	145	327	java/lang/OutOfMemoryError
-    //   148	158	327	java/lang/OutOfMemoryError
-    //   161	185	327	java/lang/OutOfMemoryError
-    //   188	193	327	java/lang/OutOfMemoryError
-    //   25	41	332	java/lang/Exception
+    //   77	86	196	java/lang/Exception
+    //   89	95	196	java/lang/Exception
+    //   101	112	196	java/lang/Exception
+    //   115	126	196	java/lang/Exception
+    //   129	138	196	java/lang/Exception
+    //   141	151	196	java/lang/Exception
+    //   154	178	196	java/lang/Exception
+    //   181	186	196	java/lang/Exception
+    //   37	53	201	finally
+    //   217	227	201	finally
+    //   37	53	205	java/lang/OutOfMemoryError
+    //   186	190	236	java/io/IOException
+    //   231	235	236	java/io/IOException
+    //   276	280	236	java/io/IOException
+    //   37	53	247	java/lang/Exception
+    //   56	62	281	finally
+    //   65	74	281	finally
+    //   77	86	281	finally
+    //   89	95	281	finally
+    //   101	112	281	finally
+    //   115	126	281	finally
+    //   129	138	281	finally
+    //   141	151	281	finally
+    //   154	178	281	finally
+    //   181	186	281	finally
+    //   254	259	281	finally
+    //   262	272	281	finally
+    //   287	292	295	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ShakeImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,104 +7,113 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.kernel.j.b;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import junit.framework.Assert;
 
 public final class d
   extends e
 {
-  public static final String DEVICE_NAME;
-  public static String eQs;
-  public static final String whB;
-  public static final String whC;
-  public static String whD;
-  public static final String whE;
-  public static String whF;
-  public static long whG;
-  public static int whH;
-  public static boolean whI;
-  public static boolean whJ;
-  public static boolean whK;
-  public static boolean whL;
-  public static int whM;
-  public static final byte[] whN;
-  public static final byte[] whO;
-  public static final byte[] whP;
+  public static int YwZ;
+  public static final String Yxa;
+  public static final String Yxb;
+  public static String Yxc;
+  public static final String Yxd;
+  public static String Yxe;
+  public static final String Yxf;
+  public static long Yxg;
+  public static int Yxh;
+  public static boolean Yxi;
+  public static boolean Yxj;
+  public static boolean Yxk;
+  public static boolean Yxl;
+  public static int Yxm;
+  public static final byte[] Yxn;
+  public static final byte[] Yxo;
+  public static final byte[] Yxp;
+  public static final String Yxq;
+  public static final String Yxr;
+  public static String nsC;
   
   static
   {
-    AppMethodBeat.i(58789);
-    eQs = "android-" + Build.VERSION.SDK_INT;
-    whB = Build.BRAND;
-    whC = Build.MODEL + Build.CPU_ABI;
-    whD = "android-" + Build.VERSION.SDK_INT;
-    whE = "android-" + Build.MANUFACTURER;
-    whF = Build.VERSION.SDK_INT;
-    DEVICE_NAME = Build.MANUFACTURER + "-" + Build.MODEL;
-    whG = 0L;
-    whH = Integer.decode(f.CLIENT_VERSION).intValue();
-    Assert.assertNotNull(f.CLIENT_VERSION);
+    AppMethodBeat.i(133039);
+    nsC = "android-" + Build.VERSION.SDK_INT;
+    YwZ = 2;
+    Yxa = Build.BRAND;
+    Yxb = q.aPo() + Build.CPU_ABI;
+    Yxc = "android-" + Build.VERSION.SDK_INT;
+    Yxd = "android-" + Build.MANUFACTURER;
+    Yxe = Build.VERSION.SDK_INT;
+    Yxf = Build.MANUFACTURER + "-" + q.aPo();
+    Yxg = 0L;
+    Yxh = Integer.decode(BuildInfo.CLIENT_VERSION).intValue();
+    Assert.assertNotNull(BuildInfo.CLIENT_VERSION);
     try
     {
-      int i = ah.getContext().getPackageManager().getApplicationInfo(ah.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
-      if ((i > whH) && (i - whH < 255) && ((i & 0xFF) >= 48)) {
-        whH = i;
+      int i = MMApplicationContext.getContext().getPackageManager().getApplicationInfo(MMApplicationContext.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
+      if ((i > Yxh) && (i - Yxh < 255) && ((i & 0xFF) >= 48)) {
+        Yxh = i;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.a("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
+        Log.printDebugStack("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
       }
     }
-    whI = dqr();
-    whJ = dqq();
-    whK = dqo();
-    whL = dqp();
-    whM = 5;
-    whN = null;
-    whO = null;
-    whP = null;
-    AppMethodBeat.o(58789);
+    Yxi = iPH();
+    Yxj = iPG();
+    Yxk = iPE();
+    Yxl = iPF();
+    Yxm = 5;
+    Yxn = null;
+    Yxo = null;
+    Yxp = null;
+    Yxq = "http://" + WeChatHosts.domainString(j.b.host_mp_weixin_qq_com) + "/mp/lifedetail?bid=%s&action=list#wechat_redirect";
+    Yxr = "http://" + WeChatHosts.domainString(j.b.host_mp_weixin_qq_com) + "/mp/lifedetail?bid=%s&tid=%s&action=list#wechat_redirect";
+    AppMethodBeat.o(133039);
   }
   
-  public static void MA(int paramInt)
+  public static void axo(int paramInt)
   {
-    AppMethodBeat.i(58788);
-    whH = paramInt;
-    whK = dqo();
-    whI = dqr();
-    whJ = dqq();
-    whL = dqp();
-    AppMethodBeat.o(58788);
+    AppMethodBeat.i(133038);
+    Yxh = paramInt;
+    Yxk = iPE();
+    Yxi = iPH();
+    Yxj = iPG();
+    Yxl = iPF();
+    AppMethodBeat.o(133038);
   }
   
-  private static boolean dqo()
+  private static boolean iPE()
   {
-    return ((whH & 0xFF) >= 0) && ((whH & 0xFF) <= 47);
+    return ((Yxh & 0xFF) >= 16) && ((Yxh & 0xFF) <= 47);
   }
   
-  private static boolean dqp()
+  private static boolean iPF()
   {
-    return ((whH & 0xFF) >= 0) && ((whH & 0xFF) <= 15);
+    return ((Yxh & 0xFF) >= 0) && ((Yxh & 0xFF) <= 15);
   }
   
-  private static boolean dqq()
+  private static boolean iPG()
   {
-    return ((whH & 0xFF) >= 96) && ((whH & 0xFF) <= 255);
+    return ((Yxh & 0xFF) >= 96) && ((Yxh & 0xFF) <= 255);
   }
   
-  private static boolean dqr()
+  private static boolean iPH()
   {
-    return ((whH & 0xFF) >= 48) && ((whH & 0xFF) <= 95);
+    return ((Yxh & 0xFF) >= 48) && ((Yxh & 0xFF) <= 95);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.d
  * JD-Core Version:    0.7.0.1
  */

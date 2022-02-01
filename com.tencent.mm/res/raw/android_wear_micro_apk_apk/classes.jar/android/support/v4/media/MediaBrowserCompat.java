@@ -9,41 +9,41 @@ import android.util.Log;
 public final class MediaBrowserCompat
 {
   static final boolean DEBUG = Log.isLoggable("MediaBrowserCompat", 3);
-  private final f gn;
+  private final f ik;
   
   public MediaBrowserCompat(Context paramContext, ComponentName paramComponentName, b paramb)
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.gn = new i(paramContext, paramComponentName, paramb, null);
+      this.ik = new i(paramContext, paramComponentName, paramb, null);
       return;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.gn = new h(paramContext, paramComponentName, paramb, null);
+      this.ik = new h(paramContext, paramComponentName, paramb, null);
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.gn = new g(paramContext, paramComponentName, paramb, null);
+      this.ik = new g(paramContext, paramComponentName, paramb, null);
       return;
     }
-    this.gn = new j(paramContext, paramComponentName, paramb, null);
+    this.ik = new j(paramContext, paramComponentName, paramb, null);
   }
   
-  public final MediaSessionCompat.Token aG()
+  public final MediaSessionCompat.Token aW()
   {
-    return this.gn.aG();
+    return this.ik.aW();
   }
   
   public final void connect()
   {
-    this.gn.connect();
+    this.ik.connect();
   }
   
   public final void disconnect()
   {
-    this.gn.disconnect();
+    this.ik.disconnect();
   }
 }
 

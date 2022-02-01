@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private TRVADNative BhN;
-  private int gbt;
-  private int isQ;
+  private TRVADNative ahrY;
+  private int pfx;
+  private int tnN;
   
   public c()
   {
-    AppMethodBeat.i(35437);
-    this.BhN = new TRVADNative();
-    this.gbt = 500000;
-    this.isQ = 10000000;
-    AppMethodBeat.o(35437);
+    AppMethodBeat.i(87690);
+    this.ahrY = new TRVADNative();
+    this.pfx = 500000;
+    this.tnN = 10000000;
+    AppMethodBeat.o(87690);
   }
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(35436);
-    this.BhN = new TRVADNative();
-    this.gbt = paramInt;
-    this.isQ = 5000000;
-    AppMethodBeat.o(35436);
+    AppMethodBeat.i(87689);
+    this.ahrY = new TRVADNative();
+    this.pfx = paramInt;
+    this.tnN = 5000000;
+    AppMethodBeat.o(87689);
   }
   
   public final void a(short[] paramArrayOfShort, int paramInt, c.a parama)
@@ -35,28 +35,28 @@ public final class c
       label68:
       try
       {
-        AppMethodBeat.i(35440);
+        AppMethodBeat.i(87693);
         if (paramInt <= 0)
         {
-          AppMethodBeat.o(35440);
+          AppMethodBeat.o(87693);
           return;
         }
-        switch (this.BhN.mfeSendData(paramArrayOfShort, paramInt))
+        switch (this.ahrY.mfeSendData(paramArrayOfShort, paramInt))
         {
         case 1: 
-          parama.BhO = 0;
+          parama.ahrZ = 0;
         }
       }
       finally {}
-      parama.BhS = ((int)d1);
-      new StringBuilder("volumn��").append(parama.BhS);
-      AppMethodBeat.o(35440);
+      parama.ahsd = ((int)d1);
+      new StringBuilder("volumn：").append(parama.ahsd);
+      AppMethodBeat.o(87693);
       break;
-      parama.BhO = 1;
+      parama.ahrZ = 1;
       break label200;
-      parama.BhO = 2;
+      parama.ahrZ = 2;
       break label200;
-      parama.BhO = 3;
+      parama.ahrZ = 3;
       int j;
       int i;
       label200:
@@ -83,58 +83,58 @@ public final class c
     }
   }
   
-  public final int dUg()
+  public final int jXc()
   {
-    AppMethodBeat.i(35438);
-    int j = this.BhN.mfeInit(this.gbt, this.isQ);
+    AppMethodBeat.i(87691);
+    int j = this.ahrY.mfeInit(this.pfx, this.tnN);
     int i = j;
     if (j == 0)
     {
-      j = this.BhN.mfeOpen();
+      j = this.ahrY.mfeOpen();
       i = j;
       if (j == 0)
       {
-        j = this.BhN.mfeEnableNoiseDetection(true);
+        j = this.ahrY.mfeEnableNoiseDetection(true);
         i = j;
         if (j == 0) {
-          i = this.BhN.mfeStart();
+          i = this.ahrY.mfeStart();
         }
       }
     }
     if (i == 0)
     {
-      AppMethodBeat.o(35438);
+      AppMethodBeat.o(87691);
       return 0;
     }
-    AppMethodBeat.o(35438);
+    AppMethodBeat.o(87691);
     return -1;
   }
   
   public final int stop()
   {
-    AppMethodBeat.i(35439);
-    int j = this.BhN.mfeStop();
+    AppMethodBeat.i(87692);
+    int j = this.ahrY.mfeStop();
     int i = j;
     if (j == 0)
     {
-      j = this.BhN.mfeClose();
+      j = this.ahrY.mfeClose();
       i = j;
       if (j == 0) {
-        i = this.BhN.mfeExit();
+        i = this.ahrY.mfeExit();
       }
     }
     if (i == 0)
     {
-      AppMethodBeat.o(35439);
+      AppMethodBeat.o(87692);
       return 0;
     }
-    AppMethodBeat.o(35439);
+    AppMethodBeat.o(87692);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.qqpinyin.voicerecoapi.c
  * JD-Core Version:    0.7.0.1
  */

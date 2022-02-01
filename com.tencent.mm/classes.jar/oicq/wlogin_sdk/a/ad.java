@@ -6,49 +6,49 @@ import oicq.wlogin_sdk.tools.util;
 public final class ad
   extends a
 {
-  public int CNP = 0;
+  public int ajIc = 0;
   
   public ad()
   {
-    this.CMD = 312;
+    this.ajGQ = 312;
   }
   
-  public final Boolean erf()
+  public final Boolean kGl()
   {
-    AppMethodBeat.i(96477);
-    if (this.CNn < 4)
+    AppMethodBeat.i(88116);
+    if (this.ajHA < 4)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96477);
+      AppMethodBeat.o(88116);
       return localBoolean;
     }
-    this.CNP = util.af(this.CMx, this.CNm);
-    if (this.CNn < this.CNP * 10 + 4)
+    this.ajIc = util.ar(this.ajGK, this.ajHz);
+    if (this.ajHA < this.ajIc * 10 + 4)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96477);
+      AppMethodBeat.o(88116);
       return localBoolean;
     }
     Boolean localBoolean = Boolean.TRUE;
-    AppMethodBeat.o(96477);
+    AppMethodBeat.o(88116);
     return localBoolean;
   }
   
-  public final int erh()
+  public final int kGn()
   {
-    AppMethodBeat.i(96478);
+    AppMethodBeat.i(88117);
     int i = 0;
     for (;;)
     {
-      if (i >= this.CNP)
+      if (i >= this.ajIc)
       {
-        AppMethodBeat.o(96478);
+        AppMethodBeat.o(88117);
         return 0;
       }
-      if (util.ae(this.CMx, this.CNm + 4 + i * 10) == 266)
+      if (util.aq(this.ajGK, this.ajHz + 4 + i * 10) == 266)
       {
-        i = util.af(this.CMx, i * 10 + (this.CNm + 4) + 2);
-        AppMethodBeat.o(96478);
+        i = util.ar(this.ajGK, i * 10 + (this.ajHz + 4) + 2);
+        AppMethodBeat.o(88117);
         return i;
       }
       i += 1;
@@ -57,7 +57,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.a.ad
  * JD-Core Version:    0.7.0.1
  */

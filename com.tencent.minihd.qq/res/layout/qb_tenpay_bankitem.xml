@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/qb_tenpay_btn_white" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="10.0dip" android:layout_height="44.0dip" />
+    <ImageView android:id="@id/bank_image" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="15.0dip" />
+    <TextView android:textColor="@color/qb_tenpay_black_white_color" android:id="@id/bank_name" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/qb_tenpay_label" />
+    <ImageView android:layout_marginRight="10.0dip" style="@style/qb_tenpay_arrow_r" />
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/coi" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/cnq" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/col" android:visibility="gone" android:layout_width="@dimen/o3" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/o2" android:layout_alignBottom="@id/cnp">
+            <ImageView android:id="@id/cok" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+            <ProgressBar android:id="@id/j28" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="9.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="7.0dip" android:indeterminateDrawable="@drawable/mg" android:layout_alignBottom="@id/cok" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/cnp" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="@dimen/o4" android:layout_height="@dimen/o4" android:contentDescription="@string/b31" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/co9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:minWidth="@dimen/o4">
+        <ImageView android:id="@id/jyo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginRight="1.0dip" android:src="@drawable/cmi" android:contentDescription="@string/b31" />
+        <TextView android:textSize="13.0dip" android:textColor="@android:color/white" android:ellipsize="end" android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/coa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/o1" android:lines="1" android:shadowColor="#cc000000" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="2.0" />
+    </LinearLayout>
+</LinearLayout>

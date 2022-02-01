@@ -9,7 +9,7 @@ import android.os.StatFs;
 import android.telephony.TelephonyManager;
 import com.tencent.commonsdk.soload.SoLoadCore;
 import com.tencent.qphone.base.util.QLog;
-import fdc;
+import fdb;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -498,7 +498,7 @@ public class InjectUtils
       localStringBuilder.append(paramContext.getDeviceId()).append("|");
     }
     localStringBuilder.append(paramString2).append("|");
-    new fdc(arrayOfByte, localStringBuilder.toString()).start();
+    new fdb(arrayOfByte, localStringBuilder.toString()).start();
   }
   
   public static boolean a()

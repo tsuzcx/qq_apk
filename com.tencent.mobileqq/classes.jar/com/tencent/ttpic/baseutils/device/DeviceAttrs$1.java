@@ -16,11 +16,18 @@ class DeviceAttrs$1
   
   public void run()
   {
-    boolean bool = true;
     Object localObject1 = DeviceAttrs.access$000(this.this$0).getString("xml_version", "0");
-    LogUtils.d(DeviceAttrs.access$100(), "[checkVersion] currentVer = " + (String)localObject1);
+    Object localObject2 = DeviceAttrs.access$100();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("[checkVersion] currentVer = ");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    LogUtils.d((String)localObject2, ((StringBuilder)localObject3).toString());
     localObject1 = DeviceUpdate.checkConfigVersion(DeviceAttrs.access$200(this.this$0), this.val$packageName, (String)localObject1, this.val$appId, this.val$appVersion);
-    LogUtils.d(DeviceAttrs.access$100(), "[checkVersion] jsonStr = " + (String)localObject1);
+    localObject2 = DeviceAttrs.access$100();
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("[checkVersion] jsonStr = ");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    LogUtils.d((String)localObject2, ((StringBuilder)localObject3).toString());
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
@@ -30,34 +37,58 @@ class DeviceAttrs$1
       {
         localObject1 = GsonUtils.json2JsonObject((String)localObject1);
         if (localObject1 == null) {
-          break;
+          return;
         }
-        Object localObject2 = GsonUtils.getStringUnsafe((JsonObject)localObject1, "ret");
-        LogUtils.d(DeviceAttrs.access$100(), "[checkVersion] retStr = " + (String)localObject2);
+        localObject2 = GsonUtils.getStringUnsafe((JsonObject)localObject1, "ret");
+        localObject3 = DeviceAttrs.access$100();
+        Object localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("[checkVersion] retStr = ");
+        ((StringBuilder)localObject4).append((String)localObject2);
+        LogUtils.d((String)localObject3, ((StringBuilder)localObject4).toString());
         if (((String)localObject2).equals("1"))
         {
-          String str = GsonUtils.getStringUnsafe((JsonObject)localObject1, "camCoreConfUrl");
-          LogUtils.d(DeviceAttrs.access$100(), "[checkVersion] urlStr = " + str);
+          localObject3 = GsonUtils.getStringUnsafe((JsonObject)localObject1, "camCoreConfUrl");
+          localObject2 = DeviceAttrs.access$100();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("[checkVersion] urlStr = ");
+          ((StringBuilder)localObject4).append((String)localObject3);
+          LogUtils.d((String)localObject2, ((StringBuilder)localObject4).toString());
           localObject2 = GsonUtils.getStringUnsafe((JsonObject)localObject1, "curCamCoreVersion");
-          LogUtils.d(DeviceAttrs.access$100(), "[checkVersion] verStr = " + (String)localObject2);
-          Object localObject3 = DeviceAttrs.access$300(this.this$0) + "phone_attrs_config.zip";
-          if (DeviceUpdate.httpDownloadFile(str, (String)localObject3))
+          localObject4 = DeviceAttrs.access$100();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[checkVersion] verStr = ");
+          localStringBuilder.append((String)localObject2);
+          LogUtils.d((String)localObject4, localStringBuilder.toString());
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(DeviceAttrs.access$300(this.this$0));
+          ((StringBuilder)localObject4).append("phone_attrs_config.zip");
+          localObject4 = ((StringBuilder)localObject4).toString();
+          if (DeviceUpdate.httpDownloadFile((String)localObject3, (String)localObject4))
           {
-            str = DeviceUpdate.unZip((String)localObject3, DeviceAttrs.access$300(this.this$0));
-            if (!TextUtils.isEmpty(str))
+            localObject3 = DeviceUpdate.unZip((String)localObject4, DeviceAttrs.access$300(this.this$0));
+            if (!TextUtils.isEmpty((CharSequence)localObject3))
             {
-              LogUtils.d(DeviceAttrs.access$100(), "[checkVersion] unZipfilePath = " + str);
-              localObject3 = DeviceAttrs.access$000(this.this$0).edit();
-              ((SharedPreferences.Editor)localObject3).putString("xml_version", (String)localObject2);
-              ((SharedPreferences.Editor)localObject3).apply();
-              localObject2 = DeviceParser.parseCameraAttrsFile(DeviceAttrs.access$400(this.this$0), str, DeviceInstance.getInstance().getDeviceName(), DeviceAttrs.access$500(this.this$0));
+              localObject4 = DeviceAttrs.access$100();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[checkVersion] unZipfilePath = ");
+              localStringBuilder.append((String)localObject3);
+              LogUtils.d((String)localObject4, localStringBuilder.toString());
+              localObject4 = DeviceAttrs.access$000(this.this$0).edit();
+              ((SharedPreferences.Editor)localObject4).putString("xml_version", (String)localObject2);
+              ((SharedPreferences.Editor)localObject4).apply();
+              localObject2 = DeviceParser.parseCameraAttrsFile(DeviceAttrs.access$400(this.this$0), (String)localObject3, DeviceInstance.getInstance().getDeviceName(), DeviceAttrs.access$500(this.this$0));
               if (localObject2 != null) {
                 DeviceAttrs.access$600(this.this$0, (String)localObject2);
               }
               DeviceAttrs.access$700(this.this$0);
               DeviceAttrs.access$800(this.this$0);
-              if (this.val$listener != null) {
-                this.val$listener.onSuccess(DeviceAttrs.access$200(this.this$0) + ", download and parse success");
+              if (this.val$listener != null)
+              {
+                localObject2 = this.val$listener;
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append(DeviceAttrs.access$200(this.this$0));
+                ((StringBuilder)localObject3).append(", download and parse success");
+                ((DeviceAttrs.UpdateListener)localObject2).onSuccess(((StringBuilder)localObject3).toString());
               }
               localObject2 = new Intent();
               ((Intent)localObject2).setAction("action_check_online_update_finish");
@@ -66,6 +97,7 @@ class DeviceAttrs$1
           }
         }
         localObject2 = this.this$0;
+        bool = true;
         if (GsonUtils.optInt((JsonObject)localObject1, "nativeJpegEnable", 1) == 1)
         {
           ((DeviceAttrs)localObject2).serverJpegEnable = bool;
@@ -74,16 +106,20 @@ class DeviceAttrs$1
       }
       catch (Exception localException)
       {
-        LogUtils.e(DeviceAttrs.access$100(), "checkVersion JSONException e = " + localException);
+        localObject2 = DeviceAttrs.access$100();
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("checkVersion JSONException e = ");
+        ((StringBuilder)localObject3).append(localException);
+        LogUtils.e((String)localObject2, ((StringBuilder)localObject3).toString());
         return;
       }
-      bool = false;
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.device.DeviceAttrs.1
  * JD-Core Version:    0.7.0.1
  */

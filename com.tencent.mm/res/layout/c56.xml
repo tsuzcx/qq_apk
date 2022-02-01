@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/n6" android:background="@drawable/a6m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/j6"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.SnsLikesTextView android:gravity="center_vertical" android:id="@id/n4" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/g" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:gravity="center" android:id="@id/n8" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/m_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

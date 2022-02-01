@@ -15,15 +15,16 @@ public class QIPCServerHelper
   
   public static QIPCServerHelper getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new QIPCServerHelper();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new QIPCServerHelper();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void callClient(String paramString1, String paramString2, String paramString3, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
@@ -61,23 +62,26 @@ public class QIPCServerHelper
   
   public boolean isProcessRunning(String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString))) {
-      return false;
-    }
-    Iterator localIterator = getServer().getClientConnectionList().iterator();
-    while (localIterator.hasNext())
+    if (paramString != null)
     {
-      EIPCConnection localEIPCConnection = (EIPCConnection)localIterator.next();
-      try
-      {
-        boolean bool = paramString.equals(localEIPCConnection.procName);
-        if (bool) {
-          return true;
-        }
+      if ("".equals(paramString)) {
+        return false;
       }
-      catch (Throwable localThrowable)
+      Iterator localIterator = getServer().getClientConnectionList().iterator();
+      while (localIterator.hasNext())
       {
-        localThrowable.printStackTrace();
+        EIPCConnection localEIPCConnection = (EIPCConnection)localIterator.next();
+        try
+        {
+          boolean bool = paramString.equals(localEIPCConnection.procName);
+          if (bool) {
+            return true;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+        }
       }
     }
     return false;
@@ -95,7 +99,7 @@ public class QIPCServerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCServerHelper
  * JD-Core Version:    0.7.0.1
  */

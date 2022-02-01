@@ -12,19 +12,19 @@ public class StructField
   
   static
   {
-    AppMethodBeat.i(117011);
+    AppMethodBeat.i(109565);
     tagComp = new Comparator()
     {
       public int compare(JceField paramAnonymousJceField1, JceField paramAnonymousJceField2)
       {
-        AppMethodBeat.i(117009);
+        AppMethodBeat.i(109563);
         int i = paramAnonymousJceField1.getTag();
         int j = paramAnonymousJceField2.getTag();
-        AppMethodBeat.o(117009);
+        AppMethodBeat.o(109563);
         return i - j;
       }
     };
-    AppMethodBeat.o(117011);
+    AppMethodBeat.o(109565);
   }
   
   StructField(JceField[] paramArrayOfJceField, int paramInt)
@@ -40,26 +40,26 @@ public class StructField
   
   public JceField getFieldByTag(int paramInt)
   {
-    AppMethodBeat.i(117013);
+    AppMethodBeat.i(109567);
     paramInt = Arrays.binarySearch(this.data, JceField.createZero(paramInt), tagComp);
     if (paramInt >= 0)
     {
       JceField localJceField = this.data[paramInt];
-      AppMethodBeat.o(117013);
+      AppMethodBeat.o(109567);
       return localJceField;
     }
-    AppMethodBeat.o(117013);
+    AppMethodBeat.o(109567);
     return null;
   }
   
   public boolean setByTag(int paramInt, JceField paramJceField)
   {
-    AppMethodBeat.i(117012);
+    AppMethodBeat.i(109566);
     paramInt = Arrays.binarySearch(this.data, JceField.createZero(paramInt), tagComp);
     if (paramInt >= 0)
     {
       this.data[paramInt] = paramJceField;
-      AppMethodBeat.o(117012);
+      AppMethodBeat.o(109566);
       return true;
     }
     int i = -paramInt - 1;
@@ -74,7 +74,7 @@ public class StructField
     {
       if (paramInt >= this.data.length)
       {
-        AppMethodBeat.o(117012);
+        AppMethodBeat.o(109566);
         return false;
         arrayOfJceField[paramInt] = this.data[paramInt];
         paramInt += 1;
@@ -87,7 +87,7 @@ public class StructField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.StructField
  * JD-Core Version:    0.7.0.1
  */

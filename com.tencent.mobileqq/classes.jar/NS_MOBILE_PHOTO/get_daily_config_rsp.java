@@ -9,10 +9,10 @@ public final class get_daily_config_rsp
 {
   static daily_config_eventcard cache_eventCard_conf = new daily_config_eventcard();
   static daily_recommend_status cache_recommend_status = new daily_recommend_status();
-  public daily_config_eventcard eventCard_conf;
-  public daily_recommend_status recommend_status;
+  public daily_config_eventcard eventCard_conf = null;
+  public daily_recommend_status recommend_status = null;
   public boolean remind_upload_on = true;
-  public long uin;
+  public long uin = 0L;
   
   public get_daily_config_rsp() {}
   
@@ -35,18 +35,20 @@ public final class get_daily_config_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.eventCard_conf != null) {
-      paramJceOutputStream.write(this.eventCard_conf, 1);
+    Object localObject = this.eventCard_conf;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.recommend_status != null) {
-      paramJceOutputStream.write(this.recommend_status, 2);
+    localObject = this.recommend_status;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.remind_upload_on, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_daily_config_rsp
  * JD-Core Version:    0.7.0.1
  */

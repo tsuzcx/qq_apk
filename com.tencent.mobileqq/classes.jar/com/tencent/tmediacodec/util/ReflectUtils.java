@@ -21,54 +21,59 @@ public class ReflectUtils
   
   public static Constructor<?> getConstructor(Class<?> paramClass, boolean paramBoolean1, boolean paramBoolean2, Class<?>... paramVarArgs)
   {
-    localObject2 = null;
-    localObject1 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
     if (paramBoolean1) {}
     try
     {
-      return paramClass.getDeclaredConstructor(paramVarArgs);
+      localObject2 = paramClass.getDeclaredConstructor(paramVarArgs);
+      paramClass = (Class<?>)localObject2;
+      break label33;
+      localObject2 = paramClass.getConstructor(paramVarArgs);
+      paramClass = (Class<?>)localObject2;
+      label33:
+      return paramClass;
     }
     catch (NoSuchMethodException localNoSuchMethodException1)
     {
-      Constructor localConstructor;
-      if (!paramBoolean2) {
-        break label100;
-      }
-      Class localClass = paramClass.getSuperclass();
+      Object localObject2;
+      label35:
+      label95:
+      break label35;
+    }
+    if (paramBoolean2)
+    {
+      localObject2 = paramClass.getSuperclass();
       for (;;)
       {
-        localObject2 = localObject1;
+        localObject3 = localObject1;
         if (localObject1 != null) {
           break;
         }
-        localObject2 = localObject1;
-        if (localClass == null) {
-          break;
-        }
-        if (paramBoolean1) {}
+        localObject3 = localObject1;
+        if ((localObject2 == null) || (paramBoolean1)) {}
         try
         {
-          localObject2 = paramClass.getDeclaredConstructor(paramVarArgs);
-          localObject1 = localObject2;
+          localObject3 = paramClass.getDeclaredConstructor(paramVarArgs);
+          localObject1 = localObject3;
         }
         catch (NoSuchMethodException localNoSuchMethodException2)
         {
-          localClass = localClass.getSuperclass();
+          break label95;
         }
-        localObject2 = paramClass.getConstructor(paramVarArgs);
-        localObject1 = localObject2;
+        localObject3 = paramClass.getConstructor(paramVarArgs);
+        localObject1 = localObject3;
+        continue;
+        localObject2 = ((Class)localObject2).getSuperclass();
       }
-      return localNoSuchMethodException2;
     }
-    localConstructor = paramClass.getConstructor(paramVarArgs);
-    return localConstructor;
+    return localObject3;
   }
   
   public static List<Constructor<?>> getConstructors(Class<?> paramClass, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int i = 0;
     ArrayList localArrayList = new ArrayList();
-    int j;
+    int i = 0;
     if (paramBoolean2)
     {
       List localList = getSuperClasss(paramClass, true);
@@ -78,26 +83,11 @@ public class ReflectUtils
         i = localList.size() - 1;
         while (i > -1)
         {
-          if (paramBoolean1) {}
-          for (paramClass = ((Class)localList.get(i)).getDeclaredConstructors();; paramClass = ((Class)localList.get(i)).getConstructors())
-          {
-            k = paramClass.length;
-            j = 0;
-            while (j < k)
-            {
-              localArrayList.add(paramClass[j]);
-              j += 1;
-            }
+          if (paramBoolean1) {
+            paramClass = ((Class)localList.get(i)).getDeclaredConstructors();
+          } else {
+            paramClass = ((Class)localList.get(i)).getConstructors();
           }
-          i -= 1;
-        }
-      }
-      i = 0;
-      while (i < localList.size())
-      {
-        if (paramBoolean1) {}
-        for (paramClass = ((Class)localList.get(i)).getDeclaredConstructors();; paramClass = ((Class)localList.get(i)).getConstructors())
-        {
           k = paramClass.length;
           j = 0;
           while (j < k)
@@ -105,19 +95,37 @@ public class ReflectUtils
             localArrayList.add(paramClass[j]);
             j += 1;
           }
+          i -= 1;
+        }
+      }
+      i = 0;
+      while (i < localList.size())
+      {
+        if (paramBoolean1) {
+          paramClass = ((Class)localList.get(i)).getDeclaredConstructors();
+        } else {
+          paramClass = ((Class)localList.get(i)).getConstructors();
+        }
+        k = paramClass.length;
+        j = 0;
+        while (j < k)
+        {
+          localArrayList.add(paramClass[j]);
+          j += 1;
         }
         i += 1;
       }
     }
-    if (paramBoolean1) {}
-    for (paramClass = paramClass.getDeclaredConstructors();; paramClass = paramClass.getConstructors())
+    if (paramBoolean1) {
+      paramClass = paramClass.getDeclaredConstructors();
+    } else {
+      paramClass = paramClass.getConstructors();
+    }
+    int j = paramClass.length;
+    while (i < j)
     {
-      j = paramClass.length;
-      while (i < j)
-      {
-        localArrayList.add(paramClass[i]);
-        i += 1;
-      }
+      localArrayList.add(paramClass[i]);
+      i += 1;
     }
     return localArrayList;
   }
@@ -129,48 +137,55 @@ public class ReflectUtils
   
   public static Field getField(Class<?> paramClass, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    localObject1 = null;
-    localObject2 = null;
+    Object localObject2 = null;
+    Object localObject3 = null;
     if (paramBoolean1) {}
     try
     {
-      return paramClass.getDeclaredField(paramString);
+      localObject1 = paramClass.getDeclaredField(paramString);
+      paramClass = (Class<?>)localObject1;
+      break label33;
+      localObject1 = paramClass.getField(paramString);
+      paramClass = (Class<?>)localObject1;
+      label33:
+      return paramClass;
     }
     catch (NoSuchFieldException localNoSuchFieldException1)
     {
-      Field localField;
-      if (!paramBoolean2) {
-        break label100;
-      }
-      Class localClass = paramClass.getSuperclass();
-      paramClass = localObject2;
+      Object localObject1;
+      label35:
+      label92:
+      label95:
+      break label35;
+    }
+    if (paramBoolean2)
+    {
+      localObject1 = paramClass.getSuperclass();
+      paramClass = localObject3;
       for (;;)
       {
-        localObject1 = paramClass;
+        localObject2 = paramClass;
         if (paramClass != null) {
           break;
         }
-        localObject1 = paramClass;
-        if (localClass == null) {
-          break;
-        }
-        if (paramBoolean1) {}
+        localObject2 = paramClass;
+        if ((localObject1 == null) || (paramBoolean1)) {}
         try
         {
-          localObject1 = localClass.getDeclaredField(paramString);
-          paramClass = (Class<?>)localObject1;
+          localObject2 = ((Class)localObject1).getDeclaredField(paramString);
+          paramClass = (Class<?>)localObject2;
+          break label92;
+          localObject2 = ((Class)localObject1).getField(paramString);
+          paramClass = (Class<?>)localObject2;
         }
         catch (NoSuchFieldException localNoSuchFieldException2)
         {
-          localClass = localClass.getSuperclass();
+          break label95;
         }
-        localObject1 = localClass.getField(paramString);
-        paramClass = (Class<?>)localObject1;
+        localObject1 = ((Class)localObject1).getSuperclass();
       }
-      return localNoSuchFieldException2;
     }
-    localField = paramClass.getField(paramString);
-    return localField;
+    return localObject2;
   }
   
   public static List<Field> getFields(Class<?> paramClass)
@@ -180,55 +195,36 @@ public class ReflectUtils
   
   public static List<Field> getFields(Class<?> paramClass, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    int i = 0;
     ArrayList localArrayList = new ArrayList();
-    int j;
+    int i = 0;
     if (paramBoolean2)
     {
       Object localObject;
-      int k;
       if (paramBoolean3)
       {
         paramClass = getSuperClasss(paramClass, true);
-        if (paramBoolean4) {
-          i = paramClass.size() - 1;
-        }
       }
       else
       {
-        for (;;)
-        {
-          if (i <= -1) {
-            break label323;
-          }
-          if (paramBoolean1) {}
-          for (localObject = ((Class)paramClass.get(i)).getDeclaredFields();; localObject = ((Class)paramClass.get(i)).getFields())
-          {
-            k = localObject.length;
-            j = 0;
-            while (j < k)
-            {
-              localArrayList.add(localObject[j]);
-              j += 1;
-            }
-            localObject = new ArrayList(2);
-            ((List)localObject).add(paramClass);
-            paramClass = paramClass.getSuperclass();
-            if (paramClass != null) {
-              ((List)localObject).add(paramClass);
-            }
-            paramClass = (Class<?>)localObject;
-            break;
-          }
-          i -= 1;
+        localObject = new ArrayList(2);
+        ((List)localObject).add(paramClass);
+        paramClass = paramClass.getSuperclass();
+        if (paramClass != null) {
+          ((List)localObject).add(paramClass);
         }
+        paramClass = (Class<?>)localObject;
       }
-      i = 0;
-      while (i < paramClass.size())
+      int k;
+      if (paramBoolean4)
       {
-        if (paramBoolean1) {}
-        for (localObject = ((Class)paramClass.get(i)).getDeclaredFields();; localObject = ((Class)paramClass.get(i)).getFields())
+        i = paramClass.size() - 1;
+        while (i > -1)
         {
+          if (paramBoolean1) {
+            localObject = ((Class)paramClass.get(i)).getDeclaredFields();
+          } else {
+            localObject = ((Class)paramClass.get(i)).getFields();
+          }
           k = localObject.length;
           j = 0;
           while (j < k)
@@ -236,21 +232,38 @@ public class ReflectUtils
             localArrayList.add(localObject[j]);
             j += 1;
           }
+          i -= 1;
+        }
+      }
+      i = 0;
+      while (i < paramClass.size())
+      {
+        if (paramBoolean1) {
+          localObject = ((Class)paramClass.get(i)).getDeclaredFields();
+        } else {
+          localObject = ((Class)paramClass.get(i)).getFields();
+        }
+        k = localObject.length;
+        j = 0;
+        while (j < k)
+        {
+          localArrayList.add(localObject[j]);
+          j += 1;
         }
         i += 1;
       }
     }
-    if (paramBoolean1) {}
-    for (paramClass = paramClass.getDeclaredFields();; paramClass = paramClass.getFields())
-    {
-      j = paramClass.length;
-      while (i < j)
-      {
-        localArrayList.add(paramClass[i]);
-        i += 1;
-      }
+    if (paramBoolean1) {
+      paramClass = paramClass.getDeclaredFields();
+    } else {
+      paramClass = paramClass.getFields();
     }
-    label323:
+    int j = paramClass.length;
+    while (i < j)
+    {
+      localArrayList.add(paramClass[i]);
+      i += 1;
+    }
     return localArrayList;
   }
   
@@ -266,48 +279,55 @@ public class ReflectUtils
   
   public static Method getMethod(Class<?> paramClass, boolean paramBoolean1, boolean paramBoolean2, String paramString, Class<?>... paramVarArgs)
   {
-    localObject1 = null;
-    localObject2 = null;
+    Object localObject2 = null;
+    Object localObject3 = null;
     if (paramBoolean1) {}
     try
     {
-      return paramClass.getDeclaredMethod(paramString, paramVarArgs);
+      localObject1 = paramClass.getDeclaredMethod(paramString, paramVarArgs);
+      paramClass = (Class<?>)localObject1;
+      break label37;
+      localObject1 = paramClass.getMethod(paramString, paramVarArgs);
+      paramClass = (Class<?>)localObject1;
+      label37:
+      return paramClass;
     }
     catch (NoSuchMethodException localNoSuchMethodException1)
     {
-      Method localMethod;
-      if (!paramBoolean2) {
-        break label108;
-      }
-      Class localClass = paramClass.getSuperclass();
-      paramClass = localObject2;
+      Object localObject1;
+      label39:
+      label100:
+      label103:
+      break label39;
+    }
+    if (paramBoolean2)
+    {
+      localObject1 = paramClass.getSuperclass();
+      paramClass = localObject3;
       for (;;)
       {
-        localObject1 = paramClass;
+        localObject2 = paramClass;
         if (paramClass != null) {
           break;
         }
-        localObject1 = paramClass;
-        if (localClass == null) {
-          break;
-        }
-        if (paramBoolean1) {}
+        localObject2 = paramClass;
+        if ((localObject1 == null) || (paramBoolean1)) {}
         try
         {
-          localObject1 = localClass.getDeclaredMethod(paramString, paramVarArgs);
-          paramClass = (Class<?>)localObject1;
+          localObject2 = ((Class)localObject1).getDeclaredMethod(paramString, paramVarArgs);
+          paramClass = (Class<?>)localObject2;
+          break label100;
+          localObject2 = ((Class)localObject1).getMethod(paramString, paramVarArgs);
+          paramClass = (Class<?>)localObject2;
         }
         catch (NoSuchMethodException localNoSuchMethodException2)
         {
-          localClass = localClass.getSuperclass();
+          break label103;
         }
-        localObject1 = localClass.getMethod(paramString, paramVarArgs);
-        paramClass = (Class<?>)localObject1;
+        localObject1 = ((Class)localObject1).getSuperclass();
       }
-      return localNoSuchMethodException2;
     }
-    localMethod = paramClass.getMethod(paramString, paramVarArgs);
-    return localMethod;
+    return localObject2;
   }
   
   public static List<Method> getMethods(Class<?> paramClass)
@@ -317,9 +337,8 @@ public class ReflectUtils
   
   public static List<Method> getMethods(Class<?> paramClass, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int i = 0;
     ArrayList localArrayList = new ArrayList();
-    int j;
+    int i = 0;
     if (paramBoolean2)
     {
       List localList = getSuperClasss(paramClass, true);
@@ -329,26 +348,11 @@ public class ReflectUtils
         i = localList.size() - 1;
         while (i > -1)
         {
-          if (paramBoolean1) {}
-          for (paramClass = ((Class)localList.get(i)).getDeclaredMethods();; paramClass = ((Class)localList.get(i)).getMethods())
-          {
-            k = paramClass.length;
-            j = 0;
-            while (j < k)
-            {
-              localArrayList.add(paramClass[j]);
-              j += 1;
-            }
+          if (paramBoolean1) {
+            paramClass = ((Class)localList.get(i)).getDeclaredMethods();
+          } else {
+            paramClass = ((Class)localList.get(i)).getMethods();
           }
-          i -= 1;
-        }
-      }
-      i = 0;
-      while (i < localList.size())
-      {
-        if (paramBoolean1) {}
-        for (paramClass = ((Class)localList.get(i)).getDeclaredMethods();; paramClass = ((Class)localList.get(i)).getMethods())
-        {
           k = paramClass.length;
           j = 0;
           while (j < k)
@@ -356,50 +360,59 @@ public class ReflectUtils
             localArrayList.add(paramClass[j]);
             j += 1;
           }
+          i -= 1;
+        }
+      }
+      i = 0;
+      while (i < localList.size())
+      {
+        if (paramBoolean1) {
+          paramClass = ((Class)localList.get(i)).getDeclaredMethods();
+        } else {
+          paramClass = ((Class)localList.get(i)).getMethods();
+        }
+        k = paramClass.length;
+        j = 0;
+        while (j < k)
+        {
+          localArrayList.add(paramClass[j]);
+          j += 1;
         }
         i += 1;
       }
     }
-    if (paramBoolean1) {}
-    for (paramClass = paramClass.getDeclaredMethods();; paramClass = paramClass.getMethods())
+    if (paramBoolean1) {
+      paramClass = paramClass.getDeclaredMethods();
+    } else {
+      paramClass = paramClass.getMethods();
+    }
+    int j = paramClass.length;
+    while (i < j)
     {
-      j = paramClass.length;
-      while (i < j)
-      {
-        localArrayList.add(paramClass[i]);
-        i += 1;
-      }
+      localArrayList.add(paramClass[i]);
+      i += 1;
     }
     return localArrayList;
   }
   
   public static <T> T getObjectByFieldName(Object paramObject, String paramString, Class<T> paramClass)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramObject != null)
-    {
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty(paramString))
+    if ((paramObject != null) && (!TextUtils.isEmpty(paramString)) && (paramClass != null)) {
+      try
       {
-        localObject1 = localObject2;
-        if (paramClass == null) {}
+        paramString = getField(paramObject.getClass(), paramString, true, true);
+        if (paramString != null)
+        {
+          paramString.setAccessible(true);
+          paramObject = paramString.get(paramObject);
+          return paramObject;
+        }
+        return null;
       }
-    }
-    try
-    {
-      paramString = getField(paramObject.getClass(), paramString, true, true);
-      localObject1 = localObject2;
-      if (paramString != null)
+      catch (Exception paramObject)
       {
-        paramString.setAccessible(true);
-        localObject1 = paramString.get(paramObject);
+        paramObject.printStackTrace();
       }
-      return localObject1;
-    }
-    catch (Exception paramObject)
-    {
-      paramObject.printStackTrace();
     }
     return null;
   }
@@ -407,13 +420,9 @@ public class ReflectUtils
   public static List<Class<?>> getSuperClasss(Class<?> paramClass, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramBoolean) {}
-    while (paramClass != null)
-    {
+    if (!paramBoolean) {}
+    for (paramClass = paramClass.getSuperclass(); paramClass != null; paramClass = paramClass.getSuperclass()) {
       localArrayList.add(paramClass);
-      paramClass = paramClass.getSuperclass();
-      continue;
-      paramClass = paramClass.getSuperclass();
     }
     return localArrayList;
   }
@@ -460,7 +469,6 @@ public class ReflectUtils
       catch (IllegalAccessException paramObject1)
       {
         paramObject1.printStackTrace();
-        return false;
       }
     }
     return false;
@@ -468,7 +476,7 @@ public class ReflectUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.util.ReflectUtils
  * JD-Core Version:    0.7.0.1
  */

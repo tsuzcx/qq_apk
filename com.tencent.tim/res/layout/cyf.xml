@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/axk" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.core.view.ViewPager android:id="@id/ofq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ofp" android:layout_width="fill_parent" android:layout_height="7.0dip" android:layout_marginBottom="24.0dip" android:layout_alignParentBottom="true">
+        <CheckBox style="@style/aih" />
+        <CheckBox style="@style/aih" />
+        <CheckBox style="@style/aih" />
+        <CheckBox android:layout_marginRight="0.0dip" style="@style/aih" />
+    </LinearLayout>
+</RelativeLayout>

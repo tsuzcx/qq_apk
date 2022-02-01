@@ -1,54 +1,40 @@
 package com.tencent.mm.wallet_core.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONObject;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class c
+public abstract class c<T extends d>
+  implements com.tencent.mm.am.h
 {
-  public String AWJ;
-  public String AWK;
-  public String AWL;
-  public String cvV;
-  public String title;
+  public com.tencent.mm.am.h agTP;
+  T agTQ;
+  public int rtType;
   
-  public c()
+  protected abstract void a(d paramd);
+  
+  public abstract boolean a(int paramInt1, int paramInt2, T paramT);
+  
+  public final void b(d paramd)
   {
-    this.title = "";
-    this.AWJ = "";
-    this.AWK = "";
-    this.AWL = "";
-    this.cvV = "";
+    Log.i("MicroMsg.IDelayQueryOrder", "doScene rtType %s", new Object[] { Integer.valueOf(this.rtType) });
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(this.rtType, this);
+    a(paramd);
   }
   
-  public c(String paramString)
+  public final void hoB()
   {
-    AppMethodBeat.i(49036);
-    this.title = "";
-    this.AWJ = "";
-    this.AWK = "";
-    this.AWL = "";
-    this.cvV = "";
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(49036);
-      return;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.title = paramString.optString("title");
-      this.AWJ = paramString.optString("body1");
-      this.AWK = paramString.optString("body2");
-      this.AWL = paramString.optString("button");
-      AppMethodBeat.o(49036);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.CrtRtnWoding", "crtwoding error %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(49036);
+    Log.i("MicroMsg.IDelayQueryOrder", "onDestory rtType %s", new Object[] { Integer.valueOf(this.rtType) });
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(this.rtType, this);
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    Log.d("MicroMsg.IDelayQueryOrder", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramp });
+    if (((paramp instanceof d)) && (!a(paramInt1, paramInt2, (d)paramp)) && (this.agTP != null) && (this.agTQ != null) && ((this.agTQ instanceof p))) {
+      this.agTP.onSceneEnd(paramInt1, paramInt2, paramString, (p)this.agTQ);
     }
   }
 }

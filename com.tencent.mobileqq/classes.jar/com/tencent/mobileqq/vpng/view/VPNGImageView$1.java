@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.vpng.view;
 
-import android.view.TextureView;
-import android.widget.ImageView;
+import com.tencent.mobileqq.vpng.glrenderer.VPNGRenderer;
 
 class VPNGImageView$1
   implements Runnable
@@ -10,13 +9,14 @@ class VPNGImageView$1
   
   public void run()
   {
-    this.this$0.mTextureView.setAlpha(1.0F);
-    this.this$0.mPreImageView.setVisibility(8);
+    if (this.this$0.mVPNGRenderer != null) {
+      this.this$0.mVPNGRenderer.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.view.VPNGImageView.1
  * JD-Core Version:    0.7.0.1
  */

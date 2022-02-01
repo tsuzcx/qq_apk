@@ -8,13 +8,13 @@ public class zzbc
   extends zza
 {
   public static final Parcelable.Creator<zzbc> CREATOR = new x();
-  public final boolean Tq;
+  public final boolean Vf;
   public final int statusCode;
   
   public zzbc(int paramInt, boolean paramBoolean)
   {
     this.statusCode = paramInt;
-    this.Tq = paramBoolean;
+    this.Vf = paramBoolean;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

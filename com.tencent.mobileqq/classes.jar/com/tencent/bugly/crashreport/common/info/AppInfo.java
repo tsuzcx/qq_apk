@@ -38,140 +38,163 @@ public class AppInfo
   public static String a(int paramInt)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: new 29	java/io/FileReader
-    //   5: dup
-    //   6: new 31	java/lang/StringBuilder
-    //   9: dup
-    //   10: ldc 33
-    //   12: invokespecial 36	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   15: iload_0
-    //   16: invokevirtual 40	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   19: ldc 42
-    //   21: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   27: invokespecial 50	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   30: astore_3
-    //   31: aload_3
-    //   32: astore_2
-    //   33: sipush 512
-    //   36: newarray char
-    //   38: astore 4
-    //   40: aload_3
-    //   41: astore_2
-    //   42: aload_3
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore_3
+    //   5: aload_3
+    //   6: astore_2
+    //   7: new 29	java/lang/StringBuilder
+    //   10: dup
+    //   11: ldc 31
+    //   13: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   16: astore 4
+    //   18: aload_3
+    //   19: astore_2
+    //   20: aload 4
+    //   22: iload_0
+    //   23: invokevirtual 38	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload_3
+    //   28: astore_2
+    //   29: aload 4
+    //   31: ldc 40
+    //   33: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload_3
+    //   38: astore_2
+    //   39: new 45	java/io/FileReader
+    //   42: dup
     //   43: aload 4
-    //   45: invokevirtual 54	java/io/FileReader:read	([C)I
-    //   48: pop
-    //   49: aload_3
-    //   50: astore_2
-    //   51: iload_1
-    //   52: aload 4
-    //   54: arraylength
-    //   55: if_icmpge +17 -> 72
-    //   58: aload 4
-    //   60: iload_1
-    //   61: caload
-    //   62: ifeq +10 -> 72
-    //   65: iload_1
-    //   66: iconst_1
-    //   67: iadd
-    //   68: istore_1
-    //   69: goto -20 -> 49
-    //   72: aload_3
-    //   73: astore_2
-    //   74: new 14	java/lang/String
-    //   77: dup
-    //   78: aload 4
-    //   80: invokespecial 57	java/lang/String:<init>	([C)V
-    //   83: iconst_0
-    //   84: iload_1
-    //   85: invokevirtual 61	java/lang/String:substring	(II)Ljava/lang/String;
-    //   88: astore 4
-    //   90: aload 4
-    //   92: astore_2
-    //   93: aload_3
-    //   94: invokevirtual 64	java/io/FileReader:close	()V
-    //   97: aload_2
-    //   98: areturn
-    //   99: astore 4
-    //   101: aconst_null
-    //   102: astore_3
-    //   103: aload_3
-    //   104: astore_2
-    //   105: aload 4
-    //   107: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   110: ifne +10 -> 120
-    //   113: aload_3
-    //   114: astore_2
-    //   115: aload 4
-    //   117: invokevirtual 72	java/lang/Throwable:printStackTrace	()V
-    //   120: iload_0
-    //   121: invokestatic 75	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   124: astore 4
-    //   126: aload 4
-    //   128: astore_2
-    //   129: aload_3
-    //   130: ifnull -33 -> 97
-    //   133: aload_3
-    //   134: invokevirtual 64	java/io/FileReader:close	()V
-    //   137: aload 4
-    //   139: areturn
-    //   140: astore_2
-    //   141: aload 4
-    //   143: areturn
-    //   144: astore_3
-    //   145: aconst_null
-    //   146: astore_2
-    //   147: aload_2
-    //   148: ifnull +7 -> 155
-    //   151: aload_2
-    //   152: invokevirtual 64	java/io/FileReader:close	()V
-    //   155: aload_3
-    //   156: athrow
-    //   157: astore_3
-    //   158: aload_2
-    //   159: areturn
-    //   160: astore_2
-    //   161: goto -6 -> 155
-    //   164: astore_3
-    //   165: goto -18 -> 147
-    //   168: astore 4
-    //   170: goto -67 -> 103
+    //   45: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokespecial 50	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   51: astore_3
+    //   52: sipush 512
+    //   55: newarray char
+    //   57: astore_2
+    //   58: aload_3
+    //   59: aload_2
+    //   60: invokevirtual 54	java/io/FileReader:read	([C)I
+    //   63: pop
+    //   64: iconst_0
+    //   65: istore_1
+    //   66: iload_1
+    //   67: aload_2
+    //   68: arraylength
+    //   69: if_icmpge +16 -> 85
+    //   72: aload_2
+    //   73: iload_1
+    //   74: caload
+    //   75: ifeq +10 -> 85
+    //   78: iload_1
+    //   79: iconst_1
+    //   80: iadd
+    //   81: istore_1
+    //   82: goto -16 -> 66
+    //   85: new 14	java/lang/String
+    //   88: dup
+    //   89: aload_2
+    //   90: invokespecial 57	java/lang/String:<init>	([C)V
+    //   93: iconst_0
+    //   94: iload_1
+    //   95: invokevirtual 61	java/lang/String:substring	(II)Ljava/lang/String;
+    //   98: astore_2
+    //   99: aload_3
+    //   100: invokevirtual 64	java/io/FileReader:close	()V
+    //   103: aload_2
+    //   104: areturn
+    //   105: astore 4
+    //   107: aload_3
+    //   108: astore_2
+    //   109: aload 4
+    //   111: astore_3
+    //   112: goto +55 -> 167
+    //   115: astore_2
+    //   116: aload_2
+    //   117: astore 4
+    //   119: goto +12 -> 131
+    //   122: astore_3
+    //   123: goto +44 -> 167
+    //   126: astore 4
+    //   128: aload 5
+    //   130: astore_3
+    //   131: aload_3
+    //   132: astore_2
+    //   133: aload 4
+    //   135: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   138: ifne +10 -> 148
+    //   141: aload_3
+    //   142: astore_2
+    //   143: aload 4
+    //   145: invokevirtual 72	java/lang/Throwable:printStackTrace	()V
+    //   148: aload_3
+    //   149: astore_2
+    //   150: iload_0
+    //   151: invokestatic 75	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   154: astore 4
+    //   156: aload_3
+    //   157: ifnull +7 -> 164
+    //   160: aload_3
+    //   161: invokevirtual 64	java/io/FileReader:close	()V
+    //   164: aload 4
+    //   166: areturn
+    //   167: aload_2
+    //   168: ifnull +7 -> 175
+    //   171: aload_2
+    //   172: invokevirtual 64	java/io/FileReader:close	()V
+    //   175: goto +5 -> 180
+    //   178: aload_3
+    //   179: athrow
+    //   180: goto -2 -> 178
+    //   183: astore_3
+    //   184: aload_2
+    //   185: areturn
+    //   186: astore_2
+    //   187: aload 4
+    //   189: areturn
+    //   190: astore_2
+    //   191: goto -16 -> 175
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	173	0	paramInt	int
-    //   1	84	1	i	int
-    //   32	97	2	localObject1	Object
-    //   140	1	2	localThrowable1	Throwable
-    //   146	13	2	str1	String
-    //   160	1	2	localThrowable2	Throwable
-    //   30	104	3	localFileReader	java.io.FileReader
-    //   144	12	3	localObject2	Object
-    //   157	1	3	localThrowable3	Throwable
-    //   164	1	3	localObject3	Object
-    //   38	53	4	localObject4	Object
-    //   99	17	4	localThrowable4	Throwable
-    //   124	18	4	str2	String
-    //   168	1	4	localThrowable5	Throwable
+    //   0	194	0	paramInt	int
+    //   65	30	1	i	int
+    //   6	103	2	localObject1	Object
+    //   115	2	2	localThrowable1	Throwable
+    //   132	53	2	localObject2	Object
+    //   186	1	2	localThrowable2	Throwable
+    //   190	1	2	localThrowable3	Throwable
+    //   4	108	3	localObject3	Object
+    //   122	1	3	localObject4	Object
+    //   130	49	3	localObject5	Object
+    //   183	1	3	localThrowable4	Throwable
+    //   16	28	4	localStringBuilder	StringBuilder
+    //   105	5	4	localObject6	Object
+    //   117	1	4	localThrowable5	Throwable
+    //   126	18	4	localThrowable6	Throwable
+    //   154	34	4	str	String
+    //   1	128	5	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   2	31	99	java/lang/Throwable
-    //   133	137	140	java/lang/Throwable
-    //   2	31	144	finally
-    //   93	97	157	java/lang/Throwable
-    //   151	155	160	java/lang/Throwable
-    //   33	40	164	finally
-    //   42	49	164	finally
-    //   51	58	164	finally
-    //   74	90	164	finally
-    //   105	113	164	finally
-    //   115	120	164	finally
-    //   33	40	168	java/lang/Throwable
-    //   42	49	168	java/lang/Throwable
-    //   51	58	168	java/lang/Throwable
-    //   74	90	168	java/lang/Throwable
+    //   52	64	105	finally
+    //   66	72	105	finally
+    //   85	99	105	finally
+    //   52	64	115	java/lang/Throwable
+    //   66	72	115	java/lang/Throwable
+    //   85	99	115	java/lang/Throwable
+    //   7	18	122	finally
+    //   20	27	122	finally
+    //   29	37	122	finally
+    //   39	52	122	finally
+    //   133	141	122	finally
+    //   143	148	122	finally
+    //   150	156	122	finally
+    //   7	18	126	java/lang/Throwable
+    //   20	27	126	java/lang/Throwable
+    //   29	37	126	java/lang/Throwable
+    //   39	52	126	java/lang/Throwable
+    //   99	103	183	java/lang/Throwable
+    //   160	164	186	java/lang/Throwable
+    //   171	175	190	java/lang/Throwable
   }
   
   public static String a(Context paramContext)
@@ -196,12 +219,10 @@ public class AppInfo
   private static String a(byte[] paramArrayOfByte)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
-    for (;;)
-    {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
       try
       {
-        localObject1 = CertificateFactory.getInstance("X.509");
+        Object localObject1 = CertificateFactory.getInstance("X.509");
         if (localObject1 == null) {
           return null;
         }
@@ -211,81 +232,68 @@ public class AppInfo
         }
         localStringBuilder.append("Issuer|");
         localObject1 = paramArrayOfByte.getIssuerDN();
-        if (localObject1 == null) {
-          continue;
+        if (localObject1 != null) {
+          localStringBuilder.append(((Principal)localObject1).toString());
+        } else {
+          localStringBuilder.append("unknown");
         }
-        localStringBuilder.append(((Principal)localObject1).toString());
         localStringBuilder.append("\n");
         localStringBuilder.append("SerialNumber|");
-        localObject2 = paramArrayOfByte.getSerialNumber();
-        if (localObject1 == null) {
-          continue;
+        Object localObject2 = paramArrayOfByte.getSerialNumber();
+        if (localObject1 != null) {
+          localStringBuilder.append(((BigInteger)localObject2).toString(16));
+        } else {
+          localStringBuilder.append("unknown");
         }
-        localStringBuilder.append(((BigInteger)localObject2).toString(16));
-      }
-      catch (CertificateException paramArrayOfByte)
-      {
-        Object localObject1;
-        Object localObject2;
-        if (x.a(paramArrayOfByte)) {
-          continue;
+        localStringBuilder.append("\n");
+        localStringBuilder.append("NotBefore|");
+        localObject2 = paramArrayOfByte.getNotBefore();
+        if (localObject1 != null) {
+          localStringBuilder.append(((Date)localObject2).toString());
+        } else {
+          localStringBuilder.append("unknown");
         }
-        paramArrayOfByte.printStackTrace();
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
+        localStringBuilder.append("\n");
+        localStringBuilder.append("NotAfter|");
+        localObject2 = paramArrayOfByte.getNotAfter();
+        if (localObject1 != null) {
+          localStringBuilder.append(((Date)localObject2).toString());
+        } else {
+          localStringBuilder.append("unknown");
+        }
+        localStringBuilder.append("\n");
+        localStringBuilder.append("SHA1|");
+        localObject1 = z.a(MessageDigest.getInstance("SHA1").digest(paramArrayOfByte.getEncoded()));
+        if ((localObject1 != null) && (((String)localObject1).length() > 0)) {
+          localStringBuilder.append(((String)localObject1).toString());
+        } else {
+          localStringBuilder.append("unknown");
+        }
+        localStringBuilder.append("\n");
+        localStringBuilder.append("MD5|");
+        paramArrayOfByte = z.a(MessageDigest.getInstance("MD5").digest(paramArrayOfByte.getEncoded()));
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length() > 0)) {
+          localStringBuilder.append(paramArrayOfByte.toString());
+        } else {
+          localStringBuilder.append("unknown");
+        }
       }
       catch (Throwable paramArrayOfByte)
       {
-        if (x.a(paramArrayOfByte)) {
-          continue;
+        if (!x.a(paramArrayOfByte)) {
+          paramArrayOfByte.printStackTrace();
         }
-        paramArrayOfByte.printStackTrace();
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
       }
-      localStringBuilder.append("\n");
-      localStringBuilder.append("NotBefore|");
-      localObject2 = paramArrayOfByte.getNotBefore();
-      if (localObject1 == null) {
-        continue;
+      catch (CertificateException paramArrayOfByte)
+      {
+        if (!x.a(paramArrayOfByte)) {
+          paramArrayOfByte.printStackTrace();
+        }
       }
-      localStringBuilder.append(((Date)localObject2).toString());
-      localStringBuilder.append("\n");
-      localStringBuilder.append("NotAfter|");
-      localObject2 = paramArrayOfByte.getNotAfter();
-      if (localObject1 == null) {
-        continue;
-      }
-      localStringBuilder.append(((Date)localObject2).toString());
-      localStringBuilder.append("\n");
-      localStringBuilder.append("SHA1|");
-      localObject1 = z.a(MessageDigest.getInstance("SHA1").digest(paramArrayOfByte.getEncoded()));
-      if ((localObject1 == null) || (((String)localObject1).length() <= 0)) {
-        continue;
-      }
-      localStringBuilder.append(((String)localObject1).toString());
-      localStringBuilder.append("\n");
-      localStringBuilder.append("MD5|");
-      paramArrayOfByte = z.a(MessageDigest.getInstance("MD5").digest(paramArrayOfByte.getEncoded()));
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length() <= 0)) {
-        continue;
-      }
-      localStringBuilder.append(paramArrayOfByte.toString());
-      if (localStringBuilder.length() != 0) {
-        break label376;
-      }
-      return "unknown";
-      localStringBuilder.append("unknown");
     }
-    label376:
+    if (localStringBuilder.length() == 0) {
+      return "unknown";
+    }
     return localStringBuilder.toString();
   }
   
@@ -297,8 +305,11 @@ public class AppInfo
     try
     {
       paramMap = (String)paramMap.get("BUGLY_DISABLE");
-      if ((paramMap != null) && (paramMap.length() != 0))
+      if (paramMap != null)
       {
+        if (paramMap.length() == 0) {
+          return null;
+        }
         paramMap = paramMap.split(",");
         int i = 0;
         while (i < paramMap.length)
@@ -309,23 +320,24 @@ public class AppInfo
         paramMap = Arrays.asList(paramMap);
         return paramMap;
       }
+      return null;
     }
     catch (Throwable paramMap)
     {
       if (!x.a(paramMap)) {
         paramMap.printStackTrace();
       }
-      return null;
     }
     return null;
   }
   
   public static boolean a(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (paramString == null) || (paramString.trim().length() <= 0)) {}
-    for (;;)
+    if ((paramContext != null) && (paramString != null))
     {
-      return false;
+      if (paramString.trim().length() <= 0) {
+        return false;
+      }
       try
       {
         paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 4096).requestedPermissions;
@@ -341,13 +353,16 @@ public class AppInfo
             }
             i += 1;
           }
-          if (x.a(paramContext)) {}
+        }
+        return false;
+      }
+      catch (Throwable paramContext)
+      {
+        if (!x.a(paramContext)) {
+          paramContext.printStackTrace();
         }
       }
-      catch (Throwable paramContext) {}
     }
-    paramContext.printStackTrace();
-    return false;
   }
   
   public static PackageInfo b(Context paramContext)
@@ -369,115 +384,112 @@ public class AppInfo
   
   public static String c(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
+    if (paramContext == null) {
+      return null;
+    }
+    try
     {
-      for (;;)
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      paramContext = paramContext.getApplicationInfo();
+      if ((localPackageManager != null) && (paramContext != null))
       {
-        return null;
-        try
+        paramContext = localPackageManager.getApplicationLabel(paramContext);
+        if (paramContext != null)
         {
-          PackageManager localPackageManager = paramContext.getPackageManager();
-          paramContext = paramContext.getApplicationInfo();
-          if ((localPackageManager != null) && (paramContext != null))
-          {
-            paramContext = localPackageManager.getApplicationLabel(paramContext);
-            if (paramContext != null)
-            {
-              paramContext = paramContext.toString();
-              return paramContext;
-            }
-          }
+          paramContext = paramContext.toString();
+          return paramContext;
         }
-        catch (Throwable paramContext) {}
       }
-    } while (x.a(paramContext));
-    paramContext.printStackTrace();
+    }
+    catch (Throwable paramContext)
+    {
+      if (!x.a(paramContext)) {
+        paramContext.printStackTrace();
+      }
+    }
     return null;
   }
   
   public static Map<String, String> d(Context paramContext)
   {
+    Object localObject = null;
     if (paramContext == null) {
       return null;
     }
-    for (;;)
+    try
     {
-      try
+      ApplicationInfo localApplicationInfo = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
+      paramContext = localObject;
+      if (localApplicationInfo.metaData != null)
       {
-        paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
-        if (paramContext.metaData == null) {
-          break label270;
-        }
-        HashMap localHashMap = new HashMap();
-        Object localObject = paramContext.metaData.get("BUGLY_DISABLE");
+        paramContext = new HashMap();
+        localObject = localApplicationInfo.metaData.get("BUGLY_DISABLE");
         if (localObject != null) {
-          localHashMap.put("BUGLY_DISABLE", localObject.toString());
+          paramContext.put("BUGLY_DISABLE", localObject.toString());
         }
-        localObject = paramContext.metaData.get("BUGLY_APPID");
+        localObject = localApplicationInfo.metaData.get("BUGLY_APPID");
         if (localObject != null) {
-          localHashMap.put("BUGLY_APPID", localObject.toString());
+          paramContext.put("BUGLY_APPID", localObject.toString());
         }
-        localObject = paramContext.metaData.get("BUGLY_APP_CHANNEL");
+        localObject = localApplicationInfo.metaData.get("BUGLY_APP_CHANNEL");
         if (localObject != null) {
-          localHashMap.put("BUGLY_APP_CHANNEL", localObject.toString());
+          paramContext.put("BUGLY_APP_CHANNEL", localObject.toString());
         }
-        localObject = paramContext.metaData.get("BUGLY_APP_VERSION");
+        localObject = localApplicationInfo.metaData.get("BUGLY_APP_VERSION");
         if (localObject != null) {
-          localHashMap.put("BUGLY_APP_VERSION", localObject.toString());
+          paramContext.put("BUGLY_APP_VERSION", localObject.toString());
         }
-        localObject = paramContext.metaData.get("BUGLY_ENABLE_DEBUG");
+        localObject = localApplicationInfo.metaData.get("BUGLY_ENABLE_DEBUG");
         if (localObject != null) {
-          localHashMap.put("BUGLY_ENABLE_DEBUG", localObject.toString());
+          paramContext.put("BUGLY_ENABLE_DEBUG", localObject.toString());
         }
-        localObject = paramContext.metaData.get("com.tencent.rdm.uuid");
+        localObject = localApplicationInfo.metaData.get("com.tencent.rdm.uuid");
         if (localObject != null) {
-          localHashMap.put("com.tencent.rdm.uuid", localObject.toString());
+          paramContext.put("com.tencent.rdm.uuid", localObject.toString());
         }
-        localObject = paramContext.metaData.get("BUGLY_APP_BUILD_NO");
+        localObject = localApplicationInfo.metaData.get("BUGLY_APP_BUILD_NO");
         if (localObject != null) {
-          localHashMap.put("BUGLY_APP_BUILD_NO", localObject.toString());
+          paramContext.put("BUGLY_APP_BUILD_NO", localObject.toString());
         }
-        localObject = paramContext.metaData.get("BUGLY_AREA");
-        paramContext = localHashMap;
-        if (localObject != null)
-        {
-          localHashMap.put("BUGLY_AREA", localObject.toString());
-          paramContext = localHashMap;
+        localObject = localApplicationInfo.metaData.get("BUGLY_AREA");
+        if (localObject != null) {
+          paramContext.put("BUGLY_AREA", localObject.toString());
         }
-        return paramContext;
       }
-      catch (Throwable paramContext) {}
-      if (x.a(paramContext)) {
-        break;
-      }
-      paramContext.printStackTrace();
-      return null;
-      label270:
-      paramContext = null;
+      return paramContext;
     }
+    catch (Throwable paramContext)
+    {
+      if (!x.a(paramContext)) {
+        paramContext.printStackTrace();
+      }
+    }
+    return null;
   }
   
   public static String e(Context paramContext)
   {
     Object localObject = a(paramContext);
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return null;
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo((String)localObject, 64);
-        if (paramContext != null)
-        {
-          localObject = paramContext.signatures;
-          if ((localObject != null) && (localObject.length != 0)) {
-            return a(paramContext.signatures[0].toByteArray());
-          }
-        }
-      }
-      catch (PackageManager.NameNotFoundException paramContext) {}
     }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo((String)localObject, 64);
+      if (paramContext == null) {
+        return null;
+      }
+      localObject = paramContext.signatures;
+      if (localObject != null)
+      {
+        if (localObject.length == 0) {
+          return null;
+        }
+        return a(paramContext.signatures[0].toByteArray());
+      }
+      return null;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
     return null;
   }
   
@@ -511,17 +523,13 @@ public class AppInfo
   
   public static String g(Context paramContext)
   {
-    Object localObject;
     if (paramContext == null) {
-      localObject = "";
+      return "";
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = h(paramContext);
-      localObject = str;
-    } while (!z.a(str));
+    String str = h(paramContext);
+    if (!z.a(str)) {
+      return str;
+    }
     return i(paramContext);
   }
   
@@ -529,225 +537,314 @@ public class AppInfo
   private static String h(Context paramContext)
   {
     // Byte code:
-    //   0: ldc_w 329
-    //   3: aload_0
-    //   4: invokestatic 332	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;Landroid/content/Context;)Landroid/content/SharedPreferences;
-    //   7: astore_2
-    //   8: aload_2
-    //   9: ldc_w 334
-    //   12: ldc_w 314
-    //   15: invokeinterface 340 3 0
-    //   20: astore_3
-    //   21: aload_3
-    //   22: astore_2
-    //   23: aload_3
-    //   24: invokestatic 320	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
-    //   27: ifeq +7 -> 34
-    //   30: ldc_w 342
-    //   33: astore_2
-    //   34: new 31	java/lang/StringBuilder
-    //   37: dup
-    //   38: ldc_w 344
-    //   41: invokespecial 36	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   44: aload_2
-    //   45: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: iconst_0
-    //   52: anewarray 4	java/lang/Object
-    //   55: invokestatic 346	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   58: pop
-    //   59: aload_2
-    //   60: ldc_w 314
-    //   63: invokevirtual 216	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   66: ifne +108 -> 174
-    //   69: aload_0
-    //   70: invokevirtual 350	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   73: aload_2
-    //   74: invokevirtual 356	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   77: astore_0
-    //   78: aload_0
-    //   79: astore_3
-    //   80: new 358	java/util/Properties
-    //   83: dup
-    //   84: invokespecial 359	java/util/Properties:<init>	()V
-    //   87: astore_2
-    //   88: aload_0
-    //   89: astore_3
-    //   90: aload_2
-    //   91: aload_0
-    //   92: invokevirtual 363	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   95: aload_0
-    //   96: astore_3
-    //   97: aload_2
-    //   98: ldc_w 365
-    //   101: ldc_w 314
-    //   104: invokevirtual 368	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   107: astore_2
-    //   108: aload_0
-    //   109: astore_3
-    //   110: new 31	java/lang/StringBuilder
-    //   113: dup
-    //   114: ldc_w 370
-    //   117: invokespecial 36	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   120: aload_2
-    //   121: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: ldc_w 314
+    //   3: astore 6
+    //   5: ldc_w 329
+    //   8: aload_0
+    //   9: invokestatic 332	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;Landroid/content/Context;)Landroid/content/SharedPreferences;
+    //   12: astore_3
+    //   13: aconst_null
+    //   14: astore 9
+    //   16: aconst_null
+    //   17: astore 10
+    //   19: aconst_null
+    //   20: astore 7
+    //   22: aload 9
+    //   24: astore 5
+    //   26: aload 6
+    //   28: astore_2
+    //   29: aload 10
+    //   31: astore 4
+    //   33: aload_3
+    //   34: ldc_w 334
+    //   37: ldc_w 314
+    //   40: invokeinterface 340 3 0
+    //   45: astore_3
+    //   46: aload_3
+    //   47: astore 8
+    //   49: aload 9
+    //   51: astore 5
+    //   53: aload 6
+    //   55: astore_2
+    //   56: aload 10
+    //   58: astore 4
+    //   60: aload_3
+    //   61: invokestatic 320	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
+    //   64: ifeq +8 -> 72
+    //   67: ldc_w 342
+    //   70: astore 8
+    //   72: aload 9
+    //   74: astore 5
+    //   76: aload 6
+    //   78: astore_2
+    //   79: aload 10
+    //   81: astore 4
+    //   83: new 29	java/lang/StringBuilder
+    //   86: dup
+    //   87: ldc_w 344
+    //   90: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   93: astore_3
+    //   94: aload 9
+    //   96: astore 5
+    //   98: aload 6
+    //   100: astore_2
+    //   101: aload 10
+    //   103: astore 4
+    //   105: aload_3
+    //   106: aload 8
+    //   108: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: pop
+    //   112: aload 9
+    //   114: astore 5
+    //   116: aload 6
+    //   118: astore_2
+    //   119: aload 10
+    //   121: astore 4
+    //   123: aload_3
     //   124: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   127: iconst_0
     //   128: anewarray 4	java/lang/Object
     //   131: invokestatic 346	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   134: pop
-    //   135: aload_0
-    //   136: astore_3
-    //   137: aload_2
-    //   138: invokestatic 320	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
-    //   141: istore_1
-    //   142: aload_2
-    //   143: astore 4
-    //   145: aload_0
-    //   146: astore 5
-    //   148: iload_1
-    //   149: ifne +33 -> 182
-    //   152: aload_2
-    //   153: astore_3
-    //   154: aload_0
-    //   155: ifnull +9 -> 164
-    //   158: aload_0
-    //   159: invokevirtual 373	java/io/InputStream:close	()V
-    //   162: aload_2
-    //   163: astore_3
-    //   164: aload_3
-    //   165: areturn
-    //   166: astore_0
-    //   167: aload_0
-    //   168: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   171: pop
-    //   172: aload_2
-    //   173: areturn
-    //   174: aconst_null
-    //   175: astore 5
-    //   177: ldc_w 314
-    //   180: astore 4
-    //   182: aload 4
-    //   184: astore_3
-    //   185: aload 5
-    //   187: ifnull -23 -> 164
-    //   190: aload 5
-    //   192: invokevirtual 373	java/io/InputStream:close	()V
-    //   195: aload 4
-    //   197: areturn
-    //   198: astore_0
-    //   199: aload_0
-    //   200: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   203: pop
-    //   204: aload 4
-    //   206: areturn
-    //   207: astore_0
-    //   208: aconst_null
-    //   209: astore_0
-    //   210: ldc_w 314
-    //   213: astore_2
-    //   214: aload_0
-    //   215: astore_3
-    //   216: ldc_w 375
-    //   219: iconst_0
-    //   220: anewarray 4	java/lang/Object
-    //   223: invokestatic 377	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   226: pop
-    //   227: aload_2
-    //   228: astore_3
-    //   229: aload_0
-    //   230: ifnull -66 -> 164
+    //   135: aload 6
+    //   137: astore_3
+    //   138: aload 9
+    //   140: astore 5
+    //   142: aload 6
+    //   144: astore_2
+    //   145: aload 10
+    //   147: astore 4
+    //   149: aload 8
+    //   151: ldc_w 314
+    //   154: invokevirtual 216	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   157: ifne +178 -> 335
+    //   160: aload 9
+    //   162: astore 5
+    //   164: aload 6
+    //   166: astore_2
+    //   167: aload 10
+    //   169: astore 4
+    //   171: aload_0
+    //   172: invokevirtual 350	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   175: aload 8
+    //   177: invokevirtual 356	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   180: astore_0
+    //   181: aload_0
+    //   182: astore 5
+    //   184: aload 6
+    //   186: astore_2
+    //   187: aload_0
+    //   188: astore 4
+    //   190: new 358	java/util/Properties
+    //   193: dup
+    //   194: invokespecial 359	java/util/Properties:<init>	()V
+    //   197: astore_3
+    //   198: aload_0
+    //   199: astore 5
+    //   201: aload 6
+    //   203: astore_2
+    //   204: aload_0
+    //   205: astore 4
+    //   207: aload_3
+    //   208: aload_0
+    //   209: invokevirtual 363	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   212: aload_0
+    //   213: astore 5
+    //   215: aload 6
+    //   217: astore_2
+    //   218: aload_0
+    //   219: astore 4
+    //   221: aload_3
+    //   222: ldc_w 365
+    //   225: ldc_w 314
+    //   228: invokevirtual 368	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   231: astore 6
     //   233: aload_0
-    //   234: invokevirtual 373	java/io/InputStream:close	()V
-    //   237: aload_2
-    //   238: areturn
-    //   239: astore_0
-    //   240: aload_0
-    //   241: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   244: pop
-    //   245: aload_2
-    //   246: areturn
-    //   247: astore_0
-    //   248: aconst_null
-    //   249: astore_3
-    //   250: aload_3
-    //   251: ifnull +7 -> 258
-    //   254: aload_3
-    //   255: invokevirtual 373	java/io/InputStream:close	()V
-    //   258: aload_0
-    //   259: athrow
-    //   260: astore_2
-    //   261: aload_2
-    //   262: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
-    //   265: pop
-    //   266: goto -8 -> 258
-    //   269: astore_0
-    //   270: goto -20 -> 250
-    //   273: astore_2
-    //   274: ldc_w 314
-    //   277: astore_2
-    //   278: goto -64 -> 214
-    //   281: astore_3
-    //   282: goto -68 -> 214
+    //   234: astore 5
+    //   236: aload 6
+    //   238: astore_2
+    //   239: aload_0
+    //   240: astore 4
+    //   242: new 29	java/lang/StringBuilder
+    //   245: dup
+    //   246: ldc_w 370
+    //   249: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   252: astore_3
+    //   253: aload_0
+    //   254: astore 5
+    //   256: aload 6
+    //   258: astore_2
+    //   259: aload_0
+    //   260: astore 4
+    //   262: aload_3
+    //   263: aload 6
+    //   265: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: pop
+    //   269: aload_0
+    //   270: astore 5
+    //   272: aload 6
+    //   274: astore_2
+    //   275: aload_0
+    //   276: astore 4
+    //   278: aload_3
+    //   279: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   282: iconst_0
+    //   283: anewarray 4	java/lang/Object
+    //   286: invokestatic 346	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   289: pop
+    //   290: aload_0
+    //   291: astore 5
+    //   293: aload 6
+    //   295: astore_2
+    //   296: aload_0
+    //   297: astore 4
+    //   299: aload 6
+    //   301: invokestatic 320	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;)Z
+    //   304: istore_1
+    //   305: aload 6
+    //   307: astore_3
+    //   308: aload_0
+    //   309: astore 7
+    //   311: iload_1
+    //   312: ifne +23 -> 335
+    //   315: aload_0
+    //   316: ifnull +16 -> 332
+    //   319: aload_0
+    //   320: invokevirtual 373	java/io/InputStream:close	()V
+    //   323: aload 6
+    //   325: areturn
+    //   326: astore_0
+    //   327: aload_0
+    //   328: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   331: pop
+    //   332: aload 6
+    //   334: areturn
+    //   335: aload_3
+    //   336: astore_0
+    //   337: aload 7
+    //   339: ifnull +55 -> 394
+    //   342: aload_3
+    //   343: astore_0
+    //   344: aload 7
+    //   346: invokevirtual 373	java/io/InputStream:close	()V
+    //   349: aload_3
+    //   350: areturn
+    //   351: astore_2
+    //   352: aload_2
+    //   353: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   356: pop
+    //   357: aload_0
+    //   358: areturn
+    //   359: astore_0
+    //   360: goto +36 -> 396
+    //   363: aload 4
+    //   365: astore 5
+    //   367: ldc_w 375
+    //   370: iconst_0
+    //   371: anewarray 4	java/lang/Object
+    //   374: invokestatic 377	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   377: pop
+    //   378: aload_2
+    //   379: astore_0
+    //   380: aload 4
+    //   382: ifnull +12 -> 394
+    //   385: aload_2
+    //   386: astore_0
+    //   387: aload 4
+    //   389: invokevirtual 373	java/io/InputStream:close	()V
+    //   392: aload_2
+    //   393: astore_0
+    //   394: aload_0
+    //   395: areturn
+    //   396: aload 5
+    //   398: ifnull +17 -> 415
+    //   401: aload 5
+    //   403: invokevirtual 373	java/io/InputStream:close	()V
+    //   406: goto +9 -> 415
+    //   409: astore_2
+    //   410: aload_2
+    //   411: invokestatic 69	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   414: pop
+    //   415: aload_0
+    //   416: athrow
+    //   417: astore_0
+    //   418: goto -55 -> 363
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	285	0	paramContext	Context
-    //   141	8	1	bool	boolean
-    //   7	239	2	localObject1	Object
-    //   260	2	2	localIOException	java.io.IOException
-    //   273	1	2	localException1	java.lang.Exception
-    //   277	1	2	str	String
-    //   20	235	3	localObject2	Object
-    //   281	1	3	localException2	java.lang.Exception
-    //   143	62	4	localObject3	Object
-    //   146	45	5	localContext	Context
+    //   0	421	0	paramContext	Context
+    //   304	8	1	bool	boolean
+    //   28	268	2	str1	String
+    //   351	42	2	localIOException1	java.io.IOException
+    //   409	2	2	localIOException2	java.io.IOException
+    //   12	338	3	localObject1	Object
+    //   31	357	4	localObject2	Object
+    //   24	378	5	localObject3	Object
+    //   3	330	6	str2	String
+    //   20	325	7	localContext	Context
+    //   47	129	8	localObject4	Object
+    //   14	147	9	localObject5	Object
+    //   17	151	10	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   158	162	166	java/io/IOException
-    //   190	195	198	java/io/IOException
-    //   8	21	207	java/lang/Exception
-    //   23	30	207	java/lang/Exception
-    //   34	78	207	java/lang/Exception
-    //   233	237	239	java/io/IOException
-    //   8	21	247	finally
-    //   23	30	247	finally
-    //   34	78	247	finally
-    //   254	258	260	java/io/IOException
-    //   80	88	269	finally
-    //   90	95	269	finally
-    //   97	108	269	finally
-    //   110	135	269	finally
-    //   137	142	269	finally
-    //   216	227	269	finally
-    //   80	88	273	java/lang/Exception
-    //   90	95	273	java/lang/Exception
-    //   97	108	273	java/lang/Exception
-    //   110	135	281	java/lang/Exception
-    //   137	142	281	java/lang/Exception
+    //   319	323	326	java/io/IOException
+    //   344	349	351	java/io/IOException
+    //   387	392	351	java/io/IOException
+    //   33	46	359	finally
+    //   60	67	359	finally
+    //   83	94	359	finally
+    //   105	112	359	finally
+    //   123	135	359	finally
+    //   149	160	359	finally
+    //   171	181	359	finally
+    //   190	198	359	finally
+    //   207	212	359	finally
+    //   221	233	359	finally
+    //   242	253	359	finally
+    //   262	269	359	finally
+    //   278	290	359	finally
+    //   299	305	359	finally
+    //   367	378	359	finally
+    //   401	406	409	java/io/IOException
+    //   33	46	417	java/lang/Exception
+    //   60	67	417	java/lang/Exception
+    //   83	94	417	java/lang/Exception
+    //   105	112	417	java/lang/Exception
+    //   123	135	417	java/lang/Exception
+    //   149	160	417	java/lang/Exception
+    //   171	181	417	java/lang/Exception
+    //   190	198	417	java/lang/Exception
+    //   207	212	417	java/lang/Exception
+    //   221	233	417	java/lang/Exception
+    //   242	253	417	java/lang/Exception
+    //   262	269	417	java/lang/Exception
+    //   278	290	417	java/lang/Exception
+    //   299	305	417	java/lang/Exception
   }
   
   private static String i(Context paramContext)
   {
-    String str = "";
     try
     {
-      Object localObject = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.get("CHANNEL_DENGTA");
-      paramContext = str;
-      if (localObject != null) {
-        paramContext = localObject.toString();
+      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.get("CHANNEL_DENGTA");
+      if (paramContext == null) {
+        break label46;
       }
+      paramContext = paramContext.toString();
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      x.d("[AppInfo] Failed to read beacon channel from manifest.", new Object[0]);
+      label35:
+      label46:
+      break label35;
     }
+    x.d("[AppInfo] Failed to read beacon channel from manifest.", new Object[0]);
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.common.info.AppInfo
  * JD-Core Version:    0.7.0.1
  */

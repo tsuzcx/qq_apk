@@ -21,13 +21,13 @@ public class GlAlphaAnimation
     paramFloat = paramInterpolator.getInterpolation(paramFloat);
     float f3 = this.a;
     if (this.animationProperty != null) {
-      this.animationProperty.setAlpha((f1 - f2) * paramFloat + f3);
+      this.animationProperty.setAlpha(f3 + (f1 - f2) * paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GlAlphaAnimation
  * JD-Core Version:    0.7.0.1
  */

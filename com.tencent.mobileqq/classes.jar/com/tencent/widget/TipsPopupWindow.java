@@ -5,68 +5,69 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import bibx;
 import com.tencent.qphone.base.util.QLog;
 
 public class TipsPopupWindow
   extends PopupWindow
-  implements bibx
+  implements TipsLinearLayout.TipsLayoutAnimListener
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TipsLinearLayout jdField_a_of_type_ComTencentWidgetTipsLinearLayout;
-  private TipsPopupWindow.DismissRunnable jdField_a_of_type_ComTencentWidgetTipsPopupWindow$DismissRunnable;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private FrameLayout a;
+  private TipsLinearLayout b;
+  private ImageView c;
   private boolean d;
+  private boolean e;
+  private boolean f;
+  private boolean g;
+  private TipsPopupWindow.DismissRunnable h;
   
   private void c()
   {
-    if (this.c) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_ComTencentWidgetTipsPopupWindow$DismissRunnable, 1000L);
-    }
-    while ((!this.jdField_a_of_type_Boolean) || (this.d)) {
+    if (this.f)
+    {
+      this.a.postDelayed(this.h, 1000L);
       return;
     }
-    this.d = true;
-    e();
+    if ((this.d) && (!this.g))
+    {
+      this.g = true;
+      e();
+    }
   }
   
   private void d()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.d)
     {
-      this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.a();
-      this.c = true;
-      this.d = false;
+      this.b.a();
+      this.f = true;
+      this.g = false;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_ComTencentWidgetTipsPopupWindow$DismissRunnable);
+    this.d = true;
+    this.a.removeCallbacks(this.h);
   }
   
   private void e()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
-    if (this.b) {
-      ((Animatable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+    if (this.e) {
+      ((Animatable)this.c.getDrawable()).stop();
     }
-    this.jdField_a_of_type_ComTencentWidgetTipsLinearLayout.b();
+    this.b.b();
   }
   
   public void a()
   {
-    if (this.b) {
-      ((Animatable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+    if (this.e) {
+      ((Animatable)this.c.getDrawable()).start();
     }
-    this.c = false;
+    this.f = false;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new TipsPopupWindow.2(this));
+    this.a.post(new TipsPopupWindow.2(this));
   }
   
   public void dismiss()
@@ -74,8 +75,8 @@ public class TipsPopupWindow
     if (QLog.isColorLevel()) {
       QLog.d("TipsPopupWindow", 2, "dismiss");
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_ComTencentWidgetTipsPopupWindow$DismissRunnable);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_ComTencentWidgetTipsPopupWindow$DismissRunnable, 300L);
+    this.a.removeCallbacks(this.h);
+    this.a.postDelayed(this.h, 300L);
   }
   
   public void showAsDropDown(View paramView)
@@ -98,7 +99,7 @@ public class TipsPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.TipsPopupWindow
  * JD-Core Version:    0.7.0.1
  */

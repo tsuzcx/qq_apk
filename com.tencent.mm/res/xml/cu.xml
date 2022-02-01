@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:title="@string/fus" android:key="wallet_realname_verify" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/fuo" android:key="wallet_modify_password" android:layout="@layout/afi" />
-    <Preference android:title="@string/fuj" android:key="wallet_forget_password" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.plugin.wallet.pwd.ui.RightBelowPreference android:title="" android:key="wallet_biometric_pay" android:layout="@layout/ahl" />
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <IconPreference android:title="@string/fu8" android:key="wallet_open_auto_pay" android:layout="@layout/afi" />
-    <Preference android:title="@string/ftl" android:key="wallet_delay_transfer_date" android:layout="@layout/afi" />
-    <Preference android:title="@string/fv1" android:key="wallet_universal_pay_order" android:layout="@layout/afi" />
-    <IconPreference android:title="@string/fu6" android:key="wallet_lucky_money_refund_way" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/fn3" android:key="wallet_function_settings" android:layout="@layout/afi" />
-    <Preference android:title="@string/fn7" android:key="wallet_switch_currency" android:layout="@layout/afi" />
-    <Preference android:title="" android:key="wallet_im_mch" android:layout="@layout/afi" />
-    <PreferenceSmallCategory android:key="wallet_switch_category" />
-    <Preference android:title="@string/ftm" android:key="wallet_digitalcert" android:layout="@layout/afi" />
-    <Preference android:title="@string/fv0" android:key="wallet_password_setting_un_reg" android:layout="@layout/afi" />
+    <IconPreference android:key="share_micromsg_qzone" android:title="@string/ikw" />
+    <IconPreference android:key="share_micromsg_to_sina" android:title="@string/ikx" />
+    <IconPreference android:key="share_micromsg_to_fuckbook" android:title="@string/ikv" />
 </PreferenceScreen>

@@ -1,294 +1,223 @@
 package com.tencent.mm.ui.base;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.ActionProvider;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
-import android.view.MenuItem.OnActionExpandListener;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.SubMenu;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.j;
+import com.tencent.mm.ah.a.k;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.tools.g;
+import com.tencent.mm.ui.widget.a.j;
 
 public final class m
-  implements MenuItem
+  extends j
 {
-  private int TR;
-  private int TY;
-  public String hBM;
-  private int iconId;
-  private Intent intent;
-  private Context mContext;
-  public CharSequence mZb = null;
-  private CharSequence title;
-  public boolean xTc = false;
-  private int zkX;
-  private Drawable zkY;
-  public ContextMenu.ContextMenuInfo zkZ;
-  private MenuItem.OnMenuItemClickListener zla;
+  private int JWY;
+  private TextView adRh;
+  public Button lDJ;
+  Context mContext;
+  private ImageView nkq;
+  public EditText qiI;
+  public TextView titleTv;
   
-  public m(Context paramContext, int paramInt1, int paramInt2)
+  public m(Context paramContext)
   {
+    super(paramContext, 0, 0, false);
+    AppMethodBeat.i(251373);
+    this.JWY = 36;
     this.mContext = paramContext;
-    this.TY = paramInt1;
-    this.TR = paramInt2;
-  }
-  
-  public final boolean collapseActionView()
-  {
-    return false;
-  }
-  
-  public final boolean expandActionView()
-  {
-    return false;
-  }
-  
-  public final ActionProvider getActionProvider()
-  {
-    return null;
-  }
-  
-  public final View getActionView()
-  {
-    return null;
-  }
-  
-  public final char getAlphabeticShortcut()
-  {
-    return '\000';
-  }
-  
-  public final int getGroupId()
-  {
-    return this.TR;
-  }
-  
-  public final Drawable getIcon()
-  {
-    AppMethodBeat.i(112556);
-    if (this.zkY == null)
+    aFf(a.h.half_bottom_edit_dlg_layout);
+    this.titleTv = ((TextView)this.rootView.findViewById(com.tencent.mm.ah.a.g.tips_title));
+    this.qiI = ((EditText)this.rootView.findViewById(com.tencent.mm.ah.a.g.edittext));
+    this.lDJ = ((Button)this.rootView.findViewById(com.tencent.mm.ah.a.g.next_btn));
+    this.adRh = ((TextView)this.rootView.findViewById(com.tencent.mm.ah.a.g.error_tips));
+    this.nkq = ((ImageView)this.rootView.findViewById(com.tencent.mm.ah.a.g.dlg_close));
+    this.nkq.setImageDrawable(bb.m(paramContext, a.j.icons_filled_close, this.mContext.getResources().getColor(a.d.black_color)));
+    this.nkq.setContentDescription(paramContext.getResources().getString(a.k.close_btn));
+    this.nkq.setOnClickListener(new View.OnClickListener()
     {
-      if ((this.iconId != 0) && (this.mContext != null))
+      public final void onClick(View paramAnonymousView)
       {
-        localDrawable = this.mContext.getResources().getDrawable(this.iconId);
-        AppMethodBeat.o(112556);
-        return localDrawable;
+        AppMethodBeat.i(251484);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/ui/base/MMHalfBottomEditDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        m.this.cyW();
+        a.a(this, "com/tencent/mm/ui/base/MMHalfBottomEditDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(251484);
       }
-      AppMethodBeat.o(112556);
+    });
+    this.agfS.setVisibility(0);
+    this.lDJ.setTextColor(this.mContext.getResources().getColor(a.d.BW_0_Alpha_0_2));
+    this.lDJ.setBackground(this.mContext.getDrawable(a.f.btn_solid_white));
+    this.lDJ.setEnabled(false);
+    this.agfS.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(251485);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/ui/base/MMHalfBottomEditDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        m.this.cyW();
+        a.a(this, "com/tencent/mm/ui/base/MMHalfBottomEditDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(251485);
+      }
+    });
+    this.qiI.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.JWY), new b() });
+    this.qiI.addTextChangedListener(new TextWatcher()
+    {
+      public final void afterTextChanged(Editable paramAnonymousEditable)
+      {
+        AppMethodBeat.i(251482);
+        m.this.qiI.removeTextChangedListener(this);
+        if (paramAnonymousEditable != null)
+        {
+          paramAnonymousEditable = paramAnonymousEditable.toString();
+          if (!Util.isNullOrNil(paramAnonymousEditable))
+          {
+            int i = g.bCx(paramAnonymousEditable);
+            if (i > 0)
+            {
+              m localm = m.this;
+              localm.lDJ.setEnabled(true);
+              localm.lDJ.setTextColor(localm.mContext.getResources().getColor(a.d.color_btn_text_selector));
+              localm.lDJ.setBackground(localm.mContext.getDrawable(a.f.btn_solid_green));
+              g.ek(m.a(m.this), paramAnonymousEditable);
+              if (i <= m.a(m.this)) {
+                break label293;
+              }
+              i = g.ei(m.a(m.this), paramAnonymousEditable);
+              if ((i <= 0) || (i >= m.a(m.this)) || (i >= paramAnonymousEditable.length())) {
+                break label279;
+              }
+              m.this.qiI.setText(paramAnonymousEditable.substring(0, i + 1));
+              m.this.qiI.setSelection(m.this.qiI.getText().length());
+              m.b(m.this).setVisibility(0);
+              ax.jlo();
+              m.b(m.this).setText(m.this.qiI.getContext().getString(a.k.label_text_max_input, new Object[] { Integer.valueOf(m.a(m.this) / 2) }));
+            }
+          }
+        }
+        for (;;)
+        {
+          m.this.qiI.addTextChangedListener(this);
+          AppMethodBeat.o(251482);
+          return;
+          m.this.jmp();
+          break;
+          label279:
+          m.b(m.this).setVisibility(4);
+          continue;
+          label293:
+          m.b(m.this).setVisibility(4);
+          continue;
+          m.b(m.this).setVisibility(4);
+          m.this.jmp();
+          continue;
+          m.b(m.this).setVisibility(4);
+          m.this.jmp();
+        }
+      }
+      
+      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      
+      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+    });
+    jHS();
+    AppMethodBeat.o(251373);
+  }
+  
+  public final int getLayoutId()
+  {
+    return com.tencent.mm.ck.a.g.mm_half_bottom_custom_outside_dialog;
+  }
+  
+  protected final void jmp()
+  {
+    AppMethodBeat.i(251384);
+    this.lDJ.setEnabled(false);
+    this.lDJ.setTextColor(this.mContext.getResources().getColor(a.d.BW_0_Alpha_0_2));
+    this.lDJ.setBackground(this.mContext.getDrawable(a.f.btn_solid_white));
+    AppMethodBeat.o(251384);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void am(CharSequence paramCharSequence);
+  }
+  
+  final class b
+    implements InputFilter
+  {
+    public final char[] JXg;
+    
+    b()
+    {
+      AppMethodBeat.i(251409);
+      this.JXg = new char[] { 10, 44, 59, 12289, -244, -229 };
+      AppMethodBeat.o(251409);
+    }
+    
+    public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+    {
+      AppMethodBeat.i(251414);
+      Log.d("MicroMsg.MMHalfBottomDialog", "on create tag filter, %s [%d, %d) %s [%d, %d),", new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramSpanned, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      paramInt4 = paramInt1;
+      while (paramInt4 < paramInt2)
+      {
+        paramSpanned = new char[paramInt2 - paramInt1];
+        TextUtils.getChars(paramCharSequence, paramInt1, paramInt2, paramSpanned, 0);
+        int j = this.JXg.length;
+        int i = 0;
+        while (i < j)
+        {
+          if ((paramSpanned[paramInt4] == ' ') && (paramInt3 == 0) && (paramInt4 == 0))
+          {
+            AppMethodBeat.o(251414);
+            return "";
+          }
+          if (paramSpanned[paramInt4] == this.JXg[i])
+          {
+            Log.i("MicroMsg.MMHalfBottomDialog", "MMInputFilter, showInvaildMsg.");
+            m.b(m.this).setVisibility(0);
+            m.b(m.this).setText(m.c(m.this).getResources().getString(a.k.add_label_invaild_msg_dialog));
+            ax.jlo();
+            AppMethodBeat.o(251414);
+            return "";
+          }
+          i += 1;
+        }
+        paramInt4 += 1;
+      }
+      AppMethodBeat.o(251414);
       return null;
     }
-    Drawable localDrawable = this.zkY;
-    AppMethodBeat.o(112556);
-    return localDrawable;
-  }
-  
-  public final Intent getIntent()
-  {
-    return this.intent;
-  }
-  
-  public final int getItemId()
-  {
-    return this.TY;
-  }
-  
-  public final ContextMenu.ContextMenuInfo getMenuInfo()
-  {
-    return this.zkZ;
-  }
-  
-  public final char getNumericShortcut()
-  {
-    return '\000';
-  }
-  
-  public final int getOrder()
-  {
-    return 0;
-  }
-  
-  public final SubMenu getSubMenu()
-  {
-    return null;
-  }
-  
-  public final CharSequence getTitle()
-  {
-    AppMethodBeat.i(112555);
-    if (this.title == null)
-    {
-      if ((this.zkX != 0) && (this.mContext != null))
-      {
-        localObject = this.mContext.getString(this.zkX);
-        AppMethodBeat.o(112555);
-        return localObject;
-      }
-      AppMethodBeat.o(112555);
-      return null;
-    }
-    Object localObject = this.title;
-    AppMethodBeat.o(112555);
-    return localObject;
-  }
-  
-  public final CharSequence getTitleCondensed()
-  {
-    return null;
-  }
-  
-  public final boolean hasSubMenu()
-  {
-    return false;
-  }
-  
-  public final boolean isActionViewExpanded()
-  {
-    return false;
-  }
-  
-  public final boolean isCheckable()
-  {
-    return false;
-  }
-  
-  public final boolean isChecked()
-  {
-    return false;
-  }
-  
-  public final boolean isEnabled()
-  {
-    return true;
-  }
-  
-  public final boolean isVisible()
-  {
-    return true;
-  }
-  
-  public final boolean performClick()
-  {
-    AppMethodBeat.i(112557);
-    if (this.zla != null)
-    {
-      boolean bool = this.zla.onMenuItemClick(this);
-      AppMethodBeat.o(112557);
-      return bool;
-    }
-    AppMethodBeat.o(112557);
-    return false;
-  }
-  
-  public final MenuItem setActionProvider(ActionProvider paramActionProvider)
-  {
-    return null;
-  }
-  
-  public final MenuItem setActionView(int paramInt)
-  {
-    return null;
-  }
-  
-  public final MenuItem setActionView(View paramView)
-  {
-    return null;
-  }
-  
-  public final MenuItem setAlphabeticShortcut(char paramChar)
-  {
-    return this;
-  }
-  
-  public final MenuItem setCheckable(boolean paramBoolean)
-  {
-    return this;
-  }
-  
-  public final MenuItem setChecked(boolean paramBoolean)
-  {
-    return this;
-  }
-  
-  public final MenuItem setEnabled(boolean paramBoolean)
-  {
-    return this;
-  }
-  
-  public final MenuItem setIcon(int paramInt)
-  {
-    this.iconId = paramInt;
-    return this;
-  }
-  
-  public final MenuItem setIcon(Drawable paramDrawable)
-  {
-    this.zkY = paramDrawable;
-    return this;
-  }
-  
-  public final MenuItem setIntent(Intent paramIntent)
-  {
-    this.intent = paramIntent;
-    return this;
-  }
-  
-  public final MenuItem setNumericShortcut(char paramChar)
-  {
-    return this;
-  }
-  
-  public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
-  {
-    return null;
-  }
-  
-  public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.zla = paramOnMenuItemClickListener;
-    return this;
-  }
-  
-  public final MenuItem setShortcut(char paramChar1, char paramChar2)
-  {
-    return this;
-  }
-  
-  public final void setShowAsAction(int paramInt) {}
-  
-  public final MenuItem setShowAsActionFlags(int paramInt)
-  {
-    return null;
-  }
-  
-  public final MenuItem setTitle(int paramInt)
-  {
-    this.zkX = paramInt;
-    return this;
-  }
-  
-  public final MenuItem setTitle(CharSequence paramCharSequence)
-  {
-    this.title = paramCharSequence;
-    return this;
-  }
-  
-  public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
-  {
-    return this;
-  }
-  
-  public final MenuItem setVisible(boolean paramBoolean)
-  {
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.m
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,15 @@ public final class hd_video_2$InviteTempSessionData
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "uint64_uin", "uint64_group_uin", "bytes_relationship", "uint32_relationship_type", "bytes_relationship_ext" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, InviteTempSessionData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "uint64_uin", "uint64_group_uin", "bytes_relationship", "uint32_relationship_type", "bytes_relationship_ext" }, new Object[] { localLong, localLong, localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, InviteTempSessionData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.hd_video_2.InviteTempSessionData
  * JD-Core Version:    0.7.0.1
  */

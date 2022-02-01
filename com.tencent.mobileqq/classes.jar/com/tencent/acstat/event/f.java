@@ -29,15 +29,16 @@ public class f
   {
     Util.jsonPut(paramJSONObject, "pi", this.p);
     Util.jsonPut(paramJSONObject, "rf", this.q);
-    if (this.a != null) {
-      paramJSONObject.put("du", this.a);
+    Long localLong = this.a;
+    if (localLong != null) {
+      paramJSONObject.put("du", localLong);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.event.f
  * JD-Core Version:    0.7.0.1
  */

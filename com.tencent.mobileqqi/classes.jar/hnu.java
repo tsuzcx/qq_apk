@@ -1,19 +1,14 @@
-import android.app.Activity;
+import com.tencent.open.base.ToastUtil;
 import com.tencent.open.downloadnew.MyAppApi;
 
 public class hnu
   implements Runnable
 {
-  public hnu(MyAppApi paramMyAppApi, Activity paramActivity) {}
+  public hnu(MyAppApi paramMyAppApi) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a != null))
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.e(this.jdField_a_of_type_AndroidAppActivity);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_AndroidAppActivity);
+    ToastUtil.a().a(this.a.b);
   }
 }
 

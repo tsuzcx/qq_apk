@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="2.0dip" />
-    <stroke android:width="1.0dip" android:color="@android:color/darker_gray" />
-</shape>
+    <item android:state_checked="false" android:color="@color/gg" />
+    <item android:state_checked="true" android:color="@color/hi" />
+</selector>

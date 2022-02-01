@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msf.core.net;
 
-import com.tencent.mobileqq.msf.core.quicksend.f;
+import com.tencent.mobileqq.msf.core.quicksend.g;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public abstract interface b
@@ -11,9 +11,9 @@ public abstract interface b
   
   public abstract boolean a();
   
-  public abstract boolean a(String paramString1, int paramInt, String paramString2, f paramf);
+  public abstract boolean a(String paramString1, int paramInt, String paramString2, g paramg);
   
-  public abstract byte[] a(ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, String paramString, f paramf);
+  public abstract byte[] a(ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, String paramString, g paramg);
   
   public abstract boolean b();
   
@@ -23,7 +23,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b
  * JD-Core Version:    0.7.0.1
  */

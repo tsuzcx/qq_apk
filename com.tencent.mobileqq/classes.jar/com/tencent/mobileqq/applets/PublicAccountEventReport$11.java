@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.applets;
 
-import azqs;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class PublicAccountEventReport$11
+final class PublicAccountEventReport$11
   implements Runnable
 {
-  public PublicAccountEventReport$11(String paramString, long paramLong) {}
-  
   public void run()
   {
-    azqs.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800A306", "0X800A306", 0, 0, "", "", this.jdField_a_of_type_Long + "", "");
+    ReportController.b(null, "dc00898", "", this.a, "0X8009EB7", "0X8009EB7", 0, 0, "", "", "", "-1");
   }
 }
 

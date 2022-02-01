@@ -1,42 +1,64 @@
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.view.View;
-import android.widget.ListAdapter;
+import android.view.ViewConfiguration;
 import com.tencent.widget.AbsListView;
 
-public class hux
-  extends hvh
+public final class hux
   implements Runnable
 {
-  private hux(AbsListView paramAbsListView)
-  {
-    super(paramAbsListView, null);
-  }
+  public hux(AbsListView paramAbsListView) {}
   
   public void run()
   {
-    int i = this.a.W;
-    View localView = this.a.getChildAt(i - this.a.ap);
-    long l;
-    if (localView != null)
+    Object localObject;
+    int i;
+    boolean bool;
+    if (this.a.ab == 0)
     {
-      i = this.a.W;
-      l = this.a.a.getItemId(this.a.W);
-      if ((!a()) || (this.a.p)) {
-        break label126;
-      }
-    }
-    label126:
-    for (boolean bool = this.a.b(localView, i, l);; bool = false)
-    {
-      if (bool)
+      this.a.ab = 1;
+      localObject = this.a.getChildAt(this.a.W - this.a.ap);
+      if ((localObject != null) && (!((View)localObject).hasFocusable()))
       {
-        this.a.ab = -1;
-        this.a.setPressed(false);
-        localView.setPressed(false);
-        return;
+        this.a.P = 0;
+        if (this.a.p) {
+          break label249;
+        }
+        ((View)localObject).setPressed(true);
+        this.a.setPressed(true);
+        this.a.i();
+        this.a.a(this.a.W, (View)localObject);
+        this.a.refreshDrawableState();
+        i = ViewConfiguration.getLongPressTimeout();
+        bool = this.a.isLongClickable();
+        if (this.a.c != null)
+        {
+          localObject = this.a.c.getCurrent();
+          if ((localObject != null) && ((localObject instanceof TransitionDrawable)))
+          {
+            if (!bool) {
+              break label230;
+            }
+            ((TransitionDrawable)localObject).startTransition(i);
+          }
+        }
       }
-      this.a.ab = 2;
-      return;
     }
+    while (bool)
+    {
+      if (AbsListView.a(this.a) == null) {
+        AbsListView.a(this.a, new huw(this.a, null));
+      }
+      AbsListView.a(this.a).a();
+      this.a.postDelayed(AbsListView.a(this.a), i);
+      return;
+      label230:
+      ((TransitionDrawable)localObject).resetTransition();
+    }
+    this.a.ab = 2;
+    return;
+    label249:
+    this.a.ab = 2;
   }
 }
 

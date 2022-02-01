@@ -6,21 +6,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends e<Boolean, BoldSpan>
 {
-  public final boolean cl(Object paramObject)
-  {
-    AppMethodBeat.i(26931);
-    if (((paramObject instanceof BoldSpan)) || (((paramObject instanceof StyleSpan)) && (((StyleSpan)paramObject).getStyle() == 1)))
-    {
-      AppMethodBeat.o(26931);
-      return true;
-    }
-    AppMethodBeat.o(26931);
-    return false;
-  }
-  
-  public final int djz()
+  public final int dxp()
   {
     return 0;
+  }
+  
+  public final boolean eX(Object paramObject)
+  {
+    AppMethodBeat.i(30625);
+    if (((paramObject instanceof BoldSpan)) || (((paramObject instanceof StyleSpan)) && (((StyleSpan)paramObject).getStyle() == 1)))
+    {
+      AppMethodBeat.o(30625);
+      return true;
+    }
+    AppMethodBeat.o(30625);
+    return false;
   }
 }
 

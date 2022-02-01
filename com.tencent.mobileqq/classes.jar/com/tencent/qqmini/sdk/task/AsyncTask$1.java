@@ -1,20 +1,18 @@
 package com.tencent.qqmini.sdk.task;
 
-import bhlt;
-
-public class AsyncTask$1
+class AsyncTask$1
   implements Runnable
 {
-  public AsyncTask$1(bhlt parambhlt) {}
+  AsyncTask$1(AsyncTask paramAsyncTask) {}
   
   public void run()
   {
-    this.this$0.a();
+    this.this$0.executeAsync();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.AsyncTask.1
  * JD-Core Version:    0.7.0.1
  */

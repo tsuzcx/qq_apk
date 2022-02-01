@@ -8,7 +8,7 @@ public final class ChangeFriendNameReq
   extends JceStruct
 {
   public String cstrName = "";
-  public long uFriendUin;
+  public long uFriendUin = 0L;
   
   public ChangeFriendNameReq() {}
   
@@ -32,7 +32,7 @@ public final class ChangeFriendNameReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ChangeFriendNameReq
  * JD-Core Version:    0.7.0.1
  */

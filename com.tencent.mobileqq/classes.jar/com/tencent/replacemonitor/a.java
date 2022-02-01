@@ -2,11 +2,11 @@ package com.tencent.replacemonitor;
 
 public class a
 {
-  public static long a = 0L;
+  public static long a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.replacemonitor.a
  * JD-Core Version:    0.7.0.1
  */

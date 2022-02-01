@@ -1,127 +1,61 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr;", "", "()V", "value", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "curSpeed", "getCurSpeed", "()Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "setCurSpeed", "(Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;)V", "lastSpeed", "getLastSpeed", "setLastSpeed", "resetCurSpeed", "", "MPVideoSpeed", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private View ivh;
-  private final Set<b> ivp;
-  private int kjt;
-  private Context mContext;
-  private int mOrientation;
+  public static final a vZP;
+  private static a vZQ;
   
-  public a(Context paramContext)
+  static
   {
-    AppMethodBeat.i(14459);
-    this.kjt = 0;
-    this.ivp = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.mContext = paramContext;
-    AppMethodBeat.o(14459);
+    AppMethodBeat.i(179028);
+    vZP = new a();
+    AppMethodBeat.o(179028);
   }
   
-  private void aIK()
+  public static a dig()
   {
-    AppMethodBeat.i(14464);
-    Iterator localIterator = this.ivp.iterator();
-    while (localIterator.hasNext()) {
-      localIterator.next();
+    if (vZQ == null) {
+      return a.vZW;
     }
-    AppMethodBeat.o(14464);
+    return vZQ;
   }
   
-  private void aIL()
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "", "mode", "", "desc", "", "(Ljava/lang/String;IFLjava/lang/String;)V", "getDesc", "()Ljava/lang/String;", "getMode", "()F", "SLOW05", "SLOW075", "NORMAL", "FAST15", "FAST20", "Companion", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static enum a
   {
-    AppMethodBeat.i(14465);
-    Iterator localIterator = this.ivp.iterator();
-    while (localIterator.hasNext()) {
-      ((b)localIterator.next()).aDk();
-    }
-    AppMethodBeat.o(14465);
-  }
-  
-  public final void J(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(14460);
-    aIJ();
-    this.ivh = paramView;
-    Activity localActivity = (Activity)this.mContext;
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    ViewGroup localViewGroup = (ViewGroup)localActivity.getWindow().getDecorView();
-    this.kjt = localViewGroup.getSystemUiVisibility();
-    localViewGroup.addView(paramView, localLayoutParams);
-    paramView.setX(0.0F);
-    paramView.setY(0.0F);
-    if (d.fw(19))
+    public static final a vZR;
+    public static List<? extends a> vZT;
+    private final String desc;
+    final float vZS;
+    
+    static
     {
-      localViewGroup.setSystemUiVisibility(2);
-      localActivity.getWindow().addFlags(1024);
-      this.mOrientation = localActivity.getRequestedOrientation();
-      switch (paramInt)
-      {
-      default: 
-        localActivity.setRequestedOrientation(9);
-      }
+      AppMethodBeat.i(179024);
+      vZU = new a("SLOW05", 0, 0.5F, "0.5X");
+      vZV = new a("SLOW075", 1, 0.75F, "0.75X");
+      vZW = new a("NORMAL", 2, 1.0F, "1.0X");
+      vZX = new a("FAST15", 3, 1.5F, "1.5X");
+      vZY = new a("FAST20", 4, 2.0F, "2.0X");
+      vZZ = new a[] { vZU, vZV, vZW, vZX, vZY };
+      vZR = new a((byte)0);
+      vZT = p.listOf(new a[] { vZU, vZV, vZW, vZX, vZY });
+      AppMethodBeat.o(179024);
     }
-    for (;;)
+    
+    private a(float paramFloat, String paramString)
     {
-      aIK();
-      AppMethodBeat.o(14460);
-      return;
-      localViewGroup.setSystemUiVisibility(4102);
-      break;
-      localActivity.setRequestedOrientation(0);
-      continue;
-      localActivity.setRequestedOrientation(8);
-      continue;
-      localActivity.setRequestedOrientation(1);
+      this.vZS = paramFloat;
+      this.desc = paramString;
     }
-  }
-  
-  public final void a(b paramb)
-  {
-    AppMethodBeat.i(14462);
-    if (!this.ivp.contains(paramb)) {
-      this.ivp.add(paramb);
-    }
-    AppMethodBeat.o(14462);
-  }
-  
-  public final boolean aIJ()
-  {
-    AppMethodBeat.i(14461);
-    if (this.ivh == null)
-    {
-      AppMethodBeat.o(14461);
-      return false;
-    }
-    Activity localActivity = (Activity)this.mContext;
-    ViewGroup localViewGroup = (ViewGroup)localActivity.getWindow().getDecorView();
-    localViewGroup.setSystemUiVisibility(this.kjt);
-    localViewGroup.removeView(this.ivh);
-    localActivity.getWindow().clearFlags(1024);
-    localActivity.setRequestedOrientation(this.mOrientation);
-    this.ivh = null;
-    aIL();
-    AppMethodBeat.o(14461);
-    return true;
-  }
-  
-  public final void b(b paramb)
-  {
-    AppMethodBeat.i(14463);
-    this.ivp.remove(paramb);
-    AppMethodBeat.o(14463);
+    
+    @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed$Companion;", "", "()V", "speedList", "", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class a {}
   }
 }
 

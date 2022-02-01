@@ -22,18 +22,23 @@ public class AnimationModule
   @JSMethod
   public void animate(@Nullable String paramString1, @NonNull JSONObject paramJSONObject1, @NonNull JSONObject paramJSONObject2, @Nullable String paramString2)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramJSONObject1 != null) && (paramJSONObject2 != null) && (getViolaInstance() != null)) {}
-    try
-    {
-      paramJSONObject2.put("styles", paramJSONObject1);
-      if (paramJSONObject2 != null) {
-        transition(paramString1, paramJSONObject2, paramString2);
+    if ((!TextUtils.isEmpty(paramString1)) && (paramJSONObject1 != null) && (paramJSONObject2 != null) && (getViolaInstance() != null)) {
+      try
+      {
+        paramJSONObject2.put("styles", paramJSONObject1);
+        if (paramJSONObject2 != null)
+        {
+          transition(paramString1, paramJSONObject2, paramString2);
+          return;
+        }
       }
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      ViolaLogUtils.e("AnimationModule", "animate JSONException e :" + paramString1.getMessage());
+      catch (JSONException paramString1)
+      {
+        paramJSONObject1 = new StringBuilder();
+        paramJSONObject1.append("animate JSONException e :");
+        paramJSONObject1.append(paramString1.getMessage());
+        ViolaLogUtils.e("AnimationModule", paramJSONObject1.toString());
+      }
     }
   }
   
@@ -49,7 +54,7 @@ public class AnimationModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.animation.AnimationModule
  * JD-Core Version:    0.7.0.1
  */

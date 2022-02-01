@@ -13,23 +13,23 @@ public final class SmsRetriever
   
   public static SmsRetrieverClient getClient(Activity paramActivity)
   {
-    AppMethodBeat.i(80422);
+    AppMethodBeat.i(929);
     paramActivity = new zzj(paramActivity);
-    AppMethodBeat.o(80422);
+    AppMethodBeat.o(929);
     return paramActivity;
   }
   
   public static SmsRetrieverClient getClient(Context paramContext)
   {
-    AppMethodBeat.i(80421);
+    AppMethodBeat.i(928);
     paramContext = new zzj(paramContext);
-    AppMethodBeat.o(80421);
+    AppMethodBeat.o(928);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.auth.api.phone.SmsRetriever
  * JD-Core Version:    0.7.0.1
  */

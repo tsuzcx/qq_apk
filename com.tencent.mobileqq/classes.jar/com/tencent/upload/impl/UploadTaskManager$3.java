@@ -15,56 +15,60 @@ class UploadTaskManager$3
     if (this.val$out == null) {
       return;
     }
-    UploadLog.d("UploadTaskManager", "remove task, flowId: " + this.val$out.flowId + ", path:" + this.val$out.uploadFilePath);
-    for (;;)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("remove task, flowId: ");
+    ((StringBuilder)localObject1).append(this.val$out.flowId);
+    ((StringBuilder)localObject1).append(", path:");
+    ((StringBuilder)localObject1).append(this.val$out.uploadFilePath);
+    UploadLog.d("UploadTaskManager", ((StringBuilder)localObject1).toString());
+    label245:
+    Object localObject4;
+    label250:
+    synchronized (UploadTaskManager.access$100(this.this$0))
     {
-      Iterator localIterator;
-      synchronized (UploadTaskManager.access$100(this.this$0))
-      {
-        localIterator = UploadTaskManager.access$100(this.this$0).iterator();
-        if (!localIterator.hasNext()) {
-          break label228;
-        }
-        AbstractUploadTask localAbstractUploadTask1 = (AbstractUploadTask)localIterator.next();
-        if (localAbstractUploadTask1.flowId != this.val$out.flowId) {
-          continue;
-        }
-        if (localAbstractUploadTask1 != null)
-        {
-          UploadTaskManager.access$100(this.this$0).remove(localAbstractUploadTask1);
-          return;
-        }
-      }
+      Iterator localIterator = UploadTaskManager.access$100(this.this$0).iterator();
       for (;;)
       {
-        synchronized (UploadTaskManager.access$200(this.this$0))
+        if (!localIterator.hasNext()) {
+          break label245;
+        }
+        localObject1 = (AbstractUploadTask)localIterator.next();
+        if (((AbstractUploadTask)localObject1).flowId == this.val$out.flowId) {
+          break;
+        }
+      }
+      if (localObject1 != null)
+      {
+        UploadTaskManager.access$100(this.this$0).remove(localObject1);
+        return;
+      }
+      synchronized (UploadTaskManager.access$200(this.this$0))
+      {
+        localIterator = UploadTaskManager.access$200(this.this$0).iterator();
+        for (;;)
         {
-          localIterator = UploadTaskManager.access$200(this.this$0).iterator();
-          if (localIterator.hasNext())
-          {
-            AbstractUploadTask localAbstractUploadTask2 = (AbstractUploadTask)localIterator.next();
-            if (localAbstractUploadTask2.flowId != this.val$out.flowId) {
-              continue;
-            }
-            if (localAbstractUploadTask2 != null)
-            {
-              UploadTaskManager.access$200(this.this$0).remove(localAbstractUploadTask2);
-              localAbstractUploadTask2.cancel();
-            }
-            UploadTaskManager.access$000(this.this$0);
-            return;
+          if (!localIterator.hasNext()) {
+            break label250;
+          }
+          localObject1 = (AbstractUploadTask)localIterator.next();
+          if (((AbstractUploadTask)localObject1).flowId == this.val$out.flowId) {
+            break;
           }
         }
-        localObject3 = null;
+        if (localObject1 != null)
+        {
+          UploadTaskManager.access$200(this.this$0).remove(localObject1);
+          ((AbstractUploadTask)localObject1).cancel();
+        }
+        UploadTaskManager.access$000(this.this$0);
+        return;
       }
-      label228:
-      Object localObject3 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.impl.UploadTaskManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/fkx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/fci" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:layout_marginLeft="@dimen/cp" android:layout_marginBottom="@dimen/d6" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" app:layout_constraintBottom_toBottomOf="@id/fci" app:layout_constraintLeft_toRightOf="@id/fci" app:layout_constraintRight_toLeftOf="@id/am1" app:layout_constraintTop_toTopOf="@id/fci">
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/az" android:ellipsize="end" android:id="@id/kvr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:alpha="0.8" />
+        <ImageView android:id="@id/fch" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@drawable/bt0" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <Button android:textSize="17.0dip" android:textColor="@color/agf" android:id="@id/am1" android:background="@drawable/axu" android:padding="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="23.0dip" android:text="@string/a17" android:layout_marginEnd="@dimen/cv" app:layout_constraintBottom_toBottomOf="@id/fci" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/fci" />
+</androidx.constraintlayout.widget.ConstraintLayout>

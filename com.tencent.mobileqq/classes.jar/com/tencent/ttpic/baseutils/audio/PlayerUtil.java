@@ -26,29 +26,28 @@ public class PlayerUtil
     try
     {
       localPlayer = new PlayerUtil.Player();
-      destroyPlayer(paramContext);
     }
     catch (IOException paramContext)
     {
-      try
-      {
-        paramContext = paramContext.getAssets().openFd(paramString);
-        localPlayer.setDataSource(paramContext.getFileDescriptor(), paramContext.getStartOffset(), paramContext.getLength());
-        paramContext.close();
-        preparePlayer(localPlayer, paramBoolean);
-        return localPlayer;
-      }
-      catch (IOException paramContext)
-      {
-        for (;;)
-        {
-          PlayerUtil.Player localPlayer;
-          paramContext = localPlayer;
-        }
-      }
-      paramContext = paramContext;
-      paramContext = null;
+      label44:
+      label46:
+      break label44;
     }
+    try
+    {
+      paramContext = paramContext.getAssets().openFd(paramString);
+      localPlayer.setDataSource(paramContext.getFileDescriptor(), paramContext.getStartOffset(), paramContext.getLength());
+      paramContext.close();
+      preparePlayer(localPlayer, paramBoolean);
+      return localPlayer;
+    }
+    catch (IOException paramContext)
+    {
+      paramContext = localPlayer;
+      break label46;
+    }
+    paramContext = null;
+    destroyPlayer(paramContext);
     return null;
   }
   
@@ -57,27 +56,26 @@ public class PlayerUtil
     try
     {
       localPlayer = new PlayerUtil.Player();
-      destroyPlayer(paramContext);
     }
     catch (Exception paramContext)
     {
-      try
-      {
-        localPlayer.setDataSource(paramContext, Uri.parse(paramString));
-        preparePlayer(localPlayer, paramBoolean);
-        return localPlayer;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          PlayerUtil.Player localPlayer;
-          paramContext = localPlayer;
-        }
-      }
-      paramContext = paramContext;
-      paramContext = null;
+      label24:
+      label26:
+      break label24;
     }
+    try
+    {
+      localPlayer.setDataSource(paramContext, Uri.parse(paramString));
+      preparePlayer(localPlayer, paramBoolean);
+      return localPlayer;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext = localPlayer;
+      break label26;
+    }
+    paramContext = null;
+    destroyPlayer(paramContext);
     return null;
   }
   
@@ -86,34 +84,33 @@ public class PlayerUtil
     try
     {
       localRecorder = new PlayerUtil.Recorder();
-      destroyRecorder(paramString);
     }
     catch (Exception paramString)
     {
-      try
-      {
-        localRecorder.setOutputFile(paramString);
-        localRecorder.setAudioSource(1);
-        localRecorder.setAudioChannels(1);
-        localRecorder.setAudioSamplingRate(44100);
-        localRecorder.setAudioEncodingBitRate(96000);
-        localRecorder.setOutputFormat(2);
-        localRecorder.setAudioEncoder(3);
-        localRecorder.setOnErrorListener(new PlayerUtil.5());
-        localRecorder.prepare();
-        return localRecorder;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          PlayerUtil.Recorder localRecorder;
-          paramString = localRecorder;
-        }
-      }
-      paramString = paramString;
-      paramString = null;
+      label62:
+      label64:
+      break label62;
     }
+    try
+    {
+      localRecorder.setOutputFile(paramString);
+      localRecorder.setAudioSource(1);
+      localRecorder.setAudioChannels(1);
+      localRecorder.setAudioSamplingRate(44100);
+      localRecorder.setAudioEncodingBitRate(96000);
+      localRecorder.setOutputFormat(2);
+      localRecorder.setAudioEncoder(3);
+      localRecorder.setOnErrorListener(new PlayerUtil.5());
+      localRecorder.prepare();
+      return localRecorder;
+    }
+    catch (Exception paramString)
+    {
+      paramString = localRecorder;
+      break label64;
+    }
+    paramString = null;
+    destroyRecorder(paramString);
     return null;
   }
   
@@ -121,7 +118,8 @@ public class PlayerUtil
   {
     if (paramPlayer != null)
     {
-      stopAndResetPlayer(paramPlayer);
+      paramPlayer.stop();
+      paramPlayer.reset();
       paramPlayer.release();
     }
   }
@@ -156,13 +154,11 @@ public class PlayerUtil
   
   public static boolean isSilentMode(Context paramContext)
   {
-    switch (getAudioManager(paramContext).getRingerMode())
+    int i = getAudioManager(paramContext).getRingerMode();
+    if ((i != 0) && (i != 1))
     {
-    case 2: 
-    default: 
+      if (i != 2) {}
       return false;
-    case 0: 
-      return true;
     }
     return true;
   }
@@ -170,6 +166,15 @@ public class PlayerUtil
   private boolean isSupportedAudioSamplingRate(int paramInt)
   {
     return AudioRecord.getMinBufferSize(paramInt, 16, 2) > 0;
+  }
+  
+  public static void pauseAndSeekToOrigin(PlayerUtil.Player paramPlayer)
+  {
+    if (paramPlayer != null)
+    {
+      paramPlayer.pause();
+      paramPlayer.seekTo(0);
+    }
   }
   
   private static void preparePlayer(PlayerUtil.Player paramPlayer, boolean paramBoolean)
@@ -208,27 +213,16 @@ public class PlayerUtil
       {
         paramPlayer.setOnSeekCompleteListener(new PlayerUtil.3());
         paramPlayer.seekTo(0);
+        return;
       }
+      paramPlayer.start();
     }
-    else {
-      return;
-    }
-    paramPlayer.start();
   }
   
   public static void startRecorder(PlayerUtil.Recorder paramRecorder)
   {
     if (paramRecorder != null) {
       paramRecorder.start();
-    }
-  }
-  
-  public static void stopAndResetPlayer(PlayerUtil.Player paramPlayer)
-  {
-    if (paramPlayer != null)
-    {
-      paramPlayer.stop();
-      paramPlayer.release();
     }
   }
   
@@ -241,7 +235,7 @@ public class PlayerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.audio.PlayerUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public class NetworkManager
   public static final int TYPE_NOT_WIFI = 2;
   public static final int TYPE_NO_NETWORK = 0;
   public static final int TYPE_WIFI = 1;
-  private static NetworkManager g = null;
+  private static NetworkManager g;
   private List<String> a = new ArrayList(10);
   private volatile int b = 2;
   private volatile String c = "";
@@ -65,15 +65,16 @@ public class NetworkManager
   
   public static NetworkManager getInstance(Context paramContext)
   {
-    if (g == null) {}
-    try
-    {
-      if (g == null) {
-        g = new NetworkManager(paramContext);
+    if (g == null) {
+      try
+      {
+        if (g == null) {
+          g = new NetworkManager(paramContext);
+        }
       }
-      return g;
+      finally {}
     }
-    finally {}
+    return g;
   }
   
   void a()
@@ -81,28 +82,35 @@ public class NetworkManager
     if (Util.isNetworkAvailable(this.h))
     {
       this.c = StatCommonHelper.getLinkedWay(this.h);
-      if (StatConfig.isDebugEnable()) {
-        this.i.i("NETWORK name:" + this.c);
-      }
-      if (StatCommonHelper.isStringValid(this.c)) {
-        if (!"WIFI".equalsIgnoreCase(this.c)) {
-          break label105;
-        }
-      }
-      label105:
-      for (this.b = 1;; this.b = 2)
+      if (StatConfig.isDebugEnable())
       {
-        this.d = StatCommonHelper.getHttpProxy(this.h);
-        if (StatServiceImpl.a()) {
-          StatServiceImpl.e(this.h);
+        StatLogger localStatLogger = this.i;
+        StringBuilder localStringBuilder = new StringBuilder("NETWORK name:");
+        localStringBuilder.append(this.c);
+        localStatLogger.i(localStringBuilder.toString());
+      }
+      if (StatCommonHelper.isStringValid(this.c))
+      {
+        int j;
+        if ("WIFI".equalsIgnoreCase(this.c)) {
+          j = 1;
+        } else {
+          j = 2;
         }
-        return;
+        this.b = j;
+        this.d = StatCommonHelper.getHttpProxy(this.h);
+      }
+      if (StatServiceImpl.a()) {
+        StatServiceImpl.e(this.h);
       }
     }
-    if (StatConfig.isDebugEnable()) {
-      this.i.i("NETWORK TYPE: network is close.");
+    else
+    {
+      if (StatConfig.isDebugEnable()) {
+        this.i.i("NETWORK TYPE: network is close.");
+      }
+      c();
     }
-    c();
   }
   
   public String getCurNetwrokName()
@@ -132,7 +140,8 @@ public class NetworkManager
   
   public void onDispatchFailed()
   {
-    if ((this.a != null) && (this.a.size() > 0)) {
+    List localList = this.a;
+    if ((localList != null) && (localList.size() > 0)) {
       this.f = ((this.f + 1) % this.a.size());
     }
   }
@@ -152,15 +161,19 @@ public class NetworkManager
   
   public void updateIpList(String paramString)
   {
-    if (StatConfig.isDebugEnable()) {
-      this.i.i("updateIpList " + paramString);
+    if (StatConfig.isDebugEnable())
+    {
+      StatLogger localStatLogger = this.i;
+      StringBuilder localStringBuilder = new StringBuilder("updateIpList ");
+      localStringBuilder.append(paramString);
+      localStatLogger.i(localStringBuilder.toString());
     }
     this.f = new Random().nextInt(this.a.size());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.NetworkManager
  * JD-Core Version:    0.7.0.1
  */

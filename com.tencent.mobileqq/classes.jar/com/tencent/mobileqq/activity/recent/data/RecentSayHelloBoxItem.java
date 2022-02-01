@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import abta;
-import abtg;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import apib;
-import bdgc;
-import bdil;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.BaseMsgProxy;
+import com.tencent.imcore.message.ConversationFacade;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.dating.DatingUtil;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.MsgUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,7 +24,7 @@ public class RecentSayHelloBoxItem
 {
   private static final int MAX_UNREADER_MSG_ICON = 6;
   public Object lock = new Object();
-  public boolean mHasFlowerMsg;
+  public boolean mHasFlowerMsg = false;
   public List<MessageRecord> mUnreadMRList = new ArrayList(6);
   
   public RecentSayHelloBoxItem(MessageRecord paramMessageRecord)
@@ -32,138 +32,180 @@ public class RecentSayHelloBoxItem
     super(paramMessageRecord);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  private void a(QQAppInterface arg1)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    Object localObject3 = paramQQAppInterface.a(a()).a(a(), a());
-    Object localObject1 = paramQQAppInterface.a();
+    Object localObject2 = ???.getMessageProxy(getRecentUserType()).b(getRecentUserUin(), getRecentUserType());
+    ConversationFacade localConversationFacade = ???.getConversationFacade();
     int i;
-    if (localObject3 == null) {
+    if (localObject2 == null) {
       i = 0;
+    } else {
+      i = ((List)localObject2).size();
+    }
+    synchronized (this.lock)
+    {
+      this.mUnreadMRList.clear();
+      this.mUnreadNum = localConversationFacade.a(getRecentUserUin(), getRecentUserType());
+      if (i > 0)
+      {
+        localObject2 = ((List)localObject2).iterator();
+        do
+        {
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject2).next();
+          if ((localConversationFacade.a(localMessageRecord.senderuin, localMessageRecord.istroop) > 0) && (this.mUnreadMRList.size() < 6)) {
+            this.mUnreadMRList.add(localMessageRecord);
+          }
+        } while (this.mUnreadMRList.size() < 6);
+      }
+      if ((this.mUnreadNum == 0) && (!this.mUnreadMRList.isEmpty())) {
+        this.mUnreadMRList.clear();
+      }
+      return;
     }
     for (;;)
     {
-      synchronized (this.lock)
-      {
-        this.mUnreadMRList.clear();
-        this.mUnreadNum = ((abta)localObject1).a(a(), a());
-        if (i > 0)
+      throw localObject1;
+    }
+  }
+  
+  private void b()
+  {
+    if (AppSetting.e)
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder(24);
+      localStringBuilder1.append(this.mTitleName);
+      if (this.mUnreadNum != 0) {
+        if (this.mUnreadNum == 1)
         {
-          localObject3 = ((List)localObject3).iterator();
-          if (((Iterator)localObject3).hasNext())
-          {
-            MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
-            if ((((abta)localObject1).a(localMessageRecord.senderuin, localMessageRecord.istroop) > 0) && (this.mUnreadMRList.size() < 6)) {
-              this.mUnreadMRList.add(localMessageRecord);
-            }
-            if (this.mUnreadMRList.size() < 6) {
-              continue;
-            }
-          }
+          localStringBuilder1.append("有一条未读");
         }
-        if ((this.mUnreadNum == 0) && (!this.mUnreadMRList.isEmpty())) {
-          this.mUnreadMRList.clear();
-        }
-        this.mUnreadFlag = 3;
-        this.mLastMsg = "";
-        this.mExtraInfoColor = 0;
-        this.mMsgExtroInfo = "";
-        ??? = null;
-        localObject3 = paramQQAppInterface.a();
-        if (localObject3 != null) {
-          ??? = ((QQMessageFacade)localObject3).a(a(), a());
-        }
-        if (apib.a(paramQQAppInterface, a(), 1001))
+        else if (this.mUnreadNum == 2)
         {
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131693391);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
-          ??? = a();
-          ((MsgSummary)???).strContent = ((abta)localObject1).a(a(), 1001, paramContext.getResources().getString(2131693390), 0);
-          a(paramQQAppInterface, (MsgSummary)???);
-          a(paramQQAppInterface, paramContext, (MsgSummary)???);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg_box", 2, "boxUin" + a() + ",boxType" + a() + ",HasUnreadRedPacketMsg");
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg_box", 2, "boxUin" + a() + ",boxType" + a() + ",unreadNum:" + this.mUnreadNum);
-          }
-          if (!AppSetting.c) {
-            break;
-          }
-          paramQQAppInterface = new StringBuilder(24);
-          paramQQAppInterface.append(this.mTitleName);
-          if (this.mUnreadNum != 0) {
-            break label785;
-          }
-          label482:
-          if (this.mMsgExtroInfo != null) {
-            paramQQAppInterface.append(this.mMsgExtroInfo + ",");
-          }
-          paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
-          this.mContentDesc = paramQQAppInterface.toString();
-          return;
-          i = ((List)localObject3).size();
+          localStringBuilder1.append("有两条未读");
+        }
+        else if (this.mUnreadNum > 0)
+        {
+          localStringBuilder1.append("有");
+          localStringBuilder1.append(this.mUnreadNum);
+          localStringBuilder1.append("条未读");
         }
       }
-      if (apib.b(paramQQAppInterface, a(), 1001))
+      if (this.mMsgExtroInfo != null)
       {
-        this.mHasFlowerMsg = true;
-        this.mUnreadFlag = 1;
-        this.mMsgExtroInfo = paramContext.getResources().getString(2131694561);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
-        this.mLastMsg = "";
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg_box", 2, "boxUin" + a() + ",boxType" + a() + ",HasUnreadGiftMsg");
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(this.mMsgExtroInfo);
+        localStringBuilder2.append(",");
+        localStringBuilder1.append(localStringBuilder2.toString());
+      }
+      localStringBuilder1.append(this.mLastMsg);
+      localStringBuilder1.append(' ');
+      localStringBuilder1.append(this.mShowTime);
+      this.mContentDesc = localStringBuilder1.toString();
+    }
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    Object localObject1 = paramQQAppInterface.getConversationFacade();
+    this.mUnreadFlag = 3;
+    this.mLastMsg = "";
+    this.mExtraInfoColor = 0;
+    this.mMsgExtroInfo = "";
+    Object localObject2 = paramQQAppInterface.getMessageFacade();
+    if (localObject2 != null) {
+      localObject2 = ((QQMessageFacade)localObject2).getLastMessage(getRecentUserUin(), getRecentUserType());
+    } else {
+      localObject2 = null;
+    }
+    if (DatingUtil.a(paramQQAppInterface, getRecentUserUin(), 1001))
+    {
+      this.mMsgExtroInfo = paramContext.getResources().getString(2131890709);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
+      localObject2 = getMsgSummaryTemp();
+      ((MsgSummary)localObject2).strContent = ((ConversationFacade)localObject1).b(getRecentUserUin(), 1001, paramContext.getResources().getString(2131890708), 0);
+      a(paramQQAppInterface, (MsgSummary)localObject2);
+      extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("boxUin");
+        paramQQAppInterface.append(getRecentUserUin());
+        paramQQAppInterface.append(",boxType");
+        paramQQAppInterface.append(getRecentUserType());
+        paramQQAppInterface.append(",HasUnreadRedPacketMsg");
+        QLog.d("Q.msg_box", 2, paramQQAppInterface.toString());
+      }
+    }
+    else if (DatingUtil.b(paramQQAppInterface, getRecentUserUin(), 1001))
+    {
+      this.mHasFlowerMsg = true;
+      this.mUnreadFlag = 1;
+      this.mMsgExtroInfo = paramContext.getResources().getString(2131891939);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
+      this.mLastMsg = "";
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("boxUin");
+        paramQQAppInterface.append(getRecentUserUin());
+        paramQQAppInterface.append(",boxType");
+        paramQQAppInterface.append(getRecentUserType());
+        paramQQAppInterface.append(",HasUnreadGiftMsg");
+        QLog.d("Q.msg_box", 2, paramQQAppInterface.toString());
+      }
+    }
+    else if (this.mUnreadNum > 0)
+    {
+      this.mLastMsg = "";
+    }
+    else
+    {
+      if (localObject2 != null)
+      {
+        localObject3 = ContactUtils.h(paramQQAppInterface, ((Message)localObject2).senderuin);
+        localObject1 = localObject3;
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          localObject1 = ContactUtils.a(paramQQAppInterface, ((Message)localObject2).senderuin, false);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          localObject1 = "";
         }
       }
       else
       {
-        if (this.mUnreadNum <= 0) {
-          break label689;
-        }
-        this.mLastMsg = "";
+        localObject1 = null;
       }
-    }
-    label689:
-    localObject1 = null;
-    if (??? != null)
-    {
-      localObject3 = bdgc.q(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin);
-      localObject1 = localObject3;
-      if (TextUtils.isEmpty((CharSequence)localObject3)) {
-        localObject1 = bdgc.b(paramQQAppInterface, ((QQMessageFacade.Message)???).senderuin, false);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label853;
-      }
-      localObject1 = "";
-    }
-    label785:
-    label853:
-    for (;;)
-    {
-      localObject3 = a();
-      bdil.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)???, a(), (MsgSummary)localObject3, (String)localObject1, false, false);
+      Object localObject3 = getMsgSummaryTemp();
+      MsgUtils.a(paramContext, paramQQAppInterface, (Message)localObject2, getRecentUserType(), (MsgSummary)localObject3, (String)localObject1, false, false);
       a(paramQQAppInterface, (MsgSummary)localObject3);
-      a(paramQQAppInterface, paramContext, (MsgSummary)localObject3);
-      break;
-      if (this.mUnreadNum == 1)
-      {
-        paramQQAppInterface.append("有一条未读");
-        break label482;
+      extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject3);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("boxUin");
+      paramQQAppInterface.append(getRecentUserUin());
+      paramQQAppInterface.append(",boxType");
+      paramQQAppInterface.append(getRecentUserType());
+      paramQQAppInterface.append(",unreadNum:");
+      paramQQAppInterface.append(this.mUnreadNum);
+      QLog.d("Q.msg_box", 2, paramQQAppInterface.toString());
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    if (paramQQAppInterface != null)
+    {
+      if (paramContext == null) {
+        return;
       }
-      if (this.mUnreadNum == 2)
-      {
-        paramQQAppInterface.append("有两条未读");
-        break label482;
-      }
-      if (this.mUnreadNum <= 0) {
-        break label482;
-      }
-      paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
-      break label482;
+      a(paramQQAppInterface);
+      b(paramQQAppInterface, paramContext);
+      b();
     }
   }
 }

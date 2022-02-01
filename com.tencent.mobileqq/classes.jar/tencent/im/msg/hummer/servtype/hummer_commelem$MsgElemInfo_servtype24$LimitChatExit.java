@@ -15,7 +15,7 @@ public final class hummer_commelem$MsgElemInfo_servtype24$LimitChatExit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype24.LimitChatExit
  * JD-Core Version:    0.7.0.1
  */

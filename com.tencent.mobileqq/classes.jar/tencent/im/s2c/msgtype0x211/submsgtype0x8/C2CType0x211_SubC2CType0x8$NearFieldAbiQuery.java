@@ -32,14 +32,16 @@ public final class C2CType0x211_SubC2CType0x8$NearFieldAbiQuery
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 66 }, new String[] { "uint64_to_uin", "uint64_from_uin", "bool_need_tips", "int32_timeout", "bytes_cookie", "int32_peer_ip", "int32_peer_port", "bytes_peer_extra" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Boolean.valueOf(false), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, NearFieldAbiQuery.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 66 }, new String[] { "uint64_to_uin", "uint64_from_uin", "bool_need_tips", "int32_timeout", "bytes_cookie", "int32_peer_ip", "int32_peer_port", "bytes_peer_extra" }, new Object[] { localLong, localLong, Boolean.valueOf(false), localInteger, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2 }, NearFieldAbiQuery.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x8.C2CType0x211_SubC2CType0x8.NearFieldAbiQuery
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,7 @@ public final class DtsReader
   {
     int i = Math.min(paramParsableByteArray.bytesLeft(), paramInt - this.bytesRead);
     paramParsableByteArray.readBytes(paramArrayOfByte, this.bytesRead, i);
-    this.bytesRead = (i + this.bytesRead);
+    this.bytesRead += i;
     return this.bytesRead == paramInt;
   }
   
@@ -74,34 +74,36 @@ public final class DtsReader
   {
     while (paramParsableByteArray.bytesLeft() > 0)
     {
-      switch (this.state)
+      int i = this.state;
+      if (i != 0)
       {
-      default: 
-        break;
-      case 0: 
-        if (!skipToNextSync(paramParsableByteArray)) {
-          continue;
+        if (i != 1)
+        {
+          if (i == 2)
+          {
+            i = Math.min(paramParsableByteArray.bytesLeft(), this.sampleSize - this.bytesRead);
+            this.output.sampleData(paramParsableByteArray, i);
+            this.bytesRead += i;
+            i = this.bytesRead;
+            int j = this.sampleSize;
+            if (i == j)
+            {
+              this.output.sampleMetadata(this.timeUs, 1, j, 0, null);
+              this.timeUs += this.sampleDurationUs;
+              this.state = 0;
+            }
+          }
         }
-        this.state = 1;
-        break;
-      case 1: 
-        if (!continueRead(paramParsableByteArray, this.headerScratchBytes.data, 18)) {
-          continue;
+        else if (continueRead(paramParsableByteArray, this.headerScratchBytes.data, 18))
+        {
+          parseHeader();
+          this.headerScratchBytes.setPosition(0);
+          this.output.sampleData(this.headerScratchBytes, 18);
+          this.state = 2;
         }
-        parseHeader();
-        this.headerScratchBytes.setPosition(0);
-        this.output.sampleData(this.headerScratchBytes, 18);
-        this.state = 2;
-        break;
       }
-      int i = Math.min(paramParsableByteArray.bytesLeft(), this.sampleSize - this.bytesRead);
-      this.output.sampleData(paramParsableByteArray, i);
-      this.bytesRead = (i + this.bytesRead);
-      if (this.bytesRead == this.sampleSize)
-      {
-        this.output.sampleMetadata(this.timeUs, 1, this.sampleSize, 0, null);
-        this.timeUs += this.sampleDurationUs;
-        this.state = 0;
+      else if (skipToNextSync(paramParsableByteArray)) {
+        this.state = 1;
       }
     }
   }
@@ -129,7 +131,7 @@ public final class DtsReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.DtsReader
  * JD-Core Version:    0.7.0.1
  */

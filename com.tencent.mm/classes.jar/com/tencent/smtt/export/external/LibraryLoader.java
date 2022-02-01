@@ -10,19 +10,20 @@ import java.util.ArrayList;
 public class LibraryLoader
 {
   private static String[] sLibrarySearchPaths = null;
+  private byte _hellAccFlag_;
   
   public static String[] getLibrarySearchPaths(Context paramContext)
   {
-    AppMethodBeat.i(63770);
+    AppMethodBeat.i(53150);
     if (sLibrarySearchPaths != null)
     {
       paramContext = sLibrarySearchPaths;
-      AppMethodBeat.o(63770);
+      AppMethodBeat.o(53150);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(63770);
+      AppMethodBeat.o(53150);
       return new String[] { "/system/lib" };
     }
     ArrayList localArrayList = new ArrayList();
@@ -31,38 +32,38 @@ public class LibraryLoader
     paramContext = new String[localArrayList.size()];
     localArrayList.toArray(paramContext);
     sLibrarySearchPaths = paramContext;
-    AppMethodBeat.o(63770);
+    AppMethodBeat.o(53150);
     return paramContext;
   }
   
   public static String getNativeLibraryDir(Context paramContext)
   {
-    AppMethodBeat.i(63771);
+    AppMethodBeat.i(53151);
     int i = Build.VERSION.SDK_INT;
     if (i >= 9)
     {
       paramContext = paramContext.getApplicationInfo().nativeLibraryDir;
-      AppMethodBeat.o(63771);
+      AppMethodBeat.o(53151);
       return paramContext;
     }
     if (i >= 4)
     {
       paramContext = paramContext.getApplicationInfo().dataDir + "/lib";
-      AppMethodBeat.o(63771);
+      AppMethodBeat.o(53151);
       return paramContext;
     }
     paramContext = "/data/data/" + paramContext.getPackageName() + "/lib";
-    AppMethodBeat.o(63771);
+    AppMethodBeat.o(53151);
     return paramContext;
   }
   
   public static void loadLibrary(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(63772);
+    int i = 0;
+    AppMethodBeat.i(53152);
     paramContext = getLibrarySearchPaths(paramContext);
     String str1 = System.mapLibraryName(paramString);
     int j = paramContext.length;
-    int i = 0;
     while (i < j)
     {
       String str2 = paramContext[i];
@@ -71,12 +72,12 @@ public class LibraryLoader
         try
         {
           System.load(str2);
-          AppMethodBeat.o(63772);
+          AppMethodBeat.o(53152);
           return;
         }
         catch (Exception paramContext)
         {
-          AppMethodBeat.o(63772);
+          AppMethodBeat.o(53152);
           return;
         }
       }
@@ -84,13 +85,17 @@ public class LibraryLoader
     }
     try
     {
-      System.loadLibrary(paramString);
-      AppMethodBeat.o(63772);
+      paramContext = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+      paramString = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(paramString, paramContext.aYi(), "com/tencent/smtt/export/external/LibraryLoader", "loadLibrary", "(Landroid/content/Context;Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)paramContext.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/smtt/export/external/LibraryLoader", "loadLibrary", "(Landroid/content/Context;Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      AppMethodBeat.o(53152);
       return;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(63772);
+      AppMethodBeat.o(53152);
     }
   }
 }

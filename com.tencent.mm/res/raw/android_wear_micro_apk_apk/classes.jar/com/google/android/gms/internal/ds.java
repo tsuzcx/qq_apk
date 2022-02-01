@@ -3,11 +3,11 @@ package com.google.android.gms.internal;
 public final class ds
   implements Cloneable
 {
-  private static final dt Ru = new dt();
-  private boolean Rv = false;
-  private int[] Rw;
-  private dt[] Rx;
-  private int e;
+  private static final dt Tj = new dt();
+  private boolean Tk = false;
+  private int[] Tl;
+  private dt[] Tm;
+  private int m;
   
   ds()
   {
@@ -16,28 +16,52 @@ public final class ds
   
   private ds(int paramInt)
   {
-    paramInt = r(paramInt);
-    this.Rw = new int[paramInt];
-    this.Rx = new dt[paramInt];
-    this.e = 0;
+    paramInt = B(paramInt);
+    this.Tl = new int[paramInt];
+    this.Tm = new dt[paramInt];
+    this.m = 0;
   }
   
-  private int bC(int paramInt)
+  private static int B(int paramInt)
+  {
+    return bW(paramInt * 4) / 4;
+  }
+  
+  private static int bW(int paramInt)
+  {
+    int i = 4;
+    for (;;)
+    {
+      int j = paramInt;
+      if (i < 32)
+      {
+        if (paramInt <= (1 << i) - 12) {
+          j = (1 << i) - 12;
+        }
+      }
+      else {
+        return j;
+      }
+      i += 1;
+    }
+  }
+  
+  private int bX(int paramInt)
   {
     int i = 0;
-    int j = this.e - 1;
+    int j = this.m - 1;
     while (i <= j)
     {
       int k = i + j >>> 1;
-      int m = this.Rw[k];
-      if (m < paramInt)
+      int n = this.Tl[k];
+      if (n < paramInt)
       {
         i = k + 1;
       }
       else
       {
         j = k;
-        if (m <= paramInt) {
+        if (n <= paramInt) {
           return j;
         }
         j = k - 1;
@@ -47,73 +71,56 @@ public final class ds
     return j;
   }
   
-  private static int r(int paramInt)
-  {
-    int j = paramInt * 4;
-    paramInt = 4;
-    for (;;)
-    {
-      int i = j;
-      if (paramInt < 32)
-      {
-        if (j <= (1 << paramInt) - 12) {
-          i = (1 << paramInt) - 12;
-        }
-      }
-      else {
-        return i / 4;
-      }
-      paramInt += 1;
-    }
-  }
-  
   final void a(int paramInt, dt paramdt)
   {
-    int i = bC(paramInt);
+    int i = bX(paramInt);
     if (i >= 0)
     {
-      this.Rx[i] = paramdt;
+      this.Tm[i] = paramdt;
       return;
     }
     i ^= 0xFFFFFFFF;
-    if ((i < this.e) && (this.Rx[i] == Ru))
+    if ((i < this.m) && (this.Tm[i] == Tj))
     {
-      this.Rw[i] = paramInt;
-      this.Rx[i] = paramdt;
+      this.Tl[i] = paramInt;
+      this.Tm[i] = paramdt;
       return;
     }
-    if (this.e >= this.Rw.length)
+    Object localObject;
+    if (this.m >= this.Tl.length)
     {
-      int j = r(this.e + 1);
-      int[] arrayOfInt = new int[j];
+      int j = B(this.m + 1);
+      localObject = new int[j];
       dt[] arrayOfdt = new dt[j];
-      System.arraycopy(this.Rw, 0, arrayOfInt, 0, this.Rw.length);
-      System.arraycopy(this.Rx, 0, arrayOfdt, 0, this.Rx.length);
-      this.Rw = arrayOfInt;
-      this.Rx = arrayOfdt;
+      System.arraycopy(this.Tl, 0, localObject, 0, this.Tl.length);
+      System.arraycopy(this.Tm, 0, arrayOfdt, 0, this.Tm.length);
+      this.Tl = ((int[])localObject);
+      this.Tm = arrayOfdt;
     }
-    if (this.e - i != 0)
+    if (this.m - i != 0)
     {
-      System.arraycopy(this.Rw, i, this.Rw, i + 1, this.e - i);
-      System.arraycopy(this.Rx, i, this.Rx, i + 1, this.e - i);
+      localObject = this.Tl;
+      System.arraycopy(localObject, i, localObject, i + 1, this.m - i);
+      localObject = this.Tm;
+      System.arraycopy(localObject, i, localObject, i + 1, this.m - i);
     }
-    this.Rw[i] = paramInt;
-    this.Rx[i] = paramdt;
-    this.e += 1;
+    this.Tl[i] = paramInt;
+    this.Tm[i] = paramdt;
+    this.m += 1;
   }
   
-  final dt bA(int paramInt)
+  final dt bU(int paramInt)
   {
-    paramInt = bC(paramInt);
-    if ((paramInt < 0) || (this.Rx[paramInt] == Ru)) {
+    paramInt = bX(paramInt);
+    if ((paramInt < 0) || (this.Tm[paramInt] == Tj)) {
       return null;
     }
-    return this.Rx[paramInt];
+    return this.Tm[paramInt];
   }
   
-  final dt bB(int paramInt)
+  final dt bV(int paramInt)
   {
-    return this.Rx[paramInt];
+    return this.Tm[paramInt];
   }
   
   public final boolean equals(Object paramObject)
@@ -129,12 +136,12 @@ public final class ds
         return false;
       }
       paramObject = (ds)paramObject;
-      if (this.e != paramObject.e) {
+      if (this.m != paramObject.m) {
         return false;
       }
-      Object localObject = this.Rw;
-      int[] arrayOfInt = paramObject.Rw;
-      int j = this.e;
+      Object localObject = this.Tl;
+      int[] arrayOfInt = paramObject.Tl;
+      int j = this.m;
       int i = 0;
       if (i < j) {
         if (localObject[i] != arrayOfInt[i])
@@ -143,9 +150,9 @@ public final class ds
           label71:
           if (i != 0)
           {
-            localObject = this.Rx;
-            paramObject = paramObject.Rx;
-            j = this.e;
+            localObject = this.Tm;
+            paramObject = paramObject.Tm;
+            j = this.m;
             i = 0;
             label93:
             if (i >= j) {
@@ -177,9 +184,9 @@ public final class ds
   {
     int j = 17;
     int i = 0;
-    while (i < this.e)
+    while (i < this.m)
     {
-      j = (j * 31 + this.Rw[i]) * 31 + this.Rx[i].hashCode();
+      j = (j * 31 + this.Tl[i]) * 31 + this.Tm[i].hashCode();
       i += 1;
     }
     return j;
@@ -187,12 +194,12 @@ public final class ds
   
   public final boolean isEmpty()
   {
-    return this.e == 0;
+    return this.m == 0;
   }
   
   final int size()
   {
-    return this.e;
+    return this.m;
   }
 }
 

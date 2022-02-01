@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textStyle="bold" android:gravity="center" android:id="@id/bt4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d4" android:layout_marginTop="@dimen/d4" android:layout_marginRight="@dimen/d4" android:text="@string/bv9" android:layout_centerHorizontal="true" style="@style/zp" />
+    <org.libpag.PAGView android:id="@id/bt3" android:background="@color/g_" android:layout_width="@dimen/cl" android:layout_height="360.0dip" android:layout_marginTop="@dimen/d4" android:layout_below="@id/bt4" android:layout_centerHorizontal="true" />
+    <Button android:gravity="center" android:id="@id/bt1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d_" android:text="@string/bv5" android:layout_below="@id/bt3" android:layout_centerHorizontal="true" style="@style/op" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/Link_100" android:gravity="center" android:id="@id/bt2" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/cd" android:paddingRight="@dimen/cp" android:paddingBottom="@dimen/cd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/d4" android:text="@string/bv_" android:layout_below="@id/bt1" android:layout_centerHorizontal="true" android:paddingHorizontal="@dimen/cp" android:paddingVertical="@dimen/cd" />
+</RelativeLayout>

@@ -3,38 +3,40 @@ package io.flutter.embedding.android;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportAndroidXFragment;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterShellArgs;
-import io.flutter.embedding.engine.renderer.OnFirstFrameRenderedListener;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 import io.flutter.plugin.platform.PlatformPlugin;
-import io.flutter.view.FlutterMain;
 
 public class FlutterFragment
-  extends Fragment
+  extends ReportAndroidXFragment
   implements FlutterActivityAndFragmentDelegate.Host
 {
   protected static final String ARG_APP_BUNDLE_PATH = "app_bundle_path";
   protected static final String ARG_CACHED_ENGINE_ID = "cached_engine_id";
   protected static final String ARG_DART_ENTRYPOINT = "dart_entrypoint";
   protected static final String ARG_DESTROY_ENGINE_WITH_FRAGMENT = "destroy_engine_with_fragment";
+  protected static final String ARG_ENABLE_STATE_RESTORATION = "enable_state_restoration";
   protected static final String ARG_FLUTTERVIEW_RENDER_MODE = "flutterview_render_mode";
   protected static final String ARG_FLUTTERVIEW_TRANSPARENCY_MODE = "flutterview_transparency_mode";
   protected static final String ARG_FLUTTER_INITIALIZATION_ARGS = "initialization_args";
   protected static final String ARG_INITIAL_ROUTE = "initial_route";
   protected static final String ARG_SHOULD_ATTACH_ENGINE_TO_ACTIVITY = "should_attach_engine_to_activity";
   private static final String TAG = "FlutterFragment";
-  private FlutterActivityAndFragmentDelegate delegate;
-  private final OnFirstFrameRenderedListener onFirstFrameRenderedListener = new FlutterFragment.1(this);
+  @VisibleForTesting
+  FlutterActivityAndFragmentDelegate delegate;
   
   public FlutterFragment()
   {
@@ -45,15 +47,6 @@ public class FlutterFragment
   public static FlutterFragment createDefault()
   {
     return new FlutterFragment.NewEngineFragmentBuilder().build();
-  }
-  
-  @NonNull
-  private Context getContextCompat()
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return getContext();
-    }
-    return getActivity();
   }
   
   @NonNull
@@ -68,6 +61,14 @@ public class FlutterFragment
     return new FlutterFragment.NewEngineFragmentBuilder();
   }
   
+  public void cleanUpFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
+  {
+    FragmentActivity localFragmentActivity = getActivity();
+    if ((localFragmentActivity instanceof FlutterEngineConfigurator)) {
+      ((FlutterEngineConfigurator)localFragmentActivity).cleanUpFlutterEngine(paramFlutterEngine);
+    }
+  }
+  
   public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
   {
     FragmentActivity localFragmentActivity = getActivity();
@@ -79,7 +80,7 @@ public class FlutterFragment
   @NonNull
   public String getAppBundlePath()
   {
-    return getArguments().getString("app_bundle_path", FlutterMain.findAppBundlePath());
+    return getArguments().getString("app_bundle_path");
   }
   
   @Nullable
@@ -104,12 +105,10 @@ public class FlutterFragment
   public FlutterShellArgs getFlutterShellArgs()
   {
     String[] arrayOfString = getArguments().getStringArray("initialization_args");
-    if (arrayOfString != null) {}
-    for (;;)
-    {
-      return new FlutterShellArgs(arrayOfString);
+    if (arrayOfString == null) {
       arrayOfString = new String[0];
     }
+    return new FlutterShellArgs(arrayOfString);
   }
   
   @Nullable
@@ -119,15 +118,21 @@ public class FlutterFragment
   }
   
   @NonNull
-  public FlutterView.RenderMode getRenderMode()
+  public RenderMode getRenderMode()
   {
-    return FlutterView.RenderMode.valueOf(getArguments().getString("flutterview_render_mode", FlutterView.RenderMode.surface.name()));
+    return RenderMode.valueOf(getArguments().getString("flutterview_render_mode", RenderMode.surface.name()));
   }
   
   @NonNull
-  public FlutterView.TransparencyMode getTransparencyMode()
+  public TransparencyMode getTransparencyMode()
   {
-    return FlutterView.TransparencyMode.valueOf(getArguments().getString("flutterview_transparency_mode", FlutterView.TransparencyMode.transparent.name()));
+    return TransparencyMode.valueOf(getArguments().getString("flutterview_transparency_mode", TransparencyMode.transparent.name()));
+  }
+  
+  public void onActivityCreated(@Nullable Bundle paramBundle)
+  {
+    super.onActivityCreated(paramBundle);
+    this.delegate.onActivityCreated(paramBundle);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -151,7 +156,9 @@ public class FlutterFragment
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    return this.delegate.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = this.delegate.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroyView()
@@ -168,11 +175,23 @@ public class FlutterFragment
     this.delegate = null;
   }
   
-  public void onFirstFrameRendered()
+  public void onFlutterSurfaceViewCreated(@NonNull FlutterSurfaceView paramFlutterSurfaceView) {}
+  
+  public void onFlutterTextureViewCreated(@NonNull FlutterTextureView paramFlutterTextureView) {}
+  
+  public void onFlutterUiDisplayed()
   {
     FragmentActivity localFragmentActivity = getActivity();
-    if ((localFragmentActivity instanceof OnFirstFrameRenderedListener)) {
-      ((OnFirstFrameRenderedListener)localFragmentActivity).onFirstFrameRendered();
+    if ((localFragmentActivity instanceof FlutterUiDisplayListener)) {
+      ((FlutterUiDisplayListener)localFragmentActivity).onFlutterUiDisplayed();
+    }
+  }
+  
+  public void onFlutterUiNoLongerDisplayed()
+  {
+    FragmentActivity localFragmentActivity = getActivity();
+    if ((localFragmentActivity instanceof FlutterUiDisplayListener)) {
+      ((FlutterUiDisplayListener)localFragmentActivity).onFlutterUiNoLongerDisplayed();
     }
   }
   
@@ -212,6 +231,12 @@ public class FlutterFragment
     this.delegate.onResume();
   }
   
+  public void onSaveInstanceState(Bundle paramBundle)
+  {
+    super.onSaveInstanceState(paramBundle);
+    this.delegate.onSaveInstanceState(paramBundle);
+  }
+  
   public void onStart()
   {
     super.onStart();
@@ -242,7 +267,7 @@ public class FlutterFragment
     paramContext = getActivity();
     if ((paramContext instanceof FlutterEngineProvider))
     {
-      Log.d("FlutterFragment", "Deferring to attached Activity to provide a FlutterEngine.");
+      Log.v("FlutterFragment", "Deferring to attached Activity to provide a FlutterEngine.");
       return ((FlutterEngineProvider)paramContext).provideFlutterEngine(getContext());
     }
     return null;
@@ -267,6 +292,12 @@ public class FlutterFragment
     return null;
   }
   
+  @VisibleForTesting
+  void setDelegate(@NonNull FlutterActivityAndFragmentDelegate paramFlutterActivityAndFragmentDelegate)
+  {
+    this.delegate = paramFlutterActivityAndFragmentDelegate;
+  }
+  
   public boolean shouldAttachEngineToActivity()
   {
     return getArguments().getBoolean("should_attach_engine_to_activity");
@@ -274,12 +305,29 @@ public class FlutterFragment
   
   public boolean shouldDestroyEngineWithHost()
   {
-    return getArguments().getBoolean("destroy_engine_with_fragment", false);
+    boolean bool2 = getArguments().getBoolean("destroy_engine_with_fragment", false);
+    boolean bool1 = bool2;
+    if (getCachedEngineId() == null)
+    {
+      if (this.delegate.isFlutterEngineFromHost()) {
+        return bool2;
+      }
+      bool1 = getArguments().getBoolean("destroy_engine_with_fragment", true);
+    }
+    return bool1;
+  }
+  
+  public boolean shouldRestoreAndSaveState()
+  {
+    if (getArguments().containsKey("enable_state_restoration")) {
+      return getArguments().getBoolean("enable_state_restoration");
+    }
+    return getCachedEngineId() == null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragment
  * JD-Core Version:    0.7.0.1
  */

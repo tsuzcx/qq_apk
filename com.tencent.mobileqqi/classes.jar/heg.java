@@ -1,15 +1,12 @@
-import java.util.concurrent.ThreadFactory;
-
-class heg
-  implements ThreadFactory
+public class heg
 {
-  public Thread newThread(Runnable paramRunnable)
-  {
-    hef.a();
-    paramRunnable = new Thread(paramRunnable, "InfiniteTaskThread_" + hef.b());
-    paramRunnable.setDaemon(true);
-    return paramRunnable;
-  }
+  public int a = 1;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

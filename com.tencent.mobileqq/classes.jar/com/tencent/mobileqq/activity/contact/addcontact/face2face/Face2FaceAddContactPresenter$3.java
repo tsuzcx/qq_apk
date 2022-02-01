@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
-import ahjr;
-import ahjt;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
 
-public class Face2FaceAddContactPresenter$3
+class Face2FaceAddContactPresenter$3
   implements Runnable
 {
-  public Face2FaceAddContactPresenter$3(ahjr paramahjr, String paramString1, String paramString2) {}
+  Face2FaceAddContactPresenter$3(Face2FaceAddContactPresenter paramFace2FaceAddContactPresenter, String paramString1, String paramString2) {}
   
   public void run()
   {
-    SosoInterface.a(new ahjt(this, 0, true, false, 60000L, false, false, "Face2FaceAddContactPresenter"));
+    ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new Face2FaceAddContactPresenter.3.1(this, 0, true, false, 60000L, false, false, "Face2FaceAddContactPresenter"));
   }
 }
 

@@ -7,14 +7,14 @@ import android.text.TextUtils;
 
 public final class aj
 {
-  private static final Uri KC;
-  private static final Uri KD;
+  private static final Uri Mr;
+  private static final Uri Ms;
   
   static
   {
     Uri localUri = Uri.parse("https://plus.google.com/");
-    KC = localUri;
-    KD = localUri.buildUpon().appendPath("circles").appendPath("find").build();
+    Mr = localUri;
+    Ms = localUri.buildUpon().appendPath("circles").appendPath("find").build();
   }
   
   public static Intent b(String paramString1, String paramString2)
@@ -30,7 +30,7 @@ public final class aj
     return localIntent;
   }
   
-  public static Intent hB()
+  public static Intent hL()
   {
     Intent localIntent = new Intent("com.google.android.clockwork.home.UPDATE_ANDROID_WEAR_ACTION");
     localIntent.setPackage("com.google.android.wearable.app");

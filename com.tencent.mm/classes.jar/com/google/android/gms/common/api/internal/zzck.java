@@ -7,7 +7,6 @@ import com.google.android.gms.common.api.Api.Client;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.Map;
@@ -19,30 +18,29 @@ public final class zzck
   public static final Status zzmm;
   private static final BasePendingResult<?>[] zzmn;
   private final Map<Api.AnyClientKey<?>, Api.Client> zzil;
-  @VisibleForTesting
   final Set<BasePendingResult<?>> zzmo;
   private final zzcn zzmp;
   
   static
   {
-    AppMethodBeat.i(60895);
+    AppMethodBeat.i(11387);
     zzmm = new Status(8, "The connection to Google Play services was lost");
     zzmn = new BasePendingResult[0];
-    AppMethodBeat.o(60895);
+    AppMethodBeat.o(11387);
   }
   
   public zzck(Map<Api.AnyClientKey<?>, Api.Client> paramMap)
   {
-    AppMethodBeat.i(60891);
+    AppMethodBeat.i(11383);
     this.zzmo = Collections.synchronizedSet(Collections.newSetFromMap(new WeakHashMap()));
     this.zzmp = new zzcl(this);
     this.zzil = paramMap;
-    AppMethodBeat.o(60891);
+    AppMethodBeat.o(11383);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(60893);
+    AppMethodBeat.i(11385);
     BasePendingResult[] arrayOfBasePendingResult = (BasePendingResult[])this.zzmo.toArray(zzmn);
     int j = arrayOfBasePendingResult.length;
     int i = 0;
@@ -90,20 +88,20 @@ public final class zzck
         throw new NullPointerException();
       }
     }
-    AppMethodBeat.o(60893);
+    AppMethodBeat.o(11385);
   }
   
   final void zzb(BasePendingResult<? extends Result> paramBasePendingResult)
   {
-    AppMethodBeat.i(60892);
+    AppMethodBeat.i(11384);
     this.zzmo.add(paramBasePendingResult);
     paramBasePendingResult.zza(this.zzmp);
-    AppMethodBeat.o(60892);
+    AppMethodBeat.o(11384);
   }
   
   public final void zzce()
   {
-    AppMethodBeat.i(60894);
+    AppMethodBeat.i(11386);
     BasePendingResult[] arrayOfBasePendingResult = (BasePendingResult[])this.zzmo.toArray(zzmn);
     int j = arrayOfBasePendingResult.length;
     int i = 0;
@@ -112,12 +110,12 @@ public final class zzck
       arrayOfBasePendingResult[i].zzb(zzmm);
       i += 1;
     }
-    AppMethodBeat.o(60894);
+    AppMethodBeat.o(11386);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzck
  * JD-Core Version:    0.7.0.1
  */

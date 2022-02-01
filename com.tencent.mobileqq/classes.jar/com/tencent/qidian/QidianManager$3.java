@@ -1,24 +1,23 @@
 package com.tencent.qidian;
 
-import bfyh;
 import com.tencent.qidian.data.QidianCorpInfo;
 import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qidian.data.QidianInternalInfo;
 import com.tencent.qidian.data.QidianProfileUiInfo;
 
-public class QidianManager$3
+class QidianManager$3
   implements Runnable
 {
-  public QidianManager$3(bfyh parambfyh, QidianExternalInfo paramQidianExternalInfo, QidianInternalInfo paramQidianInternalInfo, QidianCorpInfo paramQidianCorpInfo, QidianProfileUiInfo paramQidianProfileUiInfo) {}
+  QidianManager$3(QidianManager paramQidianManager, QidianExternalInfo paramQidianExternalInfo, QidianInternalInfo paramQidianInternalInfo, QidianCorpInfo paramQidianCorpInfo, QidianProfileUiInfo paramQidianProfileUiInfo) {}
   
   public void run()
   {
-    bfyh.a(this.this$0, this.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo, this.jdField_a_of_type_ComTencentQidianDataQidianInternalInfo, this.jdField_a_of_type_ComTencentQidianDataQidianCorpInfo, this.jdField_a_of_type_ComTencentQidianDataQidianProfileUiInfo);
+    QidianManager.a(this.this$0, this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianManager.3
  * JD-Core Version:    0.7.0.1
  */

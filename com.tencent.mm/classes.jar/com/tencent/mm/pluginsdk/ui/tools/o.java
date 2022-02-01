@@ -1,128 +1,424 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.webkit.MimeTypeMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.File;
+import com.tencent.mm.autogen.a.to;
+import com.tencent.mm.autogen.a.to.a;
+import com.tencent.mm.plugin.scanner.ImageQBarDataBean;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/QBarOfImageFileResultEventDataParser;", "", "()V", "TAG", "", "getAllEventCodePointCenterX", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "event", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "getAllEventCodePointCenterY", "getAllEventCodeType", "", "getAllEventCodeVersion", "getAllEventResult", "getAllQBarDataOfImage", "Lcom/tencent/mm/plugin/scanner/ImageQBarDataBean;", "getEventCodeName", "getEventCodePointCenterX", "getEventCodePointCenterY", "getEventCodeType", "getEventCodeVersion", "getEventResult", "getValueFloat", "list", "index", "getValueInt", "getValueString", "temporary_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
 {
-  public Context context;
-  public String filePath;
-  public int fileType;
-  public Uri uri;
+  public static final o YtW;
   
-  public o(Context paramContext, Uri paramUri)
+  static
   {
-    AppMethodBeat.i(79956);
-    this.fileType = 0;
-    this.context = paramContext;
-    this.uri = paramUri;
-    if (paramUri == null)
-    {
-      ab.e("MicroMsg.UriFileHelper", "initFileTypeAndPath uri == null");
-      AppMethodBeat.o(79956);
-      return;
-    }
-    if (this.context == null)
-    {
-      ab.e("MicroMsg.UriFileHelper", "initFileTypeAndPath context == null");
-      AppMethodBeat.o(79956);
-      return;
-    }
-    Object localObject2 = MimeTypeMap.getSingleton();
-    paramContext = this.context.getContentResolver().getType(paramUri);
+    AppMethodBeat.i(245542);
+    YtW = new o();
+    AppMethodBeat.o(245542);
+  }
+  
+  public static ArrayList<ImageQBarDataBean> b(to paramto)
+  {
+    AppMethodBeat.i(245505);
+    ArrayList localArrayList = new ArrayList();
+    Object localObject3 = c(paramto);
     int i;
-    if ((paramContext == null) || (paramContext.length() <= 0))
+    int j;
+    label32:
+    Object localObject1;
+    label40:
+    Object localObject2;
+    int k;
+    label58:
+    ImageQBarDataBean localImageQBarDataBean;
+    if (paramto == null)
     {
-      if (paramUri.getPath() != null)
-      {
-        localObject1 = new File(paramUri.getPath());
-        if (!((File)localObject1).exists())
-        {
-          ab.e("MicroMsg.UriFileHelper", "File is null");
-          this.fileType = 0;
-          AppMethodBeat.o(79956);
-          return;
-        }
-        this.filePath = ((File)localObject1).getAbsolutePath();
-        i = this.filePath.lastIndexOf(".");
-        if ((i == -1) || (i >= this.filePath.length() - 1)) {
-          this.fileType = 1;
-        }
-        while ((paramContext == null) || (this.filePath == null))
-        {
-          this.fileType = 0;
-          AppMethodBeat.o(79956);
-          return;
-          paramContext = ((MimeTypeMap)localObject2).getMimeTypeFromExtension(this.filePath.substring(i + 1));
-        }
+      i = 1;
+      if (paramto != null) {
+        break label280;
       }
-    }
-    else
-    {
-      if (this.context != null) {
-        break label244;
+      j = 1;
+      if (paramto != null) {
+        break label305;
       }
-      ab.e("MicroMsg.UriFileHelper", "getFilePath context == null");
+      localObject1 = "";
+      localObject2 = (Iterable)localObject3;
+      k = 0;
+      localObject3 = ((Iterable)localObject2).iterator();
+      if (!((Iterator)localObject3).hasNext()) {
+        break label508;
+      }
+      localObject2 = ((Iterator)localObject3).next();
+      if (k < 0) {
+        p.kkW();
+      }
+      localObject2 = (String)localObject2;
+      localImageQBarDataBean = new ImageQBarDataBean();
+      localImageQBarDataBean.OGQ = ((String)localObject2);
+      if (paramto != null) {
+        break label346;
+      }
+      localObject2 = null;
+      label114:
+      localImageQBarDataBean.typeName = k((ArrayList)localObject2, k);
+      if (paramto != null) {
+        break label373;
+      }
+      localObject2 = null;
+      label132:
+      localImageQBarDataBean.hDb = l((ArrayList)localObject2, k);
+      if (paramto != null) {
+        break label400;
+      }
+      localObject2 = null;
+      label150:
+      localImageQBarDataBean.hDc = l((ArrayList)localObject2, k);
+      if (paramto != null) {
+        break label427;
+      }
+      localObject2 = null;
+      label168:
+      localImageQBarDataBean.priorityLevel = l((ArrayList)localObject2, k);
+      if (paramto != null) {
+        break label454;
+      }
+      localObject2 = null;
+      label186:
+      localImageQBarDataBean.OGR = (m((ArrayList)localObject2, k) / i);
+      if (paramto != null) {
+        break label481;
+      }
+      localObject2 = null;
     }
     for (;;)
     {
-      this.filePath = ((String)localObject1);
+      localImageQBarDataBean.OGS = (m((ArrayList)localObject2, k) / j);
+      localImageQBarDataBean.hXo = i;
+      localImageQBarDataBean.hXp = j;
+      localImageQBarDataBean.filePath = ((String)localObject1);
+      localArrayList.add(localImageQBarDataBean);
+      k += 1;
+      break label58;
+      localObject1 = paramto.hXi;
+      if (localObject1 == null)
+      {
+        i = 1;
+        break;
+      }
+      i = ((to.a)localObject1).hXo;
       break;
-      label244:
-      localObject2 = this.context.getContentResolver().query(paramUri, null, null, null, null);
+      label280:
+      localObject1 = paramto.hXi;
+      if (localObject1 == null)
+      {
+        j = 1;
+        break label32;
+      }
+      j = ((to.a)localObject1).hXp;
+      break label32;
+      label305:
+      localObject1 = paramto.hXi;
+      if (localObject1 == null)
+      {
+        localObject1 = "";
+        break label40;
+      }
+      localObject2 = ((to.a)localObject1).filePath;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label40;
+      }
+      localObject1 = "";
+      break label40;
+      label346:
+      localObject2 = paramto.hXi;
       if (localObject2 == null)
       {
-        ab.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor is null");
+        localObject2 = null;
+        break label114;
       }
-      else if ((((Cursor)localObject2).getCount() <= 0) || (!((Cursor)localObject2).moveToFirst()))
+      localObject2 = ((to.a)localObject2).hXl;
+      break label114;
+      label373:
+      localObject2 = paramto.hXi;
+      if (localObject2 == null)
       {
-        ((Cursor)localObject2).close();
-        ab.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor getCount is 0 or moveToFirst fail");
+        localObject2 = null;
+        break label132;
       }
-      else
+      localObject2 = ((to.a)localObject2).hXk;
+      break label132;
+      label400:
+      localObject2 = paramto.hXi;
+      if (localObject2 == null)
       {
-        i = ((Cursor)localObject2).getColumnIndex("_data");
-        if (i == -1)
+        localObject2 = null;
+        break label150;
+      }
+      localObject2 = ((to.a)localObject2).hXm;
+      break label150;
+      label427:
+      localObject2 = paramto.hXi;
+      if (localObject2 == null)
+      {
+        localObject2 = null;
+        break label168;
+      }
+      localObject2 = ((to.a)localObject2).hXn;
+      break label168;
+      label454:
+      localObject2 = paramto.hXi;
+      if (localObject2 == null)
+      {
+        localObject2 = null;
+        break label186;
+      }
+      localObject2 = ((to.a)localObject2).hXq;
+      break label186;
+      label481:
+      localObject2 = paramto.hXi;
+      if (localObject2 == null) {
+        localObject2 = null;
+      } else {
+        localObject2 = ((to.a)localObject2).hXr;
+      }
+    }
+    label508:
+    AppMethodBeat.o(245505);
+    return localArrayList;
+  }
+  
+  private static ArrayList<String> c(to paramto)
+  {
+    AppMethodBeat.i(245510);
+    ArrayList localArrayList = new ArrayList();
+    if (paramto != null)
+    {
+      paramto = paramto.hXi;
+      if (paramto != null)
+      {
+        paramto = paramto.hXj;
+        if (paramto != null)
         {
-          ((Cursor)localObject2).close();
-          ab.e("MicroMsg.UriFileHelper", "getFilePath : columnIdx is -1, column with columnName = _data does not exist");
-        }
-        else
-        {
-          localObject1 = ((Cursor)localObject2).getString(i);
-          ((Cursor)localObject2).close();
+          paramto = ((Iterable)paramto).iterator();
+          label96:
+          while (paramto.hasNext())
+          {
+            Object localObject = paramto.next();
+            if ((localObject instanceof String))
+            {
+              if (n.bp((CharSequence)localObject)) {}
+              for (int i = 1;; i = 0)
+              {
+                if (i != 0) {
+                  break label96;
+                }
+                localArrayList.add(localObject);
+                break;
+              }
+            }
+          }
         }
       }
     }
-    if (paramContext.contains("image")) {
-      this.fileType = 3;
+    AppMethodBeat.o(245510);
+    return localArrayList;
+  }
+  
+  public static String d(to paramto)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(245515);
+    if (paramto == null) {
+      paramto = localObject;
     }
     for (;;)
     {
-      ab.d("MicroMsg.UriFileHelper", "MimeType[%s], filePath = [%s], fileType = [%s], type = [%s], Uri[%s]", new Object[] { paramContext, this.filePath, Integer.valueOf(this.fileType), paramContext, paramUri.toString() });
-      AppMethodBeat.o(79956);
-      return;
-      if (paramContext.contains("video")) {
-        this.fileType = 4;
-      } else if (paramContext.contains("audio")) {
-        this.fileType = 5;
-      } else if (paramContext.contains("mm_item")) {
-        this.fileType = 2;
-      } else {
-        this.fileType = 1;
+      paramto = k(paramto, 0);
+      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", s.X("getEventResult ", paramto));
+      AppMethodBeat.o(245515);
+      return paramto;
+      to.a locala = paramto.hXi;
+      paramto = localObject;
+      if (locala != null) {
+        paramto = locala.hXj;
+      }
+    }
+  }
+  
+  public static int e(to paramto)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(245518);
+    if (paramto == null) {
+      paramto = localObject;
+    }
+    for (;;)
+    {
+      int i = l(paramto, 0);
+      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", s.X("getEventCodeType ", Integer.valueOf(i)));
+      AppMethodBeat.o(245518);
+      return i;
+      to.a locala = paramto.hXi;
+      paramto = localObject;
+      if (locala != null) {
+        paramto = locala.hXk;
+      }
+    }
+  }
+  
+  public static int f(to paramto)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(245525);
+    if (paramto == null) {
+      paramto = localObject;
+    }
+    for (;;)
+    {
+      int i = l(paramto, 0);
+      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", s.X("getEventCodeVersion ", Integer.valueOf(i)));
+      AppMethodBeat.o(245525);
+      return i;
+      to.a locala = paramto.hXi;
+      paramto = localObject;
+      if (locala != null) {
+        paramto = locala.hXm;
+      }
+    }
+  }
+  
+  private static String k(ArrayList<Object> paramArrayList, int paramInt)
+  {
+    AppMethodBeat.i(245531);
+    Collection localCollection = (Collection)paramArrayList;
+    int i;
+    if ((localCollection == null) || (localCollection.isEmpty()))
+    {
+      i = 1;
+      if ((i != 0) || (paramInt < 0) || (paramInt >= paramArrayList.size())) {
+        break label123;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramArrayList = paramArrayList.get(paramInt);
+        s.s(paramArrayList, "list[index]");
+        paramArrayList = (String)paramArrayList;
+        Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getValueString:" + paramArrayList + "   index:" + paramInt);
+        AppMethodBeat.o(245531);
+        return paramArrayList;
+        i = 0;
+      }
+      catch (Exception paramArrayList)
+      {
+        Log.printErrStackTrace("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", (Throwable)paramArrayList, "", new Object[0]);
+        paramArrayList = "";
+        continue;
+      }
+      label123:
+      paramArrayList = "";
+    }
+  }
+  
+  private static int l(ArrayList<Object> paramArrayList, int paramInt)
+  {
+    int k = 0;
+    AppMethodBeat.i(245535);
+    Collection localCollection = (Collection)paramArrayList;
+    int i;
+    if ((localCollection == null) || (localCollection.isEmpty())) {
+      i = 1;
+    }
+    for (;;)
+    {
+      int j = k;
+      if (i == 0)
+      {
+        j = k;
+        if (paramInt >= 0)
+        {
+          j = k;
+          if (paramInt >= paramArrayList.size()) {}
+        }
+      }
+      try
+      {
+        paramArrayList = paramArrayList.get(paramInt);
+        s.s(paramArrayList, "list[index]");
+        i = ((Integer)paramArrayList).intValue();
+        j = i;
+        Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getValueInt:" + j + "   index:" + paramInt);
+        AppMethodBeat.o(245535);
+        return j;
+        i = 0;
+      }
+      catch (Exception paramArrayList)
+      {
+        for (;;)
+        {
+          Log.printErrStackTrace("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", (Throwable)paramArrayList, "", new Object[0]);
+          i = 0;
+        }
+      }
+    }
+  }
+  
+  private static float m(ArrayList<Object> paramArrayList, int paramInt)
+  {
+    float f2 = 0.0F;
+    AppMethodBeat.i(245537);
+    Collection localCollection = (Collection)paramArrayList;
+    int i;
+    if ((localCollection == null) || (localCollection.isEmpty())) {
+      i = 1;
+    }
+    for (;;)
+    {
+      float f1 = f2;
+      if (i == 0)
+      {
+        f1 = f2;
+        if (paramInt >= 0)
+        {
+          f1 = f2;
+          if (paramInt >= paramArrayList.size()) {}
+        }
+      }
+      try
+      {
+        paramArrayList = paramArrayList.get(paramInt);
+        s.s(paramArrayList, "list[index]");
+        f1 = ((Float)paramArrayList).floatValue();
+        Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getValueFloat:" + f1 + "   index:" + paramInt);
+        AppMethodBeat.o(245537);
+        return f1;
+        i = 0;
+      }
+      catch (Exception paramArrayList)
+      {
+        for (;;)
+        {
+          Log.printErrStackTrace("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", (Throwable)paramArrayList, "", new Object[0]);
+          f1 = 0.0F;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.o
  * JD-Core Version:    0.7.0.1
  */

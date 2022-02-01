@@ -1,5 +1,5 @@
 import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter;
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import com.tencent.mobileqq.activity.selectmember.TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask;
 import java.util.Comparator;
 
 public class ers
@@ -7,15 +7,9 @@ public class ers
 {
   private ers(TroopListInnerFrame.TroopListAdapter paramTroopListAdapter) {}
   
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  public int a(TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask1, TroopListInnerFrame.TroopListAdapter.TroopListItemWithMask paramTroopListItemWithMask2)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
-    }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
+    return paramTroopListItemWithMask1.a - paramTroopListItemWithMask2.a;
   }
 }
 

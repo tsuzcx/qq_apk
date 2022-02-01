@@ -10,8 +10,16 @@ class e
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorSocketStat", 1, "sendMsg fail, total=" + MonitorSocketStat.access$100(this.c).size() + " dataFlowItem=" + this.a + " result=" + this.b);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendMsg fail, total=");
+      localStringBuilder.append(MonitorSocketStat.access$100(this.c).size());
+      localStringBuilder.append(" dataFlowItem=");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(" result=");
+      localStringBuilder.append(this.b);
+      QLog.d("MonitorSocketStat", 1, localStringBuilder.toString());
     }
     try
     {
@@ -20,14 +28,15 @@ class e
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MonitorSocketStat", 1, "MonitorSocketStat excep!", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("MonitorSocketStat", 1, "MonitorSocketStat excep!", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.e
  * JD-Core Version:    0.7.0.1
  */

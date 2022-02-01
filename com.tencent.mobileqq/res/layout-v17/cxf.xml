@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/p4l" android:background="@color/qcircle_skin_color_bg_default" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/p4j" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/p45" android:padding="13.0dip" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/bnu" android:src="@drawable/qcircle_skin_icon_nav_back" android:scaleType="fitCenter" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/p_9" android:padding="13.0dip" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/bnu" android:src="@drawable/qcircle_skin_icon_nav_message" android:scaleType="centerCrop" />
+        <FrameLayout android:id="@id/p_n" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="-8.0dip">
+            <ViewStub android:id="@id/pch" android:visibility="invisible" android:layout="@layout/d05" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="center" android:id="@id/p74" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <FrameLayout android:layout_gravity="center" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="112.0dip">
+                <com.tencent.biz.qqcircle.richframework.widget.TabLayoutCompat android:layout_gravity="center" android:id="@id/p52" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="48.0dip" app:tabCompatMinWidth="50.0dip" />
+            </FrameLayout>
+        </FrameLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/p4b" android:padding="13.0dip" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginRight="-8.0dip" android:src="@drawable/qcircle_skin_icon_nav_search" android:scaleType="fitCenter" />
+        <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/p43" android:background="@drawable/qcircle_skin_bg_avatar_index" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginRight="4.0dip">
+            <com.tencent.biz.qqcircle.richframework.widget.SquareImageView android:layout_gravity="center" android:id="@id/p4a" android:layout_width="26.0dip" android:layout_height="26.0dip" android:scaleType="fitXY" app:round_radius="35.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+    <ViewStub android:id="@id/pad" android:layout="@layout/cyn" android:layout_width="fill_parent" android:layout_height="@dimen/bnv" android:layout_marginTop="61.0dip" />
+    <com.tencent.biz.richframework.widget.MultiTabViewPager android:id="@id/p57" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="61.0dip" />
+    <com.tencent.biz.qqcircle.widgets.QCircleGuideBubbleView android:layout_gravity="bottom|center|right" android:id="@id/pc3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0dip" android:layout_marginBottom="110.0dip" />
+    <ViewStub android:layout_gravity="end|bottom|center" android:id="@id/p97" android:layout="@layout/cxg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="28.0dip" />
+    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/p48" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="38.5dip" android:src="@drawable/qcircle_skin_btn_newpost_base" android:scaleType="fitCenter" android:layout_marginEnd="12.0dip" />
+    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/p49" android:clickable="false" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="51.5dip" android:src="@drawable/qcircle_skin_btn_newpost_icon_add" android:layout_marginEnd="25.0dip" />
+    <com.tencent.image.URLImageView android:layout_gravity="end|bottom|center" android:id="@id/p4_" android:visibility="gone" android:clickable="false" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="51.5dip" android:src="@drawable/qcircle_skin_feed_btn_add_operation" android:alpha="0.0" android:layout_marginEnd="25.0dip" />
+    <ViewStub android:id="@id/myk" android:visibility="gone" android:layout="@layout/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p_q" android:visibility="gone" android:layout="@layout/cyi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView android:id="@id/pb9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCircleStatusView android:id="@id/pe7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="52.0dip" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="130.0dip" android:layout_height="150.0dip">
+        <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/p9q" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="150.0dip" />
+        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/p9t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xx2" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/p9s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/p9t" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/p9r" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/iri" android:layout_toRightOf="@id/p9t" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/p99" android:layout="@layout/cxh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p98" android:layout="@layout/cxi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

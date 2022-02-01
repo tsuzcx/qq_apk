@@ -1,32 +1,21 @@
-import android.text.format.DateFormat;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class cre
-  implements Runnable
+public class cre
+  implements Handler.Callback
 {
-  cre(crc paramcrc) {}
+  public cre(JumpActivity paramJumpActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    String str1 = StringUtil.a(this.a.a.c, 0, 32);
-    String str2 = StringUtil.a(this.a.a.e, 0, 32);
-    if (this.a.a.jdField_a_of_type_JavaUtilList != null) {
-      this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format(this.a.a.getString(2131559084), new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_JavaUtilList.size()) }));
-    }
-    for (;;)
-    {
-      this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.getString(2131559085, new Object[] { str2, DateFormat.format("yy-M-d", this.a.a.jdField_b_of_type_Long) }));
-      return;
-      this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-    }
+    this.a.finish();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     cre
  * JD-Core Version:    0.7.0.1
  */

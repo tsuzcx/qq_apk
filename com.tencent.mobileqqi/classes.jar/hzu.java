@@ -1,20 +1,79 @@
+import android.app.Activity;
 import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.pluginsdk.PluginUtils;
+import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
 import cooperation.plugin.IPluginManager.PluginParams;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public final class hzu
-  implements IPluginManager.OnPluginReadyListener
+public class hzu
+  extends AsyncTask
 {
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  public String a;
+  public final ArrayList a;
+  public String b;
+  public String c;
+  private String d;
+  
+  public hzu(String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.c = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+  }
+  
+  protected Boolean a(Void... paramVarArgs)
+  {
+    paramVarArgs = PluginUtils.installPlugin(BaseApplication.getContext(), this.b, "603");
+    if (paramVarArgs != null) {
+      PluginStatisticsCollector.a(BaseApplication.getContext(), this.c, this.b, paramVarArgs);
     }
-    if (paramBoolean) {
-      IPluginManager.d(paramContext, paramPluginParams);
+    this.d = paramVarArgs;
+    if (paramVarArgs == null) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
     }
+  }
+  
+  public void a(Activity paramActivity, IPluginManager.PluginParams paramPluginParams)
+  {
+    paramActivity = new hzv(this, paramActivity, paramPluginParams);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramActivity);
+  }
+  
+  public void a(Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  {
+    paramContext = new hzx(this, paramContext, paramPluginParams);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    synchronized ()
+    {
+      IPluginManager.a().remove(this.b);
+      if (!paramBoolean.booleanValue())
+      {
+        IPluginManager.a(this.d, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    }
+    paramBoolean = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramBoolean.hasNext()) {
+      ((hzw)paramBoolean.next()).a();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void b(Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  {
+    paramContext = new hzy(this, paramContext, paramPluginParams);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
   }
 }
 

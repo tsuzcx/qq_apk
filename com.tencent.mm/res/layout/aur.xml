@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMTextureView android:layout_gravity="center" android:id="@id/ej7" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <include layout="@layout/auo" />
-</merge>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ei7" android:background="@color/al2" android:padding="@dimen/r" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/eif" android:layout_width="fill_parent" android:layout_height="1.0px" android:src="@color/w5" />
+</LinearLayout>

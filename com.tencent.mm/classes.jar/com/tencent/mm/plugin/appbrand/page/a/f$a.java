@@ -1,66 +1,76 @@
 package com.tencent.mm.plugin.appbrand.page.a;
 
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class f$a
-  implements c.a
+public enum f$a
 {
-  CharSequence Cx = null;
-  Drawable mDrawable = null;
-  
-  protected f$a(f paramf) {}
-  
-  public final void dismiss()
+  static
   {
-    AppMethodBeat.i(87362);
-    m.runOnUiThread(new f.a.5(this));
-    AppMethodBeat.o(87362);
+    AppMethodBeat.i(135307);
+    tCK = new a("LIGHT", 0);
+    tCL = new a("DARK", 1);
+    tCM = new a("IGNORE", 2);
+    tCN = new a[] { tCK, tCL, tCM };
+    AppMethodBeat.o(135307);
   }
   
-  public final void pp(int paramInt)
-  {
-    AppMethodBeat.i(87361);
-    m.runOnUiThread(new f.a.4(this, paramInt));
-    AppMethodBeat.o(87361);
-  }
+  private f$a() {}
   
-  public final void setDescription(CharSequence paramCharSequence)
+  public static a aN(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(87360);
-    m.runOnUiThread(new f.a.3(this, paramCharSequence));
-    AppMethodBeat.o(87360);
-  }
-  
-  public final void setLogo(int paramInt)
-  {
-    AppMethodBeat.i(87359);
-    m.runOnUiThread(new f.a.2(this, paramInt));
-    AppMethodBeat.o(87359);
-  }
-  
-  public final void setLogo(final Drawable paramDrawable)
-  {
-    AppMethodBeat.i(87358);
-    m.runOnUiThread(new Runnable()
+    AppMethodBeat.i(325035);
+    if (TextUtils.isEmpty(paramString))
     {
-      public final void run()
+      if (paramBoolean)
       {
-        AppMethodBeat.i(87353);
-        f.a.this.mDrawable = paramDrawable;
-        if (f.a.a(f.a.this)) {
-          f.a.this.iAr.p(f.a.this.mDrawable);
-        }
-        AppMethodBeat.o(87353);
+        paramString = tCK;
+        AppMethodBeat.o(325035);
+        return paramString;
       }
-    });
-    AppMethodBeat.o(87358);
+      paramString = tCL;
+      AppMethodBeat.o(325035);
+      return paramString;
+    }
+    a[] arrayOfa = values();
+    int j = arrayOfa.length;
+    int i = 0;
+    while (i < j)
+    {
+      a locala = arrayOfa[i];
+      String str = locala.name().toLowerCase();
+      boolean bool;
+      if (str == null) {
+        if (paramString == null) {
+          bool = true;
+        }
+      }
+      while (bool)
+      {
+        AppMethodBeat.o(325035);
+        return locala;
+        bool = false;
+        continue;
+        bool = str.equalsIgnoreCase(paramString);
+      }
+      i += 1;
+    }
+    Log.e("Luggage.AppBrandPageViewPullDownExtension.BackgroundTextStyle", "fromString(%s), unrecognized", new Object[] { paramString });
+    if (paramBoolean)
+    {
+      paramString = tCK;
+      AppMethodBeat.o(325035);
+      return paramString;
+    }
+    paramString = tCL;
+    AppMethodBeat.o(325035);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.f.a
  * JD-Core Version:    0.7.0.1
  */

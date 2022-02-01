@@ -8,9 +8,9 @@ public final class QzmallCustomBanner
   extends JceStruct
 {
   static BannerStyleConf cache_stBannerStyle = new BannerStyleConf();
-  public int iBannerConfType;
-  public int iBannerType;
-  public BannerStyleConf stBannerStyle;
+  public int iBannerConfType = 0;
+  public int iBannerType = 0;
+  public BannerStyleConf stBannerStyle = null;
   public String strBannerUrl = "";
   public String strJumpUrl = "";
   public String strQbossTraceinfo = "";
@@ -40,24 +40,28 @@ public final class QzmallCustomBanner
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iBannerType, 0);
-    if (this.strBannerUrl != null) {
-      paramJceOutputStream.write(this.strBannerUrl, 1);
+    Object localObject = this.strBannerUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 2);
+    localObject = this.strJumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.iBannerConfType, 3);
-    if (this.stBannerStyle != null) {
-      paramJceOutputStream.write(this.stBannerStyle, 4);
+    localObject = this.stBannerStyle;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.strQbossTraceinfo != null) {
-      paramJceOutputStream.write(this.strQbossTraceinfo, 5);
+    localObject = this.strQbossTraceinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallCustomBanner
  * JD-Core Version:    0.7.0.1
  */

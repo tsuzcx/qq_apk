@@ -1,39 +1,45 @@
 package com.tencent.mobileqq.activity.aio.tim;
 
-import agzc;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class TIMUserManager$1
+class TIMUserManager$1
   implements Runnable
 {
-  public TIMUserManager$1(agzc paramagzc, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  TIMUserManager$1(TIMUserManager paramTIMUserManager, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {
-    if (agzc.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (agzc.a(this.this$0, this.b))
+    Object localObject;
+    if (TIMUserManager.a(this.this$0, this.a, this.b) == 0)
+    {
+      if (TIMUserManager.a(this.this$0, this.b))
       {
-        agzc.a(this.this$0);
-        agzc.a(this.this$0, false);
-        agzc.a(this.this$0, 2);
-        SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
-        localEditor.putBoolean("tim_user_special_need_force_download", agzc.a(this.this$0));
-        localEditor.commit();
+        TIMUserManager.a(this.this$0);
+        TIMUserManager.a(this.this$0, false);
+        TIMUserManager.a(this.this$0, 2);
+        localObject = PreferenceManager.getDefaultSharedPreferences(this.c.getApp()).edit();
+        ((SharedPreferences.Editor)localObject).putBoolean("tim_user_special_need_force_download", TIMUserManager.b(this.this$0));
+        ((SharedPreferences.Editor)localObject).commit();
+      }
+      else
+      {
+        TIMUserManager.a(this.this$0, 4);
       }
     }
-    for (;;)
+    else {
+      TIMUserManager.a(this.this$0, 3);
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + agzc.a(this.this$0));
-      }
-      return;
-      agzc.a(this.this$0, 4);
-      continue;
-      agzc.a(this.this$0, 3);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(" startDownLoadTimTheme TimIconsState ");
+      ((StringBuilder)localObject).append(TIMUserManager.c(this.this$0));
+      QLog.i("TIMUserManager", 2, ((StringBuilder)localObject).toString());
     }
   }
 }

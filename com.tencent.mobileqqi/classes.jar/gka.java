@@ -1,76 +1,165 @@
-import android.os.AsyncTask;
+import android.app.Application;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.Utils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinEngine;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import com.tencent.mobileqq.activity.aio.photo.PhotoDecoder;
+import com.tencent.mobileqq.emoticonview.FavoriteDownloader;
+import com.tencent.mobileqq.transfile.AIOPhotoImageDownloader;
+import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
+import com.tencent.mobileqq.transfile.AvatarPendantDownloader;
+import com.tencent.mobileqq.transfile.ChatImageDownloader;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
+import com.tencent.mobileqq.transfile.EmotionDownloader;
+import com.tencent.mobileqq.transfile.FavoriteImageDownloader;
+import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.transfile.LBSImageDownloader;
+import com.tencent.mobileqq.transfile.LocalBilldDownloader;
+import com.tencent.mobileqq.transfile.LocationDownloader;
+import com.tencent.mobileqq.transfile.PicEmotionDownloader;
+import com.tencent.mobileqq.transfile.ProfileImgDownloader;
+import com.tencent.mobileqq.transfile.QZoneCoverDownloader;
+import com.tencent.mobileqq.transfile.QZoneRecentPhotoDownloader;
+import com.tencent.mobileqq.transfile.RegionalThumbDownloader;
+import com.tencent.mobileqq.transfile.ThirdPartAppIconDownloader;
+import com.tencent.mobileqq.transfile.VideoThumbDownloader;
 
 public class gka
-  extends AsyncTask
-  implements Runnable
+  extends URLDrawableParams
 {
-  private String a;
-  private String b;
+  private ProtocolDownloader jdField_a_of_type_ComTencentImageProtocolDownloader;
+  private AIOPhotoImageDownloader jdField_a_of_type_ComTencentMobileqqTransfileAIOPhotoImageDownloader;
+  private ProtocolDownloader b;
+  private ProtocolDownloader c;
+  private ProtocolDownloader d;
+  private ProtocolDownloader e;
   
-  public gka(String paramString1, String paramString2)
+  public gka(Application paramApplication)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    super(paramApplication);
+    this.mFadeInImage = false;
+    this.mUseGifAnimation = false;
+    this.mMemoryCache = BaseApplicationImpl.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
   }
   
-  protected Void a(Void... paramVarArgs)
+  protected ProtocolDownloader doGetDownloader(String paramString)
   {
-    try
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
     {
-      Object localObject = BaseApplicationImpl.a;
-      if (QLog.isColorLevel()) {
-        QLog.d("SkinEngine", 2, "CreateSkinEngineCacheTask start");
+      if (this.jdField_a_of_type_ComTencentImageProtocolDownloader == null) {
+        this.jdField_a_of_type_ComTencentImageProtocolDownloader = new HttpDownloader();
       }
-      paramVarArgs = new File(((BaseApplicationImpl)localObject).getCacheDir(), this.a);
-      File localFile1 = new File(((BaseApplicationImpl)localObject).getCacheDir(), this.b);
-      localObject = new File(((BaseApplicationImpl)localObject).getCacheDir(), this.b + ".tmp");
-      File localFile2 = paramVarArgs.getParentFile();
-      if (!localFile2.exists()) {
-        localFile2.mkdirs();
-      }
-      if (localFile1.exists()) {
-        localFile1.delete();
-      }
-      if (paramVarArgs.exists()) {
-        paramVarArgs.delete();
-      }
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      paramVarArgs.createNewFile();
-      SkinEngine.getInstances().writeCacheFile((File)localObject);
-      if (((File)localObject).exists()) {
-        ((File)localObject).renameTo(localFile1);
-      }
-      paramVarArgs = new ObjectOutputStream(new FileOutputStream(paramVarArgs));
-      paramVarArgs.writeInt(AppSetting.a);
-      paramVarArgs.writeUTF("master");
-      paramVarArgs.close();
+      return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
     }
-    catch (IOException paramVarArgs)
+    if (("chatthumb".equals(paramString)) || ("chatimg".equals(paramString)) || ("chatraw".equals(paramString)))
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("SkinEngine", 2, "", paramVarArgs);
-        }
+      if (this.b == null) {
+        this.b = new ChatImageDownloader(BaseApplicationImpl.a());
       }
+      return this.b;
+    }
+    if (("lbsthumb".equals(paramString)) || ("lbsimg".equals(paramString)))
+    {
+      if (this.c == null) {
+        this.c = new LBSImageDownloader(BaseApplicationImpl.a());
+      }
+      return this.c;
+    }
+    if ("datalineimage".equals(paramString)) {
+      return new DataLineDownloader(BaseApplicationImpl.a());
+    }
+    if ("emotion".equals(paramString)) {
+      return new EmotionDownloader(BaseApplicationImpl.a());
+    }
+    if ("emotion_pic".equals(paramString)) {
+      return new PicEmotionDownloader(BaseApplicationImpl.a());
+    }
+    if ("favorite".equals(paramString)) {
+      return new FavoriteDownloader(BaseApplicationImpl.a());
+    }
+    if ("albumthumb".equals(paramString)) {
+      return new AlbumThumbDownloader(BaseApplicationImpl.a());
+    }
+    if ("videothumb".equals(paramString)) {
+      return new VideoThumbDownloader();
+    }
+    if ("pubaccountimage".equals(paramString)) {
+      return new PubAccountHttpDownloader(BaseApplicationImpl.a());
+    }
+    if ("location".equals(paramString)) {
+      return new LocationDownloader(BaseApplicationImpl.a());
+    }
+    if (("billdthumb".equals(paramString)) || ("billdimg".equals(paramString)))
+    {
+      if (this.d == null) {
+        this.d = new LocalBilldDownloader(BaseApplicationImpl.a());
+      }
+      return this.d;
+    }
+    if (("profile_img_big".equals(paramString)) || ("profile_img_thumb".equals(paramString)) || ("profile_img_icon".equals(paramString)))
+    {
+      if (this.e == null) {
+        this.e = new ProfileImgDownloader();
+      }
+      return this.e;
+    }
+    if ("qzone_cover".equals(paramString)) {
+      return new QZoneCoverDownloader();
+    }
+    if ("favimage".equals(paramString)) {
+      return new FavoriteImageDownloader(BaseApplicationImpl.a());
+    }
+    if ("fileassistantimage".equals(paramString)) {
+      return new FileAssistantDownloader(BaseApplicationImpl.a());
+    }
+    if ("troop_photo_qzone".equals(paramString)) {
+      return new QZoneRecentPhotoDownloader();
+    }
+    if ("aiothumb".equals(paramString))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileAIOPhotoImageDownloader == null) {
+        this.jdField_a_of_type_ComTencentMobileqqTransfileAIOPhotoImageDownloader = new AIOPhotoImageDownloader(BaseApplicationImpl.a());
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqTransfileAIOPhotoImageDownloader;
+    }
+    if ("protocol_pendant_image".equals(paramString)) {
+      return new AvatarPendantDownloader(BaseApplicationImpl.a());
+    }
+    if (("file".equals(paramString)) || (BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getProcessNames().endsWith(":peak"))) {
+      return new PhotoDecoder(BaseApplicationImpl.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getResources());
+    }
+    if ("regionalthumb".equals(paramString)) {
+      return new RegionalThumbDownloader(BaseApplicationImpl.a());
+    }
+    if ("third_part".equals(paramString)) {
+      return new ThirdPartAppIconDownloader(BaseApplicationImpl.a());
     }
     return null;
   }
   
-  public void run()
+  protected String doGetLocalFilePath(String paramString)
   {
-    Utils.executeAsyncTaskOnThreadPool(this, new Void[0]);
+    return null;
+  }
+  
+  protected Drawable getDefaultLoadingDrawable()
+  {
+    try
+    {
+      Drawable localDrawable = BaseApplicationImpl.a().getResources().getDrawable(2130837647);
+      return localDrawable;
+    }
+    catch (Exception localException) {}
+    return new ColorDrawable(0);
+  }
+  
+  protected Drawable getDefualtFailedDrawable()
+  {
+    return BaseApplicationImpl.a().getResources().getDrawable(2130837649);
   }
 }
 

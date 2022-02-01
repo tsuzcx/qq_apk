@@ -31,12 +31,20 @@ public class TextListener
   
   protected String elapsedTimeAsString(long paramLong)
   {
-    return NumberFormat.getInstance().format(paramLong / 1000.0D);
+    NumberFormat localNumberFormat = NumberFormat.getInstance();
+    double d = paramLong;
+    Double.isNaN(d);
+    return localNumberFormat.format(d / 1000.0D);
   }
   
   protected void printFailure(Failure paramFailure, String paramString)
   {
-    getWriter().println(paramString + ") " + paramFailure.getTestHeader());
+    PrintStream localPrintStream = getWriter();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(") ");
+    localStringBuilder.append(paramFailure.getTestHeader());
+    localPrintStream.println(localStringBuilder.toString());
     getWriter().print(paramFailure.getTrace());
   }
   
@@ -46,53 +54,85 @@ public class TextListener
     if (paramResult.size() == 0) {
       return;
     }
-    if (paramResult.size() == 1) {
-      getWriter().println("There was " + paramResult.size() + " failure:");
-    }
-    for (;;)
+    int j = paramResult.size();
+    int i = 1;
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (j == 1)
     {
-      paramResult = paramResult.iterator();
-      int i = 1;
-      while (paramResult.hasNext())
-      {
-        printFailure((Failure)paramResult.next(), "" + i);
-        i += 1;
-      }
-      break;
-      getWriter().println("There were " + paramResult.size() + " failures:");
+      localObject = getWriter();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("There was ");
+      localStringBuilder.append(paramResult.size());
+      localStringBuilder.append(" failure:");
+      ((PrintStream)localObject).println(localStringBuilder.toString());
+    }
+    else
+    {
+      localObject = getWriter();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("There were ");
+      localStringBuilder.append(paramResult.size());
+      localStringBuilder.append(" failures:");
+      ((PrintStream)localObject).println(localStringBuilder.toString());
+    }
+    paramResult = paramResult.iterator();
+    while (paramResult.hasNext())
+    {
+      localObject = (Failure)paramResult.next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(i);
+      printFailure((Failure)localObject, localStringBuilder.toString());
+      i += 1;
     }
   }
   
   protected void printFooter(Result paramResult)
   {
+    PrintStream localPrintStream;
+    StringBuilder localStringBuilder;
     if (paramResult.wasSuccessful())
     {
       getWriter().println();
       getWriter().print("OK");
-      PrintStream localPrintStream = getWriter();
-      StringBuilder localStringBuilder = new StringBuilder().append(" (").append(paramResult.getRunCount()).append(" test");
-      if (paramResult.getRunCount() == 1)
-      {
+      localPrintStream = getWriter();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" (");
+      localStringBuilder.append(paramResult.getRunCount());
+      localStringBuilder.append(" test");
+      if (paramResult.getRunCount() == 1) {
         paramResult = "";
-        localPrintStream.println(paramResult + ")");
+      } else {
+        paramResult = "s";
       }
+      localStringBuilder.append(paramResult);
+      localStringBuilder.append(")");
+      localPrintStream.println(localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
       getWriter().println();
-      return;
-      paramResult = "s";
-      break;
-      getWriter().println();
       getWriter().println("FAILURES!!!");
-      getWriter().println("Tests run: " + paramResult.getRunCount() + ",  Failures: " + paramResult.getFailureCount());
+      localPrintStream = getWriter();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Tests run: ");
+      localStringBuilder.append(paramResult.getRunCount());
+      localStringBuilder.append(",  Failures: ");
+      localStringBuilder.append(paramResult.getFailureCount());
+      localPrintStream.println(localStringBuilder.toString());
     }
+    getWriter().println();
   }
   
   protected void printHeader(long paramLong)
   {
     getWriter().println();
-    getWriter().println("Time: " + elapsedTimeAsString(paramLong));
+    PrintStream localPrintStream = getWriter();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Time: ");
+    localStringBuilder.append(elapsedTimeAsString(paramLong));
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   public void testFailure(Failure paramFailure)
@@ -119,7 +159,7 @@ public class TextListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.TextListener
  * JD-Core Version:    0.7.0.1
  */

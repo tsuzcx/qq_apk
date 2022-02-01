@@ -21,69 +21,77 @@ public class TextureLoader
   
   private static Texture.Format format(Bitmap paramBitmap)
   {
-    switch (TextureLoader.1.$SwitchMap$android$graphics$Bitmap$Config[paramBitmap.getConfig().ordinal()])
+    int i = TextureLoader.1.$SwitchMap$android$graphics$Bitmap$Config[paramBitmap.getConfig().ordinal()];
+    if (i != 1)
     {
-    default: 
-      return Texture.Format.RGBA;
-    case 1: 
-      return Texture.Format.ALPHA;
+      if (i != 2) {
+        return Texture.Format.RGBA;
+      }
+      return Texture.Format.RGB;
     }
-    return Texture.Format.RGB;
+    return Texture.Format.ALPHA;
   }
   
   private static Texture.InternalFormat internalFormat(TextureLoader.TextureType paramTextureType)
   {
-    switch (TextureLoader.1.$SwitchMap$com$tencent$ttpic$filament$TextureLoader$TextureType[paramTextureType.ordinal()])
+    int i = TextureLoader.1.$SwitchMap$com$tencent$ttpic$filament$TextureLoader$TextureType[paramTextureType.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return Texture.InternalFormat.SRGB8_A8;
-    case 1: 
-      return Texture.InternalFormat.SRGB8_A8;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return Texture.InternalFormat.SRGB8_A8;
+        }
+        return Texture.InternalFormat.RGBA8;
+      }
       return Texture.InternalFormat.RGBA8;
     }
-    return Texture.InternalFormat.RGBA8;
+    return Texture.InternalFormat.SRGB8_A8;
   }
   
   public static Texture loadTexture(Engine paramEngine, Resources paramResources, int paramInt, TextureLoader.TextureType paramTextureType)
   {
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    if (paramTextureType == TextureLoader.TextureType.COLOR) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localOptions.inPremultiplied = bool;
-      return loadTexture(paramEngine, BitmapFactory.decodeResource(paramResources, paramInt, localOptions), paramTextureType);
+    boolean bool;
+    if (paramTextureType == TextureLoader.TextureType.COLOR) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localOptions.inPremultiplied = bool;
+    return loadTexture(paramEngine, BitmapFactory.decodeResource(paramResources, paramInt, localOptions), paramTextureType);
   }
   
   public static Texture loadTexture(Engine paramEngine, Bitmap paramBitmap, TextureLoader.TextureType paramTextureType)
   {
     paramTextureType = new Texture.Builder().width(paramBitmap.getWidth()).height(paramBitmap.getHeight()).sampler(Texture.Sampler.SAMPLER_2D).format(internalFormat(paramTextureType)).levels(255).build(paramEngine);
-    if (SKIP_BITMAP_COPY) {
+    if (SKIP_BITMAP_COPY)
+    {
       TextureHelper.setBitmap(paramEngine, paramTextureType, 0, paramBitmap);
     }
-    for (;;)
+    else
     {
-      paramTextureType.generateMipmaps(paramEngine);
-      return paramTextureType;
       ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramBitmap.getByteCount());
       paramBitmap.copyPixelsToBuffer(localByteBuffer);
       localByteBuffer.flip();
       paramTextureType.setImage(paramEngine, 0, new Texture.PixelBufferDescriptor(localByteBuffer, format(paramBitmap), type(paramBitmap)));
     }
+    paramTextureType.generateMipmaps(paramEngine);
+    return paramTextureType;
   }
   
   public static Texture loadTexture(Engine paramEngine, String paramString, TextureLoader.TextureType paramTextureType)
   {
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    if (paramTextureType == TextureLoader.TextureType.COLOR) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localOptions.inPremultiplied = bool;
-      paramString = BitmapFactory.decodeFile(paramString, localOptions);
-      if (paramString != null) {
-        break;
-      }
+    boolean bool;
+    if (paramTextureType == TextureLoader.TextureType.COLOR) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localOptions.inPremultiplied = bool;
+    paramString = BitmapFactory.decodeFile(paramString, localOptions);
+    if (paramString == null) {
       return null;
     }
     return loadTexture(paramEngine, paramString, paramTextureType);
@@ -91,9 +99,7 @@ public class TextureLoader
   
   private static Texture.Type type(Bitmap paramBitmap)
   {
-    switch (TextureLoader.1.$SwitchMap$android$graphics$Bitmap$Config[paramBitmap.getConfig().ordinal()])
-    {
-    default: 
+    if (TextureLoader.1.$SwitchMap$android$graphics$Bitmap$Config[paramBitmap.getConfig().ordinal()] != 3) {
       return Texture.Type.UBYTE;
     }
     return Texture.Type.HALF;
@@ -101,7 +107,7 @@ public class TextureLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filament.TextureLoader
  * JD-Core Version:    0.7.0.1
  */

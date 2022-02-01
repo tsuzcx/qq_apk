@@ -24,22 +24,27 @@ final class SequenceBuilderIterator<T>
   
   private final Throwable exceptionalState()
   {
-    switch (this.state)
+    int i = this.state;
+    if (i != 4)
     {
-    default: 
-      return (Throwable)new IllegalStateException("Unexpected state of the iterator: " + this.state);
-    case 4: 
-      return (Throwable)new NoSuchElementException();
+      if (i != 5)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unexpected state of the iterator: ");
+        localStringBuilder.append(this.state);
+        return (Throwable)new IllegalStateException(localStringBuilder.toString());
+      }
+      return (Throwable)new IllegalStateException("Iterator has failed.");
     }
-    return (Throwable)new IllegalStateException("Iterator has failed.");
+    return (Throwable)new NoSuchElementException();
   }
   
   private final T nextNotReady()
   {
-    if (!hasNext()) {
-      throw ((Throwable)new NoSuchElementException());
+    if (hasNext()) {
+      return next();
     }
-    return next();
+    throw ((Throwable)new NoSuchElementException());
   }
   
   @NotNull
@@ -58,12 +63,20 @@ final class SequenceBuilderIterator<T>
   {
     for (;;)
     {
-      Object localObject;
-      switch (this.state)
+      int i = this.state;
+      if (i != 0)
       {
-      default: 
-        throw exceptionalState();
-      case 1: 
+        if (i != 1)
+        {
+          if ((i != 2) && (i != 3))
+          {
+            if (i == 4) {
+              return false;
+            }
+            throw exceptionalState();
+          }
+          return true;
+        }
         localObject = this.nextIterator;
         if (localObject == null) {
           Intrinsics.throwNpe();
@@ -74,41 +87,41 @@ final class SequenceBuilderIterator<T>
           return true;
         }
         this.nextIterator = ((Iterator)null);
-      case 0: 
-        this.state = 5;
-        localObject = this.nextStep;
-        if (localObject == null) {
-          Intrinsics.throwNpe();
-        }
-        this.nextStep = ((Continuation)null);
-        ((Continuation)localObject).resume(Unit.INSTANCE);
       }
+      this.state = 5;
+      Object localObject = this.nextStep;
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      this.nextStep = ((Continuation)null);
+      ((Continuation)localObject).resume(Unit.INSTANCE);
     }
-    return false;
-    return true;
   }
   
   public T next()
   {
-    switch (this.state)
+    int i = this.state;
+    if ((i != 0) && (i != 1))
     {
-    default: 
-      throw exceptionalState();
-    case 0: 
-    case 1: 
-      return nextNotReady();
-    case 2: 
+      if (i != 2)
+      {
+        if (i == 3)
+        {
+          this.state = 0;
+          localObject = this.nextValue;
+          this.nextValue = null;
+          return localObject;
+        }
+        throw exceptionalState();
+      }
       this.state = 1;
-      localObject = this.nextIterator;
+      Object localObject = this.nextIterator;
       if (localObject == null) {
         Intrinsics.throwNpe();
       }
       return ((Iterator)localObject).next();
     }
-    this.state = 0;
-    Object localObject = this.nextValue;
-    this.nextValue = null;
-    return localObject;
+    return nextNotReady();
   }
   
   public void remove()
@@ -156,7 +169,7 @@ final class SequenceBuilderIterator<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.experimental.SequenceBuilderIterator
  * JD-Core Version:    0.7.0.1
  */

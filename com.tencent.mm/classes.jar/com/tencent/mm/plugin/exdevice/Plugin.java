@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.exdevice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.exdevice.model.ah;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(19033);
+    AppMethodBeat.i(23141);
     a locala = new a();
-    AppMethodBeat.o(19033);
+    AppMethodBeat.o(23141);
     return locala;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(19034);
-    ad localad = new ad();
-    AppMethodBeat.o(19034);
-    return localad;
+    AppMethodBeat.i(23142);
+    ah localah = new ah();
+    AppMethodBeat.o(23142);
+    return localah;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.Plugin
  * JD-Core Version:    0.7.0.1
  */

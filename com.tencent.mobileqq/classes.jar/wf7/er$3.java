@@ -12,9 +12,7 @@ class er$3
     if (paramJceStruct == null) {
       return null;
     }
-    switch (paramInt2)
-    {
-    default: 
+    if (paramInt2 != 15020) {
       return null;
     }
     return er.a(this.pi, paramLong, paramInt1, (z)paramJceStruct);
@@ -22,7 +20,7 @@ class er$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.er.3
  * JD-Core Version:    0.7.0.1
  */

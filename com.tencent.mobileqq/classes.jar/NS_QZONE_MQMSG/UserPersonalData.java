@@ -12,7 +12,7 @@ public final class UserPersonalData
   static Map<Long, UserPersonalProfile> cache_mpUinToProfile = new HashMap();
   public String bigVipJumpUrl = "";
   public String lJumpUrl = "";
-  public Map<Long, UserPersonalProfile> mpUinToProfile;
+  public Map<Long, UserPersonalProfile> mpUinToProfile = null;
   public String yJumpUrl = "";
   
   static
@@ -41,23 +41,27 @@ public final class UserPersonalData
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mpUinToProfile != null) {
-      paramJceOutputStream.write(this.mpUinToProfile, 0);
+    Object localObject = this.mpUinToProfile;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.yJumpUrl != null) {
-      paramJceOutputStream.write(this.yJumpUrl, 1);
+    localObject = this.yJumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.lJumpUrl != null) {
-      paramJceOutputStream.write(this.lJumpUrl, 2);
+    localObject = this.lJumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.bigVipJumpUrl != null) {
-      paramJceOutputStream.write(this.bigVipJumpUrl, 3);
+    localObject = this.bigVipJumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.UserPersonalData
  * JD-Core Version:    0.7.0.1
  */

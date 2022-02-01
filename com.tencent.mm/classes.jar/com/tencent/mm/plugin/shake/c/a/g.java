@@ -1,333 +1,156 @@
 package com.tencent.mm.plugin.shake.c.a;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.shake.b.l.a;
-import com.tencent.mm.plugin.shake.b.l.b;
-import com.tencent.mm.plugin.shake.c.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import java.util.Map;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.modelstat.n;
+import com.tencent.mm.network.ah;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.protocal.protobuf.faz;
+import com.tencent.mm.protocal.protobuf.fba;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class g
-  extends l.b
-  implements f
+  extends f
 {
-  private static int qNy = 0;
-  private b.a dZA;
-  private float dZu;
-  private float dZv;
-  private int ejF;
-  private com.tencent.mm.modelgeo.d fwu;
-  private String hyG;
-  public int knS;
-  private ak mHandler;
-  private c qNT;
-  private e qNU;
-  private boolean qNV;
-  private boolean qNW;
-  private long qNz;
+  private h callback;
+  private final com.tencent.mm.am.c rr;
   
-  public g(l.a parama)
+  public g(byte[] paramArrayOfByte, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    super(parama);
-    AppMethodBeat.i(24531);
-    this.qNU = new e();
-    this.qNz = 0L;
-    this.mHandler = new ak();
-    this.ejF = 0;
-    this.hyG = "";
-    this.qNV = false;
-    this.qNW = false;
-    this.dZu = -85.0F;
-    this.dZv = -1000.0F;
-    this.dZA = new g.1(this);
-    AppMethodBeat.o(24531);
-  }
-  
-  private void baD()
-  {
-    AppMethodBeat.i(24542);
-    if (this.fwu != null) {
-      this.fwu.c(this.dZA);
-    }
-    AppMethodBeat.o(24542);
-  }
-  
-  private void ckQ()
-  {
-    AppMethodBeat.i(24541);
-    this.fwu = com.tencent.mm.modelgeo.d.agQ();
-    this.fwu.a(this.dZA, true);
-    AppMethodBeat.o(24541);
-  }
-  
-  private void clx()
-  {
-    AppMethodBeat.i(24537);
-    if (this.qNV)
+    super(paramLong);
+    AppMethodBeat.i(28283);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new faz();
+    ((c.a)localObject).otF = new fba();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/shakemusic";
+    ((c.a)localObject).funcId = 367;
+    ((c.a)localObject).otG = 177;
+    ((c.a)localObject).respCmdId = 1000000177;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (faz)c.b.b(this.rr.otB);
+    ((faz)localObject).NkQ = new gol().df(paramArrayOfByte);
+    ((faz)localObject).abAV = paramInt2;
+    if (paramBoolean)
     {
-      ab.i("MicroMsg.ShakeCardService", "ShakeCardService is doing doNetSceneShakeCard, return");
-      AppMethodBeat.o(24537);
-      return;
-    }
-    this.qNV = true;
-    this.qNW = false;
-    ab.i("MicroMsg.ShakeCardService", "ShakeCardService do doNetSceneShakeCard");
-    this.qNT = new c(this.dZv, this.dZu, this.ejF, this.hyG);
-    aw.Rc().a(this.qNT, 0);
-    AppMethodBeat.o(24537);
-  }
-  
-  private void cly()
-  {
-    AppMethodBeat.i(24544);
-    long l2 = System.currentTimeMillis() / 1000L;
-    if (a.Dl(qNy)) {
-      ab.i("MicroMsg.ShakeCardService", "ShakeCardService frequency_level is valid");
-    }
-    for (long l1 = a.Dm(qNy);; l1 = a.Dn(a.clM()))
-    {
-      ab.i("MicroMsg.ShakeCardService", "ShakeCardService updateWaitingTime wait nextInterval is ".concat(String.valueOf(l1)));
-      this.qNz = (l1 + l2);
-      AppMethodBeat.o(24544);
-      return;
-      ab.i("MicroMsg.ShakeCardService", "ShakeCardService frequency_level is not valid");
-    }
-  }
-  
-  public final void JN(String paramString)
-  {
-    AppMethodBeat.i(24533);
-    if ((paramString != null) && (paramString.length() <= 256))
-    {
-      ab.i("MicroMsg.ShakeCardService", "ShakeCardService mExtInfo:" + this.hyG);
-      this.hyG = paramString;
-      AppMethodBeat.o(24533);
-      return;
-    }
-    ab.i("MicroMsg.ShakeCardService", "ShakeCardService ext_info size > 256 byte, extinfo:".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(24533);
-  }
-  
-  public final void ckR()
-  {
-    AppMethodBeat.i(24540);
-    aw.Rc().b(1250, this);
-    baD();
-    super.ckR();
-    AppMethodBeat.o(24540);
-  }
-  
-  public final void init()
-  {
-    AppMethodBeat.i(24534);
-    qNy = com.tencent.mm.plugin.shake.b.m.clt().qNy;
-    this.qNz = com.tencent.mm.plugin.shake.b.m.clt().qNz;
-    this.dZu = com.tencent.mm.plugin.shake.b.m.clt().dZu;
-    this.dZv = com.tencent.mm.plugin.shake.b.m.clt().dZv;
-    aw.Rc().a(1250, this);
-    ckQ();
-    AppMethodBeat.o(24534);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
-  {
-    AppMethodBeat.i(24543);
-    if ((paramm instanceof c))
-    {
-      paramm = (c)paramm;
-      paramString = this.qNU;
-      paramm = paramm.qNx;
-      paramString.knS = paramm.knS;
-      paramString.kml = paramm.kml;
-      paramString.cHo = paramm.cHo;
-      paramString.title = paramm.title;
-      paramString.kmn = paramm.kmn;
-      paramString.kmo = paramm.kmo;
-      paramString.knw = paramm.knw;
-      paramString.kmm = paramm.kmm;
-      paramString.color = paramm.color;
-      paramString.qNy = paramm.qNy;
-      paramString.qNB = paramm.qNB;
-      paramString.qNC = paramm.qNC;
-      paramString.qND = paramm.qND;
-      paramString.qNE = paramm.qNE;
-      paramString.qNF = paramm.qNF;
-      paramString.kmq = paramm.kmq;
-      paramString.qNG = paramm.qNG;
-      paramString.qNH = paramm.qNH;
-      this.knS = this.qNU.knS;
-      ab.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd()  action_type:" + this.knS + "  frequency_level:" + qNy + " control_flag:" + this.qNU.qNB);
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label344;
+      paramInt2 = 1;
+      ((faz)localObject).oOu = paramInt2;
+      ((faz)localObject).abAW = paramInt1;
+      if (!ah.eb(MMApplicationContext.getContext())) {
+        break label372;
       }
-      qNy = this.qNU.qNy;
-      ab.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd is OK ");
-      if (this.qNe != null) {
-        this.qNe.a(1250, this.qNU, 1L);
-      }
-      cly();
     }
-    for (;;)
+    label372:
+    for (paramInt1 = 1;; paramInt1 = 2)
     {
-      com.tencent.mm.plugin.shake.b.m.clt().qNy = qNy;
-      com.tencent.mm.plugin.shake.b.m.clt().qNz = this.qNz;
-      this.qNV = false;
-      AppMethodBeat.o(24543);
-      return;
-      label344:
-      if (((paramInt1 == 5) && (paramInt2 == -1)) || ((paramInt1 == 4) && (paramInt2 != 0)))
+      ((faz)localObject).ZkT = paramInt1;
+      ((faz)localObject).YHj = paramInt3;
+      float f3 = 0.0F;
+      float f4 = 0.0F;
+      float f2 = f4;
+      float f1 = f3;
+      try
       {
-        ab.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd errType is " + paramInt1 + " errCode is " + paramInt2);
-        if (this.qNe != null) {
-          this.qNe.a(1250, this.qNU, 2L);
-        }
-        long l1 = System.currentTimeMillis() / 1000L;
-        long l2 = a.Dn(a.clM());
-        ab.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd wait nextInterval is ".concat(String.valueOf(l2)));
-        this.qNz = (l1 + l2);
+        bh.bCz();
+        f2 = f4;
+        f1 = f3;
+        f3 = Util.getFloat((String)com.tencent.mm.model.c.ban().get(at.a.acJf, null), 0.0F);
+        f2 = f4;
+        f1 = f3;
+        bh.bCz();
+        f2 = f4;
+        f1 = f3;
+        f4 = Util.getFloat((String)com.tencent.mm.model.c.ban().get(at.a.acJg, null), 0.0F);
+        f2 = f4;
+        f1 = f3;
+        bh.bCz();
+        f2 = f4;
+        f1 = f3;
+        paramInt1 = Util.safeParseInt((String)com.tencent.mm.model.c.ban().get(at.a.acLM, null));
+        f1 = f3;
+        f2 = f4;
       }
-      else
+      catch (Exception paramArrayOfByte)
       {
-        ab.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd errType is " + paramInt1 + " errCode is " + paramInt2);
-        if (this.qNe != null) {
-          this.qNe.a(1250, this.qNU, 2L);
-        }
-        cly();
-      }
-    }
-  }
-  
-  public final void pause()
-  {
-    AppMethodBeat.i(24538);
-    baD();
-    AppMethodBeat.o(24538);
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(24535);
-    if (this.qNT != null) {
-      aw.Rc().a(this.qNT);
-    }
-    AppMethodBeat.o(24535);
-  }
-  
-  public final void resume()
-  {
-    AppMethodBeat.i(24539);
-    if (this.fwu != null) {
-      this.fwu.a(this.dZA, true);
-    }
-    AppMethodBeat.o(24539);
-  }
-  
-  public final void setFromScene(int paramInt)
-  {
-    AppMethodBeat.i(24532);
-    this.ejF = paramInt;
-    ab.i("MicroMsg.ShakeCardService", "ShakeCardService from_scene:".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(24532);
-  }
-  
-  public final void start()
-  {
-    AppMethodBeat.i(24536);
-    init();
-    reset();
-    if (this.fwu == null) {
-      ckQ();
-    }
-    this.fwu.b(this.dZA, true);
-    Object localObject = com.tencent.mm.plugin.shake.b.m.clt();
-    if ((!TextUtils.isEmpty("key_shake_card_item")) && (((d)localObject).kln.containsKey("key_shake_card_item"))) {}
-    long l1;
-    long l2;
-    for (localObject = ((d)localObject).kln.get("key_shake_card_item");; localObject = null)
-    {
-      l1 = System.currentTimeMillis() / 1000L;
-      l2 = this.qNz;
-      if ((localObject == null) || (!(localObject instanceof e))) {
-        break;
-      }
-      localObject = (e)localObject;
-      this.qNe.a(1250, (e)localObject, 1L);
-      com.tencent.mm.plugin.shake.b.m.clt().putValue("key_shake_card_item", null);
-      ab.i("MicroMsg.ShakeCardService", "getlbscard return data is no empty, don't do doNetSceneShakeCard, return ok");
-      AppMethodBeat.o(24536);
-      return;
-    }
-    int i;
-    if (this.qNz == 0L) {
-      i = 1;
-    }
-    while (i != 0) {
-      if (this.qNV)
-      {
-        ab.i("MicroMsg.ShakeCardService", "ShakeCardService is doing netscene, return");
-        AppMethodBeat.o(24536);
-        return;
-        if (l1 - l2 >= 0L)
+        for (;;)
         {
-          i = 1;
-        }
-        else
-        {
-          h.qsU.e(11666, new Object[] { Integer.valueOf(this.ejF) });
-          this.mHandler.postDelayed(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(24529);
-              g.e(g.this).knS = 3;
-              g.a(g.this, g.e(g.this).knS);
-              g.e(g.this).qNF = com.tencent.mm.plugin.shake.b.m.clt().qNA;
-              if (g.f(g.this) != null) {
-                g.g(g.this).a(1250, g.e(g.this), 2L);
-              }
-              AppMethodBeat.o(24529);
-            }
-          }, 3000L);
-          ab.i("MicroMsg.ShakeCardService", "ShakeCardService do not doNetSceneShakeCard, because time is not expire");
-          i = 0;
+          paramInt1 = 0;
+          continue;
+          paramInt2 = 1;
+          continue;
+          paramInt2 = 0;
         }
       }
-      else
-      {
-        if ((this.dZu == -85.0F) || (this.dZv == -1000.0F))
-        {
-          this.qNW = true;
-          ab.i("MicroMsg.ShakeCardService", "ShakeCardService location is not geted, wait 4 second");
-          this.mHandler.postDelayed(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(24530);
-              if (!g.h(g.this)) {
-                g.d(g.this);
-              }
-              AppMethodBeat.o(24530);
-            }
-          }, 4000L);
-          AppMethodBeat.o(24536);
-          return;
-        }
-        clx();
+      ((faz)localObject).ZaH = f1;
+      ((faz)localObject).abAX = f2;
+      if (!e.bLu()) {
+        break label383;
       }
+      paramInt2 = 0;
+      ((faz)localObject).aawO = paramInt2;
+      if (!e.bLt()) {
+        break label389;
+      }
+      paramInt2 = 1;
+      ((faz)localObject).aawP = paramInt2;
+      n.a(2014, ((faz)localObject).abAX, ((faz)localObject).ZaH, paramInt1);
+      AppMethodBeat.o(28283);
+      return;
+      paramInt2 = 0;
+      break;
     }
-    AppMethodBeat.o(24536);
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
+  {
+    AppMethodBeat.i(28284);
+    faz localfaz = (faz)c.b.b(this.rr.otB);
+    Log.d("MicroMsg.NetSceneShakeMusic", "MusicFingerPrintRecorder doscene dataid:%d data:%d endflag:%d voice:%f nettype:%d ver:%d", new Object[] { Integer.valueOf(localfaz.abAV), Integer.valueOf(localfaz.NkQ.abwJ), Integer.valueOf(localfaz.oOu), Float.valueOf(localfaz.abAW), Integer.valueOf(localfaz.ZkT), Integer.valueOf(localfaz.YHj) });
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(28284);
+    return i;
+  }
+  
+  public final esc gXF()
+  {
+    AppMethodBeat.i(273614);
+    fba localfba = (fba)c.c.b(this.rr.otC);
+    AppMethodBeat.o(273614);
+    return localfba;
+  }
+  
+  public final int getType()
+  {
+    return 367;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(28285);
+    params = (faz)c.b.b(this.rr.otB);
+    paramArrayOfByte = (fba)c.c.b(this.rr.otC);
+    Log.d("MicroMsg.NetSceneShakeMusic", "MusicFingerPrintRecorder onGYNetEnd [%d,%d] dataid:%d endflag:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(params.abAV), Integer.valueOf(paramArrayOfByte.oOu) });
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.oOu == 1)) {
+      this.hPw = true;
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(28285);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.a.g
  * JD-Core Version:    0.7.0.1
  */

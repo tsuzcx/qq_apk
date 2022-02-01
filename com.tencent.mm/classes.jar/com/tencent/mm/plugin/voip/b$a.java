@@ -1,22 +1,16 @@
 package com.tencent.mm.plugin.voip;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mv;
-import com.tencent.mm.sdk.b.c;
-
 public final class b$a
-  extends c<mv>
 {
-  public b$a(b paramb)
-  {
-    AppMethodBeat.i(4309);
-    this.__eventId = mv.class.getName().hashCode();
-    AppMethodBeat.o(4309);
-  }
+  public static final int BG_2 = 2131099650;
+  public static final int BW_100_Alpha_0_8 = 2131099699;
+  public static final int open_im_display_name_color = 2131101166;
+  public static final int transparent = 2131101560;
+  public static final int white_text_color = 2131101702;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.b.a
  * JD-Core Version:    0.7.0.1
  */

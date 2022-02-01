@@ -7,12 +7,6 @@ import android.os.Parcelable.Creator;
 import android.util.Log;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.wearable.DataItem;
 import com.google.android.gms.wearable.DataItemAsset;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -22,32 +16,25 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="DataItemParcelableCreator")
-@SafeParcelable.Reserved({1})
-@VisibleForTesting
 public final class zzdd
   extends AbstractSafeParcelable
   implements DataItem
 {
   public static final Parcelable.Creator<zzdd> CREATOR;
-  @SafeParcelable.Field(getter="getData", id=5)
   private byte[] data;
-  @SafeParcelable.Field(getter="getUri", id=2)
   private final Uri uri;
-  @SafeParcelable.Field(getter="getAssetsInternal", id=4, type="android.os.Bundle")
   private final Map<String, DataItemAsset> zzdo;
   
   static
   {
-    AppMethodBeat.i(71197);
+    AppMethodBeat.i(101180);
     CREATOR = new zzde();
-    AppMethodBeat.o(71197);
+    AppMethodBeat.o(101180);
   }
   
-  @SafeParcelable.Constructor
-  zzdd(@SafeParcelable.Param(id=2) Uri paramUri, @SafeParcelable.Param(id=4) Bundle paramBundle, @SafeParcelable.Param(id=5) byte[] paramArrayOfByte)
+  zzdd(Uri paramUri, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(71194);
+    AppMethodBeat.i(101177);
     this.uri = paramUri;
     paramUri = new HashMap();
     paramBundle.setClassLoader(DataItemAssetParcelable.class.getClassLoader());
@@ -59,7 +46,7 @@ public final class zzdd
     }
     this.zzdo = paramUri;
     this.data = paramArrayOfByte;
-    AppMethodBeat.o(71194);
+    AppMethodBeat.o(101177);
   }
   
   public final Map<String, DataItemAsset> getAssets()
@@ -67,7 +54,6 @@ public final class zzdd
     return this.zzdo;
   }
   
-  @VisibleForTesting
   public final byte[] getData()
   {
     return this.data;
@@ -85,7 +71,7 @@ public final class zzdd
   
   public final String toString()
   {
-    AppMethodBeat.i(71196);
+    AppMethodBeat.i(101179);
     boolean bool = Log.isLoggable("DataItem", 3);
     StringBuilder localStringBuilder = new StringBuilder("DataItemParcelable[");
     localStringBuilder.append("@");
@@ -104,7 +90,7 @@ public final class zzdd
       }
       localStringBuilder.append("]");
       localObject = localStringBuilder.toString();
-      AppMethodBeat.o(71196);
+      AppMethodBeat.o(101179);
       return localObject;
     }
     localStringBuilder.append("]\n  assets: ");
@@ -117,13 +103,13 @@ public final class zzdd
     }
     localStringBuilder.append("\n  ]");
     localObject = localStringBuilder.toString();
-    AppMethodBeat.o(71196);
+    AppMethodBeat.o(101179);
     return localObject;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71195);
+    AppMethodBeat.i(101178);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeParcelable(paramParcel, 2, getUri(), paramInt, false);
     Bundle localBundle = new Bundle();
@@ -137,7 +123,7 @@ public final class zzdd
     SafeParcelWriter.writeBundle(paramParcel, 4, localBundle, false);
     SafeParcelWriter.writeByteArray(paramParcel, 5, getData(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(71195);
+    AppMethodBeat.o(101178);
   }
 }
 

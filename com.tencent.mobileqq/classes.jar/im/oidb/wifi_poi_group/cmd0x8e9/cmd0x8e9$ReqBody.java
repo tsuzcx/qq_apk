@@ -22,12 +22,13 @@ public final class cmd0x8e9$ReqBody
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "bytes_uid", "uint64_group_code", "rpt_req_visitor_info", "uint32_max_visitor_num", "uint64_judge_uin" }, new Object[] { localByteStringMicro, Long.valueOf(0L), null, Integer.valueOf(0), Long.valueOf(0L) }, ReqBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "bytes_uid", "uint64_group_code", "rpt_req_visitor_info", "uint32_max_visitor_num", "uint64_judge_uin" }, new Object[] { localByteStringMicro, localLong, null, Integer.valueOf(0), localLong }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     im.oidb.wifi_poi_group.cmd0x8e9.cmd0x8e9.ReqBody
  * JD-Core Version:    0.7.0.1
  */

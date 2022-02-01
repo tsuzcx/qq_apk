@@ -21,13 +21,14 @@ public final class oidb_cmd0xbc9$BannerRoundRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "uint32_need_update", "rpt_msg_banner_list", "uint32_channel_id", "bytes_cookie", "rpt_msg_dynamic_banner_list", "msg_more_channel_item" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro, null, null }, BannerRoundRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "uint32_need_update", "rpt_msg_banner_list", "uint32_channel_id", "bytes_cookie", "rpt_msg_dynamic_banner_list", "msg_more_channel_item" }, new Object[] { localInteger, null, localInteger, localByteStringMicro, null, null }, BannerRoundRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundRspBody
  * JD-Core Version:    0.7.0.1
  */

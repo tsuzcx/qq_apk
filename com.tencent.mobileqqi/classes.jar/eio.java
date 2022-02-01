@@ -1,13 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
 class eio
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  eio(ein paramein) {}
+  eio(eim parameim) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
     this.a.a.a(this.a.a.a);
   }

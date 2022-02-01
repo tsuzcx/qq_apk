@@ -25,7 +25,15 @@ class ExoMediaPlayer$RendererEventListener
   
   public void onAudioDecoderInitialized(String paramString, long paramLong1, long paramLong2)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onAudioDecoderInitialized decoderName=" + paramString + ",initializedTimestampMs" + paramLong1 + ",initializationDurationMs" + paramLong2);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAudioDecoderInitialized decoderName=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",initializedTimestampMs");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(",initializationDurationMs");
+    localStringBuilder.append(paramLong2);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
     this.this$0.mAudioDecoderInfo = new DecoderInfo(1, paramString, paramLong2);
   }
   
@@ -45,13 +53,25 @@ class ExoMediaPlayer$RendererEventListener
   
   public void onAudioSessionId(int paramInt)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onAudioSessionId " + paramInt);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAudioSessionId ");
+    localStringBuilder.append(paramInt);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
     ExoMediaPlayer.access$1602(this.this$0, paramInt);
   }
   
   public void onAudioSinkUnderrun(int paramInt, long paramLong1, long paramLong2)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onAudioSinkUnderrun bufferSize=" + paramInt + ",bufferSizeMs" + paramLong1 + ",elapsedSinceLastFeedMs" + paramLong2);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAudioSinkUnderrun bufferSize=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",bufferSizeMs");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(",elapsedSinceLastFeedMs");
+    localStringBuilder.append(paramLong2);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
   }
   
   public void onCues(List<Cue> paramList)
@@ -71,7 +91,11 @@ class ExoMediaPlayer$RendererEventListener
   
   public void onRenderAudioData(byte[] paramArrayOfByte)
   {
-    ExoMediaPlayer.getLogger().v("ExoMediaPlayer", "onRenderAudioData " + paramArrayOfByte.length);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRenderAudioData ");
+    localStringBuilder.append(paramArrayOfByte.length);
+    localILogger.v("ExoMediaPlayer", localStringBuilder.toString());
     if ((ExoMediaPlayer.access$1800(this.this$0)) && (ExoMediaPlayer.access$1900(this.this$0) == null)) {
       ExoMediaPlayer.access$1902(this.this$0, new AudioFrameManager());
     }
@@ -96,7 +120,15 @@ class ExoMediaPlayer$RendererEventListener
   
   public void onVideoDecoderInitialized(String paramString, long paramLong1, long paramLong2)
   {
-    ExoMediaPlayer.getLogger().d("ExoMediaPlayer", "onAudioDecoderInitialized decoderName=" + paramString + ",initializedTimestampMs=" + paramLong1 + ",initializationDurationMs=" + paramLong2);
+    ILogger localILogger = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAudioDecoderInitialized decoderName=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",initializedTimestampMs=");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(",initializationDurationMs=");
+    localStringBuilder.append(paramLong2);
+    localILogger.d("ExoMediaPlayer", localStringBuilder.toString());
     this.this$0.mVideoDecoderInfo = new DecoderInfo(0, paramString, paramLong2);
   }
   
@@ -128,7 +160,7 @@ class ExoMediaPlayer$RendererEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.mediaplayer.ExoMediaPlayer.RendererEventListener
  * JD-Core Version:    0.7.0.1
  */

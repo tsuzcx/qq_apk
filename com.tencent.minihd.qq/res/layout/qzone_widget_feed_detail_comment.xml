@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.LinerLayoutForListViewItem android:orientation="vertical" android:id="@id/feedDetailComment" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/feed_item_margin_left" android:layout_marginTop="@dimen/qzone_common_16dp" android:layout_marginRight="@dimen/feed_item_margin_left">
+        <com.qzone.widget.AvatarImageView android:id="@id/commentImgUserIcon" android:layout_width="@dimen/qzone_feed_detail_avatar_width" android:layout_height="@dimen/qzone_feed_detail_avatar_width" android:layout_marginRight="@dimen/dp9" android:src="@drawable/qzone_icon_default_avatar" qzone:avatarSize="@dimen/qzone_feed_detail_avatar_width" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:id="@id/commentContainer" android:background="@drawable/qzone_selector_feed_item" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/feed_detail_comment_text_margin_top" android:layout_toLeftOf="@id/commentReplyButton" android:layout_alignParentLeft="true">
+                    <com.qzone.proxy.feedcomponent.adapter.text.CellTextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/qzone_feed_username" android:id="@id/commentContent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:lineSpacingExtra="4.0dip" />
+                    <com.qzone.widget.FlowLayout android:id="@id/commentPictureLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:horizontalSpacing="3.0dip" android:verticalSpacing="3.0dip" />
+                </LinearLayout>
+                <TextView android:textSize="9.0sp" android:textColor="@color/color_content_auxiliary" android:id="@id/commentPublishDesciption" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" android:layout_below="@id/commentAuthor" />
+                <TextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/qzone_feed_combtn" android:gravity="right" android:id="@id/commentReplyButton" android:paddingLeft="@dimen/dp3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="30.0dip" android:text="回复" android:singleLine="true" android:drawableLeft="@drawable/qzone_feed_icon_comment_small" android:drawablePadding="6.0dip" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <com.qzone.widget.FeedImageView android:layout_gravity="left" android:id="@id/commentpicture" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:scaleType="center" android:adjustViewBounds="true" android:contentDescription="@string/qzone_voice_photo" />
+            <LinearLayout android:orientation="vertical" android:id="@id/commentReplyContainer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/qzone_common_16dp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.qzone.widget.LinerLayoutForListViewItem>

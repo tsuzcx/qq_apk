@@ -1,33 +1,32 @@
 package cooperation.qzone.share;
 
-import bdgm;
-import bdjz;
-import bjrs;
-import bjrt;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class QZoneShareActivity$4$2
+class QZoneShareActivity$4$2
   implements Runnable
 {
-  public QZoneShareActivity$4$2(bjrs parambjrs, long paramLong, String paramString) {}
+  QZoneShareActivity$4$2(QZoneShareActivity.4 param4, long paramLong, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Long == -100070004L) || (this.jdField_a_of_type_Long == -1000710003L))
+    long l = this.val$finalErrCode;
+    if ((l != -100070004L) && (l != -1000710003L))
     {
-      this.jdField_a_of_type_Bjrs.a.k();
-      bdgm.a(this.jdField_a_of_type_Bjrs.a, 233, this.jdField_a_of_type_Bjrs.a.getString(2131720035), this.jdField_a_of_type_JavaLangString, new bjrt(this), null).show();
+      this.this$1.this$0.hideProgressDialog();
+      QZoneShareActivity.access$600(this.this$1.this$0);
+      QQToast.makeText(this.this$1.this$0, 1, 2131891804, 1).show();
+      this.this$1.this$0.finish();
       return;
     }
-    this.jdField_a_of_type_Bjrs.a.k();
-    QZoneShareActivity.e(this.jdField_a_of_type_Bjrs.a);
-    QQToast.a(this.jdField_a_of_type_Bjrs.a, 1, 2131694434, 1).a();
-    this.jdField_a_of_type_Bjrs.a.finish();
+    this.this$1.this$0.hideProgressDialog();
+    DialogUtil.a(this.this$1.this$0, 233, this.this$1.this$0.getString(2131916547), this.val$finalErrMsg, new QZoneShareActivity.4.2.1(this), null).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.4.2
  * JD-Core Version:    0.7.0.1
  */

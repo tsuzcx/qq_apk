@@ -9,8 +9,8 @@ public final class PSCache
   extends JceStruct
 {
   static ArrayList<PSMetaCategory> cache_categories = new ArrayList();
-  public ArrayList<PSMetaCategory> categories;
-  public int createTime;
+  public ArrayList<PSMetaCategory> categories = null;
+  public int createTime = 0;
   
   static
   {
@@ -35,14 +35,15 @@ public final class PSCache
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.createTime, 0);
-    if (this.categories != null) {
-      paramJceOutputStream.write(this.categories, 1);
+    ArrayList localArrayList = this.categories;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSCache
  * JD-Core Version:    0.7.0.1
  */

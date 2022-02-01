@@ -25,8 +25,9 @@ public abstract class BaseModule
   
   public ViolaInstance getViolaInstance()
   {
-    if (this.mVInstance != null) {
-      return (ViolaInstance)this.mVInstance.get();
+    WeakReference localWeakReference = this.mVInstance;
+    if (localWeakReference != null) {
+      return (ViolaInstance)localWeakReference.get();
     }
     return null;
   }
@@ -62,7 +63,7 @@ public abstract class BaseModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.BaseModule
  * JD-Core Version:    0.7.0.1
  */

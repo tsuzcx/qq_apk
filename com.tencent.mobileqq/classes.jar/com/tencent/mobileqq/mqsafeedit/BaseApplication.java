@@ -6,10 +6,10 @@ import android.content.Context;
 public abstract class BaseApplication
   extends Application
 {
-  public static int appnewmsgicon = 0;
+  public static int appnewmsgicon;
   static Context context;
-  public static int defaultNotifSoundResourceId = 0;
-  public static int qqlaunchicon = 0;
+  public static int defaultNotifSoundResourceId;
+  public static int qqlaunchicon;
   
   public static Context getContext()
   {
@@ -46,7 +46,7 @@ public abstract class BaseApplication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mqsafeedit.BaseApplication
  * JD-Core Version:    0.7.0.1
  */

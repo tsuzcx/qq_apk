@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/ea2" android:text="@string/e1r" android:singleLine="false" android:layout_centerHorizontal="true" style="@style/rd" />
-    <TextView android:textColor="@drawable/a0m" android:id="@id/ea8" android:visibility="gone" android:layout_marginTop="12.0dip" android:text="@string/ec3" android:layout_below="@id/ea2" android:layout_centerHorizontal="true" style="@style/re" />
-</RelativeLayout>
+<com.tencent.mm.view.TouchableLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b8d" app:refreshLayout="@layout/ca6">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/klh" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</com.tencent.mm.view.TouchableLayout>

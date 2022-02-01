@@ -1,8 +1,8 @@
 package gameloginsdk;
 
-import b.a.f;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.fm;
+import com.tencent.token.ajh;
+import com.tencent.token.kk;
 
 class i
   extends p
@@ -26,56 +26,58 @@ class i
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = fm.a;
+      paramInt1 = ajh.a;
       a(paramInt3, (int)this.d);
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt3 == -50004)
-        {
-          paramInt1 = fm.a;
-          new StringBuilder().append("回包超时  httpGetAppidTypeCallback   retCode : ").append(paramInt3).toString();
-          a(paramInt3, (int)this.d);
-          return;
-        }
-        paramJceStruct = (f)paramJceStruct;
-        paramInt1 = fm.a;
-        paramInt1 = paramJceStruct.b;
-        long l = paramJceStruct.a;
-        localObject = paramJceStruct.c;
-        if (paramInt3 != 0) {
-          break;
-        }
-        new StringBuilder().append("SCGameAppid url : ").append(paramJceStruct.c).toString();
-        if (!this.a.g.a(paramJceStruct.a))
-        {
-          paramInt1 = fm.a;
-          new StringBuilder().append("忽略这个包，因为没收到过包的reqid : ").append(paramJceStruct.a).toString();
-          new StringBuilder().append("忽略这个包，因为没收到过SCGameAppid包的reqid : ").append(paramJceStruct.a).toString();
-          return;
-        }
-        this.b = 0;
-      } while (this.a.f == null);
-      Object localObject = new CallbackAppidTypeStruct();
-      ((CallbackAppidTypeStruct)localObject).appidType = j.a(paramJceStruct.b);
-      ((CallbackAppidTypeStruct)localObject).url = paramJceStruct.c;
-      this.a.f.onRespCallback(paramInt3, (int)this.d, 0, localObject);
       return;
+    }
+    if (paramInt3 == -50004)
+    {
+      paramInt1 = ajh.a;
+      a(paramInt3, (int)this.d);
+      return;
+    }
+    paramJceStruct = (kk)paramJceStruct;
+    paramInt1 = ajh.a;
+    paramInt1 = paramJceStruct.b;
+    long l = paramJceStruct.a;
+    Object localObject = paramJceStruct.c;
+    if (paramInt3 == 0)
+    {
+      new StringBuilder("SCGameAppid url : ").append(paramJceStruct.c);
+      if (!this.a.g.a(paramJceStruct.a))
+      {
+        paramInt1 = ajh.a;
+        localObject = new StringBuilder("忽略这个包，因为没收到过包的reqid : ");
+        ((StringBuilder)localObject).append(paramJceStruct.a);
+        ((StringBuilder)localObject).toString();
+        new StringBuilder("忽略这个包，因为没收到过SCGameAppid包的reqid : ").append(paramJceStruct.a);
+        return;
+      }
+      this.b = 0;
+      if (this.a.f != null)
+      {
+        localObject = new CallbackAppidTypeStruct();
+        ((CallbackAppidTypeStruct)localObject).appidType = j.a(paramJceStruct.b);
+        ((CallbackAppidTypeStruct)localObject).url = paramJceStruct.c;
+        this.a.f.onRespCallback(paramInt3, (int)this.d, 0, localObject);
+      }
+    }
+    else
+    {
       paramInt1 = this.b + 1;
       this.b = paramInt1;
-      if (paramInt1 >= 3) {
-        break;
+      if (paramInt1 < 3)
+      {
+        if (this.c != null) {
+          this.a.c(this);
+        }
       }
-    } while (this.c == null);
-    new StringBuilder().append("resendGetFlowType retCode : ").append(paramInt3).toString();
-    this.a.c(this);
-    return;
-    new StringBuilder().append("httpGetAppidTypeCallback --- retCode = ").append(paramInt3).toString();
-    a(paramInt3, (int)this.d);
-    this.b = 0;
+      else
+      {
+        a(paramInt3, (int)this.d);
+        this.b = 0;
+      }
+    }
   }
 }
 

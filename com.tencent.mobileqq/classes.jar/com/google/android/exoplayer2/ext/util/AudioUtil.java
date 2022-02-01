@@ -22,7 +22,7 @@ public class AudioUtil
   
   public static short byteToShort(byte paramByte1, byte paramByte2)
   {
-    return (short)((paramByte2 & 0xFF) << 8 | paramByte1 & 0xFF);
+    return (short)(paramByte1 & 0xFF | (paramByte2 & 0xFF) << 8);
   }
   
   private static short byteToShort2(byte paramByte1, byte paramByte2)
@@ -37,14 +37,16 @@ public class AudioUtil
   public static double mean(double[] paramArrayOfDouble, int paramInt)
   {
     int i = Math.min(paramInt, paramArrayOfDouble.length);
-    double d = 0.0D;
+    double d1 = 0.0D;
     paramInt = 0;
     while (paramInt < i)
     {
-      d += paramArrayOfDouble[paramInt];
+      d1 += paramArrayOfDouble[paramInt];
       paramInt += 1;
     }
-    return d / i;
+    double d2 = i;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   public static double min(double[] paramArrayOfDouble, int paramInt)
@@ -62,7 +64,7 @@ public class AudioUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.util.AudioUtil
  * JD-Core Version:    0.7.0.1
  */

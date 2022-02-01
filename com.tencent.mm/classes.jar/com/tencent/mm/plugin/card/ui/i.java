@@ -3,104 +3,110 @@ package com.tencent.mm.plugin.card.ui;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.card.b.k;
-import com.tencent.mm.plugin.card.b.k.a;
-import com.tencent.mm.plugin.card.d.m;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.g;
+import com.tencent.mm.plugin.card.c.n;
+import com.tencent.mm.plugin.card.mgr.j;
+import com.tencent.mm.plugin.card.mgr.j.a;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.card.model.g;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
 
 public final class i
-  implements k.a
+  implements j.a
 {
-  View iCk;
-  MMActivity jpX;
-  boolean krU = false;
-  View kxa;
-  TextView kxb;
-  ImageView kxc;
-  View kxd;
-  TextView kxe;
-  ImageView kxf;
+  View plc;
+  View wDA;
+  TextView wDB;
+  ImageView wDC;
+  View wDx;
+  TextView wDy;
+  ImageView wDz;
+  MMActivity wry;
+  boolean wyq = false;
   
   public i(MMActivity paramMMActivity, View paramView)
   {
-    this.jpX = paramMMActivity;
-    this.iCk = paramView;
+    this.wry = paramMMActivity;
+    this.plc = paramView;
   }
   
-  public final void a(com.tencent.mm.plugin.card.model.g paramg)
+  public final void a(g paramg)
   {
-    AppMethodBeat.i(88590);
-    bel();
-    AppMethodBeat.o(88590);
+    AppMethodBeat.i(113517);
+    dmX();
+    AppMethodBeat.o(113517);
   }
   
-  final void bel()
+  final void dmX()
   {
-    AppMethodBeat.i(88591);
-    int i = am.bch().kme;
-    if ((i > 0) && (this.krU))
+    AppMethodBeat.i(113518);
+    int i = am.dkN().wsr;
+    if ((i > 0) && (this.wyq))
     {
-      String str1 = (String)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yyX, "");
-      String str2 = (String)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yyY, "");
-      int j = this.jpX.getResources().getDimensionPixelOffset(2131428170);
+      String str1 = (String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acJr, "");
+      String str2 = (String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acJs, "");
+      int j = this.wry.getResources().getDimensionPixelOffset(a.b.wdP);
       if (!TextUtils.isEmpty(str2))
       {
-        m.a(this.kxc, str2, j, 2130838155, true);
+        n.a(this.wDz, str2, j, a.c.wes, true);
         if (TextUtils.isEmpty(str1)) {
-          break label186;
+          break label190;
         }
-        this.kxb.setText(str1);
-        label109:
-        this.kxa.setVisibility(0);
-        if (this.kxd != null)
+        this.wDy.setText(str1);
+        label111:
+        this.wDx.setVisibility(0);
+        if (this.wDA != null)
         {
           if (TextUtils.isEmpty(str2)) {
-            break label216;
+            break label221;
           }
-          m.a(this.kxf, str2, j, 2130838155, true);
-          label145:
+          n.a(this.wDC, str2, j, a.c.wes, true);
+          label148:
           if (TextUtils.isEmpty(str1)) {
-            break label228;
+            break label234;
           }
-          this.kxe.setText(str1);
+          this.wDB.setText(str1);
         }
       }
       for (;;)
       {
-        this.kxd.setVisibility(0);
-        AppMethodBeat.o(88591);
+        this.wDA.setVisibility(0);
+        AppMethodBeat.o(113518);
         return;
-        this.kxc.setImageResource(2130838155);
+        this.wDz.setImageResource(a.c.wes);
         break;
-        label186:
-        this.kxb.setText(this.jpX.getString(2131297953, new Object[] { Integer.valueOf(i) }));
-        break label109;
-        label216:
-        this.kxf.setImageResource(2130838155);
-        break label145;
-        label228:
-        this.kxe.setText(this.jpX.getString(2131297953, new Object[] { Integer.valueOf(i) }));
+        label190:
+        this.wDy.setText(this.wry.getString(a.g.wpa, new Object[] { Integer.valueOf(i) }));
+        break label111;
+        label221:
+        this.wDC.setImageResource(a.c.wes);
+        break label148;
+        label234:
+        this.wDB.setText(this.wry.getString(a.g.wpa, new Object[] { Integer.valueOf(i) }));
       }
     }
-    this.kxa.setVisibility(8);
-    if (this.kxd != null) {
-      this.kxd.setVisibility(8);
+    this.wDx.setVisibility(8);
+    if (this.wDA != null) {
+      this.wDA.setVisibility(8);
     }
-    AppMethodBeat.o(88591);
+    AppMethodBeat.o(113518);
   }
   
   public final void onChange() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.i
  * JD-Core Version:    0.7.0.1
  */

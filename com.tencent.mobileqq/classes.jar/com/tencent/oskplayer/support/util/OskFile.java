@@ -22,7 +22,7 @@ public class OskFile
   public static final long ONE_KB = 1024L;
   public static final BigInteger ONE_KB_BI = BigInteger.valueOf(1024L);
   public static final long ONE_MB = 1048576L;
-  public static final BigInteger ONE_MB_BI = ONE_KB_BI.multiply(ONE_KB_BI);
+  public static final BigInteger ONE_MB_BI;
   public static final long ONE_PB = 1125899906842624L;
   public static final BigInteger ONE_PB_BI;
   public static final long ONE_TB = 1099511627776L;
@@ -33,6 +33,8 @@ public class OskFile
   
   static
   {
+    BigInteger localBigInteger = ONE_KB_BI;
+    ONE_MB_BI = localBigInteger.multiply(localBigInteger);
     ONE_GB_BI = ONE_KB_BI.multiply(ONE_MB_BI);
     ONE_TB_BI = ONE_KB_BI.multiply(ONE_GB_BI);
     ONE_PB_BI = ONE_KB_BI.multiply(ONE_TB_BI);
@@ -47,25 +49,52 @@ public class OskFile
   
   public static String byteCountToDisplaySize(BigInteger paramBigInteger)
   {
-    if (paramBigInteger.divide(ONE_EB_BI).compareTo(BigInteger.ZERO) > 0) {
-      return String.valueOf(paramBigInteger.divide(ONE_EB_BI)) + " EB";
+    if (paramBigInteger.divide(ONE_EB_BI).compareTo(BigInteger.ZERO) > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(paramBigInteger.divide(ONE_EB_BI)));
+      localStringBuilder.append(" EB");
+      return localStringBuilder.toString();
     }
-    if (paramBigInteger.divide(ONE_PB_BI).compareTo(BigInteger.ZERO) > 0) {
-      return String.valueOf(paramBigInteger.divide(ONE_PB_BI)) + " PB";
+    if (paramBigInteger.divide(ONE_PB_BI).compareTo(BigInteger.ZERO) > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(paramBigInteger.divide(ONE_PB_BI)));
+      localStringBuilder.append(" PB");
+      return localStringBuilder.toString();
     }
-    if (paramBigInteger.divide(ONE_TB_BI).compareTo(BigInteger.ZERO) > 0) {
-      return String.valueOf(paramBigInteger.divide(ONE_TB_BI)) + " TB";
+    if (paramBigInteger.divide(ONE_TB_BI).compareTo(BigInteger.ZERO) > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(paramBigInteger.divide(ONE_TB_BI)));
+      localStringBuilder.append(" TB");
+      return localStringBuilder.toString();
     }
-    if (paramBigInteger.divide(ONE_GB_BI).compareTo(BigInteger.ZERO) > 0) {
-      return String.valueOf(paramBigInteger.divide(ONE_GB_BI)) + " GB";
+    if (paramBigInteger.divide(ONE_GB_BI).compareTo(BigInteger.ZERO) > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(paramBigInteger.divide(ONE_GB_BI)));
+      localStringBuilder.append(" GB");
+      return localStringBuilder.toString();
     }
-    if (paramBigInteger.divide(ONE_MB_BI).compareTo(BigInteger.ZERO) > 0) {
-      return String.valueOf(paramBigInteger.divide(ONE_MB_BI)) + " MB";
+    if (paramBigInteger.divide(ONE_MB_BI).compareTo(BigInteger.ZERO) > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(paramBigInteger.divide(ONE_MB_BI)));
+      localStringBuilder.append(" MB");
+      return localStringBuilder.toString();
     }
-    if (paramBigInteger.divide(ONE_KB_BI).compareTo(BigInteger.ZERO) > 0) {
-      return String.valueOf(paramBigInteger.divide(ONE_KB_BI)) + " KB";
+    if (paramBigInteger.divide(ONE_KB_BI).compareTo(BigInteger.ZERO) > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(paramBigInteger.divide(ONE_KB_BI)));
+      localStringBuilder.append(" KB");
+      return localStringBuilder.toString();
     }
-    return String.valueOf(paramBigInteger) + " bytes";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(paramBigInteger));
+    localStringBuilder.append(" bytes");
+    return localStringBuilder.toString();
   }
   
   public static void copy(File paramFile1, File paramFile2)
@@ -85,32 +114,34 @@ public class OskFile
           }
           paramFile2.write(arrayOfByte, 0, i);
         }
-        paramFile2 = finally;
+        paramFile2.close();
+        return;
       }
-      finally {}
+      finally
+      {
+        paramFile2.close();
+      }
+      throw paramFile2;
     }
     finally
     {
       paramFile1.close();
     }
-    paramFile1.close();
+    for (;;) {}
   }
   
   private static String ensureDir(File paramFile)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramFile.exists())
-    {
-      bool1 = bool2;
-      if (paramFile.isFile()) {
-        bool1 = paramFile.delete();
-      }
+    boolean bool1;
+    if ((paramFile.exists()) && (paramFile.isFile())) {
+      bool1 = paramFile.delete();
+    } else {
+      bool1 = false;
     }
     if (!paramFile.exists()) {
       bool1 = paramFile.mkdirs();
     }
-    bool2 = bool1;
+    boolean bool2 = bool1;
     if (paramFile.isDirectory())
     {
       bool2 = bool1;
@@ -118,7 +149,13 @@ public class OskFile
         bool2 = true;
       }
     }
-    Logger.g().i("OskFile", "ensureDir " + paramFile + " result:" + bool2);
+    ILogger localILogger = Logger.g();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ensureDir ");
+    localStringBuilder.append(paramFile);
+    localStringBuilder.append(" result:");
+    localStringBuilder.append(bool2);
+    localILogger.i("OskFile", localStringBuilder.toString());
     if (bool2) {
       return paramFile.getAbsolutePath();
     }
@@ -127,8 +164,9 @@ public class OskFile
   
   public static boolean ensureDirEmpty(String paramString)
   {
+    boolean bool2 = TextUtils.isEmpty(paramString);
     boolean bool1 = false;
-    if (!TextUtils.isEmpty(paramString))
+    if (!bool2)
     {
       paramString = new File(paramString);
       if (paramString.exists()) {
@@ -137,7 +175,7 @@ public class OskFile
       if (!paramString.exists()) {
         bool1 = paramString.mkdirs();
       }
-      boolean bool2 = bool1;
+      bool2 = bool1;
       if (paramString.isDirectory())
       {
         bool2 = bool1;
@@ -145,7 +183,13 @@ public class OskFile
           bool2 = true;
         }
       }
-      Logger.g().i("OskFile", "ensureDirEmpty " + paramString + " result:" + bool2);
+      ILogger localILogger = Logger.g();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ensureDirEmpty ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" result:");
+      localStringBuilder.append(bool2);
+      localILogger.i("OskFile", localStringBuilder.toString());
       return bool2;
     }
     Logger.g().i("OskFile", "ensureDirEmpty invalidPath");
@@ -154,55 +198,70 @@ public class OskFile
   
   public static String ensureFilesDir(String paramString)
   {
-    String str = "";
-    Object localObject1 = str;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject1 = "";
+    Object localObject2 = localObject1;
+    Object localObject4;
+    if (!bool)
     {
-      localObject1 = OskSupport.getContext().getExternalFilesDir(null);
-      if (localObject1 != null) {
-        str = ensureDir(new File(localObject1 + File.separator + paramString));
-      }
-      localObject1 = str;
-      if (!TextUtils.isEmpty(str)) {}
-    }
-    catch (Exception localException1)
-    {
+      Object localObject5 = null;
       try
       {
-        localFile = OskSupport.getContext().getFilesDir();
-        localObject1 = str;
-        if (localFile != null) {
-          localObject1 = ensureDir(new File(localFile + File.separator + paramString));
-        }
-        return localObject1;
-        localException1 = localException1;
-        Logger.g().e("OskFile", "cant get extFilesRootDir", localException1);
-        Object localObject2 = null;
+        localObject2 = OskSupport.getContext().getExternalFilesDir(null);
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        for (;;)
+        Logger.g().e("OskFile", "cant get extFilesRootDir", localException1);
+        localObject3 = null;
+      }
+      if (localObject3 != null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(localObject3);
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append(paramString);
+        localObject1 = ensureDir(new File(((StringBuilder)localObject1).toString()));
+      }
+      Object localObject3 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        try
+        {
+          localObject3 = OskSupport.getContext().getFilesDir();
+          localObject5 = localObject3;
+        }
+        catch (Exception localException2)
         {
           Logger.g().e("OskFile", "cant get internalFilesRootDir", localException2);
-          File localFile = null;
+        }
+        localObject4 = localObject1;
+        if (localObject5 != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(localObject5);
+          ((StringBuilder)localObject1).append(File.separator);
+          ((StringBuilder)localObject1).append(paramString);
+          localObject4 = ensureDir(new File(((StringBuilder)localObject1).toString()));
         }
       }
     }
+    return localObject4;
   }
   
   public static String getFileExtension(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool = TextUtils.isEmpty(paramString);
+    String str = "";
+    if (!bool)
     {
       paramString = new File(paramString).getName();
       int i = paramString.lastIndexOf('.');
       if (i == -1) {
         return "";
       }
-      return paramString.substring(i + 1);
+      str = paramString.substring(i + 1);
     }
-    return "";
+    return str;
   }
   
   public static boolean isLocalFile(String paramString)
@@ -212,7 +271,7 @@ public class OskFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.support.util.OskFile
  * JD-Core Version:    0.7.0.1
  */

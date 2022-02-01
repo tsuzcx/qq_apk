@@ -1,25 +1,28 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.widget.TextView;
-import aqlm;
 
-public class FilePreviewActivity$16$1
+class FilePreviewActivity$16$1
   implements Runnable
 {
-  public FilePreviewActivity$16$1(aqlm paramaqlm, int paramInt1, int paramInt2) {}
+  FilePreviewActivity$16$1(FilePreviewActivity.16 param16, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Aqlm.a.a()) {
+    if (!this.c.a.a()) {
       return;
     }
-    String str = String.valueOf(this.jdField_a_of_type_Int) + "/" + String.valueOf(this.b);
-    this.jdField_a_of_type_Aqlm.a.a.setText(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(String.valueOf(this.a));
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(String.valueOf(this.b));
+    localObject = ((StringBuilder)localObject).toString();
+    this.c.a.v.setText((CharSequence)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.16.1
  * JD-Core Version:    0.7.0.1
  */

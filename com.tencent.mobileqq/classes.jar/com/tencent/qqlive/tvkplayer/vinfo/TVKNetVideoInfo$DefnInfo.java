@@ -25,7 +25,10 @@ public class TVKNetVideoInfo$DefnInfo
       DefnInfo localDefnInfo = (DefnInfo)super.clone();
       return localDefnInfo;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
     return null;
   }
   
@@ -156,7 +159,7 @@ public class TVKNetVideoInfo$DefnInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKNetVideoInfo.DefnInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -56,26 +56,36 @@ public class VideoShelfTemplate
   
   public String getAudioPath()
   {
-    String str2 = getMaterialPath() + File.separator + this.audioName;
-    String str1 = str2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getMaterialPath());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.audioName);
+    String str = ((StringBuilder)localObject).toString();
+    localObject = str;
     if (this.isFromAssets) {
-      str1 = str2.replace("assets://", "");
+      localObject = str.replace("assets://", "");
     }
-    return str1;
+    return localObject;
   }
   
   public List<String> getCrazyFaceList()
   {
-    if ((this.fullpathCrazyFaceFileName != null) && (this.fullpathCrazyFaceFileName.size() > 0)) {
+    Object localObject = this.fullpathCrazyFaceFileName;
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
       return this.fullpathCrazyFaceFileName;
     }
-    if ((this.crazyFaceList != null) && (this.crazyFaceList.size() > 0))
+    localObject = this.crazyFaceList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.crazyFaceList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.crazyFaceList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
-        str = getMaterialPath() + File.separator + str;
+        String str = (String)((Iterator)localObject).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(getMaterialPath());
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(str);
+        str = localStringBuilder.toString();
         if (this.isFromAssets) {
           str.replace("assets://", "");
         }
@@ -97,7 +107,11 @@ public class VideoShelfTemplate
   
   public String getFilterLutPath()
   {
-    return getMaterialPath() + File.separator + this.filterLutName;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getMaterialPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.filterLutName);
+    return localStringBuilder.toString();
   }
   
   public List<VideoFrameItem> getFrameList()
@@ -142,12 +156,16 @@ public class VideoShelfTemplate
   
   public String getPagFilePath()
   {
-    String str2 = getMaterialPath() + File.separator + getPagFileName();
-    String str1 = str2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getMaterialPath());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(getPagFileName());
+    String str = ((StringBuilder)localObject).toString();
+    localObject = str;
     if (this.isFromAssets) {
-      str1 = str2.replace("assets://", "");
+      localObject = str.replace("assets://", "");
     }
-    return str1;
+    return localObject;
   }
   
   public String getPreviewVideoName()
@@ -157,12 +175,16 @@ public class VideoShelfTemplate
   
   public String getPreviewVideoPath()
   {
-    String str2 = getMaterialPath() + File.separator + getPreviewVideoName();
-    String str1 = str2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getMaterialPath());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(getPreviewVideoName());
+    String str = ((StringBuilder)localObject).toString();
+    localObject = str;
     if (this.isFromAssets) {
-      str1 = str2.replace("assets://", "");
+      localObject = str.replace("assets://", "");
     }
-    return str1;
+    return localObject;
   }
   
   public int getPreviewVideoType()
@@ -192,20 +214,26 @@ public class VideoShelfTemplate
   
   public String getVideoName()
   {
-    if (this.videoName == null) {
-      return "Video_Pag.mp4";
+    String str2 = this.videoName;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "Video_Pag.mp4";
     }
-    return this.videoName;
+    return str1;
   }
   
   public String getVideoPath()
   {
-    String str2 = getMaterialPath() + File.separator + getVideoName();
-    String str1 = str2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getMaterialPath());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(getVideoName());
+    String str = ((StringBuilder)localObject).toString();
+    localObject = str;
     if (this.isFromAssets) {
-      str1 = str2.replace("assets://", "");
+      localObject = str.replace("assets://", "");
     }
-    return str1;
+    return localObject;
   }
   
   public int getVideoTemplateType()
@@ -240,7 +268,7 @@ public class VideoShelfTemplate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate
  * JD-Core Version:    0.7.0.1
  */

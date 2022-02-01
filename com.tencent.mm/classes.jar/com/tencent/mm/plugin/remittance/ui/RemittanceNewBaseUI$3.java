@@ -1,32 +1,36 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.b;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.modelavatar.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class RemittanceNewBaseUI$3
-  implements Runnable
+  implements az.b.a
 {
-  RemittanceNewBaseUI$3(RemittanceNewBaseUI paramRemittanceNewBaseUI) {}
+  RemittanceNewBaseUI$3(RemittanceNewBaseUI paramRemittanceNewBaseUI, long paramLong) {}
   
-  public final void run()
+  public final void getContactCallBack(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(142228);
-    Bitmap localBitmap = b.b(this.qqR.eaX, false, -1);
-    if (localBitmap == null)
+    AppMethodBeat.i(68216);
+    if (paramBoolean)
     {
-      this.qqR.qlq.setImageResource(2130838493);
-      AppMethodBeat.o(142228);
-      return;
+      Log.v("MicroMsg.RemittanceNewBaseUI", "getContact suc; cost=" + (Util.nowMilliSecond() - this.xbx) + " ms");
+      d.aS(paramString, 3);
     }
-    this.qqR.qlq.setImageBitmap(localBitmap);
-    AppMethodBeat.o(142228);
+    for (;;)
+    {
+      RemittanceNewBaseUI.j(this.Osi);
+      AppMethodBeat.o(68216);
+      return;
+      Log.w("MicroMsg.RemittanceNewBaseUI", "getContact failed");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceNewBaseUI.3
  * JD-Core Version:    0.7.0.1
  */

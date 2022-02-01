@@ -9,17 +9,17 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.image.URLImageView;
-import uco;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QCircleCertifiedDialogView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private uco jdField_a_of_type_Uco;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private URLImageView jdField_b_of_type_ComTencentImageURLImageView;
+  private URLImageView a;
+  private URLImageView b;
+  private ImageView c;
+  private ImageView d;
+  private QCircleCertifiedDialogView.ICertifiedListener e;
   
   public QCircleCertifiedDialogView(Context paramContext)
   {
@@ -39,45 +39,52 @@ public class QCircleCertifiedDialogView
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131560519, this);
-    setBackgroundDrawable(getResources().getDrawable(2130843549));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131379918));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131379919));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368730));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368731));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundURL("https://qzonestyle.gtimg.cn/aoi/sola/20200303153157_RUD3Zf0Pyz.png");
-    this.jdField_b_of_type_ComTencentImageURLImageView.setBackgroundURL("https://qzonestyle.gtimg.cn/aoi/sola/20200303153157_OASs9ECpAn.png");
+    LayoutInflater.from(getContext()).inflate(2131626769, this);
+    setBackgroundDrawable(getResources().getDrawable(2130845055));
+    this.a = ((URLImageView)findViewById(2131449806));
+    this.b = ((URLImageView)findViewById(2131449807));
+    this.c = ((ImageView)findViewById(2131436304));
+    this.d = ((ImageView)findViewById(2131436305));
+    this.a.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    this.c.setOnClickListener(this);
+    this.d.setOnClickListener(this);
+    this.a.setBackgroundURL("https://qzonestyle.gtimg.cn/aoi/sola/20200303153157_RUD3Zf0Pyz.png");
+    this.b.setBackgroundURL("https://qzonestyle.gtimg.cn/aoi/sola/20200303153157_OASs9ECpAn.png");
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    QCircleCertifiedDialogView.ICertifiedListener localICertifiedListener;
+    if ((i != 2131436304) && (i != 2131449806))
     {
-    }
-    do
-    {
-      do
+      if ((i == 2131449807) || (i == 2131436305))
       {
-        return;
-      } while (this.jdField_a_of_type_Uco == null);
-      this.jdField_a_of_type_Uco.a();
-      return;
-    } while (this.jdField_a_of_type_Uco == null);
-    this.jdField_a_of_type_Uco.b();
+        localICertifiedListener = this.e;
+        if (localICertifiedListener != null) {
+          localICertifiedListener.b();
+        }
+      }
+    }
+    else
+    {
+      localICertifiedListener = this.e;
+      if (localICertifiedListener != null) {
+        localICertifiedListener.a();
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setCertifiedListener(uco paramuco)
+  public void setCertifiedListener(QCircleCertifiedDialogView.ICertifiedListener paramICertifiedListener)
   {
-    this.jdField_a_of_type_Uco = paramuco;
+    this.e = paramICertifiedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleCertifiedDialogView
  * JD-Core Version:    0.7.0.1
  */

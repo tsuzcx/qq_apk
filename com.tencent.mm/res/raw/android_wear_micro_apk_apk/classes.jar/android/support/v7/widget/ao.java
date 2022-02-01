@@ -2,8 +2,8 @@ package android.support.v7.widget;
 
 import android.os.Bundle;
 import android.support.v4.view.a;
-import android.support.v4.view.a.e;
-import android.support.v4.view.a.p;
+import android.support.v4.view.a.b;
+import android.support.v4.view.a.d;
 import android.support.v4.view.r;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
@@ -11,14 +11,14 @@ import android.view.accessibility.AccessibilityEvent;
 public final class ao
   extends a
 {
-  final RecyclerView uk;
-  final a vs = new a()
+  final RecyclerView wa;
+  final a xh = new a()
   {
-    public final void a(View paramAnonymousView, e paramAnonymouse)
+    public final void a(View paramAnonymousView, b paramAnonymousb)
     {
-      super.a(paramAnonymousView, paramAnonymouse);
-      if ((!ao.this.uk.dC()) && (ao.this.uk.df() != null)) {
-        ao.this.uk.df().b(paramAnonymousView, paramAnonymouse);
+      super.a(paramAnonymousView, paramAnonymousb);
+      if ((!ao.this.wa.dQ()) && (ao.this.wa.jdMethod_do() != null)) {
+        ao.this.wa.jdMethod_do().b(paramAnonymousView, paramAnonymousb);
       }
     }
     
@@ -35,41 +35,38 @@ public final class ao
         {
           return bool1;
           bool1 = bool2;
-        } while (ao.this.uk.dC());
+        } while (ao.this.wa.dQ());
         bool1 = bool2;
-      } while (ao.this.uk.df() == null);
-      paramAnonymousView = ao.this.uk.df();
-      paramAnonymousBundle = paramAnonymousView.uk.sY;
-      paramAnonymousView = paramAnonymousView.uk.tM;
+      } while (ao.this.wa.jdMethod_do() == null);
       return false;
     }
   };
   
   public ao(RecyclerView paramRecyclerView)
   {
-    this.uk = paramRecyclerView;
+    this.wa = paramRecyclerView;
   }
   
-  public final void a(View paramView, e parame)
+  public final void a(View paramView, b paramb)
   {
-    super.a(paramView, parame);
-    parame.setClassName(RecyclerView.class.getName());
-    if ((!this.uk.dC()) && (this.uk.df() != null))
+    super.a(paramView, paramb);
+    paramb.setClassName(RecyclerView.class.getName());
+    if ((!this.wa.dQ()) && (this.wa.jdMethod_do() != null))
     {
-      paramView = this.uk.df();
-      af localaf = paramView.uk.sY;
-      ak localak = paramView.uk.tM;
-      if ((r.b(paramView.uk, -1)) || (r.a(paramView.uk, -1)))
+      paramView = this.wa.jdMethod_do();
+      af localaf = paramView.wa.uO;
+      ak localak = paramView.wa.vC;
+      if ((r.e(paramView.wa, -1)) || (r.d(paramView.wa, -1)))
       {
-        parame.addAction(8192);
-        parame.setScrollable(true);
+        paramb.addAction(8192);
+        paramb.setScrollable(true);
       }
-      if ((r.b(paramView.uk, 1)) || (r.a(paramView.uk, 1)))
+      if ((r.e(paramView.wa, 1)) || (r.d(paramView.wa, 1)))
       {
-        parame.addAction(4096);
-        parame.setScrollable(true);
+        paramb.addAction(4096);
+        paramb.setScrollable(true);
       }
-      parame.o(p.b(paramView.a(localaf, localak), paramView.b(localaf, localak), false, 0));
+      paramb.v(d.a(paramView.a(localaf, localak), paramView.b(localaf, localak), false, 0));
     }
   }
   
@@ -77,11 +74,11 @@ public final class ao
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(RecyclerView.class.getName());
-    if (((paramView instanceof RecyclerView)) && (!this.uk.dC()))
+    if (((paramView instanceof RecyclerView)) && (!this.wa.dQ()))
     {
       paramView = (RecyclerView)paramView;
-      if (paramView.df() != null) {
-        paramView.df().onInitializeAccessibilityEvent(paramAccessibilityEvent);
+      if (paramView.jdMethod_do() != null) {
+        paramView.jdMethod_do().onInitializeAccessibilityEvent(paramAccessibilityEvent);
       }
     }
   }
@@ -104,45 +101,43 @@ public final class ao
           {
             return bool1;
             bool1 = bool2;
-          } while (this.uk.dC());
+          } while (this.wa.dQ());
           bool1 = bool2;
-        } while (this.uk.df() == null);
-        paramView = this.uk.df();
-        paramBundle = paramView.uk.sY;
-        paramBundle = paramView.uk.tM;
+        } while (this.wa.jdMethod_do() == null);
+        paramView = this.wa.jdMethod_do();
         bool1 = bool2;
-      } while (paramView.uk == null);
+      } while (paramView.wa == null);
       switch (paramInt)
       {
       default: 
         i = 0;
         paramInt = 0;
         if (paramInt != 0) {
-          break label126;
+          break label110;
         }
         bool1 = bool2;
       }
     } while (i == 0);
-    label126:
-    paramView.uk.scrollBy(i, paramInt);
+    label110:
+    paramView.wa.scrollBy(i, paramInt);
     return true;
-    if (r.b(paramView.uk, -1)) {}
+    if (r.e(paramView.wa, -1)) {}
     for (paramInt = -(paramView.getHeight() - paramView.getPaddingTop() - paramView.getPaddingBottom());; paramInt = 0)
     {
       i = paramInt;
-      if (r.a(paramView.uk, -1))
+      if (r.d(paramView.wa, -1))
       {
         i = -(paramView.getWidth() - paramView.getPaddingLeft() - paramView.getPaddingRight());
         break;
-        if (!r.b(paramView.uk, 1)) {
-          break label271;
+        if (!r.e(paramView.wa, 1)) {
+          break label255;
         }
       }
-      label271:
+      label255:
       for (paramInt = paramView.getHeight() - paramView.getPaddingTop() - paramView.getPaddingBottom();; paramInt = 0)
       {
         i = paramInt;
-        if (r.a(paramView.uk, 1))
+        if (r.d(paramView.wa, 1))
         {
           i = paramView.getWidth() - paramView.getPaddingLeft() - paramView.getPaddingRight();
           break;

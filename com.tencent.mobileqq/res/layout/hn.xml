@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.contacts.view.ContactsFPSPinnedHeaderExpandableListView android:scrollbarStyle="outsideOverlay" android:id="@id/elv_buddies" android:paddingBottom="54.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scrollingCache="false" android:cacheColorHint="#00000000" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null"
+<com.tencent.mobileqq.activity.contacts.friend.ContactsFPSPinnedHeaderExpandableListView android:scrollbarStyle="outsideOverlay" android:id="@id/elv_buddies" android:paddingBottom="54.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scrollingCache="false" android:cacheColorHint="#00000000" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq" />

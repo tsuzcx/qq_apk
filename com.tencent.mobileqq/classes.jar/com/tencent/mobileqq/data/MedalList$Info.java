@@ -2,12 +2,27 @@ package com.tencent.mobileqq.data;
 
 public class MedalList$Info
 {
+  public int isRemind;
+  public int tipsTimes;
   public int type;
   public String value;
   
   public String toString()
   {
-    return "Info{type=" + this.type + ", value='" + this.value + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Info{type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", value='");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isRemind='");
+    localStringBuilder.append(this.isRemind);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", tipsTimes='");
+    localStringBuilder.append(this.tipsTimes);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

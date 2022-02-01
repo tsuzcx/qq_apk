@@ -29,14 +29,14 @@ import android.view.animation.Interpolator;
 public class CircularButton
   extends View
 {
-  private static final double Bq = Math.sqrt(2.0D);
-  private int Br = -1;
-  private ShapeDrawable Bs = new ShapeDrawable(new OvalShape());
-  private RippleDrawable Bt;
-  private ColorStateList Bu;
-  private Drawable Bv;
-  private int Bw;
-  private int Bx;
+  private static final double Df = Math.sqrt(2.0D);
+  private int Dg = -1;
+  private ShapeDrawable Dh = new ShapeDrawable(new OvalShape());
+  private RippleDrawable Di;
+  private ColorStateList Dj;
+  private Drawable Dk;
+  private int Dl;
+  private int Dm;
   private Interpolator mInterpolator;
   
   public CircularButton(Context paramContext)
@@ -57,33 +57,33 @@ public class CircularButton
   private CircularButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    this.Bs.getPaint().setColor(-3355444);
-    super.setBackgroundDrawable(this.Bs);
+    this.Dh.getPaint().setColor(-3355444);
+    super.setBackgroundDrawable(this.Dh);
     setOutlineProvider(new e(this, (byte)0));
     this.mInterpolator = new AccelerateInterpolator(2.0F);
-    this.Bx = 0;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.xH, paramInt, 0);
+    this.Dm = 0;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.zw, paramInt, 0);
     paramInt = paramByte;
     if (paramInt < paramContext.getIndexCount())
     {
       paramByte = paramContext.getIndex(paramInt);
-      if (paramByte == k.xJ)
+      if (paramByte == k.zy)
       {
-        this.Bu = paramContext.getColorStateList(paramByte);
-        this.Bs.getPaint().setColor(this.Bu.getDefaultColor());
+        this.Dj = paramContext.getColorStateList(paramByte);
+        this.Dh.getPaint().setColor(this.Dj.getDefaultColor());
       }
       for (;;)
       {
         paramInt += 1;
         break;
-        if (paramByte == k.xI) {
-          this.Bv = paramContext.getDrawable(paramByte);
-        } else if (paramByte == k.xL) {
-          aR(paramContext.getColor(paramByte, -1));
-        } else if (paramByte == k.xM) {
-          u(paramContext.getDimension(paramByte, 0.0F));
-        } else if (paramByte == k.xK) {
-          this.Bx = paramContext.getInt(paramByte, this.Bx);
+        if (paramByte == k.zx) {
+          this.Dk = paramContext.getDrawable(paramByte);
+        } else if (paramByte == k.zA) {
+          bl(paramContext.getColor(paramByte, -1));
+        } else if (paramByte == k.zB) {
+          v(paramContext.getDimension(paramByte, 0.0F));
+        } else if (paramByte == k.zz) {
+          this.Dm = paramContext.getInt(paramByte, this.Dm);
         }
       }
     }
@@ -97,64 +97,64 @@ public class CircularButton
     return paramAnimator;
   }
   
-  private static boolean d(Drawable paramDrawable)
+  private static boolean c(Drawable paramDrawable)
   {
     return (paramDrawable != null) && (paramDrawable.getIntrinsicHeight() > 0) && (paramDrawable.getIntrinsicWidth() > 0);
   }
   
-  public final void aP(int paramInt)
+  public final void bj(int paramInt)
   {
-    this.Bx = paramInt;
-    if (this.Bv != null)
+    this.Dm = paramInt;
+    if (this.Dk != null)
     {
       invalidate();
       requestLayout();
     }
   }
   
-  public final void aR(int paramInt)
+  public final void bl(int paramInt)
   {
-    this.Br = paramInt;
-    if (this.Bt != null)
+    this.Dg = paramInt;
+    if (this.Di != null)
     {
-      this.Bt.setColor(ColorStateList.valueOf(paramInt));
+      this.Di.setColor(ColorStateList.valueOf(paramInt));
       return;
     }
-    if ((this.Br != -1) && (!isInEditMode()))
+    if ((this.Dg != -1) && (!isInEditMode()))
     {
-      this.Bt = new RippleDrawable(ColorStateList.valueOf(paramInt), this.Bs, this.Bs);
-      super.setBackgroundDrawable(this.Bt);
+      this.Di = new RippleDrawable(ColorStateList.valueOf(paramInt), this.Dh, this.Dh);
+      super.setBackgroundDrawable(this.Di);
       return;
     }
-    this.Bt = null;
-    super.setBackgroundDrawable(this.Bs);
+    this.Di = null;
+    super.setBackgroundDrawable(this.Dh);
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.Bu != null) && (this.Bu.isStateful()))
+    if ((this.Dj != null) && (this.Dj.isStateful()))
     {
-      this.Bs.getPaint().setColor(this.Bu.getColorForState(getDrawableState(), this.Bu.getDefaultColor()));
-      this.Bs.invalidateSelf();
+      this.Dh.getPaint().setColor(this.Dj.getColorForState(getDrawableState(), this.Dj.getDefaultColor()));
+      this.Dh.invalidateSelf();
     }
   }
   
-  public final Drawable eR()
+  public final Drawable fh()
   {
-    return this.Bv;
+    return this.Dk;
   }
   
-  public final int eS()
+  public final int fi()
   {
-    return this.Bx;
+    return this.Dm;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.Bv != null) {
-      this.Bv.draw(paramCanvas);
+    if (this.Dk != null) {
+      this.Dk.draw(paramCanvas);
     }
   }
   
@@ -163,17 +163,17 @@ public class CircularButton
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     int i;
     int j;
-    if (this.Bv != null)
+    if (this.Dk != null)
     {
-      i = this.Bv.getIntrinsicWidth();
-      j = this.Bv.getIntrinsicHeight();
-      if ((this.Bx != 0) && (d(this.Bv))) {
+      i = this.Dk.getIntrinsicWidth();
+      j = this.Dk.getIntrinsicHeight();
+      if ((this.Dm != 0) && (c(this.Dk))) {
         break label218;
       }
-      paramInt2 = (int)Math.floor(this.Bw / 2 * Bq);
-      paramInt1 = (this.Bw - paramInt2) / 2;
-      if (!d(this.Bv)) {
-        this.Bv.setBounds(paramInt1, paramInt1, paramInt1 + paramInt2, paramInt2 + paramInt1);
+      paramInt2 = (int)Math.floor(this.Dl / 2 * Df);
+      paramInt1 = (this.Dl - paramInt2) / 2;
+      if (!c(this.Dk)) {
+        this.Dk.setBounds(paramInt1, paramInt1, paramInt1 + paramInt2, paramInt2 + paramInt1);
       }
     }
     else
@@ -191,7 +191,7 @@ public class CircularButton
     }
     for (;;)
     {
-      this.Bv.setBounds(paramInt1, paramInt4, paramInt1 + paramInt3, paramInt2 + paramInt4);
+      this.Dk.setBounds(paramInt1, paramInt4, paramInt1 + paramInt3, paramInt2 + paramInt4);
       return;
       float f = i / j;
       if (i > j)
@@ -212,7 +212,7 @@ public class CircularButton
     label218:
     paramInt1 = (int)((paramInt3 - paramInt1 - i) / 2.0F);
     paramInt2 = (int)((paramInt4 - paramInt2 - j) / 2.0F);
-    this.Bv.setBounds(paramInt1, paramInt2, i + paramInt1, j + paramInt2);
+    this.Dk.setBounds(paramInt1, paramInt2, i + paramInt1, j + paramInt2);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -222,25 +222,25 @@ public class CircularButton
     int k = View.MeasureSpec.getMode(paramInt2);
     int i = View.MeasureSpec.getSize(paramInt2);
     if ((j == 1073741824) && (k == 1073741824)) {
-      this.Bw = Math.min(paramInt1, i);
+      this.Dl = Math.min(paramInt1, i);
     }
     for (;;)
     {
-      setMeasuredDimension(this.Bw, this.Bw);
+      setMeasuredDimension(this.Dl, this.Dl);
       return;
       if (j == 1073741824)
       {
-        this.Bw = paramInt1;
+        this.Dl = paramInt1;
       }
       else if (k == 1073741824)
       {
-        this.Bw = i;
+        this.Dl = i;
       }
       else
       {
-        if (d(this.Bv))
+        if (c(this.Dk))
         {
-          paramInt2 = Math.max(this.Bv.getIntrinsicHeight(), this.Bv.getIntrinsicWidth());
+          paramInt2 = Math.max(this.Dk.getIntrinsicHeight(), this.Dk.getIntrinsicWidth());
           label120:
           if ((j != -2147483648) && (k != -2147483648)) {
             break label212;
@@ -252,7 +252,7 @@ public class CircularButton
         }
         for (;;)
         {
-          this.Bw = Math.min(paramInt1, (int)Math.floor(paramInt2 / Bq) * 2);
+          this.Dl = Math.min(paramInt1, (int)Math.floor(paramInt2 / Df) * 2);
           break;
           paramInt2 = (int)Math.ceil(TypedValue.applyDimension(1, 48.0F, getResources().getDisplayMetrics()));
           break label120;
@@ -262,7 +262,7 @@ public class CircularButton
           }
         }
         label212:
-        this.Bw = paramInt2;
+        this.Dl = paramInt2;
       }
     }
   }
@@ -284,33 +284,33 @@ public class CircularButton
   
   public final void setColor(int paramInt)
   {
-    this.Bu = ColorStateList.valueOf(0);
-    this.Bs.getPaint().setColor(this.Bu.getDefaultColor());
+    this.Dj = ColorStateList.valueOf(0);
+    this.Dh.getPaint().setColor(this.Dj.getDefaultColor());
   }
   
   public final void setColor(ColorStateList paramColorStateList)
   {
-    this.Bu = paramColorStateList;
-    this.Bs.getPaint().setColor(this.Bu.getDefaultColor());
+    this.Dj = paramColorStateList;
+    this.Dh.getPaint().setColor(this.Dj.getDefaultColor());
   }
   
   public final void setImageDrawable(Drawable paramDrawable)
   {
-    if (this.Bv != null) {
-      this.Bv.setCallback(null);
+    if (this.Dk != null) {
+      this.Dk.setCallback(null);
     }
-    if (this.Bv != paramDrawable)
+    if (this.Dk != paramDrawable)
     {
-      this.Bv = paramDrawable;
+      this.Dk = paramDrawable;
       requestLayout();
       invalidate();
     }
-    if (this.Bv != null) {
-      this.Bv.setCallback(this);
+    if (this.Dk != null) {
+      this.Dk.setCallback(this);
     }
   }
   
-  public final void u(float paramFloat)
+  public final void v(float paramFloat)
   {
     StateListAnimator localStateListAnimator = new StateListAnimator();
     localStateListAnimator.addState(PRESSED_ENABLED_STATE_SET, c(ObjectAnimator.ofFloat(this, "translationZ", new float[] { paramFloat })));
@@ -321,7 +321,7 @@ public class CircularButton
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (this.Bv == paramDrawable) || (super.verifyDrawable(paramDrawable));
+    return (this.Dk == paramDrawable) || (super.verifyDrawable(paramDrawable));
   }
 }
 

@@ -29,65 +29,80 @@ public class MsfExitReceiver
     ((Time)localObject).setToNow();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("com.tencent.process.exit");
-    localStringBuilder.append(((Time)localObject).year).append(((Time)localObject).month + 1).append(((Time)localObject).monthDay);
+    localStringBuilder.append(((Time)localObject).year);
+    localStringBuilder.append(((Time)localObject).month + 1);
+    localStringBuilder.append(((Time)localObject).monthDay);
     localStringBuilder.append(((Time)localObject).hour);
     if (paramBoolean) {
       localStringBuilder.append(((Time)localObject).minute - 1);
-    }
-    for (;;)
-    {
-      localObject = paramString;
-      if (paramString == null) {
-        localObject = "null";
-      }
-      localStringBuilder.append((String)localObject);
-      paramString = MD5.toMD5(localStringBuilder.toString());
-      return MD5.toMD5(paramString + localStringBuilder.toString());
+    } else {
       localStringBuilder.append(((Time)localObject).minute);
     }
+    localObject = paramString;
+    if (paramString == null) {
+      localObject = "null";
+    }
+    localStringBuilder.append((String)localObject);
+    paramString = MD5.toMD5(localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(localStringBuilder.toString());
+    return MD5.toMD5(((StringBuilder)localObject).toString());
   }
   
   private static boolean isLegalBroadcast(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString1.length() == 0)) {}
-    while ((!paramString1.equals(getLocalVerify(paramString2, false))) && (!paramString1.equals(getLocalVerify(paramString2, true)))) {
-      return false;
+    if (paramString1 != null)
+    {
+      if (paramString1.length() == 0) {
+        return false;
+      }
+      if (!paramString1.equals(getLocalVerify(paramString2, false))) {
+        return paramString1.equals(getLocalVerify(paramString2, true));
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str;
     if ("com.tencent.process.exit".equals(paramIntent.getAction()))
     {
-      str = paramIntent.getExtras().getString("procName");
-      if ((str != null) && (str.equals(BaseApplication.processName))) {
-        break label40;
+      String str = paramIntent.getExtras().getString("procName");
+      if (str != null)
+      {
+        if (!str.equals(BaseApplication.processName)) {
+          return;
+        }
+        if (isLegalBroadcast(paramIntent.getExtras().getString("verify"), str))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramIntent = new StringBuilder();
+            paramIntent.append("recv kill msf broadcast from QQ, sRecvRegister=");
+            paramIntent.append(MsfPullConfigUtil.sRecvRegister);
+            paramIntent.append(", sRecvProxy=");
+            paramIntent.append(MsfPullConfigUtil.sRecvProxy);
+            QLog.d("MsfExitReceiver", 2, paramIntent.toString());
+          }
+          paramContext = paramContext.getSharedPreferences("crashcontrol", 4);
+          int i = paramContext.getInt("countRecvKillMsf", 0);
+          paramContext.edit().putInt("countRecvKillMsf", i + 1).commit();
+          if ((MsfPullConfigUtil.sRecvRegister) || (MsfPullConfigUtil.sRecvProxy))
+          {
+            i = paramContext.getInt("countMsfRealExit", 0);
+            paramContext.edit().putInt("countMsfRealExit", i + 1).commit();
+            System.exit(0);
+          }
+        }
       }
     }
-    label40:
-    do
-    {
-      do
-      {
-        return;
-      } while (!isLegalBroadcast(paramIntent.getExtras().getString("verify"), str));
-      if (QLog.isColorLevel()) {
-        QLog.d("MsfExitReceiver", 2, "recv kill msf broadcast from QQ, sRecvRegister=" + MsfPullConfigUtil.sRecvRegister + ", sRecvProxy=" + MsfPullConfigUtil.sRecvProxy);
-      }
-      paramContext = paramContext.getSharedPreferences("crashcontrol", 4);
-      i = paramContext.getInt("countRecvKillMsf", 0);
-      paramContext.edit().putInt("countRecvKillMsf", i + 1).commit();
-    } while ((!MsfPullConfigUtil.sRecvRegister) && (!MsfPullConfigUtil.sRecvProxy));
-    int i = paramContext.getInt("countMsfRealExit", 0);
-    paramContext.edit().putInt("countMsfRealExit", i + 1).commit();
-    System.exit(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.MsfExitReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -19,11 +19,12 @@ public final class TrackSelectionArray
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (TrackSelectionArray)paramObject;
+      return Arrays.equals(this.trackSelections, paramObject.trackSelections);
     }
-    paramObject = (TrackSelectionArray)paramObject;
-    return Arrays.equals(this.trackSelections, paramObject.trackSelections);
+    return false;
   }
   
   public TrackSelection get(int paramInt)
@@ -39,14 +40,14 @@ public final class TrackSelectionArray
   public int hashCode()
   {
     if (this.hashCode == 0) {
-      this.hashCode = (Arrays.hashCode(this.trackSelections) + 527);
+      this.hashCode = (527 + Arrays.hashCode(this.trackSelections));
     }
     return this.hashCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.TrackSelectionArray
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@color/qcircle_skin_color_bg_default" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="bottom" android:id="@id/peo" android:layout_width="fill_parent" android:layout_height="30.0dip">
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/p_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="其他群友作品" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/p9z" android:layout_width="fill_parent" android:layout_height="@dimen/b2l" android:layout_marginTop="30.0dip" />
+</FrameLayout>

@@ -21,39 +21,48 @@ final class lq$1
   
   public final void a(MotionEvent paramMotionEvent)
   {
-    if ((this.a.a == null) || (this.a.a.az == null) || (!this.c) || (this.b == null)) {}
-    do
+    if ((this.a.a != null) && (this.a.a.az != null) && (this.c))
     {
-      return;
-      TencentMap.OnMarkerDragListener localOnMarkerDragListener = this.b.getOnDragListener();
-      switch (paramMotionEvent.getAction())
-      {
-      case 0: 
-      default: 
+      Object localObject = this.b;
+      if (localObject == null) {
         return;
-      case 1: 
-      case 3: 
-      case 4: 
+      }
+      localObject = ((Marker)localObject).getOnDragListener();
+      int i = paramMotionEvent.getAction();
+      if (i != 0)
+      {
+        if (i != 1) {
+          if (i != 2)
+          {
+            if ((i == 3) || (i == 4)) {}
+          }
+          else
+          {
+            i = (int)paramMotionEvent.getX();
+            int j = (int)paramMotionEvent.getY();
+            paramMotionEvent = new DoublePoint(i, j);
+            paramMotionEvent = fz.a(this.a.a.az.b.h.a(paramMotionEvent));
+            this.b.setPosition(paramMotionEvent);
+            if (localObject != null) {
+              ((TencentMap.OnMarkerDragListener)localObject).onMarkerDrag(this.b);
+            }
+            if (this.a.d == null) {
+              return;
+            }
+            this.a.d.onMarkerDrag(this.b);
+            return;
+          }
+        }
         this.c = false;
-        if (localOnMarkerDragListener != null) {
-          localOnMarkerDragListener.onMarkerDragEnd(this.b);
+        if (localObject != null) {
+          ((TencentMap.OnMarkerDragListener)localObject).onMarkerDragEnd(this.b);
         }
         if (this.a.d != null) {
           this.a.d.onMarkerDragEnd(this.b);
         }
         this.b = null;
-        return;
       }
-      int i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      paramMotionEvent = new DoublePoint(i, j);
-      paramMotionEvent = fz.a(this.a.a.az.b.h.a(paramMotionEvent));
-      this.b.setPosition(paramMotionEvent);
-      if (localOnMarkerDragListener != null) {
-        localOnMarkerDragListener.onMarkerDrag(this.b);
-      }
-    } while (this.a.d == null);
-    this.a.d.onMarkerDrag(this.b);
+    }
   }
   
   public final void a(String paramString)
@@ -62,28 +71,28 @@ final class lq$1
     {
       this.b = null;
       this.c = false;
+      return;
     }
-    do
+    this.b = this.a.o(paramString);
+    paramString = this.b;
+    if (paramString != null)
     {
-      do
-      {
-        return;
-        this.b = this.a.o(paramString);
-      } while (this.b == null);
-      if (!this.b.isDraggable())
+      if (!paramString.isDraggable())
       {
         this.b = null;
         this.c = false;
         return;
       }
       this.c = true;
-    } while (this.a.d == null);
-    this.a.d.onMarkerDragStart(this.b);
+      if (this.a.d != null) {
+        this.a.d.onMarkerDragStart(this.b);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.lq.1
  * JD-Core Version:    0.7.0.1
  */

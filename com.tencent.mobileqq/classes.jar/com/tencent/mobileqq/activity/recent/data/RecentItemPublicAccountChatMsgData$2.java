@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahag;
-import ahah;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 class RecentItemPublicAccountChatMsgData$2
   implements Runnable
 {
-  RecentItemPublicAccountChatMsgData$2(RecentItemPublicAccountChatMsgData paramRecentItemPublicAccountChatMsgData, QQAppInterface paramQQAppInterface, ahah paramahah) {}
-  
   public void run()
   {
-    ahag.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.mUser.uin, this.jdField_a_of_type_Ahah, null);
+    this.a.getMessageFacade().a(this.b.frienduin, this.b.istroop, this.b.uniseq, "extLong", Integer.valueOf(this.b.extLong));
   }
 }
 

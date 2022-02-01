@@ -1,59 +1,65 @@
 package com.tencent.biz.subscribe;
 
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import cooperation.qzone.util.QZLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import wxe;
 
-public final class SubscribeUtils$2
+final class SubscribeUtils$2
   implements Runnable
 {
-  public SubscribeUtils$2(String paramString) {}
+  SubscribeUtils$2(String paramString) {}
   
   public void run()
   {
-    try
+    for (;;)
     {
-      if (TextUtils.isEmpty(this.a)) {
-        return;
-      }
-      localURL = new URL(this.a);
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)localURL.openConnection();
-      localHttpURLConnection.setRequestMethod("GET");
-      localHttpURLConnection.setConnectTimeout(10000);
-      localHttpURLConnection.setReadTimeout(10000);
-      localHttpURLConnection.setUseCaches(false);
-      localHttpURLConnection.connect();
-      i = localHttpURLConnection.getResponseCode();
-      if (i != 200) {
-        break label176;
-      }
-      bool = true;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
       {
-        URL localURL;
-        int i;
-        wxe.c("SubscribeUtils", "report exception" + localException.toString());
-        if (!QZLog.isColorLevel()) {
-          break;
+        if (TextUtils.isEmpty(this.a)) {
+          return;
         }
-        QZLog.w("SubscribeUtils", 2, new Object[] { localException.toString() });
-        return;
-        label176:
-        boolean bool = false;
+        URL localURL = new URL(this.a);
+        localObject = (HttpURLConnection)localURL.openConnection();
+        ((HttpURLConnection)localObject).setRequestMethod("GET");
+        ((HttpURLConnection)localObject).setConnectTimeout(10000);
+        ((HttpURLConnection)localObject).setReadTimeout(10000);
+        ((HttpURLConnection)localObject).setUseCaches(false);
+        ((HttpURLConnection)localObject).connect();
+        int i = ((HttpURLConnection)localObject).getResponseCode();
+        if (i == 200)
+        {
+          bool = true;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("report rspCode ");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append("， request thirdparty");
+          ((StringBuilder)localObject).append(bool);
+          ((StringBuilder)localObject).append(" url =");
+          ((StringBuilder)localObject).append(localURL);
+          SLog.c("SubscribeUtils", ((StringBuilder)localObject).toString());
+          return;
+        }
       }
+      catch (Exception localException)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("report exception");
+        ((StringBuilder)localObject).append(localException.toString());
+        SLog.c("SubscribeUtils", ((StringBuilder)localObject).toString());
+        if (QZLog.isColorLevel()) {
+          QZLog.w("SubscribeUtils", 2, new Object[] { localException.toString() });
+        }
+        return;
+      }
+      boolean bool = false;
     }
-    wxe.c("SubscribeUtils", "report rspCode " + i + "， request thirdparty" + bool + " url =" + localURL);
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeUtils.2
  * JD-Core Version:    0.7.0.1
  */

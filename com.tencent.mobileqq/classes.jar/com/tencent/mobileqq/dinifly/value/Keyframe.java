@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.dinifly.value;
 
 import android.graphics.PointF;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
 import android.view.animation.Interpolator;
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 
 public class Keyframe<T>
@@ -29,6 +29,10 @@ public class Keyframe<T>
   public final T startValue;
   private float startValueFloat = -3987645.8F;
   private int startValueInt = 784923401;
+  @Nullable
+  public final Interpolator xInterpolator;
+  @Nullable
+  public final Interpolator yInterpolator;
   
   public Keyframe(LottieComposition paramLottieComposition, @Nullable T paramT1, @Nullable T paramT2, @Nullable Interpolator paramInterpolator, float paramFloat, @Nullable Float paramFloat1)
   {
@@ -36,6 +40,32 @@ public class Keyframe<T>
     this.startValue = paramT1;
     this.endValue = paramT2;
     this.interpolator = paramInterpolator;
+    this.xInterpolator = null;
+    this.yInterpolator = null;
+    this.startFrame = paramFloat;
+    this.endFrame = paramFloat1;
+  }
+  
+  public Keyframe(LottieComposition paramLottieComposition, @Nullable T paramT1, @Nullable T paramT2, @Nullable Interpolator paramInterpolator1, @Nullable Interpolator paramInterpolator2, float paramFloat, @Nullable Float paramFloat1)
+  {
+    this.composition = paramLottieComposition;
+    this.startValue = paramT1;
+    this.endValue = paramT2;
+    this.interpolator = null;
+    this.xInterpolator = paramInterpolator1;
+    this.yInterpolator = paramInterpolator2;
+    this.startFrame = paramFloat;
+    this.endFrame = paramFloat1;
+  }
+  
+  protected Keyframe(LottieComposition paramLottieComposition, @Nullable T paramT1, @Nullable T paramT2, @Nullable Interpolator paramInterpolator1, @Nullable Interpolator paramInterpolator2, @Nullable Interpolator paramInterpolator3, float paramFloat, @Nullable Float paramFloat1)
+  {
+    this.composition = paramLottieComposition;
+    this.startValue = paramT1;
+    this.endValue = paramT2;
+    this.interpolator = paramInterpolator1;
+    this.xInterpolator = paramInterpolator2;
+    this.yInterpolator = paramInterpolator3;
     this.startFrame = paramFloat;
     this.endFrame = paramFloat1;
   }
@@ -46,6 +76,8 @@ public class Keyframe<T>
     this.startValue = paramT;
     this.endValue = paramT;
     this.interpolator = null;
+    this.xInterpolator = null;
+    this.yInterpolator = null;
     this.startFrame = 1.4E-45F;
     this.endFrame = Float.valueOf(3.4028235E+38F);
   }
@@ -61,14 +93,13 @@ public class Keyframe<T>
       return 1.0F;
     }
     if (this.endProgress == 1.4E-45F) {
-      if (this.endFrame != null) {
-        break label36;
+      if (this.endFrame == null) {
+        this.endProgress = 1.0F;
+      } else {
+        this.endProgress = (getStartProgress() + (this.endFrame.floatValue() - this.startFrame) / this.composition.getDurationFrames());
       }
     }
-    label36:
-    for (this.endProgress = 1.0F;; this.endProgress = (getStartProgress() + (this.endFrame.floatValue() - this.startFrame) / this.composition.getDurationFrames())) {
-      return this.endProgress;
-    }
+    return this.endProgress;
   }
   
   public float getEndValueFloat()
@@ -89,11 +120,12 @@ public class Keyframe<T>
   
   public float getStartProgress()
   {
-    if (this.composition == null) {
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition == null) {
       return 0.0F;
     }
     if (this.startProgress == 1.4E-45F) {
-      this.startProgress = ((this.startFrame - this.composition.getStartFrame()) / this.composition.getDurationFrames());
+      this.startProgress = ((this.startFrame - localLottieComposition.getStartFrame()) / this.composition.getDurationFrames());
     }
     return this.startProgress;
   }
@@ -116,12 +148,24 @@ public class Keyframe<T>
   
   public boolean isStatic()
   {
-    return this.interpolator == null;
+    return (this.interpolator == null) && (this.xInterpolator == null) && (this.yInterpolator == null);
   }
   
   public String toString()
   {
-    return "Keyframe{startValue=" + this.startValue + ", endValue=" + this.endValue + ", startFrame=" + this.startFrame + ", endFrame=" + this.endFrame + ", interpolator=" + this.interpolator + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Keyframe{startValue=");
+    localStringBuilder.append(this.startValue);
+    localStringBuilder.append(", endValue=");
+    localStringBuilder.append(this.endValue);
+    localStringBuilder.append(", startFrame=");
+    localStringBuilder.append(this.startFrame);
+    localStringBuilder.append(", endFrame=");
+    localStringBuilder.append(this.endFrame);
+    localStringBuilder.append(", interpolator=");
+    localStringBuilder.append(this.interpolator);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

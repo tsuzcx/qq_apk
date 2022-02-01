@@ -9,57 +9,57 @@ import android.widget.FrameLayout.LayoutParams;
 public class WearableFrameLayout$LayoutParams
   extends FrameLayout.LayoutParams
 {
-  public int EB = -1;
-  public int EC;
-  public int ED;
-  public int EE;
-  public int EF;
-  public int EG;
-  public int EH;
+  public int Gq = -1;
+  public int Gr;
+  public int Gs;
+  public int Gt;
+  public int Gu;
+  public int Gv;
+  public int Gw;
   
   public WearableFrameLayout$LayoutParams()
   {
     super(-1, -1);
-    this.EC = -1;
-    this.ED = -1;
+    this.Gr = -1;
+    this.Gs = -1;
   }
   
   public WearableFrameLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.yi);
-    this.EB = paramContext.getInt(k.yn, this.gravity);
-    this.EC = paramContext.getLayoutDimension(k.yo, this.width);
-    this.ED = paramContext.getLayoutDimension(k.yp, this.height);
-    int i = paramContext.getDimensionPixelSize(k.yq, -1);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.zX);
+    this.Gq = paramContext.getInt(k.Ac, this.gravity);
+    this.Gr = paramContext.getLayoutDimension(k.Ad, this.width);
+    this.Gs = paramContext.getLayoutDimension(k.Ae, this.height);
+    int i = paramContext.getDimensionPixelSize(k.Af, -1);
     if (i >= 0)
     {
-      this.EH = i;
-      this.EF = i;
-      this.EG = i;
-      this.EE = i;
+      this.Gw = i;
+      this.Gu = i;
+      this.Gv = i;
+      this.Gt = i;
     }
     for (;;)
     {
       paramContext.recycle();
       return;
-      this.EE = paramContext.getDimensionPixelSize(k.yr, this.leftMargin);
-      this.EF = paramContext.getDimensionPixelSize(k.ys, this.topMargin);
-      this.EG = paramContext.getDimensionPixelSize(k.yt, this.rightMargin);
-      this.EH = paramContext.getDimensionPixelSize(k.yu, this.bottomMargin);
+      this.Gt = paramContext.getDimensionPixelSize(k.Ag, this.leftMargin);
+      this.Gu = paramContext.getDimensionPixelSize(k.Ah, this.topMargin);
+      this.Gv = paramContext.getDimensionPixelSize(k.Ai, this.rightMargin);
+      this.Gw = paramContext.getDimensionPixelSize(k.Aj, this.bottomMargin);
     }
   }
   
   public WearableFrameLayout$LayoutParams(LayoutParams paramLayoutParams)
   {
     super(paramLayoutParams);
-    this.EC = paramLayoutParams.EC;
-    this.ED = paramLayoutParams.ED;
-    this.EB = paramLayoutParams.EB;
-    this.EE = paramLayoutParams.EE;
-    this.EF = paramLayoutParams.EF;
-    this.EG = paramLayoutParams.EG;
-    this.EH = paramLayoutParams.EH;
+    this.Gr = paramLayoutParams.Gr;
+    this.Gs = paramLayoutParams.Gs;
+    this.Gq = paramLayoutParams.Gq;
+    this.Gt = paramLayoutParams.Gt;
+    this.Gu = paramLayoutParams.Gu;
+    this.Gv = paramLayoutParams.Gv;
+    this.Gw = paramLayoutParams.Gw;
   }
 }
 

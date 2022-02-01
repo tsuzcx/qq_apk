@@ -18,9 +18,16 @@ public final class DebugMetadataKt
   
   private static final void checkDebugMetadataVersion(int paramInt1, int paramInt2)
   {
-    if (paramInt2 > paramInt1) {
-      throw ((Throwable)new IllegalStateException(("Debug metadata version mismatch. Expected: " + paramInt1 + ", got " + paramInt2 + ". Please update the Kotlin standard library.").toString()));
+    if (paramInt2 <= paramInt1) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Debug metadata version mismatch. Expected: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", got ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(". Please update the Kotlin standard library.");
+    throw ((Throwable)new IllegalStateException(localStringBuilder.toString().toString()));
   }
   
   private static final DebugMetadata getDebugMetadataAnnotation(@NotNull BaseContinuationImpl paramBaseContinuationImpl)
@@ -41,13 +48,20 @@ public final class DebugMetadataKt
         paramBaseContinuationImpl = null;
       }
       paramBaseContinuationImpl = (Integer)paramBaseContinuationImpl;
-      if (paramBaseContinuationImpl != null) {}
-      for (int i = paramBaseContinuationImpl.intValue();; i = 0) {
-        return i - 1;
+      int i;
+      if (paramBaseContinuationImpl != null) {
+        i = paramBaseContinuationImpl.intValue();
+      } else {
+        i = 0;
       }
-      return -1;
+      return i - 1;
     }
-    catch (Exception paramBaseContinuationImpl) {}
+    catch (Exception paramBaseContinuationImpl)
+    {
+      label61:
+      break label61;
+    }
+    return -1;
   }
   
   @SinceKotlin(version="1.3")
@@ -57,11 +71,10 @@ public final class DebugMetadataKt
   {
     Intrinsics.checkParameterIsNotNull(paramBaseContinuationImpl, "$this$getSpilledVariableFieldMapping");
     DebugMetadata localDebugMetadata = getDebugMetadataAnnotation(paramBaseContinuationImpl);
-    ArrayList localArrayList;
     if (localDebugMetadata != null)
     {
       checkDebugMetadataVersion(1, localDebugMetadata.v());
-      localArrayList = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
       int j = getLabel(paramBaseContinuationImpl);
       paramBaseContinuationImpl = localDebugMetadata.i();
       int k = paramBaseContinuationImpl.length;
@@ -75,13 +88,13 @@ public final class DebugMetadataKt
         }
         i += 1;
       }
-    }
-    return null;
-    paramBaseContinuationImpl = ((Collection)localArrayList).toArray(new String[0]);
-    if (paramBaseContinuationImpl == null) {
+      paramBaseContinuationImpl = ((Collection)localArrayList).toArray(new String[0]);
+      if (paramBaseContinuationImpl != null) {
+        return (String[])paramBaseContinuationImpl;
+      }
       throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
     }
-    return (String[])paramBaseContinuationImpl;
+    return null;
   }
   
   @SinceKotlin(version="1.3")
@@ -91,34 +104,36 @@ public final class DebugMetadataKt
   {
     Intrinsics.checkParameterIsNotNull(paramBaseContinuationImpl, "$this$getStackTraceElementImpl");
     DebugMetadata localDebugMetadata = getDebugMetadataAnnotation(paramBaseContinuationImpl);
-    int i;
     if (localDebugMetadata != null)
     {
       checkDebugMetadataVersion(1, localDebugMetadata.v());
-      i = getLabel(paramBaseContinuationImpl);
-      if (i >= 0) {
-        break label79;
+      int i = getLabel(paramBaseContinuationImpl);
+      if (i < 0) {
+        i = -1;
+      } else {
+        i = localDebugMetadata.l()[i];
       }
-      i = -1;
       paramBaseContinuationImpl = ModuleNameRetriever.INSTANCE.getModuleName(paramBaseContinuationImpl);
-      if (paramBaseContinuationImpl != null) {
-        break label91;
+      if (paramBaseContinuationImpl == null)
+      {
+        paramBaseContinuationImpl = localDebugMetadata.c();
       }
-    }
-    label79:
-    label91:
-    for (paramBaseContinuationImpl = localDebugMetadata.c();; paramBaseContinuationImpl = paramBaseContinuationImpl + '/' + localDebugMetadata.c())
-    {
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramBaseContinuationImpl);
+        localStringBuilder.append('/');
+        localStringBuilder.append(localDebugMetadata.c());
+        paramBaseContinuationImpl = localStringBuilder.toString();
+      }
       return new StackTraceElement(paramBaseContinuationImpl, localDebugMetadata.m(), localDebugMetadata.f(), i);
-      return null;
-      i = localDebugMetadata.l()[i];
-      break;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.jvm.internal.DebugMetadataKt
  * JD-Core Version:    0.7.0.1
  */

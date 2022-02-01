@@ -1,68 +1,88 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.ipcall.a.d.g;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.ms;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.plugin.ipcall.model.d;
+import com.tencent.mm.plugin.ipcall.model.e.g;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 
 public class IPCallAddressUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.am.h
 {
-  private ListView nRL;
-  private e nRM;
-  private int nRN;
-  private boolean nRO;
-  private boolean nRP;
-  private boolean nRQ;
-  private com.tencent.mm.sdk.b.c nRR;
-  private Runnable nRS;
-  private View nRz;
+  private ListView JLA;
+  private e JLB;
+  private int JLC;
+  private boolean JLD;
+  private boolean JLE;
+  private boolean JLF;
+  private IListener JLG;
+  private Runnable JLH;
+  private View JLo;
   
   public IPCallAddressUI()
   {
-    AppMethodBeat.i(22055);
-    this.nRM = null;
-    this.nRN = 0;
-    this.nRO = false;
-    this.nRP = true;
-    this.nRQ = false;
-    this.nRR = new IPCallAddressUI.1(this);
-    this.nRS = new IPCallAddressUI.3(this);
-    AppMethodBeat.o(22055);
+    AppMethodBeat.i(25671);
+    this.JLB = null;
+    this.JLC = 0;
+    this.JLD = false;
+    this.JLE = true;
+    this.JLF = false;
+    this.JLG = new IListener(f.hfK) {};
+    this.JLH = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(25668);
+        com.tencent.mm.plugin.ipcall.model.a.fRa().a(null, true);
+        AppMethodBeat.o(25668);
+      }
+    };
+    AppMethodBeat.o(25671);
   }
   
-  private void bKf()
+  private void fSh()
   {
-    AppMethodBeat.i(22057);
-    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.READ_CONTACTS", 48, null, null);
-    ab.i("MicroMsg.IPCallAddressUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY() });
+    AppMethodBeat.i(25673);
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.READ_CONTACTS", 48, null);
+    Log.i("MicroMsg.IPCallAddressUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack() });
     if (bool) {
-      com.tencent.mm.sdk.g.d.post(this.nRS, "IPCallAddressUI_LoadSystemAddressBook");
+      ThreadPool.post(this.JLH, "IPCallAddressUI_LoadSystemAddressBook");
     }
-    AppMethodBeat.o(22057);
+    AppMethodBeat.o(25673);
   }
   
   public int getForceOrientation()
@@ -72,185 +92,221 @@ public class IPCallAddressUI
   
   public int getLayoutId()
   {
-    return 2130969921;
+    return R.i.gkF;
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(22062);
-    if (this.nRN == 1)
+    AppMethodBeat.i(25678);
+    if (this.JLC == 1)
     {
-      com.tencent.mm.plugin.ipcall.b.gmO.p(new Intent(), this);
-      AppMethodBeat.o(22062);
+      com.tencent.mm.plugin.ipcall.b.pFn.n(new Intent(), this);
+      AppMethodBeat.o(25678);
       return;
     }
     super.onBackPressed();
-    AppMethodBeat.o(22062);
+    AppMethodBeat.o(25678);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(22056);
+    AppMethodBeat.i(25672);
     super.onCreate(paramBundle);
-    aw.aaz();
-    if (((Boolean)com.tencent.mm.model.c.Ru().get(ac.a.yAF, Boolean.FALSE)).booleanValue())
+    bh.bCz();
+    if (((Boolean)c.ban().get(at.a.acLb, Boolean.FALSE)).booleanValue())
     {
-      aw.aaz();
-      com.tencent.mm.model.c.Ru().set(ac.a.yAF, Boolean.FALSE);
-      paramBundle = new Intent();
-      paramBundle.setClass(getContext(), IPCallAcitivityUI.class);
-      getContext().startActivity(paramBundle);
-      overridePendingTransition(2131034266, 2131034263);
-      this.nRP = false;
+      bh.bCz();
+      c.ban().set(at.a.acLb, Boolean.FALSE);
+      localObject = new Intent();
+      ((Intent)localObject).setClass(getContext(), IPCallAcitivityUI.class);
+      paramBundle = getContext();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/ipcall/ui/IPCallAddressUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramBundle.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramBundle, "com/tencent/mm/plugin/ipcall/ui/IPCallAddressUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      overridePendingTransition(R.a.slide_right_in, R.a.slide_left_out);
+      this.JLE = false;
     }
-    setBackBtn(new IPCallAddressUI.2(this));
-    if (this.nRP)
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      this.nRQ = true;
-      bKf();
-    }
-    aw.aaz();
-    this.nRO = ((Boolean)com.tencent.mm.model.c.Ru().get(ac.a.yAb, Boolean.TRUE)).booleanValue();
-    setMMTitle(2131300847);
-    this.nRL = ((ListView)findViewById(2131825168));
-    this.nRz = findViewById(2131825169);
-    this.nRM = new e(this, this.nRL, this.nRz);
-    paramBundle = this.nRM;
-    paramBundle.nRy = new h(paramBundle.nRA);
-    ViewGroup localViewGroup = (ViewGroup)View.inflate(paramBundle.nRA, 2130969933, null);
-    paramBundle.nRx.addHeaderView(localViewGroup, null, false);
-    paramBundle.nRx.setAdapter(paramBundle.nRy);
-    paramBundle.nRC = ((TextView)localViewGroup.findViewById(2131825253));
-    paramBundle.nRD = ((TextView)localViewGroup.findViewById(2131825254));
-    paramBundle.nRE = ((LinearLayout)localViewGroup.findViewById(2131825255));
-    paramBundle.nRF = ((TextView)localViewGroup.findViewById(2131825257));
-    paramBundle.nRG = ((ImageView)localViewGroup.findViewById(2131825256));
-    localViewGroup.findViewById(2131825252).setOnClickListener(new e.1(paramBundle));
-    localViewGroup.findViewById(2131825259).setOnClickListener(new e.2(paramBundle));
-    localViewGroup.findViewById(2131825260).setOnClickListener(new e.3(paramBundle));
-    paramBundle.nRx.setOnItemClickListener(new e.4(paramBundle));
-    paramBundle.nRx.setOnItemLongClickListener(new e.5(paramBundle));
-    aw.aaz();
-    if (((Boolean)com.tencent.mm.model.c.Ru().get(ac.a.yAb, Boolean.TRUE)).booleanValue())
-    {
-      com.tencent.mm.plugin.ipcall.a.d.bJd().iy(true);
-      aw.aaz();
-      com.tencent.mm.model.c.Ru().set(ac.a.yAb, Boolean.FALSE);
-      if (paramBundle.nRy.getCount() <= 0) {
-        break label548;
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(25667);
+        if (IPCallAddressUI.b(IPCallAddressUI.this) == 1) {
+          com.tencent.mm.plugin.ipcall.b.pFn.n(new Intent(), IPCallAddressUI.this);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(25667);
+          return true;
+          IPCallAddressUI.this.finish();
+        }
       }
-      paramBundle.nRz.setVisibility(8);
+    });
+    if (this.JLE)
+    {
+      this.JLF = true;
+      fSh();
+    }
+    bh.bCz();
+    this.JLD = ((Boolean)c.ban().get(at.a.acKx, Boolean.TRUE)).booleanValue();
+    setMMTitle(R.l.ip_call_func_name);
+    this.JLA = ((ListView)findViewById(R.h.fqB));
+    this.JLo = findViewById(R.h.fqP);
+    this.JLB = new e(this, this.JLA, this.JLo);
+    paramBundle = this.JLB;
+    paramBundle.JLn = new h(paramBundle.JLp);
+    Object localObject = (ViewGroup)View.inflate(paramBundle.JLp, R.i.gkR, null);
+    paramBundle.JLm.addHeaderView((View)localObject, null, false);
+    paramBundle.JLm.setAdapter(paramBundle.JLn);
+    paramBundle.JLr = ((TextView)((ViewGroup)localObject).findViewById(R.h.fpT));
+    paramBundle.JLs = ((TextView)((ViewGroup)localObject).findViewById(R.h.fpU));
+    paramBundle.JLt = ((LinearLayout)((ViewGroup)localObject).findViewById(R.h.fpR));
+    paramBundle.JLu = ((TextView)((ViewGroup)localObject).findViewById(R.h.fpS));
+    paramBundle.JLv = ((ImageView)((ViewGroup)localObject).findViewById(R.h.gbi));
+    ((ViewGroup)localObject).findViewById(R.h.fpV).setOnClickListener(new e.1(paramBundle));
+    ((ViewGroup)localObject).findViewById(R.h.fDh).setOnClickListener(new e.2(paramBundle));
+    ((ViewGroup)localObject).findViewById(R.h.fFO).setOnClickListener(new e.3(paramBundle));
+    paramBundle.JLm.setOnItemClickListener(new e.4(paramBundle));
+    paramBundle.JLm.setOnItemLongClickListener(new e.5(paramBundle));
+    bh.bCz();
+    if (((Boolean)c.ban().get(at.a.acKx, Boolean.TRUE)).booleanValue())
+    {
+      d.fRf().xB(true);
+      bh.bCz();
+      c.ban().set(at.a.acKx, Boolean.FALSE);
+      if (paramBundle.JLn.getCount() <= 0) {
+        break label608;
+      }
+      paramBundle.JLo.setVisibility(8);
     }
     for (;;)
     {
-      paramBundle.bKe();
-      paramBundle.bKd();
-      paramBundle.nRB = true;
-      aw.Rc().a(257, this);
-      a.ymk.c(this.nRR);
-      this.nRN = getIntent().getIntExtra("IPCallAddressUI_KFrom", 0);
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(257L, 0L, 1L, true);
-      AppMethodBeat.o(22056);
+      paramBundle.fSg();
+      paramBundle.fSf();
+      paramBundle.JLq = true;
+      bh.aZW().a(257, this);
+      this.JLG.alive();
+      this.JLC = getIntent().getIntExtra("IPCallAddressUI_KFrom", 0);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(257L, 0L, 1L, true);
+      AppMethodBeat.o(25672);
       return;
-      com.tencent.mm.plugin.ipcall.a.d.bJd().iy(false);
+      d.fRf().xB(false);
       break;
-      label548:
-      paramBundle.nRz.setVisibility(0);
+      label608:
+      paramBundle.JLo.setVisibility(0);
     }
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    AppMethodBeat.i(22061);
-    ab.d("MicroMsg.IPCallAddressUI", "onCreateOptionsMenu");
+    AppMethodBeat.i(25677);
+    Log.d("MicroMsg.IPCallAddressUI", "onCreateOptionsMenu");
     boolean bool = super.onCreateOptionsMenu(paramMenu);
-    AppMethodBeat.o(22061);
+    AppMethodBeat.o(25677);
     return bool;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(22058);
+    AppMethodBeat.i(25674);
     super.onDestroy();
-    if (this.nRM != null)
+    if (this.JLB != null)
     {
-      Object localObject = this.nRM;
-      ((e)localObject).nRx.setOnItemClickListener(null);
-      ((e)localObject).nRx.setOnItemLongClickListener(null);
-      localObject = ((e)localObject).nRy;
-      o.acQ().b((d.a)localObject);
+      Object localObject = this.JLB;
+      ((e)localObject).JLm.setOnItemClickListener(null);
+      ((e)localObject).JLm.setOnItemLongClickListener(null);
+      localObject = ((e)localObject).JLn;
+      com.tencent.mm.modelavatar.q.bFp().b((AvatarStorage.a)localObject);
     }
-    aw.Rc().b(257, this);
-    a.ymk.d(this.nRR);
-    AppMethodBeat.o(22058);
+    bh.aZW().b(257, this);
+    this.JLG.dead();
+    AppMethodBeat.o(25674);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(22063);
+    AppMethodBeat.i(25679);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ab.i("MicroMsg.IPCallAddressUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
-      AppMethodBeat.o(22063);
+      Log.i("MicroMsg.IPCallAddressUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      AppMethodBeat.o(25679);
       return;
     }
-    ab.i("MicroMsg.IPCallAddressUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    Log.i("MicroMsg.IPCallAddressUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(22063);
+      AppMethodBeat.o(25679);
       return;
-      if ((paramArrayOfInt[0] != 0) && (this.nRO))
+      if ((paramArrayOfInt[0] != 0) && (this.JLD))
       {
-        this.nRO = false;
-        com.tencent.mm.ui.base.h.a(this, getString(2131302069), getString(2131302083), getString(2131300996), getString(2131297837), false, new IPCallAddressUI.4(this), new IPCallAddressUI.5(this));
+        this.JLD = false;
+        k.a(this, getString(R.l.permission_contacts_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(25669);
+            paramAnonymousDialogInterface.dismiss();
+            com.tencent.mm.pluginsdk.permission.b.lx(IPCallAddressUI.this.getContext());
+            AppMethodBeat.o(25669);
+          }
+        }, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(25670);
+            paramAnonymousDialogInterface.dismiss();
+            AppMethodBeat.o(25670);
+          }
+        });
       }
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(22059);
+    AppMethodBeat.i(25675);
     super.onResume();
     e locale;
-    if (this.nRM != null)
+    if (this.JLB != null)
     {
-      locale = this.nRM;
-      if ((locale.nRy != null) && (!locale.nRB))
+      locale = this.JLB;
+      if ((locale.JLn != null) && (!locale.JLq))
       {
-        locale.nRy.notifyDataSetChanged();
-        if (locale.nRy.getCount() <= 0) {
+        locale.JLn.notifyDataSetChanged();
+        if (locale.JLn.getCount() <= 0) {
           break label101;
         }
-        locale.nRz.setVisibility(8);
+        locale.JLo.setVisibility(8);
       }
     }
     for (;;)
     {
-      locale.nRB = false;
+      locale.JLq = false;
       supportInvalidateOptionsMenu();
-      com.tencent.mm.plugin.ipcall.a.f.b.bJQ().iJ(true);
-      if (!this.nRQ)
+      com.tencent.mm.plugin.ipcall.model.g.b.fRS().xL(true);
+      if (!this.JLF)
       {
-        this.nRQ = true;
-        bKf();
+        this.JLF = true;
+        fSh();
       }
-      AppMethodBeat.o(22059);
+      AppMethodBeat.o(25675);
       return;
       label101:
-      locale.nRz.setVisibility(0);
+      locale.JLo.setVisibility(0);
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(22060);
-    if (((paramm instanceof g)) && (paramInt1 == 0) && (paramInt2 == 0) && (this.nRM != null)) {
-      this.nRM.bKe();
+    AppMethodBeat.i(25676);
+    if (((paramp instanceof g)) && (paramInt1 == 0) && (paramInt2 == 0) && (this.JLB != null)) {
+      this.JLB.fSg();
     }
-    AppMethodBeat.o(22060);
+    AppMethodBeat.o(25676);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -261,7 +317,7 @@ public class IPCallAddressUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallAddressUI
  * JD-Core Version:    0.7.0.1
  */

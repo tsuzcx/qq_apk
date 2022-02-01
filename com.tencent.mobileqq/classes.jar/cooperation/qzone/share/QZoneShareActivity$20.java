@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
 import android.content.res.Resources;
-import bety;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$20
@@ -11,13 +11,15 @@ class QZoneShareActivity$20
   
   public void run()
   {
-    if (QZoneShareActivity.a(this.this$0) == null) {
-      QZoneShareActivity.a(this.this$0, new bety(this.this$0, this.this$0.getResources().getDimensionPixelSize(2131298914)));
+    if (QZoneShareActivity.access$1800(this.this$0) == null)
+    {
+      QZoneShareActivity localQZoneShareActivity = this.this$0;
+      QZoneShareActivity.access$1802(localQZoneShareActivity, new QQProgressDialog(localQZoneShareActivity, localQZoneShareActivity.getResources().getDimensionPixelSize(2131299920)));
     }
-    QZoneShareActivity.a(this.this$0).c(this.a);
+    QZoneShareActivity.access$1800(this.this$0).c(this.val$resId);
     try
     {
-      QZoneShareActivity.a(this.this$0).show();
+      QZoneShareActivity.access$1800(this.this$0).show();
       return;
     }
     catch (Exception localException)
@@ -28,7 +30,7 @@ class QZoneShareActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.20
  * JD-Core Version:    0.7.0.1
  */

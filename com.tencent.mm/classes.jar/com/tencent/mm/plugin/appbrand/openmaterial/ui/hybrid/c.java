@@ -1,0 +1,15 @@
+package com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid;
+
+import kotlin.Metadata;
+
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/ILaunchWeAppDelegate;", "", "launch", "", "appId", "", "versionType", "", "enterPath", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface c
+{
+  public abstract void E(String paramString1, int paramInt, String paramString2);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.c
+ * JD-Core Version:    0.7.0.1
+ */

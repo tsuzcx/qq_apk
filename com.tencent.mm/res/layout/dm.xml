@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/wg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView android:id="@id/wh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/t0" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/c" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center" android:id="@id/sz" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" app:layout_constrainedHeight="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.plugin.appbrand.ui.AppBrandCircleProgressView android:id="@id/bd5" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginBottom="@dimen/cp" app:layout_constraintBottom_toTopOf="@id/sz" app:layout_constraintEnd_toEndOf="@id/sz" app:layout_constraintStart_toStartOf="@id/sz" />
+    <ImageView android:id="@id/su" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/bd5" app:layout_constraintEnd_toEndOf="@id/bd5" app:layout_constraintStart_toStartOf="@id/bd5" app:layout_constraintTop_toBottomOf="@id/bd5" />
+    <ViewStub android:id="@id/fhg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/sz" />
+    <ViewStub android:id="@id/x_" android:layout="@layout/h1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" />
+    <ViewStub android:id="@id/ags" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="48.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

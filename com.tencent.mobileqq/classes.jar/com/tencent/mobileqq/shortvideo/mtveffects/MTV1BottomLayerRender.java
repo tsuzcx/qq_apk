@@ -22,57 +22,64 @@ public class MTV1BottomLayerRender
   public void onSurfaceChanged(int paramInt1, int paramInt2)
   {
     super.onSurfaceChanged(paramInt1, paramInt2);
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return;
-    }
-    if (this.mMaterialFilter != null)
+    if (paramInt1 != 0)
     {
-      this.mMaterialFilter.onOutputSizeChanged(paramInt1, paramInt2);
-      label31:
-      if (this.mDistortFilter == null) {
-        break label125;
+      if (paramInt2 == 0) {
+        return;
       }
-      this.mDistortFilter.onOutputSizeChanged(paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      if (this.mRenderBuffer != null)
+      Object localObject = this.mMaterialFilter;
+      if (localObject != null)
       {
-        releaseRenderBuffer(this.mRenderBuffer);
+        ((MaterialFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
+        this.mMaterialFilter = new MaterialFilter();
+        this.mMaterialFilter.init();
+        this.mMaterialFilter.onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      localObject = this.mDistortFilter;
+      if (localObject != null)
+      {
+        ((DistortionFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
+        this.mDistortFilter = new DistortionFilter();
+        this.mDistortFilter.init();
+        this.mDistortFilter.onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      localObject = this.mRenderBuffer;
+      if (localObject != null)
+      {
+        releaseRenderBuffer((RenderBuffer)localObject);
         this.mRenderBuffer = null;
       }
-      if (this.mRenderBuffer != null) {
-        break;
+      if (this.mRenderBuffer == null) {
+        this.mRenderBuffer = new RenderBuffer(getWidth(), getHeight(), 33984);
       }
-      this.mRenderBuffer = new RenderBuffer(getWidth(), getHeight(), 33984);
-      return;
-      this.mMaterialFilter = new MaterialFilter();
-      this.mMaterialFilter.init();
-      this.mMaterialFilter.onOutputSizeChanged(paramInt1, paramInt2);
-      break label31;
-      label125:
-      this.mDistortFilter = new DistortionFilter();
-      this.mDistortFilter.init();
-      this.mDistortFilter.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
   
   public void onSurfaceDestroy()
   {
     super.onSurfaceDestroy();
-    if (this.mDistortFilter != null)
+    Object localObject = this.mDistortFilter;
+    if (localObject != null)
     {
-      this.mDistortFilter.destroy();
+      ((DistortionFilter)localObject).destroy();
       this.mDistortFilter = null;
     }
-    if (this.mMaterialFilter != null)
+    localObject = this.mMaterialFilter;
+    if (localObject != null)
     {
-      this.mMaterialFilter.destroy();
+      ((MaterialFilter)localObject).destroy();
       this.mMaterialFilter = null;
     }
-    if (this.mRenderBuffer != null)
+    localObject = this.mRenderBuffer;
+    if (localObject != null)
     {
-      releaseRenderBuffer(this.mRenderBuffer);
+      releaseRenderBuffer((RenderBuffer)localObject);
       this.mRenderBuffer = null;
     }
   }
@@ -80,33 +87,36 @@ public class MTV1BottomLayerRender
   public int process(RenderBuffer paramRenderBuffer, int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     clearColorBuffer(paramRenderBuffer, this.mBGColor);
-    if ((this.mMaterialFilter != null) && (this.mTextParam != null) && (this.mTextParam.mShow))
+    if (this.mMaterialFilter != null)
     {
-      if (this.mTextParam.mDistortion) {
-        break label96;
+      Object localObject = this.mTextParam;
+      if ((localObject != null) && (((MTVBaseFilter.TextParam)localObject).mShow)) {
+        if (!this.mTextParam.mDistortion)
+        {
+          paramRenderBuffer.bind();
+          this.mMaterialFilter.process(getMaterialTextureID(), getMaterialArea(0), this.mTextParam.mRect, this.mTextParam.mChangeColor, this.mTextParam.mColor, paramArrayOfFloat1, paramArrayOfFloat2);
+          paramRenderBuffer.unbind();
+        }
+        else
+        {
+          localObject = this.mRenderBuffer;
+          if (localObject != null)
+          {
+            clearColorBuffer((RenderBuffer)localObject, 0);
+            localObject = new RectF(0.0F, 1.0F, 1.0F, 0.0F);
+            this.mRenderBuffer.bind();
+            this.mMaterialFilter.process(getMaterialTextureID(), getMaterialArea(0), (RectF)localObject, this.mTextParam.mChangeColor, this.mTextParam.mColor, paramArrayOfFloat1, paramArrayOfFloat2);
+            this.mRenderBuffer.unbind();
+            paramRenderBuffer.bind();
+            GLES20.glViewport((int)(getWidth() * this.mTextParam.mRect.left), (int)(this.mTextParam.mRect.bottom * getHeight()), (int)(getWidth() * this.mTextParam.mRect.width()), (int)(getHeight() * (this.mTextParam.mRect.height() * -1.0F)));
+            this.mDistortFilter.process(this.mRenderBuffer.getTexId(), 1.5F, 0.5F, 1.0F, 0.5F, 0.5F, paramArrayOfFloat1, paramArrayOfFloat2);
+            GLES20.glViewport(0, 0, getWidth(), getHeight());
+            paramRenderBuffer.unbind();
+          }
+        }
       }
-      paramRenderBuffer.bind();
-      this.mMaterialFilter.process(getMaterialTextureID(), getMaterialArea(0), this.mTextParam.mRect, this.mTextParam.mChangeColor, this.mTextParam.mColor, paramArrayOfFloat1, paramArrayOfFloat2);
-      paramRenderBuffer.unbind();
     }
-    for (;;)
-    {
-      return paramRenderBuffer.getTexId();
-      label96:
-      if (this.mRenderBuffer != null)
-      {
-        clearColorBuffer(this.mRenderBuffer, 0);
-        RectF localRectF = new RectF(0.0F, 1.0F, 1.0F, 0.0F);
-        this.mRenderBuffer.bind();
-        this.mMaterialFilter.process(getMaterialTextureID(), getMaterialArea(0), localRectF, this.mTextParam.mChangeColor, this.mTextParam.mColor, paramArrayOfFloat1, paramArrayOfFloat2);
-        this.mRenderBuffer.unbind();
-        paramRenderBuffer.bind();
-        GLES20.glViewport((int)(getWidth() * this.mTextParam.mRect.left), (int)(this.mTextParam.mRect.bottom * getHeight()), (int)(getWidth() * this.mTextParam.mRect.width()), (int)(getHeight() * (this.mTextParam.mRect.height() * -1.0F)));
-        this.mDistortFilter.process(this.mRenderBuffer.getTexId(), 1.5F, 0.5F, 1.0F, 0.5F, 0.5F, paramArrayOfFloat1, paramArrayOfFloat2);
-        GLES20.glViewport(0, 0, getWidth(), getHeight());
-        paramRenderBuffer.unbind();
-      }
-    }
+    return paramRenderBuffer.getTexId();
   }
   
   public void updateData(int paramInt, MTVBaseFilter.TextParam paramTextParam)
@@ -117,7 +127,7 @@ public class MTV1BottomLayerRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.MTV1BottomLayerRender
  * JD-Core Version:    0.7.0.1
  */

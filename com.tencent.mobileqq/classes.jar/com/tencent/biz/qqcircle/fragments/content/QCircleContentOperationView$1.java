@@ -1,24 +1,26 @@
 package com.tencent.biz.qqcircle.fragments.content;
 
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.widget.FrameLayout;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.SeekBar;
 
 class QCircleContentOperationView$1
-  implements Runnable
+  implements View.OnTouchListener
 {
   QCircleContentOperationView$1(QCircleContentOperationView paramQCircleContentOperationView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QCircleContentOperationView.a(this.this$0) != null) {
-      QCircleContentOperationView.a(this.this$0).setTouchDelegate(new TouchDelegate(new Rect(0, 0, QCircleContentOperationView.a(this.this$0).getMeasuredWidth(), QCircleContentOperationView.a(this.this$0).getMeasuredHeight()), this.this$0.a));
+    if (this.a.p != null) {
+      return this.a.p.onTouchEvent(paramMotionEvent);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView.1
  * JD-Core Version:    0.7.0.1
  */

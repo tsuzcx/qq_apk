@@ -12,98 +12,99 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.m;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MMAutoSwitchEditTextView
   extends LinearLayout
 {
-  private int jfZ;
+  private int JWX;
+  private int OeF;
+  private int adPO;
+  private String adPP;
+  private ArrayList<MMAutoSwitchEditText> adPQ;
+  private c adPR;
+  private a adPS;
+  private b adPT;
   private Context mContext;
   private int mScreenWidth;
-  private int nZH;
-  private int qid;
-  private int ziS;
-  private String ziT;
-  private ArrayList<MMAutoSwitchEditText> ziU;
-  private MMAutoSwitchEditTextView.c ziV;
-  private MMAutoSwitchEditTextView.a ziW;
-  private MMAutoSwitchEditTextView.b ziX;
+  private int xGX;
   
   public MMAutoSwitchEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106502);
-    this.ziU = new ArrayList();
-    this.ziV = new MMAutoSwitchEditTextView.c(this, (byte)0);
-    this.jfZ = 100;
+    AppMethodBeat.i(141870);
+    this.adPQ = new ArrayList();
+    this.adPR = new c((byte)0);
+    this.xGX = 100;
     this.mContext = paramContext;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.AutoSwitchLayout);
-    this.ziS = paramAttributeSet.getInteger(0, 3);
-    this.nZH = paramAttributeSet.getInteger(1, 4);
-    this.qid = paramAttributeSet.getInteger(2, 2);
-    int i = paramAttributeSet.getResourceId(3, 0);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.AutoSwitchLayout);
+    this.adPO = paramAttributeSet.getInteger(a.m.AutoSwitchLayout_edit_text_count, 3);
+    this.JWX = paramAttributeSet.getInteger(a.m.AutoSwitchLayout_max_input_count, 4);
+    this.OeF = paramAttributeSet.getInteger(a.m.AutoSwitchLayout_edit_text_inputType, 2);
+    int i = paramAttributeSet.getResourceId(a.m.AutoSwitchLayout_edit_text_digits, 0);
     if (i != 0) {
-      this.ziT = paramContext.getString(i);
+      this.adPP = paramContext.getString(i);
     }
     paramAttributeSet.recycle();
     if ((paramContext instanceof Activity))
     {
       this.mScreenWidth = ((Activity)paramContext).getWindowManager().getDefaultDisplay().getWidth();
-      this.jfZ = ((this.mScreenWidth - 80 - (this.ziS - 1) * 20) / this.ziS);
+      this.xGX = ((this.mScreenWidth - 80 - (this.adPO - 1) * 20) / this.adPO);
     }
     setPadding(a.fromDPToPix(paramContext, 20), 0, a.fromDPToPix(paramContext, 20), 0);
-    dDO();
-    AppMethodBeat.o(106502);
+    grz();
+    AppMethodBeat.o(141870);
   }
   
-  private void dDO()
+  private void grz()
   {
-    AppMethodBeat.i(106503);
+    AppMethodBeat.i(141871);
     int i = 0;
-    if (i < this.ziS)
+    if (i < this.adPO)
     {
-      MMAutoSwitchEditText localMMAutoSwitchEditText = (MMAutoSwitchEditText)View.inflate(this.mContext, 2130968795, null);
-      localMMAutoSwitchEditText.setInputType(this.qid);
-      if ((this.ziT != null) && (this.ziT.length() > 0)) {
-        localMMAutoSwitchEditText.setKeyListener(DigitsKeyListener.getInstance(this.ziT));
+      MMAutoSwitchEditText localMMAutoSwitchEditText = (MMAutoSwitchEditText)View.inflate(this.mContext, a.h.auto_switch_edittext, null);
+      localMMAutoSwitchEditText.setInputType(this.OeF);
+      if ((this.adPP != null) && (this.adPP.length() > 0)) {
+        localMMAutoSwitchEditText.setKeyListener(DigitsKeyListener.getInstance(this.adPP));
       }
-      localMMAutoSwitchEditText.ziN.mIndex = i;
-      int j = this.nZH;
-      localMMAutoSwitchEditText.ziN.ziR = j;
-      Object localObject = this.ziV;
-      localMMAutoSwitchEditText.ziN.ziO = ((MMAutoSwitchEditText.c)localObject);
-      localObject = this.ziV;
-      localMMAutoSwitchEditText.ziN.ziP = ((MMAutoSwitchEditText.b)localObject);
-      localObject = this.ziV;
-      localMMAutoSwitchEditText.ziN.ziQ = ((MMAutoSwitchEditText.d)localObject);
-      localObject = new LinearLayout.LayoutParams(this.jfZ, -2);
+      localMMAutoSwitchEditText.adPJ.mIndex = i;
+      int j = this.JWX;
+      localMMAutoSwitchEditText.adPJ.adPN = j;
+      Object localObject = this.adPR;
+      localMMAutoSwitchEditText.adPJ.adPK = ((MMAutoSwitchEditText.c)localObject);
+      localObject = this.adPR;
+      localMMAutoSwitchEditText.adPJ.adPL = ((MMAutoSwitchEditText.b)localObject);
+      localObject = this.adPR;
+      localMMAutoSwitchEditText.adPJ.adPM = ((MMAutoSwitchEditText.d)localObject);
+      localObject = new LinearLayout.LayoutParams(this.xGX, -2);
       if (i > 0) {}
       for (((LinearLayout.LayoutParams)localObject).leftMargin = 20;; ((LinearLayout.LayoutParams)localObject).leftMargin = 0)
       {
         ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
         localMMAutoSwitchEditText.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.ziU.add(localMMAutoSwitchEditText);
+        this.adPQ.add(localMMAutoSwitchEditText);
         addView(localMMAutoSwitchEditText);
         i += 1;
         break;
       }
     }
-    AppMethodBeat.o(106503);
+    AppMethodBeat.o(141871);
   }
   
   public String getText()
   {
-    AppMethodBeat.i(106501);
+    AppMethodBeat.i(141869);
     String str = "";
-    Iterator localIterator = this.ziU.iterator();
+    Iterator localIterator = this.adPQ.iterator();
     if (localIterator.hasNext())
     {
       MMAutoSwitchEditText localMMAutoSwitchEditText = (MMAutoSwitchEditText)localIterator.next();
-      if (bo.isNullOrNil(localMMAutoSwitchEditText.getText().toString().trim())) {
+      if (Util.isNullOrNil(localMMAutoSwitchEditText.getText().toString().trim())) {
         break label89;
       }
       str = str + localMMAutoSwitchEditText.getText().toString().trim();
@@ -112,24 +113,123 @@ public class MMAutoSwitchEditTextView
     for (;;)
     {
       break;
-      AppMethodBeat.o(106501);
+      AppMethodBeat.o(141869);
       return str;
     }
   }
   
-  public void setOnInputFinished(MMAutoSwitchEditTextView.a parama)
+  public void setOnInputFinished(a parama)
   {
-    this.ziW = parama;
+    this.adPS = parama;
   }
   
-  public void setOnTextChanged(MMAutoSwitchEditTextView.b paramb)
+  public void setOnTextChanged(b paramb)
   {
-    this.ziX = paramb;
+    this.adPT = paramb;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void Ts(String paramString);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void bXZ();
+  }
+  
+  final class c
+    implements MMAutoSwitchEditText.b, MMAutoSwitchEditText.c, MMAutoSwitchEditText.d
+  {
+    private c() {}
+    
+    public final void aAP(int paramInt)
+    {
+      AppMethodBeat.i(141867);
+      if ((MMAutoSwitchEditTextView.a(MMAutoSwitchEditTextView.this) != null) && (paramInt < MMAutoSwitchEditTextView.a(MMAutoSwitchEditTextView.this).size()))
+      {
+        if (paramInt == 0)
+        {
+          AppMethodBeat.o(141867);
+          return;
+        }
+        MMAutoSwitchEditText localMMAutoSwitchEditText = (MMAutoSwitchEditText)MMAutoSwitchEditTextView.a(MMAutoSwitchEditTextView.this).get(paramInt - 1);
+        if (localMMAutoSwitchEditText != null) {
+          localMMAutoSwitchEditText.requestFocus();
+        }
+      }
+      AppMethodBeat.o(141867);
+    }
+    
+    public final void aAQ(int paramInt)
+    {
+      AppMethodBeat.i(141866);
+      Object localObject = "";
+      Iterator localIterator = MMAutoSwitchEditTextView.a(MMAutoSwitchEditTextView.this).iterator();
+      if (localIterator.hasNext())
+      {
+        MMAutoSwitchEditText localMMAutoSwitchEditText = (MMAutoSwitchEditText)localIterator.next();
+        if (Util.isNullOrNil(localMMAutoSwitchEditText.getText().toString().trim())) {
+          break label226;
+        }
+        localObject = (String)localObject + localMMAutoSwitchEditText.getText().toString().trim();
+      }
+      label226:
+      for (;;)
+      {
+        break;
+        if ((!Util.isNullOrNil((String)localObject)) && (((String)localObject).length() == MMAutoSwitchEditTextView.b(MMAutoSwitchEditTextView.this) * MMAutoSwitchEditTextView.c(MMAutoSwitchEditTextView.this)))
+        {
+          if (MMAutoSwitchEditTextView.d(MMAutoSwitchEditTextView.this) != null) {
+            MMAutoSwitchEditTextView.d(MMAutoSwitchEditTextView.this).Ts((String)localObject);
+          }
+          AppMethodBeat.o(141866);
+          return;
+        }
+        if (MMAutoSwitchEditTextView.e(MMAutoSwitchEditTextView.this) != null) {
+          MMAutoSwitchEditTextView.e(MMAutoSwitchEditTextView.this).bXZ();
+        }
+        if ((MMAutoSwitchEditTextView.a(MMAutoSwitchEditTextView.this) != null) && (paramInt < MMAutoSwitchEditTextView.a(MMAutoSwitchEditTextView.this).size() - 1))
+        {
+          localObject = (MMAutoSwitchEditText)MMAutoSwitchEditTextView.a(MMAutoSwitchEditTextView.this).get(paramInt + 1);
+          if (localObject != null) {
+            ((MMAutoSwitchEditText)localObject).requestFocus();
+          }
+        }
+        AppMethodBeat.o(141866);
+        return;
+      }
+    }
+    
+    public final void dvS()
+    {
+      AppMethodBeat.i(141868);
+      String str = "";
+      Iterator localIterator = MMAutoSwitchEditTextView.a(MMAutoSwitchEditTextView.this).iterator();
+      if (localIterator.hasNext())
+      {
+        MMAutoSwitchEditText localMMAutoSwitchEditText = (MMAutoSwitchEditText)localIterator.next();
+        if (Util.isNullOrNil(localMMAutoSwitchEditText.getText().toString().trim())) {
+          break label113;
+        }
+        str = str + localMMAutoSwitchEditText.getText().toString().trim();
+      }
+      label113:
+      for (;;)
+      {
+        break;
+        if (MMAutoSwitchEditTextView.e(MMAutoSwitchEditTextView.this) != null) {
+          MMAutoSwitchEditTextView.e(MMAutoSwitchEditTextView.this).bXZ();
+        }
+        AppMethodBeat.o(141868);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMAutoSwitchEditTextView
  * JD-Core Version:    0.7.0.1
  */

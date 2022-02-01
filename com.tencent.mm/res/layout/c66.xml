@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/iwt" android:background="@color/ae4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/k0s" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintGuide_percent="0.125" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/cjt" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintGuide_percent="0.875" />
+    <ImageView android:id="@id/cdp" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintDimensionRatio="750:224" app:layout_constraintTop_toTopOf="hr_" />
+    <ImageView android:id="@id/cdo" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintDimensionRatio="750:464" />
+    <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/gbv" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/gbu" app:layout_constraintEnd_toEndOf="@id/gbu" app:layout_constraintStart_toStartOf="@id/gbu" app:layout_constraintTop_toTopOf="@id/gbu" />
+    <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/gbu" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="72.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="@id/cjt" app:layout_constraintStart_toStartOf="@id/k0s" app:layout_constraintTop_toBottomOf="@id/cdp" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

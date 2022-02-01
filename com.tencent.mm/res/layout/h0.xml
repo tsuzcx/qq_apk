@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/iwl" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/r_" style="@style/ia">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/sg" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/hm" />
-        <TextView android:textColor="#ff7a93af" android:layout_gravity="center_vertical" android:id="@id/nj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hh" android:text="{tip}" style="@style/ln" />
-    </LinearLayout>
-</RelativeLayout>
+    <RelativeLayout android:id="@id/jo5" android:background="@drawable/b4g" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textColor="@color/wv" android:gravity="center" android:id="@id/jo6" android:layout_height="fill_parent" android:text="@string/gk7" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/w" />
+        <ImageButton android:id="@id/jo7" android:background="@null" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:adjustViewBounds="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

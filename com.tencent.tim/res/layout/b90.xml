@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="bottom" android:id="@id/hg7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/c5n" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/ayx" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <com.qzone.module.feedcomponent.ui.common.SuperLikeView android:id="@id/c5o" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="11.0dip" android:src="@drawable/cdh" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/hxj" android:background="@drawable/cdi" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="10.5dip" android:baselineAligned="false" android:layout_toLeftOf="@id/c5o" android:layout_centerVertical="true" />
+</RelativeLayout>

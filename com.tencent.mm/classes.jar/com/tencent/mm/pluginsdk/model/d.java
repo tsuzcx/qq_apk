@@ -1,98 +1,59 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelstat.a.a;
-import com.tencent.mm.plugin.fav.PluginFav;
-import com.tencent.mm.plugin.fav.a.ae;
-import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class d
-  implements a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/BizFinderLiveNativeExtraData;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "()V", "bypass", "", "getBypass", "()Ljava/lang/String;", "setBypass", "(Ljava/lang/String;)V", "dataBuffer", "getDataBuffer", "setDataBuffer", "scene", "", "getScene", "()I", "setScene", "(I)V", "toJsonString", "Companion", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
+  implements com.tencent.mm.plugin.appbrand.api.d
 {
-  public final void callback(Bundle paramBundle)
+  public static final a XQn;
+  String XQo = "";
+  int scene;
+  String vPX = "";
+  
+  static
   {
-    AppMethodBeat.i(27236);
-    int k = paramBundle.getInt("mm_rpt_fav_id", 0);
-    int m = paramBundle.getInt("key_detail_fav_scene", 0);
-    int n = paramBundle.getInt("key_detail_fav_sub_scene", 0);
-    int i1 = paramBundle.getInt("key_detail_fav_index", 0);
-    long l2 = paramBundle.getLong("key_activity_browse_time", -1L);
-    int i;
-    int i2;
-    int i3;
-    if (paramBundle.getBoolean("mm_scroll_bottom"))
+    AppMethodBeat.i(244719);
+    XQn = new a((byte)0);
+    AppMethodBeat.o(244719);
+  }
+  
+  public final String toJsonString()
+  {
+    AppMethodBeat.i(244727);
+    try
     {
-      i = 1;
-      i2 = paramBundle.getInt("mm_send_friend_count", 0);
-      i3 = paramBundle.getInt("mm_share_sns_count", 0);
-      if (!paramBundle.getBoolean("mm_del_fav", false)) {
-        break label258;
-      }
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("dataBuffer", Util.nullAsNil(this.vPX));
+      ((JSONObject)localObject).put("enterScene", this.scene);
+      ((JSONObject)localObject).put("bypass", this.XQo);
+      localObject = new JSONObject().put("bizFinderLiveInfo", localObject).toString();
+      s.s(localObject, "{\n            val obj = …obj).toString()\n        }");
+      AppMethodBeat.o(244727);
+      return localObject;
     }
-    int i4;
-    String str1;
-    String str2;
-    com.tencent.mm.plugin.fav.a.g localg;
-    label258:
-    for (int j = 1;; j = 0)
+    catch (JSONException localJSONException)
     {
-      i4 = paramBundle.getInt("mm_edit_fav_count", 0);
-      str1 = paramBundle.getString("key_detail_fav_query", "");
-      str2 = paramBundle.getString("key_detail_fav_sessionid", "");
-      paramBundle = paramBundle.getString("key_detail_fav_tags", "");
-      ab.d("MicroMsg.FavWebRptCallback", "FavWebRptCallback uiBrowseTime[%d] isScrollBottom[%b] sendToFriendCount[%d] shareSnsCount[%d]  isDelFav[%b] clickEditFavTagCount[%d] favId[%s]", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(j), Integer.valueOf(i4), Integer.valueOf(k) });
-      localg = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kc(k);
-      if (localg != null) {
-        break label263;
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.BizFinderLiveNativeExtraData", (Throwable)localJSONException, "", new Object[0]);
+        String str = "{}";
       }
-      ab.w("MicroMsg.FavWebRptCallback", "fav web rpt but favitem info is null favid[%d]", new Object[] { Integer.valueOf(k) });
-      AppMethodBeat.o(27236);
-      return;
-      i = 0;
-      break;
-    }
-    label263:
-    if (localg.field_sourceCreateTime != 0L) {}
-    for (long l1 = localg.field_sourceCreateTime / 1000L;; l1 = localg.field_updateTime / 1000L)
-    {
-      StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append(m).append(",");
-      localStringBuffer.append(i1).append(",");
-      localStringBuffer.append(k).append(",");
-      localStringBuffer.append(localg.field_type).append(",");
-      localStringBuffer.append("0,");
-      localStringBuffer.append(localg.field_sourceType).append(",");
-      localStringBuffer.append(l1).append(",");
-      localStringBuffer.append(l2).append(",");
-      localStringBuffer.append("0,");
-      localStringBuffer.append("0,");
-      localStringBuffer.append("0,");
-      localStringBuffer.append(i2).append(",");
-      localStringBuffer.append(i3).append(",");
-      localStringBuffer.append("0,");
-      localStringBuffer.append(i4).append(",");
-      localStringBuffer.append(j).append(",");
-      localStringBuffer.append(i).append(",");
-      localStringBuffer.append(n).append(",");
-      localStringBuffer.append(str2).append(",");
-      i = ((PluginFav)com.tencent.mm.kernel.g.G(PluginFav.class)).getFavItemInfoStorage().vU(k) + 1;
-      localStringBuffer.append(i).append(",");
-      localStringBuffer.append(str1).append(",");
-      localStringBuffer.append(paramBundle);
-      ab.d("MicroMsg.FavWebRptCallback", String.format("lxl, 15098, sid:%s, sourcepos:%s, query:%s, tag:%s", new Object[] { str2, Integer.valueOf(i), str1, paramBundle }));
-      ab.v("MicroMsg.FavWebRptCallback", "FavWebRptCallback rpt id[%d] [%s]", new Object[] { Integer.valueOf(15098), localStringBuffer.toString() });
-      e.qrI.kvStat(15098, localStringBuffer.toString());
-      AppMethodBeat.o(27236);
-      return;
     }
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/BizFinderLiveNativeExtraData$Companion;", "", "()V", "TAG", "", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.d
  * JD-Core Version:    0.7.0.1
  */

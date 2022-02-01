@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,23 +12,26 @@ public final class stSimpleGetFeedListReq
   extends JceStruct
 {
   static ArrayList<String> cache_context_feedids;
-  static stLinkStragegyArgs cache_linkStragetyArgs = new stLinkStragegyArgs();
+  static ArrayList<stExposureFeedInfo> cache_exposureFeedList;
+  static stLinkStragegyArgs cache_linkStragetyArgs;
   static ArrayList<String> cache_local_feeds;
   static Map<String, String> cache_request_ext = new HashMap();
   public String attach_info = "";
   public String channel_info = "";
-  public ArrayList<String> context_feedids;
+  public ArrayList<String> context_feedids = null;
+  public ArrayList<stExposureFeedInfo> exposureFeedList = null;
   public String gdt_args = "";
-  public byte isfirst;
-  public byte isrefresh;
-  public stLinkStragegyArgs linkStragetyArgs;
-  public ArrayList<String> local_feeds;
+  public byte isfirst = 0;
+  public byte isrefresh = 0;
+  public stLinkStragegyArgs linkStragetyArgs = null;
+  public ArrayList<String> local_feeds = null;
   public String push_info = "";
   public String qqNum = "";
-  public Map<String, String> request_ext;
+  public Map<String, String> request_ext = null;
   public String rowkey = "";
-  public int scene;
+  public int scene = 0;
   public String session = "";
+  public String subTabID = "";
   
   static
   {
@@ -36,11 +40,15 @@ public final class stSimpleGetFeedListReq
     cache_local_feeds.add("");
     cache_context_feedids = new ArrayList();
     cache_context_feedids.add("");
+    cache_linkStragetyArgs = new stLinkStragegyArgs();
+    cache_exposureFeedList = new ArrayList();
+    stExposureFeedInfo localstExposureFeedInfo = new stExposureFeedInfo();
+    cache_exposureFeedList.add(localstExposureFeedInfo);
   }
   
   public stSimpleGetFeedListReq() {}
   
-  public stSimpleGetFeedListReq(String paramString1, byte paramByte1, byte paramByte2, String paramString2, Map<String, String> paramMap, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, stLinkStragegyArgs paramstLinkStragegyArgs, String paramString7)
+  public stSimpleGetFeedListReq(String paramString1, byte paramByte1, byte paramByte2, String paramString2, Map<String, String> paramMap, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, stLinkStragegyArgs paramstLinkStragegyArgs, String paramString7, String paramString8, ArrayList<stExposureFeedInfo> paramArrayList)
   {
     this.attach_info = paramString1;
     this.isrefresh = paramByte1;
@@ -56,6 +64,8 @@ public final class stSimpleGetFeedListReq
     this.push_info = paramString6;
     this.linkStragetyArgs = paramstLinkStragegyArgs;
     this.qqNum = paramString7;
+    this.subTabID = paramString8;
+    this.exposureFeedList = paramArrayList;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -74,56 +84,72 @@ public final class stSimpleGetFeedListReq
     this.push_info = paramJceInputStream.readString(12, false);
     this.linkStragetyArgs = ((stLinkStragegyArgs)paramJceInputStream.read(cache_linkStragetyArgs, 13, false));
     this.qqNum = paramJceInputStream.readString(14, false);
-  }
-  
-  public String toString()
-  {
-    return "stSimpleGetFeedListReq{attach_info='" + this.attach_info + '\'' + ", isrefresh=" + this.isrefresh + ", isfirst=" + this.isfirst + ", channel_info='" + this.channel_info + '\'' + ", scene=" + this.scene + ", gdt_args='" + this.gdt_args + '\'' + ", rowkey='" + this.rowkey + '\'' + ", session='" + this.session + '\'' + ", push_info='" + this.push_info + '\'' + ", linkStragetyArgs=" + this.linkStragetyArgs + '}';
+    this.subTabID = paramJceInputStream.readString(15, false);
+    this.exposureFeedList = ((ArrayList)paramJceInputStream.read(cache_exposureFeedList, 16, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 0);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.isrefresh, 1);
     paramJceOutputStream.write(this.isfirst, 2);
-    if (this.channel_info != null) {
-      paramJceOutputStream.write(this.channel_info, 4);
+    localObject = this.channel_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.request_ext != null) {
-      paramJceOutputStream.write(this.request_ext, 5);
+    localObject = this.request_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.local_feeds != null) {
-      paramJceOutputStream.write(this.local_feeds, 6);
+    localObject = this.local_feeds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.context_feedids != null) {
-      paramJceOutputStream.write(this.context_feedids, 7);
+    localObject = this.context_feedids;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
     paramJceOutputStream.write(this.scene, 8);
-    if (this.gdt_args != null) {
-      paramJceOutputStream.write(this.gdt_args, 9);
+    localObject = this.gdt_args;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.rowkey != null) {
-      paramJceOutputStream.write(this.rowkey, 10);
+    localObject = this.rowkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.session != null) {
-      paramJceOutputStream.write(this.session, 11);
+    localObject = this.session;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.push_info != null) {
-      paramJceOutputStream.write(this.push_info, 12);
+    localObject = this.push_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.linkStragetyArgs != null) {
-      paramJceOutputStream.write(this.linkStragetyArgs, 13);
+    localObject = this.linkStragetyArgs;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.qqNum != null) {
-      paramJceOutputStream.write(this.qqNum, 14);
+    localObject = this.qqNum;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
+    }
+    localObject = this.subTabID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
+    }
+    localObject = this.exposureFeedList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 16);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleGetFeedListReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/eux" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="5.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/j_g" android:background="@drawable/p9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:minHeight="@dimen/bb" android:layout_below="@id/eux">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:layout_marginRight="@dimen/cp" android:src="@raw/mm_select_create_chatroom" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iil" android:singleLine="true" style="@style/ma" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/m_" android:textColor="@color/m4" android:id="@id/c2g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{desc}" android:singleLine="true" style="@style/m_" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

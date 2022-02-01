@@ -56,55 +56,88 @@ public final class RouteSelector
   
   private Proxy nextProxy()
   {
-    if (!hasNextProxy()) {
-      throw new SocketException("No route to " + this.address.url().host() + "; exhausted proxy configurations: " + this.proxies);
+    if (hasNextProxy())
+    {
+      localObject = this.proxies;
+      int i = this.nextProxyIndex;
+      this.nextProxyIndex = (i + 1);
+      localObject = (Proxy)((List)localObject).get(i);
+      resetNextInetSocketAddress((Proxy)localObject);
+      return localObject;
     }
-    Object localObject = this.proxies;
-    int i = this.nextProxyIndex;
-    this.nextProxyIndex = (i + 1);
-    localObject = (Proxy)((List)localObject).get(i);
-    resetNextInetSocketAddress((Proxy)localObject);
-    return localObject;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("No route to ");
+    ((StringBuilder)localObject).append(this.address.url().host());
+    ((StringBuilder)localObject).append("; exhausted proxy configurations: ");
+    ((StringBuilder)localObject).append(this.proxies);
+    throw new SocketException(((StringBuilder)localObject).toString());
   }
   
   private void resetNextInetSocketAddress(Proxy paramProxy)
   {
     this.inetSocketAddresses = new ArrayList();
     Object localObject;
-    if ((paramProxy.type() == Proxy.Type.DIRECT) || (paramProxy.type() == Proxy.Type.SOCKS)) {
-      localObject = this.address.url().host();
-    }
-    InetSocketAddress localInetSocketAddress;
-    for (int i = this.address.url().port(); (i < 1) || (i > 65535); i = localInetSocketAddress.getPort())
+    int i;
+    if ((paramProxy.type() != Proxy.Type.DIRECT) && (paramProxy.type() != Proxy.Type.SOCKS))
     {
-      throw new SocketException("No route to " + (String)localObject + ":" + i + "; port is out of range");
       localObject = paramProxy.address();
-      if (!(localObject instanceof InetSocketAddress)) {
-        throw new IllegalArgumentException("Proxy.address() is not an InetSocketAddress: " + localObject.getClass());
+      if ((localObject instanceof InetSocketAddress))
+      {
+        InetSocketAddress localInetSocketAddress = (InetSocketAddress)localObject;
+        localObject = getHostString(localInetSocketAddress);
+        i = localInetSocketAddress.getPort();
       }
-      localInetSocketAddress = (InetSocketAddress)localObject;
-      localObject = getHostString(localInetSocketAddress);
+      else
+      {
+        paramProxy = new StringBuilder();
+        paramProxy.append("Proxy.address() is not an InetSocketAddress: ");
+        paramProxy.append(localObject.getClass());
+        throw new IllegalArgumentException(paramProxy.toString());
+      }
     }
-    if (paramProxy.type() == Proxy.Type.SOCKS) {
-      this.inetSocketAddresses.add(InetSocketAddress.createUnresolved((String)localObject, i));
-    }
-    for (;;)
+    else
     {
-      return;
+      localObject = this.address.url().host();
+      i = this.address.url().port();
+    }
+    if ((i >= 1) && (i <= 65535))
+    {
+      if (paramProxy.type() == Proxy.Type.SOCKS)
+      {
+        this.inetSocketAddresses.add(InetSocketAddress.createUnresolved((String)localObject, i));
+        return;
+      }
       this.eventListener.dnsStart(this.call, (String)localObject);
       paramProxy = this.address.dns().lookup((String)localObject);
-      if (paramProxy.isEmpty()) {
-        throw new UnknownHostException(this.address.dns() + " returned no addresses for " + (String)localObject);
-      }
-      this.eventListener.dnsEnd(this.call, (String)localObject, paramProxy);
-      int k = paramProxy.size();
-      int j = 0;
-      while (j < k)
+      if (!paramProxy.isEmpty())
       {
-        localObject = (InetAddress)paramProxy.get(j);
-        this.inetSocketAddresses.add(new InetSocketAddress((InetAddress)localObject, i));
-        j += 1;
+        this.eventListener.dnsEnd(this.call, (String)localObject, paramProxy);
+        int j = 0;
+        int k = paramProxy.size();
+        while (j < k)
+        {
+          localObject = (InetAddress)paramProxy.get(j);
+          this.inetSocketAddresses.add(new InetSocketAddress((InetAddress)localObject, i));
+          j += 1;
+        }
+        return;
       }
+      paramProxy = new StringBuilder();
+      paramProxy.append(this.address.dns());
+      paramProxy.append(" returned no addresses for ");
+      paramProxy.append((String)localObject);
+      throw new UnknownHostException(paramProxy.toString());
+    }
+    paramProxy = new StringBuilder();
+    paramProxy.append("No route to ");
+    paramProxy.append((String)localObject);
+    paramProxy.append(":");
+    paramProxy.append(i);
+    paramProxy.append("; port is out of range");
+    paramProxy = new SocketException(paramProxy.toString());
+    for (;;)
+    {
+      throw paramProxy;
     }
   }
   
@@ -113,16 +146,18 @@ public final class RouteSelector
     if (paramProxy != null)
     {
       this.proxies = Collections.singletonList(paramProxy);
-      this.nextProxyIndex = 0;
-      return;
     }
-    paramHttpUrl = this.address.proxySelector().select(paramHttpUrl.uri());
-    if ((paramHttpUrl != null) && (!paramHttpUrl.isEmpty())) {}
-    for (paramHttpUrl = Util.immutableList(paramHttpUrl);; paramHttpUrl = Util.immutableList(new Proxy[] { Proxy.NO_PROXY }))
+    else
     {
+      paramHttpUrl = this.address.proxySelector().select(paramHttpUrl.uri());
+      if ((paramHttpUrl != null) && (!paramHttpUrl.isEmpty())) {
+        paramHttpUrl = Util.immutableList(paramHttpUrl);
+      } else {
+        paramHttpUrl = Util.immutableList(new Proxy[] { Proxy.NO_PROXY });
+      }
       this.proxies = paramHttpUrl;
-      break;
     }
+    this.nextProxyIndex = 0;
   }
   
   public void connectFailed(Route paramRoute, IOException paramIOException)
@@ -140,43 +175,45 @@ public final class RouteSelector
   
   public RouteSelector.Selection next()
   {
-    if (!hasNext()) {
-      throw new NoSuchElementException();
-    }
-    ArrayList localArrayList = new ArrayList();
-    do
+    if (hasNext())
     {
-      if (!hasNextProxy()) {
-        break;
-      }
-      Proxy localProxy = nextProxy();
-      int j = this.inetSocketAddresses.size();
-      int i = 0;
-      if (i < j)
+      localObject = new ArrayList();
+      do
       {
-        Route localRoute = new Route(this.address, localProxy, (InetSocketAddress)this.inetSocketAddresses.get(i));
-        if (this.routeDatabase.shouldPostpone(localRoute)) {
-          this.postponedRoutes.add(localRoute);
-        }
-        for (;;)
-        {
-          i += 1;
+        if (!hasNextProxy()) {
           break;
-          localArrayList.add(localRoute);
         }
+        Proxy localProxy = nextProxy();
+        int i = 0;
+        int j = this.inetSocketAddresses.size();
+        while (i < j)
+        {
+          Route localRoute = new Route(this.address, localProxy, (InetSocketAddress)this.inetSocketAddresses.get(i));
+          if (this.routeDatabase.shouldPostpone(localRoute)) {
+            this.postponedRoutes.add(localRoute);
+          } else {
+            ((List)localObject).add(localRoute);
+          }
+          i += 1;
+        }
+      } while (((List)localObject).isEmpty());
+      if (((List)localObject).isEmpty())
+      {
+        ((List)localObject).addAll(this.postponedRoutes);
+        this.postponedRoutes.clear();
       }
-    } while (localArrayList.isEmpty());
-    if (localArrayList.isEmpty())
-    {
-      localArrayList.addAll(this.postponedRoutes);
-      this.postponedRoutes.clear();
+      return new RouteSelector.Selection((List)localObject);
     }
-    return new RouteSelector.Selection(localArrayList);
+    Object localObject = new NoSuchElementException();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.connection.RouteSelector
  * JD-Core Version:    0.7.0.1
  */

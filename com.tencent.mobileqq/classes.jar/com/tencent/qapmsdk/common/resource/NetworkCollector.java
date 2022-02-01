@@ -20,116 +20,120 @@ public final class NetworkCollector
   {
     Arrays.fill(getBufferBytes(), (byte)-1);
     RandomAccessFile localRandomAccessFile = this.networkStatsFile;
-    if (localRandomAccessFile != null) {}
-    for (paramString = localRandomAccessFile;; paramString = openFile(paramString))
-    {
-      paramString.seek(0L);
-      if (paramString.read(getBufferBytes(), 0, getBufferBytes().length) != -1) {
-        break;
-      }
-      throw ((Throwable)new IOException("read sys stats error"));
+    if (localRandomAccessFile != null) {
+      paramString = localRandomAccessFile;
+    } else {
+      paramString = openFile(paramString);
     }
-    this.networkStatsFile = paramString;
-    setCurIndex(0);
-    setReachedEof(false);
-    setValid(true);
+    paramString.seek(0L);
+    if (paramString.read(getBufferBytes(), 0, getBufferBytes().length) != -1)
+    {
+      this.networkStatsFile = paramString;
+      setCurIndex(0);
+      setReachedEof(false);
+      setValid(true);
+      return;
+    }
+    throw ((Throwable)new IOException("read sys stats error"));
   }
   
   private final boolean isLocalInterface(int paramInt)
   {
-    boolean bool2 = false;
     int j = ResourceConstant.Companion.getLOCAL_IFACE_HASHES().length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramInt == ResourceConstant.Companion.getLOCAL_IFACE_HASHES()[i]) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramInt == ResourceConstant.Companion.getLOCAL_IFACE_HASHES()[i]) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   @Nullable
   public final long[] getTotalBytes()
   {
-    label307:
     for (;;)
     {
       try
       {
-        if (isValid())
-        {
-          boolean bool = getCanReadStat();
-          if (bool) {}
+        if ((!isValid()) || (!getCanReadStat())) {
+          continue;
         }
-        else
-        {
-          arrayOfLong = null;
-          return arrayOfLong;
-        }
-        long[] arrayOfLong = new long[4];
+        arrayOfLong = new long[4];
         Arrays.fill(arrayOfLong, 0L);
-        Object localObject1;
-        try
-        {
-          initFile("/proc/net/xt_qtaguid/stats");
-          skipPast('\n');
-          if ((getReachedEof()) || (!isValid()) || (!peek())) {
-            break label307;
-          }
-          skipPast(' ');
-          j = readHash();
-          skipPast(' ');
-          long l = readNumber();
-          if (j == ResourceConstant.Companion.getWLAN0_HASH())
-          {
-            i = 1;
-            if ((i != 0) || (isLocalInterface(j))) {
-              continue;
-            }
-            j = 1;
-            if ((l == ResourceConstant.Companion.getUID()) && ((i != 0) || (j != 0))) {
-              continue;
-            }
-            skipPast('\n');
-            continue;
-          }
-        }
-        catch (Exception localException)
-        {
-          setValid(true);
-          closeFile(CollectionsKt.listOf(this.networkStatsFile));
-          Logger.INSTANCE.d(new String[] { "QAPM_common_NetworkCollector", localException + ": read stat file error." });
-          localObject1 = null;
-        }
+      }
+      finally
+      {
+        long[] arrayOfLong;
+        Logger localLogger;
+        StringBuilder localStringBuilder;
+        continue;
+        throw localObject;
+        continue;
         int i = 0;
         continue;
         int j = 0;
         continue;
-        skipPast(' ');
-        localObject1[0] += readNumber();
-        localObject1[1] += readNumber();
-        localObject1[2] += readNumber();
-        localObject1[3] += readNumber();
-        setCurIndex(getCurIndex() + 23);
-        skipPast('\n');
-        continue;
-        setValid(true);
       }
-      finally {}
+      try
+      {
+        initFile("/proc/net/xt_qtaguid/stats");
+        skipPast('\n');
+        if ((!getReachedEof()) && (isValid()) && (peek()))
+        {
+          skipPast(' ');
+          j = readHash();
+          skipPast(' ');
+          long l = readNumber();
+          if (j != ResourceConstant.Companion.getWLAN0_HASH()) {
+            continue;
+          }
+          i = 1;
+          if ((i != 0) || (isLocalInterface(j))) {
+            continue;
+          }
+          j = 1;
+          if ((l == ResourceConstant.Companion.getUID()) && ((i != 0) || (j != 0)))
+          {
+            skipPast(' ');
+            arrayOfLong[0] += readNumber();
+            arrayOfLong[1] += readNumber();
+            arrayOfLong[2] += readNumber();
+            arrayOfLong[3] += readNumber();
+            setCurIndex(getCurIndex() + 23);
+            skipPast('\n');
+          }
+          else
+          {
+            skipPast('\n');
+          }
+        }
+        else
+        {
+          setValid(true);
+          return arrayOfLong;
+        }
+      }
+      catch (Exception localException)
+      {
+        setValid(true);
+        closeFile(CollectionsKt.listOf(this.networkStatsFile));
+        localLogger = Logger.INSTANCE;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localException);
+        localStringBuilder.append(": read stat file error.");
+        localLogger.d(new String[] { "QAPM_common_NetworkCollector", localStringBuilder.toString() });
+        return null;
+      }
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.resource.NetworkCollector
  * JD-Core Version:    0.7.0.1
  */

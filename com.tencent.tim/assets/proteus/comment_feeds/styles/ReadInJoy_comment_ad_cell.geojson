@@ -1,0 +1,75 @@
+{
+    "ReadInJoy_comment_ad_cell": {
+        "view_type": "UIView",
+        "default_visible":"YES",
+        "layout_type":"layout_relative",
+        "view_id": "id_comment_ad_container",
+        "event_type":"ad_item_click_in_comment",
+        "padding_bottom":"10",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews":
+        [
+            {
+                "view_type": "UIView",
+                "default_visible":"YES",
+                "view_id": "id_comment_cell_one_container",
+                "layout_type":"layout_linear",
+                "direction":"vertical",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews":
+                [
+                    {"$includeComponet": "componet/readinjoy_comment_ad_header.geojson"}
+                ]
+            },
+            {
+                "view_type": "UIView",
+                "default_visible":"YES",
+                "view_id": "id_comment_cell_ad_container",
+                "below_of_view":"id_comment_cell_one_container",
+                "layout_type":"layout_linear",
+                "direction":"vertical",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews":[
+                    {"$includeComponet": "componet/readinjoy_comment_ad_container.geojson"}
+                ]
+            },
+            {
+                "view_type": "UIView",
+                "default_visible":"YES",
+                "view_id": "id_comment_cell_two_container",
+                "below_of_view":"id_comment_cell_ad_container",
+                "layout_type":"layout_linear",
+                "direction":"vertical",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews":
+                [
+                    {"$includeComponet": "componet/readinjoy_comment_ad_tail.geojson"}
+                ]
+            }            
+        ]
+    }
+}

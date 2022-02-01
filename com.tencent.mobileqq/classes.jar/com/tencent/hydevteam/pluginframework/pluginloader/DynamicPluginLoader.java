@@ -17,9 +17,10 @@ public class DynamicPluginLoader
   
   private static void a(Object paramObject)
   {
-    if (paramObject == null) {
-      throw new AssertionError();
+    if (paramObject != null) {
+      return;
     }
+    throw new AssertionError();
   }
   
   @API
@@ -29,16 +30,16 @@ public class DynamicPluginLoader
     {
       paramInstalledPlugin = (UseDynamicPluginLoaderInstalledPlugin)paramInstalledPlugin;
       paramInstalledPlugin = new DynamicPluginLoaderLoader(paramInstalledPlugin.dynamicPluginLoaderVersion, paramInstalledPlugin.dynamicPluginLoaderFile, paramInstalledPlugin.dynamicPluginLoaderClassname, paramInstalledPlugin.dynamicPluginLoaderInterfacePackageNames);
-    }
-    try
-    {
-      a = paramInstalledPlugin.a();
-      DelegateProviderHolder.setDelegateProvider((DelegateProvider)a);
-      return;
-    }
-    catch (DynamicPluginLoaderLoadException paramInstalledPlugin)
-    {
-      throw new LoadPluginException(paramInstalledPlugin);
+      try
+      {
+        a = paramInstalledPlugin.a();
+        DelegateProviderHolder.setDelegateProvider((DelegateProvider)a);
+        return;
+      }
+      catch (DynamicPluginLoaderLoadException paramInstalledPlugin)
+      {
+        throw new LoadPluginException(paramInstalledPlugin);
+      }
     }
   }
   
@@ -48,16 +49,17 @@ public class DynamicPluginLoader
     if ((paramInstalledPlugin instanceof UseDynamicPluginLoaderInstalledPlugin)) {
       try
       {
-        UseDynamicPluginLoaderInstalledPlugin localUseDynamicPluginLoaderInstalledPlugin = (UseDynamicPluginLoaderInstalledPlugin)paramInstalledPlugin;
-        a(localUseDynamicPluginLoaderInstalledPlugin.dynamicPluginLoaderVersion);
-        a(localUseDynamicPluginLoaderInstalledPlugin.dynamicPluginLoaderFile);
-        a(localUseDynamicPluginLoaderInstalledPlugin.pluginPackageName);
-        a(localUseDynamicPluginLoaderInstalledPlugin.pluginVersionForConfigPluginLoader);
-        a(localUseDynamicPluginLoaderInstalledPlugin.pluginVersionForPluginLoaderManage);
-        a(localUseDynamicPluginLoaderInstalledPlugin.pluginFile);
+        Object localObject = (UseDynamicPluginLoaderInstalledPlugin)paramInstalledPlugin;
+        a(((UseDynamicPluginLoaderInstalledPlugin)localObject).dynamicPluginLoaderVersion);
+        a(((UseDynamicPluginLoaderInstalledPlugin)localObject).dynamicPluginLoaderFile);
+        a(((UseDynamicPluginLoaderInstalledPlugin)localObject).pluginPackageName);
+        a(((UseDynamicPluginLoaderInstalledPlugin)localObject).pluginVersionForConfigPluginLoader);
+        a(((UseDynamicPluginLoaderInstalledPlugin)localObject).pluginVersionForPluginLoaderManage);
+        a(((UseDynamicPluginLoaderInstalledPlugin)localObject).pluginFile);
         initPluginLoaderIfNeeded(paramInstalledPlugin);
-        if (a != null) {
-          break label119;
+        localObject = a;
+        if (localObject != null) {
+          return ((PluginLoader)localObject).loadPlugin(paramContext, paramInstalledPlugin);
         }
         throw new LoadPluginException("sActualPluginLoader 为 null");
       }
@@ -65,25 +67,27 @@ public class DynamicPluginLoader
       {
         throw new LoadPluginException("检查启动插件参数时发生错误", paramContext);
       }
-    } else {
-      throw new LoadPluginException(paramInstalledPlugin + "不是一个" + UseDynamicPluginLoaderInstalledPlugin.class);
     }
-    label119:
-    return a.loadPlugin(paramContext, paramInstalledPlugin);
+    paramContext = new StringBuilder();
+    paramContext.append(paramInstalledPlugin);
+    paramContext.append("不是一个");
+    paramContext.append(UseDynamicPluginLoaderInstalledPlugin.class);
+    throw new LoadPluginException(paramContext.toString());
   }
   
   @API
   public boolean setPluginDisabled(InstalledPlugin paramInstalledPlugin)
   {
-    if (a == null) {
+    PluginLoader localPluginLoader = a;
+    if (localPluginLoader == null) {
       return false;
     }
-    return a.setPluginDisabled(paramInstalledPlugin);
+    return localPluginLoader.setPluginDisabled(paramInstalledPlugin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginloader.DynamicPluginLoader
  * JD-Core Version:    0.7.0.1
  */

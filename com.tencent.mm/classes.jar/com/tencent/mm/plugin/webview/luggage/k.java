@@ -1,83 +1,82 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.content.Context;
-import android.net.Uri;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public final class k
-  extends j
 {
-  public View uSo;
-  public View uSp;
-  private TextView uSq;
+  private static LinkedList<s> WGP;
+  private static HashMap<String, s> WGQ;
+  private static Object lock;
   
-  public k(Context paramContext, View paramView)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(6168);
-    this.uSo = paramView;
-    this.uSp = LayoutInflater.from(paramContext).inflate(2130971304, this, false);
-    this.uSp.setVisibility(0);
-    this.uSp.setBackgroundResource(2131690695);
-    paramContext = this.uSp;
-    removeAllViews();
-    this.ixK = paramContext;
-    this.ixL = new FrameLayout(getContext());
-    this.ixL.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.ixL.addView(paramContext);
-    this.Qz = paramView;
-    this.ixM = new FrameLayout(getContext());
-    this.ixM.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.ixM.addView(paramView);
-    addView(this.ixL);
-    addView(this.ixM);
-    this.uSq = ((TextView)this.uSp.findViewById(2131829546));
-    AppMethodBeat.o(6168);
+    AppMethodBeat.i(78357);
+    lock = new Object();
+    WGP = new LinkedList();
+    WGQ = new HashMap();
+    AppMethodBeat.o(78357);
   }
   
-  public final void setBgColor(int paramInt)
+  public static void b(s params)
   {
-    AppMethodBeat.i(6171);
-    ((ViewGroup)this.uSp.getParent()).setBackgroundColor(paramInt);
-    AppMethodBeat.o(6171);
-  }
-  
-  public final void setCurrentUrl(String paramString)
-  {
-    AppMethodBeat.i(6169);
-    if (!bo.isNullOrNil(paramString))
+    AppMethodBeat.i(78355);
+    synchronized (lock)
     {
-      paramString = Uri.parse(paramString).getHost();
-      if (!bo.isNullOrNil(paramString))
+      if (!WGP.contains(params))
       {
-        paramString = getContext().getString(2131305882, new Object[] { paramString });
-        this.uSq.setVisibility(0);
-        this.uSq.setText(paramString);
-        AppMethodBeat.o(6169);
-        return;
+        WGP.add(params);
+        WGQ.put(d(params), params);
       }
+      AppMethodBeat.o(78355);
+      return;
     }
-    this.uSq.setVisibility(8);
-    AppMethodBeat.o(6169);
   }
   
-  public final void setX5LogoViewVisibility(int paramInt)
+  public static s bjX(String paramString)
   {
-    AppMethodBeat.i(6170);
-    this.uSp.setVisibility(paramInt);
-    AppMethodBeat.o(6170);
+    AppMethodBeat.i(295950);
+    paramString = (s)WGQ.get(paramString);
+    AppMethodBeat.o(295950);
+    return paramString;
+  }
+  
+  public static void c(s params)
+  {
+    AppMethodBeat.i(78356);
+    synchronized (lock)
+    {
+      WGP.remove(params);
+      WGQ.remove(d(params));
+      AppMethodBeat.o(78356);
+      return;
+    }
+  }
+  
+  public static String d(s params)
+  {
+    AppMethodBeat.i(295957);
+    params = "luggage_page_" + params.hashCode();
+    AppMethodBeat.o(295957);
+    return params;
+  }
+  
+  public static LinkedList<s> iuB()
+  {
+    AppMethodBeat.i(295954);
+    synchronized (lock)
+    {
+      LinkedList localLinkedList = new LinkedList(WGP);
+      AppMethodBeat.o(295954);
+      return localLinkedList;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.k
  * JD-Core Version:    0.7.0.1
  */

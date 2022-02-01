@@ -1,46 +1,52 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.l;
-import com.tencent.mm.protocal.l.c;
+import com.tencent.mm.am.n;
+import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.agz;
 
-public final class i
+final class i
+  extends n
 {
-  public static final class b
-    extends l.e
-    implements l.c
+  j.a zRE;
+  j.b zRF;
+  
+  i()
   {
-    public agz mgN;
-    
-    public b()
-    {
-      AppMethodBeat.i(68);
-      this.mgN = new agz();
-      AppMethodBeat.o(68);
-    }
-    
-    public final int fromProtoBuf(byte[] paramArrayOfByte)
-    {
-      AppMethodBeat.i(69);
-      this.mgN = ((agz)new agz().parseFrom(paramArrayOfByte));
-      l.a(this, this.mgN.getBaseResponse());
-      int i = this.mgN.getBaseResponse().Ret;
-      AppMethodBeat.o(69);
-      return i;
-    }
-    
-    public final int getCmdId()
-    {
-      return 0;
-    }
+    AppMethodBeat.i(103590);
+    this.zRE = new j.a();
+    this.zRF = new j.b();
+    AppMethodBeat.o(103590);
+  }
+  
+  public final int getOptions()
+  {
+    return 1;
+  }
+  
+  public final l.d getReqObjImp()
+  {
+    return this.zRE;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.zRF;
+  }
+  
+  public final int getType()
+  {
+    return 733;
+  }
+  
+  public final String getUri()
+  {
+    return "/cgi-bin/micromsg-bin/getbioconfigrsa";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.i
  * JD-Core Version:    0.7.0.1
  */

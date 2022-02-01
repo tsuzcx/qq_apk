@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.ocr;
 
-import alud;
-import avwp;
-import avzj;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.ocr.view.TDProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class OCRResultFragmentNew$7$3
+class OCRResultFragmentNew$7$3
   implements Runnable
 {
-  public OCRResultFragmentNew$7$3(avwp paramavwp) {}
+  OCRResultFragmentNew$7$3(OCRResultFragmentNew.7 param7) {}
   
   public void run()
   {
     OCRResultFragmentNew.a(this.a.a, false);
-    OCRResultFragmentNew.a(this.a.a).dismiss();
-    OCRResultFragmentNew.a(this.a.a).a(0);
-    QQToast.a(OCRResultFragmentNew.a(this.a.a), 1, alud.a(2131708213), 0).a();
+    OCRResultFragmentNew.d(this.a.a).dismiss();
+    OCRResultFragmentNew.d(this.a.a).a(0);
+    QQToast.makeText(OCRResultFragmentNew.a(this.a.a), 1, HardCodeUtil.a(2131905636), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3
  * JD-Core Version:    0.7.0.1
  */

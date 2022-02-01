@@ -18,15 +18,20 @@ public class v2render
   public final int MSG_RESET = 2;
   public final int RenderLocal = 0;
   public final int RenderRemote = 1;
+  private byte _hellAccFlag_;
   public float mBrightness = 1.2F;
   public float mContrast = 1.93F;
   public float mSaturation = 1.05F;
   
   static
   {
-    AppMethodBeat.i(35422);
-    System.loadLibrary("voipGLRender");
-    AppMethodBeat.o(35422);
+    AppMethodBeat.i(40800);
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("voipGLRender");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxmm/v2render", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxmm/v2render", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    AppMethodBeat.o(40800);
   }
   
   public static int getGLVersion()
@@ -48,7 +53,7 @@ public class v2render
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wxmm.v2render
  * JD-Core Version:    0.7.0.1
  */

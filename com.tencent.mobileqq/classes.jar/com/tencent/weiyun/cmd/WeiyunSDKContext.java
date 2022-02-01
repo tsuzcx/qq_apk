@@ -73,35 +73,45 @@ abstract class WeiyunSDKContext
   
   public void traceLog(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = new String(Arrays.copyOf(paramArrayOfByte, paramArrayOfByte.length), "UTF-8");
-      switch (paramInt)
-      {
-      default: 
+      if (paramArrayOfByte.length <= 0) {
         return;
       }
+      try
+      {
+        paramArrayOfByte = new String(Arrays.copyOf(paramArrayOfByte, paramArrayOfByte.length), "UTF-8");
+        if (paramInt != 0)
+        {
+          if (paramInt != 1)
+          {
+            if (paramInt != 2)
+            {
+              if (paramInt != 3) {
+                return;
+              }
+              WyLog.e(paramArrayOfByte);
+              return;
+            }
+            WyLog.w(paramArrayOfByte);
+            return;
+          }
+          WyLog.i(paramArrayOfByte);
+          return;
+        }
+        WyLog.d(paramArrayOfByte);
+        return;
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte)
+      {
+        WyLog.e("traceLog convert String error", paramArrayOfByte);
+      }
     }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      WyLog.e("traceLog convert String error", paramArrayOfByte);
-      return;
-    }
-    WyLog.d(paramArrayOfByte);
-    return;
-    WyLog.i(paramArrayOfByte);
-    return;
-    WyLog.w(paramArrayOfByte);
-    return;
-    WyLog.e(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.cmd.WeiyunSDKContext
  * JD-Core Version:    0.7.0.1
  */

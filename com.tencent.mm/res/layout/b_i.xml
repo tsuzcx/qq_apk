@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/gg3" android:background="@drawable/b47" android:paddingLeft="@dimen/ahz" android:paddingRight="@dimen/ahz" android:layout_width="fill_parent" android:layout_height="@dimen/ai1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:textColor="@color/al6" android:id="@id/gg2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/c0i" android:importantForAccessibility="no" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gg4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gjs" android:singleLine="true" />
+    <com.tencent.mm.plugin.luckymoney.ui.FixedAlignRightLabelEditText android:textSize="@dimen/t" android:textColorHint="@color/ge" android:gravity="center|right" android:id="@id/gex" android:background="@null" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" android:digits="1234567890." />
+</LinearLayout>

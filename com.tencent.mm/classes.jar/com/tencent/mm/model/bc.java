@@ -1,6 +1,15 @@
 package com.tencent.mm.model;
 
-public final class bc {}
+public abstract interface bc
+{
+  public abstract void bCn();
+  
+  public abstract void bCo();
+  
+  public abstract void bCp();
+  
+  public abstract void bCq();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar

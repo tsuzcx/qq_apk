@@ -26,7 +26,10 @@ public class ArkAppInfo$ArkWhiteUrlItem
   
   public String toString()
   {
-    return this.ruleDomain + this.rulePath;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.ruleDomain);
+    localStringBuilder.append(this.rulePath);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -37,7 +40,7 @@ public class ArkAppInfo$ArkWhiteUrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.ArkAppInfo.ArkWhiteUrlItem
  * JD-Core Version:    0.7.0.1
  */

@@ -5,32 +5,33 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.sns.h.k;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ax;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.k.m;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.model.bf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.a.h;
-import com.tencent.mm.ui.contact.m;
+import com.tencent.mm.ui.contact.a.j;
 import com.tencent.mm.ui.contact.o;
-import com.tencent.mm.ui.contact.p;
+import com.tencent.mm.ui.contact.q;
+import com.tencent.mm.ui.contact.r;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
-  extends p
+  extends r
 {
+  private List<com.tencent.mm.plugin.sns.k.n> RGA;
+  public View.OnClickListener RGB;
   private List<String> dataList;
-  private Cursor gqa;
-  private List<k> sdp;
-  public View.OnClickListener sdq;
+  private Cursor pKb;
   
   public a(MMBaseSelectContactUI paramMMBaseSelectContactUI)
   {
@@ -40,46 +41,50 @@ public final class a
   private a(MMBaseSelectContactUI paramMMBaseSelectContactUI, byte paramByte)
   {
     super(paramMMBaseSelectContactUI, null, true, true);
-    AppMethodBeat.i(145676);
-    this.gqa = null;
-    this.sdp = null;
+    AppMethodBeat.i(99808);
+    this.pKb = null;
+    this.RGA = null;
     this.dataList = new ArrayList();
-    this.sdq = null;
-    ab.i("MicroMsg.SnsChatRoomAdapter", "create!");
-    Kg();
-    AppMethodBeat.o(145676);
+    this.RGB = null;
+    Log.i("MicroMsg.SnsChatRoomAdapter", "create!");
+    aNm();
+    AppMethodBeat.o(99808);
   }
   
-  private void Kg()
+  public final void aNm()
   {
-    AppMethodBeat.i(145678);
-    ab.i("MicroMsg.SnsChatRoomAdapter", "resetData");
-    this.sdp = ag.cpb().riU.rma;
-    if (this.gqa != null)
+    AppMethodBeat.i(99810);
+    Log.i("MicroMsg.SnsChatRoomAdapter", "resetData");
+    this.RGA = al.hgx().Qzf.QCU;
+    if (this.pKb != null)
     {
-      this.gqa.close();
-      this.gqa = null;
+      this.pKb.close();
+      this.pKb = null;
     }
-    this.gqa = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YF().a(t.flj, this.ejc, this.AdB, "");
+    this.pKb = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzG().a(5, cVa(), com.tencent.mm.l.a.maX, jyS(), "");
     clearCache();
     Object localObject;
-    if (!bo.es(this.sdp))
+    if (!Util.isNullOrNil(this.RGA))
     {
-      localObject = this.sdp.iterator();
+      localObject = this.RGA.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        k localk = (k)((Iterator)localObject).next();
-        this.dataList.add(localk.name);
+        com.tencent.mm.plugin.sns.k.n localn = (com.tencent.mm.plugin.sns.k.n)((Iterator)localObject).next();
+        h.baF();
+        au localau = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(localn.name);
+        if ((localau != null) && ((int)localau.maN != 0)) {
+          this.dataList.add(localn.name);
+        }
       }
     }
-    if (!bo.es(this.dataList))
+    if (!Util.isNullOrNil(this.dataList))
     {
       this.dataList.add(0, "recent_use");
       this.dataList.add("recent");
     }
-    while (this.gqa.moveToNext())
+    while (this.pKb.moveToNext())
     {
-      localObject = this.gqa.getString(this.gqa.getColumnIndex("username"));
+      localObject = this.pKb.getString(this.pKb.getColumnIndex("username"));
       if (!this.dataList.contains(localObject))
       {
         this.dataList.add(localObject);
@@ -87,46 +92,46 @@ public final class a
         this.dataList.add(0, "recent");
       }
     }
-    AppMethodBeat.o(145678);
+    AppMethodBeat.o(99810);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(145679);
+    AppMethodBeat.i(99811);
     int i = this.dataList.size();
-    AppMethodBeat.o(145679);
+    AppMethodBeat.o(99811);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a yk(int paramInt)
   {
-    AppMethodBeat.i(145677);
+    AppMethodBeat.i(99809);
     Object localObject2 = (String)this.dataList.get(paramInt);
-    if (bo.isEqual((String)localObject2, "recent_use")) {
-      localObject1 = new h(paramInt);
+    if (Util.isEqual((String)localObject2, "recent_use")) {
+      localObject1 = new j(paramInt);
     }
-    for (((h)localObject1).mZq = this.Adk.getActivity().getResources().getString(2131303867);; ((h)localObject1).mZq = this.Adk.getActivity().getResources().getString(2131303866))
+    for (((j)localObject1).header = this.afex.getActivity().getResources().getString(b.j.sns_label_select_group_recent_use);; ((j)localObject1).header = this.afex.getActivity().getResources().getString(b.j.sns_label_select_group_recent))
     {
-      AppMethodBeat.o(145677);
+      AppMethodBeat.o(99809);
       return localObject1;
-      if (!bo.isEqual((String)localObject2, "recent")) {
+      if (!Util.isEqual((String)localObject2, "recent")) {
         break;
       }
-      localObject1 = new h(paramInt);
+      localObject1 = new j(paramInt);
     }
-    g.RM();
-    Object localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arq((String)localObject2);
+    h.baF();
+    Object localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().bxq((String)localObject2);
     if (localObject1 == null)
     {
-      g.RM();
-      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arv((String)localObject2);
+      h.baF();
+      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().bxv((String)localObject2);
     }
     for (;;)
     {
       localObject2 = new com.tencent.mm.plugin.sns.ui.a.a.a(paramInt);
-      ((com.tencent.mm.plugin.sns.ui.a.a.a)localObject2).sdq = this.sdq;
-      ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((ad)localObject1);
-      ((com.tencent.mm.ui.contact.a.a)localObject2).Adl = cni();
+      ((com.tencent.mm.plugin.sns.ui.a.a.a)localObject2).RGB = this.RGB;
+      ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((au)localObject1);
+      ((com.tencent.mm.ui.contact.a.a)localObject2).afey = gZe();
       localObject1 = localObject2;
       break;
     }
@@ -134,7 +139,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

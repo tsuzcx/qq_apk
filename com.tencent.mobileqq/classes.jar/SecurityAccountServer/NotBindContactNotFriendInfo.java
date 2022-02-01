@@ -8,14 +8,14 @@ public final class NotBindContactNotFriendInfo
   extends JceStruct
 {
   static byte[] cache_MobileNoMask = (byte[])new byte[1];
-  public byte[] MobileNoMask;
-  public int age;
+  public byte[] MobileNoMask = null;
+  public int age = 0;
   public String contactsInfoEncrypt = "";
-  public boolean isNew;
+  public boolean isNew = false;
   public String nickname = "";
-  public int sameFriend;
-  public int sex;
-  public long uAbiFlag;
+  public int sameFriend = 0;
+  public int sex = 0;
+  public long uAbiFlag = 0L;
   
   static
   {
@@ -57,14 +57,15 @@ public final class NotBindContactNotFriendInfo
     paramJceOutputStream.write(this.age, 4);
     paramJceOutputStream.write(this.sameFriend, 5);
     paramJceOutputStream.write(this.isNew, 6);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 7);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.NotBindContactNotFriendInfo
  * JD-Core Version:    0.7.0.1
  */

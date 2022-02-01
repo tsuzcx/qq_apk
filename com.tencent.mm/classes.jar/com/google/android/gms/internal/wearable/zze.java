@@ -1,6 +1,5 @@
 package com.google.android.gms.internal.wearable;
 
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.DataMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -9,12 +8,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 
-@VisibleForTesting
 public final class zze
 {
   public static zzf zza(DataMap paramDataMap)
   {
-    AppMethodBeat.i(70674);
+    AppMethodBeat.i(100657);
     zzg localzzg = new zzg();
     ArrayList localArrayList = new ArrayList();
     Object localObject1 = new TreeSet(paramDataMap.keySet());
@@ -32,18 +30,18 @@ public final class zze
     }
     localzzg.zzfy = arrayOfzzh;
     paramDataMap = new zzf(localzzg, localArrayList);
-    AppMethodBeat.o(70674);
+    AppMethodBeat.o(100657);
     return paramDataMap;
   }
   
   private static zzi zza(List<Asset> paramList, Object paramObject)
   {
-    AppMethodBeat.i(70676);
+    AppMethodBeat.i(100659);
     zzi localzzi1 = new zzi();
     if (paramObject == null)
     {
       localzzi1.type = 14;
-      AppMethodBeat.o(70676);
+      AppMethodBeat.o(100659);
       return localzzi1;
     }
     localzzi1.zzgc = new zzj();
@@ -58,7 +56,7 @@ public final class zze
     Object localObject3;
     for (;;)
     {
-      AppMethodBeat.o(70676);
+      AppMethodBeat.o(100659);
       return localzzi1;
       if ((paramObject instanceof Integer))
       {
@@ -159,7 +157,7 @@ public final class zze
         {
           paramList = String.valueOf(localObject1.getClass());
           paramList = new IllegalArgumentException(String.valueOf(paramList).length() + 130 + "The only ArrayList element types supported by DataBundleUtil are String, Integer, Bundle, and null, but this ArrayList contains a " + paramList);
-          AppMethodBeat.o(70676);
+          AppMethodBeat.o(100659);
           throw paramList;
         }
         if ((j == 14) && (localzzi2.type != 14))
@@ -179,7 +177,7 @@ public final class zze
         paramList = String.valueOf(paramObject.getClass());
         paramObject = String.valueOf(localObject1.getClass());
         paramList = new IllegalArgumentException(String.valueOf(paramList).length() + 80 + String.valueOf(paramObject).length() + "ArrayList elements must all be of the sameclass, but this one contains a " + paramList + " and a " + paramObject);
-        AppMethodBeat.o(70676);
+        AppMethodBeat.o(100659);
         throw paramList;
         localzzi1.zzgc.zzgm = ((zzi[])localObject3);
         break;
@@ -188,7 +186,7 @@ public final class zze
         for (paramList = "newFieldValueFromValue: unexpected value ".concat(paramList);; paramList = new String("newFieldValueFromValue: unexpected value "))
         {
           paramList = new RuntimeException(paramList);
-          AppMethodBeat.o(70676);
+          AppMethodBeat.o(100659);
           throw paramList;
         }
       }
@@ -197,7 +195,7 @@ public final class zze
   
   public static DataMap zza(zzf paramzzf)
   {
-    AppMethodBeat.i(70675);
+    AppMethodBeat.i(100658);
     DataMap localDataMap = new DataMap();
     zzh[] arrayOfzzh = paramzzf.zzfw.zzfy;
     int j = arrayOfzzh.length;
@@ -208,85 +206,85 @@ public final class zze
       zza(paramzzf.zzfx, localDataMap, localzzh.name, localzzh.zzga);
       i += 1;
     }
-    AppMethodBeat.o(70675);
+    AppMethodBeat.o(100658);
     return localDataMap;
   }
   
   private static void zza(List<Asset> paramList, DataMap paramDataMap, String paramString, zzi paramzzi)
   {
-    AppMethodBeat.i(70677);
+    AppMethodBeat.i(100660);
     int i = paramzzi.type;
     if (i == 14)
     {
       paramDataMap.putString(paramString, null);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     Object localObject = paramzzi.zzgc;
     if (i == 1)
     {
       paramDataMap.putByteArray(paramString, ((zzj)localObject).zzgd);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 11)
     {
       paramDataMap.putStringArray(paramString, ((zzj)localObject).zzgn);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 12)
     {
       paramDataMap.putLongArray(paramString, ((zzj)localObject).zzgo);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 15)
     {
       paramDataMap.putFloatArray(paramString, ((zzj)localObject).zzgp);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 2)
     {
       paramDataMap.putString(paramString, ((zzj)localObject).zzge);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 3)
     {
       paramDataMap.putDouble(paramString, ((zzj)localObject).zzgf);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 4)
     {
       paramDataMap.putFloat(paramString, ((zzj)localObject).zzgg);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 5)
     {
       paramDataMap.putLong(paramString, ((zzj)localObject).zzgh);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 6)
     {
       paramDataMap.putInt(paramString, ((zzj)localObject).zzgi);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 7)
     {
       paramDataMap.putByte(paramString, (byte)((zzj)localObject).zzgj);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 8)
     {
       paramDataMap.putBoolean(paramString, ((zzj)localObject).zzgk);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 13)
@@ -298,12 +296,12 @@ public final class zze
         for (paramList = "populateBundle: unexpected type for: ".concat(paramList);; paramList = new String("populateBundle: unexpected type for: "))
         {
           paramList = new RuntimeException(paramList);
-          AppMethodBeat.o(70677);
+          AppMethodBeat.o(100660);
           throw paramList;
         }
       }
       paramDataMap.putAsset(paramString, (Asset)paramList.get((int)((zzj)localObject).zzgq));
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     int j;
@@ -321,7 +319,7 @@ public final class zze
         i += 1;
       }
       paramDataMap.putDataMap(paramString, paramzzi);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       return;
     }
     if (i == 10)
@@ -350,13 +348,13 @@ public final class zze
           } while (localDataMap.type == 14);
           i = localDataMap.type;
           paramList = new IllegalArgumentException(String.valueOf(paramString).length() + 48 + "Unexpected TypedValue type: " + i + " for key " + paramString);
-          AppMethodBeat.o(70677);
+          AppMethodBeat.o(100660);
           throw paramList;
           k = i;
         } while (localDataMap.type == i);
         j = localDataMap.type;
         paramList = new IllegalArgumentException(String.valueOf(paramString).length() + 126 + "The ArrayList elements should all be the same type, but ArrayList with key " + paramString + " contains items of type " + i + " and " + j);
-        AppMethodBeat.o(70677);
+        AppMethodBeat.o(100660);
         throw paramList;
       }
       paramzzi = new ArrayList(((zzj)localObject).zzgm.length);
@@ -401,45 +399,45 @@ public final class zze
         }
         label927:
         paramList = new IllegalArgumentException(39 + "Unexpected typeOfArrayList: " + i);
-        AppMethodBeat.o(70677);
+        AppMethodBeat.o(100660);
         throw paramList;
       }
       if (i == 14)
       {
         paramDataMap.putStringArrayList(paramString, paramzzi);
-        AppMethodBeat.o(70677);
+        AppMethodBeat.o(100660);
         return;
       }
       if (i == 9)
       {
         paramDataMap.putDataMapArrayList(paramString, paramzzi);
-        AppMethodBeat.o(70677);
+        AppMethodBeat.o(100660);
         return;
       }
       if (i == 2)
       {
         paramDataMap.putStringArrayList(paramString, paramzzi);
-        AppMethodBeat.o(70677);
+        AppMethodBeat.o(100660);
         return;
       }
       if (i == 6)
       {
         paramDataMap.putIntegerArrayList(paramString, paramzzi);
-        AppMethodBeat.o(70677);
+        AppMethodBeat.o(100660);
         return;
       }
       paramList = new IllegalStateException(39 + "Unexpected typeOfArrayList: " + i);
-      AppMethodBeat.o(70677);
+      AppMethodBeat.o(100660);
       throw paramList;
     }
     paramList = new RuntimeException(43 + "populateBundle: unexpected type " + i);
-    AppMethodBeat.o(70677);
+    AppMethodBeat.o(100660);
     throw paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.wearable.zze
  * JD-Core Version:    0.7.0.1
  */

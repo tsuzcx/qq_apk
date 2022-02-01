@@ -6,6 +6,8 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import unite.DynamicSearch.ExtensionRequestInfo;
+import unite.DynamicSearch.RootSearcherRequest;
 
 public final class UniteSearch$ReqBody
   extends MessageMicro<ReqBody>
@@ -24,14 +26,15 @@ public final class UniteSearch$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 56, 64, 72, 802 }, new String[] { "key_word", "version", "req_entity", "req_topic", "from_action", "client_has_people_and_qun", "from_tabbar_index", "source", "locate_result_count", "extension_request_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 56, 64, 72, 802 }, new String[] { "key_word", "version", "req_entity", "req_topic", "from_action", "client_has_people_and_qun", "from_tabbar_index", "source", "locate_result_count", "extension_request_info" }, new Object[] { localByteStringMicro1, localByteStringMicro2, null, null, localInteger, localInteger, localInteger, localInteger, localInteger, null }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     pb.unite.search.UniteSearch.ReqBody
  * JD-Core Version:    0.7.0.1
  */

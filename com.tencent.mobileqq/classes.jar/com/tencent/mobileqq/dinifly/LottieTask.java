@@ -2,8 +2,9 @@ package com.tencent.mobileqq.dinifly;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -22,13 +23,13 @@ public class LottieTask<T>
   private volatile LottieResult<T> result = null;
   private final Set<LottieListener<T>> successListeners = new LinkedHashSet(1);
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public LottieTask(Callable<LottieResult<T>> paramCallable)
   {
     this(paramCallable, false);
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   LottieTask(Callable<LottieResult<T>> paramCallable, boolean paramBoolean)
   {
     if (paramBoolean) {
@@ -46,56 +47,27 @@ public class LottieTask<T>
     EXECUTOR.execute(new LottieTask.LottieFutureTask(this, paramCallable));
   }
   
-  /* Error */
   private void notifyFailureListeners(Throwable paramThrowable)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 113	java/util/ArrayList
-    //   5: dup
-    //   6: aload_0
-    //   7: getfield 54	com/tencent/mobileqq/dinifly/LottieTask:failureListeners	Ljava/util/Set;
-    //   10: invokespecial 116	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   13: astore_2
-    //   14: aload_2
-    //   15: invokeinterface 122 1 0
-    //   20: ifeq +15 -> 35
-    //   23: ldc 124
-    //   25: ldc 126
-    //   27: aload_1
-    //   28: invokestatic 132	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   31: pop
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: return
-    //   35: aload_2
-    //   36: invokeinterface 136 1 0
-    //   41: astore_2
-    //   42: aload_2
-    //   43: invokeinterface 141 1 0
-    //   48: ifeq -16 -> 32
-    //   51: aload_2
-    //   52: invokeinterface 144 1 0
-    //   57: checkcast 146	com/tencent/mobileqq/dinifly/LottieListener
-    //   60: aload_1
-    //   61: invokeinterface 149 2 0
-    //   66: goto -24 -> 42
-    //   69: astore_1
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	LottieTask
-    //   0	74	1	paramThrowable	Throwable
-    //   13	39	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	32	69	finally
-    //   35	42	69	finally
-    //   42	66	69	finally
+    try
+    {
+      Object localObject = new ArrayList(this.failureListeners);
+      if (((List)localObject).isEmpty())
+      {
+        Logger.warning("Lottie encountered an error but no failure listener was added:", paramThrowable);
+        return;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((LottieListener)((Iterator)localObject).next()).onResult(paramThrowable);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramThrowable;
+    }
   }
   
   private void notifyListeners()
@@ -111,17 +83,24 @@ public class LottieTask<T>
       while (localIterator.hasNext()) {
         ((LottieListener)localIterator.next()).onResult(paramT);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramT;
+    }
   }
   
   private void setResult(@Nullable LottieResult<T> paramLottieResult)
   {
-    if (this.result != null) {
-      throw new IllegalStateException("A task may only be set once.");
+    if (this.result == null)
+    {
+      this.result = paramLottieResult;
+      notifyListeners();
+      return;
     }
-    this.result = paramLottieResult;
-    notifyListeners();
+    throw new IllegalStateException("A task may only be set once.");
   }
   
   public LottieTask<T> addFailureListener(LottieListener<Throwable> paramLottieListener)

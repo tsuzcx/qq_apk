@@ -1,25 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
-import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.page.ad;
 
-public abstract interface c
-  extends b
+public class c
+  extends ab<ad>
 {
-  public abstract g CU(String paramString);
-  
-  public abstract void a(c.b paramb);
-  
-  public abstract g aFY();
-  
-  public abstract g aFZ();
-  
-  public abstract void b(c.b paramb);
-  
-  public abstract void onDestroy();
+  public static int CTRL_INDEX = 71;
+  public static String NAME = "getCurrentRoute";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.c
  * JD-Core Version:    0.7.0.1
  */

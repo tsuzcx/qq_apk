@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="296.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/oo0" android:background="@drawable/e_x" android:layout_width="fill_parent" android:layout_height="325.0dip" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/oo2" android:layout_width="214.0dip" android:layout_height="220.0dip" android:layout_marginTop="9.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/black" android:id="@id/oo3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="玩过的小游戏可以在首页下拉找到哦" android:layout_above="@id/oo1" android:layout_centerHorizontal="true" />
+    <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_above="@id/oo1" />
+    <Button android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/black" android:id="@id/oo1" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="54.0dip" android:text="我知道了" android:layout_alignBottom="@id/oo0" />
+</RelativeLayout>

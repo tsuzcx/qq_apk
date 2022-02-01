@@ -1,138 +1,193 @@
 package com.tencent.mm.plugin.subapp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.model.az.c;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import java.util.LinkedList;
-import java.util.Queue;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.vfs.y;
 
 public final class b
-  implements e, f
+  implements az.c
 {
-  private Queue<b.a> sWY = null;
-  private boolean sWZ = false;
-  
-  private void cGR()
+  private static int anE(int paramInt)
   {
-    AppMethodBeat.i(25242);
-    if (this.sWZ)
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(25242);
-      return;
+      i = -1;
+      return i;
     }
-    if (this.sWY.size() == 0)
+    int i = 0;
+    int j = paramInt;
+    paramInt = i;
+    for (;;)
     {
-      AppMethodBeat.o(25242);
-      return;
+      i = paramInt;
+      if (paramInt >= 32) {
+        break;
+      }
+      j = j >> 1 & 0x7FFFFFFF;
+      i = paramInt;
+      if (j == 0) {
+        break;
+      }
+      paramInt += 1;
     }
-    Object localObject = (b.a)this.sWY.peek();
-    if (((b.a)localObject).sXa.size() == 0)
-    {
-      this.sWY.poll();
-      aw.aaz();
-      c.Ru().set(8193, ((b.a)localObject).grD);
-      aw.aaz();
-      c.Ru().set(8449, Long.valueOf(bo.aox()));
-      AppMethodBeat.o(25242);
-      return;
-    }
-    localObject = (String)((b.a)localObject).sXa.peek();
-    if ((localObject == null) || (((String)localObject).length() <= 0))
-    {
-      AppMethodBeat.o(25242);
-      return;
-    }
-    this.sWZ = true;
-    localObject = new a((String)localObject);
-    aw.Rc().a(141, this);
-    aw.Rc().a((m)localObject, 0);
-    AppMethodBeat.o(25242);
   }
   
-  public final void a(e.c paramc) {}
-  
-  public final e.b b(e.a parama)
+  private static int anF(int paramInt)
   {
-    AppMethodBeat.i(25241);
-    parama = aa.a(parama.eyJ.woR);
-    if (this.sWY == null) {
-      this.sWY = new LinkedList();
-    }
-    parama = new b.a(parama);
-    if (parama.grD != null)
+    AppMethodBeat.i(28913);
+    paramInt = anE(paramInt);
+    if (paramInt == -1)
     {
-      this.sWY.offer(parama);
-      cGR();
+      AppMethodBeat.o(28913);
+      return 0;
     }
-    AppMethodBeat.o(25241);
+    AppMethodBeat.o(28913);
+    return 1 << paramInt;
+  }
+  
+  private String bT(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(28908);
+    bh.bCz();
+    if (!c.isSDCardAvailable())
+    {
+      AppMethodBeat.o(28908);
+      return null;
+    }
+    String str = bU(paramInt, paramBoolean);
+    if (y.ZC(str))
+    {
+      AppMethodBeat.o(28908);
+      return str;
+    }
+    bCl();
+    AppMethodBeat.o(28908);
     return null;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  private String bU(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(25243);
-    if (paramm.getType() != 141)
+    AppMethodBeat.i(28911);
+    paramInt = anF(paramInt);
+    if (paramInt == 0)
     {
-      this.sWZ = false;
-      AppMethodBeat.o(25243);
+      AppMethodBeat.o(28911);
+      return null;
+    }
+    String str = V(paramInt, paramBoolean);
+    AppMethodBeat.o(28911);
+    return str;
+  }
+  
+  public final String V(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(28912);
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(28912);
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append(com.tencent.mm.loader.i.b.bmD()).append("vuserpic_").append(Integer.toHexString(paramInt));
+    if (paramBoolean) {}
+    for (String str = "_HD";; str = "")
+    {
+      str = str + ".png";
+      AppMethodBeat.o(28912);
+      return str;
+    }
+  }
+  
+  public final void bCl()
+  {
+    AppMethodBeat.i(28909);
+    bh.bCz();
+    if (!c.isSDCardAvailable())
+    {
+      AppMethodBeat.o(28909);
       return;
     }
-    aw.Rc().b(141, this);
-    paramString = ((a)paramm).url;
-    paramm = (b.a)this.sWY.peek();
-    if ((paramm == null) || (paramm.sXa.size() == 0))
+    bh.bCz();
+    long l1 = Util.nullAs((Long)c.ban().d(66051, null), 0L);
+    long l2 = Util.nowMilliSecond();
+    if (432000000L > l2 - l1)
     {
-      ab.e("MicroMsg.PushMessageExtension", "getDoSceneQueue failed ! reset queue!");
-      this.sWY = new LinkedList();
-      this.sWZ = false;
-      AppMethodBeat.o(25243);
+      AppMethodBeat.o(28909);
       return;
     }
-    if (paramm.sXa.size() == 0)
+    bh.bCz();
+    c.ban().B(66051, Long.valueOf(l2));
+    new a();
+    AppMethodBeat.o(28909);
+  }
+  
+  public final String vd(int paramInt)
+  {
+    AppMethodBeat.i(28906);
+    String str = bT(paramInt, true);
+    AppMethodBeat.o(28906);
+    return str;
+  }
+  
+  public final String ve(int paramInt)
+  {
+    AppMethodBeat.i(28907);
+    String str = bT(paramInt, false);
+    AppMethodBeat.o(28907);
+    return str;
+  }
+  
+  public final boolean vf(int paramInt)
+  {
+    AppMethodBeat.i(28910);
+    if (paramInt == 0)
     {
-      ab.e("MicroMsg.PushMessageExtension", "get imgQueue failed ! ignore this message");
-      this.sWY.poll();
-      this.sWZ = false;
-      AppMethodBeat.o(25243);
-      return;
+      AppMethodBeat.o(28910);
+      return false;
     }
-    if (!((String)paramm.sXa.peek()).equals(paramString))
+    int i = 0;
+    while (i < 32)
     {
-      ab.e("MicroMsg.PushMessageExtension", "check img url failed ! ignore this message");
-      this.sWY.poll();
-      this.sWZ = false;
-      AppMethodBeat.o(25243);
-      return;
+      if ((!y.ZC(V(1 << i & paramInt, false))) || (!y.ZC(V(1 << i & paramInt, true))))
+      {
+        AppMethodBeat.o(28910);
+        return false;
+      }
+      i += 1;
     }
-    if ((paramInt1 != 0) || (paramInt2 != 0))
+    AppMethodBeat.o(28910);
+    return true;
+  }
+  
+  static final class a
+    implements h
+  {
+    public a()
     {
-      ab.e("MicroMsg.PushMessageExtension", "down failed [" + paramInt1 + "," + paramInt2 + "] ignore this message : img:[" + paramString + "] ");
-      this.sWY.poll();
-      this.sWZ = false;
-      AppMethodBeat.o(25243);
-      return;
+      AppMethodBeat.i(28904);
+      bh.aZW().a(167, this);
+      a locala = new a();
+      bh.aZW().a(locala, 0);
+      AppMethodBeat.o(28904);
     }
-    paramm.sXa.poll();
-    this.sWZ = false;
-    cGR();
-    AppMethodBeat.o(25243);
+    
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+    {
+      AppMethodBeat.i(28905);
+      bh.aZW().b(167, this);
+      AppMethodBeat.o(28905);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.b.b
  * JD-Core Version:    0.7.0.1
  */

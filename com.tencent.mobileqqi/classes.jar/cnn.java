@@ -1,45 +1,27 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.profile.DataTag;
 import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class cnn
-  implements View.OnLongClickListener
+class cnn
+  implements View.OnClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cno(this);
-  private DataTag jdField_a_of_type_ComTencentMobileqqProfileDataTag;
+  cnn(cnm paramcnm) {}
   
-  public cnn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if ((paramView == null) || (!(paramView.getTag() instanceof DataTag))) {
-      return false;
+    if ((FriendProfileCardActivity.a(this.a.a) != null) && (FriendProfileCardActivity.a(this.a.a).isShowing())) {
+      FriendProfileCardActivity.a(this.a.a).dismiss();
     }
-    Object localObject = (DataTag)paramView.getTag();
-    switch (((DataTag)localObject).C)
+    if ((cnm.a(this.a) != null) && ((cnm.a(this.a).a instanceof String)))
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (ProfileActivity.AllInOne.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileDataTag = ((DataTag)localObject);
-        localObject = new QQCustomMenu();
-        ((QQCustomMenu)localObject).a(2131234879, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131561879));
-        FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, BubbleContextMenu.a(paramView, (QQCustomMenu)localObject, this.jdField_a_of_type_AndroidViewView$OnClickListener, null));
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqProfileDataTag = ((DataTag)localObject);
-        localObject = new QQCustomMenu();
-        ((QQCustomMenu)localObject).a(2131234879, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131561879));
-        FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, BubbleContextMenu.a(paramView, (QQCustomMenu)localObject, this.jdField_a_of_type_AndroidViewView$OnClickListener, null));
-      }
+      this.a.a.a((String)cnm.a(this.a).a);
+      ReportController.b(this.a.a.b, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.f), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a)), "", "", "");
     }
   }
 }

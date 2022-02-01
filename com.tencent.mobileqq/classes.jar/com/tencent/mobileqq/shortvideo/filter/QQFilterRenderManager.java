@@ -5,47 +5,26 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.aekit.api.standard.ai.AEDetector;
-import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
-import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIAttr;
-import com.tencent.aekit.plugin.core.AIInput;
-import com.tencent.aekit.plugin.core.AIParam;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask.FaceDetectTaskResult;
-import com.tencent.mobileqq.shortvideo.facedancegame.IFaceDetectCallBack;
 import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
 import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
 import com.tencent.mobileqq.shortvideo.resource.GestureResource;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
 import com.tencent.mobileqq.shortvideo.resource.Resources;
 import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
 import com.tencent.mobileqq.sveffects.libsveffects.BuildConfig;
 import com.tencent.sveffects.SLog;
 import com.tencent.sveffects.SdkContext;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
 import com.tencent.ttpic.openapi.PTFaceAttr;
-import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
-import com.tencent.ttpic.openapi.PTFaceDetector;
-import com.tencent.ttpic.openapi.PTSegAttr;
-import com.tencent.ttpic.openapi.facedetect.FaceDetector.FACE_DETECT_MODE;
-import com.tencent.ttpic.openapi.filter.VideoFilterListExtension;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import com.tencent.ttpic.openapi.model.StarParam;
-import com.tencent.ttpic.openapi.plugin.AICtrl;
-import com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector;
-import com.tencent.ttpic.openapi.ttpicmodule.PTSegmenter;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager;
 import com.tencent.ttpic.openapi.util.RetrieveDataManager.DATA_TYPE;
-import com.tencent.ttpic.openapi.util.VideoFilterUtil;
-import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -54,51 +33,60 @@ public class QQFilterRenderManager
 {
   public static final float FACE_DET_SCALE = 0.25F;
   private static final String TAG = "QQFilterRenderManager";
-  private static final QQFilterCreator mDynamicCreator = new QQFilterCreator();
   private static final String sId_Prefix = "FRM_";
   private static final AtomicInteger sInstanceCount = new AtomicInteger(0);
-  private AEDetector aeDetector;
   private AIAttr aiAttr;
   public CameraInterFace cameraInterFace;
-  private boolean enableGauss = true;
-  private FaceDetector.FACE_DETECT_MODE faceDetectMode = FaceDetector.FACE_DETECT_MODE.MULTIPLE;
-  private boolean isAEDetectorInited = false;
-  public boolean mBackCameraDetectEnable = false;
-  private long mBeginTime = 0L;
+  private boolean enableGauss;
+  private boolean isAEDetectorInited;
+  public boolean mBackCameraDetectEnable;
+  private long mBeginTime;
   private FilterBusinessOperation mBusinessOpt;
-  public boolean mDetectedFace = false;
-  public boolean mDetectedGesture = false;
-  private long mEndTime = 0L;
+  public boolean mDetectedFace;
+  public boolean mDetectedGesture;
+  private long mEndTime;
   private PTFaceAttr mFaceAttr;
-  private int mFaceDetectBuffer = 0;
-  int mFaceDetectHeight = 0;
-  int mFaceDetectWidth = 0;
-  PTFaceDetector mFaceDetector = null;
-  private QQFilterRenderManager.FaceDetectParam mFaceParam = new QQFilterRenderManager.FaceDetectParam(null);
+  private int mFaceDetectBuffer;
+  int mFaceDetectHeight;
+  int mFaceDetectWidth;
+  private QQFilterRenderManager.FaceDetectParam mFaceParam;
   int mFilterHeight;
   int mFilterWidth;
-  private boolean mHasGestureInit = false;
+  private boolean mHasGestureInit;
   private String mId = "";
-  private final FilterManagerInternal mInternal = new FilterManagerInternal();
-  public GestureKeyInfo mLastGestureDetector = null;
-  public boolean mNeedDoFaceDetect = false;
-  public boolean mNeedDoGestureDetect = false;
-  public boolean mNeedDoYTGestureDetect = false;
-  private final Map<String, String> mParamMap = new ConcurrentHashMap();
-  private PTSegAttr mSegAttr;
+  private final FilterManagerInternal mInternal;
+  public GestureKeyInfo mLastGestureDetector;
+  public boolean mNeedDoFaceDetect;
+  public boolean mNeedDoGestureDetect;
+  public boolean mNeedDoYTGestureDetect;
+  private final Map<String, String> mParamMap;
   private StarParam mStarParam;
   private int mSufaceHeight;
   private int mSufaceWidth;
-  private boolean mSurfaceDestroyed = false;
+  private boolean mSurfaceDestroyed;
   private double mUIAspectRatio;
-  private boolean needEmotionDetect = false;
-  private boolean needFaceDetect = true;
-  private boolean needGenderDetect = false;
-  private boolean needHandDetect = false;
-  private boolean needSegment = false;
   
   public QQFilterRenderManager()
   {
+    this.isAEDetectorInited = false;
+    this.mInternal = new FilterManagerInternal();
+    this.enableGauss = true;
+    this.mFaceDetectWidth = 0;
+    this.mFaceDetectHeight = 0;
+    this.mFaceDetectBuffer = 0;
+    this.mDetectedFace = false;
+    this.mNeedDoFaceDetect = false;
+    this.mNeedDoYTGestureDetect = false;
+    this.mBackCameraDetectEnable = false;
+    this.mFaceParam = new QQFilterRenderManager.FaceDetectParam(null);
+    this.mBeginTime = 0L;
+    this.mEndTime = 0L;
+    this.mNeedDoGestureDetect = false;
+    this.mDetectedGesture = false;
+    this.mHasGestureInit = false;
+    this.mLastGestureDetector = null;
+    this.mParamMap = new ConcurrentHashMap();
+    this.mSurfaceDestroyed = false;
     myId();
     this.mInternal.setCommonParam(this);
     this.mBusinessOpt = new FilterBusinessOperation(this);
@@ -111,6 +99,26 @@ public class QQFilterRenderManager
   
   public QQFilterRenderManager(int[] paramArrayOfInt, Object[] paramArrayOfObject, boolean paramBoolean)
   {
+    int i = 0;
+    this.isAEDetectorInited = false;
+    this.mInternal = new FilterManagerInternal();
+    this.enableGauss = true;
+    this.mFaceDetectWidth = 0;
+    this.mFaceDetectHeight = 0;
+    this.mFaceDetectBuffer = 0;
+    this.mDetectedFace = false;
+    this.mNeedDoFaceDetect = false;
+    this.mNeedDoYTGestureDetect = false;
+    this.mBackCameraDetectEnable = false;
+    this.mFaceParam = new QQFilterRenderManager.FaceDetectParam(null);
+    this.mBeginTime = 0L;
+    this.mEndTime = 0L;
+    this.mNeedDoGestureDetect = false;
+    this.mDetectedGesture = false;
+    this.mHasGestureInit = false;
+    this.mLastGestureDetector = null;
+    this.mParamMap = new ConcurrentHashMap();
+    this.mSurfaceDestroyed = false;
     myId();
     this.mInternal.setCommonParam(this);
     this.mBusinessOpt = new FilterBusinessOperation(this);
@@ -126,18 +134,15 @@ public class QQFilterRenderManager
           i += 1;
         }
         localChainBuilder.commit();
+        return;
       }
+      this.mInternal.push(paramArrayOfInt, paramArrayOfObject);
     }
-    else {
-      return;
-    }
-    this.mInternal.push(paramArrayOfInt, paramArrayOfObject);
   }
   
   private void clear()
   {
     destroyGestureDetector();
-    this.mBusinessOpt.setPtvVideoFilter(null);
     this.mParamMap.clear();
   }
   
@@ -149,37 +154,7 @@ public class QQFilterRenderManager
     GestureMgrRecognize.getInstance().stop();
   }
   
-  private void doAIDetect(Frame paramFrame)
-  {
-    this.mBeginTime = SystemClock.elapsedRealtimeNanos();
-    AIParam localAIParam = new AIParam();
-    int i = VideoFilterUtil.get4DirectionAngle(this.aeDetector.getRotation());
-    localAIParam.update(paramFrame.width, paramFrame.height, i);
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "phoneRoll", Float.valueOf(90.0F));
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "starParam", this.mStarParam);
-    localAIParam.setModuleParam(AEDetectorType.HAND.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.HAND.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.EMOTION.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setSurfaceTime(System.currentTimeMillis() * 1000000L);
-    AICtrl localAICtrl = new AICtrl();
-    localAICtrl.switchModule(AEDetectorType.FACE.value, true);
-    localAICtrl.switchModule(AEDetectorType.EMOTION.value, this.needEmotionDetect);
-    localAICtrl.switchModule(AEDetectorType.HAND.value, this.needHandDetect);
-    localAICtrl.switchModule(AEDetectorType.SEGMENT.value, this.needSegment);
-    this.aeDetector.getFaceDetector().setGenderDetectable(this.needGenderDetect);
-    AIInput localAIInput = new AIInput();
-    localAIInput.setInputTexture(paramFrame.getTextureId());
-    this.aiAttr = this.aeDetector.detectFrame(localAIInput, localAIParam, localAICtrl);
-    this.aiAttr.getOutTexture();
-    this.mFaceAttr = ((PTFaceAttr)this.aiAttr.getFaceAttr());
-    this.mDetectedFace = this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value));
-    this.mEndTime = SystemClock.elapsedRealtimeNanos();
-    long l = (this.mEndTime - this.mBeginTime) / 1000L;
-    if (SLog.isEnable()) {
-      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doTrackProceses=" + l + "us]");
-    }
-  }
+  private void doAIDetect(Frame paramFrame) {}
   
   private void initial()
   {
@@ -199,7 +174,10 @@ public class QQFilterRenderManager
   
   private void myId()
   {
-    this.mId = ("FRM_" + sInstanceCount.getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FRM_");
+    localStringBuilder.append(sInstanceCount.getAndIncrement());
+    this.mId = localStringBuilder.toString();
   }
   
   public void cameraChange(int paramInt)
@@ -211,75 +189,11 @@ public class QQFilterRenderManager
   
   public void destroyAEDetecor()
   {
-    if (this.aeDetector != null)
-    {
-      this.aeDetector.clear();
-      this.aeDetector = null;
-    }
     this.isAEDetectorInited = false;
     this.mDetectedFace = false;
     this.mNeedDoFaceDetect = false;
-    this.needEmotionDetect = false;
-    this.needSegment = false;
-    this.needHandDetect = false;
     this.aiAttr = null;
     this.mFaceAttr = null;
-    this.mSegAttr = null;
-  }
-  
-  public boolean detectedHeadNod()
-  {
-    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.HEAD_NOD.value)));
-  }
-  
-  public boolean detectedOpenMouth()
-  {
-    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.MOUTH_OPEN.value)));
-  }
-  
-  public boolean detectedShakeHead()
-  {
-    return (this.mFaceDetector != null) && (this.mFaceAttr.getTriggeredExpression().contains(Integer.valueOf(PTFaceAttr.PTExpression.HEAD_SHAKE.value)));
-  }
-  
-  public void doAEDetectWithCallBack(Frame paramFrame, int paramInt1, int paramInt2, IFaceDetectCallBack paramIFaceDetectCallBack)
-  {
-    long l = SystemClock.elapsedRealtimeNanos();
-    AIParam localAIParam = new AIParam();
-    localAIParam.update(paramFrame.width, paramFrame.height, 0);
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "phoneRoll", Integer.valueOf(90));
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "scale", Float.valueOf((float)getWindowScale()));
-    localAIParam.setModuleParam(AEDetectorType.FACE.value, "starParam", this.mStarParam);
-    AICtrl localAICtrl = new AICtrl();
-    localAICtrl.switchModule(AEDetectorType.FACE.value, true);
-    localAICtrl.switchModule(AEDetectorType.EMOTION.value, false);
-    localAICtrl.switchModule(AEDetectorType.HAND.value, false);
-    localAICtrl.switchModule(AEDetectorType.SEGMENT.value, false);
-    AIInput localAIInput = new AIInput();
-    localAIInput.setInputTexture(paramFrame.getTextureId());
-    this.aiAttr = this.aeDetector.detectFrame(localAIInput, localAIParam, localAICtrl);
-    this.aiAttr.getOutTexture();
-    this.mFaceAttr = ((PTFaceAttr)this.aiAttr.getFaceAttr());
-    FaceDanceDetectTask.logTimeInfo("doAEDetectWithCallBack", l, SystemClock.elapsedRealtimeNanos());
-    if (paramIFaceDetectCallBack != null)
-    {
-      paramFrame = new FaceDanceDetectTask.FaceDetectTaskResult();
-      if (this.mFaceAttr.getFaceCount() <= 0) {
-        break label300;
-      }
-    }
-    label300:
-    for (boolean bool = true;; bool = false)
-    {
-      paramFrame.vaild = bool;
-      if (paramFrame.vaild)
-      {
-        paramFrame.pointFs = ((List)this.mFaceAttr.getAllFacePoints().get(0));
-        paramFrame.angles = ((float[])this.mFaceAttr.getAllFaceAngles().get(0));
-      }
-      paramIFaceDetectCallBack.faceDetectEnd(paramFrame);
-      return;
-    }
   }
   
   public final int drawFrame(int paramInt)
@@ -323,10 +237,11 @@ public class QQFilterRenderManager
   
   public int getCameraID()
   {
-    if (this.cameraInterFace == null) {
+    CameraInterFace localCameraInterFace = this.cameraInterFace;
+    if (localCameraInterFace == null) {
       return -1;
     }
-    return this.cameraInterFace.getCameraID();
+    return localCameraInterFace.getCameraID();
   }
   
   public final QQFilterRenderManager.ChainBuilder getChainBuilder()
@@ -363,8 +278,13 @@ public class QQFilterRenderManager
     int i = RetrieveDataManager.DATA_TYPE.RGBA.value;
     byte[] arrayOfByte = RetrieveDataManager.getInstance().retrieveData(i, paramInt1, paramInt2, paramInt3);
     this.mEndTime = SystemClock.elapsedRealtimeNanos();
-    if (SLog.isEnable()) {
-      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetectInitAndFlip " + (this.mEndTime - this.mBeginTime) / 1000L + "us]");
+    if (SLog.isEnable())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("FilterProcessRender_showPreview[doFaceDetectInitAndFlip ");
+      localStringBuilder.append((this.mEndTime - this.mBeginTime) / 1000L);
+      localStringBuilder.append("us]");
+      SLog.d("QQFilterRenderManager", localStringBuilder.toString());
     }
     return arrayOfByte;
   }
@@ -382,14 +302,6 @@ public class QQFilterRenderManager
   public int getFaceDetectWidth()
   {
     return this.mFaceDetectWidth;
-  }
-  
-  public VideoPreviewFaceOutlineDetector getFaceDetector()
-  {
-    if ((this.aeDetector == null) || (this.aeDetector.getFaceDetector() == null)) {
-      return null;
-    }
-    return this.aeDetector.getFaceDetector().getFaceDetector();
   }
   
   public String getFilterCacheInfo()
@@ -472,12 +384,18 @@ public class QQFilterRenderManager
   
   public double getWindowScale()
   {
-    if ((this.mFaceDetectWidth == 0) || (this.mFilterWidth == 0)) {
-      return 0.25D;
+    int i = this.mFaceDetectWidth;
+    if (i != 0)
+    {
+      int j = this.mFilterWidth;
+      if (j != 0)
+      {
+        float f = i * 1.0F / j;
+        this.mFaceDetectHeight = ((int)(this.mFilterHeight * f));
+        return f;
+      }
     }
-    float f = this.mFaceDetectWidth * 1.0F / this.mFilterWidth;
-    this.mFaceDetectHeight = ((int)(this.mFilterHeight * f));
-    return f;
+    return 0.25D;
   }
   
   public boolean hasAEDetectorInited()
@@ -503,30 +421,7 @@ public class QQFilterRenderManager
       if (!FeatureManager.isBasicFeaturesFunctionReady()) {
         return;
       }
-      this.aeDetector = new AEDetector();
-      int i = this.aeDetector.init();
       this.aiAttr = null;
-      if (i != 0) {
-        break label138;
-      }
-    }
-    label138:
-    for (boolean bool = true;; bool = false)
-    {
-      this.isAEDetectorInited = bool;
-      String str1 = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
-      String str2 = SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
-      if (this.needHandDetect) {
-        AIManager.installDetector(AEHandDetector.class, str1, str1);
-      }
-      if (this.needSegment) {
-        AIManager.installDetector(PTSegmenter.class, str2, str1);
-      }
-      if (!this.needEmotionDetect) {
-        break;
-      }
-      AIManager.installDetector(PTEmotionDetector.class, str1, str1);
-      return;
     }
   }
   
@@ -544,32 +439,44 @@ public class QQFilterRenderManager
       return;
     }
     this.mHasGestureInit = true;
-    i = 200;
-    m = 5;
-    String str1 = SdkContext.getInstance().getResources().getGestureResource().getGestureGapTime();
-    String str2 = SdkContext.getInstance().getResources().getGestureResource().getGestureGapFrame();
+    int i = 200;
+    int m = 5;
+    String str = SdkContext.getInstance().getResources().getGestureResource().getGestureGapTime();
+    Object localObject = SdkContext.getInstance().getResources().getGestureResource().getGestureGapFrame();
     try
     {
-      j = Integer.parseInt(str1);
+      j = Integer.parseInt(str);
       i = j;
-      k = Integer.parseInt(str2);
+      k = Integer.parseInt((String)localObject);
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        int k = m;
-        int j = i;
-        if (SLog.isEnable())
-        {
-          SLog.d("GestureTestUse", "GestureMgr.getInstance().setRecognizeMillis number exception" + i);
-          k = m;
-          j = i;
-        }
-      }
+      int j;
+      int k;
+      label73:
+      break label73;
     }
-    if (SLog.isEnable()) {
-      SLog.d("GestureTestUse", "PtvTemplateManager.mGestureGapTime raw value " + str1 + ":GestureMgr.getInstance().setRecognizeMillis normal result" + j + ",frameRate is:" + k);
+    j = i;
+    k = m;
+    if (SLog.isEnable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GestureMgr.getInstance().setRecognizeMillis number exception");
+      ((StringBuilder)localObject).append(i);
+      SLog.d("GestureTestUse", ((StringBuilder)localObject).toString());
+      k = m;
+      j = i;
+    }
+    if (SLog.isEnable())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PtvTemplateManager.mGestureGapTime raw value ");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(":GestureMgr.getInstance().setRecognizeMillis normal result");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(",frameRate is:");
+      ((StringBuilder)localObject).append(k);
+      SLog.d("GestureTestUse", ((StringBuilder)localObject).toString());
     }
     GestureMgrRecognize.getInstance().setRecognizeMillis(j);
     GestureMgrRecognize.getInstance().setRecognizeFrameRate(k);
@@ -583,26 +490,6 @@ public class QQFilterRenderManager
   public boolean isFilterWork(int paramInt)
   {
     return this.mInternal.isFilterWork(paramInt);
-  }
-  
-  public boolean isNeedEmotionDetect()
-  {
-    return this.needEmotionDetect;
-  }
-  
-  public boolean isNeedFaceDetect()
-  {
-    return this.needFaceDetect;
-  }
-  
-  public boolean isNeedHandDetect()
-  {
-    return this.needHandDetect;
-  }
-  
-  public boolean isNeedSegment()
-  {
-    return this.needSegment;
   }
   
   public boolean isSurfaceDestroyed()
@@ -662,8 +549,9 @@ public class QQFilterRenderManager
   
   public void setCaptureMode(boolean paramBoolean)
   {
-    if (this.mInternal != null) {
-      this.mInternal.setCaptureMode(paramBoolean);
+    FilterManagerInternal localFilterManagerInternal = this.mInternal;
+    if (localFilterManagerInternal != null) {
+      localFilterManagerInternal.setCaptureMode(paramBoolean);
     }
   }
   
@@ -693,34 +581,9 @@ public class QQFilterRenderManager
     GestureMgrRecognize.getInstance().stop();
   }
   
-  public void setNeedEmotionDetect(boolean paramBoolean)
-  {
-    this.needEmotionDetect = paramBoolean;
-  }
-  
-  public void setNeedFaceDetect(boolean paramBoolean)
-  {
-    this.needFaceDetect = paramBoolean;
-  }
-  
   public void setNeedFlip(boolean paramBoolean)
   {
     this.mInternal.setNeedFaceDetectFlip(paramBoolean);
-  }
-  
-  public void setNeedGenderDetect(boolean paramBoolean)
-  {
-    this.needGenderDetect = paramBoolean;
-  }
-  
-  public void setNeedHandDetect(boolean paramBoolean)
-  {
-    this.needHandDetect = paramBoolean;
-  }
-  
-  public void setNeedSegment(boolean paramBoolean)
-  {
-    this.needSegment = paramBoolean;
   }
   
   public void setParam(String paramString1, String paramString2)
@@ -750,7 +613,6 @@ public class QQFilterRenderManager
     QQFilterLogManager.setLogStart("surfaceCreate");
     initial();
     updatePreviewSize(paramInt1, paramInt2, paramInt3, paramInt4);
-    VideoFilterListExtension.setCreateExternalFiltersListener(mDynamicCreator);
     QQFilterLogManager.setLogEnd("surfaceCreate");
   }
   
@@ -770,21 +632,47 @@ public class QQFilterRenderManager
     this.mSufaceHeight = paramInt4;
     this.mFilterWidth = paramInt1;
     this.mFilterHeight = paramInt2;
-    this.mUIAspectRatio = (paramInt1 / paramInt2);
-    if ((this.mFaceDetectWidth == 0) || (this.mFaceDetectHeight == 0) || (this.mFaceDetectBuffer == 0) || (this.mFaceDetectWidth < 90) || (this.mFaceDetectHeight < 120))
+    double d1 = paramInt1;
+    double d2 = paramInt2;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    this.mUIAspectRatio = (d1 / d2);
+    paramInt1 = this.mFaceDetectWidth;
+    if (paramInt1 != 0)
+    {
+      paramInt2 = this.mFaceDetectHeight;
+      if ((paramInt2 != 0) && (this.mFaceDetectBuffer != 0) && (paramInt1 >= 90) && (paramInt2 >= 120)) {}
+    }
+    else
     {
       this.mFaceDetectWidth = ((int)(this.mFilterWidth * 0.25F));
       this.mFaceDetectHeight = ((int)(this.mFilterHeight * 0.25F));
       this.mFaceDetectBuffer = (this.mFaceDetectWidth * this.mFaceDetectHeight * 4);
     }
-    if (SLog.isEnable()) {
-      SLog.d("QQFilterRenderManager", "updatePreviewSize:: mSufaceWidth=" + this.mSufaceWidth + ";mSufaceHeight=" + this.mSufaceHeight + ";mFilterWidth=" + this.mFilterWidth + ";mFilterHeight=" + this.mFilterHeight + ";mFaceDetectWidth" + this.mFaceDetectWidth + ";mFaceDetectHeight=" + this.mFaceDetectHeight + "; mUIRatio:" + this.mUIAspectRatio);
+    if (SLog.isEnable())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updatePreviewSize:: mSufaceWidth=");
+      localStringBuilder.append(this.mSufaceWidth);
+      localStringBuilder.append(";mSufaceHeight=");
+      localStringBuilder.append(this.mSufaceHeight);
+      localStringBuilder.append(";mFilterWidth=");
+      localStringBuilder.append(this.mFilterWidth);
+      localStringBuilder.append(";mFilterHeight=");
+      localStringBuilder.append(this.mFilterHeight);
+      localStringBuilder.append(";mFaceDetectWidth");
+      localStringBuilder.append(this.mFaceDetectWidth);
+      localStringBuilder.append(";mFaceDetectHeight=");
+      localStringBuilder.append(this.mFaceDetectHeight);
+      localStringBuilder.append("; mUIRatio:");
+      localStringBuilder.append(this.mUIAspectRatio);
+      SLog.d("QQFilterRenderManager", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager
  * JD-Core Version:    0.7.0.1
  */

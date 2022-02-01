@@ -20,17 +20,18 @@ public class FloatKeyframeAnimation
   
   float getFloatValue(Keyframe<Float> paramKeyframe, float paramFloat)
   {
-    if ((paramKeyframe.startValue == null) || (paramKeyframe.endValue == null)) {
-      throw new IllegalStateException("Missing values for keyframe.");
-    }
-    if (this.valueCallback != null)
+    if ((paramKeyframe.startValue != null) && (paramKeyframe.endValue != null))
     {
-      Float localFloat = (Float)this.valueCallback.getValueInternal(paramKeyframe.startFrame, paramKeyframe.endFrame.floatValue(), paramKeyframe.startValue, paramKeyframe.endValue, paramFloat, getLinearCurrentKeyframeProgress(), getProgress());
-      if (localFloat != null) {
-        return localFloat.floatValue();
+      if (this.valueCallback != null)
+      {
+        Float localFloat = (Float)this.valueCallback.getValueInternal(paramKeyframe.startFrame, paramKeyframe.endFrame.floatValue(), paramKeyframe.startValue, paramKeyframe.endValue, paramFloat, getLinearCurrentKeyframeProgress(), getProgress());
+        if (localFloat != null) {
+          return localFloat.floatValue();
+        }
       }
+      return MiscUtils.lerp(paramKeyframe.getStartValueFloat(), paramKeyframe.getEndValueFloat(), paramFloat);
     }
-    return MiscUtils.lerp(paramKeyframe.getStartValueFloat(), paramKeyframe.getEndValueFloat(), paramFloat);
+    throw new IllegalStateException("Missing values for keyframe.");
   }
   
   Float getValue(Keyframe<Float> paramKeyframe, float paramFloat)

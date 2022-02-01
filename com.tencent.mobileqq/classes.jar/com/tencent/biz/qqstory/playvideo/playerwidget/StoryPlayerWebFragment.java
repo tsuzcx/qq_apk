@@ -5,32 +5,27 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
-import beiq;
-import bejh;
-import bejk;
+import com.tencent.biz.common.util.Util;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.webview.swift.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import ndq;
-import wbz;
-import wca;
-import wxe;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class StoryPlayerWebFragment
   extends WebViewFragment
 {
-  public BroadcastReceiver a;
-  public wca a;
-  
-  public StoryPlayerWebFragment()
-  {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new wbz(this);
-  }
+  protected StoryPlayerWebFragment.StoryPlayerWebFragmentEventListener a;
+  public BroadcastReceiver b = new StoryPlayerWebFragment.1(this);
   
   public static Intent a(Activity paramActivity, String paramString)
   {
@@ -49,36 +44,40 @@ public class StoryPlayerWebFragment
     return localStoryPlayerWebFragment;
   }
   
-  public void a(wca paramwca)
+  public void a()
   {
-    this.jdField_a_of_type_Wca = paramwca;
-  }
-  
-  public boolean a()
-  {
-    wxe.b("StoryPlayerWebFragment", "showPreview()");
-    ndq.a("Web_qqbrowser_ShowPreview");
+    if (getUIStyleHandler().t) {
+      return;
+    }
+    SLog.b("StoryPlayerWebFragment", "showPreview()");
+    Util.f("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.jdField_a_of_type_Bejh.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_Bejk.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.D);
-    this.p = true;
-    this.q = false;
-    G();
-    wxe.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
-    this.jdField_a_of_type_Bejh.c = true;
-    this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_Bejh.a(this.g);
-    this.jdField_a_of_type_Bejh.b = false;
-    ndq.b("Web_qqbrowser_ShowPreview");
-    return true;
+    getUIStyleHandler().a(this.intent);
+    getUIStyle().e = 0L;
+    this.contentView.a(getUIStyleHandler().f.O);
+    getWebTitleBarInterface().d(true);
+    getWebTitleBarInterface().b(false);
+    getWebTitleBarInterface().c(false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init view 1, cost = ");
+    localStringBuilder.append((System.nanoTime() - l) / 1000000L);
+    SLog.b("StoryPlayerWebFragment", localStringBuilder.toString());
+    getUIStyleHandler().t = true;
+    getUIStyleHandler().B = this.contentView.b;
+    this.contentView.a.setVisibility(8);
+    getUIStyleHandler().b(this.mUrl);
+    getUIStyleHandler().d = false;
+    Util.g("Web_qqbrowser_ShowPreview");
   }
   
-  public void e()
+  public void a(StoryPlayerWebFragment.StoryPlayerWebFragmentEventListener paramStoryPlayerWebFragmentEventListener)
   {
-    super.e();
-    this.jdField_a_of_type_Beiq.a("web_view_long_click", false);
+    this.a = paramStoryPlayerWebFragmentEventListener;
+  }
+  
+  public WebViewKernelCallBack getWebViewKernelCallBack()
+  {
+    return new StoryPlayerWebFragment.2(this, this.webViewSurface);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -86,38 +85,39 @@ public class StoryPlayerWebFragment
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramViewGroup = new IntentFilter();
     paramViewGroup.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramViewGroup, "com.tencent.msg.permission.pushnotify", null);
+    getQBaseActivity().registerReceiver(this.b, paramViewGroup, "com.tencent.msg.permission.pushnotify", null);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    wxe.b("StoryPlayerWebFragment", "onDestroy()");
-    getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    SLog.b("StoryPlayerWebFragment", "onDestroy()");
+    getQBaseActivity().unregisterReceiver(this.b);
   }
   
   public void onPause()
   {
     super.onPause();
-    wxe.b("StoryPlayerWebFragment", "onPause()");
+    SLog.b("StoryPlayerWebFragment", "onPause()");
   }
   
   public void onResume()
   {
     super.onResume();
-    wxe.b("StoryPlayerWebFragment", "onResume()");
-    FragmentActivity localFragmentActivity = super.getActivity();
-    if (localFragmentActivity != null)
+    SLog.b("StoryPlayerWebFragment", "onResume()");
+    QBaseActivity localQBaseActivity = super.getQBaseActivity();
+    if (localQBaseActivity != null)
     {
-      int i = localFragmentActivity.getWindow().getDecorView().getSystemUiVisibility();
-      localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(i & 0xFFFFFFFD);
+      int i = localQBaseActivity.getWindow().getDecorView().getSystemUiVisibility();
+      localQBaseActivity.getWindow().getDecorView().setSystemUiVisibility(i & 0xFFFFFFFD);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment
  * JD-Core Version:    0.7.0.1
  */

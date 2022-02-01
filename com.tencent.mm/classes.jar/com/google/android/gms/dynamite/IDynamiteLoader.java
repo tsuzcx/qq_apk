@@ -75,7 +75,7 @@ public abstract interface IDynamiteLoader
       
       public IObjectWrapper createModuleContext(IObjectWrapper paramIObjectWrapper, String paramString, int paramInt)
       {
-        AppMethodBeat.i(90444);
+        AppMethodBeat.i(5465);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramIObjectWrapper);
         localParcel.writeString(paramString);
@@ -83,26 +83,26 @@ public abstract interface IDynamiteLoader
         paramIObjectWrapper = transactAndReadException(2, localParcel);
         paramString = IObjectWrapper.Stub.asInterface(paramIObjectWrapper.readStrongBinder());
         paramIObjectWrapper.recycle();
-        AppMethodBeat.o(90444);
+        AppMethodBeat.o(5465);
         return paramString;
       }
       
       public int getModuleVersion(IObjectWrapper paramIObjectWrapper, String paramString)
       {
-        AppMethodBeat.i(90443);
+        AppMethodBeat.i(5464);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramIObjectWrapper);
         localParcel.writeString(paramString);
         paramIObjectWrapper = transactAndReadException(1, localParcel);
         int i = paramIObjectWrapper.readInt();
         paramIObjectWrapper.recycle();
-        AppMethodBeat.o(90443);
+        AppMethodBeat.o(5464);
         return i;
       }
       
       public int getModuleVersion2(IObjectWrapper paramIObjectWrapper, String paramString, boolean paramBoolean)
       {
-        AppMethodBeat.i(90445);
+        AppMethodBeat.i(5466);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramIObjectWrapper);
         localParcel.writeString(paramString);
@@ -110,7 +110,7 @@ public abstract interface IDynamiteLoader
         paramIObjectWrapper = transactAndReadException(3, localParcel);
         int i = paramIObjectWrapper.readInt();
         paramIObjectWrapper.recycle();
-        AppMethodBeat.o(90445);
+        AppMethodBeat.o(5466);
         return i;
       }
     }
@@ -118,7 +118,7 @@ public abstract interface IDynamiteLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamite.IDynamiteLoader
  * JD-Core Version:    0.7.0.1
  */

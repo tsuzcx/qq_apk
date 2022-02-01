@@ -11,7 +11,7 @@ import java.util.Map;
 public class TVKMediaSource
 {
   public static final int TYPE_FD = 2;
-  public static final int TYPE_MediaAsset = 3;
+  public static final int TYPE_MEDIA_ASSET = 3;
   public static final int TYPE_URL = 1;
   public static final int TYPE_VID = 0;
   private String[] mBackupUrls;
@@ -84,35 +84,33 @@ public class TVKMediaSource
   
   public boolean isValid()
   {
+    int i = this.mType;
     boolean bool2 = false;
-    if ((this.mType == 0) && (this.mVideoInfo != null))
-    {
+    if ((i == 0) && (this.mVideoInfo != null)) {
       i = 1;
-      if ((i == 0) && ((this.mType != 1) || (TextUtils.isEmpty(this.mUrl)))) {
-        break label74;
-      }
+    } else {
+      i = 0;
     }
-    label74:
-    for (int i = 1;; i = 0)
+    if ((i == 0) && ((this.mType != 1) || (TextUtils.isEmpty(this.mUrl)))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    boolean bool1;
+    if (i == 0)
     {
-      boolean bool1;
-      if (i == 0)
+      bool1 = bool2;
+      if (this.mType == 2)
       {
         bool1 = bool2;
-        if (this.mType == 2)
-        {
-          bool1 = bool2;
-          if (this.mFileDescriptor == null) {}
-        }
+        if (this.mFileDescriptor == null) {}
       }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
-      i = 0;
-      break;
     }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public void setBackupUrls(String[] paramArrayOfString)
@@ -174,7 +172,7 @@ public class TVKMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.playerwrapper.player.TVKMediaSource
  * JD-Core Version:    0.7.0.1
  */

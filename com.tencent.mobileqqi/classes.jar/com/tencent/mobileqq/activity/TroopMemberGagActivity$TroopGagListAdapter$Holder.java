@@ -4,7 +4,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import dqr;
+import dqq;
 
 public class TroopMemberGagActivity$TroopGagListAdapter$Holder
   extends BaseBubbleBuilder.ViewHolder
@@ -12,7 +12,7 @@ public class TroopMemberGagActivity$TroopGagListAdapter$Holder
   public FrameLayout a;
   public ImageView a;
   public TextView a;
-  public dqr a;
+  public dqq a;
   
   public TroopMemberGagActivity$TroopGagListAdapter$Holder(TroopMemberGagActivity.TroopGagListAdapter paramTroopGagListAdapter) {}
 }

@@ -14,16 +14,16 @@ class AVContextImpl$2
     {
       Log.d("tips", this.this$0.getRoom().getQualityTips());
       AVContextImpl.access$200(this.this$0).postDelayed(this, 30000L);
-    }
-    while (this.this$0.getRoom() != null) {
       return;
     }
-    AVContextImpl.access$300(this.this$0);
+    if (this.this$0.getRoom() == null) {
+      AVContextImpl.access$300(this.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVContextImpl.2
  * JD-Core Version:    0.7.0.1
  */

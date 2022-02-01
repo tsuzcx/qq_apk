@@ -1,5 +1,5 @@
 import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.data.CircleGroup;
+import com.tencent.mobileqq.data.CircleBuddy;
 import java.util.Comparator;
 
 public class ezr
@@ -7,9 +7,9 @@ public class ezr
 {
   public ezr(CircleManager paramCircleManager) {}
   
-  public int a(CircleGroup paramCircleGroup1, CircleGroup paramCircleGroup2)
+  public int a(CircleBuddy paramCircleBuddy1, CircleBuddy paramCircleBuddy2)
   {
-    return paramCircleGroup1.showIndex - paramCircleGroup2.showIndex;
+    return paramCircleBuddy2.randomCloseness - paramCircleBuddy1.randomCloseness;
   }
 }
 

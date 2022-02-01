@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.conditionsearch.widget.IphonePickerView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_alignParentTop="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <View android:id="@id/time_select_line_split" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+            <Button android:id="@id/time_select_confirm" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="完成" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/SmallButtonWhite" />
+            <View android:id="@id/time_select_line_split_bottom" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center" android:id="@id/tip_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/timepick_height" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip">
+            <com.tencent.mobileqq.remind.widget.WheelView android:id="@id/day_wheel" android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/timepick_margin_top" android:layout_marginBottom="@dimen/timepick_margin_bottom" android:layout_weight="4.0" />
+            <com.tencent.mobileqq.remind.widget.WheelView android:id="@id/hour_wheel" android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/timepick_margin_top" android:layout_marginBottom="@dimen/timepick_margin_bottom" android:layout_weight="3.0" />
+            <com.tencent.mobileqq.remind.widget.WheelView android:id="@id/mins_wheel" android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/timepick_margin_top" android:layout_marginBottom="@dimen/timepick_margin_bottom" android:layout_weight="3.0" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/timepick_height">
+            <View android:id="@id/line_up" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/line_up_margin_top" />
+            <View android:id="@id/line_down" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/line_down_margin_top" android:layout_below="@id/line_up" />
+        </RelativeLayout>
+    </FrameLayout>
+</com.tencent.mobileqq.conditionsearch.widget.IphonePickerView>

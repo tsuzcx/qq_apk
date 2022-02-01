@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/troop_assitant_empty_notify" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0dip" android:textColor="#ff868686" android:layout_gravity="center" android:id="@id/troop_assistant_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/troop_assistant_empty_notify" android:drawableTop="@drawable/troop_assistant_msg_empty_icon" android:drawablePadding="20.0dip" />
+</LinearLayout>

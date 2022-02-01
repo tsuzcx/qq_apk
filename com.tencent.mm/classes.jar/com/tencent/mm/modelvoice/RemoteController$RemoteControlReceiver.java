@@ -4,55 +4,69 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public class RemoteController$RemoteControlReceiver
   extends BroadcastReceiver
 {
-  private static ap caS;
-  private static RemoteController.a fZF;
+  private static RemoteController.a pdC;
+  private static MTimerHandler timer;
   
-  public static void amj()
+  public static void bOV()
   {
-    AppMethodBeat.i(116586);
-    fZF = null;
-    if (caS != null)
+    AppMethodBeat.i(148425);
+    pdC = null;
+    if (timer != null)
     {
-      caS.stopTimer();
-      caS = null;
+      timer.stopTimer();
+      timer = null;
     }
-    AppMethodBeat.o(116586);
+    AppMethodBeat.o(148425);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(116585);
+    AppMethodBeat.i(148424);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(116585);
+      AppMethodBeat.o(148424);
       return;
     }
     if (!"android.intent.action.MEDIA_BUTTON".equals(paramIntent.getAction()))
     {
-      ab.d("MicroMsg.RemoteControlReceiver", "unknown action, ignore" + paramIntent.getAction());
-      AppMethodBeat.o(116585);
+      Log.d("MicroMsg.RemoteControlReceiver", "unknown action, ignore" + paramIntent.getAction());
+      AppMethodBeat.o(148424);
       return;
     }
-    if ((caS == null) && (fZF != null))
+    if ((timer == null) && (pdC != null))
     {
-      ab.d("MicroMsg.RemoteControlReceiver", "got remote key event down");
-      caS = new ap(new RemoteController.RemoteControlReceiver.1(this), true);
+      Log.d("MicroMsg.RemoteControlReceiver", "got remote key event down");
+      timer = new MTimerHandler(new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(148423);
+          Log.d("MicroMsg.RemoteControlReceiver", "got remote key event up");
+          if (RemoteController.RemoteControlReceiver.bOW() != null) {
+            RemoteController.RemoteControlReceiver.bOW();
+          }
+          RemoteController.RemoteControlReceiver.bOX();
+          AppMethodBeat.o(148423);
+          return false;
+        }
+      }, true);
     }
-    if (caS != null) {
-      caS.ag(1000L, 1000L);
+    if (timer != null) {
+      timer.startTimer(1000L);
     }
-    AppMethodBeat.o(116585);
+    AppMethodBeat.o(148424);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.modelvoice.RemoteController.RemoteControlReceiver
  * JD-Core Version:    0.7.0.1
  */

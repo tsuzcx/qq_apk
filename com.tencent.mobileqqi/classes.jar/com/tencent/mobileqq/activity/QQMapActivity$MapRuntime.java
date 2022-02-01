@@ -7,14 +7,14 @@ import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.startup.step.Step;
-import ddc;
+import ddb;
 import mqq.app.MobileQQ;
 
 public class QQMapActivity$MapRuntime
   extends PluginRuntime
   implements Thread.UncaughtExceptionHandler
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ddc(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ddb(this);
   private Thread.UncaughtExceptionHandler jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler;
   
   protected void onCreate(Bundle paramBundle)

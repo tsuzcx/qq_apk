@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/mzh" android:background="@drawable/gtg" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/nwy" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/mzi" android:background="@drawable/gtg" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="15.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/nwz" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/mzj" android:background="@drawable/gtg" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="30.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/nx0" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+</FrameLayout>

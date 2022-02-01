@@ -66,7 +66,7 @@ public class PtuFilterFactory
       localPicBaseFilter.RendProcessImage((QImage)localObject3, (Frame)localObject2);
       ((QImage)localObject3).UnBindBitmap(paramBitmap);
       localPicBaseFilter.clear();
-      ((BaseFilter)localObject1).ClearGLSL();
+      ((BaseFilter)localObject1).clearGLSL();
       ((Frame)localObject2).clear();
       return;
     }
@@ -84,17 +84,16 @@ public class PtuFilterFactory
       localPicBaseFilter.RendProcessImage((QImage)localObject1, localFrame);
       localPicBaseFilter.clear();
       localFrame.clear();
-      ((BaseFilter)localObject3).ClearGLSL();
+      ((BaseFilter)localObject3).clearGLSL();
       RendererUtils.clearTexture(paramInt1);
       ((QImage)localObject1).ToBitmap(paramBitmap);
       ((QImage)localObject1).Dispose();
     }
-    for (;;)
+    else
     {
-      ((QImage)localObject2).Dispose();
-      return;
       ((QImage)localObject2).ToBitmap(paramBitmap);
     }
+    ((QImage)localObject2).Dispose();
   }
   
   public static void renderBitmapByFilterIDAsync(Bitmap paramBitmap, int paramInt1, int paramInt2, float paramFloat, Runnable paramRunnable)
@@ -133,37 +132,40 @@ public class PtuFilterFactory
     //   32: monitorenter
     //   33: aload 4
     //   35: invokevirtual 176	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   38: ifne +17 -> 55
+    //   38: ifne +22 -> 60
     //   41: aload_0
     //   42: invokevirtual 181	java/lang/Object:wait	()V
     //   45: goto -12 -> 33
     //   48: astore 4
-    //   50: aload 4
-    //   52: invokevirtual 184	java/lang/InterruptedException:printStackTrace	()V
-    //   55: aload_0
-    //   56: monitorexit
-    //   57: return
-    //   58: astore 4
+    //   50: goto +13 -> 63
+    //   53: astore 4
+    //   55: aload 4
+    //   57: invokevirtual 184	java/lang/InterruptedException:printStackTrace	()V
     //   60: aload_0
     //   61: monitorexit
-    //   62: aload 4
-    //   64: athrow
+    //   62: return
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: goto +6 -> 71
+    //   68: aload 4
+    //   70: athrow
+    //   71: goto -3 -> 68
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	65	0	paramBitmap	Bitmap
-    //   0	65	1	paramInt1	int
-    //   0	65	2	paramInt2	int
-    //   0	65	3	paramFloat	float
+    //   0	74	0	paramBitmap	Bitmap
+    //   0	74	1	paramInt1	int
+    //   0	74	2	paramInt2	int
+    //   0	74	3	paramFloat	float
     //   8	26	4	localAtomicBoolean	java.util.concurrent.atomic.AtomicBoolean
-    //   48	3	4	localInterruptedException	java.lang.InterruptedException
-    //   58	5	4	localObject	Object
+    //   48	1	4	localObject	Object
+    //   53	16	4	localInterruptedException	java.lang.InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   33	45	48	java/lang/InterruptedException
-    //   33	45	58	finally
-    //   50	55	58	finally
-    //   55	57	58	finally
-    //   60	62	58	finally
+    //   33	45	48	finally
+    //   55	60	48	finally
+    //   60	62	48	finally
+    //   63	65	48	finally
+    //   33	45	53	java/lang/InterruptedException
   }
   
   public static void renderBitmapByFilterIDSync(Bitmap paramBitmap, String paramString, int paramInt, float paramFloat)
@@ -173,7 +175,7 @@ public class PtuFilterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.PtuFilterFactory
  * JD-Core Version:    0.7.0.1
  */

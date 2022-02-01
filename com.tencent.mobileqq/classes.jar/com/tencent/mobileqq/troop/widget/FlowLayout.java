@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
-import biby;
 import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+import com.tencent.widget.TraceUtils;
 
 public class FlowLayout
   extends TagFlowLayout
@@ -25,53 +25,49 @@ public class FlowLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    biby.a("FlowLayout.onLayout");
+    TraceUtils.traceBegin("FlowLayout.onLayout");
     int k = getWidth();
-    paramInt3 = 0;
-    paramInt2 = 0;
     int m = getChildCount();
     paramInt4 = 0;
+    paramInt2 = 0;
+    paramInt3 = 0;
     int i = 0;
-    if (i < m)
+    while (paramInt4 < m)
     {
-      View localView = getChildAt(i);
-      if (localView.getVisibility() == 8) {
-        paramInt1 = paramInt2;
-      }
-      int n;
-      for (paramInt2 = paramInt4;; paramInt2 = paramInt2 + n + paramInt4)
+      View localView = getChildAt(paramInt4);
+      if (localView.getVisibility() == 8)
       {
-        i += 1;
-        paramInt4 = paramInt2;
-        paramInt2 = paramInt1;
-        break;
-        int i1 = localView.getMeasuredWidth();
-        n = localView.getMeasuredHeight();
+        paramInt1 = paramInt3;
+      }
+      else
+      {
+        int n = localView.getMeasuredWidth();
+        int i1 = localView.getMeasuredHeight();
         ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-        paramInt1 = paramInt2;
-        int j = paramInt3;
-        if (localMarginLayoutParams.leftMargin + paramInt3 + i1 + localMarginLayoutParams.rightMargin > k)
+        paramInt1 = paramInt3;
+        int j = paramInt2;
+        if (localMarginLayoutParams.leftMargin + paramInt2 + n + localMarginLayoutParams.rightMargin > k)
         {
-          paramInt1 = paramInt2 + paramInt4;
+          paramInt1 = paramInt3 + i;
           j = 0;
         }
-        paramInt2 = localMarginLayoutParams.topMargin;
-        paramInt4 = localMarginLayoutParams.bottomMargin;
-        paramInt3 = localMarginLayoutParams.leftMargin + j;
-        int i2 = localMarginLayoutParams.topMargin + paramInt1;
-        localView.layout(paramInt3, i2, paramInt3 + i1, n + i2);
-        paramInt3 = localMarginLayoutParams.leftMargin;
-        paramInt3 = j + (localMarginLayoutParams.rightMargin + (paramInt3 + i1));
+        i = localMarginLayoutParams.topMargin + i1 + localMarginLayoutParams.bottomMargin;
+        paramInt2 = localMarginLayoutParams.leftMargin + j;
+        paramInt3 = localMarginLayoutParams.topMargin + paramInt1;
+        localView.layout(paramInt2, paramInt3, paramInt2 + n, i1 + paramInt3);
+        paramInt2 = j + (localMarginLayoutParams.leftMargin + n + localMarginLayoutParams.rightMargin);
       }
+      paramInt4 += 1;
+      paramInt3 = paramInt1;
     }
-    biby.a();
+    TraceUtils.traceEnd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FlowLayout
  * JD-Core Version:    0.7.0.1
  */

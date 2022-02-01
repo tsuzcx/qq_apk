@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Layout;
@@ -15,146 +14,239 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QQCustomMenuLayout
   extends LinearLayout
   implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private int jdField_d_of_type_Int;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
+  private ImageView a;
+  private ImageView b;
+  private ImageView c;
+  private ImageView d;
+  private int e;
+  private int f;
+  private int g;
+  private float h;
+  private TextPaint i;
+  private int j = 0;
+  private boolean k;
+  private boolean l;
   
   public QQCustomMenuLayout(Context paramContext)
   {
     super(paramContext);
     Object localObject = paramContext.getResources();
-    this.jdField_c_of_type_Int = ((Resources)localObject).getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_Float = ((Resources)localObject).getDisplayMetrics().density;
-    this.jdField_c_of_type_Int -= (int)(this.jdField_a_of_type_Float * 10.0F);
-    int i = 12;
-    if (this.jdField_a_of_type_Float >= 2.0F) {
-      i = 20;
+    this.g = ((Resources)localObject).getDisplayMetrics().widthPixels;
+    this.h = ((Resources)localObject).getDisplayMetrics().density;
+    int m = this.g;
+    float f1 = this.h;
+    this.g = (m - (int)(f1 * 10.0F));
+    if (f1 >= 2.0F) {
+      m = 20;
+    } else {
+      m = 12;
     }
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
-    this.jdField_a_of_type_AndroidTextTextPaint.density = ((Resources)localObject).getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(TypedValue.applyDimension(2, 15.0F, ((Resources)localObject).getDisplayMetrics()));
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838680);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131710595));
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
+    this.i = new TextPaint(1);
+    this.i.density = ((Resources)localObject).getDisplayMetrics().density;
+    this.i.setTextSize(TypedValue.applyDimension(2, 15.0F, ((Resources)localObject).getDisplayMetrics()));
+    this.a = new ImageView(paramContext);
+    this.a.setVisibility(8);
+    this.a.setImageResource(2130839068);
+    this.a.setContentDescription(HardCodeUtil.a(2131907861));
+    this.a.setBackgroundDrawable(null);
+    this.a.setOnClickListener(this);
+    localObject = this.a;
+    f1 = m;
+    float f2 = this.h;
+    ((ImageView)localObject).setPadding((int)(f1 * f2), (int)(f2 * 10.0F), (int)(f1 * f2), (int)(f2 * 10.0F));
     localObject = new LinearLayout.LayoutParams(-2, -2);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, 0);
-    this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838664);
-    if (!AppSetting.c) {
-      this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription("leftIcon");
+    this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    addView(this.a, 0);
+    this.c = new ImageView(paramContext);
+    this.c.setBackgroundResource(2130839053);
+    if (!AppSetting.e) {
+      this.c.setContentDescription("leftIcon");
     }
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.c.setVisibility(8);
     localObject = new LinearLayout.LayoutParams(-2, -2);
-    this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    addView(this.jdField_c_of_type_AndroidWidgetImageView, 1);
-    this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838664);
-    if (!AppSetting.c) {
-      this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription("rightIcon");
+    this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    addView(this.c, 1);
+    this.d = new ImageView(paramContext);
+    this.d.setBackgroundResource(2130839053);
+    if (!AppSetting.e) {
+      this.d.setContentDescription("rightIcon");
     }
-    this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.d.setVisibility(8);
     localObject = new LinearLayout.LayoutParams(-2, -2);
-    this.jdField_d_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    addView(this.jdField_d_of_type_AndroidWidgetImageView, 2);
-    this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838685);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131710581));
-    this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
+    this.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    addView(this.d, 2);
+    this.b = new ImageView(paramContext);
+    this.b.setVisibility(8);
+    this.b.setImageResource(2130839075);
+    this.b.setContentDescription(HardCodeUtil.a(2131907847));
+    this.b.setBackgroundDrawable(null);
+    this.b.setOnClickListener(this);
+    paramContext = this.b;
+    f2 = this.h;
+    paramContext.setPadding((int)(f1 * f2), (int)(f2 * 10.0F), (int)(f1 * f2), (int)(f2 * 10.0F));
     paramContext = new LinearLayout.LayoutParams(-2, -2);
-    this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(paramContext);
-    addView(this.jdField_b_of_type_AndroidWidgetImageView, 3);
+    this.b.setLayoutParams(paramContext);
+    addView(this.b, 3);
   }
   
-  private int a()
+  private int b()
   {
-    int m = getChildCount();
+    int i2 = getChildCount();
+    int m = 0;
     onMeasure(0, 0);
-    int j = 0;
-    int i = 0;
-    View localView;
-    int k;
-    if (j < m)
+    int i1;
+    for (int n = 0; m < i2; n = i1)
     {
-      localView = getChildAt(j);
-      if ((localView == null) || (localView.getVisibility() == 8)) {
-        break label212;
-      }
-      if ((localView instanceof TextView))
+      View localView = getChildAt(m);
+      i1 = n;
+      if (localView != null)
       {
-        k = (int)Layout.getDesiredWidth(((TextView)localView).getText(), this.jdField_a_of_type_AndroidTextTextPaint);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQCustomMenuLayout", 4, "child  TextView text " + ((TextView)localView).getText() + " measureWidth = " + k + " padding = " + localView.getPaddingLeft());
+        i1 = n;
+        if (localView.getVisibility() != 8)
+        {
+          Object localObject;
+          if ((localView instanceof TextView))
+          {
+            localObject = (TextView)localView;
+            i1 = (int)Layout.getDesiredWidth(((TextView)localObject).getText(), this.i);
+            if (QLog.isDevelopLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("child  TextView text ");
+              localStringBuilder.append(((TextView)localObject).getText());
+              localStringBuilder.append(" measureWidth = ");
+              localStringBuilder.append(i1);
+              localStringBuilder.append(" padding = ");
+              localStringBuilder.append(localView.getPaddingLeft());
+              QLog.d("QQCustomMenuLayout", 4, localStringBuilder.toString());
+            }
+            n = n + i1 + this.j;
+          }
+          else
+          {
+            int i3 = localView.getMeasuredWidth();
+            i1 = n + i3;
+            n = i1;
+            if (QLog.isDevelopLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("child  nonTextView measureWidth = ");
+              ((StringBuilder)localObject).append(i3);
+              QLog.d("QQCustomMenuLayout", 4, ((StringBuilder)localObject).toString());
+              n = i1;
+            }
+          }
+          i1 = n + localView.getPaddingLeft() + localView.getPaddingRight();
         }
-        i = i + k + this.jdField_d_of_type_Int;
-        label138:
-        i = i + localView.getPaddingLeft() + localView.getPaddingRight();
+      }
+      m += 1;
+    }
+    return n;
+  }
+  
+  private void c()
+  {
+    if (this.e > 3)
+    {
+      localImageView = this.a;
+      if ((localImageView != null) && (localImageView.getVisibility() != 0)) {
+        this.a.setVisibility(0);
       }
     }
-    label212:
-    for (;;)
+    else
     {
-      j += 1;
-      break;
-      int n = localView.getMeasuredWidth();
-      k = i + n;
-      i = k;
-      if (!QLog.isDevelopLevel()) {
-        break label138;
+      localImageView = this.a;
+      if ((localImageView != null) && (localImageView.getVisibility() != 8)) {
+        this.a.setVisibility(8);
       }
-      QLog.d("QQCustomMenuLayout", 4, "child  nonTextView measureWidth = " + n);
-      i = k;
-      break label138;
-      return i;
+    }
+    if (this.f < getChildCount() - 4)
+    {
+      localImageView = this.b;
+      if ((localImageView != null) && (localImageView.getVisibility() != 0)) {
+        this.b.setVisibility(0);
+      }
+    }
+    else
+    {
+      localImageView = this.b;
+      if ((localImageView != null) && (localImageView.getVisibility() != 8)) {
+        this.b.setVisibility(8);
+      }
+    }
+    ImageView localImageView = this.c;
+    if ((localImageView != null) && (this.a != null) && (localImageView.getVisibility() != this.a.getVisibility())) {
+      this.c.setVisibility(this.a.getVisibility());
+    }
+    localImageView = this.d;
+    if ((localImageView != null) && (this.b != null) && (localImageView.getVisibility() != this.b.getVisibility())) {
+      this.d.setVisibility(this.b.getVisibility());
     }
   }
   
   public void a()
   {
-    if (getChildCount() > 3)
+    int n;
+    for (int m = -1;; m = n)
     {
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_b_of_type_Int = (getChildCount() - 3);
-      b();
+      n = b();
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("totalWidth = ");
+        localStringBuilder.append(n);
+        localStringBuilder.append(" startPosition = ");
+        localStringBuilder.append(this.e);
+        localStringBuilder.append(" endPosition = ");
+        localStringBuilder.append(this.f);
+        QLog.d("QQCustomMenuLayout", 4, localStringBuilder.toString());
+      }
+      int i1 = this.g;
+      if ((n <= i1) || (m == n))
+      {
+        c();
+        return;
+      }
+      setMinimumWidth(i1);
+      if (this.k) {
+        this.f -= 2;
+      } else if (this.l) {
+        this.e += 2;
+      } else {
+        this.f -= 2;
+      }
+      if (this.f < 0) {
+        this.f = 0;
+      }
+      m = this.e;
+      i1 = this.f;
+      if (m > i1) {
+        this.e = i1;
+      }
+      a(this.e, this.f);
+      c();
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    int i = 2;
-    if (i < getChildCount() - 2)
+    int m = 2;
+    while (m < getChildCount() - 2)
     {
-      if ((i < paramInt1) || (i > paramInt2)) {
-        getChildAt(i).setVisibility(8);
+      if ((m >= paramInt1) && (m <= paramInt2)) {
+        getChildAt(m).setVisibility(0);
+      } else {
+        getChildAt(m).setVisibility(8);
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        getChildAt(i).setVisibility(0);
-      }
+      m += 1;
     }
   }
   
@@ -177,158 +269,58 @@ public class QQCustomMenuLayout
     addView(paramView);
   }
   
-  public void b()
-  {
-    int i = -1;
-    for (;;)
-    {
-      int j = a();
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QQCustomMenuLayout", 4, "totalWidth = " + j + " startPosition = " + this.jdField_a_of_type_Int + " endPosition = " + this.jdField_b_of_type_Int);
-      }
-      if (j <= this.jdField_c_of_type_Int)
-      {
-        label70:
-        if (this.jdField_a_of_type_Int <= 3) {
-          break label566;
-        }
-        if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)) {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-        label103:
-        if (this.jdField_b_of_type_Int >= getChildCount() - 4) {
-          break label597;
-        }
-        if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 0)) {
-          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-      }
-      for (;;)
-      {
-        if ((this.jdField_c_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView.getVisibility() != this.jdField_a_of_type_AndroidWidgetImageView.getVisibility())) {
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());
-        }
-        if ((this.jdField_d_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_d_of_type_AndroidWidgetImageView.getVisibility() != this.jdField_b_of_type_AndroidWidgetImageView.getVisibility())) {
-          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(this.jdField_b_of_type_AndroidWidgetImageView.getVisibility());
-        }
-        return;
-        if (i == j) {
-          break label70;
-        }
-        setMinimumWidth(this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Int -= 2;
-          label262:
-          if (this.jdField_b_of_type_Int < 0) {
-            this.jdField_b_of_type_Int = 0;
-          }
-          if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
-            this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-          }
-          a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          if (this.jdField_a_of_type_Int <= 3) {
-            break label504;
-          }
-          if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          }
-          label338:
-          if (this.jdField_b_of_type_Int >= getChildCount() - 4) {
-            break label535;
-          }
-          if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 0)) {
-            this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          }
-        }
-        for (;;)
-        {
-          if ((this.jdField_c_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView.getVisibility() != this.jdField_a_of_type_AndroidWidgetImageView.getVisibility())) {
-            this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(this.jdField_a_of_type_AndroidWidgetImageView.getVisibility());
-          }
-          if ((this.jdField_d_of_type_AndroidWidgetImageView == null) || (this.jdField_b_of_type_AndroidWidgetImageView == null) || (this.jdField_d_of_type_AndroidWidgetImageView.getVisibility() == this.jdField_b_of_type_AndroidWidgetImageView.getVisibility())) {
-            break label628;
-          }
-          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(this.jdField_b_of_type_AndroidWidgetImageView.getVisibility());
-          i = j;
-          break;
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Int += 2;
-            break label262;
-          }
-          this.jdField_b_of_type_Int -= 2;
-          break label262;
-          label504:
-          if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8)) {
-            break label338;
-          }
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          break label338;
-          label535:
-          if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 8)) {
-            this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-          }
-        }
-        label566:
-        if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8)) {
-          break label103;
-        }
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        break label103;
-        label597:
-        if ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 8)) {
-          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
-      }
-      label628:
-      i = j;
-    }
-  }
-  
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView) {
-      if (this.jdField_a_of_type_Int > 3)
+    int m;
+    int n;
+    if (paramView == this.a)
+    {
+      m = this.e;
+      if (m > 3)
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int - 2);
-        this.jdField_a_of_type_Int = 2;
-        if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
-          this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+        this.k = false;
+        this.l = true;
+        this.f = (m - 2);
+        this.e = 2;
+        m = this.e;
+        n = this.f;
+        if (m > n) {
+          this.e = n;
         }
-        a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        b();
-        this.jdField_b_of_type_Boolean = false;
+        a(this.e, this.f);
+        this.b.setVisibility(0);
+        this.d.setVisibility(0);
+        this.a.setVisibility(8);
+        this.c.setVisibility(8);
+        a();
+        this.l = false;
       }
     }
-    while (this.jdField_a_of_type_Int >= getChildCount() - 4) {
-      return;
+    else if (this.e < getChildCount() - 4)
+    {
+      this.l = false;
+      this.k = true;
+      this.e = (this.f + 2);
+      this.f = (getChildCount() - 3);
+      m = this.e;
+      n = this.f;
+      if (m > n) {
+        this.e = n;
+      }
+      a(this.e, this.f);
+      this.a.setVisibility(0);
+      this.c.setVisibility(0);
+      this.b.setVisibility(8);
+      this.d.setVisibility(8);
+      a();
+      this.k = false;
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = (this.jdField_b_of_type_Int + 2);
-    this.jdField_b_of_type_Int = (getChildCount() - 3);
-    if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
-      this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    }
-    a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-    b();
-    this.jdField_a_of_type_Boolean = false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuLayout
  * JD-Core Version:    0.7.0.1
  */

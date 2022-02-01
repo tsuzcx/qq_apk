@@ -1,21 +1,25 @@
 package com.tencent.mm.audio.mix.jni;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.d.l;
+import com.tencent.mm.audio.mix.decode.IDecodeCallback;
 
 public class AudioFFmpegDecodeJni
 {
-  protected long cge = 0L;
-  protected long cgf = 0L;
+  protected long hsT = 0L;
+  protected long hsU = 0L;
   
   static
   {
-    AppMethodBeat.i(137083);
-    System.loadLibrary("FFmpeg");
-    AppMethodBeat.o(137083);
+    AppMethodBeat.i(136832);
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("FFmpeg");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/audio/mix/jni/AudioFFmpegDecodeJni", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/audio/mix/jni/AudioFFmpegDecodeJni", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    AppMethodBeat.o(136832);
   }
   
-  public static native int decode(int paramInt1, int paramInt2, int paramInt3, String paramString, l paraml);
+  public static native int decode(int paramInt1, int paramInt2, int paramInt3, String paramString, IDecodeCallback paramIDecodeCallback);
   
   public native int clearResample(String paramString, Object paramObject);
   

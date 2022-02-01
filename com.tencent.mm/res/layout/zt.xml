@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/pa" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.MMTagPanelScrollView android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="false">
-        <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/bui" android:paddingLeft="@dimen/i1" android:paddingTop="@dimen/n_" android:paddingRight="@dimen/i1" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/n_" flowlayout:verticalSpacing="@dimen/n_" />
-    </com.tencent.mm.ui.base.MMTagPanelScrollView>
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/y5" android:gravity="center" android:id="@id/buo" android:padding="@dimen/dl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ListView android:id="@id/buk" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
-    <ListView android:id="@id/bup" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.downloader_app.ui.ExpandView android:layout_width="fill_parent" android:layout_height="@dimen/d6">
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/cmz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c1p" android:layout_centerInParent="true" />
+        <ImageView android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/df" android:src="@drawable/s7" android:layout_toRightOf="@id/cmz" android:layout_centerVertical="true" />
+    </com.tencent.mm.plugin.downloader_app.ui.ExpandView>
 </LinearLayout>

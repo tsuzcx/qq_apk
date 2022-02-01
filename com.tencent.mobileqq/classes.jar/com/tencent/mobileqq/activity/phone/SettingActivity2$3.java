@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ainm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class SettingActivity2$3
+class SettingActivity2$3
   implements Runnable
 {
   SettingActivity2$3(SettingActivity2 paramSettingActivity2) {}
   
   public void run()
   {
-    if (this.this$0.c == null)
+    if (this.this$0.e == null)
     {
-      this.this$0.c = new ainm(this);
-      this.this$0.app.registObserver(this.this$0.c);
+      this.this$0.e = new SettingActivity2.3.1(this);
+      this.this$0.app.registObserver(this.this$0.e);
     }
-    this.this$0.app.a(new SettingActivity2.3.2(this));
-    this.this$0.a(2131719785, 1000L, true);
+    this.this$0.app.execute(new SettingActivity2.3.2(this));
+    this.this$0.showProgressDialog(2131916272, 1000L, true);
   }
 }
 

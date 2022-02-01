@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
 
 abstract interface ValueParser<V>
 {

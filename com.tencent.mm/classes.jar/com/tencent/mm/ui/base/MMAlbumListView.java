@@ -21,14 +21,14 @@ public class MMAlbumListView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106402);
+    AppMethodBeat.i(141770);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
-    AppMethodBeat.o(106402);
+    AppMethodBeat.o(141770);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMAlbumListView
  * JD-Core Version:    0.7.0.1
  */

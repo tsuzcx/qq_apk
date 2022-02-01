@@ -1,33 +1,26 @@
 package com.tencent.mm.plugin.fts.ui.a;
 
-import com.tencent.mm.plugin.fts.a.a.l;
-import com.tencent.mm.plugin.fts.a.d.a.a;
-import com.tencent.mm.storage.ad;
+import androidx.appcompat.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import kotlin.Metadata;
 
-public abstract class b
-  extends a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/fts/ui/accessibility/FtsSosHomeUIAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class b
+  extends MMBaseAccessibilityConfig
 {
-  public ad contact;
-  public l hrL;
-  public CharSequence jVn;
-  public CharSequence jVo;
-  public String mYu;
-  b.a mYv = new b.a(this);
-  public String username;
-  
-  public b(int paramInt)
+  public b(AppCompatActivity paramAppCompatActivity)
   {
-    super(1, paramInt);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(265672);
+    AppMethodBeat.o(265672);
   }
   
-  public final int aAp()
-  {
-    return this.hrL.mTi;
-  }
+  public final void initConfig() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

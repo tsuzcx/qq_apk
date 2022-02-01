@@ -7,7 +7,7 @@ import android.view.View.MeasureSpec;
 public class FixRatioPAHighLightImageView
   extends PAHighLightImageView
 {
-  private float c;
+  private float a;
   
   public FixRatioPAHighLightImageView(Context paramContext)
   {
@@ -26,22 +26,22 @@ public class FixRatioPAHighLightImageView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.c == 0.0F)
+    if (this.a == 0.0F)
     {
       super.onMeasure(paramInt1, paramInt2);
       return;
     }
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt1) / this.c), 1073741824));
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt1) / this.a), 1073741824));
   }
   
   public void setRatio(float paramFloat)
   {
-    this.c = paramFloat;
+    this.a = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FixRatioPAHighLightImageView
  * JD-Core Version:    0.7.0.1
  */

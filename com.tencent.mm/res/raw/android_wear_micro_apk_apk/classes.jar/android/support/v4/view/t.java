@@ -27,7 +27,7 @@ class t
     paramView.postOnAnimation(paramRunnable);
   }
   
-  public void c(View paramView, int paramInt)
+  public void f(View paramView, int paramInt)
   {
     int i = paramInt;
     if (paramInt == 4) {
@@ -36,42 +36,47 @@ class t
     paramView.setImportantForAccessibility(i);
   }
   
-  public final boolean e(View paramView)
+  public final boolean f(View paramView)
   {
     return paramView.hasTransientState();
   }
   
-  public final void f(View paramView)
+  public final void g(View paramView)
   {
     paramView.postInvalidateOnAnimation();
   }
   
-  public final int g(View paramView)
+  public final int h(View paramView)
   {
     return paramView.getImportantForAccessibility();
   }
   
-  public final ViewParent j(View paramView)
+  public final ViewParent k(View paramView)
   {
     return paramView.getParentForAccessibility();
   }
   
-  public final int m(View paramView)
+  public final int n(View paramView)
   {
     return paramView.getMinimumWidth();
   }
   
-  public final int n(View paramView)
+  public final int o(View paramView)
   {
     return paramView.getMinimumHeight();
   }
   
-  public final boolean r(View paramView)
+  public void s(View paramView)
+  {
+    paramView.requestFitSystemWindows();
+  }
+  
+  public final boolean t(View paramView)
   {
     return paramView.getFitsSystemWindows();
   }
   
-  public final boolean s(View paramView)
+  public final boolean u(View paramView)
   {
     return paramView.hasOverlappingRendering();
   }

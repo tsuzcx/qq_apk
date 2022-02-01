@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import qqcircle.QQCircleBase.UserCircleInfo;
@@ -24,7 +25,15 @@ public class QCircleConfirmCircleMemberShipRequest
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     QQCircleRead.ConfidentCircleMemberRsp localConfidentCircleMemberRsp = new QQCircleRead.ConfidentCircleMemberRsp();
-    localConfidentCircleMemberRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localConfidentCircleMemberRsp.mergeFrom(paramArrayOfByte);
+      return localConfidentCircleMemberRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localConfidentCircleMemberRsp;
   }
   
@@ -33,14 +42,14 @@ public class QCircleConfirmCircleMemberShipRequest
     return "FeedCloudSvr.trpc.videocircle.circleread.CircleRead.ConfidentCircleMember";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleConfirmCircleMemberShipRequest
  * JD-Core Version:    0.7.0.1
  */

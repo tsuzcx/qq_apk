@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j2"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:id="@id/axf" android:background="@drawable/nj" android:focusable="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="15.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <CheckBox android:id="@id/axf" android:background="@drawable/0x" android:focusable="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="15.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <LinearLayout android:id="@id/cxw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/axf" android:layout_centerVertical="true">
         <ImageView android:layout_gravity="center_vertical" android:id="@id/cxk" android:layout_width="@dimen/j6" android:layout_height="@dimen/j6" android:layout_marginRight="@dimen/iu" android:scaleType="fitXY" />
         <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_dark_gray" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/cyo" android:paddingRight="20.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />

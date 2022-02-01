@@ -7,15 +7,20 @@ import kotlin.ranges.IntRange;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"category", "Lkotlin/text/CharCategory;", "", "getCategory", "(C)Lkotlin/text/CharCategory;", "directionality", "Lkotlin/text/CharDirectionality;", "getDirectionality", "(C)Lkotlin/text/CharDirectionality;", "checkRadix", "", "radix", "digitOf", "char", "isDefined", "", "isDigit", "isHighSurrogate", "isISOControl", "isIdentifierIgnorable", "isJavaIdentifierPart", "isJavaIdentifierStart", "isLetter", "isLetterOrDigit", "isLowSurrogate", "isLowerCase", "isTitleCase", "isUpperCase", "isWhitespace", "toLowerCase", "toTitleCase", "toUpperCase", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/text/CharsKt")
-public class CharsKt__CharJVMKt
+class CharsKt__CharJVMKt
 {
   @PublishedApi
   public static final int checkRadix(int paramInt)
   {
-    if ((2 > paramInt) || (36 < paramInt)) {
-      throw ((Throwable)new IllegalArgumentException("radix " + paramInt + " was not in valid range " + new IntRange(2, 36)));
+    if ((2 <= paramInt) && (36 >= paramInt)) {
+      return paramInt;
     }
-    return paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("radix ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" was not in valid range ");
+    localStringBuilder.append(new IntRange(2, 36));
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   public static final int digitOf(char paramChar, int paramInt)
@@ -138,7 +143,7 @@ public class CharsKt__CharJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.text.CharsKt__CharJVMKt
  * JD-Core Version:    0.7.0.1
  */

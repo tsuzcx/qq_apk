@@ -17,18 +17,21 @@ class MiniAppInterface$1
   
   public void onActivityPaused(Activity paramActivity)
   {
-    QLog.e("mini_ActivityLifecycle", 1, "onActivityPaused " + paramActivity.getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onActivityPaused ");
+    localStringBuilder.append(paramActivity.getClass().getSimpleName());
+    QLog.e("mini_ActivityLifecycle", 1, localStringBuilder.toString());
   }
   
   public void onActivityResumed(Activity paramActivity)
   {
-    if (MiniAppInterface.access$000(this.this$0).contains(paramActivity)) {}
-    do
-    {
+    if (MiniAppInterface.access$000(this.this$0).contains(paramActivity)) {
       return;
-      MiniAppInterface.access$000(this.this$0).add(paramActivity);
-    } while (MiniAppInterface.access$000(this.this$0).size() != 1);
-    this.this$0.onEnterForeground();
+    }
+    MiniAppInterface.access$000(this.this$0).add(paramActivity);
+    if (MiniAppInterface.access$000(this.this$0).size() == 1) {
+      this.this$0.onEnterForeground();
+    }
   }
   
   public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
@@ -45,7 +48,7 @@ class MiniAppInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.MiniAppInterface.1
  * JD-Core Version:    0.7.0.1
  */

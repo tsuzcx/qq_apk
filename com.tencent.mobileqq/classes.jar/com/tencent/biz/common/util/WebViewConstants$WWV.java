@@ -16,14 +16,14 @@ public abstract interface WebViewConstants$WWV
   public static final long HIDE_SHARE_TO_QIYEQQ = 32L;
   public static final long HIDE_TITLE_BAR_VIEW = 8192L;
   public static final long IOS_DISABLE_WKWEBVIEW = 4096L;
-  public static final long IOS_ENABLE_WKWebView = 128L;
+  public static final long IOS_ENABLE_WK_WEB_VIEW = 128L;
   public static final long LOCK_NEW_PORTRAIT = 4L;
   public static final long NO_TITLE = 8L;
   public static final long TRANSPARENT_TITLEBAR_AND_WEBVIEW_CLICKABLE = 1L;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.util.WebViewConstants.WWV
  * JD-Core Version:    0.7.0.1
  */

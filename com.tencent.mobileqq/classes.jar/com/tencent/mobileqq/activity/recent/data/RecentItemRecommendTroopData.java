@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemRecommendTroopData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public RecentItemRecommendTroopData(RecentUser paramRecentUser)
   {
@@ -15,7 +15,7 @@ public class RecentItemRecommendTroopData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    if (a().uin.equals("sp_uin_for_title"))
+    if (e().uin.equals("sp_uin_for_title"))
     {
       this.mMenuFlag = 0;
       return;

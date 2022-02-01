@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.book;
 
-import ahdq;
-
 class ResizeLayout$1
   implements Runnable
 {

@@ -1,60 +1,55 @@
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 import com.weiyun.sdk.IWyFileSystem.IWyCallback;
-import com.weiyun.sdk.IWyFileSystem.ListFiles;
+import com.weiyun.sdk.IWyFileSystem.ListOfflineFile;
 import com.weiyun.sdk.IWyFileSystem.WyErrorStatus;
-import com.weiyun.sdk.data.WyFileInfo;
+import com.weiyun.sdk.data.WyOfflineFileInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class fxd
   implements IWyFileSystem.IWyCallback
 {
-  public fxd(WeiYunLogicCenter paramWeiYunLogicCenter, String paramString) {}
+  public fxd(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void a(IWyFileSystem.ListFiles paramListFiles)
+  public void a(IWyFileSystem.ListOfflineFile paramListOfflineFile)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList onSucceed, num[" + paramListFiles.files.size() + "]");
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryOfflineFileList onSucceed, num[" + paramListOfflineFile.files.size() + "]");
     }
-    Object localObject = paramListFiles.files;
     ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    Iterator localIterator = paramListOfflineFile.files.iterator();
+    while (localIterator.hasNext())
     {
-      WyFileInfo localWyFileInfo = (WyFileInfo)((Iterator)localObject).next();
-      WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
-      localWeiYunFileInfo.jdField_b_of_type_Long = localWyFileInfo.mtime;
-      localWeiYunFileInfo.jdField_a_of_type_Long = localWyFileInfo.fileSize;
-      localWeiYunFileInfo.jdField_c_of_type_Int = localWyFileInfo.source;
-      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = localWyFileInfo.fileId;
-      localWeiYunFileInfo.jdField_b_of_type_JavaLangString = localWyFileInfo.fileName;
-      localWeiYunFileInfo.e = localWyFileInfo.cookieName;
-      localWeiYunFileInfo.f = localWyFileInfo.cookieValue;
-      localWeiYunFileInfo.jdField_d_of_type_JavaLangString = localWyFileInfo.encodeUrl;
-      localWeiYunFileInfo.jdField_c_of_type_JavaLangString = localWyFileInfo.hostName;
-      localWeiYunFileInfo.jdField_d_of_type_Int = localWyFileInfo.serverPort;
-      localWeiYunFileInfo.h = localWyFileInfo.md5;
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localWeiYunFileInfo.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.jdField_a_of_type_JavaUtilLinkedHashMap.put(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo);
-        localArrayList.add(localWeiYunFileInfo);
+      WyOfflineFileInfo localWyOfflineFileInfo = (WyOfflineFileInfo)localIterator.next();
+      OfflineFileInfo localOfflineFileInfo = new OfflineFileInfo();
+      localOfflineFileInfo.jdField_a_of_type_Boolean = localWyOfflineFileInfo.bSend;
+      localOfflineFileInfo.jdField_a_of_type_Int = localWyOfflineFileInfo.dangerLevel;
+      localOfflineFileInfo.jdField_b_of_type_Long = localWyOfflineFileInfo.fileSize;
+      localOfflineFileInfo.c = (MessageCache.a() * 1000L + localWyOfflineFileInfo.lifeTime);
+      localOfflineFileInfo.d = localWyOfflineFileInfo.uploadTime;
+      localOfflineFileInfo.jdField_b_of_type_JavaLangString = localWyOfflineFileInfo.fileName;
+      localOfflineFileInfo.jdField_a_of_type_JavaLangString = localWyOfflineFileInfo.guid;
+      localOfflineFileInfo.jdField_a_of_type_Long = localWyOfflineFileInfo.uin;
+      localArrayList.add(localOfflineFileInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "OfflineFileInfo[" + localOfflineFileInfo.toString() + "]");
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 31, new Object[] { paramListFiles.categoryId, Boolean.valueOf(paramListFiles.isEnd), Integer.valueOf(paramListFiles.totalNum), Long.valueOf(paramListFiles.timestamp), localArrayList, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.jdField_a_of_type_Int) });
+    this.a.a.a().a(true, 32, new Object[] { Boolean.valueOf(paramListOfflineFile.isEnd), localArrayList });
   }
   
   public void onFailed(IWyFileSystem.WyErrorStatus paramWyErrorStatus)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryOfflineFileList onFailed: errcode[" + paramWyErrorStatus.errorCode + "], errmsg[" + paramWyErrorStatus.errorMsg + "]");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 31, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg, this.jdField_a_of_type_JavaLangString });
+    this.a.a.a().a(false, 32, new Object[] { Integer.valueOf(paramWyErrorStatus.errorCode), paramWyErrorStatus.errorMsg });
   }
 }
 

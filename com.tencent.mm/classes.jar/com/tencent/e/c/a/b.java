@@ -8,31 +8,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends JceStruct
 {
-  public int BiY = 0;
-  public int BiZ = 0;
-  public int Bja = 0;
+  public int ahss = 0;
+  public int ahst = 0;
+  public int ahsu = 0;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(114482);
-    this.BiY = paramJceInputStream.read(this.BiY, 1, true);
-    this.BiZ = paramJceInputStream.read(this.BiZ, 2, true);
-    this.Bja = paramJceInputStream.read(this.Bja, 3, true);
-    AppMethodBeat.o(114482);
+    AppMethodBeat.i(138323);
+    this.ahss = paramJceInputStream.read(this.ahss, 1, true);
+    this.ahst = paramJceInputStream.read(this.ahst, 2, true);
+    this.ahsu = paramJceInputStream.read(this.ahsu, 3, true);
+    AppMethodBeat.o(138323);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(114481);
-    paramJceOutputStream.write(this.BiY, 1);
-    paramJceOutputStream.write(this.BiZ, 2);
-    paramJceOutputStream.write(this.Bja, 3);
-    AppMethodBeat.o(114481);
+    AppMethodBeat.i(138322);
+    paramJceOutputStream.write(this.ahss, 1);
+    paramJceOutputStream.write(this.ahst, 2);
+    paramJceOutputStream.write(this.ahsu, 3);
+    AppMethodBeat.o(138322);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.c.a.b
  * JD-Core Version:    0.7.0.1
  */

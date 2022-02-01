@@ -14,15 +14,17 @@ public final class SeekPoint
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (SeekPoint)paramObject;
-    } while ((this.timeUs == paramObject.timeUs) && (this.position == paramObject.position));
+      return (this.timeUs == paramObject.timeUs) && (this.position == paramObject.position);
+    }
     return false;
   }
   
@@ -33,12 +35,18 @@ public final class SeekPoint
   
   public String toString()
   {
-    return "[timeUs=" + this.timeUs + ", position=" + this.position + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[timeUs=");
+    localStringBuilder.append(this.timeUs);
+    localStringBuilder.append(", position=");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.SeekPoint
  * JD-Core Version:    0.7.0.1
  */

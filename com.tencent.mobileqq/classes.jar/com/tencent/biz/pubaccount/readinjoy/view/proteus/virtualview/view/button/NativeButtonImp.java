@@ -22,26 +22,25 @@ public class NativeButtonImp
   
   private void updateAttrs(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    for (;;)
-    {
+    if (paramDrawable == null) {
       return;
-      if ((paramDrawable instanceof RoundedDrawable))
+    }
+    if ((paramDrawable instanceof RoundedDrawable))
+    {
+      paramDrawable = (RoundedDrawable)paramDrawable;
+      paramDrawable.setScaleType(ImageView.ScaleType.FIT_XY).setBorderWidth(this.mBorderWidth).setBorderColor(this.mBorderColor);
+      paramDrawable.setCornerRadius(100.0F, 0.0F, 0.0F, 0.0F);
+      return;
+    }
+    if ((paramDrawable instanceof LayerDrawable))
+    {
+      paramDrawable = (LayerDrawable)paramDrawable;
+      int i = 0;
+      int j = paramDrawable.getNumberOfLayers();
+      while (i < j)
       {
-        ((RoundedDrawable)paramDrawable).setScaleType(ImageView.ScaleType.FIT_XY).setBorderWidth(this.mBorderWidth).setBorderColor(this.mBorderColor);
-        ((RoundedDrawable)paramDrawable).setCornerRadius(100.0F, 0.0F, 0.0F, 0.0F);
-        return;
-      }
-      if ((paramDrawable instanceof LayerDrawable))
-      {
-        paramDrawable = (LayerDrawable)paramDrawable;
-        int i = 0;
-        int j = paramDrawable.getNumberOfLayers();
-        while (i < j)
-        {
-          updateAttrs(paramDrawable.getDrawable(i));
-          i += 1;
-        }
+        updateAttrs(paramDrawable.getDrawable(i));
+        i += 1;
       }
     }
   }
@@ -54,7 +53,7 @@ public class NativeButtonImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp
  * JD-Core Version:    0.7.0.1
  */

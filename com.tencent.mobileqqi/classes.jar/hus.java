@@ -1,20 +1,25 @@
-import android.view.View;
 import com.tencent.widget.AbsListView;
 
 public class hus
   implements Runnable
 {
-  public hus(AbsListView paramAbsListView, View paramView, hvd paramhvd) {}
+  public hus(AbsListView paramAbsListView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.ab = -1;
-    this.jdField_a_of_type_AndroidViewView.setPressed(false);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setPressed(false);
-    if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.p) {
-      this.jdField_a_of_type_Hvd.run();
+    if (this.a.f)
+    {
+      AbsListView localAbsListView = this.a;
+      this.a.g = false;
+      localAbsListView.f = false;
+      AbsListView.a(this.a, false);
+      if ((AbsListView.n(this.a) & 0x2) == 0) {
+        AbsListView.b(this.a, false);
+      }
+      if (!this.a.isAlwaysDrawnWithCacheEnabled()) {
+        this.a.invalidate();
+      }
     }
-    AbsListView.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, null);
   }
 }
 

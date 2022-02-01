@@ -9,13 +9,13 @@ public class zzaz
   extends zza
 {
   public static final Parcelable.Creator<zzaz> CREATOR = new w();
-  public final ParcelFileDescriptor To;
+  public final ParcelFileDescriptor Vd;
   public final int statusCode;
   
   public zzaz(int paramInt, ParcelFileDescriptor paramParcelFileDescriptor)
   {
     this.statusCode = paramInt;
-    this.To = paramParcelFileDescriptor;
+    this.Vd = paramParcelFileDescriptor;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

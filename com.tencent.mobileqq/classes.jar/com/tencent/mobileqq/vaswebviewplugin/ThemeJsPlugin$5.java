@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.content.Context;
-import bdjz;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ThemeJsPlugin$5
-  extends bdjz
+  extends QQCustomDialog
 {
   ThemeJsPlugin$5(ThemeJsPlugin paramThemeJsPlugin, Context paramContext, int paramInt, String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
@@ -18,7 +18,7 @@ class ThemeJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

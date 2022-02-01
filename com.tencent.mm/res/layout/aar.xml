@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/cvk" android:background="@drawable/ajk" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:gravity="center" android:id="@id/cvl" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="120.0dip" android:layout_marginBottom="40.0dip" android:text="@string/g8x" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/nq" />
-    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a6q" android:gravity="center" android:id="@id/cvm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="@string/eqs" android:layout_above="@id/cvl" android:layout_centerHorizontal="true" />
+<RelativeLayout android:id="@id/bsg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderCollapsibleTextView android:id="@id/kif" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toStartOf="@id/ito" android:layout_alignParentStart="true" />
+    <FrameLayout android:id="@id/ito" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:id="@id/g73" android:background="@drawable/tn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/cv" android:layout_marginTop="7.0dip" android:paddingStart="6.0dip" android:paddingEnd="@dimen/df" android:layout_marginStart="@dimen/cp">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g74" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_play2" app:iconColor="@color/FG_0" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_0" android:id="@id/g75" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="00:00" />
+        </LinearLayout>
+        <com.tencent.mm.plugin.finder.music.FinderImgFeedMusicTag android:id="@id/a8s" android:background="@drawable/v0" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/df" android:layout_weight="1.0" />
+    </FrameLayout>
+    <ViewStub android:id="@id/g71" android:layout="@layout/ab5" android:layout_width="wrap_content" android:layout_height="@dimen/cv" android:layout_marginTop="7.0dip" android:layout_alignParentEnd="true" />
 </RelativeLayout>

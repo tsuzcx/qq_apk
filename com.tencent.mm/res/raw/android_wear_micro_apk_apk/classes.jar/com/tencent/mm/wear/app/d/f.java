@@ -1,33 +1,33 @@
 package com.tencent.mm.wear.app.d;
 
-import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.support.v4.app.at;
 
 public final class f
 {
-  public static void a(Context paramContext, int paramInt, Notification paramNotification)
-  {
-    ((NotificationManager)paramContext.getSystemService("notification")).notify(paramInt, paramNotification);
-  }
+  private static boolean agO = false;
   
-  public static void a(Context paramContext, List<Integer> paramList)
+  public static at i(Context paramContext, String paramString)
   {
-    paramContext = (NotificationManager)paramContext.getSystemService("notification");
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      paramContext.cancel(((Integer)paramList.next()).intValue());
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((i != 0) && (!agO))
+      {
+        agO = true;
+        NotificationManager localNotificationManager = (NotificationManager)paramContext.getSystemService(NotificationManager.class);
+        NotificationChannel localNotificationChannel = new NotificationChannel("message_channel_id", paramContext.getString(2131165246), 4);
+        localNotificationChannel.enableLights(true);
+        localNotificationChannel.setLightColor(-16711936);
+        localNotificationChannel.enableVibration(true);
+        localNotificationChannel.setVibrationPattern(new long[] { 0L, 150L, 100L, 400L });
+        localNotificationManager.createNotificationChannel(localNotificationChannel);
+      }
+      return new at(paramContext, paramString);
     }
-  }
-  
-  public static void i(Context paramContext, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(paramInt));
-    a(paramContext, localArrayList);
   }
 }
 

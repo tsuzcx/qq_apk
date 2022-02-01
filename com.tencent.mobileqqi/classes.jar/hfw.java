@@ -1,31 +1,42 @@
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.CharJumpAnimView;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
 
 public class hfw
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public hfw(CharJumpAnimView paramCharJumpAnimView) {}
+  public hfw(ClearableEditText paramClearableEditText) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (CharJumpAnimView.a(this.a) == 0L)
+    int i = 1;
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    label107:
+    for (;;)
     {
-      if (CharJumpAnimView.a(this.a) != null) {
-        CharJumpAnimView.a(this.a).onAnimationStart(null);
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
+        for (;;)
+        {
+          if (i == 0) {
+            break label107;
+          }
+          this.a.setText("");
+          this.a.setClearButtonVisible(false);
+          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener == null) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener.a();
+          return false;
+          i = 0;
+        }
       }
-      CharJumpAnimView.a(this.a, System.currentTimeMillis());
     }
-    this.a.a(CharJumpAnimView.a(this.a), 3500L);
-    this.a.invalidate();
-    if (this.a.a())
-    {
-      this.a.postDelayed(this, 20L);
-      return;
-    }
-    if (CharJumpAnimView.a(this.a) != null) {
-      CharJumpAnimView.a(this.a).onAnimationEnd(null);
-    }
-    CharJumpAnimView.a(this.a, null);
   }
 }
 

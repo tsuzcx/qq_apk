@@ -1,47 +1,68 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ao.a;
-import com.tencent.mm.model.ao.b;
-import com.tencent.mm.model.ao.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.wallet_core.c.ac;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.b;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.wallet_core.c.af;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.c;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.base.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.e;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.List;
 
-@com.tencent.mm.ui.base.a(3)
+@a(3)
 public class WalletOrderInfoUI
   extends WalletBaseUI
 {
-  private String plc;
-  private Orders tVr;
-  protected ao.b.a urT;
+  private String MyF;
+  protected az.b.a VRk;
+  private Orders VmL;
   
   public WalletOrderInfoUI()
   {
-    AppMethodBeat.i(47525);
-    this.urT = new WalletOrderInfoUI.1(this);
-    AppMethodBeat.o(47525);
+    AppMethodBeat.i(71094);
+    this.VRk = new WalletOrderInfoUI.1(this);
+    AppMethodBeat.o(71094);
   }
   
-  protected static String e(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private void e(Orders paramOrders)
   {
-    AppMethodBeat.i(47533);
+    AppMethodBeat.i(71100);
+    Log.printInfoStack("MicroMsg.WalletOrderInfoUI", "goToOrderInfoUI, is_use_new_paid_succ_page: %d", new Object[] { Integer.valueOf(paramOrders.VHh) });
+    if (paramOrders.VHh == 1) {
+      getProcess().b(this, WalletOrderInfoNewUI.class, getInput());
+    }
+    for (;;)
+    {
+      finish();
+      AppMethodBeat.o(71100);
+      return;
+      getProcess().b(this, WalletOrderInfoOldUI.class, getInput());
+    }
+  }
+  
+  protected static String i(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    AppMethodBeat.i(71102);
     for (;;)
     {
       try
@@ -50,171 +71,163 @@ public class WalletOrderInfoUI
         if ((paramString1.indexOf("%7Breqkey%7D") <= 0) && (paramString1.indexOf("%7Btransid%7D") <= 0) && (paramString1.indexOf("%7Bphone%7D") <= 0) && (paramString1.indexOf("%7Bremark%7D") <= 0)) {
           continue;
         }
-        ab.i("MicroMsg.WalletOrderInfoUI", "concat url 1: ");
+        Log.i("MicroMsg.WalletOrderInfoUI", "concat url 1: ");
         paramString2 = paramString1.replace("%7Breqkey%7D", paramString2).replace("%7Btransid%7D", paramString3).replace("%7Bphone%7D", paramString4).replace("%7Bremark%7D", paramString5);
         paramString1 = paramString2;
       }
       catch (Exception paramString2)
       {
-        ab.printErrStackTrace("MicroMsg.WalletOrderInfoUI", paramString2, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WalletOrderInfoUI", paramString2, "", new Object[0]);
         continue;
       }
-      AppMethodBeat.o(47533);
+      AppMethodBeat.o(71102);
       return paramString1;
       if ((paramString1.indexOf("{reqkey}") > 0) || (paramString1.indexOf("{transid}") > 0) || (paramString1.indexOf("{phone}") > 0) || (paramString1.indexOf("{remark}") > 0))
       {
-        ab.i("MicroMsg.WalletOrderInfoUI", "concat url 2: ");
+        Log.i("MicroMsg.WalletOrderInfoUI", "concat url 2: ");
         paramString2 = paramString1.replace("{reqkey}", paramString2).replace("{transid}", paramString3).replace("{phone}", paramString4).replace("{remark}", paramString5);
         paramString1 = paramString2;
       }
       else
       {
-        ab.i("MicroMsg.WalletOrderInfoUI", "concat url 3: ");
+        Log.i("MicroMsg.WalletOrderInfoUI", "concat url 3: ");
         paramString2 = paramString1 + String.format("?reqkey=%s&transid=%s&phone=%s&remark=%s", new Object[] { paramString2, paramString3, paramString4, paramString5 });
         paramString1 = paramString2;
       }
     }
   }
   
-  private void e(Orders paramOrders)
+  protected void au(au paramau)
   {
-    AppMethodBeat.i(47531);
-    ab.b("MicroMsg.WalletOrderInfoUI", "goToOrderInfoUI, is_use_new_paid_succ_page: %d", new Object[] { Integer.valueOf(paramOrders.ujv) });
-    if (paramOrders.ujv == 1) {
-      getProcess().b(this, WalletOrderInfoNewUI.class, getInput());
-    }
-    for (;;)
+    AppMethodBeat.i(71101);
+    if ((paramau != null) && ((int)paramau.maN != 0))
     {
-      finish();
-      AppMethodBeat.o(47531);
-      return;
-      getProcess().b(this, WalletOrderInfoOldUI.class, getInput());
-    }
-  }
-  
-  protected void R(ad paramad)
-  {
-    AppMethodBeat.i(47532);
-    if ((paramad != null) && ((int)paramad.euF != 0))
-    {
-      String str = paramad.Oe();
-      ab.d("MicroMsg.WalletOrderInfoUI", "call back from contactServer nickName " + str + " username: " + paramad.field_username);
-      if ((this.tVr.ujl != null) && (this.tVr.ujl.size() > 0))
+      String str = paramau.aSU();
+      Log.d("MicroMsg.WalletOrderInfoUI", "call back from contactServer nickName " + str + " username: " + paramau.field_username);
+      if ((this.VmL.VGX != null) && (this.VmL.VGX.size() > 0))
       {
-        paramad = this.tVr.ujl.iterator();
-        while (paramad.hasNext()) {
-          ((Orders.Commodity)paramad.next()).ppq = str;
+        paramau = this.VmL.VGX.iterator();
+        while (paramau.hasNext()) {
+          ((Orders.Commodity)paramau.next()).hzv = str;
         }
       }
     }
-    AppMethodBeat.o(47532);
+    AppMethodBeat.o(71101);
   }
   
-  protected void afK(String paramString)
+  protected void bhi(String paramString)
   {
-    AppMethodBeat.i(47529);
-    doSceneProgress(new ac(paramString));
-    AppMethodBeat.o(47529);
+    AppMethodBeat.i(71098);
+    doSceneProgress(new af(paramString));
+    AppMethodBeat.o(71098);
   }
   
-  protected Orders cVH()
-  {
-    AppMethodBeat.i(47528);
-    Orders localOrders = (Orders)getInput().getParcelable("key_orders");
-    AppMethodBeat.o(47528);
-    return localOrders;
-  }
-  
-  protected boolean chF()
+  protected boolean gNb()
   {
     return true;
   }
   
-  protected void dF(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(47530);
-    doSceneProgress(new ac(paramString, paramInt));
-    AppMethodBeat.o(47530);
-  }
-  
   public int getLayoutId()
   {
-    return 2130971042;
+    return a.g.transparent_layout;
+  }
+  
+  protected void hG(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(71099);
+    doSceneProgress(new af(paramString, paramInt));
+    AppMethodBeat.o(71099);
+  }
+  
+  protected Orders ikP()
+  {
+    AppMethodBeat.i(71097);
+    Orders localOrders = (Orders)getInput().getParcelable("key_orders");
+    AppMethodBeat.o(71097);
+    return localOrders;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(47526);
+    AppMethodBeat.i(71095);
     super.onCreate(paramBundle);
-    if (chF())
+    if (gNb())
     {
-      this.tVr = cVH();
-      this.plc = getInput().getString("key_trans_id");
+      this.VmL = ikP();
+      this.MyF = getInput().getString("key_trans_id");
       int i = getInput().getInt("key_pay_type", -1);
-      ab.i("MicroMsg.WalletOrderInfoUI", "mTransId %s", new Object[] { this.plc });
-      if (this.plc != null)
+      Log.i("MicroMsg.WalletOrderInfoUI", "mTransId %s", new Object[] { this.MyF });
+      if (this.MyF != null)
       {
         if (i == -1)
         {
-          afK(this.plc);
-          AppMethodBeat.o(47526);
+          bhi(this.MyF);
+          AppMethodBeat.o(71095);
           return;
         }
-        dF(this.plc, i);
-        AppMethodBeat.o(47526);
+        hG(this.MyF, i);
+        AppMethodBeat.o(71095);
         return;
       }
-      if (this.tVr != null) {
-        e(this.tVr);
+      if (this.VmL != null) {
+        e(this.VmL);
       }
     }
-    AppMethodBeat.o(47526);
+    AppMethodBeat.o(71095);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(47527);
+    AppMethodBeat.i(71096);
     super.onDestroy();
-    if ((this.tVr != null) && (!bo.isNullOrNil(this.tVr.username))) {
-      ao.a.flI.pl(this.tVr.username);
+    if ((this.VmL != null) && (!Util.isNullOrNil(this.VmL.username))) {
+      az.a.okP.Jq(this.VmL.username);
     }
-    AppMethodBeat.o(47527);
+    AppMethodBeat.o(71096);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(47534);
-    if (((paramm instanceof ac)) && (paramInt1 == 0) && (paramInt2 == 0))
+    AppMethodBeat.i(71103);
+    if (((paramp instanceof af)) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.tVr = ((ac)paramm).ucc;
-      if (this.tVr != null) {
-        if ((this.tVr.ujl != null) && (this.tVr.ujl.size() != 0))
+      this.VmL = ((af)paramp).Vyn;
+      if (this.VmL != null) {
+        if ((this.VmL.VGX != null) && (this.VmL.VGX.size() != 0))
         {
-          paramString = (Orders.Commodity)this.tVr.ujl.get(0);
-          this.plc = paramString.cnJ;
-          ab.d("MicroMsg.WalletOrderInfoUI", "Coomdity:" + paramString.toString());
-          g.RM();
-          paramm = ((j)g.E(j.class)).YA().arw(paramString.ppq);
-          if ((paramm != null) && ((int)paramm.euF != 0)) {
-            R(paramm);
+          paramString = (Orders.Commodity)this.VmL.VGX.get(0);
+          this.MyF = paramString.hAU;
+          Log.d("MicroMsg.WalletOrderInfoUI", "Coomdity:" + paramString.toString());
+          h.baF();
+          paramp = ((n)h.ax(n.class)).bzA().JE(paramString.hzv);
+          if ((paramp != null) && ((int)paramp.maN != 0)) {
+            au(paramp);
           }
         }
         else
         {
-          e(this.tVr);
+          e(this.VmL);
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(47534);
+        AppMethodBeat.o(71103);
         return true;
-        ao.a.flI.a(paramString.ppq, "", this.urT);
+        az.a.okP.a(paramString.hzv, "", this.VRk);
         break;
-        ab.e("MicroMsg.WalletOrderInfoUI", "cannot get orders");
-        h.a(getContext(), 2131305336, 0, new WalletOrderInfoUI.2(this));
+        Log.e("MicroMsg.WalletOrderInfoUI", "cannot get orders");
+        k.a(getContext(), a.i.wallet_order_info_err, 0, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(71093);
+            WalletOrderInfoUI.this.finish();
+            AppMethodBeat.o(71093);
+          }
+        });
       }
     }
-    AppMethodBeat.o(47534);
+    AppMethodBeat.o(71103);
     return false;
   }
   
@@ -226,7 +239,7 @@ public class WalletOrderInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoUI
  * JD-Core Version:    0.7.0.1
  */

@@ -28,56 +28,52 @@ public abstract class SimpleItemAnimator
     int k = paramItemHolderInfo1.left;
     int m = paramItemHolderInfo1.top;
     int i;
-    if (paramViewHolder2.shouldIgnore()) {
-      i = paramItemHolderInfo1.left;
-    }
-    for (int j = paramItemHolderInfo1.top;; j = paramItemHolderInfo2.top)
+    int j;
+    if (paramViewHolder2.shouldIgnore())
     {
-      return animateChange(paramViewHolder1, paramViewHolder2, k, m, i, j);
-      i = paramItemHolderInfo2.left;
+      i = paramItemHolderInfo1.left;
+      j = paramItemHolderInfo1.top;
     }
+    else
+    {
+      i = paramItemHolderInfo2.left;
+      j = paramItemHolderInfo2.top;
+    }
+    return animateChange(paramViewHolder1, paramViewHolder2, k, m, i, j);
   }
   
   public boolean animateDisappearance(@NonNull RecyclerView.ViewHolder paramViewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo1, @Nullable RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo2)
   {
-    int j = 0;
     int i;
-    label14:
-    int k;
-    if (paramItemHolderInfo1 == null)
-    {
+    if (paramItemHolderInfo1 == null) {
       i = 0;
-      if (paramItemHolderInfo1 != null) {
-        break label105;
-      }
-      paramItemHolderInfo1 = paramViewHolder.itemView;
-      if (paramItemHolderInfo2 != null) {
-        break label114;
-      }
-      k = paramItemHolderInfo1.getLeft();
-      label29:
-      if (paramItemHolderInfo2 != null) {
-        break label123;
-      }
+    } else {
+      i = paramItemHolderInfo1.left;
     }
-    label105:
-    label114:
-    label123:
-    for (int m = paramItemHolderInfo1.getTop();; m = paramItemHolderInfo2.top)
+    int j;
+    if (paramItemHolderInfo1 == null) {
+      j = 0;
+    } else {
+      j = paramItemHolderInfo1.top;
+    }
+    paramItemHolderInfo1 = paramViewHolder.itemView;
+    int k;
+    if (paramItemHolderInfo2 == null) {
+      k = paramItemHolderInfo1.getLeft();
+    } else {
+      k = paramItemHolderInfo2.left;
+    }
+    int m;
+    if (paramItemHolderInfo2 == null) {
+      m = paramItemHolderInfo1.getTop();
+    } else {
+      m = paramItemHolderInfo2.top;
+    }
+    if ((!paramViewHolder.isRemoved()) && ((i != k) || (j != m)))
     {
-      if ((paramViewHolder.isRemoved()) || ((i == k) && (j == m))) {
-        break label132;
-      }
       paramItemHolderInfo1.layout(k, m, paramItemHolderInfo1.getWidth() + k, paramItemHolderInfo1.getHeight() + m);
       return animateMove(paramViewHolder, i, j, k, m);
-      i = paramItemHolderInfo1.left;
-      break;
-      j = paramItemHolderInfo1.top;
-      break label14;
-      k = paramItemHolderInfo2.left;
-      break label29;
     }
-    label132:
     return animateRemove(paramViewHolder);
   }
   
@@ -85,11 +81,12 @@ public abstract class SimpleItemAnimator
   
   public boolean animatePersistence(@NonNull RecyclerView.ViewHolder paramViewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo1, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo2)
   {
-    if ((paramItemHolderInfo1.left != paramItemHolderInfo2.left) || (paramItemHolderInfo1.top != paramItemHolderInfo2.top)) {
-      return animateMove(paramViewHolder, paramItemHolderInfo1.left, paramItemHolderInfo1.top, paramItemHolderInfo2.left, paramItemHolderInfo2.top);
+    if ((paramItemHolderInfo1.left == paramItemHolderInfo2.left) && (paramItemHolderInfo1.top == paramItemHolderInfo2.top))
+    {
+      dispatchMoveFinished(paramViewHolder);
+      return false;
     }
-    dispatchMoveFinished(paramViewHolder);
-    return false;
+    return animateMove(paramViewHolder, paramItemHolderInfo1.left, paramItemHolderInfo1.top, paramItemHolderInfo2.left, paramItemHolderInfo2.top);
   }
   
   public abstract boolean animateRemove(RecyclerView.ViewHolder paramViewHolder);

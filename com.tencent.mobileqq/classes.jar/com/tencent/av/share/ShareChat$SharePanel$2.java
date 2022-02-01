@@ -1,35 +1,36 @@
 package com.tencent.av.share;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
-import mbc;
 
-public class ShareChat$SharePanel$2
-  extends ResultReceiver
+class ShareChat$SharePanel$2
+  implements DialogInterface.OnDismissListener
 {
-  public ShareChat$SharePanel$2(mbc parammbc, Handler paramHandler, long paramLong, int paramInt)
-  {
-    super(paramHandler);
-  }
+  ShareChat$SharePanel$2(ShareChat.SharePanel paramSharePanel) {}
   
-  protected void onReceiveResult(int paramInt, Bundle paramBundle)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.w("ShareChat", 1, "shareToMobileQQ.onReceiveResult, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "]");
-    paramBundle = this.jdField_a_of_type_Mbc;
-    int i = this.jdField_a_of_type_Int;
-    if (paramInt == -1) {}
-    for (paramInt = 2;; paramInt = 3)
+    if (QLog.isColorLevel())
     {
-      paramBundle.a(0, i, paramInt);
-      return;
+      paramDialogInterface = new StringBuilder();
+      paramDialogInterface.append("ShareActionSheetBuilder.onDismiss, mChoosedChannel[");
+      paramDialogInterface.append(this.a.b);
+      paramDialogInterface.append("], mIHandle[");
+      paramDialogInterface.append(this.a.f);
+      paramDialogInterface.append("]");
+      QLog.w("ShareChat", 1, paramDialogInterface.toString());
+    }
+    if ((this.a.b == -1) && (this.a.f != null))
+    {
+      paramDialogInterface = this.a;
+      paramDialogInterface.a(paramDialogInterface.b, this.a.c, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.2
  * JD-Core Version:    0.7.0.1
  */

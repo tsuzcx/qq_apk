@@ -1,0 +1,34 @@
+package com.tencent.mobileqq.guild.channel;
+
+import android.view.View;
+import com.tencent.mobileqq.guild.api.IQQGuildRouterApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+
+class QQGuildChannelListSettingFragment$12
+  implements ActionSheet.OnButtonClickListener
+{
+  QQGuildChannelListSettingFragment$12(QQGuildChannelListSettingFragment paramQQGuildChannelListSettingFragment) {}
+  
+  public void onClick(View paramView, int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
+        return;
+      }
+      ((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).openCreateGuildChannel(this.a.getContext(), this.a.l(), QQGuildChannelListSettingFragment.d(this.a), "list_setting", "", 0L);
+      QQGuildChannelListSettingFragment.j(this.a).dismiss();
+      return;
+    }
+    ((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).openGuildChannelCreateCategorySetting(this.a.getContext(), this.a.l(), QQGuildChannelListSettingFragment.d(this.a), 256);
+    QQGuildChannelListSettingFragment.j(this.a).dismiss();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.guild.channel.QQGuildChannelListSettingFragment.12
+ * JD-Core Version:    0.7.0.1
+ */

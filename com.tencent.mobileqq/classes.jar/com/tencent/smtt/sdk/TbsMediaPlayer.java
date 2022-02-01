@@ -5,76 +5,76 @@ import android.os.Bundle;
 
 public class TbsMediaPlayer
 {
-  private TbsMediaPlayerWizard mPlayerImpl = null;
+  private q a = null;
   
-  public TbsMediaPlayer(TbsMediaPlayerWizard paramTbsMediaPlayerWizard)
+  public TbsMediaPlayer(q paramq)
   {
-    this.mPlayerImpl = paramTbsMediaPlayerWizard;
+    this.a = paramq;
   }
   
   public void audio(int paramInt)
   {
-    this.mPlayerImpl.audio(paramInt);
+    this.a.b(paramInt);
   }
   
   public void close()
   {
-    this.mPlayerImpl.close();
+    this.a.e();
   }
   
   public float getVolume()
   {
-    return this.mPlayerImpl.getVolume();
+    return this.a.b();
   }
   
   public boolean isAvailable()
   {
-    return this.mPlayerImpl.isAvailable();
+    return this.a.a();
   }
   
   public void pause()
   {
-    this.mPlayerImpl.pause();
+    this.a.c();
   }
   
   public void play()
   {
-    this.mPlayerImpl.play();
+    this.a.d();
   }
   
   public void seek(long paramLong)
   {
-    this.mPlayerImpl.seek(paramLong);
+    this.a.a(paramLong);
   }
   
   public void setPlayerListener(TbsMediaPlayer.TbsMediaPlayerListener paramTbsMediaPlayerListener)
   {
-    this.mPlayerImpl.setPlayerListener(paramTbsMediaPlayerListener);
+    this.a.a(paramTbsMediaPlayerListener);
   }
   
   public void setSurfaceTexture(SurfaceTexture paramSurfaceTexture)
   {
-    this.mPlayerImpl.setSurfaceTexture(paramSurfaceTexture);
+    this.a.a(paramSurfaceTexture);
   }
   
   public void setVolume(float paramFloat)
   {
-    this.mPlayerImpl.setVolume(paramFloat);
+    this.a.a(paramFloat);
   }
   
   public void startPlay(String paramString, Bundle paramBundle)
   {
-    this.mPlayerImpl.startPlay(paramString, paramBundle);
+    this.a.a(paramString, paramBundle);
   }
   
   public void subtitle(int paramInt)
   {
-    this.mPlayerImpl.subtitle(paramInt);
+    this.a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

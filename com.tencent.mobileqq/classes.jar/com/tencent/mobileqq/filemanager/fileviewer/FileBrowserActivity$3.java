@@ -2,7 +2,6 @@ package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import arfp;
 
 class FileBrowserActivity$3
   implements Runnable
@@ -11,19 +10,19 @@ class FileBrowserActivity$3
   
   public void run()
   {
-    this.this$0.a.a(this.this$0.a(), new ViewGroup.LayoutParams(-1, -1));
+    this.this$0.d.a(this.this$0.a(), new ViewGroup.LayoutParams(-1, -1));
     FileBrowserActivity.b(this.this$0);
-    if (this.this$0.a.e())
+    if (this.this$0.d.j())
     {
-      FileBrowserActivity.a(this.this$0).setVisibility(0);
+      FileBrowserActivity.c(this.this$0).setVisibility(0);
       return;
     }
-    FileBrowserActivity.a(this.this$0).setVisibility(8);
+    FileBrowserActivity.c(this.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.3
  * JD-Core Version:    0.7.0.1
  */

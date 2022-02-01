@@ -1,19 +1,18 @@
-import android.view.View;
-import android.widget.TextView;
+import android.os.Handler;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.mobileqq.activity.ChatActivity;
 
 public class bxr
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   public bxr(ChatActivity paramChatActivity) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    if (ChatActivity.a(this.a) != null) {
-      ChatActivity.a(this.a).setVisibility(8);
-    }
-    if (ChatActivity.a(this.a) != null) {
-      ChatActivity.a(this.a).setVisibility(8);
+    if ((ChatActivity.a(this.a)) && (this.a.a != null))
+    {
+      ChatActivity.a(this.a, false);
+      this.a.a.sendEmptyMessageDelayed(23, 100L);
     }
   }
 }

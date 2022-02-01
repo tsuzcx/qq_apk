@@ -1,70 +1,91 @@
 package com.tencent.mm.aa;
 
-import java.util.Iterator;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storagebase.h.b;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public abstract interface c
+public final class c
+  implements be
 {
-  public abstract c J(String paramString, int paramInt);
+  private static c mxL;
+  private a mxM;
   
-  public abstract c c(String paramString, double paramDouble);
+  private c()
+  {
+    AppMethodBeat.i(150086);
+    if (a.mxs == null) {
+      a.mxs = new a();
+    }
+    this.mxM = a.mxs;
+    AppMethodBeat.o(150086);
+  }
   
-  public abstract c c(String paramString, Object paramObject);
+  private static c aYn()
+  {
+    try
+    {
+      AppMethodBeat.i(150087);
+      if (mxL == null)
+      {
+        localc = new c();
+        mxL = localc;
+        localc.mxM.init();
+      }
+      c localc = mxL;
+      AppMethodBeat.o(150087);
+      return localc;
+    }
+    finally {}
+  }
   
-  public abstract c e(String paramString, Object paramObject);
+  public static a aYo()
+  {
+    AppMethodBeat.i(150090);
+    h.baC().aZJ();
+    a locala = aYn().mxM;
+    AppMethodBeat.o(150090);
+    return locala;
+  }
   
-  public abstract Object get(String paramString);
+  public final void clearPluginData(int paramInt) {}
   
-  public abstract boolean getBoolean(String paramString);
+  public final HashMap<Integer, h.b> getBaseDBFactories()
+  {
+    return null;
+  }
   
-  public abstract double getDouble(String paramString);
+  public final void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150089);
+    this.mxM.init();
+    AppMethodBeat.o(150089);
+  }
   
-  public abstract int getInt(String paramString);
+  public final void onAccountRelease()
+  {
+    AppMethodBeat.i(150088);
+    a locala = this.mxM;
+    locala.listeners.clear();
+    b localb = locala.mxt;
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] decoder.clear()");
+    localb.mxB.clear();
+    localb.mxD.clear();
+    localb.mxC.clear();
+    localb.mxE.clear();
+    locala.initialized = false;
+    AppMethodBeat.o(150088);
+  }
   
-  public abstract long getLong(String paramString);
-  
-  public abstract String getString(String paramString);
-  
-  public abstract boolean has(String paramString);
-  
-  public abstract boolean isNull(String paramString);
-  
-  public abstract Iterator<String> keys();
-  
-  public abstract int length();
-  
-  public abstract String mj(String paramString);
-  
-  public abstract a mk(String paramString);
-  
-  public abstract a ml(String paramString);
-  
-  public abstract c mm(String paramString);
-  
-  public abstract c mn(String paramString);
-  
-  public abstract Object opt(String paramString);
-  
-  public abstract boolean optBoolean(String paramString, boolean paramBoolean);
-  
-  public abstract double optDouble(String paramString, double paramDouble);
-  
-  public abstract int optInt(String paramString, int paramInt);
-  
-  public abstract long optLong(String paramString, long paramLong);
-  
-  public abstract String optString(String paramString);
-  
-  public abstract String optString(String paramString1, String paramString2);
-  
-  public abstract c r(String paramString, long paramLong);
-  
-  public abstract Object remove(String paramString);
-  
-  public abstract c t(String paramString, boolean paramBoolean);
+  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.aa.c
  * JD-Core Version:    0.7.0.1
  */

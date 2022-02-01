@@ -1,15 +1,12 @@
-import android.view.View;
 import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter;
 
 public class exn
-  implements Runnable
 {
-  public exn(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter, View paramView, String paramString, int paramInt, exo paramexo) {}
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
-  public void run()
-  {
-    BaseWhatASmoothAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBaseWhatASmoothAdapter, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Exo);
-  }
+  private exn(BaseWhatASmoothAdapter paramBaseWhatASmoothAdapter) {}
 }
 
 

@@ -11,17 +11,29 @@ public class VideoLocalDataInitializer
   
   public static List<VideoMaterialMetaData> buildVideoMaterials()
   {
-    int j = 0;
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new VideoMaterialMetaData(null, "None", null, "assets://none.png"));
     String[] arrayOfString = LOCAL_MATERIAL_IDS;
     int k = arrayOfString.length;
+    int j = 0;
     int i = 0;
     String str;
+    Object localObject;
+    StringBuilder localStringBuilder;
     while (i < k)
     {
       str = arrayOfString[i];
-      localArrayList.add(new VideoMaterialMetaData(str, "assets://camera/camera_video/CameraVideoAnimal/" + str, "", "assets://camera/camera_video/CameraVideoAnimal/" + str + "/" + str + ".png"));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("assets://camera/camera_video/CameraVideoAnimal/");
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("assets://camera/camera_video/CameraVideoAnimal/");
+      localStringBuilder.append(str);
+      localStringBuilder.append("/");
+      localStringBuilder.append(str);
+      localStringBuilder.append(".png");
+      localArrayList.add(new VideoMaterialMetaData(str, (String)localObject, "", localStringBuilder.toString()));
       i += 1;
     }
     arrayOfString = ONLINE_MATERIAL_IDS;
@@ -30,16 +42,25 @@ public class VideoLocalDataInitializer
     while (i < k)
     {
       str = arrayOfString[i];
-      localArrayList.add(new VideoMaterialMetaData(str, "", "http://res.tu.qq.com/materials/" + str + "Android.zip", "http://res.tu.qq.com/materials/" + str + ".png"));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("https://res.tu.qq.com/materials/");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("Android.zip");
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://res.tu.qq.com/materials/");
+      localStringBuilder.append(str);
+      localStringBuilder.append(".png");
+      localArrayList.add(new VideoMaterialMetaData(str, "", (String)localObject, localStringBuilder.toString()));
       i += 1;
     }
-    localArrayList.add(new VideoMaterialMetaData("video_3DFace_fashionglass1", "", "http://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1Android.zip", "http://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1.png"));
+    localArrayList.add(new VideoMaterialMetaData("video_3DFace_fashionglass1", "", "https://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1Android.zip", "https://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1.png"));
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.VideoLocalDataInitializer
  * JD-Core Version:    0.7.0.1
  */

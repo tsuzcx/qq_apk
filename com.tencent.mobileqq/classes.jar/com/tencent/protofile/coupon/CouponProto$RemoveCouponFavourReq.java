@@ -8,14 +8,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class CouponProto$RemoveCouponFavourReq
   extends MessageMicro<RemoveCouponFavourReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "bid", "cid", "source_id" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RemoveCouponFavourReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field bid = PBField.initUInt32(0);
   public final PBUInt32Field cid = PBField.initUInt32(0);
   public final PBUInt32Field source_id = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "bid", "cid", "source_id" }, new Object[] { localInteger, localInteger, localInteger }, RemoveCouponFavourReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.coupon.CouponProto.RemoveCouponFavourReq
  * JD-Core Version:    0.7.0.1
  */

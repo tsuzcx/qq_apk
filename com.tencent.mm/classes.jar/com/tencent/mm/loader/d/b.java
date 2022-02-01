@@ -1,24 +1,129 @@
 package com.tencent.mm.loader.d;
 
-import a.l;
-import com.tencent.mm.loader.h.a.a;
+import com.tencent.mm.loader.c.b.b;
+import com.tencent.mm.loader.e.g;
+import com.tencent.mm.loader.g.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.URL;
+import java.net.UnknownHostException;
+import javax.net.ssl.SSLHandshakeException;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/common/IDataFetcher;", "T", "", "()V", "loadData", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "loader", "Lcom/tencent/mm/loader/loader/ITaskLoader;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady;", "loadDataImp", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "IDataReady", "IDataReady2", "libimageloader_release"})
-public abstract class b<T>
+public final class b
+  extends com.tencent.mm.loader.c.b<String>
 {
-  protected abstract void a(a<T> parama, com.tencent.mm.loader.f.f paramf, b.b paramb);
-  
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady;", "", "onDataReady", "", "resp", "Lcom/tencent/mm/loader/model/Response;", "onError", "onTransferToBatchGet", "libimageloader_release"})
-  public static abstract interface a
+  public final void a(a<String> parama, g paramg, b.b paramb)
   {
-    public abstract void a(com.tencent.mm.loader.h.f<?> paramf);
-    
-    public abstract void onError();
+    Log.i("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data from url:%s", new Object[] { parama });
+    try
+    {
+      paramb.a(a.GI((String)parama.bmg()));
+      return;
+    }
+    catch (InterruptedException parama)
+    {
+      Log.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(parama) });
+      Log.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] onError");
+      paramb.atR();
+      return;
+    }
+    catch (UnknownHostException parama)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(parama) });
+      }
+    }
+    catch (SSLHandshakeException parama)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(parama) });
+      }
+    }
+    catch (SocketException parama)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(parama) });
+      }
+    }
+    catch (SocketTimeoutException parama)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(parama) });
+      }
+    }
+    catch (IOException parama)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(parama) });
+      }
+    }
+    catch (Exception parama)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.Loader.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(parama) });
+      }
+    }
+  }
+  
+  static final class a
+  {
+    public static com.tencent.mm.loader.g.b GI(String paramString)
+    {
+      paramString = (HttpURLConnection)new URL(paramString).openConnection();
+      paramString.setConnectTimeout(15000);
+      paramString.setReadTimeout(20000);
+      if (paramString == null) {
+        Log.i("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", "open connection failed.");
+      }
+      if (paramString.getResponseCode() >= 300) {
+        try
+        {
+          paramString.getInputStream().close();
+          paramString.disconnect();
+          Log.w("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", "dz[httpURLConnectionGet 300]");
+          return null;
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", localException1.getMessage());
+          }
+        }
+      }
+      Object localObject = paramString.getInputStream();
+      String str = paramString.getContentType();
+      localObject = e.B((InputStream)localObject);
+      try
+      {
+        paramString.getInputStream().close();
+        paramString.disconnect();
+        return com.tencent.mm.loader.g.b.d((byte[])localObject, str);
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.Loader.DefaultImageDownloader.HttpClientFactory", localException2.getMessage());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.d.b
  * JD-Core Version:    0.7.0.1
  */

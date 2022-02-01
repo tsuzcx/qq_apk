@@ -55,34 +55,34 @@ final class p$a
     switch (this.a)
     {
     default: 
-    case 1: 
-    case 2: 
-    case 3: 
-      Cursor localCursor;
-      do
-      {
-        return;
-        p.a(this.r, this.c, this.d, this.b);
-        return;
-        p.a(this.r, this.c, this.m, this.n, this.b);
-        return;
-        localCursor = p.a(this.r, this.e, this.c, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.b);
-      } while (localCursor == null);
-      localCursor.close();
-      return;
-    case 4: 
-      p.a(this.r, this.o, this.p, this.q, this.b);
+    case 6: 
+      p.a(this.r, this.o, this.p, this.b);
       return;
     case 5: 
       p.a(this.r, this.o, this.b);
       return;
+    case 4: 
+      p.a(this.r, this.o, this.p, this.q, this.b);
+      return;
+    case 3: 
+      Cursor localCursor = p.a(this.r, this.e, this.c, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.b);
+      if (localCursor != null)
+      {
+        localCursor.close();
+        return;
+      }
+      break;
+    case 2: 
+      p.a(this.r, this.c, this.m, this.n, this.b);
+      return;
+    case 1: 
+      p.a(this.r, this.c, this.d, this.b);
     }
-    p.a(this.r, this.o, this.p, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.p.a
  * JD-Core Version:    0.7.0.1
  */

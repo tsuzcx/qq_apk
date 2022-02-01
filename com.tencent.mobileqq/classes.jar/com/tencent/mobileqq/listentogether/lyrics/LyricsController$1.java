@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.listentogether.lyrics;
 
-import atnw;
-
-public class LyricsController$1
+class LyricsController$1
   implements Runnable
 {
-  public LyricsController$1(atnw paramatnw) {}
+  LyricsController$1(LyricsController paramLyricsController) {}
   
   public void run()
   {
-    this.this$0.i();
+    this.this$0.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.1
  * JD-Core Version:    0.7.0.1
  */

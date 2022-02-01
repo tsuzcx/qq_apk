@@ -85,20 +85,17 @@ public class TAVRendererFilter
   
   public int hashCode()
   {
-    return (((((((this.program + 0) * 31 + this.uScreenSizeHandle) * 31 + this.uTextureSizeHandle) * 31 + this.xyMatrixHandle) * 31 + this.uAlphaHandle) * 31 + this.stMatrixHandle) * 31 + this.aPositionHandle) * 31 + Arrays.hashCode(this.defaultViewport);
+    return (((((((0 + this.program) * 31 + this.uScreenSizeHandle) * 31 + this.uTextureSizeHandle) * 31 + this.xyMatrixHandle) * 31 + this.uAlphaHandle) * 31 + this.stMatrixHandle) * 31 + this.aPositionHandle) * 31 + Arrays.hashCode(this.defaultViewport);
   }
   
   protected void initShaderForTextureInfo(TAVTextureInfo paramTAVTextureInfo)
   {
     if (paramTAVTextureInfo.textureType == 36197) {
       initShaders("uniform vec2 uScreenSize;\nuniform vec2 uTextureSize;\nuniform mat3 uMatrix;\nuniform mat3 stMatrix;\nattribute vec2 aPosition;\nvarying vec2 vTextureCoord;\nvoid main() {\n  vec3 position = uMatrix * vec3(aPosition, 1);\n  vec2 clipSpace = (position.xy / uScreenSize) * 2.0 - 1.0;\n  gl_Position = vec4(clipSpace, 0, 1);\n  vec3 coord = vec3(aPosition / uTextureSize, 1);\n  vTextureCoord = (stMatrix * coord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTextureOES;\nuniform float uAlpha;\nvoid main() {\n  vec4 color = texture2D(sTextureOES, vTextureCoord);\n  gl_FragColor = mix(vec4(0,0,0,1), color, uAlpha);\n}\n");
-    }
-    for (;;)
-    {
-      this.textureType = paramTAVTextureInfo.textureType;
-      return;
+    } else {
       initShaders("uniform vec2 uScreenSize;\nuniform vec2 uTextureSize;\nuniform mat3 uMatrix;\nuniform mat3 stMatrix;\nattribute vec2 aPosition;\nvarying vec2 vTextureCoord;\nvoid main() {\n  vec3 position = uMatrix * vec3(aPosition, 1);\n  vec2 clipSpace = (position.xy / uScreenSize) * 2.0 - 1.0;\n  gl_Position = vec4(clipSpace, 0, 1);\n  vec3 coord = vec3(aPosition / uTextureSize, 1);\n  vTextureCoord = (stMatrix * coord).xy;\n}\n", "precision mediump float;\nvarying vec2 vTextureCoord;\nuniform sampler2D sTexture;\nuniform float uAlpha;\nvoid main() {\n   vec4 color = texture2D(sTexture, vTextureCoord);\n  gl_FragColor = mix(vec4(0,0,0,1), color, uAlpha);\n}\n");
     }
+    this.textureType = paramTAVTextureInfo.textureType;
   }
   
   protected void initShaders(String paramString1, String paramString2)
@@ -153,7 +150,7 @@ public class TAVRendererFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.core.TAVRendererFilter
  * JD-Core Version:    0.7.0.1
  */

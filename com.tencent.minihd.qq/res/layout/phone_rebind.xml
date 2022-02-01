@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@drawable/phone_book_icon" />
+    <TextView android:textSize="@dimen/textSizeS3" android:textColor="@color/skin_gray2" android:id="@id/phone_bind_changeqq_prompt_text" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="asdfasdf" android:lineSpacingExtra="10.0dip" />
+    <Button android:id="@id/phone_bind_changeqq_confirm_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="确定" style="@style/ButtonBlue" />
+    <Button android:id="@id/phone_bind_changeqq_cancel_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="取消" style="@style/ButtonWhite" />
+</LinearLayout>

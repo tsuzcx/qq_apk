@@ -7,11 +7,11 @@ public abstract interface d
 {
   public abstract void a(a parama);
   
-  public abstract <T extends BaseIPCService> void b(String paramString, Class<T> paramClass);
+  public abstract <T extends BaseIPCService> void e(String paramString, Class<T> paramClass);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.a.d
  * JD-Core Version:    0.7.0.1
  */

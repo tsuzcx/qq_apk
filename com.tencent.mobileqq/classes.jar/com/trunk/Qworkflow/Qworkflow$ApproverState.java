@@ -20,13 +20,14 @@ public final class Qworkflow$ApproverState
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint32_state", "uint32_bepushed_times", "bytes_comment", "uint32_last_bepushed_time", "uint64_approve_time" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L) }, ApproverState.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint32_state", "uint32_bepushed_times", "bytes_comment", "uint32_last_bepushed_time", "uint64_approve_time" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, Long.valueOf(0L) }, ApproverState.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.ApproverState
  * JD-Core Version:    0.7.0.1
  */

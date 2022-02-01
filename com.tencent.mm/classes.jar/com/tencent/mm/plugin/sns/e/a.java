@@ -1,135 +1,111 @@
 package com.tencent.mm.plugin.sns.e;
 
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.ColorSpace;
+import android.graphics.ColorSpace.Named;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ry;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.storage.t;
-import com.tencent.mm.plugin.sns.storage.u;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.memory.k;
+import com.tencent.mm.memory.m;
+import com.tencent.mm.plugin.performance.watchdogs.d;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  private static boolean bRB;
-  private static c<ry> dZC;
-  private static final List<String> rbE;
-  
-  static
+  public static Bitmap a(String paramString, BitmapFactory.Options paramOptions1, BitmapFactory.Options paramOptions2)
   {
-    AppMethodBeat.i(35872);
-    rbE = Collections.synchronizedList(new LinkedList());
-    bRB = false;
-    dZC = new a.1();
-    AppMethodBeat.o(35872);
+    AppMethodBeat.i(306276);
+    a(paramOptions1, paramOptions2);
+    long l = System.currentTimeMillis();
+    try
+    {
+      paramOptions2 = k.bvO().a(paramString, paramOptions1);
+      paramOptions1 = paramOptions2;
+      if (paramOptions2 != null) {
+        paramOptions1 = t.t(paramString, paramOptions2);
+      }
+      Log.d("MicroMsg.SnsBitmapUtil", "decodeWithRotateByExif used %dms bitmap: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramOptions1 });
+      AppMethodBeat.o(306276);
+      return paramOptions1;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      Log.e("MicroMsg.SnsBitmapUtil", "%s", new Object[] { d.gzs().af(true, 0) });
+      Log.e("MicroMsg.SnsBitmapUtil", "OutOfMemoryError e " + paramString.getMessage());
+      AppMethodBeat.o(306276);
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.SnsBitmapUtil", paramString, "", new Object[0]);
+      AppMethodBeat.o(306276);
+    }
+    return null;
   }
   
-  public static boolean ZR(String paramString)
+  private static void a(BitmapFactory.Options paramOptions1, BitmapFactory.Options paramOptions2)
   {
-    AppMethodBeat.i(35868);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(35868);
-      return false;
+    AppMethodBeat.i(306280);
+    if ((Build.VERSION.SDK_INT > 26) && (paramOptions2 != null) && ((paramOptions2.outColorSpace == ColorSpace.get(ColorSpace.Named.DCI_P3)) || (paramOptions2.outColorSpace == ColorSpace.get(ColorSpace.Named.DISPLAY_P3)))) {
+      paramOptions1.inPreferredColorSpace = ColorSpace.get(ColorSpace.Named.SRGB);
     }
-    if (paramString.equals(g.RL().Ru().get(2, null)))
-    {
-      AppMethodBeat.o(35868);
-      return false;
-    }
-    if (ZT(paramString))
-    {
-      AppMethodBeat.o(35868);
-      return false;
-    }
-    boolean bool = ((com.tencent.mm.plugin.story.api.e)g.G(com.tencent.mm.plugin.story.api.e.class)).isStoryUnread(paramString);
-    AppMethodBeat.o(35868);
-    return bool;
+    AppMethodBeat.o(306280);
   }
   
-  public static boolean ZS(String paramString)
+  public static m c(String paramString, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(35869);
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(95063);
+    a(paramOptions, paramOptions);
+    long l = System.currentTimeMillis();
+    try
     {
-      AppMethodBeat.o(35869);
-      return false;
+      Bitmap localBitmap = k.bvO().a(paramString, paramOptions);
+      paramOptions = localBitmap;
+      if (localBitmap != null) {
+        paramOptions = t.t(paramString, localBitmap);
+      }
+      Log.d("MicroMsg.SnsBitmapUtil", "decodeWithRotateByExif used %dms bitmap: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramOptions });
+      paramString = m.O(paramOptions);
+      AppMethodBeat.o(95063);
+      return paramString;
     }
-    if (ZT(paramString))
+    catch (OutOfMemoryError paramString)
     {
-      AppMethodBeat.o(35869);
-      return false;
+      Log.e("MicroMsg.SnsBitmapUtil", "%s", new Object[] { d.gzs().af(true, 0) });
+      Log.e("MicroMsg.SnsBitmapUtil", "OutOfMemoryError e " + paramString.getMessage());
+      AppMethodBeat.o(95063);
     }
-    if ((((com.tencent.mm.plugin.story.api.e)g.G(com.tencent.mm.plugin.story.api.e.class)).isStoryExist(paramString)) || (((com.tencent.mm.plugin.story.api.e)g.G(com.tencent.mm.plugin.story.api.e.class)).isStoryUnread(paramString)))
-    {
-      AppMethodBeat.o(35869);
-      return true;
-    }
-    AppMethodBeat.o(35869);
-    return false;
+    return null;
   }
   
-  public static boolean ZT(String paramString)
+  public static Bitmap m(String paramString, float paramFloat)
   {
-    AppMethodBeat.i(35870);
-    boolean bool = cnU().contains(paramString);
-    AppMethodBeat.o(35870);
-    return bool;
-  }
-  
-  public static List<String> cnU()
-  {
-    AppMethodBeat.i(35871);
-    if (bRB)
+    Object localObject = null;
+    AppMethodBeat.i(306266);
+    long l = System.currentTimeMillis();
+    Bitmap localBitmap = k.bvO().a(paramString, null);
+    if (paramFloat == 0.0F)
     {
-      localObject = rbE;
-      AppMethodBeat.o(35871);
-      return localObject;
+      Log.d("MicroMsg.SnsBitmapUtil", "decode used %dms %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localBitmap });
+      AppMethodBeat.o(306266);
+      return localBitmap;
     }
-    Object localObject = ag.cpl().mb(5L);
-    if (bo.isNullOrNil(((t)localObject).field_memberList))
+    paramString = localObject;
+    if (localBitmap != null)
     {
-      localObject = new LinkedList();
-      AppMethodBeat.o(35871);
-      return localObject;
+      paramString = BitmapUtil.getRoundedCornerBitmap(localBitmap, true, localBitmap.getWidth() * paramFloat);
+      Log.d("MicroMsg.SnsBitmapUtil", "decode used %dms %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localBitmap });
     }
-    localObject = bo.P(((t)localObject).field_memberList.split(","));
-    if (localObject == null)
-    {
-      localObject = new LinkedList();
-      AppMethodBeat.o(35871);
-      return localObject;
-    }
-    rbE.addAll((Collection)localObject);
-    bRB = true;
-    localObject = rbE;
-    AppMethodBeat.o(35871);
-    return localObject;
-  }
-  
-  public static void destroy()
-  {
-    AppMethodBeat.i(35867);
-    dZC.dead();
-    AppMethodBeat.o(35867);
-  }
-  
-  public static void init()
-  {
-    AppMethodBeat.i(35866);
-    dZC.alive();
-    AppMethodBeat.o(35866);
+    AppMethodBeat.o(306266);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.e.a
  * JD-Core Version:    0.7.0.1
  */

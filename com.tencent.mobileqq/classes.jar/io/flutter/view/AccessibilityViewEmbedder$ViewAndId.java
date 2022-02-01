@@ -15,16 +15,14 @@ class AccessibilityViewEmbedder$ViewAndId
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ViewAndId)paramObject;
-    } while ((this.id == paramObject.id) && (this.view.equals(paramObject.view)));
-    return false;
+    }
+    if (!(paramObject instanceof ViewAndId)) {
+      return false;
+    }
+    paramObject = (ViewAndId)paramObject;
+    return (this.id == paramObject.id) && (this.view.equals(paramObject.view));
   }
   
   public int hashCode()
@@ -34,7 +32,7 @@ class AccessibilityViewEmbedder$ViewAndId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.view.AccessibilityViewEmbedder.ViewAndId
  * JD-Core Version:    0.7.0.1
  */

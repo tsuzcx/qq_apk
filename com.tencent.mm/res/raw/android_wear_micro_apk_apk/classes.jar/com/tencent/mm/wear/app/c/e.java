@@ -6,23 +6,23 @@ import com.tencent.mm.wear.a.c.d;
 final class e
   extends com.tencent.mm.wear.app.g.a
 {
-  private a acX;
+  private a agy;
   
   public e(b paramb, a parama)
   {
-    this.acX = parama;
+    this.agy = parama;
   }
   
   protected final void execute()
   {
-    d.e("MicroMsg.MMImageLoader", "RenderImageViewInUIThread: execute-%d -%s", new Object[] { Integer.valueOf(this.acX.type), this.acX.acK });
-    ImageView localImageView = this.acX.acL;
-    if ((localImageView == null) || (!this.acX.acK.equals(localImageView.getTag())))
+    d.d("MicroMsg.MMImageLoader", "RenderImageViewInUIThread: execute-%d -%s", new Object[] { Integer.valueOf(this.agy.type), this.agy.agl });
+    ImageView localImageView = this.agy.agm;
+    if ((localImageView == null) || (!this.agy.agl.equals(localImageView.getTag())))
     {
-      d.e("MicroMsg.MMImageLoader", "imageView is null or cacheKey problem", new Object[0]);
+      d.d("MicroMsg.MMImageLoader", "imageView is null or cacheKey problem", new Object[0]);
       return;
     }
-    b.a(this.acW, this.acX);
+    b.a(this.agx, this.agy);
   }
   
   protected final String getName()

@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItemWithMask;
 import java.util.Comparator;
 
 public class eys
   implements Comparator
 {
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  public int a(TroopListAdapter2.TroopListItemWithMask paramTroopListItemWithMask1, TroopListAdapter2.TroopListItemWithMask paramTroopListItemWithMask2)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
-    }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
+    return paramTroopListItemWithMask1.a - paramTroopListItemWithMask2.a;
   }
 }
 

@@ -10,10 +10,10 @@ public final class f
   static void a(ConnectionResult paramConnectionResult, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramConnectionResult.Hc);
+    c.c(paramParcel, 1, paramConnectionResult.IR);
     c.c(paramParcel, 2, paramConnectionResult.getErrorCode());
-    c.a(paramParcel, 3, paramConnectionResult.gn(), paramInt);
-    c.a(paramParcel, 4, paramConnectionResult.go());
+    c.a(paramParcel, 3, paramConnectionResult.gx(), paramInt);
+    c.a(paramParcel, 4, paramConnectionResult.gy());
     c.v(paramParcel, i);
   }
 }

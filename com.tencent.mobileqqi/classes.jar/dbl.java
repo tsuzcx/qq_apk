@@ -1,18 +1,46 @@
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class dbl
+  extends Handler
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
-  TextView d;
+  public dbl(QQBrowserActivity paramQQBrowserActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = 1;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    int j = paramMessage.arg1;
+    boolean bool;
+    if ((j & 0x1) == 0)
+    {
+      bool = true;
+      this.a.a(bool);
+      if ((j & 0x2) != 0) {
+        break label76;
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        break label81;
+      }
+      QQBrowserActivity.a(this.a).setVisibility(0);
+      return;
+      bool = false;
+      break;
+      label76:
+      i = 0;
+    }
+    label81:
+    QQBrowserActivity.b(this.a).setVisibility(8);
+  }
 }
 
 

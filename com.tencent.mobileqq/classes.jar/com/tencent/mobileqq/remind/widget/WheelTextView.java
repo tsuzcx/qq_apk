@@ -23,24 +23,24 @@ public class WheelTextView
   public void setTextSize(float paramFloat)
   {
     Object localObject = getContext();
-    if (localObject == null) {}
-    for (localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources())
+    if (localObject == null) {
+      localObject = Resources.getSystem();
+    } else {
+      localObject = ((Context)localObject).getResources();
+    }
+    paramFloat = TypedValue.applyDimension(1, paramFloat, ((Resources)localObject).getDisplayMetrics());
+    if (paramFloat != getPaint().getTextSize())
     {
-      paramFloat = TypedValue.applyDimension(1, paramFloat, ((Resources)localObject).getDisplayMetrics());
-      if (paramFloat != getPaint().getTextSize())
-      {
-        getPaint().setTextSize(paramFloat);
-        if (getLayout() != null) {
-          invalidate();
-        }
+      getPaint().setTextSize(paramFloat);
+      if (getLayout() != null) {
+        invalidate();
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.remind.widget.WheelTextView
  * JD-Core Version:    0.7.0.1
  */

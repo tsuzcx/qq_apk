@@ -27,14 +27,16 @@ public abstract class TdsReaderView
     ReportParam localReportParam = new ReportParam("preview_impl");
     localReportParam.markTime();
     paramOpenCallback = implInner(paramOpenCallback);
-    if (paramOpenCallback == null) {}
-    for (int i = -1;; i = 0)
-    {
-      localReportParam.retCode = i;
-      localReportParam.endTime();
-      Reporter.reportOp(localReportParam);
-      return paramOpenCallback;
+    int i;
+    if (paramOpenCallback == null) {
+      i = -1;
+    } else {
+      i = 0;
     }
+    localReportParam.retCode = i;
+    localReportParam.endTime();
+    Reporter.reportOp(localReportParam);
+    return paramOpenCallback;
   }
   
   private static TdsReaderView implInner(TdsReaderView.OpenCallback paramOpenCallback)
@@ -92,7 +94,7 @@ public abstract class TdsReaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.kwstudio.office.preview.TdsReaderView
  * JD-Core Version:    0.7.0.1
  */

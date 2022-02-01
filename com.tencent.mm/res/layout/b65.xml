@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center|top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/tc" android:id="@id/fi9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginBottom="24.0dip" android:text="" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/ldh" android:layout_width="102.0dip" android:layout_height="102.0dip" android:layout_marginTop="80.0dip" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ldi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="29.0dip" android:layout_marginEnd="@dimen/cv">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="24.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/ldj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="UserName" android:maxLines="2" />
+            <TextView android:textSize="24.0dip" android:textColor="#fffd8f44" android:id="@id/ldk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="fafafafa" android:singleLine="true" android:layout_marginStart="10.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="end" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/ld4" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <TextView android:textSize="16.0dip" android:textColor="#80f7f7f7" android:layout_gravity="center" android:id="@id/ld3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="16.0dip" android:textColor="#fff7f7f7" android:id="@id/ld5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

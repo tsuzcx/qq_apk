@@ -2,12 +2,13 @@ import com.tencent.mobileqq.widget.OvalProgress;
 
 public class hhb
 {
-  float jdField_a_of_type_Float;
-  float b;
-  float c;
-  float d;
+  public double a;
+  public double b;
+  public double c;
+  public double d;
+  public double e;
   
-  hhb(OvalProgress paramOvalProgress) {}
+  public hhb(OvalProgress paramOvalProgress) {}
 }
 
 

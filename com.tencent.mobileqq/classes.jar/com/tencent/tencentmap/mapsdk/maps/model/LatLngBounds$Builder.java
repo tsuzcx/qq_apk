@@ -11,10 +11,10 @@ public final class LatLngBounds$Builder
   
   public final LatLngBounds build()
   {
-    if (this.a.size() < 2) {
-      throw new hn(this.a.size());
+    if (this.a.size() >= 2) {
+      return LatLngBounds.a(this.a);
     }
-    return LatLngBounds.a(this.a);
+    throw new hn(this.a.size());
   }
   
   @NonNull
@@ -33,7 +33,7 @@ public final class LatLngBounds$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds.Builder
  * JD-Core Version:    0.7.0.1
  */

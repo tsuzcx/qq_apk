@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.equipmentlock;
 
-import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class EquipLockCircleView
   extends View
@@ -19,8 +19,8 @@ public class EquipLockCircleView
   {
     super.onDraw(paramCanvas);
     Paint localPaint = new Paint();
-    localPaint.setColor(getResources().getColor(2131166903));
-    paramCanvas.drawCircle(aepi.a(3.0F, getResources()), getHeight() / 2, aepi.a(2.0F, getResources()), localPaint);
+    localPaint.setColor(getResources().getColor(2131167993));
+    paramCanvas.drawCircle(AIOUtils.b(3.0F, getResources()), getHeight() / 2, AIOUtils.b(2.0F, getResources()), localPaint);
   }
 }
 

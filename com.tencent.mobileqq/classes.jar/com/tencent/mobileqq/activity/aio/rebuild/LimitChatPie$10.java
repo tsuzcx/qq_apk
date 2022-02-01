@@ -1,18 +1,13 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agse;
-import android.content.Context;
-import android.widget.TextView;
-
-public class LimitChatPie$10
+class LimitChatPie$10
   implements Runnable
 {
-  public LimitChatPie$10(agse paramagse) {}
+  LimitChatPie$10(LimitChatPie paramLimitChatPie, int paramInt, String paramString) {}
   
   public void run()
   {
-    agse.b(this.this$0, this.this$0.a.getString(2131699339));
-    this.this$0.f.setText(agse.a(this.this$0));
+    LimitChatPie.a(this.this$0, this.a, this.b);
   }
 }
 

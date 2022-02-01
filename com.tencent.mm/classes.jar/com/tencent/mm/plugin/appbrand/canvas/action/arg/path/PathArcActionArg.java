@@ -11,9 +11,9 @@ public class PathArcActionArg
   
   static
   {
-    AppMethodBeat.i(103598);
-    CREATOR = new PathArcActionArg.1();
-    AppMethodBeat.o(103598);
+    AppMethodBeat.i(145281);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145281);
   }
   
   public PathArcActionArg() {}
@@ -25,7 +25,7 @@ public class PathArcActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathArcActionArg
  * JD-Core Version:    0.7.0.1
  */

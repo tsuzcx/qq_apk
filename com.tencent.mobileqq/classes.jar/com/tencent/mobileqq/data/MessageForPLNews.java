@@ -28,21 +28,21 @@ public class MessageForPLNews
       this.bgColor = localJSONObject.optInt("bgColor");
       this.cover = localJSONObject.optString("cover");
       this.ts = localJSONObject.optLong("ts");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MessageForPLNews", 4, "doParse:" + this.msg);
-      }
-      this.isread = true;
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MessageForPLNews", 2, "doParse", localJSONException);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("MessageForPLNews", 2, "doParse", localJSONException);
       }
     }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doParse:");
+      localStringBuilder.append(this.msg);
+      QLog.i("MessageForPLNews", 4, localStringBuilder.toString());
+    }
+    this.isread = true;
   }
   
   public boolean msgEquals(MessageForPLNews paramMessageForPLNews)

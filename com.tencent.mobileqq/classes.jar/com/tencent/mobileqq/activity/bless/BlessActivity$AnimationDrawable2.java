@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahcn;
 import android.graphics.drawable.AnimationDrawable;
 
 public class BlessActivity$AnimationDrawable2
   extends AnimationDrawable
 {
-  private ahcn jdField_a_of_type_Ahcn;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a = false;
+  private BlessActivity.IAnimationFinishListener b;
   
   public BlessActivity$AnimationDrawable2(BlessActivity paramBlessActivity) {}
   
   public void a()
   {
     stop();
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
-  public void a(ahcn paramahcn)
+  public void a(BlessActivity.IAnimationFinishListener paramIAnimationFinishListener)
   {
-    this.jdField_a_of_type_Ahcn = paramahcn;
+    this.b = paramIAnimationFinishListener;
   }
   
   public boolean selectDrawable(int paramInt)
   {
     boolean bool = super.selectDrawable(paramInt);
-    if ((paramInt != 0) && (paramInt == getNumberOfFrames() - 1) && (!this.jdField_a_of_type_Boolean))
+    if ((paramInt != 0) && (paramInt == getNumberOfFrames() - 1) && (!this.a))
     {
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Ahcn != null) {
-        this.jdField_a_of_type_Ahcn.a();
+      this.a = true;
+      BlessActivity.IAnimationFinishListener localIAnimationFinishListener = this.b;
+      if (localIAnimationFinishListener != null) {
+        localIAnimationFinishListener.a();
       }
     }
     return bool;

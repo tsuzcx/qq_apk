@@ -9,8 +9,8 @@ public final class BindUin
 {
   static byte[] cache_sKey;
   public int iStatus = 11;
-  public long lUin;
-  public byte[] sKey;
+  public long lUin = 0L;
+  public byte[] sKey = null;
   
   public BindUin() {}
   
@@ -42,7 +42,7 @@ public final class BindUin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.BindUin
  * JD-Core Version:    0.7.0.1
  */

@@ -26,14 +26,15 @@ public final class oidb_cmd0x46f$DislikeParam
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 88, 98, 104, 112, 122, 200 }, new String[] { "uint64_articleid", "uint32_reasonid", "bytes_rowkey", "rpt_uint64_tagid", "rpt_user_dislike_list", "uint64_feeds_id", "uint64_biu_uin", "rpt_tag_name", "uint64_topic_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), null, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, Long.valueOf(0L) }, DislikeParam.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 88, 98, 104, 112, 122, 200 }, new String[] { "uint64_articleid", "uint32_reasonid", "bytes_rowkey", "rpt_uint64_tagid", "rpt_user_dislike_list", "uint64_feeds_id", "uint64_biu_uin", "rpt_tag_name", "uint64_topic_id" }, new Object[] { localLong, Integer.valueOf(0), localByteStringMicro1, localLong, null, localLong, localLong, localByteStringMicro2, localLong }, DislikeParam.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x46f.oidb_cmd0x46f.DislikeParam
  * JD-Core Version:    0.7.0.1
  */

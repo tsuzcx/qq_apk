@@ -14,6 +14,7 @@ public abstract class FetchPOICallback
   {
     if (paramInt2 == 0)
     {
+      paramInt2 = 0;
       if (paramLong == 0L)
       {
         onSuccess(new ArrayList(0));
@@ -21,17 +22,17 @@ public abstract class FetchPOICallback
       }
       paramString = CBundleReader.getLongArray(paramLong, "poi_list");
       CBundleReader.deleteBundle(paramLong);
-      if (paramString == null) {}
-      ArrayList localArrayList;
-      for (paramInt1 = 0;; paramInt1 = paramString.length)
-      {
-        localArrayList = new ArrayList(paramInt1);
-        if (paramString == null) {
-          break;
-        }
-        paramInt2 = paramString.length;
+      if (paramString == null) {
         paramInt1 = 0;
-        while (paramInt1 < paramInt2)
+      } else {
+        paramInt1 = paramString.length;
+      }
+      ArrayList localArrayList = new ArrayList(paramInt1);
+      if (paramString != null)
+      {
+        int i = paramString.length;
+        paramInt1 = paramInt2;
+        while (paramInt1 < i)
         {
           paramLong = paramString[paramInt1];
           if (paramLong != 0L)
@@ -54,7 +55,7 @@ public abstract class FetchPOICallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.callback.FetchPOICallback
  * JD-Core Version:    0.7.0.1
  */

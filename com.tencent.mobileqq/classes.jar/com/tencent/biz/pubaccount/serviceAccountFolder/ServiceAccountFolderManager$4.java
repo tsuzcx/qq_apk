@@ -4,33 +4,31 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ssj;
-import ssp;
 
-public class ServiceAccountFolderManager$4
+class ServiceAccountFolderManager$4
   implements Runnable
 {
-  public ServiceAccountFolderManager$4(ssp paramssp, QQAppInterface paramQQAppInterface, long paramLong) {}
+  ServiceAccountFolderManager$4(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, long paramLong) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(ssp.a(this.this$0));
+    localArrayList.addAll(ServiceAccountFolderManager.a(this.this$0));
     Iterator localIterator = localArrayList.iterator();
     while (localIterator.hasNext())
     {
-      ssj localssj = (ssj)localIterator.next();
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localssj, false);
+      ServiceAccountFolderFeed localServiceAccountFolderFeed = (ServiceAccountFolderFeed)localIterator.next();
+      this.this$0.a(this.a, localServiceAccountFolderFeed, false);
     }
     localArrayList.clear();
-    this.this$0.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.this$0.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    this.this$0.o(this.a);
+    this.this$0.q(this.a);
+    this.this$0.b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.4
  * JD-Core Version:    0.7.0.1
  */

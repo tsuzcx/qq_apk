@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class RespSetDiscussAttr
   extends JceStruct
 {
-  public long DiscussUin;
+  public long DiscussUin = 0L;
   
   public RespSetDiscussAttr() {}
   
@@ -28,7 +28,7 @@ public final class RespSetDiscussAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespSetDiscussAttr
  * JD-Core Version:    0.7.0.1
  */

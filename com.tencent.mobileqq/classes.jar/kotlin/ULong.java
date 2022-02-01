@@ -63,7 +63,7 @@ public final class ULong
   @InlineOnly
   private static final long dec-impl(long paramLong)
   {
-    return constructor-impl(-1L + paramLong);
+    return constructor-impl(paramLong - 1L);
   }
   
   @InlineOnly
@@ -102,19 +102,19 @@ public final class ULong
   
   public static int hashCode-impl(long paramLong)
   {
-    return (int)(paramLong >>> 32 ^ paramLong);
+    return (int)(paramLong ^ paramLong >>> 32);
   }
   
   @InlineOnly
   private static final long inc-impl(long paramLong)
   {
-    return constructor-impl(1L + paramLong);
+    return constructor-impl(paramLong + 1L);
   }
   
   @InlineOnly
   private static final long inv-impl(long paramLong)
   {
-    return constructor-impl(0xFFFFFFFF ^ paramLong);
+    return constructor-impl(paramLong ^ 0xFFFFFFFF);
   }
   
   @InlineOnly
@@ -150,7 +150,7 @@ public final class ULong
   @InlineOnly
   private static final long plus-7apg3OU(long paramLong, byte paramByte)
   {
-    return constructor-impl(constructor-impl(paramByte & 0xFF) + paramLong);
+    return constructor-impl(paramLong + constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -162,13 +162,13 @@ public final class ULong
   @InlineOnly
   private static final long plus-WZ4Q5Ns(long paramLong, int paramInt)
   {
-    return constructor-impl(constructor-impl(paramInt & 0xFFFFFFFF) + paramLong);
+    return constructor-impl(paramLong + constructor-impl(paramInt & 0xFFFFFFFF));
   }
   
   @InlineOnly
   private static final long plus-xj2QHRw(long paramLong, short paramShort)
   {
-    return constructor-impl(constructor-impl(paramShort & 0xFFFF) + paramLong);
+    return constructor-impl(paramLong + constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -216,7 +216,7 @@ public final class ULong
   @InlineOnly
   private static final long times-7apg3OU(long paramLong, byte paramByte)
   {
-    return constructor-impl(constructor-impl(paramByte & 0xFF) * paramLong);
+    return constructor-impl(paramLong * constructor-impl(paramByte & 0xFF));
   }
   
   @InlineOnly
@@ -228,13 +228,13 @@ public final class ULong
   @InlineOnly
   private static final long times-WZ4Q5Ns(long paramLong, int paramInt)
   {
-    return constructor-impl(constructor-impl(paramInt & 0xFFFFFFFF) * paramLong);
+    return constructor-impl(paramLong * constructor-impl(paramInt & 0xFFFFFFFF));
   }
   
   @InlineOnly
   private static final long times-xj2QHRw(long paramLong, short paramShort)
   {
-    return constructor-impl(constructor-impl(paramShort & 0xFFFF) * paramLong);
+    return constructor-impl(paramLong * constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -327,7 +327,7 @@ public final class ULong
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ULong
  * JD-Core Version:    0.7.0.1
  */

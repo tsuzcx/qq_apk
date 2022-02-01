@@ -1,6 +1,9 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class FaceRecognitionAddFaceActivity
@@ -9,8 +12,18 @@ public class FaceRecognitionAddFaceActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968653);
-    ((Button)findViewById(2131558855)).setOnClickListener(new fi(this));
+    setContentView(2131296339);
+    ((Button)findViewById(2131165485)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        paramAnonymousView = new Intent(FaceRecognitionAddFaceActivity.this, FaceRecognitionCameraActivity.class);
+        paramAnonymousView.putExtra("flag", 4);
+        paramAnonymousView.putExtra("scene", 7);
+        FaceRecognitionAddFaceActivity.this.startActivity(paramAnonymousView);
+        FaceRecognitionAddFaceActivity.this.finish();
+      }
+    });
   }
 }
 

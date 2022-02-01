@@ -32,6 +32,8 @@ public final class qqstory_pgc$UserInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -40,12 +42,12 @@ public final class qqstory_pgc$UserInfo
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 58, 66, 72, 80, 88, 96, 104, 114, 122, 130 }, new String[] { "type", "uid", "nick", "head_url", "remark", "is_subscribe", "desc", "logo_url", "view_count", "fans_group_uin", "tribe_id", "theme_color", "subscribe_count", "union_id", "auth_type_name", "auth_type_icon" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro6, localByteStringMicro7, localByteStringMicro8 }, UserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 58, 66, 72, 80, 88, 96, 104, 114, 122, 130 }, new String[] { "type", "uid", "nick", "head_url", "remark", "is_subscribe", "desc", "logo_url", "view_count", "fans_group_uin", "tribe_id", "theme_color", "subscribe_count", "union_id", "auth_type_name", "auth_type_icon" }, new Object[] { localInteger, localLong, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, localByteStringMicro5, localLong, localLong, localLong, localInteger, localLong, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8 }, UserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_pgc.UserInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,19 @@ public final class b
     super(paramMMActivity);
   }
   
-  public final boolean beS()
+  public final boolean dnE()
   {
     return true;
   }
   
-  public final boolean beT()
+  public final boolean dnF()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

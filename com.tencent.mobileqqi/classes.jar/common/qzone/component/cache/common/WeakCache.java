@@ -1,6 +1,6 @@
 package common.qzone.component.cache.common;
 
-import hzo;
+import hzn;
 import java.lang.ref.ReferenceQueue;
 import java.util.HashMap;
 import java.util.Set;
@@ -12,8 +12,8 @@ public class WeakCache
   
   private void b()
   {
-    for (hzo localhzo = (hzo)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll(); localhzo != null; localhzo = (hzo)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll()) {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(localhzo.a);
+    for (hzn localhzn = (hzn)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll(); localhzn != null; localhzn = (hzn)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll()) {
+      this.jdField_a_of_type_JavaUtilHashMap.remove(localhzn.a);
     }
   }
   
@@ -29,7 +29,7 @@ public class WeakCache
     //   7: getfield 16	common/qzone/component/cache/common/WeakCache:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   10: aload_1
     //   11: invokevirtual 41	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   14: checkcast 29	hzo
+    //   14: checkcast 29	hzn
     //   17: astore_1
     //   18: aload_1
     //   19: ifnonnull +9 -> 28
@@ -40,7 +40,7 @@ public class WeakCache
     //   26: aload_1
     //   27: areturn
     //   28: aload_1
-    //   29: invokevirtual 44	hzo:get	()Ljava/lang/Object;
+    //   29: invokevirtual 44	hzn:get	()Ljava/lang/Object;
     //   32: astore_1
     //   33: goto -9 -> 24
     //   36: astore_1
@@ -69,15 +69,15 @@ public class WeakCache
     //   6: aload_0
     //   7: getfield 16	common/qzone/component/cache/common/WeakCache:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   10: aload_1
-    //   11: new 29	hzo
+    //   11: new 29	hzn
     //   14: dup
     //   15: aload_1
     //   16: aload_2
     //   17: aload_0
     //   18: getfield 21	common/qzone/component/cache/common/WeakCache:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   21: invokespecial 48	hzo:<init>	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   21: invokespecial 48	hzn:<init>	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
     //   24: invokevirtual 51	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: checkcast 29	hzo
+    //   27: checkcast 29	hzn
     //   30: astore_1
     //   31: aload_1
     //   32: ifnonnull +9 -> 41
@@ -88,7 +88,7 @@ public class WeakCache
     //   39: aload_1
     //   40: areturn
     //   41: aload_1
-    //   42: invokevirtual 44	hzo:get	()Ljava/lang/Object;
+    //   42: invokevirtual 44	hzn:get	()Ljava/lang/Object;
     //   45: astore_1
     //   46: goto -9 -> 37
     //   49: astore_1
@@ -164,7 +164,7 @@ public class WeakCache
     //   7: getfield 16	common/qzone/component/cache/common/WeakCache:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   10: aload_1
     //   11: invokevirtual 36	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   14: checkcast 29	hzo
+    //   14: checkcast 29	hzn
     //   17: astore_1
     //   18: aload_1
     //   19: ifnonnull +9 -> 28
@@ -175,7 +175,7 @@ public class WeakCache
     //   26: aload_1
     //   27: areturn
     //   28: aload_1
-    //   29: invokevirtual 44	hzo:get	()Ljava/lang/Object;
+    //   29: invokevirtual 44	hzn:get	()Ljava/lang/Object;
     //   32: astore_1
     //   33: goto -9 -> 24
     //   36: astore_1

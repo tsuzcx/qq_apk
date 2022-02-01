@@ -5,36 +5,37 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.TextView;
-import bdaq;
-import xms;
-import xmv;
-import yvb;
+import com.tencent.biz.troopgift.GridListAdapter;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-public class SlideShowAdapter$3
+class SlideShowAdapter$3
   implements Runnable
 {
-  public SlideShowAdapter$3(xms paramxms, xmv paramxmv) {}
+  SlideShowAdapter$3(SlideShowAdapter paramSlideShowAdapter, SlideShowAdapter.SlideShowViewHolder paramSlideShowViewHolder) {}
   
   public void run()
   {
-    int i = this.a.a.getWidth();
-    int j = this.a.a.getHeight();
-    if ((i == 0) || (j == 0)) {
-      return;
-    }
-    if (xms.a(this.this$0) == null)
+    int i = this.a.c.getWidth();
+    int j = this.a.c.getHeight();
+    if (i != 0)
     {
-      int k = bdaq.a(xms.a(this.this$0), 1.0F);
-      new Paint().setTextSize(bdaq.a(xms.a(this.this$0), 11.0F));
-      int m = bdaq.a(xms.a(this.this$0), 2.0F);
-      xms.a(this.this$0, yvb.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+      if (j == 0) {
+        return;
+      }
+      if (SlideShowAdapter.c(this.this$0) == null)
+      {
+        int k = DisplayUtil.a(SlideShowAdapter.d(this.this$0), 1.0F);
+        new Paint().setTextSize(DisplayUtil.a(SlideShowAdapter.d(this.this$0), 11.0F));
+        int m = DisplayUtil.a(SlideShowAdapter.d(this.this$0), 2.0F);
+        SlideShowAdapter.a(this.this$0, GridListAdapter.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+      }
+      this.a.c.setBackgroundDrawable(new BitmapDrawable(SlideShowAdapter.d(this.this$0).getResources(), SlideShowAdapter.c(this.this$0)));
     }
-    this.a.a.setBackgroundDrawable(new BitmapDrawable(xms.a(this.this$0).getResources(), xms.a(this.this$0)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideShowAdapter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,13 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="18.0dip" android:textColor="@color/skin_black" android:id="@id/eor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="20.329987dip" android:layout_marginBottom="12.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c0x" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/eom" android:layout_toRightOf="@id/eor">
-        <ImageView android:id="@id/k0b" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" />
-        <ImageView android:id="@id/k0c" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-        <ImageView android:id="@id/k0d" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-        <ImageView android:id="@id/k0e" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-        <ImageView android:id="@id/k0f" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
-        <ImageView android:id="@id/k0g" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0b" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+        <ImageView android:id="@id/k0c" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0d" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0e" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0f" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="2.0dip" />
+        <ImageView android:id="@id/k0g" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="2.0dip" />
     </LinearLayout>
     <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/eom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:drawableRight="@drawable/common_arrow_right_selector" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <View android:id="@id/e_1" android:background="#ffebedf5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="15.0dip" android:layout_alignParentBottom="true" />
 </RelativeLayout>

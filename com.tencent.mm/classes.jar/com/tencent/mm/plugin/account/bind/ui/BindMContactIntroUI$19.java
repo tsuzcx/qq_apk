@@ -12,7 +12,7 @@ final class BindMContactIntroUI$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI.19
  * JD-Core Version:    0.7.0.1
  */

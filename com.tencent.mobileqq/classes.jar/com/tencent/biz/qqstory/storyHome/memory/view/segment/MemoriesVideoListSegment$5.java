@@ -1,32 +1,31 @@
 package com.tencent.biz.qqstory.storyHome.memory.view.segment;
 
 import android.view.View;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity.ClosePlayerAnimationInfoEvent;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.dispatch.Dispatcher;
-import umc;
-import vno;
-import wno;
-import wxe;
 
-public class MemoriesVideoListSegment$5
+class MemoriesVideoListSegment$5
   implements Runnable
 {
-  public MemoriesVideoListSegment$5(wno paramwno, MemoriesInnerListView paramMemoriesInnerListView, int paramInt, String paramString) {}
+  MemoriesVideoListSegment$5(MemoriesVideoListSegment paramMemoriesVideoListSegment, MemoriesInnerListView paramMemoriesInnerListView, int paramInt, String paramString) {}
   
   public void run()
   {
-    View localView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewMemoriesInnerListView.getChildAt(this.jdField_a_of_type_Int);
+    View localView = this.a.getChildAt(this.b);
     if (localView != null)
     {
-      wxe.a("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal broadcast close animation2 %s", this.jdField_a_of_type_JavaLangString);
-      umc.a().dispatch(new vno(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
+      SLog.a("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal broadcast close animation2 %s", this.c);
+      StoryDispatcher.a().dispatch(new StoryPlayerActivity.ClosePlayerAnimationInfoEvent(new AnimationParam(localView), this.c));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment.5
  * JD-Core Version:    0.7.0.1
  */

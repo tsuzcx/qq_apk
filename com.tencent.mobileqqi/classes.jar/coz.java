@@ -1,40 +1,43 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
 import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.statistics.ReportController;
 
 public class coz
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public coz(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int j = 1;
-    GesturePWDUtils.setGesturePWDMode(this.a, this.a.b.a(), 21);
-    paramCompoundButton = this.a;
-    String str = this.a.b.a();
-    if (paramBoolean)
+    switch (paramView.getId())
     {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
-      this.a.a(paramBoolean);
-      paramCompoundButton = this.a.b;
-      if (!paramBoolean) {
-        break label112;
-      }
-    }
-    label112:
-    for (int i = j;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+    case 2131231746: 
+    case 2131231747: 
+    case 2131231750: 
+    case 2131231751: 
+    default: 
+      return;
+    case 2131231745: 
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.b.a(), 20);
       this.a.a();
       return;
-      i = 1;
-      break;
+    case 2131231749: 
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.b.a(), 21);
+      this.a.a();
+      return;
+    case 2131231748: 
+      paramView = new Intent(this.a, GesturePWDManualGuideActivity.class);
+      this.a.startActivity(paramView);
+      return;
     }
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 11);
+    this.a.overridePendingTransition(2130968598, 2130968595);
   }
 }
 

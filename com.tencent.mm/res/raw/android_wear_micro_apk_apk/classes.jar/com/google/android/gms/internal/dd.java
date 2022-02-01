@@ -10,10 +10,10 @@ public final class dd
   static void a(zzbar paramzzbar, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzbar.Hc);
-    c.a(paramParcel, 2, paramzzbar.fX(), paramInt);
-    c.a(paramParcel, 3, paramzzbar.jL(), paramInt);
-    c.a(paramParcel, 4, paramzzbar.gb());
+    c.c(paramParcel, 1, paramzzbar.IR);
+    c.a(paramParcel, 2, paramzzbar.gi(), paramInt);
+    c.a(paramParcel, 3, paramzzbar.jU(), paramInt);
+    c.a(paramParcel, 4, paramzzbar.gm());
     c.v(paramParcel, i);
   }
 }

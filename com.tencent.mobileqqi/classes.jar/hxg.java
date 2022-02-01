@@ -1,21 +1,48 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.XCursorAdapter;
+import com.tencent.wstt.SSCM.SSCMTimer;
+import com.tencent.wstt.SSCM.SSCMTimer.SSCMTimerObserver;
+import com.tencent.wstt.SSCM.Utils;
+import java.util.TimerTask;
 
 public class hxg
-  extends DataSetObserver
+  extends TimerTask
 {
-  private hxg(XCursorAdapter paramXCursorAdapter) {}
+  public hxg(SSCMTimer paramSSCMTimer) {}
   
-  public void onChanged()
+  public void run()
   {
-    this.a.a = true;
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    this.a.a = false;
-    this.a.notifyDataSetInvalidated();
+    long l;
+    int i;
+    if (SSCMTimer.a(this.a))
+    {
+      l = Long.parseLong(Utils.a());
+      if (l == -1L)
+      {
+        SSCMTimer.a(this.a, false);
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      if (i > 0) {
+        SSCMTimer.a(this.a, 0);
+      }
+      do
+      {
+        do
+        {
+          return;
+          i = (int)(l - SSCMTimer.a(this.a));
+          SSCMTimer.a(this.a, l);
+          break;
+          SSCMTimer.b(this.a, SSCMTimer.a(this.a));
+        } while (SSCMTimer.b(this.a) < 120000);
+        SSCMTimer.c(this.a, 1);
+        cancel();
+      } while (SSCMTimer.a(this.a) == null);
+      SSCMTimer.a(this.a).b(SSCMTimer.a(this.a));
+      return;
+      i = 0;
+    }
   }
 }
 

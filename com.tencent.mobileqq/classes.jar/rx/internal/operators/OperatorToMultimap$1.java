@@ -38,25 +38,24 @@ class OperatorToMultimap$1
       Object localObject2 = this.this$0.valueSelector.call(paramT);
       Collection localCollection = (Collection)this.map.get(localObject1);
       paramT = localCollection;
-      if (localCollection == null) {}
+      if (localCollection == null) {
+        try
+        {
+          paramT = (Collection)this.this$0.collectionFactory.call(localObject1);
+          this.map.put(localObject1, paramT);
+        }
+        catch (Throwable paramT)
+        {
+          Exceptions.throwOrReport(paramT, this.val$subscriber);
+          return;
+        }
+      }
+      paramT.add(localObject2);
       return;
     }
     catch (Throwable paramT)
     {
-      try
-      {
-        paramT = (Collection)this.this$0.collectionFactory.call(localObject1);
-        this.map.put(localObject1, paramT);
-        paramT.add(localObject2);
-        return;
-      }
-      catch (Throwable paramT)
-      {
-        Exceptions.throwOrReport(paramT, this.val$subscriber);
-      }
-      paramT = paramT;
       Exceptions.throwOrReport(paramT, this.val$subscriber);
-      return;
     }
   }
   
@@ -67,7 +66,7 @@ class OperatorToMultimap$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorToMultimap.1
  * JD-Core Version:    0.7.0.1
  */

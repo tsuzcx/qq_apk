@@ -1,31 +1,24 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import aron;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class VideoFileViewer$2
-  implements Runnable
+class VideoFileViewer$2
+  implements View.OnClickListener
 {
-  public VideoFileViewer$2(aron paramaron) {}
+  VideoFileViewer$2(VideoFileViewer paramVideoFileViewer, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (aron.a(this.this$0).getVisibility() == 0)
-    {
-      Animation localAnimation = aron.a(this.this$0).getAnimation();
-      if (localAnimation != null) {
-        localAnimation.cancel();
-      }
-      aron.a(this.this$0).clearAnimation();
-    }
-    aron.a(this.this$0).setVisibility(8);
+    FileManagerUtil.a(this.b.c, this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,84 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.annotation.SuppressLint;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.LinkedList;
+import java.util.Locale;
 
-@SuppressLint({"DefaultLocale"})
-class ak
-  extends a
+public final class ak
+  extends MAutoStorage<aj>
 {
-  ak(String paramString1, String paramString2, int paramInt)
+  public static final String[] nVW;
+  final ISQLiteDatabase db;
+  
+  static
   {
-    super(str1, str2 + String.format("debug_%d_%d_%d.wxapkg", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(paramString2.hashCode()) }), paramString2, paramString1, String.format("%d-%s", new Object[] { Integer.valueOf(paramInt), paramString2 }).hashCode(), paramInt);
-    AppMethodBeat.i(59475);
-    AppMethodBeat.o(59475);
+    AppMethodBeat.i(44317);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(aj.DB_INFO, "PkgUsageLRURecord") };
+    AppMethodBeat.o(44317);
   }
   
-  ak(String paramString1, String paramString2, int paramInt, a.a parama)
+  public ak(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(str1, str2 + String.format("debug_%d_%d_%d", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(bo.nullAsNil(parama.avB()).hashCode()) }), paramString2, paramString1, String.format("%s_%d_%s", new Object[] { paramString1, Integer.valueOf(paramInt), bo.nullAsNil(parama.avB()) }).hashCode(), paramInt);
-    AppMethodBeat.i(59476);
-    AppMethodBeat.o(59476);
+    super(paramISQLiteDatabase, aj.DB_INFO, "PkgUsageLRURecord", aj.INDEX_CREATE);
+    this.db = paramISQLiteDatabase;
+  }
+  
+  public final void bB(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(44316);
+    aj localaj = new aj();
+    localaj.field_appId = paramString;
+    localaj.field_type = paramInt;
+    super.delete(localaj, aj.qDJ);
+    AppMethodBeat.o(44316);
+  }
+  
+  public final LinkedList<String> cgs()
+  {
+    AppMethodBeat.i(320258);
+    LinkedList localLinkedList = new LinkedList();
+    localObject2 = String.format(Locale.US, " %s, %s ASC", new Object[] { "hit", "hitTimeMS" });
+    localObject2 = this.db.query("PkgUsageLRURecord", new String[] { "appId" }, null, null, null, null, (String)localObject2, 2);
+    if (localObject2 == null)
+    {
+      AppMethodBeat.o(320258);
+      return localLinkedList;
+    }
+    if (!((Cursor)localObject2).moveToFirst())
+    {
+      ((Cursor)localObject2).close();
+      AppMethodBeat.o(320258);
+      return localLinkedList;
+    }
+    try
+    {
+      boolean bool;
+      do
+      {
+        localLinkedList.add(((Cursor)localObject2).getString(0));
+        bool = ((Cursor)localObject2).moveToNext();
+      } while (bool);
+      ((Cursor)localObject2).close();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.PkgUsageLRUStorage", "getLRUAppIdList error:%s", new Object[] { localException });
+        ((Cursor)localObject2).close();
+      }
+    }
+    finally
+    {
+      ((Cursor)localObject2).close();
+      AppMethodBeat.o(320258);
+    }
+    AppMethodBeat.o(320258);
+    return localLinkedList;
   }
 }
 

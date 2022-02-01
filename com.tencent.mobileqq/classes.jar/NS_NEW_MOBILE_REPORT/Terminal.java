@@ -50,41 +50,51 @@ public final class Terminal
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.imei != null) {
-      paramJceOutputStream.write(this.imei, 0);
+    String str = this.imei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.macAddress != null) {
-      paramJceOutputStream.write(this.macAddress, 1);
+    str = this.macAddress;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.androidId != null) {
-      paramJceOutputStream.write(this.androidId, 2);
+    str = this.androidId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.imsi != null) {
-      paramJceOutputStream.write(this.imsi, 3);
+    str = this.imsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.mid != null) {
-      paramJceOutputStream.write(this.mid, 4);
+    str = this.mid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.imsi2 != null) {
-      paramJceOutputStream.write(this.imsi2, 5);
+    str = this.imsi2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.imei2 != null) {
-      paramJceOutputStream.write(this.imei2, 6);
+    str = this.imei2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.mode != null) {
-      paramJceOutputStream.write(this.mode, 7);
+    str = this.mode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.manufacture != null) {
-      paramJceOutputStream.write(this.manufacture, 8);
+    str = this.manufacture;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.qimei != null) {
-      paramJceOutputStream.write(this.qimei, 9);
+    str = this.qimei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_NEW_MOBILE_REPORT.Terminal
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import bdfa;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.widget.BubblePopupWindow;
 import java.util.ArrayList;
 
@@ -34,24 +34,24 @@ public class PhotoPreviewActivity
   
   void back()
   {
-    bdfa.anim(this, true, false);
+    AlbumUtil.anim(this, true, false);
     super.finish();
   }
   
   public void doOnBackPressed()
   {
     super.doOnBackPressed();
-    if (this.gallery.a(false)) {
+    if (this.gallery.resetScale(false)) {
       return;
     }
     back();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131561774);
+    setContentView(2131628394);
     this.reqWidth = getResources().getDisplayMetrics().widthPixels;
     this.reqHeight = getResources().getDisplayMetrics().heightPixels;
     initData();
@@ -59,15 +59,16 @@ public class PhotoPreviewActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.popup != null) {
-      this.popup.b();
+    BubblePopupWindow localBubblePopupWindow = this.popup;
+    if (localBubblePopupWindow != null) {
+      localBubblePopupWindow.dismiss();
     }
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     setIntent(paramIntent);
@@ -75,37 +76,48 @@ public class PhotoPreviewActivity
     initUI();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if ((this.showBar) && (this.topBar != null)) {
-      this.topBar.setVisibility(0);
+    if (this.showBar)
+    {
+      View localView = this.topBar;
+      if (localView != null) {
+        localView.setVisibility(0);
+      }
     }
   }
   
   public String getURL(String paramString)
   {
-    String str;
     if (TextUtils.isEmpty(paramString)) {
-      str = "";
+      return "";
     }
-    do
+    if (paramString.startsWith("//"))
     {
-      return str;
-      if (paramString.startsWith("//")) {
-        return "file:/" + paramString;
-      }
-      str = paramString;
-    } while (!paramString.startsWith("/"));
-    return "file://" + paramString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("file:/");
+      ((StringBuilder)localObject).append(paramString);
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = paramString;
+    if (paramString.startsWith("/"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("file://");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
   void hideMenuBar()
   {
     this.showBar = false;
     this.topBar.setVisibility(4);
-    if (this.popup != null) {
-      this.popup.b();
+    BubblePopupWindow localBubblePopupWindow = this.popup;
+    if (localBubblePopupWindow != null) {
+      localBubblePopupWindow.dismiss();
     }
   }
   
@@ -114,13 +126,16 @@ public class PhotoPreviewActivity
     Intent localIntent = getIntent();
     this.backBtnText = localIntent.getStringExtra("back_btn_text");
     this.paths = localIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-    if (this.paths != null) {}
-    for (int i = this.paths.size();; i = 0)
+    ArrayList localArrayList = this.paths;
+    int i;
+    if (localArrayList != null) {
+      i = localArrayList.size();
+    } else {
+      i = 0;
+    }
+    this.mTotalPicCount = i;
+    if (this.mTotalPicCount < 1)
     {
-      this.mTotalPicCount = i;
-      if (this.mTotalPicCount >= 1) {
-        break;
-      }
       finish();
       return;
     }
@@ -130,23 +145,23 @@ public class PhotoPreviewActivity
   
   void initUI()
   {
-    this.topBar = findViewById(2131378144);
-    this.backBtn = ((TextView)findViewById(2131363031));
+    this.topBar = findViewById(2131447713);
+    this.backBtn = ((TextView)findViewById(2131429224));
     this.backBtn.setOnClickListener(new PhotoPreviewActivity.1(this));
     if (this.showBar) {
       this.topBar.setVisibility(0);
     }
-    this.titleView = ((TextView)findViewById(2131377938));
-    this.gallery = ((ProGallery)findViewById(2131367020));
+    this.titleView = ((TextView)findViewById(2131447463));
+    this.gallery = ((ProGallery)findViewById(2131433934));
     this.adapter = new PhotoPreviewActivity.ImageAdapter(this);
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);
-    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297026));
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297535));
     this.gallery.setSelection(this.currentSelectedPostion);
     this.gallery.setOnItemClickListener(new PhotoPreviewActivity.2(this));
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
@@ -159,7 +174,7 @@ public class PhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

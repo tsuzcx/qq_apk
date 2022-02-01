@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class oidb_0x496$Robot
   extends MessageMicro<Robot>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58 }, new String[] { "version", "uin_range", "fire_keywords", "start_keywords", "end_keywords", "session_timeout", "subscribe_categories" }, new Object[] { Integer.valueOf(0), null, "", "", "", Integer.valueOf(0), null }, Robot.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatField<String> end_keywords = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBRepeatField<String> fire_keywords = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBUInt32Field session_timeout = PBField.initUInt32(0);
@@ -19,10 +19,16 @@ public final class oidb_0x496$Robot
   public final PBRepeatMessageField<oidb_0x496.RobotSubscribeCategory> subscribe_categories = PBField.initRepeatMessage(oidb_0x496.RobotSubscribeCategory.class);
   public final PBRepeatMessageField<oidb_0x496.UinRange> uin_range = PBField.initRepeatMessage(oidb_0x496.UinRange.class);
   public final PBUInt32Field version = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58 }, new String[] { "version", "uin_range", "fire_keywords", "start_keywords", "end_keywords", "session_timeout", "subscribe_categories" }, new Object[] { localInteger, null, "", "", "", localInteger, null }, Robot.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot
  * JD-Core Version:    0.7.0.1
  */

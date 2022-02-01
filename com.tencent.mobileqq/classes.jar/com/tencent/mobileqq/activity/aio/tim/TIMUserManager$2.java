@@ -1,31 +1,36 @@
 package com.tencent.mobileqq.activity.aio.tim;
 
-import agzc;
 import com.tencent.qphone.base.util.QLog;
 
-public class TIMUserManager$2
+class TIMUserManager$2
   implements Runnable
 {
-  public TIMUserManager$2(agzc paramagzc, String paramString1, String paramString2, boolean paramBoolean) {}
+  TIMUserManager$2(TIMUserManager paramTIMUserManager, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    if (agzc.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (agzc.a(this.this$0, this.b))
+    if (TIMUserManager.a(this.this$0, this.a, this.b) == 0)
+    {
+      if (TIMUserManager.a(this.this$0, this.b))
       {
-        agzc.a(this.this$0);
-        agzc.a(this.this$0, 2);
+        TIMUserManager.a(this.this$0);
+        TIMUserManager.a(this.this$0, 2);
+      }
+      else
+      {
+        TIMUserManager.a(this.this$0, 4);
       }
     }
-    for (;;)
+    else {
+      TIMUserManager.a(this.this$0, 3);
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + agzc.a(this.this$0));
-      }
-      return;
-      agzc.a(this.this$0, 4);
-      continue;
-      agzc.a(this.this$0, 3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(" startDownLoadTimTheme TimIconsState ");
+      localStringBuilder.append(TIMUserManager.c(this.this$0));
+      QLog.i("TIMUserManager", 2, localStringBuilder.toString());
     }
   }
 }

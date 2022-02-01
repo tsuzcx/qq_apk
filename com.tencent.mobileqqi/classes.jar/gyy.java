@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.MediaControllerX;
-import com.tencent.mobileqq.troop.widget.MediaControllerX.MediaPlayerControlX;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
 
 public class gyy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public gyy(MediaControllerX paramMediaControllerX) {}
+  public gyy(MessageSubtitleView paramMessageSubtitleView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = MediaControllerX.a(this.a).b();
-    MediaControllerX.a(this.a).a(i - 5000);
-    MediaControllerX.a(this.a);
-    this.a.a(5000);
+    MessageSubtitleView.a(this.a);
   }
 }
 

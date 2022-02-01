@@ -17,25 +17,25 @@ public final class CoroutineContextImplKt
   {
     Intrinsics.checkParameterIsNotNull(paramElement, "$this$getPolymorphicElement");
     Intrinsics.checkParameterIsNotNull(paramKey, "key");
-    if ((paramKey instanceof AbstractCoroutineContextKey))
+    boolean bool = paramKey instanceof AbstractCoroutineContextKey;
+    Object localObject = null;
+    if (bool)
     {
-      if (((AbstractCoroutineContextKey)paramKey).isSubKey$kotlin_stdlib(paramElement.getKey()))
+      AbstractCoroutineContextKey localAbstractCoroutineContextKey = (AbstractCoroutineContextKey)paramKey;
+      paramKey = localObject;
+      if (localAbstractCoroutineContextKey.isSubKey$kotlin_stdlib(paramElement.getKey()))
       {
-        paramKey = ((AbstractCoroutineContextKey)paramKey).tryCast$kotlin_stdlib(paramElement);
-        paramElement = paramKey;
+        paramKey = localAbstractCoroutineContextKey.tryCast$kotlin_stdlib(paramElement);
         if (!(paramKey instanceof CoroutineContext.Element)) {
-          paramElement = null;
+          return null;
         }
-        return paramElement;
       }
-      return null;
+      return paramKey;
     }
-    if (paramElement.getKey() == paramKey) {}
-    for (;;)
-    {
+    if (paramElement.getKey() == paramKey) {
       return paramElement;
-      paramElement = null;
     }
+    return null;
   }
   
   @ExperimentalStdlibApi
@@ -47,20 +47,27 @@ public final class CoroutineContextImplKt
     Intrinsics.checkParameterIsNotNull(paramKey, "key");
     if ((paramKey instanceof AbstractCoroutineContextKey))
     {
-      if ((((AbstractCoroutineContextKey)paramKey).isSubKey$kotlin_stdlib(paramElement.getKey())) && (((AbstractCoroutineContextKey)paramKey).tryCast$kotlin_stdlib(paramElement) != null)) {
-        return (CoroutineContext)EmptyCoroutineContext.INSTANCE;
+      localObject = (AbstractCoroutineContextKey)paramKey;
+      paramKey = paramElement;
+      if (((AbstractCoroutineContextKey)localObject).isSubKey$kotlin_stdlib(paramElement.getKey()))
+      {
+        paramKey = paramElement;
+        if (((AbstractCoroutineContextKey)localObject).tryCast$kotlin_stdlib(paramElement) != null) {
+          paramKey = EmptyCoroutineContext.INSTANCE;
+        }
       }
-      return (CoroutineContext)paramElement;
+      return (CoroutineContext)paramKey;
     }
+    Object localObject = paramElement;
     if (paramElement.getKey() == paramKey) {
-      return (CoroutineContext)EmptyCoroutineContext.INSTANCE;
+      localObject = EmptyCoroutineContext.INSTANCE;
     }
-    return (CoroutineContext)paramElement;
+    return (CoroutineContext)localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.CoroutineContextImplKt
  * JD-Core Version:    0.7.0.1
  */

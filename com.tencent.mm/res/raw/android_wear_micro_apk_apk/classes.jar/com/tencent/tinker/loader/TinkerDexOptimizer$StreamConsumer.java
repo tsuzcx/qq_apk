@@ -6,46 +6,46 @@ import java.util.concurrent.Executors;
 
 class TinkerDexOptimizer$StreamConsumer
 {
-  static final Executor akG = ;
+  static final Executor aog = ;
   
   static void d(InputStream paramInputStream)
   {
-    akG.execute(new Runnable()
+    aog.execute(new Runnable()
     {
       /* Error */
       public final void run()
       {
         // Byte code:
         //   0: aload_0
-        //   1: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:akH	Ljava/io/InputStream;
+        //   1: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:aoh	Ljava/io/InputStream;
         //   4: ifnonnull +4 -> 8
         //   7: return
         //   8: sipush 256
         //   11: newarray byte
         //   13: astore_2
         //   14: aload_0
-        //   15: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:akH	Ljava/io/InputStream;
+        //   15: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:aoh	Ljava/io/InputStream;
         //   18: aload_2
         //   19: invokevirtual 31	java/io/InputStream:read	([B)I
         //   22: istore_1
         //   23: iload_1
         //   24: ifgt -10 -> 14
         //   27: aload_0
-        //   28: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:akH	Ljava/io/InputStream;
+        //   28: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:aoh	Ljava/io/InputStream;
         //   31: invokevirtual 34	java/io/InputStream:close	()V
         //   34: return
         //   35: astore_2
         //   36: return
         //   37: astore_2
         //   38: aload_0
-        //   39: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:akH	Ljava/io/InputStream;
+        //   39: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:aoh	Ljava/io/InputStream;
         //   42: invokevirtual 34	java/io/InputStream:close	()V
         //   45: return
         //   46: astore_2
         //   47: return
         //   48: astore_2
         //   49: aload_0
-        //   50: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:akH	Ljava/io/InputStream;
+        //   50: getfield 16	com/tencent/tinker/loader/TinkerDexOptimizer$StreamConsumer$1:aoh	Ljava/io/InputStream;
         //   53: invokevirtual 34	java/io/InputStream:close	()V
         //   56: aload_2
         //   57: athrow

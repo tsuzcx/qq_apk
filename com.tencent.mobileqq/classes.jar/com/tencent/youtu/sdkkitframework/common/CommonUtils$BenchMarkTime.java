@@ -32,12 +32,22 @@ class CommonUtils$BenchMarkTime
   
   public String getTime()
   {
-    return "avg: " + this.avg + "ms min: " + this.min + "ms max: " + this.max + "ms cur: " + this.cur + "ms";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("avg: ");
+    localStringBuilder.append(this.avg);
+    localStringBuilder.append("ms min: ");
+    localStringBuilder.append(this.min);
+    localStringBuilder.append("ms max: ");
+    localStringBuilder.append(this.max);
+    localStringBuilder.append("ms cur: ");
+    localStringBuilder.append(this.cur);
+    localStringBuilder.append("ms");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.CommonUtils.BenchMarkTime
  * JD-Core Version:    0.7.0.1
  */

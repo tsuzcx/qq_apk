@@ -1,103 +1,88 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bmw
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public float wDh;
-  public float wDi;
-  public int wSk;
-  public String wSl;
-  public String wSm;
-  public int wSn;
+  public LinkedList<String> YVU;
+  public int ZVB;
+  public String ZVC;
+  
+  public bmw()
+  {
+    AppMethodBeat.i(258876);
+    this.YVU = new LinkedList();
+    AppMethodBeat.o(258876);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(80155);
+    AppMethodBeat.i(258879);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.q(1, this.wDh);
-      paramVarArgs.q(2, this.wDi);
-      paramVarArgs.aO(3, this.wSk);
-      if (this.wSl != null) {
-        paramVarArgs.e(4, this.wSl);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 1, this.YVU);
+      paramVarArgs.bS(2, this.ZVB);
+      if (this.ZVC != null) {
+        paramVarArgs.g(3, this.ZVC);
       }
-      if (this.wSm != null) {
-        paramVarArgs.e(5, this.wSm);
-      }
-      paramVarArgs.aO(6, this.wSn);
-      AppMethodBeat.o(80155);
+      AppMethodBeat.o(258879);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.eW(1) + 4 + 0 + (e.a.a.b.b.a.eW(2) + 4) + e.a.a.b.b.a.bl(3, this.wSk);
+      int i = i.a.a.a.c(1, 1, this.YVU) + 0 + i.a.a.b.b.a.cJ(2, this.ZVB);
       paramInt = i;
-      if (this.wSl != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.wSl);
+      if (this.ZVC != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.ZVC);
       }
-      i = paramInt;
-      if (this.wSm != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.wSm);
-      }
-      paramInt = e.a.a.b.b.a.bl(6, this.wSn);
-      AppMethodBeat.o(80155);
-      return i + paramInt;
+      AppMethodBeat.o(258879);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.YVU.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(80155);
+      AppMethodBeat.o(258879);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       bmw localbmw = (bmw)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(80155);
+        AppMethodBeat.o(258879);
         return -1;
       case 1: 
-        localbmw.wDh = Float.intBitsToFloat(locala.CLY.emx());
-        AppMethodBeat.o(80155);
+        localbmw.YVU.add(locala.ajGk.readString());
+        AppMethodBeat.o(258879);
         return 0;
       case 2: 
-        localbmw.wDi = Float.intBitsToFloat(locala.CLY.emx());
-        AppMethodBeat.o(80155);
-        return 0;
-      case 3: 
-        localbmw.wSk = locala.CLY.sl();
-        AppMethodBeat.o(80155);
-        return 0;
-      case 4: 
-        localbmw.wSl = locala.CLY.readString();
-        AppMethodBeat.o(80155);
-        return 0;
-      case 5: 
-        localbmw.wSm = locala.CLY.readString();
-        AppMethodBeat.o(80155);
+        localbmw.ZVB = locala.ajGk.aar();
+        AppMethodBeat.o(258879);
         return 0;
       }
-      localbmw.wSn = locala.CLY.sl();
-      AppMethodBeat.o(80155);
+      localbmw.ZVC = locala.ajGk.readString();
+      AppMethodBeat.o(258879);
       return 0;
     }
-    AppMethodBeat.o(80155);
+    AppMethodBeat.o(258879);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bmw
  * JD-Core Version:    0.7.0.1
  */

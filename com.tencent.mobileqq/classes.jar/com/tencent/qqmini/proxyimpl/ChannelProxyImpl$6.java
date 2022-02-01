@@ -1,29 +1,36 @@
 package com.tencent.qqmini.proxyimpl;
 
-import Wallet.FocusMpIdRsp;
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.tianshu.data.TianShuGetAdvCallback;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import org.json.JSONObject;
 
 class ChannelProxyImpl$6
-  implements BusinessObserver
+  implements TianShuGetAdvCallback
 {
   ChannelProxyImpl$6(ChannelProxyImpl paramChannelProxyImpl, AsyncResult paramAsyncResult) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    paramBundle = (FocusMpIdRsp)paramBundle.getSerializable("rsp");
-    if ((paramBundle == null) || (paramBundle.err_code != 0))
+    if (this.a != null)
     {
-      this.val$result.onReceiveResult(false, null);
-      return;
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("response", paramGetAdsRsp);
+      }
+      catch (Throwable paramGetAdsRsp)
+      {
+        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramGetAdsRsp);
+      }
+      this.a.onReceiveResult(paramBoolean, localJSONObject);
     }
-    this.val$result.onReceiveResult(true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.6
  * JD-Core Version:    0.7.0.1
  */

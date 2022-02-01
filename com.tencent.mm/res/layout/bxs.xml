@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/d0" android:src="@raw/icon_outlined_care" app:iconColor="@color/Yellow" />
+        <TextView android:textSize="@dimen/hr" android:textColor="@color/a7b" android:gravity="center" android:id="@id/f8p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/b2l" />
+        <TextView android:textSize="@dimen/hr" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/f8o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:text="@string/b2g" android:lineSpacingMultiplier="1.4" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c2" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/fjf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <CheckBox android:id="@id/fjd" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.6" android:scaleY="0.6" style="@style/lq" />
+            <TextView android:textSize="@dimen/bd" android:id="@id/fje" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_below="@id/fjf">
+            <Button android:layout_gravity="center_horizontal" android:id="@id/axx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b2i" style="@style/oh" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/axw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b2h" style="@style/op" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

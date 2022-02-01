@@ -19,13 +19,14 @@ public final class oidb_0xcf4$OneGroupInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_group_uin", "uint64_group_code", "string_group_name", "uint32_cmduin_last_msg_time" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0) }, OneGroupInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_group_uin", "uint64_group_code", "string_group_name", "uint32_cmduin_last_msg_time" }, new Object[] { localLong, localLong, localByteStringMicro, Integer.valueOf(0) }, OneGroupInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.OneGroupInfo
  * JD-Core Version:    0.7.0.1
  */

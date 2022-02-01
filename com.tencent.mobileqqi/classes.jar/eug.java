@@ -1,51 +1,39 @@
-import android.text.Selection;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.voip.EditTextAutoResizeFont;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
 import com.tencent.mobileqq.activity.voip.VoipDialInterfaceActivity;
 
 public class eug
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public eug(VoipDialInterfaceActivity paramVoipDialInterfaceActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    StringBuffer localStringBuffer = new StringBuffer(VoipDialInterfaceActivity.a(this.a).getText().toString().trim());
-    int j;
-    int i;
-    if (VoipDialInterfaceActivity.a(this.a) == true)
+    if (paramMotionEvent.getAction() == 0)
     {
-      j = VoipDialInterfaceActivity.a(this.a).getSelectionStart();
-      i = j;
-      paramView = localStringBuffer;
-      if (j > 0)
-      {
-        paramView = localStringBuffer.delete(j - 1, j);
-        i = j;
-      }
+      paramMotionEvent = new int[2];
+      paramView.getLocationInWindow(paramMotionEvent);
+      paramView.getLocationOnScreen(new int[2]);
+      arrayOfInt = new int[2];
+      VoipDialInterfaceActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      VoipDialInterfaceActivity.b(this.a).offsetTopAndBottom(paramMotionEvent[1] - arrayOfInt[1] + paramView.getHeight() / 2 - VoipDialInterfaceActivity.b(this.a).getHeight() / 2);
+      VoipDialInterfaceActivity.b(this.a).offsetLeftAndRight(paramMotionEvent[0] + paramView.getWidth() / 2 - VoipDialInterfaceActivity.b(this.a).getWidth() / 2);
+      VoipDialInterfaceActivity.b(this.a).setVisibility(0);
     }
-    for (;;)
-    {
-      VoipDialInterfaceActivity.a(this.a).setText(paramView.toString());
-      if (i > 0) {
-        Selection.setSelection(VoipDialInterfaceActivity.a(this.a).getText(), i - 1);
-      }
-      if (VoipDialInterfaceActivity.a(this.a).getText().toString().trim().length() <= 0)
-      {
-        VoipDialInterfaceActivity.a(this.a).setCursorVisible(false);
-        VoipDialInterfaceActivity.a(this.a, false);
-      }
-      return;
-      j = VoipDialInterfaceActivity.a(this.a).length();
-      i = j;
-      paramView = localStringBuffer;
-      if (j > 0)
-      {
-        paramView = localStringBuffer.delete(j - 1, j);
-        i = j;
-      }
+    while (paramMotionEvent.getAction() != 1) {
+      return false;
     }
+    paramMotionEvent = new int[2];
+    paramView.getLocationInWindow(paramMotionEvent);
+    int[] arrayOfInt = new int[2];
+    VoipDialInterfaceActivity.a(this.a).getLocationInWindow(arrayOfInt);
+    VoipDialInterfaceActivity.b(this.a).offsetTopAndBottom(-(paramMotionEvent[1] - arrayOfInt[1] + paramView.getHeight() / 2 - VoipDialInterfaceActivity.b(this.a).getHeight() / 2));
+    VoipDialInterfaceActivity.b(this.a).offsetLeftAndRight(-(paramMotionEvent[0] + paramView.getWidth() / 2 - VoipDialInterfaceActivity.b(this.a).getWidth() / 2));
+    VoipDialInterfaceActivity.b(this.a).setVisibility(4);
+    VoipDialInterfaceActivity.a(this.a).invalidate();
+    return false;
   }
 }
 

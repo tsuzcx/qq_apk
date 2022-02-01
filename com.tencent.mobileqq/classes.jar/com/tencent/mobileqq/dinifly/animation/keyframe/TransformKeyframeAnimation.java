@@ -2,8 +2,8 @@ package com.tencent.mobileqq.dinifly.animation.keyframe;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableIntegerValue;
@@ -46,88 +46,69 @@ public class TransformKeyframeAnimation
   public TransformKeyframeAnimation(AnimatableTransform paramAnimatableTransform)
   {
     Object localObject;
-    if (paramAnimatableTransform.getAnchorPoint() == null)
+    if (paramAnimatableTransform.getAnchorPoint() == null) {
+      localObject = null;
+    } else {
+      localObject = paramAnimatableTransform.getAnchorPoint().createAnimation();
+    }
+    this.anchorPoint = ((BaseKeyframeAnimation)localObject);
+    if (paramAnimatableTransform.getPosition() == null) {
+      localObject = null;
+    } else {
+      localObject = paramAnimatableTransform.getPosition().createAnimation();
+    }
+    this.position = ((BaseKeyframeAnimation)localObject);
+    if (paramAnimatableTransform.getScale() == null) {
+      localObject = null;
+    } else {
+      localObject = paramAnimatableTransform.getScale().createAnimation();
+    }
+    this.scale = ((BaseKeyframeAnimation)localObject);
+    if (paramAnimatableTransform.getRotation() == null) {
+      localObject = null;
+    } else {
+      localObject = paramAnimatableTransform.getRotation().createAnimation();
+    }
+    this.rotation = ((BaseKeyframeAnimation)localObject);
+    if (paramAnimatableTransform.getSkew() == null) {
+      localObject = null;
+    } else {
+      localObject = (FloatKeyframeAnimation)paramAnimatableTransform.getSkew().createAnimation();
+    }
+    this.skew = ((FloatKeyframeAnimation)localObject);
+    if (this.skew != null)
     {
-      localObject = null;
-      this.anchorPoint = ((BaseKeyframeAnimation)localObject);
-      if (paramAnimatableTransform.getPosition() != null) {
-        break label213;
-      }
-      localObject = null;
-      label38:
-      this.position = ((BaseKeyframeAnimation)localObject);
-      if (paramAnimatableTransform.getScale() != null) {
-        break label226;
-      }
-      localObject = null;
-      label52:
-      this.scale = ((BaseKeyframeAnimation)localObject);
-      if (paramAnimatableTransform.getRotation() != null) {
-        break label237;
-      }
-      localObject = null;
-      label66:
-      this.rotation = ((BaseKeyframeAnimation)localObject);
-      if (paramAnimatableTransform.getSkew() != null) {
-        break label248;
-      }
-      localObject = null;
-      label80:
-      this.skew = ((FloatKeyframeAnimation)localObject);
-      if (this.skew == null) {
-        break label262;
-      }
       this.skewMatrix1 = new Matrix();
       this.skewMatrix2 = new Matrix();
       this.skewMatrix3 = new Matrix();
       this.skewValues = new float[9];
-      label133:
-      if (paramAnimatableTransform.getSkewAngle() != null) {
-        break label285;
-      }
-      localObject = null;
-      label142:
-      this.skewAngle = ((FloatKeyframeAnimation)localObject);
-      if (paramAnimatableTransform.getOpacity() != null) {
-        this.opacity = paramAnimatableTransform.getOpacity().createAnimation();
-      }
-      if (paramAnimatableTransform.getStartOpacity() == null) {
-        break label299;
-      }
     }
-    label262:
-    label285:
-    label299:
-    for (this.startOpacity = paramAnimatableTransform.getStartOpacity().createAnimation();; this.startOpacity = null)
+    else
     {
-      if (paramAnimatableTransform.getEndOpacity() == null) {
-        break label307;
-      }
-      this.endOpacity = paramAnimatableTransform.getEndOpacity().createAnimation();
-      return;
-      localObject = paramAnimatableTransform.getAnchorPoint().createAnimation();
-      break;
-      label213:
-      localObject = paramAnimatableTransform.getPosition().createAnimation();
-      break label38;
-      label226:
-      localObject = paramAnimatableTransform.getScale().createAnimation();
-      break label52;
-      label237:
-      localObject = paramAnimatableTransform.getRotation().createAnimation();
-      break label66;
-      label248:
-      localObject = (FloatKeyframeAnimation)paramAnimatableTransform.getSkew().createAnimation();
-      break label80;
       this.skewMatrix1 = null;
       this.skewMatrix2 = null;
       this.skewMatrix3 = null;
       this.skewValues = null;
-      break label133;
-      localObject = (FloatKeyframeAnimation)paramAnimatableTransform.getSkewAngle().createAnimation();
-      break label142;
     }
-    label307:
+    if (paramAnimatableTransform.getSkewAngle() == null) {
+      localObject = null;
+    } else {
+      localObject = (FloatKeyframeAnimation)paramAnimatableTransform.getSkewAngle().createAnimation();
+    }
+    this.skewAngle = ((FloatKeyframeAnimation)localObject);
+    if (paramAnimatableTransform.getOpacity() != null) {
+      this.opacity = paramAnimatableTransform.getOpacity().createAnimation();
+    }
+    if (paramAnimatableTransform.getStartOpacity() != null) {
+      this.startOpacity = paramAnimatableTransform.getStartOpacity().createAnimation();
+    } else {
+      this.startOpacity = null;
+    }
+    if (paramAnimatableTransform.getEndOpacity() != null)
+    {
+      this.endOpacity = paramAnimatableTransform.getEndOpacity().createAnimation();
+      return;
+    }
     this.endOpacity = null;
   }
   
@@ -156,113 +137,170 @@ public class TransformKeyframeAnimation
   
   public void addListener(BaseKeyframeAnimation.AnimationListener paramAnimationListener)
   {
-    if (this.opacity != null) {
-      this.opacity.addUpdateListener(paramAnimationListener);
+    Object localObject = this.opacity;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
-    if (this.startOpacity != null) {
-      this.startOpacity.addUpdateListener(paramAnimationListener);
+    localObject = this.startOpacity;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
-    if (this.endOpacity != null) {
-      this.endOpacity.addUpdateListener(paramAnimationListener);
+    localObject = this.endOpacity;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
-    if (this.anchorPoint != null) {
-      this.anchorPoint.addUpdateListener(paramAnimationListener);
+    localObject = this.anchorPoint;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
-    if (this.position != null) {
-      this.position.addUpdateListener(paramAnimationListener);
+    localObject = this.position;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
-    if (this.scale != null) {
-      this.scale.addUpdateListener(paramAnimationListener);
+    localObject = this.scale;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
-    if (this.rotation != null) {
-      this.rotation.addUpdateListener(paramAnimationListener);
+    localObject = this.rotation;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
-    if (this.skew != null) {
-      this.skew.addUpdateListener(paramAnimationListener);
+    localObject = this.skew;
+    if (localObject != null) {
+      ((FloatKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
-    if (this.skewAngle != null) {
-      this.skewAngle.addUpdateListener(paramAnimationListener);
+    localObject = this.skewAngle;
+    if (localObject != null) {
+      ((FloatKeyframeAnimation)localObject).addUpdateListener(paramAnimationListener);
     }
   }
   
   public <T> boolean applyValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (paramT == LottieProperty.TRANSFORM_ANCHOR_POINT) {
-      if (this.anchorPoint == null) {
+    if (paramT == LottieProperty.TRANSFORM_ANCHOR_POINT)
+    {
+      paramT = this.anchorPoint;
+      if (paramT == null) {
         this.anchorPoint = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, new PointF());
+      } else {
+        paramT.setValueCallback(paramLottieValueCallback);
       }
     }
-    for (;;)
+    else if (paramT == LottieProperty.TRANSFORM_POSITION)
     {
-      return true;
-      this.anchorPoint.setValueCallback(paramLottieValueCallback);
-      continue;
-      if (paramT == LottieProperty.TRANSFORM_POSITION)
+      paramT = this.position;
+      if (paramT == null) {
+        this.position = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, new PointF());
+      } else {
+        paramT.setValueCallback(paramLottieValueCallback);
+      }
+    }
+    else
+    {
+      Object localObject;
+      if (paramT == LottieProperty.TRANSFORM_POSITION_X)
       {
-        if (this.position == null) {
-          this.position = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, new PointF());
-        } else {
-          this.position.setValueCallback(paramLottieValueCallback);
+        localObject = this.position;
+        if ((localObject instanceof SplitDimensionPathKeyframeAnimation))
+        {
+          ((SplitDimensionPathKeyframeAnimation)localObject).setXValueCallback(paramLottieValueCallback);
+          break label490;
         }
       }
-      else if (paramT == LottieProperty.TRANSFORM_SCALE)
+      if (paramT == LottieProperty.TRANSFORM_POSITION_Y)
       {
-        if (this.scale == null) {
+        localObject = this.position;
+        if ((localObject instanceof SplitDimensionPathKeyframeAnimation))
+        {
+          ((SplitDimensionPathKeyframeAnimation)localObject).setYValueCallback(paramLottieValueCallback);
+          break label490;
+        }
+      }
+      if (paramT == LottieProperty.TRANSFORM_SCALE)
+      {
+        paramT = this.scale;
+        if (paramT == null) {
           this.scale = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, new ScaleXY());
         } else {
-          this.scale.setValueCallback(paramLottieValueCallback);
+          paramT.setValueCallback(paramLottieValueCallback);
         }
       }
       else if (paramT == LottieProperty.TRANSFORM_ROTATION)
       {
-        if (this.rotation == null) {
+        paramT = this.rotation;
+        if (paramT == null) {
           this.rotation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Float.valueOf(0.0F));
         } else {
-          this.rotation.setValueCallback(paramLottieValueCallback);
+          paramT.setValueCallback(paramLottieValueCallback);
         }
       }
       else if (paramT == LottieProperty.TRANSFORM_OPACITY)
       {
-        if (this.opacity == null) {
+        paramT = this.opacity;
+        if (paramT == null) {
           this.opacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
         } else {
-          this.opacity.setValueCallback(paramLottieValueCallback);
+          paramT.setValueCallback(paramLottieValueCallback);
         }
-      }
-      else if ((paramT == LottieProperty.TRANSFORM_START_OPACITY) && (this.startOpacity != null))
-      {
-        if (this.startOpacity == null) {
-          this.startOpacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
-        } else {
-          this.startOpacity.setValueCallback(paramLottieValueCallback);
-        }
-      }
-      else if ((paramT == LottieProperty.TRANSFORM_END_OPACITY) && (this.endOpacity != null))
-      {
-        if (this.endOpacity == null) {
-          this.endOpacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
-        } else {
-          this.endOpacity.setValueCallback(paramLottieValueCallback);
-        }
-      }
-      else if ((paramT == LottieProperty.TRANSFORM_SKEW) && (this.skew != null))
-      {
-        if (this.skew == null) {
-          this.skew = new FloatKeyframeAnimation(Collections.singletonList(new Keyframe(Float.valueOf(0.0F))));
-        }
-        this.skew.setValueCallback(paramLottieValueCallback);
       }
       else
       {
-        if ((paramT != LottieProperty.TRANSFORM_SKEW_ANGLE) || (this.skewAngle == null)) {
-          break;
+        if (paramT == LottieProperty.TRANSFORM_START_OPACITY)
+        {
+          localObject = this.startOpacity;
+          if (localObject != null)
+          {
+            if (localObject == null)
+            {
+              this.startOpacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
+              break label490;
+            }
+            ((BaseKeyframeAnimation)localObject).setValueCallback(paramLottieValueCallback);
+            break label490;
+          }
         }
-        if (this.skewAngle == null) {
+        if (paramT == LottieProperty.TRANSFORM_END_OPACITY)
+        {
+          localObject = this.endOpacity;
+          if (localObject != null)
+          {
+            if (localObject == null)
+            {
+              this.endOpacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
+              break label490;
+            }
+            ((BaseKeyframeAnimation)localObject).setValueCallback(paramLottieValueCallback);
+            break label490;
+          }
+        }
+        if (paramT == LottieProperty.TRANSFORM_SKEW)
+        {
+          localObject = this.skew;
+          if (localObject != null)
+          {
+            if (localObject == null) {
+              this.skew = new FloatKeyframeAnimation(Collections.singletonList(new Keyframe(Float.valueOf(0.0F))));
+            }
+            this.skew.setValueCallback(paramLottieValueCallback);
+            break label490;
+          }
+        }
+        if (paramT != LottieProperty.TRANSFORM_SKEW_ANGLE) {
+          break label492;
+        }
+        paramT = this.skewAngle;
+        if (paramT == null) {
+          break label492;
+        }
+        if (paramT == null) {
           this.skewAngle = new FloatKeyframeAnimation(Collections.singletonList(new Keyframe(Float.valueOf(0.0F))));
         }
         this.skewAngle.setValueCallback(paramLottieValueCallback);
       }
     }
+    label490:
+    return true;
+    label492:
     return false;
   }
   
@@ -275,145 +313,140 @@ public class TransformKeyframeAnimation
   public Matrix getMatrix()
   {
     this.matrix.reset();
-    Object localObject;
-    if (this.position != null)
+    Object localObject = this.position;
+    if (localObject != null)
     {
-      localObject = (PointF)this.position.getValue();
+      localObject = (PointF)((BaseKeyframeAnimation)localObject).getValue();
       if ((((PointF)localObject).x != 0.0F) || (((PointF)localObject).y != 0.0F)) {
         this.matrix.preTranslate(((PointF)localObject).x, ((PointF)localObject).y);
       }
     }
+    localObject = this.rotation;
     float f1;
-    if (this.rotation != null)
+    if (localObject != null)
     {
-      if (!(this.rotation instanceof ValueCallbackKeyframeAnimation)) {
-        break label456;
+      if ((localObject instanceof ValueCallbackKeyframeAnimation)) {
+        f1 = ((Float)((BaseKeyframeAnimation)localObject).getValue()).floatValue();
+      } else {
+        f1 = ((FloatKeyframeAnimation)localObject).getFloatValue();
       }
-      f1 = ((Float)this.rotation.getValue()).floatValue();
       if (f1 != 0.0F) {
         this.matrix.preRotate(f1);
       }
     }
     if (this.skew != null)
     {
-      if (this.skewAngle != null) {
-        break label470;
+      localObject = this.skewAngle;
+      if (localObject == null) {
+        f1 = 0.0F;
+      } else {
+        f1 = (float)Math.cos(Math.toRadians(-((FloatKeyframeAnimation)localObject).getFloatValue() + 90.0F));
       }
-      f1 = 0.0F;
-      label126:
-      if (this.skewAngle != null) {
-        break label494;
+      localObject = this.skewAngle;
+      float f2;
+      if (localObject == null) {
+        f2 = 1.0F;
+      } else {
+        f2 = (float)Math.sin(Math.toRadians(-((FloatKeyframeAnimation)localObject).getFloatValue() + 90.0F));
       }
-    }
-    label456:
-    label470:
-    label494:
-    for (float f2 = 1.0F;; f2 = (float)Math.sin(Math.toRadians(-this.skewAngle.getFloatValue() + 90.0F)))
-    {
       float f3 = (float)Math.tan(Math.toRadians(this.skew.getFloatValue()));
       clearSkewValues();
-      this.skewValues[0] = f1;
-      this.skewValues[1] = f2;
-      this.skewValues[3] = (-f2);
-      this.skewValues[4] = f1;
-      this.skewValues[8] = 1.0F;
-      this.skewMatrix1.setValues(this.skewValues);
+      localObject = this.skewValues;
+      localObject[0] = f1;
+      localObject[1] = f2;
+      float f4 = -f2;
+      localObject[3] = f4;
+      localObject[4] = f1;
+      localObject[8] = 1.0F;
+      this.skewMatrix1.setValues((float[])localObject);
       clearSkewValues();
-      this.skewValues[0] = 1.0F;
-      this.skewValues[3] = f3;
-      this.skewValues[4] = 1.0F;
-      this.skewValues[8] = 1.0F;
-      this.skewMatrix2.setValues(this.skewValues);
+      localObject = this.skewValues;
+      localObject[0] = 1.0F;
+      localObject[3] = f3;
+      localObject[4] = 1.0F;
+      localObject[8] = 1.0F;
+      this.skewMatrix2.setValues((float[])localObject);
       clearSkewValues();
-      this.skewValues[0] = f1;
-      this.skewValues[1] = (-f2);
-      this.skewValues[3] = f2;
-      this.skewValues[4] = f1;
-      this.skewValues[8] = 1.0F;
-      this.skewMatrix3.setValues(this.skewValues);
+      localObject = this.skewValues;
+      localObject[0] = f1;
+      localObject[1] = f4;
+      localObject[3] = f2;
+      localObject[4] = f1;
+      localObject[8] = 1.0F;
+      this.skewMatrix3.setValues((float[])localObject);
       this.skewMatrix2.preConcat(this.skewMatrix1);
       this.skewMatrix3.preConcat(this.skewMatrix2);
       this.matrix.preConcat(this.skewMatrix3);
-      if (this.scale != null)
-      {
-        localObject = (ScaleXY)this.scale.getValue();
-        if ((((ScaleXY)localObject).getScaleX() != 1.0F) || (((ScaleXY)localObject).getScaleY() != 1.0F)) {
-          this.matrix.preScale(((ScaleXY)localObject).getScaleX(), ((ScaleXY)localObject).getScaleY());
-        }
-      }
-      if (this.anchorPoint != null)
-      {
-        localObject = (PointF)this.anchorPoint.getValue();
-        if ((((PointF)localObject).x != 0.0F) || (((PointF)localObject).y != 0.0F)) {
-          this.matrix.preTranslate(-((PointF)localObject).x, -((PointF)localObject).y);
-        }
-      }
-      return this.matrix;
-      f1 = ((FloatKeyframeAnimation)this.rotation).getFloatValue();
-      break;
-      f1 = (float)Math.cos(Math.toRadians(-this.skewAngle.getFloatValue() + 90.0F));
-      break label126;
     }
+    localObject = this.scale;
+    if (localObject != null)
+    {
+      localObject = (ScaleXY)((BaseKeyframeAnimation)localObject).getValue();
+      if ((((ScaleXY)localObject).getScaleX() != 1.0F) || (((ScaleXY)localObject).getScaleY() != 1.0F)) {
+        this.matrix.preScale(((ScaleXY)localObject).getScaleX(), ((ScaleXY)localObject).getScaleY());
+      }
+    }
+    localObject = this.anchorPoint;
+    if (localObject != null)
+    {
+      localObject = (PointF)((BaseKeyframeAnimation)localObject).getValue();
+      if ((((PointF)localObject).x != 0.0F) || (((PointF)localObject).y != 0.0F)) {
+        this.matrix.preTranslate(-((PointF)localObject).x, -((PointF)localObject).y);
+      }
+    }
+    return this.matrix;
   }
   
   public Matrix getMatrixForRepeater(float paramFloat)
   {
+    Object localObject1 = this.position;
     Object localObject3 = null;
-    Object localObject1;
-    Object localObject2;
-    label23:
-    float f3;
-    label127:
-    float f1;
-    if (this.position == null)
-    {
+    if (localObject1 == null) {
       localObject1 = null;
-      if (this.scale != null) {
-        break label179;
-      }
+    } else {
+      localObject1 = (PointF)((BaseKeyframeAnimation)localObject1).getValue();
+    }
+    Object localObject2 = this.scale;
+    if (localObject2 == null) {
       localObject2 = null;
-      this.matrix.reset();
-      if (localObject1 != null) {
-        this.matrix.preTranslate(((PointF)localObject1).x * paramFloat, ((PointF)localObject1).y * paramFloat);
-      }
-      if (localObject2 != null) {
-        this.matrix.preScale((float)Math.pow(((ScaleXY)localObject2).getScaleX(), paramFloat), (float)Math.pow(((ScaleXY)localObject2).getScaleY(), paramFloat));
-      }
-      if (this.rotation != null)
-      {
-        f3 = ((Float)this.rotation.getValue()).floatValue();
-        if (this.anchorPoint != null) {
-          break label194;
-        }
-        localObject1 = localObject3;
-        localObject2 = this.matrix;
-        if (localObject1 != null) {
-          break label209;
-        }
-        f1 = 0.0F;
-        label140:
-        if (localObject1 != null) {
-          break label218;
-        }
-      }
+    } else {
+      localObject2 = (ScaleXY)((BaseKeyframeAnimation)localObject2).getValue();
     }
-    label179:
-    label194:
-    label209:
-    label218:
-    for (float f2 = 0.0F;; f2 = ((PointF)localObject1).y)
+    this.matrix.reset();
+    if (localObject1 != null) {
+      this.matrix.preTranslate(((PointF)localObject1).x * paramFloat, ((PointF)localObject1).y * paramFloat);
+    }
+    if (localObject2 != null)
     {
-      ((Matrix)localObject2).preRotate(f3 * paramFloat, f1, f2);
-      return this.matrix;
-      localObject1 = (PointF)this.position.getValue();
-      break;
-      localObject2 = (ScaleXY)this.scale.getValue();
-      break label23;
-      localObject1 = (PointF)this.anchorPoint.getValue();
-      break label127;
-      f1 = ((PointF)localObject1).x;
-      break label140;
+      localObject1 = this.matrix;
+      double d1 = ((ScaleXY)localObject2).getScaleX();
+      double d2 = paramFloat;
+      ((Matrix)localObject1).preScale((float)Math.pow(d1, d2), (float)Math.pow(((ScaleXY)localObject2).getScaleY(), d2));
     }
+    localObject1 = this.rotation;
+    if (localObject1 != null)
+    {
+      float f3 = ((Float)((BaseKeyframeAnimation)localObject1).getValue()).floatValue();
+      localObject1 = this.anchorPoint;
+      if (localObject1 == null) {
+        localObject1 = localObject3;
+      } else {
+        localObject1 = (PointF)((BaseKeyframeAnimation)localObject1).getValue();
+      }
+      localObject2 = this.matrix;
+      float f2 = 0.0F;
+      float f1;
+      if (localObject1 == null) {
+        f1 = 0.0F;
+      } else {
+        f1 = ((PointF)localObject1).x;
+      }
+      if (localObject1 != null) {
+        f2 = ((PointF)localObject1).y;
+      }
+      ((Matrix)localObject2).preRotate(f3 * paramFloat, f1, f2);
+    }
+    return this.matrix;
   }
   
   @Nullable
@@ -430,32 +463,41 @@ public class TransformKeyframeAnimation
   
   public void setProgress(float paramFloat)
   {
-    if (this.opacity != null) {
-      this.opacity.setProgress(paramFloat);
+    Object localObject = this.opacity;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).setProgress(paramFloat);
     }
-    if (this.startOpacity != null) {
-      this.startOpacity.setProgress(paramFloat);
+    localObject = this.startOpacity;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).setProgress(paramFloat);
     }
-    if (this.endOpacity != null) {
-      this.endOpacity.setProgress(paramFloat);
+    localObject = this.endOpacity;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).setProgress(paramFloat);
     }
-    if (this.anchorPoint != null) {
-      this.anchorPoint.setProgress(paramFloat);
+    localObject = this.anchorPoint;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).setProgress(paramFloat);
     }
-    if (this.position != null) {
-      this.position.setProgress(paramFloat);
+    localObject = this.position;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).setProgress(paramFloat);
     }
-    if (this.scale != null) {
-      this.scale.setProgress(paramFloat);
+    localObject = this.scale;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).setProgress(paramFloat);
     }
-    if (this.rotation != null) {
-      this.rotation.setProgress(paramFloat);
+    localObject = this.rotation;
+    if (localObject != null) {
+      ((BaseKeyframeAnimation)localObject).setProgress(paramFloat);
     }
-    if (this.skew != null) {
-      this.skew.setProgress(paramFloat);
+    localObject = this.skew;
+    if (localObject != null) {
+      ((FloatKeyframeAnimation)localObject).setProgress(paramFloat);
     }
-    if (this.skewAngle != null) {
-      this.skewAngle.setProgress(paramFloat);
+    localObject = this.skewAngle;
+    if (localObject != null) {
+      ((FloatKeyframeAnimation)localObject).setProgress(paramFloat);
     }
   }
 }

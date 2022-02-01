@@ -1,35 +1,32 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aghx;
-import agjh;
-import agkf;
-import aiqi;
+import com.tencent.mobileqq.activity.photo.VideoPlayControllerForAIO;
 import mqq.os.MqqHandler;
 
-public class AIOGalleryScene$5
+class AIOGalleryScene$5
   implements Runnable
 {
-  public AIOGalleryScene$5(aghx paramaghx) {}
+  AIOGalleryScene$5(AIOGalleryScene paramAIOGalleryScene) {}
   
   public void run()
   {
+    this.this$0.d(false);
     this.this$0.c(false);
-    this.this$0.a(false);
-    if ((this.this$0.jdField_a_of_type_Agjh.a() != null) && ((this.this$0.jdField_a_of_type_Agjh.a().a instanceof AIOShortVideoData))) {
-      aghx.a(this.this$0, true);
+    if ((this.this$0.c.c() != null) && ((this.this$0.c.c().a instanceof AIOShortVideoData))) {
+      AIOGalleryScene.a(this.this$0, true);
     }
-    if (this.this$0.jdField_a_of_type_Aiqi.c())
+    if (this.this$0.au.p())
     {
-      this.this$0.u();
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.this$0.b);
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.this$0.b, 100L);
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.post(this.this$0.jdField_a_of_type_JavaLangRunnable);
+      this.this$0.E();
+      this.this$0.aE.removeCallbacks(this.this$0.aA);
+      this.this$0.aE.postDelayed(this.this$0.aA, 100L);
+      this.this$0.aE.post(this.this$0.az);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.5
  * JD-Core Version:    0.7.0.1
  */

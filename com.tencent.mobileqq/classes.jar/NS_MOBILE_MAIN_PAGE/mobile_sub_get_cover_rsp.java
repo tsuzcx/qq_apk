@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,30 +64,36 @@ public final class mobile_sub_get_cover_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cover != null) {
-      paramJceOutputStream.write(this.cover, 0);
+    Object localObject = this.cover;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.type != null) {
-      paramJceOutputStream.write(this.type, 1);
+    localObject = this.type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.MulRelsotionUrl != null) {
-      paramJceOutputStream.write(this.MulRelsotionUrl, 2);
+    localObject = this.MulRelsotionUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.packageInfo != null) {
-      paramJceOutputStream.write(this.packageInfo, 3);
+    localObject = this.packageInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.vecUrls != null) {
-      paramJceOutputStream.write(this.vecUrls, 4);
+    localObject = this.vecUrls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 5);
+    localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.photoWallCombinePic, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.video.d;
@@ -15,7 +15,7 @@ public final class h
 {
   public final void a(b paramb)
   {
-    AppMethodBeat.i(2004);
+    AppMethodBeat.i(126390);
     RecyclerView localRecyclerView = paramb.getRecyclerView();
     Object localObject = c(paramb);
     int i;
@@ -24,80 +24,80 @@ public final class h
     {
       localObject = (j)localObject;
       if (localObject == null) {
-        break label193;
+        break label191;
       }
-      i = ((g)localObject).jN();
-      if ((i != paramb.cJk()) && (paramb.cJh().tjS))
+      i = ((g)localObject).KJ();
+      if ((i != paramb.hND()) && (paramb.hNB().TNv))
       {
-        paramb.cJh().stopPlay();
+        paramb.hNB().stopPlay();
         if (localObject != null) {
-          paramb.cJd().f(((j)localObject).tfm);
+          paramb.hNx().j(((j)localObject).TIW);
         }
       }
-      paramb.cJa();
+      paramb.hNu();
       j = 0;
-      label104:
+      label103:
       if (j >= localRecyclerView.getChildCount()) {
-        break label209;
+        break label207;
       }
       localObject = localRecyclerView.getChildAt(j);
       if (((View)localObject).getTag() != null)
       {
-        localObject = (j)paramb.getRecyclerView().bb((View)localObject);
-        if (((g)localObject).jN() != i) {
-          break label198;
+        localObject = (j)paramb.getRecyclerView().bj((View)localObject);
+        if (((g)localObject).KJ() != i) {
+          break label196;
         }
-        ((j)localObject).cIZ();
-        if (!paramb.cJh().tjS) {
-          ((g)localObject).tkK.cJz();
+        ((j)localObject).hNt();
+        if (!paramb.hNB().TNv) {
+          ((g)localObject).TOt.hNS();
         }
       }
     }
     for (;;)
     {
       j += 1;
-      break label104;
-      AppMethodBeat.o(2004);
+      break label103;
+      AppMethodBeat.o(126390);
       return;
-      label193:
+      label191:
       i = -1;
       break;
-      label198:
-      ((g)localObject).tkK.cJA();
+      label196:
+      ((g)localObject).TOt.hNT();
     }
-    label209:
-    AppMethodBeat.o(2004);
+    label207:
+    AppMethodBeat.o(126390);
   }
   
   public final void b(b paramb)
   {
-    AppMethodBeat.i(2005);
+    AppMethodBeat.i(126391);
     com.tencent.mm.plugin.topstory.ui.video.h localh = c(paramb);
     if ((localh instanceof j)) {
-      if (!paramb.cJh().tjS)
+      if (!paramb.hNB().TNv)
       {
-        if (!paramb.cJc().isConnected()) {
-          break label77;
+        if (!paramb.hNw().isConnected()) {
+          break label75;
         }
-        localh.mA(true);
+        localh.FD(true);
       }
     }
     for (;;)
     {
-      localh.cIZ();
-      paramb.GA(localh.cJb());
-      paramb.cJd().cKd();
-      AppMethodBeat.o(2005);
+      localh.hNt();
+      paramb.aoU(localh.hNv());
+      paramb.hNx().hOC();
+      AppMethodBeat.o(126391);
       return;
-      label77:
-      localh.cJM().cJD();
-      paramb.cJh().stopPlay();
+      label75:
+      localh.hOi().hNW();
+      paramb.hNB().stopPlay();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.h
  * JD-Core Version:    0.7.0.1
  */

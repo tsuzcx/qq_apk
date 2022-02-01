@@ -24,13 +24,14 @@ public final class cmd0x346$ApplyCopyToReq
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 80, 160, 240, 320, 400, 482, 562, 642 }, new String[] { "uint64_dst_id", "uint64_dst_uin", "uint32_dst_svcid", "uint64_src_uin", "uint64_file_size", "str_file_name", "str_local_filepath", "bytes_uuid" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), "", "", localByteStringMicro }, ApplyCopyToReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 80, 160, 240, 320, 400, 482, 562, 642 }, new String[] { "uint64_dst_id", "uint64_dst_uin", "uint32_dst_svcid", "uint64_src_uin", "uint64_file_size", "str_file_name", "str_local_filepath", "bytes_uuid" }, new Object[] { localLong, localLong, Integer.valueOf(0), localLong, localLong, "", "", localByteStringMicro }, ApplyCopyToReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToReq
  * JD-Core Version:    0.7.0.1
  */

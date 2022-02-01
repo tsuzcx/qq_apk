@@ -14,21 +14,27 @@ public class UIPageControllerImpl
   
   public void startModalPageUI(IUIPage paramIUIPage, TransitionStyle paramTransitionStyle, ITransmitKvData paramITransmitKvData)
   {
-    AppMethodBeat.i(144461);
-    ActivityController.startNewUIPage(paramIUIPage);
-    AppMethodBeat.o(144461);
+    AppMethodBeat.i(18569);
+    if (paramTransitionStyle == TransitionStyle.COVERVERTICAL)
+    {
+      ActivityController.startNewUIPage(paramIUIPage, paramITransmitKvData, 2);
+      AppMethodBeat.o(18569);
+      return;
+    }
+    ActivityController.startNewUIPage(paramIUIPage, paramITransmitKvData, 1);
+    AppMethodBeat.o(18569);
   }
   
   public void startPageUI(IUIPage paramIUIPage, ITransmitKvData paramITransmitKvData)
   {
-    AppMethodBeat.i(144460);
-    ActivityController.startNewUIPage(paramIUIPage);
-    AppMethodBeat.o(144460);
+    AppMethodBeat.i(18568);
+    ActivityController.startNewUIPage(paramIUIPage, paramITransmitKvData, 1);
+    AppMethodBeat.o(18568);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.app.UIPageControllerImpl
  * JD-Core Version:    0.7.0.1
  */

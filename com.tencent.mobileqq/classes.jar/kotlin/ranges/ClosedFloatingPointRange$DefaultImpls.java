@@ -15,12 +15,12 @@ public final class ClosedFloatingPointRange$DefaultImpls
   
   public static <T extends Comparable<? super T>> boolean isEmpty(ClosedFloatingPointRange<T> paramClosedFloatingPointRange)
   {
-    return !paramClosedFloatingPointRange.lessThanOrEquals(paramClosedFloatingPointRange.getStart(), paramClosedFloatingPointRange.getEndInclusive());
+    return paramClosedFloatingPointRange.lessThanOrEquals(paramClosedFloatingPointRange.getStart(), paramClosedFloatingPointRange.getEndInclusive()) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.ClosedFloatingPointRange.DefaultImpls
  * JD-Core Version:    0.7.0.1
  */

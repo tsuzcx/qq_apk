@@ -4,44 +4,37 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import com.tencent.av.app.VideoAppInterface;
-import mrb;
 
 public abstract class ZimuViewMotion
   extends ZimuView
 {
-  Handler a;
-  int jdField_c_of_type_Int;
-  long jdField_c_of_type_Long;
-  final int d = 4;
+  int j = 92;
+  final int k = 4;
+  long l;
+  Handler m = new ZimuViewMotion.MyHandler(this);
   
   public ZimuViewMotion(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramLong, paramVideoAppInterface, paramContext, paramAttributeSet);
-    this.c = 92;
-    this.jdField_a_of_type_AndroidOsHandler = new mrb(this);
-  }
-  
-  public int a()
-  {
-    return this.c * 4;
   }
   
   protected int a(int paramInt1, int paramInt2)
   {
-    int j = a();
-    int i = (this.c - paramInt2) / 2 + paramInt1;
+    int n = getViewHeight();
+    int i = (this.j - paramInt2) / 2 + paramInt1;
     if (i < 0) {
-      i = 0;
+      return 0;
     }
-    while (paramInt1 + paramInt2 <= j) {
-      return i;
+    if (paramInt1 + paramInt2 > n) {
+      i = n - paramInt2;
     }
-    return j - paramInt2;
+    return i;
   }
   
   public void b()
   {
-    this.c = ((int)(0.48F * this.jdField_a_of_type_Float * this.c));
+    float f = this.g;
+    this.j = ((int)(this.j * (f * 0.48F)));
     super.b();
   }
   
@@ -49,10 +42,15 @@ public abstract class ZimuViewMotion
   {
     e();
   }
+  
+  public int getViewHeight()
+  {
+    return this.j * 4;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewMotion
  * JD-Core Version:    0.7.0.1
  */

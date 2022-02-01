@@ -18,32 +18,50 @@ public class WXMusicObject
   
   public boolean checkArgs()
   {
-    if (((this.musicUrl == null) || (this.musicUrl.length() == 0)) && ((this.musicLowBandUrl == null) || (this.musicLowBandUrl.length() == 0)))
+    String str = this.musicUrl;
+    if ((str == null) || (str.length() == 0))
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", "both arguments are null");
-      return false;
+      str = this.musicLowBandUrl;
+      if ((str == null) || (str.length() == 0)) {}
     }
-    if ((this.musicUrl != null) && (this.musicUrl.length() > 10240))
+    else
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, musicUrl is too long");
-      return false;
+      str = this.musicUrl;
+      if ((str != null) && (str.length() > 10240)) {
+        str = "checkArgs fail, musicUrl is too long";
+      }
     }
-    if ((this.musicLowBandUrl != null) && (this.musicLowBandUrl.length() > 10240))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, musicLowBandUrl is too long");
+      Log.e("MicroMsg.SDK.WXMusicObject", str);
       return false;
+      str = this.musicLowBandUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        str = "checkArgs fail, musicLowBandUrl is too long";
+      }
+      else
+      {
+        str = this.songAlbumUrl;
+        if ((str != null) && (str.length() > 10240))
+        {
+          str = "checkArgs fail, songAlbumUrl is too long";
+        }
+        else
+        {
+          str = this.songLyric;
+          if ((str != null) && (str.length() > 32768))
+          {
+            str = "checkArgs fail, songLyric is too long";
+          }
+          else
+          {
+            return true;
+            str = "both arguments are null";
+          }
+        }
+      }
     }
-    if ((this.songAlbumUrl != null) && (this.songAlbumUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, songAlbumUrl is too long");
-      return false;
-    }
-    if ((this.songLyric != null) && (this.songLyric.length() > 32768))
-    {
-      Log.e("MicroMsg.SDK.WXMusicObject", "checkArgs fail, songLyric is too long");
-      return false;
-    }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -73,7 +91,7 @@ public class WXMusicObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMusicObject
  * JD-Core Version:    0.7.0.1
  */

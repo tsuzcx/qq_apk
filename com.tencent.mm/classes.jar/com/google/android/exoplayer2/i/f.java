@@ -4,19 +4,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private boolean LB;
+  private boolean hU;
   
   public final void block()
   {
     try
     {
-      AppMethodBeat.i(95874);
-      while (!this.LB) {
+      AppMethodBeat.i(93134);
+      while (!this.hU) {
         wait();
       }
-      AppMethodBeat.o(95874);
+      AppMethodBeat.o(93134);
     }
     finally {}
+  }
+  
+  public final boolean close()
+  {
+    try
+    {
+      boolean bool = this.hU;
+      this.hU = false;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   /* Error */
@@ -27,14 +42,14 @@ public final class f
     //   1: istore_1
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc 30
+    //   4: ldc 31
     //   6: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 21	com/google/android/exoplayer2/i/f:LB	Z
+    //   10: getfield 21	com/google/android/exoplayer2/i/f:hU	Z
     //   13: ifeq +14 -> 27
     //   16: iconst_0
     //   17: istore_1
-    //   18: ldc 30
+    //   18: ldc 31
     //   20: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
@@ -42,10 +57,10 @@ public final class f
     //   26: ireturn
     //   27: aload_0
     //   28: iconst_1
-    //   29: putfield 21	com/google/android/exoplayer2/i/f:LB	Z
+    //   29: putfield 21	com/google/android/exoplayer2/i/f:hU	Z
     //   32: aload_0
-    //   33: invokevirtual 33	java/lang/Object:notifyAll	()V
-    //   36: ldc 30
+    //   33: invokevirtual 34	java/lang/Object:notifyAll	()V
+    //   36: ldc 31
     //   38: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -18 -> 23
     //   44: astore_2
@@ -64,25 +79,10 @@ public final class f
     //   18	23	44	finally
     //   27	41	44	finally
   }
-  
-  public final boolean qH()
-  {
-    try
-    {
-      boolean bool = this.LB;
-      this.LB = false;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.exoplayer2.i.f
  * JD-Core Version:    0.7.0.1
  */

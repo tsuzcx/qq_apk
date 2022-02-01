@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/emosm_item_icon" android:layout_width="70.0dip" android:layout_height="70.0dip" />
+    <ImageView android:id="@id/emosm_item_icon_voice" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/sound_emo_voice3" android:layout_alignRight="@id/emosm_item_icon" android:layout_alignBottom="@id/emosm_item_icon" />
+</RelativeLayout>

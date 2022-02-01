@@ -20,7 +20,7 @@ class DragSortAdapter$2$3
     }
     this.this$1.val$progressCircle.setProgress(0);
     this.this$1.val$progressCircle.setVisibility(8);
-    Button localButton = (Button)this.this$1.val$updateLayout.findViewById(2131231649);
+    Button localButton = (Button)this.this$1.val$updateLayout.findViewById(2131231648);
     if (localButton != null) {
       localButton.setVisibility(0);
     }

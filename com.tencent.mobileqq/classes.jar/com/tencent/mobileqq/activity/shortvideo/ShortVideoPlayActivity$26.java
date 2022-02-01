@@ -9,7 +9,7 @@ class ShortVideoPlayActivity$26
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    this.this$0.innerOnError(this.a, this.b, this.c, this.d, this.e, this.f);
   }
 }
 

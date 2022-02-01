@@ -7,16 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class CUploadUpstream
   extends JceStruct
 {
-  static int cache_busiType = 0;
-  static byte[] cache_extra;
-  static int cache_fileType = 0;
+  static int cache_busiType;
+  static byte[] cache_extra = (byte[])new byte[1];
+  static int cache_fileType;
   public int busiType = 0;
   public byte[] extra = null;
   public int fileType = 0;
   
   static
   {
-    cache_extra = (byte[])new byte[1];
     ((byte[])cache_extra)[0] = 0;
   }
   
@@ -40,14 +39,15 @@ public final class CUploadUpstream
   {
     paramJceOutputStream.write(this.busiType, 0);
     paramJceOutputStream.write(this.fileType, 1);
-    if (this.extra != null) {
-      paramJceOutputStream.write(this.extra, 2);
+    byte[] arrayOfByte = this.extra;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_COMM_UPLOAD_PROTOCOL.CUploadUpstream
  * JD-Core Version:    0.7.0.1
  */

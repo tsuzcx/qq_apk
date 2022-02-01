@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/nw2" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dingdong="http://schemas.android.com/apk/res-auto" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/nys" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.DingdongPromptView android:id="@id/nyr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" formItem:promptIconDrawable="@drawable/ch2" formItem:promptIconVisibility="cw1" formItem:promptText="@string/ap9" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/nuv" android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/mil" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <Button android:enabled="true" android:id="@id/cancel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/h73" android:layout_weight="1.0" android:contentDescription="@string/h73" style="@style/a3w" />
+            <Button android:enabled="true" android:id="@id/nfn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/h8p" android:layout_weight="1.0" android:contentDescription="@string/h8o" style="@style/a3v" />
+        </LinearLayout>
+        <Button android:enabled="true" android:id="@id/bfl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/h7f" android:layout_centerInParent="true" android:contentDescription="@string/h7f" style="@style/a3w" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/mir" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <Button android:enabled="true" android:id="@id/dbl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ar2" android:layout_weight="1.0" android:contentDescription="@string/ar2" style="@style/a3w" />
+            <Button android:enabled="true" android:id="@id/w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ar0" android:layout_weight="1.0" android:contentDescription="@string/ar0" style="@style/a3v" />
+        </LinearLayout>
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/nw7" android:scrollbars="vertical" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_above="@id/nuv">
+        <LinearLayout android:orientation="vertical" android:id="@id/mt4" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/nuv">
+            <LinearLayout android:orientation="vertical" android:id="@id/kis" android:background="@drawable/skin_setting_strip_top_unpressed_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="20.0sp" android:textColor="@color/skin_black" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="10.0dip" android:singleLine="false" android:textIsSelectable="true" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/niz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="10.0dip">
+                    <ImageView android:id="@id/niy" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/i4u" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/fue" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:singleLine="false" android:textIsSelectable="true" />
+                </LinearLayout>
+                <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="16.0dip">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/apl" android:id="@id/jl7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="80.0dip" android:singleLine="false" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/apl" android:id="@id/jl9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="80.0dip" android:singleLine="false" android:layout_below="@id/jl7" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/apl" android:id="@id/i5d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="80.0dip" android:singleLine="false" android:layout_below="@id/jl9" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/ag5" android:id="@id/o56" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentRight="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/bos" android:background="@drawable/skin_setting_strip_top_unpressed_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/nbb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:text="@string/h8b" android:singleLine="true" />
+                <com.tencent.mobileqq.widget.MyGridView android:gravity="center" android:id="@id/n1i" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:listSelector="@color/ajr" android:transcriptMode="disabled" android:horizontalSpacing="12.0dip" android:verticalSpacing="20.0dip" android:stretchMode="spacingWidth" android:columnWidth="49.0dip" android:numColumns="auto_fit" />
+            </LinearLayout>
+            <RelativeLayout android:id="@id/naw" android:background="@drawable/skin_setting_strip_top_unpressed_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/naz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:text="@string/h8a" android:singleLine="false" />
+                <TextView android:textSize="18.0sp" android:textColor="@color/skin_black" android:id="@id/emf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:singleLine="false" android:layout_below="@id/naz" android:lineSpacingExtra="12.0dip" android:textIsSelectable="true" />
+                <View android:id="@id/nax" android:layout_width="fill_parent" android:layout_height="16.0dip" android:layout_below="@id/emf" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/ntw" android:background="@drawable/skin_setting_strip_top_unpressed_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/ntx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:text="@string/h9f" android:singleLine="false" />
+                <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:id="@id/nu0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="11.0dip" android:singleLine="false" android:layout_below="@id/ntx" android:textIsSelectable="true" />
+                <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/nu0" />
+                <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nw1" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/nu0" formItem:bgType="faa" formItem:switchChecked="false" formItem:switchText="@string/h6p" />
+            </RelativeLayout>
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/mj6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:singleLine="false" />
+            <RelativeLayout android:gravity="start" android:layout_gravity="start" android:id="@id/idi" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginTop="@dimen/nd" android:layout_marginStart="@dimen/ms">
+                <ImageView android:id="@id/d1r" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="@dimen/na" android:layout_marginRight="@dimen/n1" android:src="@drawable/h98" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_marginEnd="@dimen/n1" android:layout_alignParentStart="true" />
+                <TextView android:textSize="16.0sp" android:textColor="#bf808080" android:id="@id/k50" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ar1" android:layout_toRightOf="@id/d1r" android:layout_toEndOf="@id/d1r" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="@dimen/aym" android:textColor="@color/apl" android:id="@id/o_6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ms" android:text="@string/h3l" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</RelativeLayout>

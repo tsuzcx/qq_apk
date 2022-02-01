@@ -1,50 +1,45 @@
 package com.tencent.mobileqq.nearby;
 
-import auwq;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.api.NearbySPUtil;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 
-public final class NearbyCardManager$1
+final class NearbyCardManager$1
   implements Runnable
 {
-  public NearbyCardManager$1(QQAppInterface paramQQAppInterface) {}
+  NearbyCardManager$1(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.a.a(this.a.getCurrentAccountUin(), 200, true);
-    long l1 = ((Long)auwq.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
+    Object localObject = this.a;
+    ((QQAppInterface)localObject).refreshStrangerFace(((QQAppInterface)localObject).getCurrentAccountUin(), 200, true);
+    long l1 = ((Long)NearbySPUtil.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
     long l2 = l1;
-    awgf localawgf;
     if (l1 == 0L)
     {
-      localawgf = this.a.getEntityManagerFactory(this.a.getAccount()).createEntityManager();
+      localObject = this.a;
+      localObject = ((QQAppInterface)localObject).getEntityManagerFactory(((QQAppInterface)localObject).getAccount()).createEntityManager();
       l2 = l1;
-      if (localawgf != null)
+      if (localObject != null)
       {
-        NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localawgf.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
-        if (localNearbyPeopleCard == null) {
-          break label143;
+        NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)((EntityManager)localObject).find(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
+        if (localNearbyPeopleCard != null) {
+          l1 = localNearbyPeopleCard.tinyId;
         }
-        l1 = localNearbyPeopleCard.tinyId;
+        ((EntityManager)localObject).close();
+        l2 = l1;
       }
     }
-    label143:
-    for (;;)
-    {
-      localawgf.a();
-      l2 = l1;
-      if (l2 != 0L) {
-        this.a.a(String.valueOf(l2), 202, true);
-      }
-      return;
+    if (l2 != 0L) {
+      this.a.refreshStrangerFace(String.valueOf(l2), 202, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyCardManager.1
  * JD-Core Version:    0.7.0.1
  */

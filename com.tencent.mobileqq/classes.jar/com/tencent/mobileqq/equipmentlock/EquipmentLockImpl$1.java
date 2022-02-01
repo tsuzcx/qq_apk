@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.equipmentlock;
 
-import aqbd;
 import com.tencent.qphone.base.util.QLog;
 
-public class EquipmentLockImpl$1
+class EquipmentLockImpl$1
   implements Runnable
 {
-  public EquipmentLockImpl$1(aqbd paramaqbd) {}
+  EquipmentLockImpl$1(EquipmentLockImpl paramEquipmentLockImpl) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.i("DevLock", 2, "notification runnable run.");
     }
-    this.this$0.b();
+    this.this$0.c();
   }
 }
 

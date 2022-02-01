@@ -1,16 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
 
 public class dif
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public dif(ShortcutGuideDialogActivity paramShortcutGuideDialogActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     dif
  * JD-Core Version:    0.7.0.1
  */

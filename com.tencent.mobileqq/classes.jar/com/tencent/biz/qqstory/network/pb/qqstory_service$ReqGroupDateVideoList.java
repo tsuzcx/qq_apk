@@ -23,14 +23,15 @@ public final class qqstory_service$ReqGroupDateVideoList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56 }, new String[] { "group_unionid", "start_cookie", "date_count", "video_count", "seqno", "time_zone", "from" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, ReqGroupDateVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56 }, new String[] { "group_unionid", "start_cookie", "date_count", "video_count", "seqno", "time_zone", "from" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, Long.valueOf(0L), localInteger, localInteger }, ReqGroupDateVideoList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGroupDateVideoList
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.BaseApplication;
-import gry;
+import grx;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.List;
@@ -139,9 +139,9 @@ public class TroopBarImagePreviewAdapter
     if (paramView == null)
     {
       localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903411, null);
-      paramViewGroup = new gry();
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131232527));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232528));
+      paramViewGroup = new grx();
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131232526));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131232527));
       localView.setTag(paramViewGroup);
       i = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.a();
       paramView = localView.getLayoutParams();
@@ -164,7 +164,7 @@ public class TroopBarImagePreviewAdapter
     do
     {
       return localView;
-      paramViewGroup = (gry)paramView.getTag();
+      paramViewGroup = (grx)paramView.getTag();
       localView = paramView;
       break;
       paramView.width = i;

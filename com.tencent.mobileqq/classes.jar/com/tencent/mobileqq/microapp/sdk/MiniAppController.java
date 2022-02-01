@@ -10,14 +10,13 @@ import android.util.SparseArray;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.AppInfo;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
 import com.tencent.mobileqq.microapp.apkg.UsedAppListManager;
-import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.app.AppBrandTaskPreloadReceiver;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
-import com.tencent.mobileqq.microapp.b.a;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -49,14 +48,15 @@ public class MiniAppController
   
   public static MiniAppController getInstance()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new MiniAppController();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new MiniAppController();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   private static int getNextSeq()
@@ -80,7 +80,7 @@ public class MiniAppController
     if (QLog.isColorLevel()) {
       QLog.e("MiniAppController", 2, paramString);
     }
-    VACDReportUtil.a("no_catch_crash", "MiniAppStat", "MiniAppCrashReport", "NoCatch", null, 88889, paramString);
+    VACDReportUtil.singleReport("no_catch_crash", "MiniAppStat", "MiniAppCrashReport", "NoCatch", null, 88889, paramString);
   }
   
   private static void preDownApkgResources(MiniAppConfig paramMiniAppConfig)
@@ -97,15 +97,22 @@ public class MiniAppController
   
   private static void reportShareInfo(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppController", 2, "reportShareInfo appId=" + paramString1 + "pagePath=" + paramString2);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportShareInfo appId=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("pagePath=");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("MiniAppController", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("miniAppId", paramString1);
-      localJSONObject.put("page", paramString2);
-      VACDReportUtil.a(localJSONObject.toString(), "MiniAppStat", "MiniAppShareReport", null, null, 0, null);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("miniAppId", paramString1);
+      ((JSONObject)localObject).put("page", paramString2);
+      VACDReportUtil.singleReport(((JSONObject)localObject).toString(), "MiniAppStat", "MiniAppShareReport", null, null, 0, null);
       return;
     }
     catch (Throwable paramString1) {}
@@ -113,20 +120,26 @@ public class MiniAppController
   
   public static void startApp(Activity paramActivity, MiniAppConfig paramMiniAppConfig, ResultReceiver paramResultReceiver)
   {
-    if ((paramActivity == null) || (paramMiniAppConfig == null))
+    if ((paramActivity != null) && (paramMiniAppConfig != null))
     {
-      paramActivity = "params is empty! activity=" + paramActivity + ",appConfig=" + paramMiniAppConfig;
-      QLog.e("MiniAppController", 1, paramActivity);
-      throw new MiniAppException(paramActivity);
+      Intent localIntent = new Intent(paramActivity, AppBrandUI.class);
+      localIntent.addFlags(536936448);
+      localIntent.putExtra("CONFIG", paramMiniAppConfig);
+      localIntent.putExtra("receiver", paramResultReceiver);
+      paramActivity.startActivity(localIntent);
+      c.a(paramActivity);
+      preDownApkgResources(paramMiniAppConfig);
+      UsedAppListManager.recordAppStart(new AppInfo(2, paramMiniAppConfig.config.mini_appid, paramMiniAppConfig.config.icon_url, paramMiniAppConfig.config.app_name));
+      return;
     }
-    Intent localIntent = new Intent(paramActivity, AppBrandUI.class);
-    localIntent.addFlags(536936448);
-    localIntent.putExtra("CONFIG", paramMiniAppConfig);
-    localIntent.putExtra("receiver", paramResultReceiver);
-    paramActivity.startActivity(localIntent);
-    a.a(paramActivity);
-    preDownApkgResources(paramMiniAppConfig);
-    UsedAppListManager.recordAppStart(new AppInfo(2, paramMiniAppConfig.config.mini_appid, paramMiniAppConfig.config.icon_url, paramMiniAppConfig.config.app_name));
+    paramResultReceiver = new StringBuilder();
+    paramResultReceiver.append("params is empty! activity=");
+    paramResultReceiver.append(paramActivity);
+    paramResultReceiver.append(",appConfig=");
+    paramResultReceiver.append(paramMiniAppConfig);
+    paramActivity = paramResultReceiver.toString();
+    QLog.e("MiniAppController", 1, paramActivity);
+    throw new MiniAppException(paramActivity);
   }
   
   public static void tryReportShare(MessageForStructing paramMessageForStructing)
@@ -153,7 +166,16 @@ public class MiniAppController
   
   public String handleNativeRequest(Activity paramActivity, String paramString1, String paramString2, String paramString3, MiniAppController.IBridgeListener paramIBridgeListener)
   {
-    QLog.d("MiniAppController", 1, "handleNativeRequest appid=" + paramString1 + ",eventName=" + paramString2 + ",jsonParams=" + paramString3 + ",listener=" + paramIBridgeListener);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("handleNativeRequest appid=");
+    ((StringBuilder)???).append(paramString1);
+    ((StringBuilder)???).append(",eventName=");
+    ((StringBuilder)???).append(paramString2);
+    ((StringBuilder)???).append(",jsonParams=");
+    ((StringBuilder)???).append(paramString3);
+    ((StringBuilder)???).append(",listener=");
+    ((StringBuilder)???).append(paramIBridgeListener);
+    QLog.d("MiniAppController", 1, ((StringBuilder)???).toString());
     synchronized (this.outJsPluginList)
     {
       ??? = this.outJsPluginList.iterator();
@@ -163,22 +185,38 @@ public class MiniAppController
         if (localOutBaseJsPlugin.canHandleJsRequest(paramString2))
         {
           int i = getNextSeq();
-          if (paramIBridgeListener != null) {}
-          synchronized (this.bridgeListenerMap)
-          {
-            this.bridgeListenerMap.put(i, paramIBridgeListener);
-            paramActivity = localOutBaseJsPlugin.handleNativeRequest(paramActivity, paramString1, paramString2, paramString3, i);
-            return paramActivity;
+          if (paramIBridgeListener != null) {
+            synchronized (this.bridgeListenerMap)
+            {
+              this.bridgeListenerMap.put(i, paramIBridgeListener);
+            }
           }
+          paramActivity = localOutBaseJsPlugin.handleNativeRequest(paramActivity, paramString1, paramString2, paramString3, i);
+          return paramActivity;
         }
       }
+      return "";
     }
-    return "";
+    for (;;)
+    {
+      throw paramActivity;
+    }
   }
   
   public String handleNativeRequest(Activity paramActivity, String paramString1, String paramString2, String paramString3, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
   {
-    QLog.d("MiniAppController", 1, "handleNativeRequest appid=" + paramString1 + ",eventName=" + paramString2 + ",jsonParams=" + paramString3 + ",webview=" + paramBaseAppBrandWebview + ",callbackId=" + paramInt);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("handleNativeRequest appid=");
+    ((StringBuilder)???).append(paramString1);
+    ((StringBuilder)???).append(",eventName=");
+    ((StringBuilder)???).append(paramString2);
+    ((StringBuilder)???).append(",jsonParams=");
+    ((StringBuilder)???).append(paramString3);
+    ((StringBuilder)???).append(",webview=");
+    ((StringBuilder)???).append(paramBaseAppBrandWebview);
+    ((StringBuilder)???).append(",callbackId=");
+    ((StringBuilder)???).append(paramInt);
+    QLog.d("MiniAppController", 1, ((StringBuilder)???).toString());
     synchronized (this.outJsPluginList)
     {
       ??? = this.outJsPluginList.iterator();
@@ -197,48 +235,50 @@ public class MiniAppController
           }
         }
       }
+      return "";
     }
-    return "";
+    for (;;)
+    {
+      throw paramActivity;
+    }
   }
   
   public void handleNativeResponse(OutBaseJsPlugin arg1, String arg2, String paramString2, int paramInt)
   {
-    MiniAppController.IBridgeListener localIBridgeListener;
     if ((??? instanceof OutBaseBridgeJsPlugin))
     {
-      localIBridgeListener = (MiniAppController.IBridgeListener)this.bridgeListenerMap.get(paramInt);
-      if (localIBridgeListener == null) {}
-    }
-    for (;;)
-    {
-      synchronized (this.bridgeListenerMap)
-      {
-        this.bridgeListenerMap.remove(paramInt);
-        localIBridgeListener.onResult(???, paramString2);
-        return;
-      }
-      ??? = (BridgeInfo)this.bridgeMap.get(paramInt);
-      if (??? == null) {
-        continue;
-      }
-      synchronized (this.bridgeMap)
-      {
-        this.bridgeMap.remove(paramInt);
-        ??? = ???.getWebView();
-        if (??? == null) {
-          continue;
+      MiniAppController.IBridgeListener localIBridgeListener = (MiniAppController.IBridgeListener)this.bridgeListenerMap.get(paramInt);
+      if (localIBridgeListener != null) {
+        synchronized (this.bridgeListenerMap)
+        {
+          this.bridgeListenerMap.remove(paramInt);
+          localIBridgeListener.onResult(???, paramString2);
+          return;
         }
-        ???.evaluateCallbackJs(???.callbackId, paramString2);
-        return;
       }
+      return;
+    }
+    ??? = (BridgeInfo)this.bridgeMap.get(paramInt);
+    if (??? == null) {
+      return;
+    }
+    synchronized (this.bridgeMap)
+    {
+      this.bridgeMap.remove(paramInt);
+      ??? = ???.getWebView();
+      if (??? != null) {
+        ???.evaluateCallbackJs(???.callbackId, paramString2);
+      }
+      return;
     }
   }
   
   public void notifyResultListener(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.activityResultListener != null)
+    MiniAppController.ActivityResultListener localActivityResultListener = this.activityResultListener;
+    if (localActivityResultListener != null)
     {
-      this.activityResultListener.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+      localActivityResultListener.doOnActivityResult(paramInt1, paramInt2, paramIntent);
       this.activityResultListener = null;
     }
   }
@@ -251,16 +291,12 @@ public class MiniAppController
       synchronized (this.bridgeMap)
       {
         this.bridgeMap.clear();
+        synchronized (this.bridgeListenerMap)
+        {
+          this.bridgeListenerMap.clear();
+          return;
+        }
       }
-    }
-    synchronized (this.bridgeListenerMap)
-    {
-      this.bridgeListenerMap.clear();
-      return;
-      localObject2 = finally;
-      throw localObject2;
-      localObject3 = finally;
-      throw localObject3;
     }
   }
   
@@ -287,7 +323,7 @@ public class MiniAppController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppController
  * JD-Core Version:    0.7.0.1
  */

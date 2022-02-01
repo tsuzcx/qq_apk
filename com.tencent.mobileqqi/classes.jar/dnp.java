@@ -1,23 +1,30 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class dnp
-  implements View.OnClickListener
+class dnp
+  implements ActionSheet.OnButtonClickListener
 {
-  public dnp(SubaccountUgActivity paramSubaccountUgActivity, String paramString) {}
+  dnp(dno paramdno, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.a(), null);
-    paramView.a(2131561629);
-    paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.getResources().getString(2131561946), 3);
-    paramView.d(2131561746);
-    paramView.a(new dnq(this, paramView));
-    paramView.show();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_Dno.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.f());
+      this.jdField_a_of_type_Dno.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.d();
+      this.jdField_a_of_type_Dno.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.e = true;
+      SubAccountAssistantManager.a().a(this.jdField_a_of_type_Dno.jdField_a_of_type_ComTencentMobileqqActivitySubaccountUgActivity.b, this.jdField_a_of_type_Dno.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

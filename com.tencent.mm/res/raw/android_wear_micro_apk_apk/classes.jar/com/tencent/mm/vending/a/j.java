@@ -2,7 +2,7 @@ package com.tencent.mm.vending.a;
 
 abstract interface j
 {
-  public abstract void lx();
+  public abstract void me();
 }
 
 

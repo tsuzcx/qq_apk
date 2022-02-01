@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agrn;
-import aluj;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 
-public class HotChatPie$10
+class HotChatPie$10
   implements Runnable
 {
-  public HotChatPie$10(agrn paramagrn) {}
+  HotChatPie$10(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
-    ((aluj)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ConfigServlet.a(this.this$0.d, this.this$0.d.getAccount(), -1);
   }
 }
 

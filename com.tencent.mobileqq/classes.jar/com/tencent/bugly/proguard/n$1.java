@@ -12,18 +12,16 @@ final class n$1
   {
     boolean bool = n.a(this.b, this.a);
     SharedPreferences.Editor localEditor = n.b(this.b).edit();
-    String str = this.a + "_" + n.a(this.b);
-    if (!bool) {}
-    for (bool = true;; bool = false)
-    {
-      localEditor.putBoolean(str, bool).commit();
-      return;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(n.a(this.b));
+    localEditor.putBoolean(localStringBuilder.toString(), bool ^ true).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.n.1
  * JD-Core Version:    0.7.0.1
  */

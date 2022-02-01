@@ -2,37 +2,37 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.mm.plugin.appbrand.af.o;
+import com.tencent.mm.plugin.appbrand.af.o.a;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.s.m;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.media.record.a;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.m.a;
+import com.tencent.mm.plugin.appbrand.u;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class JsApiStopRecordVoice
-  extends a<r>
+  extends c<y>
 {
   public static final int CTRL_INDEX = 32;
   public static final String NAME = "stopRecord";
   
-  static void m(r paramr)
+  static void o(y paramy)
   {
-    AppMethodBeat.i(130814);
-    if (bo.isNullOrNil(JsApiStartRecordVoice.hCM))
+    AppMethodBeat.i(46003);
+    if (Util.isNullOrNil(JsApiStartRecordVoice.rEo))
     {
-      AppMethodBeat.o(130814);
+      AppMethodBeat.o(46003);
       return;
     }
-    paramr = n.yc(paramr.getAppId()).gQY;
-    if (paramr != null) {
-      paramr.dismiss();
+    paramy = u.Ux(paramy.getAppId()).qva;
+    if (paramy != null) {
+      paramy.dismiss();
     }
-    AppBrandMainProcessService.a(new StopRecordVoice((byte)0));
-    JsApiStartRecordVoice.hCM = null;
-    AppMethodBeat.o(130814);
+    new StopRecordVoice((byte)0).bQt();
+    JsApiStartRecordVoice.rEo = null;
+    AppMethodBeat.o(46003);
   }
   
   static class StopRecordVoice
@@ -42,22 +42,30 @@ public final class JsApiStopRecordVoice
     
     static
     {
-      AppMethodBeat.i(130813);
+      AppMethodBeat.i(46002);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(130813);
+      AppMethodBeat.o(46002);
     }
     
-    public final void ata()
+    public final void asn()
     {
-      AppMethodBeat.i(130812);
-      m.aNS().ac(new JsApiStopRecordVoice.StopRecordVoice.1(this));
-      AppMethodBeat.o(130812);
+      AppMethodBeat.i(46001);
+      o.cNm().postToWorker(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(45999);
+          a.Ck(1);
+          AppMethodBeat.o(45999);
+        }
+      });
+      AppMethodBeat.o(46001);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiStopRecordVoice
  * JD-Core Version:    0.7.0.1
  */

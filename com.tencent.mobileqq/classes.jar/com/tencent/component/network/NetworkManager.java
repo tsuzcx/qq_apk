@@ -9,6 +9,7 @@ import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import com.tencent.component.network.module.base.Config;
 import com.tencent.component.network.module.base.QDLog;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,24 +30,23 @@ public class NetworkManager
   
   public static String getApnValue()
   {
-    if (sNetworkChangeReceiver == null) {}
-    while ("none" != "none") {
+    NetworkManager.NetworkChangeReceiver localNetworkChangeReceiver = sNetworkChangeReceiver;
+    if (localNetworkChangeReceiver == null) {
       return "none";
     }
-    return sNetworkChangeReceiver.getApnValue();
+    return localNetworkChangeReceiver.getApnValue();
   }
   
   public static String getBSSID()
   {
+    String str = null;
     try
     {
-      Object localObject = ((WifiManager)mContext.getSystemService("wifi")).getConnectionInfo();
-      if (localObject != null)
-      {
-        localObject = ((WifiInfo)localObject).getBSSID();
-        return localObject;
+      WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)mContext.getSystemService("wifi"));
+      if (localWifiInfo != null) {
+        str = localWifiInfo.getBSSID();
       }
-      return null;
+      return str;
     }
     catch (Throwable localThrowable) {}
     return null;
@@ -57,16 +57,18 @@ public class NetworkManager
     if (TextUtils.isEmpty(paramString)) {
       return 0;
     }
-    if ((paramString.contains("cmnet")) || (paramString.contains("cmwap")) || (paramString.contains("cmcc"))) {
-      return 1;
-    }
-    if ((paramString.contains("uninet")) || (paramString.contains("uniwap")) || (paramString.contains("unicom")) || (paramString.contains("3gnet")) || (paramString.contains("3gwap"))) {
+    if ((!paramString.contains("cmnet")) && (!paramString.contains("cmwap")) && (!paramString.contains("cmcc")))
+    {
+      if ((!paramString.contains("uninet")) && (!paramString.contains("uniwap")) && (!paramString.contains("unicom")) && (!paramString.contains("3gnet")) && (!paramString.contains("3gwap")))
+      {
+        if ((!paramString.contains("ctwap")) && (!paramString.contains("ctnet")) && (!paramString.contains("cmct")) && (!paramString.contains("#777"))) {
+          return getOperator();
+        }
+        return 3;
+      }
       return 2;
     }
-    if ((paramString.contains("ctwap")) || (paramString.contains("ctnet")) || (paramString.contains("cmct")) || (paramString.contains("#777"))) {
-      return 3;
-    }
-    return getOperator();
+    return 1;
   }
   
   public static int getIspType()
@@ -100,110 +102,95 @@ public class NetworkManager
   
   public static boolean isMobile()
   {
-    for (;;)
+    NetworkInfo localNetworkInfo = null;
+    try
     {
-      try
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)mContext.getSystemService("connectivity");
+      if (localConnectivityManager != null) {
+        localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
+      }
+      if (localNetworkInfo != null)
       {
-        Object localObject1 = (ConnectivityManager)mContext.getSystemService("connectivity");
-        if (localObject1 == null) {
-          break label49;
+        if (!localNetworkInfo.isConnected()) {
+          return false;
         }
-        localObject1 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
-        if ((localObject1 == null) || (!((NetworkInfo)localObject1).isConnected())) {
-          break;
-        }
-        int i = ((NetworkInfo)localObject1).getType();
+        int i = localNetworkInfo.getType();
         if (i == 0) {
           return true;
         }
       }
-      catch (Throwable localThrowable) {}
       return false;
-      label49:
-      Object localObject2 = null;
     }
+    catch (Throwable localThrowable) {}
     return false;
   }
   
   public static boolean isNetworkAvailable()
   {
-    for (;;)
+    NetworkInfo localNetworkInfo = null;
+    try
     {
-      try
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)mContext.getSystemService("connectivity");
+      if (localConnectivityManager != null) {
+        localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
+      }
+      if (localNetworkInfo != null)
       {
-        Object localObject1 = (ConnectivityManager)mContext.getSystemService("connectivity");
-        if (localObject1 != null)
-        {
-          localObject1 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
-          boolean bool;
-          if (localObject1 != null) {
-            bool = ((NetworkInfo)localObject1).isConnected();
-          }
-          return bool;
+        boolean bool = localNetworkInfo.isConnected();
+        if (bool) {
+          return true;
         }
       }
-      catch (Throwable localThrowable)
-      {
-        return true;
-      }
-      Object localObject2 = null;
+      return false;
     }
+    catch (Throwable localThrowable) {}
+    return true;
   }
   
   public static boolean isWap()
   {
     String str = getApnValue();
-    if (TextUtils.isEmpty(str)) {}
-    while ((!str.contains("cmwap")) && (!str.contains("uniwap")) && (!str.contains("3gwap")) && (!str.contains("ctwap"))) {
+    if (TextUtils.isEmpty(str)) {
       return false;
     }
-    return true;
+    return (str.contains("cmwap")) || (str.contains("uniwap")) || (str.contains("3gwap")) || (str.contains("ctwap"));
   }
   
   public static boolean isWifi()
   {
-    for (;;)
+    NetworkInfo localNetworkInfo = null;
+    boolean bool2 = false;
+    try
     {
-      try
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)mContext.getSystemService("connectivity");
+      if (localConnectivityManager != null) {
+        localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
+      }
+      boolean bool1 = bool2;
+      if (localNetworkInfo != null)
       {
-        Object localObject1 = (ConnectivityManager)mContext.getSystemService("connectivity");
-        if (localObject1 != null)
-        {
-          localObject1 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
-          if (localObject1 == null) {
-            break;
-          }
-          if (!((NetworkInfo)localObject1).isConnected()) {
-            return false;
-          }
-          int i = ((NetworkInfo)localObject1).getType();
-          if (1 == i)
-          {
-            bool = true;
-            return bool;
-          }
-          boolean bool = false;
-          continue;
+        if (!localNetworkInfo.isConnected()) {
+          return false;
         }
-        Object localObject2 = null;
+        int i = localNetworkInfo.getType();
+        bool1 = bool2;
+        if (1 == i) {
+          bool1 = true;
+        }
       }
-      catch (Throwable localThrowable)
-      {
-        return false;
-      }
+      return bool1;
     }
+    catch (Throwable localThrowable) {}
     return false;
   }
   
   public static void registNetStatusListener(NetworkManager.NetStatusListener arg0)
   {
     WeakReference localWeakReference = new WeakReference(???);
-    if (localWeakReference != null) {
-      synchronized (LOCK_NETLSTENER)
-      {
-        mNetworkListener.add(localWeakReference);
-        return;
-      }
+    synchronized (LOCK_NETLSTENER)
+    {
+      mNetworkListener.add(localWeakReference);
+      return;
     }
   }
   
@@ -221,11 +208,15 @@ public class NetworkManager
       }
       return;
     }
+    for (;;)
+    {
+      throw paramNetStatusListener;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.NetworkManager
  * JD-Core Version:    0.7.0.1
  */

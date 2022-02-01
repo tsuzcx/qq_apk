@@ -1,36 +1,76 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.app.ShakeListener;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.util.ReflectionUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class ezf
-  extends BroadcastReceiver
+  extends ShakeListener
 {
-  private ezf(BaseActivity paramBaseActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      if ((this.a.d_ != 0) || (!this.a.p) || (this.a.b == null) || (GesturePWDUtils.getGesturePWDState(this.a.a(), this.a.b.a()) != 2) || (GesturePWDUtils.getGesturePWDMode(this.a.a(), this.a.b.a()) != 21) || ((this.a.a() instanceof GesturePWDUnlockActivity)) || ((this.a.a() instanceof LoginActivity)) || (GesturePWDUtils.getGestureLocking(this.a.a()))) {
-        break label176;
-      }
-      this.a.B();
-    }
+    if (BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {}
+    label209:
+    label217:
+    label244:
     for (;;)
     {
-      BaseActivity.r = false;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onReceive broadcastreceiver.action=" + paramIntent.getAction());
-      }
       return;
-      label176:
-      this.a.c_();
+      int i = Build.VERSION.SDK_INT;
+      Object localObject = BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      boolean bool1;
+      if (i > 10)
+      {
+        i = 4;
+        localObject = ((BaseActivity)localObject).getSharedPreferences("screen_shot", i).getString("currentactivity", null);
+        if (!BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getClass().getName().equals(localObject)) {
+          continue;
+        }
+        bool1 = SettingCloneUtil.readValue(BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131563437), "qqsetting_screenshot_key", false);
+        boolean bool2 = ReflectionUtil.a(BaseApplication.getContext());
+        if ((!bool1) || (!bool2)) {
+          continue;
+        }
+        if (BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.jdField_a_of_type_ComTencentMobileqqAppScreenShot == null)
+        {
+          if (BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()) {
+            break label209;
+          }
+          localObject = BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext();
+          label119:
+          BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.jdField_a_of_type_ComTencentMobileqqAppScreenShot = new ScreenShot((Context)localObject, BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+        }
+        bool1 = BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.jdField_a_of_type_ComTencentMobileqqAppScreenShot.a();
+        if (bool1) {
+          continue;
+        }
+        if (BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.jdField_a_of_type_ComTencentMobileqqAppScreenShot.b()) {
+          break label217;
+        }
+        BaseActivity.a(BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label244;
+        }
+        QLog.d("BaseActivity", 2, "snapshot activate " + bool1);
+        return;
+        i = 0;
+        break;
+        localObject = BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+        break label119;
+        if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+          KapalaiAdapterUtil.a().a(BaseActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
+        }
+      }
     }
   }
 }

@@ -1,329 +1,408 @@
 package com.tencent.mm.plugin.music.model;
 
 import android.content.Context;
+import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.s;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mm.autogen.a.ox;
+import com.tencent.mm.autogen.a.ox.a;
+import com.tencent.mm.aw.f;
+import com.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningApp;
+import com.tencent.mm.plugin.appbrand.backgroundrunning.g;
+import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.ball.model.BallReportInfo;
+import com.tencent.mm.plugin.ball.service.FloatBallHelper;
+import com.tencent.mm.plugin.music.a.h;
+import com.tencent.mm.plugin.music.h.b;
+import com.tencent.mm.plugin.music.logic.j;
+import com.tencent.mm.plugin.music.ui.FloatBallMusicLyricView;
+import com.tencent.mm.plugin.voip.f.m;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i;
+import java.util.Iterator;
+import java.util.List;
 
-public final class a
+public class a
+  extends FloatBallHelper
 {
-  private String album;
-  private int eSO;
-  private String hBK;
-  public ArrayList<a.a> oZq;
-  private LinkedList<Long> oZr;
-  private String oZs;
-  private String oZt;
-  private String oZu;
-  private boolean oZv;
-  private long offset;
-  private String title;
+  String TAG;
   
-  private a()
+  protected a(String paramString)
   {
-    AppMethodBeat.i(104875);
-    this.oZr = new LinkedList();
-    this.oZq = new ArrayList();
-    this.eSO = 0;
-    this.oZv = false;
-    AppMethodBeat.o(104875);
+    AppMethodBeat.i(271115);
+    this.TAG = "MicroMsg.GlobalMusicFloatBallHelper";
+    this.TAG = paramString;
+    J(gnB(), "MusicFloatBall");
+    if (gnB() == 23) {
+      cYv().mUU = 18;
+    }
+    for (;;)
+    {
+      cYr();
+      AppMethodBeat.o(271115);
+      return;
+      if (gnB() == 6) {
+        cYv().mUU = 1;
+      }
+    }
   }
   
-  private static long Vw(String paramString)
+  private void F(f paramf)
   {
-    AppMethodBeat.i(104873);
+    AppMethodBeat.i(271118);
+    if (paramf.oPa)
+    {
+      AppMethodBeat.o(271118);
+      return;
+    }
+    if (this.vjV.vjE == null) {
+      this.vjV.vjE = new FloatBallMusicLyricView(MMApplicationContext.getContext());
+    }
+    if ((this.vjV.vjE instanceof FloatBallMusicLyricView))
+    {
+      ((FloatBallMusicLyricView)this.vjV.vjE).setMusicWrapper(paramf);
+      ((FloatBallMusicLyricView)this.vjV.vjE).onResume();
+    }
+    AppMethodBeat.o(271118);
+  }
+  
+  private boolean cNy()
+  {
+    AppMethodBeat.i(271125);
     for (;;)
     {
       try
       {
-        paramString = paramString.split(":");
-        int k = d.lT(paramString[0]);
-        if (paramString.length <= 1) {
-          break label138;
+        TelephonyManager localTelephonyManager = (TelephonyManager)MMApplicationContext.getContext().getSystemService("phone");
+        if (localTelephonyManager == null) {
+          continue;
         }
-        paramString = paramString[1].split("\\.");
-        j = d.lT(paramString[0]);
-        if (paramString.length > 1)
+        i = localTelephonyManager.getCallState();
+        switch (i)
         {
-          i = d.lT(paramString[1]);
-          long l1 = k;
-          long l2 = j * 1000;
-          long l3 = i * 10;
-          AppMethodBeat.o(104873);
-          return l3 + (l2 + l1 * 60L * 1000L);
+        default: 
+          bool = false;
         }
       }
-      catch (Exception paramString)
+      catch (Exception localException1)
       {
-        ab.printErrStackTrace("MicroMsg.Music.LyricObj", paramString, "", new Object[0]);
-        ab.w("MicroMsg.Music.LyricObj", "strToLong error: %s", new Object[] { paramString.getLocalizedMessage() });
-        AppMethodBeat.o(104873);
-        return 0L;
+        int i;
+        boolean bool = false;
+        Log.printErrStackTrace(this.TAG, localException1, "isPhoneInUse, exception:%s", new Object[] { localException1 });
+        continue;
+        bool = false;
+        continue;
       }
-      int i = 0;
+      try
+      {
+        Log.i(this.TAG, "isPhoneInUse, isPhoneInUse:%s, callState:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+        AppMethodBeat.o(271125);
+        return bool;
+      }
+      catch (Exception localException2)
+      {
+        continue;
+      }
+      bool = false;
       continue;
-      label138:
-      i = 0;
-      int j = 0;
+      bool = true;
     }
   }
   
-  public static a a(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, boolean paramBoolean2)
+  public final void B(f paramf)
   {
-    AppMethodBeat.i(104871);
-    a locala = new a();
-    long l = bo.yB();
-    if (!bo.isNullOrNil(paramString1)) {
-      if (paramString1 == null)
-      {
-        ab.w("MicroMsg.Music.LyricObj", "parserLrc: but lrc or lrcMgr is null");
-        ab.d("MicroMsg.Music.LyricObj", "getLrcMgr beg: src lrc = %s", new Object[] { paramString1 });
-        ab.d("MicroMsg.Music.LyricObj", "parse finish: sentence size [%d], result:", new Object[] { Integer.valueOf(locala.oZq.size()) });
-        label77:
-        if (!bo.isNullOrNil(paramString3)) {
-          break label992;
-        }
-        ab.w("MicroMsg.Music.LyricObj", "add lyric prefix: but prefix is empty, return");
-        label91:
-        if (!bo.isNullOrNil(paramString1))
-        {
-          if (!bo.isNullOrNil(paramString2)) {
-            break label1151;
-          }
-          ab.w("MicroMsg.Music.LyricObj", "add lyric prefix: but prefix is empty, return");
-        }
+    AppMethodBeat.i(271139);
+    if (!cYo())
+    {
+      mr(true);
+      ahU(paramf.oOx);
+      ahV(paramf.oOy);
+      fz("song_id", paramf.oOv);
+      fz("db_music_id", b.Y(paramf));
+      E(paramf);
+      cYv().vjN = paramf.oOt;
+      cYr();
+      F(paramf);
+      D(paramf);
+    }
+    AppMethodBeat.o(271139);
+  }
+  
+  public final void B(BallInfo paramBallInfo)
+  {
+    AppMethodBeat.i(271191);
+    Log.v(this.TAG, "onFloatBallInfoAdded, type: %d, key: %s", new Object[] { Integer.valueOf(paramBallInfo.type), paramBallInfo.key });
+    AppMethodBeat.o(271191);
+  }
+  
+  protected boolean C(f paramf)
+  {
+    AppMethodBeat.i(271147);
+    if ((!paramf.oPa) && (gnB() == 6))
+    {
+      AppMethodBeat.o(271147);
+      return true;
+    }
+    AppMethodBeat.o(271147);
+    return false;
+  }
+  
+  protected void D(f paramf)
+  {
+    AppMethodBeat.i(271200);
+    if (paramf != null)
+    {
+      Log.i(this.TAG, "addMusicFloatBall isFromNewMusicPlayer: %s", new Object[] { Boolean.valueOf(paramf.oPa) });
+      if (!paramf.oPa) {
+        cYq();
       }
     }
-    for (;;)
+    AppMethodBeat.o(271200);
+  }
+  
+  protected void E(f paramf)
+  {
+    AppMethodBeat.i(271204);
+    if (!paramf.oPa)
     {
-      ab.d("MicroMsg.Music.LyricObj", "getLrcMgr finish: use %d ms", new Object[] { Long.valueOf(bo.av(l)) });
-      AppMethodBeat.o(104871);
-      return locala;
-      paramString4 = paramString1.replaceAll("\n", " ").replaceAll("\r", " ");
-      Matcher localMatcher1 = Pattern.compile("(\\[((\\d{2}:\\d{2}(\\.\\d{2}){0,1}\\])|(al:|ar:|by:|offset:|re:|ti:|ve:))[^\\[]*)").matcher(paramString4);
-      while (localMatcher1.find())
+      this.vjV.state = com.tencent.mm.plugin.ball.f.d.gm(this.vjV.state, 2);
+      FJ(this.vjV.state);
+    }
+    AppMethodBeat.o(271204);
+  }
+  
+  public final void T(BallInfo paramBallInfo)
+  {
+    AppMethodBeat.i(271169);
+    Log.v(this.TAG, "onFloatBallInfoClicked, type: %d, key: %s", new Object[] { Integer.valueOf(paramBallInfo.type), paramBallInfo.key });
+    AppMethodBeat.o(271169);
+  }
+  
+  public final void U(BallInfo paramBallInfo)
+  {
+    AppMethodBeat.i(271195);
+    Log.v(this.TAG, "onFloatBallInfoExposed, type: %d, key: %s", new Object[] { Integer.valueOf(paramBallInfo.type), paramBallInfo.key });
+    AppMethodBeat.o(271195);
+  }
+  
+  public final void a(final ox paramox)
+  {
+    AppMethodBeat.i(271164);
+    if (!j.isInit())
+    {
+      Log.e(this.TAG, "floatBallMusicActionListener don't anything, must init MusicPlayerManager first with MusicLogic before!");
+      AppMethodBeat.o(271164);
+      return;
+    }
+    label131:
+    int i;
+    switch (paramox.hRN.action)
+    {
+    case 4: 
+    case 5: 
+    case 6: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 11: 
+    case 12: 
+    default: 
+    case 0: 
+    case 1: 
+      label140:
+      do
       {
-        String str = localMatcher1.group();
-        localMatcher1.start();
-        localMatcher1.end();
-        if (str == null)
-        {
-          ab.w("MicroMsg.Music.LyricObj", "parserLine fail: lrcMgr or str is null");
+        AppMethodBeat.o(271164);
+        return;
+        if (!cNy()) {
+          break;
         }
-        else if (str.startsWith("[ti:"))
-        {
-          locala.title = fy(str, "[ti:");
+        paramox = MMApplicationContext.getContext().getString(a.h.in_phone_tip);
+        if (!Util.isNullOrNil(paramox)) {
+          break label369;
         }
-        else if (str.startsWith("[ar:"))
-        {
-          locala.hBK = fy(str, "[ar:");
-        }
-        else if (str.startsWith("[al:"))
-        {
-          locala.album = fy(str, "[al:");
-        }
-        else if (str.startsWith("[by:"))
-        {
-          locala.oZs = fy(str, "[by:");
-        }
-        else if (str.startsWith("[offset:"))
-        {
-          locala.offset = bo.getLong(fy(str, "[offset:"), 0L);
-        }
-        else if (str.startsWith("[re:"))
-        {
-          locala.oZt = fy(str, "[re:");
-        }
-        else if (str.startsWith("[ve:"))
-        {
-          locala.oZu = fy(str, "[ve:");
-        }
-        else
-        {
-          Pattern localPattern = Pattern.compile("\\[(\\d{2}:\\d{2}(\\.\\d{2}){0,1})\\]");
-          Matcher localMatcher2 = localPattern.matcher(str);
-          a.a locala1 = new a.a();
-          label417:
-          if (localMatcher2.find())
-          {
-            if (localMatcher2.groupCount() > 0) {
-              locala1.timestamp = Vw(localMatcher2.group(1));
-            }
-            paramString4 = localPattern.split(str);
-            if ((paramString4 != null) && (paramString4.length > 0))
-            {
-              localObject = paramString4[(paramString4.length - 1)];
-              paramString4 = (String)localObject;
-              if (localObject != null) {
-                paramString4 = ((String)localObject).trim();
-              }
-              localObject = paramString4;
-              if (bo.isNullOrNil(paramString4)) {
-                localObject = " ";
-              }
-              locala1.content = ((String)localObject);
-              i = 0;
-            }
-            for (;;)
-            {
-              if (i < locala.oZr.size())
-              {
-                paramString4 = new a.a();
-                paramString4.timestamp = ((Long)locala.oZr.get(i)).longValue();
-                paramString4.content = locala1.content;
-                paramString4.oZw = true;
-                i += 1;
-                continue;
-                locala.oZr.add(Long.valueOf(locala1.timestamp));
-                break;
-              }
-            }
-            locala.oZr.clear();
-            i = locala.oZq.size() - 1;
-          }
-          for (;;)
-          {
-            if ((i >= 0) && (((a.a)locala.oZq.get(i)).timestamp != locala1.timestamp))
-            {
-              if (((a.a)locala.oZq.get(i)).timestamp < locala1.timestamp) {
-                locala.oZq.add(i + 1, locala1);
-              }
-            }
-            else
-            {
-              if (i >= 0) {
-                break label417;
-              }
-              locala.oZq.add(0, locala1);
-              break label417;
-              break;
-            }
-            i -= 1;
-          }
-        }
-      }
-      ab.d("MicroMsg.Music.LyricObj", "handle offset %d", new Object[] { Long.valueOf(locala.offset) });
-      if (locala.offset != 0L)
-      {
         i = 0;
-        while (i < locala.oZq.size())
-        {
-          paramString4 = (a.a)locala.oZq.get(i);
-          paramString4.timestamp += locala.offset;
-          i += 1;
-        }
-        locala.offset = 0L;
-      }
-      int i = 0;
-      while (i < locala.oZq.size() - 1)
-      {
-        paramString4 = (a.a)locala.oZq.get(i);
-        if ((paramString4.oZw) && (paramString4.content.equals(((a.a)locala.oZq.get(i + 1)).content))) {
-          paramString4.content = " ";
-        }
-        i += 1;
+      } while (i != 0);
+      if (!cYo()) {
+        mr(true);
       }
       break;
-      Object localObject = new a.a();
-      ((a.a)localObject).timestamp = 0L;
-      if (paramBoolean2) {
-        ((a.a)localObject).content = paramString4;
-      }
-      for (;;)
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      paramox = com.tencent.mm.aw.a.bLn();
+      if (!C(paramox))
       {
-        if (((a.a)localObject).content == null) {
-          break label990;
+        Log.w(this.TAG, "can not hand musicPlayerEvent and ignore");
+        AppMethodBeat.o(271164);
+        return;
+        if (com.tencent.mm.n.a.aTi())
+        {
+          paramox = MMApplicationContext.getContext().getString(a.h.in_voip_cs_tip);
+          break label131;
         }
-        locala.oZq.add(localObject);
+        if ((m.isVoipStarted()) || (m.icd()) || (com.tencent.mm.n.a.aTe()) || (com.tencent.mm.n.a.aTh()))
+        {
+          paramox = MMApplicationContext.getContext().getString(a.h.in_voip_tip);
+          break label131;
+        }
+        if (!m.ice())
+        {
+          if (com.tencent.mm.kernel.h.ax(g.class) == null) {
+            break label332;
+          }
+          paramox = ((g)com.tencent.mm.kernel.h.ax(g.class)).cjO().iterator();
+          while (paramox.hasNext()) {
+            if ((((AppBrandBackgroundRunningApp)paramox.next()).cIi & 0x4) > 0) {
+              Log.i(this.TAG, "isAnyAppInVOIP, already exist wxa using VOIP");
+            }
+          }
+        }
+        label332:
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label337;
+          }
+          paramox = MMApplicationContext.getContext().getString(a.h.in_voip_cs_tip);
+          break;
+        }
+        label337:
+        if ((com.tencent.mm.n.a.q(null, false)) || (com.tencent.mm.n.a.aTg()))
+        {
+          paramox = MMApplicationContext.getContext().getString(a.h.in_live_tip);
+          break label131;
+        }
+        paramox = null;
+        break label131;
+        label369:
+        com.tencent.mm.aw.a.bLi();
+        com.tencent.threadpool.h.ahAA.bk(new a.2(this, paramox));
+        i = 1;
+        break label140;
+      }
+      ahU(paramox.oOx);
+      ahV(paramox.oOy);
+      fz("song_id", paramox.oOv);
+      fz("db_music_id", b.Y(paramox));
+      E(paramox);
+      Log.i(this.TAG, "onMusicPlayerEvent isFromNewMusicPlayer: %s, newBall: %s", new Object[] { Boolean.valueOf(paramox.oPa), Boolean.valueOf(bool) });
+      if (bool)
+      {
+        cYv().vjN = paramox.oOt;
+        cYr();
+        D(paramox);
+      }
+      F(paramox);
+      AppMethodBeat.o(271164);
+      return;
+      MMHandlerThread.postToMainThreadDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(271177);
+          if (com.tencent.mm.aw.a.bLk())
+          {
+            Log.i(a.this.TAG, "delay stop and playing music again");
+            AppMethodBeat.o(271177);
+            return;
+          }
+          if (!a.this.cYo())
+          {
+            AppMethodBeat.o(271177);
+            return;
+          }
+          Object localObject = a.this.cYj();
+          if ((localObject != null) && (((BallInfo)localObject).vjH))
+          {
+            localObject = a.this.cYv();
+            if (paramox.hRN.action == 2) {}
+            for (int i = 10;; i = 11)
+            {
+              ((BallReportInfo)localObject).opType = i;
+              a.this.cYr();
+              a.this.cYp();
+              AppMethodBeat.o(271177);
+              return;
+            }
+          }
+          a.this.gnC();
+          AppMethodBeat.o(271177);
+        }
+      }, 200L);
+      AppMethodBeat.o(271164);
+      return;
+      if (!cYo()) {
         break;
-        if (!paramBoolean1) {
-          ((a.a)localObject).content = ah.getContext().getString(2131301861);
-        } else {
-          ((a.a)localObject).content = ah.getContext().getString(2131301862);
-        }
       }
-      label990:
-      break label77;
-      label992:
-      paramString4 = new a.a();
-      paramString4.timestamp = 0L;
-      paramString4.content = ah.getContext().getString(2131304463, new Object[] { s.nE(paramString3) });
-      if (locala.oZq.isEmpty())
-      {
-        locala.oZq.add(paramString4);
-        break label91;
-      }
-      if (locala.oZq.size() == 1)
-      {
-        locala.oZq.add(0, paramString4);
-        ((a.a)locala.oZq.get(1)).timestamp = 5000L;
-        break label91;
-      }
-      locala.oZq.add(0, paramString4);
-      ((a.a)locala.oZq.get(1)).timestamp = (3L * (((a.a)locala.oZq.get(2)).timestamp >> 2));
-      break label91;
-      label1151:
-      paramString1 = new a.a();
-      paramString1.timestamp = 0L;
-      paramString1.content = paramString2;
-      if (locala.oZq.isEmpty())
-      {
-        locala.oZq.add(paramString1);
-      }
-      else if (locala.oZq.size() == 1)
-      {
-        locala.oZq.add(0, paramString1);
-        ((a.a)locala.oZq.get(1)).timestamp = 5000L;
-      }
-      else
-      {
-        locala.oZq.add(0, paramString1);
-        ((a.a)locala.oZq.get(1)).timestamp = (3L * (((a.a)locala.oZq.get(2)).timestamp >> 2));
-      }
+      paramox = com.tencent.mm.aw.a.bLn();
+      ahU(paramox.oOx);
+      ahV(paramox.oOy);
+      fz("song_id", paramox.oOv);
+      fz("db_music_id", b.Y(paramox));
+      F(paramox);
+      break;
     }
   }
   
-  private static String fy(String paramString1, String paramString2)
+  protected String d(BallInfo paramBallInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(104872);
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
+    AppMethodBeat.i(271184);
+    f localf = com.tencent.mm.aw.a.bLn();
+    String str2 = paramBallInfo.fy("song_id", "~");
+    if (localf == null) {}
+    for (String str1 = "";; str1 = localf.oOv)
     {
-      AppMethodBeat.o(104872);
-      return paramString1;
+      Log.i(this.TAG, "onFloatBallInfoRemoved, stop music id:%s current:%s, needStopMusic: %s", new Object[] { str2, str1, Boolean.valueOf(paramBoolean) });
+      if ((paramBoolean) && (localf != null) && (com.tencent.mm.aw.a.bLk()) && (str2.equals(str1))) {
+        com.tencent.mm.aw.a.bLi();
+      }
+      if ((paramBallInfo.vjE != null) && ((paramBallInfo.vjE instanceof FloatBallMusicLyricView)))
+      {
+        paramBallInfo = (FloatBallMusicLyricView)paramBallInfo.vjE;
+        paramBallInfo.rDF.dead();
+        j.gnw().gnj().b(paramBallInfo.LJz);
+      }
+      if (!paramBoolean) {
+        break;
+      }
+      AppMethodBeat.o(271184);
+      return str2;
     }
-    if (paramString2.length() >= paramString1.length() - 1)
-    {
-      AppMethodBeat.o(104872);
-      return "";
-    }
-    String str = paramString1.substring(paramString2.length(), paramString1.length() - 1);
-    ab.d("MicroMsg.Music.LyricObj", "str[%s] prefix[%s] attr[%s]", new Object[] { paramString1, paramString2, str });
-    AppMethodBeat.o(104872);
-    return str;
+    AppMethodBeat.o(271184);
+    return null;
   }
   
-  public final a.a Aj(int paramInt)
+  protected int gnB()
   {
-    AppMethodBeat.i(104874);
-    if ((paramInt < 0) || (paramInt >= this.oZq.size()))
+    return 6;
+  }
+  
+  protected void gnC()
+  {
+    AppMethodBeat.i(271210);
+    FJ(com.tencent.mm.plugin.ball.f.d.gn(this.vjV.state, 2));
+    AppMethodBeat.o(271210);
+  }
+  
+  static final class a
+  {
+    static a LLQ;
+    
+    static
     {
-      AppMethodBeat.o(104874);
-      return null;
+      AppMethodBeat.i(63000);
+      LLQ = new a("MicroMsg.GlobalMusicFloatBallHelper");
+      AppMethodBeat.o(63000);
     }
-    a.a locala = (a.a)this.oZq.get(paramInt);
-    AppMethodBeat.o(104874);
-    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a
  * JD-Core Version:    0.7.0.1
  */

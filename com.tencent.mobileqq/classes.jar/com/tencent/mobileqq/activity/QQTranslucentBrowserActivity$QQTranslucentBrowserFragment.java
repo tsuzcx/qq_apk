@@ -3,76 +3,90 @@ package com.tencent.mobileqq.activity;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bejh;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewUIUtils;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   extends WebViewFragment
 {
-  public int a(Bundle paramBundle)
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    int i = super.a(paramBundle);
-    if ((getActivity() == null) || (getActivity().getIntent() == null)) {}
-    while (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("key_dialog_type", -1) == -1) {
-      return i;
-    }
-    getActivity().getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_Bejh.a.setVisibility(8);
-    this.jdField_a_of_type_Bejk.a = true;
-    D();
-    g(false);
-    return i;
-  }
-  
-  @TargetApi(11)
-  public int d(Bundle paramBundle)
-  {
-    int i = super.d(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167140);
-    if ((this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-      ((RefreshView)this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewViewGroup).a(false);
-    }
-    if (this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_Bejh.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView().setBackgroundColor(0);
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.setBackgroundColor(0);
-        return i;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        continue;
-      }
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
-    }
+    return new QQTranslucentBrowserActivity.QQTranslucentBrowserFragment.1(this, this.webViewSurface);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramLayoutInflater.setBackgroundColor(0);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
+  }
+  
+  public void onFinalState(Bundle paramBundle, WebViewKernelCallBack paramWebViewKernelCallBack)
+  {
+    paramWebViewKernelCallBack.onFinalState(paramBundle);
+    if (getActivity() != null)
+    {
+      if (getActivity().getIntent() == null) {
+        return;
+      }
+      if (this.intent.getIntExtra("key_dialog_type", -1) != -1)
+      {
+        getActivity().getWindow().setFlags(1024, 1024);
+        getUIStyleHandler().v.setVisibility(8);
+        getUIStyle().a = true;
+        WebViewUIUtils.b(super.getActivity());
+        getWebTitleBarInterface().f(false);
+      }
+    }
+  }
+  
+  @TargetApi(11)
+  public void onInitUIContent(Bundle paramBundle, WebViewKernelCallBack paramWebViewKernelCallBack)
+  {
+    if ((getIntent() != null) && (getIntent().getBooleanExtra("flag_hide_float_bar", false))) {
+      getUIStyle().e = 0L;
+    }
+    paramWebViewKernelCallBack.onInitUIContent(paramBundle);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131168376);
+    if ((getUIStyleHandler().u instanceof RefreshView)) {
+      ((RefreshView)getUIStyleHandler().u).a(false);
+    }
+    if (getUIStyleHandler().D != null) {
+      getUIStyleHandler().D.setVisibility(8);
+    }
+    if (this.webView.getX5WebViewExtension() != null) {
+      try
+      {
+        this.webView.getView().setBackgroundColor(0);
+        this.webView.setBackgroundColor(0);
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+    } else {
+      this.webView.setBackgroundColor(0);
+    }
+    this.contentView.setBackgroundColor(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

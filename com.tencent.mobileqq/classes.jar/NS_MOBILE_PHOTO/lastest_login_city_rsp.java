@@ -23,14 +23,15 @@ public final class lastest_login_city_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.city_name != null) {
-      paramJceOutputStream.write(this.city_name, 0);
+    String str = this.city_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.lastest_login_city_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -19,8 +19,12 @@
     <item type="drawable" name="ob">#ff858991</item>
     <item type="drawable" name="oi">#fff1d0a3</item>
     <item type="drawable" name="oj">#ffc2a780</item>
+    <item type="drawable" name="e8w">@drawable/e95</item>
+    <item type="drawable" name="e94">@drawable/e8u</item>
     <item type="drawable" name="rh">#00000000</item>
     <item type="drawable" name="ri">#ff00a5e0</item>
+    <item type="drawable" name="efj">#3333b5e5</item>
+    <item type="drawable" name="efk">#0cffffff</item>
     <item type="drawable" name="rk">#ff2b86ef</item>
     <item type="drawable" name="rl">#00000000</item>
     <item type="drawable" name="rz">#a5000000</item>
@@ -47,6 +51,7 @@
     <item type="drawable" name="b1g">#fff7f7f7</item>
     <item type="drawable" name="b1l">#00000000</item>
     <item type="drawable" name="setting_line1">#ffc9c9c9</item>
+    <item type="drawable" name="gvj">#00000000</item>
     <item type="drawable" name="trans">@color/fm</item>
     <item type="drawable" name="b6y">@color/fz</item>
     <item type="drawable" name="b6z">#33000000</item>

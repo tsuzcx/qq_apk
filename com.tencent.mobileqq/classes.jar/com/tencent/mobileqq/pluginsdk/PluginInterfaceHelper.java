@@ -22,20 +22,22 @@ public class PluginInterfaceHelper
       QLog.i("plugin_tag", 2, "PluginInterfaceHelper.getPluginInterface");
     }
     PluginInterface localPluginInterface = sInterface;
-    if ((localPluginInterface == null) || (!localPluginInterface.isValid()))
+    if ((localPluginInterface != null) && (localPluginInterface.isValid()))
+    {
+      if (paramOnPluginInterfaceLoadedListener != null) {
+        paramOnPluginInterfaceLoadedListener.onPluginInterfaceLoaded(localPluginInterface);
+      }
+    }
+    else
     {
       sListener = new WeakReference(paramOnPluginInterfaceLoadedListener);
       PluginRemoteProcessor.get().process(paramContext, sSc, 0);
     }
-    while (paramOnPluginInterfaceLoadedListener == null) {
-      return;
-    }
-    paramOnPluginInterfaceLoadedListener.onPluginInterfaceLoaded(localPluginInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper
  * JD-Core Version:    0.7.0.1
  */

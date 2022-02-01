@@ -24,15 +24,15 @@ public abstract class g
   public void setCurrentPlaySecond(int paramInt)
   {
     this.mPosition = paramInt;
-    this.qTG.setText(ol(paramInt / 60) + ":" + ol(paramInt % 60));
-    Jy(Jx(paramInt));
+    this.sHq.setText(Bf(paramInt / 60) + ":" + Bf(paramInt % 60));
+    ati(ath(paramInt));
   }
   
   public abstract void show();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.g
  * JD-Core Version:    0.7.0.1
  */

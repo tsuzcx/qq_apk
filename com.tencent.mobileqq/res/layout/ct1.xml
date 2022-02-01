@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/quc" android:background="@drawable/evp" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_centerInParent="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/que" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="7.0dip" />
+    <TextView android:textSize="13.0sp" android:textColor="#fffadf38" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/qud" android:layout_width="wrap_content" android:layout_height="24.0dip" android:singleLine="true" />
+</LinearLayout>

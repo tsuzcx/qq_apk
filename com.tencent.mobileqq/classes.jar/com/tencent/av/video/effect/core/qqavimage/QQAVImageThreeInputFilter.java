@@ -66,8 +66,13 @@ public class QQAVImageThreeInputFilter
     this.filterTextureCoordinateAttribute3 = GLES20.glGetAttribLocation(getProgram(), "inputTextureCoordinate3");
     this.filterInputTextureUniform3 = GLES20.glGetUniformLocation(getProgram(), "inputImageTexture3");
     GLES20.glEnableVertexAttribArray(this.filterTextureCoordinateAttribute3);
-    if ((this.mBitmap2 != null) && (this.mBitmap3 != null)) {
-      setBitmap(this.mBitmap2, this.mBitmap3);
+    Bitmap localBitmap1 = this.mBitmap2;
+    if (localBitmap1 != null)
+    {
+      Bitmap localBitmap2 = this.mBitmap3;
+      if (localBitmap2 != null) {
+        setBitmap(localBitmap1, localBitmap2);
+      }
     }
   }
   
@@ -91,7 +96,7 @@ public class QQAVImageThreeInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageThreeInputFilter
  * JD-Core Version:    0.7.0.1
  */

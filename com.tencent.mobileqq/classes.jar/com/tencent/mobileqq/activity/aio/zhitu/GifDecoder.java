@@ -1,16 +1,18 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahbc;
 import android.graphics.Bitmap;
 
 public class GifDecoder
 {
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[0];
+  private int a = 0;
+  private int b = 0;
+  private Bitmap[] c = new Bitmap[0];
+  private int[] d = new int[0];
+  private boolean e = false;
   
   private native boolean nativeBitmapIteratorHasNext(long paramLong);
   
-  private native ahbc nativeBitmapIteratornext(long paramLong1, long paramLong2);
+  private native GifImage nativeBitmapIteratornext(long paramLong1, long paramLong2);
   
   private native void nativeClose(long paramLong);
   

@@ -8,8 +8,8 @@ import android.text.Layout;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import bamd;
-import bamp;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -17,11 +17,11 @@ import java.lang.reflect.Field;
 public class LimitTextView
   extends AnimationTextView
 {
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private Field jdField_a_of_type_JavaLangReflectField;
-  private boolean jdField_a_of_type_Boolean = true;
+  private Field a;
   private Field b;
   private Field c;
+  private boolean d = true;
+  private CharSequence e = null;
   
   public LimitTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,48 +37,57 @@ public class LimitTextView
   {
     try
     {
-      this.jdField_a_of_type_JavaLangReflectField = TextView.class.getDeclaredField("mMaxMode");
+      this.a = TextView.class.getDeclaredField("mMaxMode");
       this.b = TextView.class.getDeclaredField("mMaximum");
       this.c = TextView.class.getDeclaredField("LINES");
-      this.jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+      this.a.setAccessible(true);
       this.b.setAccessible(true);
       this.c.setAccessible(true);
       return;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      this.jdField_a_of_type_Boolean = false;
+      label58:
+      break label58;
     }
+    this.d = false;
   }
   
   @TargetApi(16)
   public int getMaxLines()
   {
-    int i = -1;
     if (Build.VERSION.SDK_INT >= 16) {
-      i = super.getMaxLines();
+      return super.getMaxLines();
     }
-    do
-    {
-      return i;
-      if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_JavaLangReflectField == null) || (this.b == null) || (this.c == null))) {
-        a();
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    try
-    {
-      int j = this.jdField_a_of_type_JavaLangReflectField.getInt(this);
-      i = this.b.getInt(this);
-      int k = this.c.getInt(this);
-      if (j == k) {}
-      for (;;)
-      {
-        return i;
-        i = -1;
-      }
+    if ((this.d) && ((this.a == null) || (this.b == null) || (this.c == null))) {
+      a();
+    }
+    boolean bool = this.d;
+    int i = -1;
+    if (!bool) {
       return -1;
     }
+    try
+    {
+      int k = this.a.getInt(this);
+      int j = this.b.getInt(this);
+      int m = this.c.getInt(this);
+      if (k == m) {
+        i = j;
+      }
+      return i;
+    }
     catch (IllegalAccessException localIllegalAccessException) {}
+    return -1;
+  }
+  
+  public CharSequence getOriginalText()
+  {
+    CharSequence localCharSequence = this.e;
+    if (localCharSequence != null) {
+      return localCharSequence;
+    }
+    return super.getText();
   }
   
   @SuppressLint({"NewApi"})
@@ -86,49 +95,54 @@ public class LimitTextView
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getMaxLines();
-    Object localObject;
-    String str;
     if ((paramInt1 > 0) && (super.getLineCount() > paramInt1))
     {
-      paramInt1 = super.getLayout().getLineVisibleEnd(paramInt1 - 1);
-      this.jdField_a_of_type_JavaLangCharSequence = getText();
-      localObject = this.jdField_a_of_type_JavaLangCharSequence.toString();
-      paramInt2 = ((String)localObject).codePointAt(paramInt1 - 2);
-      paramInt3 = ((String)localObject).codePointAt(paramInt1 - 1);
-      if (((paramInt2 != 20) || (paramInt3 < 0) || (paramInt3 >= bamd.a)) && (paramInt2 <= 65535)) {
-        break label164;
-      }
-      str = this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt1 - 2) + "…";
-      localObject = str;
-      if (QLog.isColorLevel())
+      paramInt3 = super.getLayout().getLineVisibleEnd(paramInt1 - 1);
+      this.e = getText();
+      Object localObject = this.e.toString();
+      paramInt1 = paramInt3 - 2;
+      paramInt2 = ((String)localObject).codePointAt(paramInt1);
+      paramInt3 -= 1;
+      paramInt4 = ((String)localObject).codePointAt(paramInt3);
+      String str;
+      if (((paramInt2 == 20) && (paramInt4 >= 0) && (paramInt4 < EmotcationConstants.VALID_SYS_EMOTCATION_COUNT)) || (paramInt2 > 65535))
       {
-        QLog.e("QQText", 2, "截取的是系统表情或者emoji表情------------");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.e.subSequence(0, paramInt1));
+        ((StringBuilder)localObject).append("…");
+        str = ((StringBuilder)localObject).toString();
         localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("QQText", 2, "截取的是系统表情或者emoji表情------------");
+          localObject = str;
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.e.subSequence(0, paramInt3));
+        ((StringBuilder)localObject).append("…");
+        str = ((StringBuilder)localObject).toString();
+        localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("QQText", 2, "截取正常文本------------");
+          localObject = str;
+        }
+      }
       setText((CharSequence)localObject);
-      return;
-      label164:
-      str = this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt1 - 1) + "…";
-      localObject = str;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("QQText", 2, "截取正常文本------------");
-        localObject = str;
-      }
     }
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    super.setText(new bamp(paramCharSequence, 13, 32, 1), TextView.BufferType.SPANNABLE);
+    super.setText(new QQText(paramCharSequence, 13, 32, 1), TextView.BufferType.SPANNABLE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.LimitTextView
  * JD-Core Version:    0.7.0.1
  */

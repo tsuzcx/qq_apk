@@ -192,29 +192,44 @@ public final class ConsoleKt
   @Nullable
   public static final String readLine(@NotNull InputStream paramInputStream, @NotNull CharsetDecoder paramCharsetDecoder)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramInputStream, "inputStream");
     Intrinsics.checkParameterIsNotNull(paramCharsetDecoder, "decoder");
-    if (paramCharsetDecoder.maxCharsPerByte() <= 1) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException("Encodings with multiple chars per byte are not supported".toString()));
+    float f1 = paramCharsetDecoder.maxCharsPerByte();
+    float f2 = 1;
+    int j = 0;
+    int i;
+    if (f1 <= f2) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(32);
-    CharBuffer localCharBuffer = CharBuffer.allocate(4);
-    StringBuilder localStringBuilder = new StringBuilder();
-    int k = paramInputStream.read();
-    i = k;
-    if (k == -1) {
-      return null;
-    }
-    localByteBuffer.put((byte)i);
-    Intrinsics.checkExpressionValueIsNotNull(localByteBuffer, "byteBuffer");
-    Intrinsics.checkExpressionValueIsNotNull(localCharBuffer, "charBuffer");
-    if (tryDecode(paramCharsetDecoder, localByteBuffer, localCharBuffer, false)) {
-      if (!endsWithLineSeparator(localCharBuffer)) {}
-    }
-    for (;;)
+    if (i != 0)
     {
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(32);
+      CharBuffer localCharBuffer = CharBuffer.allocate(4);
+      StringBuilder localStringBuilder = new StringBuilder();
+      int k = paramInputStream.read();
+      i = k;
+      if (k == -1) {
+        return null;
+      }
+      do
+      {
+        localByteBuffer.put((byte)i);
+        Intrinsics.checkExpressionValueIsNotNull(localByteBuffer, "byteBuffer");
+        Intrinsics.checkExpressionValueIsNotNull(localCharBuffer, "charBuffer");
+        if (tryDecode(paramCharsetDecoder, localByteBuffer, localCharBuffer, false))
+        {
+          if (endsWithLineSeparator(localCharBuffer)) {
+            break;
+          }
+          if (localCharBuffer.remaining() < 2) {
+            offloadPrefixTo(localCharBuffer, localStringBuilder);
+          }
+        }
+        k = paramInputStream.read();
+        i = k;
+      } while (k != -1);
       tryDecode(paramCharsetDecoder, localByteBuffer, localCharBuffer, true);
       paramCharsetDecoder.reset();
       k = localCharBuffer.position();
@@ -241,16 +256,13 @@ public final class ConsoleKt
         localStringBuilder.append(localCharBuffer.get());
         j += 1;
       }
-      if (localCharBuffer.remaining() < 2) {
-        offloadPrefixTo(localCharBuffer, localStringBuilder);
-      }
-      k = paramInputStream.read();
-      i = k;
-      if (k != -1) {
-        break;
-      }
+      return localStringBuilder.toString();
     }
-    return localStringBuilder.toString();
+    paramInputStream = (Throwable)new IllegalArgumentException("Encodings with multiple chars per byte are not supported".toString());
+    for (;;)
+    {
+      throw paramInputStream;
+    }
   }
   
   private static final boolean tryDecode(@NotNull CharsetDecoder paramCharsetDecoder, ByteBuffer paramByteBuffer, CharBuffer paramCharBuffer, boolean paramBoolean)
@@ -261,8 +273,12 @@ public final class ConsoleKt
     if (paramCharsetDecoder.isError()) {
       paramCharsetDecoder.throwException();
     }
-    if (paramCharBuffer.position() > i) {}
-    for (paramBoolean = true; paramBoolean; paramBoolean = false)
+    if (paramCharBuffer.position() > i) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    if (paramBoolean)
     {
       paramByteBuffer.clear();
       return paramBoolean;
@@ -273,7 +289,7 @@ public final class ConsoleKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.ConsoleKt
  * JD-Core Version:    0.7.0.1
  */

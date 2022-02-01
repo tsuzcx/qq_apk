@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h70" android:background="#fff8f9fa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <include android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/j1w" layout="@layout/bct" />
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:background="#fff8f9fa" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:src="@drawable/etn" android:contentDescription="@null" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/f5" android:gravity="center_horizontal" android:id="@id/ctf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/g9x" />
+            <Button android:textSize="@dimen/i9" android:textColor="#ff000000" android:id="@id/cte" android:background="@drawable/qvip_pay_common_btn_white" android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginLeft="77.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="77.0dip" android:minHeight="@dimen/i1" android:text="@string/bhz" style="@android:style/Widget.Button" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</RelativeLayout>

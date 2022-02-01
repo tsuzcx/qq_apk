@@ -1,293 +1,265 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import alto;
-import amnz;
-import auud;
-import auzt;
-import auzu;
-import auzv;
-import awge;
-import bdeu;
-import bdgc;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.friend.status.OnlineStatusUtils;
+import com.tencent.mobileqq.nearby.api.IHotChatUtil;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.ContactUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
-import ndv;
 
-public class WerewolvesDataManager$2
+class WerewolvesDataManager$2
   implements Runnable
 {
-  public WerewolvesDataManager$2(auzt paramauzt, String paramString1, String paramString2, ArrayList paramArrayList, auzu paramauzu) {}
+  WerewolvesDataManager$2(WerewolvesDataManager paramWerewolvesDataManager, String paramString1, String paramString2, ArrayList paramArrayList, WerewolvesDataManager.GetInviteUserCallback paramGetInviteUserCallback) {}
   
   public void run()
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     Random localRandom = new Random(System.currentTimeMillis());
-    Object localObject1 = (TroopManager)this.this$0.a.getManager(52);
-    Object localObject2 = ((TroopManager)localObject1).a();
-    ((List)localObject2).size();
+    Object localObject2 = (TroopManager)this.this$0.a.getManager(QQManagerFactory.TROOP_MANAGER);
+    Object localObject1 = ((TroopManager)localObject2).h();
+    ((List)localObject1).size();
     Object localObject3 = this.this$0.b();
     int i = 0;
-    while ((i < ((List)localObject3).size()) && (localArrayList2.size() < 8))
+    if ((i < ((List)localObject3).size()) && (localArrayList2.size() < 8))
     {
       localObject4 = (RecentInviteUser)((List)localObject3).get(i);
-      localObject5 = new auzv(this.this$0);
-      if (((TroopManager)localObject1).b(((RecentInviteUser)localObject4).uin) == null)
+      localObject5 = new InviteUser();
+      if (((TroopManager)localObject2).f(((RecentInviteUser)localObject4).uin) == null) {}
+      for (;;)
       {
         i += 1;
-      }
-      else
-      {
-        ((auzv)localObject5).jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject4).uin;
-        ((auzv)localObject5).jdField_a_of_type_Int = ((RecentInviteUser)localObject4).uinType;
-        ((auzv)localObject5).b = bdgc.a(this.this$0.a, ((auzv)localObject5).jdField_a_of_type_JavaLangString, false);
-        ((auzv)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((auzv)localObject5).jdField_a_of_type_JavaLangString, ((auzv)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if ((!localArrayList2.contains(localObject5)) && (!((auzv)localObject5).jdField_a_of_type_JavaLangString.equals(this.b))) {
+        break;
+        ((InviteUser)localObject5).a = ((RecentInviteUser)localObject4).uin;
+        ((InviteUser)localObject5).c = ((RecentInviteUser)localObject4).uinType;
+        ((InviteUser)localObject5).b = ContactUtils.a(this.this$0.a, ((InviteUser)localObject5).a, false);
+        ((InviteUser)localObject5).d = this.this$0.b(((InviteUser)localObject5).a, ((InviteUser)localObject5).c, this.a);
+        if ((!localArrayList2.contains(localObject5)) && (!((InviteUser)localObject5).a.equals(this.b))) {
           localArrayList2.add(localObject5);
         }
-        i += 1;
       }
     }
-    localObject1 = this.this$0.a.a().a().a(true);
+    localObject2 = this.this$0.a.getProxyManager().g().a(true);
     i = 0;
-    while ((localArrayList2.size() < 8) && (i < ((List)localObject1).size()))
+    while ((localArrayList2.size() < 8) && (i < ((List)localObject2).size()))
     {
-      localObject3 = (RecentUser)((List)localObject1).get(i);
-      if ((((RecentUser)localObject3).getType() == 1) && (!auud.a(this.this$0.a, (RecentUser)localObject3)) && (!bdeu.a(((RecentUser)localObject3).uin)) && (((RecentUser)localObject3).lFlag != 16L))
+      localObject3 = (RecentUser)((List)localObject2).get(i);
+      if ((((RecentUser)localObject3).getType() == 1) && (!((IHotChatUtil)QRoute.api(IHotChatUtil.class)).checkIsHCRecentUser(this.this$0.a, (RecentUser)localObject3)) && (!Utils.b(((RecentUser)localObject3).uin)) && (((RecentUser)localObject3).lFlag != 16L))
       {
-        localObject4 = new auzv(this.this$0);
-        ((auzv)localObject4).jdField_a_of_type_JavaLangString = ((RecentUser)localObject3).uin;
-        ((auzv)localObject4).jdField_a_of_type_Int = ((RecentUser)localObject3).getType();
-        ((auzv)localObject4).b = bdgc.a(this.this$0.a, ((auzv)localObject4).jdField_a_of_type_JavaLangString, false);
-        ((auzv)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((auzv)localObject4).jdField_a_of_type_JavaLangString, ((auzv)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if ((!localArrayList2.contains(localObject4)) && (!((auzv)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
+        localObject4 = new InviteUser();
+        ((InviteUser)localObject4).a = ((RecentUser)localObject3).uin;
+        ((InviteUser)localObject4).c = ((RecentUser)localObject3).getType();
+        ((InviteUser)localObject4).b = ContactUtils.a(this.this$0.a, ((InviteUser)localObject4).a, false);
+        ((InviteUser)localObject4).d = this.this$0.b(((InviteUser)localObject4).a, ((InviteUser)localObject4).c, this.a);
+        if ((!localArrayList2.contains(localObject4)) && (!((InviteUser)localObject4).a.equals(this.b))) {
           localArrayList2.add(localObject4);
         }
       }
       i += 1;
     }
-    if (((List)localObject2).size() > 0)
+    if (((List)localObject1).size() > 0)
     {
       i = 0;
       while ((localArrayList2.size() < 8) && (i < 100))
       {
-        localObject3 = (awge)((List)localObject2).get(localRandom.nextInt(((List)localObject2).size()));
+        localObject3 = (Entity)((List)localObject1).get(localRandom.nextInt(((List)localObject1).size()));
         if ((localObject3 instanceof TroopInfo))
         {
           localObject3 = (TroopInfo)localObject3;
-          localObject4 = new auzv(this.this$0);
-          ((auzv)localObject4).jdField_a_of_type_JavaLangString = ((TroopInfo)localObject3).troopuin;
-          ((auzv)localObject4).jdField_a_of_type_Int = 1;
-          ((auzv)localObject4).b = ((TroopInfo)localObject3).getTroopName();
-          ((auzv)localObject4).jdField_a_of_type_Boolean = this.this$0.a(((auzv)localObject4).jdField_a_of_type_JavaLangString, ((auzv)localObject4).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if ((!localArrayList2.contains(localObject4)) && (!((auzv)localObject4).jdField_a_of_type_JavaLangString.equals(this.b))) {
+          localObject4 = new InviteUser();
+          ((InviteUser)localObject4).a = ((TroopInfo)localObject3).troopuin;
+          ((InviteUser)localObject4).c = 1;
+          ((InviteUser)localObject4).b = ((TroopInfo)localObject3).getTroopDisplayName();
+          ((InviteUser)localObject4).d = this.this$0.b(((InviteUser)localObject4).a, ((InviteUser)localObject4).c, this.a);
+          if ((!localArrayList2.contains(localObject4)) && (!((InviteUser)localObject4).a.equals(this.b))) {
             localArrayList2.add(localObject4);
           }
         }
         i += 1;
       }
     }
-    localObject2 = this.this$0.a.getCurrentAccountUin();
-    localObject3 = new ArrayList();
-    Object localObject5 = (alto)this.this$0.a.getManager(51);
-    Object localObject4 = ((alto)localObject5).d();
+    localObject3 = this.this$0.a.getCurrentAccountUin();
+    Object localObject4 = new ArrayList();
+    FriendsManager localFriendsManager = (FriendsManager)this.this$0.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject5 = localFriendsManager.j();
     int j;
-    Object localObject7;
-    if (localObject4 == null)
-    {
+    if (localObject5 == null) {
       j = 0;
-      if ((localObject4 != null) && (((List)localObject4).size() > 0)) {
-        i = 0;
-      }
+    } else {
+      j = ((List)localObject5).size();
     }
-    else
+    Object localObject6;
+    if ((localObject5 != null) && (((List)localObject5).size() > 0))
     {
-      for (;;)
+      i = 0;
+      while ((((List)localObject4).size() < 8) && (i < 100))
       {
-        if ((((List)localObject3).size() >= 8) || (i >= 100)) {
-          break label951;
-        }
-        localObject6 = (awge)((List)localObject4).get(localRandom.nextInt(((List)localObject4).size()));
-        if ((localObject6 instanceof Friends))
+        localObject1 = (Entity)((List)localObject5).get(localRandom.nextInt(((List)localObject5).size()));
+        if ((localObject1 instanceof Friends))
         {
-          localObject6 = (Friends)localObject6;
-          if (((String)localObject2).equals(((Friends)localObject6).uin))
+          localObject1 = (Friends)localObject1;
+          if (((String)localObject3).equals(((Friends)localObject1).uin))
           {
             i += 1;
             continue;
-            j = ((List)localObject4).size();
-            break;
           }
-          int k = bdgc.a(((Friends)localObject6).detalStatusFlag, ((Friends)localObject6).iTermType);
+          int k = OnlineStatusUtils.a(((Friends)localObject1).detalStatusFlag, ((Friends)localObject1).iTermType);
           if ((k != 4) && (k != 3))
           {
             i += 1;
             continue;
           }
-          localObject7 = new auzv(this.this$0);
-          ((auzv)localObject7).jdField_a_of_type_JavaLangString = ((Friends)localObject6).uin;
-          ((auzv)localObject7).jdField_a_of_type_Int = 0;
-          ((auzv)localObject7).b = bdgc.i(this.this$0.a, ((auzv)localObject7).jdField_a_of_type_JavaLangString);
-          ((auzv)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((auzv)localObject7).jdField_a_of_type_JavaLangString, ((auzv)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if (!((List)localObject3).contains(localObject7)) {
-            ((List)localObject3).add(localObject7);
+          localObject6 = new InviteUser();
+          ((InviteUser)localObject6).a = ((Friends)localObject1).uin;
+          ((InviteUser)localObject6).c = 0;
+          ((InviteUser)localObject6).b = ContactUtils.c(this.this$0.a, ((InviteUser)localObject6).a);
+          ((InviteUser)localObject6).d = this.this$0.b(((InviteUser)localObject6).a, ((InviteUser)localObject6).c, this.a);
+          if (!((List)localObject4).contains(localObject6)) {
+            ((List)localObject4).add(localObject6);
           }
         }
         i += 1;
       }
     }
-    label951:
-    Object localObject6 = this.this$0.a();
+    localObject1 = this.this$0.a();
     i = 0;
-    while ((((List)localObject3).size() < 8) && (i < ((List)localObject6).size()))
+    while ((((List)localObject4).size() < 8) && (i < ((List)localObject1).size()))
     {
-      localObject7 = (RecentInviteUser)((List)localObject6).get(i);
-      if (((String)localObject2).equals(((RecentInviteUser)localObject7).uin))
+      localObject6 = (RecentInviteUser)((List)localObject1).get(i);
+      if (((String)localObject3).equals(((RecentInviteUser)localObject6).uin)) {}
+      while ((j < 1000) && (!localFriendsManager.n(((RecentInviteUser)localObject6).uin)))
       {
         i += 1;
+        break;
       }
-      else if ((j < 1000) && (!((alto)localObject5).b(((RecentInviteUser)localObject7).uin)))
-      {
-        i += 1;
+      InviteUser localInviteUser = new InviteUser();
+      localInviteUser.a = ((RecentInviteUser)localObject6).uin;
+      localInviteUser.c = ((RecentInviteUser)localObject6).uinType;
+      localInviteUser.b = ContactUtils.c(this.this$0.a, localInviteUser.a);
+      localInviteUser.d = this.this$0.b(localInviteUser.a, localInviteUser.c, this.a);
+      if (!((List)localObject4).contains(localInviteUser)) {
+        ((List)localObject4).add(localInviteUser);
       }
-      else
-      {
-        auzv localauzv = new auzv(this.this$0);
-        localauzv.jdField_a_of_type_JavaLangString = ((RecentInviteUser)localObject7).uin;
-        localauzv.jdField_a_of_type_Int = ((RecentInviteUser)localObject7).uinType;
-        localauzv.b = bdgc.i(this.this$0.a, localauzv.jdField_a_of_type_JavaLangString);
-        localauzv.jdField_a_of_type_Boolean = this.this$0.a(localauzv.jdField_a_of_type_JavaLangString, localauzv.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        if (!((List)localObject3).contains(localauzv)) {
-          ((List)localObject3).add(localauzv);
-        }
-        i += 1;
-      }
+      i += 1;
     }
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    localObject1 = this.c;
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
     {
       i = 0;
-      while ((((List)localObject3).size() < 8) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
+      while ((((List)localObject4).size() < 8) && (i < this.c.size()))
       {
-        localObject6 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((((String)localObject2).equals(localObject6)) || (!((alto)localObject5).b((String)localObject6)))
+        localObject1 = (String)this.c.get(i);
+        if ((!((String)localObject3).equals(localObject1)) && (localFriendsManager.n((String)localObject1)))
         {
-          i += 1;
-        }
-        else
-        {
-          localObject7 = new auzv(this.this$0);
-          ((auzv)localObject7).jdField_a_of_type_JavaLangString = ((String)localObject6);
-          ((auzv)localObject7).jdField_a_of_type_Int = 0;
-          ((auzv)localObject7).b = bdgc.i(this.this$0.a, ((auzv)localObject7).jdField_a_of_type_JavaLangString);
-          ((auzv)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((auzv)localObject7).jdField_a_of_type_JavaLangString, ((auzv)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if (!((List)localObject3).contains(localObject7)) {
-            ((List)localObject3).add(localObject7);
+          localObject6 = new InviteUser();
+          ((InviteUser)localObject6).a = ((String)localObject1);
+          ((InviteUser)localObject6).c = 0;
+          ((InviteUser)localObject6).b = ContactUtils.c(this.this$0.a, ((InviteUser)localObject6).a);
+          ((InviteUser)localObject6).d = this.this$0.b(((InviteUser)localObject6).a, ((InviteUser)localObject6).c, this.a);
+          if (!((List)localObject4).contains(localObject6)) {
+            ((List)localObject4).add(localObject6);
           }
-          i += 1;
         }
+        i += 1;
       }
     }
     i = 0;
-    while ((((List)localObject3).size() < 8) && (i < ((List)localObject1).size()))
+    if ((((List)localObject4).size() < 8) && (i < ((List)localObject2).size()))
     {
-      localObject6 = (RecentUser)((List)localObject1).get(i);
-      if (((String)localObject2).equals(((RecentUser)localObject6).uin))
+      localObject1 = (RecentUser)((List)localObject2).get(i);
+      if (((String)localObject3).equals(((RecentUser)localObject1).uin)) {}
+      for (;;)
       {
         i += 1;
-      }
-      else
-      {
-        if ((((RecentUser)localObject6).getType() == 0) && (!bdeu.a(((RecentUser)localObject6).uin)) && (((RecentUser)localObject6).lFlag != 16L) && (!ndv.b(this.this$0.a, ((RecentUser)localObject6).uin, ((RecentUser)localObject6).getType())))
+        break;
+        if ((((RecentUser)localObject1).getType() == 0) && (!Utils.b(((RecentUser)localObject1).uin)) && (((RecentUser)localObject1).lFlag != 16L) && (!CrmUtils.a(this.this$0.a, ((RecentUser)localObject1).uin, ((RecentUser)localObject1).getType())))
         {
-          localObject7 = new auzv(this.this$0);
-          ((auzv)localObject7).jdField_a_of_type_JavaLangString = ((RecentUser)localObject6).uin;
-          ((auzv)localObject7).jdField_a_of_type_Int = ((RecentUser)localObject6).getType();
-          ((auzv)localObject7).b = bdgc.i(this.this$0.a, ((auzv)localObject7).jdField_a_of_type_JavaLangString);
-          ((auzv)localObject7).jdField_a_of_type_Boolean = this.this$0.a(((auzv)localObject7).jdField_a_of_type_JavaLangString, ((auzv)localObject7).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if ((!((List)localObject3).contains(localObject7)) && (((alto)localObject5).b(((RecentUser)localObject6).uin))) {
-            ((List)localObject3).add(localObject7);
+          localObject6 = new InviteUser();
+          ((InviteUser)localObject6).a = ((RecentUser)localObject1).uin;
+          ((InviteUser)localObject6).c = ((RecentUser)localObject1).getType();
+          ((InviteUser)localObject6).b = ContactUtils.c(this.this$0.a, ((InviteUser)localObject6).a);
+          ((InviteUser)localObject6).d = this.this$0.b(((InviteUser)localObject6).a, ((InviteUser)localObject6).c, this.a);
+          if ((!((List)localObject4).contains(localObject6)) && (localFriendsManager.n(((RecentUser)localObject1).uin))) {
+            ((List)localObject4).add(localObject6);
           }
         }
-        i += 1;
       }
     }
-    if ((localObject4 != null) && (((List)localObject4).size() > 0))
+    if ((localObject5 != null) && (((List)localObject5).size() > 0))
     {
       i = 0;
-      while ((((List)localObject3).size() < 8) && (i < 100))
+      while ((((List)localObject4).size() < 8) && (i < 100))
       {
-        localObject1 = (awge)((List)localObject4).get(localRandom.nextInt(((List)localObject4).size()));
+        localObject1 = (Entity)((List)localObject5).get(localRandom.nextInt(((List)localObject5).size()));
         if ((localObject1 instanceof Friends))
         {
           localObject1 = (Friends)localObject1;
-          if (((String)localObject2).equals(((Friends)localObject1).uin))
+          if (!((String)localObject3).equals(((Friends)localObject1).uin))
           {
-            i += 1;
-            continue;
-          }
-          localObject5 = new auzv(this.this$0);
-          ((auzv)localObject5).jdField_a_of_type_JavaLangString = ((Friends)localObject1).uin;
-          ((auzv)localObject5).jdField_a_of_type_Int = 0;
-          ((auzv)localObject5).b = bdgc.i(this.this$0.a, ((auzv)localObject5).jdField_a_of_type_JavaLangString);
-          ((auzv)localObject5).jdField_a_of_type_Boolean = this.this$0.a(((auzv)localObject5).jdField_a_of_type_JavaLangString, ((auzv)localObject5).jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-          if (!((List)localObject3).contains(localObject5)) {
-            ((List)localObject3).add(localObject5);
+            localObject2 = new InviteUser();
+            ((InviteUser)localObject2).a = ((Friends)localObject1).uin;
+            ((InviteUser)localObject2).c = 0;
+            ((InviteUser)localObject2).b = ContactUtils.c(this.this$0.a, ((InviteUser)localObject2).a);
+            ((InviteUser)localObject2).d = this.this$0.b(((InviteUser)localObject2).a, ((InviteUser)localObject2).c, this.a);
+            if (!((List)localObject4).contains(localObject2)) {
+              ((List)localObject4).add(localObject2);
+            }
           }
         }
         i += 1;
       }
     }
-    if ((localArrayList2.size() >= 4) && (((List)localObject3).size() >= 4))
+    if ((localArrayList2.size() >= 4) && (((List)localObject4).size() >= 4))
     {
       localArrayList1.addAll(localArrayList2.subList(0, 4));
-      localArrayList1.addAll(((List)localObject3).subList(0, 4));
+      localArrayList1.addAll(((List)localObject4).subList(0, 4));
     }
-    for (;;)
+    else if ((localArrayList2.size() < 4) && (((List)localObject4).size() < 4))
     {
-      this.jdField_a_of_type_Auzu.a(localArrayList1, true);
-      return;
-      if ((localArrayList2.size() < 4) && (((List)localObject3).size() < 4))
-      {
+      localArrayList1.addAll(localArrayList2);
+      localArrayList1.addAll((Collection)localObject4);
+    }
+    else if ((localArrayList2.size() >= 4) && (((List)localObject4).size() < 4))
+    {
+      i = 8 - ((List)localObject4).size();
+      if (localArrayList2.size() >= i) {
+        localArrayList1.addAll(localArrayList2.subList(0, i));
+      } else {
         localArrayList1.addAll(localArrayList2);
-        localArrayList1.addAll((Collection)localObject3);
       }
-      else
-      {
-        if ((localArrayList2.size() >= 4) && (((List)localObject3).size() < 4))
-        {
-          i = 8 - ((List)localObject3).size();
-          if (localArrayList2.size() >= i) {
-            localArrayList1.addAll(localArrayList2.subList(0, i));
-          }
-          for (;;)
-          {
-            localArrayList1.addAll((Collection)localObject3);
-            break;
-            localArrayList1.addAll(localArrayList2);
-          }
-        }
-        i = 8 - localArrayList2.size();
-        localArrayList1.addAll(localArrayList2);
-        if (((List)localObject3).size() >= i) {
-          localArrayList1.addAll(((List)localObject3).subList(0, i));
-        } else {
-          localArrayList1.addAll((Collection)localObject3);
-        }
+      localArrayList1.addAll((Collection)localObject4);
+    }
+    else
+    {
+      i = 8 - localArrayList2.size();
+      localArrayList1.addAll(localArrayList2);
+      if (((List)localObject4).size() >= i) {
+        localArrayList1.addAll(((List)localObject4).subList(0, i));
+      } else {
+        localArrayList1.addAll((Collection)localObject4);
       }
     }
+    this.d.a(localArrayList1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.2
  * JD-Core Version:    0.7.0.1
  */

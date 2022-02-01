@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:color="@color/az" />
+    <item android:color="@color/BW_0_Alpha_0_3_White_Mode" />
+</selector>

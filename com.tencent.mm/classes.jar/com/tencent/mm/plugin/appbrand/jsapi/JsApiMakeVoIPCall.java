@@ -2,12 +2,15 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.zu;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class JsApiMakeVoIPCall
-  extends a<com.tencent.mm.plugin.appbrand.service.c>
+  extends c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 154;
   public static final String NAME = "makeVoIPCall";
@@ -16,95 +19,95 @@ public final class JsApiMakeVoIPCall
     extends MainProcessTask
   {
     public static final Parcelable.Creator<StartVoIPCall> CREATOR;
-    private int hry;
-    private m hxs;
-    private c hyO;
-    private com.tencent.mm.sdk.b.c hyP;
+    private int ror;
+    private p rzh;
+    private f rzi;
+    private IListener rzj;
     public int status;
     
     static
     {
-      AppMethodBeat.i(130492);
-      CREATOR = new JsApiMakeVoIPCall.StartVoIPCall.2();
-      AppMethodBeat.o(130492);
+      AppMethodBeat.i(45550);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(45550);
     }
     
     public StartVoIPCall(Parcel paramParcel)
     {
-      AppMethodBeat.i(130486);
-      this.hyP = new JsApiMakeVoIPCall.StartVoIPCall.1(this);
-      f(paramParcel);
-      AppMethodBeat.o(130486);
+      AppMethodBeat.i(45544);
+      this.rzj = new IListener(com.tencent.mm.app.f.hfK) {};
+      h(paramParcel);
+      AppMethodBeat.o(45544);
     }
     
-    public StartVoIPCall(m paramm, c paramc, int paramInt)
+    public StartVoIPCall(p paramp, f paramf, int paramInt)
     {
-      AppMethodBeat.i(130485);
-      this.hyP = new JsApiMakeVoIPCall.StartVoIPCall.1(this);
-      this.hxs = paramm;
-      this.hyO = paramc;
-      this.hry = paramInt;
-      AppMethodBeat.o(130485);
+      AppMethodBeat.i(45543);
+      this.rzj = new IListener(com.tencent.mm.app.f.hfK) {};
+      this.rzh = paramp;
+      this.rzi = paramf;
+      this.ror = paramInt;
+      AppMethodBeat.o(45543);
     }
     
-    public final void ata()
+    public final void asn()
     {
-      AppMethodBeat.i(130487);
-      com.tencent.mm.sdk.b.a.ymk.c(this.hyP);
-      AppMethodBeat.o(130487);
+      AppMethodBeat.i(45545);
+      this.rzj.alive();
+      AppMethodBeat.o(45545);
     }
     
-    public final void atb()
+    public final void bQr()
     {
-      AppMethodBeat.i(130488);
-      aBk();
-      ab.i("MicroMsg.JsApiMakeVoIPCall", "makeVoIPCall = %d", new Object[] { Integer.valueOf(this.status) });
+      AppMethodBeat.i(45546);
+      cpx();
+      Log.i("MicroMsg.JsApiMakeVoIPCall", "makeVoIPCall = %d", new Object[] { Integer.valueOf(this.status) });
       if (this.status == 1)
       {
-        this.hyO.h(this.hry, this.hxs.j("cancel", null));
-        AppMethodBeat.o(130488);
+        this.rzi.callback(this.ror, this.rzh.ZP("cancel"));
+        AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 2)
       {
-        this.hyO.h(this.hry, this.hxs.j("ok", null));
-        AppMethodBeat.o(130488);
+        this.rzi.callback(this.ror, this.rzh.ZP("ok"));
+        AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 3)
       {
-        this.hyO.h(this.hry, this.hxs.j("fail:network error", null));
-        AppMethodBeat.o(130488);
+        this.rzi.callback(this.ror, this.rzh.ZP("fail:network error"));
+        AppMethodBeat.o(45546);
         return;
       }
       if (this.status == 4)
       {
-        this.hyO.h(this.hry, this.hxs.j("fail:param not match", null));
-        AppMethodBeat.o(130488);
+        this.rzi.callback(this.ror, this.rzh.ZP("fail:param not match"));
+        AppMethodBeat.o(45546);
         return;
       }
-      this.hyO.h(this.hry, this.hxs.j("fail:unknow", null));
-      AppMethodBeat.o(130488);
+      this.rzi.callback(this.ror, this.rzh.ZP("fail:unknow"));
+      AppMethodBeat.o(45546);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
-      AppMethodBeat.i(130489);
+      AppMethodBeat.i(45547);
       this.status = paramParcel.readInt();
-      AppMethodBeat.o(130489);
+      AppMethodBeat.o(45547);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(130490);
+      AppMethodBeat.i(45548);
       paramParcel.writeInt(this.status);
-      AppMethodBeat.o(130490);
+      AppMethodBeat.o(45548);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiMakeVoIPCall
  * JD-Core Version:    0.7.0.1
  */

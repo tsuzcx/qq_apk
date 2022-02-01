@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/br7" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="bottom|center" android:id="@id/ej5" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/ne" android:layout_marginTop="@dimen/ng" android:src="@color/a6i" />
-    <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/a5f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>
+    <ProgressBar android:layout_gravity="center" android:id="@id/g34" android:paddingTop="15.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/bz" android:gravity="center|left" android:id="@id/bz1" android:background="@color/ahb" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/ig" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/m9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

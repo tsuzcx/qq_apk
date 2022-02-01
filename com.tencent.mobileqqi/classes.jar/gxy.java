@@ -1,14 +1,28 @@
+import android.os.SystemClock;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.TimerTask;
 
 public class gxy
-  extends TimerTask
+  implements Runnable
 {
   public gxy(TroopFileTransferManager paramTroopFileTransferManager) {}
   
   public void run()
   {
-    this.a.e();
+    for (;;)
+    {
+      synchronized (this.a)
+      {
+        if (this.a.e == 0L) {
+          return;
+        }
+        if (SystemClock.uptimeMillis() > this.a.e + 10000L)
+        {
+          this.a.e = 0L;
+          this.a.a();
+          return;
+        }
+      }
+    }
   }
 }
 

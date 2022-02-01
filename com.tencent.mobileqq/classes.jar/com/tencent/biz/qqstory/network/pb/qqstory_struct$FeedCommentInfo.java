@@ -20,14 +20,15 @@ public final class qqstory_struct$FeedCommentInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "feed_id", "comment_list", "comment_total_num", "is_end", "next_cookie" }, new Object[] { localByteStringMicro1, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, FeedCommentInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "feed_id", "comment_list", "comment_total_num", "is_end", "next_cookie" }, new Object[] { localByteStringMicro1, null, localInteger, localInteger, localByteStringMicro2 }, FeedCommentInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo
  * JD-Core Version:    0.7.0.1
  */

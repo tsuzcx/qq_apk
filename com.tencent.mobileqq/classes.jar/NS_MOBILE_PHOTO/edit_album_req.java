@@ -14,7 +14,7 @@ public final class edit_album_req
   public Album album;
   public Map<Integer, String> busi_param;
   public long cancelIndividual;
-  public boolean isModifyBitmap;
+  public boolean isModifyBitmap = false;
   public String itemid = "";
   public String newCoverId = "";
   
@@ -48,14 +48,17 @@ public final class edit_album_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.album, 0);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 1);
+    Object localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.newCoverId != null) {
-      paramJceOutputStream.write(this.newCoverId, 2);
+    localObject = this.newCoverId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.itemid != null) {
-      paramJceOutputStream.write(this.itemid, 3);
+    localObject = this.itemid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.cancelIndividual, 4);
     paramJceOutputStream.write(this.isModifyBitmap, 5);
@@ -63,7 +66,7 @@ public final class edit_album_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.edit_album_req
  * JD-Core Version:    0.7.0.1
  */

@@ -26,6 +26,7 @@ public final class articlesummary$BusinessBarInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -33,12 +34,13 @@ public final class articlesummary$BusinessBarInfo
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 74, 80, 88 }, new String[] { "uint32_bar_id", "bytes_icon_url", "bytes_title", "uint32_jump_type", "bytes_jump_url", "bytes_ios_jump_bundle", "bytes_common_data", "bytes_jump_schema", "bytes_background_url", "uint64_channel_id", "uint64_topic_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, Long.valueOf(0L), Long.valueOf(0L) }, BusinessBarInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 74, 80, 88 }, new String[] { "uint32_bar_id", "bytes_icon_url", "bytes_title", "uint32_jump_type", "bytes_jump_url", "bytes_ios_jump_bundle", "bytes_common_data", "bytes_jump_schema", "bytes_background_url", "uint64_channel_id", "uint64_topic_id" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localLong, localLong }, BusinessBarInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.BusinessBarInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.qphone.base.util.QLog;
+import hex;
 import hey;
-import hez;
 
 public class ADView
   extends LinearLayout
@@ -23,7 +23,7 @@ public class ADView
   private float jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public WorkSpaceView a;
-  private hez jdField_a_of_type_Hez = new hez(this);
+  private hey jdField_a_of_type_Hey = new hey(this);
   private boolean jdField_a_of_type_Boolean = false;
   private int b = 2130837615;
   private int c = this.b;
@@ -163,7 +163,7 @@ public class ADView
       localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       localObject1 = new LinearLayout(getContext());
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = new WorkSpaceView(getContext());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new hey(this, (LinearLayout)localObject1));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new hex(this, (LinearLayout)localObject1));
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       Object localObject2 = new LinearLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setId(100000);
@@ -204,13 +204,13 @@ public class ADView
   
   public void b()
   {
-    this.jdField_a_of_type_Hez.removeMessages(0);
-    this.jdField_a_of_type_Hez.sendEmptyMessage(0);
+    this.jdField_a_of_type_Hey.removeMessages(0);
+    this.jdField_a_of_type_Hey.sendEmptyMessage(0);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Hez.sendEmptyMessage(1);
+    this.jdField_a_of_type_Hey.sendEmptyMessage(1);
   }
   
   public void setIsCloseADView(boolean paramBoolean)

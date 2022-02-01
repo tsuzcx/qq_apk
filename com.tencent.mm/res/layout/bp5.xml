@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/kpd" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center|left|top" android:id="@id/hv5" android:paddingTop="@dimen/cp" android:layout_width="@dimen/f9" android:layout_height="fill_parent" android:layout_marginRight="@dimen/ig" android:text="@string/bod" style="@style/nx" />
+    <LinearLayout android:orientation="vertical" android:id="@id/hv4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/a8f" android:showDividers="middle">
+        <include layout="@layout/bp8" />
+        <include layout="@layout/bp8" />
+        <include layout="@layout/bp8" />
+        <include layout="@layout/bp8" />
+        <include layout="@layout/bp8" />
+    </LinearLayout>
+</LinearLayout>

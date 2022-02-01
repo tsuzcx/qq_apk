@@ -26,17 +26,19 @@ public final class MqqLbsPack$LbsPackInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 48, 58, 160, 170, 178, 242 }, new String[] { "bytes_pid", "uint64_uin", "bytes_cft_pack_id", "uint32_status", "uint32_priority", "uint32_qa", "uin_grp_dis_info", "uint64_set_pack_poi", "bytes_name", "bytes_addr", "bytes_auth_key" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5 }, LbsPackInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 48, 58, 160, 170, 178, 242 }, new String[] { "bytes_pid", "uint64_uin", "bytes_cft_pack_id", "uint32_status", "uint32_priority", "uint32_qa", "uin_grp_dis_info", "uint64_set_pack_poi", "bytes_name", "bytes_addr", "bytes_auth_key" }, new Object[] { localByteStringMicro1, localLong, localByteStringMicro2, localInteger, localInteger, localInteger, null, localLong, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5 }, LbsPackInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.LbsPackInfo
  * JD-Core Version:    0.7.0.1
  */

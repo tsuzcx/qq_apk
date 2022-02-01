@@ -1,98 +1,42 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
+import android.content.Context;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONObject;
 
-public final class bj
+public class bj
+  extends bw<g>
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> laz;
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
-  private static void ai(Class<? extends com.tencent.luggage.d.a> paramClass)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(6391);
-    laz.add(paramClass);
-    AppMethodBeat.o(6391);
+    AppMethodBeat.i(296056);
+    int i = paramb.eiZ.eif.optInt("fontSize");
+    ((g)paramb.eiY).atq(i);
+    Log.i("MicroMsg.JsApiSetFrontSizeCallback", "doSetFontSizeCb, fontSize = ".concat(String.valueOf(i)));
+    paramb.a("", null);
+    AppMethodBeat.o(296056);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bjM()
+  public final int dgI()
   {
-    try
-    {
-      AppMethodBeat.i(6390);
-      laz = new LinkedList();
-      ai(ai.class);
-      ai(au.class);
-      ai(bc.class);
-      ai(am.class);
-      ai(ad.class);
-      ai(a.class);
-      ai(al.class);
-      ai(at.class);
-      ai(q.class);
-      ai(aq.class);
-      ai(v.class);
-      ai(ah.class);
-      ai(s.class);
-      ai(r.class);
-      ai(k.class);
-      ai(b.class);
-      ai(c.class);
-      ai(e.class);
-      ai(f.class);
-      ai(g.class);
-      ai(h.class);
-      ai(i.class);
-      ai(j.class);
-      ai(m.class);
-      ai(p.class);
-      ai(t.class);
-      ai(w.class);
-      ai(x.class);
-      ai(y.class);
-      ai(ab.class);
-      ai(ac.class);
-      ai(af.class);
-      ai(an.class);
-      ai(ar.class);
-      ai(av.class);
-      ai(aw.class);
-      ai(ay.class);
-      ai(az.class);
-      ai(ba.class);
-      ai(bb.class);
-      ai(bd.class);
-      ai(be.class);
-      ai(bg.class);
-      ai(bf.class);
-      ai(u.class);
-      ai(d.class);
-      ai(l.class);
-      ai(ae.class);
-      ai(ag.class);
-      ai(z.class);
-      ai(ap.class);
-      ai(ax.class);
-      ai(aa.class);
-      ai(as.class);
-      ai(n.class);
-      ai(aj.class);
-      ai(ak.class);
-      ai(ao.class);
-      ai(o.class);
-      LinkedList localLinkedList = laz;
-      AppMethodBeat.o(6390);
-      return localLinkedList;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return 0;
+  }
+  
+  public final String name()
+  {
+    return "setFontSizeCallback";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.bj
  * JD-Core Version:    0.7.0.1
  */

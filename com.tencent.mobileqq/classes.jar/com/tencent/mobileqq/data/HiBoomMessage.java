@@ -6,9 +6,9 @@ public class HiBoomMessage
   implements Serializable
 {
   private static final long serialVersionUID = 1L;
-  public int id;
-  public String text;
-  public int type;
+  public int id = 0;
+  public String text = null;
+  public int type = 0;
 }
 
 

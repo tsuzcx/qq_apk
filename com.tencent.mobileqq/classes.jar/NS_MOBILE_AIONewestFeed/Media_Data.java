@@ -10,9 +10,9 @@ public final class Media_Data
   extends JceStruct
 {
   static Map<String, String> cache_extendInfo = new HashMap();
-  public Map<String, String> extendInfo;
+  public Map<String, String> extendInfo = null;
   public String strImgUrl = "";
-  public int uType;
+  public int uType = 0;
   
   static
   {
@@ -37,18 +37,20 @@ public final class Media_Data
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strImgUrl != null) {
-      paramJceOutputStream.write(this.strImgUrl, 0);
+    Object localObject = this.strImgUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.uType, 1);
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 2);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.Media_Data
  * JD-Core Version:    0.7.0.1
  */

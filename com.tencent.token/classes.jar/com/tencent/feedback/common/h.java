@@ -9,23 +9,22 @@ import java.util.Iterator;
 
 public final class h
 {
-  private static h b = null;
+  private static h b;
   private static Context c;
   private boolean a = false;
   
   protected h()
   {
+    int i = 1;
+    this.a = true;
     String str = Build.TAGS;
     if ((str != null) && (str.contains("test-keys"))) {
       e.b("rqdp{  test-keys}", new Object[0]);
-    }
-    for (;;)
-    {
-      if ((i == 0) && (!b()) && (!c())) {
-        this.a = false;
-      }
-      return;
+    } else {
       i = 0;
+    }
+    if ((i == 0) && (!b()) && (!c())) {
+      this.a = false;
     }
   }
   
@@ -46,15 +45,14 @@ public final class h
   
   private static boolean b()
   {
-    boolean bool = false;
     try
     {
       if (new File("/system/app/Superuser.apk").exists())
       {
         e.b("rqdp{  super_apk}", new Object[0]);
-        bool = true;
+        return true;
       }
-      return bool;
+      return false;
     }
     catch (Exception localException) {}
     return false;

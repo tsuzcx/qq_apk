@@ -1,49 +1,95 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bf;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class i
-  extends bf
+  extends MAutoStorage<h>
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  private ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(62856);
-    c.a locala = new c.a();
-    locala.yrK = new Field[3];
-    locala.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "productID";
-    locala.yrM.put("productID", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" productID TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "productID";
-    locala.columns[1] = "content";
-    locala.yrM.put("content", "BLOB default '' ");
-    localStringBuilder.append(" content BLOB default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "lan";
-    locala.yrM.put("lan", "TEXT default '' ");
-    localStringBuilder.append(" lan TEXT default '' ");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(62856);
+    AppMethodBeat.i(105107);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(h.info, "EmojiSuggestDescInfo") };
+    AppMethodBeat.o(105107);
   }
   
-  public final c.a getDBInfo()
+  public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return info;
+    this(paramISQLiteDatabase, h.info, "EmojiSuggestDescInfo");
+  }
+  
+  private i(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
+  {
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+    this.db = paramISQLiteDatabase;
+  }
+  
+  public final boolean cc(ArrayList<ArrayList<String>> paramArrayList)
+  {
+    AppMethodBeat.i(105106);
+    if (paramArrayList.isEmpty())
+    {
+      Log.i("MicroMsg.emoji.EmojiDescMapStorage", "group list is null.");
+      AppMethodBeat.o(105106);
+      return false;
+    }
+    com.tencent.mm.storagebase.h localh;
+    long l;
+    if ((this.db instanceof com.tencent.mm.storagebase.h))
+    {
+      localh = (com.tencent.mm.storagebase.h)this.db;
+      l = localh.beginTransaction(Thread.currentThread().getId());
+    }
+    for (;;)
+    {
+      this.db.delete("EmojiSuggestDescInfo", "", null);
+      paramArrayList = paramArrayList.iterator();
+      int i = 0;
+      if (paramArrayList.hasNext())
+      {
+        Object localObject = (ArrayList)paramArrayList.next();
+        if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
+          break label219;
+        }
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          if (!Util.isNullOrNil(str))
+          {
+            Log.d("MicroMsg.emoji.EmojiDescMapStorage", "insert groupID%s, word:%s", new Object[] { String.valueOf(i), str });
+            insert(new h(String.valueOf(i), str));
+          }
+        }
+        i += 1;
+      }
+      label219:
+      for (;;)
+      {
+        break;
+        if (localh != null) {
+          localh.endTransaction(l);
+        }
+        AppMethodBeat.o(105106);
+        return false;
+      }
+      l = -1L;
+      localh = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.i
  * JD-Core Version:    0.7.0.1
  */

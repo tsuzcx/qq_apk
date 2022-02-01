@@ -1,73 +1,72 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.qq;
-import com.tencent.mm.protocal.protobuf.qr;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.yo;
+import com.tencent.mm.protocal.protobuf.yp;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
   extends a
 {
   private final String TAG;
-  private f callback;
-  public String jVh;
-  public qr kOM;
-  private b rr;
+  private com.tencent.mm.am.h callback;
+  private c rr;
+  public String vFa;
+  public yp wZZ;
   
   public h(String paramString)
   {
-    AppMethodBeat.i(41051);
+    AppMethodBeat.i(63911);
     this.TAG = "MicroMsg.NetSceneQrRewardSetPhotoWord";
-    b.a locala = new b.a();
-    locala.fsX = new qq();
-    locala.fsY = new qr();
+    c.a locala = new c.a();
+    locala.otE = new yo();
+    locala.otF = new yp();
     locala.funcId = 1649;
     locala.uri = "/cgi-bin/mmpay-bin/setrewardqrcodephotoword";
-    locala.reqCmdId = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((qq)this.rr.fsV.fta).jVh = paramString;
-    this.jVh = paramString;
+    this.rr = locala.bEF();
+    ((yo)c.b.b(this.rr.otB)).vFa = paramString;
+    this.vFa = paramString;
     if ((paramString.length() > 0) && (paramString.length() <= 3))
     {
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(724L, 0L, 1L, false);
-      AppMethodBeat.o(41051);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(724L, 0L, 1L, false);
+      AppMethodBeat.o(63911);
       return;
     }
     if (paramString.length() > 3) {
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(724L, 1L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(724L, 1L, 1L, false);
     }
-    AppMethodBeat.o(41051);
+    AppMethodBeat.o(63911);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
-    AppMethodBeat.i(41053);
-    ab.i("MicroMsg.NetSceneQrRewardSetPhotoWord", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.kOM = ((qr)((b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneQrRewardSetPhotoWord", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.kOM.cnK), this.kOM.kNv });
-    if ((!this.kOC) && (this.kOM.cnK != 0)) {
-      this.kOD = true;
+    AppMethodBeat.i(63913);
+    Log.i("MicroMsg.NetSceneQrRewardSetPhotoWord", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.wZZ = ((yp)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneQrRewardSetPhotoWord", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.wZZ.hAV), this.wZZ.wYI });
+    if ((!this.oaK) && (this.wZZ.hAV != 0)) {
+      this.wZR = true;
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    AppMethodBeat.o(41053);
+    AppMethodBeat.o(63913);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(41052);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(41052);
+    AppMethodBeat.i(63912);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(63912);
     return i;
   }
   
@@ -78,7 +77,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.a.h
  * JD-Core Version:    0.7.0.1
  */

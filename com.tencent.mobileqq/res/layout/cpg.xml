@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/bq3" android:paddingTop="@dimen/bq3" android:paddingRight="@dimen/bq3" android:paddingBottom="@dimen/bq3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_gravity="center" android:id="@id/c2a" android:layout_width="173.0dip" android:layout_height="205.0dip" android:src="@drawable/ige" android:scaleType="fitXY" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <ImageView android:id="@id/ohq" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/igh" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:layout_gravity="center_horizontal" android:id="@id/psq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂无数据，请刷新页面" />
+    </LinearLayout>
+</LinearLayout>

@@ -25,7 +25,8 @@ final class DiskLruCache$Entry
     this.lengths = new long[paramDiskLruCache.valueCount];
     this.cleanFiles = new File[paramDiskLruCache.valueCount];
     this.dirtyFiles = new File[paramDiskLruCache.valueCount];
-    paramString = new StringBuilder(paramString).append('.');
+    paramString = new StringBuilder(paramString);
+    paramString.append('.');
     int j = paramString.length();
     int i = 0;
     while (i < paramDiskLruCache.valueCount)
@@ -41,15 +42,18 @@ final class DiskLruCache$Entry
   
   private IOException invalidLengths(String[] paramArrayOfString)
   {
-    throw new IOException("unexpected journal line: " + Arrays.toString(paramArrayOfString));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unexpected journal line: ");
+    localStringBuilder.append(Arrays.toString(paramArrayOfString));
+    throw new IOException(localStringBuilder.toString());
   }
   
   void setLengths(String[] paramArrayOfString)
   {
-    if (paramArrayOfString.length != this.this$0.valueCount) {
-      throw invalidLengths(paramArrayOfString);
+    int i;
+    if (paramArrayOfString.length == this.this$0.valueCount) {
+      i = 0;
     }
-    int i = 0;
     try
     {
       while (i < paramArrayOfString.length)
@@ -61,52 +65,62 @@ final class DiskLruCache$Entry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      throw invalidLengths(paramArrayOfString);
+      label40:
+      break label40;
+    }
+    throw invalidLengths(paramArrayOfString);
+    paramArrayOfString = invalidLengths(paramArrayOfString);
+    for (;;)
+    {
+      throw paramArrayOfString;
     }
   }
   
   DiskLruCache.Snapshot snapshot()
   {
-    j = 0;
-    if (!Thread.holdsLock(this.this$0)) {
-      throw new AssertionError();
-    }
-    Source[] arrayOfSource = new Source[this.this$0.valueCount];
-    Object localObject = (long[])this.lengths.clone();
-    i = 0;
-    for (;;)
+    if (Thread.holdsLock(this.this$0))
     {
-      try
+      localObject1 = new Source[this.this$0.valueCount];
+      Object localObject2 = (long[])this.lengths.clone();
+      j = 0;
+      i = 0;
+      for (;;)
       {
-        if (i < this.this$0.valueCount)
+        try
         {
-          arrayOfSource[i] = this.this$0.fileSystem.source(this.cleanFiles[i]);
-          i += 1;
+          if (i < this.this$0.valueCount)
+          {
+            localObject1[i] = this.this$0.fileSystem.source(this.cleanFiles[i]);
+            i += 1;
+            continue;
+          }
+          localObject2 = new DiskLruCache.Snapshot(this.this$0, this.key, this.sequenceNumber, (Source[])localObject1, (long[])localObject2);
+          return localObject2;
+        }
+        catch (FileNotFoundException localFileNotFoundException)
+        {
+          try
+          {
+            this.this$0.removeEntry(this);
+            return null;
+            localObject1 = new AssertionError();
+            continue;
+            throw ((Throwable)localObject1);
+            continue;
+            localFileNotFoundException = localFileNotFoundException;
+            i = j;
+          }
+          catch (IOException localIOException)
+          {
+            continue;
+          }
+        }
+        if ((i >= this.this$0.valueCount) || (localObject1[i] == null)) {
           continue;
         }
-        localObject = new DiskLruCache.Snapshot(this.this$0, this.key, this.sequenceNumber, arrayOfSource, (long[])localObject);
-        return localObject;
+        Util.closeQuietly(localObject1[i]);
+        i += 1;
       }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        i = j;
-        continue;
-      }
-      if ((i >= this.this$0.valueCount) || (arrayOfSource[i] == null)) {
-        continue;
-      }
-      Util.closeQuietly(arrayOfSource[i]);
-      i += 1;
-    }
-    try
-    {
-      this.this$0.removeEntry(this);
-      label150:
-      return null;
-    }
-    catch (IOException localIOException)
-    {
-      break label150;
     }
   }
   
@@ -125,7 +139,7 @@ final class DiskLruCache$Entry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.cache.DiskLruCache.Entry
  * JD-Core Version:    0.7.0.1
  */

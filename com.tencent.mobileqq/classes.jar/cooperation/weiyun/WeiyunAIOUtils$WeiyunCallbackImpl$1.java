@@ -1,28 +1,28 @@
 package cooperation.weiyun;
 
-import bkjr;
-import bkjy;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.weiyun.api.IWeiyunSaveTipsHelper;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class WeiyunAIOUtils$WeiyunCallbackImpl$1
+class WeiyunAIOUtils$WeiyunCallbackImpl$1
   implements Runnable
 {
-  public WeiyunAIOUtils$WeiyunCallbackImpl$1(bkjr parambkjr) {}
+  WeiyunAIOUtils$WeiyunCallbackImpl$1(WeiyunAIOUtils.WeiyunCallbackImpl paramWeiyunCallbackImpl) {}
   
   public void run()
   {
     if (BaseActivity.sTopActivity != null)
     {
-      bkjy.a(bkjr.a(this.this$0), BaseActivity.sTopActivity, bkjr.a(this.this$0));
+      ((IWeiyunSaveTipsHelper)QRoute.api(IWeiyunSaveTipsHelper.class)).showTopTips(WeiyunAIOUtils.WeiyunCallbackImpl.a(this.this$0), BaseActivity.sTopActivity, WeiyunAIOUtils.WeiyunCallbackImpl.b(this.this$0));
       return;
     }
-    QQToast.a(bkjr.a(this.this$0), 2, 2131697816, 1).b(bkjr.a(this.this$0));
+    QQToast.makeText(WeiyunAIOUtils.WeiyunCallbackImpl.c(this.this$0), 2, 2131895162, 1).show(WeiyunAIOUtils.WeiyunCallbackImpl.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.1
  * JD-Core Version:    0.7.0.1
  */

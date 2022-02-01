@@ -4,67 +4,86 @@ import android.app.Activity;
 import android.os.Looper;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.R.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fts.a.a.c;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.a.e;
-import com.tencent.mm.ui.contact.a.h;
-import com.tencent.mm.ui.contact.a.i;
-import com.tencent.mm.ui.contact.a.j;
-import com.tencent.mm.ui.contact.m;
-import com.tencent.mm.ui.contact.o;
-import com.tencent.mm.ui.contact.p;
+import com.tencent.mm.ui.contact.a.f;
+import com.tencent.mm.ui.contact.q;
+import com.tencent.mm.ui.contact.r;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
-  extends p
+  extends r
 {
-  List<String> AyJ;
-  List<com.tencent.mm.plugin.fts.a.a.a> AyK;
-  List<a> AyL;
+  com.tencent.mm.plugin.fts.a.l MVp;
+  List<String> afMm;
+  List<c> afMn;
+  List<a> afMo;
   private int count;
-  HashSet<String> gpQ;
-  ak handler;
-  com.tencent.mm.plugin.fts.a.l pym;
+  MMHandler handler;
+  HashSet<String> pJQ;
   
-  public a(m paramm, List<String> paramList, int paramInt)
+  public a(com.tencent.mm.ui.contact.o paramo, List<String> paramList, int paramInt)
   {
-    super(paramm, null, true, true, paramInt);
-    AppMethodBeat.i(35025);
-    this.handler = new ak(Looper.getMainLooper());
-    this.pym = new a.1(this);
+    super(paramo, null, true, true, paramInt);
+    AppMethodBeat.i(39222);
+    this.handler = new MMHandler(Looper.getMainLooper());
+    this.MVp = new com.tencent.mm.plugin.fts.a.l()
+    {
+      public final void b(com.tencent.mm.plugin.fts.a.a.m paramAnonymousm)
+      {
+        AppMethodBeat.i(39220);
+        a.a locala = new a.a(a.this, (byte)0);
+        locala.query = paramAnonymousm.HpM.query;
+        locala.FWt = paramAnonymousm.FWt;
+        locala.HtF = paramAnonymousm.HtF;
+        if ((locala.HtF == null) || (locala.HtF.size() == 0))
+        {
+          paramAnonymousm = new com.tencent.mm.plugin.fts.a.a.o();
+          paramAnonymousm.Hsz = "no_result​";
+          locala.HtF = new ArrayList();
+          locala.HtF.add(paramAnonymousm);
+        }
+        a.a(a.this).add(locala);
+        a.b(a.this);
+        AppMethodBeat.o(39220);
+      }
+    };
     this.count = 0;
-    this.AyJ = paramList;
-    this.AyL = new ArrayList();
-    this.gpQ = new HashSet();
-    AppMethodBeat.o(35025);
+    this.afMm = paramList;
+    this.afMo = new ArrayList();
+    this.pJQ = new HashSet();
+    AppMethodBeat.o(39222);
   }
   
-  private boolean QT(int paramInt)
+  private boolean aEh(int paramInt)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(35030);
-    int j = paramInt - this.Adk.getContentLV().getHeaderViewsCount();
-    int i = this.AyL.size() - 1;
+    AppMethodBeat.i(39227);
+    int j = paramInt - this.afex.getContentLV().getHeaderViewsCount();
+    int i = this.afMo.size() - 1;
     boolean bool1 = bool2;
     a locala;
     if (i >= 0)
     {
-      locala = (a)this.AyL.get(i);
-      if (locala.mTA != j) {
+      locala = (a)this.afMo.get(i);
+      if (locala.Hul != j) {
         break label242;
       }
-      if (locala.mTD)
+      if (locala.vpw)
       {
-        paramInt = this.Adk.getContentLV().getSelectedItemPosition();
-        locala.mTD = false;
-        dOg();
-        this.Adk.getContentLV().setSelection(paramInt);
+        paramInt = this.afex.getContentLV().getSelectedItemPosition();
+        locala.vpw = false;
+        jDx();
+        this.afex.getContentLV().setSelection(paramInt);
         label111:
         notifyDataSetChanged();
         bool1 = true;
@@ -73,72 +92,72 @@ public final class a
     else
     {
       label118:
-      AppMethodBeat.o(35030);
+      AppMethodBeat.o(39227);
       return bool1;
     }
-    locala.mTD = true;
+    locala.vpw = true;
     i = 0;
     label134:
-    com.tencent.mm.plugin.fts.a.a.l locall;
-    if (i < locala.mSW.size())
+    com.tencent.mm.plugin.fts.a.a.o localo;
+    if (i < locala.HtF.size())
     {
-      locall = (com.tencent.mm.plugin.fts.a.a.l)locala.mSW.get(i);
-      if ((!locall.mRV.equals(locala.AyO)) || (i <= 2)) {}
+      localo = (com.tencent.mm.plugin.fts.a.a.o)locala.HtF.get(i);
+      if ((!localo.Hsz.equals(locala.afMr)) || (i <= 2)) {}
     }
     for (;;)
     {
-      if (locall != null)
+      if (localo != null)
       {
-        locala.mSW.remove(i);
-        locala.mSW.add(0, locall);
+        locala.HtF.remove(i);
+        locala.HtF.add(0, localo);
       }
-      dOg();
-      this.Adk.getContentLV().setSelection(paramInt);
+      jDx();
+      this.afex.getContentLV().setSelection(paramInt);
       break label111;
       i += 1;
       break label134;
       label242:
-      if (j == locala.mTy)
+      if (j == locala.Huj)
       {
         bool1 = true;
         break label118;
       }
-      if (paramInt > locala.mTy)
+      if (paramInt > locala.Huj)
       {
-        paramInt = locala.mTy;
-        locall = (com.tencent.mm.plugin.fts.a.a.l)locala.mSW.get(j - paramInt - 1);
-        if (!locall.mRV.equals("no_result​"))
+        paramInt = locala.Huj;
+        localo = (com.tencent.mm.plugin.fts.a.a.o)locala.HtF.get(j - paramInt - 1);
+        if (!localo.Hsz.equals("no_result​"))
         {
-          MMCreateChatroomUI localMMCreateChatroomUI = (MMCreateChatroomUI)this.Adk;
-          if (!ah.isNullOrNil(locala.AyO)) {
-            if (locala.AyO.equals(locall.mRV))
+          MMCreateChatroomUI localMMCreateChatroomUI = (MMCreateChatroomUI)this.afex;
+          if (!Util.isNullOrNil(locala.afMr)) {
+            if (locala.afMr.equals(localo.Hsz))
             {
-              localMMCreateChatroomUI.oCs.amb(locala.AyO);
-              this.gpQ.remove(locala.AyO);
-              locala.AyO = null;
+              localMMCreateChatroomUI.KOt.bqH(locala.afMr);
+              this.pJQ.remove(locala.afMr);
+              locala.afMr = null;
             }
           }
           for (;;)
           {
-            localMMCreateChatroomUI.Km();
+            localMMCreateChatroomUI.aNr();
             notifyDataSetChanged();
             bool1 = true;
             break;
-            if (this.gpQ.contains(locall.mRV)) {
+            if (this.pJQ.contains(localo.Hsz)) {
               break label529;
             }
-            this.gpQ.remove(locala.AyO);
-            localMMCreateChatroomUI.oCs.amb(locala.AyO);
-            locala.AyO = locall.mRV;
-            localMMCreateChatroomUI.oCs.amc(locala.AyO);
-            this.gpQ.add(locala.AyO);
+            this.pJQ.remove(locala.afMr);
+            localMMCreateChatroomUI.KOt.bqH(locala.afMr);
+            locala.afMr = localo.Hsz;
+            localMMCreateChatroomUI.KOt.bqI(locala.afMr);
+            this.pJQ.add(locala.afMr);
             continue;
-            if (this.gpQ.contains(locall.mRV)) {
+            if (this.pJQ.contains(localo.Hsz)) {
               break label529;
             }
-            localMMCreateChatroomUI.oCs.amc(locall.mRV);
-            locala.AyO = locall.mRV;
-            this.gpQ.add(locala.AyO);
+            localMMCreateChatroomUI.KOt.bqI(localo.Hsz);
+            locala.afMr = localo.Hsz;
+            this.pJQ.add(locala.afMr);
           }
         }
       }
@@ -150,46 +169,64 @@ public final class a
       label529:
       bool1 = true;
       break label118;
-      locall = null;
+      localo = null;
       i = 0;
     }
   }
   
-  public final boolean Qu(int paramInt)
+  public final boolean aDu(int paramInt)
   {
-    AppMethodBeat.i(35029);
-    boolean bool = QT(paramInt);
-    AppMethodBeat.o(35029);
+    AppMethodBeat.i(39226);
+    boolean bool = aEh(paramInt);
+    AppMethodBeat.o(39226);
     return bool;
   }
   
-  final void dOg()
+  public final void finish()
   {
-    AppMethodBeat.i(35028);
-    Iterator localIterator = this.AyL.iterator();
+    AppMethodBeat.i(39223);
+    super.finish();
+    Iterator localIterator = this.afMn.iterator();
+    while (localIterator.hasNext())
+    {
+      c localc = (c)localIterator.next();
+      ((n)h.az(n.class)).cancelSearchTask(localc);
+    }
+    AppMethodBeat.o(39223);
+  }
+  
+  public final int getCount()
+  {
+    return this.count;
+  }
+  
+  final void jDx()
+  {
+    AppMethodBeat.i(39225);
+    Iterator localIterator = this.afMo.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (locala.mSW.size() <= 0) {
+      if (locala.HtF.size() <= 0) {
         break label142;
       }
-      locala.mTy = i;
+      locala.Huj = i;
       i += 1;
-      if (locala.mSW.size() > 3)
+      if (locala.HtF.size() > 3)
       {
-        if (locala.mTD) {
+        if (locala.vpw) {
           i += 3;
         }
         for (;;)
         {
-          locala.mTA = i;
+          locala.Hul = i;
           i += 1;
           break;
-          i += locala.mSW.size();
+          i += locala.HtF.size();
         }
       }
-      i = locala.mSW.size() + i;
+      i = locala.HtF.size() + i;
     }
     label142:
     for (;;)
@@ -198,95 +235,77 @@ public final class a
       this.count = i;
       clearCache();
       notifyDataSetChanged();
-      AppMethodBeat.o(35028);
+      AppMethodBeat.o(39225);
       return;
     }
   }
   
-  public final List<String> dOh()
+  public final List<String> jDy()
   {
-    AppMethodBeat.i(35031);
+    AppMethodBeat.i(39228);
     HashSet localHashSet = new HashSet();
-    Object localObject = this.AyL.iterator();
+    Object localObject = this.afMo.iterator();
     while (((Iterator)localObject).hasNext())
     {
       a locala = (a)((Iterator)localObject).next();
-      if (!ah.isNullOrNil(locala.AyO)) {
-        localHashSet.add(locala.AyO);
+      if (!Util.isNullOrNil(locala.afMr)) {
+        localHashSet.add(locala.afMr);
       }
     }
     localObject = new ArrayList();
     ((List)localObject).addAll(localHashSet);
-    AppMethodBeat.o(35031);
+    AppMethodBeat.o(39228);
     return localObject;
   }
   
-  public final void finish()
+  public final com.tencent.mm.ui.contact.a.a yk(int paramInt)
   {
-    AppMethodBeat.i(35026);
-    super.finish();
-    Iterator localIterator = this.AyK.iterator();
-    while (localIterator.hasNext())
-    {
-      com.tencent.mm.plugin.fts.a.a.a locala = (com.tencent.mm.plugin.fts.a.a.a)localIterator.next();
-      ((n)com.tencent.mm.kernel.g.G(n.class)).cancelSearchTask(locala);
-    }
-    AppMethodBeat.o(35026);
-  }
-  
-  public final int getCount()
-  {
-    return this.count;
-  }
-  
-  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
-  {
-    AppMethodBeat.i(35027);
+    AppMethodBeat.i(39224);
     Object localObject = null;
-    int i = this.AyL.size() - 1;
+    int i = this.afMo.size() - 1;
     a locala;
     if (i >= 0)
     {
-      locala = (a)this.AyL.get(i);
-      if (locala.mTy == paramInt)
+      locala = (a)this.afMo.get(i);
+      if (locala.Huj == paramInt)
       {
-        localObject = new h(paramInt);
-        ((h)localObject).mZq = this.Adk.getActivity().getString(2131303062, new Object[] { locala.query });
+        localObject = new com.tencent.mm.ui.contact.a.j(paramInt);
+        ((com.tencent.mm.ui.contact.a.j)localObject).header = this.afex.getActivity().getString(R.l.gUI, new Object[] { locala.query });
         label90:
         if (localObject == null) {
           break label294;
         }
         ((com.tencent.mm.ui.contact.a.a)localObject).query = locala.query;
-        ((com.tencent.mm.ui.contact.a.a)localObject).scene = this.scene;
-        ((com.tencent.mm.ui.contact.a.a)localObject).Adl = true;
+        ((com.tencent.mm.ui.contact.a.a)localObject).scene = getScene();
+        ((com.tencent.mm.ui.contact.a.a)localObject).afey = true;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(35027);
+      AppMethodBeat.o(39224);
       return localObject;
-      if (locala.mTA == paramInt)
+      if (locala.Hul == paramInt)
       {
-        localObject = new j(paramInt);
-        ((j)localObject).resId = 2131300209;
-        ((j)localObject).mYy = locala.mTD;
+        localObject = new com.tencent.mm.ui.contact.a.m(paramInt);
+        ((com.tencent.mm.ui.contact.a.m)localObject).resId = R.l.fts_header_contact;
+        ((com.tencent.mm.ui.contact.a.m)localObject).Gxy = locala.vpw;
         break label90;
       }
-      if (paramInt > locala.mTy)
+      if (paramInt > locala.Huj)
       {
-        int j = paramInt - locala.mTy - 1;
-        com.tencent.mm.plugin.fts.a.a.l locall = (com.tencent.mm.plugin.fts.a.a.l)locala.mSW.get(j);
-        if (locall.mRV.equals("no_result​"))
+        int j = paramInt - locala.Huj - 1;
+        com.tencent.mm.plugin.fts.a.a.o localo = (com.tencent.mm.plugin.fts.a.a.o)locala.HtF.get(j);
+        if (localo.Hsz.equals("no_result​"))
         {
-          localObject = new i(paramInt);
+          localObject = new com.tencent.mm.ui.contact.a.l(paramInt);
           break label90;
         }
-        localObject = new e(paramInt);
-        ((e)localObject).hrL = locall;
-        ((com.tencent.mm.ui.contact.a.a)localObject).mRX = locala.mRX;
-        ((e)localObject).eBr = true;
-        ((e)localObject).mTI = (j + 1);
-        ((e)localObject).es(((e)localObject).hrL.type, ((e)localObject).hrL.mRU);
+        localObject = new f(paramInt);
+        ((f)localObject).rpp = localo;
+        ((com.tencent.mm.ui.contact.a.a)localObject).FWt = locala.FWt;
+        ((f)localObject).mwk = true;
+        ((f)localObject).Huq = (j + 1);
+        ((f)localObject).iW(((f)localObject).rpp.type, ((f)localObject).rpp.subtype);
         break label90;
         label294:
         i -= 1;
@@ -298,13 +317,13 @@ public final class a
   
   final class a
   {
-    String AyO;
-    com.tencent.mm.plugin.fts.a.a.g mRX;
-    List<com.tencent.mm.plugin.fts.a.a.l> mSW;
-    int mTA = 2147483647;
-    boolean mTD = true;
-    int mTy = 2147483647;
+    com.tencent.mm.plugin.fts.a.a.j FWt;
+    List<com.tencent.mm.plugin.fts.a.a.o> HtF;
+    int Huj = 2147483647;
+    int Hul = 2147483647;
+    String afMr;
     String query;
+    boolean vpw = true;
     
     private a() {}
   }

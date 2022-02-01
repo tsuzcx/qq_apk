@@ -9,7 +9,7 @@ public final class MusicListInfo
   extends JceStruct
 {
   static ArrayList<MusicInfo> cache_vMusicList = new ArrayList();
-  public ArrayList<MusicInfo> vMusicList;
+  public ArrayList<MusicInfo> vMusicList = null;
   
   static
   {
@@ -31,14 +31,15 @@ public final class MusicListInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vMusicList != null) {
-      paramJceOutputStream.write(this.vMusicList, 0);
+    ArrayList localArrayList = this.vMusicList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.MusicListInfo
  * JD-Core Version:    0.7.0.1
  */

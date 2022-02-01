@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class AppShareID
-  extends awge
+  extends Entity
 {
   public String appstorelink;
   public String bundleid;
@@ -14,27 +14,39 @@ public class AppShareID
   public short sPriority;
   public short sResType;
   public String sourceUrl;
-  @awhs
+  @unique
   public String strPkgName;
   public String strResDesc;
   public String strResName;
-  public String strResURL_big;
-  public String strResURL_small;
+  public String strResURLBig;
+  public String strResURLSmall;
   public long uiNewVer;
-  @awhs
+  @unique
   public long uiResID;
   public long updateTime;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append("[strPkgName = ").append(this.strPkgName).append("; uiResID = ").append(this.uiResID).append("; uiNewVer = ").append(this.uiNewVer).append("; messagetail = ").append(this.messagetail).append("; bundleid = ").append(this.bundleid).append("; sourceUrl = ").append(this.sourceUrl).append("]");
+    localStringBuilder.append("[strPkgName = ");
+    localStringBuilder.append(this.strPkgName);
+    localStringBuilder.append("; uiResID = ");
+    localStringBuilder.append(this.uiResID);
+    localStringBuilder.append("; uiNewVer = ");
+    localStringBuilder.append(this.uiNewVer);
+    localStringBuilder.append("; messagetail = ");
+    localStringBuilder.append(this.messagetail);
+    localStringBuilder.append("; bundleid = ");
+    localStringBuilder.append(this.bundleid);
+    localStringBuilder.append("; sourceUrl = ");
+    localStringBuilder.append(this.sourceUrl);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.AppShareID
  * JD-Core Version:    0.7.0.1
  */

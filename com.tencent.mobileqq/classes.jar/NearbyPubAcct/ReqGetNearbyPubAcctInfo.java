@@ -9,10 +9,10 @@ public final class ReqGetNearbyPubAcctInfo
 {
   static LBSInfo cache_stLBSInfo;
   static byte[] cache_vContext;
-  public int iCount;
-  public short shVersion;
-  public LBSInfo stLBSInfo;
-  public byte[] vContext;
+  public int iCount = 0;
+  public short shVersion = 0;
+  public LBSInfo stLBSInfo = null;
+  public byte[] vContext = null;
   
   public ReqGetNearbyPubAcctInfo() {}
   
@@ -50,7 +50,7 @@ public final class ReqGetNearbyPubAcctInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyPubAcct.ReqGetNearbyPubAcctInfo
  * JD-Core Version:    0.7.0.1
  */

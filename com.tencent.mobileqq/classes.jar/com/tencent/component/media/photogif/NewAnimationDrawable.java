@@ -64,7 +64,11 @@ public class NewAnimationDrawable
   static
   {
     sMaxCacheSizeForAll.set((int)(ImageManager.getInstance().capacity() * ImageManagerEnv.g().getAnimationDrawableCacheRatio()));
-    ImageManagerEnv.getLogger().w("NewAnimationDrawable", new Object[] { "cache size:" + sMaxCacheSizeForAll.get() });
+    ILog localILog = ImageManagerEnv.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cache size:");
+    localStringBuilder.append(sMaxCacheSizeForAll.get());
+    localILog.w("NewAnimationDrawable", new Object[] { localStringBuilder.toString() });
   }
   
   public NewAnimationDrawable(ImageLoader.Options paramOptions)
@@ -102,10 +106,10 @@ public class NewAnimationDrawable
   {
     try
     {
-      Object localObject1 = ImageManager.getInstance().getDecoder();
+      localObject1 = ImageManager.getInstance().getDecoder();
       if (!TextUtils.isEmpty(paramString))
       {
-        Object localObject2 = getBitmapOptions(paramString);
+        localObject2 = getBitmapOptions(paramString);
         if (Build.VERSION.SDK_INT >= 11) {
           ((BitmapFactory.Options)localObject2).inBitmap = null;
         }
@@ -119,8 +123,16 @@ public class NewAnimationDrawable
     }
     catch (Throwable paramString)
     {
-      ImageManagerEnv.getLogger().e("NewAnimationDrawable", new Object[] { "catch an exception:" + Log.getStackTraceString(paramString) });
-      ImageManagerEnv.getLogger().e("NewAnimationDrawable", new Object[] { "get from decoder:deocode failed,index=" + this.mCurFrameIndex });
+      Object localObject1 = ImageManagerEnv.getLogger();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("catch an exception:");
+      ((StringBuilder)localObject2).append(Log.getStackTraceString(paramString));
+      ((ILog)localObject1).e("NewAnimationDrawable", new Object[] { ((StringBuilder)localObject2).toString() });
+      paramString = ImageManagerEnv.getLogger();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("get from decoder:deocode failed,index=");
+      ((StringBuilder)localObject1).append(this.mCurFrameIndex);
+      paramString.e("NewAnimationDrawable", new Object[] { ((StringBuilder)localObject1).toString() });
     }
     return null;
   }
@@ -144,51 +156,58 @@ public class NewAnimationDrawable
   
   private static int getBytesPerPixel(Bitmap.Config paramConfig)
   {
-    int j = 2;
-    int i;
     if (paramConfig == Bitmap.Config.ARGB_8888) {
-      i = 4;
+      return 4;
     }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (paramConfig == Bitmap.Config.RGB_565);
-      i = j;
-    } while (paramConfig == Bitmap.Config.ARGB_4444);
-    if (paramConfig == Bitmap.Config.ALPHA_8) {
-      return 1;
+    if (paramConfig == Bitmap.Config.RGB_565) {
+      return 2;
     }
+    if (paramConfig == Bitmap.Config.ARGB_4444) {
+      return 2;
+    }
+    if (paramConfig == Bitmap.Config.ALPHA_8) {}
     return 1;
   }
   
   private static int getFrameSize(BitmapFactory.Options paramOptions)
   {
-    if (paramOptions.inSampleSize > 0) {}
-    for (int i = paramOptions.inSampleSize;; i = 1)
-    {
-      int j = paramOptions.outWidth / i;
-      return paramOptions.outHeight / i * j * getBytesPerPixel(Bitmap.Config.ARGB_8888);
+    int i;
+    if (paramOptions.inSampleSize > 0) {
+      i = paramOptions.inSampleSize;
+    } else {
+      i = 1;
     }
+    return paramOptions.outWidth / i * (paramOptions.outHeight / i) * getBytesPerPixel(Bitmap.Config.ARGB_8888);
   }
   
   public static boolean isSuitable(List<String> paramList, int paramInt1, int paramInt2)
   {
-    if ((paramList != null) && (paramList.size() > 0))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramList != null)
     {
-      String str = (String)paramList.get(0);
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(str, localOptions);
-      localOptions.inSampleSize = computeSampleSize(localOptions, paramInt1, paramInt2);
-      paramInt1 = getFrameSize(localOptions) * paramList.size();
-      ImageManagerEnv.getLogger().w("NewAnimationDrawable", new Object[] { "estimate totalSize:" + paramInt1 });
-      ImageManagerEnv.g().reportAnimationDrawableSize(paramInt1 / 1024);
-      return paramInt1 < sMaxCacheSizeForAll.get();
+      bool1 = bool2;
+      if (paramList.size() > 0)
+      {
+        Object localObject = (String)paramList.get(0);
+        BitmapFactory.Options localOptions = new BitmapFactory.Options();
+        localOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile((String)localObject, localOptions);
+        localOptions.inSampleSize = computeSampleSize(localOptions, paramInt1, paramInt2);
+        paramInt1 = getFrameSize(localOptions) * paramList.size();
+        paramList = ImageManagerEnv.getLogger();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("estimate totalSize:");
+        ((StringBuilder)localObject).append(paramInt1);
+        paramList.w("NewAnimationDrawable", new Object[] { ((StringBuilder)localObject).toString() });
+        ImageManagerEnv.g().reportAnimationDrawableSize(paramInt1 / 1024);
+        bool1 = bool2;
+        if (paramInt1 < sMaxCacheSizeForAll.get()) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   private void loadNextBitmap()
@@ -204,7 +223,15 @@ public class NewAnimationDrawable
       }
       if ((this.mIsRunning) && ((this.mRepeatCount == 0) || (this.mCurPlayCount < this.mRepeatCount)))
       {
-        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "loadNextBitmap:" + this + ",delay:" + this.mDelayTime + ",frameIndex:" + this.mCurFrameIndex });
+        ILog localILog = ImageManagerEnv.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loadNextBitmap:");
+        localStringBuilder.append(this);
+        localStringBuilder.append(",delay:");
+        localStringBuilder.append(this.mDelayTime);
+        localStringBuilder.append(",frameIndex:");
+        localStringBuilder.append(this.mCurFrameIndex);
+        localILog.d("NewAnimationDrawable", new Object[] { localStringBuilder.toString() });
         ImageManager.post(this.mDecodeTask, true);
       }
       return;
@@ -250,27 +277,36 @@ public class NewAnimationDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.mCurBitmapRef != null) && (!this.mCurBitmapRef.isRecycled()))
+    Object localObject = this.mCurBitmapRef;
+    if ((localObject != null) && (!((BitmapReference)localObject).isRecycled()))
     {
       paramCanvas.drawBitmap(this.mCurBitmapRef.getBitmap(), null, getBounds(), this.mPaint);
-      ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "animation NewAnimationDrawable draw  currentBitmap != null ,frameIndex:" + this.mCurFrameIndex });
+      paramCanvas = ImageManagerEnv.getLogger();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("animation NewAnimationDrawable draw  currentBitmap != null ,frameIndex:");
+      ((StringBuilder)localObject).append(this.mCurFrameIndex);
+      paramCanvas.d("NewAnimationDrawable", new Object[] { ((StringBuilder)localObject).toString() });
     }
-    for (;;)
+    else
     {
-      if (this.mIsRunning) {
-        loadNextBitmap();
-      }
-      return;
-      if (this.mDefaultFrame != null)
+      localObject = this.mDefaultFrame;
+      if (localObject != null)
       {
-        this.mDefaultFrame.setBounds(getBounds());
+        ((Drawable)localObject).setBounds(getBounds());
         this.mDefaultFrame.draw(paramCanvas);
-        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "animation NewAnimationDrawable draw  currentBitmap = null ,frameIndex:" + this.mCurFrameIndex });
+        paramCanvas = ImageManagerEnv.getLogger();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("animation NewAnimationDrawable draw  currentBitmap = null ,frameIndex:");
+        ((StringBuilder)localObject).append(this.mCurFrameIndex);
+        paramCanvas.d("NewAnimationDrawable", new Object[] { ((StringBuilder)localObject).toString() });
       }
       else
       {
         paramCanvas.drawRect(this.mDstRect, this.mPaint);
       }
+    }
+    if (this.mIsRunning) {
+      loadNextBitmap();
     }
   }
   
@@ -284,36 +320,47 @@ public class NewAnimationDrawable
     }
     catch (Throwable localThrowable)
     {
-      ImageManagerEnv.getLogger().e("NewAnimationDrawable", new Object[] { "catch an exception:" + Log.getStackTraceString(localThrowable) });
+      ILog localILog = ImageManagerEnv.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("catch an exception:");
+      localStringBuilder.append(Log.getStackTraceString(localThrowable));
+      localILog.e("NewAnimationDrawable", new Object[] { localStringBuilder.toString() });
     }
   }
   
   public int getByteCount()
   {
-    if (this.mTotalSize == 0) {
-      this.mTotalSize = ((int)(getFrameSize(getBitmapOptions((String)this.mOptions.photoList.get(0))) * this.mFrameCounts * 1.1D));
+    if (this.mTotalSize == 0)
+    {
+      double d = getFrameSize(getBitmapOptions((String)this.mOptions.photoList.get(0))) * this.mFrameCounts;
+      Double.isNaN(d);
+      this.mTotalSize = ((int)(d * 1.1D));
     }
     return this.mTotalSize;
   }
   
   public int getIntrinsicHeight()
   {
-    if (this.mCurBitmapRef != null) {
-      return this.mCurBitmapRef.getHeight();
+    Object localObject = this.mCurBitmapRef;
+    if (localObject != null) {
+      return ((BitmapReference)localObject).getHeight();
     }
-    if (this.mDefaultFrame != null) {
-      return this.mDefaultFrame.getIntrinsicHeight();
+    localObject = this.mDefaultFrame;
+    if (localObject != null) {
+      return ((Drawable)localObject).getIntrinsicHeight();
     }
     return this.mOptions.clipHeight;
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.mCurBitmapRef != null) {
-      return this.mCurBitmapRef.getWidth();
+    Object localObject = this.mCurBitmapRef;
+    if (localObject != null) {
+      return ((BitmapReference)localObject).getWidth();
     }
-    if (this.mDefaultFrame != null) {
-      return this.mDefaultFrame.getIntrinsicWidth();
+    localObject = this.mDefaultFrame;
+    if (localObject != null) {
+      return ((Drawable)localObject).getIntrinsicWidth();
     }
     return this.mOptions.clipWidth;
   }
@@ -386,11 +433,11 @@ public class NewAnimationDrawable
         reset();
       }
       start();
-    }
-    while (!bool) {
       return bool;
     }
-    stop();
+    if (bool) {
+      stop();
+    }
     return bool;
   }
   
@@ -408,7 +455,11 @@ public class NewAnimationDrawable
         }
         this.mIsRunning = true;
         loadNextBitmap();
-        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "--start:" + this.mCurFrameIndex });
+        ILog localILog = ImageManagerEnv.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--start:");
+        localStringBuilder.append(this.mCurFrameIndex);
+        localILog.d("NewAnimationDrawable", new Object[] { localStringBuilder.toString() });
       }
       return;
     }
@@ -421,7 +472,11 @@ public class NewAnimationDrawable
     {
       this.mIsRunning = false;
       clearCache();
-      ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "--stop:" + this.mCurFrameIndex });
+      ILog localILog = ImageManagerEnv.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--stop:");
+      localStringBuilder.append(this.mCurFrameIndex);
+      localILog.d("NewAnimationDrawable", new Object[] { localStringBuilder.toString() });
       return;
     }
     finally
@@ -433,7 +488,7 @@ public class NewAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.photogif.NewAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

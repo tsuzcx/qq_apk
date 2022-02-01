@@ -22,7 +22,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.map.lib.basemap.data.GeoPoint;>;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -47,9 +46,9 @@ public class mw
   private int P = -1;
   private List<Integer> Q;
   private int R = 0;
-  private final String S = this.L + "_arrow_texture_";
+  private final String S;
   private final float T;
-  private GlAnimation.SetAnimatePropertyListener U = new mw.1(this);
+  private GlAnimation.SetAnimatePropertyListener U;
   public ip h = null;
   public Polyline i = null;
   protected byte[] j = new byte[0];
@@ -72,6 +71,11 @@ public class mw
   
   public mw(pn parampn)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.L);
+    localStringBuilder.append("_arrow_texture_");
+    this.S = localStringBuilder.toString();
+    this.U = new mw.1(this);
     this.k = parampn;
     this.u = new ArrayList();
     this.T = this.k.ay.getResources().getDisplayMetrics().density;
@@ -79,16 +83,15 @@ public class mw
   
   private static float a(GeoPoint paramGeoPoint1, GeoPoint paramGeoPoint2)
   {
-    float f = 0.0F;
     if (paramGeoPoint2 != null)
     {
       int i1 = paramGeoPoint1.getLatitudeE6();
       int i2 = paramGeoPoint2.getLatitudeE6();
       int i3 = paramGeoPoint1.getLongitudeE6();
       int i4 = paramGeoPoint2.getLongitudeE6();
-      f = (float)(Math.hypot(i1 - i2, i3 - i4) + 0.0D);
+      return (float)(Math.hypot(i1 - i2, i3 - i4) + 0.0D);
     }
-    return f;
+    return 0.0F;
   }
   
   private static float a(mw.a parama1, mw.a parama2, GeoPoint paramGeoPoint, mw.a parama3)
@@ -99,111 +102,126 @@ public class mw
     int i4 = parama2.getLatitudeE6();
     int i5 = paramGeoPoint.getLongitudeE6();
     int i6 = paramGeoPoint.getLatitudeE6();
-    float f1 = (i3 - i1) * (i5 - i1) + (i4 - i2) * (i6 - i2);
+    int i7 = i3 - i1;
+    int i8 = i5 - i1;
+    int i9 = i4 - i2;
+    int i10 = i6 - i2;
+    float f1 = i7 * i8 + i9 * i10;
+    double d1;
     if (f1 <= 0.0F)
     {
       parama3.setLatitudeE6(parama1.getLatitudeE6());
       parama3.setLongitudeE6(parama1.getLongitudeE6());
       parama3.a = parama1.a;
-      return (float)Math.hypot(i5 - i1, i6 - i2);
+      d1 = Math.hypot(i8, i10);
     }
-    double d = (i3 - i1) * (i3 - i1) + (i4 - i2) * (i4 - i2);
-    if (f1 >= d)
+    for (;;)
     {
-      parama3.setLatitudeE6(parama2.getLatitudeE6());
-      parama3.setLongitudeE6(parama2.getLongitudeE6());
-      parama3.a = parama2.a;
-      return (float)Math.hypot(i5 - i3, i6 - i4);
+      return (float)d1;
+      d1 = i7 * i7 + i9 * i9;
+      double d2 = f1;
+      if (d2 >= d1)
+      {
+        parama3.setLatitudeE6(parama2.getLatitudeE6());
+        parama3.setLongitudeE6(parama2.getLongitudeE6());
+        parama3.a = parama2.a;
+        d1 = Math.hypot(i5 - i3, i6 - i4);
+      }
+      else
+      {
+        Double.isNaN(d2);
+        Double.isNaN(d1);
+        f1 = (float)(d2 / d1);
+        float f2 = i1 + i7 * f1;
+        float f3 = i2 + i9 * f1;
+        parama3.setLongitudeE6(Math.round(f2));
+        parama3.setLatitudeE6(Math.round(f3));
+        parama1.a += (parama2.a - parama1.a) * f1;
+        d1 = Math.hypot(i5 - f2, i6 - f3);
+      }
     }
-    f1 = (float)(f1 / d);
-    float f2 = i1;
-    f2 = (i3 - i1) * f1 + f2;
-    float f3 = i2;
-    f3 = (i4 - i2) * f1 + f3;
-    parama3.setLongitudeE6(Math.round(f2));
-    parama3.setLatitudeE6(Math.round(f3));
-    parama1.a += (parama2.a - parama1.a) * f1;
-    return (float)Math.hypot(i5 - f2, i6 - f3);
   }
   
   private int a(int paramInt)
   {
-    if (paramInt >= this.B) {
-      paramInt = this.B - 1;
+    int i2 = this.B;
+    int i1 = paramInt;
+    if (paramInt >= i2) {
+      i1 = i2 - 1;
     }
-    for (;;)
-    {
-      int i1 = paramInt;
-      if (paramInt < 0) {
-        i1 = 0;
-      }
-      return i1;
+    paramInt = i1;
+    if (i1 < 0) {
+      paramInt = 0;
     }
+    return paramInt;
   }
   
   private static int a(Context paramContext, BitmapDescriptor paramBitmapDescriptor)
   {
-    if ((paramContext == null) || (paramBitmapDescriptor == null)) {}
-    int i1;
-    do
+    if (paramContext != null)
     {
-      do
-      {
+      if (paramBitmapDescriptor == null) {
         return 0;
-        paramBitmapDescriptor = paramBitmapDescriptor.getBitmap(paramContext);
-      } while (paramBitmapDescriptor == null);
-      i1 = paramBitmapDescriptor.getHeight();
-    } while (i1 <= 0);
-    float f = pz.a(paramContext);
-    return (int)(Math.pow(2.0D, 25.0D) / Math.pow(i1, 2.0D) / f);
+      }
+      paramBitmapDescriptor = paramBitmapDescriptor.getBitmap(paramContext);
+      if (paramBitmapDescriptor == null) {
+        return 0;
+      }
+      int i1 = paramBitmapDescriptor.getHeight();
+      if (i1 <= 0) {
+        return 0;
+      }
+      float f = pz.a(paramContext);
+      double d1 = Math.pow(2.0D, 25.0D) / Math.pow(i1, 2.0D);
+      double d2 = f;
+      Double.isNaN(d2);
+      return (int)(d1 / d2);
+    }
+    return 0;
   }
   
   private mw.a a(GeoPoint paramGeoPoint)
   {
-    float f1 = 3.4028235E+38F;
-    Object localObject3 = null;
-    Object localObject2 = new mw.a();
-    Object localObject1 = localObject3;
-    int i1;
-    Object localObject4;
-    if (this.u != null)
+    Object localObject1 = new mw.a();
+    Object localObject5 = this.u;
+    Object localObject4 = null;
+    Object localObject2 = null;
+    Object localObject3 = localObject4;
+    if (localObject5 != null)
     {
-      localObject1 = localObject3;
-      if (this.u.size() >= 2)
+      localObject3 = localObject4;
+      if (((ArrayList)localObject5).size() >= 2)
       {
-        localObject1 = localObject3;
+        localObject3 = localObject4;
         if (paramGeoPoint != null)
         {
-          localObject3 = (mw.a)this.u.get(0);
-          i1 = 1;
-          localObject1 = null;
-          if (i1 < this.u.size())
+          localObject4 = (mw.a)this.u.get(0);
+          int i1 = 1;
+          float f2;
+          for (float f1 = 3.4028235E+38F;; f1 = f2)
           {
-            localObject4 = (mw.a)this.u.get(i1);
-            float f2 = a((mw.a)localObject3, (mw.a)localObject4, paramGeoPoint, (mw.a)localObject2);
-            if (f2 >= f1) {
-              break label150;
+            localObject3 = localObject2;
+            if (i1 >= this.u.size()) {
+              break;
             }
-            localObject1 = new mw.a();
-            f1 = f2;
+            localObject5 = (mw.a)this.u.get(i1);
+            float f3 = a((mw.a)localObject4, (mw.a)localObject5, paramGeoPoint, (mw.a)localObject1);
+            localObject3 = localObject1;
+            f2 = f1;
+            if (f3 < f1)
+            {
+              localObject3 = new mw.a();
+              f2 = f3;
+              localObject2 = localObject1;
+            }
+            i1 += 1;
+            localObject4 = localObject5;
+            localObject1 = localObject3;
           }
         }
       }
     }
-    for (;;)
-    {
-      i1 += 1;
-      localObject3 = localObject4;
-      localObject4 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject4;
-      break;
-      return localObject1;
-      label150:
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-    }
+    return localObject3;
   }
   
   private static mw.a a(mw.a parama1, mw.a parama2, float paramFloat)
@@ -213,10 +231,8 @@ public class mw
     int i2 = parama1.getLongitudeE6();
     int i3 = parama2.getLatitudeE6();
     int i4 = parama1.getLatitudeE6();
-    int i5 = parama1.getLatitudeE6();
-    locala.setLatitudeE6(Math.round((i3 - i4) * paramFloat) + i5);
-    i3 = parama1.getLongitudeE6();
-    locala.setLongitudeE6(Math.round((i1 - i2) * paramFloat) + i3);
+    locala.setLatitudeE6(parama1.getLatitudeE6() + Math.round((i3 - i4) * paramFloat));
+    locala.setLongitudeE6(parama1.getLongitudeE6() + Math.round((i1 - i2) * paramFloat));
     parama1.a += (parama2.a - parama1.a) * paramFloat;
     return locala;
   }
@@ -226,23 +242,26 @@ public class mw
     if (paramColorType != PolylineOptions.ColorType.LINE_COLOR_NONE) {
       return paramColorType;
     }
-    if ((this.m != null) && (this.m.length > 0))
+    paramColorType = this.m;
+    if ((paramColorType != null) && (paramColorType.length > 0))
     {
       int i1 = 0;
-      int i2 = this.m.length;
+      int i2 = paramColorType.length;
       while (i1 < i2)
       {
-        if ((this.m[i1] < 0) || (this.m[i1] >= this.B)) {
+        paramColorType = this.m;
+        if ((paramColorType[i1] >= 0) && (paramColorType[i1] < this.B)) {
+          i1 += 1;
+        } else {
           return PolylineOptions.ColorType.LINE_COLOR_ARGB;
         }
-        i1 += 1;
       }
       return PolylineOptions.ColorType.LINE_COLOR_TEXTURE;
     }
-    if ((this.c < 0) || (this.c >= this.B)) {
-      return PolylineOptions.ColorType.LINE_COLOR_ARGB;
+    if ((this.c >= 0) && (this.c < this.B)) {
+      return PolylineOptions.ColorType.LINE_COLOR_TEXTURE;
     }
-    return PolylineOptions.ColorType.LINE_COLOR_TEXTURE;
+    return PolylineOptions.ColorType.LINE_COLOR_ARGB;
   }
   
   private void a(GlAlphaAnimation paramGlAlphaAnimation)
@@ -250,243 +269,258 @@ public class mw
     this.C = paramGlAlphaAnimation;
     this.C.setAnimationProperty(this.U);
     this.C.startAnimation(null, null);
-    if ((this.k != null) && (this.k.az != null)) {
+    paramGlAlphaAnimation = this.k;
+    if ((paramGlAlphaAnimation != null) && (paramGlAlphaAnimation.az != null)) {
       this.k.az.b.k();
     }
   }
   
   private void a(GlEmergeAnimation paramGlEmergeAnimation)
   {
-    if ((this.k == null) || (this.k.az == null)) {
-      return;
-    }
-    this.C = paramGlEmergeAnimation;
-    this.E = a(fz.a(paramGlEmergeAnimation.getStartPoint()));
-    if (this.E == null) {
+    pn localpn = this.k;
+    if (localpn != null)
+    {
+      if (localpn.az == null) {
+        return;
+      }
+      this.C = paramGlEmergeAnimation;
+      this.E = a(fz.a(paramGlEmergeAnimation.getStartPoint()));
+      if (this.E != null)
+      {
+        paramGlEmergeAnimation.setAnimationProperty(this.U);
+        paramGlEmergeAnimation.startAnimation(null, null);
+        this.k.az.b.k();
+        return;
+      }
       throw new RuntimeException("Error, start point not found.");
     }
-    paramGlEmergeAnimation.setAnimationProperty(this.U);
-    paramGlEmergeAnimation.startAnimation(null, null);
-    this.k.az.b.k();
   }
   
   private int[][] b(List<GeoPoint> paramList)
   {
-    int i1;
-    if ((this.m == null) || (this.n == null) || (paramList == null) || (this.m.length == 0) || (this.n.length == 0) || (paramList.isEmpty()))
+    Object localObject1 = this.m;
+    Object localObject2 = Integer.valueOf(0);
+    if (localObject1 != null)
     {
-      i1 = this.c;
-      if (this.z != PolylineOptions.ColorType.LINE_COLOR_TEXTURE) {
-        break label544;
-      }
-      i1 = a(i1);
-    }
-    label544:
-    for (;;)
-    {
-      paramList = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, 1 });
-      paramList[0][0] = i1;
-      paramList[1][0] = 0;
-      return paramList;
-      if ((this.m != null) && (this.n != null)) {}
-      for (i1 = Math.min(this.m.length, this.n.length);; i1 = 0)
+      Object localObject3 = this.n;
+      if ((localObject3 != null) && (paramList != null) && (localObject1.length != 0) && (localObject3.length != 0) && (!paramList.isEmpty()))
       {
-        int[] arrayOfInt = new int[i1];
-        int i2 = 0;
-        while (i2 < i1)
+        localObject1 = this.m;
+        if (localObject1 != null)
         {
-          arrayOfInt[i2] = this.m[i2];
+          localObject3 = this.n;
+          if (localObject3 != null)
+          {
+            i2 = Math.min(localObject1.length, localObject3.length);
+            break label93;
+          }
+        }
+        i2 = 0;
+        label93:
+        int[] arrayOfInt = new int[i2];
+        i1 = 0;
+        while (i1 < i2)
+        {
+          arrayOfInt[i1] = this.m[i1];
           if (this.z == PolylineOptions.ColorType.LINE_COLOR_TEXTURE) {
-            arrayOfInt[i2] = a(arrayOfInt[i2]);
+            arrayOfInt[i1] = a(arrayOfInt[i1]);
           }
-          i2 += 1;
+          i1 += 1;
         }
-        TreeMap localTreeMap = new TreeMap();
-        Object localObject1 = (mw.a)paramList.get(0);
-        i2 = 1;
-        if (i2 < i1) {
-          if (((mw.a)localObject1).b <= this.n[i2]) {
-            localTreeMap.put(Integer.valueOf(0), Integer.valueOf(arrayOfInt[(i2 - 1)]));
-          }
-        }
-        for (int i4 = i2;; i4 = 0)
+        localObject3 = new TreeMap();
+        localObject1 = (mw.a)paramList.get(0);
+        i1 = 1;
+        while (i1 < i2)
         {
-          int i3 = i4;
-          if (i2 == i1)
+          if (((mw.a)localObject1).b <= this.n[i1])
           {
-            i3 = i4;
-            if (localTreeMap.size() == 0)
-            {
-              localTreeMap.put(Integer.valueOf(0), Integer.valueOf(arrayOfInt[(i1 - 1)]));
-              i3 = i1;
-            }
+            ((Map)localObject3).put(localObject2, Integer.valueOf(arrayOfInt[(i1 - 1)]));
+            i4 = i1;
+            break label221;
           }
-          i4 = 1;
-          i2 = i3;
+          i1 += 1;
+        }
+        int i4 = 0;
+        label221:
+        int i3 = i4;
+        if (i1 == i2)
+        {
           i3 = i4;
-          for (;;)
+          if (((Map)localObject3).size() == 0)
           {
-            if (i3 >= paramList.size()) {
-              break label420;
-            }
-            localObject2 = (mw.a)paramList.get(i3);
-            i4 = i2;
-            for (;;)
-            {
-              if ((i4 < i1) && (((mw.a)localObject2).b > this.n[i4]) && (((mw.a)localObject1).b <= this.n[i4]))
-              {
-                localTreeMap.put(Integer.valueOf(i3 - 1), Integer.valueOf(arrayOfInt[i4]));
-                i4 += 1;
-                i2 += 1;
-                continue;
-                i2 += 1;
-                break;
-              }
-            }
-            i3 += 1;
-            localObject1 = localObject2;
+            ((Map)localObject3).put(localObject2, Integer.valueOf(arrayOfInt[(i2 - 1)]));
+            i3 = i2;
           }
-          label420:
-          i1 = localTreeMap.size();
-          localObject1 = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, i1 });
-          Object localObject2 = localTreeMap.entrySet().iterator();
-          i1 = 0;
-          for (;;)
+        }
+        i4 = 1;
+        for (i1 = i3; i4 < paramList.size(); i1 = i3)
+        {
+          localObject2 = (mw.a)paramList.get(i4);
+          i3 = i1;
+          while ((i1 < i2) && (((mw.a)localObject2).b > this.n[i1]) && (((mw.a)localObject1).b <= this.n[i1]))
           {
-            paramList = (List<GeoPoint>)localObject1;
-            if (!((Iterator)localObject2).hasNext()) {
-              break;
-            }
-            paramList = (Map.Entry)((Iterator)localObject2).next();
-            localObject1[0][i1] = ((Integer)paramList.getValue()).intValue();
-            localObject1[1][i1] = ((Integer)paramList.getKey()).intValue();
+            ((Map)localObject3).put(Integer.valueOf(i4 - 1), Integer.valueOf(arrayOfInt[i1]));
+            i3 += 1;
             i1 += 1;
           }
+          i4 += 1;
+          localObject1 = localObject2;
         }
+        paramList = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, ((Map)localObject3).size() });
+        localObject1 = ((Map)localObject3).entrySet().iterator();
+        i1 = 0;
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (Map.Entry)((Iterator)localObject1).next();
+          paramList[0][i1] = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
+          paramList[1][i1] = ((Integer)((Map.Entry)localObject2).getKey()).intValue();
+          i1 += 1;
+        }
+        return paramList;
       }
     }
+    int i2 = this.c;
+    int i1 = i2;
+    if (this.z == PolylineOptions.ColorType.LINE_COLOR_TEXTURE) {
+      i1 = a(i2);
+    }
+    paramList = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, 1 });
+    paramList[0][0] = i1;
+    paramList[1][0] = 0;
+    return paramList;
   }
   
   private void f()
   {
-    pf localpf;
-    if ((this.k != null) && (this.k.aA != null))
+    Object localObject1 = this.k;
+    if ((localObject1 != null) && (((pt)localObject1).aA != null))
     {
-      localpf = this.k.aA.a;
-      if (localpf != null) {
-        break label33;
-      }
-    }
-    label33:
-    do
-    {
-      do
-      {
+      localObject1 = this.k.aA.a;
+      if (localObject1 == null) {
         return;
-        if ((this.o == null) && (this.t != null))
+      }
+      if (this.o == null)
+      {
+        localObject2 = this.t;
+        if (localObject2 != null)
         {
-          this.t.a();
+          ((iq)localObject2).a();
           this.t = null;
           return;
         }
-      } while (this.o == null);
-      if (this.t != null) {
-        break;
       }
-    } while ((this.v == null) || (this.v.size() < 2));
-    this.t = new iq(localpf, (GeoPoint[])this.v.toArray(new GeoPoint[this.v.size()]), this.o);
-    return;
-    this.t.a(this.o);
+      Object localObject2 = this.o;
+      if (localObject2 != null)
+      {
+        iq localiq = this.t;
+        if (localiq == null)
+        {
+          localObject2 = this.v;
+          if (localObject2 != null)
+          {
+            if (((ArrayList)localObject2).size() < 2) {
+              return;
+            }
+            localObject2 = this.v;
+            this.t = new iq((pf)localObject1, (GeoPoint[])((ArrayList)localObject2).toArray(new GeoPoint[((ArrayList)localObject2).size()]), this.o);
+          }
+          return;
+        }
+        localiq.a((PolylineOptions.Text)localObject2);
+      }
+    }
   }
   
   private hi g()
   {
-    if ((this.k == null) || (this.k.az == null)) {
-      return null;
-    }
-    hi localhi = new hi();
-    if ((this.A != null) && (this.A.getFormater() != null)) {
-      localhi.k = this.A.getFormater().g;
-    }
-    int[][] arrayOfInt = b(this.v);
-    localhi.i = this.l;
-    localhi.u = this.P;
-    localhi.a(this.v);
-    localhi.z = this.y;
-    int i1;
-    float f;
-    label153:
-    int[] arrayOfInt1;
-    if (this.G == 0)
+    Object localObject1 = this.k;
+    if ((localObject1 != null) && (((pt)localObject1).az != null))
     {
-      i1 = a(this.k.ay, this.A);
-      if (i1 > 0) {
-        if (this.a > i1)
-        {
-          f = i1;
-          localhi.j = f;
-          if (this.z == PolylineOptions.ColorType.LINE_COLOR_ARGB)
-          {
-            localhi.h = true;
-            if (this.w * 2.0F > this.a) {
-              this.w = (this.a / 3.0F);
-            }
-            localhi.g = this.w;
-          }
-          arrayOfInt1 = this.x;
-          if (!this.H) {
-            break label399;
-          }
-          localhi.a(arrayOfInt[1]);
-          if ((this.w <= 0.0F) || (arrayOfInt1 == null) || (arrayOfInt1.length <= 0)) {
-            break label386;
-          }
-          localhi.a(arrayOfInt[0], arrayOfInt1);
-        }
+      localObject1 = new hi();
+      Object localObject2 = this.A;
+      if ((localObject2 != null) && (((BitmapDescriptor)localObject2).getFormater() != null)) {
+        ((hi)localObject1).k = this.A.getFormater().g;
       }
-    }
-    for (;;)
-    {
-      localhi.m = this.D;
-      localhi.o = this.G;
-      localhi.s = ((int)this.d);
-      localhi.p = this.p;
-      localhi.q = this.q;
-      localhi.l = this.K;
-      localhi.n = this.H;
-      localhi.t = this.O;
-      localhi.b(this.Q);
-      localhi.y = this.g;
-      return localhi;
-      f = this.a;
-      break;
-      localhi.j = this.a;
-      break label153;
-      localhi.j = this.a;
-      break label153;
-      label386:
-      localhi.b(arrayOfInt[0]);
-      continue;
-      label399:
-      localhi.a(new int[] { 0 });
-      if ((this.w > 0.0F) && (arrayOfInt1 != null) && (arrayOfInt1.length > 0))
+      localObject2 = b(this.v);
+      ((hi)localObject1).i = this.l;
+      ((hi)localObject1).u = this.P;
+      ((hi)localObject1).a(this.v);
+      ((hi)localObject1).z = this.y;
+      int i1;
+      if (this.G == 0)
       {
-        i1 = this.c;
-        int i2 = arrayOfInt1[0];
-        localhi.a(new int[] { i1 }, new int[] { i2 });
+        i1 = a(this.k.ay, this.A);
+        if (i1 > 0)
+        {
+          float f2 = this.a;
+          float f1 = i1;
+          if (f2 <= f1) {
+            f1 = this.a;
+          }
+          ((hi)localObject1).j = f1;
+        }
+        else
+        {
+          ((hi)localObject1).j = this.a;
+        }
       }
       else
       {
-        localhi.b(new int[] { this.c });
+        ((hi)localObject1).j = this.a;
       }
+      if (this.z == PolylineOptions.ColorType.LINE_COLOR_ARGB)
+      {
+        ((hi)localObject1).h = true;
+        if (this.w * 2.0F > this.a) {
+          this.w = (this.a / 3.0F);
+        }
+        ((hi)localObject1).g = this.w;
+      }
+      int[] arrayOfInt = this.x;
+      if (this.H)
+      {
+        ((hi)localObject1).a(localObject2[1]);
+        if ((this.w > 0.0F) && (arrayOfInt != null) && (arrayOfInt.length > 0)) {
+          ((hi)localObject1).a(localObject2[0], arrayOfInt);
+        } else {
+          ((hi)localObject1).b(localObject2[0]);
+        }
+      }
+      else
+      {
+        ((hi)localObject1).a(new int[] { 0 });
+        if ((this.w > 0.0F) && (arrayOfInt != null) && (arrayOfInt.length > 0))
+        {
+          i1 = this.c;
+          int i2 = arrayOfInt[0];
+          ((hi)localObject1).a(new int[] { i1 }, new int[] { i2 });
+        }
+        else
+        {
+          ((hi)localObject1).b(new int[] { this.c });
+        }
+      }
+      ((hi)localObject1).m = this.D;
+      ((hi)localObject1).o = this.G;
+      ((hi)localObject1).s = ((int)this.d);
+      ((hi)localObject1).p = this.p;
+      ((hi)localObject1).q = this.q;
+      ((hi)localObject1).l = this.K;
+      ((hi)localObject1).n = this.H;
+      ((hi)localObject1).t = this.O;
+      ((hi)localObject1).b(this.Q);
+      ((hi)localObject1).y = this.g;
+      return localObject1;
     }
+    return null;
   }
   
   public final void a(GlAnimation paramGlAnimation)
   {
-    if (this.C != null)
+    GlAnimation localGlAnimation = this.C;
+    if (localGlAnimation != null)
     {
-      this.C.stopAnimation();
+      localGlAnimation.stopAnimation();
       this.C.setAnimationProperty(null);
     }
     if ((paramGlAnimation instanceof GlEmergeAnimation))
@@ -504,25 +538,32 @@ public class mw
   
   public final void a(BitmapDescriptor paramBitmapDescriptor)
   {
-    if ((this.k == null) || (this.k.az == null) || (paramBitmapDescriptor == null) || (paramBitmapDescriptor.getFormater() == null)) {
-      return;
+    pn localpn = this.k;
+    if ((localpn != null) && (localpn.az != null) && (paramBitmapDescriptor != null))
+    {
+      if (paramBitmapDescriptor.getFormater() == null) {
+        return;
+      }
+      this.A = paramBitmapDescriptor;
+      paramBitmapDescriptor = this.A.getBitmap(this.k.ay);
+      oi.a(this.A.getFormater().g, paramBitmapDescriptor);
+      this.z = PolylineOptions.ColorType.LINE_COLOR_TEXTURE;
     }
-    this.A = paramBitmapDescriptor;
-    paramBitmapDescriptor = this.A.getBitmap(this.k.ay);
-    oi.a(this.A.getFormater().g, paramBitmapDescriptor);
-    this.z = PolylineOptions.ColorType.LINE_COLOR_TEXTURE;
   }
   
   public final void a(PolylineOptions paramPolylineOptions)
   {
-    if ((this.k == null) || (this.k.az == null) || (paramPolylineOptions == null)) {
-      return;
-    }
-    if (paramPolylineOptions.getWidth() == -1.0F) {
-      a(this.T * 9.0F);
-    }
-    for (;;)
+    Object localObject1 = this.k;
+    if ((localObject1 != null) && (((pt)localObject1).az != null))
     {
+      if (paramPolylineOptions == null) {
+        return;
+      }
+      if (paramPolylineOptions.getWidth() == -1.0F) {
+        a(this.T * 9.0F);
+      } else {
+        a(paramPolylineOptions.getWidth());
+      }
       super.b(paramPolylineOptions.getColor());
       b(paramPolylineOptions.getZIndex());
       c(paramPolylineOptions.isVisible());
@@ -544,17 +585,22 @@ public class mw
       if (paramPolylineOptions.getArrowTexture() != null)
       {
         localObject1 = paramPolylineOptions.getArrowTexture().getBitmap(this.k.ay);
-        oi.b(this.S + this.R);
-        localObject2 = new StringBuilder().append(this.S);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.S);
+        ((StringBuilder)localObject2).append(this.R);
+        oi.b(((StringBuilder)localObject2).toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.S);
         int i1 = this.R + 1;
         this.R = i1;
-        localObject2 = i1;
+        ((StringBuilder)localObject2).append(i1);
+        localObject2 = ((StringBuilder)localObject2).toString();
         oi.a((String)localObject2, (Bitmap)localObject1);
         this.O = ((String)localObject2);
       }
       this.P = paramPolylineOptions.getArrowSpacing();
       this.H = paramPolylineOptions.isRoad();
-      Object localObject1 = paramPolylineOptions.getAnimation();
+      localObject1 = paramPolylineOptions.getAnimation();
       if (localObject1 != null) {
         a(((Animation)localObject1).glAnimation);
       }
@@ -570,8 +616,6 @@ public class mw
       this.z = a(paramPolylineOptions.getColorType());
       this.o = paramPolylineOptions.getText();
       e();
-      return;
-      a(paramPolylineOptions.getWidth());
     }
   }
   
@@ -579,130 +623,123 @@ public class mw
   {
     this.J = 0.0F;
     this.u.clear();
-    if (paramList == null) {}
-    int i2;
-    do
-    {
+    if (paramList == null) {
       return;
-      i2 = paramList.size();
-    } while (i2 <= 0);
+    }
+    int i2 = paramList.size();
+    if (i2 <= 0) {
+      return;
+    }
     Object localObject1 = null;
     this.v = new ArrayList();
     int i1 = 0;
-    label44:
-    if (i1 < i2)
+    while (i1 < i2)
     {
-      Object localObject2 = (LatLng)paramList.get(i1);
-      if (localObject2 == null) {
-        break label162;
-      }
-      localObject2 = fz.a((LatLng)localObject2);
-      if (localObject2 == null) {
-        break label162;
-      }
-      localObject2 = new mw.a((GeoPoint)localObject2);
-      this.v.add(localObject2);
-      if (localObject1 != null)
+      Object localObject3 = (LatLng)paramList.get(i1);
+      Object localObject2 = localObject1;
+      if (localObject3 != null)
       {
-        this.J += a((GeoPoint)localObject2, (GeoPoint)localObject1);
-        ((mw.a)localObject2).a = this.J;
-        ((mw.a)localObject1).b += 1;
+        localObject3 = fz.a((LatLng)localObject3);
+        localObject2 = localObject1;
+        if (localObject3 != null)
+        {
+          localObject2 = new mw.a((GeoPoint)localObject3);
+          this.v.add(localObject2);
+          if (localObject1 != null)
+          {
+            this.J += a((GeoPoint)localObject2, (GeoPoint)localObject1);
+            ((mw.a)localObject2).a = this.J;
+            ((mw.a)localObject1).b += 1;
+          }
+          this.u.add(localObject2);
+        }
       }
-      this.u.add(localObject2);
-      localObject1 = localObject2;
-    }
-    label162:
-    for (;;)
-    {
       i1 += 1;
-      break label44;
-      break;
+      localObject1 = localObject2;
     }
   }
   
   public final void a(GL10 paramGL10)
   {
     if (!a()) {
-      break label7;
-    }
-    label7:
-    while ((this.k == null) || (this.k.az == null) || (this.C == null) || (!this.C.isStarted())) {
       return;
     }
-    this.C.drawAnimation();
-    ArrayList localArrayList2;
-    ArrayList localArrayList1;
-    if ((this.C instanceof GlEmergeAnimation))
+    paramGL10 = this.k;
+    if (paramGL10 != null)
     {
-      localArrayList2 = this.u;
-      localArrayList1 = new ArrayList();
-      if ((localArrayList2 == null) || (localArrayList2.size() < 2))
+      if (paramGL10.az == null) {
+        return;
+      }
+      paramGL10 = this.C;
+      if ((paramGL10 != null) && (paramGL10.isStarted()))
       {
-        this.v = localArrayList1;
-        if (this.v.size() >= 2) {
+        this.C.drawAnimation();
+        paramGL10 = this.C;
+        if ((paramGL10 instanceof GlEmergeAnimation))
+        {
+          ArrayList localArrayList2 = this.u;
+          ArrayList localArrayList1 = new ArrayList();
+          if ((localArrayList2 != null) && (localArrayList2.size() >= 2))
+          {
+            float f2 = this.E.a;
+            float f3 = this.J;
+            float f4 = this.E.a;
+            float f5 = this.F;
+            float f1 = f2 - f2 * f5;
+            f2 += (f3 - f4) * f5;
+            int i1 = 0;
+            mw.a locala1;
+            for (paramGL10 = null; i1 < localArrayList2.size(); paramGL10 = locala1)
+            {
+              locala1 = (mw.a)localArrayList2.get(i1);
+              if ((locala1.a > f1) && (locala1.a < f2))
+              {
+                if ((paramGL10 != null) && (paramGL10.a < f1))
+                {
+                  f3 = locala1.a;
+                  f4 = paramGL10.a;
+                  mw.a locala2 = a(paramGL10, locala1, (f1 - paramGL10.a) / (f3 - f4));
+                  locala2.b = paramGL10.b;
+                  localArrayList1.add(locala2);
+                }
+                localArrayList1.add(locala1);
+              }
+              else
+              {
+                if (locala1.a > f2)
+                {
+                  if ((paramGL10 == null) || (paramGL10.a >= f2)) {
+                    break;
+                  }
+                  f1 = locala1.a;
+                  f3 = paramGL10.a;
+                  paramGL10 = a(paramGL10, locala1, (f2 - paramGL10.a) / (f1 - f3));
+                  paramGL10.b = locala1.b;
+                  localArrayList1.add(paramGL10);
+                  break;
+                }
+                if ((Float.compare(locala1.a, f1) == 0) || (Float.compare(locala1.a, f2) == 0)) {
+                  localArrayList1.add(locala1);
+                }
+              }
+              i1 += 1;
+            }
+          }
+          this.v = localArrayList1;
+          if (this.v.size() >= 2) {
+            e();
+          }
+        }
+        else if ((paramGL10 instanceof GlAlphaAnimation))
+        {
           e();
         }
-      }
-    }
-    for (;;)
-    {
-      this.k.az.b.k();
-      if (!this.C.isEnded()) {
-        break;
-      }
-      this.C.setAnimationProperty(null);
-      this.C = null;
-      return;
-      float f2 = this.E.a;
-      float f3 = this.J;
-      float f4 = this.E.a;
-      float f1 = this.F;
-      float f5 = this.F;
-      f1 = f2 - f1 * f2;
-      f2 += (f3 - f4) * f5;
-      int i1 = 0;
-      paramGL10 = null;
-      label204:
-      mw.a locala1;
-      if (i1 < localArrayList2.size())
-      {
-        locala1 = (mw.a)localArrayList2.get(i1);
-        if ((locala1.a > f1) && (locala1.a < f2))
+        this.k.az.b.k();
+        if (this.C.isEnded())
         {
-          if ((paramGL10 != null) && (paramGL10.a < f1))
-          {
-            f3 = locala1.a;
-            f4 = paramGL10.a;
-            mw.a locala2 = a(paramGL10, locala1, (f1 - paramGL10.a) / (f3 - f4));
-            locala2.b = paramGL10.b;
-            localArrayList1.add(locala2);
-          }
-          localArrayList1.add(locala1);
+          this.C.setAnimationProperty(null);
+          this.C = null;
         }
-      }
-      for (;;)
-      {
-        i1 += 1;
-        paramGL10 = locala1;
-        break label204;
-        if (locala1.a > f2)
-        {
-          if ((paramGL10 != null) && (paramGL10.a < f2))
-          {
-            f1 = locala1.a;
-            f3 = paramGL10.a;
-            paramGL10 = a(paramGL10, locala1, (f2 - paramGL10.a) / (f1 - f3));
-            paramGL10.b = locala1.b;
-            localArrayList1.add(paramGL10);
-          }
-          break;
-        }
-        if ((Float.compare(locala1.a, f1) == 0) || (Float.compare(locala1.a, f2) == 0)) {
-          localArrayList1.add(locala1);
-        }
-      }
-      if ((this.C instanceof GlAlphaAnimation)) {
-        e();
       }
     }
   }
@@ -724,37 +761,49 @@ public class mw
   
   public final boolean a(float paramFloat1, float paramFloat2)
   {
-    if ((this.k == null) || (this.k.az == null) || (!a())) {}
-    while (this.h == null) {
-      return false;
+    Object localObject = this.k;
+    if ((localObject != null) && (((pt)localObject).az != null))
+    {
+      if (!a()) {
+        return false;
+      }
+      localObject = this.h;
+      if (localObject != null) {
+        return ((ip)localObject).a(paramFloat1, paramFloat2);
+      }
     }
-    return this.h.a(paramFloat1, paramFloat2);
+    return false;
   }
   
   public final void b()
   {
-    if ((this.k != null) && (this.k.az != null) && (this.h != null))
+    Object localObject = this.k;
+    if ((localObject != null) && (((pt)localObject).az != null) && (this.h != null))
     {
       this.k.az.b(this.h);
       this.h = null;
     }
-    if (this.t != null)
+    localObject = this.t;
+    if (localObject != null)
     {
-      this.t.a();
+      ((iq)localObject).a();
       this.t = null;
     }
-    if (this.u != null)
+    localObject = this.u;
+    if (localObject != null)
     {
-      this.u.clear();
+      ((ArrayList)localObject).clear();
       this.u = null;
     }
-    if (this.v != null)
+    localObject = this.v;
+    if (localObject != null)
     {
-      this.v.clear();
+      ((ArrayList)localObject).clear();
       this.v = null;
     }
     oi.b(this.O);
-    if ((this.A != null) && (this.A.getFormater() != null)) {
+    localObject = this.A;
+    if ((localObject != null) && (((BitmapDescriptor)localObject).getFormater() != null)) {
       oi.b(this.A.getFormater().g);
     }
   }
@@ -773,40 +822,51 @@ public class mw
   
   public final void e()
   {
-    if ((this.k == null) || (this.k.az == null)) {}
-    do
+    Object localObject = this.k;
+    if (localObject != null)
     {
-      do
-      {
+      if (((pt)localObject).az == null) {
         return;
-        if (a()) {
-          break;
+      }
+      if (!a())
+      {
+        if (this.h != null)
+        {
+          this.k.az.b(this.h);
+          this.h.g = -1;
+          this.h = null;
         }
-      } while (this.h == null);
-      this.k.az.b(this.h);
-      this.h.g = -1;
-      this.h = null;
-      return;
-    } while ((this.v == null) || (this.v.size() < 2));
-    if (this.h == null)
-    {
-      this.h = new ip(this.k.az.b.f, g());
-      this.k.az.a(this.h);
-    }
-    for (;;)
-    {
-      this.h.a(this.r, this.s);
-      f();
-      this.k.az.b.k();
-      return;
-      this.h.a(g());
+        return;
+      }
+      localObject = this.v;
+      if (localObject != null)
+      {
+        if (((ArrayList)localObject).size() < 2) {
+          return;
+        }
+        localObject = this.h;
+        if (localObject == null)
+        {
+          this.h = new ip(this.k.az.b.f, g());
+          this.k.az.a(this.h);
+        }
+        else
+        {
+          ((ip)localObject).a(g());
+        }
+        this.h.a(this.r, this.s);
+        f();
+        this.k.az.b.k();
+      }
     }
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    while (!(paramObject instanceof mw)) {
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof mw)) {
       return false;
     }
     paramObject = (mw)paramObject;
@@ -830,7 +890,7 @@ public class mw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.mw
  * JD-Core Version:    0.7.0.1
  */

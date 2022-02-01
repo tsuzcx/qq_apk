@@ -2,7 +2,9 @@ package cooperation.qzone.report.lp;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 
 public class QZoneLoginReportHelper
 {
@@ -29,82 +31,111 @@ public class QZoneLoginReportHelper
   
   private static void addLoginInfo(Intent paramIntent, int paramInt)
   {
-    if ((paramIntent == null) || (paramInt <= 0)) {
-      return;
+    if (paramIntent != null)
+    {
+      if (paramInt <= 0) {
+        return;
+      }
+      paramIntent.putExtra("login_from_mqq", paramInt);
     }
-    paramIntent.putExtra("login_from_mqq", paramInt);
   }
   
   public static void handleLoginFromIntent(Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    int i;
-    do
-    {
+    if (paramIntent == null) {
       return;
-      i = paramIntent.getIntExtra("login_from_mqq", 0);
-    } while (i == 0);
+    }
+    int i = paramIntent.getIntExtra("login_from_mqq", 0);
+    if (i == 0) {
+      return;
+    }
     paramIntent = new LpReportInfo_pf00034(i);
     LpReportManager.getInstance().reportToPF00034(paramIntent);
   }
   
   public static void handleLoginToMyAlbum(Intent paramIntent, int paramInt)
   {
-    if ((paramIntent == null) || (paramInt <= 0)) {
-      return;
-    }
-    switch (paramInt)
+    if (paramIntent != null)
     {
-    default: 
-      return;
-    case 5: 
+      if (paramInt <= 0) {
+        return;
+      }
+      if (paramInt != 5)
+      {
+        if (paramInt != 12) {
+          return;
+        }
+        setLoginFromSearch(paramIntent);
+        return;
+      }
       setLoginFromMyAlbum(paramIntent);
-      return;
     }
-    setLoginFromSearch(paramIntent);
   }
   
   public static boolean needAddLoginFromAIOFeedCard(Intent paramIntent, String paramString)
   {
-    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
+    if ((paramIntent != null) && (!TextUtils.isEmpty(paramString))) {
+      return paramString.equals("mqqChat.QzoneCard");
     }
-    return paramString.equals("mqqChat.QzoneCard");
+    return false;
   }
   
   public static boolean needAddLoginFromAIOFeedShare(Intent paramIntent, String paramString)
   {
-    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
+    if ((paramIntent != null) && (!TextUtils.isEmpty(paramString))) {
+      return paramString.equals("mqqChat");
     }
-    return paramString.equals("mqqChat");
+    return false;
   }
   
   public static boolean needAddLoginFromFriendProfile(Intent paramIntent, String paramString, int paramInt)
   {
-    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {}
-    while (paramInt != 5) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramIntent != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      bool1 = bool2;
+      if (paramInt == 5) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   public static boolean needAddLoginFromLebaTab(Intent paramIntent, String paramString)
   {
-    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {}
-    while ((!paramString.startsWith("com.qzone")) || (!paramString.endsWith("QZoneFriendFeedActivity"))) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramIntent != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      bool1 = bool2;
+      if (paramString.startsWith("com.qzone"))
+      {
+        bool1 = bool2;
+        if (paramString.endsWith("QZoneFriendFeedActivity")) {
+          bool1 = true;
+        }
+      }
     }
-    return true;
+    return bool1;
   }
   
   public static boolean needAddLoginFromQunAlbum(Intent paramIntent, int paramInt)
   {
-    if (paramIntent == null) {}
-    while (paramInt != 7) {
+    boolean bool = false;
+    if (paramIntent == null) {
       return false;
     }
-    return true;
+    if (paramInt == ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getChatSettingForTroopQZONEPHOTOCode()) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static void reportLoginFromActivateFriend()
@@ -126,32 +157,40 @@ public class QZoneLoginReportHelper
     }
     for (;;)
     {
+      int j;
       try
       {
-        i = Integer.parseInt(paramString);
-        if (i <= 0) {
-          break;
+        j = Integer.parseInt(paramString);
+        if (j > 0) {
+          break label49;
         }
-        switch (i)
-        {
-        case 8: 
-          paramString = new LpReportInfo_pf00034(i);
-          LpReportManager.getInstance().reportToPF00034(paramString);
-          return;
-        }
+        return;
       }
       catch (Exception paramString)
       {
         QLog.e(LpReportInfo_pf00034.TAG, 1, paramString, new Object[0]);
         return;
       }
-      int i = 9;
-      continue;
-      i = 10;
-      continue;
-      i = 11;
-      continue;
-      i = 8;
+      paramString = new LpReportInfo_pf00034(i);
+      LpReportManager.getInstance().reportToPF00034(paramString);
+      return;
+      label49:
+      int i = 11;
+      if (j != 8)
+      {
+        if (j != 11)
+        {
+          if (j != 12) {
+            i = 8;
+          }
+        }
+        else {
+          i = 10;
+        }
+      }
+      else {
+        i = 9;
+      }
     }
   }
   
@@ -178,6 +217,8 @@ public class QZoneLoginReportHelper
     LpReportInfo_pf00034 localLpReportInfo_pf00034 = new LpReportInfo_pf00034(16);
     LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
   }
+  
+  public static void reportLoginFromQZoneMsgFeed() {}
   
   public static void reportLoginFromQunAlbum()
   {
@@ -228,7 +269,7 @@ public class QZoneLoginReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.QZoneLoginReportHelper
  * JD-Core Version:    0.7.0.1
  */

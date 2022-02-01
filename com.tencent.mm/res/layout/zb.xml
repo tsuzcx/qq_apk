@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:layout_gravity="center_vertical" android:id="@id/at" android:focusable="false" android:visibility="visible" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" android:layout_marginLeft="@dimen/dl" />
-</merge>
+<com.google.android.material.internal.NavigationMenuView android:id="@id/c2p" android:paddingBottom="@dimen/a1l" android:scrollbars="vertical" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

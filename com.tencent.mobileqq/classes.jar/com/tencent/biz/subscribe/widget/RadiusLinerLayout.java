@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bdaq;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class RadiusLinerLayout
   extends LinearLayout
 {
-  public static final int a = bdaq.a(BaseApplicationImpl.context, 8.0F);
+  public static final int a = DisplayUtil.a(BaseApplicationImpl.context, 8.0F);
   private int b = a;
   
   public RadiusLinerLayout(Context paramContext)
@@ -34,6 +34,12 @@ public class RadiusLinerLayout
     setWillNotDraw(false);
   }
   
+  private void setRadius(int paramInt)
+  {
+    this.b = paramInt;
+    invalidate();
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
@@ -41,7 +47,7 @@ public class RadiusLinerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.RadiusLinerLayout
  * JD-Core Version:    0.7.0.1
  */

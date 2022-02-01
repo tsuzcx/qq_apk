@@ -1,97 +1,141 @@
 package com.tencent.mm.v;
 
-import a.f.b.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.f;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ba;
-import com.tencent.mm.u.b.a;
-import com.tencent.mm.u.d;
-import com.tencent.mm.u.e;
+import com.tencent.mm.api.j;
+import com.tencent.mm.api.u;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.s.b.a;
+import com.tencent.mm.s.d;
+import com.tencent.mm.s.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.storage.bu;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/executor/OpUpdateExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsgItem", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/executor/OpUpdateExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsgItem", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   implements b
 {
-  public static final g.a ezd;
+  public static final g.a mqj;
   
   static
   {
-    AppMethodBeat.i(35496);
-    ezd = new g.a((byte)0);
-    AppMethodBeat.o(35496);
+    AppMethodBeat.i(114149);
+    mqj = new g.a((byte)0);
+    AppMethodBeat.o(114149);
   }
   
-  public final void a(e parame, com.tencent.mm.api.l paraml, ba paramba, f paramf1, f paramf2, long paramLong)
+  public final void a(e parame, final u paramu, final d paramd)
   {
-    AppMethodBeat.i(35494);
-    j.q(parame, "timer");
-    j.q(paraml, "dispatcher");
-    j.q(paramba, "storage");
-    j.q(paramf1, "newFunctionMsgItem");
-    paramf1.bl(true);
-    if (paramf2 == null)
-    {
-      ab.i("FunctionMsg.OpUpdateExecutor", "[OpUpdateExecutor] op update, insert a new one! ".concat(String.valueOf(paramf1)));
-      paramba.insert((c)paramf1);
-      parame.a(0, paramf1, (b)this);
-      AppMethodBeat.o(35494);
-      return;
-    }
-    if (paramf2.getVersion() < paramf1.getVersion())
-    {
-      ab.i("FunctionMsg.OpUpdateExecutor", "[OpUpdateExecutor] op update, update the exist one! [%s:%s]", new Object[] { paramf1, paramf2 });
-      paramf2.aD(paramf2.getVersion());
-      paramf1.aD(paramf2.getVersion());
-      paraml = paramf2.Ad();
-      j.p(paraml, "oldFunctionMsgItem!!.functionMsgId");
-      ba.a(paraml, paramf1);
-      parame.a(0, paramf1, (b)this);
-      AppMethodBeat.o(35494);
-      return;
-    }
-    if (paramf2.getVersion() >= paramf1.getVersion()) {
-      ab.e("FunctionMsg.OpUpdateExecutor", "[OpUpdateExecutor], id:%s old:new [%s:%s]", new Object[] { paramf2.Ad(), Long.valueOf(paramf2.getVersion()), Long.valueOf(paramf1.getVersion()) });
-    }
-    AppMethodBeat.o(35494);
-  }
-  
-  public final void a(e parame, com.tencent.mm.api.l paraml, d paramd)
-  {
-    AppMethodBeat.i(35495);
-    j.q(parame, "timer");
-    j.q(paraml, "dispatcher");
-    j.q(paramd, "task");
-    f localf = paramd.eyP;
-    if (localf.getStatus() == -1)
+    AppMethodBeat.i(114148);
+    s.u(parame, "timer");
+    s.u(paramu, "dispatcher");
+    s.u(paramd, "task");
+    final j localj = paramd.mpT;
+    if (localj.field_status == -1)
     {
       LinkedList localLinkedList = new LinkedList();
-      localLinkedList.add(localf);
-      new com.tencent.mm.u.b((List)localLinkedList, paraml, (b.a)new g.b(parame, paramd, localf, paraml)).Pm();
-      AppMethodBeat.o(35495);
+      localLinkedList.add(localj);
+      new com.tencent.mm.s.b((List)localLinkedList, paramu, (b.a)new b(parame, paramd, localj, paramu)).aXc();
+      AppMethodBeat.o(114148);
       return;
     }
-    if ((localf.getStatus() == 2) || (localf.getStatus() == -2))
+    if ((localj.field_status == 2) || (localj.field_status == -2))
     {
-      ab.i("FunctionMsg.OpUpdateExecutor", "[onTaskExpired] id" + localf.Ad() + " actionTime:" + localf.Ai());
-      if (localf.Ai() <= cb.abp() / 1000L)
+      Log.i("FunctionMsg.OpUpdateExecutor", "[onTaskExpired] id" + localj.field_functionmsgid + " actionTime:" + localj.field_actionTime);
+      if (localj.field_actionTime <= cn.bDu() / 1000L)
       {
-        paraml.a(localf.Ad(), localf, localf.Ag());
-        AppMethodBeat.o(35495);
+        paramu.a(localj.field_functionmsgid, localj, localj.field_addMsg, (List)localj.aBt());
+        AppMethodBeat.o(114148);
         return;
       }
-      parame.a(localf.Ac(), localf, paramd.eyQ);
+      parame.a(localj.field_opCode, localj, paramd.mpU);
     }
-    AppMethodBeat.o(35495);
+    AppMethodBeat.o(114148);
+  }
+  
+  public final void a(e parame, u paramu, bu parambu, j paramj1, j paramj2, long paramLong)
+  {
+    AppMethodBeat.i(114147);
+    s.u(parame, "timer");
+    s.u(paramu, "dispatcher");
+    s.u(parambu, "storage");
+    s.u(paramj1, "newFunctionMsgItem");
+    paramj1.field_needShow = true;
+    if (paramj2 == null) {
+      Log.i("FunctionMsg.OpUpdateExecutor", s.X("[OpUpdateExecutor] op update, insert a new one! ", paramj1));
+    }
+    try
+    {
+      parambu.insert((IAutoDBItem)paramj1);
+      label63:
+      parame.a(0, paramj1, (b)this);
+      AppMethodBeat.o(114147);
+      return;
+      if (paramj2.field_version < paramj1.field_version)
+      {
+        Log.i("FunctionMsg.OpUpdateExecutor", "[OpUpdateExecutor] op update, update the exist one! [%s:%s]", new Object[] { paramj1, paramj2 });
+        paramj2.field_preVersion = paramj2.field_version;
+        paramj1.field_preVersion = paramj2.field_version;
+        paramu = paramj2.field_functionmsgid;
+        s.s(paramu, "oldFunctionMsgItem!!.functionMsgId");
+        bu.a(paramu, paramj1);
+        parame.a(0, paramj1, (b)this);
+        AppMethodBeat.o(114147);
+        return;
+      }
+      if (paramj2.field_version >= paramj1.field_version) {
+        Log.e("FunctionMsg.OpUpdateExecutor", "[OpUpdateExecutor], id:%s old:new [%s:%s]", new Object[] { paramj2.field_functionmsgid, Long.valueOf(paramj2.field_version), Long.valueOf(paramj1.field_version) });
+      }
+      AppMethodBeat.o(114147);
+      return;
+    }
+    catch (Exception paramu)
+    {
+      break label63;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/executor/OpUpdateExecutor$onTaskExpired$1", "Lcom/tencent/mm/engine/FunctionMsgFetcher$IFunctionMsgFetcherCallback;", "onFailFetch", "", "item", "Lcom/tencent/mm/api/FunctionMsgItem;", "onSuccessFetch", "plugin-functionmsg_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements b.a
+  {
+    b(e parame, d paramd, j paramj, u paramu) {}
+    
+    public final void a(j paramj)
+    {
+      AppMethodBeat.i(114146);
+      s.u(paramj, "item");
+      Log.i("FunctionMsg.OpUpdateExecutor", s.X("[onSuccessFetch] item:", paramj));
+      if (paramj.field_actionTime > cn.bDu() / 1000L)
+      {
+        this.mqc.a(0, paramj, paramd.mpU);
+        AppMethodBeat.o(114146);
+        return;
+      }
+      Log.i("FunctionMsg.OpUpdateExecutor", s.X("[onTaskExpired] to show! id:", localj.field_functionmsgid));
+      paramu.a(paramj.field_functionmsgid, paramj, paramj.field_addMsg, (List)paramj.aBt());
+      AppMethodBeat.o(114146);
+    }
+    
+    public final void b(j paramj)
+    {
+      AppMethodBeat.i(114145);
+      s.u(paramj, "item");
+      Log.w("FunctionMsg.OpUpdateExecutor", s.X("[onFailFetch] item:", paramj));
+      if (paramj.field_status == -1) {
+        this.mqc.a(-1, paramj, paramd.mpU);
+      }
+      AppMethodBeat.o(114145);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.v.g
  * JD-Core Version:    0.7.0.1
  */

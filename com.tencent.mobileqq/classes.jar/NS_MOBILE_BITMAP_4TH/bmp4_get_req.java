@@ -11,8 +11,8 @@ public final class bmp4_get_req
   static ArrayList<String> cache_vec_keys;
   static ArrayList<Long> cache_vec_uins = new ArrayList();
   public int bitmap_id = 4;
-  public ArrayList<String> vec_keys;
-  public ArrayList<Long> vec_uins;
+  public ArrayList<String> vec_keys = null;
+  public ArrayList<Long> vec_uins = null;
   
   static
   {
@@ -39,18 +39,20 @@ public final class bmp4_get_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vec_uins != null) {
-      paramJceOutputStream.write(this.vec_uins, 0);
+    ArrayList localArrayList = this.vec_uins;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
-    if (this.vec_keys != null) {
-      paramJceOutputStream.write(this.vec_keys, 1);
+    localArrayList = this.vec_keys;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
     paramJceOutputStream.write(this.bitmap_id, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_BITMAP_4TH.bmp4_get_req
  * JD-Core Version:    0.7.0.1
  */

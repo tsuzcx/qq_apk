@@ -1,96 +1,209 @@
 package com.tencent.token;
 
-import java.net.ProtocolException;
-import okhttp3.ah;
-import okhttp3.ai;
-import okhttp3.ap;
-import okhttp3.ar;
-import okhttp3.at;
-import okhttp3.au;
-import okhttp3.av;
-import okhttp3.internal.connection.c;
-import okhttp3.internal.connection.g;
-import okhttp3.y;
-import okio.h;
-import okio.o;
-import okio.x;
+import android.content.res.Resources;
+import android.util.LongSparseArray;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public final class hb
-  implements ah
+final class hb
 {
-  private final boolean a;
+  private static Field a;
+  private static boolean b;
+  private static Class c;
+  private static boolean d;
+  private static Field e;
+  private static boolean f;
+  private static Field g;
+  private static boolean h;
   
-  public hb(boolean paramBoolean)
+  static boolean a(Resources paramResources)
   {
-    this.a = paramBoolean;
+    if (!b) {}
+    try
+    {
+      Field localField = Resources.class.getDeclaredField("mDrawableCache");
+      a = localField;
+      localField.setAccessible(true);
+      label23:
+      b = true;
+      localField = a;
+      if (localField != null) {}
+      try
+      {
+        paramResources = (Map)localField.get(paramResources);
+      }
+      catch (IllegalAccessException paramResources)
+      {
+        label47:
+        break label47;
+      }
+      paramResources = null;
+      if (paramResources != null)
+      {
+        paramResources.clear();
+        return true;
+      }
+      return false;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      break label23;
+    }
   }
   
-  public at a(ai paramai)
+  private static boolean a(Object paramObject)
   {
-    hi localhi = (hi)paramai;
-    hd localhd = localhi.g();
-    g localg = localhi.f();
-    Object localObject = (c)localhi.e();
-    ap localap = localhi.a();
-    long l = System.currentTimeMillis();
-    localhi.i().c(localhi.h());
-    localhd.a(localap);
-    localhi.i().a(localhi.h(), localap);
-    paramai = null;
-    if ((hh.c(localap.b())) && (localap.d() != null))
+    if (!d) {}
+    try
     {
-      if ("100-continue".equalsIgnoreCase(localap.a("Expect")))
-      {
-        localhd.a();
-        localhi.i().e(localhi.h());
-        paramai = localhd.a(true);
+      c = Class.forName("android.content.res.ThemedResourceCache");
+      d = true;
+      localObject = c;
+      if (localObject == null) {
+        return false;
       }
-      if (paramai == null)
+      if (f) {}
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      try
       {
-        localhi.i().d(localhi.h());
-        localObject = new hc(localhd.a(localap, localap.d().b()));
-        h localh = o.a((x)localObject);
-        localap.d().a(localh);
-        localh.close();
-        localhi.i().a(localhi.h(), ((hc)localObject).a);
+        Object localObject = ((Class)localObject).getDeclaredField("mUnthemedEntries");
+        e = (Field)localObject;
+        ((Field)localObject).setAccessible(true);
+        label50:
+        f = true;
+        localObject = e;
+        if (localObject == null) {
+          return false;
+        }
+        try
+        {
+          paramObject = (LongSparseArray)((Field)localObject).get(paramObject);
+        }
+        catch (IllegalAccessException paramObject)
+        {
+          label76:
+          break label76;
+        }
+        paramObject = null;
+        if (paramObject != null)
+        {
+          paramObject.clear();
+          return true;
+        }
+        return false;
+        localClassNotFoundException = localClassNotFoundException;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label50;
       }
     }
-    for (;;)
+  }
+  
+  static boolean b(Resources paramResources)
+  {
+    if (!b) {}
+    try
     {
-      localhd.b();
-      localObject = paramai;
-      if (paramai == null)
+      localObject1 = Resources.class.getDeclaredField("mDrawableCache");
+      a = (Field)localObject1;
+      ((Field)localObject1).setAccessible(true);
+      b = true;
+      localObject3 = null;
+      localField = a;
+      localObject1 = localObject3;
+      if (localField == null) {}
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      try
       {
-        localhi.i().e(localhi.h());
-        localObject = localhd.a(false);
+        Field localField;
+        Object localObject1 = localField.get(paramResources);
+        if (localObject1 == null) {
+          return false;
+        }
+        return (localObject1 != null) && (a(localObject1));
+        localNoSuchFieldException = localNoSuchFieldException;
       }
-      paramai = ((au)localObject).a(localap).a(localg.c().c()).a(l).b(System.currentTimeMillis()).a();
-      int j = paramai.b();
-      int i = j;
-      if (j == 100)
+      catch (IllegalAccessException paramResources)
       {
-        paramai = localhd.a(false).a(localap).a(localg.c().c()).a(l).b(System.currentTimeMillis()).a();
-        i = paramai.b();
+        for (;;)
+        {
+          Object localObject3;
+          Object localObject2 = localObject3;
+        }
       }
-      localhi.i().a(localhi.h(), paramai);
-      if ((this.a) && (i == 101)) {}
-      for (paramai = paramai.f().a(gn.c).a();; paramai = paramai.f().a(localhd.a(paramai)).a())
+    }
+  }
+  
+  static boolean c(Resources paramResources)
+  {
+    if (!h) {}
+    try
+    {
+      localObject1 = Resources.class.getDeclaredField("mResourcesImpl");
+      g = (Field)localObject1;
+      ((Field)localObject1).setAccessible(true);
+      h = true;
+      localObject1 = g;
+      if (localObject1 == null) {
+        return false;
+      }
+      localObject3 = null;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException2)
+    {
+      try
       {
-        if (("close".equalsIgnoreCase(paramai.a().a("Connection"))) || ("close".equalsIgnoreCase(paramai.a("Connection")))) {
-          localg.e();
+        paramResources = ((Field)localObject1).get(paramResources);
+        break label50;
+        paramResources = null;
+        label50:
+        if (paramResources == null) {
+          return false;
         }
-        if (((i != 204) && (i != 205)) || (paramai.e().a() <= 0L)) {
-          break label539;
-        }
-        throw new ProtocolException("HTTP " + i + " had non-zero Content-Length: " + paramai.e().a());
-        if (!((c)localObject).d()) {
-          localg.e();
-        }
-        break;
+        if (b) {}
       }
-      label539:
-      return paramai;
-      paramai = null;
+      catch (IllegalAccessException localNoSuchFieldException2)
+      {
+        try
+        {
+          localObject1 = paramResources.getClass().getDeclaredField("mDrawableCache");
+          a = (Field)localObject1;
+          ((Field)localObject1).setAccessible(true);
+          b = true;
+          localField = a;
+          localObject1 = localObject3;
+          if (localField == null) {}
+        }
+        catch (NoSuchFieldException localNoSuchFieldException2)
+        {
+          try
+          {
+            for (;;)
+            {
+              Field localField;
+              Object localObject1 = localField.get(paramResources);
+              return (localObject1 != null) && (a(localObject1));
+              localNoSuchFieldException1 = localNoSuchFieldException1;
+              continue;
+              paramResources = paramResources;
+            }
+            localNoSuchFieldException2 = localNoSuchFieldException2;
+          }
+          catch (IllegalAccessException paramResources)
+          {
+            for (;;)
+            {
+              Object localObject3;
+              Object localObject2 = localObject3;
+            }
+          }
+        }
+      }
     }
   }
 }

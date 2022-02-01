@@ -8,12 +8,12 @@ final class ImageManager$12
 {
   public boolean accept(File paramFile, String paramString)
   {
-    return !"imagelru.usetime".equals(paramString);
+    return "imagelru.usetime".equals(paramString) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.ImageManager.12
  * JD-Core Version:    0.7.0.1
  */

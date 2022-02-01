@@ -84,7 +84,10 @@ final class MetadataUtil
       paramParsableByteArray = paramParsableByteArray.readNullTerminatedString(i - 16);
       return new CommentFrame("und", paramParsableByteArray, paramParsableByteArray);
     }
-    Log.w("MetadataUtil", "Failed to parse comment attribute: " + Atom.getAtomTypeString(paramInt));
+    paramParsableByteArray = new StringBuilder();
+    paramParsableByteArray.append("Failed to parse comment attribute: ");
+    paramParsableByteArray.append(Atom.getAtomTypeString(paramInt));
+    Log.w("MetadataUtil", paramParsableByteArray.toString());
     return null;
   }
   
@@ -97,16 +100,18 @@ final class MetadataUtil
       String str;
       if (j == 13) {
         str = "image/jpeg";
+      } else if (j == 14) {
+        str = "image/png";
+      } else {
+        str = null;
       }
-      while (str == null)
+      if (str == null)
       {
-        Log.w("MetadataUtil", "Unrecognized cover art flags: " + j);
+        paramParsableByteArray = new StringBuilder();
+        paramParsableByteArray.append("Unrecognized cover art flags: ");
+        paramParsableByteArray.append(j);
+        Log.w("MetadataUtil", paramParsableByteArray.toString());
         return null;
-        if (j == 14) {
-          str = "image/png";
-        } else {
-          str = null;
-        }
       }
       paramParsableByteArray.skipBytes(4);
       byte[] arrayOfByte = new byte[i - 16];
@@ -119,153 +124,155 @@ final class MetadataUtil
   
   public static Metadata.Entry parseIlstElement(ParsableByteArray paramParsableByteArray)
   {
-    int i = paramParsableByteArray.getPosition();
-    i = paramParsableByteArray.readInt() + i;
+    int i = paramParsableByteArray.getPosition() + paramParsableByteArray.readInt();
     int j = paramParsableByteArray.readInt();
     int k = j >> 24 & 0xFF;
-    if ((k == 169) || (k == 65533)) {
-      k = 0xFFFFFF & j;
-    }
+    if ((k != 169) && (k != 65533)) {}
     try
     {
-      Object localObject1;
-      if (k == SHORT_TYPE_COMMENT)
+      if (j == TYPE_GENRE)
       {
-        localObject1 = parseCommentAttribute(j, paramParsableByteArray);
+        localObject1 = parseStandardGenreAttribute(paramParsableByteArray);
         return localObject1;
       }
-      if ((k == SHORT_TYPE_NAME_1) || (k == SHORT_TYPE_NAME_2))
+      if (j == TYPE_DISK_NUMBER)
       {
-        localObject1 = parseTextAttribute(j, "TIT2", paramParsableByteArray);
+        localObject1 = parseIndexAndCountAttribute(j, "TPOS", paramParsableByteArray);
         return localObject1;
       }
-      if ((k == SHORT_TYPE_COMPOSER_1) || (k == SHORT_TYPE_COMPOSER_2))
+      if (j == TYPE_TRACK_NUMBER)
       {
-        localObject1 = parseTextAttribute(j, "TCOM", paramParsableByteArray);
+        localObject1 = parseIndexAndCountAttribute(j, "TRCK", paramParsableByteArray);
         return localObject1;
       }
-      if (k == SHORT_TYPE_YEAR)
+      if (j == TYPE_TEMPO)
       {
-        localObject1 = parseTextAttribute(j, "TDRC", paramParsableByteArray);
+        localObject1 = parseUint8Attribute(j, "TBPM", paramParsableByteArray, true, false);
         return localObject1;
       }
-      if (k == SHORT_TYPE_ARTIST)
+      if (j == TYPE_COMPILATION)
       {
-        localObject1 = parseTextAttribute(j, "TPE1", paramParsableByteArray);
+        localObject1 = parseUint8Attribute(j, "TCMP", paramParsableByteArray, true, true);
         return localObject1;
       }
-      if (k == SHORT_TYPE_ENCODER)
+      if (j == TYPE_COVER_ART)
       {
-        localObject1 = parseTextAttribute(j, "TSSE", paramParsableByteArray);
+        localObject1 = parseCoverArt(paramParsableByteArray);
         return localObject1;
       }
-      if (k == SHORT_TYPE_ALBUM)
+      if (j == TYPE_ALBUM_ARTIST)
       {
-        localObject1 = parseTextAttribute(j, "TALB", paramParsableByteArray);
+        localObject1 = parseTextAttribute(j, "TPE2", paramParsableByteArray);
         return localObject1;
       }
-      if (k == SHORT_TYPE_LYRICS)
+      if (j == TYPE_SORT_TRACK_NAME)
       {
-        localObject1 = parseTextAttribute(j, "USLT", paramParsableByteArray);
+        localObject1 = parseTextAttribute(j, "TSOT", paramParsableByteArray);
         return localObject1;
       }
-      if (k == SHORT_TYPE_GENRE)
+      if (j == TYPE_SORT_ALBUM)
       {
-        localObject1 = parseTextAttribute(j, "TCON", paramParsableByteArray);
+        localObject1 = parseTextAttribute(j, "TSO2", paramParsableByteArray);
         return localObject1;
       }
-      if (k == TYPE_GROUPING)
+      if (j == TYPE_SORT_ARTIST)
       {
-        localObject1 = parseTextAttribute(j, "TIT1", paramParsableByteArray);
+        localObject1 = parseTextAttribute(j, "TSOA", paramParsableByteArray);
         return localObject1;
-        if (j == TYPE_GENRE)
+      }
+      if (j == TYPE_SORT_ALBUM_ARTIST)
+      {
+        localObject1 = parseTextAttribute(j, "TSOP", paramParsableByteArray);
+        return localObject1;
+      }
+      if (j == TYPE_SORT_COMPOSER)
+      {
+        localObject1 = parseTextAttribute(j, "TSOC", paramParsableByteArray);
+        return localObject1;
+      }
+      if (j == TYPE_RATING)
+      {
+        localObject1 = parseUint8Attribute(j, "ITUNESADVISORY", paramParsableByteArray, false, false);
+        return localObject1;
+      }
+      if (j == TYPE_GAPLESS_ALBUM)
+      {
+        localObject1 = parseUint8Attribute(j, "ITUNESGAPLESS", paramParsableByteArray, false, true);
+        return localObject1;
+      }
+      if (j == TYPE_TV_SORT_SHOW)
+      {
+        localObject1 = parseTextAttribute(j, "TVSHOWSORT", paramParsableByteArray);
+        return localObject1;
+      }
+      if (j == TYPE_TV_SHOW)
+      {
+        localObject1 = parseTextAttribute(j, "TVSHOW", paramParsableByteArray);
+        return localObject1;
+      }
+      if (j == TYPE_INTERNAL)
+      {
+        localObject1 = parseInternalAttribute(paramParsableByteArray, i);
+        return localObject1;
+        k = 0xFFFFFF & j;
+        if (k == SHORT_TYPE_COMMENT)
         {
-          localObject1 = parseStandardGenreAttribute(paramParsableByteArray);
+          localObject1 = parseCommentAttribute(j, paramParsableByteArray);
           return localObject1;
         }
-        if (j == TYPE_DISK_NUMBER)
+        if ((k == SHORT_TYPE_NAME_1) || (k == SHORT_TYPE_NAME_2)) {
+          break label764;
+        }
+        if ((k == SHORT_TYPE_COMPOSER_1) || (k == SHORT_TYPE_COMPOSER_2)) {
+          break label746;
+        }
+        if (k == SHORT_TYPE_YEAR)
         {
-          localObject1 = parseIndexAndCountAttribute(j, "TPOS", paramParsableByteArray);
+          localObject1 = parseTextAttribute(j, "TDRC", paramParsableByteArray);
           return localObject1;
         }
-        if (j == TYPE_TRACK_NUMBER)
+        if (k == SHORT_TYPE_ARTIST)
         {
-          localObject1 = parseIndexAndCountAttribute(j, "TRCK", paramParsableByteArray);
+          localObject1 = parseTextAttribute(j, "TPE1", paramParsableByteArray);
           return localObject1;
         }
-        if (j == TYPE_TEMPO)
+        if (k == SHORT_TYPE_ENCODER)
         {
-          localObject1 = parseUint8Attribute(j, "TBPM", paramParsableByteArray, true, false);
+          localObject1 = parseTextAttribute(j, "TSSE", paramParsableByteArray);
           return localObject1;
         }
-        if (j == TYPE_COMPILATION)
+        if (k == SHORT_TYPE_ALBUM)
         {
-          localObject1 = parseUint8Attribute(j, "TCMP", paramParsableByteArray, true, true);
+          localObject1 = parseTextAttribute(j, "TALB", paramParsableByteArray);
           return localObject1;
         }
-        if (j == TYPE_COVER_ART)
+        if (k == SHORT_TYPE_LYRICS)
         {
-          localObject1 = parseCoverArt(paramParsableByteArray);
+          localObject1 = parseTextAttribute(j, "USLT", paramParsableByteArray);
           return localObject1;
         }
-        if (j == TYPE_ALBUM_ARTIST)
+        if (k == SHORT_TYPE_GENRE)
         {
-          localObject1 = parseTextAttribute(j, "TPE2", paramParsableByteArray);
+          localObject1 = parseTextAttribute(j, "TCON", paramParsableByteArray);
           return localObject1;
         }
-        if (j == TYPE_SORT_TRACK_NAME)
+        if (k == TYPE_GROUPING)
         {
-          localObject1 = parseTextAttribute(j, "TSOT", paramParsableByteArray);
-          return localObject1;
-        }
-        if (j == TYPE_SORT_ALBUM)
-        {
-          localObject1 = parseTextAttribute(j, "TSO2", paramParsableByteArray);
-          return localObject1;
-        }
-        if (j == TYPE_SORT_ARTIST)
-        {
-          localObject1 = parseTextAttribute(j, "TSOA", paramParsableByteArray);
-          return localObject1;
-        }
-        if (j == TYPE_SORT_ALBUM_ARTIST)
-        {
-          localObject1 = parseTextAttribute(j, "TSOP", paramParsableByteArray);
-          return localObject1;
-        }
-        if (j == TYPE_SORT_COMPOSER)
-        {
-          localObject1 = parseTextAttribute(j, "TSOC", paramParsableByteArray);
-          return localObject1;
-        }
-        if (j == TYPE_RATING)
-        {
-          localObject1 = parseUint8Attribute(j, "ITUNESADVISORY", paramParsableByteArray, false, false);
-          return localObject1;
-        }
-        if (j == TYPE_GAPLESS_ALBUM)
-        {
-          localObject1 = parseUint8Attribute(j, "ITUNESGAPLESS", paramParsableByteArray, false, true);
-          return localObject1;
-        }
-        if (j == TYPE_TV_SORT_SHOW)
-        {
-          localObject1 = parseTextAttribute(j, "TVSHOWSORT", paramParsableByteArray);
-          return localObject1;
-        }
-        if (j == TYPE_TV_SHOW)
-        {
-          localObject1 = parseTextAttribute(j, "TVSHOW", paramParsableByteArray);
-          return localObject1;
-        }
-        if (j == TYPE_INTERNAL)
-        {
-          localObject1 = parseInternalAttribute(paramParsableByteArray, i);
+          localObject1 = parseTextAttribute(j, "TIT1", paramParsableByteArray);
           return localObject1;
         }
       }
-      Log.d("MetadataUtil", "Skipped unknown metadata entry: " + Atom.getAtomTypeString(j));
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Skipped unknown metadata entry: ");
+      ((StringBuilder)localObject1).append(Atom.getAtomTypeString(j));
+      Log.d("MetadataUtil", ((StringBuilder)localObject1).toString());
       return null;
+      label746:
+      localObject1 = parseTextAttribute(j, "TCOM", paramParsableByteArray);
+      return localObject1;
+      label764:
+      localObject1 = parseTextAttribute(j, "TIT2", paramParsableByteArray);
+      return localObject1;
     }
     finally
     {
@@ -282,25 +289,36 @@ final class MetadataUtil
       i = paramParsableByteArray.readUnsignedShort();
       if (i > 0)
       {
-        String str = "" + i;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(i);
+        localObject = ((StringBuilder)localObject).toString();
         paramInt = paramParsableByteArray.readUnsignedShort();
-        paramParsableByteArray = str;
-        if (paramInt > 0) {
-          paramParsableByteArray = str + "/" + paramInt;
+        paramParsableByteArray = (ParsableByteArray)localObject;
+        if (paramInt > 0)
+        {
+          paramParsableByteArray = new StringBuilder();
+          paramParsableByteArray.append((String)localObject);
+          paramParsableByteArray.append("/");
+          paramParsableByteArray.append(paramInt);
+          paramParsableByteArray = paramParsableByteArray.toString();
         }
         return new TextInformationFrame(paramString, null, paramParsableByteArray);
       }
     }
-    Log.w("MetadataUtil", "Failed to parse index/count attribute: " + Atom.getAtomTypeString(paramInt));
+    paramString = new StringBuilder();
+    paramString.append("Failed to parse index/count attribute: ");
+    paramString.append(Atom.getAtomTypeString(paramInt));
+    Log.w("MetadataUtil", paramString.toString());
     return null;
   }
   
   private static Id3Frame parseInternalAttribute(ParsableByteArray paramParsableByteArray, int paramInt)
   {
+    String str2 = null;
+    String str1 = str2;
     int j = -1;
     int i = -1;
-    String str2 = null;
-    String str1 = null;
     while (paramParsableByteArray.getPosition() < paramInt)
     {
       int m = paramParsableByteArray.getPosition();
@@ -309,35 +327,49 @@ final class MetadataUtil
       paramParsableByteArray.skipBytes(4);
       if (n == Atom.TYPE_mean)
       {
-        str1 = paramParsableByteArray.readNullTerminatedString(k - 12);
+        str2 = paramParsableByteArray.readNullTerminatedString(k - 12);
       }
       else if (n == Atom.TYPE_name)
       {
-        str2 = paramParsableByteArray.readNullTerminatedString(k - 12);
+        str1 = paramParsableByteArray.readNullTerminatedString(k - 12);
       }
       else
       {
         if (n == Atom.TYPE_data)
         {
-          j = k;
-          i = m;
+          j = m;
+          i = k;
         }
         paramParsableByteArray.skipBytes(k - 12);
       }
     }
-    if ((!"com.apple.iTunes".equals(str1)) || (!"iTunSMPB".equals(str2)) || (i == -1)) {
-      return null;
+    if (("com.apple.iTunes".equals(str2)) && ("iTunSMPB".equals(str1)))
+    {
+      if (j == -1) {
+        return null;
+      }
+      paramParsableByteArray.setPosition(j);
+      paramParsableByteArray.skipBytes(16);
+      return new CommentFrame("und", str1, paramParsableByteArray.readNullTerminatedString(i - 16));
     }
-    paramParsableByteArray.setPosition(i);
-    paramParsableByteArray.skipBytes(16);
-    return new CommentFrame("und", str2, paramParsableByteArray.readNullTerminatedString(j - 16));
+    return null;
   }
   
   private static TextInformationFrame parseStandardGenreAttribute(ParsableByteArray paramParsableByteArray)
   {
     int i = parseUint8AttributeValue(paramParsableByteArray);
-    if ((i > 0) && (i <= STANDARD_GENRES.length)) {}
-    for (paramParsableByteArray = STANDARD_GENRES[(i - 1)]; paramParsableByteArray != null; paramParsableByteArray = null) {
+    if (i > 0)
+    {
+      paramParsableByteArray = STANDARD_GENRES;
+      if (i <= paramParsableByteArray.length)
+      {
+        paramParsableByteArray = paramParsableByteArray[(i - 1)];
+        break label30;
+      }
+    }
+    paramParsableByteArray = null;
+    label30:
+    if (paramParsableByteArray != null) {
       return new TextInformationFrame("TCON", null, paramParsableByteArray);
     }
     Log.w("MetadataUtil", "Failed to parse standard genre code");
@@ -352,28 +384,32 @@ final class MetadataUtil
       paramParsableByteArray.skipBytes(8);
       return new TextInformationFrame(paramString, null, paramParsableByteArray.readNullTerminatedString(i - 16));
     }
-    Log.w("MetadataUtil", "Failed to parse text attribute: " + Atom.getAtomTypeString(paramInt));
+    paramString = new StringBuilder();
+    paramString.append("Failed to parse text attribute: ");
+    paramString.append(Atom.getAtomTypeString(paramInt));
+    Log.w("MetadataUtil", paramString.toString());
     return null;
   }
   
   private static Id3Frame parseUint8Attribute(int paramInt, String paramString, ParsableByteArray paramParsableByteArray, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = parseUint8AttributeValue(paramParsableByteArray);
+    int j = parseUint8AttributeValue(paramParsableByteArray);
+    int i = j;
     if (paramBoolean2) {
-      i = Math.min(1, i);
+      i = Math.min(1, j);
     }
-    for (;;)
+    if (i >= 0)
     {
-      if (i >= 0)
-      {
-        if (paramBoolean1) {
-          return new TextInformationFrame(paramString, null, Integer.toString(i));
-        }
-        return new CommentFrame("und", paramString, Integer.toString(i));
+      if (paramBoolean1) {
+        return new TextInformationFrame(paramString, null, Integer.toString(i));
       }
-      Log.w("MetadataUtil", "Failed to parse uint8 attribute: " + Atom.getAtomTypeString(paramInt));
-      return null;
+      return new CommentFrame("und", paramString, Integer.toString(i));
     }
+    paramString = new StringBuilder();
+    paramString.append("Failed to parse uint8 attribute: ");
+    paramString.append(Atom.getAtomTypeString(paramInt));
+    Log.w("MetadataUtil", paramString.toString());
+    return null;
   }
   
   private static int parseUint8AttributeValue(ParsableByteArray paramParsableByteArray)
@@ -390,7 +426,7 @@ final class MetadataUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.MetadataUtil
  * JD-Core Version:    0.7.0.1
  */

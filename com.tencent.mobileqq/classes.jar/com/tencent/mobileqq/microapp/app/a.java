@@ -38,7 +38,6 @@ public final class a
       d.put("android.permission.READ_EXTERNAL_STORAGE", "需要存储权限，请到设置中设置");
       d.put("android.permission.WRITE_EXTERNAL_STORAGE", "需要存储权限，请到设置中设置");
     }
-    c.put("operateCamera", "android.permission.CAMERA");
     d.put("android.permission.ACCESS_FINE_LOCATION", "需要位置权限，请到设置中设置");
     d.put("android.permission.CALL_PHONE", "需要电话权限，请到设置中设置");
     d.put("android.permission.RECORD_AUDIO", "需要麦克风权限，请到设置中设置");
@@ -75,7 +74,7 @@ public final class a
   
   public static boolean b(String paramString1, String paramString2)
   {
-    return !TextUtils.isEmpty(c(paramString1, paramString2));
+    return TextUtils.isEmpty(c(paramString1, paramString2)) ^ true;
   }
   
   public static String c(String paramString1, String paramString2)
@@ -126,22 +125,21 @@ public final class a
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      if (!paramBoolean) {
-        break label36;
-      }
-    }
-    label36:
-    for (int i = 2;; i = (int)(System.currentTimeMillis() / 1000L) + this.f)
+    if (!TextUtils.isEmpty(paramString))
     {
+      int i;
+      if (paramBoolean) {
+        i = 2;
+      } else {
+        i = (int)(System.currentTimeMillis() / 1000L) + this.f;
+      }
       this.e.edit().putInt(paramString, i).commit();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.app.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Button android:layout_gravity="center_horizontal" android:id="@id/f88" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="插入一条数据" style="@style/oh" />
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b8d" app:refreshLayout="@layout/ca6">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/hq8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cp" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+</LinearLayout>

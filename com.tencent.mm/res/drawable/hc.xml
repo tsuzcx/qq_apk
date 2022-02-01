@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/is" />
-    <corners android:radius="4.0dip" />
-</shape>
+    <item>
+        <shape>
+            <solid android:color="@color/FG_3" />
+        </shape>
+    </item>
+    <item android:left="0.5px" android:right="0.5px">
+        <shape>
+            <solid android:color="@color/c" />
+        </shape>
+    </item>
+</layer-list>

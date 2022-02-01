@@ -1,26 +1,43 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afeq;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.InputFilter;
+import android.text.Spanned;
 
-public class FullScreenInputHelper$4
-  implements Runnable
+class FullScreenInputHelper$4
+  implements InputFilter
 {
-  public FullScreenInputHelper$4(afeq paramafeq) {}
+  FullScreenInputHelper$4(FullScreenInputHelper paramFullScreenInputHelper) {}
   
-  public void run()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    QQToast localQQToast = new QQToast(this.this$0.a);
-    localQQToast.a(QQToast.a(1));
-    localQQToast.b(1);
-    localQQToast.d(2000);
-    localQQToast.c(2131694237);
-    localQQToast.a();
+    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
+    if (paramInt3 <= 0)
+    {
+      FullScreenInputHelper.b(this.a);
+      return "";
+    }
+    if (paramInt3 >= paramInt2 - paramInt1) {
+      return null;
+    }
+    paramInt3 += paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    {
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1)
+      {
+        FullScreenInputHelper.b(this.a);
+        return "";
+      }
+    }
+    FullScreenInputHelper.b(this.a);
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.4
  * JD-Core Version:    0.7.0.1
  */

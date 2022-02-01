@@ -19,10 +19,10 @@ public class ReflectIoModule
       {
         this.reflectCount += 1;
         if (this.ioCanaryCore == null) {
-          this.ioCanaryCore = Class.forName("com.tencent.qapmsdk.io.IOCanaryCore");
+          this.ioCanaryCore = Class.forName("com.tencent.qapmsdk.io.IoCanaryCore");
         }
         if (this.getIoStatus == null) {
-          this.getIoStatus = this.ioCanaryCore.getDeclaredMethod("getIOStatus", new Class[0]);
+          this.getIoStatus = this.ioCanaryCore.getDeclaredMethod("getIoStatus", new Class[0]);
         }
         this.canReflect = true;
       }
@@ -42,7 +42,7 @@ public class ReflectIoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.reflect.ReflectIoModule
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,26 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import android.view.Gravity;
-import vtj;
-import vtk;
-import wxj;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-public class StoryPlayerGlobalHolder$GroupOnPageChangeListener$1
+class StoryPlayerGlobalHolder$GroupOnPageChangeListener$1
   implements Runnable
 {
-  public StoryPlayerGlobalHolder$GroupOnPageChangeListener$1(vtk paramvtk) {}
+  StoryPlayerGlobalHolder$GroupOnPageChangeListener$1(StoryPlayerGlobalHolder.GroupOnPageChangeListener paramGroupOnPageChangeListener) {}
   
   public void run()
   {
-    if (Gravity.isVertical(this.a.a.a.b()))
+    if (Gravity.isVertical(this.a.d.b.getmDraggedDirection()))
     {
-      wxj.a("play_video", "slide_up_down", 0, 0, new String[] { "1", "", "", "" });
+      StoryReportor.a("play_video", "slide_up_down", 0, 0, new String[] { "1", "", "", "" });
       return;
     }
-    wxj.a("play_video", "slide_zuoyou", 0, 0, new String[] { "1", "", "", "" });
+    StoryReportor.a("play_video", "slide_zuoyou", 0, 0, new String[] { "1", "", "", "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGlobalHolder.GroupOnPageChangeListener.1
  * JD-Core Version:    0.7.0.1
  */

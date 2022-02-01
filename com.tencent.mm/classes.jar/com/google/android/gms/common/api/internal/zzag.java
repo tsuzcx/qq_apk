@@ -30,21 +30,21 @@ public final class zzag
   
   public final void connect()
   {
-    AppMethodBeat.i(60715);
+    AppMethodBeat.i(11207);
     if (this.zzhg)
     {
       this.zzhg = false;
       this.zzhf.zza(new zzai(this, this));
     }
-    AppMethodBeat.o(60715);
+    AppMethodBeat.o(11207);
   }
   
   public final boolean disconnect()
   {
-    AppMethodBeat.i(60714);
+    AppMethodBeat.i(11206);
     if (this.zzhg)
     {
-      AppMethodBeat.o(60714);
+      AppMethodBeat.o(11206);
       return false;
     }
     if (this.zzhf.zzfq.zzba())
@@ -54,25 +54,25 @@ public final class zzag
       while (localIterator.hasNext()) {
         ((zzch)localIterator.next()).zzcc();
       }
-      AppMethodBeat.o(60714);
+      AppMethodBeat.o(11206);
       return false;
     }
     this.zzhf.zzf(null);
-    AppMethodBeat.o(60714);
+    AppMethodBeat.o(11206);
     return true;
   }
   
   public final <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
-    AppMethodBeat.i(60712);
+    AppMethodBeat.i(11204);
     paramT = execute(paramT);
-    AppMethodBeat.o(60712);
+    AppMethodBeat.o(11204);
     return paramT;
   }
   
   public final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
-    AppMethodBeat.i(60713);
+    AppMethodBeat.i(11205);
     try
     {
       this.zzhf.zzfq.zzir.zzb(paramT);
@@ -85,7 +85,7 @@ public final class zzag
       }
       for (;;)
       {
-        AppMethodBeat.o(60713);
+        AppMethodBeat.o(11205);
         return paramT;
         localObject1 = localObject2;
         if ((localObject2 instanceof SimpleClientAdapter)) {
@@ -107,29 +107,29 @@ public final class zzag
   
   public final void onConnectionSuspended(int paramInt)
   {
-    AppMethodBeat.i(60716);
+    AppMethodBeat.i(11208);
     this.zzhf.zzf(null);
     this.zzhf.zzjf.zzb(paramInt, this.zzhg);
-    AppMethodBeat.o(60716);
+    AppMethodBeat.o(11208);
   }
   
   public final void zza(ConnectionResult paramConnectionResult, Api<?> paramApi, boolean paramBoolean) {}
   
   final void zzap()
   {
-    AppMethodBeat.i(60717);
+    AppMethodBeat.i(11209);
     if (this.zzhg)
     {
       this.zzhg = false;
       this.zzhf.zzfq.zzir.release();
       disconnect();
     }
-    AppMethodBeat.o(60717);
+    AppMethodBeat.o(11209);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzag
  * JD-Core Version:    0.7.0.1
  */

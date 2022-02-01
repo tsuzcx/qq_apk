@@ -29,10 +29,10 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import hjq;
 import hjr;
 import hjs;
 import hjt;
-import hju;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -75,9 +75,9 @@ public class SwitchAccountActivity
   {
     this.jdField_a_of_type_MqqManagerWtloginManager = null;
     this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hjr(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new hjt(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new hju(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new hjq(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new hjs(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new hjt(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -231,7 +231,7 @@ public class SwitchAccountActivity
   {
     super.setTitle(2131562999);
     this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131234579));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131234578));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -327,7 +327,7 @@ public class SwitchAccountActivity
     }
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     LayoutInflater localLayoutInflater = super.getLayoutInflater();
-    hjs localhjs = new hjs(this);
+    hjr localhjr = new hjr(this);
     int k = 0;
     int i = 0;
     int j = i;
@@ -370,7 +370,7 @@ public class SwitchAccountActivity
           ((View)localObject4).setBackgroundResource(2130837882);
         }
         ((Button)((View)localObject4).findViewById(2131230988)).setOnClickListener(this);
-        ((View)localObject4).setOnClickListener(localhjs);
+        ((View)localObject4).setOnClickListener(localhjr);
         ((View)localObject4).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         ((View)localObject4).setTag(localObject2);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject4);
@@ -409,7 +409,7 @@ public class SwitchAccountActivity
           ((View)localObject1).setBackgroundResource(2130837882);
         }
         ((Button)((View)localObject1).findViewById(2131230988)).setOnClickListener(this);
-        ((View)localObject1).setOnClickListener(localhjs);
+        ((View)localObject1).setOnClickListener(localhjr);
         ((View)localObject1).setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         ((View)localObject1).setTag(localObject3);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1);

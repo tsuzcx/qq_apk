@@ -1,53 +1,58 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.avc;
-import com.tencent.mm.protocal.protobuf.avd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dad;
+import com.tencent.mm.protocal.protobuf.dae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.r;
 
 public final class f
-  extends p
+  extends r
 {
+  public dae JAA;
   private final String TAG;
-  public avd nHg;
   
   public f()
   {
-    AppMethodBeat.i(41727);
+    AppMethodBeat.i(64622);
     this.TAG = "MicroMsg.NetSceneHoneyPayerList";
-    b.a locala = new b.a();
-    locala.fsX = new avc();
-    locala.fsY = new avd();
+    c.a locala = new c.a();
+    locala.otE = new dad();
+    locala.otF = new dae();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/mmpay-bin/honeypayerlist";
-    locala.reqCmdId = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    AppMethodBeat.o(41727);
+    this.rr = locala.bEF();
+    c.b.b(this.rr.otB);
+    AppMethodBeat.o(64622);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
-    AppMethodBeat.i(41728);
-    ab.i("MicroMsg.NetSceneHoneyPayerList", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.nHg = ((avd)((b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneHoneyPayerList", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nHg.koj), this.nHg.kok });
+    AppMethodBeat.i(64623);
+    Log.i("MicroMsg.NetSceneHoneyPayerList", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.JAA = ((dae)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneHoneyPayerList", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.JAA.wuz), this.JAA.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    AppMethodBeat.o(41728);
+    AppMethodBeat.o(64623);
   }
   
-  public final void e(q paramq)
+  public final void f(s params)
   {
-    paramq = (avd)((b)paramq).fsW.fta;
-    this.AXb = paramq.koj;
-    this.AXc = paramq.kok;
+    AppMethodBeat.i(267301);
+    params = (dae)c.c.b(((c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(267301);
   }
   
   public final int getType()
@@ -57,7 +62,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.a.f
  * JD-Core Version:    0.7.0.1
  */

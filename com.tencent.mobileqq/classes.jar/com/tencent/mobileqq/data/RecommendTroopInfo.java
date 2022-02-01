@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecommendTroopInfo
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public int authType;
@@ -29,23 +29,25 @@ public class RecommendTroopInfo
   public short option;
   public String ownerUin;
   public String tag;
-  @awhs
+  @unique
   public String uin;
   
   public Object clone()
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("RecommendTroop", 2, "RecommendTroopInfo clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("RecommendTroopInfo clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.d("RecommendTroop", 2, localStringBuilder.toString());
+      }
     }
     return this;
   }

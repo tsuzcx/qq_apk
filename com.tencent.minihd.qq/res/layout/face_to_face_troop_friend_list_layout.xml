@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/list_root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/titleBar" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@string/face_to_face_troop_friend_list_title" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+        <TextView android:gravity="center" android:id="@id/ivTitleBtnRight" android:background="@drawable/top_button_right_selector" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="36.0dip" android:maxWidth="100.0dip" android:minWidth="52.0dip" android:text="@string/face_to_face_troop_friend_map_mode" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/face2face_troop_friend_listview_layout_bg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.XListView android:id="@id/troopFriendListView" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@null" android:divider="@null" />
+        <TextView android:textSize="@dimen/face2face_troop_friend_count_prefix_text_size" android:textColor="@color/face2face_troop_friend_count_prefix_color" android:gravity="center" android:id="@id/face2faceEmptyView" android:background="@color/white" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/face2face_troop_friend_count_layout_height" android:text="@string/face_to_face_no_friend_tips" />
+    </LinearLayout>
+</LinearLayout>

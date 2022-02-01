@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajlh;
 import android.content.Context;
 import android.content.res.Resources;
-import aozj;
-import axlx;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import ssp;
-import swy;
+import mqq.util.LogUtil;
 
 public class RecentItemServiceAccountFolderData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   private static final String TAG = "RecentItemServiceAccountFolderData";
   private static int tryResetServiceAccountFolderDeleteFlag;
@@ -28,98 +29,130 @@ public class RecentItemServiceAccountFolderData
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {
-      return;
-    }
-    super.a(paramQQAppInterface, paramContext);
-    boolean bool = swy.a;
-    label35:
-    ssp localssp;
-    if (bool)
+    if (paramQQAppInterface != null)
     {
-      this.mMenuFlag |= 0x1;
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentItemServiceAccountFolderData", 2, "uin:" + paramQQAppInterface.c() + ", canDelete:" + bool + ", mMenuFlag:" + this.mMenuFlag);
+      if (paramContext == null) {
+        return;
       }
-      localssp = ssp.a();
-      this.mTitleName = ssp.a(paramQQAppInterface);
-      this.mDisplayTime = localssp.a(paramQQAppInterface);
-      this.mUnreadNum = localssp.b();
-      Manager localManager = paramQQAppInterface.getManager(36);
-      if ((localManager instanceof axlx))
+      super.a(paramQQAppInterface, paramContext);
+      boolean bool = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getServiceFolderRedDelete();
+      if (bool)
       {
-        int i = ((axlx)localManager).a("104000.104001", 100);
-        if (i > 0) {
-          this.mUnreadNum += i;
+        this.mMenuFlag |= 0x1;
+      }
+      else
+      {
+        this.mMenuFlag &= 0xFFFFFFFE;
+        if (tryResetServiceAccountFolderDeleteFlag < 3)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("canDelete:");
+          ((StringBuilder)localObject).append(bool);
+          ((StringBuilder)localObject).append(", mMenuFlag:");
+          ((StringBuilder)localObject).append(this.mMenuFlag);
+          ((StringBuilder)localObject).append(" tryResetServiceAccountFolderDeleteFlag = ");
+          ((StringBuilder)localObject).append(tryResetServiceAccountFolderDeleteFlag);
+          QLog.d("RecentItemServiceAccountFolderData", 1, ((StringBuilder)localObject).toString());
+          ConfigServlet.b(paramQQAppInterface, paramQQAppInterface.getCurrentUin());
+          tryResetServiceAccountFolderDeleteFlag += 1;
         }
-        QLog.d("RecentItemServiceAccountFolderData", 2, "uin:" + paramQQAppInterface.c() + "getSubscribeAccountRedDotNum  numRedNumByAppIdAndMsgType:" + i + "   mUnreadNum: " + this.mUnreadNum);
       }
-      if (this.mUnreadNum > 0) {
-        break label665;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("uin:");
+        ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentUin());
+        ((StringBuilder)localObject).append(", canDelete:");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append(", mMenuFlag:");
+        ((StringBuilder)localObject).append(this.mMenuFlag);
+        QLog.d("RecentItemServiceAccountFolderData", 2, ((StringBuilder)localObject).toString());
       }
-      if ((!localssp.a()) || (this.mDisplayTime <= localssp.b())) {
-        break label657;
+      Object localObject = ServiceAccountFolderManager.a();
+      this.mTitleName = ServiceAccountFolderManager.h(paramQQAppInterface);
+      this.mDisplayTime = ((ServiceAccountFolderManager)localObject).i(paramQQAppInterface);
+      this.mUnreadNum = ((ServiceAccountFolderManager)localObject).h();
+      int i = ((IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getNumRedNumByPath("104000.104001", 100);
+      if (i > 0) {
+        this.mUnreadNum += i;
       }
-      this.mUnreadFlag = 2;
-      this.mUnreadNum = 1;
-      label253:
-      if (this.mDisplayTime == 0L) {
-        break label673;
+      QLog.d("RecentItemServiceAccountFolderData", 2, new Object[] { "uin: ", LogUtil.wrapLogUin(paramQQAppInterface.getCurrentUin()), " getSubscribeAccountRedDotNum  numRedNumByAppIdAndMsgType: ", Integer.valueOf(i), " mUnreadNum: ", Integer.valueOf(this.mUnreadNum) });
+      if (this.mUnreadNum <= 0)
+      {
+        if ((((ServiceAccountFolderManager)localObject).i()) && (this.mDisplayTime > ((ServiceAccountFolderManager)localObject).e()))
+        {
+          this.mUnreadFlag = 2;
+          this.mUnreadNum = 1;
+        }
+        else
+        {
+          this.mUnreadFlag = 0;
+        }
       }
-      this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
-      label280:
-      this.mReportKeyBytesOacMsgxtend = localssp.b();
-      this.mLastMsg = localssp.a(paramQQAppInterface);
-      if (!localssp.b()) {
-        break label686;
+      else {
+        this.mUnreadFlag = 1;
       }
-      this.mStatus = 4;
-      label312:
-      if ((this.mUnreadNum <= 0) || (this.mUnreadFlag != 1)) {
-        break label694;
+      if (this.mDisplayTime != 0L) {
+        this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
+      } else {
+        this.mShowTime = ((ServiceAccountFolderManager)localObject).j(paramQQAppInterface);
       }
-      this.mMsgExtroInfo = localssp.c();
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
-    }
-    for (;;)
-    {
-      if (AppSetting.c)
+      this.mReportKeyBytesOacMsgxtend = ((ServiceAccountFolderManager)localObject).j();
+      this.mLastMsg = ((ServiceAccountFolderManager)localObject).l(paramQQAppInterface);
+      if (((ServiceAccountFolderManager)localObject).l()) {
+        this.mStatus = 4;
+      } else {
+        this.mStatus = 0;
+      }
+      if ((this.mUnreadNum > 0) && (this.mUnreadFlag == 1))
+      {
+        this.mMsgExtroInfo = ((ServiceAccountFolderManager)localObject).k();
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
+      }
+      else
+      {
+        this.mMsgExtroInfo = "";
+      }
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(this.mTitleName).append(",");
-        if (this.mMsgExtroInfo != null) {
-          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
+        paramQQAppInterface.append(this.mTitleName);
+        paramQQAppInterface.append(",");
+        if (this.mMsgExtroInfo != null)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(this.mMsgExtroInfo);
+          paramContext.append(",");
+          paramQQAppInterface.append(paramContext.toString());
         }
-        paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+        paramQQAppInterface.append(this.mLastMsg);
+        paramQQAppInterface.append(",");
+        paramQQAppInterface.append(this.mShowTime);
         this.mContentDesc = paramQQAppInterface.toString();
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("mTitleName:");
+        paramQQAppInterface.append(this.mTitleName);
+        paramQQAppInterface.append(", mDisplayTime:");
+        paramQQAppInterface.append(this.mDisplayTime);
+        paramQQAppInterface.append(", mUnreadNum:");
+        paramQQAppInterface.append(this.mUnreadNum);
+        paramQQAppInterface.append(", mUnreadFlag:");
+        paramQQAppInterface.append(this.mUnreadFlag);
+        paramQQAppInterface.append(", mShowTime:");
+        paramQQAppInterface.append(this.mShowTime);
+        paramQQAppInterface.append(", mStatus:");
+        paramQQAppInterface.append(this.mStatus);
+        paramQQAppInterface.append(", mMsgExtroInfo:");
+        paramQQAppInterface.append(this.mMsgExtroInfo);
+        paramQQAppInterface.append(", mExtraInfoColor:");
+        paramQQAppInterface.append(this.mExtraInfoColor);
+        paramQQAppInterface.append(", mLastMsg:");
+        paramQQAppInterface.append(this.mLastMsg);
+        QLog.d("RecentItemServiceAccountFolderData", 2, paramQQAppInterface.toString());
       }
-      QLog.d("RecentItemServiceAccountFolderData", 2, "mTitleName:" + this.mTitleName + ", mDisplayTime:" + this.mDisplayTime + ", mUnreadNum:" + this.mUnreadNum + ", mUnreadFlag:" + this.mUnreadFlag + ", mShowTime:" + this.mShowTime + ", mStatus:" + this.mStatus + ", mMsgExtroInfo:" + this.mMsgExtroInfo + ", mExtraInfoColor:" + this.mExtraInfoColor + ", mLastMsg:" + this.mLastMsg);
-      return;
-      this.mMenuFlag &= 0xFFFFFFFE;
-      if (tryResetServiceAccountFolderDeleteFlag >= 3) {
-        break label35;
-      }
-      QLog.d("RecentItemServiceAccountFolderData", 1, "canDelete:" + bool + ", mMenuFlag:" + this.mMenuFlag + " tryResetServiceAccountFolderDeleteFlag = " + tryResetServiceAccountFolderDeleteFlag);
-      aozj.c(paramQQAppInterface, paramQQAppInterface.c());
-      tryResetServiceAccountFolderDeleteFlag += 1;
-      break label35;
-      label657:
-      this.mUnreadFlag = 0;
-      break label253;
-      label665:
-      this.mUnreadFlag = 1;
-      break label253;
-      label673:
-      this.mShowTime = localssp.b(paramQQAppInterface);
-      break label280;
-      label686:
-      this.mStatus = 0;
-      break label312;
-      label694:
-      this.mMsgExtroInfo = "";
     }
   }
 }

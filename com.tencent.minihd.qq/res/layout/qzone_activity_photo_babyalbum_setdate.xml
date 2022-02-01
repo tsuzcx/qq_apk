@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.ExtendLinearLayout android:orientation="vertical" android:id="@id/albumEdit" android:paddingLeft="12.0dip" android:paddingTop="15.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/name_text_layout" android:background="@drawable/qzone_inputbox_upload_pic" android:clickable="false" android:layout_width="fill_parent" android:layout_height="51.0dip">
+            <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="宝宝生日" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff48afff" android:gravity="center_vertical" android:id="@id/birthTextView" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="0.0dip" android:text="" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <DatePicker android:layout_gravity="center_horizontal" android:id="@id/datePicker" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
+    </com.qzone.widget.ExtendLinearLayout>
+</LinearLayout>

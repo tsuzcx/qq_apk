@@ -1,6 +1,5 @@
 package com.tencent.aekit.api.standard.filter;
 
-import com.tencent.aekit.openrender.internal.AEChainI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
@@ -8,7 +7,7 @@ import com.tencent.ttpic.openapi.filter.FaceFeatureParam;
 import com.tencent.ttpic.openapi.filter.TTBeautyV5BeautyFaceList;
 
 public class AEFaceBeauty
-  extends AEChainI
+  extends AEFaceBeautyBase
 {
   private static final String TAG = "AEFaceBeautyV5";
   private int beautyLevel;
@@ -56,10 +55,16 @@ public class AEFaceBeauty
   
   public void clear()
   {
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.clear();
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.clear();
     }
     this.mIsApplied = false;
+  }
+  
+  public String getVersion()
+  {
+    return "V5";
   }
   
   public boolean isValid()
@@ -69,19 +74,65 @@ public class AEFaceBeauty
   
   public String printParamInfo()
   {
-    return "AESmoothPrev2 {beautyLevel=" + this.beautyLevel + ", eyeLightenLevel=" + this.eyeLightenLevel + ", toothWhitenLevel=" + this.toothWhitenLevel + ", removePounchLevel=" + this.removePounchLevel + ", removeWrinklesLevel=" + this.removeWrinklesLevel + ", colorToneLevel=" + this.colorToneLevel + ", contrastRatioLevel=" + this.contrastRatioLevel + ", isVeryLowDevice=" + this.isVeryLowDevice + ", normalAlphaFactor=" + this.normalAlphaFactor + ", faceFeatureNormalAlpha=" + this.faceFeatureNormalAlpha + ", faceFeatureMultiplyAlpha=" + this.faceFeatureMultiplyAlpha + ", faceFeatureSoftlightAlpha=" + this.faceFeatureSoftlightAlpha + ", showFaceFeatureFilter=" + this.showFaceFeatureFilter + ", lipsLutAlpha=" + this.lipsLutAlpha + ", lipsLutPath=" + this.lipsLutPath + ", renderMode=" + this.renderMode + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AESmoothPrev2 {beautyLevel=");
+    localStringBuilder.append(this.beautyLevel);
+    localStringBuilder.append(", eyeLightenLevel=");
+    localStringBuilder.append(this.eyeLightenLevel);
+    localStringBuilder.append(", toothWhitenLevel=");
+    localStringBuilder.append(this.toothWhitenLevel);
+    localStringBuilder.append(", removePounchLevel=");
+    localStringBuilder.append(this.removePounchLevel);
+    localStringBuilder.append(", removeWrinklesLevel=");
+    localStringBuilder.append(this.removeWrinklesLevel);
+    localStringBuilder.append(", colorToneLevel=");
+    localStringBuilder.append(this.colorToneLevel);
+    localStringBuilder.append(", contrastRatioLevel=");
+    localStringBuilder.append(this.contrastRatioLevel);
+    localStringBuilder.append(", isVeryLowDevice=");
+    localStringBuilder.append(this.isVeryLowDevice);
+    localStringBuilder.append(", normalAlphaFactor=");
+    localStringBuilder.append(this.normalAlphaFactor);
+    localStringBuilder.append(", faceFeatureNormalAlpha=");
+    localStringBuilder.append(this.faceFeatureNormalAlpha);
+    localStringBuilder.append(", faceFeatureMultiplyAlpha=");
+    localStringBuilder.append(this.faceFeatureMultiplyAlpha);
+    localStringBuilder.append(", faceFeatureSoftlightAlpha=");
+    localStringBuilder.append(this.faceFeatureSoftlightAlpha);
+    localStringBuilder.append(", showFaceFeatureFilter=");
+    localStringBuilder.append(this.showFaceFeatureFilter);
+    localStringBuilder.append(", lipsLutAlpha=");
+    localStringBuilder.append(this.lipsLutAlpha);
+    localStringBuilder.append(", lipsLutPath=");
+    localStringBuilder.append(this.lipsLutPath);
+    localStringBuilder.append(", renderMode=");
+    localStringBuilder.append(this.renderMode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public Frame render(Frame paramFrame)
   {
-    if (this.isSkipBeautyRender) {}
-    do
-    {
+    if (this.isSkipBeautyRender) {
       return paramFrame;
-      configFilter();
-    } while ((this.mBeautyFaceList == null) || (this.mFaceAttr == null) || (this.mFaceAttr.getFaceCount() <= 0));
-    this.mBeautyFaceList.updateVideoSize(this.mVideoWidth, this.mVideoHeight, this.mFaceScale);
-    return this.mBeautyFaceList.render2(paramFrame, this.mFaceAttr.getAllFacePoints(), this.mFaceAttr.getPointsVis(), this.mFaceAttr.getFaceStatusList(), this.isVeryLowDevice, this.isLoadSo);
+    }
+    configFilter();
+    Frame localFrame = paramFrame;
+    if (this.mBeautyFaceList != null)
+    {
+      PTFaceAttr localPTFaceAttr = this.mFaceAttr;
+      localFrame = paramFrame;
+      if (localPTFaceAttr != null)
+      {
+        localFrame = paramFrame;
+        if (localPTFaceAttr.getFaceCount() > 0)
+        {
+          this.mBeautyFaceList.updateVideoSize(this.mVideoWidth, this.mVideoHeight, this.mFaceScale);
+          localFrame = this.mBeautyFaceList.render2(paramFrame, this.mFaceAttr.getAllFacePoints(), this.mFaceAttr.getPointsVis(), this.mFaceAttr.getFaceStatusList(), this.isVeryLowDevice, this.isLoadSo);
+        }
+      }
+    }
+    return localFrame;
   }
   
   public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
@@ -93,75 +144,99 @@ public class AEFaceBeauty
   {
     switch (AEFaceBeauty.1.$SwitchMap$com$tencent$ttpic$openapi$config$BeautyRealConfig$TYPE[paramTYPE.ordinal()])
     {
-    }
-    while (((this.isSkipRenderEnabled) && (isAllZeroLevel()) && ((this.lipsLutPath == null) || (this.lipsLutPath.isEmpty()))) || ("None/null".equals(this.lipsLutPath)))
-    {
-      this.isSkipBeautyRender = true;
-      return;
-      this.beautyLevel = paramInt;
-      this.mBeautyFaceList.setBeautyLevel(this.beautyLevel / 100.0F);
-      continue;
-      this.eyeLightenLevel = paramInt;
-      this.mBeautyFaceList.setEyeOpacity(this.eyeLightenLevel / 100.0F);
-      continue;
-      this.toothWhitenLevel = paramInt;
-      this.mBeautyFaceList.setToothWhitenAlpha(this.toothWhitenLevel / 80.0F);
-      continue;
-      this.removePounchLevel = paramInt;
-      this.mBeautyFaceList.setEyePouchOpacity(this.removePounchLevel / 100.0F);
-      continue;
-      this.removeWrinklesLevel = paramInt;
-      this.mBeautyFaceList.setSmoothOpacity(this.removeWrinklesLevel / 100.0F);
-      continue;
-      this.removeWrinkles2Level = paramInt;
-      this.mBeautyFaceList.setSmoothOpacity2(this.removeWrinkles2Level / 100.0F);
-      continue;
-      this.colorToneLevel = paramInt;
-      this.mBeautyFaceList.setSkinColorAlpha((this.colorToneLevel - 50) / 50.0F);
-      continue;
+    default: 
+      break;
+    case 8: 
       this.contrastRatioLevel = paramInt;
       this.mBeautyFaceList.setContrastLevel(this.contrastRatioLevel);
+      break;
+    case 7: 
+      this.colorToneLevel = paramInt;
+      this.mBeautyFaceList.setSkinColorAlpha((this.colorToneLevel - 50) / 50.0F);
+      break;
+    case 6: 
+      this.removeWrinkles2Level = paramInt;
+      this.mBeautyFaceList.setSmoothOpacity2(this.removeWrinkles2Level / 100.0F);
+      break;
+    case 5: 
+      this.removeWrinklesLevel = paramInt;
+      this.mBeautyFaceList.setSmoothOpacity(this.removeWrinklesLevel / 100.0F);
+      break;
+    case 4: 
+      this.removePounchLevel = paramInt;
+      this.mBeautyFaceList.setEyePouchOpacity(this.removePounchLevel / 100.0F);
+      break;
+    case 3: 
+      this.toothWhitenLevel = paramInt;
+      this.mBeautyFaceList.setToothWhitenAlpha(this.toothWhitenLevel / 80.0F);
+      break;
+    case 2: 
+      this.eyeLightenLevel = paramInt;
+      this.mBeautyFaceList.setEyeOpacity(this.eyeLightenLevel / 100.0F);
+      break;
+    case 1: 
+      this.beautyLevel = paramInt;
+      this.mBeautyFaceList.setBeautyLevel(this.beautyLevel / 100.0F);
     }
+    if ((this.isSkipRenderEnabled) && (isAllZeroLevel()))
+    {
+      paramTYPE = this.lipsLutPath;
+      if ((paramTYPE == null) || (paramTYPE.isEmpty())) {}
+    }
+    else
+    {
+      if (!"None/null".equals(this.lipsLutPath)) {
+        break label287;
+      }
+    }
+    this.isSkipBeautyRender = true;
+    return;
+    label287:
     this.isSkipBeautyRender = false;
   }
   
   public void setFaceFeatureMultiplyAlpha(float paramFloat)
   {
     this.faceFeatureMultiplyAlpha = paramFloat;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setFaceFeatureMultiplyAlpha(paramFloat);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setFaceFeatureMultiplyAlpha(paramFloat);
     }
   }
   
   public void setFaceFeatureNormalAlpha(float paramFloat)
   {
     this.faceFeatureNormalAlpha = paramFloat;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setFaceFeatureNormalAlpha(paramFloat);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setFaceFeatureNormalAlpha(paramFloat);
     }
   }
   
   public void setFaceFeatureParam(FaceFeatureParam paramFaceFeatureParam)
   {
     this.faceFeatureParam = paramFaceFeatureParam;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setFaceFeatureParam(paramFaceFeatureParam);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setFaceFeatureParam(paramFaceFeatureParam);
     }
   }
   
   public void setFaceFeatureSoftlightAlpha(float paramFloat)
   {
     this.faceFeatureSoftlightAlpha = paramFloat;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setFaceFeatureSoftlightAlpha(paramFloat);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setFaceFeatureSoftlightAlpha(paramFloat);
     }
   }
   
   public void setLipsLut(String paramString)
   {
     this.lipsLutPath = paramString;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setLipsLut(paramString);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setLipsLut(paramString);
     }
     if (((paramString == null) || (paramString.isEmpty()) || (paramString.equals("None/null"))) && (isAllZeroLevel()) && (this.isSkipRenderEnabled))
     {
@@ -174,15 +249,17 @@ public class AEFaceBeauty
   public void setLipsLutAlpha(int paramInt)
   {
     this.lipsLutAlpha = paramInt;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setLipsLutAlpha(paramInt);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setLipsLutAlpha(paramInt);
     }
   }
   
   public void setLipsStyleMaskPath(String paramString)
   {
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setLipsStyleMaskPath(paramString);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setLipsStyleMaskPath(paramString);
     }
   }
   
@@ -194,24 +271,27 @@ public class AEFaceBeauty
   public void setNormalAlphaFactor(float paramFloat)
   {
     this.normalAlphaFactor = paramFloat;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setNormalAlphaFactor(paramFloat);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setNormalAlphaFactor(paramFloat);
     }
   }
   
   public void setRenderMode(int paramInt)
   {
     this.renderMode = paramInt;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setRenderMode(paramInt);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setRenderMode(paramInt);
     }
   }
   
   public void setShowFaceFeatureFilter(boolean paramBoolean)
   {
     this.showFaceFeatureFilter = paramBoolean;
-    if (this.mBeautyFaceList != null) {
-      this.mBeautyFaceList.setShowFaceFeatureFilter(paramBoolean);
+    TTBeautyV5BeautyFaceList localTTBeautyV5BeautyFaceList = this.mBeautyFaceList;
+    if (localTTBeautyV5BeautyFaceList != null) {
+      localTTBeautyV5BeautyFaceList.setShowFaceFeatureFilter(paramBoolean);
     }
   }
   
@@ -234,7 +314,7 @@ public class AEFaceBeauty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFaceBeauty
  * JD-Core Version:    0.7.0.1
  */

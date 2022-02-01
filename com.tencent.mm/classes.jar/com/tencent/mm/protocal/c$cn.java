@@ -5,12 +5,12 @@ public final class c$cn
 {
   public c$cn()
   {
-    super("getLatestAddress", "get_recently_used_address", 46, true);
+    super("getFinderLivePreviewUrl", "onGetFinderLivePreviewUrl", 406, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.cn
  * JD-Core Version:    0.7.0.1
  */

@@ -36,15 +36,17 @@ public final class smart_device_proxy$CommonHead
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 72, 80 }, new String[] { "uint32_uin", "uint64_din", "uint64_tinyid", "uint32_pid", "bytes_sn", "bytes_uinA2", "bytes_tinyidA2", "str_version", "uint32_seq", "uint32_flag" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, "", Integer.valueOf(0), Integer.valueOf(0) }, CommonHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 72, 80 }, new String[] { "uint32_uin", "uint64_din", "uint64_tinyid", "uint32_pid", "bytes_sn", "bytes_uinA2", "bytes_tinyidA2", "str_version", "uint32_seq", "uint32_flag" }, new Object[] { localLong, localLong, localLong, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, "", localInteger, localInteger }, CommonHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.smart_device_proxy.smart_device_proxy.CommonHead
  * JD-Core Version:    0.7.0.1
  */

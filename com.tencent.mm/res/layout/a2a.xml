@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/r_" style="@style/nk">
-        <ImageView android:layout_gravity="center_vertical" android:background="@raw/mm_select_create_chatroom" android:layout_width="@dimen/hk" android:layout_height="@dimen/hk" android:layout_marginRight="@dimen/g2" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:background="@drawable/abk" android:paddingLeft="@dimen/ne" android:paddingRight="@dimen/g2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e5c" style="@style/ln" />
-            <TextView android:textColor="#ff555555" android:id="@id/lt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/lm" />
-        </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/eeo" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ket" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:layout_centerVertical="true">
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/t" android:textColor="@color/a7a" android:textColorHint="@color/xo" android:layout_gravity="center_vertical" android:id="@id/cd6" android:background="@null" android:paddingRight="@dimen/j4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/a2o" android:singleLine="true" android:includeFontPadding="false" android:drawablePadding="8.0dip" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSearch" android:contentDescription="搜索表情" android:textCursorDrawable="@drawable/a8b" />
     </LinearLayout>
+    <ImageButton android:id="@id/bde" android:background="@null" android:paddingLeft="@dimen/cd" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aqn" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/c7j" android:paddingEnd="@dimen/bv" />
 </RelativeLayout>

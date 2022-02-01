@@ -3,7 +3,9 @@
     "content": "",
     "attributes": {
         "viewID": "0",
-        "pts:on-exposure": "{{rowKey}}"
+        "pts:on-exposure": "{{rowKey}}",
+        "data-event-type": "{{'small-card-tap'}}",
+        "data-jump-url": "{{jumpUrl}}"
     },
     "styles": {
         "flex-direction": "column",

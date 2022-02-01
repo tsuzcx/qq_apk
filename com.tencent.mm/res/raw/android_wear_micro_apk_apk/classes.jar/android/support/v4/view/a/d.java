@@ -1,14 +1,26 @@
 package android.support.v4.view.a;
 
-import android.view.accessibility.AccessibilityEvent;
+import android.os.Build.VERSION;
+import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
 
-class d
+public final class d
 {
-  public void a(AccessibilityEvent paramAccessibilityEvent, int paramInt) {}
+  final Object oT;
   
-  public int b(AccessibilityEvent paramAccessibilityEvent)
+  private d(Object paramObject)
   {
-    return 0;
+    this.oT = paramObject;
+  }
+  
+  public static d a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return new d(AccessibilityNodeInfo.CollectionInfo.obtain(paramInt1, paramInt2, false, 0));
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      return new d(AccessibilityNodeInfo.CollectionInfo.obtain(paramInt1, paramInt2, false));
+    }
+    return new d(null);
   }
 }
 

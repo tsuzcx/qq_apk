@@ -3,28 +3,29 @@ package com.tencent.mm.vending.a;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.mm.vending.f.a;
 
 public final class n
 {
-  private Handler YP;
-  private Looper ZF;
-  private Looper ZG;
-  private Handler ZH;
-  private byte[] ZI = new byte[0];
-  private o ZJ;
+  private Handler acp;
+  private Looper adf;
+  private Looper adg;
+  private Handler adh;
+  private byte[] adi = new byte[0];
+  private o adj;
   
   public n(Looper paramLooper1, Looper paramLooper2)
   {
-    this.ZF = paramLooper1;
-    this.ZG = paramLooper2;
-    this.ZH = new Handler(this.ZF)
+    this.adf = paramLooper1;
+    this.adg = paramLooper2;
+    this.adh = new Handler(this.adf)
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         n.this.b(paramAnonymousMessage.what, paramAnonymousMessage.obj);
       }
     };
-    this.YP = new Handler(this.ZG)
+    this.acp = new Handler(this.adg)
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -35,7 +36,7 @@ public final class n
             o localo = n.b(n.this);
             int i = paramAnonymousMessage.what;
             paramAnonymousMessage = paramAnonymousMessage.obj;
-            localo.lz();
+            localo.mg();
           }
           n.a(n.this).notify();
           return;
@@ -46,25 +47,27 @@ public final class n
   
   public final void a(o paramo)
   {
-    this.ZJ = paramo;
+    this.adj = paramo;
   }
   
   public final void b(int paramInt, Object paramObject)
   {
-    if (Looper.myLooper() == this.ZF) {
-      if (this.ZJ != null) {}
+    if (Looper.myLooper() == this.adf) {
+      if (this.adj == null) {
+        a.mp();
+      }
     }
-    while (Looper.myLooper() != this.ZG)
+    while (Looper.myLooper() != this.adg)
     {
       return;
-      this.ZJ.ly();
-      synchronized (this.ZI)
+      this.adj.mf();
+      synchronized (this.adi)
       {
-        this.YP.sendMessageAtFrontOfQueue(this.YP.obtainMessage(paramInt, paramObject));
+        this.acp.sendMessageAtFrontOfQueue(this.acp.obtainMessage(paramInt, paramObject));
         try
         {
-          this.ZI.wait();
-          this.ZJ.lA();
+          this.adi.wait();
+          this.adj.mh();
           return;
         }
         catch (InterruptedException paramObject)
@@ -76,7 +79,7 @@ public final class n
         }
       }
     }
-    this.ZH.sendMessageAtFrontOfQueue(this.ZH.obtainMessage(paramInt, paramObject));
+    this.adh.sendMessageAtFrontOfQueue(this.adh.obtainMessage(paramInt, paramObject));
   }
 }
 

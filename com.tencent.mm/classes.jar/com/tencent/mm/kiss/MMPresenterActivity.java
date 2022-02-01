@@ -1,6 +1,5 @@
 package com.tencent.mm.kiss;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
@@ -9,30 +8,30 @@ import com.tencent.mm.vending.app.c;
 public abstract class MMPresenterActivity
   extends MMActivity
 {
-  private c eKO = new c();
+  private c mGc = new c();
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.eKO.A(getIntent(), this);
+    this.mGc.z(getIntent(), this);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.eKO.onDestroy();
+    this.mGc.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.eKO.a(3);
+    this.mGc.aFE(3);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.eKO.a(2);
+    this.mGc.aFE(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -43,7 +42,7 @@ public abstract class MMPresenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kiss.MMPresenterActivity
  * JD-Core Version:    0.7.0.1
  */

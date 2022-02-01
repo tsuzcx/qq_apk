@@ -1,49 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForMyEnterTroop;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.app.BizTroopObserver;
 
 class cyq
-  extends Handler
+  extends BizTroopObserver
 {
-  cyq(cyp paramcyp) {}
+  cyq(cyo paramcyo) {}
   
-  void a(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.a().a(paramMessageRecord, str);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.a();
-    switch (paramMessage.what)
+    if (!paramString2.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
     {
-    default: 
-    case 1002: 
-      do
-      {
-        return;
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.a(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b.c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      paramMessage = Message.obtain();
-      paramMessage.what = 1003;
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramMessage);
-      cyp.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+      cyo.a(this.a);
       return;
     }
-    paramMessage = (MessageForMyEnterTroop)MessageRecordFactory.a(-4004);
-    paramMessage.init(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, str, "", MessageCache.a(), -4004, 1, 0L);
-    paramMessage.iMemberCount = 0;
-    a(paramMessage, false, false, false);
-    cyp.a(this.a);
+    if (!this.a.jdField_b_of_type_Boolean)
+    {
+      this.a.jdField_c_of_type_Boolean = true;
+      this.a.jdField_a_of_type_JavaLangString = paramString1;
+      this.a.jdField_b_of_type_JavaLangString = paramString2;
+      this.a.d = paramBoolean;
+      this.a.jdField_c_of_type_JavaLangString = paramString3;
+      return;
+    }
+    cyo.a(this.a, paramString1, paramString2, paramBoolean, paramString3);
   }
 }
 

@@ -5,7 +5,7 @@
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <RelativeLayout android:id="@id/icj" android:layout_width="fill_parent" android:layout_height="375.0dip">
                 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <com.tencent.image.URLImageView android:id="@id/die" android:background="@drawable/ah5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+                    <com.tencent.image.URLImageView android:id="@id/die" android:background="@drawable/g_n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
                     <com.tencent.mobileqq.nearby.widget.AvatarWallViewPager android:id="@id/a3i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 </RelativeLayout>
                 <com.tencent.widget.CustomImgView android:id="@id/diu" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
@@ -17,7 +17,7 @@
             </RelativeLayout>
             <LinearLayout android:orientation="horizontal" android:id="@id/eik" android:background="@drawable/a56" android:layout_width="fill_parent" android:layout_height="31.0dip" android:layout_marginLeft="17.5dip" android:layout_marginTop="11.0dip" android:layout_marginRight="17.5dip">
                 <ImageView android:layout_gravity="bottom" android:layout_width="34.5dip" android:layout_height="31.0dip" android:layout_marginLeft="42.0dip" android:src="@drawable/e0t" android:scaleType="fitXY" />
-                <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/k7f" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="14.5dip" android:text="@string/cg2" android:singleLine="true" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/k7f" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="14.5dip" android:text="@string/cg2" android:singleLine="true" />
             </LinearLayout>
             <RelativeLayout android:id="@id/f9y" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <LinearLayout android:orientation="vertical" android:id="@id/icz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="14.0dip">
@@ -54,7 +54,7 @@
             </RelativeLayout>
             <RelativeLayout android:id="@id/e3m" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <ImageView android:id="@id/dgo" android:src="@drawable/d2s" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/f4" />
-                <TextView android:id="@id/jh0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/qwq" android:layout_toRightOf="@id/dgo" android:layout_centerVertical="true" style="@style/f5" />
+                <TextView android:id="@id/jh0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ka2" android:layout_toRightOf="@id/dgo" android:layout_centerVertical="true" style="@style/f5" />
                 <ImageView android:id="@id/atx" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/bu" />
             </RelativeLayout>
             <RelativeLayout android:id="@id/e4d" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">

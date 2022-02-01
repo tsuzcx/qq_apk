@@ -17,13 +17,14 @@ public final class qqstory_service$ReqMonitorValue
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "ID", "Value", "errmsg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, ReqMonitorValue.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "ID", "Value", "errmsg" }, new Object[] { localInteger, localInteger, localByteStringMicro }, ReqMonitorValue.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue
  * JD-Core Version:    0.7.0.1
  */

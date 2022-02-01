@@ -3,44 +3,70 @@ package com.tencent.biz.pubaccount.readinjoy.fragment;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-public class ReadInjoyIMAXAdFragment$WeakReferenceRunnable
+class ReadInjoyIMAXAdFragment$WeakReferenceRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<ReadInjoyIMAXAdFragment> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ReadInjoyIMAXAdFragment> a;
+  private int b;
   
-  public ReadInjoyIMAXAdFragment$WeakReferenceRunnable(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt)
+  protected ReadInjoyIMAXAdFragment$WeakReferenceRunnable(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInjoyIMAXAdFragment);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
+    this.b = paramInt;
   }
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
-    do
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      return;
-      switch (this.jdField_a_of_type_Int)
-      {
+      if (((WeakReference)localObject).get() == null) {
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ReadInjoyIMAXAdFragment", 2, "WeakReferenceRunnable run type is error mType: " + this.jdField_a_of_type_Int);
-    return;
-    ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d();
-    return;
-    ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
-    return;
-    ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).f();
-    return;
-    ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).g();
-    return;
-    ((ReadInjoyIMAXAdFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get()).h();
+      int i = this.b;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5)
+              {
+                if (QLog.isColorLevel())
+                {
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append("WeakReferenceRunnable run type is error mType: ");
+                  ((StringBuilder)localObject).append(this.b);
+                  QLog.e("ReadInjoyIMAXAdFragment", 2, ((StringBuilder)localObject).toString());
+                }
+              }
+              else {
+                ((ReadInjoyIMAXAdFragment)this.a.get()).i();
+              }
+            }
+            else {
+              ((ReadInjoyIMAXAdFragment)this.a.get()).h();
+            }
+          }
+          else {
+            ((ReadInjoyIMAXAdFragment)this.a.get()).g();
+          }
+        }
+        else {
+          ((ReadInjoyIMAXAdFragment)this.a.get()).f();
+        }
+      }
+      else {
+        ((ReadInjoyIMAXAdFragment)this.a.get()).e();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable
  * JD-Core Version:    0.7.0.1
  */

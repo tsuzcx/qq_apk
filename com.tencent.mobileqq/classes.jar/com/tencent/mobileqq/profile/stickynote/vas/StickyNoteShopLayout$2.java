@@ -2,9 +2,9 @@ package com.tencent.mobileqq.profile.stickynote.vas;
 
 import QC.GetSuixintieSigFontRsp;
 import android.os.Handler;
-import bdhb;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.FileUtils;
 
 class StickyNoteShopLayout$2
   implements Runnable
@@ -13,18 +13,22 @@ class StickyNoteShopLayout$2
   
   public void run()
   {
-    byte[] arrayOfByte = bdhb.a(StickyNoteShopLayout.a + '_' + StickyNoteShopLayout.a(this.this$0));
-    if (arrayOfByte != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(StickyNoteShopLayout.a);
+    ((StringBuilder)localObject).append('_');
+    ((StringBuilder)localObject).append(StickyNoteShopLayout.a(this.this$0));
+    localObject = FileUtils.readFile(((StringBuilder)localObject).toString());
+    if (localObject != null)
     {
       GetSuixintieSigFontRsp localGetSuixintieSigFontRsp = new GetSuixintieSigFontRsp();
-      localGetSuixintieSigFontRsp.readFrom(new JceInputStream(arrayOfByte));
+      localGetSuixintieSigFontRsp.readFrom(new JceInputStream((byte[])localObject));
       ThreadManagerV2.getUIHandlerV2().post(new StickyNoteShopLayout.2.1(this, localGetSuixintieSigFontRsp));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.2
  * JD-Core Version:    0.7.0.1
  */

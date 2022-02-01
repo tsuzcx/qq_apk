@@ -26,19 +26,19 @@ public class XWalkCookieManager
   
   static
   {
-    AppMethodBeat.i(85552);
+    AppMethodBeat.i(154642);
     if (!XWalkCookieManager.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(85552);
+      AppMethodBeat.o(154642);
       return;
     }
   }
   
   public XWalkCookieManager()
   {
-    AppMethodBeat.i(85539);
+    AppMethodBeat.i(154629);
     this.setAcceptCookiebooleanMethod = new ReflectMethod(null, "setAcceptCookie", new Class[0]);
     this.acceptCookieMethod = new ReflectMethod(null, "acceptCookie", new Class[0]);
     this.setCookieStringStringMethod = new ReflectMethod(null, "setCookie", new Class[0]);
@@ -53,153 +53,19 @@ public class XWalkCookieManager
     this.constructorTypes = new ArrayList();
     this.constructorParams = new ArrayList();
     reflectionInit();
-    AppMethodBeat.o(85539);
+    AppMethodBeat.o(154629);
   }
   
-  public boolean acceptCookie()
+  private void reflectionInit()
   {
-    AppMethodBeat.i(85541);
-    try
+    AppMethodBeat.i(154641);
+    if (XWalkCoreWrapper.getInstance() == null)
     {
-      boolean bool = ((Boolean)this.acceptCookieMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(85541);
-      return bool;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85541);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85541);
-    }
-    return false;
-  }
-  
-  public boolean allowFileSchemeCookies()
-  {
-    AppMethodBeat.i(85549);
-    try
-    {
-      boolean bool = ((Boolean)this.allowFileSchemeCookiesMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(85549);
-      return bool;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85549);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85549);
-    }
-    return false;
-  }
-  
-  public void flushCookieStore()
-  {
-    AppMethodBeat.i(85548);
-    try
-    {
-      this.flushCookieStoreMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85548);
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154641);
       return;
     }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85548);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85548);
-    }
-  }
-  
-  protected Object getBridge()
-  {
-    return this.bridge;
-  }
-  
-  public String getCookie(String paramString)
-  {
-    AppMethodBeat.i(85543);
-    try
-    {
-      String str = new WebAddress(paramString).toString();
-      paramString = str;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("XWalkCookieManager", "getCookie transform url to WebAddress failed");
-      }
-    }
-    catch (UnsupportedOperationException paramString)
-    {
-      if (this.coreWrapper != null) {
-        break label81;
-      }
-      paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-      AppMethodBeat.o(85543);
-      throw paramString;
-      XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(85543);
-    }
-    paramString = (String)this.getCookieStringMethod.invoke(new Object[] { paramString });
-    AppMethodBeat.o(85543);
-    return paramString;
-    label81:
-    return null;
-  }
-  
-  public boolean hasCookies()
-  {
-    AppMethodBeat.i(85546);
-    try
-    {
-      boolean bool = ((Boolean)this.hasCookiesMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(85546);
-      return bool;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85546);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85546);
-    }
-    return false;
-  }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(85551);
-    XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(85551);
-      return;
-    }
     int j = this.constructorTypes.size();
     Object localObject1 = new Class[j + 1];
     int i = 0;
@@ -211,7 +77,7 @@ public class XWalkCookieManager
         localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
         this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
       }
-      label137:
+      label133:
       do
       {
         for (;;)
@@ -219,13 +85,13 @@ public class XWalkCookieManager
           i += 1;
           break;
           if (!(localObject2 instanceof Class)) {
-            break label137;
+            break label133;
           }
           localObject1[i] = ((Class)localObject2);
         }
       } while ($assertionsDisabled);
       localObject1 = new AssertionError();
-      AppMethodBeat.o(85551);
+      AppMethodBeat.o(154641);
       throw ((Throwable)localObject1);
     }
     localObject1[j] = Object.class;
@@ -248,22 +114,71 @@ public class XWalkCookieManager
       this.flushCookieStoreMethod.init(this.bridge, null, "flushCookieStoreSuper", new Class[0]);
       this.allowFileSchemeCookiesMethod.init(this.bridge, null, "allowFileSchemeCookiesSuper", new Class[0]);
       this.setAcceptFileSchemeCookiesbooleanMethod.init(this.bridge, null, "setAcceptFileSchemeCookiesSuper", new Class[] { Boolean.TYPE });
-      AppMethodBeat.o(85551);
+      AppMethodBeat.o(154641);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
-      AppMethodBeat.o(85551);
+      Log.e("XWalkCookieManager", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+      AppMethodBeat.o(154641);
     }
   }
   
-  public void removeAllCookie()
+  public boolean acceptCookie()
   {
-    AppMethodBeat.i(85545);
+    AppMethodBeat.i(154631);
     try
     {
-      this.removeAllCookieMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85545);
+      boolean bool = ((Boolean)this.acceptCookieMethod.invoke(new Object[0])).booleanValue();
+      AppMethodBeat.o(154631);
+      return bool;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154631);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154631);
+    }
+    return false;
+  }
+  
+  public boolean allowFileSchemeCookies()
+  {
+    AppMethodBeat.i(154639);
+    try
+    {
+      boolean bool = ((Boolean)this.allowFileSchemeCookiesMethod.invoke(new Object[0])).booleanValue();
+      AppMethodBeat.o(154639);
+      return bool;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154639);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154639);
+    }
+    return false;
+  }
+  
+  public void flushCookieStore()
+  {
+    AppMethodBeat.i(154638);
+    try
+    {
+      this.flushCookieStoreMethod.invoke(new Object[0]);
+      AppMethodBeat.o(154638);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -272,21 +187,109 @@ public class XWalkCookieManager
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85545);
+        AppMethodBeat.o(154638);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85545);
+      AppMethodBeat.o(154638);
+    }
+  }
+  
+  protected Object getBridge()
+  {
+    return this.bridge;
+  }
+  
+  public String getCookie(String paramString)
+  {
+    AppMethodBeat.i(154633);
+    try
+    {
+      String str = new WebAddress(paramString).toString();
+      paramString = str;
+      return null;
+    }
+    finally
+    {
+      for (;;)
+      {
+        try
+        {
+          paramString = (String)this.getCookieStringMethod.invoke(new Object[] { paramString });
+          AppMethodBeat.o(154633);
+          return paramString;
+        }
+        catch (UnsupportedOperationException paramString)
+        {
+          if (this.coreWrapper != null) {
+            continue;
+          }
+          paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
+          AppMethodBeat.o(154633);
+          throw paramString;
+          XWalkCoreWrapper.handleRuntimeError(paramString);
+          AppMethodBeat.o(154633);
+        }
+        localObject = finally;
+        Log.e("XWalkCookieManager", "getCookie transform url to WebAddress failed, error:".concat(String.valueOf(localObject)));
+      }
+    }
+  }
+  
+  public boolean hasCookies()
+  {
+    AppMethodBeat.i(154636);
+    try
+    {
+      boolean bool = ((Boolean)this.hasCookiesMethod.invoke(new Object[0])).booleanValue();
+      AppMethodBeat.o(154636);
+      return bool;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154636);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154636);
+    }
+    return false;
+  }
+  
+  public void removeAllCookie()
+  {
+    AppMethodBeat.i(154635);
+    try
+    {
+      this.removeAllCookieMethod.invoke(new Object[0]);
+      AppMethodBeat.o(154635);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154635);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154635);
     }
   }
   
   public void removeExpiredCookie()
   {
-    AppMethodBeat.i(85547);
+    AppMethodBeat.i(154637);
     try
     {
       this.removeExpiredCookieMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85547);
+      AppMethodBeat.o(154637);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -295,21 +298,21 @@ public class XWalkCookieManager
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85547);
+        AppMethodBeat.o(154637);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85547);
+      AppMethodBeat.o(154637);
     }
   }
   
   public void removeSessionCookie()
   {
-    AppMethodBeat.i(85544);
+    AppMethodBeat.i(154634);
     try
     {
       this.removeSessionCookieMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85544);
+      AppMethodBeat.o(154634);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -318,21 +321,21 @@ public class XWalkCookieManager
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85544);
+        AppMethodBeat.o(154634);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85544);
+      AppMethodBeat.o(154634);
     }
   }
   
   public void setAcceptCookie(boolean paramBoolean)
   {
-    AppMethodBeat.i(85540);
+    AppMethodBeat.i(154630);
     try
     {
       this.setAcceptCookiebooleanMethod.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(85540);
+      AppMethodBeat.o(154630);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -341,21 +344,21 @@ public class XWalkCookieManager
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85540);
+        AppMethodBeat.o(154630);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85540);
+      AppMethodBeat.o(154630);
     }
   }
   
   public void setAcceptFileSchemeCookies(boolean paramBoolean)
   {
-    AppMethodBeat.i(85550);
+    AppMethodBeat.i(154640);
     try
     {
       this.setAcceptFileSchemeCookiesbooleanMethod.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(85550);
+      AppMethodBeat.o(154640);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -364,49 +367,53 @@ public class XWalkCookieManager
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85550);
+        AppMethodBeat.o(154640);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85550);
+      AppMethodBeat.o(154640);
     }
   }
   
   public void setCookie(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(85542);
+    AppMethodBeat.i(154632);
     try
     {
       String str = new WebAddress(paramString1).toString();
       paramString1 = str;
+      return;
     }
-    catch (Exception localException)
+    finally
     {
       for (;;)
       {
-        Log.e("XWalkCookieManager", "setCookie transform url to WebAddress failed");
+        try
+        {
+          this.setCookieStringStringMethod.invoke(new Object[] { paramString1, paramString2 });
+          AppMethodBeat.o(154632);
+          return;
+        }
+        catch (UnsupportedOperationException paramString1)
+        {
+          if (this.coreWrapper != null) {
+            continue;
+          }
+          paramString1 = new RuntimeException("Crosswalk's APIs are not ready yet");
+          AppMethodBeat.o(154632);
+          throw paramString1;
+          XWalkCoreWrapper.handleRuntimeError(paramString1);
+          AppMethodBeat.o(154632);
+        }
+        localObject = finally;
+        Log.e("XWalkCookieManager", "setCookie transform url to WebAddress failed, error:".concat(String.valueOf(localObject)));
       }
     }
-    catch (UnsupportedOperationException paramString1)
-    {
-      if (this.coreWrapper != null) {
-        break label85;
-      }
-      paramString1 = new RuntimeException("Crosswalk's APIs are not ready yet");
-      AppMethodBeat.o(85542);
-      throw paramString1;
-      XWalkCoreWrapper.handleRuntimeError(paramString1);
-      AppMethodBeat.o(85542);
-    }
-    this.setCookieStringStringMethod.invoke(new Object[] { paramString1, paramString2 });
-    AppMethodBeat.o(85542);
-    return;
-    label85:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkCookieManager
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ public enum a
 {
   static
   {
-    AppMethodBeat.i(57071);
-    eAz = new a("Start", 0);
-    eAA = new a("Stop", 1);
-    eAB = new a("AutoDetect", 2);
-    eAC = new a[] { eAz, eAA, eAB };
-    AppMethodBeat.o(57071);
+    AppMethodBeat.i(136190);
+    mvr = new a("Start", 0);
+    mvs = new a("Stop", 1);
+    mvt = new a("AutoDetect", 2);
+    mvu = new a[] { mvr, mvs, mvt };
+    AppMethodBeat.o(136190);
   }
   
   private a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.graphics.a.a
  * JD-Core Version:    0.7.0.1
  */

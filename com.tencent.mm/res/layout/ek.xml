@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/zp" android:background="@drawable/asi" android:layout_width="160.0dip" android:layout_height="160.0dip" android:minWidth="160.0dip" android:minHeight="160.0dip"
+<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="@color/a6q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/l_" />
-    <TextView android:textSize="14.0sp" android:textColor="#ffededed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/l9" />
-    <ProgressBar android:layout_width="36.0dip" android:layout_height="8.0dip" android:layout_marginTop="20.0dip" android:max="100" android:progress="0" style="@style/dj" />
-</LinearLayout>
+    <Button android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/rb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="160.0dip" android:minHeight="40.0dip" android:layout_centerInParent="true" style="@style/op" />
+    <TextView android:textSize="@dimen/p" android:textColor="@color/a7b" android:gravity="center" android:id="@id/rd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:text="@string/gk9" android:layout_above="@id/rb" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/rc" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginBottom="24.0dip" android:scaleType="fitCenter" android:layout_above="@id/rd" android:layout_centerHorizontal="true" />
+</RelativeLayout>

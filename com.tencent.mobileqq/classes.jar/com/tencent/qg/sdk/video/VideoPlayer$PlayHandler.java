@@ -14,26 +14,31 @@ public class VideoPlayer$PlayHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      VideoPlayer.access$000(this.this$0);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          VideoPlayer.access$300(this.this$0, ((Integer)paramMessage.obj).intValue());
+          return;
+        }
+        VideoPlayer.access$200(this.this$0);
+        return;
+      }
       VideoPlayer.access$100(this.this$0);
       return;
-    case 3: 
-      VideoPlayer.access$200(this.this$0);
-      return;
     }
-    VideoPlayer.access$300(this.this$0, ((Integer)paramMessage.obj).intValue());
+    VideoPlayer.access$000(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.video.VideoPlayer.PlayHandler
  * JD-Core Version:    0.7.0.1
  */

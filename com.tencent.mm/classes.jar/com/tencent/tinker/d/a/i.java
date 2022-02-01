@@ -1,101 +1,288 @@
 package com.tencent.tinker.d.a;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.HashSet;
+import java.util.zip.ZipException;
 
 public final class i
+  extends FilterOutputStream
 {
-  public static void a(f paramf, File paramFile, long paramLong, h paramh)
+  public static final byte[] ahSG = new byte[0];
+  private static final byte[] ahSH = { -1, -1, -1, -1 };
+  private final boolean ahSI = false;
+  private g ahSJ;
+  private byte[] ahSK;
+  private boolean ahSL;
+  public byte[] ahSl = ahSG;
+  private final HashSet<String> ahSm = new HashSet();
+  private int ahSn = 8;
+  private ByteArrayOutputStream ahSo = new ByteArrayOutputStream();
+  private byte[] ahSs;
+  private long offset = 0L;
+  
+  public i(OutputStream paramOutputStream)
   {
-    paramf = new f(paramf);
-    paramf.setMethod(0);
-    paramf.setSize(paramFile.length());
-    paramf.Bwt = paramFile.length();
-    if ((paramLong >= 0L) && (paramLong <= 4294967295L)) {
-      paramf.Bwi = paramLong;
+    this(paramOutputStream, (byte)0);
+  }
+  
+  private i(OutputStream paramOutputStream, byte paramByte)
+  {
+    super(paramOutputStream);
+  }
+  
+  public static void L(String paramString, byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length > 65535) {
+      throw new IllegalArgumentException(paramString + " too long in UTF-8:" + paramArrayOfByte.length + " bytes");
     }
-    try
-    {
-      paramFile = new BufferedInputStream(new FileInputStream(paramFile));
-      int i;
-      if (paramFile == null) {
-        break label154;
-      }
+  }
+  
+  private static long g(OutputStream paramOutputStream, long paramLong)
+  {
+    paramOutputStream.write((int)(0xFF & paramLong));
+    paramOutputStream.write((int)(paramLong >> 8) & 0xFF);
+    paramOutputStream.write((int)(paramLong >> 16) & 0xFF);
+    paramOutputStream.write((int)(paramLong >> 24) & 0xFF);
+    return paramLong;
+  }
+  
+  private static int h(OutputStream paramOutputStream, int paramInt)
+  {
+    paramOutputStream.write(paramInt & 0xFF);
+    paramOutputStream.write(paramInt >> 8 & 0xFF);
+    return paramInt;
+  }
+  
+  private void kcj()
+  {
+    if (this.ahSo == null) {
+      throw new IOException("Stream is closed");
     }
-    finally
+  }
+  
+  public final void b(g paramg)
+  {
+    if (this.ahSJ != null) {
+      kci();
+    }
+    int i = paramg.ahSx;
+    if (i == -1) {
+      i = this.ahSn;
+    }
+    for (;;)
     {
-      try
+      if (i == 0)
       {
-        paramh.b(new f(paramf));
-        paramf = new byte[16384];
-        i = paramFile.read(paramf);
-        if (i != -1)
-        {
-          paramh.write(paramf, 0, i);
-          i = paramFile.read(paramf);
-          throw new IllegalArgumentException("Bad CRC32: ".concat(String.valueOf(paramLong)));
+        if (paramg.ahSw == -1L) {
+          paramg.ahSw = paramg.size;
         }
-        paramh.closeEntry();
-        paramFile.close();
+        while (paramg.crc == -1L)
+        {
+          throw new ZipException("STORED entry missing CRC");
+          if (paramg.size == -1L) {
+            paramg.setSize(paramg.ahSw);
+          }
+        }
+        if (paramg.size == -1L) {
+          throw new ZipException("STORED entry missing size");
+        }
+        if (paramg.size != paramg.ahSw) {
+          throw new ZipException("STORED entry size/compressed size mismatch");
+        }
+      }
+      kcj();
+      paramg.comment = null;
+      paramg.egP = null;
+      paramg.time = 40691;
+      paramg.ahSy = 18698;
+      this.ahSs = paramg.name.getBytes(e.UTF_8);
+      L("Name", this.ahSs);
+      this.ahSK = ahSG;
+      if (paramg.comment != null)
+      {
+        this.ahSK = paramg.comment.getBytes(e.UTF_8);
+        L("Comment", this.ahSK);
+      }
+      paramg.aIX(i);
+      this.ahSJ = paramg;
+      this.ahSJ.ahSz = this.offset;
+      this.ahSm.add(this.ahSJ.name);
+      int j;
+      if (i == 0)
+      {
+        j = 0;
+        g(this.out, 67324752L);
+        h(this.out, 20);
+        h(this.out, j | 0x800);
+        h(this.out, i);
+        h(this.out, this.ahSJ.time);
+        h(this.out, this.ahSJ.ahSy);
+        if (i != 0) {
+          break label467;
+        }
+        g(this.out, this.ahSJ.crc);
+        g(this.out, this.ahSJ.size);
+        g(this.out, this.ahSJ.size);
+        label386:
+        h(this.out, this.ahSs.length);
+        if (this.ahSJ.egP == null) {
+          break label497;
+        }
+        h(this.out, this.ahSJ.egP.length);
+      }
+      for (;;)
+      {
+        this.out.write(this.ahSs);
+        if (this.ahSJ.egP != null) {
+          this.out.write(this.ahSJ.egP);
+        }
         return;
+        j = 8;
+        break;
+        label467:
+        g(this.out, 0L);
+        g(this.out, 0L);
+        g(this.out, 0L);
+        break label386;
+        label497:
+        h(this.out, 0);
       }
-      finally
-      {
-        break label146;
-      }
-      paramf = finally;
-      paramFile = null;
     }
-    label146:
-    paramFile.close();
-    label154:
-    throw paramf;
   }
   
-  public static void a(f paramf, InputStream paramInputStream, h paramh)
+  public final void close()
   {
-    paramh.b(paramf);
-    paramf = new byte[16384];
-    for (int i = paramInputStream.read(paramf); i != -1; i = paramInputStream.read(paramf)) {
-      paramh.write(paramf, 0, i);
-    }
-    paramh.closeEntry();
-  }
-  
-  public static void a(g paramg, f paramf, h paramh)
-  {
-    g localg = null;
-    try
+    int i;
+    if (this.out != null)
     {
-      paramg = paramg.a(paramf);
-      localg = paramg;
-      paramh.b(new f(paramf));
-      localg = paramg;
-      paramf = new byte[16384];
-      localg = paramg;
-      for (int i = paramg.read(paramf); i != -1; i = paramg.read(paramf))
-      {
-        localg = paramg;
-        paramh.write(paramf, 0, i);
-        localg = paramg;
+      if (this.out == null) {
+        throw new IOException("Stream is closed");
       }
-      localg = paramg;
-      paramh.closeEntry();
+      if (this.ahSo != null)
+      {
+        if (this.ahSm.isEmpty()) {
+          throw new ZipException("No entries");
+        }
+        if (this.ahSJ != null) {
+          kci();
+        }
+        i = this.ahSo.size();
+        g(this.ahSo, 101010256L);
+        h(this.ahSo, 0);
+        h(this.ahSo, 0);
+        if (!this.ahSL) {
+          break label209;
+        }
+        h(this.ahSo, 65535);
+        h(this.ahSo, 65535);
+        g(this.ahSo, -1L);
+        g(this.ahSo, -1L);
+      }
+    }
+    for (;;)
+    {
+      h(this.ahSo, this.ahSl.length);
+      if (this.ahSl.length > 0) {
+        this.ahSo.write(this.ahSl);
+      }
+      this.ahSo.writeTo(this.out);
+      this.ahSo = null;
+      this.out.close();
+      this.out = null;
+      return;
+      label209:
+      h(this.ahSo, this.ahSm.size());
+      h(this.ahSo, this.ahSm.size());
+      g(this.ahSo, i);
+      g(this.ahSo, this.offset);
+    }
+  }
+  
+  public final void kci()
+  {
+    kcj();
+    if (this.ahSJ == null) {
       return;
     }
-    finally
+    long l = 30L;
+    if (this.ahSJ.ahSx != 0)
     {
-      if (localg != null) {
-        localg.close();
-      }
+      l = 46L;
+      g(this.out, 134695760L);
+      g(this.out, this.ahSJ.crc);
+      g(this.out, this.ahSJ.ahSw);
+      g(this.out, this.ahSJ.size);
     }
+    int i;
+    if (this.ahSJ.ahSx == 0)
+    {
+      i = 0;
+      g(this.ahSo, 33639248L);
+      h(this.ahSo, 20);
+      h(this.ahSo, 20);
+      h(this.ahSo, i | 0x800);
+      h(this.ahSo, this.ahSJ.ahSx);
+      h(this.ahSo, this.ahSJ.time);
+      h(this.ahSo, this.ahSJ.ahSy);
+      g(this.ahSo, this.ahSJ.crc);
+      if (this.ahSJ.ahSx != 8) {
+        break label442;
+      }
+      l += this.ahSJ.ahSw;
+      label224:
+      g(this.ahSo, this.ahSJ.ahSw);
+      g(this.ahSo, this.ahSJ.size);
+      l += h(this.ahSo, this.ahSs.length);
+      if (this.ahSJ.egP == null) {
+        break label455;
+      }
+      l += h(this.ahSo, this.ahSJ.egP.length);
+    }
+    for (;;)
+    {
+      h(this.ahSo, this.ahSK.length);
+      h(this.ahSo, 0);
+      h(this.ahSo, 0);
+      g(this.ahSo, 0L);
+      g(this.ahSo, this.ahSJ.ahSz);
+      this.ahSo.write(this.ahSs);
+      this.ahSs = null;
+      if (this.ahSJ.egP != null) {
+        this.ahSo.write(this.ahSJ.egP);
+      }
+      this.offset = (l + this.offset);
+      if (this.ahSK.length > 0)
+      {
+        this.ahSo.write(this.ahSK);
+        this.ahSK = ahSG;
+      }
+      this.ahSJ = null;
+      return;
+      i = 8;
+      break;
+      label442:
+      l += this.ahSJ.size;
+      break label224;
+      label455:
+      h(this.ahSo, 0);
+    }
+  }
+  
+  public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    b.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
+    if (this.ahSJ == null) {
+      throw new ZipException("No active entry");
+    }
+    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.d.a.i
  * JD-Core Version:    0.7.0.1
  */

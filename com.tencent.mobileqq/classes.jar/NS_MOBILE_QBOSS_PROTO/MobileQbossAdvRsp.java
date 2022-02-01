@@ -13,18 +13,19 @@ public final class MobileQbossAdvRsp
 {
   static Map<Integer, ArrayList<tAdvDesc>> cache_mapAdv = new HashMap();
   static Map<Integer, Long> cache_map_next_query_ts;
-  public int iRet;
-  public Map<Integer, ArrayList<tAdvDesc>> mapAdv;
-  public Map<Integer, Long> map_next_query_ts;
+  public int iRet = 0;
+  public Map<Integer, ArrayList<tAdvDesc>> mapAdv = null;
+  public Map<Integer, Long> map_next_query_ts = null;
   public String sMsg = "";
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new tAdvDesc());
-    cache_mapAdv.put(Integer.valueOf(0), localArrayList);
+    cache_mapAdv.put(localInteger, localArrayList);
     cache_map_next_query_ts = new HashMap();
-    cache_map_next_query_ts.put(Integer.valueOf(0), Long.valueOf(0L));
+    cache_map_next_query_ts.put(localInteger, Long.valueOf(0L));
   }
   
   public MobileQbossAdvRsp() {}
@@ -50,14 +51,15 @@ public final class MobileQbossAdvRsp
     paramJceOutputStream.write(this.iRet, 0);
     paramJceOutputStream.write(this.sMsg, 1);
     paramJceOutputStream.write(this.mapAdv, 2);
-    if (this.map_next_query_ts != null) {
-      paramJceOutputStream.write(this.map_next_query_ts, 3);
+    Map localMap = this.map_next_query_ts;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp
  * JD-Core Version:    0.7.0.1
  */

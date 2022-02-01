@@ -1,9 +1,11 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.h;
+import com.tencent.token.xv;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,25 +23,42 @@ public class DeterminVerifyFactorsResult
   public static final int VERIFY_FACTOR_WITHOUT_VERIFY = 1;
   public static int s_SourceId = 0;
   private static final long serialVersionUID = -233992462595624579L;
-  private boolean isAddAccountFlag;
-  private int mCanVerify = 0;
-  private int mHaveMobile = 0;
-  private int mIsZzb = 0;
-  private int mMobileAppear = 0;
-  private String mMobileMask = "";
-  private int mMobileUp = 0;
-  private int mQuesAppear = 0;
-  private List mQuesInfo = new ArrayList();
-  private String mSMSChannel = "";
-  private String mSMSContent = "";
-  private String mSMSLeftMsg = "";
-  private int mScene = 0;
-  private String mSmsPrefix = "";
-  private List mVerifyTypeList = new ArrayList();
+  public boolean isAddAccountFlag;
+  private int mCanVerify;
+  private int mHaveMobile;
+  public int mIsZzb;
+  private int mMobileAppear;
+  public String mMobileMask;
+  private int mMobileUp;
+  private int mQuesAppear;
+  public List<QuesInfoItem> mQuesInfo;
+  public String mSMSChannel;
+  public String mSMSContent;
+  public String mSMSLeftMsg;
+  public int mScene;
+  private String mSmsPrefix;
+  public List<VerifyTypeItem> mVerifyTypeList;
   
   public DeterminVerifyFactorsResult(JSONObject paramJSONObject)
   {
-    h.a("DeterminVerifyFactorsResult jsonObject=" + paramJSONObject.toString());
+    int j = 0;
+    this.mHaveMobile = 0;
+    this.mCanVerify = 0;
+    this.mScene = 0;
+    this.mMobileMask = "";
+    this.mSMSContent = "";
+    this.mSMSChannel = "";
+    this.mSMSLeftMsg = "";
+    this.mIsZzb = 0;
+    this.mMobileAppear = 0;
+    this.mQuesAppear = 0;
+    this.mMobileUp = 0;
+    this.mSmsPrefix = "";
+    this.mQuesInfo = new ArrayList();
+    this.mVerifyTypeList = new ArrayList();
+    Object localObject = new StringBuilder("DeterminVerifyFactorsResult jsonObject=");
+    ((StringBuilder)localObject).append(paramJSONObject.toString());
+    xv.a(((StringBuilder)localObject).toString());
     s_SourceId = 0;
     this.mCanVerify = paramJSONObject.getInt("can_verify");
     this.mScene = paramJSONObject.optInt("scene");
@@ -53,102 +72,109 @@ public class DeterminVerifyFactorsResult
     this.mSMSContent = paramJSONObject.optString("mobile_sms_content");
     this.mSMSChannel = paramJSONObject.optString("mobile_sms_port");
     this.mSMSLeftMsg = paramJSONObject.optString("no_sms_left");
-    Object localObject;
     if (this.mQuesAppear == 1)
     {
       localObject = paramJSONObject.getJSONArray("ques_info");
-      if ((localObject != null) && (((JSONArray)localObject).length() != 0)) {}
-    }
-    for (;;)
-    {
+      if (localObject != null)
+      {
+        if (((JSONArray)localObject).length() == 0) {
+          return;
+        }
+        this.mQuesInfo = new ArrayList();
+        i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          QuesInfoItem localQuesInfoItem = new QuesInfoItem(((JSONArray)localObject).getJSONObject(i));
+          this.mQuesInfo.add(localQuesInfoItem);
+          i += 1;
+        }
+      }
       return;
-      this.mQuesInfo = new ArrayList();
-      int i = 0;
-      while (i < ((JSONArray)localObject).length())
-      {
-        DeterminVerifyFactorsResult.QuesInfoItem localQuesInfoItem = new DeterminVerifyFactorsResult.QuesInfoItem(this, ((JSONArray)localObject).getJSONObject(i));
-        this.mQuesInfo.add(localQuesInfoItem);
-        i += 1;
-      }
-      paramJSONObject = paramJSONObject.getJSONArray("verify_type");
-      i = j;
-      while (i < paramJSONObject.length())
-      {
-        localObject = new DeterminVerifyFactorsResult.VerifyTypeItem(this, paramJSONObject.getJSONObject(i));
-        this.mVerifyTypeList.add(localObject);
-        i += 1;
-      }
+    }
+    paramJSONObject = paramJSONObject.getJSONArray("verify_type");
+    int i = j;
+    while (i < paramJSONObject.length())
+    {
+      localObject = new VerifyTypeItem(paramJSONObject.getJSONObject(i));
+      this.mVerifyTypeList.add(localObject);
+      i += 1;
     }
   }
   
-  public static void a(int paramInt)
+  public static void a()
   {
-    s_SourceId = paramInt;
+    s_SourceId = 2;
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.isAddAccountFlag = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.isAddAccountFlag;
-  }
-  
-  public boolean b()
+  public final boolean b()
   {
     return this.mHaveMobile == 1;
   }
   
-  public int c()
-  {
-    return this.mScene;
-  }
-  
-  public String d()
-  {
-    return this.mSMSContent;
-  }
-  
-  public String e()
-  {
-    return this.mSMSChannel;
-  }
-  
-  public String f()
-  {
-    return this.mSMSLeftMsg;
-  }
-  
-  public String g()
-  {
-    return this.mMobileMask;
-  }
-  
-  public boolean h()
-  {
-    return this.mIsZzb == 1;
-  }
-  
-  public boolean i()
+  public final boolean c()
   {
     return this.mMobileAppear == 1;
   }
   
-  public boolean j()
+  public final boolean d()
   {
     return this.mMobileUp == 1;
   }
   
-  public List k()
+  public class QuesInfoItem
+    implements Serializable
   {
-    return this.mQuesInfo;
+    private static final long serialVersionUID = -545981221446172220L;
+    public String mContent = null;
+    public int mId = 0;
+    public int mType = 0;
+    
+    public QuesInfoItem(JSONObject paramJSONObject)
+    {
+      this.mId = paramJSONObject.getInt("ques_id");
+      this.mContent = paramJSONObject.getString("ques_context");
+      this.mType = paramJSONObject.getInt("ques_type");
+    }
   }
   
-  public List l()
+  public class VerifyTypeItem
+    implements Serializable
   {
-    return this.mVerifyTypeList;
+    private static final long serialVersionUID = 7129591075283836873L;
+    private Map<Integer, Integer> factorPositionMap = new HashMap();
+    public List<Integer> mVerifyFactorList = new ArrayList();
+    public int verifyTypeId;
+    public String verifyTypeName;
+    
+    public VerifyTypeItem(JSONObject paramJSONObject)
+    {
+      this.verifyTypeId = paramJSONObject.getInt("verify_type_id");
+      this.verifyTypeName = paramJSONObject.getString("verify_type_name");
+      this$1 = paramJSONObject.getJSONArray("verify_factors");
+      int i = 0;
+      while (i < DeterminVerifyFactorsResult.this.length())
+      {
+        this.mVerifyFactorList.add(Integer.valueOf(DeterminVerifyFactorsResult.this.getInt(i)));
+        this.factorPositionMap.put(Integer.valueOf(DeterminVerifyFactorsResult.this.getInt(i)), Integer.valueOf(i));
+        i += 1;
+      }
+    }
+    
+    public final int a(int paramInt)
+    {
+      paramInt = ((Integer)this.factorPositionMap.get(Integer.valueOf(paramInt))).intValue();
+      if (paramInt < this.mVerifyFactorList.size() - 1) {
+        paramInt += 1;
+      } else {
+        paramInt = this.mVerifyFactorList.size() - 1;
+      }
+      return ((Integer)this.mVerifyFactorList.get(paramInt)).intValue();
+    }
+    
+    public final boolean a(Integer paramInteger)
+    {
+      return ((Integer)this.factorPositionMap.get(paramInteger)).intValue() == this.mVerifyFactorList.size() - 1;
+    }
   }
 }
 

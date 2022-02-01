@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="48.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.flash.action.FaceFlashActionPreviewLayout android:id="@id/ea4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.flash.action.FaceFlashActionProcessLayout android:id="@id/ea5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ea1" android:paddingLeft="@dimen/df" android:paddingTop="@dimen/df" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:src="@raw/icons_filled_close" app:iconColor="@color/BW_0" />
+</RelativeLayout>

@@ -23,17 +23,20 @@ public final class Appconf$AppConfResponse
   public final PBUInt32Field Ret = PBField.initUInt32(0);
   public final PBStringField Session = PBField.initString("");
   public final PBRepeatMessageField<Appconf.Wording> Wordings = PBField.initRepeatMessage(Appconf.Wording.class);
+  public final PBRepeatMessageField<Appconf.ServiceProtocol> protocols = PBField.initRepeatMessage(Appconf.ServiceProtocol.class);
+  public final PBStringField select_data = PBField.initString("");
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 122 }, new String[] { "AppName", "Wordings", "Mode", "ColorSeq", "Session", "Ret", "ErrMsg", "Debug", "ActionSeq" }, new Object[] { "", null, Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), "", "", localByteStringMicro2 }, AppConfResponse.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 122, 162, 178 }, new String[] { "AppName", "Wordings", "Mode", "ColorSeq", "Session", "Ret", "ErrMsg", "Debug", "ActionSeq", "protocols", "select_data" }, new Object[] { "", null, localInteger, localByteStringMicro1, "", localInteger, "", "", localByteStringMicro2, null, "" }, AppConfResponse.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     face.qqlogin.Appconf.AppConfResponse
  * JD-Core Version:    0.7.0.1
  */

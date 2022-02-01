@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GPSPoint
   extends JceStruct
 {
-  public int alt;
+  public int alt = 0;
   public int lat = 900000000;
   public int lon = 900000000;
   
@@ -36,7 +36,7 @@ public final class GPSPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.GPSPoint
  * JD-Core Version:    0.7.0.1
  */

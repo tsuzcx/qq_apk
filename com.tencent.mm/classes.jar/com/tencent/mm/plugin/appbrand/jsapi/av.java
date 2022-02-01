@@ -1,48 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.ui.MMActivity;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.SyncTask;
 
-public final class av
-  extends a
+public class av<S extends y>
+  extends c<S>
 {
-  public static final int CTRL_INDEX = 62;
-  public static final String NAME = "openAddress";
+  public static final int CTRL_INDEX = 250;
+  public static final String NAME = "captureScreen";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public Bitmap j(final S paramS)
   {
-    AppMethodBeat.i(130513);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("req_app_id", paramc.getAppId());
-    localIntent.putExtra("launch_from_appbrand", true);
-    if ((paramc instanceof r))
+    AppMethodBeat.i(139839);
+    paramS = paramS.getCurrentPageView();
+    if (paramS == null)
     {
-      paramJSONObject = ((r)paramc).X(Activity.class);
-      if ((paramJSONObject != null) && ((paramJSONObject instanceof MMActivity))) {
-        break label101;
-      }
+      AppMethodBeat.o(139839);
+      return null;
     }
-    label101:
-    for (paramJSONObject = null;; paramJSONObject = (MMActivity)paramJSONObject)
-    {
-      if (paramJSONObject != null) {
-        break label109;
-      }
-      paramc.h(paramInt, j("fail", null));
-      AppMethodBeat.o(130513);
-      return;
-      paramJSONObject = paramc.getContext();
-      break;
-    }
-    label109:
-    paramJSONObject.mmSetOnActivityResultCallback(new av.1(this, paramc, paramInt));
-    d.a(paramJSONObject, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
-    AppMethodBeat.o(130513);
+    paramS = (Bitmap)new SyncTask()new MMHandler {}.exec(new MMHandler(Looper.getMainLooper()));
+    AppMethodBeat.o(139839);
+    return paramS;
   }
 }
 

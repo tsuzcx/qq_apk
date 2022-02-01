@@ -49,18 +49,20 @@ public final class HttpUrl
     this.host = paramBuilder.host;
     this.port = paramBuilder.effectivePort();
     this.pathSegments = percentDecode(paramBuilder.encodedPathSegments, false);
-    if (paramBuilder.encodedQueryNamesAndValues != null) {}
-    for (Object localObject1 = percentDecode(paramBuilder.encodedQueryNamesAndValues, true);; localObject1 = null)
-    {
-      this.queryNamesAndValues = ((List)localObject1);
-      localObject1 = localObject2;
-      if (paramBuilder.encodedFragment != null) {
-        localObject1 = percentDecode(paramBuilder.encodedFragment, false);
-      }
-      this.fragment = ((String)localObject1);
-      this.url = paramBuilder.toString();
-      return;
+    Object localObject1 = paramBuilder.encodedQueryNamesAndValues;
+    Object localObject2 = null;
+    if (localObject1 != null) {
+      localObject1 = percentDecode(paramBuilder.encodedQueryNamesAndValues, true);
+    } else {
+      localObject1 = null;
     }
+    this.queryNamesAndValues = ((List)localObject1);
+    localObject1 = localObject2;
+    if (paramBuilder.encodedFragment != null) {
+      localObject1 = percentDecode(paramBuilder.encodedFragment, false);
+    }
+    this.fragment = ((String)localObject1);
+    this.url = paramBuilder.toString();
   }
   
   static String canonicalize(String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Charset paramCharset)
@@ -69,14 +71,17 @@ public final class HttpUrl
     while (i < paramInt2)
     {
       int j = paramString1.codePointAt(i);
-      if ((j < 32) || (j == 127) || ((j >= 128) && (paramBoolean4)) || (paramString2.indexOf(j) != -1) || ((j == 37) && ((!paramBoolean1) || ((paramBoolean2) && (!percentEncoded(paramString1, i, paramInt2))))) || ((j == 43) && (paramBoolean3)))
+      if ((j >= 32) && (j != 127) && ((j < 128) || (!paramBoolean4)) && (paramString2.indexOf(j) == -1) && ((j != 37) || ((paramBoolean1) && ((!paramBoolean2) || (percentEncoded(paramString1, i, paramInt2))))) && ((j != 43) || (!paramBoolean3)))
+      {
+        i += Character.charCount(j);
+      }
+      else
       {
         Buffer localBuffer = new Buffer();
         localBuffer.writeUtf8(paramString1, paramInt1, i);
         canonicalize(localBuffer, paramString1, i, paramInt2, paramString2, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramCharset);
         return localBuffer.readUtf8();
       }
-      i += Character.charCount(j);
     }
     return paramString1.substring(paramInt1, paramInt2);
   }
@@ -93,73 +98,71 @@ public final class HttpUrl
   
   static void canonicalize(Buffer paramBuffer, String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Charset paramCharset)
   {
-    Object localObject1 = null;
-    if (paramInt1 < paramInt2)
+    Object localObject3;
+    for (Object localObject1 = null; paramInt1 < paramInt2; localObject1 = localObject3)
     {
       int i = paramString1.codePointAt(paramInt1);
-      Object localObject3;
       if (paramBoolean1)
       {
         localObject3 = localObject1;
-        if (i != 9)
+        if (i == 9) {
+          break label318;
+        }
+        localObject3 = localObject1;
+        if (i == 10) {
+          break label318;
+        }
+        localObject3 = localObject1;
+        if (i == 12) {
+          break label318;
+        }
+        if (i == 13)
         {
           localObject3 = localObject1;
-          if (i != 10)
-          {
-            localObject3 = localObject1;
-            if (i != 12)
-            {
-              if (i != 13) {
-                break label79;
-              }
-              localObject3 = localObject1;
-            }
-          }
+          break label318;
         }
       }
-      for (;;)
+      Object localObject2;
+      if ((i == 43) && (paramBoolean3))
       {
-        paramInt1 += Character.charCount(i);
-        localObject1 = localObject3;
-        break;
-        label79:
-        Object localObject2;
-        if ((i == 43) && (paramBoolean3))
-        {
-          if (paramBoolean1) {}
-          for (localObject2 = "+";; localObject2 = "%2B")
-          {
-            paramBuffer.writeUtf8((String)localObject2);
-            localObject3 = localObject1;
-            break;
-          }
+        if (paramBoolean1) {
+          localObject2 = "+";
+        } else {
+          localObject2 = "%2B";
         }
-        if ((i < 32) || (i == 127) || ((i >= 128) && (paramBoolean4)) || (paramString2.indexOf(i) != -1) || ((i == 37) && ((!paramBoolean1) || ((paramBoolean2) && (!percentEncoded(paramString1, paramInt1, paramInt2))))))
-        {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = new Buffer();
-          }
-          if ((paramCharset == null) || (paramCharset.equals(Util.UTF_8))) {
-            ((Buffer)localObject2).writeUtf8CodePoint(i);
-          }
-          for (;;)
-          {
-            localObject3 = localObject2;
-            if (((Buffer)localObject2).exhausted()) {
-              break;
-            }
-            int j = ((Buffer)localObject2).readByte() & 0xFF;
-            paramBuffer.writeByte(37);
-            paramBuffer.writeByte(HEX_DIGITS[(j >> 4 & 0xF)]);
-            paramBuffer.writeByte(HEX_DIGITS[(j & 0xF)]);
-            continue;
-            ((Buffer)localObject2).writeString(paramString1, paramInt1, Character.charCount(i) + paramInt1, paramCharset);
-          }
-        }
+        paramBuffer.writeUtf8((String)localObject2);
+        localObject3 = localObject1;
+      }
+      else if ((i >= 32) && (i != 127) && ((i < 128) || (!paramBoolean4)) && (paramString2.indexOf(i) == -1) && ((i != 37) || ((paramBoolean1) && ((!paramBoolean2) || (percentEncoded(paramString1, paramInt1, paramInt2))))))
+      {
         paramBuffer.writeUtf8CodePoint(i);
         localObject3 = localObject1;
       }
+      else
+      {
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new Buffer();
+        }
+        if ((paramCharset != null) && (!paramCharset.equals(Util.UTF_8))) {
+          ((Buffer)localObject2).writeString(paramString1, paramInt1, Character.charCount(i) + paramInt1, paramCharset);
+        } else {
+          ((Buffer)localObject2).writeUtf8CodePoint(i);
+        }
+        for (;;)
+        {
+          localObject3 = localObject2;
+          if (((Buffer)localObject2).exhausted()) {
+            break;
+          }
+          int j = ((Buffer)localObject2).readByte() & 0xFF;
+          paramBuffer.writeByte(37);
+          paramBuffer.writeByte(HEX_DIGITS[(j >> 4 & 0xF)]);
+          paramBuffer.writeByte(HEX_DIGITS[(j & 0xF)]);
+        }
+      }
+      label318:
+      paramInt1 += Character.charCount(i);
     }
   }
   
@@ -220,7 +223,11 @@ public final class HttpUrl
       paramString = get(paramString);
       return paramString;
     }
-    catch (IllegalArgumentException paramString) {}
+    catch (IllegalArgumentException paramString)
+    {
+      label7:
+      break label7;
+    }
     return null;
   }
   
@@ -242,14 +249,17 @@ public final class HttpUrl
     while (i < paramInt2)
     {
       int j = paramString.charAt(i);
-      if ((j == 37) || ((j == 43) && (paramBoolean)))
+      if ((j != 37) && ((j != 43) || (!paramBoolean)))
+      {
+        i += 1;
+      }
+      else
       {
         Buffer localBuffer = new Buffer();
         localBuffer.writeUtf8(paramString, paramInt1, i);
         percentDecode(localBuffer, paramString, i, paramInt2, paramBoolean);
         return localBuffer.readUtf8();
       }
-      i += 1;
     }
     return paramString.substring(paramInt1, paramInt2);
   }
@@ -264,77 +274,78 @@ public final class HttpUrl
     int j = paramList.size();
     ArrayList localArrayList = new ArrayList(j);
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       String str = (String)paramList.get(i);
-      if (str != null) {}
-      for (str = percentDecode(str, paramBoolean);; str = null)
-      {
-        localArrayList.add(str);
-        i += 1;
-        break;
+      if (str != null) {
+        str = percentDecode(str, paramBoolean);
+      } else {
+        str = null;
       }
+      localArrayList.add(str);
+      i += 1;
     }
     return Collections.unmodifiableList(localArrayList);
   }
   
   static void percentDecode(Buffer paramBuffer, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if (paramInt1 < paramInt2)
+    while (paramInt1 < paramInt2)
     {
-      int i = paramString.codePointAt(paramInt1);
-      if ((i == 37) && (paramInt1 + 2 < paramInt2))
+      int j = paramString.codePointAt(paramInt1);
+      if (j == 37)
       {
-        int j = Util.decodeHexDigit(paramString.charAt(paramInt1 + 1));
-        int k = Util.decodeHexDigit(paramString.charAt(paramInt1 + 2));
-        if ((j == -1) || (k == -1)) {
-          break label111;
-        }
-        paramBuffer.writeByte((j << 4) + k);
-        paramInt1 += 2;
-      }
-      for (;;)
-      {
-        paramInt1 += Character.charCount(i);
-        break;
-        if ((i == 43) && (paramBoolean)) {
-          paramBuffer.writeByte(32);
-        } else {
-          label111:
-          paramBuffer.writeUtf8CodePoint(i);
+        int i = paramInt1 + 2;
+        if (i < paramInt2)
+        {
+          int k = Util.decodeHexDigit(paramString.charAt(paramInt1 + 1));
+          int m = Util.decodeHexDigit(paramString.charAt(i));
+          if ((k == -1) || (m == -1)) {
+            break label105;
+          }
+          paramBuffer.writeByte((k << 4) + m);
+          paramInt1 = i;
+          break label112;
         }
       }
+      if ((j == 43) && (paramBoolean)) {
+        paramBuffer.writeByte(32);
+      } else {
+        label105:
+        paramBuffer.writeUtf8CodePoint(j);
+      }
+      label112:
+      paramInt1 += Character.charCount(j);
     }
   }
   
   static boolean percentEncoded(String paramString, int paramInt1, int paramInt2)
   {
-    return (paramInt1 + 2 < paramInt2) && (paramString.charAt(paramInt1) == '%') && (Util.decodeHexDigit(paramString.charAt(paramInt1 + 1)) != -1) && (Util.decodeHexDigit(paramString.charAt(paramInt1 + 2)) != -1);
+    int i = paramInt1 + 2;
+    return (i < paramInt2) && (paramString.charAt(paramInt1) == '%') && (Util.decodeHexDigit(paramString.charAt(paramInt1 + 1)) != -1) && (Util.decodeHexDigit(paramString.charAt(i)) != -1);
   }
   
   static List<String> queryStringToNamesAndValues(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i <= paramString.length())
+    int j;
+    for (int i = 0; i <= paramString.length(); i = j + 1)
     {
       int k = paramString.indexOf('&', i);
-      int j = k;
+      j = k;
       if (k == -1) {
         j = paramString.length();
       }
       k = paramString.indexOf('=', i);
-      if ((k == -1) || (k > j))
+      if ((k != -1) && (k <= j))
+      {
+        localArrayList.add(paramString.substring(i, k));
+        localArrayList.add(paramString.substring(k + 1, j));
+      }
+      else
       {
         localArrayList.add(paramString.substring(i, j));
         localArrayList.add(null);
-      }
-      for (;;)
-      {
-        i = j + 1;
-        break;
-        localArrayList.add(paramString.substring(i, k));
-        localArrayList.add(paramString.substring(k + 1, j));
       }
     }
     return localArrayList;
@@ -363,22 +374,24 @@ public final class HttpUrl
   public String encodedPath()
   {
     int i = this.url.indexOf('/', this.scheme.length() + 3);
-    int j = Util.delimiterOffset(this.url, i, this.url.length(), "?#");
+    String str = this.url;
+    int j = Util.delimiterOffset(str, i, str.length(), "?#");
     return this.url.substring(i, j);
   }
   
   public List<String> encodedPathSegments()
   {
     int i = this.url.indexOf('/', this.scheme.length() + 3);
-    int j = Util.delimiterOffset(this.url, i, this.url.length(), "?#");
-    ArrayList localArrayList = new ArrayList();
+    Object localObject = this.url;
+    int j = Util.delimiterOffset((String)localObject, i, ((String)localObject).length(), "?#");
+    localObject = new ArrayList();
     while (i < j)
     {
       int k = i + 1;
       i = Util.delimiterOffset(this.url, k, j, '/');
-      localArrayList.add(this.url.substring(k, i));
+      ((List)localObject).add(this.url.substring(k, i));
     }
-    return localArrayList;
+    return localObject;
   }
   
   @Nullable
@@ -388,7 +401,8 @@ public final class HttpUrl
       return null;
     }
     int i = this.url.indexOf('?') + 1;
-    int j = Util.delimiterOffset(this.url, i, this.url.length(), '#');
+    String str = this.url;
+    int j = Util.delimiterOffset(str, i, str.length(), '#');
     return this.url.substring(i, j);
   }
   
@@ -398,7 +412,8 @@ public final class HttpUrl
       return "";
     }
     int i = this.scheme.length() + 3;
-    int j = Util.delimiterOffset(this.url, i, this.url.length(), ":@");
+    String str = this.url;
+    int j = Util.delimiterOffset(str, i, str.length(), ":@");
     return this.url.substring(i, j);
   }
   
@@ -435,16 +450,18 @@ public final class HttpUrl
     localBuilder.encodedUsername = encodedUsername();
     localBuilder.encodedPassword = encodedPassword();
     localBuilder.host = this.host;
-    if (this.port != defaultPort(this.scheme)) {}
-    for (int i = this.port;; i = -1)
-    {
-      localBuilder.port = i;
-      localBuilder.encodedPathSegments.clear();
-      localBuilder.encodedPathSegments.addAll(encodedPathSegments());
-      localBuilder.encodedQuery(encodedQuery());
-      localBuilder.encodedFragment = encodedFragment();
-      return localBuilder;
+    int i;
+    if (this.port != defaultPort(this.scheme)) {
+      i = this.port;
+    } else {
+      i = -1;
     }
+    localBuilder.port = i;
+    localBuilder.encodedPathSegments.clear();
+    localBuilder.encodedPathSegments.addAll(encodedPathSegments());
+    localBuilder.encodedQuery(encodedQuery());
+    localBuilder.encodedFragment = encodedFragment();
+    return localBuilder;
   }
   
   @Nullable
@@ -455,7 +472,11 @@ public final class HttpUrl
       paramString = new HttpUrl.Builder().parse(this, paramString);
       return paramString;
     }
-    catch (IllegalArgumentException paramString) {}
+    catch (IllegalArgumentException paramString)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
   
@@ -493,28 +514,29 @@ public final class HttpUrl
   @Nullable
   public String queryParameter(String paramString)
   {
-    if (this.queryNamesAndValues == null) {}
-    for (;;)
-    {
+    List localList = this.queryNamesAndValues;
+    if (localList == null) {
       return null;
-      int i = 0;
-      int j = this.queryNamesAndValues.size();
-      while (i < j)
-      {
-        if (paramString.equals(this.queryNamesAndValues.get(i))) {
-          return (String)this.queryNamesAndValues.get(i + 1);
-        }
-        i += 2;
-      }
     }
+    int i = 0;
+    int j = localList.size();
+    while (i < j)
+    {
+      if (paramString.equals(this.queryNamesAndValues.get(i))) {
+        return (String)this.queryNamesAndValues.get(i + 1);
+      }
+      i += 2;
+    }
+    return null;
   }
   
   public String queryParameterName(int paramInt)
   {
-    if (this.queryNamesAndValues == null) {
-      throw new IndexOutOfBoundsException();
+    List localList = this.queryNamesAndValues;
+    if (localList != null) {
+      return (String)localList.get(paramInt * 2);
     }
-    return (String)this.queryNamesAndValues.get(paramInt * 2);
+    throw new IndexOutOfBoundsException();
   }
   
   public Set<String> queryParameterNames()
@@ -535,10 +557,11 @@ public final class HttpUrl
   
   public String queryParameterValue(int paramInt)
   {
-    if (this.queryNamesAndValues == null) {
-      throw new IndexOutOfBoundsException();
+    List localList = this.queryNamesAndValues;
+    if (localList != null) {
+      return (String)localList.get(paramInt * 2 + 1);
     }
-    return (String)this.queryNamesAndValues.get(paramInt * 2 + 1);
+    throw new IndexOutOfBoundsException();
   }
   
   public List<String> queryParameterValues(String paramString)
@@ -561,8 +584,9 @@ public final class HttpUrl
   
   public int querySize()
   {
-    if (this.queryNamesAndValues != null) {
-      return this.queryNamesAndValues.size() / 2;
+    List localList = this.queryNamesAndValues;
+    if (localList != null) {
+      return localList.size() / 2;
     }
     return 0;
   }
@@ -609,18 +633,18 @@ public final class HttpUrl
       URI localURI = new URI((String)localObject);
       return localURI;
     }
-    catch (URISyntaxException localURISyntaxException)
+    catch (URISyntaxException localURISyntaxException) {}
+    try
     {
-      try
-      {
-        localObject = URI.create(((String)localObject).replaceAll("[\\u0000-\\u001F\\u007F-\\u009F\\p{javaWhitespace}]", ""));
-        return localObject;
-      }
-      catch (Exception localException)
-      {
-        throw new RuntimeException(localURISyntaxException);
-      }
+      localObject = URI.create(((String)localObject).replaceAll("[\\u0000-\\u001F\\u007F-\\u009F\\p{javaWhitespace}]", ""));
+      return localObject;
     }
+    catch (Exception localException)
+    {
+      label38:
+      break label38;
+    }
+    throw new RuntimeException(localURISyntaxException);
   }
   
   public URL url()
@@ -643,7 +667,7 @@ public final class HttpUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.HttpUrl
  * JD-Core Version:    0.7.0.1
  */

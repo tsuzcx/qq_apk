@@ -20,6 +20,7 @@ import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tencentmap.mapsdk.maps.BaseMap;
 import com.tencent.tencentmap.mapsdk.maps.BaseMapView;
 import com.tencent.tencentmap.mapsdk.maps.model.IndoorBuilding;
@@ -69,44 +70,39 @@ public final class ij
   private int a(Adapter paramAdapter)
   {
     this.f.measure(0, 0);
-    int i1 = this.f.getMeasuredWidth();
+    int i2 = this.f.getMeasuredWidth();
+    int i5 = paramAdapter.getCount();
     View localView = null;
-    int i4 = paramAdapter.getCount();
-    int i2 = 0;
-    if (i2 < i4)
+    int i1 = 0;
+    while (i1 < i5)
     {
-      localView = paramAdapter.getView(i2, localView, this.e);
+      localView = paramAdapter.getView(i1, localView, this.e);
       localView.measure(0, 0);
-      int i3 = localView.getMeasuredWidth();
-      if (i3 <= i1) {
-        break label83;
+      int i4 = localView.getMeasuredWidth();
+      int i3 = i2;
+      if (i4 > i2) {
+        i3 = i4;
       }
-      i1 = i3;
+      i1 += 1;
+      i2 = i3;
     }
-    label83:
-    for (;;)
-    {
-      i2 += 1;
-      break;
-      return i1;
-    }
+    return i2;
   }
   
   private void d()
   {
-    Object localObject1;
-    Object localObject2;
-    byte[] arrayOfByte;
     if (this.d == null)
     {
       this.s = new ij.a(this, this.t, new ArrayList());
       this.l = this.t.getApplicationContext().getResources().getDisplayMetrics().density;
-      this.q = ((int)(234.0D * this.l));
-      localObject1 = this.t;
+      double d1 = this.l;
+      Double.isNaN(d1);
+      this.q = ((int)(d1 * 234.0D));
+      Object localObject1 = this.t;
       this.j = fy.b((Context)localObject1, "indoor_background.9.png");
       this.k = fy.b((Context)localObject1, "item_selected_background.png");
       localObject1 = this.t;
-      localObject2 = this.s;
+      Object localObject2 = this.s;
       this.d = new RelativeLayout((Context)localObject1);
       this.f = new pc((Context)localObject1);
       this.f.setSingleLine(true);
@@ -120,44 +116,63 @@ public final class ij
       this.e.setVerticalScrollBarEnabled(false);
       this.e.setHorizontalScrollBarEnabled(false);
       this.e.setOverScrollMode(2);
-      this.e.setDivider(null);
+      localObject2 = this.e;
+      localObject1 = null;
+      ((ik)localObject2).setDivider(null);
       this.e.setDividerHeight(0);
       this.e.setOnDataChangedListener(this);
-      localObject1 = new RelativeLayout.LayoutParams((int)(30.0F * this.l), -2);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(14, -1);
-      ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)(6.0F * this.l));
-      this.f.setId(this.f.hashCode());
+      localObject2 = new RelativeLayout.LayoutParams((int)(this.l * 30.0F), -2);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(14, -1);
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(this.l * 6.0F));
+      Object localObject3 = this.f;
+      ((TextView)localObject3).setId(localObject3.hashCode());
       this.f.setText("楼层");
       this.f.setTextSize(12.0F);
       this.f.setGravity(17);
       this.f.setTextColor(Color.argb(200, 56, 56, 56));
-      this.d.addView(this.f, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = new RelativeLayout.LayoutParams((int)(30.0F * this.l), (int)(1.0F * this.l));
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, this.f.getId());
-      ((RelativeLayout.LayoutParams)localObject1).addRule(14, -1);
-      ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)(6.0F * this.l));
+      this.d.addView(this.f, (ViewGroup.LayoutParams)localObject2);
+      float f1 = this.l;
+      localObject2 = new RelativeLayout.LayoutParams((int)(30.0F * f1), (int)(f1 * 1.0F));
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, this.f.getId());
+      ((RelativeLayout.LayoutParams)localObject2).addRule(14, -1);
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = ((int)(this.l * 6.0F));
       this.g.setBackgroundColor(-3355444);
-      this.g.setId(this.g.hashCode());
-      this.d.addView(this.g, (ViewGroup.LayoutParams)localObject1);
-      if (this.j != null)
+      localObject3 = this.g;
+      ((View)localObject3).setId(localObject3.hashCode());
+      this.d.addView(this.g, (ViewGroup.LayoutParams)localObject2);
+      localObject2 = this.j;
+      if (localObject2 != null)
       {
-        arrayOfByte = this.j.getNinePatchChunk();
-        localObject2 = ByteBuffer.wrap(arrayOfByte).order(ByteOrder.nativeOrder());
-        if (((ByteBuffer)localObject2).get() != 0) {
-          break label677;
+        localObject3 = ((Bitmap)localObject2).getNinePatchChunk();
+        localObject2 = ByteBuffer.wrap((byte[])localObject3).order(ByteOrder.nativeOrder());
+        if (((ByteBuffer)localObject2).get() != 0)
+        {
+          localObject1 = new ov();
+          ((ov)localObject1).b = new int[((ByteBuffer)localObject2).get()];
+          ((ov)localObject1).c = new int[((ByteBuffer)localObject2).get()];
+          ((ov)localObject1).d = new int[((ByteBuffer)localObject2).get()];
+          ov.a(((ov)localObject1).b.length);
+          ov.a(((ov)localObject1).c.length);
+          ((ByteBuffer)localObject2).getInt();
+          ((ByteBuffer)localObject2).getInt();
+          ((ov)localObject1).a.left = ((ByteBuffer)localObject2).getInt();
+          ((ov)localObject1).a.right = ((ByteBuffer)localObject2).getInt();
+          ((ov)localObject1).a.top = ((ByteBuffer)localObject2).getInt();
+          ((ov)localObject1).a.bottom = ((ByteBuffer)localObject2).getInt();
+          ((ByteBuffer)localObject2).getInt();
+          ov.a(((ov)localObject1).b, (ByteBuffer)localObject2);
+          ov.a(((ov)localObject1).c, (ByteBuffer)localObject2);
+          ov.a(((ov)localObject1).d, (ByteBuffer)localObject2);
         }
-        localObject1 = null;
+        localObject2 = new Rect();
+        if (localObject1 != null) {
+          localObject2 = ((ov)localObject1).a;
+        }
+        localObject1 = new NinePatchDrawable(this.t.getResources(), this.j, (byte[])localObject3, (Rect)localObject2, null);
+        this.d.setBackgroundDrawable((Drawable)localObject1);
       }
-    }
-    for (;;)
-    {
-      localObject2 = new Rect();
-      if (localObject1 != null) {
-        localObject2 = ((ov)localObject1).a;
-      }
-      localObject1 = new NinePatchDrawable(this.t.getResources(), this.j, arrayOfByte, (Rect)localObject2, null);
-      this.d.setBackgroundDrawable((Drawable)localObject1);
-      localObject1 = new RelativeLayout.LayoutParams((int)(25.0F * this.l), (int)(180.0F * this.l));
+      f1 = this.l;
+      localObject1 = new RelativeLayout.LayoutParams((int)(25.0F * f1), (int)(f1 * 180.0F));
       ((RelativeLayout.LayoutParams)localObject1).addRule(3, this.g.getId());
       ((RelativeLayout.LayoutParams)localObject1).addRule(14, -1);
       this.d.addView(this.e, (ViewGroup.LayoutParams)localObject1);
@@ -167,49 +182,34 @@ public final class ij
       if ((this.a.getMap() != null) && (this.a.getMap().getMapManager() != null) && (this.a.getMap().getMapManager().b != null)) {
         this.y = this.a.getMap().getMapManager().b.o;
       }
-      return;
-      label677:
-      localObject1 = new ov();
-      ((ov)localObject1).b = new int[((ByteBuffer)localObject2).get()];
-      ((ov)localObject1).c = new int[((ByteBuffer)localObject2).get()];
-      ((ov)localObject1).d = new int[((ByteBuffer)localObject2).get()];
-      ov.a(((ov)localObject1).b.length);
-      ov.a(((ov)localObject1).c.length);
-      ((ByteBuffer)localObject2).getInt();
-      ((ByteBuffer)localObject2).getInt();
-      ((ov)localObject1).a.left = ((ByteBuffer)localObject2).getInt();
-      ((ov)localObject1).a.right = ((ByteBuffer)localObject2).getInt();
-      ((ov)localObject1).a.top = ((ByteBuffer)localObject2).getInt();
-      ((ov)localObject1).a.bottom = ((ByteBuffer)localObject2).getInt();
-      ((ByteBuffer)localObject2).getInt();
-      ov.a(((ov)localObject1).b, (ByteBuffer)localObject2);
-      ov.a(((ov)localObject1).c, (ByteBuffer)localObject2);
-      ov.a(((ov)localObject1).d, (ByteBuffer)localObject2);
     }
   }
   
   private void e()
   {
-    if (this.e != null)
+    ik localik = this.e;
+    if (localik != null)
     {
-      ((RelativeLayout.LayoutParams)this.e.getLayoutParams()).width = a(this.s);
+      ((RelativeLayout.LayoutParams)localik.getLayoutParams()).width = a(this.s);
       this.e.requestLayout();
     }
   }
   
   public final void a()
   {
-    if (this.j != null) {
-      this.j.recycle();
+    Bitmap localBitmap = this.j;
+    if (localBitmap != null) {
+      localBitmap.recycle();
     }
-    if (this.k != null) {
-      this.k.recycle();
+    localBitmap = this.k;
+    if (localBitmap != null) {
+      localBitmap.recycle();
     }
   }
   
   public final void a(int paramInt1, int paramInt2)
   {
-    if ((this.b) && (paramInt2 < this.q + 90.0F * this.l))
+    if ((this.b) && (paramInt2 < this.q + this.l * 90.0F))
     {
       this.d.setVisibility(8);
       return;
@@ -219,67 +219,75 @@ public final class ij
   
   public final void a(IndoorBuilding paramIndoorBuilding)
   {
-    if (paramIndoorBuilding == null) {}
-    do
-    {
+    if (paramIndoorBuilding == null) {
       return;
-      if (this.d == null) {
-        d();
-      }
-      this.w = paramIndoorBuilding;
-      paramIndoorBuilding = paramIndoorBuilding.getLevels();
-    } while (this.a == null);
-    Object localObject;
-    if ((paramIndoorBuilding.size() < 4) && (paramIndoorBuilding.size() != this.v))
-    {
-      localObject = (FrameLayout.LayoutParams)this.d.getLayoutParams();
-      ((FrameLayout.LayoutParams)localObject).height = ((int)(this.q - (4 - paramIndoorBuilding.size()) * 45 * this.l));
-      this.a.updateViewLayout(this.d, (ViewGroup.LayoutParams)localObject);
     }
-    for (;;)
+    if (this.d == null) {
+      d();
+    }
+    this.w = paramIndoorBuilding;
+    paramIndoorBuilding = paramIndoorBuilding.getLevels();
+    if (this.a != null)
     {
-      this.v = paramIndoorBuilding.size();
-      if (this.s != null)
+      if ((paramIndoorBuilding.size() < 4) && (paramIndoorBuilding.size() != this.v))
       {
-        localObject = this.s;
+        localObject = (FrameLayout.LayoutParams)this.d.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject).height = ((int)(this.q - (4 - paramIndoorBuilding.size()) * 45 * this.l));
+        this.a.updateViewLayout(this.d, (ViewGroup.LayoutParams)localObject);
+      }
+      else
+      {
+        int i1 = paramIndoorBuilding.size();
+        int i2 = this.v;
+        if ((i1 != i2) && (i2 < 4))
+        {
+          localObject = (FrameLayout.LayoutParams)this.d.getLayoutParams();
+          ((FrameLayout.LayoutParams)localObject).height = this.q;
+          this.a.updateViewLayout(this.d, (ViewGroup.LayoutParams)localObject);
+        }
+      }
+      this.v = paramIndoorBuilding.size();
+      Object localObject = this.s;
+      if (localObject != null)
+      {
         ((ij.a)localObject).a = paramIndoorBuilding;
         ((ij.a)localObject).notifyDataSetChanged();
       }
-      if (this.d.getVisibility() == 0) {
-        break;
-      }
-      this.d.post(new ij.1(this));
-      return;
-      if ((paramIndoorBuilding.size() != this.v) && (this.v < 4))
-      {
-        localObject = (FrameLayout.LayoutParams)this.d.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject).height = this.q;
-        this.a.updateViewLayout(this.d, (ViewGroup.LayoutParams)localObject);
+      if (this.d.getVisibility() != 0) {
+        this.d.post(new ij.1(this));
       }
     }
   }
   
   public final void a(boolean paramBoolean)
   {
-    if ((this.a == null) || (this.a.getMap() == null)) {}
-    do
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      do
-      {
-        return;
-        if (this.d != null) {
-          break;
-        }
-      } while (!paramBoolean);
-      d();
-      BaseMap localBaseMap = this.a.getMap();
-      if ((this.b) && (paramBoolean) && (this.y != null) && (this.y.h))
-      {
-        a(localBaseMap.getMapManager().p());
+      if (((BaseMapView)localObject).getMap() == null) {
         return;
       }
-    } while (this.d.getVisibility() != 0);
-    this.d.setVisibility(8);
+      if (this.d == null)
+      {
+        if (!paramBoolean) {
+          return;
+        }
+        d();
+      }
+      localObject = this.a.getMap();
+      if ((this.b) && (paramBoolean))
+      {
+        kj localkj = this.y;
+        if ((localkj != null) && (localkj.h))
+        {
+          a(((BaseMap)localObject).getMapManager().p());
+          return;
+        }
+      }
+      if (this.d.getVisibility() == 0) {
+        this.d.setVisibility(8);
+      }
+    }
   }
   
   public final boolean a(ViewGroup paramViewGroup)
@@ -289,8 +297,9 @@ public final class ij
       RelativeLayout localRelativeLayout = this.d;
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, this.q);
       localLayoutParams.gravity = 83;
-      localLayoutParams.leftMargin = ((int)(10.0F * this.l));
-      localLayoutParams.bottomMargin = ((int)(90.0F * this.l));
+      float f1 = this.l;
+      localLayoutParams.leftMargin = ((int)(10.0F * f1));
+      localLayoutParams.bottomMargin = ((int)(f1 * 90.0F));
       paramViewGroup.addView(localRelativeLayout, localLayoutParams);
     }
     e();
@@ -300,52 +309,58 @@ public final class ij
   public final void b()
   {
     e();
-    int i1;
-    List localList;
-    if (this.w != null)
+    Object localObject = this.w;
+    if (localObject != null)
     {
-      i1 = this.w.getActiveLevelIndex();
-      localList = this.w.getLevels();
-      if ((localList != null) && (i1 < localList.size()) && (i1 != -1)) {
-        break label47;
+      int i1 = ((IndoorBuilding)localObject).getActiveLevelIndex();
+      localObject = this.w.getLevels();
+      if ((localObject != null) && (i1 < ((List)localObject).size()))
+      {
+        if (i1 == -1) {
+          return;
+        }
+        if ((IndoorLevel)((List)localObject).get(i1) != null)
+        {
+          localObject = this.x;
+          if ((localObject != null) && (this.c) && (((String)localObject).equals(this.w.getBuidlingId())))
+          {
+            this.e.setItemChecked(i1, true);
+            this.c = false;
+          }
+          else
+          {
+            localObject = this.e;
+            double d1 = this.l * 45.0F;
+            Double.isNaN(d1);
+            ((ik)localObject).setSelectionFromTop(i1, (int)(d1 + 0.5D) * 2);
+          }
+          this.u = i1;
+          this.x = this.w.getBuidlingId();
+        }
       }
-    }
-    label47:
-    while ((IndoorLevel)localList.get(i1) == null) {
-      return;
-    }
-    if ((this.x != null) && (this.c) && (this.x.equals(this.w.getBuidlingId())))
-    {
-      this.e.setItemChecked(i1, true);
-      this.c = false;
-    }
-    for (;;)
-    {
-      this.u = i1;
-      this.x = this.w.getBuidlingId();
-      return;
-      this.e.setSelectionFromTop(i1, (int)(45.0F * this.l + 0.5D) * 2);
     }
   }
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.a.getMap();
-    if (paramAdapterView == null) {
-      return;
-    }
-    if (this.z != null)
+    BaseMap localBaseMap = this.a.getMap();
+    if (localBaseMap != null)
     {
-      this.z.a.setTextColor(-16777216);
-      this.z.b.setVisibility(4);
+      ij.a.a locala = this.z;
+      if (locala != null)
+      {
+        locala.a.setTextColor(-16777216);
+        this.z.b.setVisibility(4);
+      }
+      locala = (ij.a.a)paramView.getTag();
+      locala.a.setTextColor(-1);
+      locala.b.setVisibility(0);
+      this.z = locala;
+      this.u = paramInt;
+      this.c = true;
+      localBaseMap.setIndoorFloor(paramInt);
     }
-    paramView = (ij.a.a)paramView.getTag();
-    paramView.a.setTextColor(-1);
-    paramView.b.setVisibility(0);
-    this.z = paramView;
-    this.u = paramInt;
-    this.c = true;
-    paramAdapterView.setIndoorFloor(paramInt);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

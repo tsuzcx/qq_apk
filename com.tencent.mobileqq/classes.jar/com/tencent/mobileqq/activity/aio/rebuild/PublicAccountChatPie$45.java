@@ -1,17 +1,61 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import suv;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class PublicAccountChatPie$45
-  implements Runnable
+class PublicAccountChatPie$45
+  implements BusinessObserver
 {
-  public PublicAccountChatPie$45(agti paramagti) {}
+  PublicAccountChatPie$45(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    suv.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.a.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("success:");
+      localStringBuilder.append(String.valueOf(paramBoolean));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    bool2 = true;
+    if (!paramBoolean)
+    {
+      this.a.t(2131892951);
+      bool1 = bool2;
+    }
+    else
+    {
+      bool1 = bool2;
+      if (!paramBoolean) {}
+    }
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      bool1 = bool2;
+      if (paramBundle != null)
+      {
+        localObject = new mobileqq_mp.FollowResponse();
+        ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
+        bool1 = PublicAccountChatPie.a(this.a, true, paramInt);
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        bool1 = bool2;
+      }
+    }
+    if (bool1) {
+      this.a.bz();
+    }
   }
 }
 

@@ -11,22 +11,22 @@ public final class a$a
   public String id;
   public int width;
   
-  public final void e(Parcel paramParcel)
+  public final void g(Parcel paramParcel)
   {
-    AppMethodBeat.i(11085);
+    AppMethodBeat.i(121568);
     paramParcel.writeString(this.id);
     paramParcel.writeInt(this.width);
     paramParcel.writeInt(this.height);
-    AppMethodBeat.o(11085);
+    AppMethodBeat.o(121568);
   }
   
   public final void readFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(11086);
+    AppMethodBeat.i(121569);
     this.id = paramParcel.readString();
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
-    AppMethodBeat.o(11086);
+    AppMethodBeat.o(121569);
   }
 }
 

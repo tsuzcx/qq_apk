@@ -5,7 +5,7 @@ import android.os.Parcel;
 import com.tencent.open.base.StringAddition;
 import com.tencent.open.component.cache.database.DbCacheData;
 import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import hjx;
+import hjw;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -26,7 +26,7 @@ public class FriendGroup
   
   static
   {
-    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new hjx();
+    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new hjw();
   }
   
   public FriendGroup()

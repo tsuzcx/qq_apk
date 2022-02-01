@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class msg_svc$PbC2CMsgWithDrawReq$MsgInfo
   extends MessageMicro<MsgInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 162 }, new String[] { "uint64_from_uin", "uint64_to_uin", "uint32_msg_seq", "uint64_msg_uid", "uint64_msg_time", "uint32_msg_random", "uint32_pkg_num", "uint32_pkg_index", "uint32_div_seq", "uint32_msg_type", "routing_head" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, MsgInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public msg_svc.RoutingHead routing_head = new msg_svc.RoutingHead();
   public final PBUInt32Field uint32_div_seq = PBField.initUInt32(0);
   public final PBUInt32Field uint32_msg_random = PBField.initUInt32(0);
@@ -21,10 +21,17 @@ public final class msg_svc$PbC2CMsgWithDrawReq$MsgInfo
   public final PBUInt64Field uint64_msg_time = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_msg_uid = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_to_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 162 }, new String[] { "uint64_from_uin", "uint64_to_uin", "uint32_msg_seq", "uint64_msg_uid", "uint64_msg_time", "uint32_msg_random", "uint32_pkg_num", "uint32_pkg_index", "uint32_div_seq", "uint32_msg_type", "routing_head" }, new Object[] { localLong, localLong, localInteger, localLong, localLong, localInteger, localInteger, localInteger, localInteger, localInteger, null }, MsgInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbC2CMsgWithDrawReq.MsgInfo
  * JD-Core Version:    0.7.0.1
  */

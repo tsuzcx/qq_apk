@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/qq_ls_bg_item" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="@color/white" android:id="@id/qq_ls_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="30.0dip" android:text="飞翔的秋秋" android:singleLine="true" android:layout_centerVertical="true" />
+    <com.tencent.mobileqq.activity.recent.cur.DragTextView android:textSize="10.0sp" android:textColor="@color/white" android:id="@id/qq_ls_unread_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="8" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

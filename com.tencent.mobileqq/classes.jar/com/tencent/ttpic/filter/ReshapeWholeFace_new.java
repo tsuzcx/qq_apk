@@ -43,12 +43,13 @@ public class ReshapeWholeFace_new
   
   public void getparamV()
   {
-    this.paramV2[0] = this.faceWidth;
-    this.paramV2[1] = this.faceWidth2;
-    this.paramV2[2] = this.faceJaw;
-    this.paramV2[3] = this.faceSmile;
-    this.paramV2[4] = this.foreheadHeight;
-    this.paramV2[5] = this.cheekbone;
+    float[] arrayOfFloat = this.paramV2;
+    arrayOfFloat[0] = this.faceWidth;
+    arrayOfFloat[1] = this.faceWidth2;
+    arrayOfFloat[2] = this.faceJaw;
+    arrayOfFloat[3] = this.faceSmile;
+    arrayOfFloat[4] = this.foreheadHeight;
+    arrayOfFloat[5] = this.cheekbone;
   }
   
   public void initAttribParams()
@@ -81,11 +82,13 @@ public class ReshapeWholeFace_new
     if (paramMap.containsKey("posV2")) {
       this.posV2 = ((float[])paramMap.get("posV2"));
     }
+    float f;
     if (paramMap.containsKey("foreheadHeight"))
     {
       this.foreheadHeight = (((Float)paramMap.get("foreheadHeight")).floatValue() * 0.02F);
-      if (this.foreheadHeight > 0.0F) {
-        this.foreheadHeight *= 1.5F;
+      f = this.foreheadHeight;
+      if (f > 0.0F) {
+        this.foreheadHeight = (f * 1.5F);
       }
     }
     if (paramMap.containsKey("faceJaw")) {
@@ -97,15 +100,17 @@ public class ReshapeWholeFace_new
     if (paramMap.containsKey("faceWidth"))
     {
       this.faceWidth = (((Float)paramMap.get("faceWidth")).floatValue() * 0.0012F);
-      if (this.faceWidth > 0.0F) {
-        this.faceWidth *= 1.15F;
+      f = this.faceWidth;
+      if (f > 0.0F) {
+        this.faceWidth = (f * 1.15F);
       }
     }
     if (paramMap.containsKey("faceWidth2"))
     {
       this.faceWidth2 = (((Float)paramMap.get("faceWidth2")).floatValue() * 0.0017F);
-      if (this.faceWidth2 > 0.0F) {
-        this.faceWidth2 = (this.faceWidth2 * 1.15F * 0.95F);
+      f = this.faceWidth2;
+      if (f > 0.0F) {
+        this.faceWidth2 = (f * 1.15F * 0.95F);
       }
     }
     if (paramMap.containsKey("cheekboneThin")) {
@@ -122,7 +127,7 @@ public class ReshapeWholeFace_new
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.ReshapeWholeFace_new
  * JD-Core Version:    0.7.0.1
  */

@@ -19,13 +19,8 @@ public final class AdAppUtil
   
   public static String getCurrentRunningPackageName(Context paramContext, String paramString)
   {
-    if ((!TextUtils.isEmpty(currentRunningPackageName)) || (paramContext == null)) {}
-    for (;;)
+    if ((TextUtils.isEmpty(currentRunningPackageName)) && (paramContext != null))
     {
-      if (!TextUtils.isEmpty(currentRunningPackageName)) {
-        paramString = currentRunningPackageName;
-      }
-      return paramString;
       paramContext = paramContext.getApplicationContext();
       if (paramContext != null)
       {
@@ -35,82 +30,82 @@ public final class AdAppUtil
         }
       }
     }
+    if (!TextUtils.isEmpty(currentRunningPackageName)) {
+      return currentRunningPackageName;
+    }
+    return paramString;
   }
   
   public static boolean isInstalled(Context paramContext, String paramString)
   {
-    if (paramContext == null) {
-      AdLog.e("AdAppUtil", "isInstalled error");
-    }
-    for (;;)
+    boolean bool = false;
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString)))
     {
-      return false;
-      if (TextUtils.isEmpty(paramString)) {
-        break;
-      }
       paramContext = paramContext.getPackageManager();
-      if (paramContext == null) {
-        break;
-      }
-      try
-      {
-        paramContext = paramContext.getApplicationInfo(paramString, 0);
-        if (paramContext != null) {
-          return true;
-        }
-      }
-      catch (PackageManager.NameNotFoundException paramContext)
-      {
-        AdLog.i("AdAppUtil", "isInstalled", paramContext);
-      }
+      if (paramContext != null) {}
     }
+    else
+    {
+      AdLog.e("AdAppUtil", "isInstalled error");
+      return false;
+    }
+    try
+    {
+      paramContext = paramContext.getApplicationInfo(paramString, 0);
+      if (paramContext != null) {
+        bool = true;
+      }
+      return bool;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
     return false;
   }
   
   public static AdError launch(Context paramContext, String paramString, Bundle paramBundle)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString)))
     {
-      AdLog.e("AdAppUtil", "launch error");
-      return new AdError(4);
+      AdLog.i("AdAppUtil", String.format("launch %s", new Object[] { paramString }));
+      paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
+      if (paramString == null)
+      {
+        AdLog.e("AdAppUtil", "launch error");
+        return new AdError(203);
+      }
+      if ((paramBundle != null) && (!paramBundle.isEmpty())) {
+        paramString.putExtras(paramBundle);
+      }
+      try
+      {
+        paramContext.startActivity(paramString);
+        paramContext = new AdError(0);
+        return paramContext;
+      }
+      catch (Throwable paramContext)
+      {
+        AdLog.e("AdAppUtil", "launch", paramContext);
+        return new AdError(202, paramContext);
+      }
     }
-    AdLog.i("AdAppUtil", String.format("launch %s", new Object[] { paramString }));
-    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
-    if (paramString == null)
-    {
-      AdLog.e("AdAppUtil", "launch error");
-      return new AdError(203);
-    }
-    if ((paramBundle != null) && (!paramBundle.isEmpty())) {
-      paramString.putExtras(paramBundle);
-    }
-    try
-    {
-      paramContext.startActivity(paramString);
-      paramContext = new AdError(0);
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      AdLog.e("AdAppUtil", "launch", paramContext);
-    }
-    return new AdError(202, paramContext);
+    AdLog.e("AdAppUtil", "launch error");
+    return new AdError(4);
   }
   
   public static ResolveInfo resolveActivity(Context paramContext, Intent paramIntent)
   {
-    if ((paramContext == null) || (paramIntent == null)) {}
-    do
+    if ((paramContext != null) && (paramIntent != null))
     {
-      return null;
       paramContext = paramContext.getPackageManager();
-    } while (paramContext == null);
-    return paramContext.resolveActivity(paramIntent, 65536);
+      if (paramContext != null) {
+        return paramContext.resolveActivity(paramIntent, 65536);
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdAppUtil
  * JD-Core Version:    0.7.0.1
  */

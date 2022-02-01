@@ -1,13 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
 
 public class gjq
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public gjq(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
   
-  public void onClick(View paramView) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (QZoneShareAlbumAssistantActivity.a(this.a).getVisibility() == 0) {
+      QZoneShareAlbumAssistantActivity.b(this.a);
+    }
+    return true;
+  }
 }
 
 

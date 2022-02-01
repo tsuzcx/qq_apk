@@ -59,38 +59,38 @@ public class TransferConfig$ConfigData
       {
         this.mCommonFloat1 = new TransferConfig.ExtendParamFloats();
         this.mCommonFloat1.fromJSONObject((String)localObject);
-        localObject = paramString.optString("commonfloat2");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label255;
-        }
+      }
+      else
+      {
+        this.mCommonFloat1 = null;
+      }
+      localObject = paramString.optString("commonfloat2");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
         this.mCommonFloat2 = new TransferConfig.ExtendParamFloats();
         this.mCommonFloat2.fromJSONObject((String)localObject);
-        label180:
-        localObject = paramString.optString("commonfloat3");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label263;
-        }
+      }
+      else
+      {
+        this.mCommonFloat2 = null;
+      }
+      localObject = paramString.optString("commonfloat3");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
         this.mCommonFloat3 = new TransferConfig.ExtendParamFloats();
         this.mCommonFloat3.fromJSONObject((String)localObject);
       }
-      for (;;)
+      else
       {
-        paramString = paramString.optString("commonfloat4");
-        if (TextUtils.isEmpty(paramString)) {
-          break label271;
-        }
+        this.mCommonFloat3 = null;
+      }
+      paramString = paramString.optString("commonfloat4");
+      if (!TextUtils.isEmpty(paramString))
+      {
         this.mCommonFloat4 = new TransferConfig.ExtendParamFloats();
         this.mCommonFloat4.fromJSONObject(paramString);
         return;
-        this.mCommonFloat1 = null;
-        break;
-        label255:
-        this.mCommonFloat2 = null;
-        break label180;
-        label263:
-        this.mCommonFloat3 = null;
       }
-      label271:
       this.mCommonFloat4 = null;
       return;
     }
@@ -163,7 +163,7 @@ public class TransferConfig$ConfigData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.videotransfer.TransferConfig.ConfigData
  * JD-Core Version:    0.7.0.1
  */

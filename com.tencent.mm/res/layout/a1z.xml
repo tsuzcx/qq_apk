@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/n_"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/le" android:background="@drawable/am" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/lf" android:background="@null" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gg" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/le" android:layout_centerVertical="true">
-        <com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView android:id="@id/c0m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="1024.0dip" />
-    </LinearLayout>
-    <ImageView android:id="@id/c0n" android:background="@null" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="@dimen/a2t" android:layout_height="@dimen/a2t" android:src="@drawable/b0m" android:layout_centerVertical="true" android:contentDescription="@string/u4" android:paddingStart="@dimen/n_" android:paddingEnd="@dimen/n_" android:layout_alignParentEnd="true" />
-</RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/cf5" android:paddingTop="@dimen/cv" android:paddingBottom="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <ProgressBar android:id="@id/cf4" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/a85" />
+        <TextView android:gravity="center" android:id="@id/g30" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/c8s" android:layout_centerInParent="true" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/cf4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

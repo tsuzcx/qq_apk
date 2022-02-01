@@ -8,37 +8,50 @@ import mqq.observer.BusinessObserver;
 public class MiniAppObserver
   implements BusinessObserver
 {
+  public static final int MINI_APP_ADD_PHONE_NUMBER = 1073;
   public static final int MINI_APP_BATCH_GET_CONTACT = 1039;
+  public static final int MINI_APP_BATCH_GET_GAME_FOLLOW_COUNT = 1091;
   public static final int MINI_APP_BATCH_GET_USER_INFO = 1028;
   public static final int MINI_APP_BATCH_QUERY_APP_INFO = 1013;
+  public static final int MINI_APP_BOOKSHIEF_INSERT = 1080;
+  public static final int MINI_APP_BOOKSHIEF_QUERY = 1081;
+  public static final int MINI_APP_BOOKSHIEF_UPDATE = 1082;
   static final int MINI_APP_CHANGE_SHARE_IMAGE_URL = 1029;
+  public static final int MINI_APP_CHECK_BINDING_STATE = 1083;
   public static final int MINI_APP_CHECK_NAVIGATE_RIGHT = 1023;
   public static final int MINI_APP_CHECK_OFFER_ID = 1021;
   public static final int MINI_APP_CHECK_SESSION = 1002;
+  public static final int MINI_APP_CREATE_UPDATABLE_MSG = 1076;
   public static final int MINI_APP_DC_REPORT = 1005;
   public static final int MINI_APP_DEL_ITEM = 1006;
+  public static final int MINI_APP_DEL_PHONE_NUMBER = 1074;
+  public static final int MINI_APP_DO_GAME_RAFFLE = 1090;
   public static final int MINI_APP_DO_LIKE = 1009;
+  public static final int MINI_APP_GENERAL_CODE = 9000;
   public static final int MINI_APP_GET_APPINFO_BY_ID = 1024;
   public static final int MINI_APP_GET_APPINFO_BY_ID_FOR_SDK = 1055;
   public static final int MINI_APP_GET_APPINFO_BY_LINK = 1003;
   public static final int MINI_APP_GET_APPINFO_BY_LINK_FOR_SDK = 1056;
   public static final int MINI_APP_GET_AUTH_LIST = 1043;
+  public static final int MINI_APP_GET_CM_SHOW_INFO = 1088;
   public static final int MINI_APP_GET_CONETNT_ACCELERATE = 1070;
   public static final int MINI_APP_GET_EXT_CONFIG_DETAIL = 1040;
   static final int MINI_APP_GET_FORM_ID = 1020;
   public static final int MINI_APP_GET_FRIEND_CLOUD_STORAGE = 1019;
+  public static final int MINI_APP_GET_GAME_RAFFLE_MATERIAL = 1089;
   public static final int MINI_APP_GET_GROUP_CLOUD_STORAGE = 1018;
   public static final int MINI_APP_GET_GROUP_SHARE_INFO = 1033;
   public static final int MINI_APP_GET_HOT_SEARCH_APPS = 1071;
   public static final int MINI_APP_GET_KUOLIE_APPLIST = 1044;
   public static final int MINI_APP_GET_LOGIN_CODE = 1000;
-  public static final int MINI_APP_GET_MINE_STORY_FEED_LIST = 1031;
+  public static final int MINI_APP_GET_MATERIAL_RELEVANT_APP = 1031;
   public static final int MINI_APP_GET_NATIVE_APPINFO = 1030;
   public static final int MINI_APP_GET_NEW_BASELIB = 1004;
   public static final int MINI_APP_GET_NEW_BASELIB_FOR_SDK = 1057;
   public static final int MINI_APP_GET_PHONE_NUMBER = 1053;
   public static final int MINI_APP_GET_POTENTIAL_FRIEND_LIST = 1060;
   public static final int MINI_APP_GET_PROFILE = 1001;
+  public static final int MINI_APP_GET_REACTIVE_FRIEND_LIST = 1084;
   public static final int MINI_APP_GET_RECOMMEND_APP_LIST = 1048;
   public static final int MINI_APP_GET_REWARDED_VIDEO_AD_RESULT = 1027;
   public static final int MINI_APP_GET_ROBOT_UIN = 1045;
@@ -55,18 +68,23 @@ public class MiniAppObserver
   public static final int MINI_APP_GET_USER_INFO_EXTRA = 1032;
   public static final int MINI_APP_GET_USER_INTERACTIVE_STORAGE_SERVLET = 1059;
   public static final int MINI_APP_GET_USER_SETTING = 1051;
+  public static final int MINI_APP_GET_WEIXIN_SDK_APPINFO = 1092;
   public static final int MINI_APP_LOCAL_SEARCH_DATA = 1011;
   public static final int MINI_APP_MIDAS_CONSUME_RESULT = 1025;
   public static final int MINI_APP_MIDAS_QUERY_RESULT = 1026;
   public static final int MINI_APP_MODIFY_FRIEND_INTERACTIVE_STORAGE_SERVLET = 1058;
   public static final int MINI_APP_OPEN_CHANNEL = 1054;
+  public static final int MINI_APP_REAL_TIME_LOG_REPORT = 1075;
+  public static final int MINI_APP_REJECT_FREQUENTLY_RECOMMENDS = 1085;
   public static final int MINI_APP_REMOVE_USER_CLOUD_STORAGE = 1017;
   public static final int MINI_APP_REPORT_LOG_FILE_URL = 1035;
   public static final int MINI_APP_REPORT_SHARE = 1063;
   public static final int MINI_APP_SEARCH_APP = 1072;
+  public static final int MINI_APP_SEARCH_GUESS_YOU_LIKE = 1086;
   public static final int MINI_APP_SEND_ARK_MSG = 1061;
   public static final int MINI_APP_SET_AUTH = 1042;
   public static final int MINI_APP_SET_AVATAR = 1034;
+  public static final int MINI_APP_SET_CM_SHOW_PET_STATUS = 1087;
   public static final int MINI_APP_SET_TOP = 1007;
   public static final int MINI_APP_SET_USER_CLOUD_STORAGE = 1015;
   public static final int MINI_APP_SET_USER_SWITCH = 1050;
@@ -75,10 +93,14 @@ public class MiniAppObserver
   public static final int MINI_APP_UPDATE_USER_SETTING = 1052;
   public static final int MINI_APP_USE_USER_APP = 1014;
   public static final int MINI_APP_VERIFY_PLUGIN = 1038;
+  public static final int MINI_APP_WX_PAY_CHECK_URL = 1077;
   public static final String TAG = "[mini] MiniAppObserver";
   
   public static String getCmdByObserverId(int paramInt)
   {
+    if (9000 == paramInt) {
+      return "MINI_APP_GENERAL_CODE";
+    }
     if (1000 == paramInt) {
       return "MINI_APP_GET_LOGIN_CODE";
     }
@@ -168,9 +190,6 @@ public class MiniAppObserver
     }
     if (1030 == paramInt) {
       return "MINI_APP_GET_NATIVE_APPINFO";
-    }
-    if (1031 == paramInt) {
-      return "MINI_APP_GET_MINE_STORY_FEED_LIST";
     }
     if (1032 == paramInt) {
       return "MINI_APP_GET_USER_INFO_EXTRA";
@@ -274,365 +293,508 @@ public class MiniAppObserver
     if (1072 == paramInt) {
       return "MINI_APP_SEARCH_APP";
     }
+    if (1073 == paramInt) {
+      return "MINI_APP_ADD_PHONE_NUMBER";
+    }
+    if (1074 == paramInt) {
+      return "MINI_APP_DEL_PHONE_NUMBER";
+    }
+    if (1075 == paramInt) {
+      return "MINI_APP_REAL_TIME_LOG_REPORT";
+    }
+    if (1077 == paramInt) {
+      return "MINI_APP_WX_PAY_CHECK_URL";
+    }
+    if (1083 == paramInt) {
+      return "MINI_APP_CHECK_BINDING_STATE";
+    }
+    if (1087 == paramInt) {
+      return "MINI_APP_SET_CM_SHOW_PET_STATUS";
+    }
+    if (1088 == paramInt) {
+      return "MINI_APP_GET_CM_SHOW_INFO";
+    }
+    if (1084 == paramInt) {
+      return "MINI_APP_GET_REACTIVE_FRIEND_LIST";
+    }
+    if (1086 == paramInt) {
+      return "MINI_APP_SEARCH_GUESS_YOU_LIKE";
+    }
+    if (1089 == paramInt) {
+      return "MINI_APP_GET_GAME_RAFFLE_MATERIAL";
+    }
+    if (1090 == paramInt) {
+      return "MINI_APP_DO_GAME_RAFFLE";
+    }
+    if (1091 == paramInt) {
+      return "MINI_APP_BATCH_GET_GAME_FOLLOW_COUNT";
+    }
+    if (1092 == paramInt) {
+      return "MINI_APP_GET_WEIXIN_SDK_APPINFO";
+    }
     return "default cmd";
   }
   
   public void doOnReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramBundle == null) {
+    if (paramBundle == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("[mini] MiniAppObserver", 2, "onReceive data is null");
       }
+      return;
     }
-    int i;
-    do
+    int i = paramBundle.getInt("key_index", -1);
+    Object localObject = paramBundle.getString("key_appid");
+    if (paramInt == 9000)
+    {
+      localObject = paramBundle.getByteArray("key_response_data");
+      onGetGeneralCmdFin(i, paramBundle.getLong("retCode"), (byte[])localObject, paramBundle.getString("errMsg"));
+    }
+    for (;;)
     {
       return;
-      i = paramBundle.getInt("key_index", -1);
-      String str = paramBundle.getString("key_appid");
-      if (paramInt == 1000)
-      {
-        onGetLoginCodeFin(i, paramBoolean, paramBundle.getString("code"));
-        return;
-      }
-      if (paramInt == 1001)
-      {
-        onGetProfileFin(i, str, paramBoolean, paramBundle.getString("nick"), paramBundle.getString("avatar"), paramBundle.getInt("gender"), paramBundle.getString("country"), paramBundle.getString("province"), paramBundle.getString("city"), paramBundle.getString("language"), paramBundle.getString("rawData", ""), paramBundle.getString("signature", ""), paramBundle.getString("encryptedData", ""), paramBundle.getString("iv", ""));
-        return;
-      }
-      if (paramInt == 1002)
-      {
-        long l = paramBundle.getLong("ret");
-        paramBundle = paramBundle.getString("errMsg");
-        onCheckSessionFin(i, paramBoolean, (int)l, paramBundle);
-        return;
-      }
-      if (paramInt == 1003)
-      {
-        onGetAppInfoByLinkFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1004)
-      {
-        onGetNewBaseLibFin(i, paramBoolean, paramBundle.getString("version"), paramBundle.getString("downloadUrl"), paramBundle);
-        return;
-      }
-      if (paramInt == 1005)
-      {
-        onDcReport(i, paramBoolean, paramBundle.getInt("ret"));
-        return;
-      }
-      if (paramInt == 1006)
-      {
-        onDelMiniAppFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1007)
-      {
-        onSetTopMiniAppFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1008)
-      {
-        onGetUserAppInfoFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1009)
-      {
-        onSetUserAppLikeFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1010)
-      {
-        onGetUserAppList(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1011)
-      {
-        onLocalSearchDataFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1031)
-      {
-        onGetMineStoryFeedList(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1012)
-      {
-        onGetShareInfo(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1029)
-      {
-        onChangeShareImageUrl(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1013)
-      {
-        onBatchQueryAppInfoFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1014)
-      {
-        onUseUserAppFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1015)
-      {
-        onSetuserCloudStorage(i, paramBoolean);
-        return;
-      }
-      if (paramInt == 1017)
-      {
-        onRemoveuserCloudStorage(i, paramBoolean);
-        return;
-      }
-      if (paramInt == 1016)
-      {
-        onGetuserCloudStorage(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1018)
-      {
-        onGetGroupCloudStorage(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1019)
-      {
-        onGetFriendCloudStorage(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1020)
-      {
-        onGetFormId(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1021)
-      {
-        onCheckOfferIdFin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1022)
-      {
-        onGetStoreAppList(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1023)
-      {
-        onCheckNavigateRightServlet(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1024)
-      {
-        onGetAppInfoByIdServlet(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1025)
-      {
-        onGetMidasConsumeResult(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1026)
-      {
-        onGetMidasQueryResult(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1027)
-      {
-        onGetRewardedVideoAdResult(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1028)
-      {
-        onBatchGetUserInfoResult(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1030)
-      {
-        onGetNativeAppInfoForJump(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1032)
-      {
-        onGetUserInfoExtra(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1033)
-      {
-        onGetGroupShareInfo(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1034)
-      {
-        onSetAvatar(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1035)
-      {
-        onReportLogFileUrlServlet(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1036)
-      {
-        onTransForOpenIdAndTinyId(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1037)
-      {
-        onTransForRoomId(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1039)
-      {
-        onBatchGetContact(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1038)
-      {
-        onVerifyPlugin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1040)
-      {
-        onGetExtConfigDetail(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1041)
-      {
-        onGetUserHealthData(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1042)
-      {
-        onSetAuth(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1043)
-      {
-        onGetAuthList(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1044)
-      {
-        onGetKuolieAppListServlet(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1045)
-      {
-        onGetRobotUin(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1046)
-      {
-        onGetTcbTicket(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1047)
-      {
-        onGetUserAppListV2(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1048)
-      {
-        onGetRecommendAppList(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1049)
-      {
-        onGetSwitchList(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1050)
-      {
-        onSetUserSwitch(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1051)
-      {
-        onGetUserSetting(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1052)
-      {
-        onUpdateUserSetting(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1053)
-      {
-        onGetPhoneNumber(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1054)
-      {
-        onOpenChannel(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1055)
-      {
-        onGetAppInfoByIdForSDKServlet(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1056)
-      {
-        onGetAppInfoByLinkFinForSDK(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1057)
-      {
-        onGetNewBaseLibFinForSDK(i, paramBoolean, paramBundle.getString("version"), paramBundle.getString("downloadUrl"), paramBundle);
-        return;
-      }
-      if (paramInt == 1058)
-      {
-        onModifyFriendInteractiveStorage(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1059)
-      {
-        onGetUserInteractiveStorage(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1060)
-      {
-        onGetPotentialFriendList(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1061)
-      {
-        onSendArkMsg(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1062)
-      {
-        onGetUserGroupInfo(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1063)
-      {
-        onReportShare(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1070)
-      {
-        onGetContentAccelerateServlet(i, paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1071)
-      {
-        onGetHotSearchApps(i, paramBoolean, paramBundle);
-        return;
-      }
-    } while (paramInt != 1072);
-    onSearchApp(i, paramBoolean, paramBundle);
+      if (paramInt != 1000) {
+        break;
+      }
+      onGetLoginCodeFin(i, paramBoolean, paramBundle.getString("code"), paramBundle.getLong("retCode", -1L), paramBundle.getString("errMsg", ""));
+    }
+    if (paramInt == 1001)
+    {
+      onGetProfileFin(i, (String)localObject, paramBoolean, paramBundle.getString("nick"), paramBundle.getString("avatar"), paramBundle.getInt("gender"), paramBundle.getString("country"), paramBundle.getString("province"), paramBundle.getString("city"), paramBundle.getString("language"), paramBundle.getString("rawData", ""), paramBundle.getString("signature", ""), paramBundle.getString("encryptedData", ""), paramBundle.getString("iv", ""), paramBundle.getLong("retCode", -1L), paramBundle.getString("errMsg", ""));
+      return;
+    }
+    if (paramInt == 1002)
+    {
+      long l = paramBundle.getLong("ret");
+      paramBundle = paramBundle.getString("errMsg");
+      onCheckSessionFin(i, paramBoolean, (int)l, paramBundle);
+      return;
+    }
+    if (paramInt == 1003)
+    {
+      onGetAppInfoByLinkFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1004)
+    {
+      onGetNewBaseLibFin(i, paramBoolean, paramBundle.getString("version"), paramBundle.getString("downloadUrl"), paramBundle);
+      return;
+    }
+    if (paramInt == 1005)
+    {
+      onDcReport(i, paramBoolean, paramBundle.getInt("ret"));
+      return;
+    }
+    if (paramInt == 1006)
+    {
+      onDelMiniAppFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1007)
+    {
+      onSetTopMiniAppFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1008)
+    {
+      onGetUserAppInfoFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1009)
+    {
+      onSetUserAppLikeFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1010)
+    {
+      onGetUserAppList(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1011)
+    {
+      onLocalSearchDataFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1012)
+    {
+      onGetShareInfo(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1029)
+    {
+      onChangeShareImageUrl(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1013)
+    {
+      onBatchQueryAppInfoFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1014)
+    {
+      onUseUserAppFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1015)
+    {
+      onSetuserCloudStorage(i, paramBoolean);
+      return;
+    }
+    if (paramInt == 1017)
+    {
+      onRemoveuserCloudStorage(i, paramBoolean);
+      return;
+    }
+    if (paramInt == 1016)
+    {
+      onGetuserCloudStorage(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1018)
+    {
+      onGetGroupCloudStorage(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1019)
+    {
+      onGetFriendCloudStorage(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1020)
+    {
+      onGetFormId(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1021)
+    {
+      onCheckOfferIdFin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1022)
+    {
+      onGetStoreAppList(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1023)
+    {
+      onCheckNavigateRightServlet(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1024)
+    {
+      onGetAppInfoByIdServlet(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1025)
+    {
+      onGetMidasConsumeResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1026)
+    {
+      onGetMidasQueryResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1027)
+    {
+      onGetRewardedVideoAdResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1028)
+    {
+      onBatchGetUserInfoResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1030)
+    {
+      onGetNativeAppInfoForJump(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1032)
+    {
+      onGetUserInfoExtra(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1033)
+    {
+      onGetGroupShareInfo(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1034)
+    {
+      onSetAvatar(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1035)
+    {
+      onReportLogFileUrlServlet(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1036)
+    {
+      onTransForOpenIdAndTinyId(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1037)
+    {
+      onTransForRoomId(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1039)
+    {
+      onBatchGetContact(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1038)
+    {
+      onVerifyPlugin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1040)
+    {
+      onGetExtConfigDetail(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1041)
+    {
+      onGetUserHealthData(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1042)
+    {
+      onSetAuth(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1043)
+    {
+      onGetAuthList(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1044)
+    {
+      onGetKuolieAppListServlet(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1045)
+    {
+      onGetRobotUin(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1046)
+    {
+      onGetTcbTicket(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1047)
+    {
+      onGetUserAppListV2(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1048)
+    {
+      onGetRecommendAppList(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1049)
+    {
+      onGetSwitchList(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1050)
+    {
+      onSetUserSwitch(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1051)
+    {
+      onGetUserSetting(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1052)
+    {
+      onUpdateUserSetting(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1053)
+    {
+      onGetPhoneNumber(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1054)
+    {
+      onOpenChannel(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1055)
+    {
+      onGetAppInfoByIdForSDKServlet(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1056)
+    {
+      onGetAppInfoByLinkFinForSDK(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1057)
+    {
+      onGetNewBaseLibFinForSDK(i, paramBoolean, paramBundle.getString("version"), paramBundle.getString("downloadUrl"), paramBundle);
+      return;
+    }
+    if (paramInt == 1058)
+    {
+      onModifyFriendInteractiveStorage(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1059)
+    {
+      onGetUserInteractiveStorage(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1060)
+    {
+      onGetPotentialFriendList(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1061)
+    {
+      onSendArkMsg(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1062)
+    {
+      onGetUserGroupInfo(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1063)
+    {
+      onReportShare(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1070)
+    {
+      onGetContentAccelerateServlet(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1071)
+    {
+      onGetHotSearchApps(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1072)
+    {
+      onSearchApp(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1075)
+    {
+      onRealTimeLogReport(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1076)
+    {
+      onCreateUpdatableMsgResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1073)
+    {
+      onAddPhoneNumber(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1074)
+    {
+      onDelPhoneNumber(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1077)
+    {
+      onWxPayCheckUrlResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1080)
+    {
+      onBookShelfInsertResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1081)
+    {
+      onBookShelfQueryResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1082)
+    {
+      onBookShelfUpdateResult(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1083)
+    {
+      onCheckBindingState(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1087)
+    {
+      onSetCMShowPetStatus(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1088)
+    {
+      onGetCMShowInfo(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1084)
+    {
+      onGetReactiveFriendList(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1085)
+    {
+      onRejectFrequentlyRecommends(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1086)
+    {
+      onGuessYouLike(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1089)
+    {
+      onGetGameRaffleMaterial(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1090)
+    {
+      onDoGameRaffle(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1091)
+    {
+      onBatchGetFollowingCount(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1092) {
+      onGetWeixinSDKAppInfoFin(i, paramBoolean, paramBundle);
+    }
   }
   
+  protected void onAddPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onBatchGetContact(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onBatchGetFollowingCount(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onBatchGetUserInfoResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onBatchQueryAppInfoFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onBookShelfInsertResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onBookShelfQueryResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onBookShelfUpdateResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onChangeShareImageUrl(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onCheckBindingState(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onCheckNavigateRightServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -640,9 +802,15 @@ public class MiniAppObserver
   
   protected void onCheckSessionFin(int paramInt1, boolean paramBoolean, int paramInt2, String paramString) {}
   
+  protected void onCreateUpdatableMsgResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onDcReport(int paramInt1, boolean paramBoolean, int paramInt2) {}
   
   protected void onDelMiniAppFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onDelPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onDoGameRaffle(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetAppInfoByIdForSDKServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -654,6 +822,8 @@ public class MiniAppObserver
   
   protected void onGetAuthList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onGetCMShowInfo(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onGetContentAccelerateServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetExtConfigDetail(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -661,6 +831,10 @@ public class MiniAppObserver
   protected void onGetFormId(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetFriendCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onGetGameRaffleMaterial(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onGetGeneralCmdFin(int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString) {}
   
   protected void onGetGroupCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -670,13 +844,11 @@ public class MiniAppObserver
   
   protected void onGetKuolieAppListServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetLoginCodeFin(int paramInt, boolean paramBoolean, String paramString) {}
+  protected void onGetLoginCodeFin(int paramInt, boolean paramBoolean, String paramString1, long paramLong, String paramString2) {}
   
   protected void onGetMidasConsumeResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetMidasQueryResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void onGetMineStoryFeedList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetNativeAppInfoForJump(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -688,7 +860,9 @@ public class MiniAppObserver
   
   protected void onGetPotentialFriendList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
-  protected void onGetProfileFin(int paramInt1, String paramString1, boolean paramBoolean, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11) {}
+  protected void onGetProfileFin(int paramInt1, String paramString1, boolean paramBoolean, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, long paramLong, String paramString12) {}
+  
+  protected void onGetReactiveFriendList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetRecommendAppList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -720,7 +894,11 @@ public class MiniAppObserver
   
   protected void onGetUserSetting(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onGetWeixinSDKAppInfoFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onGetuserCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onGuessYouLike(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onLocalSearchDataFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -728,10 +906,14 @@ public class MiniAppObserver
   
   protected void onOpenChannel(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onRealTimeLogReport(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     ThreadManagerV2.excute(new MiniAppObserver.1(this, paramInt, paramBoolean, paramBundle), 16, null, false);
   }
+  
+  protected void onRejectFrequentlyRecommends(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onRemoveuserCloudStorage(int paramInt, boolean paramBoolean) {}
   
@@ -746,6 +928,8 @@ public class MiniAppObserver
   protected void onSetAuth(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onSetAvatar(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onSetCMShowPetStatus(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onSetTopMiniAppFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -764,10 +948,12 @@ public class MiniAppObserver
   protected void onUseUserAppFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onVerifyPlugin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onWxPayCheckUrlResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -49,8 +49,11 @@ public class FaceColorCombineFilter
   private void setTextureParam(int paramInt1, int paramInt2)
   {
     paramInt2 += 2;
-    String str = "inputImageTexture" + paramInt2;
-    int i = GLES20.glGetUniformLocation(getProgramIds(), str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("inputImageTexture");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = GLES20.glGetUniformLocation(getProgramIds(), (String)localObject);
     if (i >= 0)
     {
       GLES20.glActiveTexture(33984 + paramInt2);
@@ -69,16 +72,19 @@ public class FaceColorCombineFilter
       return;
     }
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.mTextures.length, this.mTextures, 0);
-    this.curveTexture = this.mTextures[0];
-    this.facecolorTexture = this.mTextures[1];
+    int[] arrayOfInt = this.mTextures;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+    arrayOfInt = this.mTextures;
+    this.curveTexture = arrayOfInt[0];
+    this.facecolorTexture = arrayOfInt[1];
     loadMaskBitmap();
     this.mIsApplied = true;
   }
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.mTextures.length, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     super.clearGLSLSelf();
     this.mIsApplied = false;
   }
@@ -104,7 +110,13 @@ public class FaceColorCombineFilter
   
   public String printParamInfo()
   {
-    return "FaceColorCombineFilter {enableBrightness=" + this.enableBrightness + ", isMaskLoad=" + this.isMaskLoad + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FaceColorCombineFilter {enableBrightness=");
+    localStringBuilder.append(this.enableBrightness);
+    localStringBuilder.append(", isMaskLoad=");
+    localStringBuilder.append(this.isMaskLoad);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
@@ -118,10 +130,10 @@ public class FaceColorCombineFilter
   {
     if (paramFloat > 50.0F)
     {
-      addParam(new UniformParam.FloatParam("exposure", 0.0136F * (paramFloat - 50.0F) + 1.0F));
+      addParam(new UniformParam.FloatParam("exposure", (paramFloat - 50.0F) * 0.0136F + 1.0F));
       return;
     }
-    addParam(new UniformParam.FloatParam("exposure", 0.01F * paramFloat + 0.5F));
+    addParam(new UniformParam.FloatParam("exposure", paramFloat * 0.01F + 0.5F));
   }
   
   public void updateCurve(int[] paramArrayOfInt, boolean paramBoolean)
@@ -137,23 +149,26 @@ public class FaceColorCombineFilter
         i += 1;
       }
     }
-    if (paramArrayOfInt[''] == this.lastCurve['']) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    if (paramArrayOfInt[''] == this.lastCurve['']) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    if ((this.lastStable) && (!paramBoolean)) {
+      this.counter = 5;
+    }
+    this.lastStable = paramBoolean;
+    if (!paramBoolean)
     {
-      if ((this.lastStable) && (!paramBoolean)) {
-        this.counter = 5;
-      }
-      this.lastStable = paramBoolean;
-      if (paramBoolean) {
-        break;
-      }
       this.counter = Math.max(1, this.counter - 1);
-      int[] arrayOfInt = new int[256];
+      int[] arrayOfInt1 = new int[256];
       i = j;
       while (i < 256)
       {
-        arrayOfInt[i] = ((paramArrayOfInt[i] - this.lastCurve[i]) / this.counter + this.lastCurve[i]);
-        this.lastCurve[i] = arrayOfInt[i];
+        j = paramArrayOfInt[i];
+        int[] arrayOfInt2 = this.lastCurve;
+        arrayOfInt1[i] = ((j - arrayOfInt2[i]) / this.counter + arrayOfInt2[i]);
+        arrayOfInt2[i] = arrayOfInt1[i];
         i += 1;
       }
     }
@@ -162,7 +177,7 @@ public class FaceColorCombineFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FaceColorCombineFilter
  * JD-Core Version:    0.7.0.1
  */

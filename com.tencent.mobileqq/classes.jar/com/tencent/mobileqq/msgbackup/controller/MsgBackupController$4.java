@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
-import augl;
-import augv;
-import auha;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupDBHelper;
 import java.util.List;
 
-public class MsgBackupController$4
+class MsgBackupController$4
   implements Runnable
 {
-  public MsgBackupController$4(augl paramaugl, auha paramauha, augv paramaugv, List paramList, int paramInt) {}
+  MsgBackupController$4(MsgBackupController paramMsgBackupController, MsgBackupDBHelper paramMsgBackupDBHelper, MsgBackupSessionRequest paramMsgBackupSessionRequest, List paramList, int paramInt) {}
   
   public void run()
   {
-    this.this$0.a(augl.a(this.this$0), this.jdField_a_of_type_Auha, this.jdField_a_of_type_Augv, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, augl.a());
+    MsgBackupController localMsgBackupController = this.this$0;
+    localMsgBackupController.a(MsgBackupController.a(localMsgBackupController), this.a, this.b, this.c, this.d, MsgBackupController.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupController.4
  * JD-Core Version:    0.7.0.1
  */

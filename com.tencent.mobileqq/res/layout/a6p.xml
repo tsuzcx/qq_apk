@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:id="@id/if5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/h9z"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/ddo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/ddo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
     <FrameLayout android:id="@id/ddp" android:background="@color/acv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:layout_gravity="center" android:id="@id/ddn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center" android:id="@id/ddn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
     <RelativeLayout android:id="@id/bgm" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <View android:background="@drawable/b29" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentBottom="true" />
         <TextView android:textSize="10.0dip" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:id="@id/j7t" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="15.0dip" android:layout_marginLeft="8.0dip" android:layout_marginBottom="6.0dip" android:minWidth="30.0dip" android:text="tag" android:layout_above="@id/ar7" />

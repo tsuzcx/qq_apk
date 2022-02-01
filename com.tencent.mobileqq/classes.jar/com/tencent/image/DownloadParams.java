@@ -32,9 +32,9 @@ public class DownloadParams
   
   public Header getHeader(String paramString)
   {
-    if (this.headers != null)
+    Header[] arrayOfHeader = this.headers;
+    if (arrayOfHeader != null)
     {
-      Header[] arrayOfHeader = this.headers;
       int j = arrayOfHeader.length;
       int i = 0;
       while (i < j)
@@ -51,7 +51,7 @@ public class DownloadParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.DownloadParams
  * JD-Core Version:    0.7.0.1
  */

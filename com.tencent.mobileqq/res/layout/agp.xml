@@ -4,7 +4,7 @@
     <include layout="@layout/adk" />
     <View android:layout_marginTop="20.0dip" style="@style/ta" />
     <RelativeLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="45.0dip">
-        <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/ex5" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/ex5" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
         <com.tenpay.sdk.view.Switch android:id="@id/gju" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
     <View style="@style/ta" />

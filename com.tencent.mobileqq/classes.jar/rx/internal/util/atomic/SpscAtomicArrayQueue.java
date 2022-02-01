@@ -45,29 +45,26 @@ public final class SpscAtomicArrayQueue<E>
   
   public boolean offer(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException("Null is not a valid element");
-    }
-    AtomicReferenceArray localAtomicReferenceArray = this.buffer;
-    int i = this.mask;
-    long l = this.producerIndex.get();
-    int j = calcElementOffset(l, i);
-    if (l >= this.producerLookAhead)
+    if (paramE != null)
     {
-      int k = this.lookAheadStep;
-      if (lvElement(localAtomicReferenceArray, calcElementOffset(k + l, i)) != null) {
-        break label106;
+      AtomicReferenceArray localAtomicReferenceArray = this.buffer;
+      int i = this.mask;
+      long l1 = this.producerIndex.get();
+      int j = calcElementOffset(l1, i);
+      if (l1 >= this.producerLookAhead)
+      {
+        long l2 = this.lookAheadStep + l1;
+        if (lvElement(localAtomicReferenceArray, calcElementOffset(l2, i)) == null) {
+          this.producerLookAhead = l2;
+        } else if (lvElement(localAtomicReferenceArray, j) != null) {
+          return false;
+        }
       }
-      this.producerLookAhead = (k + l);
-    }
-    label106:
-    while (lvElement(localAtomicReferenceArray, j) == null)
-    {
-      soProducerIndex(l + 1L);
+      soProducerIndex(l1 + 1L);
       soElement(localAtomicReferenceArray, j, paramE);
       return true;
     }
-    return false;
+    throw new NullPointerException("Null is not a valid element");
   }
   
   public E peek()
@@ -104,7 +101,7 @@ public final class SpscAtomicArrayQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.atomic.SpscAtomicArrayQueue
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Exclusive {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     javax.annotation.meta.Exclusive
  * JD-Core Version:    0.7.0.1
  */

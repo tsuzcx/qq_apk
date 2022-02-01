@@ -3,6 +3,7 @@ package com.tencent.token.ui;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.ListView;
+import com.tencent.token.zg;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,17 +12,17 @@ import java.util.Map;
 public class StartPwdDigitSelActivity
   extends BaseActivity
 {
-  private List mData;
+  private List<Map<String, Object>> mData;
   ListView mListView;
   
-  private List getData()
+  private List<Map<String, Object>> getData()
   {
     ArrayList localArrayList = new ArrayList();
     HashMap localHashMap = new HashMap();
-    localHashMap.put("setting_op_name", getResources().getString(2131231493));
+    localHashMap.put("setting_op_name", getResources().getString(2131493648));
     localArrayList.add(localHashMap);
     localHashMap = new HashMap();
-    localHashMap.put("setting_op_name", getResources().getString(2131231492));
+    localHashMap.put("setting_op_name", getResources().getString(2131493647));
     localArrayList.add(localHashMap);
     return localArrayList;
   }
@@ -29,10 +30,10 @@ public class StartPwdDigitSelActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968783);
-    this.mListView = ((ListView)findViewById(2131559322));
+    setContentView(2131296478);
+    this.mListView = ((ListView)findViewById(2131166169));
     this.mData = getData();
-    paramBundle = new aau(this, this.mData);
+    paramBundle = new zg(this, this.mData);
     this.mListView.setAdapter(paramBundle);
   }
 }

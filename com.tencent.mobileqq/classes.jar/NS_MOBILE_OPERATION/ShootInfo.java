@@ -30,15 +30,16 @@ public final class ShootInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.shootLbs != null) {
-      paramJceOutputStream.write(this.shootLbs, 0);
+    LbsInfo localLbsInfo = this.shootLbs;
+    if (localLbsInfo != null) {
+      paramJceOutputStream.write(localLbsInfo, 0);
     }
     paramJceOutputStream.write(this.shootTime, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.ShootInfo
  * JD-Core Version:    0.7.0.1
  */

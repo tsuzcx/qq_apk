@@ -1,60 +1,62 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.model.bf.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.model.br.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.storagebase.h;
 
 public abstract class e
 {
-  public static l yww;
-  protected com.tencent.mm.plugin.messenger.foundation.a.a.h ywv;
+  public static p acDF;
+  protected i acDE;
   
-  public e(com.tencent.mm.plugin.messenger.foundation.a.a.h paramh)
+  public e(i parami)
   {
-    this.ywv = paramh;
+    this.acDE = parami;
   }
   
-  protected final String TC(String paramString)
+  protected final void a(i.b paramb)
   {
-    return this.ywv.TC(paramString);
+    this.acDE.a(paramb);
   }
   
-  protected final void a(com.tencent.mm.cg.h paramh, String paramString)
+  protected final void a(i.c paramc)
   {
-    this.ywv.a(paramh, paramString);
+    this.acDE.a(paramc);
   }
   
-  protected final void a(h.b paramb)
-  {
-    this.ywv.a(paramb);
-  }
-  
-  protected final void a(h.c paramc)
-  {
-    this.ywv.a(paramc);
-  }
-  
-  protected boolean a(bi parambi, bf.b paramb)
+  protected boolean a(cc paramcc, br.b paramb)
   {
     return true;
   }
   
-  public abstract String aqO(String paramString);
+  public abstract String aAD(String paramString);
   
-  public final com.tencent.mm.cg.h bPX()
+  protected final String aLY(String paramString)
   {
-    return this.ywv.bPX();
+    return this.acDE.aLY(paramString);
   }
   
-  protected final void im(String paramString1, String paramString2)
+  protected final void e(h paramh, String paramString)
   {
-    this.ywv.b(paramString1, paramString2, null);
+    this.acDE.e(paramh, paramString);
+  }
+  
+  public final h getDB()
+  {
+    return this.acDE.getDB();
+  }
+  
+  protected final void pD(String paramString1, String paramString2)
+  {
+    this.acDE.d(paramString1, paramString2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.e
  * JD-Core Version:    0.7.0.1
  */

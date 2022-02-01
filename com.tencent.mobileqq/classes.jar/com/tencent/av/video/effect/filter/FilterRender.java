@@ -31,17 +31,19 @@ public class FilterRender
   public void destroy()
   {
     super.destroy();
-    if (this.mFilter != null)
+    QQAVImageFilter localQQAVImageFilter = this.mFilter;
+    if (localQQAVImageFilter != null)
     {
-      this.mFilter.destroy();
+      localQQAVImageFilter.destroy();
       this.mFilter = null;
     }
   }
   
   public int getFilterType()
   {
-    if (this.mFilter != null) {
-      return this.mFilter.getQQAVEffectType();
+    QQAVImageFilter localQQAVImageFilter = this.mFilter;
+    if (localQQAVImageFilter != null) {
+      return localQQAVImageFilter.getQQAVEffectType();
     }
     return -1;
   }
@@ -49,8 +51,9 @@ public class FilterRender
   public void preProcess(int paramInt1, int paramInt2)
   {
     baseProcess(paramInt1, paramInt2);
-    if (this.mFilter != null) {
-      this.mFilter.onOutputSizeChanged(paramInt1, paramInt2);
+    QQAVImageFilter localQQAVImageFilter = this.mFilter;
+    if (localQQAVImageFilter != null) {
+      localQQAVImageFilter.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
   
@@ -63,7 +66,12 @@ public class FilterRender
       CommonUtils.glCheckError();
       return localEffectTexture;
     }
-    Log.d("FilterRender", "mFilter = " + this.mFilter + " | filterType = " + this.mFilter.getQQAVEffectType());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mFilter = ");
+    localStringBuilder.append(this.mFilter);
+    localStringBuilder.append(" | filterType = ");
+    localStringBuilder.append(this.mFilter.getQQAVEffectType());
+    Log.d("FilterRender", localStringBuilder.toString());
     this.mFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
     this.mFilter.onDraw2(localEffectTexture.getTextureId(), this.mOutFbo);
     CommonUtils.glCheckError();
@@ -72,13 +80,16 @@ public class FilterRender
   
   public void setFilterPath(String paramString)
   {
-    Log.d("FilterRender", "setFilterPath filterPath = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setFilterPath filterPath = ");
+    localStringBuilder.append(paramString);
+    Log.d("FilterRender", localStringBuilder.toString());
     addTaskBeforeProcess(new FilterRender.1(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.filter.FilterRender
  * JD-Core Version:    0.7.0.1
  */

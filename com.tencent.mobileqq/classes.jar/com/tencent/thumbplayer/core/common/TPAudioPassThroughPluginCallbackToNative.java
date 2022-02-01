@@ -33,13 +33,16 @@ public class TPAudioPassThroughPluginCallbackToNative
   
   public void onAudioPassThroughPlugin(boolean paramBoolean)
   {
-    TPNativeLog.printLog(2, "TPAudioPassThroughPluginCallback", "onAudioPassThroughPlugin bPlugin:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAudioPassThroughPlugin bPlugin:");
+    localStringBuilder.append(paramBoolean);
+    TPNativeLog.printLog(2, "TPAudioPassThroughPluginCallback", localStringBuilder.toString());
     _onAudioPassThroughStateChanged(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPAudioPassThroughPluginCallbackToNative
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,10 @@ package com.tencent.liteav.network;
 
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.structs.a;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
@@ -13,12 +16,15 @@ public abstract class TXIStreamDownloader
   public int connectRetryTimes = 0;
   protected Context mApplicationContext = null;
   protected boolean mEnableMessage = false;
+  protected boolean mEnableMetaData = false;
+  protected String mFlvSessionKey = "";
   protected Map<String, String> mHeaders;
   protected boolean mIsRunning = false;
-  protected f mListener = null;
-  protected com.tencent.liteav.basic.c.a mNotifyListener = null;
+  protected h mListener = null;
+  protected g mMessageNotifyListener = null;
+  protected b mNotifyListener = null;
   protected String mOriginUrl = "";
-  protected TXIStreamDownloader.a mRestartListener = null;
+  protected a mRestartListener = null;
   protected String mUserID = "";
   
   public TXIStreamDownloader(Context paramContext)
@@ -55,6 +61,11 @@ public abstract class TXIStreamDownloader
     return null;
   }
   
+  public String getFlvSessionKey()
+  {
+    return this.mFlvSessionKey;
+  }
+  
   public long getLastIFrameTS()
   {
     return 0L;
@@ -72,10 +83,10 @@ public abstract class TXIStreamDownloader
   
   public void onRecvAudioData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    com.tencent.liteav.basic.structs.a locala;
+    a locala;
     if (this.mListener != null)
     {
-      locala = new com.tencent.liteav.basic.structs.a();
+      locala = new a();
       locala.f = paramArrayOfByte;
       locala.e = paramInt1;
       if (paramInt2 == 10) {
@@ -100,13 +111,17 @@ public abstract class TXIStreamDownloader
     }
   }
   
+  public void onRecvMetaData(HashMap<String, String> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.size() > 0) && (this.mMessageNotifyListener != null)) {
+      this.mMessageNotifyListener.onMetaDataMessage(paramHashMap);
+    }
+  }
+  
   public void onRecvSEIData(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (this.mNotifyListener != null))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putByteArray("EVT_GET_MSG", paramArrayOfByte);
-      this.mNotifyListener.onNotifyEvent(2012, localBundle);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (this.mMessageNotifyListener != null)) {
+      this.mMessageNotifyListener.onSEIMessage(paramArrayOfByte);
     }
   }
   
@@ -123,6 +138,8 @@ public abstract class TXIStreamDownloader
       this.mListener.onPullNAL(localTXSNALPacket);
     }
   }
+  
+  public void requestKeyFrame(String paramString) {}
   
   public void sendNotifyEvent(int paramInt)
   {
@@ -141,19 +158,29 @@ public abstract class TXIStreamDownloader
     }
   }
   
+  public void setFlvSessionKey(String paramString)
+  {
+    this.mFlvSessionKey = paramString;
+  }
+  
   public void setHeaders(Map<String, String> paramMap)
   {
     this.mHeaders = paramMap;
   }
   
-  public void setListener(f paramf)
+  public void setListener(h paramh)
   {
-    this.mListener = paramf;
+    this.mListener = paramh;
   }
   
-  public void setNotifyListener(com.tencent.liteav.basic.c.a parama)
+  public void setMessageNotifyListener(g paramg)
   {
-    this.mNotifyListener = parama;
+    this.mMessageNotifyListener = paramg;
+  }
+  
+  public void setNotifyListener(b paramb)
+  {
+    this.mNotifyListener = paramb;
   }
   
   public void setOriginUrl(String paramString)
@@ -161,7 +188,7 @@ public abstract class TXIStreamDownloader
     this.mOriginUrl = paramString;
   }
   
-  public void setRestartListener(TXIStreamDownloader.a parama)
+  public void setRestartListener(a parama)
   {
     this.mRestartListener = parama;
   }
@@ -171,13 +198,22 @@ public abstract class TXIStreamDownloader
     this.mUserID = paramString;
   }
   
-  public abstract void startDownload(Vector<e> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  public abstract void startDownload(Vector<f> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  
+  public abstract void startDownload(Vector<f> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, e parame);
   
   public abstract void stopDownload();
+  
+  public static abstract interface a
+  {
+    public abstract void onOldStreamStop();
+    
+    public abstract void onRestartDownloader();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.TXIStreamDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -22,13 +22,14 @@ public final class cmd0x8ca$AppTipNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_action", "bytes_text", "uint32_notify_seq", "uint32_needed_tip_info_seq" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, AppTipNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_action", "bytes_text", "uint32_notify_seq", "uint32_needed_tip_info_seq" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger }, AppTipNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8ca.cmd0x8ca.AppTipNotify
  * JD-Core Version:    0.7.0.1
  */

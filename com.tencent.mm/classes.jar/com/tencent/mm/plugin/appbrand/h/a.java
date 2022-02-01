@@ -1,69 +1,94 @@
 package com.tencent.mm.plugin.appbrand.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONObject;
 
-final class a
+public final class a
 {
-  static final String[] hvA;
-  
-  static
+  public static void a(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(65351);
-    LinkedList localLinkedList = new LinkedList();
-    Field[] arrayOfField = android.support.d.a.class.getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
-    for (;;)
+    AppMethodBeat.i(139373);
+    d(paramJSONObject, "useXWebVideo", Boolean.valueOf(paramBoolean));
+    d(paramJSONObject, "XWebVideoMinVersion", Integer.valueOf(300));
+    AppMethodBeat.o(139373);
+  }
+  
+  public static void b(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(139374);
+    d(paramJSONObject, "useXWebMap", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139374);
+  }
+  
+  public static void c(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(139376);
+    d(paramJSONObject, "useXWebTextarea", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139376);
+  }
+  
+  private static void d(JSONObject paramJSONObject, String paramString, Object paramObject)
+  {
+    AppMethodBeat.i(139381);
+    try
     {
-      Field localField;
-      if (i < j) {
-        localField = arrayOfField[i];
-      }
-      try
-      {
-        if ((Modifier.isFinal(localField.getModifiers())) && (Modifier.isStatic(localField.getModifiers())) && (localField.getName().startsWith("TAG_"))) {
-          localLinkedList.add((String)localField.get(null));
-        }
-        label85:
-        i += 1;
-        continue;
-        hvA = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
-        AppMethodBeat.o(65351);
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label85;
-      }
+      paramJSONObject.put(paramString, paramObject);
+      AppMethodBeat.o(139381);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      Log.e("MicroMsg.SameLayer.AppBrandExtendPluginUtil", "build json object fail", new Object[] { paramJSONObject });
+      AppMethodBeat.o(139381);
     }
   }
   
-  static void a(android.support.d.a parama1, android.support.d.a parama2)
+  public static void d(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(65350);
-    String[] arrayOfString = hvA;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str1 = arrayOfString[i];
-      String str2 = parama1.getAttribute(str1);
-      if (str2 != null) {
-        parama2.setAttribute(str1, str2);
-      }
-      i += 1;
-    }
-    parama2.saveAttributes();
-    AppMethodBeat.o(65350);
+    AppMethodBeat.i(139377);
+    d(paramJSONObject, "supportXWebTextarea", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139377);
+  }
+  
+  public static void e(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(139378);
+    d(paramJSONObject, "supportXWebTouch", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139378);
+  }
+  
+  public static void f(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(139379);
+    d(paramJSONObject, "useXWebLive", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139379);
+  }
+  
+  public static void g(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(139380);
+    d(paramJSONObject, "useXWebCamera", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(139380);
+  }
+  
+  public static void h(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(316830);
+    d(paramJSONObject, "abtestXWebCameraEnable", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(316830);
+  }
+  
+  public static void i(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(316834);
+    d(paramJSONObject, "useXWebVoipRoom", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(316834);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.a
  * JD-Core Version:    0.7.0.1
  */

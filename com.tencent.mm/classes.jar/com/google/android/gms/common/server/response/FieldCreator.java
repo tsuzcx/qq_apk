@@ -13,7 +13,7 @@ public class FieldCreator
   
   public FastJsonResponse.Field createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61553);
+    AppMethodBeat.i(12045);
     int n = SafeParcelReader.validateObjectHeader(paramParcel);
     ConverterWrapper localConverterWrapper = null;
     String str1 = null;
@@ -62,7 +62,7 @@ public class FieldCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, n);
     paramParcel = new FastJsonResponse.Field(m, k, bool2, j, bool1, str2, i, str1, localConverterWrapper);
-    AppMethodBeat.o(61553);
+    AppMethodBeat.o(12045);
     return paramParcel;
   }
   
@@ -73,7 +73,7 @@ public class FieldCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.FieldCreator
  * JD-Core Version:    0.7.0.1
  */

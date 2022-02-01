@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.search.model;
 
-import aylw;
-import aylx;
-import ayly;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,23 +7,23 @@ import java.util.List;
 public class BusinessGroupWord
   implements Serializable
 {
-  public aylw clueWordItem;
-  public aylx groupID;
-  public List<ayly> hotWordItemList;
+  public BusinessGroupWord.ClueWordItem clueWordItem;
+  public BusinessGroupWord.GroupID groupID;
+  public List<BusinessGroupWord.HotWordItem> hotWordItemList;
   
   public BusinessGroupWord() {}
   
-  public BusinessGroupWord(aylx paramaylx, List<ayly> paramList, aylw paramaylw)
+  public BusinessGroupWord(BusinessGroupWord.GroupID paramGroupID, List<BusinessGroupWord.HotWordItem> paramList, BusinessGroupWord.ClueWordItem paramClueWordItem)
   {
-    this.groupID = paramaylx;
+    this.groupID = paramGroupID;
     this.hotWordItemList = new ArrayList();
     this.hotWordItemList = paramList;
-    this.clueWordItem = paramaylw;
+    this.clueWordItem = paramClueWordItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.BusinessGroupWord
  * JD-Core Version:    0.7.0.1
  */

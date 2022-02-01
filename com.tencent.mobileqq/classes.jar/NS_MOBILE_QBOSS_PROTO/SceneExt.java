@@ -31,14 +31,15 @@ public final class SceneExt
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapExtend != null) {
-      paramJceOutputStream.write(this.mapExtend, 0);
+    Map localMap = this.mapExtend;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QBOSS_PROTO.SceneExt
  * JD-Core Version:    0.7.0.1
  */

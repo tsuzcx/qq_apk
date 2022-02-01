@@ -14,8 +14,8 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import elm;
 import eln;
-import elo;
 
 public class PhoneFrameActivity
   extends IphoneTitleBarActivity
@@ -41,12 +41,12 @@ public class PhoneFrameActivity
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this);
     this.k = new TextView(this);
     this.m.setText(2131562896);
-    this.m.setOnClickListener(new eln(this));
+    this.m.setOnClickListener(new elm(this));
     this.jdField_a_of_type_AndroidWidgetImageView = this.p;
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("设置");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131232039));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame = ((PhoneFrame)findViewById(2131232038));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setActivity(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new elo(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.setPhoneContext(new eln(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneFrame.a(null);
     Bundle localBundle;
     if (getIntent() != null)
@@ -135,7 +135,7 @@ public class PhoneFrameActivity
     {
     default: 
       return super.onOptionsItemSelected(paramMenuItem);
-    case 2131231380: 
+    case 2131231379: 
       this.m.performClick();
     }
     for (;;)
@@ -175,7 +175,7 @@ public class PhoneFrameActivity
       localMenuItem.setIcon(2130839698);
       break;
       label159:
-      MenuItemCompat.setShowAsAction(paramMenu.add(0, 2131231380, 0, this.m.getText()), 1);
+      MenuItemCompat.setShowAsAction(paramMenu.add(0, 2131231379, 0, this.m.getText()), 1);
     }
   }
 }

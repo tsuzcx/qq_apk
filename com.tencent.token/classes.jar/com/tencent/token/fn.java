@@ -1,10 +1,17 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
 
 public abstract interface fn
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct);
+  public abstract ColorStateList getSupportBackgroundTintList();
+  
+  public abstract PorterDuff.Mode getSupportBackgroundTintMode();
+  
+  public abstract void setSupportBackgroundTintList(ColorStateList paramColorStateList);
+  
+  public abstract void setSupportBackgroundTintMode(PorterDuff.Mode paramMode);
 }
 
 

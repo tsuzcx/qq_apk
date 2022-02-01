@@ -1,17 +1,13 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
 
 public class eon
   implements View.OnClickListener
 {
-  public eon(BannerManager paramBannerManager) {}
+  public eon(DrawerFrame paramDrawerFrame) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a(8, 0);
-    this.a.a(null);
-  }
+  public void onClick(View paramView) {}
 }
 
 

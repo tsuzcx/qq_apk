@@ -3,13 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apeb;
 import java.util.List;
 
 public class IPSiteModel$Comic
   implements Parcelable
 {
-  public static final Parcelable.Creator<Comic> CREATOR = new apeb();
+  public static final Parcelable.Creator<Comic> CREATOR = new IPSiteModel.Comic.1();
   public List<IPSiteModel.ComicRich> comicRiches;
   public int comicType;
   public String cover;
@@ -42,7 +41,34 @@ public class IPSiteModel$Comic
   
   public String toString()
   {
-    return "Comic{comicType=" + this.comicType + ", cover='" + this.cover + '\'' + ", desc='" + this.desc + '\'' + ", id='" + this.id + '\'' + ", jumpUrl='" + this.jumpUrl + '\'' + ", name='" + this.name + '\'' + ", recommDesc='" + this.recommDesc + '\'' + ", typeName='" + this.typeName + '\'' + ", comicRiches=" + this.comicRiches + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Comic{comicType=");
+    localStringBuilder.append(this.comicType);
+    localStringBuilder.append(", cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recommDesc='");
+    localStringBuilder.append(this.recommDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", typeName='");
+    localStringBuilder.append(this.typeName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", comicRiches=");
+    localStringBuilder.append(this.comicRiches);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

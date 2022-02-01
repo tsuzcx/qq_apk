@@ -1,6 +1,5 @@
 package cooperation.qzone.contentbox;
 
-import alud;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -23,10 +22,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdoo;
-import bjiq;
-import bjir;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.util.QZLog;
@@ -35,166 +33,157 @@ import java.util.ArrayList;
 public class PlusMenuContainer
   extends RelativeLayout
 {
-  public static int[] a;
-  public static String[] a;
-  public static String[] b;
-  public Activity a;
-  public Context a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bjir(this);
-  View jdField_a_of_type_AndroidViewView;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new bjiq(this);
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public ArrayList<View> a;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private Animation b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusMood", "说说"), QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusAlbum", "相册"), QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusShoot", "拍摄") };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130847960, 2130847956, 2130847965 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "mqqzone://arouse/writemood", "mqqzone://arouse/uploadphoto", "mqqzone://arouse/takevideo" };
-  }
+  public static final String TAG = "PlusMenuContainer";
+  public static int[] defaultIcon = { 2130850361, 2130850357, 2130850366 };
+  public static String[] defaultScheme = { "mqqzone://arouse/writemood", "mqqzone://arouse/uploadphoto", "mqqzone://arouse/takevideo" };
+  public static String[] defaultTitle = { QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusMood", "说说"), QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusAlbum", "相册"), QzoneConfig.getInstance().getConfig("QZoneTextSetting", "PlusShoot", "拍摄") };
+  public Context context;
+  public Activity fragment;
+  Animation.AnimationListener mAnimationListener = new PlusMenuContainer.1(this);
+  RelativeLayout mContainer;
+  private volatile boolean mIsPlusPannelAnimating = false;
+  private Animation mhideBgAnimation;
+  private Animation mhidebBarAnimation;
+  public ArrayList<View> operationItemViews;
+  private View.OnClickListener plusItemClickListener = new PlusMenuContainer.2(this);
+  View reminder;
   
   public PlusMenuContainer(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.context = paramContext;
   }
   
   public PlusMenuContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.context = paramContext;
   }
   
   public PlusMenuContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.context = paramContext;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView.setId(2131374958);
-    Object localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(0);
-    if (Build.VERSION.SDK_INT >= 16) {
-      ViewCompat.setImportantForAccessibility(this.jdField_a_of_type_AndroidViewView, 2);
-    }
-    addView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    localObject1 = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(10);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#ffffffff"));
-    try
-    {
-      if ((ImmersiveUtils.isSupporImmersive() == 1) && (!IPluginAdapterProxy.getProxy().isNightMode()))
-      {
-        localObject1 = new View(this.jdField_a_of_type_AndroidContentContext);
-        localObject2 = new RelativeLayout.LayoutParams(bdoo.a(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext));
-        ((RelativeLayout.LayoutParams)localObject2).addRule(10);
-        ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        ((View)localObject1).setBackgroundColor(getResources().getColor(2131165502));
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1);
-      }
-      localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject1).setId(2131374954);
-      ((ImageView)localObject1).setContentDescription(alud.a(2131708692));
-      localObject2 = new RelativeLayout.LayoutParams(bdoo.a(35.0F), bdoo.a(35.0F));
-      ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-      ((RelativeLayout.LayoutParams)localObject2).setMargins(0, ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext) + bdoo.b(8.0F), bdoo.b(10.0F), 0);
-      ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((ImageView)localObject1).setPadding(bdoo.b(6.0F), bdoo.b(6.0F), 0, bdoo.b(6.0F));
-      ((ImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER);
-      ((ImageView)localObject1).setImageResource(2130847970);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1);
-      ((ImageView)localObject1).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(3);
-      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((LinearLayout)localObject1).setId(2131374957);
-      ((LinearLayout)localObject1).setWeightSum(3.0F);
-      localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131374954);
-      ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject2 = (LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater");
-      int i = 0;
-      while (i < 3)
-      {
-        RelativeLayout localRelativeLayout = (RelativeLayout)((LayoutInflater)localObject2).inflate(2131562193, null);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1, 1.0F);
-        ImageView localImageView = (ImageView)localRelativeLayout.findViewById(2131374785);
-        TextView localTextView = (TextView)localRelativeLayout.findViewById(2131374787);
-        localImageView.setImageDrawable(getResources().getDrawable(jdField_a_of_type_ArrayOfInt[i]));
-        localTextView.setText(jdField_a_of_type_ArrayOfJavaLangString[i]);
-        localTextView.setTextColor(getResources().getColor(2131166597));
-        localRelativeLayout.setTag(jdField_b_of_type_ArrayOfJavaLangString[i]);
-        ((LinearLayout)localObject1).addView(localRelativeLayout, localLayoutParams);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localRelativeLayout);
-        localRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        i += 1;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QZLog.e("PlusMenuContainer", "set statusBar mask exception.", localException);
-      }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localException);
-      FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-      Object localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131374957);
-      localFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localFrameLayout.setBackgroundResource(2130847996);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localFrameLayout);
-      addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772113);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772101);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-      setVisibility(8);
-    }
-  }
-  
-  public void b()
+  public void hide()
   {
     if (getVisibility() != 0)
     {
       QZLog.d("PlusMenuContainer", 1, "this.getVisibility() != VISIBLE");
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mIsPlusPannelAnimating)
     {
       QZLog.d("PlusMenuContainer", 1, "animation is not end yet.");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+    this.mIsPlusPannelAnimating = true;
+    this.mContainer.startAnimation(this.mhidebBarAnimation);
+    this.reminder.startAnimation(this.mhideBgAnimation);
   }
   
-  public void c()
+  public void initView()
   {
-    setVisibility(0);
-    Animation localAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772110);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimation);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772100));
+    this.reminder = new View(this.context);
+    this.reminder.setId(2131443918);
+    Object localObject1 = new RelativeLayout.LayoutParams(-1, -1);
+    this.reminder.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    this.reminder.setBackgroundColor(0);
+    if (Build.VERSION.SDK_INT >= 16) {
+      ViewCompat.setImportantForAccessibility(this.reminder, 2);
+    }
+    addView(this.reminder);
+    this.reminder.setOnClickListener(this.plusItemClickListener);
+    this.mContainer = new RelativeLayout(this.context);
+    localObject1 = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(10);
+    this.mContainer.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    this.mContainer.setBackgroundColor(Color.parseColor("#ffffffff"));
+    try
+    {
+      if ((ImmersiveUtils.isSupporImmersive() == 1) && (!IPluginAdapterProxy.getProxy().isNightMode()))
+      {
+        localObject1 = new View(this.context);
+        localObject3 = new RelativeLayout.LayoutParams(ViewUtils.getScreenWidth(), ImmersiveUtils.getStatusBarHeight(this.context));
+        ((RelativeLayout.LayoutParams)localObject3).addRule(10);
+        ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+        ((View)localObject1).setBackgroundColor(getResources().getColor(2131165856));
+        this.mContainer.addView((View)localObject1);
+      }
+    }
+    catch (Exception localException)
+    {
+      QZLog.e("PlusMenuContainer", "set statusBar mask exception.", localException);
+    }
+    Object localObject2 = new ImageView(this.context);
+    ((ImageView)localObject2).setId(2131443914);
+    ((ImageView)localObject2).setContentDescription(HardCodeUtil.a(2131906083));
+    Object localObject3 = new RelativeLayout.LayoutParams(ViewUtils.dip2px(35.0F), ViewUtils.dip2px(35.0F));
+    ((RelativeLayout.LayoutParams)localObject3).addRule(11);
+    ((RelativeLayout.LayoutParams)localObject3).setMargins(0, ImmersiveUtils.getStatusBarHeight(this.context) + ViewUtils.dpToPx(8.0F), ViewUtils.dpToPx(10.0F), 0);
+    ((ImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    ((ImageView)localObject2).setPadding(ViewUtils.dpToPx(6.0F), ViewUtils.dpToPx(6.0F), 0, ViewUtils.dpToPx(6.0F));
+    ((ImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER);
+    ((ImageView)localObject2).setImageResource(2130850371);
+    this.mContainer.addView((View)localObject2);
+    ((ImageView)localObject2).setOnClickListener(this.plusItemClickListener);
+    this.operationItemViews = new ArrayList(3);
+    localObject2 = new LinearLayout(this.context);
+    ((LinearLayout)localObject2).setId(2131443917);
+    ((LinearLayout)localObject2).setWeightSum(3.0F);
+    localObject3 = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131443914);
+    ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    localObject3 = (LayoutInflater)this.context.getSystemService("layout_inflater");
+    int i = 0;
+    while (i < 3)
+    {
+      RelativeLayout localRelativeLayout = (RelativeLayout)((LayoutInflater)localObject3).inflate(2131628818, null);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1, 1.0F);
+      ImageView localImageView = (ImageView)localRelativeLayout.findViewById(2131443745);
+      TextView localTextView = (TextView)localRelativeLayout.findViewById(2131443747);
+      localImageView.setImageDrawable(getResources().getDrawable(defaultIcon[i]));
+      localTextView.setText(defaultTitle[i]);
+      localTextView.setTextColor(getResources().getColor(2131167653));
+      localRelativeLayout.setTag(defaultScheme[i]);
+      ((LinearLayout)localObject2).addView(localRelativeLayout, localLayoutParams);
+      this.operationItemViews.add(localRelativeLayout);
+      localRelativeLayout.setOnClickListener(this.plusItemClickListener);
+      i += 1;
+    }
+    this.mContainer.addView((View)localObject2);
+    localObject2 = new FrameLayout(this.context);
+    localObject3 = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131443917);
+    ((FrameLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    ((FrameLayout)localObject2).setBackgroundResource(2130850419);
+    this.mContainer.addView((View)localObject2);
+    addView(this.mContainer);
+    this.mhidebBarAnimation = AnimationUtils.loadAnimation(this.context, 2130772232);
+    this.mhidebBarAnimation.setAnimationListener(this.mAnimationListener);
+    this.mhideBgAnimation = AnimationUtils.loadAnimation(this.context, 2130772218);
+    this.mhideBgAnimation.setAnimationListener(this.mAnimationListener);
+    setVisibility(8);
   }
   
   public void setActivity(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.fragment = paramActivity;
+  }
+  
+  public void show()
+  {
+    setVisibility(0);
+    Animation localAnimation = AnimationUtils.loadAnimation(this.context, 2130772229);
+    this.mContainer.clearAnimation();
+    this.mContainer.startAnimation(localAnimation);
+    this.reminder.startAnimation(AnimationUtils.loadAnimation(this.context, 2130772217));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.PlusMenuContainer
  * JD-Core Version:    0.7.0.1
  */

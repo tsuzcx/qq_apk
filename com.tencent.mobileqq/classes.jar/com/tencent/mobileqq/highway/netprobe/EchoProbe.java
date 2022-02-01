@@ -21,21 +21,31 @@ public class EchoProbe
   private void onFinish(int paramInt)
   {
     this.mResult.success = false;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 3: 
-      this.mResult.errDesc = ("probe has error:" + this.mEchoTask.getErrorMsg());
-      this.mResult.errCode = 1;
-      return;
-    case 1: 
-      this.mResult.success = true;
-      this.mResult.appendResult("echo response is normal!");
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return;
+        }
+        localProbeResult = this.mResult;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("probe has error:");
+        localStringBuilder.append(this.mEchoTask.getErrorMsg());
+        localProbeResult.errDesc = localStringBuilder.toString();
+        this.mResult.errCode = 1;
+        return;
+      }
+      ProbeItem.ProbeResult localProbeResult = this.mResult;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("echo response error,resposne url:");
+      localStringBuilder.append(this.mEchoTask.getResponseUrl());
+      localProbeResult.errDesc = localStringBuilder.toString();
+      this.mResult.errCode = 2;
       return;
     }
-    this.mResult.errDesc = ("echo response error,resposne url:" + this.mEchoTask.getResponseUrl());
-    this.mResult.errCode = 2;
+    this.mResult.success = true;
+    this.mResult.appendResult("echo response is normal!");
   }
   
   public void doProbe()
@@ -45,22 +55,23 @@ public class EchoProbe
   
   public String getProbeName()
   {
-    String str = "";
+    String str;
     if (this.mEchoTask.mType == 1) {
       str = "GET_";
+    } else if (this.mEchoTask.mType == 2) {
+      str = "POST_";
+    } else {
+      str = "";
     }
-    for (;;)
-    {
-      return str + "Echo_Probe";
-      if (this.mEchoTask.mType == 2) {
-        str = "POST_";
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("Echo_Probe");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.EchoProbe
  * JD-Core Version:    0.7.0.1
  */

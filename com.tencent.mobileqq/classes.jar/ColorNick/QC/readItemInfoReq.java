@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class readItemInfoReq
   extends JceStruct
 {
-  public long implat;
-  public int index;
+  public long implat = 0L;
+  public int index = 0;
   public String qqver = "";
   
   public readItemInfoReq() {}
@@ -30,15 +30,16 @@ public final class readItemInfoReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.implat, 0);
-    if (this.qqver != null) {
-      paramJceOutputStream.write(this.qqver, 1);
+    String str = this.qqver;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.index, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ColorNick.QC.readItemInfoReq
  * JD-Core Version:    0.7.0.1
  */

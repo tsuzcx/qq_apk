@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="false" android:state_pressed="true" android:drawable="@drawable/e2l" />
+    <item android:state_selected="false" android:state_pressed="false" android:drawable="@drawable/e2m" />
+    <item android:state_selected="true" android:state_pressed="true" android:drawable="@drawable/skin_qzone_edit_jp_click" />
+    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/skin_qzone_edit_jp_nor" />
+</selector>

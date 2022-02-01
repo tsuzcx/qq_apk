@@ -23,7 +23,6 @@ public abstract interface QAlbumConstants
   public static final int MAX_RECENT_PHOTO_NUM = 100;
   public static final String PARAM_INITTIME = "param_initTime";
   public static final String PHOTOLIST_IS_NEED_MEDIA_INFO = "PhotoConst.PHOTOLIST_IS_NEED_MEDIA_INFO";
-  public static final String PHOTOLIST_KEY_FILTER_GIF_VIDEO = "PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO";
   public static final String PHOTOLIST_KEY_FILTER_VIDEO_DURATION_LIMIT = "PhotoConst.PHOTOLIST_KEY_FILTER_VIDEO_DURATION_LIMIT";
   public static final String PHOTOLIST_KEY_SHOW_MEDIA = "PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA";
   public static final String PHOTO_PATHS = "PhotoConst.PHOTO_PATHS";

@@ -23,38 +23,43 @@ public final class AdVideoSpliceAdapter$Params
   
   public boolean isValid()
   {
-    boolean bool = false;
+    Object localObject = this.activity;
+    boolean bool = true;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
+    {
+      localObject = this.ad;
+      if ((localObject != null) && (((Ad)localObject).isValid()) && (this.mediaViewLocationRect != null) && (this.videoSplicePageStyle != -2147483648))
+      {
+        j = 1;
+        break label65;
+      }
+    }
+    int j = 0;
+    label65:
     int i;
-    if ((this.activity != null) && (this.activity.get() != null) && (this.ad != null) && (this.ad.isValid()) && (this.mediaViewLocationRect != null) && (this.videoSplicePageStyle != -2147483648))
-    {
-      j = 1;
-      if ((j == 0) || (this.ad.getCreativeSize() != 585) || (this.webUrl != null)) {
-        break label142;
-      }
+    if ((j != 0) && (this.ad.getCreativeSize() == 585) && (this.webUrl == null)) {
       i = 1;
-      label84:
-      if ((j == 0) || (this.ad.getCreativeSize() != 930) || (TextUtils.isEmpty(this.webUrl)) || (TextUtils.isEmpty(this.videoUrl2))) {
-        break label147;
-      }
-    }
-    label142:
-    label147:
-    for (int j = 1;; j = 0)
-    {
-      if ((i != 0) || (j != 0)) {
-        bool = true;
-      }
-      return bool;
-      j = 0;
-      break;
+    } else {
       i = 0;
-      break label84;
     }
+    if ((j != 0) && (this.ad.getCreativeSize() == 930) && (!TextUtils.isEmpty(this.webUrl)) && (!TextUtils.isEmpty(this.videoUrl2))) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (i == 0)
+    {
+      if (j != 0) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params
  * JD-Core Version:    0.7.0.1
  */

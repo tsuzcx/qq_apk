@@ -1,81 +1,145 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.b;
 
+import android.graphics.Rect;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.ba.d;
+import com.tencent.mm.plugin.appbrand.widget.desktop.d;
+import com.tencent.mm.plugin.appbrand.widget.recent.f;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/utils/AppBrandDesktopItemDecorationHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements b
 {
-  private List<Double> jiK;
-  public double jiL;
-  public double jiM;
-  public double jiN;
+  public static final a uBl;
   
-  public a()
+  static
   {
-    AppMethodBeat.i(134236);
-    this.jiK = new ArrayList(100);
-    this.jiL = 0.0D;
-    this.jiM = 1.7976931348623157E+308D;
-    this.jiN = 4.9E-324D;
-    AppMethodBeat.o(134236);
+    AppMethodBeat.i(324261);
+    uBl = new a((byte)0);
+    AppMethodBeat.o(324261);
   }
   
-  public final void Pv()
+  public static final float a(RecyclerView paramRecyclerView, float paramFloat, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(134237);
-    if (this.jiK == null)
-    {
-      AppMethodBeat.o(134237);
-      return;
-    }
-    if (this.jiK.size() > 10000)
-    {
-      AppMethodBeat.o(134237);
-      return;
-    }
-    if (this.jiK.size() != 0)
-    {
-      Iterator localIterator = this.jiK.iterator();
-      double d2;
-      for (double d1 = 0.0D; localIterator.hasNext(); d1 += d2)
-      {
-        d2 = ((Double)localIterator.next()).doubleValue();
-        this.jiM = Math.min(this.jiM, d2);
-        this.jiN = Math.max(this.jiN, d2);
-      }
-      this.jiL = (d1 / this.jiK.size());
-    }
-    AppMethodBeat.o(134237);
+    AppMethodBeat.i(324256);
+    s.u(paramRecyclerView, "recyclerView");
+    paramFloat = a.a(paramRecyclerView, paramFloat, paramInt1, paramInt2, 0, 0);
+    AppMethodBeat.o(324256);
+    return paramFloat;
   }
   
-  public final void Pw()
+  public static final float a(RecyclerView paramRecyclerView, float paramFloat, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    double d1 = 60.0D;
-    double d2 = 0.0D;
-    AppMethodBeat.i(134238);
-    double d3 = c.jiO.eAR;
-    if (d3 > 60.0D) {}
-    for (;;)
+    AppMethodBeat.i(324252);
+    paramFloat = a.a(paramRecyclerView, paramFloat, paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(324252);
+    return paramFloat;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/utils/AppBrandDesktopItemDecorationHelper$Companion;", "", "()V", "setupItemDecoration", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "targetMargin", "width", "", "lineGap", "posOffset", "topMargin", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static float a(RecyclerView paramRecyclerView, float paramFloat, int paramInt1, final int paramInt2, int paramInt3, final int paramInt4)
     {
-      if (d1 < 0.0D) {
-        d1 = d2;
+      AppMethodBeat.i(324259);
+      s.u(paramRecyclerView, "recyclerView");
+      final float f2 = (paramInt1 - 4.0F * f.fz(paramRecyclerView.getContext()) - 2.0F * paramFloat) / 3.0F;
+      final float f1;
+      if (f2 <= com.tencent.mm.cd.a.bs(paramRecyclerView.getContext(), ba.d.Edge_0_5_A)) {
+        f1 = com.tencent.mm.cd.a.br(paramRecyclerView.getContext(), ba.d.Edge_A);
       }
-      for (;;)
+      for (paramFloat = (paramInt1 - 4.0F * f.fz(paramRecyclerView.getContext()) - 2.0F * f1) / 3.0F;; paramFloat = f2)
       {
-        this.jiK.add(Double.valueOf(d1));
-        AppMethodBeat.o(134238);
-        return;
+        final float f6 = paramInt1 / 4.0F;
+        float f7 = f.fz(paramRecyclerView.getContext());
+        f2 = f6 - f1 - f7;
+        final float f3 = paramFloat - f2;
+        final float f4 = f6 - f3 - f7;
+        final float f5 = paramFloat - f4;
+        f6 = f6 - f5 - f7;
+        while (paramRecyclerView.getItemDecorationCount() > 0) {
+          paramRecyclerView.JL();
+        }
+        paramRecyclerView.a((RecyclerView.h)new a(paramInt3, paramInt2, paramInt4, f1, f2, f3, f4, f5, f6, paramFloat - f6, f1));
+        AppMethodBeat.o(324259);
+        return f1;
+        f1 = paramFloat;
       }
-      d1 = d3;
+    }
+    
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/widget/desktop/utils/AppBrandDesktopItemDecorationHelper$Companion$setupItemDecoration$1", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class a
+      extends RecyclerView.h
+    {
+      a(int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8) {}
+      
+      public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+      {
+        AppMethodBeat.i(324264);
+        s.u(paramRect, "outRect");
+        s.u(paramView, "view");
+        s.u(paramRecyclerView, "parent");
+        s.u(params, "state");
+        super.a(paramRect, paramView, paramRecyclerView, params);
+        int i = RecyclerView.bA(paramView);
+        paramView = paramRecyclerView.bj(paramView);
+        if ((!(paramView instanceof d)) || ((((d)paramView).caO != 1) && (((d)paramView).caO != 2)))
+        {
+          paramRect.top = 0;
+          paramRect.left = 0;
+          paramRect.right = 0;
+          AppMethodBeat.o(324264);
+          return;
+        }
+        if (i == -1) {
+          i = ((d)paramView).caM;
+        }
+        for (;;)
+        {
+          i -= this.uBm;
+          if (i / 4 > 0)
+          {
+            paramRect.top = paramInt2;
+            paramRect.bottom = 0;
+            switch (i % 4)
+            {
+            }
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(324264);
+            return;
+            paramRect.top = paramInt4;
+            break;
+            paramRect.left = ((int)f1);
+            paramRect.right = ((int)f2);
+            AppMethodBeat.o(324264);
+            return;
+            paramRect.left = ((int)f3);
+            paramRect.right = ((int)f4);
+            AppMethodBeat.o(324264);
+            return;
+            paramRect.left = ((int)f5);
+            paramRect.right = ((int)f6);
+            AppMethodBeat.o(324264);
+            return;
+            paramRect.left = ((int)this.uBv);
+            paramRect.right = ((int)f1);
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.b.a
  * JD-Core Version:    0.7.0.1
  */

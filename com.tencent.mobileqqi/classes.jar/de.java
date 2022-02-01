@@ -28,7 +28,7 @@ public class de
       localDataLineHandler.a().b(LiteMpFileDownloadActivity.a(this.a));
       LiteMpFileDownloadActivity.a(this.a, "");
     }
-    if ((((Button)paramView.findViewById(2131231701)).getTag() != null) && (LiteMpFileDownloadActivity.a(this.a) != null)) {
+    if ((((Button)paramView.findViewById(2131231700)).getTag() != null) && (LiteMpFileDownloadActivity.a(this.a) != null)) {
       LiteMpFileDownloadActivity.a(this.a).a(null);
     }
     this.a.a();

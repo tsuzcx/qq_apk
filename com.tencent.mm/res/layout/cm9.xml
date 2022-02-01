@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e6l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/kb7" android:focusable="true" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:src="@raw/mmsight_camera_navbar_icon_switch" android:layout_alignParentRight="true" android:contentDescription="@string/huz" android:layout_marginEnd="@dimen/cv" />
+</RelativeLayout>

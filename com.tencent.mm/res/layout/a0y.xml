@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:background="@drawable/rm" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginLeft="2.0dip" />
-        <TextView android:textSize="8.0dip" android:textStyle="bold" android:textColor="@android:color/darker_gray" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="Matrix" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
-        <TextView android:textSize="8.0dip" android:textColor="@android:color/darker_gray" android:gravity="left" android:paddingLeft="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="40.0dip" android:text="200 ms" />
-        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@android:color/holo_green_dark" android:id="@id/bxf" android:paddingLeft="3.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:text="60.00 FPS" />
-    </LinearLayout>
-    <view android:id="@id/bxg" android:layout_width="fill_parent" android:layout_height="160.0dip" android:layout_marginLeft="2.0dip" class="com.tencent.matrix.trace.view.FloatFrameView$LineChartView" />
+    <com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText android:textSize="@dimen/t" android:textColor="@color/a7b" android:gravity="top" android:id="@id/ixd" android:background="@null" android:paddingLeft="@dimen/a3k" android:paddingTop="8.0dip" android:paddingRight="@dimen/a3k" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.2" android:inputType="textAutoCorrect|textCapSentences|textMultiLine|textNoSuggestions" android:imeOptions="actionDone|flagNoEnterAction" android:textCursorDrawable="@drawable/r3" />
 </LinearLayout>

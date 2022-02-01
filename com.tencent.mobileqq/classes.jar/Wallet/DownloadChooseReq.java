@@ -11,8 +11,8 @@ public final class DownloadChooseReq
   static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
   public int iActId = 1001;
   public int iPlatForm = 1;
-  public long iUin;
-  public ArrayList<ResInfo> vecResInfo;
+  public long iUin = 0L;
+  public ArrayList<ResInfo> vecResInfo = null;
   
   static
   {
@@ -33,14 +33,15 @@ public final class DownloadChooseReq
     paramJceOutputStream.write(this.iActId, 0);
     paramJceOutputStream.write(this.iPlatForm, 1);
     paramJceOutputStream.write(this.iUin, 2);
-    if (this.vecResInfo != null) {
-      paramJceOutputStream.write(this.vecResInfo, 3);
+    ArrayList localArrayList = this.vecResInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.DownloadChooseReq
  * JD-Core Version:    0.7.0.1
  */

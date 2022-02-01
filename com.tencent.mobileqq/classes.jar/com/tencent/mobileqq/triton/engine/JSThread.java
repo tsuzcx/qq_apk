@@ -1,42 +1,27 @@
 package com.tencent.mobileqq.triton.engine;
 
-import android.view.Choreographer;
-import android.view.Choreographer.FrameCallback;
-import androidx.annotation.MainThread;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
 import com.tencent.mobileqq.triton.jni.JNICaller.RenderContext;
 import com.tencent.mobileqq.triton.jni.JNICaller.TTEngine;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class JSThread
   extends Thread
 {
-  private static final int MAX_PENDING_VSYNC = 1;
   private static final String TAG = "JSThread";
   private long jsThreadId = -1L;
-  private JSThread.IListener mListener;
-  private final AtomicInteger mPendingVSyncCount = new AtomicInteger();
+  private final JSThread.IListener mListener;
   private volatile boolean mQuitThread = false;
-  private TTEngine mTritonEngine;
-  private Choreographer.FrameCallback mVsyncCallback = new JSThread.1(this);
+  private final TTEngine mTritonEngine;
   
   public JSThread(TTEngine paramTTEngine, JSThread.IListener paramIListener)
   {
     this.mTritonEngine = paramTTEngine;
     this.mListener = paramIListener;
     setPriority(10);
-    setName("JSThread_" + getId());
-  }
-  
-  @MainThread
-  private void startScheduleVSync()
-  {
-    Choreographer.getInstance().postFrameCallback(this.mVsyncCallback);
-  }
-  
-  @MainThread
-  private void stopScheduleVSync()
-  {
-    Choreographer.getInstance().removeFrameCallback(this.mVsyncCallback);
+    paramTTEngine = new StringBuilder();
+    paramTTEngine.append("JSThread_");
+    paramTTEngine.append(getId());
+    setName(paramTTEngine.toString());
   }
   
   public boolean isJSThread()
@@ -46,7 +31,6 @@ public class JSThread
   
   public void onPause()
   {
-    stopScheduleVSync();
     if (this.mTritonEngine.getRenderContext() != null) {
       JNICaller.RenderContext.nOnPause(this.mTritonEngine.getRenderContext(), this.mTritonEngine.getNativeTTAppHandle());
     }
@@ -54,7 +38,6 @@ public class JSThread
   
   public void onResume()
   {
-    startScheduleVSync();
     if (this.mTritonEngine.getRenderContext() != null) {
       JNICaller.RenderContext.nOnResume(this.mTritonEngine.getRenderContext(), this.mTritonEngine.getNativeTTAppHandle());
     }
@@ -63,11 +46,16 @@ public class JSThread
   public void run()
   {
     this.jsThreadId = getId();
-    TTLog.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run start");
-    if (this.mListener == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("JSThread (tid:");
+    ((StringBuilder)localObject).append(this.jsThreadId);
+    ((StringBuilder)localObject).append(") run start");
+    Logger.e("JSThread", ((StringBuilder)localObject).toString());
+    localObject = this.mListener;
+    if (localObject == null) {
       return;
     }
-    this.mListener.onPrepare();
+    ((JSThread.IListener)localObject).onPrepare();
     try
     {
       while (!this.mQuitThread)
@@ -75,14 +63,30 @@ public class JSThread
         JNICaller.RenderContext.nUpdateRenderContext(this.mTritonEngine.getRenderContext(), this.mTritonEngine.getNativeTTAppHandle());
         JNICaller.TTEngine.runLoop(this.mTritonEngine, true);
         JNICaller.TTEngine.runLoop(this.mTritonEngine, false);
-        TTLog.i("JSThread", "JSThread (tid: " + this.jsThreadId + ") runLoop is interrupted loopQuit=" + this.mQuitThread);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("JSThread (tid: ");
+        ((StringBuilder)localObject).append(this.jsThreadId);
+        ((StringBuilder)localObject).append(") runLoop is interrupted loopQuit=");
+        ((StringBuilder)localObject).append(this.mQuitThread);
+        Logger.i("JSThread", ((StringBuilder)localObject).toString());
       }
+      StringBuilder localStringBuilder2;
+      StringBuilder localStringBuilder1;
       return;
     }
     catch (Exception localException)
     {
-      TTLog.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run error " + localException.getMessage());
-      TTLog.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") run exit");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("JSThread (tid:");
+      localStringBuilder2.append(this.jsThreadId);
+      localStringBuilder2.append(") run error ");
+      localStringBuilder2.append(localException.getMessage());
+      Logger.e("JSThread", localStringBuilder2.toString());
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("JSThread (tid:");
+      localStringBuilder1.append(this.jsThreadId);
+      localStringBuilder1.append(") run exit");
+      Logger.e("JSThread", localStringBuilder1.toString());
       this.mListener.onExit();
     }
   }
@@ -90,13 +94,17 @@ public class JSThread
   public void shutdown()
   {
     this.mQuitThread = true;
-    TTLog.e("JSThread", "JSThread (tid:" + this.jsThreadId + ") shutdown");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JSThread (tid:");
+    localStringBuilder.append(this.jsThreadId);
+    localStringBuilder.append(") shutdown");
+    Logger.e("JSThread", localStringBuilder.toString());
     JNICaller.TTEngine.interruptLoop(this.mTritonEngine);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.JSThread
  * JD-Core Version:    0.7.0.1
  */

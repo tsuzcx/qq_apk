@@ -32,37 +32,49 @@ public final class ey
       return localLinkedHashMap;
     }
     Type localType = paramfd.b;
-    while (paramClass != Object.class)
+    Object localObject1 = paramClass;
+    paramClass = paramfd;
+    for (paramfd = (fd<?>)localObject1; paramfd != Object.class; paramfd = paramClass.a)
     {
-      Field[] arrayOfField = paramClass.getDeclaredFields();
+      Field[] arrayOfField = paramfd.getDeclaredFields();
       int j = arrayOfField.length;
       int i = 0;
-      while (i < j)
+      for (;;)
       {
-        Field localField = arrayOfField[i];
-        boolean bool1 = a(localField, true);
-        boolean bool2 = a(localField, false);
-        if ((bool1) || (bool2))
-        {
-          localField.setAccessible(true);
-          Object localObject2 = eh.a(paramfd.b, paramClass, localField.getGenericType());
-          Object localObject1 = (SerializedName)localField.getAnnotation(SerializedName.class);
-          if (localObject1 == null) {}
-          for (localObject1 = this.b.a(localField);; localObject1 = ((SerializedName)localObject1).value())
-          {
-            localObject2 = fd.a((Type)localObject2);
-            localObject1 = new ey.1(this, (String)localObject1, bool1, bool2, paramdn, (fd)localObject2, localField, eo.a(((fd)localObject2).a));
-            localObject1 = (ey.b)localLinkedHashMap.put(((ey.b)localObject1).g, localObject1);
-            if (localObject1 == null) {
-              break;
-            }
-            throw new IllegalArgumentException(localType + " declares multiple JSON fields named " + ((ey.b)localObject1).g);
-          }
+        localObject1 = this;
+        if (i >= j) {
+          break label283;
         }
+        Field localField = arrayOfField[i];
+        boolean bool1 = ((ey)localObject1).a(localField, true);
+        boolean bool2 = ((ey)localObject1).a(localField, false);
+        if ((!bool1) && (!bool2)) {
+          break label230;
+        }
+        localField.setAccessible(true);
+        Object localObject2 = eh.a(paramClass.b, paramfd, localField.getGenericType());
+        SerializedName localSerializedName = (SerializedName)localField.getAnnotation(SerializedName.class);
+        if (localSerializedName == null) {
+          localObject1 = ((ey)localObject1).b.a(localField);
+        } else {
+          localObject1 = localSerializedName.value();
+        }
+        localObject2 = fd.a((Type)localObject2);
+        localObject1 = new ey.1(this, (String)localObject1, bool1, bool2, paramdn, (fd)localObject2, localField, eo.a(((fd)localObject2).a));
+        localObject1 = (ey.b)localLinkedHashMap.put(((ey.b)localObject1).g, localObject1);
+        if (localObject1 != null) {
+          break;
+        }
+        label230:
         i += 1;
       }
-      paramfd = fd.a(eh.a(paramfd.b, paramClass, paramClass.getGenericSuperclass()));
-      paramClass = paramfd.a;
+      paramdn = new StringBuilder();
+      paramdn.append(localType);
+      paramdn.append(" declares multiple JSON fields named ");
+      paramdn.append(((ey.b)localObject1).g);
+      throw new IllegalArgumentException(paramdn.toString());
+      label283:
+      paramClass = fd.a(eh.a(paramClass.b, paramfd, paramfd.getGenericSuperclass()));
     }
     return localLinkedHashMap;
   }
@@ -72,74 +84,55 @@ public final class ey
     if (!this.c.a(paramField.getType(), paramBoolean))
     {
       Object localObject = this.c;
-      int i;
-      if ((((ej)localObject).c & paramField.getModifiers()) != 0) {
-        i = 1;
-      }
-      while (i == 0)
+      if ((((ej)localObject).c & paramField.getModifiers()) != 0) {}
+      for (;;)
       {
-        return true;
-        if ((((ej)localObject).b != -1.0D) && (!((ej)localObject).a((Since)paramField.getAnnotation(Since.class), (Until)paramField.getAnnotation(Until.class)))) {
-          i = 1;
-        } else {
-          label267:
-          if (paramField.isSynthetic())
+        i = 1;
+        break label257;
+        if (((((ej)localObject).b == -1.0D) || (((ej)localObject).a((Since)paramField.getAnnotation(Since.class), (Until)paramField.getAnnotation(Until.class)))) && (!paramField.isSynthetic()))
+        {
+          if (((ej)localObject).e)
           {
-            i = 1;
+            Expose localExpose = (Expose)paramField.getAnnotation(Expose.class);
+            if (localExpose == null) {
+              continue;
+            }
+            if (paramBoolean) {
+              if (localExpose.serialize()) {
+                break label144;
+              }
+            } else {
+              if (!localExpose.deserialize()) {
+                continue;
+              }
+            }
           }
-          else
+          label144:
+          if (((((ej)localObject).d) || (!ej.b(paramField.getType()))) && (!ej.a(paramField.getType())))
           {
-            if (((ej)localObject).e)
+            if (paramBoolean) {
+              localObject = ((ej)localObject).f;
+            } else {
+              localObject = ((ej)localObject).g;
+            }
+            if (((List)localObject).isEmpty()) {
+              break;
+            }
+            new dk(paramField);
+            paramField = ((List)localObject).iterator();
+            do
             {
-              Expose localExpose = (Expose)paramField.getAnnotation(Expose.class);
-              if (localExpose != null)
-              {
-                if (!paramBoolean) {
-                  break label140;
-                }
-                if (localExpose.serialize()) {
-                  break label150;
-                }
-              }
-              label140:
-              while (!localExpose.deserialize())
-              {
-                i = 1;
+              if (!paramField.hasNext()) {
                 break;
               }
-            }
-            label150:
-            if ((!((ej)localObject).d) && (ej.b(paramField.getType())))
-            {
-              i = 1;
-            }
-            else if (ej.a(paramField.getType()))
-            {
-              i = 1;
-            }
-            else
-            {
-              if (paramBoolean) {}
-              for (localObject = ((ej)localObject).f;; localObject = ((ej)localObject).g)
-              {
-                if (((List)localObject).isEmpty()) {
-                  break label267;
-                }
-                new dk(paramField);
-                paramField = ((List)localObject).iterator();
-                do
-                {
-                  if (!paramField.hasNext()) {
-                    break;
-                  }
-                } while (!((dj)paramField.next()).a());
-                i = 1;
-                break;
-              }
-              i = 0;
-            }
+            } while (!((dj)paramField.next()).a());
           }
         }
+      }
+      int i = 0;
+      label257:
+      if (i == 0) {
+        return true;
       }
     }
     return false;

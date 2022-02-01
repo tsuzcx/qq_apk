@@ -1,56 +1,33 @@
+import android.graphics.Bitmap;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.troop.utils.RollangleImageView;
 import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache.QueueItem;
-import java.util.LinkedList;
 
 public class gxj
-  implements Runnable
+  extends Handler
 {
-  public gxj(RollangleImageView.ImageCache paramImageCache) {}
-  
-  public void run()
+  public gxj(RollangleImageView.ImageCache paramImageCache, Looper paramLooper)
   {
-    Object localObject1 = null;
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (this.a.a) {}
+    Object localObject;
+    String str;
+    do
     {
-      if (this.a.a) {
-        return;
-      }
-      try
-      {
-        Thread.sleep(100L);
-        label19:
-        synchronized (this.a)
-        {
-          if (RollangleImageView.ImageCache.a(this.a) == null) {
-            return;
-          }
-        }
-        if (localObject2 != null) {
-          RollangleImageView.ImageCache.a(this.a).poll();
-        }
-        if (RollangleImageView.ImageCache.a(this.a).isEmpty()) {
-          return;
-        }
-        RollangleImageView.ImageCache.QueueItem localQueueItem = (RollangleImageView.ImageCache.QueueItem)RollangleImageView.ImageCache.a(this.a).peek();
-        ??? = RollangleImageView.a(localQueueItem.jdField_a_of_type_JavaLangString);
-        Object localObject3 = localQueueItem;
-        if (??? == null) {
-          continue;
-        }
-        BaseApplicationImpl.a.put("troopfileimage://" + localQueueItem.jdField_a_of_type_JavaLangString, ???);
-        RollangleImageView.ImageCache.a(this.a).obtainMessage(0, new Object[] { localQueueItem.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localQueueItem.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
-        localObject3 = localQueueItem;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label19;
-      }
-    }
+      return;
+      localObject = (Object[])paramMessage.obj;
+      paramMessage = (RollangleImageView)localObject[0];
+      str = (String)localObject[1];
+      localObject = (Bitmap)localObject[2];
+    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
+    paramMessage.setImageBitmap((Bitmap)localObject);
   }
 }
 

@@ -18,23 +18,23 @@ public final class NetworkWatcher$netStatusReceive$1
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
     paramContext = NetworkWatcher.access$getCtx$p(NetworkWatcher.INSTANCE);
-    if (paramContext != null) {}
-    for (paramContext = (Context)paramContext.get();; paramContext = null)
+    if (paramContext != null) {
+      paramContext = (Context)paramContext.get();
+    } else {
+      paramContext = null;
+    }
+    if (paramContext != null)
     {
-      if (paramContext != null)
-      {
-        paramContext = NetworkWatcher.access$getHandler$p(NetworkWatcher.INSTANCE);
-        if (paramContext != null) {
-          paramContext.post((Runnable)NetworkWatcher.netStatusReceive.1.onReceive.1.INSTANCE);
-        }
+      paramContext = NetworkWatcher.access$getHandler$p(NetworkWatcher.INSTANCE);
+      if (paramContext != null) {
+        paramContext.post((Runnable)NetworkWatcher.netStatusReceive.1.onReceive.1.INSTANCE);
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.network.NetworkWatcher.netStatusReceive.1
  * JD-Core Version:    0.7.0.1
  */

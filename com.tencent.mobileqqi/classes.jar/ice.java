@@ -1,23 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.qzone.UploadServerSetting;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import cooperation.qzone.UploadServerSetting.ConfigItem;
+import java.util.ArrayList;
 
-public class ice
-  implements DialogInterface.OnClickListener
+public final class ice
+  extends BaseAdapter
 {
-  public ice(UploadServerSetting paramUploadServerSetting, EditText paramEditText1, EditText paramEditText2, QQCustomDialog paramQQCustomDialog) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArrayList jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ice(Context paramContext, ArrayList paramArrayList)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.b != null))
-    {
-      paramDialogInterface = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      String str = this.b.getText().toString();
-      UploadServerSetting.a(this.jdField_a_of_type_CooperationQzoneUploadServerSetting, paramDialogInterface, str);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903907, paramViewGroup, false);
     }
+    paramView = (UploadServerSetting.ConfigItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramViewGroup = (TextView)localView.findViewById(2131234267);
+    TextView localTextView1 = (TextView)localView.findViewById(2131234269);
+    TextView localTextView2 = (TextView)localView.findViewById(2131234270);
+    if (paramView.jdField_a_of_type_Boolean) {
+      localTextView2.setVisibility(0);
+    }
+    while (paramInt == 0)
+    {
+      ((TextView)localView.findViewById(2131234268)).setVisibility(4);
+      paramViewGroup.setText("正式环境");
+      return localView;
+      localTextView2.setVisibility(4);
+    }
+    paramViewGroup.setText(paramView.jdField_a_of_type_JavaLangString);
+    localTextView1.setText(paramView.jdField_a_of_type_Int + "");
+    return localView;
   }
 }
 

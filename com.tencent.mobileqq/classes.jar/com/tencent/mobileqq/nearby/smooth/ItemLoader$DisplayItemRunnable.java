@@ -1,42 +1,43 @@
 package com.tencent.mobileqq.nearby.smooth;
 
 import android.view.View;
-import avsz;
 import java.lang.ref.SoftReference;
 
 final class ItemLoader$DisplayItemRunnable<Params, Result>
   implements Runnable
 {
-  private final avsz<Params, Result> jdField_a_of_type_Avsz;
-  private final ItemLoader<Params, Result> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  private final boolean jdField_a_of_type_Boolean;
+  private final ItemLoader<Params, Result> a;
+  private final ItemLoader.ItemRequest<Params, Result> b;
+  private final boolean c;
   
-  public ItemLoader$DisplayItemRunnable(ItemLoader<Params, Result> paramItemLoader, avsz<Params, Result> paramavsz, boolean paramBoolean)
+  public ItemLoader$DisplayItemRunnable(ItemLoader<Params, Result> paramItemLoader, ItemLoader.ItemRequest<Params, Result> paramItemRequest, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader = paramItemLoader;
-    this.jdField_a_of_type_Avsz = paramavsz;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramItemLoader;
+    this.b = paramItemRequest;
+    this.c = paramBoolean;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Avsz)) {}
-    View localView;
-    do
-    {
+    if (this.a.a(this.b)) {
       return;
-      if (this.jdField_a_of_type_Avsz.c == null) {
-        throw new IllegalStateException("Result should not be null when displaying an item part");
+    }
+    if (this.b.c != null)
+    {
+      View localView = (View)this.b.b.get();
+      if (localView == null) {
+        return;
       }
-      localView = (View)this.jdField_a_of_type_Avsz.b.get();
-    } while (localView == null);
-    Object localObject = this.jdField_a_of_type_Avsz.c.get();
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localView, localObject, this.jdField_a_of_type_Avsz.a.intValue(), this.jdField_a_of_type_Boolean);
+      Object localObject = this.b.c.get();
+      this.a.a(localView, localObject, this.b.i.intValue(), this.c);
+      return;
+    }
+    throw new IllegalStateException("Result should not be null when displaying an item part");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemLoader.DisplayItemRunnable
  * JD-Core Version:    0.7.0.1
  */

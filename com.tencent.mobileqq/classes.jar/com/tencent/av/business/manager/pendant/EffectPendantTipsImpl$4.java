@@ -1,0 +1,28 @@
+package com.tencent.av.business.manager.pendant;
+
+import com.tencent.av.tips.TipsUtil;
+
+class EffectPendantTipsImpl$4
+  implements Runnable
+{
+  EffectPendantTipsImpl$4(EffectPendantTipsImpl paramEffectPendantTipsImpl) {}
+  
+  public void run()
+  {
+    try
+    {
+      TipsUtil.b(EffectPendantTipsImpl.a(this.this$0), 1016);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.4
+ * JD-Core Version:    0.7.0.1
+ */

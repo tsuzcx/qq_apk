@@ -4,10 +4,11 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.aj;
-import com.tencent.mm.plugin.wallet_core.model.f;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.wallet_core.model.d;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,17 +20,17 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
+  public String MEq;
+  public double OjO;
   public String desc;
-  public String ppp;
-  public double qjN;
   
   public c(String paramString)
   {
-    AppMethodBeat.i(45919);
+    AppMethodBeat.i(69262);
     HashMap localHashMap = new HashMap();
     localHashMap.put("token", paramString);
     setRequestData(localHashMap);
-    AppMethodBeat.o(45919);
+    AppMethodBeat.o(69262);
   }
   
   public final int getFuncId()
@@ -49,33 +50,33 @@ public final class c
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(45920);
+    AppMethodBeat.i(69263);
     if (paramInt == 0)
     {
-      this.ppp = paramJSONObject.optString("fee_type");
-      this.qjN = (paramJSONObject.optDouble("total_fee") / 100.0D);
+      this.MEq = paramJSONObject.optString("fee_type");
+      this.OjO = (paramJSONObject.optDouble("total_fee") / 100.0D);
       paramString = paramJSONObject.optJSONArray("Array");
       if ((paramString != null) && (paramString.length() > 0)) {
         this.desc = ((JSONObject)paramString.opt(0)).optString("desc");
       }
-      aj localaj = t.cTO();
+      aj localaj = u.iiD();
       paramJSONObject = paramJSONObject.optJSONObject("bindqueryresp");
-      localaj.ulH.clear();
+      localaj.VJV.clear();
       if (paramJSONObject == null)
       {
-        ab.e("MicroMsg.WalletRepaymentBankcardMgr", "parse from json error,json is null");
-        AppMethodBeat.o(45920);
+        Log.e("MicroMsg.WalletRepaymentBankcardMgr", "parse from json error,json is null");
+        AppMethodBeat.o(69263);
         return;
       }
       JSONArray localJSONArray = paramJSONObject.optJSONArray("Array");
       if ((localJSONArray == null) || (localJSONArray.length() <= 0))
       {
-        ab.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list is null");
+        Log.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list is null");
         paramString = paramJSONObject.optJSONObject("user_info");
         if (paramString != null)
         {
-          localaj.ulI = paramString.optString("last_card_bind_serialno");
-          AppMethodBeat.o(45920);
+          localaj.VJW = paramString.optString("last_card_bind_serialno");
+          AppMethodBeat.o(69263);
         }
       }
       else
@@ -83,17 +84,17 @@ public final class c
         paramInt = 0;
         while (paramInt < localJSONArray.length())
         {
-          f localf = f.cTl();
+          d locald = d.iib();
           try
           {
             paramString = (JSONObject)localJSONArray.get(paramInt);
             if (paramString != null)
             {
-              paramString = localf.aw(paramString);
-              if (paramString.cTf())
+              paramString = locald.cg(paramString);
+              if (paramString.ihV())
               {
                 paramString.field_desc = paramString.field_bankName;
-                localaj.ulH.add(paramString);
+                localaj.VJV.add(paramString);
               }
             }
             else
@@ -105,23 +106,23 @@ public final class c
           {
             for (;;)
             {
-              ab.printErrStackTrace("MicroMsg.WalletRepaymentBankcardMgr", paramString, "", new Object[0]);
+              Log.printErrStackTrace("MicroMsg.WalletRepaymentBankcardMgr", paramString, "", new Object[0]);
               paramString = null;
               continue;
-              if (paramString.cTh()) {
-                paramString.field_desc = ah.getContext().getString(2131305030, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
-              } else if (paramString.cTe()) {
-                paramString.field_desc = ah.getContext().getString(2131305778, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+              if (paramString.ihX()) {
+                paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_credit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+              } else if (paramString.ihU()) {
+                paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_wxcredit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
               } else {
-                paramString.field_desc = ah.getContext().getString(2131305050, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+                paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_deposit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
               }
             }
           }
         }
       }
-      ab.e("MicroMsg.WalletRepaymentBankcardMgr", "user_info is null");
+      Log.e("MicroMsg.WalletRepaymentBankcardMgr", "user_info is null");
     }
-    AppMethodBeat.o(45920);
+    AppMethodBeat.o(69263);
   }
 }
 

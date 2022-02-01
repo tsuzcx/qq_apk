@@ -1,11 +1,11 @@
 package com.tencent.youtu.ytagreflectlivecheck;
 
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
 import com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker;
 import com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker.OnGetValue;
 import com.tencent.youtu.ytagreflectlivecheck.worker.TimerWorker;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
 
 final class YTAGReflectLiveCheckInterface$1
   implements SensorManagerWorker.OnGetValue
@@ -13,10 +13,18 @@ final class YTAGReflectLiveCheckInterface$1
   public void onGetValue(float paramFloat)
   {
     YTAGReflectLiveCheckInterface.access$008();
-    YTLogger.d("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramFloat + " mOnGetValueCount: " + YTAGReflectLiveCheckInterface.access$000());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: ");
+    localStringBuilder.append(paramFloat);
+    localStringBuilder.append(" mOnGetValueCount: ");
+    localStringBuilder.append(YTAGReflectLiveCheckInterface.access$000());
+    YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", localStringBuilder.toString());
     if (YTAGReflectLiveCheckInterface.access$000() > 1)
     {
-      YTLogger.i("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: " + paramFloat);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[YTAGReflectLiveCheckInterface.getLiveCheckType.onGetValue] get value: ");
+      localStringBuilder.append(paramFloat);
+      YTAGReflectLiveCheckJNIInterface.nativeLog("YoutuLightLiveCheck", localStringBuilder.toString());
       if (YTAGReflectLiveCheckInterface.access$100() != null)
       {
         YTAGReflectLiveCheckInterface.access$100().cancel();
@@ -33,7 +41,7 @@ final class YTAGReflectLiveCheckInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,76 @@
 package com.tencent.mm.plugin.walletlock.gesture.a;
 
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.plugin.walletlock.a.d;
+import com.tencent.mm.plugin.walletlock.a.e;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
+
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/walletlock/gesture/model/FingerprintWalletLockUIAccessibilityConfig;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "lastText", "", "getLastText", "()Ljava/lang/String;", "setLastText", "(Ljava/lang/String;)V", "initConfig", "", "Companion", "plugin-wallet-lock_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  extends MMBaseAccessibilityConfig
 {
-  public static int uEH = 300;
-  public static final byte[] uEI = { 48, 94, 48, 16, 6, 7, 42, -122, 72, -50, 61, 2, 1, 6, 5, 43, -127, 4, 0, 17, 3, 74, 0, 4, 6, -90, -103, -86, 2, 110, 117, -17, -44, 65, -14, 106, 103, -92, -88, 95, 91, 23, 43, -60, 14, 59, 21, 122, -2, -75, -32, -11, -96, -45, 34, -24, -16, 81, 37, -106, 3, -59, -106, -93, -103, -13, 122, -52, -45, 46, -122, -14, -57, 55, -77, -73, 0, -26, 4, 98, -84, 20, 84, -25, 66, 49, 101, 47, -39, 89, -113, -7, -69, -5, 101, -64 };
+  private static final String TAG;
+  public static final a Wgk;
+  private String mph;
+  
+  static
+  {
+    AppMethodBeat.i(266856);
+    Wgk = new a((byte)0);
+    TAG = "FingerprintWalletLockUIAccessibilityConfig";
+    AppMethodBeat.o(266856);
+  }
+  
+  public a(AppCompatActivity paramAppCompatActivity)
+  {
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(266855);
+    this.mph = "";
+    AppMethodBeat.o(266855);
+  }
+  
+  public final void initConfig()
+  {
+    AppMethodBeat.i(266858);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(a.e.Wey);
+    localConfigHelper.focusFirst(a.d.Wes);
+    localConfigHelper.view(a.d.Wes).talkOn((b)b.Wgl);
+    AppMethodBeat.o(266858);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/walletlock/gesture/model/FingerprintWalletLockUIAccessibilityConfig$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-wallet-lock_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements b<View, Boolean>
+  {
+    public static final b Wgl;
+    
+    static
+    {
+      AppMethodBeat.i(266852);
+      Wgl = new b();
+      AppMethodBeat.o(266852);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.a
  * JD-Core Version:    0.7.0.1
  */

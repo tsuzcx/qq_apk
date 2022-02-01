@@ -1,20 +1,14 @@
 package com.tencent.wcdb.database;
 
-import com.tencent.wcdb.support.CancellationSignal;
-import com.tencent.wcdb.support.Log;
+import com.tencent.token.aiw;
+import com.tencent.token.aje;
+import java.lang.ref.WeakReference;
 
 public class SQLiteDirectQuery
-  extends SQLiteProgram
+  extends aiw
 {
-  private static final int[] SQLITE_TYPE_MAPPING = { 3, 1, 2, 3, 4, 0 };
-  private static final String TAG = "WCDB.SQLiteDirectQuery";
-  private final CancellationSignal mCancellationSignal;
-  
-  public SQLiteDirectQuery(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject, CancellationSignal paramCancellationSignal)
-  {
-    super(paramSQLiteDatabase, paramString, paramArrayOfObject, paramCancellationSignal);
-    this.mCancellationSignal = paramCancellationSignal;
-  }
+  private static final int[] h = { 3, 1, 2, 3, 4, 0 };
+  private final aje g;
   
   private static native byte[] nativeGetBlob(long paramLong, int paramInt);
   
@@ -28,98 +22,35 @@ public class SQLiteDirectQuery
   
   private static native int nativeStep(long paramLong, int paramInt);
   
-  public byte[] getBlob(int paramInt)
-  {
-    return nativeGetBlob(this.mPreparedStatement.getPtr(), paramInt);
-  }
-  
-  public double getDouble(int paramInt)
-  {
-    return nativeGetDouble(this.mPreparedStatement.getPtr(), paramInt);
-  }
-  
-  public long getLong(int paramInt)
-  {
-    return nativeGetLong(this.mPreparedStatement.getPtr(), paramInt);
-  }
-  
-  public String getString(int paramInt)
-  {
-    return nativeGetString(this.mPreparedStatement.getPtr(), paramInt);
-  }
-  
-  public int getType(int paramInt)
-  {
-    return SQLITE_TYPE_MAPPING[nativeGetType(this.mPreparedStatement.getPtr(), paramInt)];
-  }
-  
-  protected void onAllReferencesReleased()
+  public final void c()
   {
     try
     {
-      if (this.mPreparedStatement != null)
+      if (this.f != null)
       {
-        this.mPreparedStatement.detachCancellationSignal(this.mCancellationSignal);
-        this.mPreparedStatement.endOperation(null);
-      }
-      super.onAllReferencesReleased();
-      return;
-    }
-    finally {}
-  }
-  
-  public void reset(boolean paramBoolean)
-  {
-    try
-    {
-      if (this.mPreparedStatement != null)
-      {
-        this.mPreparedStatement.reset(false);
-        if (paramBoolean)
+        Object localObject3 = this.f;
+        Object localObject1 = this.g;
+        localObject3 = (SQLiteConnection)((SQLiteConnection.c)localObject3).a.get();
+        if (localObject3 != null) {
+          SQLiteConnection.a((SQLiteConnection)localObject3, (aje)localObject1);
+        }
+        localObject1 = this.f;
+        if (((SQLiteConnection.c)localObject1).j != null)
         {
-          this.mPreparedStatement.detachCancellationSignal(this.mCancellationSignal);
-          this.mPreparedStatement.endOperation(null);
-          releasePreparedStatement();
+          localObject3 = (SQLiteConnection)((SQLiteConnection.c)localObject1).a.get();
+          if (localObject3 != null)
+          {
+            if (SQLiteConnection.a((SQLiteConnection)localObject3).b(((SQLiteConnection.c)localObject1).j.h)) {
+              SQLiteConnection.a((SQLiteConnection)localObject3).a(((SQLiteConnection.c)localObject1).j.h, null);
+            }
+            ((SQLiteConnection.c)localObject1).j = null;
+          }
         }
       }
+      super.c();
       return;
     }
     finally {}
-  }
-  
-  public int step(int paramInt)
-  {
-    try
-    {
-      if (acquirePreparedStatement())
-      {
-        this.mPreparedStatement.beginOperation("directQuery", getBindArgs());
-        this.mPreparedStatement.attachCancellationSignal(this.mCancellationSignal);
-      }
-      paramInt = nativeStep(this.mPreparedStatement.getPtr(), paramInt);
-      return paramInt;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      if (!(localRuntimeException instanceof SQLiteDatabaseCorruptException)) {
-        break label89;
-      }
-    }
-    onCorruption();
-    for (;;)
-    {
-      if (this.mPreparedStatement != null)
-      {
-        this.mPreparedStatement.detachCancellationSignal(this.mCancellationSignal);
-        this.mPreparedStatement.failOperation(localRuntimeException);
-      }
-      releasePreparedStatement();
-      throw localRuntimeException;
-      label89:
-      if ((localRuntimeException instanceof SQLiteException)) {
-        Log.e("WCDB.SQLiteDirectQuery", "Got exception on stepping: " + localRuntimeException.getMessage() + ", SQL: " + getSql());
-      }
-    }
   }
 }
 

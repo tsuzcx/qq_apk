@@ -4,14 +4,14 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
-import bcko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager.IAnimationMessage;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForDeliverGiftTips
   extends MessageForGrayTips
-  implements bcko
+  implements AIOAnimationControlManager.IAnimationMessage
 {
   public static final String MESSAGERECORD_EXTSTR_TYPE = "troop_send_gift_ext_remind";
   public static final int VERSION = 2;
@@ -36,10 +36,10 @@ public class MessageForDeliverGiftTips
   public String interactFirstNickname = "";
   public long interactFirstUin;
   public String interactId;
-  public int interactState;
+  public int interactState = 0;
   public String interactText = "";
   public boolean isFromNearby;
-  public int is_activity_gift;
+  public int is_activity_gift = 0;
   public String jumpUrl;
   public int objColor;
   public int participateNum;
@@ -65,8 +65,12 @@ public class MessageForDeliverGiftTips
   
   public void buildDeliverGiftTips(QQAppInterface paramQQAppInterface, Context paramContext, TextView paramTextView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.send_gift", 2, "MessageForDeliverGiftTips.buildDeliverGiftTips seq:" + this.shmsgseq);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MessageForDeliverGiftTips.buildDeliverGiftTips seq:");
+      localStringBuilder.append(this.shmsgseq);
+      QLog.d(".troop.send_gift", 2, localStringBuilder.toString());
     }
     paramTextView.setText(getHightlightMsgText(paramQQAppInterface, paramContext, false, paramTextView));
     paramTextView.setClickable(true);
@@ -96,7 +100,7 @@ public class MessageForDeliverGiftTips
   
   public boolean isInteract()
   {
-    return !TextUtils.isEmpty(this.interactId);
+    return TextUtils.isEmpty(this.interactId) ^ true;
   }
   
   public boolean isReaded()
@@ -116,7 +120,14 @@ public class MessageForDeliverGiftTips
   
   public boolean isToAll()
   {
-    return (this.animationPackageId == 0) && (this.exflag > 1000) && (this.exflag <= 2000);
+    if (this.animationPackageId == 0)
+    {
+      int i = this.exflag;
+      if ((i > 1000) && (i <= 2000)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

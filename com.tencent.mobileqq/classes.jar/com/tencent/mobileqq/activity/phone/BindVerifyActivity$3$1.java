@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 
 class BindVerifyActivity$3$1
   implements Runnable
@@ -9,8 +9,8 @@ class BindVerifyActivity$3$1
   
   public void run()
   {
-    this.a.this$0.a.g();
-    this.a.this$0.a.e = true;
+    this.a.this$0.mPhoneContactService.uploadPhoneContact();
+    this.a.this$0.mPhoneContactService.setNeedUploadResultTip(true);
   }
 }
 

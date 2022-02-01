@@ -1,75 +1,60 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.cjx;
-import com.tencent.mm.protocal.protobuf.cjy;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.aaf;
+import com.tencent.mm.protocal.protobuf.aag;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public b rr;
+  private h callback;
+  public c oDw;
   
-  public g(String paramString)
+  public g()
   {
-    AppMethodBeat.i(124685);
-    b.a locala = new b.a();
-    locala.fsX = new cjx();
-    locala.fsY = new cjy();
-    locala.uri = "/cgi-bin/micromsg-bin/thirdappverify";
-    locala.funcId = 755;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((cjx)this.rr.fsV.fta).wRO = paramString;
-    ((cjx)this.rr.fsV.fta).xTO = 1;
-    ((cjx)this.rr.fsV.fta).lGH = com.tencent.mm.sdk.platformtools.aa.dsG();
-    paramString = bo.dtR();
-    ((cjx)this.rr.fsV.fta).wvN = com.tencent.mm.platformtools.aa.ac(paramString);
-    this.rr.setRsaInfo(com.tencent.mm.protocal.aa.dqG());
-    this.rr.option = 1;
-    this.rr.getReqObj().setPassKey(paramString);
-    this.rr.getReqObj().setSceneStatus(1);
-    AppMethodBeat.o(124685);
+    AppMethodBeat.i(304859);
+    c.a locala = new c.a();
+    locala.otE = new aaf();
+    locala.otF = new aag();
+    locala.uri = "/cgi-bin/micromsg-bin/checkcansetalias";
+    locala.funcId = getType();
+    this.oDw = locala.bEF();
+    AppMethodBeat.o(304859);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
-    AppMethodBeat.i(124686);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(124686);
+    AppMethodBeat.i(304863);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(304863);
     return i;
   }
   
   public final int getType()
   {
-    return 755;
+    return 926;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(124687);
-    ab.i("MicroMsg.NetSceneVerifyThirdApp", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(304866);
+    Log.i("MicroMsg.NetSceneCheckModifyAlias", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(124687);
+    AppMethodBeat.o(304866);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.g
  * JD-Core Version:    0.7.0.1
  */

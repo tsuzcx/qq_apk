@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/f5l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/bx_" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_">
+        <ImageView android:layout_gravity="bottom" android:id="@id/l6q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/video_icon_in_gird" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:id="@id/l6r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
+    </LinearLayout>
+    <View android:layout_gravity="end|center|top" android:id="@id/gqv" android:layout_width="48.0dip" android:layout_height="48.0dip" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <CheckBox android:textColor="@color/al2" android:gravity="center" android:layout_gravity="end|center|top" android:id="@id/gq5" android:background="@drawable/am_" android:focusable="false" android:clickable="false" android:layout_width="@dimen/as" android:layout_height="@dimen/ar" android:layout_marginTop="@dimen/df" android:layout_marginEnd="@dimen/df" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <View android:id="@id/gqm" android:background="@color/BW_100_Alpha_0_5" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,117 +1,77 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.plugin.wallet_core.ui.b;
-import java.util.HashMap;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract class r<K>
+public final class r
 {
-  List<String> uiA = new LinkedList();
-  Map<String, Integer> uix = new HashMap();
-  List<K> uiy = new LinkedList();
-  public Vector<r<K>.b> uiz = new Vector();
+  public String VEH;
+  public String VEI;
+  public int VGr;
+  public List<a> VGs;
+  public String url;
+  public boolean wtT;
+  public int wuj;
   
-  private void cTH()
+  public r()
   {
-    int i = 0;
-    int j;
-    if (i < this.uiz.size()) {
-      if (((r.b)this.uiz.get(i)).uiH != r.a.uiD)
-      {
-        Object localObject = a(this.uiz, i);
-        if (this.uix.containsKey(localObject)) {
-          break label158;
-        }
-        localObject = b.afE((String)localObject);
-        j = 0;
-        label67:
-        if (j >= this.uiA.size()) {
-          break label153;
-        }
-        k = 0;
-        label82:
-        if (k >= localObject.length) {
-          break label170;
-        }
-        if (((String)this.uiA.get(j)).contains(localObject[k])) {
-          break label139;
-        }
-      }
-    }
-    label139:
-    label153:
-    label158:
-    label170:
-    for (int k = 0;; k = 1)
-    {
-      if (k != 0)
-      {
-        j = 1;
-        label120:
-        if (j != 0) {
-          break label158;
-        }
-        a(i, r.a.uiC);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        k += 1;
-        break label82;
-        j += 1;
-        break label67;
-        j = 0;
-        break label120;
-        a(i, r.a.uiE);
-      }
-      return;
-    }
+    AppMethodBeat.i(301163);
+    this.VGs = new ArrayList();
+    AppMethodBeat.o(301163);
   }
   
-  public abstract String a(Vector<r<K>.b> paramVector, int paramInt);
-  
-  public final void a(int paramInt, r.a parama)
+  public static r cp(JSONObject paramJSONObject)
   {
-    ((r.b)this.uiz.get(paramInt)).uiH = parama;
+    AppMethodBeat.i(301165);
+    if (paramJSONObject != null)
+    {
+      r localr = new r();
+      localr.VGr = paramJSONObject.optInt("block_layer_report_id");
+      localr.wtT = paramJSONObject.optBoolean("is_show");
+      localr.wuj = paramJSONObject.optInt("action_type");
+      localr.VEH = paramJSONObject.optString("tiny_app_username");
+      localr.VEI = paramJSONObject.optString("tiny_app_path");
+      localr.url = paramJSONObject.optString("url");
+      if (paramJSONObject.has("text_info_array"))
+      {
+        paramJSONObject = paramJSONObject.optJSONArray("text_info_array");
+        if (paramJSONObject != null)
+        {
+          int i = 0;
+          while (i < paramJSONObject.length())
+          {
+            JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+            a locala = new a();
+            locala.VGn = localJSONObject.optString("main_wording");
+            locala.VGo = localJSONObject.optString("reminder_content");
+            locala.VGt = localJSONObject.optString("action_btn_text");
+            locala.language = localJSONObject.optString("language");
+            localr.VGs.add(locala);
+            i += 1;
+          }
+        }
+      }
+      AppMethodBeat.o(301165);
+      return localr;
+    }
+    AppMethodBeat.o(301165);
+    return null;
   }
   
-  public final void d(List<K> paramList1, List<K> paramList2, List<String> paramList)
+  public static final class a
   {
-    this.uiA = paramList;
-    this.uiy = paramList2;
-    this.uiz.clear();
-    this.uiz = new Vector(paramList1.size());
-    int i = 0;
-    if (i < paramList1.size())
-    {
-      paramList2 = new r.b(this);
-      Object localObject = paramList1.get(i);
-      paramList2.uiG = localObject;
-      if (this.uiy.contains(localObject)) {}
-      for (paramList2.uiH = r.a.uiD;; paramList2.uiH = r.a.uiC)
-      {
-        this.uiz.add(paramList2);
-        i += 1;
-        break;
-      }
-    }
-    this.uix.clear();
-    i = 0;
-    while (i < paramList.size())
-    {
-      this.uix.put(paramList.get(i), Integer.valueOf(0));
-      i += 1;
-    }
-    cTH();
+    public String VGn;
+    public String VGo;
+    public String VGt;
+    public String language;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.r
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ final class zziv
   
   public final void run()
   {
-    AppMethodBeat.i(69334);
+    AppMethodBeat.i(1857);
     localAtomicReference = this.zzapf;
     for (;;)
     {
@@ -32,7 +32,7 @@ final class zziv
       finally
       {
         this.zzapf.notify();
-        AppMethodBeat.o(69334);
+        AppMethodBeat.o(1857);
       }
       try
       {
@@ -41,18 +41,18 @@ final class zziv
       }
       finally
       {
-        AppMethodBeat.o(69334);
+        AppMethodBeat.o(1857);
       }
     }
     this.zzapf.set(localzzey.zza(this.zzane, this.zzanz));
     zzii.zze(this.zzape);
     this.zzapf.notify();
-    AppMethodBeat.o(69334);
+    AppMethodBeat.o(1857);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zziv
  * JD-Core Version:    0.7.0.1
  */

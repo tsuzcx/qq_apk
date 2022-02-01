@@ -1,39 +1,36 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
 
 final class MiniAppController$10
-  implements Runnable
+  extends ResultReceiver
 {
-  MiniAppController$10(String paramString) {}
-  
-  public void run()
+  MiniAppController$10(Handler paramHandler, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    try
+    super(paramHandler);
+  }
+  
+  protected void onReceiveResult(int paramInt, Bundle paramBundle)
+  {
+    super.onReceiveResult(paramInt, paramBundle);
+    paramBundle = this.val$listener;
+    if (paramBundle != null)
     {
-      Object localObject2 = new JSONObject(this.val$actionData);
-      String str = ((JSONObject)localObject2).optString("appId");
-      Object localObject1 = ((JSONObject)localObject2).optString("entryPath");
-      localObject2 = ((JSONObject)localObject2).optString("entryPathInConfig");
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject1 = localObject2;
+      boolean bool;
+      if (paramInt == 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(str)) {
-          MiniAppController.access$100(str, (String)localObject1);
-        }
-        return;
-      }
-      return;
+      paramBundle.onLaunchResult(bool, new Bundle());
     }
-    catch (Throwable localThrowable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppController.10
  * JD-Core Version:    0.7.0.1
  */

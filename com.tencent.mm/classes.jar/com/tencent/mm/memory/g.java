@@ -1,50 +1,44 @@
 package com.tencent.mm.memory;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Arrays;
+import com.tencent.mm.sdk.SynchronizedPool;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import java.nio.ByteBuffer;
 
 public final class g
-  extends a<byte[]>
+  extends SynchronizedPool<ByteBuffer>
 {
-  public static final g fdI;
+  public static g nNt;
   
   static
   {
-    AppMethodBeat.i(115377);
-    fdI = new g();
-    AppMethodBeat.o(115377);
-  }
-  
-  public final void O(byte[] paramArrayOfByte)
-  {
-    try
+    AppMethodBeat.i(156425);
+    nNt = new g();
+    ThreadPool.post(new Runnable()
     {
-      AppMethodBeat.i(115372);
-      Arrays.fill(paramArrayOfByte, (byte)0);
-      super.aG(paramArrayOfByte);
-      AppMethodBeat.o(115372);
-      return;
-    }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
-    }
+      public final void run()
+      {
+        AppMethodBeat.i(156424);
+        int i = 0;
+        while (i < 10)
+        {
+          g.a(g.nNt, ByteBuffer.allocate(16384));
+          i += 1;
+        }
+        AppMethodBeat.o(156424);
+      }
+    }, "DecodeTempStorage_preload");
+    AppMethodBeat.o(156425);
   }
   
-  protected final long XH()
+  private g()
   {
-    return 5242880L;
-  }
-  
-  protected final long XI()
-  {
-    return 1048576L;
+    super(20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.g
  * JD-Core Version:    0.7.0.1
  */

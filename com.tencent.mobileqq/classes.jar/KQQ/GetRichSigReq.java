@@ -9,10 +9,10 @@ public final class GetRichSigReq
   extends JceStruct
 {
   static ArrayList<ReqRichInfo> cache_vstReqRichInfo;
-  public boolean checkupdate;
-  public boolean get_large_tlv;
-  public boolean showdatesig;
-  public ArrayList<ReqRichInfo> vstReqRichInfo;
+  public boolean checkupdate = false;
+  public boolean get_large_tlv = false;
+  public boolean showdatesig = false;
+  public ArrayList<ReqRichInfo> vstReqRichInfo = null;
   
   public GetRichSigReq() {}
   
@@ -48,7 +48,7 @@ public final class GetRichSigReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.GetRichSigReq
  * JD-Core Version:    0.7.0.1
  */

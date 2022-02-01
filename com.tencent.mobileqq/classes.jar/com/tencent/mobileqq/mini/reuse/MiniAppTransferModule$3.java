@@ -1,26 +1,30 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import alpq;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class MiniAppTransferModule$3
-  extends alpq
+  extends CardObserver
 {
   MiniAppTransferModule$3(MiniAppTransferModule paramMiniAppTransferModule) {}
   
-  public void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
+  protected void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
   {
     super.onSetNotDisturb(paramBoolean, paramString1, paramString2);
     if (!"not_disturb_from_miniapp".equals(paramString2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppTransferModule", 4, "onSetNotDisturb NOT FROM THIS" + paramString2);
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("onSetNotDisturb NOT FROM THIS");
+        paramString1.append(paramString2);
+        QLog.d("MiniAppTransferModule", 4, paramString1.toString());
       }
       return;
     }
@@ -32,13 +36,12 @@ class MiniAppTransferModule$3
       {
         paramString1 = new Bundle();
         paramString1.putString("errMsg", "Request failed");
-        this.this$0.callbackResult(MiniAppTransferModule.access$100(this.this$0), EIPCResult.createResult(-102, paramString1));
+        paramString2 = this.this$0;
+        paramString2.callbackResult(MiniAppTransferModule.access$100(paramString2), EIPCResult.createResult(-102, paramString1));
       }
     }
-    for (;;)
+    else
     {
-      MiniAppTransferModule.access$102(this.this$0, -1);
-      return;
       paramString1 = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getHandler(Conversation.class);
       if (paramString1 != null) {
         Conversation.a(paramString1, BaseApplicationImpl.getContext());
@@ -47,14 +50,16 @@ class MiniAppTransferModule$3
       {
         paramString1 = new Bundle();
         paramString1.putString("errMsg", "ok");
-        this.this$0.callbackResult(MiniAppTransferModule.access$100(this.this$0), EIPCResult.createResult(0, paramString1));
+        paramString2 = this.this$0;
+        paramString2.callbackResult(MiniAppTransferModule.access$100(paramString2), EIPCResult.createResult(0, paramString1));
       }
     }
+    MiniAppTransferModule.access$102(this.this$0, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppTransferModule.3
  * JD-Core Version:    0.7.0.1
  */

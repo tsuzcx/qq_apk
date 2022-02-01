@@ -918,32 +918,32 @@ public class ProfileCardTemplate
     //   377: dup
     //   378: aload 9
     //   380: invokespecial 673	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   383: astore 10
+    //   383: astore 11
     //   385: aload 5
     //   387: astore 7
     //   389: aload 8
     //   391: astore 6
-    //   393: aload 10
+    //   393: aload 11
     //   395: invokevirtual 291	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   398: astore 11
+    //   398: astore 10
     //   400: aload 5
     //   402: astore 7
     //   404: aload 8
     //   406: astore 6
-    //   408: aload 11
+    //   408: aload 10
     //   410: invokeinterface 299 1 0
     //   415: ifeq +430 -> 845
     //   418: aload 5
     //   420: astore 7
     //   422: aload 8
     //   424: astore 6
-    //   426: aload 11
+    //   426: aload 10
     //   428: invokeinterface 303 1 0
     //   433: checkcast 153	java/lang/String
     //   436: astore 9
     //   438: aload 8
     //   440: astore 6
-    //   442: aload 10
+    //   442: aload 11
     //   444: aload 9
     //   446: invokevirtual 676	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   449: astore 7
@@ -1188,8 +1188,8 @@ public class ProfileCardTemplate
     //   106	602	7	localObject4	Object
     //   102	812	8	localFileInputStream	java.io.FileInputStream
     //   119	824	9	localObject5	Object
-    //   134	309	10	localObject6	Object
-    //   398	29	11	localIterator	Iterator
+    //   134	293	10	localObject6	Object
+    //   383	60	11	localJSONObject	JSONObject
     // Exception table:
     //   from	to	target	type
     //   112	121	181	java/lang/Exception

@@ -19,14 +19,17 @@ final class ClearKeyUtil
       return paramArrayOfByte;
     }
     String str = Util.fromUtf8Bytes(paramArrayOfByte);
-    Matcher localMatcher = REQUEST_KIDS_PATTERN.matcher(str);
-    if (!localMatcher.find())
+    Object localObject = REQUEST_KIDS_PATTERN.matcher(str);
+    if (!((Matcher)localObject).find())
     {
-      Log.e("ClearKeyUtil", "Failed to adjust request data: " + str);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Failed to adjust request data: ");
+      ((StringBuilder)localObject).append(str);
+      Log.e("ClearKeyUtil", ((StringBuilder)localObject).toString());
       return paramArrayOfByte;
     }
-    int i = localMatcher.start(1);
-    int j = localMatcher.end(1);
+    int i = ((Matcher)localObject).start(1);
+    int j = ((Matcher)localObject).end(1);
     paramArrayOfByte = new StringBuilder(str);
     base64ToBase64Url(paramArrayOfByte, i, j);
     return Util.getUtf8Bytes(paramArrayOfByte.toString());
@@ -39,41 +42,44 @@ final class ClearKeyUtil
     }
     try
     {
-      Object localObject = new JSONObject(Util.fromUtf8Bytes(paramArrayOfByte));
-      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("keys");
+      Object localObject1 = new JSONObject(Util.fromUtf8Bytes(paramArrayOfByte));
+      localObject2 = ((JSONObject)localObject1).getJSONArray("keys");
       int i = 0;
-      while (i < localJSONArray.length())
+      while (i < ((JSONArray)localObject2).length())
       {
-        JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+        JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
         localJSONObject.put("k", base64UrlToBase64(localJSONObject.getString("k")));
         localJSONObject.put("kid", base64UrlToBase64(localJSONObject.getString("kid")));
         i += 1;
       }
-      localObject = Util.getUtf8Bytes(((JSONObject)localObject).toString());
-      return localObject;
+      localObject1 = Util.getUtf8Bytes(((JSONObject)localObject1).toString());
+      return localObject1;
     }
     catch (JSONException localJSONException)
     {
-      Log.e("ClearKeyUtil", "Failed to adjust response data: " + Util.fromUtf8Bytes(paramArrayOfByte), localJSONException);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Failed to adjust response data: ");
+      ((StringBuilder)localObject2).append(Util.fromUtf8Bytes(paramArrayOfByte));
+      Log.e("ClearKeyUtil", ((StringBuilder)localObject2).toString(), localJSONException);
     }
     return paramArrayOfByte;
   }
   
   private static void base64ToBase64Url(StringBuilder paramStringBuilder, int paramInt1, int paramInt2)
   {
-    if (paramInt1 < paramInt2)
+    while (paramInt1 < paramInt2)
     {
-      switch (paramStringBuilder.charAt(paramInt1))
+      int i = paramStringBuilder.charAt(paramInt1);
+      if (i != 43)
       {
+        if (i == 47) {
+          paramStringBuilder.setCharAt(paramInt1, '_');
+        }
       }
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
+      else {
         paramStringBuilder.setCharAt(paramInt1, '-');
-        continue;
-        paramStringBuilder.setCharAt(paramInt1, '_');
       }
+      paramInt1 += 1;
     }
   }
   
@@ -84,7 +90,7 @@ final class ClearKeyUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.ClearKeyUtil
  * JD-Core Version:    0.7.0.1
  */

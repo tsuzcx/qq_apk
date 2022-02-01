@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h4e" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView android:id="@id/ef4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/eey" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/Red" android:id="@id/bzi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="noHideDescendants" />
+</RelativeLayout>

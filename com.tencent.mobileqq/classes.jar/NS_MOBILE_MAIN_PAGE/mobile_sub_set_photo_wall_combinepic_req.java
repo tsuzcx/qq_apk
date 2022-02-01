@@ -39,14 +39,15 @@ public final class mobile_sub_set_photo_wall_combinepic_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.photoWallCombinePic, 1);
-    if (this.extinfo != null) {
-      paramJceOutputStream.write(this.extinfo, 2);
+    Map localMap = this.extinfo;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_set_photo_wall_combinepic_req
  * JD-Core Version:    0.7.0.1
  */

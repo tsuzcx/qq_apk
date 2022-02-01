@@ -2,163 +2,180 @@ package com.tencent.mm.plugin.backup.g;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.vfs.y;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class g
 {
   static long endTime;
-  static long jFH;
-  static long jFI;
   static long startTime;
-  private SimpleDateFormat jCL;
-  ap jFJ;
+  static long vde;
+  static long vdf;
+  private SimpleDateFormat vaj;
+  MTimerHandler vdg;
   
   public g()
   {
-    AppMethodBeat.i(17667);
-    this.jCL = new SimpleDateFormat("yyyyMMdd");
-    AppMethodBeat.o(17667);
+    AppMethodBeat.i(21726);
+    this.vaj = new SimpleDateFormat("yyyyMMdd");
+    AppMethodBeat.o(21726);
+  }
+  
+  private void Fs(final int paramInt)
+  {
+    AppMethodBeat.i(21728);
+    final Long localLong1 = Long.valueOf(Util.nowMilliSecond());
+    final Long localLong2 = Long.valueOf(ka(Util.nowMilliSecond()));
+    if ((localLong1.longValue() == 0L) || (localLong2.longValue() == 0L))
+    {
+      Log.e("MicroMsg.BackupLogManager", "startLogAfterTimeHandler is zero, startAfterLogTime[%d], startAfterLogSize[%d], skip", new Object[] { localLong1, localLong2 });
+      AppMethodBeat.o(21728);
+      return;
+    }
+    this.vdg = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(21725);
+        Long localLong1 = Long.valueOf(Util.nowMilliSecond());
+        Long localLong2 = Long.valueOf(g.this.aj(localLong1.longValue(), localLong1.longValue()));
+        Log.i("MicroMsg.BackupLogManager", "backupAfterLogTimeHandler, backupMode[%d], endAfterLogTime[%d], startAfterLogTime[%d], endAfterLogSize[%d], startAfterLogSize[%d]", new Object[] { Integer.valueOf(paramInt), localLong1, localLong1, localLong2, localLong2 });
+        if ((localLong2.longValue() != 0L) && (localLong2.longValue() > localLong2.longValue())) {
+          g.this.a(paramInt, localLong1.longValue() - localLong1.longValue(), localLong2.longValue() - localLong2.longValue(), true);
+        }
+        AppMethodBeat.o(21725);
+        return false;
+      }
+    }, false);
+    this.vdg.startTimer(300000L);
+    AppMethodBeat.o(21728);
   }
   
   static void init()
   {
     startTime = 0L;
     endTime = 0L;
-    jFH = 0L;
-    jFI = 0L;
-  }
-  
-  private void rx(int paramInt)
-  {
-    AppMethodBeat.i(17669);
-    Long localLong1 = Long.valueOf(bo.aoy());
-    Long localLong2 = Long.valueOf(hK(bo.aoy()));
-    if ((localLong1.longValue() == 0L) || (localLong2.longValue() == 0L))
-    {
-      ab.e("MicroMsg.BackupLogManager", "startLogAfterTimeHandler is zero, startAfterLogTime[%d], startAfterLogSize[%d], skip", new Object[] { localLong1, localLong2 });
-      AppMethodBeat.o(17669);
-      return;
-    }
-    this.jFJ = new ap(Looper.getMainLooper(), new g.1(this, localLong1, paramInt, localLong2), false);
-    this.jFJ.ag(300000L, 300000L);
-    AppMethodBeat.o(17669);
-  }
-  
-  final long D(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(17670);
-    long l = 0L;
-    while (paramLong1 <= paramLong2 + 86400000L)
-    {
-      l += hK(paramLong1);
-      paramLong1 += 86400000L;
-    }
-    AppMethodBeat.o(17670);
-    return l;
+    vde = 0L;
+    vdf = 0L;
   }
   
   final void a(int paramInt, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(17668);
+    AppMethodBeat.i(21727);
     if (paramLong2 == 0L)
     {
-      ab.e("MicroMsg.BackupLogManager", "reportKv logSize is 0, skip report");
-      AppMethodBeat.o(17668);
+      Log.e("MicroMsg.BackupLogManager", "reportKv logSize is 0, skip report");
+      AppMethodBeat.o(21727);
       return;
     }
     long l = paramLong2 / (paramLong1 / 1000L);
-    ab.i("MicroMsg.BackupLogManager", "reportKv, backupMode[%d], time[%d ms], logSize[%d KB], aveLogSize[%d B/s]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l) });
+    Log.i("MicroMsg.BackupLogManager", "reportKv, backupMode[%d], time[%d ms], logSize[%d KB], aveLogSize[%d B/s]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(17668);
+      AppMethodBeat.o(21727);
       return;
       if (!paramBoolean)
       {
-        h.qsU.idkeyStat(400L, 81L, paramLong2 / 1024L, false);
+        h.OAn.idkeyStat(400L, 81L, paramLong2 / 1024L, false);
         if (paramLong1 != 0L) {
-          h.qsU.idkeyStat(400L, 82L, l, false);
+          h.OAn.idkeyStat(400L, 82L, l, false);
         }
-        rx(paramInt);
-        AppMethodBeat.o(17668);
+        Fs(paramInt);
+        AppMethodBeat.o(21727);
         return;
       }
-      h.qsU.idkeyStat(400L, 83L, paramLong2 / 1024L, false);
-      AppMethodBeat.o(17668);
+      h.OAn.idkeyStat(400L, 83L, paramLong2 / 1024L, false);
+      AppMethodBeat.o(21727);
       return;
       if (!paramBoolean)
       {
-        h.qsU.idkeyStat(400L, 86L, paramLong2 / 1024L, false);
+        h.OAn.idkeyStat(400L, 86L, paramLong2 / 1024L, false);
         if (paramLong1 != 0L) {
-          h.qsU.idkeyStat(400L, 87L, l, false);
+          h.OAn.idkeyStat(400L, 87L, l, false);
         }
-        rx(paramInt);
-        AppMethodBeat.o(17668);
+        Fs(paramInt);
+        AppMethodBeat.o(21727);
         return;
       }
-      h.qsU.idkeyStat(400L, 88L, paramLong2 / 1024L, false);
-      AppMethodBeat.o(17668);
+      h.OAn.idkeyStat(400L, 88L, paramLong2 / 1024L, false);
+      AppMethodBeat.o(21727);
       return;
       if (!paramBoolean)
       {
-        h.qsU.idkeyStat(485L, 91L, paramLong2 / 1024L, false);
+        h.OAn.idkeyStat(485L, 91L, paramLong2 / 1024L, false);
         if (paramLong1 != 0L) {
-          h.qsU.idkeyStat(485L, 92L, l, false);
+          h.OAn.idkeyStat(485L, 92L, l, false);
         }
-        rx(paramInt);
-        AppMethodBeat.o(17668);
+        Fs(paramInt);
+        AppMethodBeat.o(21727);
         return;
       }
-      h.qsU.idkeyStat(485L, 93L, paramLong2 / 1024L, false);
-      AppMethodBeat.o(17668);
+      h.OAn.idkeyStat(485L, 93L, paramLong2 / 1024L, false);
+      AppMethodBeat.o(21727);
       return;
       if (!paramBoolean)
       {
-        h.qsU.idkeyStat(485L, 96L, paramLong2 / 1024L, false);
+        h.OAn.idkeyStat(485L, 96L, paramLong2 / 1024L, false);
         if (paramLong1 != 0L) {
-          h.qsU.idkeyStat(485L, 97L, l, false);
+          h.OAn.idkeyStat(485L, 97L, l, false);
         }
-        rx(paramInt);
-        AppMethodBeat.o(17668);
+        Fs(paramInt);
+        AppMethodBeat.o(21727);
         return;
       }
-      h.qsU.idkeyStat(485L, 98L, paramLong2 / 1024L, false);
+      h.OAn.idkeyStat(485L, 98L, paramLong2 / 1024L, false);
     }
   }
   
-  final long hK(long paramLong)
+  final long aj(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(17671);
-    String str1 = this.jCL.format(new Date(paramLong));
-    String str2 = ac.yxo + "/MM_" + str1 + ".xlog";
-    if (com.tencent.mm.vfs.e.cN(str2))
+    AppMethodBeat.i(21729);
+    long l = 0L;
+    while (paramLong1 <= paramLong2 + 86400000L)
     {
-      paramLong = com.tencent.mm.vfs.e.avI(str2);
-      AppMethodBeat.o(17671);
+      l += ka(paramLong1);
+      paramLong1 += 86400000L;
+    }
+    AppMethodBeat.o(21729);
+    return l;
+  }
+  
+  final long ka(long paramLong)
+  {
+    AppMethodBeat.i(21730);
+    String str1 = this.vaj.format(new Date(paramLong));
+    String str2 = at.acHr + "/MM_" + str1 + ".xlog";
+    if (y.ZC(str2))
+    {
+      paramLong = y.bEl(str2);
+      AppMethodBeat.o(21730);
       return paramLong;
     }
-    str1 = com.tencent.mm.compatible.util.e.esx + "/MM_" + str1 + ".xlog";
-    if (com.tencent.mm.vfs.e.cN(str1))
+    str1 = b.bmG() + "/MM_" + str1 + ".xlog";
+    if (y.ZC(str1))
     {
-      paramLong = com.tencent.mm.vfs.e.avI(str1);
-      AppMethodBeat.o(17671);
+      paramLong = y.bEl(str1);
+      AppMethodBeat.o(21730);
       return paramLong;
     }
-    AppMethodBeat.o(17671);
+    AppMethodBeat.o(21730);
     return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.g
  * JD-Core Version:    0.7.0.1
  */

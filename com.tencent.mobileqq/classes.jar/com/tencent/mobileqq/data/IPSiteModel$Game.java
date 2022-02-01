@@ -3,13 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aped;
 import java.util.List;
 
 public class IPSiteModel$Game
   implements Parcelable
 {
-  public static final Parcelable.Creator<Game> CREATOR = new aped();
+  public static final Parcelable.Creator<Game> CREATOR = new IPSiteModel.Game.1();
   public String cover;
   public String desc;
   public List<IPSiteModel.GameRich> gameRiches;
@@ -38,7 +37,29 @@ public class IPSiteModel$Game
   
   public String toString()
   {
-    return "Game{cover='" + this.cover + '\'' + ", desc='" + this.desc + '\'' + ", id='" + this.id + '\'' + ", jumpUrl='" + this.jumpUrl + '\'' + ", name='" + this.name + '\'' + ", recommDesc='" + this.recommDesc + '\'' + ", gameRiches=" + this.gameRiches + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Game{cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recommDesc='");
+    localStringBuilder.append(this.recommDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", gameRiches=");
+    localStringBuilder.append(this.gameRiches);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

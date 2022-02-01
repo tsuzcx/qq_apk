@@ -4,58 +4,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static a eCo = null;
-  
-  public static void a(a parama)
+  public static class c
   {
-    eCo = parama;
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(93920);
-    if ((HardCoderJNI.isHcDebug()) && (eCo != null)) {
-      eCo.d(paramString1, paramString2);
-    }
-    AppMethodBeat.o(93920);
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(93921);
-    if (eCo != null) {
-      eCo.e(paramString1, paramString2);
-    }
-    AppMethodBeat.o(93921);
-  }
-  
-  public static void i(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(93919);
-    if (eCo != null) {
-      eCo.i(paramString1, paramString2);
-    }
-    AppMethodBeat.o(93919);
-  }
-  
-  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(93922);
-    if (eCo != null) {
-      eCo.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
-    }
-    AppMethodBeat.o(93922);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void d(String paramString1, String paramString2);
+    public long mwI;
+    public int mwY;
+    public int mwZ;
+    public int mxa;
+    public int[] mxb;
+    public int scene;
     
-    public abstract void e(String paramString1, String paramString2);
+    public c(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
+    {
+      AppMethodBeat.i(62457);
+      this.scene = paramInt1;
+      this.mwI = paramLong;
+      this.mwY = paramInt2;
+      this.mwZ = paramInt3;
+      this.mxa = paramInt4;
+      this.mxb = ((int[])paramArrayOfInt.clone());
+      AppMethodBeat.o(62457);
+    }
     
-    public abstract void i(String paramString1, String paramString2);
-    
-    public abstract void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs);
+    public String toString()
+    {
+      AppMethodBeat.i(62458);
+      String str = "[RequestStatus, scene:" + this.scene + ", action:" + this.mwI + ", cpulevel:" + this.mwY + ", gpulevel:" + this.mwZ + ", iolevel:" + this.mxa + ", bindtids size:" + this.mxb.length + "]";
+      AppMethodBeat.o(62458);
+      return str;
+    }
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void sceneReport(int paramInt, long paramLong);
   }
 }
 

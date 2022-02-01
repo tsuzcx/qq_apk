@@ -1,119 +1,43 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import android.app.Activity;
-import android.util.Pair;
-import android.util.SparseArray;
-import axzp;
-import azqs;
-import bdmp;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import android.net.Uri;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.io.File;
 import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
-import yak;
 
-public class AIOFilePictureView$2
+class AIOFilePictureView$2
   implements Runnable
 {
-  public AIOFilePictureView$2(axzp paramaxzp, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
+  AIOFilePictureView$2(AIOFilePictureView paramAIOFilePictureView, File paramFile, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
   public void run()
   {
-    if ((this.this$0.mContext == null) || (this.this$0.mContext.isFinishing())) {
-      return;
-    }
-    Object localObject;
-    String str1;
-    String str2;
-    if (yak.a(this.jdField_a_of_type_Int))
+    try
     {
-      localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
-      if (!(localObject instanceof Pair)) {
-        break label296;
+      if (this.a != null)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("file://");
+        ((StringBuilder)localObject).append(this.a.getAbsolutePath());
+        localObject = Uri.parse(((StringBuilder)localObject).toString());
+        AIOFilePictureView.a(this.this$0, (Uri)localObject, this.b, this.c);
+        return;
       }
-      localObject = (Pair)localObject;
-      str1 = String.valueOf(((Pair)localObject).second).trim();
-      str2 = String.valueOf(((Pair)localObject).first).trim();
     }
-    label268:
-    label275:
-    label296:
-    for (;;)
+    catch (Exception localException)
     {
-      try
-      {
-        localObject = new JSONObject();
-        localObject = null;
-      }
-      catch (JSONException localJSONException1)
-      {
-        for (;;)
-        {
-          try
-          {
-            ((JSONObject)localObject).put("scannerType", str1);
-            ((JSONObject)localObject).put("scannerResult", str2);
-            if (localObject == null)
-            {
-              localObject = "";
-              bdmp.a(55, this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, 0);
-              azqs.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-              if (yak.b(this.jdField_a_of_type_Int))
-              {
-                localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
-                if (!(localObject instanceof String)) {
-                  continue;
-                }
-                str1 = (String)localObject;
-              }
-            }
-          }
-          catch (JSONException localJSONException4)
-          {
-            continue;
-            localObject = null;
-            continue;
-          }
-          try
-          {
-            localObject = new JSONObject();
-          }
-          catch (JSONException localJSONException2)
-          {
-            localObject = null;
-            localJSONException2.printStackTrace();
-            continue;
-            localObject = ((JSONObject)localObject).toString();
-          }
-        }
-        try
-        {
-          ((JSONObject)localObject).put("strMini", str1);
-          if (localObject != null) {
-            break label275;
-          }
-          localObject = "";
-          bdmp.a(56, this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, 0);
-          azqs.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
-          this.this$0.a.updateUI();
-          return;
-        }
-        catch (JSONException localJSONException3)
-        {
-          break label268;
-        }
-        localJSONException1 = localJSONException1;
-        localObject = null;
-        localJSONException1.printStackTrace();
-        continue;
-        localObject = ((JSONObject)localObject).toString();
-      }
+      IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("add qr action sheet error: ");
+      localStringBuilder.append(localException.getMessage());
+      localIBrowserLog.d("AIOGalleryFilePicView", 4, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFilePictureView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -30,15 +30,16 @@ public final class msg_svc$PbGetMsgResp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 56, 66, 72, 82 }, new String[] { "result", "errmsg", "sync_cookie", "sync_flag", "uin_pair_msgs", "bind_uin", "msg_rsp_type", "pubaccount_cookie", "is_partial_sync", "msg_ctrl_buf" }, new Object[] { Integer.valueOf(0), "", localByteStringMicro1, Integer.valueOf(0), null, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro2, Boolean.valueOf(false), localByteStringMicro3 }, PbGetMsgResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 56, 66, 72, 82 }, new String[] { "result", "errmsg", "sync_cookie", "sync_flag", "uin_pair_msgs", "bind_uin", "msg_rsp_type", "pubaccount_cookie", "is_partial_sync", "msg_ctrl_buf" }, new Object[] { localInteger, "", localByteStringMicro1, localInteger, null, Long.valueOf(0L), localInteger, localByteStringMicro2, Boolean.valueOf(false), localByteStringMicro3 }, PbGetMsgResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbGetMsgResp
  * JD-Core Version:    0.7.0.1
  */

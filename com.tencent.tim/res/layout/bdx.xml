@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/grq" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/title" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/is" />
+    <RelativeLayout android:id="@id/grp" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <RelativeLayout android:orientation="vertical" android:id="@id/fw9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="225.0dip" android:layout_marginBottom="0.0dip" android:layout_alignParentBottom="true">
+            <com.tencent.widget.XListView android:id="@id/searchList" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" />
+            <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray3" android:gravity="center_horizontal" android:id="@id/fa0" android:background="@drawable/bg_texture" android:paddingTop="100.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/h_i" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="250.0dip" android:layout_above="@id/fw9">
+            <com.tencent.mobileqq.widget.QQMapView android:enabled="true" android:id="@id/emb" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/fwd" android:background="@drawable/dgj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/x0" android:scaleType="center" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+            <ImageView android:id="@id/fua" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <include android:id="@id/ifk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="80.0dip" layout="@layout/b4n" />
+</LinearLayout>

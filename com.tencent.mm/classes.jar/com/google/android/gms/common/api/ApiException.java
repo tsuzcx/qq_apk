@@ -11,24 +11,24 @@ public class ApiException
   
   public int getStatusCode()
   {
-    AppMethodBeat.i(89442);
+    AppMethodBeat.i(4464);
     int i = this.mStatus.getStatusCode();
-    AppMethodBeat.o(89442);
+    AppMethodBeat.o(4464);
     return i;
   }
   
   @Deprecated
   public String getStatusMessage()
   {
-    AppMethodBeat.i(89443);
+    AppMethodBeat.i(4465);
     String str = this.mStatus.getStatusMessage();
-    AppMethodBeat.o(89443);
+    AppMethodBeat.o(4465);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.ApiException
  * JD-Core Version:    0.7.0.1
  */

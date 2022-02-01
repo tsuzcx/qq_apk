@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@color/a21" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.activity.history.widget.DispatchTouchEventRelativeLayout android:id="@id/if5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/jqb" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <ImageView android:id="@id/a47" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:src="@drawable/a39" android:layout_centerVertical="true" android:contentDescription="@string/button_back" />
+            <ImageView android:id="@id/ir0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/hgq" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/yqb" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/fcp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/fco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/foc" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/fck" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/afc" />
+            </LinearLayout>
+            <RelativeLayout android:id="@id/jvs" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="40.0dip" android:layout_marginRight="40.0dip" android:layout_centerVertical="true">
+                <ImageView android:id="@id/jvq" android:layout_width="21.0dip" android:layout_height="16.0dip" android:src="@drawable/afk" android:layout_centerInParent="true" android:contentDescription="@string/fot" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/a1z" android:ellipsize="end" android:id="@id/jvp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.5dip" android:layout_marginRight="15.0dip" android:text="@string/qyg" android:maxLines="1" android:layout_toLeftOf="@id/jvq" android:layout_alignTop="@id/jvq" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/a1z" android:ellipsize="end" android:id="@id/jvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="-3.5dip" android:text="@string/qyh" android:maxLines="1" android:layout_toRightOf="@id/jvq" android:layout_alignTop="@id/jvq" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <com.tencent.widget.ScrollView android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_above="@id/lag" android:layout_below="@id/jqb">
+            <RelativeLayout android:paddingLeft="16.0dip" android:paddingTop="12.0dip" android:paddingRight="16.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <EditText android:textSize="16.0dip" android:textColor="@color/al3" android:gravity="center|left|top" android:id="@id/fcm" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="OCR" android:lineSpacingExtra="6.0dip" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:gravity="center|left|top" android:id="@id/jvo" android:background="@null" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/qyf" android:lineSpacingExtra="6.0dip" />
+                <com.tencent.mobileqq.widget.ParticipleView android:id="@id/m0t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/jvn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f15" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </com.tencent.widget.ScrollView>
+        <FrameLayout android:id="@id/lag" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <LinearLayout android:orientation="horizontal" android:id="@id/adk" android:background="@color/amw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="72.0dip">
+                <com.tencent.mobileqq.widget.OCRBottomTabView android:id="@id/bc1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" app:ocr_bottom_tab_image="@drawable/hgr" app:ocr_bottom_tab_text="@string/fnx" />
+                <com.tencent.mobileqq.widget.OCRBottomTabView android:id="@id/lyu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" app:ocr_bottom_tab_image="@drawable/hgn" app:ocr_bottom_tab_text="@string/iyw" />
+                <com.tencent.mobileqq.widget.OCRBottomTabView android:id="@id/jvi" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" app:ocr_bottom_tab_image="@drawable/hgr" app:ocr_bottom_tab_text="@string/fos" />
+                <com.tencent.mobileqq.widget.OCRBottomTabView android:id="@id/lgl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" app:ocr_bottom_tab_image="@drawable/hgi" app:ocr_bottom_tab_text="@string/iyv" />
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.ParticipleBottomMenuView android:id="@id/lyt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+        </FrameLayout>
+    </com.tencent.mobileqq.activity.history.widget.DispatchTouchEventRelativeLayout>
+</RelativeLayout>

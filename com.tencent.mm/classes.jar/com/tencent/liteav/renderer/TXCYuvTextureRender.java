@@ -4,7 +4,7 @@ import android.opengl.GLES20;
 import android.opengl.Matrix;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
-import com.tencent.liteav.basic.util.b;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -38,7 +38,6 @@ public class TXCYuvTextureRender
   private int mProgram;
   private int mRawDataFrameType;
   private FloatBuffer mTextureBuffer;
-  private float[] mTextureCoordinates;
   private int mTextureCoordinatesHandle;
   private int[] mTextureIds;
   private float[] mTextureMatrix;
@@ -58,15 +57,15 @@ public class TXCYuvTextureRender
   
   static
   {
-    AppMethodBeat.i(67350);
+    AppMethodBeat.i(16749);
     TAG = TXCYuvTextureRender.class.getSimpleName();
-    b.f();
-    AppMethodBeat.o(67350);
+    h.d();
+    AppMethodBeat.o(16749);
   }
   
   public TXCYuvTextureRender()
   {
-    AppMethodBeat.i(67340);
+    AppMethodBeat.i(16741);
     this.mMVPMatrix = new float[16];
     this.mTextureMatrix = new float[16];
     this.mConvertMatrixUniform = -1;
@@ -86,11 +85,10 @@ public class TXCYuvTextureRender
     this.bt601_videorage_ffmpeg_matrix = new float[] { 1.1644F, 1.1644F, 1.1644F, 0.0F, -0.3918F, 2.0172F, 1.596F, -0.813F, 0.0F };
     this.bt601_fullrange_ffmpeg_offset = new float[] { 0.0F, -0.5019608F, -0.5019608F };
     this.bt601_fullrage_ffmpeg_matrix = new float[] { 1.0F, 1.0F, 1.0F, 0.0F, -0.3441F, 1.772F, 1.402F, -0.7141F, 0.0F };
-    this.mTextureCoordinates = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
     this.mIndices = new short[] { 0, 1, 2, 1, 3, 2 };
     this.mVerticesCoordinates = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-    this.mTextureBuffer = ByteBuffer.allocateDirect(this.mTextureCoordinates.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.mTextureBuffer.put(this.mTextureCoordinates);
+    this.mTextureBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.mTextureBuffer.put(new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F });
     this.mTextureBuffer.position(0);
     this.mVertexBuffer = ByteBuffer.allocateDirect(this.mVerticesCoordinates.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.mVertexBuffer.put(this.mVerticesCoordinates);
@@ -98,12 +96,12 @@ public class TXCYuvTextureRender
     this.mIndicesBuffer = ByteBuffer.allocateDirect(this.mIndices.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer();
     this.mIndicesBuffer.put(this.mIndices);
     this.mIndicesBuffer.position(0);
-    AppMethodBeat.o(67340);
+    AppMethodBeat.o(16741);
   }
   
   private void destroyFrameBuffer()
   {
-    AppMethodBeat.i(67345);
+    AppMethodBeat.i(16745);
     if (this.mFrameBufferID != -12345)
     {
       GLES20.glDeleteFramebuffers(1, new int[] { this.mFrameBufferID }, 0);
@@ -114,20 +112,20 @@ public class TXCYuvTextureRender
       GLES20.glDeleteTextures(1, new int[] { this.mFrameBufferTextureID }, 0);
       this.mFrameBufferTextureID = -12345;
     }
-    AppMethodBeat.o(67345);
+    AppMethodBeat.o(16745);
   }
   
-  private native void nativeLoadTexture(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int[] paramArrayOfInt);
+  public static native void nativeLoadTexture(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int[] paramArrayOfInt);
   
   private void reloadFrameBuffer()
   {
-    AppMethodBeat.i(67344);
+    AppMethodBeat.i(16744);
     if (!this.mNeedReLoadFrameBuffer)
     {
-      AppMethodBeat.o(67344);
+      AppMethodBeat.o(16744);
       return;
     }
-    TXCLog.d(TAG, "reloadFrameBuffer. size = " + this.mWidth + "*" + this.mHeight);
+    TXCLog.i(TAG, "reloadFrameBuffer. size = " + this.mWidth + "*" + this.mHeight);
     destroyFrameBuffer();
     int[] arrayOfInt1 = new int[1];
     int[] arrayOfInt2 = new int[1];
@@ -147,26 +145,26 @@ public class TXCYuvTextureRender
     GLES20.glBindTexture(3553, 0);
     GLES20.glBindFramebuffer(36160, 0);
     this.mNeedReLoadFrameBuffer = false;
-    AppMethodBeat.o(67344);
+    AppMethodBeat.o(16744);
   }
   
   public int checkError()
   {
-    AppMethodBeat.i(67348);
+    AppMethodBeat.i(16748);
     int i = GLES20.glGetError();
     if (i != 0)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("gl error=".concat(String.valueOf(i)));
-      AppMethodBeat.o(67348);
+      AppMethodBeat.o(16748);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(67348);
+    AppMethodBeat.o(16748);
     return i;
   }
   
   public void createTexture()
   {
-    AppMethodBeat.i(67341);
+    AppMethodBeat.i(16742);
     int i = GLES20.glCreateShader(35633);
     checkError();
     GLES20.glShaderSource(i, "uniform mat4 uMatrix;uniform mat4 uTextureMatrix;attribute vec2 position;attribute vec2 inputTextureCoordinate;varying vec2 textureCoordinate;void main() {vec4 pos  = vec4(position, 0.0, 1.0);gl_Position = uMatrix * pos;textureCoordinate = (uTextureMatrix*vec4(inputTextureCoordinate, 0.0, 0.0)).xy;}");
@@ -206,12 +204,12 @@ public class TXCYuvTextureRender
     GLES20.glUniformMatrix3fv(this.mConvertMatrixUniform, 1, false, this.bt601_fullrage_ffmpeg_matrix, 0);
     this.mTextureIds = new int[2];
     GLES20.glGenTextures(2, this.mTextureIds, 0);
-    AppMethodBeat.o(67341);
+    AppMethodBeat.o(16742);
   }
   
   public void drawFrame(TXSVideoFrame paramTXSVideoFrame)
   {
-    AppMethodBeat.i(146764);
+    AppMethodBeat.i(16747);
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     GLES20.glClear(16640);
     Matrix.setIdentityM(this.mMVPMatrix, 0);
@@ -256,7 +254,7 @@ public class TXCYuvTextureRender
       GLES20.glDrawElements(4, this.mIndices.length, 5123, this.mIndicesBuffer);
       GLES20.glDisableVertexAttribArray(this.mPositionHandle);
       GLES20.glDisableVertexAttribArray(this.mTextureCoordinatesHandle);
-      AppMethodBeat.o(146764);
+      AppMethodBeat.o(16747);
       return;
       GLES20.glUniform3fv(this.mConvertOffsetUniform, 1, FloatBuffer.wrap(this.bt601_videorange_ffmpeg_offset));
       GLES20.glUniformMatrix3fv(this.mConvertMatrixUniform, 1, false, this.bt601_videorage_ffmpeg_matrix, 0);
@@ -270,12 +268,12 @@ public class TXCYuvTextureRender
   
   public int drawToTexture(TXSVideoFrame paramTXSVideoFrame)
   {
-    AppMethodBeat.i(146763);
+    AppMethodBeat.i(16746);
     reloadFrameBuffer();
     if (this.mFrameBufferID == -12345)
     {
-      TXCLog.d(TAG, "invalid frame buffer id");
-      AppMethodBeat.o(146763);
+      TXCLog.w(TAG, "invalid frame buffer id");
+      AppMethodBeat.o(16746);
       return -12345;
     }
     GLES20.glBindFramebuffer(36160, this.mFrameBufferID);
@@ -283,13 +281,66 @@ public class TXCYuvTextureRender
     drawFrame(paramTXSVideoFrame);
     GLES20.glBindFramebuffer(36160, 0);
     int i = this.mFrameBufferTextureID;
-    AppMethodBeat.o(146763);
+    AppMethodBeat.o(16746);
     return i;
+  }
+  
+  public void flipVertical(boolean paramBoolean)
+  {
+    AppMethodBeat.i(229738);
+    float[] arrayOfFloat;
+    if (paramBoolean)
+    {
+      arrayOfFloat = new float[8];
+      float[] tmp16_15 = arrayOfFloat;
+      tmp16_15[0] = 0.0F;
+      float[] tmp20_16 = tmp16_15;
+      tmp20_16[1] = 1.0F;
+      float[] tmp24_20 = tmp20_16;
+      tmp24_20[2] = 1.0F;
+      float[] tmp28_24 = tmp24_20;
+      tmp28_24[3] = 1.0F;
+      float[] tmp32_28 = tmp28_24;
+      tmp32_28[4] = 0.0F;
+      float[] tmp36_32 = tmp32_28;
+      tmp36_32[5] = 0.0F;
+      float[] tmp40_36 = tmp36_32;
+      tmp40_36[6] = 1.0F;
+      float[] tmp45_40 = tmp40_36;
+      tmp45_40[7] = 0.0F;
+      tmp45_40;
+    }
+    for (;;)
+    {
+      this.mTextureBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.mTextureBuffer.put(arrayOfFloat);
+      this.mTextureBuffer.position(0);
+      AppMethodBeat.o(229738);
+      return;
+      arrayOfFloat = new float[8];
+      float[] tmp100_99 = arrayOfFloat;
+      tmp100_99[0] = 0.0F;
+      float[] tmp104_100 = tmp100_99;
+      tmp104_100[1] = 0.0F;
+      float[] tmp108_104 = tmp104_100;
+      tmp108_104[2] = 1.0F;
+      float[] tmp112_108 = tmp108_104;
+      tmp112_108[3] = 0.0F;
+      float[] tmp116_112 = tmp112_108;
+      tmp116_112[4] = 0.0F;
+      float[] tmp120_116 = tmp116_112;
+      tmp120_116[5] = 1.0F;
+      float[] tmp124_120 = tmp120_116;
+      tmp124_120[6] = 1.0F;
+      float[] tmp129_124 = tmp124_120;
+      tmp129_124[7] = 1.0F;
+      tmp129_124;
+    }
   }
   
   public void onSurfaceDestroy()
   {
-    AppMethodBeat.i(67343);
+    AppMethodBeat.i(16743);
     if (this.mTextureIds != null)
     {
       GLES20.glDeleteTextures(2, this.mTextureIds, 0);
@@ -297,7 +348,7 @@ public class TXCYuvTextureRender
     }
     destroyFrameBuffer();
     GLES20.glDeleteProgram(this.mProgram);
-    AppMethodBeat.o(67343);
+    AppMethodBeat.o(16743);
   }
   
   public void setHasFrameBuffer(int paramInt1, int paramInt2)
@@ -318,7 +369,7 @@ public class TXCYuvTextureRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCYuvTextureRender
  * JD-Core Version:    0.7.0.1
  */

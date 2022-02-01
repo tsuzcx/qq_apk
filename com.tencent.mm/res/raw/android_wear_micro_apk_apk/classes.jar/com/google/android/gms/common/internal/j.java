@@ -10,7 +10,7 @@ public final class j
   static void a(zzan paramzzan, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzan.Hc);
+    c.c(paramParcel, 1, paramzzan.IR);
     c.v(paramParcel, i);
   }
 }

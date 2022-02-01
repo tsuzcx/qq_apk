@@ -1,8 +1,12 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
 import com.tencent.mobileqq.adapter.SystemMsgListAdapter.ViewHolder;
-import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class efg
@@ -12,9 +16,21 @@ public class efg
   
   public void onClick(View paramView)
   {
+    if (!NetworkUtil.e(SystemMsgListView.a(this.a)))
+    {
+      QQToast.a(SystemMsgListView.a(this.a), SystemMsgListView.a(this.a).getResources().getString(2131562451), 0).b(this.a.a());
+      return;
+    }
     paramView = (SystemMsgListAdapter.ViewHolder)paramView.getTag();
-    if (paramView.a.msg_type.get() == 1) {
-      this.a.a(paramView);
+    SystemMsgListView.a(this.a, (structmsg.StructMsg)paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), paramView.c);
+    if (paramView.jdField_a_of_type_Int == -1011) {
+      this.a.a(paramView.jdField_a_of_type_JavaLangString, 0L, null, paramView.jdField_b_of_type_JavaLangString, paramView.jdField_b_of_type_Long, paramView.jdField_a_of_type_Long);
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.a, "CliOper", "", "", "frd_recommend", "Frd_accept", 0, 0, "1", "", "", "");
+      return;
+      this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_b_of_type_Long, 0, null, paramView.jdField_a_of_type_Long);
     }
   }
 }

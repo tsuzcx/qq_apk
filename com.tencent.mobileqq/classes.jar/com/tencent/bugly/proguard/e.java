@@ -6,25 +6,27 @@ public final class e
   
   public static String a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      int j = paramArrayOfByte[i];
-      arrayOfChar[(i * 2 + 1)] = a[(j & 0xF)];
-      j = (byte)(j >>> 4);
-      arrayOfChar[(i * 2)] = a[(j & 0xF)];
-      i += 1;
+      char[] arrayOfChar1 = new char[paramArrayOfByte.length * 2];
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        int j = paramArrayOfByte[i];
+        int k = i * 2;
+        char[] arrayOfChar2 = a;
+        arrayOfChar1[(k + 1)] = arrayOfChar2[(j & 0xF)];
+        arrayOfChar1[k] = arrayOfChar2[((byte)(j >>> 4) & 0xF)];
+        i += 1;
+      }
+      return new String(arrayOfChar1);
     }
-    return new String(arrayOfChar);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.e
  * JD-Core Version:    0.7.0.1
  */

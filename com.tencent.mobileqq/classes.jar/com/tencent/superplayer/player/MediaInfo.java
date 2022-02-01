@@ -8,7 +8,6 @@ import java.util.Properties;
 public class MediaInfo
 {
   private static final String FILENAME = "MediaInfo.java";
-  private String TAG;
   private long audioBitRate;
   private String audioCodec;
   private String audioProfile;
@@ -19,6 +18,7 @@ public class MediaInfo
   private String mediaInfoStr;
   private String originalAudioTrackName;
   private long sampleRate;
+  private String tag;
   private long videoBitRate;
   private String videoCodec;
   private int videoHeight;
@@ -26,14 +26,13 @@ public class MediaInfo
   private int videoRotation;
   private int videoWidth;
   
-  public MediaInfo()
-  {
-    this.TAG = "MediaPlayerMgr_MediaInfo.java";
-  }
-  
   public MediaInfo(String paramString)
   {
-    this.TAG = (paramString + "_" + "MediaInfo.java");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("MediaInfo.java");
+    this.tag = localStringBuilder.toString();
   }
   
   public static MediaInfo obtainMediaInfoFromString(String paramString1, String paramString2)
@@ -59,7 +58,7 @@ public class MediaInfo
     }
     catch (Exception paramString2)
     {
-      LogUtil.e("MediaPlayerMgr", paramString2);
+      LogUtil.e("SuperPlayer-", paramString2);
     }
     return paramString1;
   }
@@ -258,7 +257,7 @@ public class MediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.MediaInfo
  * JD-Core Version:    0.7.0.1
  */

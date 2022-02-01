@@ -15,32 +15,32 @@ final class f
   protected final void execute()
   {
     int i = 2;
-    if (this.agY.nd() > 0) {}
+    if (this.akA.nQ() > 0) {}
     for (;;)
     {
       try
       {
         Object localObject = new ah();
-        ((ah)localObject).VN = this.agY.getUsername();
-        ((ah)localObject).Ws = i;
-        ((ah)localObject).Wt = TextMessageConfirmUI.a(this.agY);
-        localObject = new e(this.agY.nd(), 11023, ((ah)localObject).toByteArray());
-        ((e)localObject).mU();
+        ((ah)localObject).XI = this.akA.getUsername();
+        ((ah)localObject).Yn = i;
+        ((ah)localObject).Yo = TextMessageConfirmUI.a(this.akA);
+        localObject = new e(this.akA.nQ(), 11023, ((ah)localObject).toByteArray());
+        ((e)localObject).nG();
         ((e)localObject).a(new g()
         {
-          public final void mV()
+          public final void nH()
           {
-            com.tencent.mm.wear.a.b.a.aiT.postDelayed(new Runnable()
+            com.tencent.mm.wear.a.b.a.amv.postDelayed(new Runnable()
             {
               public final void run()
               {
-                f.this.agY.finish();
+                f.this.akA.finish();
               }
             }, 1000L);
           }
         });
-        h.mc().a((com.tencent.mm.wear.app.g.a)localObject);
-        com.tencent.mm.wear.app.d.a.bM(2);
+        h.mP().a((com.tencent.mm.wear.app.g.a)localObject);
+        com.tencent.mm.wear.app.d.a.ci(2);
         return;
       }
       catch (IOException localIOException) {}

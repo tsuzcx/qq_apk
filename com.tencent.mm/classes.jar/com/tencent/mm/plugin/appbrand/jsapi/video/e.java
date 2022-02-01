@@ -1,19 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import com.tencent.luggage.a.b;
+import android.content.Context;
 
 public abstract interface e
-  extends b
 {
-  public abstract String CT(String paramString);
+  public abstract d V(Context paramContext, int paramInt);
   
-  public abstract int a(String paramString, c paramc);
-  
-  public abstract void report(String paramString);
+  public abstract String getName();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e
  * JD-Core Version:    0.7.0.1
  */

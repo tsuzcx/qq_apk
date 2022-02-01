@@ -1,42 +1,68 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
+import android.content.ContentValues;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.i;
-import com.tencent.mm.ipcinvoker.type.IPCLong;
+import com.tencent.mm.b.f;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
+import com.tencent.mm.plugin.music.model.e.c;
+import com.tencent.mm.plugin.music.model.e.d;
+import com.tencent.mm.plugin.music.model.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 
 public final class a$h
-  implements i<IPCLong, IPCVoid>
+  implements m<IPCAudioParamRequest, IPCVoid>
 {
-  private static IPCVoid a(IPCLong paramIPCLong)
+  private static IPCVoid a(IPCAudioParamRequest paramIPCAudioParamRequest)
   {
-    AppMethodBeat.i(104949);
-    try
+    AppMethodBeat.i(63082);
+    for (;;)
     {
-      ab.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setLastScanMusicPieceFileTime task");
-      long l = paramIPCLong.value;
-      g.RL().Ru().set(ac.a.yFG, Long.valueOf(l));
-      paramIPCLong = new IPCVoid();
-      AppMethodBeat.o(104949);
-      return paramIPCLong;
-    }
-    catch (Exception paramIPCLong)
-    {
-      for (;;)
+      try
       {
-        ab.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCLong, "ipc setLastScanMusicPieceFileTime task", new Object[0]);
+        Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setMusicMIMETypeByMusicId Task, musicId:%s, mimeType:%s", new Object[] { paramIPCAudioParamRequest.musicId, paramIPCAudioParamRequest.mimeType });
+        localObject1 = paramIPCAudioParamRequest.musicId;
+        paramIPCAudioParamRequest = paramIPCAudioParamRequest.mimeType;
+        localObject2 = o.goe().aPh((String)localObject1);
+        if (localObject2 != null) {
+          continue;
+        }
+        Log.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "setMusicMIMETypeByMusicId pMusic is null!'");
+      }
+      catch (Exception paramIPCAudioParamRequest)
+      {
+        Object localObject1;
+        Object localObject2;
+        ContentValues localContentValues;
+        Log.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc setMusicMIMETypeByMusicId task", new Object[0]);
+        continue;
+        Log.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "don't need update the piece file mime type");
+        continue;
+      }
+      paramIPCAudioParamRequest = new IPCVoid();
+      AppMethodBeat.o(63082);
+      return paramIPCAudioParamRequest;
+      if ((!TextUtils.isEmpty(((c)localObject2).field_pieceFileMIMEType)) && (((c)localObject2).field_pieceFileMIMEType.equals(paramIPCAudioParamRequest))) {
+        continue;
+      }
+      Log.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "updatePieceFileMIMEType()");
+      localObject2 = o.goe();
+      localContentValues = new ContentValues();
+      localContentValues.put("pieceFileMIMEType", paramIPCAudioParamRequest);
+      Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceFileMIMEType raw=%d musicId=%s", new Object[] { Integer.valueOf(((d)localObject2).db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject1 })), localObject1 });
+      localObject1 = (c)((d)localObject2).LNJ.get(localObject1);
+      if (localObject1 != null) {
+        ((c)localObject1).field_pieceFileMIMEType = paramIPCAudioParamRequest;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.h
  * JD-Core Version:    0.7.0.1
  */

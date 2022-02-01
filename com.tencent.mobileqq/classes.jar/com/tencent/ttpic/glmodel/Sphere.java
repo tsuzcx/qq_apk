@@ -31,88 +31,105 @@ public class Sphere
   
   public Sphere(int paramInt, float paramFloat)
   {
-    paramInt = java.lang.Math.max(1, java.lang.Math.min(5, paramInt));
-    this.mTotalNumStrips = (com.tencent.ttpic.baseutils.math.Math.power(2, paramInt - 1) * 5);
-    int m = com.tencent.ttpic.baseutils.math.Math.power(2, paramInt) * 3;
-    double d3 = 2.094395102393195D / com.tencent.ttpic.baseutils.math.Math.power(2, paramInt);
-    double d4 = 6.283185307179586D / this.mTotalNumStrips;
+    int i = java.lang.Math.max(1, java.lang.Math.min(5, paramInt));
+    this.mTotalNumStrips = (com.tencent.ttpic.baseutils.math.Math.power(2, i - 1) * 5);
+    paramInt = com.tencent.ttpic.baseutils.math.Math.power(2, i) * 3;
+    double d1 = com.tencent.ttpic.baseutils.math.Math.power(2, i);
+    Double.isNaN(d1);
+    d1 = 2.094395102393195D / d1;
+    double d2 = this.mTotalNumStrips;
+    Double.isNaN(d2);
+    d2 = 6.283185307179586D / d2;
     ArrayList localArrayList = new ArrayList();
-    paramInt = 0;
-    while (paramInt < this.mTotalNumStrips)
+    i = 0;
+    while (i < this.mTotalNumStrips)
     {
-      Object localObject = new float[m * 3];
-      float[] arrayOfFloat1 = new float[m * 2];
-      float[] arrayOfFloat2 = new float[m * 3];
-      int k = 0;
-      int j = 0;
-      double d2 = 1.570796326794897D;
-      double d1 = paramInt * d4;
-      int i = 0;
-      while (i < m)
+      int k = paramInt * 3;
+      float[] arrayOfFloat1 = new float[k];
+      int j = paramInt * 2;
+      Object localObject = new float[j];
+      float[] arrayOfFloat2 = new float[k];
+      double d3 = i;
+      Double.isNaN(d3);
+      d3 *= d2;
+      double d4 = 1.570796326794897D;
+      int m = 0;
+      int i1 = 0;
+      int i2;
+      for (int n = 0; m < paramInt; n = i2 + 1)
       {
         double d5 = paramFloat;
-        double d6 = java.lang.Math.sin(d2);
-        double d7 = paramFloat * java.lang.Math.cos(d2);
-        double d8 = java.lang.Math.sin(d1);
-        double d9 = java.lang.Math.cos(d1);
-        arrayOfFloat2[k] = (1.0F / this.mTotalNumStrips * paramInt);
-        int n = k + 1;
-        localObject[k] = ((float)(d7 * d9));
-        arrayOfFloat2[n] = (1.0F / this.mTotalNumStrips * paramInt);
-        int i1 = n + 1;
-        localObject[n] = ((float)(d5 * d6));
-        arrayOfFloat2[i1] = (1.0F / this.mTotalNumStrips * paramInt);
-        k = i1 + 1;
-        localObject[i1] = ((float)(d8 * d7));
-        n = j + 1;
-        arrayOfFloat1[j] = ((float)(1.0D - d1 / 6.283185307179586D));
-        j = n + 1;
-        arrayOfFloat1[n] = ((float)(1.0D - (1.570796326794897D + d2) / 3.141592653589793D));
-        d2 -= d3;
-        d1 -= d4 / 2.0D;
-        d5 = paramFloat;
-        d6 = java.lang.Math.sin(d2);
-        d7 = paramFloat * java.lang.Math.cos(d2);
-        d8 = java.lang.Math.sin(d1);
-        d9 = java.lang.Math.cos(d1);
-        arrayOfFloat2[k] = (1.0F / this.mTotalNumStrips * paramInt);
-        n = k + 1;
-        localObject[k] = ((float)(d7 * d9));
-        arrayOfFloat2[n] = (1.0F / this.mTotalNumStrips * paramInt);
-        i1 = n + 1;
-        localObject[n] = ((float)(d5 * d6));
-        arrayOfFloat2[i1] = (1.0F / this.mTotalNumStrips * paramInt);
-        k = i1 + 1;
-        localObject[i1] = ((float)(d8 * d7));
-        n = j + 1;
-        arrayOfFloat1[j] = ((float)(1.0D - d1 / 6.283185307179586D));
-        j = n + 1;
-        arrayOfFloat1[n] = ((float)(1.0D - (1.570796326794897D + d2) / 3.141592653589793D));
-        d1 += d4;
-        i += 2;
+        double d6 = java.lang.Math.sin(d4);
+        Double.isNaN(d5);
+        double d7 = java.lang.Math.cos(d4);
+        Double.isNaN(d5);
+        d7 *= d5;
+        double d8 = java.lang.Math.sin(d3);
+        double d9 = java.lang.Math.cos(d3);
+        i2 = this.mTotalNumStrips;
+        float f1 = 1.0F / i2;
+        float f2 = i;
+        arrayOfFloat2[i1] = (f1 * f2);
+        int i3 = i1 + 1;
+        arrayOfFloat1[i1] = ((float)(d7 * d9));
+        arrayOfFloat2[i3] = (1.0F / i2 * f2);
+        int i4 = i3 + 1;
+        arrayOfFloat1[i3] = ((float)(d5 * d6));
+        arrayOfFloat2[i4] = (1.0F / i2 * f2);
+        i1 = i4 + 1;
+        arrayOfFloat1[i4] = ((float)(d7 * d8));
+        i2 = n + 1;
+        localObject[n] = ((float)(1.0D - d3 / 6.283185307179586D));
+        n = i2 + 1;
+        localObject[i2] = ((float)(1.0D - (d4 + 1.570796326794897D) / 3.141592653589793D));
+        d4 -= d1;
+        d3 -= d2 / 2.0D;
+        d6 = java.lang.Math.sin(d4);
+        Double.isNaN(d5);
+        d7 = java.lang.Math.cos(d4);
+        Double.isNaN(d5);
+        d7 = d5 * d7;
+        d8 = java.lang.Math.sin(d3);
+        d9 = java.lang.Math.cos(d3);
+        i2 = this.mTotalNumStrips;
+        arrayOfFloat2[i1] = (1.0F / i2 * f2);
+        i3 = i1 + 1;
+        arrayOfFloat1[i1] = ((float)(d7 * d9));
+        arrayOfFloat2[i3] = (1.0F / i2 * f2);
+        i4 = i3 + 1;
+        arrayOfFloat1[i3] = ((float)(d6 * d5));
+        arrayOfFloat2[i4] = (1.0F / i2 * f2);
+        i1 = i4 + 1;
+        arrayOfFloat1[i4] = ((float)(d7 * d8));
+        i2 = n + 1;
+        localObject[n] = ((float)(1.0D - d3 / 6.283185307179586D));
+        localObject[i2] = ((float)(1.0D - (d4 + 1.570796326794897D) / 3.141592653589793D));
+        d3 += d2;
+        m += 2;
       }
-      this.mVertices.add(localObject);
+      this.mVertices.add(arrayOfFloat1);
       this.mColors.add(arrayOfFloat2);
-      localArrayList.add(arrayOfFloat1);
-      localObject = ByteBuffer.allocateDirect(m * 3 * 32);
+      localArrayList.add(localObject);
+      k *= 32;
+      localObject = ByteBuffer.allocateDirect(k);
       ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
       localObject = ((ByteBuffer)localObject).asFloatBuffer();
-      ((FloatBuffer)localObject).put((float[])this.mVertices.get(paramInt));
+      ((FloatBuffer)localObject).put((float[])this.mVertices.get(i));
       ((FloatBuffer)localObject).position(0);
       this.mVertexBuffer.add(localObject);
-      localObject = ByteBuffer.allocateDirect(m * 3 * 32);
+      localObject = ByteBuffer.allocateDirect(k);
       ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
       localObject = ((ByteBuffer)localObject).asFloatBuffer();
-      ((FloatBuffer)localObject).put((float[])this.mColors.get(paramInt));
+      ((FloatBuffer)localObject).put((float[])this.mColors.get(i));
       ((FloatBuffer)localObject).position(0);
       this.mColorBuffer.add(localObject);
-      localObject = ByteBuffer.allocateDirect(m * 2 * 32);
+      localObject = ByteBuffer.allocateDirect(j * 32);
       ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
       localObject = ((ByteBuffer)localObject).asFloatBuffer();
-      ((FloatBuffer)localObject).put((float[])localArrayList.get(paramInt));
+      ((FloatBuffer)localObject).put((float[])localArrayList.get(i));
       ((FloatBuffer)localObject).position(0);
       this.mTextureBuffer.add(localObject);
-      paramInt += 1;
+      i += 1;
     }
   }
   
@@ -160,8 +177,9 @@ public class Sphere
   
   public void loadGLTexture(Bitmap paramBitmap)
   {
-    if (this.mTextures[0] <= 0) {
-      GLES20.glGenTextures(1, this.mTextures, 0);
+    int[] arrayOfInt = this.mTextures;
+    if (arrayOfInt[0] <= 0) {
+      GLES20.glGenTextures(1, arrayOfInt, 0);
     }
     if (BitmapUtils.isLegal(paramBitmap))
     {
@@ -174,7 +192,7 @@ public class Sphere
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.glmodel.Sphere
  * JD-Core Version:    0.7.0.1
  */

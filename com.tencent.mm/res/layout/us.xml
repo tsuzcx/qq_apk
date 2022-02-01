@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9" style="@style/lx"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/k6" android:layout_height="@dimen/n9" style="@style/mp">
-        <TextView android:id="@android:id/title" style="@style/lg" />
+    <ListView android:id="@id/bdb" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/na" />
+    <LinearLayout android:id="@id/cjf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <TextView android:textColor="@color/xo" android:gravity="center" android:id="@id/cj6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:text="@string/be9" />
     </LinearLayout>
+    <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="@dimen/d6">
+        <Button android:id="@id/c0_" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" android:text="@string/by4" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/om" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ov" android:layout_width="@dimen/da" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df">
+            <CheckBox android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ot" android:background="@drawable/agl" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="@color/xo" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/os" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="@string/ji" android:maxLines="1" android:layout_centerVertical="true" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="@color/xo" android:gravity="center" android:id="@id/c1e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_toLeftOf="@id/c0_" android:layout_toRightOf="@id/ov" android:layout_centerVertical="true" />
+        <View android:id="@id/ou" android:layout_width="@dimen/dc" android:layout_height="fill_parent" />
+    </RelativeLayout>
 </LinearLayout>

@@ -23,14 +23,15 @@ public final class QueryLoginInfoRequest
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.addtion != null) {
-      paramJceOutputStream.write(this.addtion, 0);
+    String str = this.addtion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.QueryLoginInfoRequest
  * JD-Core Version:    0.7.0.1
  */

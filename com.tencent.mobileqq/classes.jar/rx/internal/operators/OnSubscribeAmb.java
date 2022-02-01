@@ -135,21 +135,11 @@ public final class OnSubscribeAmb<T>
     AtomicReference localAtomicReference = localSelection.choice;
     paramSubscriber.add(Subscriptions.create(new OnSubscribeAmb.1(this, localAtomicReference, localSelection)));
     Iterator localIterator = this.sources.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      Observable localObservable;
-      if (localIterator.hasNext())
-      {
-        localObservable = (Observable)localIterator.next();
-        if (!paramSubscriber.isUnsubscribed()) {}
-      }
-      else
-      {
-        if (paramSubscriber.isUnsubscribed()) {
-          unsubscribeAmbSubscribers(localSelection.ambSubscribers);
-        }
-        paramSubscriber.setProducer(new OnSubscribeAmb.2(this, localAtomicReference, localSelection));
-        return;
+      Observable localObservable = (Observable)localIterator.next();
+      if (paramSubscriber.isUnsubscribed()) {
+        break;
       }
       OnSubscribeAmb.AmbSubscriber localAmbSubscriber1 = new OnSubscribeAmb.AmbSubscriber(0L, paramSubscriber, localSelection);
       localSelection.ambSubscribers.add(localAmbSubscriber1);
@@ -161,11 +151,15 @@ public final class OnSubscribeAmb<T>
       }
       localObservable.unsafeSubscribe(localAmbSubscriber1);
     }
+    if (paramSubscriber.isUnsubscribed()) {
+      unsubscribeAmbSubscribers(localSelection.ambSubscribers);
+    }
+    paramSubscriber.setProducer(new OnSubscribeAmb.2(this, localAtomicReference, localSelection));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeAmb
  * JD-Core Version:    0.7.0.1
  */

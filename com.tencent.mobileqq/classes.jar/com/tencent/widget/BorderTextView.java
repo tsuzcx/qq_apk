@@ -10,10 +10,10 @@ import android.util.AttributeSet;
 public class BorderTextView
   extends SimpleTextView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b;
+  private int a = 0;
+  private float b = 0.0F;
+  private Paint c;
+  private int d = 0;
   
   public BorderTextView(Context paramContext)
   {
@@ -33,34 +33,37 @@ public class BorderTextView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    if (this.c == null) {
+      this.c = new Paint();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    paramCanvas.drawRoundRect(new RectF(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, getMeasuredWidth() - this.jdField_a_of_type_Int, getMeasuredHeight() - this.jdField_a_of_type_Int), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.c.setStyle(Paint.Style.STROKE);
+    this.c.setColor(this.d);
+    this.c.setStrokeWidth(this.a);
+    int i = this.a;
+    RectF localRectF = new RectF(i, i, getMeasuredWidth() - this.a, getMeasuredHeight() - this.a);
+    float f = this.b;
+    paramCanvas.drawRoundRect(localRectF, f, f, this.c);
   }
   
   public void setBorderColor(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
   }
   
   public void setBorderWidth(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramInt;
+    this.a = paramInt;
+    this.b = paramInt;
   }
   
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.BorderTextView
  * JD-Core Version:    0.7.0.1
  */

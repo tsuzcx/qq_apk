@@ -1,20 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class hht
-  implements Animation.AnimationListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public hht(ShaderAnimLayout paramShaderAnimLayout) {}
+  public hht(SlideDetectListView paramSlideDetectListView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.a.setVisibility(8);
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

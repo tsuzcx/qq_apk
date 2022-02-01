@@ -3,12 +3,13 @@ package io.flutter.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.annotation.UiThread;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
 import io.flutter.app.FlutterPluginRegistry;
 import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.BinaryMessenger.BinaryMessageHandler;
 import io.flutter.plugin.common.BinaryMessenger.BinaryReply;
@@ -20,6 +21,8 @@ public class FlutterNativeView
   private static final String TAG = "FlutterNativeView";
   private boolean applicationIsRunning;
   private final DartExecutor dartExecutor;
+  private String[] entryArgs = new String[0];
+  private final FlutterUiDisplayListener flutterUiDisplayListener = new FlutterNativeView.1(this);
   private final Context mContext;
   private final FlutterJNI mFlutterJNI;
   private FlutterView mFlutterView;
@@ -32,19 +35,32 @@ public class FlutterNativeView
   
   public FlutterNativeView(@NonNull Context paramContext, boolean paramBoolean)
   {
+    this(paramContext, paramBoolean, null);
+  }
+  
+  public FlutterNativeView(@NonNull Context paramContext, boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (paramArrayOfString != null) {
+      this.entryArgs = paramArrayOfString;
+    }
     this.mContext = paramContext;
     this.mPluginRegistry = new FlutterPluginRegistry(this, paramContext);
     this.mFlutterJNI = new FlutterJNI();
-    this.mFlutterJNI.setRenderSurface(new FlutterNativeView.RenderSurfaceImpl(this, null));
+    this.mFlutterJNI.addIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
     this.dartExecutor = new DartExecutor(this.mFlutterJNI, paramContext.getAssets());
     this.mFlutterJNI.addEngineLifecycleListener(new FlutterNativeView.EngineLifecycleListenerImpl(this, null));
     attach(this, paramBoolean);
     assertAttached();
   }
   
+  public FlutterNativeView(@NonNull Context paramContext, String[] paramArrayOfString)
+  {
+    this(paramContext, false, paramArrayOfString);
+  }
+  
   private void attach(FlutterNativeView paramFlutterNativeView, boolean paramBoolean)
   {
-    this.mFlutterJNI.attachToNative(paramBoolean);
+    this.mFlutterJNI.attachToNative(paramBoolean, this.entryArgs);
     this.dartExecutor.onAttachedToJNI();
   }
   
@@ -72,6 +88,7 @@ public class FlutterNativeView
     this.mPluginRegistry.destroy();
     this.dartExecutor.onDetachedFromJNI();
     this.mFlutterView = null;
+    this.mFlutterJNI.removeIsDisplayingFlutterUiListener(this.flutterUiDisplayListener);
     this.mFlutterJNI.detachFromNativeAndReleaseResources();
     this.applicationIsRunning = false;
   }
@@ -128,7 +145,7 @@ public class FlutterNativeView
   @UiThread
   public void send(String paramString, ByteBuffer paramByteBuffer)
   {
-    this.dartExecutor.send(paramString, paramByteBuffer);
+    this.dartExecutor.getBinaryMessenger().send(paramString, paramByteBuffer);
   }
   
   @UiThread
@@ -142,18 +159,18 @@ public class FlutterNativeView
       Log.d("FlutterNativeView", paramByteBuffer.toString());
       return;
     }
-    this.dartExecutor.send(paramString, paramByteBuffer, paramBinaryReply);
+    this.dartExecutor.getBinaryMessenger().send(paramString, paramByteBuffer, paramBinaryReply);
   }
   
   @UiThread
   public void setMessageHandler(String paramString, BinaryMessenger.BinaryMessageHandler paramBinaryMessageHandler)
   {
-    this.dartExecutor.setMessageHandler(paramString, paramBinaryMessageHandler);
+    this.dartExecutor.getBinaryMessenger().setMessageHandler(paramString, paramBinaryMessageHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.view.FlutterNativeView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,115 +1,93 @@
 package com.tencent.mm.ui.j;
 
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.jg.JgClassChecked;
+import android.os.Message;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.i;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.t;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.l;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.ui.base.v;
 
-@SuppressLint({"SetJavaScriptEnabled"})
-@JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
 public final class b
-  extends i
+  extends v
 {
-  static final float[] Aof;
-  static final float[] Aog;
-  static final FrameLayout.LayoutParams Aoh;
-  private a ABo;
-  private ProgressDialog Aoj;
-  private ImageView Aok;
-  private FrameLayout Aol;
-  private String mUrl;
-  private WebView uNH;
+  public long mDuration;
+  private MMHandler mHandler;
   
-  static
+  private b(View paramView)
   {
-    AppMethodBeat.i(80369);
-    Aof = new float[] { 20.0F, 60.0F };
-    Aog = new float[] { 40.0F, 60.0F };
-    Aoh = new FrameLayout.LayoutParams(-1, -1);
-    AppMethodBeat.o(80369);
-  }
-  
-  public b(Context paramContext, String paramString, a parama)
-  {
-    super(paramContext, 16973840);
-    this.mUrl = paramString;
-    this.ABo = parama;
-  }
-  
-  protected final void onCreate(Bundle paramBundle)
-  {
-    AppMethodBeat.i(80367);
-    super.onCreate(paramBundle);
-    this.Aoj = new ProgressDialog(getContext());
-    this.Aoj.requestWindowFeature(1);
-    this.Aoj.setMessage(getContext().getString(2131304397));
-    requestWindowFeature(1);
-    this.Aol = new FrameLayout(getContext());
-    this.Aok = new ImageView(getContext());
-    this.Aok.setOnClickListener(new b.1(this));
-    paramBundle = getContext().getResources().getDrawable(2130838396);
-    this.Aok.setImageDrawable(paramBundle);
-    this.Aok.setVisibility(4);
-    int i = this.Aok.getDrawable().getIntrinsicWidth() / 2;
-    paramBundle = new LinearLayout(getContext());
-    this.uNH = new WebView(getContext());
-    this.uNH.setVerticalScrollBarEnabled(false);
-    this.uNH.setHorizontalScrollBarEnabled(false);
-    this.uNH.setWebViewClient(new b.b(this, (byte)0));
-    this.uNH.getSettings().setJavaScriptEnabled(true);
-    this.uNH.loadUrl(this.mUrl);
-    this.uNH.setLayoutParams(Aoh);
-    this.uNH.setVisibility(4);
-    paramBundle.setPadding(i, i, i, i);
-    paramBundle.addView(this.uNH);
-    this.Aol.addView(paramBundle);
-    this.Aol.addView(this.Aok, new ViewGroup.LayoutParams(-2, -2));
-    addContentView(this.Aol, new ViewGroup.LayoutParams(-1, -1));
-    AppMethodBeat.o(80367);
-  }
-  
-  public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(80368);
-    if (paramInt == 4)
+    super(paramView);
+    AppMethodBeat.i(142861);
+    this.mDuration = 3000L;
+    this.mHandler = new MMHandler()
     {
-      this.ABo.onCancel();
-      dismiss();
-      AppMethodBeat.o(80368);
-      return true;
-    }
-    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(80368);
-    return bool;
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(142860);
+        switch (paramAnonymousMessage.what)
+        {
+        default: 
+          super.handleMessage(paramAnonymousMessage);
+          AppMethodBeat.o(142860);
+          return;
+        }
+        b.this.dismiss();
+        AppMethodBeat.o(142860);
+      }
+    };
+    AppMethodBeat.o(142861);
   }
   
-  public static abstract interface a
+  public static b nz(Context paramContext)
   {
-    public abstract void dOz();
-    
-    public abstract void onCancel();
-    
-    public abstract void u(Bundle paramBundle);
+    AppMethodBeat.i(142862);
+    paramContext = LayoutInflater.from(paramContext).inflate(a.h.toast_popup, null);
+    ((TextView)paramContext.findViewById(a.g.toast_text)).setVisibility(8);
+    b localb = new b(paramContext);
+    localb.setFocusable(false);
+    localb.setContentView(paramContext);
+    localb.setWidth(-1);
+    localb.setHeight(-1);
+    localb.setAnimationStyle(a.l.ToastPopupWindow);
+    localb.mDuration = 1200L;
+    AppMethodBeat.o(142862);
+    return localb;
+  }
+  
+  public final void showAsDropDown(View paramView)
+  {
+    AppMethodBeat.i(142864);
+    super.showAsDropDown(paramView);
+    this.mHandler.removeMessages(256);
+    this.mHandler.sendEmptyMessageDelayed(256, this.mDuration);
+    AppMethodBeat.o(142864);
+  }
+  
+  public final void showAsDropDown(View paramView, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(142863);
+    super.showAsDropDown(paramView, paramInt1, paramInt2);
+    this.mHandler.removeMessages(256);
+    this.mHandler.sendEmptyMessageDelayed(256, this.mDuration);
+    AppMethodBeat.o(142863);
+  }
+  
+  public final void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(142865);
+    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
+    this.mHandler.removeMessages(256);
+    this.mHandler.sendEmptyMessageDelayed(256, this.mDuration);
+    AppMethodBeat.o(142865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.j.b
  * JD-Core Version:    0.7.0.1
  */

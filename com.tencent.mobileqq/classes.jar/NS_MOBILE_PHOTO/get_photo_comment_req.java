@@ -12,13 +12,13 @@ public final class get_photo_comment_req
   static Map<String, String> cache_extent_info = new HashMap();
   public String albumid = "";
   public String attach_info = "";
-  public int commenttype;
-  public Map<String, String> extent_info;
-  public int order;
+  public int commenttype = 0;
+  public Map<String, String> extent_info = null;
+  public int order = 0;
   public String photoid = "";
   public int refresh_type = 8;
   public String topicid = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {
@@ -68,17 +68,19 @@ public final class get_photo_comment_req
     paramJceOutputStream.write(this.refresh_type, 4);
     paramJceOutputStream.write(this.order, 5);
     paramJceOutputStream.write(this.commenttype, 6);
-    if (this.topicid != null) {
-      paramJceOutputStream.write(this.topicid, 7);
+    Object localObject = this.topicid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.extent_info != null) {
-      paramJceOutputStream.write(this.extent_info, 8);
+    localObject = this.extent_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_photo_comment_req
  * JD-Core Version:    0.7.0.1
  */

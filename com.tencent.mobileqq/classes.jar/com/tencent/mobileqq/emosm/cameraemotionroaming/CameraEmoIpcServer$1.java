@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import apnm;
-import apns;
 import java.util.ArrayList;
 
-public class CameraEmoIpcServer$1
+class CameraEmoIpcServer$1
   implements Runnable
 {
-  public CameraEmoIpcServer$1(apnm paramapnm, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4) {}
+  CameraEmoIpcServer$1(CameraEmoIpcServer paramCameraEmoIpcServer, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4) {}
   
   public void run()
   {
     if (this.a != null)
     {
-      apns.a(this.b, this.c, this.a, this.d);
+      CameraEmoSendControl.a().a(this.b, this.c, this.a, this.d);
       return;
     }
-    apns.a(this.b, this.c, this.d);
+    CameraEmoSendControl.a().a(this.b, this.c, this.d);
   }
 }
 

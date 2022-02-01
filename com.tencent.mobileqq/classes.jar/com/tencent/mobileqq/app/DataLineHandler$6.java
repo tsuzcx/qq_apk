@@ -1,71 +1,76 @@
 package com.tencent.mobileqq.app;
 
-import alqo;
-import bdqa;
+import com.dataline.compatible.DatalineDownloadRespInfo;
+import com.dataline.compatible.IDatalineFileReqCallback;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.litetransfersdk.MsgSCBody;
 import com.tencent.litetransfersdk.ProtocolHelper;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 
-public class DataLineHandler$6
+class DataLineHandler$6
   implements Runnable
 {
-  public DataLineHandler$6(alqo paramalqo, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
+  DataLineHandler$6(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
   
   public void run()
   {
     MsgSCBody localMsgSCBody = new MsgSCBody();
-    cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
+    Object localObject2 = new cmd0x346.RspBody();
     localMsgSCBody.uMsgType = 838;
-    if ((this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == null) || (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null)) {
+    if ((this.a == null) || (this.b == null)) {
       localMsgSCBody.bTimeOut = true;
     }
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null)
+    FromServiceMsg localFromServiceMsg = this.b;
+    if (localFromServiceMsg != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.FillMsgSCBody(localMsgSCBody, localRspBody, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null) {
-        break label174;
-      }
-    }
-    label174:
-    for (long l = 0L;; l = ((Long)this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("cookie")).longValue())
-    {
-      for (;;)
+      byte[] arrayOfByte = null;
+      if (localFromServiceMsg.getWupBuffer() != null)
       {
-        this.this$0.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(Long.valueOf(l).intValue(), localMsgSCBody);
-        return;
-        byte[] arrayOfByte = null;
-        if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer() != null)
+        int i = this.b.getWupBuffer().length - 4;
+        if (i >= 0)
         {
-          int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
-          if (i < 0) {
-            break;
-          }
           arrayOfByte = new byte[i];
-          bdqa.a(arrayOfByte, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+          PkgTools.copyData(arrayOfByte, 0, this.b.getWupBuffer(), 4, i);
         }
-        if (arrayOfByte == null) {
-          break;
-        }
+      }
+      else if (arrayOfByte != null)
+      {
         try
         {
-          localRspBody.mergeFrom(arrayOfByte);
+          ((cmd0x346.RspBody)localObject2).mergeFrom(arrayOfByte);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
           localInvalidProtocolBufferMicroException.printStackTrace();
         }
       }
-      break;
     }
+    this.this$0.g.FillMsgSCBody(localMsgSCBody, (cmd0x346.RspBody)localObject2, this.c);
+    Object localObject1 = this.a;
+    if (localObject1 == null)
+    {
+      this.this$0.d.OnPbMsgReply(0, localMsgSCBody);
+      return;
+    }
+    localObject1 = (IDatalineFileReqCallback)((ToServiceMsg)localObject1).getAttribute("callback");
+    if (localObject1 != null)
+    {
+      localObject2 = new DatalineDownloadRespInfo();
+      ((DatalineDownloadRespInfo)localObject2).a(localMsgSCBody);
+      ((IDatalineFileReqCallback)localObject1).a((DatalineDownloadRespInfo)localObject2);
+      return;
+    }
+    localObject1 = (Long)this.a.getAttribute("cookie");
+    this.this$0.d.OnPbMsgReply(((Long)localObject1).intValue(), localMsgSCBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DataLineHandler.6
  * JD-Core Version:    0.7.0.1
  */

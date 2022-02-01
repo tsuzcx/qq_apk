@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class MessageRemindReq
   extends JceStruct
 {
-  public long dwAppId;
-  public long iGroupCode;
+  public long dwAppId = 0L;
+  public long iGroupCode = 0L;
   public String sKey = "";
   public String sKeyType = "";
-  public long uOwnerUin;
+  public long uOwnerUin = 0L;
   
   public MessageRemindReq() {}
   
@@ -39,14 +39,15 @@ public final class MessageRemindReq
     paramJceOutputStream.write(this.uOwnerUin, 1);
     paramJceOutputStream.write(this.dwAppId, 2);
     paramJceOutputStream.write(this.sKey, 3);
-    if (this.sKeyType != null) {
-      paramJceOutputStream.write(this.sKeyType, 4);
+    String str = this.sKeyType;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GROUP.MessageRemindReq
  * JD-Core Version:    0.7.0.1
  */

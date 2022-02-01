@@ -23,15 +23,16 @@ public final class qqstory_struct$StoryDes
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58, 66 }, new String[] { "user", "storyCover", "new_story_time", "has_unwatched_video", "video_count", "live_video", "story_title", "story_video_attr" }, new Object[] { null, localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro2, localByteStringMicro3 }, StoryDes.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58, 66 }, new String[] { "user", "storyCover", "new_story_time", "has_unwatched_video", "video_count", "live_video", "story_title", "story_video_attr" }, new Object[] { null, localByteStringMicro1, Long.valueOf(0L), localInteger, localInteger, null, localByteStringMicro2, localByteStringMicro3 }, StoryDes.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryDes
  * JD-Core Version:    0.7.0.1
  */

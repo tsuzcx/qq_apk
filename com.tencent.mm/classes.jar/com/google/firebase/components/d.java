@@ -1,11 +1,7 @@
 package com.google.firebase.components;
 
-import com.google.android.gms.common.annotation.KeepForSdk;
-
-@KeepForSdk
 public abstract interface d<T>
 {
-  @KeepForSdk
   public abstract T a(b paramb);
 }
 

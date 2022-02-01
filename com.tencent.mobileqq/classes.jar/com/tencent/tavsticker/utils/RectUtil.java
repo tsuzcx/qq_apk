@@ -5,71 +5,85 @@ import android.graphics.RectF;
 
 public class RectUtil
 {
-  private static final String TAG = RectUtil.class.getSimpleName();
+  private static final String TAG = "RectUtil";
   
   public static float getRectHeight(RectF paramRectF)
   {
-    if (paramRectF != null) {}
-    for (float f = paramRectF.bottom - paramRectF.top;; f = 0.0F)
-    {
-      if (f > 0.0F) {
-        return f;
-      }
-      return 0.0F;
+    float f;
+    if (paramRectF != null) {
+      f = paramRectF.bottom - paramRectF.top;
+    } else {
+      f = 0.0F;
     }
+    if (f > 0.0F) {
+      return f;
+    }
+    return 0.0F;
   }
   
   public static int getRectHeight(Rect paramRect)
   {
-    if (paramRect != null) {}
-    for (int i = paramRect.bottom - paramRect.top;; i = 0)
-    {
-      if (i > 0) {
-        return i;
-      }
-      return 0;
+    int i;
+    if (paramRect != null) {
+      i = paramRect.bottom - paramRect.top;
+    } else {
+      i = 0;
     }
+    if (i > 0) {
+      return i;
+    }
+    return 0;
   }
   
   public static float getRectWidth(RectF paramRectF)
   {
-    if (paramRectF != null) {}
-    for (float f = paramRectF.right - paramRectF.left;; f = 0.0F)
-    {
-      if (f > 0.0F) {
-        return f;
-      }
-      return 0.0F;
+    float f;
+    if (paramRectF != null) {
+      f = paramRectF.right - paramRectF.left;
+    } else {
+      f = 0.0F;
     }
+    if (f > 0.0F) {
+      return f;
+    }
+    return 0.0F;
   }
   
   public static int getRectWidth(Rect paramRect)
   {
-    if (paramRect != null) {}
-    for (int i = paramRect.right - paramRect.left;; i = 0)
-    {
-      if (i > 0) {
-        return i;
-      }
-      return 0;
+    int i;
+    if (paramRect != null) {
+      i = paramRect.right - paramRect.left;
+    } else {
+      i = 0;
     }
+    if (i > 0) {
+      return i;
+    }
+    return 0;
   }
   
   public static Rect getStickerMoveLimitRect(RectF paramRectF, int paramInt1, int paramInt2)
   {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
     if (paramRectF != null)
     {
       Rect localRect = new Rect();
-      localRect.left = ((int)(paramRectF.left * paramInt1));
-      localRect.top = ((int)(paramRectF.top * paramInt2));
-      localRect.right = ((int)(paramRectF.right * paramInt1));
-      localRect.bottom = ((int)(paramRectF.bottom * paramInt2));
+      float f2 = paramRectF.left;
+      float f1 = paramInt1;
+      localRect.left = ((int)(f2 * f1));
+      f2 = paramRectF.top;
+      float f3 = paramInt2;
+      localRect.top = ((int)(f2 * f3));
+      localRect.right = ((int)(paramRectF.right * f1));
+      localRect.bottom = ((int)(paramRectF.bottom * f3));
+      localObject1 = localObject2;
       if (rectIsValid(localRect)) {
-        return localRect;
+        localObject1 = localRect;
       }
-      return null;
     }
-    return null;
+    return localObject1;
   }
   
   public static Rect rectInset(Rect paramRect, int paramInt1, int paramInt2)
@@ -101,7 +115,7 @@ public class RectUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.utils.RectUtil
  * JD-Core Version:    0.7.0.1
  */

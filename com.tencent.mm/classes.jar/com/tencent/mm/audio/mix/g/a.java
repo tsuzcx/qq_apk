@@ -1,23 +1,44 @@
 package com.tencent.mm.audio.mix.g;
 
+import com.tencent.mm.al.b;
+
 public final class a
-  implements b
+  implements c
 {
-  private com.tencent.mm.ag.b cfC;
+  private b hsd;
   
-  public a(com.tencent.mm.ag.b paramb)
+  public a(b paramb)
   {
-    this.cfC = paramb;
+    this.hsd = paramb;
   }
   
-  public final com.tencent.mm.ag.b En()
+  public final b aGB()
   {
-    return this.cfC;
+    return this.hsd;
+  }
+  
+  public final String aGC()
+  {
+    return null;
+  }
+  
+  public final void connect() {}
+  
+  public final void disconnect() {}
+  
+  public final long getSize()
+  {
+    return 0L;
+  }
+  
+  public final int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.audio.mix.g.a
  * JD-Core Version:    0.7.0.1
  */

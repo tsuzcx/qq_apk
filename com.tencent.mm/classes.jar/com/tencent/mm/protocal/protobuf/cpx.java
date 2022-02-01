@@ -1,81 +1,113 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cpx
-  extends com.tencent.mm.bv.a
+  extends erp
 {
-  public int state;
-  public int xYD;
-  public String xmo;
+  public String aawr;
+  public String aaws;
+  public int crz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(10249);
+    AppMethodBeat.i(91504);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xmo != null) {
-        paramVarArgs.e(1, this.xmo);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(2, this.state);
-      paramVarArgs.aO(3, this.xYD);
-      AppMethodBeat.o(10249);
+      if (this.aawr != null) {
+        paramVarArgs.g(2, this.aawr);
+      }
+      paramVarArgs.bS(3, this.crz);
+      if (this.aaws != null) {
+        paramVarArgs.g(4, this.aaws);
+      }
+      AppMethodBeat.o(91504);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xmo == null) {
-        break label315;
+      if (this.BaseRequest == null) {
+        break label448;
       }
     }
-    label315:
-    for (paramInt = e.a.a.b.b.a.f(1, this.xmo) + 0;; paramInt = 0)
+    label448:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.state);
-      int j = e.a.a.b.b.a.bl(3, this.xYD);
-      AppMethodBeat.o(10249);
-      return paramInt + i + j;
+      int i = paramInt;
+      if (this.aawr != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.aawr);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.crz);
+      paramInt = i;
+      if (this.aaws != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.aaws);
+      }
+      AppMethodBeat.o(91504);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(10249);
+        AppMethodBeat.o(91504);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cpx localcpx = (cpx)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(10249);
+          AppMethodBeat.o(91504);
           return -1;
         case 1: 
-          localcpx.xmo = locala.CLY.readString();
-          AppMethodBeat.o(10249);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcpx.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91504);
           return 0;
         case 2: 
-          localcpx.state = locala.CLY.sl();
-          AppMethodBeat.o(10249);
+          localcpx.aawr = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(91504);
+          return 0;
+        case 3: 
+          localcpx.crz = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(91504);
           return 0;
         }
-        localcpx.xYD = locala.CLY.sl();
-        AppMethodBeat.o(10249);
+        localcpx.aaws = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(91504);
         return 0;
       }
-      AppMethodBeat.o(10249);
+      AppMethodBeat.o(91504);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cpx
  * JD-Core Version:    0.7.0.1
  */

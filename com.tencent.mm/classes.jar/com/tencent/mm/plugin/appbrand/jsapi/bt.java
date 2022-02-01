@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.text.TextUtils;
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i.i;
+import com.tencent.mm.plugin.appbrand.service.c;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiMarkScene;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandSyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bt
+  extends ab<c>
 {
-  public static void a(i parami, String paramString1, String paramString2)
+  public static final int CTRL_INDEX = 651;
+  public static final String NAME = "markScene";
+  public static final bt.a rzl;
+  
+  static
   {
-    AppMethodBeat.i(140834);
-    String str = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      str = "{}";
-    }
-    d.d("MicroMsg.JsScriptEvaluatorWC", "hy: dispatch, event: %s, data size: %s, srcId: %d", new Object[] { paramString1, Integer.valueOf(str.length()), Integer.valueOf(0) });
-    parami.evaluateJavascript(String.format("typeof WeixinJSBridge !== 'undefined' && WeixinJSBridge.subscribeHandler('%s', %s)", new Object[] { paramString1, str }), new bt.1());
-    AppMethodBeat.o(140834);
+    AppMethodBeat.i(50405);
+    rzl = new bt.a((byte)0);
+    AppMethodBeat.o(50405);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bt
  * JD-Core Version:    0.7.0.1
  */

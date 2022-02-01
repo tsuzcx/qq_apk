@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/gvc" android:maxLevel="0" />
+    <item android:drawable="@drawable/gvd" android:maxLevel="1" />
+    <item android:drawable="@drawable/gve" android:maxLevel="2" />
+</level-list>

@@ -6,9 +6,9 @@ import android.graphics.Shader.TileMode;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
-import com.tencent.mm.plugin.appbrand.s.g;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -18,17 +18,17 @@ public class RealSetStrokeStyleActionRadialArg
   extends RealSetStrokeStyleActionArg
 {
   public static final Parcelable.Creator<RealSetStrokeStyleActionRadialArg> CREATOR;
-  public float heS;
-  public float heT;
-  public int[] heW;
-  public float heY;
-  public float[] positions;
+  public int[] colors;
+  public float[] qTB;
+  public float qTD;
+  public float qTx;
+  public float qTy;
   
   static
   {
-    AppMethodBeat.i(103426);
-    CREATOR = new RealSetStrokeStyleActionRadialArg.1();
-    AppMethodBeat.o(103426);
+    AppMethodBeat.i(145109);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145109);
   }
   
   public RealSetStrokeStyleActionRadialArg() {}
@@ -40,15 +40,15 @@ public class RealSetStrokeStyleActionRadialArg
   
   public final boolean a(d paramd, Canvas paramCanvas)
   {
-    AppMethodBeat.i(103419);
-    if ((this.heW == null) || (this.positions == null))
+    AppMethodBeat.i(145102);
+    if ((this.colors == null) || (this.qTB == null))
     {
-      AppMethodBeat.o(103419);
+      AppMethodBeat.o(145102);
       return false;
     }
-    paramCanvas = new RadialGradient(this.heS, this.heT, this.heY, this.heW, this.positions, Shader.TileMode.CLAMP);
-    paramd.heB.setShader(paramCanvas);
-    AppMethodBeat.o(103419);
+    paramCanvas = new RadialGradient(this.qTx, this.qTy, this.qTD, this.colors, this.qTB, Shader.TileMode.CLAMP);
+    paramd.qTi.setShader(paramCanvas);
+    AppMethodBeat.o(145102);
     return true;
   }
   
@@ -59,128 +59,128 @@ public class RealSetStrokeStyleActionRadialArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103420);
+    AppMethodBeat.i(145103);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103420);
+      AppMethodBeat.o(145103);
       return true;
     }
     if (!(paramObject instanceof RealSetStrokeStyleActionRadialArg))
     {
-      AppMethodBeat.o(103420);
+      AppMethodBeat.o(145103);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103420);
+      AppMethodBeat.o(145103);
       return false;
     }
     paramObject = (RealSetStrokeStyleActionRadialArg)paramObject;
-    if ((Float.compare(paramObject.heS, this.heS) == 0) && (Float.compare(paramObject.heT, this.heT) == 0) && (Float.compare(paramObject.heY, this.heY) == 0) && (Arrays.equals(this.heW, paramObject.heW)) && (Arrays.equals(this.positions, paramObject.positions)))
+    if ((Float.compare(paramObject.qTx, this.qTx) == 0) && (Float.compare(paramObject.qTy, this.qTy) == 0) && (Float.compare(paramObject.qTD, this.qTD) == 0) && (Arrays.equals(this.colors, paramObject.colors)) && (Arrays.equals(this.qTB, paramObject.qTB)))
     {
-      AppMethodBeat.o(103420);
+      AppMethodBeat.o(145103);
       return true;
     }
-    AppMethodBeat.o(103420);
+    AppMethodBeat.o(145103);
     return false;
   }
   
-  public final void f(JSONArray paramJSONArray)
+  public int hashCode()
   {
-    AppMethodBeat.i(103424);
-    super.f(paramJSONArray);
+    AppMethodBeat.i(145104);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.qTx), Float.valueOf(this.qTy), Float.valueOf(this.qTD) });
+    int j = Arrays.hashCode(this.colors);
+    int k = Arrays.hashCode(this.qTB);
+    AppMethodBeat.o(145104);
+    return (i * 31 + j) * 31 + k;
+  }
+  
+  public final void i(JSONArray paramJSONArray)
+  {
+    AppMethodBeat.i(145107);
+    super.i(paramJSONArray);
     if (paramJSONArray.length() < 3)
     {
-      AppMethodBeat.o(103424);
+      AppMethodBeat.o(145107);
       return;
     }
     JSONArray localJSONArray = paramJSONArray.optJSONArray(1);
     if ((localJSONArray == null) || (localJSONArray.length() < 3))
     {
-      AppMethodBeat.o(103424);
+      AppMethodBeat.o(145107);
       return;
     }
-    this.heS = g.d(localJSONArray, 1);
-    this.heT = g.d(localJSONArray, 2);
-    this.heY = g.d(localJSONArray, 3);
+    this.qTx = i.f(localJSONArray, 1);
+    this.qTy = i.f(localJSONArray, 2);
+    this.qTD = i.f(localJSONArray, 3);
     paramJSONArray = paramJSONArray.optJSONArray(2);
-    this.heW = new int[paramJSONArray.length()];
-    this.positions = new float[paramJSONArray.length()];
+    this.colors = new int[paramJSONArray.length()];
+    this.qTB = new float[paramJSONArray.length()];
     int i = 0;
     while (i < paramJSONArray.length())
     {
       localJSONArray = paramJSONArray.optJSONArray(i);
       if (localJSONArray.length() >= 2)
       {
-        this.positions[i] = ((float)localJSONArray.optDouble(0));
-        this.heW[i] = g.o(localJSONArray.optJSONArray(1));
+        this.qTB[i] = ((float)localJSONArray.optDouble(0));
+        this.colors[i] = i.u(localJSONArray.optJSONArray(1));
       }
       i += 1;
     }
-    AppMethodBeat.o(103424);
+    AppMethodBeat.o(145107);
   }
   
-  public final void h(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
-    AppMethodBeat.i(103422);
-    super.h(paramParcel);
-    this.heS = paramParcel.readFloat();
-    this.heT = paramParcel.readFloat();
-    this.heY = paramParcel.readFloat();
+    AppMethodBeat.i(145105);
+    super.k(paramParcel);
+    this.qTx = paramParcel.readFloat();
+    this.qTy = paramParcel.readFloat();
+    this.qTD = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.heW = new int[i];
-      paramParcel.readIntArray(this.heW);
+      this.colors = new int[i];
+      paramParcel.readIntArray(this.colors);
     }
     i = paramParcel.readInt();
     if (i > 0)
     {
-      this.positions = new float[i];
-      paramParcel.readFloatArray(this.positions);
+      this.qTB = new float[i];
+      paramParcel.readFloatArray(this.qTB);
     }
-    AppMethodBeat.o(103422);
+    AppMethodBeat.o(145105);
   }
   
-  public int hashCode()
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103421);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.heS), Float.valueOf(this.heT), Float.valueOf(this.heY) });
-    int j = Arrays.hashCode(this.heW);
-    int k = Arrays.hashCode(this.positions);
-    AppMethodBeat.o(103421);
-    return (i * 31 + j) * 31 + k;
-  }
-  
-  public final void p(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(103425);
-    super.p(paramJSONObject);
-    AppMethodBeat.o(103425);
+    AppMethodBeat.i(145108);
+    super.parse(paramJSONObject);
+    AppMethodBeat.o(145108);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103423);
+    AppMethodBeat.i(145106);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.heS);
-    paramParcel.writeFloat(this.heT);
-    paramParcel.writeFloat(this.heY);
-    if (this.heW != null)
+    paramParcel.writeFloat(this.qTx);
+    paramParcel.writeFloat(this.qTy);
+    paramParcel.writeFloat(this.qTD);
+    if (this.colors != null)
     {
-      paramParcel.writeInt(this.heW.length);
-      paramParcel.writeIntArray(this.heW);
+      paramParcel.writeInt(this.colors.length);
+      paramParcel.writeIntArray(this.colors);
     }
-    while (this.positions != null)
+    while (this.qTB != null)
     {
-      paramParcel.writeInt(this.positions.length);
-      paramParcel.writeFloatArray(this.positions);
-      AppMethodBeat.o(103423);
+      paramParcel.writeInt(this.qTB.length);
+      paramParcel.writeFloatArray(this.qTB);
+      AppMethodBeat.o(145106);
       return;
       paramParcel.writeInt(0);
     }
     paramParcel.writeInt(0);
-    AppMethodBeat.o(103423);
+    AppMethodBeat.o(145106);
   }
 }
 

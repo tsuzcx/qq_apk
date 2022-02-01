@@ -5,7 +5,7 @@ import android.opengl.EGLContext;
 import android.opengl.ETC1Util.ETC1Texture;
 import android.os.AsyncTask;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.io.File;
 import java.util.Map;
 
@@ -27,21 +27,44 @@ public class LoadETCItemManager
   
   public void clear()
   {
-    if (this.mImageTask != null) {
-      this.mImageTask.cancel(true);
+    AsyncTask localAsyncTask = this.mImageTask;
+    if (localAsyncTask != null) {
+      localAsyncTask.cancel(true);
     }
   }
   
   public ETC1Util.ETC1Texture loadETCAlphaTexture(int paramInt)
   {
-    String str = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + String.format(new StringBuilder().append("%0").append(FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(paramInt) }) + "_alpha.pkm";
-    return (ETC1Util.ETC1Texture)this.mCache.get(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(VideoMaterial.getMaterialId(this.dataPath));
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.item.id);
+    ((StringBuilder)localObject).append("_");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("%0");
+    localStringBuilder.append(FORMAT_COUNT);
+    localStringBuilder.append("d");
+    ((StringBuilder)localObject).append(String.format(localStringBuilder.toString(), new Object[] { Integer.valueOf(paramInt) }));
+    ((StringBuilder)localObject).append("_alpha.pkm");
+    localObject = ((StringBuilder)localObject).toString();
+    return (ETC1Util.ETC1Texture)this.mCache.get(localObject);
   }
   
   public ETC1Util.ETC1Texture loadETCRGBTexture(int paramInt)
   {
-    String str = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + String.format(new StringBuilder().append("%0").append(FORMAT_COUNT).append("d").toString(), new Object[] { Integer.valueOf(paramInt) }) + ".pkm";
-    return (ETC1Util.ETC1Texture)this.mCache.get(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(VideoMaterial.getMaterialId(this.dataPath));
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.item.id);
+    ((StringBuilder)localObject).append("_");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("%0");
+    localStringBuilder.append(FORMAT_COUNT);
+    localStringBuilder.append("d");
+    ((StringBuilder)localObject).append(String.format(localStringBuilder.toString(), new Object[] { Integer.valueOf(paramInt) }));
+    ((StringBuilder)localObject).append(".pkm");
+    localObject = ((StringBuilder)localObject).toString();
+    return (ETC1Util.ETC1Texture)this.mCache.get(localObject);
   }
   
   public int loadImage(int paramInt1, int paramInt2)
@@ -66,7 +89,15 @@ public class LoadETCItemManager
   
   public void prepareImages()
   {
-    this.mImageTask = new LoadETCTextureTask(this.mCache, this.item.id, this.item.frames, this.dataPath + File.separator + this.item.subFolder + ".zip", VideoMaterialUtil.getMaterialId(this.dataPath));
+    Map localMap = this.mCache;
+    String str = this.item.id;
+    int i = this.item.frames;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.dataPath);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.item.subFolder);
+    localStringBuilder.append(".zip");
+    this.mImageTask = new LoadETCTextureTask(localMap, str, i, localStringBuilder.toString(), VideoMaterial.getMaterialId(this.dataPath));
     this.mImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
   }
   
@@ -74,7 +105,7 @@ public class LoadETCItemManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadETCItemManager
  * JD-Core Version:    0.7.0.1
  */

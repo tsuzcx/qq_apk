@@ -1,16 +1,19 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.video.b;
 
-import com.tencent.luggage.xweb_ext.extendplugin.a;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-
 public abstract interface c
-  extends k
 {
-  public abstract b g(a parama);
+  public abstract void a(a parama);
+  
+  public abstract void di(int paramInt1, int paramInt2);
+  
+  public static abstract interface a
+  {
+    public abstract void onVideoError(String paramString, int paramInt1, int paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.b.c
  * JD-Core Version:    0.7.0.1
  */

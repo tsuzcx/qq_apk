@@ -4,7 +4,7 @@ import java.util.Map;
 
 public final class a
 {
-  private static Map<String, String> aiS = null;
+  private static Map<String, String> amu = null;
   
   private static String a(Map<String, String> paramMap, String paramString)
   {
@@ -12,7 +12,7 @@ public final class a
   }
   
   /* Error */
-  private static java.util.HashMap<String, String> nI()
+  private static java.util.HashMap<String, String> ow()
   {
     // Byte code:
     //   0: new 32	java/util/HashMap
@@ -163,22 +163,22 @@ public final class a
     //   8	34	172	java/io/IOException
   }
   
-  public static String nJ()
+  public static String ox()
   {
-    if (aiS == null) {
-      aiS = nI();
+    if (amu == null) {
+      amu = ow();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(": ");
-    localStringBuilder.append(a(aiS, "Features"));
+    localStringBuilder.append(a(amu, "Features"));
     localStringBuilder.append(": ");
-    localStringBuilder.append(a(aiS, "Processor"));
+    localStringBuilder.append(a(amu, "Processor"));
     localStringBuilder.append(": ");
-    localStringBuilder.append(a(aiS, "CPU architecture"));
+    localStringBuilder.append(a(amu, "CPU architecture"));
     localStringBuilder.append(": ");
-    localStringBuilder.append(a(aiS, "Hardware"));
+    localStringBuilder.append(a(amu, "Hardware"));
     localStringBuilder.append(": ");
-    localStringBuilder.append(a(aiS, "Serial"));
+    localStringBuilder.append(a(amu, "Serial"));
     return localStringBuilder.toString();
   }
 }

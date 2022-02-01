@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class GroupPadTemplateInfo
-  extends awge
+  extends Entity
 {
   public static final int TEMPLATE_TYPE_COLLECT = 3;
   public static final int TEMPLATE_TYPE_DOC = 1;
@@ -21,7 +21,7 @@ public class GroupPadTemplateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

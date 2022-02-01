@@ -1,74 +1,56 @@
 package com.tencent.token;
 
-import java.util.Hashtable;
+import android.database.Cursor;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
 
-public class gi
+final class gi
+  extends Filter
 {
-  Hashtable a = new Hashtable();
-  public String b = "";
-  long c = 0L;
-  long d = 0L;
-  final boolean e;
-  private final String f;
-  private String g = "GET";
-  private int h = 0;
-  private final gj i;
-  private final byte[] j;
+  a a;
   
-  public gi(String paramString, byte[] paramArrayOfByte, gj paramgj, boolean paramBoolean)
+  gi(a parama)
   {
-    this.f = paramString;
-    this.i = paramgj;
-    if (paramArrayOfByte == null) {
-      this.j = null;
-    }
-    for (;;)
+    this.a = parama;
+  }
+  
+  public final CharSequence convertResultToString(Object paramObject)
+  {
+    return this.a.b((Cursor)paramObject);
+  }
+  
+  protected final Filter.FilterResults performFiltering(CharSequence paramCharSequence)
+  {
+    paramCharSequence = this.a.a(paramCharSequence);
+    Filter.FilterResults localFilterResults = new Filter.FilterResults();
+    if (paramCharSequence != null)
     {
-      this.e = paramBoolean;
-      return;
-      this.j = new byte[paramArrayOfByte.length];
-      System.arraycopy(paramArrayOfByte, 0, this.j, 0, this.j.length);
+      localFilterResults.count = paramCharSequence.getCount();
+      localFilterResults.values = paramCharSequence;
+      return localFilterResults;
+    }
+    localFilterResults.count = 0;
+    localFilterResults.values = null;
+    return localFilterResults;
+  }
+  
+  protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  {
+    paramCharSequence = this.a.a();
+    if ((paramFilterResults.values != null) && (paramFilterResults.values != paramCharSequence)) {
+      this.a.a((Cursor)paramFilterResults.values);
     }
   }
   
-  public String a()
+  static abstract interface a
   {
-    return this.f;
-  }
-  
-  void a(int paramInt)
-  {
-    this.h = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public gj b()
-  {
-    return this.i;
-  }
-  
-  public byte[] c()
-  {
-    if (this.j == null) {
-      return null;
-    }
-    byte[] arrayOfByte = new byte[this.j.length];
-    System.arraycopy(this.j, 0, arrayOfByte, 0, arrayOfByte.length);
-    return arrayOfByte;
-  }
-  
-  public int d()
-  {
-    return this.h;
-  }
-  
-  public String e()
-  {
-    return this.g;
+    public abstract Cursor a();
+    
+    public abstract Cursor a(CharSequence paramCharSequence);
+    
+    public abstract void a(Cursor paramCursor);
+    
+    public abstract CharSequence b(Cursor paramCursor);
   }
 }
 

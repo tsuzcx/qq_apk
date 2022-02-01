@@ -20,33 +20,33 @@ public class WorkAccount
   
   static
   {
-    AppMethodBeat.i(76964);
+    AppMethodBeat.i(10623);
     CLIENT_KEY = new Api.ClientKey();
     CLIENT_BUILDER = new zzi();
     API = new Api("WorkAccount.API", CLIENT_BUILDER, CLIENT_KEY);
     WorkAccountApi = new zzk();
-    AppMethodBeat.o(76964);
+    AppMethodBeat.o(10623);
   }
   
   public static WorkAccountClient getClient(Activity paramActivity)
   {
-    AppMethodBeat.i(76962);
+    AppMethodBeat.i(10621);
     paramActivity = new WorkAccountClient(paramActivity);
-    AppMethodBeat.o(76962);
+    AppMethodBeat.o(10621);
     return paramActivity;
   }
   
   public static WorkAccountClient getClient(Context paramContext)
   {
-    AppMethodBeat.i(76963);
+    AppMethodBeat.i(10622);
     paramContext = new WorkAccountClient(paramContext);
-    AppMethodBeat.o(76963);
+    AppMethodBeat.o(10622);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.account.WorkAccount
  * JD-Core Version:    0.7.0.1
  */

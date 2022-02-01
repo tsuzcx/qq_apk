@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.sight.encode.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public final class MainSightForwardContainerView$1
   implements View.OnClickListener
@@ -11,14 +13,18 @@ public final class MainSightForwardContainerView$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(25034);
-    this.qWc.kW(true);
-    AppMethodBeat.o(25034);
+    AppMethodBeat.i(28705);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/sight/encode/ui/MainSightForwardContainerView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.PIF.jb(true);
+    a.a(this, "com/tencent/mm/plugin/sight/encode/ui/MainSightForwardContainerView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(28705);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView.1
  * JD-Core Version:    0.7.0.1
  */

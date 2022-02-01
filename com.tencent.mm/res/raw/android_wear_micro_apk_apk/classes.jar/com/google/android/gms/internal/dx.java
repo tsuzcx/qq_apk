@@ -164,9 +164,6 @@ public final class dx
   
   public static <T extends dw> String d(T paramT)
   {
-    if (paramT == null) {
-      return "";
-    }
     StringBuffer localStringBuffer = new StringBuffer();
     try
     {

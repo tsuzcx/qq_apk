@@ -10,9 +10,9 @@ public final class ShareTraceList
 {
   static ArrayList<Long> cache_vecClose;
   static ArrayList<Long> cache_vecOpen;
-  public byte cType;
-  public ArrayList<Long> vecClose;
-  public ArrayList<Long> vecOpen;
+  public byte cType = 0;
+  public ArrayList<Long> vecClose = null;
+  public ArrayList<Long> vecOpen = null;
   
   public ShareTraceList() {}
   
@@ -26,16 +26,18 @@ public final class ShareTraceList
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.cType = paramJceInputStream.read(this.cType, 0, true);
-    if (cache_vecOpen == null)
+    ArrayList localArrayList = cache_vecOpen;
+    Long localLong = Long.valueOf(0L);
+    if (localArrayList == null)
     {
       cache_vecOpen = new ArrayList();
-      cache_vecOpen.add(Long.valueOf(0L));
+      cache_vecOpen.add(localLong);
     }
     this.vecOpen = ((ArrayList)paramJceInputStream.read(cache_vecOpen, 1, false));
     if (cache_vecClose == null)
     {
       cache_vecClose = new ArrayList();
-      cache_vecClose.add(Long.valueOf(0L));
+      cache_vecClose.add(localLong);
     }
     this.vecClose = ((ArrayList)paramJceInputStream.read(cache_vecClose, 2, false));
   }
@@ -43,17 +45,19 @@ public final class ShareTraceList
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cType, 0);
-    if (this.vecOpen != null) {
-      paramJceOutputStream.write(this.vecOpen, 1);
+    ArrayList localArrayList = this.vecOpen;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    if (this.vecClose != null) {
-      paramJceOutputStream.write(this.vecClose, 2);
+    localArrayList = this.vecClose;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.ShareTraceList
  * JD-Core Version:    0.7.0.1
  */

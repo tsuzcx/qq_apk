@@ -3,45 +3,41 @@ package com.google.firebase.iid;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
-@VisibleForTesting
 final class s
   extends BroadcastReceiver
 {
-  @Nullable
-  r bfO;
+  r dDm;
   
   public s(r paramr)
   {
-    this.bfO = paramr;
+    this.dDm = paramr;
   }
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(108772);
-    if (this.bfO == null)
+    AppMethodBeat.i(4208);
+    if (this.dDm == null)
     {
-      AppMethodBeat.o(108772);
+      AppMethodBeat.o(4208);
       return;
     }
-    if (!this.bfO.zzaj())
+    if (!this.dDm.zzaj())
     {
-      AppMethodBeat.o(108772);
+      AppMethodBeat.o(4208);
       return;
     }
-    FirebaseInstanceId.rP();
-    FirebaseInstanceId.c(this.bfO, 0L);
-    this.bfO.getContext().unregisterReceiver(this);
-    this.bfO = null;
-    AppMethodBeat.o(108772);
+    FirebaseInstanceId.Yl();
+    FirebaseInstanceId.c(this.dDm, 0L);
+    this.dDm.getContext().unregisterReceiver(this);
+    this.dDm = null;
+    AppMethodBeat.o(4208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.s
  * JD-Core Version:    0.7.0.1
  */

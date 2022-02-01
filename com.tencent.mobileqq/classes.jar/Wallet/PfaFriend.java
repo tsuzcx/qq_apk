@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class PfaFriend
   extends JceStruct
 {
-  public int month_remain_limit;
-  public int per_limit;
+  public int month_remain_limit = 0;
+  public int per_limit = 0;
   public String rec_desc = "";
-  public int type;
+  public int type = 0;
   public String uin = "";
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -26,8 +26,9 @@ public final class PfaFriend
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.type, 1);
-    if (this.rec_desc != null) {
-      paramJceOutputStream.write(this.rec_desc, 2);
+    String str = this.rec_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.month_remain_limit, 3);
     paramJceOutputStream.write(this.per_limit, 4);
@@ -35,7 +36,7 @@ public final class PfaFriend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.PfaFriend
  * JD-Core Version:    0.7.0.1
  */

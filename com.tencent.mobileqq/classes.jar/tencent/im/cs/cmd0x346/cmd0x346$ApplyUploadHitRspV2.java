@@ -29,14 +29,16 @@ public final class cmd0x346$ApplyUploadHitRspV2
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 80, 162, 242, 320, 402, 482, 562, 640, 720, 800, 882, 962 }, new String[] { "int32_ret_code", "str_ret_msg", "str_upload_ip", "uint32_upload_port", "str_upload_domain", "bytes_uuid", "bytes_upload_key", "uint64_total_space", "uint64_used_space", "uint32_upload_https_port", "str_upload_https_domain", "str_upload_dns" }, new Object[] { Integer.valueOf(0), "", "", Integer.valueOf(0), "", localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(443), "", "" }, ApplyUploadHitRspV2.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 80, 162, 242, 320, 402, 482, 562, 640, 720, 800, 882, 962 }, new String[] { "int32_ret_code", "str_ret_msg", "str_upload_ip", "uint32_upload_port", "str_upload_domain", "bytes_uuid", "bytes_upload_key", "uint64_total_space", "uint64_used_space", "uint32_upload_https_port", "str_upload_https_domain", "str_upload_dns" }, new Object[] { localInteger, "", "", localInteger, "", localByteStringMicro1, localByteStringMicro2, localLong, localLong, Integer.valueOf(443), "", "" }, ApplyUploadHitRspV2.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.ApplyUploadHitRspV2
  * JD-Core Version:    0.7.0.1
  */

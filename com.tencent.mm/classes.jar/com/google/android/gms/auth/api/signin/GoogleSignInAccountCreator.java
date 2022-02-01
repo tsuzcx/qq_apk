@@ -15,7 +15,7 @@ public class GoogleSignInAccountCreator
   
   public GoogleSignInAccount createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(60346);
+    AppMethodBeat.i(10838);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     String str8 = null;
@@ -76,7 +76,7 @@ public class GoogleSignInAccountCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new GoogleSignInAccount(i, str8, str7, str6, str5, localUri, str4, l, str3, localArrayList, str2, str1);
-    AppMethodBeat.o(60346);
+    AppMethodBeat.o(10838);
     return paramParcel;
   }
   
@@ -87,7 +87,7 @@ public class GoogleSignInAccountCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.GoogleSignInAccountCreator
  * JD-Core Version:    0.7.0.1
  */

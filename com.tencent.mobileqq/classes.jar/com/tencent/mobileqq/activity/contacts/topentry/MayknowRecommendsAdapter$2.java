@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ahuo;
-
-public class MayknowRecommendsAdapter$2
+class MayknowRecommendsAdapter$2
   implements Runnable
 {
-  public MayknowRecommendsAdapter$2(ahuo paramahuo) {}
+  MayknowRecommendsAdapter$2(MayknowRecommendsAdapter paramMayknowRecommendsAdapter) {}
   
   public void run()
   {

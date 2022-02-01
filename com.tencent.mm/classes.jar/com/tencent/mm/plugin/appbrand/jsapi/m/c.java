@@ -1,16 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 
-public final class c
-  extends a<com.tencent.mm.plugin.appbrand.service.c>
+final class c
+  extends bc
 {
-  public static final int CTRL_INDEX = 86;
-  public static final String NAME = "bindPaymentCard";
+  private static final int CTRL_INDEX = 995;
+  private static final String NAME = "onLocationChangeError";
+  final f rZU;
+  
+  c(f paramf)
+  {
+    this.rZU = paramf;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.c
  * JD-Core Version:    0.7.0.1
  */

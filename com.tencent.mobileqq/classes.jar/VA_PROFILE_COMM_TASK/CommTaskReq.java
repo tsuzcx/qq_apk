@@ -9,8 +9,8 @@ public final class CommTaskReq
 {
   static CommHeader cache_stHeader = new CommHeader();
   static byte[] cache_vTaskData = (byte[])new byte[1];
-  public CommHeader stHeader;
-  public byte[] vTaskData;
+  public CommHeader stHeader = null;
+  public byte[] vTaskData = null;
   
   static
   {
@@ -33,17 +33,19 @@ public final class CommTaskReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stHeader != null) {
-      paramJceOutputStream.write(this.stHeader, 0);
+    Object localObject = this.stHeader;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.vTaskData != null) {
-      paramJceOutputStream.write(this.vTaskData, 1);
+    localObject = this.vTaskData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VA_PROFILE_COMM_TASK.CommTaskReq
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Sequence", "Lkotlin/sequences/Sequence;", "T", "iterator", "Lkotlin/Function0;", "", "emptySequence", "generateSequence", "", "nextFunction", "seedFunction", "Lkotlin/Function1;", "seed", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;", "sequenceOf", "elements", "", "([Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "asSequence", "constrainOnce", "flatten", "R", "flatten$SequencesKt__SequencesKt", "", "flattenSequenceOfIterable", "ifEmpty", "defaultValue", "orEmpty", "unzip", "Lkotlin/Pair;", "", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/sequences/SequencesKt")
-public class SequencesKt__SequencesKt
+class SequencesKt__SequencesKt
   extends SequencesKt__SequencesJVMKt
 {
   @InlineOnly
@@ -123,8 +123,13 @@ public class SequencesKt__SequencesKt
   public static final <T> Sequence<T> sequenceOf(@NotNull T... paramVarArgs)
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "elements");
-    if (paramVarArgs.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramVarArgs.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return ArraysKt.asSequence(paramVarArgs);
@@ -148,7 +153,7 @@ public class SequencesKt__SequencesKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.sequences.SequencesKt__SequencesKt
  * JD-Core Version:    0.7.0.1
  */

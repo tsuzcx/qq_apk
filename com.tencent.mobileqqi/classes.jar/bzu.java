@@ -1,26 +1,19 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.qlink.QQProxyForQlink.Listener;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
 
-public class bzu
-  extends QQProxyForQlink.Listener
+class bzu
+  implements DialogInterface.OnClickListener
 {
-  private bzu(ChatActivity paramChatActivity) {}
+  bzu(bzt parambzt) {}
   
-  protected void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString == null) {}
-    while (!this.a.a.a.equalsIgnoreCase(paramString)) {
-      return;
-    }
-    Object localObject = new bzv(this);
-    paramString = new bzw(this);
-    localObject = DialogUtil.a(this.a, 230, null, this.a.getString(2131560936), 2131563227, 2131560937, (DialogInterface.OnClickListener)localObject, null);
-    ((QQCustomDialog)localObject).setOnDismissListener(paramString);
-    ((QQCustomDialog)localObject).show();
+    MsgProxyUtils.b(this.a.a.b, this.a.a.a.jdField_a_of_type_JavaLangString, this.a.a.a.jdField_a_of_type_Int);
+    ChatActivity.a(this.a.a).notifyDataSetChanged();
   }
 }
 

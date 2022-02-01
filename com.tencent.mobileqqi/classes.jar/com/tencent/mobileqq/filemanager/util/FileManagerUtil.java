@@ -69,10 +69,10 @@ import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import cooperation.qlink.QlinkHelper;
 import cooperation.qlink.QlinkPluginProxyActivity;
+import fyg;
 import fyh;
 import fyi;
 import fyj;
-import fyk;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.net.MalformedURLException;
@@ -297,7 +297,7 @@ public class FileManagerUtil
     {
       int j = paramString2.length() + i;
       paramString1 = new SpannableString(paramString1);
-      paramString2 = new fyk(paramTipsClickedInterface);
+      paramString2 = new fyj(paramTipsClickedInterface);
       paramString1.setSpan(new ForegroundColorSpan(2131361799), i, j, 33);
       paramString1.setSpan(paramString2, i, j, 33);
       paramString1.setSpan(paramString2, i, j, 33);
@@ -1365,7 +1365,7 @@ public class FileManagerUtil
     while (NetworkUtil.e(paramContext)) {
       if ((a()) && (paramFileManagerEntity.fileSize > 5242880L) && (!a(paramFileManagerEntity)))
       {
-        FMDialogUtil.a(paramContext, 2131558759, i, new fyh(paramFileManagerEntity, paramQQAppInterface));
+        FMDialogUtil.a(paramContext, 2131558759, i, new fyg(paramFileManagerEntity, paramQQAppInterface));
         return;
         i = 2131558757;
       }
@@ -1604,7 +1604,7 @@ public class FileManagerUtil
   {
     if (!paramFileManagerEntity.bSend)
     {
-      paramQQAppInterface = new fyi();
+      paramQQAppInterface = new fyh();
       DialogUtil.a(paramContext, 230, paramContext.getString(2131560920), paramContext.getString(2131560919), 2131563227, 2131562539, paramQQAppInterface, null).show();
       return;
     }
@@ -1614,7 +1614,7 @@ public class FileManagerUtil
     localActionSheet.c(str1);
     localActionSheet.d(paramContext.getString(2131561746));
     localActionSheet.a(str2);
-    localActionSheet.a(new fyj(paramQQAppInterface, paramFileManagerEntity, localActionSheet));
+    localActionSheet.a(new fyi(paramQQAppInterface, paramFileManagerEntity, localActionSheet));
     localActionSheet.show();
   }
   

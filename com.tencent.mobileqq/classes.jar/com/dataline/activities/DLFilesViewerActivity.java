@@ -1,31 +1,28 @@
 package com.dataline.activities;
 
-import aa;
-import ac;
-import alof;
-import alqo;
-import alqv;
-import amns;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
-import com.dataline.util.file.DLFileInfo;
+import com.dataline.util.DatalineFilesAdapter;
+import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.DataLineObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.XListView;
-import dm;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -33,143 +30,83 @@ public class DLFilesViewerActivity
   extends IphoneTitleBarActivity
   implements Observer
 {
-  public static String a;
-  private alqv jdField_a_of_type_Alqv = new ac(this);
-  private DataLineMsgSet jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private dm jdField_a_of_type_Dm;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "DLFilesViewerActivity";
-  }
+  public static String a = "DLFilesViewerActivity";
+  private XListView b;
+  private DataLineMsgSet c = null;
+  private DatalineFilesAdapter d = null;
+  private DataLineObserver e = new DLFilesViewerActivity.2(this);
   
   private void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
-    int i = 1;
-    int j = 0;
-    DataLineMsgRecord localDataLineMsgRecord;
-    DLFileInfo localDLFileInfo;
-    if (localIterator.hasNext())
-    {
-      localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-      localDLFileInfo = dm.a(localDataLineMsgRecord);
-      if (((localDLFileInfo.a != 0) && (localDLFileInfo.a != 3)) || (j != 0)) {
-        break label217;
-      }
-      j = 1;
-    }
-    label128:
-    label151:
-    label214:
-    label217:
-    for (;;)
-    {
-      int k;
-      if ((localDLFileInfo.a == 5) && (localDataLineMsgRecord.strMoloKey != null))
-      {
-        alqo localalqo = (alqo)this.app.a(8);
-        if (!localDataLineMsgRecord.bIsApkFile) {
-          break label151;
-        }
-        if (localalqo.a(localDataLineMsgRecord.strMoloKey))
-        {
-          k = 1;
-          label122:
-          localDataLineMsgRecord.nAppStatus = k;
-        }
-      }
-      else
-      {
-        if ((localDLFileInfo.a == 5) || (i == 0)) {
-          break label214;
-        }
-        i = 0;
-      }
-      for (;;)
-      {
-        break;
-        k = 0;
-        break label122;
-        localDataLineMsgRecord.nAppStatus = 1;
-        break label128;
-        if (i == 0)
-        {
-          this.rightViewText.setVisibility(0);
-          if (j != 0)
-          {
-            this.rightViewText.setText(getString(2131694000));
-            return;
-          }
-          this.rightViewText.setText(getString(2131693999));
-          return;
-        }
-        this.rightViewText.setVisibility(8);
-        return;
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void b()
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getFirstItem();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2335) && (localDataLineMsgRecord.bIsApkFile)) {
-      setTitle(2131694001);
+    DataLineMsgRecord localDataLineMsgRecord = this.c.getFirstItem();
+    if ((this.c.getGroupType() == -2335) && (localDataLineMsgRecord.bIsApkFile)) {
+      setTitle(2131891271);
+    } else {
+      setTitle(2131891296);
     }
-    for (;;)
-    {
-      this.leftView.setVisibility(0);
-      this.leftView.setText(getString(2131694083));
-      a();
-      this.rightViewText.setOnClickListener(new aa(this));
-      return;
-      setTitle(2131694025);
-    }
+    this.leftView.setVisibility(0);
+    this.leftView.setText(getString(2131891354));
+    a();
+    this.rightViewText.setOnClickListener(new DLFilesViewerActivity.1(this));
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("dl_files_groupid", 0);
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = this.app.a().a(0).a(i);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = this.app.a().a(1).a(i);
+    this.c = this.app.getProxyManager().a(0).a(i);
+    if (this.c == null) {
+      this.c = this.app.getProxyManager().a(1).a(i);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet == null)
+    if (this.c == null)
     {
       finish();
       return false;
     }
-    getWindow().setBackgroundDrawableResource(2131165395);
-    setContentView(2131558970);
+    getWindow().setBackgroundDrawableResource(2131165716);
+    setContentView(2131624642);
     getWindow().setBackgroundDrawable(null);
     b();
-    findViewById(2131366342);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366341));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setStackFromBottom(true);
-    this.jdField_a_of_type_Dm = new dm(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet, this, this.app);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Dm);
-    paramBundle = LayoutInflater.from(getActivity()).inflate(2131558860, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130844413));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(paramBundle);
-    addObserver(this.jdField_a_of_type_Alqv);
-    paramBundle = this.app.a();
+    findViewById(2131433144);
+    this.b = ((XListView)findViewById(2131433143));
+    this.b.setStackFromBottom(true);
+    this.d = new DatalineFilesAdapter(this, this.c, this, this.app);
+    this.b.setAdapter(this.d);
+    paramBundle = LayoutInflater.from(getActivity()).inflate(2131624523, null);
+    this.b.setOverscrollHeader(getActivity().getResources().getDrawable(2130846237));
+    this.b.setOverScrollHeader(paramBundle);
+    addObserver(this.e);
+    paramBundle = this.app.getMessageFacade();
     if (paramBundle != null) {
       paramBundle.addObserver(this);
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getTotalCount() - 1);
+    this.b.setSelection(this.c.getTotalCount() - 1);
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Alqv != null) {
-      removeObserver(this.jdField_a_of_type_Alqv);
+    DataLineObserver localDataLineObserver = this.e;
+    if (localDataLineObserver != null) {
+      removeObserver(localDataLineObserver);
     }
-    if (this.app.a() != null) {
-      this.app.a().deleteObserver(this);
+    if (this.app.getMessageFacade() != null) {
+      this.app.getMessageFacade().deleteObserver(this);
     }
   }
   
@@ -177,36 +114,42 @@ public class DLFilesViewerActivity
   {
     super.doOnResume();
     a();
-    this.jdField_a_of_type_Dm.notifyDataSetChanged();
+    this.d.notifyDataSetChanged();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof DataLineMsgRecord))
     {
-      this.jdField_a_of_type_Dm.notifyDataSetChanged();
-      a();
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!(paramObject instanceof QQMessageFacade.Message)) {
-          break;
-        }
-      } while (!((QQMessageFacade.Message)paramObject).frienduin.endsWith(String.valueOf(alof.z)));
-      this.jdField_a_of_type_Dm.notifyDataSetChanged();
+      this.d.notifyDataSetChanged();
       a();
       return;
-    } while ((!(paramObject instanceof RecentUser)) || (!((RecentUser)paramObject).uin.endsWith(String.valueOf(alof.z))));
-    this.jdField_a_of_type_Dm.notifyDataSetChanged();
-    a();
+    }
+    if ((paramObject instanceof Message))
+    {
+      if (((Message)paramObject).frienduin.endsWith(String.valueOf(AppConstants.DATALINE_PC_UIN)))
+      {
+        this.d.notifyDataSetChanged();
+        a();
+      }
+    }
+    else if (((paramObject instanceof RecentUser)) && (((RecentUser)paramObject).uin.endsWith(String.valueOf(AppConstants.DATALINE_PC_UIN))))
+    {
+      this.d.notifyDataSetChanged();
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.DLFilesViewerActivity
  * JD-Core Version:    0.7.0.1
  */

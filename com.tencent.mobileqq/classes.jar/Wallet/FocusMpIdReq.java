@@ -26,17 +26,19 @@ public final class FocusMpIdReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.uin != null) {
-      paramJceOutputStream.write(this.uin, 0);
+    String str = this.uin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.mp_id != null) {
-      paramJceOutputStream.write(this.mp_id, 1);
+    str = this.mp_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.FocusMpIdReq
  * JD-Core Version:    0.7.0.1
  */

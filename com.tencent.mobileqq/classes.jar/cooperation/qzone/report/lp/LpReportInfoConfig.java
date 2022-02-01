@@ -314,6 +314,8 @@ public class LpReportInfoConfig
   public static final int RESERVE_ACTION_SHARE_TO_QQ_ONLY = 7;
   public static final int RESERVE_ACTION_SHARE_TO_QZONE = 8;
   public static final int RESERVE_ACTION_SHARE_TO_WEIXIN = 10;
+  public static final int RESERVE_ACTION_SIMPLE_FEEDS_PAGE_CLICKED = 2;
+  public static final int RESERVE_ACTION_SIMPLE_FEEDS_PAGE_EXPOSURE = 1;
   public static final int RESERVE_ACTION_SLOW_SPEED_FINISH = 2;
   public static final int RESERVE_ACTION_SPECIAL_TOAST_CLICKED = 2;
   public static final int RESERVE_ACTION_SPECIAL_TOAST_EXPOSURE = 1;
@@ -377,6 +379,8 @@ public class LpReportInfoConfig
   public static final int RESERVE_FILTER_CLICK_CANCEL = 2;
   public static final int RESERVE_FILTER_CLICK_FINISH = 3;
   public static final int RESERVE_FILTER_CLICK_ICON = 4;
+  public static final int RESERVE_NEW_ALBUM_EXPLOSE_EDIT = 1;
+  public static final int RESERVE_NEW_ALBUM_EXPLOSE_NEW = 0;
   public static final int RESERVE_PHOTO_LIST_EXPOSURE = 50;
   public static final int RESERVE_PHOTO_PREVIEW_CLICK = 1;
   public static final int RESERVE_PIC_CROP_CANCEL = 5;
@@ -455,6 +459,7 @@ public class LpReportInfoConfig
   public static final int SCENE_APP_BACKGROUND = 2;
   public static final int SCENE_CONDITION_MEET = 3;
   public static final int SCENE_USER_ACTION = 1;
+  public static final int SIMPLE_FEEDS_PAGE_ACTION_TYPE = 143;
   public static final int SUBACTION_TYPE_DETAIL_SHARE = 53;
   public static final int SUBACTION_TYPE_GAME_SHARE = 7;
   public static final int SUBATION_TYPE_P2V_DOWNLOAD = 12;
@@ -470,11 +475,17 @@ public class LpReportInfoConfig
   public static final int SUBATION_TYPE_P2V_SPEED = 10;
   public static final int SUBATION_TYPE_P2V_STICKER = 8;
   public static final int SUBATION_TYPE_P2V_TRANSITION = 7;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED = 17;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED_CLOSE = 4;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED_DRESS = 2;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED_EXPOSURE = 1;
+  public static final int SUB_ACTION_ACTIVE_BIRTHDAY_FEED_MORE = 3;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_ICON = 30;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_ICON_ALL = 31;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_NO_RED_POINT = 23;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_NUM_RED_POINT = 22;
   public static final int SUB_ACTION_ACTIVE_FEEDS_SIMPLE_MODE_SMALL_RED_POINT = 21;
+  public static final int SUB_ACTION_ACTIVE_FIRST_FEED = 619;
   public static final int SUB_ACTION_ADD_FRIEND_BTN_CLICK = 3;
   public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_LIST_ACTIVITY = 2;
   public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_LIST_PANEL = 1;
@@ -643,6 +654,10 @@ public class LpReportInfoConfig
   public static final int SUB_SELECT_PHOTO_MORE = 2;
   public static final int SUB_SELECT_PHOTO_NONE = 0;
   public static final int SUB_SELECT_PHOTO_ONE = 1;
+  public static final int SUB_SIMPLE_FEEDS_PAGE_ACTION_TYPE_AVATAR = 2;
+  public static final int SUB_SIMPLE_FEEDS_PAGE_ACTION_TYPE_BLANK = 4;
+  public static final int SUB_SIMPLE_FEEDS_PAGE_ACTION_TYPE_NAME = 3;
+  public static final int SUB_SIMPLE_FEEDS_PAGE_ACTION_TYPE_VISITOR = 5;
   public static final int SUB_TYPE_INPUT_PANEL_EMO_ASS = 14;
   public static final int SUB_TYPE_LOCAL_PHOTO_NOTIFICATION = 5;
   public static final int SUB_TYPE_PULL_DOWN = 3;
@@ -716,7 +731,7 @@ public class LpReportInfoConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfoConfig
  * JD-Core Version:    0.7.0.1
  */

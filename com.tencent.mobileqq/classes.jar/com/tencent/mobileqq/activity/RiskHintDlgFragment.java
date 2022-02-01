@@ -1,183 +1,258 @@
 package com.tencent.mobileqq.activity;
 
-import advj;
-import advk;
-import advl;
-import advm;
-import advn;
-import advo;
-import advp;
-import advq;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import aqbd;
-import azqs;
-import bdgm;
-import bdin;
-import bdjz;
-import bdne;
-import beec;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.mobileqq.logintempapi.ILoginApi;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
+import com.tencent.mobileqq.qqsec.api.ISafeBlockApi;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.BaseSharedPreUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 import mqq.observer.WtloginObserver;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import org.json.JSONObject;
 
 public class RiskHintDlgFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
 {
-  public String a;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new advq(this);
-  public DevlockInfo a;
-  private boolean jdField_a_of_type_Boolean = true;
-  public String b;
-  public String c;
+  String a;
+  String b;
+  String c;
+  DevlockInfo d = null;
+  WtloginObserver e = new RiskHintDlgFragment.8(this);
+  private boolean f = true;
+  private String g;
+  private String h;
   
-  public RiskHintDlgFragment()
+  private void a(int paramInt, TextView... paramVarArgs)
   {
-    this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      TextView localTextView = paramVarArgs[i];
+      if (localTextView != null) {
+        localTextView.setTextColor(paramInt);
+      }
+      i += 1;
+    }
+  }
+  
+  private void a(QQCustomDialog paramQQCustomDialog)
+  {
+    if (paramQQCustomDialog == null)
+    {
+      QLog.e("RiskHintDlgFragment", 1, "setDialogTextColor: dialog == null");
+      return;
+    }
+    TextView localTextView1 = paramQQCustomDialog.getTitleTextView();
+    TextView localTextView2 = paramQQCustomDialog.getMessageTextView();
+    TextView localTextView3 = paramQQCustomDialog.getBtnLeft();
+    TextView localTextView4 = paramQQCustomDialog.getBtnight();
+    TextView localTextView5 = (TextView)paramQQCustomDialog.findViewById(2131431854);
+    if ("1103".equals(ThemeUtil.getCurrentThemeId())) {
+      paramQQCustomDialog = "#FFFFFF";
+    } else {
+      paramQQCustomDialog = "#000000";
+    }
+    try
+    {
+      int i = Color.parseColor(paramQQCustomDialog);
+      a(i, new TextView[] { localTextView1, localTextView2, localTextView3, localTextView4, localTextView5 });
+      return;
+    }
+    catch (Exception paramQQCustomDialog)
+    {
+      QLog.e("RiskHintDlgFragment", 1, "setDialogTextColor: parseColor error", paramQQCustomDialog);
+    }
+  }
+  
+  private void a(QQCustomDialog paramQQCustomDialog, String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramQQCustomDialog != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      QLog.d("RiskHintDlgFragment", 1, "setDialogMessageLinkStyle: need to set");
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      localSpannableStringBuilder.append(new SpannableString(paramString1));
+      paramString1 = new SpannableString(paramString2);
+      paramString1.setSpan(new RiskHintDlgFragment.RiskLinkClickableSpan(paramString3, paramQQCustomDialog, new WeakReference(getQBaseActivity())), 0, paramString2.length(), 33);
+      localSpannableStringBuilder.append(paramString1);
+      paramQQCustomDialog.setMessageWithoutAutoLink(localSpannableStringBuilder);
+      return;
+    }
+    QLog.d("RiskHintDlgFragment", 1, "setDialogMessageLinkStyle: not need to set");
   }
   
   private void b()
   {
-    Intent localIntent = new Intent(getActivity(), AuthDevActivity.class);
-    localIntent.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
-    localIntent.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("phone_num", this.d.Mobile);
+    localIntent.putExtra("country_code", this.d.CountryCode);
     localIntent.putExtra("auth_dev_open", false);
     localIntent.putExtra("from_risk_hint", true);
-    localIntent.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
-    localIntent.putExtra("auth_dev_gray_switch", this.jdField_a_of_type_Boolean);
-    startActivityForResult(localIntent, 0);
+    localIntent.putExtra("DevlockInfo", this.d);
+    localIntent.putExtra("auth_dev_gray_switch", this.f);
+    RouteUtils.a(getActivity(), localIntent, "/base/safe/authDevActivity", 0);
   }
   
   void a()
   {
-    String str = getActivity().app.getCurrentAccountUin();
-    int i = aqbd.a().a(getActivity().app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    Object localObject = getQBaseActivity().getAppRuntime().getCurrentAccountUin();
+    int i = ((ILoginApi)QRoute.api(ILoginApi.class)).getDevLockStatus(getQBaseActivity().getAppRuntime(), (String)localObject, this.e);
     if (i != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RiskHintDlgFragment", 2, "startGetDevLockStatus CheckDevLockStatus failed. ret=" + i);
-      }
-      this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
-    }
-    str = bdne.j(getActivity(), getActivity().app.getCurrentAccountUin());
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      if (new JSONObject(str).optInt("securityType", 0) == 0) {}
-      for (boolean bool = true;; bool = false)
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_Boolean = bool;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("startGetDevLockStatus CheckDevLockStatus failed. ret=");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("RiskHintDlgFragment", 2, ((StringBuilder)localObject).toString());
+      }
+      this.d = null;
+    }
+    localObject = (String)BaseSharedPreUtil.a(getActivity(), getQBaseActivity().getAppRuntime().getCurrentAccountUin(), "device_manage_switch", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject((String)localObject).optInt("securityType", 0) != 0) {
+          break label168;
+        }
+        bool = true;
+        this.f = bool;
         return;
       }
+      catch (Exception localException)
+      {
+        QLog.e("RiskHintDlgFragment", 1, new Object[] { "parse dev gray switch error : ", localException.getMessage() });
+      }
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("RiskHintDlgFragment", 1, new Object[] { "parse dev gray switch error : ", localException.getMessage() });
+      label168:
+      boolean bool = false;
     }
   }
   
-  public void a(String paramString)
+  void a(String paramString)
   {
-    if ("1".equals(paramString)) {
-      if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null)
-      {
-        if (bdin.d(getActivity())) {
-          break label137;
-        }
-        QQToast.a(getActivity(), getString(2131692398), 0).b(getActivity().getTitleBarHeight());
-      }
+    if (!TextUtils.isEmpty(paramString)) {
+      ((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).cancelVerifyRiskDialog(getQBaseActivity().getAppRuntime().getCurrentAccountUin());
     }
-    label137:
-    do
+    if ("1".equals(paramString))
     {
-      return;
-      if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup == 1)
+      paramString = this.d;
+      if (paramString == null)
       {
-        paramString = new Intent(getActivity(), AuthDevActivity.class);
-        paramString.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
-        paramString.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
+        if (!NetworkUtil.isNetSupport(getActivity())) {
+          QQToast.makeText(getActivity(), getString(2131889169), 0).show(getQBaseActivity().getTitleBarHeight());
+        }
+      }
+      else if (paramString.DevSetup == 1)
+      {
+        paramString = new Intent();
+        paramString.putExtra("phone_num", this.d.Mobile);
+        paramString.putExtra("country_code", this.d.CountryCode);
         paramString.putExtra("auth_dev_open", true);
         paramString.putExtra("from_risk_hint", true);
-        paramString.putExtra("auth_dev_gray_switch", this.jdField_a_of_type_Boolean);
-        startActivity(paramString);
+        paramString.putExtra("auth_dev_gray_switch", this.f);
+        RouteUtils.a(getActivity(), paramString, "/base/safe/authDevActivity");
       }
-      for (;;)
+      else if (TextUtils.isEmpty(this.d.Mobile))
       {
-        azqs.b(getActivity().app, "dc00898", "", "", "0X800AAA5", "0X800AAA5", 0, 0, "", "", "", "");
-        a();
-        if (getActivity() == null) {
-          break;
-        }
-        getActivity().finish();
-        return;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile))
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            b();
-            return;
-          }
-          paramString = new Intent(getActivity(), AuthDevOpenUgActivity.class);
-          paramString.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
-          paramString.putExtra("from_risk_hint", true);
-          startActivity(paramString);
-        }
-        else if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet == 0)
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            b();
-            return;
-          }
-          paramString = new Intent(getActivity(), AuthDevOpenUgActivity.class);
-          paramString.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
-          paramString.putExtra("from_risk_hint", true);
-          startActivity(paramString);
-        }
-        else if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet == 1)
+        if (this.f)
         {
           b();
+          return;
         }
+        paramString = new Intent();
+        paramString.putExtra("DevlockInfo", this.d);
+        paramString.putExtra("from_risk_hint", true);
+        RouteUtils.a(getActivity(), paramString, "/base/safe/authDevOpenActivity");
+      }
+      else if (this.d.AllowSet == 0)
+      {
+        if (this.f)
+        {
+          b();
+          return;
+        }
+        paramString = new Intent();
+        paramString.putExtra("DevlockInfo", this.d);
+        paramString.putExtra("from_risk_hint", true);
+        RouteUtils.a(getActivity(), paramString, "/base/safe/authDevOpenActivity");
+      }
+      else if (this.d.AllowSet == 1)
+      {
+        b();
+      }
+      ReportController.b(getQBaseActivity().getAppRuntime(), "dc00898", "", "", "0X800AAA5", "0X800AAA5", 0, 0, "", "", "", "");
+      a();
+      if (getActivity() != null) {
+        getActivity().finish();
+      }
+    }
+    else
+    {
+      if (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramString))
+      {
+        if (paramString.contains("1109907872")) {
+          ReportController.b(getQBaseActivity().getAppRuntime(), "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
+        } else if (paramString.contains("1108149324")) {
+          ReportController.b(getQBaseActivity().getAppRuntime(), "dc00898", "", "", "0X800B258", "0X800B258", 0, 0, "", "", "", "");
+        }
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(getQBaseActivity(), paramString, 4010, null);
+        return;
       }
       if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http")) || (paramString.startsWith("https"))))
       {
-        Intent localIntent = new Intent(getActivity(), QQBrowserActivity.class);
+        Intent localIntent = new Intent();
         localIntent.putExtra("url", paramString);
         localIntent.putExtra("from_risk_hint", true);
-        getActivity().startActivity(localIntent);
-        azqs.b(getActivity().app, "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
+        RouteUtils.a(getActivity(), localIntent, "/base/browser");
         return;
       }
-      azqs.b(getActivity().app, "dc00898", "", "", "0X800AAA6", "0X800AAA6", 0, 0, "", "", "", "");
-    } while (getActivity() == null);
-    getActivity().finish();
+      ReportController.b(getQBaseActivity().getAppRuntime(), "dc00898", "", "", "0X800AAA6", "0X800AAA6", 0, 0, "", "", "", "");
+      if (getActivity() != null) {
+        getActivity().finish();
+      }
+    }
   }
   
   void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     try
     {
-      paramString1 = bdgm.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, new advj(this), new advk(this));
-      paramString1.setOnDismissListener(new advl(this));
+      paramString1 = DialogUtil.a(getQBaseActivity(), 0, paramString1, paramString2, paramString3, paramString4, new RiskHintDlgFragment.1(this), new RiskHintDlgFragment.2(this));
+      paramString1.setOnDismissListener(new RiskHintDlgFragment.3(this));
       paramString1.show();
       return;
     }
     catch (Throwable paramString1)
     {
       QLog.e("RiskHintDlgFragment", 1, paramString1, new Object[0]);
-      getActivity().finish();
+      getQBaseActivity().finish();
     }
   }
   
@@ -185,22 +260,23 @@ public class RiskHintDlgFragment
   {
     try
     {
-      paramString1 = bdgm.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, paramString5, new advm(this), new advn(this), new advo(this));
-      paramString1.setOnDismissListener(new advp(this));
+      paramString1 = DialogUtil.a(getQBaseActivity(), 0, paramString1, paramString2, paramString3, paramString4, paramString5, new RiskHintDlgFragment.4(this), new RiskHintDlgFragment.5(this), new RiskHintDlgFragment.6(this));
+      paramString1.setOnDismissListener(new RiskHintDlgFragment.7(this));
+      a(paramString1);
+      a(paramString1, paramString2, this.g, this.h);
       paramString1.show();
       return;
     }
     catch (Throwable paramString1)
     {
       QLog.e("RiskHintDlgFragment", 1, paramString1, new Object[0]);
-      getActivity().finish();
+      getQBaseActivity().finish();
     }
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
-    paramActivity.getWindow().setFlags(1024, 1024);
     paramActivity.overridePendingTransition(0, 0);
   }
   
@@ -213,35 +289,38 @@ public class RiskHintDlgFragment
     String str3 = localBundle.getString("btnText1", "");
     String str4 = localBundle.getString("btnText2", "");
     String str5 = localBundle.getString("btnText3", "");
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("btnAction1", "");
+    this.a = localBundle.getString("btnAction1", "");
     this.b = localBundle.getString("btnAction2", "");
     this.c = localBundle.getString("btnAction3", "");
-    if (l == 1062L) {
+    this.g = localBundle.getString("contentUrlText", "");
+    this.h = localBundle.getString("contentUrlValue", "");
+    if (l == 1062L)
+    {
       a(str1, str2, str3, str4);
     }
-    for (;;)
+    else if ((l != 1063L) && (l != 1123L) && (l != 1124L))
     {
-      a();
-      beec.b(2);
-      azqs.b(getActivity().app, "dc00898", "", "", "0X800AAA3", "0X800AAA3", 0, 0, "", "", "", "");
-      return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-      if (l == 1063L)
-      {
-        a(str1, str2, str3, str4, str5);
-      }
-      else
-      {
-        QLog.e("RiskHintDlgFragment", 1, new Object[] { "error templateId:", Long.valueOf(l) });
-        if (getActivity() != null) {
-          getActivity().finish();
-        }
+      QLog.e("RiskHintDlgFragment", 1, new Object[] { "error templateId:", Long.valueOf(l) });
+      if (getActivity() != null) {
+        getActivity().finish();
       }
     }
+    else
+    {
+      a(str1, str2, str3, str4, str5);
+    }
+    a();
+    ((ILoginApi)QRoute.api(ILoginApi.class)).preloadThirdService();
+    ((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).doAfterPushRiskDialog(getQBaseActivity().getAppRuntime().getCurrentAccountUin(), System.currentTimeMillis());
+    ReportController.b(getQBaseActivity().getAppRuntime(), "dc00898", "", "", "0X800AAA3", "0X800AAA3", 0, 0, "", "", "", "");
+    paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskHintDlgFragment
  * JD-Core Version:    0.7.0.1
  */

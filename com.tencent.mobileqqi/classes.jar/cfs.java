@@ -1,15 +1,19 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.RecentCallHelper;
 
 class cfs
   implements Runnable
 {
-  cfs(cfq paramcfq, String paramString) {}
+  cfs(cfp paramcfp, boolean paramBoolean) {}
   
   public void run()
   {
-    if (Conversation.a(this.jdField_a_of_type_Cfq.a) != null) {
-      Conversation.a(this.jdField_a_of_type_Cfq.a).a(this.jdField_a_of_type_JavaLangString, true);
+    if (Conversation.a(this.jdField_a_of_type_Cfp.a) != null)
+    {
+      Conversation.a(this.jdField_a_of_type_Cfp.a).a(this.jdField_a_of_type_Cfp.a.a, this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Boolean) {
+        Conversation.a(this.jdField_a_of_type_Cfp.a).a(true, true, Conversation.a(this.jdField_a_of_type_Cfp.a));
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/q4" android:padding="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0"
+<RelativeLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/c7s" android:padding="2.0dip" android:layout_width="@dimen/l0" android:layout_height="@dimen/l0" android:scaleType="fitXY" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:ellipsize="end" android:gravity="center" android:id="@id/c7t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
-</LinearLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/iix" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:id="@id/g3_" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_centerInParent="true" style="@style/a85" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:id="@id/hgx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d4" android:layout_marginRight="@dimen/d4" android:text="@string/ced" android:layout_centerInParent="true" />
+</RelativeLayout>

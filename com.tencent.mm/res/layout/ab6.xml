@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:background="#ffede6d3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <View android:background="@drawable/tf" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/a4z" android:layout_marginRight="@dimen/a4z" android:layout_alignParentBottom="true" />
-        <RelativeLayout android:background="@color/tt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a4x" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/a4x">
-            <ImageView android:id="@id/cy0" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_z" />
-            <ListView android:id="@id/cy1" android:background="@color/tt" android:paddingLeft="@dimen/a4y" android:paddingRight="@dimen/a4y" android:paddingBottom="30.0dip" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="46.0dip" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@color/a0a" android:dividerHeight="@dimen/fs" android:footerDividersEnabled="false" />
-        </RelativeLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cy2" android:background="@drawable/t4" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/a4v" android:layout_marginLeft="@dimen/a4z" android:layout_marginRight="@dimen/a4z" android:layout_alignParentBottom="true">
-            <ImageView android:background="@drawable/b_v" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </RelativeLayout>
-    <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter android:id="@id/cy3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</com.tencent.mm.ui.KeyboardLinearLayout>
+<com.tencent.mm.plugin.finder.feed.RCLinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="148.0dip" android:layout_height="198.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="@dimen/df" android:layout_marginRight="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:background="@drawable/a2k" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icon_filled_live_top_arrow" app:iconColor="@color/BW_100_Alpha_0_5" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/dy9" />
+    </LinearLayout>
+</com.tencent.mm.plugin.finder.feed.RCLinearLayout>

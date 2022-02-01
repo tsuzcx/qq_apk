@@ -50,27 +50,30 @@ public class UploaderAgent
   
   public String[] calSliceSha1(String paramString, UploadNative.CanceledFlag paramCanceledFlag)
   {
-    if (this.mUploaderInner == null) {
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null) {
       return null;
     }
-    return this.mUploaderInner.calSliceSha1(paramString, paramCanceledFlag);
+    return localIUploader.calSliceSha1(paramString, paramCanceledFlag);
   }
   
   public boolean cancel(UploadRequest paramUploadRequest)
   {
-    if (this.mUploaderInner == null) {
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null) {
       return false;
     }
-    this.mUploaderInner.cancel(paramUploadRequest);
+    localIUploader.cancel(paramUploadRequest);
     return true;
   }
   
   public void cancelAll()
   {
-    if (this.mUploaderInner == null) {
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null) {
       return;
     }
-    this.mUploaderInner.cancelAll();
+    localIUploader.cancelAll();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -86,44 +89,41 @@ public class UploaderAgent
       if (paramMessage.listener() != null)
       {
         long l1;
-        label77:
-        long l2;
-        long l3;
-        label104:
-        long l6;
-        label156:
-        IUploader.IUploadListener localIUploadListener;
-        if (l4 < 1048576L)
-        {
+        if (l4 < 1048576L) {
           l1 = 65536L;
-          if (l1 <= l4 / 100L) {
-            break label206;
-          }
-          long l5 = SystemClock.elapsedRealtime();
-          l2 = l4;
-          if (l2 <= 0L) {
-            break label248;
-          }
-          if (l2 >= l1) {
-            break label216;
-          }
-          l3 = l2;
-          l3 = l2 - l3;
-          l6 = l4 - l3;
-          l2 = SystemClock.elapsedRealtime() - l5;
-          if ((l6 <= 0L) || (l2 <= 0L)) {
-            break label222;
-          }
-          l2 = ((float)l6 / 1024.0F / ((float)l2 / 1000.0F));
-          localIUploadListener = paramMessage.listener();
-          if (l4 != 0L) {
-            break label228;
-          }
+        } else {
+          l1 = 655360L;
         }
-        for (float f = 1.0F;; f = (float)l6 / (float)l4)
+        long l2 = l4 / 100L;
+        if (l1 <= l2) {
+          l1 = l2;
+        }
+        long l5 = SystemClock.elapsedRealtime();
+        l2 = l4;
+        for (;;)
         {
-          for (;;)
+          if (l2 > 0L)
           {
+            if (l2 < l1) {
+              l3 = l2;
+            } else {
+              l3 = l1;
+            }
+            long l3 = l2 - l3;
+            long l6 = l4 - l3;
+            l2 = SystemClock.elapsedRealtime() - l5;
+            if ((l6 > 0L) && (l2 > 0L)) {
+              l2 = ((float)l6 / 1024.0F / ((float)l2 / 1000.0F));
+            } else {
+              l2 = 0L;
+            }
+            IUploader.IUploadListener localIUploadListener = paramMessage.listener();
+            float f;
+            if (l4 == 0L) {
+              f = 1.0F;
+            } else {
+              f = (float)l6 / (float)l4;
+            }
             localIUploadListener.onUploadProgress(paramMessage, l4, f, l2, 0L, 0L);
             try
             {
@@ -132,23 +132,10 @@ public class UploaderAgent
             }
             catch (InterruptedException localInterruptedException)
             {
-              label206:
-              label216:
-              label222:
-              label228:
               TsLog.e("UploaderAgent", localInterruptedException);
             }
           }
-          l1 = 655360L;
-          break;
-          l1 = l4 / 100L;
-          break label77;
-          l3 = l1;
-          break label104;
-          l2 = 0L;
-          break label156;
         }
-        label248:
         paramMessage.listener().onUploadFinished(paramMessage, true, null);
       }
       return true;
@@ -178,22 +165,21 @@ public class UploaderAgent
   
   public void saveDirectIpFromWns(Map<String, Map<String, Object>> paramMap)
   {
-    if (this.mUploaderInner == null) {}
-    Object localObject;
-    do
+    if (this.mUploaderInner == null) {
+      return;
+    }
+    if (paramMap != null)
     {
-      do
+      Object localObject = (Map)paramMap.get("PhotoSvrList");
+      if (localObject != null)
       {
-        do
-        {
-          return;
-        } while (paramMap == null);
-        localObject = (Map)paramMap.get("PhotoSvrList");
-      } while (localObject == null);
-      paramMap = (String)((Map)localObject).get("OptimumIP_WY_HTTP_Upload");
-      localObject = (String)((Map)localObject).get("BackupIP_WY_HTTP_Upload");
-    } while ((TextUtils.isEmpty(paramMap)) || (TextUtils.isEmpty((CharSequence)localObject)));
-    this.mUploaderInner.setIpConfig(paramMap, (String)localObject);
+        paramMap = (String)((Map)localObject).get("OptimumIP_WY_HTTP_Upload");
+        localObject = (String)((Map)localObject).get("BackupIP_WY_HTTP_Upload");
+        if ((!TextUtils.isEmpty(paramMap)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+          this.mUploaderInner.setIpConfig(paramMap, (String)localObject);
+        }
+      }
+    }
   }
   
   public void secondUpload(UploadRequest paramUploadRequest)
@@ -206,18 +192,20 @@ public class UploaderAgent
   
   public void setHttpProxy(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (this.mUploaderInner == null) {
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null) {
       return;
     }
-    this.mUploaderInner.setHttpProxy(paramString1, paramInt, paramString2, paramString3);
+    localIUploader.setHttpProxy(paramString1, paramInt, paramString2, paramString3);
   }
   
   public void setNetType(int paramInt)
   {
-    if (this.mUploaderInner == null) {
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null) {
       return;
     }
-    this.mUploaderInner.setNetType(paramInt);
+    localIUploader.setNetType(paramInt);
   }
   
   public void setSpareUploader(IUploader paramIUploader)
@@ -229,43 +217,47 @@ public class UploaderAgent
   
   public void speedDown()
   {
-    if (this.mUploaderInner == null) {
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null) {
       return;
     }
-    this.mUploaderInner.speedDown();
+    localIUploader.speedDown();
   }
   
   public void trialSpeedUp(int paramInt)
   {
-    if (this.mUploaderInner == null) {
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null) {
       return;
     }
-    this.mUploaderInner.trialSpeedUp(paramInt);
+    localIUploader.trialSpeedUp(paramInt);
   }
   
   public boolean upload(UploadRequest paramUploadRequest)
   {
-    if (this.mUploaderInner == null)
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null)
     {
       if (paramUploadRequest != null) {
         this.mHandler.sendMessage(Message.obtain(null, 32, paramUploadRequest));
       }
       return false;
     }
-    return this.mUploaderInner.upload(paramUploadRequest);
+    return localIUploader.upload(paramUploadRequest);
   }
   
   public void vipSpeedUp()
   {
-    if (this.mUploaderInner == null) {
+    IUploader localIUploader = this.mUploaderInner;
+    if (localIUploader == null) {
       return;
     }
-    this.mUploaderInner.vipSpeedUp();
+    localIUploader.vipSpeedUp();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.uploader.UploaderAgent
  * JD-Core Version:    0.7.0.1
  */

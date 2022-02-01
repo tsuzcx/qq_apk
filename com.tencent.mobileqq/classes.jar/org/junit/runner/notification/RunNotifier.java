@@ -20,18 +20,22 @@ public class RunNotifier
   
   public void addFirstListener(RunListener paramRunListener)
   {
-    if (paramRunListener == null) {
-      throw new NullPointerException("Cannot add a null listener");
+    if (paramRunListener != null)
+    {
+      this.listeners.add(0, wrapIfNotThreadSafe(paramRunListener));
+      return;
     }
-    this.listeners.add(0, wrapIfNotThreadSafe(paramRunListener));
+    throw new NullPointerException("Cannot add a null listener");
   }
   
   public void addListener(RunListener paramRunListener)
   {
-    if (paramRunListener == null) {
-      throw new NullPointerException("Cannot add a null listener");
+    if (paramRunListener != null)
+    {
+      this.listeners.add(wrapIfNotThreadSafe(paramRunListener));
+      return;
     }
-    this.listeners.add(wrapIfNotThreadSafe(paramRunListener));
+    throw new NullPointerException("Cannot add a null listener");
   }
   
   public void fireTestAssumptionFailed(Failure paramFailure)
@@ -66,10 +70,12 @@ public class RunNotifier
   
   public void fireTestStarted(Description paramDescription)
   {
-    if (this.pleaseStop) {
-      throw new StoppedByUserException();
+    if (!this.pleaseStop)
+    {
+      new RunNotifier.3(this, paramDescription).run();
+      return;
     }
-    new RunNotifier.3(this, paramDescription).run();
+    throw new StoppedByUserException();
   }
   
   public void pleaseStop()
@@ -79,10 +85,12 @@ public class RunNotifier
   
   public void removeListener(RunListener paramRunListener)
   {
-    if (paramRunListener == null) {
-      throw new NullPointerException("Cannot remove a null listener");
+    if (paramRunListener != null)
+    {
+      this.listeners.remove(wrapIfNotThreadSafe(paramRunListener));
+      return;
     }
-    this.listeners.remove(wrapIfNotThreadSafe(paramRunListener));
+    throw new NullPointerException("Cannot remove a null listener");
   }
   
   RunListener wrapIfNotThreadSafe(RunListener paramRunListener)
@@ -95,7 +103,7 @@ public class RunNotifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runner.notification.RunNotifier
  * JD-Core Version:    0.7.0.1
  */

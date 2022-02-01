@@ -1,16 +1,35 @@
+import android.view.View;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.MySelfTroopMemberCard;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class cwt
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public cwt(MySelfTroopMemberCard paramMySelfTroopMemberCard, String paramString) {}
+  public cwt(MySelfTroopMemberCard paramMySelfTroopMemberCard) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityMySelfTroopMemberCard.g);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.a.jdField_a_of_type_Byte = 0;
+      this.a.jdField_c_of_type_Boolean = true;
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131559089));
+      continue;
+      this.a.jdField_a_of_type_Byte = 1;
+      this.a.jdField_c_of_type_Boolean = true;
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131559090));
+      continue;
+      this.a.jdField_a_of_type_Byte = 2;
+      this.a.jdField_c_of_type_Boolean = true;
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText("");
+    }
   }
 }
 

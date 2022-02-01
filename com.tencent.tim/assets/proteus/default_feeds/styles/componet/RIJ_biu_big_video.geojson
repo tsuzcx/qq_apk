@@ -1,0 +1,79 @@
+{
+    "view_type": "UIView",
+    "layout_type": "layout_relative",
+    "view_id": "id_big_video_container",
+    "height": {
+        "type": "relative",
+        "value": "203"
+    },
+    "width": {
+        "type": "match_parent"
+    },
+    "margin_top":"-6",
+    "visible_depend_on_children": "YES",
+    "subviews":[
+        {
+            "view_type":"ReadInjoyAsynImageView",
+            "view_id":"id_video_image",
+            "height":{
+                "type":"match_parent"
+            },
+            "width":{
+                "type":"match_parent"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:":["$video_image_url","1"]
+            }
+        },
+        {
+            "view_type":"UIImageView",
+            "visible_depend_on_brother": "id_video_image",
+            "view_id":"id_large_video_cover",
+            "height":{
+                "type":"match_parent"
+            },
+            "width":{
+                "type":"match_parent"
+            },
+            "attributes":{
+                "loadImageWithPath:":"mengceng.png"
+            }
+        },
+        {
+            "view_type":"UIImageView",
+            "visible_depend_on_brother": "id_video_image",
+            "view_id":"id_large_video_icon",
+            "align_parent_center":"YES",
+            "height":{
+                "type":"relative",
+                "value":"50"
+            },
+            "width":{
+                "type":"relative",
+                "value":"50"
+            },
+            "attributes":{
+                "loadImageWithPath:":"rij_play_icon.png"
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_large_video_duration",
+            "margin_right":"6",
+            "margin_bottom":"6",
+            "align_parent_right":"YES",
+            "align_parent_bottom":"YES",
+            "height":{
+                "type":"wrap_content"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "attributes":{
+                "setText:":"$video_duration",
+                "setTextColorString:":"#ffffff",
+                "setFontSizeString:":"10"
+            }
+        }
+    ]
+}

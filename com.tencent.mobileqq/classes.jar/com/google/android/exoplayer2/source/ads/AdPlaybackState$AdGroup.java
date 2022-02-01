@@ -19,16 +19,17 @@ public final class AdPlaybackState$AdGroup
   
   private AdPlaybackState$AdGroup(int paramInt, int[] paramArrayOfInt, Uri[] paramArrayOfUri, long[] paramArrayOfLong)
   {
-    if (paramArrayOfInt.length == paramArrayOfUri.length) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      this.count = paramInt;
-      this.states = paramArrayOfInt;
-      this.uris = paramArrayOfUri;
-      this.durationsUs = paramArrayOfLong;
-      return;
+    boolean bool;
+    if (paramArrayOfInt.length == paramArrayOfUri.length) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    this.count = paramInt;
+    this.states = paramArrayOfInt;
+    this.uris = paramArrayOfUri;
+    this.durationsUs = paramArrayOfLong;
   }
   
   @CheckResult
@@ -61,11 +62,16 @@ public final class AdPlaybackState$AdGroup
     paramInt += 1;
     for (;;)
     {
-      if ((paramInt >= this.states.length) || (this.states[paramInt] == 0) || (this.states[paramInt] == 1)) {
+      int[] arrayOfInt = this.states;
+      if ((paramInt >= arrayOfInt.length) || (arrayOfInt[paramInt] == 0)) {
+        break;
+      }
+      if (arrayOfInt[paramInt] == 1) {
         return paramInt;
       }
       paramInt += 1;
     }
+    return paramInt;
   }
   
   public boolean hasUnplayedAds()
@@ -76,116 +82,110 @@ public final class AdPlaybackState$AdGroup
   @CheckResult
   public AdGroup withAdCount(int paramInt)
   {
-    if ((this.count == -1) && (this.states.length <= paramInt)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      int[] arrayOfInt = copyStatesWithSpaceForAdCount(this.states, paramInt);
-      long[] arrayOfLong = copyDurationsUsWithSpaceForAdCount(this.durationsUs, paramInt);
-      return new AdGroup(paramInt, arrayOfInt, (Uri[])Arrays.copyOf(this.uris, paramInt), arrayOfLong);
+    boolean bool;
+    if ((this.count == -1) && (this.states.length <= paramInt)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    int[] arrayOfInt = copyStatesWithSpaceForAdCount(this.states, paramInt);
+    long[] arrayOfLong = copyDurationsUsWithSpaceForAdCount(this.durationsUs, paramInt);
+    return new AdGroup(paramInt, arrayOfInt, (Uri[])Arrays.copyOf(this.uris, paramInt), arrayOfLong);
   }
   
   @CheckResult
   public AdGroup withAdDurationsUs(long[] paramArrayOfLong)
   {
-    if ((this.count == -1) || (paramArrayOfLong.length <= this.uris.length)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      long[] arrayOfLong = paramArrayOfLong;
-      if (paramArrayOfLong.length < this.uris.length) {
-        arrayOfLong = copyDurationsUsWithSpaceForAdCount(paramArrayOfLong, this.uris.length);
-      }
-      return new AdGroup(this.count, this.states, this.uris, arrayOfLong);
+    boolean bool;
+    if ((this.count != -1) && (paramArrayOfLong.length > this.uris.length)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    Assertions.checkArgument(bool);
+    int i = paramArrayOfLong.length;
+    Uri[] arrayOfUri = this.uris;
+    long[] arrayOfLong = paramArrayOfLong;
+    if (i < arrayOfUri.length) {
+      arrayOfLong = copyDurationsUsWithSpaceForAdCount(paramArrayOfLong, arrayOfUri.length);
+    }
+    return new AdGroup(this.count, this.states, this.uris, arrayOfLong);
   }
   
   @CheckResult
   public AdGroup withAdState(int paramInt1, int paramInt2)
   {
+    int i = this.count;
     boolean bool2 = false;
     boolean bool1;
-    int[] arrayOfInt;
-    long[] arrayOfLong;
-    if ((this.count == -1) || (paramInt2 < this.count))
+    if ((i != -1) && (paramInt2 >= i)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    Assertions.checkArgument(bool1);
+    int[] arrayOfInt = copyStatesWithSpaceForAdCount(this.states, paramInt2 + 1);
+    if ((arrayOfInt[paramInt2] != 0) && (arrayOfInt[paramInt2] != 1))
+    {
+      bool1 = bool2;
+      if (arrayOfInt[paramInt2] != paramInt1) {}
+    }
+    else
     {
       bool1 = true;
-      Assertions.checkArgument(bool1);
-      arrayOfInt = copyStatesWithSpaceForAdCount(this.states, paramInt2 + 1);
-      if ((arrayOfInt[paramInt2] != 0) && (arrayOfInt[paramInt2] != 1))
-      {
-        bool1 = bool2;
-        if (arrayOfInt[paramInt2] != paramInt1) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      Assertions.checkArgument(bool1);
-      if (this.durationsUs.length != arrayOfInt.length) {
-        break label131;
-      }
-      arrayOfLong = this.durationsUs;
-      label86:
-      if (this.uris.length != arrayOfInt.length) {
-        break label146;
-      }
     }
-    label131:
-    label146:
-    for (Uri[] arrayOfUri = this.uris;; arrayOfUri = (Uri[])Arrays.copyOf(this.uris, arrayOfInt.length))
-    {
-      arrayOfInt[paramInt2] = paramInt1;
-      return new AdGroup(this.count, arrayOfInt, arrayOfUri, arrayOfLong);
-      bool1 = false;
-      break;
-      arrayOfLong = copyDurationsUsWithSpaceForAdCount(this.durationsUs, arrayOfInt.length);
-      break label86;
+    Assertions.checkArgument(bool1);
+    long[] arrayOfLong = this.durationsUs;
+    if (arrayOfLong.length != arrayOfInt.length) {
+      arrayOfLong = copyDurationsUsWithSpaceForAdCount(arrayOfLong, arrayOfInt.length);
     }
+    Uri[] arrayOfUri = this.uris;
+    if (arrayOfUri.length != arrayOfInt.length) {
+      arrayOfUri = (Uri[])Arrays.copyOf(arrayOfUri, arrayOfInt.length);
+    }
+    arrayOfInt[paramInt2] = paramInt1;
+    return new AdGroup(this.count, arrayOfInt, arrayOfUri, arrayOfLong);
   }
   
   @CheckResult
   public AdGroup withAdUri(Uri paramUri, int paramInt)
   {
+    int i = this.count;
     boolean bool2 = false;
-    boolean bool1;
-    int[] arrayOfInt;
-    if ((this.count == -1) || (paramInt < this.count))
-    {
-      bool1 = true;
-      Assertions.checkArgument(bool1);
-      arrayOfInt = copyStatesWithSpaceForAdCount(this.states, paramInt + 1);
-      bool1 = bool2;
-      if (arrayOfInt[paramInt] == 0) {
-        bool1 = true;
-      }
-      Assertions.checkArgument(bool1);
-      if (this.durationsUs.length != arrayOfInt.length) {
-        break label118;
-      }
-    }
-    label118:
-    for (long[] arrayOfLong = this.durationsUs;; arrayOfLong = copyDurationsUsWithSpaceForAdCount(this.durationsUs, arrayOfInt.length))
-    {
-      Uri[] arrayOfUri = (Uri[])Arrays.copyOf(this.uris, arrayOfInt.length);
-      arrayOfUri[paramInt] = paramUri;
-      arrayOfInt[paramInt] = 1;
-      return new AdGroup(this.count, arrayOfInt, arrayOfUri, arrayOfLong);
+    if ((i != -1) && (paramInt >= i)) {
       bool1 = false;
-      break;
+    } else {
+      bool1 = true;
     }
+    Assertions.checkArgument(bool1);
+    int[] arrayOfInt = copyStatesWithSpaceForAdCount(this.states, paramInt + 1);
+    boolean bool1 = bool2;
+    if (arrayOfInt[paramInt] == 0) {
+      bool1 = true;
+    }
+    Assertions.checkArgument(bool1);
+    long[] arrayOfLong = this.durationsUs;
+    if (arrayOfLong.length != arrayOfInt.length) {
+      arrayOfLong = copyDurationsUsWithSpaceForAdCount(arrayOfLong, arrayOfInt.length);
+    }
+    Uri[] arrayOfUri = (Uri[])Arrays.copyOf(this.uris, arrayOfInt.length);
+    arrayOfUri[paramInt] = paramUri;
+    arrayOfInt[paramInt] = 1;
+    return new AdGroup(this.count, arrayOfInt, arrayOfUri, arrayOfLong);
   }
   
   @CheckResult
   public AdGroup withAllAdsSkipped()
   {
-    if (this.count == -1) {
+    int j = this.count;
+    int i = 0;
+    if (j == -1) {
       return new AdGroup(0, new int[0], new Uri[0], new long[0]);
     }
-    int j = this.states.length;
-    int[] arrayOfInt = Arrays.copyOf(this.states, j);
-    int i = 0;
+    int[] arrayOfInt = this.states;
+    j = arrayOfInt.length;
+    arrayOfInt = Arrays.copyOf(arrayOfInt, j);
     while (i < j)
     {
       if ((arrayOfInt[i] == 1) || (arrayOfInt[i] == 0)) {
@@ -198,7 +198,7 @@ public final class AdPlaybackState$AdGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ads.AdPlaybackState.AdGroup
  * JD-Core Version:    0.7.0.1
  */

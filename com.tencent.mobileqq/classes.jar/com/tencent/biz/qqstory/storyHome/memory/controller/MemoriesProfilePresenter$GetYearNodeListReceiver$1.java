@@ -1,23 +1,21 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
-import uwa;
-import uwm;
-import wlu;
-import wly;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
 
-public class MemoriesProfilePresenter$GetYearNodeListReceiver$1
+class MemoriesProfilePresenter$GetYearNodeListReceiver$1
   implements Runnable
 {
-  public MemoriesProfilePresenter$GetYearNodeListReceiver$1(wly paramwly, wlu paramwlu) {}
+  MemoriesProfilePresenter$GetYearNodeListReceiver$1(MemoriesProfilePresenter.GetYearNodeListReceiver paramGetYearNodeListReceiver, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
   public void run()
   {
-    ((uwm)uwa.a(2)).a(this.a.a);
+    ((UserManager)SuperManager.a(2)).a(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1
  * JD-Core Version:    0.7.0.1
  */

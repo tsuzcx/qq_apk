@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.QQBlurView android:id="@id/kmg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/io4" android:layout_alignParentBottom="true" />
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/io4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <FrameLayout android:id="@id/bny" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:id="@id/bnz" android:paddingLeft="20.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+        <RelativeLayout android:orientation="horizontal" android:id="@id/imz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip">
+            <ImageView android:id="@id/in4" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginRight="10.0dip" />
+            <Button android:id="@id/imy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="@dimen/ie" android:text="@string/a1p" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i0" />
+            <CheckBox android:textSize="14.0dip" android:textColor="@color/a3p" android:id="@id/aws" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:checked="false" android:button="@null" android:text="@string/q__" android:drawableLeft="@drawable/cm_blue_check_bg" android:drawablePadding="5.0dip" android:layout_centerVertical="true" />
+            <Button android:textSize="17.0sp" android:id="@id/fyc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="4.0dip" android:text="@string/yqm" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/i9" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:gravity="center|left" android:id="@id/fyf" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/imy" android:layout_toRightOf="@id/fyc" android:layout_centerVertical="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:gravity="left" android:id="@id/fa_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_toLeftOf="@id/imy" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:gravity="center|left" android:id="@id/ima" android:background="@drawable/erp" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="35.0dip" android:text="@string/q_c" />
+    </FrameLayout>
+</merge>

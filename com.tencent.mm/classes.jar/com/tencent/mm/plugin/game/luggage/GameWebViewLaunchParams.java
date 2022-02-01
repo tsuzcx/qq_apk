@@ -9,22 +9,22 @@ public class GameWebViewLaunchParams
   implements Parcelable
 {
   public static final Parcelable.Creator<GameWebViewLaunchParams> CREATOR;
-  public GameFloatLayerInfo njg;
+  public GameFloatLayerInfo ItE;
   
   static
   {
-    AppMethodBeat.i(135805);
-    CREATOR = new GameWebViewLaunchParams.1();
-    AppMethodBeat.o(135805);
+    AppMethodBeat.i(82985);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(82985);
   }
   
   public GameWebViewLaunchParams() {}
   
   private GameWebViewLaunchParams(Parcel paramParcel)
   {
-    AppMethodBeat.i(135804);
-    this.njg = ((GameFloatLayerInfo)paramParcel.readParcelable(GameFloatLayerInfo.class.getClassLoader()));
-    AppMethodBeat.o(135804);
+    AppMethodBeat.i(82984);
+    this.ItE = ((GameFloatLayerInfo)paramParcel.readParcelable(GameFloatLayerInfo.class.getClassLoader()));
+    AppMethodBeat.o(82984);
   }
   
   public int describeContents()
@@ -34,14 +34,14 @@ public class GameWebViewLaunchParams
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(135803);
-    paramParcel.writeParcelable(this.njg, paramInt);
-    AppMethodBeat.o(135803);
+    AppMethodBeat.i(82983);
+    paramParcel.writeParcelable(this.ItE, paramInt);
+    AppMethodBeat.o(82983);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.GameWebViewLaunchParams
  * JD-Core Version:    0.7.0.1
  */

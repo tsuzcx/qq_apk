@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/l8" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/bh7" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerVertical="true" />
-    <TextView android:layout_gravity="center_vertical" android:id="@id/ej0" android:layout_width="fill_parent" android:layout_height="@dimen/n9" style="@style/ln" />
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a8" android:layout_width="fill_parent" android:layout_height="@dimen/d1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ak2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cp" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j63" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/bv" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_100_Alpha_0_5" />
+        <com.tencent.mm.ui.search.FTSEditTextView android:id="@id/egd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="1024.0dip" android:textCursorDrawable="@drawable/a8b" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_vertical" android:id="@id/apy" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/we" />
 </LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="@dimen/bmo" layout="@layout/ck7" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/owu" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/owr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/ows" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/owt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

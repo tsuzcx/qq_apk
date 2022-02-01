@@ -12,9 +12,9 @@ public class BasePathActionArg
   
   static
   {
-    AppMethodBeat.i(103587);
-    CREATOR = new BasePathActionArg.1();
-    AppMethodBeat.o(103587);
+    AppMethodBeat.i(145270);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145270);
   }
   
   public BasePathActionArg() {}
@@ -31,14 +31,14 @@ public class BasePathActionArg
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103586);
+    AppMethodBeat.i(145269);
     super.writeToParcel(paramParcel, paramInt);
-    AppMethodBeat.o(103586);
+    AppMethodBeat.o(145269);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg
  * JD-Core Version:    0.7.0.1
  */

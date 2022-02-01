@@ -92,7 +92,7 @@ public abstract class e
       return true;
     case 5: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      bool1 = aP();
+      bool1 = bg();
       paramParcel2.writeNoException();
       paramInt1 = i;
       if (bool1) {
@@ -114,7 +114,7 @@ public abstract class e
       return true;
     case 8: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramParcel1 = aQ();
+      paramParcel1 = bh();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -132,7 +132,7 @@ public abstract class e
       return true;
     case 10: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramParcel1 = aR();
+      paramParcel1 = bi();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -154,7 +154,7 @@ public abstract class e
       return true;
     case 27: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramParcel1 = aS();
+      paramParcel1 = bj();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -166,7 +166,7 @@ public abstract class e
       return true;
     case 28: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramParcel1 = aT();
+      paramParcel1 = bk();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -214,7 +214,7 @@ public abstract class e
       return true;
     case 45: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      bool1 = aU();
+      bool1 = bl();
       paramParcel2.writeNoException();
       paramInt1 = j;
       if (bool1) {
@@ -230,7 +230,7 @@ public abstract class e
       return true;
     case 38: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      bool1 = aV();
+      bool1 = bm();
       paramParcel2.writeNoException();
       paramInt1 = k;
       if (bool1) {
@@ -240,7 +240,7 @@ public abstract class e
       return true;
     case 47: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramInt1 = aW();
+      paramInt1 = bn();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -273,7 +273,7 @@ public abstract class e
       }
     case 44: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      n(paramParcel1.readInt());
+      x(paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     case 33: 
@@ -377,12 +377,12 @@ public abstract class e
       return true;
     case 20: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      aX();
+      bo();
       paramParcel2.writeNoException();
       return true;
     case 21: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      aY();
+      bp();
       paramParcel2.writeNoException();
       return true;
     case 22: 
@@ -431,7 +431,7 @@ public abstract class e
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
-      g(bool1);
+      j(bool1);
       paramParcel2.writeNoException();
       return true;
     case 39: 
@@ -445,7 +445,7 @@ public abstract class e
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
-      h(bool1);
+      k(bool1);
       paramParcel2.writeNoException();
       return true;
     case 48: 
@@ -454,7 +454,7 @@ public abstract class e
       label1512:
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
       label1699:
-      o(paramParcel1.readInt());
+      y(paramParcel1.readInt());
       label1948:
       paramParcel2.writeNoException();
       return true;

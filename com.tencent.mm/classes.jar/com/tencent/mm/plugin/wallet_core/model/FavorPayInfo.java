@@ -12,38 +12,38 @@ public class FavorPayInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FavorPayInfo> CREATOR;
-  public String uhU;
-  public int uhV;
-  public String uhW;
-  public String uhX;
-  public String uhY;
-  public List<String> uhZ;
+  public String VFC;
+  public int VFD;
+  public String VFE;
+  public String VFF;
+  public String VFG;
+  public List<String> VFH;
   
   static
   {
-    AppMethodBeat.i(46763);
-    CREATOR = new FavorPayInfo.1();
-    AppMethodBeat.o(46763);
+    AppMethodBeat.i(70280);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(70280);
   }
   
   public FavorPayInfo()
   {
-    AppMethodBeat.i(46759);
-    this.uhZ = new LinkedList();
-    AppMethodBeat.o(46759);
+    AppMethodBeat.i(70276);
+    this.VFH = new LinkedList();
+    AppMethodBeat.o(70276);
   }
   
   public FavorPayInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(46760);
-    this.uhZ = new LinkedList();
-    this.uhU = paramParcel.readString();
-    this.uhV = paramParcel.readInt();
-    this.uhW = paramParcel.readString();
-    this.uhX = paramParcel.readString();
-    this.uhY = paramParcel.readString();
-    this.uhZ = paramParcel.createStringArrayList();
-    AppMethodBeat.o(46760);
+    AppMethodBeat.i(70277);
+    this.VFH = new LinkedList();
+    this.VFC = paramParcel.readString();
+    this.VFD = paramParcel.readInt();
+    this.VFE = paramParcel.readString();
+    this.VFF = paramParcel.readString();
+    this.VFG = paramParcel.readString();
+    this.VFH = paramParcel.createStringArrayList();
+    AppMethodBeat.o(70277);
   }
   
   public int describeContents()
@@ -53,12 +53,12 @@ public class FavorPayInfo
   
   public String toString()
   {
-    AppMethodBeat.i(46762);
-    Object localObject = new StringBuffer(String.format("FavorPayInfo %s isNeedBankPay %s needBankType %s defaultFavorCompId %s changeBankcardTips %s", new Object[] { this.uhU, Integer.valueOf(this.uhV), this.uhW, this.uhX, this.uhY }));
-    if (this.uhZ != null)
+    AppMethodBeat.i(70279);
+    Object localObject = new StringBuffer(String.format("FavorPayInfo %s isNeedBankPay %s needBankType %s defaultFavorCompId %s changeBankcardTips %s", new Object[] { this.VFC, Integer.valueOf(this.VFD), this.VFE, this.VFF, this.VFG }));
+    if (this.VFH != null)
     {
       ((StringBuffer)localObject).append("bind_serial_list :");
-      Iterator localIterator = this.uhZ.iterator();
+      Iterator localIterator = this.VFH.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -66,20 +66,20 @@ public class FavorPayInfo
       }
     }
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(46762);
+    AppMethodBeat.o(70279);
     return localObject;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(46761);
-    paramParcel.writeString(this.uhU);
-    paramParcel.writeInt(this.uhV);
-    paramParcel.writeString(this.uhW);
-    paramParcel.writeString(this.uhX);
-    paramParcel.writeString(this.uhY);
-    paramParcel.writeStringList(this.uhZ);
-    AppMethodBeat.o(46761);
+    AppMethodBeat.i(70278);
+    paramParcel.writeString(this.VFC);
+    paramParcel.writeInt(this.VFD);
+    paramParcel.writeString(this.VFE);
+    paramParcel.writeString(this.VFF);
+    paramParcel.writeString(this.VFG);
+    paramParcel.writeStringList(this.VFH);
+    AppMethodBeat.o(70278);
   }
 }
 

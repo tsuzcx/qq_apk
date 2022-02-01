@@ -1,12 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class gfr
+  extends FriendListObserver
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
+  public gfr(QCallFacade paramQCallFacade) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    this.a.a(String.valueOf(paramObject));
+  }
 }
 
 

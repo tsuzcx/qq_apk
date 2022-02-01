@@ -1,111 +1,154 @@
 package com.tencent.mobileqq.activity.history;
 
-import abtg;
-import abti;
-import aibb;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import awgg;
-import awgn;
-import awhr;
-import azqs;
-import bewr;
 import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.BaseMsgProxy;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.UinTypeUtil;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.DatePickerController;
 import com.tencent.mobileqq.widget.datepicker.DatePickerView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import java.util.HashMap;
 import java.util.List;
 
 public class ChatHistoryTroopDateFragment
   extends ChatHistoryBaseFragment
 {
-  private static String d = "ChatHistoryTroopDateFragment";
-  private awgn jdField_a_of_type_Awgn;
-  private awhr jdField_a_of_type_Awhr;
-  public bewr a;
-  public CalendarDay a;
-  public DatePickerView a;
-  public HashMap<String, Boolean> a;
-  public QQAppInterface b;
-  public CalendarDay b;
-  public String b;
-  public CalendarDay c;
-  public String c;
-  private String e;
-  
-  public ChatHistoryTroopDateFragment()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  private static String B = "ChatHistoryTroopDateFragment";
+  public HashMap<String, Boolean> A = new HashMap();
+  private MessageRecordEntityManager C;
+  private QSlowTableManager D;
+  private String E;
+  public String s;
+  public QQAppInterface t;
+  public DatePickerView u;
+  public DatePickerController v;
+  public CalendarDay w;
+  public CalendarDay x;
+  public CalendarDay y;
+  public String z;
   
   private MessageRecord a(int paramInt1, int paramInt2, int paramInt3)
   {
     long l1 = CalendarDay.dayToTimeMillis(paramInt1, paramInt2, paramInt3) / 1000L;
     long l2 = 86400L + l1;
-    Object localObject = abti.b();
-    localObject = String.format("select * from %s m where m.time>=%s and m.time<%s and m.isValid=1 and m.msgtype %s limit 1", new Object[] { this.jdField_c_of_type_JavaLangString, Long.valueOf(l1), Long.valueOf(l2), localObject });
-    List localList;
-    if ((this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay != null) && (l2 * 1000L < this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.getTimeInMillis()))
+    Object localObject1 = UinTypeUtil.a();
+    localObject1 = String.format("select * from %s m where m.time>=%s and m.time<%s and m.isValid=1 and m.msgtype %s limit 1", new Object[] { this.z, Long.valueOf(l1), Long.valueOf(l2), localObject1 });
+    Object localObject2 = this.y;
+    if ((localObject2 != null) && (l2 * 1000L < ((CalendarDay)localObject2).getTimeInMillis()))
     {
-      localList = this.jdField_a_of_type_Awhr.a((String)localObject);
-      localObject = localList;
-      if (localList != null)
+      localObject2 = this.D.b((String)localObject1);
+      localObject1 = localObject2;
+      if (localObject2 != null)
       {
-        localObject = localList;
-        if (QLog.isColorLevel()) {
-          QLog.d(d, 2, "slowtable data:" + localList);
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = B;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("slowtable data:");
+          localStringBuilder.append(localObject2);
+          QLog.d((String)localObject1, 2, localStringBuilder.toString());
+          localObject1 = localObject2;
         }
       }
     }
-    for (localObject = localList; (localObject != null) && (((List)localObject).size() > 0); localObject = this.jdField_a_of_type_Awgn.a(MessageRecord.class, (String)localObject, null)) {
-      return (MessageRecord)((List)localObject).get(0);
+    else
+    {
+      localObject1 = this.C.rawQuery(MessageRecord.class, (String)localObject1, null);
+    }
+    if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
+      return (MessageRecord)((List)localObject1).get(0);
     }
     return null;
   }
   
-  private String a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    String str1;
-    if (paramInt2 < 10)
-    {
-      str1 = "0" + paramInt2;
-      if (paramInt3 >= 10) {
-        break label113;
-      }
-    }
-    label113:
-    for (String str2 = "0" + paramInt3;; str2 = paramInt3 + "")
-    {
-      return paramInt1 + "-" + str1 + "-" + str2;
-      str1 = paramInt2 + "";
-      break;
-    }
-  }
-  
   private void a(int paramInt1, int paramInt2, Boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramInt1 + "-" + paramInt2, paramBoolean);
+    HashMap localHashMap = this.A;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt2);
+    localHashMap.put(localStringBuilder.toString(), paramBoolean);
   }
   
-  private boolean a(int paramInt1, int paramInt2)
+  private String b(int paramInt1, int paramInt2, int paramInt3)
   {
-    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(paramInt1 + "-" + paramInt2);
-    return (localBoolean != null) && (localBoolean.booleanValue());
+    Object localObject;
+    if (paramInt2 < 10)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("0");
+      ((StringBuilder)localObject).append(paramInt2);
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("");
+    }
+    String str = ((StringBuilder)localObject).toString();
+    if (paramInt3 < 10)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("0");
+      ((StringBuilder)localObject).append(paramInt3);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt3);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(str);
+    localStringBuilder.append("-");
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
+  }
+  
+  private boolean b(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.A;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt2);
+    localObject = (Boolean)((HashMap)localObject).get(localStringBuilder.toString());
+    return (localObject != null) && (((Boolean)localObject).booleanValue());
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(d, 2, "queryMessageInMonth:" + paramInt1 + "-" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      String str = B;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("queryMessageInMonth:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("-");
+      localStringBuilder.append(paramInt2);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
     a(paramInt1, paramInt2, Boolean.valueOf(true));
     ThreadManager.post(new ChatHistoryTroopDateFragment.1(this, paramInt1, paramInt2), 8, null, false);
@@ -113,90 +156,91 @@ public class ChatHistoryTroopDateFragment
   
   protected void a(Bundle paramBundle)
   {
-    Object localObject = getActivity();
-    AppInterface localAppInterface;
-    if (localObject == null)
-    {
-      localAppInterface = null;
-      if (!(localAppInterface instanceof QQAppInterface)) {
-        break label85;
-      }
-      this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppInterface);
-      this.jdField_b_of_type_JavaLangString = paramBundle.getString("troop_uin");
-      this.e = paramBundle.getString("uin");
-      if ((this.jdField_b_of_type_JavaLangString != null) || (this.e != null)) {
-        break label105;
-      }
-      QLog.e(d, 1, "Uin is null");
+    Object localObject2 = getBaseActivity();
+    Object localObject1;
+    if (localObject2 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = ((BaseActivity)localObject2).getAppInterface();
     }
-    label85:
-    do
+    if ((localObject1 instanceof QQAppInterface))
     {
-      return;
-      localAppInterface = ((FragmentActivity)localObject).getAppInterface();
-      break;
-      QLog.e(d, 1, "app is null");
-    } while (localObject == null);
-    ((FragmentActivity)localObject).finish();
-    return;
-    label105:
-    this.jdField_c_of_type_JavaLangString = MessageRecord.getTableName(this.jdField_b_of_type_JavaLangString, 1);
-    this.jdField_a_of_type_Awgn = ((awgn)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createMessageRecordEntityManager());
-    paramBundle = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(1).b(this.jdField_b_of_type_JavaLangString, 1);
-    localObject = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_b_of_type_JavaLangString, 1);
-    this.jdField_a_of_type_Awhr = ((awhr)localAppInterface.getManager(201));
-    long l = this.jdField_a_of_type_Awhr.b(this.jdField_c_of_type_JavaLangString);
-    if (paramBundle != null) {
-      this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(paramBundle.time * 1000L);
-    }
-    if ((paramBundle == null) || (paramBundle.time == 0L))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(System.currentTimeMillis());
-      if ((localObject != null) && (((MessageRecord)localObject).time != 0L)) {
-        break label462;
-      }
-    }
-    label462:
-    for (this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(System.currentTimeMillis());; this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(((MessageRecord)localObject).time * 1000L))
-    {
-      QLog.i(d, 1, "firstMessage : " + this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay + " lastMssage : " + this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView = ((DatePickerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371991));
-      this.jdField_a_of_type_Bewr = new aibb(this, this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerDatePickerView.setController(this.jdField_a_of_type_Bewr);
-      a(this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.year, this.jdField_b_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay.month);
-      azqs.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
-      return;
-      if ((l != 0L) && (l < paramBundle.time))
+      this.t = ((QQAppInterface)localObject1);
+      this.s = paramBundle.getString("troop_uin");
+      this.E = paramBundle.getString("uin");
+      if ((this.s == null) && (this.E == null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = new CalendarDay(l * 1000L);
-        break;
+        QLog.e(B, 1, "Uin is null");
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = this.jdField_c_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-      break;
+      this.z = MessageRecord.getTableName(this.s, 1);
+      this.C = ((MessageRecordEntityManager)this.t.getEntityManagerFactory().b());
+      paramBundle = this.t.getMessageProxy(1).f(this.s, 1);
+      localObject2 = this.t.getMessageFacade().e(this.s, 1);
+      this.D = ((QSlowTableManager)((AppInterface)localObject1).getManager(QQManagerFactory.SLOW_TABLE_MANAGER));
+      long l = this.D.d(this.z);
+      if (paramBundle != null) {
+        this.y = new CalendarDay(paramBundle.time * 1000L);
+      }
+      if ((paramBundle != null) && (paramBundle.time != 0L))
+      {
+        if ((l != 0L) && (l < paramBundle.time)) {
+          this.w = new CalendarDay(l * 1000L);
+        } else {
+          this.w = this.y;
+        }
+      }
+      else {
+        this.w = new CalendarDay(System.currentTimeMillis());
+      }
+      if ((localObject2 != null) && (((MessageRecord)localObject2).time != 0L)) {
+        this.x = new CalendarDay(((MessageRecord)localObject2).time * 1000L);
+      } else {
+        this.x = new CalendarDay(System.currentTimeMillis());
+      }
+      paramBundle = B;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("firstMessage : ");
+      ((StringBuilder)localObject1).append(this.w);
+      ((StringBuilder)localObject1).append(" lastMssage : ");
+      ((StringBuilder)localObject1).append(this.x);
+      QLog.i(paramBundle, 1, ((StringBuilder)localObject1).toString());
+      this.u = ((DatePickerView)this.f.findViewById(2131440287));
+      this.v = new ChatHistoryTroopDateFragment.ChatHistoryDatePickerController(this, this.w, this.x);
+      this.u.setController(this.v);
+      a(this.x.year, this.x.month);
+      ReportController.b(this.t, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_exp", 0, 0, this.s, "", "", "");
+      return;
+    }
+    QLog.e(B, 1, "app is null");
+    if (localObject2 != null) {
+      ((BaseActivity)localObject2).finish();
     }
   }
   
-  protected void b() {}
-  
   protected void c() {}
   
-  public void e()
+  protected void d() {}
+  
+  public void i()
   {
-    super.e();
-    azqs.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B9", "0X800A0B9", 6, 0, "", "", "", "");
+    super.i();
+    ReportController.b(this.t, "dc00898", "", "", "0X800A0B9", "0X800A0B9", 6, 0, "", "", "", "");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2131560415, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131626670, paramViewGroup, false);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
     paramView = new Intent();
-    this.jdField_b_of_type_JavaLangString = a();
-    paramView.putExtra("troop_uin", this.jdField_b_of_type_JavaLangString);
+    this.s = g();
+    paramView.putExtra("troop_uin", this.s);
     a(paramView.getExtras());
   }
 }

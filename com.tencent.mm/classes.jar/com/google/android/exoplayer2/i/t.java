@@ -8,15 +8,15 @@ final class t
 {
   public final long elapsedRealtime()
   {
-    AppMethodBeat.i(95940);
+    AppMethodBeat.i(93204);
     long l = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(95940);
+    AppMethodBeat.o(93204);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.i.t
  * JD-Core Version:    0.7.0.1
  */

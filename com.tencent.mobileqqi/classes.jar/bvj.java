@@ -1,19 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.TrafficStatActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class bvj
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   public bvj(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    PreferenceManager.getDefaultSharedPreferences(this.a.b.getApplication()).edit().putBoolean("setting_aio_realtime_bg_open" + this.a.b.a(), paramBoolean).commit();
+    paramView = new Intent(this.a, TrafficStatActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.b, "CliOper", "", "", "Setting_tab", "Clk_traffic_statistics", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,131 +1,78 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.model.DocumentData;
 import com.tencent.mobileqq.dinifly.model.DocumentData.Justification;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 public class DocumentDataParser
   implements ValueParser<DocumentData>
 {
   public static final DocumentDataParser INSTANCE = new DocumentDataParser();
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "t", "f", "s", "j", "tr", "lh", "ls", "fc", "sc", "sw", "of" });
   
   public DocumentData parse(JsonReader paramJsonReader, float paramFloat)
   {
-    String str2 = null;
-    String str1 = null;
-    double d4 = 0.0D;
     DocumentData.Justification localJustification = DocumentData.Justification.CENTER;
-    int m = 0;
-    double d3 = 0.0D;
-    double d2 = 0.0D;
-    int k = 0;
-    int j = 0;
-    double d1 = 0.0D;
-    boolean bool = true;
     paramJsonReader.beginObject();
-    label38:
-    while (paramJsonReader.hasNext())
-    {
-      String str3 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str3.hashCode())
+    String str2 = null;
+    String str1 = str2;
+    float f3 = 0.0F;
+    int k = 0;
+    float f2 = 0.0F;
+    float f1 = 0.0F;
+    int j = 0;
+    int i = 0;
+    paramFloat = 0.0F;
+    boolean bool = true;
+    while (paramJsonReader.hasNext()) {
+      switch (paramJsonReader.selectName(NAMES))
       {
-      }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          break label38;
-          if (str3.equals("t"))
-          {
-            i = 0;
-            continue;
-            if (str3.equals("f"))
-            {
-              i = 1;
-              continue;
-              if (str3.equals("s"))
-              {
-                i = 2;
-                continue;
-                if (str3.equals("j"))
-                {
-                  i = 3;
-                  continue;
-                  if (str3.equals("tr"))
-                  {
-                    i = 4;
-                    continue;
-                    if (str3.equals("lh"))
-                    {
-                      i = 5;
-                      continue;
-                      if (str3.equals("ls"))
-                      {
-                        i = 6;
-                        continue;
-                        if (str3.equals("fc"))
-                        {
-                          i = 7;
-                          continue;
-                          if (str3.equals("sc"))
-                          {
-                            i = 8;
-                            continue;
-                            if (str3.equals("sw"))
-                            {
-                              i = 9;
-                              continue;
-                              if (str3.equals("of")) {
-                                i = 10;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          break;
-        }
-      }
-      str2 = paramJsonReader.nextString();
-      continue;
-      str1 = paramJsonReader.nextString();
-      continue;
-      d4 = paramJsonReader.nextDouble();
-      continue;
-      i = paramJsonReader.nextInt();
-      if ((i > DocumentData.Justification.CENTER.ordinal()) || (i < 0))
-      {
-        localJustification = DocumentData.Justification.CENTER;
-      }
-      else
-      {
-        localJustification = DocumentData.Justification.values()[i];
-        continue;
-        m = paramJsonReader.nextInt();
-        continue;
-        d3 = paramJsonReader.nextDouble();
-        continue;
-        d2 = paramJsonReader.nextDouble();
-        continue;
-        k = JsonUtils.jsonToColor(paramJsonReader);
-        continue;
-        j = JsonUtils.jsonToColor(paramJsonReader);
-        continue;
-        d1 = paramJsonReader.nextDouble();
-        continue;
+      default: 
+        paramJsonReader.skipName();
+        paramJsonReader.skipValue();
+        break;
+      case 10: 
         bool = paramJsonReader.nextBoolean();
+        break;
+      case 9: 
+        paramFloat = (float)paramJsonReader.nextDouble();
+        break;
+      case 8: 
+        i = JsonUtils.jsonToColor(paramJsonReader);
+        break;
+      case 7: 
+        j = JsonUtils.jsonToColor(paramJsonReader);
+        break;
+      case 6: 
+        f1 = (float)paramJsonReader.nextDouble();
+        break;
+      case 5: 
+        f2 = (float)paramJsonReader.nextDouble();
+        break;
+      case 4: 
+        k = paramJsonReader.nextInt();
+        break;
+      case 3: 
+        int m = paramJsonReader.nextInt();
+        if ((m <= DocumentData.Justification.CENTER.ordinal()) && (m >= 0)) {
+          localJustification = DocumentData.Justification.values()[m];
+        } else {
+          localJustification = DocumentData.Justification.CENTER;
+        }
+        break;
+      case 2: 
+        f3 = (float)paramJsonReader.nextDouble();
+        break;
+      case 1: 
+        str1 = paramJsonReader.nextString();
+        break;
+      case 0: 
+        str2 = paramJsonReader.nextString();
       }
     }
     paramJsonReader.endObject();
-    return new DocumentData(str2, str1, d4, localJustification, m, d3, d2, k, j, d1, bool);
+    return new DocumentData(str2, str1, f3, localJustification, k, f2, f1, j, i, paramFloat, bool);
   }
 }
 

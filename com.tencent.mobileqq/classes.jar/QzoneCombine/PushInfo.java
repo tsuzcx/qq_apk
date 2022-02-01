@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PushInfo
   extends JceStruct
@@ -41,18 +42,20 @@ public final class PushInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.vecMsg != null) {
-      paramJceOutputStream.write(this.vecMsg, 1);
+    Object localObject = this.vecMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.opUin, 2);
-    if (this.Mark != null) {
-      paramJceOutputStream.write(this.Mark, 3);
+    localObject = this.Mark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QzoneCombine.PushInfo
  * JD-Core Version:    0.7.0.1
  */

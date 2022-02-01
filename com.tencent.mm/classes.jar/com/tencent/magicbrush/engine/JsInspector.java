@@ -1,47 +1,51 @@
 package com.tencent.magicbrush.engine;
 
-import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class JsInspector
 {
-  private static JsInspector.a bJv;
+  private static a eIP;
   
   static native int JniNotify(long paramLong1, long paramLong2, String paramString);
   
   static native void JniReceiveData(long paramLong, String paramString);
   
-  @Keep
   public static int jniCallbackNotify(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(115883);
-    if (bJv == null)
+    AppMethodBeat.i(139988);
+    if (eIP == null)
     {
-      AppMethodBeat.o(115883);
+      AppMethodBeat.o(139988);
       return -1;
     }
-    int i = bJv.yr();
-    AppMethodBeat.o(115883);
+    int i = eIP.avI();
+    AppMethodBeat.o(139988);
     return i;
   }
   
-  @Keep
   public static int jniCallbackSendData(long paramLong, String paramString)
   {
-    AppMethodBeat.i(115882);
-    if (bJv == null)
+    AppMethodBeat.i(139987);
+    if (eIP == null)
     {
-      AppMethodBeat.o(115882);
+      AppMethodBeat.o(139987);
       return -1;
     }
-    int i = bJv.yq();
-    AppMethodBeat.o(115882);
+    int i = eIP.avH();
+    AppMethodBeat.o(139987);
     return i;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract int avH();
+    
+    public abstract int avI();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.engine.JsInspector
  * JD-Core Version:    0.7.0.1
  */

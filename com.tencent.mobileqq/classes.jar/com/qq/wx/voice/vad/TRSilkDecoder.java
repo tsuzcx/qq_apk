@@ -7,7 +7,7 @@ public class TRSilkDecoder
 {
   private static int a = 24000;
   private static int b = 16000;
-  private static TRSilk c = null;
+  private static TRSilk c;
   
   public TRSilkDecoder()
   {
@@ -16,85 +16,75 @@ public class TRSilkDecoder
   
   private static byte[] a(byte[] paramArrayOfByte, int paramInt)
   {
-    byte[] arrayOfByte = null;
-    Object localObject = arrayOfByte;
-    int i;
-    if (paramArrayOfByte != null)
+    if ((paramArrayOfByte != null) && (paramInt > 0))
     {
-      localObject = arrayOfByte;
-      if (paramInt > 0)
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      int i = 0;
+      for (;;)
       {
-        localObject = new ByteArrayOutputStream();
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i >= paramInt) {}
-      try
-      {
-        ((ByteArrayOutputStream)localObject).flush();
-        localObject = ((ByteArrayOutputStream)localObject).toByteArray();
-        return localObject;
-        arrayOfByte = c.silkDecode(paramArrayOfByte, i, Math.min(64, paramInt - i));
-        if (arrayOfByte != null) {}
-        try
+        if (i >= paramInt)
         {
-          ((ByteArrayOutputStream)localObject).write(arrayOfByte);
-          i += 64;
+          try
+          {
+            localByteArrayOutputStream.flush();
+          }
+          catch (IOException paramArrayOfByte)
+          {
+            paramArrayOfByte.printStackTrace();
+          }
+          return localByteArrayOutputStream.toByteArray();
         }
-        catch (IOException localIOException)
-        {
-          for (;;)
+        byte[] arrayOfByte = c.silkDecode(paramArrayOfByte, i, Math.min(64, paramInt - i));
+        if (arrayOfByte != null) {
+          try
+          {
+            localByteArrayOutputStream.write(arrayOfByte);
+          }
+          catch (IOException localIOException)
           {
             localIOException.printStackTrace();
           }
         }
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
+        i += 64;
       }
     }
+    return null;
   }
   
   public static byte[] processSilkToPCM(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
-      arrayOfByte = null;
+      return null;
     }
-    do
-    {
-      do
-      {
-        return arrayOfByte;
-        arrayOfByte = paramArrayOfByte;
-      } while (paramArrayOfByte.length <= 0);
-      arrayOfByte = paramArrayOfByte;
-    } while (c == null);
     byte[] arrayOfByte = paramArrayOfByte;
-    try
+    if (paramArrayOfByte.length > 0)
     {
-      c.silkDecodeInit(a, b);
+      TRSilk localTRSilk = c;
       arrayOfByte = paramArrayOfByte;
-      paramArrayOfByte = a(paramArrayOfByte, paramArrayOfByte.length);
-      arrayOfByte = paramArrayOfByte;
-      c.silkDecodeRelease();
-      return paramArrayOfByte;
-    }
-    catch (TRSilkException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+      if (localTRSilk != null)
+      {
+        arrayOfByte = paramArrayOfByte;
+        try
+        {
+          localTRSilk.silkDecodeInit(a, b);
+          arrayOfByte = paramArrayOfByte;
+          paramArrayOfByte = a(paramArrayOfByte, paramArrayOfByte.length);
+          arrayOfByte = paramArrayOfByte;
+          c.silkDecodeRelease();
+          return paramArrayOfByte;
+        }
+        catch (TRSilkException paramArrayOfByte)
+        {
+          paramArrayOfByte.printStackTrace();
+        }
+      }
     }
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.vad.TRSilkDecoder
  * JD-Core Version:    0.7.0.1
  */

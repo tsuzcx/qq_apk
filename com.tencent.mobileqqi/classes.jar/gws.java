@@ -1,30 +1,61 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import com.tencent.mobileqq.troop.logic.VideoPlayLogic;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class gws
-  implements Runnable
+  extends AsyncTask
 {
-  public gws(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
+  public gws(VideoPlayLogic paramVideoPlayLogic, TroopInfoManager paramTroopInfoManager) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a();
+    }
+    return null;
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic)))
     {
-      JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_JavaLangString);
-      int i = 0;
-      int j = localJSONArray.length();
-      while (i < j)
+      if (TroopFileUtils.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic)) == 0)
       {
-        String str = localJSONArray.get(i).toString();
-        this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(str);
-        i += 1;
+        if ((VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) && (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).isShowing() == true)) {
+          VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).dismiss();
+        }
+        QQToast.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic), VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).getResources().getString(2131560679), 1).a();
+        return;
       }
+      if (TroopFileUtils.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic)) != 2)
+      {
+        if ((VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) && (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).isShowing() == true)) {
+          VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).dismiss();
+        }
+        DialogUtil.a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic), 230, VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).getString(2131560332), VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).getString(2131560430), 2131561746, 2131560431, new gwt(this), new gwu(this)).show();
+        return;
+      }
+      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic);
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+    if ((VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) && (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).isShowing() == true)) {
+      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).dismiss();
+    }
+    new StructMsgForGeneralShare.GeneralClickHandler(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic), VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic), VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic)).a(VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic));
+  }
+  
+  protected void onCancelled()
+  {
+    if ((VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic) != null) && (VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).isShowing() == true)) {
+      VideoPlayLogic.a(this.jdField_a_of_type_ComTencentMobileqqTroopLogicVideoPlayLogic).dismiss();
     }
   }
 }

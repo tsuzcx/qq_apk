@@ -18,15 +18,13 @@ class OperatorAny$1
     if (!this.done)
     {
       this.done = true;
-      if (this.hasElements) {
+      if (this.hasElements)
+      {
         this.val$producer.setValue(Boolean.valueOf(false));
+        return;
       }
+      this.val$producer.setValue(Boolean.valueOf(this.this$0.returnOnEmpty));
     }
-    else
-    {
-      return;
-    }
-    this.val$producer.setValue(Boolean.valueOf(this.this$0.returnOnEmpty));
   }
   
   public void onError(Throwable paramThrowable)
@@ -37,39 +35,26 @@ class OperatorAny$1
   public void onNext(T paramT)
   {
     this.hasElements = true;
-    for (;;)
+    try
     {
-      try
+      boolean bool = ((Boolean)this.this$0.predicate.call(paramT)).booleanValue();
+      if ((bool) && (!this.done))
       {
-        bool = ((Boolean)this.this$0.predicate.call(paramT)).booleanValue();
-        if ((bool) && (!this.done))
-        {
-          this.done = true;
-          paramT = this.val$producer;
-          if (!this.this$0.returnOnEmpty)
-          {
-            bool = true;
-            paramT.setValue(Boolean.valueOf(bool));
-            unsubscribe();
-          }
-        }
-        else
-        {
-          return;
-        }
+        this.done = true;
+        this.val$producer.setValue(Boolean.valueOf(true ^ this.this$0.returnOnEmpty));
+        unsubscribe();
       }
-      catch (Throwable localThrowable)
-      {
-        Exceptions.throwOrReport(localThrowable, this, paramT);
-        return;
-      }
-      boolean bool = false;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Exceptions.throwOrReport(localThrowable, this, paramT);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorAny.1
  * JD-Core Version:    0.7.0.1
  */

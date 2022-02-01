@@ -11,7 +11,7 @@ import java.io.OutputStream;
 
 public final class c
 {
-  public static final boolean S(String paramString)
+  public static final boolean Z(String paramString)
   {
     return b(new File(paramString));
   }
@@ -135,8 +135,8 @@ public final class c
     //   12: aload_0
     //   13: invokespecial 89	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   16: astore_0
-    //   17: invokestatic 95	com/tencent/mm/wear/app/b/h:ma	()Lcom/tencent/mm/wear/a/d/a;
-    //   20: invokevirtual 101	com/tencent/mm/wear/a/d/a:nL	()[B
+    //   17: invokestatic 95	com/tencent/mm/wear/app/b/h:mN	()Lcom/tencent/mm/wear/a/d/a;
+    //   20: invokevirtual 101	com/tencent/mm/wear/a/d/a:oz	()[B
     //   23: astore_3
     //   24: aload_0
     //   25: aload_3
@@ -155,7 +155,7 @@ public final class c
     //   46: invokestatic 114	com/tencent/mm/wear/a/f/c:c	(Ljava/io/InputStream;)V
     //   49: aconst_null
     //   50: areturn
-    //   51: invokestatic 95	com/tencent/mm/wear/app/b/h:ma	()Lcom/tencent/mm/wear/a/d/a;
+    //   51: invokestatic 95	com/tencent/mm/wear/app/b/h:mN	()Lcom/tencent/mm/wear/a/d/a;
     //   54: aload_3
     //   55: invokevirtual 117	com/tencent/mm/wear/a/d/a:o	([B)V
     //   58: aload_2
@@ -238,7 +238,7 @@ public final class c
   public static final byte[] b(InputStream paramInputStream)
   {
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    byte[] arrayOfByte = h.ma().nL();
+    byte[] arrayOfByte = h.mN().oz();
     int i = 0;
     for (;;)
     {
@@ -256,7 +256,7 @@ public final class c
       }
       localByteArrayOutputStream.write(arrayOfByte, 0, i);
     }
-    h.ma().o(arrayOfByte);
+    h.mN().o(arrayOfByte);
     return localByteArrayOutputStream.toByteArray();
   }
   

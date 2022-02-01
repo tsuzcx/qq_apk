@@ -49,14 +49,15 @@ public abstract class AbstractUploadDatas
   
   public final byte[] a(boolean paramBoolean)
   {
-    byte[] arrayOfByte = null;
     try
     {
-      N localN = a();
-      if (localN != null) {
-        arrayOfByte = localN.a();
+      Object localObject = a();
+      if (localObject != null)
+      {
+        localObject = ((N)localObject).a();
+        return localObject;
       }
-      return arrayOfByte;
+      return null;
     }
     catch (Throwable localThrowable)
     {

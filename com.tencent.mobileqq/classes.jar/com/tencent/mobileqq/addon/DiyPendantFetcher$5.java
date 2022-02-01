@@ -1,35 +1,38 @@
 package com.tencent.mobileqq.addon;
 
-import akmx;
 import android.text.TextUtils;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
 import java.util.Iterator;
 import java.util.List;
 
-public class DiyPendantFetcher$5
+class DiyPendantFetcher$5
   implements Runnable
 {
-  public DiyPendantFetcher$5(akmx paramakmx, QQAppInterface paramQQAppInterface) {}
+  DiyPendantFetcher$5(DiyPendantFetcher paramDiyPendantFetcher, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    List localList = this.a.getEntityManagerFactory().createEntityManager().a(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
+    List localList = this.a.getEntityManagerFactory().createEntityManager().query(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
     if ((localList != null) && (localList.size() > 0))
     {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = localList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)localIterator.next();
+        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)((Iterator)localObject).next();
         if (!TextUtils.isEmpty(localDiyPendantEntity.uinAndDiyId)) {
-          this.this$0.a.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
+          this.this$0.d.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "initCacheFromDB, size: " + localList.size());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initCacheFromDB, size: ");
+        ((StringBuilder)localObject).append(localList.size());
+        QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject).toString());
       }
     }
   }

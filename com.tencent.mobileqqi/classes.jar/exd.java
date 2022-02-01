@@ -1,14 +1,18 @@
+import android.content.Context;
+import android.widget.Toast;
 import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
-import java.util.TimerTask;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class exd
-  extends TimerTask
+  implements Runnable
 {
-  exd(exc paramexc) {}
+  exd(exb paramexb, Context paramContext) {}
   
   public void run()
   {
-    this.a.a.d();
+    this.jdField_a_of_type_Exb.a.a.hide();
+    Toast.makeText(this.jdField_a_of_type_AndroidContentContext, "加载失败", 0).show();
+    this.jdField_a_of_type_Exb.a.finish();
   }
 }
 

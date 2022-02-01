@@ -1,7 +1,6 @@
 package c.t.m.g;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -11,38 +10,30 @@ public final class dq
   
   public static SimpleDateFormat a(String paramString)
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject2 = (ThreadLocal)a.get(paramString);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        ThreadLocal localThreadLocal = (ThreadLocal)a.get(paramString);
-        if (localThreadLocal == null)
-        {
-          localThreadLocal = new ThreadLocal();
-          a.put(paramString, localThreadLocal);
-          SimpleDateFormat localSimpleDateFormat2 = (SimpleDateFormat)localThreadLocal.get();
-          SimpleDateFormat localSimpleDateFormat1 = localSimpleDateFormat2;
-          if (localSimpleDateFormat2 == null)
-          {
-            localSimpleDateFormat1 = new SimpleDateFormat(paramString, Locale.ENGLISH);
-            localThreadLocal.set(localSimpleDateFormat1);
-          }
-          return localSimpleDateFormat1;
-        }
+        localObject1 = new ThreadLocal();
+        a.put(paramString, localObject1);
       }
-      finally {}
+      SimpleDateFormat localSimpleDateFormat = (SimpleDateFormat)((ThreadLocal)localObject1).get();
+      localObject2 = localSimpleDateFormat;
+      if (localSimpleDateFormat == null)
+      {
+        localObject2 = new SimpleDateFormat(paramString, Locale.ENGLISH);
+        ((ThreadLocal)localObject1).set(localObject2);
+      }
+      return localObject2;
     }
-  }
-  
-  public static String b(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    return a(paramString).format(new Date(l));
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dq
  * JD-Core Version:    0.7.0.1
  */

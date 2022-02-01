@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.armap.sensor.rotation;
 
-import antr;
 import java.io.Serializable;
 
 public class Vector2
@@ -74,32 +73,32 @@ public class Vector2
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (Vector2)paramObject;
-      if (antr.a(this.x) != antr.a(paramObject.x)) {
-        return false;
-      }
-    } while (antr.a(this.y) == antr.a(paramObject.y));
-    return false;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (Vector2)paramObject;
+    if (NumberUtils.a(this.x) != NumberUtils.a(paramObject.x)) {
+      return false;
+    }
+    return NumberUtils.a(this.y) == NumberUtils.a(paramObject.y);
   }
   
   public int hashCode()
   {
-    return (antr.a(this.x) + 31) * 31 + antr.a(this.y);
+    return (NumberUtils.a(this.x) + 31) * 31 + NumberUtils.a(this.y);
   }
   
   public float len()
   {
-    return (float)Math.sqrt(this.x * this.x + this.y * this.y);
+    float f1 = this.x;
+    float f2 = this.y;
+    return (float)Math.sqrt(f1 * f1 + f2 * f2);
   }
   
   public Vector2 lerp(Vector2 paramVector2, float paramFloat)
@@ -129,15 +128,13 @@ public class Vector2
   
   public Vector2 rotate(float paramFloat)
   {
-    float f1 = 0.01745329F * paramFloat;
-    paramFloat = (float)Math.cos(f1);
-    f1 = (float)Math.sin(f1);
+    double d = paramFloat * 0.01745329F;
+    paramFloat = (float)Math.cos(d);
+    float f1 = (float)Math.sin(d);
     float f2 = this.x;
     float f3 = this.y;
-    float f4 = this.x;
-    float f5 = this.y;
     this.x = (f2 * paramFloat - f3 * f1);
-    this.y = (f1 * f4 + paramFloat * f5);
+    this.y = (f2 * f1 + f3 * paramFloat);
     return this;
   }
   
@@ -182,12 +179,18 @@ public class Vector2
   
   public String toString()
   {
-    return "[" + this.x + ":" + this.y + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.rotation.Vector2
  * JD-Core Version:    0.7.0.1
  */

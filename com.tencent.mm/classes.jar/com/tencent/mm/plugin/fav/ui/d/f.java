@@ -4,64 +4,70 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.y;
-import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.protocal.protobuf.acp;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acs;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.plugin.fav.a.z;
+import com.tencent.mm.plugin.fav.ui.FavoriteImageServer;
+import com.tencent.mm.plugin.fav.ui.q.c;
+import com.tencent.mm.plugin.fav.ui.q.e;
+import com.tencent.mm.plugin.fav.ui.q.f;
+import com.tencent.mm.plugin.fav.ui.q.h;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arx;
 
 public final class f
-  extends a
+  extends b
 {
-  private final int mDa;
+  private static int Aod;
   
-  public f(l paraml)
+  public f(FavoriteImageServer paramFavoriteImageServer)
   {
-    super(paraml);
-    AppMethodBeat.i(74625);
-    this.mDa = com.tencent.mm.cb.a.ao(paraml.context, 2131427652);
-    AppMethodBeat.o(74625);
+    super(paramFavoriteImageServer);
+    AppMethodBeat.i(107454);
+    Aod = a.br(paramFavoriteImageServer.context, q.c.FavImageSize);
+    AppMethodBeat.o(107454);
   }
   
-  public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
+  public final View a(View paramView, ViewGroup paramViewGroup, g paramg)
   {
-    AppMethodBeat.i(74626);
+    AppMethodBeat.i(107455);
     Object localObject = paramViewGroup.getContext();
     if (paramView == null)
     {
-      paramViewGroup = new f.a();
-      paramView = a(View.inflate((Context)localObject, 2130969539, null), paramViewGroup, paramg);
-      paramViewGroup.ivs = ((ImageView)paramView.findViewById(2131821517));
-      paramViewGroup.gpL = ((TextView)paramView.findViewById(2131820619));
-      paramViewGroup.gpM = ((TextView)paramView.findViewById(2131820602));
-      paramViewGroup.mCZ = ((TextView)paramView.findViewById(2131820615));
-      paramViewGroup.mCZ.setVisibility(8);
+      paramViewGroup = new a();
+      paramView = a(View.inflate((Context)localObject, q.f.fav_listitem_image, null), paramViewGroup, paramg);
+      paramViewGroup.Aop = ((ImageView)paramView.findViewById(q.e.fav_image));
     }
     for (;;)
     {
       a(paramViewGroup, paramg);
-      localObject = paramg.field_favProto.wUh;
-      paramViewGroup.gpL.setText(bo.nullAsNil(((acp)localObject).title));
-      paramViewGroup.gpM.setText(bo.nullAsNil(((acp)localObject).desc));
-      paramViewGroup.gpL.setSingleLine(false);
-      paramViewGroup.gpL.setMaxLines(2);
-      this.mvC.a(paramViewGroup.ivs, null, paramg, 2131230822, this.mDa, this.mDa);
-      AppMethodBeat.o(74626);
+      b(paramViewGroup.Aop, paramg);
+      localObject = com.tencent.mm.plugin.fav.a.b.c(paramg);
+      paramViewGroup = paramViewGroup.Aop;
+      int i = q.h.fav_list_img_default;
+      int j = Aod;
+      FavoriteImageServer.a(paramViewGroup, i, (arf)localObject, paramg, false, j, j);
+      AppMethodBeat.o(107455);
       return paramView;
-      paramViewGroup = (f.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
     }
   }
   
-  public final void a(View paramView, acs paramacs)
+  public final void a(View paramView, arx paramarx)
   {
-    AppMethodBeat.i(74627);
-    f.a locala = (f.a)paramView.getTag();
+    AppMethodBeat.i(107456);
+    a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
-    AppMethodBeat.o(74627);
+    ((z)h.ax(z.class)).a(paramView, locala.AdF, paramarx);
+    AppMethodBeat.o(107456);
+  }
+  
+  public static final class a
+    extends b.b
+  {
+    ImageView Aop;
   }
 }
 

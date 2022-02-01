@@ -28,16 +28,18 @@ public final class WordsSecurity$SecurityReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 64, 72, 80, 90, 98 }, new String[] { "check_word", "check_mask", "svr_type", "from_user_type", "to_user_type", "to_uin", "from_nick_name", "client_ip", "use_white_list", "room_id", "biz_id", "imei" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro3, localByteStringMicro4 }, SecurityReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 64, 72, 80, 90, 98 }, new String[] { "check_word", "check_mask", "svr_type", "from_user_type", "to_user_type", "to_uin", "from_nick_name", "client_ip", "use_white_list", "room_id", "biz_id", "imei" }, new Object[] { localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localLong, localByteStringMicro2, localInteger, localInteger, localLong, localByteStringMicro3, localByteStringMicro4 }, SecurityReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.WordsSecurity.SecurityReq
  * JD-Core Version:    0.7.0.1
  */

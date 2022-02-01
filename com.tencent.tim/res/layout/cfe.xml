@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:custom="http://schemas.android.com/apk/res-auto"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="top" android:background="@drawable/f8m" android:layout_width="fill_parent" android:layout_height="@dimen/btw">
+        <TextView android:textSize="18.0sp" android:textColor="@color/atq" android:id="@id/a43" android:paddingLeft="@dimen/bic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="返回" android:drawableLeft="@drawable/eq6" android:drawablePadding="6.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/btz" android:textColor="@color/atq" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="登录中" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.tencent.qqmail.utilities.ui.QMLoading android:layout_gravity="center" android:id="@id/e20" android:layout_width="wrap_content" android:layout_height="wrap_content" custom:loading_size="40.0dip" />
+    <TextView android:layout_gravity="center" android:id="@id/by6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xep" />
+</FrameLayout>

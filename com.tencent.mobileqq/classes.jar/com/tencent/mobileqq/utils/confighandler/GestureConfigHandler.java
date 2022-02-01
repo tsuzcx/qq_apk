@@ -3,9 +3,9 @@ package com.tencent.mobileqq.utils.confighandler;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import azgi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload;
 
 public class GestureConfigHandler
   extends ConfigHandler<DownloadInfo>
@@ -27,7 +27,7 @@ public class GestureConfigHandler
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, DownloadInfo paramDownloadInfo)
   {
-    azgi.a(paramQQAppInterface, paramString, paramDownloadInfo);
+    GestureMgrAppDownload.a(paramQQAppInterface, paramString, paramDownloadInfo);
   }
   
   public void saveConfig(String paramString, int paramInt)
@@ -35,19 +35,16 @@ public class GestureConfigHandler
     SharedPreferences localSharedPreferences = getSP();
     if (TextUtils.isEmpty(paramString)) {
       localSharedPreferences.edit().remove("config");
-    }
-    for (;;)
-    {
-      localSharedPreferences.edit().putInt("ver", paramInt);
-      localSharedPreferences.edit().commit();
-      return;
+    } else {
       localSharedPreferences.edit().putString("config", paramString);
     }
+    localSharedPreferences.edit().putInt("ver", paramInt);
+    localSharedPreferences.edit().commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.GestureConfigHandler
  * JD-Core Version:    0.7.0.1
  */

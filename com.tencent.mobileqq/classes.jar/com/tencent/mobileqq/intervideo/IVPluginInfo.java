@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aszf;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,80 +13,76 @@ import org.json.JSONObject;
 public class IVPluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new aszf();
-  public int a;
-  public long a;
-  public Bundle a;
+  public static final Parcelable.Creator<IVPluginInfo> CREATOR = new IVPluginInfo.1();
   public String a;
-  public int b;
   public String b;
-  public int c;
   public String c;
-  public String d;
-  public String e = "";
-  public String f;
-  public String g;
-  public String h;
+  public long d;
+  public String e;
+  public String f = "";
+  public int g = 1;
+  public Bundle h = null;
   public String i;
-  public String j;
+  public int j = 0;
   public String k;
+  public String l;
+  public int m;
+  public String n;
+  public String o;
+  public String p;
   
-  public IVPluginInfo()
-  {
-    this.jdField_a_of_type_Int = 1;
-  }
+  public IVPluginInfo() {}
   
-  public IVPluginInfo(Parcel paramParcel)
+  protected IVPluginInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.d = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readLong();
     this.e = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle(getClass().getClassLoader());
     this.f = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.g = paramParcel.readString();
-    this.h = paramParcel.readString();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.g = paramParcel.readInt();
+    this.h = paramParcel.readBundle(getClass().getClassLoader());
     this.i = paramParcel.readString();
-    this.j = paramParcel.readString();
+    this.j = paramParcel.readInt();
     this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readInt();
+    this.n = paramParcel.readString();
+    this.o = paramParcel.readString();
+    this.p = paramParcel.readString();
   }
   
   public static Map<String, IVPluginInfo> a()
   {
     HashMap localHashMap = new HashMap();
     IVPluginInfo localIVPluginInfo1 = new IVPluginInfo();
-    localIVPluginInfo1.jdField_a_of_type_Int = 1;
-    localIVPluginInfo1.jdField_a_of_type_JavaLangString = "Hy";
-    localIVPluginInfo1.jdField_c_of_type_JavaLangString = "com.tencent.huayang";
-    localIVPluginInfo1.jdField_b_of_type_JavaLangString = "1600000419";
+    localIVPluginInfo1.g = 1;
+    localIVPluginInfo1.a = "Hy";
+    localIVPluginInfo1.c = "com.tencent.huayang";
+    localIVPluginInfo1.b = "1600000419";
     IVPluginInfo localIVPluginInfo2 = new IVPluginInfo();
-    localIVPluginInfo2.jdField_a_of_type_Int = 2;
-    localIVPluginInfo2.jdField_a_of_type_JavaLangString = "Od";
-    localIVPluginInfo2.jdField_c_of_type_JavaLangString = "com.tencent.od";
-    localIVPluginInfo2.jdField_b_of_type_JavaLangString = "1104763709";
-    localIVPluginInfo2.e = "54";
+    localIVPluginInfo2.g = 2;
+    localIVPluginInfo2.a = "Od";
+    localIVPluginInfo2.c = "com.tencent.od";
+    localIVPluginInfo2.b = "1104763709";
+    localIVPluginInfo2.f = "54";
     IVPluginInfo localIVPluginInfo3 = new IVPluginInfo();
-    localIVPluginInfo3.jdField_a_of_type_Int = 2;
-    localIVPluginInfo3.jdField_a_of_type_JavaLangString = "Od";
-    localIVPluginInfo3.jdField_c_of_type_JavaLangString = "com.tencent.gvideo";
-    localIVPluginInfo3.jdField_b_of_type_JavaLangString = "1104763709";
-    localIVPluginInfo3.e = "1";
+    localIVPluginInfo3.g = 2;
+    localIVPluginInfo3.a = "Od";
+    localIVPluginInfo3.c = "com.tencent.gvideo";
+    localIVPluginInfo3.b = "1104763709";
+    localIVPluginInfo3.f = "1";
     IVPluginInfo localIVPluginInfo4 = new IVPluginInfo();
-    localIVPluginInfo3.jdField_a_of_type_Int = 2;
-    localIVPluginInfo3.jdField_a_of_type_JavaLangString = "Od";
-    localIVPluginInfo3.jdField_c_of_type_JavaLangString = "com.tencent.huiyin";
-    localIVPluginInfo3.jdField_b_of_type_JavaLangString = "1104763709";
-    localIVPluginInfo3.e = "100";
-    localHashMap.put(localIVPluginInfo1.jdField_c_of_type_JavaLangString, localIVPluginInfo1);
-    localHashMap.put(localIVPluginInfo2.jdField_c_of_type_JavaLangString, localIVPluginInfo2);
-    localHashMap.put(localIVPluginInfo3.jdField_c_of_type_JavaLangString, localIVPluginInfo3);
-    localHashMap.put(localIVPluginInfo4.jdField_c_of_type_JavaLangString, localIVPluginInfo4);
+    localIVPluginInfo3.g = 2;
+    localIVPluginInfo3.a = "Od";
+    localIVPluginInfo3.c = "com.tencent.huiyin";
+    localIVPluginInfo3.b = "1104763709";
+    localIVPluginInfo3.f = "100";
+    localHashMap.put(localIVPluginInfo1.c, localIVPluginInfo1);
+    localHashMap.put(localIVPluginInfo2.c, localIVPluginInfo2);
+    localHashMap.put(localIVPluginInfo3.c, localIVPluginInfo3);
+    localHashMap.put(localIVPluginInfo4.c, localIVPluginInfo4);
     return localHashMap;
   }
   
@@ -103,15 +98,15 @@ public class IVPluginInfo
         String str = (String)localIterator.next();
         JSONObject localJSONObject = paramString.getJSONObject(str);
         IVPluginInfo localIVPluginInfo = new IVPluginInfo();
-        localIVPluginInfo.jdField_a_of_type_Int = localJSONObject.optInt("authType");
-        localIVPluginInfo.jdField_c_of_type_JavaLangString = localJSONObject.optString("packageName");
-        localIVPluginInfo.e = localJSONObject.optString("fromId");
-        localIVPluginInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("pluginid");
-        localIVPluginInfo.jdField_b_of_type_JavaLangString = localJSONObject.optString("loginAppId");
-        localIVPluginInfo.i = localJSONObject.optString("openType");
-        localIVPluginInfo.j = localJSONObject.optString("extra");
-        localIVPluginInfo.jdField_a_of_type_Long = localJSONObject.optInt("roomId");
-        localIVPluginInfo.k = localJSONObject.optString("sign");
+        localIVPluginInfo.g = localJSONObject.optInt("authType");
+        localIVPluginInfo.c = localJSONObject.optString("packageName");
+        localIVPluginInfo.f = localJSONObject.optString("fromId");
+        localIVPluginInfo.a = localJSONObject.optString("pluginid");
+        localIVPluginInfo.b = localJSONObject.optString("loginAppId");
+        localIVPluginInfo.n = localJSONObject.optString("openType");
+        localIVPluginInfo.o = localJSONObject.optString("extra");
+        localIVPluginInfo.d = localJSONObject.optInt("roomId");
+        localIVPluginInfo.p = localJSONObject.optString("sign");
         localHashMap.put(str, localIVPluginInfo);
       }
       return localHashMap;
@@ -129,27 +124,27 @@ public class IVPluginInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.d);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeLong(this.d);
     paramParcel.writeString(this.e);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
     paramParcel.writeString(this.f);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.g);
-    paramParcel.writeString(this.h);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeInt(this.g);
+    paramParcel.writeBundle(this.h);
     paramParcel.writeString(this.i);
-    paramParcel.writeString(this.j);
+    paramParcel.writeInt(this.j);
     paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
+    paramParcel.writeInt(this.m);
+    paramParcel.writeString(this.n);
+    paramParcel.writeString(this.o);
+    paramParcel.writeString(this.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.IVPluginInfo
  * JD-Core Version:    0.7.0.1
  */

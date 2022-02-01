@@ -1,41 +1,72 @@
 package com.tencent.mm.ui.chatting;
 
-import android.content.Context;
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.accessibility.type.ViewType;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/BizChattingUIAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
+  extends MMBaseAccessibilityConfig
 {
-  public static boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
+  public e(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(30456);
-    if (bo.isNullOrNil(paramString1))
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(253871);
+    AppMethodBeat.o(253871);
+  }
+  
+  public final void initConfig()
+  {
+    AppMethodBeat.i(253873);
+    root(R.i.gfn).view(R.h.gaA).desc((b)new a(this)).disableChildren();
+    root(R.i.gfm).view(R.h.content_ll).desc((b)new b(this)).disableChildren().type(ViewType.Button);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(R.i.gfo);
+    localConfigHelper.view(R.h.fZd).descFormat(R.l.talkback_placehodler).valueByView(R.h.title).disableChildren().type(ViewType.Button);
+    localConfigHelper.view(R.h.fZa).disable();
+    root(R.i.gfp).view(R.h.chatting_video_cover_ll).descFormat(R.l.gXg).valueByView(R.h.time_tv).valueByView(R.h.title_tv).disableChildren().type(ViewType.Button);
+    localConfigHelper = root(R.i.gfq);
+    localConfigHelper.view(R.h.fyy).descFormat(R.l.gXe).valueByView(R.h.title).valueByView(R.h.time_tv).type(ViewType.Button);
+    localConfigHelper.disable(R.h.title);
+    localConfigHelper.disable(R.h.time_tv);
+    localConfigHelper.view(R.h.play_layout).desc(R.l.gXf);
+    AppMethodBeat.o(253873);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<View, String>
+  {
+    a(e parame)
     {
-      AppMethodBeat.o(30456);
-      return false;
+      super();
     }
-    Object localObject = null;
-    if (paramString1.startsWith("weixin://openNativeUrl/weixinHB")) {
-      localObject = new e.a();
-    }
-    while ((localObject != null) && (((e.c)localObject).a(paramString1, paramContext, paramMMFragment, paramString2)))
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements b<View, String>
+  {
+    b(e parame)
     {
-      AppMethodBeat.o(30456);
-      return true;
-      if (e.b.atJ(paramString1)) {
-        localObject = new e.b();
-      } else if (e.d.atJ(paramString1)) {
-        localObject = new e.d();
-      }
+      super();
     }
-    AppMethodBeat.o(30456);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.e
  * JD-Core Version:    0.7.0.1
  */

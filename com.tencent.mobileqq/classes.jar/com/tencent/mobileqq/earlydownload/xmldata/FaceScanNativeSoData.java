@@ -5,12 +5,12 @@ public class FaceScanNativeSoData
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.ar.face.so_v8.2.0_32";
+    return "early_qq.android.ar.face.so_v8.5.2_32";
   }
   
   public String getStrResName()
   {
-    return "qq.android.ar.face.so_v8.2.0_32";
+    return "qq.android.ar.face.so_v8.5.2_32";
   }
 }
 

@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.utils;
 
-import bdku;
-import bhsj;
+import com.tencent.util.InputMethodUtil;
 
-public class QQCustomDialogWtihEmoticonInput$8
+class QQCustomDialogWtihEmoticonInput$8
   implements Runnable
 {
-  public QQCustomDialogWtihEmoticonInput$8(bdku parambdku) {}
+  QQCustomDialogWtihEmoticonInput$8(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
   public void run()
   {
-    bhsj.a(this.this$0.a);
+    InputMethodUtil.a(this.this$0.l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.8
  * JD-Core Version:    0.7.0.1
  */

@@ -23,15 +23,16 @@ public class PluginManageHandler
   
   public static final PluginManageHandler getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new PluginManageHandler();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new PluginManageHandler();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static Handler getPluginIOHandler()
@@ -49,16 +50,19 @@ public class PluginManageHandler
   
   private void notifyReadyToClient()
   {
-    if (this.mClientProxy != null) {}
-    try
-    {
-      this.mClientProxy.setListener(this.mWrapper);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("plugin_tag", 2, "notifyReadyToClient ", localException);
+    RemotePluginManager localRemotePluginManager = this.mClientProxy;
+    if (localRemotePluginManager != null) {
+      try
+      {
+        localRemotePluginManager.setListener(this.mWrapper);
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("plugin_tag", 2, "notifyReadyToClient ", localException);
+        }
+      }
     }
   }
   
@@ -72,21 +76,20 @@ public class PluginManageHandler
   
   public void setPluginManagerProvider(PluginManageHandler.IPluginManagerProvider paramIPluginManagerProvider, boolean paramBoolean)
   {
-    this.mManagerProvider = paramIPluginManagerProvider;
-    if (this.mManagerProvider == null)
+    if (this.mManagerProvider != paramIPluginManagerProvider)
     {
       this.mWrapper = null;
       this.mPluginManager = null;
+      this.mManagerProvider = paramIPluginManagerProvider;
     }
-    while (!paramBoolean) {
-      return;
+    if ((this.mManagerProvider != null) && (paramBoolean)) {
+      ensureManagerReady();
     }
-    ensureManagerReady();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginManageHandler
  * JD-Core Version:    0.7.0.1
  */

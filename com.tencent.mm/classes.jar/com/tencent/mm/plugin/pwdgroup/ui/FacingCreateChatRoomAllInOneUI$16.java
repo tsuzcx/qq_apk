@@ -1,47 +1,67 @@
 package com.tencent.mm.plugin.pwdgroup.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.pluginsdk.model.lbs.Location;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.plugin.pwdgroup.ui.widget.MMKeyBoardView.a;
+import com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView;
 
 final class FacingCreateChatRoomAllInOneUI$16
-  implements b.a
+  implements MMKeyBoardView.a
 {
   FacingCreateChatRoomAllInOneUI$16(FacingCreateChatRoomAllInOneUI paramFacingCreateChatRoomAllInOneUI) {}
   
-  public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
+  public final void aSi(String paramString)
   {
-    AppMethodBeat.i(24001);
-    ab.d("MicroMsg.Facing.FacingCreateChatRoomAllInONeUI", "lat:%f lng:%f accuracy:%f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1), Double.valueOf(paramDouble2) });
-    if (paramBoolean)
+    AppMethodBeat.i(27636);
+    if (FacingCreateChatRoomAllInOneUI.g(this.Nhe) != null)
     {
-      Location localLocation = new Location(paramFloat2, paramFloat1, (int)paramDouble2, paramInt, "", "");
-      if (!localLocation.dlP())
+      if ((FacingCreateChatRoomAllInOneUI.h(this.Nhe)) || (FacingCreateChatRoomAllInOneUI.i(this.Nhe)))
       {
-        FacingCreateChatRoomAllInOneUI.a(this.pGF, localLocation);
-        FacingCreateChatRoomAllInOneUI.b(this.pGF, true);
-        FacingCreateChatRoomAllInOneUI.e(this.pGF);
+        MMPwdInputView localMMPwdInputView = FacingCreateChatRoomAllInOneUI.g(this.Nhe);
+        localMMPwdInputView.cju();
+        localMMPwdInputView.aSi(paramString);
+        FacingCreateChatRoomAllInOneUI.a(this.Nhe, FacingCreateChatRoomAllInOneUI.a.Nhj);
+        AppMethodBeat.o(27636);
+        return;
       }
+      FacingCreateChatRoomAllInOneUI.g(this.Nhe).aSi(paramString);
     }
-    for (;;)
+    AppMethodBeat.o(27636);
+  }
+  
+  public final void cju()
+  {
+    AppMethodBeat.i(27637);
+    if (FacingCreateChatRoomAllInOneUI.g(this.Nhe) != null) {
+      FacingCreateChatRoomAllInOneUI.g(this.Nhe).cju();
+    }
+    AppMethodBeat.o(27637);
+  }
+  
+  public final void gDE()
+  {
+    AppMethodBeat.i(27638);
+    if (FacingCreateChatRoomAllInOneUI.g(this.Nhe) != null)
     {
-      AppMethodBeat.o(24001);
-      return false;
-      if ((!FacingCreateChatRoomAllInOneUI.j(this.pGF)) && (!d.agR()))
+      if ((FacingCreateChatRoomAllInOneUI.h(this.Nhe)) || (FacingCreateChatRoomAllInOneUI.i(this.Nhe)))
       {
-        FacingCreateChatRoomAllInOneUI.k(this.pGF);
-        h.a(this.pGF, this.pGF.getString(2131300538), this.pGF.getString(2131297087), this.pGF.getString(2131300996), this.pGF.getString(2131296888), false, new FacingCreateChatRoomAllInOneUI.16.1(this), null);
+        FacingCreateChatRoomAllInOneUI.g(this.Nhe).cju();
+        FacingCreateChatRoomAllInOneUI.a(this.Nhe, FacingCreateChatRoomAllInOneUI.a.Nhj);
+        AppMethodBeat.o(27638);
+        return;
       }
-      FacingCreateChatRoomAllInOneUI.b(this.pGF, false);
+      MMPwdInputView localMMPwdInputView = FacingCreateChatRoomAllInOneUI.g(this.Nhe);
+      if (localMMPwdInputView.zYG > 0) {
+        localMMPwdInputView.lOv.deleteCharAt(localMMPwdInputView.zYG - 1);
+      }
+      localMMPwdInputView.dPM();
+      localMMPwdInputView.gDF();
     }
+    AppMethodBeat.o(27638);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.FacingCreateChatRoomAllInOneUI.16
  * JD-Core Version:    0.7.0.1
  */

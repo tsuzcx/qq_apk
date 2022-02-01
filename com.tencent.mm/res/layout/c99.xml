@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/j4h" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/d0" android:paddingRight="@dimen/d0" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:text="@string/jxz" style="@style/kn" />
+            <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/c21" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/jy1" style="@style/z8" />
+            <com.tenpay.android.wechat.TempSecureEditText android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/hrj" android:background="@color/ahb" android:layout_width="@dimen/cl" android:layout_height="@dimen/d5" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/d6" android:singleLine="true" android:inputType="none" />
+        </LinearLayout>
+    </ScrollView>
+    <TextView android:textSize="@dimen/m3" android:id="@id/kbc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d5" android:layout_marginBottom="@dimen/db" android:text="@string/jyk" style="@style/ko" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/db" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bv" android:text="@string/jya" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a1c" android:ellipsize="end" android:id="@id/ee_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jyc" android:singleLine="true" />
+    </LinearLayout>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c9a" />
+</LinearLayout>

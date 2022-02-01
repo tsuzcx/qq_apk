@@ -1,238 +1,263 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
 import android.content.Context;
-import android.os.Looper;
+import android.content.res.Resources;
 import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.map.geolocation.sapp.TencentLocationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
+import com.tencent.mm.plugin.map.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public final class e
+public class e
   extends BaseAdapter
 {
+  private double KeO;
+  private double KeP;
+  List<f> Kjl;
+  private String Kjm;
+  private String Kjn;
   byte[] buffer;
+  boolean clZ;
   private Context context;
-  boolean eRq;
-  boolean gzX;
+  int dyx;
   String key;
-  String lbI;
-  int lxQ;
-  List<f> ogN;
-  boolean ogy;
+  boolean nxG;
+  boolean pVy;
+  String xts;
   
   public e(Context paramContext)
   {
-    AppMethodBeat.i(113656);
-    this.ogN = new ArrayList();
-    this.context = null;
-    this.lxQ = 0;
+    AppMethodBeat.i(56089);
+    this.Kjl = new ArrayList();
+    this.dyx = 0;
     this.buffer = null;
-    this.eRq = false;
+    this.nxG = false;
     this.key = "";
-    this.lbI = "";
-    this.gzX = false;
-    this.ogy = false;
+    this.xts = "";
+    this.pVy = false;
+    this.clZ = false;
     this.context = paramContext;
-    AppMethodBeat.o(113656);
+    AppMethodBeat.o(56089);
   }
   
-  private Spannable Sm(String paramString)
+  private Spannable aKp(String paramString)
   {
-    AppMethodBeat.i(113664);
-    paramString = com.tencent.mm.plugin.fts.a.f.a(paramString, this.lbI);
-    AppMethodBeat.o(113664);
+    AppMethodBeat.i(56096);
+    paramString = com.tencent.mm.plugin.fts.a.f.b(paramString, this.xts);
+    AppMethodBeat.o(56096);
     return paramString;
   }
   
-  public final void Sl(String paramString)
+  public final f ZE(int paramInt)
   {
-    AppMethodBeat.i(113658);
-    this.key = paramString;
-    ab.i("MicroMsg.PoiAdapter", "initdata key %s", new Object[] { paramString });
-    AppMethodBeat.o(113658);
+    AppMethodBeat.i(56094);
+    f localf = (f)this.Kjl.get(paramInt);
+    AppMethodBeat.o(56094);
+    return localf;
   }
   
   public final void a(List<f> paramList, byte[] paramArrayOfByte, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(113660);
+    AppMethodBeat.i(56092);
     if ((this.key == null) || (!this.key.equals(paramString)))
     {
-      ab.i("MicroMsg.PoiAdapter", "old key come pass it %s %s", new Object[] { this.key, paramString });
-      AppMethodBeat.o(113660);
+      Log.i("MicroMsg.PoiAdapter", "old key, dismiss it %s %s.", new Object[] { this.key, paramString });
+      AppMethodBeat.o(56092);
       return;
     }
-    int i = this.ogN.size();
+    int i = this.Kjl.size();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       paramString = (f)paramList.next();
-      paramString.ohf = i;
+      paramString.KjD = i;
       i += 1;
-      this.ogN.add(paramString);
+      this.Kjl.add(paramString);
     }
     this.buffer = paramArrayOfByte;
-    this.eRq = paramBoolean;
+    this.nxG = paramBoolean;
     notifyDataSetChanged();
-    AppMethodBeat.o(113660);
+    AppMethodBeat.o(56092);
   }
   
-  public final void b(f paramf)
+  public final void aKo(String paramString)
   {
-    AppMethodBeat.i(113659);
-    if (this.ogN.size() >= 0)
-    {
-      this.ogN.add(0, paramf);
-      notifyDataSetChanged();
-    }
-    AppMethodBeat.o(113659);
-  }
-  
-  public final void bMq()
-  {
-    this.buffer = null;
-    this.eRq = false;
-    this.key = "";
+    AppMethodBeat.i(56091);
+    this.key = paramString;
+    Log.i("MicroMsg.PoiAdapter", "initData key %s.", new Object[] { paramString });
+    AppMethodBeat.o(56091);
   }
   
   public final void clean()
   {
-    AppMethodBeat.i(113657);
+    AppMethodBeat.i(56090);
     this.buffer = null;
-    this.eRq = false;
+    this.nxG = false;
     this.key = "";
-    this.ogN.clear();
-    AppMethodBeat.o(113657);
+    this.Kjl.clear();
+    this.dyx = -1;
+    AppMethodBeat.o(56090);
   }
   
-  public final int getCount()
+  public final void fVK()
   {
-    AppMethodBeat.i(113661);
-    int i = this.ogN.size();
-    AppMethodBeat.o(113661);
+    this.buffer = null;
+    this.nxG = false;
+    this.key = "";
+  }
+  
+  public int getCount()
+  {
+    AppMethodBeat.i(56093);
+    int i = this.Kjl.size();
+    AppMethodBeat.o(56093);
     return i;
   }
   
-  public final long getItemId(int paramInt)
+  public long getItemId(int paramInt)
   {
     return 0L;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(113663);
+    AppMethodBeat.i(56095);
+    View localView;
+    a locala;
+    f localf;
+    label161:
+    label186:
+    Object localObject;
     if (paramView == null)
     {
-      paramView = ((LayoutInflater)this.context.getSystemService("layout_inflater")).inflate(2130970426, null);
-      paramViewGroup = new e.a();
-      paramViewGroup.titleView = ((TextView)paramView.findViewById(2131820680));
-      paramViewGroup.ogO = ((TextView)paramView.findViewById(2131821949));
-      paramViewGroup.ogP = ((ImageView)paramView.findViewById(2131826753));
-      paramViewGroup.ogR = paramView.findViewById(2131826755);
-      paramViewGroup.ogQ = paramView.findViewById(2131826754);
-      paramViewGroup.iQQ = ((TextView)paramView.findViewById(2131826756));
-      paramView.setTag(paramViewGroup);
-      if ((((f)this.ogN.get(paramInt)).type != 1) && (((f)this.ogN.get(paramInt)).type != 2)) {
-        break label314;
+      localView = LayoutInflater.from(this.context).inflate(a.f.poi_list_item, paramViewGroup, false);
+      locala = new a();
+      locala.Kjo = localView.findViewById(a.e.poi_item_location);
+      locala.titleView = ((TextView)localView.findViewById(a.e.poi_item_location_title));
+      locala.KbK = ((TextView)localView.findViewById(a.e.poi_item_location_subtitle));
+      locala.Kjp = localView.findViewById(a.e.poi_item_tick);
+      localView.setTag(locala);
+      localf = (f)this.Kjl.get(paramInt);
+      if ((1 != localf.type) && (2 != localf.type)) {
+        break label573;
       }
-      paramViewGroup.ogR.setVisibility(0);
-      paramViewGroup.ogQ.setVisibility(8);
-      paramViewGroup.iQQ.setText(bo.bf(((f)this.ogN.get(paramInt)).ogS, ""));
-      label198:
-      if ((paramInt != 0) || (this.gzX)) {
-        break label480;
+      locala.titleView.setText(Util.nullAs(localf.Kjq, ""));
+      locala.KbK.setVisibility(8);
+      if (!Util.isNullOrNil(localf.mName)) {
+        break label585;
       }
-      if (!this.ogy) {
-        break label334;
+      paramView = this.context.getResources().getString(a.i.location);
+      localObject = "";
+      if ((Util.isNullOrNil(this.Kjm)) || (!Util.nullAs(localf.Kju, "").equals(this.Kjm))) {
+        break label594;
       }
-      paramViewGroup.titleView.setText(bo.bf(((f)this.ogN.get(0)).mName, ""));
-      paramViewGroup.ogO.setVisibility(0);
-      paramViewGroup.ogO.setText(bo.bf(((f)this.ogN.get(0)).ogS, ""));
-    }
-    label296:
-    label314:
-    label334:
-    label480:
-    Object localObject2;
-    Object localObject1;
-    for (;;)
-    {
-      if (paramInt == this.lxQ)
+      paramViewGroup = (ViewGroup)localObject;
+      if (!Util.isNullOrNil(this.Kjn))
       {
-        paramViewGroup.ogP.setVisibility(0);
-        AppMethodBeat.o(113663);
-        return paramView;
-        paramViewGroup = (e.a)paramView.getTag();
-        break;
-        paramViewGroup.ogR.setVisibility(8);
-        paramViewGroup.ogQ.setVisibility(0);
-        break label198;
-        paramViewGroup.ogO.setVisibility(8);
-        if (!bo.isNullOrNil(((f)this.ogN.get(0)).ogS))
-        {
-          paramViewGroup.titleView.setText(bo.bf(((f)this.ogN.get(paramInt)).ogS, ""));
-        }
-        else if (bo.isNullOrNil(((f)this.ogN.get(0)).ohb))
-        {
-          paramViewGroup.titleView.setText(bo.bf(((f)this.ogN.get(paramInt)).mName, ""));
-        }
-        else
-        {
-          paramViewGroup.titleView.setText(bo.bf(((f)this.ogN.get(paramInt)).ohb, ""));
-          continue;
-          localObject2 = (f)this.ogN.get(paramInt);
-          localObject1 = bo.bf(((f)localObject2).mName, "");
-          localObject2 = bo.bf(((f)localObject2).ogS, "");
-          if ((!this.gzX) || (bo.isNullOrNil(this.lbI))) {
-            break label592;
-          }
-          localObject1 = Sm((String)localObject1);
-          localObject2 = Sm((String)localObject2);
+        paramViewGroup = (ViewGroup)localObject;
+        if (!Util.nullAs(localf.Kjv, "").equals(this.Kjn)) {
+          paramViewGroup = Util.nullAs(localf.Kjv, "");
         }
       }
+      label267:
+      paramViewGroup = paramViewGroup + Util.nullAs(localf.Kjw, "");
+      localObject = paramViewGroup + Util.nullAs(localf.Kjz, "");
+      paramViewGroup = (ViewGroup)localObject;
+      if (Util.isNullOrNil((String)localObject)) {
+        paramViewGroup = Util.nullAs(localf.Kjq, "");
+      }
+      if ((!this.pVy) || (Util.isNullOrNil(this.xts))) {
+        break label708;
+      }
+      paramView = aKp(paramView);
+      paramViewGroup = aKp(paramViewGroup);
     }
-    label592:
+    label573:
+    label708:
     for (;;)
     {
-      paramViewGroup.titleView.setText((CharSequence)localObject1);
-      paramViewGroup.ogO.setText((CharSequence)localObject2);
-      paramViewGroup.ogO.setVisibility(0);
-      break;
-      paramViewGroup.ogP.setVisibility(4);
-      break label296;
+      locala.titleView.setText(paramView);
+      TextView localTextView = locala.KbK;
+      double d1 = localf.HHO;
+      double d2 = localf.HHN;
+      int i = (int)TencentLocationUtils.distanceBetween(this.KeO, this.KeP, d1, d2);
+      Log.d("MicroMsg.PoiAdapter", "mLat %s mLng %s lat %s lng %s dis %s.", new Object[] { Double.valueOf(this.KeO), Double.valueOf(this.KeP), Double.valueOf(d1), Double.valueOf(d2), Integer.valueOf(i) });
+      if (i < 100)
+      {
+        paramView = "100m内";
+        label490:
+        localObject = paramView;
+        if (!Util.isNullOrNil(paramViewGroup)) {
+          localObject = paramView + " | " + paramViewGroup;
+        }
+        localTextView.setText((CharSequence)localObject);
+        if (paramInt != this.dyx) {
+          break label696;
+        }
+        locala.Kjp.setVisibility(0);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(56095);
+        return localView;
+        locala = (a)paramView.getTag();
+        localView = paramView;
+        break;
+        locala.KbK.setVisibility(0);
+        break label161;
+        label585:
+        paramView = localf.mName;
+        break label186;
+        label594:
+        paramViewGroup = Util.nullAs(localf.Kju, "");
+        paramViewGroup = paramViewGroup + Util.nullAs(localf.Kjv, "");
+        break label267;
+        if (i >= 1000)
+        {
+          paramView = Util.safeFormatString("%.1fkm", new Object[] { Double.valueOf(i / 1000.0D) });
+          break label490;
+        }
+        paramView = i + "m";
+        break label490;
+        locala.Kjp.setVisibility(4);
+      }
     }
   }
   
-  public final void notifyDataSetChanged()
+  public final void jU(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(113665);
-    super.notifyDataSetChanged();
-    Thread.currentThread().getId();
-    Looper.getMainLooper().getThread().getId();
-    ab.i("MicroMsg.PoiAdapter", "map notifyDataChange " + bo.dtY().toString() + " threadId : " + Thread.currentThread().getId());
-    AppMethodBeat.o(113665);
+    this.Kjm = paramString1;
+    this.Kjn = paramString2;
   }
   
-  public final f ye(int paramInt)
+  public final void o(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(113662);
-    f localf = (f)this.ogN.get(paramInt);
-    AppMethodBeat.o(113662);
-    return localf;
+    this.KeO = paramDouble1;
+    this.KeP = paramDouble2;
+  }
+  
+  static final class a
+  {
+    TextView KbK;
+    View Kjo;
+    View Kjp;
+    TextView titleView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.e
  * JD-Core Version:    0.7.0.1
  */

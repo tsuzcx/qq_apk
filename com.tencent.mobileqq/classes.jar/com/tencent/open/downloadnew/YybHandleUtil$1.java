@@ -1,36 +1,40 @@
 package com.tencent.open.downloadnew;
 
 import android.text.TextUtils;
-import bflp;
-import bfpu;
-import bfpz;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
 import java.io.File;
 
-public final class YybHandleUtil$1
+final class YybHandleUtil$1
   implements Runnable
 {
   public void run()
   {
-    Object localObject = bfpz.a().a("com.tencent.android.qqdownloader");
-    String str = "";
+    Object localObject = DownloadDBHelper.a().a("com.tencent.android.qqdownloader");
     if (localObject != null) {
-      str = ((DownloadInfo)localObject).l;
+      localObject = ((DownloadInfo)localObject).q;
+    } else {
+      localObject = "";
     }
-    if (!TextUtils.isEmpty(str))
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = new File(str);
-      bflp.c(bfpu.a, "---localFilePath = " + str);
-      if ((localObject != null) && (((File)localObject).exists()))
+      File localFile = new File((String)localObject);
+      String str = YybHandleUtil.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("---localFilePath = ");
+      localStringBuilder.append((String)localObject);
+      LogUtility.c(str, localStringBuilder.toString());
+      if (localFile.exists())
       {
-        bflp.c(bfpu.a, "---delete apk ");
-        ((File)localObject).delete();
+        LogUtility.c(YybHandleUtil.a, "---delete apk ");
+        localFile.delete();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybHandleUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bsa" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
+<FrameLayout android:id="@id/goq" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/avo" />
-    <TextView android:textSize="@dimen/ua" android:textColor="@color/a6s" android:id="@id/bsb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bpx" />
-</LinearLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/gop" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bny" />
+</FrameLayout>

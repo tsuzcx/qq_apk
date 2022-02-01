@@ -14,149 +14,149 @@ import java.io.InputStream;
 public final class e
   implements g
 {
-  private final w<? super e> aYq;
-  private InputStream aYr;
-  private long aYs;
-  private final ContentResolver aYt;
-  private AssetFileDescriptor aYu;
+  private final w<? super e> did;
+  private long die;
+  private final ContentResolver dif;
+  private AssetFileDescriptor dig;
+  private InputStream inputStream;
   private boolean opened;
   private Uri uri;
   
   public e(Context paramContext, w<? super e> paramw)
   {
-    AppMethodBeat.i(95791);
-    this.aYt = paramContext.getContentResolver();
-    this.aYq = paramw;
-    AppMethodBeat.o(95791);
+    AppMethodBeat.i(93033);
+    this.dif = paramContext.getContentResolver();
+    this.did = paramw;
+    AppMethodBeat.o(93033);
   }
   
   public final long a(j paramj)
   {
-    AppMethodBeat.i(95792);
+    AppMethodBeat.i(93034);
     try
     {
       this.uri = paramj.uri;
-      this.aYu = this.aYt.openAssetFileDescriptor(this.uri, "r");
-      if (this.aYu == null)
+      this.dig = this.dif.openAssetFileDescriptor(this.uri, "r");
+      if (this.dig == null)
       {
         paramj = new FileNotFoundException("Could not open file descriptor for: " + this.uri);
-        AppMethodBeat.o(95792);
+        AppMethodBeat.o(93034);
         throw paramj;
       }
     }
     catch (IOException paramj)
     {
-      paramj = new e.a(paramj);
-      AppMethodBeat.o(95792);
+      paramj = new a(paramj);
+      AppMethodBeat.o(93034);
       throw paramj;
     }
-    this.aYr = new FileInputStream(this.aYu.getFileDescriptor());
-    long l1 = this.aYu.getStartOffset();
-    l1 = this.aYr.skip(paramj.position + l1) - l1;
+    this.inputStream = new FileInputStream(this.dig.getFileDescriptor());
+    long l1 = this.dig.getStartOffset();
+    l1 = this.inputStream.skip(paramj.position + l1) - l1;
     if (l1 != paramj.position)
     {
       paramj = new EOFException();
-      AppMethodBeat.o(95792);
+      AppMethodBeat.o(93034);
       throw paramj;
     }
-    if (paramj.aPF != -1L) {
-      this.aYs = paramj.aPF;
+    if (paramj.length != -1L) {
+      this.die = paramj.length;
     }
     for (;;)
     {
       this.opened = true;
-      if (this.aYq != null) {
-        this.aYq.qq();
+      if (this.did != null) {
+        this.did.a(this, paramj);
       }
-      l1 = this.aYs;
-      AppMethodBeat.o(95792);
+      l1 = this.die;
+      AppMethodBeat.o(93034);
       return l1;
-      long l2 = this.aYu.getLength();
+      long l2 = this.dig.getLength();
       if (l2 == -1L)
       {
-        this.aYs = this.aYr.available();
-        if (this.aYs == 0L) {
-          this.aYs = -1L;
+        this.die = this.inputStream.available();
+        if (this.die == 0L) {
+          this.die = -1L;
         }
       }
       else
       {
-        this.aYs = (l2 - l1);
+        this.die = (l2 - l1);
       }
     }
   }
   
   public final void close()
   {
-    AppMethodBeat.i(95794);
+    AppMethodBeat.i(93036);
     this.uri = null;
     try
     {
-      if (this.aYr != null) {
-        this.aYr.close();
+      if (this.inputStream != null) {
+        this.inputStream.close();
       }
-      this.aYr = null;
+      this.inputStream = null;
       try
       {
-        if (this.aYu != null) {
-          this.aYu.close();
+        if (this.dig != null) {
+          this.dig.close();
         }
         return;
       }
       catch (IOException localIOException1)
       {
-        e.a locala1 = new e.a(localIOException1);
-        AppMethodBeat.o(95794);
+        a locala1 = new a(localIOException1);
+        AppMethodBeat.o(93036);
         throw locala1;
       }
       finally
       {
-        this.aYu = null;
+        this.dig = null;
         if (this.opened)
         {
           this.opened = false;
-          if (this.aYq != null) {
-            this.aYq.qr();
+          if (this.did != null) {
+            this.did.bj(this);
           }
         }
-        AppMethodBeat.o(95794);
+        AppMethodBeat.o(93036);
       }
-      AppMethodBeat.o(95794);
+      AppMethodBeat.o(93036);
       return;
     }
     catch (IOException localIOException2)
     {
-      e.a locala2 = new e.a(localIOException2);
-      AppMethodBeat.o(95794);
+      a locala2 = new a(localIOException2);
+      AppMethodBeat.o(93036);
       throw locala2;
     }
     finally
     {
-      this.aYr = null;
+      this.inputStream = null;
       try
       {
-        if (this.aYu != null) {
-          this.aYu.close();
+        if (this.dig != null) {
+          this.dig.close();
         }
         throw localObject2;
       }
       catch (IOException localIOException3)
       {
-        e.a locala3 = new e.a(localIOException3);
-        AppMethodBeat.o(95794);
+        a locala3 = new a(localIOException3);
+        AppMethodBeat.o(93036);
         throw locala3;
       }
       finally
       {
-        this.aYu = null;
+        this.dig = null;
         if (this.opened)
         {
           this.opened = false;
-          if (this.aYq != null) {
-            this.aYq.qr();
+          if (this.did != null) {
+            this.did.bj(this);
           }
         }
-        AppMethodBeat.o(95794);
+        AppMethodBeat.o(93036);
       }
     }
   }
@@ -168,58 +168,67 @@ public final class e
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(95793);
+    AppMethodBeat.i(93035);
     if (paramInt2 == 0)
     {
-      AppMethodBeat.o(95793);
+      AppMethodBeat.o(93035);
       return 0;
     }
-    if (this.aYs == 0L)
+    if (this.die == 0L)
     {
-      AppMethodBeat.o(95793);
+      AppMethodBeat.o(93035);
       return -1;
     }
     try
     {
-      if (this.aYs == -1L) {}
+      if (this.die == -1L) {}
       for (;;)
       {
-        paramInt1 = this.aYr.read(paramArrayOfByte, paramInt1, paramInt2);
+        paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
         if (paramInt1 != -1) {
           break label134;
         }
-        if (this.aYs == -1L) {
+        if (this.die == -1L) {
           break;
         }
-        paramArrayOfByte = new e.a(new EOFException());
-        AppMethodBeat.o(95793);
+        paramArrayOfByte = new a(new EOFException());
+        AppMethodBeat.o(93035);
         throw paramArrayOfByte;
-        long l = Math.min(this.aYs, paramInt2);
+        long l = Math.min(this.die, paramInt2);
         paramInt2 = (int)l;
       }
-      AppMethodBeat.o(95793);
+      AppMethodBeat.o(93035);
     }
     catch (IOException paramArrayOfByte)
     {
-      paramArrayOfByte = new e.a(paramArrayOfByte);
-      AppMethodBeat.o(95793);
+      paramArrayOfByte = new a(paramArrayOfByte);
+      AppMethodBeat.o(93035);
       throw paramArrayOfByte;
     }
     return -1;
     label134:
-    if (this.aYs != -1L) {
-      this.aYs -= paramInt1;
+    if (this.die != -1L) {
+      this.die -= paramInt1;
     }
-    if (this.aYq != null) {
-      this.aYq.el(paramInt1);
+    if (this.did != null) {
+      this.did.f(this, paramInt1);
     }
-    AppMethodBeat.o(95793);
+    AppMethodBeat.o(93035);
     return paramInt1;
+  }
+  
+  public static final class a
+    extends IOException
+  {
+    public a(IOException paramIOException)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.e
  * JD-Core Version:    0.7.0.1
  */

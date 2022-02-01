@@ -11,16 +11,17 @@ class MiniAppBridgeActivity$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (MiniAppBridgeActivity.access$000(this.this$0) != null) {}
-    while ((this.this$0.getActivity() == null) || (this.this$0.getActivity().isFinishing())) {
+    if (MiniAppBridgeActivity.access$000(this.this$0) != null) {
       return;
     }
-    this.this$0.getActivity().finish();
+    if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing())) {
+      this.this$0.getActivity().finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppBridgeActivity.1
  * JD-Core Version:    0.7.0.1
  */

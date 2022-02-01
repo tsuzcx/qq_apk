@@ -25,13 +25,14 @@ public final class ARCloudRecogCustomPb$ImageARTag
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 37, 40, 808, 818, 824 }, new String[] { "image_id", "tag_name", "tag_confidence", "tag_confidence_f", "need_check_lbs", "cdb_errorcode", "cdb_res", "conf_id" }, new Object[] { "", "", Integer.valueOf(0), Float.valueOf(0.0F), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, ImageARTag.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 37, 40, 808, 818, 824 }, new String[] { "image_id", "tag_name", "tag_confidence", "tag_confidence_f", "need_check_lbs", "cdb_errorcode", "cdb_res", "conf_id" }, new Object[] { "", "", localInteger, Float.valueOf(0.0F), localInteger, localInteger, localByteStringMicro, localInteger }, ImageARTag.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageARTag
  * JD-Core Version:    0.7.0.1
  */

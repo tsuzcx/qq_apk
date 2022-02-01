@@ -8,7 +8,7 @@ public final class ReqLastGameInfo
   extends JceStruct
 {
   public byte iVersion = 1;
-  public long lUin;
+  public long lUin = 0L;
   
   public ReqLastGameInfo() {}
   
@@ -32,7 +32,7 @@ public final class ReqLastGameInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GameCenter.ReqLastGameInfo
  * JD-Core Version:    0.7.0.1
  */

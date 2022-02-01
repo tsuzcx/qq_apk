@@ -26,17 +26,19 @@ public final class qun_add_comment_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.verifyurl != null) {
-      paramJceOutputStream.write(this.verifyurl, 0);
+    String str = this.verifyurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.commentid != null) {
-      paramJceOutputStream.write(this.commentid, 1);
+    str = this.commentid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_add_comment_rsp
  * JD-Core Version:    0.7.0.1
  */

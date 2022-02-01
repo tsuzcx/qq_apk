@@ -12,26 +12,31 @@ class MiniProgramReporter$3
   
   public void run()
   {
-    if (this.val$singleDcData.dcid.get() == 4) {
+    if (this.val$singleDcData.dcid.get() == 4)
+    {
       MiniProgramReporter.access$000(this.this$0).add(this.val$singleDcData);
     }
-    for (;;)
+    else if (this.val$singleDcData.dcid.get() == 9)
     {
-      MiniProgramReporter.access$400(this.this$0);
-      return;
-      if (this.val$singleDcData.dcid.get() == 9) {
-        MiniProgramReporter.access$100(this.this$0).add(this.val$singleDcData);
-      } else if (this.val$singleDcData.dcid.get() == 5) {
-        MiniProgramReporter.access$200(this.this$0).add(this.val$singleDcData);
-      } else {
-        QLog.e("MiniProgramReporter", 1, " should not report by dcReport " + MiniProgramReporter.access$300(this.val$singleDcData));
-      }
+      MiniProgramReporter.access$100(this.this$0).add(this.val$singleDcData);
     }
+    else if (this.val$singleDcData.dcid.get() == 5)
+    {
+      MiniProgramReporter.access$200(this.this$0).add(this.val$singleDcData);
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" should not report by dcReport ");
+      localStringBuilder.append(MiniProgramReporter.access$300(this.val$singleDcData));
+      QLog.e("MiniProgramReporter", 1, localStringBuilder.toString());
+    }
+    MiniProgramReporter.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramReporter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Message;
-import awhr;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
 import mqq.os.MqqHandler;
 
 class ChatHistory$8
@@ -12,27 +12,29 @@ class ChatHistory$8
   
   public void run()
   {
-    StringBuilder localStringBuilder = null;
-    if (this.jdField_a_of_type_Boolean) {
+    StringBuilder localStringBuilder;
+    if (this.a) {
       localStringBuilder = new StringBuilder();
+    } else {
+      localStringBuilder = null;
     }
     int i = 0;
-    if (this.this$0.jdField_a_of_type_Awhr != null) {
-      i = this.this$0.jdField_a_of_type_Awhr.a(MessageRecord.getTableName(this.this$0.b, this.this$0.jdField_a_of_type_Int));
+    if (this.this$0.Q != null) {
+      i = this.this$0.Q.a(MessageRecord.getTableName(this.this$0.e, this.this$0.f));
     }
-    int j = ChatHistory.a(this.this$0.app, this.this$0.b, this.this$0.jdField_a_of_type_Int, localStringBuilder);
-    Message localMessage = this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(this.jdField_a_of_type_Int);
+    int j = ChatHistory.a(this.this$0.app, this.this$0.e, this.this$0.f, localStringBuilder);
+    Message localMessage = this.this$0.U.obtainMessage(this.b);
     if ((localStringBuilder != null) && (localStringBuilder.length() > 0)) {
       localMessage.obj = localStringBuilder.toString();
     }
     localMessage.arg1 = j;
     localMessage.arg2 = i;
-    this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    this.this$0.U.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.8
  * JD-Core Version:    0.7.0.1
  */

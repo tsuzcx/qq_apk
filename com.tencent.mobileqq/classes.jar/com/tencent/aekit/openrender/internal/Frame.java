@@ -11,25 +11,37 @@ import java.util.List;
 
 public class Frame
 {
-  private static final String TAG = Frame.class.getSimpleName();
-  private List<String> backtracing = new ArrayList();
+  private static final String TAG = "Frame";
+  private List<String> backtracing;
   private boolean canUnlock;
-  private int[] fbo = new int[1];
+  private int[] fbo;
   public int height;
-  private int[] mRenderBufferDepth = new int[1];
+  private int[] mRenderBufferDepth;
   private boolean needDepth;
   public boolean needReleaseFrame;
   public Frame nextFrame;
   private boolean ownDepthBuffer;
   private boolean owntexture;
-  protected int[] texture = new int[1];
-  private Frame.Type type = Frame.Type.NEW;
+  protected int[] texture;
+  private Frame.Type type;
   public int width;
   
-  public Frame() {}
+  public Frame()
+  {
+    this.texture = new int[1];
+    this.fbo = new int[1];
+    this.mRenderBufferDepth = new int[1];
+    this.type = Frame.Type.NEW;
+    this.backtracing = new ArrayList();
+  }
   
   public Frame(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    this.texture = new int[1];
+    this.fbo = new int[1];
+    this.mRenderBufferDepth = new int[1];
+    this.type = Frame.Type.NEW;
+    this.backtracing = new ArrayList();
     this.texture[0] = paramInt2;
     this.fbo[0] = paramInt1;
     this.width = paramInt3;
@@ -38,14 +50,17 @@ public class Frame
   
   public Frame(Frame.Type paramType)
   {
+    boolean bool = true;
+    this.texture = new int[1];
+    this.fbo = new int[1];
+    this.mRenderBufferDepth = new int[1];
+    this.type = Frame.Type.NEW;
+    this.backtracing = new ArrayList();
     this.type = paramType;
-    if (paramType == Frame.Type.FRAME_CACHE) {}
-    for (;;)
-    {
-      this.canUnlock = bool;
-      return;
+    if (paramType != Frame.Type.FRAME_CACHE) {
       bool = false;
     }
+    this.canUnlock = bool;
   }
   
   public void addBackTracing(String paramString)
@@ -61,8 +76,9 @@ public class Frame
     if ((this.needDepth) && (!this.ownDepthBuffer))
     {
       this.ownDepthBuffer = true;
-      if (this.mRenderBufferDepth[0] <= 0) {
-        GLES20.glGenRenderbuffers(1, this.mRenderBufferDepth, 0);
+      int[] arrayOfInt = this.mRenderBufferDepth;
+      if (arrayOfInt[0] <= 0) {
+        GLES20.glGenRenderbuffers(1, arrayOfInt, 0);
       }
       GLES20.glBindRenderbuffer(36161, this.mRenderBufferDepth[0]);
       GLES20.glRenderbufferStorage(36161, 33189, paramInt1, paramInt2);
@@ -82,55 +98,77 @@ public class Frame
         return;
       }
       double d2 = paramInt3;
-      double d3 = paramInt3 * paramDouble;
-      double d1 = d3;
-      if (paramInt2 > d3)
+      Double.isNaN(d2);
+      double d4 = paramDouble * d2;
+      double d3 = paramInt2;
+      double d1;
+      if (d3 > d4)
       {
-        d1 = paramInt2;
-        d2 = paramInt2 / paramDouble;
+        Double.isNaN(d3);
+        d1 = d3 / paramDouble;
+        paramDouble = d3;
       }
-      GLES20.glViewport((int)-(d1 - paramInt2) / 2, (int)-(d2 - paramInt3) / 2, (int)d1, (int)d2);
+      else
+      {
+        d1 = d2;
+        paramDouble = d4;
+      }
+      Double.isNaN(d3);
+      paramInt1 = (int)-(paramDouble - d3) / 2;
+      Double.isNaN(d2);
+      GLES20.glViewport(paramInt1, (int)-(d1 - d2) / 2, (int)paramDouble, (int)d1);
       return;
     }
     if (((paramInt1 > 0) && (this.texture[0] != paramInt1)) || (this.width != paramInt2) || (this.height != paramInt3))
     {
-      if (this.fbo[0] != 0)
+      arrayOfInt = this.fbo;
+      if (arrayOfInt[0] != 0)
       {
-        GLES20.glBindFramebuffer(36160, this.fbo[0]);
+        GLES20.glBindFramebuffer(36160, arrayOfInt[0]);
         GLES20.glFramebufferTexture2D(36160, 36064, 3553, 0, 0);
       }
-      if ((this.owntexture) && (this.texture[0] != 0)) {
-        GLES20.glDeleteTextures(1, this.texture, 0);
+      if (this.owntexture)
+      {
+        arrayOfInt = this.texture;
+        if (arrayOfInt[0] != 0) {
+          GLES20.glDeleteTextures(1, arrayOfInt, 0);
+        }
       }
       this.texture[0] = 0;
     }
     this.width = paramInt2;
     this.height = paramInt3;
-    if (this.fbo[0] <= 0) {
-      GLES20.glGenFramebuffers(1, this.fbo, 0);
+    int[] arrayOfInt = this.fbo;
+    if (arrayOfInt[0] <= 0) {
+      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
     }
-    if ((paramInt1 > 0) && (this.texture[0] != paramInt1))
+    if (paramInt1 > 0)
     {
-      this.owntexture = false;
-      this.texture[0] = paramInt1;
-      GLES20.glActiveTexture(33984);
-      GlUtil.glBindTexture(3553, this.texture[0]);
-      GlUtil.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, null);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glBindFramebuffer(36160, this.fbo[0]);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.texture[0], 0);
-      bindDepthBuffer(this.width, this.height);
-      GLES20.glViewport(0, 0, this.width, this.height);
-      return;
+      arrayOfInt = this.texture;
+      if (arrayOfInt[0] != paramInt1)
+      {
+        this.owntexture = false;
+        arrayOfInt[0] = paramInt1;
+        GLES20.glActiveTexture(33984);
+        GlUtil.glBindTexture(3553, this.texture[0]);
+        GlUtil.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, null);
+        GLES20.glTexParameterf(3553, 10240, 9729.0F);
+        GLES20.glTexParameterf(3553, 10241, 9729.0F);
+        GLES20.glTexParameterf(3553, 10242, 33071.0F);
+        GLES20.glTexParameterf(3553, 10243, 33071.0F);
+        GLES20.glBindFramebuffer(36160, this.fbo[0]);
+        GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.texture[0], 0);
+        bindDepthBuffer(this.width, this.height);
+        GLES20.glViewport(0, 0, this.width, this.height);
+        return;
+      }
     }
     if (this.texture[0] <= 0)
     {
       this.owntexture = true;
       GLES20.glActiveTexture(33984);
-      GlUtil.glGenTextures(this.texture.length, this.texture, 0);
+      arrayOfInt = this.texture;
+      GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
       GlUtil.glBindTexture(3553, this.texture[0]);
       GlUtil.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, null);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
@@ -151,14 +189,16 @@ public class Frame
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    if (this.fbo[0] <= 0) {
-      GLES20.glGenFramebuffers(1, this.fbo, 0);
+    int[] arrayOfInt = this.fbo;
+    if (arrayOfInt[0] <= 0) {
+      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
     }
     if (this.texture[0] <= 0)
     {
       this.owntexture = true;
       GLES20.glActiveTexture(33984);
-      GlUtil.glGenTextures(this.texture.length, this.texture, 0);
+      arrayOfInt = this.texture;
+      GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     }
     GlUtil.glBindTexture(3553, this.texture[0]);
     GlUtil.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, paramByteBuffer);
@@ -174,31 +214,35 @@ public class Frame
   
   public void clear()
   {
-    if (this.fbo[0] != 0)
+    Object localObject = this.fbo;
+    if (localObject[0] != 0)
     {
-      GLES20.glBindFramebuffer(36160, this.fbo[0]);
+      GLES20.glBindFramebuffer(36160, localObject[0]);
       GLES20.glFramebufferTexture2D(36160, 36064, 3553, 0, 0);
       GLES20.glDeleteFramebuffers(1, this.fbo, 0);
       this.fbo[0] = 0;
     }
-    if (this.mRenderBufferDepth[0] != 0)
+    localObject = this.mRenderBufferDepth;
+    if (localObject[0] != 0)
     {
-      GLES20.glDeleteRenderbuffers(this.mRenderBufferDepth.length, this.mRenderBufferDepth, 0);
+      GLES20.glDeleteRenderbuffers(localObject.length, (int[])localObject, 0);
       Arrays.fill(this.mRenderBufferDepth, 0);
     }
     clearSelf();
-    if (this.nextFrame != null) {
-      this.nextFrame.clear();
+    localObject = this.nextFrame;
+    if (localObject != null) {
+      ((Frame)localObject).clear();
     }
     GLES20.glBindFramebuffer(36160, 0);
   }
   
   public void clearSelf()
   {
-    if (this.texture[0] != 0)
+    int[] arrayOfInt = this.texture;
+    if (arrayOfInt[0] != 0)
     {
       if (this.owntexture) {
-        GlUtil.glDeleteTextures(1, this.texture, 0);
+        GlUtil.glDeleteTextures(1, arrayOfInt, 0);
       }
       this.texture[0] = 0;
     }
@@ -216,14 +260,27 @@ public class Frame
   
   public int getLastRenderTextureId()
   {
-    for (Frame localFrame = this; (localFrame.nextFrame != null) && (localFrame.nextFrame.getTextureId() != 0); localFrame = localFrame.nextFrame) {}
-    return localFrame.getTextureId();
+    for (Frame localFrame1 = this;; localFrame1 = localFrame1.nextFrame)
+    {
+      Frame localFrame2 = localFrame1.nextFrame;
+      if ((localFrame2 == null) || (localFrame2.getTextureId() == 0)) {
+        break;
+      }
+    }
+    return localFrame1.getTextureId();
   }
   
   public int getLastTextureId()
   {
-    for (Frame localFrame = this; localFrame.nextFrame != null; localFrame = localFrame.nextFrame) {}
-    return localFrame.getTextureId();
+    Frame localFrame;
+    for (Object localObject = this;; localObject = localFrame)
+    {
+      localFrame = ((Frame)localObject).nextFrame;
+      if (localFrame == null) {
+        break;
+      }
+    }
+    return ((Frame)localObject).getTextureId();
   }
   
   public int getTextureId()
@@ -233,14 +290,17 @@ public class Frame
   
   public void printBackTracing()
   {
-    StringBuilder localStringBuilder = new StringBuilder("[frame backtracing] ");
+    StringBuilder localStringBuilder1 = new StringBuilder("[frame backtracing] ");
     Iterator localIterator = this.backtracing.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localStringBuilder.append(str + ", ");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(str);
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    Log.e(TAG, localStringBuilder.toString());
+    Log.e(TAG, localStringBuilder1.toString());
   }
   
   public void setCanUnlock(boolean paramBoolean)
@@ -257,29 +317,35 @@ public class Frame
   {
     this.width = paramInt2;
     this.height = paramInt3;
-    if (this.fbo[0] <= 0) {
-      GLES20.glGenFramebuffers(1, this.fbo, 0);
+    int[] arrayOfInt = this.fbo;
+    if (arrayOfInt[0] <= 0) {
+      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
     }
-    if ((paramInt1 > 0) && (this.texture[0] != paramInt1))
+    if (paramInt1 > 0)
     {
-      this.owntexture = false;
-      this.texture[0] = paramInt1;
-      GLES20.glActiveTexture(33984);
-      GlUtil.glBindTexture(3553, this.texture[0]);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glBindFramebuffer(36160, this.fbo[0]);
-      GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.texture[0], 0);
-      GLES20.glViewport(0, 0, this.width, this.height);
-      return;
+      arrayOfInt = this.texture;
+      if (arrayOfInt[0] != paramInt1)
+      {
+        this.owntexture = false;
+        arrayOfInt[0] = paramInt1;
+        GLES20.glActiveTexture(33984);
+        GlUtil.glBindTexture(3553, this.texture[0]);
+        GLES20.glTexParameterf(3553, 10240, 9729.0F);
+        GLES20.glTexParameterf(3553, 10241, 9729.0F);
+        GLES20.glTexParameterf(3553, 10242, 33071.0F);
+        GLES20.glTexParameterf(3553, 10243, 33071.0F);
+        GLES20.glBindFramebuffer(36160, this.fbo[0]);
+        GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.texture[0], 0);
+        GLES20.glViewport(0, 0, this.width, this.height);
+        return;
+      }
     }
     if (this.texture[0] <= 0)
     {
       this.owntexture = true;
       GLES20.glActiveTexture(33984);
-      GlUtil.glGenTextures(this.texture.length, this.texture, 0);
+      arrayOfInt = this.texture;
+      GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
       GlUtil.glBindTexture(3553, this.texture[0]);
       GlUtil.glTexImage2D(3553, 0, 6408, this.width, this.height, 0, 6408, 5121, null);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
@@ -310,7 +376,7 @@ public class Frame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.internal.Frame
  * JD-Core Version:    0.7.0.1
  */

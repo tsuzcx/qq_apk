@@ -1,28 +1,16 @@
-import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.emoticonview.BigEmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import com.tencent.mobileqq.model.EmoticonManager;
 
 public class fow
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public fow(FavoriteEmoticonInfo paramFavoriteEmoticonInfo, QQAppInterface paramQQAppInterface, EmoticonCallback paramEmoticonCallback, ActionSheet paramActionSheet) {}
+  public fow(HorizonEmoticonTabs paramHorizonEmoticonTabs, QQAppInterface paramQQAppInterface, BigEmoticonViewBinder paramBigEmoticonViewBinder) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo);
-    }
+    ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12)).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmoticonViewBinder.a);
   }
 }
 

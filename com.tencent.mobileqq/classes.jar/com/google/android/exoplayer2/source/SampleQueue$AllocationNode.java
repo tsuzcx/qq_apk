@@ -16,7 +16,7 @@ final class SampleQueue$AllocationNode
   public SampleQueue$AllocationNode(long paramLong, int paramInt)
   {
     this.startPosition = paramLong;
-    this.endPosition = (paramInt + paramLong);
+    this.endPosition = (paramLong + paramInt);
   }
   
   public AllocationNode clear()
@@ -41,7 +41,7 @@ final class SampleQueue$AllocationNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.SampleQueue.AllocationNode
  * JD-Core Version:    0.7.0.1
  */

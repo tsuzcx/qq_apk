@@ -56,10 +56,12 @@ public class LookupFilter
     if (paramObject.getClass() != getClass()) {
       return false;
     }
-    if (this.intensity != ((LookupFilter)paramObject).intensity) {
+    float f = this.intensity;
+    LookupFilter localLookupFilter = (LookupFilter)paramObject;
+    if (f != localLookupFilter.intensity) {
       return false;
     }
-    if (this.lookupBitmap != ((LookupFilter)paramObject).lookupBitmap) {
+    if (this.lookupBitmap != localLookupFilter.lookupBitmap) {
       return false;
     }
     return super.equals(paramObject);
@@ -101,9 +103,10 @@ public class LookupFilter
   
   public void release()
   {
-    if (this.lookupTextureID != -1)
+    int i = this.lookupTextureID;
+    if (i != -1)
     {
-      GLES20.glDeleteTextures(1, new int[] { this.lookupTextureID }, 0);
+      GLES20.glDeleteTextures(1, new int[] { i }, 0);
       this.lookupTextureID = -1;
     }
     super.release();
@@ -111,7 +114,7 @@ public class LookupFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.effects.LookupFilter
  * JD-Core Version:    0.7.0.1
  */

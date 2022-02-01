@@ -10,13 +10,13 @@ class FriendProfileMoreInfoActivity$10
   
   public void run()
   {
-    this.this$0.a.scrollTo(0, FriendProfileMoreInfoActivity.a(this.this$0).getTop());
-    FriendProfileMoreInfoActivity.c(this.this$0);
+    this.this$0.a.scrollTo(0, FriendProfileMoreInfoActivity.e(this.this$0).getTop());
+    FriendProfileMoreInfoActivity.f(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.10
  * JD-Core Version:    0.7.0.1
  */

@@ -16,23 +16,22 @@ final class MiniLogManager$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 4) {
       return;
-    } while ((MiniLogManager.access$000() > 0L) && (SystemClock.elapsedRealtime() - MiniLogManager.access$000() < 3600000L));
-    MiniLogManager.access$002(SystemClock.elapsedRealtime());
-    if (QLog.isColorLevel()) {
-      QLog.d(MiniLogManager.access$100(), 1, "clean and compress log");
     }
-    MiniLogManager.compressAndDeleteOldLog();
+    if ((MiniLogManager.access$000() <= 0L) || (SystemClock.elapsedRealtime() - MiniLogManager.access$000() >= 3600000L))
+    {
+      MiniLogManager.access$002(SystemClock.elapsedRealtime());
+      if (QLog.isColorLevel()) {
+        QLog.d(MiniLogManager.access$100(), 1, "clean and compress log");
+      }
+      MiniLogManager.compressAndDeleteOldLog();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLogManager.1
  * JD-Core Version:    0.7.0.1
  */

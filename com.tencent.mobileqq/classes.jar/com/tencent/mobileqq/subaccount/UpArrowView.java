@@ -12,9 +12,9 @@ import android.view.View;
 public class UpArrowView
   extends View
 {
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  Paint a = new Paint();
   int b;
+  int c;
   
   public UpArrowView(Context paramContext)
   {
@@ -36,35 +36,33 @@ public class UpArrowView
   
   public void a()
   {
-    this.jdField_a_of_type_Int = Color.argb(255, 255, 255, 255);
-    this.b = Color.argb(255, 241, 242, 249);
+    this.b = Color.argb(255, 255, 255, 255);
+    this.c = Color.argb(255, 241, 242, 249);
     setDuplicateParentStateEnabled(true);
-    int i = getResources().getColor(2131166961);
-    if (this.jdField_a_of_type_Int != i) {
-      this.jdField_a_of_type_Int = i;
+    int i = getResources().getColor(2131168094);
+    if (this.b != i) {
+      this.b = i;
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((isSelected()) || (isPressed())) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
+    if ((!isSelected()) && (!isPressed())) {
+      this.a.setColor(this.b);
+    } else {
+      this.a.setColor(this.c);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      int i = getWidth();
-      int j = getHeight();
-      Path localPath = new Path();
-      localPath.moveTo(0.0F, j);
-      localPath.lineTo(i / 2, 0.0F);
-      localPath.lineTo(i, j);
-      localPath.close();
-      paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    }
+    this.a.setAntiAlias(true);
+    int i = getWidth();
+    int j = getHeight();
+    Path localPath = new Path();
+    float f = j;
+    localPath.moveTo(0.0F, f);
+    localPath.lineTo(i / 2, 0.0F);
+    localPath.lineTo(i, f);
+    localPath.close();
+    paramCanvas.drawPath(localPath, this.a);
   }
   
   public void setPressed(boolean paramBoolean)
@@ -83,14 +81,14 @@ public class UpArrowView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Int = Color.argb(255, 0, 0, 0);
-      this.b = Color.argb(255, 31, 31, 31);
+      this.b = Color.argb(255, 0, 0, 0);
+      this.c = Color.argb(255, 31, 31, 31);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.UpArrowView
  * JD-Core Version:    0.7.0.1
  */

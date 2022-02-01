@@ -24,15 +24,16 @@ public final class MultiMsg$MultiMsgApplyDownReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50, 58, 66 }, new String[] { "bytes_msg_resid", "uint32_msg_type", "uint64_src_uin", "uint32_apply_id", "bytes_msg_key", "bytes_msg_sig", "rpt_ip_v4_info", "rpt_ip_v6_info" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, null, null }, MultiMsgApplyDownReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50, 58, 66 }, new String[] { "bytes_msg_resid", "uint32_msg_type", "uint64_src_uin", "uint32_apply_id", "bytes_msg_key", "bytes_msg_sig", "rpt_ip_v4_info", "rpt_ip_v6_info" }, new Object[] { localByteStringMicro1, localInteger, Long.valueOf(0L), localInteger, localByteStringMicro2, localByteStringMicro3, null, null }, MultiMsgApplyDownReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyDownReq
  * JD-Core Version:    0.7.0.1
  */

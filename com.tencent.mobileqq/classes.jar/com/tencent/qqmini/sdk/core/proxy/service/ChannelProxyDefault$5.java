@@ -1,25 +1,56 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import com.tencent.qqmini.sdk.core.proxy.IMediaPlayerUtil;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.SenderListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.request.ProtoBufRequest;
+import org.json.JSONObject;
 
 class ChannelProxyDefault$5
-  implements IMediaPlayerUtil
+  implements MiniAppProxy.SenderListener
 {
-  ChannelProxyDefault$5(ChannelProxyDefault paramChannelProxyDefault) {}
+  ChannelProxyDefault$5(ChannelProxyDefault paramChannelProxyDefault, ProtoBufRequest paramProtoBufRequest, AsyncResult paramAsyncResult) {}
   
-  public int getContentFlag(String paramString)
+  public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    return 0;
-  }
-  
-  public String getUrl(String paramString)
-  {
-    return paramString;
+    paramString = new StringBuilder();
+    paramString.append("recvData ");
+    paramString.append(this.val$request);
+    paramString.append(",retCode = ");
+    paramString.append(paramInt);
+    QMLog.w("ChannelProxyDefault", paramString.toString());
+    if (paramInt == 0)
+    {
+      if (this.val$result != null)
+      {
+        paramArrayOfByte = this.val$request.getResponse(paramArrayOfByte);
+        if (paramArrayOfByte != null)
+        {
+          if (paramArrayOfByte.optInt("retCode", 0) == 0L)
+          {
+            this.val$result.onReceiveResult(true, paramArrayOfByte);
+            return true;
+          }
+          this.val$result.onReceiveResult(false, paramArrayOfByte);
+          return true;
+        }
+        this.val$result.onReceiveResult(false, new JSONObject());
+        return true;
+      }
+    }
+    else
+    {
+      paramArrayOfByte = this.val$result;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.onReceiveResult(false, new JSONObject());
+      }
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.5
  * JD-Core Version:    0.7.0.1
  */

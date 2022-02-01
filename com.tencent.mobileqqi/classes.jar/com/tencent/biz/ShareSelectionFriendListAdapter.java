@@ -90,7 +90,7 @@ public class ShareSelectionFriendListAdapter
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903230, paramViewGroup, false);
       paramViewGroup = new ShareSelectionFriendListAdapter.ViewTag();
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131230940));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231395));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231394));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
@@ -134,8 +134,8 @@ public class ShareSelectionFriendListAdapter
     {
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903141, paramViewGroup, false);
       paramViewGroup = new ShareSelectionFriendListAdapter.GroupViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231389));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131231390));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231388));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131231389));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bjh;
-import com.tencent.mm.protocal.protobuf.bji;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.dyw;
+import com.tencent.mm.protocal.protobuf.dyx;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends a<bjh, bji>
+  extends a<dyw, dyx>
 {
   public b(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(41983);
-    bjh localbjh = new bjh();
-    localbjh.cwc = paramString1;
-    localbjh.xxB = paramString2;
-    localbjh.xxC = com.tencent.mm.bv.b.bL(paramArrayOfByte);
-    this.oin = localbjh;
-    AppMethodBeat.o(41983);
+    AppMethodBeat.i(64871);
+    dyw localdyw = new dyw();
+    localdyw.appid = paramString1;
+    localdyw.abdB = paramString2;
+    localdyw.abdC = com.tencent.mm.bx.b.cX(paramArrayOfByte);
+    a(localdyw);
+    AppMethodBeat.o(64871);
   }
   
-  protected final void bML()
+  protected final void fWr()
   {
-    AppMethodBeat.i(41984);
-    ab.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiStart ");
-    AppMethodBeat.o(41984);
+    AppMethodBeat.i(64872);
+    Log.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiStart ");
+    AppMethodBeat.o(64872);
   }
   
-  protected final void bMM()
+  protected final void fWs()
   {
-    AppMethodBeat.i(41985);
-    ab.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiEnd ");
-    AppMethodBeat.o(41985);
+    AppMethodBeat.i(64873);
+    Log.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiEnd ");
+    AppMethodBeat.o(64873);
   }
   
   public final int getFuncId()
@@ -45,7 +45,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.a.b
  * JD-Core Version:    0.7.0.1
  */

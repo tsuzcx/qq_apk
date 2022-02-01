@@ -261,7 +261,7 @@ public class QRLoginActivity
     {
     default: 
       return;
-    case 2131232593: 
+    case 2131232592: 
       if (this.jdField_a_of_type_Boolean)
       {
         paramView = new Intent(this, ScannerActivity.class);
@@ -280,14 +280,14 @@ public class QRLoginActivity
     super.onCreate(paramBundle);
     super.setContentView(2130903438);
     super.setTitle(2131560466);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131232589));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232593));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232594));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232591));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232592));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232590));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232587));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131232595));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131232588));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232592));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131232593));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232590));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131232591));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232589));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232586));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131232594));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a();

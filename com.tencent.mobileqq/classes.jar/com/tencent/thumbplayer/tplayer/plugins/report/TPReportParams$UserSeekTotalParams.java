@@ -35,11 +35,11 @@ public class TPReportParams$UserSeekTotalParams
         localJSONArray.put(localJSONObject);
       }
       paramJSONObject.put("val", localJSONArray);
+      return;
     }
     catch (JSONException paramJSONObject)
     {
       TPLogUtil.e("TPReportParams", paramJSONObject);
-      return;
     }
   }
   
@@ -60,7 +60,7 @@ public class TPReportParams$UserSeekTotalParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportParams.UserSeekTotalParams
  * JD-Core Version:    0.7.0.1
  */

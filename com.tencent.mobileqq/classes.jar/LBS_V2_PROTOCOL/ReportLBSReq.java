@@ -8,7 +8,7 @@ public final class ReportLBSReq
   extends JceStruct
 {
   static ReportLBSInfo cache_stReportInfo = new ReportLBSInfo();
-  public ReportLBSInfo stReportInfo;
+  public ReportLBSInfo stReportInfo = null;
   
   public ReportLBSReq() {}
   
@@ -24,14 +24,15 @@ public final class ReportLBSReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stReportInfo != null) {
-      paramJceOutputStream.write(this.stReportInfo, 0);
+    ReportLBSInfo localReportLBSInfo = this.stReportInfo;
+    if (localReportLBSInfo != null) {
+      paramJceOutputStream.write(localReportLBSInfo, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.ReportLBSReq
  * JD-Core Version:    0.7.0.1
  */

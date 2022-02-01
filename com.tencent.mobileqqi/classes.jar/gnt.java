@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
-import com.tencent.mobileqq.transfile.ServerAddr;
+import com.tencent.mobileqq.transfile.RichMediaUtil;
+import java.util.TimerTask;
 
-public class gnt
-  extends ServerAddr
+public final class gnt
+  extends TimerTask
 {
-  public int a;
+  public gnt(String paramString) {}
   
-  public void a() {}
-  
-  public void b()
+  public void run()
   {
-    FMTSrvAddrProvider.a().a(this.jdField_a_of_type_Int, "http://" + this.jdField_a_of_type_JavaLangString + ":" + this.b);
+    RichMediaUtil.a(this.a, false, null);
   }
 }
 

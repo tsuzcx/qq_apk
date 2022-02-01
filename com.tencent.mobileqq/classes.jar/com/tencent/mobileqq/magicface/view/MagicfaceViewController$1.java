@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.magicface.view;
 
-import atys;
-import atzj;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
 
-public class MagicfaceViewController$1
+class MagicfaceViewController$1
   implements Runnable
 {
-  public MagicfaceViewController$1(atzj paramatzj) {}
+  MagicfaceViewController$1(MagicfaceViewController paramMagicfaceViewController) {}
   
   public void run()
   {
-    this.this$0.a.g();
+    this.this$0.q.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.1
  * JD-Core Version:    0.7.0.1
  */

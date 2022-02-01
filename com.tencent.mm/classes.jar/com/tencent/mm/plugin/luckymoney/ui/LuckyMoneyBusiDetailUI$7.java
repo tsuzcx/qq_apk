@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.wallet_core.ui.k;
 
 final class LuckyMoneyBusiDetailUI$7
-  implements View.OnClickListener
+  extends k
 {
   LuckyMoneyBusiDetailUI$7(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI) {}
   
-  public final void onClick(View paramView)
+  public final void dr(View paramView)
   {
-    AppMethodBeat.i(42589);
-    LuckyMoneyBusiDetailUI.e(this.orQ);
-    AppMethodBeat.o(42589);
+    AppMethodBeat.i(284078);
+    LuckyMoneyBusiDetailUI.e(this.KAb);
+    AppMethodBeat.o(284078);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiDetailUI.7
  * JD-Core Version:    0.7.0.1
  */

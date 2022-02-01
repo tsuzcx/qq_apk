@@ -1,128 +1,119 @@
 package com.tencent.mm.plugin.appbrand.widget.g;
 
-import com.tencent.mars.smc.IDKey;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
+  extends Drawable
 {
-  public static void D(int paramInt, long paramLong)
+  float borderRadius;
+  private int borderWidth;
+  private final RectF ekW;
+  private Paint paint;
+  private Paint uMn;
+  private Path uMo;
+  private Path uMp;
+  private int uMq;
+  private int uMr;
+  
+  public a()
   {
-    AppMethodBeat.i(67896);
-    int i;
-    if (paramLong <= 500000L) {
-      i = 0;
-    }
-    for (;;)
-    {
-      h.qsU.idkeyStat(paramInt, i, 1L, false);
-      AppMethodBeat.o(67896);
-      return;
-      if (paramLong <= 1000000L) {
-        i = 1;
-      } else if (paramLong <= 2000000L) {
-        i = 2;
-      } else if (paramLong <= 3000000L) {
-        i = 3;
-      } else if (paramLong <= 4000000L) {
-        i = 4;
-      } else if (paramLong <= 5000000L) {
-        i = 5;
-      } else {
-        i = 6;
-      }
-    }
+    AppMethodBeat.i(146565);
+    this.ekW = new RectF();
+    this.borderRadius = 0.0F;
+    this.borderWidth = 0;
+    this.uMq = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 3);
+    this.uMr = this.uMq;
+    this.paint = new Paint(1);
+    this.paint.setStyle(Paint.Style.FILL);
+    this.uMn = new Paint(1);
+    this.uMn.setStyle(Paint.Style.FILL);
+    this.uMo = new Path();
+    this.uMp = new Path();
+    AppMethodBeat.o(146565);
   }
   
-  public static void E(int paramInt, long paramLong)
+  public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(67897);
-    int i;
-    if (paramLong <= 20000000L) {
-      i = 0;
-    }
-    for (;;)
-    {
-      h.qsU.idkeyStat(paramInt, i, 1L, false);
-      AppMethodBeat.o(67897);
-      return;
-      if (paramLong <= 25000000L) {
-        i = 1;
-      } else if (paramLong <= 30000000L) {
-        i = 2;
-      } else if (paramLong <= 35000000L) {
-        i = 3;
-      } else if (paramLong <= 40000000L) {
-        i = 4;
-      } else if (paramLong <= 50000000L) {
-        i = 5;
-      } else if (paramLong <= 60000000L) {
-        i = 6;
-      } else if (paramLong <= 70000000L) {
-        i = 7;
-      } else if (paramLong <= 80000000L) {
-        i = 8;
-      } else {
-        i = 9;
-      }
-    }
+    AppMethodBeat.i(146566);
+    float f5 = this.ekW.width();
+    float f6 = this.ekW.height();
+    float f1 = this.ekW.left;
+    float f2 = this.ekW.top;
+    float f3 = this.ekW.right;
+    float f4 = this.ekW.bottom;
+    f5 = Math.min(this.borderRadius, Math.min(f5, f6) * 0.5F);
+    paramCanvas.drawRoundRect(new RectF(this.uMr + f1, this.uMr + f2, f3 - this.uMr, f4 - this.uMr), f5, f5, this.uMn);
+    paramCanvas.drawPath(this.uMp, this.uMn);
+    paramCanvas.drawRoundRect(new RectF(f1 + this.uMr + this.borderWidth, f2 + this.uMr + this.borderWidth, f3 - this.uMr - this.borderWidth, f4 - this.uMr - this.borderWidth), f5, f5, this.paint);
+    paramCanvas.drawPath(this.uMo, this.paint);
+    AppMethodBeat.o(146566);
   }
   
-  public static void d(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
+  public final void ge(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67895);
-    if ((paramLong1 <= 0L) || (paramLong2 <= 0L) || (paramInt2 <= 0))
-    {
-      AppMethodBeat.o(67895);
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    IDKey localIDKey = new IDKey();
-    localIDKey.SetID(703);
-    int i;
-    if (paramInt1 == 1)
-    {
-      i = 3;
-      localIDKey.SetKey(i);
-      localIDKey.SetValue(paramLong1);
-      localArrayList.add(localIDKey);
-      localIDKey = new IDKey();
-      localIDKey.SetID(703);
-      if (paramInt1 != 1) {
-        break label196;
-      }
-      i = 4;
-      label108:
-      localIDKey.SetKey(i);
-      localIDKey.SetValue(paramLong2);
-      localArrayList.add(localIDKey);
-      localIDKey = new IDKey();
-      localIDKey.SetID(703);
-      if (paramInt1 != 1) {
-        break label202;
-      }
-    }
-    label196:
-    label202:
-    for (paramInt1 = 5;; paramInt1 = 2)
-    {
-      localIDKey.SetKey(paramInt1);
-      localIDKey.SetValue(paramInt2);
-      localArrayList.add(localIDKey);
-      h.qsU.b(localArrayList, false);
-      AppMethodBeat.o(67895);
-      return;
-      i = 0;
-      break;
-      i = 1;
-      break label108;
-    }
+    AppMethodBeat.i(146571);
+    this.borderWidth = paramInt1;
+    this.uMr = (paramInt1 / 3 + this.uMq);
+    this.uMn.setColor(paramInt2);
+    AppMethodBeat.o(146571);
+  }
+  
+  public final int getOpacity()
+  {
+    return -3;
+  }
+  
+  public final void setAlpha(int paramInt)
+  {
+    AppMethodBeat.i(146568);
+    this.paint.setAlpha(paramInt);
+    this.uMn.setAlpha(paramInt);
+    AppMethodBeat.o(146568);
+  }
+  
+  public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(146567);
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.ekW.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    float f = (paramInt1 + paramInt3) / 2.0F;
+    this.uMp.moveTo(f, paramInt4);
+    this.uMp.lineTo(f - this.uMr, paramInt4 - this.uMr);
+    this.uMp.lineTo(this.uMr + f, paramInt4 - this.uMr);
+    this.uMp.close();
+    this.uMo.moveTo(f, paramInt4 - this.borderWidth);
+    this.uMo.lineTo(f - this.uMr, paramInt4 - this.uMr - this.borderWidth);
+    this.uMo.lineTo(f + this.uMr, paramInt4 - this.uMr - this.borderWidth);
+    this.uMo.close();
+    AppMethodBeat.o(146567);
+  }
+  
+  public final void setColor(int paramInt)
+  {
+    AppMethodBeat.i(146570);
+    this.paint.setColor(paramInt);
+    AppMethodBeat.o(146570);
+  }
+  
+  public final void setColorFilter(ColorFilter paramColorFilter)
+  {
+    AppMethodBeat.i(146569);
+    this.paint.setColorFilter(paramColorFilter);
+    this.uMn.setColorFilter(paramColorFilter);
+    AppMethodBeat.o(146569);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.g.a
  * JD-Core Version:    0.7.0.1
  */

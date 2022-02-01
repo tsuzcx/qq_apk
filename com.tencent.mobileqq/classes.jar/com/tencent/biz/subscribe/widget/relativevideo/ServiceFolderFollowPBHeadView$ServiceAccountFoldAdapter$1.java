@@ -1,20 +1,26 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import ypi;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$1
-  implements Runnable
+class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$1
+  extends RecyclerView.OnScrollListener
 {
-  public ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$1(ypi paramypi) {}
+  ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$1(ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter paramServiceAccountFoldAdapter) {}
   
-  public void run()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.this$0.notifyDataSetChanged();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.a(this.a)) && (!paramRecyclerView.isComputingLayout()) && (paramInt == 0))
+    {
+      ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.a(this.a, false);
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.1
  * JD-Core Version:    0.7.0.1
  */

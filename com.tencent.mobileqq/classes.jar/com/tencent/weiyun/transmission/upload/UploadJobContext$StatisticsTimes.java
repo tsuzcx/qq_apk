@@ -13,32 +13,27 @@ public final class UploadJobContext$StatisticsTimes
   
   public long[] getStatisticsTimes()
   {
+    long l1 = this.compressEndTime;
+    long l2 = this.compressStartTime;
     long l3 = 0L;
-    long l1;
-    long l2;
-    if (this.compressEndTime <= this.compressStartTime)
-    {
+    if (l1 <= l2) {
       l1 = 0L;
-      if (this.calShaEndTime > this.calShaStartTime) {
-        break label73;
-      }
+    } else {
+      l1 -= l2;
+    }
+    l2 = this.calShaEndTime;
+    long l4 = this.calShaStartTime;
+    if (l2 <= l4) {
       l2 = 0L;
-      label31:
-      if (this.fetchUrlEndTime > this.fetchUrlStartTime) {
-        break label86;
-      }
+    } else {
+      l2 -= l4;
     }
-    for (;;)
-    {
-      return new long[] { l1, l2, l3 };
-      l1 = this.compressEndTime - this.compressStartTime;
-      break;
-      label73:
-      l2 = this.calShaEndTime - this.calShaStartTime;
-      break label31;
-      label86:
-      l3 = this.fetchUrlEndTime - this.fetchUrlStartTime;
+    l4 = this.fetchUrlEndTime;
+    long l5 = this.fetchUrlStartTime;
+    if (l4 > l5) {
+      l3 = l4 - l5;
     }
+    return new long[] { l1, l2, l3 };
   }
   
   public void onCalShaEnd()
@@ -73,7 +68,7 @@ public final class UploadJobContext$StatisticsTimes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadJobContext.StatisticsTimes
  * JD-Core Version:    0.7.0.1
  */

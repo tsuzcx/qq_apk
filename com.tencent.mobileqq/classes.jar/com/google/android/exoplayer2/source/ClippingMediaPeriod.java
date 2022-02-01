@@ -20,91 +20,97 @@ public final class ClippingMediaPeriod
   {
     this.mediaPeriod = paramMediaPeriod;
     this.sampleStreams = new ClippingMediaPeriod.ClippingSampleStream[0];
-    if (paramBoolean) {}
-    for (long l = 0L;; l = -9223372036854775807L)
-    {
-      this.pendingInitialDiscontinuityPositionUs = l;
-      this.startUs = -9223372036854775807L;
-      this.endUs = -9223372036854775807L;
-      return;
+    long l;
+    if (paramBoolean) {
+      l = 0L;
+    } else {
+      l = -9223372036854775807L;
     }
+    this.pendingInitialDiscontinuityPositionUs = l;
+    this.startUs = -9223372036854775807L;
+    this.endUs = -9223372036854775807L;
   }
   
   private SeekParameters clipSeekParameters(long paramLong, SeekParameters paramSeekParameters)
   {
-    long l = Math.min(paramLong - this.startUs, paramSeekParameters.toleranceBeforeUs);
-    if (this.endUs == -9223372036854775808L) {}
-    for (paramLong = paramSeekParameters.toleranceAfterUs; (l == paramSeekParameters.toleranceBeforeUs) && (paramLong == paramSeekParameters.toleranceAfterUs); paramLong = Math.min(this.endUs - paramLong, paramSeekParameters.toleranceAfterUs)) {
+    long l1 = Math.min(paramLong - this.startUs, paramSeekParameters.toleranceBeforeUs);
+    long l2 = this.endUs;
+    if (l2 == -9223372036854775808L) {
+      paramLong = paramSeekParameters.toleranceAfterUs;
+    } else {
+      paramLong = Math.min(l2 - paramLong, paramSeekParameters.toleranceAfterUs);
+    }
+    if ((l1 == paramSeekParameters.toleranceBeforeUs) && (paramLong == paramSeekParameters.toleranceAfterUs)) {
       return paramSeekParameters;
     }
-    return new SeekParameters(l, paramLong);
+    return new SeekParameters(l1, paramLong);
   }
   
   private static boolean shouldKeepInitialDiscontinuity(long paramLong, TrackSelection[] paramArrayOfTrackSelection)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int i;
     if (paramLong != 0L)
     {
-      j = paramArrayOfTrackSelection.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      int j = paramArrayOfTrackSelection.length;
+      int i = 0;
+      while (i < j)
       {
         TrackSelection localTrackSelection = paramArrayOfTrackSelection[i];
         if ((localTrackSelection != null) && (!MimeTypes.isAudio(localTrackSelection.getSelectedFormat().sampleMimeType))) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public boolean continueLoading(long paramLong)
   {
-    return this.mediaPeriod.continueLoading(this.startUs + paramLong);
+    return this.mediaPeriod.continueLoading(paramLong + this.startUs);
   }
   
   public void discardBuffer(long paramLong, boolean paramBoolean)
   {
-    this.mediaPeriod.discardBuffer(this.startUs + paramLong, paramBoolean);
+    this.mediaPeriod.discardBuffer(paramLong + this.startUs, paramBoolean);
   }
   
   public long getAdjustedSeekPositionUs(long paramLong, SeekParameters paramSeekParameters)
   {
-    if (paramLong == this.startUs) {
+    long l = this.startUs;
+    if (paramLong == l) {
       return 0L;
     }
-    paramLong = this.startUs + paramLong;
+    paramLong += l;
     paramSeekParameters = clipSeekParameters(paramLong, paramSeekParameters);
     return this.mediaPeriod.getAdjustedSeekPositionUs(paramLong, paramSeekParameters) - this.startUs;
   }
   
   public long getBufferedPositionUs()
   {
-    long l = this.mediaPeriod.getBufferedPositionUs();
-    if ((l == -9223372036854775808L) || ((this.endUs != -9223372036854775808L) && (l >= this.endUs))) {
-      return -9223372036854775808L;
+    long l1 = this.mediaPeriod.getBufferedPositionUs();
+    if (l1 != -9223372036854775808L)
+    {
+      long l2 = this.endUs;
+      if ((l2 != -9223372036854775808L) && (l1 >= l2)) {
+        return -9223372036854775808L;
+      }
+      return Math.max(0L, l1 - this.startUs);
     }
-    return Math.max(0L, l - this.startUs);
+    return -9223372036854775808L;
   }
   
   public long getNextLoadPositionUs()
   {
-    long l = this.mediaPeriod.getNextLoadPositionUs();
-    if ((l == -9223372036854775808L) || ((this.endUs != -9223372036854775808L) && (l >= this.endUs))) {
-      return -9223372036854775808L;
+    long l1 = this.mediaPeriod.getNextLoadPositionUs();
+    if (l1 != -9223372036854775808L)
+    {
+      long l2 = this.endUs;
+      if ((l2 != -9223372036854775808L) && (l1 >= l2)) {
+        return -9223372036854775808L;
+      }
+      return l1 - this.startUs;
     }
-    return l - this.startUs;
+    return -9223372036854775808L;
   }
   
   public TrackGroupArray getTrackGroups()
@@ -129,13 +135,14 @@ public final class ClippingMediaPeriod
   
   public void onPrepared(MediaPeriod paramMediaPeriod)
   {
-    if ((this.startUs != -9223372036854775807L) && (this.endUs != -9223372036854775807L)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.callback.onPrepared(this);
-      return;
+    boolean bool;
+    if ((this.startUs != -9223372036854775807L) && (this.endUs != -9223372036854775807L)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    this.callback.onPrepared(this);
   }
   
   public void prepare(MediaPeriod.Callback paramCallback, long paramLong)
@@ -146,14 +153,13 @@ public final class ClippingMediaPeriod
   
   public long readDiscontinuity()
   {
-    boolean bool2 = false;
     if (isPendingInitialDiscontinuity())
     {
       l1 = this.pendingInitialDiscontinuityPositionUs;
       this.pendingInitialDiscontinuityPositionUs = -9223372036854775807L;
-      long l2 = readDiscontinuity();
+      l2 = readDiscontinuity();
       if (l2 != -9223372036854775807L) {
-        return l2;
+        l1 = l2;
       }
       return l1;
     }
@@ -161,35 +167,38 @@ public final class ClippingMediaPeriod
     if (l1 == -9223372036854775807L) {
       return -9223372036854775807L;
     }
-    if (l1 >= this.startUs) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      Assertions.checkState(bool1);
-      if (this.endUs != -9223372036854775808L)
-      {
-        bool1 = bool2;
-        if (l1 > this.endUs) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      Assertions.checkState(bool1);
-      return l1 - this.startUs;
+    long l2 = this.startUs;
+    boolean bool2 = true;
+    if (l1 >= l2) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    Assertions.checkState(bool1);
+    l2 = this.endUs;
+    boolean bool1 = bool2;
+    if (l2 != -9223372036854775808L) {
+      if (l1 <= l2) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+    }
+    Assertions.checkState(bool1);
+    return l1 - this.startUs;
   }
   
   public void reevaluateBuffer(long paramLong)
   {
-    this.mediaPeriod.reevaluateBuffer(this.startUs + paramLong);
+    this.mediaPeriod.reevaluateBuffer(paramLong + this.startUs);
   }
   
   public long seekToUs(long paramLong)
   {
-    boolean bool2 = false;
     this.pendingInitialDiscontinuityPositionUs = -9223372036854775807L;
     ClippingMediaPeriod.ClippingSampleStream[] arrayOfClippingSampleStream = this.sampleStreams;
     int j = arrayOfClippingSampleStream.length;
+    boolean bool2 = false;
     int i = 0;
     while (i < j)
     {
@@ -199,83 +208,84 @@ public final class ClippingMediaPeriod
       }
       i += 1;
     }
-    paramLong = this.startUs + paramLong;
-    long l = this.mediaPeriod.seekToUs(paramLong);
-    if (l != paramLong)
+    long l = paramLong + this.startUs;
+    paramLong = this.mediaPeriod.seekToUs(l);
+    if (paramLong != l)
     {
       bool1 = bool2;
-      if (l < this.startUs) {
-        break label120;
+      if (paramLong < this.startUs) {
+        break label121;
       }
-      if (this.endUs != -9223372036854775808L)
+      l = this.endUs;
+      if (l != -9223372036854775808L)
       {
         bool1 = bool2;
-        if (l > this.endUs) {
-          break label120;
+        if (paramLong > l) {
+          break label121;
         }
       }
     }
     boolean bool1 = true;
-    label120:
+    label121:
     Assertions.checkState(bool1);
-    return l - this.startUs;
+    return paramLong - this.startUs;
   }
   
   public long selectTracks(TrackSelection[] paramArrayOfTrackSelection, boolean[] paramArrayOfBoolean1, SampleStream[] paramArrayOfSampleStream, boolean[] paramArrayOfBoolean2, long paramLong)
   {
     this.sampleStreams = new ClippingMediaPeriod.ClippingSampleStream[paramArrayOfSampleStream.length];
     SampleStream[] arrayOfSampleStream = new SampleStream[paramArrayOfSampleStream.length];
+    int j = 0;
     int i = 0;
-    if (i < paramArrayOfSampleStream.length)
+    for (;;)
     {
-      this.sampleStreams[i] = ((ClippingMediaPeriod.ClippingSampleStream)paramArrayOfSampleStream[i]);
-      if (this.sampleStreams[i] != null) {}
-      for (SampleStream localSampleStream = this.sampleStreams[i].childStream;; localSampleStream = null)
-      {
-        arrayOfSampleStream[i] = localSampleStream;
-        i += 1;
+      int k = paramArrayOfSampleStream.length;
+      SampleStream localSampleStream = null;
+      if (i >= k) {
         break;
       }
+      ClippingMediaPeriod.ClippingSampleStream[] arrayOfClippingSampleStream = this.sampleStreams;
+      arrayOfClippingSampleStream[i] = ((ClippingMediaPeriod.ClippingSampleStream)paramArrayOfSampleStream[i]);
+      if (arrayOfClippingSampleStream[i] != null) {
+        localSampleStream = arrayOfClippingSampleStream[i].childStream;
+      }
+      arrayOfSampleStream[i] = localSampleStream;
+      i += 1;
     }
     long l2 = this.mediaPeriod.selectTracks(paramArrayOfTrackSelection, paramArrayOfBoolean1, arrayOfSampleStream, paramArrayOfBoolean2, paramLong + this.startUs) - this.startUs;
     long l1;
-    boolean bool;
-    if ((isPendingInitialDiscontinuity()) && (paramLong == 0L) && (shouldKeepInitialDiscontinuity(this.startUs, paramArrayOfTrackSelection)))
-    {
+    if ((isPendingInitialDiscontinuity()) && (paramLong == 0L) && (shouldKeepInitialDiscontinuity(this.startUs, paramArrayOfTrackSelection))) {
       l1 = l2;
-      this.pendingInitialDiscontinuityPositionUs = l1;
-      if ((l2 != paramLong) && ((l2 < 0L) || ((this.endUs != -9223372036854775808L) && (this.startUs + l2 > this.endUs)))) {
-        break label251;
-      }
-      bool = true;
-      label192:
-      Assertions.checkState(bool);
-      i = 0;
-      label200:
-      if (i >= paramArrayOfSampleStream.length) {
-        break label305;
-      }
-      if (arrayOfSampleStream[i] != null) {
-        break label257;
-      }
-      this.sampleStreams[i] = null;
-    }
-    for (;;)
-    {
-      paramArrayOfSampleStream[i] = this.sampleStreams[i];
-      i += 1;
-      break label200;
+    } else {
       l1 = -9223372036854775807L;
-      break;
-      label251:
-      bool = false;
-      break label192;
-      label257:
-      if ((paramArrayOfSampleStream[i] == null) || (this.sampleStreams[i].childStream != arrayOfSampleStream[i])) {
+    }
+    this.pendingInitialDiscontinuityPositionUs = l1;
+    if (l2 != paramLong) {
+      if (l2 >= 0L)
+      {
+        paramLong = this.endUs;
+        if ((paramLong == -9223372036854775808L) || (this.startUs + l2 <= paramLong)) {}
+      }
+      else
+      {
+        bool = false;
+        break label215;
+      }
+    }
+    boolean bool = true;
+    label215:
+    Assertions.checkState(bool);
+    i = j;
+    while (i < paramArrayOfSampleStream.length)
+    {
+      if (arrayOfSampleStream[i] == null) {
+        this.sampleStreams[i] = null;
+      } else if ((paramArrayOfSampleStream[i] == null) || (this.sampleStreams[i].childStream != arrayOfSampleStream[i])) {
         this.sampleStreams[i] = new ClippingMediaPeriod.ClippingSampleStream(this, arrayOfSampleStream[i]);
       }
+      paramArrayOfSampleStream[i] = this.sampleStreams[i];
+      i += 1;
     }
-    label305:
     return l2;
   }
   
@@ -287,7 +297,7 @@ public final class ClippingMediaPeriod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ClippingMediaPeriod
  * JD-Core Version:    0.7.0.1
  */

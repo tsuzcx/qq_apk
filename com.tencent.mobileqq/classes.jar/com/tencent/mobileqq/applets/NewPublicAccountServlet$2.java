@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.applets;
 
-import amrw;
-import amry;
-
-public class NewPublicAccountServlet$2
+class NewPublicAccountServlet$2
   implements Runnable
 {
-  public NewPublicAccountServlet$2(amry paramamry, amrw paramamrw) {}
+  NewPublicAccountServlet$2(NewPublicAccountServlet paramNewPublicAccountServlet, NewPublicAccountObserver paramNewPublicAccountObserver) {}
   
   public void run()
   {

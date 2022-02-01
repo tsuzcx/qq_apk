@@ -12,9 +12,9 @@ public class Preference$BaseSavedState
   
   static
   {
-    AppMethodBeat.i(107254);
-    CREATOR = new Preference.BaseSavedState.1();
-    AppMethodBeat.o(107254);
+    AppMethodBeat.i(142631);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(142631);
   }
   
   public Preference$BaseSavedState(Parcel paramParcel)
@@ -24,7 +24,7 @@ public class Preference$BaseSavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.Preference.BaseSavedState
  * JD-Core Version:    0.7.0.1
  */

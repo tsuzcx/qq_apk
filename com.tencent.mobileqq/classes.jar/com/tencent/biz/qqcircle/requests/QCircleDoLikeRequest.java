@@ -1,6 +1,9 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.biz.qqcircle.QCirclePluginGlobalInfo;
+import com.tencent.biz.qqcircle.QCirclePluginUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -11,6 +14,7 @@ import feedcloud.FeedCloudCommon.Entry;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import feedcloud.FeedCloudMeta.StComment;
 import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StImage;
 import feedcloud.FeedCloudMeta.StLike;
 import feedcloud.FeedCloudMeta.StReply;
 import feedcloud.FeedCloudMeta.StUser;
@@ -20,16 +24,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import qqcircle.QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData;
-import tqg;
-import tra;
-import tzy;
 
 public class QCircleDoLikeRequest
   extends QCircleBaseRequest
 {
+  private boolean mIsPraise = false;
+  private boolean mIsReward = false;
   private FeedCloudWrite.StDoLikeReq mReq;
+  private FeedCloudMeta.StFeed mStFeed;
   
-  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
+  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply, boolean paramBoolean)
   {
     if (paramStFeed == null)
     {
@@ -37,12 +41,12 @@ public class QCircleDoLikeRequest
       return;
     }
     this.mReq = new FeedCloudWrite.StDoLikeReq();
-    this.mReq.feed.set(tra.a(paramStFeed));
+    this.mReq.feed.set(QCirclePluginUtil.a(paramStFeed));
     this.mReq.likeType.set(paramInt);
     if (paramStLike != null)
     {
-      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { tqg.a() }));
-      paramStLike.postUser.set(tqg.a());
+      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { QCirclePluginGlobalInfo.c() }));
+      paramStLike.postUser.set(QCirclePluginGlobalInfo.c());
       this.mReq.like.set(paramStLike);
     }
     if (paramStComment != null) {
@@ -53,77 +57,134 @@ public class QCircleDoLikeRequest
     }
     paramStFeed = new FeedCloudCommon.Entry();
     paramStFeed.key.set("ext_source");
-    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
+    if (paramBoolean) {
       paramStFeed.value.set("2");
-    }
-    for (;;)
-    {
-      paramStLike = new FeedCloudCommon.StCommonExt();
-      paramStComment = new ArrayList();
-      paramStComment.add(paramStFeed);
-      paramStLike.mapInfo.set(paramStComment);
-      this.mReq.extInfo.set(paramStLike);
-      return;
+    } else {
       paramStFeed.value.set("1");
     }
+    paramStLike = new FeedCloudCommon.StCommonExt();
+    paramStComment = new ArrayList();
+    paramStComment.add(paramStFeed);
+    paramStLike.mapInfo.set(paramStComment);
+    this.mReq.extInfo.set(paramStLike);
   }
   
-  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData paramStDoLikeReqDoPolyLikeBusiReqData)
+  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData paramStDoLikeReqDoPolyLikeBusiReqData, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramStFeed == null)
     {
       QLog.w("VSBaseRequest", 1, "stfeed is null");
       return;
     }
+    this.mIsReward = paramBoolean2;
     this.mReq = new FeedCloudWrite.StDoLikeReq();
-    this.mReq.feed.set(tra.a(paramStFeed));
+    this.mReq.feed.set(QCirclePluginUtil.a(paramStFeed));
+    this.mReq.feed.cover.set(paramStFeed.cover.get());
+    this.mReq.feed.images.set(paramStFeed.images.get());
     this.mReq.likeType.set(paramInt);
     if (paramStLike != null)
     {
-      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { tqg.a() }));
-      paramStLike.postUser.set(tqg.a());
+      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { QCirclePluginGlobalInfo.c() }));
+      paramStLike.postUser.set(QCirclePluginGlobalInfo.c());
       this.mReq.like.set(paramStLike);
     }
     if (paramStDoLikeReqDoPolyLikeBusiReqData != null) {
       this.mReq.busiReqData.set(ByteStringMicro.copyFrom(paramStDoLikeReqDoPolyLikeBusiReqData.toByteArray()));
     }
-    paramStFeed = new FeedCloudCommon.Entry();
-    paramStFeed.key.set("ext_source");
-    if (((tzy.a().c(61)) && (tzy.a().d(57))) || (tzy.a().c(57))) {
-      paramStFeed.value.set("2");
+    paramStLike = new FeedCloudCommon.Entry();
+    paramStLike.key.set("ext_source");
+    if (paramBoolean1) {
+      paramStLike.value.set("2");
+    } else {
+      paramStLike.value.set("1");
     }
-    for (;;)
+    paramStDoLikeReqDoPolyLikeBusiReqData = new FeedCloudCommon.StCommonExt();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramStLike);
+    paramStDoLikeReqDoPolyLikeBusiReqData.mapInfo.set(localArrayList);
+    this.mReq.extInfo.set(paramStDoLikeReqDoPolyLikeBusiReqData);
+    this.mStFeed = paramStFeed;
+  }
+  
+  public QCircleDoLikeRequest(FeedCloudMeta.StFeed paramStFeed, int paramInt, FeedCloudMeta.StLike paramStLike, QQCircleFeedBase.StDoLikeReqDoPolyLikeBusiReqData paramStDoLikeReqDoPolyLikeBusiReqData, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (paramStFeed == null)
     {
-      paramStLike = new FeedCloudCommon.StCommonExt();
-      paramStDoLikeReqDoPolyLikeBusiReqData = new ArrayList();
-      paramStDoLikeReqDoPolyLikeBusiReqData.add(paramStFeed);
-      paramStLike.mapInfo.set(paramStDoLikeReqDoPolyLikeBusiReqData);
-      this.mReq.extInfo.set(paramStLike);
+      QLog.w("VSBaseRequest", 1, "stfeed is null");
       return;
-      paramStFeed.value.set("1");
     }
+    this.mIsReward = paramBoolean2;
+    this.mReq = new FeedCloudWrite.StDoLikeReq();
+    this.mReq.feed.set(QCirclePluginUtil.a(paramStFeed));
+    this.mReq.feed.cover.set(paramStFeed.cover.get());
+    this.mReq.feed.images.set(paramStFeed.images.get());
+    this.mReq.likeType.set(paramInt);
+    if (paramStLike != null)
+    {
+      paramStLike.vecUser.set(Arrays.asList(new FeedCloudMeta.StUser[] { QCirclePluginGlobalInfo.c() }));
+      paramStLike.postUser.set(QCirclePluginGlobalInfo.c());
+      this.mReq.like.set(paramStLike);
+    }
+    if (paramStDoLikeReqDoPolyLikeBusiReqData != null) {
+      this.mReq.busiReqData.set(ByteStringMicro.copyFrom(paramStDoLikeReqDoPolyLikeBusiReqData.toByteArray()));
+    }
+    paramStLike = new FeedCloudCommon.Entry();
+    paramStLike.key.set("ext_source");
+    if (paramBoolean1) {
+      paramStLike.value.set("2");
+    } else {
+      paramStLike.value.set("1");
+    }
+    paramStDoLikeReqDoPolyLikeBusiReqData = new FeedCloudCommon.StCommonExt();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramStLike);
+    paramStDoLikeReqDoPolyLikeBusiReqData.mapInfo.set(localArrayList);
+    this.mReq.extInfo.set(paramStDoLikeReqDoPolyLikeBusiReqData);
+    this.mStFeed = paramStFeed;
+    this.mIsPraise = paramBoolean3;
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     FeedCloudWrite.StDoLikeRsp localStDoLikeRsp = new FeedCloudWrite.StDoLikeRsp();
-    localStDoLikeRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStDoLikeRsp.mergeFrom(paramArrayOfByte);
+      return localStDoLikeRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStDoLikeRsp;
   }
   
   public String getCmdName()
   {
+    if (this.mIsReward) {
+      return "FeedCloudSvr.trpc.feedcloud.commwriter.ComWriter.DoReward";
+    }
     return "FeedCloudSvr.trpc.feedcloud.commwriter.ComWriter.DoLike";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
+  }
+  
+  public FeedCloudMeta.StFeed getStFeed()
+  {
+    return this.mStFeed;
+  }
+  
+  public boolean isPraise()
+  {
+    return this.mIsPraise;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest
  * JD-Core Version:    0.7.0.1
  */

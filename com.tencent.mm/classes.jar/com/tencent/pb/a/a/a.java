@@ -1,45 +1,45 @@
 package com.tencent.pb.a.a;
 
-import com.tencent.pb.common.c.g;
+import com.tencent.pb.common.c.f;
 
 public final class a
 {
-  private static int Bhj = 0;
-  private static String Bhk = "";
   private static String TAG = "AccountEngine";
+  private static int ahhd = 0;
+  private static String ahhe = "";
   
-  public static void Sc(int paramInt)
+  public static void aGS(int paramInt)
   {
-    Bhj = paramInt;
+    ahhd = paramInt;
   }
   
-  public static void awt(String paramString)
+  public static void bFl(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    Bhk = str;
+    ahhe = str;
   }
   
-  public static String dTX()
+  public static String jRr()
   {
-    return Bhk;
+    return ahhe;
   }
   
-  public static boolean dTY()
+  public static boolean jRs()
   {
-    return !g.isEmpty(Bhk);
+    return !f.hm(ahhe);
   }
   
-  public static boolean dTZ()
+  public static boolean jRt()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.a.a.a
  * JD-Core Version:    0.7.0.1
  */

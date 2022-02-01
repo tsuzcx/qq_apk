@@ -13,12 +13,13 @@ public final class PBBytesField
   
   public void clear(Object paramObject)
   {
-    if ((paramObject instanceof ByteStringMicro)) {}
-    for (this.value = ((ByteStringMicro)paramObject);; this.value = ByteStringMicro.EMPTY)
-    {
-      setHasFlag(false);
-      return;
+    if ((paramObject instanceof ByteStringMicro)) {
+      paramObject = (ByteStringMicro)paramObject;
+    } else {
+      paramObject = ByteStringMicro.EMPTY;
     }
+    this.value = paramObject;
+    setHasFlag(false);
   }
   
   public int computeSize(int paramInt)
@@ -81,7 +82,7 @@ public final class PBBytesField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBBytesField
  * JD-Core Version:    0.7.0.1
  */

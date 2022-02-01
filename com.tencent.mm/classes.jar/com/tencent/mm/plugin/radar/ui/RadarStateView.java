@@ -1,13 +1,7 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.f;
-import a.f.b.j;
-import a.f.b.t;
-import a.f.b.v;
-import a.g;
-import a.j.k;
-import a.l;
 import android.content.Context;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -16,187 +10,201 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.radar.b.c.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.radar.a.f;
+import com.tencent.mm.plugin.radar.model.b.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.k;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/ui/RadarStateView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "<set-?>", "", "isShowing", "()Z", "setShowing", "(Z)V", "isVisible", "ivState", "Landroid/widget/ImageView;", "slideInAnim", "Landroid/view/animation/Animation;", "getSlideInAnim", "()Landroid/view/animation/Animation;", "slideInAnim$delegate", "Lkotlin/Lazy;", "slideOutAnim", "getSlideOutAnim", "slideOutAnim$delegate", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getState", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "setState", "(Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;)V", "switchHandler", "com/tencent/mm/plugin/radar/ui/RadarStateView$switchHandler$1", "Lcom/tencent/mm/plugin/radar/ui/RadarStateView$switchHandler$1;", "trunOn", "init", "", "reset", "slideIn", "slideOut", "stateAlignment", "trunOff", "turnToState", "Companion", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/ui/RadarStateView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "<set-?>", "", "isShowing", "()Z", "isVisible", "ivState", "Landroid/widget/ImageView;", "slideInAnim", "Landroid/view/animation/Animation;", "getSlideInAnim", "()Landroid/view/animation/Animation;", "slideInAnim$delegate", "Lkotlin/Lazy;", "slideOutAnim", "getSlideOutAnim", "slideOutAnim$delegate", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getState", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "setState", "(Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;)V", "switchHandler", "com/tencent/mm/plugin/radar/ui/RadarStateView$switchHandler$1", "Lcom/tencent/mm/plugin/radar/ui/RadarStateView$switchHandler$1;", "trunOn", "init", "", "reset", "slideIn", "slideOut", "stateAlignment", "trunOff", "turnToState", "Companion", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RadarStateView
   extends RelativeLayout
 {
-  static final String TAG = "MicroMsg.RadarStateView";
-  static final int pSb = 300;
-  public static final RadarStateView.a pSc;
-  boolean bTs;
-  c.e pQJ;
-  private final f pRQ;
-  private final f pRR;
-  boolean pRY;
-  final RadarStateView.d pRZ;
-  private ImageView pSa;
+  public static final RadarStateView.a Ntt;
+  static final int Ntx;
+  static final String TAG;
+  b.e Nsm;
+  private final j Nto;
+  private final j Ntp;
+  boolean Ntu;
+  final e Ntv;
+  private ImageView Ntw;
+  boolean fhR;
   
   static
   {
-    AppMethodBeat.i(103042);
-    eOJ = new k[] { (k)v.a(new t(v.aG(RadarStateView.class), "slideOutAnim", "getSlideOutAnim()Landroid/view/animation/Animation;")), (k)v.a(new t(v.aG(RadarStateView.class), "slideInAnim", "getSlideInAnim()Landroid/view/animation/Animation;")) };
-    pSc = new RadarStateView.a((byte)0);
+    AppMethodBeat.i(138691);
+    Ntt = new RadarStateView.a((byte)0);
     TAG = "MicroMsg.RadarStateView";
-    pSb = 300;
-    AppMethodBeat.o(103042);
+    Ntx = 300;
+    AppMethodBeat.o(138691);
   }
   
   public RadarStateView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(103050);
-    this.pQJ = c.e.pPU;
-    this.pRY = true;
-    this.pRZ = new RadarStateView.d(this);
-    this.pRQ = g.j((a.f.a.a)new RadarStateView.c(this));
-    this.pRR = g.j((a.f.a.a)new RadarStateView.b(this));
-    AppMethodBeat.o(103050);
+    AppMethodBeat.i(138699);
+    this.Nsm = b.e.NrC;
+    this.Ntu = true;
+    this.Ntv = new e(this);
+    this.Nto = k.cm((kotlin.g.a.a)new RadarStateView.d(this));
+    this.Ntp = k.cm((kotlin.g.a.a)new RadarStateView.c(this));
+    AppMethodBeat.o(138699);
   }
   
   public RadarStateView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(103051);
-    this.pQJ = c.e.pPU;
-    this.pRY = true;
-    this.pRZ = new RadarStateView.d(this);
-    this.pRQ = g.j((a.f.a.a)new RadarStateView.c(this));
-    this.pRR = g.j((a.f.a.a)new RadarStateView.b(this));
-    AppMethodBeat.o(103051);
+    AppMethodBeat.i(138700);
+    this.Nsm = b.e.NrC;
+    this.Ntu = true;
+    this.Ntv = new e(this);
+    this.Nto = k.cm((kotlin.g.a.a)new RadarStateView.d(this));
+    this.Ntp = k.cm((kotlin.g.a.a)new RadarStateView.c(this));
+    AppMethodBeat.o(138700);
   }
   
   private final Animation getSlideInAnim()
   {
-    AppMethodBeat.i(103045);
-    Animation localAnimation = (Animation)this.pRR.getValue();
-    AppMethodBeat.o(103045);
-    return localAnimation;
+    AppMethodBeat.i(138694);
+    Object localObject = this.Ntp.getValue();
+    s.s(localObject, "<get-slideInAnim>(...)");
+    localObject = (Animation)localObject;
+    AppMethodBeat.o(138694);
+    return localObject;
   }
   
   private final Animation getSlideOutAnim()
   {
-    AppMethodBeat.i(103044);
-    Animation localAnimation = (Animation)this.pRQ.getValue();
-    AppMethodBeat.o(103044);
-    return localAnimation;
+    AppMethodBeat.i(138693);
+    Object localObject = this.Nto.getValue();
+    s.s(localObject, "<get-slideOutAnim>(...)");
+    localObject = (Animation)localObject;
+    AppMethodBeat.o(138693);
+    return localObject;
   }
   
-  private final void setShowing(boolean paramBoolean)
+  final void gFk()
   {
-    this.bTs = paramBoolean;
-  }
-  
-  final void ceW()
-  {
-    AppMethodBeat.i(103046);
-    ab.d(TAG, " state : " + this.pQJ);
-    if (!this.pRY)
+    AppMethodBeat.i(138695);
+    Log.d(TAG, s.X(" state : ", this.Nsm));
+    if (!this.Ntu)
     {
       setVisibility(8);
-      AppMethodBeat.o(103046);
+      AppMethodBeat.o(138695);
       return;
     }
-    Object localObject = this.pQJ;
-    switch (f.bLo[localObject.ordinal()])
+    Object localObject = this.Nsm;
+    switch (b.$EnumSwitchMapping$0[localObject.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(103046);
+      AppMethodBeat.o(138695);
       return;
       setVisibility(8);
-      AppMethodBeat.o(103046);
+      AppMethodBeat.o(138695);
       return;
-      setBackgroundResource(2131231898);
-      localObject = this.pSa;
-      if (localObject == null) {
-        j.ebi();
-      }
-      ((ImageView)localObject).setImageResource(2131231902);
+      setBackgroundResource(a.f.radar_search_blue_bg);
+      localObject = this.Ntw;
+      s.checkNotNull(localObject);
+      ((ImageView)localObject).setImageResource(a.f.radar_search_waiting);
       setVisibility(0);
-      AppMethodBeat.o(103046);
+      AppMethodBeat.o(138695);
       return;
-      setBackgroundResource(2131231899);
-      localObject = this.pSa;
-      if (localObject == null) {
-        j.ebi();
-      }
-      ((ImageView)localObject).setImageResource(2131231901);
+      setBackgroundResource(a.f.radar_search_green_bg);
+      localObject = this.Ntw;
+      s.checkNotNull(localObject);
+      ((ImageView)localObject).setImageResource(a.f.radar_search_ok);
       setVisibility(0);
-      AppMethodBeat.o(103046);
+      AppMethodBeat.o(138695);
       return;
-      setBackgroundResource(2131231899);
-      localObject = this.pSa;
-      if (localObject == null) {
-        j.ebi();
-      }
-      ((ImageView)localObject).setImageResource(2131231900);
+      setBackgroundResource(a.f.radar_search_green_bg);
+      localObject = this.Ntw;
+      s.checkNotNull(localObject);
+      ((ImageView)localObject).setImageResource(a.f.radar_search_hi);
       setVisibility(0);
     }
   }
   
-  public final void ceX()
+  public final void gFl()
   {
-    AppMethodBeat.i(103048);
-    if (!this.pRY)
+    AppMethodBeat.i(138697);
+    if (!this.Ntu)
     {
-      AppMethodBeat.o(103048);
+      AppMethodBeat.o(138697);
       return;
     }
     init();
-    ceW();
-    this.bTs = true;
+    gFk();
+    this.fhR = true;
     startAnimation(getSlideOutAnim());
-    AppMethodBeat.o(103048);
+    AppMethodBeat.o(138697);
   }
   
-  public final void ceY()
+  public final void gFm()
   {
-    AppMethodBeat.i(103049);
-    if (!this.pRY)
+    AppMethodBeat.i(138698);
+    if (!this.Ntu)
     {
-      AppMethodBeat.o(103049);
+      AppMethodBeat.o(138698);
       return;
     }
     init();
-    ceW();
+    gFk();
     startAnimation(getSlideInAnim());
-    AppMethodBeat.o(103049);
+    AppMethodBeat.o(138698);
   }
   
-  public final c.e getState()
+  public final b.e getState()
   {
-    return this.pQJ;
+    return this.Nsm;
   }
   
   final void init()
   {
-    AppMethodBeat.i(103047);
-    if (this.pSa == null)
+    AppMethodBeat.i(138696);
+    if (this.Ntw == null)
     {
-      this.pSa = new ImageView(getContext());
+      this.Ntw = new ImageView(getContext());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(11);
       localLayoutParams.addRule(15);
-      localLayoutParams.setMargins(0, 0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 5), com.tencent.mm.cb.a.fromDPToPix(getContext(), 2));
-      ImageView localImageView = this.pSa;
+      localLayoutParams.setMargins(0, 0, com.tencent.mm.cd.a.fromDPToPix(getContext(), 5), com.tencent.mm.cd.a.fromDPToPix(getContext(), 2));
+      ImageView localImageView = this.Ntw;
       if (localImageView != null) {
         localImageView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
       }
-      addView((View)this.pSa);
+      addView((View)this.Ntw);
     }
-    AppMethodBeat.o(103047);
+    AppMethodBeat.o(138696);
   }
   
-  public final void setState(c.e parame)
+  public final void setState(b.e parame)
   {
-    AppMethodBeat.i(103043);
-    j.q(parame, "<set-?>");
-    this.pQJ = parame;
-    AppMethodBeat.o(103043);
+    AppMethodBeat.i(138692);
+    s.u(parame, "<set-?>");
+    this.Nsm = parame;
+    AppMethodBeat.o(138692);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/radar/ui/RadarStateView$switchHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    extends MMHandler
+  {
+    e(RadarStateView paramRadarStateView) {}
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(138690);
+      s.u(paramMessage, "msg");
+      RadarStateView.a(this.Nty);
+      this.Nty.gFl();
+      AppMethodBeat.o(138690);
+    }
   }
 }
 

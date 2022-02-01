@@ -13,14 +13,12 @@ public class RouterHandler$NotifyReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getAction();
+    if (paramContext != null)
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-      } while (paramContext == null);
       int i;
       byte[] arrayOfByte;
       boolean bool;
@@ -52,13 +50,23 @@ public class RouterHandler$NotifyReceiver
         RouterHandler.b(this.a, i, paramIntent, arrayOfByte, bool);
         return;
       }
-    } while ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.EXIT_" + this.a.b.getApp().getPackageName())) && (!paramContext.equals("mqq.intent.action.LOGOUT")));
-    this.a.a();
+      if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")))
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("mqq.intent.action.EXIT_");
+        paramIntent.append(this.a.i.getApp().getPackageName());
+        if ((!paramContext.equals(paramIntent.toString())) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {}
+      }
+      else
+      {
+        this.a.a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RouterHandler.NotifyReceiver
  * JD-Core Version:    0.7.0.1
  */

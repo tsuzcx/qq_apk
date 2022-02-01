@@ -14,29 +14,29 @@ public class DataItemAssetParcelable
   implements ReflectedParcelable, m
 {
   public static final Parcelable.Creator<DataItemAssetParcelable> CREATOR = new l();
-  private final String Gq;
-  private final String Ta;
+  private final String If;
+  private final String UP;
   
   public DataItemAssetParcelable(m paramm)
   {
-    this.Gq = ((String)d.u(paramm.getId()));
-    this.Ta = ((String)d.u(paramm.kw()));
+    this.If = ((String)d.D(paramm.getId()));
+    this.UP = ((String)d.D(paramm.kF()));
   }
   
   DataItemAssetParcelable(String paramString1, String paramString2)
   {
-    this.Gq = paramString1;
-    this.Ta = paramString2;
+    this.If = paramString1;
+    this.UP = paramString2;
   }
   
   public final String getId()
   {
-    return this.Gq;
+    return this.If;
   }
   
-  public final String kw()
+  public final String kF()
   {
-    return this.Ta;
+    return this.UP;
   }
   
   public String toString()
@@ -45,17 +45,17 @@ public class DataItemAssetParcelable
     localStringBuilder.append("DataItemAssetParcelable[");
     localStringBuilder.append("@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    if (this.Gq == null) {
+    if (this.If == null) {
       localStringBuilder.append(",noid");
     }
     for (;;)
     {
       localStringBuilder.append(", key=");
-      localStringBuilder.append(this.Ta);
+      localStringBuilder.append(this.UP);
       localStringBuilder.append("]");
       return localStringBuilder.toString();
       localStringBuilder.append(",");
-      localStringBuilder.append(this.Gq);
+      localStringBuilder.append(this.If);
     }
   }
   

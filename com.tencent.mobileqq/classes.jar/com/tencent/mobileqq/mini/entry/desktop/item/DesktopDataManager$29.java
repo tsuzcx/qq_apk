@@ -1,39 +1,31 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import awgf;
-import awgg;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import java.util.List;
 
 class DesktopDataManager$29
   implements Runnable
 {
-  DesktopDataManager$29(DesktopDataManager paramDesktopDataManager, MiniAppRedDotEntity paramMiniAppRedDotEntity) {}
+  DesktopDataManager$29(DesktopDataManager paramDesktopDataManager, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "updateRedDotData, app is null.");
+    DesktopAppInfo localDesktopAppInfo = new DesktopAppInfo(3, this.val$appInfo);
+    int i = DesktopDataManager.access$3400(this.this$0);
+    if (i == -1) {
+      DesktopDataManager.access$1600(this.this$0).add(localDesktopAppInfo);
+    } else {
+      DesktopDataManager.access$1600(this.this$0).add(i, localDesktopAppInfo);
     }
-    do
-    {
-      return;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
-    if (DesktopDataManager.access$3400(this.this$0, (awgf)localObject, this.val$entity))
-    {
-      QLog.d("DesktopDataManager", 1, "updateRedDotData, success to delete recommend appInfo: " + this.val$entity);
-      return;
+    DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
+    if (DesktopDataManager.access$1500(this.this$0) != null) {
+      DesktopDataManager.access$1500(this.this$0).onDataChanged();
     }
-    QLog.e("DesktopDataManager", 1, "updateRedDotData, failed to delete recommend appInfo: " + this.val$entity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.29
  * JD-Core Version:    0.7.0.1
  */

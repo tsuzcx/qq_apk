@@ -1,64 +1,57 @@
 package com.tencent.mm.media.a;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/codec/MediaCodecAACCodec$EncoderData;", "", "data", "", "pts", "", "isEnd", "", "([BJZ)V", "getData", "()[B", "()Z", "getPts", "()J", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/codec/MediaCodecAACCodec$EncoderData;", "", "data", "", "pts", "", "isEnd", "", "([BJZ)V", "getData", "()[B", "()Z", "getPts", "()J", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$a
 {
   final byte[] data;
-  final boolean eRq;
+  final boolean nxG;
   final long pts;
   
   public a$a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(12812);
+    AppMethodBeat.i(93468);
     this.data = paramArrayOfByte;
     this.pts = paramLong;
-    this.eRq = paramBoolean;
-    AppMethodBeat.o(12812);
+    this.nxG = paramBoolean;
+    AppMethodBeat.o(93468);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(12815);
-    if (this != paramObject)
+    AppMethodBeat.i(93471);
+    if (this == paramObject)
     {
-      if (!(paramObject instanceof a)) {
-        break label90;
-      }
-      paramObject = (a)paramObject;
-      if (!j.e(this.data, paramObject.data)) {
-        break label90;
-      }
-      if (this.pts != paramObject.pts) {
-        break label80;
-      }
-      i = 1;
-      if (i == 0) {
-        break label90;
-      }
-      if (this.eRq != paramObject.eRq) {
-        break label85;
-      }
-    }
-    label80:
-    label85:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label90;
-      }
-      AppMethodBeat.o(12815);
+      AppMethodBeat.o(93471);
       return true;
-      i = 0;
-      break;
     }
-    label90:
-    AppMethodBeat.o(12815);
-    return false;
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(93471);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (!s.p(this.data, paramObject.data))
+    {
+      AppMethodBeat.o(93471);
+      return false;
+    }
+    if (this.pts != paramObject.pts)
+    {
+      AppMethodBeat.o(93471);
+      return false;
+    }
+    if (this.nxG != paramObject.nxG)
+    {
+      AppMethodBeat.o(93471);
+      return false;
+    }
+    AppMethodBeat.o(93471);
+    return true;
   }
   
   public final int hashCode()
@@ -68,9 +61,9 @@ public final class a$a
   
   public final String toString()
   {
-    AppMethodBeat.i(12813);
-    String str = "EncoderData(data=" + Arrays.toString(this.data) + ", pts=" + this.pts + ", isEnd=" + this.eRq + ")";
-    AppMethodBeat.o(12813);
+    AppMethodBeat.i(93469);
+    String str = "EncoderData(data=" + Arrays.toString(this.data) + ", pts=" + this.pts + ", isEnd=" + this.nxG + ')';
+    AppMethodBeat.o(93469);
     return str;
   }
 }

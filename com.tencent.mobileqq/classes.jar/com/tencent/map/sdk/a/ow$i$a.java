@@ -10,20 +10,24 @@ public class ow$i$a<T>
   
   public ow$i$a(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("The max pool size must be > 0");
+    if (paramInt > 0)
+    {
+      this.a = new Object[paramInt];
+      return;
     }
-    this.a = new Object[paramInt];
+    throw new IllegalArgumentException("The max pool size must be > 0");
   }
   
   public T a()
   {
-    if (this.b > 0)
+    int i = this.b;
+    if (i > 0)
     {
-      int i = this.b - 1;
-      Object localObject = this.a[i];
-      this.a[i] = null;
-      this.b -= 1;
+      int j = i - 1;
+      Object[] arrayOfObject = this.a;
+      Object localObject = arrayOfObject[j];
+      arrayOfObject[j] = null;
+      this.b = (i - 1);
       return localObject;
     }
     return null;
@@ -31,33 +35,40 @@ public class ow$i$a<T>
   
   public boolean a(@NonNull T paramT)
   {
-    boolean bool = false;
     int i = 0;
-    if (i < this.b) {
-      if (this.a[i] != paramT) {}
-    }
-    for (i = 1;; i = 0)
+    while (i < this.b)
     {
-      if (i == 0) {
-        break label50;
+      if (this.a[i] == paramT)
+      {
+        i = 1;
+        break label34;
       }
-      throw new IllegalStateException("Already in the pool!");
       i += 1;
-      break;
     }
-    label50:
-    if (this.b < this.a.length)
+    i = 0;
+    label34:
+    if (i == 0)
     {
-      this.a[this.b] = paramT;
-      this.b += 1;
-      bool = true;
+      i = this.b;
+      Object[] arrayOfObject = this.a;
+      if (i < arrayOfObject.length)
+      {
+        arrayOfObject[i] = paramT;
+        this.b = (i + 1);
+        return true;
+      }
+      return false;
     }
-    return bool;
+    paramT = new IllegalStateException("Already in the pool!");
+    for (;;)
+    {
+      throw paramT;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ow.i.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aiiq;
 import java.util.ArrayList;
 
 class MiniMultiForwardFragment$1$1
@@ -10,10 +9,8 @@ class MiniMultiForwardFragment$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMultiForwardFragment$1.this$0.a != null) && (this.jdField_a_of_type_JavaUtilArrayList != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMultiForwardFragment$1.this$0.a.a(this.jdField_a_of_type_JavaUtilArrayList, null, 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMultiForwardFragment$1.this$0.a.notifyDataSetChanged();
+    if ((this.b.this$0.e != null) && (this.a != null)) {
+      this.b.this$0.e.a(this.a, null, 0);
     }
   }
 }

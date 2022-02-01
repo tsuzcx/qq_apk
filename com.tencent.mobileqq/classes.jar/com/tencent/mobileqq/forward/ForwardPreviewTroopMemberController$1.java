@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
-import alrk;
 import android.text.TextUtils;
 import android.util.Pair;
-import asbs;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
 
-public class ForwardPreviewTroopMemberController$1
+class ForwardPreviewTroopMemberController$1
   implements Runnable
 {
-  public ForwardPreviewTroopMemberController$1(asbs paramasbs, String paramString) {}
+  ForwardPreviewTroopMemberController$1(ForwardPreviewTroopMemberController paramForwardPreviewTroopMemberController, String paramString) {}
   
   public void run()
   {
-    Object localObject1 = ((alrk)asbs.a(this.this$0).getManager(53)).a(this.a);
+    Object localObject1 = ((DiscussionManager)ForwardPreviewTroopMemberController.a(this.this$0).getManager(QQManagerFactory.DISCUSSION_MANAGER)).b(this.a);
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {
@@ -45,13 +45,16 @@ public class ForwardPreviewTroopMemberController$1
         }
       }
     }
-    QLog.i("Forward.Preview.Dialog", 1, "loadDiscussionMember discussion mem list size is: " + localArrayList.size());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("loadDiscussionMember discussion mem list size is: ");
+    ((StringBuilder)localObject1).append(localArrayList.size());
+    QLog.i("Forward.Preview.Dialog", 1, ((StringBuilder)localObject1).toString());
     ThreadManager.getUIHandler().post(new ForwardPreviewTroopMemberController.1.1(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.backup.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.o;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.b.o;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.zip.CRC32;
@@ -11,28 +11,28 @@ public final class j
 {
   public static int a(byte[] paramArrayOfByte1, int paramInt1, short paramShort1, short paramShort2, int paramInt2, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(17470);
+    AppMethodBeat.i(21529);
     try
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       localByteArrayOutputStream.write(paramArrayOfByte1);
-      localByteArrayOutputStream.write(o.fT(paramInt1));
+      localByteArrayOutputStream.write(o.nE(paramInt1));
       localByteArrayOutputStream.write(new byte[] { (byte)(paramShort1 >> 8 & 0xFF), (byte)(paramShort1 & 0xFF) });
       localByteArrayOutputStream.write(new byte[] { (byte)(paramShort2 >> 8 & 0xFF), (byte)(paramShort2 & 0xFF) });
-      localByteArrayOutputStream.write(o.fT(paramInt2));
-      localByteArrayOutputStream.write(o.fT(0));
+      localByteArrayOutputStream.write(o.nE(paramInt2));
+      localByteArrayOutputStream.write(o.nE(0));
       localByteArrayOutputStream.write(paramArrayOfByte2);
       paramArrayOfByte1 = new CRC32();
       paramArrayOfByte1.update(localByteArrayOutputStream.toByteArray());
       long l = paramArrayOfByte1.getValue();
       paramInt1 = (int)l;
-      AppMethodBeat.o(17470);
+      AppMethodBeat.o(21529);
       return paramInt1;
     }
     catch (IOException paramArrayOfByte1)
     {
-      ab.printErrStackTrace("MicroMsg.BackupPacker", paramArrayOfByte1, "BackupPacker getCheckSum error.", new Object[0]);
-      AppMethodBeat.o(17470);
+      Log.printErrStackTrace("MicroMsg.BackupPacker", paramArrayOfByte1, "BackupPacker getCheckSum error.", new Object[0]);
+      AppMethodBeat.o(21529);
     }
     return 0;
   }
@@ -41,7 +41,7 @@ public final class j
   public static void a(byte[] paramArrayOfByte, int paramInt1, short paramShort, com.tencent.mm.pointers.PByteArray paramPByteArray, int paramInt2)
   {
     // Byte code:
-    //   0: sipush 17469
+    //   0: sipush 21528
     //   3: invokestatic 14	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: new 16	java/io/ByteArrayOutputStream
     //   9: dup
@@ -57,7 +57,7 @@ public final class j
     //   31: astore 5
     //   33: aload 6
     //   35: iload_1
-    //   36: invokestatic 30	com/tencent/mm/a/o:fT	(I)[B
+    //   36: invokestatic 30	com/tencent/mm/b/o:nE	(I)[B
     //   39: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
     //   42: aload 6
     //   44: astore 5
@@ -112,13 +112,13 @@ public final class j
     //   119: arraylength
     //   120: bipush 20
     //   122: iadd
-    //   123: invokestatic 30	com/tencent/mm/a/o:fT	(I)[B
+    //   123: invokestatic 30	com/tencent/mm/b/o:nE	(I)[B
     //   126: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
     //   129: aload 6
     //   131: astore 5
     //   133: aload 6
     //   135: iconst_0
-    //   136: invokestatic 30	com/tencent/mm/a/o:fT	(I)[B
+    //   136: invokestatic 30	com/tencent/mm/b/o:nE	(I)[B
     //   139: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
     //   142: aload 6
     //   144: astore 5
@@ -151,7 +151,7 @@ public final class j
     //   200: aload_0
     //   201: invokevirtual 44	java/util/zip/CRC32:getValue	()J
     //   204: l2i
-    //   205: invokestatic 30	com/tencent/mm/a/o:fT	(I)[B
+    //   205: invokestatic 30	com/tencent/mm/b/o:nE	(I)[B
     //   208: iconst_0
     //   209: aload_3
     //   210: getfield 72	com/tencent/mm/pointers/PByteArray:value	[B
@@ -162,18 +162,18 @@ public final class j
     //   221: invokevirtual 81	java/io/ByteArrayOutputStream:reset	()V
     //   224: aload 6
     //   226: invokevirtual 84	java/io/ByteArrayOutputStream:close	()V
-    //   229: sipush 17469
+    //   229: sipush 21528
     //   232: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   235: return
     //   236: aload 6
     //   238: astore 5
     //   240: aload_0
-    //   241: invokestatic 89	com/tencent/mm/plugin/backup/b/d:aSP	()[B
-    //   244: invokestatic 95	com/tencent/mm/a/l:d	([B[B)[B
+    //   241: invokestatic 89	com/tencent/mm/plugin/backup/b/d:cUN	()[B
+    //   244: invokestatic 95	com/tencent/mm/b/l:e	([B[B)[B
     //   247: astore 7
     //   249: goto -138 -> 111
     //   252: astore_0
-    //   253: sipush 17469
+    //   253: sipush 21528
     //   256: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   259: return
     //   260: astore_3
@@ -186,18 +186,18 @@ public final class j
     //   269: ldc 97
     //   271: iconst_0
     //   272: anewarray 4	java/lang/Object
-    //   275: invokestatic 57	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   275: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   278: aload_0
     //   279: ifnull +53 -> 332
     //   282: aload_0
     //   283: invokevirtual 81	java/io/ByteArrayOutputStream:reset	()V
     //   286: aload_0
     //   287: invokevirtual 84	java/io/ByteArrayOutputStream:close	()V
-    //   290: sipush 17469
+    //   290: sipush 21528
     //   293: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   296: return
     //   297: astore_0
-    //   298: sipush 17469
+    //   298: sipush 21528
     //   301: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   304: return
     //   305: astore_0
@@ -209,11 +209,11 @@ public final class j
     //   316: invokevirtual 81	java/io/ByteArrayOutputStream:reset	()V
     //   319: aload 5
     //   321: invokevirtual 84	java/io/ByteArrayOutputStream:close	()V
-    //   324: sipush 17469
+    //   324: sipush 21528
     //   327: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   330: aload_0
     //   331: athrow
-    //   332: sipush 17469
+    //   332: sipush 21528
     //   335: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   338: return
     //   339: astore_3
@@ -268,9 +268,9 @@ public final class j
     //   240	249	347	java/io/IOException
   }
   
-  public static String ao(byte[] paramArrayOfByte)
+  public static String bg(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(17471);
+    AppMethodBeat.i(21530);
     String str = "";
     int i;
     if (paramArrayOfByte.length > 100) {
@@ -283,14 +283,14 @@ public final class j
       continue;
       i = 0;
     }
-    ab.e("MicroMsg.BackupPacker", "dumpErr errBuf:%s", new Object[] { str });
-    AppMethodBeat.o(17471);
+    Log.e("MicroMsg.BackupPacker", "dumpErr errBuf:%s", new Object[] { str });
+    AppMethodBeat.o(21530);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.f.j
  * JD-Core Version:    0.7.0.1
  */

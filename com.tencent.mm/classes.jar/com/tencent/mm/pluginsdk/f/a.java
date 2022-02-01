@@ -1,60 +1,71 @@
 package com.tencent.mm.pluginsdk.f;
 
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.content.Context;
-import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
 
 public final class a
 {
-  public static void b(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
+  public static Bundle bpd(String paramString)
   {
-    AppMethodBeat.i(79446);
-    if (Build.VERSION.SDK_INT >= 11)
+    AppMethodBeat.i(30935);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_scene", 1);
+    paramString = paramString.split("&");
+    if ((paramString == null) || (paramString.length == 0))
     {
-      new b();
-      b.b(paramCharSequence1, paramCharSequence2);
-      AppMethodBeat.o(79446);
-      return;
+      Log.e("MicroMsg.MallManager", "getWapPayBundle arrKeys == null || arrKeys.length == 0");
+      AppMethodBeat.o(30935);
+      return localBundle;
     }
-    new c();
-    c.L(paramCharSequence2);
-    AppMethodBeat.o(79446);
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      Object localObject = paramString[i];
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split("=");
+        if ((localObject != null) && (localObject.length == 2)) {
+          localHashMap.put(localObject[0], localObject[1]);
+        }
+      }
+      i += 1;
+    }
+    localBundle.putString("_wxapi_payreq_appid", f("appid", localHashMap));
+    localBundle.putString("_wxapi_payreq_partnerid", f("partnerid", localHashMap));
+    localBundle.putString("_wxapi_payreq_prepayid", f("prepayid", localHashMap));
+    localBundle.putString("_wxapi_payreq_noncestr", f("noncestr", localHashMap));
+    localBundle.putString("_wxapi_payreq_timestamp", f("timestamp", localHashMap));
+    localBundle.putString("_wxapi_payreq_packagevalue", f("package", localHashMap));
+    localBundle.putString("_wxapi_payreq_sign", f("sign", localHashMap));
+    localBundle.putString("_wxapi_payreq_sign_type", f("signtype", localHashMap));
+    localBundle.putString("_wxapi_payreq_extdata", f("extdata", localHashMap));
+    localBundle.putString("_wxapi_payoptions_callback_classname", "");
+    localBundle.putInt("_wxapi_payoptions_callback_flags", -1);
+    AppMethodBeat.o(30935);
+    return localBundle;
   }
   
-  public static CharSequence dlQ()
+  private static String f(String paramString, HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(79447);
-    if (Build.VERSION.SDK_INT >= 11)
+    AppMethodBeat.i(30936);
+    paramHashMap = (String)paramHashMap.get(paramString);
+    if (TextUtils.isEmpty(paramHashMap))
     {
-      new b();
-      localObject = ((android.content.ClipboardManager)ah.getContext().getSystemService("clipboard")).getPrimaryClip();
-      if ((localObject == null) || (((ClipData)localObject).getItemCount() <= 0))
-      {
-        AppMethodBeat.o(79447);
-        return null;
-      }
-      localObject = ((ClipData)localObject).getItemAt(0);
-      if (localObject == null)
-      {
-        AppMethodBeat.o(79447);
-        return null;
-      }
-      localObject = ((ClipData.Item)localObject).getText();
-      AppMethodBeat.o(79447);
-      return localObject;
+      Log.e("MicroMsg.MallManager", "getWapPayKey key: " + paramString + " value is empty");
+      AppMethodBeat.o(30936);
+      return "";
     }
-    new c();
-    Object localObject = ((android.text.ClipboardManager)ah.getContext().getSystemService("clipboard")).getText();
-    AppMethodBeat.o(79447);
-    return localObject;
+    AppMethodBeat.o(30936);
+    return paramHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.f.a
  * JD-Core Version:    0.7.0.1
  */

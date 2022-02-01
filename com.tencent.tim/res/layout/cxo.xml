@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/nw2" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dingdong="http://schemas.android.com/apk/res-auto" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/nys" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.DingdongPromptView android:id="@id/nyr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" formItem:promptIconDrawable="@drawable/ch2" formItem:promptIconVisibility="cw1" formItem:promptText="@string/ap9" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/nuv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/o68" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/y_k" android:layout_centerHorizontal="true" />
+        <Button android:enabled="true" android:id="@id/bfl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/h73" android:layout_below="@id/o68" android:layout_centerInParent="true" android:contentDescription="@string/h73" style="@style/a3w" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/nw7" android:scrollbars="vertical" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_above="@id/nuv">
+        <LinearLayout android:orientation="vertical" android:id="@id/mt4" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/nuv">
+            <LinearLayout android:orientation="vertical" android:id="@id/kis" android:background="@drawable/skin_setting_strip_top_unpressed_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="20.0sp" android:textColor="@color/skin_black" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="10.0dip" android:singleLine="false" android:textIsSelectable="true" />
+                <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="16.0dip">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/apl" android:id="@id/jl7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="80.0dip" android:singleLine="false" />
+                </RelativeLayout>
+            </LinearLayout>
+            <RelativeLayout android:id="@id/ntw" android:background="@drawable/skin_setting_strip_top_unpressed_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/ntx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:text="@string/h9f" android:singleLine="false" />
+                <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:id="@id/nu0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="11.0dip" android:singleLine="false" android:layout_below="@id/ntx" android:textIsSelectable="true" />
+                <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/nu0" />
+                <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/nw1" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/nu0" formItem:bgType="faa" formItem:switchChecked="false" formItem:switchText="@string/h6p" />
+            </RelativeLayout>
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/mj6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:singleLine="false" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</RelativeLayout>

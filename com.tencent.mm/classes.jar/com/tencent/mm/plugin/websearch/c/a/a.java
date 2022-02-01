@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.websearch.c.a;
 
-import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.o;
 import java.util.List;
 
 public abstract class a<T>
 {
+  protected int Wre;
   protected String query;
-  protected int uLl;
   
-  public a(String paramString)
+  public a(String paramString, int paramInt)
   {
     this.query = paramString;
-    this.uLl = 2147483647;
+    this.Wre = 2147483647;
   }
-  
-  public abstract void ee(List<l> paramList);
   
   public boolean equals(Object paramObject)
   {
@@ -27,7 +25,7 @@ public abstract class a<T>
       }
       paramObject = (a)paramObject;
       if ((this.query == paramObject.query) || ((this.query != null) && (this.query.equalsIgnoreCase(paramObject.query)))) {}
-      for (int i = 1; (paramObject.uLl != this.uLl) || (i == 0); i = 0) {
+      for (int i = 1; (paramObject.Wre != this.Wre) || (i == 0); i = 0) {
         return false;
       }
     }
@@ -38,10 +36,12 @@ public abstract class a<T>
   {
     return super.hashCode();
   }
+  
+  public abstract void mf(List<o> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.c.a.a
  * JD-Core Version:    0.7.0.1
  */

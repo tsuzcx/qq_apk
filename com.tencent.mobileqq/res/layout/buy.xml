@@ -15,16 +15,16 @@
         </RelativeLayout>
         <RelativeLayout android:id="@id/c7n" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_toLeftOf="@id/c7s" android:layout_alignWithParentIfMissing="true">
             <ImageView android:id="@id/c7m" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ayx" android:scaleType="fitXY" android:layout_centerVertical="true" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/c7o" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7m" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/black" android:id="@id/c7o" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7m" />
         </RelativeLayout>
         <RelativeLayout android:id="@id/c7k" android:layout_width="58.0dip" android:layout_height="48.0dip" android:layout_toLeftOf="@id/c7n" android:layout_alignWithParentIfMissing="true">
             <ImageView android:id="@id/c7j" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ayu" android:scaleType="fitXY" android:layout_centerVertical="true" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/c7l" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7j" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/black" android:id="@id/c7l" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7j" />
         </RelativeLayout>
         <RelativeLayout android:id="@id/ff6" android:layout_width="58.0dip" android:layout_height="48.0dip" android:layout_toLeftOf="@id/c7k" android:layout_alignWithParentIfMissing="true">
             <com.qzone.module.feedcomponent.ui.common.SuperLikeView android:id="@id/c7p" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ayw" android:scaleType="fitXY" android:layout_centerVertical="true" />
             <ImageView android:id="@id/ff7" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/c7q" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7p" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/black" android:id="@id/c7q" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7p" />
         </RelativeLayout>
         <View android:id="@id/ff8" android:background="@drawable/b46" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="50.0dip" />
         <View android:id="@id/ff_" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="5.0dip" />

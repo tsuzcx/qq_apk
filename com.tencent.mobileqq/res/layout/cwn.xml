@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.richframework.widget.RoundCornerImageView android:id="@id/mke" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:background="@drawable/f3o" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/mkc" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginLeft="19.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="8.0dip" app:authIconEnable="false" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/mkh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_marginRight="4.0dip" android:layout_toRightOf="@id/mkc" />
+    <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:id="@id/mki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_toRightOf="@id/mkc" android:layout_below="@id/mkh" />
+    <com.tencent.biz.qqcircle.richframework.widget.SquareImageView android:id="@id/o5_" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="26.0dip" android:layout_toRightOf="@id/mkh" />
+    <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="15.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mkg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="20.0dip" android:maxHeight="200.0dip" android:maxLines="3" android:layout_below="@id/mkc" />
+    <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/mkd" android:background="@drawable/iru" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="188.0dip" android:layout_height="wrap_content" android:layout_marginBottom="28.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

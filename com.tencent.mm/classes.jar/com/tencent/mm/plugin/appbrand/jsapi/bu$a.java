@@ -1,12 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import a.l;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.my;
+import com.tencent.mm.autogen.a.my.b;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.sdk.platformtools.Log;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
-final class bu$a {}
+class bu$a
+  implements d<Bundle, Bundle>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bu.a
  * JD-Core Version:    0.7.0.1
  */

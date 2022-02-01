@@ -1,81 +1,81 @@
 package com.tencent.mm.plugin.backup.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
 {
-  public static int jAD;
-  public static int jAE;
-  public static int jAF;
-  public static int jAG;
-  public static int jAH;
-  public static int jAI;
-  public static int jAJ;
-  public static long jAK;
-  public static long jAL;
-  public static long jAM;
+  public static int uXX;
+  public static int uXY;
+  public static int uXZ;
+  public static int uYa;
+  public static int uYb;
+  public static int uYc;
+  public static long uYd;
+  public static long uYe;
+  public static long uYf;
+  public static int video_count;
   
-  public static void aTk()
-  {
-    AppMethodBeat.i(17218);
-    ab.d("MicroMsg.TestInfo", getInfo());
-    AppMethodBeat.o(17218);
-  }
-  
-  public static void aTl()
-  {
-    AppMethodBeat.i(17219);
-    ab.d("MicroMsg.TestInfo", "netTime" + (bo.aoy() - jAL));
-    AppMethodBeat.o(17219);
-  }
-  
-  private static String getInfo()
-  {
-    AppMethodBeat.i(17220);
-    String str = "total_count: " + jAJ + "text_count: " + jAF + "normal_count : " + jAE + " image_count: " + jAD + " voice_count : " + jAH + " video_count " + jAG + " app_count : " + jAI + " time: " + (bo.aoy() - jAK) + " net: " + jAM;
-    AppMethodBeat.o(17220);
-    return str;
-  }
-  
-  public static void reset()
-  {
-    AppMethodBeat.i(17217);
-    jAD = 0;
-    jAE = 0;
-    jAF = 0;
-    jAG = 0;
-    jAH = 0;
-    jAI = 0;
-    jAJ = 0;
-    long l = bo.aoy();
-    jAK = l;
-    jAM = l - jAL;
-    AppMethodBeat.o(17217);
-  }
-  
-  public static void ri(int paramInt)
+  public static void Ff(int paramInt)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      jAJ += 1;
+      uYc += 1;
       return;
-      jAF += 1;
+      uXZ += 1;
       continue;
-      jAI += 1;
+      uYb += 1;
       continue;
-      jAH += 1;
+      uYa += 1;
       continue;
-      jAG += 1;
+      video_count += 1;
       continue;
-      jAD += 1;
+      uXX += 1;
       continue;
-      jAE += 1;
+      uXY += 1;
     }
+  }
+  
+  public static void cVl()
+  {
+    AppMethodBeat.i(21272);
+    Log.d("MicroMsg.TestInfo", getInfo());
+    AppMethodBeat.o(21272);
+  }
+  
+  public static void cVm()
+  {
+    AppMethodBeat.i(21273);
+    Log.d("MicroMsg.TestInfo", "netTime" + (Util.nowMilliSecond() - uYe));
+    AppMethodBeat.o(21273);
+  }
+  
+  private static String getInfo()
+  {
+    AppMethodBeat.i(21274);
+    String str = "total_count: " + uYc + "text_count: " + uXZ + "normal_count : " + uXY + " image_count: " + uXX + " voice_count : " + uYa + " video_count " + video_count + " app_count : " + uYb + " time: " + (Util.nowMilliSecond() - uYd) + " net: " + uYf;
+    AppMethodBeat.o(21274);
+    return str;
+  }
+  
+  public static void reset()
+  {
+    AppMethodBeat.i(21271);
+    uXX = 0;
+    uXY = 0;
+    uXZ = 0;
+    video_count = 0;
+    uYa = 0;
+    uYb = 0;
+    uYc = 0;
+    long l = Util.nowMilliSecond();
+    uYd = l;
+    uYf = l - uYe;
+    AppMethodBeat.o(21271);
   }
 }
 

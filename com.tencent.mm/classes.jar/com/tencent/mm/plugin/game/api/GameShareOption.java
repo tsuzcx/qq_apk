@@ -9,36 +9,36 @@ public class GameShareOption
   implements Parcelable
 {
   public static final Parcelable.Creator<GameShareOption> CREATOR;
+  public boolean Icx;
   public int id;
-  public boolean niC;
   public String title;
   
   static
   {
-    AppMethodBeat.i(141588);
-    CREATOR = new GameShareOption.1();
-    AppMethodBeat.o(141588);
+    AppMethodBeat.i(89659);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(89659);
   }
   
   public GameShareOption(int paramInt, String paramString, boolean paramBoolean)
   {
-    this.niC = false;
+    this.Icx = false;
     this.id = paramInt;
     this.title = paramString;
-    this.niC = paramBoolean;
+    this.Icx = paramBoolean;
   }
   
   protected GameShareOption(Parcel paramParcel)
   {
-    AppMethodBeat.i(141586);
-    this.niC = false;
+    AppMethodBeat.i(89657);
+    this.Icx = false;
     this.id = paramParcel.readInt();
     this.title = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.niC = bool;
-      AppMethodBeat.o(141586);
+      this.Icx = bool;
+      AppMethodBeat.o(89657);
       return;
       bool = false;
     }
@@ -51,21 +51,21 @@ public class GameShareOption
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(141587);
+    AppMethodBeat.i(89658);
     paramParcel.writeInt(this.id);
     paramParcel.writeString(this.title);
-    if (this.niC) {}
+    if (this.Icx) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(141587);
+      AppMethodBeat.o(89658);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.GameShareOption
  * JD-Core Version:    0.7.0.1
  */

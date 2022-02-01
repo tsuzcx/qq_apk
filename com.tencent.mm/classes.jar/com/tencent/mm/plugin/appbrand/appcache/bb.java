@@ -1,39 +1,51 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import java.io.File;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.ad;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class bb
 {
-  public static void clear(String paramString)
+  public final void clear(final String paramString)
   {
-    AppMethodBeat.i(59545);
-    String str2 = g.RL().cachePath;
-    String str1 = str2;
-    if (!str2.endsWith("/")) {
-      str1 = str2 + "/";
+    AppMethodBeat.i(44352);
+    paramString = new ad()
+    {
+      public final boolean accept(u paramAnonymousu, String paramAnonymousString)
+      {
+        AppMethodBeat.i(320362);
+        boolean bool = paramAnonymousString.endsWith("_" + paramString);
+        AppMethodBeat.o(320362);
+        return bool;
+      }
+    };
+    u localu = new u(b.bno());
+    if ((localu.jKS()) && (localu.isDirectory()))
+    {
+      paramString = localu.b(paramString);
+      if ((paramString != null) && (paramString.length > 0))
+      {
+        int j = paramString.length;
+        int i = 0;
+        while (i < j)
+        {
+          localu = paramString[i];
+          y.ew(ah.v(localu.mUri), true);
+          Log.i("WxaJsCacheStorage", "clear file:%s", new Object[] { localu.getName() });
+          i += 1;
+        }
+      }
     }
-    paramString = new File(str1 + "appbrand/loadingurl" + File.separator + paramString);
-    if ((paramString.exists()) && (paramString.isDirectory())) {
-      com.tencent.mm.a.e.o(paramString);
-    }
-    str1 = Environment.getExternalStorageDirectory().getAbsolutePath();
-    paramString = str1;
-    if (!str1.endsWith("/")) {
-      paramString = str1 + "/";
-    }
-    paramString = new File(paramString + "Tencent/MicroMsg/appbrand/loadingurl");
-    if ((paramString.exists()) && (paramString.isDirectory())) {
-      com.tencent.mm.a.e.o(paramString);
-    }
-    AppMethodBeat.o(59545);
+    AppMethodBeat.o(44352);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bb
  * JD-Core Version:    0.7.0.1
  */

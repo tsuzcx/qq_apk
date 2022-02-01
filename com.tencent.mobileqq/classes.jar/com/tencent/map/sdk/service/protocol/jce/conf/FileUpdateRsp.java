@@ -50,18 +50,20 @@ public final class FileUpdateRsp
     paraml.a(this.iRet, 1);
     paraml.a(this.iVersion, 2);
     paraml.a(this.iFileUpdated, 3);
-    if (this.sUpdateUrl != null) {
-      paraml.a(this.sUpdateUrl, 4);
+    String str = this.sUpdateUrl;
+    if (str != null) {
+      paraml.a(str, 4);
     }
-    if (this.sMd5 != null) {
-      paraml.a(this.sMd5, 5);
+    str = this.sMd5;
+    if (str != null) {
+      paraml.a(str, 5);
     }
     paraml.a(this.iFileSize, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.conf.FileUpdateRsp
  * JD-Core Version:    0.7.0.1
  */

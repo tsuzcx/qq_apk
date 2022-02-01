@@ -65,12 +65,13 @@ public final class WebBundleManager
     if (this.mPreloadingOne != null) {
       return null;
     }
-    if (this.config != null)
+    Object localObject = this.config;
+    if (localObject != null)
     {
-      Iterator localIterator = this.config.getPreloadUrlList().iterator();
-      while (localIterator.hasNext())
+      localObject = ((WebBundleConfig)localObject).getPreloadUrlList().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
+        String str = (String)((Iterator)localObject).next();
         if ((getPreloadedCount(str) < this.config.getPreloadWebViewCount()) && (getPreloadFailedCount(str) < 2)) {
           return str;
         }
@@ -146,19 +147,20 @@ public final class WebBundleManager
     log(3, "WebBundle.WebBundleManager", "destroy webbundle.");
     if (this.isInit)
     {
-      if (this.mPreloadingOne != null) {
-        this.mPreloadingOne.forceStop("destroy");
+      Object localObject1 = this.mPreloadingOne;
+      if (localObject1 != null) {
+        ((WebBundle)localObject1).forceStop("destroy");
       }
-      Iterator localIterator1 = this.mPreloadedPool.keySet().iterator();
-      while (localIterator1.hasNext())
+      localObject1 = this.mPreloadedPool.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject = (String)localIterator1.next();
-        localObject = (ArrayList)this.mPreloadedPool.get(localObject);
-        Iterator localIterator2 = ((ArrayList)localObject).iterator();
-        while (localIterator2.hasNext()) {
-          ((WebBundle)localIterator2.next()).destroy();
+        Object localObject2 = (String)((Iterator)localObject1).next();
+        localObject2 = (ArrayList)this.mPreloadedPool.get(localObject2);
+        Iterator localIterator = ((ArrayList)localObject2).iterator();
+        while (localIterator.hasNext()) {
+          ((WebBundle)localIterator.next()).destroy();
         }
-        ((ArrayList)localObject).clear();
+        ((ArrayList)localObject2).clear();
       }
       this.mPreloadFailCntMap.clear();
       this.isInit = false;
@@ -174,23 +176,27 @@ public final class WebBundleManager
   @Nullable
   public final WebBundle getAvailableWebBundle(@NotNull Context paramContext, @NotNull String paramString)
   {
-    if (!this.isInit) {
+    boolean bool = this.isInit;
+    Object localObject2 = null;
+    if (!bool) {
       return null;
     }
     ThreadManager.checkMainThread("getAvailableWebBundle");
-    Object localObject = (ArrayList)this.mPreloadedPool.get(paramString);
+    ArrayList localArrayList = (ArrayList)this.mPreloadedPool.get(paramString);
     log(3, "WebBundle.WebBundleManager", new String[] { "get available webbundle. preloading = ", String.valueOf(getPreloadingCount(paramString)), ", preloaded = ", String.valueOf(getPreloadedCount(paramString)), ", preloadUrl = ", paramString });
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    Object localObject1 = localObject2;
+    if (localArrayList != null)
     {
-      localObject = (WebBundle)((ArrayList)localObject).remove(0);
-      ((WebBundle)localObject).resetContext(paramContext);
+      localObject1 = localObject2;
+      if (localArrayList.size() > 0)
+      {
+        localObject1 = (WebBundle)localArrayList.remove(0);
+        ((WebBundle)localObject1).resetContext(paramContext);
+      }
     }
-    for (paramContext = (Context)localObject;; paramContext = null)
-    {
-      this.mPreloadFailCntMap.put(paramString, Integer.valueOf(0));
-      triggerPreload(500L);
-      return paramContext;
-    }
+    this.mPreloadFailCntMap.put(paramString, Integer.valueOf(0));
+    triggerPreload(500L);
+    return localObject1;
   }
   
   public final WebBundleConfig getConfig()
@@ -205,24 +211,23 @@ public final class WebBundleManager
   
   public final void init(@NotNull IWebBundleRuntime paramIWebBundleRuntime, @NotNull WebBundleConfig paramWebBundleConfig)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        boolean bool = this.isInit;
-        if (bool) {
-          return;
-        }
-        if (!paramWebBundleConfig.isValidate()) {
-          throw new IllegalArgumentException("invalid webbundle config.");
-        }
+      boolean bool = this.isInit;
+      if (bool) {
+        return;
       }
-      finally {}
-      this.runtime = paramIWebBundleRuntime;
-      this.config = paramWebBundleConfig;
-      this.isInit = true;
-      log(3, "WebBundle.WebBundleManager", "init webbundle success.");
+      if (paramWebBundleConfig.isValidate())
+      {
+        this.runtime = paramIWebBundleRuntime;
+        this.config = paramWebBundleConfig;
+        this.isInit = true;
+        log(3, "WebBundle.WebBundleManager", "init webbundle success.");
+        return;
+      }
+      throw new IllegalArgumentException("invalid webbundle config.");
     }
+    finally {}
   }
   
   public boolean isInit()
@@ -232,28 +237,40 @@ public final class WebBundleManager
   
   public final void log(int paramInt, @NotNull String paramString1, @NotNull String paramString2)
   {
-    if (this.config == null) {}
-    for (;;)
-    {
+    if (this.config == null) {
       return;
-      paramString2 = "[" + this.mBizid + "]" + paramString2;
-      if (this.config.isLogPrintEnabled()) {
-        switch (paramInt)
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.mBizid);
+    localStringBuilder.append("]");
+    localStringBuilder.append(paramString2);
+    paramString2 = localStringBuilder.toString();
+    if (this.config.isLogPrintEnabled()) {
+      if (paramInt != 3)
+      {
+        if (paramInt != 4)
         {
+          if (paramInt != 5)
+          {
+            if (paramInt == 6) {
+              Log.e(paramString1, paramString2);
+            }
+          }
+          else {
+            Log.w(paramString1, paramString2);
+          }
+        }
+        else {
+          Log.i(paramString1, paramString2);
         }
       }
-      while (this.config.getLogListener() != null)
-      {
-        this.config.getLogListener().log(paramInt, paramString1, paramString2);
-        return;
-        Log.i(paramString1, paramString2);
-        continue;
+      else {
         Log.d(paramString1, paramString2);
-        continue;
-        Log.w(paramString1, paramString2);
-        continue;
-        Log.e(paramString1, paramString2);
       }
+    }
+    if (this.config.getLogListener() != null) {
+      this.config.getLogListener().log(paramInt, paramString1, paramString2);
     }
   }
   
@@ -276,13 +293,14 @@ public final class WebBundleManager
   public void onStateChange(@NotNull WebBundle paramWebBundle, @NotNull WebBundle.WebBundlePreloadState paramWebBundlePreloadState)
   {
     ThreadManager.checkMainThread("onStateChange");
-    if (paramWebBundlePreloadState == WebBundle.WebBundlePreloadState.SUCCESS) {
+    if (paramWebBundlePreloadState == WebBundle.WebBundlePreloadState.SUCCESS)
+    {
       onPreloadSuccess(paramWebBundle);
-    }
-    while (paramWebBundlePreloadState != WebBundle.WebBundlePreloadState.FAILED) {
       return;
     }
-    onPreloadFailed(paramWebBundle);
+    if (paramWebBundlePreloadState == WebBundle.WebBundlePreloadState.FAILED) {
+      onPreloadFailed(paramWebBundle);
+    }
   }
   
   public final boolean openWebViewWithWebBundle(@NotNull Activity paramActivity, @NotNull String paramString1, @NotNull JSONObject paramJSONObject, @Nullable Intent paramIntent, @NotNull String paramString2)
@@ -305,32 +323,28 @@ public final class WebBundleManager
   
   public final void preload(@NotNull Context paramContext)
   {
-    if (!this.isInit) {}
-    String str;
-    do
-    {
+    if (!this.isInit) {
       return;
-      ThreadManager.checkMainThread("preload");
-      str = getNextPreloadUrl();
-    } while (str == null);
+    }
+    ThreadManager.checkMainThread("preload");
+    String str = getNextPreloadUrl();
+    if (str == null) {
+      return;
+    }
     log(3, "WebBundle.WebBundleManager", new String[] { "start to preload webbundle. preloading = ", String.valueOf(getPreloadingCount(str)), ", preloaded = ", String.valueOf(getPreloadedCount(str)), ". preloadUrl = ", str });
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("type", "preloadView");
       localJSONObject.put("url", "preloadAllPage");
-      paramContext = new WebBundle(paramContext, this.mBizid);
-      paramContext.startPreload(str, localJSONObject, this);
-      this.mPreloadingOne = paramContext;
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    paramContext = new WebBundle(paramContext, this.mBizid);
+    paramContext.startPreload(str, localJSONObject, this);
+    this.mPreloadingOne = paramContext;
   }
   
   public final void triggerPreload()
@@ -345,7 +359,7 @@ public final class WebBundleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.webbundle.sdk.WebBundleManager
  * JD-Core Version:    0.7.0.1
  */

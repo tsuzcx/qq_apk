@@ -1,235 +1,177 @@
 package com.tencent.mm.plugin.fts.a.a;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.b.b;
-import com.tencent.mm.plugin.fts.a.d;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
+import com.tencent.mm.bm.a.a.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.List;
 
 public final class g
 {
-  private static final g.a mSB;
-  public List<c> mSA;
-  public String mSw;
-  public String mSx;
-  public String[] mSy;
-  public String[] mSz;
+  public j FWt;
+  public CharSequence HsG;
+  public boolean HsH;
+  public boolean HsI;
+  public g.a HsJ;
+  public int HsK;
+  public float HsL;
+  public CharSequence HsM;
+  public CharSequence HsN;
+  public String HsO;
+  public String HsP;
+  public TextPaint dso;
   
-  static
+  public g()
   {
-    AppMethodBeat.i(114265);
-    mSB = new g.1();
-    AppMethodBeat.o(114265);
+    AppMethodBeat.i(131679);
+    this.HsJ = g.a.HsQ;
+    this.HsK = MMApplicationContext.getContext().getResources().getColor(a.a.Brand);
+    this.HsM = "";
+    this.HsN = "";
+    this.HsO = "";
+    this.HsP = "";
+    AppMethodBeat.o(131679);
   }
   
-  private g()
+  public static final g a(CharSequence paramCharSequence, j paramj)
   {
-    AppMethodBeat.i(114260);
-    this.mSA = new ArrayList();
-    AppMethodBeat.o(114260);
-  }
-  
-  public static g a(String paramString, boolean paramBoolean, g.a parama)
-  {
-    AppMethodBeat.i(114264);
+    AppMethodBeat.i(131682);
     g localg = new g();
-    localg.mSw = paramString;
-    localg.mSx = d.Pa(paramString);
-    localg.mSy = parama.split(localg.mSx);
-    localg.mSz = parama.Ph(localg.mSx);
-    paramString = localg.mSy;
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      parama = paramString[i];
-      localg.mSA.add(aT(parama, paramBoolean));
-      i += 1;
-    }
-    AppMethodBeat.o(114264);
+    localg.HsG = paramCharSequence;
+    localg.FWt = paramj;
+    AppMethodBeat.o(131682);
     return localg;
   }
   
-  private static c aT(String paramString, boolean paramBoolean)
+  public static final g a(CharSequence paramCharSequence, j paramj, float paramFloat, TextPaint paramTextPaint)
   {
-    int j = 0;
-    AppMethodBeat.i(114262);
-    boolean bool = paramBoolean;
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    }
-    c localc;
-    Object localObject2;
-    Object localObject3;
-    for (;;)
-    {
-      bool = paramBoolean;
-      if (i < paramString.length())
-      {
-        if (!com.tencent.mm.plugin.fts.a.g.x(paramString.charAt(i))) {
-          bool = false;
-        }
-      }
-      else
-      {
-        localc = new c();
-        if (!bool) {
-          break label359;
-        }
-        localObject2 = com.tencent.mm.plugin.fts.a.g.mRK;
-        localObject1 = new ArrayList();
-        localObject3 = paramString.toLowerCase().toCharArray();
-        i = j;
-        for (;;)
-        {
-          if (i >= localObject3.length) {
-            break label144;
-          }
-          j = localObject3[i];
-          if (localObject2.mTp.mTq[(j - 97)] == null) {
-            break;
-          }
-          ((List)localObject1).add(String.valueOf(localObject3[i]));
-          i += 1;
-        }
-      }
-      i += 1;
-    }
-    ((List)localObject1).clear();
-    label144:
-    if (((List)localObject1).size() > 0)
-    {
-      localObject2 = new g.b();
-      ((g.b)localObject2).mSC = g.d.mSG;
-      ((g.b)localObject2).content = bo.d((List)localObject1, "​");
-      ((g.b)localObject2).mSD = ((List)localObject1);
-      localc.mSE.add(localObject2);
-    }
-    Object localObject1 = com.tencent.mm.plugin.fts.a.g.mRK.Pj(paramString);
-    if (((List)localObject1).size() > 0)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (List)((Iterator)localObject1).next();
-        if (((List)localObject2).size() > 0)
-        {
-          localObject3 = new g.b();
-          ((g.b)localObject3).mSC = g.d.mSF;
-          ((g.b)localObject3).content = bo.d((List)localObject2, "​");
-          ((g.b)localObject3).mSD = ((List)localObject2);
-          localc.mSE.add(localObject3);
-        }
-      }
-    }
-    localObject1 = new g.b();
-    ((g.b)localObject1).mSC = g.d.mSH;
-    ((g.b)localObject1).content = paramString;
-    localc.mSE.add(localObject1);
-    for (;;)
-    {
-      AppMethodBeat.o(114262);
-      return localc;
-      label359:
-      localObject1 = new g.b();
-      ((g.b)localObject1).mSC = g.d.mSH;
-      ((g.b)localObject1).content = paramString;
-      localc.mSE.add(localObject1);
-    }
+    AppMethodBeat.i(131684);
+    paramCharSequence = a(paramCharSequence, paramj, false, false, paramFloat, paramTextPaint);
+    AppMethodBeat.o(131684);
+    return paramCharSequence;
   }
   
-  public static g aU(String paramString, boolean paramBoolean)
+  public static final g a(CharSequence paramCharSequence, j paramj, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(114263);
-    paramString = a(paramString, paramBoolean, mSB);
-    AppMethodBeat.o(114263);
-    return paramString;
+    AppMethodBeat.i(131683);
+    paramCharSequence = a(paramCharSequence, paramj, paramBoolean1, paramBoolean2, 0.0F, null);
+    AppMethodBeat.o(131683);
+    return paramCharSequence;
   }
   
-  public final String bBX()
+  public static final g a(CharSequence paramCharSequence, j paramj, boolean paramBoolean1, boolean paramBoolean2, float paramFloat, TextPaint paramTextPaint)
   {
-    AppMethodBeat.i(114261);
-    Object localObject = new StringBuffer();
-    int i = 0;
-    while (i < this.mSA.size())
-    {
-      ((StringBuffer)localObject).append("(");
-      ((StringBuffer)localObject).append(((c)this.mSA.get(i)).bBZ());
-      ((StringBuffer)localObject).append(")");
-      if (i != this.mSA.size() - 1) {
-        ((StringBuffer)localObject).append(" AND ");
-      }
-      i += 1;
-    }
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(114261);
-    return localObject;
+    AppMethodBeat.i(131685);
+    g localg = new g();
+    localg.HsG = paramCharSequence;
+    localg.FWt = paramj;
+    localg.HsH = paramBoolean1;
+    localg.HsI = paramBoolean2;
+    localg.HsL = paramFloat;
+    localg.dso = paramTextPaint;
+    AppMethodBeat.o(131685);
+    return localg;
   }
   
-  public static final class c
+  public static final g a(CharSequence paramCharSequence1, j paramj, boolean paramBoolean1, boolean paramBoolean2, TextPaint paramTextPaint, CharSequence paramCharSequence2, CharSequence paramCharSequence3)
   {
-    public List<g.b> mSE;
+    AppMethodBeat.i(131686);
+    g localg = new g();
+    localg.HsG = paramCharSequence1;
+    localg.FWt = paramj;
+    localg.HsH = paramBoolean1;
+    localg.HsI = paramBoolean2;
+    localg.HsL = 400.0F;
+    localg.dso = paramTextPaint;
+    localg.HsM = paramCharSequence2;
+    localg.HsN = paramCharSequence3;
+    AppMethodBeat.o(131686);
+    return localg;
+  }
+  
+  public static final g a(CharSequence paramCharSequence, List<String> paramList, g.a parama, int paramInt)
+  {
+    AppMethodBeat.i(131687);
+    paramCharSequence = b(paramCharSequence, paramList);
+    paramCharSequence.HsJ = parama;
+    paramCharSequence.HsK = paramInt;
+    AppMethodBeat.o(131687);
+    return paramCharSequence;
+  }
+  
+  public static final g b(CharSequence paramCharSequence, List<String> paramList)
+  {
+    AppMethodBeat.i(131680);
+    paramCharSequence = c(paramCharSequence, Util.listToString(paramList, " "));
+    AppMethodBeat.o(131680);
+    return paramCharSequence;
+  }
+  
+  public static final g c(CharSequence paramCharSequence, String paramString)
+  {
+    AppMethodBeat.i(131681);
+    g localg = new g();
+    localg.HsG = paramCharSequence;
+    localg.FWt = j.cc(paramString, false);
+    localg.HsH = false;
+    localg.HsI = false;
+    AppMethodBeat.o(131681);
+    return localg;
+  }
+  
+  public static final class b
+    implements Comparable<b>
+  {
+    public j.c HsU;
+    public int HsV = -1;
+    public int HsW = -1;
     
-    public c()
+    public final String getKeyword()
     {
-      AppMethodBeat.i(114254);
-      this.mSE = new ArrayList();
-      AppMethodBeat.o(114254);
-    }
-    
-    private List<String> bBY()
-    {
-      AppMethodBeat.i(114255);
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.mSE.iterator();
-      while (localIterator.hasNext())
+      AppMethodBeat.i(131677);
+      if ((this.HsU != null) && (this.HsU.Htm.size() > 0))
       {
-        g.b localb = (g.b)localIterator.next();
-        if (!localArrayList.contains(localb.content)) {
-          localArrayList.add(localb.content);
-        }
-      }
-      AppMethodBeat.o(114255);
-      return localArrayList;
-    }
-    
-    public final String bBZ()
-    {
-      AppMethodBeat.i(114256);
-      Object localObject = bBY();
-      StringBuilder localStringBuilder = new StringBuilder();
-      int i = 0;
-      if (i < ((List)localObject).size())
-      {
-        String str = (String)((List)localObject).get(i);
-        localStringBuilder.append("\"");
-        localStringBuilder.append(str);
-        char c = str.charAt(str.length() - 1);
-        if ((com.tencent.mm.plugin.fts.a.g.x(c)) || (com.tencent.mm.plugin.fts.a.g.y(c))) {
-          localStringBuilder.append("\"*");
-        }
-        for (;;)
+        Object localObject = this.HsU.Htm.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          if (i != ((List)localObject).size() - 1) {
-            localStringBuilder.append(" OR ");
+          j.b localb = (j.b)((Iterator)localObject).next();
+          if (localb.Htk == j.d.Htp)
+          {
+            localObject = localb.content;
+            AppMethodBeat.o(131677);
+            return localObject;
           }
-          i += 1;
-          break;
-          localStringBuilder.append("\"");
         }
       }
-      localObject = localStringBuilder.toString();
-      AppMethodBeat.o(114256);
-      return localObject;
+      AppMethodBeat.o(131677);
+      return null;
+    }
+    
+    public final boolean isAvailable()
+    {
+      return (this.HsV != -1) && (this.HsW != -1);
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(131678);
+      if (this.HsU == null) {}
+      for (String str = "";; str = this.HsU.fxA().replaceAll("​", ","))
+      {
+        str = String.format("FTSQueryHLRequest.Item %s %d %d", new Object[] { str, Integer.valueOf(this.HsV), Integer.valueOf(this.HsW) });
+        AppMethodBeat.o(131678);
+        return str;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.g
  * JD-Core Version:    0.7.0.1
  */

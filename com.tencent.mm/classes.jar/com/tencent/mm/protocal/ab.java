@@ -1,170 +1,165 @@
 package com.tencent.mm.protocal;
 
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.protobuf.azb;
-import com.tencent.mm.protocal.protobuf.cja;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
 
-public final class ab
+public abstract interface ab
+  extends IInterface
 {
-  private static Map<Integer, Long> bR(byte[] paramArrayOfByte)
+  public abstract byte[] aZY();
+  
+  public abstract byte[] aZZ();
+  
+  public abstract int ak(byte[] paramArrayOfByte);
+  
+  public static abstract class a
+    extends Binder
+    implements ab
   {
-    AppMethodBeat.i(58880);
-    if (bo.ce(paramArrayOfByte))
+    public a()
     {
-      AppMethodBeat.o(58880);
-      return null;
+      attachInterface(this, "com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
     }
-    try
+    
+    public static ab iQb()
     {
-      paramArrayOfByte = (cja)new cja().parseFrom(paramArrayOfByte);
-      if (paramArrayOfByte == null)
+      return a.YyN;
+    }
+    
+    public IBinder asBinder()
+    {
+      return this;
+    }
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+    {
+      switch (paramInt1)
       {
-        AppMethodBeat.o(58880);
-        return null;
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 1598968902: 
+        paramParcel2.writeString("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+        return true;
+      case 1: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+        paramParcel1 = aZY();
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+        paramParcel1 = aZZ();
+        paramParcel2.writeNoException();
+        paramParcel2.writeByteArray(paramParcel1);
+        return true;
       }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      AppMethodBeat.o(58880);
-      return null;
-    }
-    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.SyncKeyUtil", "dkpush : keyCount:" + paramArrayOfByte.xNb);
-    LinkedList localLinkedList = paramArrayOfByte.xNc;
-    if (localLinkedList.size() != paramArrayOfByte.xNb)
-    {
-      AppMethodBeat.o(58880);
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    while (i < paramArrayOfByte.xNb)
-    {
-      localHashMap.put(Integer.valueOf(((azb)localLinkedList.get(i)).qsk), Long.valueOf(0xFFFFFFFF & ((azb)localLinkedList.get(i)).xoy));
-      i += 1;
-    }
-    if (localHashMap.size() != paramArrayOfByte.xNb)
-    {
-      AppMethodBeat.o(58880);
-      return null;
-    }
-    AppMethodBeat.o(58880);
-    return localHashMap;
-  }
-  
-  public static String bS(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(58881);
-    if (bo.ce(paramArrayOfByte))
-    {
-      AppMethodBeat.o(58881);
-      return "";
-    }
-    paramArrayOfByte = bR(paramArrayOfByte);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.size() <= 0))
-    {
-      AppMethodBeat.o(58881);
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(" MsgKey:" + paramArrayOfByte.get(Integer.valueOf(2)));
-    localStringBuffer.append(" profile:" + paramArrayOfByte.get(Integer.valueOf(1)));
-    localStringBuffer.append(" contact:" + paramArrayOfByte.get(Integer.valueOf(3)));
-    localStringBuffer.append(" chatroom:" + paramArrayOfByte.get(Integer.valueOf(11)));
-    localStringBuffer.append(" Bottle:" + paramArrayOfByte.get(Integer.valueOf(7)));
-    localStringBuffer.append(" QContact:" + paramArrayOfByte.get(Integer.valueOf(5)));
-    paramArrayOfByte = localStringBuffer.toString();
-    AppMethodBeat.o(58881);
-    return paramArrayOfByte;
-  }
-  
-  public static byte[] j(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    AppMethodBeat.i(58879);
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length <= 0))
-    {
-      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.SyncKeyUtil", "empty old key, use new key");
-      AppMethodBeat.o(58879);
-      return paramArrayOfByte2;
-    }
-    if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length <= 0))
-    {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SyncKeyUtil", "newKey is null");
-      AppMethodBeat.o(58879);
-      return null;
-    }
-    PByteArray localPByteArray = new PByteArray();
-    try
-    {
-      if (!MMProtocalJni.mergeSyncKey(paramArrayOfByte1, paramArrayOfByte2, localPByteArray))
-      {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SyncKeyUtil", "merge key failed");
-        AppMethodBeat.o(58879);
-        return null;
-      }
-    }
-    catch (IncompatibleClassChangeError paramArrayOfByte1)
-    {
-      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.Crash", paramArrayOfByte1, "NoSuchMethod MMProtocalJni.mergeSyncKey", new Object[0]);
-      paramArrayOfByte1 = (IncompatibleClassChangeError)new IncompatibleClassChangeError("NoSuchMethod MMProtocalJni.mergeSyncKey").initCause(paramArrayOfByte1);
-      AppMethodBeat.o(58879);
-      throw paramArrayOfByte1;
-    }
-    paramArrayOfByte1 = localPByteArray.value;
-    AppMethodBeat.o(58879);
-    return paramArrayOfByte1;
-  }
-  
-  public static boolean k(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    AppMethodBeat.i(58882);
-    paramArrayOfByte1 = bR(paramArrayOfByte1);
-    if (paramArrayOfByte1 == null)
-    {
-      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.SyncKeyUtil", "dkpush local sync key failed");
-      AppMethodBeat.o(58882);
+      paramParcel1.enforceInterface("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+      paramInt1 = ak(paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      paramParcel2.writeInt(paramInt1);
       return true;
     }
-    paramArrayOfByte2 = bR(paramArrayOfByte2);
-    if (paramArrayOfByte2 == null)
+    
+    public static final class a
+      implements ab
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SyncKeyUtil", "dkpush svr sync key failed");
-      AppMethodBeat.o(58882);
-      return false;
-    }
-    Iterator localIterator = paramArrayOfByte2.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      Long localLong1 = (Long)paramArrayOfByte1.get(localInteger);
-      Long localLong2 = (Long)paramArrayOfByte2.get(localInteger);
-      if (localLong1 == null)
+      public static ab YyN;
+      private IBinder mRemote;
+      
+      public a(IBinder paramIBinder)
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.SyncKeyUtil", "dkpush local key null :".concat(String.valueOf(localInteger)));
-        AppMethodBeat.o(58882);
-        return true;
+        this.mRemote = paramIBinder;
       }
-      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.SyncKeyUtil", "dkpush local key:" + localInteger + " sv:" + localLong2 + " lv:" + localLong1);
-      if (localLong2.longValue() > localLong1.longValue())
+      
+      public final byte[] aZY()
       {
-        AppMethodBeat.o(58882);
-        return true;
+        AppMethodBeat.i(133129);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (ab.a.iQb() != null))
+          {
+            arrayOfByte = ab.a.iQb().aZY();
+            return arrayOfByte;
+          }
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133129);
+        }
+      }
+      
+      public final byte[] aZZ()
+      {
+        AppMethodBeat.i(133130);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (ab.a.iQb() != null))
+          {
+            arrayOfByte = ab.a.iQb().aZZ();
+            return arrayOfByte;
+          }
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133130);
+        }
+      }
+      
+      public final int ak(byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(133131);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.MMSyncCheckCoder_AIDL");
+          localParcel1.writeByteArray(paramArrayOfByte);
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (ab.a.iQb() != null))
+          {
+            i = ab.a.iQb().ak(paramArrayOfByte);
+            return i;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133131);
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
       }
     }
-    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.SyncKeyUtil", "dkpush two sync key is the same");
-    AppMethodBeat.o(58882);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.ab
  * JD-Core Version:    0.7.0.1
  */

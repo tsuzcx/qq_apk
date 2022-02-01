@@ -8,7 +8,7 @@ public final class TCoverInfo
   extends JceStruct
 {
   static byte[] cache_vTagInfo = (byte[])new byte[1];
-  public byte[] vTagInfo;
+  public byte[] vTagInfo = null;
   
   static
   {
@@ -29,14 +29,15 @@ public final class TCoverInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vTagInfo != null) {
-      paramJceOutputStream.write(this.vTagInfo, 0);
+    byte[] arrayOfByte = this.vTagInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.TCoverInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center" android:id="@id/b9d" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-</FrameLayout>
+    <include layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <FrameLayout android:id="@id/b47" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_gravity="center" android:id="@id/b4c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:id="@id/b4e" android:background="@drawable/lb" android:layout_width="@dimen/a6" android:layout_height="@dimen/a6" />
+                <ImageView android:layout_gravity="center" android:id="@id/b8w" android:background="@null" android:layout_width="@dimen/ab" android:layout_height="@dimen/ab" />
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <TextView android:ellipsize="end" android:id="@id/b3g" android:layout_marginLeft="0.0dip" android:singleLine="true" style="@style/gr" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

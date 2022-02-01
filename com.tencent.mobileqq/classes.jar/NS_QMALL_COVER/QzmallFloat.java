@@ -9,7 +9,7 @@ public final class QzmallFloat
   extends JceStruct
 {
   static FloatItem cache_stFloatItem = new FloatItem();
-  public FloatItem stFloatItem;
+  public FloatItem stFloatItem = null;
   
   public QzmallFloat() {}
   
@@ -25,14 +25,15 @@ public final class QzmallFloat
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFloatItem != null) {
-      paramJceOutputStream.write(this.stFloatItem, 0);
+    FloatItem localFloatItem = this.stFloatItem;
+    if (localFloatItem != null) {
+      paramJceOutputStream.write(localFloatItem, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallFloat
  * JD-Core Version:    0.7.0.1
  */

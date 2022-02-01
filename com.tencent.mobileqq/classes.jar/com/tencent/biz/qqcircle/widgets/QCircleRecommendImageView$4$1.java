@@ -1,25 +1,23 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import ufd;
-
-public class QCircleRecommendImageView$4$1
+class QCircleRecommendImageView$4$1
   implements Runnable
 {
-  public QCircleRecommendImageView$4$1(ufd paramufd) {}
+  QCircleRecommendImageView$4$1(QCircleRecommendImageView.4 param4) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.a)
     {
-      QCircleRecommendImageView.d(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRecommendImageView);
+      QCircleRecommendImageView.f(this.a.b);
       return;
     }
-    QCircleRecommendImageView.e(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleRecommendImageView);
+    QCircleRecommendImageView.g(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView.4.1
  * JD-Core Version:    0.7.0.1
  */

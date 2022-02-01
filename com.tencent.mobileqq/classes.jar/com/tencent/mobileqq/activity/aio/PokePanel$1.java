@@ -13,12 +13,12 @@ final class PokePanel$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.PokePanel", 2, "checkAllSourceDowned onShow First");
     }
-    PokePanel.a(this.a);
+    PokePanel.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokePanel.1
  * JD-Core Version:    0.7.0.1
  */

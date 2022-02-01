@@ -14,61 +14,52 @@ import junit.framework.Assert;
 public final class c
   implements com.tencent.mm.vending.e.b
 {
-  private b ANO;
-  private a ANQ;
-  private com.tencent.mm.vending.c.b<? extends a> ANR;
-  private com.tencent.mm.vending.e.c ANS;
-  private int d;
+  private b agtS;
+  private a agtT;
+  private com.tencent.mm.vending.c.b<? extends a> agtU;
+  private int agtV;
+  private com.tencent.mm.vending.e.c xRu;
   
   public c()
   {
-    AppMethodBeat.i(126081);
-    this.ANO = b.dQf();
-    this.d = 0;
-    this.ANS = new com.tencent.mm.vending.e.c();
-    AppMethodBeat.o(126081);
+    AppMethodBeat.i(74876);
+    this.agtS = b.jJD();
+    this.agtV = 0;
+    this.xRu = new com.tencent.mm.vending.e.c();
+    AppMethodBeat.o(74876);
   }
   
-  private void a()
-  {
-    AppMethodBeat.i(126084);
-    if (this.ANO != null) {
-      this.ANO.a(this, this.ANQ);
-    }
-    AppMethodBeat.o(126084);
-  }
-  
-  private <T extends com.tencent.mm.vending.c.b<? extends a>> T aB(Class<? extends com.tencent.mm.vending.c.b<? extends a>> paramClass)
+  private <T extends com.tencent.mm.vending.c.b<? extends a>> T cv(Class<? extends com.tencent.mm.vending.c.b<? extends a>> paramClass)
   {
     try
     {
-      AppMethodBeat.i(126082);
-      if (this.ANR == null) {
+      AppMethodBeat.i(74877);
+      if (this.agtU == null) {
         break label78;
       }
-      if (!paramClass.isInstance(this.ANR))
+      if (!paramClass.isInstance(this.agtU))
       {
         paramClass = new IllegalAccessError("Only one interactor pair with one presenter! duplicate pairWith : " + paramClass.toString());
-        AppMethodBeat.o(126082);
+        AppMethodBeat.o(74877);
         throw paramClass;
       }
     }
     finally {}
-    paramClass = this.ANR;
-    AppMethodBeat.o(126082);
+    paramClass = this.agtU;
+    AppMethodBeat.o(74877);
     for (;;)
     {
       return paramClass;
       try
       {
         label78:
-        this.ANR = ((com.tencent.mm.vending.c.b)paramClass.newInstance());
-        if (this.ANQ == null) {
-          this.ANQ = ((a)this.ANR.aoK());
+        this.agtU = ((com.tencent.mm.vending.c.b)paramClass.newInstance());
+        if (this.agtT == null) {
+          this.agtT = ((a)this.agtU.bVd());
         }
-        a();
-        com.tencent.mm.vending.c.b localb = this.ANR;
-        AppMethodBeat.o(126082);
+        jJE();
+        com.tencent.mm.vending.c.b localb = this.agtU;
+        AppMethodBeat.o(74877);
         paramClass = localb;
       }
       catch (IllegalAccessException localIllegalAccessException)
@@ -82,44 +73,44 @@ public final class c
       }
     }
     paramClass = new InternalError("Could not create interactor api instance : " + paramClass.toString());
-    AppMethodBeat.o(126082);
+    AppMethodBeat.o(74877);
     throw paramClass;
   }
   
-  private <T extends a> T aC(Class<? extends a> paramClass)
+  private <T extends a> T cw(Class<? extends a> paramClass)
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(126083);
-        if (this.ANR != null)
+        AppMethodBeat.i(74878);
+        if (this.agtU != null)
         {
-          paramClass = (a)this.ANR.aoK();
-          AppMethodBeat.o(126083);
+          paramClass = (a)this.agtU.bVd();
+          AppMethodBeat.o(74878);
           return paramClass;
         }
-        if (this.ANQ == null) {
+        if (this.agtT == null) {
           break label106;
         }
-        if (!paramClass.isInstance(this.ANQ))
+        if (!paramClass.isInstance(this.agtT))
         {
           paramClass = new IllegalAccessError("Only one interactor pair with one presenter! duplicate pairWith : " + paramClass.toString());
-          AppMethodBeat.o(126083);
+          AppMethodBeat.o(74878);
           throw paramClass;
         }
       }
       finally {}
-      paramClass = this.ANQ;
-      AppMethodBeat.o(126083);
+      paramClass = this.agtT;
+      AppMethodBeat.o(74878);
       continue;
       try
       {
         label106:
-        this.ANQ = ((a)paramClass.newInstance());
-        a();
-        a locala = this.ANQ;
-        AppMethodBeat.o(126083);
+        this.agtT = ((a)paramClass.newInstance());
+        jJE();
+        a locala = this.agtT;
+        AppMethodBeat.o(74878);
         paramClass = locala;
       }
       catch (InstantiationException localInstantiationException)
@@ -133,19 +124,28 @@ public final class c
       }
     }
     paramClass = new InternalError("Could not create interactor instance : " + paramClass.toString());
-    AppMethodBeat.o(126083);
+    AppMethodBeat.o(74878);
     throw paramClass;
   }
   
-  private void z(Intent paramIntent, Context paramContext)
+  private void jJE()
+  {
+    AppMethodBeat.i(177468);
+    if (this.agtS != null) {
+      this.agtS.a(this, this.agtT);
+    }
+    AppMethodBeat.o(177468);
+  }
+  
+  private void y(Intent paramIntent, Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(126085);
-      Assert.assertNotNull("You must pair this presenter with a interactor!", this.ANQ);
-      this.ANQ.j = paramContext;
-      this.ANQ.ANL = new com.tencent.mm.vending.d.a(paramIntent);
-      AppMethodBeat.o(126085);
+      AppMethodBeat.i(177469);
+      Assert.assertNotNull("You must pair this presenter with a interactor!", this.agtT);
+      this.agtT.mContext = paramContext;
+      this.agtT.agtI = new com.tencent.mm.vending.d.a(paramIntent);
+      AppMethodBeat.o(177469);
       return;
     }
     finally
@@ -155,56 +155,32 @@ public final class c
     }
   }
   
-  public final void A(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(126090);
-    z(paramIntent, paramContext);
-    a(1);
-    AppMethodBeat.o(126090);
-  }
-  
-  public final a SF()
-  {
-    try
-    {
-      AppMethodBeat.i(126086);
-      if ((this.ANQ == null) && (this.ANO != null)) {
-        this.ANQ = ((a)this.ANO.b.get(this));
-      }
-      Assert.assertNotNull("You must pair this presenter with a interactor!", this.ANQ);
-      a locala = this.ANQ;
-      AppMethodBeat.o(126086);
-      return locala;
-    }
-    finally {}
-  }
-  
   public final <T extends com.tencent.mm.vending.c.b<? extends a>> T a(Activity paramActivity, Class<? extends com.tencent.mm.vending.c.b<? extends a>> paramClass)
   {
-    AppMethodBeat.i(126087);
+    AppMethodBeat.i(74882);
     if ((paramActivity.isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (paramActivity.isDestroyed())))
     {
       com.tencent.mm.vending.f.a.e("Vending.Presenter", "Activity %s is finished! This is invalid!", new Object[] { paramActivity });
-      AppMethodBeat.o(126087);
+      AppMethodBeat.o(74882);
       return null;
     }
-    paramActivity = aB(paramClass);
-    AppMethodBeat.o(126087);
+    paramActivity = cv(paramClass);
+    AppMethodBeat.o(74882);
     return paramActivity;
   }
   
-  public final void a(int paramInt)
+  public final void aFE(int paramInt)
   {
-    AppMethodBeat.i(126089);
-    this.d = paramInt;
-    b localb = this.ANO;
-    a locala = (a)localb.b.get(this);
+    AppMethodBeat.i(177470);
+    this.agtV = paramInt;
+    b localb = this.agtS;
+    a locala = (a)localb.agtO.get(this);
     if (locala != null) {
       switch (paramInt)
       {
       default: 
         com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "Unknow phase %s, interactor %s activity %s %s %s", new Object[] { Integer.valueOf(paramInt), locala, this, Integer.valueOf(hashCode()), Looper.myLooper() });
-        AppMethodBeat.o(126089);
+        AppMethodBeat.o(177470);
         return;
       case 1: 
         com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "onCreate interactor %s presenter %s %s %s", new Object[] { locala, this, Integer.valueOf(hashCode()), Looper.myLooper() });
@@ -212,48 +188,72 @@ public final class c
     }
     for (;;)
     {
-      localb.d.sendMessage(localb.d.obtainMessage(paramInt, locala));
-      localb.ANP.put(hashCode(), paramInt);
-      AppMethodBeat.o(126089);
+      localb.agtQ.sendMessage(localb.agtQ.obtainMessage(paramInt, locala));
+      localb.agtP.put(hashCode(), paramInt);
+      AppMethodBeat.o(177470);
       return;
       com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "onDestroy interactor %s activity %s %s %s", new Object[] { locala, this, Integer.valueOf(hashCode()), Looper.myLooper() });
-      localb.b.remove(this);
+      localb.agtO.remove(this);
     }
   }
   
   public final <T extends a> T b(Activity paramActivity, Class<? extends a> paramClass)
   {
-    AppMethodBeat.i(126088);
+    AppMethodBeat.i(74883);
     if ((paramActivity.isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (paramActivity.isDestroyed())))
     {
       com.tencent.mm.vending.f.a.e("Vending.Presenter", "Activity %s is finished! This is invalid!", new Object[] { paramActivity });
-      AppMethodBeat.o(126088);
+      AppMethodBeat.o(74883);
       return null;
     }
-    paramActivity = aC(paramClass);
-    AppMethodBeat.o(126088);
+    paramActivity = cw(paramClass);
+    AppMethodBeat.o(74883);
     return paramActivity;
+  }
+  
+  public final a bbE()
+  {
+    try
+    {
+      AppMethodBeat.i(74881);
+      if ((this.agtT == null) && (this.agtS != null)) {
+        this.agtT = ((a)this.agtS.agtO.get(this));
+      }
+      Assert.assertNotNull("You must pair this presenter with a interactor!", this.agtT);
+      a locala = this.agtT;
+      AppMethodBeat.o(74881);
+      return locala;
+    }
+    finally {}
   }
   
   public final void keep(com.tencent.mm.vending.e.a parama)
   {
-    AppMethodBeat.i(126091);
+    AppMethodBeat.i(74886);
     Assert.assertTrue("target must be a ILifeCycle", parama instanceof com.tencent.mm.vending.e.a);
-    this.ANS.keep(parama);
-    AppMethodBeat.o(126091);
+    this.xRu.keep(parama);
+    AppMethodBeat.o(74886);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(126092);
-    this.ANS.dead();
-    a(4);
-    AppMethodBeat.o(126092);
+    AppMethodBeat.i(74887);
+    this.xRu.dead();
+    aFE(4);
+    AppMethodBeat.o(74887);
+  }
+  
+  public final void z(Intent paramIntent, Context paramContext)
+  {
+    AppMethodBeat.i(74885);
+    y(paramIntent, paramContext);
+    aFE(1);
+    AppMethodBeat.o(74885);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vending.app.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,34 +5,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a.a bJs;
+  private static a.a eIK;
   
   static
   {
-    AppMethodBeat.i(115854);
-    bJs = new a.a()
+    AppMethodBeat.i(139954);
+    eIK = new a.a()
     {
-      public final int n(String paramAnonymousString, int paramAnonymousInt)
+      public final int I(String paramAnonymousString, int paramAnonymousInt)
       {
         return 0;
       }
       
-      public final Drawable o(String paramAnonymousString, int paramAnonymousInt)
+      public final Drawable J(String paramAnonymousString, int paramAnonymousInt)
       {
         return null;
       }
     };
-    AppMethodBeat.o(115854);
+    AppMethodBeat.o(139954);
   }
   
   public static void a(a.a parama)
   {
-    bJs = parama;
+    eIK = parama;
   }
   
-  public static a.a yp()
+  public static a.a avG()
   {
-    return bJs;
+    return eIK;
   }
 }
 

@@ -4,13 +4,14 @@
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
         <View android:id="@id/e_3" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
         <RelativeLayout android:id="@id/bt8" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <com.tencent.biz.widgets.MultiActionDoneEditText android:textSize="16.0dip" android:textColorHint="@color/skin_gray3" android:gravity="top" android:id="@id/btm" android:background="@drawable/b49" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingRight="15.0dip" android:paddingBottom="52.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:imeOptions="actionDone" />
+            <EditText android:textSize="16.0sp" android:textColorHint="@color/skin_gray3" android:gravity="top" android:id="@id/btm" android:background="@drawable/b49" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingRight="15.0dip" android:paddingBottom="52.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:imeOptions="actionDone" />
             <TextView android:textSize="15.5sp" android:textColor="@color/skin_gray2" android:layout_gravity="right" android:id="@id/btp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_marginBottom="16.0dip" android:layout_alignBottom="@id/btm" android:layout_alignParentRight="true" />
-            <ImageView android:id="@id/j9_" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/asw" android:layout_alignBottom="@id/btm" android:layout_alignParentLeft="true" android:contentDescription="@string/lvf" />
+            <ImageView android:id="@id/j9_" android:visibility="visible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/asw" android:layout_alignBottom="@id/btm" android:layout_alignParentLeft="true" android:contentDescription="@string/lvb" />
+            <View android:id="@id/mxr" android:background="#33000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         </RelativeLayout>
         <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/ae1" android:id="@id/jhs" android:paddingLeft="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/ae1" android:id="@id/jhs" android:paddingLeft="15.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
     </LinearLayout>
     <View android:layout_width="fill_parent" android:layout_height="20.0dip" />
-    <LinearLayout android:orientation="vertical" android:id="@id/bv_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="150.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/bv_" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="150.0dip" />
 </com.tencent.mobileqq.widget.InputMethodLinearLayout>

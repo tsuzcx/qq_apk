@@ -9,11 +9,11 @@ public final class HttpDownloadReq
 {
   static byte[] cache_vEncryptUsrInfo;
   static byte[] cache_vFileKey;
-  public short shPicScale;
-  public int uFromPos;
-  public int uLength;
-  public byte[] vEncryptUsrInfo;
-  public byte[] vFileKey;
+  public short shPicScale = 0;
+  public int uFromPos = 0;
+  public int uLength = 0;
+  public byte[] vEncryptUsrInfo = null;
+  public byte[] vFileKey = null;
   
   public HttpDownloadReq() {}
   
@@ -56,7 +56,7 @@ public final class HttpDownloadReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.HttpDownloadReq
  * JD-Core Version:    0.7.0.1
  */

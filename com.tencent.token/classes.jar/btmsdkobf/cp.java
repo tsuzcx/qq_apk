@@ -6,27 +6,28 @@ import com.qq.taf.jce.JceStruct;
 
 public class cp
 {
-  public static JceStruct a(byte[] paramArrayOfByte, JceStruct paramJceStruct, boolean paramBoolean)
+  public static <T extends JceStruct> T a(byte[] paramArrayOfByte, T paramT, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramJceStruct == null)) {
-      return null;
-    }
-    if (paramBoolean) {}
-    for (;;)
+    if (paramArrayOfByte != null)
     {
+      if (paramT == null) {
+        return null;
+      }
+      Object localObject = paramT;
+      if (paramBoolean) {}
       try
       {
-        paramJceStruct = paramJceStruct.newInit();
-        paramJceStruct.recyle();
-        paramJceStruct.readFrom(h(paramArrayOfByte));
-        return paramJceStruct;
+        localObject = paramT.newInit();
+        ((JceStruct)localObject).recyle();
+        ((JceStruct)localObject).readFrom(h(paramArrayOfByte));
+        return localObject;
       }
       catch (Exception paramArrayOfByte)
       {
-        eg.h("JceStructUtil", "getJceStruct exception: " + paramArrayOfByte);
-        return null;
+        eg.h("JceStructUtil", "getJceStruct exception: ".concat(String.valueOf(paramArrayOfByte)));
       }
     }
+    return null;
   }
   
   public static byte[] b(JceStruct paramJceStruct)

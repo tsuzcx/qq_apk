@@ -1,13 +1,17 @@
+import android.view.Window;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class bzi
+public class bzi
   implements Runnable
 {
-  bzi(bzh parambzh) {}
+  public bzi(ChatActivity paramChatActivity) {}
   
   public void run()
   {
-    this.a.a.a(131072);
+    this.a.a(true);
+    this.a.getWindow().clearFlags(128);
+    QQToast.a(this.a, 2131562737, 1).b(this.a.d());
   }
 }
 

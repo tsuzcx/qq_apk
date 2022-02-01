@@ -23,26 +23,25 @@ public class TestWithParameters
   
   private static void notNull(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw new NullPointerException(paramString);
+    if (paramObject != null) {
+      return;
     }
+    throw new NullPointerException(paramString);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (TestWithParameters)paramObject;
-    } while ((this.name.equals(paramObject.name)) && (this.parameters.equals(paramObject.parameters)) && (this.testClass.equals(paramObject.testClass)));
-    return false;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (TestWithParameters)paramObject;
+    return (this.name.equals(paramObject.name)) && (this.parameters.equals(paramObject.parameters)) && (this.testClass.equals(paramObject.testClass));
   }
   
   public String getName()
@@ -62,17 +61,23 @@ public class TestWithParameters
   
   public int hashCode()
   {
-    return 14747 * ((this.name.hashCode() + 14747) * 14747 + this.testClass.hashCode()) + this.parameters.hashCode();
+    return ((this.name.hashCode() + 14747) * 14747 + this.testClass.hashCode()) * 14747 + this.parameters.hashCode();
   }
   
   public String toString()
   {
-    return this.testClass.getName() + " '" + this.name + "' with parameters " + this.parameters;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.testClass.getName());
+    localStringBuilder.append(" '");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("' with parameters ");
+    localStringBuilder.append(this.parameters);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runners.parameterized.TestWithParameters
  * JD-Core Version:    0.7.0.1
  */

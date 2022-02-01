@@ -34,48 +34,58 @@ final class Tensor
   {
     if (paramObject != null)
     {
-      for (Class localClass = paramObject.getClass(); localClass.isArray(); localClass = localClass.getComponentType()) {}
-      if (Float.TYPE.equals(localClass)) {
+      for (localObject = paramObject.getClass(); ((Class)localObject).isArray(); localObject = ((Class)localObject).getComponentType()) {}
+      if (Float.TYPE.equals(localObject)) {
         return DataType.FLOAT32;
       }
-      if (Integer.TYPE.equals(localClass)) {
+      if (Integer.TYPE.equals(localObject)) {
         return DataType.INT32;
       }
-      if (Byte.TYPE.equals(localClass)) {
+      if (Byte.TYPE.equals(localObject)) {
         return DataType.UINT8;
       }
-      if (Long.TYPE.equals(localClass)) {
+      if (Long.TYPE.equals(localObject)) {
         return DataType.INT64;
       }
     }
-    throw new IllegalArgumentException("DataType error: cannot resolve DataType of " + paramObject.getClass().getName());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DataType error: cannot resolve DataType of ");
+    ((StringBuilder)localObject).append(paramObject.getClass().getName());
+    paramObject = new IllegalArgumentException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   private static native int dtype(long paramLong);
   
   static void fillShape(Object paramObject, int paramInt, int[] paramArrayOfInt)
   {
-    int i = 0;
-    if ((paramArrayOfInt == null) || (paramInt == paramArrayOfInt.length)) {}
-    int j;
-    do
+    if (paramArrayOfInt != null)
     {
-      return;
-      for (;;)
-      {
-        j = Array.getLength(paramObject);
-        if (paramArrayOfInt[paramInt] != 0) {
-          break;
-        }
+      if (paramInt == paramArrayOfInt.length) {
+        return;
+      }
+      int j = Array.getLength(paramObject);
+      int k = paramArrayOfInt[paramInt];
+      int i = 0;
+      if (k == 0) {
         paramArrayOfInt[paramInt] = j;
-        while (i < j)
-        {
-          fillShape(Array.get(paramObject, i), paramInt + 1, paramArrayOfInt);
-          i += 1;
+      } else {
+        if (paramArrayOfInt[paramInt] != j) {
+          break label71;
         }
       }
-    } while (paramArrayOfInt[paramInt] == j);
-    throw new IllegalArgumentException(String.format("Mismatched lengths (%d and %d) in dimension %d", new Object[] { Integer.valueOf(paramArrayOfInt[paramInt]), Integer.valueOf(j), Integer.valueOf(paramInt) }));
+      while (i < j)
+      {
+        fillShape(Array.get(paramObject, i), paramInt + 1, paramArrayOfInt);
+        i += 1;
+      }
+      return;
+      label71:
+      throw new IllegalArgumentException(String.format("Mismatched lengths (%d and %d) in dimension %d", new Object[] { Integer.valueOf(paramArrayOfInt[paramInt]), Integer.valueOf(j), Integer.valueOf(paramInt) }));
+    }
   }
   
   static Tensor fromHandle(long paramLong)
@@ -92,13 +102,17 @@ final class Tensor
   
   static int numDimensions(Object paramObject)
   {
-    if ((paramObject == null) || (!paramObject.getClass().isArray())) {
-      return 0;
-    }
-    if (Array.getLength(paramObject) == 0) {
+    if (paramObject != null)
+    {
+      if (!paramObject.getClass().isArray()) {
+        return 0;
+      }
+      if (Array.getLength(paramObject) != 0) {
+        return numDimensions(Array.get(paramObject, 0)) + 1;
+      }
       throw new IllegalArgumentException("Array lengths cannot be 0.");
     }
-    return numDimensions(Array.get(paramObject, 0)) + 1;
+    return 0;
   }
   
   private static native void readMultiDimensionalArray(long paramLong, Object paramObject);
@@ -117,21 +131,22 @@ final class Tensor
     if (isByteBuffer(paramObject))
     {
       paramObject = (ByteBuffer)paramObject;
-      if (paramObject.capacity() != numBytes()) {
-        throw new IllegalArgumentException(String.format("Cannot convert between a TensorFlowLite buffer with %d bytes and a ByteBuffer with %d bytes.", new Object[] { Integer.valueOf(numBytes()), Integer.valueOf(paramObject.capacity()) }));
+      if (paramObject.capacity() == numBytes()) {
+        return;
       }
+      throw new IllegalArgumentException(String.format("Cannot convert between a TensorFlowLite buffer with %d bytes and a ByteBuffer with %d bytes.", new Object[] { Integer.valueOf(numBytes()), Integer.valueOf(paramObject.capacity()) }));
     }
-    else
+    DataType localDataType1 = dataTypeOf(paramObject);
+    DataType localDataType2 = this.dtype;
+    if (localDataType1 == localDataType2)
     {
-      DataType localDataType = dataTypeOf(paramObject);
-      if (localDataType != this.dtype) {
-        throw new IllegalArgumentException(String.format("Cannot convert between a TensorFlowLite tensor with type %s and a Java object of type %s (which is compatible with the TensorFlowLite type %s).", new Object[] { this.dtype, paramObject.getClass().getName(), localDataType }));
-      }
       paramObject = shapeOf(paramObject);
-      if (!Arrays.equals(paramObject, this.shapeCopy)) {
-        throw new IllegalArgumentException(String.format("Cannot copy between a TensorFlowLite tensor with shape %s and a Java object with shape %s.", new Object[] { Arrays.toString(this.shapeCopy), Arrays.toString(paramObject) }));
+      if (Arrays.equals(paramObject, this.shapeCopy)) {
+        return;
       }
+      throw new IllegalArgumentException(String.format("Cannot copy between a TensorFlowLite tensor with shape %s and a Java object with shape %s.", new Object[] { Arrays.toString(this.shapeCopy), Arrays.toString(paramObject) }));
     }
+    throw new IllegalArgumentException(String.format("Cannot convert between a TensorFlowLite tensor with type %s and a Java object of type %s (which is compatible with the TensorFlowLite type %s).", new Object[] { localDataType2, paramObject.getClass().getName(), localDataType1 }));
   }
   
   private static native void writeDirectBuffer(long paramLong, ByteBuffer paramByteBuffer);
@@ -157,12 +172,13 @@ final class Tensor
   
   int[] getInputShapeIfDifferent(Object paramObject)
   {
-    if (isByteBuffer(paramObject)) {}
-    do
-    {
+    if (isByteBuffer(paramObject)) {
       return null;
-      paramObject = shapeOf(paramObject);
-    } while (Arrays.equals(this.shapeCopy, paramObject));
+    }
+    paramObject = shapeOf(paramObject);
+    if (Arrays.equals(this.shapeCopy, paramObject)) {
+      return null;
+    }
     return paramObject;
   }
   
@@ -195,7 +211,7 @@ final class Tensor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.tensorflow.lite.Tensor
  * JD-Core Version:    0.7.0.1
  */

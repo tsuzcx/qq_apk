@@ -23,77 +23,78 @@ public final class a
   {
     for (;;)
     {
-      int i;
       try
       {
         Object localObject1 = (Integer)this.b.get(paramDownloaderTaskCategory);
         if (localObject1 == null)
         {
-          if (paramDownloaderTaskCategory == DownloaderTaskCategory.Cate_DefaultEase)
-          {
-            i = 3;
-            i = com.tencent.hlyyb.common.b.b.a(i, 1, 5);
-            localObject1 = (com.tencent.hlyyb.downloader.f.a.b)this.a.get(paramDownloaderTaskCategory);
-            if (localObject1 == null)
-            {
-              Object localObject2 = new com.tencent.hlyyb.downloader.f.a.a(64);
-              localObject1 = new com.tencent.hlyyb.downloader.f.a.b(0, i, 5L, TimeUnit.SECONDS, (BlockingQueue)localObject2, new com.tencent.hlyyb.common.a.a.a(paramDownloaderTaskCategory.name()));
-              ((com.tencent.hlyyb.downloader.f.a.a)localObject2).a((com.tencent.hlyyb.downloader.f.a.b)localObject1);
-              this.a.put(paramDownloaderTaskCategory, localObject1);
-              if (this.c != null) {
-                continue;
-              }
-              localObject2 = new com.tencent.hlyyb.common.a.a.b(16);
-              if (i > 0) {
-                break label351;
-              }
-              j = 1;
-              this.c = new d(0, j + 1, 5L, TimeUnit.SECONDS, (BlockingQueue)localObject2, new com.tencent.hlyyb.common.a.a.a("HallyDownload-DirectPool"));
-              ((com.tencent.hlyyb.common.a.a.b)localObject2).a(this.c);
-              if (paramDownloaderTaskCategory != DownloaderTaskCategory.Cate_DefaultEase)
-              {
-                if (this.d != null) {
-                  break label330;
-                }
-                paramDownloaderTaskCategory = new com.tencent.hlyyb.common.a.a.b(16);
-                j = i;
-                if (i <= 0) {
-                  j = 1;
-                }
-                this.d = new d(0, j + 1, 5L, TimeUnit.SECONDS, paramDownloaderTaskCategory, new com.tencent.hlyyb.common.a.a.a("HallyDownload-SchedulePool"));
-                paramDownloaderTaskCategory.a(this.d);
-              }
-              if (this.e != null) {
-                b();
-              }
-              return localObject1;
-            }
+          if (paramDownloaderTaskCategory != DownloaderTaskCategory.Cate_DefaultEase) {
+            break label349;
           }
-          else
-          {
-            i = 2;
-            continue;
-          }
+          i = 3;
         }
         else
         {
           i = ((Integer)localObject1).intValue();
-          continue;
         }
-        j = ((com.tencent.hlyyb.downloader.f.a.b)localObject1).getMaximumPoolSize();
-        ((com.tencent.hlyyb.downloader.f.a.b)localObject1).setMaximumPoolSize(i);
-        i -= j;
-        continue;
-        j = this.c.getMaximumPoolSize();
-        this.c.setMaximumPoolSize(j + i);
-        continue;
-        j = this.d.getMaximumPoolSize();
+        i = com.tencent.hlyyb.common.b.b.a(i, 1, 5);
+        localObject1 = (com.tencent.hlyyb.downloader.f.a.b)this.a.get(paramDownloaderTaskCategory);
+        Object localObject2;
+        if (localObject1 == null)
+        {
+          localObject2 = new com.tencent.hlyyb.downloader.f.a.a(64);
+          localObject1 = new com.tencent.hlyyb.downloader.f.a.b(0, i, 5L, TimeUnit.SECONDS, (BlockingQueue)localObject2, new com.tencent.hlyyb.common.a.a.a(paramDownloaderTaskCategory.name()));
+          ((com.tencent.hlyyb.downloader.f.a.a)localObject2).a((com.tencent.hlyyb.downloader.f.a.b)localObject1);
+          this.a.put(paramDownloaderTaskCategory, localObject1);
+        }
+        else
+        {
+          j = ((com.tencent.hlyyb.downloader.f.a.b)localObject1).getMaximumPoolSize();
+          ((com.tencent.hlyyb.downloader.f.a.b)localObject1).setMaximumPoolSize(i);
+          i -= j;
+        }
+        if (this.c == null)
+        {
+          localObject2 = new com.tencent.hlyyb.common.a.a.b(16);
+          if (i > 0) {
+            break label354;
+          }
+          j = 1;
+          this.c = new d(0, j + 1, 5L, TimeUnit.SECONDS, (BlockingQueue)localObject2, new com.tencent.hlyyb.common.a.a.a("HallyDownload-DirectPool"));
+          ((com.tencent.hlyyb.common.a.a.b)localObject2).a(this.c);
+        }
+        else
+        {
+          j = this.c.getMaximumPoolSize();
+          this.c.setMaximumPoolSize(j + i);
+        }
+        if (paramDownloaderTaskCategory != DownloaderTaskCategory.Cate_DefaultEase) {
+          if (this.d == null)
+          {
+            paramDownloaderTaskCategory = new com.tencent.hlyyb.common.a.a.b(16);
+            j = i;
+            if (i <= 0) {
+              j = 1;
+            }
+            this.d = new d(0, j + 1, 5L, TimeUnit.SECONDS, paramDownloaderTaskCategory, new com.tencent.hlyyb.common.a.a.a("HallyDownload-SchedulePool"));
+            paramDownloaderTaskCategory.a(this.d);
+          }
+          else
+          {
+            j = this.d.getMaximumPoolSize();
+            this.d.setMaximumPoolSize(j + i);
+          }
+        }
+        if (this.e != null) {
+          b();
+        }
+        return localObject1;
       }
       finally {}
-      label330:
-      this.d.setMaximumPoolSize(i + j);
+      label349:
+      int i = 2;
       continue;
-      label351:
+      label354:
       int j = i;
     }
   }
@@ -107,32 +108,26 @@ public final class a
   {
     Object localObject = this.a.keySet().iterator();
     int i = 0;
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject).hasNext())
     {
       DownloaderTaskCategory localDownloaderTaskCategory = (DownloaderTaskCategory)((Iterator)localObject).next();
-      if (localDownloaderTaskCategory == DownloaderTaskCategory.Cate_DefaultEase) {
-        break label148;
+      if (localDownloaderTaskCategory != DownloaderTaskCategory.Cate_DefaultEase) {
+        i += ((com.tencent.hlyyb.downloader.f.a.b)this.a.get(localDownloaderTaskCategory)).getMaximumPoolSize();
       }
-      i = ((com.tencent.hlyyb.downloader.f.a.b)this.a.get(localDownloaderTaskCategory)).getMaximumPoolSize() + i;
     }
-    label148:
-    for (;;)
+    int j = i;
+    if (i == 0) {
+      j = 2;
+    }
+    localObject = this.e;
+    if (localObject == null)
     {
-      break;
-      int j = i;
-      if (i == 0) {
-        j = 2;
-      }
-      if (this.e == null)
-      {
-        localObject = new com.tencent.hlyyb.common.a.a.b(16);
-        this.e = new d(0, (j << 1) + 1, 5L, TimeUnit.SECONDS, (BlockingQueue)localObject, new com.tencent.hlyyb.common.a.a.a("HallyDownload-HijackPool"));
-        ((com.tencent.hlyyb.common.a.a.b)localObject).a(this.e);
-        return;
-      }
-      this.e.setMaximumPoolSize((j << 1) + 1);
+      localObject = new com.tencent.hlyyb.common.a.a.b(16);
+      this.e = new d(0, (j << 1) + 1, 5L, TimeUnit.SECONDS, (BlockingQueue)localObject, new com.tencent.hlyyb.common.a.a.a("HallyDownload-HijackPool"));
+      ((com.tencent.hlyyb.common.a.a.b)localObject).a(this.e);
       return;
     }
+    ((d)localObject).setMaximumPoolSize((j << 1) + 1);
   }
   
   public final e a(Runnable paramRunnable)
@@ -157,20 +152,21 @@ public final class a
   
   public final void a(DownloaderTaskCategory paramDownloaderTaskCategory, int paramInt)
   {
-    if ((paramDownloaderTaskCategory == null) || (paramInt <= 0)) {}
-    for (;;)
-    {
-      return;
+    if ((paramDownloaderTaskCategory != null) && (paramInt > 0)) {
       try
       {
         paramInt = com.tencent.hlyyb.common.b.b.a(paramInt, 1, 5);
         this.b.put(paramDownloaderTaskCategory, Integer.valueOf(paramInt));
-        if ((com.tencent.hlyyb.downloader.f.a.b)this.a.get(paramDownloaderTaskCategory) == null) {
-          continue;
+        if ((com.tencent.hlyyb.downloader.f.a.b)this.a.get(paramDownloaderTaskCategory) != null) {
+          a(paramDownloaderTaskCategory);
         }
-        a(paramDownloaderTaskCategory);
+        return;
       }
-      finally {}
+      finally
+      {
+        paramDownloaderTaskCategory = finally;
+        throw paramDownloaderTaskCategory;
+      }
     }
   }
   
@@ -189,7 +185,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.f.a
  * JD-Core Version:    0.7.0.1
  */

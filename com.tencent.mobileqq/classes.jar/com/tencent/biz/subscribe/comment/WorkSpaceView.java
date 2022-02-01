@@ -11,23 +11,22 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import yhu;
 
 public class WorkSpaceView
   extends FrameLayout
 {
-  private static final double jdField_a_of_type_Double = Math.tan(Math.toRadians(30.0D));
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private yhu jdField_a_of_type_Yhu;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = -1;
-  private int c = 0;
-  private int d = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+  private static final double k = Math.tan(Math.toRadians(30.0D));
+  private int a = 0;
+  private int b = -1;
+  private float c;
+  private float d;
+  private Scroller e = new Scroller(getContext());
+  private int f = 0;
+  private VelocityTracker g;
+  private WorkSpaceView.OnScreenChangeListener h;
+  private int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+  private boolean j;
+  private Handler l;
   
   public WorkSpaceView(Context paramContext)
   {
@@ -46,18 +45,13 @@ public class WorkSpaceView
   
   private void a()
   {
-    int i = getWidth();
-    a((getScrollX() + i / 2) / i);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    int m = getWidth();
+    a((getScrollX() + m / 2) / m);
   }
   
   public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
+    if (!this.e.isFinished()) {
       return;
     }
     b(paramInt);
@@ -65,111 +59,129 @@ public class WorkSpaceView
   
   public void b(int paramInt)
   {
-    int i = Math.max(0, Math.min(paramInt, getChildCount() - 1));
-    if (i != this.jdField_a_of_type_Int) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      this.jdField_b_of_type_Int = i;
-      View localView = getFocusedChild();
-      if ((localView != null) && (paramInt != 0) && (localView == getChildAt(this.jdField_a_of_type_Int))) {
-        localView.clearFocus();
-      }
-      paramInt = getWidth() * i - getScrollX();
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-      if (this.jdField_a_of_type_Yhu != null) {
-        this.jdField_a_of_type_Yhu.a(i);
-      }
-      invalidate();
-      return;
+    int m = Math.min(paramInt, getChildCount() - 1);
+    paramInt = 0;
+    m = Math.max(0, m);
+    if (m != this.a) {
+      paramInt = 1;
     }
+    this.b = m;
+    Object localObject = getFocusedChild();
+    if ((localObject != null) && (paramInt != 0) && (localObject == getChildAt(this.a))) {
+      ((View)localObject).clearFocus();
+    }
+    paramInt = getWidth() * m - getScrollX();
+    this.e.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
+    localObject = this.h;
+    if (localObject != null) {
+      ((WorkSpaceView.OnScreenChangeListener)localObject).a(m);
+    }
+    invalidate();
   }
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    if (this.e.computeScrollOffset())
     {
-      scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      scrollTo(this.e.getCurrX(), this.e.getCurrY());
       postInvalidate();
-    }
-    while (this.jdField_b_of_type_Int == -1) {
       return;
     }
-    this.jdField_a_of_type_Int = Math.max(0, Math.min(this.jdField_b_of_type_Int, getChildCount() - 1));
-    this.jdField_b_of_type_Int = -1;
+    int m = this.b;
+    if (m != -1)
+    {
+      this.a = Math.max(0, Math.min(m, getChildCount() - 1));
+      this.b = -1;
+    }
   }
   
   public boolean dispatchUnhandledMove(View paramView, int paramInt)
   {
     if (paramInt == 17)
     {
-      if (a() > 0)
+      if (getCurrentScreen() > 0)
       {
-        a(a() - 1);
+        a(getCurrentScreen() - 1);
         return true;
       }
     }
-    else if ((paramInt == 66) && (a() < getChildCount() - 1))
+    else if ((paramInt == 66) && (getCurrentScreen() < getChildCount() - 1))
     {
-      a(a() + 1);
+      a(getCurrentScreen() + 1);
       return true;
     }
     return super.dispatchUnhandledMove(paramView, paramInt);
   }
   
+  public int getCurrentScreen()
+  {
+    return this.a;
+  }
+  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
+    int m = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (i)
+    boolean bool = false;
+    if (m != 0)
     {
+      if (m != 1) {
+        if (m != 2)
+        {
+          if (m != 3) {
+            break label233;
+          }
+        }
+        else
+        {
+          int i1 = (int)Math.abs(f1 - this.c);
+          int i2 = (int)Math.abs(f2 - this.d);
+          int n = this.i;
+          if (i1 > n) {
+            m = 1;
+          } else {
+            m = 0;
+          }
+          if (i2 > n) {
+            n = 1;
+          } else {
+            n = 0;
+          }
+          double d1 = i2;
+          double d2 = i1;
+          Double.isNaN(d1);
+          Double.isNaN(d2);
+          d1 /= d2;
+          if (((m == 0) && (n == 0)) || (d1 >= k)) {
+            break label233;
+          }
+          if (m != 0) {
+            this.f = 1;
+          }
+          if (!this.j) {
+            break label233;
+          }
+          this.j = false;
+          getChildAt(this.a).cancelLongPress();
+          break label233;
+        }
+      }
+      this.f = 0;
+      this.j = false;
     }
-    while (this.c != 0)
+    else
     {
-      return true;
-      int k = (int)Math.abs(f1 - this.jdField_a_of_type_Float);
-      int m = (int)Math.abs(f2 - this.jdField_b_of_type_Float);
-      int j = this.d;
-      if (k > j)
-      {
-        i = 1;
-        label103:
-        if (m <= j) {
-          break label181;
-        }
-      }
-      label181:
-      for (j = 1;; j = 0)
-      {
-        double d1 = m / k;
-        if (((i == 0) && (j == 0)) || (d1 >= jdField_a_of_type_Double)) {
-          break;
-        }
-        if (i != 0) {
-          this.c = 1;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        this.jdField_a_of_type_Boolean = false;
-        getChildAt(this.jdField_a_of_type_Int).cancelLongPress();
-        break;
-        i = 0;
-        break label103;
-      }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {}
-      for (i = 0;; i = 1)
-      {
-        this.c = i;
-        break;
-      }
-      this.c = 0;
-      this.jdField_a_of_type_Boolean = false;
+      this.c = f1;
+      this.d = f2;
+      this.j = true;
+      this.f = (this.e.isFinished() ^ true);
     }
-    return false;
+    label233:
+    if (this.f != 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -182,9 +194,8 @@ public class WorkSpaceView
       paramInt3 = paramInt2;
       if (localView.getVisibility() != 8)
       {
-        paramInt3 = getMeasuredWidth();
-        localView.layout(paramInt2, 0, paramInt2 + paramInt3, getMeasuredHeight());
-        paramInt3 = paramInt2 + paramInt3;
+        paramInt3 = getMeasuredWidth() + paramInt2;
+        localView.layout(paramInt2, 0, paramInt3, getMeasuredHeight());
       }
       paramInt1 += 1;
     }
@@ -193,87 +204,102 @@ public class WorkSpaceView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int n = getChildCount();
+    int m = 0;
+    while (m < n)
     {
-      getChildAt(i).measure(paramInt1, paramInt2);
-      i += 1;
+      getChildAt(m).measure(paramInt1, paramInt2);
+      m += 1;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.g == null) {
+      this.g = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    int i = paramMotionEvent.getAction();
-    float f = paramMotionEvent.getX();
-    switch (i)
+    this.g.addMovement(paramMotionEvent);
+    int m = paramMotionEvent.getAction();
+    float f1 = paramMotionEvent.getX();
+    if (m != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        do
+      int n;
+      if (m != 1) {
+        if (m != 2)
         {
-          do
-          {
+          if (m != 3) {
             return true;
-            if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
-              this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
-            }
-            this.jdField_a_of_type_Float = f;
-            this.c = 1;
-            return true;
-          } while (this.c != 1);
-          i = (int)(this.jdField_a_of_type_Float - f);
-          this.jdField_a_of_type_Float = f;
-          j = getScrollX();
-          if (i >= 0) {
-            break;
           }
-        } while (j <= 0);
-        scrollBy(Math.max(-j, i), 0);
-        return true;
-      } while (i <= 0);
-      int j = getChildAt(getChildCount() - 1).getRight() - j - getWidth();
-      if (j > 0) {
-        scrollBy(Math.min(j, i), 0);
+        }
+        else
+        {
+          if (this.f != 1) {
+            break label310;
+          }
+          m = (int)(this.c - f1);
+          this.c = f1;
+          n = getScrollX();
+          if (m < 0)
+          {
+            if (n <= 0) {
+              break label310;
+            }
+            scrollBy(Math.max(-n, m), 0);
+            return true;
+          }
+          if (m <= 0) {
+            break label310;
+          }
+          n = getChildAt(getChildCount() - 1).getRight() - n - getWidth();
+          if (n > 0) {
+            scrollBy(Math.min(n, m), 0);
+          }
+          paramMotionEvent = Message.obtain();
+          paramMotionEvent.what = 0;
+          this.l.sendMessage(paramMotionEvent);
+          return true;
+        }
       }
-      paramMotionEvent = Message.obtain();
-      paramMotionEvent.what = 0;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramMotionEvent);
-      return true;
-    }
-    if (this.c == 1)
-    {
-      paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
-      paramMotionEvent.computeCurrentVelocity(1000);
-      i = (int)paramMotionEvent.getXVelocity();
-      if ((i <= 500) || (this.jdField_a_of_type_Int <= 0)) {
-        break label284;
-      }
-      a(this.jdField_a_of_type_Int - 1);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+      if (this.f == 1)
       {
-        this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-        this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+        paramMotionEvent = this.g;
+        paramMotionEvent.computeCurrentVelocity(1000);
+        m = (int)paramMotionEvent.getXVelocity();
+        if (m > 500)
+        {
+          n = this.a;
+          if (n > 0)
+          {
+            a(n - 1);
+            break label258;
+          }
+        }
+        if ((m < -500) && (this.a < getChildCount() - 1)) {
+          a(this.a + 1);
+        } else {
+          a();
+        }
+        label258:
+        paramMotionEvent = this.g;
+        if (paramMotionEvent != null)
+        {
+          paramMotionEvent.recycle();
+          this.g = null;
+        }
       }
-      this.c = 0;
+      this.f = 0;
       return true;
-      label284:
-      if ((i < -500) && (this.jdField_a_of_type_Int < getChildCount() - 1)) {
-        a(this.jdField_a_of_type_Int + 1);
-      } else {
-        a();
-      }
     }
+    else
+    {
+      if (!this.e.isFinished()) {
+        this.e.abortAnimation();
+      }
+      this.c = f1;
+      this.f = 1;
+    }
+    label310:
+    return true;
   }
   
   public void requestChildFocus(View paramView1, View paramView2)
@@ -286,27 +312,27 @@ public class WorkSpaceView
   
   public boolean requestChildRectangleOnScreen(View paramView, Rect paramRect, boolean paramBoolean)
   {
-    return (indexOfChild(paramView) != this.jdField_a_of_type_Int) || (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished());
+    return (indexOfChild(paramView) != this.a) || (!this.e.isFinished());
   }
   
   public void setAllowLongPress(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void setHandler(Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.l = paramHandler;
   }
   
-  public void setOnScreenChangeListener(yhu paramyhu)
+  public void setOnScreenChangeListener(WorkSpaceView.OnScreenChangeListener paramOnScreenChangeListener)
   {
-    this.jdField_a_of_type_Yhu = paramyhu;
+    this.h = paramOnScreenChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,30 @@
 package com.tencent.mobileqq.loginwelcome;
 
-import atwa;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation;
 
-public class LoginwelcomeHelper$2
+class LoginwelcomeHelper$2
   implements Runnable
 {
-  public LoginwelcomeHelper$2(atwa paramatwa) {}
+  LoginwelcomeHelper$2(LoginwelcomeHelper paramLoginwelcomeHelper) {}
   
   public void run()
   {
-    if (this.this$0.a.a != null)
+    if (this.this$0.a.aF != null)
     {
-      LoginWelcomeManager localLoginWelcomeManager = LoginWelcomeManager.a(this.this$0.a.a);
-      localLoginWelcomeManager.e();
-      if (localLoginWelcomeManager.b) {
-        localLoginWelcomeManager.h();
+      LoginWelcomeManager localLoginWelcomeManager = LoginWelcomeManager.a(this.this$0.a.s());
+      localLoginWelcomeManager.h();
+      if (localLoginWelcomeManager.i) {
+        localLoginWelcomeManager.l();
       }
-      if (localLoginWelcomeManager.c) {
-        localLoginWelcomeManager.i();
+      if (localLoginWelcomeManager.k) {
+        localLoginWelcomeManager.n();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.2
  * JD-Core Version:    0.7.0.1
  */

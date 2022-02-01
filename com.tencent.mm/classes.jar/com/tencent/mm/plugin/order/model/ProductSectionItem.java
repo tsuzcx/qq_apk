@@ -11,49 +11,49 @@ public class ProductSectionItem
   implements Parcelable
 {
   public static final Parcelable.Creator<ProductSectionItem> CREATER;
+  public List<Skus> MFA;
   public int count;
   public String iconUrl;
   public String jumpUrl;
   public String name;
-  public List<ProductSectionItem.Skus> pqB;
-  public String pqC;
-  public String pqD;
+  public String price;
   public int scene;
+  public String ycW;
   
   static
   {
-    AppMethodBeat.i(43791);
-    CREATER = new ProductSectionItem.1();
-    AppMethodBeat.o(43791);
+    AppMethodBeat.i(66699);
+    CREATER = new Parcelable.Creator() {};
+    AppMethodBeat.o(66699);
   }
   
   public ProductSectionItem() {}
   
   public ProductSectionItem(Parcel paramParcel)
   {
-    AppMethodBeat.i(43789);
+    AppMethodBeat.i(66697);
     this.iconUrl = paramParcel.readString();
     this.name = paramParcel.readString();
     int j = paramParcel.readInt();
     if (j > 0)
     {
-      this.pqB = new ArrayList();
+      this.MFA = new ArrayList();
       int i = 0;
       while (i < j)
       {
-        ProductSectionItem.Skus localSkus = new ProductSectionItem.Skus();
+        Skus localSkus = new Skus();
         localSkus.key = paramParcel.readString();
         localSkus.value = paramParcel.readString();
-        this.pqB.add(localSkus);
+        this.MFA.add(localSkus);
         i += 1;
       }
     }
     this.count = paramParcel.readInt();
-    this.pqC = paramParcel.readString();
+    this.price = paramParcel.readString();
     this.jumpUrl = paramParcel.readString();
-    this.pqD = paramParcel.readString();
+    this.ycW = paramParcel.readString();
     this.scene = paramParcel.readInt();
-    AppMethodBeat.o(43789);
+    AppMethodBeat.o(66697);
   }
   
   public int describeContents()
@@ -63,16 +63,16 @@ public class ProductSectionItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(43790);
+    AppMethodBeat.i(66698);
     paramParcel.writeString(this.iconUrl);
     paramParcel.writeString(this.name);
-    if (this.pqB != null)
+    if (this.MFA != null)
     {
-      paramParcel.writeInt(this.pqB.size());
+      paramParcel.writeInt(this.MFA.size());
       paramInt = 0;
-      while (paramInt < this.pqB.size())
+      while (paramInt < this.MFA.size())
       {
-        ProductSectionItem.Skus localSkus = (ProductSectionItem.Skus)this.pqB.get(paramInt);
+        Skus localSkus = (Skus)this.MFA.get(paramInt);
         paramParcel.writeString(localSkus.key);
         paramParcel.writeString(localSkus.value);
         paramInt += 1;
@@ -80,16 +80,78 @@ public class ProductSectionItem
     }
     paramParcel.writeInt(0);
     paramParcel.writeInt(this.count);
-    paramParcel.writeString(this.pqC);
+    paramParcel.writeString(this.price);
     paramParcel.writeString(this.jumpUrl);
-    paramParcel.writeString(this.pqD);
+    paramParcel.writeString(this.ycW);
     paramParcel.writeInt(this.scene);
-    AppMethodBeat.o(43790);
+    AppMethodBeat.o(66698);
+  }
+  
+  public static class Skus
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<Skus> CREATER;
+    public String key;
+    public String value;
+    
+    static
+    {
+      AppMethodBeat.i(66696);
+      CREATER = new Parcelable.Creator() {};
+      AppMethodBeat.o(66696);
+    }
+    
+    public Skus() {}
+    
+    public Skus(Parcel paramParcel)
+    {
+      AppMethodBeat.i(66693);
+      this.key = paramParcel.readString();
+      this.value = paramParcel.readString();
+      AppMethodBeat.o(66693);
+    }
+    
+    public static String jn(List<Skus> paramList)
+    {
+      AppMethodBeat.i(66695);
+      if ((paramList == null) || (paramList.size() == 0))
+      {
+        AppMethodBeat.o(66695);
+        return "";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i = 0;
+      while (i < paramList.size())
+      {
+        Skus localSkus = (Skus)paramList.get(i);
+        if (i != 0) {
+          localStringBuilder.append("、");
+        }
+        localStringBuilder.append(localSkus.value);
+        i += 1;
+      }
+      paramList = localStringBuilder.toString();
+      AppMethodBeat.o(66695);
+      return paramList;
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(66694);
+      paramParcel.writeString(this.key);
+      paramParcel.writeString(this.value);
+      AppMethodBeat.o(66694);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.ProductSectionItem
  * JD-Core Version:    0.7.0.1
  */

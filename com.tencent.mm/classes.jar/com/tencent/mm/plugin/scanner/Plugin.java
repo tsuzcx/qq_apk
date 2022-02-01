@@ -1,30 +1,28 @@
 package com.tencent.mm.plugin.scanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements com.tencent.mm.pluginsdk.b.c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(80772);
-    c localc = new c();
-    AppMethodBeat.o(80772);
-    return localc;
+    AppMethodBeat.i(51553);
+    m localm = new m();
+    AppMethodBeat.o(51553);
+    return localm;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(80773);
-    e locale = new e();
-    AppMethodBeat.o(80773);
-    return locale;
+    return null;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }

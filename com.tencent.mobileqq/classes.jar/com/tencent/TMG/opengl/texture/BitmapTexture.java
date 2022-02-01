@@ -10,13 +10,14 @@ public class BitmapTexture
   
   public BitmapTexture(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.mContentBitmap = paramBitmap;
-      return;
+    boolean bool;
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.assertTrue(bool);
+    this.mContentBitmap = paramBitmap;
   }
   
   public Bitmap getBitmap()
@@ -33,7 +34,7 @@ public class BitmapTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.texture.BitmapTexture
  * JD-Core Version:    0.7.0.1
  */

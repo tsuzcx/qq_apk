@@ -3,28 +3,25 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjln;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WeishiOperationInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiOperationInfo> CREATOR = new bjln();
-  public String a;
-  public Map<Integer, String> a;
+  public static final Parcelable.Creator<WeishiOperationInfo> CREATOR = new WeishiOperationInfo.1();
+  public String actionUrl;
+  public Map<Integer, String> weishiOperationInfo = new HashMap();
   
-  public WeishiOperationInfo(Parcel paramParcel)
+  protected WeishiOperationInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    paramParcel.readMap(this.jdField_a_of_type_JavaUtilMap, Map.class.getClassLoader());
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    paramParcel.readMap(this.weishiOperationInfo, Map.class.getClassLoader());
+    this.actionUrl = paramParcel.readString();
   }
   
   public WeishiOperationInfo(Map<Integer, String> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.weishiOperationInfo = paramMap;
   }
   
   public int describeContents()
@@ -34,13 +31,13 @@ public class WeishiOperationInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeMap(this.jdField_a_of_type_JavaUtilMap);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeMap(this.weishiOperationInfo);
+    paramParcel.writeString(this.actionUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.WeishiOperationInfo
  * JD-Core Version:    0.7.0.1
  */

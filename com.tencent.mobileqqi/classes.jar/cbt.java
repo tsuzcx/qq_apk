@@ -1,19 +1,24 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class cbt
-  implements Runnable
+  extends Handler
 {
-  public cbt(ChatHistory paramChatHistory, boolean paramBoolean) {}
+  public cbt(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ChatHistory localChatHistory1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    ChatHistory localChatHistory2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    if (this.jdField_a_of_type_Boolean == true) {}
-    for (int i = 2131562051;; i = 2131561467)
+    if (paramMessage.what == 1)
     {
-      localChatHistory1.b(localChatHistory2.getString(i));
-      return;
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new QQProgressDialog(this.a, this.a.d());
+      this.a.a.setCancelable(false);
+      this.a.a.b(2131563004);
+      this.a.a.show();
     }
   }
 }

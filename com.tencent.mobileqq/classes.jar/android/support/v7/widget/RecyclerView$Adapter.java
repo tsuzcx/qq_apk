@@ -2,6 +2,7 @@ package android.support.v7.widget;
 
 import android.support.v4.os.TraceCompat;
 import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
@@ -110,6 +111,7 @@ public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
   public void onBindViewHolder(VH paramVH, int paramInt, List<Object> paramList)
   {
     onBindViewHolder(paramVH, paramInt);
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramVH, paramInt, paramList, getItemId(paramInt));
   }
   
   public abstract VH onCreateViewHolder(ViewGroup paramViewGroup, int paramInt);
@@ -134,10 +136,12 @@ public abstract class RecyclerView$Adapter<VH extends RecyclerView.ViewHolder>
   
   public void setHasStableIds(boolean paramBoolean)
   {
-    if (hasObservers()) {
-      throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
+    if (!hasObservers())
+    {
+      this.mHasStableIds = paramBoolean;
+      return;
     }
-    this.mHasStableIds = paramBoolean;
+    throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
   }
   
   public void unregisterAdapterDataObserver(RecyclerView.AdapterDataObserver paramAdapterDataObserver)

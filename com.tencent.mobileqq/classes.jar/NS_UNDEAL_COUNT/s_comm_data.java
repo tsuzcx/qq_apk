@@ -36,17 +36,19 @@ public final class s_comm_data
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iHasDataFlag, 0);
-    if (this.strAttachInfo != null) {
-      paramJceOutputStream.write(this.strAttachInfo, 1);
+    Object localObject = this.strAttachInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.vecData != null) {
-      paramJceOutputStream.write(this.vecData, 2);
+    localObject = this.vecData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.s_comm_data
  * JD-Core Version:    0.7.0.1
  */

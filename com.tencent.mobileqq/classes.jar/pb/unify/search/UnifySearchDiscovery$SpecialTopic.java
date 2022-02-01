@@ -25,18 +25,19 @@ public final class UnifySearchDiscovery$SpecialTopic
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 58, 66, 74, 80 }, new String[] { "topic_title", "title_color", "icon_url", "topic_items", "jump_url", "show_type", "left_icon_url", "more_text", "topic_images", "is_hotsearch" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, localByteStringMicro6, null, Integer.valueOf(0) }, SpecialTopic.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 58, 66, 74, 80 }, new String[] { "topic_title", "title_color", "icon_url", "topic_items", "jump_url", "show_type", "left_icon_url", "more_text", "topic_images", "is_hotsearch" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, localByteStringMicro4, localInteger, localByteStringMicro5, localByteStringMicro6, null, localInteger }, SpecialTopic.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     pb.unify.search.UnifySearchDiscovery.SpecialTopic
  * JD-Core Version:    0.7.0.1
  */

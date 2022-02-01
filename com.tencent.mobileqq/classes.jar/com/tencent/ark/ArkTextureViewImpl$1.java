@@ -7,7 +7,7 @@ final class ArkTextureViewImpl$1
   
   public void run()
   {
-    ArkTextureViewImpl.ENV.logI(ArkTextureViewImpl.TAG, String.format("releaseContext.run.model.%h.context.%h.queue.%s", new Object[] { this.val$viewContext.viewModel, this.val$viewContext.contextHolder, this.val$viewContext.viewModel.getQueueKey() }));
+    Logger.logI(ArkTextureViewImpl.TAG, String.format("releaseContext.run.model.%h.context.%h.queue.%s", new Object[] { this.val$viewContext.viewModel, this.val$viewContext.contextHolder, this.val$viewContext.viewModel.getQueueKey() }));
     this.val$viewContext.viewModel.destroyDrawTarget();
     if (this.val$viewContext.contextHolder != null)
     {
@@ -18,7 +18,7 @@ final class ArkTextureViewImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkTextureViewImpl.1
  * JD-Core Version:    0.7.0.1
  */

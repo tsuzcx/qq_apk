@@ -28,11 +28,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
+import eca;
 import ecb;
 import ecc;
 import ecd;
 import ece;
-import ecf;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -51,9 +51,9 @@ public class AIOGalleryUtils
   
   static
   {
-    if (BaseApplicationImpl.a.getProcessName().endsWith(":peak"))
+    if (BaseApplicationImpl.a.getProcessNames().endsWith(":peak"))
     {
-      a = new ecf();
+      a = new ece();
       return;
     }
   }
@@ -121,7 +121,7 @@ public class AIOGalleryUtils
         return;
       }
     }
-    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131562802)).setMessage(paramActivity.getString(2131561976)).setPositiveButton(paramActivity.getString(2131562765), new ecc(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131562473), new ecb()).show();
+    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131562802)).setMessage(paramActivity.getString(2131561976)).setPositiveButton(paramActivity.getString(2131562765), new ecb(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131562473), new eca()).show();
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, AIOImageInfo paramAIOImageInfo, boolean paramBoolean, String paramString3)
@@ -192,7 +192,7 @@ public class AIOGalleryUtils
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, URLDrawable paramURLDrawable, String paramString, int paramInt)
   {
-    new ece(paramContext, paramInt, paramQQAppInterface, paramURLDrawable, paramString).execute(new Void[0]);
+    new ecd(paramContext, paramInt, paramQQAppInterface, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   private static int b(Context paramContext, String paramString)
@@ -241,7 +241,7 @@ public class AIOGalleryUtils
   
   private static void b(Activity paramActivity, File paramFile1, File paramFile2)
   {
-    new ecd(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
+    new ecc(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
   }
   
   private static boolean b(Context paramContext, String paramString)

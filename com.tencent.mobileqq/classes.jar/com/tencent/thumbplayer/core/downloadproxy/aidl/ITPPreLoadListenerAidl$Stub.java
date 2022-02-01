@@ -10,6 +10,7 @@ public abstract class ITPPreLoadListenerAidl$Stub
   implements ITPPreLoadListenerAidl
 {
   private static final String DESCRIPTOR = "com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl";
+  static final int TRANSACTION_onPcdnDownloadFailed = 4;
   static final int TRANSACTION_onPrepareDownloadProgressUpdate = 3;
   static final int TRANSACTION_onPrepareError = 2;
   static final int TRANSACTION_onPrepareOK = 1;
@@ -38,33 +39,44 @@ public abstract class ITPPreLoadListenerAidl$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
-      onPrepareOK();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 1598968902) {
+              return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+            }
+            paramParcel2.writeString("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
+            return true;
+          }
+          paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
+          onPcdnDownloadFailed(paramParcel1.readString());
+          paramParcel2.writeNoException();
+          return true;
+        }
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
+        onPrepareDownloadProgressUpdate(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.readLong(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
       onPrepareError(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
-    onPrepareDownloadProgressUpdate(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.readLong(), paramParcel1.readString());
+    onPrepareOK();
     paramParcel2.writeNoException();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

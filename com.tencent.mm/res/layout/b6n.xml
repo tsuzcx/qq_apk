@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/a_a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:background="@drawable/bnt" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include android:layout_gravity="center_horizontal" layout="@layout/b82" />
+<RelativeLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:id="@id/fqt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/cv">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fqo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/bx">
+            <TextView android:textSize="24.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/fqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/FG_1" android:id="@id/fqp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g6d" />
         </LinearLayout>
-    </ScrollView>
-    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b1e" />
-</LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fqu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toEndOf="@id/fqo">
+            <TextView android:textSize="24.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/fqw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/df" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/FG_1" android:id="@id/fqv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g6e" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/xd" android:id="@id/fqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:text="@string/g6f" android:layout_below="@id/fqt" android:layout_marginStart="@dimen/cp" />
+    <RelativeLayout android:id="@id/fql" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/fqs">
+        <ProgressBar android:id="@id/fqn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a74" />
+        <TextView android:textColor="@color/xd" android:id="@id/fqr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g8d" android:layout_centerInParent="true" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/fqm" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

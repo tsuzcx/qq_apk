@@ -4,7 +4,7 @@ import com.qq.taf.jce.JceStruct;
 
 public abstract interface cm
 {
-  public abstract dj a(int paramInt1, long paramLong, int paramInt2, JceStruct paramJceStruct);
+  public abstract dj<Long, Integer, JceStruct> a(int paramInt1, long paramLong, int paramInt2, JceStruct paramJceStruct);
 }
 
 

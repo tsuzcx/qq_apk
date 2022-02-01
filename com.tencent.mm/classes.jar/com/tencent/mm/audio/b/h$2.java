@@ -1,30 +1,29 @@
 package com.tencent.mm.audio.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.modelvoice.o;
+import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 final class h$2
-  implements Runnable
+  implements MTimerHandler.CallBack
 {
   h$2(h paramh) {}
   
-  public final void run()
+  public final boolean onTimerExpired()
   {
-    AppMethodBeat.i(116496);
-    if (!h.k(this.ckE))
-    {
-      ab.d("MicroMsg.SceneVoice.Recorder", "after start bluetooth, timeout to directly start record");
-      h.l(this.ckE);
-      AppMethodBeat.o(116496);
-      return;
-    }
-    ab.e("MicroMsg.SceneVoice.Recorder", "mHasBeginRec is true");
-    AppMethodBeat.o(116496);
+    AppMethodBeat.i(236220);
+    s.a(h.c(this.hxB), this.hxB);
+    o.bPh().run();
+    Log.d("MicroMsg.SceneVoice.Recorder", "Start Send fileName :" + h.c(this.hxB));
+    AppMethodBeat.o(236220);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.b.h.2
  * JD-Core Version:    0.7.0.1
  */

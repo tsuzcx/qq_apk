@@ -5,18 +5,18 @@ import java.util.Queue;
 
 final class f<TResult>
 {
-  private final Object Jv = new Object();
-  private Queue<e<TResult>> Sb;
-  private boolean Sc;
+  private final Object Lk = new Object();
+  private Queue<e<TResult>> TQ;
+  private boolean TR;
   
   public final void a(e<TResult> parame)
   {
-    synchronized (this.Jv)
+    synchronized (this.Lk)
     {
-      if (this.Sb == null) {
-        this.Sb = new ArrayDeque();
+      if (this.TQ == null) {
+        this.TQ = new ArrayDeque();
       }
-      this.Sb.add(parame);
+      this.TQ.add(parame);
       return;
     }
   }
@@ -26,18 +26,18 @@ final class f<TResult>
     for (;;)
     {
       e locale;
-      synchronized (this.Jv)
+      synchronized (this.Lk)
       {
-        if ((this.Sb == null) || (this.Sc)) {
+        if ((this.TQ == null) || (this.TR)) {
           return;
         }
-        this.Sc = true;
-        synchronized (this.Jv)
+        this.TR = true;
+        synchronized (this.Lk)
         {
-          locale = (e)this.Sb.poll();
+          locale = (e)this.TQ.poll();
           if (locale == null)
           {
-            this.Sc = false;
+            this.TR = false;
             return;
           }
         }

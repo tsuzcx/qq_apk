@@ -2,60 +2,67 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import thl;
-import tho;
-import thp;
-import tlo;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 
 class WSPlayerManager$PlayStartVideoRunnable
   implements Runnable
 {
-  private thl jdField_a_of_type_Thl;
-  private tho jdField_a_of_type_Tho;
-  private boolean jdField_a_of_type_Boolean;
+  private WSPlayerParam a;
+  private WSPlayerWrapper b;
+  private boolean c;
   
-  WSPlayerManager$PlayStartVideoRunnable(WSPlayerManager paramWSPlayerManager, thl paramthl, tho paramtho, boolean paramBoolean)
+  WSPlayerManager$PlayStartVideoRunnable(WSPlayerManager paramWSPlayerManager, WSPlayerParam paramWSPlayerParam, WSPlayerWrapper paramWSPlayerWrapper, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Thl = paramthl;
-    this.jdField_a_of_type_Tho = paramtho;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramWSPlayerParam;
+    this.b = paramWSPlayerWrapper;
+    this.c = paramBoolean;
   }
   
   public void run()
   {
-    tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][PlayStartVideoRunnable.run] post thread");
-    if ((!this.jdField_a_of_type_Boolean) && (!WSPlayerManager.a(this.this$0, this.jdField_a_of_type_Tho))) {}
-    long l;
-    do
+    WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][PlayStartVideoRunnable.run] post thread");
+    if ((!this.c) && (!WSPlayerManager.a(this.this$0, this.b))) {
+      return;
+    }
+    if ((this.a != null) && (this.b != null))
     {
-      do
-      {
+      if (WSPlayerManager.o(this.this$0)) {
         return;
-      } while ((this.jdField_a_of_type_Thl == null) || (this.jdField_a_of_type_Tho == null) || (WSPlayerManager.e(this.this$0)));
-      if (!this.jdField_a_of_type_Boolean) {
+      }
+      boolean bool2 = this.c;
+      boolean bool1 = true;
+      if (!bool2) {
         WSPlayerManager.a(this.this$0, true);
       }
-      l = this.jdField_a_of_type_Thl.jdField_a_of_type_Long;
+      long l = this.a.g;
       if (l > 0L) {
         WSPlayerManager.g(this.this$0, true);
       }
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_Thl.jdField_a_of_type_Thp.b));
-    if ((WSPlayerManager.a(this.this$0) != null) && (WSPlayerManager.a(this.this$0).a(this.jdField_a_of_type_Thl.jdField_a_of_type_Thp.b))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      tlo.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][PlayStartVideoRunnable.run] goto playerStartByUrl!! isPreDownload:" + bool + ", videoUrl:" + this.jdField_a_of_type_Thl.jdField_a_of_type_Thp.b);
-      if (this.jdField_a_of_type_Tho.a("", this.jdField_a_of_type_Thl.jdField_a_of_type_Thp.b, 2, l, 0L, this.jdField_a_of_type_Thl.jdField_a_of_type_Thp.c, true, this.jdField_a_of_type_Thl.jdField_a_of_type_Boolean)) {
-        break;
+      if (TextUtils.isEmpty(this.a.c.e)) {
+        return;
       }
-      tlo.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][PlayStartVideoRunnable.run] playerStartByUrl failed, sendMsg retry.");
-      WSPlayerManager.a(this.this$0).sendEmptyMessage(-4);
-      return;
+      Object localObject = WSPlayerManager.b(this.this$0);
+      if ((localObject == null) || (!((WSVideoPreDownloadManager)localObject).a(this.a.c.e))) {
+        bool1 = false;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[WSPlayerManager.java][PlayStartVideoRunnable.run] goto playerStartByUrl!! isPreDownload:");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(", videoUrl:");
+      ((StringBuilder)localObject).append(this.a.c.e);
+      WSLog.e("WS_VIDEO_PLAYER", ((StringBuilder)localObject).toString());
+      this.b.f(bool1);
+      if (!this.b.a("", this.a.c.e, 101, l, 0L, this.a.c.d, true, this.a.h))
+      {
+        WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][PlayStartVideoRunnable.run] playerStartByUrl failed, sendMsg retry.");
+        WSPlayerManager.h(this.this$0).sendEmptyMessage(-4);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.PlayStartVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

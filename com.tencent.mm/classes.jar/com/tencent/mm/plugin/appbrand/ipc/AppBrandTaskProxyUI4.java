@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandTaskProxyUI4
@@ -14,7 +13,7 @@ public class AppBrandTaskProxyUI4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandTaskProxyUI4
  * JD-Core Version:    0.7.0.1
  */

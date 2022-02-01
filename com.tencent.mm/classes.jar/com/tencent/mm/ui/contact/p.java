@@ -1,43 +1,47 @@
 package com.tencent.mm.ui.contact;
 
-import java.util.List;
-
 public abstract class p
-  extends o
+  extends q
 {
-  protected boolean AdB;
-  protected List<String> ejc;
+  public p.a afew;
   
-  public p(m paramm, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  public p(o paramo, boolean paramBoolean, int paramInt)
   {
-    this(paramm, paramList, paramBoolean1, paramBoolean2, 0);
+    super(paramo, paramBoolean, paramInt);
   }
   
-  public p(m paramm, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(p.a parama)
   {
-    this(paramm, paramList, paramBoolean1, paramBoolean2, paramInt, false);
+    this.afew = parama;
   }
   
-  private p(m paramm, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
-  {
-    super(paramm, paramBoolean2, paramInt, paramBoolean3);
-    this.ejc = paramList;
-    this.AdB = paramBoolean1;
-  }
+  public abstract void a(String paramString, int[] paramArrayOfInt);
   
-  public p(m paramm, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    this(paramm, paramList, paramBoolean1, paramBoolean2, 0, paramBoolean3);
-  }
-  
-  public int aux(String paramString)
+  public int aJM(String paramString)
   {
     return -1;
+  }
+  
+  public int bBO(String paramString)
+  {
+    return -1;
+  }
+  
+  public abstract void clearData();
+  
+  public boolean jyB()
+  {
+    return false;
+  }
+  
+  public String jyC()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.p
  * JD-Core Version:    0.7.0.1
  */

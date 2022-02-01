@@ -1,36 +1,38 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import axtc;
-import axti;
 import com.tencent.qphone.base.util.QLog;
 
-public class DCShortVideo$6
+class DCShortVideo$6
   implements Runnable
 {
-  public DCShortVideo$6(axtc paramaxtc, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, long paramLong) {}
+  DCShortVideo$6(DCShortVideo paramDCShortVideo, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, long paramLong) {}
   
   public void run()
   {
-    axti localaxti = new axti();
-    localaxti.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localaxti.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localaxti.b = this.b;
-    localaxti.c = this.c;
-    localaxti.d = this.d;
-    localaxti.e = this.e;
-    localaxti.f = this.f;
-    localaxti.g = this.g;
-    localaxti.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    DataReport.ReportTask localReportTask = new DataReport.ReportTask("actStreamingVideoPlay", localaxti.a("actStreamingVideoPlay"));
-    DataReport.a().a(localReportTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("DCShortVideo", 2, "reportProgressivePlayData():" + localaxti.toString());
+    DCShortVideo.ProgressivePlayData localProgressivePlayData = new DCShortVideo.ProgressivePlayData();
+    localProgressivePlayData.a = this.a;
+    localProgressivePlayData.b = this.b;
+    localProgressivePlayData.c = this.c;
+    localProgressivePlayData.d = this.d;
+    localProgressivePlayData.e = this.e;
+    localProgressivePlayData.f = this.f;
+    localProgressivePlayData.g = this.g;
+    localProgressivePlayData.h = this.h;
+    localProgressivePlayData.i = this.i;
+    Object localObject = new DataReport.ReportTask("actStreamingVideoPlay", localProgressivePlayData.a("actStreamingVideoPlay"));
+    DataReport.a().a((DataReport.ReportTask)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportProgressivePlayData():");
+      ((StringBuilder)localObject).append(localProgressivePlayData.toString());
+      QLog.d("DCShortVideo", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCShortVideo.6
  * JD-Core Version:    0.7.0.1
  */

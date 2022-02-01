@@ -17,11 +17,11 @@ public abstract interface j
   
   public abstract void disconnect();
   
-  public abstract boolean gs();
+  public abstract boolean gC();
   
-  public abstract boolean gt();
+  public abstract boolean gD();
   
-  public abstract Intent gu();
+  public abstract Intent gE();
   
   public abstract boolean isConnected();
   

@@ -8,55 +8,55 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class t
   implements q
 {
-  private com.google.android.exoplayer2.c.m aCe;
-  private u aGN;
-  private boolean aLX;
+  private com.google.android.exoplayer2.c.m cMa;
+  private u cQF;
+  private boolean cVO;
   
   public final void a(u paramu, g paramg, v.d paramd)
   {
-    AppMethodBeat.i(95163);
-    this.aGN = paramu;
-    paramd.ox();
-    this.aCe = paramg.dm(paramd.oy());
-    this.aCe.f(Format.k(paramd.oz(), "application/x-scte35"));
-    AppMethodBeat.o(95163);
+    AppMethodBeat.i(92285);
+    this.cQF = paramu;
+    paramd.Sv();
+    this.cMa = paramg.hz(paramd.getTrackId());
+    this.cMa.f(Format.t(paramd.Sw(), "application/x-scte35"));
+    AppMethodBeat.o(92285);
   }
   
   public final void t(com.google.android.exoplayer2.i.m paramm)
   {
     long l = -9223372036854775807L;
-    AppMethodBeat.i(95164);
-    if (!this.aLX)
+    AppMethodBeat.i(92286);
+    if (!this.cVO)
     {
-      if (this.aGN.rb() == -9223372036854775807L)
+      if (this.cQF.UU() == -9223372036854775807L)
       {
-        AppMethodBeat.o(95164);
+        AppMethodBeat.o(92286);
         return;
       }
-      this.aCe.f(Format.c("application/x-scte35", this.aGN.rb()));
-      this.aLX = true;
+      this.cMa.f(Format.d("application/x-scte35", this.cQF.UU()));
+      this.cVO = true;
     }
-    int i = paramm.qM();
-    this.aCe.a(paramm, i);
-    paramm = this.aCe;
-    u localu = this.aGN;
-    if (localu.bbs != -9223372036854775807L) {
-      l = localu.bbs;
+    int i = paramm.UF();
+    this.cMa.a(paramm, i);
+    paramm = this.cMa;
+    u localu = this.cQF;
+    if (localu.dkR != -9223372036854775807L) {
+      l = localu.dkR;
     }
     for (;;)
     {
       paramm.a(l, 1, i, 0, null);
-      AppMethodBeat.o(95164);
+      AppMethodBeat.o(92286);
       return;
-      if (localu.aJP != 9223372036854775807L) {
-        l = localu.aJP;
+      if (localu.cTH != 9223372036854775807L) {
+        l = localu.cTH;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.t
  * JD-Core Version:    0.7.0.1
  */

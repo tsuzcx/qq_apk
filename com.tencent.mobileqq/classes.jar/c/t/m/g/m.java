@@ -11,34 +11,22 @@ import android.os.SystemClock;
 
 public final class m
 {
-  public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
+  public static String a = "null";
+  public static String b = "";
+  public static String c = "";
+  public static String d = "";
   public static boolean e = true;
-  private static Context f = null;
+  private static Context f;
   private static String g = "DefaultSessionId";
-  private static long h;
+  private static long h = 0L;
   private static int i = 0;
   private static boolean j = false;
   private static String k = "";
-  private static String l;
-  private static String m;
-  private static String n;
+  private static String l = "3.5.1.16";
+  private static String m = "";
+  private static String n = "";
   private static Handler o;
-  private static volatile boolean p;
-  
-  static
-  {
-    a = "null";
-    b = "";
-    c = "";
-    d = "";
-    l = "3.5.1.16";
-    m = "";
-    n = "";
-    p = false;
-  }
+  private static volatile boolean p = false;
   
   public static Context a()
   {
@@ -77,7 +65,11 @@ public final class m
       label154:
       m = paramString;
       k.equals(m);
-      paramb = new HandlerThread("halley_" + i + "_" + "TempTask", 10);
+      paramb = new StringBuilder("halley_");
+      paramb.append(i);
+      paramb.append("_");
+      paramb.append("TempTask");
+      paramb = new HandlerThread(paramb.toString(), 10);
       paramb.start();
       paramb = new Handler(paramb.getLooper());
       o = paramb;
@@ -145,7 +137,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.m
  * JD-Core Version:    0.7.0.1
  */

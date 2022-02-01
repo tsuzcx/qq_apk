@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aj
-  extends e<ay>
+  extends f<bh>
 {
-  private static final int CTRL_INDEX = 385;
-  private static final String NAME = "unlinkSync";
+  private static final int CTRL_INDEX = 378;
+  private static final String NAME = "readFileSync";
   
   public aj()
   {
-    super(new ay());
-    AppMethodBeat.i(102811);
-    AppMethodBeat.o(102811);
+    super(new bh());
+    AppMethodBeat.i(128889);
+    AppMethodBeat.o(128889);
   }
 }
 

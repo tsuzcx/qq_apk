@@ -21,36 +21,41 @@ public class AbsOverScrollDecorator$OverScrollingState
   
   public void handleEntryTransition(AbsOverScrollDecorator.IDecoratorState paramIDecoratorState)
   {
-    if (this.this$0.mStartAttr.mDir) {}
-    for (int i = 1;; i = 2)
-    {
-      this.mCurrDragState = i;
-      return;
+    int i;
+    if (this.this$0.mStartAttr.mDir) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    this.mCurrDragState = i;
   }
   
   public boolean handleMoveTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.this$0.mStartAttr.mPointerId != paramMotionEvent.getPointerId(0)) {
-      this.this$0.issueStateTransition(this.this$0.mBounceBackState);
-    }
-    View localView;
-    do
+    if (this.this$0.mStartAttr.mPointerId != paramMotionEvent.getPointerId(0))
     {
+      paramMotionEvent = this.this$0;
+      paramMotionEvent.issueStateTransition(paramMotionEvent.mBounceBackState);
       return true;
-      localView = this.this$0.mViewAdapter.getView();
-    } while (!this.mMoveAttr.init(localView, paramMotionEvent));
+    }
+    View localView = this.this$0.mViewAdapter.getView();
+    if (!this.mMoveAttr.init(localView, paramMotionEvent)) {
+      return true;
+    }
     float f2 = this.mMoveAttr.mDeltaOffset;
-    if (this.mMoveAttr.mDir == this.this$0.mStartAttr.mDir) {}
-    for (float f1 = this.mTouchDragRatioFwd;; f1 = this.mTouchDragRatioBck)
+    if (this.mMoveAttr.mDir == this.this$0.mStartAttr.mDir) {
+      f1 = this.mTouchDragRatioFwd;
+    } else {
+      f1 = this.mTouchDragRatioBck;
+    }
+    float f1 = f2 / f1;
+    f2 = this.mMoveAttr.mAbsOffset + this.mMoveAttr.mDeltaOffset;
+    if (((this.this$0.mStartAttr.mDir) && (!this.mMoveAttr.mDir) && (f2 <= this.this$0.mStartAttr.mAbsOffset)) || ((!this.this$0.mStartAttr.mDir) && (this.mMoveAttr.mDir) && (f2 >= this.this$0.mStartAttr.mAbsOffset)))
     {
-      f1 = f2 / f1;
-      f2 = this.mMoveAttr.mAbsOffset + this.mMoveAttr.mDeltaOffset;
-      if (((!this.this$0.mStartAttr.mDir) || (this.mMoveAttr.mDir) || (f2 > this.this$0.mStartAttr.mAbsOffset)) && ((this.this$0.mStartAttr.mDir) || (!this.mMoveAttr.mDir) || (f2 < this.this$0.mStartAttr.mAbsOffset))) {
-        break;
-      }
-      this.this$0.translateViewAndEvent(localView, this.this$0.mStartAttr.mAbsOffset, paramMotionEvent);
-      this.this$0.issueStateTransition(this.this$0.mIdleState);
+      AbsOverScrollDecorator localAbsOverScrollDecorator = this.this$0;
+      localAbsOverScrollDecorator.translateViewAndEvent(localView, localAbsOverScrollDecorator.mStartAttr.mAbsOffset, paramMotionEvent);
+      paramMotionEvent = this.this$0;
+      paramMotionEvent.issueStateTransition(paramMotionEvent.mIdleState);
       return true;
     }
     if (localView.getParent() != null) {
@@ -66,13 +71,14 @@ public class AbsOverScrollDecorator$OverScrollingState
   
   public boolean handleUpOrCancelTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.this$0.issueStateTransition(this.this$0.mBounceBackState);
+    paramMotionEvent = this.this$0;
+    paramMotionEvent.issueStateTransition(paramMotionEvent.mBounceBackState);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.AbsOverScrollDecorator.OverScrollingState
  * JD-Core Version:    0.7.0.1
  */

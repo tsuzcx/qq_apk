@@ -19,13 +19,14 @@ public final class msg_svc$PbC2CMsgWithDrawReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "msg_info", "uint32_long_message_flag", "bytes_reserved", "uint32_sub_cmd" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, PbC2CMsgWithDrawReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "msg_info", "uint32_long_message_flag", "bytes_reserved", "uint32_sub_cmd" }, new Object[] { null, localInteger, localByteStringMicro, localInteger }, PbC2CMsgWithDrawReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbC2CMsgWithDrawReq
  * JD-Core Version:    0.7.0.1
  */

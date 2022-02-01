@@ -48,42 +48,46 @@ public final class InitializationChunk
         if (this.bytesLoaded == 0) {
           this.extractorWrapper.init(null);
         }
+      }
+      finally
+      {
+        Extractor localExtractor;
         int i;
-        try
+        Util.closeQuietly(this.dataSource);
+        continue;
+        throw localObject2;
+        continue;
+        boolean bool = true;
+        if (i != 1) {
+          continue;
+        }
+        bool = false;
+        continue;
+      }
+      try
+      {
+        localExtractor = this.extractorWrapper.extractor;
+        i = 0;
+        if ((i == 0) && (!this.loadCanceled))
         {
-          Extractor localExtractor = this.extractorWrapper.extractor;
-          i = 0;
-          if ((i != 0) || (this.loadCanceled)) {
-            break label159;
-          }
           i = localExtractor.read((ExtractorInput)localObject1, null);
           continue;
           Assertions.checkState(bool);
           this.bytesLoaded = ((int)(((ExtractorInput)localObject1).getPosition() - this.dataSpec.absoluteStreamPosition));
+          Util.closeQuietly(this.dataSource);
           return;
-        }
-        finally
-        {
-          this.bytesLoaded = ((int)(((ExtractorInput)localObject1).getPosition() - this.dataSpec.absoluteStreamPosition));
-        }
-        bool = false;
-        continue;
-        if (i == 1) {
-          continue;
         }
       }
       finally
       {
-        Util.closeQuietly(this.dataSource);
+        this.bytesLoaded = ((int)(((ExtractorInput)localObject1).getPosition() - this.dataSpec.absoluteStreamPosition));
       }
-      label159:
-      boolean bool = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.InitializationChunk
  * JD-Core Version:    0.7.0.1
  */

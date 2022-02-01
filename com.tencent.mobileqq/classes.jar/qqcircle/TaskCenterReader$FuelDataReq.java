@@ -12,15 +12,21 @@ import feedcloud.FeedCloudCommon.StCommonExt;
 public final class TaskCenterReader$FuelDataReq
   extends MessageMicro<FuelDataReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "extInfo", "userId", "reqFrom", "optType" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0) }, FuelDataReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
   public final PBEnumField optType = PBField.initEnum(0);
   public final PBInt32Field reqFrom = PBField.initInt32(0);
   public final PBRepeatField<String> userId = PBField.initRepeat(PBStringField.__repeatHelper__);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "extInfo", "userId", "reqFrom", "optType" }, new Object[] { null, "", localInteger, localInteger }, FuelDataReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqcircle.TaskCenterReader.FuelDataReq
  * JD-Core Version:    0.7.0.1
  */

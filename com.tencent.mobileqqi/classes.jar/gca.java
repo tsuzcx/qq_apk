@@ -2,18 +2,16 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
-import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
 public class gca
   implements Animation.AnimationListener
 {
-  public gca(RoamLocalSearchBar paramRoamLocalSearchBar, View paramView1, View paramView2) {}
+  public gca(RoamLocalSearchBar paramRoamLocalSearchBar, View paramView, int paramInt) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

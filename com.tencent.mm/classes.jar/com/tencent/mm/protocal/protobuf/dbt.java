@@ -3,91 +3,82 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dbt
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int Scene;
-  public int wwX;
-  public int xmQ;
-  public int yhX;
-  public int yhY;
+  public String aaHk;
+  public String path;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(96348);
+    AppMethodBeat.i(259488);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.xmQ);
-      paramVarArgs.aO(2, this.wwX);
-      paramVarArgs.aO(3, this.yhX);
-      paramVarArgs.aO(4, this.Scene);
-      paramVarArgs.aO(10, this.yhY);
-      AppMethodBeat.o(96348);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.type);
+      if (this.aaHk != null) {
+        paramVarArgs.g(2, this.aaHk);
+      }
+      if (this.path != null) {
+        paramVarArgs.g(3, this.path);
+      }
+      AppMethodBeat.o(259488);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.xmQ);
-      int i = e.a.a.b.b.a.bl(2, this.wwX);
-      int j = e.a.a.b.b.a.bl(3, this.yhX);
-      int k = e.a.a.b.b.a.bl(4, this.Scene);
-      int m = e.a.a.b.b.a.bl(10, this.yhY);
-      AppMethodBeat.o(96348);
-      return paramInt + 0 + i + j + k + m;
+      int i = i.a.a.b.b.a.cJ(1, this.type) + 0;
+      paramInt = i;
+      if (this.aaHk != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.aaHk);
+      }
+      i = paramInt;
+      if (this.path != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.path);
+      }
+      AppMethodBeat.o(259488);
+      return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(96348);
+      AppMethodBeat.o(259488);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       dbt localdbt = (dbt)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
-      case 5: 
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
       default: 
-        AppMethodBeat.o(96348);
+        AppMethodBeat.o(259488);
         return -1;
       case 1: 
-        localdbt.xmQ = locala.CLY.sl();
-        AppMethodBeat.o(96348);
+        localdbt.type = locala.ajGk.aar();
+        AppMethodBeat.o(259488);
         return 0;
       case 2: 
-        localdbt.wwX = locala.CLY.sl();
-        AppMethodBeat.o(96348);
-        return 0;
-      case 3: 
-        localdbt.yhX = locala.CLY.sl();
-        AppMethodBeat.o(96348);
-        return 0;
-      case 4: 
-        localdbt.Scene = locala.CLY.sl();
-        AppMethodBeat.o(96348);
+        localdbt.aaHk = locala.ajGk.readString();
+        AppMethodBeat.o(259488);
         return 0;
       }
-      localdbt.yhY = locala.CLY.sl();
-      AppMethodBeat.o(96348);
+      localdbt.path = locala.ajGk.readString();
+      AppMethodBeat.o(259488);
       return 0;
     }
-    AppMethodBeat.o(96348);
+    AppMethodBeat.o(259488);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dbt
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class cell_comment_essence
   extends JceStruct
 {
   static ArrayList<s_commment> cache_commments = new ArrayList();
-  public ArrayList<s_commment> commments;
-  public int displayflag;
-  public int num;
+  public ArrayList<s_commment> commments = null;
+  public int displayflag = 0;
+  public int num = 0;
   
   static
   {
@@ -38,15 +38,16 @@ public final class cell_comment_essence
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.num, 0);
-    if (this.commments != null) {
-      paramJceOutputStream.write(this.commments, 1);
+    ArrayList localArrayList = this.commments;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
     paramJceOutputStream.write(this.displayflag, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_comment_essence
  * JD-Core Version:    0.7.0.1
  */

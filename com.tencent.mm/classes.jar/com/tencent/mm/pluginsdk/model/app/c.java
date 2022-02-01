@@ -1,79 +1,38 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.autogen.b.i;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class c
-  extends j<b>
+  extends i
 {
-  public static final String[] SQL_CREATE;
-  e db;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(79236);
-    SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "appattach") };
-    AppMethodBeat.o(79236);
+    AppMethodBeat.i(151651);
+    info = i.aJm();
+    AppMethodBeat.o(151651);
   }
   
-  public c(e parame)
+  public c()
   {
-    super(parame, b.info, "appattach", null);
-    this.db = parame;
+    this.field_netTimes = 0L;
   }
   
-  public final boolean a(b paramb, String... paramVarArgs)
+  public final boolean efT()
   {
-    AppMethodBeat.i(79233);
-    boolean bool = super.update(paramb, paramVarArgs);
-    ab.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramb.field_mediaId, paramb.field_mediaSvrId, Boolean.valueOf(bool), "" });
-    AppMethodBeat.o(79233);
-    return bool;
-  }
-  
-  public final b alo(String paramString)
-  {
-    AppMethodBeat.i(79232);
-    b localb = new b();
-    localb.field_mediaSvrId = paramString;
-    if (get(localb, new String[] { "mediaSvrId" }))
-    {
-      AppMethodBeat.o(79232);
-      return localb;
+    if (this.field_totalLen <= 0L) {}
+    while (this.field_offset != this.field_totalLen) {
+      return false;
     }
-    if (get(localb, new String[] { "mediaId" }))
-    {
-      AppMethodBeat.o(79232);
-      return localb;
-    }
-    AppMethodBeat.o(79232);
-    return null;
+    return true;
   }
   
-  public final void nv(long paramLong)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(79231);
-    String str = " update appattach set status = 198 , lastModifyTime = " + bo.aox() + " where rowid = " + paramLong;
-    this.db.execSQL("appattach", str);
-    doNotify();
-    AppMethodBeat.o(79231);
-  }
-  
-  public final b nw(long paramLong)
-  {
-    AppMethodBeat.i(79234);
-    b localb = new b();
-    localb.field_msgInfoId = paramLong;
-    if (get(localb, new String[] { "msgInfoId" }))
-    {
-      AppMethodBeat.o(79234);
-      return localb;
-    }
-    AppMethodBeat.o(79234);
-    return null;
+    return info;
   }
 }
 

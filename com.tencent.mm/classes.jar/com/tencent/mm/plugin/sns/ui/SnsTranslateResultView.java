@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.annotation.TargetApi;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -12,144 +13,167 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.sns.model.aq.b;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.model.av;
+import com.tencent.mm.plugin.sns.model.av.b;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.tools.k;
 
 public class SnsTranslateResultView
   extends LinearLayout
 {
-  private static final int saz;
-  private Drawable fHy;
-  private TextView qzM;
-  private int rWe;
-  private float saA;
-  private int saB;
-  private TextView sax;
-  private View say;
+  private static final int RCn;
+  private TextView RCk;
+  private TextView RCl;
+  private View RCm;
+  private float RCo;
+  private int RCp;
+  private int RxC;
+  private Drawable oKD;
   
   static
   {
-    AppMethodBeat.i(39629);
-    saz = Color.parseColor("#19000000");
-    AppMethodBeat.o(39629);
+    AppMethodBeat.i(99450);
+    RCn = Color.parseColor("#19000000");
+    AppMethodBeat.o(99450);
   }
   
   public SnsTranslateResultView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(39623);
-    this.rWe = -1;
-    this.saA = -1.0F;
-    this.saB = -1;
-    LayoutInflater.from(getContext()).inflate(2130971040, this);
-    this.sax = ((TextView)findViewById(2131828643));
-    this.qzM = ((TextView)findViewById(2131828644));
-    this.say = findViewById(2131828642);
-    this.fHy = getResources().getDrawable(2130840429);
-    this.fHy.setBounds(0, 0, (int)(this.qzM.getTextSize() * 0.8F), (int)(this.qzM.getTextSize() * 0.8F));
-    this.fHy.setColorFilter(saz, PorterDuff.Mode.SRC_IN);
-    AppMethodBeat.o(39623);
+    AppMethodBeat.i(99444);
+    this.RxC = -1;
+    this.RCo = -1.0F;
+    this.RCp = -1;
+    LayoutInflater.from(getContext()).inflate(b.g.translate_result_layout, this);
+    this.RCk = ((TextView)findViewById(b.f.sns_translate_brand_tv));
+    this.RCl = ((TextView)findViewById(b.f.sns_translate_result_tv));
+    this.RCm = findViewById(b.f.translate_split);
+    this.oKD = getResources().getDrawable(b.e.sns_translate_loading_icon);
+    this.oKD.setBounds(0, 0, (int)(this.RCl.getTextSize() * 0.8F), (int)(this.RCl.getTextSize() * 0.8F));
+    this.oKD.setColorFilter(RCn, PorterDuff.Mode.SRC_IN);
+    AppMethodBeat.o(99444);
   }
   
-  private void cwu()
+  private void hqc()
   {
-    AppMethodBeat.i(39627);
-    if ((this.saA == -1.0F) && (this.saB == -1)) {
-      if (this.rWe == 2) {
-        this.qzM.setTextSize(1, 14.0F * a.dr(getContext()));
+    AppMethodBeat.i(99448);
+    if ((this.RCo == -1.0F) && (this.RCp == -1)) {
+      if (this.RxC == 2) {
+        this.RCl.setTextSize(1, 14.0F * a.getScaleSize(getContext()));
       }
     }
-    while (this.rWe == 2)
+    while (this.RxC == 2)
     {
-      this.qzM.setTextColor(getContext().getResources().getColor(2131690508));
-      AppMethodBeat.o(39627);
+      this.RCl.setTextColor(getContext().getResources().getColor(b.c.sns_translate_comment_result_color));
+      AppMethodBeat.o(99448);
       return;
-      if (this.rWe == 1)
+      if (this.RxC == 1)
       {
-        this.qzM.setTextSize(1, 15.0F * a.dr(getContext()));
+        this.RCl.setTextSize(1, 15.0F * a.getScaleSize(getContext()));
         continue;
-        this.qzM.setTextSize(this.saB, this.saA);
+        this.RCl.setTextSize(this.RCp, this.RCo);
       }
     }
-    if (this.rWe == 1) {
-      this.qzM.setTextColor(getContext().getResources().getColor(2131690510));
+    if (this.RxC == 1) {
+      this.RCl.setTextColor(getContext().getResources().getColor(b.c.sns_translate_post_result_color));
     }
-    AppMethodBeat.o(39627);
+    AppMethodBeat.o(99448);
   }
   
-  public final void Fc(int paramInt)
+  public final void a(final av.b paramb, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(39624);
-    this.qzM.setCompoundDrawables(this.fHy, null, null, null);
-    this.qzM.setCompoundDrawablePadding(a.fromDPToPix(getContext(), 3));
-    this.qzM.setText(2131304028);
-    com.tencent.mm.ui.tools.j.a(this.qzM, null);
-    this.sax.setVisibility(4);
-    this.rWe = paramInt;
-    this.qzM.setTextSize(0, this.sax.getTextSize());
-    this.qzM.setTextColor(getContext().getResources().getColor(2131690509));
-    AppMethodBeat.o(39624);
-  }
-  
-  @TargetApi(11)
-  public final void a(aq.b paramb, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(39628);
-    this.rWe = paramInt;
-    cwu();
-    if (!bo.isNullOrNil(paramString1))
+    AppMethodBeat.i(99449);
+    this.RxC = paramInt;
+    hqc();
+    if (!Util.isNullOrNil(paramString1))
     {
-      this.qzM.setText(paramString1);
-      com.tencent.mm.pluginsdk.ui.d.j.k(this.qzM, 2);
-      this.qzM.setCompoundDrawables(null, null, null, null);
-      if ((paramBoolean) && (d.fv(11))) {
-        com.tencent.mm.ui.tools.j.a(this.qzM, new SnsTranslateResultView.1(this, paramb));
+      this.RCl.setText(paramString1);
+      p.t(this.RCl, 2);
+      this.RCl.setCompoundDrawables(null, null, null, null);
+      if ((paramBoolean) && (d.rb(11))) {
+        k.a(this.RCl, new Animator.AnimatorListener()
+        {
+          public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
+          
+          public final void onAnimationEnd(Animator paramAnonymousAnimator)
+          {
+            AppMethodBeat.i(99443);
+            if (paramb != null) {
+              av.a(paramb);
+            }
+            AppMethodBeat.o(99443);
+          }
+          
+          public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+          
+          public final void onAnimationStart(Animator paramAnonymousAnimator) {}
+        });
       }
-      if (bo.isNullOrNil(paramString2)) {
-        break label121;
+      if (Util.isNullOrNil(paramString2)) {
+        break label122;
       }
-      this.sax.setText(paramString2);
+      this.RCk.setText(paramString2);
     }
     for (;;)
     {
-      this.sax.setVisibility(0);
-      AppMethodBeat.o(39628);
+      this.RCk.setVisibility(0);
+      AppMethodBeat.o(99449);
       return;
-      this.qzM.setText(2131304026);
+      this.RCl.setText(b.j.sns_translate_failed);
       break;
-      label121:
-      this.sax.setText(2131298335);
+      label122:
+      this.RCk.setText(b.j.chatting_translate_status_got);
     }
+  }
+  
+  public final void amo(int paramInt)
+  {
+    AppMethodBeat.i(99445);
+    this.RCl.setCompoundDrawables(this.oKD, null, null, null);
+    this.RCl.setCompoundDrawablePadding(a.fromDPToPix(getContext(), 3));
+    this.RCl.setText(b.j.sns_translating);
+    k.a(this.RCl, null);
+    this.RCk.setVisibility(4);
+    this.RxC = paramInt;
+    this.RCl.setTextSize(0, this.RCk.getTextSize());
+    this.RCl.setTextColor(getContext().getResources().getColor(b.c.sns_translate_loading_text_color));
+    AppMethodBeat.o(99445);
+  }
+  
+  public final void dr(float paramFloat)
+  {
+    AppMethodBeat.i(99446);
+    this.RCl.setTextSize(1, paramFloat);
+    this.RCo = paramFloat;
+    this.RCp = 1;
+    AppMethodBeat.o(99446);
   }
   
   public TextView getResultTextView()
   {
-    return this.qzM;
+    return this.RCl;
   }
   
   public View getSplitlineView()
   {
-    return this.say;
+    return this.RCm;
   }
   
   public void setResultTextSize(float paramFloat)
   {
-    AppMethodBeat.i(39626);
-    this.qzM.setTextSize(0, paramFloat);
-    this.saA = paramFloat;
-    this.saB = 0;
-    AppMethodBeat.o(39626);
-  }
-  
-  public final void setResultTextSize$255e752(float paramFloat)
-  {
-    AppMethodBeat.i(39625);
-    this.qzM.setTextSize(1, paramFloat);
-    this.saA = paramFloat;
-    this.saB = 1;
-    AppMethodBeat.o(39625);
+    AppMethodBeat.i(99447);
+    this.RCl.setTextSize(0, paramFloat);
+    this.RCo = paramFloat;
+    this.RCp = 0;
+    AppMethodBeat.o(99447);
   }
 }
 

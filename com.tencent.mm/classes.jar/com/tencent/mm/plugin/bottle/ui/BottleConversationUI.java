@@ -1,80 +1,112 @@
 package com.tencent.mm.plugin.bottle.ui;
 
-import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.ay.e;
+import com.tencent.mm.ay.g;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.br.a;
+import com.tencent.mm.model.s;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.plugin.bottle.a.d;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.storagebase.h;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.p.a;
+import com.tencent.mm.ui.base.MMSlideDelView.f;
+import com.tencent.mm.ui.base.MMSlideDelView.g;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.x.a;
 
 public class BottleConversationUI
   extends MMActivity
 {
   private TextView emptyTipTv;
   private boolean isDeleteCancel;
-  private ListView jSl;
-  private a jSm;
-  private n.d jSn;
   private String talker;
-  private p tipDialog;
+  private w tipDialog;
+  private ListView vzp;
+  private a vzq;
+  private u.i vzr;
   
   public BottleConversationUI()
   {
-    AppMethodBeat.i(18566);
-    this.jSn = new BottleConversationUI.10(this);
+    AppMethodBeat.i(22677);
+    this.vzr = new u.i()
+    {
+      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(22676);
+        BottleConversationUI.a(BottleConversationUI.this, BottleConversationUI.e(BottleConversationUI.this));
+        AppMethodBeat.o(22676);
+      }
+    };
     this.isDeleteCancel = false;
     this.tipDialog = null;
-    AppMethodBeat.o(18566);
+    AppMethodBeat.o(22677);
   }
   
   public int getLayoutId()
   {
-    return 2130971000;
+    return R.i.tmessage;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(18571);
-    int i = r.Zr();
-    int j = r.Zy();
-    aw.aaz();
-    c.Ru().set(7, Integer.valueOf(i | 0x1000));
-    aw.aaz();
-    c.Ru().set(34, Integer.valueOf(j & 0xFFFFFFBF));
-    this.jSl = ((ListView)findViewById(2131823736));
-    this.emptyTipTv = ((TextView)findViewById(2131821852));
-    this.emptyTipTv.setText(2131297778);
-    this.jSm = new a(this, new p.a()
+    AppMethodBeat.i(22682);
+    int i = z.bAQ();
+    int j = z.bBf();
+    bh.bCz();
+    com.tencent.mm.model.c.ban().B(7, Integer.valueOf(i | 0x1000));
+    bh.bCz();
+    com.tencent.mm.model.c.ban().B(34, Integer.valueOf(j & 0xFFFFFFBF));
+    this.vzp = ((ListView)findViewById(R.h.tmessage_lv));
+    this.emptyTipTv = ((TextView)findViewById(R.h.empty_msg_tip_tv));
+    this.emptyTipTv.setText(R.l.gvQ);
+    this.vzq = new a(this, new x.a()
     {
-      public final void apT()
+      public final void bWC()
       {
-        AppMethodBeat.i(18553);
+        AppMethodBeat.i(22664);
         BottleConversationUI localBottleConversationUI = BottleConversationUI.this;
-        String str = BottleConversationUI.this.getString(2131297784);
-        int i = com.tencent.mm.model.l.Zj();
+        String str = BottleConversationUI.this.getString(R.l.gvR);
+        int i = s.bAD();
         if (i <= 0) {
           localBottleConversationUI.setMMTitle(str);
         }
@@ -82,117 +114,194 @@ public class BottleConversationUI
         {
           BottleConversationUI.b(BottleConversationUI.this).setVisibility(0);
           BottleConversationUI.c(BottleConversationUI.this).setVisibility(8);
-          AppMethodBeat.o(18553);
+          AppMethodBeat.o(22664);
           return;
           localBottleConversationUI.setMMTitle(str + "(" + i + ")");
         }
         BottleConversationUI.b(BottleConversationUI.this).setVisibility(8);
         BottleConversationUI.c(BottleConversationUI.this).setVisibility(0);
-        AppMethodBeat.o(18553);
+        AppMethodBeat.o(22664);
       }
     });
-    this.jSm.setGetViewPositionCallback(new MMSlideDelView.c()
+    this.vzq.setGetViewPositionCallback(new MMSlideDelView.c()
     {
-      public final int dc(View paramAnonymousView)
+      public final int eB(View paramAnonymousView)
       {
-        AppMethodBeat.i(18558);
+        AppMethodBeat.i(22669);
         int i = BottleConversationUI.c(BottleConversationUI.this).getPositionForView(paramAnonymousView);
-        AppMethodBeat.o(18558);
+        AppMethodBeat.o(22669);
         return i;
       }
     });
-    this.jSm.setPerformItemClickListener(new BottleConversationUI.4(this));
-    this.jSm.a(new BottleConversationUI.5(this));
-    this.jSl.setAdapter(this.jSm);
-    com.tencent.mm.ui.tools.l locall = new com.tencent.mm.ui.tools.l(this);
-    this.jSl.setOnItemLongClickListener(new BottleConversationUI.6(this, locall));
-    this.jSl.setOnItemClickListener(new BottleConversationUI.7(this));
-    com.tencent.mm.plugin.bottle.a.gmP.BO();
-    setBackBtn(new BottleConversationUI.8(this));
+    this.vzq.setPerformItemClickListener(new MMSlideDelView.g()
+    {
+      public final void performItemClick(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(22670);
+        BottleConversationUI.c(BottleConversationUI.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
+        AppMethodBeat.o(22670);
+      }
+    });
+    this.vzq.a(new MMSlideDelView.f()
+    {
+      public final void es(Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(22671);
+        if (paramAnonymousObject == null)
+        {
+          Log.e("MicroMsg.Bottle.BottleConversationUI", "onItemDel object null");
+          AppMethodBeat.o(22671);
+          return;
+        }
+        BottleConversationUI.a(BottleConversationUI.this, paramAnonymousObject.toString());
+        AppMethodBeat.o(22671);
+      }
+    });
+    this.vzp.setAdapter(this.vzq);
+    final com.tencent.mm.ui.tools.l locall = new com.tencent.mm.ui.tools.l(this);
+    this.vzp.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    {
+      public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(22672);
+        if (paramAnonymousInt < BottleConversationUI.c(BottleConversationUI.this).getHeaderViewsCount())
+        {
+          Log.w("MicroMsg.Bottle.BottleConversationUI", "on header view long click, ignore");
+          AppMethodBeat.o(22672);
+          return true;
+        }
+        locall.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, BottleConversationUI.this, BottleConversationUI.d(BottleConversationUI.this));
+        AppMethodBeat.o(22672);
+        return true;
+      }
+    });
+    this.vzp.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(22673);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousAdapterView);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/bottle/ui/BottleConversationUI$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
+        paramAnonymousAdapterView = (bb)BottleConversationUI.a(BottleConversationUI.this).getItem(paramAnonymousInt);
+        paramAnonymousView = new Intent();
+        paramAnonymousView.addFlags(67108864);
+        paramAnonymousView.putExtra("Chat_User", paramAnonymousAdapterView.field_username);
+        paramAnonymousView.putExtra("finish_direct", true);
+        paramAnonymousView.putExtra("key_need_send_video", false);
+        com.tencent.mm.plugin.bottle.a.pFn.d(paramAnonymousView, BottleConversationUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/bottle/ui/BottleConversationUI$6", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(22673);
+      }
+    });
+    com.tencent.mm.plugin.bottle.a.pFo.aDx();
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(22674);
+        BottleConversationUI.this.finish();
+        AppMethodBeat.o(22674);
+        return true;
+      }
+    });
     setToTop(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(18564);
-        BackwardSupportUtil.c.a(BottleConversationUI.c(BottleConversationUI.this));
-        AppMethodBeat.o(18564);
+        AppMethodBeat.i(22675);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/bottle/ui/BottleConversationUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        paramAnonymousView = BottleConversationUI.c(BottleConversationUI.this);
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousView);
+        localObject = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aYi(), "com/tencent/mm/plugin/bottle/ui/BottleConversationUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)paramAnonymousView.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/bottle/ui/BottleConversationUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/bottle/ui/BottleConversationUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(22675);
       }
     });
-    AppMethodBeat.o(18571);
+    AppMethodBeat.o(22682);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(18567);
+    AppMethodBeat.i(22678);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(18567);
+    AppMethodBeat.o(22678);
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    AppMethodBeat.i(18572);
+    AppMethodBeat.i(22683);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.talker = ((ak)this.jSm.getItem(paramView.position)).field_username;
-    paramContextMenuInfo = this.jSm;
-    aw.aaz();
-    paramContextMenu.setHeaderTitle(getString(2131297774, new Object[] { paramContextMenuInfo.E(c.YA().arw(this.talker)) }));
-    paramContextMenu.add(paramView.position, 0, 0, 2131297775);
-    AppMethodBeat.o(18572);
+    this.talker = ((bb)this.vzq.getItem(paramView.position)).field_username;
+    int i = R.l.gvM;
+    paramContextMenuInfo = this.vzq;
+    bh.bCz();
+    paramContextMenu.setHeaderTitle(getString(i, new Object[] { paramContextMenuInfo.ac(com.tencent.mm.model.c.bzA().JE(this.talker)) }));
+    paramContextMenu.add(paramView.position, 0, 0, R.l.gvN);
+    AppMethodBeat.o(22683);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(18568);
-    this.jSm.bKb();
+    AppMethodBeat.i(22679);
+    this.vzq.fSd();
     super.onDestroy();
-    AppMethodBeat.o(18568);
+    AppMethodBeat.o(22679);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(18570);
-    aw.aaz();
-    c.YA().b(this.jSm);
-    aw.aaz();
-    c.YF().b(this.jSm);
-    aw.aaz();
-    Object localObject = c.YC().yU(8);
-    if ((localObject != null) && (((dd)localObject).field_msgId > 0L))
+    AppMethodBeat.i(22681);
+    bh.bCz();
+    com.tencent.mm.model.c.bzA().remove(this.vzq);
+    bh.bCz();
+    com.tencent.mm.model.c.bzG().remove(this.vzq);
+    bh.bCz();
+    Object localObject = com.tencent.mm.model.c.bzD().aaD(8);
+    if ((localObject != null) && (((fi)localObject).field_msgId > 0L))
     {
-      ab.d("MicroMsg.Bottle.BottleConversationUI", "resetUnread: lastReadTime = " + ((dd)localObject).field_createTime);
-      aw.aaz();
-      c.Ru().set(12306, Long.valueOf(((dd)localObject).field_createTime));
+      Log.d("MicroMsg.Bottle.BottleConversationUI", "resetUnread: lastReadTime = " + ((cc)localObject).getCreateTime());
+      bh.bCz();
+      com.tencent.mm.model.c.ban().B(12306, Long.valueOf(((cc)localObject).getCreateTime()));
     }
-    aw.aaz();
-    localObject = c.YF().arH("floatbottle");
-    if ((localObject == null) || (bo.nullAsNil(((au)localObject).field_username).length() <= 0)) {
-      ab.e("MicroMsg.Bottle.BottleConversationUI", "resetUnread: can not find bottle");
+    bh.bCz();
+    localObject = com.tencent.mm.model.c.bzG().bxM("floatbottle");
+    if ((localObject == null) || (Util.nullAsNil(((bd)localObject).field_username).length() <= 0)) {
+      Log.e("MicroMsg.Bottle.BottleConversationUI", "resetUnread: can not find bottle");
     }
     for (;;)
     {
-      this.jSm.onPause();
+      this.vzq.onPause();
       super.onPause();
-      AppMethodBeat.o(18570);
+      AppMethodBeat.o(22681);
       return;
-      ((ak)localObject).hJ(0);
-      aw.aaz();
-      if (c.YF().a((ak)localObject, ((au)localObject).field_username) == -1) {
-        ab.e("MicroMsg.Bottle.BottleConversationUI", "reset bottle unread failed");
+      ((bb)localObject).pG(0);
+      bh.bCz();
+      if (com.tencent.mm.model.c.bzG().c((bb)localObject, ((bd)localObject).field_username) == -1) {
+        Log.e("MicroMsg.Bottle.BottleConversationUI", "reset bottle unread failed");
       }
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(18569);
+    AppMethodBeat.i(22680);
     super.onResume();
-    aw.aaz();
-    c.YA().a(this.jSm);
-    aw.aaz();
-    c.YF().a(this.jSm);
-    this.jSm.a(null, null);
-    AppMethodBeat.o(18569);
+    bh.bCz();
+    com.tencent.mm.model.c.bzA().add(this.vzq);
+    bh.bCz();
+    com.tencent.mm.model.c.bzG().add(this.vzq);
+    this.vzq.onNotifyChange(null, null);
+    AppMethodBeat.o(22680);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

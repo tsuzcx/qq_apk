@@ -2,7 +2,7 @@
 <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/iog" android:background="@color/al3" android:layout_width="375.0dip" android:layout_height="701.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:background="#ffffa631" android:layout_width="16.0dip" android:layout_height="2.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="25.0dip" />
-    <TextView android:textSize="35.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/ipb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="50.0dip" android:text="我是小花君" android:maxLines="1" />
+    <TextView android:textSize="35.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/ipb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="50.0dip" android:text="我是小花君" android:maxLines="1" />
     <TextView android:textSize="15.0dip" android:textColor="#ff3a3a3a" android:ellipsize="end" android:id="@id/in7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="75.0dip" android:text="我就是一个自由的灵魂哈哈哈哈哈哈哈哈哈" android:maxLines="2" android:includeFontPadding="false" />
     <RelativeLayout android:id="@id/inl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="27.0dip" android:layout_marginBottom="50.0dip">
         <TextView android:textSize="27.0dip" android:textColor="#ff3a3a3a" android:layout_gravity="bottom" android:id="@id/ipd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2" android:includeFontPadding="false" />
@@ -17,7 +17,7 @@
     </FrameLayout>
     <RelativeLayout android:id="@id/ika" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView android:id="@id/ipg" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="30.0dip" android:src="@drawable/a_a" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:id="@id/iqa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="30.0dip" android:text="@string/dyv" android:layout_toRightOf="@id/ipg" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/black" android:id="@id/iqa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="30.0dip" android:text="@string/dyv" android:layout_toRightOf="@id/ipg" />
         <FrameLayout android:id="@id/hxk" android:background="@drawable/a_c" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentRight="true">
             <ImageView android:layout_gravity="center" android:id="@id/ikg" android:layout_width="73.0dip" android:layout_height="73.0dip" android:scaleType="centerCrop" />
             <ImageView android:layout_gravity="center" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/hm_" />

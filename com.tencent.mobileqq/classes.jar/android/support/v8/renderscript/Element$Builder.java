@@ -31,67 +31,77 @@ public class Element$Builder
   
   public Builder add(Element paramElement, String paramString, int paramInt)
   {
-    if (this.mT != null)
+    Object localObject = this.mT;
+    if (localObject != null)
     {
-      this.mT.add(paramElement, paramString, paramInt);
+      ((ElementThunker.BuilderThunker)localObject).add(paramElement, paramString, paramInt);
       return this;
     }
-    if (paramInt < 1) {
-      throw new RSIllegalArgumentException("Array size cannot be less than 1.");
-    }
-    if ((this.mSkipPadding != 0) && (paramString.startsWith("#padding_")))
+    if (paramInt >= 1)
     {
-      this.mSkipPadding = 0;
-      return this;
-    }
-    if (paramElement.mVectorSize == 3) {}
-    for (this.mSkipPadding = 1;; this.mSkipPadding = 0)
-    {
-      if (this.mCount == this.mElements.length)
+      if ((this.mSkipPadding != 0) && (paramString.startsWith("#padding_")))
       {
-        Element[] arrayOfElement = new Element[this.mCount + 8];
-        String[] arrayOfString = new String[this.mCount + 8];
-        int[] arrayOfInt = new int[this.mCount + 8];
-        System.arraycopy(this.mElements, 0, arrayOfElement, 0, this.mCount);
+        this.mSkipPadding = 0;
+        return this;
+      }
+      if (paramElement.mVectorSize == 3) {
+        this.mSkipPadding = 1;
+      } else {
+        this.mSkipPadding = 0;
+      }
+      int i = this.mCount;
+      localObject = this.mElements;
+      if (i == localObject.length)
+      {
+        Element[] arrayOfElement = new Element[i + 8];
+        String[] arrayOfString = new String[i + 8];
+        int[] arrayOfInt = new int[i + 8];
+        System.arraycopy(localObject, 0, arrayOfElement, 0, i);
         System.arraycopy(this.mElementNames, 0, arrayOfString, 0, this.mCount);
         System.arraycopy(this.mArraySizes, 0, arrayOfInt, 0, this.mCount);
         this.mElements = arrayOfElement;
         this.mElementNames = arrayOfString;
         this.mArraySizes = arrayOfInt;
       }
-      this.mElements[this.mCount] = paramElement;
-      this.mElementNames[this.mCount] = paramString;
-      this.mArraySizes[this.mCount] = paramInt;
-      this.mCount += 1;
+      localObject = this.mElements;
+      i = this.mCount;
+      localObject[i] = paramElement;
+      this.mElementNames[i] = paramString;
+      this.mArraySizes[i] = paramInt;
+      this.mCount = (i + 1);
       return this;
     }
+    throw new RSIllegalArgumentException("Array size cannot be less than 1.");
   }
   
   public Element create()
   {
-    int i = 0;
-    if (this.mT != null) {
-      return this.mT.create(this.mRS);
+    Object localObject1 = this.mT;
+    if (localObject1 != null) {
+      return ((ElementThunker.BuilderThunker)localObject1).create(this.mRS);
     }
     this.mRS.validate();
-    Element[] arrayOfElement = new Element[this.mCount];
-    String[] arrayOfString = new String[this.mCount];
-    int[] arrayOfInt1 = new int[this.mCount];
-    System.arraycopy(this.mElements, 0, arrayOfElement, 0, this.mCount);
+    int j = this.mCount;
+    localObject1 = new Element[j];
+    String[] arrayOfString = new String[j];
+    int[] arrayOfInt = new int[j];
+    Object localObject2 = this.mElements;
+    int i = 0;
+    System.arraycopy(localObject2, 0, localObject1, 0, j);
     System.arraycopy(this.mElementNames, 0, arrayOfString, 0, this.mCount);
-    System.arraycopy(this.mArraySizes, 0, arrayOfInt1, 0, this.mCount);
-    int[] arrayOfInt2 = new int[arrayOfElement.length];
-    while (i < arrayOfElement.length)
+    System.arraycopy(this.mArraySizes, 0, arrayOfInt, 0, this.mCount);
+    localObject2 = new int[localObject1.length];
+    while (i < localObject1.length)
     {
-      arrayOfInt2[i] = arrayOfElement[i].getID(this.mRS);
+      localObject2[i] = localObject1[i].getID(this.mRS);
       i += 1;
     }
-    return new Element(this.mRS.nElementCreate2(arrayOfInt2, arrayOfString, arrayOfInt1), this.mRS, arrayOfElement, arrayOfString, arrayOfInt1);
+    return new Element(this.mRS.nElementCreate2((int[])localObject2, arrayOfString, arrayOfInt), this.mRS, (Element[])localObject1, arrayOfString, arrayOfInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Element.Builder
  * JD-Core Version:    0.7.0.1
  */

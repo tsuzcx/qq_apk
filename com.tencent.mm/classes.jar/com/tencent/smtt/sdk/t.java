@@ -1,23 +1,111 @@
 package com.tencent.smtt.sdk;
 
-import android.net.Uri;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tbs.c.a.a;
+import com.tencent.tbs.c.a.b;
 
 class t
-  implements ValueCallback<Uri>
 {
-  t(r paramr, android.webkit.ValueCallback paramValueCallback) {}
+  private static t e = null;
+  v a;
+  Context b;
+  b c;
+  a d;
   
-  public void a(Uri paramUri)
+  private t(Context paramContext)
   {
-    AppMethodBeat.i(139059);
-    this.a.onReceiveValue(new Uri[] { paramUri });
-    AppMethodBeat.o(139059);
+    AppMethodBeat.i(55196);
+    this.a = null;
+    this.b = paramContext.getApplicationContext();
+    this.a = new v(this.b);
+    AppMethodBeat.o(55196);
+  }
+  
+  public static t a(Context paramContext)
+  {
+    try
+    {
+      AppMethodBeat.i(219499);
+      if (e == null) {
+        e = new t(paramContext);
+      }
+      paramContext = e;
+      AppMethodBeat.o(219499);
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  void a(Activity paramActivity, int paramInt)
+  {
+    AppMethodBeat.i(55201);
+    this.a.a(paramActivity, paramInt);
+    AppMethodBeat.o(55201);
+  }
+  
+  public boolean a()
+  {
+    AppMethodBeat.i(219544);
+    this.a.a();
+    boolean bool = this.a.b();
+    AppMethodBeat.o(219544);
+    return bool;
+  }
+  
+  public boolean a(String paramString, Bundle paramBundle, b paramb)
+  {
+    AppMethodBeat.i(219529);
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      localBundle.putString("videoUrl", paramString);
+    }
+    if (paramb != null)
+    {
+      this.a.a();
+      if (!this.a.b())
+      {
+        AppMethodBeat.o(219529);
+        return false;
+      }
+      this.c = paramb;
+      this.d = new a()
+      {
+        public void onUserStateChanged()
+        {
+          AppMethodBeat.i(219779);
+          t.this.a.c();
+          AppMethodBeat.o(219779);
+        }
+      };
+      localBundle.putInt("callMode", 3);
+    }
+    for (;;)
+    {
+      paramBundle = this.a;
+      paramString = this;
+      if (paramb == null) {
+        paramString = null;
+      }
+      paramBundle.a(localBundle, paramString);
+      AppMethodBeat.o(219529);
+      return true;
+      localBundle.putInt("callMode", 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.t
  * JD-Core Version:    0.7.0.1
  */

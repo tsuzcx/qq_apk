@@ -26,42 +26,82 @@ public class AudioFormat
   private static final int VALUE_WAV = 8;
   private static final int VALUE_WMA = 7;
   
-  public static AudioFormat.AudioType getAudioType(int paramInt)
+  public static AudioType getAudioType(int paramInt)
   {
-    AppMethodBeat.i(105563);
-    Object localObject = AudioFormat.AudioType.values();
+    AppMethodBeat.i(87749);
+    Object localObject = AudioType.values();
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
-      AudioFormat.AudioType localAudioType = localObject[i];
-      if (AudioFormat.AudioType.access$000(localAudioType) == paramInt)
+      AudioType localAudioType = localObject[i];
+      if (localAudioType.value == paramInt)
       {
-        AppMethodBeat.o(105563);
+        AppMethodBeat.o(87749);
         return localAudioType;
       }
       i += 1;
     }
-    localObject = AudioFormat.AudioType.UNSUPPORT;
-    AppMethodBeat.o(105563);
+    localObject = AudioType.UNSUPPORT;
+    AppMethodBeat.o(87749);
     return localObject;
   }
   
-  public static boolean isAudioType(AudioFormat.AudioType paramAudioType)
+  public static boolean isAudioType(AudioType paramAudioType)
   {
-    AppMethodBeat.i(105562);
-    if ((paramAudioType != null) && (!AudioFormat.AudioType.UNSUPPORT.equals(paramAudioType)))
+    AppMethodBeat.i(87748);
+    if ((paramAudioType != null) && (!AudioType.UNSUPPORT.equals(paramAudioType)))
     {
-      AppMethodBeat.o(105562);
+      AppMethodBeat.o(87748);
       return true;
     }
-    AppMethodBeat.o(105562);
+    AppMethodBeat.o(87748);
     return false;
+  }
+  
+  public static enum AudioType
+  {
+    private String extension;
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(87757);
+      UNSUPPORT = new AudioType("UNSUPPORT", 0, 1, "Unknown");
+      MP3 = new AudioType("MP3", 1, 9, "mp3");
+      OGG = new AudioType("OGG", 2, 4, "ogg");
+      M4A = new AudioType("M4A", 3, 3, "m4a");
+      FLAC = new AudioType("FLAC", 4, 2, "flac");
+      APE = new AudioType("APE", 5, 5, "ape");
+      WAV = new AudioType("WAV", 6, 8, "wav");
+      WMA = new AudioType("WMA", 7, 7, "wma");
+      AMR = new AudioType("AMR", 8, 6, "amr");
+      MP4 = new AudioType("MP4", 9, 10, "mp4");
+      AAC = new AudioType("AAC", 10, 11, "aac");
+      $VALUES = new AudioType[] { UNSUPPORT, MP3, OGG, M4A, FLAC, APE, WAV, WMA, AMR, MP4, AAC };
+      AppMethodBeat.o(87757);
+    }
+    
+    private AudioType(int paramInt, String paramString)
+    {
+      this.value = paramInt;
+      this.extension = paramString;
+    }
+    
+    public final String getExtension()
+    {
+      return this.extension;
+    }
+    
+    public final int getValue()
+    {
+      return this.value;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.AudioFormat
  * JD-Core Version:    0.7.0.1
  */

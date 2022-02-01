@@ -11,7 +11,12 @@ class PagShelfPlayer$2
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    TTPTLogger.e("PagShelfPlayer", "音频播放出错，code:" + paramInt1 + ",extrCode:" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("音频播放出错，code:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",extrCode:");
+    localStringBuilder.append(paramInt2);
+    TTPTLogger.e("PagShelfPlayer", localStringBuilder.toString());
     PagShelfPlayer.access$202(this.this$0, true);
     if (paramMediaPlayer != null) {
       paramMediaPlayer.reset();
@@ -21,7 +26,7 @@ class PagShelfPlayer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.player.PagShelfPlayer.2
  * JD-Core Version:    0.7.0.1
  */

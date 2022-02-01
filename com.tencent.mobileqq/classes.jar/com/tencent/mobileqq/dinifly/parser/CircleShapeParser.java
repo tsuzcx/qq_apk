@@ -1,90 +1,70 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
 import com.tencent.mobileqq.dinifly.model.content.CircleShape;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class CircleShapeParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "p", "s", "hd", "d" });
+  
   static CircleShape parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition, int paramInt)
   {
-    AnimatablePointValue localAnimatablePointValue = null;
     boolean bool1;
-    label10:
-    boolean bool2;
-    AnimatableValue localAnimatableValue;
-    String str1;
-    if (paramInt == 3)
-    {
+    if (paramInt == 3) {
       bool1 = true;
-      bool2 = false;
-      localAnimatableValue = null;
-      str1 = null;
+    } else {
+      bool1 = false;
     }
-    for (;;)
+    String str = null;
+    Object localObject1 = str;
+    Object localObject2 = localObject1;
+    boolean bool2 = false;
+    while (paramJsonReader.hasNext())
     {
-      label19:
-      if (!paramJsonReader.hasNext()) {
-        break label267;
-      }
-      String str2 = paramJsonReader.nextName();
-      paramInt = -1;
-      switch (str2.hashCode())
+      paramInt = paramJsonReader.selectName(NAMES);
+      if (paramInt != 0)
       {
-      }
-      for (;;)
-      {
-        switch (paramInt)
+        if (paramInt != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label19;
-          bool1 = false;
-          break label10;
-          if (str2.equals("nm"))
+          if (paramInt != 2)
           {
-            paramInt = 0;
-            continue;
-            if (str2.equals("p"))
+            if (paramInt != 3)
             {
-              paramInt = 1;
-              continue;
-              if (str2.equals("s"))
+              if (paramInt != 4)
               {
-                paramInt = 2;
-                continue;
-                if (str2.equals("hd"))
-                {
-                  paramInt = 3;
-                  continue;
-                  if (str2.equals("d")) {
-                    paramInt = 4;
-                  }
-                }
+                paramJsonReader.skipName();
+                paramJsonReader.skipValue();
+              }
+              else if (paramJsonReader.nextInt() == 3)
+              {
+                bool1 = true;
+              }
+              else
+              {
+                bool1 = false;
               }
             }
+            else {
+              bool2 = paramJsonReader.nextBoolean();
+            }
           }
-          break;
+          else {
+            localObject2 = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          localObject1 = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localAnimatableValue = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatablePointValue = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
-      continue;
-      bool2 = paramJsonReader.nextBoolean();
-      continue;
-      if (paramJsonReader.nextInt() == 3) {
-        bool1 = true;
-      } else {
-        bool1 = false;
+      else {
+        str = paramJsonReader.nextString();
       }
     }
-    label267:
-    return new CircleShape(str1, localAnimatableValue, localAnimatablePointValue, bool1, bool2);
+    return new CircleShape(str, (AnimatableValue)localObject1, (AnimatablePointValue)localObject2, bool1, bool2);
   }
 }
 

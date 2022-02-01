@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.wenote.model.a;
 
-import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.arf;
 
 public class o
   extends c
 {
-  public String cBD;
+  public String hTM;
   public int type;
-  public aca vxq;
-  public String vxr = "";
-  public boolean vxs;
+  public arf xyn;
+  public String xyo = "";
+  public boolean xyp;
   
-  public String dhQ()
+  public String iEa()
   {
-    return this.vxr;
+    return this.xyo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.o
  * JD-Core Version:    0.7.0.1
  */

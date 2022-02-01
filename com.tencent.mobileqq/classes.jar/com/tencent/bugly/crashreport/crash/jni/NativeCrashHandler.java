@@ -6,7 +6,6 @@ import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
 import com.tencent.bugly.crashreport.crash.c;
 import com.tencent.bugly.proguard.w;
 import com.tencent.bugly.proguard.x;
-import com.tencent.bugly.proguard.y;
 import com.tencent.bugly.proguard.z;
 import java.io.File;
 
@@ -33,233 +32,235 @@ public class NativeCrashHandler
   private NativeCrashHandler(Context paramContext, com.tencent.bugly.crashreport.common.info.a parama, com.tencent.bugly.crashreport.crash.b paramb, w paramw, boolean paramBoolean, String paramString)
   {
     this.b = z.a(paramContext);
-    for (;;)
+    try
     {
-      try
-      {
-        boolean bool = z.a(paramString);
-        if (bool) {
-          continue;
-        }
+      if (!z.a(paramString)) {
+        break label101;
       }
-      catch (Throwable paramString)
-      {
-        paramString = com.tencent.bugly.crashreport.common.info.a.a(paramContext).c;
-        paramString = "/data/data/" + paramString + "/app_bugly";
-        continue;
-      }
-      this.n = paramb;
-      this.f = paramString;
-      this.c = parama;
-      this.d = paramw;
-      this.g = paramBoolean;
-      this.e = new a(paramContext, parama, paramb, com.tencent.bugly.crashreport.common.strategy.a.a());
-      return;
       paramString = paramContext.getDir("bugly", 0).getAbsolutePath();
     }
+    catch (Throwable paramString)
+    {
+      label58:
+      StringBuilder localStringBuilder;
+      break label58;
+    }
+    paramString = com.tencent.bugly.crashreport.common.info.a.a(paramContext).c;
+    localStringBuilder = new StringBuilder("/data/data/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/app_bugly");
+    paramString = localStringBuilder.toString();
+    label101:
+    this.n = paramb;
+    this.f = paramString;
+    this.c = parama;
+    this.d = paramw;
+    this.g = paramBoolean;
+    this.e = new a(paramContext, parama, paramb, com.tencent.bugly.crashreport.common.strategy.a.a());
   }
   
   private void a(boolean paramBoolean)
   {
-    boolean bool;
-    String str2;
-    String str3;
-    Object localObject3;
-    for (;;)
+    try
     {
-      try
+      if (this.j)
       {
-        if (this.j)
+        x.d("[Native] Native crash report has already registered.", new Object[0]);
+        return;
+      }
+      bool = this.i;
+      if (!bool) {}
+    }
+    finally
+    {
+      boolean bool;
+      String str1;
+      String str2;
+      String str3;
+      Object localObject3;
+      Object localObject1;
+      label386:
+      label737:
+      for (;;)
+      {
+        label227:
+        throw localObject2;
+      }
+    }
+    try
+    {
+      str1 = regist(this.f, paramBoolean, 1);
+      if (str1 != null)
+      {
+        x.a("[Native] Native Crash Report enable.", new Object[0]);
+        x.c("[Native] Check extra jni for Bugly NDK v%s", new Object[] { str1 });
+        str2 = "2.1.1".replace(".", "");
+        str3 = "2.3.0".replace(".", "");
+        localObject3 = str1.replace(".", "");
+        if (((String)localObject3).length() == 2)
         {
-          x.d("[Native] Native crash report has already registered.", new Object[0]);
-          return;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append((String)localObject3);
+          ((StringBuilder)localObject1).append("0");
         }
-        bool = this.i;
-        if (bool) {
-          try
-          {
-            str2 = regist(this.f, paramBoolean, 1);
-            if (str2 != null)
-            {
-              x.a("[Native] Native Crash Report enable.", new Object[0]);
-              x.c("[Native] Check extra jni for Bugly NDK v%s", new Object[] { str2 });
-              str3 = "2.1.1".replace(".", "");
-              str4 = "2.3.0".replace(".", "");
-              localObject3 = str2.replace(".", "");
-              if (((String)localObject3).length() != 2) {
-                break label342;
-              }
-              str1 = (String)localObject3 + "0";
-            }
+        for (;;)
+        {
+          localObject1 = ((StringBuilder)localObject1).toString();
+          break;
+          localObject1 = localObject3;
+          if (((String)localObject3).length() != 1) {
+            break;
           }
-          catch (Throwable localThrowable1)
-          {
-            String str4;
-            String str1;
-            label137:
-            label187:
-            label203:
-            x.c("[Native] Failed to load Bugly SO file.", new Object[0]);
-          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append((String)localObject3);
+          ((StringBuilder)localObject1).append("00");
         }
       }
-      finally {}
-      try
-      {
-        if (Integer.parseInt(str1) >= Integer.parseInt(str3)) {
-          l = true;
-        }
-        if (Integer.parseInt(str1) >= Integer.parseInt(str4)) {
-          m = true;
-        }
+    }
+    catch (Throwable localThrowable1)
+    {
+      break label386;
+    }
+    try
+    {
+      if (Integer.parseInt((String)localObject1) >= Integer.parseInt(str2)) {
+        l = true;
       }
-      catch (Throwable localThrowable3)
-      {
-        Object localObject2;
-        continue;
+      if (Integer.parseInt((String)localObject1) >= Integer.parseInt(str3)) {
+        m = true;
       }
-      if (!m) {
-        break label380;
-      }
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label227;
+    }
+    if (m) {
       x.a("[Native] Info setting jni can be accessed.", new Object[0]);
-      if (!l) {
-        break label393;
-      }
-      x.a("[Native] Extra jni can be accessed.", new Object[0]);
-      this.c.q = str2;
-      str1 = "-".concat(this.c.q);
-      if ((!c.b) && (!this.c.g.contains(str1))) {
-        this.c.g = this.c.g.concat("-").concat(this.c.q);
-      }
-      x.a("comInfo.sdkVersion %s", new Object[] { this.c.g });
-      y.a(l);
-      this.j = true;
-    }
-    label322:
-    label342:
-    label380:
-    do
-    {
-      this.i = false;
-      this.h = false;
-      break;
-      localObject2 = localObject3;
-      if (((String)localObject3).length() != 1) {
-        break label137;
-      }
-      localObject2 = (String)localObject3 + "00";
-      break label137;
+    } else {
       x.d("[Native] Info setting jni can not be accessed.", new Object[0]);
-      break label187;
-      x.d("[Native] Extra jni can not be accessed.", new Object[0]);
-      break label203;
-      bool = this.h;
-    } while (!bool);
-    for (;;)
-    {
-      try
-      {
-        label393:
-        localObject2 = Integer.TYPE;
-        localObject3 = Integer.TYPE;
-        str2 = this.f;
-        str3 = com.tencent.bugly.crashreport.common.info.b.a(this.b, false);
-        if (!paramBoolean) {
-          break label747;
-        }
-        i1 = 1;
-        localObject3 = (String)z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "registNativeExceptionHandler2", null, new Class[] { String.class, String.class, localObject2, localObject3 }, new Object[] { str2, str3, Integer.valueOf(i1), Integer.valueOf(1) });
-        localObject2 = localObject3;
-        if (localObject3 == null)
-        {
-          localObject2 = Integer.TYPE;
-          localObject3 = this.f;
-          str2 = com.tencent.bugly.crashreport.common.info.b.a(this.b, false);
-          com.tencent.bugly.crashreport.common.info.a.b();
-          i1 = com.tencent.bugly.crashreport.common.info.a.J();
-          localObject2 = (String)z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "registNativeExceptionHandler", null, new Class[] { String.class, String.class, localObject2 }, new Object[] { localObject3, str2, Integer.valueOf(i1) });
-        }
-        if (localObject2 == null) {
-          break label322;
-        }
-        this.j = true;
-        this.c.q = ((String)localObject2);
-        localObject2 = (Boolean)z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "checkExtraJni", null, new Class[] { String.class }, new Object[] { localObject2 });
-        if (localObject2 != null)
-        {
-          bool = ((Boolean)localObject2).booleanValue();
-          l = bool;
-          y.a(bool);
-        }
-        z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "enableHandler", null, new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(true) });
-        if (!paramBoolean) {
-          break label752;
-        }
-        i1 = 1;
-        z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "setLogMode", null, new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(i1) });
-      }
-      catch (Throwable localThrowable2) {}
-      break label322;
-      label747:
-      int i1 = 5;
-      continue;
-      label752:
-      i1 = 5;
     }
+    if (l) {
+      x.a("[Native] Extra jni can be accessed.", new Object[0]);
+    } else {
+      x.d("[Native] Extra jni can not be accessed.", new Object[0]);
+    }
+    this.c.q = str1;
+    localObject1 = "-".concat(this.c.q);
+    if ((!c.b) && (!this.c.g.contains((CharSequence)localObject1))) {
+      this.c.g = this.c.g.concat("-").concat(this.c.q);
+    }
+    x.a("comInfo.sdkVersion %s", new Object[] { this.c.g });
+    this.j = true;
+    return;
+    x.c("[Native] Failed to load Bugly SO file.", new Object[0]);
+    break label737;
+    bool = this.h;
+    if (bool) {}
+    try
+    {
+      localObject1 = Integer.TYPE;
+      localObject3 = Integer.TYPE;
+      str1 = this.f;
+      str2 = com.tencent.bugly.crashreport.common.info.b.a(this.b, false);
+      i2 = 5;
+      if (!paramBoolean) {
+        break label778;
+      }
+      i1 = 1;
+    }
+    catch (Throwable localThrowable3)
+    {
+      for (;;)
+      {
+        int i2;
+        continue;
+        int i1 = 5;
+      }
+    }
+    localObject3 = (String)z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "registNativeExceptionHandler2", null, new Class[] { String.class, String.class, localObject1, localObject3 }, new Object[] { str1, str2, Integer.valueOf(i1), Integer.valueOf(1) });
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      localObject1 = Integer.TYPE;
+      localObject3 = this.f;
+      str1 = com.tencent.bugly.crashreport.common.info.b.a(this.b, false);
+      com.tencent.bugly.crashreport.common.info.a.b();
+      i1 = com.tencent.bugly.crashreport.common.info.a.I();
+      localObject1 = (String)z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "registNativeExceptionHandler", null, new Class[] { String.class, String.class, localObject1 }, new Object[] { localObject3, str1, Integer.valueOf(i1) });
+    }
+    if (localObject1 != null)
+    {
+      this.j = true;
+      this.c.q = ((String)localObject1);
+      localObject1 = (Boolean)z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "checkExtraJni", null, new Class[] { String.class }, new Object[] { localObject1 });
+      if (localObject1 != null) {
+        l = ((Boolean)localObject1).booleanValue();
+      }
+      z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "enableHandler", null, new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(true) });
+      i1 = i2;
+      if (paramBoolean) {
+        i1 = 1;
+      }
+      z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "setLogMode", null, new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(i1) });
+      return;
+    }
+    this.i = false;
+    this.h = false;
   }
   
   private boolean a(int paramInt, String paramString)
   {
-    if ((!this.i) || (!m)) {}
-    do
-    {
-      return false;
-      try
-      {
-        setNativeInfo(paramInt, paramString);
-        return true;
-      }
-      catch (UnsatisfiedLinkError paramString)
-      {
-        m = false;
+    if (this.i) {
+      if (!m) {
         return false;
       }
-      catch (Throwable paramString) {}
-    } while (x.a(paramString));
-    paramString.printStackTrace();
-    return false;
+    }
+    try
+    {
+      setNativeInfo(paramInt, paramString);
+      return true;
+    }
+    catch (Throwable paramString)
+    {
+      if (!x.a(paramString)) {
+        paramString.printStackTrace();
+      }
+      return false;
+      m = false;
+      return false;
+    }
+    catch (UnsatisfiedLinkError paramString)
+    {
+      label37:
+      break label37;
+    }
   }
   
   private static boolean a(String paramString, boolean paramBoolean)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        x.a("[Native] Trying to load so: %s", new Object[] { paramString });
-        if (paramBoolean) {
-          System.load(paramString);
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        paramBoolean = false;
+      x.a("[Native] Trying to load so: %s", new Object[] { paramString });
+      if (paramBoolean) {
+        System.load(paramString);
+      } else {
+        System.loadLibrary(paramString);
       }
       try
       {
         x.a("[Native] Successfully loaded SO: %s", new Object[] { paramString });
         return true;
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable localThrowable1)
       {
-        for (;;)
-        {
-          paramBoolean = true;
-        }
+        paramBoolean = true;
       }
-      System.loadLibrary(paramString);
+      x.d(localThrowable2.getMessage(), new Object[0]);
     }
-    x.d(localThrowable1.getMessage(), new Object[0]);
+    catch (Throwable localThrowable2)
+    {
+      paramBoolean = false;
+    }
     x.d("[Native] Failed to load so: %s", new Object[] { paramString });
     return paramBoolean;
   }
@@ -267,113 +268,57 @@ public class NativeCrashHandler
   private void b(boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        startNativeMonitor();
-        return;
-      }
-      finally {}
-      c();
+      startNativeMonitor();
+      return;
     }
+    finally {}
+    c();
   }
   
-  /* Error */
   private void c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
-    //   6: ifne +17 -> 23
-    //   9: ldc_w 299
-    //   12: iconst_0
-    //   13: anewarray 4	java/lang/Object
-    //   16: invokestatic 134	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   19: pop
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: return
-    //   23: aload_0
-    //   24: invokevirtual 302	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:unregist	()Ljava/lang/String;
-    //   27: ifnull +34 -> 61
-    //   30: ldc_w 304
-    //   33: iconst_0
-    //   34: anewarray 4	java/lang/Object
-    //   37: invokestatic 142	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   40: pop
-    //   41: aload_0
-    //   42: iconst_0
-    //   43: putfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
-    //   46: goto -26 -> 20
-    //   49: astore_1
-    //   50: ldc_w 306
-    //   53: iconst_0
-    //   54: anewarray 4	java/lang/Object
-    //   57: invokestatic 146	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   60: pop
-    //   61: ldc 221
-    //   63: ldc 250
-    //   65: aconst_null
-    //   66: iconst_1
-    //   67: anewarray 225	java/lang/Class
-    //   70: dup
-    //   71: iconst_0
-    //   72: getstatic 251	java/lang/Boolean:TYPE	Ljava/lang/Class;
-    //   75: aastore
-    //   76: iconst_1
-    //   77: anewarray 4	java/lang/Object
-    //   80: dup
-    //   81: iconst_0
-    //   82: iconst_0
-    //   83: invokestatic 254	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   86: aastore
-    //   87: invokestatic 232	com/tencent/bugly/proguard/z:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   90: pop
-    //   91: aload_0
-    //   92: iconst_0
-    //   93: putfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
-    //   96: ldc_w 304
-    //   99: iconst_0
-    //   100: anewarray 4	java/lang/Object
-    //   103: invokestatic 142	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   106: pop
-    //   107: goto -87 -> 20
-    //   110: astore_1
-    //   111: ldc_w 306
-    //   114: iconst_0
-    //   115: anewarray 4	java/lang/Object
-    //   118: invokestatic 146	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   121: pop
-    //   122: aload_0
-    //   123: iconst_0
-    //   124: putfield 51	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:i	Z
-    //   127: aload_0
-    //   128: iconst_0
-    //   129: putfield 49	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:h	Z
-    //   132: goto -112 -> 20
-    //   135: astore_1
-    //   136: aload_0
-    //   137: monitorexit
-    //   138: aload_1
-    //   139: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	140	0	this	NativeCrashHandler
-    //   49	1	1	localThrowable1	Throwable
-    //   110	1	1	localThrowable2	Throwable
-    //   135	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   23	46	49	java/lang/Throwable
-    //   61	107	110	java/lang/Throwable
-    //   2	20	135	finally
-    //   23	46	135	finally
-    //   50	61	135	finally
-    //   61	107	135	finally
-    //   111	132	135	finally
+    label49:
+    label60:
+    label109:
+    try
+    {
+      if (!this.j)
+      {
+        x.d("[Native] Native crash report has already unregistered.", new Object[0]);
+        return;
+      }
+    }
+    finally {}
+    try
+    {
+      if (unregist() == null) {
+        break label60;
+      }
+      x.a("[Native] Successfully closed native crash report.", new Object[0]);
+      this.j = false;
+      return;
+    }
+    catch (Throwable localThrowable1)
+    {
+      break label49;
+    }
+    x.c("[Native] Failed to close native crash report.", new Object[0]);
+    try
+    {
+      z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "enableHandler", null, new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(false) });
+      this.j = false;
+      x.a("[Native] Successfully closed native crash report.", new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label109;
+    }
+    x.c("[Native] Failed to close native crash report.", new Object[0]);
+    this.i = false;
+    this.h = false;
   }
   
   private void c(boolean paramBoolean)
@@ -429,14 +374,17 @@ public class NativeCrashHandler
   public static void setShouldHandleInJava(boolean paramBoolean)
   {
     o = paramBoolean;
-    if (a != null) {
-      a.a(999, paramBoolean);
+    NativeCrashHandler localNativeCrashHandler = a;
+    if (localNativeCrashHandler != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramBoolean);
+      localNativeCrashHandler.a(999, localStringBuilder.toString());
     }
   }
   
   protected final void a()
   {
-    int i2 = 0;
     long l1 = z.b();
     long l2 = c.g;
     long l3 = z.b();
@@ -444,9 +392,9 @@ public class NativeCrashHandler
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory())) {}
     for (;;)
     {
-      int i1;
+      int i3;
+      int i2;
       int i4;
-      int i5;
       try
       {
         localObject1 = ((File)localObject1).listFiles();
@@ -456,44 +404,45 @@ public class NativeCrashHandler
             return;
           }
           int i6 = localObject1.length;
-          i1 = 0;
           i3 = 0;
-          if (i1 < i6)
+          i5 = 0;
+          i1 = 0;
+          if (i3 < i6)
           {
-            Object localObject2 = localObject1[i1];
+            Object localObject2 = localObject1[i3];
             long l4 = localObject2.lastModified();
             if (l4 >= l1 - l2)
             {
-              i4 = i2;
-              i5 = i3;
-              if (l4 < 86400000L + l3) {
-                break label205;
+              i2 = i5;
+              i4 = i1;
+              if (l4 < l3 + 86400000L) {
+                break label209;
               }
             }
             x.a("[Native] Delete record file: %s", new Object[] { localObject2.getAbsolutePath() });
-            i3 += 1;
-            i4 = i2;
-            i5 = i3;
+            i5 += 1;
+            i2 = i5;
+            i4 = i1;
             if (!localObject2.delete()) {
-              break label205;
+              break label209;
             }
-            i4 = i2 + 1;
-            i5 = i3;
-            break label205;
+            i4 = i1 + 1;
+            i2 = i5;
+            break label209;
           }
-          x.c("[Native] Number of record files overdue: %d, has deleted: %d", new Object[] { Integer.valueOf(i3), Integer.valueOf(i2) });
-          return;
+          x.c("[Native] Number of record files overdue: %d, has deleted: %d", new Object[] { Integer.valueOf(i5), Integer.valueOf(i1) });
         }
+        return;
       }
       catch (Throwable localThrowable)
       {
         x.a(localThrowable);
       }
       return;
-      label205:
-      i1 += 1;
-      i2 = i4;
-      int i3 = i5;
+      label209:
+      i3 += 1;
+      int i5 = i2;
+      int i1 = i4;
     }
   }
   
@@ -505,8 +454,10 @@ public class NativeCrashHandler
     if (!l) {
       return false;
     }
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
-      return false;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString3 == null) {
+        return false;
+      }
     }
     try
     {
@@ -521,18 +472,20 @@ public class NativeCrashHandler
       }
       return false;
     }
-    catch (UnsatisfiedLinkError paramString1)
-    {
-      l = false;
-      return false;
-    }
     catch (Throwable paramString1)
     {
       if (!x.a(paramString1)) {
         paramString1.printStackTrace();
       }
+      return false;
+      l = false;
+      return false;
     }
-    return false;
+    catch (UnsatisfiedLinkError paramString1)
+    {
+      label130:
+      break label130;
+    }
   }
   
   protected native boolean appendNativeLog(String paramString1, String paramString2, String paramString3);
@@ -579,18 +532,20 @@ public class NativeCrashHandler
       String str = (String)z.a("com.tencent.feedback.eup.jni.NativeExceptionUpload", "getNativeLog", null, null, null);
       return str;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      l = false;
-      return null;
-    }
     catch (Throwable localThrowable)
     {
       if (!x.a(localThrowable)) {
         localThrowable.printStackTrace();
       }
+      return null;
+      l = false;
+      return null;
     }
-    return null;
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      label67:
+      break label67;
+    }
   }
   
   public NativeExceptionHandler getNativeExceptionHandler()
@@ -616,77 +571,30 @@ public class NativeCrashHandler
     }
   }
   
-  /* Error */
   public void onStrategyChanged(StrategyBean paramStrategyBean)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_1
-    //   5: ifnull +35 -> 40
-    //   8: aload_1
-    //   9: getfield 385	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
-    //   12: aload_0
-    //   13: getfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
-    //   16: if_icmpeq +24 -> 40
-    //   19: ldc_w 387
-    //   22: iconst_1
-    //   23: anewarray 4	java/lang/Object
-    //   26: dup
-    //   27: iconst_0
-    //   28: aload_1
-    //   29: getfield 385	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
-    //   32: invokestatic 254	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   35: aastore
-    //   36: invokestatic 134	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   39: pop
-    //   40: invokestatic 82	com/tencent/bugly/crashreport/common/strategy/a:a	()Lcom/tencent/bugly/crashreport/common/strategy/a;
-    //   43: invokevirtual 390	com/tencent/bugly/crashreport/common/strategy/a:c	()Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
-    //   46: getfield 385	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
-    //   49: ifeq +44 -> 93
-    //   52: aload_0
-    //   53: getfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:k	Z
-    //   56: ifeq +37 -> 93
-    //   59: iload_2
-    //   60: aload_0
-    //   61: getfield 53	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
-    //   64: if_icmpeq +26 -> 90
-    //   67: ldc_w 392
-    //   70: iconst_1
-    //   71: anewarray 4	java/lang/Object
-    //   74: dup
-    //   75: iconst_0
-    //   76: iload_2
-    //   77: invokestatic 254	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   80: aastore
-    //   81: invokestatic 142	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   84: pop
-    //   85: aload_0
-    //   86: iload_2
-    //   87: invokespecial 394	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:b	(Z)V
-    //   90: aload_0
-    //   91: monitorexit
-    //   92: return
-    //   93: iconst_0
-    //   94: istore_2
-    //   95: goto -36 -> 59
-    //   98: astore_1
-    //   99: aload_0
-    //   100: monitorexit
-    //   101: aload_1
-    //   102: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	103	0	this	NativeCrashHandler
-    //   0	103	1	paramStrategyBean	StrategyBean
-    //   1	94	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   8	40	98	finally
-    //   40	59	98	finally
-    //   59	90	98	finally
+    if (paramStrategyBean != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (paramStrategyBean.f != this.j) {
+          x.d("server native changed to %b", new Object[] { Boolean.valueOf(paramStrategyBean.f) });
+        }
+        if ((com.tencent.bugly.crashreport.common.strategy.a.a().c().f) && (this.k))
+        {
+          bool = true;
+          if (bool != this.j)
+          {
+            x.a("native changed to %b", new Object[] { Boolean.valueOf(bool) });
+            b(bool);
+          }
+          return;
+        }
+      }
+      finally {}
+      boolean bool = false;
+    }
   }
   
   public boolean putKeyValueToNative(String paramString1, String paramString2)
@@ -697,8 +605,10 @@ public class NativeCrashHandler
     if (!l) {
       return false;
     }
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
+    if (paramString1 != null) {
+      if (paramString2 == null) {
+        return false;
+      }
     }
     try
     {
@@ -713,18 +623,20 @@ public class NativeCrashHandler
       }
       return false;
     }
-    catch (UnsatisfiedLinkError paramString1)
-    {
-      l = false;
-      return false;
-    }
     catch (Throwable paramString1)
     {
       if (!x.a(paramString1)) {
         paramString1.printStackTrace();
       }
+      return false;
+      l = false;
+      return false;
     }
-    return false;
+    catch (UnsatisfiedLinkError paramString1)
+    {
+      label114:
+      break label114;
+    }
   }
   
   protected native boolean putNativeKeyValue(String paramString1, String paramString2);
@@ -771,10 +683,13 @@ public class NativeCrashHandler
   
   public boolean setNativeIsAppForeground(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (String str = "true";; str = "false") {
-      return a(14, str);
+    String str;
+    if (paramBoolean) {
+      str = "true";
+    } else {
+      str = "false";
     }
+    return a(14, str);
   }
   
   public boolean setNativeLaunchTime(long paramLong)
@@ -800,90 +715,104 @@ public class NativeCrashHandler
   
   public void setUserOpened(boolean paramBoolean)
   {
-    boolean bool = true;
-    try
+    for (;;)
     {
-      c(paramBoolean);
-      paramBoolean = isUserOpened();
-      com.tencent.bugly.crashreport.common.strategy.a locala = com.tencent.bugly.crashreport.common.strategy.a.a();
-      if (locala != null) {
-        if ((paramBoolean) && (locala.c().g)) {
-          paramBoolean = bool;
-        }
-      }
-      for (;;)
+      try
       {
+        c(paramBoolean);
+        boolean bool = isUserOpened();
+        com.tencent.bugly.crashreport.common.strategy.a locala = com.tencent.bugly.crashreport.common.strategy.a.a();
+        paramBoolean = bool;
+        if (locala != null)
+        {
+          if ((!bool) || (!locala.c().f)) {
+            break label80;
+          }
+          paramBoolean = true;
+        }
         if (paramBoolean != this.j)
         {
           x.a("native changed to %b", new Object[] { Boolean.valueOf(paramBoolean) });
           b(paramBoolean);
         }
         return;
-        paramBoolean = false;
       }
+      finally {}
+      label80:
+      paramBoolean = false;
     }
-    finally {}
   }
   
   public void startNativeMonitor()
   {
-    boolean bool;
-    label208:
-    Object localObject2;
     for (;;)
     {
+      String str;
       try
       {
-        if ((this.i) || (this.h))
+        if ((!this.i) && (!this.h))
+        {
+          Object localObject1 = "Bugly";
+          if (!z.a(this.c.p))
+          {
+            bool = true;
+            if (c.b)
+            {
+              if (bool)
+              {
+                localObject1 = this.c.p;
+              }
+              else
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("Bugly");
+                ((StringBuilder)localObject1).append("-rqd");
+                localObject1 = ((StringBuilder)localObject1).toString();
+              }
+              this.i = a((String)localObject1, bool);
+              if ((!this.i) && (!bool)) {
+                this.h = a("NativeRQD", false);
+              }
+            }
+            else
+            {
+              str = this.c.p;
+              if (bool) {
+                break label286;
+              }
+              this.c.getClass();
+              this.i = a((String)localObject1, bool);
+            }
+            if (!this.i)
+            {
+              bool = this.h;
+              if (!bool) {
+                return;
+              }
+            }
+            a(this.g);
+            if (l)
+            {
+              setNativeAppVersion(this.c.m);
+              setNativeAppChannel(this.c.o);
+              setNativeAppPackage(this.c.c);
+              setNativeUserId(this.c.f());
+              setNativeIsAppForeground(this.c.a());
+              setNativeLaunchTime(this.c.a);
+            }
+          }
+        }
+        else
         {
           a(this.g);
           return;
         }
-        String str1 = "Bugly";
-        if (!z.a(this.c.p))
-        {
-          bool = true;
-          if (!c.b) {
-            break;
-          }
-          if (!bool) {
-            break label208;
-          }
-          str1 = this.c.p;
-          this.i = a(str1, bool);
-          if ((!this.i) && (!bool)) {
-            this.h = a("NativeRQD", false);
-          }
-          if ((!this.i) && (!this.h)) {
-            continue;
-          }
-          a(this.g);
-          if (!l) {
-            continue;
-          }
-          setNativeAppVersion(this.c.m);
-          setNativeAppChannel(this.c.o);
-          setNativeAppPackage(this.c.c);
-          setNativeUserId(this.c.f());
-          setNativeIsAppForeground(this.c.a());
-          setNativeLaunchTime(this.c.a);
-          continue;
-        }
-        bool = false;
       }
       finally {}
+      boolean bool = false;
       continue;
-      localObject2 = "Bugly" + "-rqd";
-    }
-    String str2 = this.c.p;
-    if (!bool) {
-      this.c.getClass();
-    }
-    for (;;)
-    {
-      this.i = a((String)localObject2, bool);
-      break;
-      localObject2 = str2;
+      label286:
+      Object localObject3 = str;
     }
   }
   
@@ -901,9 +830,15 @@ public class NativeCrashHandler
   
   public void testNativeCrash(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    a(16, paramBoolean1);
-    a(17, paramBoolean2);
-    a(18, paramBoolean3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramBoolean1);
+    a(16, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramBoolean2);
+    a(17, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramBoolean3);
+    a(18, localStringBuilder.toString());
     testNativeCrash();
   }
   
@@ -911,7 +846,7 @@ public class NativeCrashHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.crash.jni.NativeCrashHandler
  * JD-Core Version:    0.7.0.1
  */

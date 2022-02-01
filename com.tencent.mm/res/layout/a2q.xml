@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.base.MMPullDownView android:id="@id/g32" android:background="@color/aav" android:focusableInTouchMode="false" android:scrollbars="none" android:clickable="false" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_marginLeft="50.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="50.0dip">
-        <View android:background="#ffdfdfdf" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <ImageView android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/fts_hot_article" />
-            <TextView android:textSize="@dimen/nf" android:id="@id/c2h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/epr" />
-        </LinearLayout>
-        <View android:background="#ffdfdfdf" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/ahb" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+</com.tencent.mm.ui.base.MMPullDownView>

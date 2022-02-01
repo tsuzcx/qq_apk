@@ -5,45 +5,37 @@ import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetRecommendUserListRsp;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import common.config.service.QzoneConfig;
 import java.util.List;
-import ycz;
-import yda;
-import ydb;
 
-public class TopPanelPresenter$1$1
+class TopPanelPresenter$1$1
   implements Runnable
 {
-  public TopPanelPresenter$1$1(ydb paramydb, CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp, List paramList, boolean paramBoolean) {}
+  TopPanelPresenter$1$1(TopPanelPresenter.1 param1, CertifiedAccountRead.StGetRecommendUserListRsp paramStGetRecommendUserListRsp, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    ycz localycz = yda.a(this.jdField_a_of_type_Ydb.a);
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if ((QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverEntryEnable", 1) & (QzoneConfig.getInstance().getConfig("qqsubscribe", "JumpToNewServiceAccount", 1) ^ 0xFFFFFFFF)) == 1)
+    TopPanelContract.View localView = TopPanelPresenter.a(this.d.b);
+    CertifiedAccountMeta.StEntry localStEntry;
+    if (((QzoneConfig.getInstance().getConfig("qqminiapp", "publicAcuntDiscoverEntryEnable", 1) & (QzoneConfig.getInstance().getConfig("qqsubscribe", "JumpToNewServiceAccount", 1) ^ 0xFFFFFFFF)) == 1) && (this.a.entry.has())) {
+      localStEntry = (CertifiedAccountMeta.StEntry)this.a.entry.get();
+    } else {
+      localStEntry = null;
+    }
+    if (localView != null)
     {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetRecommendUserListRsp.entry.has()) {
-        localObject1 = (CertifiedAccountMeta.StEntry)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetRecommendUserListRsp.entry.get();
+      localView.a(localStEntry, this.b, this.c);
+      int i = this.a.noticeCount.get();
+      if (i > 0)
+      {
+        localView.a(i);
+        return;
       }
+      localView.a();
     }
-    if (localycz != null)
-    {
-      localycz.a((CertifiedAccountMeta.StEntry)localObject1, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
-      int i = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetRecommendUserListRsp.noticeCount.get();
-      if (i > 0) {
-        localycz.a(i);
-      }
-    }
-    else
-    {
-      return;
-    }
-    localycz.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelPresenter.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package io.flutter.view;
 
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
+import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.systemchannels.AccessibilityChannel.AccessibilityMessageHandler;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -49,7 +49,7 @@ class AccessibilityBridge$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.view.AccessibilityBridge.1
  * JD-Core Version:    0.7.0.1
  */

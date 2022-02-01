@@ -39,14 +39,14 @@ public class WloginSigInfo
   
   static
   {
-    AppMethodBeat.i(96463);
-    CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(96463);
+    AppMethodBeat.i(88102);
+    CREATOR = new WloginSigInfo.1();
+    AppMethodBeat.o(88102);
   }
   
   public WloginSigInfo(long paramLong1, long paramLong2, long paramLong3, long paramLong4, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, byte[] paramArrayOfByte12, byte[][] paramArrayOfByte)
   {
-    AppMethodBeat.i(96464);
+    AppMethodBeat.i(88103);
     this._expire_time = 0L;
     this._A2_expire_time = 0L;
     this._create_time = 0L;
@@ -116,7 +116,7 @@ public class WloginSigInfo
       this._D2Key = ((byte[])paramArrayOfByte[4].clone());
       this._sid = ((byte[])paramArrayOfByte[5].clone());
       this._noPicSig = ((byte[])paramArrayOfByte[6].clone());
-      AppMethodBeat.o(96464);
+      AppMethodBeat.o(88103);
       return;
       this._userStWebSig = new byte[0];
       break;
@@ -142,24 +142,24 @@ public class WloginSigInfo
     this._D2Key = new byte[0];
     this._sid = new byte[0];
     this._noPicSig = new byte[0];
-    AppMethodBeat.o(96464);
+    AppMethodBeat.o(88103);
   }
   
   private WloginSigInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(96466);
+    AppMethodBeat.i(88105);
     this._expire_time = 0L;
     this._A2_expire_time = 0L;
     this._create_time = 0L;
     this._app_pri = 0L;
     this._ret_appid = 0L;
     readFromParcel(paramParcel);
-    AppMethodBeat.o(96466);
+    AppMethodBeat.o(88105);
   }
   
   public WloginSigInfo Set(long paramLong1, long paramLong2, long paramLong3, long paramLong4, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, byte[] paramArrayOfByte12, byte[][] paramArrayOfByte)
   {
-    AppMethodBeat.i(96465);
+    AppMethodBeat.i(88104);
     this._app_pri = paramLong1;
     this._create_time = paramLong2;
     this._expire_time = paramLong3;
@@ -227,7 +227,7 @@ public class WloginSigInfo
     }
     for (;;)
     {
-      AppMethodBeat.o(96465);
+      AppMethodBeat.o(88104);
       return this;
       this._userStWebSig = new byte[0];
       break;
@@ -272,7 +272,7 @@ public class WloginSigInfo
   
   public void readFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(96468);
+    AppMethodBeat.i(88107);
     this._TGT = paramParcel.createByteArray();
     this._TGTKey = paramParcel.createByteArray();
     this._userStSig = paramParcel.createByteArray();
@@ -298,12 +298,12 @@ public class WloginSigInfo
     this._create_time = paramParcel.readLong();
     this._app_pri = paramParcel.readLong();
     this._ret_appid = paramParcel.readLong();
-    AppMethodBeat.o(96468);
+    AppMethodBeat.o(88107);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(96467);
+    AppMethodBeat.i(88106);
     paramParcel.writeByteArray(this._TGT);
     paramParcel.writeByteArray(this._TGTKey);
     paramParcel.writeByteArray(this._userStSig);
@@ -329,12 +329,12 @@ public class WloginSigInfo
     paramParcel.writeLong(this._create_time);
     paramParcel.writeLong(this._app_pri);
     paramParcel.writeLong(this._ret_appid);
-    AppMethodBeat.o(96467);
+    AppMethodBeat.o(88106);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.sharemem.WloginSigInfo
  * JD-Core Version:    0.7.0.1
  */

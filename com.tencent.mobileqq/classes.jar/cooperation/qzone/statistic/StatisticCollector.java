@@ -2,10 +2,9 @@ package cooperation.qzone.statistic;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bjdl;
-import bjdm;
-import bjsm;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import cooperation.qzone.statistic.access.WnsCollector;
 import cooperation.qzone.statistic.access.concept.Statistic;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -16,20 +15,26 @@ public class StatisticCollector
   
   private String getDevice()
   {
-    return Build.MODEL + "(" + Build.VERSION.RELEASE + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MODEL);
+    localStringBuilder.append("(");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public static StatisticCollector getInstance()
   {
-    if (!bjsm.a().inited.get()) {}
-    try
-    {
-      if (!bjsm.a().inited.get()) {
-        bjsm.a().init();
+    if (!StatisticCollector.H.access$000().inited.get()) {
+      try
+      {
+        if (!StatisticCollector.H.access$000().inited.get()) {
+          StatisticCollector.H.access$000().init();
+        }
       }
-      return bjsm.a();
+      finally {}
     }
-    finally {}
+    return StatisticCollector.H.access$000();
   }
   
   private String getSDKVersion()
@@ -42,15 +47,15 @@ public class StatisticCollector
     if (this.inited.get()) {
       return;
     }
-    WnsCollector.a().a(BaseApplication.getContext());
-    WnsCollector.a().a(getDevice(), getSDKVersion(), bjdl.a().c());
-    WnsCollector.a().a();
+    WnsCollector.Instance().init(BaseApplication.getContext());
+    WnsCollector.Instance().setPublicShareInfo(getDevice(), getSDKVersion(), ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getDeviceInfor());
+    WnsCollector.Instance().startWork();
     this.inited.set(true);
   }
   
   public void forceReport()
   {
-    WnsCollector.a().g();
+    WnsCollector.Instance().forceDeliver();
   }
   
   public int getAppid()
@@ -60,28 +65,28 @@ public class StatisticCollector
   
   public String getReleaseVersion()
   {
-    return bjdm.c();
+    return ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getVersionForHabo();
   }
   
   public Statistic getStatistic()
   {
-    return WnsCollector.a().a();
+    return WnsCollector.Instance().createStatistic();
   }
   
   public void put(Statistic paramStatistic)
   {
-    WnsCollector.a().a(paramStatistic);
+    WnsCollector.Instance().collect(paramStatistic);
   }
   
   public void reportImmediate()
   {
-    WnsCollector.a().g();
-    WnsCollector.a().f();
+    WnsCollector.Instance().forceDeliver();
+    WnsCollector.Instance().flush();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.statistic.StatisticCollector
  * JD-Core Version:    0.7.0.1
  */

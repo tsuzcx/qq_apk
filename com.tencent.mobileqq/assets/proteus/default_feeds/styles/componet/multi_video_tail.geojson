@@ -3,10 +3,11 @@
     "layout_type": "layout_relative",
     "height": {
         "type": "relative",
-        "value": "47"
+        "value": "38"
     },
     "width": {
-        "type": "match_parent"
+        "type": "relative",
+        "value": "375"
     },
     "subviews": [
         {
@@ -15,7 +16,8 @@
             "layout_type": "layout_linear",
             "direction": "horizontal",
             "height": {
-                "type": "wrap_content"
+                "type": "absolutely",
+                "value": "24"
             },
             "width": {
                 "type": "wrap_content"
@@ -23,11 +25,11 @@
             "align_parent_left": "YES",
             "align_parent_center_vertical": "YES",
             "default_visible": "YES",
-            "margin_left": "6",
-            "event_type":"multi_video_column_tail_click",
+            "margin_left": "12",
+            "event_type": "multi_video_column_tail_click",
             "attributes": {
                 "setCornerRadiusString:": "11.5",
-                "setBackgroundColorString:": "#F5F7F9"
+                "setBackgroundColorString:": "#F5F6FA"
             },
             "subviews": [
                 {
@@ -65,7 +67,7 @@
                     "default_visible": "YES",
                     "align_parent_center_vertical": "YES",
                     "attributes": {
-                        "setTextColorString:": "#737373",
+                        "setTextColorString:": "#5E5E5E",
                         "setFontSizeString:": "12",
                         "setTextAlignmentString:": "0",
                         "setText:": "$from_text"
@@ -93,23 +95,23 @@
             ]
         },
         {
-            "view_type":"UIButton",
-            "view_id":"id_dislike_button",
-            "margin_right":"0.5",
-            "margin_top": "3.5",
-            "event_type":"cmd_dislike_click",
-            "align_parent_right":"YES",
+            "view_type": "UIButton",
+            "view_id": "id_dislike_button",
+            "margin_right": "0",
+            "event_type": "cmd_dislike_click",
+            "align_parent_right": "YES",
             "default_visible": "YES",
-            "height":{
-                "type":"relative",
-                "value":"30"
+            "align_parent_center_vertical": "YES",
+            "height": {
+                "type": "relative",
+                "value": "30"
             },
-            "width":{
-                "type":"relative",
-                "value":"41"
+            "width": {
+                "type": "relative",
+                "value": "41"
             },
-            "attributes":{
-                "setImage:":"feeds_dislike"
+            "attributes": {
+                "setImage:": "feeds_dislike"
             }
         }
     ]

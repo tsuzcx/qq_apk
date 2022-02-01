@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.h;
+import com.tencent.token.xv;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -42,69 +42,74 @@ public class RealNameStatusResult
   public RealNameStatusResult(JSONObject paramJSONObject)
   {
     this.mRealStatus = paramJSONObject.getInt("realname_status");
-    h.a("real_name_status_result: " + paramJSONObject);
+    xv.a("real_name_status_result: ".concat(String.valueOf(paramJSONObject)));
+    label137:
     try
     {
       this.mToastText = paramJSONObject.getString("top_toast_text");
       this.mToastUrl = paramJSONObject.getString("top_toast_url");
-      switch (this.mRealStatus)
-      {
-      default: 
-        h.b("realname_status=" + this.mRealStatus + ", mobile=" + this.mMaskMobile);
-        return;
-      }
     }
     catch (Exception localException1)
     {
-      for (;;)
-      {
-        h.c("json parse error: mToastText,mToastUrl");
-        continue;
-        this.mMaskName = paramJSONObject.getString("masked_name");
-        this.mMaskId = paramJSONObject.getString("masked_id");
-        this.mMaskMobile = paramJSONObject.getString("masked_mobile");
-        this.reg_rank = paramJSONObject.getInt("reg_rank");
-        this.realnameday = paramJSONObject.getInt("protect_days");
-        this.urlShare = paramJSONObject.getString("url_share");
-        this.shareTitle = paramJSONObject.getString("share_title");
-        this.shareCircleText = paramJSONObject.getString("share_circle_text");
-        this.shareFriendText = paramJSONObject.getString("share_friend_text");
-        continue;
-        this.regVersion = paramJSONObject.getInt("reg_version");
-        if (this.regVersion == 1)
-        {
-          this.mLeftTime = paramJSONObject.getInt("time_left");
-          this.mSubmitTime = paramJSONObject.getLong("submit_time");
-          this.mCompleteTime = paramJSONObject.getLong("complete_time");
-        }
-        for (;;)
-        {
-          this.mDailyZzbCnt = paramJSONObject.getInt("daily_zzb_cnt");
-          this.mMaskMobile = paramJSONObject.getString("masked_mobile");
-          this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
-          break;
-          this.mLeftTime = paramJSONObject.getInt("time_left");
-          this.chanceLeft = paramJSONObject.getInt("chance_left");
-          this.mMsgText = paramJSONObject.getString("top_msg_text");
-        }
-        this.mMaskMobile = paramJSONObject.getString("masked_mobile");
-        this.mDailyZzbCnt = paramJSONObject.getInt("daily_zzb_cnt");
-        try
-        {
-          this.mApplyRefuseTime = paramJSONObject.getLong("apply_refused_time");
-          this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
-          this.mVerify_sms = paramJSONObject.optInt("verify_sms", 1);
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            h.c("json parse error: apply_refused_time");
-          }
-        }
-        this.subTitle = paramJSONObject.getString("subtitle_text");
-      }
+      label49:
+      break label49;
     }
+    xv.c("json parse error: mToastText,mToastUrl");
+    switch (this.mRealStatus)
+    {
+    default: 
+      break;
+    case 4: 
+      this.subTitle = paramJSONObject.getString("subtitle_text");
+      break;
+    case 3: 
+      this.mMaskMobile = paramJSONObject.getString("masked_mobile");
+      this.mDailyZzbCnt = paramJSONObject.getInt("daily_zzb_cnt");
+    }
+    try
+    {
+      this.mApplyRefuseTime = paramJSONObject.getLong("apply_refused_time");
+    }
+    catch (Exception localException2)
+    {
+      break label137;
+    }
+    xv.c("json parse error: apply_refused_time");
+    this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
+    this.mVerify_sms = paramJSONObject.optInt("verify_sms", 1);
+    break label372;
+    this.regVersion = paramJSONObject.getInt("reg_version");
+    if (this.regVersion == 1)
+    {
+      this.mLeftTime = paramJSONObject.getInt("time_left");
+      this.mSubmitTime = paramJSONObject.getLong("submit_time");
+      this.mCompleteTime = paramJSONObject.getLong("complete_time");
+    }
+    else
+    {
+      this.mLeftTime = paramJSONObject.getInt("time_left");
+      this.chanceLeft = paramJSONObject.getInt("chance_left");
+      this.mMsgText = paramJSONObject.getString("top_msg_text");
+    }
+    this.mDailyZzbCnt = paramJSONObject.getInt("daily_zzb_cnt");
+    this.mMaskMobile = paramJSONObject.getString("masked_mobile");
+    this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
+    break label372;
+    this.mMaskName = paramJSONObject.getString("masked_name");
+    this.mMaskId = paramJSONObject.getString("masked_id");
+    this.mMaskMobile = paramJSONObject.getString("masked_mobile");
+    this.reg_rank = paramJSONObject.getInt("reg_rank");
+    this.realnameday = paramJSONObject.getInt("protect_days");
+    this.urlShare = paramJSONObject.getString("url_share");
+    this.shareTitle = paramJSONObject.getString("share_title");
+    this.shareCircleText = paramJSONObject.getString("share_circle_text");
+    this.shareFriendText = paramJSONObject.getString("share_friend_text");
+    label372:
+    paramJSONObject = new StringBuilder("realname_status=");
+    paramJSONObject.append(this.mRealStatus);
+    paramJSONObject.append(", mobile=");
+    paramJSONObject.append(this.mMaskMobile);
+    xv.b(paramJSONObject.toString());
   }
 }
 

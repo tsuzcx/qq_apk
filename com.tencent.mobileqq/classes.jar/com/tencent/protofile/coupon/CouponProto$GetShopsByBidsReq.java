@@ -9,13 +9,19 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class CouponProto$GetShopsByBidsReq
   extends MessageMicro<GetShopsByBidsReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "bids", "source_ids" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, GetShopsByBidsReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatField<Integer> bids = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBRepeatField<Integer> source_ids = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "bids", "source_ids" }, new Object[] { localInteger, localInteger }, GetShopsByBidsReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.coupon.CouponProto.GetShopsByBidsReq
  * JD-Core Version:    0.7.0.1
  */

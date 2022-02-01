@@ -65,29 +65,35 @@ public final class TerminalExtra
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cpuName != null) {
-      paramJceOutputStream.write(this.cpuName, 0);
+    String str = this.cpuName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.cpuCoresNum, 1);
     paramJceOutputStream.write(this.cpuMaxFreq, 2);
     paramJceOutputStream.write(this.cpuMinFreq, 3);
     paramJceOutputStream.write(this.ramTotalSize, 4);
-    if (this.romName != null) {
-      paramJceOutputStream.write(this.romName, 5);
+    str = this.romName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.romVersion != null) {
-      paramJceOutputStream.write(this.romVersion, 6);
+    str = this.romVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.fingerprint != null) {
-      paramJceOutputStream.write(this.fingerprint, 7);
+    str = this.fingerprint;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.model != null) {
-      paramJceOutputStream.write(this.model, 8);
+    str = this.model;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.apiLevel, 9);
     paramJceOutputStream.write(this.storageSpeed, 10);
-    if (this.abiList != null) {
-      paramJceOutputStream.write(this.abiList, 11);
+    str = this.abiList;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
     paramJceOutputStream.write(this.ramRemainSize, 12);
     paramJceOutputStream.write(this.flashTotalSize, 13);
@@ -96,7 +102,7 @@ public final class TerminalExtra
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.TerminalExtra
  * JD-Core Version:    0.7.0.1
  */

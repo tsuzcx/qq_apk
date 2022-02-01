@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/c11" android:background="@color/y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="onClickBg"
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center_horizontal" android:id="@id/jd" android:background="#f7ffffff" android:paddingTop="@dimen/l8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ListView android:id="@id/c12" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/mn" />
-    <RelativeLayout android:id="@id/c13" android:background="#f7ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/c14" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-        <TextView android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/cpw" />
-    </LinearLayout>
-    <include layout="@layout/a20" />
-</FrameLayout>
+    <ProgressBar android:id="@id/g34" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" style="@style/a85" />
+</RelativeLayout>

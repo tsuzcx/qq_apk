@@ -29,75 +29,76 @@ public final class hw
   {
     this.a = paramHandler;
     this.d = new WeakReference(paramhv);
-    paramHandler = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      paramHandler = "";
+    boolean bool = TextUtils.isEmpty(paramString1);
+    paramHandler = "";
+    if (bool) {
+      paramString1 = "";
     }
-    this.b = paramHandler;
-    paramHandler = paramString2;
+    this.b = paramString1;
     if (TextUtils.isEmpty(paramString2)) {
-      paramHandler = "";
+      paramString2 = paramHandler;
     }
-    this.c = paramHandler;
+    this.c = paramString2;
   }
   
   private Void a()
   {
-    Object localObject2 = ((AuthorizeRequest)((my)MapServiceManager.getService(my.class)).c()).checkAuth(pz.a, this.b, fz.g(), this.c, fz.c(), fz.a(), fz.d(), fz.e(), "4.2.8.1", fz.f(), "androidsdk", fz.b());
+    Object localObject3 = ((AuthorizeRequest)((my)MapServiceManager.getService(my.class)).c()).checkAuth(pz.a, this.b, fz.g(), this.c, fz.c(), fz.a(), fz.d(), fz.e(), "4.2.8.2", fz.f(), "androidsdk", fz.b());
     Object localObject1;
-    if (localObject2 != null)
+    if (localObject3 != null)
     {
-      localObject1 = ((NetResponse)localObject2).charset;
-      localObject2 = ((NetResponse)localObject2).data;
-      if (localObject2 == null) {}
+      localObject1 = ((NetResponse)localObject3).charset;
+      localObject3 = ((NetResponse)localObject3).data;
+      if (localObject3 == null) {}
     }
     for (;;)
     {
       try
       {
-        localObject2 = new JSONObject(new String((byte[])localObject2, (String)localObject1));
-        localObject1 = ((JSONObject)localObject2).optJSONObject("detail");
-        if (localObject1 == null) {
-          continue;
+        localObject1 = new JSONObject(new String((byte[])localObject3, (String)localObject1));
+        localObject3 = ((JSONObject)localObject1).optJSONObject("detail");
+        if (localObject3 != null) {
+          a(((JSONObject)localObject3).optJSONObject("cfg"));
+        } else {
+          a(null);
         }
-        a(((JSONObject)localObject1).optJSONObject("cfg"));
-        i = 0;
-        localObject1 = null;
-        localObject2 = ((JSONObject)localObject2).optJSONObject("info");
-        if (localObject2 != null)
+        localObject1 = ((JSONObject)localObject1).optJSONObject("info");
+        if (localObject1 != null)
         {
-          i = ((JSONObject)localObject2).optInt("error");
-          localObject1 = ((JSONObject)localObject2).optString("msg");
-        }
-        if (i != 0) {
-          continue;
-        }
-        fz.g = 0;
-        fz.h = Calendar.getInstance().get(1);
-        fz.i = Calendar.getInstance().get(2);
-        fz.j = Calendar.getInstance().get(5);
-        if (this.a != null)
-        {
-          localObject1 = new hj();
-          ((hj)localObject1).a = 3;
-          localObject1 = this.a.obtainMessage(((hj)localObject1).a, localObject1);
-          this.a.sendMessage((Message)localObject1);
+          i = ((JSONObject)localObject1).optInt("error");
+          localObject1 = ((JSONObject)localObject1).optString("msg");
+          if (i == 0)
+          {
+            fz.g = 0;
+          }
+          else
+          {
+            a(i, (String)localObject1);
+            if (i < -400) {
+              fz.g = -1;
+            } else {
+              fz.g = 1;
+            }
+          }
+          fz.h = Calendar.getInstance().get(1);
+          fz.i = Calendar.getInstance().get(2);
+          fz.j = Calendar.getInstance().get(5);
+          if (this.a != null)
+          {
+            localObject1 = new hj();
+            ((hj)localObject1).a = 3;
+            localObject1 = this.a.obtainMessage(((hj)localObject1).a, localObject1);
+            this.a.sendMessage((Message)localObject1);
+          }
+          return null;
         }
       }
       catch (Exception localException)
       {
-        int i;
-        continue;
+        return null;
       }
-      return null;
-      a(null);
-      continue;
-      a(i, (String)localObject1);
-      if (i < -400) {
-        fz.g = -1;
-      } else {
-        fz.g = 1;
-      }
+      Object localObject2 = null;
+      int i = 0;
     }
   }
   
@@ -114,8 +115,10 @@ public final class hw
     arrayOfChar[80] = '\n';
     paramString.append(arrayOfChar);
     localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramString.append((String)((Iterator)localObject).next()).append("\n");
+    while (((Iterator)localObject).hasNext())
+    {
+      paramString.append((String)((Iterator)localObject).next());
+      paramString.append("\n");
     }
     paramString.append(arrayOfChar);
     Log.e("tencentmap", paramString.toString());
@@ -123,35 +126,37 @@ public final class hw
   
   private void a(JSONObject paramJSONObject)
   {
-    Object localObject = null;
-    if (paramJSONObject == null) {
-      if ((this.d != null) && (this.d.get() != null)) {
+    WeakReference localWeakReference = null;
+    if (paramJSONObject == null)
+    {
+      paramJSONObject = this.d;
+      if ((paramJSONObject != null) && (paramJSONObject.get() != null)) {
         ((hv)this.d.get()).a(null, null);
       }
-    }
-    for (;;)
-    {
       return;
-      JSONArray localJSONArray = paramJSONObject.optJSONObject("custom_map_style").optJSONArray("style_list");
-      JSONObject localJSONObject = paramJSONObject.optJSONObject("indoor_map");
-      if (localJSONObject == null) {
-        paramJSONObject = localObject;
-      }
-      while ((this.d != null) && (this.d.get() != null))
-      {
-        ((hv)this.d.get()).a(localJSONArray, paramJSONObject);
-        return;
-        int i = localJSONObject.optInt("enable", -1);
-        int j = localJSONObject.optInt("type", -1);
-        paramJSONObject = localObject;
-        if (i != -1)
-        {
-          paramJSONObject = localObject;
-          if (j != -1) {
-            paramJSONObject = new hh(i, j, localJSONObject.optJSONArray("building_list"));
-          }
+    }
+    JSONArray localJSONArray = paramJSONObject.optJSONObject("custom_map_style").optJSONArray("style_list");
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("indoor_map");
+    if (localJSONObject == null)
+    {
+      paramJSONObject = localWeakReference;
+    }
+    else
+    {
+      int i = localJSONObject.optInt("enable", -1);
+      int j = localJSONObject.optInt("type", -1);
+      paramJSONObject = localWeakReference;
+      if (i != -1) {
+        if (j == -1) {
+          paramJSONObject = localWeakReference;
+        } else {
+          paramJSONObject = new hh(i, j, localJSONObject.optJSONArray("building_list"));
         }
       }
+    }
+    localWeakReference = this.d;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      ((hv)this.d.get()).a(localJSONArray, paramJSONObject);
     }
   }
 }

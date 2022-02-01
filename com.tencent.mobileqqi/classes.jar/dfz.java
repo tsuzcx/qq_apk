@@ -1,16 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.app.PrivacyDeclareHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.EUCountryUtils;
 
 public class dfz
-  implements DialogInterface.OnClickListener
+  implements PrivacyDeclareHelper.Callback
 {
-  public dfz(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public dfz(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, boolean paramBoolean, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private void a(String paramString, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      EUCountryUtils.a(paramString);
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("lich", 2, "in Register to privacy page, user reject, this to cancel");
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("lich", 2, "in Register to privacy page, user FinishSelf, this go2finish");
+    }
+    a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.finish();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("lich", 2, "in Register to privacy page, user confirm, this go2next");
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      EUCountryUtils.a(this.jdField_a_of_type_JavaLangString, true);
+    }
+    RegisterPhoneNumActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity);
   }
 }
 

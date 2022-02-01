@@ -1,26 +1,10 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
+import android.os.Handler;
+import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
 
 public class gmh
-  extends Thread
+  extends Handler
 {
-  public gmh(ShareAppLogHelper paramShareAppLogHelper, String paramString) {}
-  
-  public void run()
-  {
-    try
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
+  public gmh(ShareAppLogActivity paramShareAppLogActivity) {}
 }
 
 

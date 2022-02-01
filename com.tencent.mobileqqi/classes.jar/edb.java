@@ -1,20 +1,18 @@
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
 
 public class edb
   implements Animation.AnimationListener
 {
-  public edb(CircleMemberListActivity paramCircleMemberListActivity) {}
+  public edb(CircleMemberListActivity paramCircleMemberListActivity, int paramInt) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.show();
-    this.a.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactCircleMemberListActivity.a.requestLayout();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

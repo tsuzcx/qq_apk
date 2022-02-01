@@ -1,21 +1,20 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import bdhb;
-import tcq;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public class WeiShiCacheManager$5
+class WeiShiCacheManager$5
   implements Runnable
 {
-  public WeiShiCacheManager$5(tcq paramtcq) {}
+  WeiShiCacheManager$5(WeiShiCacheManager paramWeiShiCacheManager) {}
   
   public void run()
   {
-    bdhb.a(tcq.b(this.this$0), false);
+    FileUtils.delete(WeiShiCacheManager.b(this.this$0), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.5
  * JD-Core Version:    0.7.0.1
  */

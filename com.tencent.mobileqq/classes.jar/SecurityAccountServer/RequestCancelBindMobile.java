@@ -7,19 +7,29 @@ import com.qq.taf.jce.JceStruct;
 public final class RequestCancelBindMobile
   extends JceStruct
 {
-  public boolean isFromChangeBind;
-  public boolean isFromUni;
+  static byte[] cache_encrptCancelMobileInfo = (byte[])new byte[1];
+  public byte[] encrptCancelMobileInfo = null;
+  public boolean isFromChangeBind = false;
+  public boolean isFromUni = false;
+  public boolean isSecNewReq = false;
   public String mobileNo = "";
   public String nationCode = "";
   
+  static
+  {
+    ((byte[])cache_encrptCancelMobileInfo)[0] = 0;
+  }
+  
   public RequestCancelBindMobile() {}
   
-  public RequestCancelBindMobile(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  public RequestCancelBindMobile(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, byte[] paramArrayOfByte)
   {
     this.nationCode = paramString1;
     this.mobileNo = paramString2;
     this.isFromUni = paramBoolean1;
     this.isFromChangeBind = paramBoolean2;
+    this.isSecNewReq = paramBoolean3;
+    this.encrptCancelMobileInfo = paramArrayOfByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -28,6 +38,8 @@ public final class RequestCancelBindMobile
     this.mobileNo = paramJceInputStream.readString(1, true);
     this.isFromUni = paramJceInputStream.read(this.isFromUni, 2, false);
     this.isFromChangeBind = paramJceInputStream.read(this.isFromChangeBind, 3, false);
+    this.isSecNewReq = paramJceInputStream.read(this.isSecNewReq, 4, false);
+    this.encrptCancelMobileInfo = ((byte[])paramJceInputStream.read(cache_encrptCancelMobileInfo, 5, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -36,11 +48,16 @@ public final class RequestCancelBindMobile
     paramJceOutputStream.write(this.mobileNo, 1);
     paramJceOutputStream.write(this.isFromUni, 2);
     paramJceOutputStream.write(this.isFromChangeBind, 3);
+    paramJceOutputStream.write(this.isSecNewReq, 4);
+    byte[] arrayOfByte = this.encrptCancelMobileInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 5);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestCancelBindMobile
  * JD-Core Version:    0.7.0.1
  */

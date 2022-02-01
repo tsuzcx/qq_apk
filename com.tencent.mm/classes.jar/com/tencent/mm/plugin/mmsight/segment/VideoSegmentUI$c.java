@@ -6,35 +6,35 @@ import java.lang.ref.WeakReference;
 final class VideoSegmentUI$c
   implements Runnable
 {
-  private WeakReference<c> aqT;
-  private int fQq;
-  private int oMQ;
+  private int LaO;
+  private int oTN;
+  private WeakReference<c> viewRef;
   
   public VideoSegmentUI$c(c paramc, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(55049);
-    this.aqT = new WeakReference(paramc);
-    this.oMQ = paramInt1;
-    this.fQq = paramInt2;
-    AppMethodBeat.o(55049);
+    AppMethodBeat.i(94484);
+    this.viewRef = new WeakReference(paramc);
+    this.LaO = paramInt1;
+    this.oTN = paramInt2;
+    AppMethodBeat.o(94484);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(55050);
-    c localc = (c)this.aqT.get();
+    AppMethodBeat.i(94485);
+    c localc = (c)this.viewRef.get();
     if (localc == null)
     {
-      AppMethodBeat.o(55050);
+      AppMethodBeat.o(94485);
       return;
     }
-    localc.setCurrentCursorPosition(this.oMQ / this.fQq);
-    AppMethodBeat.o(55050);
+    localc.setCurrentCursorPosition(this.LaO / this.oTN);
+    AppMethodBeat.o(94485);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.VideoSegmentUI.c
  * JD-Core Version:    0.7.0.1
  */

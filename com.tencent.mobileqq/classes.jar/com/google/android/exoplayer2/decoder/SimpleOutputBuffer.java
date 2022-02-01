@@ -17,15 +17,17 @@ public class SimpleOutputBuffer
   public void clear()
   {
     super.clear();
-    if (this.data != null) {
-      this.data.clear();
+    ByteBuffer localByteBuffer = this.data;
+    if (localByteBuffer != null) {
+      localByteBuffer.clear();
     }
   }
   
   public ByteBuffer init(long paramLong, int paramInt)
   {
     this.timeUs = paramLong;
-    if ((this.data == null) || (this.data.capacity() < paramInt)) {
+    ByteBuffer localByteBuffer = this.data;
+    if ((localByteBuffer == null) || (localByteBuffer.capacity() < paramInt)) {
       this.data = ByteBuffer.allocateDirect(paramInt).order(ByteOrder.nativeOrder());
     }
     this.data.position(0);
@@ -40,7 +42,7 @@ public class SimpleOutputBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.decoder.SimpleOutputBuffer
  * JD-Core Version:    0.7.0.1
  */

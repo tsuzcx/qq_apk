@@ -10,9 +10,9 @@ public final class delete_active_album_req
   extends JceStruct
 {
   static Map<String, String> cache_map_params = new HashMap();
-  public Map<String, String> map_params;
+  public Map<String, String> map_params = null;
   public String mgz_id = "";
-  public long uin;
+  public long uin = 0L;
   
   static
   {
@@ -39,14 +39,15 @@ public final class delete_active_album_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.mgz_id, 1);
-    if (this.map_params != null) {
-      paramJceOutputStream.write(this.map_params, 2);
+    Map localMap = this.map_params;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.delete_active_album_req
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.api.IPrePullListener;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
@@ -11,7 +12,7 @@ import org.json.JSONObject;
 class MiniAppPrePullManager$3
   implements MiniAppCmdInterface
 {
-  MiniAppPrePullManager$3(MiniAppPrePullManager paramMiniAppPrePullManager, String paramString, boolean paramBoolean, MiniAppPrePullManager.IPrePullListener paramIPrePullListener) {}
+  MiniAppPrePullManager$3(MiniAppPrePullManager paramMiniAppPrePullManager, String paramString, boolean paramBoolean, IPrePullListener paramIPrePullListener) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -20,10 +21,10 @@ class MiniAppPrePullManager$3
     if (paramBoolean) {
       synchronized (MiniAppPrePullManager.access$100())
       {
-        MiniAppPrePullManager.MiniAppInfoPrePullWrapper localMiniAppInfoPrePullWrapper = new MiniAppPrePullManager.MiniAppInfoPrePullWrapper();
-        localMiniAppInfoPrePullWrapper.setLink(this.val$finalLink);
-        localMiniAppInfoPrePullWrapper.setPullTimeStamp(System.currentTimeMillis());
-        MiniAppPrePullManager.access$200().put(this.val$finalLink, localMiniAppInfoPrePullWrapper);
+        localObject2 = new MiniAppPrePullManager.MiniAppInfoPrePullWrapper();
+        ((MiniAppPrePullManager.MiniAppInfoPrePullWrapper)localObject2).setLink(this.val$finalLink);
+        ((MiniAppPrePullManager.MiniAppInfoPrePullWrapper)localObject2).setPullTimeStamp(System.currentTimeMillis());
+        MiniAppPrePullManager.access$200().put(this.val$finalLink, localObject2);
         if (this.val$withPackageAndCachePreload)
         {
           ??? = (MiniAppInfo)paramJSONObject.opt("appInfo");
@@ -33,22 +34,29 @@ class MiniAppPrePullManager$3
             MiniAppUtils.preFetchAppCacheData(BaseApplicationImpl.getApplication(), (MiniAppInfo)???);
           }
         }
-        if (this.val$prePullListener != null) {
-          this.val$prePullListener.onPrePullCallback(true, paramJSONObject);
+        ??? = this.val$prePullListener;
+        if (??? != null) {
+          ((IPrePullListener)???).onPrePullCallback(true, paramJSONObject);
         }
         QLog.d("MiniAppPrePullManager", 1, "prePullAppinfoByLink suc");
         return;
       }
     }
-    if (this.val$prePullListener != null) {
-      this.val$prePullListener.onPrePullCallback(false, paramJSONObject);
+    Object localObject2 = this.val$prePullListener;
+    if (localObject2 != null) {
+      ((IPrePullListener)localObject2).onPrePullCallback(false, paramJSONObject);
     }
-    QLog.e("MiniAppPrePullManager", 1, "prePullAppinfoByLink failed. retCode=" + l + " errMsg=" + (String)???);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("prePullAppinfoByLink failed. retCode=");
+    paramJSONObject.append(l);
+    paramJSONObject.append(" errMsg=");
+    paramJSONObject.append((String)???);
+    QLog.e("MiniAppPrePullManager", 1, paramJSONObject.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.3
  * JD-Core Version:    0.7.0.1
  */

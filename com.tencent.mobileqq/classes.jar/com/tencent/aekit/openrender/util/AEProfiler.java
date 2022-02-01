@@ -30,18 +30,20 @@ public class AEProfiler
     if (!this.isEnable) {
       return;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.processTimeCostMap.put(paramString, Long.valueOf(paramLong));
-      return;
-    case 2: 
-      this.filterTimeCostMap.put(paramString, Long.valueOf(paramLong));
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        this.filterTimeCostMap.put(paramString, Long.valueOf(paramLong));
+        return;
+      }
+      this.detectTimeCostMap.put(paramString, Long.valueOf(paramLong));
       return;
     }
-    this.detectTimeCostMap.put(paramString, Long.valueOf(paramLong));
+    this.processTimeCostMap.put(paramString, Long.valueOf(paramLong));
   }
   
   public long end(String paramString)
@@ -51,8 +53,13 @@ public class AEProfiler
   
   public long end(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return BenchUtil.benchEnd(BenchUtil.SHOWPREVIEW_BENCH_TAG + " " + paramString);
+    if (paramBoolean)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BenchUtil.SHOWPREVIEW_BENCH_TAG);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString);
+      return BenchUtil.benchEnd(localStringBuilder.toString());
     }
     return BenchUtil.benchEnd(paramString);
   }
@@ -70,51 +77,96 @@ public class AEProfiler
     if (!this.isEnable) {
       return "{}";
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{");
-    if (this.mOneFrameCost != 0L) {
-      localStringBuilder.append("\"OneFrameCost\": " + this.mOneFrameCost + ", ");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("{");
+    if (this.mOneFrameCost != 0L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"OneFrameCost\": ");
+      ((StringBuilder)localObject).append(this.mOneFrameCost);
+      ((StringBuilder)localObject).append(", ");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
     }
-    if (this.processTimeCostMap.get("IAEProfiler-drawFrame") != null) {
-      localStringBuilder.append("\"DrawFrame\": " + this.processTimeCostMap.get("IAEProfiler-drawFrame") + ", ");
+    if (this.processTimeCostMap.get("IAEProfiler-drawFrame") != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"DrawFrame\": ");
+      ((StringBuilder)localObject).append(this.processTimeCostMap.get("IAEProfiler-drawFrame"));
+      ((StringBuilder)localObject).append(", ");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
     }
-    if (this.processTimeCostMap.get("IAEProfiler-initFilters") != null) {
-      localStringBuilder.append("\"initFilters\": " + this.processTimeCostMap.get("IAEProfiler-initFilters") + ", ");
+    if (this.processTimeCostMap.get("IAEProfiler-initFilters") != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"initFilters\": ");
+      ((StringBuilder)localObject).append(this.processTimeCostMap.get("IAEProfiler-initFilters"));
+      ((StringBuilder)localObject).append(", ");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
     }
-    if (this.processTimeCostMap.get("IAEProfiler-configFilters") != null) {
-      localStringBuilder.append("\"configFilters\": " + this.processTimeCostMap.get("IAEProfiler-configFilters") + ", ");
+    if (this.processTimeCostMap.get("IAEProfiler-configFilters") != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"configFilters\": ");
+      ((StringBuilder)localObject).append(this.processTimeCostMap.get("IAEProfiler-configFilters"));
+      ((StringBuilder)localObject).append(", ");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
     }
-    if (this.processTimeCostMap.get("IAEProfiler-chainFilters") != null) {
-      localStringBuilder.append("\"chainFilters\": " + this.processTimeCostMap.get("IAEProfiler-chainFilters") + ", ");
+    if (this.processTimeCostMap.get("IAEProfiler-chainFilters") != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"chainFilters\": ");
+      ((StringBuilder)localObject).append(this.processTimeCostMap.get("IAEProfiler-chainFilters"));
+      ((StringBuilder)localObject).append(", ");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
     }
-    if (this.processTimeCostMap.get("IAEProfiler-detectFrame") != null) {
-      localStringBuilder.append("\"detectFrame\": " + this.processTimeCostMap.get("IAEProfiler-detectFrame") + ", ");
+    if (this.processTimeCostMap.get("IAEProfiler-detectFrame") != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("\"detectFrame\": ");
+      ((StringBuilder)localObject).append(this.processTimeCostMap.get("IAEProfiler-detectFrame"));
+      ((StringBuilder)localObject).append(", ");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
     }
-    Iterator localIterator = this.filterTimeCostMap.entrySet().iterator();
+    Object localObject = this.filterTimeCostMap.entrySet().iterator();
     Map.Entry localEntry;
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder2;
+    while (((Iterator)localObject).hasNext())
     {
-      localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append("\"" + (String)localEntry.getKey() + "\": " + localEntry.getValue() + ", ");
+      localEntry = (Map.Entry)((Iterator)localObject).next();
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("\"");
+      localStringBuilder2.append((String)localEntry.getKey());
+      localStringBuilder2.append("\": ");
+      localStringBuilder2.append(localEntry.getValue());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    localIterator = this.detectTimeCostMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    localObject = this.detectTimeCostMap.entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append("\"" + (String)localEntry.getKey() + "\": " + localEntry.getValue() + ", ");
+      localEntry = (Map.Entry)((Iterator)localObject).next();
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("\"");
+      localStringBuilder2.append((String)localEntry.getKey());
+      localStringBuilder2.append("\": ");
+      localStringBuilder2.append(localEntry.getValue());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
-    localStringBuilder.append("}");
-    LogUtils.d("AEProfilerInstance", localStringBuilder.toString());
-    return localStringBuilder.toString();
+    localStringBuilder1.delete(localStringBuilder1.length() - 2, localStringBuilder1.length());
+    localStringBuilder1.append("}");
+    LogUtils.d("AEProfilerInstance", localStringBuilder1.toString());
+    return localStringBuilder1.toString();
   }
   
   public void reset()
   {
     super.reset();
-    long l = 0L;
+    long l;
     if (this.processTimeCostMap.get("IAEProfiler-initFilters") != null) {
       l = ((Long)this.processTimeCostMap.get("IAEProfiler-initFilters")).longValue();
+    } else {
+      l = 0L;
     }
     this.filterTimeCostMap.clear();
     this.detectTimeCostMap.clear();
@@ -143,7 +195,11 @@ public class AEProfiler
   {
     if (paramBoolean)
     {
-      BenchUtil.benchStart(BenchUtil.SHOWPREVIEW_BENCH_TAG + " " + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BenchUtil.SHOWPREVIEW_BENCH_TAG);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString);
+      BenchUtil.benchStart(localStringBuilder.toString());
       return;
     }
     BenchUtil.benchStart(paramString);
@@ -157,7 +213,7 @@ public class AEProfiler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.util.AEProfiler
  * JD-Core Version:    0.7.0.1
  */

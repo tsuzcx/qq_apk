@@ -11,7 +11,7 @@ public class StartSecurityScan
 {
   protected int a()
   {
-    if (this.a.a.t()) {
+    if (this.a.a.u()) {
       this.a.a.B();
     }
     ZebraBlacklistUtils.a(BaseApplicationImpl.a()).a();

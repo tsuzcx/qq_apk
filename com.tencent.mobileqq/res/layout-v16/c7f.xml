@@ -22,7 +22,7 @@
     </FrameLayout>
     <RelativeLayout android:id="@id/iiu" android:layout_width="fill_parent" android:layout_height="104.0dip">
         <ImageView android:id="@id/ik0" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="34.0dip" android:layout_marginTop="25.0dip" android:src="@drawable/a_a" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:id="@id/ik1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="25.0dip" android:text="@string/dyv" android:layout_toRightOf="@id/ik0" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/black" android:id="@id/ik1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="25.0dip" android:text="@string/dyv" android:layout_toRightOf="@id/ik0" />
         <FrameLayout android:id="@id/hxk" android:background="@drawable/a_c" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentRight="true">
             <ImageView android:layout_gravity="center" android:id="@id/ijz" android:layout_width="71.0dip" android:layout_height="71.0dip" android:scaleType="centerCrop" />
             <ImageView android:layout_gravity="center" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/hm_" />

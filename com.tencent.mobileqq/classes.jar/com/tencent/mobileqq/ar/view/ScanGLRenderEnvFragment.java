@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.ar.view;
 
-import amup;
-import amva;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import ange;
 import com.tencent.mobileqq.ar.ARArguments;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
+import com.tencent.mobileqq.ar.model.UniformGLRenderManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class ScanGLRenderEnvFragment
   extends ScanGLRenderBaseFragment
 {
-  private VideoRecordController a;
+  private VideoRecordController i;
   
   public static ScanGLRenderEnvFragment a(ARArguments paramARArguments)
   {
@@ -25,37 +26,37 @@ public class ScanGLRenderEnvFragment
     return localScanGLRenderEnvFragment;
   }
   
-  private void c()
+  private void d()
   {
-    boolean bool = amva.a();
+    boolean bool = VideoEncoderUtils.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
+      if (this.i == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getActivity());
-        amup.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+        this.i = new VideoRecordController(getQBaseActivity());
+        ARVideoRecordUIControllerImpl.a().a(this.i);
       }
-      ange localange = this.jdField_a_of_type_Ange;
-      if (localange != null) {
-        localange.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      UniformGLRenderManager localUniformGLRenderManager = this.b;
+      if (localUniformGLRenderManager != null) {
+        localUniformGLRenderManager.a(this.i);
       }
     }
   }
   
-  private void d()
+  private void e()
   {
-    boolean bool = amva.a();
+    boolean bool = VideoEncoderUtils.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("unInitVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      ange localange = this.jdField_a_of_type_Ange;
-      if (localange != null) {
-        localange.a(null);
+      UniformGLRenderManager localUniformGLRenderManager = this.b;
+      if (localUniformGLRenderManager != null) {
+        localUniformGLRenderManager.a(null);
       }
-      amup.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = null;
+      ARVideoRecordUIControllerImpl.a().b(this.i);
+      if (this.i != null) {
+        this.i = null;
       }
     }
   }
@@ -68,14 +69,16 @@ public class ScanGLRenderEnvFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    c();
-    return this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView;
+    d();
+    paramLayoutInflater = this.a;
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     QLog.i("AREngine_ScanGLRenderEnvFragment", 1, "onResume");
-    d();
+    e();
     super.onDestroy();
   }
   
@@ -93,7 +96,7 @@ public class ScanGLRenderEnvFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanGLRenderEnvFragment
  * JD-Core Version:    0.7.0.1
  */

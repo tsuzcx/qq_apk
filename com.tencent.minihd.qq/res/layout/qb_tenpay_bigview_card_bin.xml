@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/bin_input_scroll" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/bin_card_title" android:paddingLeft="15.0dip" android:paddingTop="35.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/qb_tenpay_pay_bank_tip" style="@style/qb_tenpay_dialog_text.dark" />
+        <LinearLayout android:orientation="vertical" android:background="@drawable/qb_tenpay_border" android:paddingTop="1.0dip" android:paddingBottom="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <LinearLayout android:orientation="vertical" android:id="@id/bin_input_upname" android:background="@drawable/qb_tenpay_btn_white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                    <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_card_name_label" style="@style/qb_tenpay_label" />
+                    <TextView android:textColor="@color/qb_tenpay_thin_color" android:id="@id/bin_text_user_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="@style/qb_tenpay_label" />
+                </LinearLayout>
+                <View style="@style/qb_tenpay_line" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_card_number_label" style="@style/qb_tenpay_label" />
+                <com.tenpay.android.qqplugin.control.TenpayNumberEditText android:id="@id/bin_card_no" android:layout_width="fill_parent" android:hint="@string/qb_tenpay_card_number_hint" android:singleLine="true" android:maxLength="31" android:inputType="number" style="@style/qb_tenpay_text" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/bin_input_bank_select" android:background="@drawable/qb_tenpay_btn_white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip">
+                <View style="@style/qb_tenpay_line" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                    <TextView android:duplicateParentState="true" android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_card_type_label" style="@style/qb_tenpay_label" />
+                    <ImageView android:id="@id/bin_input_sel_bank_image" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="5.0dip" />
+                    <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_blue_wathet_color" android:gravity="left" android:id="@id/bin_input_sel_bank_name" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="招商银行储蓄卡" android:layout_weight="1.0" />
+                    <Button android:duplicateParentState="true" android:layout_marginRight="15.0dip" style="@style/qb_tenpay_arrow_r" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bin_input_bank_sure" android:paddingTop="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/bin_input_bank_image" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="5.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/qb_tenpay_thin_color" android:id="@id/bin_input_bank_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="招商银行储蓄卡" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/bin_input_credit" android:background="@drawable/qb_tenpay_border" android:paddingTop="1.0dip" android:paddingBottom="1.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bin_input_credit_thru_layout" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_bind_valid_label" style="@style/qb_tenpay_label" />
+                <com.tenpay.android.qqplugin.control.ValidDateEdit android:id="@id/bin_input_credit_thru" android:layout_width="fill_parent" android:hint="@string/qb_tenpay_validate_valid_time" android:singleLine="true" android:maxLength="5" android:inputType="number" style="@style/qb_tenpay_text" />
+            </LinearLayout>
+            <View android:id="@id/bin_input_credit_thru_line" style="@style/qb_tenpay_line" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bin_input_bank_cvv_layout" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_bind_cvv_label" style="@style/qb_tenpay_label" />
+                <com.tenpay.android.qqplugin.control.TenpayEditText android:id="@id/bin_input_bank_cvv" android:layout_width="fill_parent" android:hint="@string/qb_tenpay_validate_cvv_code" android:singleLine="true" android:maxLength="3" android:inputType="number" style="@style/qb_tenpay_text" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/bin_input_user" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/qb_tenpay_border" android:paddingTop="1.0dip" android:paddingBottom="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bin_user_layout" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                    <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_card_name_label" style="@style/qb_tenpay_label" />
+                    <com.tenpay.android.qqplugin.control.ClearableEditText android:id="@id/bin_input_user_name" android:layout_width="fill_parent" android:hint="@string/qb_tenpay_card_name_hint" android:singleLine="true" style="@style/qb_tenpay_text" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/bin_input_cre_id_type_layout" android:background="@drawable/qb_tenpay_btn_white" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <View android:id="@id/bin_user_line" style="@style/qb_tenpay_line" />
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                        <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_card_id_type_label" style="@style/qb_tenpay_label" />
+                        <TextView android:textColor="@color/qb_tenpay_blue_wathet_color" android:id="@id/bin_input_cre_id_type" android:layout_width="fill_parent" android:text="@string/qb_tenpay_card_id_default_type" android:singleLine="true" style="@style/qb_tenpay_text" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/bin_input_cre_id_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <View android:id="@id/bin_card_type_line" style="@style/qb_tenpay_line" />
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                        <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_card_id_label" style="@style/qb_tenpay_label" />
+                        <com.tenpay.android.qqplugin.control.ClearableEditText android:id="@id/bin_input_cre_id" android:layout_width="fill_parent" android:hint="@string/qb_tenpay_card_id_hint" android:singleLine="true" android:maxLength="18" style="@style/qb_tenpay_text" />
+                        <com.tenpay.android.qqplugin.control.ClearableEditText android:id="@id/bin_input_cre_other_id" android:visibility="gone" android:layout_width="fill_parent" android:hint="@string/qb_tenpay_card_id_hint" android:singleLine="true" style="@style/qb_tenpay_text" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View android:id="@id/bin_phone_line" style="@style/qb_tenpay_line" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                    <TextView android:layout_width="94.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qb_tenpay_card_mobile_label" style="@style/qb_tenpay_label" />
+                    <com.tenpay.android.qqplugin.control.ClearableEditText android:id="@id/bin_input_phone" android:layout_width="0.0dip" android:hint="@string/qb_tenpay_card_mobile_hint" android:singleLine="true" android:maxLength="11" android:layout_weight="1.0" android:inputType="number" android:imeOptions="actionDone" style="@style/qb_tenpay_text" />
+                    <Button android:id="@id/bin_phone_alert" android:background="@drawable/qb_tenpay_pay_icowarn_blue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                <CheckBox android:id="@id/bin_input_agree_check" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:button="@drawable/cm_blue_check_bg" />
+                <TextView android:textSize="14.0sp" android:textColor="#ffa6a6a6" android:paddingLeft="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_agree" />
+                <TextView android:textSize="14.0sp" android:id="@id/tenpay_bind_protocol_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_protocol" style="@style/qb_tenpay_link_blue" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:id="@id/bin_confirm_view" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+        <Button android:id="@id/bin_confirm" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="9.0dip" android:text="@string/qb_tenpay_next" style="@style/qb_tenpay_btn_submit" />
+    </LinearLayout>
+</ScrollView>

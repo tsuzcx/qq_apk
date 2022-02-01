@@ -1,15 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import abvb;
-import addo;
-import addp;
-import addq;
-import addr;
-import aivm;
-import altm;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
@@ -18,6 +12,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -28,25 +23,32 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aspn;
-import aspo;
-import azri;
-import bdgm;
-import bdhk;
-import bdib;
-import bdjz;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.avatar.observer.AvatarObserver;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.gesturelock.LockPatternView;
-import com.tencent.mobileqq.gesturelock.LockPatternView.DisplayMode;
+import com.tencent.mobileqq.gesturelock.LockPatternView.Cell;
+import com.tencent.mobileqq.gesturelock.LockPatternView.OnPatternListener;
 import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.qwallet.IQWalletPayApi;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -54,208 +56,160 @@ import mqq.app.Constants.LogoutReason;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
+@RoutePage(desc="手势解锁", path="/base/gesturePwdUnlock")
 public class GesturePWDUnlockActivity
   extends BaseActivity
-  implements View.OnClickListener, Animation.AnimationListener, aspo
+  implements View.OnClickListener, Animation.AnimationListener, LockPatternView.OnPatternListener
 {
-  public static boolean c;
-  private float jdField_a_of_type_Float = 1.0F;
-  int jdField_a_of_type_Int = 5;
-  public long a;
-  altm jdField_a_of_type_Altm = new addq(this);
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new addr(this);
-  private View jdField_a_of_type_AndroidViewView;
-  public ImageView a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bdjz jdField_a_of_type_Bdjz;
-  LockPatternView jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private long[] jdField_a_of_type_ArrayOfLong;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString = "";
-  private int jdField_d_of_type_Int = 5;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e = true;
+  public static final int GESTUREPWD_LENGHT_MIN = 3;
+  private static final int GESTUREPWD_UNLOCK_MAXTIME = 5;
+  public static final String GESTURE_ACTION = "com.tencent.mobileqq.gestureunlock";
+  private static final String GESTURE_TAG = "Q.gesturelock.unlock";
+  public static final String KEY_GESTURE_FROM_AUTHORITY = "key_gesture_from_authority";
+  public static final String KEY_GESTURE_FROM_JUMPACTIVITY = "key_gesture_from_jumpactivity";
+  public static final String KEY_GESTURE_FROM_SYSTEM_CONTACT = "key_req_by_contact_sync";
+  public static final String KEY_GESTURE_SHOWGESTURE_VALID = "key_gesture_showgesture_valid";
+  public static final String KEY_GESTURE_UNLOCK_FAILED = "key_gesture_unlock_failed";
+  public static final int MESSAGE_UNLOCK_FAILED = 2;
+  public static final int MESSAGE_UNLOCK_SUCCESS = 1;
+  private static final int REQUEST_CODE_LOGIN = 9999;
+  public static boolean sGesturePWDUnlockShowing;
+  private int[] StepLocation;
+  private long[] StepTime;
+  AvatarObserver avatarObserver = new GesturePWDUnlockActivity.6(this);
+  long createTime = 0L;
+  private int curStep = 0;
+  private float density = 1.0F;
+  private QQCustomDialog faiedUnlockDialog;
+  private boolean isNeedReLogin = true;
+  private boolean isOtherPageSuccess = false;
+  private BroadcastReceiver mBroadcastReceiver = new GesturePWDUnlockActivity.7(this);
+  ImageView mFaceImageView;
+  private TextView mForgeTextView;
+  private boolean mIsFromAuthority = false;
+  boolean mIsFromJump = false;
+  boolean mIsFromSystemContact = false;
+  private GesturePWDUnlockActivity.JumpMqqHandler mJumpHandler;
+  LockPatternView mLockView;
+  String mPkgNameString = "";
+  private View mTransView;
+  private int mUnlockFailedTime = 0;
+  private TextView mUnlockTextView;
+  int mUnlockTime = 5;
+  private TextView mUnlockTipTextView;
+  String mUrlString = "";
+  private String mWrongTips = "";
+  private int totalStep = 5;
   
-  public GesturePWDUnlockActivity()
+  private void doAlertAnimation(View paramView)
   {
-    this.jdField_a_of_type_Long = 0L;
+    this.curStep = 0;
+    this.totalStep = 5;
+    this.StepTime = new long[] { 50L, 100L, 100L, 100L, 100L };
+    float f = this.density;
+    this.StepLocation = new int[] { (int)(-20.0F * f), (int)(20.0F * f), (int)(-15.0F * f), (int)(f * 15.0F), 0 };
+    this.mTransView = paramView;
+    nextStep();
   }
   
-  private void a(View paramView)
+  private void doJumpAction(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 5;
-    this.jdField_a_of_type_ArrayOfLong = new long[] { 50L, 100L, 100L, 100L, 100L };
-    this.jdField_a_of_type_ArrayOfInt = new int[] { (int)(-20.0F * this.jdField_a_of_type_Float), (int)(20.0F * this.jdField_a_of_type_Float), (int)(-15.0F * this.jdField_a_of_type_Float), (int)(15.0F * this.jdField_a_of_type_Float), 0 };
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    f();
-  }
-  
-  private void g()
-  {
-    this.jdField_c_of_type_JavaLangString = getString(2131693113);
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("key_gesture_from_jumpactivity", false);
-    this.jdField_d_of_type_Boolean = getIntent().getBooleanExtra("key_gesture_from_authority", false);
-    this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("key_req_by_contact_sync", false);
-    if (this.jdField_a_of_type_Boolean)
+    if ((this.mIsFromJump) && (!TextUtils.isEmpty(this.mUrlString)))
     {
-      this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("scheme_content");
-      this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("pkg_name");
+      JumpAction localJumpAction = JumpParser.a(this.app, getActivity(), this.mUrlString);
+      localJumpAction.d(this.mPkgNameString);
+      localJumpAction.w = paramBoolean;
+      localJumpAction.a();
     }
-    addObserver(this.jdField_a_of_type_Altm);
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = GesturePWDUtils.getGestureUnlockFailedTime(getActivity(), this.app.getCurrentAccountUin());
   }
   
-  private void h()
+  private void initData()
   {
-    setTitle(2131693097);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367173));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367170));
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView = ((LockPatternView)findViewById(2131367172));
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setFillInGapCell(false);
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setTactileFeedbackEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setOnPatternListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367169));
+    this.mWrongTips = getString(2131890020);
+    this.mIsFromJump = getIntent().getBooleanExtra("key_gesture_from_jumpactivity", false);
+    this.mIsFromAuthority = getIntent().getBooleanExtra("key_gesture_from_authority", false);
+    this.mIsFromSystemContact = getIntent().getBooleanExtra("key_req_by_contact_sync", false);
+    if (this.mIsFromJump)
+    {
+      this.mUrlString = getIntent().getStringExtra("scheme_content");
+      this.mPkgNameString = getIntent().getStringExtra("pkg_name");
+      this.mJumpHandler = new GesturePWDUnlockActivity.JumpMqqHandler(this);
+      this.app.setHandler(GesturePWDUnlockActivity.class, this.mJumpHandler);
+    }
+    addObserver(this.avatarObserver);
+    this.density = getResources().getDisplayMetrics().density;
+    this.mUnlockFailedTime = GesturePWDUtils.getGestureUnlockFailedTime(getActivity(), this.app.getCurrentAccountUin());
+  }
+  
+  private void initUI()
+  {
+    setTitle(2131890004);
+    this.mUnlockTextView = ((TextView)findViewById(2131434206));
+    this.mUnlockTipTextView = ((TextView)findViewById(2131434203));
+    this.mLockView = ((LockPatternView)findViewById(2131434205));
+    this.mLockView.setFillInGapCell(false);
+    this.mLockView.setTactileFeedbackEnabled(false);
+    this.mLockView.setOnPatternListener(this);
+    this.mFaceImageView = ((ImageView)findViewById(2131434202));
     Object localObject1;
     if ((this.app != null) && (this.app.getCurrentAccountUin() != null))
     {
-      localObject1 = this.app.a(this.app.getCurrentAccountUin(), (byte)3, false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
+      localObject1 = this.app.getFaceBitmap(this.app.getCurrentAccountUin(), (byte)3, false);
+      this.mFaceImageView.setImageBitmap((Bitmap)localObject1);
     }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367171));
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(false);
-    if (this.jdField_a_of_type_Float <= 1.0D)
+    this.mForgeTextView = ((TextView)findViewById(2131434204));
+    this.mForgeTextView.setOnClickListener(this);
+    this.mForgeTextView.setEnabled(false);
+    if (this.density <= 1.0D)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = ((int)(this.jdField_a_of_type_Float * 240.0F));
-      ((ViewGroup.LayoutParams)localObject1).width = ((int)(this.jdField_a_of_type_Float * 240.0F));
-      this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = this.mLockView.getLayoutParams();
+      float f = this.density;
+      ((ViewGroup.LayoutParams)localObject1).height = ((int)(f * 240.0F));
+      ((ViewGroup.LayoutParams)localObject1).width = ((int)(f * 240.0F));
+      this.mLockView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
-    if ((this.jdField_b_of_type_Int > 0) && (this.jdField_b_of_type_Int < 5))
+    int i = this.mUnlockFailedTime;
+    if ((i > 0) && (i < 5))
     {
-      this.jdField_a_of_type_Int = (5 - this.jdField_b_of_type_Int);
-      Object localObject2 = MessageFormat.format(this.jdField_c_of_type_JavaLangString, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166805));
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject1 = this.jdField_a_of_type_Int + "";
-      int i = ((String)localObject2).indexOf((String)localObject1);
-      localObject2 = new SpannableString((CharSequence)localObject2);
-      ((SpannableString)localObject2).setSpan(new StyleSpan(1), i, ((String)localObject1).length() + i, 18);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+      this.mUnlockTime = (5 - i);
+      localObject1 = MessageFormat.format(this.mWrongTips, new Object[] { Integer.valueOf(this.mUnlockTime) });
+      this.mUnlockTextView.setTextColor(getResources().getColor(2131167862));
+      this.mUnlockTipTextView.setVisibility(0);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.mUnlockTime);
+      ((StringBuilder)localObject2).append("");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      i = ((String)localObject1).indexOf((String)localObject2);
+      localObject1 = new SpannableString((CharSequence)localObject1);
+      ((SpannableString)localObject1).setSpan(new StyleSpan(1), i, ((String)localObject2).length() + i, 18);
+      this.mUnlockTextView.setText((CharSequence)localObject1);
     }
-    if (this.jdField_b_of_type_Int == 5)
+    if (this.mUnlockFailedTime == 5)
     {
-      this.jdField_a_of_type_Int = 0;
-      d();
+      this.mUnlockTime = 0;
+      onUnlockFailedOutRange();
     }
   }
   
-  public void a() {}
-  
-  public void a(List<aspn> paramList)
+  private void onJumpReceiveUnlock()
   {
-    if (paramList != null)
-    {
-      String str1 = GesturePWDUtils.getGesturePWD(this, this.app.getCurrentAccountUin());
-      String str2 = MD5.toMD5(GesturePWDUtils.patternToString(paramList));
-      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.app.getCurrentAccountUin());
-      if ((str1 != null) && (((str2 != null) && (str2.equals(str1))) || ((paramList != null) && (paramList.equals(str1)))))
-      {
-        BaseActivity.isUnLockSuccess = true;
-        if (this.jdField_b_of_type_Boolean)
-        {
-          paramList = new Intent(this, ContactSyncJumpActivity.class);
-          paramList.putExtra("key_req_from_lock_screen", true);
-          paramList.putExtra("key_orginal_intent", getIntent().getParcelableExtra("key_orginal_intent"));
-          startActivity(paramList);
-          moveTaskToBack(true);
-        }
-        for (;;)
-        {
-          finish();
-          GesturePWDUtils.setGestureLocking(this, false);
-          if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-          {
-            paramList = bdib.a(this.app, getActivity(), this.jdField_a_of_type_JavaLangString);
-            paramList.b(this.jdField_b_of_type_JavaLangString);
-            paramList.c();
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.gesturelock.unlock", 2, "unlock success.");
-          }
-          this.jdField_a_of_type_Int = 5;
-          aivm.a(this.app, true);
-          return;
-          setResult(-1);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-      this.jdField_a_of_type_Int -= 1;
-      if (this.jdField_a_of_type_Int > 0)
-      {
-        c();
-        return;
-      }
-      d();
-      return;
+    boolean bool = isDelayFinish();
+    doJumpAction(bool);
+    if (!bool) {
+      finish();
     }
-    QQToast.a(this, 1, getString(2131693108), 0).b(getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-    this.jdField_a_of_type_Int -= 1;
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      c();
-      return;
-    }
-    d();
   }
   
-  public void b() {}
-  
-  public void b(List<aspn> paramList) {}
-  
-  void c()
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.unlock", 2, "onUnlockFailedInRange");
-    }
-    Object localObject = MessageFormat.format(this.jdField_c_of_type_JavaLangString, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166805));
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    String str = this.jdField_a_of_type_Int + "";
-    int i = ((String)localObject).indexOf(str);
-    localObject = new SpannableString((CharSequence)localObject);
-    ((SpannableString)localObject).setSpan(new StyleSpan(1), i, str.length() + i, 18);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    a(this.jdField_a_of_type_AndroidWidgetTextView);
-    BaseApplicationImpl.sUiHandler.postDelayed(new GesturePWDUnlockActivity.2(this), 500L);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.unlock", 2, "onUnlockFailedOutRange");
-    }
-    BaseApplicationImpl.sUiHandler.postDelayed(new GesturePWDUnlockActivity.3(this), 500L);
-    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
-      return;
-    }
-    this.jdField_a_of_type_Bdjz = bdgm.a(this, 231, getString(2131693111), getString(2131693110), new addo(this), null);
-    this.jdField_a_of_type_Bdjz.setOnDismissListener(new addp(this));
-    this.jdField_a_of_type_Bdjz.show();
-  }
-  
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 9999)
@@ -264,16 +218,14 @@ public class GesturePWDUnlockActivity
       {
         setResult(-1, paramIntent);
         finish();
+        return;
       }
+      setResult(0);
+      finish();
     }
-    else {
-      return;
-    }
-    setResult(0);
-    finish();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.gesturelock.unlock", 2, "onCreate begin.");
@@ -290,65 +242,293 @@ public class GesturePWDUnlockActivity
     }
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559162);
-    g();
-    h();
+    super.setContentView(2131624962);
+    initData();
+    initUI();
     GesturePWDUtils.setGestureLocking(this, true);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.createTime = System.currentTimeMillis();
     paramBundle = new Intent();
     paramBundle.setAction("com.tencent.mobileqq.gestureunlock");
-    paramBundle.putExtra("timeid", this.jdField_a_of_type_Long);
+    paramBundle.putExtra("timeid", this.createTime);
     sendBroadcast(paramBundle);
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mobileqq.gestureunlock");
-    registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+    registerReceiver(this.mBroadcastReceiver, paramBundle);
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bdjz != null)
+    QQCustomDialog localQQCustomDialog = this.faiedUnlockDialog;
+    if (localQQCustomDialog != null)
     {
-      this.e = false;
-      this.jdField_a_of_type_Bdjz.dismiss();
+      this.isNeedReLogin = false;
+      localQQCustomDialog.dismiss();
     }
-    removeObserver(this.jdField_a_of_type_Altm);
+    removeObserver(this.avatarObserver);
+    if (this.mJumpHandler != null) {
+      this.app.removeHandler(GesturePWDUnlockActivity.class);
+    }
     try
     {
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      label39:
-      abvb.c(this);
+      unregisterReceiver(this.mBroadcastReceiver);
       return;
     }
-    catch (Exception localException)
-    {
-      break label39;
+    catch (Exception localException) {}
+  }
+  
+  protected void doOnPause()
+  {
+    super.doOnPause();
+    sGesturePWDUnlockShowing = false;
+  }
+  
+  protected void doOnResume()
+  {
+    super.doOnResume();
+    this.mForgeTextView.postDelayed(new GesturePWDUnlockActivity.1(this), 500L);
+    if ((this.isOtherPageSuccess) && (this.mIsFromJump)) {
+      onJumpReceiveUnlock();
     }
   }
   
-  public void doOnPause()
-  {
-    super.doOnPause();
-    jdField_c_of_type_Boolean = false;
-  }
-  
-  public void doOnResume()
-  {
-    super.doOnResume();
-    this.jdField_c_of_type_AndroidWidgetTextView.postDelayed(new GesturePWDUnlockActivity.1(this), 500L);
-  }
-  
-  public void doOnStop()
+  protected void doOnStop()
   {
     super.doOnStop();
-    this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(false);
-    GesturePWDUtils.setGestureUnlockFailedTime(getActivity(), this.app.getCurrentAccountUin(), 5 - this.jdField_a_of_type_Int);
+    this.mForgeTextView.setEnabled(false);
+    GesturePWDUtils.setGestureUnlockFailedTime(getActivity(), this.app.getCurrentAccountUin(), 5 - this.mUnlockTime);
   }
   
-  public void e()
+  public void finish()
   {
-    this.jdField_a_of_type_Int = 5;
+    super.finish();
+    overridePendingTransition(2130772007, 2130772092);
+  }
+  
+  public boolean isDelayFinish()
+  {
+    if ((this.mIsFromJump) && (!TextUtils.isEmpty(this.mUrlString)))
+    {
+      localObject = JumpParser.a(this.app, getActivity(), this.mUrlString);
+      if (localObject == null)
+      {
+        QLog.d("qqBaseActivity", 1, "isDelayFinish false jumpAction == null");
+        return false;
+      }
+      if (("share".equals(((JumpAction)localObject).d)) && ("to_fri".equals(((JumpAction)localObject).e)) && (!TextUtils.isEmpty(JumpAction.h((String)((JumpAction)localObject).f.get("file_uri")))))
+      {
+        QLog.d("qqBaseActivity", 1, "isDelayFinish true share qq file");
+        return true;
+      }
+      if (("share".equals(((JumpAction)localObject).d)) && ("to_qzone".equals(((JumpAction)localObject).e)) && (!TextUtils.isEmpty(JumpAction.h((String)((JumpAction)localObject).f.get("image_uri")))))
+      {
+        QLog.d("qqBaseActivity", 1, "isDelayFinish true share qqzone file");
+        return true;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isDelayFinish false sn = ");
+      localStringBuilder.append(((JumpAction)localObject).d);
+      localStringBuilder.append(",an=");
+      localStringBuilder.append(((JumpAction)localObject).e);
+      QLog.d("qqBaseActivity", 1, localStringBuilder.toString());
+      return false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isDelayFinish false noJump");
+    ((StringBuilder)localObject).append(this.mIsFromJump);
+    QLog.d("qqBaseActivity", 1, ((StringBuilder)localObject).toString());
+    return false;
+  }
+  
+  protected boolean isWrapContent()
+  {
+    return false;
+  }
+  
+  void nextStep()
+  {
+    int j = this.curStep;
+    int k = this.totalStep;
+    int i = 0;
+    if (j < k)
+    {
+      Object localObject = this.StepLocation;
+      if ((localObject != null) && (localObject.length >= k))
+      {
+        long[] arrayOfLong = this.StepTime;
+        if ((arrayOfLong != null) && (arrayOfLong.length >= k))
+        {
+          if (j > 0) {
+            i = localObject[(j - 1)];
+          }
+          j = this.StepLocation[this.curStep];
+          localObject = new TranslateAnimation(i, j, 0.0F, 0.0F);
+          ((TranslateAnimation)localObject).setAnimationListener(this);
+          ((TranslateAnimation)localObject).setDuration(this.StepTime[this.curStep]);
+          this.mTransView.startAnimation((Animation)localObject);
+          this.curStep += 1;
+          return;
+        }
+      }
+    }
+    this.curStep = 0;
+    this.mTransView = null;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    nextStep();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
+  
+  protected boolean onBackEvent()
+  {
+    if ((!this.mIsFromJump) && (!this.mIsFromAuthority))
+    {
+      moveTaskToBack(true);
+      return true;
+    }
+    setResult(0);
+    return super.onBackEvent();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131434204)
+    {
+      unLockFailed();
+      GesturePWDUtils.setGestureUnlockFailedType(this, 0);
+      StatisticCollector.getInstance(getBaseContext()).reportActionCount(this.app, this.app.getCurrentAccountUin(), "Gesture_pwd", "click_forgive", 0, 1, "0", null, null, null, null);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onLogout(Constants.LogoutReason paramLogoutReason) {}
+  
+  public void onPatternCellAdded(List<LockPatternView.Cell> paramList) {}
+  
+  public void onPatternCleared() {}
+  
+  public void onPatternDetected(List<LockPatternView.Cell> paramList)
+  {
+    if (paramList != null)
+    {
+      String str1 = GesturePWDUtils.getGesturePWD(this, this.app.getCurrentAccountUin());
+      String str2 = MD5.toMD5(GesturePWDUtils.patternToString(paramList));
+      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.app.getCurrentAccountUin());
+      if ((str1 != null) && (((str2 != null) && (str2.equals(str1))) || ((paramList != null) && (paramList.equals(str1)))))
+      {
+        BaseActivity.isUnLockSuccess = true;
+        if (this.mIsFromSystemContact)
+        {
+          paramList = new Intent(this, ContactSyncJumpActivity.class);
+          paramList.putExtra("key_req_from_lock_screen", true);
+          paramList.putExtra("key_orginal_intent", getIntent().getParcelableExtra("key_orginal_intent"));
+          startActivity(paramList);
+          moveTaskToBack(true);
+        }
+        else
+        {
+          setResult(-1);
+        }
+        boolean bool = isDelayFinish();
+        doJumpAction(bool);
+        if (!bool) {
+          finish();
+        }
+        paramList = this.app.getHandler(GesturePWDUnlockActivity.class);
+        if (paramList != null) {
+          paramList.sendEmptyMessage(1);
+        }
+        GesturePWDUtils.setGestureLocking(this, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.gesturelock.unlock", 2, "unlock success.");
+        }
+        this.mUnlockTime = 5;
+        ((IQWalletPayApi)QRoute.api(IQWalletPayApi.class)).onQQForeground(this.app, true);
+        return;
+      }
+      this.mLockView.setDisplayMode(2);
+      this.mUnlockTime -= 1;
+      if (this.mUnlockTime > 0)
+      {
+        onUnlockFailedInRange();
+        return;
+      }
+      onUnlockFailedOutRange();
+      return;
+    }
+    QQToast.makeText(this, 1, getString(2131890015), 0).show(getTitleBarHeight());
+    this.mLockView.setDisplayMode(2);
+    this.mUnlockTime -= 1;
+    if (this.mUnlockTime > 0)
+    {
+      onUnlockFailedInRange();
+      return;
+    }
+    onUnlockFailedOutRange();
+  }
+  
+  public void onPatternStart() {}
+  
+  void onUnlockFailedInRange()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.gesturelock.unlock", 2, "onUnlockFailedInRange");
+    }
+    Object localObject1 = MessageFormat.format(this.mWrongTips, new Object[] { Integer.valueOf(this.mUnlockTime) });
+    this.mUnlockTextView.setTextColor(getResources().getColor(2131167862));
+    this.mUnlockTipTextView.setVisibility(0);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.mUnlockTime);
+    ((StringBuilder)localObject2).append("");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    int i = ((String)localObject1).indexOf((String)localObject2);
+    localObject1 = new SpannableString((CharSequence)localObject1);
+    ((SpannableString)localObject1).setSpan(new StyleSpan(1), i, ((String)localObject2).length() + i, 18);
+    this.mUnlockTextView.setText((CharSequence)localObject1);
+    doAlertAnimation(this.mUnlockTextView);
+    BaseApplicationImpl.sUiHandler.postDelayed(new GesturePWDUnlockActivity.2(this), 500L);
+  }
+  
+  void onUnlockFailedOutRange()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.gesturelock.unlock", 2, "onUnlockFailedOutRange");
+    }
+    Object localObject = this.app.getHandler(GesturePWDUnlockActivity.class);
+    if (localObject != null) {
+      ((MqqHandler)localObject).sendEmptyMessage(2);
+    }
+    BaseApplicationImpl.sUiHandler.postDelayed(new GesturePWDUnlockActivity.3(this), 500L);
+    localObject = this.faiedUnlockDialog;
+    if ((localObject != null) && (((QQCustomDialog)localObject).isShowing())) {
+      return;
+    }
+    this.faiedUnlockDialog = DialogUtil.a(this, 231, getString(2131890018), getString(2131890017), new GesturePWDUnlockActivity.4(this), null);
+    this.faiedUnlockDialog.setOnDismissListener(new GesturePWDUnlockActivity.5(this));
+    this.faiedUnlockDialog.show();
+  }
+  
+  protected void requestWindowFeature(Intent paramIntent)
+  {
+    requestWindowFeature(1);
+  }
+  
+  void unLockFailed()
+  {
+    this.mUnlockTime = 5;
     GesturePWDUtils.setGesturePWDState(this, this.app.getCurrentAccountUin(), 0);
     GesturePWDUtils.setGesturePWDMode(this, this.app.getCurrentAccountUin(), 21);
     GesturePWDUtils.setGestureUnlockFailed(this, this.app.getCurrentAccountUin());
@@ -366,124 +546,61 @@ public class GesturePWDUnlockActivity
       getAppRuntime().getApplication().refreAccountList();
     }
     GesturePWDUtils.setGestureLocking(this, false);
-    if (QQPlayerService.a())
+    if (QQPlayerService.b())
     {
       localObject = new Intent();
       ((Intent)localObject).setAction("qqplayer_exit_action");
       sendBroadcast((Intent)localObject);
     }
     this.app.logout(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.unlock", 2, this.jdField_d_of_type_Boolean + "," + this.jdField_b_of_type_Boolean + "," + this.jdField_a_of_type_Boolean + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mIsFromAuthority);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.mIsFromSystemContact);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.mIsFromJump);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.mUrlString);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.mPkgNameString);
+      QLog.d("Q.gesturelock.unlock", 2, ((StringBuilder)localObject).toString());
     }
-    localObject = new Intent(getApplicationContext(), LoginActivity.class);
-    if (this.jdField_d_of_type_Boolean)
+    localObject = new Intent();
+    if (this.mIsFromAuthority)
     {
       ((Intent)localObject).putExtra("key_gesture_from_authority", true);
       GesturePWDUtils.setGestureLocking(this, false);
-      startActivityForResult((Intent)localObject, 9999);
+      RouteUtils.a(this, (Intent)localObject, "/base/login", 9999);
       return;
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.mIsFromSystemContact)
     {
       ((Intent)localObject).addFlags(67108864);
       ((Intent)localObject).putExtra("key_req_by_contact_sync", true);
       ((Intent)localObject).putExtra("key_orginal_intent", getIntent().getParcelableExtra("key_orginal_intent"));
-      startActivity((Intent)localObject);
+      RouteUtils.a(this, (Intent)localObject, "/base/login");
     }
-    for (;;)
+    else if (!this.mIsFromJump)
     {
-      finish();
-      return;
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        ((Intent)localObject).addFlags(67108864);
-        ((Intent)localObject).putExtra("key_gesture_unlock_failed", true);
-        ((Intent)localObject).putExtra("tab_index", MainFragment.jdField_b_of_type_Int);
-        startActivity((Intent)localObject);
-      }
-      else if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
-      {
-        ((Intent)localObject).putExtra("scheme_content", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("pkg_name", this.jdField_b_of_type_JavaLangString);
-        startActivity((Intent)localObject);
-      }
+      ((Intent)localObject).addFlags(67108864);
+      ((Intent)localObject).putExtra("key_gesture_unlock_failed", true);
+      ((Intent)localObject).putExtra("tab_index", FrameControllerUtil.a);
+      RouteUtils.a(this, (Intent)localObject, "/base/login");
     }
-  }
-  
-  void f()
-  {
-    int i = 0;
-    if ((this.jdField_c_of_type_Int < this.jdField_d_of_type_Int) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length >= this.jdField_d_of_type_Int) && (this.jdField_a_of_type_ArrayOfLong != null) && (this.jdField_a_of_type_ArrayOfLong.length >= this.jdField_d_of_type_Int))
+    else if ((!TextUtils.isEmpty(this.mUrlString)) && (!TextUtils.isEmpty(this.mPkgNameString)))
     {
-      if (this.jdField_c_of_type_Int > 0) {
-        i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_c_of_type_Int - 1)];
-      }
-      int j = this.jdField_a_of_type_ArrayOfInt[this.jdField_c_of_type_Int];
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(i, j, 0.0F, 0.0F);
-      localTranslateAnimation.setAnimationListener(this);
-      localTranslateAnimation.setDuration(this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int]);
-      this.jdField_a_of_type_AndroidViewView.startAnimation(localTranslateAnimation);
-      this.jdField_c_of_type_Int += 1;
-      return;
+      ((Intent)localObject).putExtra("scheme_content", this.mUrlString);
+      ((Intent)localObject).putExtra("pkg_name", this.mPkgNameString);
+      RouteUtils.a(this, (Intent)localObject, "/base/login");
     }
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView = null;
-  }
-  
-  public void finish()
-  {
-    super.finish();
-    overridePendingTransition(2130771990, 2130772038);
-  }
-  
-  public boolean isWrapContent()
-  {
-    return false;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    f();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
-  
-  public boolean onBackEvent()
-  {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
-    {
-      setResult(0);
-      return super.onBackEvent();
-    }
-    moveTaskToBack(true);
-    return true;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    e();
-    GesturePWDUtils.setGestureUnlockFailedType(this, 0);
-    azri.a(getBaseContext()).a(this.app, this.app.getCurrentAccountUin(), "Gesture_pwd", "click_forgive", 0, 1, "0", null, null, null, null);
-  }
-  
-  public void onLogout(Constants.LogoutReason paramLogoutReason) {}
-  
-  public void requestWindowFeature(Intent paramIntent)
-  {
-    requestWindowFeature(1);
+    finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

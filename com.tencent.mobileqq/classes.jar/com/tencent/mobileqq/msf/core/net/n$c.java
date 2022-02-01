@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.d.j;
 
 class n$c
   implements Runnable
@@ -17,7 +17,7 @@ class n$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.n.c
  * JD-Core Version:    0.7.0.1
  */

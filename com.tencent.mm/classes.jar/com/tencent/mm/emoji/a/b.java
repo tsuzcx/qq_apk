@@ -1,110 +1,151 @@
 package com.tencent.mm.emoji.a;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ba.d;
-import com.tencent.mm.ba.e;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.LinkedList;
+import com.tencent.mm.emoji.c.a;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/model/EggItemParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "isNewItem", "", "(Z)V", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "getInfo", "()Lcom/tencent/mm/modelpackage/EggInfo;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "itemList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "Lkotlin/collections/ArrayList;", "getItemList", "()Ljava/util/ArrayList;", "version", "", "getVersion", "()I", "setVersion", "(I)V", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "EmojiAnimItem", "EmojiAnimScreenEffect", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends a
 {
-  final d ewn;
-  private final boolean ewo;
+  public final ArrayList<a> mfy;
+  public int version;
   
-  public b(boolean paramBoolean)
+  public b()
   {
-    AppMethodBeat.i(151771);
-    this.ewo = paramBoolean;
-    this.ewn = new d();
-    AppMethodBeat.o(151771);
+    AppMethodBeat.i(242304);
+    this.mfy = new ArrayList();
+    AppMethodBeat.o(242304);
   }
   
-  protected final void a(String paramString, XmlPullParser paramXmlPullParser)
+  public final void a(String paramString, XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(151770);
-    j.q(paramString, "tag");
-    j.q(paramXmlPullParser, "parser");
+    AppMethodBeat.i(242311);
+    s.u(paramString, "tag");
+    s.u(paramXmlPullParser, "parser");
     switch (paramString.hashCode())
     {
-    default: 
-    case -730941173: 
-    case 947396446: 
-    case 849291753: 
-      label68:
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          skip(paramXmlPullParser);
+          AppMethodBeat.o(242311);
+          return;
+        } while (!paramString.equals("emojiAnimVersion"));
+        this.version = g(paramXmlPullParser);
+        AppMethodBeat.o(242311);
+        return;
+      } while (!paramString.equals("item"));
+      paramString = new a();
+      paramString.e(paramXmlPullParser);
+      this.mfy.add(paramString);
+      AppMethodBeat.o(242311);
+      return;
+    } while (!paramString.equals("emoji"));
+    AppMethodBeat.o(242311);
+  }
+  
+  public final void e(XmlPullParser paramXmlPullParser)
+  {
+    AppMethodBeat.i(242307);
+    s.u(paramXmlPullParser, "parser");
+    this.mfy.clear();
+    super.e(paramXmlPullParser);
+    AppMethodBeat.o(242307);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "animFile", "", "getAnimFile", "()Ljava/lang/String;", "setAnimFile", "(Ljava/lang/String;)V", "key", "getKey", "setKey", "screenEffect", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;", "getScreenEffect", "()Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;", "setScreenEffect", "(Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;)V", "parseTag", "", "tag", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends a
+  {
+    public String key = "";
+    public b.b mfA;
+    public String mfz = "";
+    
+    public final void a(String paramString, XmlPullParser paramXmlPullParser)
+    {
+      AppMethodBeat.i(242297);
+      s.u(paramString, "tag");
+      s.u(paramXmlPullParser, "parser");
+      switch (paramString.hashCode())
+      {
+      }
       do
       {
         do
         {
           do
           {
-            a(paramXmlPullParser);
-            AppMethodBeat.o(151770);
+            skip(paramXmlPullParser);
+            AppMethodBeat.o(242297);
             return;
-          } while (!paramString.equals("AnimType"));
-          this.ewn.fMu = e(paramXmlPullParser, "viewcount");
-          this.ewn.fMv = e(paramXmlPullParser, "minSize");
-          this.ewn.maxSize = e(paramXmlPullParser, "maxSize");
-          this.ewn.fMt = e(paramXmlPullParser);
-          AppMethodBeat.o(151770);
+          } while (!paramString.equals("animFile"));
+          this.mfz = f(paramXmlPullParser);
+          AppMethodBeat.o(242297);
           return;
-        } while (!paramString.equals("ClientEggVersion"));
-        if (!this.ewo) {
-          break;
-        }
-        this.ewn.fMw = e(paramXmlPullParser);
-        AppMethodBeat.o(151770);
+        } while (!paramString.equals("key"));
+        this.key = f(paramXmlPullParser);
+        AppMethodBeat.o(242297);
         return;
-      } while (!paramString.equals("KeyWord"));
-      paramString = new e();
-      paramString.lang = d(paramXmlPullParser, "lang");
-      paramString.fMx = d(paramXmlPullParser);
-      paramXmlPullParser = paramString.fMx;
-      j.p(paramXmlPullParser, "eggKeyWord.keyWord");
-      if (((CharSequence)paramXmlPullParser).length() <= 0) {
-        break;
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label68;
-      }
-      this.ewn.fMn.add(paramString);
-      AppMethodBeat.o(151770);
-      return;
-      if (!paramString.equals("FileName")) {
-        break;
-      }
-      this.ewn.fMs = d(paramXmlPullParser);
-      AppMethodBeat.o(151770);
-      return;
-      a(paramXmlPullParser);
-      AppMethodBeat.o(151770);
-      return;
+      } while (!paramString.equals("screenEffect"));
+      paramString = new b.b();
+      paramString.e(paramXmlPullParser);
+      paramXmlPullParser = ah.aiuX;
+      this.mfA = paramString;
+      AppMethodBeat.o(242297);
     }
   }
   
-  public final void f(XmlPullParser paramXmlPullParser)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "delay", "", "getDelay", "()I", "setDelay", "(I)V", "effectId", "", "getEffectId", "()Ljava/lang/String;", "setEffectId", "(Ljava/lang/String;)V", "version", "getVersion", "setVersion", "parseTag", "", "tag", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    extends a
   {
-    AppMethodBeat.i(151769);
-    j.q(paramXmlPullParser, "parser");
-    this.ewn.name = d(paramXmlPullParser, "name");
-    this.ewn.cFd = e(paramXmlPullParser, "reportType");
-    this.ewn.fMr = d(paramXmlPullParser, "langs");
-    this.ewn.fMp = bo.apM(d(paramXmlPullParser, "BeginDate"));
-    this.ewn.fMq = bo.apM(d(paramXmlPullParser, "EndDate"));
-    super.f(paramXmlPullParser);
-    AppMethodBeat.o(151769);
+    public int UZ;
+    private String mfB = "";
+    public int version;
+    
+    public final void a(String paramString, XmlPullParser paramXmlPullParser)
+    {
+      AppMethodBeat.i(242295);
+      s.u(paramString, "tag");
+      s.u(paramXmlPullParser, "parser");
+      switch (paramString.hashCode())
+      {
+      }
+      do
+      {
+        do
+        {
+          do
+          {
+            skip(paramXmlPullParser);
+            AppMethodBeat.o(242295);
+            return;
+          } while (!paramString.equals("effectId"));
+          this.mfB = f(paramXmlPullParser);
+          AppMethodBeat.o(242295);
+          return;
+        } while (!paramString.equals("delay"));
+        this.UZ = g(paramXmlPullParser);
+        AppMethodBeat.o(242295);
+        return;
+      } while (!paramString.equals("effectVersion"));
+      this.version = g(paramXmlPullParser);
+      AppMethodBeat.o(242295);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.a.b
  * JD-Core Version:    0.7.0.1
  */

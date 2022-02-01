@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class qun_get_photo_list_rsp
   extends JceStruct
@@ -63,19 +64,21 @@ public final class qun_get_photo_list_rsp
     paramJceOutputStream.write(this.albuminfo, 0);
     paramJceOutputStream.write(this.photolist, 1);
     paramJceOutputStream.write(this.hasmore, 2);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 3);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.ownerUin, 4);
-    if (this.adminUin != null) {
-      paramJceOutputStream.write(this.adminUin, 5);
+    localObject = this.adminUin;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
     paramJceOutputStream.write(this.operationMask, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_get_photo_list_rsp
  * JD-Core Version:    0.7.0.1
  */

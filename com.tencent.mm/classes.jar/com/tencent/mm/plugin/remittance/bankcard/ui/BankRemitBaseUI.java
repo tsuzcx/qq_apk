@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -15,7 +16,7 @@ import java.lang.reflect.Method;
 public abstract class BankRemitBaseUI
   extends WalletBaseUI
 {
-  public static int ae(Activity paramActivity)
+  public static int bk(Activity paramActivity)
   {
     int j = 0;
     int i = j;
@@ -31,15 +32,15 @@ public abstract class BankRemitBaseUI
     do
     {
       return i;
-      if (af(paramActivity)) {
+      if (bl(paramActivity)) {
         return 1;
       }
       i = j;
-    } while (!d(paramActivity.getWindow()));
+    } while (!f(paramActivity.getWindow()));
     return 2;
   }
   
-  private static boolean af(Activity paramActivity)
+  private static boolean bl(Activity paramActivity)
   {
     Window localWindow = paramActivity.getWindow();
     if (localWindow != null)
@@ -71,7 +72,7 @@ public abstract class BankRemitBaseUI
     }
   }
   
-  private static boolean d(Window paramWindow)
+  private static boolean f(Window paramWindow)
   {
     if (paramWindow != null) {
       try
@@ -90,16 +91,30 @@ public abstract class BankRemitBaseUI
     return false;
   }
   
-  protected void bHV()
-  {
-    ab.i("BankRemitBase", "ret: %s", new Object[] { Integer.valueOf(ae(this)) });
-  }
+  protected void fPx() {}
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bHV();
-    setBackBtn(new BankRemitBaseUI.1(this));
+    fPx();
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(67500);
+        if (BankRemitBaseUI.a(BankRemitBaseUI.this))
+        {
+          BankRemitBaseUI.this.hideVKB();
+          BankRemitBaseUI.this.showDialog(1000);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(67500);
+          return true;
+          BankRemitBaseUI.this.finish();
+        }
+      }
+    });
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -110,7 +125,7 @@ public abstract class BankRemitBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitBaseUI
  * JD-Core Version:    0.7.0.1
  */

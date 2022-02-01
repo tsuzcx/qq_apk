@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.mall.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wb;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.autogen.a.adx;
+import com.tencent.mm.sdk.event.IListener;
 
-final class MallIndexOSUI$1
-  extends c<wb>
+class MallIndexOSUI$1
+  extends IListener<adx>
 {
-  MallIndexOSUI$1(MallIndexOSUI paramMallIndexOSUI)
+  MallIndexOSUI$1(MallIndexOSUI paramMallIndexOSUI, q paramq)
   {
-    AppMethodBeat.i(43177);
-    this.__eventId = wb.class.getName().hashCode();
-    AppMethodBeat.o(43177);
+    super(paramq);
+    AppMethodBeat.i(262424);
+    this.__eventId = adx.class.getName().hashCode();
+    AppMethodBeat.o(262424);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallIndexOSUI.1
  * JD-Core Version:    0.7.0.1
  */

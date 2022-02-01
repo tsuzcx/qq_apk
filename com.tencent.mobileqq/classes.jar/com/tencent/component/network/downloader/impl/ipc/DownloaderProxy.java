@@ -63,7 +63,12 @@ public class DownloaderProxy
     if (paramBoolean) {}
     try
     {
-      for (paramString = (HashSet)this.mPendingRequests.remove(paramString); paramCollection != null; paramString = (HashSet)this.mPendingRequests.get(paramString))
+      for (paramString = this.mPendingRequests.remove(paramString);; paramString = this.mPendingRequests.get(paramString))
+      {
+        paramString = (HashSet)paramString;
+        break;
+      }
+      if (paramCollection != null)
       {
         paramCollection.clear();
         if (paramString != null) {
@@ -74,6 +79,10 @@ public class DownloaderProxy
       return paramString;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private void doRequestDownload(String paramString, String[] paramArrayOfString, Downloader.DownloadMode paramDownloadMode)
@@ -81,10 +90,11 @@ public class DownloaderProxy
     paramString = Const.obtainDownloadRequestMsg(paramString, paramArrayOfString, this.mType, paramDownloadMode, this.mClientMessenger);
     try
     {
-      if (this.mServiceMessenger != null) {
+      if (this.mServiceMessenger != null)
+      {
         this.mServiceMessenger.send(paramString);
+        return;
       }
-      return;
     }
     catch (Throwable paramString)
     {
@@ -101,20 +111,18 @@ public class DownloaderProxy
   
   private void notifyDownloadCanceled(Collection<Const.SimpleRequest> paramCollection)
   {
-    if (paramCollection == null) {}
-    for (;;)
-    {
+    if (paramCollection == null) {
       return;
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
+    }
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
+      if (localSimpleRequest != null)
       {
-        Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
-        if (localSimpleRequest != null)
-        {
-          Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
-          if (localDownloadListener != null) {
-            localDownloadListener.onDownloadCanceled(localSimpleRequest.url);
-          }
+        Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
+        if (localDownloadListener != null) {
+          localDownloadListener.onDownloadCanceled(localSimpleRequest.url);
         }
       }
     }
@@ -122,20 +130,18 @@ public class DownloaderProxy
   
   private void notifyDownloadFailed(Collection<Const.SimpleRequest> paramCollection, DownloadResult paramDownloadResult)
   {
-    if (paramCollection == null) {}
-    for (;;)
-    {
+    if (paramCollection == null) {
       return;
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
+    }
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
+      if (localSimpleRequest != null)
       {
-        Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
-        if (localSimpleRequest != null)
-        {
-          Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
-          if (localDownloadListener != null) {
-            localDownloadListener.onDownloadFailed(localSimpleRequest.url, paramDownloadResult);
-          }
+        Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
+        if (localDownloadListener != null) {
+          localDownloadListener.onDownloadFailed(localSimpleRequest.url, paramDownloadResult);
         }
       }
     }
@@ -143,20 +149,18 @@ public class DownloaderProxy
   
   private void notifyDownloadProgress(Collection<Const.SimpleRequest> paramCollection, long paramLong, float paramFloat)
   {
-    if (paramCollection == null) {}
-    for (;;)
-    {
+    if (paramCollection == null) {
       return;
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
+    }
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
+      if (localSimpleRequest != null)
       {
-        Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
-        if (localSimpleRequest != null)
-        {
-          Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
-          if (localDownloadListener != null) {
-            localDownloadListener.onDownloadProgress(localSimpleRequest.url, paramLong, paramFloat);
-          }
+        Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
+        if (localDownloadListener != null) {
+          localDownloadListener.onDownloadProgress(localSimpleRequest.url, paramLong, paramFloat);
         }
       }
     }
@@ -164,20 +168,18 @@ public class DownloaderProxy
   
   private void notifyDownloadSucceed(Collection<Const.SimpleRequest> paramCollection, DownloadResult paramDownloadResult)
   {
-    if (paramCollection == null) {}
-    for (;;)
-    {
+    if (paramCollection == null) {
       return;
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
+    }
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
+      if (localSimpleRequest != null)
       {
-        Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
-        if (localSimpleRequest != null)
-        {
-          Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
-          if (localDownloadListener != null) {
-            localDownloadListener.onDownloadSucceed(localSimpleRequest.url, paramDownloadResult);
-          }
+        Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
+        if (localDownloadListener != null) {
+          localDownloadListener.onDownloadSucceed(localSimpleRequest.url, paramDownloadResult);
         }
       }
     }
@@ -212,20 +214,19 @@ public class DownloaderProxy
   
   private void startService()
   {
-    Intent localIntent;
     if (this.mServiceMessenger == null)
     {
-      localIntent = new Intent();
+      Intent localIntent = new Intent();
       localIntent.setComponent(new ComponentName(this.mContext, "com.tencent.component.network.downloader.impl.ipc.DownloadSerice"));
-    }
-    try
-    {
-      this.mContext.bindService(localIntent, this.mConnection, 1);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QDLog.e("RemoteDownloader", "exception when bind download service!!!", localThrowable);
+      try
+      {
+        this.mContext.bindService(localIntent, this.mConnection, 1);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        QDLog.e("RemoteDownloader", "exception when bind download service!!!", localThrowable);
+      }
     }
   }
   
@@ -234,28 +235,26 @@ public class DownloaderProxy
     if (!Utils.checkUrl(paramString)) {
       return;
     }
-    Const.SimpleRequest localSimpleRequest = new Const.SimpleRequest();
-    localSimpleRequest.url = paramString;
-    localSimpleRequest.listener = paramDownloadListener;
+    Object localObject = new Const.SimpleRequest();
+    ((Const.SimpleRequest)localObject).url = paramString;
+    ((Const.SimpleRequest)localObject).listener = paramDownloadListener;
     paramDownloadListener = new ArrayList();
-    if (removePendingRequest(paramString, localSimpleRequest, paramDownloadListener))
+    if (removePendingRequest(paramString, (Const.SimpleRequest)localObject, paramDownloadListener))
     {
       paramString = Const.obtainDownloadCancelMsg(paramString, this.mType, this.mClientMessenger);
-      if (this.mServiceMessenger == null) {}
-    }
-    try
-    {
-      this.mServiceMessenger.send(paramString);
-      notifyDownloadCanceled(paramDownloadListener);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
+      localObject = this.mServiceMessenger;
+      if (localObject != null) {
+        try
+        {
+          ((Messenger)localObject).send(paramString);
+        }
+        catch (Throwable paramString)
+        {
+          paramString.printStackTrace();
+        }
       }
     }
+    notifyDownloadCanceled(paramDownloadListener);
   }
   
   public void cancel(String paramString, Downloader.DownloadListener paramDownloadListener)
@@ -263,28 +262,26 @@ public class DownloaderProxy
     if (!Utils.checkUrl(paramString)) {
       return;
     }
-    Const.SimpleRequest localSimpleRequest = new Const.SimpleRequest();
-    localSimpleRequest.url = paramString;
-    localSimpleRequest.listener = paramDownloadListener;
+    Object localObject = new Const.SimpleRequest();
+    ((Const.SimpleRequest)localObject).url = paramString;
+    ((Const.SimpleRequest)localObject).listener = paramDownloadListener;
     paramDownloadListener = new ArrayList();
-    if (removePendingRequest(paramString, localSimpleRequest, paramDownloadListener))
+    if (removePendingRequest(paramString, (Const.SimpleRequest)localObject, paramDownloadListener))
     {
       paramString = Const.obtainDownloadCancelMsg(paramString, this.mType, this.mClientMessenger);
-      if (this.mServiceMessenger == null) {}
-    }
-    try
-    {
-      this.mServiceMessenger.send(paramString);
-      notifyDownloadCanceled(paramDownloadListener);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
+      localObject = this.mServiceMessenger;
+      if (localObject != null) {
+        try
+        {
+          ((Messenger)localObject).send(paramString);
+        }
+        catch (Throwable paramString)
+        {
+          paramString.printStackTrace();
+        }
       }
     }
+    notifyDownloadCanceled(paramDownloadListener);
   }
   
   public void cancelAll() {}
@@ -292,49 +289,51 @@ public class DownloaderProxy
   public void cleanCache()
   {
     Message localMessage = Const.obtainCleanCacheMsg("", this.mType, this.mClientMessenger);
-    if (this.mServiceMessenger != null) {}
-    try
-    {
-      this.mServiceMessenger.send(localMessage);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    Messenger localMessenger = this.mServiceMessenger;
+    if (localMessenger != null) {
+      try
+      {
+        localMessenger.send(localMessage);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
   
   public void cleanCache(String paramString)
   {
-    if (!Utils.checkUrl(paramString)) {}
-    do
-    {
-      return;
-      paramString = Const.obtainCleanCacheMsg(paramString, this.mType, this.mClientMessenger);
-    } while (this.mServiceMessenger == null);
-    try
-    {
-      this.mServiceMessenger.send(paramString);
+    if (!Utils.checkUrl(paramString)) {
       return;
     }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
+    paramString = Const.obtainCleanCacheMsg(paramString, this.mType, this.mClientMessenger);
+    Messenger localMessenger = this.mServiceMessenger;
+    if (localMessenger != null) {
+      try
+      {
+        localMessenger.send(paramString);
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
   public boolean download(DownloadRequest arg1, boolean paramBoolean)
   {
-    paramBoolean = true;
-    int i = 0;
     String str = ???.getUrl();
     String[] arrayOfString = ???.getPaths();
-    if ((!Utils.checkUrl(str)) || (arrayOfString == null)) {
-      paramBoolean = false;
-    }
-    do
+    paramBoolean = Utils.checkUrl(str);
+    int i = 0;
+    if (paramBoolean)
     {
-      return paramBoolean;
+      if (arrayOfString == null) {
+        return false;
+      }
       Const.SimpleRequest localSimpleRequest1 = new Const.SimpleRequest();
       localSimpleRequest1.url = str;
       int j = arrayOfString.length;
@@ -353,12 +352,15 @@ public class DownloaderProxy
           return true;
         }
       }
-    } while (!addPendingRequest(str, str, localSimpleRequest2));
-    doRequestDownload(str, arrayOfString, ???.mode);
-    return true;
+      if (addPendingRequest(str, str, localSimpleRequest2)) {
+        doRequestDownload(str, arrayOfString, ???.mode);
+      }
+      return true;
+    }
+    return false;
   }
   
-  public void preConnectHost(ArrayList<String> paramArrayList) {}
+  public void preConnectHost(ArrayList<String> paramArrayList, String paramString) {}
   
   public void uninit()
   {
@@ -369,7 +371,7 @@ public class DownloaderProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ipc.DownloaderProxy
  * JD-Core Version:    0.7.0.1
  */

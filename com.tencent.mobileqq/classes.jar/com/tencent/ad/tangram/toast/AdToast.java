@@ -18,8 +18,9 @@ public enum AdToast
   
   private static AdToastAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdToastAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdToastAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -39,7 +40,7 @@ public enum AdToast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.toast.AdToast
  * JD-Core Version:    0.7.0.1
  */

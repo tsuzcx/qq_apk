@@ -1,8 +1,8 @@
 package com.tencent.common.app;
 
 import android.os.Bundle;
-import bjdt;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -25,24 +25,28 @@ public class QzoneMainRuntime
     getAppRuntime("qzone_plugin.apk");
   }
   
-  public AppRuntime onGetSubRuntime(String paramString)
+  protected AppRuntime onGetSubRuntime(String paramString)
   {
-    AppRuntime localAppRuntime = null;
-    if (QLog.isColorLevel()) {
-      QLog.i(TAG, 2, "QzoneMainRuntime.onGetSubRuntime() moduleId " + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QzoneMainRuntime.onGetSubRuntime() moduleId ");
+      localStringBuilder.append(paramString);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
     if (paramString.equals("qzone_plugin.apk")) {
-      localAppRuntime = bjdt.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
+      return QZoneHelper.createQZoneAppInterface(BaseApplicationImpl.getApplication(), MobileQQ.processName);
     }
-    while (!paramString.equals("qzone_vertical_video_plugin.apk")) {
-      return localAppRuntime;
+    if (paramString.equals("qzone_vertical_video_plugin.apk")) {
+      return QZoneHelper.createVerticalVideoAppInterface(BaseApplicationImpl.getApplication());
     }
-    return bjdt.c(BaseApplicationImpl.getApplication());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.QzoneMainRuntime
  * JD-Core Version:    0.7.0.1
  */

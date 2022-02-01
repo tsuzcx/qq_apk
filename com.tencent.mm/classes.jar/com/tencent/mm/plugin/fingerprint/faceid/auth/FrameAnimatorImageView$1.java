@@ -9,14 +9,14 @@ final class FrameAnimatorImageView$1
   
   public final void run()
   {
-    AppMethodBeat.i(41354);
-    this.mFh.onStop();
-    AppMethodBeat.o(41354);
+    AppMethodBeat.i(64217);
+    this.HeV.onStop();
+    AppMethodBeat.o(64217);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.faceid.auth.FrameAnimatorImageView.1
  * JD-Core Version:    0.7.0.1
  */

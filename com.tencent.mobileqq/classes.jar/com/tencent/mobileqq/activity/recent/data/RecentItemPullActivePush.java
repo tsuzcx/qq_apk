@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import bdns;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
 
 public class RecentItemPullActivePush
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public long time;
   
@@ -17,7 +17,7 @@ public class RecentItemPullActivePush
   {
     this.mTitleName = paramString;
     this.time = paramLong;
-    this.mShowTime = bdns.a(paramLong, true, "yyyy-MM-dd");
+    this.mShowTime = TimeFormatterUtils.a(paramLong, true, "yyyy-MM-dd");
   }
 }
 

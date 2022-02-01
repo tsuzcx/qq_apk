@@ -33,8 +33,8 @@ final class Gson$5
   public void write(JsonWriter paramJsonWriter, AtomicLongArray paramAtomicLongArray)
   {
     paramJsonWriter.beginArray();
-    int i = 0;
     int j = paramAtomicLongArray.length();
+    int i = 0;
     while (i < j)
     {
       this.val$longAdapter.write(paramJsonWriter, Long.valueOf(paramAtomicLongArray.get(i)));
@@ -45,7 +45,7 @@ final class Gson$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.Gson.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,13 @@
-import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
 
 public class hkq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public hkq(BaseInterface paramBaseInterface, long paramLong, String paramString, WebView paramWebView) {}
+  public hkq(BaseJsCallBack paramBaseJsCallBack) {}
   
-  public void run()
-  {
-    String str = "javascript:QzoneApp.fire('batchCallback',{guid:" + this.jdField_a_of_type_Long + ",'r':-2,'data':['" + this.jdField_a_of_type_JavaLangString + "']});";
-    LogUtility.e("Response<callBatch>", str);
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
-      return;
-    }
-    catch (Exception localException) {}
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

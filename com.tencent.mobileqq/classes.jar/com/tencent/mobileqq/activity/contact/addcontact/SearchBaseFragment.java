@@ -1,28 +1,16 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import aepi;
-import ahhd;
-import ahhf;
-import ahhg;
-import ahhy;
-import ahhz;
-import ahia;
-import ahib;
-import ahid;
-import ahip;
-import ahln;
-import alsf;
-import altm;
-import alto;
-import alud;
+import MQQ.LhLogoResources;
+import addcontacts.AccountSearchPb.ResultItem;
+import addcontacts.AccountSearchPb.hotwordrecord;
+import addcontacts.AccountSearchPb.record;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
@@ -38,147 +26,154 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aybr;
-import ayec;
-import ayvm;
-import bcpx;
-import bdbb;
-import bdbc;
-import bdgz;
-import bhtv;
+import com.tencent.biz.pubaccount.api.IPublicAccountSearchRecommendManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.avatar.api.IQQAvatarService;
+import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.newfriend.api.INewFriendApi;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richstatus.IIconListener;
 import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.model.SearchResultItem;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.vas.util.PrettyAccountUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import nru;
 
 public class SearchBaseFragment
-  extends Fragment
-  implements View.OnClickListener, bdbc, bhtv
+  extends BaseFragment
+  implements View.OnClickListener, DecodeTaskCompletionListener, AbsListView.OnScrollListener
 {
-  private static final String jdField_b_of_type_JavaLangString = SearchBaseFragment.class.getName();
-  protected ahhd a;
-  protected ahhf a;
-  ahhg jdField_a_of_type_Ahhg;
-  private altm jdField_a_of_type_Altm = new ahib(this);
-  public Handler a;
-  protected BaseAdapter a;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  protected aybr a;
-  protected ayec a;
-  bdbb jdField_a_of_type_Bdbb;
-  protected BaseActivity a;
-  public QQAppInterface a;
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  public XListView a;
-  public String a;
-  public Map<String, SpannableString> a;
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  public boolean b;
-  public final int c = 64;
-  protected boolean c;
-  public int d = 0;
-  public int e = 0;
-  protected int f;
-  
-  public SearchBaseFragment()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_Ahhf = new ahhy(this);
-    this.jdField_a_of_type_AndroidOsHandler = new ahhz(this);
-    this.jdField_a_of_type_Aybr = new ahia(this);
-  }
-  
-  public static int a()
-  {
-    int i = -16734752;
-    if ("1103".equals(ThemeUtil.curThemeId)) {
-      i = -16760704;
-    }
-    return i;
-  }
+  private static final String a = "com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment";
+  private Handler b;
+  private AccountSearchPb.record c;
+  public final int d = 64;
+  protected String e;
+  protected int f = 0;
+  protected boolean g;
+  protected boolean h;
+  protected BaseAdapter i;
+  LinearLayout j;
+  XListView k;
+  CustomerLoadingDialog l;
+  IFaceDecoder m;
+  int n = 0;
+  protected StatusManager o;
+  protected int p;
+  public Map<String, SpannableString> q = new ConcurrentHashMap();
+  protected QQAppInterface r;
+  protected BaseActivity s;
+  protected ContactSearchFacade t;
+  protected ContactSearchFacade.ISearchListener u = new SearchBaseFragment.1(this);
+  protected Handler v = new SearchBaseFragment.2(this);
+  protected IIconListener w = new SearchBaseFragment.3(this);
+  private FriendListObserver x = new SearchBaseFragment.4(this);
   
   private static int a(String paramString1, String paramString2)
   {
-    int i = paramString2.indexOf(paramString1);
-    if (i >= 0) {
-      return i;
+    int i1 = paramString2.indexOf(paramString1);
+    if (i1 >= 0) {
+      return i1;
     }
     return paramString2.toLowerCase().indexOf(paramString1.toLowerCase());
   }
   
-  public static SpannableString a(String paramString, List<String> paramList)
+  public static SpannableString a(String paramString1, String paramString2, List<String> paramList)
   {
-    if (paramString == null) {
+    if (paramString2 == null) {
       return null;
     }
     if (paramList == null) {
-      return new SpannableString(paramString);
+      return new SpannableString(paramString2);
     }
-    int i = paramString.length();
+    int i1 = paramString2.length();
     Object localObject = paramList.iterator();
-    int j;
-    if (((Iterator)localObject).hasNext())
+    int i2;
+    while (((Iterator)localObject).hasNext())
     {
-      j = a((String)((Iterator)localObject).next(), paramString);
-      if ((j < 0) || (j >= i)) {
-        break label224;
+      i2 = a((String)((Iterator)localObject).next(), paramString2);
+      if ((i2 >= 0) && (i2 < i1)) {
+        i1 = i2;
       }
-      i = j;
     }
-    label224:
-    for (;;)
+    localObject = paramString2;
+    if (i1 > 8)
     {
-      break;
-      localObject = paramString;
-      if (i > 8)
+      localObject = paramString2;
+      if (i1 != paramString2.length())
       {
-        localObject = paramString;
-        if (i != paramString.length()) {
-          localObject = "…" + paramString.substring(i - 8);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("…");
+        ((StringBuilder)localObject).append(paramString2.substring(i1 - 8));
+        localObject = ((StringBuilder)localObject).toString();
       }
-      SpannableString localSpannableString = new SpannableString((CharSequence)localObject);
-      paramList = paramList.iterator();
-      if (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        i = 0;
-        for (paramString = (String)localObject;; paramString = paramString.substring(j))
-        {
-          int k = a(str, paramString);
-          if (k < 0) {
-            break;
-          }
-          j = str.length() + k;
-          localSpannableString.setSpan(new ForegroundColorSpan(a()), k + i, i + j, 33);
-          i += j;
-        }
-      }
-      return localSpannableString;
     }
+    paramString2 = new SpannableString((CharSequence)localObject);
+    if (TextUtils.isEmpty(paramString1)) {
+      i2 = f();
+    } else {
+      i2 = b(paramString1);
+    }
+    paramList = paramList.iterator();
+    if (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      paramString1 = (String)localObject;
+      int i3;
+      for (i1 = 0;; i1 = i3)
+      {
+        int i4 = a(str, paramString1);
+        if (i4 < 0) {
+          break;
+        }
+        int i5 = str.length() + i4;
+        ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(i2);
+        i3 = i1 + i5;
+        paramString2.setSpan(localForegroundColorSpan, i4 + i1, i3, 33);
+        paramString1 = paramString1.substring(i5);
+      }
+    }
+    return paramString2;
+  }
+  
+  public static SpannableString a(String paramString, List<String> paramList)
+  {
+    return a(null, paramString, paramList);
   }
   
   public static SpannableString a(String paramString, List<String> paramList, int paramInt)
@@ -189,91 +184,134 @@ public class SearchBaseFragment
     if (paramList == null) {
       return new SpannableString(paramString);
     }
-    int i = paramString.length();
-    Object localObject = paramList.iterator();
-    int j;
-    if (((Iterator)localObject).hasNext())
+    int i1 = paramString.length();
+    Object localObject1 = paramList.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      j = a((String)((Iterator)localObject).next(), paramString);
-      if ((j < 0) || (j >= i)) {
-        break label466;
+      i2 = a((String)((Iterator)localObject1).next(), paramString);
+      if ((i2 >= 0) && (i2 < i1)) {
+        i1 = i2;
       }
-      i = j;
     }
-    label457:
-    label460:
-    label466:
-    for (;;)
+    int i2 = paramString.length();
+    int i3;
+    if ((i1 >= 0) && (i2 > paramInt))
     {
-      break;
-      j = paramString.length();
-      int k;
-      if ((i >= 0) && (j > paramInt))
+      localObject1 = b(paramString, paramList);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject = a(paramString, paramList);
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        i3 = ((String)localObject1).length();
+        if (i3 < paramInt)
         {
-          k = ((String)localObject).length();
-          if (k < paramInt)
+          i1 += i3;
+          i3 = i1 - paramInt;
+          localObject2 = paramString;
+          if (i3 > 0)
           {
-            i += k;
-            k = i - paramInt;
-            if ((k <= 0) || (i >= paramString.length())) {
-              break label460;
+            localObject2 = paramString;
+            if (i1 < paramString.length())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("…");
+              ((StringBuilder)localObject1).append(paramString.substring(i3, i1));
+              ((StringBuilder)localObject1).append("…");
+              localObject2 = ((StringBuilder)localObject1).toString();
+            }
+          }
+          if ((i3 > 0) && (i1 >= i2))
+          {
+            paramString = new StringBuilder();
+            paramString.append("…");
+            paramString.append(((String)localObject2).substring(((String)localObject2).length() - paramInt, ((String)localObject2).length()));
+            localObject1 = paramString.toString();
+          }
+          else
+          {
+            localObject1 = localObject2;
+            if (i3 <= 0)
+            {
+              paramString = new StringBuilder();
+              paramString.append(((String)localObject2).substring(0, paramInt));
+              paramString.append("…");
+              localObject1 = paramString.toString();
             }
           }
         }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramString.substring(0, paramInt));
+          ((StringBuilder)localObject1).append("…");
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
       }
-      for (localObject = "…" + paramString.substring(k, i) + "…";; localObject = paramString)
+      else
       {
-        if ((k > 0) && (i >= j))
-        {
-          paramString = "…" + ((String)localObject).substring(((String)localObject).length() - paramInt, ((String)localObject).length());
-          localObject = paramString;
-        }
-        SpannableString localSpannableString;
-        for (;;)
-        {
-          localSpannableString = new SpannableString((CharSequence)localObject);
-          paramList = paramList.iterator();
-          if (!paramList.hasNext()) {
-            break label457;
-          }
-          String str = (String)paramList.next();
-          paramString = (String)localObject;
-          paramInt = 0;
-          for (;;)
-          {
-            j = a(str, paramString);
-            if (j < 0) {
-              break;
-            }
-            i = str.length() + j;
-            localSpannableString.setSpan(new ForegroundColorSpan(a()), j + paramInt, paramInt + i, 33);
-            paramInt += i;
-            paramString = paramString.substring(i);
-          }
-          paramString = (String)localObject;
-          if (k > 0) {
-            break;
-          }
-          paramString = ((String)localObject).substring(0, paramInt) + "…";
-          break;
-          paramString = paramString.substring(0, paramInt) + "…";
-          break;
-          paramString = paramString.substring(0, paramInt) + "…";
-          break;
-          localObject = paramString;
-          if (j > paramInt) {
-            localObject = paramString.substring(0, paramInt) + "…";
-          }
-        }
-        return localSpannableString;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString.substring(0, paramInt));
+        ((StringBuilder)localObject1).append("…");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
     }
+    else
+    {
+      localObject1 = paramString;
+      if (i2 > paramInt)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString.substring(0, paramInt));
+        ((StringBuilder)localObject1).append("…");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+    }
+    Object localObject2 = new SpannableString((CharSequence)localObject1);
+    paramList = paramList.iterator();
+    if (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      paramInt = 0;
+      paramString = (String)localObject1;
+      for (;;)
+      {
+        i2 = a(str, paramString);
+        if (i2 < 0) {
+          break;
+        }
+        i3 = str.length() + i2;
+        ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(f());
+        i1 = paramInt + i3;
+        ((SpannableString)localObject2).setSpan(localForegroundColorSpan, i2 + paramInt, i1, 33);
+        paramString = paramString.substring(i3);
+        paramInt = i1;
+      }
+    }
+    return localObject2;
   }
   
-  private static String a(String paramString, List<String> paramList)
+  public static int b(String paramString)
+  {
+    int i1;
+    try
+    {
+      i1 = Color.parseColor(paramString);
+      return i1;
+    }
+    catch (Exception paramString)
+    {
+      i1 = f();
+      if (QLog.isColorLevel())
+      {
+        String str = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pretty_account color parse:");
+        localStringBuilder.append(paramString);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+    }
+    return i1;
+  }
+  
+  private static String b(String paramString, List<String> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -289,132 +327,143 @@ public class SearchBaseFragment
     return null;
   }
   
-  public int a(TextView paramTextView, BaseActivity paramBaseActivity)
+  public static int f()
+  {
+    if ("1103".equals(ThemeUtil.curThemeId)) {
+      return -16760704;
+    }
+    return -16734752;
+  }
+  
+  protected int a(TextView paramTextView, BaseActivity paramBaseActivity)
   {
     paramTextView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-    int i = paramTextView.getMeasuredHeight();
+    int i1 = paramTextView.getMeasuredHeight();
     float f1 = paramTextView.getMeasuredWidth();
-    int j = aepi.a(18.0F, paramBaseActivity.getResources());
-    float f2 = aepi.a(260.0F, paramBaseActivity.getResources());
-    float f3 = alsf.a() / 16.0F;
-    return i / j + (int)(f1 * f3 / f2);
+    int i2 = AIOUtils.b(18.0F, paramBaseActivity.getResources());
+    float f2 = AIOUtils.b(260.0F, paramBaseActivity.getResources());
+    float f3 = FontSettingManager.getFontLevel() / 16.0F;
+    return i1 / i2 + (int)(f1 * f3 / f2);
   }
   
   public SpannableString a(int paramInt, String paramString)
   {
-    SpannableString localSpannableString2 = (SpannableString)this.jdField_a_of_type_JavaUtilMap.get(paramInt + ":" + paramString);
-    SpannableString localSpannableString1 = localSpannableString2;
-    if (localSpannableString2 == null) {
-      localSpannableString1 = new SpannableString(paramString);
+    Object localObject1 = this.q;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramInt);
+    ((StringBuilder)localObject2).append(":");
+    ((StringBuilder)localObject2).append(paramString);
+    localObject2 = (SpannableString)((Map)localObject1).get(((StringBuilder)localObject2).toString());
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new SpannableString(paramString);
     }
-    return localSpannableString1;
+    return localObject1;
   }
   
   public SpannableString a(int paramInt, String paramString, SpannableString paramSpannableString)
   {
-    return (SpannableString)this.jdField_a_of_type_JavaUtilMap.put(paramInt + ":" + paramString, paramSpannableString);
+    Map localMap = this.q;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramString);
+    return (SpannableString)localMap.put(localStringBuilder.toString(), paramSpannableString);
   }
   
-  public BaseActivity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  }
-  
-  protected String a(ahid paramahid, AccountSearchPb.record paramrecord)
+  protected String a(SearchBaseFragment.ItemViewHolder paramItemViewHolder, AccountSearchPb.record paramrecord)
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
-    int j = paramrecord.age.get();
-    int i;
-    switch (paramrecord.sex.get())
+    int i2 = paramrecord.age.get();
+    int i3 = paramrecord.sex.get();
+    int i1 = 1;
+    if (i3 != 1)
     {
-    default: 
-      i = -1;
+      if (i3 != 2) {
+        i1 = -1;
+      }
     }
-    for (;;)
+    else {
+      i1 = 0;
+    }
+    ((INewFriendApi)QRoute.api(INewFriendApi.class)).showGenderAge(paramItemViewHolder.d, i1, i2, localStringBuilder1);
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    if (!TextUtils.isEmpty(paramrecord.province_name.get()))
     {
-      ahln.a(paramahid.c, i, j, localStringBuilder1);
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      if (!TextUtils.isEmpty(paramrecord.province_name.get())) {
-        localStringBuilder2.append(paramrecord.province_name.get()).append(" ");
-      }
-      if (!TextUtils.isEmpty(paramrecord.city_name.get())) {
-        localStringBuilder2.append(paramrecord.city_name.get());
-      }
-      if ((localStringBuilder2.length() == 0) && (!TextUtils.isEmpty(paramrecord.country_name.get()))) {
-        localStringBuilder2.append(paramrecord.country_name.get());
-      }
-      paramahid.d.setText(localStringBuilder2.toString());
-      localStringBuilder1.append(localStringBuilder2.toString());
-      a(paramahid, paramrecord.richStatus);
-      return localStringBuilder1.toString();
-      i = 0;
-      continue;
-      i = 1;
+      localStringBuilder2.append(paramrecord.province_name.get());
+      localStringBuilder2.append(" ");
     }
+    if (!TextUtils.isEmpty(paramrecord.city_name.get())) {
+      localStringBuilder2.append(paramrecord.city_name.get());
+    }
+    if ((localStringBuilder2.length() == 0) && (!TextUtils.isEmpty(paramrecord.country_name.get()))) {
+      localStringBuilder2.append(paramrecord.country_name.get());
+    }
+    paramItemViewHolder.e.setText(localStringBuilder2.toString());
+    localStringBuilder1.append(localStringBuilder2.toString());
+    a(paramItemViewHolder, paramrecord.richStatus);
+    return localStringBuilder1.toString();
   }
   
-  public void a() {}
+  protected void a() {}
   
-  protected void a(int paramInt, AccountSearchPb.record paramrecord)
+  protected void a(int paramInt1, AccountSearchPb.record paramrecord, int paramInt2)
   {
-    if (a() == null) {
+    if (o() == null) {
       return;
     }
-    switch (paramInt)
+    boolean bool = true;
+    long l1;
+    switch (paramInt1)
     {
     default: 
       return;
-    case 80000000: 
-      a(paramrecord);
+    case 80000002: 
+      paramInt1 = paramrecord.account_flag.get();
+      PublicView.a(this.r, o(), paramrecord.class_index.get(), String.valueOf(paramrecord.uin.get()), String.valueOf(paramrecord.uin.get()), paramInt1, paramrecord.name.get(), 4);
+      IPublicAccountSearchRecommendManager localIPublicAccountSearchRecommendManager = (IPublicAccountSearchRecommendManager)QRoute.api(IPublicAccountSearchRecommendManager.class);
+      QQAppInterface localQQAppInterface = this.r;
+      l1 = paramrecord.uin.get();
+      String str = paramrecord.name.get();
+      if (paramrecord.class_index.get() == 1) {
+        bool = false;
+      }
+      localIPublicAccountSearchRecommendManager.updatePublicAccountSearchHistoryItem(localQQAppInterface, String.valueOf(l1), str, bool);
       return;
     case 80000001: 
-      paramrecord = TroopInfoActivity.a(String.valueOf(paramrecord.code.get()), 2);
-      paramrecord.putInt("exposureSource", 3);
-      paramrecord.putInt("t_s_f", 1000);
-      bcpx.a(a(), paramrecord, 2);
-      return;
-    }
-    paramInt = paramrecord.account_flag.get();
-    PublicView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), paramrecord.class_index.get(), String.valueOf(paramrecord.uin.get()), String.valueOf(paramrecord.uin.get()), paramInt, paramrecord.name.get(), 4);
-    nru localnru = nru.a();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    long l = paramrecord.uin.get();
-    String str = paramrecord.name.get();
-    if (paramrecord.class_index.get() != 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localnru.a(localQQAppInterface, String.valueOf(l), str, bool);
-      return;
-    }
-  }
-  
-  public void a(int paramInt1, Object paramObject, int paramInt2, String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramString));
-    }
-  }
-  
-  public void a(ahid paramahid, RichStatus paramRichStatus)
-  {
-    paramahid.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramRichStatus;
-    if ((paramRichStatus != null) && (!paramRichStatus.isEmpty()))
-    {
-      if (!TextUtils.isEmpty(paramRichStatus.actionText))
-      {
-        paramahid.jdField_a_of_type_Int = paramRichStatus.actionId;
-        return;
+      l1 = paramrecord.code.get();
+      if (paramInt2 <= 0) {
+        paramInt2 = 2;
       }
-      paramahid.jdField_a_of_type_Int = 0;
+      paramrecord = TroopInfoUIUtil.a(String.valueOf(l1), paramInt2);
+      paramrecord.putInt("exposureSource", 3);
+      paramrecord.putString("keyword", this.e);
+      paramrecord.putBoolean("isFromNative", true);
+      paramrecord.putInt("t_s_f", 1000);
+      TroopUtils.a(o(), paramrecord, 2);
       return;
     }
-    paramahid.jdField_a_of_type_Int = 0;
+    a(paramrecord);
+  }
+  
+  protected void a(int paramInt1, Object paramObject, int paramInt2, String paramString)
+  {
+    paramObject = this.v;
+    if (paramObject != null) {
+      paramObject.sendMessage(paramObject.obtainMessage(1, paramString));
+    }
+  }
+  
+  protected void a(AccountSearchPb.record paramrecord)
+  {
+    this.c = paramrecord;
+    AddFriendActivity.startProfileCardActivity(o(), new SearchResultItem(paramrecord), this.r, true, 2);
   }
   
   @Deprecated
   public void a(Handler paramHandler)
   {
-    this.jdField_b_of_type_AndroidOsHandler = paramHandler;
+    this.b = paramHandler;
   }
   
   protected void a(View paramView)
@@ -424,334 +473,344 @@ public class SearchBaseFragment
       if (paramView.getParent() != null) {
         ((ViewGroup)paramView.getParent()).removeView(paramView);
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView);
+      this.j.removeAllViews();
+      this.j.addView(paramView);
     }
   }
   
-  protected void a(AccountSearchPb.record paramrecord)
+  protected void a(SearchBaseFragment.ItemViewHolder paramItemViewHolder, RichStatus paramRichStatus)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
-    AddFriendActivity.a(a(), new SearchResultItem(paramrecord), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, 2);
+    paramItemViewHolder.l = paramRichStatus;
+    if ((paramRichStatus != null) && (!paramRichStatus.isEmpty()))
+    {
+      if (!TextUtils.isEmpty(paramRichStatus.actionText))
+      {
+        paramItemViewHolder.i = paramRichStatus.actionId;
+        return;
+      }
+      paramItemViewHolder.i = 0;
+      return;
+    }
+    paramItemViewHolder.i = 0;
   }
   
-  public void a(String paramString)
+  protected void a(String paramString)
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = alud.a(2131713998);
+      str = HardCodeUtil.a(2131911075);
     }
-    QQToast.a(BaseApplicationImpl.getContext(), str, 0).b(b());
+    QQToast.makeText(BaseApplicationImpl.getContext(), str, 0).show(i());
   }
   
   public void a(String paramString, boolean paramBoolean) {}
   
-  public void a(ArrayList<ahip> paramArrayList)
+  protected void a(List<ISearchResultGroupModel> paramList)
+  {
+    if (o() != null) {
+      a(ViewFactory.a().a(80000008, o(), true, this.m, paramList));
+    }
+  }
+  
+  protected boolean a(ArrayList<SearchResult> paramArrayList)
+  {
+    return true;
+  }
+  
+  protected String b(SearchBaseFragment.ItemViewHolder paramItemViewHolder, AccountSearchPb.record paramrecord)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramItemViewHolder.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    paramItemViewHolder.d.setCompoundDrawablePadding(0);
+    paramItemViewHolder.d.setBackgroundResource(0);
+    Drawable localDrawable;
+    if ((paramrecord.video_account.has()) && (paramrecord.video_account.get() == 1))
+    {
+      localDrawable = getResources().getDrawable(2130842778);
+      ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
+      paramItemViewHolder.b.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
+      paramItemViewHolder.b.setCompoundDrawablePadding((int)DisplayUtils.a(BaseApplicationImpl.getContext(), 6.0F));
+    }
+    else if ((paramrecord.flag.has()) && (paramrecord.flag.get() == 1L))
+    {
+      localDrawable = getResources().getDrawable(2130842755);
+      ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
+      paramItemViewHolder.b.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
+      paramItemViewHolder.b.setCompoundDrawablePadding((int)DisplayUtils.a(BaseApplicationImpl.getContext(), 6.0F));
+    }
+    else
+    {
+      paramItemViewHolder.b.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    }
+    if ((paramrecord.class_index.has()) && (paramrecord.class_index.get() == 1))
+    {
+      if (paramrecord.class_name.has())
+      {
+        paramItemViewHolder.d.setText(paramrecord.class_name.get());
+        localStringBuilder.append(paramrecord.class_name.get());
+      }
+      if (paramrecord.brief.has())
+      {
+        paramItemViewHolder.e.setText(a(80000002, paramrecord.brief.get()));
+        localStringBuilder.append(paramrecord.brief.get());
+      }
+    }
+    else if (paramrecord.class_index.has())
+    {
+      paramItemViewHolder.d.setVisibility(8);
+      if (paramrecord.brief.has())
+      {
+        paramItemViewHolder.e.setText(a(80000002, paramrecord.brief.get()));
+        localStringBuilder.append(paramItemViewHolder.e.getText());
+      }
+    }
+    int i1 = BaseApplicationImpl.getContext().getResources().getColor(2131168118);
+    paramItemViewHolder.d.setTextColor(i1);
+    return localStringBuilder.toString();
+  }
+  
+  public void b(ArrayList<SearchResult> paramArrayList)
   {
     for (;;)
     {
-      ahip localahip;
-      List localList;
-      Object localObject1;
-      Object localObject2;
-      Object localObject3;
       try
       {
         Iterator localIterator = paramArrayList.iterator();
+        SearchResult localSearchResult;
+        List localList;
+        Object localObject2;
+        Object localObject3;
+        Object localObject1;
+        int i1;
         if (localIterator.hasNext())
         {
-          localahip = (ahip)localIterator.next();
-          localList = localahip.jdField_a_of_type_JavaUtilList;
-          localObject1 = localahip.b.iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label306;
-          }
-          localObject2 = (AccountSearchPb.record)((Iterator)localObject1).next();
-          localObject3 = ((AccountSearchPb.record)localObject2).name.get();
-          if (localahip.jdField_a_of_type_Int == 80000003)
+          localSearchResult = (SearchResult)localIterator.next();
+          localList = localSearchResult.d;
+          localObject2 = localSearchResult.e.iterator();
+          if (((Iterator)localObject2).hasNext())
           {
-            paramArrayList = SpannableString.valueOf(ayvm.a((String)localObject3, (ArrayList)localList, 255));
-            a(localahip.jdField_a_of_type_Int, (String)localObject3, paramArrayList);
-            paramArrayList = null;
+            localObject3 = (AccountSearchPb.record)((Iterator)localObject2).next();
+            localObject1 = ((AccountSearchPb.record)localObject3).name.get();
+            if (localSearchResult.a == 80000003) {
+              paramArrayList = SpannableString.valueOf(SearchUtils.a((String)localObject1, (ArrayList)localList, 255));
+            } else {
+              paramArrayList = a((String)localObject1, localList);
+            }
+            a(localSearchResult.a, (String)localObject1, paramArrayList);
+            i1 = localSearchResult.a;
+            localObject1 = null;
           }
         }
-        else
+        switch (i1)
         {
-          switch (localahip.jdField_a_of_type_Int)
+        case 80000002: 
+        case 80000003: 
+          paramArrayList = String.valueOf(((AccountSearchPb.record)localObject3).brief.get());
+          break;
+        case 80000001: 
+          paramArrayList = String.valueOf(((AccountSearchPb.record)localObject3).code.get());
+          break;
+        case 80000000: 
+          paramArrayList = String.valueOf(((AccountSearchPb.record)localObject3).uin.get());
+          Object localObject4;
+          if (!TextUtils.isEmpty(paramArrayList))
           {
-          case 80000001: 
-            if (!TextUtils.isEmpty(paramArrayList))
+            if (((AccountSearchPb.record)localObject3).uint32_richflag1_59.get() == 1)
             {
-              localObject3 = a(paramArrayList, localList);
-              a(localahip.jdField_a_of_type_Int, paramArrayList, (SpannableString)localObject3);
+              localObject4 = PrettyAccountUtil.a(((AccountSearchPb.record)localObject3).uint32_richflag4_409.get());
+              if (localObject4 != null) {
+                localObject1 = ((LhLogoResources)localObject4).lightColor;
+              }
+              localObject1 = a((String)localObject1, paramArrayList, localList);
             }
-            if ((localahip.jdField_a_of_type_Int != 80000000) || (TextUtils.isEmpty(((AccountSearchPb.record)localObject2).mobile.get()))) {
-              continue;
+            else
+            {
+              localObject1 = a(paramArrayList, localList);
             }
-            paramArrayList = ((AccountSearchPb.record)localObject2).mobile.get();
-            localObject2 = a(paramArrayList, localList);
-            a(localahip.jdField_a_of_type_Int, paramArrayList, (SpannableString)localObject2);
+            a(localSearchResult.a, paramArrayList, (SpannableString)localObject1);
+          }
+          if ((localSearchResult.a != 80000000) || (TextUtils.isEmpty(((AccountSearchPb.record)localObject3).mobile.get()))) {
             continue;
-            return;
           }
-        }
-      }
-      catch (Exception paramArrayList)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_b_of_type_JavaLangString, 2, "", paramArrayList);
-        }
-      }
-      paramArrayList = a((String)localObject3, localList);
-      continue;
-      paramArrayList = String.valueOf(((AccountSearchPb.record)localObject2).code.get());
-      continue;
-      paramArrayList = String.valueOf(((AccountSearchPb.record)localObject2).uin.get());
-      continue;
-      paramArrayList = String.valueOf(((AccountSearchPb.record)localObject2).brief.get());
-      continue;
-      label306:
-      paramArrayList = localahip.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$hotwordrecord;
-      if ((paramArrayList != null) && (paramArrayList.hotword.has()))
-      {
-        paramArrayList = paramArrayList.hotword.get();
-        localObject1 = SpannableString.valueOf(ayvm.a(paramArrayList, (ArrayList)localList, 255));
-        a(localahip.jdField_a_of_type_Int, paramArrayList, (SpannableString)localObject1);
-      }
-      paramArrayList = localahip.c;
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
-      {
-        localObject1 = paramArrayList.iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
+          paramArrayList = ((AccountSearchPb.record)localObject3).mobile.get();
+          localObject1 = a(paramArrayList, localList);
+          a(localSearchResult.a, paramArrayList, (SpannableString)localObject1);
+          continue;
+          paramArrayList = localSearchResult.f;
+          if ((paramArrayList != null) && (paramArrayList.hotword.has()))
+          {
+            paramArrayList = paramArrayList.hotword.get();
+            localObject1 = SpannableString.valueOf(SearchUtils.a(paramArrayList, (ArrayList)localList, 255));
+            a(localSearchResult.a, paramArrayList, (SpannableString)localObject1);
+          }
+          paramArrayList = localSearchResult.i;
+          if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
+            continue;
+          }
+          localObject1 = paramArrayList.iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            continue;
+          }
           localObject2 = (AccountSearchPb.ResultItem)((Iterator)localObject1).next();
-          localObject3 = ((alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).e(String.valueOf(((AccountSearchPb.ResultItem)localObject2).uin.get()));
-          paramArrayList = "";
-          if (localObject3 != null) {
-            paramArrayList = ((Friends)localObject3).name;
+          paramArrayList = ((FriendsManager)this.r.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(String.valueOf(((AccountSearchPb.ResultItem)localObject2).uin.get()));
+          if (paramArrayList == null) {
+            break label705;
           }
+          paramArrayList = paramArrayList.name;
           if (!TextUtils.isEmpty(paramArrayList))
           {
             localObject3 = a(paramArrayList, localList);
-            a(localahip.jdField_a_of_type_Int, paramArrayList, (SpannableString)localObject3);
+            a(localSearchResult.a, paramArrayList, (SpannableString)localObject3);
           }
           localObject3 = ((AccountSearchPb.ResultItem)localObject2).name.get().toStringUtf8();
           if (!TextUtils.isEmpty((CharSequence)localObject3))
           {
             localObject4 = a((String)localObject3, localList, 18);
-            a(localahip.jdField_a_of_type_Int, (String)localObject3, (SpannableString)localObject4);
+            a(localSearchResult.a, (String)localObject3, (SpannableString)localObject4);
           }
-          Object localObject4 = ((AccountSearchPb.ResultItem)localObject2).nick_name.get().toStringUtf8();
+          localObject3 = ((AccountSearchPb.ResultItem)localObject2).nick_name.get().toStringUtf8();
           if (!TextUtils.isEmpty(paramArrayList))
           {
-            paramArrayList = a((String)localObject4, localList);
-            a(localahip.jdField_a_of_type_Int, (String)localObject4, paramArrayList);
+            paramArrayList = a((String)localObject3, localList);
+            a(localSearchResult.a, (String)localObject3, paramArrayList);
           }
-          localObject4 = ((AccountSearchPb.ResultItem)localObject2).summary.get().toStringUtf8();
-          if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-              break label658;
-            }
-          }
-          label658:
-          for (paramArrayList = a((String)localObject4, localList);; paramArrayList = a((String)localObject4, localList))
+          paramArrayList = ((AccountSearchPb.ResultItem)localObject2).summary.get().toStringUtf8();
+          if (!TextUtils.isEmpty(paramArrayList))
           {
-            a(localahip.jdField_a_of_type_Int, (String)localObject4, paramArrayList);
-            paramArrayList = ((AccountSearchPb.ResultItem)localObject2).phtot_update.get().toStringUtf8();
-            if (TextUtils.isEmpty(paramArrayList)) {
-              break;
-            }
-            localObject2 = a(paramArrayList, localList, 18);
-            a(localahip.jdField_a_of_type_Int, paramArrayList, (SpannableString)localObject2);
-            break;
+            localObject3 = a(paramArrayList, localList);
+            a(localSearchResult.a, paramArrayList, (SpannableString)localObject3);
           }
+          paramArrayList = ((AccountSearchPb.ResultItem)localObject2).phtot_update.get().toStringUtf8();
+          if (TextUtils.isEmpty(paramArrayList)) {
+            continue;
+          }
+          localObject2 = a(paramArrayList, localList, 18);
+          a(localSearchResult.a, paramArrayList, (SpannableString)localObject2);
+          continue;
+          return;
         }
       }
-    }
-  }
-  
-  public boolean a(ArrayList<ahip> paramArrayList)
-  {
-    return true;
-  }
-  
-  protected int b()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914);
-  }
-  
-  protected String b(ahid paramahid, AccountSearchPb.record paramrecord)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramahid.c.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    paramahid.c.setCompoundDrawablePadding(0);
-    paramahid.c.setBackgroundResource(0);
-    Drawable localDrawable;
-    if ((paramrecord.video_account.has()) && (paramrecord.video_account.get() == 1))
-    {
-      localDrawable = getResources().getDrawable(2130841452);
-      ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
-      paramahid.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
-      paramahid.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding((int)bdgz.a(BaseApplicationImpl.getContext(), 6.0F));
-      if ((!paramrecord.class_index.has()) || (paramrecord.class_index.get() != 1)) {
-        break label323;
-      }
-      if (paramrecord.class_name.has())
+      catch (Exception paramArrayList)
       {
-        paramahid.c.setText(paramrecord.class_name.get());
-        localStringBuilder.append(paramrecord.class_name.get());
-      }
-      if (paramrecord.brief.has())
-      {
-        paramahid.d.setText(a(80000002, paramrecord.brief.get()));
-        localStringBuilder.append(paramrecord.brief.get());
-      }
-    }
-    for (;;)
-    {
-      int i = BaseApplicationImpl.getContext().getResources().getColor(2131166977);
-      paramahid.c.setTextColor(i);
-      return localStringBuilder.toString();
-      if ((paramrecord.flag.has()) && (paramrecord.flag.get() == 1L))
-      {
-        localDrawable = getResources().getDrawable(2130841432);
-        ThemeUtil.setThemeFilter(localDrawable, ThemeUtil.curThemeId);
-        paramahid.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
-        paramahid.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding((int)bdgz.a(BaseApplicationImpl.getContext(), 6.0F));
-        break;
-      }
-      paramahid.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break;
-      label323:
-      if (paramrecord.class_index.has())
-      {
-        paramahid.c.setVisibility(8);
-        if (paramrecord.brief.has())
-        {
-          paramahid.d.setText(a(80000002, paramrecord.brief.get()));
-          localStringBuilder.append(paramahid.d.getText());
+        if (QLog.isColorLevel()) {
+          QLog.d(a, 2, "", paramArrayList);
         }
       }
+      paramArrayList = null;
+      continue;
+      label705:
+      paramArrayList = "";
     }
   }
   
-  protected int c()
+  protected void c()
   {
-    if ((this.d == 0) || (this.d == 3) || (this.d == 4)) {
-      return 80000000;
-    }
-    if (this.d == 2) {
-      return 80000002;
-    }
-    if (this.d == 5) {
-      return 80000003;
-    }
-    return 80000001;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    Handler localHandler = this.v;
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(2);
     }
   }
   
   public void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_b_of_type_JavaLangString, 2, "clearHighLightString");
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  protected void f()
-  {
-    this.jdField_a_of_type_Ahhd = new ahhd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Ahhd.a(this.jdField_a_of_type_Ahhf);
-    this.jdField_a_of_type_Bdbb = new bdbb(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Bdbb.a(this);
-    this.f = ((int)bdgz.a(BaseApplicationImpl.getContext(), 12.0F));
-    this.jdField_a_of_type_Ayec = ((ayec)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
-    if (this.jdField_a_of_type_Ayec != null) {
-      this.jdField_a_of_type_Ayec.a(this.jdField_a_of_type_Aybr);
+    LinearLayout localLinearLayout = this.j;
+    if (localLinearLayout != null) {
+      localLinearLayout.removeAllViews();
     }
   }
   
   public void g()
   {
-    if (a() != null) {
-      a(ViewFactory.a().a(80000006, a(), true));
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "clearHighLightString");
     }
+    this.q.clear();
   }
   
   public View getView()
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    return this.j;
   }
   
   protected void h()
   {
-    if (a() != null)
+    this.t = new ContactSearchFacade(this.r);
+    this.t.a(this.u);
+    this.m = ((IQQAvatarService)this.r.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.r);
+    this.m.setDecodeTaskCompletionListener(this);
+    this.p = ((int)DisplayUtils.a(BaseApplicationImpl.getContext(), 12.0F));
+    this.o = ((StatusManager)this.r.getManager(QQManagerFactory.STATUS_MANAGER));
+    StatusManager localStatusManager = this.o;
+    if (localStatusManager != null) {
+      localStatusManager.a(this.w);
+    }
+  }
+  
+  protected int i()
+  {
+    return BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920);
+  }
+  
+  protected void j()
+  {
+    if (o() != null) {
+      a(ViewFactory.a().a(80000006, o(), true, this.m, null));
+    }
+  }
+  
+  protected void k()
+  {
+    if (o() != null) {
+      a(ViewFactory.a().a(80000007, o(), true, this.m, null));
+    }
+  }
+  
+  protected void l()
+  {
+    if (o() != null)
     {
-      if (this.jdField_a_of_type_Ahhg == null) {
-        this.jdField_a_of_type_Ahhg = new ahhg(a());
+      if (this.l == null) {
+        this.l = new CustomerLoadingDialog(o());
       }
-      if (!a().isFinishing()) {
-        this.jdField_a_of_type_Ahhg.show();
+      if (!o().isFinishing()) {
+        this.l.show();
       }
     }
   }
   
-  public void i()
+  protected void m()
   {
-    if (this.jdField_a_of_type_Ahhg != null) {
-      this.jdField_a_of_type_Ahhg.dismiss();
+    CustomerLoadingDialog localCustomerLoadingDialog = this.l;
+    if (localCustomerLoadingDialog != null) {
+      localCustomerLoadingDialog.dismiss();
     }
   }
   
-  @Deprecated
-  public void j()
+  protected int n()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)a().getAppRuntime());
-    Bundle localBundle = getArguments();
-    if (localBundle != null)
+    int i1 = this.f;
+    if ((i1 != 0) && (i1 != 3) && (i1 != 4))
     {
-      this.d = localBundle.getInt("from_key", 0);
-      this.jdField_a_of_type_JavaLangString = localBundle.getString("last_key_words");
+      if (i1 == 2) {
+        return 80000002;
+      }
+      if (i1 == 5) {
+        return 80000003;
+      }
+      return 80000001;
     }
-    f();
-    if ((localBundle != null) && (!TextUtils.isEmpty(localBundle.getString("start_search_key"))) && (!localBundle.getBoolean("auto_add_and_prohibit_auto_search", false))) {
-      a(localBundle.getString("start_search_key"), false);
-    }
+    return 80000000;
   }
   
-  @Deprecated
-  public void k()
+  public BaseActivity o()
   {
-    this.jdField_a_of_type_Ahhg = null;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    ViewFactory.a().a();
-    this.jdField_a_of_type_Ahhd.d();
-    this.jdField_a_of_type_Ahhd = null;
-    if (this.jdField_a_of_type_Bdbb != null) {
-      this.jdField_a_of_type_Bdbb.d();
-    }
-    if (this.jdField_a_of_type_Ayec != null) {
-      this.jdField_a_of_type_Ayec.b(this.jdField_a_of_type_Aybr);
-    }
+    return this.s;
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((FragmentActivity)paramActivity);
+    this.s = ((BaseActivity)paramActivity);
   }
   
   public void onClick(View paramView) {}
@@ -759,86 +818,87 @@ public class SearchBaseFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    j();
-    a().addObserver(this.jdField_a_of_type_Altm);
+    p();
+    o().addObserver(this.x);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(a());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
-    this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(a());
-    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2130850075);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.j = new LinearLayout(o());
+    this.j.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.j.setOrientation(1);
+    this.j.setClickable(true);
+    this.k = new XListView(o());
+    this.k.setCacheColorHint(0);
+    this.k.setDivider(null);
+    this.k.setSelector(2130853313);
+    this.k.setOnScrollListener(this);
+    this.k.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    paramLayoutInflater = this.j;
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_b_of_type_JavaLangString, 2, "onDecodeTaskCompleted type = " + paramInt2 + ", uin = " + paramString);
-    }
-    int i;
-    if ((paramBitmap != null) && (this.e == 0))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDecodeTaskCompleted type = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", uin = ");
+      localStringBuilder.append(paramString);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    if ((paramBitmap != null) && (this.n == 0))
+    {
+      int i1 = this.k.getChildCount();
       paramInt1 = 0;
-    }
-    for (;;)
-    {
-      Object localObject;
-      if (paramInt1 < i)
+      while (paramInt1 < i1)
       {
-        localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
-        if ((localObject == null) || (!(localObject instanceof ahid))) {
-          break label167;
-        }
-        localObject = (ahid)localObject;
-        if ((!((ahid)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) && (!paramString.equals(((ahid)localObject).jdField_b_of_type_JavaLangString))) {
-          break label167;
-        }
-        if (paramInt2 == 4)
+        localObject = this.k.getChildAt(paramInt1).getTag();
+        if ((localObject != null) && ((localObject instanceof SearchBaseFragment.ItemViewHolder)))
         {
-          if (80000001 != ((ahid)localObject).jdField_b_of_type_Int) {
-            break label167;
+          localObject = (SearchBaseFragment.ItemViewHolder)localObject;
+          if ((((SearchBaseFragment.ItemViewHolder)localObject).f.equals(paramString)) || (paramString.equals(((SearchBaseFragment.ItemViewHolder)localObject).g))) {
+            if (paramInt2 == 4)
+            {
+              if (80000001 == ((SearchBaseFragment.ItemViewHolder)localObject).j) {
+                ((SearchBaseFragment.ItemViewHolder)localObject).a.setImageBitmap(paramBitmap);
+              }
+            }
+            else
+            {
+              ((SearchBaseFragment.ItemViewHolder)localObject).a.setImageBitmap(paramBitmap);
+              return;
+            }
           }
-          ((ahid)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
         }
+        paramInt1 += 1;
       }
-      else
-      {
-        return;
-      }
-      ((ahid)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-      return;
-      label167:
-      paramInt1 += 1;
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    k();
-    a().removeObserver(this.jdField_a_of_type_Altm);
+    q();
+    o().removeObserver(this.x);
   }
   
   public void onDetach()
   {
     super.onDetach();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
+    this.s = null;
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Bdbb.a()) {
-      this.jdField_a_of_type_Bdbb.b();
+    if (this.m.isPausing()) {
+      this.m.resume();
     }
   }
   
@@ -846,29 +906,60 @@ public class SearchBaseFragment
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.e = paramInt;
-    if (this.e != 0)
+    this.n = paramInt;
+    if (this.n != 0)
     {
-      this.jdField_a_of_type_Bdbb.a();
-      this.jdField_a_of_type_Bdbb.c();
+      this.m.cancelPendingRequests();
+      this.m.pause();
     }
-    for (;;)
+    else if (this.m.isPausing())
     {
-      if (a() != null)
-      {
-        paramAbsListView = (InputMethodManager)a().getSystemService("input_method");
-        if (paramAbsListView.isActive()) {
-          paramAbsListView.hideSoftInputFromWindow(a().getWindow().getDecorView().getWindowToken(), 0);
-        }
+      this.m.resume();
+      paramAbsListView = this.i;
+      if (paramAbsListView != null) {
+        paramAbsListView.notifyDataSetChanged();
       }
-      return;
-      if (this.jdField_a_of_type_Bdbb.a())
-      {
-        this.jdField_a_of_type_Bdbb.b();
-        if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
-          this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
-        }
+    }
+    if (o() != null)
+    {
+      paramAbsListView = (InputMethodManager)o().getSystemService("input_method");
+      if (paramAbsListView.isActive()) {
+        paramAbsListView.hideSoftInputFromWindow(o().getWindow().getDecorView().getWindowToken(), 0);
       }
+    }
+  }
+  
+  @Deprecated
+  public void p()
+  {
+    this.r = ((QQAppInterface)o().getAppRuntime());
+    Bundle localBundle = getArguments();
+    if (localBundle != null)
+    {
+      this.f = localBundle.getInt("from_key", 0);
+      this.e = localBundle.getString("last_key_words");
+    }
+    h();
+    if ((localBundle != null) && (!TextUtils.isEmpty(localBundle.getString("start_search_key"))) && (!localBundle.getBoolean("auto_add_and_prohibit_auto_search", false))) {
+      a(localBundle.getString("start_search_key"), false);
+    }
+  }
+  
+  @Deprecated
+  public void q()
+  {
+    this.l = null;
+    this.v = null;
+    ViewFactory.a().b();
+    this.t.e();
+    this.t = null;
+    Object localObject = this.m;
+    if (localObject != null) {
+      ((IFaceDecoder)localObject).destory();
+    }
+    localObject = this.o;
+    if (localObject != null) {
+      ((StatusManager)localObject).b(this.w);
     }
   }
 }

@@ -46,57 +46,50 @@ public final class dn
     localArrayList.add(fc.i);
     localArrayList.add(fc.k);
     paramList = Long.TYPE;
-    if (paramec == ec.a)
-    {
+    if (paramec == ec.a) {
       paramMap = fc.n;
-      localArrayList.add(fc.a(paramList, Long.class, paramMap));
-      paramec = Double.TYPE;
-      if (!paramBoolean6) {
-        break label600;
-      }
-      paramMap = fc.p;
-      label241:
-      localArrayList.add(fc.a(paramec, Double.class, paramMap));
-      paramec = Float.TYPE;
-      if (!paramBoolean6) {
-        break label612;
-      }
-    }
-    label600:
-    label612:
-    for (paramMap = fc.o;; paramMap = new dn.4(this))
-    {
-      localArrayList.add(fc.a(paramec, Float.class, paramMap));
-      localArrayList.add(fc.r);
-      localArrayList.add(fc.t);
-      localArrayList.add(fc.z);
-      localArrayList.add(fc.B);
-      localArrayList.add(fc.a(BigDecimal.class, fc.v));
-      localArrayList.add(fc.a(BigInteger.class, fc.w));
-      localArrayList.add(fc.D);
-      localArrayList.add(fc.F);
-      localArrayList.add(fc.J);
-      localArrayList.add(fc.O);
-      localArrayList.add(fc.H);
-      localArrayList.add(fc.d);
-      localArrayList.add(et.a);
-      localArrayList.add(fc.M);
-      localArrayList.add(fa.a);
-      localArrayList.add(ez.a);
-      localArrayList.add(fc.K);
-      localArrayList.add(er.a);
-      localArrayList.add(fc.R);
-      localArrayList.add(fc.b);
-      localArrayList.add(new es(this.f));
-      localArrayList.add(new ew(this.f, paramBoolean2));
-      localArrayList.add(new ey(this.f, paramdm, paramej));
-      this.e = Collections.unmodifiableList(localArrayList);
-      return;
+    } else {
       paramMap = new dn.5(this);
-      break;
-      paramMap = new dn.3(this);
-      break label241;
     }
+    localArrayList.add(fc.a(paramList, Long.class, paramMap));
+    paramec = Double.TYPE;
+    if (paramBoolean6) {
+      paramMap = fc.p;
+    } else {
+      paramMap = new dn.3(this);
+    }
+    localArrayList.add(fc.a(paramec, Double.class, paramMap));
+    paramec = Float.TYPE;
+    if (paramBoolean6) {
+      paramMap = fc.o;
+    } else {
+      paramMap = new dn.4(this);
+    }
+    localArrayList.add(fc.a(paramec, Float.class, paramMap));
+    localArrayList.add(fc.r);
+    localArrayList.add(fc.t);
+    localArrayList.add(fc.z);
+    localArrayList.add(fc.B);
+    localArrayList.add(fc.a(BigDecimal.class, fc.v));
+    localArrayList.add(fc.a(BigInteger.class, fc.w));
+    localArrayList.add(fc.D);
+    localArrayList.add(fc.F);
+    localArrayList.add(fc.J);
+    localArrayList.add(fc.O);
+    localArrayList.add(fc.H);
+    localArrayList.add(fc.d);
+    localArrayList.add(et.a);
+    localArrayList.add(fc.M);
+    localArrayList.add(fa.a);
+    localArrayList.add(ez.a);
+    localArrayList.add(fc.K);
+    localArrayList.add(er.a);
+    localArrayList.add(fc.R);
+    localArrayList.add(fc.b);
+    localArrayList.add(new es(this.f));
+    localArrayList.add(new ew(this.f, paramBoolean2));
+    localArrayList.add(new ey(this.f, paramdm, paramej));
+    this.e = Collections.unmodifiableList(localArrayList);
   }
   
   public final <T> ee<T> a(ef paramef, fd<T> paramfd)
@@ -120,7 +113,11 @@ public final class dn
         }
       }
     }
-    throw new IllegalArgumentException("GSON cannot serialize ".concat(String.valueOf(paramfd)));
+    paramef = new IllegalArgumentException("GSON cannot serialize ".concat(String.valueOf(paramfd)));
+    for (;;)
+    {
+      throw paramef;
+    }
   }
   
   public final <T> ee<T> a(fd<T> paramfd)
@@ -129,54 +126,54 @@ public final class dn
     if (localObject1 != null) {
       return localObject1;
     }
-    Object localObject4 = (Map)this.c.get();
+    Object localObject2 = (Map)this.c.get();
     int k = 0;
-    if (localObject4 == null)
+    localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localObject4 = new HashMap();
-      this.c.set(localObject4);
+      localObject1 = new HashMap();
+      this.c.set(localObject1);
       k = 1;
     }
-    for (;;)
+    localObject2 = (dn.a)((Map)localObject1).get(paramfd);
+    if (localObject2 != null) {
+      return localObject2;
+    }
+    try
     {
-      Object localObject5 = (dn.a)((Map)localObject4).get(paramfd);
-      localObject1 = localObject5;
-      if (localObject5 != null) {
-        break;
-      }
-      try
+      localObject2 = new dn.a();
+      ((Map)localObject1).put(paramfd, localObject2);
+      Iterator localIterator = this.e.iterator();
+      while (localIterator.hasNext())
       {
-        localObject1 = new dn.a();
-        ((Map)localObject4).put(paramfd, localObject1);
-        Iterator localIterator = this.e.iterator();
-        do
+        ee localee = ((ef)localIterator.next()).a(this, paramfd);
+        if (localee != null)
         {
-          if (!localIterator.hasNext()) {
-            break;
+          if (((dn.a)localObject2).a == null)
+          {
+            ((dn.a)localObject2).a = localee;
+            this.d.put(paramfd, localee);
+            ((Map)localObject1).remove(paramfd);
+            if (k != 0) {
+              this.c.remove();
+            }
+            return localee;
           }
-          localObject5 = ((ef)localIterator.next()).a(this, paramfd);
-        } while (localObject5 == null);
-        if (((dn.a)localObject1).a != null) {
           throw new AssertionError();
         }
       }
-      finally
-      {
-        ((Map)localObject4).remove(paramfd);
-        if (k != 0) {
-          this.c.remove();
-        }
-      }
-      localObject2.a = ((ee)localObject5);
-      this.d.put(paramfd, localObject5);
-      ((Map)localObject4).remove(paramfd);
-      Object localObject3 = localObject5;
-      if (k == 0) {
-        break;
-      }
-      this.c.remove();
-      return localObject5;
       throw new IllegalArgumentException("GSON cannot handle ".concat(String.valueOf(paramfd)));
+    }
+    finally
+    {
+      ((Map)localObject1).remove(paramfd);
+      if (k != 0) {
+        this.c.remove();
+      }
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
   
@@ -189,11 +186,11 @@ public final class dn
   public final <T> T a(fe paramfe, Type paramType)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_1
-    //   3: getfield 373	com/tencent/map/sdk/a/fe:b	Z
-    //   6: istore 4
+    //   0: aload_1
+    //   1: getfield 373	com/tencent/map/sdk/a/fe:b	Z
+    //   4: istore 4
+    //   6: iconst_1
+    //   7: istore_3
     //   8: aload_1
     //   9: iconst_1
     //   10: putfield 373	com/tencent/map/sdk/a/fe:b	Z
@@ -215,61 +212,69 @@ public final class dn
     //   39: aload_2
     //   40: areturn
     //   41: astore_2
-    //   42: iload_3
-    //   43: ifeq +11 -> 54
-    //   46: aload_1
-    //   47: iload 4
-    //   49: putfield 373	com/tencent/map/sdk/a/fe:b	Z
-    //   52: aconst_null
-    //   53: areturn
-    //   54: new 384	com/tencent/map/sdk/a/eb
-    //   57: dup
-    //   58: aload_2
-    //   59: invokespecial 387	com/tencent/map/sdk/a/eb:<init>	(Ljava/lang/Throwable;)V
-    //   62: athrow
-    //   63: astore_2
-    //   64: aload_1
-    //   65: iload 4
-    //   67: putfield 373	com/tencent/map/sdk/a/fe:b	Z
-    //   70: aload_2
-    //   71: athrow
-    //   72: astore_2
-    //   73: new 384	com/tencent/map/sdk/a/eb
-    //   76: dup
-    //   77: aload_2
-    //   78: invokespecial 387	com/tencent/map/sdk/a/eb:<init>	(Ljava/lang/Throwable;)V
-    //   81: athrow
-    //   82: astore_2
-    //   83: new 384	com/tencent/map/sdk/a/eb
-    //   86: dup
-    //   87: aload_2
-    //   88: invokespecial 387	com/tencent/map/sdk/a/eb:<init>	(Ljava/lang/Throwable;)V
-    //   91: athrow
+    //   42: goto +45 -> 87
+    //   45: astore_2
+    //   46: new 384	com/tencent/map/sdk/a/eb
+    //   49: dup
+    //   50: aload_2
+    //   51: invokespecial 387	com/tencent/map/sdk/a/eb:<init>	(Ljava/lang/Throwable;)V
+    //   54: athrow
+    //   55: astore_2
+    //   56: new 384	com/tencent/map/sdk/a/eb
+    //   59: dup
+    //   60: aload_2
+    //   61: invokespecial 387	com/tencent/map/sdk/a/eb:<init>	(Ljava/lang/Throwable;)V
+    //   64: athrow
+    //   65: astore_2
+    //   66: iload_3
+    //   67: ifeq +11 -> 78
+    //   70: aload_1
+    //   71: iload 4
+    //   73: putfield 373	com/tencent/map/sdk/a/fe:b	Z
+    //   76: aconst_null
+    //   77: areturn
+    //   78: new 384	com/tencent/map/sdk/a/eb
+    //   81: dup
+    //   82: aload_2
+    //   83: invokespecial 387	com/tencent/map/sdk/a/eb:<init>	(Ljava/lang/Throwable;)V
+    //   86: athrow
+    //   87: aload_1
+    //   88: iload 4
+    //   90: putfield 373	com/tencent/map/sdk/a/fe:b	Z
+    //   93: aload_2
+    //   94: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	92	0	this	dn
-    //   0	92	1	paramfe	fe
-    //   0	92	2	paramType	Type
-    //   1	42	3	k	int
-    //   6	60	4	bool	boolean
+    //   0	95	0	this	dn
+    //   0	95	1	paramfe	fe
+    //   0	95	2	paramType	Type
+    //   7	60	3	k	int
+    //   4	85	4	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   13	18	41	java/io/EOFException
-    //   20	33	41	java/io/EOFException
-    //   13	18	63	finally
-    //   20	33	63	finally
-    //   54	63	63	finally
-    //   73	82	63	finally
-    //   83	92	63	finally
-    //   13	18	72	java/lang/IllegalStateException
-    //   20	33	72	java/lang/IllegalStateException
-    //   13	18	82	java/io/IOException
-    //   20	33	82	java/io/IOException
+    //   13	18	41	finally
+    //   20	33	41	finally
+    //   46	55	41	finally
+    //   56	65	41	finally
+    //   78	87	41	finally
+    //   13	18	45	java/io/IOException
+    //   20	33	45	java/io/IOException
+    //   13	18	55	java/lang/IllegalStateException
+    //   20	33	55	java/lang/IllegalStateException
+    //   13	18	65	java/io/EOFException
+    //   20	33	65	java/io/EOFException
   }
   
   public final String toString()
   {
-    return "{serializeNulls:" + this.g + "factories:" + this.e + ",instanceCreators:" + this.f + "}";
+    StringBuilder localStringBuilder = new StringBuilder("{serializeNulls:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("factories:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",instanceCreators:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

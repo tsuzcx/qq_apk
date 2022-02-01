@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@id/bcc" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="80.0dip" app:cardCornerRadius="8.0dip" app:cardElevation="0.0dip" app:cardPreventCornerOverlap="true" app:cardUseCompatPadding="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView android:id="@id/bxd" android:background="@color/UN_BW_0_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:adjustViewBounds="true" android:importantForAccessibility="no" />
+    <ImageView android:id="@id/bxe" android:background="@drawable/bqw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/kh" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/cv" android:paddingRight="@dimen/cp" android:paddingBottom="@dimen/cv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingHorizontal="@dimen/cp" android:paddingVertical="@dimen/cv">
+        <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/bxg" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginRight="12.0dip" android:src="@drawable/c2e" android:scaleType="fitCenter" android:importantForAccessibility="no" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/az" android:ellipsize="end" android:id="@id/bxi" android:layout_marginBottom="4.0dip" android:singleLine="true" android:shadowColor="@color/UN_BW_0_Alpha_0_3" android:shadowRadius="4.0" style="@style/g5" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/bxf" android:singleLine="true" android:shadowColor="@color/UN_BW_0_Alpha_0_3" android:shadowRadius="4.0" style="@style/g5" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center|right|top" android:orientation="horizontal" android:id="@id/bxh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/df" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</androidx.cardview.widget.CardView>

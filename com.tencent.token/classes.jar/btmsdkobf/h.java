@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.util.Log;
 
 public class h
 {
@@ -17,35 +16,38 @@ public class h
   
   public String a(int paramInt, String paramString)
   {
-    Object localObject = null;
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      paramString = null;
-    }
-    for (;;)
-    {
-      Cursor localCursor = this.mContext.getContentResolver().query(paramString, null, null, null, null);
-      if (localCursor == null) {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramInt != 4) {
+      switch (paramInt)
+      {
+      default: 
+        paramString = null;
+        break;
+      case 2: 
+        paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_".concat(String.valueOf(paramString)));
+        break;
+      case 1: 
+        paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/VAID_".concat(String.valueOf(paramString)));
+        break;
+      case 0: 
+        paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/OAID");
         break;
       }
-      paramString = localObject;
+    } else {
+      paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/OAIDSTATUS");
+    }
+    Cursor localCursor = this.mContext.getContentResolver().query(paramString, null, null, null, null);
+    paramString = localObject2;
+    if (localCursor != null)
+    {
+      paramString = localObject1;
       if (localCursor.moveToNext()) {
         paramString = localCursor.getString(localCursor.getColumnIndex("value"));
       }
       localCursor.close();
-      return paramString;
-      paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/OAID");
-      continue;
-      paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/VAID_" + paramString);
-      continue;
-      paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/AAID_" + paramString);
-      continue;
-      paramString = Uri.parse("content://com.vivo.vms.IdProvider/IdentifierId/OAIDSTATUS");
     }
-    Log.d("VMS_IDLG_SDK_DB", "return cursor is null,return");
-    return null;
+    return paramString;
   }
 }
 

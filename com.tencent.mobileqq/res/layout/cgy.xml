@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ku8" android:background="@color/l1" android:layout_width="fill_parent" android:layout_height="50.0dip"
+<com.tencent.mobileqq.guild.mainframe.attachcontainer.GuildMainFrameRelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/du6" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/ef7" />
-    <TextView android:textSize="16.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:layout_gravity="center" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-</FrameLayout>
+    <com.tencent.mobileqq.activity.recent.cur.DragFrameLayout android:id="@id/n5f" android:background="@drawable/blc" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/nti" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_alignParentTop="true" />
+            <com.tencent.mobileqq.guild.widget.NetStatusInfoView android:id="@id/qg5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nti" />
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/qg5">
+                <FrameLayout android:id="@id/ns8" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="-16.0dip" android:layout_toRightOf="@id/ocf" />
+                <RelativeLayout android:id="@id/ocf" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="11.0dip">
+                    <FrameLayout android:id="@id/oce" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="16.0dip" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.tencent.mobileqq.activity.recent.cur.DragFrameLayout>
+    <com.tencent.mobileqq.guild.mainframe.GuildRoundRectLayout android:id="@id/muk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.guild.mainframe.GuildEmptyLayout android:id="@id/e3f" android:background="@drawable/bjz" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mobileqq.guild.mainframe.attachcontainer.GuildMainFrameRelativeLayout>

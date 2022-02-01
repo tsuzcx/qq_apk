@@ -1,82 +1,70 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import ConfigPush.FileStoragePushFSSvcList;
-import altm;
-import amic;
-import awyf;
-import azbt;
-import basl;
-import com.tencent.kingkong.Common;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.pttlogic.api.IPTTPreDownloader;
+import com.tencent.mobileqq.servlet.PushServlet;
+import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
+import com.tencent.mobileqq.troop.roamsetting.api.IRoamSettingService;
+import com.tencent.qphone.base.util.QLog;
 
 public class GetGeneralSettings
   extends AsyncStep
 {
-  private altm a;
+  private GetGeneralSettings.MyRoamSettingObserver a;
   
-  public int a()
+  protected int doStep()
   {
-    boolean bool = false;
-    ??? = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin();
-    if (??? != null)
-    {
-      Common.SetContext(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp());
-      Common.SetQQUni((String)???);
+    boolean bool;
+    if (this.mAutomator.b == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    if ("0".endsWith(DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.KKFixerConfig.name(), "0"))) {
-      Common.SetDPCStatus(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApplication().getApplicationContext(), false);
-    }
-    for (;;)
+    if (bool)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a == 1) {
-        bool = true;
-      }
-      if (!bool) {
-        break;
-      }
-      if (this.jdField_a_of_type_Altm == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_Altm = new amic(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Altm, true);
+        this.a = new GetGeneralSettings.MyRoamSettingObserver(this, null);
+        this.mAutomator.k.addObserver(this.a, true);
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(bool)) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("getAllGeneralSettings , needTroopSettings=");
+        ((StringBuilder)???).append(bool);
+        QLog.d("QQInitHandler", 2, ((StringBuilder)???).toString());
       }
+      ((IRoamSettingService)this.mAutomator.k.getRuntimeService(IRoamSettingService.class, "")).loadAllRoamSettings(bool);
       return 2;
-      Common.SetDPCStatus(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApplication().getApplicationContext(), true);
-      Common.SetContext(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApplication().getApplicationContext());
-      Common.SetSafeStatus(true);
     }
-    synchronized (basl.a().a)
+    synchronized (FMTSrvAddrProvider.getInstance().saveSvcListLock)
     {
-      FileStoragePushFSSvcList localFileStoragePushFSSvcList = basl.a().a();
+      FileStoragePushFSSvcList localFileStoragePushFSSvcList = FMTSrvAddrProvider.getInstance().getSvcListCache();
       if (localFileStoragePushFSSvcList != null)
       {
-        azbt.a(localFileStoragePushFSSvcList, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app);
-        basl.a().b(null);
+        PushServlet.a(localFileStoragePushFSSvcList, this.mAutomator.k);
+        FMTSrvAddrProvider.getInstance().setSvcListCache(null);
       }
-      awyf.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app).a(true, true);
+      ((IPTTPreDownloader)this.mAutomator.k.getRuntimeService(IPTTPreDownloader.class)).onAddrProviderReady(true, true);
       return 7;
     }
   }
   
-  public void d()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_Altm != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Altm);
-      this.jdField_a_of_type_Altm = null;
+      this.mAutomator.k.removeObserver(this.a);
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetGeneralSettings
  * JD-Core Version:    0.7.0.1
  */

@@ -31,36 +31,37 @@ class e
   
   public void run()
   {
-    if ((d.a(this.a) != null) && (d.b(this.a) != null)) {}
-    try
-    {
-      LinearLayout localLinearLayout = new LinearLayout(d.a(this.a));
-      localLinearLayout.setOrientation(1);
-      localLinearLayout.setBackgroundColor(-7829368);
-      localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-      Object localObject = new TextView(d.a(this.a));
-      ((TextView)localObject).getPaint().setFakeBoldText(true);
-      ((TextView)localObject).setText(d.b(this.a).getTitle());
-      localLinearLayout.addView((View)localObject, 0, new LinearLayout.LayoutParams(-1, -2));
-      localObject = new TextView(d.a(this.a));
-      ((TextView)localObject).setText(d.b(this.a).getMessage());
-      localLinearLayout.addView((View)localObject, 1, new LinearLayout.LayoutParams(-1, -2));
-      localObject = new Toast(d.a(this.a));
-      ((Toast)localObject).setGravity(17, 0, 0);
-      ((Toast)localObject).setDuration(1);
-      ((Toast)localObject).setView(localLinearLayout);
-      a((Toast)localObject, 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      util.printException(localException);
+    if ((d.a(this.a) != null) && (d.b(this.a) != null)) {
+      try
+      {
+        LinearLayout localLinearLayout = new LinearLayout(d.a(this.a));
+        localLinearLayout.setOrientation(1);
+        localLinearLayout.setBackgroundColor(-7829368);
+        localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
+        Object localObject = new TextView(d.a(this.a));
+        ((TextView)localObject).getPaint().setFakeBoldText(true);
+        ((TextView)localObject).setText(d.b(this.a).getTitle());
+        localLinearLayout.addView((View)localObject, 0, new LinearLayout.LayoutParams(-1, -2));
+        localObject = new TextView(d.a(this.a));
+        ((TextView)localObject).setText(d.b(this.a).getMessage());
+        localLinearLayout.addView((View)localObject, 1, new LinearLayout.LayoutParams(-1, -2));
+        localObject = new Toast(d.a(this.a));
+        ((Toast)localObject).setGravity(17, 0, 0);
+        ((Toast)localObject).setDuration(1);
+        ((Toast)localObject).setView(localLinearLayout);
+        a((Toast)localObject, 0);
+        return;
+      }
+      catch (Exception localException)
+      {
+        util.printException(localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.e
  * JD-Core Version:    0.7.0.1
  */

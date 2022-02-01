@@ -12,7 +12,7 @@ public final class ClientRecordUploadReq
   extends JceStruct
   implements Cloneable
 {
-  static Map<String, String> cache_extendinfo;
+  static Map<String, String> cache_extendinfo = new HashMap();
   public long duration = 0L;
   public Map<String, String> extendinfo = null;
   public String m3u8_name = "";
@@ -21,14 +21,7 @@ public final class ClientRecordUploadReq
   
   static
   {
-    if (!ClientRecordUploadReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_extendinfo = new HashMap();
-      cache_extendinfo.put("", "");
-      return;
-    }
+    cache_extendinfo.put("", "");
   }
   
   public ClientRecordUploadReq() {}
@@ -49,18 +42,17 @@ public final class ClientRecordUploadReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -85,13 +77,32 @@ public final class ClientRecordUploadReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ClientRecordUploadReq)paramObject;
-    } while ((!JceUtil.equals(this.version, paramObject.version)) || (!JceUtil.equals(this.room_id, paramObject.room_id)) || (!JceUtil.equals(this.extendinfo, paramObject.extendinfo)) || (!JceUtil.equals(this.m3u8_name, paramObject.m3u8_name)) || (!JceUtil.equals(this.duration, paramObject.duration)));
-    return true;
+    }
+    paramObject = (ClientRecordUploadReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.version, paramObject.version))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.room_id, paramObject.room_id))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.extendinfo, paramObject.extendinfo))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.m3u8_name, paramObject.m3u8_name))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.duration, paramObject.duration)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -175,18 +186,20 @@ public final class ClientRecordUploadReq
   {
     paramJceOutputStream.write(this.version, 0);
     paramJceOutputStream.write(this.room_id, 1);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 2);
+    Object localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.m3u8_name != null) {
-      paramJceOutputStream.write(this.m3u8_name, 3);
+    localObject = this.m3u8_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.duration, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ClientRecordUpload.ClientRecordUploadReq
  * JD-Core Version:    0.7.0.1
  */

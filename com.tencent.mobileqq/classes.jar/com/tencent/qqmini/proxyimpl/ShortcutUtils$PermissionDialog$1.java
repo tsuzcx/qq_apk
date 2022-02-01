@@ -11,18 +11,12 @@ class ShortcutUtils$PermissionDialog$1
   
   public void onClick(View paramView)
   {
-    paramView = ShortcutUtils.PermissionDialog.access$300(this.this$0);
-    if (!ShortcutUtils.PermissionDialog.access$300(this.this$0).isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-    }
+    ShortcutUtils.PermissionDialog.a(this.a).setChecked(ShortcutUtils.PermissionDialog.a(this.a).isChecked() ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils.PermissionDialog.1
  * JD-Core Version:    0.7.0.1
  */

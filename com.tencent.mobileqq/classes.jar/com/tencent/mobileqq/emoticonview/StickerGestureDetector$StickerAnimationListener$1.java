@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apyt;
-import apyx;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
-public class StickerGestureDetector$StickerAnimationListener$1
+class StickerGestureDetector$StickerAnimationListener$1
   implements Runnable
 {
-  public StickerGestureDetector$StickerAnimationListener$1(apyx paramapyx) {}
+  StickerGestureDetector$StickerAnimationListener$1(StickerGestureDetector.StickerAnimationListener paramStickerAnimationListener) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
+    this.this$1.this$0.mRootView.removeView(this.this$1.this$0.popupEmo);
   }
 }
 

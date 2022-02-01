@@ -26,7 +26,11 @@ public class a
       paramString = paramString.a();
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label38:
+      break label38;
+    }
     return null;
   }
   

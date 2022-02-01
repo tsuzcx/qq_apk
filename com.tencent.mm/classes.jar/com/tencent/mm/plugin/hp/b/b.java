@@ -1,649 +1,335 @@
 package com.tencent.mm.plugin.hp.b;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.a;
-import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
-import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
-import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import com.tencent.mm.protocal.protobuf.dro;
+import com.tencent.mm.protocal.protobuf.dzr;
+import com.tencent.mm.protocal.protobuf.dzs;
+import com.tencent.mm.protocal.protobuf.dzt;
+import com.tencent.mm.protocal.protobuf.ery;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.Integer;Ljava.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.dro;>;>;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public final class b
+public class b
 {
-  private static long nJW = 0L;
+  public HashMap<Integer, LinkedList<dro>> JEK;
+  public String JEL;
+  public String JEM;
+  public String JEN;
+  public String JEO;
+  public String JEP;
+  public String clientVersion;
+  public final String egJ;
+  public final int fileSize;
+  public String mOI;
+  public int versionCode;
+  public final Integer vyP;
+  public Integer vyQ;
+  public final Integer vyR;
+  public final String vyS;
   
-  public static void a(int paramInt, Throwable paramThrowable)
+  public b(dzt paramdzt)
   {
-    AppMethodBeat.i(90576);
-    switch (paramInt)
+    AppMethodBeat.i(117514);
+    this.JEK = new HashMap();
+    if (paramdzt == null)
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90576);
-      return;
-      h.qsU.idkeyStat(338L, 191L, 1L, false);
-      h.qsU.g("Tinker", "Tinker Exception:interpret occur instruction exception " + ao.m(paramThrowable), null);
-      AppMethodBeat.o(90576);
-      return;
-      h.qsU.idkeyStat(338L, 192L, 1L, false);
-      h.qsU.g("Tinker", "Tinker Exception:interpret occur command exception " + ao.m(paramThrowable), null);
-      AppMethodBeat.o(90576);
-      return;
-      h.qsU.idkeyStat(338L, 193L, 1L, false);
-    }
-  }
-  
-  public static void a(Throwable paramThrowable, int paramInt)
-  {
-    int i = 0;
-    AppMethodBeat.i(90570);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        String str1 = ao.m(paramThrowable);
-        paramThrowable = str1;
-        if (paramInt == -4)
-        {
-          Context localContext = ah.getContext();
-          String str2 = SharePatchFileUtil.jB(localContext);
-          paramThrowable = str1;
-          if (!ShareTinkerInternals.isNullOrNil(str2))
-          {
-            paramThrowable = "tinker checkSafeModeCount fail:\n".concat(String.valueOf(str2));
-            SharePatchFileUtil.aq(SharePatchFileUtil.jA(localContext));
-          }
-        }
-        h.qsU.g("Tinker", "Tinker Exception:load tinker occur exception ".concat(String.valueOf(paramThrowable)), null);
-      }
-      AppMethodBeat.o(90570);
-      return;
-      if (paramThrowable.getMessage().contains("checkDexInstall failed"))
-      {
-        h.qsU.idkeyStat(338L, 189L, 1L, false);
-        ab.i("Tinker.HotPatchReportHelper", "tinker dex check fail:" + paramThrowable.getMessage());
-        i = 1;
-      }
-      else
-      {
-        h.qsU.idkeyStat(338L, 161L, 1L, false);
-        ab.e("Tinker.HotPatchReportHelper", "tinker dex reflect fail:" + paramThrowable.getMessage());
-        continue;
-        if (paramThrowable.getMessage().contains("checkResInstall failed"))
-        {
-          h.qsU.idkeyStat(338L, 190L, 1L, false);
-          i = 1;
-        }
-        else
-        {
-          h.qsU.idkeyStat(338L, 184L, 1L, false);
-          continue;
-          h.qsU.idkeyStat(338L, 188L, 1L, false);
-          continue;
-          h.qsU.idkeyStat(338L, 160L, 1L, false);
-        }
-      }
-    }
-  }
-  
-  public static void ab(Intent paramIntent)
-  {
-    AppMethodBeat.i(90561);
-    KVCommCrossProcessReceiver.chJ();
-    ab.i("Tinker.HotPatchReportHelper", "hp_report try to apply patch service start");
-    if (paramIntent == null)
-    {
-      h.qsU.af(338, 6, 127);
-      AppMethodBeat.o(90561);
+      this.vyP = Integer.valueOf(1);
+      this.mOI = "";
+      this.vyS = "";
+      this.vyQ = Integer.valueOf(-1);
+      this.vyR = Integer.valueOf(-1);
+      this.egJ = "";
+      this.fileSize = 0;
+      this.JEL = "";
+      this.JEM = "";
+      this.versionCode = 0;
+      this.clientVersion = "";
+      this.JEN = "";
+      this.JEO = "";
+      this.JEP = "";
+      AppMethodBeat.o(117514);
       return;
     }
-    if (ShareIntentUtil.n(paramIntent, "patch_path_extra") == null)
+    if (paramdzt.abeV != null)
     {
-      h.qsU.af(338, 6, 128);
-      AppMethodBeat.o(90561);
-      return;
+      this.vyS = paramdzt.abeV.MD5;
+      this.mOI = paramdzt.abeV.Url;
     }
-    h.qsU.idkeyStat(338L, 6L, 1L, true);
-    AppMethodBeat.o(90561);
-  }
-  
-  public static void bIb()
-  {
-    AppMethodBeat.i(90555);
-    h.qsU.idkeyStat(338L, 9L, 1L, false);
-    AppMethodBeat.o(90555);
-  }
-  
-  public static void bIc()
-  {
-    AppMethodBeat.i(90566);
-    h.qsU.idkeyStat(338L, 106L, 1L, false);
-    AppMethodBeat.o(90566);
-  }
-  
-  public static void bId()
-  {
-    AppMethodBeat.i(90567);
-    h.qsU.idkeyStat(338L, 116L, 1L, false);
-    AppMethodBeat.o(90567);
-  }
-  
-  public static void bIe()
-  {
-    AppMethodBeat.i(90574);
-    h.qsU.idkeyStat(338L, 168L, 1L, false);
-    AppMethodBeat.o(90574);
-  }
-  
-  public static void bIf()
-  {
-    AppMethodBeat.i(90575);
-    h.qsU.idkeyStat(338L, 5L, 1L, false);
-    AppMethodBeat.o(90575);
-  }
-  
-  public static void e(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(90577);
-    h.qsU.e(15974, new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.FALSE });
-    ab.i("Tinker.HotPatchReportHelper", "CodeVersion:%s PatchVersion:%s TinkerId:%s Scene:%d Result:%d", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(90577);
-  }
-  
-  public static void h(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(90564);
-    h.qsU.idkeyStat(338L, 104L, 1L, false);
-    h.qsU.g("Tinker", "Tinker Exception:apply tinker occur unknown exception " + ao.m(paramThrowable), null);
-    AppMethodBeat.o(90564);
-  }
-  
-  public static void i(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(90565);
-    if (paramThrowable.getMessage().contains("checkDexOptExist failed"))
+    Object localObject;
+    for (this.fileSize = paramdzt.abeV.Nju;; this.fileSize = 0)
     {
-      h.qsU.idkeyStat(338L, 134L, 1L, false);
-      AppMethodBeat.o(90565);
-      return;
-    }
-    if (paramThrowable.getMessage().contains("checkDexOptFormat failed"))
-    {
-      h.qsU.idkeyStat(338L, 135L, 1L, false);
-      h.qsU.g("Tinker", "Tinker Exception:apply tinker occur dexOpt format exception " + ao.m(paramThrowable), null);
-      AppMethodBeat.o(90565);
-      return;
-    }
-    h.qsU.idkeyStat(338L, 105L, 1L, false);
-    h.qsU.g("Tinker", "Tinker Exception:apply tinker occur dexOpt exception " + ao.m(paramThrowable), null);
-    AppMethodBeat.o(90565);
-  }
-  
-  public static void iu(boolean paramBoolean)
-  {
-    AppMethodBeat.i(90559);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report try to apply hotpatch");
-    h.qsU.af(338, 2, 71);
-    if (paramBoolean) {
-      h.qsU.idkeyStat(338L, 7L, 1L, true);
-    }
-    AppMethodBeat.o(90559);
-  }
-  
-  public static void s(long paramLong, boolean paramBoolean)
-  {
-    AppMethodBeat.i(90562);
-    if (paramBoolean) {
-      h.qsU.idkeyStat(338L, 3L, 1L, true);
-    }
-    if (paramBoolean) {
-      h.qsU.idkeyStat(338L, 101L, 1L, false);
-    }
-    for (;;)
-    {
-      ab.i("Tinker.HotPatchReportHelper", "hp_report report apply cost = %d", new Object[] { Long.valueOf(paramLong) });
-      if (paramLong >= 0L) {
+      this.vyP = Integer.valueOf(paramdzt.state);
+      this.vyR = Integer.valueOf(paramdzt.abeU);
+      if ((paramdzt.abeS == null) || (paramdzt.abeS.isEmpty())) {
         break;
       }
-      ab.e("Tinker.HotPatchReportHelper", "hp_report report apply cost failed, invalid cost");
-      AppMethodBeat.o(90562);
-      return;
-      h.qsU.idkeyStat(338L, 103L, 1L, false);
-    }
-    if (paramLong <= 5000L)
-    {
-      if (paramBoolean)
+      int j = paramdzt.abeS.size();
+      int i = 0;
+      while (i < j)
       {
-        h.qsU.idkeyStat(338L, 117L, 1L, false);
-        AppMethodBeat.o(90562);
-        return;
+        localObject = (dzs)paramdzt.abeS.get(i);
+        if ((((dzs)localObject).abeR != null) && (!((dzs)localObject).abeR.isEmpty())) {
+          this.JEK.put(Integer.valueOf(((dzs)localObject).type), ((dzs)localObject).abeR);
+        }
+        i += 1;
       }
-      h.qsU.idkeyStat(338L, 122L, 1L, false);
-      AppMethodBeat.o(90562);
-      return;
+      this.vyS = "";
+      this.mOI = "";
     }
-    if (paramLong <= 10000L)
+    this.vyQ = Integer.valueOf(paramdzt.abeT);
+    this.egJ = paramdzt.ycW;
+    if ((paramdzt.abeX != null) && (!paramdzt.abeX.isEmpty()))
     {
-      if (paramBoolean)
+      paramdzt = paramdzt.abeX.iterator();
+      while (paramdzt.hasNext())
       {
-        h.qsU.idkeyStat(338L, 118L, 1L, false);
-        AppMethodBeat.o(90562);
-        return;
+        localObject = (dzr)paramdzt.next();
+        if ((localObject != null) && (!Util.isNullOrNil(((dzr)localObject).key))) {
+          if (((dzr)localObject).key.equalsIgnoreCase("newApkMd5")) {
+            this.JEL = ((dzr)localObject).value;
+          } else if (((dzr)localObject).key.equalsIgnoreCase("oldApkMd5")) {
+            this.JEM = ((dzr)localObject).value;
+          } else if (((dzr)localObject).key.equalsIgnoreCase("versionCode")) {
+            this.versionCode = Util.safeParseInt(((dzr)localObject).value);
+          } else if (((dzr)localObject).key.equalsIgnoreCase("clientVersion")) {
+            this.clientVersion = ((dzr)localObject).value;
+          } else if (((dzr)localObject).key.equalsIgnoreCase("alphaTitle")) {
+            this.JEN = c.aIM(((dzr)localObject).value);
+          } else if (((dzr)localObject).key.equalsIgnoreCase("alphaContent")) {
+            this.JEO = c.aIM(((dzr)localObject).value);
+          } else if (((dzr)localObject).key.equalsIgnoreCase("alphaUrl")) {
+            this.JEP = ((dzr)localObject).value;
+          }
+        }
       }
-      h.qsU.idkeyStat(338L, 123L, 1L, false);
-      AppMethodBeat.o(90562);
+      AppMethodBeat.o(117514);
       return;
     }
-    if (paramLong <= 30000L)
-    {
-      if (paramBoolean)
-      {
-        h.qsU.idkeyStat(338L, 119L, 1L, false);
-        AppMethodBeat.o(90562);
-        return;
-      }
-      h.qsU.idkeyStat(338L, 124L, 1L, false);
-      AppMethodBeat.o(90562);
-      return;
-    }
-    if (paramLong <= 60000L)
-    {
-      if (paramBoolean)
-      {
-        h.qsU.idkeyStat(338L, 120L, 1L, false);
-        AppMethodBeat.o(90562);
-        return;
-      }
-      h.qsU.idkeyStat(338L, 125L, 1L, false);
-      AppMethodBeat.o(90562);
-      return;
-    }
-    if (paramLong >= 3600000L) {
-      h.qsU.idkeyStat(338L, 133L, 1L, false);
-    }
-    if (paramBoolean)
-    {
-      h.qsU.idkeyStat(338L, 121L, 1L, false);
-      AppMethodBeat.o(90562);
-      return;
-    }
-    h.qsU.idkeyStat(338L, 126L, 1L, false);
-    AppMethodBeat.o(90562);
+    this.JEL = "";
+    this.JEM = "";
+    this.versionCode = 0;
+    this.clientVersion = "";
+    this.JEN = "";
+    this.JEO = "";
+    this.JEP = "";
+    AppMethodBeat.o(117514);
   }
   
-  public static void t(long paramLong, boolean paramBoolean)
+  public static String a(HashMap<Integer, LinkedList<dro>> paramHashMap, int paramInt)
   {
-    AppMethodBeat.i(90569);
-    h.qsU.idkeyStat(338L, 4L, 1L, false);
-    if (!paramBoolean)
+    AppMethodBeat.i(117518);
+    if ((paramHashMap == null) || (paramHashMap.isEmpty()))
     {
-      h.qsU.idkeyStat(338L, 159L, 1L, false);
-      AppMethodBeat.o(90569);
-      return;
+      AppMethodBeat.o(117518);
+      return "";
     }
-    ab.i("Tinker.HotPatchReportHelper", "hp_report report load cost = %d", new Object[] { Long.valueOf(paramLong) });
-    if (paramLong < 0L)
+    Object localObject1 = "";
+    LinkedList localLinkedList = (LinkedList)paramHashMap.get(Integer.valueOf(paramInt));
+    Object localObject2 = localObject1;
+    if (localLinkedList != null)
     {
-      ab.e("Tinker.HotPatchReportHelper", "hp_report report load cost failed, invalid cost");
-      AppMethodBeat.o(90569);
-      return;
-    }
-    if (paramBoolean)
-    {
-      com.tencent.mm.plugin.hp.tinker.b localb = com.tencent.mm.plugin.hp.tinker.b.eP(a.CLIENT_VERSION, f.CLIENT_VERSION);
-      SharedPreferences localSharedPreferences = com.tencent.mm.plugin.hp.tinker.b.bIl();
-      String str = localb.xC(3);
-      if (!localSharedPreferences.contains(str))
+      localObject2 = localObject1;
+      if (!localLinkedList.isEmpty())
       {
-        localb.T(3, paramLong);
-        localSharedPreferences.edit().putLong(str, paramLong).commit();
+        int i = localLinkedList.size();
+        paramInt = 0;
+        paramHashMap = (HashMap<Integer, LinkedList<dro>>)localObject1;
+        localObject2 = paramHashMap;
+        if (paramInt < i)
+        {
+          localObject1 = (dro)localLinkedList.get(paramInt);
+          if (((dro)localObject1).lang.equalsIgnoreCase("default")) {
+            paramHashMap = new String(Base64.decode(((dro)localObject1).content, 0));
+          }
+        }
       }
     }
-    if (paramLong <= 500L)
+    for (;;)
     {
-      h.qsU.idkeyStat(338L, 177L, 1L, false);
-      AppMethodBeat.o(90569);
-      return;
+      paramInt += 1;
+      break;
+      if (((dro)localObject1).lang.equalsIgnoreCase(LocaleUtil.getApplicationLanguage()))
+      {
+        paramHashMap = new String(Base64.decode(((dro)localObject1).content, 0));
+        AppMethodBeat.o(117518);
+        return paramHashMap;
+        AppMethodBeat.o(117518);
+        return localObject2;
+      }
     }
-    if (paramLong <= 1000L)
-    {
-      h.qsU.idkeyStat(338L, 178L, 1L, false);
-      AppMethodBeat.o(90569);
-      return;
-    }
-    if (paramLong <= 3000L)
-    {
-      h.qsU.idkeyStat(338L, 179L, 1L, false);
-      AppMethodBeat.o(90569);
-      return;
-    }
-    if (paramLong <= 5000L)
-    {
-      h.qsU.idkeyStat(338L, 180L, 1L, false);
-      AppMethodBeat.o(90569);
-      return;
-    }
-    h.qsU.idkeyStat(338L, 181L, 1L, false);
-    AppMethodBeat.o(90569);
   }
   
-  public static void w(boolean paramBoolean, int paramInt)
+  public final boolean fQi()
   {
-    AppMethodBeat.i(90571);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report package check failed, error = %d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramBoolean) {
-      h.qsU.idkeyStat(338L, 170L, 1L, false);
-    }
-    switch (paramInt)
+    AppMethodBeat.i(117515);
+    Context localContext = MMApplicationContext.getContext();
+    if (!NetStatusUtil.isConnected(localContext))
     {
+      AppMethodBeat.o(117515);
+      return false;
+    }
+    if (this.vyR.intValue() == 1)
+    {
+      AppMethodBeat.o(117515);
+      return true;
+    }
+    if (this.vyR.intValue() == 3)
+    {
+      boolean bool = NetStatusUtil.isWifi(localContext);
+      AppMethodBeat.o(117515);
+      return bool;
+    }
+    AppMethodBeat.o(117515);
+    return true;
+  }
+  
+  public final boolean fQj()
+  {
+    AppMethodBeat.i(117516);
+    if ((this.vyP.intValue() == 2) || (this.vyP.intValue() == 4))
+    {
+      AppMethodBeat.o(117516);
+      return true;
+    }
+    AppMethodBeat.o(117516);
+    return false;
+  }
+  
+  public final boolean fQk()
+  {
+    AppMethodBeat.i(117517);
+    if ((this.JEK != null) && (!this.JEK.isEmpty()) && (this.JEK.containsKey(Integer.valueOf(4))))
+    {
+      AppMethodBeat.o(117517);
+      return true;
+    }
+    AppMethodBeat.o(117517);
+    return false;
+  }
+  
+  public final String fQl()
+  {
+    AppMethodBeat.i(117519);
+    if (fQk())
+    {
+      String str = a(this.JEK, 4);
+      AppMethodBeat.o(117519);
+      return str;
+    }
+    AppMethodBeat.o(117519);
+    return "";
+  }
+  
+  public final boolean fQm()
+  {
+    AppMethodBeat.i(261831);
+    if ((this.vyP.intValue() > 4) || (this.vyP.intValue() <= 0))
+    {
+      Log.e("Tinker.TinkerSyncResponse", "responseState: %d must between %d and %d", new Object[] { this.vyP, Integer.valueOf(1), Integer.valueOf(4) });
+      h.OAn.idkeyStat(614L, 24L, 1L, false);
+      AppMethodBeat.o(261831);
+      return false;
+    }
+    if (fQj())
+    {
+      if (TextUtils.isEmpty(this.egJ))
+      {
+        Log.e("Tinker.TinkerSyncResponse", "sync response patchId should not be null");
+        h.OAn.idkeyStat(614L, 25L, 1L, false);
+        AppMethodBeat.o(261831);
+        return false;
+      }
+      if (TextUtils.isEmpty(this.mOI))
+      {
+        Log.e("Tinker.TinkerSyncResponse", "sync response cdnUrl should not be null");
+        h.OAn.idkeyStat(614L, 26L, 1L, false);
+        AppMethodBeat.o(261831);
+        return false;
+      }
+      if (TextUtils.isEmpty(this.vyS))
+      {
+        Log.e("Tinker.TinkerSyncResponse", "sync response fileMd5 should not be null");
+        h.OAn.idkeyStat(614L, 27L, 1L, false);
+        AppMethodBeat.o(261831);
+        return false;
+      }
+    }
+    AppMethodBeat.o(261831);
+    return true;
+  }
+  
+  public final boolean fQn()
+  {
+    AppMethodBeat.i(261837);
+    if (this.vyP.intValue() == 3)
+    {
+      AppMethodBeat.o(261837);
+      return true;
+    }
+    AppMethodBeat.o(261837);
+    return false;
+  }
+  
+  public final boolean fQo()
+  {
+    AppMethodBeat.i(117521);
+    String str;
+    if (this.clientVersion == null) {
+      str = "";
     }
     for (;;)
     {
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 171);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 172);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 173);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 175);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 174);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 176);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 107, 182);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 186);
+      Log.i("Tinker.TinkerSyncResponse", "clientVersion %s currentVersion %s", new Object[] { str, BuildInfo.CLIENT_VERSION });
+      if (!Util.isNullOrNil(this.clientVersion)) {
+        try
+        {
+          int i = Integer.decode(this.clientVersion).intValue();
+          int j = Integer.decode(BuildInfo.CLIENT_VERSION).intValue();
+          if ((i & 0xFFFFFF00) < (j & 0xFFFFFF00))
+          {
+            AppMethodBeat.o(117521);
+            return true;
+            str = this.clientVersion;
+          }
+          else
+          {
+            AppMethodBeat.o(117521);
+            return false;
+          }
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("Tinker.TinkerSyncResponse", localException, "isLowerClientVersion", new Object[0]);
+        }
+      }
     }
+    AppMethodBeat.o(117521);
+    return false;
   }
   
-  public static void xA(int paramInt)
+  public String toString()
   {
-    AppMethodBeat.i(90572);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 183L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 164L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 165L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 166L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 167L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 187L, 1L, false);
-    }
-  }
-  
-  public static void xB(int paramInt)
-  {
-    AppMethodBeat.i(90573);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90573);
-      return;
-      h.qsU.idkeyStat(338L, 162L, 1L, false);
-      AppMethodBeat.o(90573);
-      return;
-      h.qsU.idkeyStat(338L, 163L, 1L, false);
-      AppMethodBeat.o(90573);
-      return;
-      h.qsU.idkeyStat(338L, 185L, 1L, false);
-    }
-  }
-  
-  public static void xu(int paramInt)
-  {
-    AppMethodBeat.i(90556);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report new hotpatch requested");
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      nJW = bo.yB();
-      AppMethodBeat.o(90556);
-      return;
-      h.qsU.idkeyStat(338L, 0L, 1L, false);
-      continue;
-      h.qsU.idkeyStat(338L, 20L, 1L, false);
-      continue;
-      h.qsU.idkeyStat(614L, 0L, 1L, false);
-    }
-  }
-  
-  public static void xv(int paramInt)
-  {
-    AppMethodBeat.i(90557);
-    long l = bo.av(nJW);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report report download cost = %d", new Object[] { Long.valueOf(l) });
-    switch (paramInt)
-    {
-    }
-    while (l < 0L)
-    {
-      ab.e("Tinker.HotPatchReportHelper", "hp_report report download cost failed, invalid cost");
-      AppMethodBeat.o(90557);
-      return;
-      h.qsU.idkeyStat(338L, 40L, 1L, false);
-    }
-    if (l <= 5000L)
-    {
-      h.qsU.af(338, 1, 43);
-      AppMethodBeat.o(90557);
-      return;
-    }
-    if (l <= 60000L)
-    {
-      h.qsU.af(338, 1, 44);
-      AppMethodBeat.o(90557);
-      return;
-    }
-    if (l <= 180000L)
-    {
-      h.qsU.af(338, 1, 45);
-      AppMethodBeat.o(90557);
-      return;
-    }
-    h.qsU.af(338, 1, 46);
-    AppMethodBeat.o(90557);
-  }
-  
-  public static void xw(int paramInt)
-  {
-    AppMethodBeat.i(90558);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report download failed");
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90558);
-      return;
-      h.qsU.idkeyStat(338L, 41L, 1L, false);
-      AppMethodBeat.o(90558);
-      return;
-      h.qsU.idkeyStat(338L, 42L, 1L, false);
-      AppMethodBeat.o(90558);
-      return;
-      h.qsU.idkeyStat(614L, 3L, 1L, false);
-    }
-  }
-  
-  public static void xx(int paramInt)
-  {
-    AppMethodBeat.i(90560);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report try to apply hotpatch fail");
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 75L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 72L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 74L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 73L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 85L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 77L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 76L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 78L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 80L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 79L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 81L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 82L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 83L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 84L, 1L, false);
-    }
-  }
-  
-  public static void xy(int paramInt)
-  {
-    AppMethodBeat.i(90563);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report package check failed, error = %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 108);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 109);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 110);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 112);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 111);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 113);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 129);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 131);
-    }
-  }
-  
-  public static void xz(int paramInt)
-  {
-    AppMethodBeat.i(90568);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 114L, 1L, false);
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 115L, 1L, false);
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 130L, 1L, false);
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 132L, 1L, false);
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 136L, 1L, false);
-    }
-  }
-  
-  public static enum a
-  {
-    public final int value;
-    
-    static
-    {
-      AppMethodBeat.i(90551);
-      nJX = new a("FAILED", 0, 0);
-      nJY = new a("SUCCESS", 1, 1);
-      nJZ = new a[] { nJX, nJY };
-      AppMethodBeat.o(90551);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    AppMethodBeat.i(117520);
+    String str = "responseState:" + this.vyP + "\ncdnUrl:" + this.mOI + "\nfileMd5:" + this.vyS + "\npackageType:" + this.vyQ + "\nnetworkType:" + this.vyR + "\npatchId:" + this.egJ;
+    AppMethodBeat.o(117520);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.b
  * JD-Core Version:    0.7.0.1
  */

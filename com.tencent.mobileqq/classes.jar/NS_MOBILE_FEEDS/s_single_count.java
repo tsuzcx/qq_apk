@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class s_single_count
   extends JceStruct
 {
-  public int iControl;
-  public long uCount;
+  public int iControl = 0;
+  public long uCount = 0L;
   
   public s_single_count() {}
   
@@ -32,7 +32,7 @@ public final class s_single_count
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_single_count
  * JD-Core Version:    0.7.0.1
  */

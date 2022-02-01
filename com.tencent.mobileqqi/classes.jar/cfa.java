@@ -1,33 +1,22 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.redtouch.VipBannerInfo;
 
 public class cfa
-  extends SubAccountBindObserver
+  extends GameCenterObserver
 {
   public cfa(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.a.d = true;
-    if ((paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.p == 1008)) {
-      this.a.a.a().c(AppConstants.O, 7000);
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2))
+    {
+      VipBannerInfo.a(this.a.a());
+      if (Conversation.c(this.a)) {
+        VipBannerInfo.a(this.a);
+      }
     }
-    this.a.a(8, AppConstants.O, 7000);
-  }
-  
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    this.a.a(8, AppConstants.O, 7000);
-  }
-  
-  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    this.a.a.a().c(AppConstants.O, 7000);
-    this.a.a(8, AppConstants.O, 7000);
   }
 }
 

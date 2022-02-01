@@ -13,16 +13,16 @@ final class LaunchAAByPersonAmountSelectUI$7
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    AppMethodBeat.i(40796);
+    AppMethodBeat.i(63597);
     if (paramInt == 1) {
-      this.gqx.hideTenpayKB();
+      this.pKC.hideTenpayKB();
     }
-    AppMethodBeat.o(40796);
+    AppMethodBeat.o(63597);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonAmountSelectUI.7
  * JD-Core Version:    0.7.0.1
  */

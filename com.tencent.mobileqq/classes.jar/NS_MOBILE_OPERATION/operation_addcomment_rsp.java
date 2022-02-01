@@ -10,7 +10,7 @@ public final class operation_addcomment_rsp
   public String commentLikekey = "";
   public String commentid = "";
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   public String verifyurl = "";
   
   public operation_addcomment_rsp() {}
@@ -36,23 +36,27 @@ public final class operation_addcomment_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.verifyurl != null) {
-      paramJceOutputStream.write(this.verifyurl, 2);
+    str = this.verifyurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.commentid != null) {
-      paramJceOutputStream.write(this.commentid, 3);
+    str = this.commentid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.commentLikekey != null) {
-      paramJceOutputStream.write(this.commentLikekey, 4);
+    str = this.commentLikekey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_addcomment_rsp
  * JD-Core Version:    0.7.0.1
  */

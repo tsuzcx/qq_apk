@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/aif" android:baselineAligned="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fuc" android:background="@drawable/b03" android:paddingLeft="9.0dip" android:paddingTop="10.0dip" android:paddingRight="9.0dip" android:paddingBottom="9.0dip" style="@style/lo">
-        <TextView android:textSize="@dimen/m2" android:textColor="#ff6f7378" android:id="@id/dly" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m1" android:text="@string/ast" />
-        <LinearLayout android:layout_gravity="bottom" android:id="@id/fud" android:background="@drawable/n4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/lh" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:maxLines="1" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a8e" style="@style/lb" />
-            <TextView android:textSize="@dimen/ko" android:textColor="#ff6f7378" android:id="@id/fue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <ImageButton android:id="@id/fuf" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a8k" />
-        <ImageButton android:id="@id/fug" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:src="@drawable/a8j" />
-    </LinearLayout>
+    <RelativeLayout android:id="@id/fb0" android:layout_width="@dimen/aij" android:layout_height="@dimen/aif">
+        <ImageView android:id="@id/kip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/c2i" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/p4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/p8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/c2h" />
+    <RelativeLayout android:id="@id/fb1" android:layout_width="@dimen/aij" android:layout_height="@dimen/aif" android:layout_marginLeft="3.0dip">
+        <ImageView android:id="@id/kiq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/c2i" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/p5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/p9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/fb2" android:layout_width="@dimen/aij" android:layout_height="@dimen/aif" android:layout_marginLeft="@dimen/g">
+        <ImageView android:id="@id/kir" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/c2i" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/p6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/p_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

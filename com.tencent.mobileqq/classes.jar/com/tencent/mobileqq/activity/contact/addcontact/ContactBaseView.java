@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahhc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,41 +11,41 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class ContactBaseView
   extends FrameLayout
 {
-  public ahhc a;
-  public Activity a;
-  public QQAppInterface a;
+  public ContactBaseView.IAddContactContext E;
+  public Activity F;
+  public QQAppInterface G;
   
-  public ContactBaseView(ahhc paramahhc)
+  public ContactBaseView(ContactBaseView.IAddContactContext paramIAddContactContext)
   {
-    super(paramahhc.a());
-    this.jdField_a_of_type_Ahhc = paramahhc;
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_Ahhc.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramahhc.a();
+    super(paramIAddContactContext.b());
+    this.E = paramIAddContactContext;
+    this.F = this.E.b();
+    this.G = paramIAddContactContext.a();
   }
   
-  public int a()
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public int getHeightToTabBar()
   {
-    return getResources().getDimensionPixelSize(2131297948);
+    return getResources().getDimensionPixelSize(2131298867);
   }
   
-  protected void a() {}
+  public void h() {}
   
-  protected final void a(int paramInt)
+  public void i() {}
+  
+  public final void setContentView(int paramInt)
   {
     ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(paramInt, this, true);
   }
-  
-  protected void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void d() {}
-  
-  protected void g() {}
-  
-  protected void h() {}
 }
 
 

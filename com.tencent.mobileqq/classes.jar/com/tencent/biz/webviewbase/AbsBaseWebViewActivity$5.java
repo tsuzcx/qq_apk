@@ -14,15 +14,15 @@ class AbsBaseWebViewActivity$5
   public void run()
   {
     SystemClock.uptimeMillis();
-    synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+    synchronized (this.this$0.sInitEngineLock)
     {
-      if (this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-        this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
+      if (this.this$0.mApp == null) {
+        this.this$0.mApp = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
       }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine == null)
+      if (this.this$0.mPluginEngine == null)
       {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface, this.this$0, null, null);
-        WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.this$0.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine, this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface, this.this$0);
+        this.this$0.mPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.this$0.mApp, this.this$0, null, null);
+        WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.this$0.mPluginEngine, this.this$0.mApp, this.this$0);
         SystemClock.uptimeMillis();
       }
       return;
@@ -31,7 +31,7 @@ class AbsBaseWebViewActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.5
  * JD-Core Version:    0.7.0.1
  */

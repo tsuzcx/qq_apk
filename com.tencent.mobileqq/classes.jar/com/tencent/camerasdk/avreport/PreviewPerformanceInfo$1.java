@@ -7,13 +7,14 @@ class PreviewPerformanceInfo$1
   
   public void run()
   {
-    this.this$0.render_width = this.val$width;
-    this.this$0.render_height = this.val$height;
+    PreviewPerformanceInfo localPreviewPerformanceInfo = this.this$0;
+    localPreviewPerformanceInfo.render_width = this.val$width;
+    localPreviewPerformanceInfo.render_height = this.val$height;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.PreviewPerformanceInfo.1
  * JD-Core Version:    0.7.0.1
  */

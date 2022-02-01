@@ -1,26 +1,23 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.j;
 
 final class SnsUploadUI$13
-  implements View.OnTouchListener
+  implements Runnable
 {
   SnsUploadUI$13(SnsUploadUI paramSnsUploadUI) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void run()
   {
-    AppMethodBeat.i(145662);
-    boolean bool = SnsUploadUI.E(this.sbR);
-    AppMethodBeat.o(145662);
-    return bool;
+    AppMethodBeat.i(369907);
+    j.w(this.REd);
+    AppMethodBeat.o(369907);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.13
  * JD-Core Version:    0.7.0.1
  */

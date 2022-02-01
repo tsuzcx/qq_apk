@@ -17,13 +17,14 @@ public final class ilive_feeds_read$FollowTabRedPointRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "err_code", "err_msg", "red" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, FollowTabRedPointRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "err_code", "err_msg", "red" }, new Object[] { localInteger, localByteStringMicro, localInteger }, FollowTabRedPointRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.FollowTabRedPointRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,15 @@ public final class cardDiyComplicatedInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.detail != null) {
-      paramJceOutputStream.write(this.detail, 0);
+    String str = this.detail;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.cardDiyComplicatedInfo
  * JD-Core Version:    0.7.0.1
  */

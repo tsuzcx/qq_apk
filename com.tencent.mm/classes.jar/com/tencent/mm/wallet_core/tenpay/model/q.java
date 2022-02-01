@@ -1,9 +1,9 @@
 package com.tencent.mm.wallet_core.tenpay.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.c.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.model.y;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -12,9 +12,9 @@ public final class q
 {
   public q()
   {
-    AppMethodBeat.i(49178);
+    AppMethodBeat.i(72896);
     setRequestData(new HashMap());
-    AppMethodBeat.o(49178);
+    AppMethodBeat.o(72896);
   }
   
   public final int getFuncId()
@@ -34,23 +34,24 @@ public final class q
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(49179);
-    ab.d("Micromsg.NetSceneTenpayTimeSeed", " errCode: " + paramInt + " errMsg :" + paramString);
+    AppMethodBeat.i(72897);
+    Log.d("Micromsg.NetSceneTenpayTimeSeed", " errCode: " + paramInt + " errMsg :" + paramString);
     paramString = paramJSONObject.optString("time_stamp");
-    if (!bo.isNullOrNil(paramString))
+    Log.i("Micromsg.NetSceneTenpayTimeSeed", "get svr time stamp: %s", new Object[] { paramString });
+    if (!Util.isNullOrNil(paramString))
     {
-      w.setTimeStamp(paramString);
-      AppMethodBeat.o(49179);
+      y.setTimeStamp(paramString);
+      AppMethodBeat.o(72897);
       return;
     }
-    ab.w("Micromsg.NetSceneTenpayTimeSeed", "hy: no timeseed. use local timeseed");
-    w.setTimeStamp(System.currentTimeMillis() / 1000L);
-    AppMethodBeat.o(49179);
+    Log.w("Micromsg.NetSceneTenpayTimeSeed", "hy: no timeseed. use local timeseed");
+    y.setTimeStamp(System.currentTimeMillis() / 1000L);
+    AppMethodBeat.o(72897);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.q
  * JD-Core Version:    0.7.0.1
  */

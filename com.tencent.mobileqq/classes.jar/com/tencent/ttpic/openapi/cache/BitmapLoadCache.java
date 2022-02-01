@@ -12,6 +12,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.baseutils.thread.HandlerThreadManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import java.util.ArrayList;
@@ -24,36 +25,38 @@ import java.util.Vector;
 public class BitmapLoadCache
 {
   private final int CAPACITY;
-  private final String TAG = "BitmapLoadCache|" + hashCode();
+  private final String TAG;
   protected BitmapFactory.Options mBitmapOptions;
   protected Vector<Bitmap> mCanUseBitmaps;
-  protected int mCurIndex = -1;
+  protected int mCurIndex;
   protected Handler mHandler;
   protected boolean[] mIsNotExit;
   private HashMap<Integer, Bitmap> mLoadedCache;
-  private boolean mNoBitmaps = true;
+  private boolean mNoBitmaps;
   protected String[] mPaths;
   private String mPreShiftPath;
   protected BitmapLoadCache.PreloadRunnable mPreloadRunnable;
   protected Resources mResources;
   public ArrayList<Bitmap> mTotalCache;
-  private int mTotalFrames = 0;
+  private int mTotalFrames;
   
   public BitmapLoadCache(int paramInt1, String paramString, int paramInt2)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BitmapLoadCache|");
+    localStringBuilder.append(hashCode());
+    this.TAG = localStringBuilder.toString();
+    int j = 0;
+    this.mTotalFrames = 0;
+    this.mNoBitmaps = true;
+    this.mCurIndex = -1;
     int i = paramInt2;
     if (paramInt2 > paramInt1) {
       i = paramInt1;
     }
     this.CAPACITY = i;
-    if ((paramInt1 == 0) || (paramString == null))
+    if ((paramInt1 != 0) && (paramString != null))
     {
-      this.mNoBitmaps = true;
-      Log.i(this.TAG, "BitmapLoadCache.return...");
-    }
-    for (;;)
-    {
-      return;
       this.mTotalFrames = paramInt1;
       this.mPreShiftPath = paramString;
       this.mCanUseBitmaps = new Vector(this.CAPACITY);
@@ -63,46 +66,64 @@ public class BitmapLoadCache
       this.mNoBitmaps = false;
       this.mPreloadRunnable = new BitmapLoadCache.PreloadRunnable(this, null);
       Log.i(this.TAG, "BitmapLoadCache init.");
-      this.mIsNotExit = new boolean[this.mTotalFrames];
-      this.mPaths = new String[this.mTotalFrames];
+      paramInt1 = this.mTotalFrames;
+      this.mIsNotExit = new boolean[paramInt1];
+      this.mPaths = new String[paramInt1];
       paramInt1 = j;
-      while (paramInt1 < this.mIsNotExit.length)
+      for (;;)
       {
-        this.mIsNotExit[paramInt1] = true;
-        this.mPaths[paramInt1] = (this.mPreShiftPath + paramInt1 + ".png");
+        paramString = this.mIsNotExit;
+        if (paramInt1 >= paramString.length) {
+          break;
+        }
+        paramString[paramInt1] = 1;
+        paramString = this.mPaths;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mPreShiftPath);
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(".png");
+        paramString[paramInt1] = localStringBuilder.toString();
         paramInt1 += 1;
       }
+      return;
     }
+    this.mNoBitmaps = true;
+    Log.i(this.TAG, "BitmapLoadCache.return...");
   }
   
   private Bitmap decodeBitmapFromTemp(String paramString, Bitmap paramBitmap, BitmapFactory.Options paramOptions)
   {
-    Bitmap localBitmap = null;
-    if (paramString == null)
-    {
-      paramOptions = localBitmap;
-      return paramOptions;
+    if (paramString == null) {
+      return null;
     }
-    if (paramBitmap != null) {
+    String str;
+    StringBuilder localStringBuilder;
+    if (paramBitmap != null)
+    {
       paramOptions.inBitmap = paramBitmap;
     }
-    for (;;)
+    else
     {
-      localBitmap = BitmapUtils.decodeSampleBitmapFromOption(AEModule.getContext(), paramString, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT, paramOptions);
-      paramOptions = localBitmap;
-      if (paramBitmap == null) {
-        break;
-      }
-      paramOptions = localBitmap;
-      if (this.mTotalCache.contains(paramBitmap)) {
-        break;
-      }
-      this.mTotalCache.add(paramBitmap);
-      Log.i(this.TAG, "new Bitmap path:" + paramString + ",hashcode:" + paramBitmap.hashCode());
-      return localBitmap;
       paramOptions.inBitmap = null;
-      Log.i(this.TAG, "can not UseInBitmap, add to release bitmap list:" + paramString);
+      str = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("can not UseInBitmap, add to release bitmap list:");
+      localStringBuilder.append(paramString);
+      Log.i(str, localStringBuilder.toString());
     }
+    paramOptions = BitmapUtils.decodeSampleBitmapFromOption(AEModule.getContext(), paramString, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT, paramOptions);
+    if ((paramBitmap != null) && (!this.mTotalCache.contains(paramBitmap)))
+    {
+      this.mTotalCache.add(paramBitmap);
+      str = this.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new Bitmap path:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",hashcode:");
+      localStringBuilder.append(paramBitmap.hashCode());
+      Log.i(str, localStringBuilder.toString());
+    }
+    return paramOptions;
   }
   
   private BitmapFactory.Options getBitmapOption()
@@ -117,103 +138,107 @@ public class BitmapLoadCache
   
   private int getBytesPerPixel(Bitmap.Config paramConfig)
   {
-    int j = 2;
-    int i;
     if (paramConfig == Bitmap.Config.ARGB_8888) {
-      i = 4;
+      return 4;
     }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (paramConfig == Bitmap.Config.RGB_565);
-      i = j;
-    } while (paramConfig == Bitmap.Config.ARGB_4444);
-    if (paramConfig == Bitmap.Config.ALPHA_8) {
-      return 1;
+    if (paramConfig == Bitmap.Config.RGB_565) {
+      return 2;
     }
+    if (paramConfig == Bitmap.Config.ARGB_4444) {
+      return 2;
+    }
+    if (paramConfig == Bitmap.Config.ALPHA_8) {}
     return 1;
   }
   
   private String getPathFromIndex(int paramInt)
   {
-    if (paramInt < this.mPaths.length) {}
-    for (String str = this.mPaths[paramInt];; str = this.mPreShiftPath + paramInt + ".png")
+    Object localObject = this.mPaths;
+    if (paramInt < localObject.length)
     {
-      if ((str == null) && (this.mIsNotExit.length > paramInt)) {
-        this.mIsNotExit[paramInt] = false;
-      }
-      return str;
+      localObject = localObject[paramInt];
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mPreShiftPath);
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(".png");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    if (localObject == null)
+    {
+      boolean[] arrayOfBoolean = this.mIsNotExit;
+      if (arrayOfBoolean.length > paramInt) {
+        arrayOfBoolean[paramInt] = false;
+      }
+    }
+    return localObject;
   }
   
   private Bitmap getTempBitmap()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.mCanUseBitmaps != null)
-    {
-      localObject1 = localObject2;
-      if (this.mCanUseBitmaps.size() > 0) {
-        localObject1 = (Bitmap)this.mCanUseBitmaps.remove(0);
+    Object localObject = this.mCanUseBitmaps;
+    if ((localObject != null) && (((Vector)localObject).size() > 0)) {
+      try
+      {
+        localObject = (Bitmap)this.mCanUseBitmaps.remove(0);
+        return localObject;
+      }
+      catch (Exception localException)
+      {
+        String str = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTempBitmap() exception:");
+        localStringBuilder.append(localException.getMessage());
+        LogUtils.e(str, localStringBuilder.toString());
+        return null;
       }
     }
-    return localObject1;
+    return null;
   }
   
   private Bitmap getTmpBitmapFromLoadCaches()
   {
-    int j;
-    int i;
-    label119:
-    Bitmap localBitmap;
-    boolean bool;
-    if ((this.mLoadedCache != null) && (this.mLoadedCache.entrySet() != null))
+    Object localObject1 = this.mLoadedCache;
+    if ((localObject1 != null) && (((HashMap)localObject1).entrySet() != null))
     {
-      Object localObject = this.mLoadedCache.entrySet().iterator();
+      Object localObject2 = this.mLoadedCache.entrySet().iterator();
       int k = this.mCurIndex;
-      int m = this.mCurIndex;
-      int n = this.CAPACITY;
-      if ((localObject == null) || (!((Iterator)localObject).hasNext()))
+      int m = this.CAPACITY;
+      if ((localObject2 != null) && (((Iterator)localObject2).hasNext())) {}
+      while (((Iterator)localObject2).hasNext())
       {
-        Log.i(this.TAG, "NO LOADCACHE COULD PROVIDE.");
-        return null;
-      }
-      if (((Iterator)localObject).hasNext())
-      {
-        j = ((Integer)((Map.Entry)((Iterator)localObject).next()).getKey()).intValue();
-        if (j < k)
-        {
+        int j = ((Integer)((Map.Entry)((Iterator)localObject2).next()).getKey()).intValue();
+        int i;
+        if (j < k) {
           i = this.mTotalFrames + j;
-          if ((i > k) && (i <= m + n)) {
-            break label229;
-          }
-          localBitmap = (Bitmap)this.mLoadedCache.get(Integer.valueOf(j));
-          ((Iterator)localObject).remove();
-          localObject = this.TAG;
-          StringBuilder localStringBuilder = new StringBuilder().append("loadCache.tempBitmap:");
-          if (localBitmap == null)
-          {
+        } else {
+          i = j;
+        }
+        if ((i <= k) || (i > m + k))
+        {
+          localObject1 = (Bitmap)this.mLoadedCache.get(Integer.valueOf(j));
+          ((Iterator)localObject2).remove();
+          localObject2 = this.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadCache.tempBitmap:");
+          boolean bool;
+          if (localObject1 == null) {
             bool = true;
-            label185:
-            Log.i((String)localObject, bool + ",loadCache size:" + this.mLoadedCache.size());
+          } else {
+            bool = false;
           }
+          localStringBuilder.append(bool);
+          localStringBuilder.append(",loadCache size:");
+          localStringBuilder.append(this.mLoadedCache.size());
+          Log.i((String)localObject2, localStringBuilder.toString());
+          return localObject1;
+          Log.i(this.TAG, "NO LOADCACHE COULD PROVIDE.");
         }
       }
     }
-    for (;;)
-    {
-      return localBitmap;
-      bool = false;
-      break label185;
-      i = j;
-      break label119;
-      label229:
-      break;
-      localBitmap = null;
-    }
+    return null;
   }
   
   private void initOptions()
@@ -223,11 +248,13 @@ public class BitmapLoadCache
     if (this.mResources == null) {
       initResource();
     }
-    if ((this.mResources != null) && (this.mResources.getDisplayMetrics() != null)) {
+    Object localObject = this.mResources;
+    if ((localObject != null) && (((Resources)localObject).getDisplayMetrics() != null)) {
       this.mBitmapOptions.inDensity = this.mResources.getDisplayMetrics().densityDpi;
     }
-    this.mBitmapOptions.inMutable = true;
-    this.mBitmapOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+    localObject = this.mBitmapOptions;
+    ((BitmapFactory.Options)localObject).inMutable = true;
+    ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
   }
   
   private void initResource()
@@ -259,28 +286,22 @@ public class BitmapLoadCache
       {
         if ((localObject2 != null) && (!this.mCanUseBitmaps.contains(localObject2)))
         {
-          Log.i(this.TAG, j + " --recycleBitmap:" + localObject2.hashCode());
+          String str = this.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(j);
+          localStringBuilder.append(" --recycleBitmap:");
+          localStringBuilder.append(localObject2.hashCode());
+          Log.i(str, localStringBuilder.toString());
           this.mCanUseBitmaps.add(localObject2);
         }
         ((Iterator)localObject1).remove();
       }
     }
     i = 1;
-    label236:
-    if (i <= this.CAPACITY)
+    while (i <= this.CAPACITY)
     {
       j = (paramInt + i) % this.mTotalFrames;
-      if (!this.mLoadedCache.containsKey(Integer.valueOf(j))) {
-        break label276;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label236;
-      break;
-      label276:
-      if (this.mIsNotExit[j] != 0)
+      if ((!this.mLoadedCache.containsKey(Integer.valueOf(j))) && (this.mIsNotExit[j] != 0))
       {
         localObject1 = null;
         if (!paramBoolean)
@@ -289,9 +310,10 @@ public class BitmapLoadCache
           localObject1 = localObject2;
           if (localObject2 == null)
           {
-            localObject1 = getTmpBitmapFromLoadCaches();
-            if (localObject1 == null) {
-              break;
+            localObject2 = getTmpBitmapFromLoadCaches();
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              return;
             }
           }
         }
@@ -302,144 +324,173 @@ public class BitmapLoadCache
           this.mLoadedCache.put(Integer.valueOf(j), localObject1);
         }
       }
+      i += 1;
     }
   }
   
   protected boolean canUseForInBitmap(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
   {
-    boolean bool = true;
-    if (paramBitmap.isRecycled()) {
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (Build.VERSION.SDK_INT < 19) {
-          break;
-        }
-      } while (paramOptions.outWidth / paramOptions.inSampleSize * (paramOptions.outHeight / paramOptions.inSampleSize) * getBytesPerPixel(paramBitmap.getConfig()) <= paramBitmap.getAllocationByteCount());
+    boolean bool3 = paramBitmap.isRecycled();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (bool3) {
       return false;
-    } while ((paramBitmap.getWidth() == paramOptions.outWidth) && (paramBitmap.getHeight() == paramOptions.outHeight) && (paramOptions.inSampleSize == 1));
-    return false;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      if (paramOptions.outWidth / paramOptions.inSampleSize * (paramOptions.outHeight / paramOptions.inSampleSize) * getBytesPerPixel(paramBitmap.getConfig()) <= paramBitmap.getAllocationByteCount()) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (paramBitmap.getWidth() == paramOptions.outWidth)
+    {
+      bool1 = bool2;
+      if (paramBitmap.getHeight() == paramOptions.outHeight)
+      {
+        bool1 = bool2;
+        if (paramOptions.inSampleSize == 1) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public Bitmap getBitmapFromCache(int paramInt)
   {
-    Object localObject2 = null;
-    int j = 1;
-    if ((this.mNoBitmaps) || ((this.mIsNotExit.length > paramInt) && (this.mIsNotExit[paramInt] == 0))) {
-      return null;
-    }
-    Object localObject1 = localObject2;
-    if (this.mLoadedCache != null)
+    boolean bool = this.mNoBitmaps;
+    Bitmap localBitmap = null;
+    if (!bool)
     {
-      localObject1 = localObject2;
-      if (this.mLoadedCache.get(Integer.valueOf(paramInt)) != null) {
-        localObject1 = (Bitmap)this.mLoadedCache.get(Integer.valueOf(paramInt));
+      Object localObject1 = this.mIsNotExit;
+      if ((localObject1.length > paramInt) && (localObject1[paramInt] == 0)) {
+        return null;
       }
-    }
-    localObject2 = localObject1;
-    int i;
-    if (localObject1 == null)
-    {
-      localObject1 = getTempBitmap();
-      if (localObject1 != null) {
-        break label262;
-      }
-      if (this.mTotalCache == null) {
-        break label252;
-      }
-      i = 1;
-      if (this.mTotalCache.size() <= 0) {
-        break label257;
-      }
-      label116:
-      if ((i & j) == 0) {
-        break label262;
-      }
-      localObject1 = (Bitmap)this.mTotalCache.get(0);
-    }
-    label257:
-    label262:
-    for (;;)
-    {
-      localObject1 = decodeBitmapFromTemp(getPathFromIndex(paramInt), (Bitmap)localObject1, getBitmapOption());
-      if ((localObject1 == null) && (this.mIsNotExit.length > paramInt)) {
-        this.mIsNotExit[paramInt] = false;
-      }
-      Log.i(this.TAG, "没命中：loadBitmapByNameIndex:" + paramInt);
-      localObject2 = localObject1;
-      if (localObject1 != null)
+      Object localObject2 = this.mLoadedCache;
+      localObject1 = localBitmap;
+      if (localObject2 != null)
       {
-        localObject2 = localObject1;
-        if (this.mHandler != null)
+        localObject1 = localBitmap;
+        if (((HashMap)localObject2).get(Integer.valueOf(paramInt)) != null) {
+          localObject1 = (Bitmap)this.mLoadedCache.get(Integer.valueOf(paramInt));
+        }
+      }
+      if (localObject1 == null)
+      {
+        localBitmap = getTempBitmap();
+        localObject1 = localBitmap;
+        if (localBitmap == null)
         {
-          this.mHandler.post(new BitmapLoadCache.2(this, paramInt, (Bitmap)localObject1));
-          localObject2 = localObject1;
+          localObject1 = this.mTotalCache;
+          int j = 1;
+          int i;
+          if (localObject1 != null) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if (this.mTotalCache.size() <= 0) {
+            j = 0;
+          }
+          localObject1 = localBitmap;
+          if ((i & j) != 0) {
+            localObject1 = (Bitmap)this.mTotalCache.get(0);
+          }
+        }
+        localBitmap = decodeBitmapFromTemp(getPathFromIndex(paramInt), (Bitmap)localObject1, getBitmapOption());
+        if (localBitmap == null)
+        {
+          localObject1 = this.mIsNotExit;
+          if (localObject1.length > paramInt) {
+            localObject1[paramInt] = 0;
+          }
+        }
+        localObject1 = this.TAG;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("没命中：loadBitmapByNameIndex:");
+        ((StringBuilder)localObject2).append(paramInt);
+        Log.i((String)localObject1, ((StringBuilder)localObject2).toString());
+        localObject1 = localBitmap;
+        if (localBitmap != null)
+        {
+          localObject2 = this.mHandler;
+          localObject1 = localBitmap;
+          if (localObject2 != null)
+          {
+            ((Handler)localObject2).post(new BitmapLoadCache.2(this, paramInt, localBitmap));
+            localObject1 = localBitmap;
+          }
         }
       }
       this.mCurIndex = paramInt;
-      return localObject2;
-      label252:
-      i = 0;
-      break;
-      j = 0;
-      break label116;
+      return localObject1;
     }
+    return null;
   }
   
   public void preLoadImages()
   {
-    if (this.mNoBitmaps) {
-      Log.e(this.TAG, "no bitmaps");
-    }
-    do
+    if (this.mNoBitmaps)
     {
+      Log.e(this.TAG, "no bitmaps");
       return;
-      this.mHandler = new Handler(HandlerThreadManager.getInstance().getHandlerThread(this.TAG).getLooper());
-    } while (this.mHandler == null);
-    this.mHandler.post(new BitmapLoadCache.1(this));
+    }
+    this.mHandler = new Handler(HandlerThreadManager.getInstance().getHandlerThread(this.TAG).getLooper());
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new BitmapLoadCache.1(this));
+    }
   }
   
   public void releaseBitmap()
   {
     this.mNoBitmaps = true;
-    if (this.mHandler != null) {
-      this.mHandler.post(new BitmapLoadCache.3(this));
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new BitmapLoadCache.3(this));
     }
   }
   
   public void reset()
   {
-    if ((!this.mNoBitmaps) && (this.mTotalFrames > this.CAPACITY) && (this.mHandler != null))
+    if ((!this.mNoBitmaps) && (this.mTotalFrames > this.CAPACITY))
     {
-      this.mHandler.removeCallbacks(this.mPreloadRunnable);
-      this.mPreloadRunnable.setCurIndex(-1);
-      this.mHandler.post(this.mPreloadRunnable);
+      Handler localHandler = this.mHandler;
+      if (localHandler != null)
+      {
+        localHandler.removeCallbacks(this.mPreloadRunnable);
+        this.mPreloadRunnable.setCurIndex(-1);
+        this.mHandler.post(this.mPreloadRunnable);
+      }
     }
   }
   
   public void resycleBitmap(Bitmap paramBitmap)
   {
-    if (this.mNoBitmaps) {}
-    do
+    if (this.mNoBitmaps) {
+      return;
+    }
+    if (paramBitmap != null)
     {
-      do
-      {
-        return;
-      } while (paramBitmap == null);
       this.mCanUseBitmaps.add(paramBitmap);
-    } while ((this.mTotalFrames <= this.CAPACITY) || (this.mHandler == null));
-    this.mHandler.removeCallbacks(this.mPreloadRunnable);
-    this.mPreloadRunnable.setCurIndex(this.mCurIndex);
-    this.mHandler.post(this.mPreloadRunnable);
+      if (this.mTotalFrames > this.CAPACITY)
+      {
+        paramBitmap = this.mHandler;
+        if (paramBitmap != null)
+        {
+          paramBitmap.removeCallbacks(this.mPreloadRunnable);
+          this.mPreloadRunnable.setCurIndex(this.mCurIndex);
+          this.mHandler.post(this.mPreloadRunnable);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.cache.BitmapLoadCache
  * JD-Core Version:    0.7.0.1
  */

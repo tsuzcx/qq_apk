@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bjqu;
-import bjqw;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 import java.util.ArrayList;
 
 class QzoneWebMusicJsPlugin$10
@@ -11,12 +11,12 @@ class QzoneWebMusicJsPlugin$10
   
   public void run()
   {
-    bjqu.a().a().a(QzoneWebMusicJsPlugin.access$200(this.this$0), 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    RemoteHandleManager.getInstance().getSender().playMusicList(QzoneWebMusicJsPlugin.access$200(this.this$0), 2, this.val$_index, this.val$_shows);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import aqwl;
-import aqwp;
-import arrr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.api.IQQFileSelector;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -28,9 +28,9 @@ public class WeiyunBroadcastReceiver
     localForwardFileInfo.b(10001);
     localForwardFileInfo.b(paramFileManagerEntity.nSessionId);
     localForwardFileInfo.d(paramWeiYunFileInfo.c);
-    localForwardFileInfo.c(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+    localForwardFileInfo.c(paramWeiYunFileInfo.a);
     localForwardFileInfo.c(2);
-    localForwardFileInfo.d(paramWeiYunFileInfo.jdField_a_of_type_Long);
+    localForwardFileInfo.d(paramWeiYunFileInfo.d);
     localForwardFileInfo.a(paramWeiYunFileInfo);
     localForwardFileInfo.a(paramFileManagerEntity.getFilePath());
     localForwardFileInfo.c(paramFileManagerEntity.uniseq);
@@ -54,31 +54,26 @@ public class WeiyunBroadcastReceiver
         Iterator localIterator = localArrayList.iterator();
         while (localIterator.hasNext())
         {
-          paramContext = arrr.a((WeiYunFileInfo)localIterator.next());
+          paramContext = FileManagerUtil.a((WeiYunFileInfo)localIterator.next());
           paramContext.nOpType = 5;
-          localQQAppInterface.a().a(paramContext);
-          localQQAppInterface.a().b(paramContext);
+          localQQAppInterface.getFileManagerDataCenter().a(paramContext);
+          localQQAppInterface.getFileManagerRSCenter().a(paramContext);
         }
         if (localArrayList.size() == 1)
         {
           a(localQQAppInterface.getApp(), (WeiYunFileInfo)localArrayList.get(0), paramContext);
           return;
         }
-        paramContext = new Intent(localQQAppInterface.getApp(), FMActivity.class);
-        paramContext.putExtra("tab_tab_type", 7);
-        paramContext.addFlags(268435456);
-        new Bundle().putLong("category", 13L);
-        paramContext.putExtra("bundle", paramIntent);
-        localQQAppInterface.getApp().startActivity(paramContext);
-        return;
+        ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByWeiyunBoroadcast(localQQAppInterface.getApp(), paramIntent);
       }
+      return;
     }
     catch (Exception paramContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

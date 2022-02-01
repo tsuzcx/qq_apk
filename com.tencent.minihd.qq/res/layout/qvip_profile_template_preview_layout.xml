@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff353535" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <com.tencent.mobileqq.widget.ProfileCardScrollImageView android:id="@id/preview_image" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <Button android:textSize="15.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ok_btn" android:background="@drawable/common_btn_login_bg" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" android:text="@string/profile_template_preview_ok" android:layout_alignParentBottom="true" />
+    <com.tencent.widget.CirclePageIndicator android:id="@id/pager_indicator" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/ok_btn" android:layout_centerHorizontal="true" custom:fillColor="#ffffffff" custom:pageColor="#ff5d5d5d" custom:circle_radius="3.0dip" />
+    <com.tencent.mobileqq.profile.view.VipScaledViewPager android:gravity="center" android:id="@id/view_pager" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_above="@id/pager_indicator" custom:matchChildId="@id/gallery_item_image_view" />
+    <View android:id="@id/qq_profilecard_night_mask" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

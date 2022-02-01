@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class FriendUinInfo
   extends JceStruct
 {
-  public byte cType;
-  public long uFriendTime;
-  public long uFriendUin;
+  public byte cType = 0;
+  public long uFriendTime = 0L;
+  public long uFriendUin = 0L;
   
   public FriendUinInfo() {}
   
@@ -36,7 +36,7 @@ public final class FriendUinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.FriendUinInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,8 @@ public final class w
   public w()
   {
     this(Color.argb(221, 136, 136, 136));
-    AppMethodBeat.i(112218);
-    AppMethodBeat.o(112218);
+    AppMethodBeat.i(42416);
+    AppMethodBeat.o(42416);
   }
   
   private w(int paramInt)
@@ -28,7 +28,7 @@ public final class w
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(112219);
+    AppMethodBeat.i(42417);
     int i = paramMotionEvent.getAction();
     if (i == 0) {
       if ((paramView instanceof ImageView))
@@ -44,7 +44,7 @@ public final class w
     }
     for (;;)
     {
-      AppMethodBeat.o(112219);
+      AppMethodBeat.o(42417);
       return false;
       if (paramView.getBackground() != null)
       {
@@ -72,7 +72,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.w
  * JD-Core Version:    0.7.0.1
  */

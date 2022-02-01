@@ -10,7 +10,9 @@ class SwipeRefreshLayout$4
   
   public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    SwipeRefreshLayout.access$100(this.this$0).setAlpha((int)(this.val$startingAlpha + (this.val$endingAlpha - this.val$startingAlpha) * paramFloat));
+    paramTransformation = SwipeRefreshLayout.access$100(this.this$0);
+    int i = this.val$startingAlpha;
+    paramTransformation.setAlpha((int)(i + (this.val$endingAlpha - i) * paramFloat));
   }
 }
 

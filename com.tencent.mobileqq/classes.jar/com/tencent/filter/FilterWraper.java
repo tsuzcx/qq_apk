@@ -15,9 +15,10 @@ public class FilterWraper
   
   private void checkavailable()
   {
-    if (!this.available) {
-      throw new RuntimeException("use bad addr");
+    if (this.available) {
+      return;
     }
+    throw new RuntimeException("use bad addr");
   }
   
   private static native void nativeDispose(long paramLong);
@@ -27,16 +28,6 @@ public class FilterWraper
   private static native long nativeInitialWithString(String paramString);
   
   private static native void nativeRenderContext(long paramLong, int paramInt1, int paramInt2, int paramInt3);
-  
-  public void ClearGLSL()
-  {
-    if (this.available)
-    {
-      nativeDispose(this.nativeObj);
-      this.available = false;
-    }
-    super.ClearGLSL();
-  }
   
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
@@ -56,6 +47,16 @@ public class FilterWraper
     super.beforeRender(paramInt1, paramInt2, paramInt3);
   }
   
+  public void clearGLSL()
+  {
+    if (this.available)
+    {
+      nativeDispose(this.nativeObj);
+      this.available = false;
+    }
+    super.clearGLSL();
+  }
+  
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     if (this.available) {
@@ -66,7 +67,7 @@ public class FilterWraper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.FilterWraper
  * JD-Core Version:    0.7.0.1
  */

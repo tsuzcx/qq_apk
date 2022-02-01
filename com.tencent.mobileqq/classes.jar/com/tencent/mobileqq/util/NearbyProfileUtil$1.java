@@ -1,56 +1,52 @@
 package com.tencent.mobileqq.util;
 
-import awgf;
-import awgg;
-import bdda;
-import bdnn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.utils.StringUtil;
 
-public final class NearbyProfileUtil$1
+final class NearbyProfileUtil$1
   implements Runnable
 {
   public void run()
   {
-    awgf localawgf = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject1;
-    long l;
-    if (localawgf != null)
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
+    long l1 = 0L;
+    Object localObject1 = null;
+    Object localObject3 = null;
+    long l2 = l1;
+    if (localEntityManager != null)
     {
-      localObject1 = null;
-      if (this.jdField_a_of_type_Long > 0L) {
-        localObject1 = (NearbyPeopleCard)localawgf.a(NearbyPeopleCard.class, "tinyId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+      l2 = this.b;
+      if (l2 > 0L) {
+        localObject1 = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "tinyId=?", new String[] { String.valueOf(l2) });
+      } else {
+        localObject1 = null;
       }
       Object localObject2 = localObject1;
       if (localObject1 == null)
       {
         localObject2 = localObject1;
-        if (!bdnn.a(this.jdField_a_of_type_JavaLangString)) {
-          localObject2 = (NearbyPeopleCard)localawgf.a(NearbyPeopleCard.class, "uin=?", new String[] { this.jdField_a_of_type_JavaLangString });
+        if (!StringUtil.isEmpty(this.c)) {
+          localObject2 = (NearbyPeopleCard)localEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { this.c });
         }
       }
+      localObject1 = localObject3;
       if (localObject2 != null)
       {
         localObject1 = ((NearbyPeopleCard)localObject2).vSeed;
-        l = ((NearbyPeopleCard)localObject2).feedPreviewTime;
-        localawgf.a();
+        l1 = ((NearbyPeopleCard)localObject2).feedPreviewTime;
       }
+      localEntityManager.close();
+      l2 = l1;
     }
-    for (;;)
-    {
-      bdda.a(this.jdField_a_of_type_Auxh, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte[])localObject1, l, false, 0L, false, 0L, 0);
-      return;
-      localObject1 = null;
-      l = 0L;
-      break;
-      l = 0L;
-      localObject1 = null;
-    }
+    NearbyProfileUtil.a(this.d, this.a, this.b, this.c, this.e, (byte[])localObject1, l2, false, 0L, false, 0L, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.NearbyProfileUtil.1
  * JD-Core Version:    0.7.0.1
  */

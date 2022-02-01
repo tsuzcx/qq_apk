@@ -5,5 +5,5 @@
         <TextView android:textSize="@dimen/ati" android:textColor="@android:color/black" android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ash" android:layout_marginTop="9.0dip" android:includeFontPadding="false" android:lineSpacingExtra="1.5dip" />
         <include android:gravity="bottom" android:id="@id/hwz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ash" android:layout_marginBottom="11.0dip" layout="@layout/a54" />
     </LinearLayout>
-    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/image" android:layout_width="124.0dip" android:layout_height="95.0dip" android:layout_marginLeft="23.0dip" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.kandian.base.view.widget.ResizeURLImageView android:id="@id/image" android:layout_width="124.0dip" android:layout_height="95.0dip" android:layout_marginLeft="23.0dip" android:scaleType="centerCrop" />
 </LinearLayout>

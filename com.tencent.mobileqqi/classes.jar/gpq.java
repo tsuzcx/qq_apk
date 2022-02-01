@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.troop.activity.NearbyTroopsActivity;
 
 public class gpq
-  implements View.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
   public gpq(NearbyTroopsActivity paramNearbyTroopsActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    NearbyTroopsActivity.a(this.a);
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (this.a.a == null)) {}
+    while (paramMotionEvent2.getY() - paramMotionEvent1.getY() >= 0.0F) {
+      return false;
+    }
+    this.a.b(false);
+    return true;
   }
 }
 

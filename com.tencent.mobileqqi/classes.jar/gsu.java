@@ -1,13 +1,21 @@
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity;
+import com.tencent.widget.XListView;
 
-class gsu
-  implements Runnable
+public class gsu
+  extends Handler
 {
-  gsu(gss paramgss) {}
+  public gsu(TroopBarPublishBarSelectActivity paramTroopBarPublishBarSelectActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(1);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.B();
   }
 }
 

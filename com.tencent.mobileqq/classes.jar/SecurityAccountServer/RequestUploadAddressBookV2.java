@@ -10,10 +10,10 @@ public final class RequestUploadAddressBookV2
 {
   static ArrayList<AddressBookItem> cache_AddressBookList;
   static byte[] cache_sessionSid;
-  public ArrayList<AddressBookItem> AddressBookList;
+  public ArrayList<AddressBookItem> AddressBookList = null;
   public String MobileUniqueNo = "";
-  public long nextFlag;
-  public byte[] sessionSid;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
   
   public RequestUploadAddressBookV2() {}
   
@@ -54,7 +54,7 @@ public final class RequestUploadAddressBookV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestUploadAddressBookV2
  * JD-Core Version:    0.7.0.1
  */

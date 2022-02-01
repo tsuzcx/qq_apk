@@ -57,17 +57,14 @@ public final class ChunkExtractorWrapper
     {
       this.extractor.init(this);
       this.extractorInitialized = true;
-    }
-    for (;;)
-    {
       return;
-      this.extractor.seek(0L, 0L);
-      int i = 0;
-      while (i < this.bindingTrackOutputs.size())
-      {
-        ((ChunkExtractorWrapper.BindingTrackOutput)this.bindingTrackOutputs.valueAt(i)).bind(paramTrackOutputProvider);
-        i += 1;
-      }
+    }
+    this.extractor.seek(0L, 0L);
+    int i = 0;
+    while (i < this.bindingTrackOutputs.size())
+    {
+      ((ChunkExtractorWrapper.BindingTrackOutput)this.bindingTrackOutputs.valueAt(i)).bind(paramTrackOutputProvider);
+      i += 1;
     }
   }
   
@@ -80,34 +77,30 @@ public final class ChunkExtractorWrapper
   {
     ChunkExtractorWrapper.BindingTrackOutput localBindingTrackOutput = (ChunkExtractorWrapper.BindingTrackOutput)this.bindingTrackOutputs.get(paramInt1);
     Object localObject = localBindingTrackOutput;
-    boolean bool;
     if (localBindingTrackOutput == null)
     {
-      if (this.sampleFormats != null) {
-        break label84;
+      boolean bool;
+      if (this.sampleFormats == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      bool = true;
       Assertions.checkState(bool);
-      if (paramInt2 != this.primaryTrackType) {
-        break label89;
+      if (paramInt2 == this.primaryTrackType) {
+        localObject = this.primaryTrackManifestFormat;
+      } else {
+        localObject = null;
       }
-    }
-    label84:
-    label89:
-    for (localObject = this.primaryTrackManifestFormat;; localObject = null)
-    {
       localObject = new ChunkExtractorWrapper.BindingTrackOutput(paramInt1, paramInt2, (Format)localObject);
       ((ChunkExtractorWrapper.BindingTrackOutput)localObject).bind(this.trackOutputProvider);
       this.bindingTrackOutputs.put(paramInt1, localObject);
-      return localObject;
-      bool = false;
-      break;
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.ChunkExtractorWrapper
  * JD-Core Version:    0.7.0.1
  */

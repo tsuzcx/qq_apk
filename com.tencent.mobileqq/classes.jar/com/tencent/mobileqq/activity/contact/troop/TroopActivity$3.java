@@ -12,15 +12,15 @@ class TroopActivity$3
   public void run()
   {
     Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    this.a.setEnabled(true);
+    this.a.getHitRect((Rect)localObject);
+    ((Rect)localObject).top -= this.b;
+    ((Rect)localObject).bottom += this.c;
+    ((Rect)localObject).left -= this.d;
+    ((Rect)localObject).right += this.e;
+    localObject = new TouchDelegate((Rect)localObject, this.a);
+    if (View.class.isInstance(this.a.getParent())) {
+      ((View)this.a.getParent()).setTouchDelegate((TouchDelegate)localObject);
     }
   }
 }

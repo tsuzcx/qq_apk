@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.miniapp.ui;
 
-import android.support.v4.app.Fragment;
+import com.tencent.mobileqq.app.BaseFragment;
 
 public class MiniAppBaseFragment
-  extends Fragment
+  extends BaseFragment
 {
   protected String a()
   {
-    return ((MiniAppActivity)getActivity()).a;
+    return ((MiniAppActivity)getBaseActivity()).a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.ui.MiniAppBaseFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
-import cooperation.plugin.PluginInstaller;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.plugin.PluginIphoneTitleBarActivity;
 
 public class iaf
-  implements FilenameFilter
+  implements View.OnClickListener
 {
-  public iaf(PluginInstaller paramPluginInstaller, String paramString) {}
+  public iaf(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onClick(View paramView)
   {
-    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
+    this.a.a();
   }
 }
 

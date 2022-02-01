@@ -1,37 +1,38 @@
 package com.tencent.mm.plugin.extqlauncher;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(20472);
+    AppMethodBeat.i(24548);
     a locala = new a();
-    AppMethodBeat.o(20472);
+    AppMethodBeat.o(24548);
     return locala;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(20471);
-    b localb = new b();
-    AppMethodBeat.o(20471);
-    return localb;
+    AppMethodBeat.i(24547);
+    SubCoreExtQLauncher localSubCoreExtQLauncher = new SubCoreExtQLauncher();
+    AppMethodBeat.o(24547);
+    return localSubCoreExtQLauncher;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.extqlauncher.Plugin
  * JD-Core Version:    0.7.0.1
  */

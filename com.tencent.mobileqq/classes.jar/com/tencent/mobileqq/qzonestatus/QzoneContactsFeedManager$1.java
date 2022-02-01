@@ -3,48 +3,53 @@ package com.tencent.mobileqq.qzonestatus;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import axjn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class QzoneContactsFeedManager$1
+class QzoneContactsFeedManager$1
   implements Runnable
 {
-  public QzoneContactsFeedManager$1(axjn paramaxjn) {}
+  QzoneContactsFeedManager$1(QzoneContactsFeedManager paramQzoneContactsFeedManager) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateQzoneFeeds:" + axjn.a(this.this$0).getCurrentAccountUin());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateQzoneFeeds:");
+      ((StringBuilder)localObject).append(QzoneContactsFeedManager.a(this.this$0).getCurrentAccountUin());
+      QLog.d("QzoneContactsFeedManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = axjn.a(this.this$0);
+    Object localObject = QzoneContactsFeedManager.b(this.this$0);
     long l2 = ((SharedPreferences)localObject).getLong("last_click_time", 0L);
     long l1 = System.currentTimeMillis();
     l2 = l1 - l2;
-    if (l2 < axjn.a()) {
+    if (l2 < QzoneContactsFeedManager.h()) {
       return;
     }
-    long l3 = this.this$0.a();
-    if ((l3 <= 0L) || (l2 >= axjn.b())) {
+    long l3 = this.this$0.c();
+    if ((l3 > 0L) && (l2 < QzoneContactsFeedManager.i()))
+    {
+      QzoneContactsFeedManager localQzoneContactsFeedManager = this.this$0;
+      localQzoneContactsFeedManager.a(l3, localQzoneContactsFeedManager.d());
+    }
+    else
+    {
       this.this$0.b();
     }
-    for (;;)
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("last_click_time", l1);
+    if (Build.VERSION.SDK_INT < 9)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("last_click_time", l1);
-      if (Build.VERSION.SDK_INT >= 9) {
-        break;
-      }
       ((SharedPreferences.Editor)localObject).commit();
       return;
-      this.this$0.a(l3, this.this$0.a());
     }
     ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager.1
  * JD-Core Version:    0.7.0.1
  */

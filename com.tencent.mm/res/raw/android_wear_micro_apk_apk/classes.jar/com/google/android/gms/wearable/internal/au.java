@@ -8,28 +8,28 @@ import java.util.Map;
 final class au<T>
   extends bn<Status>
 {
-  private WeakReference<Map<T, bz<T>>> TA;
-  private WeakReference<T> TB;
+  private WeakReference<Map<T, bz<T>>> Vp;
+  private WeakReference<T> Vq;
   
   au(Map<T, bz<T>> paramMap, T paramT, h<Status> paramh)
   {
     super(paramh);
-    this.TA = new WeakReference(paramMap);
-    this.TB = new WeakReference(paramT);
+    this.Vp = new WeakReference(paramMap);
+    this.Vq = new WeakReference(paramT);
   }
   
   public final void j(Status paramStatus)
   {
-    Map localMap = (Map)this.TA.get();
-    Object localObject = this.TB.get();
-    if ((paramStatus.gC().getStatusCode() == 4002) && (localMap != null) && (localObject != null)) {}
+    Map localMap = (Map)this.Vp.get();
+    Object localObject = this.Vq.get();
+    if ((paramStatus.gM().getStatusCode() == 4002) && (localMap != null) && (localObject != null)) {}
     try
     {
       localObject = (bz)localMap.remove(localObject);
       if (localObject != null) {
         ((bz)localObject).clear();
       }
-      B(paramStatus);
+      K(paramStatus);
       return;
     }
     finally {}

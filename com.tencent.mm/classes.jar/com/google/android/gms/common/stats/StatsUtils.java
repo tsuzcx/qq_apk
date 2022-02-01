@@ -12,7 +12,7 @@ public class StatsUtils
 {
   public static String getEventKey(AbstractThreadedSyncAdapter paramAbstractThreadedSyncAdapter, String paramString)
   {
-    AppMethodBeat.i(89972);
+    AppMethodBeat.i(4994);
     String str = String.valueOf(String.valueOf(Process.myPid() << 32 | System.identityHashCode(paramAbstractThreadedSyncAdapter)));
     paramAbstractThreadedSyncAdapter = paramString;
     if (TextUtils.isEmpty(paramString)) {
@@ -22,26 +22,26 @@ public class StatsUtils
     if (paramAbstractThreadedSyncAdapter.length() != 0)
     {
       paramAbstractThreadedSyncAdapter = str.concat(paramAbstractThreadedSyncAdapter);
-      AppMethodBeat.o(89972);
+      AppMethodBeat.o(4994);
       return paramAbstractThreadedSyncAdapter;
     }
     paramAbstractThreadedSyncAdapter = new String(str);
-    AppMethodBeat.o(89972);
+    AppMethodBeat.o(4994);
     return paramAbstractThreadedSyncAdapter;
   }
   
   public static String getEventKey(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(89970);
+    AppMethodBeat.i(4992);
     long l1 = System.identityHashCode(paramContext);
     long l2 = System.identityHashCode(paramIntent);
-    AppMethodBeat.o(89970);
+    AppMethodBeat.o(4992);
     return String.valueOf(l1 << 32 | l2);
   }
   
   public static String getEventKey(PowerManager.WakeLock paramWakeLock, String paramString)
   {
-    AppMethodBeat.i(89971);
+    AppMethodBeat.i(4993);
     String str = String.valueOf(String.valueOf(Process.myPid() << 32 | System.identityHashCode(paramWakeLock)));
     paramWakeLock = paramString;
     if (TextUtils.isEmpty(paramString)) {
@@ -51,55 +51,55 @@ public class StatsUtils
     if (paramWakeLock.length() != 0)
     {
       paramWakeLock = str.concat(paramWakeLock);
-      AppMethodBeat.o(89971);
+      AppMethodBeat.o(4993);
       return paramWakeLock;
     }
     paramWakeLock = new String(str);
-    AppMethodBeat.o(89971);
+    AppMethodBeat.o(4993);
     return paramWakeLock;
   }
   
   public static boolean isLoggingEnabled()
   {
-    AppMethodBeat.i(89969);
+    AppMethodBeat.i(4991);
     StatisticalEventTrackerProvider.StatisticalEventTracker localStatisticalEventTracker = StatisticalEventTrackerProvider.getImpl();
     if ((localStatisticalEventTracker != null) && (localStatisticalEventTracker.isEnabled()) && ((zza(Integer.valueOf(localStatisticalEventTracker.getLogLevel(3)))) || (zza(Integer.valueOf(localStatisticalEventTracker.getLogLevel(2)))) || (zza(Integer.valueOf(localStatisticalEventTracker.getLogLevel(1))))))
     {
-      AppMethodBeat.o(89969);
+      AppMethodBeat.o(4991);
       return true;
     }
-    AppMethodBeat.o(89969);
+    AppMethodBeat.o(4991);
     return false;
   }
   
   public static boolean isTimeOutEvent(StatsEvent paramStatsEvent)
   {
-    AppMethodBeat.i(89973);
+    AppMethodBeat.i(4995);
     switch (paramStatsEvent.getEventType())
     {
     default: 
-      AppMethodBeat.o(89973);
+      AppMethodBeat.o(4995);
       return false;
     }
-    AppMethodBeat.o(89973);
+    AppMethodBeat.o(4995);
     return true;
   }
   
   private static boolean zza(Integer paramInteger)
   {
-    AppMethodBeat.i(89968);
+    AppMethodBeat.i(4990);
     if (!paramInteger.equals(Integer.valueOf(LoggingConstants.LOG_LEVEL_OFF)))
     {
-      AppMethodBeat.o(89968);
+      AppMethodBeat.o(4990);
       return true;
     }
-    AppMethodBeat.o(89968);
+    AppMethodBeat.o(4990);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.StatsUtils
  * JD-Core Version:    0.7.0.1
  */

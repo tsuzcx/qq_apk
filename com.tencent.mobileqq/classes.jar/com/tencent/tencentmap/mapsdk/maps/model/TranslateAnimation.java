@@ -26,8 +26,10 @@ public class TranslateAnimation
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
-    if (this.glAnimation == null) {}
-    while (paramInterpolator == null) {
+    if (this.glAnimation == null) {
+      return;
+    }
+    if (paramInterpolator == null) {
       return;
     }
     this.glAnimation.setInterpolator(paramInterpolator);
@@ -35,7 +37,7 @@ public class TranslateAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.TranslateAnimation
  * JD-Core Version:    0.7.0.1
  */

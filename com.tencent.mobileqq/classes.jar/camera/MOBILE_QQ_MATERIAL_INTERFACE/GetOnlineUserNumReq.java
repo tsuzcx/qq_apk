@@ -23,14 +23,15 @@ public final class GetOnlineUserNumReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.Nothing != null) {
-      paramJceOutputStream.write(this.Nothing, 0);
+    String str = this.Nothing;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetOnlineUserNumReq
  * JD-Core Version:    0.7.0.1
  */

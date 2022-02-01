@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class s_profile_calendar
   extends JceStruct
 {
-  public int month;
+  public int month = 0;
   
   public s_profile_calendar() {}
   
@@ -28,7 +28,7 @@ public final class s_profile_calendar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_profile_calendar
  * JD-Core Version:    0.7.0.1
  */

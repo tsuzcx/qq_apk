@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="3.0dip" />
-    <solid android:color="@color/a6q" />
-    <stroke android:width="1.0px" android:color="#ffe5e5e5" />
-</shape>
+    <item android:state_selected="true" android:drawable="@drawable/brl" />
+    <item android:state_pressed="true" android:drawable="@drawable/brl" />
+    <item android:state_enabled="false" android:drawable="@drawable/brk" />
+    <item android:drawable="@drawable/brj" />
+</selector>

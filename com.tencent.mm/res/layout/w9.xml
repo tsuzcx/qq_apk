@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bl0" android:layout_width="fill_parent" android:layout_height="@dimen/m0" android:minHeight="@dimen/f1"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bl1" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:layout_marginLeft="@dimen/dv" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/m1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dj" android:layout_toRightOf="@id/bl1" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/m2" android:id="@id/bl2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/ln" />
-    </LinearLayout>
+    <RelativeLayout android:id="@id/bqs" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="@dimen/az">
+        <TextView android:id="@id/bqt" android:paddingLeft="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ha" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/ma" />
+    </RelativeLayout>
+    <ImageView android:id="@id/k_4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/ah6" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ProgressBar android:id="@id/j6z" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/a85" />
 </RelativeLayout>

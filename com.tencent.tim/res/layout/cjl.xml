@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.compose.QMComposeFooter android:gravity="right" android:layout_gravity="bottom|center|right" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="right" android:orientation="horizontal" android:id="@id/mox" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip">
+        <Button android:id="@id/moy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:minHeight="40.0dip" android:text="@string/aw3" />
+        <Button android:id="@id/mow" android:layout_alignParentRight="true" android:contentDescription="@string/wx_" style="@style/aa1" />
+        <ImageView android:id="@id/mv1" android:background="@drawable/gfc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</com.tencent.qqmail.activity.compose.QMComposeFooter>

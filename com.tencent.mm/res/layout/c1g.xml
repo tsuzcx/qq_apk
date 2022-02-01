@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hw" android:background="@drawable/ati" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6" android:layout_marginBottom="@dimen/m2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/hx" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    <com.tencent.mm.plugin.sns.ui.SnsTextView android:textSize="15.0dip" android:textColor="@color/ad4" android:id="@id/hy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
+    <ImageView android:id="@id/hv" android:visibility="gone" android:layout_width="38.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:scaleType="fitXY" />
+</LinearLayout>

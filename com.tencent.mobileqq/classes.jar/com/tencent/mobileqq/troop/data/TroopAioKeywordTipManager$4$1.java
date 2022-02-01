@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.troop.data;
 
-import bbpl;
-import bbpw;
-import bbpy;
 import java.util.List;
 
-public class TroopAioKeywordTipManager$4$1
+class TroopAioKeywordTipManager$4$1
   implements Runnable
 {
-  public TroopAioKeywordTipManager$4$1(bbpy parambbpy, List paramList) {}
+  TroopAioKeywordTipManager$4$1(TroopAioKeywordTipManager.4 param4, List paramList) {}
   
   public void run()
   {
-    bbpl.a(this.jdField_a_of_type_Bbpy.a.a, this.jdField_a_of_type_JavaUtilList);
+    TroopAioKeywordHelper.a(this.b.c.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1
  * JD-Core Version:    0.7.0.1
  */

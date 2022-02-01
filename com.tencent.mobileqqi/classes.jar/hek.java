@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.utils.ZebraBlacklistUtils;
-import com.tencent.mobileqq.utils.ZebraBlacklistUtils.JceRequestCallback;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
 public class hek
-  implements ZebraBlacklistUtils.JceRequestCallback
+  implements Runnable
 {
-  public hek(ZebraBlacklistUtils paramZebraBlacklistUtils) {}
+  public hek(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, hem paramhem) {}
   
-  public void a() {}
-  
-  public void a(byte[] paramArrayOfByte)
+  public void run()
   {
-    ZebraBlacklistUtils.a(this.a, paramArrayOfByte);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_Hem);
   }
 }
 

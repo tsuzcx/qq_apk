@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.PinnedDividerSwipListView android:id="@id/mw4" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:cacheColorHint="@null" android:divider="@null" android:layout_above="@id/imz"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+    <com.tencent.tim.filemanager.widget.CloudSendBottomBar android:id="@id/imz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nad" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/nii" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginRight="10.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/ei" android:id="@id/o90" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hyw" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nac" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/n6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ch2" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/ei" android:gravity="center" android:id="@id/o8z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="@string/hyu" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nab" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/n6v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ild" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/ei" android:gravity="center" android:id="@id/o8y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="@string/hxs" android:lineSpacingExtra="8.0dip" />
+    </LinearLayout>
+    <ViewStub android:id="@id/mmc" android:layout="@layout/cis" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

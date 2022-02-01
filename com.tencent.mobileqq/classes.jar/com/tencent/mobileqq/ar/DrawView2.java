@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.ar;
 
-import amxp;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -16,98 +15,99 @@ import java.util.List;
 public class DrawView2
   extends View
 {
-  public static float a;
-  public static int a;
-  public static float b;
-  public static int b;
+  public static float a = 1.0F;
+  public static float b = 1.0F;
   public static int c;
   public static int d;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  Handler jdField_a_of_type_AndroidOsHandler;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  List<amxp> jdField_a_of_type_JavaUtilList;
-  private Paint b;
-  
-  static
-  {
-    jdField_a_of_type_Float = 1.0F;
-    jdField_b_of_type_Float = 1.0F;
-  }
+  public static int e;
+  public static int f;
+  HandlerThread g;
+  Handler h;
+  List<DrawView2.FaceData> i;
+  private Paint j = new Paint();
+  private Paint k = new Paint();
   
   public DrawView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setARGB(255, 0, 255, 0);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(10.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(10.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(30.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-65536);
+    this.j.setARGB(255, 0, 255, 0);
+    this.j.setStrokeWidth(10.0F);
+    this.j.setStyle(Paint.Style.STROKE);
+    this.k.setStrokeWidth(10.0F);
+    this.k.setTextSize(30.0F);
+    this.k.setColor(-65536);
     setWillNotDraw(false);
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("DrawViewThread");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.g = new HandlerThread("DrawViewThread");
+    this.g.start();
+    this.h = new Handler(this.g.getLooper());
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    amxp localamxp;
-    int i;
-    label60:
-    float f1;
-    float f2;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.i;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
+      localObject = this.i.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localamxp = (amxp)localIterator.next();
+        DrawView2.FaceData localFaceData = (DrawView2.FaceData)((Iterator)localObject).next();
         paramCanvas.save();
-        i = 0;
-        if (i < 90) {
-          if (jdField_a_of_type_Float != 1.0F)
+        int m = 0;
+        while (m < 90)
+        {
+          float f1 = a;
+          float f2 = 0.0F;
+          float[] arrayOfFloat;
+          int n;
+          int i1;
+          float f3;
+          if (f1 != 1.0F)
           {
-            f1 = localamxp.jdField_a_of_type_ArrayOfFloat[(i * 2)];
-            f2 = jdField_a_of_type_Int / 2;
-            float f3 = c / 2 / (jdField_a_of_type_Int / 2 / jdField_a_of_type_Float);
-            f2 = c / 2 + (f1 - f2) * f3;
-            f1 = localamxp.jdField_a_of_type_ArrayOfFloat[(i * 2 + 1)] * d / jdField_b_of_type_Int;
+            arrayOfFloat = localFaceData.a;
+            n = m * 2;
+            f1 = arrayOfFloat[n];
+            i1 = c;
+            f2 = i1 / 2;
+            int i2 = e;
+            f3 = i2 / 2 / (i1 / 2 / a);
+            f2 = i2 / 2 + (f1 - f2) * f3;
+            f1 = localFaceData.a[(n + 1)] * f / d;
           }
+          else if (b != 1.0F)
+          {
+            arrayOfFloat = localFaceData.a;
+            n = m * 2;
+            f2 = arrayOfFloat[n] * e / c;
+            f1 = localFaceData.a[(n + 1)];
+            n = d;
+            f3 = n / 2;
+            i1 = f;
+            f1 = (f1 - f3) * (i1 / 2 / (n / 2 / b)) + i1 / 2;
+          }
+          else
+          {
+            f1 = 0.0F;
+          }
+          paramCanvas.drawPoint(f2, f1, this.j);
+          if ((!TextUtils.isEmpty(localFaceData.d)) && (m == 87)) {
+            paramCanvas.drawText(localFaceData.d, f2, f1, this.k);
+          }
+          m += 1;
         }
-      }
-    }
-    for (;;)
-    {
-      paramCanvas.drawPoint(f2, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((!TextUtils.isEmpty(localamxp.jdField_a_of_type_JavaLangString)) && (i == 87)) {
-        paramCanvas.drawText(localamxp.jdField_a_of_type_JavaLangString, f2, f1, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-      i += 1;
-      break label60;
-      if (jdField_b_of_type_Float != 1.0F)
-      {
-        f2 = localamxp.jdField_a_of_type_ArrayOfFloat[(i * 2)] * c / jdField_a_of_type_Int;
-        f1 = (localamxp.jdField_a_of_type_ArrayOfFloat[(i * 2 + 1)] - jdField_b_of_type_Int / 2) * (d / 2 / (jdField_b_of_type_Int / 2 / jdField_b_of_type_Float)) + d / 2;
-        continue;
         paramCanvas.restore();
-        break;
-        return;
       }
-      f1 = 0.0F;
-      f2 = 0.0F;
     }
   }
   
-  public void setFaceData(List<amxp> paramList)
+  public void setFaceData(List<DrawView2.FaceData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.i = paramList;
     postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.DrawView2
  * JD-Core Version:    0.7.0.1
  */

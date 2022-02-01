@@ -6,12 +6,11 @@ import com.tencent.mobileqq.testassister.activity.ShareAppLogActivity;
 class gml
   implements DialogInterface.OnClickListener
 {
-  gml(gmk paramgmk) {}
+  gml(gmj paramgmj) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShareAppLogActivity.a(this.a.a).a(false);
-    ShareAppLogActivity.b(this.a.a);
+    ShareAppLogActivity.a(this.a.a).a(true);
   }
 }
 

@@ -8,7 +8,7 @@ public final class QzmallCustomPlayer
   extends JceStruct
 {
   public int iItemId = -1;
-  public long lTextColor;
+  public long lTextColor = 0L;
   public String strPlayerDecoUrl = "";
   
   public QzmallCustomPlayer() {}
@@ -30,15 +30,16 @@ public final class QzmallCustomPlayer
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strPlayerDecoUrl != null) {
-      paramJceOutputStream.write(this.strPlayerDecoUrl, 1);
+    String str = this.strPlayerDecoUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.lTextColor, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallCustomPlayer
  * JD-Core Version:    0.7.0.1
  */

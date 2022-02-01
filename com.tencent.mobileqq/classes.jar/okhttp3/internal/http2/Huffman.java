@@ -19,15 +19,21 @@ class Huffman
   private void addCode(int paramInt1, int paramInt2, byte paramByte)
   {
     Huffman.Node localNode2 = new Huffman.Node(paramInt1, paramByte);
-    for (Huffman.Node localNode1 = this.root; paramByte > 8; localNode1 = localNode1.children[paramInt1])
+    Huffman.Node localNode1 = this.root;
+    while (paramByte > 8)
     {
       paramByte = (byte)(paramByte - 8);
       paramInt1 = paramInt2 >>> paramByte & 0xFF;
-      if (localNode1.children == null) {
-        throw new IllegalStateException("invalid dictionary: prefix not unique");
+      if (localNode1.children != null)
+      {
+        if (localNode1.children[paramInt1] == null) {
+          localNode1.children[paramInt1] = new Huffman.Node();
+        }
+        localNode1 = localNode1.children[paramInt1];
       }
-      if (localNode1.children[paramInt1] == null) {
-        localNode1.children[paramInt1] = new Huffman.Node();
+      else
+      {
+        throw new IllegalStateException("invalid dictionary: prefix not unique");
       }
     }
     paramByte = 8 - paramByte;
@@ -43,9 +49,13 @@ class Huffman
   private void buildTree()
   {
     int i = 0;
-    while (i < CODE_LENGTHS.length)
+    for (;;)
     {
-      addCode(i, CODES[i], CODE_LENGTHS[i]);
+      byte[] arrayOfByte = CODE_LENGTHS;
+      if (i >= arrayOfByte.length) {
+        break;
+      }
+      addCode(i, CODES[i], arrayOfByte[i]);
       i += 1;
     }
   }
@@ -57,9 +67,9 @@ class Huffman
   
   byte[] decode(byte[] paramArrayOfByte)
   {
-    int j = 0;
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     Huffman.Node localNode1 = this.root;
+    int j = 0;
     int k = 0;
     int i = 0;
     int m;
@@ -89,16 +99,16 @@ class Huffman
       }
       j += 1;
     }
-    do
+    while (m > 0)
     {
+      paramArrayOfByte = localNode2.children[(k << 8 - m & 0xFF)];
+      if ((paramArrayOfByte.children != null) || (paramArrayOfByte.terminalBits > m)) {
+        break;
+      }
       localByteArrayOutputStream.write(paramArrayOfByte.symbol);
       m -= paramArrayOfByte.terminalBits;
       localNode2 = this.root;
-      if (m <= 0) {
-        break;
-      }
-      paramArrayOfByte = localNode2.children[(k << 8 - m & 0xFF)];
-    } while ((paramArrayOfByte.children == null) && (paramArrayOfByte.terminalBits <= m));
+    }
     return localByteArrayOutputStream.toByteArray();
   }
   
@@ -136,12 +146,12 @@ class Huffman
       l += CODE_LENGTHS[(j & 0xFF)];
       i += 1;
     }
-    return (int)(7L + l >> 3);
+    return (int)(l + 7L >> 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http2.Huffman
  * JD-Core Version:    0.7.0.1
  */

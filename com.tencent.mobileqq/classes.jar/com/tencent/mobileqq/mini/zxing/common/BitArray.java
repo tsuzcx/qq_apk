@@ -30,9 +30,10 @@ public final class BitArray
   {
     if (paramInt > this.bits.length * 32)
     {
-      int[] arrayOfInt = makeArray(paramInt);
-      System.arraycopy(this.bits, 0, arrayOfInt, 0, this.bits.length);
-      this.bits = arrayOfInt;
+      int[] arrayOfInt1 = makeArray(paramInt);
+      int[] arrayOfInt2 = this.bits;
+      System.arraycopy(arrayOfInt2, 0, arrayOfInt1, 0, arrayOfInt2.length);
+      this.bits = arrayOfInt1;
     }
   }
   
@@ -47,8 +48,9 @@ public final class BitArray
     if (paramBoolean)
     {
       int[] arrayOfInt = this.bits;
-      int i = this.size / 32;
-      arrayOfInt[i] |= 1 << (this.size & 0x1F);
+      int i = this.size;
+      int j = i / 32;
+      arrayOfInt[j] = (1 << (i & 0x1F) | arrayOfInt[j]);
     }
     this.size += 1;
   }
@@ -67,19 +69,24 @@ public final class BitArray
   
   public void appendBits(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 < 0) || (paramInt2 > 32)) {
-      throw new IllegalArgumentException("Num bits must be between 0 and 32");
-    }
-    ensureCapacity(this.size + paramInt2);
-    if (paramInt2 > 0)
+    if ((paramInt2 >= 0) && (paramInt2 <= 32))
     {
-      if ((paramInt1 >> paramInt2 - 1 & 0x1) == 1) {}
-      for (boolean bool = true;; bool = false)
+      ensureCapacity(this.size + paramInt2);
+      while (paramInt2 > 0)
       {
+        boolean bool = true;
+        if ((paramInt1 >> paramInt2 - 1 & 0x1) != 1) {
+          bool = false;
+        }
         appendBit(bool);
         paramInt2 -= 1;
-        break;
       }
+      return;
+    }
+    IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Num bits must be between 0 and 32");
+    for (;;)
+    {
+      throw localIllegalArgumentException;
     }
   }
   
@@ -101,25 +108,33 @@ public final class BitArray
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof BitArray)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof BitArray;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (BitArray)paramObject;
-    } while ((this.size != paramObject.size) || (!Arrays.equals(this.bits, paramObject.bits)));
-    return true;
+    }
+    paramObject = (BitArray)paramObject;
+    bool1 = bool2;
+    if (this.size == paramObject.size)
+    {
+      bool1 = bool2;
+      if (Arrays.equals(this.bits, paramObject.bits)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public void flip(int paramInt)
   {
     int[] arrayOfInt = this.bits;
     int i = paramInt / 32;
-    arrayOfInt[i] ^= 1 << (paramInt & 0x1F);
+    arrayOfInt[i] = (1 << (paramInt & 0x1F) ^ arrayOfInt[i]);
   }
   
   public boolean get(int paramInt)
   {
-    return (this.bits[(paramInt / 32)] & 1 << (paramInt & 0x1F)) != 0;
+    return (1 << (paramInt & 0x1F) & this.bits[(paramInt / 32)]) != 0;
   }
   
   public int[] getBitArray()
@@ -129,48 +144,56 @@ public final class BitArray
   
   public int getNextSet(int paramInt)
   {
-    if (paramInt >= this.size) {
-      paramInt = this.size;
+    int i = this.size;
+    if (paramInt >= i) {
+      return i;
     }
-    int i;
-    do
+    int j = paramInt / 32;
+    i = this.bits[j];
+    i = -(1 << (paramInt & 0x1F)) & i;
+    paramInt = j;
+    while (i == 0)
     {
-      return paramInt;
-      i = paramInt / 32;
-      for (paramInt = this.bits[i] & -(1 << (paramInt & 0x1F)); paramInt == 0; paramInt = this.bits[i])
-      {
-        i += 1;
-        if (i == this.bits.length) {
-          return this.size;
-        }
+      paramInt += 1;
+      int[] arrayOfInt = this.bits;
+      if (paramInt == arrayOfInt.length) {
+        return this.size;
       }
-      i = Integer.numberOfTrailingZeros(paramInt) + i * 32;
-      paramInt = i;
-    } while (i <= this.size);
-    return this.size;
+      i = arrayOfInt[paramInt];
+    }
+    paramInt = paramInt * 32 + Integer.numberOfTrailingZeros(i);
+    i = this.size;
+    if (paramInt > i) {
+      return i;
+    }
+    return paramInt;
   }
   
   public int getNextUnset(int paramInt)
   {
-    if (paramInt >= this.size) {
-      paramInt = this.size;
+    int i = this.size;
+    if (paramInt >= i) {
+      return i;
     }
-    int i;
-    do
+    int j = paramInt / 32;
+    i = this.bits[j];
+    i = -(1 << (paramInt & 0x1F)) & (i ^ 0xFFFFFFFF);
+    paramInt = j;
+    while (i == 0)
     {
-      return paramInt;
-      i = paramInt / 32;
-      for (paramInt = (this.bits[i] ^ 0xFFFFFFFF) & -(1 << (paramInt & 0x1F)); paramInt == 0; paramInt = this.bits[i] ^ 0xFFFFFFFF)
-      {
-        i += 1;
-        if (i == this.bits.length) {
-          return this.size;
-        }
+      paramInt += 1;
+      int[] arrayOfInt = this.bits;
+      if (paramInt == arrayOfInt.length) {
+        return this.size;
       }
-      i = Integer.numberOfTrailingZeros(paramInt) + i * 32;
-      paramInt = i;
-    } while (i <= this.size);
-    return this.size;
+      i = arrayOfInt[paramInt] ^ 0xFFFFFFFF;
+    }
+    paramInt = paramInt * 32 + Integer.numberOfTrailingZeros(i);
+    i = this.size;
+    if (paramInt > i) {
+      return i;
+    }
+    return paramInt;
   }
   
   public int getSize()
@@ -190,61 +213,54 @@ public final class BitArray
   
   public boolean isRange(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramInt2 < paramInt1) || (paramInt1 < 0) || (paramInt2 > this.size)) {
-      throw new IllegalArgumentException();
-    }
-    if (paramInt2 == paramInt1) {
+    if ((paramInt2 >= paramInt1) && (paramInt1 >= 0) && (paramInt2 <= this.size))
+    {
+      if (paramInt2 == paramInt1) {
+        return true;
+      }
+      int m = paramInt2 - 1;
+      int k = paramInt1 / 32;
+      int n = m / 32;
+      int i = k;
+      while (i <= n)
+      {
+        int j = 31;
+        if (i > k) {
+          paramInt2 = 0;
+        } else {
+          paramInt2 = paramInt1 & 0x1F;
+        }
+        if (i >= n) {
+          j = 0x1F & m;
+        }
+        j = (2 << j) - (1 << paramInt2);
+        int i1 = this.bits[i];
+        if (paramBoolean) {
+          paramInt2 = j;
+        } else {
+          paramInt2 = 0;
+        }
+        if ((i1 & j) != paramInt2) {
+          return false;
+        }
+        i += 1;
+      }
       return true;
     }
-    int m = paramInt2 - 1;
-    int k = paramInt1 / 32;
-    int n = m / 32;
-    int i = k;
-    while (i <= n)
+    IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException();
+    for (;;)
     {
-      int j;
-      label81:
-      int i1;
-      if (i > k)
-      {
-        paramInt2 = 0;
-        if (i >= n) {
-          break label126;
-        }
-        j = 31;
-        j = (2 << j) - (1 << paramInt2);
-        i1 = this.bits[i];
-        if (!paramBoolean) {
-          break label136;
-        }
-      }
-      label136:
-      for (paramInt2 = j;; paramInt2 = 0)
-      {
-        if ((i1 & j) == paramInt2) {
-          break label141;
-        }
-        return false;
-        paramInt2 = paramInt1 & 0x1F;
-        break;
-        label126:
-        j = m & 0x1F;
-        break label81;
-      }
-      label141:
-      i += 1;
+      throw localIllegalArgumentException;
     }
-    return true;
   }
   
   public void reverse()
   {
-    int k = 1;
     int[] arrayOfInt = new int[this.bits.length];
     int j = (this.size - 1) / 32;
-    int m = j + 1;
+    int k = j + 1;
     int i = 0;
-    while (i < m)
+    while (i < k)
     {
       long l = this.bits[i];
       l = (l & 0x55555555) << 1 | l >> 1 & 0x55555555;
@@ -254,19 +270,21 @@ public final class BitArray
       arrayOfInt[(j - i)] = ((int)((l & 0xFFFF) << 16 | l >> 16 & 0xFFFF));
       i += 1;
     }
-    if (this.size != m * 32)
+    i = this.size;
+    j = k * 32;
+    if (i != j)
     {
-      int n = m * 32 - this.size;
-      j = arrayOfInt[0] >>> n;
-      i = k;
-      while (i < m)
+      int m = j - i;
+      j = arrayOfInt[0] >>> m;
+      i = 1;
+      while (i < k)
       {
-        k = arrayOfInt[i];
-        arrayOfInt[(i - 1)] = (j | k << 32 - n);
-        j = k >>> n;
+        int n = arrayOfInt[i];
+        arrayOfInt[(i - 1)] = (j | n << 32 - m);
+        j = n >>> m;
         i += 1;
       }
-      arrayOfInt[(m - 1)] = j;
+      arrayOfInt[(k - 1)] = j;
     }
     this.bits = arrayOfInt;
   }
@@ -275,7 +293,7 @@ public final class BitArray
   {
     int[] arrayOfInt = this.bits;
     int i = paramInt / 32;
-    arrayOfInt[i] |= 1 << (paramInt & 0x1F);
+    arrayOfInt[i] = (1 << (paramInt & 0x1F) | arrayOfInt[i]);
   }
   
   public void setBulk(int paramInt1, int paramInt2)
@@ -285,40 +303,37 @@ public final class BitArray
   
   public void setRange(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 < paramInt1) || (paramInt1 < 0) || (paramInt2 > this.size)) {
-      throw new IllegalArgumentException();
-    }
-    if (paramInt2 == paramInt1) {
+    if ((paramInt2 >= paramInt1) && (paramInt1 >= 0) && (paramInt2 <= this.size))
+    {
+      if (paramInt2 == paramInt1) {
+        return;
+      }
+      int m = paramInt2 - 1;
+      int k = paramInt1 / 32;
+      int n = m / 32;
+      paramInt2 = k;
+      while (paramInt2 <= n)
+      {
+        int j = 31;
+        int i;
+        if (paramInt2 > k) {
+          i = 0;
+        } else {
+          i = paramInt1 & 0x1F;
+        }
+        if (paramInt2 >= n) {
+          j = 0x1F & m;
+        }
+        localObject = this.bits;
+        localObject[paramInt2] = ((2 << j) - (1 << i) | localObject[paramInt2]);
+        paramInt2 += 1;
+      }
       return;
     }
-    int m = paramInt2 - 1;
-    int k = paramInt1 / 32;
-    int n = m / 32;
-    paramInt2 = k;
-    label52:
-    int i;
-    if (paramInt2 <= n)
+    Object localObject = new IllegalArgumentException();
+    for (;;)
     {
-      if (paramInt2 <= k) {
-        break label106;
-      }
-      i = 0;
-      label66:
-      if (paramInt2 >= n) {
-        break label114;
-      }
-    }
-    label106:
-    label114:
-    for (int j = 31;; j = m & 0x1F)
-    {
-      int[] arrayOfInt = this.bits;
-      arrayOfInt[paramInt2] = ((2 << j) - (1 << i) | arrayOfInt[paramInt2]);
-      paramInt2 += 1;
-      break label52;
-      break;
-      i = paramInt1 & 0x1F;
-      break label66;
+      throw ((Throwable)localObject);
     }
   }
   
@@ -345,41 +360,52 @@ public final class BitArray
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(this.size + this.size / 8 + 1);
-    int i = 0;
-    if (i < this.size)
+    int i = this.size;
+    StringBuilder localStringBuilder = new StringBuilder(i + i / 8 + 1);
+    i = 0;
+    while (i < this.size)
     {
       if ((i & 0x7) == 0) {
         localStringBuilder.append(' ');
       }
-      if (get(i)) {}
-      for (char c = 'X';; c = '.')
-      {
-        localStringBuilder.append(c);
-        i += 1;
-        break;
+      char c;
+      if (get(i)) {
+        c = 'X';
+      } else {
+        c = '.';
       }
+      localStringBuilder.append(c);
+      i += 1;
     }
     return localStringBuilder.toString();
   }
   
   public void xor(BitArray paramBitArray)
   {
-    if (this.size != paramBitArray.size) {
-      throw new IllegalArgumentException("Sizes don't match");
-    }
-    int i = 0;
-    while (i < this.bits.length)
+    if (this.size == paramBitArray.size)
     {
-      int[] arrayOfInt = this.bits;
-      arrayOfInt[i] ^= paramBitArray.bits[i];
-      i += 1;
+      int i = 0;
+      for (;;)
+      {
+        int[] arrayOfInt = this.bits;
+        if (i >= arrayOfInt.length) {
+          break;
+        }
+        arrayOfInt[i] ^= paramBitArray.bits[i];
+        i += 1;
+      }
+      return;
+    }
+    paramBitArray = new IllegalArgumentException("Sizes don't match");
+    for (;;)
+    {
+      throw paramBitArray;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.common.BitArray
  * JD-Core Version:    0.7.0.1
  */

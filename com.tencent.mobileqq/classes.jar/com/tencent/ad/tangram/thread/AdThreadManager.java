@@ -26,8 +26,9 @@ public enum AdThreadManager
   
   private AdThreadManagerAdapter getAdapter()
   {
-    if (this.adapter != null) {
-      return (AdThreadManagerAdapter)this.adapter.get();
+    WeakReference localWeakReference = this.adapter;
+    if (localWeakReference != null) {
+      return (AdThreadManagerAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -65,7 +66,7 @@ public enum AdThreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.thread.AdThreadManager
  * JD-Core Version:    0.7.0.1
  */

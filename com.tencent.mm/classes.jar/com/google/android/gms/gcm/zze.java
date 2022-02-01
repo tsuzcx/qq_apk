@@ -11,24 +11,24 @@ final class zze
   
   zze(GcmTaskService paramGcmTaskService)
   {
-    AppMethodBeat.i(70027);
+    AppMethodBeat.i(3703);
     this.zzx = new AtomicInteger(1);
-    AppMethodBeat.o(70027);
+    AppMethodBeat.o(3703);
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(70028);
+    AppMethodBeat.i(3704);
     int i = this.zzx.getAndIncrement();
     paramRunnable = new Thread(paramRunnable, 20 + "gcm-task#" + i);
     paramRunnable.setPriority(4);
-    AppMethodBeat.o(70028);
+    AppMethodBeat.o(3704);
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.gcm.zze
  * JD-Core Version:    0.7.0.1
  */

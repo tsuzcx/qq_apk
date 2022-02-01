@@ -18,10 +18,12 @@ abstract class SafeIterableMap$ListIterator<K, V>
   
   private SafeIterableMap.Entry<K, V> nextNode()
   {
-    if ((this.mNext == this.mExpectedEnd) || (this.mExpectedEnd == null)) {
-      return null;
+    SafeIterableMap.Entry localEntry1 = this.mNext;
+    SafeIterableMap.Entry localEntry2 = this.mExpectedEnd;
+    if ((localEntry1 != localEntry2) && (localEntry2 != null)) {
+      return forward(localEntry1);
     }
-    return forward(this.mNext);
+    return null;
   }
   
   abstract SafeIterableMap.Entry<K, V> backward(SafeIterableMap.Entry<K, V> paramEntry);
@@ -47,8 +49,9 @@ abstract class SafeIterableMap$ListIterator<K, V>
       this.mNext = null;
       this.mExpectedEnd = null;
     }
-    if (this.mExpectedEnd == paramEntry) {
-      this.mExpectedEnd = backward(this.mExpectedEnd);
+    SafeIterableMap.Entry localEntry = this.mExpectedEnd;
+    if (localEntry == paramEntry) {
+      this.mExpectedEnd = backward(localEntry);
     }
     if (this.mNext == paramEntry) {
       this.mNext = nextNode();
@@ -57,7 +60,7 @@ abstract class SafeIterableMap$ListIterator<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.core.internal.SafeIterableMap.ListIterator
  * JD-Core Version:    0.7.0.1
  */

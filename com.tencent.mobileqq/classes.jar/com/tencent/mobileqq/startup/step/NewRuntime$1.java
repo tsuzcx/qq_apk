@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import apfv;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper;
 
 class NewRuntime$1
   implements Runnable
@@ -9,12 +9,12 @@ class NewRuntime$1
   
   public void run()
   {
-    apfv.a(false);
+    NativeMonitorConfigHelper.startToHookAfterConfigGet(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.NewRuntime.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,18 @@ import com.google.android.gms.wearable.c;
 final class bi
   implements c
 {
-  private final String TS;
-  private final c TT;
+  private final String VH;
+  private final c VI;
   
   bi(String paramString, c paramc)
   {
-    this.TS = ((String)d.u(paramString));
-    this.TT = ((c)d.u(paramc));
+    this.VH = ((String)d.D(paramString));
+    this.VI = ((c)d.D(paramc));
   }
   
   public final void a(Channel paramChannel, int paramInt1, int paramInt2)
   {
-    this.TT.a(paramChannel, paramInt1, paramInt2);
+    this.VI.a(paramChannel, paramInt1, paramInt2);
   }
   
   public final boolean equals(Object paramObject)
@@ -31,13 +31,13 @@ final class bi
         return false;
       }
       paramObject = (bi)paramObject;
-    } while ((this.TT.equals(paramObject.TT)) && (this.TS.equals(paramObject.TS)));
+    } while ((this.VI.equals(paramObject.VI)) && (this.VH.equals(paramObject.VH)));
     return false;
   }
   
   public final int hashCode()
   {
-    return this.TS.hashCode() * 31 + this.TT.hashCode();
+    return this.VH.hashCode() * 31 + this.VI.hashCode();
   }
 }
 

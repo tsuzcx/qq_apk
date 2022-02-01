@@ -8,19 +8,24 @@ final class c$1
 {
   c$1()
   {
-    AppMethodBeat.i(151634);
+    AppMethodBeat.i(152433);
     add("confirmDialog");
     add("openWebViewUseFastLoad");
     add("invokeMiniProgramAPI");
     add("handleMPPageAction");
+    add("handleVideoAction");
     add("startSearchItemDetailPage");
     add("configMpAdAttrs");
-    AppMethodBeat.o(151634);
+    add("saveWaid");
+    add("batchPreloadMiniProgram");
+    add("preloadLiteApp");
+    add("openLiteApp");
+    AppMethodBeat.o(152433);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.1
  * JD-Core Version:    0.7.0.1
  */

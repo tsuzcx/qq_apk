@@ -9,16 +9,15 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
-import tnw;
 
 public class RotationSeekBar
   extends SeekBar
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private tnw jdField_a_of_type_Tnw;
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  private static float d = -1.0F;
+  private RotationSeekBar.OnRotationChangeListener a;
+  private float[] b = null;
+  private Paint c = null;
+  private int e;
   
   public RotationSeekBar(Context paramContext)
   {
@@ -38,93 +37,92 @@ public class RotationSeekBar
     a();
   }
   
-  private float a()
-  {
-    if (jdField_a_of_type_Float == -1.0F) {
-      jdField_a_of_type_Float = getContext().getResources().getDisplayMetrics().density;
-    }
-    return jdField_a_of_type_Float;
-  }
-  
   private MotionEvent a(MotionEvent paramMotionEvent)
   {
-    int i;
-    int m;
-    int k;
-    int n;
-    int j;
     if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 2))
     {
       int[] arrayOfInt = new int[2];
       getLocationOnScreen(arrayOfInt);
-      i = arrayOfInt[0];
-      m = arrayOfInt[1];
-      k = (int)paramMotionEvent.getRawX();
-      n = (int)paramMotionEvent.getRawY();
-      switch (this.jdField_a_of_type_Int)
+      int k = arrayOfInt[0];
+      int i = arrayOfInt[1];
+      int m = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      int n = this.e;
+      if (n != 90)
       {
-      default: 
-        j = (int)paramMotionEvent.getX();
-        i = (int)paramMotionEvent.getY();
+        if (n != 180)
+        {
+          if (n != 270)
+          {
+            i = (int)paramMotionEvent.getX();
+            j = (int)paramMotionEvent.getY();
+          }
+          else
+          {
+            i -= j;
+            j = m - k;
+          }
+        }
+        else
+        {
+          j = i - j;
+          i = k - m;
+        }
       }
+      else
+      {
+        i = j - i;
+        j = k - m;
+      }
+      paramMotionEvent.setLocation(i, j);
     }
-    for (;;)
-    {
-      paramMotionEvent.setLocation(j, i);
-      return paramMotionEvent;
-      j = n - m;
-      i -= k;
-      continue;
-      j = i - k;
-      i = m - n;
-      continue;
-      j = m - n;
-      i = k - i;
+    return paramMotionEvent;
+  }
+  
+  private float getDensity()
+  {
+    if (d == -1.0F) {
+      d = getContext().getResources().getDisplayMetrics().density;
     }
+    return d;
   }
   
   protected int a(float paramFloat)
   {
-    a();
-    return Math.round(jdField_a_of_type_Float * paramFloat);
+    getDensity();
+    return Math.round(paramFloat * d);
   }
   
   void a() {}
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Tnw != null)) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Tnw.a();
-    }
-    MotionEvent localMotionEvent;
-    if (this.jdField_a_of_type_Int == 0)
+    if (paramMotionEvent.getAction() == 0)
     {
-      localMotionEvent = paramMotionEvent;
-      if (this.jdField_a_of_type_Int == 360) {}
+      RotationSeekBar.OnRotationChangeListener localOnRotationChangeListener = this.a;
+      if (localOnRotationChangeListener != null) {
+        this.e = localOnRotationChangeListener.a();
+      }
     }
-    else
-    {
-      localMotionEvent = a(paramMotionEvent);
-    }
-    return super.dispatchTouchEvent(localMotionEvent);
+    return super.dispatchTouchEvent(a(paramMotionEvent));
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_ArrayOfFloat != null)
+    if (this.b != null)
     {
       int j = getMeasuredWidth();
       int i = getMeasuredHeight();
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.c == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3355444);
+        this.c = new Paint();
+        this.c.setStyle(Paint.Style.FILL);
+        this.c.setColor(-3355444);
       }
       int k = a(2.0F);
       int m = i / 2;
-      float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      float[] arrayOfFloat = this.b;
       int n = arrayOfFloat.length;
       i = 0;
       while (i < n)
@@ -134,7 +132,7 @@ public class RotationSeekBar
         {
           paramCanvas.save();
           paramCanvas.translate(f * j, m);
-          paramCanvas.drawCircle(0.0F, 0.0F, k, this.jdField_a_of_type_AndroidGraphicsPaint);
+          paramCanvas.drawCircle(0.0F, 0.0F, k, this.c);
           paramCanvas.restore();
         }
         i += 1;
@@ -147,14 +145,14 @@ public class RotationSeekBar
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnRotationChangeListener(tnw paramtnw)
+  public void setOnRotationChangeListener(RotationSeekBar.OnRotationChangeListener paramOnRotationChangeListener)
   {
-    this.jdField_a_of_type_Tnw = paramtnw;
+    this.a = paramOnRotationChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar
  * JD-Core Version:    0.7.0.1
  */

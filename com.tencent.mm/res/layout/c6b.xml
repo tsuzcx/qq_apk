@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLTextureView android:id="@id/k2i" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/k2a" android:layout_width="@dimen/a42" android:layout_height="@dimen/a42" android:layout_marginTop="@dimen/cg" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/k2_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/k2h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/k2r" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.75" />
+        <com.tencent.mm.sticker.ui.view.CaptureStickerHint android:gravity="center" android:orientation="vertical" android:id="@id/k2k" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView android:id="@id/k2q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View android:background="@drawable/ava" android:layout_width="fill_parent" android:layout_height="@dimen/cg" app:layout_constraintTop_toTopOf="hr_" />
+    <View android:background="@drawable/ava" android:layout_width="fill_parent" android:layout_height="@dimen/cg" android:rotation="180.0" app:layout_constraintBottom_toBottomOf="hr_" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/k2t" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.5" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/k2s" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="40.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/k2e" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/k2s" app:layout_constraintEnd_toEndOf="@id/k2t" app:layout_constraintStart_toStartOf="hr_">
+        <ImageView android:id="@id/k2f" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_filled_change_size" />
+        <TextView android:textColor="@color/BW_100" android:id="@id/k2g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/jn3" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/k2b" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/k2s" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="@id/k2t">
+        <ImageView android:id="@id/k2c" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_filled_camera_switch" />
+        <TextView android:textColor="@color/BW_100" android:id="@id/k2d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/jn2" />
+    </LinearLayout>
+</merge>

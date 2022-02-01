@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/eyb" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:id="@id/eyc" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <RelativeLayout android:id="@id/eyd" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.plugin.story.ui.view.CommentsContainer android:id="@id/eye" android:paddingBottom="80.0dip" android:clipToPadding="false" android:layout_width="272.0dip" android:layout_height="fill_parent" android:layout_marginTop="80.0dip" android:layout_marginStart="32.0dip" android:layout_marginEnd="32.0dip" />
-            <FrameLayout android:id="@id/eyf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/eyg" android:background="@drawable/a3q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginBottom="32.0dip" android:layout_marginStart="32.0dip">
-                    <com.tencent.mm.plugin.story.ui.view.StoryCommentBubbleView android:id="@id/eyh" android:padding="10.0dip" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/aqx" android:layout_marginStart="6.0dip" />
-                    <View android:background="@color/a6q" android:layout_width="0.5dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="2.0dip" android:layout_marginEnd="2.0dip" />
-                    <com.tencent.mm.plugin.story.ui.view.StoryCommentBubbleView android:id="@id/eyi" android:padding="10.0dip" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginEnd="6.0dip" />
-                </LinearLayout>
-                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/eyj" android:background="@drawable/a3q" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginBottom="32.0dip" android:layout_marginStart="32.0dip">
-                    <com.tencent.mm.plugin.story.ui.view.StoryCommentBubbleView android:id="@id/eyk" android:padding="10.0dip" android:layout_width="48.0dip" android:layout_height="48.0dip" />
-                </LinearLayout>
-            </FrameLayout>
-            <TextView android:textSize="@dimen/na" android:textColor="@color/a6q" android:gravity="center" android:id="@id/eyl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="96.0dip" android:minWidth="112.0dip" android:text="@string/ex8" android:layout_alignParentBottom="true" android:alpha="0.0" android:layerType="software" android:layout_marginStart="16.0dip" android:layout_alignParentStart="true" />
-            <android.support.v7.widget.RecyclerView android:id="@id/eya" android:paddingBottom="16.0dip" android:fadingEdgeLength="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="80.0dip" android:layout_above="@id/eyf" android:requiresFadingEdge="vertical" android:layout_marginStart="32.0dip" android:layout_marginEnd="32.0dip" />
-        </RelativeLayout>
-    </RelativeLayout>
-</merge>
+<LinearLayout android:orientation="vertical" android:id="@id/eyf" android:background="@drawable/a9a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:minHeight="80.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/eye" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="20.0dip" android:textColor="@color/a7b" android:id="@id/eyc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@raw/icons_outlined_arrow" android:importantForAccessibility="no" app:iconColor="@color/FG_1" />
+    </LinearLayout>
+    <View android:id="@id/eyd" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="20.0dip" />
+</LinearLayout>

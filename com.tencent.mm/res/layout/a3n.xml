@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/pz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.tab.GameTabWidget android:id="@id/c3y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.plugin.game.ui.GameIndexListView android:id="@id/c4n" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/c3y" />
+    <com.tencent.mm.plugin.brandservice.ui.EnterpriseBizContactListView android:id="@id/ckd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:ellipsize="none" android:gravity="center" android:id="@id/ckf" android:padding="@dimen/i6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cb9" android:singleLine="false" android:layout_centerInParent="true" android:lineSpacingExtra="4.0dip" style="@style/m4" />
 </RelativeLayout>

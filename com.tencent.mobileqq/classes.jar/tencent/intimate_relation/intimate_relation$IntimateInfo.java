@@ -11,7 +11,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class intimate_relation$IntimateInfo
   extends MessageMicro<IntimateInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56, 64 }, new String[] { "lover", "ladybro", "buddy", "nick_name", "face_url", "is_del", "frd_uin", "modify_time" }, new Object[] { null, null, null, "", "", Boolean.valueOf(false), Long.valueOf(0L), Integer.valueOf(0) }, IntimateInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56, 64, 74 }, new String[] { "lover", "ladybro", "buddy", "nick_name", "face_url", "is_del", "frd_uin", "modify_time", "bestfriend" }, new Object[] { null, null, null, "", "", Boolean.valueOf(false), Long.valueOf(0L), Integer.valueOf(0), null }, IntimateInfo.class);
+  public intimate_relation.IntimateBestFriend bestfriend = new intimate_relation.IntimateBestFriend();
   public intimate_relation.IntimateBuddy buddy = new intimate_relation.IntimateBuddy();
   public final PBStringField face_url = PBField.initString("");
   public final PBUInt64Field frd_uin = PBField.initUInt64(0L);
@@ -23,7 +24,7 @@ public final class intimate_relation$IntimateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.intimate_relation.intimate_relation.IntimateInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e0a" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03036e" />
     <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e0b" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03036e" />
     <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e0c" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03036e" />
     <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e0d" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03036e" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e0e" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03036e" />
 </LinearLayout>

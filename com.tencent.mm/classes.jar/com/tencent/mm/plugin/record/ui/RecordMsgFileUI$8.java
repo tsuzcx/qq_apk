@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class RecordMsgFileUI$8
   implements View.OnClickListener
@@ -13,11 +15,15 @@ final class RecordMsgFileUI$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(24260);
+    AppMethodBeat.i(27903);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/record/ui/RecordMsgFileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     paramView = new Intent();
-    paramView.putExtra("rawUrl", this.mAj);
-    d.b(this.pZN.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
-    AppMethodBeat.o(24260);
+    paramView.putExtra("rawUrl", this.Alb);
+    c.b(this.NBY.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    a.a(this, "com/tencent/mm/plugin/record/ui/RecordMsgFileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(27903);
   }
 }
 

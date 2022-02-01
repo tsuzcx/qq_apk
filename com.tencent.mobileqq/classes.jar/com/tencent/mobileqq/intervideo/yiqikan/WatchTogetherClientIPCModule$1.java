@@ -1,42 +1,46 @@
 package com.tencent.mobileqq.intervideo.yiqikan;
 
-import atfs;
-import atfx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
-public class WatchTogetherClientIPCModule$1
+class WatchTogetherClientIPCModule$1
   implements Runnable
 {
-  public WatchTogetherClientIPCModule$1(atfx paramatfx, String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData) {}
+  WatchTogetherClientIPCModule$1(WatchTogetherClientIPCModule paramWatchTogetherClientIPCModule, String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData) {}
   
   public void run()
   {
-    boolean bool = true;
-    if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
-      if (atfs.a().a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData) == 0) {
-        if (QLog.isColorLevel()) {
-          QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule show=" + bool);
-        }
+    boolean bool2 = "ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.a);
+    boolean bool1 = true;
+    if (bool2)
+    {
+      if (WatchFloatingWindowController.c().a(BaseApplicationImpl.getContext(), this.b) != 0) {
+        bool1 = false;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("call TogetherBusinessIPCModule show=");
+        localStringBuilder.append(bool1);
+        QLog.d("WatchTogetherClientIPCModule", 2, localStringBuilder.toString());
       }
     }
-    do
+    else
     {
-      return;
-      bool = false;
-      break;
-      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
+      if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.a))
       {
-        atfs.a().a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType(), true);
+        WatchFloatingWindowController.c().a(this.b.getCurUin(), this.b.getCurType(), true);
         return;
       }
-    } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(this.jdField_a_of_type_JavaLangString));
-    atfs.a().b();
+      if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(this.a)) {
+        WatchFloatingWindowController.c().b();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

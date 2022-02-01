@@ -7,14 +7,14 @@ import com.google.android.gms.common.api.k;
 
 public final class cp
 {
-  public static final Scope GC = new Scope("profile");
-  public static final Scope GD = new Scope("email");
-  public static final k<de> Qs = new k();
-  public static final k<de> Qt = new k();
-  public static final f<de, cs> Qu = new f() {};
-  static final f<de, cq> Qv = new f() {};
-  public static final a<cs> Qw = new a("SignIn.API", Qu, Qs);
-  public static final a<cq> Qx = new a("SignIn.INTERNAL_API", Qv, Qt);
+  public static final Scope Ir = new Scope("profile");
+  public static final Scope Is = new Scope("email");
+  public static final k<de> Sh = new k();
+  public static final k<de> Si = new k();
+  public static final f<de, cs> Sj = new f() {};
+  static final f<de, cq> Sk = new f() {};
+  public static final a<cs> Sl = new a("SignIn.API", Sj, Sh);
+  public static final a<cq> Sm = new a("SignIn.INTERNAL_API", Sk, Si);
 }
 
 

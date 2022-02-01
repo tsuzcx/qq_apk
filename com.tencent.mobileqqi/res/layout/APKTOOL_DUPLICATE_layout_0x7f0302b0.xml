@@ -2,6 +2,6 @@
 <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0209fc" android:layout_width="fill_parent" android:layout_height="120.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.qzone.widget.CommonLine android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a010f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b3d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="20.0dip" android:text="机型识别错误上报" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b3e" android:layout_width="wrap_content" android:layout_height="2.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080b3d" />
+    <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a010f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b3c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="20.0dip" android:text="机型识别错误上报" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b3d" android:layout_width="wrap_content" android:layout_height="2.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f080b3c" />
 </RelativeLayout>

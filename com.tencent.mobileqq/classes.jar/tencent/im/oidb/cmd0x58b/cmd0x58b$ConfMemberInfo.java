@@ -22,14 +22,15 @@ public final class cmd0x58b$ConfMemberInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 58 }, new String[] { "uint64_uin", "uint32_join_time", "uint32_flag", "uint32_read_msg_seq", "bytes_member_interemark", "uint32_interemark_source", "bytes_conf_name_card" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, ConfMemberInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 58 }, new String[] { "uint64_uin", "uint32_join_time", "uint32_flag", "uint32_read_msg_seq", "bytes_member_interemark", "uint32_interemark_source", "bytes_conf_name_card" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localByteStringMicro1, localInteger, localByteStringMicro2 }, ConfMemberInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x58b.cmd0x58b.ConfMemberInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import bdoo;
-import bnle;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.util.LiuHaiUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class VConsoleDragView
@@ -17,7 +17,7 @@ public class VConsoleDragView
 {
   private int bottom;
   private int height;
-  private boolean isDrag;
+  private boolean isDrag = false;
   private int lastX;
   private int lastY;
   private int left;
@@ -51,15 +51,16 @@ public class VConsoleDragView
   
   private void initScreenConfig()
   {
-    this.mScreenWidth = bdoo.a();
-    int j = bdoo.b();
-    if (bnle.b()) {}
-    for (int i = ImmersiveUtils.getStatusBarHeight(getContext());; i = 0)
-    {
-      this.mScreenHeight = (i + j);
-      this.mDm = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-      return;
+    this.mScreenWidth = ViewUtils.getScreenWidth();
+    int j = ViewUtils.getScreenHeight();
+    int i;
+    if (LiuHaiUtils.b()) {
+      i = ImmersiveUtils.getStatusBarHeight(getContext());
+    } else {
+      i = 0;
     }
+    this.mScreenHeight = (j + i);
+    this.mDm = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
   }
   
   public int getStatusBarHeight()
@@ -86,33 +87,50 @@ public class VConsoleDragView
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
     this.startX = ((int)paramMotionEvent.getRawX());
     this.startY = ((int)paramMotionEvent.getRawY());
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    default: 
-      return true;
-    case 0: 
-      this.lastX = this.startX;
-      this.lastY = this.startY;
-      return true;
-    case 2: 
-      int i = this.startX - this.lastX;
-      int j = this.startY - this.lastY;
-      this.left = (getLeft() + i);
-      this.top = (getTop() + j);
-      this.right = (i + getRight());
-      this.bottom = (getBottom() + j);
-      if (this.left < 0)
+      if (i != 1)
       {
-        this.left = 0;
-        this.right = (this.left + this.width);
-        if (this.top >= 0) {
-          break label348;
+        if (i != 2) {
+          return true;
         }
-        this.top = 0;
-        this.bottom = (this.top + this.height);
-      }
-      for (;;)
-      {
+        i = this.startX - this.lastX;
+        int j = this.startY - this.lastY;
+        this.left = (getLeft() + i);
+        this.top = (getTop() + j);
+        this.right = (getRight() + i);
+        this.bottom = (getBottom() + j);
+        if (this.left < 0)
+        {
+          this.left = 0;
+          this.right = (this.left + this.width);
+        }
+        else
+        {
+          i = this.right;
+          j = this.mScreenWidth;
+          if (i > j)
+          {
+            this.right = j;
+            this.left = (this.right - this.width);
+          }
+        }
+        if (this.top < 0)
+        {
+          this.top = 0;
+          this.bottom = (this.top + this.height);
+        }
+        else
+        {
+          i = this.bottom;
+          j = this.mScreenHeight;
+          if (i > j)
+          {
+            this.bottom = j;
+            this.top = (j - this.height);
+          }
+        }
         localLayoutParams.setMargins(this.left, this.top, this.mScreenWidth - this.right, this.mScreenHeight - this.bottom);
         setLayoutParams(localLayoutParams);
         if ((!this.isDrag) && ((Math.abs(this.startX - this.lastX) > this.mDm.density * 2.0F) || (Math.abs(this.startY - this.lastY) > this.mDm.density * 2.0F))) {
@@ -121,49 +139,46 @@ public class VConsoleDragView
         this.lastX = this.startX;
         this.lastY = this.startY;
         return true;
-        if (this.right <= this.mScreenWidth) {
-          break;
-        }
-        this.right = this.mScreenWidth;
-        this.left = (this.right - this.width);
-        break;
-        label348:
-        if (this.bottom > this.mScreenHeight)
-        {
-          this.bottom = this.mScreenHeight;
-          this.top = (this.mScreenHeight - this.height);
+      }
+      if (!this.isDrag)
+      {
+        paramMotionEvent = this.mListener;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.onVConsoleMoveUp();
         }
       }
+      this.isDrag = false;
+      return true;
     }
-    if ((!this.isDrag) && (this.mListener != null)) {
-      this.mListener.onVConsoleMoveUp();
-    }
-    this.isDrag = false;
+    this.lastX = this.startX;
+    this.lastY = this.startY;
     return true;
   }
   
   public void requestLandscapeLayout()
   {
-    int i = bdoo.a();
-    int k = bdoo.b();
+    int i = ViewUtils.getScreenWidth();
+    int k = ViewUtils.getScreenHeight();
     if (i > k)
     {
       j = i;
-      this.mScreenWidth = j;
-      j = i;
-      if (i > k) {
-        j = k;
-      }
-      this.mScreenHeight = j;
-      this.mDm = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-      return;
     }
-    if (bnle.b()) {}
-    for (int j = ImmersiveUtils.getStatusBarHeight(getContext());; j = 0)
+    else
     {
+      if (LiuHaiUtils.b()) {
+        j = ImmersiveUtils.getStatusBarHeight(getContext());
+      } else {
+        j = 0;
+      }
       j += k;
-      break;
     }
+    this.mScreenWidth = j;
+    int j = i;
+    if (i > k) {
+      j = k;
+    }
+    this.mScreenHeight = j;
+    this.mDm = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
   }
   
   public void setListener(VConsoleDragView.Listener paramListener)
@@ -173,7 +188,7 @@ public class VConsoleDragView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.VConsoleDragView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ public class zzbe
   extends zza
 {
   public static final Parcelable.Creator<zzbe> CREATOR = new y();
-  public final boolean Tr;
-  public final boolean Ts;
+  public final boolean Vg;
+  public final boolean Vh;
   public final int statusCode;
   
   public zzbe(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.statusCode = paramInt;
-    this.Tr = paramBoolean1;
-    this.Ts = paramBoolean2;
+    this.Vg = paramBoolean1;
+    this.Vh = paramBoolean2;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

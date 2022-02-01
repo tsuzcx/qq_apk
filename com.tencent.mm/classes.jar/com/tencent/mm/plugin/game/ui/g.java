@@ -7,13 +7,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.game.h.d;
+import com.tencent.mm.plugin.game.h.f;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.plugin.game.model.k;
+import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -23,68 +25,68 @@ public final class g
   public g(Context paramContext)
   {
     super(paramContext);
-    this.nAO = 2130969721;
+    this.ISw = h.f.HYP;
   }
   
   protected final void a(c paramc, m.b paramb) {}
   
   protected final void a(c paramc, m.b paramb, int paramInt)
   {
-    AppMethodBeat.i(111760);
-    paramb.nAZ.setText(paramc.position);
-    Bitmap localBitmap = Qp(paramc.field_appId);
+    AppMethodBeat.i(41927);
+    paramb.ISH.setText(paramc.position);
+    Bitmap localBitmap = aHb(paramc.field_appId);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      paramb.nBa.setImageBitmap(localBitmap);
-      paramb.nAb.setText(paramc.field_appName);
-      if (!bo.isNullOrNil(paramc.nlU)) {
-        break label235;
+      paramb.ISI.setImageBitmap(localBitmap);
+      paramb.IRM.setText(paramc.field_appName);
+      if (!Util.isNullOrNil(paramc.ICg)) {
+        break label236;
       }
-      paramb.nBd.setVisibility(8);
+      paramb.ISL.setVisibility(8);
       label91:
-      if (bo.es(paramc.nme)) {
-        break label257;
+      if (Util.isNullOrNil(paramc.ICp)) {
+        break label258;
       }
-      paramb.nBb.setVisibility(0);
-      paramb.nBb.setText((CharSequence)paramc.nme.get(0));
+      paramb.ISJ.setVisibility(0);
+      paramb.ISJ.setText((CharSequence)paramc.ICp.get(0));
     }
     for (;;)
     {
-      paramb.nBf.setTextSize(this.nxr);
-      paramb.nBe.setOnClickListener(this.nyh);
-      paramb.nBf.setOnClickListener(this.nyh);
-      paramb.nBe.setTag(paramc);
-      paramb.nBf.setTag(paramc);
-      this.nxw.a(paramb.nBf, paramb.nBe, paramc, (k)this.nAT.get(paramc.field_appId));
-      paramb.nBg.setData(paramc.nmc);
-      AppMethodBeat.o(111760);
+      paramb.ISN.setTextSize(this.IPf);
+      paramb.ISM.setOnClickListener(this.IPV);
+      paramb.ISN.setOnClickListener(this.IPV);
+      paramb.ISM.setTag(paramc);
+      paramb.ISN.setTag(paramc);
+      this.IPk.a(paramb.ISN, paramb.ISM, paramc, (l)this.ISB.get(paramc.field_appId));
+      paramb.ISO.setData(paramc.ICn);
+      AppMethodBeat.o(41927);
       return;
-      paramb.nBa.setImageResource(2130838963);
+      paramb.ISI.setImageResource(h.d.HTo);
       break;
-      label235:
-      paramb.nBd.setVisibility(0);
-      paramb.nBd.setText(paramc.nlU);
+      label236:
+      paramb.ISL.setVisibility(0);
+      paramb.ISL.setText(paramc.ICg);
       break label91;
-      label257:
-      if (!bo.isNullOrNil(paramc.nmh))
+      label258:
+      if (!Util.isNullOrNil(paramc.ICs))
       {
-        paramb.nBb.setVisibility(0);
-        paramb.nBb.setText(paramc.nmh);
+        paramb.ISJ.setVisibility(0);
+        paramb.ISJ.setText(paramc.ICs);
       }
       try
       {
-        paramb.nBb.setBackgroundDrawable(e.dR(Color.parseColor(paramc.nmi), a.fromDPToPix(this.mContext, 10)));
+        paramb.ISJ.setBackgroundDrawable(e.gx(Color.parseColor(paramc.ICt), a.fromDPToPix(this.mContext, 10)));
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        ab.e("MicroMsg.GameCenterListAdapter", localIllegalArgumentException.getMessage());
-        paramb.nBb.setVisibility(8);
+        Log.e("MicroMsg.GameCenterListAdapter", localIllegalArgumentException.getMessage());
+        paramb.ISJ.setVisibility(8);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ab.e("MicroMsg.GameCenterListAdapter", localException.getMessage());
+          Log.e("MicroMsg.GameCenterListAdapter", localException.getMessage());
         }
       }
     }
@@ -92,7 +94,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
-import arsm;
-import arsn;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 
 class FilePreviewActivity$13
   implements Runnable
@@ -12,26 +12,28 @@ class FilePreviewActivity$13
   
   public void run()
   {
-    if (!this.this$0.d) {
+    if (!this.this$0.I) {
       return;
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
-    if (this.this$0.jdField_a_of_type_Arsm == null) {
-      this.this$0.jdField_a_of_type_Arsm = new arsm(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.this$0.o.getHeight(), 0.0F);
+    if (this.this$0.N == null)
+    {
+      localObject = this.this$0;
+      ((FilePreviewActivity)localObject).N = new FilePreviewAnimQueue(((FilePreviewActivity)localObject).o);
     }
-    arsn localarsn = new arsn();
-    localarsn.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localarsn.jdField_a_of_type_Boolean = true;
-    localarsn.jdField_a_of_type_Int = arsm.b;
-    localarsn.b = 250;
-    this.this$0.jdField_a_of_type_Arsm.a(localarsn);
-    this.this$0.jdField_a_of_type_Arsm.a();
-    this.this$0.d = false;
+    Object localObject = new FilePreviewAnimQueue.FilePreviewAnim();
+    ((FilePreviewAnimQueue.FilePreviewAnim)localObject).a = localTranslateAnimation;
+    ((FilePreviewAnimQueue.FilePreviewAnim)localObject).c = true;
+    ((FilePreviewAnimQueue.FilePreviewAnim)localObject).b = FilePreviewAnimQueue.b;
+    ((FilePreviewAnimQueue.FilePreviewAnim)localObject).d = 250;
+    this.this$0.N.a((FilePreviewAnimQueue.FilePreviewAnim)localObject);
+    this.this$0.N.a();
+    this.this$0.I = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.13
  * JD-Core Version:    0.7.0.1
  */

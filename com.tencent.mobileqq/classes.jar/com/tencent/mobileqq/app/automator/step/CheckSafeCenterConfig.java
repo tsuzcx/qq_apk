@@ -7,23 +7,19 @@ import com.tencent.mqp.app.sec.ScConfigManager;
 public class CheckSafeCenterConfig
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    if (this.b == 97) {
-      ScConfigManager.a().a(this.a.app, "SecCenterConfig");
+    if (this.mStepId == 97) {
+      ScConfigManager.a().a(this.mAutomator.k, "SecCenterConfig");
+    } else if (this.mStepId == 98) {
+      ScConfigManager.a().a(this.mAutomator.k, "SecCenterConfig", true);
     }
-    for (;;)
-    {
-      return 7;
-      if (this.b == 98) {
-        ScConfigManager.a().a(this.a.app, "SecCenterConfig", true);
-      }
-    }
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckSafeCenterConfig
  * JD-Core Version:    0.7.0.1
  */

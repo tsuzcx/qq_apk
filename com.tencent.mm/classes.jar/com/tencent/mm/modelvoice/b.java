@@ -2,11 +2,13 @@ package com.tencent.mm.modelvoice;
 
 public abstract interface b
 {
-  public abstract g cJ(int paramInt1, int paramInt2);
+  public abstract void bOT();
+  
+  public abstract g eQ(int paramInt1, int paramInt2);
   
   public abstract int getFormat();
   
-  public abstract int write(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract int y(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

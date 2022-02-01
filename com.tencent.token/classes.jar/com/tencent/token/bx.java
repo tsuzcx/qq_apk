@@ -1,33 +1,8 @@
 package com.tencent.token;
 
-import java.net.Socket;
-import java.util.ArrayList;
-
-public abstract interface bx
+public abstract class bx
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(ArrayList paramArrayList);
-  
-  public abstract void a(ArrayList paramArrayList, boolean paramBoolean);
-  
-  public abstract void a(int[] paramArrayOfInt);
-  
-  public abstract int b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract Socket c();
-  
-  public abstract int d();
-  
-  public abstract int e();
-  
-  public abstract bg f();
+  protected void a() {}
 }
 
 

@@ -3,15 +3,16 @@ package com.tencent.mm.plugin.recharge.a;
 import android.content.Context;
 import android.telephony.PhoneNumberUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.y;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,75 +21,144 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class a
-  implements at
+  implements be
 {
-  private List<com.tencent.mm.plugin.recharge.model.a> pUG = null;
+  private List<com.tencent.mm.plugin.recharge.model.a> NwD = null;
   
-  public static a cfm()
+  public static a gFE()
   {
-    AppMethodBeat.i(44176);
-    a locala = (a)q.S(a.class);
-    AppMethodBeat.o(44176);
+    AppMethodBeat.i(67084);
+    a locala = (a)y.aL(a.class);
+    AppMethodBeat.o(67084);
     return locala;
   }
   
-  public static com.tencent.mm.plugin.recharge.model.a cfo()
+  public static com.tencent.mm.plugin.recharge.model.a gFG()
   {
-    AppMethodBeat.i(44180);
-    Object localObject = (String)g.RL().Ru().get(6, null);
-    if (!bo.isNullOrNil((String)localObject))
+    AppMethodBeat.i(67088);
+    Object localObject = (String)h.baE().ban().d(6, null);
+    if (!Util.isNullOrNil((String)localObject))
     {
-      localObject = new com.tencent.mm.plugin.recharge.model.a((String)localObject, ah.getContext().getString(2131305571), 3);
-      AppMethodBeat.o(44180);
+      localObject = new com.tencent.mm.plugin.recharge.model.a((String)localObject, MMApplicationContext.getContext().getString(a.i.wallet_recharge_me), 3);
+      AppMethodBeat.o(67088);
       return localObject;
     }
-    AppMethodBeat.o(44180);
+    AppMethodBeat.o(67088);
     return null;
   }
   
   public final boolean a(com.tencent.mm.plugin.recharge.model.a parama)
   {
-    AppMethodBeat.i(44177);
-    if ((parama != null) && (PhoneNumberUtils.isGlobalPhoneNumber(parama.pUJ)))
+    AppMethodBeat.i(67085);
+    if ((parama != null) && (PhoneNumberUtils.isGlobalPhoneNumber(parama.NwG)))
     {
-      List localList = cfn();
+      List localList = gFF();
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.recharge.model.a locala = (com.tencent.mm.plugin.recharge.model.a)localIterator.next();
-        if (parama.pUJ.equals(locala.pUJ))
+        if (parama.NwG.equals(locala.NwG))
         {
-          if (bo.isNullOrNil(parama.name)) {
+          if (Util.isNullOrNil(parama.name)) {
             parama.name = locala.name;
           }
           localList.remove(locala);
         }
       }
       localList.add(0, parama);
-      cH(localList);
-      AppMethodBeat.o(44177);
+      jE(localList);
+      AppMethodBeat.o(67085);
       return true;
     }
-    AppMethodBeat.o(44177);
+    AppMethodBeat.o(67085);
     return false;
   }
   
-  public final void cH(List<com.tencent.mm.plugin.recharge.model.a> paramList)
+  public void clearPluginData(int paramInt) {}
+  
+  public final List<com.tencent.mm.plugin.recharge.model.a> gFF()
   {
-    AppMethodBeat.i(44178);
-    this.pUG = paramList;
+    AppMethodBeat.i(67087);
+    if (this.NwD != null)
+    {
+      localObject = this.NwD;
+      AppMethodBeat.o(67087);
+      return localObject;
+    }
+    this.NwD = new LinkedList();
+    localObject = (String)h.baE().ban().d(270337, null);
+    if (Util.isNullOrNil((String)localObject))
+    {
+      Log.i("MicroMsg.SubCoreRecharge", "empty history");
+      localObject = this.NwD;
+      AppMethodBeat.o(67087);
+      return localObject;
+    }
+    try
+    {
+      JSONArray localJSONArray = new JSONArray((String)localObject);
+      int i = 0;
+      while (i < Math.min(localJSONArray.length(), 100))
+      {
+        com.tencent.mm.plugin.recharge.model.a locala = com.tencent.mm.plugin.recharge.model.a.bH(localJSONArray.getJSONObject(i));
+        if (locala != null) {
+          this.NwD.add(locala);
+        }
+        i += 1;
+      }
+      String[] arrayOfString;
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      Log.printErrStackTrace("MicroMsg.SubCoreRecharge", localJSONException, "", new Object[0]);
+      localObject = ((String)localObject).split("&");
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        i = 0;
+        if (i < Math.min(localObject.length, 100))
+        {
+          arrayOfString = localObject[i].split("=");
+          if (arrayOfString.length == 2) {
+            this.NwD.add(new com.tencent.mm.plugin.recharge.model.a(arrayOfString[0], arrayOfString[1], 2));
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            if (arrayOfString.length == 1) {
+              this.NwD.add(new com.tencent.mm.plugin.recharge.model.a(arrayOfString[0], "", 2));
+            }
+          }
+        }
+      }
+      Log.i("MicroMsg.SubCoreRecharge", "getMobileHistory : " + this.NwD.size());
+      localObject = this.NwD;
+      AppMethodBeat.o(67087);
+    }
+  }
+  
+  public HashMap<Integer, h.b> getBaseDBFactories()
+  {
+    return null;
+  }
+  
+  public final void jE(List<com.tencent.mm.plugin.recharge.model.a> paramList)
+  {
+    AppMethodBeat.i(67086);
+    this.NwD = paramList;
     if ((paramList == null) || (paramList.size() == 0)) {
-      this.pUG = new LinkedList();
+      this.NwD = new LinkedList();
     }
     for (;;)
     {
       paramList = new JSONArray();
-      Iterator localIterator = this.pUG.iterator();
+      Iterator localIterator = this.NwD.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.recharge.model.a locala = (com.tencent.mm.plugin.recharge.model.a)localIterator.next();
         paramList.put(locala.toJson());
-        ab.i("MicroMsg.SubCoreRecharge", "number: %s", new Object[] { locala.name });
+        Log.i("MicroMsg.SubCoreRecharge", "number: %s", new Object[] { locala.name });
       }
       if (paramList.size() > 10)
       {
@@ -100,79 +170,10 @@ public class a
         }
       }
     }
-    ab.d("MicroMsg.SubCoreRecharge", "setMobileHistory : " + paramList.toString());
-    g.RL().Ru().set(270337, paramList.toString());
-    g.RL().Ru().dww();
-    AppMethodBeat.o(44178);
-  }
-  
-  public final List<com.tencent.mm.plugin.recharge.model.a> cfn()
-  {
-    AppMethodBeat.i(44179);
-    if (this.pUG != null)
-    {
-      localObject = this.pUG;
-      AppMethodBeat.o(44179);
-      return localObject;
-    }
-    this.pUG = new LinkedList();
-    localObject = (String)g.RL().Ru().get(270337, null);
-    if (bo.isNullOrNil((String)localObject))
-    {
-      ab.i("MicroMsg.SubCoreRecharge", "empty history");
-      localObject = this.pUG;
-      AppMethodBeat.o(44179);
-      return localObject;
-    }
-    try
-    {
-      JSONArray localJSONArray = new JSONArray((String)localObject);
-      int i = 0;
-      while (i < Math.min(localJSONArray.length(), 100))
-      {
-        com.tencent.mm.plugin.recharge.model.a locala = com.tencent.mm.plugin.recharge.model.a.ao(localJSONArray.getJSONObject(i));
-        if (locala != null) {
-          this.pUG.add(locala);
-        }
-        i += 1;
-      }
-      String[] arrayOfString;
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      ab.printErrStackTrace("MicroMsg.SubCoreRecharge", localJSONException, "", new Object[0]);
-      localObject = ((String)localObject).split("&");
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        i = 0;
-        if (i < Math.min(localObject.length, 100))
-        {
-          arrayOfString = localObject[i].split("=");
-          if (arrayOfString.length == 2) {
-            this.pUG.add(new com.tencent.mm.plugin.recharge.model.a(arrayOfString[0], arrayOfString[1], 2));
-          }
-          for (;;)
-          {
-            i += 1;
-            break;
-            if (arrayOfString.length == 1) {
-              this.pUG.add(new com.tencent.mm.plugin.recharge.model.a(arrayOfString[0], "", 2));
-            }
-          }
-        }
-      }
-      ab.i("MicroMsg.SubCoreRecharge", "getMobileHistory : " + this.pUG.size());
-      localObject = this.pUG;
-      AppMethodBeat.o(44179);
-    }
-  }
-  
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
-  {
-    return null;
+    Log.d("MicroMsg.SubCoreRecharge", "setMobileHistory : " + paramList.toString());
+    h.baE().ban().B(270337, paramList.toString());
+    h.baE().ban().iZy();
+    AppMethodBeat.o(67086);
   }
   
   public void onAccountPostReset(boolean paramBoolean) {}
@@ -183,7 +184,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.a.a
  * JD-Core Version:    0.7.0.1
  */

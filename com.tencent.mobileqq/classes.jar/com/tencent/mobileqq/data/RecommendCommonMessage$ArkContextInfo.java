@@ -7,8 +7,8 @@ public class RecommendCommonMessage$ArkContextInfo
 {
   public String context = "";
   public LinkedList<RecommendCommonMessage.ArkMsgAppInfo> contextAppInfoList = new LinkedList();
-  public int contextMatchType;
-  public boolean equalInputText;
+  public int contextMatchType = 0;
+  public boolean equalInputText = false;
   public String keyword = "";
   public LinkedHashMap<String, String> rawSemantic = new LinkedHashMap();
   public LinkedHashMap<String, String> semantic = new LinkedHashMap();

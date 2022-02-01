@@ -22,36 +22,26 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
-import aool;
-import aoom;
-import bcyz;
-import bdnn;
-import bdoo;
-import beko;
-import bekp;
-import bflr;
-import bkgp;
-import bkgq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.config.business.MiniAppConfBean;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
-import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
+import com.tencent.mobileqq.friends.intimate.MiniGamePlayTogetherHandler;
 import com.tencent.mobileqq.mini.apkg.AppMode;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.apkg.NetworkTimeoutInfo;
 import com.tencent.mobileqq.mini.apkg.PreCacheInfo;
-import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
+import com.tencent.mobileqq.mini.entry.desktop.GetAppListV2Scene;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
-import com.tencent.mobileqq.mini.http.MiniappHttpUtil;
+import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.launch.CmdCallback;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager;
@@ -63,17 +53,24 @@ import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.profilecard.bussiness.miniapp.ProfileMiniAppInfo;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.CgiReqInfo;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import common.config.service.QzoneConfig;
+import cooperation.vip.tianshu.TianShuManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -81,9 +78,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import myl;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -94,6 +89,8 @@ public class MiniAppUtils
   private static final String CONTENT_TYPE_JSON = "application/json";
   public static final String GDT_COOKIE = "gdt_cookie";
   public static final String KEY_MINI_APP_CONFIG = "key_record_mini_app_config";
+  public static final String KEY_MINI_GAME_PAY_ENV = "keyMiniGamePayEnv";
+  public static final String KEY_MINI_GAME_PAY_ENV_APPID_VERTYPE = "keyMiniGamePayEnvAppidVertype";
   public static final String MINI_APP_DESKTOP_GDT_COOKIE_PRE = "mini_app_desktop_gdt_cookie";
   private static final String MINI_APP_STORE_URL = "mqqapi://miniapp/open?_ext=&_mappid=1108291530&_mvid=&_nq=&_path=&_q=&_sig=0178f7ca2545b9ef6f736f01247642f6e53ef6467005aa21274c4166f0ff5a3b";
   private static final Set<Integer> PULL_DOWN_REFER = new HashSet();
@@ -108,6 +105,7 @@ public class MiniAppUtils
   public static final int TYPE_ENTER_BACKGROUND = 7;
   public static final int TYPE_ENTER_FOREGROUND = 6;
   public static final int TYPE_HIDE_PULL_DOWN_ENTRY = 100;
+  public static final int TYPE_HONGBAO_MINI_BANNER_ACTION = 104;
   public static final int TYPE_HONGBAO_UPDATE_DESKTOP_RES = 103;
   public static final int TYPE_MINI_APP_CLICK_UPDATE_FAILED = 11;
   public static final int TYPE_MINI_APP_SERVER_REQUEST_FAILED = 10;
@@ -123,8 +121,10 @@ public class MiniAppUtils
   static
   {
     PULL_DOWN_REFER.add(Integer.valueOf(3001));
+    PULL_DOWN_REFER.add(Integer.valueOf(3020));
     PULL_DOWN_REFER.add(Integer.valueOf(3002));
     PULL_DOWN_REFER.add(Integer.valueOf(3003));
+    PULL_DOWN_REFER.add(Integer.valueOf(3021));
     PULL_DOWN_REFER.add(Integer.valueOf(3004));
     PULL_DOWN_REFER.add(Integer.valueOf(3005));
     PULL_DOWN_REFER.add(Integer.valueOf(3006));
@@ -145,43 +145,48 @@ public class MiniAppUtils
     if (!TextUtils.isEmpty(paramString1))
     {
       insertSemicolon(paramStringBuilder);
-      paramStringBuilder.append(paramString2).append(paramString1);
-    }
-    do
-    {
+      paramStringBuilder.append(paramString2);
+      paramStringBuilder.append(paramString1);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppUtils", 2, paramString2 + "is empty");
-      }
-    } while (TextUtils.isEmpty(paramString3));
-    insertSemicolon(paramStringBuilder);
-    paramStringBuilder.append(paramString2).append(paramString3);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString2);
+      paramString1.append("is empty");
+      QLog.d("MiniAppUtils", 2, paramString1.toString());
+    }
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      insertSemicolon(paramStringBuilder);
+      paramStringBuilder.append(paramString2);
+      paramStringBuilder.append(paramString3);
+    }
   }
   
   public static void checkMiniAppDesktopSendRequest()
   {
     Object localObject = getAppInterface();
-    if (localObject == null) {
-      QLog.e("MiniAppUtils", 1, "checkMiniAppDesktopSendRequest, app is null.");
-    }
-    long l1;
-    long l2;
-    do
+    if (localObject == null)
     {
+      QLog.e("MiniAppUtils", 1, "checkMiniAppDesktopSendRequest, app is null.");
       return;
-      l1 = ((AppInterface)localObject).getPreferences().getLong("key_mini_app_refresh_interval", 0L);
-      l2 = System.currentTimeMillis();
-      localObject = (DesktopDataManager)((AppInterface)localObject).getManager(336);
-    } while (l2 - l1 <= 1000L * ((DesktopDataManager)localObject).getRefreshInterval());
-    ((DesktopDataManager)localObject).sendDropDownAppListRequestAsync();
+    }
+    long l1 = ((AppInterface)localObject).getPreferences().getLong("key_mini_app_refresh_interval", 0L);
+    long l2 = System.currentTimeMillis();
+    localObject = (DesktopDataManager)((AppInterface)localObject).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
+    if (l2 - l1 > ((DesktopDataManager)localObject).getRefreshInterval() * 1000L) {
+      ((DesktopDataManager)localObject).sendDropDownAppListRequestAsync(GetAppListV2Scene.DROP_DOWN);
+    }
   }
   
   public static boolean checkNavigationAppIdListForMiniGame(String paramString, MiniGamePkg paramMiniGamePkg)
   {
-    if ((bdnn.a(paramString)) || (paramMiniGamePkg == null)) {}
-    for (;;)
+    if (!StringUtil.isEmpty(paramString))
     {
-      return false;
+      if (paramMiniGamePkg == null) {
+        return false;
+      }
       try
       {
         paramMiniGamePkg = paramMiniGamePkg.mGameConfigJson.optJSONArray("navigateToMiniProgramAppIdList");
@@ -206,170 +211,198 @@ public class MiniAppUtils
   public static void checkSendUserAppListRequest()
   {
     AppInterface localAppInterface = getAppInterface();
-    if (localAppInterface == null) {
-      QLog.e("MiniAppUtils", 1, "checkSendUserAppListRequest, app is null.");
-    }
-    SharedPreferences localSharedPreferences;
-    long l1;
-    long l2;
-    int i;
-    do
+    if (localAppInterface == null)
     {
+      QLog.e("MiniAppUtils", 1, "checkSendUserAppListRequest, app is null.");
       return;
-      localSharedPreferences = localAppInterface.getPreferences();
-      l1 = localSharedPreferences.getLong("key_update_miniapp_time", 0L);
-      l2 = System.currentTimeMillis();
+    }
+    SharedPreferences localSharedPreferences = localAppInterface.getPreferences();
+    long l1 = localSharedPreferences.getLong("key_update_miniapp_time", 0L);
+    long l2 = System.currentTimeMillis();
+    MiniAppConfBean localMiniAppConfBean = MiniAppConfProcessor.a();
+    int i;
+    if (localMiniAppConfBean != null) {
+      i = localMiniAppConfBean.c();
+    } else {
       i = 60;
-      aool localaool = aoom.a();
-      if (localaool != null) {
-        i = localaool.a();
-      }
-    } while (l2 - l1 <= i * 60 * 1000);
-    ((MiniAppUserAppInfoListManager)localAppInterface.getManager(309)).sendUserAppListRequest(Long.valueOf(localAppInterface.getCurrentAccountUin()).longValue(), 20L);
-    localSharedPreferences.edit().putLong("key_update_miniapp_time", l2).apply();
+    }
+    if (l2 - l1 > i * 60 * 1000)
+    {
+      ((MiniAppUserAppInfoListManager)localAppInterface.getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER)).sendUserAppListRequest(Long.valueOf(localAppInterface.getCurrentAccountUin()).longValue(), 20L);
+      localSharedPreferences.edit().putLong("key_update_miniapp_time", l2).apply();
+    }
   }
   
   /* Error */
   public static MiniAppInfo createFromBuffer(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: invokestatic 289	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_1
-    //   4: aload_1
-    //   5: astore_2
-    //   6: aload_1
+    //   0: invokestatic 313	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: astore_1
+    //   6: aload_2
     //   7: aload_0
     //   8: iconst_0
     //   9: aload_0
     //   10: arraylength
-    //   11: invokevirtual 293	android/os/Parcel:unmarshall	([BII)V
-    //   14: aload_1
-    //   15: astore_2
-    //   16: aload_1
+    //   11: invokevirtual 317	android/os/Parcel:unmarshall	([BII)V
+    //   14: aload_2
+    //   15: astore_1
+    //   16: aload_2
     //   17: iconst_0
-    //   18: invokevirtual 297	android/os/Parcel:setDataPosition	(I)V
-    //   21: aload_1
-    //   22: astore_2
-    //   23: aload_1
-    //   24: ldc_w 299
-    //   27: invokevirtual 305	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   30: invokevirtual 309	android/os/Parcel:readParcelable	(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
-    //   33: checkcast 299	com/tencent/mobileqq/mini/apkg/MiniAppInfo
+    //   18: invokevirtual 321	android/os/Parcel:setDataPosition	(I)V
+    //   21: aload_2
+    //   22: astore_1
+    //   23: aload_2
+    //   24: ldc_w 323
+    //   27: invokevirtual 329	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   30: invokevirtual 333	android/os/Parcel:readParcelable	(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
+    //   33: checkcast 323	com/tencent/mobileqq/mini/apkg/MiniAppInfo
     //   36: astore_0
-    //   37: aload_1
+    //   37: aload_2
     //   38: ifnull +7 -> 45
-    //   41: aload_1
-    //   42: invokevirtual 312	android/os/Parcel:recycle	()V
+    //   41: aload_2
+    //   42: invokevirtual 336	android/os/Parcel:recycle	()V
     //   45: aload_0
     //   46: areturn
     //   47: astore_0
-    //   48: aconst_null
-    //   49: astore_0
-    //   50: ldc 32
-    //   52: iconst_1
-    //   53: ldc_w 314
-    //   56: invokestatic 155	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   59: aload_0
-    //   60: ifnull +7 -> 67
-    //   63: aload_0
-    //   64: invokevirtual 312	android/os/Parcel:recycle	()V
-    //   67: aconst_null
-    //   68: areturn
-    //   69: astore_0
-    //   70: aconst_null
-    //   71: astore_1
-    //   72: aload_1
-    //   73: astore_2
-    //   74: ldc 32
-    //   76: iconst_1
-    //   77: new 124	java/lang/StringBuilder
-    //   80: dup
-    //   81: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   84: ldc_w 316
-    //   87: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: aload_0
-    //   91: invokestatic 322	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   94: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokestatic 155	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   103: aload_1
-    //   104: ifnull -37 -> 67
-    //   107: aload_1
-    //   108: invokevirtual 312	android/os/Parcel:recycle	()V
-    //   111: goto -44 -> 67
-    //   114: astore_0
-    //   115: aconst_null
-    //   116: astore_2
-    //   117: aload_2
-    //   118: ifnull +7 -> 125
-    //   121: aload_2
-    //   122: invokevirtual 312	android/os/Parcel:recycle	()V
-    //   125: aload_0
-    //   126: athrow
-    //   127: astore_0
-    //   128: goto -11 -> 117
-    //   131: astore_1
-    //   132: aload_0
-    //   133: astore_2
-    //   134: aload_1
-    //   135: astore_0
-    //   136: goto -19 -> 117
-    //   139: astore_0
-    //   140: goto -68 -> 72
-    //   143: astore_0
-    //   144: aload_1
-    //   145: astore_0
-    //   146: goto -96 -> 50
+    //   48: goto +91 -> 139
+    //   51: astore_1
+    //   52: aload_2
+    //   53: astore_0
+    //   54: aload_1
+    //   55: astore_2
+    //   56: goto +12 -> 68
+    //   59: astore_0
+    //   60: aconst_null
+    //   61: astore_1
+    //   62: goto +77 -> 139
+    //   65: astore_2
+    //   66: aconst_null
+    //   67: astore_0
+    //   68: aload_0
+    //   69: astore_1
+    //   70: new 132	java/lang/StringBuilder
+    //   73: dup
+    //   74: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   77: astore_3
+    //   78: aload_0
+    //   79: astore_1
+    //   80: aload_3
+    //   81: ldc_w 338
+    //   84: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: aload_0
+    //   89: astore_1
+    //   90: aload_3
+    //   91: aload_2
+    //   92: invokestatic 344	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   95: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: pop
+    //   99: aload_0
+    //   100: astore_1
+    //   101: ldc 38
+    //   103: iconst_1
+    //   104: aload_3
+    //   105: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   108: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   111: aload_0
+    //   112: ifnull +25 -> 137
+    //   115: goto +18 -> 133
+    //   118: aload_0
+    //   119: astore_1
+    //   120: ldc 38
+    //   122: iconst_1
+    //   123: ldc_w 346
+    //   126: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   129: aload_0
+    //   130: ifnull +7 -> 137
+    //   133: aload_0
+    //   134: invokevirtual 336	android/os/Parcel:recycle	()V
+    //   137: aconst_null
+    //   138: areturn
+    //   139: aload_1
+    //   140: ifnull +7 -> 147
+    //   143: aload_1
+    //   144: invokevirtual 336	android/os/Parcel:recycle	()V
+    //   147: aload_0
+    //   148: athrow
+    //   149: astore_0
+    //   150: goto +9 -> 159
+    //   153: astore_0
+    //   154: aload_2
+    //   155: astore_0
+    //   156: goto -38 -> 118
+    //   159: aconst_null
+    //   160: astore_0
+    //   161: goto -43 -> 118
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	149	0	paramArrayOfByte	byte[]
-    //   3	105	1	localParcel	android.os.Parcel
-    //   131	14	1	localObject1	Object
-    //   5	129	2	localObject2	Object
+    //   0	164	0	paramArrayOfByte	byte[]
+    //   5	18	1	localObject1	Object
+    //   51	4	1	localThrowable1	Throwable
+    //   61	83	1	arrayOfByte	byte[]
+    //   3	53	2	localObject2	Object
+    //   65	90	2	localThrowable2	Throwable
+    //   77	28	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   0	4	47	java/lang/OutOfMemoryError
-    //   0	4	69	java/lang/Throwable
-    //   0	4	114	finally
-    //   6	14	127	finally
-    //   16	21	127	finally
-    //   23	37	127	finally
-    //   74	103	127	finally
-    //   50	59	131	finally
-    //   6	14	139	java/lang/Throwable
-    //   16	21	139	java/lang/Throwable
-    //   23	37	139	java/lang/Throwable
-    //   6	14	143	java/lang/OutOfMemoryError
-    //   16	21	143	java/lang/OutOfMemoryError
-    //   23	37	143	java/lang/OutOfMemoryError
+    //   6	14	47	finally
+    //   16	21	47	finally
+    //   23	37	47	finally
+    //   70	78	47	finally
+    //   80	88	47	finally
+    //   90	99	47	finally
+    //   101	111	47	finally
+    //   120	129	47	finally
+    //   6	14	51	java/lang/Throwable
+    //   16	21	51	java/lang/Throwable
+    //   23	37	51	java/lang/Throwable
+    //   0	4	59	finally
+    //   0	4	65	java/lang/Throwable
+    //   0	4	149	java/lang/OutOfMemoryError
+    //   6	14	153	java/lang/OutOfMemoryError
+    //   16	21	153	java/lang/OutOfMemoryError
+    //   23	37	153	java/lang/OutOfMemoryError
   }
   
   private static void fetchWnsCgiCacheData(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     if ((!URLUtil.isHttpsUrl(paramString3)) && (!URLUtil.isHttpUrl(paramString3)))
     {
-      QLog.e("MiniAppUtils", 2, new Object[] { "fetchWnsCgiCacheData ", " invalid url " + paramString3 });
+      paramContext = new StringBuilder();
+      paramContext.append(" invalid url ");
+      paramContext.append(paramString3);
+      QLog.e("MiniAppUtils", 2, new Object[] { "fetchWnsCgiCacheData ", paramContext.toString() });
       return;
     }
-    bekp localbekp = new bekp();
-    localbekp.jdField_a_of_type_JavaLangString = paramString3;
-    localbekp.b = "GET";
-    localbekp.jdField_a_of_type_Boolean = false;
-    localbekp.jdField_a_of_type_Int = 0;
-    localbekp.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-    beko.a().a(localbekp, new MiniAppUtils.5(ThreadManager.getSubThreadLooper(), paramContext, paramString1, paramString2));
+    WebSoCgiService.CgiReqInfo localCgiReqInfo = new WebSoCgiService.CgiReqInfo();
+    localCgiReqInfo.a = paramString3;
+    localCgiReqInfo.b = "GET";
+    localCgiReqInfo.g = false;
+    localCgiReqInfo.h = 0;
+    localCgiReqInfo.e = "application/x-www-form-urlencoded";
+    WebSoCgiService.a().a(localCgiReqInfo, new MiniAppUtils.4(ThreadManager.getSubThreadLooper(), paramContext, paramString1, paramString2));
   }
   
   public static void fetchWnsCgiPreCacheData(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    QLog.d("MiniAppUtils", 1, "--- prefetch cache data appid:" + paramString1 + "  requestUrl" + paramString2 + "  path:" + paramString3);
-    paramContext = new bekp();
-    paramContext.jdField_a_of_type_JavaLangString = paramString2;
+    paramContext = new StringBuilder();
+    paramContext.append("--- prefetch cache data appid:");
+    paramContext.append(paramString1);
+    paramContext.append("  requestUrl");
+    paramContext.append(paramString2);
+    paramContext.append("  path:");
+    paramContext.append(paramString3);
+    QLog.d("MiniAppUtils", 1, paramContext.toString());
+    paramContext = new WebSoCgiService.CgiReqInfo();
+    paramContext.a = paramString2;
     paramContext.b = "GET";
-    paramContext.jdField_a_of_type_Boolean = false;
-    paramContext.jdField_a_of_type_Int = 0;
-    paramContext.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-    beko.a().a(paramContext, new MiniAppUtils.4(ThreadManager.getSubThreadLooper(), paramString3, paramString2));
+    paramContext.g = false;
+    paramContext.h = 0;
+    paramContext.e = "application/x-www-form-urlencoded";
+    WebSoCgiService.a().a(paramContext, new MiniAppUtils.3(ThreadManager.getSubThreadLooper(), paramString3, paramString2));
   }
   
   public static AppInterface getAppInterface()
@@ -385,231 +418,270 @@ public class MiniAppUtils
     return null;
   }
   
-  private static String getCookie(String paramString)
+  public static String getCookie(String paramString)
   {
-    paramString = SwiftBrowserCookieMonster.c(paramString);
-    String str1 = SwiftBrowserCookieMonster.a(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    Object localObject2 = ".*p_uin=" + str1 + ";.*";
-    Object localObject1 = paramString;
+    String str1 = SwiftBrowserCookieMonster.d(paramString);
+    String str2 = SwiftBrowserCookieMonster.a(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    paramString = new StringBuilder();
+    paramString.append(".*p_uin=");
+    paramString.append(str2);
+    paramString.append(";.*");
+    Object localObject2 = paramString.toString();
+    Object localObject1 = str1;
+    paramString = str1;
     for (;;)
     {
+      int i;
       try
       {
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        localObject1 = paramString;
-        if (!paramString.contains(";")) {
-          continue;
-        }
-        localObject1 = paramString;
-        if (!paramString.contains("uin=")) {
-          continue;
-        }
-        localObject1 = paramString;
-        if (!paramString.contains("p_uin")) {
-          continue;
-        }
-        localObject1 = paramString;
-        if (paramString.matches((String)localObject2)) {
-          continue;
-        }
-        localObject1 = paramString.replaceAll(" ", "");
-      }
-      catch (Throwable localThrowable1)
-      {
-        int j;
-        int i;
-        String str2;
-        String str3;
-        continue;
-        i += 1;
-        continue;
-      }
-      try
-      {
-        paramString = new StringBuilder();
-        localObject2 = ((String)localObject1).split(";");
-        j = localObject2.length;
-        i = 0;
-        if (i >= j) {
-          continue;
-        }
-        str2 = localObject2[i];
-        if (str2.startsWith("uin="))
+        if (!TextUtils.isEmpty(str1))
         {
-          str3 = str2.substring("uin=".length());
-          if ((TextUtils.isEmpty(str3)) || (!str3.equals(str1))) {
-            appendCookieStr(paramString, str1, "uin=", str2);
+          localObject1 = str1;
+          paramString = str1;
+          if (str1.contains(";"))
+          {
+            localObject1 = str1;
+            paramString = str1;
+            if (str1.contains("uin="))
+            {
+              localObject1 = str1;
+              paramString = str1;
+              if (str1.contains("p_uin"))
+              {
+                localObject1 = str1;
+                paramString = str1;
+                if (!str1.matches((String)localObject2))
+                {
+                  paramString = str1;
+                  str1 = str1.replaceAll(" ", "");
+                  paramString = str1;
+                  localObject1 = new StringBuilder();
+                  paramString = str1;
+                  localObject2 = str1.split(";");
+                  paramString = str1;
+                  int j = localObject2.length;
+                  i = 0;
+                  if (i < j)
+                  {
+                    String str3 = localObject2[i];
+                    paramString = str1;
+                    String str4;
+                    if (str3.startsWith("uin="))
+                    {
+                      paramString = str1;
+                      str4 = str3.substring(4);
+                      paramString = str1;
+                      if (!TextUtils.isEmpty(str4))
+                      {
+                        paramString = str1;
+                        if (str4.equals(str2)) {
+                          break label351;
+                        }
+                      }
+                      paramString = str1;
+                      appendCookieStr((StringBuilder)localObject1, str2, "uin=", str3);
+                      break label351;
+                    }
+                    paramString = str1;
+                    if (str3.startsWith("p_uin="))
+                    {
+                      paramString = str1;
+                      str4 = str3.substring(6);
+                      paramString = str1;
+                      if (!TextUtils.isEmpty(str4))
+                      {
+                        paramString = str1;
+                        if (str4.equals(str2)) {
+                          break label351;
+                        }
+                      }
+                      paramString = str1;
+                      appendCookieStr((StringBuilder)localObject1, str2, "p_uin=", str3);
+                      break label351;
+                    }
+                    paramString = str1;
+                    insertSemicolon((StringBuilder)localObject1);
+                    paramString = str1;
+                    ((StringBuilder)localObject1).append(str3);
+                    break label351;
+                  }
+                  paramString = str1;
+                  localObject1 = ((StringBuilder)localObject1).toString();
+                }
+              }
+            }
           }
         }
-        else if (str2.startsWith("p_uin="))
-        {
-          str3 = str2.substring("p_uin=".length());
-          if ((!TextUtils.isEmpty(str3)) && (str3.equals(str1))) {
-            continue;
-          }
-          appendCookieStr(paramString, str1, "p_uin=", str2);
-        }
+        return localObject1;
       }
-      catch (Throwable localThrowable2)
+      catch (Throwable localThrowable)
       {
-        paramString = (String)localObject1;
-        localObject1 = localThrowable2;
+        QLog.e("MiniAppUtils", 1, "getCookie error.", localThrowable);
+        return paramString;
       }
+      label351:
+      i += 1;
     }
-    QLog.e("MiniAppUtils", 1, "getCookie error.", (Throwable)localObject1);
-    localObject1 = paramString;
-    return localObject1;
-    insertSemicolon(paramString);
-    paramString.append(str2);
-    break label307;
-    paramString = paramString.toString();
-    return paramString;
   }
   
   public static Drawable getDrawable(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions1 = null;
     try
     {
       paramURLDrawableOptions = URLDrawable.getDrawable(paramString, paramURLDrawableOptions);
-      localURLDrawableOptions2 = paramURLDrawableOptions;
-      localURLDrawableOptions1 = paramURLDrawableOptions;
-      if (paramURLDrawableOptions.getStatus() == 2)
-      {
-        localURLDrawableOptions1 = paramURLDrawableOptions;
-        paramURLDrawableOptions.restartDownload();
-        localURLDrawableOptions2 = paramURLDrawableOptions;
-      }
+      localObject = paramURLDrawableOptions;
     }
     catch (Exception paramURLDrawableOptions)
     {
-      do
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions2 = localURLDrawableOptions1;
-      } while (!QLog.isColorLevel());
-      QLog.e("MiniAppUtils", 2, "getDrawable: " + paramString);
+      Object localObject;
+      label22:
+      label25:
+      label27:
+      label69:
+      break label25;
     }
-    return localURLDrawableOptions2;
-    return localURLDrawableOptions1;
+    try
+    {
+      if (paramURLDrawableOptions.getStatus() != 2) {
+        break label69;
+      }
+      paramURLDrawableOptions.restartDownload();
+      return paramURLDrawableOptions;
+    }
+    catch (Exception localException)
+    {
+      break label22;
+    }
+    break label27;
+    paramURLDrawableOptions = null;
+    localObject = paramURLDrawableOptions;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getDrawable: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("MiniAppUtils", 2, ((StringBuilder)localObject).toString());
+      localObject = paramURLDrawableOptions;
+    }
+    return localObject;
   }
   
-  private static int getGTK(String paramString)
+  public static int getGTK(String paramString)
   {
-    int i = 5381;
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool = TextUtils.isEmpty(paramString);
+    int j = 5381;
+    if (!bool)
     {
+      int i = 0;
       int k = paramString.length();
-      int j = 5381;
-      i = 0;
       while (i < k)
       {
         j += (j << 5) + paramString.charAt(i);
         i += 1;
       }
-      i = 0x7FFFFFFF & j;
+      return 0x7FFFFFFF & j;
     }
-    return i;
+    return 5381;
   }
   
   public static Drawable getIcon(Context paramContext, String paramString, boolean paramBoolean)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-    int i = bdoo.b(48.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
+    Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = false;
+    int i = ViewUtils.dpToPx(48.0F);
+    ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i;
+    ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = i;
     if (paramBoolean)
     {
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130840898);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130840898);
+      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramContext.getResources().getDrawable(2130841992);
+      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramContext.getResources().getDrawable(2130841992);
     }
-    label118:
-    do
+    paramContext = null;
+    Object localObject2;
+    try
     {
-      try
+      localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+      paramContext = (Context)localObject1;
+      ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.dpToPx(9.0F)));
+      paramContext = (Context)localObject1;
+      ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.j);
+      paramContext = (Context)localObject1;
+      localObject2 = localObject1;
+      if (((URLDrawable)localObject1).getStatus() == 2)
       {
-        paramContext = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        localException1.printStackTrace();
+        paramContext = (Context)localObject1;
+        ((URLDrawable)localObject1).restartDownload();
+        return localObject1;
       }
-      catch (Exception localException1)
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      localObject2 = paramContext;
+      if (QLog.isColorLevel())
       {
-        try
-        {
-          paramContext.setTag(bcyz.b(i, i, bdoo.b(9.0F)));
-          paramContext.setDecodeHandler(bcyz.i);
-          localObject = paramContext;
-          if (paramContext.getStatus() == 2)
-          {
-            paramContext.restartDownload();
-            localObject = paramContext;
-          }
-          return localObject;
-        }
-        catch (Exception localException2)
-        {
-          Context localContext;
-          break label118;
-        }
-        localException1 = localException1;
-        paramContext = null;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getIcon url: ");
+        localStringBuilder.append(paramString);
+        QLog.e("MiniAppUtils", 2, localStringBuilder.toString());
+        localObject2 = paramContext;
       }
-      localContext = paramContext;
-    } while (!QLog.isColorLevel());
-    QLog.e("MiniAppUtils", 2, "getIcon url: " + paramString);
-    return paramContext;
+    }
+    return localObject2;
+  }
+  
+  public static Drawable getIcon(Context paramContext, String paramString, boolean paramBoolean, int paramInt)
+  {
+    Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = false;
+    int i = ViewUtils.dpToPx(48.0F);
+    ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i;
+    ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = i;
+    if (paramBoolean)
+    {
+      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramContext.getResources().getDrawable(2130841992);
+      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramContext.getResources().getDrawable(2130841992);
+    }
+    paramContext = null;
+    Object localObject2;
+    try
+    {
+      localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+      paramContext = (Context)localObject1;
+      ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.dpToPx(paramInt)));
+      paramContext = (Context)localObject1;
+      ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.j);
+      paramContext = (Context)localObject1;
+      localObject2 = localObject1;
+      if (((URLDrawable)localObject1).getStatus() == 2)
+      {
+        paramContext = (Context)localObject1;
+        ((URLDrawable)localObject1).restartDownload();
+        return localObject1;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      localObject2 = paramContext;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getIcon url: ");
+        localStringBuilder.append(paramString);
+        QLog.e("MiniAppUtils", 2, localStringBuilder.toString());
+        localObject2 = paramContext;
+      }
+    }
+    return localObject2;
   }
   
   public static Drawable getIcon(Context paramContext, String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-    paramInt2 = bdoo.b(paramInt2);
+    paramInt2 = ViewUtils.dpToPx(paramInt2);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramInt2;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramInt2;
-    if (paramBoolean)
-    {
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(paramInt1);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(paramInt1);
-    }
-    label104:
-    do
-    {
-      try
-      {
-        paramContext = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        localException1.printStackTrace();
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          paramContext.setTag(bcyz.b(paramInt2, paramInt2, bdoo.b(9.0F)));
-          paramContext.setDecodeHandler(bcyz.i);
-          localObject = paramContext;
-          return localObject;
-        }
-        catch (Exception localException2)
-        {
-          Context localContext;
-          break label104;
-        }
-        localException1 = localException1;
-        paramContext = null;
-      }
-      localContext = paramContext;
-    } while (!QLog.isColorLevel());
-    QLog.e("MiniAppUtils", 2, "getIcon url: " + paramString);
-    return paramContext;
-  }
-  
-  public static Drawable getIcon(Context paramContext, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-    paramInt2 = bdoo.b(paramInt2);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bdoo.b(paramInt3);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramInt2;
     if (paramBoolean)
     {
@@ -621,30 +693,54 @@ public class MiniAppUtils
     {
       localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
       paramContext = (Context)localObject;
+      ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.b(paramInt2, paramInt2, ViewUtils.dpToPx(9.0F)));
+      paramContext = (Context)localObject;
+      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.j);
+      return localObject;
     }
     catch (Exception localException)
     {
-      do
+      localException.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("MiniAppUtils", 2, "getIcon url: " + paramString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getIcon url: ");
+        localStringBuilder.append(paramString);
+        QLog.e("MiniAppUtils", 2, localStringBuilder.toString());
+      }
     }
     return paramContext;
-    return null;
   }
   
-  public static void getMiniAppStoreAppList(String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, BaseJsPluginEngine paramBaseJsPluginEngine)
+  public static Drawable getIcon(Context paramContext, String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramBaseJsPluginEngine == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(""))
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mPlayGifImage = false;
+    paramInt2 = ViewUtils.dpToPx(paramInt2);
+    localURLDrawableOptions.mRequestHeight = ViewUtils.dpToPx(paramInt3);
+    localURLDrawableOptions.mRequestWidth = paramInt2;
+    if (paramBoolean)
     {
-      paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "no dataCacheKey at app.json", paramInt);
-      return;
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(paramInt1);
+      localURLDrawableOptions.mLoadingDrawable = paramContext.getResources().getDrawable(paramInt1);
     }
-    ThreadManager.getFileThreadHandler().post(new MiniAppUtils.2(paramBaseJsPluginEngine, paramJsRuntime, paramString2, paramInt));
+    try
+    {
+      paramContext = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("getIcon url: ");
+        paramContext.append(paramString);
+        QLog.e("MiniAppUtils", 2, paramContext.toString());
+      }
+    }
+    return null;
   }
   
   public static Drawable getRecommendIconDrawable(Context paramContext, String paramString)
@@ -658,62 +754,65 @@ public class MiniAppUtils
     }
     catch (Exception paramContext)
     {
-      QLog.e("MiniAppUtils", 1, "getRecommendIconDrawable, failed.");
+      label17:
+      break label17;
     }
+    QLog.e("MiniAppUtils", 1, "getRecommendIconDrawable, failed.");
     return null;
   }
   
   public static String getSpDesktopGdtCookie()
   {
-    String str = "mini_app_desktop_gdt_cookie_" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return StorageUtil.getPreference().getString(str, "");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mini_app_desktop_gdt_cookie_");
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localObject = ((StringBuilder)localObject).toString();
+    return StorageUtil.getPreference().getString((String)localObject, "");
   }
   
   public static void handleMiniAppMoreClick(Activity paramActivity)
   {
+    int i = 0;
     try
     {
-      i = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_open_store_use_appid", 0);
-      if (i != 0)
-      {
-        MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1108291530&_mvid=&_nq=&_path=&_q=&_sig=0178f7ca2545b9ef6f736f01247642f6e53ef6467005aa21274c4166f0ff5a3b", 1001, null);
-        return;
-      }
+      int j = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_open_store_use_appid", 0);
+      i = j;
     }
     catch (Throwable localThrowable)
     {
-      do
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppUtils", 1, "get config MINI_APP_OPEN_STORE_USE_APPID exception!", localThrowable);
-          int i = 0;
-        }
-        localObject1 = getAppInterface();
-      } while (localObject1 == null);
-      localObject1 = (MiniAppUserAppInfoListManager)((AppInterface)localObject1).getManager(309);
-      if (localObject1 == null) {}
+      QLog.e("MiniAppUtils", 1, "get config MINI_APP_OPEN_STORE_USE_APPID exception!", localThrowable);
     }
-    Object localObject2;
-    for (Object localObject1 = ((MiniAppUserAppInfoListManager)localObject1).findTopMiniApp("1108291530");; localObject2 = null)
+    if (i != 0)
     {
-      if (localObject1 != null) {
-        try
-        {
-          QLog.d("MiniAppUtils", 2, "handleMiniAppMoreClick, launch app store by appInfo");
-          MiniAppController.launchMiniAppByAppInfo(paramActivity, (MiniAppInfo)localObject1, 1001);
-          return;
-        }
-        catch (MiniAppException localMiniAppException)
-        {
-          QLog.e("MiniAppUtils", 1, "handleMiniAppMoreClick, launchMiniAppByAppInfo exception.");
-          MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1108291530&_mvid=&_nq=&_path=&_q=&_sig=0178f7ca2545b9ef6f736f01247642f6e53ef6467005aa21274c4166f0ff5a3b", 1001, null);
-          return;
-        }
-      }
       MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1108291530&_mvid=&_nq=&_path=&_q=&_sig=0178f7ca2545b9ef6f736f01247642f6e53ef6467005aa21274c4166f0ff5a3b", 1001, null);
       return;
     }
+    Object localObject = getAppInterface();
+    if (localObject != null)
+    {
+      localObject = (MiniAppUserAppInfoListManager)((AppInterface)localObject).getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
+      if (localObject != null) {
+        localObject = ((MiniAppUserAppInfoListManager)localObject).findTopMiniApp("1108291530");
+      } else {
+        localObject = null;
+      }
+      if (localObject == null) {}
+    }
+    try
+    {
+      QLog.d("MiniAppUtils", 2, "handleMiniAppMoreClick, launch app store by appInfo");
+      MiniAppController.launchMiniAppByAppInfo(paramActivity, (MiniAppInfo)localObject, 1001);
+      return;
+    }
+    catch (MiniAppException localMiniAppException)
+    {
+      label106:
+      break label106;
+    }
+    QLog.e("MiniAppUtils", 1, "handleMiniAppMoreClick, launchMiniAppByAppInfo exception.");
+    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1108291530&_mvid=&_nq=&_path=&_q=&_sig=0178f7ca2545b9ef6f736f01247642f6e53ef6467005aa21274c4166f0ff5a3b", 1001, null);
+    return;
+    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1108291530&_mvid=&_nq=&_path=&_q=&_sig=0178f7ca2545b9ef6f736f01247642f6e53ef6467005aa21274c4166f0ff5a3b", 1001, null);
   }
   
   public static void handlePreloadAppData(Context paramContext, INTERFACE.StGetUserAppListRsp paramStGetUserAppListRsp)
@@ -752,8 +851,14 @@ public class MiniAppUtils
         if (((INTERFACE.StCacheController)localObject).appInfo != null)
         {
           localObject = MiniAppInfo.from(((INTERFACE.StCacheController)localObject).appInfo);
-          if (localObject != null) {
+          if (localObject != null)
+          {
             preFetchAppCacheData(paramContext, (MiniAppInfo)localObject);
+            if ("1108291530".equals(((MiniAppInfo)localObject).appId))
+            {
+              localObject = new MiniAppConfig((MiniAppInfo)localObject);
+              AppBrandLaunchManager.g().preLaunchMiniApp(paramContext, (MiniAppConfig)localObject);
+            }
           }
         }
       }
@@ -764,66 +869,67 @@ public class MiniAppUtils
   {
     paramBundle.setClassLoader(MiniAppUtils.class.getClassLoader());
     paramBundle = (MiniAppConfig)paramBundle.getParcelable("key_record_mini_app_config");
-    if ((paramBundle == null) || (paramBundle.config == null)) {
-      QLog.e("MiniAppUtils", 1, "handlePullDownEntryListData, miniAppConfig is null");
-    }
-    do
+    if ((paramBundle != null) && (paramBundle.config != null))
     {
-      return;
       updatePullDownEntryListData(paramBundle);
-    } while (paramCmdCallback == null);
-    try
-    {
-      paramCmdCallback.onCmdResult(true, new Bundle());
+      if (paramCmdCallback != null) {
+        try
+        {
+          paramCmdCallback.onCmdResult(true, new Bundle());
+          return;
+        }
+        catch (RemoteException paramBundle)
+        {
+          paramCmdCallback = new StringBuilder();
+          paramCmdCallback.append("handlePullDownEntryListData, ");
+          paramCmdCallback.append(Log.getStackTraceString(paramBundle));
+          QLog.e("MiniAppUtils", 1, paramCmdCallback.toString());
+        }
+      }
       return;
     }
-    catch (RemoteException paramBundle)
-    {
-      QLog.e("MiniAppUtils", 1, "handlePullDownEntryListData, " + Log.getStackTraceString(paramBundle));
-    }
+    QLog.e("MiniAppUtils", 1, "handlePullDownEntryListData, miniAppConfig is null");
   }
   
   private static void insertSemicolon(StringBuilder paramStringBuilder)
   {
     if ((paramStringBuilder != null) && (paramStringBuilder.length() > 0))
     {
-      if (!paramStringBuilder.toString().endsWith(";")) {
-        break label33;
+      if (paramStringBuilder.toString().endsWith(";"))
+      {
+        paramStringBuilder.append(" ");
+        return;
       }
-      paramStringBuilder.append(" ");
+      if (!paramStringBuilder.toString().endsWith("; ")) {
+        paramStringBuilder.append("; ");
+      }
     }
-    label33:
-    while (paramStringBuilder.toString().endsWith("; ")) {
-      return;
-    }
-    paramStringBuilder.append("; ");
   }
   
   public static boolean isDebugMiniApp(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      try
+    }
+    try
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("keyMiniGamePayEnv", 4).getString("keyMiniGamePayEnvAppidVertype", "");
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(MD5Utils.encodeHexStr(paramString))))
       {
-        Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("keyMiniGamePayEnv", 4).getString("keyMiniGamePayEnvAppidVertype", "");
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(bflr.b(paramString))))
+        localObject = paramString.split("_");
+        if (localObject.length > 1)
         {
-          localObject = paramString.split("_");
-          if (localObject.length > 1)
-          {
-            int i = Integer.valueOf(localObject[1]).intValue();
-            if (i != 3) {
-              return true;
-            }
+          int i = Integer.valueOf(localObject[1]).intValue();
+          if (i != 3) {
+            return true;
           }
         }
+        return false;
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("MiniAppUtils", 1, new Object[] { "isDebugMiniApp appidVerTypeStr", paramString, localThrowable });
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MiniAppUtils", 1, new Object[] { "isDebugMiniApp appidVerTypeStr", paramString, localThrowable });
     }
     return false;
   }
@@ -840,48 +946,67 @@ public class MiniAppUtils
   
   public static void miniAppTianShuReport(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    bkgq localbkgq = new bkgq();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str = "";
-    if (localAppRuntime != null) {
-      str = localAppRuntime.getAccount();
+    TianShuReportData localTianShuReportData = new TianShuReportData();
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "";
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localbkgq.b = (str + "_" + l);
-    localbkgq.jdField_a_of_type_Int = 1;
-    localbkgq.jdField_e_of_type_JavaLangString = paramString1;
-    localbkgq.f = paramString2;
-    localbkgq.g = paramString3;
-    localbkgq.d = paramInt;
-    localbkgq.jdField_e_of_type_Int = 1;
-    localbkgq.jdField_a_of_type_Long = l;
-    bkgp.a().a(localbkgq);
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppUtils", 2, "tianShuReport, report itemId: " + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_");
+    localStringBuilder.append(l);
+    localTianShuReportData.b = localStringBuilder.toString();
+    localTianShuReportData.c = 1;
+    localTianShuReportData.f = paramString1;
+    localTianShuReportData.g = paramString2;
+    localTianShuReportData.h = paramString3;
+    localTianShuReportData.p = paramInt;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.o = l;
+    TianShuManager.getInstance().report(localTianShuReportData);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("tianShuReport, report itemId: ");
+      paramString1.append(paramString3);
+      QLog.i("MiniAppUtils", 2, paramString1.toString());
     }
   }
   
   private static boolean needUpdateCache(String paramString, long paramLong)
   {
-    File localFile = new File(paramString);
-    if (localFile.exists())
+    Object localObject = new File(paramString);
+    if (((File)localObject).exists())
     {
       long l = System.currentTimeMillis();
-      QLog.d("MiniAppUtils", 2, "needUpdateCache: precache : lastModified:" + localFile.lastModified() + "  curTime:" + l + "  expire:" + paramLong);
-      if (localFile.lastModified() + 1000L * paramLong > l) {
+      paramString = new StringBuilder();
+      paramString.append("needUpdateCache: precache : lastModified:");
+      paramString.append(((File)localObject).lastModified());
+      paramString.append("  curTime:");
+      paramString.append(l);
+      paramString.append("  expire:");
+      paramString.append(paramLong);
+      QLog.d("MiniAppUtils", 2, paramString.toString());
+      if (((File)localObject).lastModified() + paramLong * 1000L > l) {
         return false;
       }
     }
     else
     {
-      QLog.d("MiniAppUtils", 2, "needUpdateCache precache:  file not exist:" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("needUpdateCache precache:  file not exist:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("MiniAppUtils", 2, ((StringBuilder)localObject).toString());
     }
     return true;
   }
   
   public static void notifyUpdateHongBaoRes()
   {
-    if (aoom.g())
+    if (MiniAppConfProcessor.e())
     {
       BaseApplicationImpl.getApplication().getRuntime().notifyObservers(MiniAppDesktop.class, 103, true, null);
       return;
@@ -893,472 +1018,545 @@ public class MiniAppUtils
   {
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("key_record_mini_app_config", paramMiniAppConfig);
-    AppBrandProxy.g().sendCmd("cmd_update_pull_down_entry_list", localBundle, new MiniAppUtils.8());
+    AppBrandProxy.g().sendCmd("cmd_update_pull_down_entry_list", localBundle, new MiniAppUtils.6());
   }
   
   /* Error */
   public static byte[] packMiniAppInfo(MiniAppInfo paramMiniAppInfo)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: invokestatic 289	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   0: invokestatic 313	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
     //   5: astore_1
-    //   6: aload_1
-    //   7: astore_2
-    //   8: aload_1
-    //   9: iconst_0
-    //   10: invokevirtual 297	android/os/Parcel:setDataPosition	(I)V
-    //   13: aload_1
-    //   14: astore_2
-    //   15: aload_1
-    //   16: aload_0
-    //   17: iconst_0
-    //   18: invokevirtual 877	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
-    //   21: aload_1
-    //   22: astore_2
-    //   23: aload_1
-    //   24: invokevirtual 881	android/os/Parcel:marshall	()[B
-    //   27: astore_0
-    //   28: aload_0
-    //   29: astore_2
+    //   6: aload_2
+    //   7: iconst_0
+    //   8: invokevirtual 321	android/os/Parcel:setDataPosition	(I)V
+    //   11: aload_2
+    //   12: astore_1
+    //   13: aload_2
+    //   14: aload_0
+    //   15: iconst_0
+    //   16: invokevirtual 895	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
+    //   19: aload_2
+    //   20: astore_1
+    //   21: aload_2
+    //   22: invokevirtual 899	android/os/Parcel:marshall	()[B
+    //   25: astore_0
+    //   26: aload_2
+    //   27: ifnull +7 -> 34
     //   30: aload_2
-    //   31: astore_0
-    //   32: aload_1
-    //   33: ifnull +9 -> 42
-    //   36: aload_1
-    //   37: invokevirtual 312	android/os/Parcel:recycle	()V
-    //   40: aload_2
-    //   41: astore_0
-    //   42: aload_0
-    //   43: areturn
-    //   44: astore_0
-    //   45: aconst_null
-    //   46: astore_1
-    //   47: aload_1
-    //   48: astore_2
-    //   49: ldc 32
-    //   51: iconst_1
-    //   52: new 124	java/lang/StringBuilder
-    //   55: dup
-    //   56: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   59: ldc_w 883
-    //   62: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: aload_0
-    //   66: invokestatic 322	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   69: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokestatic 155	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   78: aload_3
-    //   79: astore_0
-    //   80: aload_1
-    //   81: ifnull -39 -> 42
-    //   84: aload_1
-    //   85: invokevirtual 312	android/os/Parcel:recycle	()V
-    //   88: aconst_null
-    //   89: areturn
-    //   90: astore_0
-    //   91: aconst_null
-    //   92: astore_2
-    //   93: aload_2
-    //   94: ifnull +7 -> 101
-    //   97: aload_2
-    //   98: invokevirtual 312	android/os/Parcel:recycle	()V
-    //   101: aload_0
-    //   102: athrow
-    //   103: astore_0
-    //   104: goto -11 -> 93
-    //   107: astore_0
-    //   108: goto -61 -> 47
+    //   31: invokevirtual 336	android/os/Parcel:recycle	()V
+    //   34: aload_0
+    //   35: areturn
+    //   36: astore_0
+    //   37: goto +73 -> 110
+    //   40: astore_1
+    //   41: aload_2
+    //   42: astore_0
+    //   43: aload_1
+    //   44: astore_2
+    //   45: goto +12 -> 57
+    //   48: astore_0
+    //   49: aconst_null
+    //   50: astore_1
+    //   51: goto +59 -> 110
+    //   54: astore_2
+    //   55: aconst_null
+    //   56: astore_0
+    //   57: aload_0
+    //   58: astore_1
+    //   59: new 132	java/lang/StringBuilder
+    //   62: dup
+    //   63: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   66: astore_3
+    //   67: aload_0
+    //   68: astore_1
+    //   69: aload_3
+    //   70: ldc_w 901
+    //   73: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: pop
+    //   77: aload_0
+    //   78: astore_1
+    //   79: aload_3
+    //   80: aload_2
+    //   81: invokestatic 344	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   84: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: aload_0
+    //   89: astore_1
+    //   90: ldc 38
+    //   92: iconst_1
+    //   93: aload_3
+    //   94: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   97: invokestatic 163	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   100: aload_0
+    //   101: ifnull +7 -> 108
+    //   104: aload_0
+    //   105: invokevirtual 336	android/os/Parcel:recycle	()V
+    //   108: aconst_null
+    //   109: areturn
+    //   110: aload_1
+    //   111: ifnull +7 -> 118
+    //   114: aload_1
+    //   115: invokevirtual 336	android/os/Parcel:recycle	()V
+    //   118: aload_0
+    //   119: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	111	0	paramMiniAppInfo	MiniAppInfo
-    //   5	80	1	localParcel	android.os.Parcel
-    //   7	91	2	localObject1	Object
-    //   1	78	3	localObject2	Object
+    //   0	120	0	paramMiniAppInfo	MiniAppInfo
+    //   5	16	1	localObject1	Object
+    //   40	4	1	localThrowable1	Throwable
+    //   50	65	1	localMiniAppInfo	MiniAppInfo
+    //   3	42	2	localObject2	Object
+    //   54	27	2	localThrowable2	Throwable
+    //   66	28	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   2	6	44	java/lang/Throwable
-    //   2	6	90	finally
-    //   8	13	103	finally
-    //   15	21	103	finally
-    //   23	28	103	finally
-    //   49	78	103	finally
-    //   8	13	107	java/lang/Throwable
-    //   15	21	107	java/lang/Throwable
-    //   23	28	107	java/lang/Throwable
+    //   6	11	36	finally
+    //   13	19	36	finally
+    //   21	26	36	finally
+    //   59	67	36	finally
+    //   69	77	36	finally
+    //   79	88	36	finally
+    //   90	100	36	finally
+    //   6	11	40	java/lang/Throwable
+    //   13	19	40	java/lang/Throwable
+    //   21	26	40	java/lang/Throwable
+    //   0	4	48	finally
+    //   0	4	54	java/lang/Throwable
   }
   
-  public static void performWnsCgiRequest(String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, BaseJsPluginEngine paramBaseJsPluginEngine)
+  /* Error */
+  public static boolean performWnsCgiRequest(JSONObject paramJSONObject, com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult paramAsyncResult)
   {
-    if (paramBaseJsPluginEngine == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, paramInt);
-      return;
-    }
-    int j;
-    Object localObject1;
-    int i;
-    label353:
-    label867:
-    for (;;)
-    {
-      Object localObject2;
-      TicketManager localTicketManager;
-      boolean bool;
-      try
-      {
-        localObject2 = new JSONObject(paramString1);
-        localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-        paramString1 = ((JSONObject)localObject2).optJSONObject("header");
-        if (paramString1 != null) {
-          break label1058;
-        }
-        paramString1 = new JSONObject();
-        paramString1.put("Referer", MiniappHttpUtil.getRequestReferer(paramBaseJsPluginEngine));
-        j = 60000;
-        localObject1 = paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo();
-        i = j;
-        if (localObject1 != null)
-        {
-          i = j;
-          if (((ApkgInfo)localObject1).mAppConfigInfo != null)
-          {
-            i = j;
-            if (((ApkgInfo)localObject1).mAppConfigInfo.networkTimeoutInfo != null) {
-              i = ((ApkgInfo)localObject1).mAppConfigInfo.networkTimeoutInfo.request;
-            }
-          }
-        }
-        localObject1 = new bekp();
-        ((bekp)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("url");
-        ((bekp)localObject1).c = paramString1.toString();
-        ((bekp)localObject1).jdField_a_of_type_Int = i;
-        ((bekp)localObject1).jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-        ((bekp)localObject1).b = ((JSONObject)localObject2).optString("method", "GET");
-        ((bekp)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).optString("responseType").equals("base64");
-        ((bekp)localObject1).d = null;
-        bool = ((JSONObject)localObject2).optString("dataType").equalsIgnoreCase("json");
-        if (TextUtils.isEmpty(((bekp)localObject1).jdField_a_of_type_JavaLangString))
-        {
-          paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "empty url", paramInt);
-          return;
-        }
-      }
-      catch (JSONException paramString1)
-      {
-        QLog.e("MiniAppUtils", 1, "performWnsCgiRequest ", paramString1);
-        paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, paramInt);
-        return;
-      }
-      if (((JSONObject)localObject2).has("data"))
-      {
-        paramString1 = ((JSONObject)localObject2).get("data");
-        if (!(paramString1 instanceof String)) {
-          break label353;
-        }
-      }
-      for (((bekp)localObject1).d = ((String)paramString1); TextUtils.isEmpty(((bekp)localObject1).b); ((bekp)localObject1).d = paramString1.toString())
-      {
-        paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "wrong method", paramInt);
-        return;
-      }
-      if (("get".equalsIgnoreCase(((bekp)localObject1).b)) || ("post".equalsIgnoreCase(((bekp)localObject1).b)))
-      {
-        ((bekp)localObject1).b = ((bekp)localObject1).b.toUpperCase();
-        if ("post".equalsIgnoreCase(((bekp)localObject1).b)) {
-          ((bekp)localObject1).jdField_e_of_type_JavaLangString = "application/json";
-        }
-        i = -1;
-      }
-      try
-      {
-        paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        localObject2 = localTicketManager.getPskey(paramString1, myl.a().d(SwiftBrowserCookieMonster.b(((bekp)localObject1).jdField_a_of_type_JavaLangString)));
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          i = getGTK((String)localObject2);
-        }
-        j = i;
-        if (i == -1)
-        {
-          localObject2 = SwiftBrowserCookieMonster.c(((bekp)localObject1).jdField_a_of_type_JavaLangString);
-          j = i;
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            j = i;
-            if (((String)localObject2).contains("p_skey"))
-            {
-              localObject2 = ((String)localObject2).split(";");
-              int m = localObject2.length;
-              int k = 0;
-              for (;;)
-              {
-                j = i;
-                if (k >= m) {
-                  break;
-                }
-                Object localObject3 = localObject2[k];
-                j = i;
-                if (!TextUtils.isEmpty((CharSequence)localObject3))
-                {
-                  j = i;
-                  if (((String)localObject3).contains("p_skey"))
-                  {
-                    localObject3 = ((String)localObject3).substring(((String)localObject3).indexOf("=") + 1, ((String)localObject3).length());
-                    j = i;
-                    if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-                      j = getGTK((String)localObject3);
-                    }
-                  }
-                }
-                k += 1;
-                i = j;
-              }
-              paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, null, "wrong method", paramInt);
-              return;
-            }
-          }
-        }
-        if (j != -1) {
-          break label1051;
-        }
-        i = getGTK(localTicketManager.getSkey(paramString1));
-      }
-      catch (Throwable paramString1)
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppUtils", 1, "get gtk fail.", paramString1);
-          continue;
-          if ("post".equalsIgnoreCase(((bekp)localObject1).b))
-          {
-            if (((bekp)localObject1).jdField_a_of_type_JavaLangString.contains("?")) {}
-            for (((bekp)localObject1).jdField_a_of_type_JavaLangString = (((bekp)localObject1).jdField_a_of_type_JavaLangString + "&g_tk=" + i); QLog.isColorLevel(); ((bekp)localObject1).jdField_a_of_type_JavaLangString = (((bekp)localObject1).jdField_a_of_type_JavaLangString + "?g_tk=" + i))
-            {
-              QLog.d("MiniAppUtils", 2, "url : " + ((bekp)localObject1).jdField_a_of_type_JavaLangString);
-              break;
-            }
-            QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  fail");
-            paramString1 = new JSONObject();
-            try
-            {
-              paramString1.put("wnsCode", 20001);
-              paramBaseJsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString2, paramString1, "perform wnsRequest failed!", paramInt);
-              return;
-            }
-            catch (Exception localException)
-            {
-              break label1033;
-            }
-            i = j;
-          }
-        }
-      }
-      if (i != -1)
-      {
-        if (!"get".equalsIgnoreCase(((bekp)localObject1).b)) {
-          break label867;
-        }
-        if (!TextUtils.isEmpty(((bekp)localObject1).d)) {
-          break label816;
-        }
-      }
-      for (((bekp)localObject1).d = ("g_tk=" + i);; ((bekp)localObject1).d = (((bekp)localObject1).d + "&g_tk=" + i))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppUtils", 2, "wns body : " + ((bekp)localObject1).d);
-        }
-        paramString1 = new MiniAppUtils.7(ThreadManagerV2.getSubThreadLooper(), bool, paramBaseJsPluginEngine, paramJsRuntime, paramString2, paramInt);
-        if (!beko.a().a((bekp)localObject1, paramString1, getCookie(((bekp)localObject1).jdField_a_of_type_JavaLangString))) {
-          break;
-        }
-        QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  success");
-        return;
-      }
-    }
-  }
-  
-  public static boolean performWnsCgiRequest(JSONObject paramJSONObject, AsyncResult paramAsyncResult)
-  {
-    if (paramJSONObject == null)
-    {
-      paramAsyncResult.onReceiveResult(false, null);
-      return false;
-    }
-    TicketManager localTicketManager;
-    Object localObject1;
-    bekp localbekp;
-    boolean bool;
-    try
-    {
-      localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-      localObject1 = paramJSONObject.optJSONObject("header");
-      localbekp = new bekp();
-      localbekp.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
-      if (localObject1 == null) {}
-      for (localObject1 = "{}";; localObject1 = ((JSONObject)localObject1).toString())
-      {
-        localbekp.c = ((String)localObject1);
-        localbekp.jdField_a_of_type_Int = 60000;
-        localbekp.jdField_e_of_type_JavaLangString = "application/x-www-form-urlencoded";
-        localbekp.b = paramJSONObject.optString("method", "GET");
-        localbekp.jdField_a_of_type_Boolean = paramJSONObject.optString("responseType").equals("base64");
-        localbekp.d = null;
-        bool = paramJSONObject.optString("dataType").equalsIgnoreCase("json");
-        if (!TextUtils.isEmpty(localbekp.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-        paramAsyncResult.onReceiveResult(false, null);
-        return false;
-      }
-      if (paramJSONObject.has("data"))
-      {
-        paramJSONObject = paramJSONObject.get("data");
-        if (!(paramJSONObject instanceof String)) {
-          break label231;
-        }
-        localbekp.d = ((String)paramJSONObject);
-      }
-      while (TextUtils.isEmpty(localbekp.b))
-      {
-        paramAsyncResult.onReceiveResult(false, null);
-        return false;
-        label231:
-        localbekp.d = paramJSONObject.toString();
-        continue;
-        return false;
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      QLog.e("MiniAppUtils", 1, "performWnsCgiRequest ", paramJSONObject);
-      paramAsyncResult.onReceiveResult(false, null);
-    }
-    for (;;)
-    {
-      int i;
-      if (("get".equalsIgnoreCase(localbekp.b)) || ("post".equalsIgnoreCase(localbekp.b)))
-      {
-        localbekp.b = localbekp.b.toUpperCase();
-        if ("post".equalsIgnoreCase(localbekp.b)) {
-          localbekp.jdField_e_of_type_JavaLangString = "application/json";
-        }
-        i = -1;
-      }
-      try
-      {
-        paramJSONObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        localObject1 = localTicketManager.getPskey(paramJSONObject, myl.a().d(SwiftBrowserCookieMonster.b(localbekp.jdField_a_of_type_JavaLangString)));
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          i = getGTK((String)localObject1);
-        }
-        j = i;
-        if (i == -1)
-        {
-          localObject1 = SwiftBrowserCookieMonster.c(localbekp.jdField_a_of_type_JavaLangString);
-          j = i;
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            j = i;
-            if (((String)localObject1).contains("p_skey"))
-            {
-              localObject1 = ((String)localObject1).split(";");
-              int m = localObject1.length;
-              int k = 0;
-              for (;;)
-              {
-                j = i;
-                if (k >= m) {
-                  break;
-                }
-                Object localObject2 = localObject1[k];
-                j = i;
-                if (!TextUtils.isEmpty((CharSequence)localObject2))
-                {
-                  j = i;
-                  if (((String)localObject2).contains("p_skey"))
-                  {
-                    localObject2 = ((String)localObject2).substring(((String)localObject2).indexOf("=") + 1, ((String)localObject2).length());
-                    j = i;
-                    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-                      j = getGTK((String)localObject2);
-                    }
-                  }
-                }
-                k += 1;
-                i = j;
-              }
-              paramAsyncResult.onReceiveResult(false, null);
-              return false;
-            }
-          }
-        }
-        if (j == -1)
-        {
-          i = getGTK(localTicketManager.getSkey(paramJSONObject));
-          if (i != -1)
-          {
-            if (!"get".equalsIgnoreCase(localbekp.b)) {
-              break label735;
-            }
-            if (!TextUtils.isEmpty(localbekp.d)) {
-              break label685;
-            }
-          }
-          label685:
-          for (localbekp.d = ("g_tk=" + i);; localbekp.d = (localbekp.d + "&g_tk=" + i))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("MiniAppUtils", 2, "wns body : " + localbekp.d);
-            }
-            paramJSONObject = new MiniAppUtils.6(ThreadManagerV2.getSubThreadLooper(), bool, paramAsyncResult);
-            if (!beko.a().a(localbekp, paramJSONObject, getCookie(localbekp.jdField_a_of_type_JavaLangString))) {
-              break;
-            }
-            QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  success");
-            return true;
-          }
-        }
-      }
-      catch (Throwable paramJSONObject)
-      {
-        for (;;)
-        {
-          int j;
-          label899:
-          for (;;)
-          {
-            QLog.e("MiniAppUtils", 1, "get gtk fail.", paramJSONObject);
-            continue;
-            label735:
-            if ("post".equalsIgnoreCase(localbekp.b))
-            {
-              if (localbekp.jdField_a_of_type_JavaLangString.contains("?")) {}
-              for (localbekp.jdField_a_of_type_JavaLangString = (localbekp.jdField_a_of_type_JavaLangString + "&g_tk=" + i); QLog.isColorLevel(); localbekp.jdField_a_of_type_JavaLangString = (localbekp.jdField_a_of_type_JavaLangString + "?g_tk=" + i))
-              {
-                QLog.d("MiniAppUtils", 2, "url : " + localbekp.jdField_a_of_type_JavaLangString);
-                break;
-              }
-              QLog.d("MiniAppUtils", 2, "performWnsCgiRequest  fail");
-              paramJSONObject = new JSONObject();
-              try
-              {
-                paramJSONObject.put("wnsCode", 20001);
-                paramAsyncResult.onReceiveResult(false, paramJSONObject);
-              }
-              catch (Exception localException)
-              {
-                break label899;
-              }
-            }
-          }
-          i = j;
-        }
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnonnull +13 -> 14
+    //   4: aload_1
+    //   5: iconst_0
+    //   6: aconst_null
+    //   7: invokeinterface 909 3 0
+    //   12: iconst_0
+    //   13: ireturn
+    //   14: invokestatic 418	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   17: invokevirtual 422	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   20: iconst_2
+    //   21: invokevirtual 910	mqq/app/AppRuntime:getManager	(I)Lmqq/manager/Manager;
+    //   24: checkcast 912	mqq/manager/TicketManager
+    //   27: astore 10
+    //   29: aload_0
+    //   30: ldc_w 914
+    //   33: invokevirtual 918	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   36: astore 8
+    //   38: new 364	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo
+    //   41: dup
+    //   42: invokespecial 365	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:<init>	()V
+    //   45: astore 9
+    //   47: aload 9
+    //   49: aload_0
+    //   50: ldc_w 920
+    //   53: invokevirtual 923	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   56: putfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   59: aload 8
+    //   61: ifnonnull +11 -> 72
+    //   64: ldc_w 925
+    //   67: astore 8
+    //   69: goto +10 -> 79
+    //   72: aload 8
+    //   74: invokevirtual 926	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   77: astore 8
+    //   79: aload 9
+    //   81: aload 8
+    //   83: putfield 928	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:c	Ljava/lang/String;
+    //   86: aload 9
+    //   88: ldc_w 929
+    //   91: putfield 379	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:h	I
+    //   94: aload 9
+    //   96: ldc 8
+    //   98: putfield 381	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:e	Ljava/lang/String;
+    //   101: aload 9
+    //   103: aload_0
+    //   104: ldc_w 931
+    //   107: ldc_w 369
+    //   110: invokevirtual 933	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   113: putfield 372	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:b	Ljava/lang/String;
+    //   116: aload 9
+    //   118: aload_0
+    //   119: ldc_w 935
+    //   122: invokevirtual 923	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   125: ldc_w 937
+    //   128: invokevirtual 247	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   131: putfield 376	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:g	Z
+    //   134: aload 9
+    //   136: aconst_null
+    //   137: putfield 939	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:d	Ljava/lang/String;
+    //   140: aload_0
+    //   141: ldc_w 941
+    //   144: invokevirtual 923	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   147: ldc_w 943
+    //   150: invokevirtual 946	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   153: istore 6
+    //   155: aload 9
+    //   157: getfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   160: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   163: ifeq +13 -> 176
+    //   166: aload_1
+    //   167: iconst_0
+    //   168: aconst_null
+    //   169: invokeinterface 909 3 0
+    //   174: iconst_0
+    //   175: ireturn
+    //   176: aload_0
+    //   177: ldc_w 948
+    //   180: invokevirtual 951	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   183: ifeq +39 -> 222
+    //   186: aload_0
+    //   187: ldc_w 948
+    //   190: invokevirtual 954	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   193: astore_0
+    //   194: aload_0
+    //   195: instanceof 234
+    //   198: ifeq +15 -> 213
+    //   201: aload 9
+    //   203: aload_0
+    //   204: checkcast 234	java/lang/String
+    //   207: putfield 939	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:d	Ljava/lang/String;
+    //   210: goto +12 -> 222
+    //   213: aload 9
+    //   215: aload_0
+    //   216: invokevirtual 955	java/lang/Object:toString	()Ljava/lang/String;
+    //   219: putfield 939	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:d	Ljava/lang/String;
+    //   222: aload 9
+    //   224: getfield 372	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:b	Ljava/lang/String;
+    //   227: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   230: ifeq +13 -> 243
+    //   233: aload_1
+    //   234: iconst_0
+    //   235: aconst_null
+    //   236: invokeinterface 909 3 0
+    //   241: iconst_0
+    //   242: ireturn
+    //   243: ldc_w 956
+    //   246: aload 9
+    //   248: getfield 372	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:b	Ljava/lang/String;
+    //   251: invokevirtual 946	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   254: istore 7
+    //   256: iload 7
+    //   258: ifne +30 -> 288
+    //   261: ldc_w 958
+    //   264: aload 9
+    //   266: getfield 372	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:b	Ljava/lang/String;
+    //   269: invokevirtual 946	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   272: ifeq +6 -> 278
+    //   275: goto +13 -> 288
+    //   278: aload_1
+    //   279: iconst_0
+    //   280: aconst_null
+    //   281: invokeinterface 909 3 0
+    //   286: iconst_0
+    //   287: ireturn
+    //   288: aload 9
+    //   290: aload 9
+    //   292: getfield 372	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:b	Ljava/lang/String;
+    //   295: invokevirtual 961	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   298: putfield 372	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:b	Ljava/lang/String;
+    //   301: ldc_w 958
+    //   304: aload 9
+    //   306: getfield 372	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:b	Ljava/lang/String;
+    //   309: invokevirtual 946	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   312: ifeq +10 -> 322
+    //   315: aload 9
+    //   317: ldc 11
+    //   319: putfield 381	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:e	Ljava/lang/String;
+    //   322: invokestatic 418	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   325: invokevirtual 422	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   328: invokevirtual 435	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   331: astore_0
+    //   332: aload 10
+    //   334: aload_0
+    //   335: invokestatic 966	com/tencent/biz/AuthorizeConfig:a	()Lcom/tencent/biz/AuthorizeConfig;
+    //   338: aload 9
+    //   340: getfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   343: invokestatic 968	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   346: invokevirtual 970	com/tencent/biz/AuthorizeConfig:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   349: invokeinterface 973 3 0
+    //   354: astore 8
+    //   356: aload 8
+    //   358: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   361: ifne +432 -> 793
+    //   364: aload 8
+    //   366: invokestatic 975	com/tencent/mobileqq/mini/entry/MiniAppUtils:getGTK	(Ljava/lang/String;)I
+    //   369: istore_2
+    //   370: goto +3 -> 373
+    //   373: iload_2
+    //   374: iconst_m1
+    //   375: if_icmpne +434 -> 809
+    //   378: aload 9
+    //   380: getfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   383: invokestatic 430	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   386: astore 8
+    //   388: aload 8
+    //   390: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   393: ifne +416 -> 809
+    //   396: aload 8
+    //   398: ldc_w 977
+    //   401: invokevirtual 446	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   404: ifeq +405 -> 809
+    //   407: aload 8
+    //   409: ldc_w 443
+    //   412: invokevirtual 465	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   415: astore 8
+    //   417: aload 8
+    //   419: arraylength
+    //   420: istore 5
+    //   422: iconst_0
+    //   423: istore 4
+    //   425: iload_2
+    //   426: istore_3
+    //   427: iload 4
+    //   429: iload 5
+    //   431: if_icmpge +74 -> 505
+    //   434: aload 8
+    //   436: iload 4
+    //   438: aaload
+    //   439: astore 11
+    //   441: iload_2
+    //   442: istore_3
+    //   443: aload 11
+    //   445: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   448: ifne +350 -> 798
+    //   451: iload_2
+    //   452: istore_3
+    //   453: aload 11
+    //   455: ldc_w 977
+    //   458: invokevirtual 446	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   461: ifeq +337 -> 798
+    //   464: aload 11
+    //   466: aload 11
+    //   468: ldc_w 979
+    //   471: invokevirtual 982	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   474: iconst_1
+    //   475: iadd
+    //   476: aload 11
+    //   478: invokevirtual 238	java/lang/String:length	()I
+    //   481: invokevirtual 985	java/lang/String:substring	(II)Ljava/lang/String;
+    //   484: astore 11
+    //   486: iload_2
+    //   487: istore_3
+    //   488: aload 11
+    //   490: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   493: ifne +305 -> 798
+    //   496: aload 11
+    //   498: invokestatic 975	com/tencent/mobileqq/mini/entry/MiniAppUtils:getGTK	(Ljava/lang/String;)I
+    //   501: istore_3
+    //   502: goto +296 -> 798
+    //   505: iload_3
+    //   506: istore_2
+    //   507: iload_3
+    //   508: iconst_m1
+    //   509: if_icmpne +15 -> 524
+    //   512: aload 10
+    //   514: aload_0
+    //   515: invokeinterface 988 2 0
+    //   520: invokestatic 975	com/tencent/mobileqq/mini/entry/MiniAppUtils:getGTK	(Ljava/lang/String;)I
+    //   523: istore_2
+    //   524: iload_2
+    //   525: iconst_m1
+    //   526: if_icmpeq +158 -> 684
+    //   529: aload 9
+    //   531: getfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   534: ldc_w 990
+    //   537: invokevirtual 446	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   540: ifeq +47 -> 587
+    //   543: new 132	java/lang/StringBuilder
+    //   546: dup
+    //   547: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   550: astore_0
+    //   551: aload_0
+    //   552: aload 9
+    //   554: getfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   557: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   560: pop
+    //   561: aload_0
+    //   562: ldc_w 992
+    //   565: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   568: pop
+    //   569: aload_0
+    //   570: iload_2
+    //   571: invokevirtual 995	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   574: pop
+    //   575: aload 9
+    //   577: aload_0
+    //   578: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   581: putfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   584: goto +44 -> 628
+    //   587: new 132	java/lang/StringBuilder
+    //   590: dup
+    //   591: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   594: astore_0
+    //   595: aload_0
+    //   596: aload 9
+    //   598: getfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   601: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   604: pop
+    //   605: aload_0
+    //   606: ldc_w 997
+    //   609: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: pop
+    //   613: aload_0
+    //   614: iload_2
+    //   615: invokevirtual 995	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   618: pop
+    //   619: aload 9
+    //   621: aload_0
+    //   622: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   625: putfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   628: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   631: ifeq +53 -> 684
+    //   634: new 132	java/lang/StringBuilder
+    //   637: dup
+    //   638: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   641: astore_0
+    //   642: aload_0
+    //   643: ldc_w 999
+    //   646: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   649: pop
+    //   650: aload_0
+    //   651: aload 9
+    //   653: getfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   656: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   659: pop
+    //   660: ldc 38
+    //   662: iconst_2
+    //   663: aload_0
+    //   664: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   667: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   670: goto +14 -> 684
+    //   673: astore_0
+    //   674: ldc 38
+    //   676: iconst_1
+    //   677: ldc_w 1001
+    //   680: aload_0
+    //   681: invokestatic 480	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   684: new 1003	com/tencent/mobileqq/mini/entry/MiniAppUtils$5
+    //   687: dup
+    //   688: invokestatic 1006	com/tencent/mobileqq/app/ThreadManagerV2:getSubThreadLooper	()Landroid/os/Looper;
+    //   691: iload 6
+    //   693: aload_1
+    //   694: invokespecial 1009	com/tencent/mobileqq/mini/entry/MiniAppUtils$5:<init>	(Landroid/os/Looper;ZLcom/tencent/qqmini/sdk/launcher/core/proxy/AsyncResult;)V
+    //   697: astore_0
+    //   698: invokestatic 386	com/tencent/mobileqq/webview/webso/WebSoCgiService:a	()Lcom/tencent/mobileqq/webview/webso/WebSoCgiService;
+    //   701: aload 9
+    //   703: aload_0
+    //   704: aload 9
+    //   706: getfield 367	com/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo:a	Ljava/lang/String;
+    //   709: invokestatic 1011	com/tencent/mobileqq/mini/entry/MiniAppUtils:getCookie	(Ljava/lang/String;)Ljava/lang/String;
+    //   712: invokevirtual 1014	com/tencent/mobileqq/webview/webso/WebSoCgiService:a	(Lcom/tencent/mobileqq/webview/webso/WebSoCgiService$CgiReqInfo;Landroid/os/Handler;Ljava/lang/String;)Z
+    //   715: ifeq +14 -> 729
+    //   718: ldc 38
+    //   720: iconst_2
+    //   721: ldc_w 1016
+    //   724: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   727: iconst_1
+    //   728: ireturn
+    //   729: ldc 38
+    //   731: iconst_2
+    //   732: ldc_w 1018
+    //   735: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   738: new 228	org/json/JSONObject
+    //   741: dup
+    //   742: invokespecial 1019	org/json/JSONObject:<init>	()V
+    //   745: astore_0
+    //   746: aload_0
+    //   747: ldc_w 1021
+    //   750: sipush 20001
+    //   753: invokevirtual 1025	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   756: pop
+    //   757: aload_1
+    //   758: iconst_0
+    //   759: aload_0
+    //   760: invokeinterface 909 3 0
+    //   765: iconst_0
+    //   766: ireturn
+    //   767: astore_0
+    //   768: ldc 38
+    //   770: iconst_1
+    //   771: ldc_w 1027
+    //   774: aload_0
+    //   775: invokestatic 480	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   778: aload_1
+    //   779: iconst_0
+    //   780: aconst_null
+    //   781: invokeinterface 909 3 0
+    //   786: iconst_0
+    //   787: ireturn
+    //   788: astore 8
+    //   790: goto -33 -> 757
+    //   793: iconst_m1
+    //   794: istore_2
+    //   795: goto -422 -> 373
+    //   798: iload 4
+    //   800: iconst_1
+    //   801: iadd
+    //   802: istore 4
+    //   804: iload_3
+    //   805: istore_2
+    //   806: goto -381 -> 425
+    //   809: iload_2
+    //   810: istore_3
+    //   811: goto -306 -> 505
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	814	0	paramJSONObject	JSONObject
+    //   0	814	1	paramAsyncResult	com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult
+    //   369	441	2	i	int
+    //   426	385	3	j	int
+    //   423	380	4	k	int
+    //   420	12	5	m	int
+    //   153	539	6	bool1	boolean
+    //   254	3	7	bool2	boolean
+    //   36	399	8	localObject1	Object
+    //   788	1	8	localException	Exception
+    //   45	660	9	localCgiReqInfo	WebSoCgiService.CgiReqInfo
+    //   27	486	10	localTicketManager	mqq.manager.TicketManager
+    //   439	58	11	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   322	370	673	java/lang/Throwable
+    //   378	422	673	java/lang/Throwable
+    //   443	451	673	java/lang/Throwable
+    //   453	486	673	java/lang/Throwable
+    //   488	502	673	java/lang/Throwable
+    //   512	524	673	java/lang/Throwable
+    //   529	584	673	java/lang/Throwable
+    //   587	628	673	java/lang/Throwable
+    //   628	670	673	java/lang/Throwable
+    //   14	59	767	org/json/JSONException
+    //   72	79	767	org/json/JSONException
+    //   79	174	767	org/json/JSONException
+    //   176	210	767	org/json/JSONException
+    //   213	222	767	org/json/JSONException
+    //   222	241	767	org/json/JSONException
+    //   243	256	767	org/json/JSONException
+    //   261	275	767	org/json/JSONException
+    //   278	286	767	org/json/JSONException
+    //   288	322	767	org/json/JSONException
+    //   322	370	767	org/json/JSONException
+    //   378	422	767	org/json/JSONException
+    //   443	451	767	org/json/JSONException
+    //   453	486	767	org/json/JSONException
+    //   488	502	767	org/json/JSONException
+    //   512	524	767	org/json/JSONException
+    //   529	584	767	org/json/JSONException
+    //   587	628	767	org/json/JSONException
+    //   628	670	767	org/json/JSONException
+    //   674	684	767	org/json/JSONException
+    //   684	727	767	org/json/JSONException
+    //   729	746	767	org/json/JSONException
+    //   746	757	767	org/json/JSONException
+    //   757	765	767	org/json/JSONException
+    //   746	757	788	java/lang/Exception
   }
   
   public static void preFetchAppCacheData(Context paramContext, MiniAppInfo paramMiniAppInfo)
@@ -1386,81 +1584,112 @@ public class MiniAppUtils
   
   public static void putSpDesktopGdtCookie(String paramString)
   {
-    String str = "mini_app_desktop_gdt_cookie_" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    StorageUtil.getPreference().edit().putString(str, paramString).apply();
-    QLog.d("MiniAppUtils", 1, "putSpDesktopGdtCookie, gdt_cookie: " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mini_app_desktop_gdt_cookie_");
+    ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localObject = ((StringBuilder)localObject).toString();
+    StorageUtil.getPreference().edit().putString((String)localObject, paramString).apply();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("putSpDesktopGdtCookie, gdt_cookie: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("MiniAppUtils", 1, ((StringBuilder)localObject).toString());
   }
   
   private static void recordMiniAppInfoToCacheListAndUpdateDB(MiniAppInfo paramMiniAppInfo)
   {
     paramMiniAppInfo.recommend = 0;
     paramMiniAppInfo.extendData = null;
-    if (aoom.g()) {
+    if (MiniAppConfProcessor.e()) {
       DesktopDataManager.recordMiniAppStart(paramMiniAppInfo);
-    }
-    for (;;)
-    {
-      QLog.w("MiniAppUtils", 1, "recordMiniAppInfoToCacheListAndUpdateDB, appInfo = " + paramMiniAppInfo);
-      MiniAppLocalSearchManager localMiniAppLocalSearchManager = (MiniAppLocalSearchManager)BaseApplicationImpl.getApplication().getRuntime().getManager(310);
-      if (localMiniAppLocalSearchManager != null) {
-        localMiniAppLocalSearchManager.updateDataToDB(paramMiniAppInfo);
-      }
-      return;
+    } else {
       MiniAppUserAppInfoListManager.recordMiniAppStart(paramMiniAppInfo);
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("recordMiniAppInfoToCacheListAndUpdateDB, appInfo = ");
+    ((StringBuilder)localObject).append(paramMiniAppInfo);
+    QLog.w("MiniAppUtils", 1, ((StringBuilder)localObject).toString());
+    localObject = (MiniAppLocalSearchManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.MINI_APP_LOCAL_SEARCH);
+    if (localObject != null) {
+      ((MiniAppLocalSearchManager)localObject).updateDataToDB(paramMiniAppInfo);
     }
   }
   
   public static void reportMiniAppAd(String paramString)
   {
-    QLog.d("MiniAppUtils", 1, "reportMiniAppAd reportUrl = " + paramString);
-    if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportMiniAppAd reportUrl = ");
+    localStringBuilder.append(paramString);
+    QLog.d("MiniAppUtils", 1, localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!URLUtil.isNetworkUrl(paramString)) {
+        return;
+      }
+      ThreadManager.executeOnNetWorkThread(new MiniAppUtils.11(paramString));
     }
-    ThreadManager.executeOnNetWorkThread(new MiniAppUtils.12(paramString));
   }
   
   public static void reportProfileCardClick(Card paramCard, boolean paramBoolean) {}
   
-  public static void reportProfileCardExposed(Card paramCard, boolean paramBoolean)
+  public static void reportProfileCardExposed(ProfileMiniAppInfo paramProfileMiniAppInfo, boolean paramBoolean)
   {
+    int j = 0;
+    int i = 0;
     if (paramBoolean) {}
     try
     {
-      if ((!paramCard.isShowMiniPlaying) || (paramCard.miniAppInfoArrayList == null) || (paramCard.miniAppInfoArrayList.size() <= 0)) {
+      if ((!paramProfileMiniAppInfo.isShowMiniPlaying) || (paramProfileMiniAppInfo.miniAppInfoArrayList == null) || (paramProfileMiniAppInfo.miniAppInfoArrayList.size() <= 0)) {
+        break label330;
+      }
+      localObject = new ArrayList();
+      while (i < paramProfileMiniAppInfo.miniAppInfoArrayList.size())
+      {
+        localMiniAppConfig = new MiniAppConfig(MiniAppInfo.from((INTERFACE.StApiAppInfo)paramProfileMiniAppInfo.miniAppInfoArrayList.get(i)));
+        localMiniAppConfig.launchParam.scene = 2062;
+        ((ArrayList)localObject).add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, i));
+        i += 1;
+      }
+      MiniProgramLpReportDC04239.reportPageView((List)localObject, "expo");
+      return;
+    }
+    catch (Exception paramProfileMiniAppInfo)
+    {
+      Object localObject;
+      MiniAppConfig localMiniAppConfig;
+      QLog.e("MiniAppUtils", 1, "reportProfileCardExposed error", paramProfileMiniAppInfo);
+    }
+    if ((paramProfileMiniAppInfo.isShowMiniPlaying) && (paramProfileMiniAppInfo.appPlayingInfos != null) && (paramProfileMiniAppInfo.appPlayingInfos.size() > 0))
+    {
+      if (paramProfileMiniAppInfo.appPlayingInfos.size() > 1)
+      {
+        localObject = new ArrayList();
+        i = j;
+        while (i < paramProfileMiniAppInfo.appPlayingInfos.size())
+        {
+          localMiniAppConfig = new MiniAppConfig(MiniAppInfo.from(((MISC.StAppPlayingInfo)paramProfileMiniAppInfo.appPlayingInfos.get(i)).appMetaInfo));
+          localMiniAppConfig.launchParam.scene = 2062;
+          ((ArrayList)localObject).add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, i));
+          i += 1;
+        }
+        MiniProgramLpReportDC04239.reportPageView((List)localObject, "expo");
         return;
       }
-      localArrayList = new ArrayList();
-      i = 0;
-      while (i < paramCard.miniAppInfoArrayList.size())
-      {
-        localMiniAppConfig = new MiniAppConfig((MiniAppInfo)paramCard.miniAppInfoArrayList.get(i));
-        localMiniAppConfig.launchParam.scene = 2062;
-        localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, i));
-        i += 1;
+      paramProfileMiniAppInfo = ((MISC.StAppPlayingInfo)paramProfileMiniAppInfo.appPlayingInfos.get(0)).appMetaInfo;
+      localObject = new MiniAppConfig(MiniAppInfo.from(paramProfileMiniAppInfo));
+      ((MiniAppConfig)localObject).launchParam.scene = 2062;
+      if (!MiniGamePlayTogetherHandler.a(paramProfileMiniAppInfo)) {
+        break label331;
       }
-      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
-      return;
+      paramProfileMiniAppInfo = "id_card";
     }
-    catch (Exception paramCard)
+    for (;;)
     {
-      ArrayList localArrayList;
-      int i;
-      MiniAppConfig localMiniAppConfig;
-      QLog.e("MiniAppUtils", 1, "reportProfileCardExposed error", paramCard);
-    }
-    if ((paramCard.isShowMiniPlaying) && (paramCard.appPlayingInfos != null) && (paramCard.appPlayingInfos.size() > 0))
-    {
-      localArrayList = new ArrayList();
-      i = 0;
-      while (i < paramCard.appPlayingInfos.size())
-      {
-        localMiniAppConfig = new MiniAppConfig(MiniAppInfo.from(((MISC.StAppPlayingInfo)paramCard.appPlayingInfos.get(i)).appMetaInfo));
-        localMiniAppConfig.launchParam.scene = 2062;
-        localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, i));
-        i += 1;
-      }
-      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
+      MiniProgramLpReportDC04239.reportAsync((MiniAppConfig)localObject, paramProfileMiniAppInfo, "expo", null, null);
       return;
+      label330:
+      return;
+      label331:
+      paramProfileMiniAppInfo = "page_view";
     }
   }
   
@@ -1502,10 +1731,11 @@ public class MiniAppUtils
   
   public static void saveGdtCookie(COMM.StCommonExt paramStCommonExt)
   {
-    if ((paramStCommonExt == null) || (paramStCommonExt.mapInfo == null)) {}
-    for (;;)
+    if (paramStCommonExt != null)
     {
-      return;
+      if (paramStCommonExt.mapInfo == null) {
+        return;
+      }
       int i = 0;
       while (i < paramStCommonExt.mapInfo.size())
       {
@@ -1522,10 +1752,13 @@ public class MiniAppUtils
   
   private static void saveToMiniAppStorage(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramContext == null) || (paramString3 == null)) {
-      return;
+    if ((!TextUtils.isEmpty(paramString1)) && (paramContext != null))
+    {
+      if (paramString3 == null) {
+        return;
+      }
+      ThreadManager.getFileThreadHandler().post(new MiniAppUtils.2(paramContext, paramString1, paramString2, paramString3));
     }
-    ThreadManager.getFileThreadHandler().post(new MiniAppUtils.3(paramContext, paramString1, paramString2, paramString3));
   }
   
   public static void setImage(@NonNull ImageView paramImageView, @Nullable String paramString)
@@ -1544,15 +1777,20 @@ public class MiniAppUtils
     }
     catch (IllegalArgumentException paramImageView)
     {
-      QLog.e("MiniAppUtils", 1, "setImage failed:" + paramString);
+      label29:
+      break label29;
     }
+    paramImageView = new StringBuilder();
+    paramImageView.append("setImage failed:");
+    paramImageView.append(paramString);
+    QLog.e("MiniAppUtils", 1, paramImageView.toString());
   }
   
   public static void setJump(Activity paramActivity, @NonNull View paramView, @Nullable MiniAppInfo paramMiniAppInfo, int paramInt)
   {
     if (paramMiniAppInfo != null)
     {
-      paramView.setOnClickListener(new MiniAppUtils.1(paramInt, paramActivity, paramMiniAppInfo));
+      paramView.setOnClickListener(new MiniAppUtils.1(paramActivity, paramMiniAppInfo, paramInt));
       return;
     }
     paramView.setOnClickListener(null);
@@ -1572,7 +1810,10 @@ public class MiniAppUtils
   
   public static void updateMiniAppList(int paramInt)
   {
-    QLog.d("MiniAppUtils", 1, "[MiniAppUserAppInfoListManager]. updateMiniAppList, type = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniAppUserAppInfoListManager]. updateMiniAppList, type = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("MiniAppUtils", 1, localStringBuilder.toString());
     BaseApplicationImpl.getApplication().getRuntime().notifyObservers(MiniAppDesktop.class, paramInt, true, null);
     BaseApplicationImpl.getApplication().getRuntime().notifyObservers(QQMessagePageMiniAppEntryManager.class, paramInt, true, null);
     BaseApplicationImpl.getApplication().getRuntime().notifyObservers(ContactsMiniAppEntryManager.class, paramInt, true, null);
@@ -1580,26 +1821,34 @@ public class MiniAppUtils
   
   private static void updateMiniAppMemoryCache(MiniAppConfig paramMiniAppConfig)
   {
-    if ((paramMiniAppConfig.config == null) || (TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
+    if ((paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)))
     {
-      QLog.e("MiniAppUtils", 1, "updateMiniAppMemoryCache, appInfo: " + paramMiniAppConfig.config);
+      if (paramMiniAppConfig.config.verType != 3)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateMiniAppMemoryCache, verType: ");
+        localStringBuilder.append(paramMiniAppConfig.config.verType);
+        QLog.d("MiniAppUtils", 1, localStringBuilder.toString());
+        paramMiniAppConfig = MiniAppInfo.copy(paramMiniAppConfig.config);
+        paramMiniAppConfig.debugInfo = null;
+        recordMiniAppInfoToCacheListAndUpdateDB(paramMiniAppConfig);
+        return;
+      }
+      MiniAppCmdUtil.getInstance().getAppInfoById(null, paramMiniAppConfig.config.appId, paramMiniAppConfig.launchParam.entryPath, paramMiniAppConfig.launchParam.envVersion, new MiniAppUtils.10(paramMiniAppConfig));
       return;
     }
-    if (paramMiniAppConfig.config.verType != 3)
-    {
-      QLog.d("MiniAppUtils", 1, "updateMiniAppMemoryCache, verType: " + paramMiniAppConfig.config.verType);
-      paramMiniAppConfig = MiniAppInfo.copy(paramMiniAppConfig.config);
-      paramMiniAppConfig.debugInfo = null;
-      recordMiniAppInfoToCacheListAndUpdateDB(paramMiniAppConfig);
-      return;
-    }
-    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramMiniAppConfig.config.appId, paramMiniAppConfig.launchParam.entryPath, paramMiniAppConfig.launchParam.envVersion, new MiniAppUtils.11(paramMiniAppConfig));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateMiniAppMemoryCache, appInfo: ");
+    localStringBuilder.append(paramMiniAppConfig.config);
+    QLog.e("MiniAppUtils", 1, localStringBuilder.toString());
   }
   
   public static void updatePullDownEntryListData(MiniAppConfig paramMiniAppConfig)
   {
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.isShortcutFakeApp())) {}
-    while ((paramMiniAppConfig != null) && (paramMiniAppConfig.config.appMode != null) && (paramMiniAppConfig.config.appMode.keepOffPullList)) {
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.isShortcutFakeApp())) {
+      return;
+    }
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config.appMode != null) && (paramMiniAppConfig.config.appMode.keepOffPullList)) {
       return;
     }
     if (!TextUtils.isEmpty(MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication()))))
@@ -1607,13 +1856,24 @@ public class MiniAppUtils
       QLog.d("MiniAppUtils", 1, "updatePullDownEntryListData, has forbidToken");
       return;
     }
-    ThreadManager.excute(new MiniAppUtils.9(paramMiniAppConfig), 16, null, true);
-    ThreadManagerV2.excute(new MiniAppUtils.10(paramMiniAppConfig), 128, null, true);
+    ThreadManager.excute(new MiniAppUtils.8(paramMiniAppConfig), 16, null, true);
+    ThreadManagerV2.excute(new MiniAppUtils.9(paramMiniAppConfig), 128, null, true);
+  }
+  
+  public static void updatePullDownEntryWeixinApp(String paramString, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updatePullDownEntryWeixinApp, appid = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",scene = ");
+    localStringBuilder.append(paramInt);
+    QLog.i("MiniAppUtils", 1, localStringBuilder.toString());
+    MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString, "", "", new MiniAppUtils.7(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils
  * JD-Core Version:    0.7.0.1
  */

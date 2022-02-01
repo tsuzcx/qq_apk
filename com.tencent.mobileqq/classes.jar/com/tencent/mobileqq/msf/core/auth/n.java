@@ -2,17 +2,20 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ah;
+import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
-import com.tencent.mobileqq.msf.service.t;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import oicq.wlogin_sdk.request.WUserSigInfo;
@@ -24,183 +27,225 @@ import oicq.wlogin_sdk.tools.util;
 public class n
 {
   static final String a = "MSF.C.WTLoginCenter.MsfProvider";
-  static ConcurrentHashMap b = new ConcurrentHashMap();
-  public static final int c = 262208;
-  public static final int d = 34869344;
-  public static final int e = 1052704;
+  public static final String b = "process";
+  public static final String c = "com.tencent.mobileqq:openSdk";
+  static ConcurrentHashMap d = new ConcurrentHashMap();
+  public static final int e = 262208;
+  public static final int f = 34869344;
+  public static final int g = 1052704;
   
   public static int a(WUserSigInfo paramWUserSigInfo, String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean, WtloginMsfListener paramWtloginMsfListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 2, "SendData uin:" + paramString1 + " serviceCmd:" + paramString2 + " timeout:" + paramInt + " isWTSendSelf:" + paramBoolean + " wUserSigInfo:" + HexUtil.bytes2HexStr(paramWUserSigInfo._reserveData));
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("SendData uin:");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(" serviceCmd:");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(" timeout:");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(" isWTSendSelf:");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append(" wUserSigInfo:");
+      ((StringBuilder)localObject1).append(HexUtil.bytes2HexStr(paramWUserSigInfo._reserveData));
+      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject;
-    ToServiceMsg localToServiceMsg2;
-    MsfCommand localMsfCommand;
-    ToServiceMsg localToServiceMsg1;
     if (!paramBoolean)
     {
       paramInt = c(paramWUserSigInfo);
-      localObject = (p)b.get(Integer.valueOf(paramInt));
-      if (localObject == null)
+      localObject2 = (p)d.get(Integer.valueOf(paramInt));
+      if (localObject2 == null)
       {
-        QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "can not find WtloginWrapper sendData for " + paramInt);
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("can not find WtloginWrapper sendData for ");
+        paramWUserSigInfo.append(paramInt);
+        QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, paramWUserSigInfo.toString());
         return -1;
       }
-      ((p)localObject).c = paramWtloginMsfListener;
-      localToServiceMsg2 = ((p)localObject).d;
-      if ((localToServiceMsg2.getMsfCommand() == MsfCommand.wt_name2uin) && (paramString2.equals("wtlogin.login"))) {
-        ((p)localObject).e.getAccountCenter().b(localToServiceMsg2.getUin(), paramString1);
+      ((p)localObject2).c = paramWtloginMsfListener;
+      ToServiceMsg localToServiceMsg = ((p)localObject2).d;
+      if ((localToServiceMsg.getMsfCommand() == MsfCommand.wt_name2uin) && (paramString2.equals("wtlogin.login"))) {
+        ((p)localObject2).e.getAccountCenter().b(localToServiceMsg.getUin(), paramString1);
       }
-      localMsfCommand = localToServiceMsg2.getMsfCommand();
-      paramWtloginMsfListener = (WtloginMsfListener)localObject;
+      MsfCommand localMsfCommand = localToServiceMsg.getMsfCommand();
+      localObject1 = localToServiceMsg;
+      paramWtloginMsfListener = (WtloginMsfListener)localObject2;
       paramWUserSigInfo = localMsfCommand;
-      localToServiceMsg1 = localToServiceMsg2;
       if (localMsfCommand != MsfCommand.wt_CheckSMSVerifyLoginAccount)
       {
-        paramWtloginMsfListener = (WtloginMsfListener)localObject;
+        localObject1 = localToServiceMsg;
+        paramWtloginMsfListener = (WtloginMsfListener)localObject2;
         paramWUserSigInfo = localMsfCommand;
-        localToServiceMsg1 = localToServiceMsg2;
         if (localMsfCommand != MsfCommand.wt_RefreshSMSVerifyLoginCode)
         {
-          paramWtloginMsfListener = (WtloginMsfListener)localObject;
+          localObject1 = localToServiceMsg;
+          paramWtloginMsfListener = (WtloginMsfListener)localObject2;
           paramWUserSigInfo = localMsfCommand;
-          localToServiceMsg1 = localToServiceMsg2;
-          if (localMsfCommand != MsfCommand.wt_VerifySMSVerifyLoginCode)
-          {
-            if (!paramString2.equals("wtlogin.login")) {
-              break label347;
+          if (localMsfCommand != MsfCommand.wt_VerifySMSVerifyLoginCode) {
+            if (paramString2.equals("wtlogin.login"))
+            {
+              paramWUserSigInfo = MsfCommand.wt_loginAuth;
+              localObject1 = localToServiceMsg;
+              paramWtloginMsfListener = (WtloginMsfListener)localObject2;
             }
-            paramWUserSigInfo = MsfCommand.wt_loginAuth;
-            localToServiceMsg1 = localToServiceMsg2;
-            paramWtloginMsfListener = (WtloginMsfListener)localObject;
+            else
+            {
+              localObject1 = localToServiceMsg;
+              paramWtloginMsfListener = (WtloginMsfListener)localObject2;
+              paramWUserSigInfo = localMsfCommand;
+              if (paramString2.equals("wtlogin.name2uin"))
+              {
+                paramWUserSigInfo = MsfCommand.wt_name2uin;
+                localObject1 = localToServiceMsg;
+                paramWtloginMsfListener = (WtloginMsfListener)localObject2;
+              }
+            }
           }
         }
       }
     }
-    for (;;)
+    else
     {
-      paramInt = paramArrayOfByte.length + 4;
-      localObject = ByteBuffer.allocate(paramInt);
-      ((ByteBuffer)localObject).order(ByteOrder.BIG_ENDIAN);
-      ((ByteBuffer)localObject).putInt(paramInt);
-      ((ByteBuffer)localObject).put(paramArrayOfByte);
-      localToServiceMsg1.setUin(paramString1);
-      localToServiceMsg1.setServiceCmd(paramString2);
-      localToServiceMsg1.setMsfCommand(paramWUserSigInfo);
-      localToServiceMsg1.putWupBuffer(((ByteBuffer)localObject).array());
-      return paramWtloginMsfListener.e.sendSsoMsg(localToServiceMsg1);
-      label347:
-      paramWtloginMsfListener = (WtloginMsfListener)localObject;
-      paramWUserSigInfo = localMsfCommand;
-      localToServiceMsg1 = localToServiceMsg2;
-      if (paramString2.equals("wtlogin.name2uin"))
-      {
-        paramWUserSigInfo = MsfCommand.wt_name2uin;
-        paramWtloginMsfListener = (WtloginMsfListener)localObject;
-        localToServiceMsg1 = localToServiceMsg2;
-        continue;
-        localToServiceMsg1 = new ToServiceMsg("", paramString1, paramString2);
-        localToServiceMsg1.setAppId(l.d.getMsfAppid());
-        localToServiceMsg1.setRequestSsoSeq(MsfCore.getNextSeq());
-        localToServiceMsg1.setTimeout(paramInt);
-        MsfSdkUtils.addToMsgProcessName("*", localToServiceMsg1);
-        paramWUserSigInfo = MsfCommand.wt_other;
-        localToServiceMsg1.setMsfCommand(paramWUserSigInfo);
-        a(localToServiceMsg1);
-        a(l.d, localToServiceMsg1);
-        localObject = (p)b.get(Integer.valueOf(localToServiceMsg1.getRequestSsoSeq()));
-        ((p)localObject).c = paramWtloginMsfListener;
-        paramWtloginMsfListener = (WtloginMsfListener)localObject;
-      }
+      localObject1 = new ToServiceMsg("", paramString1, paramString2);
+      ((ToServiceMsg)localObject1).setAppId(l.d.getMsfAppid());
+      ((ToServiceMsg)localObject1).setRequestSsoSeq(MsfCore.getNextSeq());
+      ((ToServiceMsg)localObject1).setTimeout(paramInt);
+      MsfSdkUtils.addToMsgProcessName("*", (ToServiceMsg)localObject1);
+      paramWUserSigInfo = MsfCommand.wt_other;
+      ((ToServiceMsg)localObject1).setMsfCommand(paramWUserSigInfo);
+      a((ToServiceMsg)localObject1);
+      a(l.d, (ToServiceMsg)localObject1);
+      localObject2 = (p)d.get(Integer.valueOf(((ToServiceMsg)localObject1).getRequestSsoSeq()));
+      ((p)localObject2).c = paramWtloginMsfListener;
+      paramWtloginMsfListener = (WtloginMsfListener)localObject2;
     }
+    paramInt = paramArrayOfByte.length + 4;
+    Object localObject2 = ByteBuffer.allocate(paramInt);
+    ((ByteBuffer)localObject2).order(ByteOrder.BIG_ENDIAN);
+    ((ByteBuffer)localObject2).putInt(paramInt);
+    ((ByteBuffer)localObject2).put(paramArrayOfByte);
+    ((ToServiceMsg)localObject1).setUin(paramString1);
+    ((ToServiceMsg)localObject1).setServiceCmd(paramString2);
+    ((ToServiceMsg)localObject1).setMsfCommand(paramWUserSigInfo);
+    ((ToServiceMsg)localObject1).putWupBuffer(((ByteBuffer)localObject2).array());
+    return paramWtloginMsfListener.e.sendSsoMsg((ToServiceMsg)localObject1);
   }
   
   static p a(MsfCore paramMsfCore, ToServiceMsg paramToServiceMsg)
   {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
     try
     {
-      if ((paramToServiceMsg.getMsfCommand() == MsfCommand.refreVerifyCode) || (paramToServiceMsg.getMsfCommand() == MsfCommand.submitVerifyCode) || (paramToServiceMsg.getMsfCommand() == MsfCommand.wt_CheckPictureAndGetSt) || (paramToServiceMsg.getMsfCommand() == MsfCommand.wt_RefreshPictureData))
+      if (paramToServiceMsg.getMsfCommand() != MsfCommand.refreVerifyCode)
       {
-        paramMsfCore = (p)b.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
-        localObject = paramMsfCore;
-        if (paramMsfCore != null) {
-          break label119;
+        localObject1 = localObject2;
+        if (paramToServiceMsg.getMsfCommand() != MsfCommand.submitVerifyCode)
+        {
+          localObject1 = localObject2;
+          if (paramToServiceMsg.getMsfCommand() != MsfCommand.wt_CheckPictureAndGetSt)
+          {
+            localObject1 = localObject2;
+            if (paramToServiceMsg.getMsfCommand() != MsfCommand.wt_RefreshPictureData)
+            {
+              localObject1 = localObject2;
+              if (paramToServiceMsg.getRequestSsoSeq() == -1)
+              {
+                localObject1 = localObject2;
+                paramToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
+              }
+              localObject1 = localObject2;
+              paramMsfCore = new p(paramMsfCore, paramToServiceMsg);
+              break label151;
+            }
+          }
         }
       }
-      try
+      localObject1 = localObject2;
+      paramMsfCore = (p)d.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+      if (paramMsfCore == null)
       {
-        QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "can not find wtloginMsfListener VerifyCode for " + paramToServiceMsg.getRequestSsoSeq());
-        return null;
+        try
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("can not find wtloginMsfListener VerifyCode for ");
+          ((StringBuilder)localObject1).append(paramToServiceMsg.getRequestSsoSeq());
+          QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, ((StringBuilder)localObject1).toString());
+          return null;
+        }
+        catch (Exception paramToServiceMsg) {}
       }
-      catch (Exception paramToServiceMsg) {}
-      if (paramToServiceMsg.getRequestSsoSeq() == -1) {
-        paramToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
+      else
+      {
+        label151:
+        localObject1 = paramMsfCore;
+        paramMsfCore.d = paramToServiceMsg;
+        localObject1 = paramMsfCore;
+        d.put(Integer.valueOf(paramMsfCore.d.getRequestSsoSeq()), paramMsfCore);
+        return paramMsfCore;
       }
-      Object localObject = new p(paramMsfCore, paramToServiceMsg);
-      label119:
-      paramMsfCore = (MsfCore)localObject;
-      ((p)localObject).d = paramToServiceMsg;
-      paramMsfCore = (MsfCore)localObject;
-      b.put(Integer.valueOf(((p)localObject).d.getRequestSsoSeq()), localObject);
-      return localObject;
     }
     catch (Exception paramToServiceMsg)
     {
-      for (;;)
-      {
-        paramMsfCore = null;
-      }
+      paramMsfCore = (MsfCore)localObject1;
+      paramToServiceMsg.printStackTrace();
     }
-    paramToServiceMsg.printStackTrace();
     return paramMsfCore;
   }
   
   public static p a(WUserSigInfo paramWUserSigInfo)
   {
     int i = c(paramWUserSigInfo);
-    return (p)b.get(Integer.valueOf(i));
+    return (p)d.get(Integer.valueOf(i));
   }
   
   public static String a(String paramString, byte[] paramArrayOfByte)
   {
-    int k;
-    int j;
-    int i;
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 3))
     {
-      k = util.buf_to_int32(paramArrayOfByte, 0);
-      j = 4;
-      i = 0;
-    }
-    for (;;)
-    {
-      if ((i >= k) || (paramArrayOfByte.length < j + 1)) {}
-      int m;
-      do
+      int i = 0;
+      int k = util.buf_to_int32(paramArrayOfByte, 0);
+      int j = 4;
+      while (i < k)
       {
-        do
-        {
-          do
-          {
-            return null;
-            m = util.buf_to_int8(paramArrayOfByte, j);
-            j += 1;
-          } while (paramArrayOfByte.length < j + m);
-          paramString = new String(paramArrayOfByte, j, m);
-          m = j + m;
-        } while (paramArrayOfByte.length < m + 2);
-        j = util.buf_to_int32(paramArrayOfByte, m);
-        m += 4;
-      } while (paramArrayOfByte.length < m + j);
-      String str = new String(paramArrayOfByte, m, j);
-      util.LOGI("key_data:" + paramString + " value:" + str);
-      if (paramString.equals("pic_reason")) {
-        return str;
+        int n = paramArrayOfByte.length;
+        int m = j + 1;
+        if (n < m) {
+          break;
+        }
+        n = util.buf_to_int8(paramArrayOfByte, j);
+        int i1 = paramArrayOfByte.length;
+        j = m + n;
+        if (i1 < j) {
+          break;
+        }
+        paramString = new String(paramArrayOfByte, m, n);
+        if (paramArrayOfByte.length < j + 2) {
+          break;
+        }
+        m = util.buf_to_int32(paramArrayOfByte, j);
+        n = j + 4;
+        i1 = paramArrayOfByte.length;
+        j = n + m;
+        if (i1 < j) {
+          break;
+        }
+        String str = new String(paramArrayOfByte, n, m);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("key_data:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" value:");
+        localStringBuilder.append(str);
+        util.LOGI(localStringBuilder.toString());
+        if (paramString.equals("pic_reason")) {
+          return str;
+        }
+        i += 1;
       }
-      i += 1;
-      j += m;
     }
+    return null;
   }
   
   public static void a(int paramInt) {}
@@ -222,71 +267,70 @@ public class n
     }
     QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "wtlogin succ.");
     WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
-    if (paramWtloginHelper.GetBasicUserInfo(paramString, localWloginSimpleInfo).booleanValue()) {}
-    for (String str = String.valueOf(localWloginSimpleInfo._uin);; str = paramString)
+    String str;
+    if (paramWtloginHelper.GetBasicUserInfo(paramString, localWloginSimpleInfo).booleanValue()) {
+      str = String.valueOf(localWloginSimpleInfo._uin);
+    } else {
+      str = paramString;
+    }
+    byte[] arrayOfByte3 = new byte[16];
+    byte[] arrayOfByte4 = WtloginHelper.GetTicketSig(paramWUserSigInfo, 262144);
+    Object localObject1 = new byte[0];
+    try
     {
-      byte[] arrayOfByte2 = new byte[16];
-      byte[] arrayOfByte3 = WtloginHelper.GetTicketSig(paramWUserSigInfo, 262144);
-      Object localObject = new byte[0];
-      try
-      {
-        arrayOfByte1 = WtloginHelper.GetTicketSigKey(paramWUserSigInfo, 262144);
-        localObject = arrayOfByte1;
+      byte[] arrayOfByte1 = WtloginHelper.GetTicketSigKey(paramWUserSigInfo, 262144);
+      localObject1 = arrayOfByte1;
+    }
+    catch (Exception localException)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("readD2Key error ");
+      ((StringBuilder)localObject2).append(localException);
+      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, ((StringBuilder)localObject2).toString());
+    }
+    byte[] arrayOfByte2 = WtloginHelper.GetTicketSig(paramWUserSigInfo, 64);
+    Object localObject2 = WtloginHelper.GetTicketSig(paramWUserSigInfo, 4096);
+    byte[] arrayOfByte5 = WtloginHelper.GetTicketSig(paramWUserSigInfo, 32);
+    j.a(arrayOfByte3, 0, (byte[])localObject1, localObject1.length);
+    localObject1 = new a(str);
+    ((a)localObject1).e(arrayOfByte2);
+    ((a)localObject1).h(arrayOfByte4);
+    ((a)localObject1).j(arrayOfByte3);
+    ((a)localObject1).b((byte[])localObject2);
+    ((a)localObject1).c(arrayOfByte5);
+    ((a)localObject1).c(u.b(paramToServiceMsg));
+    if (paramWtloginHelper.GetBasicUserInfo(paramString, localWloginSimpleInfo).booleanValue())
+    {
+      ((a)localObject1).b(localWloginSimpleInfo._age[0]);
+      ((a)localObject1).n(localWloginSimpleInfo._nick);
+      int i;
+      if (localWloginSimpleInfo._gender[0] == 1) {
+        i = 1;
+      } else {
+        i = 2;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          byte[] arrayOfByte1;
-          byte[] arrayOfByte4;
-          byte[] arrayOfByte5;
-          QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "readD2Key error " + localException);
-          continue;
-          int i = 2;
-        }
-      }
-      arrayOfByte1 = WtloginHelper.GetTicketSig(paramWUserSigInfo, 64);
-      arrayOfByte4 = WtloginHelper.GetTicketSig(paramWUserSigInfo, 4096);
-      arrayOfByte5 = WtloginHelper.GetTicketSig(paramWUserSigInfo, 32);
-      j.a(arrayOfByte2, 0, (byte[])localObject, localObject.length);
-      localObject = new a(str);
-      ((a)localObject).e(arrayOfByte1);
-      ((a)localObject).h(arrayOfByte3);
-      ((a)localObject).j(arrayOfByte2);
-      ((a)localObject).b(arrayOfByte4);
-      ((a)localObject).c(arrayOfByte5);
-      ((a)localObject).c(t.b(paramToServiceMsg));
-      if (paramWtloginHelper.GetBasicUserInfo(paramString, localWloginSimpleInfo).booleanValue())
-      {
-        ((a)localObject).b(localWloginSimpleInfo._age[0]);
-        ((a)localObject).n(localWloginSimpleInfo._nick);
-        if (localWloginSimpleInfo._gender[0] == 1)
-        {
-          i = 1;
-          ((a)localObject).c(i);
-          ((a)localObject).a(util.buf_to_int16(localWloginSimpleInfo._face, 0));
-        }
-      }
-      else
-      {
-        QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, Thread.currentThread().getName() + " handleLoginSucc updateAccount " + MsfSdkUtils.getShortUin(((a)localObject).d()));
-        paramFromServiceMsg.addAttribute("resp_simpleAccount", paramMsfCore.getAccountCenter().c((a)localObject).o().toStoreString());
-        paramFromServiceMsg.setMsgSuccess();
-        paramFromServiceMsg.addAttribute("__attribute_tag_servertimediff", Long.valueOf(paramWtloginHelper.GetTimeDifference() * 1000L));
-        paramMsfCore.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
-        paramWtloginHelper = (String)paramToServiceMsg.getAttribute("from_where");
-        if ((!"subaccount".equals(paramWtloginHelper)) && (!"ssoAccountAction".equals(paramWtloginHelper)))
-        {
-          paramMsfCore.getAccountCenter().c(str, "login");
-          paramMsfCore.stopPCActivePolling("login");
-        }
-        if ((paramWUserSigInfo._device_token == null) || (paramWUserSigInfo._device_token.length <= 0)) {
-          break;
-        }
-        m.a(str, paramWUserSigInfo._device_token);
-        l.e.SetUinDeviceToken(false);
-        return;
-      }
+      ((a)localObject1).c(i);
+      ((a)localObject1).a(util.buf_to_int16(localWloginSimpleInfo._face, 0));
+    }
+    paramString = new StringBuilder();
+    paramString.append(Thread.currentThread().getName());
+    paramString.append(" handleLoginSucc updateAccount ");
+    paramString.append(MsfSdkUtils.getShortUin(((a)localObject1).d()));
+    QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, paramString.toString());
+    paramFromServiceMsg.addAttribute("resp_simpleAccount", paramMsfCore.getAccountCenter().c((a)localObject1).o().toStoreString());
+    paramFromServiceMsg.setMsgSuccess();
+    paramFromServiceMsg.addAttribute("__attribute_tag_servertimediff", Long.valueOf(paramWtloginHelper.GetTimeDifference() * 1000L));
+    paramMsfCore.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
+    paramWtloginHelper = (String)paramToServiceMsg.getAttribute("from_where");
+    if ((!"subaccount".equals(paramWtloginHelper)) && (!"ssoAccountAction".equals(paramWtloginHelper)))
+    {
+      paramMsfCore.getAccountCenter().c(str, "login");
+      paramMsfCore.stopPCActivePolling("login");
+    }
+    if ((paramWUserSigInfo._device_token != null) && (paramWUserSigInfo._device_token.length > 0))
+    {
+      m.a(str, paramWUserSigInfo._device_token);
+      l.e.SetUinDeviceToken(false);
     }
   }
   
@@ -303,14 +347,20 @@ public class n
   
   public static void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    p localp = (p)b.get(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
+    p localp = (p)d.get(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
     if (localp == null)
     {
-      QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "can not find wtloginMsfListener onRecvData for " + paramFromServiceMsg.getRequestSsoSeq());
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("can not find wtloginMsfListener onRecvData for ");
+      paramToServiceMsg.append(paramFromServiceMsg.getRequestSsoSeq());
+      QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, paramToServiceMsg.toString());
       return;
     }
-    QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "onRecvData find wtloginMsfListener for " + paramFromServiceMsg.getRequestSsoSeq());
-    Object localObject = (String)paramToServiceMsg.getAttribute("to_wtlogin_oldcmd");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onRecvData find wtloginMsfListener for ");
+    ((StringBuilder)localObject).append(paramFromServiceMsg.getRequestSsoSeq());
+    QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, ((StringBuilder)localObject).toString());
+    localObject = (String)paramToServiceMsg.getAttribute("to_wtlogin_oldcmd");
     if (localObject != null) {
       paramToServiceMsg.setServiceCmd((String)localObject);
     }
@@ -318,9 +368,9 @@ public class n
     {
       paramToServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
       paramToServiceMsg.order(ByteOrder.BIG_ENDIAN);
-      int i = paramToServiceMsg.getInt();
-      localObject = new byte[i - 4];
-      paramToServiceMsg.get((byte[])localObject, 0, i - 4);
+      int i = paramToServiceMsg.getInt() - 4;
+      localObject = new byte[i];
+      paramToServiceMsg.get((byte[])localObject, 0, i);
       localp.c.onReceiveData(paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd(), (byte[])localObject);
       return;
     }
@@ -335,8 +385,14 @@ public class n
       if (paramFromServiceMsg.getAttribute("timeLimit") != null) {
         paramString1.TimeLimit = ((Integer)paramFromServiceMsg.getAttribute("timeLimit")).intValue();
       }
-      if ((paramString1 != null) && (QLog.isColorLevel()) && (QLog.isColorLevel())) {
-        QLog.d("MSF.C.WTLoginCenter.MsfProvider", 2, "GetDevLockInfo: " + paramString1.Mobile + " " + paramString1.DevSetup);
+      if ((paramString1 != null) && (QLog.isColorLevel()) && (QLog.isColorLevel()))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("GetDevLockInfo: ");
+        localStringBuilder.append(paramString1.Mobile);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramString1.DevSetup);
+        QLog.d("MSF.C.WTLoginCenter.MsfProvider", 2, localStringBuilder.toString());
       }
       paramFromServiceMsg.addAttribute("resp_devlockinfo", paramString1);
       paramFromServiceMsg.setBusinessFail(2016, paramString2);
@@ -345,14 +401,17 @@ public class n
     }
     catch (Exception paramString1)
     {
-      QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "OnGetStWithPasswd exception " + paramString1.toString(), paramString1);
+      paramMsfCore = new StringBuilder();
+      paramMsfCore.append("OnGetStWithPasswd exception ");
+      paramMsfCore.append(paramString1.toString());
+      QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, paramMsfCore.toString(), paramString1);
     }
   }
   
   public static p b(WUserSigInfo paramWUserSigInfo)
   {
     int i = c(paramWUserSigInfo);
-    return (p)b.remove(Integer.valueOf(i));
+    return (p)d.remove(Integer.valueOf(i));
   }
   
   public static WUserSigInfo b(int paramInt)
@@ -365,7 +424,10 @@ public class n
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "getWUSigInfoFromSeq error " + paramInt, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWUSigInfoFromSeq error ");
+      localStringBuilder.append(paramInt);
+      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, localStringBuilder.toString(), localException);
     }
     return null;
   }
@@ -374,32 +436,34 @@ public class n
   {
     try
     {
-      byte[] arrayOfByte = l.e.GetPictureData(paramFromServiceMsg.getUin(), paramLong);
-      ah.a(paramFromServiceMsg);
+      Object localObject = l.e.GetPictureData(paramFromServiceMsg.getUin(), paramLong);
+      ag.a(paramFromServiceMsg);
       VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
       localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
-      localVerifyCodeInfo.verifyimage = arrayOfByte;
+      localVerifyCodeInfo.verifyimage = ((byte[])localObject);
       try
       {
         localVerifyCodeInfo.verifyNote = a(paramString1, l.e.GetPicturePrompt(paramString1, paramLong));
-        VerifyCodeInfo.putVerifyCodeInfo(paramFromServiceMsg, localVerifyCodeInfo);
-        paramFromServiceMsg.setBusinessFail(2002, paramString2);
-        paramMsfCore.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
-        return;
       }
       catch (Exception paramString1)
       {
-        for (;;)
-        {
-          QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "getImagePrompt exception " + paramString1.toString(), paramString1);
-          localVerifyCodeInfo.verifyNote = "getTipErr";
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getImagePrompt exception ");
+        ((StringBuilder)localObject).append(paramString1.toString());
+        QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, ((StringBuilder)localObject).toString(), paramString1);
+        localVerifyCodeInfo.verifyNote = "getTipErr";
       }
+      VerifyCodeInfo.putVerifyCodeInfo(paramFromServiceMsg, localVerifyCodeInfo);
+      paramFromServiceMsg.setBusinessFail(2002, paramString2);
+      paramMsfCore.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     catch (Exception paramString1)
     {
-      QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, "OnGetStWithPasswd exception " + paramString1.toString(), paramString1);
+      paramMsfCore = new StringBuilder();
+      paramMsfCore.append("OnGetStWithPasswd exception ");
+      paramMsfCore.append(paramString1.toString());
+      QLog.e("MSF.C.WTLoginCenter.MsfProvider", 1, paramMsfCore.toString(), paramString1);
     }
   }
   
@@ -412,79 +476,43 @@ public class n
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, "getSsoSeqFromInfo error " + paramWUserSigInfo, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSsoSeqFromInfo error ");
+      localStringBuilder.append(paramWUserSigInfo);
+      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, localStringBuilder.toString(), localException);
     }
     return -1;
   }
   
-  /* Error */
   public static WUserSigInfo c(int paramInt)
   {
-    // Byte code:
-    //   0: invokestatic 621	com/tencent/mobileqq/msf/core/a/a:bg	()Ljava/util/HashSet;
-    //   3: astore_3
-    //   4: new 60	oicq/wlogin_sdk/request/WUserSigInfo
-    //   7: dup
-    //   8: invokespecial 577	oicq/wlogin_sdk/request/WUserSigInfo:<init>	()V
-    //   11: astore_2
-    //   12: aload_2
-    //   13: iload_0
-    //   14: invokestatic 581	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:convertInt2Bytes	(I)[B
-    //   17: putfield 64	oicq/wlogin_sdk/request/WUserSigInfo:_reserveData	[B
-    //   20: aload_2
-    //   21: astore_1
-    //   22: aload_3
-    //   23: ifnull +68 -> 91
-    //   26: aload_3
-    //   27: invokevirtual 627	java/util/HashSet:iterator	()Ljava/util/Iterator;
-    //   30: astore_3
-    //   31: aload_2
-    //   32: astore_1
-    //   33: aload_3
-    //   34: invokeinterface 632 1 0
-    //   39: ifeq +52 -> 91
-    //   42: aload_2
-    //   43: getfield 636	oicq/wlogin_sdk/request/WUserSigInfo:_domains	Ljava/util/List;
-    //   46: aload_3
-    //   47: invokeinterface 640 1 0
-    //   52: invokeinterface 645 2 0
-    //   57: pop
-    //   58: goto -27 -> 31
-    //   61: astore_1
-    //   62: ldc 8
-    //   64: iconst_1
-    //   65: new 37	java/lang/StringBuilder
-    //   68: dup
-    //   69: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 583
-    //   75: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: iload_0
-    //   79: invokevirtual 51	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   85: aload_1
-    //   86: invokestatic 585	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   89: aconst_null
-    //   90: astore_1
-    //   91: aload_1
-    //   92: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	93	0	paramInt	int
-    //   21	12	1	localWUserSigInfo1	WUserSigInfo
-    //   61	25	1	localException	Exception
-    //   90	2	1	localWUserSigInfo2	WUserSigInfo
-    //   11	32	2	localWUserSigInfo3	WUserSigInfo
-    //   3	44	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	20	61	java/lang/Exception
-    //   26	31	61	java/lang/Exception
-    //   33	58	61	java/lang/Exception
+    try
+    {
+      localObject = com.tencent.mobileqq.msf.core.a.a.bg();
+      WUserSigInfo localWUserSigInfo = new WUserSigInfo();
+      localWUserSigInfo._reserveData = MsfSdkUtils.convertInt2Bytes(paramInt);
+      if (localObject != null)
+      {
+        localObject = ((HashSet)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          localWUserSigInfo._domains.add(((Iterator)localObject).next());
+        }
+      }
+      return localWUserSigInfo;
+    }
+    catch (Exception localException)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getWUSigInfoFromSeq error ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("MSF.C.WTLoginCenter.MsfProvider", 1, ((StringBuilder)localObject).toString(), localException);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.n
  * JD-Core Version:    0.7.0.1
  */

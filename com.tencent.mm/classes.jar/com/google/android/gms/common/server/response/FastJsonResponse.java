@@ -1,11 +1,18 @@
 package com.google.android.gms.common.server.response;
 
+import android.os.Parcel;
 import android.util.Log;
+import com.google.android.gms.common.internal.Objects;
+import com.google.android.gms.common.internal.Objects.ToStringHelper;
 import com.google.android.gms.common.internal.Preconditions;
+import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
+import com.google.android.gms.common.server.converter.ConverterWrapper;
 import com.google.android.gms.common.util.Base64Utils;
 import com.google.android.gms.common.util.IOUtils;
 import com.google.android.gms.common.util.JsonUtils;
 import com.google.android.gms.common.util.MapUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +47,7 @@ public abstract class FastJsonResponse
     return localByteArrayInputStream;
   }
   
-  private final <I, O> void zza(FastJsonResponse.Field<I, O> paramField, I paramI)
+  private final <I, O> void zza(Field<I, O> paramField, I paramI)
   {
     String str = paramField.getOutputFieldName();
     paramI = paramField.convert(paramI);
@@ -84,7 +91,7 @@ public abstract class FastJsonResponse
     setDecodedBytesInternal(paramField, str, (byte[])paramI);
   }
   
-  private static void zza(StringBuilder paramStringBuilder, FastJsonResponse.Field paramField, Object paramObject)
+  private static void zza(StringBuilder paramStringBuilder, Field paramField, Object paramObject)
   {
     if (paramField.getTypeIn() == 11)
     {
@@ -123,12 +130,12 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Concrete type array not supported");
   }
   
-  public <T extends FastJsonResponse> void addConcreteTypeArrayInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<T> paramArrayList)
+  public <T extends FastJsonResponse> void addConcreteTypeArrayInternal(Field<?, ?> paramField, String paramString, ArrayList<T> paramArrayList)
   {
     addConcreteTypeArray(paramString, paramArrayList);
   }
   
-  public <T extends FastJsonResponse> void addConcreteTypeInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, T paramT)
+  public <T extends FastJsonResponse> void addConcreteTypeInternal(Field<?, ?> paramField, String paramString, T paramT)
   {
     addConcreteType(paramString, paramT);
   }
@@ -143,9 +150,9 @@ public abstract class FastJsonResponse
     return null;
   }
   
-  public abstract Map<String, FastJsonResponse.Field<?, ?>> getFieldMappings();
+  public abstract Map<String, Field<?, ?>> getFieldMappings();
   
-  protected Object getFieldValue(FastJsonResponse.Field paramField)
+  protected Object getFieldValue(Field paramField)
   {
     String str = paramField.getOutputFieldName();
     if (paramField.getConcreteType() != null)
@@ -186,10 +193,10 @@ public abstract class FastJsonResponse
     return getValueObject(paramField.getOutputFieldName());
   }
   
-  protected <O, I> I getOriginalValue(FastJsonResponse.Field<I, O> paramField, Object paramObject)
+  protected <O, I> I getOriginalValue(Field<I, O> paramField, Object paramObject)
   {
     Object localObject = paramObject;
-    if (FastJsonResponse.Field.zza(paramField) != null) {
+    if (Field.zza(paramField) != null) {
       localObject = paramField.convertBack(paramObject);
     }
     return localObject;
@@ -205,16 +212,16 @@ public abstract class FastJsonResponse
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 302	com/google/android/gms/common/server/response/FastJsonResponse:zzwm	Z
-    //   4: invokestatic 305	com/google/android/gms/common/internal/Preconditions:checkState	(Z)V
-    //   7: new 43	java/util/zip/GZIPInputStream
+    //   1: getfield 303	com/google/android/gms/common/server/response/FastJsonResponse:zzwm	Z
+    //   4: invokestatic 306	com/google/android/gms/common/internal/Preconditions:checkState	(Z)V
+    //   7: new 44	java/util/zip/GZIPInputStream
     //   10: dup
-    //   11: new 32	java/io/ByteArrayInputStream
+    //   11: new 33	java/io/ByteArrayInputStream
     //   14: dup
     //   15: aload_0
-    //   16: getfield 307	com/google/android/gms/common/server/response/FastJsonResponse:zzwl	[B
-    //   19: invokespecial 35	java/io/ByteArrayInputStream:<init>	([B)V
-    //   22: invokespecial 46	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   16: getfield 308	com/google/android/gms/common/server/response/FastJsonResponse:zzwl	[B
+    //   19: invokespecial 36	java/io/ByteArrayInputStream:<init>	([B)V
+    //   22: invokespecial 47	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   25: astore_3
     //   26: aload_3
     //   27: astore_2
@@ -223,9 +230,9 @@ public abstract class FastJsonResponse
     //   33: astore 4
     //   35: aload_3
     //   36: astore_2
-    //   37: new 309	java/io/ByteArrayOutputStream
+    //   37: new 310	java/io/ByteArrayOutputStream
     //   40: dup
-    //   41: invokespecial 310	java/io/ByteArrayOutputStream:<init>	()V
+    //   41: invokespecial 311	java/io/ByteArrayOutputStream:<init>	()V
     //   44: astore 5
     //   46: aload_3
     //   47: astore_2
@@ -233,7 +240,7 @@ public abstract class FastJsonResponse
     //   49: aload 4
     //   51: iconst_0
     //   52: sipush 4096
-    //   55: invokevirtual 316	java/io/InputStream:read	([BII)I
+    //   55: invokevirtual 317	java/io/InputStream:read	([BII)I
     //   58: istore_1
     //   59: iload_1
     //   60: iconst_m1
@@ -244,31 +251,31 @@ public abstract class FastJsonResponse
     //   68: aload 4
     //   70: iconst_0
     //   71: iload_1
-    //   72: invokevirtual 320	java/io/ByteArrayOutputStream:write	([BII)V
+    //   72: invokevirtual 321	java/io/ByteArrayOutputStream:write	([BII)V
     //   75: goto -29 -> 46
     //   78: astore_2
     //   79: aload_3
     //   80: astore_2
     //   81: aload_0
-    //   82: getfield 307	com/google/android/gms/common/server/response/FastJsonResponse:zzwl	[B
+    //   82: getfield 308	com/google/android/gms/common/server/response/FastJsonResponse:zzwl	[B
     //   85: astore 4
     //   87: aload_3
     //   88: ifnull +7 -> 95
     //   91: aload_3
-    //   92: invokevirtual 323	java/io/InputStream:close	()V
+    //   92: invokevirtual 324	java/io/InputStream:close	()V
     //   95: aload 4
     //   97: areturn
     //   98: aload_3
     //   99: astore_2
     //   100: aload 5
-    //   102: invokevirtual 326	java/io/ByteArrayOutputStream:flush	()V
+    //   102: invokevirtual 327	java/io/ByteArrayOutputStream:flush	()V
     //   105: aload_3
     //   106: astore_2
     //   107: aload 5
-    //   109: invokevirtual 329	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   109: invokevirtual 330	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   112: astore 4
     //   114: aload_3
-    //   115: invokevirtual 323	java/io/InputStream:close	()V
+    //   115: invokevirtual 324	java/io/InputStream:close	()V
     //   118: aload 4
     //   120: areturn
     //   121: astore_2
@@ -280,7 +287,7 @@ public abstract class FastJsonResponse
     //   128: aload_3
     //   129: ifnull +7 -> 136
     //   132: aload_3
-    //   133: invokevirtual 323	java/io/InputStream:close	()V
+    //   133: invokevirtual 324	java/io/InputStream:close	()V
     //   136: aload_2
     //   137: athrow
     //   138: astore_2
@@ -358,7 +365,7 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Concrete types not supported");
   }
   
-  protected boolean isFieldSet(FastJsonResponse.Field paramField)
+  protected boolean isFieldSet(Field paramField)
   {
     if (paramField.getTypeOut() == 11)
     {
@@ -378,28 +385,28 @@ public abstract class FastJsonResponse
     // Byte code:
     //   0: aload_0
     //   1: iload_1
-    //   2: putfield 332	com/google/android/gms/common/server/response/FastJsonResponse:zzwk	I
+    //   2: putfield 333	com/google/android/gms/common/server/response/FastJsonResponse:zzwk	I
     //   5: aload_0
     //   6: aload_2
-    //   7: putfield 307	com/google/android/gms/common/server/response/FastJsonResponse:zzwl	[B
+    //   7: putfield 308	com/google/android/gms/common/server/response/FastJsonResponse:zzwl	[B
     //   10: aload_0
     //   11: iconst_1
-    //   12: putfield 302	com/google/android/gms/common/server/response/FastJsonResponse:zzwm	Z
+    //   12: putfield 303	com/google/android/gms/common/server/response/FastJsonResponse:zzwm	Z
     //   15: aload_2
-    //   16: invokestatic 352	com/google/android/gms/common/server/response/FastJsonResponse:getUnzippedStream	([B)Ljava/io/InputStream;
+    //   16: invokestatic 353	com/google/android/gms/common/server/response/FastJsonResponse:getUnzippedStream	([B)Ljava/io/InputStream;
     //   19: astore_3
-    //   20: new 354	com/google/android/gms/common/server/response/FastParser
+    //   20: new 355	com/google/android/gms/common/server/response/FastParser
     //   23: dup
-    //   24: invokespecial 355	com/google/android/gms/common/server/response/FastParser:<init>	()V
+    //   24: invokespecial 356	com/google/android/gms/common/server/response/FastParser:<init>	()V
     //   27: aload_3
     //   28: aload_0
-    //   29: invokevirtual 359	com/google/android/gms/common/server/response/FastParser:parse	(Ljava/io/InputStream;Lcom/google/android/gms/common/server/response/FastJsonResponse;)V
+    //   29: invokevirtual 360	com/google/android/gms/common/server/response/FastParser:parse	(Ljava/io/InputStream;Lcom/google/android/gms/common/server/response/FastJsonResponse;)V
     //   32: aload_3
-    //   33: invokevirtual 323	java/io/InputStream:close	()V
+    //   33: invokevirtual 324	java/io/InputStream:close	()V
     //   36: return
     //   37: astore_2
     //   38: aload_3
-    //   39: invokevirtual 323	java/io/InputStream:close	()V
+    //   39: invokevirtual 324	java/io/InputStream:close	()V
     //   42: aload_2
     //   43: athrow
     //   44: astore_2
@@ -420,9 +427,9 @@ public abstract class FastJsonResponse
     //   38	42	46	java/io/IOException
   }
   
-  public final <O> void setBigDecimal(FastJsonResponse.Field<BigDecimal, O> paramField, BigDecimal paramBigDecimal)
+  public final <O> void setBigDecimal(Field<BigDecimal, O> paramField, BigDecimal paramBigDecimal)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramBigDecimal);
       return;
@@ -435,14 +442,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("BigDecimal not supported");
   }
   
-  protected void setBigDecimalInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, BigDecimal paramBigDecimal)
+  protected void setBigDecimalInternal(Field<?, ?> paramField, String paramString, BigDecimal paramBigDecimal)
   {
     setBigDecimal(paramString, paramBigDecimal);
   }
   
-  public final <O> void setBigDecimals(FastJsonResponse.Field<ArrayList<BigDecimal>, O> paramField, ArrayList<BigDecimal> paramArrayList)
+  public final <O> void setBigDecimals(Field<ArrayList<BigDecimal>, O> paramField, ArrayList<BigDecimal> paramArrayList)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayList);
       return;
@@ -455,14 +462,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("BigDecimal list not supported");
   }
   
-  protected void setBigDecimalsInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<BigDecimal> paramArrayList)
+  protected void setBigDecimalsInternal(Field<?, ?> paramField, String paramString, ArrayList<BigDecimal> paramArrayList)
   {
     setBigDecimals(paramString, paramArrayList);
   }
   
-  public final <O> void setBigInteger(FastJsonResponse.Field<BigInteger, O> paramField, BigInteger paramBigInteger)
+  public final <O> void setBigInteger(Field<BigInteger, O> paramField, BigInteger paramBigInteger)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramBigInteger);
       return;
@@ -475,14 +482,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("BigInteger not supported");
   }
   
-  protected void setBigIntegerInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, BigInteger paramBigInteger)
+  protected void setBigIntegerInternal(Field<?, ?> paramField, String paramString, BigInteger paramBigInteger)
   {
     setBigInteger(paramString, paramBigInteger);
   }
   
-  public final <O> void setBigIntegers(FastJsonResponse.Field<ArrayList<BigInteger>, O> paramField, ArrayList<BigInteger> paramArrayList)
+  public final <O> void setBigIntegers(Field<ArrayList<BigInteger>, O> paramField, ArrayList<BigInteger> paramArrayList)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayList);
       return;
@@ -495,14 +502,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("BigInteger list not supported");
   }
   
-  protected void setBigIntegersInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<BigInteger> paramArrayList)
+  protected void setBigIntegersInternal(Field<?, ?> paramField, String paramString, ArrayList<BigInteger> paramArrayList)
   {
     setBigIntegers(paramString, paramArrayList);
   }
   
-  public final <O> void setBoolean(FastJsonResponse.Field<Boolean, O> paramField, boolean paramBoolean)
+  public final <O> void setBoolean(Field<Boolean, O> paramField, boolean paramBoolean)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, Boolean.valueOf(paramBoolean));
       return;
@@ -515,14 +522,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Boolean not supported");
   }
   
-  protected void setBooleanInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, boolean paramBoolean)
+  protected void setBooleanInternal(Field<?, ?> paramField, String paramString, boolean paramBoolean)
   {
     setBoolean(paramString, paramBoolean);
   }
   
-  public final <O> void setBooleans(FastJsonResponse.Field<ArrayList<Boolean>, O> paramField, ArrayList<Boolean> paramArrayList)
+  public final <O> void setBooleans(Field<ArrayList<Boolean>, O> paramField, ArrayList<Boolean> paramArrayList)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayList);
       return;
@@ -535,14 +542,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Boolean list not supported");
   }
   
-  protected void setBooleansInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<Boolean> paramArrayList)
+  protected void setBooleansInternal(Field<?, ?> paramField, String paramString, ArrayList<Boolean> paramArrayList)
   {
     setBooleans(paramString, paramArrayList);
   }
   
-  public final <O> void setDecodedBytes(FastJsonResponse.Field<byte[], O> paramField, byte[] paramArrayOfByte)
+  public final <O> void setDecodedBytes(Field<byte[], O> paramField, byte[] paramArrayOfByte)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayOfByte);
       return;
@@ -555,14 +562,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("byte[] not supported");
   }
   
-  protected void setDecodedBytesInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, byte[] paramArrayOfByte)
+  protected void setDecodedBytesInternal(Field<?, ?> paramField, String paramString, byte[] paramArrayOfByte)
   {
     setDecodedBytes(paramString, paramArrayOfByte);
   }
   
-  public final <O> void setDouble(FastJsonResponse.Field<Double, O> paramField, double paramDouble)
+  public final <O> void setDouble(Field<Double, O> paramField, double paramDouble)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, Double.valueOf(paramDouble));
       return;
@@ -575,14 +582,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Double not supported");
   }
   
-  protected void setDoubleInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, double paramDouble)
+  protected void setDoubleInternal(Field<?, ?> paramField, String paramString, double paramDouble)
   {
     setDouble(paramString, paramDouble);
   }
   
-  public final <O> void setDoubles(FastJsonResponse.Field<ArrayList<Double>, O> paramField, ArrayList<Double> paramArrayList)
+  public final <O> void setDoubles(Field<ArrayList<Double>, O> paramField, ArrayList<Double> paramArrayList)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayList);
       return;
@@ -595,14 +602,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Double list not supported");
   }
   
-  protected void setDoublesInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<Double> paramArrayList)
+  protected void setDoublesInternal(Field<?, ?> paramField, String paramString, ArrayList<Double> paramArrayList)
   {
     setDoubles(paramString, paramArrayList);
   }
   
-  public final <O> void setFloat(FastJsonResponse.Field<Float, O> paramField, float paramFloat)
+  public final <O> void setFloat(Field<Float, O> paramField, float paramFloat)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, Float.valueOf(paramFloat));
       return;
@@ -615,14 +622,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Float not supported");
   }
   
-  protected void setFloatInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, float paramFloat)
+  protected void setFloatInternal(Field<?, ?> paramField, String paramString, float paramFloat)
   {
     setFloat(paramString, paramFloat);
   }
   
-  public final <O> void setFloats(FastJsonResponse.Field<ArrayList<Float>, O> paramField, ArrayList<Float> paramArrayList)
+  public final <O> void setFloats(Field<ArrayList<Float>, O> paramField, ArrayList<Float> paramArrayList)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayList);
       return;
@@ -635,14 +642,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Float list not supported");
   }
   
-  protected void setFloatsInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<Float> paramArrayList)
+  protected void setFloatsInternal(Field<?, ?> paramField, String paramString, ArrayList<Float> paramArrayList)
   {
     setFloats(paramString, paramArrayList);
   }
   
-  public final <O> void setInteger(FastJsonResponse.Field<Integer, O> paramField, int paramInt)
+  public final <O> void setInteger(Field<Integer, O> paramField, int paramInt)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, Integer.valueOf(paramInt));
       return;
@@ -655,14 +662,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Integer not supported");
   }
   
-  protected void setIntegerInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, int paramInt)
+  protected void setIntegerInternal(Field<?, ?> paramField, String paramString, int paramInt)
   {
     setInteger(paramString, paramInt);
   }
   
-  public final <O> void setIntegers(FastJsonResponse.Field<ArrayList<Integer>, O> paramField, ArrayList<Integer> paramArrayList)
+  public final <O> void setIntegers(Field<ArrayList<Integer>, O> paramField, ArrayList<Integer> paramArrayList)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayList);
       return;
@@ -675,14 +682,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Integer list not supported");
   }
   
-  protected void setIntegersInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<Integer> paramArrayList)
+  protected void setIntegersInternal(Field<?, ?> paramField, String paramString, ArrayList<Integer> paramArrayList)
   {
     setIntegers(paramString, paramArrayList);
   }
   
-  public final <O> void setLong(FastJsonResponse.Field<Long, O> paramField, long paramLong)
+  public final <O> void setLong(Field<Long, O> paramField, long paramLong)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, Long.valueOf(paramLong));
       return;
@@ -695,14 +702,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Long not supported");
   }
   
-  protected void setLongInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, long paramLong)
+  protected void setLongInternal(Field<?, ?> paramField, String paramString, long paramLong)
   {
     setLong(paramString, paramLong);
   }
   
-  public final <O> void setLongs(FastJsonResponse.Field<ArrayList<Long>, O> paramField, ArrayList<Long> paramArrayList)
+  public final <O> void setLongs(Field<ArrayList<Long>, O> paramField, ArrayList<Long> paramArrayList)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayList);
       return;
@@ -715,14 +722,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("Long list not supported");
   }
   
-  protected void setLongsInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<Long> paramArrayList)
+  protected void setLongsInternal(Field<?, ?> paramField, String paramString, ArrayList<Long> paramArrayList)
   {
     setLongs(paramString, paramArrayList);
   }
   
-  public final <O> void setString(FastJsonResponse.Field<String, O> paramField, String paramString)
+  public final <O> void setString(Field<String, O> paramField, String paramString)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramString);
       return;
@@ -735,14 +742,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("String not supported");
   }
   
-  protected void setStringInternal(FastJsonResponse.Field<?, ?> paramField, String paramString1, String paramString2)
+  protected void setStringInternal(Field<?, ?> paramField, String paramString1, String paramString2)
   {
     setString(paramString1, paramString2);
   }
   
-  public final <O> void setStringMap(FastJsonResponse.Field<Map<String, String>, O> paramField, Map<String, String> paramMap)
+  public final <O> void setStringMap(Field<Map<String, String>, O> paramField, Map<String, String> paramMap)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramMap);
       return;
@@ -755,14 +762,14 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("String map not supported");
   }
   
-  protected void setStringMapInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, Map<String, String> paramMap)
+  protected void setStringMapInternal(Field<?, ?> paramField, String paramString, Map<String, String> paramMap)
   {
     setStringMap(paramString, paramMap);
   }
   
-  public final <O> void setStrings(FastJsonResponse.Field<ArrayList<String>, O> paramField, ArrayList<String> paramArrayList)
+  public final <O> void setStrings(Field<ArrayList<String>, O> paramField, ArrayList<String> paramArrayList)
   {
-    if (FastJsonResponse.Field.zza(paramField) != null)
+    if (Field.zza(paramField) != null)
     {
       zza(paramField, paramArrayList);
       return;
@@ -775,7 +782,7 @@ public abstract class FastJsonResponse
     throw new UnsupportedOperationException("String list not supported");
   }
   
-  protected void setStringsInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<String> paramArrayList)
+  protected void setStringsInternal(Field<?, ?> paramField, String paramString, ArrayList<String> paramArrayList)
   {
     setStrings(paramString, paramArrayList);
   }
@@ -788,7 +795,7 @@ public abstract class FastJsonResponse
     while (localIterator.hasNext())
     {
       Object localObject1 = (String)localIterator.next();
-      FastJsonResponse.Field localField = (FastJsonResponse.Field)localMap.get(localObject1);
+      Field localField = (Field)localMap.get(localObject1);
       if (isFieldSet(localField))
       {
         Object localObject2 = getOriginalValue(localField, getFieldValue(localField));
@@ -859,6 +866,615 @@ public abstract class FastJsonResponse
     }
   }
   
+  public static class Field<I, O>
+    extends AbstractSafeParcelable
+  {
+    public static final FieldCreator CREATOR;
+    protected final Class<? extends FastJsonResponse> mConcreteType;
+    protected final String mConcreteTypeName;
+    protected final String mOutputFieldName;
+    protected final int mSafeParcelableFieldId;
+    protected final int mTypeIn;
+    protected final boolean mTypeInArray;
+    protected final int mTypeOut;
+    protected final boolean mTypeOutArray;
+    private final int zzal;
+    private FieldMappingDictionary zzwn;
+    private FastJsonResponse.FieldConverter<I, O> zzwo;
+    
+    static
+    {
+      AppMethodBeat.i(12013);
+      CREATOR = new FieldCreator();
+      AppMethodBeat.o(12013);
+    }
+    
+    Field(int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, String paramString1, int paramInt4, String paramString2, ConverterWrapper paramConverterWrapper)
+    {
+      AppMethodBeat.i(11957);
+      this.zzal = paramInt1;
+      this.mTypeIn = paramInt2;
+      this.mTypeInArray = paramBoolean1;
+      this.mTypeOut = paramInt3;
+      this.mTypeOutArray = paramBoolean2;
+      this.mOutputFieldName = paramString1;
+      this.mSafeParcelableFieldId = paramInt4;
+      if (paramString2 == null) {
+        this.mConcreteType = null;
+      }
+      for (this.mConcreteTypeName = null; paramConverterWrapper == null; this.mConcreteTypeName = paramString2)
+      {
+        this.zzwo = null;
+        AppMethodBeat.o(11957);
+        return;
+        this.mConcreteType = SafeParcelResponse.class;
+      }
+      this.zzwo = paramConverterWrapper.unwrap();
+      AppMethodBeat.o(11957);
+    }
+    
+    protected Field(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, String paramString, int paramInt3, Class<? extends FastJsonResponse> paramClass, FastJsonResponse.FieldConverter<I, O> paramFieldConverter)
+    {
+      AppMethodBeat.i(11958);
+      this.zzal = 1;
+      this.mTypeIn = paramInt1;
+      this.mTypeInArray = paramBoolean1;
+      this.mTypeOut = paramInt2;
+      this.mTypeOutArray = paramBoolean2;
+      this.mOutputFieldName = paramString;
+      this.mSafeParcelableFieldId = paramInt3;
+      this.mConcreteType = paramClass;
+      if (paramClass == null) {}
+      for (this.mConcreteTypeName = null;; this.mConcreteTypeName = paramClass.getCanonicalName())
+      {
+        this.zzwo = paramFieldConverter;
+        AppMethodBeat.o(11958);
+        return;
+      }
+    }
+    
+    public static Field<byte[], byte[]> forBase64(String paramString)
+    {
+      AppMethodBeat.i(12005);
+      paramString = new Field(8, false, 8, false, paramString, -1, null, null);
+      AppMethodBeat.o(12005);
+      return paramString;
+    }
+    
+    public static Field<byte[], byte[]> forBase64(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11981);
+      paramString = new Field(8, false, 8, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11981);
+      return paramString;
+    }
+    
+    public static Field<byte[], byte[]> forBase64UrlSafe(String paramString)
+    {
+      AppMethodBeat.i(12006);
+      paramString = new Field(9, false, 9, false, paramString, -1, null, null);
+      AppMethodBeat.o(12006);
+      return paramString;
+    }
+    
+    public static Field<byte[], byte[]> forBase64UrlSafe(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11982);
+      paramString = new Field(9, false, 9, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11982);
+      return paramString;
+    }
+    
+    public static Field<BigDecimal, BigDecimal> forBigDecimal(String paramString)
+    {
+      AppMethodBeat.i(11999);
+      paramString = new Field(5, false, 5, false, paramString, -1, null, null);
+      AppMethodBeat.o(11999);
+      return paramString;
+    }
+    
+    public static Field<BigDecimal, BigDecimal> forBigDecimal(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11975);
+      paramString = new Field(5, false, 5, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11975);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<BigDecimal>, ArrayList<BigDecimal>> forBigDecimals(String paramString)
+    {
+      AppMethodBeat.i(12000);
+      paramString = new Field(5, true, 5, true, paramString, -1, null, null);
+      AppMethodBeat.o(12000);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<BigDecimal>, ArrayList<BigDecimal>> forBigDecimals(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11976);
+      paramString = new Field(5, true, 5, true, paramString, paramInt, null, null);
+      AppMethodBeat.o(11976);
+      return paramString;
+    }
+    
+    public static Field<BigInteger, BigInteger> forBigInteger(String paramString)
+    {
+      AppMethodBeat.i(11991);
+      paramString = new Field(1, false, 1, false, paramString, -1, null, null);
+      AppMethodBeat.o(11991);
+      return paramString;
+    }
+    
+    public static Field<BigInteger, BigInteger> forBigInteger(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11967);
+      paramString = new Field(1, false, 1, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11967);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<BigInteger>, ArrayList<BigInteger>> forBigIntegers(String paramString)
+    {
+      AppMethodBeat.i(11992);
+      paramString = new Field(0, true, 1, true, paramString, -1, null, null);
+      AppMethodBeat.o(11992);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<BigInteger>, ArrayList<BigInteger>> forBigIntegers(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11968);
+      paramString = new Field(0, true, 1, true, paramString, paramInt, null, null);
+      AppMethodBeat.o(11968);
+      return paramString;
+    }
+    
+    public static Field<Boolean, Boolean> forBoolean(String paramString)
+    {
+      AppMethodBeat.i(12001);
+      paramString = new Field(6, false, 6, false, paramString, -1, null, null);
+      AppMethodBeat.o(12001);
+      return paramString;
+    }
+    
+    public static Field<Boolean, Boolean> forBoolean(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11977);
+      paramString = new Field(6, false, 6, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11977);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Boolean>, ArrayList<Boolean>> forBooleans(String paramString)
+    {
+      AppMethodBeat.i(12002);
+      paramString = new Field(6, true, 6, true, paramString, -1, null, null);
+      AppMethodBeat.o(12002);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Boolean>, ArrayList<Boolean>> forBooleans(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11978);
+      paramString = new Field(6, true, 6, true, paramString, paramInt, null, null);
+      AppMethodBeat.o(11978);
+      return paramString;
+    }
+    
+    public static <T extends FastJsonResponse> Field<T, T> forConcreteType(String paramString, int paramInt, Class<T> paramClass)
+    {
+      AppMethodBeat.i(11984);
+      paramString = new Field(11, false, 11, false, paramString, paramInt, paramClass, null);
+      AppMethodBeat.o(11984);
+      return paramString;
+    }
+    
+    public static <T extends FastJsonResponse> Field<T, T> forConcreteType(String paramString, Class<T> paramClass)
+    {
+      AppMethodBeat.i(12008);
+      paramString = new Field(11, false, 11, false, paramString, -1, paramClass, null);
+      AppMethodBeat.o(12008);
+      return paramString;
+    }
+    
+    public static <T extends FastJsonResponse> Field<ArrayList<T>, ArrayList<T>> forConcreteTypeArray(String paramString, int paramInt, Class<T> paramClass)
+    {
+      AppMethodBeat.i(11985);
+      paramString = new Field(11, true, 11, true, paramString, paramInt, paramClass, null);
+      AppMethodBeat.o(11985);
+      return paramString;
+    }
+    
+    public static <T extends FastJsonResponse> Field<ArrayList<T>, ArrayList<T>> forConcreteTypeArray(String paramString, Class<T> paramClass)
+    {
+      AppMethodBeat.i(12009);
+      paramString = new Field(11, true, 11, true, paramString, -1, paramClass, null);
+      AppMethodBeat.o(12009);
+      return paramString;
+    }
+    
+    public static Field<Double, Double> forDouble(String paramString)
+    {
+      AppMethodBeat.i(11997);
+      paramString = new Field(4, false, 4, false, paramString, -1, null, null);
+      AppMethodBeat.o(11997);
+      return paramString;
+    }
+    
+    public static Field<Double, Double> forDouble(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11973);
+      paramString = new Field(4, false, 4, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11973);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Double>, ArrayList<Double>> forDoubles(String paramString)
+    {
+      AppMethodBeat.i(11998);
+      paramString = new Field(4, true, 4, true, paramString, -1, null, null);
+      AppMethodBeat.o(11998);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Double>, ArrayList<Double>> forDoubles(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11974);
+      paramString = new Field(4, true, 4, true, paramString, paramInt, null, null);
+      AppMethodBeat.o(11974);
+      return paramString;
+    }
+    
+    public static Field<Float, Float> forFloat(String paramString)
+    {
+      AppMethodBeat.i(11995);
+      paramString = new Field(3, false, 3, false, paramString, -1, null, null);
+      AppMethodBeat.o(11995);
+      return paramString;
+    }
+    
+    public static Field<Float, Float> forFloat(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11971);
+      paramString = new Field(3, false, 3, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11971);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Float>, ArrayList<Float>> forFloats(String paramString)
+    {
+      AppMethodBeat.i(11996);
+      paramString = new Field(3, true, 3, true, paramString, -1, null, null);
+      AppMethodBeat.o(11996);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Float>, ArrayList<Float>> forFloats(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11972);
+      paramString = new Field(3, true, 3, true, paramString, paramInt, null, null);
+      AppMethodBeat.o(11972);
+      return paramString;
+    }
+    
+    public static Field<Integer, Integer> forInteger(String paramString)
+    {
+      AppMethodBeat.i(11989);
+      paramString = new Field(0, false, 0, false, paramString, -1, null, null);
+      AppMethodBeat.o(11989);
+      return paramString;
+    }
+    
+    public static Field<Integer, Integer> forInteger(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11965);
+      paramString = new Field(0, false, 0, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11965);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Integer>, ArrayList<Integer>> forIntegers(String paramString)
+    {
+      AppMethodBeat.i(11990);
+      paramString = new Field(0, true, 0, true, paramString, -1, null, null);
+      AppMethodBeat.o(11990);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Integer>, ArrayList<Integer>> forIntegers(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11966);
+      paramString = new Field(0, true, 0, true, paramString, paramInt, null, null);
+      AppMethodBeat.o(11966);
+      return paramString;
+    }
+    
+    public static Field<Long, Long> forLong(String paramString)
+    {
+      AppMethodBeat.i(11993);
+      paramString = new Field(2, false, 2, false, paramString, -1, null, null);
+      AppMethodBeat.o(11993);
+      return paramString;
+    }
+    
+    public static Field<Long, Long> forLong(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11969);
+      paramString = new Field(2, false, 2, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11969);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Long>, ArrayList<Long>> forLongs(String paramString)
+    {
+      AppMethodBeat.i(11994);
+      paramString = new Field(2, true, 2, true, paramString, -1, null, null);
+      AppMethodBeat.o(11994);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<Long>, ArrayList<Long>> forLongs(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11970);
+      paramString = new Field(2, true, 2, true, paramString, paramInt, null, null);
+      AppMethodBeat.o(11970);
+      return paramString;
+    }
+    
+    public static Field<String, String> forString(String paramString)
+    {
+      AppMethodBeat.i(12003);
+      paramString = new Field(7, false, 7, false, paramString, -1, null, null);
+      AppMethodBeat.o(12003);
+      return paramString;
+    }
+    
+    public static Field<String, String> forString(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11979);
+      paramString = new Field(7, false, 7, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11979);
+      return paramString;
+    }
+    
+    public static Field<HashMap<String, String>, HashMap<String, String>> forStringMap(String paramString)
+    {
+      AppMethodBeat.i(12007);
+      paramString = new Field(10, false, 10, false, paramString, -1, null, null);
+      AppMethodBeat.o(12007);
+      return paramString;
+    }
+    
+    public static Field<HashMap<String, String>, HashMap<String, String>> forStringMap(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11983);
+      paramString = new Field(10, false, 10, false, paramString, paramInt, null, null);
+      AppMethodBeat.o(11983);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<String>, ArrayList<String>> forStrings(String paramString)
+    {
+      AppMethodBeat.i(12004);
+      paramString = new Field(7, true, 7, true, paramString, -1, null, null);
+      AppMethodBeat.o(12004);
+      return paramString;
+    }
+    
+    public static Field<ArrayList<String>, ArrayList<String>> forStrings(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(11980);
+      paramString = new Field(7, true, 7, true, paramString, paramInt, null, null);
+      AppMethodBeat.o(11980);
+      return paramString;
+    }
+    
+    public static Field withConverter(String paramString, int paramInt, FastJsonResponse.FieldConverter<?, ?> paramFieldConverter, boolean paramBoolean)
+    {
+      AppMethodBeat.i(11988);
+      paramString = new Field(paramFieldConverter.getTypeIn(), paramBoolean, paramFieldConverter.getTypeOut(), false, paramString, paramInt, null, paramFieldConverter);
+      AppMethodBeat.o(11988);
+      return paramString;
+    }
+    
+    public static <T extends FastJsonResponse.FieldConverter> Field withConverter(String paramString, int paramInt, Class<T> paramClass, boolean paramBoolean)
+    {
+      AppMethodBeat.i(11986);
+      try
+      {
+        paramString = withConverter(paramString, paramInt, (FastJsonResponse.FieldConverter)paramClass.newInstance(), paramBoolean);
+        AppMethodBeat.o(11986);
+        return paramString;
+      }
+      catch (InstantiationException paramString)
+      {
+        paramString = new RuntimeException(paramString);
+        AppMethodBeat.o(11986);
+        throw paramString;
+      }
+      catch (IllegalAccessException paramString)
+      {
+        paramString = new RuntimeException(paramString);
+        AppMethodBeat.o(11986);
+        throw paramString;
+      }
+    }
+    
+    public static Field withConverter(String paramString, FastJsonResponse.FieldConverter<?, ?> paramFieldConverter, boolean paramBoolean)
+    {
+      AppMethodBeat.i(11987);
+      paramString = withConverter(paramString, -1, paramFieldConverter, paramBoolean);
+      AppMethodBeat.o(11987);
+      return paramString;
+    }
+    
+    public static <T extends FastJsonResponse.FieldConverter> Field withConverter(String paramString, Class<T> paramClass, boolean paramBoolean)
+    {
+      AppMethodBeat.i(12010);
+      paramString = withConverter(paramString, -1, paramClass, paramBoolean);
+      AppMethodBeat.o(12010);
+      return paramString;
+    }
+    
+    private final String zzcz()
+    {
+      if (this.mConcreteTypeName == null) {
+        return null;
+      }
+      return this.mConcreteTypeName;
+    }
+    
+    private final ConverterWrapper zzda()
+    {
+      AppMethodBeat.i(11960);
+      if (this.zzwo == null)
+      {
+        AppMethodBeat.o(11960);
+        return null;
+      }
+      ConverterWrapper localConverterWrapper = ConverterWrapper.wrap(this.zzwo);
+      AppMethodBeat.o(11960);
+      return localConverterWrapper;
+    }
+    
+    public O convert(I paramI)
+    {
+      AppMethodBeat.i(11963);
+      paramI = this.zzwo.convert(paramI);
+      AppMethodBeat.o(11963);
+      return paramI;
+    }
+    
+    public I convertBack(O paramO)
+    {
+      AppMethodBeat.i(11964);
+      paramO = this.zzwo.convertBack(paramO);
+      AppMethodBeat.o(11964);
+      return paramO;
+    }
+    
+    public Field<I, O> copyForDictionary()
+    {
+      AppMethodBeat.i(11959);
+      Field localField = new Field(this.zzal, this.mTypeIn, this.mTypeInArray, this.mTypeOut, this.mTypeOutArray, this.mOutputFieldName, this.mSafeParcelableFieldId, this.mConcreteTypeName, zzda());
+      AppMethodBeat.o(11959);
+      return localField;
+    }
+    
+    public Class<? extends FastJsonResponse> getConcreteType()
+    {
+      return this.mConcreteType;
+    }
+    
+    public Map<String, Field<?, ?>> getConcreteTypeFieldMappingFromDictionary()
+    {
+      AppMethodBeat.i(11962);
+      Preconditions.checkNotNull(this.mConcreteTypeName);
+      Preconditions.checkNotNull(this.zzwn);
+      Map localMap = this.zzwn.getFieldMapping(this.mConcreteTypeName);
+      AppMethodBeat.o(11962);
+      return localMap;
+    }
+    
+    public String getOutputFieldName()
+    {
+      return this.mOutputFieldName;
+    }
+    
+    public int getSafeParcelableFieldId()
+    {
+      return this.mSafeParcelableFieldId;
+    }
+    
+    public int getTypeIn()
+    {
+      return this.mTypeIn;
+    }
+    
+    public int getTypeOut()
+    {
+      return this.mTypeOut;
+    }
+    
+    public int getVersionCode()
+    {
+      return this.zzal;
+    }
+    
+    public boolean hasConverter()
+    {
+      return this.zzwo != null;
+    }
+    
+    public boolean isTypeInArray()
+    {
+      return this.mTypeInArray;
+    }
+    
+    public boolean isTypeOutArray()
+    {
+      return this.mTypeOutArray;
+    }
+    
+    public boolean isValidSafeParcelableFieldId()
+    {
+      return this.mSafeParcelableFieldId != -1;
+    }
+    
+    public FastJsonResponse newConcreteTypeInstance()
+    {
+      AppMethodBeat.i(11961);
+      if (this.mConcreteType == SafeParcelResponse.class)
+      {
+        Preconditions.checkNotNull(this.zzwn, "The field mapping dictionary must be set if the concrete type is a SafeParcelResponse object.");
+        localObject = new SafeParcelResponse(this.zzwn, this.mConcreteTypeName);
+        AppMethodBeat.o(11961);
+        return localObject;
+      }
+      Object localObject = (FastJsonResponse)this.mConcreteType.newInstance();
+      AppMethodBeat.o(11961);
+      return localObject;
+    }
+    
+    public void setFieldMappingDictionary(FieldMappingDictionary paramFieldMappingDictionary)
+    {
+      this.zzwn = paramFieldMappingDictionary;
+    }
+    
+    public String toString()
+    {
+      AppMethodBeat.i(12012);
+      Object localObject = Objects.toStringHelper(this).add("versionCode", Integer.valueOf(this.zzal)).add("typeIn", Integer.valueOf(this.mTypeIn)).add("typeInArray", Boolean.valueOf(this.mTypeInArray)).add("typeOut", Integer.valueOf(this.mTypeOut)).add("typeOutArray", Boolean.valueOf(this.mTypeOutArray)).add("outputFieldName", this.mOutputFieldName).add("safeParcelFieldId", Integer.valueOf(this.mSafeParcelableFieldId)).add("concreteTypeName", zzcz());
+      Class localClass = getConcreteType();
+      if (localClass != null) {
+        ((Objects.ToStringHelper)localObject).add("concreteType.class", localClass.getCanonicalName());
+      }
+      if (this.zzwo != null) {
+        ((Objects.ToStringHelper)localObject).add("converterName", this.zzwo.getClass().getCanonicalName());
+      }
+      localObject = ((Objects.ToStringHelper)localObject).toString();
+      AppMethodBeat.o(12012);
+      return localObject;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(12011);
+      int i = SafeParcelWriter.beginObjectHeader(paramParcel);
+      SafeParcelWriter.writeInt(paramParcel, 1, getVersionCode());
+      SafeParcelWriter.writeInt(paramParcel, 2, getTypeIn());
+      SafeParcelWriter.writeBoolean(paramParcel, 3, isTypeInArray());
+      SafeParcelWriter.writeInt(paramParcel, 4, getTypeOut());
+      SafeParcelWriter.writeBoolean(paramParcel, 5, isTypeOutArray());
+      SafeParcelWriter.writeString(paramParcel, 6, getOutputFieldName(), false);
+      SafeParcelWriter.writeInt(paramParcel, 7, getSafeParcelableFieldId());
+      SafeParcelWriter.writeString(paramParcel, 8, zzcz(), false);
+      SafeParcelWriter.writeParcelable(paramParcel, 9, zzda(), paramInt, false);
+      SafeParcelWriter.finishObjectHeader(paramParcel, i);
+      AppMethodBeat.o(12011);
+    }
+  }
+  
   public static abstract interface FieldConverter<I, O>
   {
     public abstract O convert(I paramI);
@@ -872,7 +1488,7 @@ public abstract class FastJsonResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.FastJsonResponse
  * JD-Core Version:    0.7.0.1
  */

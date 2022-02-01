@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import ect;
+import ecs;
 import java.io.UnsupportedEncodingException;
 
 public class BookEditText
@@ -13,7 +13,7 @@ public class BookEditText
   private int jdField_a_of_type_Int = 80;
   private BookEditText.BookEditTextInputListener jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener;
   private boolean jdField_a_of_type_Boolean = false;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new ect(this) };
+  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new ecs(this) };
   
   public BookEditText(Context paramContext)
   {

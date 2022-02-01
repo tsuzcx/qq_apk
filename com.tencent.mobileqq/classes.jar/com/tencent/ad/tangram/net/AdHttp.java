@@ -17,35 +17,30 @@ public final class AdHttp
     if (paramInputStream == null) {
       return null;
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    localByteArrayOutputStream = new ByteArrayOutputStream();
     try
     {
-      arrayOfByte = new byte[1024];
-      i = paramInputStream.read(arrayOfByte);
-      if (i >= 0) {}
+      for (;;)
+      {
+        byte[] arrayOfByte = new byte[1024];
+        int i = paramInputStream.read(arrayOfByte);
+        if (i < 0) {
+          break;
+        }
+        localByteArrayOutputStream.write(arrayOfByte, 0, i);
+      }
+      return localByteArrayOutputStream.toByteArray();
     }
     catch (Throwable paramInputStream)
     {
+      AdLog.e("AdHttp", "read", paramInputStream);
       try
       {
-        for (;;)
-        {
-          byte[] arrayOfByte;
-          int i;
-          localByteArrayOutputStream.close();
-          return localByteArrayOutputStream.toByteArray();
-          localByteArrayOutputStream.write(arrayOfByte, 0, i);
-          continue;
-          paramInputStream = paramInputStream;
-          AdLog.e("AdHttp", "read", paramInputStream);
-        }
+        localByteArrayOutputStream.close();
       }
       catch (Throwable paramInputStream)
       {
-        for (;;)
-        {
-          AdLog.e("AdHttp", "read", paramInputStream);
-        }
+        AdLog.e("AdHttp", "read", paramInputStream);
       }
     }
   }
@@ -57,214 +52,300 @@ public final class AdHttp
     //   0: invokestatic 52	java/lang/System:currentTimeMillis	()J
     //   3: lstore_1
     //   4: aload_0
-    //   5: ifnull +10 -> 15
+    //   5: ifnull +398 -> 403
     //   8: aload_0
     //   9: invokevirtual 58	com/tencent/ad/tangram/net/AdHttp$Params:canSend	()Z
     //   12: ifne +4 -> 16
     //   15: return
-    //   16: aconst_null
-    //   17: astore_3
-    //   18: aconst_null
-    //   19: astore 6
-    //   21: aload_0
-    //   22: invokestatic 62	com/tencent/ad/tangram/net/AdHttp$Params:access$000	(Lcom/tencent/ad/tangram/net/AdHttp$Params;)Ljava/net/URL;
-    //   25: invokevirtual 68	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   28: checkcast 70	java/net/HttpURLConnection
-    //   31: astore 4
-    //   33: aload 4
-    //   35: aload_0
-    //   36: getfield 74	com/tencent/ad/tangram/net/AdHttp$Params:connectTimeoutMillis	I
-    //   39: invokevirtual 78	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   42: aload 4
-    //   44: aload_0
-    //   45: getfield 81	com/tencent/ad/tangram/net/AdHttp$Params:readTimeoutMillis	I
-    //   48: invokevirtual 84	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   51: aload 4
+    //   16: aload_0
+    //   17: invokestatic 62	com/tencent/ad/tangram/net/AdHttp$Params:access$000	(Lcom/tencent/ad/tangram/net/AdHttp$Params;)Ljava/net/URL;
+    //   20: invokevirtual 68	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   23: checkcast 70	java/net/HttpURLConnection
+    //   26: astore_3
+    //   27: aload_3
+    //   28: astore 4
+    //   30: aload_3
+    //   31: aload_0
+    //   32: getfield 74	com/tencent/ad/tangram/net/AdHttp$Params:connectTimeoutMillis	I
+    //   35: invokevirtual 78	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   38: aload_3
+    //   39: astore 4
+    //   41: aload_3
+    //   42: aload_0
+    //   43: getfield 81	com/tencent/ad/tangram/net/AdHttp$Params:readTimeoutMillis	I
+    //   46: invokevirtual 84	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   49: aload_3
+    //   50: astore 4
+    //   52: aload_3
     //   53: iconst_1
     //   54: invokevirtual 88	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   57: aload_0
-    //   58: getfield 91	com/tencent/ad/tangram/net/AdHttp$Params:method	Ljava/lang/String;
-    //   61: ldc 93
-    //   63: invokestatic 99	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   66: ifeq +195 -> 261
-    //   69: aload 4
-    //   71: iconst_0
-    //   72: invokevirtual 102	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   75: aload 4
-    //   77: aload_0
-    //   78: getfield 91	com/tencent/ad/tangram/net/AdHttp$Params:method	Ljava/lang/String;
-    //   81: invokevirtual 106	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   84: aload 4
-    //   86: iconst_0
-    //   87: invokevirtual 109	java/net/HttpURLConnection:setUseCaches	(Z)V
-    //   90: aload 4
-    //   92: aload_0
-    //   93: getfield 113	com/tencent/ad/tangram/net/AdHttp$Params:isInstanceFollowRedirects	Z
-    //   96: invokevirtual 116	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
-    //   99: aload_0
-    //   100: getfield 119	com/tencent/ad/tangram/net/AdHttp$Params:contentType	Ljava/lang/String;
-    //   103: invokestatic 123	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   106: ifne +14 -> 120
-    //   109: aload 4
-    //   111: ldc 125
-    //   113: aload_0
-    //   114: getfield 119	com/tencent/ad/tangram/net/AdHttp$Params:contentType	Ljava/lang/String;
-    //   117: invokevirtual 129	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   120: aload_0
-    //   121: getfield 132	com/tencent/ad/tangram/net/AdHttp$Params:referer	Ljava/lang/String;
-    //   124: invokestatic 123	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   127: ifne +14 -> 141
-    //   130: aload 4
-    //   132: ldc 134
-    //   134: aload_0
-    //   135: getfield 132	com/tencent/ad/tangram/net/AdHttp$Params:referer	Ljava/lang/String;
-    //   138: invokevirtual 129	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: aload 4
-    //   143: invokevirtual 137	java/net/HttpURLConnection:getDoOutput	()Z
-    //   146: ifeq +45 -> 191
-    //   149: aload_0
-    //   150: getfield 141	com/tencent/ad/tangram/net/AdHttp$Params:requestData	[B
-    //   153: ifnull +38 -> 191
-    //   156: new 143	java/io/DataOutputStream
-    //   159: dup
-    //   160: aload 4
-    //   162: invokevirtual 147	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   165: invokespecial 150	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   168: astore_3
-    //   169: aload_3
-    //   170: aload_0
-    //   171: getfield 141	com/tencent/ad/tangram/net/AdHttp$Params:requestData	[B
-    //   174: iconst_0
-    //   175: aload_0
-    //   176: getfield 141	com/tencent/ad/tangram/net/AdHttp$Params:requestData	[B
-    //   179: arraylength
-    //   180: invokevirtual 151	java/io/DataOutputStream:write	([BII)V
-    //   183: aload_3
-    //   184: invokevirtual 154	java/io/DataOutputStream:flush	()V
-    //   187: aload_3
-    //   188: invokevirtual 155	java/io/DataOutputStream:close	()V
-    //   191: aload 4
-    //   193: invokevirtual 158	java/net/HttpURLConnection:connect	()V
-    //   196: aload_0
-    //   197: aload 4
-    //   199: invokevirtual 162	java/net/HttpURLConnection:getResponseCode	()I
-    //   202: putfield 165	com/tencent/ad/tangram/net/AdHttp$Params:responseCode	I
-    //   205: aload_0
-    //   206: getfield 165	com/tencent/ad/tangram/net/AdHttp$Params:responseCode	I
-    //   209: sipush 200
-    //   212: if_icmpne +29 -> 241
-    //   215: aload 4
-    //   217: invokevirtual 168	java/net/HttpURLConnection:getDoInput	()Z
-    //   220: ifeq +21 -> 241
-    //   223: aload 4
-    //   225: invokevirtual 172	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   228: astore_3
+    //   57: aload_3
+    //   58: astore 4
+    //   60: aload_0
+    //   61: getfield 91	com/tencent/ad/tangram/net/AdHttp$Params:method	Ljava/lang/String;
+    //   64: ldc 93
+    //   66: invokestatic 99	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   69: ifeq +14 -> 83
+    //   72: aload_3
+    //   73: astore 4
+    //   75: aload_3
+    //   76: iconst_0
+    //   77: invokevirtual 102	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   80: goto +26 -> 106
+    //   83: aload_3
+    //   84: astore 4
+    //   86: aload_0
+    //   87: getfield 91	com/tencent/ad/tangram/net/AdHttp$Params:method	Ljava/lang/String;
+    //   90: ldc 104
+    //   92: invokestatic 99	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   95: ifeq +11 -> 106
+    //   98: aload_3
+    //   99: astore 4
+    //   101: aload_3
+    //   102: iconst_1
+    //   103: invokevirtual 102	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   106: aload_3
+    //   107: astore 4
+    //   109: aload_3
+    //   110: aload_0
+    //   111: getfield 91	com/tencent/ad/tangram/net/AdHttp$Params:method	Ljava/lang/String;
+    //   114: invokevirtual 108	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   117: aload_3
+    //   118: astore 4
+    //   120: aload_3
+    //   121: iconst_0
+    //   122: invokevirtual 111	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   125: aload_3
+    //   126: astore 4
+    //   128: aload_3
+    //   129: aload_0
+    //   130: getfield 115	com/tencent/ad/tangram/net/AdHttp$Params:isInstanceFollowRedirects	Z
+    //   133: invokevirtual 118	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   136: aload_3
+    //   137: astore 4
+    //   139: aload_0
+    //   140: getfield 121	com/tencent/ad/tangram/net/AdHttp$Params:contentType	Ljava/lang/String;
+    //   143: invokestatic 125	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   146: ifne +16 -> 162
+    //   149: aload_3
+    //   150: astore 4
+    //   152: aload_3
+    //   153: ldc 127
+    //   155: aload_0
+    //   156: getfield 121	com/tencent/ad/tangram/net/AdHttp$Params:contentType	Ljava/lang/String;
+    //   159: invokevirtual 131	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   162: aload_3
+    //   163: astore 4
+    //   165: aload_0
+    //   166: getfield 134	com/tencent/ad/tangram/net/AdHttp$Params:referer	Ljava/lang/String;
+    //   169: invokestatic 125	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   172: ifne +16 -> 188
+    //   175: aload_3
+    //   176: astore 4
+    //   178: aload_3
+    //   179: ldc 136
+    //   181: aload_0
+    //   182: getfield 134	com/tencent/ad/tangram/net/AdHttp$Params:referer	Ljava/lang/String;
+    //   185: invokevirtual 131	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   188: aload_3
+    //   189: astore 4
+    //   191: aload_3
+    //   192: invokevirtual 139	java/net/HttpURLConnection:getDoOutput	()Z
+    //   195: ifeq +63 -> 258
+    //   198: aload_3
+    //   199: astore 4
+    //   201: aload_0
+    //   202: getfield 143	com/tencent/ad/tangram/net/AdHttp$Params:requestData	[B
+    //   205: ifnull +53 -> 258
+    //   208: aload_3
+    //   209: astore 4
+    //   211: new 145	java/io/DataOutputStream
+    //   214: dup
+    //   215: aload_3
+    //   216: invokevirtual 149	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   219: invokespecial 152	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   222: astore 5
+    //   224: aload_3
+    //   225: astore 4
+    //   227: aload 5
     //   229: aload_0
-    //   230: aload_3
-    //   231: invokestatic 174	com/tencent/ad/tangram/net/AdHttp:read	(Ljava/io/InputStream;)[B
-    //   234: putfield 177	com/tencent/ad/tangram/net/AdHttp$Params:responseData	[B
-    //   237: aload_3
-    //   238: invokevirtual 178	java/io/InputStream:close	()V
-    //   241: aload 4
-    //   243: ifnull +8 -> 251
-    //   246: aload 4
-    //   248: invokevirtual 181	java/net/HttpURLConnection:disconnect	()V
-    //   251: aload_0
-    //   252: invokestatic 52	java/lang/System:currentTimeMillis	()J
-    //   255: lload_1
-    //   256: lsub
-    //   257: putfield 185	com/tencent/ad/tangram/net/AdHttp$Params:durationMillis	J
-    //   260: return
-    //   261: aload_0
-    //   262: getfield 91	com/tencent/ad/tangram/net/AdHttp$Params:method	Ljava/lang/String;
-    //   265: ldc 187
-    //   267: invokestatic 99	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   270: ifeq -195 -> 75
-    //   273: aload 4
-    //   275: iconst_1
-    //   276: invokevirtual 102	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   279: goto -204 -> 75
-    //   282: astore 5
-    //   284: aload 4
-    //   286: astore_3
-    //   287: ldc 9
-    //   289: ldc 188
-    //   291: aload 5
-    //   293: invokestatic 44	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   296: aload 4
-    //   298: ifnull +8 -> 306
-    //   301: aload 4
-    //   303: invokevirtual 181	java/net/HttpURLConnection:disconnect	()V
-    //   306: aload_0
-    //   307: invokestatic 52	java/lang/System:currentTimeMillis	()J
-    //   310: lload_1
-    //   311: lsub
-    //   312: putfield 185	com/tencent/ad/tangram/net/AdHttp$Params:durationMillis	J
-    //   315: return
-    //   316: astore 5
-    //   318: aload_3
-    //   319: astore 4
-    //   321: aload 5
-    //   323: astore_3
-    //   324: aload 4
-    //   326: ifnull +8 -> 334
-    //   329: aload 4
-    //   331: invokevirtual 181	java/net/HttpURLConnection:disconnect	()V
-    //   334: aload_0
-    //   335: invokestatic 52	java/lang/System:currentTimeMillis	()J
-    //   338: lload_1
-    //   339: lsub
-    //   340: putfield 185	com/tencent/ad/tangram/net/AdHttp$Params:durationMillis	J
-    //   343: aload_3
-    //   344: athrow
-    //   345: astore_3
-    //   346: goto -22 -> 324
-    //   349: astore 5
-    //   351: aload 6
-    //   353: astore 4
-    //   355: goto -71 -> 284
+    //   230: getfield 143	com/tencent/ad/tangram/net/AdHttp$Params:requestData	[B
+    //   233: iconst_0
+    //   234: aload_0
+    //   235: getfield 143	com/tencent/ad/tangram/net/AdHttp$Params:requestData	[B
+    //   238: arraylength
+    //   239: invokevirtual 153	java/io/DataOutputStream:write	([BII)V
+    //   242: aload_3
+    //   243: astore 4
+    //   245: aload 5
+    //   247: invokevirtual 156	java/io/DataOutputStream:flush	()V
+    //   250: aload_3
+    //   251: astore 4
+    //   253: aload 5
+    //   255: invokevirtual 157	java/io/DataOutputStream:close	()V
+    //   258: aload_3
+    //   259: astore 4
+    //   261: aload_3
+    //   262: invokevirtual 160	java/net/HttpURLConnection:connect	()V
+    //   265: aload_3
+    //   266: astore 4
+    //   268: aload_0
+    //   269: aload_3
+    //   270: invokevirtual 164	java/net/HttpURLConnection:getResponseCode	()I
+    //   273: putfield 167	com/tencent/ad/tangram/net/AdHttp$Params:responseCode	I
+    //   276: aload_3
+    //   277: astore 4
+    //   279: aload_0
+    //   280: getfield 167	com/tencent/ad/tangram/net/AdHttp$Params:responseCode	I
+    //   283: sipush 200
+    //   286: if_icmpne +42 -> 328
+    //   289: aload_3
+    //   290: astore 4
+    //   292: aload_3
+    //   293: invokevirtual 170	java/net/HttpURLConnection:getDoInput	()Z
+    //   296: ifeq +32 -> 328
+    //   299: aload_3
+    //   300: astore 4
+    //   302: aload_3
+    //   303: invokevirtual 174	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   306: astore 5
+    //   308: aload_3
+    //   309: astore 4
+    //   311: aload_0
+    //   312: aload 5
+    //   314: invokestatic 176	com/tencent/ad/tangram/net/AdHttp:read	(Ljava/io/InputStream;)[B
+    //   317: putfield 179	com/tencent/ad/tangram/net/AdHttp$Params:responseData	[B
+    //   320: aload_3
+    //   321: astore 4
+    //   323: aload 5
+    //   325: invokevirtual 180	java/io/InputStream:close	()V
+    //   328: aload_3
+    //   329: ifnull +42 -> 371
+    //   332: goto +35 -> 367
+    //   335: astore 5
+    //   337: goto +14 -> 351
+    //   340: astore_3
+    //   341: aconst_null
+    //   342: astore 4
+    //   344: goto +38 -> 382
+    //   347: astore 5
+    //   349: aconst_null
+    //   350: astore_3
+    //   351: aload_3
+    //   352: astore 4
+    //   354: ldc 9
+    //   356: ldc 181
+    //   358: aload 5
+    //   360: invokestatic 37	com/tencent/ad/tangram/log/AdLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   363: aload_3
+    //   364: ifnull +7 -> 371
+    //   367: aload_3
+    //   368: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   371: aload_0
+    //   372: invokestatic 52	java/lang/System:currentTimeMillis	()J
+    //   375: lload_1
+    //   376: lsub
+    //   377: putfield 188	com/tencent/ad/tangram/net/AdHttp$Params:durationMillis	J
+    //   380: return
+    //   381: astore_3
+    //   382: aload 4
+    //   384: ifnull +8 -> 392
+    //   387: aload 4
+    //   389: invokevirtual 184	java/net/HttpURLConnection:disconnect	()V
+    //   392: aload_0
+    //   393: invokestatic 52	java/lang/System:currentTimeMillis	()J
+    //   396: lload_1
+    //   397: lsub
+    //   398: putfield 188	com/tencent/ad/tangram/net/AdHttp$Params:durationMillis	J
+    //   401: aload_3
+    //   402: athrow
+    //   403: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	358	0	paramParams	AdHttp.Params
-    //   3	336	1	l	long
-    //   17	327	3	localObject1	Object
-    //   345	1	3	localObject2	Object
-    //   31	323	4	localObject3	Object
-    //   282	10	5	localThrowable1	Throwable
-    //   316	6	5	localObject4	Object
-    //   349	1	5	localThrowable2	Throwable
-    //   19	333	6	localObject5	Object
+    //   0	404	0	paramParams	AdHttp.Params
+    //   3	394	1	l	long
+    //   26	303	3	localHttpURLConnection	java.net.HttpURLConnection
+    //   340	1	3	localObject1	Object
+    //   350	18	3	localObject2	Object
+    //   381	21	3	localObject3	Object
+    //   28	360	4	localObject4	Object
+    //   222	102	5	localObject5	Object
+    //   335	1	5	localThrowable1	Throwable
+    //   347	12	5	localThrowable2	Throwable
     // Exception table:
     //   from	to	target	type
-    //   33	75	282	java/lang/Throwable
-    //   75	120	282	java/lang/Throwable
-    //   120	141	282	java/lang/Throwable
-    //   141	191	282	java/lang/Throwable
-    //   191	241	282	java/lang/Throwable
-    //   261	279	282	java/lang/Throwable
-    //   21	33	316	finally
-    //   287	296	316	finally
-    //   33	75	345	finally
-    //   75	120	345	finally
-    //   120	141	345	finally
-    //   141	191	345	finally
-    //   191	241	345	finally
-    //   261	279	345	finally
-    //   21	33	349	java/lang/Throwable
+    //   30	38	335	java/lang/Throwable
+    //   41	49	335	java/lang/Throwable
+    //   52	57	335	java/lang/Throwable
+    //   60	72	335	java/lang/Throwable
+    //   75	80	335	java/lang/Throwable
+    //   86	98	335	java/lang/Throwable
+    //   101	106	335	java/lang/Throwable
+    //   109	117	335	java/lang/Throwable
+    //   120	125	335	java/lang/Throwable
+    //   128	136	335	java/lang/Throwable
+    //   139	149	335	java/lang/Throwable
+    //   152	162	335	java/lang/Throwable
+    //   165	175	335	java/lang/Throwable
+    //   178	188	335	java/lang/Throwable
+    //   191	198	335	java/lang/Throwable
+    //   201	208	335	java/lang/Throwable
+    //   211	224	335	java/lang/Throwable
+    //   227	242	335	java/lang/Throwable
+    //   245	250	335	java/lang/Throwable
+    //   253	258	335	java/lang/Throwable
+    //   261	265	335	java/lang/Throwable
+    //   268	276	335	java/lang/Throwable
+    //   279	289	335	java/lang/Throwable
+    //   292	299	335	java/lang/Throwable
+    //   302	308	335	java/lang/Throwable
+    //   311	320	335	java/lang/Throwable
+    //   323	328	335	java/lang/Throwable
+    //   16	27	340	finally
+    //   16	27	347	java/lang/Throwable
+    //   30	38	381	finally
+    //   41	49	381	finally
+    //   52	57	381	finally
+    //   60	72	381	finally
+    //   75	80	381	finally
+    //   86	98	381	finally
+    //   101	106	381	finally
+    //   109	117	381	finally
+    //   120	125	381	finally
+    //   128	136	381	finally
+    //   139	149	381	finally
+    //   152	162	381	finally
+    //   165	175	381	finally
+    //   178	188	381	finally
+    //   191	198	381	finally
+    //   201	208	381	finally
+    //   211	224	381	finally
+    //   227	242	381	finally
+    //   245	250	381	finally
+    //   253	258	381	finally
+    //   261	265	381	finally
+    //   268	276	381	finally
+    //   279	289	381	finally
+    //   292	299	381	finally
+    //   302	308	381	finally
+    //   311	320	381	finally
+    //   323	328	381	finally
+    //   354	363	381	finally
   }
   
   public static boolean sendAsync(AdHttp.Params paramParams, WeakReference<AdHttp.a> paramWeakReference)
   {
-    if ((paramParams == null) || (!paramParams.canSend())) {
-      return false;
+    if ((paramParams != null) && (paramParams.canSend()))
+    {
+      AdThreadManager.INSTANCE.post(new AdHttp.1(paramParams, paramWeakReference), 4);
+      return true;
     }
-    AdThreadManager.INSTANCE.post(new AdHttp.1(paramParams, paramWeakReference), 4);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.net.AdHttp
  * JD-Core Version:    0.7.0.1
  */

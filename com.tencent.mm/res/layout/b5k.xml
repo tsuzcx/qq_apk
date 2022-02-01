@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#fff5f5f5" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.wallet_core.ui.view.BankCardSelectSortView android:id="@id/fg9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+<RelativeLayout android:id="@id/kri" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="28.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/aa8" android:gravity="center_vertical" android:id="@id/apz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="56.0dip" android:text="@string/we" android:includeFontPadding="false" android:paddingStart="@dimen/i9" android:layout_alignParentStart="true" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bee" android:padding="@dimen/cd" android:layout_width="64.0dip" android:layout_height="52.0dip" android:src="@raw/icons_filled_close2" android:contentDescription="@string/ibm" android:paddingStart="@dimen/i9" android:layout_alignParentStart="true" app:iconColor="@color/BW_100_Alpha_0_9" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gzf" android:padding="@dimen/cd" android:layout_width="64.0dip" android:layout_height="52.0dip" android:src="@raw/icons_filled_more" android:contentDescription="@string/id8" android:paddingEnd="@dimen/i9" android:layout_alignParentEnd="true" app:iconColor="@color/BW_100_Alpha_0_9" />
+</RelativeLayout>

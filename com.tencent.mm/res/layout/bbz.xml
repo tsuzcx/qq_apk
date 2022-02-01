@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/brt" android:background="@color/cr" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0dip" android:textColor="@color/ck" android:gravity="center" android:id="@id/j6w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j1" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ewv" android:background="@color/cr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/bz" android:gravity="center|left" android:id="@id/o5" android:background="@color/xd" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/m9" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/m9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/gza" android:background="#cc000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/m1" android:layout_alignParentBottom="true">
+        <ImageButton android:id="@id/kts" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/m1" android:src="@drawable/alo" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/cuc" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/m1" android:src="@drawable/all" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/c0_" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/m1" android:src="@drawable/alm" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/j0w" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/m1" android:src="@drawable/aln" android:scaleType="center" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

@@ -17,7 +17,7 @@ public enum NativeLibs
   
   static
   {
-    AppMethodBeat.i(128461);
+    AppMethodBeat.i(114405);
     nlog = new NativeLibs("nlog", 0, "NLog", 1L);
     audioCommon = new NativeLibs("audioCommon", 1, "audio_common", 1L);
     QmNativeDataSource = new NativeLibs("QmNativeDataSource", 2, "QmNativeDataSource", 1L);
@@ -33,7 +33,7 @@ public enum NativeLibs
     SUFFIX = localSparseArray;
     localSparseArray.put(1, "");
     SUFFIX.put(2, "");
-    AppMethodBeat.o(128461);
+    AppMethodBeat.o(114405);
   }
   
   private NativeLibs(String paramString, long paramLong)
@@ -44,34 +44,34 @@ public enum NativeLibs
   
   public static boolean loadAll(Iterable<NativeLibs> paramIterable)
   {
-    AppMethodBeat.i(128458);
+    AppMethodBeat.i(114402);
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext()) {
       if (!((NativeLibs)paramIterable.next()).load())
       {
-        AppMethodBeat.o(128458);
+        AppMethodBeat.o(114402);
         return false;
       }
     }
-    AppMethodBeat.o(128458);
+    AppMethodBeat.o(114402);
     return true;
   }
   
   public static boolean loadAll(NativeLibs... paramVarArgs)
   {
-    AppMethodBeat.i(128457);
+    AppMethodBeat.i(114401);
     boolean bool = loadAll(Arrays.asList(paramVarArgs));
-    AppMethodBeat.o(128457);
+    AppMethodBeat.o(114401);
     return bool;
   }
   
   private boolean loadLibrary(String paramString)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(128460);
+    AppMethodBeat.i(114404);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(128460);
+      AppMethodBeat.o(114404);
       return false;
     }
     try
@@ -80,7 +80,7 @@ public enum NativeLibs
       boolean bool2 = AudioPlayerConfigure.getSoLibraryLoader().load(paramString);
       bool1 = bool2;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -92,7 +92,7 @@ public enum NativeLibs
     if (bool1)
     {
       Logger.i("NativeLibs", "[loadLibrary] succeed: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(128460);
+      AppMethodBeat.o(114404);
       return bool1;
     }
   }
@@ -104,15 +104,15 @@ public enum NativeLibs
   
   public final boolean load()
   {
-    AppMethodBeat.i(128459);
+    AppMethodBeat.i(114403);
     if (this.mHasLoadSoSuccess)
     {
-      AppMethodBeat.o(128459);
+      AppMethodBeat.o(114403);
       return true;
     }
     this.mHasLoadSoSuccess = loadLibrary(getName());
     boolean bool = this.mHasLoadSoSuccess;
-    AppMethodBeat.o(128459);
+    AppMethodBeat.o(114403);
     return bool;
   }
   
@@ -123,7 +123,7 @@ public enum NativeLibs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.NativeLibs
  * JD-Core Version:    0.7.0.1
  */

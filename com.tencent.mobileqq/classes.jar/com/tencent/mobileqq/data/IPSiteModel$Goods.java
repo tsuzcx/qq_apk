@@ -3,12 +3,11 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apef;
 
 public class IPSiteModel$Goods
   implements Parcelable
 {
-  public static final Parcelable.Creator<Goods> CREATOR = new apef();
+  public static final Parcelable.Creator<Goods> CREATOR = new IPSiteModel.Goods.1();
   public String cover;
   public String goodsTags;
   public String id;
@@ -43,7 +42,39 @@ public class IPSiteModel$Goods
   
   public String toString()
   {
-    return "Goods{cover='" + this.cover + '\'' + ", goodsTags='" + this.goodsTags + '\'' + ", id='" + this.id + '\'' + ", name='" + this.name + '\'' + ", price='" + this.price + '\'' + ", saleTags='" + this.saleTags + '\'' + ", svipPrice='" + this.svipPrice + '\'' + ", url='" + this.url + '\'' + ", moreUrl='" + this.moreUrl + '\'' + ", saleNum='" + this.saleNum + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Goods{cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", goodsTags='");
+    localStringBuilder.append(this.goodsTags);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", price='");
+    localStringBuilder.append(this.price);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", saleTags='");
+    localStringBuilder.append(this.saleTags);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", svipPrice='");
+    localStringBuilder.append(this.svipPrice);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", moreUrl='");
+    localStringBuilder.append(this.moreUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", saleNum='");
+    localStringBuilder.append(this.saleNum);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

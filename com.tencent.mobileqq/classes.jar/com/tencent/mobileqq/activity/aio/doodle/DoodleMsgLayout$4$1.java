@@ -14,27 +14,31 @@ class DoodleMsgLayout$4$1
   
   public void run()
   {
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start update drawable:" + DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$4.this$0));
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (DoodleMsgLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$4.this$0) != null)) {
-      DoodleMsgLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$4.this$0).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setDoodleContent start update drawable:");
+    ((StringBuilder)localObject).append(DoodleMsgLayout.f(this.c.this$0));
+    QLog.d("DoodleMsgLayout", 2, ((StringBuilder)localObject).toString());
+    if ((this.a != null) && (DoodleMsgLayout.c(this.c.this$0) != null)) {
+      DoodleMsgLayout.c(this.c.this$0).setImageDrawable(this.a);
     }
-    if (DoodleMsgLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$4.this$0) != null) {
-      DoodleMsgLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$4.this$0).setImageDrawable(this.b);
+    if (DoodleMsgLayout.d(this.c.this$0) != null) {
+      DoodleMsgLayout.d(this.c.this$0).setImageDrawable(this.b);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    localObject = this.a;
+    if (localObject != null)
     {
-      Drawable localDrawable = ((URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getCurrDrawable();
-      if ((localDrawable instanceof GifDrawable)) {
-        ((GifDrawable)localDrawable).getImage().reset();
+      localObject = ((URLDrawable)localObject).getCurrDrawable();
+      if ((localObject instanceof GifDrawable)) {
+        ((GifDrawable)localObject).getImage().reset();
       }
-      ((URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setIndividualPause(false);
+      ((URLDrawable)this.a).setIndividualPause(false);
     }
-    DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$4.this$0, 1);
+    DoodleMsgLayout.b(this.c.this$0, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.4.1
  * JD-Core Version:    0.7.0.1
  */

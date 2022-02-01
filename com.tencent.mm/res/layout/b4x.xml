@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/kx" android:textColor="@color/w_" android:textColorHint="#4d000000" android:id="@id/lh" android:background="@drawable/b9d" android:padding="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:maxLength="128" android:inputType="text" android:textCursorDrawable="@null" />
-    <TextView android:textSize="@dimen/nf" android:textColor="@color/s4" android:id="@id/bq1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" />
-</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/grx" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</merge>

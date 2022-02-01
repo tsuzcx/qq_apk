@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.SlipEdgeLayout android:id="@id/browser" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/browser_header" android:background="#ffe3f3ff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <ProgressBar android:id="@id/head_progressbar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:max="100" android:progressDrawable="@drawable/qb_pubaccount_progress_download_bg" android:layout_alignParentTop="true" style="?android:attr/progressBarStyleHorizontal" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/head_text_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/black" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/head_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:drawablePadding="8.0dip" android:layout_weight="1.0" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/head_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/common_icon_arrow_right" android:maxHeight="30.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ViewStub android:id="@id/fullscreen_webview_content" android:layout="@layout/qb_pabrowser_fullscreen_webivew_content" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/browser_header" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/refresh_progress" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginTop="-25.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+    <ViewStub android:id="@id/float_container" android:layout="@layout/qb_pabrowser_include_float" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mobileqq.widget.SlipEdgeLayout>

@@ -8,27 +8,26 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import apkn;
-import arrr;
-import bayu;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.drawable.BitmapDrawableWithMargin;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import fc;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AsyncImageView
   extends ImageView
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d = Color.parseColor("#C8C8C8");
+  private int a = 0;
+  private int b = 0;
+  private int c = 0;
+  private Drawable d = null;
+  private boolean e = true;
+  private int f = Color.parseColor("#C8C8C8");
+  private boolean g = false;
   
   public AsyncImageView(Context paramContext)
   {
@@ -47,63 +46,64 @@ public class AsyncImageView
   
   public static URL a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    Object localObject = null;
-    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {}
-    do
+    if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
     {
+      Object localObject;
+      if (FileManagerUtil.c(paramString) == 2)
+      {
+        localObject = "videothumb";
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append("0");
+        ((StringBuilder)localObject).append("|");
+        ((StringBuilder)localObject).append(paramBoolean);
+        paramString = ((StringBuilder)localObject).toString();
+        localObject = "datalineimage";
+      }
       try
       {
-        paramString = new URL(paramString);
+        paramString = new URL((String)localObject, "", paramString);
         return paramString;
       }
       catch (MalformedURLException paramString)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AsyncImageView", 2, paramString.getMessage(), paramString);
-          }
-          paramString = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("AsyncImageView", 2, paramString.getMessage(), paramString);
         }
+        return null;
       }
-      String str2;
-      String str1;
-      if (arrr.a(paramString) == 2)
-      {
-        str2 = "videothumb";
-        str1 = paramString;
-        paramString = str2;
+    }
+    try
+    {
+      paramString = new URL(paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AsyncImageView", 2, paramString.getMessage(), paramString);
       }
-      for (;;)
-      {
-        try
-        {
-          paramString = new URL(paramString, "", str1);
-          return paramString;
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          paramString = localObject;
-        }
-        str1 = "datalineimage";
-        str2 = paramString + "|" + paramInt1 + "|" + paramInt2 + "|" + "0" + "|" + paramBoolean;
-        paramString = str1;
-        str1 = str2;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AsyncImageView", 2, localMalformedURLException.getMessage(), localMalformedURLException);
+    }
     return null;
   }
   
   public void setAsyncClipSize(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
   public void setAsyncImage(String paramString)
   {
-    URL localURL = a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    URL localURL = a(paramString, this.a, this.b, this.e);
     if ((getDrawable() instanceof URLDrawable))
     {
       paramString = (URLDrawable)getDrawable();
@@ -115,82 +115,82 @@ public class AsyncImageView
         return;
       }
     }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = paramString;
-      localURLDrawableOptions.mFailedDrawable = paramString;
-      localURLDrawableOptions.mPlayGifImage = false;
-      localURLDrawableOptions.mGifRoundCorner = 0.0F;
-      localURLDrawableOptions.mDecodeFileStrategy = 3;
-      if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0)) {
-        break label204;
+    paramString = this.d;
+    if (paramString == null) {
+      if (this.g) {
+        paramString = new ColorDrawable(this.f);
+      } else {
+        paramString = getResources().getDrawable(this.c);
       }
-      localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
     }
-    for (localURLDrawableOptions.mRequestHeight = this.jdField_b_of_type_Int;; localURLDrawableOptions.mRequestHeight = 0)
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = paramString;
+    localURLDrawableOptions.mFailedDrawable = paramString;
+    localURLDrawableOptions.mPlayGifImage = false;
+    localURLDrawableOptions.mGifRoundCorner = 0.0F;
+    localURLDrawableOptions.mDecodeFileStrategy = 3;
+    int i = this.a;
+    if (i > 0)
     {
-      paramString = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
-      setImageDrawable(paramString);
-      paramString.setURLDrawableListener(new fc(this));
-      return;
-      if (this.jdField_b_of_type_Boolean)
+      int j = this.b;
+      if (j > 0)
       {
-        paramString = new ColorDrawable(this.d);
-        break;
+        localURLDrawableOptions.mRequestWidth = i;
+        localURLDrawableOptions.mRequestHeight = j;
+        break label200;
       }
-      paramString = getResources().getDrawable(this.c);
-      break;
-      label204:
-      localURLDrawableOptions.mRequestWidth = 0;
     }
+    localURLDrawableOptions.mRequestWidth = 0;
+    localURLDrawableOptions.mRequestHeight = 0;
+    label200:
+    paramString = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
+    setImageDrawable(paramString);
+    paramString.setURLDrawableListener(new AsyncImageView.1(this));
   }
   
   public void setDefaultColorDrawable(int paramInt)
   {
-    this.d = paramInt;
-    this.jdField_b_of_type_Boolean = true;
+    this.f = paramInt;
+    this.g = true;
   }
   
   public void setDefaultImage(int paramInt)
   {
     this.c = paramInt;
-    this.jdField_b_of_type_Boolean = false;
+    this.g = false;
   }
   
   public void setDefaultImageByMargin()
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_b_of_type_Int;
+    int i = this.a;
+    int j = this.b;
     Resources localResources = getResources();
-    if ((bayu.b() instanceof SkinnableBitmapDrawable))
+    if ((URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new apkn(localResources, ((SkinnableBitmapDrawable)bayu.b()).getBitmap(), i, j, -921103);
+      this.d = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
       return;
     }
-    if ((bayu.b() instanceof BitmapDrawable))
+    if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new apkn(localResources, ((BitmapDrawable)bayu.b()).getBitmap(), i, j, -921103);
+      this.d = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bayu.b();
+    this.d = URLDrawableHelper.getLoadingDrawable();
   }
   
   public void setImageDrawableDefault()
   {
-    setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    setImageDrawable(this.d);
   }
   
   public void setIsDrawRound(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.widget.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

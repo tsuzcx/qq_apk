@@ -16,9 +16,7 @@ public class VInfoGetter
   
   public void doGetVInfo(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
-    switch (paramSuperPlayerVideoInfo.getVideoSource())
-    {
-    default: 
+    if (paramSuperPlayerVideoInfo.getVideoSource() != 1) {
       return;
     }
     this.mTVideoImpl.doGetVInfo(paramSuperPlayerVideoInfo);
@@ -31,7 +29,7 @@ public class VInfoGetter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.vinfo.VInfoGetter
  * JD-Core Version:    0.7.0.1
  */

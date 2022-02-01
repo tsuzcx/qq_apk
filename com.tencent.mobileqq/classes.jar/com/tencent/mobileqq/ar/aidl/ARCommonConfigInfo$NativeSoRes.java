@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import amyz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,26 +7,22 @@ import android.os.Parcelable.Creator;
 public class ARCommonConfigInfo$NativeSoRes
   implements Parcelable
 {
-  public static final Parcelable.Creator<NativeSoRes> CREATOR = new amyz();
-  public long a;
-  public String a;
+  public static final Parcelable.Creator<NativeSoRes> CREATOR = new ARCommonConfigInfo.NativeSoRes.1();
+  public String a = "";
   public String b = "";
   public String c = "";
   public String d = "";
+  public long e = 0L;
   
-  public ARCommonConfigInfo$NativeSoRes()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public ARCommonConfigInfo$NativeSoRes() {}
   
   public ARCommonConfigInfo$NativeSoRes(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.e = paramParcel.readLong();
   }
   
   public int describeContents()
@@ -38,27 +33,36 @@ public class ARCommonConfigInfo$NativeSoRes
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("NativeSoRes{");
-    localStringBuffer.append("name = '").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", version = '").append(this.b).append('\'');
-    localStringBuffer.append(", url = '").append(this.c).append('\'');
-    localStringBuffer.append(", md5 = '").append(this.d).append('\'');
-    localStringBuffer.append(", size = ").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append("name = '");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", version = '");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", url = '");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", md5 = '");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", size = ");
+    localStringBuffer.append(this.e);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeLong(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.widget.TextView;
 public final class h
   extends b
 {
-  public TextView afL;
-  public ImageView ahj;
+  public TextView ajn;
+  public ImageView akL;
   
   public h(g paramg)
   {

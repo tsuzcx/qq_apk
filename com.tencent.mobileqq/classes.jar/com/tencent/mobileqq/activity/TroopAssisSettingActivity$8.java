@@ -7,14 +7,14 @@ class TroopAssisSettingActivity$8
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.equals("conversation"))) {
+    if ((this.this$0.e != null) && (this.this$0.e.equals("conversation"))) {
       this.this$0.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssisSettingActivity.8
  * JD-Core Version:    0.7.0.1
  */

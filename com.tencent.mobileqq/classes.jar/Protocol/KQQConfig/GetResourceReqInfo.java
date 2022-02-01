@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class GetResourceReqInfo
   extends JceStruct
 {
-  public short sLanType;
-  public short sReqType;
-  public short sResType;
+  public short sLanType = 0;
+  public short sReqType = 0;
+  public short sResType = 0;
   public String strPkgName = "";
-  public long uiCurVer;
-  public long uiResID;
+  public long uiCurVer = 0L;
+  public long uiResID = 0L;
   
   public GetResourceReqInfo() {}
   
@@ -48,7 +48,7 @@ public final class GetResourceReqInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceReqInfo
  * JD-Core Version:    0.7.0.1
  */

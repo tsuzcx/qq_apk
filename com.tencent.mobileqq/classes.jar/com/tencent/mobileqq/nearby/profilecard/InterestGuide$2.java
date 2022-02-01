@@ -2,28 +2,28 @@ package com.tencent.mobileqq.nearby.profilecard;
 
 import android.content.Context;
 import android.view.View;
-import auwq;
-import avjr;
-import azqs;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class InterestGuide$2
+class InterestGuide$2
   implements Runnable
 {
-  public InterestGuide$2(avjr paramavjr) {}
+  InterestGuide$2(InterestGuide paramInterestGuide) {}
   
   public void run()
   {
-    auwq.a(this.this$0.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.FALSE);
-    Context localContext = this.this$0.jdField_a_of_type_AndroidViewView.getContext();
+    ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.this$0.d, "interest_guide_key", Boolean.FALSE);
+    Context localContext = this.this$0.g.getContext();
     if ((localContext instanceof BaseActivity)) {
-      azqs.b(((BaseActivity)localContext).app, "dc00898", "", "", "0X8006991", "0X8006991", 0, 0, "", "", "", "");
+      ReportController.b(((BaseActivity)localContext).app, "dc00898", "", "", "0X8006991", "0X8006991", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.InterestGuide.2
  * JD-Core Version:    0.7.0.1
  */

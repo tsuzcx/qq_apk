@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.rn;
+import com.tencent.mm.sdk.event.IListener;
 
-final class ExdeviceProfileUI$28
-  implements MenuItem.OnMenuItemClickListener
+class ExdeviceProfileUI$28
+  extends IListener<rn>
 {
-  ExdeviceProfileUI$28(ExdeviceProfileUI paramExdeviceProfileUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  ExdeviceProfileUI$28(ExdeviceProfileUI paramExdeviceProfileUI, q paramq)
   {
-    AppMethodBeat.i(20055);
-    this.lOl.finish();
-    AppMethodBeat.o(20055);
-    return false;
+    super(paramq);
+    AppMethodBeat.i(274690);
+    this.__eventId = rn.class.getName().hashCode();
+    AppMethodBeat.o(274690);
   }
 }
 

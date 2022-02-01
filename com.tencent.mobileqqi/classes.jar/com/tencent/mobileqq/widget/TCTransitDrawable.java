@@ -14,7 +14,7 @@ import android.widget.Scroller;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import hhw;
+import hhv;
 import java.net.URL;
 import java.util.Random;
 
@@ -68,7 +68,7 @@ public class TCTransitDrawable
   public TCTransitDrawable(Context paramContext)
   {
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new hhw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new hhv(this);
     this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[0] = new Matrix();
     this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[1] = new Matrix();
     this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[2] = new Matrix();

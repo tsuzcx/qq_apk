@@ -11,7 +11,7 @@ import com.tencent.tavsticker.model.TAVSticker;
 
 public class TAVStickerUtil
 {
-  private static final String TAG = TAVStickerUtil.class.getSimpleName();
+  private static final String TAG = "TAVStickerUtil";
   
   public static PointF[] computeRectanglePoints(Matrix paramMatrix, float paramFloat1, float paramFloat2)
   {
@@ -43,7 +43,7 @@ public class TAVStickerUtil
       f1 = arrayOfFloat[2];
       f2 = arrayOfFloat[4];
       f3 = arrayOfFloat[5];
-      arrayOfPointF[3].set(paramFloat1 * paramFloat2 + f1, f3 + f2 * paramFloat2);
+      arrayOfPointF[3].set(paramFloat1 * paramFloat2 + f1, f2 * paramFloat2 + f3);
     }
     return arrayOfPointF;
   }
@@ -86,7 +86,7 @@ public class TAVStickerUtil
         float f3 = localRectF.right - localRectF.left;
         float f2 = localRectF.bottom - localRectF.top;
         if ((paramInt1 != 0) && (paramInt2 != 0)) {
-          localMatrix.postScale(f3 * 1.0F / paramInt1, f2 * 1.0F / paramInt2);
+          localMatrix.postScale(f3 * 1.0F / paramInt1, 1.0F * f2 / paramInt2);
         }
         localMatrix.postRotate(paramTAVSticker.getRotate());
         float f1 = localRectF.left;
@@ -205,39 +205,62 @@ public class TAVStickerUtil
   
   public static RectF getStickerRect(TAVSticker paramTAVSticker, int paramInt1, int paramInt2, float paramFloat)
   {
-    float f1 = 0.0F;
-    if ((paramTAVSticker == null) || (paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return null;
-    }
-    int i = paramInt1;
-    if (paramInt1 % 2 != 0) {
-      i = paramInt1 + 1;
-    }
-    paramInt1 = paramInt2;
-    if (paramInt2 % 2 != 0) {
-      paramInt1 = paramInt2 + 1;
-    }
-    RectF localRectF = new RectF();
-    paramInt2 = paramTAVSticker.getWidth();
-    int j = paramTAVSticker.getHeight();
-    float f2 = i * paramFloat;
-    paramFloat = f1;
-    if (paramInt2 > 0)
+    if ((paramTAVSticker != null) && (paramInt1 > 0) && (paramInt2 > 0))
     {
-      paramFloat = f1;
-      if (f2 > 0.0F) {
-        paramFloat = j * 1.0F / paramInt2 * f2;
+      int i = paramInt1;
+      if (paramInt1 % 2 != 0) {
+        i = paramInt1 + 1;
       }
+      paramInt1 = paramInt2;
+      if (paramInt2 % 2 != 0) {
+        paramInt1 = paramInt2 + 1;
+      }
+      RectF localRectF = new RectF();
+      paramInt2 = paramTAVSticker.getWidth();
+      int j = paramTAVSticker.getHeight();
+      float f4 = i;
+      float f3 = paramFloat * f4;
+      float f1 = 0.0F;
+      paramFloat = f1;
+      if (paramInt2 > 0)
+      {
+        paramFloat = f1;
+        if (f3 > 0.0F) {
+          paramFloat = j * 1.0F / paramInt2 * f3;
+        }
+      }
+      float f2 = paramFloat;
+      f1 = f3;
+      if (paramTAVSticker.getScaleMode() == 1)
+      {
+        f2 = Math.max(f4 * 1.0F / f3, paramInt1 * 1.0F / paramFloat);
+        f1 = f3 * f2;
+        f2 = paramFloat * f2;
+      }
+      paramFloat = paramTAVSticker.getCenterX() * f4 - f1 / 2.0F;
+      f3 = paramTAVSticker.getCenterY() * paramInt1 - f2 / 2.0F;
+      localRectF.left = ((float)Math.floor(paramFloat));
+      localRectF.top = ((float)Math.floor(f3));
+      localRectF.bottom = ((float)Math.ceil(f3 + f2));
+      localRectF.right = ((float)Math.ceil(paramFloat + f1));
+      paramTAVSticker = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getStickerRect -> parentWidth: ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", parentHeight:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", StickerRect-left: ");
+      localStringBuilder.append(localRectF.left);
+      localStringBuilder.append(", top: ");
+      localStringBuilder.append(localRectF.top);
+      localStringBuilder.append(", bottom: ");
+      localStringBuilder.append(localRectF.bottom);
+      localStringBuilder.append(", right: ");
+      localStringBuilder.append(localRectF.right);
+      TLog.d(paramTAVSticker, localStringBuilder.toString());
+      return localRectF;
     }
-    f1 = paramTAVSticker.getCenterX() * i - f2 / 2.0F;
-    float f3 = paramTAVSticker.getCenterY() * paramInt1 - paramFloat / 2.0F;
-    TLog.d(TAG, "getStickerRect -> parentWidth: " + i + ", parentHeight:" + paramInt1 + ", pagWidth: " + paramInt2 + ", pagHeight: " + j + ", StickerRect-left: " + f1 + ", top: " + f3 + ", bottom: " + (f3 + paramFloat) + ", right: " + (f1 + f2));
-    localRectF.left = ((float)Math.floor(f1));
-    localRectF.top = ((float)Math.floor(f3));
-    localRectF.bottom = ((float)Math.ceil(paramFloat + f3));
-    localRectF.right = ((float)Math.ceil(f1 + f2));
-    TLog.d(TAG, "getStickerRect -> parentWidth: " + i + ", parentHeight:" + paramInt1 + ", StickerRect-left: " + localRectF.left + ", top: " + localRectF.top + ", bottom: " + localRectF.bottom + ", right: " + localRectF.right);
-    return localRectF;
+    return null;
   }
   
   public static boolean inQuadrangle(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4, PointF paramPointF5)
@@ -247,19 +270,15 @@ public class TAVStickerUtil
   
   public static boolean isPresentationTimeInStickerTimeRange(long paramLong, TAVSticker paramTAVSticker)
   {
-    boolean bool = false;
     if (paramTAVSticker != null)
     {
       paramTAVSticker = paramTAVSticker.getTimeRange();
       if (paramTAVSticker == null) {
-        bool = true;
+        return true;
       }
+      return TimeRangeUtil.isInTimeRange(paramTAVSticker, paramLong);
     }
-    else
-    {
-      return bool;
-    }
-    return TimeRangeUtil.isInTimeRange(paramTAVSticker, paramLong);
+    return false;
   }
   
   public static boolean isSameTAVSticker(TAVSticker paramTAVSticker1, TAVSticker paramTAVSticker2)
@@ -280,22 +299,24 @@ public class TAVStickerUtil
   
   public static float microsecond2Seconds(long paramLong)
   {
-    return 1.0F * (float)paramLong / 1000000.0F;
+    return (float)paramLong * 1.0F / 1000000.0F;
   }
   
   public static float millisecond2Seconds(long paramLong)
   {
-    return 1.0F * (float)paramLong / 1000.0F;
+    return (float)paramLong * 1.0F / 1000.0F;
   }
   
   private static double triangleArea(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3)
   {
-    return Math.abs((paramPointF1.x * paramPointF2.y + paramPointF2.x * paramPointF3.y + paramPointF3.x * paramPointF1.y - paramPointF2.x * paramPointF1.y - paramPointF3.x * paramPointF2.y - paramPointF1.x * paramPointF3.y) / 2.0D);
+    double d = paramPointF1.x * paramPointF2.y + paramPointF2.x * paramPointF3.y + paramPointF3.x * paramPointF1.y - paramPointF2.x * paramPointF1.y - paramPointF3.x * paramPointF2.y - paramPointF1.x * paramPointF3.y;
+    Double.isNaN(d);
+    return Math.abs(d / 2.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.utils.TAVStickerUtil
  * JD-Core Version:    0.7.0.1
  */

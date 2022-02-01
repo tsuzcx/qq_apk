@@ -10,8 +10,8 @@ import android.widget.TextView;
 class ChatHistoryBaseFragment$ProgressView
   extends FrameLayout
 {
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ProgressBar a;
+  private TextView b;
   
   public ChatHistoryBaseFragment$ProgressView(Context paramContext)
   {
@@ -27,20 +27,20 @@ class ChatHistoryBaseFragment$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561654, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372332));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377606));
+    LayoutInflater.from(paramContext).inflate(2131628218, this);
+    this.a = ((ProgressBar)findViewById(2131440726));
+    this.b = ((TextView)findViewById(2131447062));
   }
   
   public void a(CharSequence paramCharSequence)
   {
-    if ((paramCharSequence == null) || (paramCharSequence.length() <= 0))
+    if ((paramCharSequence != null) && (paramCharSequence.length() > 0))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.b.setVisibility(0);
+      this.b.setText(paramCharSequence);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    this.b.setVisibility(8);
   }
 }
 

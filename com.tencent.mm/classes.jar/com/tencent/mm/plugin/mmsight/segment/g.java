@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.aa;
+import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,260 +18,89 @@ import java.util.List;
 
 public final class g
 {
-  private long aZw;
-  private MediaExtractor cfO;
-  String cfP;
-  private long eRN;
-  MediaFormat eUh;
-  MediaFormat fYw;
-  VideoTransPara fZe;
-  MediaCodec oKN;
-  MediaCodec oKO;
-  boolean oKP;
-  List<byte[]> oKQ;
-  private boolean oKR;
-  private boolean oKS;
-  private byte[] oKT;
-  private HandlerThread oKU;
-  private ak oKV;
+  private MMHandler KZA;
+  aa KZs;
+  aa KZt;
+  boolean KZu;
+  List<byte[]> KZv;
+  private boolean KZw;
+  private boolean KZx;
+  private byte[] KZy;
+  private HandlerThread KZz;
+  String cBw;
+  private long endTimeMs;
+  MediaFormat nzt;
+  VideoTransPara pcW;
+  private c pcp;
+  MediaFormat pcr;
+  private long startTimeMs;
   
-  public g(MediaExtractor paramMediaExtractor, MediaFormat paramMediaFormat, long paramLong1, long paramLong2, VideoTransPara paramVideoTransPara)
+  public g(c paramc, MediaFormat paramMediaFormat, long paramLong1, long paramLong2, VideoTransPara paramVideoTransPara)
   {
-    AppMethodBeat.i(3644);
-    this.cfP = null;
-    this.oKP = true;
-    this.oKQ = null;
-    this.oKR = false;
-    this.oKS = false;
-    this.oKU = null;
-    this.oKV = null;
-    this.cfO = paramMediaExtractor;
-    this.fYw = paramMediaFormat;
-    this.aZw = paramLong1;
-    this.eRN = paramLong2;
-    this.fZe = paramVideoTransPara;
-    this.cfP = paramMediaFormat.getString("mime");
-    this.oKQ = new ArrayList();
-    ab.i("MicroMsg.MediaCodecAACTranscoder", "create MediaCodecAACTranscoder, startTimeMs: %s, endTimeMs: %s, mime: %s, srcMediaFormat: %s, para: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), this.cfP, paramMediaFormat, paramVideoTransPara });
-    AppMethodBeat.o(3644);
-  }
-  
-  private void UC()
-  {
-    AppMethodBeat.i(3646);
-    if (this.oKN == null)
-    {
-      AppMethodBeat.o(3646);
-      return;
-    }
-    MediaCodec.BufferInfo localBufferInfo;
-    int i;
-    ByteBuffer[] arrayOfByteBuffer2;
-    for (;;)
-    {
-      try
-      {
-        ByteBuffer[] arrayOfByteBuffer1 = this.oKN.getOutputBuffers();
-        localBufferInfo = new MediaCodec.BufferInfo();
-        i = this.oKN.dequeueOutputBuffer(localBufferInfo, 20000L);
-        ab.d("MicroMsg.MediaCodecAACTranscoder", "decoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
-        if (i == -1)
-        {
-          ab.d("MicroMsg.MediaCodecAACTranscoder", "no output available, break");
-          AppMethodBeat.o(3646);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        ab.printErrStackTrace("MicroMsg.MediaCodecAACTranscoder", localException, "drainDecoder error: %s", new Object[] { localException.getMessage() });
-        AppMethodBeat.o(3646);
-        return;
-      }
-      if (i == -3)
-      {
-        arrayOfByteBuffer2 = this.oKN.getOutputBuffers();
-      }
-      else if (i == -2)
-      {
-        this.fYw = this.oKN.getOutputFormat();
-        ab.i("MicroMsg.MediaCodecAACTranscoder", "srcMediaFormat change: %s", new Object[] { this.fYw });
-      }
-      else
-      {
-        if (i >= 0) {
-          break;
-        }
-        ab.e("MicroMsg.MediaCodecAACTranscoder", "unexpected decoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
-      }
-    }
-    ab.v("MicroMsg.MediaCodecAACTranscoder", "perform decoding");
-    ByteBuffer localByteBuffer = arrayOfByteBuffer2[i];
-    if (localByteBuffer == null)
-    {
-      ab.e("MicroMsg.MediaCodecAACTranscoder", "ERROR, retrieve decoderOutputBuffer is null!!");
-      AppMethodBeat.o(3646);
-      return;
-    }
-    if ((localBufferInfo.flags & 0x2) != 0)
-    {
-      ab.e("MicroMsg.MediaCodecAACTranscoder", "ignore BUFFER_FLAG_CODEC_CONFIG");
-      localBufferInfo.size = 0;
-    }
-    if (localBufferInfo.size > 0)
-    {
-      localByteBuffer.position(localBufferInfo.offset);
-      localByteBuffer.limit(localBufferInfo.offset + localBufferInfo.size);
-      if ((localBufferInfo.flags & 0x4) == 0) {
-        break label364;
-      }
-    }
-    label364:
-    for (boolean bool = true;; bool = false)
-    {
-      a(localByteBuffer, localBufferInfo, bool);
-      this.oKN.releaseOutputBuffer(i, false);
-      if ((localBufferInfo.flags & 0x4) == 0) {
-        break;
-      }
-      ab.i("MicroMsg.MediaCodecAACTranscoder", "receive EOS!");
-      if (this.oKN == null) {
-        break label369;
-      }
-      this.oKN.stop();
-      this.oKN.release();
-      this.oKN = null;
-      AppMethodBeat.o(3646);
-      return;
-    }
-    label369:
-    AppMethodBeat.o(3646);
-  }
-  
-  private void UR()
-  {
-    AppMethodBeat.i(3650);
-    if (this.oKO == null)
-    {
-      AppMethodBeat.o(3650);
-      return;
-    }
-    MediaCodec.BufferInfo localBufferInfo;
-    do
-    {
-      int i;
-      ByteBuffer[] arrayOfByteBuffer2;
-      for (;;)
-      {
-        try
-        {
-          ByteBuffer[] arrayOfByteBuffer1 = this.oKO.getOutputBuffers();
-          localBufferInfo = new MediaCodec.BufferInfo();
-          i = this.oKO.dequeueOutputBuffer(localBufferInfo, 20000L);
-          ab.d("MicroMsg.MediaCodecAACTranscoder", "encoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
-          if (i == -1)
-          {
-            ab.d("MicroMsg.MediaCodecAACTranscoder", "no output available, break");
-            AppMethodBeat.o(3650);
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          ab.printErrStackTrace("MicroMsg.MediaCodecAACTranscoder", localException, "drainEncoder error: %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(3650);
-          return;
-        }
-        if (i == -3)
-        {
-          arrayOfByteBuffer2 = this.oKO.getOutputBuffers();
-        }
-        else if (i == -2)
-        {
-          this.eUh = this.oKO.getOutputFormat();
-          ab.i("MicroMsg.MediaCodecAACTranscoder", "dstMediaFormat change: %s", new Object[] { this.eUh });
-        }
-        else
-        {
-          if (i >= 0) {
-            break;
-          }
-          ab.e("MicroMsg.MediaCodecAACTranscoder", "unexpected encoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
-        }
-      }
-      ab.v("MicroMsg.MediaCodecAACTranscoder", "perform encoding");
-      ByteBuffer localByteBuffer = arrayOfByteBuffer2[i];
-      if (localByteBuffer == null)
-      {
-        ab.e("MicroMsg.MediaCodecAACTranscoder", "ERROR, retrieve encoderOutputBuffer is null!!");
-        AppMethodBeat.o(3650);
-        return;
-      }
-      if (localBufferInfo.size > 0)
-      {
-        localByteBuffer.position(localBufferInfo.offset);
-        localByteBuffer.limit(localBufferInfo.offset + localBufferInfo.size);
-        h(localByteBuffer, localBufferInfo);
-      }
-      this.oKO.releaseOutputBuffer(i, false);
-    } while ((localBufferInfo.flags & 0x4) == 0);
-    ab.i("MicroMsg.MediaCodecAACTranscoder", "receive EOS!");
-    if (this.oKO != null)
-    {
-      this.oKO.stop();
-      this.oKO.release();
-      this.oKO = null;
-      AppMethodBeat.o(3650);
-      return;
-    }
-    AppMethodBeat.o(3650);
+    AppMethodBeat.i(107645);
+    this.cBw = null;
+    this.KZu = true;
+    this.KZv = null;
+    this.KZw = false;
+    this.KZx = false;
+    this.KZz = null;
+    this.KZA = null;
+    this.pcp = paramc;
+    this.pcr = paramMediaFormat;
+    this.startTimeMs = paramLong1;
+    this.endTimeMs = paramLong2;
+    this.pcW = paramVideoTransPara;
+    this.cBw = paramMediaFormat.getString("mime");
+    this.KZv = new ArrayList();
+    Log.i("MicroMsg.MediaCodecAACTranscoder", "create MediaCodecAACTranscoder, startTimeMs: %s, endTimeMs: %s, mime: %s, srcMediaFormat: %s, para: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), this.cBw, paramMediaFormat, paramVideoTransPara });
+    AppMethodBeat.o(107645);
   }
   
   private void a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(3647);
+    AppMethodBeat.i(107648);
     if (paramByteBuffer == null)
     {
-      AppMethodBeat.o(3647);
+      AppMethodBeat.o(107648);
       return;
     }
-    ab.d("MicroMsg.MediaCodecAACTranscoder", "processDecodeBuffer, EOS: %s, finishGetAllInputAACData: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.oKS) });
-    if (this.oKP)
+    Log.d("MicroMsg.MediaCodecAACTranscoder", "processDecodeBuffer, EOS: %s, finishGetAllInputAACData: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.KZx) });
+    if (this.KZu)
     {
-      if (!this.oKR)
+      if (!this.KZw)
       {
-        bRF();
-        this.oKR = true;
+        gcV();
+        this.KZw = true;
       }
-      if (this.oKT == null)
+      if (this.KZy == null)
       {
-        this.oKT = new byte[paramByteBuffer.remaining()];
-        paramByteBuffer.get(this.oKT, 0, paramByteBuffer.remaining());
+        this.KZy = new byte[paramByteBuffer.remaining()];
+        paramByteBuffer.get(this.KZy, 0, paramByteBuffer.remaining());
       }
-      c(this.oKT, paramBufferInfo.presentationTimeUs, paramBoolean);
-      AppMethodBeat.o(3647);
+      c(this.KZy, paramBufferInfo.presentationTimeUs, paramBoolean);
+      AppMethodBeat.o(107648);
       return;
     }
     byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
     paramByteBuffer.get(arrayOfByte, 0, paramByteBuffer.remaining());
-    this.oKQ.add(arrayOfByte);
-    if ((this.oKS) || (paramBoolean)) {
+    this.KZv.add(arrayOfByte);
+    if ((this.KZx) || (paramBoolean)) {
       try
       {
-        this.oKN.stop();
-        this.oKN.release();
-        bRF();
-        this.oKR = true;
-        paramByteBuffer = this.oKQ.iterator();
+        this.KZs.stop();
+        this.KZs.release();
+        gcV();
+        this.KZw = true;
+        paramByteBuffer = this.KZv.iterator();
         int i = 0;
         for (;;)
         {
           if (!paramByteBuffer.hasNext()) {
-            break label282;
+            break label278;
           }
           arrayOfByte = (byte[])paramByteBuffer.next();
           long l = paramBufferInfo.presentationTimeUs;
-          if (i < this.oKQ.size() - 1) {
+          if (i < this.KZv.size() - 1) {
             break;
           }
           paramBoolean = true;
@@ -282,69 +112,201 @@ public final class g
       {
         for (;;)
         {
-          ab.printErrStackTrace("MicroMsg.MediaCodecAACTranscoder", paramByteBuffer, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.MediaCodecAACTranscoder", paramByteBuffer, "", new Object[0]);
           continue;
           paramBoolean = false;
         }
       }
     }
-    label282:
-    AppMethodBeat.o(3647);
+    label278:
+    AppMethodBeat.o(107648);
   }
   
-  private void bRF()
+  private void boU()
   {
-    AppMethodBeat.i(3648);
-    if ((this.oKO != null) && (this.oKP) && (!this.oKR))
+    AppMethodBeat.i(107647);
+    if (this.KZs == null)
     {
-      this.oKN.start();
-      AppMethodBeat.o(3648);
+      AppMethodBeat.o(107647);
       return;
     }
-    try
+    MediaCodec.BufferInfo localBufferInfo;
+    int i;
+    ByteBuffer[] arrayOfByteBuffer2;
+    for (;;)
     {
-      this.eUh = new MediaFormat();
-      this.eUh.setString("mime", "audio/mp4a-latm");
-      this.eUh.setInteger("aac-profile", 2);
-      this.eUh.setInteger("sample-rate", this.fZe.audioSampleRate);
-      this.eUh.setInteger("channel-count", 1);
-      this.eUh.setInteger("bitrate", this.fZe.fzT);
-      this.eUh.setInteger("max-input-size", 16384);
-      this.oKO = MediaCodec.createEncoderByType(this.cfP);
-      this.oKO.configure(this.eUh, null, null, 1);
-      this.oKO.start();
-      ab.i("MicroMsg.MediaCodecAACTranscoder", "checkInitAndStartEncoder, not canEncodeDecodeBothExist, create new encoder");
-      AppMethodBeat.o(3648);
+      try
+      {
+        ByteBuffer[] arrayOfByteBuffer1 = this.KZs.aPE();
+        localBufferInfo = new MediaCodec.BufferInfo();
+        i = this.KZs.dequeueOutputBuffer(localBufferInfo, 20000L);
+        Log.d("MicroMsg.MediaCodecAACTranscoder", "decoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
+        if (i == -1)
+        {
+          Log.d("MicroMsg.MediaCodecAACTranscoder", "no output available, break");
+          AppMethodBeat.o(107647);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        Log.printErrStackTrace("MicroMsg.MediaCodecAACTranscoder", localException, "drainDecoder error: %s", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(107647);
+        return;
+      }
+      if (i == -3)
+      {
+        arrayOfByteBuffer2 = this.KZs.aPE();
+      }
+      else if (i == -2)
+      {
+        this.pcr = this.KZs.getOutputFormat();
+        Log.i("MicroMsg.MediaCodecAACTranscoder", "srcMediaFormat change: %s", new Object[] { this.pcr });
+      }
+      else
+      {
+        if (i >= 0) {
+          break;
+        }
+        Log.e("MicroMsg.MediaCodecAACTranscoder", "unexpected decoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
+      }
+    }
+    Log.v("MicroMsg.MediaCodecAACTranscoder", "perform decoding");
+    ByteBuffer localByteBuffer = arrayOfByteBuffer2[i];
+    if (localByteBuffer == null)
+    {
+      Log.e("MicroMsg.MediaCodecAACTranscoder", "ERROR, retrieve decoderOutputBuffer is null!!");
+      AppMethodBeat.o(107647);
       return;
     }
-    catch (Exception localException)
+    if ((localBufferInfo.flags & 0x2) != 0)
     {
-      ab.e("MicroMsg.MediaCodecAACTranscoder", "checkInitAndStartEncoder, not canEncodeDecodeBothExist, error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(3648);
+      Log.e("MicroMsg.MediaCodecAACTranscoder", "ignore BUFFER_FLAG_CODEC_CONFIG");
+      localBufferInfo.size = 0;
     }
+    if (localBufferInfo.size > 0)
+    {
+      localByteBuffer.position(localBufferInfo.offset);
+      localByteBuffer.limit(localBufferInfo.offset + localBufferInfo.size);
+      if ((localBufferInfo.flags & 0x4) == 0) {
+        break label359;
+      }
+    }
+    label359:
+    for (boolean bool = true;; bool = false)
+    {
+      a(localByteBuffer, localBufferInfo, bool);
+      this.KZs.releaseOutputBuffer(i, false);
+      if ((localBufferInfo.flags & 0x4) == 0) {
+        break;
+      }
+      Log.i("MicroMsg.MediaCodecAACTranscoder", "receive EOS!");
+      if (this.KZs == null) {
+        break label364;
+      }
+      this.KZs.stop();
+      this.KZs.release();
+      this.KZs = null;
+      AppMethodBeat.o(107647);
+      return;
+    }
+    label364:
+    AppMethodBeat.o(107647);
   }
   
-  private void bRG()
+  private void bpk()
   {
-    AppMethodBeat.i(3652);
-    al.p(new g.2(this), 500L);
-    AppMethodBeat.o(3652);
+    AppMethodBeat.i(107651);
+    if (this.KZt == null)
+    {
+      AppMethodBeat.o(107651);
+      return;
+    }
+    MediaCodec.BufferInfo localBufferInfo;
+    do
+    {
+      int i;
+      ByteBuffer[] arrayOfByteBuffer2;
+      for (;;)
+      {
+        try
+        {
+          ByteBuffer[] arrayOfByteBuffer1 = this.KZt.aPE();
+          localBufferInfo = new MediaCodec.BufferInfo();
+          i = this.KZt.dequeueOutputBuffer(localBufferInfo, 20000L);
+          Log.d("MicroMsg.MediaCodecAACTranscoder", "encoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
+          if (i == -1)
+          {
+            Log.d("MicroMsg.MediaCodecAACTranscoder", "no output available, break");
+            AppMethodBeat.o(107651);
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("MicroMsg.MediaCodecAACTranscoder", localException, "drainEncoder error: %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(107651);
+          return;
+        }
+        if (i == -3)
+        {
+          arrayOfByteBuffer2 = this.KZt.aPE();
+        }
+        else if (i == -2)
+        {
+          this.nzt = this.KZt.getOutputFormat();
+          Log.i("MicroMsg.MediaCodecAACTranscoder", "dstMediaFormat change: %s", new Object[] { this.nzt });
+        }
+        else
+        {
+          if (i >= 0) {
+            break;
+          }
+          Log.e("MicroMsg.MediaCodecAACTranscoder", "unexpected encoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
+        }
+      }
+      Log.v("MicroMsg.MediaCodecAACTranscoder", "perform encoding");
+      ByteBuffer localByteBuffer = arrayOfByteBuffer2[i];
+      if (localByteBuffer == null)
+      {
+        Log.e("MicroMsg.MediaCodecAACTranscoder", "ERROR, retrieve encoderOutputBuffer is null!!");
+        AppMethodBeat.o(107651);
+        return;
+      }
+      if (localBufferInfo.size > 0)
+      {
+        localByteBuffer.position(localBufferInfo.offset);
+        localByteBuffer.limit(localBufferInfo.offset + localBufferInfo.size);
+        j(localByteBuffer, localBufferInfo);
+      }
+      this.KZt.releaseOutputBuffer(i, false);
+    } while ((localBufferInfo.flags & 0x4) == 0);
+    Log.i("MicroMsg.MediaCodecAACTranscoder", "receive EOS!");
+    if (this.KZt != null)
+    {
+      this.KZt.stop();
+      this.KZt.release();
+      this.KZt = null;
+      AppMethodBeat.o(107651);
+      return;
+    }
+    AppMethodBeat.o(107651);
   }
   
   private void c(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(3649);
-    if ((this.oKO == null) || (paramArrayOfByte == null))
+    AppMethodBeat.i(107650);
+    if ((this.KZt == null) || (paramArrayOfByte == null))
     {
-      AppMethodBeat.o(3649);
+      AppMethodBeat.o(107650);
       return;
     }
-    Object localObject = this.oKO.getInputBuffers();
-    int j = this.oKO.dequeueInputBuffer(20000L);
+    Object localObject = this.KZt.aPD();
+    int j = this.KZt.dequeueInputBuffer(20000L);
     if (j < 0)
     {
-      ab.d("MicroMsg.MediaCodecAACTranscoder", "encoder no input buffer available, drain first");
-      UR();
+      Log.d("MicroMsg.MediaCodecAACTranscoder", "encoder no input buffer available, drain first");
+      bpk();
     }
     int i;
     if (j >= 0)
@@ -354,121 +316,206 @@ public final class g
       ((ByteBuffer)localObject).position(0);
       ((ByteBuffer)localObject).put(paramArrayOfByte);
       if (!paramBoolean) {
-        break label183;
+        break label181;
       }
-      ab.i("MicroMsg.MediaCodecAACTranscoder", "last, send EOS and try delay stop encoder");
+      Log.i("MicroMsg.MediaCodecAACTranscoder", "last, send EOS and try delay stop encoder");
       i = 1;
-      bRG();
+      gcW();
     }
     for (;;)
     {
-      if (this.oKO == null)
+      if (this.KZt == null)
       {
-        AppMethodBeat.o(3649);
+        AppMethodBeat.o(107650);
         return;
       }
       if (i != 0)
       {
-        ab.i("MicroMsg.MediaCodecAACTranscoder", "EOS received in sendAudioToEncoder");
-        this.oKO.queueInputBuffer(j, 0, paramArrayOfByte.length, paramLong, 4);
+        Log.i("MicroMsg.MediaCodecAACTranscoder", "EOS received in sendAudioToEncoder");
+        this.KZt.a(j, paramArrayOfByte.length, paramLong, 4);
       }
       for (;;)
       {
-        UR();
-        AppMethodBeat.o(3649);
+        bpk();
+        AppMethodBeat.o(107650);
         return;
-        this.oKO.queueInputBuffer(j, 0, paramArrayOfByte.length, paramLong, 0);
+        this.KZt.a(j, paramArrayOfByte.length, paramLong, 0);
       }
-      label183:
+      label181:
       i = 0;
     }
   }
   
-  private static void h(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  private void gcV()
   {
-    AppMethodBeat.i(3651);
+    AppMethodBeat.i(107649);
+    if ((this.KZt != null) && (this.KZu) && (!this.KZw))
+    {
+      this.KZs.start();
+      AppMethodBeat.o(107649);
+      return;
+    }
+    try
+    {
+      this.nzt = new MediaFormat();
+      this.nzt.setString("mime", "audio/mp4a-latm");
+      this.nzt.setInteger("aac-profile", 2);
+      this.nzt.setInteger("sample-rate", this.pcW.audioSampleRate);
+      this.nzt.setInteger("channel-count", 1);
+      this.nzt.setInteger("bitrate", this.pcW.audioBitrate);
+      this.nzt.setInteger("max-input-size", 16384);
+      this.KZt = aa.u(this.cBw, false);
+      this.KZt.a(this.nzt, null, 1);
+      this.KZt.start();
+      Log.i("MicroMsg.MediaCodecAACTranscoder", "checkInitAndStartEncoder, not canEncodeDecodeBothExist, create new encoder");
+      AppMethodBeat.o(107649);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.MediaCodecAACTranscoder", "checkInitAndStartEncoder, not canEncodeDecodeBothExist, error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(107649);
+    }
+  }
+  
+  private void gcW()
+  {
+    AppMethodBeat.i(107653);
+    MMHandlerThread.postToMainThreadDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(107644);
+        try
+        {
+          if (g.this.KZt != null)
+          {
+            Log.i("MicroMsg.MediaCodecAACTranscoder", "delay to stop encoder");
+            g.this.KZt.stop();
+            g.this.KZt.release();
+            g.this.KZt = null;
+          }
+          AppMethodBeat.o(107644);
+          return;
+        }
+        catch (Exception localException)
+        {
+          Log.e("MicroMsg.MediaCodecAACTranscoder", "delayStopEncoder error: %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(107644);
+        }
+      }
+    }, 500L);
+    AppMethodBeat.o(107653);
+  }
+  
+  private static void j(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    AppMethodBeat.i(107652);
     if (paramByteBuffer != null) {
       MP4MuxerJNI.writeAACData(0, paramByteBuffer, paramBufferInfo.size);
     }
-    AppMethodBeat.o(3651);
+    AppMethodBeat.o(107652);
   }
   
-  public final void bRE()
+  public final void gcU()
   {
-    AppMethodBeat.i(3645);
-    this.oKR = false;
-    this.oKS = false;
+    AppMethodBeat.i(107646);
+    this.KZw = false;
+    this.KZx = false;
     for (;;)
     {
       try
       {
-        if ((this.oKN == null) || (this.cfO == null))
+        if ((this.KZs == null) || (this.pcp == null))
         {
-          ab.e("MicroMsg.MediaCodecAACTranscoder", "startTranscodeBlockLoop error");
-          AppMethodBeat.o(3645);
+          Log.e("MicroMsg.MediaCodecAACTranscoder", "startTranscodeBlockLoop error");
+          AppMethodBeat.o(107646);
           return;
         }
-        Object localObject = this.oKN.getInputBuffers();
-        int j = this.oKN.dequeueInputBuffer(20000L);
+        Object localObject = this.KZs.aPD();
+        int j = this.KZs.dequeueInputBuffer(20000L);
         if (j < 0)
         {
-          ab.d("MicroMsg.MediaCodecAACTranscoder", "decoder no input buffer available, drain first");
-          UC();
+          Log.d("MicroMsg.MediaCodecAACTranscoder", "decoder no input buffer available, drain first");
+          boU();
         }
         int k;
         long l;
         if (j >= 0)
         {
-          ab.d("MicroMsg.MediaCodecAACTranscoder", "decoderInputBufferIndex: %d", new Object[] { Integer.valueOf(j) });
+          Log.d("MicroMsg.MediaCodecAACTranscoder", "decoderInputBufferIndex: %d", new Object[] { Integer.valueOf(j) });
           localObject = localObject[j];
           ((ByteBuffer)localObject).clear();
           ((ByteBuffer)localObject).position(0);
-          k = this.cfO.readSampleData((ByteBuffer)localObject, 0);
-          l = this.cfO.getSampleTime();
-          this.cfO.advance();
-          ab.d("MicroMsg.MediaCodecAACTranscoder", "sampleSize: %s, pts: %s", new Object[] { Integer.valueOf(k), Long.valueOf(l) });
-          if ((l < this.eRN * 1000L) && (l > 0L) && (k > 0)) {
-            break label347;
+          k = this.pcp.readSampleData((ByteBuffer)localObject, 0);
+          l = this.pcp.lZm.getSampleTime();
+          this.pcp.lZm.advance();
+          Log.d("MicroMsg.MediaCodecAACTranscoder", "sampleSize: %s, pts: %s", new Object[] { Integer.valueOf(k), Long.valueOf(l) });
+          if ((l < this.endTimeMs * 1000L) && (l > 0L) && (k > 0)) {
+            break label351;
           }
-          ab.i("MicroMsg.MediaCodecAACTranscoder", "reach end time, send EOS and try delay stop decoder");
-          this.oKS = true;
-          al.p(new g.1(this), 500L);
+          Log.i("MicroMsg.MediaCodecAACTranscoder", "reach end time, send EOS and try delay stop decoder");
+          this.KZx = true;
+          MMHandlerThread.postToMainThreadDelayed(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(107643);
+              try
+              {
+                if (g.this.KZs != null)
+                {
+                  Log.i("MicroMsg.MediaCodecAACTranscoder", "delay to stop decoder");
+                  g.this.KZs.stop();
+                  g.this.KZs.release();
+                  g.this.KZs = null;
+                }
+                AppMethodBeat.o(107643);
+                return;
+              }
+              catch (Exception localException)
+              {
+                Log.e("MicroMsg.MediaCodecAACTranscoder", "delayStopDecoder error: %s", new Object[] { localException.getMessage() });
+                AppMethodBeat.o(107643);
+              }
+            }
+          }, 500L);
           i = 1;
-          if (this.oKN == null) {
-            break label340;
+          if (this.KZs == null) {
+            break label344;
           }
           if (i != 0)
           {
-            ab.i("MicroMsg.MediaCodecAACTranscoder", "EOS received in sendAudioToEncoder");
-            this.oKN.queueInputBuffer(j, 0, k, l, 4);
+            Log.i("MicroMsg.MediaCodecAACTranscoder", "EOS received in sendAudioToEncoder");
+            this.KZs.a(j, k, l, 4);
           }
         }
         else
         {
-          UC();
-          if (!this.oKS) {
+          boU();
+          if (!this.KZx) {
             continue;
           }
-          localObject = this.oKO;
+          localObject = this.KZt;
           if (localObject != null) {
             continue;
           }
-          AppMethodBeat.o(3645);
+          AppMethodBeat.o(107646);
           return;
         }
-        this.oKN.queueInputBuffer(j, 0, k, l, 0);
+        this.KZs.a(j, k, l, 0);
         continue;
-        AppMethodBeat.o(3645);
+        AppMethodBeat.o(107646);
       }
       catch (Exception localException)
       {
-        ab.printErrStackTrace("MicroMsg.MediaCodecAACTranscoder", localException, "startTranscodeBlockLoop error: %s", new Object[] { localException.getMessage() });
-        AppMethodBeat.o(3645);
+        Log.printErrStackTrace("MicroMsg.MediaCodecAACTranscoder", localException, "startTranscodeBlockLoop error: %s", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(107646);
         return;
       }
-      label340:
+      label344:
       return;
-      label347:
+      label351:
       int i = 0;
     }
   }

@@ -1,20 +1,18 @@
 package com.dataline.util;
 
-import dt;
-
-public class DatalineSessionAdapter$1
+class DatalineSessionAdapter$1
   implements Runnable
 {
-  public DatalineSessionAdapter$1(dt paramdt) {}
+  DatalineSessionAdapter$1(DatalineSessionAdapter paramDatalineSessionAdapter) {}
   
   public void run()
   {
-    dt.a(this.this$0, true);
+    DatalineSessionAdapter.a(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DatalineSessionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

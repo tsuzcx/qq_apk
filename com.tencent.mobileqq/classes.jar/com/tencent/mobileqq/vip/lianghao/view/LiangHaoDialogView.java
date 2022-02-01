@@ -4,13 +4,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import becg;
+import com.tencent.mobileqq.vip.lianghao.data.LiangHaoUinData;
 
 public class LiangHaoDialogView
   extends LinearLayout
 {
-  public becg a;
-  private LiangHaoView a;
+  public LiangHaoUinData a;
+  private LiangHaoView b;
   
   public LiangHaoDialogView(Context paramContext)
   {
@@ -33,19 +33,19 @@ public class LiangHaoDialogView
   private void a()
   {
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131561731, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView = ((LiangHaoView)findViewById(2131369405));
+    LayoutInflater.from(getContext()).inflate(2131628351, this, true);
+    this.b = ((LiangHaoView)findViewById(2131437155));
   }
   
-  public void a(becg parambecg)
+  public void a(LiangHaoUinData paramLiangHaoUinData)
   {
-    this.jdField_a_of_type_Becg = parambecg;
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewLiangHaoView.setUin(parambecg);
+    this.a = paramLiangHaoUinData;
+    this.b.setUin(paramLiangHaoUinData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialogView
  * JD-Core Version:    0.7.0.1
  */

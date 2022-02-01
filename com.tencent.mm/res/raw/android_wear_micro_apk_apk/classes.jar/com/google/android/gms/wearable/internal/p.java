@@ -15,12 +15,12 @@ public final class p
   extends g
   implements l
 {
-  private final int Tj;
+  private final int UY;
   
   public p(DataHolder paramDataHolder, int paramInt1, int paramInt2)
   {
     super(paramDataHolder, paramInt1);
-    this.Tj = paramInt2;
+    this.UY = paramInt2;
   }
   
   public final byte[] getData()
@@ -33,15 +33,15 @@ public final class p
     return Uri.parse(getString("path"));
   }
   
-  public final Map<String, com.google.android.gms.wearable.m> kv()
+  public final Map<String, com.google.android.gms.wearable.m> kE()
   {
-    HashMap localHashMap = new HashMap(this.Tj);
+    HashMap localHashMap = new HashMap(this.UY);
     int i = 0;
-    while (i < this.Tj)
+    while (i < this.UY)
     {
-      m localm = new m(this.Ia, this.Iu + i);
-      if (localm.kw() != null) {
-        localHashMap.put(localm.kw(), localm);
+      m localm = new m(this.JP, this.Kj + i);
+      if (localm.kF() != null) {
+        localHashMap.put(localm.kF(), localm);
       }
       i += 1;
     }
@@ -52,7 +52,7 @@ public final class p
   {
     boolean bool = Log.isLoggable("DataItem", 3);
     Object localObject1 = getByteArray("data");
-    Object localObject2 = kv();
+    Object localObject2 = kE();
     StringBuilder localStringBuilder = new StringBuilder("DataItemInternal{ ");
     String str = String.valueOf(getUri());
     localStringBuilder.append(String.valueOf(str).length() + 4 + "uri=" + str);

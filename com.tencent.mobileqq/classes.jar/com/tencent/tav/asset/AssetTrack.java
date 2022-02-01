@@ -10,6 +10,7 @@ import com.tencent.tav.extractor.AssetExtractor;
 import com.tencent.tav.extractor.ExtractorUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   protected List<MetadataItem> commonMetadata;
   protected boolean enabled = true;
   protected float estimatedDataRate;
+  protected HashMap<String, Object> extraInfo;
   protected int mediaType;
   protected CGSize naturalSize;
   protected int naturalTimeScale;
@@ -48,6 +50,7 @@ public class AssetTrack<Segment extends AssetTrackSegment>
       this.nominalFrameRate = ExtractorUtils.getFrameRate(paramAsset.getTrackFormat(paramInt1));
       this.naturalSize = paramAsset.getNaturalSize();
       this.sourcePath = paramAsset.getSourcePath();
+      this.extraInfo = paramAsset.extraInfo;
     }
     createAssetTrackSegments(paramAsset);
   }
@@ -64,15 +67,17 @@ public class AssetTrack<Segment extends AssetTrackSegment>
     }
     if ((paramAsset != null) && (paramAsset.getTrackCount() > this.trackID))
     {
-      paramAsset = new AssetTrackSegment(this.timeRange, this.timeRange);
+      paramAsset = this.timeRange;
+      paramAsset = new AssetTrackSegment(paramAsset, paramAsset);
       this.segments.add(paramAsset);
     }
   }
   
   public Asset getAsset()
   {
-    if (this.asset != null) {
-      return (Asset)this.asset.get();
+    WeakReference localWeakReference = this.asset;
+    if (localWeakReference != null) {
+      return (Asset)localWeakReference.get();
     }
     return null;
   }
@@ -94,8 +99,9 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   public CMTime getDuration()
   {
-    if (this.timeRange != null) {
-      return this.timeRange.getDuration();
+    CMTimeRange localCMTimeRange = this.timeRange;
+    if (localCMTimeRange != null) {
+      return localCMTimeRange.getDuration();
     }
     return CMTime.CMTimeZero;
   }
@@ -103,6 +109,11 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   public float getEstimatedDataRate()
   {
     return this.estimatedDataRate;
+  }
+  
+  public HashMap<String, Object> getExtraInfo()
+  {
+    return this.extraInfo;
   }
   
   public int getMediaType()
@@ -152,7 +163,8 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   public CMTimeRange getTimeRange()
   {
-    if ((this.timeRange == null) || (this.timeRange == CMTimeRange.CMTimeRangeInvalid)) {
+    CMTimeRange localCMTimeRange = this.timeRange;
+    if ((localCMTimeRange == null) || (localCMTimeRange == CMTimeRange.CMTimeRangeInvalid)) {
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, getDuration());
     }
     return this.timeRange;
@@ -185,16 +197,17 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   public CMTime samplePresentationTimeForTrackTime(CMTime paramCMTime)
   {
-    if ((this.asset != null) && (this.asset.get() != null))
+    Object localObject = this.asset;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      AssetExtractor localAssetExtractor = ((Asset)this.asset.get()).getExtractor();
-      if (localAssetExtractor != null)
+      localObject = ((Asset)this.asset.get()).getExtractor();
+      if (localObject != null)
       {
-        localAssetExtractor.seekTo(paramCMTime.getTimeUs(), 2);
-        if (localAssetExtractor.getSampleTime() > paramCMTime.getTimeUs()) {
-          localAssetExtractor.seekTo(paramCMTime.getTimeUs(), 0);
+        ((AssetExtractor)localObject).seekTo(paramCMTime.getTimeUs(), 2);
+        if (((AssetExtractor)localObject).getSampleTime() > paramCMTime.getTimeUs()) {
+          ((AssetExtractor)localObject).seekTo(paramCMTime.getTimeUs(), 0);
         }
-        return TimeUtil.us2CMTime(localAssetExtractor.getSampleTime());
+        return TimeUtil.us2CMTime(((AssetExtractor)localObject).getSampleTime());
       }
     }
     return null;
@@ -202,12 +215,13 @@ public class AssetTrack<Segment extends AssetTrackSegment>
   
   public AssetTrackSegment segmentForTrackTime(CMTime paramCMTime)
   {
-    if (this.segments != null)
+    Object localObject = this.segments;
+    if (localObject != null)
     {
-      Iterator localIterator = this.segments.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AssetTrackSegment localAssetTrackSegment = (AssetTrackSegment)localIterator.next();
+        AssetTrackSegment localAssetTrackSegment = (AssetTrackSegment)((Iterator)localObject).next();
         if (localAssetTrackSegment != null)
         {
           CMTimeRange localCMTimeRange = localAssetTrackSegment.getTimeMapping().getTarget();
@@ -218,6 +232,11 @@ public class AssetTrack<Segment extends AssetTrackSegment>
       }
     }
     return null;
+  }
+  
+  public void setExtraInfo(HashMap<String, Object> paramHashMap)
+  {
+    this.extraInfo = paramHashMap;
   }
   
   void setPreferredRotation(int paramInt)
@@ -237,7 +256,7 @@ public class AssetTrack<Segment extends AssetTrackSegment>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.asset.AssetTrack
  * JD-Core Version:    0.7.0.1
  */

@@ -40,14 +40,20 @@ public class ANRReport
     return bool;
   }
   
-  public static void uploadANRInfoAsync(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong)
+  public static void uploadANRInfoAsync(Context paramContext, final int paramInt, final String paramString1, final String paramString2, final String paramString3, final long paramLong)
   {
-    if ((paramInt <= 0) || (paramString1 == null) || (paramLong <= 0L))
+    if ((paramInt > 0) && (paramString1 != null) && (paramLong > 0L))
     {
-      com.tencent.feedback.common.e.d("anr args unright pid, procName ,anrTime should not be null", new Object[0]);
+      com.tencent.feedback.common.b.b().a(new Runnable()
+      {
+        public final void run()
+        {
+          ANRReport.uploadANRInfo(this.a, paramInt, paramString1, paramString2, paramString3, paramLong);
+        }
+      });
       return;
     }
-    com.tencent.feedback.common.b.b().a(new ANRReport.1(paramContext, paramInt, paramString1, paramString2, paramString3, paramLong));
+    com.tencent.feedback.common.e.d("anr args unright pid, procName ,anrTime should not be null", new Object[0]);
   }
 }
 

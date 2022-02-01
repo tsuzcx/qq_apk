@@ -1,17 +1,22 @@
 package com.tencent.mobileqq.dinifly;
 
 import android.content.Context;
+import com.tencent.mobileqq.dinifly.model.LottieCompositionCache;
 import com.tencent.mobileqq.dinifly.network.NetworkFetcher;
 import java.util.concurrent.Callable;
 
 final class LottieCompositionFactory$1
   implements Callable<LottieResult<LottieComposition>>
 {
-  LottieCompositionFactory$1(Context paramContext, String paramString) {}
+  LottieCompositionFactory$1(Context paramContext, String paramString1, String paramString2) {}
   
   public LottieResult<LottieComposition> call()
   {
-    return NetworkFetcher.fetchSync(this.val$context, this.val$url);
+    LottieResult localLottieResult = L.networkFetcher(this.val$context).fetchSync(this.val$url, this.val$cacheKey);
+    if ((this.val$cacheKey != null) && (localLottieResult.getValue() != null)) {
+      LottieCompositionCache.getInstance().put(this.val$cacheKey, (LottieComposition)localLottieResult.getValue());
+    }
+    return localLottieResult;
   }
 }
 

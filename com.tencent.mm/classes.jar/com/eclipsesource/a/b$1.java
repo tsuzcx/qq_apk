@@ -10,23 +10,23 @@ final class b$1
   
   public final boolean hasNext()
   {
-    AppMethodBeat.i(70497);
-    boolean bool = this.atQ.hasNext();
-    AppMethodBeat.o(70497);
+    AppMethodBeat.i(74684);
+    boolean bool = this.cBM.hasNext();
+    AppMethodBeat.o(74684);
     return bool;
   }
   
   public final void remove()
   {
-    AppMethodBeat.i(70498);
+    AppMethodBeat.i(74685);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-    AppMethodBeat.o(70498);
+    AppMethodBeat.o(74685);
     throw localUnsupportedOperationException;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.eclipsesource.a.b.1
  * JD-Core Version:    0.7.0.1
  */

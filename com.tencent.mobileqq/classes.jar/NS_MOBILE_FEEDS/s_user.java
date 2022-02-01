@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class s_user
   extends JceStruct
@@ -20,61 +21,62 @@ public final class s_user
   static star_info cache_stuStarInfo = new star_info();
   static ArrayList<s_yytag> cache_tagInfos;
   static ArrayList<String> cache_user_tags;
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public int age;
-  public s_medal authqzoneMedalInfo;
+  public int age = 0;
+  public s_medal authqzoneMedalInfo = null;
   public String avatarRecomBar = "";
-  public byte[] decoration;
+  public byte[] decoration = null;
   public String descicon = "";
-  public int displayflag;
+  public int displayflag = 0;
   public long eUserTypeReport = 0L;
   public int from = 1;
   public int iCurUserType = 0;
-  public int iVipActType;
-  public int icon_height;
-  public int icon_width;
-  public byte isAnnualVip;
-  public int isCmtVerifyOpen;
-  public int isFamousWhite;
-  public int isPrivateMode;
-  public int isQzoneUser;
-  public byte isSafeModeUser;
-  public byte isSetNickGlint;
-  public int isSweetVip;
-  public int isVideoCircleVUser;
-  public int is_own;
-  public int is_owner;
-  public s_kuolie_info kuoliestate;
-  public int level;
-  public s_medal liveshowMedalInfo;
+  public int iVipActType = 0;
+  public int icon_height = 0;
+  public int icon_width = 0;
+  public byte isAnnualVip = 0;
+  public int isCmtVerifyOpen = 0;
+  public int isFamousWhite = 0;
+  public int isPrivateMode = 0;
+  public int isQzoneUser = 0;
+  public byte isSafeModeUser = 0;
+  public byte isSetNickGlint = 0;
+  public int isSweetVip = 0;
+  public int isVideoCircleVUser = 0;
+  public int is_own = 0;
+  public int is_owner = 0;
+  public s_kuolie_info kuoliestate = null;
+  public int level = 0;
+  public s_medal liveshowMedalInfo = null;
   public String logo = "";
-  public s_medal medalInfo;
-  public int namePlate;
+  public s_medal medalInfo = null;
+  public int namePlate = 0;
   public String nickname = "";
-  public s_openid_user openid_users;
-  public int operation_mask;
-  public int portrait_id;
+  public s_openid_user openid_users = null;
+  public int operation_mask = 0;
+  public int portrait_id = 0;
   public String qzonedesc = "";
-  public byte sex;
+  public byte sex = 0;
   public String strPortraitId = "";
-  public combine_diamond_info stuCombineDiamondInfo;
-  public star_info stuStarInfo;
-  public ArrayList<s_yytag> tagInfos;
+  public combine_diamond_info stuCombineDiamondInfo = null;
+  public star_info stuStarInfo = null;
+  public ArrayList<s_yytag> tagInfos = null;
   public String talk_id = "";
-  public int timestamp;
-  public long uFansCount;
-  public long uVisitorCount;
+  public int timestamp = 0;
+  public long uFansCount = 0L;
+  public long uFeedsCount = 0L;
+  public long uVisitorCount = 0L;
   public String uid = "";
-  public long uin;
+  public long uin = 0L;
   public String uinkey = "";
   public String under_nickname_desc = "";
-  public ArrayList<String> user_tags;
-  public int vip;
+  public ArrayList<String> user_tags = null;
+  public int vip = 0;
   public byte vipShowType = -1;
-  public int viplevel;
-  public int viptype;
-  public long vtime;
+  public int viplevel = 0;
+  public int viptype = 0;
+  public long vtime = 0L;
   
   static
   {
@@ -94,7 +96,7 @@ public final class s_user
   
   public s_user() {}
   
-  public s_user(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString4, int paramInt7, int paramInt8, String paramString5, String paramString6, int paramInt9, int paramInt10, int paramInt11, int paramInt12, byte paramByte1, byte paramByte2, s_medal params_medal1, String paramString7, int paramInt13, int paramInt14, int paramInt15, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, byte paramByte3, byte paramByte4, int paramInt16, int paramInt17, String paramString8, byte[] paramArrayOfByte, ArrayList<s_yytag> paramArrayList, String paramString9, String paramString10, s_medal params_medal2, long paramLong2, long paramLong3, int paramInt18, int paramInt19, int paramInt20, long paramLong4, s_medal params_medal3, long paramLong5, int paramInt21, s_openid_user params_openid_user, byte paramByte5, s_kuolie_info params_kuolie_info, int paramInt22, String paramString11, ArrayList<String> paramArrayList1, int paramInt23, int paramInt24)
+  public s_user(long paramLong1, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString4, int paramInt7, int paramInt8, String paramString5, String paramString6, int paramInt9, int paramInt10, int paramInt11, int paramInt12, byte paramByte1, byte paramByte2, s_medal params_medal1, String paramString7, int paramInt13, int paramInt14, int paramInt15, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, byte paramByte3, byte paramByte4, int paramInt16, int paramInt17, String paramString8, byte[] paramArrayOfByte, ArrayList<s_yytag> paramArrayList, String paramString9, String paramString10, s_medal params_medal2, long paramLong2, long paramLong3, int paramInt18, int paramInt19, int paramInt20, long paramLong4, s_medal params_medal3, long paramLong5, int paramInt21, s_openid_user params_openid_user, byte paramByte5, s_kuolie_info params_kuolie_info, int paramInt22, String paramString11, ArrayList<String> paramArrayList1, int paramInt23, int paramInt24, long paramLong6)
   {
     this.uin = paramLong1;
     this.nickname = paramString1;
@@ -151,6 +153,7 @@ public final class s_user
     this.user_tags = paramArrayList1;
     this.age = paramInt23;
     this.isVideoCircleVUser = paramInt24;
+    this.uFeedsCount = paramLong6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -210,36 +213,43 @@ public final class s_user
     this.user_tags = ((ArrayList)paramJceInputStream.read(cache_user_tags, 52, false));
     this.age = paramJceInputStream.read(this.age, 53, false);
     this.isVideoCircleVUser = paramJceInputStream.read(this.isVideoCircleVUser, 54, false);
+    this.uFeedsCount = paramJceInputStream.read(this.uFeedsCount, 55, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 1);
+    Object localObject = this.nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.timestamp, 2);
     paramJceOutputStream.write(this.from, 3);
-    if (this.uinkey != null) {
-      paramJceOutputStream.write(this.uinkey, 4);
+    localObject = this.uinkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.logo != null) {
-      paramJceOutputStream.write(this.logo, 5);
+    localObject = this.logo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.vip, 6);
     paramJceOutputStream.write(this.level, 7);
     paramJceOutputStream.write(this.viplevel, 8);
     paramJceOutputStream.write(this.viptype, 9);
-    if (this.qzonedesc != null) {
-      paramJceOutputStream.write(this.qzonedesc, 10);
+    localObject = this.qzonedesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.is_owner, 11);
     paramJceOutputStream.write(this.operation_mask, 12);
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 13);
+    localObject = this.uid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.talk_id != null) {
-      paramJceOutputStream.write(this.talk_id, 14);
+    localObject = this.talk_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.portrait_id, 15);
     paramJceOutputStream.write(this.is_own, 16);
@@ -247,42 +257,52 @@ public final class s_user
     paramJceOutputStream.write(this.isQzoneUser, 18);
     paramJceOutputStream.write(this.isAnnualVip, 19);
     paramJceOutputStream.write(this.isSetNickGlint, 20);
-    if (this.medalInfo != null) {
-      paramJceOutputStream.write(this.medalInfo, 21);
+    localObject = this.medalInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 21);
     }
-    if (this.descicon != null) {
-      paramJceOutputStream.write(this.descicon, 22);
+    localObject = this.descicon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 22);
     }
     paramJceOutputStream.write(this.icon_width, 23);
     paramJceOutputStream.write(this.icon_height, 24);
     paramJceOutputStream.write(this.isSweetVip, 25);
-    if (this.stuStarInfo != null) {
-      paramJceOutputStream.write(this.stuStarInfo, 26);
+    localObject = this.stuStarInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 26);
     }
-    if (this.stuCombineDiamondInfo != null) {
-      paramJceOutputStream.write(this.stuCombineDiamondInfo, 27);
+    localObject = this.stuCombineDiamondInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 27);
     }
     paramJceOutputStream.write(this.isSafeModeUser, 28);
     paramJceOutputStream.write(this.vipShowType, 29);
     paramJceOutputStream.write(this.namePlate, 30);
     paramJceOutputStream.write(this.actiontype, 31);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 32);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 32);
     }
-    if (this.decoration != null) {
-      paramJceOutputStream.write(this.decoration, 33);
+    localObject = this.decoration;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 33);
     }
-    if (this.tagInfos != null) {
-      paramJceOutputStream.write(this.tagInfos, 34);
+    localObject = this.tagInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 34);
     }
-    if (this.strPortraitId != null) {
-      paramJceOutputStream.write(this.strPortraitId, 35);
+    localObject = this.strPortraitId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 35);
     }
-    if (this.under_nickname_desc != null) {
-      paramJceOutputStream.write(this.under_nickname_desc, 36);
+    localObject = this.under_nickname_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 36);
     }
-    if (this.liveshowMedalInfo != null) {
-      paramJceOutputStream.write(this.liveshowMedalInfo, 37);
+    localObject = this.liveshowMedalInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 37);
     }
     paramJceOutputStream.write(this.uFansCount, 38);
     paramJceOutputStream.write(this.uVisitorCount, 39);
@@ -290,32 +310,38 @@ public final class s_user
     paramJceOutputStream.write(this.iCurUserType, 41);
     paramJceOutputStream.write(this.displayflag, 42);
     paramJceOutputStream.write(this.vtime, 43);
-    if (this.authqzoneMedalInfo != null) {
-      paramJceOutputStream.write(this.authqzoneMedalInfo, 44);
+    localObject = this.authqzoneMedalInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 44);
     }
     paramJceOutputStream.write(this.eUserTypeReport, 45);
     paramJceOutputStream.write(this.iVipActType, 46);
-    if (this.openid_users != null) {
-      paramJceOutputStream.write(this.openid_users, 47);
+    localObject = this.openid_users;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 47);
     }
     paramJceOutputStream.write(this.sex, 48);
-    if (this.kuoliestate != null) {
-      paramJceOutputStream.write(this.kuoliestate, 49);
+    localObject = this.kuoliestate;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 49);
     }
     paramJceOutputStream.write(this.isPrivateMode, 50);
-    if (this.avatarRecomBar != null) {
-      paramJceOutputStream.write(this.avatarRecomBar, 51);
+    localObject = this.avatarRecomBar;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 51);
     }
-    if (this.user_tags != null) {
-      paramJceOutputStream.write(this.user_tags, 52);
+    localObject = this.user_tags;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 52);
     }
     paramJceOutputStream.write(this.age, 53);
     paramJceOutputStream.write(this.isVideoCircleVUser, 54);
+    paramJceOutputStream.write(this.uFeedsCount, 55);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_user
  * JD-Core Version:    0.7.0.1
  */

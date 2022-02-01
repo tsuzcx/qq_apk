@@ -9,7 +9,7 @@ public final class RespBatchProcess
   extends JceStruct
 {
   static ArrayList<BatchResponse> cache_batch_response_list;
-  public ArrayList<BatchResponse> batch_response_list;
+  public ArrayList<BatchResponse> batch_response_list = null;
   
   public RespBatchProcess() {}
   
@@ -31,14 +31,15 @@ public final class RespBatchProcess
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.batch_response_list != null) {
-      paramJceOutputStream.write(this.batch_response_list, 0);
+    ArrayList localArrayList = this.batch_response_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.RespBatchProcess
  * JD-Core Version:    0.7.0.1
  */

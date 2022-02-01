@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.qzonevip.gift;
 
-import aoks;
-import aosf;
-import axjs;
-import bkfe;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
 
-public class QzoneGiftManager$3
-  implements Runnable
+class QzoneGiftManager$3
+  extends AnimatorListenerAdapter
 {
-  public QzoneGiftManager$3(axjs paramaxjs, String paramString1, String paramString2) {}
+  QzoneGiftManager$3(QzoneGiftManager paramQzoneGiftManager) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    aosf localaosf = (aosf)aoks.a().a(499);
-    axjs.a(this.this$0, localaosf, this.a, this.b);
-    bkfe.a().b(localaosf);
+    if (QzoneGiftManager.i(this.a) != null) {
+      QzoneGiftManager.i(this.a).e();
+    }
+    QzoneGiftManager.a(this.a, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftManager.3
  * JD-Core Version:    0.7.0.1
  */

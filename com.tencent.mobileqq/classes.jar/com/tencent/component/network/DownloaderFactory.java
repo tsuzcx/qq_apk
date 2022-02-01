@@ -19,7 +19,7 @@ import java.util.concurrent.Executor;
 public class DownloaderFactory
 {
   private static final byte[] INSTANCE_LOCK = new byte[0];
-  private static volatile DownloaderFactory mInstance = null;
+  private static volatile DownloaderFactory mInstance;
   private Downloader mCommonDownloader;
   private Downloader mImageDownloader;
   private FileHandler mImageFileHandler = new DownloaderFactory.1(this);
@@ -39,13 +39,14 @@ public class DownloaderFactory
   
   public static Downloader createDownloader(String paramString, Executor paramExecutor1, Executor paramExecutor2)
   {
-    if ((Global.getContext() == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
+    if ((Global.getContext() != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      DnsService.getInstance().setThreadPoolExecutor(paramExecutor2);
+      paramString = new DownloaderImpl(Global.getContext(), paramString, 2);
+      paramString.setExecutor(paramExecutor1);
+      return paramString;
     }
-    DnsService.getInstance().setThreadPoolExecutor(paramExecutor2);
-    paramString = new DownloaderImpl(Global.getContext(), paramString, 2);
-    paramString.setExecutor(paramExecutor1);
-    return paramString;
+    return null;
   }
   
   public static Downloader createImageDownloader(String paramString)
@@ -55,26 +56,28 @@ public class DownloaderFactory
   
   public static Downloader createImageDownloader(String paramString, Executor paramExecutor1, Executor paramExecutor2)
   {
-    if ((Global.getContext() == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
+    if ((Global.getContext() != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      DnsService.getInstance().setThreadPoolExecutor(paramExecutor2);
+      paramString = new DownloaderImpl(Global.getContext(), paramString, 1);
+      paramString.setExecutor(paramExecutor1);
+      ImageDownloaderInitializer.initImageDownloader(paramString);
+      return paramString;
     }
-    DnsService.getInstance().setThreadPoolExecutor(paramExecutor2);
-    paramString = new DownloaderImpl(Global.getContext(), paramString, 1);
-    paramString.setExecutor(paramExecutor1);
-    ImageDownloaderInitializer.initImageDownloader(paramString);
-    return paramString;
+    return null;
   }
   
   public static DownloaderFactory getInstance(Context paramContext)
   {
-    if (mInstance == null) {}
-    synchronized (INSTANCE_LOCK)
-    {
-      if (mInstance == null) {
-        mInstance = new DownloaderFactory(paramContext);
+    if (mInstance == null) {
+      synchronized (INSTANCE_LOCK)
+      {
+        if (mInstance == null) {
+          mInstance = new DownloaderFactory(paramContext);
+        }
       }
-      return mInstance;
     }
+    return mInstance;
   }
   
   public static void init(IDownloadConfig paramIDownloadConfig, Log paramLog)
@@ -90,23 +93,24 @@ public class DownloaderFactory
   
   public Downloader getCommonDownloader()
   {
-    if (this.mCommonDownloader != null) {
-      return this.mCommonDownloader;
+    Object localObject1 = this.mCommonDownloader;
+    if (localObject1 != null) {
+      return localObject1;
     }
     try
     {
       if (this.mCommonDownloader != null)
       {
-        Downloader localDownloader = this.mCommonDownloader;
-        return localDownloader;
+        localObject1 = this.mCommonDownloader;
+        return localObject1;
       }
+      localObject1 = new DownloaderImpl(Global.getContext(), "common", 2);
+      ((DownloaderImpl)localObject1).setUrlKeyGenerator(UrlKeyGenerator.GENERATOR_DESPITE_HASH);
+      ((DownloaderImpl)localObject1).enableResumeTransfer();
+      this.mCommonDownloader = ((Downloader)localObject1);
+      return localObject1;
     }
     finally {}
-    DownloaderImpl localDownloaderImpl = new DownloaderImpl(Global.getContext(), "common", 2);
-    localDownloaderImpl.setUrlKeyGenerator(UrlKeyGenerator.GENERATOR_DESPITE_HASH);
-    localDownloaderImpl.enableResumeTransfer();
-    this.mCommonDownloader = localDownloaderImpl;
-    return localDownloaderImpl;
   }
   
   public IPStrategy getDirectIpStrategy()
@@ -116,25 +120,26 @@ public class DownloaderFactory
   
   public Downloader getImageDownloader()
   {
-    if (this.mImageDownloader != null) {
-      return this.mImageDownloader;
+    Object localObject1 = this.mImageDownloader;
+    if (localObject1 != null) {
+      return localObject1;
     }
     try
     {
       if (this.mImageDownloader != null)
       {
-        Downloader localDownloader = this.mImageDownloader;
-        return localDownloader;
+        localObject1 = this.mImageDownloader;
+        return localObject1;
       }
+      localObject1 = new DownloaderImpl(Global.getContext(), "image", 1);
+      ((DownloaderImpl)localObject1).setUrlKeyGenerator(UrlKeyGenerator.GENERATOR_DESPITE_HASH);
+      ((DownloaderImpl)localObject1).setFileHandler(this.mImageFileHandler);
+      ((DownloaderImpl)localObject1).enableResumeTransfer();
+      ((DownloaderImpl)localObject1).setContentHandler(new DownloaderFactory.2(this));
+      this.mImageDownloader = ((Downloader)localObject1);
+      return localObject1;
     }
     finally {}
-    DownloaderImpl localDownloaderImpl = new DownloaderImpl(Global.getContext(), "image", 1);
-    localDownloaderImpl.setUrlKeyGenerator(UrlKeyGenerator.GENERATOR_DESPITE_HASH);
-    localDownloaderImpl.setFileHandler(this.mImageFileHandler);
-    localDownloaderImpl.enableResumeTransfer();
-    localDownloaderImpl.setContentHandler(new DownloaderFactory.2(this));
-    this.mImageDownloader = localDownloaderImpl;
-    return localDownloaderImpl;
   }
   
   public PortConfigStrategy getPortStrategy()
@@ -159,7 +164,7 @@ public class DownloaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.DownloaderFactory
  * JD-Core Version:    0.7.0.1
  */

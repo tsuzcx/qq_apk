@@ -33,29 +33,21 @@ public final class SingleSampleMediaSource$Factory
   
   public Factory setMinLoadableRetryCount(int paramInt)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.minLoadableRetryCount = paramInt;
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.minLoadableRetryCount = paramInt;
+    return this;
   }
   
   public Factory setTreatLoadErrorsAsEndOfStream(boolean paramBoolean)
   {
-    if (!this.isCreateCalled) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.treatLoadErrorsAsEndOfStream = paramBoolean;
-      return this;
-    }
+    Assertions.checkState(this.isCreateCalled ^ true);
+    this.treatLoadErrorsAsEndOfStream = paramBoolean;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.SingleSampleMediaSource.Factory
  * JD-Core Version:    0.7.0.1
  */

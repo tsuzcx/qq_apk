@@ -5,6 +5,7 @@
     "margin_left":"12",
     "visible_depend_on_children": "YES",
     "margin_right":"12",
+    "margin_bottom":"10",
     "height":{
         "type":"relative",
         "value":"72"
@@ -80,9 +81,77 @@
             },
             "attributes":{
                 "setText:":"$middle_content_txt",
-                "setTextColorString:":"#03081A",
+                "setTextColorString:":"#242424",
                 "setFontSizeString:":"16",
                 "setNumberOfLinesString:":"2"
+            }
+        },
+        {
+            "view_type": "UIImageView",
+            "view_id": "id_top_left_mask_1",
+            "visible_depend_on_brother": "id_image_container",
+            "height": {
+                "type": "absolutely",
+                "value": "6"
+            },
+            "width": {
+                "type": "absolutely",
+                "value": "6"
+            },
+            "attributes": {
+                "loadImageWithPath:": "left_top_round_corner"
+            }
+        },
+        {
+            "view_type": "UIImageView",
+            "view_id": "id_bottom_left_mask_1",
+            "visible_depend_on_brother": "id_image_container",
+            "align_parent_bottom": "YES",
+            "height": {
+                "type": "absolutely",
+                "value": "6"
+            },
+            "width": {
+                "type": "absolutely",
+                "value": "6"
+            },
+            "attributes": {
+                "loadImageWithPath:": "left_bottom_round_corner"
+            }
+        },
+        {
+            "view_type": "UIImageView",
+            "view_id": "id_top_right_mask_1",
+            "visible_depend_on_brother": "id_image_container",
+            "align_parent_right": "YES",
+            "height": {
+                "type": "absolutely",
+                "value": "6"
+            },
+            "width": {
+                "type": "absolutely",
+                "value": "6"
+            },
+            "attributes": {
+                "loadImageWithPath:": "right_top_round_corner"
+            }
+        },
+        {
+            "view_type": "UIImageView",
+            "view_id": "id_bottom_right_mask_1",
+            "visible_depend_on_brother": "id_image_container",
+            "align_parent_right": "YES",
+            "align_parent_bottom": "YES",
+            "height": {
+                "type": "absolutely",
+                "value": "6"
+            },
+            "width": {
+                "type": "absolutely",
+                "value": "6"
+            },
+            "attributes": {
+                "loadImageWithPath:": "right_bottom_round_corner"
             }
         }
     ]

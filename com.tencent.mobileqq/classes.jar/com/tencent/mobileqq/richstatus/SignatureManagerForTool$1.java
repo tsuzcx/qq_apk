@@ -1,70 +1,78 @@
 package com.tencent.mobileqq.richstatus;
 
-import alof;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aydw;
-import bdhb;
-import bdtt;
-import bdtv;
+import com.etrump.mixlayout.VasFontIPCModule;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
-import gh;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class SignatureManagerForTool$1
+class SignatureManagerForTool$1
   implements Runnable
 {
-  public SignatureManagerForTool$1(aydw paramaydw, int paramInt) {}
+  SignatureManagerForTool$1(SignatureManagerForTool paramSignatureManagerForTool, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Signature.TOOL", 2, "in getTemplateInfo info" + this.a);
-    }
-    Object localObject1 = (bdtv)aydw.a(this.this$0).get(Integer.valueOf(this.a));
-    Object localObject2;
-    boolean bool;
-    if ((localObject1 == null) || (!((bdtv)localObject1).a.get())) {
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder().append("getTemplateInfo info == null: ");
-        if (localObject1 != null) {
-          break label109;
-        }
-        bool = true;
-        QLog.e("Signature.TOOL", 2, bool);
-      }
-    }
-    label109:
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      bool = false;
-      break;
-      localObject2 = new File(alof.bW + this.a + File.separator + "config.json");
-      if (!((File)localObject2).exists()) {
-        break label208;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("in getTemplateInfo info");
+      ((StringBuilder)localObject1).append(this.a);
+      QLog.e("Signature.TOOL", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = (SignatureTemplateInfo)SignatureManagerForTool.a(this.this$0).get(Integer.valueOf(this.a));
+    boolean bool = false;
+    Object localObject2;
+    if ((localObject1 != null) && (((SignatureTemplateInfo)localObject1).a.get()))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT);
+      ((StringBuilder)localObject2).append(this.a);
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("config.json");
+      localObject2 = new File(((StringBuilder)localObject2).toString());
+      if (((File)localObject2).exists())
+      {
+        localObject2 = FileUtils.readFileToStringEx((File)localObject2, -1);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          SignatureTemplateConfig.a((String)localObject2, (SignatureTemplateInfo)localObject1);
+          ((SignatureTemplateInfo)localObject1).a.set(false);
+          SignatureManagerForTool.b(this.this$0);
+          this.this$0.notifyObservers(Integer.valueOf(3));
+        }
       }
-      localObject2 = bdhb.a((File)localObject2, -1);
-    } while (TextUtils.isEmpty((CharSequence)localObject2));
-    bdtt.a((String)localObject2, (bdtv)localObject1);
-    ((bdtv)localObject1).a.set(false);
-    aydw.a(this.this$0);
-    this.this$0.notifyObservers(Integer.valueOf(3));
-    return;
-    label208:
-    this.this$0.notifyObservers(Integer.valueOf(9));
-    localObject1 = new Bundle();
-    ((Bundle)localObject1).putInt("id", this.a);
-    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gh.d, (Bundle)localObject1, aydw.a(this.this$0));
+      else
+      {
+        this.this$0.notifyObservers(Integer.valueOf(9));
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putInt("id", this.a);
+        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.d, (Bundle)localObject1, SignatureManagerForTool.c(this.this$0));
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getTemplateInfo info == null: ");
+      if (localObject1 == null) {
+        bool = true;
+      }
+      ((StringBuilder)localObject2).append(bool);
+      QLog.e("Signature.TOOL", 2, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureManagerForTool.1
  * JD-Core Version:    0.7.0.1
  */

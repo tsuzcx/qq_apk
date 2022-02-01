@@ -1,48 +1,52 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.s.a;
-import com.tencent.mm.sdk.platformtools.ab;
 
-public final class w
-  implements t
+final class w
 {
-  m cqE;
-  public Context mContext;
-  public com.tencent.mm.ui.base.p tipDialog;
-  public w.a vLu;
+  public String appId;
+  public int qvo;
   
-  public w(Context paramContext, w.a parama)
+  public w(String paramString, int paramInt)
   {
-    this.mContext = paramContext;
-    this.vLu = parama;
+    this.appId = paramString;
+    this.qvo = paramInt;
   }
   
-  public final void a(int paramInt1, int paramInt2, String paramString, x paramx)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(79365);
-    ab.i("MicroMsg.LoadAppInfoAfterLogin", "OnScenEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    a.caf().b(7, this);
-    if ((this.tipDialog != null) && (this.tipDialog.isShowing()))
+    AppMethodBeat.i(151791);
+    if (paramObject == null)
     {
-      this.tipDialog.dismiss();
-      this.tipDialog = null;
+      AppMethodBeat.o(151791);
+      return false;
     }
-    if (this.vLu != null) {
-      this.vLu.asg();
+    if (!(paramObject instanceof w))
+    {
+      AppMethodBeat.o(151791);
+      return false;
     }
-    p.dlG();
-    AppMethodBeat.o(79365);
+    paramObject = (w)paramObject;
+    if ((paramObject.appId.equals(this.appId)) && (paramObject.qvo == this.qvo))
+    {
+      AppMethodBeat.o(151791);
+      return true;
+    }
+    AppMethodBeat.o(151791);
+    return false;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(151792);
+    String str = this.appId + this.qvo;
+    AppMethodBeat.o(151792);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.w
  * JD-Core Version:    0.7.0.1
  */

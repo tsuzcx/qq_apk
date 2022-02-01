@@ -1,8 +1,8 @@
 package com.tencent.matrix.iocanary.c;
 
 import android.content.Context;
-import com.tencent.matrix.e.b;
 import com.tencent.matrix.iocanary.core.IOIssue;
+import com.tencent.matrix.report.g;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ListIterator;
@@ -13,12 +13,12 @@ public final class a
 {
   private static String sPackageName = null;
   
-  public static b a(IOIssue paramIOIssue)
+  public static g a(IOIssue paramIOIssue)
   {
     if (paramIOIssue == null) {
       return null;
     }
-    b localb = new b(paramIOIssue.type);
+    g localg = new g(paramIOIssue.type);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -33,8 +33,8 @@ public final class a
       localJSONObject.put("stack", paramIOIssue.stack);
       localJSONObject.put("repeat", paramIOIssue.repeatReadCnt);
       label136:
-      localb.bOx = localJSONObject;
-      return localb;
+      localg.eYz = localJSONObject;
+      return localg;
     }
     catch (JSONException paramIOIssue)
     {
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.iocanary.c.a
  * JD-Core Version:    0.7.0.1
  */

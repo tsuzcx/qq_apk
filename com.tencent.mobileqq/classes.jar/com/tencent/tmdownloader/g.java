@@ -13,28 +13,43 @@ class g
   {
     try
     {
-      ab.c("RemoteOpProxy", "<postReport> process:" + s.e() + ", getServiceInterface()");
-      a locala = (a)this.c.getServiceInterface();
-      if (locala != null)
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<postReport> process:");
+      ((StringBuilder)localObject).append(s.e());
+      ((StringBuilder)localObject).append(", getServiceInterface()");
+      ab.c("RemoteOpProxy", ((StringBuilder)localObject).toString());
+      localObject = (a)this.c.getServiceInterface();
+      if (localObject != null)
       {
-        ab.c("RemoteOpProxy", "<postReport> process:" + s.e());
-        locala.a(this.a, this.b);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<postReport> process:");
+        localStringBuilder.append(s.e());
+        ab.c("RemoteOpProxy", localStringBuilder.toString());
+        ((a)localObject).a(this.a, this.b);
         return;
       }
-      ab.c("RemoteOpProxy", "<postReport> null == serviceInterface, initTMAssistantDownloadSDK,process:" + s.e());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<postReport> null == serviceInterface, initTMAssistantDownloadSDK,process:");
+      ((StringBuilder)localObject).append(s.e());
+      ab.c("RemoteOpProxy", ((StringBuilder)localObject).toString());
       this.c.initTMAssistantDownloadSDK();
       return;
     }
     catch (Exception localException)
     {
-      ab.c("RemoteOpProxy", "<postReport> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<postReport> process:");
+      localStringBuilder.append(s.e());
+      localStringBuilder.append(", getServiceInterface() error, error msg = ");
+      localStringBuilder.append(localException.getMessage());
+      ab.c("RemoteOpProxy", localStringBuilder.toString());
       localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.g
  * JD-Core Version:    0.7.0.1
  */

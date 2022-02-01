@@ -37,14 +37,15 @@ public final class qzmall_data_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uUin, 0);
-    if (this.rspMap != null) {
-      paramJceOutputStream.write(this.rspMap, 1);
+    Map localMap = this.rspMap;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QZMALL_COMM_PROTOCOL.qzmall_data_rsp
  * JD-Core Version:    0.7.0.1
  */

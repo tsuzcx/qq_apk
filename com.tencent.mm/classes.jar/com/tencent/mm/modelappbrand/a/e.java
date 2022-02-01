@@ -1,26 +1,69 @@
 package com.tencent.mm.modelappbrand.a;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import androidx.core.graphics.drawable.b;
+import androidx.core.graphics.drawable.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public final class e
-  extends BitmapDrawable
+public class e
+  implements b.h
 {
-  public e(Resources paramResources, Bitmap paramBitmap)
+  private static Bitmap drawableToBitmap(Drawable paramDrawable)
   {
-    super(paramResources, paramBitmap);
+    AppMethodBeat.i(176006);
+    if (paramDrawable == null)
+    {
+      AppMethodBeat.o(176006);
+      return null;
+    }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if ((i <= 0) || (j <= 0))
+    {
+      AppMethodBeat.o(176006);
+      return null;
+    }
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      paramDrawable.draw(localCanvas);
+      AppMethodBeat.o(176006);
+      return localBitmap;
+    }
+    catch (OutOfMemoryError paramDrawable)
+    {
+      AppMethodBeat.o(176006);
+    }
+    return null;
   }
   
-  public final void draw(Canvas paramCanvas)
+  public Bitmap P(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(77382);
-    if ((getBitmap() != null) && (!getBitmap().isRecycled())) {
-      super.draw(paramCanvas);
+    AppMethodBeat.i(176005);
+    if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
+    {
+      AppMethodBeat.o(176005);
+      return paramBitmap;
     }
-    AppMethodBeat.o(77382);
+    Object localObject = d.a(MMApplicationContext.getResources(), paramBitmap);
+    ((b)localObject).DL();
+    localObject = drawableToBitmap((Drawable)localObject);
+    if (localObject != paramBitmap) {
+      paramBitmap.recycle();
+    }
+    AppMethodBeat.o(176005);
+    return localObject;
+  }
+  
+  public String key()
+  {
+    return "RoundedBitmap";
   }
 }
 

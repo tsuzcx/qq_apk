@@ -11,15 +11,21 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class CertifiedAccountRead$StGetPushListReq
   extends MessageMicro<StGetPushListReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "extInfo", "userId", "listNum", "from" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0) }, StGetPushListReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBInt32Field from = PBField.initInt32(0);
   public final PBUInt32Field listNum = PBField.initUInt32(0);
   public final PBStringField userId = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "extInfo", "userId", "listNum", "from" }, new Object[] { null, "", localInteger, localInteger }, StGetPushListReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetPushListReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import java.util.ArrayList;
 
 public class ezl
-  implements Runnable
+  extends Thread
 {
-  public ezl(BusinessHandler paramBusinessHandler, BusinessObserver paramBusinessObserver, int paramInt, Handler paramHandler, boolean paramBoolean, Object paramObject) {}
+  public ezl(CardHandler paramCardHandler, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.a();
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a.getManager(46);
+    Card localCard = localFriendsManager.a(str);
+    if (localCard != null)
+    {
+      localCard.iVoteIncrement = this.jdField_a_of_type_Int;
+      localFriendsManager.a(localCard);
+    }
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      CardHandler.a(str, this.jdField_a_of_type_JavaUtilArrayList);
+    }
   }
 }
 

@@ -1,175 +1,99 @@
 package com.tencent.mm.plugin.emojicapture.model.b;
 
-import a.f.a.a;
-import a.l.m;
-import a.y;
-import android.media.MediaCodec;
-import android.media.MediaCodec.Callback;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.u;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync;", "Lcom/tencent/mm/plugin/emojicapture/model/mix/IEmojiMixDecoder;", "videoPath", "", "videoDuration", "", "surface", "Landroid/view/Surface;", "(Ljava/lang/String;ILandroid/view/Surface;)V", "TAG", "codecCallback", "com/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync$codecCallback$1", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync$codecCallback$1;", "decoder", "Landroid/media/MediaCodec;", "decoderThread", "Landroid/os/HandlerThread;", "kotlin.jvm.PlatformType", "extractor", "Landroid/media/MediaExtractor;", "inputEos", "", "inputSampleTime", "", "mediaFormat", "Landroid/media/MediaFormat;", "mime", "pauseDecoderLock", "Ljava/lang/Object;", "getPauseDecoderLock", "()Ljava/lang/Object;", "init", "processDecodeBuffer", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "release", "sendDecoderEos", "setPauseDecode", "pause", "startDecode", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixer;", "", "videoPath", "", "emojiFrameRetriever", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "gifPath", "videoPlayRate", "", "removeBackground", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "outputGif", "timeEnter", "", "(Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;Ljava/lang/String;IZLcom/tencent/mm/sticker/StickerPack;ZJ)V", "getEmojiFrameRetriever", "()Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "frameCount", "gifEncoder", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixGifEncoder;", "getGifPath", "()Ljava/lang/String;", "mixPixelBuffer", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixEGLPixelBuffer;", "mixTime", "onMixFinish", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "", "startTick", "syncMgr", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MixFrameSyncMgr;", "getTimeEnter", "()J", "videoDecoder", "Lcom/tencent/mm/plugin/emojicapture/model/mix/IEmojiMixDecoder;", "finishMix", "mixVideoFrame", "start", "mixFinish", "Companion", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  extends l
 {
-  final String TAG;
-  private final Surface axw;
-  MediaExtractor cfO;
-  private String cfP;
-  MediaCodec eRD;
-  HandlerThread eSt;
-  private final int eVA;
-  final Object luN;
-  boolean luP;
-  long luQ;
-  private final j.a luR;
-  MediaFormat mediaFormat;
-  private final String videoPath;
+  public static final j.a yiq;
+  int frameCount;
+  private final long mnX;
+  long moe;
+  final String rBi;
+  final String videoPath;
+  final int yhS;
+  final com.tencent.mm.sticker.f yhU;
+  final boolean yhV;
+  final a yir;
+  final boolean yis;
+  private k yit;
+  com.tencent.mm.plugin.emojicapture.ui.b.c yiu;
+  com.tencent.mm.plugin.recordvideo.ui.editor.f yiv;
+  c yiw;
+  kotlin.g.a.b<? super Boolean, ah> yix;
+  private long yiy;
   
-  public j(String paramString, int paramInt, Surface paramSurface)
+  static
   {
-    AppMethodBeat.i(2696);
-    this.videoPath = paramString;
-    this.eVA = paramInt;
-    this.axw = paramSurface;
-    this.TAG = "MicroMsg.EmojiMixVideoDecoderAsync";
-    this.cfO = new MediaExtractor();
-    this.cfP = "";
-    this.eSt = com.tencent.mm.sdk.g.d.aqu("EmojiMixVideoDecoderAsync_decodeThread");
-    this.luN = new Object();
-    this.luR = new j.a(this);
-    try
+    AppMethodBeat.i(310);
+    yiq = new j.a((byte)0);
+    AppMethodBeat.o(310);
+  }
+  
+  public j(String paramString1, a parama, String paramString2, int paramInt, boolean paramBoolean1, com.tencent.mm.sticker.f paramf, boolean paramBoolean2, long paramLong)
+  {
+    AppMethodBeat.i(309);
+    this.videoPath = paramString1;
+    this.yir = parama;
+    this.rBi = paramString2;
+    this.yhS = paramInt;
+    this.yis = paramBoolean1;
+    this.yhU = paramf;
+    this.yhV = paramBoolean2;
+    this.mnX = paramLong;
+    AppMethodBeat.o(309);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    b(j paramj, boolean paramBoolean)
     {
-      ab.i(this.TAG, "create decoder with path: " + this.videoPath);
-      this.cfO.setDataSource(this.videoPath);
-      int i = this.cfO.getTrackCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramString = this.cfO.getTrackFormat(paramInt);
-        paramSurface = paramString.getString("mime");
-        a.f.b.j.p(paramSurface, "trackFormat.getString(MediaFormat.KEY_MIME)");
-        if (m.d((CharSequence)paramSurface, (CharSequence)"video") == true)
-        {
-          paramSurface = paramString.getString("mime");
-          a.f.b.j.p(paramSurface, "trackFormat.getString(MediaFormat.KEY_MIME)");
-          this.cfP = paramSurface;
-          this.mediaFormat = paramString;
-          ab.i(this.TAG, "find video format " + this.mediaFormat + ", mime: " + this.cfP);
-          this.cfO.selectTrack(paramInt);
-          AppMethodBeat.o(2696);
-          return;
-        }
-        paramInt += 1;
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ab.printErrStackTrace(this.TAG, (Throwable)paramString, "init create extractor error", new Object[0]);
-      AppMethodBeat.o(2696);
+      super();
     }
   }
   
-  public final void boK()
+  @Metadata(d1={""}, d2={"<anonymous>", "", "skipFrame", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
   {
-    AppMethodBeat.i(2695);
-    synchronized (this.luN)
+    c(j paramj)
     {
-      try
-      {
-        this.luN.notifyAll();
-        y localy = y.BMg;
-        AppMethodBeat.o(2695);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ab.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
-        }
-      }
+      super();
     }
   }
   
-  public final int init()
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    AppMethodBeat.i(2693);
-    if ((this.mediaFormat != null) && (!bo.isNullOrNil(this.cfP))) {
-      try
-      {
-        this.eRD = MediaCodec.createDecoderByType(this.cfP);
-        Object localObject = this.eRD;
-        if (localObject != null) {
-          ((MediaCodec)localObject).configure(this.mediaFormat, this.axw, null, 0);
-        }
-        if (com.tencent.mm.compatible.util.d.fv(23))
-        {
-          this.eSt.start();
-          localObject = this.eSt;
-          a.f.b.j.p(localObject, "decoderThread");
-          localObject = new Handler(((HandlerThread)localObject).getLooper());
-          MediaCodec localMediaCodec = this.eRD;
-          if (localMediaCodec != null) {
-            localMediaCodec.setCallback((MediaCodec.Callback)this.luR, (Handler)localObject);
-          }
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(2693);
-          return 0;
-          localObject = this.eRD;
-          if (localObject != null) {
-            ((MediaCodec)localObject).setCallback((MediaCodec.Callback)this.luR);
-          }
-        }
-        AppMethodBeat.o(2693);
-      }
-      catch (Exception localException)
-      {
-        ab.e(this.TAG, "init decoder error " + localException.getMessage());
-        AppMethodBeat.o(2693);
-        return -1;
-      }
+    d(j paramj)
+    {
+      super();
     }
-    return -1;
   }
   
-  public final void startDecode()
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    AppMethodBeat.i(2694);
-    if (this.eRD == null)
+    e(j paramj, com.tencent.mm.plugin.sight.base.b paramb)
     {
-      localObject = this.lvj;
-      if (localObject != null)
-      {
-        ((a)localObject).invoke();
-        AppMethodBeat.o(2694);
-        return;
-      }
-      AppMethodBeat.o(2694);
-      return;
+      super();
     }
-    Object localObject = this.eRD;
-    if (localObject != null)
-    {
-      ((MediaCodec)localObject).start();
-      AppMethodBeat.o(2694);
-      return;
-    }
-    AppMethodBeat.o(2694);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.j
  * JD-Core Version:    0.7.0.1
  */

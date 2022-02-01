@@ -19,8 +19,7 @@
             </RelativeLayout>
             <TextView android:textSize="@dimen/aio" android:textColor="@color/al3" android:ellipsize="end" android:layout_gravity="center" android:id="@id/dkb" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:lineSpacingExtra="0.0dip" />
         </LinearLayout>
-        <TextView android:textColor="@color/bp" android:id="@id/jn7" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g9_" />
+        <TextView android:textColor="@color/black" android:id="@id/jn7" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g9_" />
     </com.tencent.mobileqq.widget.RatioLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/dle" android:background="@color/kt" android:paddingLeft="@dimen/up" android:paddingRight="@dimen/up" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/v9" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="16.0sp" android:textColor="@android:color/white" android:id="@id/flv" android:background="@drawable/erq" android:paddingLeft="7.0dip" android:paddingTop="7.0dip" android:paddingRight="7.0dip" android:paddingBottom="13.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/fp3" android:layout_above="@id/l0b" android:layout_alignParentRight="true" />
 </merge>

@@ -17,7 +17,7 @@ import com.tencent.mobileqq.pic.ReportInfo;
 import com.tencent.mobileqq.transfile.PicFowardDbRecordData;
 import com.tencent.mobileqq.transfile.TranDbRecord.PicDbRecord;
 import com.tencent.mobileqq.utils.ActionMsgUtil;
-import fng;
+import fnf;
 import localpb.richMsg.RichMsg.ForwardExtra;
 import localpb.richMsg.RichMsg.PicRec;
 
@@ -25,7 +25,7 @@ public class MessageForPic
   extends ChatMessage
   implements Parcelable, LoggerInterface, PicUiInterface
 {
-  public static final Parcelable.Creator CREATOR = new fng();
+  public static final Parcelable.Creator CREATOR = new fnf();
   public static int defaultSuMsgId = -1;
   public long DSKey = 0L;
   public String SpeedInfo;

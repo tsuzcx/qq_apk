@@ -1,35 +1,38 @@
 package com.tencent.mobileqq.vas.wallpaper;
 
-import bdxb;
 import java.lang.ref.WeakReference;
 
 class WallpaperHelper$ReTryRunnable
   implements Runnable
 {
-  bdxb jdField_a_of_type_Bdxb;
-  WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<WallpaperHelper> a;
+  VipWallpaperService.WallpaperConfig b;
   
   public WallpaperHelper$ReTryRunnable(WallpaperHelper paramWallpaperHelper)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
+    this.a = new WeakReference(paramWallpaperHelper);
   }
   
-  public void a(bdxb parambdxb)
+  public void a(VipWallpaperService.WallpaperConfig paramWallpaperConfig)
   {
-    this.jdField_a_of_type_Bdxb = parambdxb;
+    this.b = paramWallpaperConfig;
   }
   
   public void run()
   {
-    WallpaperHelper localWallpaperHelper = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localWallpaperHelper != null) && (this.jdField_a_of_type_Bdxb != null)) {
-      WallpaperHelper.a(localWallpaperHelper, this.jdField_a_of_type_Bdxb, false);
+    WallpaperHelper localWallpaperHelper = (WallpaperHelper)this.a.get();
+    if (localWallpaperHelper != null)
+    {
+      VipWallpaperService.WallpaperConfig localWallpaperConfig = this.b;
+      if (localWallpaperConfig != null) {
+        WallpaperHelper.a(localWallpaperHelper, localWallpaperConfig, false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ReTryRunnable
  * JD-Core Version:    0.7.0.1
  */

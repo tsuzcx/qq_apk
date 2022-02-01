@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.f.c;
+import com.tencent.mm.plugin.game.d.c;
 import com.tencent.mm.plugin.game.model.a.a;
 import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMBaseActivity;
 
 @com.tencent.mm.ui.base.a(19)
@@ -16,34 +15,34 @@ public class GameDetailUI
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(111839);
+    AppMethodBeat.i(42009);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("game_app_id");
-    Object localObject = com.tencent.mm.plugin.game.model.a.cu(paramBundle, getIntent().getIntExtra("game_report_from_scene", 0));
-    if ((((a.a)localObject).bsY == 2) && (!bo.isNullOrNil(((a.a)localObject).url))) {
-      c.t(getBaseContext(), ((a.a)localObject).url, "game_center_detail");
+    Object localObject = com.tencent.mm.plugin.game.model.a.fw(paramBundle, getIntent().getIntExtra("game_report_from_scene", 0));
+    if ((((a.a)localObject).eQp == 2) && (!Util.isNullOrNil(((a.a)localObject).url))) {
+      c.I(getBaseContext(), ((a.a)localObject).url, "game_center_detail");
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(111839);
+      AppMethodBeat.o(42009);
       return;
-      int i = e.bGc();
+      int i = e.fGe();
       if (i == 2)
       {
-        c.l(this, paramBundle, 0);
+        c.m(this, paramBundle, 0);
       }
       else if (i == 1)
       {
-        c.h(this, getIntent().getExtras());
+        c.i(this, getIntent().getExtras());
       }
       else
       {
-        localObject = bo.hi(this);
-        if ((bo.isNullOrNil((String)localObject)) || (((String)localObject).toLowerCase().equals("cn"))) {
-          c.l(this, paramBundle, 0);
+        localObject = Util.getSimCountryCode(this);
+        if ((Util.isNullOrNil((String)localObject)) || (((String)localObject).toLowerCase().equals("cn"))) {
+          c.m(this, paramBundle, 0);
         } else {
-          c.h(this, getIntent().getExtras());
+          c.i(this, getIntent().getExtras());
         }
       }
     }
@@ -57,7 +56,7 @@ public class GameDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailUI
  * JD-Core Version:    0.7.0.1
  */

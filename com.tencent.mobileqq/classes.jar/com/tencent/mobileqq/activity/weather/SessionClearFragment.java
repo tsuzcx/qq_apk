@@ -1,20 +1,5 @@
 package com.tencent.mobileqq.activity.weather;
 
-import adpo;
-import agki;
-import agkj;
-import akgg;
-import akgh;
-import akgi;
-import akgj;
-import akgk;
-import akgl;
-import akgo;
-import akgp;
-import akgr;
-import alud;
-import ammf;
-import ammn;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -37,18 +22,27 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import ansn;
-import apkp;
-import bdhb;
-import bdhj;
-import bety;
-import blqh;
+import com.tencent.aelight.camera.qqstory.api.IAECaptureContext;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.PublicFragmentActivityCallBackInterface;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider.Stub;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.message.messageclean.CleanMessageItemInfo;
+import com.tencent.mobileqq.app.message.messageclean.MessageCleanManager;
+import com.tencent.mobileqq.armap.INonMainProcAvatarLoader;
+import com.tencent.mobileqq.avatar.api.IQQNonMainProcAvatarLoaderApi;
+import com.tencent.mobileqq.drawable.EmptyDrawable;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.util.BinderWarpper;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.URL;
@@ -57,39 +51,39 @@ import java.util.List;
 
 public class SessionClearFragment
   extends PublicBaseFragment
-  implements adpo
+  implements PublicFragmentActivityCallBackInterface
 {
-  private int jdField_a_of_type_Int = 0;
-  private agki jdField_a_of_type_Agki;
-  private akgr jdField_a_of_type_Akgr;
-  private ammn jdField_a_of_type_Ammn;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ansn jdField_a_of_type_Ansn;
-  private bety jdField_a_of_type_Bety;
-  private PeakAppInterface jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface;
-  List<ammf> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ansn jdField_b_of_type_Ansn;
-  private int jdField_c_of_type_Int;
-  private ansn jdField_c_of_type_Ansn;
+  List<CleanMessageItemInfo> a;
+  private RecyclerView b;
+  private LinearLayoutManager c;
+  private SessionClearFragment.SessionListAdapter d;
+  private Button e;
+  private TextView f;
+  private Button g;
+  private RelativeLayout h;
+  private IAIOImageProvider i;
+  private int j = 0;
+  private INonMainProcAvatarLoader k;
+  private INonMainProcAvatarLoader l;
+  private INonMainProcAvatarLoader m;
+  private PeakAppInterface n;
+  private MessageCleanManager o;
+  private SparseArray<URLDrawable> p = new SparseArray();
+  private int q = 0;
+  private QQProgressDialog r;
+  private View s;
+  private Bitmap t;
+  private Activity u;
+  private int v = 0;
+  private LinearLayout w;
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2)
   {
-    apkp localapkp = new apkp(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    EmptyDrawable localEmptyDrawable = new EmptyDrawable(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localapkp, localapkp);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localEmptyDrawable, localEmptyDrawable);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
         }
@@ -97,145 +91,188 @@ public class SessionClearFragment
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("SessionClearFragment", 2, "getCoverDrawable():  getDrawable Exception, coverUrl=" + paramString, localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getCoverDrawable():  getDrawable Exception, coverUrl=");
+          localStringBuilder.append(paramString);
+          QLog.e("SessionClearFragment", 2, localStringBuilder.toString(), localException);
         }
       }
     }
-    return localapkp;
+    return localEmptyDrawable;
   }
   
   private void a(int paramInt)
   {
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131714246));
+      this.e.setText(HardCodeUtil.a(2131911271));
+    } else {
+      this.e.setText(HardCodeUtil.a(2131911259));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(alud.a(2131714234));
-    }
+    this.j = paramInt;
   }
   
   private void a(Dialog paramDialog)
   {
-    if ((paramDialog != null) && (this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {}
-    try
+    if (paramDialog != null)
     {
-      paramDialog.show();
-      return;
-    }
-    catch (Throwable paramDialog)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SessionClearFragment", 2, "showDialogSafe exception: " + paramDialog.getMessage());
+      Object localObject = this.u;
+      if ((localObject != null) && (!((Activity)localObject).isFinishing())) {
+        try
+        {
+          paramDialog.show();
+          return;
+        }
+        catch (Throwable paramDialog)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("showDialogSafe exception: ");
+            ((StringBuilder)localObject).append(paramDialog.getMessage());
+            QLog.d("SessionClearFragment", 2, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
     }
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376472));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131376340));
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376901));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365082));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363414));
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365724));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Akgr = new akgr(this, new ArrayList());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Akgr);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new akgk(this));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new akgl(this));
-    paramView.findViewById(2131364337).setOnClickListener(new akgo(this));
+    this.b = ((RecyclerView)paramView.findViewById(2131445670));
+    this.e = ((Button)paramView.findViewById(2131445510));
+    this.j = 0;
+    this.f = ((TextView)paramView.findViewById(2131446186));
+    this.g = ((Button)paramView.findViewById(2131431708));
+    this.h = ((RelativeLayout)paramView.findViewById(2131429680));
+    this.c = new LinearLayoutManager(getBaseActivity());
+    this.w = ((LinearLayout)paramView.findViewById(2131432490));
+    this.b.setLayoutManager(this.c);
+    this.d = new SessionClearFragment.SessionListAdapter(this, new ArrayList());
+    this.b.setAdapter(this.d);
+    this.e.setOnClickListener(new SessionClearFragment.5(this));
+    this.g.setOnClickListener(new SessionClearFragment.6(this));
+    paramView.findViewById(2131430817).setOnClickListener(new SessionClearFragment.7(this));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2, ImageView paramImageView, int paramInt3)
   {
-    if (bdhb.b(paramString))
+    if (FileUtils.fileExistsAndNotEmpty(paramString))
     {
-      paramString = ShortVideoUtils.a(paramString);
+      paramString = ShortVideoUtils.getThumbUrl(paramString);
       if (paramString != null)
       {
         paramString = a(paramString.toString(), paramInt1, paramInt2);
         if ((paramString instanceof URLDrawable)) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt3, (URLDrawable)paramString);
+          this.p.put(paramInt3, (URLDrawable)paramString);
         }
         paramImageView.setImageDrawable(paramString);
+        return;
       }
+      QLog.d("SessionClearFragment", 2, "url  is null ");
     }
-    else
-    {
-      return;
-    }
-    QLog.d("SessionClearFragment", 2, "url  is null ");
   }
   
   private void c()
   {
+    this.n = ((PeakAppInterface)((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface());
+    if (this.i == null)
+    {
+      Object localObject = (BinderWarpper)this.u.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
+      if (localObject != null)
+      {
+        this.i = IAIOImageProvider.Stub.a(((BinderWarpper)localObject).a);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("IAIOImageProvider is ");
+          ((StringBuilder)localObject).append(this.i);
+          QLog.d("SessionClearFragment", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      else
+      {
+        throw new IllegalArgumentException("can't find Binder in Intent..");
+      }
+    }
+    this.n = ((PeakAppInterface)((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface());
+    this.o = ((MessageCleanManager)this.n.getManager(4));
+    this.o.a(new SessionClearFragment.1(this));
+    this.o.a(this.i);
+    this.k = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.u, 1);
+    this.k.a();
+    this.k.a(new SessionClearFragment.2(this));
+    this.l = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.u, 4);
+    this.l.a();
+    this.l.a(new SessionClearFragment.3(this));
+    this.m = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.u, 101);
+    this.m.a();
+    this.m.a(new SessionClearFragment.4(this));
+    this.o.b();
+    this.t = ImageUtil.k();
+  }
+  
+  private void d()
+  {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    if (i < this.jdField_a_of_type_Akgr.getItemCount())
+    int i1 = 0;
+    while (i1 < this.d.getItemCount())
     {
-      if (this.jdField_a_of_type_Akgr.a(i).a) {
-        localArrayList1.add(this.jdField_a_of_type_Akgr.a(i));
+      if (this.d.a(i1).g) {
+        localArrayList1.add(this.d.a(i1));
+      } else {
+        localArrayList2.add(this.d.a(i1));
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localArrayList2.add(this.jdField_a_of_type_Akgr.a(i));
-      }
+      i1 += 1;
     }
     if (localArrayList1.size() > 0)
     {
-      this.jdField_a_of_type_Ammn.a(localArrayList1);
-      if ((localArrayList2 != null) && (localArrayList2.size() != 0)) {
-        break label149;
+      this.o.a(localArrayList1);
+      if (localArrayList2.size() == 0)
+      {
+        this.w.setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      else
+      {
+        this.d.a(localArrayList2);
+        this.f.setVisibility(8);
+        a(0);
+      }
     }
-    for (;;)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691570, 0).b(getResources().getDimensionPixelSize(2131298914));
-      return;
-      label149:
-      this.jdField_a_of_type_Akgr.a(localArrayList2);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      a(0);
-    }
+    QQToast.makeText(this.u, 2, 2131888446, 0).show(getResources().getDimensionPixelSize(2131299920));
   }
   
-  public void a()
+  protected void a()
   {
-    if (this.jdField_a_of_type_Bety == null) {
-      this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131298914));
+    if (this.r == null) {
+      this.r = new QQProgressDialog(this.u, getResources().getDimensionPixelSize(2131299920));
     }
-    this.jdField_a_of_type_Bety.setCancelable(false);
-    this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bety.a(alud.a(2131714241));
-    this.jdField_a_of_type_Bety.show();
-    this.jdField_a_of_type_Bety.a(new akgp(this));
+    this.r.setCancelable(false);
+    this.r.setCanceledOnTouchOutside(false);
+    this.r.a(HardCodeUtil.a(2131911266));
+    this.r.show();
+    this.r.a(new SessionClearFragment.8(this));
   }
   
-  public void a(List<ammf> paramList)
+  public void a(List<CleanMessageItemInfo> paramList)
   {
-    this.jdField_a_of_type_Akgr.a(paramList);
+    this.d.a(paramList);
   }
   
   protected void b()
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.dismiss();
+    QQProgressDialog localQQProgressDialog = this.r;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
+      this.r.dismiss();
     }
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.u = paramActivity;
     if (QLog.isColorLevel()) {
       QLog.d("SessionClearFragment", 2, "onAttach");
     }
@@ -243,72 +280,65 @@ public class SessionClearFragment
   
   public void onBackPressed()
   {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onBackPressed");
+    }
+    this.u.finish();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().findViewById(16908290);
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onCreate");
+    }
+    this.s = this.u.getWindow().getDecorView().findViewById(16908290);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      paramBundle = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      int i = ImmersiveUtils.getStatusBarHeight(getActivity());
+      paramBundle = (LinearLayout.LayoutParams)this.s.getLayoutParams();
+      int i1 = ImmersiveUtils.getStatusBarHeight(getBaseActivity());
       if (paramBundle != null) {
-        paramBundle.setMargins(0, i, 0, 0);
+        paramBundle.setMargins(0, i1, 0, 0);
       }
-      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(0);
+      this.s.setSystemUiVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)blqh.a());
-    if (this.jdField_a_of_type_Agki == null)
-    {
-      paramBundle = (BinderWarpper)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
-      if (paramBundle == null) {
-        break label336;
-      }
-      this.jdField_a_of_type_Agki = agkj.a(paramBundle.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_Agki);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)blqh.a());
-    this.jdField_a_of_type_Ammn = ((ammn)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
-    this.jdField_a_of_type_Ammn.a(new akgg(this));
-    this.jdField_a_of_type_Ammn.a(this.jdField_a_of_type_Agki);
-    this.jdField_a_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 1);
-    this.jdField_a_of_type_Ansn.a();
-    this.jdField_a_of_type_Ansn.a(new akgh(this));
-    this.jdField_b_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 4);
-    this.jdField_b_of_type_Ansn.a();
-    this.jdField_b_of_type_Ansn.a(new akgi(this));
-    this.jdField_c_of_type_Ansn = new ansn(this.jdField_a_of_type_AndroidAppActivity, 101);
-    this.jdField_c_of_type_Ansn.a();
-    this.jdField_c_of_type_Ansn.a(new akgj(this));
-    this.jdField_a_of_type_Ammn.b();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bdhj.a();
-    return;
-    label336:
-    throw new IllegalArgumentException("can't find Binder in Intent..");
+    c();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562643, paramViewGroup, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onCreateView");
+    }
+    paramLayoutInflater = paramLayoutInflater.inflate(2131629279, paramViewGroup, false);
     a(paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Ammn.onDestroy();
-    this.jdField_a_of_type_Ansn.b();
-    this.jdField_b_of_type_Ansn.b();
-    this.jdField_c_of_type_Ansn.b();
-    if (this.jdField_a_of_type_Bety != null) {
-      this.jdField_a_of_type_Bety.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onDestroy");
     }
-    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.o.onDestroy();
+    this.k.c();
+    this.l.c();
+    this.m.c();
+    QQProgressDialog localQQProgressDialog = this.r;
+    if (localQQProgressDialog != null) {
+      localQQProgressDialog.dismiss();
+    }
+    this.u = null;
+  }
+  
+  public void onNewIntent(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onNewIntent");
+    }
+    c();
   }
 }
 

@@ -20,59 +20,63 @@ class gh$3
   
   public void handleMessage(Message paramMessage)
   {
+    int j = paramMessage.what;
     int i = -1;
-    switch (paramMessage.what)
+    if (j != 1)
     {
-    }
-    int j;
-    do
-    {
-      do
+      if (j != 2) {
+        return;
+      }
+      paramMessage = (ConchPushInfo)paramMessage.obj;
+      j = i;
+      if (paramMessage != null)
       {
-        do
-        {
-          do
-          {
-            return;
-            paramMessage = (ConchPushInfo)paramMessage.obj;
-            j = i;
-            if (paramMessage != null)
-            {
-              j = i;
-              if (paramMessage.bs != null) {
-                j = paramMessage.bs.bi;
-              }
-            }
-          } while (j <= 0);
-          paramMessage = (a)gh.b(this.sj).get(j);
-        } while (paramMessage == null);
-        try
-        {
-          paramMessage.update(j);
-          return;
-        }
-        catch (Throwable paramMessage)
-        {
-          return;
-        }
-        paramMessage = (ConchPushInfo)paramMessage.obj;
         j = i;
-        if (paramMessage != null)
-        {
-          j = i;
-          if (paramMessage.bs != null) {
-            j = paramMessage.bs.bi;
-          }
+        if (paramMessage.bs != null) {
+          j = paramMessage.bs.bi;
         }
-      } while (j <= 0);
+      }
+      if (j <= 0) {
+        return;
+      }
       paramMessage = ConchPushInfo.a(paramMessage);
-    } while (TextUtils.isEmpty(paramMessage));
-    gh.d(this.sj).b("id_" + j, paramMessage);
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        e locale = gh.d(this.sj);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("id_");
+        localStringBuilder.append(j);
+        locale.b(localStringBuilder.toString(), paramMessage);
+      }
+    }
+    else
+    {
+      paramMessage = (ConchPushInfo)paramMessage.obj;
+      j = i;
+      if (paramMessage != null)
+      {
+        j = i;
+        if (paramMessage.bs != null) {
+          j = paramMessage.bs.bi;
+        }
+      }
+      if (j <= 0) {
+        return;
+      }
+      paramMessage = (a)gh.b(this.sj).get(j);
+      if (paramMessage == null) {}
+    }
+    try
+    {
+      paramMessage.update(j);
+      return;
+    }
+    catch (Throwable paramMessage) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gh.3
  * JD-Core Version:    0.7.0.1
  */

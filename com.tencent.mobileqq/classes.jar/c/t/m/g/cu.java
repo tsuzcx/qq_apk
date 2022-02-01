@@ -6,30 +6,33 @@ public final class cu
 {
   public static boolean a = false;
   public static boolean b = false;
-  public static boolean c;
+  public static boolean c = false;
   public static boolean d = false;
   public static boolean e = true;
   public static boolean f = false;
   public static boolean g = false;
   public static boolean h = false;
-  public static volatile dt i = null;
+  public static volatile dt i;
   public static df j = df.a;
   
   public static final int a(String paramString)
   {
-    if ((paramString.startsWith("fc4")) || (paramString.startsWith("dc4"))) {
-      return 4;
-    }
-    if ((paramString.startsWith("fc3")) || (paramString.startsWith("dc3"))) {
+    if ((!paramString.startsWith("fc4")) && (!paramString.startsWith("dc4")))
+    {
+      if ((!paramString.startsWith("fc3")) && (!paramString.startsWith("dc3")))
+      {
+        if ((!paramString.startsWith("fc2")) && (!paramString.startsWith("dc2")))
+        {
+          if ((!paramString.startsWith("fc1")) && (!paramString.startsWith("fc")) && (!paramString.startsWith("dc"))) {
+            return -1;
+          }
+          return 1;
+        }
+        return 2;
+      }
       return 3;
     }
-    if ((paramString.startsWith("fc2")) || (paramString.startsWith("dc2"))) {
-      return 2;
-    }
-    if ((paramString.startsWith("fc1")) || (paramString.startsWith("fc")) || (paramString.startsWith("dc"))) {
-      return 1;
-    }
-    return -1;
+    return 4;
   }
   
   public static final String a()
@@ -39,14 +42,17 @@ public final class cu
   
   public static final String a(int paramInt)
   {
-    String str = "https://analytics.map.qq.com/?sf";
-    if (paramInt > 1) {
-      str = "https://analytics.map.qq.com/?sf" + paramInt;
+    if (paramInt > 1)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://analytics.map.qq.com/?sf");
+      localStringBuilder.append(paramInt);
+      return localStringBuilder.toString();
     }
-    while (paramInt == 1) {
-      return str;
+    if (paramInt != 1) {
+      return "";
     }
-    return "";
+    return "https://analytics.map.qq.com/?sf";
   }
   
   public static HashMap<String, String> b()
@@ -72,7 +78,7 @@ public final class cu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cu
  * JD-Core Version:    0.7.0.1
  */

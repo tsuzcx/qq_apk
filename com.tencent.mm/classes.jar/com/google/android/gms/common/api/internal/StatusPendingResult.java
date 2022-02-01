@@ -1,11 +1,9 @@
 package com.google.android.gms.common.api.internal;
 
 import android.os.Looper;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
 
-@KeepForSdk
 public class StatusPendingResult
   extends BasePendingResult<Status>
 {
@@ -22,7 +20,7 @@ public class StatusPendingResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.StatusPendingResult
  * JD-Core Version:    0.7.0.1
  */

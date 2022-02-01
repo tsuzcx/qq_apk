@@ -1,30 +1,29 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgnw;
-import bgnx;
-import bgow;
-import bgrb;
-import bgrm;
-import com.tencent.qqmini.sdk.core.model.InnerShareData;
+import com.tencent.qqmini.sdk.core.utils.DialogUtil;
+import com.tencent.qqmini.sdk.launcher.model.InnerShareData;
+import com.tencent.qqmini.sdk.widget.MiniCustomDialog;
+import com.tencent.qqmini.sdk.widget.MiniToast;
 
-public class ShareManager$1$1
+class ShareManager$1$1
   implements Runnable
 {
-  public ShareManager$1$1(bgnw parambgnw, long paramLong, String paramString) {}
+  ShareManager$1$1(ShareManager.1 param1, long paramLong, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Long == -100070004L) || (this.jdField_a_of_type_Long == -1000710003L))
+    long l = this.val$finalErrCode;
+    if ((l != -100070004L) && (l != -1000710003L))
     {
-      bgow.a(this.jdField_a_of_type_Bgnw.a.a, 230, "分享失败", this.jdField_a_of_type_JavaLangString, new bgnx(this), null).show();
+      MiniToast.makeText(this.this$1.val$shareData.fromActivity, 1, "小程序分享失败，参数错误", 1).show();
       return;
     }
-    bgrm.a(this.jdField_a_of_type_Bgnw.a.a, 1, "小程序分享失败，参数错误", 1).a();
+    DialogUtil.createCustomDialog(this.this$1.val$shareData.fromActivity, 230, "分享失败", this.val$finalErrMsg, new ShareManager.1.1.1(this), null).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ShareManager.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,18 @@ public class PluginRuntime
   
   public static PluginRuntime getRuntime()
   {
-    AppRuntime localAppRuntime = MobileQQ.getMobileQQ().waitAppRuntime(null);
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof PluginRuntime))) {
-      return (PluginRuntime)localAppRuntime;
+    Object localObject1 = MobileQQ.getMobileQQ();
+    Object localObject2 = null;
+    AppRuntime localAppRuntime = ((MobileQQ)localObject1).waitAppRuntime(null);
+    localObject1 = localObject2;
+    if (localAppRuntime != null)
+    {
+      localObject1 = localObject2;
+      if ((localAppRuntime instanceof PluginRuntime)) {
+        localObject1 = (PluginRuntime)localAppRuntime;
+      }
     }
-    return null;
+    return localObject1;
   }
   
   public static void handleCrash(Throwable paramThrowable, String paramString, Context paramContext)
@@ -36,31 +43,32 @@ public class PluginRuntime
     paramContext.sendBroadcast(localIntent);
   }
   
-  public Manager getManager(int paramInt)
+  public BaseApplication getApp()
   {
-    Object localObject1 = super.getManager(paramInt);
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = localObject1;
-      return localObject2;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      addManager(paramInt, (Manager)localObject1);
-      return localObject1;
-      localObject1 = new WtloginManagerImpl(this);
-    }
+    return null;
   }
   
-  public void onCreate(Bundle paramBundle)
+  public String getCurrentAccountUin()
+  {
+    return getAccount();
+  }
+  
+  public Manager getManager(int paramInt)
+  {
+    Object localObject = super.getManager(paramInt);
+    if (localObject != null) {
+      return localObject;
+    }
+    if (paramInt == 1) {
+      localObject = new WtloginManagerImpl(this);
+    }
+    if (localObject != null) {
+      addManager(paramInt, (Manager)localObject);
+    }
+    return localObject;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (this.parentRuntime == null) {
@@ -70,22 +78,28 @@ public class PluginRuntime
   
   public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    if (this.mReportor != null) {
-      this.mReportor.reportClickEvent(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    PluginRuntime.IClickEventReportor localIClickEventReportor = this.mReportor;
+    if (localIClickEventReportor != null) {
+      localIClickEventReportor.reportClickEvent(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
     }
   }
   
   public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    if (this.mReportor != null) {
-      this.mReportor.reportClickEventRuntime(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+    PluginRuntime.IClickEventReportor localIClickEventReportor = this.mReportor;
+    if (localIClickEventReportor != null) {
+      localIClickEventReportor.reportClickEventRuntime(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
     }
   }
   
   public void sendAppDataIncerment(String paramString, String[] paramArrayOfString, long paramLong)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("PluginRuntime.sendAppDataIncerment:" + paramArrayOfString);
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginRuntime.sendAppDataIncerment:");
+      localStringBuilder.append(paramArrayOfString);
+      DebugHelper.log(localStringBuilder.toString());
     }
     super.sendAppDataIncermentMsg(paramString, paramArrayOfString, paramLong);
   }
@@ -97,7 +111,7 @@ public class PluginRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginRuntime
  * JD-Core Version:    0.7.0.1
  */

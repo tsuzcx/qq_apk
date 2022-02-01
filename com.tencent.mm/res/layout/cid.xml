@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dq" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/fz" android:background="@drawable/b9" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f7" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_quit_webview_icon" android:contentDescription="@string/k4" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/c7o" android:background="@color/c4" android:layout_width="@dimen/bo" android:layout_height="@dimen/i9" />
+        <View android:id="@id/goo" android:layout_width="@dimen/k" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/fo" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/cp" android:src="@raw/actionbar_icon_dark_more" android:contentDescription="@string/a0g" />
+        <TextView android:textColor="@color/c9" android:gravity="center" android:id="@id/fq" android:background="@drawable/b9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/cp" android:text="send" />
+    </LinearLayout>
+    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ko8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/fp" android:layout_toRightOf="@id/fz" android:layout_centerInParent="true" style="@style/lb" />
+</RelativeLayout>

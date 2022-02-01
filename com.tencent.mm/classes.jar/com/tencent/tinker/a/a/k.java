@@ -1,10 +1,11 @@
 package com.tencent.tinker.a.a;
 
+import com.tencent.tinker.a.a.b.a;
 import com.tencent.tinker.a.a.b.c;
 import java.util.Arrays;
 
 public final class k
-  extends t.a.a<k>
+  extends s.a.a<k>
 {
   public byte[] data;
   
@@ -16,7 +17,7 @@ public final class k
   
   public final int b(k paramk)
   {
-    return c.o(this.data, paramk.data);
+    return c.s(this.data, paramk.data);
   }
   
   public final boolean equals(Object paramObject)
@@ -35,7 +36,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.k
  * JD-Core Version:    0.7.0.1
  */

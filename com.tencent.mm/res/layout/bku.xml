@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:gravity="center_horizontal" android:id="@id/g30" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/eau" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/g2z" android:paddingBottom="@dimen/bx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/aym" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d1" android:text="@string/h6p" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <View android:id="@id/fmz" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/cv" android:layout_height="1.0dip" android:layout_marginRight="@dimen/df" app:layout_constraintBottom_toBottomOf="@id/aym" app:layout_constraintRight_toLeftOf="@id/aym" app:layout_constraintTop_toTopOf="@id/aym" />
+        <View android:id="@id/itu" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/cv" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/df" app:layout_constraintBottom_toBottomOf="@id/aym" app:layout_constraintLeft_toRightOf="@id/aym" app:layout_constraintTop_toTopOf="@id/aym" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/Link_100" android:id="@id/eqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/h67" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/aym" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -4,23 +4,24 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.plugin.comm.c.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.k;
 
 public class ShortcutBroadCastReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(79060);
+    AppMethodBeat.i(151431);
     if (paramIntent == null)
     {
-      ab.e("MicroMsg.ShortcutBroadCastReceiver", "alvinluo shortcut receiver intent is null");
-      AppMethodBeat.o(79060);
+      Log.e("MicroMsg.ShortcutBroadCastReceiver", "alvinluo shortcut receiver intent is null");
+      AppMethodBeat.o(151431);
       return;
     }
-    h.bO(paramContext, paramContext.getString(2131296540));
-    AppMethodBeat.o(79060);
+    k.cZ(paramContext, paramContext.getString(c.h.app_added));
+    AppMethodBeat.o(151431);
   }
 }
 

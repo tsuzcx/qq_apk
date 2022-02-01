@@ -6,26 +6,25 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.LruCache;
 import android.widget.TextView;
+import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem.UserID;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.IEventReceiver;
-import umc;
-import uxh;
-import vdj;
-import wxe;
-import xqq;
-import xws;
 
 public class StoryNickNameView
   extends TextView
   implements IEventReceiver
 {
-  private LruCache<String, QQUserUIItem> jdField_a_of_type_AndroidUtilLruCache;
-  private String jdField_a_of_type_JavaLangString;
-  private xws jdField_a_of_type_Xws;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private String a;
+  private StoryNickNameView.UserInfoReceiver b;
+  private boolean c;
+  private LruCache<String, QQUserUIItem> d;
+  private boolean e = false;
+  private String f;
   
   public StoryNickNameView(Context paramContext)
   {
@@ -46,71 +45,79 @@ public class StoryNickNameView
   
   private QQUserUIItem a(String paramString)
   {
-    return (QQUserUIItem)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+    return (QQUserUIItem)this.d.get(paramString);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Xws = new xws(this);
-    this.jdField_a_of_type_Boolean = false;
+    this.b = new StoryNickNameView.UserInfoReceiver(this);
+    this.c = false;
   }
   
   private void b()
   {
-    wxe.d("Q.qqstoryStoryNickNameView", "requestUserInfoAsync : " + this.jdField_a_of_type_JavaLangString);
-    uxh localuxh = new uxh("", this.jdField_a_of_type_JavaLangString);
-    vdj localvdj = new vdj();
-    localvdj.jdField_a_of_type_JavaLangString = "Q.qqstoryStoryNickNameView";
-    localvdj.a(1, localuxh, this.jdField_a_of_type_JavaLangString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("requestUserInfoAsync : ");
+    ((StringBuilder)localObject).append(this.a);
+    SLog.d("Q.qqstoryStoryNickNameView", ((StringBuilder)localObject).toString());
+    localObject = new QQUserUIItem.UserID("", this.a);
+    GetUserInfoHandler localGetUserInfoHandler = new GetUserInfoHandler();
+    localGetUserInfoHandler.f = "Q.qqstoryStoryNickNameView";
+    localGetUserInfoHandler.a(1, (QQUserUIItem.UserID)localObject, this.a);
   }
   
   private void b(QQUserUIItem paramQQUserUIItem)
   {
-    this.jdField_a_of_type_AndroidUtilLruCache.put(paramQQUserUIItem.getUnionId(), paramQQUserUIItem);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.d.put(paramQQUserUIItem.getUnionId(), paramQQUserUIItem);
   }
   
   public void a(LruCache<String, QQUserUIItem> paramLruCache)
   {
-    xqq.a(paramLruCache);
-    this.jdField_a_of_type_AndroidUtilLruCache = paramLruCache;
+    AssertUtils.checkNotNull(paramLruCache);
+    this.d = paramLruCache;
   }
   
-  public void a(QQUserUIItem paramQQUserUIItem)
+  protected void a(QQUserUIItem paramQQUserUIItem)
   {
-    xqq.a(paramQQUserUIItem);
-    wxe.d("Q.qqstoryStoryNickNameView", "onInfoRespond " + this.jdField_a_of_type_JavaLangString + " name = " + paramQQUserUIItem.getDisplayName());
-    String str = paramQQUserUIItem.getDisplayName();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      str = String.format(this.jdField_b_of_type_JavaLangString, new Object[] { paramQQUserUIItem.getDisplayName() });
+    AssertUtils.checkNotNull(paramQQUserUIItem);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onInfoRespond ");
+    ((StringBuilder)localObject).append(this.a);
+    ((StringBuilder)localObject).append(" name = ");
+    ((StringBuilder)localObject).append(paramQQUserUIItem.getDisplayName());
+    SLog.d("Q.qqstoryStoryNickNameView", ((StringBuilder)localObject).toString());
+    localObject = paramQQUserUIItem.getDisplayName();
+    if (!TextUtils.isEmpty(this.f)) {
+      localObject = String.format(this.f, new Object[] { paramQQUserUIItem.getDisplayName() });
     }
-    setText(str);
+    setText((CharSequence)localObject);
+  }
+  
+  public String getUnionId()
+  {
+    return this.a;
   }
   
   public boolean isValidate()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.e;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    umc.a().registerSubscriber(this.jdField_a_of_type_Xws);
+    StoryDispatcher.a().registerSubscriber(this.b);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Xws);
+    StoryDispatcher.a().unRegisterSubscriber(this.b);
   }
   
   public void setFormat(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
   public void setUnionId(String paramString)
@@ -118,35 +125,36 @@ public class StoryNickNameView
     if (TextUtils.isEmpty(paramString))
     {
       setVisibility(8);
-      this.jdField_a_of_type_JavaLangString = "";
-      this.jdField_b_of_type_Boolean = false;
+      this.a = "";
+      this.e = false;
       return;
     }
-    if (this.jdField_a_of_type_AndroidUtilLruCache != null) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (this.d != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    AssertUtils.assertTrue(bool, "it must prepare this view before setUnionId!!");
+    setVisibility(0);
+    this.e = true;
+    if (TextUtils.equals(this.a, paramString)) {
+      return;
+    }
+    this.a = paramString;
+    setText("");
+    paramString = a(this.a);
+    if (paramString == null)
     {
-      xqq.a(bool, "it must prepare this view before setUnionId!!");
-      setVisibility(0);
-      this.jdField_b_of_type_Boolean = true;
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
-        break;
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      setText("");
-      paramString = a(this.jdField_a_of_type_JavaLangString);
-      if (paramString != null) {
-        break label95;
-      }
       b();
       return;
     }
-    label95:
     a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryNickNameView
  * JD-Core Version:    0.7.0.1
  */

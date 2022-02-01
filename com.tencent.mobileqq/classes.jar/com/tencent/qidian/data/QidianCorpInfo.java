@@ -1,15 +1,15 @@
 package com.tencent.qidian.data;
 
 import android.text.TextUtils;
-import awge;
-import awhs;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qidian.proto.mobileqq_qidian.CorpInfo;
 import java.util.Arrays;
 
 public class QidianCorpInfo
-  extends awge
+  extends Entity
 {
   public String corpAddr = "";
   public String corpCall = "";
@@ -19,20 +19,21 @@ public class QidianCorpInfo
   public String corpIntro = "";
   public String corpLogo = "";
   public String corpName = "";
-  @awhs
+  @unique
   public String corpUin = "";
   public byte[] infoByte;
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while (paramObject.getClass() != getClass());
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
     paramObject = (QidianCorpInfo)paramObject;
     return Arrays.equals(this.infoByte, paramObject.infoByte);
   }
@@ -123,7 +124,7 @@ public class QidianCorpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.data.QidianCorpInfo
  * JD-Core Version:    0.7.0.1
  */

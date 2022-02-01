@@ -7,12 +7,12 @@ public final class R
   extends j
   implements Cloneable
 {
-  private static Map g = new HashMap();
+  private static Map<String, String> g = new HashMap();
   public long a = 0L;
   public byte b = 0;
   public String c = "";
   public String d = "";
-  public Map e = null;
+  public Map<String, String> e = null;
   private String f = "";
   
   static
@@ -34,17 +34,21 @@ public final class R
   {
     parami.a(this.a, 0);
     parami.a(this.b, 1);
-    if (this.c != null) {
-      parami.a(this.c, 2);
+    Object localObject = this.c;
+    if (localObject != null) {
+      parami.a((String)localObject, 2);
     }
-    if (this.d != null) {
-      parami.a(this.d, 3);
+    localObject = this.d;
+    if (localObject != null) {
+      parami.a((String)localObject, 3);
     }
-    if (this.f != null) {
-      parami.a(this.f, 4);
+    localObject = this.f;
+    if (localObject != null) {
+      parami.a((String)localObject, 4);
     }
-    if (this.e != null) {
-      parami.a(this.e, 5);
+    localObject = this.e;
+    if (localObject != null) {
+      parami.a((Map)localObject, 5);
     }
   }
   

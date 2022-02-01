@@ -29,12 +29,14 @@ final class c
     }
     catch (Exception paramBundle)
     {
+      StringBuilder localStringBuilder;
       paramBundle.printStackTrace();
-      return;
     }
     paramBundle = (GetMiniAppRsp)paramBundle.getSerializable("rsp");
-    if (paramBundle != null) {
-      if (paramBundle.err_code == 0) {
+    if (paramBundle != null)
+    {
+      if (paramBundle.err_code == 0)
+      {
         if ((paramBundle.apkg_config_list != null) && (paramBundle.apkg_config_list.size() > 0) && (paramBundle.apkg_config_list.get(0) != null) && (((ApkgConfig)paramBundle.apkg_config_list.get(0)).isValid()))
         {
           ApkgConfigManager.access$000(this.c).a(paramBundle.apkg_config_list);
@@ -42,34 +44,38 @@ final class c
             this.a.onResult(0, new MiniAppConfig((ApkgConfig)paramBundle.apkg_config_list.get(0), this.c.getBaseLibInfo()), null, null);
           }
         }
+        else if (this.a != null)
+        {
+          this.a.onResult(-1, null, null, "rsp list not contain valid elem");
+        }
       }
-    }
-    while (QLog.isColorLevel())
-    {
-      QLog.d("ApkgConfigManager", 2, "getNewestConfig GetMiniAppRsp|" + paramBundle);
-      return;
-      if (this.a != null)
+      else
       {
-        this.a.onResult(-1, null, null, "rsp list not contain valid elem");
-        continue;
         if (paramBundle.isRemoveLocalConfig()) {
           ApkgConfigManager.access$000(this.c).a(this.b);
         }
-        if (this.a != null)
-        {
+        if (this.a != null) {
           this.a.onResult(paramBundle.err_code, null, paramBundle.getErrTips(), null);
-          continue;
-          if (this.a != null) {
-            this.a.onResult(-1, null, null, "rsp is null");
-          }
         }
       }
     }
+    else if (this.a != null) {
+      this.a.onResult(-1, null, null, "rsp is null");
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNewestConfig GetMiniAppRsp|");
+      localStringBuilder.append(paramBundle);
+      QLog.d("ApkgConfigManager", 2, localStringBuilder.toString());
+      return;
+    }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.c
  * JD-Core Version:    0.7.0.1
  */

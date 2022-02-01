@@ -17,9 +17,10 @@ final class ExtractorMediaPeriod$ExtractorHolder
   
   public void release()
   {
-    if (this.extractor != null)
+    Extractor localExtractor = this.extractor;
+    if (localExtractor != null)
     {
-      this.extractor.release();
+      localExtractor.release();
       this.extractor = null;
     }
   }
@@ -30,97 +31,110 @@ final class ExtractorMediaPeriod$ExtractorHolder
     // Byte code:
     //   0: aload_0
     //   1: getfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
-    //   4: ifnull +8 -> 12
-    //   7: aload_0
-    //   8: getfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
-    //   11: areturn
-    //   12: aload_0
-    //   13: getfield 17	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractors	[Lcom/google/android/exoplayer2/extractor/Extractor;
-    //   16: astore 5
-    //   18: aload 5
-    //   20: arraylength
-    //   21: istore 4
-    //   23: iconst_0
-    //   24: istore_3
-    //   25: iload_3
-    //   26: iload 4
-    //   28: if_icmpge +32 -> 60
-    //   31: aload 5
-    //   33: iload_3
-    //   34: aaload
-    //   35: astore 6
-    //   37: aload 6
-    //   39: aload_1
-    //   40: invokeinterface 35 2 0
-    //   45: ifeq +61 -> 106
-    //   48: aload_0
-    //   49: aload 6
-    //   51: putfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
-    //   54: aload_1
-    //   55: invokeinterface 40 1 0
-    //   60: aload_0
-    //   61: getfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
-    //   64: ifnonnull +75 -> 139
-    //   67: new 42	com/google/android/exoplayer2/source/UnrecognizedInputFormatException
-    //   70: dup
-    //   71: new 44	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   78: ldc 47
-    //   80: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: aload_0
-    //   84: getfield 17	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractors	[Lcom/google/android/exoplayer2/extractor/Extractor;
-    //   87: invokestatic 57	com/google/android/exoplayer2/util/Util:getCommaDelimitedSimpleClassNames	([Ljava/lang/Object;)Ljava/lang/String;
-    //   90: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: ldc 59
-    //   95: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: aload_2
-    //   102: invokespecial 66	com/google/android/exoplayer2/source/UnrecognizedInputFormatException:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
-    //   105: athrow
-    //   106: aload_1
-    //   107: invokeinterface 40 1 0
-    //   112: iload_3
-    //   113: iconst_1
-    //   114: iadd
-    //   115: istore_3
-    //   116: goto -91 -> 25
-    //   119: astore 6
-    //   121: aload_1
-    //   122: invokeinterface 40 1 0
-    //   127: goto -15 -> 112
-    //   130: astore_2
-    //   131: aload_1
-    //   132: invokeinterface 40 1 0
-    //   137: aload_2
-    //   138: athrow
-    //   139: aload_0
-    //   140: getfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
-    //   143: aload_0
-    //   144: getfield 19	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractorOutput	Lcom/google/android/exoplayer2/extractor/ExtractorOutput;
-    //   147: invokeinterface 70 2 0
-    //   152: aload_0
-    //   153: getfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
-    //   156: areturn
+    //   4: astore 5
+    //   6: aload 5
+    //   8: ifnull +6 -> 14
+    //   11: aload 5
+    //   13: areturn
+    //   14: aload_0
+    //   15: getfield 17	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractors	[Lcom/google/android/exoplayer2/extractor/Extractor;
+    //   18: astore 5
+    //   20: aload 5
+    //   22: arraylength
+    //   23: istore 4
+    //   25: iconst_0
+    //   26: istore_3
+    //   27: iload_3
+    //   28: iload 4
+    //   30: if_icmpge +57 -> 87
+    //   33: aload 5
+    //   35: iload_3
+    //   36: aaload
+    //   37: astore 6
+    //   39: aload 6
+    //   41: aload_1
+    //   42: invokeinterface 35 2 0
+    //   47: ifeq +27 -> 74
+    //   50: aload_0
+    //   51: aload 6
+    //   53: putfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
+    //   56: aload_1
+    //   57: invokeinterface 40 1 0
+    //   62: goto +25 -> 87
+    //   65: astore_2
+    //   66: aload_1
+    //   67: invokeinterface 40 1 0
+    //   72: aload_2
+    //   73: athrow
+    //   74: aload_1
+    //   75: invokeinterface 40 1 0
+    //   80: iload_3
+    //   81: iconst_1
+    //   82: iadd
+    //   83: istore_3
+    //   84: goto -57 -> 27
+    //   87: aload_0
+    //   88: getfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
+    //   91: astore_1
+    //   92: aload_1
+    //   93: ifnull +18 -> 111
+    //   96: aload_1
+    //   97: aload_0
+    //   98: getfield 19	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractorOutput	Lcom/google/android/exoplayer2/extractor/ExtractorOutput;
+    //   101: invokeinterface 44 2 0
+    //   106: aload_0
+    //   107: getfield 23	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractor	Lcom/google/android/exoplayer2/extractor/Extractor;
+    //   110: areturn
+    //   111: new 46	java/lang/StringBuilder
+    //   114: dup
+    //   115: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   118: astore_1
+    //   119: aload_1
+    //   120: ldc 49
+    //   122: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: pop
+    //   126: aload_1
+    //   127: aload_0
+    //   128: getfield 17	com/google/android/exoplayer2/source/ExtractorMediaPeriod$ExtractorHolder:extractors	[Lcom/google/android/exoplayer2/extractor/Extractor;
+    //   131: invokestatic 59	com/google/android/exoplayer2/util/Util:getCommaDelimitedSimpleClassNames	([Ljava/lang/Object;)Ljava/lang/String;
+    //   134: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: pop
+    //   138: aload_1
+    //   139: ldc 61
+    //   141: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: pop
+    //   145: new 63	com/google/android/exoplayer2/source/UnrecognizedInputFormatException
+    //   148: dup
+    //   149: aload_1
+    //   150: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: aload_2
+    //   154: invokespecial 70	com/google/android/exoplayer2/source/UnrecognizedInputFormatException:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   157: astore_1
+    //   158: goto +5 -> 163
+    //   161: aload_1
+    //   162: athrow
+    //   163: goto -2 -> 161
+    //   166: astore 6
+    //   168: goto -94 -> 74
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	157	0	this	ExtractorHolder
-    //   0	157	1	paramExtractorInput	com.google.android.exoplayer2.extractor.ExtractorInput
-    //   0	157	2	paramUri	android.net.Uri
-    //   24	92	3	i	int
-    //   21	8	4	j	int
-    //   16	16	5	arrayOfExtractor	Extractor[]
-    //   35	15	6	localExtractor	Extractor
-    //   119	1	6	localEOFException	java.io.EOFException
+    //   0	171	0	this	ExtractorHolder
+    //   0	171	1	paramExtractorInput	com.google.android.exoplayer2.extractor.ExtractorInput
+    //   0	171	2	paramUri	android.net.Uri
+    //   26	58	3	i	int
+    //   23	8	4	j	int
+    //   4	30	5	localObject1	Object
+    //   37	15	6	localObject2	Object
+    //   166	1	6	localEOFException	java.io.EOFException
     // Exception table:
     //   from	to	target	type
-    //   37	54	119	java/io/EOFException
-    //   37	54	130	finally
+    //   39	56	65	finally
+    //   39	56	166	java/io/EOFException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ExtractorMediaPeriod.ExtractorHolder
  * JD-Core Version:    0.7.0.1
  */

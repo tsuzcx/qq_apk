@@ -2,7 +2,7 @@ package com.tencent.mm.blink;
 
 public abstract interface FirstScreenFrameLayout$a
 {
-  public abstract void HZ();
+  public abstract void aKi();
 }
 
 

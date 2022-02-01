@@ -7,9 +7,13 @@ public abstract interface ISPlayerVideoView
 {
   public abstract void addViewCallBack(ISPlayerVideoView.IVideoViewCallBack paramIVideoViewCallBack);
   
+  public abstract void changeSurfaceObject(SPlayerVideoView.SurfaceObject paramSurfaceObject);
+  
   public abstract boolean disableViewCallback();
   
   public abstract boolean enableViewCallback();
+  
+  public abstract String getLogTag();
   
   public abstract View getRenderView();
   
@@ -17,13 +21,15 @@ public abstract interface ISPlayerVideoView
   
   public abstract int getRenderViewWidth();
   
-  public abstract String getSerialNO();
-  
   public abstract Surface getSurface();
   
   public abstract boolean isSurfaceReady();
   
+  public abstract boolean isTextureView();
+  
   public abstract void removeViewCallBack(ISPlayerVideoView.IVideoViewCallBack paramIVideoViewCallBack);
+  
+  public abstract void setDegree(int paramInt);
   
   public abstract void setFixedSize(int paramInt1, int paramInt2);
   
@@ -33,7 +39,7 @@ public abstract interface ISPlayerVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.view.ISPlayerVideoView
  * JD-Core Version:    0.7.0.1
  */

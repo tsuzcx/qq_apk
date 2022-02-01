@@ -9,10 +9,10 @@ public final class BroadcastOneShow
 {
   public String bcShowId = "";
   public String bcShowName = "";
-  public long endTime;
-  public int singerId;
+  public long endTime = 0L;
+  public int singerId = 0;
   public String singerName = "";
-  public long startTime;
+  public long startTime = 0L;
   
   public BroadcastOneShow() {}
   
@@ -38,23 +38,26 @@ public final class BroadcastOneShow
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bcShowId != null) {
-      paramJceOutputStream.write(this.bcShowId, 0);
+    String str = this.bcShowId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.bcShowName != null) {
-      paramJceOutputStream.write(this.bcShowName, 1);
+    str = this.bcShowName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.startTime, 2);
     paramJceOutputStream.write(this.endTime, 3);
     paramJceOutputStream.write(this.singerId, 4);
-    if (this.singerName != null) {
-      paramJceOutputStream.write(this.singerName, 5);
+    str = this.singerName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_NEXTRADIO_QZONEBGMUSIC.BroadcastOneShow
  * JD-Core Version:    0.7.0.1
  */

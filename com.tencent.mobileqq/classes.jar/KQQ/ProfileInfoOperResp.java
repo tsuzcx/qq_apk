@@ -9,9 +9,9 @@ public final class ProfileInfoOperResp
   extends JceStruct
 {
   static ArrayList<ProfileInfoResp> cache_vecInfo;
-  public byte cResult;
-  public long uin;
-  public ArrayList<ProfileInfoResp> vecInfo;
+  public byte cResult = 0;
+  public long uin = 0L;
+  public ArrayList<ProfileInfoResp> vecInfo = null;
   
   public ProfileInfoOperResp() {}
   
@@ -44,7 +44,7 @@ public final class ProfileInfoOperResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfileInfoOperResp
  * JD-Core Version:    0.7.0.1
  */

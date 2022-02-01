@@ -10,8 +10,8 @@ public final class GetCategoryDetailReq
   extends JceStruct
 {
   static Map<Integer, GetCategoryDetailReqItem> cache_req_item_map = new HashMap();
-  public long host;
-  public Map<Integer, GetCategoryDetailReqItem> req_item_map;
+  public long host = 0L;
+  public Map<Integer, GetCategoryDetailReqItem> req_item_map = null;
   
   static
   {
@@ -36,14 +36,15 @@ public final class GetCategoryDetailReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.host, 0);
-    if (this.req_item_map != null) {
-      paramJceOutputStream.write(this.req_item_map, 1);
+    Map localMap = this.req_item_map;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetCategoryDetailReq
  * JD-Core Version:    0.7.0.1
  */

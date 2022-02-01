@@ -20,44 +20,43 @@ public class b<F, S>
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof b)) {}
-    do
-    {
+    if (!(paramObject instanceof b)) {
       return false;
-      paramObject = (b)paramObject;
-    } while ((!Objects.equals(paramObject.a, this.a)) || (!Objects.equals(paramObject.b, this.b)));
-    return true;
+    }
+    paramObject = (b)paramObject;
+    return (Objects.equals(paramObject.a, this.a)) && (Objects.equals(paramObject.b, this.b));
   }
   
   public int hashCode()
   {
+    Object localObject = this.a;
     int j = 0;
     int i;
-    if (this.a == null)
-    {
+    if (localObject == null) {
       i = 0;
-      if (this.b != null) {
-        break label33;
-      }
+    } else {
+      i = localObject.hashCode();
     }
-    for (;;)
-    {
-      return i ^ j;
-      i = this.a.hashCode();
-      break;
-      label33:
-      j = this.b.hashCode();
+    localObject = this.b;
+    if (localObject != null) {
+      j = localObject.hashCode();
     }
+    return i ^ j;
   }
   
   public String toString()
   {
-    return "Pair{" + String.valueOf(this.a) + " " + String.valueOf(this.b) + "}";
+    StringBuilder localStringBuilder = new StringBuilder("Pair{");
+    localStringBuilder.append(String.valueOf(this.a));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(String.valueOf(this.b));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.dlsdk.yybutil.apkchannel.v2.b
  * JD-Core Version:    0.7.0.1
  */

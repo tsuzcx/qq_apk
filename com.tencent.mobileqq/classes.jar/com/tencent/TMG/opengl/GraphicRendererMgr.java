@@ -11,33 +11,33 @@ public class GraphicRendererMgr
   
   public static GraphicRendererMgr getInstance()
   {
-    if (sGraphicRenderMgr == null) {}
-    try
-    {
-      if (sGraphicRenderMgr == null)
+    if (sGraphicRenderMgr == null) {
+      try
       {
-        loadSo();
-        if (mIsSoLoaded) {
-          sGraphicRenderMgr = new GraphicRendererMgr();
+        if (sGraphicRenderMgr == null)
+        {
+          loadSo();
+          if (mIsSoLoaded) {
+            sGraphicRenderMgr = new GraphicRendererMgr();
+          }
         }
       }
-      return sGraphicRenderMgr;
+      finally {}
     }
-    finally {}
+    return sGraphicRenderMgr;
   }
   
   private static void loadSo()
   {
-    if (!mIsSoLoaded) {
-      if ((!SoUtil.loadSo("stlport_shared")) || (!SoUtil.loadSo("qav_graphics"))) {
-        break label29;
-      }
-    }
-    label29:
-    for (boolean bool = true;; bool = false)
+    if (!mIsSoLoaded)
     {
+      boolean bool;
+      if ((SoUtil.loadSo("stlport_shared")) && (SoUtil.loadSo("qav_graphics"))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       mIsSoLoaded = bool;
-      return;
     }
   }
   
@@ -55,7 +55,7 @@ public class GraphicRendererMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.GraphicRendererMgr
  * JD-Core Version:    0.7.0.1
  */

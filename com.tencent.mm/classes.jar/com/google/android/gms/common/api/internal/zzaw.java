@@ -17,15 +17,15 @@ final class zzaw
   
   public final boolean isConnected()
   {
-    AppMethodBeat.i(60809);
+    AppMethodBeat.i(11301);
     boolean bool = this.zzit.isConnected();
-    AppMethodBeat.o(60809);
+    AppMethodBeat.o(11301);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzaw
  * JD-Core Version:    0.7.0.1
  */

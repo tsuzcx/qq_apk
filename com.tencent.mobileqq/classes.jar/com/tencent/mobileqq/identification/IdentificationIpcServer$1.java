@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.identification;
 
 import android.os.Bundle;
-import asxn;
 
-public class IdentificationIpcServer$1
+class IdentificationIpcServer$1
   implements Runnable
 {
-  public IdentificationIpcServer$1(asxn paramasxn, Bundle paramBundle) {}
+  IdentificationIpcServer$1(IdentificationIpcServer paramIdentificationIpcServer, Bundle paramBundle) {}
   
   public void run()
   {
-    asxn.a(this.this$0, this.a);
+    IdentificationIpcServer.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationIpcServer.1
  * JD-Core Version:    0.7.0.1
  */

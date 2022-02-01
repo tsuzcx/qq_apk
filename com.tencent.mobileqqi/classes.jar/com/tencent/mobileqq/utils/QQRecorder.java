@@ -12,7 +12,7 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
-import hdt;
+import hds;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class QQRecorder
   private NoiseSuppression jdField_a_of_type_ComTencentMobileqqUtilsNoiseSuppression = null;
   private PTTAgcWrapper jdField_a_of_type_ComTencentMobileqqUtilsPTTAgcWrapper = null;
   private QQRecorder.OnQQRecorderListener jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$OnQQRecorderListener;
-  public hdt a;
+  public hds a;
   private PipedInputStream jdField_a_of_type_JavaIoPipedInputStream = null;
   private PipedOutputStream jdField_a_of_type_JavaIoPipedOutputStream = null;
   private String jdField_b_of_type_JavaLangString;
@@ -452,7 +452,7 @@ public class QQRecorder
   
   public int a()
   {
-    if (this.jdField_a_of_type_Hdt == null) {
+    if (this.jdField_a_of_type_Hds == null) {
       return 0;
     }
     return this.n;
@@ -476,12 +476,12 @@ public class QQRecorder
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Hdt + ",time is:" + System.currentTimeMillis());
+      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Hds + ",time is:" + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Hdt == null)
+    if (this.jdField_a_of_type_Hds == null)
     {
-      this.jdField_a_of_type_Hdt = new hdt(this, paramString);
-      this.jdField_a_of_type_Hdt.start();
+      this.jdField_a_of_type_Hds = new hds(this, paramString);
+      this.jdField_a_of_type_Hds.start();
       c = paramString;
     }
     while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$OnQQRecorderListener == null) {
@@ -552,22 +552,22 @@ public class QQRecorder
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Hdt != null;
+    return this.jdField_a_of_type_Hds != null;
   }
   
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Hdt + ",time is:" + System.currentTimeMillis());
+      QLog.d("ChatActivity", 2, "thread is:" + this.jdField_a_of_type_Hds + ",time is:" + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Hdt != null) {
-      this.jdField_a_of_type_Hdt.a = false;
+    if (this.jdField_a_of_type_Hds != null) {
+      this.jdField_a_of_type_Hds.a = false;
     }
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Hdt == null) || (!this.jdField_a_of_type_Hdt.a);
+    return (this.jdField_a_of_type_Hds == null) || (!this.jdField_a_of_type_Hds.a);
   }
 }
 

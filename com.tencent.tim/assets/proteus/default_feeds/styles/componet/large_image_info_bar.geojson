@@ -1,0 +1,265 @@
+{
+  "view_type":"container",
+  "layout_type":"layout_relative",
+  "margin_top":"-2",
+  "margin_left":"2",
+  "height":{
+    "type":"relative",
+    "value":"30"
+  },
+  "width":{
+    "type":"relative",
+    "value":"359"
+  },
+  "subviews":[
+    {
+      "view_type":"ReadInJoyAdBanner",
+      "view_id":"id_view_AdBanner",
+      "margin_left":"-8",
+      "margin_top":"-3.5",
+      "height":{
+        "type":"relative",
+        "value":"30"
+      },
+      "width":{
+        "type":"relative",
+        "value":"375"
+      },
+      "attributes":{
+        "setFeedsModel:":"-1"
+      }
+    },
+    {
+      "view_type": "container",
+      "layout_type":"layout_linear",
+      "direction": "horizontal",
+      "height": {
+        "type":"relative",
+        "value":"30"
+      },
+      "width": {
+        "type": "match_parent"
+      },
+      "subviews": [
+        {
+          "view_type":"UILabel",
+          "view_id":"id_info_status",
+          "margin_left":"6",
+          "height":{
+            "type":"relative",
+            "value":"30"
+          },
+          "width":{
+            "type":"wrap_content"
+
+          },
+          "attributes":{
+            "setFrameString:":"-1",
+            "setText:":"-1",
+            "setTextColorString:":"-1",
+            "setFontSizeString:":"12",
+            "setBorderColorString:": "-1",
+            "setNumberOfLinesString:":"1"
+          }
+        },
+        {
+          "view_type":"ReadInjoyAsynImageView",
+          "view_id":"id_icon_awesome",
+          "margin_left":"6",
+          "margin_top":"7.5",
+          "height":{
+            "type":"relative",
+            "value":"15"
+          },
+          "width":{
+            "type":"relative",
+            "value":"45"
+          },
+          "attributes":{
+            "setImageWithURLString:lineup:":["$icon_awesome_url","1"],
+            "setWHRate:widthBenchmark:":["$icon_awesome_wh_rate", "NO"]
+          },
+          "event_type":"cmd_awesome_click"
+        },
+        {
+          "view_type":"ReadInjoyAsynImageView",
+          "view_id":"id_icon_v",
+          "margin_left": "6",
+          "margin_top": "9",
+          "margin_right": "-4",
+          "height":{
+            "type":"relative",
+            "value":"12"
+          },
+          "width":{
+            "type":"relative",
+            "value":"12"
+          },
+          "attributes":{
+            "setImageWithURLString:lineup:":["$icon_v_url","1"]
+          }
+        },
+        {
+          "view_type":"UILabel",
+          "view_id":"id_info_source",
+          "margin_left":"6",
+          "height":{
+            "type":"relative",
+            "value":"30"
+          },
+          "width":{
+            "type":"wrap_content"
+          },
+          "attributes":{
+            "setText:":"-1",
+            "setTextColorString:":"#A6A6A6",
+            "setFontSizeString:":"12",
+            "setNumberOfLinesString:":"-1"
+          }
+        },
+        {
+          "view_type": "UIImageView",
+          "view_id": "id_img_family_icon",
+          "align_parent_center_vertical": "YES",
+          "right_of_view":"id_info_source",
+          "margin_left":"5.5",
+          "height": {
+            "type": "relative",
+            "value":"18"
+          },
+          "width": {
+            "type": "absolutely",
+            "value":"84.5"
+          },
+          "attributes": {
+            "loadImageWithPath:": "$family_icon_url",
+            "setWHRate:widthBenchmark:": ["$family_icon_wh_rate", "NO"],
+            "setAttatchInfo:":"$family_jump_schema",
+            "setScaleType:": "1"
+          },
+
+          "event_type":"cmd_family_comment_icon_click"
+        },
+        {
+          "view_type": "UILabel",
+          "view_id": "id_comment_num",
+          "margin_left": "6",
+          "height": {
+            "type": "relative",
+            "value": "30"
+          },
+          "width": {
+            "type": "wrap_content"
+          },
+          "attributes": {
+            "setText:": "-1",
+            "setTextColorString:": "#A6A6A6",
+            "setFontSizeString:": "12",
+            "setNumberOfLinesString:": "-1"
+          }
+        }
+      ]
+    },
+    {
+      "view_type": "UIView",
+      "layout_type": "layout_relative",
+      "view_id": "id_ad_dislike_button",
+      "align_parent_right": "YES",
+      "align_parent_center_vertical": "YES",
+      "margin_right": "-11",
+      "event_type": "cmd_dislike_click",
+      "height": {
+        "type": "relative",
+        "value": "30"
+      },
+      "width": {
+        "type": "relative",
+        "value": "40"
+      },
+      "subviews": [
+        {
+          "view_type": "UIImageView",
+          "view_id": "id_ad_dislike_img",
+          "default_visible": "YES",
+          "align_parent_center": "YES",
+          "height": {
+            "type": "relative",
+            "value": "12"
+          },
+          "width": {
+            "type": "relative",
+            "value": "12"
+          },
+          "attributes": {
+            "loadImageWithPath:": "feeds_dislike"
+          }
+        }
+      ]
+    },
+    {
+      "view_type":"UILabel",
+      "view_id":"id_view_app",
+      "align_parent_right":"YES",
+
+      "margin_right":"25",
+      "align_parent_top":"YES",
+
+      "margin_top":"-3.5",
+
+      "height":{
+        "type":"relative",
+        "value":"30"
+      },
+      "width":{
+        "type":"wrap_content"
+
+      },
+      "attributes":{
+
+        "setFrameString:":"-1",
+        "setText:":"-1",
+        "setTextColorString:":"#12B7F5",
+        "setFontSizeString:":"14",
+
+        "setTextAlignmentString:":"1",
+
+        "setNumberOfLinesString:":"1"
+      }
+    },
+    {
+      "view_type": "UIView",
+      "layout_type": "layout_relative",
+      "view_id": "id_dislike_button",
+      "align_parent_right": "YES",
+      "margin_right": "-12",
+      "event_type": "cmd_dislike_click",
+      "height": {
+        "type": "relative",
+        "value": "30"
+      },
+      "width": {
+        "type": "relative",
+        "value": "40"
+      },
+      "subviews": [
+        {
+          "view_type": "UIImageView",
+          "view_id": "id_dislike_img",
+          "default_visible": "YES",
+          "align_parent_center": "YES",
+          "height": {
+            "type": "relative",
+            "value": "12"
+          },
+          "width": {
+            "type": "relative",
+            "value": "12"
+          },
+          "attributes": {
+            "loadImageWithPath:": "feeds_dislike"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
 public class DraftSummaryInfo
+  implements DraftSummaryInfoInterface
 {
   private String atInfoStr;
   private String summary;

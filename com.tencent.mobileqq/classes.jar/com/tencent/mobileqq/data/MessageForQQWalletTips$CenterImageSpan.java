@@ -12,7 +12,7 @@ import android.text.style.ImageSpan;
 public class MessageForQQWalletTips$CenterImageSpan
   extends ImageSpan
 {
-  private int size;
+  private int size = 0;
   
   public MessageForQQWalletTips$CenterImageSpan(Context paramContext, int paramInt)
   {
@@ -33,8 +33,9 @@ public class MessageForQQWalletTips$CenterImageSpan
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
     paramCharSequence = getDrawable();
-    if (this.size > 0) {
-      paramCharSequence.setBounds(0, 0, this.size, this.size);
+    paramInt1 = this.size;
+    if (paramInt1 > 0) {
+      paramCharSequence.setBounds(0, 0, paramInt1, paramInt1);
     }
     paramCanvas.save();
     paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
@@ -46,23 +47,25 @@ public class MessageForQQWalletTips$CenterImageSpan
   {
     Drawable localDrawable = getDrawable();
     paramCharSequence = localDrawable.getBounds();
-    if (this.size > 0)
+    paramInt1 = this.size;
+    if (paramInt1 > 0)
     {
-      localDrawable.setBounds(0, 0, this.size, this.size);
+      localDrawable.setBounds(0, 0, paramInt1, paramInt1);
       paramCharSequence = localDrawable.getBounds();
     }
     if (paramFontMetricsInt != null)
     {
       paramPaint = paramPaint.getFontMetricsInt();
-      paramInt2 = paramPaint.bottom - paramPaint.top;
-      int i = paramCharSequence.bottom - paramCharSequence.top;
-      paramInt1 = i / 2 - paramInt2 / 4;
-      i /= 2;
-      paramInt2 = paramInt2 / 4 + i;
-      paramFontMetricsInt.ascent = (-paramInt2);
-      paramFontMetricsInt.top = (-paramInt2);
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.descent = paramInt1;
+      paramInt2 = paramPaint.bottom;
+      int i = paramPaint.top;
+      paramInt1 = (paramCharSequence.bottom - paramCharSequence.top) / 2;
+      i = (paramInt2 - i) / 4;
+      paramInt2 = paramInt1 - i;
+      paramInt1 = -(paramInt1 + i);
+      paramFontMetricsInt.ascent = paramInt1;
+      paramFontMetricsInt.top = paramInt1;
+      paramFontMetricsInt.bottom = paramInt2;
+      paramFontMetricsInt.descent = paramInt2;
     }
     return paramCharSequence.right;
   }

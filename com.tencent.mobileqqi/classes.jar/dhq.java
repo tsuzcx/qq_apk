@@ -1,7 +1,7 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class dhq
   implements DialogInterface.OnClickListener
@@ -10,13 +10,10 @@ public class dhq
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
-      this.a.b = true;
-      SendMultiPictureHelper.a(this.a);
-      this.a.b();
-    }
+    this.a.b = true;
+    SendMultiPictureHelper.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

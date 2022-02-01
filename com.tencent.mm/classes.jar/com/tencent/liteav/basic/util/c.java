@@ -1,91 +1,58 @@
 package com.tencent.liteav.basic.util;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import android.os.SystemClock;
+import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.TimeUnit;
 
 public class c
 {
-  private Handler a;
-  private Looper b;
-  private boolean c;
-  private Thread d;
+  private final String a;
+  private final int b;
+  private int c;
+  private int d;
+  private long e;
   
-  public c(String paramString)
+  public c(String paramString, int paramInt)
   {
-    AppMethodBeat.i(66041);
-    paramString = new HandlerThread(paramString);
-    this.c = true;
-    paramString.start();
-    this.b = paramString.getLooper();
-    this.a = new Handler(this.b);
-    this.d = paramString;
-    AppMethodBeat.o(66041);
+    AppMethodBeat.i(230094);
+    this.a = paramString;
+    this.b = ((int)Math.max(paramInt, TimeUnit.SECONDS.toMillis(1L)));
+    b();
+    AppMethodBeat.o(230094);
   }
   
-  public void a(Runnable paramRunnable)
+  public void a()
   {
-    AppMethodBeat.i(66043);
-    boolean[] arrayOfBoolean = new boolean[1];
-    if (Thread.currentThread().equals(this.d))
+    AppMethodBeat.i(230099);
+    this.c += 1;
+    long l = SystemClock.elapsedRealtime();
+    if (this.e == 0L)
     {
-      paramRunnable.run();
-      AppMethodBeat.o(66043);
+      this.e = SystemClock.elapsedRealtime();
+      AppMethodBeat.o(230099);
       return;
     }
-    Handler localHandler = this.a;
-    arrayOfBoolean[0] = false;
-    try
+    if (l - this.e >= this.b)
     {
-      this.a.post(new c.1(this, paramRunnable, arrayOfBoolean));
-      for (;;)
-      {
-        int i = arrayOfBoolean[0];
-        if (i != 0) {
-          break;
-        }
-        try
-        {
-          this.a.wait();
-        }
-        catch (Exception paramRunnable) {}
-      }
-      return;
+      float f = (this.c - this.d) * 1000.0F / (float)(l - this.e);
+      TXCLog.i("FPSMeter", "meter name: %s fps: %.2f", new Object[] { this.a, Float.valueOf(f) });
+      this.e = l;
+      this.d = this.c;
     }
-    finally
-    {
-      AppMethodBeat.o(66043);
-    }
+    AppMethodBeat.o(230099);
   }
   
-  public void a(Runnable paramRunnable, long paramLong)
+  public void b()
   {
-    AppMethodBeat.i(146633);
-    this.a.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(146633);
-  }
-  
-  public void b(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(66044);
-    this.a.post(paramRunnable);
-    AppMethodBeat.o(66044);
-  }
-  
-  protected void finalize()
-  {
-    AppMethodBeat.i(66042);
-    if (this.c) {
-      this.a.getLooper().quit();
-    }
-    super.finalize();
-    AppMethodBeat.o(66042);
+    this.c = 0;
+    this.d = 0;
+    this.e = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.util.c
  * JD-Core Version:    0.7.0.1
  */

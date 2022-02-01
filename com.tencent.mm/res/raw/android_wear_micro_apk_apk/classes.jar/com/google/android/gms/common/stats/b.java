@@ -10,20 +10,20 @@ public final class b
   static void a(WakeLockEvent paramWakeLockEvent, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramWakeLockEvent.Hc);
+    c.c(paramParcel, 1, paramWakeLockEvent.IR);
     c.a(paramParcel, 2, paramWakeLockEvent.getTimeMillis());
-    c.a(paramParcel, 4, paramWakeLockEvent.hG());
-    c.c(paramParcel, 5, paramWakeLockEvent.hJ());
-    c.a(paramParcel, paramWakeLockEvent.hK());
-    c.a(paramParcel, 8, paramWakeLockEvent.hM());
-    c.a(paramParcel, 10, paramWakeLockEvent.hH());
+    c.a(paramParcel, 4, paramWakeLockEvent.hQ());
+    c.c(paramParcel, 5, paramWakeLockEvent.hT());
+    c.a(paramParcel, paramWakeLockEvent.hU());
+    c.a(paramParcel, 8, paramWakeLockEvent.hW());
+    c.a(paramParcel, 10, paramWakeLockEvent.hR());
     c.c(paramParcel, 11, paramWakeLockEvent.getEventType());
-    c.a(paramParcel, 12, paramWakeLockEvent.hL());
-    c.a(paramParcel, 13, paramWakeLockEvent.hO());
-    c.c(paramParcel, 14, paramWakeLockEvent.hN());
-    c.a(paramParcel, paramWakeLockEvent.hP());
-    c.a(paramParcel, 16, paramWakeLockEvent.hQ());
-    c.a(paramParcel, 17, paramWakeLockEvent.hI());
+    c.a(paramParcel, 12, paramWakeLockEvent.hV());
+    c.a(paramParcel, 13, paramWakeLockEvent.hY());
+    c.c(paramParcel, 14, paramWakeLockEvent.hX());
+    c.a(paramParcel, paramWakeLockEvent.hZ());
+    c.a(paramParcel, 16, paramWakeLockEvent.ia());
+    c.a(paramParcel, 17, paramWakeLockEvent.hS());
     c.v(paramParcel, i);
   }
 }

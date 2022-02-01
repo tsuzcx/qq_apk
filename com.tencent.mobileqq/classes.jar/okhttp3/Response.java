@@ -72,23 +72,33 @@ public final class Response
   
   public List<Challenge> challenges()
   {
-    if (this.code == 401) {}
-    for (String str = "WWW-Authenticate";; str = "Proxy-Authenticate")
+    int i = this.code;
+    String str;
+    if (i == 401)
     {
-      return HttpHeaders.parseChallenges(headers(), str);
-      if (this.code != 407) {
-        break;
-      }
+      str = "WWW-Authenticate";
     }
+    else
+    {
+      if (i != 407) {
+        break label37;
+      }
+      str = "Proxy-Authenticate";
+    }
+    return HttpHeaders.parseChallenges(headers(), str);
+    label37:
     return Collections.emptyList();
   }
   
   public void close()
   {
-    if (this.body == null) {
-      throw new IllegalStateException("response is not eligible for a body and must not be closed");
+    ResponseBody localResponseBody = this.body;
+    if (localResponseBody != null)
+    {
+      localResponseBody.close();
+      return;
     }
-    this.body.close();
+    throw new IllegalStateException("response is not eligible for a body and must not be closed");
   }
   
   public int code()
@@ -113,7 +123,7 @@ public final class Response
   {
     paramString1 = this.headers.get(paramString1);
     if (paramString1 != null) {
-      paramString2 = paramString1;
+      return paramString1;
     }
     return paramString2;
   }
@@ -130,20 +140,21 @@ public final class Response
   
   public boolean isRedirect()
   {
-    switch (this.code)
-    {
-    case 304: 
-    case 305: 
-    case 306: 
-    default: 
-      return false;
+    int i = this.code;
+    if ((i != 307) && (i != 308)) {
+      switch (i)
+      {
+      default: 
+        return false;
+      }
     }
     return true;
   }
   
   public boolean isSuccessful()
   {
-    return (this.code >= 200) && (this.code < 300);
+    int i = this.code;
+    return (i >= 200) && (i < 300);
   }
   
   public String message()
@@ -166,18 +177,15 @@ public final class Response
   {
     Object localObject = this.body.source();
     ((BufferedSource)localObject).request(paramLong);
-    localObject = ((BufferedSource)localObject).buffer().clone();
-    if (((Buffer)localObject).size() > paramLong)
+    Buffer localBuffer = ((BufferedSource)localObject).buffer().clone();
+    localObject = localBuffer;
+    if (localBuffer.size() > paramLong)
     {
-      Buffer localBuffer = new Buffer();
-      localBuffer.write((Buffer)localObject, paramLong);
-      ((Buffer)localObject).clear();
-      localObject = localBuffer;
+      localObject = new Buffer();
+      ((Buffer)localObject).write(localBuffer, paramLong);
+      localBuffer.clear();
     }
-    for (;;)
-    {
-      return ResponseBody.create(this.body.contentType(), ((Buffer)localObject).size(), (BufferedSource)localObject);
-    }
+    return ResponseBody.create(this.body.contentType(), ((Buffer)localObject).size(), (BufferedSource)localObject);
   }
   
   @Nullable
@@ -208,12 +216,22 @@ public final class Response
   
   public String toString()
   {
-    return "Response{protocol=" + this.protocol + ", code=" + this.code + ", message=" + this.message + ", url=" + this.request.url() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Response{protocol=");
+    localStringBuilder.append(this.protocol);
+    localStringBuilder.append(", code=");
+    localStringBuilder.append(this.code);
+    localStringBuilder.append(", message=");
+    localStringBuilder.append(this.message);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.request.url());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Response
  * JD-Core Version:    0.7.0.1
  */

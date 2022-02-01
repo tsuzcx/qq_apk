@@ -1,19 +1,18 @@
 package cooperation.troop_homework.jsp;
 
-import bkdc;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
-public class TroopHWFileDownloadManager$3
+class TroopHWFileDownloadManager$3
   implements Runnable
 {
   public void run()
   {
-    bkdc.a(this.this$0).cancelDownloadTask(this.a);
+    TroopHWFileDownloadManager.a(this.this$0).cancelDownloadTask(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWFileDownloadManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,6 @@ import android.widget.ListView;
 public class ExpandListView
   extends ListView
 {
-  public ExpandListView(Context paramContext)
-  {
-    super(paramContext);
-  }
-  
   public ExpandListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);

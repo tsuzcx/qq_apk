@@ -5,134 +5,176 @@ import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.n;
-import com.tencent.mm.plugin.fav.a.n.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.e.a;
+import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.fav.a.o;
+import com.tencent.mm.plugin.fav.a.o.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.aa;
 
 public class FavChatVoiceView
   extends TextView
-  implements n.a
+  implements o.a
 {
+  private o Aee;
+  private boolean Uz;
   private Context context;
-  private int cve;
   private int duration;
-  private boolean isRunning;
-  private n muE;
-  private AlphaAnimation mvO;
-  private AnimationDrawable mvP;
+  private int hIY;
   private String path;
+  private AlphaAnimation xCM;
+  private AnimationDrawable xCN;
   
   public FavChatVoiceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(73938);
-    this.isRunning = false;
+    AppMethodBeat.i(106623);
+    this.Uz = false;
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    bxr();
-    AppMethodBeat.o(73938);
+    bTa();
+    AppMethodBeat.o(106623);
   }
   
   public FavChatVoiceView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(73939);
-    this.isRunning = false;
+    AppMethodBeat.i(106624);
+    this.Uz = false;
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    bxr();
-    AppMethodBeat.o(73939);
+    bTa();
+    AppMethodBeat.o(106624);
   }
   
-  private void bxr()
+  private void bTa()
   {
-    AppMethodBeat.i(73940);
-    this.mvO = new AlphaAnimation(0.1F, 1.0F);
-    this.mvO.setDuration(1000L);
-    this.mvO.setRepeatCount(-1);
-    this.mvO.setRepeatMode(2);
-    this.mvP = new a();
-    Drawable localDrawable = getResources().getDrawable(2131231098);
+    AppMethodBeat.i(106625);
+    this.xCM = new AlphaAnimation(0.1F, 1.0F);
+    this.xCM.setDuration(1000L);
+    this.xCM.setRepeatCount(-1);
+    this.xCM.setRepeatMode(2);
+    this.xCN = new com.tencent.mm.ui.g.a();
+    Drawable localDrawable = getResources().getDrawable(q.h.chatfrom_voice_playing_new_f1);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.mvP.addFrame(localDrawable, 300);
-    localDrawable = getResources().getDrawable(2131231099);
+    this.xCN.addFrame(localDrawable, 300);
+    localDrawable = getResources().getDrawable(q.h.chatfrom_voice_playing_new_f2);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.mvP.addFrame(localDrawable, 300);
-    localDrawable = getResources().getDrawable(2131231100);
+    this.xCN.addFrame(localDrawable, 300);
+    localDrawable = getResources().getDrawable(q.h.chatfrom_voice_playing_new_f3);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.mvP.addFrame(localDrawable, 300);
-    this.mvP.setOneShot(false);
-    this.mvP.setVisible(true, true);
-    AppMethodBeat.o(73940);
+    this.xCN.addFrame(localDrawable, 300);
+    this.xCN.setOneShot(false);
+    this.xCN.setVisible(true, true);
+    AppMethodBeat.o(106625);
   }
   
-  public final void bK(String paramString, int paramInt)
+  public final void M(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(73945);
+    AppMethodBeat.i(106627);
+    this.path = Util.nullAs(paramString1, "");
+    this.hIY = paramInt;
+    setText(paramString2);
+    AppMethodBeat.o(106627);
+  }
+  
+  public final void es(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(106630);
     if (!this.path.equals(paramString)) {
       stopPlay();
     }
-    AppMethodBeat.o(73945);
+    AppMethodBeat.o(106630);
   }
   
   public final void onFinish()
   {
-    AppMethodBeat.i(73946);
+    AppMethodBeat.i(106631);
     stopPlay();
-    AppMethodBeat.o(73946);
+    AppMethodBeat.o(106631);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(73941);
+    AppMethodBeat.i(106626);
     super.onFinishInflate();
-    setOnClickListener(new FavChatVoiceView.1(this));
-    AppMethodBeat.o(73941);
+    setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(106622);
+        Object localObject = new b();
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/fav/ui/FavChatVoiceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+        String str = FavChatVoiceView.a(FavChatVoiceView.this);
+        if (FavChatVoiceView.b(FavChatVoiceView.this).dxE()) {}
+        for (localObject = "true";; localObject = "false")
+        {
+          Log.i("MicroMsg.FavChatVoiceView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, FavChatVoiceView.b(FavChatVoiceView.this).path });
+          if ((!com.tencent.mm.n.a.dm(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.n.a.dl(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.n.a.dp(FavChatVoiceView.c(FavChatVoiceView.this)))) {
+            break;
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/FavChatVoiceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(106622);
+          return;
+        }
+        if ((!e.aPU()) && (!Util.isNullOrNil(FavChatVoiceView.a(FavChatVoiceView.this))))
+        {
+          aa.j(paramAnonymousView.getContext(), null);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/FavChatVoiceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(106622);
+          return;
+        }
+        if ((Util.nullAs(FavChatVoiceView.a(FavChatVoiceView.this), "").equals(FavChatVoiceView.b(FavChatVoiceView.this).path)) && (FavChatVoiceView.b(FavChatVoiceView.this).dxE())) {
+          FavChatVoiceView.this.stopPlay();
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fav/ui/FavChatVoiceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(106622);
+          return;
+          FavChatVoiceView.d(FavChatVoiceView.this);
+        }
+      }
+    });
+    AppMethodBeat.o(106626);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(73947);
+    AppMethodBeat.i(106632);
     stopPlay();
-    AppMethodBeat.o(73947);
+    AppMethodBeat.o(106632);
   }
   
-  public void setVoiceHelper(n paramn)
+  public void setVoiceHelper(o paramo)
   {
-    AppMethodBeat.i(73944);
-    this.muE = paramn;
-    this.muE.a(this);
-    AppMethodBeat.o(73944);
+    AppMethodBeat.i(106629);
+    this.Aee = paramo;
+    this.Aee.a(this);
+    AppMethodBeat.o(106629);
   }
   
   public final void stopPlay()
   {
-    AppMethodBeat.i(73943);
-    ab.d("MicroMsg.FavChatVoiceView", "stop play");
-    if ((this.mvO != null) && (this.mvO.isInitialized())) {
+    AppMethodBeat.i(106628);
+    Log.d("MicroMsg.FavChatVoiceView", "stop play");
+    if ((this.xCM != null) && (this.xCM.isInitialized())) {
       setAnimation(null);
     }
-    this.isRunning = false;
-    setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2131231097), null, null, null);
-    this.mvP.stop();
-    this.muE.stopPlay();
-    AppMethodBeat.o(73943);
-  }
-  
-  public final void u(String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(73942);
-    this.path = bo.bf(paramString1, "");
-    this.cve = paramInt;
-    setText(paramString2);
-    AppMethodBeat.o(73942);
+    this.Uz = false;
+    setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(q.h.chatfrom_voice_playing_new), null, null, null);
+    this.xCN.stop();
+    this.Aee.stopPlay();
+    AppMethodBeat.o(106628);
   }
 }
 

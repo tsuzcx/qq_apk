@@ -34,14 +34,15 @@ public final class batch_del_videos_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.vids != null) {
-      paramJceOutputStream.write(this.vids, 1);
+    ArrayList localArrayList = this.vids;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.batch_del_videos_req
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespGetVisitorList
   extends JceStruct
@@ -11,10 +12,10 @@ public final class RespGetVisitorList
   static RespHead cache_stHeader;
   static UserCntlData cache_stUserData;
   static ArrayList<UserProfile> cache_vEncounterInfos;
-  public long RespTime;
-  public RespHead stHeader;
-  public UserCntlData stUserData;
-  public ArrayList<UserProfile> vEncounterInfos;
+  public long RespTime = 0L;
+  public RespHead stHeader = null;
+  public UserCntlData stUserData = null;
+  public ArrayList<UserProfile> vEncounterInfos = null;
   
   public RespGetVisitorList() {}
   
@@ -50,17 +51,19 @@ public final class RespGetVisitorList
   {
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.RespTime, 1);
-    if (this.vEncounterInfos != null) {
-      paramJceOutputStream.write(this.vEncounterInfos, 2);
+    Object localObject = this.vEncounterInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.stUserData != null) {
-      paramJceOutputStream.write(this.stUserData, 3);
+    localObject = this.stUserData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespGetVisitorList
  * JD-Core Version:    0.7.0.1
  */

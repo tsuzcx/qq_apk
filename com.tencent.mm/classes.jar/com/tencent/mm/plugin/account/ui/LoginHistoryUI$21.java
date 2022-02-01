@@ -1,26 +1,24 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.b.d;
+import com.tencent.mm.ui.base.u.i;
 
 final class LoginHistoryUI$21
-  implements View.OnClickListener
+  implements u.i
 {
-  LoginHistoryUI$21(LoginHistoryUI paramLoginHistoryUI, d paramd) {}
+  LoginHistoryUI$21(LoginHistoryUI paramLoginHistoryUI) {}
   
-  public final void onClick(View paramView)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(152549);
-    this.gEw.hideVKB();
-    this.gEx.crd();
-    AppMethodBeat.o(152549);
+    AppMethodBeat.i(305172);
+    LoginHistoryUI.a(this.qbb, paramMenuItem.getItemId());
+    AppMethodBeat.o(305172);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginHistoryUI.21
  * JD-Core Version:    0.7.0.1
  */

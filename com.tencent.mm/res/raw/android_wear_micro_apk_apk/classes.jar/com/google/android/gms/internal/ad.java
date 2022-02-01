@@ -7,21 +7,21 @@ import java.util.Iterator;
 final class ad
   extends ag
 {
-  private final ArrayList<j> NN;
+  private final ArrayList<j> PC;
   
   public ad(ArrayList<j> paramArrayList)
   {
     super(paramArrayList, (byte)0);
     Object localObject;
-    this.NN = localObject;
+    this.PC = localObject;
   }
   
-  public final void iu()
+  public final void iC()
   {
-    aa.d(this.NH).MJ.NY = aa.g(this.NH);
-    Iterator localIterator = this.NN.iterator();
+    aa.d(this.Pw).Oy.PN = aa.g(this.Pw);
+    Iterator localIterator = this.PC.iterator();
     while (localIterator.hasNext()) {
-      ((j)localIterator.next()).a(aa.h(this.NH), aa.d(this.NH).MJ.NY);
+      ((j)localIterator.next()).a(aa.h(this.Pw), aa.d(this.Pw).Oy.PN);
     }
   }
 }

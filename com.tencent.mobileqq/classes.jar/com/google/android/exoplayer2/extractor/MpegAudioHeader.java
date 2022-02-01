@@ -26,150 +26,157 @@ public final class MpegAudioHeader
   
   public static int getFrameSize(int paramInt)
   {
-    if ((paramInt & 0xFFE00000) != -2097152) {}
-    int j;
-    int k;
-    int n;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return -1;
-            j = paramInt >>> 19 & 0x3;
-          } while (j == 1);
-          k = paramInt >>> 17 & 0x3;
-        } while (k == 0);
-        n = paramInt >>> 12 & 0xF;
-      } while ((n == 0) || (n == 15));
-      i = paramInt >>> 10 & 0x3;
-    } while (i == 3);
-    int i = SAMPLING_RATE_V1[i];
-    if (j == 2) {
-      i /= 2;
+    if ((paramInt & 0xFFE00000) != -2097152) {
+      return -1;
     }
-    label226:
-    for (;;)
+    int m = paramInt >>> 19 & 0x3;
+    if (m == 1) {
+      return -1;
+    }
+    int k = paramInt >>> 17 & 0x3;
+    if (k == 0) {
+      return -1;
+    }
+    int i1 = paramInt >>> 12 & 0xF;
+    if (i1 != 0)
     {
-      int m = paramInt >>> 9 & 0x1;
+      if (i1 == 15) {
+        return -1;
+      }
+      int i = paramInt >>> 10 & 0x3;
+      if (i == 3) {
+        return -1;
+      }
+      int j = SAMPLING_RATE_V1[i];
+      if (m == 2)
+      {
+        i = j / 2;
+      }
+      else
+      {
+        i = j;
+        if (m == 0) {
+          i = j / 4;
+        }
+      }
+      int n = paramInt >>> 9 & 0x1;
       if (k == 3)
       {
-        if (j == 3) {}
-        for (paramInt = BITRATE_V1_L1[(n - 1)];; paramInt = BITRATE_V2_L1[(n - 1)])
-        {
-          return (paramInt * 12000 / i + m) * 4;
-          if (j != 0) {
-            break label226;
-          }
-          i /= 4;
-          break;
+        if (m == 3) {
+          paramInt = BITRATE_V1_L1[(i1 - 1)];
+        } else {
+          paramInt = BITRATE_V2_L1[(i1 - 1)];
         }
+        return (paramInt * 12000 / i + n) * 4;
       }
-      if (j == 3) {
-        if (k == 2) {
-          paramInt = BITRATE_V1_L2[(n - 1)];
-        }
-      }
-      while (j == 3)
+      if (m == 3)
       {
-        return 144000 * paramInt / i + m;
-        paramInt = BITRATE_V1_L3[(n - 1)];
-        continue;
-        paramInt = BITRATE_V2[(n - 1)];
+        if (k == 2) {
+          paramInt = BITRATE_V1_L2[(i1 - 1)];
+        } else {
+          paramInt = BITRATE_V1_L3[(i1 - 1)];
+        }
       }
-      if (k == 1) {}
-      for (j = 72000;; j = 144000) {
-        return j * paramInt / i + m;
+      else {
+        paramInt = BITRATE_V2[(i1 - 1)];
       }
+      j = 144000;
+      if (m == 3) {
+        return paramInt * 144000 / i + n;
+      }
+      if (k == 1) {
+        j = 72000;
+      }
+      return j * paramInt / i + n;
     }
+    return -1;
   }
   
   public static boolean populateHeader(int paramInt, MpegAudioHeader paramMpegAudioHeader)
   {
-    int n = 2;
     if ((paramInt & 0xFFE00000) != -2097152) {
       return false;
     }
-    int i2 = paramInt >>> 19 & 0x3;
-    if (i2 == 1) {
+    int i1 = paramInt >>> 19 & 0x3;
+    if (i1 == 1) {
       return false;
     }
-    int i3 = paramInt >>> 17 & 0x3;
-    if (i3 == 0) {
+    int i2 = paramInt >>> 17 & 0x3;
+    if (i2 == 0) {
       return false;
     }
-    int k = paramInt >>> 12 & 0xF;
-    if ((k == 0) || (k == 15)) {
-      return false;
-    }
-    int i = paramInt >>> 10 & 0x3;
-    if (i == 3) {
-      return false;
-    }
-    int j = SAMPLING_RATE_V1[i];
-    int i1;
-    if (i2 == 2)
+    int n = paramInt >>> 12 & 0xF;
+    if (n != 0)
     {
-      i = j / 2;
-      i1 = paramInt >>> 9 & 0x1;
-      if (i3 != 3) {
-        break label219;
+      if (n == 15) {
+        return false;
       }
-      if (i2 != 3) {
-        break label206;
+      int i = paramInt >>> 10 & 0x3;
+      if (i == 3) {
+        return false;
       }
-    }
-    label206:
-    for (k = BITRATE_V1_L1[(k - 1)];; k = BITRATE_V2_L1[(k - 1)])
-    {
-      m = (k * 12000 / i + i1) * 4;
-      j = 384;
-      String str = MIME_TYPE_BY_LAYER[(3 - i3)];
-      if ((paramInt >> 6 & 0x3) == 3) {
-        n = 1;
-      }
-      paramMpegAudioHeader.setValues(i2, str, m, i, n, k * 1000, j);
-      return true;
-      i = j;
-      if (i2 != 0) {
-        break;
-      }
-      i = j / 4;
-      break;
-    }
-    label219:
-    if (i2 == 3)
-    {
-      if (i3 == 2) {}
-      for (k = BITRATE_V1_L2[(k - 1)];; k = BITRATE_V1_L3[(k - 1)])
+      int j = SAMPLING_RATE_V1[i];
+      if (i1 == 2)
       {
-        j = 1152;
-        m = i1 + 144000 * k / i;
-        break;
+        i = j / 2;
       }
-    }
-    int m = BITRATE_V2[(k - 1)];
-    if (i3 == 1)
-    {
-      j = 576;
-      label293:
-      if (i3 != 1) {
-        break label333;
+      else
+      {
+        i = j;
+        if (i1 == 0) {
+          i = j / 4;
+        }
       }
-    }
-    label333:
-    for (k = 72000;; k = 144000)
-    {
-      i1 += k * m / i;
-      k = m;
-      m = i1;
-      break;
+      int m = paramInt >>> 9 & 0x1;
       j = 1152;
-      break label293;
+      int k;
+      if (i2 == 3)
+      {
+        if (i1 == 3) {
+          j = BITRATE_V1_L1[(n - 1)];
+        } else {
+          j = BITRATE_V2_L1[(n - 1)];
+        }
+        k = (j * 12000 / i + m) * 4;
+        m = 384;
+      }
+      else
+      {
+        k = 144000;
+        if (i1 == 3)
+        {
+          if (i2 == 2) {
+            j = BITRATE_V1_L2[(n - 1)];
+          } else {
+            j = BITRATE_V1_L3[(n - 1)];
+          }
+          k = 144000 * j / i + m;
+          m = 1152;
+        }
+        else
+        {
+          n = BITRATE_V2[(n - 1)];
+          if (i2 == 1) {
+            j = 576;
+          }
+          if (i2 == 1) {
+            k = 72000;
+          }
+          k = k * n / i + m;
+          m = j;
+          j = n;
+        }
+      }
+      String str = MIME_TYPE_BY_LAYER[(3 - i2)];
+      if ((paramInt >> 6 & 0x3) == 3) {
+        paramInt = 1;
+      } else {
+        paramInt = 2;
+      }
+      paramMpegAudioHeader.setValues(i1, str, k, i, paramInt, j * 1000, m);
+      return true;
     }
+    return false;
   }
   
   private void setValues(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -185,7 +192,7 @@ public final class MpegAudioHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.MpegAudioHeader
  * JD-Core Version:    0.7.0.1
  */

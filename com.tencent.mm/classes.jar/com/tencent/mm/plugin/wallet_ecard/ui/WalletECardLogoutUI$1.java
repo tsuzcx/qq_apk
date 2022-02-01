@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.wallet_ecard.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class WalletECardLogoutUI$1
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class WalletECardLogoutUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(48148);
-    WalletECardLogoutUI.a(this.uzP);
-    AppMethodBeat.o(48148);
+    AppMethodBeat.i(71782);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardLogoutUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    WalletECardLogoutUI.a(this.VZS);
+    a.a(this, "com/tencent/mm/plugin/wallet_ecard/ui/WalletECardLogoutUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(71782);
   }
 }
 

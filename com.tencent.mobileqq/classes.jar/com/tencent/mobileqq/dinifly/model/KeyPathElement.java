@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.dinifly.model;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import java.util.List;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
 public abstract interface KeyPathElement
 {
   public abstract <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback);

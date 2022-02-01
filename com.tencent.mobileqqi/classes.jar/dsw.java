@@ -1,18 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.TroopShareTmpActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 public class dsw
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public dsw(TroopShareTmpActivity paramTroopShareTmpActivity) {}
+  public dsw(TroopTransferActivity paramTroopTransferActivity) {}
   
-  protected void c(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramString != null) && (paramString.equalsIgnoreCase(TroopShareTmpActivity.a(this.a)))) {
-      TroopShareTmpActivity.a(this.a).setImageDrawable(this.a.b.a(TroopShareTmpActivity.a(this.a)));
+    if (this.a.a != null) {
+      this.a.a.a();
     }
+    this.a.finish();
   }
 }
 

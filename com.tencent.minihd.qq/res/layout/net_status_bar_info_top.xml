@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/net_status_bar_top" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:id="@id/net_status_bar" android:layout_width="fill_parent" android:layout_marginBottom="@dimen/common_16dp" style="@style/common_tips_bar_style">
+        <TextView android:textColor="@color/black_55_pro_alpha" android:ellipsize="middle" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/net_status_bar_info_top" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/net_error_tip" android:singleLine="true" android:drawableLeft="@drawable/aio_send_fail_nor" android:drawablePadding="10.0dip" android:layout_weight="1.0" style="@style/common_tips_yellow_font" />
+    </LinearLayout>
+</LinearLayout>

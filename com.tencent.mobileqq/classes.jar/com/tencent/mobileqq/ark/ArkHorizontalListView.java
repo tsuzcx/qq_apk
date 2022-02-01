@@ -7,32 +7,28 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
-import anob;
-import anop;
-import bhzg;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.ListView;
+import com.tencent.widget.OverScroller;
 import java.lang.ref.WeakReference;
 
 public class ArkHorizontalListView
   extends HorizontalListView
 {
-  private float jdField_a_of_type_Float = 0.08F;
-  private int jdField_a_of_type_Int;
-  private WeakReference<anop> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = 3;
+  private boolean a;
+  private int b;
+  private WeakReference<ArkHorizontalListView.RefreshUiCallback> c;
+  private float d = 0.08F;
+  private int e = 3;
   
   public ArkHorizontalListView(Context paramContext)
   {
     super(paramContext);
     paramContext = paramContext.getResources();
-    int i = BaseChatItemLayout.n;
-    int j = MessageForArkApp.dp2px(40.0F);
-    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296297) + (i * 2 + j));
+    this.b = (BaseChatItemLayout.getTextPaddingAlignHead() * 2 + MessageForArkApp.dp2px(40.0F) + paramContext.getDimensionPixelSize(2131296615));
     setStayDisplayOffsetZero(true);
     a();
   }
@@ -41,216 +37,190 @@ public class ArkHorizontalListView
   {
     super(paramContext, paramAttributeSet);
     paramContext = paramContext.getResources();
-    int i = BaseChatItemLayout.n;
-    int j = MessageForArkApp.dp2px(40.0F);
-    this.jdField_a_of_type_Int = (paramContext.getDimensionPixelSize(2131296297) + (i * 2 + j));
+    this.b = (BaseChatItemLayout.getTextPaddingAlignHead() * 2 + MessageForArkApp.dp2px(40.0F) + paramContext.getDimensionPixelSize(2131296615));
     setStayDisplayOffsetZero(true);
     a();
   }
   
   private void a() {}
   
-  public boolean a()
+  protected boolean checkScrollToChild()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean checkScrollToChild()
-  {
-    if (!this.mStayDisplayOffsetZero) {
+    boolean bool1 = this.mStayDisplayOffsetZero;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    Object localObject = null;
-    int j = anob.d;
+    int m = ArkAppCenterUtil.d;
     int i = 0;
-    View localView;
-    if (i <= getChildCount())
+    while (i <= getChildCount())
     {
-      localView = getChildAt(i);
-      if ((localView == null) || (!(localView instanceof LinearLayout))) {}
-    }
-    label646:
-    label656:
-    for (i = localView.getRight() - localView.getLeft();; i = 0)
-    {
-      int k;
-      label78:
-      int m;
-      label172:
-      int n;
-      if (this.jdField_a_of_type_Boolean)
+      localObject = getChildAt(i);
+      if ((localObject != null) && ((localObject instanceof LinearLayout)))
       {
-        k = anob.d - this.jdField_a_of_type_Int - i / 2;
-        QLog.d("ArkHorizontalListView", 2, new Object[] { "---start find card mNextX=", Integer.valueOf(this.mNextX), ",scrollStartX=", Integer.valueOf(this.mScroller.c()), ",sRealDisplayWith=", Integer.valueOf(anob.d), ",priovtX=", Integer.valueOf(k), ",mIsSend=", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-        i = 0;
-        m = 0;
-        if (i > getChildCount()) {
-          break label378;
-        }
-        localView = getChildAt(i);
-        if ((localView == null) || (!(localView instanceof LinearLayout))) {
-          break label686;
-        }
-        int i1 = (localView.getLeft() + localView.getRight()) / 2;
-        int i2 = i1 - k;
-        n = Math.abs(i2);
+        i = ((View)localObject).getRight() - ((View)localObject).getLeft();
+        break label75;
+      }
+      i += 1;
+    }
+    i = 0;
+    label75:
+    int j;
+    if (this.a) {
+      j = ArkAppCenterUtil.d - this.b - i / 2;
+    } else {
+      j = this.b + i / 2;
+    }
+    QLog.d("ArkHorizontalListView", 2, new Object[] { "---start find card mNextX=", Integer.valueOf(this.mNextX), ",scrollStartX=", Integer.valueOf(this.mScroller.getStartX()), ",sRealDisplayWith=", Integer.valueOf(ArkAppCenterUtil.d), ",priovtX=", Integer.valueOf(j), ",mIsSend=", Boolean.valueOf(this.a) });
+    int k = 0;
+    Object localObject = null;
+    i = 0;
+    int n;
+    while (i <= getChildCount())
+    {
+      View localView = getChildAt(i);
+      if ((localView != null) && ((localView instanceof LinearLayout)))
+      {
+        n = (localView.getLeft() + localView.getRight()) / 2;
+        int i2 = n - j;
+        int i1 = Math.abs(i2);
         if (QLog.isColorLevel()) {
-          QLog.d("ArkHorizontalListView", 2, new Object[] { "view index=", Integer.valueOf(i), " view pos(", Integer.valueOf(localView.getLeft()), ",", Integer.valueOf(localView.getRight()), "),viewCenter=", Integer.valueOf(i1), ",curDistance=", Integer.valueOf(n), ",delta=", Integer.valueOf(i2) });
+          QLog.d("ArkHorizontalListView", 2, new Object[] { "view index=", Integer.valueOf(i), " view pos(", Integer.valueOf(localView.getLeft()), ",", Integer.valueOf(localView.getRight()), "),viewCenter=", Integer.valueOf(n), ",curDistance=", Integer.valueOf(i1), ",delta=", Integer.valueOf(i2) });
         }
-        if (n > j) {
-          break label686;
+        n = m;
+        if (i1 <= m)
+        {
+          k = i;
+          localObject = localView;
+          n = i1;
         }
-        m = i;
-        localObject = localView;
-        j = n;
       }
-      label418:
-      label680:
-      label686:
-      for (;;)
+      else
       {
-        i += 1;
-        break label172;
-        i += 1;
-        break;
-        k = this.jdField_a_of_type_Int;
-        k = i / 2 + k;
-        break label78;
-        label378:
-        if (localObject != null)
-        {
-          n = this.mNextX;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            k = localObject.getRight();
-            if (!this.jdField_a_of_type_Boolean) {
-              break label611;
-            }
-            if (k <= anob.d) {
-              break label606;
-            }
-            i = 1;
-            if (!this.jdField_a_of_type_Boolean) {
-              break label634;
-            }
-            if (i == 0) {
-              break label625;
-            }
-            j = k - anob.d;
-            if (!this.jdField_a_of_type_Boolean) {
-              break label656;
-            }
-            if (i == 0) {
-              break label646;
-            }
-            i = -(j + this.jdField_a_of_type_Int);
-            i = n - i;
-            if (QLog.isColorLevel()) {
-              QLog.d("ArkHorizontalListView", 2, new Object[] { "---end find card mNextX=", Integer.valueOf(this.mNextX), ", newNextX=", Integer.valueOf(i), ", mIsSend=", Boolean.valueOf(this.jdField_a_of_type_Boolean), ",targetIndex=", Integer.valueOf(m) });
-            }
-            if (!this.mScroller.a(this.mNextX + getScrollX(), 0, i, i, 0, 0, 1000)) {
-              break label680;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("ArkHorizontalListView", 2, "checkScrollToChild springBack return true");
-            }
-            invalidate();
-          }
+        n = m;
+      }
+      i += 1;
+      m = n;
+    }
+    bool1 = bool2;
+    if (localObject != null)
+    {
+      n = this.mNextX;
+      if (this.a) {
+        j = ((View)localObject).getRight();
+      } else {
+        j = ((View)localObject).getLeft();
+      }
+      if (this.a ? j > ArkAppCenterUtil.d : j < 0) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+      if (this.a)
+      {
+        if (m != 0) {
+          i = j - ArkAppCenterUtil.d;
+        } else {
+          i = ArkAppCenterUtil.d - j;
         }
-        label435:
-        label454:
-        for (boolean bool = true;; bool = false)
-        {
-          post(new ArkHorizontalListView.1(this));
-          return bool;
-          k = localObject.getLeft();
-          break;
-          label606:
-          i = 0;
-          break label418;
-          label611:
-          if (k < 0)
-          {
-            i = 1;
-            break label418;
-          }
-          i = 0;
-          break label418;
-          label625:
-          j = anob.d - k;
-          break label435;
-          label634:
-          j = k;
-          if (i == 0) {
-            break label435;
-          }
-          j = -k;
-          break label435;
-          i = j - this.jdField_a_of_type_Int;
-          break label454;
-          if (i != 0)
-          {
-            i = j + this.jdField_a_of_type_Int;
-            break label454;
-          }
-          i = this.jdField_a_of_type_Int - j;
-          break label454;
+      }
+      else
+      {
+        i = j;
+        if (m != 0) {
+          i = -j;
         }
+      }
+      if (this.a)
+      {
+        if (m != 0) {
+          i = -(i + this.b);
+        } else {
+          i -= this.b;
+        }
+      }
+      else if (m != 0) {
+        i += this.b;
+      } else {
+        i = this.b - i;
+      }
+      i = n - i;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkHorizontalListView", 2, new Object[] { "---end find card mNextX=", Integer.valueOf(this.mNextX), ", newNextX=", Integer.valueOf(i), ", mIsSend=", Boolean.valueOf(this.a), ",targetIndex=", Integer.valueOf(k) });
+      }
+      bool1 = bool2;
+      if (this.mScroller.springBack(this.mNextX + getScrollX(), 0, i, i, 0, 0, 1000))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkHorizontalListView", 2, "checkScrollToChild springBack return true");
+        }
+        invalidate();
+        bool1 = true;
       }
     }
+    post(new ArkHorizontalListView.1(this));
+    return bool1;
   }
   
-  public int getFlingVelocity(int paramInt)
+  protected int getFlingVelocity(int paramInt)
   {
-    return paramInt / this.b;
+    return paramInt / this.e;
   }
   
-  public float getScrollerFriction()
+  public boolean getIsSend()
   {
-    return this.jdField_a_of_type_Float;
+    return this.a;
+  }
+  
+  protected float getScrollerFriction()
+  {
+    return this.d;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
+    if (paramMotionEvent.getAction() != 0) {
       return bool;
-      for (paramMotionEvent = getParent(); !(paramMotionEvent instanceof ListView); paramMotionEvent = paramMotionEvent.getParent()) {}
-      paramMotionEvent = paramMotionEvent.getParent();
-    } while (paramMotionEvent == null);
-    paramMotionEvent.requestDisallowInterceptTouchEvent(true);
+    }
+    for (paramMotionEvent = getParent(); !(paramMotionEvent instanceof ListView); paramMotionEvent = paramMotionEvent.getParent()) {}
+    paramMotionEvent = paramMotionEvent.getParent();
+    if (paramMotionEvent != null) {
+      paramMotionEvent.requestDisallowInterceptTouchEvent(true);
+    }
     return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    Object localObject = this.c;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkHorizontalListView", 2, "onTouchEvent updateHeadBorder action=" + (paramMotionEvent.getAction() & 0xFF));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onTouchEvent updateHeadBorder action=");
+        ((StringBuilder)localObject).append(paramMotionEvent.getAction() & 0xFF);
+        QLog.d("ArkHorizontalListView", 2, ((StringBuilder)localObject).toString());
       }
-      ((anop)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this);
+      ((ArkHorizontalListView.RefreshUiCallback)this.c.get()).a(this);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setIsSend(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
-  public void setRefreshCallback(anop paramanop)
+  public void setRefreshCallback(ArkHorizontalListView.RefreshUiCallback paramRefreshUiCallback)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanop);
+    this.c = new WeakReference(paramRefreshUiCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

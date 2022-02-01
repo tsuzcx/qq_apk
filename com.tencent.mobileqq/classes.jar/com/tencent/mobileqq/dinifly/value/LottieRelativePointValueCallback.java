@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.value;
 
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
 
 public class LottieRelativePointValueCallback
@@ -18,10 +18,10 @@ public class LottieRelativePointValueCallback
   
   public PointF getOffset(LottieFrameInfo<PointF> paramLottieFrameInfo)
   {
-    if (this.value == null) {
-      throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
+    if (this.value != null) {
+      return (PointF)this.value;
     }
-    return (PointF)this.value;
+    throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
   }
   
   public final PointF getValue(LottieFrameInfo<PointF> paramLottieFrameInfo)

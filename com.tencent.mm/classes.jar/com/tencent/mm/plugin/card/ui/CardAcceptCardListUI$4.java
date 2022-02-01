@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.card.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class CardAcceptCardListUI$4
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class CardAcceptCardListUI$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(88218);
-    CardAcceptCardListUI.c(this.ksL);
-    AppMethodBeat.o(88218);
+    AppMethodBeat.i(113152);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    CardAcceptCardListUI.c(this.wzh);
+    a.a(this, "com/tencent/mm/plugin/card/ui/CardAcceptCardListUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(113152);
   }
 }
 

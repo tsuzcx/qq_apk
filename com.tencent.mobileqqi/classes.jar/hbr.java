@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.utils.DBUtils;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 public class hbr
+  implements FileFilter
 {
-  public static DBUtils a = new DBUtils(null);
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
+  }
 }
 
 

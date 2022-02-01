@@ -2,16 +2,18 @@ package gameloginsdk;
 
 import android.os.Handler;
 import android.util.Pair;
-import b.a.h;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.fm;
-import com.tencent.token.fo;
+import com.tencent.token.ajh;
+import com.tencent.token.ajj;
+import com.tencent.token.art;
+import com.tencent.token.ki;
+import com.tencent.token.km;
 import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicLong;
 
 class c
-  implements fo
+  implements ajj
 {
   c(GameLogin paramGameLogin) {}
   
@@ -19,18 +21,14 @@ class c
   {
     if (paramJceStruct == null)
     {
-      paramInt1 = fm.a;
+      paramInt1 = ajh.a;
       return null;
     }
-    paramJceStruct = (h)paramJceStruct;
+    paramJceStruct = (km)paramJceStruct;
     Object localObject = paramJceStruct.k;
-    if ((GameLogin.a(this.a).b((byte[])localObject)) || (!GameLogin.b(this.a).contains(paramJceStruct.o))) {
-      paramInt1 = fm.a;
-    }
-    for (;;)
+    if ((!GameLogin.a(this.a).b((byte[])localObject)) && (GameLogin.b(this.a).contains(paramJceStruct.o)))
     {
-      return new Pair(Integer.valueOf(51), new b.a.d(paramJceStruct.a, paramJceStruct.b));
-      paramInt1 = fm.a;
+      paramInt1 = ajh.a;
       localObject = paramJceStruct.c;
       long l = paramJceStruct.b;
       l = paramJceStruct.a;
@@ -44,7 +42,7 @@ class c
       localObject = paramJceStruct.l;
       l = paramJceStruct.m;
       GameLogin.b(this.a).remove(paramJceStruct.o);
-      tmsdk.common.c.a.a.a().a(paramJceStruct.o);
+      art.a().a(paramJceStruct.o);
       l = paramJceStruct.m;
       if (GameLogin.c(this.a).get() < l) {
         GameLogin.c(this.a).set(l);
@@ -53,18 +51,18 @@ class c
       GameLogin.a(this.a).a(paramJceStruct.k);
       GameLogin.e(this.a).push(Long.valueOf(paramJceStruct.b));
       this.a.i.postDelayed(new d(this), this.a.a);
-      new StringBuilder().append("SCPushGameInfo appid : ").append(paramJceStruct.b).toString();
-      new StringBuilder().append("SCPushGameInfo qq : ").append(paramJceStruct.c).toString();
-      new StringBuilder().append("SCPushGameInfo schemeflag : ").append(paramJceStruct.d).toString();
-      new StringBuilder().append("SCPushGameInfo expirttime : ").append(paramJceStruct.f).toString();
-      new StringBuilder().append("SCPushGameInfo player : ").append(paramJceStruct.g).toString();
-      new StringBuilder().append("SCPushGameInfo world : ").append(paramJceStruct.h).toString();
-      new StringBuilder().append("SCPushGameInfo scene : ").append(paramJceStruct.i).toString();
-      new StringBuilder().append("SCPushGameInfo name : ").append(paramJceStruct.j).toString();
-      new StringBuilder().append("SCPushGameInfo md5 : ").append(paramJceStruct.l).toString();
-      new StringBuilder().append("SCPushGameInfo qrcodemd5 : ").append(paramJceStruct.o).toString();
-      new StringBuilder().append("SCPushGameInfo timestamp : ").append(paramJceStruct.m).toString();
-      new StringBuilder().append("SCPushGameInfo session : ").append(GameLogin.a(this.a, paramJceStruct.k)).toString();
+      new StringBuilder("SCPushGameInfo appid : ").append(paramJceStruct.b);
+      new StringBuilder("SCPushGameInfo qq : ").append(paramJceStruct.c);
+      new StringBuilder("SCPushGameInfo schemeflag : ").append(paramJceStruct.d);
+      new StringBuilder("SCPushGameInfo expirttime : ").append(paramJceStruct.f);
+      new StringBuilder("SCPushGameInfo player : ").append(paramJceStruct.g);
+      new StringBuilder("SCPushGameInfo world : ").append(paramJceStruct.h);
+      new StringBuilder("SCPushGameInfo scene : ").append(paramJceStruct.i);
+      new StringBuilder("SCPushGameInfo name : ").append(paramJceStruct.j);
+      new StringBuilder("SCPushGameInfo md5 : ").append(paramJceStruct.l);
+      new StringBuilder("SCPushGameInfo qrcodemd5 : ").append(paramJceStruct.o);
+      new StringBuilder("SCPushGameInfo timestamp : ").append(paramJceStruct.m);
+      new StringBuilder("SCPushGameInfo session : ").append(GameLogin.a(this.a, paramJceStruct.k));
       if (this.a.f != null)
       {
         localObject = new CallbackPushStruct();
@@ -79,6 +77,11 @@ class c
         this.a.f.onPush(0, localObject);
       }
     }
+    else
+    {
+      paramInt1 = ajh.a;
+    }
+    return new Pair(Integer.valueOf(51), new ki(paramJceStruct.a, paramJceStruct.b));
   }
 }
 

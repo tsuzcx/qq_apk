@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.QZonePullToRefreshListView android:id="@id/hmf" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@android:color/transparent" android:layout_alignParentTop="true" />
+    <ViewStub android:layout_gravity="center" android:id="@id/flr" android:layout="@layout/bhy" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/azw" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hmg" android:background="#ffffffff" android:paddingLeft="12.0dip" android:paddingTop="8.0dip" android:paddingRight="12.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/aqb" android:textColor="@android:color/white" android:gravity="center" android:id="@id/hmi" android:background="@drawable/fxk" android:paddingTop="@dimen/aqa" android:paddingBottom="@dimen/aqa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/s3j" />
+    </LinearLayout>
+    <View android:background="#ffe2e2e2" android:layout_width="fill_parent" android:layout_height="0.100000024dip" android:layout_above="@id/hmg" />
+    <FrameLayout android:id="@id/hmj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <include layout="@layout/bou" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/hmh" android:background="@drawable/qq_title_immersive_bar" android:layout_width="fill_parent" android:layout_height="@dimen/azw" />
+    <include android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/b01" layout="@layout/qzone_custom_commen_title" />
+</RelativeLayout>

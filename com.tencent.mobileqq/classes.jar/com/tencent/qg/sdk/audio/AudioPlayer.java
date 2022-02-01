@@ -47,58 +47,66 @@ public class AudioPlayer
   
   public int getCurrentTime()
   {
-    if (this.mCurrentPos > 0) {
-      return this.mCurrentPos;
+    int i = this.mCurrentPos;
+    if (i > 0) {
+      return i;
     }
     return 0;
   }
   
   protected void handlePause()
   {
-    if (this.mPlayer == null)
+    MediaPlayer localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer == null)
     {
       Log.e("AudioPlayer", "pause failed : player is null? why??");
       return;
     }
-    this.mCurrentPos = this.mPlayer.getCurrentPosition();
+    this.mCurrentPos = localMediaPlayer.getCurrentPosition();
     release();
   }
   
   protected void handlePlay()
   {
-    if (TextUtils.isEmpty(this.mSrc)) {
-      Log.e("AudioPlayer", "play failed : please set src first!");
-    }
-    do
+    if (TextUtils.isEmpty(this.mSrc))
     {
+      Log.e("AudioPlayer", "play failed : please set src first!");
       return;
-      if (this.mPlayer != null)
-      {
-        if (this.mPlayer.isPlaying()) {
-          this.mPlayer.stop();
-        }
-        MediaPlayerPool.getInstance().recycleMediaPlayer(this.mPlayer);
+    }
+    MediaPlayer localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer != null)
+    {
+      if (localMediaPlayer.isPlaying()) {
+        this.mPlayer.stop();
       }
-      this.mPlayer = MediaPlayerPool.getInstance(this).applyMediaPlayer(this.mSrc, this, this, this);
-      if (this.mPlayer == null)
-      {
-        Log.e("AudioPlayer", "play failed : apply media player failed.");
-        return;
-      }
-      this.mPlayer.setLooping(this.mIsLoop);
-      this.mPlayer.setVolume(this.mVolume, this.mVolume);
-    } while (this.mCurrentPos <= 0);
-    this.mPlayer.seekTo(this.mCurrentPos);
+      MediaPlayerPool.getInstance().recycleMediaPlayer(this.mPlayer);
+    }
+    this.mPlayer = MediaPlayerPool.getInstance(this).applyMediaPlayer(this.mSrc, this, this, this);
+    localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer == null)
+    {
+      Log.e("AudioPlayer", "play failed : apply media player failed.");
+      return;
+    }
+    localMediaPlayer.setLooping(this.mIsLoop);
+    localMediaPlayer = this.mPlayer;
+    float f = this.mVolume;
+    localMediaPlayer.setVolume(f, f);
+    int i = this.mCurrentPos;
+    if (i > 0) {
+      this.mPlayer.seekTo(i);
+    }
   }
   
   protected void handleSeekTo(int paramInt)
   {
-    if (this.mPlayer == null)
+    MediaPlayer localMediaPlayer = this.mPlayer;
+    if (localMediaPlayer == null)
     {
       Log.e("AudioPlayer", "seek failed : player is null");
       return;
     }
-    this.mPlayer.seekTo(paramInt);
+    localMediaPlayer.seekTo(paramInt);
   }
   
   protected void handleStop()
@@ -129,7 +137,10 @@ public class AudioPlayer
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    Log.e("AudioPlayer", "onError:" + paramInt1);
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append("onError:");
+    paramMediaPlayer.append(paramInt1);
+    Log.e("AudioPlayer", paramMediaPlayer.toString());
     release();
     return false;
   }
@@ -144,8 +155,10 @@ public class AudioPlayer
     }
     catch (IllegalStateException paramMediaPlayer)
     {
-      Log.e("AudioPlayer", "play failed : IllegalStateException.");
+      label16:
+      break label16;
     }
+    Log.e("AudioPlayer", "play failed : IllegalStateException.");
   }
   
   public void pause()
@@ -176,9 +189,10 @@ public class AudioPlayer
   
   public void releaseThread()
   {
-    if (this.mPlayThread != null)
+    HandlerThread localHandlerThread = this.mPlayThread;
+    if (localHandlerThread != null)
     {
-      this.mPlayThread.getLooper().quit();
+      localHandlerThread.getLooper().quit();
       this.mPlayThread = null;
     }
     this.mPlayHandler = null;
@@ -197,19 +211,34 @@ public class AudioPlayer
   
   public void setLoop(boolean paramBoolean)
   {
-    Log.d("AudioPlayer", "AudioPlayer:" + this + ", setLoop:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioPlayer:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(", setLoop:");
+    localStringBuilder.append(paramBoolean);
+    Log.d("AudioPlayer", localStringBuilder.toString());
     this.mIsLoop = paramBoolean;
   }
   
   public void setSrc(String paramString)
   {
-    Log.d("AudioPlayer", "AudioPlayer:" + this + ", setSrc:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioPlayer:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(", setSrc:");
+    localStringBuilder.append(paramString);
+    Log.d("AudioPlayer", localStringBuilder.toString());
     this.mSrc = paramString;
   }
   
   public void setVolume(float paramFloat)
   {
-    Log.d("AudioPlayer", "AudioPlayer:" + this + ", setVolume:" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioPlayer:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(", setVolume:");
+    localStringBuilder.append(paramFloat);
+    Log.d("AudioPlayer", localStringBuilder.toString());
     this.mVolume = paramFloat;
   }
   
@@ -225,7 +254,7 @@ public class AudioPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.sdk.audio.AudioPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ public final class GiftInfo
   extends JceStruct
 {
   static byte[] cache_vGiftInfo;
-  public long uOpenFlag;
-  public byte[] vGiftInfo;
+  public long uOpenFlag = 0L;
+  public byte[] vGiftInfo = null;
   
   public GiftInfo() {}
   
@@ -33,14 +33,15 @@ public final class GiftInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uOpenFlag, 0);
-    if (this.vGiftInfo != null) {
-      paramJceOutputStream.write(this.vGiftInfo, 1);
+    byte[] arrayOfByte = this.vGiftInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.GiftInfo
  * JD-Core Version:    0.7.0.1
  */

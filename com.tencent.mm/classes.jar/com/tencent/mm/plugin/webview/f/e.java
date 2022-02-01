@@ -1,85 +1,85 @@
 package com.tencent.mm.plugin.webview.f;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.text.TextUtils;
+import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.widget.MMWebView;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsLoader;", "", "()V", "JS_STORAGE_PATH", "", "PREFETCHER_JS_FILE_ASSETS_PATH", "TAG", "versionCode", "copyAssetFile", "assetFilePath", "destinationFilePath", "getVersion", "getWebPrefetcherJs", "getWebPrefetcherJsWithScriptTag", "inject", "", "prefetcherJsApiHandler", "Lcom/tencent/mm/plugin/webview/prefecher/WebPrefetcherJsApiHandler;", "wv", "Lcom/tencent/mm/ui/widget/MMWebView;", "loadJavaScript", "", "Lcom/tencent/xweb/WebView;", "tryCopyAsset", "file", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  public static boolean ajp(String paramString)
+  public static final e WPY;
+  private static final String WPZ;
+  
+  static
   {
-    AppMethodBeat.i(10147);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(10147);
-      return false;
-    }
+    AppMethodBeat.i(294610);
+    WPY = new e();
+    WPZ = s.X(b.bmr(), "/prefetcher_jscache/");
+    AppMethodBeat.o(294610);
+  }
+  
+  public static final void a(c paramc, MMWebView paramMMWebView)
+  {
+    AppMethodBeat.i(294592);
+    s.u(paramc, "prefetcherJsApiHandler");
+    s.u(paramMMWebView, "wv");
     try
     {
-      paramString = Uri.parse(paramString).getPathSegments();
-      if (paramString != null)
-      {
-        int i = paramString.size();
-        if (i > 0) {}
+      Log.i("MicroMsg.WebPrefetcherJsLoader", "injectWebPrefetcherJsBridge");
+      MMWebView localMMWebView = paramc.WDz;
+      if (localMMWebView != null) {
+        localMMWebView.addJavascriptInterface(paramc, "__wxPrefetcher");
       }
-      else
-      {
-        AppMethodBeat.o(10147);
-        return false;
-      }
-      paramString = (String)paramString.get(paramString.size() - 1);
-      if (paramString != null)
-      {
-        boolean bool = paramString.toLowerCase().trim().endsWith(".apk");
-        if (bool)
-        {
-          AppMethodBeat.o(10147);
-          return true;
-        }
-      }
+      paramMMWebView.evaluateJavascript("window.__wx_web_prefetcher_js_isLoaded = 'loaded';", null);
+      AppMethodBeat.o(294592);
+      return;
     }
-    catch (Exception paramString)
+    catch (Exception paramc)
     {
-      AppMethodBeat.o(10147);
+      Log.printErrStackTrace("MicroMsg.WebPrefetcherJsLoader", (Throwable)paramc, "injectWebPrefetcherJsBridge exception", new Object[0]);
+      AppMethodBeat.o(294592);
     }
-    return false;
   }
   
-  public static boolean ajq(String paramString)
+  private static final String iwA()
   {
-    AppMethodBeat.i(10148);
-    if (Pattern.compile("^(http|https)://mp.weixin.qq.com/(s|mp/author|mp/appmsg/show)", 2).matcher(paramString).find())
+    AppMethodBeat.i(294604);
+    Log.i("MicroMsg.WebPrefetcherJsLoader", "getWebPrefetcherJs path: %s", new Object[] { "jsapi/WebPrefetcherWebView.js" });
+    try
     {
-      AppMethodBeat.o(10148);
-      return true;
+      Object localObject = org.apache.commons.b.d.toByteArray(MMApplicationContext.getContext().getAssets().open("jsapi/WebPrefetcherWebView.js"));
+      s.s(localObject, "toByteArray(MMApplicatio…HER_JS_FILE_ASSETS_PATH))");
+      localObject = new String((byte[])localObject, kotlin.n.d.UTF_8);
+      AppMethodBeat.o(294604);
+      return localObject;
     }
-    if (Pattern.compile("^(http|https)://(sh.|hk.|sz.)?open.weixin.qq.com/connect/(confirm|oauth2/(authorize|explorer_authorize))", 2).matcher(paramString).find())
+    catch (Exception localException)
     {
-      AppMethodBeat.o(10148);
-      return true;
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.WebPrefetcherJsLoader", (Throwable)localException, "getWebPrefetcherJs exception", new Object[0]);
+        String str = "";
+      }
     }
-    AppMethodBeat.o(10148);
-    return false;
   }
   
-  public static void i(String paramString, Context paramContext)
+  public static final String iwz()
   {
-    AppMethodBeat.i(10146);
-    paramContext = paramContext.getSharedPreferences("webview_url_prefs", 4).edit();
-    paramContext.putString("url", paramString);
-    paramContext.apply();
-    AppMethodBeat.o(10146);
+    AppMethodBeat.i(294599);
+    String str = "<script>" + iwA() + "</script>";
+    AppMethodBeat.o(294599);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.f.e
  * JD-Core Version:    0.7.0.1
  */

@@ -38,6 +38,7 @@ public final class articlesummary$PackArticleInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -49,12 +50,12 @@ public final class articlesummary$PackArticleInfo
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 50, 74, 82, 112, 168, 234, 272, 280, 290, 298, 304, 352, 408, 554, 602, 8010, 8018, 8026, 8034 }, new String[] { "uint64_article_id", "bytes_article_title", "bytes_article_summary", "bytes_first_page_pic_url", "bytes_article_content_url", "bytes_subscribe_id", "bytes_subscribe_name", "uint64_algorithm_id", "uint32_strategy_id", "bytes_inner_uniq_id", "uint32_is_gallery", "uint32_picture_number", "bytes_button_wording", "bytes_cell_style_id", "uint32_is_first_page_use_gif", "uint32_video_play_count", "uint32_video_comment_count", "bytes_gw_common_data", "bytes_report_common_data", "msg_pack_feeds_info", "msg_pack_video_info", "msg_pack_topic_list_info", "msg_pack_question_answer_info" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro7, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro10, localByteStringMicro11, null, null, null, null }, PackArticleInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 50, 74, 82, 112, 168, 234, 272, 280, 290, 298, 304, 352, 408, 554, 602, 8010, 8018, 8026, 8034 }, new String[] { "uint64_article_id", "bytes_article_title", "bytes_article_summary", "bytes_first_page_pic_url", "bytes_article_content_url", "bytes_subscribe_id", "bytes_subscribe_name", "uint64_algorithm_id", "uint32_strategy_id", "bytes_inner_uniq_id", "uint32_is_gallery", "uint32_picture_number", "bytes_button_wording", "bytes_cell_style_id", "uint32_is_first_page_use_gif", "uint32_video_play_count", "uint32_video_comment_count", "bytes_gw_common_data", "bytes_report_common_data", "msg_pack_feeds_info", "msg_pack_video_info", "msg_pack_topic_list_info", "msg_pack_question_answer_info" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, Long.valueOf(0L), localInteger, localByteStringMicro7, localInteger, localInteger, localByteStringMicro8, localByteStringMicro9, localInteger, localInteger, localInteger, localByteStringMicro10, localByteStringMicro11, null, null, null, null }, PackArticleInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.PackArticleInfo
  * JD-Core Version:    0.7.0.1
  */

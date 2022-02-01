@@ -1,79 +1,115 @@
 package com.tencent.mm.plugin.sns.ui.b.b;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ad.timeline.b.a.a.a;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.plugin.sns.ui.item.h.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class h
-  extends b
+  extends a
 {
-  private ValueAnimator seV;
-  private ValueAnimator seW;
-  AnimatorSet seX;
-  h.a sfA;
+  AnimatorSet Div;
+  a.a RIO;
+  private ValueAnimator RIs;
   
   public h(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(145713);
+    AppMethodBeat.i(309333);
     try
     {
-      this.hwZ = paramMMActivity;
-      this.sfA = ((h.a)paramBaseViewHolder);
-      this.seV = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.seV.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.activity = paramMMActivity;
+      this.RIO = ((a.a)paramBaseViewHolder);
+      this.RIs = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.RIs.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(145708);
+          AppMethodBeat.i(309348);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          if (f != 1.0F)
+          if (f != 0.0F)
           {
-            h.this.sfA.rMB.setScaleX(f);
-            h.this.sfA.rMB.setScaleY(f);
-            h.this.sfA.rMB.setAlpha(f);
+            h.this.RIO.QaX.setScaleX(f);
+            h.this.RIO.QaX.setScaleY(f);
+            h.this.RIO.QaX.setAlpha(f);
           }
-          AppMethodBeat.o(145708);
+          AppMethodBeat.o(309348);
         }
       });
-      this.seV.setDuration(400L);
-      this.seV.addListener(new h.2(this));
-      this.seW = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.seW.addUpdateListener(new h.3(this));
-      this.seW.setDuration(100L);
-      this.seX = new AnimatorSet();
-      this.seX.playTogether(new Animator[] { this.seV, this.seW });
-      this.seX.addListener(new h.4(this));
-      AppMethodBeat.o(145713);
+      this.RIs.setDuration(400L);
+      this.RIs.addListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(309352);
+          if (h.this.RIO.mtE)
+          {
+            Log.i("MicroMsg.SlideFullCardItemAdBackAnimation", "holder is busy");
+            paramAnonymousAnimator = h.this.Div.getChildAnimations().iterator();
+            while (paramAnonymousAnimator.hasNext()) {
+              ((Animator)paramAnonymousAnimator.next()).cancel();
+            }
+            AppMethodBeat.o(309352);
+            return;
+          }
+          h.this.RIO.mtE = true;
+          AppMethodBeat.o(309352);
+        }
+      });
+      this.Div = new AnimatorSet();
+      this.Div.playTogether(new Animator[] { this.RIs });
+      this.Div.addListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(309351);
+          Log.i("MicroMsg.SlideFullCardItemAdBackAnimation", "onAnimation end");
+          h.this.RIO.QaX.setScaleX(1.0F);
+          h.this.RIO.QaX.setScaleY(1.0F);
+          h.this.RIO.QaX.setAlpha(1.0F);
+          h.this.RIO.mtE = false;
+          AppMethodBeat.o(309351);
+        }
+        
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(309349);
+          Log.i("MicroMsg.SlideFullCardItemAdBackAnimation", "onAnimation start");
+          AppMethodBeat.o(309349);
+        }
+      });
+      AppMethodBeat.o(309333);
       return;
     }
-    catch (Throwable paramMMActivity)
+    finally
     {
-      ab.e("MicroMsg.SphereCardAdClickAnimation", "init exp=" + paramMMActivity.toString());
-      AppMethodBeat.o(145713);
+      Log.e("MicroMsg.SlideFullCardItemAdBackAnimation", "init exp=" + paramMMActivity.toString());
+      AppMethodBeat.o(309333);
     }
   }
   
-  public final void mi(long paramLong)
+  public final void vz(long paramLong)
   {
-    AppMethodBeat.i(145714);
-    if ((this.seX != null) && (!this.seX.isStarted()))
+    AppMethodBeat.i(309336);
+    if ((this.Div != null) && (!this.Div.isStarted()))
     {
-      this.seX.setStartDelay(paramLong);
-      this.seX.start();
+      this.Div.setStartDelay(paramLong);
+      this.Div.start();
     }
-    AppMethodBeat.o(145714);
+    AppMethodBeat.o(309336);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.b.h
  * JD-Core Version:    0.7.0.1
  */

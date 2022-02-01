@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 
-public final class dvt
-  implements Parcelable.Creator
+public class dvt
+  implements Runnable
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Text(paramParcel);
-  }
+  public dvt(MediaPlayerManager paramMediaPlayerManager, AudioPlayer paramAudioPlayer, int paramInt) {}
   
-  public ForwardUtils.Section_Text[] a(int paramInt)
+  public void run()
   {
-    return new ForwardUtils.Section_Text[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,40 +1,25 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.GridView;
-import android.widget.ImageView;
 import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.IStatusListener;
 import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.StatableBitmapDrawable;
 
 public class ggy
-  implements IIconListener
+  implements IStatusListener
 {
   public ggy(EditActivity paramEditActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(int paramInt, RichStatus paramRichStatus)
   {
-    if ((EditActivity.a(this.a).b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
-      EditActivity.a(this.a, false);
-    }
-    for (;;)
+    if (paramInt != 100)
     {
-      return;
-      if ((paramBitmap != null) && (paramInt2 == 201) && (EditActivity.a(this.a)))
-      {
-        int i = EditActivity.a(this.a).getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          View localView = EditActivity.a(this.a).getChildAt(paramInt2);
-          if (paramInt1 == ((Integer)localView.getTag()).intValue()) {
-            ((ImageView)localView.findViewById(2131232969)).setImageDrawable(new StatableBitmapDrawable(this.a.getResources(), paramBitmap, false, false));
-          }
-          paramInt2 += 1;
-        }
-      }
+      EditActivity.a(this.a, null);
+      EditActivity.a(this.a, null);
     }
+    EditActivity.b(this.a, true);
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 

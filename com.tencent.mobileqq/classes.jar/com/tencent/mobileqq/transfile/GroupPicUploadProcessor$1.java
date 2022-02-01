@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.transfile;
 
-import batj;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class GroupPicUploadProcessor$1
+class GroupPicUploadProcessor$1
   implements Runnable
 {
-  public GroupPicUploadProcessor$1(batj parambatj) {}
+  GroupPicUploadProcessor$1(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.sApplication, 2131689986, 1).a();
+    QQToast.makeText(BaseApplication.getContext(), 2131886529, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPicUploadProcessor.1
  * JD-Core Version:    0.7.0.1
  */

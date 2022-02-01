@@ -3,41 +3,42 @@ package com.tencent.mqp.app.sec;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfam;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public final class MQPSensitiveMsgUtil$5
+final class MQPSensitiveMsgUtil$5
   implements Runnable
 {
   public void run()
   {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("sp_confirmed_sensmsg_");
+    ((StringBuilder)localObject1).append(MQPSensitiveMsgUtil.b());
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = BaseApplication.getContext();
     int i = 0;
-    Object localObject = "sp_confirmed_sensmsg_" + bfam.a();
-    localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
-    Bundle localBundle = new Bundle();
-    if (i < 10)
+    localObject1 = ((BaseApplication)localObject2).getSharedPreferences((String)localObject1, 0);
+    localObject2 = new Bundle();
+    while (i < 10)
     {
       String str1 = Integer.toString(i);
-      if (!((SharedPreferences)localObject).contains(str1)) {}
-      for (;;)
+      if (((SharedPreferences)localObject1).contains(str1))
       {
-        i += 1;
-        break;
-        String str2 = ((SharedPreferences)localObject).getString(str1, null);
+        String str2 = ((SharedPreferences)localObject1).getString(str1, null);
         if (!TextUtils.isEmpty(str2)) {
-          localBundle.putString(str2, str1);
+          ((Bundle)localObject2).putString(str2, str1);
         }
       }
+      i += 1;
     }
-    if (localBundle.size() > 0) {
-      bfam.a(localBundle.size() - 1);
+    if (((Bundle)localObject2).size() > 0) {
+      MQPSensitiveMsgUtil.a(((Bundle)localObject2).size() - 1);
     }
-    bfam.a().putBundle(bfam.a(), localBundle);
+    MQPSensitiveMsgUtil.c().putBundle(MQPSensitiveMsgUtil.b(), (Bundle)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.5
  * JD-Core Version:    0.7.0.1
  */

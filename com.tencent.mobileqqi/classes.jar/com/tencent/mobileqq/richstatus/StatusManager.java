@@ -20,13 +20,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import ggn;
-import ggp;
+import ggm;
+import ggo;
+import ghz;
 import gia;
 import gib;
 import gic;
 import gid;
-import gie;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -48,7 +48,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import protocol.KQQConfig.GetResourceReqInfo;
 
 public class StatusManager
-  implements ggp, Manager
+  implements ggo, Manager
 {
   public static final int a = -3;
   private static final long jdField_a_of_type_Long = 28L;
@@ -109,7 +109,7 @@ public class StatusManager
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private RichStatus jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
   private StatusObserver jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver;
-  private ggn jdField_a_of_type_Ggn;
+  private ggm jdField_a_of_type_Ggm;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private HashSet jdField_a_of_type_JavaUtilHashSet;
@@ -146,7 +146,7 @@ public class StatusManager
     if (this.jdField_a_of_type_AndroidOsAsyncTask != null) {
       return 100;
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = new gia(this).execute(new Void[0]);
+    this.jdField_a_of_type_AndroidOsAsyncTask = new ghz(this).execute(new Void[0]);
     return 100;
   }
   
@@ -279,9 +279,9 @@ public class StatusManager
           localStatusManager1.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = null;
         }
         localStatusManager2 = localStatusManager1;
-        if (localStatusManager1.jdField_a_of_type_Ggn != null)
+        if (localStatusManager1.jdField_a_of_type_Ggm != null)
         {
-          localStatusManager1.jdField_a_of_type_Ggn.a();
+          localStatusManager1.jdField_a_of_type_Ggm.a();
           localStatusManager2 = localStatusManager1;
         }
       }
@@ -295,7 +295,7 @@ public class StatusManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.xml", 2, "removeOldIcons(" + paramSparseArray1 + ", " + paramSparseArray2 + ")");
     }
-    File localFile = ggn.a();
+    File localFile = ggm.a();
     boolean bool1;
     if (localFile == null)
     {
@@ -533,7 +533,7 @@ public class StatusManager
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new gib(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new gia(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
   }
   
@@ -550,7 +550,7 @@ public class StatusManager
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new gid(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new gic(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver);
   }
   
@@ -603,7 +603,7 @@ public class StatusManager
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramRichStatus;
       ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramRichStatus, paramInt);
       if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gic(this);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new gib(this);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       return 100;
@@ -648,7 +648,7 @@ public class StatusManager
       this.jdField_b_of_type_JavaUtilArrayList = null;
       if ((this.jdField_c_of_type_JavaUtilArrayList == null) && (this.jdField_b_of_type_AndroidOsAsyncTask == null))
       {
-        this.jdField_b_of_type_AndroidOsAsyncTask = new gie(this);
+        this.jdField_b_of_type_AndroidOsAsyncTask = new gid(this);
         this.jdField_b_of_type_AndroidOsAsyncTask.execute(new Void[0]);
       }
     }
@@ -672,18 +672,18 @@ public class StatusManager
   
   public Bitmap a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Ggn == null) {
-      this.jdField_a_of_type_Ggn = new ggn(this);
+    if (this.jdField_a_of_type_Ggm == null) {
+      this.jdField_a_of_type_Ggm = new ggm(this);
     }
     ActionInfo localActionInfo = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
     String str = paramInt1 + "_s_" + paramInt2;
-    ggn localggn = this.jdField_a_of_type_Ggn;
+    ggm localggm = this.jdField_a_of_type_Ggm;
     Object localObject;
     if (localActionInfo != null) {
       if (paramInt2 == 201)
       {
         localObject = localActionInfo.jdField_a_of_type_JavaLangString;
-        localObject = localggn.a(str, null, (String)localObject);
+        localObject = localggm.a(str, null, (String)localObject);
         if ((localActionInfo == null) && (c()) && (localObject == null)) {
           this.jdField_a_of_type_JavaUtilHashSet.add(str);
         }
@@ -955,10 +955,10 @@ public class StatusManager
     //   429: aload 9
     //   431: invokevirtual 794	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   434: aload 8
-    //   436: new 796	gif
+    //   436: new 796	gie
     //   439: dup
     //   440: aload_0
-    //   441: invokespecial 797	gif:<init>	(Lcom/tencent/mobileqq/richstatus/StatusManager;)V
+    //   441: invokespecial 797	gie:<init>	(Lcom/tencent/mobileqq/richstatus/StatusManager;)V
     //   444: invokestatic 803	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   447: invokestatic 176	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   450: ifeq +33 -> 483
@@ -1344,7 +1344,7 @@ public class StatusManager
     {
       if (localObject1 != null)
       {
-        localObject2 = this.jdField_a_of_type_Ggn.a(str, null, (String)localObject1);
+        localObject2 = this.jdField_a_of_type_Ggm.a(str, null, (String)localObject1);
         if (localObject2 == null) {
           break label50;
         }
@@ -1465,12 +1465,12 @@ public class StatusManager
   public Object[] a(int paramInt1, int paramInt2)
   {
     Object localObject2 = null;
-    if (this.jdField_a_of_type_Ggn == null) {
-      this.jdField_a_of_type_Ggn = new ggn(this);
+    if (this.jdField_a_of_type_Ggm == null) {
+      this.jdField_a_of_type_Ggm = new ggm(this);
     }
     Object localObject3 = (ActionInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
     String str2 = paramInt1 + "_" + paramInt2;
-    Object localObject1 = this.jdField_a_of_type_Ggn.a(str2);
+    Object localObject1 = this.jdField_a_of_type_Ggm.a(str2);
     String str1;
     if (localObject1 == null)
     {
@@ -1481,12 +1481,12 @@ public class StatusManager
       {
         localObject1 = ((ActionInfo)localObject3).g.replace("$U", Integer.toString(paramInt2)).replace("$D", Integer.toString(paramInt2 % 100)).replace("$T", Integer.toString(paramInt2 % 1000));
         str1 = paramInt1 + "_s_" + 201;
-        localObject3 = this.jdField_a_of_type_Ggn.a(str1);
-        ggn localggn = this.jdField_a_of_type_Ggn;
+        localObject3 = this.jdField_a_of_type_Ggm.a(str1);
+        ggm localggm = this.jdField_a_of_type_Ggm;
         if (localObject3 != null)
         {
           label198:
-          localggn.a(str2, (String)localObject2, (String)localObject1);
+          localggm.a(str2, (String)localObject2, (String)localObject1);
           if (localObject3 != null) {
             break label274;
           }

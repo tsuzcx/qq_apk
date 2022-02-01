@@ -9,7 +9,7 @@ public final class RspActivity
 {
   static byte[] cache_strRspAct;
   public short shShowPos = 2;
-  public byte[] strRspAct;
+  public byte[] strRspAct = null;
   
   public RspActivity() {}
   
@@ -38,7 +38,7 @@ public final class RspActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.RspActivity
  * JD-Core Version:    0.7.0.1
  */

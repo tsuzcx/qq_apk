@@ -5,154 +5,133 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b.h.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class q
-  extends a
+public abstract class q
+  extends n
 {
-  private l ruW;
-  LinearLayout rwE;
+  protected h.a QPl;
+  int clickCount = 0;
   
-  public q(Context paramContext, u paramu, ViewGroup paramViewGroup)
+  public q(Context paramContext, aa paramaa, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramu, paramViewGroup);
+    super(paramContext, paramaa, paramViewGroup);
+    Object localObject = hjn();
+    paramContext = Util.nullAsNil(((ai)localObject).uxInfo);
+    int i = ((ai)localObject).QLu;
+    int j = ((ai)localObject).source;
+    long l = Util.safeParseLong(((ai)localObject).rzx);
+    int k = paramaa.subType;
+    paramViewGroup = Util.nullAsNil(((ai)localObject).getViewId());
+    localObject = Util.nullAsNil(((ai)localObject).hiD());
+    String str = Util.nullAsNil(paramaa.QKG);
+    paramaa = Util.nullAsNil(paramaa.QKT);
+    this.QPl = new h.a(paramContext, j, i, l, k, paramViewGroup, (String)localObject);
+    mw(str, paramaa);
   }
   
-  public final void cqA()
+  private void mw(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(37195);
-    Iterator localIterator = this.ruW.crG().iterator();
-    while (localIterator.hasNext())
+    if (this.QPl != null)
     {
-      h localh = (h)localIterator.next();
-      if (localh.cqX()) {
-        localh.cqA();
-      }
+      this.QPl.mx("cid", paramString1);
+      this.QPl.mx("jumpExtInfo", paramString2);
     }
-    super.cqA();
-    AppMethodBeat.o(37195);
   }
   
-  public final void cqB()
+  public final void a(aa paramaa, ai paramai)
   {
-    AppMethodBeat.i(37199);
-    Iterator localIterator = this.ruW.crG().iterator();
-    while (localIterator.hasNext()) {
-      ((h)localIterator.next()).cqB();
-    }
-    super.cqB();
-    AppMethodBeat.o(37199);
-  }
-  
-  public final void cqC()
-  {
-    AppMethodBeat.i(37196);
-    Iterator localIterator = this.ruW.crG().iterator();
-    while (localIterator.hasNext())
-    {
-      h localh = (h)localIterator.next();
-      if (localh.cqX()) {
-        localh.cqC();
-      }
-    }
-    super.cqC();
-    AppMethodBeat.o(37196);
-  }
-  
-  public final void cqK()
-  {
-    AppMethodBeat.i(37202);
-    this.rwE = ((LinearLayout)this.contentView.findViewById(2131827858));
-    AppMethodBeat.o(37202);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37201);
-    if (((u)this.rve).rsT == 0) {
-      this.rwE.setOrientation(1);
-    }
-    while (this.ruW == null)
-    {
-      this.ruW = new l(((u)this.rve).rsS, this.context, this.rwE);
-      this.ruW.layout();
-      AppMethodBeat.o(37201);
+    if ((paramai == null) || (paramaa == null) || (this.QPl == null)) {
       return;
-      if (((u)this.rve).rsT == 1) {
-        this.rwE.setOrientation(0);
+    }
+    String str1 = Util.nullAsNil(paramai.uxInfo);
+    int i = paramai.QLu;
+    int j = paramai.source;
+    long l = Util.safeParseLong(paramai.rzx);
+    int k = paramaa.subType;
+    String str2 = Util.nullAsNil(paramai.getViewId());
+    String str3 = Util.nullAsNil(paramai.hiD());
+    paramai = Util.nullAsNil(paramaa.QKG);
+    paramaa = Util.nullAsNil(paramaa.QKT);
+    h.a locala = this.QPl;
+    try
+    {
+      locala.QOh.m("uxinfo", str1);
+      locala.QOh.au("scene", j);
+      locala.QOh.au("originScene", i);
+      locala.QOh.t("canvasId", l);
+      locala.QOh.au("type", 21);
+      locala.QOh.au("subType", k);
+      locala.QOh.au("action", 1);
+      if (!Util.isNullOrNil(new String[] { str2, str3 }))
+      {
+        locala.QOh.m("viewid", str2);
+        locala.QOh.m("commInfo", str3);
+      }
+      mw(paramai, paramaa);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("NetSceneAdLadingPageClick", "updateRetInfo exp=" + localException.toString());
       }
     }
-    this.ruW.dg(((u)this.rve).rsS);
-    AppMethodBeat.o(37201);
   }
   
-  protected final void cqQ()
+  public final boolean bP(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(37198);
+    if (!super.bP(paramJSONObject)) {
+      return false;
+    }
+    try
+    {
+      paramJSONObject.put("clickCount", this.clickCount);
+      aa localaa = this.QOV;
+      if (localaa != null) {}
+      for (int i = localaa.subType;; i = 0)
+      {
+        paramJSONObject.putOpt("subType", Integer.valueOf(i));
+        return true;
+      }
+      return false;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      Log.printErrStackTrace("MicroMsg.Sns.AdLandingPageBtnBaseComp", paramJSONObject, "", new Object[0]);
+    }
+  }
+  
+  protected final void hal()
+  {
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.QOV.paddingLeft, (int)this.QOV.paddingTop, (int)this.QOV.paddingRight, (int)this.QOV.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(37198);
   }
   
-  public final void cqS()
+  protected void hja()
   {
-    AppMethodBeat.i(37197);
-    Iterator localIterator = this.ruW.crG().iterator();
-    while (localIterator.hasNext())
-    {
-      h localh = (h)localIterator.next();
-      if (localh.cqX())
-      {
-        localh.cqA();
-        localh.cqC();
-      }
-      else
-      {
-        localh.cqB();
-      }
-    }
-    AppMethodBeat.o(37197);
+    this.QPl.report("13387");
   }
   
-  public final List<h> cqT()
+  protected final void hjr()
   {
-    AppMethodBeat.i(37203);
-    ArrayList localArrayList = new ArrayList(this.ruW.crG());
-    AppMethodBeat.o(37203);
-    return localArrayList;
-  }
-  
-  public final void cqz()
-  {
-    AppMethodBeat.i(37200);
-    super.cqz();
-    Iterator localIterator = this.ruW.crG().iterator();
-    while (localIterator.hasNext()) {
-      ((h)localIterator.next()).cqz();
-    }
-    AppMethodBeat.o(37200);
-  }
-  
-  protected final int getLayout()
-  {
-    return 2130970784;
+    this.clickCount += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.q
  * JD-Core Version:    0.7.0.1
  */

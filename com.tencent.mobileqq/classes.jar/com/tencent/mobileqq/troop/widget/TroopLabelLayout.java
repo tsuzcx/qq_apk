@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
 import NearbyGroup.GroupLabel;
-import aepi;
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -17,11 +15,10 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bdgz;
-import bdoo;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.data.MayKnowRecommend.MayKnowRecommendLabel;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.RecommendLabel;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,29 +31,29 @@ import java.util.Set;
 public class TroopLabelLayout
   extends ViewGroup
 {
-  static final SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  int jdField_a_of_type_Int = 5;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new TroopLabelLayout.1(this);
-  private String jdField_a_of_type_JavaLangString = "TroopLabelLayout";
-  ArrayList<GroupLabel> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Map<Integer, TroopLabelTextView> jdField_a_of_type_JavaUtilMap;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean;
+  static final SparseIntArray d = new SparseIntArray();
+  int a = 5;
+  int b = 0;
+  TextView c;
+  boolean e = false;
+  ArrayList<GroupLabel> f = new ArrayList();
+  Runnable g = new TroopLabelLayout.1(this);
+  boolean h;
+  private String i = "TroopLabelLayout";
+  private Map<Integer, TroopLabelTextView> j;
+  private Drawable k = null;
   
   static
   {
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 1);
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(4, 2);
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(8, 3);
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(7, 4);
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(6, 5);
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(5, 6);
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(3, 8);
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(2, 9);
-    jdField_a_of_type_AndroidUtilSparseIntArray.put(101, 10);
+    d.put(1, 1);
+    d.put(4, 2);
+    d.put(8, 3);
+    d.put(7, 4);
+    d.put(6, 5);
+    d.put(5, 6);
+    d.put(3, 8);
+    d.put(2, 9);
+    d.put(101, 10);
   }
   
   public TroopLabelLayout(Context paramContext)
@@ -76,473 +73,563 @@ public class TroopLabelLayout
   
   public TroopLabelTextView a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {}
-    while (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) {
+    Map localMap = this.j;
+    if (localMap == null) {
       return null;
     }
-    return (TroopLabelTextView)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public boolean a(MayKnowRecommend paramMayKnowRecommend)
-  {
-    int i;
-    int m;
-    if (paramMayKnowRecommend != null)
-    {
-      i = 0;
-      if (paramMayKnowRecommend.msgLabel != null) {
-        i = paramMayKnowRecommend.msgLabel.size();
-      }
-      if ((paramMayKnowRecommend.gender != 0) && (paramMayKnowRecommend.gender != 1)) {
-        break label545;
-      }
-      m = 1;
+    if (localMap.containsKey(Integer.valueOf(paramInt))) {
+      return (TroopLabelTextView)this.j.get(Integer.valueOf(paramInt));
     }
-    for (int k = i + 1;; k = i)
-    {
-      int j = 0;
-      removeAllViews();
-      i = 0;
-      Object localObject;
-      label118:
-      TroopLabelTextView localTroopLabelTextView;
-      if ((i < k) && (j < this.jdField_a_of_type_Int))
-      {
-        if ((m != 0) && (i == 0))
-        {
-          if (paramMayKnowRecommend.age > 0)
-          {
-            localObject = "[icon]" + " " + paramMayKnowRecommend.age + "";
-            localObject = new SpannableString((CharSequence)localObject);
-            if (paramMayKnowRecommend.gender != 0) {
-              break label296;
-            }
-            n = android.graphics.Color.rgb(0, 202, 252);
-          }
-          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845458);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845456))
-          {
-            localTroopLabelTextView = new TroopLabelTextView(getContext(), n, -1, this.jdField_b_of_type_Int);
-            if (j >= this.jdField_a_of_type_Int) {
-              break label515;
-            }
-            addView(localTroopLabelTextView);
-            n = (int)(localTroopLabelTextView.getTextSize() * 0.8D + 0.5D);
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, n, n);
-            ((SpannableString)localObject).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
-            localTroopLabelTextView.setText((CharSequence)localObject);
-            j += 1;
-            label264:
-            i += 1;
-            break;
-            localObject = "[icon]" + " ";
-            break label118;
-            label296:
-            n = android.graphics.Color.rgb(255, 128, 191);
-          }
-        }
-        if (m == 0) {
-          break label539;
-        }
-      }
-      label515:
-      label539:
-      for (int n = i - 1;; n = i)
-      {
-        if ((paramMayKnowRecommend.msgLabel != null) && (paramMayKnowRecommend.msgLabel.size() > n))
-        {
-          localObject = (MayKnowRecommend.MayKnowRecommendLabel)paramMayKnowRecommend.msgLabel.get(n);
-          n = ((MayKnowRecommend.MayKnowRecommendLabel)localObject).edging_color;
-          int i1 = ((MayKnowRecommend.MayKnowRecommendLabel)localObject).text_color;
-          localTroopLabelTextView = new TroopLabelTextView(getContext(), n, i1, this.jdField_b_of_type_Int);
-          if (j < this.jdField_a_of_type_Int)
-          {
-            addView(localTroopLabelTextView);
-            localTroopLabelTextView.setEllipsize(TextUtils.TruncateAt.END);
-            localTroopLabelTextView.bringToFront();
-            if (((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name != null)
-            {
-              localTroopLabelTextView.setText(((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name);
-              localTroopLabelTextView.setContentDescription(((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name);
-              if (((m == 0) || (i != 1)) && ((m != 0) || (i != 0))) {
-                break;
-              }
-              localTroopLabelTextView.setMaxWidth(bdoo.a(150.0F));
-              break;
-            }
-            localTroopLabelTextView.setText("");
-            localTroopLabelTextView.setContentDescription("");
-            break;
-          }
-          if (k == 0) {
-            setVisibility(8);
-          }
-          for (;;)
-          {
-            return true;
-            setVisibility(0);
-          }
-        }
-        break label264;
-      }
-      label545:
-      m = 0;
-    }
+    return null;
   }
   
   public boolean a(ArrayList<GroupLabel> paramArrayList)
   {
-    label357:
-    label752:
-    label765:
-    label767:
-    for (;;)
+    synchronized (this.f)
     {
-      HashMap localHashMap;
-      int i;
-      GroupLabel localGroupLabel;
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      this.f.clear();
+      if ((paramArrayList != null) && (paramArrayList.size() != 0))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-          break label765;
-        }
-        localHashMap = new HashMap();
-        int m = paramArrayList.size();
-        i = 0;
-        int j = 0;
-        if ((j >= m) || (i >= this.jdField_a_of_type_Int)) {
-          break label752;
-        }
-        localGroupLabel = (GroupLabel)paramArrayList.get(j);
-        if (TextUtils.isEmpty(localGroupLabel.strWording)) {
-          j += 1;
-        }
-      }
-      if ((localGroupLabel.type != 2001L) && ((this.jdField_b_of_type_Int >= 2) || (localGroupLabel.type < 1000L) || (localGroupLabel.type >= 2000L)) && ((this.jdField_b_of_type_Int != 2) || (localGroupLabel.type >= 1000L)))
-      {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localGroupLabel);
-          if ((!this.jdField_b_of_type_Boolean) && (localGroupLabel.type == 4L))
-          {
-            if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-              break label767;
-            }
-            this.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupLabel.strWording);
-          }
-        }
-        Object localObject2 = a(i);
-        int k = android.graphics.Color.rgb((int)localGroupLabel.edging_color.R, (int)localGroupLabel.edging_color.G, (int)localGroupLabel.edging_color.B);
-        int n = android.graphics.Color.rgb((int)localGroupLabel.text_color.R, (int)localGroupLabel.text_color.G, (int)localGroupLabel.text_color.B);
-        if (localObject2 == null)
-        {
-          ??? = new TroopLabelTextView(getContext(), k, n, this.jdField_b_of_type_Int);
-          if (i >= this.jdField_a_of_type_Int) {
-            break label752;
-          }
-          addView((View)???);
-          setTroopLabel(i, (TroopLabelTextView)???);
-          ((TroopLabelTextView)???).bringToFront();
-          if (this.jdField_b_of_type_Int == 2)
-          {
-            k = aepi.a(42.0F, getResources());
-            n = aepi.a(16.0F, getResources());
-            ((TroopLabelTextView)???).setWidth(k);
-            ((TroopLabelTextView)???).setHeight(n);
-            ((TroopLabelTextView)???).setMaskImage(2130843443);
-            if (localGroupLabel.strWording.length() < 2) {
-              break label685;
-            }
-            k = 2;
-            localGroupLabel.strWording = localGroupLabel.strWording.substring(0, k);
-          }
-          if (localGroupLabel.type != 1L) {
-            break label711;
-          }
-          localObject2 = new SpannableString("[icon]" + " " + localGroupLabel.strWording);
-          if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-          {
-            if (this.jdField_b_of_type_Int != 0) {
-              break label691;
-            }
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130850110);
-          }
-          k = (int)(((TroopLabelTextView)???).getTextSize() * 0.8D + 0.5D);
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, k, k);
-          ((SpannableString)localObject2).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
-          ((TroopLabelTextView)???).setText((CharSequence)localObject2);
-          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + alud.a(2131715868));
-        }
+        ??? = new HashMap();
+        int i2 = paramArrayList.size();
+        int m = 0;
+        int n = 0;
         for (;;)
         {
-          ((TroopLabelTextView)???).setVisibility(0);
-          localHashMap.put(Integer.valueOf(i), Boolean.valueOf(true));
-          i += 1;
-          break;
-          ((TroopLabelTextView)localObject2).setColor(k, n);
-          ??? = localObject2;
-          if (!QLog.isColorLevel()) {
-            break label357;
+          ??? = ???;
+          if (m < i2)
+          {
+            ??? = ???;
+            if (n < this.a)
+            {
+              GroupLabel localGroupLabel = (GroupLabel)paramArrayList.get(m);
+              int i1;
+              int i3;
+              if (TextUtils.isEmpty(localGroupLabel.strWording))
+              {
+                ??? = ???;
+                i1 = n;
+              }
+              else if (localGroupLabel.type == 2001L)
+              {
+                ??? = ???;
+                i1 = n;
+              }
+              else
+              {
+                i3 = this.b;
+                i1 = 2;
+                if ((i3 < 2) && (localGroupLabel.type >= 1000L) && (localGroupLabel.type < 2000L))
+                {
+                  ??? = ???;
+                  i1 = n;
+                }
+                else if ((this.b == 2) && (localGroupLabel.type < 1000L))
+                {
+                  ??? = ???;
+                  i1 = n;
+                }
+              }
+              synchronized (this.f)
+              {
+                this.f.add(localGroupLabel);
+                Object localObject3;
+                if ((!this.h) && (localGroupLabel.type == 4L))
+                {
+                  localObject3 = this.c;
+                  ??? = ???;
+                  i1 = n;
+                  if (localObject3 != null)
+                  {
+                    ((TextView)localObject3).setText(localGroupLabel.strWording);
+                    ??? = ???;
+                    i1 = n;
+                  }
+                }
+                else
+                {
+                  localObject3 = a(n);
+                  i3 = android.graphics.Color.rgb((int)localGroupLabel.edging_color.R, (int)localGroupLabel.edging_color.G, (int)localGroupLabel.edging_color.B);
+                  int i4 = android.graphics.Color.rgb((int)localGroupLabel.text_color.R, (int)localGroupLabel.text_color.G, (int)localGroupLabel.text_color.B);
+                  if (localObject3 == null)
+                  {
+                    ??? = new TroopLabelTextView(getContext(), i3, i4, this.b);
+                    if (n < this.a)
+                    {
+                      addView((View)???);
+                      setTroopLabel(n, (TroopLabelTextView)???);
+                    }
+                    else
+                    {
+                      ??? = ???;
+                      break;
+                    }
+                  }
+                  else
+                  {
+                    ((TroopLabelTextView)localObject3).setColor(i3, i4);
+                    ??? = localObject3;
+                    if (QLog.isColorLevel())
+                    {
+                      QLog.d(this.i, 2, "labeltextview cache");
+                      ??? = localObject3;
+                    }
+                  }
+                  ((TroopLabelTextView)???).bringToFront();
+                  if (this.b == 2)
+                  {
+                    i3 = ViewUtils.dip2px(42.0F);
+                    i4 = ViewUtils.dip2px(16.0F);
+                    ((TroopLabelTextView)???).setWidth(i3);
+                    ((TroopLabelTextView)???).setHeight(i4);
+                    ((TroopLabelTextView)???).setMaskImage(2130844954);
+                    if (localGroupLabel.strWording.length() < 2) {
+                      i1 = 1;
+                    }
+                    localGroupLabel.strWording = localGroupLabel.strWording.substring(0, i1);
+                  }
+                  if (localGroupLabel.type == 1L)
+                  {
+                    localObject3 = new StringBuilder();
+                    ((StringBuilder)localObject3).append("[icon]");
+                    ((StringBuilder)localObject3).append(" ");
+                    ((StringBuilder)localObject3).append(localGroupLabel.strWording);
+                    localObject3 = new SpannableString(((StringBuilder)localObject3).toString());
+                    if (this.k == null) {
+                      if (this.b == 0) {
+                        this.k = getContext().getResources().getDrawable(2130853363);
+                      } else {
+                        this.k = getContext().getResources().getDrawable(2130844951);
+                      }
+                    }
+                    double d1 = ((TroopLabelTextView)???).getTextSize();
+                    Double.isNaN(d1);
+                    i1 = (int)(d1 * 0.8D + 0.5D);
+                    this.k.setBounds(0, 0, i1, i1);
+                    ((SpannableString)localObject3).setSpan(new ImageSpan(this.k, 1), 0, 6, 17);
+                    ((TroopLabelTextView)???).setText((CharSequence)localObject3);
+                    localObject3 = new StringBuilder();
+                    ((StringBuilder)localObject3).append(localGroupLabel.strWording);
+                    ((StringBuilder)localObject3).append(HardCodeUtil.a(2131912736));
+                    ((TroopLabelTextView)???).setContentDescription(((StringBuilder)localObject3).toString());
+                  }
+                  else
+                  {
+                    localObject3 = new StringBuilder();
+                    ((StringBuilder)localObject3).append(localGroupLabel.strWording);
+                    ((StringBuilder)localObject3).append("");
+                    ((TroopLabelTextView)???).setText(((StringBuilder)localObject3).toString());
+                    ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording);
+                  }
+                  ((TroopLabelTextView)???).setVisibility(0);
+                  ((Map)???).put(Integer.valueOf(n), Boolean.valueOf(true));
+                  i1 = n + 1;
+                  ??? = ???;
+                }
+                m += 1;
+                ??? = ???;
+                n = i1;
+              }
+            }
           }
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "labeltextview cache");
-          ??? = localObject2;
-          break label357;
-          k = 1;
-          break label431;
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130843441);
-          break label525;
-          ((TroopLabelTextView)???).setText(localGroupLabel.strWording + "");
-          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording);
         }
-        setLabelsUnVisible(localHashMap);
-        localHashMap.clear();
+        setLabelsUnVisible((Map)???);
+        ((Map)???).clear();
+      }
+      return true;
+    }
+    for (;;)
+    {
+      throw paramArrayList;
+    }
+  }
+  
+  public boolean a(List<RecommendLabel> paramList, int paramInt1, int paramInt2)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      if (paramList != null) {
+        m = paramList.size();
+      } else {
+        m = 0;
+      }
+      int n;
+      int i1;
+      if ((paramInt1 != 0) && (paramInt1 != 1))
+      {
+        n = 0;
+        i1 = m;
+      }
+      else
+      {
+        i1 = m + 1;
+        n = 1;
+      }
+      removeAllViews();
+      int m = 0;
+      int i3;
+      for (int i2 = 0; (m < i1) && (i2 < this.a); i2 = i3)
+      {
+        Object localObject;
+        TroopLabelTextView localTroopLabelTextView;
+        if ((n != 0) && (m == 0))
+        {
+          if (paramInt2 > 0)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[icon]");
+            ((StringBuilder)localObject).append(" ");
+            ((StringBuilder)localObject).append(paramInt2);
+            ((StringBuilder)localObject).append("");
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[icon]");
+            ((StringBuilder)localObject).append(" ");
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          localObject = new SpannableString((CharSequence)localObject);
+          if (paramInt1 == 0)
+          {
+            i3 = android.graphics.Color.rgb(0, 202, 252);
+            this.k = getContext().getResources().getDrawable(2130847525);
+          }
+          else
+          {
+            i3 = android.graphics.Color.rgb(255, 128, 191);
+            this.k = getContext().getResources().getDrawable(2130847523);
+          }
+          localTroopLabelTextView = new TroopLabelTextView(getContext(), i3, -1, this.b);
+          if (i2 >= this.a) {
+            break;
+          }
+          addView(localTroopLabelTextView);
+          double d1 = localTroopLabelTextView.getTextSize();
+          Double.isNaN(d1);
+          i3 = (int)(d1 * 0.8D + 0.5D);
+          this.k.setBounds(0, 0, i3, i3);
+          ((SpannableString)localObject).setSpan(new ImageSpan(this.k, 1), 0, 6, 17);
+          localTroopLabelTextView.setText((CharSequence)localObject);
+        }
+        else
+        {
+          if (n != 0) {
+            i4 = m - 1;
+          } else {
+            i4 = m;
+          }
+          i3 = i2;
+          if (paramList == null) {
+            break label575;
+          }
+          i3 = i2;
+          if (paramList.size() <= i4) {
+            break label575;
+          }
+          localObject = (RecommendLabel)paramList.get(i4);
+          i3 = ((RecommendLabel)localObject).edging_color;
+          int i4 = ((RecommendLabel)localObject).text_color;
+          localTroopLabelTextView = new TroopLabelTextView(getContext(), i3, i4, this.b);
+          if (i2 >= this.a) {
+            break;
+          }
+          addView(localTroopLabelTextView);
+          localTroopLabelTextView.setEllipsize(TextUtils.TruncateAt.END);
+          localTroopLabelTextView.bringToFront();
+          if (((RecommendLabel)localObject).bytes_name != null)
+          {
+            localTroopLabelTextView.setText(((RecommendLabel)localObject).bytes_name);
+            localTroopLabelTextView.setContentDescription(((RecommendLabel)localObject).bytes_name);
+            if (((n != 0) && (m == 1)) || ((n == 0) && (m == 0))) {
+              localTroopLabelTextView.setMaxWidth(ViewUtils.dip2px(150.0F));
+            }
+          }
+          else
+          {
+            localTroopLabelTextView.setText("");
+            localTroopLabelTextView.setContentDescription("");
+          }
+        }
+        i3 = i2 + 1;
+        label575:
+        m += 1;
+      }
+      if (i1 == 0)
+      {
+        setVisibility(8);
         return true;
       }
+      setVisibility(0);
+      return true;
     }
+    return false;
   }
   
   public boolean a(List<RecommendLabel> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_b_of_type_Int = paramInt3;
-    paramInt3 = 0;
+    this.b = paramInt3;
     if (paramList != null) {
       paramInt3 = paramList.size();
-    }
-    int k;
-    if ((paramInt2 == 0) || (paramInt2 == 1)) {
-      k = 1;
-    }
-    for (int j = paramInt3 + 1;; j = paramInt3)
-    {
-      int i = 0;
-      removeAllViews();
+    } else {
       paramInt3 = 0;
-      Object localObject;
-      label110:
-      TroopLabelTextView localTroopLabelTextView;
-      if ((paramInt3 < j) && (i < this.jdField_a_of_type_Int))
-      {
-        if ((k != 0) && (paramInt3 == 0))
-        {
-          if (paramInt1 > 0)
-          {
-            localObject = "[icon]" + " " + paramInt1 + "";
-            localObject = new SpannableString((CharSequence)localObject);
-            if (paramInt2 != 0) {
-              break label290;
-            }
-            m = android.graphics.Color.rgb(0, 202, 252);
-          }
-          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845458);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845456))
-          {
-            localTroopLabelTextView = new TroopLabelTextView(getContext(), m, -1, this.jdField_b_of_type_Int);
-            if (i >= this.jdField_a_of_type_Int) {
-              break label504;
-            }
-            addView(localTroopLabelTextView);
-            m = (int)(localTroopLabelTextView.getTextSize() * 0.8D + 0.5D);
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, m, m);
-            ((SpannableString)localObject).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
-            localTroopLabelTextView.setText((CharSequence)localObject);
-            i += 1;
-            label256:
-            paramInt3 += 1;
-            break;
-            localObject = "[icon]" + " ";
-            break label110;
-            label290:
-            m = android.graphics.Color.rgb(255, 128, 191);
-          }
-        }
-        if (k == 0) {
-          break label528;
-        }
-      }
-      label528:
-      for (int m = paramInt3 - 1;; m = paramInt3)
-      {
-        if ((paramList != null) && (paramList.size() > m))
-        {
-          localObject = (RecommendLabel)paramList.get(m);
-          m = ((RecommendLabel)localObject).edging_color;
-          int n = ((RecommendLabel)localObject).text_color;
-          localTroopLabelTextView = new TroopLabelTextView(getContext(), m, n, this.jdField_b_of_type_Int);
-          if (i < this.jdField_a_of_type_Int)
-          {
-            addView(localTroopLabelTextView);
-            localTroopLabelTextView.setEllipsize(TextUtils.TruncateAt.END);
-            localTroopLabelTextView.bringToFront();
-            if (((RecommendLabel)localObject).bytes_name != null)
-            {
-              localTroopLabelTextView.setText(((RecommendLabel)localObject).bytes_name);
-              localTroopLabelTextView.setContentDescription(((RecommendLabel)localObject).bytes_name);
-              if (((k == 0) || (paramInt3 != 1)) && ((k != 0) || (paramInt3 != 0))) {
-                break;
-              }
-              localTroopLabelTextView.setMaxWidth(bdoo.a(150.0F));
-              break;
-            }
-            localTroopLabelTextView.setText("");
-            localTroopLabelTextView.setContentDescription("");
-            break;
-          }
-          label504:
-          if (j == 0) {
-            setVisibility(8);
-          }
-          for (;;)
-          {
-            return true;
-            setVisibility(0);
-          }
-        }
-        break label256;
-      }
-      k = 0;
     }
+    int m;
+    int n;
+    if ((paramInt2 != 0) && (paramInt2 != 1))
+    {
+      m = 0;
+      n = paramInt3;
+    }
+    else
+    {
+      n = paramInt3 + 1;
+      m = 1;
+    }
+    removeAllViews();
+    paramInt3 = 0;
+    int i2;
+    for (int i1 = 0; (paramInt3 < n) && (i1 < this.a); i1 = i2)
+    {
+      Object localObject;
+      TroopLabelTextView localTroopLabelTextView;
+      if ((m != 0) && (paramInt3 == 0))
+      {
+        if (paramInt1 > 0)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[icon]");
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(paramInt1);
+          ((StringBuilder)localObject).append("");
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[icon]");
+          ((StringBuilder)localObject).append(" ");
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        localObject = new SpannableString((CharSequence)localObject);
+        if (paramInt2 == 0)
+        {
+          i2 = android.graphics.Color.rgb(0, 202, 252);
+          this.k = getContext().getResources().getDrawable(2130847525);
+        }
+        else
+        {
+          i2 = android.graphics.Color.rgb(255, 128, 191);
+          this.k = getContext().getResources().getDrawable(2130847523);
+        }
+        localTroopLabelTextView = new TroopLabelTextView(getContext(), i2, -1, this.b);
+        if (i1 >= this.a) {
+          break;
+        }
+        addView(localTroopLabelTextView);
+        double d1 = localTroopLabelTextView.getTextSize();
+        Double.isNaN(d1);
+        i2 = (int)(d1 * 0.8D + 0.5D);
+        this.k.setBounds(0, 0, i2, i2);
+        ((SpannableString)localObject).setSpan(new ImageSpan(this.k, 1), 0, 6, 17);
+        localTroopLabelTextView.setText((CharSequence)localObject);
+      }
+      else
+      {
+        if (m != 0) {
+          i3 = paramInt3 - 1;
+        } else {
+          i3 = paramInt3;
+        }
+        i2 = i1;
+        if (paramList == null) {
+          break label565;
+        }
+        i2 = i1;
+        if (paramList.size() <= i3) {
+          break label565;
+        }
+        localObject = (RecommendLabel)paramList.get(i3);
+        i2 = ((RecommendLabel)localObject).edging_color;
+        int i3 = ((RecommendLabel)localObject).text_color;
+        localTroopLabelTextView = new TroopLabelTextView(getContext(), i2, i3, this.b);
+        if (i1 >= this.a) {
+          break;
+        }
+        addView(localTroopLabelTextView);
+        localTroopLabelTextView.setEllipsize(TextUtils.TruncateAt.END);
+        localTroopLabelTextView.bringToFront();
+        if (((RecommendLabel)localObject).bytes_name != null)
+        {
+          localTroopLabelTextView.setText(((RecommendLabel)localObject).bytes_name);
+          localTroopLabelTextView.setContentDescription(((RecommendLabel)localObject).bytes_name);
+          if (((m != 0) && (paramInt3 == 1)) || ((m == 0) && (paramInt3 == 0))) {
+            localTroopLabelTextView.setMaxWidth(ViewUtils.dip2px(150.0F));
+          }
+        }
+        else
+        {
+          localTroopLabelTextView.setText("");
+          localTroopLabelTextView.setContentDescription("");
+        }
+      }
+      i2 = i1 + 1;
+      label565:
+      paramInt3 += 1;
+    }
+    if (n == 0)
+    {
+      setVisibility(8);
+      return true;
+    }
+    setVisibility(0);
+    return true;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int j = getPaddingLeft();
-    int k = getPaddingRight();
-    int m = (int)bdgz.a(getContext(), 2.0F);
-    int n = getChildCount();
-    paramInt2 = getPaddingLeft();
-    int i1 = getPaddingTop();
-    paramInt4 = 0;
-    View localView;
-    if (paramInt4 < n)
+    int m = getPaddingLeft();
+    int n = getPaddingRight();
+    int i1 = (int)DisplayUtils.a(getContext(), 2.0F);
+    int i2 = getChildCount();
+    paramInt4 = getPaddingLeft();
+    int i3 = getPaddingTop();
+    paramInt2 = 0;
+    while (paramInt2 < i2)
     {
-      localView = getChildAt(paramInt4);
-      if (localView.getVisibility() != 8) {}
-    }
-    for (;;)
-    {
-      paramInt4 += 1;
-      break;
-      int i2 = localView.getMeasuredWidth();
-      int i3 = localView.getMeasuredHeight();
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      if (paramInt2 + i2 > paramInt3 - paramInt1 - j - k)
+      View localView = getChildAt(paramInt2);
+      if (localView.getVisibility() != 8)
       {
-        if (this.jdField_a_of_type_Boolean) {
-          post(this.jdField_a_of_type_JavaLangRunnable);
+        int i4 = localView.getMeasuredWidth();
+        int i5 = localView.getMeasuredHeight();
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
+        int i6 = paramInt4 + i4;
+        if (i6 > paramInt3 - paramInt1 - m - n)
+        {
+          if (this.e) {
+            post(this.g);
+          }
+          return;
         }
-        return;
+        int i7 = localLayoutParams.rightMargin;
+        localView.layout(paramInt4, i3, i6, i5 + i3);
+        paramInt4 = i4 + i1 + i7 + paramInt4;
       }
-      int i = localLayoutParams.rightMargin + (m + i2) + paramInt2;
-      localView.layout(paramInt2, i1, i2 + paramInt2, i3 + i1);
-      paramInt2 = i;
+      paramInt2 += 1;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int j = 0;
     super.onMeasure(paramInt1, paramInt2);
-    int n = View.MeasureSpec.getMode(paramInt1);
-    int i = View.MeasureSpec.getSize(paramInt1);
-    int m = View.MeasureSpec.getMode(paramInt2);
-    int k = View.MeasureSpec.getSize(paramInt2);
+    int i2 = View.MeasureSpec.getMode(paramInt1);
+    int n = View.MeasureSpec.getSize(paramInt1);
+    int i1 = View.MeasureSpec.getMode(paramInt2);
+    int m = View.MeasureSpec.getSize(paramInt2);
     super.measureChildren(paramInt1, paramInt2);
-    View localView;
-    switch (n)
-    {
-    default: 
-      paramInt1 = 0;
-      switch (m)
+    paramInt2 = n;
+    if (i2 != -2147483648) {
+      if (i2 != 0)
       {
-      default: 
-        paramInt2 = j;
+        paramInt2 = n;
+        if (i2 != 1073741824) {
+          paramInt2 = 0;
+        }
+      }
+      else
+      {
+        paramInt2 = 0;
+        paramInt1 = 0;
+        while (paramInt2 < getChildCount())
+        {
+          paramInt1 += getChildAt(paramInt2).getWidth();
+          paramInt2 += 1;
+        }
+        if (paramInt1 > n) {
+          paramInt2 = n;
+        } else {
+          paramInt2 = paramInt1;
+        }
+      }
+    }
+    paramInt1 = m;
+    if (i1 != -2147483648)
+    {
+      paramInt1 = m;
+      if (i1 != 1073741824) {
         if (getChildCount() > 0)
         {
-          localView = getChildAt(0);
-          i = 0 + (getPaddingBottom() + getPaddingTop());
-          paramInt2 = i;
-          if (localView == null) {}
+          View localView = getChildAt(0);
+          m = 0 + (getPaddingBottom() + getPaddingTop());
+          paramInt1 = m;
+          if (localView != null) {
+            paramInt1 = m + localView.getMeasuredHeight();
+          }
         }
-        break;
+        else
+        {
+          paramInt1 = 0;
+        }
       }
-      break;
     }
-    for (paramInt2 = i + localView.getMeasuredHeight();; paramInt2 = k)
-    {
-      super.setMeasuredDimension(paramInt1, paramInt2);
-      return;
-      paramInt1 = i;
-      break;
-      paramInt1 = 0;
-      paramInt2 = 0;
-      while (paramInt1 < getChildCount())
-      {
-        paramInt2 += getChildAt(paramInt1).getWidth();
-        paramInt1 += 1;
-      }
-      paramInt1 = paramInt2;
-      if (paramInt2 <= i) {
-        break;
-      }
-      paramInt1 = i;
-      break;
-    }
+    super.setMeasuredDimension(paramInt2, paramInt1);
   }
   
   public void setAutoCreateDistanceTextView(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void setDistanceTextView(TextView paramTextView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.c = paramTextView;
   }
   
   public void setLabelType(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void setLabelsUnVisible(Map<Integer, Boolean> paramMap)
   {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {}
-    for (;;)
-    {
+    Object localObject = this.j;
+    if (localObject == null) {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if (!paramMap.containsKey(localEntry.getKey())) {
-          ((TroopLabelTextView)localEntry.getValue()).setVisibility(8);
-        }
+    }
+    localObject = ((Map)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      if (!paramMap.containsKey(localEntry.getKey())) {
+        ((TroopLabelTextView)localEntry.getValue()).setVisibility(8);
       }
     }
   }
   
   public void setMaxLabelCount(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void setTroopLabel(int paramInt, TroopLabelTextView paramTroopLabelTextView)
   {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    if (this.j == null) {
+      this.j = new HashMap();
     }
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramTroopLabelTextView);
+    if (!this.j.containsKey(Integer.valueOf(paramInt))) {
+      this.j.put(Integer.valueOf(paramInt), paramTroopLabelTextView);
     }
   }
   
   public void setmIsNeedPriority(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopLabelLayout
  * JD-Core Version:    0.7.0.1
  */

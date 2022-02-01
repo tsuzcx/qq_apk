@@ -21,12 +21,17 @@ class ei$2
           ((ei.b)localObject2).cM();
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ei.2
  * JD-Core Version:    0.7.0.1
  */

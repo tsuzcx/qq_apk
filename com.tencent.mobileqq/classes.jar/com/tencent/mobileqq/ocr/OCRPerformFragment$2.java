@@ -3,8 +3,7 @@ package com.tencent.mobileqq.ocr;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Message;
-import avvq;
-import bhtd;
+import com.tencent.util.WeakReferenceHandler;
 
 class OCRPerformFragment$2
   implements Runnable
@@ -13,13 +12,13 @@ class OCRPerformFragment$2
   
   public void run()
   {
-    Bitmap localBitmap = avvq.a(OCRPerformFragment.a(this.this$0), this.this$0.getResources().getDisplayMetrics());
-    this.this$0.a.obtainMessage(100, localBitmap).sendToTarget();
+    Bitmap localBitmap = OCRPerformUtil.a(OCRPerformFragment.b(this.this$0), this.this$0.getResources().getDisplayMetrics());
+    OCRPerformFragment.c(this.this$0).obtainMessage(100, localBitmap).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.2
  * JD-Core Version:    0.7.0.1
  */

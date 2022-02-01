@@ -1,21 +1,23 @@
 package com.tencent.mobileqq.emosm;
 
-import apnd;
-import apoo;
-import bdin;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class FavRoamingStrategy$7
+class FavRoamingStrategy$7
   implements Runnable
 {
-  public FavRoamingStrategy$7(apnd paramapnd) {}
+  FavRoamingStrategy$7(FavRoamingStrategy paramFavRoamingStrategy) {}
   
   public void run()
   {
-    if ((this.this$0.a == null) || (!bdin.d(this.this$0.a.getApp()))) {
-      return;
+    if (this.this$0.a != null)
+    {
+      if (!NetworkUtil.isNetSupport(this.this$0.a.getApp())) {
+        return;
+      }
+      ((IFavroamingManagerService)this.this$0.a.getRuntimeService(IFavroamingManagerService.class)).syncRoaming();
     }
-    ((apoo)this.this$0.a.getManager(103)).b();
   }
 }
 

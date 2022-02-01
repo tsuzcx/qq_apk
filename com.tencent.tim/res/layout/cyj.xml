@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/dq8" android:layout_width="fill_parent" android:layout_height="@dimen/bed"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:background="@color/k8" android:layout_width="fill_parent" android:layout_height="0.100000024dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

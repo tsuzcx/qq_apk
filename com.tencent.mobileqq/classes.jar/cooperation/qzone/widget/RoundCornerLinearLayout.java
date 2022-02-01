@@ -13,32 +13,32 @@ import android.widget.LinearLayout;
 public class RoundCornerLinearLayout
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private Path mPath;
+  private float mRadius;
+  private RectF mRectF;
   
   public RoundCornerLinearLayout(Context paramContext)
   {
     super(paramContext);
-    a();
+    init();
   }
   
   public RoundCornerLinearLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    init();
   }
   
   public RoundCornerLinearLayout(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
+    init();
   }
   
-  private void a()
+  private void init()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.mPath = new Path();
+    this.mRectF = new RectF();
     if (Build.VERSION.SDK_INT < 18) {
       setLayerType(1, null);
     }
@@ -46,21 +46,24 @@ public class RoundCornerLinearLayout
   
   public void dispatchDraw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    this.mPath.reset();
+    this.mRectF.set(0.0F, 0.0F, getWidth(), getHeight());
+    Path localPath = this.mPath;
+    RectF localRectF = this.mRectF;
+    float f = this.mRadius;
+    localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
+    paramCanvas.clipPath(this.mPath);
     super.dispatchDraw(paramCanvas);
   }
   
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.mRadius = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.widget.RoundCornerLinearLayout
  * JD-Core Version:    0.7.0.1
  */

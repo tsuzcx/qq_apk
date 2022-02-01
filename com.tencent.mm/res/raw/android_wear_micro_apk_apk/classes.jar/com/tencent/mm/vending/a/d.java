@@ -2,7 +2,7 @@ package com.tencent.mm.vending.a;
 
 public abstract interface d<_Index>
 {
-  public abstract void H(_Index param_Index);
+  public abstract void Q(_Index param_Index);
 }
 
 

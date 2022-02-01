@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/k6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0">
-        <ImageView android:id="@id/csg" android:layout_width="@dimen/ny" android:layout_height="@dimen/ny" android:scaleType="fitXY" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/ol" android:textColor="@color/wr" android:ellipsize="end" android:id="@id/csh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:maxLength="15" />
-            <TextView android:textSize="@dimen/o3" android:textColor="@color/dh" android:id="@id/csi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bv" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="right" android:id="@id/csj" android:background="@null" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="70.0dip" android:minHeight="0.0dip" android:hint="@string/coi" wallet:layoutRes="@layout/a_o" wallet:contentHint="@string/coi" wallet:contentGravity="di|f0" style="@style/w7" />
-            <TextView android:textSize="@dimen/ol" android:textColor="#ff353535" android:id="@id/cs_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/coh" />
-        </LinearLayout>
-    </LinearLayout>
-    <View android:id="@id/csk" android:background="@drawable/sa" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="10.0dip" android:layout_below="@id/k6" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:gravity="center_horizontal" android:orientation="horizontal" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/aym" android:background="@drawable/wz" android:layout_width="@dimen/bv" android:layout_height="@dimen/bv" android:layout_marginTop="@dimen/d1" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <View android:id="@id/fmz" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/cv" android:layout_height="1.0dip" android:layout_marginRight="@dimen/df" app:layout_constraintBottom_toBottomOf="@id/aym" app:layout_constraintRight_toLeftOf="@id/aym" app:layout_constraintTop_toTopOf="@id/aym" />
+    <View android:id="@id/itu" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/cv" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/df" app:layout_constraintBottom_toBottomOf="@id/aym" app:layout_constraintLeft_toRightOf="@id/aym" app:layout_constraintTop_toTopOf="@id/aym" />
+</androidx.constraintlayout.widget.ConstraintLayout>

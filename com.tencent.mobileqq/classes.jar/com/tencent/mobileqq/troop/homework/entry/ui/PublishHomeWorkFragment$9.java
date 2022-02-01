@@ -9,12 +9,12 @@ class PublishHomeWorkFragment$9
   
   public void run()
   {
-    this.this$0.a.a();
+    this.this$0.g.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.9
  * JD-Core Version:    0.7.0.1
  */

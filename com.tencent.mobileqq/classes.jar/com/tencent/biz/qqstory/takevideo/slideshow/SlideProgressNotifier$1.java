@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
 import android.app.Activity;
-import bety;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 
 class SlideProgressNotifier$1
@@ -11,15 +11,26 @@ class SlideProgressNotifier$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQProgressNotifier", 2, "SlideShowProgressUpdate : " + this.a + "%");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SlideShowProgressUpdate : ");
+      ((StringBuilder)localObject).append(this.a);
+      ((StringBuilder)localObject).append("%");
+      QLog.d("QQProgressNotifier", 2, ((StringBuilder)localObject).toString());
     }
-    SlideProgressNotifier.a(this.this$0).a(this.this$0.a.getString(2131699913) + " " + this.a + "%");
+    Object localObject = SlideProgressNotifier.a(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0.a.getString(2131897389));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("%");
+    ((QQProgressDialog)localObject).a(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier.1
  * JD-Core Version:    0.7.0.1
  */

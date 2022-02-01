@@ -1,0 +1,68 @@
+package com.tencent.mobileqq.profile.view;
+
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.ViewParent;
+import android.widget.HorizontalScrollView;
+
+@TargetApi(9)
+public class ReboundHorizontalScrollView
+  extends HorizontalScrollView
+{
+  private int dtx;
+  private Context mContext;
+  
+  public ReboundHorizontalScrollView(Context paramContext)
+  {
+    super(paramContext);
+    this.mContext = paramContext;
+    dFO();
+  }
+  
+  public ReboundHorizontalScrollView(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    this.mContext = paramContext;
+    dFO();
+  }
+  
+  public ReboundHorizontalScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    this.mContext = paramContext;
+    dFO();
+  }
+  
+  private void dFO()
+  {
+    setFadingEdgeLength(0);
+    this.dtx = ((int)(this.mContext.getResources().getDisplayMetrics().density * 200.0F));
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    getParent().requestDisallowInterceptTouchEvent(true);
+    return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  @TargetApi(9)
+  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  {
+    return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, this.dtx, paramInt8, paramBoolean);
+  }
+  
+  public void setOverScrollDistance(int paramInt)
+  {
+    this.dtx = paramInt;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.profile.view.ReboundHorizontalScrollView
+ * JD-Core Version:    0.7.0.1
+ */

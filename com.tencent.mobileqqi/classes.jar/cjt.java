@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.EditTagActivity;
 
 public class cjt
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
   public cjt(EditTagActivity paramEditTagActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a();
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.setResult(-1);
+    this.a.finish();
   }
 }
 

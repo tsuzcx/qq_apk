@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import acne;
+import com.tencent.mobileqq.activity.ChatHistoryEmotionView;
 
 class TroopAIOEmotionFragment$2$1
   implements Runnable
@@ -9,9 +9,9 @@ class TroopAIOEmotionFragment$2$1
   
   public void run()
   {
-    TroopAIOEmotionFragment.a(this.a.this$0);
-    if (TroopAIOEmotionFragment.a(this.a.this$0) != null) {
-      TroopAIOEmotionFragment.a(this.a.this$0).g();
+    TroopAIOEmotionFragment.b(this.a.this$0);
+    if (TroopAIOEmotionFragment.c(this.a.this$0) != null) {
+      TroopAIOEmotionFragment.c(this.a.this$0).j();
     }
   }
 }

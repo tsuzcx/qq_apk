@@ -3,187 +3,234 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.inputmethod.InputConnection;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.pluginsdk.ui.chat.d;
 import com.tencent.mm.pluginsdk.ui.chat.e;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
-import com.tencent.mm.ui.widget.MMEditText;
-import com.tencent.mm.ui.widget.b;
+import com.tencent.mm.ui.widget.cedit.api.c.a;
 
 public class SnsUploadSayFooter
   extends InputPanelLinearLayout
 {
-  private MMActivity cmc;
-  ChatFooterPanel eys;
-  private int kjA;
-  private boolean kjB;
-  private MMEditText kju;
-  private ImageButton kjv;
-  private int kjy;
-  private int kjz;
+  private ImageButton KIF;
+  private com.tencent.mm.ui.widget.cedit.api.c RDE;
+  private boolean RDF;
+  private MMActivity lzt;
+  ChatFooterPanel moD;
+  private int moG;
+  private int moH;
+  private int moI;
+  private boolean moJ;
   
   public SnsUploadSayFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(39723);
-    this.kju = null;
-    this.kjy = -1;
-    this.kjz = -1;
-    this.kjA = 0;
-    this.kjB = true;
-    this.cmc = ((MMActivity)paramContext);
-    this.kjv = ((ImageButton)((ViewGroup)w.hM(this.cmc).inflate(2130970892, this)).findViewById(2131825850));
-    this.kjv.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(99554);
+    this.RDE = null;
+    this.moG = -1;
+    this.moH = -1;
+    this.moI = 0;
+    this.moJ = true;
+    this.RDF = false;
+    this.lzt = ((MMActivity)paramContext);
+    this.KIF = ((ImageButton)((ViewGroup)af.mU(this.lzt).inflate(b.g.sns_upload_say_footer, this)).findViewById(b.f.album_comment_mode_iv));
+    this.KIF.setOnClickListener(new SnsUploadSayFooter.2(this));
+    if (e.Ykf == null)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(39718);
-        SnsUploadSayFooter.b(SnsUploadSayFooter.this);
-        AppMethodBeat.o(39718);
-      }
-    });
-    if (e.vYI == null)
-    {
-      this.eys = new d(this.cmc);
-      AppMethodBeat.o(39723);
+      this.moD = new d(this.lzt);
+      AppMethodBeat.o(99554);
       return;
     }
-    this.eys = e.vYI.dK(getContext());
-    this.eys.setEntranceScene(ChatFooterPanel.vQn);
-    this.eys.setVisibility(8);
-    paramContext = (LinearLayout)findViewById(2131821003);
+    this.moD = e.Ykf.fZ(getContext());
+    this.moD.setEntranceScene(ChatFooterPanel.NEu);
+    this.moD.setVisibility(8);
+    paramContext = (LinearLayout)findViewById(b.f.root);
     paramContext.setOnClickListener(null);
-    this.kjA = x.gL(getContext());
-    paramContext.addView(this.eys, -1, this.kjA);
-    this.eys.Az();
-    this.eys.bo(false);
-    baf();
-    this.eys.onResume();
-    this.eys.setOnTextOperationListener(new SnsUploadSayFooter.4(this));
-    AppMethodBeat.o(39723);
+    this.moI = KeyBoardUtil.getValidPanelHeight(getContext());
+    paramContext.addView(this.moD, -1, this.moI);
+    this.moD.iKh();
+    aWK();
+    this.moD.onResume();
+    this.moD.setOnTextOperationListener(new ChatFooterPanel.a()
+    {
+      public final void aWL() {}
+      
+      public final void aWM()
+      {
+        AppMethodBeat.i(307910);
+        SnsUploadSayFooter.b(SnsUploadSayFooter.this).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
+        SnsUploadSayFooter.b(SnsUploadSayFooter.this).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
+        AppMethodBeat.o(307910);
+      }
+      
+      public final void append(String paramAnonymousString)
+      {
+        AppMethodBeat.i(307912);
+        try
+        {
+          SnsUploadSayFooter.b(SnsUploadSayFooter.this).bDt(paramAnonymousString);
+          AppMethodBeat.o(307912);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          Log.printErrStackTrace("MicroMsg.SnsUploadSayFooter", paramAnonymousString, "", new Object[0]);
+          AppMethodBeat.o(307912);
+        }
+      }
+      
+      public final void fp(boolean paramAnonymousBoolean) {}
+    });
+    AppMethodBeat.o(99554);
   }
   
-  private void aRm()
+  private void aWJ()
   {
-    AppMethodBeat.i(39729);
-    this.eys.onPause();
-    if (x.gN(getContext()))
+    AppMethodBeat.i(99560);
+    this.RDF = false;
+    this.moD.onPause();
+    if (KeyBoardUtil.isPortOrientation(getContext()))
     {
-      getInputPanelHelper().ay(new SnsUploadSayFooter.5(this));
-      AppMethodBeat.o(39729);
+      getInputPanelHelper().be(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(307907);
+          SnsUploadSayFooter.c(SnsUploadSayFooter.this).setVisibility(8);
+          AppMethodBeat.o(307907);
+        }
+      });
+      AppMethodBeat.o(99560);
       return;
     }
-    this.eys.setVisibility(8);
-    AppMethodBeat.o(39729);
+    this.moD.setVisibility(8);
+    AppMethodBeat.o(99560);
   }
   
-  private void baf()
+  private void aWK()
   {
-    AppMethodBeat.i(39731);
-    int i = x.gL(getContext());
-    this.eys.setPortHeightPx(i);
-    this.eys.AD();
-    ViewGroup.LayoutParams localLayoutParams = this.eys.getLayoutParams();
+    AppMethodBeat.i(99562);
+    int i = KeyBoardUtil.getValidPanelHeight(getContext());
+    this.moD.setPortHeightPx(i);
+    ViewGroup.LayoutParams localLayoutParams = this.moD.getLayoutParams();
     if (localLayoutParams != null) {
       localLayoutParams.height = i;
     }
-    AppMethodBeat.o(39731);
+    AppMethodBeat.o(99562);
   }
   
-  public final void baa()
+  public final void aWF()
   {
-    AppMethodBeat.i(39724);
+    AppMethodBeat.i(99555);
     setVisibility(0);
-    if (this.kjv != null) {
-      this.kjv.setImageResource(2130840431);
+    if (this.KIF != null) {
+      this.KIF.setImageResource(b.e.sns_upload_biaoqing_btn);
     }
-    AppMethodBeat.o(39724);
+    AppMethodBeat.o(99555);
   }
   
-  public final boolean bad()
+  public final void aWI()
   {
-    AppMethodBeat.i(39726);
-    if (this.eys.getVisibility() == 0)
+    AppMethodBeat.i(99558);
+    aWJ();
+    setVisibility(4);
+    AppMethodBeat.o(99558);
+  }
+  
+  public final boolean hqp()
+  {
+    AppMethodBeat.i(99557);
+    if (this.moD.getVisibility() == 0)
     {
-      AppMethodBeat.o(39726);
+      AppMethodBeat.o(99557);
       return true;
     }
-    AppMethodBeat.o(39726);
+    AppMethodBeat.o(99557);
     return false;
-  }
-  
-  public final void bae()
-  {
-    AppMethodBeat.i(39727);
-    aRm();
-    setVisibility(8);
-    AppMethodBeat.o(39727);
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(39728);
+    AppMethodBeat.i(99559);
     super.onConfigurationChanged(paramConfiguration);
-    if (this.eys != null)
-    {
-      baf();
-      this.eys.refresh();
+    if (this.moD != null) {
+      aWK();
     }
-    AppMethodBeat.o(39728);
+    AppMethodBeat.o(99559);
+  }
+  
+  public void onInputPanelChange(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(99561);
+    Log.i("MicroMsg.SnsUploadSayFooter", "onInputPanelChange: %s, %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    super.onInputPanelChange(paramBoolean, paramInt);
+    if ((this.moI != paramInt) && (paramInt != 0))
+    {
+      this.moI = paramInt;
+      j.H(getContext(), paramInt);
+      aWK();
+    }
+    if (paramBoolean)
+    {
+      aWF();
+      AppMethodBeat.o(99561);
+      return;
+    }
+    if (!this.RDF) {
+      setVisibility(4);
+    }
+    AppMethodBeat.o(99561);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(39732);
+    AppMethodBeat.i(99563);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.kjy < paramInt4) {}
-    for (paramInt1 = paramInt4;; paramInt1 = this.kjy)
+    if (this.moG < paramInt4) {}
+    for (paramInt1 = paramInt4;; paramInt1 = this.moG)
     {
-      this.kjy = paramInt1;
-      this.kjz = paramInt4;
-      AppMethodBeat.o(39732);
+      this.moG = paramInt1;
+      this.moH = paramInt4;
+      AppMethodBeat.o(99563);
       return;
     }
   }
   
-  public final void p(boolean paramBoolean, int paramInt)
+  public void setMMEditText(com.tencent.mm.ui.widget.cedit.api.c paramc)
   {
-    AppMethodBeat.i(39730);
-    super.p(paramBoolean, paramInt);
-    if ((this.kjA != paramInt) && (paramInt != 0))
+    AppMethodBeat.i(307702);
+    this.RDE = paramc;
+    paramc.a(new c.a()
     {
-      this.kjA = paramInt;
-      j.z(getContext(), paramInt);
-      baf();
-    }
-    AppMethodBeat.o(39730);
-  }
-  
-  public void setMMEditText(MMEditText paramMMEditText)
-  {
-    AppMethodBeat.i(39725);
-    this.kju = paramMMEditText;
-    paramMMEditText.setOnClickListener(new SnsUploadSayFooter.1(this));
-    paramMMEditText.setOnEditorActionListener(new SnsUploadSayFooter.2(this));
-    AppMethodBeat.o(39725);
+      public final boolean rR(int paramAnonymousInt)
+      {
+        return false;
+      }
+    });
+    AppMethodBeat.o(307702);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadSayFooter
  * JD-Core Version:    0.7.0.1
  */

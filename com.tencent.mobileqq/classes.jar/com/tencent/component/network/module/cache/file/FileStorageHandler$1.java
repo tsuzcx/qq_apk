@@ -16,13 +16,11 @@ class FileStorageHandler$1
   {
     paramJobContext.setMode(1);
     paramJobContext = FileStorageHandler.access$000(this.this$0).collect();
-    int i;
-    int j;
     if (paramJobContext != null)
     {
       paramJobContext = paramJobContext.iterator();
-      i = 0;
-      j = 0;
+      int i = 0;
+      int j = 0;
       while (paramJobContext.hasNext())
       {
         FileCacheService localFileCacheService = (FileCacheService)paramJobContext.next();
@@ -30,29 +28,34 @@ class FileStorageHandler$1
         int m = localFileCacheService.getSize(this.val$externalStorage);
         int n = FileStorageHandler.access$100(this.this$0, k, m);
         localFileCacheService.clear(this.val$externalStorage, n);
-        if (QDLog.isInfoEnable()) {
-          QDLog.i("downloader", "clear cache service:" + localFileCacheService + ": remain=" + n);
+        if (QDLog.isInfoEnable())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("clear cache service:");
+          localStringBuilder.append(localFileCacheService);
+          localStringBuilder.append(": remain=");
+          localStringBuilder.append(n);
+          QDLog.i("downloader", localStringBuilder.toString());
         }
         j += m;
         i += k;
       }
-      if (i > 0) {
-        break label186;
+      float f;
+      if (i <= 0) {
+        f = 3.4028235E+38F;
+      } else {
+        f = j / i;
       }
-    }
-    label186:
-    for (float f = 3.4028235E+38F;; f = j / i)
-    {
       if (f < 0.1F) {
         FileStorageHandler.access$200(this.this$0, this.val$context);
       }
-      return null;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.cache.file.FileStorageHandler.1
  * JD-Core Version:    0.7.0.1
  */

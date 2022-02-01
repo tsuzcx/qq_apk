@@ -4,28 +4,28 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class SQ_CLIENT_UPDATE_RSP
   extends JceStruct
 {
-  static Map<String, String> cache_extra_info;
-  static int cache_upType = 0;
+  static Map<String, String> cache_extra_info = new HashMap();
+  static int cache_upType;
   static ArrayList<UPDATE_INFO> cache_vModule;
   static ArrayList<UPDATE_INFO> cache_vPlugin;
-  public Map<String, String> extra_info;
+  public Map<String, String> extra_info = null;
   public String md5 = "";
   public String upMsg = "";
-  public int upType;
+  public int upType = 0;
   public String upUrl = "";
-  public ArrayList<UPDATE_INFO> vModule;
-  public ArrayList<UPDATE_INFO> vPlugin;
+  public ArrayList<UPDATE_INFO> vModule = null;
+  public ArrayList<UPDATE_INFO> vPlugin = null;
   public String version = "";
   
   static
   {
-    cache_extra_info = new HashMap();
     cache_extra_info.put("", "");
     cache_vPlugin = new ArrayList();
     UPDATE_INFO localUPDATE_INFO = new UPDATE_INFO();
@@ -63,33 +63,40 @@ public final class SQ_CLIENT_UPDATE_RSP
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 0);
+    Object localObject = this.version;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.upUrl != null) {
-      paramJceOutputStream.write(this.upUrl, 1);
+    localObject = this.upUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.md5 != null) {
-      paramJceOutputStream.write(this.md5, 2);
+    localObject = this.md5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.upMsg != null) {
-      paramJceOutputStream.write(this.upMsg, 3);
+    localObject = this.upMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.upType, 4);
-    if (this.extra_info != null) {
-      paramJceOutputStream.write(this.extra_info, 5);
+    localObject = this.extra_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.vPlugin != null) {
-      paramJceOutputStream.write(this.vPlugin, 6);
+    localObject = this.vPlugin;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.vModule != null) {
-      paramJceOutputStream.write(this.vModule, 7);
+    localObject = this.vModule;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP
  * JD-Core Version:    0.7.0.1
  */

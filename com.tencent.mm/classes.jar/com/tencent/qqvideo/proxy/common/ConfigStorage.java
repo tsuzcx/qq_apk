@@ -45,20 +45,20 @@ public class ConfigStorage
   {
     // Byte code:
     //   0: ldc 106
-    //   2: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: aload_2
     //   7: invokespecial 110	com/tencent/qqvideo/proxy/common/ConfigStorage:getHttpsSSLContext	(Landroid/content/Context;)Ljavax/net/ssl/SSLContext;
-    //   10: astore 13
+    //   10: astore 12
     //   12: aconst_null
     //   13: astore 8
     //   15: aconst_null
     //   16: astore_2
-    //   17: aload 13
+    //   17: aload 12
     //   19: ifnonnull +11 -> 30
     //   22: ldc 106
-    //   24: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   27: ldc 71
+    //   24: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: ldc 73
     //   29: areturn
     //   30: iconst_0
     //   31: istore_3
@@ -66,27 +66,27 @@ public class ConfigStorage
     //   33: iconst_2
     //   34: if_icmplt +11 -> 45
     //   37: ldc 106
-    //   39: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   42: ldc 71
+    //   39: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: ldc 73
     //   44: areturn
     //   45: iload_3
     //   46: iconst_1
-    //   47: if_icmpne +618 -> 665
+    //   47: if_icmpne +556 -> 603
     //   50: aload_0
     //   51: aload_1
     //   52: invokespecial 114	com/tencent/qqvideo/proxy/common/ConfigStorage:getBkDomain	(Ljava/lang/String;)Ljava/lang/String;
-    //   55: astore 12
+    //   55: astore 11
     //   57: iconst_4
-    //   58: getstatic 61	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
+    //   58: getstatic 63	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
     //   61: ldc 116
-    //   63: aload 12
+    //   63: aload 11
     //   65: invokestatic 122	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   68: invokevirtual 125	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   71: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
     //   74: iconst_0
     //   75: istore 4
     //   77: iload 4
-    //   79: getstatic 63	com/tencent/qqvideo/proxy/common/ConfigStorage:retryTimes	[I
+    //   79: getstatic 65	com/tencent/qqvideo/proxy/common/ConfigStorage:retryTimes	[I
     //   82: iload_3
     //   83: iaload
     //   84: if_icmplt +10 -> 94
@@ -96,7 +96,7 @@ public class ConfigStorage
     //   90: istore_3
     //   91: goto -59 -> 32
     //   94: iconst_4
-    //   95: getstatic 61	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
+    //   95: getstatic 63	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
     //   98: new 133	java/lang/StringBuilder
     //   101: dup
     //   102: ldc 135
@@ -107,7 +107,7 @@ public class ConfigStorage
     //   111: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   114: ldc 144
     //   116: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: aload 12
+    //   119: aload 11
     //   121: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   127: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
@@ -115,23 +115,23 @@ public class ConfigStorage
     //   133: lstore 5
     //   135: new 159	java/net/URL
     //   138: dup
-    //   139: aload 12
+    //   139: aload 11
     //   141: invokespecial 160	java/net/URL:<init>	(Ljava/lang/String;)V
     //   144: invokevirtual 164	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   147: checkcast 166	javax/net/ssl/HttpsURLConnection
     //   150: astore 9
     //   152: aload 9
-    //   154: getstatic 65	com/tencent/qqvideo/proxy/common/ConfigStorage:connectTimeOut	[I
+    //   154: getstatic 67	com/tencent/qqvideo/proxy/common/ConfigStorage:connectTimeOut	[I
     //   157: iload 4
     //   159: iaload
     //   160: invokevirtual 169	javax/net/ssl/HttpsURLConnection:setConnectTimeout	(I)V
     //   163: aload 9
-    //   165: getstatic 67	com/tencent/qqvideo/proxy/common/ConfigStorage:readTimeOut	[I
+    //   165: getstatic 69	com/tencent/qqvideo/proxy/common/ConfigStorage:readTimeOut	[I
     //   168: iload 4
     //   170: iaload
     //   171: invokevirtual 172	javax/net/ssl/HttpsURLConnection:setReadTimeout	(I)V
     //   174: aload 9
-    //   176: aload 13
+    //   176: aload 12
     //   178: invokevirtual 178	javax/net/ssl/SSLContext:getSocketFactory	()Ljavax/net/ssl/SSLSocketFactory;
     //   181: invokevirtual 182	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
     //   184: aload 9
@@ -142,7 +142,7 @@ public class ConfigStorage
     //   195: new 133	java/lang/StringBuilder
     //   198: dup
     //   199: invokespecial 187	java/lang/StringBuilder:<init>	()V
-    //   202: astore 14
+    //   202: astore 10
     //   204: new 189	java/io/BufferedReader
     //   207: dup
     //   208: new 191	java/io/InputStreamReader
@@ -153,305 +153,256 @@ public class ConfigStorage
     //   219: invokespecial 199	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   222: astore 9
     //   224: aload 9
-    //   226: astore 11
-    //   228: aload 8
-    //   230: astore 10
-    //   232: aload 9
-    //   234: invokevirtual 202	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   237: astore_2
-    //   238: aload_2
-    //   239: ifnonnull +121 -> 360
-    //   242: aload 9
-    //   244: astore 11
-    //   246: aload 8
-    //   248: astore 10
-    //   250: aload 14
-    //   252: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   255: astore_2
-    //   256: aload 9
-    //   258: astore 11
-    //   260: aload 8
-    //   262: astore 10
-    //   264: iconst_4
-    //   265: getstatic 61	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
-    //   268: new 133	java/lang/StringBuilder
-    //   271: dup
-    //   272: ldc 204
-    //   274: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   277: invokestatic 157	java/lang/System:currentTimeMillis	()J
-    //   280: lload 5
-    //   282: lsub
-    //   283: invokevirtual 207	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   286: ldc 209
-    //   288: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: aload_2
-    //   292: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   298: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
-    //   301: aload 9
-    //   303: astore 11
-    //   305: aload 8
-    //   307: astore 10
-    //   309: aload_2
-    //   310: invokestatic 215	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   313: ifne +251 -> 564
-    //   316: aload 9
-    //   318: astore 11
-    //   320: aload 8
-    //   322: astore 10
-    //   324: aload_2
-    //   325: invokevirtual 218	java/lang/String:trim	()Ljava/lang/String;
-    //   328: invokevirtual 221	java/lang/String:isEmpty	()Z
-    //   331: istore 7
-    //   333: iload 7
-    //   335: ifne +229 -> 564
-    //   338: aload 8
-    //   340: ifnull +8 -> 348
-    //   343: aload 8
-    //   345: invokevirtual 226	java/io/InputStream:close	()V
-    //   348: aload 9
-    //   350: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   353: ldc 106
-    //   355: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   358: aload_2
-    //   359: areturn
-    //   360: aload 9
-    //   362: astore 11
-    //   364: aload 8
-    //   366: astore 10
-    //   368: aload 14
-    //   370: aload_2
-    //   371: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   374: pop
-    //   375: goto -151 -> 224
-    //   378: astore_2
-    //   379: aload 9
-    //   381: astore_2
-    //   382: aload_2
-    //   383: astore 11
-    //   385: aload 8
-    //   387: astore 10
-    //   389: bipush 6
-    //   391: getstatic 61	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
-    //   394: new 133	java/lang/StringBuilder
-    //   397: dup
-    //   398: ldc 229
-    //   400: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   403: getstatic 233	java/lang/System:err	Ljava/io/PrintStream;
-    //   406: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   409: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   412: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
-    //   415: aload 8
-    //   417: ifnull +8 -> 425
-    //   420: aload 8
-    //   422: invokevirtual 226	java/io/InputStream:close	()V
-    //   425: aload_2
-    //   426: astore 9
-    //   428: aload 8
-    //   430: astore 10
-    //   432: aload_2
-    //   433: ifnull +14 -> 447
-    //   436: aload_2
-    //   437: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   440: aload 8
-    //   442: astore 10
-    //   444: aload_2
-    //   445: astore 9
-    //   447: iload 4
-    //   449: iconst_1
-    //   450: iadd
-    //   451: istore 4
-    //   453: aload 9
-    //   455: astore_2
-    //   456: aload 10
-    //   458: astore 8
-    //   460: goto -383 -> 77
-    //   463: astore_2
-    //   464: aload 9
-    //   466: astore_2
-    //   467: aload_2
-    //   468: astore 11
-    //   470: aload 8
-    //   472: astore 10
-    //   474: bipush 6
-    //   476: getstatic 61	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
-    //   479: ldc 238
-    //   481: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
-    //   484: aload 8
+    //   226: invokevirtual 202	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   229: astore_2
+    //   230: aload_2
+    //   231: ifnonnull +89 -> 320
+    //   234: aload 10
+    //   236: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   239: astore_2
+    //   240: iconst_4
+    //   241: getstatic 63	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
+    //   244: new 133	java/lang/StringBuilder
+    //   247: dup
+    //   248: ldc 204
+    //   250: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   253: invokestatic 157	java/lang/System:currentTimeMillis	()J
+    //   256: lload 5
+    //   258: lsub
+    //   259: invokevirtual 207	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   262: ldc 209
+    //   264: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: aload_2
+    //   268: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   274: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
+    //   277: aload_2
+    //   278: invokestatic 215	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   281: ifne +230 -> 511
+    //   284: aload_2
+    //   285: invokevirtual 218	java/lang/String:trim	()Ljava/lang/String;
+    //   288: invokevirtual 221	java/lang/String:isEmpty	()Z
+    //   291: istore 7
+    //   293: iload 7
+    //   295: ifne +216 -> 511
+    //   298: aload 8
+    //   300: ifnull +8 -> 308
+    //   303: aload 8
+    //   305: invokevirtual 226	java/io/InputStream:close	()V
+    //   308: aload 9
+    //   310: invokevirtual 227	java/io/BufferedReader:close	()V
+    //   313: ldc 106
+    //   315: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   318: aload_2
+    //   319: areturn
+    //   320: aload 10
+    //   322: aload_2
+    //   323: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   326: pop
+    //   327: goto -103 -> 224
+    //   330: astore_2
+    //   331: aload 9
+    //   333: astore_2
+    //   334: aload_2
+    //   335: astore 9
+    //   337: aload 8
+    //   339: astore 10
+    //   341: bipush 6
+    //   343: getstatic 63	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
+    //   346: new 133	java/lang/StringBuilder
+    //   349: dup
+    //   350: ldc 229
+    //   352: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   355: getstatic 233	java/lang/System:err	Ljava/io/PrintStream;
+    //   358: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   361: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   364: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
+    //   367: aload 8
+    //   369: ifnull +8 -> 377
+    //   372: aload 8
+    //   374: invokevirtual 226	java/io/InputStream:close	()V
+    //   377: aload_2
+    //   378: astore 9
+    //   380: aload 8
+    //   382: astore 10
+    //   384: aload_2
+    //   385: ifnull +14 -> 399
+    //   388: aload_2
+    //   389: invokevirtual 227	java/io/BufferedReader:close	()V
+    //   392: aload 8
+    //   394: astore 10
+    //   396: aload_2
+    //   397: astore 9
+    //   399: iload 4
+    //   401: iconst_1
+    //   402: iadd
+    //   403: istore 4
+    //   405: aload 9
+    //   407: astore_2
+    //   408: aload 10
+    //   410: astore 8
+    //   412: goto -335 -> 77
+    //   415: astore_2
+    //   416: aload 9
+    //   418: astore_2
+    //   419: aload_2
+    //   420: astore 9
+    //   422: aload 8
+    //   424: astore 10
+    //   426: bipush 6
+    //   428: getstatic 63	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
+    //   431: ldc 238
+    //   433: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
+    //   436: aload 8
+    //   438: ifnull +8 -> 446
+    //   441: aload 8
+    //   443: invokevirtual 226	java/io/InputStream:close	()V
+    //   446: aload_2
+    //   447: astore 9
+    //   449: aload 8
+    //   451: astore 10
+    //   453: aload_2
+    //   454: ifnull -55 -> 399
+    //   457: aload_2
+    //   458: invokevirtual 227	java/io/BufferedReader:close	()V
+    //   461: aload_2
+    //   462: astore 9
+    //   464: aload 8
+    //   466: astore 10
+    //   468: goto -69 -> 399
+    //   471: astore 9
+    //   473: aload_2
+    //   474: astore 9
+    //   476: aload 8
+    //   478: astore 10
+    //   480: goto -81 -> 399
+    //   483: astore_1
+    //   484: aload 10
     //   486: ifnull +8 -> 494
-    //   489: aload 8
+    //   489: aload 10
     //   491: invokevirtual 226	java/io/InputStream:close	()V
-    //   494: aload_2
-    //   495: astore 9
-    //   497: aload 8
-    //   499: astore 10
-    //   501: aload_2
-    //   502: ifnull -55 -> 447
-    //   505: aload_2
-    //   506: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   509: aload_2
-    //   510: astore 9
-    //   512: aload 8
-    //   514: astore 10
-    //   516: goto -69 -> 447
-    //   519: astore 9
-    //   521: aload_2
-    //   522: astore 9
-    //   524: aload 8
-    //   526: astore 10
-    //   528: goto -81 -> 447
-    //   531: astore_1
-    //   532: aload 11
-    //   534: astore_2
-    //   535: aload 10
-    //   537: astore 8
-    //   539: aload 8
-    //   541: ifnull +8 -> 549
-    //   544: aload 8
-    //   546: invokevirtual 226	java/io/InputStream:close	()V
-    //   549: aload_2
-    //   550: ifnull +7 -> 557
-    //   553: aload_2
-    //   554: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   557: ldc 106
-    //   559: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   562: aload_1
-    //   563: athrow
-    //   564: aload 8
-    //   566: ifnull +8 -> 574
-    //   569: aload 8
-    //   571: invokevirtual 226	java/io/InputStream:close	()V
-    //   574: aload 9
-    //   576: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   579: aload 8
-    //   581: astore 10
-    //   583: goto -136 -> 447
-    //   586: astore_2
-    //   587: aload 8
-    //   589: astore 10
-    //   591: goto -144 -> 447
-    //   594: astore_1
-    //   595: goto -247 -> 348
-    //   598: astore_1
-    //   599: goto -246 -> 353
-    //   602: astore 9
-    //   604: goto -179 -> 425
-    //   607: astore 9
-    //   609: aload_2
-    //   610: astore 9
-    //   612: aload 8
-    //   614: astore 10
-    //   616: goto -169 -> 447
-    //   619: astore 9
-    //   621: goto -127 -> 494
-    //   624: astore 8
-    //   626: goto -77 -> 549
-    //   629: astore_2
-    //   630: goto -73 -> 557
-    //   633: astore_2
-    //   634: goto -60 -> 574
-    //   637: astore_1
-    //   638: goto -99 -> 539
-    //   641: astore_1
-    //   642: goto -103 -> 539
-    //   645: astore 9
-    //   647: goto -180 -> 467
-    //   650: astore 9
-    //   652: goto -185 -> 467
-    //   655: astore 9
-    //   657: goto -275 -> 382
-    //   660: astore 9
-    //   662: goto -280 -> 382
-    //   665: aload_1
-    //   666: astore 12
-    //   668: goto -594 -> 74
+    //   494: aload 9
+    //   496: ifnull +8 -> 504
+    //   499: aload 9
+    //   501: invokevirtual 227	java/io/BufferedReader:close	()V
+    //   504: ldc 106
+    //   506: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   509: aload_1
+    //   510: athrow
+    //   511: aload 8
+    //   513: ifnull +8 -> 521
+    //   516: aload 8
+    //   518: invokevirtual 226	java/io/InputStream:close	()V
+    //   521: aload 9
+    //   523: invokevirtual 227	java/io/BufferedReader:close	()V
+    //   526: aload 8
+    //   528: astore 10
+    //   530: goto -131 -> 399
+    //   533: astore_2
+    //   534: aload 8
+    //   536: astore 10
+    //   538: goto -139 -> 399
+    //   541: astore_1
+    //   542: goto -234 -> 308
+    //   545: astore_1
+    //   546: goto -233 -> 313
+    //   549: astore 9
+    //   551: goto -174 -> 377
+    //   554: astore 9
+    //   556: aload_2
+    //   557: astore 9
+    //   559: aload 8
+    //   561: astore 10
+    //   563: goto -164 -> 399
+    //   566: astore 9
+    //   568: goto -122 -> 446
+    //   571: astore_2
+    //   572: goto -78 -> 494
+    //   575: astore_2
+    //   576: goto -72 -> 504
+    //   579: astore_2
+    //   580: goto -59 -> 521
+    //   583: astore 9
+    //   585: goto -166 -> 419
+    //   588: astore 9
+    //   590: goto -171 -> 419
+    //   593: astore 9
+    //   595: goto -261 -> 334
+    //   598: astore 9
+    //   600: goto -266 -> 334
+    //   603: aload_1
+    //   604: astore 11
+    //   606: goto -532 -> 74
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	671	0	this	ConfigStorage
-    //   0	671	1	paramString	String
-    //   0	671	2	paramContext	Context
+    //   0	609	0	this	ConfigStorage
+    //   0	609	1	paramString	String
+    //   0	609	2	paramContext	Context
     //   31	60	3	i	int
-    //   75	377	4	j	int
-    //   133	148	5	l	long
-    //   331	3	7	bool	boolean
-    //   13	600	8	localObject1	Object
-    //   624	1	8	localIOException1	java.io.IOException
-    //   150	361	9	localObject2	Object
-    //   519	1	9	localIOException2	java.io.IOException
-    //   522	53	9	localContext1	Context
-    //   602	1	9	localIOException3	java.io.IOException
-    //   607	1	9	localIOException4	java.io.IOException
-    //   610	1	9	localContext2	Context
-    //   619	1	9	localIOException5	java.io.IOException
-    //   645	1	9	localThrowable1	Throwable
-    //   650	1	9	localThrowable2	Throwable
-    //   655	1	9	localIOException6	java.io.IOException
-    //   660	1	9	localIOException7	java.io.IOException
-    //   230	385	10	localObject3	Object
-    //   226	307	11	localObject4	Object
-    //   55	612	12	str	String
-    //   10	167	13	localSSLContext	javax.net.ssl.SSLContext
-    //   202	167	14	localStringBuilder	java.lang.StringBuilder
+    //   75	329	4	j	int
+    //   133	124	5	l	long
+    //   291	3	7	bool	boolean
+    //   13	547	8	localObject1	Object
+    //   150	313	9	localObject2	Object
+    //   471	1	9	localIOException1	java.io.IOException
+    //   474	48	9	localContext1	Context
+    //   549	1	9	localIOException2	java.io.IOException
+    //   554	1	9	localIOException3	java.io.IOException
+    //   557	1	9	localContext2	Context
+    //   566	1	9	localIOException4	java.io.IOException
+    //   583	1	9	localObject3	Object
+    //   588	1	9	localObject4	Object
+    //   593	1	9	localIOException5	java.io.IOException
+    //   598	1	9	localIOException6	java.io.IOException
+    //   202	360	10	localObject5	Object
+    //   55	550	11	str	String
+    //   10	167	12	localSSLContext	javax.net.ssl.SSLContext
     // Exception table:
     //   from	to	target	type
-    //   232	238	378	java/io/IOException
-    //   250	256	378	java/io/IOException
-    //   264	301	378	java/io/IOException
-    //   309	316	378	java/io/IOException
-    //   324	333	378	java/io/IOException
-    //   368	375	378	java/io/IOException
-    //   232	238	463	java/lang/Throwable
-    //   250	256	463	java/lang/Throwable
-    //   264	301	463	java/lang/Throwable
-    //   309	316	463	java/lang/Throwable
-    //   324	333	463	java/lang/Throwable
-    //   368	375	463	java/lang/Throwable
-    //   505	509	519	java/io/IOException
-    //   232	238	531	finally
-    //   250	256	531	finally
-    //   264	301	531	finally
-    //   309	316	531	finally
-    //   324	333	531	finally
-    //   368	375	531	finally
-    //   389	415	531	finally
-    //   474	484	531	finally
-    //   574	579	586	java/io/IOException
-    //   343	348	594	java/io/IOException
-    //   348	353	598	java/io/IOException
-    //   420	425	602	java/io/IOException
-    //   436	440	607	java/io/IOException
-    //   489	494	619	java/io/IOException
-    //   544	549	624	java/io/IOException
-    //   553	557	629	java/io/IOException
-    //   569	574	633	java/io/IOException
-    //   94	191	637	finally
-    //   195	224	641	finally
-    //   94	191	645	java/lang/Throwable
-    //   195	224	650	java/lang/Throwable
-    //   94	191	655	java/io/IOException
-    //   195	224	660	java/io/IOException
+    //   224	230	330	java/io/IOException
+    //   234	293	330	java/io/IOException
+    //   320	327	330	java/io/IOException
+    //   224	230	415	finally
+    //   234	293	415	finally
+    //   320	327	415	finally
+    //   457	461	471	java/io/IOException
+    //   341	367	483	finally
+    //   426	436	483	finally
+    //   521	526	533	java/io/IOException
+    //   303	308	541	java/io/IOException
+    //   308	313	545	java/io/IOException
+    //   372	377	549	java/io/IOException
+    //   388	392	554	java/io/IOException
+    //   441	446	566	java/io/IOException
+    //   489	494	571	java/io/IOException
+    //   499	504	575	java/io/IOException
+    //   516	521	579	java/io/IOException
+    //   94	191	583	finally
+    //   195	224	588	finally
+    //   94	191	593	java/io/IOException
+    //   195	224	598	java/io/IOException
   }
   
   public static SharedPreferences getAppSharedPreferences(Context paramContext)
   {
-    AppMethodBeat.i(124458);
+    AppMethodBeat.i(89732);
     if (sharedPreferencesName == null) {
       sharedPreferencesName = paramContext.getPackageName() + "_httpproxy_preferences";
     }
     paramContext = getSharedPreferences(paramContext, sharedPreferencesName, 0);
-    AppMethodBeat.o(124458);
+    AppMethodBeat.o(89732);
     return paramContext;
   }
   
   private String getBkDomain(String paramString)
   {
-    AppMethodBeat.i(124470);
+    AppMethodBeat.i(89744);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(124470);
+      AppMethodBeat.o(89744);
       return "";
     }
-    AppMethodBeat.o(124470);
+    AppMethodBeat.o(89744);
     return paramString;
   }
   
@@ -462,28 +413,28 @@ public class ConfigStorage
   
   private static String getConfigVersionFromSharedPreference(Context paramContext)
   {
-    AppMethodBeat.i(124461);
+    AppMethodBeat.i(89735);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124461);
+      AppMethodBeat.o(89735);
       return "";
     }
     paramContext = getAppSharedPreferences(paramContext).getString("DOWNPROXY_GUID_CONFIG_VERSION", "");
-    AppMethodBeat.o(124461);
+    AppMethodBeat.o(89735);
     return paramContext;
   }
   
   public static String getDownProxyConfig(Context paramContext)
   {
-    AppMethodBeat.i(124459);
+    AppMethodBeat.i(89733);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124459);
+      AppMethodBeat.o(89733);
       return "";
     }
     Config_Version = getConfigVersionFromSharedPreference(paramContext);
     paramContext = getAppSharedPreferences(paramContext).getString("DOWNPROXY_CONFIG", "");
-    AppMethodBeat.o(124459);
+    AppMethodBeat.o(89733);
     return paramContext;
   }
   
@@ -502,213 +453,173 @@ public class ConfigStorage
   {
     // Byte code:
     //   0: ldc_w 272
-    //   3: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc_w 274
     //   9: invokestatic 280	java/security/cert/CertificateFactory:getInstance	(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;
-    //   12: astore_3
+    //   12: astore_2
     //   13: aload_1
     //   14: invokevirtual 284	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   17: ldc 38
+    //   17: ldc 40
     //   19: invokevirtual 290	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   22: astore_2
+    //   22: astore_1
     //   23: aload_2
-    //   24: astore_1
-    //   25: aload_3
-    //   26: aload_2
-    //   27: invokevirtual 294	java/security/cert/CertificateFactory:generateCertificate	(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
-    //   30: astore 4
-    //   32: aload_2
-    //   33: astore_1
-    //   34: invokestatic 299	java/security/KeyStore:getDefaultType	()Ljava/lang/String;
-    //   37: invokestatic 302	java/security/KeyStore:getInstance	(Ljava/lang/String;)Ljava/security/KeyStore;
-    //   40: astore_3
-    //   41: aload_2
-    //   42: astore_1
-    //   43: aload_3
-    //   44: aconst_null
-    //   45: aconst_null
-    //   46: invokevirtual 306	java/security/KeyStore:load	(Ljava/io/InputStream;[C)V
-    //   49: aload_2
-    //   50: astore_1
-    //   51: aload_3
-    //   52: ldc_w 308
-    //   55: aload 4
-    //   57: invokevirtual 312	java/security/KeyStore:setCertificateEntry	(Ljava/lang/String;Ljava/security/cert/Certificate;)V
-    //   60: aload_2
-    //   61: astore_1
-    //   62: invokestatic 317	javax/net/ssl/TrustManagerFactory:getDefaultAlgorithm	()Ljava/lang/String;
-    //   65: invokestatic 320	javax/net/ssl/TrustManagerFactory:getInstance	(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;
-    //   68: astore 4
-    //   70: aload_2
-    //   71: astore_1
-    //   72: aload 4
-    //   74: aload_3
-    //   75: invokevirtual 324	javax/net/ssl/TrustManagerFactory:init	(Ljava/security/KeyStore;)V
-    //   78: aload_2
-    //   79: astore_1
-    //   80: ldc_w 326
-    //   83: invokestatic 329	javax/net/ssl/SSLContext:getInstance	(Ljava/lang/String;)Ljavax/net/ssl/SSLContext;
-    //   86: astore_3
-    //   87: aload_2
-    //   88: astore_1
-    //   89: aload_3
-    //   90: aconst_null
-    //   91: aload 4
-    //   93: invokevirtual 333	javax/net/ssl/TrustManagerFactory:getTrustManagers	()[Ljavax/net/ssl/TrustManager;
+    //   24: aload_1
+    //   25: invokevirtual 294	java/security/cert/CertificateFactory:generateCertificate	(Ljava/io/InputStream;)Ljava/security/cert/Certificate;
+    //   28: astore_3
+    //   29: invokestatic 299	java/security/KeyStore:getDefaultType	()Ljava/lang/String;
+    //   32: invokestatic 302	java/security/KeyStore:getInstance	(Ljava/lang/String;)Ljava/security/KeyStore;
+    //   35: astore_2
+    //   36: aload_2
+    //   37: aconst_null
+    //   38: aconst_null
+    //   39: invokevirtual 306	java/security/KeyStore:load	(Ljava/io/InputStream;[C)V
+    //   42: aload_2
+    //   43: ldc_w 308
+    //   46: aload_3
+    //   47: invokevirtual 312	java/security/KeyStore:setCertificateEntry	(Ljava/lang/String;Ljava/security/cert/Certificate;)V
+    //   50: invokestatic 317	javax/net/ssl/TrustManagerFactory:getDefaultAlgorithm	()Ljava/lang/String;
+    //   53: invokestatic 320	javax/net/ssl/TrustManagerFactory:getInstance	(Ljava/lang/String;)Ljavax/net/ssl/TrustManagerFactory;
+    //   56: astore_3
+    //   57: aload_3
+    //   58: aload_2
+    //   59: invokevirtual 324	javax/net/ssl/TrustManagerFactory:init	(Ljava/security/KeyStore;)V
+    //   62: ldc_w 326
+    //   65: invokestatic 329	javax/net/ssl/SSLContext:getInstance	(Ljava/lang/String;)Ljavax/net/ssl/SSLContext;
+    //   68: astore_2
+    //   69: aload_2
+    //   70: aconst_null
+    //   71: aload_3
+    //   72: invokevirtual 333	javax/net/ssl/TrustManagerFactory:getTrustManagers	()[Ljavax/net/ssl/TrustManager;
+    //   75: aconst_null
+    //   76: invokevirtual 336	javax/net/ssl/SSLContext:init	([Ljavax/net/ssl/KeyManager;[Ljavax/net/ssl/TrustManager;Ljava/security/SecureRandom;)V
+    //   79: aload_1
+    //   80: ifnull +7 -> 87
+    //   83: aload_1
+    //   84: invokevirtual 226	java/io/InputStream:close	()V
+    //   87: ldc_w 272
+    //   90: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: aload_2
+    //   94: areturn
+    //   95: astore_2
     //   96: aconst_null
-    //   97: invokevirtual 336	javax/net/ssl/SSLContext:init	([Ljavax/net/ssl/KeyManager;[Ljavax/net/ssl/TrustManager;Ljava/security/SecureRandom;)V
-    //   100: aload_2
-    //   101: ifnull +7 -> 108
-    //   104: aload_2
-    //   105: invokevirtual 226	java/io/InputStream:close	()V
-    //   108: ldc_w 272
-    //   111: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   114: aload_3
-    //   115: areturn
-    //   116: astore_3
-    //   117: aconst_null
-    //   118: astore_2
-    //   119: aload_2
-    //   120: astore_1
-    //   121: bipush 6
-    //   123: getstatic 61	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
-    //   126: new 133	java/lang/StringBuilder
-    //   129: dup
-    //   130: ldc_w 338
-    //   133: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   136: aload_3
-    //   137: invokestatic 344	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   140: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
-    //   149: aload_2
-    //   150: ifnull +7 -> 157
-    //   153: aload_2
-    //   154: invokevirtual 226	java/io/InputStream:close	()V
-    //   157: ldc_w 272
-    //   160: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   163: aconst_null
-    //   164: areturn
-    //   165: astore_2
-    //   166: aconst_null
+    //   97: astore_1
+    //   98: bipush 6
+    //   100: getstatic 63	com/tencent/qqvideo/proxy/common/ConfigStorage:TAG	Ljava/lang/String;
+    //   103: new 133	java/lang/StringBuilder
+    //   106: dup
+    //   107: ldc_w 338
+    //   110: invokespecial 138	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   113: aload_2
+    //   114: invokestatic 344	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   117: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   123: invokestatic 131	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:print	(ILjava/lang/String;Ljava/lang/String;)V
+    //   126: aload_1
+    //   127: ifnull +7 -> 134
+    //   130: aload_1
+    //   131: invokevirtual 226	java/io/InputStream:close	()V
+    //   134: ldc_w 272
+    //   137: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: aconst_null
+    //   141: areturn
+    //   142: astore_2
+    //   143: aload_1
+    //   144: ifnull +7 -> 151
+    //   147: aload_1
+    //   148: invokevirtual 226	java/io/InputStream:close	()V
+    //   151: ldc_w 272
+    //   154: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   157: aload_2
+    //   158: athrow
+    //   159: astore_1
+    //   160: goto -73 -> 87
+    //   163: astore_1
+    //   164: goto -30 -> 134
     //   167: astore_1
-    //   168: aload_1
-    //   169: ifnull +7 -> 176
-    //   172: aload_1
-    //   173: invokevirtual 226	java/io/InputStream:close	()V
-    //   176: ldc_w 272
-    //   179: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   182: aload_2
-    //   183: athrow
-    //   184: astore_1
-    //   185: goto -77 -> 108
-    //   188: astore_1
-    //   189: goto -32 -> 157
-    //   192: astore_1
-    //   193: goto -17 -> 176
-    //   196: astore_2
-    //   197: goto -29 -> 168
-    //   200: astore_3
-    //   201: goto -82 -> 119
+    //   168: goto -17 -> 151
+    //   171: astore_2
+    //   172: goto -74 -> 98
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	204	0	this	ConfigStorage
-    //   0	204	1	paramContext	Context
-    //   22	132	2	localInputStream	java.io.InputStream
-    //   165	18	2	localObject1	Object
-    //   196	1	2	localObject2	Object
-    //   12	103	3	localObject3	Object
-    //   116	21	3	localThrowable1	Throwable
-    //   200	1	3	localThrowable2	Throwable
-    //   30	62	4	localObject4	Object
+    //   0	175	0	this	ConfigStorage
+    //   0	175	1	paramContext	Context
+    //   12	82	2	localObject1	Object
+    //   95	19	2	localThrowable	java.lang.Throwable
+    //   142	16	2	localObject2	Object
+    //   171	1	2	localObject3	Object
+    //   28	44	3	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   6	23	116	java/lang/Throwable
-    //   6	23	165	finally
-    //   104	108	184	java/io/IOException
-    //   153	157	188	java/io/IOException
-    //   172	176	192	java/io/IOException
-    //   25	32	196	finally
-    //   34	41	196	finally
-    //   43	49	196	finally
-    //   51	60	196	finally
-    //   62	70	196	finally
-    //   72	78	196	finally
-    //   80	87	196	finally
-    //   89	100	196	finally
-    //   121	149	196	finally
-    //   25	32	200	java/lang/Throwable
-    //   34	41	200	java/lang/Throwable
-    //   43	49	200	java/lang/Throwable
-    //   51	60	200	java/lang/Throwable
-    //   62	70	200	java/lang/Throwable
-    //   72	78	200	java/lang/Throwable
-    //   80	87	200	java/lang/Throwable
-    //   89	100	200	java/lang/Throwable
+    //   6	23	95	finally
+    //   98	126	142	finally
+    //   83	87	159	java/io/IOException
+    //   130	134	163	java/io/IOException
+    //   147	151	167	java/io/IOException
+    //   23	79	171	finally
   }
   
   public static SharedPreferences getSharedPreferences(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(124457);
+    AppMethodBeat.i(89731);
     paramContext = paramContext.getSharedPreferences(paramString, paramInt);
-    AppMethodBeat.o(124457);
+    AppMethodBeat.o(89731);
     return paramContext;
   }
   
   private String makeGetServerConfigUrl(Context paramContext)
   {
-    AppMethodBeat.i(124467);
+    AppMethodBeat.i(89741);
     paramContext = String.format("%s?platform=%s&appver=%s&player_channel_id=%s&otype=%s&ipflag=%s&guid=%s", new Object[] { "https://sec.video.qq.com/p/wxconf/getmfomat", "aphone", "V1.0.186.0011", "186", "json", "1", guid });
-    AppMethodBeat.o(124467);
+    AppMethodBeat.o(89741);
     return paramContext;
   }
   
   private boolean needGetConfig()
   {
-    AppMethodBeat.i(124465);
+    AppMethodBeat.i(89739);
     if (LastGetConfigTime == 0L)
     {
       LastGetConfigTime = System.currentTimeMillis();
-      AppMethodBeat.o(124465);
+      AppMethodBeat.o(89739);
       return true;
     }
     long l = System.currentTimeMillis();
     if ((l - LastGetConfigTime > 600000L) || (l < LastGetConfigTime))
     {
       LastGetConfigTime = System.currentTimeMillis();
-      AppMethodBeat.o(124465);
+      AppMethodBeat.o(89739);
       return true;
     }
-    AppMethodBeat.o(124465);
+    AppMethodBeat.o(89739);
     return false;
   }
   
   private static void setConfigVersionToSharedPreference(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(124462);
+    AppMethodBeat.i(89736);
     if ((paramContext == null) || (paramString == null))
     {
-      AppMethodBeat.o(124462);
+      AppMethodBeat.o(89736);
       return;
     }
     getAppSharedPreferences(paramContext).edit().putString("DOWNPROXY_GUID_CONFIG_VERSION", paramString).commit();
-    AppMethodBeat.o(124462);
+    AppMethodBeat.o(89736);
   }
   
   public static void setDownProxyConfig(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(124460);
+    AppMethodBeat.i(89734);
     getAppSharedPreferences(paramContext).edit().putString("DOWNPROXY_CONFIG", paramString).commit();
-    AppMethodBeat.o(124460);
+    AppMethodBeat.o(89734);
   }
   
   private void synGetConfig(Context paramContext)
   {
-    AppMethodBeat.i(124466);
+    AppMethodBeat.i(89740);
     if (!needGetConfig())
     {
       HttpproxyFacade.print(4, TAG, "last get config time:" + System.currentTimeMillis() + ",so get config just return");
-      AppMethodBeat.o(124466);
+      AppMethodBeat.o(89740);
       return;
     }
     Object localObject = makeGetServerConfigUrl(paramContext);
@@ -738,7 +649,7 @@ public class ConfigStorage
       }
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
       for (;;)
       {
@@ -748,14 +659,14 @@ public class ConfigStorage
           paramContext.put("error_code", k);
           paramContext.put("report_type", 90);
           HttpproxyFacade.jsonReport(paramContext.toString());
-          AppMethodBeat.o(124466);
+          AppMethodBeat.o(89740);
           return;
         }
         catch (JSONException paramContext)
         {
-          AppMethodBeat.o(124466);
+          AppMethodBeat.o(89740);
         }
-        paramContext = paramContext;
+        paramContext = finally;
         HttpproxyFacade.print(6, TAG, "get config exception");
         k = i;
       }
@@ -764,55 +675,60 @@ public class ConfigStorage
   
   public void stopGetServerConfig()
   {
-    AppMethodBeat.i(124464);
+    AppMethodBeat.i(89738);
     try
     {
       if (this.thread != null)
       {
         this.thread.interrupt();
-        AppMethodBeat.o(124464);
+        AppMethodBeat.o(89738);
         return;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       HttpproxyFacade.print(6, TAG, "thread create exception");
-      AppMethodBeat.o(124464);
+      AppMethodBeat.o(89738);
     }
   }
   
-  public void synGetServerConfig(Context paramContext)
+  public void synGetServerConfig(final Context paramContext)
   {
-    AppMethodBeat.i(124463);
+    AppMethodBeat.i(89737);
     if (paramContext == null)
     {
       HttpproxyFacade.print(6, TAG, "synGetServerConfig context is null");
-      AppMethodBeat.o(124463);
+      AppMethodBeat.o(89737);
       return;
     }
     try
     {
-      this.thread = new Thread(new ConfigStorage.1(this, paramContext));
-      if (this.thread == null)
+      this.thread = new Thread(new Runnable()
       {
-        HttpproxyFacade.print(6, TAG, "thread create failed");
-        AppMethodBeat.o(124463);
+        public void run()
+        {
+          AppMethodBeat.i(89730);
+          ConfigStorage.access$0(ConfigStorage.this, paramContext);
+          AppMethodBeat.o(89730);
+        }
+      });
+      if (this.thread == null) {
         return;
       }
       this.thread.start();
-      AppMethodBeat.o(124463);
+      AppMethodBeat.o(89737);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
       HttpproxyFacade.print(6, TAG, "thread create exception");
-      AppMethodBeat.o(124463);
+      AppMethodBeat.o(89737);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqvideo.proxy.common.ConfigStorage
  * JD-Core Version:    0.7.0.1
  */

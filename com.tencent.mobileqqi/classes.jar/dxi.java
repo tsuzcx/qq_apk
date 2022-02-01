@@ -1,52 +1,19 @@
-import android.graphics.Matrix;
+import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 public class dxi
-  extends Animation
+  extends AnimateUtils.AnimationAdapter
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private float b = 0.0F;
-  
   public dxi(ComboAnimation3 paramComboAnimation3) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    float f2 = 1.0F;
-    float f1;
-    if (paramFloat < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 11.0F)
-    {
-      f1 = paramFloat / (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 11.0F);
-      if (paramFloat >= this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 6.0F) {
-        break label139;
-      }
-      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 6.0F) * 0.5F;
+    if ((ComboAnimation3.a(this.a) != null) && (ComboAnimation3.a(this.a).isShown())) {
+      this.a.a.post(new dxj(this));
     }
-    for (;;)
-    {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
-      return;
-      if (paramFloat < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 20.0F)
-      {
-        f1 = 1.0F;
-        break;
-      }
-      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float);
-      break;
-      label139:
-      if (paramFloat < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 11.0F) {
-        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimComboAnimation3.jdField_a_of_type_Float);
-      }
-    }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
   }
 }
 

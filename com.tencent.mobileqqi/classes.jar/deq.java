@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Dialog;
 import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class deq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   public deq(RegisterActivity paramRegisterActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a = 0;
-    this.a.finish();
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+      this.a.a.dismiss();
+    }
+    this.a.a = null;
   }
 }
 

@@ -9,7 +9,7 @@ public final class stLabelInfo
   extends JceStruct
 {
   static ArrayList<String> cache_labels = new ArrayList();
-  public ArrayList<String> labels;
+  public ArrayList<String> labels = null;
   
   static
   {
@@ -30,14 +30,15 @@ public final class stLabelInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.labels != null) {
-      paramJceOutputStream.write(this.labels, 0);
+    ArrayList localArrayList = this.labels;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.stLabelInfo
  * JD-Core Version:    0.7.0.1
  */

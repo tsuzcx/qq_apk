@@ -2,25 +2,27 @@ package com.tencent.mm.plugin.sight.encode.ui;
 
 public abstract interface a
 {
-  public abstract boolean DP();
+  public abstract void Dj(boolean paramBoolean);
   
-  public abstract void cnc();
+  public abstract boolean aGe();
   
-  public abstract void cnd();
+  public abstract void gYX();
   
-  public abstract void cne();
+  public abstract void gYY();
   
-  public abstract void cnf();
+  public abstract void gYZ();
+  
+  public abstract void gZa();
+  
+  public abstract boolean gZb();
   
   public abstract int getViewHeight();
-  
-  public abstract void kV(boolean paramBoolean);
   
   public abstract void setCameraShadowAlpha(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.a
  * JD-Core Version:    0.7.0.1
  */

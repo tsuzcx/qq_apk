@@ -1,48 +1,48 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.os.Bundle;
-import bbru;
-import bckw;
-import bcpx;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.List;
 import mqq.app.MobileQQ;
-import mqq.manager.TicketManager;
 
-public class TroopFeedsDataManager$2
+class TroopFeedsDataManager$2
   implements Runnable
 {
-  public TroopFeedsDataManager$2(bbru parambbru, List paramList, int paramInt) {}
+  TroopFeedsDataManager$2(TroopFeedsDataManager paramTroopFeedsDataManager, List paramList, int paramInt) {}
   
   public void run()
   {
-    Object localObject2 = (TicketManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    String str = ((TicketManager)localObject2).getSkey(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("qid", "" + this.this$0.jdField_a_of_type_JavaLangLong);
-    ((Bundle)localObject2).putString("fnum", "1");
-    ((Bundle)localObject2).putString("bkn", "" + bcpx.b(str));
-    ((Bundle)localObject2).putString("fids", this.this$0.a(this.jdField_a_of_type_JavaUtilList));
-    ((Bundle)localObject2).putString("ver", "8.3.5");
-    ((Bundle)localObject2).putString("src", "1");
-    ((Bundle)localObject2).putString("platform", "android");
-    ((Bundle)localObject2).putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + str);
-    localObject1 = new HashMap();
-    ((HashMap)localObject1).put("BUNDLE", localObject2);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-    ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
-    new bckw("https://web.qun.qq.com/cgi-bin/notice/get_data_new", "GET", this.this$0.jdField_a_of_type_Bckx, this.jdField_a_of_type_Int, null, true).execute(new HashMap[] { localObject1 });
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopFeedsDataManager", 2, "get feed from server start: " + System.currentTimeMillis());
+    Object localObject1 = new Bundle();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.this$0.g);
+    ((Bundle)localObject1).putString("qid", ((StringBuilder)localObject2).toString());
+    ((Bundle)localObject1).putString("fnum", "1");
+    ((Bundle)localObject1).putString("fids", this.this$0.a(this.a));
+    ((Bundle)localObject1).putString("ver", "8.8.17");
+    ((Bundle)localObject1).putString("src", "1");
+    ((Bundle)localObject1).putString("platform", "android");
+    TroopFeedsDataManager.a(this.this$0, (Bundle)localObject1);
+    localObject2 = new HashMap();
+    ((HashMap)localObject2).put("BUNDLE", localObject1);
+    this.this$0.f.getApplication();
+    ((HashMap)localObject2).put("CONTEXT", MobileQQ.getContext());
+    new HttpWebCgiAsyncTask("https://web.qun.qq.com/cgi-bin/notice/get_data_new", "GET", this.this$0.j, this.b, null, true).execute(new HashMap[] { localObject2 });
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("get feed from server start: ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      QLog.d("TroopFeedsDataManager", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.2
  * JD-Core Version:    0.7.0.1
  */

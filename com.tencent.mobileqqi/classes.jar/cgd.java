@@ -1,44 +1,77 @@
-import android.view.View;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.DetailProfileActivity;
-import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.service.profile.ProfileUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class cgd
-  implements ActionSheet.OnButtonClickListener
+  extends CardObserver
 {
-  public cgd(DetailProfileActivity paramDetailProfileActivity, ActionSheet paramActionSheet) {}
+  public cgd(DetailProfileActivity paramDetailProfileActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, Card paramCard)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.b.a(2));
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler == null)
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(2131561424, 1);
-      return;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte != 0)
+      this.a.a(2131561424, 1);
+      if (paramCard != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte = 0;
-        this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte, null);
-        this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte != 1)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte = 1;
-          this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte, null);
-          this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDetailProfileActivity.jdField_a_of_type_Byte);
+        this.a.jdField_b_of_type_JavaLangString = paramCard.strNick;
+        this.a.jdField_a_of_type_Int = ((int)paramCard.lBirthday);
+        this.a.jdField_a_of_type_Byte = ((byte)paramCard.shGender);
+        this.a.b(this.a.jdField_b_of_type_JavaLangString);
+        this.a.a(this.a.jdField_a_of_type_Byte);
+        this.a.a(this.a.jdField_a_of_type_Int);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.Detail", 2, "onSetUserInfo isSuccess = " + paramBoolean + ", id = " + paramCard.getId() + ", nick = " + paramCard.strNick + ", gender = " + paramCard.shGender + ", birthday = " + paramCard.lBirthday + ", sig = " + paramCard.strSign + ", label = " + ProfileUtil.a(paramCard.getTagInfoArray()));
         }
+      }
+      return;
+    }
+    paramCard = new Intent();
+    paramCard.putExtra("changed", true);
+    this.a.setResult(-1, paramCard);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null) && (this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramObject.uin)))
+      {
+        this.a.jdField_b_of_type_JavaLangString = paramObject.strNick;
+        this.a.jdField_a_of_type_Int = ((int)paramObject.lBirthday);
+        this.a.jdField_a_of_type_Byte = ((byte)paramObject.shGender);
+        this.a.jdField_a_of_type_JavaLangString = paramObject.strSign;
+        this.a.b(this.a.jdField_b_of_type_JavaLangString);
+        this.a.a(this.a.jdField_a_of_type_Byte);
+        this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.a();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.Detail", 2, "onCardDownload isSuccess = " + paramBoolean + ", id = " + paramObject.getId() + ", nick = " + paramObject.strNick + ", gender = " + paramObject.shGender + ", birthday = " + paramObject.lBirthday + ", sig = " + paramObject.strSign + ", label = " + ProfileUtil.a(paramObject.getTagInfoArray()));
+        }
+      }
+      return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, Card paramCard)
+  {
+    if ((paramBoolean) && (paramCard != null) && (this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().equals(paramCard.uin)))
+    {
+      this.a.jdField_a_of_type_JavaLangString = paramCard.strSign;
+      this.a.jdField_b_of_type_JavaLangString = paramCard.strNick;
+      this.a.jdField_a_of_type_Int = ((int)paramCard.lBirthday);
+      this.a.jdField_a_of_type_Byte = ((byte)paramCard.shGender);
+      this.a.b(this.a.jdField_b_of_type_JavaLangString);
+      this.a.a(this.a.jdField_a_of_type_Byte);
+      this.a.a(this.a.jdField_a_of_type_Int);
+      this.a.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Detail", 2, "onGotFullInfo isSuccess = " + paramBoolean + ", id = " + paramCard.getId() + ", nick = " + paramCard.strNick + ", gender = " + paramCard.shGender + ", birthday = " + paramCard.lBirthday + ", sig = " + paramCard.strSign + ", label = " + ProfileUtil.a(paramCard.getTagInfoArray()));
       }
     }
   }

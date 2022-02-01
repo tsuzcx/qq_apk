@@ -1,40 +1,65 @@
 package com.tencent.mm.plugin.appbrand.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.appbrand.v8.IJSRuntime;
+import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
+import com.tencent.mm.appbrand.v8.f;
+import com.tencent.mm.appbrand.v8.m;
+import com.tencent.mm.appbrand.v8.m.9;
+import java.nio.ByteBuffer;
 
-public final class c
+public class c
+  extends a
 {
-  private static Set<String> itZ;
-  
-  static
+  public c()
   {
-    AppMethodBeat.i(132327);
-    HashSet localHashSet = new HashSet();
-    itZ = localHashSet;
-    localHashSet.add(ag.cE("wx9a3998a6d8b89d42"));
-    AppMethodBeat.o(132327);
+    super(null);
   }
   
-  public static boolean Ea(String paramString)
+  public c(byte paramByte)
   {
-    AppMethodBeat.i(132326);
-    if (bo.isNullOrNil(paramString))
+    super(new IJSRuntime.Config(null, null));
+    AppMethodBeat.i(144158);
+    AppMethodBeat.o(144158);
+  }
+  
+  public c(IJSRuntime.Config paramConfig)
+  {
+    super(paramConfig);
+  }
+  
+  protected final m a(IJSRuntime paramIJSRuntime, int paramInt)
+  {
+    AppMethodBeat.i(144161);
+    paramIJSRuntime = paramIJSRuntime.nN(paramInt);
+    AppMethodBeat.o(144161);
+    return paramIJSRuntime;
+  }
+  
+  public final void a(z paramz)
+  {
+    AppMethodBeat.i(144159);
+    if (czf() != null)
     {
-      AppMethodBeat.o(132326);
-      return true;
+      m localm = czf();
+      localm.hmL.u(new m.9(localm, paramz));
     }
-    boolean bool = itZ.contains(ag.cE(paramString));
-    AppMethodBeat.o(132326);
-    return bool;
+    AppMethodBeat.o(144159);
   }
+  
+  protected IJSRuntime g(IJSRuntime.Config paramConfig)
+  {
+    AppMethodBeat.i(144160);
+    paramConfig = f.c(paramConfig);
+    AppMethodBeat.o(144160);
+    return paramConfig;
+  }
+  
+  public final void releaseDirectByteBuffer(ByteBuffer paramByteBuffer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.n.c
  * JD-Core Version:    0.7.0.1
  */

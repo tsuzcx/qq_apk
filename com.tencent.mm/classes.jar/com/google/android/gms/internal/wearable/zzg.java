@@ -9,71 +9,71 @@ public final class zzg
   
   public zzg()
   {
-    AppMethodBeat.i(70678);
+    AppMethodBeat.i(100661);
     this.zzfy = zzh.zzh();
     this.zzhc = null;
     this.zzhl = -1;
-    AppMethodBeat.o(70678);
+    AppMethodBeat.o(100661);
   }
   
   public static zzg zza(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(70683);
+    AppMethodBeat.i(100666);
     paramArrayOfByte = (zzg)zzt.zza(new zzg(), paramArrayOfByte, 0, paramArrayOfByte.length);
-    AppMethodBeat.o(70683);
+    AppMethodBeat.o(100666);
     return paramArrayOfByte;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70679);
+    AppMethodBeat.i(100662);
     if (paramObject == this)
     {
-      AppMethodBeat.o(70679);
+      AppMethodBeat.o(100662);
       return true;
     }
     if (!(paramObject instanceof zzg))
     {
-      AppMethodBeat.o(70679);
+      AppMethodBeat.o(100662);
       return false;
     }
     paramObject = (zzg)paramObject;
     if (!zzr.equals(this.zzfy, paramObject.zzfy))
     {
-      AppMethodBeat.o(70679);
+      AppMethodBeat.o(100662);
       return false;
     }
     if ((this.zzhc == null) || (this.zzhc.isEmpty()))
     {
       if ((paramObject.zzhc == null) || (paramObject.zzhc.isEmpty()))
       {
-        AppMethodBeat.o(70679);
+        AppMethodBeat.o(100662);
         return true;
       }
-      AppMethodBeat.o(70679);
+      AppMethodBeat.o(100662);
       return false;
     }
     boolean bool = this.zzhc.equals(paramObject.zzhc);
-    AppMethodBeat.o(70679);
+    AppMethodBeat.o(100662);
     return bool;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(70680);
+    AppMethodBeat.i(100663);
     int j = getClass().getName().hashCode();
     int k = zzr.hashCode(this.zzfy);
     if ((this.zzhc == null) || (this.zzhc.isEmpty())) {}
     for (int i = 0;; i = this.zzhc.hashCode())
     {
-      AppMethodBeat.o(70680);
+      AppMethodBeat.o(100663);
       return i + ((j + 527) * 31 + k) * 31;
     }
   }
   
   public final void zza(zzl paramzzl)
   {
-    AppMethodBeat.i(70681);
+    AppMethodBeat.i(100664);
     if ((this.zzfy != null) && (this.zzfy.length > 0))
     {
       int i = 0;
@@ -87,12 +87,12 @@ public final class zzg
       }
     }
     super.zza(paramzzl);
-    AppMethodBeat.o(70681);
+    AppMethodBeat.o(100664);
   }
   
   protected final int zzg()
   {
-    AppMethodBeat.i(70682);
+    AppMethodBeat.i(100665);
     int i = super.zzg();
     int k = i;
     if (this.zzfy != null)
@@ -117,13 +117,13 @@ public final class zzg
         }
       }
     }
-    AppMethodBeat.o(70682);
+    AppMethodBeat.o(100665);
     return k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.wearable.zzg
  * JD-Core Version:    0.7.0.1
  */

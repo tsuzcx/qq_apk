@@ -9,12 +9,12 @@ class LiteActivity$38
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaUtilObservable, this.jdField_a_of_type_JavaLangObject);
+    this.this$0.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.38
  * JD-Core Version:    0.7.0.1
  */

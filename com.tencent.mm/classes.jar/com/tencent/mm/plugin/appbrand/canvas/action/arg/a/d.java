@@ -3,36 +3,37 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionWrapper;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
+import com.tencent.mm.sdk.SynchronizedPool;
 
 public final class d
 {
-  private static d hfw;
-  public com.tencent.mm.sdk.d<DrawCanvasArg> hfu;
-  public com.tencent.mm.sdk.d<DrawActionWrapper> hfv;
+  private static d qTX;
+  public SynchronizedPool<DrawCanvasArg> qTV;
+  public SynchronizedPool<DrawActionWrapper> qTW;
   
   static
   {
-    AppMethodBeat.i(103637);
-    hfw = new d();
-    AppMethodBeat.o(103637);
+    AppMethodBeat.i(145320);
+    qTX = new d();
+    AppMethodBeat.o(145320);
   }
   
   private d()
   {
-    AppMethodBeat.i(103636);
-    this.hfu = new com.tencent.mm.sdk.d(5);
-    this.hfv = new com.tencent.mm.sdk.d(500);
-    AppMethodBeat.o(103636);
+    AppMethodBeat.i(145319);
+    this.qTV = new SynchronizedPool(5);
+    this.qTW = new SynchronizedPool(500);
+    AppMethodBeat.o(145319);
   }
   
-  public static d ayb()
+  public static d ckd()
   {
-    return hfw;
+    return qTX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d
  * JD-Core Version:    0.7.0.1
  */

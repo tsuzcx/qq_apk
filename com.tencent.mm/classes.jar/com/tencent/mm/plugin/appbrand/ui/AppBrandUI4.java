@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandUI4

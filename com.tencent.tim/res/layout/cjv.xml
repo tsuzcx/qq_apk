@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/moj" android:visibility="gone" style="@style/aeu" />
+    <com.tencent.qqmail.view.QMListItemView android:id="@id/mok" android:background="@drawable/e_y" android:paddingLeft="@dimen/bp2" android:paddingTop="@dimen/bi7" android:paddingRight="30.0dip" android:paddingBottom="@dimen/bi7" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <CheckBox android:id="@id/mon" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_marginRight="@dimen/bi1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/ahv" />
+        <com.tencent.qqmail.view.QMAvatarView android:id="@id/mr1" android:layout_marginRight="@dimen/bhz" android:layout_toRightOf="@id/mon" android:layout_centerVertical="true" qm:avatar_view_type="evy" style="@style/a_v" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/mrl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/mr1" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+            <TextView android:textSize="@dimen/bi4" android:textColor="@color/atq" android:ellipsize="end" android:id="@id/mom" android:paddingRight="@dimen/bi5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/kyu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:src="@drawable/grg" android:layout_alignRight="@id/mom" android:layout_centerVertical="true" android:contentDescription="@null" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/bi2" android:textColor="@color/atu" android:ellipsize="end" android:id="@id/moi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bi3" android:singleLine="true" android:layout_toRightOf="@id/mr1" android:layout_below="@id/mrl" android:layout_alignParentRight="true" />
+    </com.tencent.qqmail.view.QMListItemView>
+</LinearLayout>

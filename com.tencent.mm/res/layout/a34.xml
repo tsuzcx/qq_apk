@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout android:id="@id/bkm" android:background="@null" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/bkn" android:background="@color/y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <FrameLayout android:id="@id/nw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout">
-            <include layout="@layout/b9t" />
-            <com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper android:id="@id/bko" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <FrameLayout android:id="@id/bkp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout" />
-            </com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper>
-        </FrameLayout>
-        <FrameLayout android:id="@id/bkq" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="refreshFrameLayout">
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dn" android:layout_marginBottom="@dimen/dn" android:src="@raw/webview_refresh_icon" />
-                <TextView android:textSize="18.0sp" android:textColor="#ffdddddd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g7a" style="@style/p8" />
+<ScrollView android:scrollbars="none" android:fillViewport="true" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:importantForAccessibility="no">
+        <LinearLayout android:orientation="vertical" android:id="@id/iss" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no" style="@style/r8">
+            <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardBannerView android:id="@id/a85" android:background="@drawable/rm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:id="@id/iso" android:paddingLeft="@dimen/if" android:paddingTop="@dimen/i6" android:paddingRight="@dimen/if" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/c9e" />
+            <com.tencent.mm.plugin.emoji.ui.GridInScrollView android:gravity="center_horizontal" android:id="@android:id/list" android:background="@color/ahb" android:focusable="true" android:scrollbars="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/if" android:layout_marginRight="@dimen/if" android:listSelector="@android:color/transparent" android:cacheColorHint="#00000000" android:horizontalSpacing="@dimen/iq" android:verticalSpacing="@dimen/i6" android:numColumns="3" android:divider="@null" android:dividerHeight="0.0dip" />
+            <LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textColor="@color/o6" android:gravity="bottom|center" android:layout_gravity="bottom|center" android:id="@id/isq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/j6" android:text="@string/c9p" style="@style/ow" />
             </LinearLayout>
-        </FrameLayout>
-        <com.tencent.mm.ui.base.MMFalseProgressBar android:layout_gravity="center|left|top" android:id="@id/bkr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:progressDrawable="@drawable/w7" android:contentDescription="progressBar" />
-        <RelativeLayout android:id="@id/c3k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/ist" android:visibility="gone" android:importantForAccessibility="no" style="@style/r8">
+            <com.tencent.mm.ui.base.MMFormInputView android:id="@id/isu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="@dimen/i9" android:layout_marginRight="@dimen/br" android:layout_marginBottom="@dimen/j6" form:form_hint="@string/c9r" form:form_layout="@layout/a31" form:form_title="@string/c9s" style="@style/n9" />
+            <Button android:id="@id/isv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="@dimen/j6" android:layout_marginRight="@dimen/br" android:layout_marginBottom="@dimen/j6" android:text="@string/c9t" style="@style/ok" />
+        </LinearLayout>
     </FrameLayout>
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/bks" android:background="#ff2e3132" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        <ImageButton android:id="@id/bkt" android:background="@drawable/am" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/a8l" android:layout_alignParentLeft="true" />
-        <ImageView android:background="@color/e1" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_toRightOf="@id/bkt" />
-        <ImageButton android:id="@id/bku" android:background="@drawable/am" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/a8m" android:layout_alignParentRight="true" />
-        <ImageView android:background="@color/e1" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_toLeftOf="@id/bku" />
-    </RelativeLayout>
-</com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout>
+</ScrollView>

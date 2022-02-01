@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webprocess;
 
-import beka;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.common.util.Util;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebAccelerator;
 import java.util.HashMap;
 import java.util.Map;
-import ndq;
+import mqq.app.MobileQQ;
 
 class WebAccelerateHelper$1
   implements Runnable
@@ -15,25 +15,31 @@ class WebAccelerateHelper$1
   
   public void run()
   {
+    Object localObject;
     if (this.val$fisX5PreFetch)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("User-Agent", beka.a(beka.c("x5prefetch_1.0"), "", false));
-      WebAccelerator.prefetchResource(BaseApplicationImpl.getContext(), this.val$fUrl, localHashMap, true);
-      QLog.i("WebAccelerateHelper", 1, "now prefetchResource " + ndq.c(this.val$fUrl, new String[0]));
-    }
-    while (!this.val$fisX5PreConnect)
-    {
-      HashMap localHashMap;
+      localObject = new HashMap();
+      ((Map)localObject).put("User-Agent", SwiftWebViewUtils.a(SwiftWebViewUtils.c("x5prefetch_1.0"), "", false));
+      WebAccelerator.prefetchResource(MobileQQ.getContext(), this.val$fUrl, (Map)localObject, true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("now prefetchResource ");
+      ((StringBuilder)localObject).append(Util.c(this.val$fUrl, new String[0]));
+      QLog.i("WebAccelerateHelper", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    WebAccelerator.preConnect(BaseApplicationImpl.getContext(), this.val$fUrl, 1, true);
-    QLog.i("WebAccelerateHelper", 1, "now preconnect " + ndq.c(this.val$fUrl, new String[0]));
+    if (this.val$fisX5PreConnect)
+    {
+      WebAccelerator.preConnect(MobileQQ.getContext(), this.val$fUrl, 1, true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("now preconnect ");
+      ((StringBuilder)localObject).append(Util.c(this.val$fUrl, new String[0]));
+      QLog.i("WebAccelerateHelper", 1, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper.1
  * JD-Core Version:    0.7.0.1
  */

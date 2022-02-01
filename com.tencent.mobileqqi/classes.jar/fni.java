@@ -1,18 +1,32 @@
-import android.database.Cursor;
+import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteCursorDriver;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.utils.SecurityUtile;
 
-public class fni
-  implements SQLiteDatabase.CursorFactory
+class fni
+  extends SQLiteCursor
 {
-  private fni(QQEntityManagerFactory paramQQEntityManagerFactory) {}
-  
-  public Cursor newCursor(SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
+  fni(fnh paramfnh, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    return new fnj(this, paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+  }
+  
+  public byte[] getBlob(int paramInt)
+  {
+    return SecurityUtile.a(super.getBlob(paramInt));
+  }
+  
+  public String getString(int paramInt)
+  {
+    String str1 = super.getString(paramInt);
+    try
+    {
+      String str2 = SecurityUtile.a(str1);
+      return str2;
+    }
+    catch (Exception localException) {}
+    return str1;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.av.ui;
 
-import azqs;
-import com.tencent.av.VideoController;
-import lid;
-import mdd;
+import android.app.Activity;
+import com.tencent.av.widget.ChildLockCircle;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class DoubleVideoCtrlUI$3
   implements Runnable
@@ -12,16 +12,24 @@ class DoubleVideoCtrlUI$3
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().k()))
+    ChildLockCircle localChildLockCircle;
+    if ((this.this$0.ak != null) && (this.this$0.ak.get() != null)) {
+      localChildLockCircle = (ChildLockCircle)((Activity)this.this$0.ak.get()).findViewById(2131441036);
+    } else {
+      localChildLockCircle = null;
+    }
+    if (localChildLockCircle != null)
     {
-      mdd.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1049);
-      azqs.b(null, "CliOper", "", "", "0X8009D02", "0X8009D02", 0, 0, "", "", "", "");
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.this$0.X, 1, "timtest HideChildLockUIRunnable");
+      }
+      localChildLockCircle.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.3
  * JD-Core Version:    0.7.0.1
  */

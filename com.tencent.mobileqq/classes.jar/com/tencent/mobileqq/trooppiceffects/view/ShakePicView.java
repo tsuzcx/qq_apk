@@ -14,38 +14,30 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bcxg;
-import bcxi;
-import bdaq;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class ShakePicView
   extends FrameLayout
-  implements bcxg
+  implements IPicView
 {
-  public Handler a;
   protected ImageView a;
-  protected boolean a;
   protected ImageView b;
   protected ImageView c;
+  protected Handler d = new Handler(Looper.getMainLooper());
+  protected boolean e;
   
   public ShakePicView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.a = new ImageView(paramContext);
     this.b = new ImageView(paramContext);
     this.c = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, -1, -1);
+    addView(this.a, -1, -1);
     addView(this.b, -1, -1);
     addView(this.c, -1, -1);
-  }
-  
-  public View a()
-  {
-    return this;
   }
   
   public void a()
@@ -59,17 +51,17 @@ public class ShakePicView
     this.b.setTag(null);
     this.c.clearAnimation();
     this.c.setTag(null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.e = true;
+    this.d.removeCallbacksAndMessages(null);
   }
   
   protected void c()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return;
     }
-    Object localObject1 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_X, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, -bdaq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.285F, -bdaq.a(getContext(), 7.5F)), Keyframe.ofFloat(0.426F, -bdaq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.568F, -bdaq.a(getContext(), 2.5F)), Keyframe.ofFloat(0.71F, -bdaq.a(getContext(), 7.5F)), Keyframe.ofFloat(0.852F, -bdaq.a(getContext(), 2.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
-    Object localObject2 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, 0.0F), Keyframe.ofFloat(0.285F, -bdaq.a(getContext(), 3.5F)), Keyframe.ofFloat(0.426F, -bdaq.a(getContext(), 13.5F)), Keyframe.ofFloat(0.568F, 0.0F), Keyframe.ofFloat(0.71F, -bdaq.a(getContext(), 3.5F)), Keyframe.ofFloat(0.852F, -bdaq.a(getContext(), 13.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
+    Object localObject1 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_X, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, -DisplayUtil.a(getContext(), 2.5F)), Keyframe.ofFloat(0.285F, -DisplayUtil.a(getContext(), 7.5F)), Keyframe.ofFloat(0.426F, -DisplayUtil.a(getContext(), 2.5F)), Keyframe.ofFloat(0.568F, -DisplayUtil.a(getContext(), 2.5F)), Keyframe.ofFloat(0.71F, -DisplayUtil.a(getContext(), 7.5F)), Keyframe.ofFloat(0.852F, -DisplayUtil.a(getContext(), 2.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
+    Object localObject2 = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.142F, 0.0F), Keyframe.ofFloat(0.285F, -DisplayUtil.a(getContext(), 3.5F)), Keyframe.ofFloat(0.426F, -DisplayUtil.a(getContext(), 13.5F)), Keyframe.ofFloat(0.568F, 0.0F), Keyframe.ofFloat(0.71F, -DisplayUtil.a(getContext(), 3.5F)), Keyframe.ofFloat(0.852F, -DisplayUtil.a(getContext(), 13.5F)), Keyframe.ofFloat(1.0F, 0.0F) });
     localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.b, new PropertyValuesHolder[] { localObject1 }).setDuration(280L);
     localObject2 = ObjectAnimator.ofPropertyValuesHolder(this.b, new PropertyValuesHolder[] { localObject2 }).setDuration(280L);
     Object localObject3 = new AnimatorSet();
@@ -89,19 +81,24 @@ public class ShakePicView
     localAnimatorSet.play((Animator)localObject2).with((Animator)localObject3).with((Animator)localObject1);
     localAnimatorSet.start();
     this.c.setTag(localAnimatorSet);
-    localAnimatorSet.addListener(new bcxi(this));
+    localAnimatorSet.addListener(new ShakePicView.1(this));
+  }
+  
+  public View getView()
+  {
+    return this;
   }
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.a.setImageBitmap(paramBitmap);
     this.b.setImageBitmap(paramBitmap);
     this.c.setImageBitmap(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.ShakePicView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,30 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class ChatFooter$26
-  implements Runnable
+  implements View.OnClickListener
 {
-  ChatFooter$26(ChatFooter paramChatFooter)
-  {
-    AppMethodBeat.i(27808);
-    AppMethodBeat.o(27808);
-  }
+  ChatFooter$26(ChatFooter paramChatFooter) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(153699);
-    if (!this.vXU.doA())
-    {
-      ChatFooter.ap(this.vXU);
-      AppMethodBeat.o(153699);
-      return;
-    }
-    ab.i("changelcai", "isScrolling!! pass this event!");
-    AppMethodBeat.o(153699);
+    AppMethodBeat.i(245382);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$32", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    ChatFooter.I(this.YiY);
+    a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$32", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(245382);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChatFooter.26
  * JD-Core Version:    0.7.0.1
  */

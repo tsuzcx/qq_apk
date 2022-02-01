@@ -13,16 +13,14 @@ final class hi$a
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-      paramObject = (a)paramObject;
-    } while ((paramObject.a != this.a) || (paramObject.b != this.b));
-    return true;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    paramObject = (a)paramObject;
+    return (paramObject.a == this.a) && (paramObject.b == this.b);
   }
 }
 

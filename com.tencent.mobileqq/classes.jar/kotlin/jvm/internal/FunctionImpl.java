@@ -41,7 +41,12 @@ public abstract class FunctionImpl
   
   private void throwWrongArity(int paramInt)
   {
-    throw new IllegalStateException("Wrong function arity, expected: " + paramInt + ", actual: " + getArity());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Wrong function arity, expected: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", actual: ");
+    localStringBuilder.append(getArity());
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public abstract int getArity();
@@ -191,7 +196,7 @@ public abstract class FunctionImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.internal.FunctionImpl
  * JD-Core Version:    0.7.0.1
  */

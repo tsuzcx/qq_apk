@@ -43,15 +43,17 @@ final class CachedThreadScheduler
   
   public void shutdown()
   {
-    CachedThreadScheduler.CachedWorkerPool localCachedWorkerPool;
+    CachedThreadScheduler.CachedWorkerPool localCachedWorkerPool1;
+    CachedThreadScheduler.CachedWorkerPool localCachedWorkerPool2;
     do
     {
-      localCachedWorkerPool = (CachedThreadScheduler.CachedWorkerPool)this.pool.get();
-      if (localCachedWorkerPool == NONE) {
+      localCachedWorkerPool1 = (CachedThreadScheduler.CachedWorkerPool)this.pool.get();
+      localCachedWorkerPool2 = NONE;
+      if (localCachedWorkerPool1 == localCachedWorkerPool2) {
         return;
       }
-    } while (!this.pool.compareAndSet(localCachedWorkerPool, NONE));
-    localCachedWorkerPool.shutdown();
+    } while (!this.pool.compareAndSet(localCachedWorkerPool1, localCachedWorkerPool2));
+    localCachedWorkerPool1.shutdown();
   }
   
   public void start()
@@ -64,7 +66,7 @@ final class CachedThreadScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.schedulers.CachedThreadScheduler
  * JD-Core Version:    0.7.0.1
  */

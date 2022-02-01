@@ -4,27 +4,25 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import bhtv;
-import bhxk;
-import bhxl;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GestureSelectGridView
   extends GridView
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  public bhtv a;
-  public bhxl a;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  float jdField_b_of_type_Float;
-  public int b;
-  AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean b;
-  public int c;
-  AtomicBoolean c;
-  final int d = 20000000;
+  public static final float HORIZONTAL_SLIDE_RATIO = 1.73F;
+  int mBeginSelectPosition = -1;
+  AtomicBoolean mEnableSelectMode = new AtomicBoolean(true);
+  int mEndSelectPosition = -1;
+  AtomicBoolean mIsBegined = new AtomicBoolean(false);
+  AtomicBoolean mIsBeingInSelectMode = new AtomicBoolean(false);
+  boolean mIsScrolling = false;
+  boolean mIsScrollingFromTop = true;
+  float mLastMotionX;
+  float mLastMotionY;
+  GestureSelectGridView.OnSelectListener mOnSelectChangedListener;
+  AbsListView.OnScrollListener mSubOnScrollListener;
+  int mTouchSlop;
+  final int speed = 20000000;
   
   public GestureSelectGridView(Context paramContext)
   {
@@ -34,210 +32,226 @@ public class GestureSelectGridView
   public GestureSelectGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 15);
-    super.setOnScrollListener(new bhxk(this));
+    this.mTouchSlop = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 15);
+    super.setOnScrollListener(new GestureSelectGridView.MyScrollListener(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (!this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      bool1 = super.onInterceptTouchEvent(paramMotionEvent);
+    if (!this.mEnableSelectMode.get()) {
+      return super.onInterceptTouchEvent(paramMotionEvent);
     }
-    int i;
-    do
-    {
-      return bool1;
-      i = paramMotionEvent.getAction();
-      if (i != 2) {
-        break;
-      }
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    int i = paramMotionEvent.getAction();
+    if ((i == 2) && (this.mIsBeingInSelectMode.get())) {
+      return true;
+    }
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (i & 0xFF)
+    i &= 0xFF;
+    if (i != 0)
     {
-    }
-    do
-    {
-      for (;;)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          break;
-        }
-        return super.onInterceptTouchEvent(paramMotionEvent);
-        float f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
-        if ((f3 > Math.abs(f2 - this.jdField_b_of_type_Float) * 1.73F) && (f3 > this.jdField_a_of_type_Int))
+      if (i != 1) {
+        if (i != 2)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_Float = f1;
-          this.jdField_b_of_type_Float = f2;
-          continue;
-          this.jdField_a_of_type_Float = f1;
-          this.jdField_b_of_type_Float = f2;
-          i = pointToPosition((int)f1, (int)f2);
-          if (i != -1)
-          {
-            this.jdField_c_of_type_Int = i;
-            this.jdField_b_of_type_Int = i;
+          if (i != 3) {
+            break label225;
           }
         }
+        else
+        {
+          float f3 = Math.abs(f1 - this.mLastMotionX);
+          if ((f3 <= Math.abs(f2 - this.mLastMotionY) * 1.73F) || (f3 <= this.mTouchSlop)) {
+            break label225;
+          }
+          this.mIsBeingInSelectMode.set(true);
+          this.mLastMotionX = f1;
+          this.mLastMotionY = f2;
+          break label225;
+        }
       }
-      bool1 = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    } while (!bool1);
-    return true;
+      boolean bool = this.mIsBeingInSelectMode.get();
+      this.mIsBeingInSelectMode.set(false);
+      this.mBeginSelectPosition = -1;
+      this.mEndSelectPosition = -1;
+      this.mIsBegined.set(false);
+      if (bool) {
+        return true;
+      }
+    }
+    else
+    {
+      this.mLastMotionX = f1;
+      this.mLastMotionY = f2;
+      i = pointToPosition((int)f1, (int)f2);
+      if (i != -1)
+      {
+        this.mEndSelectPosition = i;
+        this.mBeginSelectPosition = i;
+      }
+    }
+    label225:
+    if (this.mIsBeingInSelectMode.get()) {
+      return true;
+    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    if (!this.mEnableSelectMode.get()) {
       return super.onTouchEvent(paramMotionEvent);
     }
     int i = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (i & 0xFF)
+    int j = i & 0xFF;
+    if (j != 0)
     {
-    default: 
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        return true;
-      }
-      break;
-    case 2: 
-      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-      {
-        float f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
-        if ((f3 > Math.abs(f2 - this.jdField_b_of_type_Float) * 1.73F) && (f3 > this.jdField_a_of_type_Int))
+      i = 0;
+      GestureSelectGridView.OnSelectListener localOnSelectListener;
+      if (j != 1) {
+        if (j != 2)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_Float = f1;
-          this.jdField_b_of_type_Float = f2;
-        }
-      }
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!this.jdField_a_of_type_Boolean)) {
-        if ((f2 < 0.0F) || (f2 > getHeight()))
-        {
-          this.jdField_a_of_type_Boolean = true;
-          if (f2 >= 0.0F) {
-            break label334;
+          if (j != 3) {
+            break label538;
           }
-          i = -20000000;
-          this.jdField_b_of_type_Boolean = false;
         }
-      }
-      break;
-    }
-    for (;;)
-    {
-      label201:
-      smoothScrollBy(i, 1000000);
-      while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-      {
-        if ((!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_b_of_type_Int != -1))
+        else
         {
-          if (this.jdField_a_of_type_Bhxl != null) {
-            this.jdField_a_of_type_Bhxl.onSelectBegin(this.jdField_b_of_type_Int);
+          if (!this.mIsBeingInSelectMode.get())
+          {
+            float f3 = Math.abs(f1 - this.mLastMotionX);
+            if ((f3 > Math.abs(f2 - this.mLastMotionY) * 1.73F) && (f3 > this.mTouchSlop))
+            {
+              this.mIsBeingInSelectMode.set(true);
+              this.mLastMotionX = f1;
+              this.mLastMotionY = f2;
+            }
           }
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        }
-        i = pointToPosition((int)f1, (int)f2);
-        if (i == -1) {
-          break;
-        }
-        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          break label401;
-        }
-        this.jdField_c_of_type_Int = i;
-        this.jdField_b_of_type_Int = i;
-        if (this.jdField_a_of_type_Bhxl != null) {
-          this.jdField_a_of_type_Bhxl.onSelectBegin(this.jdField_b_of_type_Int);
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        break;
-        label334:
-        if (f2 <= getHeight()) {
-          break label548;
-        }
-        i = 20000000;
-        this.jdField_b_of_type_Boolean = true;
-        break label201;
-        if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_Boolean) && (f2 > 0.0F) && (f2 < getHeight()))
-        {
-          abordFling();
-          this.jdField_a_of_type_Boolean = false;
+          if ((this.mIsBeingInSelectMode.get()) && (!this.mIsScrolling))
+          {
+            if ((f2 < 0.0F) || (f2 > getHeight()))
+            {
+              this.mIsScrolling = true;
+              if (f2 < 0.0F)
+              {
+                this.mIsScrollingFromTop = false;
+                i = -20000000;
+              }
+              else if (f2 > getHeight())
+              {
+                i = 20000000;
+                this.mIsScrollingFromTop = true;
+              }
+              smoothScrollBy(i, 1000000);
+            }
+          }
+          else if ((this.mIsBeingInSelectMode.get()) && (this.mIsScrolling) && (f2 > 0.0F) && (f2 < getHeight()))
+          {
+            abordFling();
+            this.mIsScrolling = false;
+          }
+          if (!this.mIsBeingInSelectMode.get()) {
+            break label538;
+          }
+          if (!this.mIsBegined.get())
+          {
+            i = this.mBeginSelectPosition;
+            if (i != -1)
+            {
+              localOnSelectListener = this.mOnSelectChangedListener;
+              if (localOnSelectListener != null) {
+                localOnSelectListener.onSelectBegin(i);
+              }
+              this.mIsBegined.set(true);
+            }
+          }
+          i = pointToPosition((int)f1, (int)f2);
+          if (i == -1) {
+            break label538;
+          }
+          if (!this.mIsBegined.get())
+          {
+            this.mEndSelectPosition = i;
+            this.mBeginSelectPosition = i;
+            localOnSelectListener = this.mOnSelectChangedListener;
+            if (localOnSelectListener != null) {
+              localOnSelectListener.onSelectBegin(this.mBeginSelectPosition);
+            }
+            this.mIsBegined.set(true);
+            break label538;
+          }
+          if (this.mEndSelectPosition == i) {
+            break label538;
+          }
+          this.mEndSelectPosition = i;
+          if (this.mIsScrolling) {
+            break label538;
+          }
+          localOnSelectListener = this.mOnSelectChangedListener;
+          if (localOnSelectListener == null) {
+            break label538;
+          }
+          localOnSelectListener.onSelectChanged(this.mBeginSelectPosition, this.mEndSelectPosition);
+          break label538;
         }
       }
-      label401:
-      if (this.jdField_c_of_type_Int == i) {
-        break;
-      }
-      this.jdField_c_of_type_Int = i;
-      if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bhxl == null)) {
-        break;
-      }
-      this.jdField_a_of_type_Bhxl.onSelectChanged(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-      break;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      break;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.mIsScrolling)
       {
         abordFling();
-        this.jdField_a_of_type_Boolean = false;
+        this.mIsScrolling = false;
       }
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if ((bool) && (this.jdField_a_of_type_Bhxl != null)) {
-        this.jdField_a_of_type_Bhxl.onSelectEnd();
+      boolean bool = this.mIsBeingInSelectMode.get();
+      this.mBeginSelectPosition = -1;
+      this.mEndSelectPosition = -1;
+      this.mIsBeingInSelectMode.set(false);
+      this.mIsBegined.set(false);
+      if (bool)
+      {
+        localOnSelectListener = this.mOnSelectChangedListener;
+        if (localOnSelectListener != null) {
+          localOnSelectListener.onSelectEnd();
+        }
       }
-      if (!bool) {
-        break;
+      if (bool) {
+        return true;
       }
-      return true;
-      return super.onTouchEvent(paramMotionEvent);
-      label548:
-      i = 0;
     }
+    else
+    {
+      this.mLastMotionX = f1;
+      this.mLastMotionY = f2;
+    }
+    label538:
+    if (this.mIsBeingInSelectMode.get()) {
+      return true;
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnIndexChangedListener(bhxl parambhxl)
+  public void setOnIndexChangedListener(GestureSelectGridView.OnSelectListener paramOnSelectListener)
   {
-    this.jdField_a_of_type_Bhxl = parambhxl;
+    this.mOnSelectChangedListener = paramOnSelectListener;
   }
   
-  public void setOnScrollListener(bhtv parambhtv)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Bhtv = parambhtv;
+    this.mSubOnScrollListener = paramOnScrollListener;
   }
   
   public void setSelectMode(boolean paramBoolean)
   {
-    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    this.mEnableSelectMode.set(paramBoolean);
   }
   
   public void setTouchSlopRate(int paramInt)
   {
-    this.jdField_a_of_type_Int = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * paramInt);
+    this.mTouchSlop = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.GestureSelectGridView
  * JD-Core Version:    0.7.0.1
  */

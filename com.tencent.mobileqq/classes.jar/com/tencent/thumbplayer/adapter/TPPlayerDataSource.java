@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.adapter;
 
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
+import com.tencent.thumbplayer.adapter.player.TPUrlDataSource;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
 public class TPPlayerDataSource
 {
   public static final int TYPE_CLIP_INFO = 2;
+  public static final int TYPE_DATA_SOURCE = 3;
   public static final int TYPE_FD = 1;
   public static final int TYPE_URL = 0;
   private ParcelFileDescriptor mFileDescriptor;
@@ -16,6 +18,7 @@ public class TPPlayerDataSource
   private ITPMediaAsset mTPMediaAsset;
   private int mType;
   private String mUrl;
+  private TPUrlDataSource tpUrlDataSource;
   
   protected TPPlayerDataSource()
   {
@@ -61,6 +64,11 @@ public class TPPlayerDataSource
     return this.mFileDescriptor;
   }
   
+  public TPUrlDataSource getTpUrlDataSource()
+  {
+    return this.tpUrlDataSource;
+  }
+  
   public int getType()
   {
     return this.mType;
@@ -73,7 +81,7 @@ public class TPPlayerDataSource
   
   protected boolean isValid()
   {
-    return (!TextUtils.isEmpty(this.mUrl)) || (this.mFileDescriptor != null) || (this.mTPMediaAsset != null);
+    return (!TextUtils.isEmpty(this.mUrl)) || (this.mFileDescriptor != null) || (this.mTPMediaAsset != null) || (this.tpUrlDataSource != null);
   }
   
   public ITPMediaAsset mediaAsset()
@@ -109,6 +117,14 @@ public class TPPlayerDataSource
     this.mTPMediaAsset = paramITPMediaAsset;
   }
   
+  public void setTpUrlDataSource(TPUrlDataSource paramTPUrlDataSource)
+  {
+    this.mUrl = null;
+    this.mType = 3;
+    this.mFileDescriptor = null;
+    this.tpUrlDataSource = paramTPUrlDataSource;
+  }
+  
   protected void setUrl(String paramString)
   {
     this.mUrl = paramString;
@@ -123,7 +139,7 @@ public class TPPlayerDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlayerDataSource
  * JD-Core Version:    0.7.0.1
  */

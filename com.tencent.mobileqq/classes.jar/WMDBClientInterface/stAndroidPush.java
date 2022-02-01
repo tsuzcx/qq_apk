@@ -39,14 +39,15 @@ public final class stAndroidPush
     paramJceOutputStream.write(this.mode, 1);
     paramJceOutputStream.write(this.wmId, 2);
     paramJceOutputStream.write(this.sceneId, 3);
-    if (this.keyname != null) {
-      paramJceOutputStream.write(this.keyname, 4);
+    String str = this.keyname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     WMDBClientInterface.stAndroidPush
  * JD-Core Version:    0.7.0.1
  */

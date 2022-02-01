@@ -9,477 +9,510 @@ class QualityReportSign$1
   public void run()
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: aconst_null
-    //   3: astore 8
-    //   5: ldc 33
-    //   7: astore 7
-    //   9: new 35	java/net/URL
-    //   12: dup
-    //   13: ldc 37
-    //   15: iconst_4
-    //   16: anewarray 4	java/lang/Object
-    //   19: dup
-    //   20: iconst_0
-    //   21: iconst_1
-    //   22: invokestatic 43	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   25: aastore
-    //   26: dup
-    //   27: iconst_1
-    //   28: ldc 45
-    //   30: aastore
-    //   31: dup
-    //   32: iconst_2
-    //   33: aload_0
-    //   34: getfield 18	com/tencent/TMG/wrapper/QualityReportSign$1:val$bucket	Ljava/lang/String;
-    //   37: aastore
-    //   38: dup
-    //   39: iconst_3
-    //   40: ldc 46
-    //   42: invokestatic 43	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   45: aastore
-    //   46: invokestatic 52	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   49: invokespecial 55	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   52: invokevirtual 59	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   55: checkcast 61	java/net/HttpURLConnection
-    //   58: astore_3
-    //   59: new 63	java/io/InputStreamReader
-    //   62: dup
-    //   63: aload_3
-    //   64: invokevirtual 67	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   67: invokespecial 70	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   70: astore 4
-    //   72: aload 7
-    //   74: astore 6
-    //   76: new 72	java/io/BufferedReader
-    //   79: dup
-    //   80: aload 4
-    //   82: invokespecial 75	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   85: astore 9
-    //   87: aload 7
-    //   89: astore 5
-    //   91: aload 5
-    //   93: astore 6
-    //   95: aload 9
-    //   97: invokevirtual 79	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   100: astore 7
-    //   102: aload 7
-    //   104: ifnull +32 -> 136
-    //   107: aload 5
-    //   109: astore 6
-    //   111: new 81	java/lang/StringBuilder
-    //   114: dup
-    //   115: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   118: aload 5
-    //   120: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: aload 7
-    //   125: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: astore 5
-    //   133: goto -42 -> 91
-    //   136: iload_2
-    //   137: istore_1
-    //   138: ldc 91
-    //   140: new 81	java/lang/StringBuilder
-    //   143: dup
-    //   144: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   147: ldc 93
-    //   149: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   152: aload 5
-    //   154: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   160: invokestatic 99	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   163: pop
-    //   164: iload_2
-    //   165: istore_1
-    //   166: new 101	org/json/JSONObject
-    //   169: dup
-    //   170: aload 5
-    //   172: invokespecial 102	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   175: astore 7
+    //   0: ldc 33
+    //   2: astore 4
+    //   4: iconst_0
+    //   5: istore_1
+    //   6: iconst_0
+    //   7: istore_2
+    //   8: aconst_null
+    //   9: astore 7
+    //   11: new 35	java/net/URL
+    //   14: dup
+    //   15: ldc 37
+    //   17: iconst_4
+    //   18: anewarray 4	java/lang/Object
+    //   21: dup
+    //   22: iconst_0
+    //   23: iconst_1
+    //   24: invokestatic 43	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   27: aastore
+    //   28: dup
+    //   29: iconst_1
+    //   30: ldc 45
+    //   32: aastore
+    //   33: dup
+    //   34: iconst_2
+    //   35: aload_0
+    //   36: getfield 18	com/tencent/TMG/wrapper/QualityReportSign$1:val$bucket	Ljava/lang/String;
+    //   39: aastore
+    //   40: dup
+    //   41: iconst_3
+    //   42: ldc 46
+    //   44: invokestatic 43	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   47: aastore
+    //   48: invokestatic 52	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   51: invokespecial 55	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   54: invokevirtual 59	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   57: checkcast 61	java/net/HttpURLConnection
+    //   60: astore_3
+    //   61: new 63	java/io/InputStreamReader
+    //   64: dup
+    //   65: aload_3
+    //   66: invokevirtual 67	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   69: invokespecial 70	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   72: astore 6
+    //   74: aload 4
+    //   76: astore 5
+    //   78: new 72	java/io/BufferedReader
+    //   81: dup
+    //   82: aload 6
+    //   84: invokespecial 75	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   87: astore 8
+    //   89: aload 4
+    //   91: astore 5
+    //   93: aload 8
+    //   95: invokevirtual 79	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   98: astore 9
+    //   100: aload 9
+    //   102: ifnull +54 -> 156
+    //   105: aload 4
+    //   107: astore 5
+    //   109: new 81	java/lang/StringBuilder
+    //   112: dup
+    //   113: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   116: astore 10
+    //   118: aload 4
+    //   120: astore 5
+    //   122: aload 10
+    //   124: aload 4
+    //   126: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: pop
+    //   130: aload 4
+    //   132: astore 5
+    //   134: aload 10
+    //   136: aload 9
+    //   138: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: pop
+    //   142: aload 4
+    //   144: astore 5
+    //   146: aload 10
+    //   148: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: astore 4
+    //   153: goto -64 -> 89
+    //   156: iload_2
+    //   157: istore_1
+    //   158: new 81	java/lang/StringBuilder
+    //   161: dup
+    //   162: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   165: astore 5
+    //   167: iload_2
+    //   168: istore_1
+    //   169: aload 5
+    //   171: ldc 91
+    //   173: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: pop
     //   177: iload_2
     //   178: istore_1
-    //   179: aload 7
-    //   181: ldc 104
-    //   183: invokevirtual 108	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   186: istore_2
-    //   187: aload 8
-    //   189: astore 6
-    //   191: iload_2
-    //   192: ifne +19 -> 211
-    //   195: iload_2
-    //   196: istore_1
-    //   197: aload 7
-    //   199: ldc 110
-    //   201: invokevirtual 114	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   204: ldc 116
-    //   206: invokevirtual 120	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   209: astore 6
-    //   211: aload_3
-    //   212: ifnull +7 -> 219
-    //   215: aload_3
-    //   216: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
-    //   219: aload 4
-    //   221: ifnull +8 -> 229
-    //   224: aload 4
-    //   226: invokevirtual 126	java/io/InputStreamReader:close	()V
-    //   229: aload_0
-    //   230: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   233: ifnull +17 -> 250
-    //   236: aload_0
-    //   237: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   240: iload_2
-    //   241: aload 5
-    //   243: aload 6
-    //   245: invokeinterface 132 4 0
-    //   250: return
-    //   251: astore 5
-    //   253: aconst_null
-    //   254: astore_3
-    //   255: aconst_null
-    //   256: astore 4
-    //   258: ldc 91
-    //   260: ldc 134
-    //   262: invokestatic 137	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   265: pop
-    //   266: aload 5
-    //   268: invokevirtual 140	java/io/IOException:printStackTrace	()V
-    //   271: aload_3
-    //   272: ifnull +7 -> 279
-    //   275: aload_3
-    //   276: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
-    //   279: aload 4
-    //   281: ifnull +8 -> 289
-    //   284: aload 4
-    //   286: invokevirtual 126	java/io/InputStreamReader:close	()V
-    //   289: aload_0
-    //   290: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   293: ifnull -43 -> 250
-    //   296: aload_0
-    //   297: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   300: iconst_1
-    //   301: ldc 142
-    //   303: aconst_null
-    //   304: invokeinterface 132 4 0
-    //   309: return
-    //   310: astore_3
-    //   311: aconst_null
-    //   312: astore 5
-    //   314: aconst_null
-    //   315: astore 6
-    //   317: ldc 91
-    //   319: new 81	java/lang/StringBuilder
-    //   322: dup
-    //   323: invokespecial 82	java/lang/StringBuilder:<init>	()V
-    //   326: ldc 144
-    //   328: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   331: aload 7
-    //   333: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   336: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   339: invokestatic 137	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   342: pop
-    //   343: aload_3
-    //   344: invokevirtual 145	org/json/JSONException:printStackTrace	()V
-    //   347: aload 5
-    //   349: ifnull +8 -> 357
-    //   352: aload 5
-    //   354: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
-    //   357: aload 6
-    //   359: ifnull +8 -> 367
-    //   362: aload 6
-    //   364: invokevirtual 126	java/io/InputStreamReader:close	()V
-    //   367: aload_0
-    //   368: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   371: ifnull -121 -> 250
-    //   374: aload_0
-    //   375: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   378: iconst_1
-    //   379: ldc 147
-    //   381: aconst_null
-    //   382: invokeinterface 132 4 0
-    //   387: return
-    //   388: astore 5
-    //   390: aconst_null
-    //   391: astore_3
-    //   392: aconst_null
-    //   393: astore 4
-    //   395: ldc 149
-    //   397: astore 7
-    //   399: ldc 91
-    //   401: ldc 151
-    //   403: invokestatic 137	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   406: pop
-    //   407: aload 5
-    //   409: invokevirtual 152	java/lang/Exception:printStackTrace	()V
-    //   412: aload_3
-    //   413: ifnull +7 -> 420
-    //   416: aload_3
-    //   417: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
-    //   420: aload 4
-    //   422: ifnull +8 -> 430
-    //   425: aload 4
-    //   427: invokevirtual 126	java/io/InputStreamReader:close	()V
-    //   430: aload_0
-    //   431: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   434: ifnull -184 -> 250
-    //   437: aload_0
-    //   438: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   441: iconst_1
-    //   442: ldc 149
-    //   444: aconst_null
-    //   445: invokeinterface 132 4 0
-    //   450: return
-    //   451: astore_3
-    //   452: aconst_null
-    //   453: astore 4
-    //   455: iconst_0
-    //   456: istore_1
-    //   457: aconst_null
-    //   458: astore 5
-    //   460: aconst_null
-    //   461: astore 6
-    //   463: aload 5
-    //   465: ifnull +8 -> 473
-    //   468: aload 5
-    //   470: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
-    //   473: aload 6
-    //   475: ifnull +8 -> 483
-    //   478: aload 6
-    //   480: invokevirtual 126	java/io/InputStreamReader:close	()V
-    //   483: aload_0
-    //   484: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   487: ifnull +16 -> 503
-    //   490: aload_0
-    //   491: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
-    //   494: iload_1
-    //   495: aload 4
-    //   497: aconst_null
-    //   498: invokeinterface 132 4 0
-    //   503: aload_3
-    //   504: athrow
-    //   505: astore_3
-    //   506: goto -277 -> 229
-    //   509: astore_3
-    //   510: goto -221 -> 289
-    //   513: astore_3
-    //   514: goto -147 -> 367
-    //   517: astore_3
-    //   518: goto -88 -> 430
-    //   521: astore 5
-    //   523: goto -40 -> 483
-    //   526: astore 6
-    //   528: aconst_null
-    //   529: astore 4
-    //   531: aload_3
-    //   532: astore 5
-    //   534: aload 6
-    //   536: astore_3
-    //   537: iconst_0
-    //   538: istore_1
-    //   539: aconst_null
-    //   540: astore 6
-    //   542: goto -79 -> 463
-    //   545: astore 8
-    //   547: aconst_null
-    //   548: astore 7
-    //   550: iconst_0
-    //   551: istore_1
-    //   552: aload 4
-    //   554: astore 6
-    //   556: aload_3
-    //   557: astore 5
-    //   559: aload 8
-    //   561: astore_3
-    //   562: aload 7
-    //   564: astore 4
-    //   566: goto -103 -> 463
-    //   569: astore 8
-    //   571: aload 4
-    //   573: astore 6
-    //   575: aload_3
-    //   576: astore 7
-    //   578: aload 8
-    //   580: astore_3
-    //   581: aload 5
-    //   583: astore 4
-    //   585: aload 7
-    //   587: astore 5
-    //   589: goto -126 -> 463
-    //   592: astore 7
-    //   594: aload 4
-    //   596: astore 6
-    //   598: aload_3
-    //   599: astore 5
-    //   601: ldc 142
-    //   603: astore 4
-    //   605: iconst_1
-    //   606: istore_1
-    //   607: aload 7
-    //   609: astore_3
-    //   610: goto -147 -> 463
-    //   613: astore_3
-    //   614: ldc 147
-    //   616: astore 4
-    //   618: iconst_1
-    //   619: istore_1
-    //   620: goto -157 -> 463
-    //   623: astore 8
-    //   625: aload 4
-    //   627: astore 6
-    //   629: aload_3
-    //   630: astore 5
-    //   632: iconst_1
-    //   633: istore_1
-    //   634: aload 8
-    //   636: astore_3
-    //   637: aload 7
-    //   639: astore 4
-    //   641: goto -178 -> 463
-    //   644: astore 5
-    //   646: aconst_null
-    //   647: astore 4
-    //   649: goto -254 -> 395
-    //   652: astore 5
-    //   654: goto -259 -> 395
-    //   657: astore 5
-    //   659: goto -264 -> 395
-    //   662: astore 4
-    //   664: aload_3
-    //   665: astore 5
-    //   667: aconst_null
-    //   668: astore 6
-    //   670: aload 4
-    //   672: astore_3
-    //   673: goto -356 -> 317
-    //   676: astore 7
-    //   678: aload_3
-    //   679: astore 5
-    //   681: aload 7
-    //   683: astore_3
-    //   684: aload 6
-    //   686: astore 7
-    //   688: aload 4
-    //   690: astore 6
-    //   692: goto -375 -> 317
-    //   695: astore 7
-    //   697: aload_3
-    //   698: astore 6
-    //   700: aload 7
-    //   702: astore_3
-    //   703: aload 5
-    //   705: astore 7
-    //   707: aload 6
-    //   709: astore 5
-    //   711: aload 4
-    //   713: astore 6
-    //   715: goto -398 -> 317
-    //   718: astore 5
-    //   720: aconst_null
-    //   721: astore 4
-    //   723: goto -465 -> 258
-    //   726: astore 5
-    //   728: goto -470 -> 258
-    //   731: astore 5
-    //   733: goto -475 -> 258
+    //   179: aload 5
+    //   181: aload 4
+    //   183: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: pop
+    //   187: iload_2
+    //   188: istore_1
+    //   189: ldc 93
+    //   191: aload 5
+    //   193: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   196: invokestatic 99	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   199: pop
+    //   200: iload_2
+    //   201: istore_1
+    //   202: new 101	org/json/JSONObject
+    //   205: dup
+    //   206: aload 4
+    //   208: invokespecial 102	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   211: astore 8
+    //   213: iload_2
+    //   214: istore_1
+    //   215: aload 8
+    //   217: ldc 104
+    //   219: invokevirtual 108	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   222: istore_2
+    //   223: aload 7
+    //   225: astore 5
+    //   227: iload_2
+    //   228: ifne +19 -> 247
+    //   231: iload_2
+    //   232: istore_1
+    //   233: aload 8
+    //   235: ldc 110
+    //   237: invokevirtual 114	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   240: ldc 116
+    //   242: invokevirtual 120	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   245: astore 5
+    //   247: aload_3
+    //   248: ifnull +7 -> 255
+    //   251: aload_3
+    //   252: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
+    //   255: aload 6
+    //   257: invokevirtual 126	java/io/InputStreamReader:close	()V
+    //   260: aload_0
+    //   261: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
+    //   264: astore_3
+    //   265: aload_3
+    //   266: ifnull +402 -> 668
+    //   269: aload_3
+    //   270: iload_2
+    //   271: aload 4
+    //   273: aload 5
+    //   275: invokeinterface 132 4 0
+    //   280: return
+    //   281: astore 5
+    //   283: goto +402 -> 685
+    //   286: astore 4
+    //   288: aload_3
+    //   289: astore 8
+    //   291: goto +115 -> 406
+    //   294: astore 5
+    //   296: goto +191 -> 487
+    //   299: astore 4
+    //   301: aload_3
+    //   302: astore 8
+    //   304: goto +283 -> 587
+    //   307: astore 5
+    //   309: aconst_null
+    //   310: astore 4
+    //   312: goto +373 -> 685
+    //   315: astore 4
+    //   317: aload_3
+    //   318: astore 8
+    //   320: goto +86 -> 406
+    //   323: astore 7
+    //   325: aload 5
+    //   327: astore 4
+    //   329: aload 7
+    //   331: astore 5
+    //   333: goto +154 -> 487
+    //   336: astore 4
+    //   338: aload_3
+    //   339: astore 8
+    //   341: goto +246 -> 587
+    //   344: astore 5
+    //   346: aconst_null
+    //   347: astore 4
+    //   349: aload 4
+    //   351: astore 6
+    //   353: goto +332 -> 685
+    //   356: astore 4
+    //   358: aconst_null
+    //   359: astore 6
+    //   361: aload_3
+    //   362: astore 8
+    //   364: goto +42 -> 406
+    //   367: astore 5
+    //   369: goto +115 -> 484
+    //   372: astore 4
+    //   374: aconst_null
+    //   375: astore 6
+    //   377: aload_3
+    //   378: astore 8
+    //   380: goto +207 -> 587
+    //   383: astore 5
+    //   385: aconst_null
+    //   386: astore 4
+    //   388: aload 4
+    //   390: astore_3
+    //   391: aload_3
+    //   392: astore 6
+    //   394: goto +291 -> 685
+    //   397: astore 4
+    //   399: aconst_null
+    //   400: astore 8
+    //   402: aload 8
+    //   404: astore 6
+    //   406: ldc 134
+    //   408: astore 9
+    //   410: aload 9
+    //   412: astore 7
+    //   414: aload 8
+    //   416: astore_3
+    //   417: aload 6
+    //   419: astore 5
+    //   421: ldc 93
+    //   423: ldc 136
+    //   425: invokestatic 139	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   428: pop
+    //   429: aload 9
+    //   431: astore 7
+    //   433: aload 8
+    //   435: astore_3
+    //   436: aload 6
+    //   438: astore 5
+    //   440: aload 4
+    //   442: invokevirtual 142	java/lang/Exception:printStackTrace	()V
+    //   445: aload 8
+    //   447: ifnull +8 -> 455
+    //   450: aload 8
+    //   452: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
+    //   455: aload 6
+    //   457: ifnull +11 -> 468
+    //   460: aload 6
+    //   462: invokevirtual 126	java/io/InputStreamReader:close	()V
+    //   465: goto +3 -> 468
+    //   468: aload_0
+    //   469: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
+    //   472: astore_3
+    //   473: aload_3
+    //   474: ifnull +194 -> 668
+    //   477: goto +181 -> 658
+    //   480: astore 5
+    //   482: aconst_null
+    //   483: astore_3
+    //   484: aconst_null
+    //   485: astore 6
+    //   487: new 81	java/lang/StringBuilder
+    //   490: dup
+    //   491: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   494: astore 7
+    //   496: aload 7
+    //   498: ldc 144
+    //   500: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   503: pop
+    //   504: aload 7
+    //   506: aload 4
+    //   508: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   511: pop
+    //   512: ldc 93
+    //   514: aload 7
+    //   516: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   519: invokestatic 139	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   522: pop
+    //   523: aload 5
+    //   525: invokevirtual 145	org/json/JSONException:printStackTrace	()V
+    //   528: aload_3
+    //   529: ifnull +7 -> 536
+    //   532: aload_3
+    //   533: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
+    //   536: aload 6
+    //   538: ifnull +11 -> 549
+    //   541: aload 6
+    //   543: invokevirtual 126	java/io/InputStreamReader:close	()V
+    //   546: goto +3 -> 549
+    //   549: aload_0
+    //   550: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
+    //   553: astore_3
+    //   554: aload_3
+    //   555: ifnull +113 -> 668
+    //   558: aload_3
+    //   559: iconst_1
+    //   560: ldc 147
+    //   562: aconst_null
+    //   563: invokeinterface 132 4 0
+    //   568: return
+    //   569: astore 5
+    //   571: ldc 147
+    //   573: astore 4
+    //   575: goto +108 -> 683
+    //   578: astore 4
+    //   580: aconst_null
+    //   581: astore 8
+    //   583: aload 8
+    //   585: astore 6
+    //   587: ldc 149
+    //   589: astore 9
+    //   591: aload 9
+    //   593: astore 7
+    //   595: aload 8
+    //   597: astore_3
+    //   598: aload 6
+    //   600: astore 5
+    //   602: ldc 93
+    //   604: ldc 151
+    //   606: invokestatic 139	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   609: pop
+    //   610: aload 9
+    //   612: astore 7
+    //   614: aload 8
+    //   616: astore_3
+    //   617: aload 6
+    //   619: astore 5
+    //   621: aload 4
+    //   623: invokevirtual 152	java/io/IOException:printStackTrace	()V
+    //   626: aload 8
+    //   628: ifnull +8 -> 636
+    //   631: aload 8
+    //   633: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
+    //   636: aload 6
+    //   638: ifnull +11 -> 649
+    //   641: aload 6
+    //   643: invokevirtual 126	java/io/InputStreamReader:close	()V
+    //   646: goto +3 -> 649
+    //   649: aload_0
+    //   650: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
+    //   653: astore_3
+    //   654: aload_3
+    //   655: ifnull +13 -> 668
+    //   658: aload_3
+    //   659: iconst_1
+    //   660: aload 9
+    //   662: aconst_null
+    //   663: invokeinterface 132 4 0
+    //   668: return
+    //   669: astore 8
+    //   671: aload 7
+    //   673: astore 4
+    //   675: aload 5
+    //   677: astore 6
+    //   679: aload 8
+    //   681: astore 5
+    //   683: iconst_1
+    //   684: istore_1
+    //   685: aload_3
+    //   686: ifnull +7 -> 693
+    //   689: aload_3
+    //   690: invokevirtual 123	java/net/HttpURLConnection:disconnect	()V
+    //   693: aload 6
+    //   695: ifnull +11 -> 706
+    //   698: aload 6
+    //   700: invokevirtual 126	java/io/InputStreamReader:close	()V
+    //   703: goto +3 -> 706
+    //   706: aload_0
+    //   707: getfield 20	com/tencent/TMG/wrapper/QualityReportSign$1:val$listener	Lcom/tencent/TMG/wrapper/QualityReportSign$GetSignListener;
+    //   710: astore_3
+    //   711: aload_3
+    //   712: ifnull +13 -> 725
+    //   715: aload_3
+    //   716: iload_1
+    //   717: aload 4
+    //   719: aconst_null
+    //   720: invokeinterface 132 4 0
+    //   725: goto +6 -> 731
+    //   728: aload 5
+    //   730: athrow
+    //   731: goto -3 -> 728
+    //   734: astore_3
+    //   735: goto -475 -> 260
+    //   738: astore_3
+    //   739: goto -271 -> 468
+    //   742: astore_3
+    //   743: goto -194 -> 549
+    //   746: astore_3
+    //   747: goto -98 -> 649
+    //   750: astore_3
+    //   751: goto -45 -> 706
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	736	0	this	1
-    //   137	497	1	i	int
-    //   1	240	2	j	int
-    //   58	218	3	localHttpURLConnection	java.net.HttpURLConnection
-    //   310	34	3	localJSONException1	org.json.JSONException
-    //   391	26	3	localObject1	Object
-    //   451	53	3	localObject2	Object
-    //   505	1	3	localIOException1	java.io.IOException
-    //   509	1	3	localIOException2	java.io.IOException
-    //   513	1	3	localIOException3	java.io.IOException
-    //   517	15	3	localIOException4	java.io.IOException
-    //   536	74	3	localObject3	Object
-    //   613	17	3	localObject4	Object
-    //   636	67	3	localObject5	Object
-    //   70	578	4	localObject6	Object
-    //   662	50	4	localJSONException2	org.json.JSONException
-    //   721	1	4	localObject7	Object
-    //   89	153	5	localObject8	Object
-    //   251	16	5	localIOException5	java.io.IOException
-    //   312	41	5	localObject9	Object
-    //   388	20	5	localException1	java.lang.Exception
-    //   458	11	5	localObject10	Object
-    //   521	1	5	localIOException6	java.io.IOException
-    //   532	99	5	localObject11	Object
-    //   644	1	5	localException2	java.lang.Exception
-    //   652	1	5	localException3	java.lang.Exception
-    //   657	1	5	localException4	java.lang.Exception
-    //   665	45	5	localObject12	Object
-    //   718	1	5	localIOException7	java.io.IOException
-    //   726	1	5	localIOException8	java.io.IOException
-    //   731	1	5	localIOException9	java.io.IOException
-    //   74	405	6	localObject13	Object
-    //   526	9	6	localObject14	Object
-    //   540	174	6	localObject15	Object
-    //   7	579	7	localObject16	Object
-    //   592	46	7	localObject17	Object
-    //   676	6	7	localJSONException3	org.json.JSONException
-    //   686	1	7	localObject18	Object
-    //   695	6	7	localJSONException4	org.json.JSONException
-    //   705	1	7	localObject19	Object
-    //   3	185	8	localObject20	Object
-    //   545	15	8	localObject21	Object
-    //   569	10	8	localObject22	Object
-    //   623	12	8	localObject23	Object
-    //   85	11	9	localBufferedReader	java.io.BufferedReader
+    //   0	754	0	this	1
+    //   5	712	1	i	int
+    //   7	264	2	j	int
+    //   60	656	3	localObject1	Object
+    //   734	1	3	localIOException1	java.io.IOException
+    //   738	1	3	localIOException2	java.io.IOException
+    //   742	1	3	localIOException3	java.io.IOException
+    //   746	1	3	localIOException4	java.io.IOException
+    //   750	1	3	localIOException5	java.io.IOException
+    //   2	270	4	str1	String
+    //   286	1	4	localException1	java.lang.Exception
+    //   299	1	4	localIOException6	java.io.IOException
+    //   310	1	4	localObject2	Object
+    //   315	1	4	localException2	java.lang.Exception
+    //   327	1	4	localObject3	Object
+    //   336	1	4	localIOException7	java.io.IOException
+    //   347	3	4	localObject4	Object
+    //   356	1	4	localException3	java.lang.Exception
+    //   372	1	4	localIOException8	java.io.IOException
+    //   386	3	4	localObject5	Object
+    //   397	110	4	localException4	java.lang.Exception
+    //   573	1	4	str2	String
+    //   578	44	4	localIOException9	java.io.IOException
+    //   673	45	4	localObject6	Object
+    //   76	198	5	localObject7	Object
+    //   281	1	5	localObject8	Object
+    //   294	1	5	localJSONException1	org.json.JSONException
+    //   307	19	5	localObject9	Object
+    //   331	1	5	localJSONException2	org.json.JSONException
+    //   344	1	5	localObject10	Object
+    //   367	1	5	localJSONException3	org.json.JSONException
+    //   383	1	5	localObject11	Object
+    //   419	20	5	localObject12	Object
+    //   480	44	5	localJSONException4	org.json.JSONException
+    //   569	1	5	localObject13	Object
+    //   600	129	5	localObject14	Object
+    //   72	627	6	localObject15	Object
+    //   9	215	7	localObject16	Object
+    //   323	7	7	localJSONException5	org.json.JSONException
+    //   412	260	7	localObject17	Object
+    //   87	545	8	localObject18	Object
+    //   669	11	8	localObject19	Object
+    //   98	563	9	str3	String
+    //   116	31	10	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   9	59	251	java/io/IOException
-    //   9	59	310	org/json/JSONException
-    //   9	59	388	java/lang/Exception
-    //   9	59	451	finally
-    //   224	229	505	java/io/IOException
-    //   284	289	509	java/io/IOException
-    //   362	367	513	java/io/IOException
-    //   425	430	517	java/io/IOException
-    //   478	483	521	java/io/IOException
-    //   59	72	526	finally
-    //   76	87	545	finally
-    //   95	102	545	finally
-    //   111	133	545	finally
-    //   138	164	569	finally
-    //   166	177	569	finally
-    //   179	187	569	finally
-    //   197	211	569	finally
-    //   258	271	592	finally
-    //   317	347	613	finally
-    //   399	412	623	finally
-    //   59	72	644	java/lang/Exception
-    //   76	87	652	java/lang/Exception
-    //   95	102	652	java/lang/Exception
-    //   111	133	652	java/lang/Exception
-    //   138	164	657	java/lang/Exception
-    //   166	177	657	java/lang/Exception
-    //   179	187	657	java/lang/Exception
-    //   197	211	657	java/lang/Exception
-    //   59	72	662	org/json/JSONException
-    //   76	87	676	org/json/JSONException
-    //   95	102	676	org/json/JSONException
-    //   111	133	676	org/json/JSONException
-    //   138	164	695	org/json/JSONException
-    //   166	177	695	org/json/JSONException
-    //   179	187	695	org/json/JSONException
-    //   197	211	695	org/json/JSONException
-    //   59	72	718	java/io/IOException
-    //   76	87	726	java/io/IOException
-    //   95	102	726	java/io/IOException
-    //   111	133	726	java/io/IOException
-    //   138	164	731	java/io/IOException
-    //   166	177	731	java/io/IOException
-    //   179	187	731	java/io/IOException
-    //   197	211	731	java/io/IOException
+    //   158	167	281	finally
+    //   169	177	281	finally
+    //   179	187	281	finally
+    //   189	200	281	finally
+    //   202	213	281	finally
+    //   215	223	281	finally
+    //   233	247	281	finally
+    //   158	167	286	java/lang/Exception
+    //   169	177	286	java/lang/Exception
+    //   179	187	286	java/lang/Exception
+    //   189	200	286	java/lang/Exception
+    //   202	213	286	java/lang/Exception
+    //   215	223	286	java/lang/Exception
+    //   233	247	286	java/lang/Exception
+    //   158	167	294	org/json/JSONException
+    //   169	177	294	org/json/JSONException
+    //   179	187	294	org/json/JSONException
+    //   189	200	294	org/json/JSONException
+    //   202	213	294	org/json/JSONException
+    //   215	223	294	org/json/JSONException
+    //   233	247	294	org/json/JSONException
+    //   158	167	299	java/io/IOException
+    //   169	177	299	java/io/IOException
+    //   179	187	299	java/io/IOException
+    //   189	200	299	java/io/IOException
+    //   202	213	299	java/io/IOException
+    //   215	223	299	java/io/IOException
+    //   233	247	299	java/io/IOException
+    //   78	89	307	finally
+    //   93	100	307	finally
+    //   109	118	307	finally
+    //   122	130	307	finally
+    //   134	142	307	finally
+    //   146	153	307	finally
+    //   78	89	315	java/lang/Exception
+    //   93	100	315	java/lang/Exception
+    //   109	118	315	java/lang/Exception
+    //   122	130	315	java/lang/Exception
+    //   134	142	315	java/lang/Exception
+    //   146	153	315	java/lang/Exception
+    //   78	89	323	org/json/JSONException
+    //   93	100	323	org/json/JSONException
+    //   109	118	323	org/json/JSONException
+    //   122	130	323	org/json/JSONException
+    //   134	142	323	org/json/JSONException
+    //   146	153	323	org/json/JSONException
+    //   78	89	336	java/io/IOException
+    //   93	100	336	java/io/IOException
+    //   109	118	336	java/io/IOException
+    //   122	130	336	java/io/IOException
+    //   134	142	336	java/io/IOException
+    //   146	153	336	java/io/IOException
+    //   61	74	344	finally
+    //   61	74	356	java/lang/Exception
+    //   61	74	367	org/json/JSONException
+    //   61	74	372	java/io/IOException
+    //   11	61	383	finally
+    //   11	61	397	java/lang/Exception
+    //   11	61	480	org/json/JSONException
+    //   487	528	569	finally
+    //   11	61	578	java/io/IOException
+    //   421	429	669	finally
+    //   440	445	669	finally
+    //   602	610	669	finally
+    //   621	626	669	finally
+    //   255	260	734	java/io/IOException
+    //   460	465	738	java/io/IOException
+    //   541	546	742	java/io/IOException
+    //   641	646	746	java/io/IOException
+    //   698	703	750	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.wrapper.QualityReportSign.1
  * JD-Core Version:    0.7.0.1
  */

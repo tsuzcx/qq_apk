@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aepi;
-import alud;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -22,16 +21,20 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import azqs;
-import bdal;
-import bdhj;
-import bdmh;
-import bfyh;
-import bjdt;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qidian.QidianManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneHelper;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
 
@@ -39,181 +42,46 @@ public class ShortcutGuideActivity
   extends AppActivity
   implements View.OnClickListener
 {
-  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  
-  /* Error */
-  private Bitmap a()
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: invokevirtual 25	com/tencent/mobileqq/activity/ShortcutGuideActivity:getIntent	()Landroid/content/Intent;
-    //   6: ldc 27
-    //   8: invokevirtual 33	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   11: astore_1
-    //   12: aload_0
-    //   13: getfield 35	com/tencent/mobileqq/activity/ShortcutGuideActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   16: ifnonnull +24 -> 40
-    //   19: aload_0
-    //   20: aload_0
-    //   21: ldc 37
-    //   23: invokestatic 42	bdmh:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
-    //   26: putfield 35	com/tencent/mobileqq/activity/ShortcutGuideActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   29: aload_0
-    //   30: getfield 35	com/tencent/mobileqq/activity/ShortcutGuideActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   33: ifnonnull +7 -> 40
-    //   36: aconst_null
-    //   37: astore_2
-    //   38: aload_2
-    //   39: areturn
-    //   40: new 44	java/lang/StringBuilder
-    //   43: dup
-    //   44: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   47: ldc 47
-    //   49: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: aload_0
-    //   53: getfield 35	com/tencent/mobileqq/activity/ShortcutGuideActivity:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   56: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: ldc 53
-    //   61: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   67: astore_3
-    //   68: aload_0
-    //   69: invokevirtual 61	com/tencent/mobileqq/activity/ShortcutGuideActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   72: astore 4
-    //   74: aload 4
-    //   76: aload_3
-    //   77: invokestatic 67	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   80: iconst_1
-    //   81: anewarray 69	java/lang/String
-    //   84: dup
-    //   85: iconst_0
-    //   86: ldc 71
-    //   88: aastore
-    //   89: ldc 73
-    //   91: iconst_1
-    //   92: anewarray 69	java/lang/String
-    //   95: dup
-    //   96: iconst_0
-    //   97: aload_1
-    //   98: aastore
-    //   99: aconst_null
-    //   100: invokevirtual 79	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   103: astore_1
-    //   104: aload_1
-    //   105: ifnull +43 -> 148
-    //   108: aload_1
-    //   109: invokeinterface 85 1 0
-    //   114: ifeq +87 -> 201
-    //   117: aload_1
-    //   118: iconst_0
-    //   119: invokeinterface 89 2 0
-    //   124: astore_2
-    //   125: aload_2
-    //   126: ifnull +22 -> 148
-    //   129: aload_2
-    //   130: invokestatic 92	com/tencent/mobileqq/activity/ShortcutGuideActivity:a	([B)Landroid/graphics/Bitmap;
-    //   133: astore_3
-    //   134: aload_3
-    //   135: astore_2
-    //   136: aload_1
-    //   137: ifnull -99 -> 38
-    //   140: aload_1
-    //   141: invokeinterface 95 1 0
-    //   146: aload_3
-    //   147: areturn
-    //   148: aload_1
-    //   149: ifnull +9 -> 158
-    //   152: aload_1
-    //   153: invokeinterface 95 1 0
-    //   158: aconst_null
-    //   159: areturn
-    //   160: astore_1
-    //   161: aconst_null
-    //   162: astore_1
-    //   163: aload_1
-    //   164: ifnull -6 -> 158
-    //   167: aload_1
-    //   168: invokeinterface 95 1 0
-    //   173: goto -15 -> 158
-    //   176: astore_1
-    //   177: aload_2
-    //   178: ifnull +9 -> 187
-    //   181: aload_2
-    //   182: invokeinterface 95 1 0
-    //   187: aload_1
-    //   188: athrow
-    //   189: astore_3
-    //   190: aload_1
-    //   191: astore_2
-    //   192: aload_3
-    //   193: astore_1
-    //   194: goto -17 -> 177
-    //   197: astore_2
-    //   198: goto -35 -> 163
-    //   201: aconst_null
-    //   202: astore_2
-    //   203: goto -78 -> 125
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	206	0	this	ShortcutGuideActivity
-    //   11	142	1	localObject1	Object
-    //   160	1	1	localException1	Exception
-    //   162	6	1	localObject2	Object
-    //   176	15	1	localObject3	Object
-    //   193	1	1	localObject4	Object
-    //   1	191	2	localObject5	Object
-    //   197	1	2	localException2	Exception
-    //   202	1	2	localObject6	Object
-    //   67	80	3	localObject7	Object
-    //   189	4	3	localObject8	Object
-    //   72	3	4	localContentResolver	android.content.ContentResolver
-    // Exception table:
-    //   from	to	target	type
-    //   74	104	160	java/lang/Exception
-    //   74	104	176	finally
-    //   108	125	189	finally
-    //   129	134	189	finally
-    //   108	125	197	java/lang/Exception
-    //   129	134	197	java/lang/Exception
-  }
+  String a = null;
+  private boolean b = false;
+  private BitmapDrawable c;
+  private String d = null;
+  private boolean e;
   
   private Bitmap a(boolean paramBoolean, String paramString)
   {
     Object localObject = b(paramBoolean, paramString);
     paramString = (String)localObject;
     if (localObject == null) {
-      paramString = a();
+      paramString = b();
     }
+    localObject = paramString;
     if (paramString == null)
     {
-      localObject = getAppRuntime();
-      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
-        paramString = ((QQAppInterface)localObject).a(getIntent().getStringExtra("uin"), (byte)3, true);
-      }
-    }
-    for (;;)
-    {
+      AppRuntime localAppRuntime = getAppRuntime();
       localObject = paramString;
-      if (paramString != null)
+      if (localAppRuntime != null)
       {
-        int i = getResources().getDimensionPixelSize(2131298716);
-        localObject = bdhj.c(paramString, i, i);
-        this.jdField_b_of_type_Boolean = true;
+        localObject = paramString;
+        if ((localAppRuntime instanceof QQAppInterface)) {
+          localObject = ((QQAppInterface)localAppRuntime).getFaceBitmap(getIntent().getStringExtra("uin"), (byte)3, true);
+        }
       }
-      return localObject;
     }
+    paramString = (String)localObject;
+    if (localObject != null)
+    {
+      int i = getResources().getDimensionPixelSize(2131299699);
+      paramString = ImageUtil.c((Bitmap)localObject, i, i);
+      this.e = true;
+    }
+    return paramString;
   }
   
   private static Bitmap a(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte.length != 0) {
-      return bdal.a(paramArrayOfByte, 0, paramArrayOfByte.length);
+      return BitmapManager.a(paramArrayOfByte, 0, paramArrayOfByte.length);
     }
     return null;
   }
@@ -222,66 +90,67 @@ public class ShortcutGuideActivity
   {
     Intent localIntent = getIntent();
     Object localObject2 = localIntent.getStringExtra("from");
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortcutGuideActivity", 2, "showPreview from=" + (String)localObject2);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("showPreview from=");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      QLog.d("ShortcutGuideActivity", 2, ((StringBuilder)localObject1).toString());
     }
     if ("shortcutFromQZonePhotolist".equals(localObject2)) {
       return;
     }
     if ("shortcutFromQZonePhotolist".equals(localObject2))
     {
-      findViewById(2131365229).setVisibility(8);
+      findViewById(2131431871).setVisibility(8);
       return;
     }
-    Object localObject1;
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("starShortcut")))
     {
-      findViewById(2131373598).setVisibility(8);
-      findViewById(2131373601).setVisibility(8);
+      findViewById(2131442506).setVisibility(8);
+      findViewById(2131442509).setVisibility(8);
       localObject1 = a(false, localIntent.getStringExtra("sid"));
-      label130:
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(b());
-      }
-      findViewById(2131365229).setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-      if (localObject1 == null) {
-        break label448;
-      }
-      ((ImageView)findViewById(2131373597)).setImageBitmap((Bitmap)localObject1);
     }
-    for (;;)
+    else
     {
-      localObject1 = localIntent.getStringExtra("uinname");
-      TextView localTextView = (TextView)findViewById(2131373599);
-      if (localObject1 != null)
-      {
-        localTextView.setText((CharSequence)localObject1);
-        if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("starShortcut")))
-        {
-          localTextView.setText((String)localObject1 + alud.a(2131714411));
-          localTextView.setTextSize(16.0F);
-          ((TextView)findViewById(2131373600)).setVisibility(8);
-          ((TextView)findViewById(2131376985)).setVisibility(0);
-          localObject1 = (TextView)findViewById(2131376986);
-          localObject2 = (String)((TextView)localObject1).getText();
-          int i = ((String)localObject2).indexOf("TA");
-          localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
-          ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(getResources().getColor(2131167067)), i, i + 2, 17);
-          ((TextView)localObject1).setText((CharSequence)localObject2);
-          ((TextView)localObject1).setVisibility(0);
-        }
-      }
-      if ((this.mRuntime == null) || (!(this.mRuntime instanceof QQAppInterface)) || (!bfyh.b((QQAppInterface)this.mRuntime, localIntent.getStringExtra("uin")))) {
-        break;
-      }
-      findViewById(2131373601).setVisibility(8);
-      return;
-      findViewById(2131373598).setOnClickListener(this);
-      findViewById(2131373601).setOnClickListener(this);
+      findViewById(2131442506).setOnClickListener(this);
+      findViewById(2131442509).setOnClickListener(this);
       localObject1 = a(true, localIntent.getStringExtra("uin"));
-      break label130;
-      label448:
-      ((ImageView)findViewById(2131373597)).setImageResource(2130840158);
+    }
+    if (this.c == null) {
+      this.c = new BitmapDrawable(c());
+    }
+    findViewById(2131431871).setBackgroundDrawable(this.c);
+    if (localObject1 != null) {
+      ((ImageView)findViewById(2131442505)).setImageBitmap((Bitmap)localObject1);
+    } else {
+      ((ImageView)findViewById(2131442505)).setImageResource(2130841158);
+    }
+    Object localObject1 = localIntent.getStringExtra("uinname");
+    TextView localTextView = (TextView)findViewById(2131442507);
+    if (localObject1 != null)
+    {
+      localTextView.setText((CharSequence)localObject1);
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals("starShortcut")))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131911429));
+        localTextView.setText(((StringBuilder)localObject2).toString());
+        localTextView.setTextSize(16.0F);
+        ((TextView)findViewById(2131442508)).setVisibility(8);
+        ((TextView)findViewById(2131446295)).setVisibility(0);
+        localObject1 = (TextView)findViewById(2131446296);
+        localObject2 = (String)((TextView)localObject1).getText();
+        int i = ((String)localObject2).indexOf("TA");
+        localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
+        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(getResources().getColor(2131168230)), i, i + 2, 17);
+        ((TextView)localObject1).setText((CharSequence)localObject2);
+        ((TextView)localObject1).setVisibility(0);
+      }
+    }
+    if ((this.mRuntime != null) && ((this.mRuntime instanceof QQAppInterface)) && (QidianManager.a((QQAppInterface)this.mRuntime, localIntent.getStringExtra("uin")))) {
+      findViewById(2131442509).setVisibility(8);
     }
   }
   
@@ -291,123 +160,287 @@ public class ShortcutGuideActivity
     int j = (int)paramMotionEvent.getY();
     int k = ViewConfiguration.get(paramActivity).getScaledWindowTouchSlop();
     paramActivity = paramActivity.getWindow().getDecorView();
-    return (i < -k) || (j < -k) || (i > paramActivity.getWidth() + k) || (j > paramActivity.getHeight() + k);
+    int m = -k;
+    return (i < m) || (j < m) || (i > paramActivity.getWidth() + k) || (j > paramActivity.getHeight() + k);
   }
   
+  /* Error */
   private Bitmap b()
   {
-    return bdhj.b(bdal.a(getResources(), 2130845696), 14.0F, 540, 620);
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 41	com/tencent/mobileqq/activity/ShortcutGuideActivity:getIntent	()Landroid/content/Intent;
+    //   4: ldc 165
+    //   6: invokevirtual 49	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: astore_1
+    //   10: aload_0
+    //   11: getfield 24	com/tencent/mobileqq/activity/ShortcutGuideActivity:d	Ljava/lang/String;
+    //   14: astore_3
+    //   15: aconst_null
+    //   16: astore_2
+    //   17: aload_3
+    //   18: ifnonnull +23 -> 41
+    //   21: aload_0
+    //   22: aload_0
+    //   23: ldc_w 264
+    //   26: invokestatic 269	com/tencent/mobileqq/utils/QQUtils:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+    //   29: putfield 24	com/tencent/mobileqq/activity/ShortcutGuideActivity:d	Ljava/lang/String;
+    //   32: aload_0
+    //   33: getfield 24	com/tencent/mobileqq/activity/ShortcutGuideActivity:d	Ljava/lang/String;
+    //   36: ifnonnull +5 -> 41
+    //   39: aconst_null
+    //   40: areturn
+    //   41: new 87	java/lang/StringBuilder
+    //   44: dup
+    //   45: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   48: astore_3
+    //   49: aload_3
+    //   50: ldc_w 271
+    //   53: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: pop
+    //   57: aload_3
+    //   58: aload_0
+    //   59: getfield 24	com/tencent/mobileqq/activity/ShortcutGuideActivity:d	Ljava/lang/String;
+    //   62: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: pop
+    //   66: aload_3
+    //   67: ldc_w 273
+    //   70: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: pop
+    //   74: aload_3
+    //   75: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: astore_3
+    //   79: aload_0
+    //   80: invokevirtual 277	com/tencent/mobileqq/activity/ShortcutGuideActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   83: astore 4
+    //   85: aload 4
+    //   87: aload_3
+    //   88: invokestatic 283	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   91: iconst_1
+    //   92: anewarray 107	java/lang/String
+    //   95: dup
+    //   96: iconst_0
+    //   97: ldc_w 285
+    //   100: aastore
+    //   101: ldc_w 287
+    //   104: iconst_1
+    //   105: anewarray 107	java/lang/String
+    //   108: dup
+    //   109: iconst_0
+    //   110: aload_1
+    //   111: aastore
+    //   112: aconst_null
+    //   113: invokevirtual 293	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   116: astore_1
+    //   117: aload_1
+    //   118: ifnull +51 -> 169
+    //   121: aload_1
+    //   122: invokeinterface 298 1 0
+    //   127: ifeq +88 -> 215
+    //   130: aload_1
+    //   131: iconst_0
+    //   132: invokeinterface 302 2 0
+    //   137: astore_2
+    //   138: goto +3 -> 141
+    //   141: aload_2
+    //   142: ifnull +27 -> 169
+    //   145: aload_2
+    //   146: invokestatic 304	com/tencent/mobileqq/activity/ShortcutGuideActivity:a	([B)Landroid/graphics/Bitmap;
+    //   149: astore_2
+    //   150: aload_1
+    //   151: ifnull +9 -> 160
+    //   154: aload_1
+    //   155: invokeinterface 307 1 0
+    //   160: aload_2
+    //   161: areturn
+    //   162: astore_2
+    //   163: goto +18 -> 181
+    //   166: goto +29 -> 195
+    //   169: aload_1
+    //   170: ifnull +35 -> 205
+    //   173: goto +26 -> 199
+    //   176: astore_3
+    //   177: aload_2
+    //   178: astore_1
+    //   179: aload_3
+    //   180: astore_2
+    //   181: aload_1
+    //   182: ifnull +9 -> 191
+    //   185: aload_1
+    //   186: invokeinterface 307 1 0
+    //   191: aload_2
+    //   192: athrow
+    //   193: aconst_null
+    //   194: astore_1
+    //   195: aload_1
+    //   196: ifnull +9 -> 205
+    //   199: aload_1
+    //   200: invokeinterface 307 1 0
+    //   205: aconst_null
+    //   206: areturn
+    //   207: astore_1
+    //   208: goto -15 -> 193
+    //   211: astore_2
+    //   212: goto -46 -> 166
+    //   215: aconst_null
+    //   216: astore_2
+    //   217: goto -76 -> 141
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	220	0	this	ShortcutGuideActivity
+    //   9	191	1	localObject1	Object
+    //   207	1	1	localException1	Exception
+    //   16	145	2	localObject2	Object
+    //   162	16	2	localObject3	Object
+    //   180	12	2	localObject4	Object
+    //   211	1	2	localException2	Exception
+    //   216	1	2	localObject5	Object
+    //   14	74	3	localObject6	Object
+    //   176	4	3	localObject7	Object
+    //   83	3	4	localContentResolver	android.content.ContentResolver
+    // Exception table:
+    //   from	to	target	type
+    //   121	138	162	finally
+    //   145	150	162	finally
+    //   85	117	176	finally
+    //   85	117	207	java/lang/Exception
+    //   121	138	211	java/lang/Exception
+    //   145	150	211	java/lang/Exception
   }
   
   private Bitmap b(boolean paramBoolean, String paramString)
   {
-    if (paramBoolean) {}
-    for (paramString = QQAppInterface.a(paramString);; paramString = bdmh.a(paramString))
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-      return bdal.a(paramString, localOptions);
+    if (paramBoolean) {
+      paramString = QQAppInterface.getBuddyFaceFilePath(paramString);
+    } else {
+      paramString = QQUtils.a(paramString);
     }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+    return BitmapManager.a(paramString, localOptions);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  private Bitmap c()
+  {
+    return ImageUtil.b(BitmapManager.a(getResources(), 2130847769), 14.0F, 540, 620);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     Intent localIntent = getIntent();
     try
     {
-      this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("from");
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortcutGuideActivity", 2, "doOnCreate from=" + this.jdField_a_of_type_JavaLangString);
-      }
-      if ("qqbrowser_float_shortcut".equals(this.jdField_a_of_type_JavaLangString))
+      this.a = localIntent.getStringExtra("from");
+      if (QLog.isColorLevel())
       {
-        if (!getAppRuntime().isLogin())
+        paramBundle = new StringBuilder();
+        paramBundle.append("doOnCreate from=");
+        paramBundle.append(this.a);
+        QLog.d("ShortcutGuideActivity", 2, paramBundle.toString());
+      }
+      boolean bool = "qqbrowser_float_shortcut".equals(this.a);
+      if (bool)
+      {
+        bool = getAppRuntime().isLogin();
+        if (!bool)
         {
-          paramBundle = new Intent(this, LoginActivity.class);
+          paramBundle = new Intent();
           paramBundle.putExtra("action_name", "webview");
-        }
-        for (boolean bool = false;; bool = true)
-        {
           paramBundle.putExtra("key_isReadModeEnabled", true);
           paramBundle.putExtra("url", localIntent.getStringExtra("url"));
-          startActivity(paramBundle);
+          RouteUtils.a(this, paramBundle, "/base/login");
           finish();
-          return bool;
-          paramBundle = new Intent(this, QQBrowserActivity.class);
+          return false;
         }
+        paramBundle = new Intent(this, QQBrowserActivity.class);
+        paramBundle.putExtra("key_isReadModeEnabled", true);
+        paramBundle.putExtra("url", localIntent.getStringExtra("url"));
+        startActivity(paramBundle);
+        finish();
+        return true;
       }
-      if ("shortcutFromQZonePhotolist".equals(this.jdField_a_of_type_JavaLangString))
+      if ("shortcutFromQZonePhotolist".equals(this.a))
       {
         if (!getAppRuntime().isLogin())
         {
-          paramBundle = new Intent(this, LoginActivity.class);
+          paramBundle = new Intent();
           paramBundle.putExtra("UploadPhoto.key_from_album_shortcut", true);
           paramBundle.putExtras(localIntent);
-          startActivity(paramBundle);
+          RouteUtils.a(this, paramBundle, "/base/login");
           finish();
           return true;
         }
         paramBundle = (QQAppInterface)getAppRuntime();
         if (paramBundle != null) {
-          paramBundle.b();
+          paramBundle.initFaceSettingCache();
         }
-        bjdt.a(this, getIntent().getStringExtra("UploadPhoto.key_album_id"), getIntent().getLongExtra("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(getAppRuntime().getLongAccountUin()));
+        QZoneHelper.goQZoneAlbumPhotoList(this, getIntent().getStringExtra("UploadPhoto.key_album_id"), getIntent().getLongExtra("UploadPhoto.key_album_owner_uin", 0L), String.valueOf(getAppRuntime().getLongAccountUin()));
         finish();
         return true;
       }
+      if ((!this.b) && (!showPreview()))
+      {
+        finish();
+        return false;
+      }
+      if (this.e) {}
     }
     catch (Throwable paramBundle)
     {
+      label423:
       paramBundle.printStackTrace();
       finish();
       return false;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (!showPreview()))
-    {
-      finish();
-      return false;
-    }
-    if (!this.jdField_b_of_type_Boolean) {}
     try
     {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals("starShortcut")))
-      {
+      if ((!TextUtils.isEmpty(this.a)) && (this.a.equals("starShortcut"))) {
         paramBundle = a(false, localIntent.getStringExtra("starId"));
-        if (paramBundle == null) {
-          break label528;
-        }
-        ((ImageView)findViewById(2131373597)).setImageBitmap(paramBundle);
-      }
-      for (;;)
-      {
-        azqs.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_head", 0, 0, "", "", "", "");
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals("starShortcut")))
-        {
-          localIntent.putExtra("shotcut_forward", ChatActivity.class.getName());
-          localIntent.putExtra("forward", "starClub");
-          localIntent.setClassName(this, ShortcutRouterActivity.class.getName());
-          startActivity(localIntent);
-          finish();
-        }
-        if (BaseApplicationImpl.appStartTime > 0L) {
-          Log.d("AutoMonitor", "actStartShort, cost=" + (SystemClock.uptimeMillis() - BaseApplicationImpl.appStartTime));
-        }
-        return true;
+      } else {
         paramBundle = a(true, localIntent.getStringExtra("uin"));
-        break;
-        label528:
-        ((ImageView)findViewById(2131373597)).setImageResource(2130840158);
       }
-      return false;
+      if (paramBundle != null) {
+        ((ImageView)findViewById(2131442505)).setImageBitmap(paramBundle);
+      } else {
+        ((ImageView)findViewById(2131442505)).setImageResource(2130841158);
+      }
     }
     catch (Throwable paramBundle)
     {
+      break label423;
+    }
+    finish();
+    return false;
+    ReportController.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_head", 0, 0, "", "", "", "");
+    if ((!TextUtils.isEmpty(this.a)) && (this.a.equals("starShortcut")))
+    {
+      localIntent.putExtra("shotcut_forward", ChatActivity.class.getName());
+      localIntent.putExtra("forward", "starClub");
+      localIntent.setClassName(this, ShortcutRouterActivity.class.getName());
+      startActivity(localIntent);
       finish();
     }
+    if (BaseApplicationImpl.appStartTime > 0L)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("actStartShort, cost=");
+      paramBundle.append(SystemClock.uptimeMillis() - BaseApplicationImpl.appStartTime);
+      Log.d("AutoMonitor", paramBundle.toString());
+    }
+    return true;
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     setIntent(paramIntent);
     try
@@ -424,22 +457,32 @@ public class ShortcutGuideActivity
   public void onClick(View paramView)
   {
     Intent localIntent = getIntent();
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131442506)
     {
+      if (i == 2131442509)
+      {
+        localIntent.putExtra("shotcut_forward", AVActivity.class.getName());
+        ReportController.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_call", 0, 0, "", "", "", "");
+      }
     }
-    for (;;)
+    else
     {
-      localIntent.setClassName(this, ShortcutRouterActivity.class.getName());
-      startActivity(localIntent);
-      finish();
-      return;
       localIntent.putExtra("shotcut_forward", SplashActivity.class.getName());
-      aepi.a(localIntent, new int[] { 2 });
-      azqs.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_msg", 0, 0, "0", "", "", "");
-      continue;
-      localIntent.putExtra("shotcut_forward", AVActivity.class.getName());
-      azqs.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_call", 0, 0, "", "", "", "");
+      AIOUtils.a(localIntent, new int[] { 2 });
+      ReportController.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_msg", 0, 0, "0", "", "", "");
     }
+    localIntent.setClassName(this, ShortcutRouterActivity.class.getName());
+    startActivity(localIntent);
+    finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -457,22 +500,31 @@ public class ShortcutGuideActivity
     try
     {
       String str = getIntent().getStringExtra("from");
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortcutGuideActivity", 2, "showPreview from=" + str);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showPreview from=");
+        localStringBuilder.append(str);
+        QLog.d("ShortcutGuideActivity", 2, localStringBuilder.toString());
       }
       if ("shortcutFromQZonePhotolist".equals(str)) {
         return true;
       }
-      super.setContentView(2131561305);
+      super.setContentView(2131627838);
       a();
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       return true;
     }
     catch (Throwable localThrowable)
     {
+      StringBuilder localStringBuilder;
       localThrowable.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortcutGuideActivity", 2, "create exception :" + localThrowable.getMessage());
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("create exception :");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.d("ShortcutGuideActivity", 2, localStringBuilder.toString());
       }
     }
     return false;
@@ -480,7 +532,7 @@ public class ShortcutGuideActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ShortcutGuideActivity
  * JD-Core Version:    0.7.0.1
  */

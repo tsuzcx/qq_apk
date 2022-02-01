@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class BubbleReq
   extends JceStruct
 {
-  public int bubbleID;
+  public int bubbleID = 0;
   
   public BubbleReq() {}
   
@@ -28,7 +28,7 @@ public final class BubbleReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.BubbleReq
  * JD-Core Version:    0.7.0.1
  */

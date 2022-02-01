@@ -5,23 +5,23 @@ import java.util.ArrayList;
 public abstract class i<T>
   extends a<T>
 {
-  private boolean Iw = false;
-  private ArrayList<Integer> Ix;
+  private boolean Kl = false;
+  private ArrayList<Integer> Km;
   
   protected i(DataHolder paramDataHolder)
   {
     super(paramDataHolder);
   }
   
-  private int bf(int paramInt)
+  private int bz(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.Ix.size())) {
+    if ((paramInt < 0) || (paramInt >= this.Km.size())) {
       throw new IllegalArgumentException(53 + "Position " + paramInt + " is out of bounds for this buffer");
     }
-    return ((Integer)this.Ix.get(paramInt)).intValue();
+    return ((Integer)this.Km.get(paramInt)).intValue();
   }
   
-  private void gQ()
+  private void ha()
   {
     for (;;)
     {
@@ -29,24 +29,24 @@ public abstract class i<T>
       String str2;
       try
       {
-        if (this.Iw) {
+        if (this.Kl) {
           break label204;
         }
-        int j = this.Ia.Ik;
-        this.Ix = new ArrayList();
+        int j = this.JP.JZ;
+        this.Km = new ArrayList();
         if (j <= 0) {
           break label199;
         }
-        this.Ix.add(Integer.valueOf(0));
-        String str3 = gP();
-        i = this.Ia.be(0);
-        String str1 = this.Ia.c(str3, 0, i);
+        this.Km.add(Integer.valueOf(0));
+        String str3 = gZ();
+        i = this.JP.by(0);
+        String str1 = this.JP.c(str3, 0, i);
         i = 1;
         if (i >= j) {
           break label199;
         }
-        int k = this.Ia.be(i);
-        str2 = this.Ia.c(str3, i, k);
+        int k = this.JP.by(i);
+        str2 = this.JP.c(str3, i, k);
         if (str2 == null) {
           throw new NullPointerException(String.valueOf(str3).length() + 78 + "Missing value for markerColumn: " + str3 + ", at row: " + i + ", for window: " + k);
         }
@@ -54,11 +54,11 @@ public abstract class i<T>
       finally {}
       if (!str2.equals(localObject1))
       {
-        this.Ix.add(Integer.valueOf(i));
+        this.Km.add(Integer.valueOf(i));
         Object localObject2 = str2;
         break label207;
         label199:
-        this.Iw = true;
+        this.Kl = true;
         label204:
         return;
       }
@@ -67,29 +67,29 @@ public abstract class i<T>
     }
   }
   
-  protected abstract T X(int paramInt1, int paramInt2);
+  protected abstract T Z(int paramInt1, int paramInt2);
   
-  protected abstract String gP();
+  protected abstract String gZ();
   
   public final T get(int paramInt)
   {
-    gQ();
-    int k = bf(paramInt);
+    ha();
+    int k = bz(paramInt);
     int j;
-    if ((paramInt < 0) || (paramInt == this.Ix.size()))
+    if ((paramInt < 0) || (paramInt == this.Km.size()))
     {
       j = 0;
-      return X(k, j);
+      return Z(k, j);
     }
-    if (paramInt == this.Ix.size() - 1) {}
-    for (int i = this.Ia.Ik - ((Integer)this.Ix.get(paramInt)).intValue();; i = ((Integer)this.Ix.get(paramInt + 1)).intValue() - ((Integer)this.Ix.get(paramInt)).intValue())
+    if (paramInt == this.Km.size() - 1) {}
+    for (int i = this.JP.JZ - ((Integer)this.Km.get(paramInt)).intValue();; i = ((Integer)this.Km.get(paramInt + 1)).intValue() - ((Integer)this.Km.get(paramInt)).intValue())
     {
       j = i;
       if (i != 1) {
         break;
       }
-      paramInt = bf(paramInt);
-      this.Ia.be(paramInt);
+      paramInt = bz(paramInt);
+      this.JP.by(paramInt);
       j = i;
       break;
     }
@@ -97,8 +97,8 @@ public abstract class i<T>
   
   public final int getCount()
   {
-    gQ();
-    return this.Ix.size();
+    ha();
+    return this.Km.size();
   }
 }
 

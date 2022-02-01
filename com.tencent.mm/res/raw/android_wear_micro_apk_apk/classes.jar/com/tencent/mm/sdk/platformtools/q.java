@@ -8,18 +8,18 @@ import java.util.TimeZone;
 public final class q
 {
   private static final TimeZone GMT = TimeZone.getTimeZone("GMT");
-  public static final long[] Ya = { 300L, 200L, 300L, 200L };
-  private static final long[] Yb = { 300L, 50L, 300L, 50L };
-  private static final BigInteger Yc = BigInteger.ONE.shiftLeft(64);
-  private static final char[] Yd = { 60, 62, 34, 39, 38, 13, 10, 32, 9 };
-  private static final String[] Ye = { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "&#x0D;", "&#x0A;", "&#x20;", "&#x09;" };
+  public static final long[] aac = { 300L, 200L, 300L, 200L };
+  private static final long[] aad = { 300L, 50L, 300L, 50L };
+  private static final BigInteger aae = BigInteger.ONE.shiftLeft(64);
+  private static final char[] aaf = { 60, 62, 34, 39, 38, 13, 10, 32, 9 };
+  private static final String[] aag = { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "&#x0D;", "&#x0A;", "&#x20;", "&#x09;" };
   
   public static boolean D(String paramString)
   {
     return (paramString == null) || (paramString.length() <= 0);
   }
   
-  public static String F(Object paramObject)
+  public static String O(Object paramObject)
   {
     if (paramObject != null) {
       return paramObject.toString();
@@ -41,7 +41,15 @@ public final class q
     }
   }
   
-  public static m lq()
+  public static String l(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      return paramString2;
+    }
+    return paramString1;
+  }
+  
+  public static m lC()
   {
     return new m();
   }

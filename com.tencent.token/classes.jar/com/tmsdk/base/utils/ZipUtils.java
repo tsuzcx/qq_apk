@@ -22,53 +22,48 @@ public class ZipUtils
   
   private static void a(File paramFile, String paramString, ZipOutputStream paramZipOutputStream)
   {
-    Object localObject1;
-    int i;
-    label25:
-    Object localObject2;
-    if (paramFile.isDirectory())
-    {
+    if (paramFile.isDirectory()) {
       paramFile = paramFile.listFiles();
-      localObject1 = new byte[1024];
-      int j = paramFile.length;
-      i = 0;
-      if (i >= j) {
-        return;
-      }
-      localObject2 = paramFile[i];
-      if (!((File)localObject2).isDirectory()) {
-        break label118;
-      }
-      paramZipOutputStream.putNextEntry(new ZipEntry(((File)localObject2).getPath().substring(paramString.length() + 1) + "/"));
-      a((File)localObject2, paramString, paramZipOutputStream);
+    } else {
+      paramFile = new File[] { paramFile };
     }
-    for (;;)
+    byte[] arrayOfByte = new byte[1024];
+    int j = paramFile.length;
+    int i = 0;
+    while (i < j)
     {
-      i += 1;
-      break label25;
-      localObject1 = new File[1];
-      localObject1[0] = paramFile;
-      paramFile = (File)localObject1;
-      break;
-      label118:
-      String str = ((File)localObject2).getPath().substring(paramString.length() + 1);
-      localObject2 = new FileInputStream((File)localObject2);
-      BufferedInputStream localBufferedInputStream = new BufferedInputStream((InputStream)localObject2);
-      paramZipOutputStream.putNextEntry(new ZipEntry(str));
-      for (;;)
+      Object localObject2 = paramFile[i];
+      Object localObject1;
+      if (((File)localObject2).isDirectory())
       {
-        int k = localBufferedInputStream.read((byte[])localObject1, 0, 1024);
-        if (k == -1) {
-          break;
-        }
-        paramZipOutputStream.write((byte[])localObject1, 0, k);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(((File)localObject2).getPath().substring(paramString.length() + 1));
+        ((StringBuilder)localObject1).append("/");
+        paramZipOutputStream.putNextEntry(new ZipEntry(((StringBuilder)localObject1).toString()));
+        a((File)localObject2, paramString, paramZipOutputStream);
       }
-      localBufferedInputStream.close();
-      ((InputStream)localObject2).close();
+      else
+      {
+        localObject1 = ((File)localObject2).getPath().substring(paramString.length() + 1);
+        localObject2 = new FileInputStream((File)localObject2);
+        BufferedInputStream localBufferedInputStream = new BufferedInputStream((InputStream)localObject2);
+        paramZipOutputStream.putNextEntry(new ZipEntry((String)localObject1));
+        for (;;)
+        {
+          int k = localBufferedInputStream.read(arrayOfByte, 0, 1024);
+          if (k == -1) {
+            break;
+          }
+          paramZipOutputStream.write(arrayOfByte, 0, k);
+        }
+        localBufferedInputStream.close();
+        ((InputStream)localObject2).close();
+      }
+      i += 1;
     }
   }
   
-  public static boolean checkValidZipFiles(List paramList)
+  public static boolean checkValidZipFiles(List<File> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
@@ -125,21 +120,13 @@ public class ZipUtils
     try
     {
       paramFile = new ZipFile(paramFile);
-      try
-      {
-        paramFile.close();
-        return true;
-      }
-      catch (IOException paramFile) {}
+      paramFile.close();
+      return true;
     }
-    catch (Throwable paramFile)
+    catch (ZipException|Throwable|IOException paramFile)
     {
-      break label16;
-    }
-    catch (ZipException paramFile)
-    {
-      label16:
-      break label16;
+      label15:
+      break label15;
     }
     return false;
   }
@@ -150,16 +137,16 @@ public class ZipUtils
     BufferedOutputStream localBufferedOutputStream = new BufferedOutputStream(paramString2);
     ZipOutputStream localZipOutputStream = new ZipOutputStream(localBufferedOutputStream);
     File localFile = new File(paramString1);
-    if (localFile.isDirectory()) {}
-    for (paramString1 = localFile.getPath();; paramString1 = localFile.getParent())
-    {
-      a(localFile, paramString1, localZipOutputStream);
-      localZipOutputStream.closeEntry();
-      localZipOutputStream.close();
-      localBufferedOutputStream.close();
-      paramString2.close();
-      return;
+    if (localFile.isDirectory()) {
+      paramString1 = localFile.getPath();
+    } else {
+      paramString1 = localFile.getParent();
     }
+    a(localFile, paramString1, localZipOutputStream);
+    localZipOutputStream.closeEntry();
+    localZipOutputStream.close();
+    localBufferedOutputStream.close();
+    paramString2.close();
   }
 }
 

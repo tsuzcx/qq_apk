@@ -1,106 +1,109 @@
 package com.tencent.mobileqq.activity;
 
-import acln;
-import adxv;
-import adxw;
-import adxx;
-import alto;
-import alud;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import bdgm;
-import bdjz;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppRuntime;
 
 public class ShortcutRouterActivity
   extends BaseActivity
 {
-  private acln jdField_a_of_type_Acln;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new adxx(this);
+  DialogInterface.OnClickListener a = new ShortcutRouterActivity.DialogInterfaceOnClickListener(this);
+  private ChatActivityUtils.StartVideoListener b;
   
   private int a(Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("uintype", -1);
     String str = paramIntent.getStringExtra("uin");
-    if ((i == -1) || (str == null)) {
-      return 1;
-    }
-    if (paramIntent.getBooleanExtra("isTroopCard", false)) {
+    if ((i != -1) && (str != null))
+    {
+      if (paramIntent.getBooleanExtra("isTroopCard", false)) {
+        return 0;
+      }
+      if (!((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(str)) {
+        return 2;
+      }
       return 0;
     }
-    if (!((alto)this.app.getManager(51)).b(str)) {
-      return 2;
-    }
-    return 0;
+    return 1;
   }
   
   private void a()
   {
     String str = getAppRuntime().getAccount();
-    bdjz localbdjz = bdgm.a(this, 230);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     TextView localTextView = new TextView(this);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     localTextView.setGravity(17);
-    localTextView.setTextSize(getResources().getInteger(2131427336));
-    localTextView.setTextColor(getResources().getColor(2131165448));
-    if (TextUtils.isEmpty(str)) {
-      localTextView.setText(alud.a(2131714396));
-    }
-    for (;;)
+    localTextView.setTextSize(getResources().getInteger(2131492883));
+    localTextView.setTextColor(getResources().getColor(2131165794));
+    if (TextUtils.isEmpty(str))
     {
-      localbdjz.setNegativeButton(2131720095, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-      localbdjz.addView(localTextView);
-      localbdjz.setOnDismissListener(new adxw(this));
-      if (!isFinishing()) {
-        localbdjz.show();
-      }
-      return;
-      localTextView.setText(alud.a(2131714412) + str + alud.a(2131714415));
+      localTextView.setText(HardCodeUtil.a(2131911414));
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131911430));
+      localStringBuilder.append(str);
+      localStringBuilder.append(HardCodeUtil.a(2131911431));
+      localTextView.setText(localStringBuilder.toString());
+    }
+    localQQCustomDialog.setNegativeButton(2131916601, this.a);
+    localQQCustomDialog.addView(localTextView);
+    localQQCustomDialog.setOnDismissListener(new ShortcutRouterActivity.2(this));
+    if (!isFinishing()) {
+      localQQCustomDialog.show();
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
+  {
     super.doOnCreate(paramBundle);
     paramBundle = getIntent();
-    boolean bool1;
     if (!this.app.isLogin())
     {
       paramBundle = new Intent();
-      paramBundle.setClass(this, LoginActivity.class);
       paramBundle.addFlags(67371008);
       paramBundle.putExtra("shortcut_jump_key", getIntent());
-      startActivity(paramBundle);
+      RouteUtils.a(this, paramBundle, "/base/login");
       finish();
-      bool1 = false;
+      return false;
     }
-    String str1;
-    String str2;
-    int i;
-    do
+    String str1 = paramBundle.getStringExtra("shotcut_forward");
+    boolean bool = paramBundle.getBooleanExtra("open_chatfragment", false);
+    String str2 = paramBundle.getStringExtra("forward");
+    if (!TextUtils.isEmpty(str1))
     {
-      boolean bool3;
-      do
-      {
-        return bool1;
-        str1 = paramBundle.getStringExtra("shotcut_forward");
-        bool3 = paramBundle.getBooleanExtra("open_chatfragment", false);
-        str2 = paramBundle.getStringExtra("forward");
-        bool1 = bool2;
-      } while (TextUtils.isEmpty(str1));
       if ((!TextUtils.isEmpty(str2)) && (str2.equals("starClub")) && (str1.equals(ChatActivity.class.getName())))
       {
         paramBundle.putExtra("uin", "1413778541");
-        paramBundle.putExtra("uinname", alud.a(2131714417));
+        paramBundle.putExtra("uinname", HardCodeUtil.a(2131911433));
         paramBundle.putExtra("uintype", 1008);
         paramBundle.putExtra("from", "starShortcut");
         paramBundle.setClassName(this, str1);
@@ -108,40 +111,48 @@ public class ShortcutRouterActivity
         startActivity(paramBundle);
         return true;
       }
-      switch (a(paramBundle))
+      int i = a(paramBundle);
+      if (i != 1)
       {
-      default: 
-        if ((str1.equals(SplashActivity.class.getName())) && (bool3))
+        if (i != 2)
         {
-          paramBundle.setClassName(this, str1);
-          paramBundle.putExtra("entrance", 4);
-          startActivity(paramBundle);
-          finish();
+          if ((str1.equals(SplashActivity.class.getName())) && (bool))
+          {
+            paramBundle.setClassName(this, str1);
+            paramBundle.putExtra("entrance", 4);
+            startActivity(paramBundle);
+            finish();
+            return true;
+          }
+          str1 = paramBundle.getStringExtra("uin");
+          str2 = paramBundle.getStringExtra("uinname");
+          i = paramBundle.getIntExtra("uintype", 0);
+          paramBundle = paramBundle.getStringExtra("extraUin");
+          if (this.b == null) {
+            this.b = new ShortcutRouterActivity.1(this);
+          }
+          if (ChatActivityUtils.a(this.app, this, i, str1, str2, null, true, paramBundle, true, true, this.b, "from_internal"))
+          {
+            finish();
+            return true;
+          }
+        }
+        else
+        {
+          a();
           return true;
         }
-        break;
-      case 1: 
-        QQToast.a(this, getString(2131720093), 0).b(getTitleBarHeight());
+      }
+      else
+      {
+        QQToast.makeText(this, getString(2131916599), 0).show(getTitleBarHeight());
         finish();
-        return true;
-      case 2: 
-        a();
-        return true;
       }
-      str1 = paramBundle.getStringExtra("uin");
-      str2 = paramBundle.getStringExtra("uinname");
-      i = paramBundle.getIntExtra("uintype", 0);
-      paramBundle = paramBundle.getStringExtra("extraUin");
-      if (this.jdField_a_of_type_Acln == null) {
-        this.jdField_a_of_type_Acln = new adxv(this);
-      }
-      bool1 = bool2;
-    } while (!ChatActivityUtils.a(this.app, this, i, str1, str2, null, true, paramBundle, true, true, this.jdField_a_of_type_Acln, "from_internal"));
-    finish();
+    }
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
   }
@@ -151,7 +162,14 @@ public class ShortcutRouterActivity
     finish();
   }
   
-  public void onStop()
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onStop()
   {
     super.onStop();
     finish();
@@ -164,7 +182,7 @@ public class ShortcutRouterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ShortcutRouterActivity
  * JD-Core Version:    0.7.0.1
  */

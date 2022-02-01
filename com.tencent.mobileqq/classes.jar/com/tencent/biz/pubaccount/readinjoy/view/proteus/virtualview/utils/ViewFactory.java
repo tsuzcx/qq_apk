@@ -59,22 +59,20 @@ public class ViewFactory
   
   public static void findClickableViewListener(ViewBase paramViewBase, ViewFactory.FoundClickableViewListener paramFoundClickableViewListener)
   {
-    if (paramViewBase == null) {}
-    for (;;)
-    {
+    if (paramViewBase == null) {
       return;
-      if (paramViewBase.getClickEvnet() != null) {
-        paramFoundClickableViewListener.onFound(paramViewBase);
-      }
-      if ((paramViewBase instanceof Layout))
+    }
+    if (paramViewBase.getClickEvnet() != null) {
+      paramFoundClickableViewListener.onFound(paramViewBase);
+    }
+    if ((paramViewBase instanceof Layout))
+    {
+      paramViewBase = ((Layout)paramViewBase).getSubViews();
+      if (paramViewBase != null)
       {
-        paramViewBase = ((Layout)paramViewBase).getSubViews();
-        if (paramViewBase != null)
-        {
-          paramViewBase = paramViewBase.iterator();
-          while (paramViewBase.hasNext()) {
-            findClickableViewListener((ViewBase)paramViewBase.next(), paramFoundClickableViewListener);
-          }
+        paramViewBase = paramViewBase.iterator();
+        while (paramViewBase.hasNext()) {
+          findClickableViewListener((ViewBase)paramViewBase.next(), paramFoundClickableViewListener);
         }
       }
     }
@@ -101,19 +99,35 @@ public class ViewFactory
       if ((isShowViewIdInDesc) && (localView != null)) {
         localView.setContentDescription(paramViewBean.viewId);
       }
-      if (paramViewBase != null) {}
-      for (paramViewBase = ((Layout)paramViewBase).generateParams();; paramViewBase = new Layout.Params())
+      if (paramViewBase != null) {
+        paramViewBase = ((Layout)paramViewBase).generateParams();
+      } else {
+        paramViewBase = new Layout.Params();
+      }
+      localViewBase.setComLayoutParams(paramViewBase);
+      localViewBase.bindNormalValue(paramViewBean);
+      if (LogUtils.shouldLog())
       {
-        localViewBase.setComLayoutParams(paramViewBase);
-        localViewBase.bindNormalValue(paramViewBean);
-        if (LogUtils.shouldLog()) {
-          LogUtils.d("ViewFactory", "[constructViewBaseTree] make [" + paramViewBean.viewType + ", " + paramViewBean.viewId + "]");
-        }
-        if ((paramViewBean.children == null) || (!(localViewBase instanceof Layout))) {
-          break;
-        }
-        if (LogUtils.shouldLog()) {
-          LogUtils.d("ViewFactory", "[constructViewBaseTree] add children for [" + paramViewBean.viewType + ", " + paramViewBean.viewId + "], expected children count: " + paramViewBean.children.length);
+        paramViewBase = new StringBuilder();
+        paramViewBase.append("[constructViewBaseTree] make [");
+        paramViewBase.append(paramViewBean.viewType);
+        paramViewBase.append(", ");
+        paramViewBase.append(paramViewBean.viewId);
+        paramViewBase.append("]");
+        LogUtils.d("ViewFactory", paramViewBase.toString());
+      }
+      if ((paramViewBean.children != null) && ((localViewBase instanceof Layout)))
+      {
+        if (LogUtils.shouldLog())
+        {
+          paramViewBase = new StringBuilder();
+          paramViewBase.append("[constructViewBaseTree] add children for [");
+          paramViewBase.append(paramViewBean.viewType);
+          paramViewBase.append(", ");
+          paramViewBase.append(paramViewBean.viewId);
+          paramViewBase.append("], expected children count: ");
+          paramViewBase.append(paramViewBean.children.length);
+          LogUtils.d("ViewFactory", paramViewBase.toString());
         }
         paramViewBase = paramViewBean.children;
         int j = paramViewBase.length;
@@ -134,21 +148,25 @@ public class ViewFactory
     if (paramTemplateBean == null) {
       return null;
     }
-    if (LogUtils.shouldLog()) {
-      LogUtils.d("ViewFactory", "[inflate] " + paramTemplateBean.getStyleName());
+    if (LogUtils.shouldLog())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[inflate] ");
+      ((StringBuilder)localObject).append(paramTemplateBean.getStyleName());
+      LogUtils.d("ViewFactory", ((StringBuilder)localObject).toString());
     }
-    Container localContainer = onCreateContainer(paramVafContext);
-    paramVafContext = constructViewBaseTree(paramVafContext, null, paramTemplateBean.getViewBean(), localContainer.getViewIdMapping());
+    Object localObject = onCreateContainer(paramVafContext);
+    paramVafContext = constructViewBaseTree(paramVafContext, null, paramTemplateBean.getViewBean(), ((Container)localObject).getViewIdMapping());
     if (paramVafContext != null)
     {
-      localContainer.setVirtualView(paramVafContext);
-      localContainer.attachViews();
+      ((Container)localObject).setVirtualView(paramVafContext);
+      ((Container)localObject).attachViews();
       if (LogUtils.shouldLog())
       {
         LogUtils.d("ViewFactory", "[inflate] hierarchy after inflation: ");
         LogUtils.logViewBaseHierarchy(paramVafContext, "ViewFactory");
       }
-      return localContainer;
+      return localObject;
     }
     LogUtil.QLog.d("ViewFactory", 2, "inflate: fail to inflate, vb is null");
     return null;
@@ -172,7 +190,7 @@ public class ViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,29 @@
 package com.tencent.mm.ui.contact;
 
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class AddressUI$AddressUIFragment$12
-  implements Runnable
+  implements View.OnClickListener
 {
-  int ePG = 0;
+  AddressUI$AddressUIFragment$12(AddressUI.AddressUIFragment paramAddressUIFragment) {}
   
-  AddressUI$AddressUIFragment$12(AddressUI.AddressUIFragment paramAddressUIFragment, View paramView) {}
-  
-  public final void run()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(33495);
-    if (this.AaO.getView() == null)
-    {
-      AppMethodBeat.o(33495);
-      return;
-    }
-    int i = am.di(this.AaO.getContext());
-    int j = am.K(this.AaO.getContext(), -1);
-    if (j <= 0) {
-      if (this.ePG < 2)
-      {
-        ab.i("MicroMsg.AddressUI", "[trySetParentViewPadding] try getStatusHeight again!");
-        this.AaO.getView().post(this);
-        this.ePG += 1;
-      }
-    }
-    for (;;)
-    {
-      ab.i("MicroMsg.AddressUI", "[trySetParentViewPadding] tryCount:%s actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(this.ePG), Integer.valueOf(j), Integer.valueOf(i) });
-      AppMethodBeat.o(33495);
-      return;
-      ab.e("MicroMsg.AddressUI", "[trySetParentViewPadding] try getStatusHeight finally!");
-      break;
-      int k = AddressUI.AddressUIFragment.b(this.AaO);
-      if (k != this.AaO.getView().getPaddingTop())
-      {
-        ab.i("MicroMsg.AddressUI", "[trySetParentViewPadding] now:%s old:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(this.AaO.getView().getPaddingTop()) });
-        this.AaO.getView().setPadding(0, k, 0, this.alj.getHeight());
-      }
-      else
-      {
-        ab.i("MicroMsg.AddressUI", "[trySetParentViewPadding] has try more once! it's right! actionBarHeight:%s actionBarHeight:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-      }
-    }
+    AppMethodBeat.i(253590);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    a.a(this, "com/tencent/mm/ui/contact/AddressUI$AddressUIFragment$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(253590);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.contact.AddressUI.AddressUIFragment.12
  * JD-Core Version:    0.7.0.1
  */

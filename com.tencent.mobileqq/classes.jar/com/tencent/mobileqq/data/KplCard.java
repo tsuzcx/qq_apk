@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awge;
-import awhp;
-import awhs;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,7 +23,7 @@ import tencent.im.oidb.cmd0xa28.oidb_0xa28.RoleInfo;
 import tencent.im.oidb.cmd0xa28.oidb_0xa28.RspBody;
 
 public class KplCard
-  extends awge
+  extends Entity
 {
   public String bgUrl;
   public String commonInfo;
@@ -32,18 +32,17 @@ public class KplCard
   public int gender;
   public long mvpLevel;
   public String qqNick;
-  @awhp
+  @notColumn
   public List<KplRoleInfo> roleList;
   public long round;
   public String sRoleList;
   public String score;
   public long superLevel;
-  @awhs
+  @unique
   public String uin;
   
   public static KplCard parseProto(oidb_0xa28.RspBody paramRspBody, String paramString)
   {
-    long l2 = 0L;
     KplCard localKplCard = new KplCard();
     localKplCard.uin = paramString;
     paramString = (oidb_0xa28.Profile)paramRspBody.msg_profile_info.get();
@@ -54,41 +53,36 @@ public class KplCard
     localKplCard.commonInfo = paramString.bytes_common_info.get().toStringUtf8();
     localKplCard.bgUrl = paramString.str_bg_url.get();
     oidb_0xa28.Achievement localAchievement = paramRspBody.msg_game_info.msg_achieve_info;
-    long l1;
-    if (localAchievement.uint64_mvp_level.has())
-    {
+    boolean bool = localAchievement.uint64_mvp_level.has();
+    long l2 = 0L;
+    if (bool) {
       l1 = localAchievement.uint64_mvp_level.get();
-      localKplCard.mvpLevel = l1;
-      if (!localAchievement.uint64_super.has()) {
-        break label300;
-      }
-      l1 = localAchievement.uint64_super.get();
-      label168:
-      localKplCard.superLevel = l1;
-      if (!localAchievement.bytes_score.has()) {
-        break label305;
-      }
+    } else {
+      l1 = 0L;
     }
-    label300:
-    label305:
-    for (paramString = localAchievement.bytes_score.get().toStringUtf8();; paramString = "")
-    {
-      localKplCard.score = paramString;
-      l1 = l2;
-      if (localAchievement.uint64_round.has()) {
-        l1 = localAchievement.uint64_round.get();
-      }
-      localKplCard.round = l1;
-      paramString = paramRspBody.msg_game_info.msg_role_list.get();
-      paramRspBody = new ArrayList(paramString.size());
-      paramString = paramString.iterator();
-      while (paramString.hasNext()) {
-        paramRspBody.add(KplRoleInfo.parseProtoResp((oidb_0xa28.RoleInfo)paramString.next()));
-      }
+    localKplCard.mvpLevel = l1;
+    if (localAchievement.uint64_super.has()) {
+      l1 = localAchievement.uint64_super.get();
+    } else {
       l1 = 0L;
-      break;
-      l1 = 0L;
-      break label168;
+    }
+    localKplCard.superLevel = l1;
+    if (localAchievement.bytes_score.has()) {
+      paramString = localAchievement.bytes_score.get().toStringUtf8();
+    } else {
+      paramString = "";
+    }
+    localKplCard.score = paramString;
+    long l1 = l2;
+    if (localAchievement.uint64_round.has()) {
+      l1 = localAchievement.uint64_round.get();
+    }
+    localKplCard.round = l1;
+    paramString = paramRspBody.msg_game_info.msg_role_list.get();
+    paramRspBody = new ArrayList(paramString.size());
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      paramRspBody.add(KplRoleInfo.parseProtoResp((oidb_0xa28.RoleInfo)paramString.next()));
     }
     localKplCard.roleList = paramRspBody;
     localKplCard.saveListAsString();
@@ -124,13 +118,13 @@ public class KplCard
         }
         i += 1;
       }
-      this.roleList = localJSONException;
+      this.roleList = localArrayList;
+      return;
     }
     catch (JSONException localJSONException)
     {
       QLog.e("KplCard", 1, "transStringToList exception:");
       localJSONException.printStackTrace();
-      return;
     }
   }
 }

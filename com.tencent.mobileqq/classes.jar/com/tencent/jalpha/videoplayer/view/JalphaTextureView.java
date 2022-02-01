@@ -78,8 +78,12 @@ public class JalphaTextureView
   
   private void callbackError(int paramInt)
   {
-    if ((this.mPlayListener != null) && (this.mViewHandler != null)) {
-      this.mViewHandler.post(new JalphaTextureView.3(this, paramInt));
+    if (this.mPlayListener != null)
+    {
+      Handler localHandler = this.mViewHandler;
+      if (localHandler != null) {
+        localHandler.post(new JalphaTextureView.3(this, paramInt));
+      }
     }
   }
   
@@ -92,8 +96,9 @@ public class JalphaTextureView
   
   private Surface getSurface()
   {
-    if (this.mSurfaceTextureRender != null) {
-      return this.mSurfaceTextureRender.getSurface();
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if (localBaseRender != null) {
+      return localBaseRender.getSurface();
     }
     return null;
   }
@@ -119,9 +124,10 @@ public class JalphaTextureView
   
   private void releaseRenderGLThread()
   {
-    if (this.mSurfaceTextureRender != null)
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if (localBaseRender != null)
     {
-      this.mSurfaceTextureRender.destroy();
+      localBaseRender.destroy();
       this.mSurfaceTextureRender = null;
     }
   }
@@ -139,14 +145,19 @@ public class JalphaTextureView
     }
     catch (Exception localException)
     {
-      Logger.v(this.TAG, "mSurfaceTextureRender Exception switch  soft decode Exception=" + localException);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mSurfaceTextureRender Exception switch  soft decode Exception=");
+      localStringBuilder.append(localException);
+      Logger.v(str, localStringBuilder.toString());
       localException.printStackTrace();
     }
   }
   
   private void setupFrameListenerOES()
   {
-    if ((this.mSurfaceTextureRender != null) && (this.mSurfaceTextureRender.getRenderType() == 1) && (this.mSurfaceTextureRender.getVideoTexture() != null)) {
+    BaseRender localBaseRender = this.mSurfaceTextureRender;
+    if ((localBaseRender != null) && (localBaseRender.getRenderType() == 1) && (this.mSurfaceTextureRender.getVideoTexture() != null)) {
       this.mSurfaceTextureRender.getVideoTexture().setOnFrameAvailableListener(new JalphaTextureView.9(this));
     }
   }
@@ -165,36 +176,58 @@ public class JalphaTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if ((!this.mViewReady) || (this.mCurRender == null) || (this.mVideoWidth <= 0) || (this.mVideoHeight <= 0)) {}
-    do
+    if ((this.mViewReady) && (this.mCurRender != null))
     {
-      return;
-      if ((this.mNeedConfigViewport) && (this.mVideoWidth > 0) && (this.mVideoHeight > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0))
+      int i = this.mVideoWidth;
+      if (i > 0)
       {
-        configViewportOnDraw();
-        if (this.mSurfaceTextureRender != null) {
-          this.mSurfaceTextureRender.updateSize(this.mGLViewWidth, this.mGLViewHeight, this.mVideoWidth, this.mVideoHeight);
+        int j = this.mVideoHeight;
+        if (j <= 0) {
+          return;
         }
-        this.mNeedConfigViewport = false;
+        if ((this.mNeedConfigViewport) && (i > 0) && (j > 0) && (this.mGLViewWidth > 0) && (this.mGLViewHeight > 0))
+        {
+          configViewportOnDraw();
+          paramGL10 = this.mSurfaceTextureRender;
+          if (paramGL10 != null) {
+            paramGL10.updateSize(this.mGLViewWidth, this.mGLViewHeight, this.mVideoWidth, this.mVideoHeight);
+          }
+          this.mNeedConfigViewport = false;
+        }
+        this.mCurRender.draw(null, this.mGLViewWidth, this.mGLViewHeight);
+        i = this.mFrameTime;
+        if (i > 0)
+        {
+          this.mCurFrameCount += 1;
+          this.mCurTime = (i * this.mCurFrameCount);
+          this.mViewHandler.post(new JalphaTextureView.8(this));
+        }
+        if (this.mOnPreviewFrameLogTimer.isTimeToWriteLog())
+        {
+          paramGL10 = this.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onDrawFrame fps= ");
+          localStringBuilder.append(this.mOnPreviewFrameLogTimer.getFps());
+          Logger.i(paramGL10, localStringBuilder.toString());
+        }
+        if (!this.mContentVisible)
+        {
+          GLES20.glClear(16384);
+          GLES20.glFinish();
+        }
       }
-      this.mCurRender.draw(null, this.mGLViewWidth, this.mGLViewHeight);
-      if (this.mFrameTime > 0)
-      {
-        this.mCurFrameCount += 1;
-        this.mCurTime = (this.mFrameTime * this.mCurFrameCount);
-        this.mViewHandler.post(new JalphaTextureView.8(this));
-      }
-      if (this.mOnPreviewFrameLogTimer.isTimeToWriteLog()) {
-        Logger.i(this.TAG, "onDrawFrame fps= " + this.mOnPreviewFrameLogTimer.getFps());
-      }
-    } while (this.mContentVisible);
-    GLES20.glClear(16384);
-    GLES20.glFinish();
+    }
   }
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    Logger.e(this.TAG, "===================gl render onSurfaceChanged " + paramInt1 + " h=" + paramInt2);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("===================gl render onSurfaceChanged ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" h=");
+    localStringBuilder.append(paramInt2);
+    Logger.e(str, localStringBuilder.toString());
     paramGL10.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     this.mGLViewWidth = paramInt1;
     this.mGLViewHeight = paramInt2;
@@ -214,13 +247,18 @@ public class JalphaTextureView
   
   public void playFile(String paramString)
   {
-    if (this.mStopping) {}
-    for (this.mTmpFilePath = paramString;; this.mTmpFilePath = null)
+    if (this.mStopping) {
+      this.mTmpFilePath = paramString;
+    } else {
+      this.mTmpFilePath = null;
+    }
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" playFile , want to play filepath =");
+    localStringBuilder.append(paramString);
+    Logger.e(str, localStringBuilder.toString());
+    if (this.mPlayStarting)
     {
-      Logger.e(this.TAG, " playFile , want to play filepath =" + paramString);
-      if (!this.mPlayStarting) {
-        break;
-      }
       Logger.v(this.TAG, " playFile , one has already in playing , return");
       return;
     }
@@ -246,8 +284,9 @@ public class JalphaTextureView
   public void setLoopState(boolean paramBoolean)
   {
     this.mLoop = paramBoolean;
-    if (this.mHardDecoder != null) {
-      this.mHardDecoder.setLoopState(this.mLoop);
+    IVideoFileDecoder localIVideoFileDecoder = this.mHardDecoder;
+    if (localIVideoFileDecoder != null) {
+      localIVideoFileDecoder.setLoopState(this.mLoop);
     }
   }
   
@@ -269,8 +308,9 @@ public class JalphaTextureView
     if (!this.mViewReady) {
       return;
     }
-    if (this.mHardDecoder != null) {
-      this.mHardDecoder.stop();
+    IVideoFileDecoder localIVideoFileDecoder = this.mHardDecoder;
+    if (localIVideoFileDecoder != null) {
+      localIVideoFileDecoder.stop();
     }
     setVisibility(8);
     this.mStopping = true;
@@ -278,7 +318,7 @@ public class JalphaTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.view.JalphaTextureView
  * JD-Core Version:    0.7.0.1
  */

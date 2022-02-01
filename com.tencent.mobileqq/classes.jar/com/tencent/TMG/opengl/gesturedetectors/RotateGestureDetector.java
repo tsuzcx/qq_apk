@@ -22,57 +22,65 @@ public class RotateGestureDetector
   
   protected void handleInProgressEvent(int paramInt, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
+      if (paramInt != 3)
+      {
+        if (paramInt != 6) {
+          return;
+        }
+        updateStateByEvent(paramMotionEvent);
+        if (!this.mSloppyGesture) {
+          this.mListener.onRotateEnd(this);
+        }
+        resetState();
+        return;
+      }
+      if (!this.mSloppyGesture) {
+        this.mListener.onRotateEnd(this);
+      }
+      resetState();
+      return;
     }
-    do
+    updateStateByEvent(paramMotionEvent);
+    if ((this.mCurrPressure / this.mPrevPressure > 0.67F) && (this.mListener.onRotate(this)))
     {
-      return;
-      updateStateByEvent(paramMotionEvent);
-      if (!this.mSloppyGesture) {
-        this.mListener.onRotateEnd(this);
-      }
-      resetState();
-      return;
-      if (!this.mSloppyGesture) {
-        this.mListener.onRotateEnd(this);
-      }
-      resetState();
-      return;
-      updateStateByEvent(paramMotionEvent);
-    } while ((this.mCurrPressure / this.mPrevPressure <= 0.67F) || (!this.mListener.onRotate(this)));
-    this.mPrevEvent.recycle();
-    this.mPrevEvent = MotionEvent.obtain(paramMotionEvent);
+      this.mPrevEvent.recycle();
+      this.mPrevEvent = MotionEvent.obtain(paramMotionEvent);
+    }
   }
   
   protected void handleStartProgressEvent(int paramInt, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 5)
       {
-        do
-        {
-          do
-          {
-            return;
-            resetState();
-            this.mPrevEvent = MotionEvent.obtain(paramMotionEvent);
-            this.mTimeDelta = 0L;
-            updateStateByEvent(paramMotionEvent);
-            this.mSloppyGesture = isSloppyGesture(paramMotionEvent);
-          } while (this.mSloppyGesture);
-          this.mGestureInProgress = this.mListener.onRotateBegin(this);
+        if (paramInt != 6) {
           return;
-        } while (!this.mSloppyGesture);
-        this.mSloppyGesture = isSloppyGesture(paramMotionEvent);
-      } while (this.mSloppyGesture);
-      this.mGestureInProgress = this.mListener.onRotateBegin(this);
-      return;
-    } while (this.mSloppyGesture);
+        }
+        boolean bool = this.mSloppyGesture;
+        return;
+      }
+      resetState();
+      this.mPrevEvent = MotionEvent.obtain(paramMotionEvent);
+      this.mTimeDelta = 0L;
+      updateStateByEvent(paramMotionEvent);
+      this.mSloppyGesture = isSloppyGesture(paramMotionEvent);
+      if (!this.mSloppyGesture) {
+        this.mGestureInProgress = this.mListener.onRotateBegin(this);
+      }
+    }
+    else
+    {
+      if (!this.mSloppyGesture) {
+        return;
+      }
+      this.mSloppyGesture = isSloppyGesture(paramMotionEvent);
+      if (!this.mSloppyGesture) {
+        this.mGestureInProgress = this.mListener.onRotateBegin(this);
+      }
+    }
   }
   
   protected void resetState()
@@ -83,7 +91,7 @@ public class RotateGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.gesturedetectors.RotateGestureDetector
  * JD-Core Version:    0.7.0.1
  */

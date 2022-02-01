@@ -2,9 +2,10 @@ package android.support.v4.app;
 
 import android.animation.Animator;
 import android.app.Activity;
-import android.arch.lifecycle.b;
-import android.arch.lifecycle.c;
 import android.arch.lifecycle.f;
+import android.arch.lifecycle.i;
+import android.arch.lifecycle.j;
+import android.arch.lifecycle.x;
 import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.Intent;
@@ -14,122 +15,124 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcelable;
 import android.support.v4.b.d;
-import android.support.v4.b.q;
+import android.support.v4.b.r;
 import android.util.SparseArray;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class Fragment
-  implements android.arch.lifecycle.e, ComponentCallbacks, View.OnCreateContextMenuListener
+  implements i, ComponentCallbacks, View.OnCreateContextMenuListener
 {
-  private static final q<String, Class<?>> aH = new q();
-  static final Object aI = new Object();
-  int aJ = 0;
-  Bundle aK;
-  SparseArray<Parcelable> aL;
-  String aM;
-  Bundle aN;
-  Fragment aO;
-  int aP = -1;
-  int aQ;
-  boolean aR;
-  boolean aS;
-  boolean aT;
-  boolean aU;
-  boolean aV;
-  boolean aW;
-  int aX;
-  t aY;
-  r aZ;
-  int ac = -1;
-  boolean bA;
-  f bB = new f(this);
-  t ba;
-  ac bb;
-  Fragment bc;
-  int bd;
-  int be;
-  String bf;
-  boolean bg;
-  boolean bh;
-  boolean bi;
-  boolean bj;
-  boolean bk;
-  boolean bl = true;
-  boolean bm;
-  ViewGroup bn;
-  View bo;
-  View bp;
-  boolean bq;
-  boolean br = true;
-  ak bs;
-  boolean bt;
-  boolean bu;
-  k bv;
-  boolean bw;
-  boolean bx;
-  float by;
-  LayoutInflater bz;
+  private static final r<String, Class<?>> cq = new r();
+  static final Object cr = new Object();
+  int bL = -1;
+  int cA;
+  boolean cB;
+  boolean cC;
+  boolean cD;
+  boolean cE;
+  boolean cF;
+  boolean cG;
+  int cH;
+  u cI;
+  s cJ;
+  u cK;
+  ae cL;
+  x cM;
+  Fragment cN;
+  int cO;
+  int cP;
+  String cQ;
+  boolean cR;
+  boolean cS;
+  boolean cT;
+  boolean cU;
+  boolean cV;
+  boolean cW = true;
+  boolean cX;
+  ViewGroup cY;
+  View cZ;
+  int cs = 0;
+  Bundle ct;
+  SparseArray<Parcelable> cu;
+  Boolean cv;
+  String cw;
+  Bundle cx;
+  Fragment cy;
+  int cz = -1;
+  View da;
+  boolean db;
+  boolean dc = true;
+  LoaderManagerImpl dd;
+  l de;
+  boolean df;
+  boolean dg;
+  float dh;
+  LayoutInflater di;
+  boolean dj;
+  j dk = new j(this);
   
-  private void A()
+  private void Q()
   {
-    m localm = null;
-    if (this.bv == null) {}
+    n localn = null;
+    if (this.de == null) {}
     for (;;)
     {
-      if (localm != null) {
-        localm.Q();
+      if (localn != null) {
+        localn.ag();
       }
       return;
-      this.bv.bT = false;
-      localm = this.bv.bU;
-      this.bv.bU = null;
+      this.de.dC = false;
+      localn = this.de.dD;
+      this.de.dD = null;
     }
   }
   
-  private void B()
+  private void R()
   {
-    if (this.aZ == null) {
+    if (this.cJ == null) {
       throw new IllegalStateException("Fragment has not been attached yet.");
     }
-    this.ba = new t();
-    this.ba.a(this.aZ, new p()
+    this.cK = new u();
+    this.cK.a(this.cJ, new q()
     {
       public final Fragment a(Context paramAnonymousContext, String paramAnonymousString, Bundle paramAnonymousBundle)
       {
-        return Fragment.this.aZ.a(paramAnonymousContext, paramAnonymousString, paramAnonymousBundle);
+        return Fragment.this.cJ.a(paramAnonymousContext, paramAnonymousString, paramAnonymousBundle);
       }
       
       public final View onFindViewById(int paramAnonymousInt)
       {
-        if (Fragment.this.bo == null) {
+        if (Fragment.this.cZ == null) {
           throw new IllegalStateException("Fragment does not have a view");
         }
-        return Fragment.this.bo.findViewById(paramAnonymousInt);
+        return Fragment.this.cZ.findViewById(paramAnonymousInt);
       }
       
       public final boolean onHasView()
       {
-        return Fragment.this.bo != null;
+        return Fragment.this.cZ != null;
       }
     }, this);
   }
   
-  private k G()
+  private l W()
   {
-    if (this.bv == null) {
-      this.bv = new k();
+    if (this.de == null) {
+      this.de = new l();
     }
-    return this.bv;
+    return this.de;
   }
   
   public static Fragment a(Context paramContext, String paramString, Bundle paramBundle)
@@ -137,22 +140,22 @@ public class Fragment
     bool = false;
     try
     {
-      Class localClass2 = (Class)aH.get(paramString);
+      Class localClass2 = (Class)cq.get(paramString);
       Class localClass1 = localClass2;
       if (localClass2 == null)
       {
         localClass1 = paramContext.getClassLoader().loadClass(paramString);
-        aH.put(paramString, localClass1);
+        cq.put(paramString, localClass1);
       }
       paramContext = (Fragment)localClass1.getConstructor(new Class[0]).newInstance(new Object[0]);
       if (paramBundle == null) {
         break label153;
       }
       paramBundle.setClassLoader(paramContext.getClass().getClassLoader());
-      if (paramContext.ac < 0) {
+      if (paramContext.bL < 0) {
         break label148;
       }
-      if (paramContext.aY != null) {
+      if (paramContext.cI != null) {
         break label137;
       }
     }
@@ -160,27 +163,27 @@ public class Fragment
     {
       for (;;)
       {
-        throw new l("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramContext);
-        bool = paramContext.aY.cE;
+        throw new m("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramContext);
+        bool = paramContext.cI.isStateSaved();
       }
-      paramContext.aN = paramBundle;
+      paramContext.cx = paramBundle;
       return paramContext;
     }
     catch (InstantiationException paramContext)
     {
-      throw new l("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramContext);
+      throw new m("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramContext);
     }
     catch (IllegalAccessException paramContext)
     {
-      throw new l("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramContext);
+      throw new m("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramContext);
     }
     catch (NoSuchMethodException paramContext)
     {
-      throw new l("Unable to instantiate fragment " + paramString + ": could not find Fragment constructor", paramContext);
+      throw new m("Unable to instantiate fragment " + paramString + ": could not find Fragment constructor", paramContext);
     }
     catch (InvocationTargetException paramContext)
     {
-      throw new l("Unable to instantiate fragment " + paramString + ": calling Fragment constructor caused an exception", paramContext);
+      throw new m("Unable to instantiate fragment " + paramString + ": calling Fragment constructor caused an exception", paramContext);
     }
     if (bool) {
       throw new IllegalStateException("Fragment already active and state has been saved");
@@ -191,12 +194,12 @@ public class Fragment
   {
     try
     {
-      Class localClass2 = (Class)aH.get(paramString);
+      Class localClass2 = (Class)cq.get(paramString);
       Class localClass1 = localClass2;
       if (localClass2 == null)
       {
         localClass1 = paramContext.getClassLoader().loadClass(paramString);
-        aH.put(paramString, localClass1);
+        cq.put(paramString, localClass1);
       }
       boolean bool = Fragment.class.isAssignableFrom(localClass1);
       return bool;
@@ -205,212 +208,326 @@ public class Fragment
     return false;
   }
   
-  public static void onDestroyOptionsMenu() {}
-  
-  public static void q() {}
-  
-  public static void r() {}
-  
-  public static void t() {}
-  
-  public static Animation u()
+  final boolean E()
   {
-    return null;
-  }
-  
-  public static Animator v()
-  {
-    return null;
-  }
-  
-  public static void w() {}
-  
-  final View C()
-  {
-    if (this.ba != null) {
-      this.ba.noteStateNotSaved();
-    }
-    this.aW = true;
-    return null;
-  }
-  
-  final void D()
-  {
-    if (this.ba != null)
-    {
-      this.ba.noteStateNotSaved();
-      this.ba.execPendingActions();
-    }
-    this.aJ = 4;
-    this.bm = false;
-    onStart();
-    if (!this.bm) {
-      throw new ce("Fragment " + this + " did not call through to super.onStart()");
-    }
-    if (this.ba != null) {
-      this.ba.dispatchStart();
-    }
-    if (this.bs != null) {
-      this.bs.aw();
-    }
-    this.bB.a(c.ON_START);
-  }
-  
-  final void E()
-  {
-    if (this.ba != null)
-    {
-      this.ba.noteStateNotSaved();
-      this.ba.execPendingActions();
-    }
-    this.aJ = 5;
-    this.bm = false;
-    this.bm = true;
-    if (!this.bm) {
-      throw new ce("Fragment " + this + " did not call through to super.onResume()");
-    }
-    if (this.ba != null)
-    {
-      this.ba.dispatchResume();
-      this.ba.execPendingActions();
-    }
-    this.bB.a(c.ON_RESUME);
-  }
-  
-  final void F()
-  {
-    if (this.ba != null) {
-      this.ba.W();
-    }
-    this.aJ = 2;
-    if (this.bt)
-    {
-      this.bt = false;
-      if (!this.bu)
-      {
-        this.bu = true;
-        this.bs = this.aZ.a(this.aM, this.bt);
-      }
-      if (this.bs != null)
-      {
-        if (!this.aZ.Y()) {
-          break label87;
-        }
-        this.bs.au();
-      }
-    }
-    return;
-    label87:
-    this.bs.at();
-  }
-  
-  final int H()
-  {
-    if (this.bv == null) {
-      return 0;
-    }
-    return this.bv.bG;
-  }
-  
-  final int I()
-  {
-    if (this.bv == null) {
-      return 0;
-    }
-    return this.bv.bH;
-  }
-  
-  final int J()
-  {
-    if (this.bv == null) {
-      return 0;
-    }
-    return this.bv.bI;
-  }
-  
-  final cd K()
-  {
-    if (this.bv == null) {
-      return null;
-    }
-    return this.bv.bR;
-  }
-  
-  final cd L()
-  {
-    if (this.bv == null) {
-      return null;
-    }
-    return this.bv.bS;
-  }
-  
-  final View M()
-  {
-    if (this.bv == null) {
-      return null;
-    }
-    return this.bv.bD;
-  }
-  
-  final Animator N()
-  {
-    if (this.bv == null) {
-      return null;
-    }
-    return this.bv.bE;
-  }
-  
-  final int O()
-  {
-    if (this.bv == null) {
-      return 0;
-    }
-    return this.bv.bF;
-  }
-  
-  final boolean P()
-  {
-    if (this.bv == null) {
+    if (this.de == null) {
       return false;
     }
-    return this.bv.bV;
+    return this.de.dC;
+  }
+  
+  final boolean H()
+  {
+    return this.cH > 0;
+  }
+  
+  public final FragmentActivity I()
+  {
+    if (this.cJ == null) {
+      return null;
+    }
+    return (FragmentActivity)this.cJ.getActivity();
+  }
+  
+  public final void J()
+  {
+    this.cX = true;
+    if (this.cJ == null) {}
+    for (Activity localActivity = null;; localActivity = this.cJ.getActivity())
+    {
+      if (localActivity != null)
+      {
+        this.cX = false;
+        this.cX = true;
+      }
+      return;
+    }
+  }
+  
+  public final Object K()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    return l.a(this.de);
+  }
+  
+  public final Object L()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    if (l.b(this.de) == cr) {
+      return K();
+    }
+    return l.b(this.de);
+  }
+  
+  public final Object M()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    return l.c(this.de);
+  }
+  
+  public final Object N()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    if (l.d(this.de) == cr) {
+      return M();
+    }
+    return l.d(this.de);
+  }
+  
+  public final Object O()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    return l.e(this.de);
+  }
+  
+  public final Object P()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    if (l.f(this.de) == cr) {
+      return O();
+    }
+    return l.f(this.de);
+  }
+  
+  final View S()
+  {
+    if (this.cK != null) {
+      this.cK.noteStateNotSaved();
+    }
+    this.cG = true;
+    return null;
+  }
+  
+  final void T()
+  {
+    if (this.cK != null)
+    {
+      this.cK.noteStateNotSaved();
+      this.cK.execPendingActions();
+    }
+    this.cs = 4;
+    this.cX = false;
+    onStart();
+    if (!this.cX) {
+      throw new bc("Fragment " + this + " did not call through to super.onStart()");
+    }
+    if (this.cK != null) {
+      this.cK.dispatchStart();
+    }
+    this.dk.a(f.ON_START);
+  }
+  
+  final void U()
+  {
+    if (this.cK != null)
+    {
+      this.cK.noteStateNotSaved();
+      this.cK.execPendingActions();
+    }
+    this.cs = 5;
+    this.cX = false;
+    this.cX = true;
+    if (!this.cX) {
+      throw new bc("Fragment " + this + " did not call through to super.onResume()");
+    }
+    if (this.cK != null)
+    {
+      this.cK.dispatchResume();
+      this.cK.execPendingActions();
+    }
+    this.dk.a(f.ON_RESUME);
+  }
+  
+  final void V()
+  {
+    onLowMemory();
+    if (this.cK != null) {
+      this.cK.dispatchLowMemory();
+    }
+  }
+  
+  final int X()
+  {
+    if (this.de == null) {
+      return 0;
+    }
+    return this.de.dp;
+  }
+  
+  final int Y()
+  {
+    if (this.de == null) {
+      return 0;
+    }
+    return this.de.dq;
+  }
+  
+  final int Z()
+  {
+    if (this.de == null) {
+      return 0;
+    }
+    return this.de.dr;
+  }
+  
+  final Fragment a(String paramString)
+  {
+    if (paramString.equals(this.cw)) {
+      return this;
+    }
+    if (this.cK != null) {
+      return this.cK.a(paramString);
+    }
+    return null;
   }
   
   final LayoutInflater a(Bundle paramBundle)
   {
-    this.bz = onGetLayoutInflater(paramBundle);
-    return this.bz;
+    this.di = onGetLayoutInflater(paramBundle);
+    return this.di;
   }
   
   final void a(int paramInt1, int paramInt2)
   {
-    if ((this.bv == null) && (paramInt1 == 0) && (paramInt2 == 0)) {
+    if ((this.de == null) && (paramInt1 == 0) && (paramInt2 == 0)) {
       return;
     }
-    G();
-    this.bv.bH = paramInt1;
-    this.bv.bI = paramInt2;
+    W();
+    this.de.dq = paramInt1;
+    this.de.dr = paramInt2;
   }
   
   final void a(int paramInt, Fragment paramFragment)
   {
-    this.ac = paramInt;
+    this.bL = paramInt;
     if (paramFragment != null)
     {
-      this.aM = (paramFragment.aM + ":" + this.ac);
+      this.cw = (paramFragment.cw + ":" + this.bL);
       return;
     }
-    this.aM = ("android:fragment:" + this.ac);
+    this.cw = ("android:fragment:" + this.bL);
   }
   
   final void a(Animator paramAnimator)
   {
-    G().bE = paramAnimator;
+    W().dn = paramAnimator;
   }
   
-  final void a(View paramView)
+  final void a(Configuration paramConfiguration)
   {
-    G().bD = paramView;
+    onConfigurationChanged(paramConfiguration);
+    if (this.cK != null) {
+      this.cK.dispatchConfigurationChanged(paramConfiguration);
+    }
+  }
+  
+  final boolean a(Menu paramMenu)
+  {
+    boolean bool2 = false;
+    boolean bool3 = false;
+    if (!this.cR)
+    {
+      boolean bool1 = bool3;
+      if (this.cV)
+      {
+        bool1 = bool3;
+        if (this.cW) {
+          bool1 = true;
+        }
+      }
+      bool2 = bool1;
+      if (this.cK != null) {
+        bool2 = bool1 | this.cK.dispatchPrepareOptionsMenu(paramMenu);
+      }
+    }
+    return bool2;
+  }
+  
+  final boolean a(Menu paramMenu, MenuInflater paramMenuInflater)
+  {
+    boolean bool2 = false;
+    boolean bool3 = false;
+    if (!this.cR)
+    {
+      boolean bool1 = bool3;
+      if (this.cV)
+      {
+        bool1 = bool3;
+        if (this.cW) {
+          bool1 = true;
+        }
+      }
+      bool2 = bool1;
+      if (this.cK != null) {
+        bool2 = bool1 | this.cK.dispatchCreateOptionsMenu(paramMenu, paramMenuInflater);
+      }
+    }
+    return bool2;
+  }
+  
+  final boolean a(MenuItem paramMenuItem)
+  {
+    return (!this.cR) && (this.cK != null) && (this.cK.dispatchOptionsItemSelected(paramMenuItem));
+  }
+  
+  final bb aa()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    return this.de.dA;
+  }
+  
+  final bb ab()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    return this.de.dB;
+  }
+  
+  final View ac()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    return this.de.dm;
+  }
+  
+  final Animator ad()
+  {
+    if (this.de == null) {
+      return null;
+    }
+    return this.de.dn;
+  }
+  
+  final int ae()
+  {
+    if (this.de == null) {
+      return 0;
+    }
+    return this.de.jdField_do;
+  }
+  
+  final boolean af()
+  {
+    if (this.de == null) {
+      return false;
+    }
+    return this.de.dE;
   }
   
   final void b(Bundle paramBundle)
@@ -420,71 +537,85 @@ public class Fragment
       paramBundle = paramBundle.getParcelable("android:support:fragments");
       if (paramBundle != null)
       {
-        if (this.ba == null) {
-          B();
+        if (this.cK == null) {
+          R();
         }
-        this.ba.a(paramBundle, this.bb);
-        this.bb = null;
-        this.ba.dispatchCreate();
+        this.cK.a(paramBundle, this.cL);
+        this.cL = null;
+        this.cK.dispatchCreate();
       }
     }
   }
   
-  final void b(m paramm)
+  final void b(n paramn)
   {
-    G();
-    if (paramm == this.bv.bU) {}
+    W();
+    if (paramn == this.de.dD) {}
     do
     {
       return;
-      if ((paramm != null) && (this.bv.bU != null)) {
-        throw new IllegalStateException("Trying to set a replacement startPostponedEnterTransition on " + this);
+      if ((paramn != null) && (this.de.dD != null)) {
+        throw new IllegalStateException("Trying to set a replacement startPostponedEnterTransition on ".concat(String.valueOf(this)));
       }
-      if (this.bv.bT) {
-        this.bv.bU = paramm;
+      if (this.de.dC) {
+        this.de.dD = paramn;
       }
-    } while (paramm == null);
-    paramm.startListening();
+    } while (paramn == null);
+    paramn.startListening();
+  }
+  
+  final void b(Menu paramMenu)
+  {
+    if ((!this.cR) && (this.cK != null)) {
+      this.cK.dispatchOptionsMenuClosed(paramMenu);
+    }
+  }
+  
+  final void b(View paramView)
+  {
+    W().dm = paramView;
+  }
+  
+  final boolean b(MenuItem paramMenuItem)
+  {
+    return (!this.cR) && (this.cK != null) && (this.cK.dispatchContextItemSelected(paramMenuItem));
   }
   
   final void c(Bundle paramBundle)
   {
-    if (this.ba != null) {
-      this.ba.noteStateNotSaved();
+    if (this.cK != null) {
+      this.cK.noteStateNotSaved();
     }
-    this.aJ = 1;
-    this.bm = false;
+    this.cs = 1;
+    this.cX = false;
     onCreate(paramBundle);
-    this.bA = true;
-    if (!this.bm) {
-      throw new ce("Fragment " + this + " did not call through to super.onCreate()");
+    this.dj = true;
+    if (!this.cX) {
+      throw new bc("Fragment " + this + " did not call through to super.onCreate()");
     }
-    this.bB.a(c.ON_CREATE);
-  }
-  
-  final void c(boolean paramBoolean)
-  {
-    G().bV = paramBoolean;
-  }
-  
-  public final b d()
-  {
-    return this.bB;
+    this.dk.a(f.ON_CREATE);
   }
   
   final void d(Bundle paramBundle)
   {
-    if (this.ba != null) {
-      this.ba.noteStateNotSaved();
+    if (this.cK != null) {
+      this.cK.noteStateNotSaved();
     }
-    this.aJ = 2;
-    this.bm = false;
+    this.cs = 2;
+    this.cX = false;
     onActivityCreated(paramBundle);
-    if (!this.bm) {
-      throw new ce("Fragment " + this + " did not call through to super.onActivityCreated()");
+    if (!this.cX) {
+      throw new bc("Fragment " + this + " did not call through to super.onActivityCreated()");
     }
-    if (this.ba != null) {
-      this.ba.dispatchActivityCreated();
+    if (this.cK != null) {
+      this.cK.dispatchActivityCreated();
+    }
+  }
+  
+  final void d(boolean paramBoolean)
+  {
+    if (this.cK != null) {
+      this.cK.dispatchMultiWindowModeChanged(paramBoolean);
     }
   }
   
@@ -492,142 +623,141 @@ public class Fragment
   {
     paramPrintWriter.print(paramString);
     paramPrintWriter.print("mFragmentId=#");
-    paramPrintWriter.print(Integer.toHexString(this.bd));
+    paramPrintWriter.print(Integer.toHexString(this.cO));
     paramPrintWriter.print(" mContainerId=#");
-    paramPrintWriter.print(Integer.toHexString(this.be));
+    paramPrintWriter.print(Integer.toHexString(this.cP));
     paramPrintWriter.print(" mTag=");
-    paramPrintWriter.println(this.bf);
+    paramPrintWriter.println(this.cQ);
     paramPrintWriter.print(paramString);
     paramPrintWriter.print("mState=");
-    paramPrintWriter.print(this.aJ);
+    paramPrintWriter.print(this.cs);
     paramPrintWriter.print(" mIndex=");
-    paramPrintWriter.print(this.ac);
+    paramPrintWriter.print(this.bL);
     paramPrintWriter.print(" mWho=");
-    paramPrintWriter.print(this.aM);
+    paramPrintWriter.print(this.cw);
     paramPrintWriter.print(" mBackStackNesting=");
-    paramPrintWriter.println(this.aX);
+    paramPrintWriter.println(this.cH);
     paramPrintWriter.print(paramString);
     paramPrintWriter.print("mAdded=");
-    paramPrintWriter.print(this.aR);
+    paramPrintWriter.print(this.cB);
     paramPrintWriter.print(" mRemoving=");
-    paramPrintWriter.print(this.aS);
+    paramPrintWriter.print(this.cC);
     paramPrintWriter.print(" mFromLayout=");
-    paramPrintWriter.print(this.aT);
+    paramPrintWriter.print(this.cD);
     paramPrintWriter.print(" mInLayout=");
-    paramPrintWriter.println(this.aU);
+    paramPrintWriter.println(this.cE);
     paramPrintWriter.print(paramString);
     paramPrintWriter.print("mHidden=");
-    paramPrintWriter.print(this.bg);
+    paramPrintWriter.print(this.cR);
     paramPrintWriter.print(" mDetached=");
-    paramPrintWriter.print(this.bh);
+    paramPrintWriter.print(this.cS);
     paramPrintWriter.print(" mMenuVisible=");
-    paramPrintWriter.print(this.bl);
+    paramPrintWriter.print(this.cW);
     paramPrintWriter.print(" mHasMenu=");
-    paramPrintWriter.println(this.bk);
+    paramPrintWriter.println(this.cV);
     paramPrintWriter.print(paramString);
     paramPrintWriter.print("mRetainInstance=");
-    paramPrintWriter.print(this.bi);
+    paramPrintWriter.print(this.cT);
     paramPrintWriter.print(" mRetaining=");
-    paramPrintWriter.print(this.bj);
+    paramPrintWriter.print(this.cU);
     paramPrintWriter.print(" mUserVisibleHint=");
-    paramPrintWriter.println(this.br);
-    if (this.aY != null)
+    paramPrintWriter.println(this.dc);
+    if (this.cI != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mFragmentManager=");
-      paramPrintWriter.println(this.aY);
+      paramPrintWriter.println(this.cI);
     }
-    if (this.aZ != null)
+    if (this.cJ != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mHost=");
-      paramPrintWriter.println(this.aZ);
+      paramPrintWriter.println(this.cJ);
     }
-    if (this.bc != null)
+    if (this.cN != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mParentFragment=");
-      paramPrintWriter.println(this.bc);
+      paramPrintWriter.println(this.cN);
     }
-    if (this.aN != null)
+    if (this.cx != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mArguments=");
-      paramPrintWriter.println(this.aN);
+      paramPrintWriter.println(this.cx);
     }
-    if (this.aK != null)
+    if (this.ct != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mSavedFragmentState=");
-      paramPrintWriter.println(this.aK);
+      paramPrintWriter.println(this.ct);
     }
-    if (this.aL != null)
+    if (this.cu != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mSavedViewState=");
-      paramPrintWriter.println(this.aL);
+      paramPrintWriter.println(this.cu);
     }
-    if (this.aO != null)
+    if (this.cy != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mTarget=");
-      paramPrintWriter.print(this.aO);
+      paramPrintWriter.print(this.cy);
       paramPrintWriter.print(" mTargetRequestCode=");
-      paramPrintWriter.println(this.aQ);
+      paramPrintWriter.println(this.cA);
     }
-    if (H() != 0)
+    if (X() != 0)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mNextAnim=");
-      paramPrintWriter.println(H());
+      paramPrintWriter.println(X());
     }
-    if (this.bn != null)
+    if (this.cY != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mContainer=");
-      paramPrintWriter.println(this.bn);
+      paramPrintWriter.println(this.cY);
     }
-    if (this.bo != null)
+    if (this.cZ != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mView=");
-      paramPrintWriter.println(this.bo);
+      paramPrintWriter.println(this.cZ);
     }
-    if (this.bp != null)
+    if (this.da != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mInnerView=");
-      paramPrintWriter.println(this.bo);
+      paramPrintWriter.println(this.cZ);
     }
-    if (M() != null)
+    if (ac() != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mAnimatingAway=");
-      paramPrintWriter.println(M());
+      paramPrintWriter.println(ac());
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mStateAfterAnimating=");
-      paramPrintWriter.println(O());
+      paramPrintWriter.println(ae());
     }
-    if (this.bs != null)
+    if (this.dd != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.println("Loader Manager:");
-      this.bs.dump(paramString + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+      this.dd.dump(paramString + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
-    if (this.ba != null)
+    if (this.cK != null)
     {
       paramPrintWriter.print(paramString);
-      paramPrintWriter.println("Child " + this.ba + ":");
-      this.ba.dump(paramString + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+      paramPrintWriter.println("Child " + this.cK + ":");
+      this.cK.dump(paramString + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
   }
   
-  final void e(int paramInt)
+  final void e(boolean paramBoolean)
   {
-    if ((this.bv == null) && (paramInt == 0)) {
-      return;
+    if (this.cK != null) {
+      this.cK.dispatchPictureInPictureModeChanged(paramBoolean);
     }
-    G().bG = paramInt;
   }
   
   public final boolean equals(Object paramObject)
@@ -635,9 +765,30 @@ public class Fragment
     return super.equals(paramObject);
   }
   
-  final void f(int paramInt)
+  final void f(boolean paramBoolean)
   {
-    G().bF = paramInt;
+    W().dE = paramBoolean;
+  }
+  
+  public final boolean getAllowEnterTransitionOverlap()
+  {
+    if ((this.de == null) || (l.g(this.de) == null)) {
+      return true;
+    }
+    return l.g(this.de).booleanValue();
+  }
+  
+  public final boolean getAllowReturnTransitionOverlap()
+  {
+    if ((this.de == null) || (l.h(this.de) == null)) {
+      return true;
+    }
+    return l.h(this.de).booleanValue();
+  }
+  
+  public final android.arch.lifecycle.e h()
+  {
+    return this.dk;
   }
   
   public final int hashCode()
@@ -647,47 +798,46 @@ public class Fragment
   
   public final boolean isRemoving()
   {
-    return this.aS;
+    return this.cC;
   }
   
-  final boolean k()
+  final void n(int paramInt)
   {
-    if (this.bv == null) {
-      return false;
+    if ((this.de == null) && (paramInt == 0)) {
+      return;
     }
-    return this.bv.bT;
+    W().dp = paramInt;
   }
   
-  final boolean n()
+  final void noteStateNotSaved()
   {
-    return this.aX > 0;
-  }
-  
-  public final FragmentActivity o()
-  {
-    if (this.aZ == null) {
-      return null;
+    if (this.cK != null) {
+      this.cK.noteStateNotSaved();
     }
-    return (FragmentActivity)this.aZ.getActivity();
+  }
+  
+  final void o(int paramInt)
+  {
+    W().jdField_do = paramInt;
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
-    this.bm = true;
+    this.cX = true;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public void onAttach(Context paramContext)
   {
-    this.bm = true;
-    if (this.aZ == null) {}
-    for (paramContext = null;; paramContext = this.aZ.getActivity())
+    this.cX = true;
+    if (this.cJ == null) {}
+    for (paramContext = null;; paramContext = this.cJ.getActivity())
     {
       if (paramContext != null)
       {
-        this.bm = false;
-        this.bm = true;
+        this.cX = false;
+        this.cX = true;
       }
       return;
     }
@@ -695,23 +845,23 @@ public class Fragment
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    this.bm = true;
+    this.cX = true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     int i = 1;
-    this.bm = true;
+    this.cX = true;
     b(paramBundle);
-    if (this.ba != null) {
-      if (this.ba.cy <= 0) {
+    if (this.cK != null) {
+      if (this.cK.eh <= 0) {
         break label41;
       }
     }
     for (;;)
     {
       if (i == 0) {
-        this.ba.dispatchCreate();
+        this.cK.dispatchCreate();
       }
       return;
       label41:
@@ -721,131 +871,91 @@ public class Fragment
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    o().onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
+    I().onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
   }
   
   public void onDestroy()
   {
-    this.bm = true;
-    if (!this.bu)
-    {
-      this.bu = true;
-      this.bs = this.aZ.a(this.aM, this.bt);
-    }
-    if (this.bs != null) {
-      this.bs.ax();
+    this.cX = true;
+    if ((this.cM != null) && (!this.cJ.cI.en)) {
+      this.cM.clear();
     }
   }
   
   public void onDestroyView()
   {
-    this.bm = true;
+    this.cX = true;
   }
   
   public void onDetach()
   {
-    this.bm = true;
+    this.cX = true;
   }
   
   public LayoutInflater onGetLayoutInflater(Bundle paramBundle)
   {
-    if (this.aZ == null) {
+    if (this.cJ == null) {
       throw new IllegalStateException("onGetLayoutInflater() cannot be executed until the Fragment is attached to the FragmentManager.");
     }
-    paramBundle = this.aZ.onGetLayoutInflater();
-    p();
-    android.support.v4.view.e.b(paramBundle, this.ba);
-    return paramBundle;
+    paramBundle = this.cJ.onGetLayoutInflater();
+    if (this.cK == null)
+    {
+      R();
+      if (this.cs < 5) {
+        break label62;
+      }
+      this.cK.dispatchResume();
+    }
+    for (;;)
+    {
+      android.support.v4.view.e.b(paramBundle, this.cK);
+      return paramBundle;
+      label62:
+      if (this.cs >= 4) {
+        this.cK.dispatchStart();
+      } else if (this.cs >= 2) {
+        this.cK.dispatchActivityCreated();
+      } else if (this.cs > 0) {
+        this.cK.dispatchCreate();
+      }
+    }
   }
   
   public void onLowMemory()
   {
-    this.bm = true;
+    this.cX = true;
   }
   
   public void onSaveInstanceState(Bundle paramBundle) {}
   
   public void onStart()
   {
-    this.bm = true;
-    if (!this.bt)
-    {
-      this.bt = true;
-      if (this.bu) {
-        break label49;
-      }
-      this.bu = true;
-      this.bs = this.aZ.a(this.aM, this.bt);
-    }
-    label49:
-    while (this.bs == null) {
-      return;
-    }
-    this.bs.as();
+    this.cX = true;
   }
   
   public void onStop()
   {
-    this.bm = true;
-  }
-  
-  public final s p()
-  {
-    if (this.ba == null)
-    {
-      B();
-      if (this.aJ < 5) {
-        break label31;
-      }
-      this.ba.dispatchResume();
-    }
-    for (;;)
-    {
-      return this.ba;
-      label31:
-      if (this.aJ >= 4) {
-        this.ba.dispatchStart();
-      } else if (this.aJ >= 2) {
-        this.ba.dispatchActivityCreated();
-      } else if (this.aJ > 0) {
-        this.ba.dispatchCreate();
-      }
-    }
-  }
-  
-  public final void s()
-  {
-    this.bm = true;
-    if (this.aZ == null) {}
-    for (Activity localActivity = null;; localActivity = this.aZ.getActivity())
-    {
-      if (localActivity != null)
-      {
-        this.bm = false;
-        this.bm = true;
-      }
-      return;
-    }
+    this.cX = true;
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    if (this.aZ == null) {
+    if (this.cJ == null) {
       throw new IllegalStateException("Fragment " + this + " not attached to Activity");
     }
-    this.aZ.a(this, paramIntent, paramInt, null);
+    this.cJ.a(this, paramIntent, paramInt, null);
   }
   
   public final void startPostponedEnterTransition()
   {
-    if ((this.aY == null) || (this.aY.aZ == null))
+    if ((this.cI == null) || (this.cI.cJ == null))
     {
-      G().bT = false;
+      W().dC = false;
       return;
     }
-    if (Looper.myLooper() != this.aY.aZ.getHandler().getLooper())
+    if (Looper.myLooper() != this.cI.cJ.getHandler().getLooper())
     {
-      this.aY.aZ.getHandler().postAtFrontOfQueue(new Runnable()
+      this.cI.cJ.getHandler().postAtFrontOfQueue(new Runnable()
       {
         public final void run()
         {
@@ -854,54 +964,30 @@ public class Fragment
       });
       return;
     }
-    A();
+    Q();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
     d.a(this, localStringBuilder);
-    if (this.ac >= 0)
+    if (this.bL >= 0)
     {
       localStringBuilder.append(" #");
-      localStringBuilder.append(this.ac);
+      localStringBuilder.append(this.bL);
     }
-    if (this.bd != 0)
+    if (this.cO != 0)
     {
       localStringBuilder.append(" id=0x");
-      localStringBuilder.append(Integer.toHexString(this.bd));
+      localStringBuilder.append(Integer.toHexString(this.cO));
     }
-    if (this.bf != null)
+    if (this.cQ != null)
     {
       localStringBuilder.append(" ");
-      localStringBuilder.append(this.bf);
+      localStringBuilder.append(this.cQ);
     }
     localStringBuilder.append('}');
     return localStringBuilder.toString();
-  }
-  
-  public final Object x()
-  {
-    if (this.bv == null) {
-      return null;
-    }
-    return k.a(this.bv);
-  }
-  
-  public final Object y()
-  {
-    if (this.bv == null) {
-      return null;
-    }
-    return k.c(this.bv);
-  }
-  
-  public final Object z()
-  {
-    if (this.bv == null) {
-      return null;
-    }
-    return k.e(this.bv);
   }
 }
 

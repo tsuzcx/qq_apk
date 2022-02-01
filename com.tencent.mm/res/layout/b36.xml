@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/im"
+<RelativeLayout android:orientation="vertical" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/hx" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <include layout="@layout/a0d" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hw">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:id="@id/zl" android:contentDescription="@string/gd" style="@style/ik" />
-                    <ImageView android:layout_gravity="center" android:id="@id/zm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afu" android:contentDescription="@string/gd" />
-                </FrameLayout>
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs">
-                    <TextView android:id="@id/bb" android:text="{title}" style="@style/ir" />
-                    <TextView android:id="@id/av" android:visibility="gone" android:layout_marginTop="@dimen/i2" android:text="{desc}" style="@style/io" />
-                    <TextView android:id="@id/b8" android:visibility="gone" android:layout_marginTop="@dimen/i2" android:text="{source}" style="@style/io" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:id="@id/fa5" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/na" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/a4v" android:gravity="center" android:id="@id/fa4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/fwf" android:layout_centerVertical="true" />
+</RelativeLayout>

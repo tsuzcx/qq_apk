@@ -1,23 +1,23 @@
 package com.tencent.biz.videostory;
 
 import java.util.TimerTask;
-import yxu;
 
-public final class EventControlUtils$1
+final class EventControlUtils$1
   extends TimerTask
 {
-  public EventControlUtils$1(yxu paramyxu) {}
+  EventControlUtils$1(EventControlUtils.OnDebounceListener paramOnDebounceListener) {}
   
   public void run()
   {
-    if (this.a != null) {
-      this.a.a();
+    EventControlUtils.OnDebounceListener localOnDebounceListener = this.a;
+    if (localOnDebounceListener != null) {
+      localOnDebounceListener.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.EventControlUtils.1
  * JD-Core Version:    0.7.0.1
  */

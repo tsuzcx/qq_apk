@@ -1,33 +1,53 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.activity.PublicAccountChatActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
+import java.util.List;
 
 public class dav
-  implements BusinessObserver
+  implements Runnable
 {
-  public dav(PublicAccountChatActivity paramPublicAccountChatActivity) {}
+  public dav(PublicAccountChatActivity paramPublicAccountChatActivity, String paramString, int paramInt, long paramLong1, long paramLong2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if ((paramBoolean) && (paramBoolean)) {}
-    try
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.b.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (localList != null)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      bool1 = bool2;
+      if (!localList.isEmpty()) {
+        i = localList.size() - 1;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= 0)
       {
-        mobileqq_mp.SetFunctionFlagResponse localSetFunctionFlagResponse = new mobileqq_mp.SetFunctionFlagResponse();
-        localSetFunctionFlagResponse.mergeFrom(paramBundle);
-        if ((localSetFunctionFlagResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localSetFunctionFlagResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localSetFunctionFlagResponse.ret_info.get()).ret_code.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d(PublicAccountChatActivity.e(), 2, "状态切换成功");
+        if ((((MessageRecord)localList.get(i)).msgUid == this.jdField_a_of_type_Long) && (((MessageRecord)localList.get(i)).shmsgseq == this.b)) {
+          bool1 = true;
         }
       }
-      return;
+      else
+      {
+        StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountChatActivity.b.a(), "show_msg_result", bool1, 0L, 0L, new HashMap(), "");
+        if (QLog.isColorLevel()) {
+          QLog.d(PublicAccountChatActivity.e(), 2, "reportShowMsgResult uin = " + this.jdField_a_of_type_JavaLangString + " , type = " + this.jdField_a_of_type_Int + " , msguid = " + this.jdField_a_of_type_Long + " , result = " + bool1);
+        }
+        if ((!bool1) && (QLog.isColorLevel())) {
+          QLog.d(PublicAccountChatActivity.e(), 2, "lost msg uin = " + this.jdField_a_of_type_JavaLangString + " , type = " + this.jdField_a_of_type_Int + " , msguid = " + this.jdField_a_of_type_Long + " , msgseq = " + this.b);
+        }
+        return;
+      }
+      i -= 1;
     }
-    catch (Exception paramBundle) {}
   }
 }
 

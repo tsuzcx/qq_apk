@@ -1,34 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.mobileqq.activity.contact.CircleMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
 
-public class ecy
-  extends Handler
+class ecy
+  implements Runnable
 {
-  public ecy(CircleMemberListActivity paramCircleMemberListActivity) {}
+  ecy(ecx paramecx, int paramInt1, int paramInt2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    int i;
-    int j;
-    if (paramMessage.what == 1000)
-    {
-      i = CircleMemberListActivity.a(this.a).q();
-      j = CircleMemberListActivity.a(this.a).r();
-      if (i <= 0) {
-        break label63;
-      }
-      i -= 1;
-    }
-    for (;;)
-    {
-      this.a.b.a(new ecz(this, i, j - 1));
-      return;
-      label63:
-      i = 0;
-    }
+    this.jdField_a_of_type_Ecx.a.a(this.jdField_a_of_type_Int, this.b);
   }
 }
 

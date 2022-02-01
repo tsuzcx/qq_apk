@@ -1,23 +1,25 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.SplashActivityCore;
 import com.tencent.qphone.base.util.QLog;
 
 class dkm
-  implements MediaPlayer.OnInfoListener
+  implements MediaPlayer.OnCompletionListener
 {
-  dkm(dkl paramdkl) {}
+  dkm(dkk paramdkk) {}
   
-  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if ((paramInt1 == 700) || (paramInt1 == 1)) {
-      this.a.a.handler.sendEmptyMessage(5);
-    }
     if (QLog.isDevelopLevel()) {
-      QLog.d("Splash.testCanPlayMp4", 1, "onInfo...what = ." + paramInt1 + " extra = " + paramInt2);
+      QLog.d("Splash.testCanPlayMp4", 4, "OnCompletion");
     }
-    return false;
+    if (paramMediaPlayer.getCurrentPosition() == 0)
+    {
+      this.a.a.handler.sendEmptyMessage(5);
+      return;
+    }
+    this.a.a.handler.sendEmptyMessage(4);
   }
 }
 

@@ -15,82 +15,87 @@ public final class Assertions
   
   public static void checkArgument(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new IllegalArgumentException();
+    if (paramBoolean) {
+      return;
     }
+    throw new IllegalArgumentException();
   }
   
   public static void checkArgument(boolean paramBoolean, Object paramObject)
   {
-    if (!paramBoolean) {
-      throw new IllegalArgumentException(String.valueOf(paramObject));
+    if (paramBoolean) {
+      return;
     }
+    throw new IllegalArgumentException(String.valueOf(paramObject));
   }
   
   public static int checkIndex(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 < paramInt2) || (paramInt1 >= paramInt3)) {
-      throw new IndexOutOfBoundsException();
+    if ((paramInt1 >= paramInt2) && (paramInt1 < paramInt3)) {
+      return paramInt1;
     }
-    return paramInt1;
+    throw new IndexOutOfBoundsException();
   }
   
   public static void checkMainThread()
   {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      throw new IllegalStateException("Not in applications main thread");
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      return;
     }
+    throw new IllegalStateException("Not in applications main thread");
   }
   
   public static String checkNotEmpty(@Nullable String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException();
+    if (!TextUtils.isEmpty(paramString)) {
+      return paramString;
     }
-    return paramString;
+    throw new IllegalArgumentException();
   }
   
   public static String checkNotEmpty(@Nullable String paramString, Object paramObject)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException(String.valueOf(paramObject));
+    if (!TextUtils.isEmpty(paramString)) {
+      return paramString;
     }
-    return paramString;
+    throw new IllegalArgumentException(String.valueOf(paramObject));
   }
   
   public static <T> T checkNotNull(@Nullable T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new NullPointerException();
   }
   
   public static <T> T checkNotNull(@Nullable T paramT, Object paramObject)
   {
-    if (paramT == null) {
-      throw new NullPointerException(String.valueOf(paramObject));
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new NullPointerException(String.valueOf(paramObject));
   }
   
   public static void checkState(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new IllegalStateException();
+    if (paramBoolean) {
+      return;
     }
+    throw new IllegalStateException();
   }
   
   public static void checkState(boolean paramBoolean, Object paramObject)
   {
-    if (!paramBoolean) {
-      throw new IllegalStateException(String.valueOf(paramObject));
+    if (paramBoolean) {
+      return;
     }
+    throw new IllegalStateException(String.valueOf(paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.Assertions
  * JD-Core Version:    0.7.0.1
  */

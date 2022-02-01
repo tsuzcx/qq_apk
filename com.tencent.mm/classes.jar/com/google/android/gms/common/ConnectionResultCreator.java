@@ -13,7 +13,7 @@ public class ConnectionResultCreator
   
   public ConnectionResult createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(89349);
+    AppMethodBeat.i(4371);
     int k = SafeParcelReader.validateObjectHeader(paramParcel);
     String str = null;
     PendingIntent localPendingIntent = null;
@@ -42,7 +42,7 @@ public class ConnectionResultCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, k);
     paramParcel = new ConnectionResult(i, j, localPendingIntent, str);
-    AppMethodBeat.o(89349);
+    AppMethodBeat.o(4371);
     return paramParcel;
   }
   
@@ -53,7 +53,7 @@ public class ConnectionResultCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.ConnectionResultCreator
  * JD-Core Version:    0.7.0.1
  */

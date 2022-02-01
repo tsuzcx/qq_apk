@@ -6,5 +6,5 @@
     <View android:id="@id/btt" android:background="#e5808080" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="5.0dip" />
     <ImageView android:id="@id/btu" android:background="@drawable/a9q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ImageView android:id="@id/diz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" android:layout_marginRight="-3.0dip" android:src="@drawable/f6q" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <dov.com.qq.im.capture.view.QIMCommonLoadingView android:id="@id/efn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.aelight.camera.aioeditor.capture.view.QIMCommonLoadingView android:id="@id/efn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

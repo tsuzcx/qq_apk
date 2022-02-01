@@ -1,97 +1,67 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.b.c;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpaysdk.api.ResendMsgInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.MMNeat7extView;
+import com.tencent.mm.ui.widget.a.g.a;
+import com.tencent.mm.ui.widget.a.g.c;
 
 public final class e
 {
-  WeakReference<Context> bJz;
+  private Context mContext;
   
-  public static e chr()
+  public e(Context paramContext)
   {
-    try
-    {
-      e locale = e.a.qmu;
-      return locale;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.mContext = paramContext;
   }
   
-  public final c a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  public final void a(ResendMsgInfo paramResendMsgInfo, final g.c paramc)
   {
-    AppMethodBeat.i(44867);
-    ab.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert2() msg:%s, title:%s", new Object[] { bo.nullAsNil(paramString), bo.nullAsNil(null) });
-    Context localContext = (Context)this.bJz.get();
-    if (localContext == null)
+    AppMethodBeat.i(67942);
+    if (paramResendMsgInfo == null)
     {
-      ab.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
-      AppMethodBeat.o(44867);
-      return null;
+      Log.i("MicroMsg.RemindCollectionDialog", "init() resendMsgInfo == null");
+      AppMethodBeat.o(67942);
+      return;
     }
-    paramString = h.a(localContext, paramString, null, false, paramOnClickListener);
-    AppMethodBeat.o(44867);
-    return paramString;
-  }
-  
-  public final c a(String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
-  {
-    AppMethodBeat.i(44866);
-    ab.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert1() msg:%s, title:%s, yes:%s, no:%s", new Object[] { bo.nullAsNil(paramString1), bo.nullAsNil(paramString2), bo.nullAsNil(paramString3), bo.nullAsNil(paramString4) });
-    Context localContext = (Context)this.bJz.get();
-    if (localContext == null)
+    View localView = View.inflate(this.mContext, a.g.remind_collection_dialog, null);
+    Object localObject = (ImageView)localView.findViewById(a.f.remind_img);
+    MMNeat7extView localMMNeat7extView = (MMNeat7extView)localView.findViewById(a.f.content);
+    a locala = a.bKl();
+    String str = paramResendMsgInfo.XJO;
+    c.a locala1 = new c.a();
+    locala1.oKB = a.e.remittance_remind_collection_default;
+    locala.a(str, (ImageView)localObject, locala1.bKx());
+    localMMNeat7extView.aZ(paramResendMsgInfo.description);
+    localObject = new g.a(this.mContext);
+    ((g.a)localObject).bf(paramResendMsgInfo.title).mg(localView).bDJ(paramResendMsgInfo.rGU).bDI(paramResendMsgInfo.right_button_wording);
+    ((g.a)localObject).c(new g.c()
     {
-      ab.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
-      AppMethodBeat.o(44866);
-      return null;
-    }
-    paramString1 = h.d(localContext, paramString1, paramString2, paramString3, paramString4, paramOnClickListener1, paramOnClickListener2);
-    AppMethodBeat.o(44866);
-    return paramString1;
-  }
-  
-  public final boolean chs()
-  {
-    AppMethodBeat.i(142162);
-    ab.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemittanceF2fDynamicCodeUI()");
-    Context localContext = (Context)this.bJz.get();
-    if (localContext == null)
-    {
-      ab.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
-      AppMethodBeat.o(142162);
-      return false;
-    }
-    if ((localContext instanceof RemittanceF2fDynamicCodeUI))
-    {
-      ab.w("MicroMsg.RemittanceBusiDialogMgr", "check() is RemittanceF2fDynamicCodeUI");
-      ((Activity)localContext).finish();
-      AppMethodBeat.o(142162);
-      return true;
-    }
-    AppMethodBeat.o(142162);
-    return false;
-  }
-  
-  public final void eN(Context paramContext)
-  {
-    AppMethodBeat.i(44865);
-    this.bJz = new WeakReference(paramContext);
-    AppMethodBeat.o(44865);
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString)
+      {
+        AppMethodBeat.i(67941);
+        Log.i("MicroMsg.RemindCollectionDialog", "onDialogClick() bOk:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (paramc != null) {
+          paramc.onDialogClick(paramAnonymousBoolean, paramAnonymousString);
+        }
+        AppMethodBeat.o(67941);
+      }
+    }).show();
+    AppMethodBeat.o(67942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.e
  * JD-Core Version:    0.7.0.1
  */

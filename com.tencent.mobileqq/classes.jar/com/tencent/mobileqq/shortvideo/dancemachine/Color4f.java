@@ -36,7 +36,9 @@ public class Color4f
   
   public float[] getPremultipliedRGBComponents()
   {
-    return new float[] { this.r * this.a, this.g * this.a, this.b * this.a, this.a };
+    float f1 = this.r;
+    float f2 = this.a;
+    return new float[] { f1 * f2, this.g * f2, this.b * f2, f2 };
   }
   
   public float getRed()
@@ -62,7 +64,7 @@ public class Color4f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.Color4f
  * JD-Core Version:    0.7.0.1
  */

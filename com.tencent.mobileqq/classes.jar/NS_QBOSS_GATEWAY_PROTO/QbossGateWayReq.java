@@ -13,10 +13,10 @@ public final class QbossGateWayReq
   static Map<String, String> cache_mapExtInfo;
   static tPullADVRequest cache_stAdvReq = new tPullADVRequest();
   static LoginInfo cache_stLoginInfo = new LoginInfo();
-  public int iAppID;
-  public Map<String, String> mapExtInfo;
-  public tPullADVRequest stAdvReq;
-  public LoginInfo stLoginInfo;
+  public int iAppID = 0;
+  public Map<String, String> mapExtInfo = null;
+  public tPullADVRequest stAdvReq = null;
+  public LoginInfo stLoginInfo = null;
   
   static
   {
@@ -45,18 +45,20 @@ public final class QbossGateWayReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stAdvReq, 0);
-    if (this.stLoginInfo != null) {
-      paramJceOutputStream.write(this.stLoginInfo, 1);
+    Object localObject = this.stLoginInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.iAppID, 2);
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 3);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QBOSS_GATEWAY_PROTO.QbossGateWayReq
  * JD-Core Version:    0.7.0.1
  */

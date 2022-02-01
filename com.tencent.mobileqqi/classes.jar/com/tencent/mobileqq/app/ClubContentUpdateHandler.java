@@ -112,7 +112,7 @@ public class ClubContentUpdateHandler
     Object localObject = this.b.a();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("6.0.2.6602");
+    localReqBody.str_clientver.set("6.0.3.6604");
     localReqBody.uint_uin.set(Long.parseLong((String)localObject));
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(a());

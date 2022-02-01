@@ -1,39 +1,38 @@
 package com.tencent.mm.plugin.wallet_payu.balance.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceSaveUI;
 import com.tencent.mm.plugin.wallet_payu.balance.a.a;
-import com.tencent.mm.pluginsdk.wallet.h;
+import com.tencent.mm.pluginsdk.wallet.f;
 
 public class WalletPayUBalanceSaveUI
   extends WalletBalanceSaveUI
 {
-  public final void cRi()
+  public final void ieW()
   {
-    AppMethodBeat.i(48331);
-    doSceneProgress(new a(this.qlk, "ZAR"));
-    AppMethodBeat.o(48331);
+    AppMethodBeat.i(71971);
+    doSceneProgress(new a(this.pJk, "ZAR"));
+    AppMethodBeat.o(71971);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48330);
+    AppMethodBeat.i(71970);
     super.onCreate(paramBundle);
-    this.tNK.setVisibility(8);
-    AppMethodBeat.o(48330);
+    this.Vbx.setVisibility(8);
+    AppMethodBeat.o(71970);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(48332);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramm instanceof a))) {
-      h.a(this, ((a)paramm).cnI, "", 11, 1);
+    AppMethodBeat.i(71972);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramp instanceof a))) {
+      f.b(this, ((a)paramp).hAT, "", 11, 1);
     }
-    AppMethodBeat.o(48332);
+    AppMethodBeat.o(71972);
     return false;
   }
   
@@ -45,7 +44,7 @@ public class WalletPayUBalanceSaveUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.balance.ui.WalletPayUBalanceSaveUI
  * JD-Core Version:    0.7.0.1
  */

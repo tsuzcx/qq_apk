@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProgressBar android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/qzone_title_progressbar" android:indeterminateBehavior="repeat"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

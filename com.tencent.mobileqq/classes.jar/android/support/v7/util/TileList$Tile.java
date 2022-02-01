@@ -16,7 +16,8 @@ public class TileList$Tile<T>
   
   boolean containsPosition(int paramInt)
   {
-    return (this.mStartPosition <= paramInt) && (paramInt < this.mStartPosition + this.mItemCount);
+    int i = this.mStartPosition;
+    return (i <= paramInt) && (paramInt < i + this.mItemCount);
   }
   
   T getByPosition(int paramInt)

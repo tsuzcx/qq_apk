@@ -9,7 +9,7 @@ public final class CheckVerifyCode
 {
   static byte[] cache_vEncryptUsrInfo;
   public String strVerifyCode = "";
-  public byte[] vEncryptUsrInfo;
+  public byte[] vEncryptUsrInfo = null;
   
   public CheckVerifyCode() {}
   
@@ -38,7 +38,7 @@ public final class CheckVerifyCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.CheckVerifyCode
  * JD-Core Version:    0.7.0.1
  */

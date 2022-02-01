@@ -2,6 +2,7 @@ package com.tencent.viola.ui.baseComponent;
 
 public abstract interface ComponentConstant$Event
 {
+  public static final String ANDROID_PAN = "androidPan";
   public static final String APPEAR = "appear";
   public static final String BEGIN_PLAY = "beginPlay";
   public static final String BLUR = "blur";
@@ -29,6 +30,7 @@ public abstract interface ComponentConstant$Event
   public static final String IDEL = "idle";
   public static final String IMG_FINISH = "finish";
   public static final String INPUT = "input";
+  public static final String LINE_BREAK_CHANGE = "lineBreakChange";
   public static final String LOAD_MORE = "loadMore";
   public static final String LONG_PRESS = "longPress";
   public static final String LOTTIE_LOADFINISH = "loadFinish";
@@ -70,7 +72,7 @@ public abstract interface ComponentConstant$Event
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.ComponentConstant.Event
  * JD-Core Version:    0.7.0.1
  */

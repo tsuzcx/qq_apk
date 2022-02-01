@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/jnp" android:scaleType="centerCrop" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/joy" android:scaleType="fitCenter" android:adjustViewBounds="true" />
+            <TextView android:textSize="15.0dip" android:textColor="#ff1aad19" android:layout_gravity="center" android:id="@id/poq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+            <com.tencent.luggage.ui.WMPFQRLoginWidget android:layout_gravity="center" android:id="@id/por" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+        </LinearLayout>
+    </FrameLayout>
+</merge>

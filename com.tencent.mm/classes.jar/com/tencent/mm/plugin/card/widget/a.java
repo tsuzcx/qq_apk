@@ -8,150 +8,164 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.m;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.card.c.n;
+import com.tencent.mm.protocal.protobuf.ws;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class a
   implements g
 {
   private final String TAG = "MicroMsg.CardWidgetCouponBase";
-  protected View.OnClickListener gMO;
-  protected TextView iVS;
-  protected View kCC;
-  protected ImageView kCD;
-  protected b klk;
   protected Context mContext;
   protected LayoutInflater mInflater;
+  protected View.OnClickListener qjL;
+  protected TextView uov;
+  protected View wKN;
+  protected ImageView wKO;
+  protected b wru;
   
   public a(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private void bfJ()
+  private void doZ()
   {
     int i;
-    if (!bo.isNullOrNil(this.klk.bbd().kmm))
+    if (!Util.isNullOrNil(this.wru.djK().nQG))
     {
-      i = this.mContext.getResources().getDimensionPixelSize(2131428165);
-      if ((!this.klk.baJ()) || (!this.klk.baM())) {
-        break label133;
+      i = this.mContext.getResources().getDimensionPixelSize(a.b.wdO);
+      if ((this.wru.djo()) && (this.wru.djr()))
+      {
+        i = this.mContext.getResources().getDimensionPixelSize(a.b.web);
+        if (i > 0) {
+          n.a(this.wKO, this.wru.djK().nQG, i, a.c.my_card_package_defaultlogo, true);
+        }
       }
-      i = this.mContext.getResources().getDimensionPixelSize(2131428163);
     }
     for (;;)
     {
-      if (i > 0) {
-        m.a(this.kCD, this.klk.bbd().kmm, i, 2130839758, true);
-      }
-      if (!bo.isNullOrNil(this.klk.bbd().knw)) {
-        this.iVS.setText(this.klk.bbd().knw);
+      if (!Util.isNullOrNil(this.wru.djK().mee)) {
+        this.uov.setText(this.wru.djK().mee);
       }
       return;
-      label133:
-      if ((this.klk.baJ()) && (this.klk.baL())) {
-        i = this.mContext.getResources().getDimensionPixelSize(2131428189);
-      } else if ((this.klk.baJ()) && (this.klk.baN())) {
-        i = this.mContext.getResources().getDimensionPixelSize(2131428201);
-      } else if (this.klk.baP()) {
-        i = 0;
+      if ((this.wru.djo()) && (this.wru.djq()))
+      {
+        i = this.mContext.getResources().getDimensionPixelSize(a.b.web);
+        break;
+      }
+      if ((this.wru.djo()) && (this.wru.djs()))
+      {
+        i = this.mContext.getResources().getDimensionPixelSize(a.b.weh);
+        break;
+      }
+      if (!this.wru.dju()) {
+        break;
+      }
+      i = 0;
+      break;
+      if (this.wru.djr()) {
+        this.wKO.setVisibility(8);
       }
     }
   }
   
   private void refreshView()
   {
-    if ((this.klk == null) || (this.klk.bbd() == null))
+    if ((this.wru == null) || (this.wru.djK() == null))
     {
-      ab.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
+      Log.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return;
     }
-    bfJ();
-    bfI();
+    doZ();
+    doY();
   }
+  
+  public void IO(int paramInt) {}
+  
+  public void P(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void a(ShapeDrawable paramShapeDrawable) {}
   
-  protected final View bfG()
-  {
-    return this.kCC;
-  }
-  
-  protected abstract void bfH();
-  
-  protected abstract void bfI();
-  
   public final void d(b paramb)
   {
-    this.klk = paramb;
+    this.wru = paramb;
     refreshView();
   }
   
-  public void gc(boolean paramBoolean) {}
-  
-  public void gd(boolean paramBoolean) {}
-  
-  public final View hv()
+  protected final View doW()
   {
-    if ((this.klk == null) || (this.klk.bbd() == null))
+    return this.wKN;
+  }
+  
+  protected abstract void doX();
+  
+  protected abstract void doY();
+  
+  public final void i(b paramb)
+  {
+    this.wru = paramb;
+  }
+  
+  public final View lf()
+  {
+    if ((this.wru == null) || (this.wru.djK() == null))
     {
-      ab.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
+      Log.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return null;
     }
     this.mInflater = ((LayoutInflater)this.mContext.getSystemService("layout_inflater"));
     LayoutInflater localLayoutInflater = this.mInflater;
     int i;
-    if (!this.klk.baM()) {
-      if (this.klk.baN()) {
-        i = 2130969008;
+    if (!this.wru.djr()) {
+      if (this.wru.djs()) {
+        i = a.e.wnL;
       }
     }
     for (;;)
     {
-      this.kCC = localLayoutInflater.inflate(i, null);
-      this.kCD = ((ImageView)this.kCC.findViewById(2131822033));
-      this.iVS = ((TextView)this.kCC.findViewById(2131821472));
-      bfH();
+      this.wKN = localLayoutInflater.inflate(i, null);
+      this.wKO = ((ImageView)this.wKN.findViewById(a.d.weP));
+      this.uov = ((TextView)this.wKN.findViewById(a.d.app_name));
+      doX();
       refreshView();
-      return this.kCC;
-      if (this.klk.baL()) {
-        i = 2130968970;
-      } else if (this.klk.baO()) {
-        i = 2130968931;
-      } else if (this.klk.baP()) {
-        i = 2130968960;
+      return this.wKN;
+      if (this.wru.djq()) {
+        i = a.e.wnq;
+      } else if (this.wru.djt()) {
+        i = a.e.wmz;
+      } else if (this.wru.dju()) {
+        i = a.e.wng;
       } else {
-        i = 2130968924;
+        i = a.e.wmv;
       }
     }
   }
   
-  public final void i(b paramb)
-  {
-    this.klk = paramb;
-  }
+  public void nk(boolean paramBoolean) {}
+  
+  public void nl(boolean paramBoolean) {}
   
   public final void release()
   {
-    this.gMO = null;
+    this.qjL = null;
     this.mContext = null;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.gMO = paramOnClickListener;
+    this.qjL = paramOnClickListener;
   }
-  
-  public void tw(int paramInt) {}
-  
-  public void x(boolean paramBoolean1, boolean paramBoolean2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.a
  * JD-Core Version:    0.7.0.1
  */

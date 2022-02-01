@@ -8,8 +8,8 @@ public final class FaceReq
   extends JceStruct
 {
   static LoginInfo cache_stLogin = new LoginInfo();
-  public int faceID;
-  public LoginInfo stLogin;
+  public int faceID = 0;
+  public LoginInfo stLogin = null;
   
   public FaceReq() {}
   
@@ -33,7 +33,7 @@ public final class FaceReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.FaceReq
  * JD-Core Version:    0.7.0.1
  */

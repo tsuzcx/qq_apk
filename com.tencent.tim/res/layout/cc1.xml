@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ibi" android:background="@drawable/jj" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="78.0dip" android:minHeight="78.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/du8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="78.0dip" android:scaleType="centerCrop" />
+    <FrameLayout android:id="@id/lia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/xs" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <Button android:textSize="@dimen/ii" android:textColor="@color/skin_color_button_blue" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/lar" android:background="@drawable/if" android:paddingLeft="@dimen/ig" android:paddingRight="@dimen/ig" android:focusable="false" android:visibility="visible" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:minHeight="@dimen/ib" android:text="@string/rc_" android:lines="1" android:includeFontPadding="false" />
+    </FrameLayout>
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/lia" android:layout_centerVertical="true">
+        <TextView android:textSize="17.0sp" android:textColor="#ff12b7f5" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rca" />
+        <TextView android:textSize="14.0sp" android:textColor="#7f12b7f5" android:id="@id/mcm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="@string/rcd" android:layout_below="@id/kbs" />
+    </RelativeLayout>
+</RelativeLayout>

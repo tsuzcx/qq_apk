@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agfj;
-import agfp;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
-public class TroopSignItemBuilder$TroopSignVideoItemBuilder$4
+class TroopSignItemBuilder$TroopSignVideoItemBuilder$4
   implements Runnable
 {
-  public TroopSignItemBuilder$TroopSignVideoItemBuilder$4(agfj paramagfj, agfp paramagfp) {}
+  TroopSignItemBuilder$TroopSignVideoItemBuilder$4(TroopSignItemBuilder.TroopSignVideoItemBuilder paramTroopSignVideoItemBuilder, TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder paramSignVideoItemHolder) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!this.this$0.a.am)) {
-      this.a.a.m();
+    if ((this.this$0.E != null) && (!this.this$0.E.ck)) {
+      this.a.v.n();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

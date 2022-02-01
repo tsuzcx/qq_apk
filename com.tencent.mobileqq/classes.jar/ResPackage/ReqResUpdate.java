@@ -11,19 +11,9 @@ public final class ReqResUpdate
   implements Cloneable
 {
   static int cache_ResID;
-  public int ResID;
-  public long SeqID;
-  public byte SeqOnly;
-  
-  static
-  {
-    if (!ReqResUpdate.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public int ResID = 0;
+  public long SeqID = 0L;
+  public byte SeqOnly = 0;
   
   public ReqResUpdate() {}
   
@@ -41,18 +31,17 @@ public final class ReqResUpdate
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -73,13 +62,24 @@ public final class ReqResUpdate
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ReqResUpdate)paramObject;
-    } while ((!JceUtil.equals(this.ResID, paramObject.ResID)) || (!JceUtil.equals(this.SeqID, paramObject.SeqID)) || (!JceUtil.equals(this.SeqOnly, paramObject.SeqOnly)));
-    return true;
+    }
+    paramObject = (ReqResUpdate)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.ResID, paramObject.ResID))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.SeqID, paramObject.SeqID))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.SeqOnly, paramObject.SeqOnly)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -146,7 +146,7 @@ public final class ReqResUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ResPackage.ReqResUpdate
  * JD-Core Version:    0.7.0.1
  */

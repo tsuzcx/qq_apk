@@ -11,15 +11,15 @@ final class ContactLabelMemberListUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(22641);
-    this.nZa.finish();
-    AppMethodBeat.o(22641);
+    AppMethodBeat.i(26263);
+    this.JWc.finish();
+    AppMethodBeat.o(26263);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelMemberListUI.3
  * JD-Core Version:    0.7.0.1
  */

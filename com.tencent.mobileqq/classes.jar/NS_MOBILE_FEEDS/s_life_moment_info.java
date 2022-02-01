@@ -10,12 +10,12 @@ public final class s_life_moment_info
   static s_picurl cache_moment_feed_night_pic = new s_picurl();
   static s_picurl cache_moment_feed_pic;
   static s_picurl cache_moment_pic = new s_picurl();
-  public s_picurl moment_feed_night_pic;
-  public s_picurl moment_feed_pic;
+  public s_picurl moment_feed_night_pic = null;
+  public s_picurl moment_feed_pic = null;
   public String moment_id = "";
   public String moment_name = "";
-  public s_picurl moment_pic;
-  public int type;
+  public s_picurl moment_pic = null;
+  public int type = 0;
   
   static
   {
@@ -47,26 +47,31 @@ public final class s_life_moment_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.moment_name != null) {
-      paramJceOutputStream.write(this.moment_name, 1);
+    Object localObject = this.moment_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.moment_pic != null) {
-      paramJceOutputStream.write(this.moment_pic, 2);
+    localObject = this.moment_pic;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.moment_feed_pic != null) {
-      paramJceOutputStream.write(this.moment_feed_pic, 3);
+    localObject = this.moment_feed_pic;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.moment_feed_night_pic != null) {
-      paramJceOutputStream.write(this.moment_feed_night_pic, 4);
+    localObject = this.moment_feed_night_pic;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.moment_id != null) {
-      paramJceOutputStream.write(this.moment_id, 5);
+    localObject = this.moment_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_life_moment_info
  * JD-Core Version:    0.7.0.1
  */

@@ -31,33 +31,33 @@ public class j
     if ((paramNetworkInfo != null) && (paramNetworkInfo.isAvailable()))
     {
       n = paramNetworkInfo.getType();
-      switch (n)
-      {
-      case 1: 
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
-      case 13: 
-      default: 
-        m = -1;
-        QLog.d("MsfNetUtil", 1, "Unexcepted Mobile Type:" + n);
-      }
+      m = 4;
+      if ((n == 0) || (n == 2) || (n == 3) || (n == 4) || (n == 5) || (n == 14) || (n == 15)) {}
     }
-    for (;;)
+    switch (n)
     {
-      QLog.d("MsfNetUtil", 1, "Mobile Type:" + m);
-      return m;
+    default: 
+      m = -1;
+      paramNetworkInfo = new StringBuilder();
+      paramNetworkInfo.append("Unexcepted Mobile Type:");
+      paramNetworkInfo.append(n);
+      QLog.d("MsfNetUtil", 1, paramNetworkInfo.toString());
+      break;
+    case 10: 
+    case 11: 
+    case 12: 
       paramNetworkInfo = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
       n = g.b(paramNetworkInfo);
       switch (n)
       {
       default: 
         m = g.a(paramNetworkInfo, n);
-        QLog.d("MsfNetUtil", 1, "Unexcepted networkType:" + n + " ,mobileInfo:" + m);
-        break;
-      case 20: 
-        m = 4;
+        paramNetworkInfo = new StringBuilder();
+        paramNetworkInfo.append("Unexcepted networkType:");
+        paramNetworkInfo.append(n);
+        paramNetworkInfo.append(" ,mobileInfo:");
+        paramNetworkInfo.append(m);
+        QLog.d("MsfNetUtil", 1, paramNetworkInfo.toString());
         break;
       case 13: 
       case 18: 
@@ -84,47 +84,52 @@ public class j
       case 11: 
       case 16: 
         m = 1;
-        continue;
+        break;
         m = 0;
       }
+      break;
     }
+    paramNetworkInfo = new StringBuilder();
+    paramNetworkInfo.append("Mobile Type:");
+    paramNetworkInfo.append(m);
+    QLog.d("MsfNetUtil", 1, paramNetworkInfo.toString());
+    return m;
   }
   
   public static boolean a(d paramd)
   {
-    boolean bool2 = true;
-    if ((paramd == null) || (TextUtils.isEmpty(paramd.h))) {}
-    label77:
-    label80:
-    for (;;)
+    boolean bool1 = false;
+    if (paramd != null)
     {
-      return false;
-      int m;
-      if ("00000".equals(paramd.h))
-      {
-        m = 2;
-        if (NetConnInfoCenter.isWifiConn())
-        {
-          bool1 = bool2;
-          if (m == 1) {}
-        }
-        else
-        {
-          if ((!NetConnInfoCenter.isMobileConn()) || (m != 2)) {
-            break label77;
-          }
-        }
+      if (TextUtils.isEmpty(paramd.h)) {
+        return false;
       }
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        if ("00000".equals(paramd.h)) {
-          break label80;
-        }
-        return bool1;
+      bool1 = "00000".equals(paramd.h);
+      boolean bool2 = true;
+      int m;
+      if (bool1) {
+        m = 2;
+      } else {
         m = 1;
-        break;
+      }
+      if (NetConnInfoCenter.isWifiConn())
+      {
+        bool1 = bool2;
+        if (m == 1) {}
+      }
+      else if ((NetConnInfoCenter.isMobileConn()) && (m == 2))
+      {
+        bool1 = bool2;
+      }
+      else
+      {
+        bool1 = false;
+      }
+      if ("00000".equals(paramd.h)) {
+        return false;
       }
     }
+    return bool1;
   }
   
   public static NetworkInfo[] a()
@@ -143,33 +148,36 @@ public class j
   
   public static byte b()
   {
-    int n = 254;
     if (NetConnInfoCenter.isWifiConn()) {
       return 1;
     }
     if (NetConnInfoCenter.isMobileConn())
     {
-      int m = NetConnInfoCenter.getMobileNetworkType() + 100;
+      int n = NetConnInfoCenter.getMobileNetworkType();
+      int m = n;
+      if (n != 20) {
+        m = n + 100;
+      }
+      n = m;
       if (m > 254)
       {
-        m = n;
         if (QLog.isColorLevel())
         {
-          QLog.d("MsfNetUtil", 2, "error,netWorkType is " + 254);
-          m = n;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("error,netWorkType is ");
+          localStringBuilder.append(254);
+          QLog.d("MsfNetUtil", 2, localStringBuilder.toString());
         }
+        n = 254;
       }
-      for (;;)
-      {
-        return (byte)m;
-      }
+      return (byte)n;
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.j
  * JD-Core Version:    0.7.0.1
  */

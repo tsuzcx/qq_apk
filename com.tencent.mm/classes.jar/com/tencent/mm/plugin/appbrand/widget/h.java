@@ -1,20 +1,25 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import android.graphics.drawable.Drawable;
-import com.tencent.luggage.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.bi;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-public abstract interface h
-  extends b
+public final class h
+  extends bi
 {
-  public static final h jaB = new h()
-  {
-    public final Drawable aOD()
-    {
-      return null;
-    }
-  };
+  public static IAutoDBItem.MAutoDBInfo nVV;
   
-  public abstract Drawable aOD();
+  static
+  {
+    AppMethodBeat.i(76398);
+    nVV = bi.aJm();
+    AppMethodBeat.o(76398);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return nVV;
+  }
 }
 
 

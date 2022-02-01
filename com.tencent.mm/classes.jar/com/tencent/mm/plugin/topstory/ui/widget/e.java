@@ -1,121 +1,83 @@
 package com.tencent.mm.plugin.topstory.ui.widget;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.k;
-import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.r.b;
-import android.support.v7.widget.ae;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Scroller;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.aw;
 
-public abstract class e
-  extends RecyclerView.k
+public final class e
 {
-  public RecyclerView adt;
-  private final RecyclerView.m aiL = new e.1(this);
-  protected Scroller amz;
-  
-  public abstract int a(RecyclerView.i parami, int paramInt1, int paramInt2);
-  
-  public abstract View a(RecyclerView.i parami);
-  
-  public abstract int[] a(RecyclerView.i parami, View paramView);
-  
-  public final boolean aA(int paramInt1, int paramInt2)
+  public static int[] a(Context paramContext, View paramView1, View paramView2, boolean paramBoolean)
   {
-    RecyclerView.i locali = this.adt.getLayoutManager();
-    if (locali == null) {}
+    AppMethodBeat.i(126646);
+    int[] arrayOfInt1 = new int[2];
+    int[] arrayOfInt2 = new int[2];
+    paramView1.getLocationOnScreen(arrayOfInt2);
+    int i = paramView1.getHeight();
+    int j = aw.bf(paramContext).x;
+    paramView2.measure(0, 0);
+    int k = paramView2.getMeasuredHeight();
+    int m = paramView2.getMeasuredWidth();
+    if (paramBoolean)
+    {
+      arrayOfInt1[0] = (j - m);
+      arrayOfInt2[1] -= k;
+    }
     for (;;)
     {
-      return false;
-      if (this.adt.getAdapter() != null)
-      {
-        int i = this.adt.getMinFlingVelocity();
-        if ((Math.abs(paramInt2) > i) || (Math.abs(paramInt1) > i))
-        {
-          if (!(locali instanceof RecyclerView.r.b)) {
-            paramInt1 = 0;
-          }
-          while (paramInt1 != 0)
-          {
-            return true;
-            ae localae = f(locali);
-            if (localae == null)
-            {
-              paramInt1 = 0;
-            }
-            else
-            {
-              paramInt1 = a(locali, paramInt1, paramInt2);
-              if (paramInt1 == -1)
-              {
-                paramInt1 = 0;
-              }
-              else
-              {
-                localae.ajQ = paramInt1;
-                locali.a(localae);
-                paramInt1 = 1;
-              }
-            }
-          }
-        }
-      }
+      AppMethodBeat.o(126646);
+      return arrayOfInt1;
+      arrayOfInt1[0] = (j - m);
+      arrayOfInt2[1] += i;
     }
   }
   
-  @Deprecated
-  protected ae f(RecyclerView.i parami)
+  public static int[] b(Context paramContext, View paramView1, View paramView2, boolean paramBoolean)
   {
-    if (!(parami instanceof RecyclerView.r.b)) {
-      return null;
-    }
-    return new e.2(this, this.adt.getContext());
-  }
-  
-  public final void i(RecyclerView paramRecyclerView)
-  {
-    if (this.adt == paramRecyclerView) {}
-    do
+    AppMethodBeat.i(126647);
+    int[] arrayOfInt1 = new int[2];
+    int[] arrayOfInt2 = new int[2];
+    paramView1.getLocationInWindow(arrayOfInt2);
+    int i = paramView1.getHeight();
+    int j = aw.bf(paramContext).x;
+    paramView2.measure(0, 0);
+    int k = paramView2.getMeasuredHeight();
+    int m = paramView2.getMeasuredWidth();
+    if (paramBoolean)
     {
-      return;
-      if (this.adt != null)
-      {
-        this.adt.b(this.aiL);
-        this.adt.setOnFlingListener(null);
-      }
-      this.adt = paramRecyclerView;
-    } while (this.adt == null);
-    if (this.adt.getOnFlingListener() != null) {
-      throw new IllegalStateException("An instance of OnFlingListener already set.");
+      arrayOfInt1[0] = ((j - m) / 2);
+      arrayOfInt2[1] -= k;
     }
-    this.adt.a(this.aiL);
-    this.adt.setOnFlingListener(this);
-    this.amz = new Scroller(this.adt.getContext(), new DecelerateInterpolator());
-    kt();
+    for (;;)
+    {
+      AppMethodBeat.o(126647);
+      return arrayOfInt1;
+      arrayOfInt1[0] = ((j - m) / 2);
+      arrayOfInt2[1] += i;
+    }
   }
   
-  final void kt()
+  public static int dip2px(Context paramContext, float paramFloat)
   {
-    if (this.adt == null) {}
-    Object localObject;
-    do
-    {
-      View localView;
-      do
-      {
-        do
-        {
-          return;
-          localObject = this.adt.getLayoutManager();
-        } while (localObject == null);
-        localView = a((RecyclerView.i)localObject);
-      } while (localView == null);
-      localObject = a((RecyclerView.i)localObject, localView);
-    } while ((localObject[0] == 0) && (localObject[1] == 0));
-    this.adt.a(localObject[0], localObject[1], null);
+    AppMethodBeat.i(126649);
+    int i = (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    AppMethodBeat.o(126649);
+    return i;
+  }
+  
+  public static int kr(View paramView)
+  {
+    AppMethodBeat.i(126648);
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    int j = paramView.getWidth();
+    int i = arrayOfInt[0];
+    j /= 2;
+    AppMethodBeat.o(126648);
+    return i + j;
   }
 }
 

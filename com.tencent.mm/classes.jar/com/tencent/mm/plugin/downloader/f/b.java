@@ -1,134 +1,233 @@
 package com.tencent.mm.plugin.downloader.f;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.LinkedList;
 
 public final class b
+  extends MAutoStorage<a>
 {
-  public String appId;
-  public String channelId;
-  public long cmm;
-  public int cvQ;
-  public String downloadUrl;
-  public int errCode;
-  public String extInfo;
-  public long iHc;
-  public long jyU;
-  public long kYX;
-  public int kZA;
-  public int kZB;
-  public long kZu;
-  public int kZv;
-  public int kZw;
-  public int kZx;
-  public int kZy;
-  public int kZz;
-  public int scene;
+  public static final String[] SQL_CREATE;
   
-  public b()
+  static
   {
-    this.kZB = 1;
+    AppMethodBeat.i(89097);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "FileDownloadInfo"), "CREATE INDEX IF NOT EXISTS filedownloadinfo_appId  on FileDownloadInfo  (  appId )", "CREATE INDEX IF NOT EXISTS filedownloadinfo_status  on FileDownloadInfo  (  status )" };
+    AppMethodBeat.o(89097);
   }
   
-  public b(String paramString1, int paramInt, long paramLong, String paramString2)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this.kZB = 1;
-    this.appId = paramString1;
-    this.scene = paramInt;
-    this.cmm = paramLong;
-    this.channelId = paramString2;
-    this.extInfo = null;
-    this.kZw = 0;
+    super(paramISQLiteDatabase, a.info, "FileDownloadInfo", null);
   }
   
-  public b(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public static String W(LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(141102);
-    this.kZB = 1;
-    this.appId = paramString1;
-    this.scene = paramInt1;
-    this.kZx = paramInt1;
-    this.extInfo = paramString2;
-    this.kZw = this.kZw;
-    this.kZy = paramInt2;
-    this.kZz = paramInt4;
-    this.kZA = paramInt3;
-    this.kZB = paramInt5;
-    AppMethodBeat.o(141102);
-  }
-  
-  public b(String paramString1, long paramLong1, String paramString2, long paramLong2, int paramInt)
-  {
-    this.kZB = 1;
-    this.appId = paramString1;
-    this.cmm = paramLong1;
-    this.channelId = paramString2;
-    this.iHc = paramLong2;
-    this.kZw = paramInt;
-  }
-  
-  public final void i(a parama)
-  {
-    AppMethodBeat.i(141103);
-    this.appId = parama.field_appId;
-    this.scene = parama.field_scene;
-    this.kZu = parama.field_startSize;
-    this.kYX = (parama.field_downloadedSize - parama.field_startSize);
-    long l;
-    if (this.kYX < 0L)
+    AppMethodBeat.i(89089);
+    if (Util.isNullOrNil(paramLinkedList))
     {
-      l = 0L;
-      this.kYX = l;
-      this.jyU = parama.field_totalSize;
-      this.downloadUrl = parama.field_downloadUrl;
-      this.errCode = parama.field_errCode;
-      this.cvQ = parama.field_downloaderType;
-      this.channelId = parama.field_channelId;
-      if (parama.field_finishTime <= 0L) {
-        break label232;
-      }
-      l = parama.field_finishTime;
-      label112:
-      if (parama.field_startTime != 0L) {
-        break label239;
-      }
-      this.iHc = 0L;
-      label126:
-      if (this.iHc < 0L) {
-        this.iHc = 0L;
-      }
-      this.kZv = parama.field_startState;
-      this.cmm = parama.field_downloadId;
-      this.extInfo = parama.field_extInfo;
-      if (!parama.field_reserveInWifi) {
-        break label256;
-      }
+      AppMethodBeat.o(89089);
+      return "";
     }
-    label256:
-    for (int i = 1;; i = 0)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(");
+    int i = 0;
+    while (i < paramLinkedList.size() - 2)
     {
-      this.kZw = i;
-      this.kZx = parama.field_startScene;
-      this.kZy = parama.field_uiarea;
-      this.kZz = parama.field_noticeId;
-      this.kZA = parama.field_ssid;
-      this.kZB = parama.field_downloadType;
-      AppMethodBeat.o(141103);
-      return;
-      l = this.kYX;
-      break;
-      label232:
-      l = System.currentTimeMillis();
-      break label112;
-      label239:
-      this.iHc = ((l - parama.field_startTime) / 1000L);
-      break label126;
+      localStringBuilder.append("\"").append((String)paramLinkedList.get(i)).append("\",");
+      i += 1;
     }
+    localStringBuilder.append("\"").append((String)paramLinkedList.get(paramLinkedList.size() - 1)).append("\")");
+    paramLinkedList = localStringBuilder.toString();
+    AppMethodBeat.o(89089);
+    return paramLinkedList;
+  }
+  
+  public final a amJ(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(89088);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.FileDownloadInfoStorage", "appId is null");
+      AppMethodBeat.o(89088);
+      return null;
+    }
+    Cursor localCursor = rawQuery("select * from FileDownloadInfo where appId=\"" + paramString + "\" or rawAppId=\"" + paramString + "\"", new String[0]);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(89088);
+      return null;
+    }
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      paramString = new a();
+      paramString.convertFrom(localCursor);
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(89088);
+    return paramString;
+  }
+  
+  public final boolean amK(String paramString)
+  {
+    AppMethodBeat.i(89093);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, url is null");
+      AppMethodBeat.o(89093);
+      return false;
+    }
+    if (delete("FileDownloadInfo", "downloadUrl=?", new String[] { paramString }) > 0)
+    {
+      AppMethodBeat.o(89093);
+      return true;
+    }
+    AppMethodBeat.o(89093);
+    return false;
+  }
+  
+  public final boolean amL(String paramString)
+  {
+    AppMethodBeat.i(89094);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, appId is null");
+      AppMethodBeat.o(89094);
+      return false;
+    }
+    boolean bool = execSQL("FileDownloadInfo", "delete from FileDownloadInfo where appId=\"" + paramString + "\" or rawAppId=\"" + paramString + "\"");
+    AppMethodBeat.o(89094);
+    return bool;
+  }
+  
+  public final a amM(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(89091);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.FileDownloadInfoStorage", "Null or nil url");
+      AppMethodBeat.o(89091);
+      return null;
+    }
+    Cursor localCursor = rawQuery("select * from FileDownloadInfo where downloadUrl=?", new String[] { paramString });
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(89091);
+      return null;
+    }
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      paramString = new a();
+      paramString.convertFrom(localCursor);
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(89091);
+    return paramString;
+  }
+  
+  public final boolean amN(String paramString)
+  {
+    AppMethodBeat.i(89096);
+    paramString = rawQuery(String.format("select count(*) from %s where %s=\"%s\"", new Object[] { "FileDownloadInfo", "downloadUrl", paramString }), new String[0]);
+    if ((paramString != null) && (paramString.moveToFirst()))
+    {
+      int i = paramString.getInt(0);
+      paramString.close();
+      if (i > 1)
+      {
+        AppMethodBeat.o(89096);
+        return true;
+      }
+      AppMethodBeat.o(89096);
+      return false;
+    }
+    AppMethodBeat.o(89096);
+    return false;
+  }
+  
+  public final boolean dR(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(89095);
+    String str = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "FileDownloadInfo", "status", Integer.valueOf(paramInt), "downloadUrl", paramString });
+    boolean bool = execSQL("FileDownloadInfo", str);
+    Log.i("MicroMsg.FileDownloadInfoStorage", "updateDownloadState, sql : %s\ndownloadUrl : %s, status : %d, ret : %s", new Object[] { str, paramString, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+    AppMethodBeat.o(89095);
+    return bool;
+  }
+  
+  public final boolean duI()
+  {
+    AppMethodBeat.i(89092);
+    boolean bool = execSQL("FileDownloadInfo", "delete from FileDownloadInfo");
+    AppMethodBeat.o(89092);
+    return bool;
+  }
+  
+  public final LinkedList<a> dut()
+  {
+    AppMethodBeat.i(267095);
+    Log.i("MicroMsg.FileDownloadInfoStorage", "getAllTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo")));
+    Cursor localCursor = rawQuery("select * from FileDownloadInfo", new String[0]);
+    LinkedList localLinkedList = new LinkedList();
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(267095);
+      return localLinkedList;
+    }
+    while (localCursor.moveToNext())
+    {
+      a locala = new a();
+      locala.convertFrom(localCursor);
+      localLinkedList.add(locala);
+    }
+    localCursor.close();
+    AppMethodBeat.o(267095);
+    return localLinkedList;
+  }
+  
+  public final a ll(long paramLong)
+  {
+    a locala = null;
+    AppMethodBeat.i(89090);
+    if (paramLong < 0L)
+    {
+      Log.e("MicroMsg.FileDownloadInfoStorage", "download id is not avaiable");
+      AppMethodBeat.o(89090);
+      return null;
+    }
+    Cursor localCursor = rawQuery("select * from FileDownloadInfo where downloadId=".concat(String.valueOf(paramLong)), new String[0]);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(89090);
+      return null;
+    }
+    if (localCursor.moveToFirst())
+    {
+      locala = new a();
+      locala.convertFrom(localCursor);
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(89090);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.f.b
  * JD-Core Version:    0.7.0.1
  */

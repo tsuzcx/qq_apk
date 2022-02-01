@@ -1,20 +1,21 @@
-import android.view.MotionEvent;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
 import com.tencent.open.agent.GroupListOpenFrame;
-import com.tencent.open.agent.SocialFriendChooser;
+import com.tencent.open.agent.GroupListOpenFrame.GroupListAdapter;
 
 public class hjg
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public hjg(GroupListOpenFrame paramGroupListOpenFrame) {}
+  public hjg(GroupListOpenFrame.GroupListAdapter paramGroupListAdapter, int paramInt, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.a.g();
-    }
-    return true;
+    paramView = new Bundle();
+    paramView.putInt("group_index", this.jdField_a_of_type_Int);
+    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter.a.a.a(1, paramView);
   }
 }
 

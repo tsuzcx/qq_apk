@@ -40,16 +40,15 @@ public class ImageDownloaderInitializer
   
   private static boolean needCookie(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.endsWith("photo.store.qq.com")) && (!paramString.endsWith("qpic.cn"))) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    return true;
+    return (paramString.endsWith("photo.store.qq.com")) || (paramString.endsWith("qpic.cn"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ImageDownloaderInitializer
  * JD-Core Version:    0.7.0.1
  */

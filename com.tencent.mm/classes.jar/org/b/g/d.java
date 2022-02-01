@@ -5,18 +5,18 @@ import java.util.regex.Pattern;
 
 public final class d
 {
-  private static final Pattern CSl;
+  private static final Pattern cAP;
   
   static
   {
-    AppMethodBeat.i(77307);
-    CSl = Pattern.compile("^[a-zA-Z][a-zA-Z0-9+.-]*://\\S+");
-    AppMethodBeat.o(77307);
+    AppMethodBeat.i(40576);
+    cAP = Pattern.compile("^[a-zA-Z][a-zA-Z0-9+.-]*://\\S+");
+    AppMethodBeat.o(40576);
   }
   
-  private static void C(boolean paramBoolean, String paramString)
+  private static void aW(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(77310);
+    AppMethodBeat.i(40579);
     String str;
     if (paramString != null)
     {
@@ -30,39 +30,39 @@ public final class d
     if (!paramBoolean)
     {
       paramString = new IllegalArgumentException(str);
-      AppMethodBeat.o(77310);
+      AppMethodBeat.o(40579);
       throw paramString;
     }
-    AppMethodBeat.o(77310);
+    AppMethodBeat.o(40579);
   }
   
-  public static void jJ(String paramString1, String paramString2)
+  public static void rN(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(77309);
+    AppMethodBeat.i(40578);
     if ((paramString1 != null) && (!paramString1.trim().equals(""))) {}
     for (boolean bool = true;; bool = false)
     {
-      C(bool, paramString2);
-      AppMethodBeat.o(77309);
+      aW(bool, paramString2);
+      AppMethodBeat.o(40578);
       return;
     }
   }
   
-  public static void s(Object paramObject, String paramString)
+  public static void x(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(77308);
+    AppMethodBeat.i(40577);
     if (paramObject != null) {}
     for (boolean bool = true;; bool = false)
     {
-      C(bool, paramString);
-      AppMethodBeat.o(77308);
+      aW(bool, paramString);
+      AppMethodBeat.o(40577);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.b.g.d
  * JD-Core Version:    0.7.0.1
  */

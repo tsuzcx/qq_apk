@@ -12,14 +12,14 @@ public abstract class g<R extends w, A extends com.google.android.gms.common.api
   extends k<R>
   implements h<R>
 {
-  private final a<?> HU;
-  private final com.google.android.gms.common.api.h<A> Mj;
+  private final a<?> JJ;
+  private final com.google.android.gms.common.api.h<A> NY;
   
   protected g(a<?> parama, p paramp)
   {
-    super((p)d.e(paramp, "GoogleApiClient must not be null"));
-    this.Mj = parama.gr();
-    this.HU = parama;
+    super((p)d.g(paramp, "GoogleApiClient must not be null"));
+    this.NY = parama.gB();
+    this.JJ = parama;
   }
   
   private void a(RemoteException paramRemoteException)
@@ -29,7 +29,7 @@ public abstract class g<R extends w, A extends com.google.android.gms.common.api
   
   public final void a(Status paramStatus)
   {
-    if (!paramStatus.gm()) {}
+    if (!paramStatus.gw()) {}
     for (boolean bool = true;; bool = false)
     {
       d.b(bool, "Failed result must not be success");
@@ -58,14 +58,14 @@ public abstract class g<R extends w, A extends com.google.android.gms.common.api
   
   protected abstract void b(A paramA);
   
-  public final a<?> gI()
+  public final com.google.android.gms.common.api.h<A> gB()
   {
-    return this.HU;
+    return this.NY;
   }
   
-  public final com.google.android.gms.common.api.h<A> gr()
+  public final a<?> gS()
   {
-    return this.Mj;
+    return this.JJ;
   }
 }
 

@@ -4,7 +4,7 @@ import android.graphics.PointF;
 import com.tencent.aekit.openrender.UniformParam;
 import com.tencent.aekit.openrender.UniformParam.Float3fParam;
 import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.faceBeauty.FaceParam;
+import com.tencent.facebeauty.FaceParam;
 import com.tencent.view.RendererUtils;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -30,8 +30,8 @@ public class ChangedFaceParam
     if (paramList.size() < 2) {
       return localArrayList;
     }
-    double d1 = ((Double)paramList.get(0)).doubleValue();
-    double d2 = ((Double)paramList.get(1)).doubleValue();
+    double d2 = ((Double)paramList.get(0)).doubleValue();
+    double d1 = ((Double)paramList.get(1)).doubleValue();
     paramList = new int[3];
     int[] arrayOfInt1 = new int[3];
     int[] arrayOfInt2 = new int[3];
@@ -39,27 +39,27 @@ public class ChangedFaceParam
     int i = 0;
     while (i < 3)
     {
-      float f2 = 0.0F;
-      float f1 = 0.0F;
       arrayOfInt1[i] = -1;
       paramList[i] = -1;
       arrayOfInt3[i] = -1;
       arrayOfInt2[i] = -1;
       int j = 0;
+      float f2 = 0.0F;
+      float f1 = 0.0F;
       while (j < 256)
       {
         f2 += this.userFaceColor[i][j];
         f1 += this.userAllColor[i][j];
-        if ((paramList[i] < 0) && (f2 > d1)) {
+        if ((paramList[i] < 0) && (f2 > d2)) {
           paramList[i] = j;
         }
-        if ((arrayOfInt1[i] < 0) && (f2 >= d2)) {
+        if ((arrayOfInt1[i] < 0) && (f2 >= d1)) {
           arrayOfInt1[i] = (j - 1);
         }
-        if ((arrayOfInt2[i] < 0) && (f1 > d1)) {
+        if ((arrayOfInt2[i] < 0) && (f1 > d2)) {
           arrayOfInt2[i] = j;
         }
-        if ((arrayOfInt3[i] < 0) && (f1 >= d2)) {
+        if ((arrayOfInt3[i] < 0) && (f1 >= d1)) {
           arrayOfInt3[i] = (j - 1);
         }
         j += 1;
@@ -98,42 +98,69 @@ public class ChangedFaceParam
   
   private boolean isSkinColor(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 <= 80) && (paramInt2 <= 80) && (paramInt3 <= 80)) {}
-    float f2;
-    float f1;
-    do
+    boolean bool2 = false;
+    if ((paramInt1 <= 80) && (paramInt2 <= 80) && (paramInt3 <= 80)) {
+      return false;
+    }
+    if ((paramInt1 < 230) && (paramInt2 < 230) && (paramInt3 < 230) && ((paramInt3 >= paramInt2) || (paramInt2 >= paramInt1))) {
+      return false;
+    }
+    if (paramInt1 + paramInt2 > 400) {
+      return false;
+    }
+    float f2 = paramInt1 / 255.0F;
+    float f3 = paramInt2 / 255.0F;
+    float f4 = paramInt3 / 255.0F;
+    float f1 = 128.0F - 81.084999F * f2 + f3 * 112.0F - 30.915001F * f4;
+    f2 = f2 * 112.0F + 128.0F - f3 * 93.786003F - f4 * 18.214001F;
+    boolean bool1 = bool2;
+    if (f1 >= 85.0F)
     {
-      do
-      {
+      if (f1 > 135.0F) {
         return false;
-      } while (((paramInt1 < 230) && (paramInt2 < 230) && (paramInt3 < 230) && ((paramInt3 >= paramInt2) || (paramInt2 >= paramInt1))) || (paramInt1 + paramInt2 > 400));
-      f2 = paramInt1 / 255.0F;
-      float f3 = paramInt2 / 255.0F;
-      float f4 = paramInt3 / 255.0F;
-      f1 = 128.0F - 81.084999F * f2 + 112.0F * f3 - 30.915001F * f4;
-      f2 = f2 * 112.0F + 128.0F - f3 * 93.786003F - 18.214001F * f4;
-    } while ((f1 < 85.0F) || (f1 > 135.0F) || (f2 < 260.0F - f1) || (f2 > 280.0F - f1));
-    return true;
+      }
+      bool1 = bool2;
+      if (f2 >= 260.0F - f1)
+      {
+        bool1 = bool2;
+        if (f2 <= 280.0F - f1) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private boolean isSkinColorV2(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 <= 80) && (paramInt2 <= 80) && (paramInt3 <= 80)) {}
-    float f2;
-    float f1;
-    do
+    boolean bool2 = false;
+    if ((paramInt1 <= 80) && (paramInt2 <= 80) && (paramInt3 <= 80)) {
+      return false;
+    }
+    if ((paramInt1 < 230) && (paramInt2 < 230) && (paramInt3 < 230) && ((paramInt3 >= paramInt2) || (paramInt2 >= paramInt1))) {
+      return false;
+    }
+    float f2 = paramInt1 / 255.0F;
+    float f3 = paramInt2 / 255.0F;
+    float f4 = paramInt3 / 255.0F;
+    float f1 = 128.0F - 81.084999F * f2 + f3 * 112.0F - 30.915001F * f4;
+    f2 = f2 * 112.0F + 128.0F - f3 * 93.786003F - f4 * 18.214001F;
+    boolean bool1 = bool2;
+    if (f1 >= 85.0F)
     {
-      do
-      {
+      if (f1 > 135.0F) {
         return false;
-      } while ((paramInt1 < 230) && (paramInt2 < 230) && (paramInt3 < 230) && ((paramInt3 >= paramInt2) || (paramInt2 >= paramInt1)));
-      f2 = paramInt1 / 255.0F;
-      float f3 = paramInt2 / 255.0F;
-      float f4 = paramInt3 / 255.0F;
-      f1 = 128.0F - 81.084999F * f2 + 112.0F * f3 - 30.915001F * f4;
-      f2 = f2 * 112.0F + 128.0F - f3 * 93.786003F - 18.214001F * f4;
-    } while ((f1 < 85.0F) || (f1 > 135.0F) || (f2 < 255.0F - f1) || (f2 > 280.0F - f1));
-    return true;
+      }
+      bool1 = bool2;
+      if (f2 >= 255.0F - f1)
+      {
+        bool1 = bool2;
+        if (f2 <= 280.0F - f1) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private List<Integer> updateSkinData(Frame paramFrame, List<Double> paramList)
@@ -144,18 +171,15 @@ public class ChangedFaceParam
     int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { 3, 256 });
     int i = 0;
     int j = 0;
-    if (i < 40000)
+    while (i < 40000)
     {
       int k = arrayOfByte[(j + 3)];
       int m = arrayOfByte[j] & 0xFF;
       int n = arrayOfByte[(j + 1)] & 0xFF;
       int i1 = arrayOfByte[(j + 2)] & 0xFF;
       j += 4;
-      if ((k & 0xFF) < 128) {}
-      for (;;)
+      if ((k & 0xFF) >= 128)
       {
-        i += 1;
-        break;
         if (isSkinColorV2(m, n, i1))
         {
           arrayOfInt1 = paramFrame[0];
@@ -172,253 +196,274 @@ public class ChangedFaceParam
         arrayOfInt1 = arrayOfInt[2];
         arrayOfInt1[i1] += 1;
       }
+      i += 1;
     }
     return getUserSkinColor(paramList, updateUserSkinColor(paramFrame, arrayOfInt));
   }
   
   public void calSkinParams(Frame paramFrame, List<Double> paramList)
   {
-    float f4 = -1.0F;
-    float f5 = -1.0F;
-    float f6 = -1.0F;
-    float f3 = -1.0F;
-    float f2 = -1.0F;
-    float f1 = -1.0F;
-    if (paramList.size() >= 6)
-    {
-      f4 = ((Double)paramList.get(0)).floatValue();
-      f5 = ((Double)paramList.get(1)).floatValue();
-      f6 = ((Double)paramList.get(2)).floatValue();
-      f3 = ((Double)paramList.get(3)).floatValue();
-      f2 = ((Double)paramList.get(4)).floatValue();
-      f1 = ((Double)paramList.get(5)).floatValue();
-    }
-    int m = paramFrame.width * paramFrame.height;
-    paramList = new byte[m * 4];
-    RendererUtils.saveTextureToRgbBuffer(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, paramList, paramFrame.getFBO());
-    double d3 = 0.0D;
-    double d7 = 0.0D;
-    double d2 = 0.0D;
-    double d5 = 0.0D;
-    double d1 = 0.0D;
-    double d4 = 0.0D;
-    int j = 0;
+    int j = paramList.size();
     int i = 0;
-    float f7;
-    float f8;
-    float f9;
-    double d6;
-    while (i < m)
+    float f3 = -1.0F;
+    float f2;
+    float f6;
+    float f5;
+    float f1;
+    if (j >= 6)
     {
-      int k = paramList[(i * 4)] & 0xFF;
-      int n = paramList[(i * 4 + 1)] & 0xFF;
-      int i1 = paramList[(i * 4 + 2)] & 0xFF;
-      boolean bool = isSkinColor(k, n, i1);
-      f7 = k / 255.0F;
+      f2 = ((Double)paramList.get(0)).floatValue();
+      f6 = ((Double)paramList.get(1)).floatValue();
+      f5 = ((Double)paramList.get(2)).floatValue();
+      f3 = ((Double)paramList.get(3)).floatValue();
+      f1 = ((Double)paramList.get(4)).floatValue();
+      f4 = ((Double)paramList.get(5)).floatValue();
+    }
+    else
+    {
+      f4 = -1.0F;
+      f2 = -1.0F;
+      f6 = -1.0F;
+      f5 = -1.0F;
+      f1 = -1.0F;
+    }
+    int k = paramFrame.width * paramFrame.height;
+    paramList = new byte[k * 4];
+    RendererUtils.saveTextureToRgbBuffer(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, paramList, paramFrame.getFBO());
+    j = 0;
+    double d7 = 0.0D;
+    double d5 = 0.0D;
+    double d4 = 0.0D;
+    double d3 = 0.0D;
+    double d2 = 0.0D;
+    double d1 = 0.0D;
+    double d6;
+    while (i < k)
+    {
+      int i1 = i * 4;
+      int m = paramList[i1] & 0xFF;
+      int n = paramList[(i1 + 1)] & 0xFF;
+      i1 = paramList[(i1 + 2)] & 0xFF;
+      boolean bool = isSkinColor(m, n, i1);
+      f7 = m / 255.0F;
       f8 = n / 255.0F;
       f9 = i1 / 255.0F;
-      k = j;
-      double d9 = d4;
-      double d8 = d5;
-      d6 = d7;
       if (bool)
       {
-        d6 = d7 + f7;
-        d8 = d5 + f8;
-        d9 = d4 + f9;
-        k = j + 1;
+        d6 = f7;
+        Double.isNaN(d6);
+        d6 = d7 + d6;
+        d7 = f8;
+        Double.isNaN(d7);
+        d5 += d7;
+        d7 = f9;
+        Double.isNaN(d7);
+        d7 = d4 + d7;
+        j += 1;
+        d4 = d6;
+        d6 = d7;
       }
-      d3 += f7;
-      d2 += f8;
-      d4 = f9;
+      else
+      {
+        d6 = d4;
+        d4 = d7;
+      }
+      d7 = f7;
+      Double.isNaN(d7);
+      d3 += d7;
+      d7 = f8;
+      Double.isNaN(d7);
+      d2 += d7;
+      d7 = f9;
+      Double.isNaN(d7);
+      d1 += d7;
       i += 1;
-      d1 = d4 + d1;
-      j = k;
-      d4 = d9;
-      d5 = d8;
-      d7 = d6;
+      d7 = d4;
+      d4 = d6;
     }
-    if ((j < m / 100) || ((f3 <= 0.01F) && (f2 <= 0.01F) && (f1 <= 0.01F)))
+    if ((j >= k / 100) && ((f3 > 0.01F) || (f1 > 0.01F) || (f4 > 0.01F)))
+    {
+      double d8 = j;
+      Double.isNaN(d8);
+      d6 = d7 / d8;
+      Double.isNaN(d8);
+      d5 /= d8;
+      Double.isNaN(d8);
+      d4 /= d8;
+    }
+    else
     {
       d4 = 0.0D;
       d5 = 0.0D;
       d6 = 0.0D;
-      d3 /= m;
-      d2 /= m;
-      d1 /= m;
-      f7 = (float)d3;
-      f8 = (float)d2;
-      f9 = (float)d1;
-      if (d6 <= 0.0D) {
-        break label623;
-      }
-      f4 = (float)d6;
-      f5 = (float)d5;
-      f7 = (float)d4;
-      f6 = f3;
-      f3 = f5;
-      f5 = f2;
-      f2 = f7;
     }
-    for (;;)
+    d7 = k;
+    Double.isNaN(d7);
+    d3 /= d7;
+    Double.isNaN(d7);
+    float f7 = f4;
+    d2 /= d7;
+    Double.isNaN(d7);
+    d1 /= d7;
+    float f4 = (float)d3;
+    float f8 = (float)d2;
+    float f9 = (float)d1;
+    if (d6 > 0.0D)
     {
-      f9 = f1;
-      f8 = f5;
-      f7 = f6;
-      if (f6 <= 0.0F)
-      {
-        f9 = f1;
-        f8 = f5;
-        f7 = f6;
-        if (f5 <= 0.0F)
-        {
-          f9 = f1;
-          f8 = f5;
-          f7 = f6;
-          if (f1 <= 0.0F)
-          {
-            f9 = f2;
-            f8 = f3;
-            f7 = f4;
-          }
-        }
-      }
-      this.userColor1 = new UniformParam.Float3fParam("userColor1", f4, f3, f2);
-      this.modelColor1 = new UniformParam.Float3fParam("modelColor1", f7, f8, f9);
-      return;
-      d6 = d7 / j;
-      d5 /= j;
-      d4 /= j;
-      break;
-      label623:
-      f2 = f9;
+      f6 = (float)d6;
+      f2 = (float)d5;
+      f5 = (float)d4;
+      f4 = f3;
+      f3 = f5;
+      f5 = f1;
       f1 = f6;
-      f3 = f8;
-      f6 = f4;
-      f4 = f7;
+      f6 = f7;
     }
+    else
+    {
+      f3 = f6;
+      f6 = f5;
+      f1 = f4;
+      f5 = f3;
+      f4 = f2;
+      f3 = f9;
+      f2 = f8;
+    }
+    if ((f4 <= 0.0F) && (f5 <= 0.0F) && (f6 <= 0.0F))
+    {
+      f4 = f2;
+      f6 = f3;
+      f5 = f1;
+      f7 = f4;
+    }
+    else
+    {
+      f7 = f5;
+      f5 = f4;
+    }
+    this.userColor1 = new UniformParam.Float3fParam("userColor1", f1, f2, f3);
+    this.modelColor1 = new UniformParam.Float3fParam("modelColor1", f5, f7, f6);
   }
   
   public void calSkinParams(Frame paramFrame, List<Double> paramList1, List<Double> paramList2)
   {
-    paramFrame = updateSkinData(paramFrame, paramList2);
-    if (paramFrame.size() < 12) {
+    List localList = updateSkinData(paramFrame, paramList2);
+    if (localList.size() < 12) {
       return;
     }
+    paramFrame = new float[12];
     paramList2 = new float[12];
-    float[] arrayOfFloat = new float[12];
+    int j = 0;
     int i = 0;
     while (i < 12)
     {
-      paramList2[i] = (((Integer)paramFrame.get(i)).intValue() / 255.0F);
-      arrayOfFloat[i] = ((float)(((Double)paramList1.get(i)).doubleValue() / 255.0D));
+      paramFrame[i] = (((Integer)localList.get(i)).intValue() / 255.0F);
+      paramList2[i] = ((float)(((Double)paramList1.get(i)).doubleValue() / 255.0D));
       i += 1;
     }
     float f;
-    int j;
-    if ((paramList2[0] < 0.0F) || (paramList2[1] < 0.0F) || (paramList2[2] < 0.0F) || (arrayOfFloat[0] < 0.0F) || (arrayOfFloat[1] < 0.0F) || (arrayOfFloat[2] < 0.0F))
+    int k;
+    double d1;
+    double d2;
+    if ((paramFrame[0] >= 0.0F) && (paramFrame[1] >= 0.0F) && (paramFrame[2] >= 0.0F) && (paramList2[0] >= 0.0F) && (paramList2[1] >= 0.0F) && (paramList2[2] >= 0.0F))
     {
       i = 0;
       while (i < 3)
       {
-        f = arrayOfFloat[(i + 9)] - arrayOfFloat[(i + 6)] - (paramList2[(i + 9)] - paramList2[(i + 6)]);
+        j = i + 3;
+        f = paramList2[j];
+        k = i + 0;
+        f = f - paramList2[k] - (paramFrame[j] - paramFrame[k]);
         if (f > 0.0F)
         {
-          j = i + 9;
-          arrayOfFloat[j] = ((float)(arrayOfFloat[j] - f * 0.5D));
-          j = i + 6;
-          arrayOfFloat[j] = ((float)(arrayOfFloat[j] + f * 0.5D));
+          d1 = paramList2[j];
+          d2 = f;
+          Double.isNaN(d2);
+          d2 *= 0.5D;
+          Double.isNaN(d1);
+          paramList2[j] = ((float)(d1 - d2));
+          d1 = paramList2[k];
+          Double.isNaN(d1);
+          paramList2[k] = ((float)(d1 + d2));
         }
         i += 1;
       }
-      this.userColor1 = new UniformParam.Float3fParam("userColor1", paramList2[6], paramList2[7], paramList2[8]);
-      this.userColor2 = new UniformParam.Float3fParam("userColor2", paramList2[9], paramList2[10], paramList2[11]);
-      this.modelColor1 = new UniformParam.Float3fParam("modelColor1", arrayOfFloat[6], arrayOfFloat[7], arrayOfFloat[8]);
-      this.modelColor2 = new UniformParam.Float3fParam("modelColor2", arrayOfFloat[9], arrayOfFloat[10], arrayOfFloat[11]);
+      this.userColor1 = new UniformParam.Float3fParam("userColor1", paramFrame[0], paramFrame[1], paramFrame[2]);
+      this.userColor2 = new UniformParam.Float3fParam("userColor2", paramFrame[3], paramFrame[4], paramFrame[5]);
+      this.modelColor1 = new UniformParam.Float3fParam("modelColor1", paramList2[0], paramList2[1], paramList2[2]);
+      this.modelColor2 = new UniformParam.Float3fParam("modelColor2", paramList2[3], paramList2[4], paramList2[5]);
       return;
     }
-    i = 0;
+    i = j;
     while (i < 3)
     {
-      f = arrayOfFloat[(i + 3)] - arrayOfFloat[(i + 0)] - (paramList2[(i + 3)] - paramList2[(i + 0)]);
+      j = i + 9;
+      f = paramList2[j];
+      k = i + 6;
+      f = f - paramList2[k] - (paramFrame[j] - paramFrame[k]);
       if (f > 0.0F)
       {
-        j = i + 3;
-        arrayOfFloat[j] = ((float)(arrayOfFloat[j] - f * 0.5D));
-        j = i + 0;
-        arrayOfFloat[j] = ((float)(arrayOfFloat[j] + f * 0.5D));
+        d1 = paramList2[j];
+        d2 = f;
+        Double.isNaN(d2);
+        d2 *= 0.5D;
+        Double.isNaN(d1);
+        paramList2[j] = ((float)(d1 - d2));
+        d1 = paramList2[k];
+        Double.isNaN(d1);
+        paramList2[k] = ((float)(d1 + d2));
       }
       i += 1;
     }
-    this.userColor1 = new UniformParam.Float3fParam("userColor1", paramList2[0], paramList2[1], paramList2[2]);
-    this.userColor2 = new UniformParam.Float3fParam("userColor2", paramList2[3], paramList2[4], paramList2[5]);
-    this.modelColor1 = new UniformParam.Float3fParam("modelColor1", arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2]);
-    this.modelColor2 = new UniformParam.Float3fParam("modelColor2", arrayOfFloat[3], arrayOfFloat[4], arrayOfFloat[5]);
+    this.userColor1 = new UniformParam.Float3fParam("userColor1", paramFrame[6], paramFrame[7], paramFrame[8]);
+    this.userColor2 = new UniformParam.Float3fParam("userColor2", paramFrame[9], paramFrame[10], paramFrame[11]);
+    this.modelColor1 = new UniformParam.Float3fParam("modelColor1", paramList2[6], paramList2[7], paramList2[8]);
+    this.modelColor2 = new UniformParam.Float3fParam("modelColor2", paramList2[9], paramList2[10], paramList2[11]);
   }
   
   public boolean updateUserSkinColor(int[][] paramArrayOfInt1, int[][] paramArrayOfInt2)
   {
     int k = 0;
     int i = 0;
-    int m;
-    for (int j = 0; k < 256; j = m + j)
+    int j = 0;
+    while (k < 256)
     {
-      m = paramArrayOfInt2[0][k];
-      int n = paramArrayOfInt1[0][k];
+      j += paramArrayOfInt2[0][k];
+      i += paramArrayOfInt1[0][k];
       k += 1;
-      i = n + i;
     }
     boolean bool;
-    label73:
-    float f1;
-    label84:
-    float f2;
-    if (i * 5 > j)
-    {
+    if (i * 5 > j) {
       bool = true;
-      if (j <= 0) {
-        break label167;
-      }
-      f1 = 1.0F / j;
-      if (i <= 0) {
-        break label173;
-      }
-      f2 = 1.0F / i;
-      i = 0;
+    } else {
+      bool = false;
     }
-    for (;;)
+    if (j <= 0) {
+      j = 1;
+    }
+    float f1 = 1.0F / j;
+    if (i <= 0) {
+      i = 1;
+    }
+    float f2 = 1.0F / i;
+    i = 0;
+    while (i < 3)
     {
-      if (i >= 3) {
-        break label188;
-      }
       j = 0;
-      for (;;)
+      while (j < 256)
       {
-        if (j < 256)
-        {
-          this.userAllColor[i][j] = (paramArrayOfInt2[i][j] * f1);
-          this.userFaceColor[i][j] = (paramArrayOfInt1[i][j] * f2);
-          j += 1;
-          continue;
-          bool = false;
-          break;
-          label167:
-          j = 1;
-          break label73;
-          label173:
-          i = 1;
-          break label84;
-        }
+        this.userAllColor[i][j] = (paramArrayOfInt2[i][j] * f1);
+        this.userFaceColor[i][j] = (paramArrayOfInt1[i][j] * f2);
+        j += 1;
       }
       i += 1;
     }
-    label188:
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.ChangedFaceParam
  * JD-Core Version:    0.7.0.1
  */

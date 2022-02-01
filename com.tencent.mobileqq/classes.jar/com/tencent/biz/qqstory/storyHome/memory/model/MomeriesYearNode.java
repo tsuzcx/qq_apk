@@ -1,14 +1,14 @@
 package com.tencent.biz.qqstory.storyHome.memory.model;
 
+import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.database.MemoriesYearNodeEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import ulj;
 
 public class MomeriesYearNode
   extends BaseUIItem
-  implements ulj
+  implements Copyable
 {
   public int videoCount;
   public int year;
@@ -47,12 +47,18 @@ public class MomeriesYearNode
   
   public String toString()
   {
-    return "MomeriesYearNode{year=" + this.year + ", videoCount=" + this.videoCount + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MomeriesYearNode{year=");
+    localStringBuilder.append(this.year);
+    localStringBuilder.append(", videoCount=");
+    localStringBuilder.append(this.videoCount);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode
  * JD-Core Version:    0.7.0.1
  */

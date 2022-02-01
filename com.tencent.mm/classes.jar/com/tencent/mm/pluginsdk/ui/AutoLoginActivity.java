@@ -1,47 +1,53 @@
 package com.tencent.mm.pluginsdk.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.w;
+import com.tencent.mm.br.c;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.a;
 
-@com.tencent.mm.ui.base.a(3)
+@a(3)
 public abstract class AutoLoginActivity
   extends MMActivity
 {
-  private void LP(int paramInt)
+  private void awf(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      ab.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = ".concat(String.valueOf(paramInt)));
-      a(AutoLoginActivity.a.vPO, getIntent());
+      Log.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = ".concat(String.valueOf(paramInt)));
+      a(a.XXM, getIntent());
       return;
     case -1: 
-      a(AutoLoginActivity.a.vPN, getIntent());
+      a(a.XXL, getIntent());
       return;
     case 0: 
-      bXc();
+      gtu();
       return;
     }
-    a(AutoLoginActivity.a.vPP, getIntent());
+    a(a.XXN, getIntent());
   }
   
-  protected abstract boolean O(Intent paramIntent);
+  protected abstract void a(a parama, Intent paramIntent);
   
-  protected abstract void a(AutoLoginActivity.a parama, Intent paramIntent);
+  protected abstract boolean ad(Intent paramIntent);
   
-  protected boolean bXc()
+  public int getLayoutId()
   {
-    g.RJ();
-    if ((!com.tencent.mm.kernel.a.QT()) || (com.tencent.mm.kernel.a.QP()))
+    return -1;
+  }
+  
+  protected boolean gtu()
+  {
+    h.baC();
+    if ((!b.aZM()) || (b.aZG()))
     {
-      ab.w("MicroMsg.AutoLoginActivity", "not login");
+      Log.w("MicroMsg.AutoLoginActivity", "not login");
       Intent localIntent1 = new Intent(this, getClass());
       localIntent1.putExtras(getIntent());
       localIntent1.addFlags(67108864);
@@ -49,15 +55,10 @@ public abstract class AutoLoginActivity
       localIntent1.setAction(getIntent().getAction());
       Intent localIntent2 = new Intent();
       localIntent2.putExtras(getIntent());
-      d.a(this, "account", "com.tencent.mm.plugin.account.ui.SimpleLoginUI", localIntent2, localIntent1);
+      c.a(this, "account", "com.tencent.mm.plugin.account.ui.SimpleLoginUI", localIntent2, localIntent1);
       return true;
     }
     return false;
-  }
-  
-  public int getLayoutId()
-  {
-    return -1;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -67,32 +68,37 @@ public abstract class AutoLoginActivity
     paramBundle = getIntent();
     if (paramBundle == null)
     {
-      ab.e("MicroMsg.AutoLoginActivity", "onCreate intent is null");
+      Log.e("MicroMsg.AutoLoginActivity", "onCreate intent is null");
       finish();
       return;
     }
-    d.dpU();
-    ab.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
-    int i = w.a(paramBundle, "wizard_activity_result_code", -2);
-    ab.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = ".concat(String.valueOf(i)));
+    if (c.iPe())
+    {
+      Log.i("MicroMsg.AutoLoginActivity", "lite version do not support open api");
+      finish();
+      return;
+    }
+    Log.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
+    int i = IntentUtil.getIntExtra(paramBundle, "wizard_activity_result_code", -2);
+    Log.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = ".concat(String.valueOf(i)));
     if (i != -2)
     {
-      LP(i);
+      awf(i);
       return;
     }
-    if (!O(paramBundle))
+    if (!ad(paramBundle))
     {
-      ab.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
+      Log.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
       finish();
       return;
     }
-    if (bXc())
+    if (gtu())
     {
       finish();
-      ab.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
+      Log.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
       return;
     }
-    a(AutoLoginActivity.a.vPN, paramBundle);
+    a(a.XXL, paramBundle);
   }
   
   public void onDestroy()
@@ -107,9 +113,9 @@ public abstract class AutoLoginActivity
     }
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    int i = w.a(paramIntent, "wizard_activity_result_code", 0);
-    ab.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
-    LP(i);
+    int i = IntentUtil.getIntExtra(paramIntent, "wizard_activity_result_code", 0);
+    Log.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
+    awf(i);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -117,10 +123,25 @@ public abstract class AutoLoginActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(155389);
+      XXL = new a("LOGIN_OK", 0);
+      XXM = new a("LOGIN_FAIL", 1);
+      XXN = new a("LOGIN_CANCEL", 2);
+      XXO = new a[] { XXL, XXM, XXN };
+      AppMethodBeat.o(155389);
+    }
+    
+    private a() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.AutoLoginActivity
  * JD-Core Version:    0.7.0.1
  */

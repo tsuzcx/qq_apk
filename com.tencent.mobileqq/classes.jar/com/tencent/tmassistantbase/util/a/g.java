@@ -11,12 +11,19 @@ class g
   
   public void run()
   {
-    SDKReportManager2.getInstance().postReport(2002, Build.MANUFACTURER + "|" + Build.MODEL + "|do_hook_install|pkg=" + this.a.packageName);
+    SDKReportManager2 localSDKReportManager2 = SDKReportManager2.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("|");
+    localStringBuilder.append(Build.MODEL);
+    localStringBuilder.append("|do_hook_install|pkg=");
+    localStringBuilder.append(this.a.packageName);
+    localSDKReportManager2.postReport(2002, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a.g
  * JD-Core Version:    0.7.0.1
  */

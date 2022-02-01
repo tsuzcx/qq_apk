@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_pressed="true">
+        <set>
+            <objectAnimator android:duration="@integer/ap" android:valueTo="@dimen/al4" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akt" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+    <item android:state_enabled="true" android:state_hovered="true">
+        <set>
+            <objectAnimator android:duration="@integer/ap" android:valueTo="@dimen/akv" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akt" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+    <item android:state_focused="true" android:state_enabled="true">
+        <set>
+            <objectAnimator android:duration="@integer/ap" android:valueTo="@dimen/aku" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akt" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+    <item android:state_enabled="true">
+        <set>
+            <objectAnimator android:duration="@integer/ap" android:valueTo="@dimen/al_" android:valueType="floatType" android:propertyName="translationZ" android:startDelay="@integer/ao" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akt" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+    <item>
+        <set>
+            <objectAnimator android:duration="0" android:valueTo="@dimen/aks" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/akr" android:valueType="floatType" android:propertyName="elevation" />
+        </set>
+    </item>
+</selector>

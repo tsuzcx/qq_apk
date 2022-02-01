@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agqq;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import bemq;
 import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 import com.tencent.qphone.base.util.QLog;
 
 class GameRoomChatPie$16$1
@@ -15,17 +14,22 @@ class GameRoomChatPie$16$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.this$0.jdField_a_of_type_JavaLangString, 2, "initPlugin! hasDestory = " + this.a.this$0.N);
-    }
-    if ((!this.a.this$0.N) && (this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView != null))
+    if (QLog.isColorLevel())
     {
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
-      agqq.a(this.a.this$0).removeView(this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setBackgroundDrawable(null);
-      this.a.this$0.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.b.setBackgroundDrawable(null);
-      this.a.this$0.jdField_a_of_type_Bemq.a((ViewGroup)this.a.this$0.o);
-      this.a.this$0.e(false, false);
+      String str = this.a.this$0.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initPlugin! hasDestory = ");
+      localStringBuilder.append(this.a.this$0.aY);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    if ((!this.a.this$0.aY) && (this.a.this$0.bE != null))
+    {
+      this.a.this$0.bE.c();
+      GameRoomChatPie.c(this.a.this$0).removeView(this.a.this$0.bE);
+      this.a.this$0.bE.setBackgroundDrawable(null);
+      this.a.this$0.bE.d.setBackgroundDrawable(null);
+      this.a.this$0.bC.a((ViewGroup)this.a.this$0.br);
+      this.a.this$0.b(false, false);
     }
   }
 }

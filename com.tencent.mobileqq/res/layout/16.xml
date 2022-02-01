@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_vertical" android:id="@id/pv4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/pv5" android:layout_width="70.0dip" android:layout_height="70.0dip">
+        <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mvm" android:layout_width="wrap_content" android:layout_height="wrap_content" app:qqArMapGuideRadius="7">
+            <ImageView android:id="@id/o4q" android:layout_width="70.0dip" android:layout_height="70.0dip" />
+            <ImageView android:id="@id/o4s" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" android:src="@drawable/a9q" android:scaleType="center" />
+            <com.tencent.aelight.camera.aioeditor.capture.view.QIMCommonLoadingView android:id="@id/5m" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" />
+        </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+        <ImageView android:id="@id/o4p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:src="@drawable/f6q" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:id="@id/qil" android:paddingTop="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/pv5" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -18,7 +18,10 @@ public class VideoRequestManager
   
   private void cancelRequest(VideoRequest paramVideoRequest, boolean paramBoolean)
   {
-    PlayerUtils.log(4, "RequestManager", "start cancel request=" + paramVideoRequest);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start cancel request=");
+    localStringBuilder.append(paramVideoRequest);
+    PlayerUtils.log(4, "RequestManager", localStringBuilder.toString());
     paramVideoRequest.cancel(paramBoolean);
   }
   
@@ -30,23 +33,31 @@ public class VideoRequestManager
       while (paramString.hasNext()) {
         cancelRequest((VideoRequest)paramString.next(), paramBoolean);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void addRequest(String paramString, VideoRequest paramVideoRequest)
   {
     try
     {
-      ArrayList localArrayList2 = (ArrayList)this.requestMap.get(paramString);
-      ArrayList localArrayList1 = localArrayList2;
-      if (localArrayList2 == null)
+      Object localObject2 = (ArrayList)this.requestMap.get(paramString);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localArrayList1 = new ArrayList();
-        this.requestMap.put(paramString, localArrayList1);
-        PlayerUtils.log(3, "RequestManager", "init requestMap for url " + paramString);
+        localObject1 = new ArrayList();
+        this.requestMap.put(paramString, localObject1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("init requestMap for url ");
+        ((StringBuilder)localObject2).append(paramString);
+        PlayerUtils.log(3, "RequestManager", ((StringBuilder)localObject2).toString());
       }
-      localArrayList1.add(paramVideoRequest);
+      ((ArrayList)localObject1).add(paramVideoRequest);
       return;
     }
     finally {}
@@ -93,27 +104,27 @@ public class VideoRequestManager
   
   public void cancelAllPreloadRequestAsync(boolean paramBoolean)
   {
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = this.requestMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.requestMap.entrySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
         Object localObject2 = (ArrayList)((Map.Entry)localIterator.next()).getValue();
         if (localObject2 != null)
         {
           localObject2 = ((ArrayList)localObject2).iterator();
-          if (((Iterator)localObject2).hasNext())
+          while (((Iterator)localObject2).hasNext())
           {
             VideoRequest localVideoRequest = (VideoRequest)((Iterator)localObject2).next();
-            if (localVideoRequest.getPrority() > 10) {
-              continue;
+            if (localVideoRequest.getPrority() <= 10)
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("preload cancel url ");
+              localStringBuilder.append(localVideoRequest);
+              PlayerUtils.log(4, "RequestManager", localStringBuilder.toString());
+              cancelRequest(localVideoRequest, paramBoolean);
+              ((Iterator)localObject2).remove();
             }
-            PlayerUtils.log(4, "RequestManager", "preload cancel url " + localVideoRequest);
-            cancelRequest(localVideoRequest, paramBoolean);
-            ((Iterator)localObject2).remove();
           }
         }
         else
@@ -121,7 +132,12 @@ public class VideoRequestManager
           PlayerUtils.log(4, "RequestManager", "cancel url fail, associate request not found, mediaplayer is dead?");
         }
       }
-      finally {}
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject1;
     }
   }
   
@@ -131,13 +147,8 @@ public class VideoRequestManager
     try
     {
       paramVideoRequest.cancel(paramBoolean);
-      return;
     }
-    finally
-    {
-      paramVideoRequest = finally;
-      throw paramVideoRequest;
-    }
+    finally {}
   }
   
   public void cancelVideoRequestByUuid(String paramString)
@@ -169,9 +180,13 @@ public class VideoRequestManager
           localArrayList1.addAll(localArrayList2);
         }
       }
+      return localArrayList1;
     }
     finally {}
-    return localArrayList;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public ArrayList<VideoRequest> getPriorityRequest(int paramInt)
@@ -187,9 +202,13 @@ public class VideoRequestManager
           localArrayList1.addAll(localArrayList2);
         }
       }
+      return localArrayList1;
     }
     finally {}
-    return localArrayList;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public ArrayList<VideoRequest> getVideoRequestByUuid(String paramString)
@@ -208,16 +227,12 @@ public class VideoRequestManager
   
   public ArrayList<VideoRequest> getVideoRequestByUuid(String paramString, int paramInt)
   {
-    ArrayList localArrayList1;
-    for (;;)
+    try
     {
-      try
+      ArrayList localArrayList1 = new ArrayList();
+      Iterator localIterator = this.requestMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        localArrayList1 = new ArrayList();
-        Iterator localIterator = this.requestMap.entrySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
         ArrayList localArrayList2 = (ArrayList)((Map.Entry)localIterator.next()).getValue();
         if (localArrayList2.size() > 0)
         {
@@ -235,23 +250,23 @@ public class VideoRequestManager
           }
         }
       }
-      finally {}
+      return localArrayList1;
     }
-    return localArrayList1;
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public ArrayList<VideoRequest> getVideoRequestByVideoKey(String paramString, int paramInt)
   {
-    ArrayList localArrayList1;
-    for (;;)
+    try
     {
-      try
+      ArrayList localArrayList1 = new ArrayList();
+      Iterator localIterator = this.requestMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        localArrayList1 = new ArrayList();
-        Iterator localIterator = this.requestMap.entrySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
         ArrayList localArrayList2 = (ArrayList)((Map.Entry)localIterator.next()).getValue();
         if (localArrayList2.size() > 0)
         {
@@ -269,39 +284,47 @@ public class VideoRequestManager
           }
         }
       }
-      finally {}
+      return localArrayList1;
     }
-    return localArrayList1;
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void removeRequest(VideoRequest paramVideoRequest)
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject1 = (ArrayList)this.requestMap.get(paramVideoRequest.getSourceUrl());
+      if (localObject1 != null)
       {
-        Object localObject = (ArrayList)this.requestMap.get(paramVideoRequest.getSourceUrl());
-        if (localObject == null) {
-          break;
-        }
-        localObject = ((ArrayList)localObject).iterator();
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        if (paramVideoRequest.equals((VideoRequest)((Iterator)localObject).next()))
-        {
-          if (PlayerConfig.g().isDebugVersion()) {
-            PlayerUtils.log(3, "RequestManager", "remove request " + paramVideoRequest);
-          }
-          Iterator localIterator = this.mListeners.iterator();
-          if (localIterator.hasNext()) {
-            ((VideoRequestManager.RequestListener)localIterator.next()).onBeforeRequestRemove(paramVideoRequest);
-          } else {
-            ((Iterator)localObject).remove();
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          if (paramVideoRequest.equals((VideoRequest)((Iterator)localObject1).next()))
+          {
+            if (PlayerConfig.g().isDebugVersion())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("remove request ");
+              ((StringBuilder)localObject2).append(paramVideoRequest);
+              PlayerUtils.log(3, "RequestManager", ((StringBuilder)localObject2).toString());
+            }
+            Object localObject2 = this.mListeners.iterator();
+            while (((Iterator)localObject2).hasNext()) {
+              ((VideoRequestManager.RequestListener)((Iterator)localObject2).next()).onBeforeRequestRemove(paramVideoRequest);
+            }
+            ((Iterator)localObject1).remove();
           }
         }
       }
-      finally {}
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramVideoRequest;
     }
   }
   
@@ -349,30 +372,46 @@ public class VideoRequestManager
     try
     {
       Object localObject1 = super.toString();
-      Object localObject3 = (String)localObject1 + "[";
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append("[");
+      localObject3 = ((StringBuilder)localObject3).toString();
       Iterator localIterator1 = this.requestMap.entrySet().iterator();
       if (localIterator1.hasNext())
       {
         Iterator localIterator2 = ((ArrayList)((Map.Entry)localIterator1.next()).getValue()).iterator();
-        for (localObject1 = localObject3;; localObject1 = (String)localObject1 + ",\n")
+        for (localObject1 = localObject3;; localObject1 = ((StringBuilder)localObject3).toString())
         {
           localObject3 = localObject1;
           if (!localIterator2.hasNext()) {
             break;
           }
           localObject3 = (VideoRequest)localIterator2.next();
-          localObject1 = (String)localObject1 + ((VideoRequest)localObject3).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(((VideoRequest)localObject3).toString());
+          localObject1 = localStringBuilder.toString();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(",\n");
         }
       }
-      localObject1 = (String)localObject3 + "]";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject3);
+      ((StringBuilder)localObject1).append("]");
+      localObject1 = ((StringBuilder)localObject1).toString();
       return localObject1;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.VideoRequestManager
  * JD-Core Version:    0.7.0.1
  */

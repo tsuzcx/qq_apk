@@ -1,21 +1,20 @@
 package com.tencent.biz.webviewplugin;
 
-import bahm;
-import zfy;
+import com.tencent.mobileqq.teamwork.TeamWorkHandlerUtils;
 
-public class Share$10
+class Share$10
   implements Runnable
 {
-  public Share$10(zfy paramzfy) {}
+  Share$10(Share paramShare) {}
   
   public void run()
   {
-    bahm.a(this.this$0.n, this.this$0.a);
+    TeamWorkHandlerUtils.a(this.this$0.H, this.this$0.aa);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.10
  * JD-Core Version:    0.7.0.1
  */

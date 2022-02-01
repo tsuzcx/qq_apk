@@ -1,36 +1,34 @@
 package com.tencent.mobileqq.activity;
 
-import akiw;
-import android.view.View;
 import com.tencent.mobileqq.adapter.ForwardRecentItemView;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.filemanager.fileassistant.util.DatalineDeviceChooseModel.DeviceChooseInterface;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 
 class ForwardRecentActivity$16
-  implements Runnable
+  implements DatalineDeviceChooseModel.DeviceChooseInterface
 {
-  ForwardRecentActivity$16(ForwardRecentActivity paramForwardRecentActivity) {}
+  ForwardRecentActivity$16(ForwardRecentActivity paramForwardRecentActivity, ResultRecord paramResultRecord, ForwardRecentItemView paramForwardRecentItemView) {}
   
-  public void run()
+  public void a()
   {
-    int j = ForwardRecentActivity.a(this.this$0).getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      View localView = ForwardRecentActivity.a(this.this$0).getChildAt(i);
-      if ((localView instanceof ForwardRecentItemView)) {
-        ((ForwardRecentItemView)localView).b(150L);
-      }
-      i += 1;
-    }
-    this.this$0.a.b(150L);
-    if (ForwardRecentActivity.a(this.this$0) != null) {
-      ForwardRecentActivity.a(this.this$0).a(false);
+    ForwardRecentActivity.access$2100(this.c, this.a, this.b);
+  }
+  
+  public void b()
+  {
+    ForwardRecentActivity.access$2100(this.c, this.a, this.b);
+  }
+  
+  public void c()
+  {
+    if (ForwardRecentActivity.access$2200(this.c) != null) {
+      this.c.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.16
  * JD-Core Version:    0.7.0.1
  */

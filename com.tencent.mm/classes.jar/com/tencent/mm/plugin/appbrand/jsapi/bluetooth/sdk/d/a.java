@@ -4,56 +4,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static a hIj;
+  private static boolean rPg = false;
+  private static a rPh;
   
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(94344);
-    if (hIj != null)
-    {
-      String.format(paramString2, paramVarArgs);
-      hIj.d(paramString1, paramString2, paramVarArgs);
-    }
-    AppMethodBeat.o(94344);
+    rPh = parama;
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94341);
-    if (hIj != null)
+    AppMethodBeat.i(144653);
+    if (rPh != null)
     {
       String.format(paramString2, paramVarArgs);
-      hIj.e(paramString1, paramString2, paramVarArgs);
+      rPh.e(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(94341);
+    AppMethodBeat.o(144653);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94343);
-    if (hIj != null)
+    AppMethodBeat.i(144655);
+    if (rPh != null)
     {
       String.format(paramString2, paramVarArgs);
-      hIj.i(paramString1, paramString2, paramVarArgs);
+      rPh.i(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(94343);
+    AppMethodBeat.o(144655);
+  }
+  
+  public static void jj(boolean paramBoolean)
+  {
+    rPg = paramBoolean;
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94342);
-    if (hIj != null)
+    AppMethodBeat.i(144654);
+    if (rPh != null)
     {
       String.format(paramString2, paramVarArgs);
-      hIj.w(paramString1, paramString2, paramVarArgs);
+      rPh.w(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(94342);
+    AppMethodBeat.o(144654);
   }
   
   public static abstract interface a
   {
-    public abstract void d(String paramString1, String paramString2, Object... paramVarArgs);
-    
     public abstract void e(String paramString1, String paramString2, Object... paramVarArgs);
     
     public abstract void i(String paramString1, String paramString2, Object... paramVarArgs);
@@ -63,7 +61,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
 import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class dln
   implements Runnable
 {
-  dln(dlm paramdlm, String paramString, int paramInt) {}
+  dln(dlm paramdlm, Drawable paramDrawable) {}
   
   public void run()
   {
-    Drawable localDrawable = this.jdField_a_of_type_Dlm.a.b.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Dlm.a.runOnUiThread(new dlo(this, localDrawable));
+    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_Dlm.jdField_a_of_type_Dll.a).getChildAt(this.jdField_a_of_type_Dlm.jdField_a_of_type_Int).findViewById(2131230940)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

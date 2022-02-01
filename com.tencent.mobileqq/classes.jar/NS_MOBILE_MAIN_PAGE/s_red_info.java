@@ -35,14 +35,17 @@ public final class s_red_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.logo != null) {
-      paramJceOutputStream.write(this.logo, 0);
+    String str = this.logo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 1);
+    str = this.summary;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 2);
+    str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.uIsNew, 3);
     paramJceOutputStream.write(this.uin, 4);
@@ -50,7 +53,7 @@ public final class s_red_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_red_info
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,71 @@
 package com.tencent.mm.ag;
 
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.s;
-import com.tencent.mm.g.a.s.a;
-import com.tencent.mm.g.a.s.b;
-import com.tencent.mm.plugin.music.b.a;
+import java.lang.reflect.Field;
 
 public final class c
+  implements Application.ActivityLifecycleCallbacks
 {
-  public static boolean qI(String paramString)
+  private Application application;
+  
+  private c(Application paramApplication)
   {
-    AppMethodBeat.i(137230);
-    s locals = new s();
-    locals.cmS.action = 7;
-    locals.cmS.ceu = paramString;
-    a.a(locals);
-    boolean bool = locals.cmT.cmX;
-    AppMethodBeat.o(137230);
-    return bool;
+    this.application = paramApplication;
   }
   
-  public static b qJ(String paramString)
+  public static void i(Application paramApplication)
   {
-    AppMethodBeat.i(137231);
-    s locals = new s();
-    locals.cmS.action = 16;
-    locals.cmS.ceu = paramString;
-    a.a(locals);
-    paramString = locals.cmS.cmV;
-    AppMethodBeat.o(137231);
-    return paramString;
+    AppMethodBeat.i(125088);
+    if ((Build.MANUFACTURER.equals("samsung")) && (Build.VERSION.SDK_INT >= 19) && (Build.VERSION.SDK_INT <= 24)) {
+      paramApplication.registerActivityLifecycleCallbacks(new c(paramApplication));
+    }
+    AppMethodBeat.o(125088);
   }
+  
+  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public final void onActivityDestroyed(Activity paramActivity)
+  {
+    AppMethodBeat.i(125089);
+    try
+    {
+      paramActivity = Class.forName("com.samsung.android.emergencymode.SemEmergencyManager");
+      Object localObject = paramActivity.getDeclaredField("sInstance");
+      ((Field)localObject).setAccessible(true);
+      localObject = ((Field)localObject).get(null);
+      paramActivity = paramActivity.getDeclaredField("mContext");
+      paramActivity.setAccessible(true);
+      paramActivity.set(localObject, this.application);
+      label50:
+      this.application.unregisterActivityLifecycleCallbacks(this);
+      AppMethodBeat.o(125089);
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      break label50;
+    }
+  }
+  
+  public final void onActivityPaused(Activity paramActivity) {}
+  
+  public final void onActivityResumed(Activity paramActivity) {}
+  
+  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public final void onActivityStarted(Activity paramActivity) {}
+  
+  public final void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ag.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.MMSingelLinePanel;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.ArrayList;
@@ -14,8 +16,8 @@ import java.util.ArrayList;
 public class ContactLabelPreference
   extends Preference
 {
-  private MMSingelLinePanel pyK;
-  private ArrayList<String> pyL;
+  private MMSingelLinePanel MVY;
+  private ArrayList<String> MVZ;
   private String title;
   private TextView titleTv;
   
@@ -27,45 +29,45 @@ public class ContactLabelPreference
   public ContactLabelPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23392);
-    this.pyL = new ArrayList();
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(23392);
+    AppMethodBeat.i(27012);
+    this.MVZ = new ArrayList();
+    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.o(27012);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23394);
-    this.titleTv = ((TextView)paramView.findViewById(2131820680));
-    this.pyK = ((MMSingelLinePanel)paramView.findViewById(2131820916));
-    this.pyK.setSingleLine(true);
-    this.pyK.zmn = false;
-    this.pyK.qF(false);
+    AppMethodBeat.i(27014);
+    this.titleTv = ((TextView)paramView.findViewById(R.h.title));
+    this.MVY = ((MMSingelLinePanel)paramView.findViewById(R.h.contact_label_panel));
+    this.MVY.setSingleLine(true);
+    this.MVY.jmI();
+    this.MVY.LD(false);
     if (this.titleTv != null) {
       this.titleTv.setText(this.title);
     }
-    if ((this.pyK != null) && (this.pyL != null) && (this.pyL.size() > 0)) {
-      this.pyK.a(this.pyL, this.pyL);
+    if ((this.MVY != null) && (this.MVZ != null) && (this.MVZ.size() > 0)) {
+      this.MVY.a(this.MVZ, this.MVZ);
     }
     super.onBindView(paramView);
-    AppMethodBeat.o(23394);
+    AppMethodBeat.o(27014);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23393);
+    AppMethodBeat.i(27013);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970206, localViewGroup);
-    AppMethodBeat.o(23393);
+    localLayoutInflater.inflate(R.i.glT, localViewGroup);
+    AppMethodBeat.o(27013);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactLabelPreference
  * JD-Core Version:    0.7.0.1
  */

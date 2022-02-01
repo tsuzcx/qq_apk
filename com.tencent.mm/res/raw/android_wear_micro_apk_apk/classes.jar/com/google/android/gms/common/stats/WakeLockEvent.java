@@ -9,62 +9,62 @@ public final class WakeLockEvent
   extends StatsEvent
 {
   public static final Parcelable.Creator<WakeLockEvent> CREATOR = new b();
-  final int Hc;
-  private final long KL;
-  private int KM;
-  private final String KN;
-  private final String KO;
-  private final String KP;
-  private final int KQ;
-  private final List<String> KR;
-  private final String KS;
-  private final long KT;
-  private int KU;
-  private final String KV;
-  private final float KW;
-  private long KX;
-  private final long fk;
+  final int IR;
+  private final long MA;
+  private int MB;
+  private final String MC;
+  private final String MD;
+  private final String ME;
+  private final int MF;
+  private final List<String> MG;
+  private final String MH;
+  private final long MI;
+  private int MJ;
+  private final String MK;
+  private final float ML;
+  private long MM;
+  private final long gY;
   
   WakeLockEvent(int paramInt1, long paramLong1, int paramInt2, String paramString1, int paramInt3, List<String> paramList, String paramString2, long paramLong2, int paramInt4, String paramString3, String paramString4, float paramFloat, long paramLong3, String paramString5)
   {
-    this.Hc = paramInt1;
-    this.KL = paramLong1;
-    this.KM = paramInt2;
-    this.KN = paramString1;
-    this.KO = paramString3;
-    this.KP = paramString5;
-    this.KQ = paramInt3;
-    this.KX = -1L;
-    this.KR = paramList;
-    this.KS = paramString2;
-    this.KT = paramLong2;
-    this.KU = paramInt4;
-    this.KV = paramString4;
-    this.KW = paramFloat;
-    this.fk = paramLong3;
+    this.IR = paramInt1;
+    this.MA = paramLong1;
+    this.MB = paramInt2;
+    this.MC = paramString1;
+    this.MD = paramString3;
+    this.ME = paramString5;
+    this.MF = paramInt3;
+    this.MM = -1L;
+    this.MG = paramList;
+    this.MH = paramString2;
+    this.MI = paramLong2;
+    this.MJ = paramInt4;
+    this.MK = paramString4;
+    this.ML = paramFloat;
+    this.gY = paramLong3;
   }
   
   public final int getEventType()
   {
-    return this.KM;
+    return this.MB;
   }
   
   public final long getTimeMillis()
   {
-    return this.KL;
+    return this.MA;
   }
   
-  public final long hE()
+  public final long hO()
   {
-    return this.KX;
+    return this.MM;
   }
   
-  public final String hF()
+  public final String hP()
   {
     String str5 = String.valueOf("\t");
-    String str6 = String.valueOf(this.KN);
+    String str6 = String.valueOf(this.MC);
     String str7 = String.valueOf("\t");
-    int i = this.KQ;
+    int i = this.MF;
     String str8 = String.valueOf("\t");
     String str1;
     String str9;
@@ -78,96 +78,96 @@ public final class WakeLockEvent
     String str12;
     float f;
     String str13;
-    if (this.KR == null)
+    if (this.MG == null)
     {
       str1 = "";
       str9 = String.valueOf("\t");
-      j = this.KU;
+      j = this.MJ;
       str10 = String.valueOf("\t");
-      if (this.KO != null) {
+      if (this.MD != null) {
         break label345;
       }
       str2 = "";
       str11 = String.valueOf("\t");
-      if (this.KV != null) {
+      if (this.MK != null) {
         break label354;
       }
       str3 = "";
       str12 = String.valueOf("\t");
-      f = this.KW;
+      f = this.ML;
       str13 = String.valueOf("\t");
-      if (this.KP != null) {
+      if (this.ME != null) {
         break label363;
       }
     }
     label345:
     label354:
     label363:
-    for (String str4 = "";; str4 = this.KP)
+    for (String str4 = "";; str4 = this.ME)
     {
       return String.valueOf(str5).length() + 37 + String.valueOf(str6).length() + String.valueOf(str7).length() + String.valueOf(str8).length() + String.valueOf(str1).length() + String.valueOf(str9).length() + String.valueOf(str10).length() + String.valueOf(str2).length() + String.valueOf(str11).length() + String.valueOf(str3).length() + String.valueOf(str12).length() + String.valueOf(str13).length() + String.valueOf(str4).length() + str5 + str6 + str7 + i + str8 + str1 + str9 + j + str10 + str2 + str11 + str3 + str12 + f + str13 + str4;
-      str1 = TextUtils.join(",", this.KR);
+      str1 = TextUtils.join(",", this.MG);
       break;
-      str2 = this.KO;
+      str2 = this.MD;
       break label76;
-      str3 = this.KV;
+      str3 = this.MK;
       break label94;
     }
   }
   
-  public final String hG()
+  public final String hQ()
   {
-    return this.KN;
+    return this.MC;
   }
   
-  public final String hH()
+  public final String hR()
   {
-    return this.KO;
+    return this.MD;
   }
   
-  public final String hI()
+  public final String hS()
   {
-    return this.KP;
+    return this.ME;
   }
   
-  public final int hJ()
+  public final int hT()
   {
-    return this.KQ;
+    return this.MF;
   }
   
-  public final List<String> hK()
+  public final List<String> hU()
   {
-    return this.KR;
+    return this.MG;
   }
   
-  public final String hL()
+  public final String hV()
   {
-    return this.KS;
+    return this.MH;
   }
   
-  public final long hM()
+  public final long hW()
   {
-    return this.KT;
+    return this.MI;
   }
   
-  public final int hN()
+  public final int hX()
   {
-    return this.KU;
+    return this.MJ;
   }
   
-  public final String hO()
+  public final String hY()
   {
-    return this.KV;
+    return this.MK;
   }
   
-  public final float hP()
+  public final float hZ()
   {
-    return this.KW;
+    return this.ML;
   }
   
-  public final long hQ()
+  public final long ia()
   {
-    return this.fk;
+    return this.gY;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)

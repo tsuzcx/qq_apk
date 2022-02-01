@@ -75,55 +75,62 @@ final class MatroskaExtractor$Track
   
   private byte[] getHdrStaticInfo()
   {
-    if ((this.primaryRChromaticityX == -1.0F) || (this.primaryRChromaticityY == -1.0F) || (this.primaryGChromaticityX == -1.0F) || (this.primaryGChromaticityY == -1.0F) || (this.primaryBChromaticityX == -1.0F) || (this.primaryBChromaticityY == -1.0F) || (this.whitePointChromaticityX == -1.0F) || (this.whitePointChromaticityY == -1.0F) || (this.maxMasteringLuminance == -1.0F) || (this.minMasteringLuminance == -1.0F)) {
-      return null;
+    if ((this.primaryRChromaticityX != -1.0F) && (this.primaryRChromaticityY != -1.0F) && (this.primaryGChromaticityX != -1.0F) && (this.primaryGChromaticityY != -1.0F) && (this.primaryBChromaticityX != -1.0F) && (this.primaryBChromaticityY != -1.0F) && (this.whitePointChromaticityX != -1.0F) && (this.whitePointChromaticityY != -1.0F) && (this.maxMasteringLuminance != -1.0F) && (this.minMasteringLuminance != -1.0F))
+    {
+      byte[] arrayOfByte = new byte[25];
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(arrayOfByte);
+      localByteBuffer.put((byte)0);
+      localByteBuffer.putShort((short)(int)(this.primaryRChromaticityX * 50000.0F + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.primaryRChromaticityY * 50000.0F + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.primaryGChromaticityX * 50000.0F + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.primaryGChromaticityY * 50000.0F + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.primaryBChromaticityX * 50000.0F + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.primaryBChromaticityY * 50000.0F + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.whitePointChromaticityX * 50000.0F + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.whitePointChromaticityY * 50000.0F + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.maxMasteringLuminance + 0.5F));
+      localByteBuffer.putShort((short)(int)(this.minMasteringLuminance + 0.5F));
+      localByteBuffer.putShort((short)this.maxContentLuminance);
+      localByteBuffer.putShort((short)this.maxFrameAverageLuminance);
+      return arrayOfByte;
     }
-    byte[] arrayOfByte = new byte[25];
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(arrayOfByte);
-    localByteBuffer.put((byte)0);
-    localByteBuffer.putShort((short)(int)(this.primaryRChromaticityX * 50000.0F + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.primaryRChromaticityY * 50000.0F + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.primaryGChromaticityX * 50000.0F + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.primaryGChromaticityY * 50000.0F + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.primaryBChromaticityX * 50000.0F + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.primaryBChromaticityY * 50000.0F + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.whitePointChromaticityX * 50000.0F + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.whitePointChromaticityY * 50000.0F + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.maxMasteringLuminance + 0.5F));
-    localByteBuffer.putShort((short)(int)(this.minMasteringLuminance + 0.5F));
-    localByteBuffer.putShort((short)this.maxContentLuminance);
-    localByteBuffer.putShort((short)this.maxFrameAverageLuminance);
-    return arrayOfByte;
+    return null;
   }
   
   private static List<byte[]> parseFourCcVc1Private(ParsableByteArray paramParsableByteArray)
   {
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        paramParsableByteArray.skipBytes(16);
-        if (paramParsableByteArray.readLittleEndianUnsignedInt() != 826496599L) {
-          return null;
-        }
-        i = paramParsableByteArray.getPosition() + 20;
-        paramParsableByteArray = paramParsableByteArray.data;
-        if (i < paramParsableByteArray.length - 4)
-        {
-          if ((paramParsableByteArray[i] == 0) && (paramParsableByteArray[(i + 1)] == 0) && (paramParsableByteArray[(i + 2)] == 1) && (paramParsableByteArray[(i + 3)] == 15)) {
-            return Collections.singletonList(Arrays.copyOfRange(paramParsableByteArray, i, paramParsableByteArray.length));
-          }
-        }
-        else {
-          throw new ParserException("Failed to find FourCC VC1 initialization data");
-        }
+      paramParsableByteArray.skipBytes(16);
+      if (paramParsableByteArray.readLittleEndianUnsignedInt() != 826496599L) {
+        return null;
       }
-      catch (ArrayIndexOutOfBoundsException paramParsableByteArray)
+      i = paramParsableByteArray.getPosition() + 20;
+      paramParsableByteArray = paramParsableByteArray.data;
+    }
+    catch (ArrayIndexOutOfBoundsException paramParsableByteArray)
+    {
+      for (;;)
       {
-        throw new ParserException("Error parsing FourCC VC1 codec private");
+        int i;
+        continue;
+        i += 1;
       }
-      i += 1;
+    }
+    if (i < paramParsableByteArray.length - 4)
+    {
+      if ((paramParsableByteArray[i] == 0) && (paramParsableByteArray[(i + 1)] == 0) && (paramParsableByteArray[(i + 2)] == 1) && (paramParsableByteArray[(i + 3)] == 15)) {
+        return Collections.singletonList(Arrays.copyOfRange(paramParsableByteArray, i, paramParsableByteArray.length));
+      }
+    }
+    else
+    {
+      throw new ParserException("Failed to find FourCC VC1 initialization data");
+      paramParsableByteArray = new ParserException("Error parsing FourCC VC1 codec private");
+      for (;;)
+      {
+        throw paramParsableByteArray;
+      }
     }
   }
   
@@ -142,72 +149,78 @@ final class MatroskaExtractor$Track
         {
           long l1 = paramParsableByteArray.readLong();
           long l2 = MatroskaExtractor.access$400().getLeastSignificantBits();
-          if (l1 == l2) {}
+          if (l1 == l2) {
+            return true;
+          }
         }
-        else
-        {
-          return false;
-        }
-      }
-      else
-      {
         return false;
       }
+      return false;
     }
     catch (ArrayIndexOutOfBoundsException paramParsableByteArray)
     {
-      throw new ParserException("Error parsing MS/ACM codec private");
+      label64:
+      break label64;
     }
-    return true;
+    throw new ParserException("Error parsing MS/ACM codec private");
   }
   
   private static List<byte[]> parseVorbisCodecPrivate(byte[] paramArrayOfByte)
   {
-    int k = 0;
-    if (paramArrayOfByte[0] != 2) {
+    int i;
+    int j;
+    if (paramArrayOfByte[0] == 2)
+    {
+      i = 1;
+      j = 0;
+    }
+    for (;;)
+    {
+      int k = j + 1;
+      j = paramArrayOfByte[j];
+      if (paramArrayOfByte[k] == 1) {}
       try
       {
+        byte[] arrayOfByte1 = new byte[m];
+        System.arraycopy(paramArrayOfByte, k, arrayOfByte1, 0, m);
+        k += m;
+        if (paramArrayOfByte[k] == 3)
+        {
+          i = k + (i + j);
+          if (paramArrayOfByte[i] == 5)
+          {
+            byte[] arrayOfByte2 = new byte[paramArrayOfByte.length - i];
+            System.arraycopy(paramArrayOfByte, i, arrayOfByte2, 0, paramArrayOfByte.length - i);
+            paramArrayOfByte = new ArrayList(2);
+            paramArrayOfByte.add(arrayOfByte1);
+            paramArrayOfByte.add(arrayOfByte2);
+            return paramArrayOfByte;
+          }
+          throw new ParserException("Error parsing vorbis codec private");
+        }
         throw new ParserException("Error parsing vorbis codec private");
       }
       catch (ArrayIndexOutOfBoundsException paramArrayOfByte)
       {
-        throw new ParserException("Error parsing vorbis codec private");
+        break label159;
       }
-    }
-    int i = 0;
-    int j = 1;
-    while (paramArrayOfByte[j] == -1)
-    {
-      j += 1;
-      i += 255;
-    }
-    for (;;)
-    {
-      k = j + 1;
-      j = paramArrayOfByte[j];
-      if (paramArrayOfByte[k] != 1) {
-        throw new ParserException("Error parsing vorbis codec private");
+      throw new ParserException("Error parsing vorbis codec private");
+      throw new ParserException("Error parsing vorbis codec private");
+      label159:
+      paramArrayOfByte = new ParserException("Error parsing vorbis codec private");
+      for (;;)
+      {
+        throw paramArrayOfByte;
       }
-      byte[] arrayOfByte1 = new byte[n];
-      System.arraycopy(paramArrayOfByte, k, arrayOfByte1, 0, n);
-      k = n + k;
-      if (paramArrayOfByte[k] != 3) {
-        throw new ParserException("Error parsing vorbis codec private");
+      while (paramArrayOfByte[i] == -1)
+      {
+        j += 255;
+        i += 1;
       }
-      i = i + j + k;
-      if (paramArrayOfByte[i] != 5) {
-        throw new ParserException("Error parsing vorbis codec private");
-      }
-      byte[] arrayOfByte2 = new byte[paramArrayOfByte.length - i];
-      System.arraycopy(paramArrayOfByte, i, arrayOfByte2, 0, paramArrayOfByte.length - i);
-      paramArrayOfByte = new ArrayList(2);
-      paramArrayOfByte.add(arrayOfByte1);
-      paramArrayOfByte.add(arrayOfByte2);
-      return paramArrayOfByte;
-      int m = j + 1;
-      int n = i + paramArrayOfByte[j];
-      j = m;
-      i = k;
+      k = i + 1;
+      int m = j + paramArrayOfByte[i];
+      i = 0;
+      j = k;
       while (paramArrayOfByte[j] == -1)
       {
         i += 255;
@@ -218,429 +231,424 @@ final class MatroskaExtractor$Track
   
   public void initializeOutput(ExtractorOutput paramExtractorOutput, int paramInt)
   {
-    int k = -1;
-    int j = -1;
-    Object localObject3 = null;
     Object localObject1 = this.codecId;
-    int i = -1;
-    switch (((String)localObject1).hashCode())
+    int i = ((String)localObject1).hashCode();
+    int k = 0;
+    int m = 3;
+    switch (i)
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        throw new ParserException("Unrecognized codec identifier.");
-        if (((String)localObject1).equals("V_VP8"))
-        {
-          i = 0;
-          continue;
-          if (((String)localObject1).equals("V_VP9"))
-          {
-            i = 1;
-            continue;
-            if (((String)localObject1).equals("V_MPEG2"))
-            {
-              i = 2;
-              continue;
-              if (((String)localObject1).equals("V_MPEG4/ISO/SP"))
-              {
-                i = 3;
-                continue;
-                if (((String)localObject1).equals("V_MPEG4/ISO/ASP"))
-                {
-                  i = 4;
-                  continue;
-                  if (((String)localObject1).equals("V_MPEG4/ISO/AP"))
-                  {
-                    i = 5;
-                    continue;
-                    if (((String)localObject1).equals("V_MPEG4/ISO/AVC"))
-                    {
-                      i = 6;
-                      continue;
-                      if (((String)localObject1).equals("V_MPEGH/ISO/HEVC"))
-                      {
-                        i = 7;
-                        continue;
-                        if (((String)localObject1).equals("V_MS/VFW/FOURCC"))
-                        {
-                          i = 8;
-                          continue;
-                          if (((String)localObject1).equals("V_THEORA"))
-                          {
-                            i = 9;
-                            continue;
-                            if (((String)localObject1).equals("A_VORBIS"))
-                            {
-                              i = 10;
-                              continue;
-                              if (((String)localObject1).equals("A_OPUS"))
-                              {
-                                i = 11;
-                                continue;
-                                if (((String)localObject1).equals("A_AAC"))
-                                {
-                                  i = 12;
-                                  continue;
-                                  if (((String)localObject1).equals("A_MPEG/L2"))
-                                  {
-                                    i = 13;
-                                    continue;
-                                    if (((String)localObject1).equals("A_MPEG/L3"))
-                                    {
-                                      i = 14;
-                                      continue;
-                                      if (((String)localObject1).equals("A_AC3"))
-                                      {
-                                        i = 15;
-                                        continue;
-                                        if (((String)localObject1).equals("A_EAC3"))
-                                        {
-                                          i = 16;
-                                          continue;
-                                          if (((String)localObject1).equals("A_TRUEHD"))
-                                          {
-                                            i = 17;
-                                            continue;
-                                            if (((String)localObject1).equals("A_DTS"))
-                                            {
-                                              i = 18;
-                                              continue;
-                                              if (((String)localObject1).equals("A_DTS/EXPRESS"))
-                                              {
-                                                i = 19;
-                                                continue;
-                                                if (((String)localObject1).equals("A_DTS/LOSSLESS"))
-                                                {
-                                                  i = 20;
-                                                  continue;
-                                                  if (((String)localObject1).equals("A_FLAC"))
-                                                  {
-                                                    i = 21;
-                                                    continue;
-                                                    if (((String)localObject1).equals("A_MS/ACM"))
-                                                    {
-                                                      i = 22;
-                                                      continue;
-                                                      if (((String)localObject1).equals("A_PCM/INT/LIT"))
-                                                      {
-                                                        i = 23;
-                                                        continue;
-                                                        if (((String)localObject1).equals("S_TEXT/UTF8"))
-                                                        {
-                                                          i = 24;
-                                                          continue;
-                                                          if (((String)localObject1).equals("S_TEXT/ASS"))
-                                                          {
-                                                            i = 25;
-                                                            continue;
-                                                            if (((String)localObject1).equals("S_VOBSUB"))
-                                                            {
-                                                              i = 26;
-                                                              continue;
-                                                              if (((String)localObject1).equals("S_HDMV/PGS"))
-                                                              {
-                                                                i = 27;
-                                                                continue;
-                                                                if (((String)localObject1).equals("S_DVBSUB")) {
-                                                                  i = 28;
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1951062397: 
+      if (((String)localObject1).equals("A_OPUS")) {
+        i = 11;
       }
+      break;
+    case 1950789798: 
+      if (((String)localObject1).equals("A_FLAC")) {
+        i = 21;
+      }
+      break;
+    case 1950749482: 
+      if (((String)localObject1).equals("A_EAC3")) {
+        i = 16;
+      }
+      break;
+    case 1809237540: 
+      if (((String)localObject1).equals("V_MPEG2")) {
+        i = 2;
+      }
+      break;
+    case 1422270023: 
+      if (((String)localObject1).equals("S_TEXT/UTF8")) {
+        i = 24;
+      }
+      break;
+    case 855502857: 
+      if (((String)localObject1).equals("V_MPEGH/ISO/HEVC")) {
+        i = 7;
+      }
+      break;
+    case 738597099: 
+      if (((String)localObject1).equals("S_TEXT/ASS")) {
+        i = 25;
+      }
+      break;
+    case 725957860: 
+      if (((String)localObject1).equals("A_PCM/INT/LIT")) {
+        i = 23;
+      }
+      break;
+    case 542569478: 
+      if (((String)localObject1).equals("A_DTS/EXPRESS")) {
+        i = 19;
+      }
+      break;
+    case 444813526: 
+      if (((String)localObject1).equals("V_THEORA")) {
+        i = 9;
+      }
+      break;
+    case 99146302: 
+      if (((String)localObject1).equals("S_HDMV/PGS")) {
+        i = 27;
+      }
+      break;
+    case 82338134: 
+      if (((String)localObject1).equals("V_VP9")) {
+        i = 1;
+      }
+      break;
+    case 82338133: 
+      if (((String)localObject1).equals("V_VP8")) {
+        i = 0;
+      }
+      break;
+    case 62927045: 
+      if (((String)localObject1).equals("A_DTS")) {
+        i = 18;
+      }
+      break;
+    case 62923603: 
+      if (((String)localObject1).equals("A_AC3")) {
+        i = 15;
+      }
+      break;
+    case 62923557: 
+      if (((String)localObject1).equals("A_AAC")) {
+        i = 12;
+      }
+      break;
+    case -356037306: 
+      if (((String)localObject1).equals("A_DTS/LOSSLESS")) {
+        i = 20;
+      }
+      break;
+    case -425012669: 
+      if (((String)localObject1).equals("S_VOBSUB")) {
+        i = 26;
+      }
+      break;
+    case -538363109: 
+      if (((String)localObject1).equals("V_MPEG4/ISO/AVC")) {
+        i = 6;
+      }
+      break;
+    case -538363189: 
+      if (((String)localObject1).equals("V_MPEG4/ISO/ASP")) {
+        i = 4;
+      }
+      break;
+    case -933872740: 
+      if (((String)localObject1).equals("S_DVBSUB")) {
+        i = 28;
+      }
+      break;
+    case -1373388978: 
+      if (((String)localObject1).equals("V_MS/VFW/FOURCC")) {
+        i = 8;
+      }
+      break;
+    case -1482641357: 
+      if (((String)localObject1).equals("A_MPEG/L3")) {
+        i = 14;
+      }
+      break;
+    case -1482641358: 
+      if (((String)localObject1).equals("A_MPEG/L2")) {
+        i = 13;
+      }
+      break;
+    case -1730367663: 
+      if (((String)localObject1).equals("A_VORBIS")) {
+        i = 10;
+      }
+      break;
+    case -1784763192: 
+      if (((String)localObject1).equals("A_TRUEHD")) {
+        i = 17;
+      }
+      break;
+    case -1985379776: 
+      if (((String)localObject1).equals("A_MS/ACM")) {
+        i = 22;
+      }
+      break;
+    case -2095575984: 
+      if (((String)localObject1).equals("V_MPEG4/ISO/SP")) {
+        i = 3;
+      }
+      break;
+    case -2095576542: 
+      if (((String)localObject1).equals("V_MPEG4/ISO/AP")) {
+        i = 5;
+      }
+      break;
+    }
+    i = -1;
+    Object localObject4 = null;
+    label1254:
+    Object localObject3;
+    switch (i)
+    {
+    default: 
+      throw new ParserException("Unrecognized codec identifier.");
+    case 28: 
+      localObject1 = this.codecPrivate;
+      localObject1 = Collections.singletonList(new byte[] { localObject1[0], localObject1[1], localObject1[2], localObject1[3] });
+      localObject2 = "application/dvbsubs";
+      break;
+    case 27: 
+      localObject1 = "application/pgs";
+      break;
+    case 26: 
+      localObject2 = Collections.singletonList(this.codecPrivate);
+      localObject1 = "application/vobsub";
+      break;
+    case 25: 
+      localObject1 = "text/x-ssa";
+      break;
+    case 24: 
+      localObject1 = "application/x-subrip";
+      break;
+    case 23: 
+      j = Util.getPcmEncoding(this.audioBitDepth);
+      i = j;
+      if (j == 0)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Unsupported PCM bit depth: ");
+        ((StringBuilder)localObject1).append(this.audioBitDepth);
+        ((StringBuilder)localObject1).append(". Setting mimeType to ");
+        ((StringBuilder)localObject1).append("audio/x-unknown");
+        Log.w("MatroskaExtractor", ((StringBuilder)localObject1).toString());
+      }
+      break;
+    case 22: 
+      do
+      {
+        j = i;
+        localObject1 = "audio/raw";
+        localObject2 = null;
+        i = -1;
+        break label1705;
+        if (!parseMsAcmCodecPrivate(new ParsableByteArray(this.codecPrivate))) {
+          break;
+        }
+        j = Util.getPcmEncoding(this.audioBitDepth);
+        i = j;
+      } while (j != 0);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Unsupported PCM bit depth: ");
+      ((StringBuilder)localObject1).append(this.audioBitDepth);
+      ((StringBuilder)localObject1).append(". Setting mimeType to ");
+      ((StringBuilder)localObject1).append("audio/x-unknown");
+      Log.w("MatroskaExtractor", ((StringBuilder)localObject1).toString());
+      break label1254;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Non-PCM MS/ACM is unsupported. Setting mimeType to ");
+      ((StringBuilder)localObject1).append("audio/x-unknown");
+      Log.w("MatroskaExtractor", ((StringBuilder)localObject1).toString());
+      localObject1 = "audio/x-unknown";
+      break;
+    case 21: 
+      localObject1 = Collections.singletonList(this.codecPrivate);
+      localObject2 = "audio/flac";
+      break;
+    case 20: 
+      localObject1 = "audio/vnd.dts.hd";
+      break;
+    case 18: 
+    case 19: 
+      localObject1 = "audio/vnd.dts";
+      break;
+    case 17: 
+      this.trueHdSampleRechunker = new MatroskaExtractor.TrueHdSampleRechunker();
+      localObject1 = "audio/true-hd";
+      break;
+    case 16: 
+      localObject1 = "audio/eac3";
+      break;
+    case 15: 
+      localObject1 = "audio/ac3";
+      break;
+    case 14: 
+      localObject1 = "audio/mpeg";
+      break;
+    case 13: 
+      localObject1 = "audio/mpeg-L2";
+      localObject2 = null;
+      i = 4096;
+      break;
+    case 12: 
+      localObject1 = Collections.singletonList(this.codecPrivate);
+      localObject2 = "audio/mp4a-latm";
+    case 11: 
+    case 10: 
+    case 9: 
+    case 8: 
+    case 7: 
+    case 6: 
+    case 3: 
+    case 4: 
+    case 5: 
+      for (;;)
+      {
+        i = -1;
+        j = -1;
+        localObject3 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+        break label1705;
+        localObject2 = new ArrayList(3);
+        ((List)localObject2).add(this.codecPrivate);
+        ((List)localObject2).add(ByteBuffer.allocate(8).order(ByteOrder.nativeOrder()).putLong(this.codecDelayNs).array());
+        ((List)localObject2).add(ByteBuffer.allocate(8).order(ByteOrder.nativeOrder()).putLong(this.seekPreRollNs).array());
+        localObject1 = "audio/opus";
+        i = 5760;
+        break label1702;
+        localObject2 = parseVorbisCodecPrivate(this.codecPrivate);
+        localObject1 = "audio/vorbis";
+        i = 8192;
+        break label1702;
+        localObject1 = "video/x-unknown";
+        break;
+        localObject1 = parseFourCcVc1Private(new ParsableByteArray(this.codecPrivate));
+        if (localObject1 != null)
+        {
+          localObject2 = "video/wvc1";
+        }
+        else
+        {
+          Log.w("MatroskaExtractor", "Unsupported FourCC. Setting mimeType to video/x-unknown");
+          localObject2 = localObject1;
+          localObject1 = "video/x-unknown";
+          break label1699;
+          localObject1 = HevcConfig.parse(new ParsableByteArray(this.codecPrivate));
+          localObject2 = ((HevcConfig)localObject1).initializationData;
+          this.nalUnitLengthFieldLength = ((HevcConfig)localObject1).nalUnitLengthFieldLength;
+          localObject1 = "video/hevc";
+          break label1699;
+          localObject1 = AvcConfig.parse(new ParsableByteArray(this.codecPrivate));
+          localObject2 = ((AvcConfig)localObject1).initializationData;
+          this.nalUnitLengthFieldLength = ((AvcConfig)localObject1).nalUnitLengthFieldLength;
+          localObject1 = "video/avc";
+          break label1699;
+          localObject1 = this.codecPrivate;
+          if (localObject1 == null) {
+            localObject1 = null;
+          } else {
+            localObject1 = Collections.singletonList(localObject1);
+          }
+          localObject2 = "video/mp4v-es";
+        }
+      }
+    case 2: 
+      localObject1 = "video/mpeg2";
+      break;
+    case 1: 
+      localObject1 = "video/x-vnd.on2.vp9";
+      break;
     }
     localObject1 = "video/x-vnd.on2.vp8";
-    Object localObject2 = localObject3;
-    i = k;
-    label946:
-    int m;
-    if (this.flagDefault)
+    Object localObject2 = null;
+    label1699:
+    i = -1;
+    label1702:
+    int j = -1;
+    label1705:
+    boolean bool = this.flagDefault;
+    if (this.flagForced) {
+      k = 2;
+    }
+    k |= bool | false;
+    if (MimeTypes.isAudio((String)localObject1))
     {
-      k = 1;
-      if (!this.flagForced) {
-        break label1931;
-      }
-      m = 2;
-      label956:
-      k = 0x0 | k | m;
-      if (!MimeTypes.isAudio((String)localObject1)) {
-        break label1937;
-      }
       localObject1 = Format.createAudioSampleFormat(Integer.toString(paramInt), (String)localObject1, null, -1, i, this.channelCount, this.sampleRate, j, (List)localObject2, this.drmInitData, k, this.language);
       paramInt = 1;
     }
-    for (;;)
+    else if (MimeTypes.isVideo((String)localObject1))
     {
-      this.output = paramExtractorOutput.track(this.number, paramInt);
-      this.output.format((Format)localObject1);
-      return;
-      localObject1 = "video/x-vnd.on2.vp9";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "video/mpeg2";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject3 = "video/mp4v-es";
-      if (this.codecPrivate == null) {}
-      for (localObject1 = null;; localObject1 = Collections.singletonList(this.codecPrivate))
+      if (this.displayUnit == 0)
       {
-        localObject2 = localObject1;
-        localObject1 = localObject3;
-        i = k;
-        break;
-      }
-      localObject1 = "video/avc";
-      localObject3 = AvcConfig.parse(new ParsableByteArray(this.codecPrivate));
-      localObject2 = ((AvcConfig)localObject3).initializationData;
-      this.nalUnitLengthFieldLength = ((AvcConfig)localObject3).nalUnitLengthFieldLength;
-      i = k;
-      break;
-      localObject1 = "video/hevc";
-      localObject3 = HevcConfig.parse(new ParsableByteArray(this.codecPrivate));
-      localObject2 = ((HevcConfig)localObject3).initializationData;
-      this.nalUnitLengthFieldLength = ((HevcConfig)localObject3).nalUnitLengthFieldLength;
-      i = k;
-      break;
-      localObject2 = parseFourCcVc1Private(new ParsableByteArray(this.codecPrivate));
-      if (localObject2 != null)
-      {
-        localObject1 = "video/wvc1";
-        i = k;
-        break;
-      }
-      Log.w("MatroskaExtractor", "Unsupported FourCC. Setting mimeType to video/x-unknown");
-      localObject1 = "video/x-unknown";
-      i = k;
-      break;
-      localObject1 = "video/x-unknown";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/vorbis";
-      i = 8192;
-      localObject2 = parseVorbisCodecPrivate(this.codecPrivate);
-      break;
-      localObject1 = "audio/opus";
-      i = 5760;
-      localObject2 = new ArrayList(3);
-      ((List)localObject2).add(this.codecPrivate);
-      ((List)localObject2).add(ByteBuffer.allocate(8).order(ByteOrder.nativeOrder()).putLong(this.codecDelayNs).array());
-      ((List)localObject2).add(ByteBuffer.allocate(8).order(ByteOrder.nativeOrder()).putLong(this.seekPreRollNs).array());
-      break;
-      localObject1 = "audio/mp4a-latm";
-      localObject2 = Collections.singletonList(this.codecPrivate);
-      i = k;
-      break;
-      localObject1 = "audio/mpeg-L2";
-      i = 4096;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/mpeg";
-      i = 4096;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/ac3";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/eac3";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/true-hd";
-      this.trueHdSampleRechunker = new MatroskaExtractor.TrueHdSampleRechunker();
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/vnd.dts";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/vnd.dts.hd";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/flac";
-      localObject2 = Collections.singletonList(this.codecPrivate);
-      i = k;
-      break;
-      localObject1 = "audio/raw";
-      if (parseMsAcmCodecPrivate(new ParsableByteArray(this.codecPrivate)))
-      {
-        m = Util.getPcmEncoding(this.audioBitDepth);
-        i = k;
-        j = m;
-        localObject2 = localObject3;
-        if (m != 0) {
-          break;
-        }
-        j = -1;
-        localObject1 = "audio/x-unknown";
-        Log.w("MatroskaExtractor", "Unsupported PCM bit depth: " + this.audioBitDepth + ". Setting mimeType to " + "audio/x-unknown");
-        i = k;
-        localObject2 = localObject3;
-        break;
-      }
-      localObject1 = "audio/x-unknown";
-      Log.w("MatroskaExtractor", "Non-PCM MS/ACM is unsupported. Setting mimeType to " + "audio/x-unknown");
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "audio/raw";
-      m = Util.getPcmEncoding(this.audioBitDepth);
-      i = k;
-      j = m;
-      localObject2 = localObject3;
-      if (m != 0) {
-        break;
-      }
-      j = -1;
-      localObject1 = "audio/x-unknown";
-      Log.w("MatroskaExtractor", "Unsupported PCM bit depth: " + this.audioBitDepth + ". Setting mimeType to " + "audio/x-unknown");
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "application/x-subrip";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "text/x-ssa";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "application/vobsub";
-      localObject2 = Collections.singletonList(this.codecPrivate);
-      i = k;
-      break;
-      localObject1 = "application/pgs";
-      i = k;
-      localObject2 = localObject3;
-      break;
-      localObject1 = "application/dvbsubs";
-      localObject2 = Collections.singletonList(new byte[] { this.codecPrivate[0], this.codecPrivate[1], this.codecPrivate[2], this.codecPrivate[3] });
-      i = k;
-      break;
-      k = 0;
-      break label946;
-      label1931:
-      m = 0;
-      break label956;
-      label1937:
-      if (MimeTypes.isVideo((String)localObject1))
-      {
-        if (this.displayUnit == 0)
-        {
-          if (this.displayWidth != -1) {
-            break label2127;
-          }
+        k = this.displayWidth;
+        j = k;
+        if (k == -1) {
           j = this.width;
-          label1966:
-          this.displayWidth = j;
-          if (this.displayHeight != -1) {
-            break label2136;
-          }
         }
-        label2127:
-        label2136:
-        for (j = this.height;; j = this.displayHeight)
+        this.displayWidth = j;
+        k = this.displayHeight;
+        j = k;
+        if (k == -1) {
+          j = this.height;
+        }
+        this.displayHeight = j;
+      }
+      j = this.displayWidth;
+      if (j != -1)
+      {
+        k = this.displayHeight;
+        if (k != -1)
         {
-          this.displayHeight = j;
-          float f2 = -1.0F;
-          float f1 = f2;
-          if (this.displayWidth != -1)
-          {
-            f1 = f2;
-            if (this.displayHeight != -1) {
-              f1 = this.height * this.displayWidth / (this.width * this.displayHeight);
-            }
-          }
-          localObject3 = null;
-          if (this.hasColorInfo)
-          {
-            localObject3 = getHdrStaticInfo();
-            localObject3 = new ColorInfo(this.colorSpace, this.colorRange, this.colorTransfer, (byte[])localObject3);
-          }
-          localObject1 = Format.createVideoSampleFormat(Integer.toString(paramInt), (String)localObject1, null, -1, i, this.width, this.height, -1.0F, (List)localObject2, -1, f1, this.projectionData, this.stereoMode, (ColorInfo)localObject3, this.drmInitData);
-          paramInt = 2;
-          break;
-          j = this.displayWidth;
-          break label1966;
+          f = this.height * j / (this.width * k);
+          break label1899;
         }
       }
-      if ("application/x-subrip".equals(localObject1))
+      float f = -1.0F;
+      label1899:
+      localObject3 = localObject4;
+      if (this.hasColorInfo)
       {
-        localObject1 = Format.createTextSampleFormat(Integer.toString(paramInt), (String)localObject1, k, this.language, this.drmInitData);
-        paramInt = 3;
+        localObject3 = getHdrStaticInfo();
+        localObject3 = new ColorInfo(this.colorSpace, this.colorRange, this.colorTransfer, (byte[])localObject3);
       }
-      else if ("text/x-ssa".equals(localObject1))
-      {
-        localObject2 = new ArrayList(2);
-        ((List)localObject2).add(MatroskaExtractor.access$300());
-        ((List)localObject2).add(this.codecPrivate);
-        localObject1 = Format.createTextSampleFormat(Integer.toString(paramInt), (String)localObject1, null, -1, k, this.language, -1, this.drmInitData, 9223372036854775807L, (List)localObject2);
-        paramInt = 3;
-      }
-      else
-      {
-        if ((!"application/vobsub".equals(localObject1)) && (!"application/pgs".equals(localObject1)) && (!"application/dvbsubs".equals(localObject1))) {
-          break label2323;
-        }
-        localObject1 = Format.createImageSampleFormat(Integer.toString(paramInt), (String)localObject1, null, -1, k, (List)localObject2, this.language, this.drmInitData);
-        paramInt = 3;
-      }
+      localObject1 = Format.createVideoSampleFormat(Integer.toString(paramInt), (String)localObject1, null, -1, i, this.width, this.height, -1.0F, (List)localObject2, -1, f, this.projectionData, this.stereoMode, (ColorInfo)localObject3, this.drmInitData);
+      paramInt = 2;
     }
-    label2323:
-    throw new ParserException("Unexpected MIME type.");
+    else if ("application/x-subrip".equals(localObject1))
+    {
+      localObject1 = Format.createTextSampleFormat(Integer.toString(paramInt), (String)localObject1, k, this.language, this.drmInitData);
+      paramInt = m;
+    }
+    else if ("text/x-ssa".equals(localObject1))
+    {
+      localObject2 = new ArrayList(2);
+      ((List)localObject2).add(MatroskaExtractor.access$300());
+      ((List)localObject2).add(this.codecPrivate);
+      localObject1 = Format.createTextSampleFormat(Integer.toString(paramInt), (String)localObject1, null, -1, k, this.language, -1, this.drmInitData, 9223372036854775807L, (List)localObject2);
+      paramInt = m;
+    }
+    else
+    {
+      if ((!"application/vobsub".equals(localObject1)) && (!"application/pgs".equals(localObject1)) && (!"application/dvbsubs".equals(localObject1))) {
+        throw new ParserException("Unexpected MIME type.");
+      }
+      localObject1 = Format.createImageSampleFormat(Integer.toString(paramInt), (String)localObject1, null, -1, k, (List)localObject2, this.language, this.drmInitData);
+      paramInt = m;
+    }
+    this.output = paramExtractorOutput.track(this.number, paramInt);
+    this.output.format((Format)localObject1);
   }
   
   public void outputPendingSampleMetadata()
   {
-    if (this.trueHdSampleRechunker != null) {
-      this.trueHdSampleRechunker.outputPendingSampleMetadata(this);
+    MatroskaExtractor.TrueHdSampleRechunker localTrueHdSampleRechunker = this.trueHdSampleRechunker;
+    if (localTrueHdSampleRechunker != null) {
+      localTrueHdSampleRechunker.outputPendingSampleMetadata(this);
     }
   }
   
   public void reset()
   {
-    if (this.trueHdSampleRechunker != null) {
-      this.trueHdSampleRechunker.reset();
+    MatroskaExtractor.TrueHdSampleRechunker localTrueHdSampleRechunker = this.trueHdSampleRechunker;
+    if (localTrueHdSampleRechunker != null) {
+      localTrueHdSampleRechunker.reset();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mkv.MatroskaExtractor.Track
  * JD-Core Version:    0.7.0.1
  */

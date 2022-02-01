@@ -1,8 +1,8 @@
 package io.flutter.view;
 
-import android.support.annotation.NonNull;
 import android.view.Display;
 import android.view.WindowManager;
+import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.FlutterJNI;
 import io.flutter.embedding.engine.FlutterJNI.AsyncWaitForVsyncDelegate;
 
@@ -35,7 +35,7 @@ public class VsyncWaiter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.view.VsyncWaiter
  * JD-Core Version:    0.7.0.1
  */

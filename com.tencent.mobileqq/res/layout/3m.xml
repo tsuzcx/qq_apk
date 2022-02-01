@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/5b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.avgame.widget.AutoBgImageView android:id="@id/mg5" android:background="@drawable/3e" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/i83" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/wbk" />
+    <RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/o83" android:layout_width="61.0dip" android:layout_height="61.0dip" android:src="@drawable/i7r" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0sp" android:textStyle="bold" android:id="@id/loi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.5dip" android:text="@string/wg6" android:layout_below="@id/o83" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/o7a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/loi" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0sp" android:textStyle="bold" android:id="@id/qke" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="70%" android:layout_below="@id/o7a" android:layout_centerHorizontal="true" />
+        <com.tencent.avgame.ui.CasualTips android:id="@id/qe2" android:layout_width="wrap_content" android:layout_height="90.0dip" android:layout_marginTop="16.0dip" android:layout_below="@id/qke" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

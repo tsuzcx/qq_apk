@@ -1,23 +1,21 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.d.aq;
-import com.tencent.mm.plugin.game.d.ar;
-import com.tencent.mm.plugin.game.d.at;
-import com.tencent.mm.plugin.game.d.bk;
-import com.tencent.mm.plugin.game.d.cc;
-import com.tencent.mm.plugin.game.d.cd;
-import com.tencent.mm.plugin.game.d.cg;
-import com.tencent.mm.plugin.game.d.e;
-import com.tencent.mm.plugin.game.d.h;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.game.api.e;
+import com.tencent.mm.plugin.game.d.d;
+import com.tencent.mm.plugin.game.protobuf.be;
+import com.tencent.mm.plugin.game.protobuf.bf;
+import com.tencent.mm.plugin.game.protobuf.bh;
+import com.tencent.mm.plugin.game.protobuf.bw;
+import com.tencent.mm.plugin.game.protobuf.cs;
+import com.tencent.mm.plugin.game.protobuf.ct;
+import com.tencent.mm.plugin.game.protobuf.cz;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,200 +24,200 @@ import java.util.LinkedList;
 public final class af
   extends x
 {
-  public bk noP;
-  private boolean noQ;
-  public LinkedList<c> noR;
-  public HashMap<String, Integer> noS;
+  public bw IFD;
+  private boolean IFE;
+  public LinkedList<c> IFF;
+  public HashMap<String, Integer> IFG;
   
-  public af(com.tencent.mm.bv.a parama)
+  public af(com.tencent.mm.bx.a parama)
   {
-    AppMethodBeat.i(111384);
-    this.noS = new HashMap();
+    AppMethodBeat.i(41549);
+    this.IFG = new HashMap();
     if (parama == null)
     {
-      this.noP = new bk();
-      AppMethodBeat.o(111384);
+      this.IFD = new bw();
+      AppMethodBeat.o(41549);
       return;
     }
-    this.noP = ((bk)parama);
-    this.noQ = true;
-    Kc();
-    AppMethodBeat.o(111384);
+    this.IFD = ((bw)parama);
+    this.IFE = true;
+    aNi();
+    AppMethodBeat.o(41549);
   }
   
   public af(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(111385);
-    this.noS = new HashMap();
-    this.noP = new bk();
+    AppMethodBeat.i(41550);
+    this.IFG = new HashMap();
+    this.IFD = new bw();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      AppMethodBeat.o(111385);
+      AppMethodBeat.o(41550);
       return;
     }
     try
     {
-      this.noP.parseFrom(paramArrayOfByte);
-      this.noQ = false;
-      Kc();
-      AppMethodBeat.o(111385);
+      this.IFD.parseFrom(paramArrayOfByte);
+      this.IFE = false;
+      aNi();
+      AppMethodBeat.o(41550);
       return;
     }
     catch (IOException paramArrayOfByte)
     {
       for (;;)
       {
-        ab.e("MicroMsg.GamePBDataOverSea", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        Log.e("MicroMsg.GamePBDataOverSea", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private void Kc()
+  private void aNi()
   {
-    AppMethodBeat.i(111386);
-    this.noR = bGR();
-    if (this.noQ)
+    AppMethodBeat.i(41551);
+    this.IFF = fGY();
+    if (this.IFE)
     {
-      com.tencent.mm.plugin.game.f.d.ag(this.noR);
-      bGS();
-      ((com.tencent.mm.plugin.game.api.d)g.E(com.tencent.mm.plugin.game.api.d.class)).bEP().init(ah.getContext());
+      d.bz(this.IFF);
+      fGZ();
+      ((e)h.ax(e.class)).fCf().init(MMApplicationContext.getContext());
     }
-    AppMethodBeat.o(111386);
+    AppMethodBeat.o(41551);
   }
   
-  private LinkedList<c> bGR()
+  private LinkedList<c> fGY()
   {
-    AppMethodBeat.i(111387);
+    AppMethodBeat.i(41552);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.noP.nsS == null) || (this.noP.nsS.nqs == null))
+    if ((this.IFD.IKl == null) || (this.IFD.IKl.IHH == null))
     {
-      AppMethodBeat.o(111387);
+      AppMethodBeat.o(41552);
       return localLinkedList;
     }
-    Iterator localIterator = this.noP.nsS.nqs.iterator();
+    Iterator localIterator = this.IFD.IKl.IHH.iterator();
     int i = 1;
     while (localIterator.hasNext())
     {
-      Object localObject = (aq)localIterator.next();
-      if (((aq)localObject).npS != null)
+      Object localObject = (be)localIterator.next();
+      if (((be)localObject).IGJ != null)
       {
-        c localc = a(((aq)localObject).npS);
+        c localc = a(((be)localObject).IGJ);
         if (localc != null)
         {
-          ar localar;
+          bf localbf;
           StringBuilder localStringBuilder;
           int j;
-          if (((aq)localObject).npS.nqm != null) {
-            if ((((aq)localObject).npS.nqm.Name != null) && (((aq)localObject).npS.nqm.ntA != null))
+          if (((be)localObject).IGJ.IHf != null) {
+            if ((((be)localObject).IGJ.IHf.IGU != null) && (((be)localObject).IGJ.IHf.ILa != null))
             {
-              localc.nmh = ((aq)localObject).npS.nqm.Name;
-              localc.nmi = ((aq)localObject).npS.nqm.ntA;
-              localc.nml = com.tencent.mm.plugin.game.e.a.V(((aq)localObject).nqt, "label", localc.nmh);
-              if (((aq)localObject).nrO == null) {
+              localc.ICs = ((be)localObject).IGJ.IHf.IGU;
+              localc.ICt = ((be)localObject).IGJ.IHf.ILa;
+              localc.ICw = com.tencent.mm.plugin.game.c.a.aw(((be)localObject).IHI, "label", localc.ICs);
+              if (((be)localObject).IJw == null) {
                 break label476;
               }
-              localObject = ((aq)localObject).nrO.iterator();
+              localObject = ((be)localObject).IJw.iterator();
               do
               {
                 if (!((Iterator)localObject).hasNext()) {
                   break;
                 }
-                localar = (ar)((Iterator)localObject).next();
-              } while (localar == null);
-              if ((localar.nrP == null) || (localar.nrP.size() == 0)) {
+                localbf = (bf)((Iterator)localObject).next();
+              } while (localbf == null);
+              if ((localbf.IJx == null) || (localbf.IJx.size() == 0)) {
                 break label462;
               }
               localStringBuilder = new StringBuilder();
               j = 0;
               label271:
-              if (j >= localar.nrP.size()) {
+              if (j >= localbf.IJx.size()) {
                 break label423;
               }
-              ad localad = ((j)g.E(j.class)).YA().arw((String)localar.nrP.get(j));
-              if ((localad == null) || (localad.euF == 0L)) {
+              au localau = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE((String)localbf.IJx.get(j));
+              if ((localau == null) || (localau.maN == 0L)) {
                 break label402;
               }
-              localStringBuilder.append(localad.Of());
+              localStringBuilder.append(localau.aSV());
             }
           }
           for (;;)
           {
-            if (j < localar.nrP.size() - 1) {
+            if (j < localbf.IJx.size() - 1) {
               localStringBuilder.append("、");
             }
             j += 1;
             break label271;
-            localc.nml = com.tencent.mm.plugin.game.e.a.lR(((aq)localObject).nqt);
+            localc.ICw = com.tencent.mm.plugin.game.c.a.EM(((be)localObject).IHI);
             break;
-            localc.nml = com.tencent.mm.plugin.game.e.a.lR(((aq)localObject).nqt);
+            localc.ICw = com.tencent.mm.plugin.game.c.a.EM(((be)localObject).IHI);
             break;
             label402:
-            localStringBuilder.append((String)localar.nrP.get(j));
+            localStringBuilder.append((String)localbf.IJx.get(j));
           }
           label423:
           localStringBuilder.append(" ");
-          localc.nmc.add(localStringBuilder.toString());
+          localc.ICn.add(localStringBuilder.toString());
           for (;;)
           {
-            localc.nmc.add(localar.nqY);
+            localc.ICn.add(localbf.IIu);
             break;
             label462:
-            localc.nmc.add("");
+            localc.ICn.add("");
           }
           label476:
           localc.scene = 10;
-          localc.cFj = 1004;
+          localc.hYi = 1004;
           localc.position = i;
           localLinkedList.add(localc);
           i += 1;
         }
       }
     }
-    AppMethodBeat.o(111387);
+    AppMethodBeat.o(41552);
     return localLinkedList;
   }
   
-  private void bGS()
+  private void fGZ()
   {
-    AppMethodBeat.i(111388);
-    this.noS = new HashMap();
-    if ((this.noP.nsT == null) || (this.noP.nsT.ntx == null))
+    AppMethodBeat.i(41553);
+    this.IFG = new HashMap();
+    if ((this.IFD.IKm == null) || (this.IFD.IKm.IKT == null))
     {
-      AppMethodBeat.o(111388);
+      AppMethodBeat.o(41553);
       return;
     }
-    Iterator localIterator = this.noP.nsT.ntx.iterator();
+    Iterator localIterator = this.IFD.IKm.IKT.iterator();
     while (localIterator.hasNext())
     {
-      cd localcd = (cd)localIterator.next();
-      Object localObject = a(localcd.npS);
+      ct localct = (ct)localIterator.next();
+      Object localObject = a(localct.IGJ);
       if (localObject != null)
       {
-        this.noS.put(((c)localObject).field_appId, Integer.valueOf(((c)localObject).versionCode));
-        localObject = com.tencent.mm.plugin.s.a.cac().als(((c)localObject).field_appId);
+        this.IFG.put(((c)localObject).field_appId, Integer.valueOf(((c)localObject).versionCode));
+        localObject = com.tencent.mm.plugin.openapi.a.gxn().bpR(((c)localObject).field_appId);
         if (localObject != null)
         {
-          ((f)localObject).iX(localcd.ntz);
-          if (!com.tencent.mm.plugin.s.a.cac().a((f)localObject, new String[0])) {
-            ab.e("MicroMsg.GamePBDataOverSea", "Store rank info failed, AppID: %s", new Object[] { ((f)localObject).field_appId });
+          ((com.tencent.mm.pluginsdk.model.app.g)localObject).AG(localct.IKV);
+          if (!com.tencent.mm.plugin.openapi.a.gxn().a((com.tencent.mm.pluginsdk.model.app.g)localObject, new String[0])) {
+            Log.e("MicroMsg.GamePBDataOverSea", "Store rank info failed, AppID: %s", new Object[] { ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_appId });
           }
         }
       }
     }
-    AppMethodBeat.o(111388);
+    AppMethodBeat.o(41553);
   }
   
-  public final at bGT()
+  public final bh fHa()
   {
-    if (this.noP != null) {
-      return this.noP.nsQ;
+    if (this.IFD != null) {
+      return this.IFD.IKj;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.af
  * JD-Core Version:    0.7.0.1
  */

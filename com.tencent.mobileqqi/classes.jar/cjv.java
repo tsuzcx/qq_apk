@@ -9,7 +9,7 @@ public class cjv
   
   public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.a();
   }
 }
 

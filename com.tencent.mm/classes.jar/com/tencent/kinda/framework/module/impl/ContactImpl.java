@@ -2,30 +2,30 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KContact;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 
 public class ContactImpl
   implements KContact
 {
-  private ad contact;
+  private au contact;
   
   public ContactImpl(String paramString)
   {
-    AppMethodBeat.i(144507);
-    g.RM();
-    this.contact = ((j)g.E(j.class)).YA().arw(paramString);
-    AppMethodBeat.o(144507);
+    AppMethodBeat.i(18620);
+    h.baF();
+    this.contact = ((n)h.ax(n.class)).bzA().JE(paramString);
+    AppMethodBeat.o(18620);
   }
   
   public String displayName()
   {
-    AppMethodBeat.i(144508);
-    String str = this.contact.Of();
-    AppMethodBeat.o(144508);
+    AppMethodBeat.i(18621);
+    String str = this.contact.aSV();
+    AppMethodBeat.o(18621);
     return str;
   }
   
@@ -36,7 +36,7 @@ public class ContactImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.ContactImpl
  * JD-Core Version:    0.7.0.1
  */

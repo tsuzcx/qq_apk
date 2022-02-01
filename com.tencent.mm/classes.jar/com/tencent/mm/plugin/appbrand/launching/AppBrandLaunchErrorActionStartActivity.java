@@ -4,65 +4,74 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcel;
-import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.br.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Locale;
 
 final class AppBrandLaunchErrorActionStartActivity
   extends AppBrandLaunchErrorAction
 {
-  final String ijD;
-  final String ijE;
-  final Intent ijF;
+  final String sVK;
+  final String sVL;
+  final Intent sVM;
   
-  @Keep
   AppBrandLaunchErrorActionStartActivity(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(131699);
-    this.ijD = paramParcel.readString();
-    this.ijE = paramParcel.readString();
-    this.ijF = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
-    AppMethodBeat.o(131699);
+    AppMethodBeat.i(47047);
+    this.sVK = paramParcel.readString();
+    this.sVL = paramParcel.readString();
+    this.sVM = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
+    AppMethodBeat.o(47047);
   }
   
   AppBrandLaunchErrorActionStartActivity(String paramString1, int paramInt, String paramString2, String paramString3, Intent paramIntent)
   {
     super(paramString1, paramInt);
-    this.ijD = paramString2;
-    this.ijE = paramString3;
-    this.ijF = paramIntent;
+    this.sVK = paramString2;
+    this.sVL = paramString3;
+    this.sVM = paramIntent;
   }
   
-  final void cS(Context paramContext)
+  final void ad(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(131701);
-    Intent localIntent = this.ijF;
+    AppMethodBeat.i(320899);
+    Log.i("MicroMsg.AppBrandLaunchErrorAction", "showError(%s) startActivity %s -> %s", new Object[] { paramString, paramContext.getClass().getName(), this.sVL });
+    paramString = this.sVM;
     if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
+      paramString.addFlags(268435456);
     }
     for (;;)
     {
-      d.b(paramContext, this.ijD, this.ijE, localIntent);
-      AppMethodBeat.o(131701);
+      c.b(paramContext, this.sVK, this.sVL, paramString);
+      AppMethodBeat.o(320899);
       return;
-      localIntent.setFlags(localIntent.getFlags() & 0xEFFFFFFF);
+      paramString.setFlags(paramString.getFlags() & 0xEFFFFFFF);
     }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(174927);
+    String str = String.format(Locale.ENGLISH, "AppBrandLaunchErrorActionStartActivity[%s.%s|%s]", new Object[] { this.sVK, this.sVL, this.sVM });
+    AppMethodBeat.o(174927);
+    return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(131700);
+    AppMethodBeat.i(47048);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.ijD);
-    paramParcel.writeString(this.ijE);
-    paramParcel.writeParcelable(this.ijF, 0);
-    AppMethodBeat.o(131700);
+    paramParcel.writeString(this.sVK);
+    paramParcel.writeString(this.sVL);
+    paramParcel.writeParcelable(this.sVM, 0);
+    AppMethodBeat.o(47048);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchErrorActionStartActivity
  * JD-Core Version:    0.7.0.1
  */

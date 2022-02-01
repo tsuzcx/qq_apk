@@ -11,18 +11,19 @@ public final class cell_bottom_recomm
   static s_join_list cache_joinlist;
   static s_picdata cache_picinfo = new s_picdata();
   public String AdvIconUrl = "";
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public int anonymity;
+  public int anonymity = 0;
   public String buttonIconUrl = "";
   public String buttontext = "";
-  public WeishiDownlowdUrl downloadUrl;
-  public int iButtonFlag;
-  public int iReportFlag;
-  public boolean isSupportFeedback;
-  public s_join_list joinlist;
+  public WeishiDownlowdUrl downloadUrl = null;
+  public int iButtonFlag = 0;
+  public int iReportFlag = 0;
+  public boolean isSupportFeedback = false;
+  public s_join_list joinlist = null;
   public String jsonData = "";
-  public s_picdata picinfo;
+  public s_picdata picinfo = null;
+  public int style = 0;
   public String summary = "";
   public String summaryColor = "";
   public String title = "";
@@ -34,7 +35,7 @@ public final class cell_bottom_recomm
   
   public cell_bottom_recomm() {}
   
-  public cell_bottom_recomm(s_picdata params_picdata, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2, s_join_list params_join_list, boolean paramBoolean, int paramInt3, int paramInt4, WeishiDownlowdUrl paramWeishiDownlowdUrl, String paramString8)
+  public cell_bottom_recomm(s_picdata params_picdata, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2, s_join_list params_join_list, boolean paramBoolean, int paramInt3, int paramInt4, WeishiDownlowdUrl paramWeishiDownlowdUrl, String paramString8, int paramInt5)
   {
     this.picinfo = params_picdata;
     this.title = paramString1;
@@ -52,6 +53,7 @@ public final class cell_bottom_recomm
     this.iButtonFlag = paramInt4;
     this.downloadUrl = paramWeishiDownlowdUrl;
     this.jsonData = paramString8;
+    this.style = paramInt5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -72,53 +74,66 @@ public final class cell_bottom_recomm
     this.iButtonFlag = paramJceInputStream.read(this.iButtonFlag, 13, false);
     this.downloadUrl = ((WeishiDownlowdUrl)paramJceInputStream.read(cache_downloadUrl, 14, false));
     this.jsonData = paramJceInputStream.readString(15, false);
+    this.style = paramJceInputStream.read(this.style, 16, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picinfo != null) {
-      paramJceOutputStream.write(this.picinfo, 0);
+    Object localObject = this.picinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 1);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 2);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.buttonIconUrl != null) {
-      paramJceOutputStream.write(this.buttonIconUrl, 3);
+    localObject = this.buttonIconUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.actiontype, 4);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 5);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.AdvIconUrl != null) {
-      paramJceOutputStream.write(this.AdvIconUrl, 6);
+    localObject = this.AdvIconUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.summaryColor != null) {
-      paramJceOutputStream.write(this.summaryColor, 7);
+    localObject = this.summaryColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.buttontext != null) {
-      paramJceOutputStream.write(this.buttontext, 8);
+    localObject = this.buttontext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.anonymity, 9);
-    if (this.joinlist != null) {
-      paramJceOutputStream.write(this.joinlist, 10);
+    localObject = this.joinlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
     paramJceOutputStream.write(this.isSupportFeedback, 11);
     paramJceOutputStream.write(this.iReportFlag, 12);
     paramJceOutputStream.write(this.iButtonFlag, 13);
-    if (this.downloadUrl != null) {
-      paramJceOutputStream.write(this.downloadUrl, 14);
+    localObject = this.downloadUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
-    if (this.jsonData != null) {
-      paramJceOutputStream.write(this.jsonData, 15);
+    localObject = this.jsonData;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
+    paramJceOutputStream.write(this.style, 16);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_bottom_recomm
  * JD-Core Version:    0.7.0.1
  */

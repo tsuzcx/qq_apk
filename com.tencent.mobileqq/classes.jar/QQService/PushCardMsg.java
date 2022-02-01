@@ -10,7 +10,7 @@ public final class PushCardMsg
   static int cache_ePushType;
   static byte[] cache_vPushInfo;
   public int ePushType = PushType.PUSH_TYPE_NONE.value();
-  public byte[] vPushInfo;
+  public byte[] vPushInfo = null;
   
   public PushCardMsg() {}
   
@@ -39,7 +39,7 @@ public final class PushCardMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.PushCardMsg
  * JD-Core Version:    0.7.0.1
  */

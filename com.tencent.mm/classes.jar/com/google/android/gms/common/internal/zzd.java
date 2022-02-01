@@ -11,16 +11,16 @@ final class zzd
   
   public final void redirect()
   {
-    AppMethodBeat.i(61403);
+    AppMethodBeat.i(11895);
     if (this.zzsh != null) {
       this.zzsi.startActivityForResult(this.zzsh, this.val$requestCode);
     }
-    AppMethodBeat.o(61403);
+    AppMethodBeat.o(11895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.zzd
  * JD-Core Version:    0.7.0.1
  */

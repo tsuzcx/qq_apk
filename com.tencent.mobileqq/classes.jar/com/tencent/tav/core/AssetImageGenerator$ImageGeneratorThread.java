@@ -6,6 +6,7 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
 import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.decoder.logger.Logger;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,15 +28,47 @@ class AssetImageGenerator$ImageGeneratorThread
   
   private void generatorCover()
   {
-    Iterator localIterator = this.requestedTimes.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = AssetImageGenerator.access$500(this.this$0);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("generatorCover() called, times = ");
+    ((StringBuilder)localObject2).append(this.requestedTimes);
+    Logger.i((String)localObject1, ((StringBuilder)localObject2).toString());
+    localObject1 = this.requestedTimes.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      CMTime localCMTime = (CMTime)localIterator.next();
+      localObject2 = (CMTime)((Iterator)localObject1).next();
       Message localMessage = Message.obtain();
       localMessage.what = 1;
-      localMessage.obj = localCMTime;
+      localMessage.obj = localObject2;
       this.handler.sendMessage(localMessage);
     }
+  }
+  
+  private void generatorCover(CMTime paramCMTime)
+  {
+    Bitmap localBitmap2;
+    try
+    {
+      Bitmap localBitmap1 = this.this$0.copyCGImageAtTimeAndActualTime(paramCMTime, null);
+    }
+    catch (Exception localException)
+    {
+      Logger.e(AssetImageGenerator.access$500(this.this$0), "handleMessage: ", localException);
+      localBitmap2 = null;
+    }
+    AssetImageGenerator.ImageGeneratorListener localImageGeneratorListener = this.generatorListener;
+    if (localImageGeneratorListener != null)
+    {
+      AssetImageGenerator.AssetImageGeneratorResult localAssetImageGeneratorResult;
+      if (localBitmap2 != null) {
+        localAssetImageGeneratorResult = AssetImageGenerator.AssetImageGeneratorResult.AssetImageGeneratorSucceeded;
+      } else {
+        localAssetImageGeneratorResult = AssetImageGenerator.AssetImageGeneratorResult.AssetImageGeneratorFailed;
+      }
+      localImageGeneratorListener.onCompletion(paramCMTime, localBitmap2, null, localAssetImageGeneratorResult);
+      return;
+    }
+    Logger.e(AssetImageGenerator.access$500(this.this$0), "generatorCover: generatorListener is null!");
   }
   
   private void initHandler()
@@ -43,8 +76,11 @@ class AssetImageGenerator$ImageGeneratorThread
     this.handler = new Handler(getLooper(), this);
   }
   
-  private void release()
+  private void release(boolean paramBoolean)
   {
+    if (paramBoolean) {
+      this.handler.removeCallbacksAndMessages(null);
+    }
     Message localMessage = Message.obtain();
     localMessage.what = 2;
     this.handler.sendMessage(localMessage);
@@ -52,40 +88,20 @@ class AssetImageGenerator$ImageGeneratorThread
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      return false;
-      try
+      if (i == 2)
       {
-        Bitmap localBitmap = this.this$0.copyCGImageAtTimeAndActualTime((CMTime)paramMessage.obj, null);
-        if (this.generatorListener == null) {
-          continue;
-        }
-        AssetImageGenerator.ImageGeneratorListener localImageGeneratorListener = this.generatorListener;
-        CMTime localCMTime = (CMTime)paramMessage.obj;
-        if (localBitmap != null)
-        {
-          paramMessage = AssetImageGenerator.AssetImageGeneratorResult.AssetImageGeneratorSucceeded;
-          localImageGeneratorListener.onCompletion(localCMTime, localBitmap, null, paramMessage);
-        }
+        this.handler.removeCallbacksAndMessages(null);
+        AssetImageGenerator.access$400(this.this$0);
+        quit();
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          Object localObject = null;
-          continue;
-          paramMessage = AssetImageGenerator.AssetImageGeneratorResult.AssetImageGeneratorFailed;
-        }
-      }
-      this.handler.removeCallbacksAndMessages(null);
-      AssetImageGenerator.access$400(this.this$0);
-      quit();
     }
+    else {
+      generatorCover((CMTime)paramMessage.obj);
+    }
+    return false;
   }
   
   protected void onLooperPrepared()
@@ -105,7 +121,7 @@ class AssetImageGenerator$ImageGeneratorThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetImageGenerator.ImageGeneratorThread
  * JD-Core Version:    0.7.0.1
  */

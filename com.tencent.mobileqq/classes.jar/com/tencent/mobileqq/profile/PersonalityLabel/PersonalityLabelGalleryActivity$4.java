@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.text.TextUtils;
-import awkj;
-import awoy;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -20,52 +20,59 @@ class PersonalityLabelGalleryActivity$4
   public void run()
   {
     ArrayList localArrayList = new ArrayList(9);
-    int i = PersonalityLabelGalleryActivity.a(this.this$0).size() - 1;
-    if (i >= 0)
+    int i = PersonalityLabelGalleryActivity.d(this.this$0).size() - 1;
+    while (i >= 0)
     {
-      Object localObject = (String)PersonalityLabelGalleryActivity.a(this.this$0).get(i);
-      if (this.this$0.e)
+      Object localObject = (String)PersonalityLabelGalleryActivity.d(this.this$0).get(i);
+      if (this.this$0.n)
       {
         this.this$0.runOnUiThread(new PersonalityLabelGalleryActivity.4.1(this));
         return;
       }
       localObject = new CompressInfo((String)localObject, 0);
-      ((CompressInfo)localObject).f = 0;
-      awkj.b((CompressInfo)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label uploadPhoto(), thumb_path = " + ((CompressInfo)localObject).e);
+      ((CompressInfo)localObject).o = 0;
+      ((ICompressOperator)QRoute.api(ICompressOperator.class)).startThumbnail((CompressInfo)localObject);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("personality_label uploadPhoto(), thumb_path = ");
+        localStringBuilder.append(((CompressInfo)localObject).l);
+        QLog.i("PersonalityLabelGalleryActivity", 2, localStringBuilder.toString());
       }
-      if (!TextUtils.isEmpty(((CompressInfo)localObject).e))
+      if (!TextUtils.isEmpty(((CompressInfo)localObject).l))
       {
         localArrayList.add(localObject);
-        localObject = new File(((CompressInfo)localObject).e);
-      }
-      for (;;)
-      {
+        localObject = new File(((CompressInfo)localObject).l);
         try
         {
-          localObject = new URL("file:///" + ((File)localObject).getAbsolutePath());
-          int j = (int)(120.0F * PersonalityLabelGalleryActivity.a(this.this$0));
-          URLDrawable.getDrawable((URL)localObject, j, j, this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable).startDownload();
-          i -= 1;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("file:///");
+          localStringBuilder.append(((File)localObject).getAbsolutePath());
+          localObject = new URL(localStringBuilder.toString());
+          int j = (int)(PersonalityLabelGalleryActivity.f(this.this$0) * 120.0F);
+          URLDrawable.getDrawable((URL)localObject, j, j, this.this$0.d, this.this$0.d).startDownload();
         }
         catch (MalformedURLException localMalformedURLException)
         {
           localMalformedURLException.printStackTrace();
-          continue;
         }
+      }
+      else
+      {
         this.this$0.runOnUiThread(new PersonalityLabelGalleryActivity.4.2(this, i));
       }
+      i -= 1;
     }
     if (localArrayList.size() > 0) {
-      this.this$0.jdField_a_of_type_Awoy.a(localArrayList, PersonalityLabelGalleryActivity.a(this.this$0));
+      this.this$0.q.a(localArrayList, PersonalityLabelGalleryActivity.g(this.this$0));
     }
     this.this$0.runOnUiThread(new PersonalityLabelGalleryActivity.4.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.4
  * JD-Core Version:    0.7.0.1
  */

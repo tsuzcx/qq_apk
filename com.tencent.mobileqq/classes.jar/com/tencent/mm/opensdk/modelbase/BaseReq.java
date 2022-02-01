@@ -1,7 +1,7 @@
 package com.tencent.mm.opensdk.modelbase;
 
 import android.os.Bundle;
-import com.tencent.mm.opensdk.utils.a;
+import com.tencent.mm.opensdk.channel.a.a;
 
 public abstract class BaseReq
 {
@@ -12,8 +12,8 @@ public abstract class BaseReq
   
   public void fromBundle(Bundle paramBundle)
   {
-    this.transaction = a.b(paramBundle, "_wxapi_basereq_transaction");
-    this.openId = a.b(paramBundle, "_wxapi_basereq_openid");
+    this.transaction = a.a(paramBundle, "_wxapi_basereq_transaction");
+    this.openId = a.a(paramBundle, "_wxapi_basereq_openid");
   }
   
   public abstract int getType();
@@ -27,7 +27,7 @@ public abstract class BaseReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbase.BaseReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,18 @@
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import android.widget.Button;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.open.agent.AuthorityActivity;
 import com.tencent.open.agent.AuthorityActivity.AccountInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.cgireport.ReportManager;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
 
 public class him
@@ -13,38 +22,101 @@ public class him
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a.equals(localObject)) {}
-    for (;;)
-    {
+    String str = paramBundle.getString("ssoAccount");
+    if (QLog.isColorLevel()) {
+      QLog.d("AuthorityActivity", 2, "-->doAuthorize-onReceive, ssoAccount: " + str + " | uin: " + this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a);
+    }
+    if (!this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a.equals(str)) {
       return;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    paramInt = paramBundle.getInt("code");
+    if (!this.a.jdField_i_of_type_Boolean) {}
+    for (str = "s_a_a_emp";; str = "s_a_a")
+    {
+      Object localObject2;
       if (paramBoolean)
       {
-        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+        this.a.C = 0;
+        localObject2 = new SdkAuthorize.AuthorizeResponse();
+      }
+      for (;;)
+      {
         try
         {
-          localObject = paramBundle.getByteArray("data");
-          paramBundle = (Bundle)localObject;
-          if (!this.a.i) {
-            paramBundle = this.a.b((byte[])localObject);
+          localObject1 = paramBundle.getByteArray("data");
+          paramBundle = (Bundle)localObject1;
+          if (!this.a.jdField_i_of_type_Boolean) {
+            paramBundle = this.a.b((byte[])localObject1);
           }
           if (paramBundle != null)
           {
-            localGetAppinfoResponse.mergeFrom(paramBundle);
-            if ((localGetAppinfoResponse.has()) && (localGetAppinfoResponse.ret.get() == 0))
+            l1 = paramBundle.length;
+            localObject1 = (SdkAuthorize.AuthorizeResponse)((SdkAuthorize.AuthorizeResponse)localObject2).mergeFrom(paramBundle);
+            if (localObject1 != null)
             {
-              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              paramBundle.what = 3;
-              paramBundle.obj = localGetAppinfoResponse;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-              return;
+              localObject2 = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+              ((Message)localObject2).what = 1;
+              ((Message)localObject2).obj = localObject1;
+              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+              if (((SdkAuthorize.AuthorizeResponse)localObject1).ret.get() == 0) {
+                this.a.a(this.a.B, this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a, ((SdkAuthorize.AuthorizeResponse)localObject1).expires_in.get(), paramBundle);
+              }
+              i = ((SdkAuthorize.AuthorizeResponse)localObject1).toByteArray().length;
+              l2 = i;
             }
           }
         }
         catch (Exception paramBundle)
         {
-          paramBundle.printStackTrace();
+          long l1;
+          int i;
+          long l2;
+          Object localObject1 = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+          ((Message)localObject1).what = 6;
+          ((Message)localObject1).arg1 = 3002;
+          ((Message)localObject1).obj = this.a.getResources().getString(2131562443);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+          localObject1 = (String)((Message)localObject1).obj;
+          QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a) + " | ret : success" + " | code : " + paramInt, paramBundle);
+          continue;
+        }
+        try
+        {
+          i = ((SdkAuthorize.AuthorizeResponse)localObject1).ret.get();
+          ReportManager.a().a("agent_authority", this.a.jdField_i_of_type_Long, l1, l2, 0, Long.parseLong(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a), "1000069", "ret: " + i);
+          QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a) + " | ret : success" + " | code : " + paramInt);
+          this.a.j = SystemClock.elapsedRealtime();
+          LogUtility.c("Authority_TimeCost", "<TimeStamp> authority cost : " + (this.a.j - this.a.jdField_i_of_type_Long));
+          return;
+        }
+        catch (Exception paramBundle)
+        {
+          LogUtility.c("AuthorityActivity", "-->success report exception cmd: agent_authority", paramBundle);
+          continue;
+        }
+        QLog.d("AuthorityActivity", 1, "rec | cmd: " + str + " | uin : *" + AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a) + " | ret : failed" + " | code : " + paramInt);
+        if ((paramInt == 1002) && (this.a.C < 2))
+        {
+          paramBundle = this.a;
+          paramBundle.C += 1;
+          this.a.p();
+          return;
+        }
+        paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        paramBundle.what = 6;
+        paramBundle.arg1 = 3002;
+        paramBundle.obj = this.a.getResources().getString(2131562443);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
+        paramBundle = this.a.getResources().getString(2131562443);
+        try
+        {
+          ReportManager.a().a("agent_authority", this.a.jdField_i_of_type_Long, 0L, 0L, paramInt, Long.parseLong(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a), "1000069", paramBundle);
+        }
+        catch (Exception paramBundle)
+        {
+          LogUtility.c("AuthorityActivity", "-->failed report exception cmd: agent_authority", paramBundle);
         }
       }
     }

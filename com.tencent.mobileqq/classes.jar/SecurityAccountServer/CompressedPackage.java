@@ -9,8 +9,8 @@ public final class CompressedPackage
 {
   static byte[] cache_buffer;
   static int cache_command;
-  public byte[] buffer;
-  public int command;
+  public byte[] buffer = null;
+  public int command = 0;
   public boolean compressed = true;
   
   public CompressedPackage() {}
@@ -43,7 +43,7 @@ public final class CompressedPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.CompressedPackage
  * JD-Core Version:    0.7.0.1
  */

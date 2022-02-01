@@ -18,12 +18,20 @@ public final class TogetherBusinessServlet$ResultInfo
   
   public String toString()
   {
-    return "ResultInfo=" + super.toString() + " resultCode=" + this.resultCode + " errorMsg=" + this.errorMsg + " showErrorMsg=" + this.showErrorMsg;
+    StringBuilder localStringBuilder = new StringBuilder("ResultInfo=");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" resultCode=");
+    localStringBuilder.append(this.resultCode);
+    localStringBuilder.append(" errorMsg=");
+    localStringBuilder.append(this.errorMsg);
+    localStringBuilder.append(" showErrorMsg=");
+    localStringBuilder.append(this.showErrorMsg);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessServlet.ResultInfo
  * JD-Core Version:    0.7.0.1
  */

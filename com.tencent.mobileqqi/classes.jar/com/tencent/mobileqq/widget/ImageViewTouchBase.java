@@ -13,8 +13,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import hgs;
 import hgt;
-import hgu;
 
 public abstract class ImageViewTouchBase
   extends ImageView
@@ -333,7 +333,7 @@ public abstract class ImageViewTouchBase
   {
     if (getWidth() <= 0)
     {
-      this.mOnLayoutRunnable = new hgt(this, paramRotateBitmap, paramBoolean);
+      this.mOnLayoutRunnable = new hgs(this, paramRotateBitmap, paramBoolean);
       return;
     }
     if (paramRotateBitmap.a() != null)
@@ -447,7 +447,7 @@ public abstract class ImageViewTouchBase
     paramFloat1 = (paramFloat1 - getScale()) / paramFloat4;
     float f = getScale();
     long l = System.currentTimeMillis();
-    this.mHandler.post(new hgu(this, paramFloat4, l, f, paramFloat1, paramFloat2, paramFloat3));
+    this.mHandler.post(new hgt(this, paramFloat4, l, f, paramFloat1, paramFloat2, paramFloat3));
   }
   
   public void zoomToPoint(float paramFloat1, float paramFloat2, float paramFloat3)

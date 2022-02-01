@@ -1,11 +1,9 @@
 package com.tencent.av.gaudio;
 
-import lpr;
-
-public class AVObserver$1
+class AVObserver$1
   implements Runnable
 {
-  public AVObserver$1(lpr paramlpr, Object paramObject) {}
+  AVObserver$1(AVObserver paramAVObserver, Object paramObject) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class AVObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.AVObserver.1
  * JD-Core Version:    0.7.0.1
  */

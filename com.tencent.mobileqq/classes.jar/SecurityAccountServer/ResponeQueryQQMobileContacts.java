@@ -11,11 +11,11 @@ public final class ResponeQueryQQMobileContacts
   static ArrayList<MobileContactsDetailInfo> cache_alreadyBindContacts;
   static ArrayList<MobileContactsDetailInfo> cache_noBindContacts;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public ArrayList<MobileContactsDetailInfo> alreadyBindContacts;
-  public long nextFlag;
-  public ArrayList<MobileContactsDetailInfo> noBindContacts;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public ArrayList<MobileContactsDetailInfo> alreadyBindContacts = null;
+  public long nextFlag = 0L;
+  public ArrayList<MobileContactsDetailInfo> noBindContacts = null;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   
   static
   {
@@ -59,7 +59,7 @@ public final class ResponeQueryQQMobileContacts
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponeQueryQQMobileContacts
  * JD-Core Version:    0.7.0.1
  */

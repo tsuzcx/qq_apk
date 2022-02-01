@@ -28,18 +28,19 @@ public final class oidb_0x6cf$ECommerceEntranceInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 66, 72, 80, 88, 96, 106, 112 }, new String[] { "uint32_ecommerce_id", "bytes_title", "bytes_subtitle", "bytes_thumbnail_url", "bytes_link_icon_url", "uint32_jump_type", "bytes_jump_url", "bytes_common_data", "uint32_session_max_display_count", "uint32_one_day_max_display_count", "uint32_display_count_ver", "uint32_style", "appInfo", "video_play_length" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0) }, ECommerceEntranceInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 66, 72, 80, 88, 96, 106, 112 }, new String[] { "uint32_ecommerce_id", "bytes_title", "bytes_subtitle", "bytes_thumbnail_url", "bytes_link_icon_url", "uint32_jump_type", "bytes_jump_url", "bytes_common_data", "uint32_session_max_display_count", "uint32_one_day_max_display_count", "uint32_display_count_ver", "uint32_style", "appInfo", "video_play_length" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger, localByteStringMicro5, localByteStringMicro6, localInteger, localInteger, localInteger, localInteger, null, localInteger }, ECommerceEntranceInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ECommerceEntranceInfo
  * JD-Core Version:    0.7.0.1
  */

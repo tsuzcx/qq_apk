@@ -5,12 +5,12 @@ import android.view.View;
 class y
   extends x
 {
-  public final void d(View paramView, int paramInt)
+  public final void g(View paramView, int paramInt)
   {
     paramView.offsetTopAndBottom(paramInt);
   }
   
-  public final void e(View paramView, int paramInt)
+  public final void h(View paramView, int paramInt)
   {
     paramView.offsetLeftAndRight(paramInt);
   }

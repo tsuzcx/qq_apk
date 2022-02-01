@@ -6,9 +6,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
-import bjtm;
-import bjtn;
-import bjto;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,13 +13,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BaseHandler
   extends Handler
 {
-  static ThreadLocal<Integer> InitalPriority = new bjtn();
+  static ThreadLocal<Integer> InitalPriority = new BaseHandler.2();
   private static final String TAG = "BaseHandler";
   private static final long Time_Lv1 = 20L;
   private static final long Time_Lv2 = 100L;
   private static final long Time_Lv3 = 500L;
-  public static volatile boolean isBusy;
-  public static ThreadLocal<Boolean> isRegulated = new bjto();
+  static volatile boolean isBusy;
+  static ThreadLocal<Boolean> isRegulated = new BaseHandler.3();
   static AtomicInteger regulalteCount = new AtomicInteger(0);
   static Runnable regultorPriority = new BaseHandler.4();
   static Runnable resetPriority = new BaseHandler.5();
@@ -34,7 +31,7 @@ public class BaseHandler
   {
     super(paramLooper);
     if (Looper.getMainLooper() != paramLooper) {
-      paramLooper.setMessageLogging(new bjtm(this));
+      paramLooper.setMessageLogging(new BaseHandler.1(this));
     }
   }
   
@@ -46,13 +43,14 @@ public class BaseHandler
   
   private void checkBusyState()
   {
-    if ((isBusy) && (!((Boolean)isRegulated.get()).booleanValue())) {
+    if ((isBusy) && (!((Boolean)isRegulated.get()).booleanValue()))
+    {
       regultorPriority.run();
-    }
-    while ((isBusy) || (!((Boolean)isRegulated.get()).booleanValue())) {
       return;
     }
-    resetPriority.run();
+    if ((!isBusy) && (((Boolean)isRegulated.get()).booleanValue())) {
+      resetPriority.run();
+    }
   }
   
   private void doAfterWord()
@@ -82,138 +80,236 @@ public class BaseHandler
   private static boolean needRegulated()
   {
     int i;
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "threadRegulateEnable", 1) == 1)
-    {
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "threadRegulateEnable", 1) == 1) {
       i = 1;
-      if (i != 0) {
-        break label28;
-      }
-    }
-    label28:
-    while (Looper.getMainLooper() == Looper.myLooper())
-    {
-      return false;
+    } else {
       i = 0;
-      break;
     }
-    return true;
+    if (i == 0) {
+      return false;
+    }
+    return Looper.getMainLooper() != Looper.myLooper();
   }
   
   private void printDispatchInfo(long paramLong, Message paramMessage)
   {
-    Object localObject = " Message What:";
-    for (;;)
+    Object localObject2 = " Message What:";
+    Object localObject1 = localObject2;
+    try
     {
-      try
+      StringBuilder localStringBuilder = new StringBuilder();
+      localObject1 = localObject2;
+      localStringBuilder.append(" Message What:");
+      localObject1 = localObject2;
+      localStringBuilder.append(paramMessage.what);
+      localObject1 = localObject2;
+      localObject2 = localStringBuilder.toString();
+      localObject1 = localObject2;
+      if (paramMessage.getCallback() != null)
       {
-        str = " Message What:" + paramMessage.what;
-        localObject = str;
-        if (paramMessage.getCallback() == null) {
-          continue;
-        }
-        localObject = str;
-        paramMessage = str + " Runnable-" + paramMessage.getCallback().getClass().toString();
-      }
-      catch (Exception localException)
-      {
-        String str;
-        paramMessage = (Message)localObject;
-        QLog.w("BaseHandler", 1, "printDispatchInfo", localException);
-        continue;
-        if (paramLong <= 100L) {
-          continue;
-        }
-        QLog.w("BaseHandler", 1, (String)localObject + paramLong + "ms " + paramMessage);
-        return;
-        if (paramLong <= 20L) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("BaseHandler", 2, (String)localObject + paramLong + "ms " + paramMessage);
-        return;
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("BaseHandler", 4, (String)localObject + paramLong + "ms " + paramMessage);
-      }
-      localObject = "DispatchMessage-" + Thread.currentThread().getName() + ":";
-      if (paramLong <= 500L) {
-        continue;
-      }
-      QLog.e("BaseHandler", 1, (String)localObject + paramLong + "ms " + paramMessage);
-      return;
-      localObject = str;
-      if (this.mCallbackEx != null)
-      {
-        localObject = str;
-        paramMessage = str + " Callback-" + this.mCallbackEx.getClass().toString();
+        localObject1 = localObject2;
+        localStringBuilder = new StringBuilder();
+        localObject1 = localObject2;
+        localStringBuilder.append((String)localObject2);
+        localObject1 = localObject2;
+        localStringBuilder.append(" Runnable-");
+        localObject1 = localObject2;
+        localStringBuilder.append(paramMessage.getCallback().getClass().toString());
+        localObject1 = localObject2;
+        paramMessage = localStringBuilder.toString();
       }
       else
       {
-        localObject = str;
-        paramMessage = str + " handleMessage-" + getClass().toString();
+        localObject1 = localObject2;
+        if (this.mCallbackEx != null)
+        {
+          localObject1 = localObject2;
+          paramMessage = new StringBuilder();
+          localObject1 = localObject2;
+          paramMessage.append((String)localObject2);
+          localObject1 = localObject2;
+          paramMessage.append(" Callback-");
+          localObject1 = localObject2;
+          paramMessage.append(this.mCallbackEx.getClass().toString());
+          localObject1 = localObject2;
+          paramMessage = paramMessage.toString();
+        }
+        else
+        {
+          localObject1 = localObject2;
+          paramMessage = new StringBuilder();
+          localObject1 = localObject2;
+          paramMessage.append((String)localObject2);
+          localObject1 = localObject2;
+          paramMessage.append(" handleMessage-");
+          localObject1 = localObject2;
+          paramMessage.append(getClass().toString());
+          localObject1 = localObject2;
+          paramMessage = paramMessage.toString();
+        }
       }
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.w("BaseHandler", 1, "printDispatchInfo", paramMessage);
+      paramMessage = (Message)localObject1;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("DispatchMessage-");
+    ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+    ((StringBuilder)localObject1).append(":");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (paramLong > 500L)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append("ms ");
+      ((StringBuilder)localObject2).append(paramMessage);
+      QLog.e("BaseHandler", 1, ((StringBuilder)localObject2).toString());
+      return;
+    }
+    if (paramLong > 100L)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append("ms ");
+      ((StringBuilder)localObject2).append(paramMessage);
+      QLog.w("BaseHandler", 1, ((StringBuilder)localObject2).toString());
+      return;
+    }
+    if (paramLong > 20L)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(paramLong);
+        ((StringBuilder)localObject2).append("ms ");
+        ((StringBuilder)localObject2).append(paramMessage);
+        QLog.i("BaseHandler", 2, ((StringBuilder)localObject2).toString());
+      }
+    }
+    else if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append("ms ");
+      ((StringBuilder)localObject2).append(paramMessage);
+      QLog.d("BaseHandler", 4, ((StringBuilder)localObject2).toString());
     }
   }
   
   private void printSendInfo(long paramLong, Message paramMessage)
   {
-    Object localObject = " Message What:";
-    for (;;)
+    Object localObject2 = " Message What:";
+    Object localObject1 = localObject2;
+    try
     {
-      try
+      StringBuilder localStringBuilder = new StringBuilder();
+      localObject1 = localObject2;
+      localStringBuilder.append(" Message What:");
+      localObject1 = localObject2;
+      localStringBuilder.append(paramMessage.what);
+      localObject1 = localObject2;
+      localObject2 = localStringBuilder.toString();
+      localObject1 = localObject2;
+      if (paramMessage.getCallback() != null)
       {
-        str = " Message What:" + paramMessage.what;
-        localObject = str;
-        if (paramMessage.getCallback() == null) {
-          continue;
-        }
-        localObject = str;
-        paramMessage = str + " Runnable-" + paramMessage.getCallback().getClass().toString();
-      }
-      catch (Exception localException)
-      {
-        String str;
-        paramMessage = (Message)localObject;
-        QLog.w("BaseHandler", 1, "printSendInfo", localException);
-        continue;
-        if (paramLong <= 100L) {
-          continue;
-        }
-        QLog.w("BaseHandler", 1, (String)localObject + paramLong + "ms " + paramMessage);
-        return;
-        if (paramLong <= 20L) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("BaseHandler", 2, (String)localObject + paramLong + "ms " + paramMessage);
-        return;
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("BaseHandler", 4, (String)localObject + paramLong + "ms " + paramMessage);
-      }
-      localObject = " SendMessage-" + Thread.currentThread().getName() + ":";
-      if (paramLong <= 500L) {
-        continue;
-      }
-      QLog.e("BaseHandler", 1, (String)localObject + paramLong + "ms " + paramMessage);
-      return;
-      localObject = str;
-      if (this.mCallbackEx != null)
-      {
-        localObject = str;
-        paramMessage = str + " Callback-" + this.mCallbackEx.getClass().toString();
+        localObject1 = localObject2;
+        localStringBuilder = new StringBuilder();
+        localObject1 = localObject2;
+        localStringBuilder.append((String)localObject2);
+        localObject1 = localObject2;
+        localStringBuilder.append(" Runnable-");
+        localObject1 = localObject2;
+        localStringBuilder.append(paramMessage.getCallback().getClass().toString());
+        localObject1 = localObject2;
+        paramMessage = localStringBuilder.toString();
       }
       else
       {
-        localObject = str;
-        paramMessage = str + " handleMessage-" + getClass().toString();
+        localObject1 = localObject2;
+        if (this.mCallbackEx != null)
+        {
+          localObject1 = localObject2;
+          paramMessage = new StringBuilder();
+          localObject1 = localObject2;
+          paramMessage.append((String)localObject2);
+          localObject1 = localObject2;
+          paramMessage.append(" Callback-");
+          localObject1 = localObject2;
+          paramMessage.append(this.mCallbackEx.getClass().toString());
+          localObject1 = localObject2;
+          paramMessage = paramMessage.toString();
+        }
+        else
+        {
+          localObject1 = localObject2;
+          paramMessage = new StringBuilder();
+          localObject1 = localObject2;
+          paramMessage.append((String)localObject2);
+          localObject1 = localObject2;
+          paramMessage.append(" handleMessage-");
+          localObject1 = localObject2;
+          paramMessage.append(getClass().toString());
+          localObject1 = localObject2;
+          paramMessage = paramMessage.toString();
+        }
       }
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.w("BaseHandler", 1, "printSendInfo", paramMessage);
+      paramMessage = (Message)localObject1;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(" SendMessage-");
+    ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+    ((StringBuilder)localObject1).append(":");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (paramLong > 500L)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append("ms ");
+      ((StringBuilder)localObject2).append(paramMessage);
+      QLog.e("BaseHandler", 1, ((StringBuilder)localObject2).toString());
+      return;
+    }
+    if (paramLong > 100L)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append("ms ");
+      ((StringBuilder)localObject2).append(paramMessage);
+      QLog.w("BaseHandler", 1, ((StringBuilder)localObject2).toString());
+      return;
+    }
+    if (paramLong > 20L)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(paramLong);
+        ((StringBuilder)localObject2).append("ms ");
+        ((StringBuilder)localObject2).append(paramMessage);
+        QLog.i("BaseHandler", 2, ((StringBuilder)localObject2).toString());
+      }
+    }
+    else if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append("ms ");
+      ((StringBuilder)localObject2).append(paramMessage);
+      QLog.d("BaseHandler", 4, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -222,10 +318,16 @@ public class BaseHandler
     if ((paramInt >= -19) && (paramInt <= 19))
     {
       Process.setThreadPriority(paramInt);
-      QLog.i("BaseHandler", 1, "setThreadPrioriry priority :" + paramInt);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setThreadPrioriry priority :");
+      localStringBuilder.append(paramInt);
+      QLog.i("BaseHandler", 1, localStringBuilder.toString());
       return true;
     }
-    QLog.w("BaseHandler", 1, "setThreadPrioriry priority 非法:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setThreadPrioriry priority 非法:");
+    localStringBuilder.append(paramInt);
+    QLog.w("BaseHandler", 1, localStringBuilder.toString());
     return false;
   }
   
@@ -257,7 +359,7 @@ public class BaseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.thread.BaseHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,7 @@
 package com.google.firebase.components;
 
-import com.google.android.gms.common.annotation.KeepForSdk;
-
 public final class c
 {
-  @KeepForSdk
   public static Object a(b arg0, Class arg1) {}
 }
 

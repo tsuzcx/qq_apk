@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.systemmsg;
 
 import android.content.res.Resources;
-import bcpx;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.util.TroopSystemMsgUtils;
 import com.tencent.qphone.base.util.QLog;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
@@ -13,9 +13,12 @@ import tencent.mobileim.structmsg.structmsg.SystemMsg;
 public class MessageForSystemMsg
   extends ChatMessage
 {
+  public static final int SYSMSG_MENU_FLAG_DEFAULT = 0;
+  public static final int SYSMSG_MENU_FLAG_DEL = 1;
+  public static final int SYSMSG_MENU_FLAG_MASK_DEL = 15;
   public static final String TAG = "MessageForSystemMsg";
   public int mSysmsgMenuFlag = 0;
-  public structmsg.StructMsg structMsg;
+  public structmsg.StructMsg structMsg = null;
   
   public MessageForSystemMsg()
   {
@@ -24,68 +27,96 @@ public class MessageForSystemMsg
   
   public static String getSysMsgDesc(Resources paramResources, structmsg.StructMsg paramStructMsg)
   {
-    if ((paramStructMsg == null) || (paramResources == null))
+    Object localObject = "";
+    if (paramStructMsg != null)
     {
-      paramStructMsg = "";
-      return paramStructMsg;
-    }
-    int i = paramStructMsg.msg_type.get();
-    if (i == 1) {
-      switch (paramStructMsg.msg.sub_type.get())
+      if (paramResources == null) {
+        return "";
+      }
+      int i = paramStructMsg.msg_type.get();
+      int j;
+      if (i == 1)
       {
-      case 2: 
-      case 3: 
-      default: 
-        paramResources = paramStructMsg.msg.msg_describe.get();
-        label87:
-        String str = paramStructMsg.msg.req_uin_nick.get() + paramResources;
-        paramResources = str;
+        j = paramStructMsg.msg.sub_type.get();
+        if (j != 1)
+        {
+          if (j != 4)
+          {
+            if (j != 5)
+            {
+              if (j != 6) {
+                paramResources = paramStructMsg.msg.msg_describe.get();
+              } else {
+                paramResources = paramResources.getString(2131915656);
+              }
+            }
+            else {
+              paramResources = paramResources.getString(2131886133);
+            }
+          }
+          else {
+            paramResources = paramResources.getString(2131886134);
+          }
+        }
+        else {
+          paramResources = paramResources.getString(2131886233);
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramStructMsg.msg.req_uin_nick.get());
+        ((StringBuilder)localObject).append(paramResources);
+        localObject = ((StringBuilder)localObject).toString();
+        paramResources = (Resources)localObject;
         if (QLog.isColorLevel())
         {
           QLog.i("MessageForSystemMsg", 2, String.format("getSysMsgDesc, msg: %s, sub: %s, desc: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramStructMsg.msg.sub_type.get()), paramStructMsg.msg.msg_describe.get() }));
-          paramResources = str;
+          paramResources = (Resources)localObject;
         }
-        break;
       }
-    }
-    for (;;)
-    {
-      paramStructMsg = paramResources;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MessageForSystemMsg", 2, String.format("getSysMsgDesc, msg: %s, suffix: %s", new Object[] { Integer.valueOf(i), paramResources }));
-      return paramResources;
-      paramResources = paramResources.getString(2131689663);
-      break label87;
-      paramResources = paramResources.getString(2131689542);
-      break label87;
-      paramResources = paramResources.getString(2131689541);
-      break label87;
-      paramResources = paramResources.getString(2131719175);
-      break label87;
-      if (i == 2)
+      else if (i == 2)
       {
-        paramResources = "";
-        int j = paramStructMsg.msg.group_msg_type.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageForSystemMsg", 2, "groupMsgType:" + j + "|req_uin_nick:" + paramStructMsg.msg.req_uin_nick.get() + "|actor_uin_nick:" + paramStructMsg.msg.actor_uin_nick.get() + "|action_uin_nick:" + paramStructMsg.msg.action_uin_nick.get() + "|msg_describe:" + paramStructMsg.msg.msg_describe.get());
+        j = paramStructMsg.msg.group_msg_type.get();
+        if (QLog.isColorLevel())
+        {
+          paramResources = new StringBuilder();
+          paramResources.append("groupMsgType:");
+          paramResources.append(j);
+          paramResources.append("|req_uin_nick:");
+          paramResources.append(paramStructMsg.msg.req_uin_nick.get());
+          paramResources.append("|actor_uin_nick:");
+          paramResources.append(paramStructMsg.msg.actor_uin_nick.get());
+          paramResources.append("|action_uin_nick:");
+          paramResources.append(paramStructMsg.msg.action_uin_nick.get());
+          paramResources.append("|msg_describe:");
+          paramResources.append(paramStructMsg.msg.msg_describe.get());
+          QLog.d("MessageForSystemMsg", 2, paramResources.toString());
         }
-        j = bcpx.a(j);
-        if (j == 1) {
+        j = TroopSystemMsgUtils.a(j);
+        if (j == 1)
+        {
           paramResources = paramStructMsg.msg.action_uin_nick.get();
         }
-        for (;;)
+        else
         {
-          paramResources = bcpx.a(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
-          break;
+          paramResources = (Resources)localObject;
           if (j == 2) {
             paramResources = paramStructMsg.msg.req_uin_nick.get();
           }
         }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramResources);
+        ((StringBuilder)localObject).append(paramStructMsg.msg.msg_describe.get());
+        paramResources = TroopSystemMsgUtils.a(paramStructMsg, ((StringBuilder)localObject).toString());
       }
-      paramResources = String.format("%s %s", new Object[] { paramStructMsg.msg.req_uin_nick.get(), paramStructMsg.msg.msg_describe.get() });
+      else
+      {
+        paramResources = String.format("%s %s", new Object[] { paramStructMsg.msg.req_uin_nick.get(), paramStructMsg.msg.msg_describe.get() });
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("MessageForSystemMsg", 2, String.format("getSysMsgDesc, msg: %s, suffix: %s", new Object[] { Integer.valueOf(i), paramResources }));
+      }
+      return paramResources;
     }
+    return "";
   }
   
   public static structmsg.StructMsg parseStructMsg(byte[] paramArrayOfByte)
@@ -103,7 +134,7 @@ public class MessageForSystemMsg
     return localStructMsg;
   }
   
-  public void doParse()
+  protected void doParse()
   {
     this.structMsg = parseStructMsg(this.msgData);
   }
@@ -116,25 +147,27 @@ public class MessageForSystemMsg
     return this.structMsg;
   }
   
-  public void postRead() {}
+  protected void postRead() {}
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.structMsg != null) {}
-    try
-    {
-      this.msgData = this.structMsg.toByteArray();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    structmsg.StructMsg localStructMsg = this.structMsg;
+    if (localStructMsg != null) {
+      try
+      {
+        this.msgData = localStructMsg.toByteArray();
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.MessageForSystemMsg
  * JD-Core Version:    0.7.0.1
  */

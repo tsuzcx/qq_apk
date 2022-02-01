@@ -1,54 +1,49 @@
 package android.support.v4.app;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.State;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.ReportFragment;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.util.SimpleArrayMap;
+import com.tencent.token.bj;
+import com.tencent.token.bj.b;
+import com.tencent.token.bm;
+import com.tencent.token.bn;
+import com.tencent.token.bv;
+import com.tencent.token.ex;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class SupportActivity
   extends Activity
-  implements LifecycleOwner
+  implements bm
 {
-  private SimpleArrayMap mExtraDataMap = new SimpleArrayMap();
-  private LifecycleRegistry mLifecycleRegistry = new LifecycleRegistry(this);
+  private ex<Class<? extends a>, a> mExtraDataMap = new ex();
+  private bn mLifecycleRegistry = new bn(this);
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public SupportActivity.ExtraData getExtraData(Class paramClass)
+  public <T extends a> T getExtraData(Class<T> paramClass)
   {
-    return (SupportActivity.ExtraData)this.mExtraDataMap.get(paramClass);
+    return (a)this.mExtraDataMap.get(paramClass);
   }
   
-  public Lifecycle getLifecycle()
+  public bj getLifecycle()
   {
     return this.mLifecycleRegistry;
   }
   
-  protected void onCreate(@Nullable Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    ReportFragment.injectIfNeededIn(this);
+    bv.a(this);
   }
   
-  @CallSuper
   protected void onSaveInstanceState(Bundle paramBundle)
   {
-    this.mLifecycleRegistry.markState(Lifecycle.State.CREATED);
+    this.mLifecycleRegistry.a(bj.b.c);
     super.onSaveInstanceState(paramBundle);
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void putExtraData(SupportActivity.ExtraData paramExtraData)
+  public void putExtraData(a parama)
   {
-    this.mExtraDataMap.put(paramExtraData.getClass(), paramExtraData);
+    this.mExtraDataMap.put(parama.getClass(), parama);
   }
+  
+  public static final class a {}
 }
 
 

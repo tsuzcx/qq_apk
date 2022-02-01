@@ -16,18 +16,18 @@ import java.util.Set;
 final class j
   implements f, l
 {
-  int aJ = 1;
-  private Bundle ew;
-  private MediaSessionCompat.Token gA;
-  final ComponentName gB;
-  final b gC;
-  k gD;
-  private String gE;
-  final Bundle gv;
-  final a gw = new a(this);
-  private final android.support.v4.b.a<String, n> gx = new android.support.v4.b.a();
-  m gy;
-  Messenger gz;
+  int cs = 1;
+  private Bundle gl;
+  final b iA;
+  k iB;
+  private String iC;
+  final Bundle is;
+  final a it = new a(this);
+  private final android.support.v4.b.a<String, n> iu = new android.support.v4.b.a();
+  m iw;
+  Messenger ix;
+  private MediaSessionCompat.Token iy;
+  final ComponentName iz;
   final Context mContext;
   
   public j(Context paramContext, ComponentName paramComponentName, b paramb, Bundle paramBundle)
@@ -42,30 +42,30 @@ final class j
       throw new IllegalArgumentException("connection callback must not be null");
     }
     this.mContext = paramContext;
-    this.gB = paramComponentName;
-    this.gC = paramb;
-    this.gv = null;
+    this.iz = paramComponentName;
+    this.iA = paramb;
+    this.is = null;
   }
   
   private boolean a(Messenger paramMessenger, String paramString)
   {
     boolean bool = true;
-    if ((this.gz != paramMessenger) || (this.aJ == 0) || (this.aJ == 1))
+    if ((this.ix != paramMessenger) || (this.cs == 0) || (this.cs == 1))
     {
-      if ((this.aJ != 0) && (this.aJ != 1)) {
-        Log.i("MediaBrowserCompat", paramString + " for " + this.gB + " with mCallbacksMessenger=" + this.gz + " this=" + this);
+      if ((this.cs != 0) && (this.cs != 1)) {
+        Log.i("MediaBrowserCompat", paramString + " for " + this.iz + " with mCallbacksMessenger=" + this.ix + " this=" + this);
       }
       bool = false;
     }
     return bool;
   }
   
-  private static String k(int paramInt)
+  private static String u(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return "UNKNOWN/" + paramInt;
+      return "UNKNOWN/".concat(String.valueOf(paramInt));
     case 0: 
       return "CONNECT_STATE_DISCONNECTING";
     case 1: 
@@ -85,14 +85,14 @@ final class j
     {
       return;
       if (MediaBrowserCompat.DEBUG) {
-        Log.d("MediaBrowserCompat", "onLoadChildren for " + this.gB + " id=" + paramString);
+        Log.d("MediaBrowserCompat", "onLoadChildren for " + this.iz + " id=" + paramString);
       }
-      paramMessenger = (n)this.gx.get(paramString);
+      paramMessenger = (n)this.iu.get(paramString);
       if (paramMessenger != null) {
         break;
       }
     } while (!MediaBrowserCompat.DEBUG);
-    Log.d("MediaBrowserCompat", "onLoadChildren for id that isn't subscribed id=" + paramString);
+    Log.d("MediaBrowserCompat", "onLoadChildren for id that isn't subscribed id=".concat(String.valueOf(paramString)));
     return;
     paramMessenger.a(this.mContext, paramBundle);
   }
@@ -103,35 +103,35 @@ final class j
     for (;;)
     {
       return;
-      if (this.aJ != 2)
+      if (this.cs != 2)
       {
-        Log.w("MediaBrowserCompat", "onConnect from service while mState=" + k(this.aJ) + "... ignoring");
+        Log.w("MediaBrowserCompat", "onConnect from service while mState=" + u(this.cs) + "... ignoring");
         return;
       }
-      this.gE = paramString;
-      this.gA = paramToken;
-      this.ew = paramBundle;
-      this.aJ = 3;
+      this.iC = paramString;
+      this.iy = paramToken;
+      this.gl = paramBundle;
+      this.cs = 3;
       if (MediaBrowserCompat.DEBUG)
       {
         Log.d("MediaBrowserCompat", "ServiceCallbacks.onConnect...");
         dump();
       }
-      this.gC.onConnected();
+      this.iA.onConnected();
       try
       {
-        paramMessenger = this.gx.entrySet().iterator();
+        paramMessenger = this.iu.entrySet().iterator();
         while (paramMessenger.hasNext())
         {
           paramToken = (Map.Entry)paramMessenger.next();
           paramString = (String)paramToken.getKey();
           paramBundle = (n)paramToken.getValue();
-          paramToken = paramBundle.aJ();
-          paramBundle = paramBundle.aI();
+          paramToken = paramBundle.aZ();
+          paramBundle = paramBundle.aY();
           int i = 0;
           while (i < paramToken.size())
           {
-            this.gy.a(paramString, o.a((o)paramToken.get(i)), (Bundle)paramBundle.get(i), this.gz);
+            this.iw.a(paramString, o.a((o)paramToken.get(i)), (Bundle)paramBundle.get(i), this.ix);
             i += 1;
           }
         }
@@ -144,88 +144,88 @@ final class j
     }
   }
   
-  public final MediaSessionCompat.Token aG()
+  public final MediaSessionCompat.Token aW()
   {
-    if (this.aJ == 3) {}
+    if (this.cs == 3) {}
     for (int i = 1; i == 0; i = 0) {
-      throw new IllegalStateException("getSessionToken() called while not connected(state=" + this.aJ + ")");
+      throw new IllegalStateException("getSessionToken() called while not connected(state=" + this.cs + ")");
     }
-    return this.gA;
+    return this.iy;
   }
   
-  final void aH()
+  final void aX()
   {
-    if (this.gD != null) {
-      this.mContext.unbindService(this.gD);
+    if (this.iB != null) {
+      this.mContext.unbindService(this.iB);
     }
-    this.aJ = 1;
-    this.gD = null;
-    this.gy = null;
-    this.gz = null;
-    this.gw.a(null);
-    this.gE = null;
-    this.gA = null;
+    this.cs = 1;
+    this.iB = null;
+    this.iw = null;
+    this.ix = null;
+    this.it.a(null);
+    this.iC = null;
+    this.iy = null;
   }
   
   public final void b(Messenger paramMessenger)
   {
-    Log.e("MediaBrowserCompat", "onConnectFailed for " + this.gB);
+    Log.e("MediaBrowserCompat", "onConnectFailed for " + this.iz);
     if (!a(paramMessenger, "onConnectFailed")) {
       return;
     }
-    if (this.aJ != 2)
+    if (this.cs != 2)
     {
-      Log.w("MediaBrowserCompat", "onConnect from service while mState=" + k(this.aJ) + "... ignoring");
+      Log.w("MediaBrowserCompat", "onConnect from service while mState=" + u(this.cs) + "... ignoring");
       return;
     }
-    aH();
-    this.gC.onConnectionFailed();
+    aX();
+    this.iA.onConnectionFailed();
   }
   
   public final void connect()
   {
-    if ((this.aJ != 0) && (this.aJ != 1)) {
-      throw new IllegalStateException("connect() called while neigther disconnecting nor disconnected (state=" + k(this.aJ) + ")");
+    if ((this.cs != 0) && (this.cs != 1)) {
+      throw new IllegalStateException("connect() called while neigther disconnecting nor disconnected (state=" + u(this.cs) + ")");
     }
-    this.aJ = 2;
-    this.gw.post(new Runnable()
+    this.cs = 2;
+    this.it.post(new Runnable()
     {
       public final void run()
       {
-        if (j.this.aJ == 0) {}
+        if (j.this.cs == 0) {}
         do
         {
           return;
-          j.this.aJ = 2;
-          if ((MediaBrowserCompat.DEBUG) && (j.this.gD != null)) {
-            throw new RuntimeException("mServiceConnection should be null. Instead it is " + j.this.gD);
+          j.this.cs = 2;
+          if ((MediaBrowserCompat.DEBUG) && (j.this.iB != null)) {
+            throw new RuntimeException("mServiceConnection should be null. Instead it is " + j.this.iB);
           }
-          if (j.this.gy != null) {
-            throw new RuntimeException("mServiceBinderWrapper should be null. Instead it is " + j.this.gy);
+          if (j.this.iw != null) {
+            throw new RuntimeException("mServiceBinderWrapper should be null. Instead it is " + j.this.iw);
           }
-          if (j.this.gz != null) {
-            throw new RuntimeException("mCallbacksMessenger should be null. Instead it is " + j.this.gz);
+          if (j.this.ix != null) {
+            throw new RuntimeException("mCallbacksMessenger should be null. Instead it is " + j.this.ix);
           }
           Intent localIntent = new Intent("android.media.browse.MediaBrowserService");
-          localIntent.setComponent(j.this.gB);
-          j.this.gD = new k(j.this);
+          localIntent.setComponent(j.this.iz);
+          j.this.iB = new k(j.this);
           int i = 0;
           try
           {
-            boolean bool = j.this.mContext.bindService(localIntent, j.this.gD, 1);
+            boolean bool = j.this.mContext.bindService(localIntent, j.this.iB, 1);
             i = bool;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              Log.e("MediaBrowserCompat", "Failed binding to service " + j.this.gB);
+              Log.e("MediaBrowserCompat", "Failed binding to service " + j.this.iz);
             }
           }
           if (i == 0)
           {
-            j.this.aH();
-            j.this.gC.onConnectionFailed();
+            j.this.aX();
+            j.this.iA.onConnectionFailed();
           }
         } while (!MediaBrowserCompat.DEBUG);
         Log.d("MediaBrowserCompat", "connect...");
@@ -236,19 +236,19 @@ final class j
   
   public final void disconnect()
   {
-    this.aJ = 0;
-    this.gw.post(new Runnable()
+    this.cs = 0;
+    this.it.post(new Runnable()
     {
       public final void run()
       {
-        if (j.this.gz != null) {}
+        if (j.this.ix != null) {}
         try
         {
-          j.this.gy.c(j.this.gz);
-          int i = j.this.aJ;
-          j.this.aH();
+          j.this.iw.c(j.this.ix);
+          int i = j.this.cs;
+          j.this.aX();
           if (i != 0) {
-            j.this.aJ = i;
+            j.this.cs = i;
           }
           if (MediaBrowserCompat.DEBUG)
           {
@@ -261,7 +261,7 @@ final class j
         {
           for (;;)
           {
-            Log.w("MediaBrowserCompat", "RemoteException during connect for " + j.this.gB);
+            Log.w("MediaBrowserCompat", "RemoteException during connect for " + j.this.iz);
           }
         }
       }
@@ -271,15 +271,15 @@ final class j
   final void dump()
   {
     Log.d("MediaBrowserCompat", "MediaBrowserCompat...");
-    Log.d("MediaBrowserCompat", "  mServiceComponent=" + this.gB);
-    Log.d("MediaBrowserCompat", "  mCallback=" + this.gC);
-    Log.d("MediaBrowserCompat", "  mRootHints=" + this.gv);
-    Log.d("MediaBrowserCompat", "  mState=" + k(this.aJ));
-    Log.d("MediaBrowserCompat", "  mServiceConnection=" + this.gD);
-    Log.d("MediaBrowserCompat", "  mServiceBinderWrapper=" + this.gy);
-    Log.d("MediaBrowserCompat", "  mCallbacksMessenger=" + this.gz);
-    Log.d("MediaBrowserCompat", "  mRootId=" + this.gE);
-    Log.d("MediaBrowserCompat", "  mMediaSessionToken=" + this.gA);
+    Log.d("MediaBrowserCompat", "  mServiceComponent=" + this.iz);
+    Log.d("MediaBrowserCompat", "  mCallback=" + this.iA);
+    Log.d("MediaBrowserCompat", "  mRootHints=" + this.is);
+    Log.d("MediaBrowserCompat", "  mState=" + u(this.cs));
+    Log.d("MediaBrowserCompat", "  mServiceConnection=" + this.iB);
+    Log.d("MediaBrowserCompat", "  mServiceBinderWrapper=" + this.iw);
+    Log.d("MediaBrowserCompat", "  mCallbacksMessenger=" + this.ix);
+    Log.d("MediaBrowserCompat", "  mRootId=" + this.iC);
+    Log.d("MediaBrowserCompat", "  mMediaSessionToken=" + this.iy);
   }
 }
 

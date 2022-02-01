@@ -10,7 +10,7 @@ public abstract interface NodeApi
 {
   public abstract PendingResult<GetConnectedNodesResult> getConnectedNodes(GoogleApiClient paramGoogleApiClient);
   
-  public abstract PendingResult<NodeApi.GetLocalNodeResult> getLocalNode(GoogleApiClient paramGoogleApiClient);
+  public abstract PendingResult<GetLocalNodeResult> getLocalNode(GoogleApiClient paramGoogleApiClient);
   
   @Deprecated
   public static abstract interface GetConnectedNodesResult
@@ -18,10 +18,17 @@ public abstract interface NodeApi
   {
     public abstract List<Node> getNodes();
   }
+  
+  @Deprecated
+  public static abstract interface GetLocalNodeResult
+    extends Result
+  {
+    public abstract Node getNode();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.NodeApi
  * JD-Core Version:    0.7.0.1
  */

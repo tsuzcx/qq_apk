@@ -6,14 +6,14 @@ import com.tencent.mobileqq.log.ReportLog;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import cooperation.qzone.QZoneCrashHandler;
-import gkc;
+import gkb;
 import java.util.List;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class Rdm
   extends Step
 {
-  private static final ScheduledThreadPoolExecutor a = new ScheduledThreadPoolExecutor(3, new gkc());
+  private static final ScheduledThreadPoolExecutor a = new ScheduledThreadPoolExecutor(3, new gkb());
   
   protected boolean a()
   {

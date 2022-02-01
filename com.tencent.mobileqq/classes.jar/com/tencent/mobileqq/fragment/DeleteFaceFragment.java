@@ -1,120 +1,142 @@
 package com.tencent.mobileqq.fragment;
 
-import aepi;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import asfj;
-import asfk;
-import azqs;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import cooperation.troop.TroopBaseProxyActivity;
+import java.util.Arrays;
+import java.util.List;
 
 public class DeleteFaceFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
   implements View.OnClickListener
 {
-  public Dialog a;
-  private TextView a;
+  private static final List<Integer> a = Arrays.asList(new Integer[] { Integer.valueOf(206), Integer.valueOf(205), Integer.valueOf(203) });
   private Dialog b;
+  private QBaseActivity c;
   
-  public int a()
+  private boolean a()
   {
-    return getResources().getDimensionPixelSize(2131298914);
+    QBaseActivity localQBaseActivity = this.c;
+    return (localQBaseActivity == null) || (localQBaseActivity.isFinishing());
   }
   
   public Drawable a(int paramInt)
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(aepi.a(6.0F, getResources()));
+    localGradientDrawable.setCornerRadius(Utils.a(6.0F, getResources()));
     localGradientDrawable.setColor(paramInt);
     return localGradientDrawable;
   }
   
-  public void a()
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (a())
     {
-      this.jdField_a_of_type_AndroidAppDialog = TroopBaseProxyActivity.a(getActivity());
-      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371587).getLayoutParams().width = -2;
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371894);
-      localTextView.setSingleLine();
-      localTextView.setPadding(15, 0, 15, 0);
-      localTextView.setText("正在删除...");
+      QLog.e("DeleteFaceFragment", 1, "onActivityResult activity is null");
+      return;
     }
-    this.jdField_a_of_type_AndroidAppDialog.show();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.cancel();
+    if (paramInt1 == 1001)
+    {
+      if (paramInt2 == -1)
+      {
+        Intent localIntent = paramIntent;
+        if (paramIntent == null) {
+          localIntent = new Intent();
+        }
+        localIntent.putExtra("key_face_scan_result", true);
+        this.c.setResult(paramInt2, localIntent);
+        this.c.finish();
+      }
+    }
+    else if ((paramInt2 == -1) && (paramIntent != null))
+    {
+      if (paramIntent.getBooleanExtra("key_face_scan_result", false))
+      {
+        this.c.setResult(paramInt2, paramIntent);
+        this.c.finish();
+        return;
+      }
+      if (paramIntent.getBundleExtra("data") != null)
+      {
+        paramIntent = paramIntent.getBundleExtra("data");
+        paramInt1 = paramIntent.getInt("ret", -1);
+        if (a.contains(Integer.valueOf(paramInt1)))
+        {
+          paramIntent = paramIntent.getString("errMsg");
+          QQToast.makeText(this.c, paramIntent, 0).show();
+        }
+      }
     }
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    paramView = getActivity();
-    if (i == 2131368624)
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (i == 2131436180)
     {
-      paramView.finish();
-      return;
+      localQBaseActivity.finish();
     }
-    azqs.b(null, "dc00898", "", "", "0X800A855", "0X800A855", 0, 0, "", "", "", "");
-    paramView = (TextView)this.b.findViewById(2131365237);
-    TextView localTextView1 = (TextView)this.b.findViewById(2131365233);
-    TextView localTextView2 = (TextView)this.b.findViewById(2131365222);
-    TextView localTextView3 = (TextView)this.b.findViewById(2131365228);
-    paramView.setText(getString(2131692358));
-    localTextView1.setText(getString(2131692359));
-    localTextView2.setText(getString(2131692356));
-    localTextView3.setText(getString(2131692357));
-    localTextView2.setOnClickListener(new asfj(this));
-    localTextView3.setOnClickListener(new asfk(this));
-    this.b.show();
+    else
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800A855", "0X800A855", 0, 0, "", "", "", "");
+      TextView localTextView1 = (TextView)this.b.findViewById(2131431880);
+      TextView localTextView2 = (TextView)this.b.findViewById(2131431876);
+      TextView localTextView3 = (TextView)this.b.findViewById(2131431864);
+      TextView localTextView4 = (TextView)this.b.findViewById(2131431870);
+      localTextView1.setText(getString(2131889133));
+      localTextView2.setText(getString(2131889134));
+      localTextView3.setText(getString(2131889132));
+      localTextView4.setText(getString(2131889020));
+      localTextView3.setOnClickListener(new DeleteFaceFragment.1(this));
+      localTextView4.setOnClickListener(new DeleteFaceFragment.2(this, localQBaseActivity));
+      this.b.show();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560915, paramViewGroup, false);
-    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131378859);
-    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131378736);
+    this.c = getQBaseActivity();
+    paramLayoutInflater = paramLayoutInflater.inflate(2131627383, paramViewGroup, false);
+    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131448372);
     paramViewGroup.setOnClickListener(this);
-    paramViewGroup.setBackgroundDrawable(a(getResources().getColor(2131166697)));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131368670));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131692214));
-    ((TextView)paramLayoutInflater.findViewById(2131368624)).setOnClickListener(this);
-    paramViewGroup = paramLayoutInflater.findViewById(2131375987);
+    paramViewGroup.setBackgroundDrawable(a(getResources().getColor(2131167753)));
+    ((TextView)paramLayoutInflater.findViewById(2131436227)).setText(getString(2131888986));
+    ((TextView)paramLayoutInflater.findViewById(2131436180)).setOnClickListener(this);
+    paramViewGroup = paramLayoutInflater.findViewById(2131445043);
     paramBundle = (LinearLayout.LayoutParams)paramViewGroup.getLayoutParams();
     paramBundle.topMargin = ImmersiveUtils.getStatusBarHeight(getActivity());
     paramViewGroup.setLayoutParams(paramBundle);
-    this.b = new Dialog(getActivity(), 2131755801);
-    this.b.setContentView(2131558919);
-    azqs.b(null, "dc00898", "", "", "0X800A86F", "0X800A86F", 0, 0, "", "", "", "");
+    this.b = new ReportDialog(getActivity(), 2131953338);
+    this.b.setContentView(2131624587);
+    ReportController.b(null, "dc00898", "", "", "0X800A86F", "0X800A86F", 0, 0, "", "", "", "");
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      b();
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.DeleteFaceFragment
  * JD-Core Version:    0.7.0.1
  */

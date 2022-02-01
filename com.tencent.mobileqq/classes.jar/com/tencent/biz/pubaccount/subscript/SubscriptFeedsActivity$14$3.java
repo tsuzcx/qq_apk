@@ -2,38 +2,32 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import sti;
-import stn;
 
-public class SubscriptFeedsActivity$14$3
+class SubscriptFeedsActivity$14$3
   implements Runnable
 {
-  public SubscriptFeedsActivity$14$3(sti paramsti, Serializable paramSerializable) {}
+  SubscriptFeedsActivity$14$3(SubscriptFeedsActivity.14 param14, Serializable paramSerializable) {}
   
   public void run()
   {
-    SubscriptFeedsActivity localSubscriptFeedsActivity;
-    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Sti.a) != null))
+    if ((this.a != null) && (SubscriptFeedsActivity.f(this.b.a) != null))
     {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Sti.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Sti.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Sti.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Sti.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_Sti.a;
-      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Sti.a).f != 1) {
-        break label110;
+      SubscriptFeedsActivity.b(this.b.a, (ArrayList)this.a);
+      SubscriptFeedsActivity.f(this.b.a).b(SubscriptFeedsActivity.h(this.b.a));
+      Object localObject = SubscriptFeedsActivity.f(this.b.a);
+      boolean bool = true;
+      ((SubscriptFeedsAdapter)localObject).g = true;
+      localObject = this.b.a;
+      if (SubscriptFeedsActivity.f(this.b.a).f != 1) {
+        bool = false;
       }
-    }
-    label110:
-    for (boolean bool = true;; bool = false)
-    {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, false, bool);
-      return;
+      SubscriptFeedsActivity.a((SubscriptFeedsActivity)localObject, false, false, bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3
  * JD-Core Version:    0.7.0.1
  */

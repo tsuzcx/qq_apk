@@ -13,28 +13,33 @@ class VideoProxy$1
   
   public void run()
   {
-    long l1 = 0L;
-    long l3 = System.currentTimeMillis();
+    long l2 = System.currentTimeMillis();
     try
     {
-      long l2 = StorageUtil.getDirUsedSpace(this.val$cacheDir);
-      l1 = l2;
+      l1 = StorageUtil.getDirUsedSpace(this.val$cacheDir);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        PlayerUtils.log(5, "VideoProxy", "calculate cacheSize OOM usedSpace set to 0");
-      }
+      long l1;
+      label15:
+      StringBuilder localStringBuilder;
+      break label15;
     }
-    l1 = Math.min(l1 + this.val$availableSpace, PlayerConfig.g().getCacheMaxBytes());
+    PlayerUtils.log(5, "VideoProxy", "calculate cacheSize OOM usedSpace set to 0");
+    l1 = 0L;
+    l1 = Math.min(this.val$availableSpace + l1, PlayerConfig.g().getCacheMaxBytes());
     ((LeastRecentlyUsedCacheEvictor)this.val$evictor).setMaxBytes(l1);
-    PlayerUtils.log(4, "VideoProxy", "update cacheSize " + l1 + ", timecost=" + (System.currentTimeMillis() - l3));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("update cacheSize ");
+    localStringBuilder.append(l1);
+    localStringBuilder.append(", timecost=");
+    localStringBuilder.append(System.currentTimeMillis() - l2);
+    PlayerUtils.log(4, "VideoProxy", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.VideoProxy.1
  * JD-Core Version:    0.7.0.1
  */

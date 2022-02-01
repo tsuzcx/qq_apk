@@ -68,24 +68,24 @@ public class ShortcutGuideActivity
   
   private void a()
   {
+    findViewById(2131233161).setOnClickListener(this);
     findViewById(2131233162).setOnClickListener(this);
-    findViewById(2131233163).setOnClickListener(this);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable == null) {
       this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable(d());
     }
-    findViewById(2131231465).setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+    findViewById(2131231464).setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
     Object localObject = a();
     if (localObject != null) {
-      ((ImageView)findViewById(2131233160)).setImageBitmap((Bitmap)localObject);
+      ((ImageView)findViewById(2131233159)).setImageBitmap((Bitmap)localObject);
     }
     for (;;)
     {
       localObject = getIntent().getStringExtra("uinname");
       if (localObject != null) {
-        ((TextView)findViewById(2131233161)).setText((CharSequence)localObject);
+        ((TextView)findViewById(2131233160)).setText((CharSequence)localObject);
       }
       return;
-      ((ImageView)findViewById(2131233160)).setImageResource(2130838018);
+      ((ImageView)findViewById(2131233159)).setImageResource(2130838018);
     }
   }
   
@@ -266,14 +266,14 @@ public class ShortcutGuideActivity
       if (paramBundle == null) {
         break label104;
       }
-      ((ImageView)findViewById(2131233160)).setImageBitmap(paramBundle);
+      ((ImageView)findViewById(2131233159)).setImageBitmap(paramBundle);
     }
     for (;;)
     {
       ReportController.b((QQAppInterface)this.mRuntime, "CliOper", "", "", "Fast_launch", "Fast_launch_head", 0, 0, "", "", "", "");
       return true;
       label104:
-      ((ImageView)findViewById(2131233160)).setImageResource(2130838018);
+      ((ImageView)findViewById(2131233159)).setImageResource(2130838018);
     }
   }
   

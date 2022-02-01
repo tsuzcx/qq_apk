@@ -11,15 +11,15 @@ final class GameLibraryUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(112030);
-    GameLibraryUI.a(this.nAK);
-    AppMethodBeat.o(112030);
+    AppMethodBeat.i(42219);
+    GameLibraryUI.a(this.ISs);
+    AppMethodBeat.o(42219);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameLibraryUI.1
  * JD-Core Version:    0.7.0.1
  */

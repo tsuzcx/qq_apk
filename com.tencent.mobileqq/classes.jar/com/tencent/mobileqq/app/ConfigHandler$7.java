@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aeur;
-import alqf;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigHelper;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -9,39 +8,43 @@ import java.io.File;
 import mqq.app.MobileQQ;
 import protocol.KQQConfig.GetResourceRespInfo;
 
-public class ConfigHandler$7
+class ConfigHandler$7
   implements Runnable
 {
-  public ConfigHandler$7(alqf paramalqf, GetResourceRespInfo paramGetResourceRespInfo, String paramString, long paramLong) {}
+  ConfigHandler$7(ConfigHandler paramConfigHandler, GetResourceRespInfo paramGetResourceRespInfo, String paramString, long paramLong) {}
   
   public void run()
   {
-    if (!alqf.a(this.this$0, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
+    if (!ConfigHandler.a(this.this$0, this.a.strPkgName, 10000L))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
       }
-    }
-    do
-    {
       return;
-      File localFile = new File(this.this$0.app.getApplication().getFilesDir(), "eggs_config.zip");
-      String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-      int i = HttpDownloadUtil.a(this.this$0.app, str, localFile);
-      if (QLog.isColorLevel()) {
-        QLog.d("eggs", 2, "handleUpdateEggsActions download: " + i);
-      }
-      if (i == 0)
-      {
-        aeur.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
-        return;
-      }
-    } while (aeur.a().a() != null);
-    aeur.a().a(this.this$0.app.getApplication());
+    }
+    File localFile = new File(this.this$0.c.getApplication().getFilesDir(), "eggs_config.zip");
+    Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.b);
+    int i = HttpDownloadUtil.downloadData(this.this$0.c, (String)localObject, localFile);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleUpdateEggsActions download: ");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("eggs", 2, ((StringBuilder)localObject).toString());
+    }
+    if (i == 0)
+    {
+      AioAnimationConfigHelper.a().a(this.this$0.c, this.c, localFile.getAbsolutePath());
+      return;
+    }
+    if (AioAnimationConfigHelper.a().b() == null) {
+      AioAnimationConfigHelper.a().a(this.this$0.c.getApplication());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.7
  * JD-Core Version:    0.7.0.1
  */

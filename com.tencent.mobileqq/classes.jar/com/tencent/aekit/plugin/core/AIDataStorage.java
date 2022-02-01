@@ -29,40 +29,48 @@ public class AIDataStorage
   {
     try
     {
-      AIDataSet localAIDataSet1 = new AIDataSet();
+      AIDataSet localAIDataSet = new AIDataSet();
       Iterator localIterator = this.aiDataMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         AIData localAIData = new AIData((String)localEntry.getKey(), localEntry.getValue());
-        localAIDataSet1.addAIData((String)localEntry.getKey(), localAIData);
+        localAIDataSet.addAIData((String)localEntry.getKey(), localAIData);
       }
+      return localAIDataSet;
     }
     finally {}
-    return localAIDataSet2;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public AIDataSet genNewAIDataSet(Map<String, Boolean> paramMap)
   {
-    AIDataSet localAIDataSet = null;
+    Object localObject = null;
     if (paramMap != null) {
       try
       {
-        localAIDataSet = new AIDataSet();
+        AIDataSet localAIDataSet = new AIDataSet();
         paramMap = paramMap.entrySet().iterator();
-        while (paramMap.hasNext())
+        for (;;)
         {
-          Map.Entry localEntry = (Map.Entry)paramMap.next();
-          if (((Boolean)localEntry.getValue()).booleanValue())
+          localObject = localAIDataSet;
+          if (!paramMap.hasNext()) {
+            break;
+          }
+          localObject = (Map.Entry)paramMap.next();
+          if (((Boolean)((Map.Entry)localObject).getValue()).booleanValue())
           {
-            AIData localAIData = new AIData((String)localEntry.getKey(), this.aiDataMap.get(localEntry.getKey()));
-            localAIDataSet.addAIData((String)localEntry.getKey(), localAIData);
+            AIData localAIData = new AIData((String)((Map.Entry)localObject).getKey(), this.aiDataMap.get(((Map.Entry)localObject).getKey()));
+            localAIDataSet.addAIData((String)((Map.Entry)localObject).getKey(), localAIData);
           }
         }
       }
       finally {}
     }
-    return localAIDataSet;
+    return localObject;
   }
   
   public void init(List<IDetect> paramList)
@@ -73,7 +81,7 @@ public class AIDataStorage
     }
     try
     {
-      while (i < paramList.size())
+      if (i < paramList.size())
       {
         IDetect localIDetect = (IDetect)paramList.get(i);
         this.aiDataMap.put(localIDetect.getModuleType(), null);
@@ -81,11 +89,7 @@ public class AIDataStorage
       }
       return;
     }
-    finally
-    {
-      paramList = finally;
-      throw paramList;
-    }
+    finally {}
   }
   
   public void put(IDetect paramIDetect)
@@ -94,13 +98,8 @@ public class AIDataStorage
     try
     {
       this.aiDataMap.put(paramIDetect.getModuleType(), null);
-      return;
     }
-    finally
-    {
-      paramIDetect = finally;
-      throw paramIDetect;
-    }
+    finally {}
   }
   
   public void remove(String paramString)
@@ -109,13 +108,8 @@ public class AIDataStorage
     try
     {
       this.aiDataMap.remove(paramString);
-      return;
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    finally {}
   }
   
   public void reset(String paramString)
@@ -148,7 +142,7 @@ public class AIDataStorage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.plugin.core.AIDataStorage
  * JD-Core Version:    0.7.0.1
  */

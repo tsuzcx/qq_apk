@@ -10,9 +10,9 @@ public final class ReqDelFace
 {
   static ReqHead cache_stHeader;
   static ArrayList<FaceInfo> cache_vFaceInfo;
-  public ReqHead stHeader;
-  public int uFaceTimeStamp;
-  public ArrayList<FaceInfo> vFaceInfo;
+  public ReqHead stHeader = null;
+  public int uFaceTimeStamp = 0;
+  public ArrayList<FaceInfo> vFaceInfo = null;
   
   public ReqDelFace() {}
   
@@ -48,7 +48,7 @@ public final class ReqDelFace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqDelFace
  * JD-Core Version:    0.7.0.1
  */

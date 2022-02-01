@@ -13,10 +13,10 @@ import android.widget.FrameLayout;
 public class RectangleClipLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_a_of_type_Boolean = true;
+  private RectF a = new RectF();
+  private float b;
+  private final Path c = new Path();
+  private boolean d = true;
   
   public RectangleClipLayout(@NonNull Context paramContext)
   {
@@ -35,36 +35,47 @@ public class RectangleClipLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidGraphicsPath.isEmpty()))
+    if ((this.d) && (!this.c.isEmpty()))
     {
+      paramCanvas.save();
+      paramCanvas.clipPath(this.c);
       super.dispatchDraw(paramCanvas);
+      paramCanvas.restore();
       return;
     }
-    paramCanvas.save();
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     super.dispatchDraw(paramCanvas);
-    paramCanvas.restore();
+  }
+  
+  public float getRadius()
+  {
+    if (this.d) {
+      return this.b;
+    }
+    return -1.0F;
   }
   
   public void setClipRect(RectF paramRectF, float paramFloat)
   {
     if ((paramRectF.width() >= getWidth()) && (paramRectF.height() >= getHeight()))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       invalidate();
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRectF);
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
+    this.d = true;
+    this.a.set(paramRectF);
+    this.b = paramFloat;
+    this.c.reset();
+    paramRectF = this.c;
+    RectF localRectF = this.a;
+    paramFloat = this.b;
+    paramRectF.addRoundRect(localRectF, paramFloat, paramFloat, Path.Direction.CW);
+    this.c.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.circularreveal.RectangleClipLayout
  * JD-Core Version:    0.7.0.1
  */

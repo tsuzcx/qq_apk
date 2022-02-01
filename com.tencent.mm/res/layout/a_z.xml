@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/a_j" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/na" android:textColor="@color/o" android:ellipsize="end" android:gravity="left" android:layout_gravity="left" android:id="@id/b2z" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
-    <TextView android:textSize="@dimen/na" android:textColor="@color/o" android:ellipsize="end" android:gravity="left" android:layout_gravity="left" android:id="@id/ct8" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
-    <TextView android:textSize="@dimen/m2" android:textColor="#ff4f729c" android:id="@id/ct9" android:paddingBottom="2.5dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/s_" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/o2" />
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/d91" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:scaleType="centerInside" />
+    <TextView android:textSize="@dimen/hn" android:textColor="#ffdee9ff" android:ellipsize="end" android:gravity="start|center" android:id="@id/d96" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e8j" android:maxLines="1" android:includeFontPadding="false" android:shadowColor="@color/y1" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="2.0" android:layout_marginStart="@dimen/bv" />
+</LinearLayout>

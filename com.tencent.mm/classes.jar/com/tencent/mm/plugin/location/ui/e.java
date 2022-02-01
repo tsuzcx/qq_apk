@@ -1,71 +1,84 @@
 package com.tencent.mm.plugin.location.ui;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.i;
+import com.tencent.mm.plugin.p.d;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
-  extends ImageView
+  implements c
 {
-  private static int ocv;
-  private final String TAG;
-  private double bnp;
-  public b.a dZA;
-  private boolean isRunning;
-  private Activity mActivity;
-  private b.a ocm;
-  private Bitmap ocn;
-  private boolean oco;
-  private double ocp;
-  private double ocq;
-  public com.tencent.mm.modelgeo.d ocr;
-  private com.tencent.mm.plugin.k.d ocs;
-  private boolean oct;
-  private final int ocu;
-  private boolean ocw;
+  private String KbS;
+  private double KbW;
+  private double KbX;
+  private String KdY;
+  private boolean Ker;
+  private View Kes;
+  private d Ket;
+  private TextView Keu;
+  private TextView Kev;
+  public ImageButton Kew;
+  public boolean hHq;
+  private boolean isVisible;
+  public String poiName;
   
-  public e(Activity paramActivity, com.tencent.mm.plugin.k.d paramd)
+  public e(d paramd, Context paramContext)
   {
-    super(paramActivity);
-    AppMethodBeat.i(113457);
-    this.TAG = "MicroMsg.MyPoiPoint";
-    this.oct = false;
-    this.ocu = 689208551;
-    this.ocw = false;
-    this.dZA = new e.1(this);
-    this.ocs = paramd;
-    this.ocm = null;
-    this.mActivity = paramActivity;
-    this.ocn = com.tencent.mm.sdk.platformtools.d.Na(2130839958);
-    this.isRunning = false;
-    this.oco = false;
-    this.ocr = com.tencent.mm.modelgeo.d.agQ();
-    ocv = BackwardSupportUtil.b.b(paramActivity, 80.0F);
-    setImageResource(2130839958);
-    setScaleType(ImageView.ScaleType.FIT_CENTER);
-    ab.d("MicroMsg.MyPoiPoint", "enableLocation");
-    this.isRunning = true;
-    this.ocr.a(this.dZA);
-    AppMethodBeat.o(113457);
+    AppMethodBeat.i(55842);
+    this.hHq = false;
+    this.Ker = true;
+    this.KbW = 1000000.0D;
+    this.KbX = 1000000.0D;
+    this.isVisible = true;
+    this.KdY = "";
+    paramContext = ((Activity)paramContext).findViewById(a.e.location_info_frame);
+    this.Keu = ((TextView)paramContext.findViewById(a.e.location_info));
+    this.Kev = ((TextView)paramContext.findViewById(a.e.location_info_detail));
+    this.Kew = ((ImageButton)paramContext.findViewById(a.e.location_navigate_iv));
+    this.Ket = paramd;
+    this.Kes = paramContext;
+    AppMethodBeat.o(55842);
   }
   
-  protected final void onDraw(Canvas paramCanvas)
+  public final String getPreText()
   {
-    AppMethodBeat.i(113458);
-    super.onDraw(paramCanvas);
-    ab.d("MicroMsg.MyPoiPoint", "onDraw");
-    AppMethodBeat.o(113458);
+    return this.KdY;
+  }
+  
+  public final void setText(String paramString)
+  {
+    AppMethodBeat.i(55843);
+    this.KbS = paramString;
+    paramString = this.KbS;
+    Log.d("NewItemOverlay", "popView " + this.Kes.getWidth() + " " + this.Kes.getHeight());
+    if ((paramString != null) && (!paramString.equals(""))) {
+      this.Kev.setText(paramString);
+    }
+    if ((this.poiName != null) && (!this.poiName.equals(""))) {
+      this.Keu.setText(this.poiName);
+    }
+    for (;;)
+    {
+      if (this.Ker)
+      {
+        this.Kes.setVisibility(0);
+        this.Kes.invalidate();
+      }
+      AppMethodBeat.o(55843);
+      return;
+      this.Keu.setText(a.i.location_conversation);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,14 @@ public final class qqstory_struct$VidPollInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "vid", "self_poll_result", "video_poll_result", "video_poll_users" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, VidPollInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "vid", "self_poll_result", "video_poll_result", "video_poll_users" }, new Object[] { localByteStringMicro, localInteger, localInteger, null }, VidPollInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo
  * JD-Core Version:    0.7.0.1
  */

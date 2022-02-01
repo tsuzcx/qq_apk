@@ -21,16 +21,16 @@ public class Stco
   
   public void parse(Parsable paramParsable, Box paramBox)
   {
-    AppMethodBeat.i(128483);
+    AppMethodBeat.i(114268);
     super.parse(paramParsable, paramBox);
     this.entryCount = paramParsable.readInt();
     this.chunkOffset = paramParsable.readIntArray(this.entryCount);
-    AppMethodBeat.o(128483);
+    AppMethodBeat.o(114268);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mpeg4.boxes.Stco
  * JD-Core Version:    0.7.0.1
  */

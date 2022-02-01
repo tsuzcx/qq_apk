@@ -1,49 +1,42 @@
 package io.flutter.embedding.android;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleRegistry;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterShellArgs;
+import io.flutter.embedding.engine.plugins.util.GeneratedPluginRegister;
 import io.flutter.plugin.platform.PlatformPlugin;
-import io.flutter.view.FlutterMain;
 
 public class FlutterActivity
   extends Activity
   implements LifecycleOwner, FlutterActivityAndFragmentDelegate.Host
 {
-  protected static final String DART_ENTRYPOINT_META_DATA_KEY = "io.flutter.Entrypoint";
-  protected static final String DEFAULT_BACKGROUND_MODE = FlutterActivity.BackgroundMode.opaque.name();
-  protected static final String DEFAULT_DART_ENTRYPOINT = "main";
-  protected static final String DEFAULT_INITIAL_ROUTE = "/";
-  protected static final String EXTRA_BACKGROUND_MODE = "background_mode";
-  protected static final String EXTRA_CACHED_ENGINE_ID = "cached_engine_id";
-  protected static final String EXTRA_DART_ENTRYPOINT = "dart_entrypoint";
-  protected static final String EXTRA_DESTROY_ENGINE_WITH_ACTIVITY = "destroy_engine_with_activity";
-  protected static final String EXTRA_INITIAL_ROUTE = "initial_route";
-  protected static final String INITIAL_ROUTE_META_DATA_KEY = "io.flutter.InitialRoute";
-  protected static final String NORMAL_THEME_META_DATA_KEY = "io.flutter.embedding.android.NormalTheme";
-  protected static final String SPLASH_SCREEN_META_DATA_KEY = "io.flutter.embedding.android.SplashScreenDrawable";
   private static final String TAG = "FlutterActivity";
-  private FlutterActivityAndFragmentDelegate delegate;
+  @VisibleForTesting
+  protected FlutterActivityAndFragmentDelegate delegate;
   @NonNull
   private LifecycleRegistry lifecycle = new LifecycleRegistry(this);
   
@@ -60,10 +53,8 @@ public class FlutterActivity
   
   private void configureWindowForTransparency()
   {
-    if (getBackgroundMode() == FlutterActivity.BackgroundMode.transparent)
-    {
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.transparent) {
       getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      getWindow().setFlags(512, 512);
     }
   }
   
@@ -82,28 +73,30 @@ public class FlutterActivity
   @Nullable
   private Drawable getSplashScreenFromManifest()
   {
+    Drawable localDrawable = null;
     for (;;)
     {
       try
       {
-        Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 129).metaData;
-        if (localObject1 == null) {
-          break label77;
-        }
-        localObject1 = Integer.valueOf(((Bundle)localObject1).getInt("io.flutter.embedding.android.SplashScreenDrawable"));
-        if (localObject1 != null)
+        Bundle localBundle = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+        if (localBundle != null)
         {
-          if (Build.VERSION.SDK_INT > 21) {
-            return getResources().getDrawable(((Integer)localObject1).intValue(), getTheme());
+          i = localBundle.getInt("io.flutter.embedding.android.SplashScreenDrawable");
+          if (i != 0)
+          {
+            if (Build.VERSION.SDK_INT > 21) {
+              return getResources().getDrawable(i, getTheme());
+            }
+            localDrawable = getResources().getDrawable(i);
           }
-          localObject1 = getResources().getDrawable(((Integer)localObject1).intValue());
-          return localObject1;
+          return localDrawable;
         }
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-      return null;
-      label77:
-      Object localObject2 = null;
+      catch (PackageManager.NameNotFoundException localNameNotFoundException)
+      {
+        return null;
+      }
+      int i = 0;
     }
   }
   
@@ -120,20 +113,22 @@ public class FlutterActivity
       if (localActivityInfo.metaData != null)
       {
         int i = localActivityInfo.metaData.getInt("io.flutter.embedding.android.NormalTheme", -1);
-        if (i != -1) {
-          setTheme(i);
+        if (i == -1) {
+          break label59;
         }
-      }
-      else
-      {
-        Log.d("FlutterActivity", "Using the launch theme as normal theme.");
+        setTheme(i);
         return;
       }
+      Log.v("FlutterActivity", "Using the launch theme as normal theme.");
+      return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      Log.e("FlutterActivity", "Could not read meta-data for FlutterActivity. Using the launch theme as normal theme.");
+      label52:
+      label59:
+      break label52;
     }
+    Log.e("FlutterActivity", "Could not read meta-data for FlutterActivity. Using the launch theme as normal theme.");
   }
   
   public static FlutterActivity.CachedEngineIntentBuilder withCachedEngine(@NonNull String paramString)
@@ -147,7 +142,21 @@ public class FlutterActivity
     return new FlutterActivity.NewEngineIntentBuilder(FlutterActivity.class);
   }
   
-  public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
+  public void cleanUpFlutterEngine(@NonNull FlutterEngine paramFlutterEngine) {}
+  
+  public void configureFlutterEngine(@NonNull FlutterEngine paramFlutterEngine)
+  {
+    GeneratedPluginRegister.registerGeneratedPlugins(paramFlutterEngine);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
   
   @NonNull
   public Activity getActivity()
@@ -165,16 +174,16 @@ public class FlutterActivity
         return str;
       }
     }
-    return FlutterMain.findAppBundlePath();
+    return null;
   }
   
   @NonNull
-  protected FlutterActivity.BackgroundMode getBackgroundMode()
+  protected FlutterActivityLaunchConfigs.BackgroundMode getBackgroundMode()
   {
     if (getIntent().hasExtra("background_mode")) {
-      return FlutterActivity.BackgroundMode.valueOf(getIntent().getStringExtra("background_mode"));
+      return FlutterActivityLaunchConfigs.BackgroundMode.valueOf(getIntent().getStringExtra("background_mode"));
     }
-    return FlutterActivity.BackgroundMode.opaque;
+    return FlutterActivityLaunchConfigs.BackgroundMode.opaque;
   }
   
   @Nullable
@@ -192,29 +201,22 @@ public class FlutterActivity
   @NonNull
   public String getDartEntrypointFunctionName()
   {
-    Object localObject2;
-    if (getIntent().hasExtra("dart_entrypoint")) {
-      localObject2 = getIntent().getStringExtra("dart_entrypoint");
-    }
-    for (;;)
+    Object localObject2 = "main";
+    try
     {
-      return localObject2;
-      try
-      {
-        Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 129).metaData;
-        if (localObject1 != null) {}
-        for (localObject1 = ((Bundle)localObject1).getString("io.flutter.Entrypoint");; localObject1 = null)
-        {
-          localObject2 = localObject1;
-          if (localObject1 != null) {
-            break;
-          }
-          return "main";
-        }
-        return "main";
+      Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+      if (localObject1 != null) {
+        localObject1 = ((Bundle)localObject1).getString("io.flutter.Entrypoint");
+      } else {
+        localObject1 = null;
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+      if (localObject1 != null) {
+        localObject2 = localObject1;
+      }
+      return localObject2;
     }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    return "main";
   }
   
   @Nullable
@@ -232,29 +234,25 @@ public class FlutterActivity
   @NonNull
   public String getInitialRoute()
   {
-    Object localObject2;
-    if (getIntent().hasExtra("initial_route")) {
-      localObject2 = getIntent().getStringExtra("initial_route");
+    Object localObject2 = "/";
+    if (getIntent().hasExtra("route")) {
+      return getIntent().getStringExtra("route");
     }
-    for (;;)
+    try
     {
-      return localObject2;
-      try
-      {
-        Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 129).metaData;
-        if (localObject1 != null) {}
-        for (localObject1 = ((Bundle)localObject1).getString("io.flutter.InitialRoute");; localObject1 = null)
-        {
-          localObject2 = localObject1;
-          if (localObject1 != null) {
-            break;
-          }
-          return "/";
-        }
-        return "/";
+      Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+      if (localObject1 != null) {
+        localObject1 = ((Bundle)localObject1).getString("io.flutter.InitialRoute");
+      } else {
+        localObject1 = null;
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+      if (localObject1 != null) {
+        localObject2 = localObject1;
+      }
+      return localObject2;
     }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    return "/";
   }
   
   @NonNull
@@ -264,21 +262,21 @@ public class FlutterActivity
   }
   
   @NonNull
-  public FlutterView.RenderMode getRenderMode()
+  public RenderMode getRenderMode()
   {
-    if (getBackgroundMode() == FlutterActivity.BackgroundMode.opaque) {
-      return FlutterView.RenderMode.surface;
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {
+      return RenderMode.surface;
     }
-    return FlutterView.RenderMode.texture;
+    return RenderMode.texture;
   }
   
   @NonNull
-  public FlutterView.TransparencyMode getTransparencyMode()
+  public TransparencyMode getTransparencyMode()
   {
-    if (getBackgroundMode() == FlutterActivity.BackgroundMode.opaque) {
-      return FlutterView.TransparencyMode.opaque;
+    if (getBackgroundMode() == FlutterActivityLaunchConfigs.BackgroundMode.opaque) {
+      return TransparencyMode.opaque;
     }
-    return FlutterView.TransparencyMode.transparent;
+    return TransparencyMode.transparent;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -291,6 +289,13 @@ public class FlutterActivity
     this.delegate.onBackPressed();
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   protected void onCreate(@Nullable Bundle paramBundle)
   {
     switchLaunchThemeForNormalTheme();
@@ -298,6 +303,7 @@ public class FlutterActivity
     this.lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
     this.delegate = new FlutterActivityAndFragmentDelegate(this);
     this.delegate.onAttach(this);
+    this.delegate.onActivityCreated(paramBundle);
     configureWindowForTransparency();
     setContentView(createFlutterView());
     configureStatusBarForFullscreenFlutterExperience();
@@ -311,7 +317,18 @@ public class FlutterActivity
     this.lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
   }
   
-  public void onFirstFrameRendered() {}
+  public void onFlutterSurfaceViewCreated(@NonNull FlutterSurfaceView paramFlutterSurfaceView) {}
+  
+  public void onFlutterTextureViewCreated(@NonNull FlutterTextureView paramFlutterTextureView) {}
+  
+  public void onFlutterUiDisplayed()
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      reportFullyDrawn();
+    }
+  }
+  
+  public void onFlutterUiNoLongerDisplayed() {}
   
   protected void onNewIntent(@NonNull Intent paramIntent)
   {
@@ -342,6 +359,12 @@ public class FlutterActivity
     super.onResume();
     this.lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
     this.delegate.onResume();
+  }
+  
+  protected void onSaveInstanceState(Bundle paramBundle)
+  {
+    super.onSaveInstanceState(paramBundle);
+    this.delegate.onSaveInstanceState(paramBundle);
   }
   
   protected void onStart()
@@ -394,6 +417,12 @@ public class FlutterActivity
     return null;
   }
   
+  @VisibleForTesting
+  void setDelegate(@NonNull FlutterActivityAndFragmentDelegate paramFlutterActivityAndFragmentDelegate)
+  {
+    this.delegate = paramFlutterActivityAndFragmentDelegate;
+  }
+  
   public boolean shouldAttachEngineToActivity()
   {
     return true;
@@ -401,12 +430,29 @@ public class FlutterActivity
   
   public boolean shouldDestroyEngineWithHost()
   {
-    return getIntent().getBooleanExtra("destroy_engine_with_activity", false);
+    boolean bool2 = getIntent().getBooleanExtra("destroy_engine_with_activity", false);
+    boolean bool1 = bool2;
+    if (getCachedEngineId() == null)
+    {
+      if (this.delegate.isFlutterEngineFromHost()) {
+        return bool2;
+      }
+      bool1 = getIntent().getBooleanExtra("destroy_engine_with_activity", true);
+    }
+    return bool1;
+  }
+  
+  public boolean shouldRestoreAndSaveState()
+  {
+    if (getIntent().hasExtra("enable_state_restoration")) {
+      return getIntent().getBooleanExtra("enable_state_restoration", false);
+    }
+    return getCachedEngineId() == null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,14 @@ final class c
 {
   public final void onBackgroundStateChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(10639);
-    a.rC();
-    AppMethodBeat.o(10639);
+    AppMethodBeat.i(4106);
+    a.XY();
+    AppMethodBeat.o(4106);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.c
  * JD-Core Version:    0.7.0.1
  */

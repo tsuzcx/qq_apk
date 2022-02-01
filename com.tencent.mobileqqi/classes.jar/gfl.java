@@ -3,7 +3,7 @@ import com.tencent.mobileqq.qcall.QCallDetailActivity;
 class gfl
   implements Runnable
 {
-  gfl(gfk paramgfk) {}
+  gfl(gfj paramgfj) {}
   
   public void run()
   {

@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import java.util.Comparator;
 
 public class ema
-  implements View.OnClickListener
+  implements Comparator
 {
   public ema(AlbumListActivity paramAlbumListActivity) {}
   
-  public void onClick(View paramView)
+  public int a(QQAlbumInfo paramQQAlbumInfo1, QQAlbumInfo paramQQAlbumInfo2)
   {
-    this.a.onBackPressed();
+    return -Long.valueOf(paramQQAlbumInfo1.coverDate).compareTo(Long.valueOf(paramQQAlbumInfo2.coverDate));
   }
 }
 

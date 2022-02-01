@@ -11,7 +11,7 @@ final class b
 {
   b(QuikLoginJSInterface paramQuikLoginJSInterface) {}
   
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  public final boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
     paramJsPromptResult.cancel();
     try
@@ -21,15 +21,14 @@ final class b
       paramString1 = paramString3.getString("sig");
       paramString3 = paramString3.optString("input");
       this.a.ptloginCallBack(paramWebView, paramString1, paramString3);
-      return true;
     }
     catch (Exception paramWebView)
     {
-      for (;;)
-      {
-        util.LOGI("onJsPrompt failed message " + paramString2, "");
-      }
+      label54:
+      break label54;
     }
+    util.LOGI("onJsPrompt failed message ".concat(String.valueOf(paramString2)), "");
+    return true;
   }
 }
 

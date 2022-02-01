@@ -1,14 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class czl
-  implements DialogInterface.OnClickListener
+public class czl
+  implements IStatusListener
 {
-  czl(czi paramczi) {}
+  public czl(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, RichStatus paramRichStatus) {}
+  
+  public void a(int paramInt, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    PermisionPrivacyActivity.a(this.a, this.a.d.a(), paramBoolean);
+  }
+  
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      PermisionPrivacyActivity.a(this.a, 2131562080);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.d.a(), PermisionPrivacyActivity.a(this.a).b());
   }
 }
 

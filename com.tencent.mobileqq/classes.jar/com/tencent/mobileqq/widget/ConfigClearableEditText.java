@@ -11,38 +11,35 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
-import bczz;
-import beoc;
-import beod;
-import beoe;
-import beof;
-import beog;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
 public class ConfigClearableEditText
   extends EditText
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  public Drawable a;
-  beoe jdField_a_of_type_Beoe;
-  private beof jdField_a_of_type_Beof;
-  public beog a;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
-  private boolean f;
-  private boolean g;
-  private boolean h;
-  private boolean i;
-  private boolean j;
+  Drawable a;
+  ConfigClearableEditText.OnTextClearedListener b;
+  ConfigClearableEditText.ConfigClearableEditTextHelper c;
+  public boolean d = false;
+  private int e;
+  private int f;
+  private float g;
+  private boolean h = false;
+  private boolean i = false;
+  private boolean j = false;
+  private boolean k = false;
+  private boolean l = false;
+  private boolean m = false;
+  private boolean n = false;
+  private boolean o = false;
+  private boolean p = false;
+  private boolean q;
+  private ConfigClearableEditText.CustomClearButtonCallback r = null;
+  private ConfigClearableEditText.OnTextContextSelectListener s = null;
+  private int t = 0;
   
   public ConfigClearableEditText(Context paramContext)
   {
@@ -60,60 +57,49 @@ public class ConfigClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_Beoe = new beoe(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Beoe);
-      ViewCompat.setImportantForAccessibility(this, 1);
-      return;
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
-  }
-  
-  private int a()
-  {
-    if (this.jdField_a_of_type_Beof != null) {
-      return getWidth() - this.jdField_a_of_type_Beof.a();
-    }
-    return getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+    this.c = new ConfigClearableEditText.ConfigClearableEditTextHelper(this, this);
+    ViewCompat.setAccessibilityDelegate(this, this.c);
+    ViewCompat.setImportantForAccessibility(this, 1);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.clearableEditText);
+    this.g = paramContext.getResources().getDisplayMetrics().density;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.fB);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(0);
-      this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(2, -1);
-      this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(1, -1);
-      this.d = paramContext.getBoolean(5, false);
-      this.e = paramContext.getBoolean(6, false);
-      this.f = paramContext.getBoolean(7, false);
-      this.g = paramContext.getBoolean(3, false);
-      this.h = paramContext.getBoolean(8, false);
-      this.i = paramContext.getBoolean(9, false);
-      this.j = paramContext.getBoolean(4, false);
+      this.a = paramContext.getDrawable(R.styleable.fC);
+      this.e = paramContext.getDimensionPixelSize(R.styleable.fE, -1);
+      this.f = paramContext.getDimensionPixelSize(R.styleable.fD, -1);
+      this.j = paramContext.getBoolean(R.styleable.fH, false);
+      this.k = paramContext.getBoolean(R.styleable.fI, false);
+      this.l = paramContext.getBoolean(R.styleable.fJ, false);
+      this.m = paramContext.getBoolean(R.styleable.fF, false);
+      this.n = paramContext.getBoolean(R.styleable.fK, false);
+      this.o = paramContext.getBoolean(R.styleable.fL, false);
+      this.p = paramContext.getBoolean(R.styleable.fG, false);
       paramContext.recycle();
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839356);
+      if (this.a == null) {
+        this.a = getResources().getDrawable(2130839736);
       }
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      if (this.a != null)
       {
-        if ((this.jdField_a_of_type_Int == -1) || (this.jdField_b_of_type_Int == -1))
+        if ((this.e == -1) || (this.f == -1))
         {
-          this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 19.0F));
-          this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 19.0F));
+          float f1 = this.g;
+          this.e = ((int)(f1 * 19.0F));
+          this.f = ((int)(f1 * 19.0F));
         }
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.a.setBounds(0, 0, this.e, this.f);
         setClearButtonVisible(false);
       }
-      setOnTouchListener(new beoc(this));
-      addTextChangedListener(new beod(this));
+      setOnTouchListener(new ConfigClearableEditText.1(this));
+      addTextChangedListener(new ConfigClearableEditText.2(this));
       return;
     }
     finally
@@ -122,56 +108,92 @@ public class ConfigClearableEditText
     }
   }
   
-  private boolean a()
+  private boolean c()
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject = TextView.class.getDeclaredField("mSingleLine");
+      ((Field)localObject).setAccessible(true);
+      localObject = ((Field)localObject).get(this);
+      if ((localObject instanceof Boolean))
       {
-        Object localObject = TextView.class.getDeclaredField("mSingleLine");
-        ((Field)localObject).setAccessible(true);
-        localObject = ((Field)localObject).get(this);
-        if ((localObject instanceof Boolean))
-        {
-          bool = ((Boolean)localObject).booleanValue();
-          return bool;
-        }
+        boolean bool = ((Boolean)localObject).booleanValue();
+        return bool;
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        localNoSuchFieldException.printStackTrace();
-        return false;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        localIllegalArgumentException.printStackTrace();
-        return false;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        localIllegalAccessException.printStackTrace();
-        return false;
-      }
-      boolean bool = false;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      localIllegalAccessException.printStackTrace();
+      return false;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      localIllegalArgumentException.printStackTrace();
+      return false;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
+    }
+    return false;
+  }
+  
+  private int getClearButtonLeft()
+  {
+    int i1;
+    if (this.r != null) {
+      i1 = getWidth();
+    }
+    for (int i2 = this.r.a();; i2 = this.a.getIntrinsicWidth())
+    {
+      return i1 - i2;
+      i1 = getWidth() - getPaddingRight();
     }
   }
   
-  protected String a()
+  public void a()
   {
-    return "";
+    Object localObject = this.r;
+    if (localObject != null) {
+      ((ConfigClearableEditText.CustomClearButtonCallback)localObject).b(true);
+    }
+    if ((getCompoundDrawables()[2] == null) && ((!this.h) || (this.r == null))) {
+      return;
+    }
+    setText("");
+    setClearButtonVisible(false);
+    localObject = this.b;
+    if (localObject != null) {
+      ((ConfigClearableEditText.OnTextClearedListener)localObject).f();
+    }
+  }
+  
+  protected boolean b()
+  {
+    return this.q;
   }
   
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > a())) {
-      return this.jdField_a_of_type_Beoe.dispatchHoverEvent(paramMotionEvent);
+    if ((this.h) && (paramMotionEvent.getX() > getClearButtonLeft())) {
+      return this.c.dispatchHoverEvent(paramMotionEvent);
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
   
+  protected Drawable getClearBtnDrawable()
+  {
+    return this.a;
+  }
+  
+  protected String getSimpleClassName()
+  {
+    return "";
+  }
+  
   public void onDetachedFromWindow()
   {
-    if ((QLog.isColorLevel()) && (AppSetting.d))
+    if ((QLog.isColorLevel()) && (AppSetting.f))
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("onDetachedFromWindow ");
@@ -182,7 +204,7 @@ public class ConfigClearableEditText
       localStringBuilder.append(Integer.toHexString(hashCode()));
       QLog.d("ConfigClearableEditText", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     super.onDetachedFromWindow();
   }
   
@@ -193,72 +215,76 @@ public class ConfigClearableEditText
     {
       setCursorVisible(false);
       setClearButtonVisible(false);
-    }
-    do
-    {
       return;
-      setCursorVisible(true);
-    } while (getText().toString().length() == 0);
-    setClearButtonVisible(true);
+    }
+    setCursorVisible(true);
+    if (getText().toString().length() != 0) {
+      setClearButtonVisible(true);
+    }
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    if (a().compareTo("com.tencent.mobileqq.widget.OptionAbleEditText") == 0) {
+    boolean bool = b();
+    ConfigClearableEditText.OnTextContextSelectListener localOnTextContextSelectListener = this.s;
+    if (localOnTextContextSelectListener != null) {
+      localOnTextContextSelectListener.a(paramInt);
+    }
+    if (bool) {
       return super.onTextContextMenuItem(paramInt);
     }
-    return !this.j;
+    return this.p ^ true;
   }
   
   public void setCanMultiLine(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public void setClearButtonStyle(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    if (this.jdField_c_of_type_Int == 1) {
+    this.t = paramInt;
+    paramInt = this.t;
+    if (paramInt == 1)
+    {
       setClearButtonVisible(false);
-    }
-    while (this.jdField_c_of_type_Int != 2) {
       return;
     }
-    setClearButtonVisible(true);
+    if (paramInt == 2) {
+      setClearButtonVisible(true);
+    }
   }
   
   public void setClearButtonVisible(boolean paramBoolean)
   {
-    if (((paramBoolean) && (this.jdField_c_of_type_Int == 1)) || ((!paramBoolean) && (this.jdField_c_of_type_Int == 2))) {
+    if (((paramBoolean) && (this.t == 1)) || ((!paramBoolean) && (this.t == 2))) {
       return;
     }
     Drawable localDrawable;
-    if (paramBoolean)
+    if (paramBoolean) {
+      localDrawable = this.a;
+    } else {
+      localDrawable = null;
+    }
+    ConfigClearableEditText.CustomClearButtonCallback localCustomClearButtonCallback = this.r;
+    if (localCustomClearButtonCallback != null)
     {
-      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (this.jdField_a_of_type_Beof == null) {
-        break label97;
-      }
-      this.jdField_a_of_type_Beof.a(paramBoolean);
+      localCustomClearButtonCallback.a(paramBoolean);
       setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
     }
-    for (;;)
+    else
     {
-      if (this.jdField_b_of_type_Boolean != paramBoolean) {
-        bczz.a(this);
-      }
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      return;
-      localDrawable = null;
-      break;
-      label97:
       setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], localDrawable, getCompoundDrawables()[3]);
     }
+    if (this.h != paramBoolean) {
+      AccessibilityUtil.a(this);
+    }
+    this.h = paramBoolean;
   }
   
   public void setCursorVisible(boolean paramBoolean)
   {
-    if ((QLog.isColorLevel()) && (AppSetting.d) && (this.jdField_a_of_type_Boolean))
+    if ((QLog.isColorLevel()) && (AppSetting.f) && (this.d))
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("setCursorVisible=");
@@ -274,19 +300,29 @@ public class ConfigClearableEditText
     super.setCursorVisible(paramBoolean);
   }
   
-  public void setCustomClearButtonCallback(beof parambeof)
+  public void setCustomClearButtonCallback(ConfigClearableEditText.CustomClearButtonCallback paramCustomClearButtonCallback)
   {
-    this.jdField_a_of_type_Beof = parambeof;
+    this.r = paramCustomClearButtonCallback;
   }
   
-  public void setTextClearedListener(beog parambeog)
+  public void setNeedContextMenu(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Beog = parambeog;
+    this.q = paramBoolean;
+  }
+  
+  public void setOnTextContextSelectListener(ConfigClearableEditText.OnTextContextSelectListener paramOnTextContextSelectListener)
+  {
+    this.s = paramOnTextContextSelectListener;
+  }
+  
+  public void setTextClearedListener(ConfigClearableEditText.OnTextClearedListener paramOnTextClearedListener)
+  {
+    this.b = paramOnTextClearedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ConfigClearableEditText
  * JD-Core Version:    0.7.0.1
  */

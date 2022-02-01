@@ -1,20 +1,18 @@
 package com.tencent.biz.qqstory.model;
 
-import uwg;
-
-public class TrimmableManager$1
+class TrimmableManager$1
   implements Runnable
 {
-  public TrimmableManager$1(uwg paramuwg, int paramInt) {}
+  TrimmableManager$1(TrimmableManager paramTrimmableManager, int paramInt) {}
   
   public void run()
   {
-    uwg.a(this.this$0, this.a);
+    TrimmableManager.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TrimmableManager.1
  * JD-Core Version:    0.7.0.1
  */

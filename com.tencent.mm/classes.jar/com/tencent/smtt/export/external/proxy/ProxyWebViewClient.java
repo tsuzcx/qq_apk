@@ -52,6 +52,8 @@ public abstract class ProxyWebViewClient
     }
   }
   
+  public void onPageCommitVisible(IX5WebViewBase paramIX5WebViewBase, String paramString) {}
+  
   public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString) {}
   
   public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, String paramString)
@@ -186,7 +188,7 @@ public abstract class ProxyWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.proxy.ProxyWebViewClient
  * JD-Core Version:    0.7.0.1
  */

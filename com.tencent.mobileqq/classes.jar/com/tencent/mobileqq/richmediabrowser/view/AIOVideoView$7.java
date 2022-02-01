@@ -1,21 +1,23 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import ayao;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.richmediabrowser.view.video.VideoView;
 
-public class AIOVideoView$7
-  implements Runnable
+class AIOVideoView$7
+  implements DialogInterface.OnClickListener
 {
-  public AIOVideoView$7(ayao paramayao) {}
+  AIOVideoView$7(AIOVideoView paramAIOVideoView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ayao.a(this.this$0, ayao.a(this.this$0, this.this$0.a.getCoverDrawable()));
+    this.a.l.mVideoView.pauseDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOVideoView.7
  * JD-Core Version:    0.7.0.1
  */

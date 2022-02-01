@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class ThreadPoolManager
 {
   private static final int MAX_RUNNING_THREAD = 5;
-  private static volatile ThreadPoolManager _instance = null;
+  private static volatile ThreadPoolManager _instance;
   private ScheduledExecutorService executor = null;
   
   private ThreadPoolManager()
@@ -21,59 +21,65 @@ public class ThreadPoolManager
     }
     catch (Throwable localThrowable)
     {
-      this.executor = Executors.newScheduledThreadPool(5, new ThreadPoolManager.CommonThreadFactory("ThreadPool"));
+      label27:
+      break label27;
     }
+    this.executor = Executors.newScheduledThreadPool(5, new ThreadPoolManager.CommonThreadFactory("ThreadPool"));
   }
   
   public static ThreadPoolManager get()
   {
-    if (_instance == null) {}
-    try
-    {
-      if (_instance == null) {
-        _instance = new ThreadPoolManager();
+    if (_instance == null) {
+      try
+      {
+        if (_instance == null) {
+          _instance = new ThreadPoolManager();
+        }
       }
-      return _instance;
+      finally {}
     }
-    finally {}
+    return _instance;
   }
   
   public void start(Runnable paramRunnable)
   {
-    if (this.executor != null) {
-      paramRunnable = this.executor.submit(paramRunnable);
-    }
-    try
+    ScheduledExecutorService localScheduledExecutorService = this.executor;
+    if (localScheduledExecutorService != null)
     {
-      paramRunnable.get();
-      return;
-    }
-    catch (InterruptedException paramRunnable)
-    {
-      paramRunnable.printStackTrace();
-      return;
-    }
-    catch (ExecutionException paramRunnable)
-    {
-      paramRunnable.printStackTrace();
-      return;
-    }
-    catch (Throwable paramRunnable)
-    {
-      paramRunnable.printStackTrace();
+      paramRunnable = localScheduledExecutorService.submit(paramRunnable);
+      try
+      {
+        paramRunnable.get();
+        return;
+      }
+      catch (Throwable paramRunnable)
+      {
+        paramRunnable.printStackTrace();
+        return;
+      }
+      catch (ExecutionException paramRunnable)
+      {
+        paramRunnable.printStackTrace();
+        return;
+      }
+      catch (InterruptedException paramRunnable)
+      {
+        paramRunnable.printStackTrace();
+      }
     }
   }
   
   public void startDelayed(Runnable paramRunnable, long paramLong)
   {
-    if (this.executor != null) {
-      this.executor.schedule(paramRunnable, paramLong, TimeUnit.MILLISECONDS);
+    ScheduledExecutorService localScheduledExecutorService = this.executor;
+    if (localScheduledExecutorService != null) {
+      localScheduledExecutorService.schedule(paramRunnable, paramLong, TimeUnit.MILLISECONDS);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.utils.ThreadPoolManager
  * JD-Core Version:    0.7.0.1
  */

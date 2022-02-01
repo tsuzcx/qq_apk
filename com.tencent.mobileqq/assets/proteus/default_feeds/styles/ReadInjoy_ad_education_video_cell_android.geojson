@@ -1,0 +1,451 @@
+{
+	"platform" : "android",
+	"ReadInjoy_ad_education_video_cell": {
+		"view_type": "UIView",
+		"layout_type": "layout_relative",
+		"view_id": "id_ad_education_main_body",
+		"height": {
+			"type": "wrap_content"
+		},
+		"width": {
+			"type": "relative",
+			"value": "375"
+		},
+		"event_type": "ad_nothing_click_in_recommend",
+		"subviews": [
+			{
+				"view_type": "container",
+				"layout_type": "layout_relative",
+				"view_id": "id_education_advertisers_relative",
+				"height": {
+					"type": "relative",
+					"value": "64"
+				},
+				"width": {
+					"type": "relative",
+					"value": "375"
+				},
+				"subviews": [
+					{
+						"view_type": "ReadInjoyAsynImageView",
+						"view_id": "id_ad_education_advertisers_img",
+						"align_parent_left": "YES",
+						"align_parent_center_vertical": "YES",
+						"margin_left": "12",
+						"height": {
+							"type": "relative",
+							"value": "36"
+						},
+						"width": {
+							"type": "relative",
+							"value": "36"
+						},
+						"event_type": "cmd_ad_education_advertisers_icon_click",
+						"attributes": {
+							"setImageWithURLString:lineup:": [
+								"$education_advertisers_imge_url",
+								"0"
+							],
+							"setCornerRadiusString:": "18"
+						}
+					},
+					{
+						"view_type": "container",
+						"layout_type": "layout_relative",
+						"margin_left": "7.5",
+						"right_of_view":"id_ad_education_advertisers_img",
+						"align_parent_center_vertical": "YES",
+						"view_id": "id_education_advertisers_relative",
+						"height": {
+							"type": "match_parent"
+						},
+						"width": {
+							"type": "wrap_content"
+						},
+						"subviews": [
+							{
+								"view_type": "UILabel",
+								"view_id": "id_education_teacher",
+								"margin_top": "12.5",
+								"align_parent_top": "YES",
+								"height": {
+									"type": "wrap_content"
+								},
+								"width": {
+									"type": "wrap_content"
+								},
+								"event_type": "cmd_ad_education_teacher_name_click",
+								"attributes":{
+									"setText:lineSpace:": [
+										"$education_teacher_text"
+									],
+									"setTextColorString:": "#262626",
+									"setBoldFontSizeString:": "16",
+									"setNumberOfLinesString:": "1"
+								}
+							},
+							{
+								"view_type": "UILabel",
+								"view_id": "id_info_status",
+								"align_parent_bottom": "YES",
+								"margin_bottom": "12.5",
+								"event_type": "ad_Text_click",
+								"height": {
+									"type": "wrap_content"
+								},
+								"width": {
+									"type": "wrap_content"
+								},
+								"event_type": "ad_Text_click",
+								"attributes":{
+									"setTextColorString:": "#737373",
+									"setBoldFontSizeString:": "12",
+									"setNumberOfLinesString:": "2"
+								}
+							}
+						]
+					},
+					{
+						"view_type": "UIView",
+						"layout_type": "layout_relative",
+						"view_id": "id_dislike_button",
+						"align_parent_right": "YES",
+						"align_parent_center_vertical": "YES",
+						"event_type": "cmd_dislike_click",
+						"height": {
+							"type": "relative",
+							"value": "30"
+						},
+						"width": {
+							"type": "relative",
+							"value": "36"
+						},
+						"subviews": [
+							{
+								"view_type": "UIImageView",
+								"view_id": "id_ad_dislike_img",
+								"default_visible":"YES",
+								"align_parent_center": "YES",
+								"height": {
+									"type": "relative",
+									"value": "12"
+								},
+								"width": {
+									"type": "relative",
+									"value": "12"
+								},
+								"attributes": {
+									"loadImageWithPath:": "feeds_dislike"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"view_type": "UILabel",
+				"view_id": "id_artilce_title",
+				"margin_left": "12",
+				"margin_right": "12",
+				"below_of_view": "id_education_advertisers_relative",
+				"height": {
+					"type": "wrap_content"
+				},
+				"width": {
+					"type": "relative",
+					"value": "351"
+				},
+				"event_type": "ad_title_click_in_recommend",
+				"attributes":{
+					"setText:lineSpace:": [
+						"$education_article_title_text",
+						"2"
+					],
+					"setTextColorString:": "#262626",
+					"setFontSizeString:": "18",
+					"setNumberOfLinesString:": "2"
+				}
+			},
+			{
+				"view_type": "container",
+				"layout_type": "layout_relative",
+				"view_id": "id_video_relative",
+				"below_of_view": "id_artilce_title",
+				"margin_top": "14",
+				"margin_left": "12",
+				"height": {
+					"type": "relative",
+					"value": "170"
+				},
+				"width": {
+					"type": "relative",
+					"value": "304"
+				},
+				"subviews": [{
+					"view_type": "QQReadInJoyVideoView",
+					"view_id": "id_ad_video_view",
+					"height": {
+						"type": "match_parent"
+					},
+					"width": {
+						"type": "match_parent"
+					},
+					"attributes": {
+						"setVideoURLs:": "-1"
+					}
+				},
+					{
+						"view_type": "ReadInjoyAsynImageView",
+						"align_parent_left": "YES",
+						"view_id": "id_article_large_imge",
+						"height": {
+							"type": "match_parent"
+						},
+						"width": {
+							"type": "match_parent"
+						},
+						"event_type": "cmd_large_img_click",
+						"attributes":{
+							"setImageWithURLString:lineup:": [
+								"-1",
+								"-1"
+							]
+						}
+					},
+					{
+						"view_type": "ReadInJoyCoordinateView",
+						"view_id": "id_view_ad_coordinateView",
+						"margin_top": "12",
+						"height": {
+							"type": "relative",
+							"value": "20"
+						},
+						"width": {
+							"type": "wrap_content"
+						},
+						"attributes": {
+							"setLocation:": "-1"
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_large_video_cover",
+						"height": {
+							"type": "match_parent"
+						},
+						"width": {
+							"type": "match_parent"
+						},
+						"event_type": "cmd_large_video_click",
+						"attributes": {
+							"loadImageWithPath:": "-1",
+							"setScaleType": "centerCrop"
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_large_video_icon",
+						"align_parent_center": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "50"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "50"
+						},
+						"attributes": {
+							"loadImageWithPath:": "-1"
+						}
+					},
+					{
+						"view_type": "UIView",
+						"layout_type": "layout_relative",
+						"view_id": "id_video_bg",
+						"align_parent_center": "YES",
+						"height": {
+							"type": "relative",
+							"value": "36"
+						},
+						"width": {
+							"type": "wrap_content"
+						},
+						"attributes":{
+							"setCornerRadiusString:": "18",
+							"setBackgroundColorString:": "#80101010"
+						},
+						"subviews": [{
+							"view_type": "UIImageView",
+							"view_id": "id_video_play_icon",
+							"align_parent_left": "YES",
+							"margin_left": "15",
+							"margin_top": "8",
+							"height": {
+								"type": "relative",
+								"value": "20"
+							},
+							"width": {
+								"type": "relative",
+								"value": "18"
+							},
+							"attributes":{
+								"loadImageWithPath:": "-1"
+							}
+						},
+							{
+								"view_type": "UILabel",
+								"view_id": "id_video_paly_text",
+								"right_of_view": "id_video_play_icon",
+								"margin_left": "6",
+								"margin_right": "12",
+								"margin_top": "9",
+								"height": {
+									"type": "relative",
+									"value": "18"
+								},
+								"width": {
+									"type": "wrap_content"
+								},
+								"attributes": {
+									"setTextAlignmentString:": "2",
+									"setTextColorString:": "#FFFFFF",
+									"setText:": "-1",
+									"setFontSizeString:": "15"
+								}
+							}
+						]
+					},
+					{
+						"$includeComponet": "componet/ad_large_video_activity.geojson"
+					},
+					{
+						"view_type": "UILabel",
+						"view_id": "id_large_video_duration",
+						"margin_right": "6",
+						"margin_bottom": "6",
+						"align_parent_right": "YES",
+						"align_parent_bottom": "YES",
+						"padding_left": "6",
+						"padding_right": "6",
+						"height": {
+							"type": "relative",
+							"value": "18"
+						},
+						"width": {
+							"type": "wrap_content"
+						},
+						"attributes": {
+							"setText:": "-1",
+							"setTextColorString:": "#ffffff",
+							"setFontSizeString:": "11",
+							"setBackgroundColorString:": "#33000000",
+							"setTextAlignmentString:": "1",
+							"setCornerRadiusString:": "4.0"
+						}
+					},
+					{
+						"view_type": "ReadInJoyAdVideoGuide",
+						"view_id": "id_view_Ad_CompleteGudie",
+						"height": {
+							"type": "match_parent"
+						},
+						"width": {
+							"type": "match_parent"
+						},
+						"attributes": {
+
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_top_left_mask",
+						"default_visible": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "10"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "10"
+						},
+						"attributes": {
+							"loadImageWithPath:": "left_top_round_corner"
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_bottom_left_mask",
+						"default_visible": "YES",
+						"align_parent_bottom": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "10"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "10"
+						},
+						"attributes": {
+							"loadImageWithPath:": "left_bottom_round_corner"
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_top_right_mask",
+						"default_visible": "YES",
+						"align_parent_right": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "10"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "10"
+						},
+						"attributes": {
+							"loadImageWithPath:": "right_top_round_corner"
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_bottom_right_mask",
+						"default_visible": "YES",
+						"align_parent_right": "YES",
+						"align_parent_bottom": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "10"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "10"
+						},
+						"attributes": {
+							"loadImageWithPath:": "right_bottom_round_corner"
+						}
+					}
+				]
+			},
+			{
+				"view_type": "container",
+				"direction": "vertical",
+				"below_of_view": "id_video_relative",
+				"height": {
+					"type": "wrap_content"
+				},
+				"width": {
+					"type": "relative",
+					"value": "375"
+				},
+				"subviews": [
+					{
+						"$includeComponet": "componet/android/ad_info_warning.geojson"
+					},
+					{
+						"$includeComponet": "componet/separator_normal_bottom.geojson"
+					}
+				]
+			}
+		]
+	}
+}

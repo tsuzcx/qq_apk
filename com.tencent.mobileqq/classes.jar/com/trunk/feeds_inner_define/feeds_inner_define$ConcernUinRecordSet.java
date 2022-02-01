@@ -13,7 +13,7 @@ public final class feeds_inner_define$ConcernUinRecordSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.feeds_inner_define.feeds_inner_define.ConcernUinRecordSet
  * JD-Core Version:    0.7.0.1
  */

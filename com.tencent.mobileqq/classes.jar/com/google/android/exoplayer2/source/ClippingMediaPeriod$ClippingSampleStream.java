@@ -46,23 +46,19 @@ final class ClippingMediaPeriod$ClippingSampleStream
       paramDecoderInputBuffer = paramFormatHolder.format;
       if ((paramDecoderInputBuffer.encoderDelay != -1) || (paramDecoderInputBuffer.encoderPadding != -1))
       {
-        if (this.this$0.startUs == 0L) {
-          break label117;
+        long l = this.this$0.startUs;
+        int j = 0;
+        if (l != 0L) {
+          i = 0;
+        } else {
+          i = paramDecoderInputBuffer.encoderDelay;
         }
-        i = 0;
         if (this.this$0.endUs == -9223372036854775808L) {
-          break label126;
+          j = paramDecoderInputBuffer.encoderPadding;
         }
-      }
-      label117:
-      label126:
-      for (int j = 0;; j = paramDecoderInputBuffer.encoderPadding)
-      {
         paramFormatHolder.format = paramDecoderInputBuffer.copyWithGaplessInfo(i, j);
-        return -5;
-        i = paramDecoderInputBuffer.encoderDelay;
-        break;
       }
+      return -5;
     }
     if ((this.this$0.endUs != -9223372036854775808L) && (((i == -4) && (paramDecoderInputBuffer.timeUs >= this.this$0.endUs)) || ((i == -3) && (this.this$0.getBufferedPositionUs() == -9223372036854775808L))))
     {
@@ -87,7 +83,7 @@ final class ClippingMediaPeriod$ClippingSampleStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ClippingMediaPeriod.ClippingSampleStream
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/iwo" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/a0m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/ark" android:headerDividersEnabled="false" android:footerDividersEnabled="false" style="@style/na" />
+    <FrameLayout android:id="@id/j74" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/i1" android:textColor="@color/gm" android:id="@id/j55" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_0_Alpha_0_3" android:gravity="center_horizontal" android:id="@id/j6v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iqm" />
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/j6j" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" style="@style/a85" />
+    </FrameLayout>
+</FrameLayout>

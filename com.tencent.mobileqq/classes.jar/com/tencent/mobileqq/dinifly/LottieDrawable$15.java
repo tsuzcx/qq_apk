@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.dinifly;
 
-import com.tencent.mobileqq.dinifly.model.KeyPath;
-import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
-
 class LottieDrawable$15
   implements LottieDrawable.LazyCompositionTask
 {
-  LottieDrawable$15(LottieDrawable paramLottieDrawable, KeyPath paramKeyPath, Object paramObject, LottieValueCallback paramLottieValueCallback) {}
+  LottieDrawable$15(LottieDrawable paramLottieDrawable, float paramFloat) {}
   
   public void run(LottieComposition paramLottieComposition)
   {
-    this.this$0.addValueCallback(this.val$keyPath, this.val$property, this.val$callback);
+    this.this$0.setProgress(this.val$progress);
   }
 }
 

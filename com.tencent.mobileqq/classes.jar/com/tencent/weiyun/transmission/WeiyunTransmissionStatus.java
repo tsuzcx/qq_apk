@@ -67,7 +67,11 @@ public final class WeiyunTransmissionStatus
   
   private static int getInt4Single(String paramString1, String paramString2, int paramInt)
   {
-    return WeiyunTransmissionGlobal.getInstance().getHostInterface().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 4).getInt(paramString2 + paramString1, paramInt);
+    SharedPreferences localSharedPreferences = WeiyunTransmissionGlobal.getInstance().getHostInterface().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(paramString1);
+    return localSharedPreferences.getInt(localStringBuilder.toString(), paramInt);
   }
   
   private int getValue(int paramInt)
@@ -98,50 +102,50 @@ public final class WeiyunTransmissionStatus
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private boolean isValueValid(int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    boolean bool1 = false;
-    switch (paramInt1)
+    if (paramInt1 != 1) {
+      if (paramInt1 != 2) {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4) {
+            return true;
+          }
+          if (paramInt2 == 0) {
+            break label67;
+          }
+          if (paramInt2 == 1) {
+            return true;
+          }
+        }
+      }
+    }
+    while ((paramInt2 < 1) || (paramInt2 > 4))
     {
-    case 5: 
-    default: 
-    case 1: 
       do
       {
+        do
+        {
+          return false;
+          if (paramInt2 == 0) {
+            break;
+          }
+        } while (paramInt2 != 1);
         return true;
-      } while ((paramInt2 >= 1) && (paramInt2 <= 4));
-      return false;
-    case 2: 
-      if ((paramInt2 == 0) || (paramInt2 == 5)) {
-        bool1 = true;
-      }
-      return bool1;
-    case 4: 
-      if (paramInt2 != 0)
-      {
-        bool1 = bool2;
-        if (paramInt2 != 1) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
+        if (paramInt2 == 0) {
+          break;
+        }
+      } while (paramInt2 != 5);
+      return true;
     }
-    if (paramInt2 != 0)
-    {
-      bool1 = bool3;
-      if (paramInt2 != 1) {}
-    }
-    else
-    {
-      bool1 = true;
-    }
-    return bool1;
+    label67:
+    return true;
   }
   
   private void notifyObservers(int paramInt1, int paramInt2, int paramInt3)
@@ -154,9 +158,14 @@ public final class WeiyunTransmissionStatus
         localArrayList.addAll(localHashSet);
       }
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((WeiyunTransmissionStatus.StatusChangeListener)((Iterator)???).next()).onStatusChanged(paramInt1, paramInt2, paramInt3);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -167,16 +176,16 @@ public final class WeiyunTransmissionStatus
   
   private static void saveInt4Single(String paramString1, String paramString2, int paramInt)
   {
-    WeiyunTransmissionGlobal.getInstance().getHostInterface().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 4).edit().putInt(paramString2 + paramString1, paramInt).commit();
+    SharedPreferences.Editor localEditor = WeiyunTransmissionGlobal.getInstance().getHostInterface().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 4).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(paramString1);
+    localEditor.putInt(localStringBuilder.toString(), paramInt).commit();
   }
   
   private boolean setValue(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (isValueValid(paramInt1, paramInt2)) {}
-    for (;;)
-    {
+    if (isValueValid(paramInt1, paramInt2)) {
       synchronized (this.mValues)
       {
         int i = this.mValues.get(paramInt1, -1);
@@ -186,30 +195,31 @@ public final class WeiyunTransmissionStatus
         if (i != paramInt2)
         {
           notifyObservers(paramInt1, i, paramInt2);
-          if (paramBoolean1)
-          {
-            if (!paramBoolean2) {
-              break label117;
+          if (paramBoolean1) {
+            if (paramBoolean2)
+            {
+              paramString = (String)KEY_MAP_4_GLOBAL.get(paramInt1);
+              if (!TextUtils.isEmpty(paramString)) {
+                saveInt4All(paramString, paramInt2);
+              }
             }
-            paramString = (String)KEY_MAP_4_GLOBAL.get(paramInt1);
-            if (!TextUtils.isEmpty(paramString)) {
-              saveInt4All(paramString, paramInt2);
+            else if (!TextUtils.isEmpty(paramString))
+            {
+              ??? = (String)KEY_MAP_4_USER.get(paramInt1);
+              if (!TextUtils.isEmpty((CharSequence)???)) {
+                saveInt4Single(paramString, (String)???, paramInt2);
+              }
+            }
+            else
+            {
+              return false;
             }
           }
         }
-        bool1 = true;
-        return bool1;
-      }
-      label117:
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        ??? = (String)KEY_MAP_4_USER.get(paramInt1);
-        if (!TextUtils.isEmpty((CharSequence)???)) {
-          saveInt4Single(paramString, (String)???, paramInt2);
-        }
+        return true;
       }
     }
+    return false;
   }
   
   public void addListener(int paramInt, WeiyunTransmissionStatus.StatusChangeListener paramStatusChangeListener)
@@ -263,6 +273,10 @@ public final class WeiyunTransmissionStatus
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public boolean isBackgroundMode()
@@ -282,7 +296,10 @@ public final class WeiyunTransmissionStatus
   
   public void onReceiveNetChanged(boolean paramBoolean)
   {
-    TsLog.i("WeiyunTransmissionStatus", "onReceiveNetChanged: isNetEffective=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceiveNetChanged: isNetEffective=");
+    localStringBuilder.append(paramBoolean);
+    TsLog.i("WeiyunTransmissionStatus", localStringBuilder.toString());
     setValue(5, NetworkUtils.getNetworkType(WeiyunTransmissionGlobal.getInstance().getContext()), false, false, null);
   }
   
@@ -302,32 +319,35 @@ public final class WeiyunTransmissionStatus
   
   public boolean setBackgroundMode(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1) {
-      return setValue(6, i, false, false, null);
-    }
+    return setValue(6, paramBoolean ^ true, false, false, null);
   }
   
   public boolean setLoginStatus(int paramInt, String paramString)
   {
-    if (paramInt == 0) {
+    int i;
+    if (paramInt == 0)
+    {
       initUserStatus(paramString);
     }
+    else
+    {
+      paramString = this.mValues;
+      i = 0;
+    }
+    try
+    {
+      while (i < KEY_MAP_4_USER.size())
+      {
+        int j = KEY_MAP_4_USER.keyAt(i);
+        this.mValues.delete(j);
+        i += 1;
+      }
+      return setValue(4, paramInt, false, false, null);
+    }
+    finally {}
     for (;;)
     {
-      return setValue(4, paramInt, false, false, null);
-      paramString = this.mValues;
-      int i = 0;
-      try
-      {
-        while (i < KEY_MAP_4_USER.size())
-        {
-          int j = KEY_MAP_4_USER.keyAt(i);
-          this.mValues.delete(j);
-          i += 1;
-        }
-      }
-      finally {}
+      throw localObject;
     }
   }
   
@@ -348,7 +368,7 @@ public final class WeiyunTransmissionStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.WeiyunTransmissionStatus
  * JD-Core Version:    0.7.0.1
  */

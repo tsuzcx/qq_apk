@@ -1,11 +1,8 @@
 package Wallet;
 
-import bdgk;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
 
 public final class GetMiniAppReq
   extends JceStruct
@@ -16,23 +13,23 @@ public final class GetMiniAppReq
   public static final int ACTION_NORMAL_GET_INFO = 0;
   public static final int ACTION_QQ_SCAN_CODE = 1;
   public static final int ACTION_WX_SCAN_CODE = 2;
-  public int action;
+  public int action = 0;
   public String extra_keys = "";
   public String mini_appid = "";
-  public int mini_version;
+  public int mini_version = 0;
   public String platform = "";
   public String qq_version = "";
   public String uin = "";
   
   public GetMiniAppReq() {}
   
-  public GetMiniAppReq(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public GetMiniAppReq(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     this.mini_appid = paramString1;
-    this.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    this.uin = paramString3;
     this.mini_version = paramInt1;
-    this.platform = ("Android|" + bdgk.e() + "|" + bdgk.i());
-    this.qq_version = bdgk.c();
+    this.platform = paramString4;
+    this.qq_version = paramString5;
     this.action = paramInt2;
     this.extra_keys = paramString2;
   }
@@ -50,33 +47,59 @@ public final class GetMiniAppReq
   
   public String toString()
   {
-    return "GetMiniAppReq{mini_appid='" + this.mini_appid + '\'' + ", uin='" + this.uin + '\'' + ", mini_version=" + this.mini_version + ", platform='" + this.platform + '\'' + ", qq_version='" + this.qq_version + '\'' + ", action=" + this.action + ", extra_keys='" + this.extra_keys + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetMiniAppReq{mini_appid='");
+    localStringBuilder.append(this.mini_appid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uin='");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mini_version=");
+    localStringBuilder.append(this.mini_version);
+    localStringBuilder.append(", platform='");
+    localStringBuilder.append(this.platform);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", qq_version='");
+    localStringBuilder.append(this.qq_version);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", action=");
+    localStringBuilder.append(this.action);
+    localStringBuilder.append(", extra_keys='");
+    localStringBuilder.append(this.extra_keys);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mini_appid != null) {
-      paramJceOutputStream.write(this.mini_appid, 0);
+    String str = this.mini_appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.uin != null) {
-      paramJceOutputStream.write(this.uin, 1);
+    str = this.uin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.mini_version, 2);
-    if (this.platform != null) {
-      paramJceOutputStream.write(this.platform, 3);
+    str = this.platform;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.qq_version != null) {
-      paramJceOutputStream.write(this.qq_version, 4);
+    str = this.qq_version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.action, 5);
-    if (this.extra_keys != null) {
-      paramJceOutputStream.write(this.extra_keys, 6);
+    str = this.extra_keys;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetMiniAppReq
  * JD-Core Version:    0.7.0.1
  */

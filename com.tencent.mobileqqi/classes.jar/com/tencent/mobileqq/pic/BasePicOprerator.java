@@ -19,10 +19,10 @@ import com.tencent.mobileqq.transfile.TransferRequest.PicDownExtraInfo;
 import com.tencent.mobileqq.transfile.TransferResult;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.FileUtils;
+import gds;
 import gdt;
 import gdu;
-import gdv;
-import gdx;
+import gdw;
 import java.io.File;
 import java.net.URL;
 import java.util.concurrent.PriorityBlockingQueue;
@@ -30,7 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import tencent.im.msg.im_msg_body.RichText;
 
 public abstract class BasePicOprerator
-  implements DownCallBack, InfoBuilder, UpCallBack, gdx
+  implements DownCallBack, InfoBuilder, UpCallBack, gdw
 {
   public static final int a = 0;
   public static final int b = 1;
@@ -51,7 +51,7 @@ public abstract class BasePicOprerator
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new gdt(this, Looper.getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new gds(this, Looper.getMainLooper());
     }
   }
   
@@ -199,12 +199,12 @@ public abstract class BasePicOprerator
   
   private void b(PicFowardInfo paramPicFowardInfo)
   {
-    new gdu(this, paramPicFowardInfo).execute(new Void[0]);
+    new gdt(this, paramPicFowardInfo).execute(new Void[0]);
   }
   
   private void b(PicUploadInfo paramPicUploadInfo)
   {
-    new gdv(this, paramPicUploadInfo).execute(new Void[0]);
+    new gdu(this, paramPicUploadInfo).execute(new Void[0]);
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)

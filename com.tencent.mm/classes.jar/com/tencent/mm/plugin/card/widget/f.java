@@ -7,199 +7,203 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.d.m;
-import com.tencent.mm.protocal.protobuf.oz;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.uo;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.c.n;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.protocal.protobuf.wl;
+import com.tencent.mm.protocal.protobuf.ws;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public final class f
   extends a
 {
-  protected TextView gpL;
-  private View kDf;
-  private ImageView kDg;
-  private TextView kDh;
-  private TextView kDi;
-  private View kDj;
-  private TextView kDk;
-  private TextView kDl;
-  private ImageView kDm;
-  private TextView kDn;
-  public ArrayList<oz> klq;
+  protected TextView pJJ;
+  private ImageView wLA;
+  private TextView wLB;
+  private TextView wLC;
+  private View wLD;
+  private TextView wLE;
+  private TextView wLF;
+  private ImageView wLG;
+  private TextView wLH;
+  private View wLz;
+  public ArrayList<wl> wrB;
   
   public f(Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final void bfH()
+  protected final void doX()
   {
-    AppMethodBeat.i(88985);
-    this.gpL = ((TextView)bfG().findViewById(2131822059));
-    this.kDf = bfG().findViewById(2131822057);
-    this.kDg = ((ImageView)bfG().findViewById(2131822400));
-    this.kDh = ((TextView)bfG().findViewById(2131822401));
-    this.kDi = ((TextView)bfG().findViewById(2131822402));
-    this.kDj = bfG().findViewById(2131822403);
-    this.kDk = ((TextView)bfG().findViewById(2131822405));
-    this.kDl = ((TextView)bfG().findViewById(2131822406));
-    this.kDm = ((ImageView)bfG().findViewById(2131822404));
-    this.kDn = ((TextView)bfG().findViewById(2131822407));
-    AppMethodBeat.o(88985);
+    AppMethodBeat.i(113913);
+    this.pJJ = ((TextView)doW().findViewById(a.d.fvy));
+    this.wLz = doW().findViewById(a.d.wfx);
+    this.wLA = ((ImageView)doW().findViewById(a.d.wlD));
+    this.wLB = ((TextView)doW().findViewById(a.d.wlC));
+    this.wLC = ((TextView)doW().findViewById(a.d.wlB));
+    this.wLD = doW().findViewById(a.d.wlF);
+    this.wLE = ((TextView)doW().findViewById(a.d.wlH));
+    this.wLF = ((TextView)doW().findViewById(a.d.wlG));
+    this.wLG = ((ImageView)doW().findViewById(a.d.wlE));
+    this.wLH = ((TextView)doW().findViewById(a.d.wlA));
+    AppMethodBeat.o(113913);
   }
   
-  protected final void bfI()
+  protected final void doY()
   {
-    AppMethodBeat.i(88986);
+    AppMethodBeat.i(113914);
     label129:
-    label206:
+    label210:
     Object localObject;
     StringBuilder localStringBuilder;
-    uo localuo1;
-    if ((this.klk.bbd().wGB != null) && (!TextUtils.isEmpty(this.klk.bbd().wGB.title)))
+    aek localaek1;
+    if ((this.wru.djK().Zel != null) && (!TextUtils.isEmpty(this.wru.djK().Zel.title)))
     {
-      this.iVS.setText(this.klk.bbd().wGB.title);
-      if ((this.klk.bbd().wGB == null) || (TextUtils.isEmpty(this.klk.bbd().wGB.kmn))) {
-        break label604;
+      this.uov.setText(this.wru.djK().Zel.title);
+      if ((this.wru.djK().Zel == null) || (TextUtils.isEmpty(this.wru.djK().Zel.wsz))) {
+        break label609;
       }
-      this.gpL.setText(this.klk.bbd().wGB.kmn);
-      this.gpL.setVisibility(0);
-      ab.i("MicroMsg.CardWidgetTicket", "updateContentView()");
-      if (bo.isNullOrNil(this.klk.bbd().wGh)) {
-        break label625;
+      this.pJJ.setText(this.wru.djK().Zel.wsz);
+      this.pJJ.setVisibility(0);
+      Log.i("MicroMsg.CardWidgetTicket", "updateContentView()");
+      if (Util.isNullOrNil(this.wru.djK().ZdR)) {
+        break label631;
       }
-      int i = this.mContext.getResources().getDimensionPixelSize(2131428201);
-      m.a(this.mContext, this.kDg, this.klk.bbd().wGh, i, l.IB(this.klk.bbd().color));
+      int i = this.mContext.getResources().getDimensionPixelSize(a.b.weh);
+      n.a(this.mContext, this.wLA, this.wru.djK().ZdR, i, a.c.wev, l.alv(this.wru.djK().nRQ));
       localObject = new StringBuilder();
       localStringBuilder = new StringBuilder();
-      if ((this.klk.bbd().wFZ == null) || (this.klk.bbd().wFZ.size() < 2)) {
-        break label652;
+      if ((this.wru.djK().ZdK == null) || (this.wru.djK().ZdK.size() < 2)) {
+        break label659;
       }
-      ab.i("MicroMsg.CardWidgetTicket", "primary_fields length is >= 2");
-      localuo1 = (uo)this.klk.bbd().wFZ.get(0);
-      uo localuo2 = (uo)this.klk.bbd().wFZ.get(1);
-      ((StringBuilder)localObject).append(localuo1.title).append(" - ").append(localuo2.title);
-      if ((!TextUtils.isEmpty(localuo1.kmo)) && (!TextUtils.isEmpty(localuo2.kmo)))
+      Log.i("MicroMsg.CardWidgetTicket", "primary_fields length is >= 2");
+      localaek1 = (aek)this.wru.djK().ZdK.get(0);
+      aek localaek2 = (aek)this.wru.djK().ZdK.get(1);
+      ((StringBuilder)localObject).append(localaek1.title).append(" - ").append(localaek2.title);
+      if ((!TextUtils.isEmpty(localaek1.wsA)) && (!TextUtils.isEmpty(localaek2.wsA)))
       {
-        localStringBuilder.append(localuo1.kmo).append(" ").append(localuo1.kmn);
+        localStringBuilder.append(localaek1.wsA).append(" ").append(localaek1.wsz);
         localStringBuilder.append(" - ");
-        localStringBuilder.append(localuo2.kmo).append(" ").append(localuo2.kmn);
+        localStringBuilder.append(localaek2.wsA).append(" ").append(localaek2.wsz);
       }
-      label403:
+      label407:
       if (TextUtils.isEmpty(((StringBuilder)localObject).toString())) {
-        break label737;
+        break label745;
       }
-      this.kDh.setText(((StringBuilder)localObject).toString());
-      label424:
+      this.wLB.setText(((StringBuilder)localObject).toString());
+      label428:
       if (TextUtils.isEmpty(localStringBuilder.toString())) {
-        break label749;
+        break label758;
       }
-      ab.i("MicroMsg.CardWidgetTicket", "sub_title_builder is not empty!");
-      this.kDi.setText(localStringBuilder.toString());
-      this.kDi.setVisibility(0);
-      label460:
-      ab.e("MicroMsg.CardWidgetTicket", "updateShopView(), shop_count:" + this.klk.bbd().wGd);
-      if (this.klk.bbd().wGd > 0) {
-        break label816;
+      Log.i("MicroMsg.CardWidgetTicket", "sub_title_builder is not empty!");
+      this.wLC.setText(localStringBuilder.toString());
+      this.wLC.setVisibility(0);
+      label464:
+      Log.e("MicroMsg.CardWidgetTicket", "updateShopView(), shop_count:" + this.wru.djK().ZdO);
+      if (this.wru.djK().ZdO > 0) {
+        break label826;
       }
-      this.kDj.setVisibility(8);
-      this.kDn.setVisibility(8);
+      this.wLD.setVisibility(8);
+      this.wLH.setVisibility(8);
     }
     for (;;)
     {
-      if (!this.klk.bbc()) {
-        break label1198;
+      if (!this.wru.djJ()) {
+        break label1208;
       }
-      this.kDf.setVisibility(8);
-      AppMethodBeat.o(88986);
+      this.wLz.setVisibility(8);
+      AppMethodBeat.o(113914);
       return;
-      if (!TextUtils.isEmpty(this.klk.bbd().knw))
+      if (!TextUtils.isEmpty(this.wru.djK().mee))
       {
-        this.iVS.setText(this.klk.bbd().knw);
+        this.uov.setText(this.wru.djK().mee);
         break;
       }
-      this.iVS.setText("");
+      this.uov.setText("");
       break;
-      label604:
-      this.gpL.setText("");
-      this.gpL.setVisibility(8);
+      label609:
+      this.pJJ.setText("");
+      this.pJJ.setVisibility(8);
       break label129;
-      label625:
-      m.a(this.kDg, 2130838175, l.IB(this.klk.bbd().color));
-      break label206;
-      label652:
-      if ((this.klk.bbd().wFZ == null) || (this.klk.bbd().wFZ.size() != 1)) {
-        break label403;
+      label631:
+      n.b(this.wLA, a.c.wev, l.alv(this.wru.djK().nRQ));
+      break label210;
+      label659:
+      if ((this.wru.djK().ZdK == null) || (this.wru.djK().ZdK.size() != 1)) {
+        break label407;
       }
-      ab.i("MicroMsg.CardWidgetTicket", "primary_fields length is == 1");
-      localuo1 = (uo)this.klk.bbd().wFZ.get(0);
-      ((StringBuilder)localObject).append(localuo1.title);
-      localStringBuilder.append(localuo1.kmn);
-      break label403;
-      label737:
-      this.kDh.setText("");
-      break label424;
-      label749:
-      if (!TextUtils.isEmpty(this.klk.bbd().wGp))
+      Log.i("MicroMsg.CardWidgetTicket", "primary_fields length is == 1");
+      localaek1 = (aek)this.wru.djK().ZdK.get(0);
+      ((StringBuilder)localObject).append(localaek1.title);
+      localStringBuilder.append(localaek1.wsz);
+      break label407;
+      label745:
+      this.wLB.setText("");
+      break label428;
+      label758:
+      if (!TextUtils.isEmpty(this.wru.djK().ZdZ))
       {
-        ab.i("MicroMsg.CardWidgetTicket", "primary_sub_title is not empty!");
-        this.kDi.setText(this.klk.bbd().wGp);
-        this.kDi.setVisibility(0);
-        break label460;
+        Log.i("MicroMsg.CardWidgetTicket", "primary_sub_title is not empty!");
+        this.wLC.setText(this.wru.djK().ZdZ);
+        this.wLC.setVisibility(0);
+        break label464;
       }
-      this.kDi.setVisibility(8);
-      break label460;
-      label816:
-      this.kDj.setVisibility(0);
-      this.kDj.setOnClickListener(this.gMO);
-      m.a(this.kDm, 2130838176, l.IB(this.klk.bbd().color));
+      this.wLC.setVisibility(8);
+      break label464;
+      label826:
+      this.wLD.setVisibility(0);
+      this.wLD.setOnClickListener(this.qjL);
+      n.b(this.wLG, a.c.wew, l.alv(this.wru.djK().nRQ));
       localStringBuilder = null;
       localObject = localStringBuilder;
-      if (this.klq != null)
+      if (this.wrB != null)
       {
         localObject = localStringBuilder;
-        if (this.klq.size() > 0) {
-          localObject = (oz)this.klq.get(0);
+        if (this.wrB.size() > 0) {
+          localObject = (wl)this.wrB.get(0);
         }
       }
-      if ((this.klk.bbd().wGd == 1) && (localObject != null))
+      if ((this.wru.djK().ZdO == 1) && (localObject != null))
       {
-        this.kDk.setText(((oz)localObject).name);
-        this.kDl.setText(this.mContext.getString(2131298054, new Object[] { l.g(this.mContext, ((oz)localObject).rqZ), ((oz)localObject).fBq }));
-        this.kDn.setVisibility(8);
-        this.kDj.setTag(((oz)localObject).name);
+        this.wLE.setText(((wl)localObject).name);
+        this.wLF.setText(this.mContext.getString(a.g.wqk, new Object[] { l.f(this.mContext, ((wl)localObject).TG), ((wl)localObject).oDI }));
+        this.wLH.setVisibility(8);
+        this.wLD.setTag(((wl)localObject).name);
       }
-      else if ((this.klk.bbd().wGd > 1) && (localObject != null))
+      else if ((this.wru.djK().ZdO > 1) && (localObject != null))
       {
-        this.kDk.setText(((oz)localObject).name);
-        this.kDl.setText(this.mContext.getString(2131298054, new Object[] { l.g(this.mContext, ((oz)localObject).rqZ), ((oz)localObject).fBq }));
-        this.kDn.setVisibility(0);
-        this.kDn.setOnClickListener(this.gMO);
-        this.kDj.setTag(((oz)localObject).name);
+        this.wLE.setText(((wl)localObject).name);
+        this.wLF.setText(this.mContext.getString(a.g.wqk, new Object[] { l.f(this.mContext, ((wl)localObject).TG), ((wl)localObject).oDI }));
+        this.wLH.setVisibility(0);
+        this.wLH.setOnClickListener(this.qjL);
+        this.wLD.setTag(((wl)localObject).name);
       }
-      else if (this.klk.bbd().wGd > 0)
+      else if (this.wru.djK().ZdO > 0)
       {
-        this.kDk.setText(2131297874);
-        this.kDl.setText(this.mContext.getString(2131298080, new Object[] { Integer.valueOf(this.klk.bbd().wGd) }));
-        this.kDn.setVisibility(8);
-        this.kDn.setOnClickListener(null);
-        this.kDj.setTag(this.mContext.getString(2131297874));
+        this.wLE.setText(a.g.woi);
+        this.wLF.setText(this.mContext.getString(a.g.wqF, new Object[] { Integer.valueOf(this.wru.djK().ZdO) }));
+        this.wLH.setVisibility(8);
+        this.wLH.setOnClickListener(null);
+        this.wLD.setTag(this.mContext.getString(a.g.woi));
       }
     }
-    label1198:
-    this.kDf.setVisibility(0);
-    AppMethodBeat.o(88986);
+    label1208:
+    this.wLz.setVisibility(0);
+    AppMethodBeat.o(113914);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.f
  * JD-Core Version:    0.7.0.1
  */

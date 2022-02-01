@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.history;
 
-import amdu;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopfee.api.ITroopFeeHandler;
 
 class ChatHistoryTroopMemberFragment$26
   implements Runnable
@@ -10,7 +11,7 @@ class ChatHistoryTroopMemberFragment$26
   
   public void run()
   {
-    ((amdu)this.this$0.b.a(20)).a(this.this$0.c, this.this$0.j, this.this$0.e);
+    ((ITroopFeeHandler)this.this$0.bc.getBusinessHandler(BusinessHandlerFactory.TROOP_FEE_HANDLER)).a(this.this$0.w, this.this$0.aA, this.this$0.aB);
   }
 }
 

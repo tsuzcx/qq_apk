@@ -11,19 +11,15 @@ import com.tencent.ttpic.model.TextRenderItem;
 import com.tencent.ttpic.model.Transition;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.model.WMGroup;
-import com.tencent.ttpic.openapi.model.WMGroupConfig;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.VideoMaterial.PARTICLE_CLEAR_MODE;
 import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.openapi.shader.ShaderManager;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.PARTICLE_CLEAR_MODE;
-import com.tencent.ttpic.openapi.watermark.LogicDataManager;
 import com.tencent.ttpic.particlesystem2d.Particle;
 import com.tencent.ttpic.particlesystem2d.ParticleItem;
 import com.tencent.ttpic.particlesystem2d.ParticleSystem2D;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -32,7 +28,7 @@ import java.util.Set;
 public class VoiceTextFilter
   extends VideoFilterBase
 {
-  private static final String TAG = VoiceTextFilter.class.getSimpleName();
+  private static final String TAG = "VoiceTextFilter";
   private float faceDetScale;
   private FastRenderFilter fastRenderFilter = new FastRenderFilter();
   private int frameInterval;
@@ -51,13 +47,14 @@ public class VoiceTextFilter
   {
     super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.FAST_STICKER));
     this.zIndex = paramInt;
-    if (paramInt < 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isBackground = bool;
-      initParticleItems(paramList);
-      return;
+    boolean bool;
+    if (paramInt < 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.isBackground = bool;
+    initParticleItems(paramList);
   }
   
   private void buildRenderParams(ParticleItem paramParticleItem)
@@ -67,70 +64,71 @@ public class VoiceTextFilter
       Particle[] arrayOfParticle = paramParticleItem.particles;
       int m = arrayOfParticle.length;
       int i = 0;
-      if (i < m)
+      while (i < m)
       {
         Particle localParticle = arrayOfParticle[i];
-        RenderParam localRenderParam;
-        float f1;
-        float f2;
         if ((localParticle.texture > 0) && (localParticle.alive))
         {
-          localRenderParam = new RenderParam();
+          RenderParam localRenderParam = new RenderParam();
           localRenderParam.texture = localParticle.texture;
-          switch (paramParticleItem.emissionMode)
+          int j = paramParticleItem.emissionMode;
+          float f2 = 0.0F;
+          if (j != 0)
           {
-          default: 
-            f1 = 0.0F;
-            f2 = 0.0F;
+            if (j != 1)
+            {
+              if (j != 2)
+              {
+                f1 = 0.0F;
+                break label218;
+              }
+              f1 = localParticle.positionX;
+              f2 = paramParticleItem.screenRatioScale * f1;
+              f1 = localParticle.positionY * paramParticleItem.screenRatioScale;
+              break label218;
+            }
+            f1 = paramParticleItem.emitterX;
+            f1 = localParticle.positionX * paramParticleItem.screenRatioScale + f1;
+            f2 = paramParticleItem.emitterY;
+            f3 = localParticle.positionY;
+            f4 = paramParticleItem.screenRatioScale;
           }
-        }
-        for (;;)
-        {
-          int k = 0;
-          int j = 0;
+          else
+          {
+            f1 = localParticle.startX;
+            f1 = localParticle.positionX * paramParticleItem.screenRatioScale + f1;
+            f2 = localParticle.startY;
+            f3 = localParticle.positionY;
+            f4 = paramParticleItem.screenRatioScale;
+          }
+          float f3 = f2 + f3 * f4;
+          f2 = f1;
+          float f1 = f3;
+          label218:
+          int k;
           if (paramParticleItem.stickerItem.anchorPoint != null)
           {
-            k = paramParticleItem.stickerItem.anchorPoint[0];
-            j = paramParticleItem.stickerItem.anchorPoint[1];
+            j = paramParticleItem.stickerItem.anchorPoint[0];
+            k = paramParticleItem.stickerItem.anchorPoint[1];
           }
-          f1 -= k;
+          else
+          {
+            j = 0;
+            k = 0;
+          }
           f2 -= j;
-          float f3 = f1 + paramParticleItem.stickerItem.width * paramParticleItem.screenRatioScale;
-          float f4 = paramParticleItem.stickerItem.height * paramParticleItem.screenRatioScale + f2;
+          f1 -= k;
+          f3 = f2 + paramParticleItem.stickerItem.width * paramParticleItem.screenRatioScale;
+          float f4 = f1 + paramParticleItem.stickerItem.height * paramParticleItem.screenRatioScale;
           localRenderParam.texCords = GlUtil.ORIGIN_TEX_COORDS_TRIANGLES;
           localRenderParam.texScale = localParticle.scale;
-          localRenderParam.texAnchor[0] = ((f1 + f3) / 2.0F - this.width / 2);
-          localRenderParam.texAnchor[1] = ((f4 + f2) / 2.0F - this.height / 2);
+          localRenderParam.texAnchor[0] = ((f2 + f3) / 2.0F - this.width / 2);
+          localRenderParam.texAnchor[1] = ((f4 + f1) / 2.0F - this.height / 2);
           localRenderParam.texRotate[2] = localParticle.rotate;
-          localRenderParam.position = AlgoUtils.calPositionsTriangles(f1, f4, f3, f2, this.width, this.height);
+          localRenderParam.position = AlgoUtils.calPositionsTriangles(f2, f4, f3, f1, this.width, this.height);
           this.renderParams.add(localRenderParam);
-          i += 1;
-          break;
-          f1 = localParticle.startX;
-          float f5 = localParticle.positionX;
-          float f6 = paramParticleItem.screenRatioScale;
-          f2 = localParticle.startY;
-          f3 = localParticle.positionY;
-          f4 = paramParticleItem.screenRatioScale;
-          f1 = f5 * f6 + f1;
-          f2 += f3 * f4;
-          continue;
-          f1 = paramParticleItem.emitterX;
-          f5 = localParticle.positionX;
-          f6 = paramParticleItem.screenRatioScale;
-          f2 = paramParticleItem.emitterY;
-          f3 = localParticle.positionY;
-          f4 = paramParticleItem.screenRatioScale;
-          f1 = f5 * f6 + f1;
-          f2 += f3 * f4;
-          continue;
-          f1 = localParticle.positionX;
-          f4 = paramParticleItem.screenRatioScale;
-          f2 = localParticle.positionY;
-          f3 = paramParticleItem.screenRatioScale;
-          f1 = f4 * f1;
-          f2 *= f3;
         }
+        i += 1;
       }
     }
   }
@@ -145,17 +143,6 @@ public class VoiceTextFilter
       {
         StickerItem localStickerItem = (StickerItem)paramList.get(i);
         ParticleItem localParticleItem = new ParticleItem(localStickerItem);
-        if (localStickerItem.wmGroupConfigCopies != null)
-        {
-          localParticleItem.wmGroupCopies = new ArrayList();
-          Iterator localIterator = localStickerItem.wmGroupConfigCopies.iterator();
-          while (localIterator.hasNext())
-          {
-            WMGroup localWMGroup = new WMGroup((WMGroupConfig)localIterator.next());
-            localWMGroup.init();
-            localParticleItem.wmGroupCopies.add(localWMGroup);
-          }
-        }
         localParticleItem.id = localStickerItem.id;
         localParticleItem.particles = new Particle[localStickerItem.transition.particleCountMax];
         localParticleItem.maxRepeatCount = localStickerItem.transition.repeatCount;
@@ -182,26 +169,18 @@ public class VoiceTextFilter
     int i = 0;
     while (i < k)
     {
-      ParticleItem localParticleItem = arrayOfParticleItem[i];
-      if (localParticleItem.particles != null)
+      Object localObject1 = arrayOfParticleItem[i];
+      if (((ParticleItem)localObject1).particles != null)
       {
         HashSet localHashSet = new HashSet();
-        Particle[] arrayOfParticle = localParticleItem.particles;
-        int m = arrayOfParticle.length;
+        localObject1 = ((ParticleItem)localObject1).particles;
+        int m = localObject1.length;
         int j = 0;
         while (j < m)
         {
-          Particle localParticle = arrayOfParticle[j];
-          if (localParticle.alive) {
-            localHashSet.add(Integer.valueOf(localParticle.wmGroupId));
-          }
-          j += 1;
-        }
-        j = 0;
-        while (j < localParticleItem.wmGroupCopies.size())
-        {
-          if ((!localHashSet.contains(Integer.valueOf(j))) && (!((WMGroup)localParticleItem.wmGroupCopies.get(j)).isLock()) && ((j != localParticleItem.curWMGroupId) || ((j == localParticleItem.curWMGroupId) && (localParticleItem.takenByParticle)))) {
-            localParticleItem.recycleWMGroup(j);
+          Object localObject2 = localObject1[j];
+          if (localObject2.alive) {
+            localHashSet.add(Integer.valueOf(localObject2.wmGroupId));
           }
           j += 1;
         }
@@ -213,8 +192,9 @@ public class VoiceTextFilter
   private void reset(int paramInt)
   {
     this.particleSystem2D.clearParticles(paramInt);
-    if ((this.particleItems != null) && (paramInt < this.particleItems.length)) {
-      this.particleItems[paramInt].reset();
+    ParticleItem[] arrayOfParticleItem = this.particleItems;
+    if ((arrayOfParticleItem != null) && (paramInt < arrayOfParticleItem.length)) {
+      arrayOfParticleItem[paramInt].reset();
     }
   }
   
@@ -222,9 +202,13 @@ public class VoiceTextFilter
   {
     this.particleSystem2D.reset();
     int i = 0;
-    while (i < this.particleItems.length)
+    for (;;)
     {
-      this.particleItems[i].reset();
+      ParticleItem[] arrayOfParticleItem = this.particleItems;
+      if (i >= arrayOfParticleItem.length) {
+        break;
+      }
+      arrayOfParticleItem[i].reset();
       i += 1;
     }
   }
@@ -234,26 +218,63 @@ public class VoiceTextFilter
     ParticleItem[] arrayOfParticleItem = this.particleItems;
     int k = arrayOfParticleItem.length;
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       ParticleItem localParticleItem = arrayOfParticleItem[i];
       StickerItem localStickerItem = localParticleItem.stickerItem;
-      if (localStickerItem != null) {}
-      switch (localStickerItem.type)
+      if (localStickerItem != null)
       {
-      case 3: 
-      default: 
-      case 1: 
-        for (;;)
+        int j = localStickerItem.type;
+        if (j != 1)
         {
-          i += 1;
-          break;
-          int m;
-          if (this.width / this.height >= 0.75D)
+          if ((j == 2) || (j == 4))
           {
-            int n = (int)(this.width / 0.75D);
-            j = (int)(n * localStickerItem.position[1]);
-            m = (int)(this.width * localStickerItem.position[0]);
+            Object localObject;
+            if (VideoMaterial.isGestureItem(localStickerItem)) {
+              localObject = paramList2;
+            } else {
+              localObject = paramList1;
+            }
+            if ((localObject != null) && (!((List)localObject).isEmpty()))
+            {
+              PointF localPointF = (PointF)((List)localObject).get(localStickerItem.alignFacePoints[0]);
+              if (localStickerItem.alignFacePoints.length == 1) {
+                j = localStickerItem.alignFacePoints[0];
+              } else {
+                j = localStickerItem.alignFacePoints[1];
+              }
+              localObject = (PointF)((List)localObject).get(j);
+              localObject = new PointF((localPointF.x + ((PointF)localObject).x) / 2.0F, (localPointF.y + ((PointF)localObject).y) / 2.0F);
+              if (VideoMaterial.isFaceItem(localStickerItem))
+              {
+                ((PointF)localObject).x /= this.faceDetScale;
+                ((PointF)localObject).y /= this.faceDetScale;
+              }
+              localParticleItem.emitterX = ((PointF)localObject).x;
+              localParticleItem.emitterY = ((PointF)localObject).y;
+            }
+          }
+        }
+        else
+        {
+          double d1 = this.width;
+          double d2 = this.height;
+          Double.isNaN(d1);
+          Double.isNaN(d2);
+          int m;
+          if (d1 / d2 >= 0.75D)
+          {
+            d1 = this.width;
+            Double.isNaN(d1);
+            int n = (int)(d1 / 0.75D);
+            d1 = n;
+            d2 = localStickerItem.position[1];
+            Double.isNaN(d1);
+            j = (int)(d1 * d2);
+            d1 = this.width;
+            d2 = localStickerItem.position[0];
+            Double.isNaN(d1);
+            m = (int)(d1 * d2);
             n = (n - this.height) / 2;
             localParticleItem.emitterX = m;
             localParticleItem.emitterY = (j - n);
@@ -261,185 +282,43 @@ public class VoiceTextFilter
           }
           else
           {
-            j = (int)(this.height * 0.75D);
-            m = (int)(this.height * localStickerItem.position[1]);
-            localParticleItem.emitterX = ((int)(j * localStickerItem.position[0]) - (j - this.width) / 2);
+            d1 = this.height;
+            Double.isNaN(d1);
+            j = (int)(d1 * 0.75D);
+            d1 = this.height;
+            d2 = localStickerItem.position[1];
+            Double.isNaN(d1);
+            m = (int)(d1 * d2);
+            d1 = j;
+            d2 = localStickerItem.position[0];
+            Double.isNaN(d1);
+            localParticleItem.emitterX = ((int)(d1 * d2) - (j - this.width) / 2);
             localParticleItem.emitterY = m;
             localParticleItem.screenRatioScale = (this.height * 1.0F / 960.0F);
           }
         }
       }
-      Object localObject;
-      label282:
-      PointF localPointF;
-      if (VideoMaterialUtil.isGestureItem(localStickerItem))
-      {
-        localObject = paramList2;
-        if ((localObject == null) || (((List)localObject).isEmpty())) {
-          break label449;
-        }
-        localPointF = (PointF)((List)localObject).get(localStickerItem.alignFacePoints[0]);
-        if (localStickerItem.alignFacePoints.length != 1) {
-          break label451;
-        }
-      }
-      label449:
-      label451:
-      for (int j = localStickerItem.alignFacePoints[0];; j = localStickerItem.alignFacePoints[1])
-      {
-        localObject = (PointF)((List)localObject).get(j);
-        localObject = new PointF((localPointF.x + ((PointF)localObject).x) / 2.0F, (localPointF.y + ((PointF)localObject).y) / 2.0F);
-        if (VideoMaterialUtil.isFaceItem(localStickerItem))
-        {
-          ((PointF)localObject).x /= this.faceDetScale;
-          ((PointF)localObject).y /= this.faceDetScale;
-        }
-        localParticleItem.emitterX = ((PointF)localObject).x;
-        localParticleItem.emitterY = ((PointF)localObject).y;
-        break;
-        localObject = paramList1;
-        break label282;
-        break;
-      }
+      i += 1;
     }
   }
   
-  private void updateParticleState(ParticleItem paramParticleItem, int paramInt, long paramLong)
-  {
-    if ((paramParticleItem.particleReachMax) && (paramParticleItem.clearMode == VideoMaterialUtil.PARTICLE_CLEAR_MODE.CLEAR_ALL.value) && (paramParticleItem.lastFrameParticleReachMax)) {
-      paramParticleItem.canUpdateTexture = true;
-    }
-    Object localObject1;
-    Object localObject2;
-    int i;
-    if ((paramParticleItem.canUpdateTexture) || ((paramParticleItem.clearMode == VideoMaterialUtil.PARTICLE_CLEAR_MODE.CLEAR_ALL.value) && (paramParticleItem.lastFrameParticleReachMax)))
-    {
-      if (paramParticleItem.lockedWMGroups.isEmpty()) {
-        break label365;
-      }
-      localObject1 = new ArrayList();
-      localObject2 = paramParticleItem.lockedWMGroups.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Object localObject3 = (WMGroup)((Iterator)localObject2).next();
-        if (((WMGroup)localObject3).isAsyncDrawFinished())
-        {
-          ((WMGroup)localObject3).updateTexture(paramLong, true, false, true);
-          ((WMGroup)localObject3).unlock();
-          ((List)localObject1).add(localObject3);
-          paramParticleItem.useWMGroup(((WMGroup)localObject3).id);
-          paramParticleItem.curTexture = ((WMGroup)localObject3).getCurTexture();
-          paramParticleItem.curWMGroupId = ((WMGroup)localObject3).id;
-          paramParticleItem.curRepeatCount = 0;
-          paramParticleItem.canUpdateTexture = false;
-          paramParticleItem.takenByParticle = false;
-          if ((paramParticleItem.clearMode == VideoMaterialUtil.PARTICLE_CLEAR_MODE.CLEAR_ALL.value) && (paramParticleItem.lastFrameParticleReachMax))
-          {
-            this.particleSystem2D.clearParticles(paramInt);
-            paramParticleItem.resetWMGroup();
-            paramParticleItem.useWMGroup(((WMGroup)localObject3).id);
-            localObject3 = paramParticleItem.particles;
-            int j = localObject3.length;
-            i = 0;
-            while (i < j)
-            {
-              localObject3[i].alive = false;
-              i += 1;
-            }
-            this.particleSystem2D.advance(this.particleItems, this.frameInterval);
-            paramParticleItem.lastFrameParticleReachMax = false;
-          }
-        }
-      }
-      paramParticleItem.lockedWMGroups.removeAll((Collection)localObject1);
-    }
-    while (paramParticleItem.particleAlwaysUpdate)
-    {
-      localObject1 = paramParticleItem.getActiveWMGroups().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (WMGroup)((Iterator)localObject1).next();
-        if (((WMGroup)localObject2).updateTexture(paramLong, true, false, true)) {
-          ((WMGroup)localObject2).unlock();
-        }
-      }
-      label365:
-      localObject1 = paramParticleItem.getAvailableWMGroup();
-      if (localObject1 != null)
-      {
-        if (!((WMGroup)localObject1).updateTexture(paramLong, true, false, true)) {
-          break label517;
-        }
-        ((WMGroup)localObject1).unlock();
-        paramParticleItem.useWMGroup(((WMGroup)localObject1).id);
-        paramParticleItem.curTexture = ((WMGroup)localObject1).getCurTexture();
-        paramParticleItem.curWMGroupId = ((WMGroup)localObject1).id;
-        paramParticleItem.curRepeatCount = 0;
-        paramParticleItem.canUpdateTexture = false;
-        paramParticleItem.takenByParticle = false;
-      }
-      while ((paramParticleItem.clearMode == VideoMaterialUtil.PARTICLE_CLEAR_MODE.CLEAR_ALL.value) && (paramParticleItem.lastFrameParticleReachMax) && (!paramParticleItem.takenByParticle))
-      {
-        this.particleSystem2D.clearParticles(paramInt);
-        paramParticleItem.resetWMGroup();
-        paramParticleItem.useWMGroup(paramParticleItem.curWMGroupId);
-        localObject1 = paramParticleItem.particles;
-        i = localObject1.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1[paramInt].alive = false;
-          paramInt += 1;
-        }
-        label517:
-        if (!((WMGroup)localObject1).isLock())
-        {
-          paramParticleItem.recycleWMGroup(((WMGroup)localObject1).id);
-        }
-        else
-        {
-          paramParticleItem.useWMGroup(((WMGroup)localObject1).id);
-          paramParticleItem.lockedWMGroups.add(localObject1);
-        }
-      }
-      continue;
-      this.particleSystem2D.advance(this.particleItems, this.frameInterval);
-      paramParticleItem.lastFrameParticleReachMax = false;
-    }
-    paramParticleItem = paramParticleItem.getActiveWMGroups().iterator();
-    while (paramParticleItem.hasNext()) {
-      ((WMGroup)paramParticleItem.next()).updateTexture(paramLong, false, true, true);
-    }
-  }
+  private void updateParticleState(ParticleItem paramParticleItem, int paramInt, long paramLong) {}
   
   private void updateParticleStateAndBuildRenderParams(long paramLong)
   {
     this.renderParams.clear();
     int i = 0;
-    if (i < this.particleItems.length)
+    for (;;)
     {
-      ParticleItem localParticleItem = this.particleItems[i];
-      if (((this.isBackground) && (localParticleItem.stickerItem.zIndex >= 0)) || ((!this.isBackground) && (localParticleItem.stickerItem.zIndex < 0))) {}
-      label142:
-      for (;;)
-      {
-        i += 1;
+      Object localObject = this.particleItems;
+      if (i >= localObject.length) {
         break;
-        if ((localParticleItem.triggered) && (localParticleItem.wmGroupCopies != null))
-        {
-          updateParticleState(localParticleItem, i, paramLong);
-          buildRenderParams(localParticleItem);
-        }
-        for (;;)
-        {
-          if ((localParticleItem.clearMode != VideoMaterialUtil.PARTICLE_CLEAR_MODE.CLEAR_ALL.value) || (localParticleItem.lastFrameParticleReachMax)) {
-            break label142;
-          }
-          localParticleItem.lastFrameParticleReachMax = localParticleItem.particleReachMax;
-          break;
-          reset(i);
-        }
       }
+      localObject = localObject[i];
+      if (((!this.isBackground) || (((ParticleItem)localObject).stickerItem.zIndex < 0)) && ((this.isBackground) || (((ParticleItem)localObject).stickerItem.zIndex >= 0)) && (((ParticleItem)localObject).clearMode == VideoMaterial.PARTICLE_CLEAR_MODE.CLEAR_ALL.value) && (!((ParticleItem)localObject).lastFrameParticleReachMax)) {
+        ((ParticleItem)localObject).lastFrameParticleReachMax = ((ParticleItem)localObject).particleReachMax;
+      }
+      i += 1;
     }
   }
   
@@ -461,31 +340,12 @@ public class VoiceTextFilter
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    Object localObject = this.textRenderItems.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((TextRenderItem)((Iterator)localObject).next()).clear();
-    }
-    if (this.particleItems != null)
-    {
-      localObject = this.particleItems;
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        Iterator localIterator = localObject[i];
-        if (localIterator.wmGroupCopies != null)
-        {
-          localIterator = localIterator.wmGroupCopies.iterator();
-          while (localIterator.hasNext()) {
-            ((WMGroup)localIterator.next()).clear();
-          }
-        }
-        i += 1;
-      }
+    Iterator localIterator = this.textRenderItems.iterator();
+    while (localIterator.hasNext()) {
+      ((TextRenderItem)localIterator.next()).clear();
     }
     this.fastRenderFilter.clearGLSLSelf();
     this.particleSystem2D.release();
-    LogicDataManager.getInstance().clearVoiceTexts();
   }
   
   public int getZIndex()
@@ -515,9 +375,15 @@ public class VoiceTextFilter
   {
     if (!this.renderParams.isEmpty())
     {
-      BenchUtil.benchStart(TAG + " fastRenderFilter.render");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(TAG);
+      localStringBuilder.append(" fastRenderFilter.render");
+      BenchUtil.benchStart(localStringBuilder.toString());
       this.fastRenderFilter.render(this.renderParams, paramFrame, true);
-      BenchUtil.benchEnd(TAG + " fastRenderFilter.render");
+      paramFrame = new StringBuilder();
+      paramFrame.append(TAG);
+      paramFrame.append(" fastRenderFilter.render");
+      BenchUtil.benchEnd(paramFrame.toString());
     }
   }
   
@@ -526,31 +392,60 @@ public class VoiceTextFilter
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      BenchUtil.benchStart(TAG + " updatePreview");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(TAG);
+      ((StringBuilder)localObject).append(" updatePreview");
+      BenchUtil.benchStart(((StringBuilder)localObject).toString());
       if (this.lastFrameTimestamp != -1L) {
         this.frameInterval = ((int)(paramObject.timestamp - this.lastFrameTimestamp));
       }
       this.lastFrameTimestamp = paramObject.timestamp;
       int i = 0;
-      if (i < this.particleItems.length)
+      for (;;)
       {
-        if ((this.renderParticleIds != null) && (this.renderParticleIds.contains(this.particleItems[i].id))) {}
-        for (this.particleItems[i].triggered = true;; this.particleItems[i].triggered = false)
-        {
-          i += 1;
+        localObject = this.particleItems;
+        if (i >= localObject.length) {
           break;
         }
+        List localList = this.renderParticleIds;
+        if ((localList != null) && (localList.contains(localObject[i].id))) {
+          this.particleItems[i].triggered = true;
+        } else {
+          this.particleItems[i].triggered = false;
+        }
+        i += 1;
       }
-      BenchUtil.benchStart(TAG + " updateParticles");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(TAG);
+      ((StringBuilder)localObject).append(" updateParticles");
+      BenchUtil.benchStart(((StringBuilder)localObject).toString());
       updateParticles(paramObject.facePoints, paramObject.handPoints, paramObject.timestamp);
-      BenchUtil.benchEnd(TAG + " updateParticles");
-      BenchUtil.benchStart(TAG + " particleSystem2D.advance");
+      paramObject = new StringBuilder();
+      paramObject.append(TAG);
+      paramObject.append(" updateParticles");
+      BenchUtil.benchEnd(paramObject.toString());
+      paramObject = new StringBuilder();
+      paramObject.append(TAG);
+      paramObject.append(" particleSystem2D.advance");
+      BenchUtil.benchStart(paramObject.toString());
       this.particleSystem2D.advance(this.particleItems, this.frameInterval);
-      BenchUtil.benchEnd(TAG + " particleSystem2D.advance");
-      BenchUtil.benchStart(TAG + " recycleUnusedWMGroups");
+      paramObject = new StringBuilder();
+      paramObject.append(TAG);
+      paramObject.append(" particleSystem2D.advance");
+      BenchUtil.benchEnd(paramObject.toString());
+      paramObject = new StringBuilder();
+      paramObject.append(TAG);
+      paramObject.append(" recycleUnusedWMGroups");
+      BenchUtil.benchStart(paramObject.toString());
       recycleUnusedWMGroups();
-      BenchUtil.benchEnd(TAG + " recycleUnusedWMGroups");
-      BenchUtil.benchEnd(TAG + " updatePreview");
+      paramObject = new StringBuilder();
+      paramObject.append(TAG);
+      paramObject.append(" recycleUnusedWMGroups");
+      BenchUtil.benchEnd(paramObject.toString());
+      paramObject = new StringBuilder();
+      paramObject.append(TAG);
+      paramObject.append(" updatePreview");
+      BenchUtil.benchEnd(paramObject.toString());
     }
   }
   
@@ -563,8 +458,13 @@ public class VoiceTextFilter
     while (localIterator.hasNext()) {
       ((TextRenderItem)localIterator.next()).updateVideoSize(paramInt1, paramInt2);
     }
-    if ((this.lastWidth > 0) && (this.lastHeight > 0) && ((paramInt1 != this.lastWidth) || (paramInt2 != this.lastHeight))) {
-      resetAll();
+    int i = this.lastWidth;
+    if (i > 0)
+    {
+      int j = this.lastHeight;
+      if ((j > 0) && ((paramInt1 != i) || (paramInt2 != j))) {
+        resetAll();
+      }
     }
     this.lastWidth = paramInt1;
     this.lastHeight = paramInt2;
@@ -572,7 +472,7 @@ public class VoiceTextFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.VoiceTextFilter
  * JD-Core Version:    0.7.0.1
  */

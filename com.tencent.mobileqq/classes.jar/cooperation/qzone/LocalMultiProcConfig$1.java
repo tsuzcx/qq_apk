@@ -7,12 +7,12 @@ final class LocalMultiProcConfig$1
   
   public void run()
   {
-    LocalMultiProcConfig.putBool(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    LocalMultiProcConfig.putBool(this.val$prefName, this.val$key, this.val$value);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.LocalMultiProcConfig.1
  * JD-Core Version:    0.7.0.1
  */

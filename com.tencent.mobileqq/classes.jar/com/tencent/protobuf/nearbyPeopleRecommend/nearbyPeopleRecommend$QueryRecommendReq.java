@@ -22,13 +22,14 @@ public final class nearbyPeopleRecommend$QueryRecommendReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50 }, new String[] { "lbs_info", "source", "query_list", "uint32_client_version", "uint32_client_type", "bytes_qq_version" }, new Object[] { null, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, QueryRecommendReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40, 50 }, new String[] { "lbs_info", "source", "query_list", "uint32_client_version", "uint32_client_type", "bytes_qq_version" }, new Object[] { null, localInteger, null, localInteger, localInteger, localByteStringMicro }, QueryRecommendReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protobuf.nearbyPeopleRecommend.nearbyPeopleRecommend.QueryRecommendReq
  * JD-Core Version:    0.7.0.1
  */

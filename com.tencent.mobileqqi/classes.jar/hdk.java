@@ -1,21 +1,13 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import com.tencent.mobileqq.utils.QQCustomSingleChoiceDialog;
 
 public class hdk
-  implements AdapterView.OnItemClickListener
 {
-  public hdk(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.a.jdField_a_of_type_Int = paramInt;
-    QQCustomSingleChoiceDialog.a(this.a).notifyDataSetChanged();
-    this.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.a, paramInt);
-  }
+  private hdk(QQCustomSingleChoiceDialog paramQQCustomSingleChoiceDialog) {}
 }
 
 

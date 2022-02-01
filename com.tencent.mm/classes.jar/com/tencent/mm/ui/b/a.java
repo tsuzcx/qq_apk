@@ -1,23 +1,22 @@
 package com.tencent.mm.ui.b;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.view.b;
-import android.support.v7.view.b.a;
-import android.support.v7.view.f.a;
-import android.support.v7.view.g;
 import android.view.ActionMode;
 import android.view.ActionMode.Callback;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.view.b;
+import androidx.appcompat.view.b.a;
+import androidx.appcompat.view.f.a;
+import androidx.appcompat.view.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class a
 {
-  b OD = null;
-  private MenuInflater gd;
+  private MenuInflater gS;
+  b gW = null;
   public ActionBar mActionBar;
   final Activity mActivity;
   
@@ -28,45 +27,18 @@ public abstract class a
   
   private b startSupportActionMode(b.a parama)
   {
-    if (this.OD != null) {
-      this.OD.finish();
+    if (this.gW != null) {
+      this.gW.finish();
     }
     parama = new a(parama);
     ActionBar localActionBar = getSupportActionBar();
     if (localActionBar != null) {
-      this.OD = localActionBar.a(parama);
+      this.gW = localActionBar.a(parama);
     }
-    return this.OD;
+    return this.gW;
   }
   
-  abstract ActionBar dDu();
-  
-  public final MenuInflater getMenuInflater()
-  {
-    ActionBar localActionBar;
-    if (this.gd == null)
-    {
-      localActionBar = getSupportActionBar();
-      if (localActionBar == null) {
-        break label36;
-      }
-    }
-    label36:
-    for (this.gd = new g(localActionBar.getThemedContext());; this.gd = new g(this.mActivity)) {
-      return this.gd;
-    }
-  }
-  
-  final ActionBar getSupportActionBar()
-  {
-    if (this.mActionBar == null) {
-      this.mActionBar = dDu();
-    }
-    return this.mActionBar;
-  }
-  
-  @TargetApi(11)
-  public final ActionMode startActionMode(ActionMode.Callback paramCallback)
+  public final ActionMode b(ActionMode.Callback paramCallback)
   {
     paramCallback = new f.a(this.mActivity, paramCallback);
     b localb = startSupportActionMode(paramCallback);
@@ -76,52 +48,78 @@ public abstract class a
     return null;
   }
   
+  public final MenuInflater getMenuInflater()
+  {
+    ActionBar localActionBar;
+    if (this.gS == null)
+    {
+      localActionBar = getSupportActionBar();
+      if (localActionBar == null) {
+        break label36;
+      }
+    }
+    label36:
+    for (this.gS = new g(localActionBar.bw());; this.gS = new g(this.mActivity)) {
+      return this.gS;
+    }
+  }
+  
+  final ActionBar getSupportActionBar()
+  {
+    if (this.mActionBar == null) {
+      this.mActionBar = jlx();
+    }
+    return this.mActionBar;
+  }
+  
+  abstract ActionBar jlx();
+  
   final class a
     implements b.a
   {
-    private b.a Pl;
+    private b.a hD;
     
     public a(b.a parama)
     {
-      this.Pl = parama;
+      this.hD = parama;
     }
     
     public final void a(b paramb)
     {
-      AppMethodBeat.i(106148);
-      this.Pl.a(paramb);
-      a.this.OD = null;
-      AppMethodBeat.o(106148);
+      AppMethodBeat.i(250063);
+      this.hD.a(paramb);
+      a.this.gW = null;
+      AppMethodBeat.o(250063);
     }
     
     public final boolean a(b paramb, Menu paramMenu)
     {
-      AppMethodBeat.i(106145);
-      boolean bool = this.Pl.a(paramb, paramMenu);
-      AppMethodBeat.o(106145);
+      AppMethodBeat.i(250043);
+      boolean bool = this.hD.a(paramb, paramMenu);
+      AppMethodBeat.o(250043);
       return bool;
     }
     
     public final boolean a(b paramb, MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(106147);
-      boolean bool = this.Pl.a(paramb, paramMenuItem);
-      AppMethodBeat.o(106147);
+      AppMethodBeat.i(250055);
+      boolean bool = this.hD.a(paramb, paramMenuItem);
+      AppMethodBeat.o(250055);
       return bool;
     }
     
     public final boolean b(b paramb, Menu paramMenu)
     {
-      AppMethodBeat.i(106146);
-      boolean bool = this.Pl.b(paramb, paramMenu);
-      AppMethodBeat.o(106146);
+      AppMethodBeat.i(250049);
+      boolean bool = this.hD.b(paramb, paramMenu);
+      AppMethodBeat.o(250049);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

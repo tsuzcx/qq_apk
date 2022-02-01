@@ -55,8 +55,10 @@ public class StringCommon
   public static final int STR_ID_POLYMERIC_CONTAINER_SET_CELL_ARRAY_REMOTE_ARRAY = 54;
   public static final int STR_ID_RIGHT_OF = 25;
   public static final int STR_ID_SET_ALPHA = 65;
+  public static final int STR_ID_SET_DT_ELEMENT_ID_AND_PARAMS = 72;
   public static final int STR_ID_SET_ENABLE_MARQUEE_TEXT = 67;
   public static final int STR_ID_SET_FONT_FILE_PATH = 64;
+  public static final int STR_ID_SET_FRONT_SIZE_RATIO = 70;
   public static final int STR_ID_SET_HEIGHT_STRING = 58;
   public static final int STR_ID_SET_LINKSPAN_CLICKABLE = 68;
   public static final int STR_ID_SET_MAX_WIDTH = 69;
@@ -74,6 +76,7 @@ public class StringCommon
   public static final int STR_ID_TEXT_SET_TEXT_ALIGNMENT_STRING = 50;
   public static final int STR_ID_TEXT_SIZE = 19;
   public static final int STR_ID_TEXT_SIZE_AND_BOLD = 21;
+  public static final int STR_ID_TEXT_SIZE_AND_BOLD_RATIO = 71;
   public static final int STR_ID_VISIBILITY = 37;
   public static final int STR_ID_WIDTH = 1;
   public static final int STR_PROTEUS_MAX_SYSTEM_ID = 1000;
@@ -100,9 +103,11 @@ public class StringCommon
     mString2Index.put("setBorderWidthString:", Integer.valueOf(15));
     mString2Index.put("setBorderColorString:", Integer.valueOf(16));
     mString2Index.put("setCornerRadiusString:", Integer.valueOf(17));
-    mString2Index.put("setTitle:", Integer.valueOf(18));
-    mString2Index.put("setText:", Integer.valueOf(18));
-    mString2Index.put("setText:lineSpace:", Integer.valueOf(18));
+    Map localMap = mString2Index;
+    Integer localInteger = Integer.valueOf(18);
+    localMap.put("setTitle:", localInteger);
+    mString2Index.put("setText:", localInteger);
+    mString2Index.put("setText:lineSpace:", localInteger);
     mString2Index.put("setFontSizeString:", Integer.valueOf(19));
     mString2Index.put("setTextColorString:", Integer.valueOf(20));
     mString2Index.put("setBoldFontSizeString:", Integer.valueOf(21));
@@ -134,7 +139,7 @@ public class StringCommon
     mString2Index.put("setBackgroundColor:forStates:", Integer.valueOf(47));
     mString2Index.put("setAlphaString:", Integer.valueOf(48));
     mString2Index.put("setEnableString:", Integer.valueOf(49));
-    mString2Index.put("setRichText:", Integer.valueOf(18));
+    mString2Index.put("setRichText:", localInteger);
     mString2Index.put("setTextAlignmentString:", Integer.valueOf(50));
     mString2Index.put("setScaleType:", Integer.valueOf(51));
     mString2Index.put("setCellArray:", Integer.valueOf(52));
@@ -155,6 +160,9 @@ public class StringCommon
     mString2Index.put("setMarqueeEnable", Integer.valueOf(67));
     mString2Index.put("setMaxWidth:type:", Integer.valueOf(69));
     mString2Index.put("setLinkClickable", Integer.valueOf(68));
+    mString2Index.put("setFontSizeString:ratio:", Integer.valueOf(70));
+    mString2Index.put("setBoldFontSizeString:ratio:", Integer.valueOf(71));
+    mString2Index.put("setDTElementID:withParams:", Integer.valueOf(72));
   }
   
   public static int getStrIdFromString(String paramString)
@@ -168,17 +176,25 @@ public class StringCommon
   
   public static void registerId(String paramString, int paramInt)
   {
-    if (paramInt <= 1000) {
-      throw new IllegalArgumentException("can't use the key <= 1000 : " + paramString);
+    if (paramInt > 1000)
+    {
+      if ((Integer)mString2Index.put(paramString, Integer.valueOf(paramInt)) == null) {
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("duplicate : ");
+      localStringBuilder.append(paramString);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if ((Integer)mString2Index.put(paramString, Integer.valueOf(paramInt)) != null) {
-      throw new IllegalArgumentException("duplicate : " + paramString);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("can't use the key <= 1000 : ");
+    localStringBuilder.append(paramString);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon
  * JD-Core Version:    0.7.0.1
  */

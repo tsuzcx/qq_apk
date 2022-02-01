@@ -19,9 +19,9 @@ public final class zzan
   
   public static zzan zzf(Status paramStatus)
   {
-    AppMethodBeat.i(50471);
+    AppMethodBeat.i(88366);
     paramStatus = new zzan(paramStatus, null);
-    AppMethodBeat.o(50471);
+    AppMethodBeat.o(88366);
     return paramStatus;
   }
   
@@ -37,7 +37,7 @@ public final class zzan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzan
  * JD-Core Version:    0.7.0.1
  */

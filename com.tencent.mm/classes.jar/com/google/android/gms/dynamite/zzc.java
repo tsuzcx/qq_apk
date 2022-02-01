@@ -8,7 +8,7 @@ final class zzc
 {
   public final DynamiteModule.VersionPolicy.SelectionResult selectModule(Context paramContext, String paramString, DynamiteModule.VersionPolicy.IVersions paramIVersions)
   {
-    AppMethodBeat.i(90451);
+    AppMethodBeat.i(5472);
     DynamiteModule.VersionPolicy.SelectionResult localSelectionResult = new DynamiteModule.VersionPolicy.SelectionResult();
     localSelectionResult.localVersion = paramIVersions.getLocalVersion(paramContext, paramString);
     if (localSelectionResult.localVersion != 0) {
@@ -16,7 +16,7 @@ final class zzc
     }
     for (;;)
     {
-      AppMethodBeat.o(90451);
+      AppMethodBeat.o(5472);
       return localSelectionResult;
       localSelectionResult.remoteVersion = paramIVersions.getRemoteVersion(paramContext, paramString, true);
       if (localSelectionResult.remoteVersion != 0) {
@@ -27,7 +27,7 @@ final class zzc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamite.zzc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,30 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.k.c.b;
-import com.tencent.mm.plugin.sns.model.av;
-import com.tencent.mm.vending.app.a;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class SnsTimeLineUI$43
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  SnsTimeLineUI$43(SnsTimeLineUI paramSnsTimeLineUI) {}
-  
-  public final void onClick(View paramView)
+  SnsTimeLineUI$43(SnsTimeLineUI paramSnsTimeLineUI)
   {
-    AppMethodBeat.i(155755);
-    if ((SnsTimeLineUI.i(this.rYv) != null) && (SnsTimeLineUI.i(this.rYv).rFl != null)) {
-      SnsTimeLineUI.i(this.rYv).rFl.rhS.lf(true);
-    }
-    paramView = (c.b)this.rYv.SF().m(c.b.class);
-    com.tencent.mm.modelsns.b localb = com.tencent.mm.modelsns.b.lV(725);
-    localb.lY(paramView.snz);
-    localb.ake();
-    paramView = new Intent();
-    paramView.setClass(this.rYv, SnsMsgUI.class);
-    paramView.putExtra("sns_msg_comment_list_scene", 1);
-    this.rYv.startActivityForResult(paramView, 13);
-    AppMethodBeat.o(155755);
+    AppMethodBeat.i(179254);
+    AppMethodBeat.o(179254);
+  }
+  
+  public final boolean onLongClick(View paramView)
+  {
+    AppMethodBeat.i(308281);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/sns/ui/SnsTimeLineUI$43", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+    boolean bool = SnsTimeLineUI.M(this.RAo);
+    a.a(bool, this, "com/tencent/mm/plugin/sns/ui/SnsTimeLineUI$43", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+    AppMethodBeat.o(308281);
+    return bool;
   }
 }
 

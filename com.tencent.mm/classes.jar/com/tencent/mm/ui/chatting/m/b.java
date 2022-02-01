@@ -1,75 +1,37 @@
 package com.tencent.mm.ui.chatting.m;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.ui.chatting.component.aj;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/utils/SportReportComponent;", "Lcom/tencent/mm/ui/chatting/component/AbstractChattingComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "()V", "onChattingPause", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends a
+  extends com.tencent.mm.ui.chatting.component.a
+  implements aj
 {
-  public b(a.b paramb)
+  public final void jjj()
   {
-    super(paramb);
-  }
-  
-  final CharSequence b(Map<String, String> paramMap, String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference)
-  {
-    AppMethodBeat.i(32742);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str = bo.bf((String)paramMap.get(paramString + ".separator"), "、");
-    int i = 0;
-    Object localObject2 = new StringBuilder().append(paramString).append(".memberlist.member");
-    Object localObject1;
-    if (i != 0)
-    {
-      localObject1 = Integer.valueOf(i);
-      label83:
-      localObject2 = localObject1;
-      if (paramMap.get(localObject2) == null) {
-        break label267;
-      }
-      if (i != 0) {
-        localSpannableStringBuilder.append(str);
-      }
-      localObject1 = (String)paramMap.get((String)localObject2 + ".username");
-      localObject2 = (String)paramMap.get((String)localObject2 + ".nickname");
-      if ((!bo.isNullOrNil((String)localObject1)) && (!bo.isNullOrNil((String)localObject2))) {
-        break label220;
-      }
-      ab.w("MicroMsg.SysMsgHandlerProfile", "hy: can not resolve username or nickname");
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      localObject1 = "";
-      break label83;
-      label220:
-      SpannableString localSpannableString = j.b(ah.getContext(), (CharSequence)localObject2);
-      localSpannableString.setSpan(new b.1(this, paramWeakReference, paramBundle, (String)localObject1), 0, ((String)localObject2).length(), 33);
-      localSpannableStringBuilder.append(localSpannableString);
-    }
-    label267:
-    AppMethodBeat.o(32742);
-    return localSpannableStringBuilder;
-  }
-  
-  final String dLm()
-  {
-    return "link_profile";
+    AppMethodBeat.i(253886);
+    super.jjj();
+    Object localObject = k.aeZF;
+    localObject = this.hlc.aezO.getContext();
+    s.s(localObject, "mChattingContext.context");
+    localObject = (c)k.nq((Context)localObject).q(c.class);
+    Log.i("SimpleUIComponent", s.X("clearSer: ", Integer.valueOf(((c)localObject).jxe().size())));
+    ((c)localObject).jxe().clear();
+    AppMethodBeat.o(253886);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.m.b
  * JD-Core Version:    0.7.0.1
  */

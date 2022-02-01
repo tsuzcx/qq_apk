@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.widget.DoodlePicView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.widget.DropdownView;
 
 public class hgl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public hgl(DoodlePicView paramDoodlePicView) {}
+  public hgl(DropdownView paramDropdownView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DoodlePicView.a(this.a, this.a.a);
-    this.a.postInvalidate();
+    this.a.jdField_a_of_type_Hgo.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Hgo.getWindowToken(), 0);
+    if ((this.a.jdField_a_of_type_Hgo.getAdapter() != null) && (this.a.jdField_a_of_type_Hgo.getAdapter().getCount() > 0))
+    {
+      if ((((ImageView)paramView).getDrawable() == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (!this.a.jdField_a_of_type_Boolean)) {
+        DropdownView.a(this.a).postDelayed(new hgm(this, paramView), 250L);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_Hgo.dismissDropDown();
   }
 }
 

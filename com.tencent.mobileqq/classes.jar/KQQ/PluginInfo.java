@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class PluginInfo
   extends JceStruct
 {
-  public long Count;
-  public boolean Flag;
-  public long Id;
+  public long Count = 0L;
+  public boolean Flag = false;
+  public long Id = 0L;
   public String PicUrl = "";
-  public boolean RedPoint;
+  public boolean RedPoint = false;
   public boolean Tab = true;
   public String Text = "";
   
@@ -41,7 +41,22 @@ public final class PluginInfo
   
   public String toString()
   {
-    return "id=" + this.Id + ",count=" + this.Count + ",flag=" + this.Flag + ",text=" + this.Text + ",picurl=" + this.PicUrl + ",redpoint=" + this.RedPoint + ",tab=" + this.Tab;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=");
+    localStringBuilder.append(this.Id);
+    localStringBuilder.append(",count=");
+    localStringBuilder.append(this.Count);
+    localStringBuilder.append(",flag=");
+    localStringBuilder.append(this.Flag);
+    localStringBuilder.append(",text=");
+    localStringBuilder.append(this.Text);
+    localStringBuilder.append(",picurl=");
+    localStringBuilder.append(this.PicUrl);
+    localStringBuilder.append(",redpoint=");
+    localStringBuilder.append(this.RedPoint);
+    localStringBuilder.append(",tab=");
+    localStringBuilder.append(this.Tab);
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -49,11 +64,13 @@ public final class PluginInfo
     paramJceOutputStream.write(this.Id, 0);
     paramJceOutputStream.write(this.Count, 1);
     paramJceOutputStream.write(this.Flag, 2);
-    if (this.Text != null) {
-      paramJceOutputStream.write(this.Text, 3);
+    String str = this.Text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.PicUrl != null) {
-      paramJceOutputStream.write(this.PicUrl, 4);
+    str = this.PicUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.RedPoint, 5);
     paramJceOutputStream.write(this.Tab, 6);
@@ -61,7 +78,7 @@ public final class PluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.PluginInfo
  * JD-Core Version:    0.7.0.1
  */

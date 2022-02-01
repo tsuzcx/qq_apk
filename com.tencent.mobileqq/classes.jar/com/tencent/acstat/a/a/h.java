@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class h
 {
-  private static h b = null;
+  private static h b;
   private Map<Integer, g> a = null;
   private d c = null;
   
@@ -37,7 +37,8 @@ public class h
   
   d a()
   {
-    if ((this.c == null) || (!this.c.a())) {
+    d locald = this.c;
+    if ((locald == null) || (!locald.a())) {
       this.c = a(new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(4) })));
     }
     return this.c;
@@ -75,7 +76,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.a.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.lyric.widget;
 
 import android.util.Log;
-import atxh;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -15,23 +14,25 @@ class LyricViewScroll$1
   public void run()
   {
     Log.v("LyricViewScroll", "fling detect running");
-    if (this.jdField_a_of_type_Int == this.this$0.getScrollY())
+    if (this.a == this.this$0.getScrollY())
     {
-      this.this$0.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      LyricViewScroll.a(this.this$0).b(this.jdField_a_of_type_Int);
+      LyricViewScroll localLyricViewScroll = this.this$0;
+      localLyricViewScroll.c = this.a;
+      LyricViewScroll.a(localLyricViewScroll).b(this.a);
       Log.d("LyricViewScroll", "fling stop");
-      this.this$0.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.this$0.jdField_a_of_type_Boolean = false;
-      LyricViewScroll.a(this.this$0, false);
+      this.this$0.a.cancel();
+      localLyricViewScroll = this.this$0;
+      localLyricViewScroll.b = false;
+      LyricViewScroll.a(localLyricViewScroll, false);
       return;
     }
-    this.jdField_a_of_type_Int = this.this$0.getScrollY();
-    LyricViewScroll.a(this.this$0).a(this.jdField_a_of_type_Int);
+    this.a = this.this$0.getScrollY();
+    LyricViewScroll.a(this.this$0).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewScroll.1
  * JD-Core Version:    0.7.0.1
  */

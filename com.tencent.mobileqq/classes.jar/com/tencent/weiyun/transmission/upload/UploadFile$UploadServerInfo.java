@@ -31,13 +31,17 @@ public class UploadFile$UploadServerInfo
       UploadServerInfo localUploadServerInfo = (UploadServerInfo)super.clone();
       return localUploadServerInfo;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadFile.UploadServerInfo
  * JD-Core Version:    0.7.0.1
  */

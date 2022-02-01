@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahft;
-import ahfu;
-import ahfz;
-import ahga;
-import ahhc;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -24,89 +21,46 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-import aojx;
-import azqh;
-import azqs;
+import com.tencent.biz.pubaccount.api.IPublicAccountDetailReportUtil;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.CfgProcess;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.TextHook;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import swe;
 
 public class AddContactsActivity
-  extends FragmentActivity
+  extends BaseActivity
   implements View.OnClickListener
 {
-  public ahhc a;
-  Handler jdField_a_of_type_AndroidOsHandler = new ahga(this);
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public LinearLayout a;
-  private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
-  private RadioGroup.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new ahft(this);
-  private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AddContactsView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView;
-  private ContactBaseView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView;
-  private PublicView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView;
-  private TroopView jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView;
-  public boolean a;
-  private RadioButton jdField_b_of_type_AndroidWidgetRadioButton;
-  private boolean jdField_b_of_type_Boolean;
-  private RadioButton jdField_c_of_type_AndroidWidgetRadioButton;
-  private boolean jdField_c_of_type_Boolean;
-  
-  public AddContactsActivity()
-  {
-    this.jdField_a_of_type_Ahhc = new ahfu(this);
-  }
-  
-  @TargetApi(14)
-  private void a()
-  {
-    ((TextView)findViewById(2131368670)).setText(2131689628);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376034));
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368624));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368681));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131362088));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377369));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377371));
-    this.jdField_c_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131377370));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
-    String str = Build.MODEL.toUpperCase();
-    if ((str.contains("S968T")) || (str.contains("A0001")) || (str.contains("B9388"))) {
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.setPadding(0, 0, 0, 0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AddContactsActivity", 2, "initView  model = " + str);
-    }
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_c_of_type_AndroidWidgetRadioButton.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364716));
-      return;
-      this.jdField_c_of_type_AndroidWidgetRadioButton.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setGravity(16);
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130849101));
-      int i = this.jdField_c_of_type_AndroidWidgetRadioButton.getPaddingRight();
-      if (!TextHook.getInstance().isDefault()) {
-        i = 0;
-      }
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setPadding(this.jdField_c_of_type_AndroidWidgetRadioButton.getPaddingLeft(), this.jdField_c_of_type_AndroidWidgetRadioButton.getPaddingTop(), i, this.jdField_c_of_type_AndroidWidgetRadioButton.getPaddingBottom());
-    }
-  }
+  LinearLayout a;
+  boolean b;
+  ContactBaseView.IAddContactContext c = new AddContactsActivity.2(this);
+  Handler d = new AddContactsActivity.4(this);
+  private ContactBaseView e;
+  private AddContactsView f;
+  private TroopView g;
+  private PublicView h;
+  private FrameLayout i;
+  private RadioGroup j;
+  private RadioButton k;
+  private RadioButton l;
+  private RadioButton m;
+  private TextView n;
+  private ImageView o;
+  private boolean p;
+  private boolean q = false;
+  private RadioGroup.OnCheckedChangeListener r = new AddContactsActivity.1(this);
   
   public static void a(Activity paramActivity, int paramInt)
   {
@@ -117,191 +71,313 @@ public class AddContactsActivity
   
   private void a(ContactBaseView paramContactBaseView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView != paramContactBaseView)
+    ContactBaseView localContactBaseView = this.e;
+    if (localContactBaseView != paramContactBaseView)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView != null)
+      if (localContactBaseView != null)
       {
         if (isResume()) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.c();
+          this.e.c();
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.h();
+        this.e.i();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView = paramContactBaseView;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView != null)
+      this.e = paramContactBaseView;
+      paramContactBaseView = this.e;
+      if (paramContactBaseView != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.g();
+        paramContactBaseView.h();
         if (isResume()) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.b();
+          this.e.b();
         }
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView);
+        this.i.removeAllViews();
+        this.i.addView(this.e);
       }
     }
   }
   
-  private void b()
+  @TargetApi(14)
+  private void c()
   {
-    boolean bool = true;
-    String str = aojx.a(this.app.getCurrentAccountUin(), "add_contact_page_public_account_switch");
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.Activity", 2, "public account switch config is: " + str);
+    ((TextView)findViewById(2131436227)).setText(2131886199);
+    this.a = ((LinearLayout)findViewById(2131445137));
+    if (ImmersiveUtils.isSupporImmersive() == 1)
+    {
+      this.a.setFitsSystemWindows(true);
+      this.a.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
+    }
+    this.n = ((TextView)findViewById(2131436180));
+    this.n.setText("");
+    this.n.setOnClickListener(this);
+    this.n.setContentDescription(getString(2131893864));
+    this.o = ((ImageView)findViewById(2131436238));
+    this.o.setOnClickListener(this);
+    this.j = ((RadioGroup)findViewById(2131427786));
+    this.k = ((RadioButton)findViewById(2131446741));
+    this.l = ((RadioButton)findViewById(2131446743));
+    this.m = ((RadioButton)findViewById(2131446742));
+    this.j.setOnCheckedChangeListener(this.r);
+    if (StudyModeManager.k()) {
+      this.j.setVisibility(4);
+    }
+    d();
+    if (this.q)
+    {
+      this.m.setVisibility(0);
+    }
+    else
+    {
+      this.m.setVisibility(8);
+      this.l.setGravity(16);
+      this.l.setBackgroundDrawable(getResources().getDrawable(2130851735));
+      int i1 = this.m.getPaddingRight();
+      if (!TextHook.getInstance().isDefault()) {
+        i1 = 0;
+      }
+      this.l.setPadding(this.m.getPaddingLeft(), this.m.getPaddingTop(), i1, this.m.getPaddingBottom());
+    }
+    this.i = ((FrameLayout)findViewById(2131431260));
+    b();
+  }
+  
+  private void d()
+  {
+    String str = Build.MODEL.toUpperCase();
+    if ((str.contains("S968T")) || (str.contains("A0001")) || (str.contains("B9388")) || (str.equals("MI 2")) || (str.contains("LENOVO K900")) || (str.contains("VIVO X3L"))) {
+      this.j.setPadding(0, 0, 0, 0);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("adaptTabContainerPaddingByModel  model = ");
+      localStringBuilder.append(str);
+      QLog.i("AddContactsActivity", 2, localStringBuilder.toString());
+    }
+  }
+  
+  private void e()
+  {
+    String str = CfgProcess.a(this.app.getCurrentAccountUin(), "add_contact_page_public_account_switch");
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("public account switch config is: ");
+      localStringBuilder.append(str);
+      QLog.i("addContacts.Activity", 2, localStringBuilder.toString());
     }
     if (!TextUtils.isEmpty(str)) {}
     for (;;)
     {
       try
       {
-        if (new JSONObject(str).optInt("showPublicTab") == 1)
-        {
-          this.jdField_c_of_type_Boolean = bool;
-          return;
+        int i1 = new JSONObject(str).optInt("showPublicTab");
+        bool = true;
+        if (i1 != 1) {
+          break label143;
         }
+        this.q = bool;
+        return;
       }
       catch (JSONException localJSONException)
       {
-        if (!QLog.isDevelopLevel()) {
-          continue;
+        if (QLog.isDevelopLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("public account switch config is: ");
+          localStringBuilder.append(QLog.getStackTraceString(localJSONException));
+          QLog.i("addContacts.Activity", 2, localStringBuilder.toString());
         }
-        QLog.i("addContacts.Activity", 2, "public account switch config is: " + QLog.getStackTraceString(localJSONException));
       }
-      bool = false;
-    }
-  }
-  
-  private void c()
-  {
-    switch (getIntent().getIntExtra("tab_index_key", 0))
-    {
-    default: 
       return;
-    case 0: 
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setChecked(true);
-      return;
-    case 1: 
-      this.jdField_b_of_type_AndroidWidgetRadioButton.setChecked(true);
-      return;
+      label143:
+      boolean bool = false;
     }
-    this.jdField_c_of_type_AndroidWidgetRadioButton.setChecked(true);
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView = new AddContactsView(this.jdField_a_of_type_Ahhc);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a();
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView);
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView = new TroopView(this.jdField_a_of_type_Ahhc);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.setNavStickyListener(new ahfz(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.a();
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView);
-    azqs.b(this.app, "dc00899", "Grp_find_new", "", "grptab", "exp", 0, 0, "", "", "", "");
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView == null)
+    int i1 = getIntent().getIntExtra("tab_index_key", 0);
+    if (i1 != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView = new PublicView(this.jdField_a_of_type_Ahhc);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.a();
+      if (i1 != 1)
+      {
+        if (i1 != 2) {
+          return;
+        }
+        this.m.setChecked(true);
+        return;
+      }
+      this.l.setChecked(true);
+      return;
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView);
+    this.k.setChecked(true);
   }
   
-  public int a()
+  private void g()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView instanceof AddContactsView)) {
+    if (this.f == null)
+    {
+      this.f = new AddContactsView(this.c);
+      this.f.a();
+    }
+    a(this.f);
+  }
+  
+  private void h()
+  {
+    if (this.g == null)
+    {
+      this.g = new TroopView(this.c);
+      this.g.setNavStickyListener(new AddContactsActivity.3(this));
+      this.g.a();
+    }
+    a(this.g);
+    ReportController.b(this.app, "dc00899", "Grp_find_new", "", "grptab", "exp", 0, 0, "", "", "", "");
+  }
+  
+  private void i()
+  {
+    if (this.h == null)
+    {
+      this.h = new PublicView(this.c);
+      this.h.a();
+    }
+    a(this.h);
+  }
+  
+  int a()
+  {
+    ContactBaseView localContactBaseView = this.e;
+    if ((localContactBaseView instanceof AddContactsView)) {
       return 0;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView instanceof TroopView)) {
+    if ((localContactBaseView instanceof TroopView)) {
       return 1;
     }
     return 2;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void b()
+  {
+    boolean bool = QQTheme.isNowSimpleUI();
+    ColorStateList localColorStateList;
+    if (bool) {
+      localColorStateList = getResources().getColorStateList(2131168193);
+    } else {
+      localColorStateList = getResources().getColorStateList(2131168206);
+    }
+    this.k.setTextColor(localColorStateList);
+    this.l.setTextColor(localColorStateList);
+    this.m.setTextColor(localColorStateList);
+    if (bool)
+    {
+      this.k.setPadding(0, 0, 0, 0);
+      this.l.setPadding(0, 0, 0, 0);
+      this.m.setPadding(0, 0, 0, 0);
+      this.k.setGravity(17);
+      this.l.setGravity(17);
+      this.m.setGravity(17);
+      return;
+    }
+    this.k.setPadding(0, 0, ViewUtils.dpToPx(10.0F), 0);
+    this.l.setPadding(0, 0, 0, 0);
+    this.m.setPadding(ViewUtils.dpToPx(10.0F), 0, 0, 0);
+    this.k.setGravity(21);
+    this.l.setGravity(17);
+    this.m.setGravity(16);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.a(paramInt1, paramInt2, paramIntent);
+    ContactBaseView localContactBaseView = this.e;
+    if (localContactBaseView != null) {
+      localContactBaseView.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     if (paramBundle != null) {
       paramBundle.putParcelable("android:support:fragments", null);
     }
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560780);
+    super.setContentView(2131627236);
     getWindow().setBackgroundDrawable(null);
-    b();
-    a();
+    e();
     c();
-    azqh.a(getApplicationContext()).reportKVEvent("AddContactsActivity", null);
+    f();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.d();
+    Object localObject = this.f;
+    if (localObject != null) {
+      ((AddContactsView)localObject).d();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.d();
+    localObject = this.g;
+    if (localObject != null) {
+      ((TroopView)localObject).d();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactPublicView.d();
+    localObject = this.h;
+    if (localObject != null) {
+      ((PublicView)localObject).d();
     }
     super.doOnDestroy();
-    swe.a().a();
+    ((IPublicAccountDetailReportUtil)QRoute.api(IPublicAccountDetailReportUtil.class)).resetAttribute();
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.c();
+    ContactBaseView localContactBaseView = this.e;
+    if (localContactBaseView != null) {
+      localContactBaseView.c();
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.b();
+    ContactBaseView localContactBaseView = this.e;
+    if (localContactBaseView != null) {
+      localContactBaseView.b();
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    if (this.b) {
+      this.d.sendEmptyMessage(0);
     }
   }
   
-  public void doOnStart()
+  protected void doOnStart()
   {
     super.doOnStart();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.g();
+    ContactBaseView localContactBaseView = this.e;
+    if (localContactBaseView != null) {
+      localContactBaseView.h();
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.d.sendEmptyMessage(1);
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     super.doOnStop();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView.h();
+    ContactBaseView localContactBaseView = this.e;
+    if (localContactBaseView != null) {
+      localContactBaseView.i();
     }
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     finish();
     return true;
@@ -309,23 +385,38 @@ public class AddContactsActivity
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i1 = paramView.getId();
+    if (i1 != 2131436180)
     {
+      if ((i1 == 2131436238) && (1 == a()))
+      {
+        Intent localIntent = new Intent(this, SearchContactsActivity.class);
+        localIntent.putExtra("from_key", a());
+        localIntent.putExtra("fromType", 13);
+        startActivity(localIntent);
+        overridePendingTransition(0, 0);
+      }
     }
-    do
-    {
-      return;
+    else {
       onBackEvent();
-      return;
-    } while (1 != a());
-    paramView = new Intent(this, SearchContactsActivity.class);
-    paramView.putExtra("from_key", a());
-    paramView.putExtra("fromType", 13);
-    startActivity(paramView);
-    overridePendingTransition(0, 0);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  public void onPostThemeChanged()
+  {
+    super.onPostThemeChanged();
+    b();
+  }
+  
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }

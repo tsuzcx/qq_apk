@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class dfe
-  implements Runnable
+class dfe
+  implements DialogInterface.OnClickListener
 {
-  public dfe(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
+  dfe(dfd paramdfd) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131562543, new dff(this));
-    localQQCustomDialog.show();
+    paramDialogInterface.dismiss();
   }
 }
 

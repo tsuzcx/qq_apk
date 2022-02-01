@@ -6,21 +6,20 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBSInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qwallet.hb.aio.QQWalletBaseMsgElem;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
 import java.util.ArrayList;
 import java.util.List;
 import tencent.im.msg.im_msg_body.QQWalletAioBody;
 
 public class QQWalletRedPacketMsg
+  implements ISafeStream
 {
   public String authkey;
   public QQWalletAioBodyReserve body;
   private int channelId;
   public int conftype;
-  public QQWalletTransferMsgElem elem;
+  public QQWalletBaseMsgElem elem;
   public String envelopeName;
   public int envelopeid;
   public boolean isOpened;
@@ -40,267 +39,192 @@ public class QQWalletRedPacketMsg
   
   public QQWalletRedPacketMsg(im_msg_body.QQWalletAioBody paramQQWalletAioBody, String paramString)
   {
-    if ((paramQQWalletAioBody == null) || (TextUtils.isEmpty(paramString)))
+    if ((paramQQWalletAioBody != null) && (!TextUtils.isEmpty(paramString)))
     {
-      this.body = new QQWalletAioBodyReserve();
+      this.elem = new QQWalletBaseMsgElem(paramQQWalletAioBody.receiver);
+      this.body = new QQWalletAioBodyReserve(paramQQWalletAioBody);
+      this.channelId = paramQQWalletAioBody.sint32_channelid.get();
+      this.templateId = paramQQWalletAioBody.sint32_templateid.get();
+      this.resend = paramQQWalletAioBody.uint32_resend.get();
+      this.redtype = paramQQWalletAioBody.sint32_redtype.get();
+      this.redPacketId = paramQQWalletAioBody.bytes_billno.get().toStringUtf8();
+      this.authkey = paramQQWalletAioBody.bytes_authkey.get().toStringUtf8();
+      this.envelopeid = paramQQWalletAioBody.sint32_envelopeid.get();
+      this.envelopeName = paramQQWalletAioBody.bytes_name.get().toStringUtf8();
+      this.conftype = paramQQWalletAioBody.sint32_redtype.get();
+      this.msgFrom = paramQQWalletAioBody.sint32_msg_from.get();
+      this.redPacketIndex = paramQQWalletAioBody.string_index.get().toStringUtf8();
+      paramString = paramQQWalletAioBody.uint64_grap_uin.get();
+      if (paramString != null) {
+        this.specifyUinList = paramString;
+      }
+      this.redChannel = paramQQWalletAioBody.uint32_redchannel.get();
       return;
     }
-    this.elem = new QQWalletTransferMsgElem(paramQQWalletAioBody.receiver);
-    this.body = new QQWalletAioBodyReserve(paramQQWalletAioBody);
-    this.channelId = paramQQWalletAioBody.sint32_channelid.get();
-    this.templateId = paramQQWalletAioBody.sint32_templateid.get();
-    this.resend = paramQQWalletAioBody.uint32_resend.get();
-    this.redtype = paramQQWalletAioBody.sint32_redtype.get();
-    this.redPacketId = paramQQWalletAioBody.bytes_billno.get().toStringUtf8();
-    this.authkey = paramQQWalletAioBody.bytes_authkey.get().toStringUtf8();
-    this.envelopeid = paramQQWalletAioBody.sint32_envelopeid.get();
-    this.envelopeName = paramQQWalletAioBody.bytes_name.get().toStringUtf8();
-    this.conftype = paramQQWalletAioBody.sint32_redtype.get();
-    this.msgFrom = paramQQWalletAioBody.sint32_msg_from.get();
-    this.redPacketIndex = paramQQWalletAioBody.string_index.get().toStringUtf8();
-    paramString = paramQQWalletAioBody.uint64_grap_uin.get();
-    if (paramString != null) {
-      this.specifyUinList = paramString;
-    }
-    this.redChannel = paramQQWalletAioBody.uint32_redchannel.get();
+    this.body = new QQWalletAioBodyReserve();
   }
   
-  private void readVersionUpgradeFiled(ObjectInput paramObjectInput)
+  public byte[] flushMsgData(int paramInt)
   {
+    QwSafeOutputStream localQwSafeOutputStream1;
+    QwSafeOutputStream localQwSafeOutputStream2;
     try
     {
-      this.elem.iconUrl = paramObjectInput.readUTF();
-      this.elem.contentColor = paramObjectInput.readInt();
-      this.elem.contentBgColor = paramObjectInput.readInt();
-      this.elem.aioImageLeft = paramObjectInput.readUTF();
-      this.elem.aioImageRight = paramObjectInput.readUTF();
-      this.elem.cftImage = paramObjectInput.readUTF();
-    }
-    catch (IOException localThrowable)
-    {
+      localQwSafeOutputStream1 = new QwSafeOutputStream();
       try
       {
-        this.envelopeid = paramObjectInput.readInt();
-        this.envelopeName = paramObjectInput.readUTF();
-        this.conftype = paramObjectInput.readInt();
+        writeHeader(localQwSafeOutputStream1, paramInt);
+        writeExternal(localQwSafeOutputStream1);
+        localQwSafeOutputStream2 = localQwSafeOutputStream1;
       }
-      catch (IOException localThrowable)
-      {
-        try
-        {
-          this.msgFrom = paramObjectInput.readInt();
-        }
-        catch (IOException localThrowable)
-        {
-          try
-          {
-            this.redPacketIndex = paramObjectInput.readUTF();
-          }
-          catch (IOException localThrowable)
-          {
-            try
-            {
-              this.redChannel = paramObjectInput.readInt();
-              this.specifyUinList = ((List)paramObjectInput.readObject());
-            }
-            catch (Exception localThrowable)
-            {
-              try
-              {
-                this.elem.soundRecordDuration = paramObjectInput.readInt();
-              }
-              catch (Exception localThrowable)
-              {
-                try
-                {
-                  this.elem.resourceType = paramObjectInput.readInt();
-                  this.elem.skinId = paramObjectInput.readInt();
-                  this.elem.effectsId = paramObjectInput.readInt();
-                  this.elem.special_pop_id = paramObjectInput.readInt();
-                }
-                catch (Exception localThrowable)
-                {
-                  try
-                  {
-                    this.elem.themeId = paramObjectInput.readInt();
-                  }
-                  catch (Exception localThrowable)
-                  {
-                    try
-                    {
-                      this.elem.hbFrom = paramObjectInput.readInt();
-                    }
-                    catch (Exception localThrowable)
-                    {
-                      try
-                      {
-                        this.elem.songId = paramObjectInput.readInt();
-                        this.elem.songFlag = paramObjectInput.readInt();
-                      }
-                      catch (Exception localThrowable)
-                      {
-                        try
-                        {
-                          this.body.feedId = paramObjectInput.readUTF();
-                        }
-                        catch (Throwable localThrowable)
-                        {
-                          try
-                          {
-                            for (;;)
-                            {
-                              this.elem.lastPinyin = paramObjectInput.readUTF();
-                              try
-                              {
-                                this.body.subChannel = paramObjectInput.readInt();
-                                return;
-                              }
-                              catch (IOException paramObjectInput)
-                              {
-                                this.body.subChannel = 0;
-                              }
-                              localIOException1 = localIOException1;
-                              this.elem.iconUrl = "";
-                              this.elem.contentColor = 13487565;
-                              this.elem.contentBgColor = -1;
-                              this.elem.aioImageLeft = "";
-                              this.elem.aioImageRight = "";
-                              this.elem.cftImage = "";
-                              continue;
-                              localIOException2 = localIOException2;
-                              this.envelopeid = -1;
-                              this.envelopeName = "";
-                              this.conftype = -1;
-                              continue;
-                              localIOException3 = localIOException3;
-                              this.msgFrom = -1;
-                              continue;
-                              localIOException4 = localIOException4;
-                              this.redPacketIndex = "";
-                              continue;
-                              localException1 = localException1;
-                              this.redChannel = 0;
-                              this.specifyUinList = new ArrayList();
-                              continue;
-                              localException2 = localException2;
-                              this.elem.soundRecordDuration = 12000;
-                              continue;
-                              localException3 = localException3;
-                              this.elem.resourceType = 0;
-                              this.elem.skinId = 0;
-                              this.elem.effectsId = 0;
-                              this.elem.special_pop_id = 0;
-                              continue;
-                              localException4 = localException4;
-                              this.elem.themeId = 0;
-                              continue;
-                              localException5 = localException5;
-                              this.elem.hbFrom = 0;
-                              continue;
-                              localException6 = localException6;
-                              this.elem.songId = 0;
-                              this.elem.songFlag = 0;
-                              continue;
-                              localThrowable = localThrowable;
-                              this.body.feedId = "";
-                            }
-                          }
-                          catch (IOException localIOException5)
-                          {
-                            for (;;)
-                            {
-                              this.elem.lastPinyin = "";
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      catch (Exception localException1) {}
+      localQwSafeOutputStream2 = localQwSafeOutputStream1;
+    }
+    catch (Exception localException2)
+    {
+      localQwSafeOutputStream1 = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.msg.qqwalletmsg", 2, "QQWalletRedPacketMsg write Exception", localException2);
+      localQwSafeOutputStream2 = localQwSafeOutputStream1;
+    }
+    if (localQwSafeOutputStream2 != null) {
+      return localQwSafeOutputStream2.flushDataAndCloseStream();
+    }
+    return null;
+  }
+  
+  public void readExternal(QwSafeInputStream paramQwSafeInputStream)
+  {
+    this.elem = new QQWalletBaseMsgElem();
+    this.elem.a = paramQwSafeInputStream.readInt();
+    this.elem.b = paramQwSafeInputStream.readInt();
+    this.elem.c = paramQwSafeInputStream.readUTF();
+    this.elem.d = paramQwSafeInputStream.readUTF();
+    this.elem.e = paramQwSafeInputStream.readUTF();
+    this.elem.f = paramQwSafeInputStream.readUTF();
+    this.elem.g = paramQwSafeInputStream.readUTF();
+    this.elem.h = paramQwSafeInputStream.readUTF();
+    this.channelId = paramQwSafeInputStream.readInt();
+    this.templateId = paramQwSafeInputStream.readInt();
+    this.resend = paramQwSafeInputStream.readInt();
+    this.redtype = paramQwSafeInputStream.readInt();
+    this.redPacketId = paramQwSafeInputStream.readUTF();
+    this.authkey = paramQwSafeInputStream.readUTF();
+    this.isOpened = paramQwSafeInputStream.readBoolean();
+    this.elem.i = paramQwSafeInputStream.readInt();
+    this.elem.j = paramQwSafeInputStream.readInt();
+    this.elem.k = paramQwSafeInputStream.readUTF();
+    this.elem.l = paramQwSafeInputStream.readUTF();
+    this.elem.m = paramQwSafeInputStream.readUTF();
+    this.elem.n = paramQwSafeInputStream.readUTF();
+    this.elem.o = paramQwSafeInputStream.readInt(13487565);
+    this.elem.p = paramQwSafeInputStream.readInt(-1);
+    this.elem.q = paramQwSafeInputStream.readUTF();
+    this.elem.r = paramQwSafeInputStream.readUTF();
+    this.elem.s = paramQwSafeInputStream.readUTF();
+    this.envelopeid = paramQwSafeInputStream.readInt(-1);
+    this.envelopeName = paramQwSafeInputStream.readUTF();
+    this.conftype = paramQwSafeInputStream.readInt(-1);
+    this.msgFrom = paramQwSafeInputStream.readInt(-1);
+    this.redPacketIndex = paramQwSafeInputStream.readUTF();
+    this.redChannel = paramQwSafeInputStream.readInt();
+    this.specifyUinList = ((List)paramQwSafeInputStream.readObject(new ArrayList()));
+    this.elem.t = paramQwSafeInputStream.readInt(12000);
+    this.elem.u = paramQwSafeInputStream.readInt();
+    this.elem.v = paramQwSafeInputStream.readInt();
+    this.elem.w = paramQwSafeInputStream.readInt();
+    this.elem.x = paramQwSafeInputStream.readInt();
+    this.elem.z = paramQwSafeInputStream.readInt();
+    this.elem.A = paramQwSafeInputStream.readInt();
+    this.elem.B = paramQwSafeInputStream.readInt();
+    this.elem.C = paramQwSafeInputStream.readInt();
+    this.body.feedId = paramQwSafeInputStream.readUTF();
+    this.elem.D = paramQwSafeInputStream.readUTF();
+    this.body.subChannel = paramQwSafeInputStream.readInt();
+    this.body.poemRule = paramQwSafeInputStream.readUTF();
+    this.body.makeHbExtend = paramQwSafeInputStream.readUTF();
+    this.body.shengpiziMask = paramQwSafeInputStream.readUTF();
+    this.body.shengpiziMD5 = paramQwSafeInputStream.readUTF();
+    this.body.payFlag = paramQwSafeInputStream.readInt();
+    if (QLog.isColorLevel())
+    {
+      paramQwSafeInputStream = new StringBuilder();
+      paramQwSafeInputStream.append("readExternal redtype=");
+      paramQwSafeInputStream.append(this.redtype);
+      paramQwSafeInputStream.append(", skinId=");
+      paramQwSafeInputStream.append(this.elem.v);
+      paramQwSafeInputStream.append(", effectsId=");
+      paramQwSafeInputStream.append(this.elem.w);
+      paramQwSafeInputStream.append(", special_pop_id=");
+      paramQwSafeInputStream.append(this.elem.x);
+      paramQwSafeInputStream.append(", themeId=");
+      paramQwSafeInputStream.append(this.elem.z);
+      QLog.d("QQWalletRedPacketMsg", 2, paramQwSafeInputStream.toString());
     }
   }
   
-  public void readExternal(ObjectInput paramObjectInput)
+  public void writeExternal(QwSafeOutputStream paramQwSafeOutputStream)
   {
-    this.elem = new QQWalletTransferMsgElem();
-    this.elem.background = paramObjectInput.readInt();
-    this.elem.icon = paramObjectInput.readInt();
-    this.elem.title = paramObjectInput.readUTF();
-    this.elem.subTitle = paramObjectInput.readUTF();
-    this.elem.content = paramObjectInput.readUTF();
-    this.elem.linkUrl = paramObjectInput.readUTF();
-    this.elem.blackStripe = paramObjectInput.readUTF();
-    this.elem.notice = paramObjectInput.readUTF();
-    this.channelId = paramObjectInput.readInt();
-    this.templateId = paramObjectInput.readInt();
-    this.resend = paramObjectInput.readInt();
-    this.redtype = paramObjectInput.readInt();
-    this.redPacketId = paramObjectInput.readUTF();
-    this.authkey = paramObjectInput.readUTF();
-    this.isOpened = paramObjectInput.readBoolean();
-    this.elem.titleColor = paramObjectInput.readInt();
-    this.elem.subtitleColor = paramObjectInput.readInt();
-    this.elem.actionsPriority = paramObjectInput.readUTF();
-    this.elem.jumpUrl = paramObjectInput.readUTF();
-    this.elem.nativeAndroid = paramObjectInput.readUTF();
-    readVersionUpgradeFiled(paramObjectInput);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQWalletRedPacketMsg", 2, "readExternal redtype=" + this.redtype + ", skinId=" + this.elem.skinId + ", effectsId=" + this.elem.effectsId + ", special_pop_id=" + this.elem.special_pop_id + ", themeId=" + this.elem.themeId);
-    }
+    paramQwSafeOutputStream.writeInt(this.elem.a);
+    paramQwSafeOutputStream.writeInt(this.elem.b);
+    paramQwSafeOutputStream.writeUTF(this.elem.c);
+    paramQwSafeOutputStream.writeUTF(this.elem.d);
+    paramQwSafeOutputStream.writeUTF(this.elem.e);
+    paramQwSafeOutputStream.writeUTF(this.elem.f);
+    paramQwSafeOutputStream.writeUTF(this.elem.g);
+    paramQwSafeOutputStream.writeUTF(this.elem.h);
+    paramQwSafeOutputStream.writeInt(this.channelId);
+    paramQwSafeOutputStream.writeInt(this.templateId);
+    paramQwSafeOutputStream.writeInt(this.resend);
+    paramQwSafeOutputStream.writeInt(this.redtype);
+    paramQwSafeOutputStream.writeUTF(this.redPacketId);
+    paramQwSafeOutputStream.writeUTF(this.authkey);
+    paramQwSafeOutputStream.writeBoolean(this.isOpened);
+    paramQwSafeOutputStream.writeInt(this.elem.i);
+    paramQwSafeOutputStream.writeInt(this.elem.j);
+    paramQwSafeOutputStream.writeUTF(this.elem.k);
+    paramQwSafeOutputStream.writeUTF(this.elem.l);
+    paramQwSafeOutputStream.writeUTF(this.elem.m);
+    paramQwSafeOutputStream.writeUTF(this.elem.n);
+    paramQwSafeOutputStream.writeInt(this.elem.o);
+    paramQwSafeOutputStream.writeInt(this.elem.p);
+    paramQwSafeOutputStream.writeUTF(this.elem.q);
+    paramQwSafeOutputStream.writeUTF(this.elem.r);
+    paramQwSafeOutputStream.writeUTF(this.elem.s);
+    paramQwSafeOutputStream.writeInt(this.envelopeid);
+    paramQwSafeOutputStream.writeUTF(this.envelopeName);
+    paramQwSafeOutputStream.writeInt(this.conftype);
+    paramQwSafeOutputStream.writeInt(this.msgFrom);
+    paramQwSafeOutputStream.writeUTF(this.redPacketIndex);
+    paramQwSafeOutputStream.writeInt(this.redChannel);
+    paramQwSafeOutputStream.writeObject(this.specifyUinList);
+    paramQwSafeOutputStream.writeInt(this.elem.t);
+    paramQwSafeOutputStream.writeInt(this.elem.u);
+    paramQwSafeOutputStream.writeInt(this.elem.v);
+    paramQwSafeOutputStream.writeInt(this.elem.w);
+    paramQwSafeOutputStream.writeInt(this.elem.x);
+    paramQwSafeOutputStream.writeInt(this.elem.z);
+    paramQwSafeOutputStream.writeInt(this.elem.A);
+    paramQwSafeOutputStream.writeInt(this.elem.B);
+    paramQwSafeOutputStream.writeInt(this.elem.C);
+    paramQwSafeOutputStream.writeUTF(this.body.feedId);
+    paramQwSafeOutputStream.writeUTF(this.elem.D);
+    paramQwSafeOutputStream.writeInt(this.body.subChannel);
+    paramQwSafeOutputStream.writeUTF(this.body.poemRule);
+    paramQwSafeOutputStream.writeUTF(this.body.makeHbExtend);
+    paramQwSafeOutputStream.writeUTF(this.body.shengpiziMask);
+    paramQwSafeOutputStream.writeUTF(this.body.shengpiziMD5);
+    paramQwSafeOutputStream.writeInt(this.body.payFlag);
   }
   
-  public void writeExternal(ObjectOutput paramObjectOutput)
+  public void writeHeader(QwSafeOutputStream paramQwSafeOutputStream, int paramInt)
   {
-    paramObjectOutput.writeInt(this.elem.background);
-    paramObjectOutput.writeInt(this.elem.icon);
-    paramObjectOutput.writeUTF(this.elem.title);
-    paramObjectOutput.writeUTF(this.elem.subTitle);
-    paramObjectOutput.writeUTF(this.elem.content);
-    paramObjectOutput.writeUTF(this.elem.linkUrl);
-    paramObjectOutput.writeUTF(this.elem.blackStripe);
-    paramObjectOutput.writeUTF(this.elem.notice);
-    paramObjectOutput.writeInt(this.channelId);
-    paramObjectOutput.writeInt(this.templateId);
-    paramObjectOutput.writeInt(this.resend);
-    paramObjectOutput.writeInt(this.redtype);
-    paramObjectOutput.writeUTF(this.redPacketId);
-    paramObjectOutput.writeUTF(this.authkey);
-    paramObjectOutput.writeBoolean(this.isOpened);
-    paramObjectOutput.writeInt(this.elem.titleColor);
-    paramObjectOutput.writeInt(this.elem.subtitleColor);
-    paramObjectOutput.writeUTF(this.elem.actionsPriority);
-    paramObjectOutput.writeUTF(this.elem.jumpUrl);
-    paramObjectOutput.writeUTF(this.elem.nativeAndroid);
-    paramObjectOutput.writeUTF(this.elem.iconUrl);
-    paramObjectOutput.writeInt(this.elem.contentColor);
-    paramObjectOutput.writeInt(this.elem.contentBgColor);
-    paramObjectOutput.writeUTF(this.elem.aioImageLeft);
-    paramObjectOutput.writeUTF(this.elem.aioImageRight);
-    paramObjectOutput.writeUTF(this.elem.cftImage);
-    paramObjectOutput.writeInt(this.envelopeid);
-    paramObjectOutput.writeUTF(this.envelopeName);
-    paramObjectOutput.writeInt(this.conftype);
-    paramObjectOutput.writeInt(this.msgFrom);
-    paramObjectOutput.writeUTF(this.redPacketIndex);
-    paramObjectOutput.writeInt(this.redChannel);
-    paramObjectOutput.writeObject(this.specifyUinList);
-    paramObjectOutput.writeInt(this.elem.soundRecordDuration);
-    paramObjectOutput.writeInt(this.elem.resourceType);
-    paramObjectOutput.writeInt(this.elem.skinId);
-    paramObjectOutput.writeInt(this.elem.effectsId);
-    paramObjectOutput.writeInt(this.elem.special_pop_id);
-    paramObjectOutput.writeInt(this.elem.themeId);
-    paramObjectOutput.writeInt(this.elem.hbFrom);
-    paramObjectOutput.writeInt(this.elem.songId);
-    paramObjectOutput.writeInt(this.elem.songFlag);
-    paramObjectOutput.writeUTF(this.body.feedId);
-    paramObjectOutput.writeUTF(this.elem.lastPinyin);
-    paramObjectOutput.writeInt(this.body.subChannel);
+    paramQwSafeOutputStream.writeInt(32);
+    paramQwSafeOutputStream.writeInt(2);
+    paramQwSafeOutputStream.writeInt(2);
+    paramQwSafeOutputStream.writeInt(paramInt);
   }
 }
 

@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import android.widget.ListView;
-import tdn;
-import tlo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventBus;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 
-public class WsCommentPresenter$6
-  implements Runnable
+class WsCommentPresenter$6
+  implements View.OnClickListener
 {
-  public WsCommentPresenter$6(tdn paramtdn) {}
+  WsCommentPresenter$6(WsCommentPresenter paramWsCommentPresenter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    tdn.c(this.this$0);
-    tlo.d(tdn.a(this.this$0), "onResponse, lastPosition:" + tdn.b(this.this$0) + ",currentPosition:" + tdn.a(this.this$0));
-    if (this.this$0.a != null) {
-      this.this$0.a.setSelection(0);
-    }
+    WSLog.a("comment", "onClick hide comment");
+    this.a.k();
+    WSSimpleEventBus.a().a(new WSCommentShowEvent(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentPresenter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,6 @@ import com.tencent.ttpic.openapi.util.YoutuPointsUtil;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.FaceActionCallback;
 import com.tencent.ttpic.util.youtu.ExpressionDetectorObject;
-import com.tencent.ttpic.util.youtu.GenderDetector;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -45,13 +44,15 @@ public abstract class FaceDetector
   public static final float SMALL_FACE_OPEN_DOWNLOW = 0.01F;
   public static final float SMALL_FACE_OPEN_UPLOW = 0.03F;
   public static final long SMALL_FACE_SWITCH_TIME_INTERVAL = 2000L;
-  private static final String TAG = FaceDetector.class.getSimpleName();
+  private static final String TAG = "FaceDetector";
   private static final int lookingForFaceDuration = 100000;
   protected static final Object mDetectLock = new Object();
   private Sensor accelerometer;
   private double angle = 0.0D;
+  boolean clearFaceQueue = false;
   private int curDetectInterval = 800;
-  private FaceDetector.DETECT_STAGE detectStage = FaceDetector.DETECT_STAGE.DETECT_NO_FACE;
+  private FaceDetector.DetectStage detectStage = FaceDetector.DetectStage.DETECT_NO_FACE;
+  protected List<Set<Integer>> expressions;
   protected Set<FaceDetector.FaceDetectListener> faceDetectListeners = new HashSet();
   protected List<FaceInfo> faceInfos = new ArrayList();
   private long factor = 0L;
@@ -64,7 +65,7 @@ public abstract class FaceDetector
   protected final Map<Integer, FaceActionCounter> mFaceActionCounter = new HashMap();
   protected final Map<Integer, Boolean> mFaceActionStatus = new HashMap();
   private SensorEventListener mSensorEventListener = new FaceDetector.1(this);
-  public int mTrackFrameCount;
+  protected int mTrackFrameCount;
   protected Set<Integer> mTriggeredExpressionType = new HashSet();
   protected boolean mUpdateActionCounter;
   protected Map<String, String[]> recordFaceInfo = new HashMap();
@@ -88,15 +89,13 @@ public abstract class FaceDetector
   
   public void clearActionCounter()
   {
-    if (!this.isFaceActionCounterInited) {}
-    for (;;)
-    {
+    if (!this.isFaceActionCounterInited) {
       return;
-      this.mUpdateActionCounter = true;
-      Iterator localIterator = this.mFaceActionCounter.values().iterator();
-      while (localIterator.hasNext()) {
-        ((FaceActionCounter)localIterator.next()).clear();
-      }
+    }
+    this.mUpdateActionCounter = true;
+    Iterator localIterator = this.mFaceActionCounter.values().iterator();
+    while (localIterator.hasNext()) {
+      ((FaceActionCounter)localIterator.next()).clear();
     }
   }
   
@@ -113,7 +112,6 @@ public abstract class FaceDetector
         this.sensorManager.unregisterListener(this.mSensorEventListener);
       }
       this.faceDetectListeners.clear();
-      GenderDetector.getInstance().destroy();
       return;
     }
   }
@@ -126,18 +124,23 @@ public abstract class FaceDetector
   public FaceRangeStatus detectFaceRangeStatus(List<PointF> paramList)
   {
     FaceRangeStatus localFaceRangeStatus = new FaceRangeStatus();
-    if ((paramList == null) || (paramList.size() < 90)) {
-      return localFaceRangeStatus;
-    }
-    localFaceRangeStatus.leftEye = LeftEyeRangeDetector.getInstance().detectRange(paramList);
-    localFaceRangeStatus.rightEye = RightEyeRangeDetector.getInstance().detectRange(paramList);
-    localFaceRangeStatus.mouth = MouthRangeDetector.getInstance().detectRange(paramList);
-    if (AlgoUtils.getDistance((PointF)paramList.get(77), (PointF)paramList.get(69)) / AlgoUtils.getDistance((PointF)paramList.get(65), (PointF)paramList.get(66)) >= 0.6F) {}
-    for (boolean bool = true;; bool = false)
+    if (paramList != null)
     {
+      if (paramList.size() < 90) {
+        return localFaceRangeStatus;
+      }
+      localFaceRangeStatus.leftEye = LeftEyeRangeDetector.getInstance().detectRange(paramList);
+      localFaceRangeStatus.rightEye = RightEyeRangeDetector.getInstance().detectRange(paramList);
+      localFaceRangeStatus.mouth = MouthRangeDetector.getInstance().detectRange(paramList);
+      boolean bool;
+      if (AlgoUtils.getDistance((PointF)paramList.get(77), (PointF)paramList.get(69)) / AlgoUtils.getDistance((PointF)paramList.get(65), (PointF)paramList.get(66)) >= 0.6F) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       localFaceRangeStatus.isKiss = bool;
-      return localFaceRangeStatus;
     }
+    return localFaceRangeStatus;
   }
   
   public abstract boolean doFaceDetect(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
@@ -229,6 +232,11 @@ public abstract class FaceDetector
   
   public abstract RetrieveDataManager.DATA_TYPE getDataType();
   
+  public List<Set<Integer>> getExpressions()
+  {
+    return this.expressions;
+  }
+  
   public Map<Integer, FaceActionCounter> getFaceActionCounter()
   {
     if (this.isFaceActionCounterInited) {
@@ -315,10 +323,23 @@ public abstract class FaceDetector
       FaceInfo localFaceInfo = (FaceInfo)localIterator.next();
       if (!this.recordFaceInfo.containsKey(Long.valueOf(localFaceInfo.faceId)))
       {
-        String str1 = localFaceInfo.faceId + "";
-        String str2 = localFaceInfo.age + "";
-        String str3 = localFaceInfo.gender + "";
-        this.recordFaceInfo.put(localFaceInfo.faceId + "", new String[] { str1, str2, str3 });
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(localFaceInfo.faceId);
+        ((StringBuilder)localObject1).append("");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(localFaceInfo.age);
+        ((StringBuilder)localObject2).append("");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(localFaceInfo.gender);
+        ((StringBuilder)localObject3).append("");
+        localObject3 = ((StringBuilder)localObject3).toString();
+        Map localMap = this.recordFaceInfo;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localFaceInfo.faceId);
+        localStringBuilder.append("");
+        localMap.put(localStringBuilder.toString(), new String[] { localObject1, localObject2, localObject3 });
       }
     }
     return this.recordFaceInfo;
@@ -331,50 +352,49 @@ public abstract class FaceDetector
   
   public int init()
   {
-    if (this.mDetectorThreadHandler == null)
-    {
+    if (this.mDetectorThreadHandler == null) {
       synchronized (mDetectLock)
       {
-        if (this.mDetectorThreadHandler != null) {
-          break label279;
-        }
-        Object localObject1 = PTFaceAttr.PTExpression.values();
-        int j = localObject1.length;
-        int i = 0;
-        while (i < j)
+        if (this.mDetectorThreadHandler == null)
         {
-          arrayOfPTExpression = localObject1[i];
-          this.mFaceActionStatus.put(Integer.valueOf(arrayOfPTExpression.value), Boolean.valueOf(false));
-          i += 1;
-        }
-        PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
-        j = arrayOfPTExpression.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject1 = arrayOfPTExpression[i];
-          Map localMap = this.mFaceActionCounter;
-          int k = ((PTFaceAttr.PTExpression)localObject1).value;
-          if (((PTFaceAttr.PTExpression)localObject1).value != PTFaceAttr.PTExpression.MV_PART_INDEX.value)
+          Object localObject1 = PTFaceAttr.PTExpression.values();
+          int j = localObject1.length;
+          int i = 0;
+          while (i < j)
           {
-            localObject1 = new FaceActionCounter(0, -1L);
+            arrayOfPTExpression = localObject1[i];
+            this.mFaceActionStatus.put(Integer.valueOf(arrayOfPTExpression.value), Boolean.valueOf(false));
+            i += 1;
+          }
+          PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
+          j = arrayOfPTExpression.length;
+          i = 0;
+          while (i < j)
+          {
+            localObject1 = arrayOfPTExpression[i];
+            Map localMap = this.mFaceActionCounter;
+            int k = ((PTFaceAttr.PTExpression)localObject1).value;
+            if (((PTFaceAttr.PTExpression)localObject1).value != PTFaceAttr.PTExpression.MV_PART_INDEX.value) {
+              localObject1 = new FaceActionCounter(0, -1L);
+            } else {
+              localObject1 = new FabbyFaceActionCounter(0, -1L);
+            }
             localMap.put(Integer.valueOf(k), localObject1);
             i += 1;
           }
-          else
-          {
-            localObject1 = new FabbyFaceActionCounter(0, -1L);
-          }
+          this.isFaceActionCounterInited = true;
+          this.sensorManager = ((SensorManager)AEModule.getContext().getSystemService("sensor"));
+          this.accelerometer = this.sensorManager.getDefaultSensor(1);
+          this.sensorManager.registerListener(this.mSensorEventListener, this.accelerometer, 3);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(TAG);
+          ((StringBuilder)localObject1).append(System.currentTimeMillis());
+          this.htName = ((StringBuilder)localObject1).toString();
+          this.mDetectorThreadHandler = new Handler(HandlerThreadManager.getInstance().getHandlerThread(this.htName).getLooper());
         }
+        return 0;
       }
-      this.isFaceActionCounterInited = true;
-      this.sensorManager = ((SensorManager)AEModule.getContext().getSystemService("sensor"));
-      this.accelerometer = this.sensorManager.getDefaultSensor(1);
-      this.sensorManager.registerListener(this.mSensorEventListener, this.accelerometer, 3);
-      this.htName = (TAG + System.currentTimeMillis());
-      this.mDetectorThreadHandler = new Handler(HandlerThreadManager.getInstance().getHandlerThread(this.htName).getLooper());
     }
-    label279:
     return 0;
   }
   
@@ -388,91 +408,67 @@ public abstract class FaceDetector
     if (paramBoolean)
     {
       this.factor = 0L;
-      if (this.mTrackFrameCount <= 7) {}
+      return this.mTrackFrameCount > 7;
     }
-    while (this.factor > 7L)
-    {
-      return true;
-      return false;
+    long l = this.factor;
+    if (l <= 7L) {
+      this.factor = (l + 1L);
     }
-    this.factor += 1L;
     return true;
   }
   
   public boolean needDetectFace(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = true;
-    if (this.detectStage == FaceDetector.DETECT_STAGE.DETECT_NO_FACE)
+    if (this.detectStage == FaceDetector.DetectStage.DETECT_NO_FACE)
     {
       if (paramBoolean1)
       {
-        this.detectStage = FaceDetector.DETECT_STAGE.DETECT_HAS_FACE;
+        this.detectStage = FaceDetector.DetectStage.DETECT_HAS_FACE;
         this.curDetectInterval = -1;
       }
-      if (paramBoolean2) {
-        break label198;
-      }
-      if (this.detectStage != FaceDetector.DETECT_STAGE.DETECT_HAS_FACE) {
-        break label174;
-      }
-      if (this.mTrackFrameCount <= 7) {
-        break label169;
-      }
-      paramBoolean1 = bool;
     }
-    for (;;)
+    else if (this.detectStage == FaceDetector.DetectStage.DETECT_HAS_FACE)
     {
-      if (paramBoolean1) {
-        this.lastFaceDetectTime = System.currentTimeMillis();
-      }
-      return paramBoolean1;
-      if (this.detectStage == FaceDetector.DETECT_STAGE.DETECT_HAS_FACE)
+      if (!paramBoolean1)
       {
-        if (paramBoolean1) {
-          break;
-        }
-        this.detectStage = FaceDetector.DETECT_STAGE.DETECT_LOOKIN_FOR_FACE;
+        this.detectStage = FaceDetector.DetectStage.DETECT_LOOKIN_FOR_FACE;
         this.startLostFaceTime = System.currentTimeMillis();
         this.curDetectInterval = 100;
         this.lastFaceDetectTime = 0L;
-        break;
-      }
-      if (this.detectStage != FaceDetector.DETECT_STAGE.DETECT_LOOKIN_FOR_FACE) {
-        break;
-      }
-      if (paramBoolean1)
-      {
-        this.detectStage = FaceDetector.DETECT_STAGE.DETECT_HAS_FACE;
-        this.curDetectInterval = -1;
-        break;
-      }
-      if (System.currentTimeMillis() - this.startLostFaceTime <= 100000L) {
-        break;
-      }
-      this.detectStage = FaceDetector.DETECT_STAGE.DETECT_NO_FACE;
-      this.curDetectInterval = 800;
-      break;
-      label169:
-      paramBoolean1 = false;
-      continue;
-      label174:
-      paramBoolean1 = bool;
-      if (System.currentTimeMillis() - this.lastFaceDetectTime < this.curDetectInterval)
-      {
-        paramBoolean1 = false;
-        continue;
-        label198:
-        paramBoolean1 = false;
       }
     }
+    else if (this.detectStage == FaceDetector.DetectStage.DETECT_LOOKIN_FOR_FACE) {
+      if (paramBoolean1)
+      {
+        this.detectStage = FaceDetector.DetectStage.DETECT_HAS_FACE;
+        this.curDetectInterval = -1;
+      }
+      else if (System.currentTimeMillis() - this.startLostFaceTime > 100000L)
+      {
+        this.detectStage = FaceDetector.DetectStage.DETECT_NO_FACE;
+        this.curDetectInterval = 800;
+      }
+    }
+    paramBoolean1 = true;
+    if ((paramBoolean2) || (this.detectStage == FaceDetector.DetectStage.DETECT_HAS_FACE ? this.mTrackFrameCount <= 7 : System.currentTimeMillis() - this.lastFaceDetectTime < this.curDetectInterval)) {
+      paramBoolean1 = false;
+    }
+    if (paramBoolean1) {
+      this.lastFaceDetectTime = System.currentTimeMillis();
+    }
+    return paramBoolean1;
   }
   
   public void postJob(Runnable paramRunnable)
   {
-    if ((paramRunnable == null) || (this.mDetectorThreadHandler == null)) {
-      return;
+    if (paramRunnable != null)
+    {
+      Handler localHandler = this.mDetectorThreadHandler;
+      if (localHandler == null) {
+        return;
+      }
+      localHandler.post(paramRunnable);
     }
-    this.mDetectorThreadHandler.post(paramRunnable);
   }
   
   public void registerFaceDetectListener(FaceDetector.FaceDetectListener paramFaceDetectListener)
@@ -482,19 +478,17 @@ public abstract class FaceDetector
   
   public void removeFaceActionCallback(FaceActionCallback paramFaceActionCallback)
   {
-    if (paramFaceActionCallback == null) {}
-    for (;;)
-    {
+    if (paramFaceActionCallback == null) {
       return;
-      int i = 0;
-      while (i < this.mFaceActionCallbacks.size())
-      {
-        Set localSet = (Set)this.mFaceActionCallbacks.valueAt(i);
-        if (localSet != null) {
-          localSet.remove(paramFaceActionCallback);
-        }
-        i += 1;
+    }
+    int i = 0;
+    while (i < this.mFaceActionCallbacks.size())
+    {
+      Set localSet = (Set)this.mFaceActionCallbacks.valueAt(i);
+      if (localSet != null) {
+        localSet.remove(paramFaceActionCallback);
       }
+      i += 1;
     }
   }
   
@@ -504,11 +498,6 @@ public abstract class FaceDetector
   }
   
   public void setDetectEmotion(boolean paramBoolean) {}
-  
-  public void setDetectGender(boolean paramBoolean)
-  {
-    GenderDetector.getInstance().setNeedDetectGender(paramBoolean);
-  }
   
   public void setMaxFaceCount(int paramInt) {}
   
@@ -524,28 +513,26 @@ public abstract class FaceDetector
   
   protected void updateActionCount()
   {
-    if (!this.mUpdateActionCounter) {}
-    for (;;)
-    {
+    if (!this.mUpdateActionCounter) {
       return;
-      long l = System.currentTimeMillis();
-      PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
-      int j = arrayOfPTExpression.length;
-      int i = 0;
-      while (i < j)
+    }
+    long l = System.currentTimeMillis();
+    PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
+    int j = arrayOfPTExpression.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = arrayOfPTExpression[i];
+      if (this.mTriggeredExpressionType.contains(Integer.valueOf(((PTFaceAttr.PTExpression)localObject).value)))
       {
-        Object localObject = arrayOfPTExpression[i];
-        if (this.mTriggeredExpressionType.contains(Integer.valueOf(((PTFaceAttr.PTExpression)localObject).value)))
+        localObject = (FaceActionCounter)this.mFaceActionCounter.get(Integer.valueOf(((PTFaceAttr.PTExpression)localObject).value));
+        if ((localObject != null) && (l - ((FaceActionCounter)localObject).updateTime > 1000L))
         {
-          localObject = (FaceActionCounter)this.mFaceActionCounter.get(Integer.valueOf(((PTFaceAttr.PTExpression)localObject).value));
-          if ((localObject != null) && (l - ((FaceActionCounter)localObject).updateTime > 1000L))
-          {
-            ((FaceActionCounter)localObject).count += 1;
-            ((FaceActionCounter)localObject).updateTime = l;
-          }
+          ((FaceActionCounter)localObject).count += 1;
+          ((FaceActionCounter)localObject).updateTime = l;
         }
-        i += 1;
       }
+      i += 1;
     }
   }
   
@@ -569,9 +556,35 @@ public abstract class FaceDetector
     }
   }
   
+  public void updateAllFaceExpression(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.expressions = new ArrayList();
+      int j = 0;
+      int i = 0;
+      while (i < this.faceInfos.size())
+      {
+        this.expressions.add(new HashSet());
+        i += 1;
+      }
+      PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
+      int k = arrayOfPTExpression.length;
+      i = j;
+      while (i < k)
+      {
+        PTFaceAttr.PTExpression localPTExpression = arrayOfPTExpression[i];
+        this.mExpressionDetectorObject.detectAllFaceExpression(this.expressions, localPTExpression.value);
+        i += 1;
+      }
+    }
+    if (this.clearFaceQueue) {
+      this.mExpressionDetectorObject.clearFaceQueue();
+    }
+  }
+  
   protected void updatePointsAndAngles(FaceStatus[] paramArrayOfFaceStatus)
   {
-    int i = 0;
     try
     {
       this.faceInfos.clear();
@@ -579,6 +592,7 @@ public abstract class FaceDetector
         return;
       }
       int j = paramArrayOfFaceStatus.length;
+      int i = 0;
       while (i < j)
       {
         FaceStatus localFaceStatus = paramArrayOfFaceStatus[i];
@@ -587,13 +601,33 @@ public abstract class FaceDetector
         System.arraycopy(localFaceStatus.xys, 134, localFaceInfo.origFacePoints, 0, 42);
         System.arraycopy(localFaceStatus.xys, 176, localFaceInfo.origFacePoints, 176, 12);
         System.arraycopy(localFaceStatus.pointVis, 0, localFaceInfo.origPointsVis, 0, localFaceStatus.pointVis.length);
+        if (localFaceStatus.xys256 != null)
+        {
+          localFaceInfo.orig256FacePoints = new float[localFaceStatus.xys256.length];
+          System.arraycopy(localFaceStatus.xys256, 0, localFaceInfo.orig256FacePoints, 0, localFaceInfo.orig256FacePoints.length);
+        }
         localFaceInfo.points = YoutuPointsUtil.transformYTPointsToPtuPoints(localFaceStatus.xys);
         localFaceInfo.irisPoints = YoutuPointsUtil.getIrisPoints(localFaceStatus.xys);
         localFaceInfo.pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(localFaceStatus.pointVis);
         localFaceInfo.pointsVis = YoutuPointsUtil.smoothYTPointsVisPoints(localFaceInfo.pointsVis);
-        localFaceInfo.angles[0] = ((float)(localFaceStatus.pitch * 3.141592653589793D / 180.0D) * -1.0F);
-        localFaceInfo.angles[1] = ((float)(localFaceStatus.yaw * 3.141592653589793D / 180.0D) * -1.0F);
-        localFaceInfo.angles[2] = ((float)(localFaceStatus.roll * 3.141592653589793D / 180.0D) * -1.0F);
+        float[] arrayOfFloat = localFaceInfo.angles;
+        float f = localFaceStatus.pitch;
+        double d = f;
+        Double.isNaN(d);
+        f = (float)(d * 3.141592653589793D / 180.0D);
+        arrayOfFloat[0] = (f * -1.0F);
+        arrayOfFloat = localFaceInfo.angles;
+        f = localFaceStatus.yaw;
+        d = f;
+        Double.isNaN(d);
+        f = (float)(d * 3.141592653589793D / 180.0D);
+        arrayOfFloat[1] = (f * -1.0F);
+        arrayOfFloat = localFaceInfo.angles;
+        f = localFaceStatus.roll;
+        d = f;
+        Double.isNaN(d);
+        f = (float)(d * 3.141592653589793D / 180.0D);
+        arrayOfFloat[2] = (f * -1.0F);
         localFaceInfo.rect = localFaceStatus.faceRect;
         localFaceInfo.scale = localFaceStatus.scale;
         localFaceInfo.pitch = localFaceStatus.pitch;
@@ -611,40 +645,38 @@ public abstract class FaceDetector
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramArrayOfFaceStatus;
+    }
   }
   
   protected void updateSmileEmotion() {}
   
   protected void updateTriggerExpression()
   {
-    int j = 0;
     this.mTriggeredExpressionType.clear();
-    PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
-    int m = arrayOfPTExpression.length;
     int i = 0;
-    while (i < m)
+    this.clearFaceQueue = false;
+    PTFaceAttr.PTExpression[] arrayOfPTExpression = PTFaceAttr.PTExpression.values();
+    int j = arrayOfPTExpression.length;
+    while (i < j)
     {
       PTFaceAttr.PTExpression localPTExpression = arrayOfPTExpression[i];
-      int k = j;
       if (this.mExpressionDetectorObject.detectExpression(localPTExpression.value))
       {
         this.mTriggeredExpressionType.add(Integer.valueOf(localPTExpression.value));
-        k = j;
         if (ExpressionDetectorObject.needSaveDetectedExpression(localPTExpression.value)) {
-          k = 1;
+          this.clearFaceQueue = true;
         }
       }
       i += 1;
-      j = k;
-    }
-    if (j != 0) {
-      this.mExpressionDetectorObject.clearFaceQueue();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.facedetect.FaceDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,10 @@ public final class e
   static void a(zzad paramzzad, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzad.Hc);
-    c.a(paramParcel, 2, paramzzad.fX(), paramInt);
+    c.c(paramParcel, 1, paramzzad.IR);
+    c.a(paramParcel, 2, paramzzad.gi(), paramInt);
     c.c(paramParcel, 3, paramzzad.getSessionId());
-    c.a(paramParcel, 4, paramzzad.gU(), paramInt);
+    c.a(paramParcel, 4, paramzzad.he(), paramInt);
     c.v(paramParcel, i);
   }
 }

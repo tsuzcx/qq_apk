@@ -4,51 +4,48 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjlg;
 
 public class VideoInfo$VideoRemark
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoRemark> CREATOR = new bjlg();
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c = "";
-  public String d = "";
-  
-  public VideoInfo$VideoRemark()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return this.c;
-    }
-    return this.jdField_b_of_type_JavaLangString + " -- " + this.c;
-  }
+  public static final Parcelable.Creator<VideoRemark> CREATOR = new VideoInfo.VideoRemark.1();
+  public int actiontype = 0;
+  public String actionurl = "";
+  public String icondesc = "";
+  public String iconurl = "";
+  public int orgwebsite = 0;
+  public String remark = "";
   
   public int describeContents()
   {
     return 0;
   }
   
+  public String getDisplayRemark()
+  {
+    if (TextUtils.isEmpty(this.icondesc)) {
+      return this.remark;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.icondesc);
+    localStringBuilder.append(" -- ");
+    localStringBuilder.append(this.remark);
+    return localStringBuilder.toString();
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.c);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.d);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeString(this.iconurl);
+    paramParcel.writeString(this.icondesc);
+    paramParcel.writeString(this.remark);
+    paramParcel.writeInt(this.actiontype);
+    paramParcel.writeString(this.actionurl);
+    paramParcel.writeInt(this.orgwebsite);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo.VideoRemark
  * JD-Core Version:    0.7.0.1
  */

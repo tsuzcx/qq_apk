@@ -17,16 +17,21 @@ class el$1
       if (el.a(this.mF).size() > 0)
       {
         Iterator localIterator = el.a(this.mF).dK().entrySet().iterator();
-        if (localIterator.hasNext()) {
+        while (localIterator.hasNext()) {
           ((el.a)((Map.Entry)localIterator.next()).getValue()).mK = true;
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.el.1
  * JD-Core Version:    0.7.0.1
  */

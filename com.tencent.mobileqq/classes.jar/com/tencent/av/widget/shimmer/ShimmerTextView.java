@@ -7,43 +7,57 @@ import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import mxu;
-import mxv;
-import mxw;
 
 public class ShimmerTextView
   extends TextView
+  implements IShimmer
 {
-  int jdField_a_of_type_Int = 0;
-  private mxv jdField_a_of_type_Mxv;
+  int a = 0;
+  private ShimmerViewHelper b;
   
   public ShimmerTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Mxv = new mxv(this, getPaint(), null);
-    this.jdField_a_of_type_Mxv.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new mxu(this));
+    this.b = new ShimmerViewHelper(this, getPaint(), null);
+    this.b.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new ShimmerTextView.MyAccessibilityDelegate(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Mxv = new mxv(this, getPaint(), paramAttributeSet);
-    this.jdField_a_of_type_Mxv.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new mxu(this));
+    this.b = new ShimmerViewHelper(this, getPaint(), paramAttributeSet);
+    this.b.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new ShimmerTextView.MyAccessibilityDelegate(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Mxv = new mxv(this, getPaint(), paramAttributeSet);
-    this.jdField_a_of_type_Mxv.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new mxu(this));
+    this.b = new ShimmerViewHelper(this, getPaint(), paramAttributeSet);
+    this.b.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new ShimmerTextView.MyAccessibilityDelegate(this));
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Mxv.a();
+    ShimmerViewHelper localShimmerViewHelper = this.b;
+    return (localShimmerViewHelper != null) && (localShimmerViewHelper.b());
+  }
+  
+  public float getGradientX()
+  {
+    return this.b.a();
+  }
+  
+  public int getPrimaryColor()
+  {
+    return this.b.c();
+  }
+  
+  public int getReflectionColor()
+  {
+    return this.b.d();
   }
   
   public void onAttachedToWindow()
@@ -61,68 +75,72 @@ public class ShimmerTextView
   @SuppressLint({"WrongCall", "DrawAllocation"})
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Mxv != null) {
-      this.jdField_a_of_type_Mxv.b();
+    ShimmerViewHelper localShimmerViewHelper = this.b;
+    if (localShimmerViewHelper != null) {
+      localShimmerViewHelper.f();
     }
     super.onDraw(paramCanvas);
     if (a()) {
-      postDelayed(new ShimmerTextView.onDrawRunnable(this), 40L);
+      postDelayed(new ShimmerTextView.OnDrawRunnable(this), 40L);
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Mxv != null) {
-      this.jdField_a_of_type_Mxv.a();
+    ShimmerViewHelper localShimmerViewHelper = this.b;
+    if (localShimmerViewHelper != null) {
+      localShimmerViewHelper.e();
     }
   }
   
-  public void setAnimationSetupCallback(mxw parammxw)
+  public void setAnimationSetupCallback(ShimmerViewHelper.AnimationSetupCallback paramAnimationSetupCallback)
   {
-    this.jdField_a_of_type_Mxv.a(parammxw);
+    this.b.a(paramAnimationSetupCallback);
   }
   
   public void setGradientX(float paramFloat)
   {
-    this.jdField_a_of_type_Mxv.a(paramFloat);
+    this.b.a(paramFloat);
   }
   
   public void setPrimaryColor(int paramInt)
   {
-    this.jdField_a_of_type_Mxv.a(paramInt);
+    this.b.a(paramInt);
   }
   
   public void setReflectionColor(int paramInt)
   {
-    this.jdField_a_of_type_Mxv.b(paramInt);
+    this.b.b(paramInt);
   }
   
   public void setShimmering(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Mxv.a(paramBoolean);
+    this.b.a(paramBoolean);
     super.postInvalidate();
   }
   
   public void setTextColor(int paramInt)
   {
     super.setTextColor(paramInt);
-    if (this.jdField_a_of_type_Mxv != null) {
-      this.jdField_a_of_type_Mxv.a(getCurrentTextColor());
+    ShimmerViewHelper localShimmerViewHelper = this.b;
+    if (localShimmerViewHelper != null) {
+      localShimmerViewHelper.a(getCurrentTextColor());
     }
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
     super.setTextColor(paramColorStateList);
-    if (this.jdField_a_of_type_Mxv != null) {
-      this.jdField_a_of_type_Mxv.a(getCurrentTextColor());
+    paramColorStateList = this.b;
+    if (paramColorStateList != null) {
+      paramColorStateList.a(getCurrentTextColor());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.shimmer.ShimmerTextView
  * JD-Core Version:    0.7.0.1
  */

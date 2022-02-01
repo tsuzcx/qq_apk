@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bnd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ald" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/jh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jqb" android:paddingLeft="@dimen/ajx" android:paddingRight="@dimen/ajx" android:layout_width="fill_parent" android:layout_height="@dimen/alg">
+            <TextView android:textSize="@dimen/alf" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:id="@id/title" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/alf" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/ezq" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/n5g" android:drawableRight="@drawable/skin_unite_search_common_right_arrow" android:drawablePadding="5.0dip" android:alpha="0.8" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

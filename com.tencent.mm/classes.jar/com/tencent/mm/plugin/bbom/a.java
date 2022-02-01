@@ -1,86 +1,126 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.g.a.hj;
-import com.tencent.mm.g.a.tg;
-import com.tencent.mm.model.av;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.autogen.a.eq;
+import com.tencent.mm.autogen.a.er;
+import com.tencent.mm.autogen.a.la;
+import com.tencent.mm.autogen.a.qt;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bt;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.modelstat.o;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelmulti.u;
+import com.tencent.mm.modelmulti.v;
+import com.tencent.mm.modelsimple.h;
+import com.tencent.mm.plugin.auth.a.b;
+import com.tencent.mm.pluginsdk.model.app.as;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.protocal.j.h;
 import com.tencent.mm.protocal.j.i;
-import com.tencent.mm.protocal.protobuf.ar;
-import com.tencent.mm.protocal.protobuf.bgg;
-import com.tencent.mm.protocal.protobuf.cmm;
-import com.tencent.mm.protocal.v.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.protocal.protobuf.ba;
+import com.tencent.mm.protocal.protobuf.dug;
+import com.tencent.mm.protocal.protobuf.frg;
+import com.tencent.mm.protocal.x.b;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class a
-  implements com.tencent.mm.plugin.auth.a.a
+  implements b
 {
-  public final void a(j.h paramh, j.i parami, boolean paramBoolean)
+  public final void onAuthResponse(j.h paramh, j.i parami, boolean paramBoolean)
   {
-    AppMethodBeat.i(18229);
-    if ((parami.wil.xWl & 0x2) != 0)
+    AppMethodBeat.i(22330);
+    if ((parami.YxP.abQP & 0x2) != 0)
     {
-      paramh = parami.wil.xWn;
+      paramh = parami.YxP.abQR;
       if (!paramBoolean)
       {
-        aw.aaz();
-        c.clearPluginData(paramh.wmt);
+        bh.bCz();
+        c.clearPluginData(paramh.YBX);
       }
-      parami = b.qS(r.Zn());
-      av.flM.po(parami);
-      if (paramh.wmq != 0)
+      parami = com.tencent.mm.modelavatar.d.Lz(z.bAM());
+      bg.okT.JD(parami);
+      if (paramh.YBU != 0)
       {
-        aw.aaz();
-        c.YI().cO(paramh.wmq + "@qqim", 3);
+        bh.bCz();
+        c.bzJ().gd(paramh.YBU + "@qqim", 3);
       }
-      b.d(paramh.wmq, 3);
+      com.tencent.mm.modelavatar.d.n(paramh.YBU, 3);
+      if (!paramBoolean) {
+        break label155;
+      }
+      paramh = new la();
+      paramh.hMJ.hMK = false;
+      paramh.publish();
     }
     for (;;)
     {
-      o.run(1);
-      if (!paramBoolean) {
-        break;
-      }
-      paramh = new hj();
-      paramh.cwv.cww = false;
-      com.tencent.mm.sdk.b.a.ymk.l(paramh);
-      paramh = new tg();
-      paramh.cJH.cJI = true;
-      com.tencent.mm.sdk.b.a.ymk.l(paramh);
-      AppMethodBeat.o(18229);
+      com.tencent.mm.plugin.report.service.l.kK(2, 8);
+      AppMethodBeat.o(22330);
       return;
-      ab.w("MicroMsg.BigBallAuthHandle", "summerauth updateProfile acctsect not set!");
+      Log.w("MicroMsg.BigBallAuthHandle", "summerauth updateProfile acctsect not set!");
+      break;
+      label155:
+      bh.baH().postToWorker(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(22328);
+          bt.JU("ver" + com.tencent.mm.protocal.d.Yxh);
+          as.gxp().addAll(com.tencent.mm.plugin.openapi.a.gxn().iIx());
+          if (EventCenter.instance == null)
+          {
+            Log.e("MicroMsg.BigBallAuthHandle", "EventPool is null.");
+            AppMethodBeat.o(22328);
+            return;
+          }
+          Object localObject = new la();
+          ((la)localObject).hMJ.hMK = true;
+          ((la)localObject).publish();
+          new eq().publish();
+          localObject = new er();
+          ((er)localObject).hEH.hEG = true;
+          ((er)localObject).publish();
+          new qt().publish();
+          h.hl(true);
+          u.bKY().wG(3);
+          Log.i("MicroMsg.BigBallAuthHandle", "summerbadcr triggerSync bgfg after manual auth");
+          AppMethodBeat.o(22328);
+        }
+        
+        public final String toString()
+        {
+          AppMethodBeat.i(22329);
+          String str = super.toString() + "|onGYNetEnd2";
+          AppMethodBeat.o(22329);
+          return str;
+        }
+      });
     }
-    aw.RO().ac(new a.1(this));
-    AppMethodBeat.o(18229);
   }
   
-  public final void a(v.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
+  public final void onRegResponse(x.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
-    AppMethodBeat.i(18230);
-    paramString1 = b.qS(r.Zn());
-    av.flM.po(paramString1);
-    b.d(paramInt1, 3);
-    aw.aaz();
-    c.YI().cO(paramb.wiP.xvq, 2);
+    AppMethodBeat.i(22331);
+    paramString1 = com.tencent.mm.modelavatar.d.Lz(z.bAM());
+    bg.okT.JD(paramString1);
+    com.tencent.mm.modelavatar.d.n(paramInt1, 3);
+    bh.bCz();
+    c.bzJ().gd(paramb.YyC.abaa, 2);
     if (paramInt1 != 0)
     {
-      aw.aaz();
-      c.YI().cO(paramInt1 + "@qqim", 3);
+      bh.bCz();
+      c.bzJ().gd(paramInt1 + "@qqim", 3);
     }
-    AppMethodBeat.o(18230);
+    AppMethodBeat.o(22331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.a
  * JD-Core Version:    0.7.0.1
  */

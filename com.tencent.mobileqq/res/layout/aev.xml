@@ -8,7 +8,7 @@
                 <ImageView android:layout_width="7.0dip" android:layout_height="7.0dip" android:src="@drawable/skin_tips_dot" />
             </RelativeLayout>
         </RelativeLayout>
-        <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:id="@id/d1y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q22" android:maxEms="5" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/e3y" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_black2" android:id="@id/d1y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q22" android:maxEms="5" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/e3y" android:layout_centerHorizontal="true" />
     </RelativeLayout>
     <ImageView android:id="@id/dgn" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_alignParentTop="true" />
 </RelativeLayout>

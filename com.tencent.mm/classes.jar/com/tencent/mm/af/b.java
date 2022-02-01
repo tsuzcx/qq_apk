@@ -1,92 +1,55 @@
 package com.tencent.mm.af;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.d;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Map;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.protocal.protobuf.esc;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.d.d;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlinx.coroutines.p;
+import kotlinx.coroutines.q;
 
-public class b
-  extends f
+@Metadata(d1={""}, d2={"await", "Response", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "Lcom/tencent/mm/modelbase/Cgi;", "(Lcom/tencent/mm/modelbase/Cgi;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "mmkernel_release"}, k=2, mv={1, 5, 1}, xi=48)
+public final class b
 {
-  public String cEg;
-  public String ffA;
-  public String ffB;
-  public String ffC;
-  public String ffD;
-  public String ffE;
-  public String ffF;
-  public String ffG;
-  public String ffH;
-  public String ffI;
-  public String ffJ;
-  public String ffK;
-  public String ffL;
-  public String ffM;
-  public String ffN;
-  public String ffO;
-  public String ffP;
-  public String ffQ;
-  public String ffR;
-  public String ffS;
-  public String ffT;
-  public String ffU;
-  public String ffy;
-  public String ffz;
-  
-  private static String d(Map<String, String> paramMap, String paramString)
+  public static final <Response extends esc> Object a(com.tencent.mm.am.b<Response> paramb, d<? super Response> paramd)
   {
-    AppMethodBeat.i(16186);
-    paramMap = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpaythirdinfo.".concat(String.valueOf(paramString))));
-    AppMethodBeat.o(16186);
-    return paramMap;
-  }
-  
-  public final f Yk()
-  {
-    AppMethodBeat.i(16184);
-    b localb = new b();
-    AppMethodBeat.o(16184);
-    return localb;
-  }
-  
-  public final void a(Map<String, String> paramMap, j.b paramb)
-  {
-    AppMethodBeat.i(16185);
-    if (paramb.type == 2002)
-    {
-      this.ffy = d(paramMap, "templateid");
-      this.ffz = d(paramMap, "senderurl");
-      this.ffA = d(paramMap, "sendernativeurl");
-      this.ffB = d(paramMap, "receiverurl");
-      this.ffC = d(paramMap, "receivernativeurl");
-      this.ffD = d(paramMap, "iconurl");
-      this.ffE = d(paramMap, "miniiconurl");
-      this.ffF = d(paramMap, "backgroundurl");
-      this.ffG = d(paramMap, "backgroundname");
-      this.ffH = d(paramMap, "backgroundcolor");
-      this.ffI = d(paramMap, "receivertitle");
-      this.ffJ = d(paramMap, "sendertitle");
-      this.ffK = d(paramMap, "titlecolor");
-      this.ffL = d(paramMap, "senderscenetext");
-      this.ffM = d(paramMap, "receiverscenetext");
-      this.ffN = d(paramMap, "senderdes");
-      this.ffO = d(paramMap, "receiverdes");
-      this.ffP = d(paramMap, "descolor");
-      this.ffQ = d(paramMap, "sceneid");
-      this.cEg = d(paramMap, "paymsgid");
-      this.ffR = d(paramMap, "senderbackgroundname");
-      this.ffS = d(paramMap, "senderbackgroundurl");
-      this.ffT = d(paramMap, "receiverbackgroundname");
-      this.ffU = d(paramMap, "receiverbackgroundurl");
+    AppMethodBeat.i(231712);
+    q localq = new q(kotlin.d.a.b.au(paramd), 1);
+    localq.kBA();
+    p localp = (p)localq;
+    localp.bg((kotlin.g.a.b)new a(paramb.bFJ().g((com.tencent.mm.vending.c.a)new b(localp))));
+    paramb = localq.getResult();
+    if (paramb == kotlin.d.a.a.aiwj) {
+      s.u(paramd, "frame");
     }
-    AppMethodBeat.o(16185);
+    AppMethodBeat.o(231712);
+    return paramb;
   }
   
-  public final void b(StringBuilder paramStringBuilder, j.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Response", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.b<Throwable, ah>
+  {
+    a(f<ah> paramf)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Response", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "cgiBack", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a
+  {
+    b(p<? super Response> paramp) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.af.b
  * JD-Core Version:    0.7.0.1
  */

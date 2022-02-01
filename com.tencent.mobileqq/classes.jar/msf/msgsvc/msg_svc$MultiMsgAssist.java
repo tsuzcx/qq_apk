@@ -25,13 +25,15 @@ public final class msg_svc$MultiMsgAssist
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 56, 64 }, new String[] { "repeated_routing", "msg_use", "uint64_temp_id", "uint64_vedio_len", "bytes_redbag_id", "uint64_redbag_amount", "uint32_has_readbag", "uint32_has_vedio" }, new Object[] { null, Integer.valueOf(1), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, MultiMsgAssist.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 56, 64 }, new String[] { "repeated_routing", "msg_use", "uint64_temp_id", "uint64_vedio_len", "bytes_redbag_id", "uint64_redbag_amount", "uint32_has_readbag", "uint32_has_vedio" }, new Object[] { null, Integer.valueOf(1), localLong, localLong, localByteStringMicro, localLong, localInteger, localInteger }, MultiMsgAssist.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.MultiMsgAssist
  * JD-Core Version:    0.7.0.1
  */

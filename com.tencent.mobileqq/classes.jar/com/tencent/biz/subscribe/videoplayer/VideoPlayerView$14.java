@@ -1,61 +1,29 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import java.util.TimerTask;
-import vxe;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class VideoPlayerView$14
-  extends TimerTask
+  implements View.OnClickListener
 {
   VideoPlayerView$14(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    double d;
-    float f;
-    if (this.this$0.a() != null)
+    if (VideoPlayerView.l(this.a) != null)
     {
-      d = this.this$0.a().a();
-      f = (float)this.this$0.a().b();
-      if (f != 0.0F) {
-        break label177;
-      }
-      this.this$0.a.setProgress(0);
+      VideoPlayerView.l(this.a).c();
+      VideoPlayerView.r(this.a);
+      VideoPlayerView.d(this.a, false);
     }
-    for (;;)
-    {
-      if ((!VideoPlayerView.a(this.this$0)) && (d != 0.0D))
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 1;
-        localMessage.arg1 = ((int)d);
-        localMessage.arg2 = ((int)f);
-        localMessage.obj = Boolean.valueOf(true);
-        this.this$0.a().sendMessage(localMessage);
-      }
-      if ((VideoPlayerView.e(this.this$0)) || (VideoPlayerView.f(this.this$0)))
-      {
-        VideoPlayerView.a(this.this$0, 0);
-        VideoPlayerView.e(this.this$0, false);
-      }
-      if (VideoPlayerView.a(this.this$0) <= 120) {
-        break;
-      }
-      this.this$0.a().sendEmptyMessage(2);
-      return;
-      label177:
-      if ((!VideoPlayerView.a(this.this$0)) && (d != 0.0D)) {
-        this.this$0.a.setProgress((int)(this.this$0.a.getMax() * (d / f)));
-      }
-    }
-    VideoPlayerView.b(this.this$0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.14
  * JD-Core Version:    0.7.0.1
  */

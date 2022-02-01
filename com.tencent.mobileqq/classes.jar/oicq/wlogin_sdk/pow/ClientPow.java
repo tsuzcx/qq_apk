@@ -1,9 +1,12 @@
 package oicq.wlogin_sdk.pow;
 
+import android.util.Log;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import oicq.wlogin_sdk.report.event.b;
+import oicq.wlogin_sdk.report.event.c;
 import oicq.wlogin_sdk.tools.util;
 
 public class ClientPow
@@ -26,38 +29,32 @@ public class ClientPow
   
   private int a(a parama)
   {
-    long l1 = 0L;
     byte[] arrayOfByte1 = new byte[32];
     byte[] arrayOfByte2 = new byte[parama.h.length];
     System.arraycopy(parama.h, 0, arrayOfByte2, 0, parama.h.length);
     Object localObject = new BigInteger(arrayOfByte2);
     long l2 = 0L;
-    for (;;)
+    long l3;
+    for (long l1 = 0L;; l1 += System.currentTimeMillis() - l3)
     {
-      long l3 = System.currentTimeMillis();
-      if (parama.c == 1)
-      {
-        a(arrayOfByte2, arrayOfByte1);
-        l2 += System.currentTimeMillis() - l3;
-        if (Arrays.equals(arrayOfByte1, parama.j))
-        {
-          localObject = Arrays.copyOf(arrayOfByte2, arrayOfByte2.length);
-          parama.n = ((byte[])localObject);
-          parama.m = localObject.length;
-          util.LOGI("sha_cost:" + l2 + " bignum_cost:" + l1, "");
-          return parama.p;
-        }
+      l3 = System.currentTimeMillis();
+      if (parama.c != 1) {
+        break;
       }
-      else
+      a(arrayOfByte2, arrayOfByte1);
+      l2 += System.currentTimeMillis() - l3;
+      if (Arrays.equals(arrayOfByte1, parama.j))
       {
-        if (parama.c == 2)
-        {
-          c(arrayOfByte2);
-          util.LOGI("hash func not support sm3", "");
-          return -1;
-        }
-        util.LOGI("error hash func", "");
-        return -1;
+        localObject = Arrays.copyOf(arrayOfByte2, arrayOfByte2.length);
+        parama.n = ((byte[])localObject);
+        parama.m = localObject.length;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sha_cost:");
+        ((StringBuilder)localObject).append(l2);
+        ((StringBuilder)localObject).append(" bignum_cost:");
+        ((StringBuilder)localObject).append(l1);
+        util.LOGI(((StringBuilder)localObject).toString(), "");
+        return parama.p;
       }
       parama.p += 1;
       l3 = System.currentTimeMillis();
@@ -65,32 +62,42 @@ public class ClientPow
       byte[] arrayOfByte3 = ((BigInteger)localObject).toByteArray();
       if (arrayOfByte3.length > arrayOfByte2.length)
       {
-        util.LOGI("big number too large len:" + arrayOfByte3.length, "");
+        parama = new StringBuilder();
+        parama.append("big number too large len:");
+        parama.append(arrayOfByte3.length);
+        util.LOGI(parama.toString(), "");
         return -1;
       }
       System.arraycopy(arrayOfByte3, 0, arrayOfByte2, 0, arrayOfByte3.length);
-      l1 += System.currentTimeMillis() - l3;
     }
+    if (parama.c == 2)
+    {
+      c(arrayOfByte2);
+      util.LOGI("hash func not support sm3", "");
+      return -1;
+    }
+    util.LOGI("error hash func", "");
+    return -1;
   }
   
   private int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0)) {
-      return 1;
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0)) {
+      try
+      {
+        MessageDigest localMessageDigest = MessageDigest.getInstance("SHA-256");
+        localMessageDigest.update(paramArrayOfByte1);
+        paramArrayOfByte1 = localMessageDigest.digest();
+        System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 0, paramArrayOfByte1.length);
+        return 0;
+      }
+      catch (NoSuchAlgorithmException paramArrayOfByte1)
+      {
+        util.LOGI(paramArrayOfByte1.toString(), "");
+        return 2;
+      }
     }
-    try
-    {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("SHA-256");
-      localMessageDigest.update(paramArrayOfByte1);
-      paramArrayOfByte1 = localMessageDigest.digest();
-      System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 0, paramArrayOfByte1.length);
-      return 0;
-    }
-    catch (NoSuchAlgorithmException paramArrayOfByte1)
-    {
-      util.LOGI(paramArrayOfByte1.toString(), "");
-    }
-    return 2;
+    return 1;
   }
   
   private int b(a parama)
@@ -99,40 +106,37 @@ public class ClientPow
     byte[] arrayOfByte2 = new byte[parama.h.length];
     System.arraycopy(parama.h, 0, arrayOfByte2, 0, parama.h.length);
     Object localObject = new BigInteger(arrayOfByte2);
-    for (;;)
+    while (parama.c == 1)
     {
-      if (parama.c == 1)
+      a(arrayOfByte2, arrayOfByte1);
+      if (a(arrayOfByte1, parama.e) == 0)
       {
-        a(arrayOfByte2, arrayOfByte1);
-        if (a(arrayOfByte1, parama.d) == 0)
-        {
-          localObject = Arrays.copyOf(arrayOfByte2, arrayOfByte2.length);
-          parama.n = ((byte[])localObject);
-          parama.m = localObject.length;
-          return parama.p;
-        }
-      }
-      else
-      {
-        if (parama.c == 2)
-        {
-          c(arrayOfByte2);
-          util.LOGI("hash func not support sm3", "");
-          return -1;
-        }
-        util.LOGI("error hash func", "");
-        return -1;
+        localObject = Arrays.copyOf(arrayOfByte2, arrayOfByte2.length);
+        parama.n = ((byte[])localObject);
+        parama.m = localObject.length;
+        return parama.p;
       }
       parama.p += 1;
       localObject = ((BigInteger)localObject).add(BigInteger.ONE);
       byte[] arrayOfByte3 = ((BigInteger)localObject).toByteArray();
       if (arrayOfByte3.length > arrayOfByte2.length)
       {
-        util.LOGI("big number too large len:" + arrayOfByte3.length, "");
+        parama = new StringBuilder();
+        parama.append("big number too large len:");
+        parama.append(arrayOfByte3.length);
+        util.LOGI(parama.toString(), "");
         return -1;
       }
       System.arraycopy(arrayOfByte3, 0, arrayOfByte2, 0, arrayOfByte3.length);
     }
+    if (parama.c == 2)
+    {
+      c(arrayOfByte2);
+      util.LOGI("hash func not support sm3", "");
+      return -1;
+    }
+    util.LOGI("error hash func", "");
+    return -1;
   }
   
   private byte[] c(byte[] paramArrayOfByte)
@@ -161,39 +165,66 @@ public class ClientPow
   public byte[] a(byte[] paramArrayOfByte)
   {
     Object localObject3 = new byte[0];
-    Object localObject1 = localObject3;
-    if (this.a) {}
-    try
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      localObject1 = nativeGetPow(paramArrayOfByte);
-      StringBuilder localStringBuilder = new StringBuilder().append("nativeGetPow ");
-      if (localObject1 != null)
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(util.LOG_TAG_POW);
+      ((StringBuilder)localObject1).append("_calPow");
+      StringBuffer localStringBuffer = new StringBuffer(((StringBuilder)localObject1).toString());
+      localStringBuffer.append(",inBuf=");
+      localStringBuffer.append(util.getByteLength(paramArrayOfByte));
+      localObject1 = localObject3;
+      Object localObject2;
+      if (this.a)
       {
-        localObject3 = Integer.valueOf(localObject1.length);
-        util.LOGI(localObject3, "");
-        if (localObject1 != null)
+        try
         {
-          localObject3 = localObject1;
-          if (localObject1.length != 0) {}
+          localObject1 = nativeGetPow(paramArrayOfByte);
         }
-        else
+        catch (Exception localException)
         {
-          localObject3 = b(paramArrayOfByte);
-          util.LOGI("calPowJavaImpl ret:" + localObject3.length, "");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(util.LOG_TAG_POW);
+          localStringBuilder.append("nativeGetPow");
+          util.printThrowable(localException, localStringBuilder.toString());
+          c.a(new b("wtlogin_pow_error", "c_error", Log.getStackTraceString(localException)));
+          localObject2 = localObject3;
         }
-        return localObject3;
+        localStringBuffer.append(",native=");
+        localStringBuffer.append(util.getByteLength((byte[])localObject2));
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (localObject2 != null)
       {
-        util.LOGI(localException.toString(), "");
-        Object localObject2 = localObject3;
-        continue;
-        localObject3 = "0";
+        localObject3 = localObject2;
+        if (localObject2.length != 0) {}
       }
+      else
+      {
+        try
+        {
+          paramArrayOfByte = b(paramArrayOfByte);
+          localObject2 = paramArrayOfByte;
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(util.LOG_TAG_POW);
+          ((StringBuilder)localObject3).append("calPowJavaImpl");
+          util.printThrowable(paramArrayOfByte, ((StringBuilder)localObject3).toString());
+          c.a(new b("wtlogin_pow_error", "java_error", Log.getStackTraceString(paramArrayOfByte)));
+        }
+        localStringBuffer.append(",java=");
+        localStringBuffer.append(util.getByteLength((byte[])localObject2));
+        localObject3 = localObject2;
+      }
+      util.LOGI(localStringBuffer.toString(), "");
+      return localObject3;
     }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append(util.LOG_TAG_POW);
+    paramArrayOfByte.append(" calPow inBuf is empty");
+    util.LOGI(paramArrayOfByte.toString(), "");
+    return localObject3;
   }
   
   public byte[] b(byte[] paramArrayOfByte)
@@ -203,40 +234,50 @@ public class ClientPow
     int i = locala.a(paramArrayOfByte);
     if (i != 0)
     {
-      util.LOGI("pow buf to st failed.ret=" + i, "");
-      paramArrayOfByte = arrayOfByte;
-      return paramArrayOfByte;
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("pow buf to st failed.ret=");
+      paramArrayOfByte.append(i);
+      util.LOGI(paramArrayOfByte.toString(), "");
+      return arrayOfByte;
     }
     long l = System.currentTimeMillis();
     locala.p = 0;
     locala.o = 0;
-    switch (locala.b)
+    i = locala.b;
+    if (i != 1)
     {
-    default: 
-      util.LOGI("not support algorithm=" + locala.b, "");
-      return arrayOfByte;
-    }
-    for (i = b(locala);; i = a(locala))
-    {
-      paramArrayOfByte = arrayOfByte;
-      if (i < 0) {
-        break;
-      }
-      locala.o = ((int)(System.currentTimeMillis() - l));
-      locala.e = 1;
-      locala.p = i;
-      util.LOGI("cnt=" + locala.p + " cost=" + locala.o, "");
-      arrayOfByte = locala.a();
-      if (arrayOfByte != null)
+      if (i != 2)
       {
-        paramArrayOfByte = arrayOfByte;
-        if (arrayOfByte.length > 0) {
-          break;
-        }
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("not support algorithm=");
+        paramArrayOfByte.append(locala.b);
+        util.LOGI(paramArrayOfByte.toString(), "");
+        return arrayOfByte;
       }
-      util.LOGI("pow st to buf failed.", "");
+      i = a(locala);
+    }
+    else
+    {
+      i = b(locala);
+    }
+    if (i < 0) {
       return arrayOfByte;
     }
+    locala.o = ((int)(System.currentTimeMillis() - l));
+    locala.d = 1;
+    locala.p = i;
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("cnt=");
+    paramArrayOfByte.append(locala.p);
+    paramArrayOfByte.append(" cost=");
+    paramArrayOfByte.append(locala.o);
+    util.LOGI(paramArrayOfByte.toString(), "");
+    paramArrayOfByte = locala.a();
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+      return paramArrayOfByte;
+    }
+    util.LOGI("pow st to buf failed.", "");
+    return paramArrayOfByte;
   }
   
   public native byte[] nativeGetPow(byte[] paramArrayOfByte);
@@ -245,7 +286,7 @@ public class ClientPow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.pow.ClientPow
  * JD-Core Version:    0.7.0.1
  */

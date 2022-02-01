@@ -1,34 +1,45 @@
 package com.tencent.mm.plugin.product.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.ui.l;
 
 public abstract class MallBaseUI
   extends MMActivity
 {
-  protected String hyJ;
+  protected String rzc;
   
-  protected final void WW(String paramString)
+  protected final void aRO(String paramString)
   {
-    this.hyJ = paramString;
+    this.rzc = paramString;
     showDialog(-10001);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setBackBtn(new MallBaseUI.1(this));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(66933);
+        MallBaseUI.this.finish();
+        AppMethodBeat.o(66933);
+        return true;
+      }
+    });
   }
   
   protected Dialog onCreateDialog(int paramInt)
@@ -38,20 +49,20 @@ public abstract class MallBaseUI
     default: 
       return super.onCreateDialog(paramInt);
     case -10001: 
-      if (bo.isNullOrNil(this.hyJ)) {
-        this.hyJ = getString(2131301471);
+      if (Util.isNullOrNil(this.rzc)) {
+        this.rzc = getString(a.i.mall_product_data_err);
       }
-      h.a(this, this.hyJ, null, false, new DialogInterface.OnClickListener()
+      k.a(this, this.rzc, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(44027);
+          AppMethodBeat.i(66934);
           MallBaseUI.this.finish();
-          AppMethodBeat.o(44027);
+          AppMethodBeat.o(66934);
         }
       });
     }
-    g.a(getContext(), false, new DialogInterface.OnCancelListener()
+    l.a(getContext(), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
@@ -84,7 +95,7 @@ public abstract class MallBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallBaseUI
  * JD-Core Version:    0.7.0.1
  */

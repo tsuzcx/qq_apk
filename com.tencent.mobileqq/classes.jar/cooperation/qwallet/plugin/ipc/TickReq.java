@@ -2,17 +2,18 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import axlx;
-import azps;
-import azqs;
-import azri;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.qwallet.temp.IQWalletApiProxy;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.DcReportUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.PatternLockUtils;
-import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qwallet.plugin.IQWalletHelper;
 import java.util.ArrayList;
-import syb;
+import mqq.app.AppRuntime;
 
 public class TickReq
   extends BaseReq
@@ -20,6 +21,7 @@ public class TickReq
   public static final int TICK_TYPE_EXIT_QWALLET_TIME = 4;
   public static final int TICK_TYPE_PUBACC = 3;
   public static final int TICK_TYPE_QWALLET_ONRESUME = 7;
+  public static final int TICK_TYPE_QWALLET_REPORT_REDPOINT_SHOW = 8;
   public static final int TICK_TYPE_REDPOINT = 2;
   public static final int TICK_TYPE_REPORT = 1;
   public static final int TICK_TYPE_REPORT_DC = 6;
@@ -33,28 +35,35 @@ public class TickReq
   public ArrayList<String> reportContents;
   public int tickType;
   
-  private void onPubAcc()
-  {
-    QQAppInterface localQQAppInterface = QWalletHelper.getAppInterface();
-    if ((localQQAppInterface != null) && (!TextUtils.isEmpty(this.pubAccUin))) {
-      syb.a(localQQAppInterface, localQQAppInterface.getApp(), this.pubAccUin, null, false);
-    }
-  }
-  
   private void onRedpoint()
   {
-    Object localObject = QWalletHelper.getAppInterface();
-    if (localObject != null)
+    try
     {
-      localObject = (axlx)((QQAppInterface)localObject).getManager(36);
-      ((axlx)localObject).b(this.redpointPath);
-      if ((this.redpointPath != null) && (this.redpointPath.equals("100007.102000")) && (((axlx)localObject).a(100007) != null)) {}
+      Object localObject = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getRuntime();
+      if (localObject != null)
+      {
+        localObject = (IRedTouchManager)((AppRuntime)localObject).getRuntimeService(IRedTouchManager.class, "");
+        ((IRedTouchManager)localObject).onRedTouchItemClick(this.redpointPath);
+        if ((this.redpointPath != null) && (this.redpointPath.equals("100007.102000")))
+        {
+          if (((IRedTouchManager)localObject).getNumRedPathListByAppId(100007) == null) {
+            return;
+          }
+          ((IRedTouchManager)localObject).onReportNumRedPoint(100007, this.redpointPath);
+          return;
+        }
+      }
     }
-    else
+    catch (Exception localException)
     {
-      return;
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onRedpoint:");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("Q.qwallet.pay.dc", 4, localStringBuilder.toString());
+      }
     }
-    ((axlx)localObject).a(100007, this.redpointPath);
   }
   
   private void onReport()
@@ -62,41 +71,70 @@ public class TickReq
     if (this.reportContents != null)
     {
       int i = 0;
-      if (i < this.reportContents.size())
+      while (i < this.reportContents.size())
       {
-        Object localObject = (String)this.reportContents.get(i);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-        for (;;)
+        Object localObject1 = (String)this.reportContents.get(i);
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          i += 1;
-          break;
-          if (QWalletHelper.getAppInterface() != null)
-          {
-            azri.a(BaseApplication.getContext()).b(QWalletHelper.getAppInterface(), (String)localObject);
-          }
-          else
-          {
+          Object localObject2 = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getRuntime();
+          if (localObject2 != null) {
+            StatisticCollector.getInstance(BaseApplication.getContext()).reportToPCliOper((AppRuntime)localObject2, (String)localObject1);
+          } else {
             try
             {
-              localObject = ((String)localObject + "|s").split("\\|");
-              if (localObject.length < 12) {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append("|s");
+              localObject1 = ((StringBuilder)localObject2).toString().split("\\|");
+              if (localObject1.length < 12) {
                 return;
               }
-              azqs.b(null, "P_CliOper", localObject[0], localObject[2], localObject[3], localObject[4], Integer.valueOf(localObject[5]).intValue(), Integer.valueOf(localObject[7]).intValue(), localObject[8], localObject[9], localObject[10], localObject[11]);
+              ReportController.b(null, "P_CliOper", localObject1[0], localObject1[2], localObject1[3], localObject1[4], Integer.valueOf(localObject1[5]).intValue(), Integer.valueOf(localObject1[7]).intValue(), localObject1[8], localObject1[9], localObject1[10], localObject1[11]);
             }
-            catch (Exception localException) {}
-            if (QLog.isDevelopLevel()) {
-              QLog.d("reportClickEvent", 4, "com.qwallet.QWalletUtils reportClickError:" + localException.getMessage());
+            catch (Exception localException)
+            {
+              if (QLog.isDevelopLevel())
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("com.qwallet.QWalletUtils reportClickError:");
+                ((StringBuilder)localObject2).append(localException.getMessage());
+                QLog.d("reportClickEvent", 4, ((StringBuilder)localObject2).toString());
+              }
             }
           }
         }
+        i += 1;
       }
     }
   }
   
-  private void onSetBaseActivityUnlockSuceess()
+  private void onReportRedpointShow()
   {
-    com.tencent.mobileqq.app.BaseActivity.isUnLockSuccess = true;
+    try
+    {
+      Object localObject1 = ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getRuntime();
+      if (localObject1 != null)
+      {
+        localObject1 = (IRedTouchManager)((AppRuntime)localObject1).getRuntimeService(IRedTouchManager.class, "");
+        localObject2 = ((IRedTouchManager)localObject1).getAppInfoByPath(this.redpointPath);
+        if (localObject2 != null)
+        {
+          ((IRedTouchManager)localObject1).onRedTouchItemExposure((BusinessInfoCheckUpdate.AppInfo)localObject2, "");
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      Object localObject2;
+      if (QLog.isDevelopLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onRedpoint:");
+        ((StringBuilder)localObject2).append(localException.getMessage());
+        QLog.d("Q.qwallet.pay.dc", 4, ((StringBuilder)localObject2).toString());
+      }
+    }
   }
   
   public void fromBundle(Bundle paramBundle)
@@ -118,37 +156,50 @@ public class TickReq
     {
     default: 
       return;
-    case 1: 
-      onReport();
+    case 8: 
+      onReportRedpointShow();
       return;
-    case 2: 
-      onRedpoint();
-      return;
-    case 3: 
-      onPubAcc();
-      return;
-    case 4: 
-      PatternLockUtils.setLastExitWalletTime(this.exitQWalletTime);
-      return;
-    case 5: 
-      onSetBaseActivityUnlockSuceess();
+    case 7: 
+      ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).resetLaunchTime();
       return;
     case 6: 
       onReportDc();
       return;
+    case 5: 
+      ((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).onSetBaseActivityUnlockSuceess();
+      return;
+    case 4: 
+      ((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).setLastExitWalletTime(this.exitQWalletTime, this);
+      return;
+    case 3: 
+      ((IQWalletApiProxy)QRoute.api(IQWalletApiProxy.class)).onPubAcc(this.pubAccUin);
+      return;
+    case 2: 
+      onRedpoint();
+      return;
     }
-    QWalletHelper.resetLaunchTime();
+    onReport();
   }
   
   public void onReportDc()
   {
-    if ((TextUtils.isEmpty(this.dcId)) || (TextUtils.isEmpty(this.dcDetail))) {}
-    do
+    if (!TextUtils.isEmpty(this.dcId))
     {
-      return;
-      azps.a(null, this.dcId, this.dcDetail, this.dcIsMerge);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.qwallet.pay.dc", 2, this.dcId + '|' + this.dcDetail + '|' + this.dcIsMerge);
+      if (TextUtils.isEmpty(this.dcDetail)) {
+        return;
+      }
+      DcReportUtil.a(null, this.dcId, this.dcDetail, this.dcIsMerge);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.dcId);
+        localStringBuilder.append('|');
+        localStringBuilder.append(this.dcDetail);
+        localStringBuilder.append('|');
+        localStringBuilder.append(this.dcIsMerge);
+        QLog.i("Q.qwallet.pay.dc", 2, localStringBuilder.toString());
+      }
+    }
   }
   
   public void toBundle(Bundle paramBundle)
@@ -166,7 +217,7 @@ public class TickReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.TickReq
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public final class SvcResponsePullDisMsgSeq
   extends JceStruct
 {
   static ArrayList<stConfNumInfo> cache_vConfNumInfo;
-  public byte cReplyCode;
+  public byte cReplyCode = 0;
   public String strResult = "";
-  public ArrayList<stConfNumInfo> vConfNumInfo;
+  public ArrayList<stConfNumInfo> vConfNumInfo = null;
   
   public SvcResponsePullDisMsgSeq() {}
   
@@ -44,7 +44,7 @@ public final class SvcResponsePullDisMsgSeq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcResponsePullDisMsgSeq
  * JD-Core Version:    0.7.0.1
  */

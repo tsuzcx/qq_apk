@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/cv0" android:background="?uz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/cw9" android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="center" android:id="@id/cv1" android:background="@null" android:padding="@dimen/k" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sw" android:scaleType="fitXY" />
+    <View android:id="@id/cw_" android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="center" android:id="@id/cuy" android:background="@null" android:padding="@dimen/k" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/su" android:scaleType="fitXY" />
+    <View android:id="@id/cwa" android:layout_width="0.0dip" android:layout_height="24.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="center" android:id="@id/cuz" android:background="@null" android:padding="@dimen/k" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sv" android:scaleType="fitXY" />
+    <View android:id="@id/cwb" android:layout_width="0.0dip" android:layout_height="24.0dip" android:layout_weight="1.0" />
+</LinearLayout>

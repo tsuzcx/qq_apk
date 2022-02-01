@@ -1,105 +1,62 @@
 package com.tencent.mm.ipcinvoker;
 
+import android.app.Application;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.c.a;
-import com.tencent.mm.ipcinvoker.extension.e;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public final class k
 {
-  private static final Map<String, e> eEq;
-  
-  static
+  public static void EY(String paramString)
   {
-    AppMethodBeat.i(114048);
-    eEq = new ConcurrentHashMap();
-    AppMethodBeat.o(114048);
-  }
-  
-  public static <T> T b(Class<?> paramClass1, Class<?> paramClass2)
-  {
-    AppMethodBeat.i(114046);
-    try
+    AppMethodBeat.i(158750);
+    if (e.aYp().ET(paramString))
     {
-      if (!paramClass2.isAssignableFrom(paramClass1))
+      AppMethodBeat.o(158750);
+      return;
+    }
+    n.post(new Runnable()
+    {
+      public final void run()
       {
-        com.tencent.mm.ipcinvoker.h.b.e("IPC.ObjectStore", "%s isAssignableFrom %s return false", new Object[] { paramClass2, paramClass1 });
-        AppMethodBeat.o(114046);
-        return null;
-      }
-      if (paramClass1.isAnnotationPresent(a.class))
-      {
-        String str = paramClass1.getName();
-        e locale = (e)eEq.get(str);
-        paramClass2 = locale;
-        if (locale == null)
+        AppMethodBeat.i(158748);
+        e locale = e.aYp();
+        String str = k.this;
+        if (i.EW(str))
         {
-          paramClass2 = new e(paramClass1);
-          eEq.put(str, paramClass2);
+          com.tencent.mm.ipcinvoker.h.c.i("IPC.IPCBridgeManager", "the same process(%s), do not need to build IPCBridge.", new Object[] { str });
+          AppMethodBeat.o(158748);
+          return;
         }
-        paramClass1 = paramClass2.get();
-        AppMethodBeat.o(114046);
-        return paramClass1;
+        locale.ES(str);
+        AppMethodBeat.o(158748);
       }
-      paramClass1 = com.tencent.mm.ipcinvoker.g.b.c(paramClass1, paramClass2);
-      AppMethodBeat.o(114046);
-      return paramClass1;
-    }
-    catch (Exception paramClass1)
-    {
-      AppMethodBeat.o(114046);
-    }
-    return null;
+    });
+    AppMethodBeat.o(158750);
   }
   
-  public static <T> T c(String paramString, Class<?> paramClass)
+  public static void EZ(String paramString)
   {
-    AppMethodBeat.i(114045);
-    try
+    AppMethodBeat.i(158751);
+    if (e.aYp().ET(paramString))
     {
-      Class localClass = Class.forName(paramString);
-      if (!paramClass.isAssignableFrom(localClass))
-      {
-        com.tencent.mm.ipcinvoker.h.b.e("IPC.ObjectStore", "%s isAssignableFrom %s return false", new Object[] { paramClass, localClass });
-        AppMethodBeat.o(114045);
-        return null;
-      }
-      if (localClass.isAnnotationPresent(a.class))
-      {
-        e locale = (e)eEq.get(paramString);
-        paramClass = locale;
-        if (locale == null)
-        {
-          paramClass = new e(localClass);
-          eEq.put(paramString, paramClass);
-        }
-        paramString = paramClass.get();
-        AppMethodBeat.o(114045);
-        return paramString;
-      }
-      paramString = com.tencent.mm.ipcinvoker.g.b.d(paramString, paramClass);
-      AppMethodBeat.o(114045);
-      return paramString;
+      AppMethodBeat.o(158751);
+      return;
     }
-    catch (Exception paramString)
+    n.post(new Runnable()
     {
-      AppMethodBeat.o(114045);
-    }
-    return null;
-  }
-  
-  public static <T> T d(String paramString, Class<?> paramClass)
-  {
-    AppMethodBeat.i(114047);
-    paramString = com.tencent.mm.ipcinvoker.g.b.d(paramString, paramClass);
-    AppMethodBeat.o(114047);
-    return paramString;
+      public final void run()
+      {
+        AppMethodBeat.i(158749);
+        e.aYp().EV(k.this);
+        AppMethodBeat.o(158749);
+      }
+    });
+    AppMethodBeat.o(158751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.k
  * JD-Core Version:    0.7.0.1
  */

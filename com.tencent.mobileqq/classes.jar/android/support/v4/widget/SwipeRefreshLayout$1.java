@@ -18,19 +18,23 @@ class SwipeRefreshLayout$1
         SwipeRefreshLayout.access$300(this.this$0).onRefresh();
       }
     }
-    for (;;)
+    else
     {
-      SwipeRefreshLayout.access$802(this.this$0, SwipeRefreshLayout.access$400(this.this$0).getTop());
-      return;
       SwipeRefreshLayout.access$100(this.this$0).stop();
       SwipeRefreshLayout.access$400(this.this$0).setVisibility(8);
       SwipeRefreshLayout.access$500(this.this$0, 255);
-      if (SwipeRefreshLayout.access$600(this.this$0)) {
+      if (SwipeRefreshLayout.access$600(this.this$0))
+      {
         SwipeRefreshLayout.access$700(this.this$0, 0.0F);
-      } else {
-        SwipeRefreshLayout.access$900(this.this$0, this.this$0.mOriginalOffsetTop - SwipeRefreshLayout.access$800(this.this$0), true);
+      }
+      else
+      {
+        paramAnimation = this.this$0;
+        SwipeRefreshLayout.access$900(paramAnimation, paramAnimation.mOriginalOffsetTop - SwipeRefreshLayout.access$800(this.this$0), true);
       }
     }
+    paramAnimation = this.this$0;
+    SwipeRefreshLayout.access$802(paramAnimation, SwipeRefreshLayout.access$400(paramAnimation).getTop());
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

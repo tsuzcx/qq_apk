@@ -1,378 +1,82 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.Cursor;
-import android.provider.MediaStore.Images.Media;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.gallery.b.i;
+import com.tencent.mm.plugin.gallery.b.h;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gallery/model/GalleryMediaItemProvider;", "Lcom/tencent/mm/plugin/gallery/model/IMediaItemProvider;", "()V", "getNickName", "", "bucketID", "plugin-gallery_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  extends b
+  implements k
 {
-  protected ContentResolver aYt;
-  private volatile boolean eUJ;
-  
-  public j()
+  public final String ID(String paramString)
   {
-    AppMethodBeat.i(21303);
-    this.eUJ = false;
-    this.aYt = ah.getContext().getContentResolver();
-    AppMethodBeat.o(21303);
-  }
-  
-  private boolean a(i.d paramd, LinkedList paramLinkedList, long paramLong)
-  {
-    AppMethodBeat.i(21310);
-    if ((paramd != null) && (paramLinkedList.size() + 1 % this.ncv == 0)) {
-      paramd.c(paramLinkedList, paramLong);
-    }
-    boolean bool = this.eUJ;
-    AppMethodBeat.o(21310);
-    return bool;
-  }
-  
-  public final String a(String[] paramArrayOfString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(21305);
-    String str1;
-    int j;
-    int i;
-    String str2;
-    if (paramBoolean)
+    AppMethodBeat.i(289608);
+    s.u(paramString, "bucketID");
+    if (!Util.isNullOrNil(paramString))
     {
-      str1 = "(" + b.ncx + ">2147483647 OR " + b.ncx + "<=0 ) AND (_size>10240";
-      j = paramArrayOfString.length;
-      i = 0;
-      while (i < j)
+      int i = Util.safeParseInt(paramString);
+      if (h.HRi == i)
       {
-        str2 = paramArrayOfString[i];
-        str1 = str1 + " or lower(_data) like '%" + str2 + "%'";
-        i += 1;
+        paramString = MMApplicationContext.getContext().getString(b.i.gallery_album_weixin);
+        AppMethodBeat.o(289608);
+        return paramString;
       }
-    }
-    for (paramArrayOfString = str1 + ")";; paramArrayOfString = str1 + ")")
-    {
-      ab.d("MicroMsg.ImageMediaQuery", "where %s", new Object[] { paramArrayOfString });
-      AppMethodBeat.o(21305);
-      return paramArrayOfString;
-      str1 = b.ncx + "<=2147483647 AND " + b.ncx + ">0 AND (_size>10240";
-      j = paramArrayOfString.length;
-      i = 0;
-      while (i < j)
+      if (h.HRj == i)
       {
-        str2 = paramArrayOfString[i];
-        str1 = str1 + " or lower(_data) like '%" + str2 + "%'";
-        i += 1;
+        paramString = MMApplicationContext.getContext().getString(b.i.gallery_album_camera);
+        AppMethodBeat.o(289608);
+        return paramString;
       }
-    }
-  }
-  
-  public final LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, i.d paramd, long paramLong)
-  {
-    AppMethodBeat.i(21309);
-    this.eUJ = false;
-    LinkedList localLinkedList = new LinkedList();
-    try
-    {
-      if (bo.isNullOrNil(paramString))
+      if (h.HRk == i)
       {
-        localObject2 = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), a(this.ncw, false), null, hS(false));
-        localObject1 = localObject2;
+        paramString = MMApplicationContext.getContext().getString(b.i.gallery_album_download);
+        AppMethodBeat.o(289608);
+        return paramString;
       }
-    }
-    finally
-    {
-      for (;;)
+      if (h.HRl.contains(Integer.valueOf(i)))
       {
-        Object localObject2;
-        Object localObject5;
-        label190:
-        Object localObject3;
-        Object localObject6;
-        boolean bool;
-        label476:
-        label488:
-        localCursor = null;
-        localObject4 = null;
+        paramString = MMApplicationContext.getContext().getString(b.i.gallery_album_screenshots);
+        AppMethodBeat.o(289608);
+        return paramString;
       }
-    }
-    try
-    {
-      localCursor = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), a(this.ncw, true), null, hS(true));
-      localObject4 = localObject2;
-      for (;;)
+      if (h.HRm.contains(Integer.valueOf(i)))
       {
-        if (localObject4 != null) {}
-        try
+        paramString = MMApplicationContext.getContext().getString(b.i.gallery_album_screenshots_video);
+        AppMethodBeat.o(289608);
+        return paramString;
+      }
+      paramString = (GalleryItem.a)e.fAk().get(i);
+      if (paramString != null)
+      {
+        String str = paramString.key;
+        s.s(str, "albumName.key");
+        str = str.toLowerCase();
+        s.s(str, "(this as java.lang.String).toLowerCase()");
+        if (s.p(str, "WeChatWork"))
         {
-          ab.i("MicroMsg.ImageMediaQuery", "cursorValid count:%s", new Object[] { Integer.valueOf(localObject4.getCount()) });
-          localObject4.moveToFirst();
-          if (localCursor != null)
-          {
-            ab.i("MicroMsg.ImageMediaQuery", "cursorInvalid count:%s", new Object[] { Integer.valueOf(localCursor.getCount()) });
-            localCursor.moveToFirst();
-          }
-          localObject1 = b(localObject4, 1);
-          localObject2 = b(localCursor, 1);
-          localObject5 = null;
-          localObject3 = localObject5;
-          localObject6 = localObject2;
-          if (localObject2 == null) {
-            break label508;
-          }
-          localObject3 = localObject5;
-          localObject6 = localObject2;
-          if (localObject1 == null) {
-            break label508;
-          }
-          if (((GalleryItem.MediaItem)localObject2).ndq > ((GalleryItem.MediaItem)localObject1).ndq)
-          {
-            localLinkedList.add(localObject2);
-            localCursor.moveToNext();
-            localObject3 = localObject1;
-          }
-          for (;;)
-          {
-            if (localObject3 == localObject2) {
-              localObject1 = b(localObject4, 1);
-            }
-            if (localObject3 == localObject1) {
-              localObject2 = b(localCursor, 1);
-            }
-            bool = a(paramd, localLinkedList, paramLong);
-            localObject5 = localObject3;
-            if (!bool) {
-              break label190;
-            }
-            if (localObject4 != null) {
-              localObject4.close();
-            }
-            if (localCursor != null) {
-              localCursor.close();
-            }
-            AppMethodBeat.o(21309);
-            return localLinkedList;
-            localObject2 = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), aV(paramString, false), null, hS(false));
-            localObject1 = localObject2;
-            localCursor = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), aV(paramString, true), null, hS(true));
-            localObject4 = localObject2;
-            break;
-            if (((GalleryItem.MediaItem)localObject2).ndq < ((GalleryItem.MediaItem)localObject1).ndq)
-            {
-              localLinkedList.add(localObject1);
-              localObject4.moveToNext();
-              localObject3 = localObject2;
-            }
-            else
-            {
-              localLinkedList.add(localObject1);
-              localLinkedList.add(localObject2);
-              localObject3 = null;
-              localCursor.moveToNext();
-              localObject4.moveToNext();
-            }
-          }
-          if (localObject4 == null) {
-            break label488;
-          }
+          paramString = MMApplicationContext.getContext().getString(b.i.gallery_album_wechat_work);
+          AppMethodBeat.o(289608);
+          return paramString;
         }
-        finally {}
+        paramString = paramString.HHF;
+        AppMethodBeat.o(289608);
+        return paramString;
       }
     }
-    finally
-    {
-      localCursor = null;
-      localObject4 = localObject1;
-      break label476;
-    }
-    localObject4.close();
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    AppMethodBeat.o(21309);
-    throw paramString;
-    label508:
-    localObject2 = localObject3;
-    localObject5 = localObject1;
-    if (localObject6 != null)
-    {
-      if ((localObject3 != null) && (localObject3.ndq > ((GalleryItem.MediaItem)localObject6).ndq))
-      {
-        localLinkedList.add(localObject3);
-        localLinkedList.add(localObject6);
-        localObject3 = null;
-      }
-      for (;;)
-      {
-        localCursor.moveToNext();
-        localObject6 = b(localCursor, 1);
-        bool = a(paramd, localLinkedList, paramLong);
-        if (!bool) {
-          break;
-        }
-        if (localObject4 != null) {
-          localObject4.close();
-        }
-        if (localCursor != null) {
-          localCursor.close();
-        }
-        AppMethodBeat.o(21309);
-        return localLinkedList;
-        localLinkedList.add(localObject6);
-      }
-    }
-    if (localObject5 != null)
-    {
-      if ((localObject2 != null) && (((GalleryItem.MediaItem)localObject2).ndq > ((GalleryItem.MediaItem)localObject5).ndq))
-      {
-        localLinkedList.add(localObject2);
-        localLinkedList.add(localObject5);
-        localObject2 = null;
-      }
-      for (;;)
-      {
-        localObject4.moveToNext();
-        localObject5 = b(localObject4, 1);
-        bool = a(paramd, localLinkedList, paramLong);
-        if (!bool) {
-          break;
-        }
-        if (localObject4 != null) {
-          localObject4.close();
-        }
-        if (localCursor != null) {
-          localCursor.close();
-        }
-        AppMethodBeat.o(21309);
-        return localLinkedList;
-        localLinkedList.add(localObject5);
-      }
-    }
-    if (localObject2 != null) {
-      localLinkedList.add(localObject2);
-    }
-    paramd.c(localLinkedList, paramLong);
-    ab.i("MicroMsg.ImageMediaQuery", "[queryMediaItemsInAlbum] albumName:%s type:%s result:%s ticket:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(localLinkedList.size()), Long.valueOf(paramLong) });
-    if (localObject4 != null) {
-      localObject4.close();
-    }
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    AppMethodBeat.o(21309);
-    return localLinkedList;
-  }
-  
-  public final String aV(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(21304);
-    StringBuilder localStringBuilder = new StringBuilder("bucket_display_name=\"").append(paramString).append("\" AND ");
-    if (paramBoolean) {}
-    for (paramString = "(" + b.ncx + ">2147483647 OR " + b.ncx + "<=0 )";; paramString = b.ncx + "<=2147483647 AND " + b.ncx + ">0")
-    {
-      paramString = paramString;
-      AppMethodBeat.o(21304);
-      return paramString;
-    }
-  }
-  
-  public final LinkedList<GalleryItem.AlbumItem> bDJ()
-  {
-    AppMethodBeat.i(21308);
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject1;
-    try
-    {
-      Cursor localCursor = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, bDL(), "0==0) GROUP BY (bucket_display_name", null, "max_time desc, _id desc");
-      if (localCursor == null)
-      {
-        ab.d("MicroMsg.ImageMediaQuery", "no media folder now");
-        AppMethodBeat.o(21308);
-        return localLinkedList;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.ImageMediaQuery", "query album list failed : [%s]", new Object[] { localException.getMessage() });
-        localObject1 = null;
-      }
-    }
-    if (localObject1.moveToFirst()) {}
-    for (;;)
-    {
-      long l = bo.apW(localObject1.getString(localObject1.getColumnIndexOrThrow("_id")));
-      Object localObject3 = localObject1.getString(localObject1.getColumnIndexOrThrow("_data"));
-      Object localObject2 = localObject1.getString(localObject1.getColumnIndexOrThrow("bucket_display_name"));
-      bo.isNullOrNil((String)localObject2);
-      int i;
-      if ((!bo.isNullOrNil((String)localObject3)) && (e.cN((String)localObject3)))
-      {
-        i = localObject1.getInt(3);
-        if (i != 0) {
-          break label243;
-        }
-        ab.e("MicroMsg.ImageMediaQuery", "query album failed, " + i + ", " + (String)localObject3);
-      }
-      while (!localObject1.moveToNext())
-      {
-        localObject1.close();
-        AppMethodBeat.o(21308);
-        return localLinkedList;
-        label243:
-        ab.i("MicroMsg.ImageMediaQuery", "%s(%s) path:%s", new Object[] { localObject2, Integer.valueOf(i), localObject3 });
-        String str = localObject1.getString(localObject1.getColumnIndexOrThrow("mime_type"));
-        localObject3 = GalleryItem.MediaItem.a(1, Long.valueOf(l).longValue(), (String)localObject3, null, str);
-        localObject2 = new GalleryItem.AlbumItem((String)localObject2, i);
-        ((GalleryItem.AlbumItem)localObject2).ndm = ((GalleryItem.MediaItem)localObject3);
-        localLinkedList.add(localObject2);
-      }
-    }
-  }
-  
-  public final void bDK()
-  {
-    this.eUJ = true;
-  }
-  
-  public final String[] bDL()
-  {
-    AppMethodBeat.i(21307);
-    String str1 = b.ncy;
-    String str2 = b.ncx;
-    String str3 = "max(" + b.ncx + ") as max_time";
-    AppMethodBeat.o(21307);
-    return new String[] { "_id", "_data", "bucket_display_name", "count(*)", str1, str2, "mime_type", str3 };
-  }
-  
-  public final String[] getProjection()
-  {
-    return new String[] { "_id", "_data", b.ncy, b.ncx, "mime_type", "latitude", "longitude" };
-  }
-  
-  public final String hS(boolean paramBoolean)
-  {
-    AppMethodBeat.i(21306);
-    if (paramBoolean)
-    {
-      str = b.ncy + " desc, bucket_display_name desc, _id desc";
-      AppMethodBeat.o(21306);
-      return str;
-    }
-    String str = b.ncx + " desc, bucket_display_name desc, _id desc";
-    AppMethodBeat.o(21306);
-    return str;
+    AppMethodBeat.o(289608);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.j
  * JD-Core Version:    0.7.0.1
  */

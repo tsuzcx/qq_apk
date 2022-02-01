@@ -1,54 +1,31 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import arki;
-import armw;
-import bahm;
-import java.util.List;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
-public class SimpleFilePresenter$3
+class SimpleFilePresenter$3
   implements Runnable
 {
-  public SimpleFilePresenter$3(armw paramarmw, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
+  SimpleFilePresenter$3(SimpleFilePresenter paramSimpleFilePresenter) {}
   
   public void run()
   {
-    List localList2 = null;
-    Object localObject = this.jdField_a_of_type_JavaLangString.split("\\$");
-    String str1;
-    String str2;
-    String str3;
-    boolean bool;
-    if (localObject.length == 2)
+    String str = this.this$0.c.Y();
+    if ((!TextUtils.isEmpty(str)) && (!SimpleFilePresenter.a(this.this$0)))
     {
-      str1 = this.this$0.a.j();
-      str2 = localObject[0];
-      str3 = localObject[1];
-      bool = this.jdField_a_of_type_Boolean;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label105;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilList;
-      if (this.jdField_a_of_type_Int != 1) {
-        break label110;
-      }
-    }
-    label105:
-    label110:
-    for (List localList1 = this.jdField_a_of_type_JavaUtilList;; localList1 = null)
-    {
-      if (this.jdField_a_of_type_Int == 3000) {
-        localList2 = this.jdField_a_of_type_JavaUtilList;
-      }
-      bahm.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
+      this.this$0.k.b(0);
+      this.this$0.k.b(str);
+      SimpleFilePresenter.c(this.this$0).postDelayed(SimpleFilePresenter.b(this.this$0), 1000L);
       return;
-      localObject = null;
-      break;
     }
+    this.this$0.k.b(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.3
  * JD-Core Version:    0.7.0.1
  */

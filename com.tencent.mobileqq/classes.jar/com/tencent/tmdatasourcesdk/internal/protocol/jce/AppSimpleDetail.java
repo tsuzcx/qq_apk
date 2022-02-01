@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AppSimpleDetail
   extends JceStruct
@@ -72,41 +73,50 @@ public final class AppSimpleDetail
   {
     paramJceOutputStream.write(this.appId, 0);
     paramJceOutputStream.write(this.apkId, 1);
-    if (this.appName != null) {
-      paramJceOutputStream.write(this.appName, 2);
+    Object localObject = this.appName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.iconUrl != null) {
-      paramJceOutputStream.write(this.iconUrl, 3);
+    localObject = this.iconUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.packageName != null) {
-      paramJceOutputStream.write(this.packageName, 4);
+    localObject = this.packageName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.versionName != null) {
-      paramJceOutputStream.write(this.versionName, 5);
+    localObject = this.versionName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.versionCode, 6);
-    if (this.signatureMd5 != null) {
-      paramJceOutputStream.write(this.signatureMd5, 7);
+    localObject = this.signatureMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.apkMd5 != null) {
-      paramJceOutputStream.write(this.apkMd5, 8);
+    localObject = this.apkMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.fileSize, 9);
-    if (this.apkDownUrl != null) {
-      paramJceOutputStream.write(this.apkDownUrl, 10);
+    localObject = this.apkDownUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
-    if (this.diffApkMd5 != null) {
-      paramJceOutputStream.write(this.diffApkMd5, 11);
+    localObject = this.diffApkMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.diffFileSize, 12);
-    if (this.channelId != null) {
-      paramJceOutputStream.write(this.channelId, 13);
+    localObject = this.channelId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail
  * JD-Core Version:    0.7.0.1
  */

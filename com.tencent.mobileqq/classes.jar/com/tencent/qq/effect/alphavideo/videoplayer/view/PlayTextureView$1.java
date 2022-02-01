@@ -24,22 +24,26 @@ class PlayTextureView$1
   
   public void onVideoDecodeError(int paramInt)
   {
-    LogUtil.e(PlayTextureView.access$000(this.this$0), "========= onVideoDecodeError errorCode = " + paramInt);
-    switch (paramInt)
+    String str = PlayTextureView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("========= onVideoDecodeError errorCode = ");
+    localStringBuilder.append(paramInt);
+    LogUtil.e(str, localStringBuilder.toString());
+    if (paramInt != -101)
     {
-    default: 
-      return;
-    case -3: 
-    case -2: 
-    case -1: 
-      PlayTextureView.access$102(this.this$0, 0);
-      PlayTextureView.access$302(this.this$0, 0);
-      PlayTextureView.access$202(this.this$0, 0);
-      PlayTextureView.access$1202(this.this$0, null);
-      this.this$0.onPause();
-      PlayTextureView.access$1400(this.this$0, -1);
-      return;
-    case -5: 
+      if (paramInt != -5)
+      {
+        if ((paramInt != -3) && (paramInt != -2) && (paramInt != -1)) {
+          return;
+        }
+        PlayTextureView.access$102(this.this$0, 0);
+        PlayTextureView.access$302(this.this$0, 0);
+        PlayTextureView.access$202(this.this$0, 0);
+        PlayTextureView.access$1202(this.this$0, null);
+        this.this$0.onPause();
+        PlayTextureView.access$1400(this.this$0, -1);
+        return;
+      }
       PlayTextureView.access$102(this.this$0, 0);
       PlayTextureView.access$302(this.this$0, 0);
       PlayTextureView.access$202(this.this$0, 0);
@@ -73,26 +77,34 @@ class PlayTextureView$1
   @RequiresApi(api=16)
   public void onVideoFormat(MediaFormat paramMediaFormat)
   {
-    int j = 0;
-    int i = j;
-    if (paramMediaFormat != null)
-    {
-      i = j;
-      if (paramMediaFormat.containsKey("frame-rate")) {
-        i = paramMediaFormat.getInteger("frame-rate");
-      }
+    int i;
+    if ((paramMediaFormat != null) && (paramMediaFormat.containsKey("frame-rate"))) {
+      i = paramMediaFormat.getInteger("frame-rate");
+    } else {
+      i = 0;
     }
-    j = i;
+    int j = i;
     if (i <= 0) {
       j = 25;
     }
     PlayTextureView.access$902(this.this$0, 1000000 / j);
-    LogUtil.v(PlayTextureView.access$000(this.this$0), "mFrame Time  = " + PlayTextureView.access$900(this.this$0));
+    paramMediaFormat = PlayTextureView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mFrame Time  = ");
+    localStringBuilder.append(PlayTextureView.access$900(this.this$0));
+    LogUtil.v(paramMediaFormat, localStringBuilder.toString());
   }
   
   public void onVideoSize(int paramInt1, int paramInt2)
   {
-    LogUtil.e(PlayTextureView.access$000(this.this$0), "onVideoSize() called with: width = [" + paramInt1 + "], height = [" + paramInt2 + "]");
+    String str = PlayTextureView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onVideoSize() called with: width = [");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("], height = [");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("]");
+    LogUtil.e(str, localStringBuilder.toString());
     PlayTextureView.access$102(this.this$0, paramInt1);
     PlayTextureView.access$202(this.this$0, paramInt1 / 2);
     PlayTextureView.access$302(this.this$0, paramInt2);
@@ -104,7 +116,7 @@ class PlayTextureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qq.effect.alphavideo.videoplayer.view.PlayTextureView.1
  * JD-Core Version:    0.7.0.1
  */

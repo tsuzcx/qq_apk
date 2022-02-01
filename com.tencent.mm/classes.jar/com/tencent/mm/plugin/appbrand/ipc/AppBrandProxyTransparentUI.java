@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
@@ -18,22 +17,35 @@ public class AppBrandProxyTransparentUI
     return -1;
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(73147);
+    AppMethodBeat.i(45408);
     super.onCreate(paramBundle);
-    ab.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
-    af.a(getWindow());
+    Log.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
+    aw.g(getWindow());
     try
     {
       paramBundle = Class.forName(getIntent().getStringExtra("task_class_name"));
       getIntent().getExtras().setClassLoader(paramBundle.getClassLoader());
       paramBundle = (AppBrandProxyTransparentUIProcessTask)getIntent().getParcelableExtra("task_object");
-      String str = getIntent().getStringExtra("task_id");
+      final String str = getIntent().getStringExtra("task_id");
       if (paramBundle != null)
       {
-        paramBundle.a(this, new AppBrandProxyTransparentUI.1(this, paramBundle, str));
-        AppMethodBeat.o(73147);
+        paramBundle.a(this, new AppBrandProxyTransparentUIProcessTask.a()
+        {
+          public final void cpu()
+          {
+            AppMethodBeat.i(45407);
+            Log.i("MicroMsg.AppBrandProxyTransparentUI", "onResult");
+            Intent localIntent = new Intent();
+            localIntent.putExtra("task_object", paramBundle);
+            localIntent.putExtra("task_id", str);
+            AppBrandProxyTransparentUI.this.setResult(-1, localIntent);
+            AppBrandProxyTransparentUI.this.finish();
+            AppMethodBeat.o(45407);
+          }
+        });
+        AppMethodBeat.o(45408);
         return;
       }
     }
@@ -41,22 +53,22 @@ public class AppBrandProxyTransparentUI
     {
       for (;;)
       {
-        ab.e("MicroMsg.AppBrandProxyTransparentUI", "ClassNotFoundException");
+        Log.e("MicroMsg.AppBrandProxyTransparentUI", "ClassNotFoundException");
         setResult(1);
         finish();
       }
       setResult(1);
       finish();
-      AppMethodBeat.o(73147);
+      AppMethodBeat.o(45408);
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(73148);
+    AppMethodBeat.i(45409);
     super.onDestroy();
-    ab.i("MicroMsg.AppBrandProxyTransparentUI", "onDestroy");
-    AppMethodBeat.o(73148);
+    Log.i("MicroMsg.AppBrandProxyTransparentUI", "onDestroy");
+    AppMethodBeat.o(45409);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -67,17 +79,17 @@ public class AppBrandProxyTransparentUI
   
   public void setMMOrientation()
   {
-    AppMethodBeat.i(73149);
+    AppMethodBeat.i(45410);
     int i = getIntent().getIntExtra("orientation", -1);
     if (i != -1) {
       setRequestedOrientation(i);
     }
-    AppMethodBeat.o(73149);
+    AppMethodBeat.o(45410);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUI
  * JD-Core Version:    0.7.0.1
  */

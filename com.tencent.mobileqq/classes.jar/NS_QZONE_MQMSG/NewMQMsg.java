@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,20 +17,26 @@ public final class NewMQMsg
   static Map<String, String> cache_mpExtent;
   static MsgBody cache_msgBody = new MsgBody();
   static MsgInteractData cache_msgInteractData = new MsgInteractData();
+  static PostBar cache_postGuide = new PostBar();
   static UserPersonalData cache_userPersonalData;
-  public ArrayList<single_feed> all_feeds_data;
-  public BottomCell bottomCell;
+  public ArrayList<single_feed> all_feeds_data = null;
+  public BottomCell bottomCell = null;
+  public String content = "";
+  public int isNewStyle = 0;
   public String jumpUrlToDetail = "";
-  public Map<String, String> mpExtent;
-  public MsgBody msgBody;
-  public MsgInteractData msgInteractData;
-  public int msgType;
+  public Map<String, String> mpExtent = null;
+  public MsgBody msgBody = null;
+  public MsgInteractData msgInteractData = null;
+  public long msgSize = 0L;
+  public int msgType = 0;
   public String nick = "";
+  public PostBar postGuide = null;
   public String promot = "";
-  public long pushTime;
+  public long pushTime = 0L;
+  public String reportValue = "";
   public String title = "";
   public String userAvatar = "";
-  public UserPersonalData userPersonalData;
+  public UserPersonalData userPersonalData = null;
   
   static
   {
@@ -44,11 +51,11 @@ public final class NewMQMsg
   
   public NewMQMsg() {}
   
-  public NewMQMsg(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, MsgBody paramMsgBody, MsgInteractData paramMsgInteractData, String paramString5, BottomCell paramBottomCell, Map<String, String> paramMap, UserPersonalData paramUserPersonalData, ArrayList<single_feed> paramArrayList)
+  public NewMQMsg(int paramInt1, String paramString1, long paramLong1, String paramString2, String paramString3, String paramString4, MsgBody paramMsgBody, MsgInteractData paramMsgInteractData, String paramString5, BottomCell paramBottomCell, Map<String, String> paramMap, UserPersonalData paramUserPersonalData, ArrayList<single_feed> paramArrayList, String paramString6, String paramString7, long paramLong2, int paramInt2, PostBar paramPostBar)
   {
-    this.msgType = paramInt;
+    this.msgType = paramInt1;
     this.title = paramString1;
-    this.pushTime = paramLong;
+    this.pushTime = paramLong1;
     this.userAvatar = paramString2;
     this.nick = paramString3;
     this.promot = paramString4;
@@ -59,6 +66,11 @@ public final class NewMQMsg
     this.mpExtent = paramMap;
     this.userPersonalData = paramUserPersonalData;
     this.all_feeds_data = paramArrayList;
+    this.reportValue = paramString6;
+    this.content = paramString7;
+    this.msgSize = paramLong2;
+    this.isNewStyle = paramInt2;
+    this.postGuide = paramPostBar;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -76,50 +88,80 @@ public final class NewMQMsg
     this.mpExtent = ((Map)paramJceInputStream.read(cache_mpExtent, 10, false));
     this.userPersonalData = ((UserPersonalData)paramJceInputStream.read(cache_userPersonalData, 11, false));
     this.all_feeds_data = ((ArrayList)paramJceInputStream.read(cache_all_feeds_data, 12, false));
+    this.reportValue = paramJceInputStream.readString(13, false);
+    this.content = paramJceInputStream.readString(14, false);
+    this.msgSize = paramJceInputStream.read(this.msgSize, 15, false);
+    this.isNewStyle = paramJceInputStream.read(this.isNewStyle, 16, false);
+    this.postGuide = ((PostBar)paramJceInputStream.read(cache_postGuide, 17, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.msgType, 0);
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 1);
+    Object localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.pushTime, 2);
-    if (this.userAvatar != null) {
-      paramJceOutputStream.write(this.userAvatar, 3);
+    localObject = this.userAvatar;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 4);
+    localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.promot != null) {
-      paramJceOutputStream.write(this.promot, 5);
+    localObject = this.promot;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.msgBody != null) {
-      paramJceOutputStream.write(this.msgBody, 6);
+    localObject = this.msgBody;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.msgInteractData != null) {
-      paramJceOutputStream.write(this.msgInteractData, 7);
+    localObject = this.msgInteractData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.jumpUrlToDetail != null) {
-      paramJceOutputStream.write(this.jumpUrlToDetail, 8);
+    localObject = this.jumpUrlToDetail;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.bottomCell != null) {
-      paramJceOutputStream.write(this.bottomCell, 9);
+    localObject = this.bottomCell;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.mpExtent != null) {
-      paramJceOutputStream.write(this.mpExtent, 10);
+    localObject = this.mpExtent;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
-    if (this.userPersonalData != null) {
-      paramJceOutputStream.write(this.userPersonalData, 11);
+    localObject = this.userPersonalData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.all_feeds_data != null) {
-      paramJceOutputStream.write(this.all_feeds_data, 12);
+    localObject = this.all_feeds_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
+    }
+    localObject = this.reportValue;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
+    }
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
+    }
+    paramJceOutputStream.write(this.msgSize, 15);
+    paramJceOutputStream.write(this.isNewStyle, 16);
+    localObject = this.postGuide;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.NewMQMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -6,57 +6,58 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.plugin.emoji.h.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.af;
 
 public final class b
 {
   private final String TAG;
-  public TextView kvS;
-  public View ldP;
-  public String ldX;
-  public ImageView ldY;
-  public ImageView ldZ;
   public Context mContext;
+  public View qAv;
+  public TextView wCq;
+  public ImageView xGA;
+  public ImageView xGB;
+  public String xGz;
   
-  public b(Context paramContext)
+  public b(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(52719);
+    AppMethodBeat.i(269934);
     this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.ldP = w.hM(this.mContext).inflate(2130969402, null);
-    bkA();
-    AppMethodBeat.o(52719);
+    this.qAv = af.mU(this.mContext).inflate(paramInt, null);
+    dyf();
+    AppMethodBeat.o(269934);
   }
   
   public b(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(52720);
+    AppMethodBeat.i(108296);
     this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.ldP = paramView;
-    bkA();
-    AppMethodBeat.o(52720);
+    this.qAv = paramView;
+    dyf();
+    AppMethodBeat.o(108296);
   }
   
-  private void bkA()
+  private void dyf()
   {
-    AppMethodBeat.i(52721);
-    if (this.ldP == null)
+    AppMethodBeat.i(108297);
+    if (this.qAv == null)
     {
-      ab.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
-      AppMethodBeat.o(52721);
+      Log.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
+      AppMethodBeat.o(108297);
       return;
     }
-    this.ldY = ((ImageView)this.ldP.findViewById(2131823589));
-    this.kvS = ((TextView)this.ldP.findViewById(2131823680));
-    this.ldZ = ((ImageView)this.ldP.findViewById(2131823674));
-    AppMethodBeat.o(52721);
+    this.xGA = ((ImageView)this.qAv.findViewById(h.e.item_icon));
+    this.wCq = ((TextView)this.qAv.findViewById(h.e.item_title));
+    this.xGB = ((ImageView)this.qAv.findViewById(h.e.item_fg));
+    AppMethodBeat.o(108297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.b
  * JD-Core Version:    0.7.0.1
  */

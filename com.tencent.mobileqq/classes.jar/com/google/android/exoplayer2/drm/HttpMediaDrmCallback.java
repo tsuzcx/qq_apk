@@ -55,11 +55,16 @@ public final class HttpMediaDrmCallback
     try
     {
       paramString = Util.toByteArray(paramFactory);
+      Util.closeQuietly(paramFactory);
       return paramString;
     }
     finally
     {
       Util.closeQuietly(paramFactory);
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -98,30 +103,29 @@ public final class HttpMediaDrmCallback
     HashMap localHashMap = new HashMap();
     if (C.PLAYREADY_UUID.equals(???)) {
       str1 = "text/xml";
+    } else if (C.CLEARKEY_UUID.equals(???)) {
+      str1 = "application/json";
+    } else {
+      str1 = "application/octet-stream";
     }
-    for (;;)
+    localHashMap.put("Content-Type", str1);
+    if (C.PLAYREADY_UUID.equals(???)) {
+      localHashMap.put("SOAPAction", "http://schemas.microsoft.com/DRM/2007/03/protocols/AcquireLicense");
+    }
+    synchronized (this.keyRequestProperties)
     {
-      localHashMap.put("Content-Type", str1);
-      if (C.PLAYREADY_UUID.equals(???)) {
-        localHashMap.put("SOAPAction", "http://schemas.microsoft.com/DRM/2007/03/protocols/AcquireLicense");
-      }
-      synchronized (this.keyRequestProperties)
-      {
-        localHashMap.putAll(this.keyRequestProperties);
-        return executePost(this.dataSourceFactory, str2, paramKeyRequest.getData(), localHashMap);
-        if (C.CLEARKEY_UUID.equals(???))
-        {
-          str1 = "application/json";
-          continue;
-        }
-        str1 = "application/octet-stream";
-      }
+      localHashMap.putAll(this.keyRequestProperties);
+      return executePost(this.dataSourceFactory, str2, paramKeyRequest.getData(), localHashMap);
     }
   }
   
   public byte[] executeProvisionRequest(UUID paramUUID, ExoMediaDrm.ProvisionRequest paramProvisionRequest)
   {
-    paramUUID = paramProvisionRequest.getDefaultUrl() + "&signedRequest=" + new String(paramProvisionRequest.getData());
+    paramUUID = new StringBuilder();
+    paramUUID.append(paramProvisionRequest.getDefaultUrl());
+    paramUUID.append("&signedRequest=");
+    paramUUID.append(new String(paramProvisionRequest.getData()));
+    paramUUID = paramUUID.toString();
     return executePost(this.dataSourceFactory, paramUUID, new byte[0], null);
   }
   
@@ -138,7 +142,7 @@ public final class HttpMediaDrmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.HttpMediaDrmCallback
  * JD-Core Version:    0.7.0.1
  */

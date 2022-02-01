@@ -1,58 +1,166 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.TroopMemberCardActivity;
+import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import java.util.ArrayList;
 
 public class dqm
-  implements View.OnClickListener
+  extends TroopObserver
 {
   public dqm(TroopMemberCardActivity paramTroopMemberCardActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt, byte paramByte)
   {
-    int i = 0;
-    Object localObject;
-    switch (((Integer)paramView.getTag()).intValue())
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerFailed, reqtype:" + paramInt);
+    }
+    if ((paramInt == 2) || (paramInt == 9)) {
+      this.a.a(2, 2131562571, 1500);
+    }
+  }
+  
+  protected void a(int paramInt, byte paramByte, String paramString)
+  {
+    if (paramInt == 2)
     {
-    default: 
-      return;
-    case 4: 
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.f;
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity, ChatActivity.class);
-      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.e);
-      ((Intent)localObject).putExtra("PREVIOUS_WINDOW", TroopMemberCardActivity.class.getName());
-      ((Intent)localObject).putExtra("PREVIOUS_UIN", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.e);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isFriend) {
-        ((Intent)localObject).putExtra("uintype", 0);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerSuccess, reqtype:_eResignGroupReq result:" + paramByte + " troopUin:" + paramString);
       }
-      for (;;)
-      {
-        ((Intent)localObject).putExtra("uinname", paramView);
-        ((Intent)localObject).putExtra("troop_code", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.c);
-        ((Intent)localObject).putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.d);
-        ((Intent)localObject).addFlags(67108864);
-        ((Intent)localObject).putExtra("cSpecialFlag", 0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.startActivity((Intent)localObject);
-        return;
-        ((Intent)localObject).putExtra("uintype", 1000);
-      }
-    case 5: 
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.f;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isFriend) {
-        paramView = null;
-      }
-      for (;;)
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity, i, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.e, (String)localObject, null, true, paramView, true, true, null, "");
-        return;
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.d;
-        i = 1000;
+      if (paramByte == 0) {
+        this.a.a(5, 2131562988, 1000);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberCardActivity.k();
+    while (paramInt != 9)
+    {
+      return;
+      this.a.a(2, 2131562571, 1500);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onTroopManagerSuccess, reqtype:_eDeleteGroupReq result:" + paramByte + " troopUin:" + paramString);
+    }
+    if (paramByte == 0)
+    {
+      this.a.a(5, 2131562988, 1000);
+      return;
+    }
+    this.a.a(2, 2131562571, 1500);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onDeleteTroopMember, isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    }
+    if (paramBoolean)
+    {
+      this.a.a(1, 2131562986, 1500);
+      this.a.a(1);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    }
+    this.a.a(2, 2131562082, 1500);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    try
+    {
+      if ((this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.a.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+        this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      }
+      TroopMemberCardActivity.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
+      }
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        l = ((Long)paramObject[0]).longValue();
+        i = ((Integer)paramObject[1]).intValue();
+        paramObject = (TroopMemberCard)paramObject[2];
+        if (l != Long.parseLong(this.a.c))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: troopUin != mTroopUin, " + l + "!=" + this.a.c);
+          }
+        }
+        else if (paramObject == null)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: cardInfo==null");
+        }
+      }
+    }
+    catch (Exception paramObject)
+    {
+      long l;
+      int i;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard:" + paramObject.toString());
+        return;
+        l = paramObject.memberUin;
+        if (l != Long.parseLong(this.a.e))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onGetTroopMemberCard: memberUin != mMemberUin, " + l + "!=" + this.a.e);
+          }
+        }
+        else {
+          this.a.a(i, paramObject);
+        }
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt, long[] paramArrayOfLong)
+  {
+    if (paramString.equalsIgnoreCase("OidbSvc.0x8bb_2"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, CMD_ADD_SPECIAL_FOCUS, isSuccess:" + paramBoolean + " cmd:" + paramString + " errorCode:" + paramInt);
+      }
+      if (paramBoolean)
+      {
+        this.a.a(1, 2131562987, 1000);
+        this.a.a(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned = this.a.a(this.a.c, this.a.e);
+        if (!this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned) {
+          break label312;
+        }
+        this.a.a(this.a.jdField_a_of_type_ArrayOfAndroidViewView[3], this.a.getString(2131562121), true);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, isMemberSpecialFocus:" + this.a.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.isConcerned);
+      }
+      return;
+      this.a.a(2, 2131562092, 1000);
+      break;
+      if (!paramString.equalsIgnoreCase("OidbSvc.0x8bb_3")) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.profilecard.TroopMemberCardActivity", 2, "onOperateSpecialFocus, CMD_DELETE_SPECIAL_FOCUS, isSuccess:" + paramBoolean + " cmd:" + paramString + " errorCode:" + paramInt);
+      }
+      if (paramBoolean)
+      {
+        this.a.a(1, 2131562982, 1000);
+        this.a.a(0);
+        break;
+      }
+      this.a.a(2, 2131562055, 1000);
+      break;
+      label312:
+      this.a.a(this.a.jdField_a_of_type_ArrayOfAndroidViewView[3], this.a.getString(2131561913), true);
+    }
   }
 }
 

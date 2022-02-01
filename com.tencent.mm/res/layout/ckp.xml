@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.media.camera.view.CameraKitView android:id="@id/apr" android:layout_width="fill_parent" android:layout_height="fill_parent" app:cameraId="a2w" app:cameraView="m85" />
+    <ImageView android:id="@id/kb7" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="40.0dip" android:src="@raw/mmsight_camera_navbar_icon_switch" android:contentDescription="@string/huz" android:layout_marginEnd="24.0dip" android:layout_alignParentEnd="true" />
+    <include android:id="@id/lxe" layout="@layout/cko" />
+</merge>

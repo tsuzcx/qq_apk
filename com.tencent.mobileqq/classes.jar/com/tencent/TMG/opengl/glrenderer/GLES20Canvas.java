@@ -20,7 +20,7 @@ public class GLES20Canvas
 {
   private static final String ALPHA_UNIFORM = "uAlpha";
   private static final float[] BOUNDS_COORDINATES = { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
-  private static final float[] BOX_COORDINATES;
+  private static final float[] BOX_COORDINATES = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F };
   private static final String COLOR_UNIFORM = "uColor";
   private static final int COORDS_PER_VERTEX = 2;
   private static final int COUNT_FILL_VERTEX = 4;
@@ -48,7 +48,7 @@ public class GLES20Canvas
   private static final int OFFSET_FILL_RECT = 0;
   private static final float OPAQUE_ALPHA = 0.95F;
   private static final String POSITION_ATTRIBUTE = "aPosition";
-  private static final String TAG = GLES20Canvas.class.getSimpleName();
+  private static final String TAG = "GLES20Canvas";
   private static final String TEXTURE_COORD_ATTRIBUTE = "aTextureCoordinate";
   private static final String TEXTURE_FRAGMENT_SHADER = "precision mediump float;\nvarying vec2 vTextureCoord;\nuniform float uAlpha;\nuniform sampler2D uTextureSampler0;\nvoid main() {\n  gl_FragColor = texture2D(uTextureSampler0, vTextureCoord);\n  gl_FragColor *= uAlpha;\n}\n";
   private static final String TEXTURE_MATRIX_UNIFORM = "uTextureMatrix";
@@ -91,11 +91,6 @@ public class GLES20Canvas
   GLES20Canvas.ShaderParameter[] mYUVTextureParameters = { new GLES20Canvas.AttributeShaderParameter("aPosition"), new GLES20Canvas.UniformShaderParameter("uMatrix"), new GLES20Canvas.UniformShaderParameter("uAlpha"), new GLES20Canvas.UniformShaderParameter("uTextureMatrix"), new GLES20Canvas.UniformShaderParameter("uTextureSampler0"), new GLES20Canvas.UniformShaderParameter("uTextureSampler1"), new GLES20Canvas.UniformShaderParameter("uTextureSampler2") };
   private int mYUVTextureProgram;
   
-  static
-  {
-    BOX_COORDINATES = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F };
-  }
-  
   public GLES20Canvas()
   {
     Matrix.setIdentityM(this.mTempTextureMatrix, 0);
@@ -121,36 +116,44 @@ public class GLES20Canvas
   
   private int assembleProgram(int paramInt1, int paramInt2, GLES20Canvas.ShaderParameter[] paramArrayOfShaderParameter)
   {
-    int i = 0;
-    int j = GLES20.glCreateProgram();
+    int i = GLES20.glCreateProgram();
     checkError();
-    if (j == 0) {
-      throw new RuntimeException("Cannot create GL program: " + GLES20.glGetError());
-    }
-    GLES20.glAttachShader(j, paramInt1);
-    checkError();
-    GLES20.glAttachShader(j, paramInt2);
-    checkError();
-    GLES20.glLinkProgram(j);
-    checkError();
-    int[] arrayOfInt = this.mTempIntArray;
-    GLES20.glGetProgramiv(j, 35714, arrayOfInt, 0);
-    paramInt1 = j;
-    paramInt2 = i;
-    if (arrayOfInt[0] != 1)
+    if (i != 0)
     {
-      Log.e(TAG, "Could not link program: ");
-      Log.e(TAG, GLES20.glGetProgramInfoLog(j));
-      GLES20.glDeleteProgram(j);
-      paramInt1 = 0;
-      paramInt2 = i;
+      GLES20.glAttachShader(i, paramInt1);
+      checkError();
+      GLES20.glAttachShader(i, paramInt2);
+      checkError();
+      GLES20.glLinkProgram(i);
+      checkError();
+      int[] arrayOfInt = this.mTempIntArray;
+      int j = 0;
+      GLES20.glGetProgramiv(i, 35714, arrayOfInt, 0);
+      paramInt1 = i;
+      paramInt2 = j;
+      if (arrayOfInt[0] != 1)
+      {
+        Log.e(TAG, "Could not link program: ");
+        Log.e(TAG, GLES20.glGetProgramInfoLog(i));
+        GLES20.glDeleteProgram(i);
+        paramInt1 = 0;
+        paramInt2 = j;
+      }
+      while (paramInt2 < paramArrayOfShaderParameter.length)
+      {
+        paramArrayOfShaderParameter[paramInt2].loadHandle(paramInt1);
+        paramInt2 += 1;
+      }
+      return paramInt1;
     }
-    while (paramInt2 < paramArrayOfShaderParameter.length)
+    paramArrayOfShaderParameter = new StringBuilder();
+    paramArrayOfShaderParameter.append("Cannot create GL program: ");
+    paramArrayOfShaderParameter.append(GLES20.glGetError());
+    paramArrayOfShaderParameter = new RuntimeException(paramArrayOfShaderParameter.toString());
+    for (;;)
     {
-      paramArrayOfShaderParameter[paramInt2].loadHandle(paramInt1);
-      paramInt2 += 1;
+      throw paramArrayOfShaderParameter;
     }
-    return paramInt1;
   }
   
   public static void checkError()
@@ -159,7 +162,11 @@ public class GLES20Canvas
     if (i != 0)
     {
       Throwable localThrowable = new Throwable();
-      Log.e(TAG, "GL error: " + i, localThrowable);
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GL error: ");
+      localStringBuilder.append(i);
+      Log.e(str, localStringBuilder.toString(), localThrowable);
     }
   }
   
@@ -167,10 +174,14 @@ public class GLES20Canvas
   {
     int i = paramBasicTexture.getTextureWidth();
     int j = paramBasicTexture.getTextureHeight();
-    paramRectF1.left /= i;
-    paramRectF1.right /= i;
-    paramRectF1.top /= j;
-    paramRectF1.bottom /= j;
+    float f1 = paramRectF1.left;
+    float f2 = i;
+    paramRectF1.left = (f1 / f2);
+    paramRectF1.right /= f2;
+    f1 = paramRectF1.top;
+    f2 = j;
+    paramRectF1.top = (f1 / f2);
+    paramRectF1.bottom /= f2;
   }
   
   private static void copyTextureCoordinates(BasicTexture paramBasicTexture, RectF paramRectF)
@@ -256,11 +267,12 @@ public class GLES20Canvas
     float f2 = (paramInt >>> 16 & 0xFF) / 255.0F;
     float f3 = (paramInt >>> 8 & 0xFF) / 255.0F;
     float f4 = (paramInt & 0xFF) / 255.0F;
-    this.mTempColor[0] = (f2 * f1);
-    this.mTempColor[1] = (f3 * f1);
-    this.mTempColor[2] = (f4 * f1);
-    this.mTempColor[3] = f1;
-    return this.mTempColor;
+    float[] arrayOfFloat = this.mTempColor;
+    arrayOfFloat[0] = (f2 * f1);
+    arrayOfFloat[1] = (f3 * f1);
+    arrayOfFloat[2] = (f4 * f1);
+    arrayOfFloat[3] = f1;
+    return arrayOfFloat;
   }
   
   private static int loadShader(int paramInt, String paramString)
@@ -283,44 +295,46 @@ public class GLES20Canvas
       checkError();
     }
     float[] arrayOfFloat = getColor(paramInt2);
-    if (arrayOfFloat[3] < 1.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      enableBlending(bool);
-      if (bool)
-      {
-        GLES20.glBlendColor(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]);
-        checkError();
-      }
-      GLES20.glUniform4fv(this.mDrawParameters[2].handle, 1, arrayOfFloat, 0);
-      setPosition(this.mDrawParameters, paramInt1);
-      checkError();
-      return;
+    boolean bool;
+    if (arrayOfFloat[3] < 1.0F) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    enableBlending(bool);
+    if (bool)
+    {
+      GLES20.glBlendColor(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]);
+      checkError();
+    }
+    GLES20.glUniform4fv(this.mDrawParameters[2].handle, 1, arrayOfFloat, 0);
+    setPosition(this.mDrawParameters, paramInt1);
+    checkError();
   }
   
   private void prepareTexture(BasicTexture paramBasicTexture, int paramInt, GLES20Canvas.ShaderParameter[] paramArrayOfShaderParameter)
   {
-    int i = 0;
     GLES20.glUseProgram(paramInt);
     checkError();
-    if ((!paramBasicTexture.isOpaque()) || (getAlpha() < 0.95F)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool = paramBasicTexture.isOpaque();
+    paramInt = 0;
+    if ((bool) && (getAlpha() >= 0.95F)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    enableBlending(bool);
+    paramBasicTexture.onBind(this);
+    int[] arrayOfInt = paramBasicTexture.getId();
+    while (paramInt < arrayOfInt.length)
     {
-      enableBlending(bool);
-      paramBasicTexture.onBind(this);
-      int[] arrayOfInt = paramBasicTexture.getId();
-      paramInt = i;
-      while (paramInt < arrayOfInt.length)
-      {
-        GLES20.glActiveTexture(33984 + paramInt);
-        checkError();
-        GLES20.glBindTexture(paramBasicTexture.getTarget(), arrayOfInt[paramInt]);
-        checkError();
-        GLES20.glUniform1i(paramArrayOfShaderParameter[(paramInt + 4)].handle, paramInt);
-        checkError();
-        paramInt += 1;
-      }
+      GLES20.glActiveTexture(33984 + paramInt);
+      checkError();
+      GLES20.glBindTexture(paramBasicTexture.getTarget(), arrayOfInt[paramInt]);
+      checkError();
+      GLES20.glUniform1i(paramArrayOfShaderParameter[(paramInt + 4)].handle, paramInt);
+      checkError();
+      paramInt += 1;
     }
     GLES20.glUniform1f(paramArrayOfShaderParameter[2].handle, getAlpha());
     checkError();
@@ -330,23 +344,26 @@ public class GLES20Canvas
   {
     GLES20Canvas.ShaderParameter[] arrayOfShaderParameter;
     int i;
-    if (paramBasicTexture.getTarget() == 3553) {
+    if (paramBasicTexture.getTarget() == 3553)
+    {
       if (paramBasicTexture.getFormatType() == 1)
       {
         arrayOfShaderParameter = this.mYUVTextureParameters;
         i = this.mYUVTextureProgram;
       }
+      else
+      {
+        arrayOfShaderParameter = this.mTextureParameters;
+        i = this.mTextureProgram;
+      }
     }
-    for (;;)
+    else
     {
-      prepareTexture(paramBasicTexture, i, arrayOfShaderParameter);
-      return arrayOfShaderParameter;
-      arrayOfShaderParameter = this.mTextureParameters;
-      i = this.mTextureProgram;
-      continue;
       arrayOfShaderParameter = this.mOesTextureParameters;
       i = this.mOesTextureProgram;
     }
+    prepareTexture(paramBasicTexture, i, arrayOfShaderParameter);
+    return arrayOfShaderParameter;
   }
   
   private static void printMatrix(String paramString, float[] paramArrayOfFloat, int paramInt)
@@ -369,7 +386,8 @@ public class GLES20Canvas
   {
     Matrix.translateM(this.mTempMatrix, 0, this.mMatrices, this.mCurrentMatrixIndex, paramFloat1, paramFloat2, 0.0F);
     Matrix.scaleM(this.mTempMatrix, 0, paramFloat3, paramFloat4, 1.0F);
-    Matrix.multiplyMM(this.mTempMatrix, 16, this.mProjectionMatrix, 0, this.mTempMatrix, 0);
+    float[] arrayOfFloat = this.mTempMatrix;
+    Matrix.multiplyMM(arrayOfFloat, 16, this.mProjectionMatrix, 0, arrayOfFloat, 0);
     GLES20.glUniformMatrix4fv(paramArrayOfShaderParameter[1].handle, 1, false, this.mTempMatrix, 16);
     checkError();
   }
@@ -497,17 +515,20 @@ public class GLES20Canvas
   
   public void drawMixed(BasicTexture paramBasicTexture, int paramInt, float paramFloat, RectF paramRectF1, RectF paramRectF2)
   {
-    if ((paramRectF2.width() <= 0.0F) || (paramRectF2.height() <= 0.0F)) {
-      return;
+    if (paramRectF2.width() > 0.0F)
+    {
+      if (paramRectF2.height() <= 0.0F) {
+        return;
+      }
+      save(1);
+      float f = getAlpha();
+      paramFloat = Math.min(1.0F, Math.max(0.0F, paramFloat));
+      setAlpha((1.0F - paramFloat) * f);
+      drawTexture(paramBasicTexture, paramRectF1, paramRectF2);
+      setAlpha(paramFloat * f);
+      fillRect(paramRectF2.left, paramRectF2.top, paramRectF2.width(), paramRectF2.height(), paramInt);
+      restore();
     }
-    save(1);
-    float f = getAlpha();
-    paramFloat = Math.min(1.0F, Math.max(0.0F, paramFloat));
-    setAlpha((1.0F - paramFloat) * f);
-    drawTexture(paramBasicTexture, paramRectF1, paramRectF2);
-    setAlpha(f * paramFloat);
-    fillRect(paramRectF2.left, paramRectF2.top, paramRectF2.width(), paramRectF2.height(), paramInt);
-    restore();
   }
   
   public void drawRect(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, GLPaint paramGLPaint)
@@ -518,33 +539,42 @@ public class GLES20Canvas
   
   public void drawTexture(BasicTexture paramBasicTexture, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt3 <= 0) || (paramInt4 <= 0)) {
-      return;
+    if (paramInt3 > 0)
+    {
+      if (paramInt4 <= 0) {
+        return;
+      }
+      copyTextureCoordinates(paramBasicTexture, this.mTempSourceRect);
+      this.mTempTargetRect.set(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+      convertCoordinate(this.mTempSourceRect, this.mTempTargetRect, paramBasicTexture);
+      drawTextureRect(paramBasicTexture, this.mTempSourceRect, this.mTempTargetRect);
     }
-    copyTextureCoordinates(paramBasicTexture, this.mTempSourceRect);
-    this.mTempTargetRect.set(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
-    convertCoordinate(this.mTempSourceRect, this.mTempTargetRect, paramBasicTexture);
-    drawTextureRect(paramBasicTexture, this.mTempSourceRect, this.mTempTargetRect);
   }
   
   public void drawTexture(BasicTexture paramBasicTexture, RectF paramRectF1, RectF paramRectF2)
   {
-    if ((paramRectF2.width() <= 0.0F) || (paramRectF2.height() <= 0.0F)) {
-      return;
+    if (paramRectF2.width() > 0.0F)
+    {
+      if (paramRectF2.height() <= 0.0F) {
+        return;
+      }
+      this.mTempSourceRect.set(paramRectF1);
+      this.mTempTargetRect.set(paramRectF2);
+      convertCoordinate(this.mTempSourceRect, this.mTempTargetRect, paramBasicTexture);
+      drawTextureRect(paramBasicTexture, this.mTempSourceRect, this.mTempTargetRect);
     }
-    this.mTempSourceRect.set(paramRectF1);
-    this.mTempTargetRect.set(paramRectF2);
-    convertCoordinate(this.mTempSourceRect, this.mTempTargetRect, paramBasicTexture);
-    drawTextureRect(paramBasicTexture, this.mTempSourceRect, this.mTempTargetRect);
   }
   
   public void drawTexture(BasicTexture paramBasicTexture, float[] paramArrayOfFloat, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt3 <= 0) || (paramInt4 <= 0)) {
-      return;
+    if (paramInt3 > 0)
+    {
+      if (paramInt4 <= 0) {
+        return;
+      }
+      this.mTempTargetRect.set(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+      drawTextureRect(paramBasicTexture, paramArrayOfFloat, this.mTempTargetRect);
     }
-    this.mTempTargetRect.set(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
-    drawTextureRect(paramBasicTexture, paramArrayOfFloat, this.mTempTargetRect);
   }
   
   public void dumpStatisticsAndClear()
@@ -572,8 +602,10 @@ public class GLES20Canvas
   {
     Matrix.translateM(this.mTempMatrix, 0, this.mMatrices, this.mCurrentMatrixIndex, paramInt1, paramInt2, 0.0F);
     Matrix.scaleM(this.mTempMatrix, 0, paramInt3, paramInt4, 1.0F);
-    Matrix.multiplyMV(this.mTempMatrix, 16, this.mTempMatrix, 0, BOUNDS_COORDINATES, 0);
-    Matrix.multiplyMV(this.mTempMatrix, 20, this.mTempMatrix, 0, BOUNDS_COORDINATES, 4);
+    float[] arrayOfFloat = this.mTempMatrix;
+    Matrix.multiplyMV(arrayOfFloat, 16, arrayOfFloat, 0, BOUNDS_COORDINATES, 0);
+    arrayOfFloat = this.mTempMatrix;
+    Matrix.multiplyMV(arrayOfFloat, 20, arrayOfFloat, 0, BOUNDS_COORDINATES, 4);
     paramRect.left = Math.round(this.mTempMatrix[16]);
     paramRect.right = Math.round(this.mTempMatrix[20]);
     paramRect.top = Math.round(this.mTempMatrix[17]);
@@ -638,27 +670,22 @@ public class GLES20Canvas
   
   public void restore()
   {
-    int j = 1;
     int k = this.mSaveFlags.removeLast();
-    if ((k & 0x1) == 1)
-    {
+    int j = 0;
+    if ((k & 0x1) == 1) {
       i = 1;
-      if (i != 0) {
-        this.mCurrentAlphaIndex -= 1;
-      }
-      if ((k & 0x2) != 2) {
-        break label63;
-      }
-    }
-    label63:
-    for (int i = j;; i = 0)
-    {
-      if (i != 0) {
-        this.mCurrentMatrixIndex -= 16;
-      }
-      return;
+    } else {
       i = 0;
-      break;
+    }
+    if (i != 0) {
+      this.mCurrentAlphaIndex -= 1;
+    }
+    int i = j;
+    if ((k & 0x2) == 2) {
+      i = 1;
+    }
+    if (i != 0) {
+      this.mCurrentMatrixIndex -= 16;
     }
   }
   
@@ -682,40 +709,39 @@ public class GLES20Canvas
   
   public void save(int paramInt)
   {
-    int j = 1;
-    if ((paramInt & 0x1) == 1)
-    {
+    int j = 0;
+    if ((paramInt & 0x1) == 1) {
       i = 1;
-      if (i != 0)
-      {
-        float f = getAlpha();
-        this.mCurrentAlphaIndex += 1;
-        if (this.mAlphas.length <= this.mCurrentAlphaIndex) {
-          this.mAlphas = Arrays.copyOf(this.mAlphas, this.mAlphas.length * 2);
-        }
-        this.mAlphas[this.mCurrentAlphaIndex] = f;
-      }
-      if ((paramInt & 0x2) != 2) {
-        break label163;
-      }
-    }
-    label163:
-    for (int i = j;; i = 0)
-    {
-      if (i != 0)
-      {
-        i = this.mCurrentMatrixIndex;
-        this.mCurrentMatrixIndex += 16;
-        if (this.mMatrices.length <= this.mCurrentMatrixIndex) {
-          this.mMatrices = Arrays.copyOf(this.mMatrices, this.mMatrices.length * 2);
-        }
-        System.arraycopy(this.mMatrices, i, this.mMatrices, this.mCurrentMatrixIndex, 16);
-      }
-      this.mSaveFlags.add(paramInt);
-      return;
+    } else {
       i = 0;
-      break;
     }
+    float[] arrayOfFloat;
+    if (i != 0)
+    {
+      float f = getAlpha();
+      this.mCurrentAlphaIndex += 1;
+      arrayOfFloat = this.mAlphas;
+      if (arrayOfFloat.length <= this.mCurrentAlphaIndex) {
+        this.mAlphas = Arrays.copyOf(arrayOfFloat, arrayOfFloat.length * 2);
+      }
+      this.mAlphas[this.mCurrentAlphaIndex] = f;
+    }
+    int i = j;
+    if ((paramInt & 0x2) == 2) {
+      i = 1;
+    }
+    if (i != 0)
+    {
+      i = this.mCurrentMatrixIndex;
+      this.mCurrentMatrixIndex = (i + 16);
+      arrayOfFloat = this.mMatrices;
+      if (arrayOfFloat.length <= this.mCurrentMatrixIndex) {
+        this.mMatrices = Arrays.copyOf(arrayOfFloat, arrayOfFloat.length * 2);
+      }
+      arrayOfFloat = this.mMatrices;
+      System.arraycopy(arrayOfFloat, i, arrayOfFloat, this.mCurrentMatrixIndex, 16);
+    }
+    this.mSaveFlags.add(paramInt);
   }
   
   public void scale(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -735,8 +761,11 @@ public class GLES20Canvas
     GLES20.glViewport(0, 0, this.mWidth, this.mHeight);
     checkError();
     Matrix.setIdentityM(this.mMatrices, this.mCurrentMatrixIndex);
-    Matrix.orthoM(this.mProjectionMatrix, 0, 0.0F, paramInt1, 0.0F, paramInt2, -1.0F, 1.0F);
-    Matrix.translateM(this.mMatrices, this.mCurrentMatrixIndex, 0.0F, paramInt2, 0.0F);
+    float[] arrayOfFloat = this.mProjectionMatrix;
+    float f1 = paramInt1;
+    float f2 = paramInt2;
+    Matrix.orthoM(arrayOfFloat, 0, 0.0F, f1, 0.0F, f2, -1.0F, 1.0F);
+    Matrix.translateM(this.mMatrices, this.mCurrentMatrixIndex, 0.0F, f2, 0.0F);
     Matrix.scaleM(this.mMatrices, this.mCurrentMatrixIndex, 1.0F, -1.0F, 1.0F);
   }
   
@@ -782,9 +811,7 @@ public class GLES20Canvas
     j = i + 14;
     arrayOfFloat[j] += arrayOfFloat[(i + 2)] * paramFloat1 + arrayOfFloat[(i + 6)] * paramFloat2;
     j = i + 15;
-    float f1 = arrayOfFloat[j];
-    float f2 = arrayOfFloat[(i + 3)];
-    arrayOfFloat[j] = (arrayOfFloat[(i + 7)] * paramFloat2 + f2 * paramFloat1 + f1);
+    arrayOfFloat[j] += arrayOfFloat[(i + 3)] * paramFloat1 + arrayOfFloat[(i + 7)] * paramFloat2;
   }
   
   public void translate(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -831,7 +858,7 @@ public class GLES20Canvas
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.glrenderer.GLES20Canvas
  * JD-Core Version:    0.7.0.1
  */

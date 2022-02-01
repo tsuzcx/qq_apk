@@ -12,21 +12,24 @@ import java.nio.ByteBuffer;
   protected final String a(ByteBuffer paramByteBuffer)
   {
     paramByteBuffer.getShort();
-    return paramByteBuffer.getShort();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramByteBuffer.getShort());
+    return localStringBuilder.toString();
   }
   
   public final byte[] a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      short s = Short.valueOf(paramString).shortValue();
+      paramString = new byte[6];
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramString);
+      localByteBuffer.putShort(a());
+      localByteBuffer.putShort((short)2);
+      localByteBuffer.putShort(s);
+      return paramString;
     }
-    short s = Short.valueOf(paramString).shortValue();
-    paramString = new byte[6];
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramString);
-    localByteBuffer.putShort(a());
-    localByteBuffer.putShort((short)2);
-    localByteBuffer.putShort(s);
-    return paramString;
+    return null;
   }
 }
 

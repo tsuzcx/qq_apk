@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ccx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="wrap_content" android:layout_height="@dimen/lw" android:layout_marginBottom="@dimen/e2" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a6s" android:id="@id/ccy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/egs" />
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="120.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:layout_gravity="center" android:id="@id/cuf" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="50.0dip" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/cug" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+        <TextView android:textSize="11.0dip" android:textColor="@color/xo" android:id="@id/cud" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cm_" />
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/cue" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g" android:layout_marginRight="@dimen/iq" android:src="@raw/fav_capacity_foot_arrow" app:btnIconColor="@color/f_" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

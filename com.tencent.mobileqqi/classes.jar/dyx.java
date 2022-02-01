@@ -1,22 +1,27 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import android.app.Activity;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.StrangerManageActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class dyx
-  implements DialogInterface.OnClickListener
+public class dyx
+  extends ClickableSpan
 {
-  dyx(dyv paramdyv) {}
+  public dyx(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.a.b != null) && (this.a.b.length() > 0))
-    {
-      paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.a.b));
-      GrayTipsItemBuilder.h(this.a.a).startActivity(paramDialogInterface);
-    }
+    ReportController.b(GrayTipsItemBuilder.d(this.a), "CliOper", "", GrayTipsItemBuilder.e(this.a).a, "Manage_stranger", "Manage_str_aio_clk", 0, 0, "", "", "", "");
+    StrangerManageActivity.a((Activity)GrayTipsItemBuilder.i(this.a), GrayTipsItemBuilder.f(this.a).a);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

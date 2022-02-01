@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.appcommon.Common;
 import com.tencent.open.business.base.AppUtil;
-import hoo;
+import hon;
 
 public class DownloadReceiver
   extends BroadcastReceiver
@@ -39,7 +39,7 @@ public class DownloadReceiver
       }
       str2 = paramIntent.a;
     } while (TextUtils.isEmpty(str2));
-    ThreadManager.b(new hoo(this, str2, paramIntent, str1, paramContext));
+    ThreadManager.b(new hon(this, str2, paramIntent, str1, paramContext));
   }
 }
 

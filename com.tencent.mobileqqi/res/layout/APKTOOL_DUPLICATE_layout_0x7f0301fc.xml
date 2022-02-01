@@ -2,8 +2,8 @@
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080878" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030233" />
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080879" android:background="#ffe3e4e5" android:layout_width="1.0px" android:layout_height="fill_parent" />
-        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08087a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030233" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080877" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030233" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080878" android:background="#ffe3e4e5" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f080879" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030233" />
     </LinearLayout>
 </LinearLayout>

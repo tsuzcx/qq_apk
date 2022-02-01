@@ -34,6 +34,7 @@ public class VPageSlider
   private int mCallbackTime = 250;
   private Handler mHandler;
   private boolean mIsHorizontal = true;
+  private VPageSlider.OnJSSetIndexListener onJSSetIndexListener;
   
   public VPageSlider(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -49,47 +50,47 @@ public class VPageSlider
   
   private void tryResumeState(VPageSliderView paramVPageSliderView)
   {
-    if (paramVPageSliderView == null) {}
-    int i;
-    do
+    if (paramVPageSliderView == null) {
+      return;
+    }
+    Object localObject = this.mDomObj.getState("index");
+    if ((localObject instanceof Integer))
     {
-      Object localObject;
-      do
-      {
-        return;
-        localObject = this.mDomObj.getState("index");
-      } while (!(localObject instanceof Integer));
-      i = ((Integer)localObject).intValue();
-    } while (i > this.mDomObj.mDomChildren.size() - 1);
-    paramVPageSliderView.setStartItemIndex(Boolean.valueOf(false), i);
+      int i = ((Integer)localObject).intValue();
+      if (i <= this.mDomObj.mDomChildren.size() - 1) {
+        paramVPageSliderView.setStartItemIndex(Boolean.valueOf(false), i);
+      }
+    }
   }
   
   public void addEvent(String paramString)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != -1361636432)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if ((i == 1628119233) && (paramString.equals("overScroll")))
       {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("change"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("overScroll")) {
-            i = 1;
-          }
-        }
-        break;
+        i = 1;
+        break label50;
       }
     }
-    this.mAppendEvents.add(paramString);
-    return;
+    else if (paramString.equals("change"))
+    {
+      i = 0;
+      break label50;
+    }
+    i = -1;
+    label50:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        super.addEvent(paramString);
+        return;
+      }
+      this.mAppendEvents.add(paramString);
+      return;
+    }
     this.mAppendEvents.add(paramString);
   }
   
@@ -111,24 +112,20 @@ public class VPageSlider
   @JSMethod(uiThread=true)
   public void getIndex(String paramString)
   {
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(paramString)) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (!TextUtils.isEmpty(paramString))
     {
-      localJSONObject.put("index", ((VPageSliderView)getHostView()).getCurrentItem());
-      JSONArray localJSONArray = new JSONArray();
-      localJSONArray.put(paramString);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localJSONObject, true);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("index", ((VPageSliderView)getHostView()).getCurrentItem());
+      }
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
+      JSONArray localJSONArray = new JSONArray();
+      localJSONArray.put(paramString);
+      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localJSONObject, true);
     }
   }
   
@@ -140,34 +137,27 @@ public class VPageSlider
   protected VPageSliderView initComponentHostView(@NonNull Context paramContext)
   {
     initAdapter();
-    String str = "horizontal";
+    Object localObject;
     if (getDomObject().getAttributes().containsKey("direction")) {
-      str = getDomObject().getAttributes().get("direction").toString();
+      localObject = getDomObject().getAttributes().get("direction").toString();
+    } else {
+      localObject = "horizontal";
     }
-    boolean bool;
-    VSliderAdapter localVSliderAdapter;
-    if ("vertical".equals(str))
-    {
-      bool = false;
-      this.mIsHorizontal = bool;
-      localVSliderAdapter = this.mAdapter;
-      if (!"vertical".equals(str)) {
-        break label129;
-      }
+    String str = "vertical";
+    this.mIsHorizontal = ("vertical".equals(localObject) ^ true);
+    VSliderAdapter localVSliderAdapter = this.mAdapter;
+    if ("vertical".equals(localObject)) {
+      localObject = str;
+    } else {
+      localObject = "horizontal";
     }
-    label129:
-    for (str = "vertical";; str = "horizontal")
-    {
-      paramContext = new VPageSliderView(paramContext, localVSliderAdapter, str);
-      paramContext.setClickable(true);
-      paramContext.bindComponent(this);
-      paramContext.setSliderListener(new VPageSlider.1(this));
-      this.mHandler = new Handler();
-      tryResumeState(paramContext);
-      return paramContext;
-      bool = true;
-      break;
-    }
+    paramContext = new VPageSliderView(paramContext, localVSliderAdapter, (String)localObject);
+    paramContext.setClickable(true);
+    paramContext.bindComponent(this);
+    paramContext.setSliderListener(new VPageSlider.1(this));
+    this.mHandler = new Handler();
+    tryResumeState(paramContext);
+    return paramContext;
   }
   
   public boolean isPageSliderHorizontal()
@@ -203,30 +193,31 @@ public class VPageSlider
       return;
     }
     JSONObject localJSONObject = new JSONObject();
+    String str;
     try
     {
       localJSONObject.put("overX", FlexConvertUtils.px2dip(paramFloat));
       localJSONObject.put("overY", 0);
       localJSONObject.put("frame", getPositionInfoRelativeToParent(1));
-      JSONArray localJSONArray = new JSONArray();
-      if (((VPageSliderView)getHostView()).getComponent().getDomObject() != null)
-      {
-        String str = ((VPageSliderView)getHostView()).getComponent().getDomObject().getRef();
-        if (str != null) {
-          localJSONArray.put(str);
-        }
-      }
-      localJSONArray.put("overScroll");
-      fireEvent("overScroll", localJSONArray, localJSONObject);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e(TAG, "overScrollFireEvent error :" + localException.getMessage());
+      str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("overScrollFireEvent error :");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e(str, localStringBuilder.toString());
+    }
+    JSONArray localJSONArray = new JSONArray();
+    if (((VPageSliderView)getHostView()).getComponent().getDomObject() != null)
+    {
+      str = ((VPageSliderView)getHostView()).getComponent().getDomObject().getRef();
+      if (str != null) {
+        localJSONArray.put(str);
       }
     }
+    localJSONArray.put("overScroll");
+    fireEvent("overScroll", localJSONArray, localJSONObject);
   }
   
   @JSMethod(uiThread=true)
@@ -235,41 +226,41 @@ public class VPageSlider
     toLastIndex(paramBoolean, paramString);
   }
   
-  public boolean resetAttr(String paramString)
+  protected boolean resetAttr(String paramString)
   {
     if (!super.resetAttr(paramString))
     {
       int i = -1;
-      switch (paramString.hashCode())
+      int j = paramString.hashCode();
+      if (j != -1992012396)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (j != -1145509200)
         {
-        default: 
-          return false;
-          if (paramString.equals("index"))
-          {
+          if ((j == 100346066) && (paramString.equals("index"))) {
             i = 0;
-            continue;
-            if (paramString.equals("duration"))
-            {
-              i = 1;
-              continue;
-              if (paramString.equals("scrollEnable")) {
-                i = 2;
-              }
-            }
           }
-          break;
+        }
+        else if (paramString.equals("scrollEnable")) {
+          i = 2;
         }
       }
+      else if (paramString.equals("duration")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2) {
+            return false;
+          }
+          setScrollEnable(Boolean.valueOf(true));
+          return true;
+        }
+        setDuration(250);
+        return true;
+      }
       setStartIndex(Boolean.valueOf(false), 0);
-      return true;
-      setDuration(250);
-      return true;
-      setScrollEnable(Boolean.valueOf(true));
       return true;
     }
     return false;
@@ -286,20 +277,25 @@ public class VPageSlider
   @VComponentProp(name="duration")
   public void setDuration(int paramInt)
   {
-    if (paramInt != 250) {}
-    try
-    {
-      this.mCallbackTime = paramInt;
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      PageSliderScroller localPageSliderScroller = new PageSliderScroller(((VPageSliderView)getHostView()).getContext(), new AccelerateInterpolator());
-      localPageSliderScroller.setDuration(paramInt);
-      localField.set(getHostView(), localPageSliderScroller);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ViolaLogUtils.e(TAG, "setDuration error :" + localException.getMessage());
+    if (paramInt != 250) {
+      try
+      {
+        this.mCallbackTime = paramInt;
+        Field localField = ViewPager.class.getDeclaredField("mScroller");
+        localField.setAccessible(true);
+        localObject = new PageSliderScroller(((VPageSliderView)getHostView()).getContext(), new AccelerateInterpolator());
+        ((PageSliderScroller)localObject).setDuration(paramInt);
+        localField.set(getHostView(), localObject);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Object localObject = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setDuration error :");
+        localStringBuilder.append(localException.getMessage());
+        ViolaLogUtils.e((String)localObject, localStringBuilder.toString());
+      }
     }
   }
   
@@ -309,10 +305,27 @@ public class VPageSlider
     if (paramJSONObject != null)
     {
       int i = paramJSONObject.optInt("index", 0);
+      VPageSlider.OnJSSetIndexListener localOnJSSetIndexListener = this.onJSSetIndexListener;
+      if (localOnJSSetIndexListener != null) {
+        localOnJSSetIndexListener.onSetIndex(i);
+      }
       boolean bool = paramJSONObject.optBoolean("animated", true);
       ((VPageSliderView)getHostView()).setCurrentItem(i, bool);
       callbackJs(paramString);
     }
+  }
+  
+  @VComponentProp(name="interruptEnable")
+  public void setInterruptEnable(Boolean paramBoolean)
+  {
+    if (getHostView() != null) {
+      ((VPageSliderView)getHostView()).setInterruptEnable(paramBoolean);
+    }
+  }
+  
+  public void setOnJSSetIndexListener(VPageSlider.OnJSSetIndexListener paramOnJSSetIndexListener)
+  {
+    this.onJSSetIndexListener = paramOnJSSetIndexListener;
   }
   
   @VComponentProp(name="scrollEnable")
@@ -324,6 +337,13 @@ public class VPageSlider
   }
   
   @VComponentProp(name="index")
+  public void setStartIndex(int paramInt)
+  {
+    if (getHostView() != null) {
+      ((VPageSliderView)getHostView()).setStartItemIndex(Boolean.valueOf(false), paramInt);
+    }
+  }
+  
   public void setStartIndex(Boolean paramBoolean, int paramInt)
   {
     if (getHostView() != null) {
@@ -347,7 +367,7 @@ public class VPageSlider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VPageSlider
  * JD-Core Version:    0.7.0.1
  */

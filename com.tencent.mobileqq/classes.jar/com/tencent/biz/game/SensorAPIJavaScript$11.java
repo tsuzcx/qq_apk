@@ -2,10 +2,10 @@ package com.tencent.biz.game;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.google.zxing.client.android.wifi.BizWifiConfigManager;
+import com.tencent.biz.common.util.Util;
 import com.tencent.qphone.base.util.QLog;
-import go;
 import java.lang.ref.WeakReference;
-import ndq;
 
 class SensorAPIJavaScript$11
   extends Thread
@@ -15,55 +15,73 @@ class SensorAPIJavaScript$11
   public void run()
   {
     int i = 15;
-    String str = "";
-    if ((i > 0) && (this.this$0.a != null)) {
-      if (this.this$0.a.get() == null) {
-        i = 2;
-      }
-    }
+    localObject1 = "";
     for (;;)
     {
-      for (;;)
+      Object localObject2 = localObject1;
+      if (i > 0)
       {
-        this.this$0.c = false;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("SensorApi", 4, "run check end: " + i);
-        }
-        if (i != 0) {
-          break label200;
-        }
-        int j = this.this$0.a();
-        this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ndq.a(Integer.toString(i)), ndq.a(str), ndq.a(Integer.toString(j)) });
-        return;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("SensorApi", 4, "run check: " + i);
-        }
-        str = go.a(this.jdField_a_of_type_AndroidContentContext);
-        if (!TextUtils.isEmpty(str)) {
-          i = 0;
-        } else {
-          try
+        localObject2 = localObject1;
+        if (this.this$0.c != null) {
+          if (this.this$0.c.get() == null)
           {
-            Thread.sleep(2000L);
-            i -= 1;
+            localObject2 = localObject1;
           }
-          catch (InterruptedException localInterruptedException)
+          else
           {
-            i = 2;
+            if (QLog.isDevelopLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("run check: ");
+              ((StringBuilder)localObject1).append(i);
+              QLog.d("SensorApi", 4, ((StringBuilder)localObject1).toString());
+            }
+            localObject1 = BizWifiConfigManager.a(this.a);
+            if (!TextUtils.isEmpty((CharSequence)localObject1))
+            {
+              i = 0;
+              break label120;
+            }
           }
         }
       }
-      continue;
-      label200:
-      this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ndq.a(Integer.toString(i)) });
-      return;
-      i = 2;
+      try
+      {
+        Thread.sleep(2000L);
+        i -= 1;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          int j;
+          Object localObject3 = localObject1;
+        }
+      }
     }
+    i = 2;
+    localObject1 = localObject2;
+    label120:
+    this.this$0.t = false;
+    if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("run check end: ");
+      ((StringBuilder)localObject2).append(i);
+      QLog.d("SensorApi", 4, ((StringBuilder)localObject2).toString());
+    }
+    if (i == 0)
+    {
+      j = this.this$0.a();
+      this.this$0.callJs(this.b, new String[] { Util.c(Integer.toString(i)), Util.c((String)localObject1), Util.c(Integer.toString(j)) });
+      return;
+    }
+    this.this$0.callJs(this.b, new String[] { Util.c(Integer.toString(i)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.11
  * JD-Core Version:    0.7.0.1
  */

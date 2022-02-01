@@ -8,16 +8,16 @@ public class CancellationTokenSource
   
   public CancellationTokenSource()
   {
-    AppMethodBeat.i(57339);
+    AppMethodBeat.i(13338);
     this.zzafj = new zza();
-    AppMethodBeat.o(57339);
+    AppMethodBeat.o(13338);
   }
   
   public void cancel()
   {
-    AppMethodBeat.i(57340);
+    AppMethodBeat.i(13339);
     this.zzafj.cancel();
-    AppMethodBeat.o(57340);
+    AppMethodBeat.o(13339);
   }
   
   public CancellationToken getToken()
@@ -27,7 +27,7 @@ public class CancellationTokenSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.tasks.CancellationTokenSource
  * JD-Core Version:    0.7.0.1
  */

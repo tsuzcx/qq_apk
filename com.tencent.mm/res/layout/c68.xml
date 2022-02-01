@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="none" style="@style/o8">
+        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/i_" android:paddingRight="@dimen/k" android:paddingBottom="@dimen/i_" style="@style/lj">
+            <ImageView android:id="@id/jdw" android:paddingBottom="@dimen/i_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bgs" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center" android:id="@id/jdu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i_" android:text="@string/k6d" android:maxLines="5" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/nx" />
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/i6">
+                <TextView android:id="@id/jdy" android:text="@string/k6e" style="@style/ok" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

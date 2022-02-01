@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.managers;
 
-import auad;
-import auag;
 import java.util.Map;
 
-public class TempMsgManager$4
+class TempMsgManager$4
   implements Runnable
 {
-  public TempMsgManager$4(auad paramauad, short paramShort, boolean paramBoolean) {}
+  TempMsgManager$4(TempMsgManager paramTempMsgManager, short paramShort, boolean paramBoolean) {}
   
   public void run()
   {
-    if (auad.a(this.this$0) != null) {
-      auad.a(this.this$0).a(this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, ((Boolean)auad.a(this.this$0).get(auad.a(this.this$0, this.jdField_a_of_type_Short))).booleanValue());
+    if (TempMsgManager.b(this.this$0) != null) {
+      TempMsgManager.b(this.this$0).a(this.a, this.b, ((Boolean)TempMsgManager.c(this.this$0).get(TempMsgManager.a(this.this$0, this.a))).booleanValue(), ((Boolean)TempMsgManager.d(this.this$0).get(TempMsgManager.a(this.this$0, this.a))).booleanValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.TempMsgManager.4
  * JD-Core Version:    0.7.0.1
  */

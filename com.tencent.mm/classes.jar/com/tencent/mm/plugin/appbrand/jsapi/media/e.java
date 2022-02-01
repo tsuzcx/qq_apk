@@ -1,49 +1,63 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.content.Context;
-import com.tencent.luggage.g.d;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.ui.MMActivity;
-import org.json.JSONObject;
+import java.io.InputStream;
 
-public final class e
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+public abstract interface e
+  extends b
 {
-  public static final int CTRL_INDEX = 532;
-  public static final String NAME = "chooseMessageFile";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public static final e sfn = new e()
   {
-    AppMethodBeat.i(131216);
-    if (paramJSONObject == null)
+    public final Bitmap b(InputStream paramAnonymousInputStream, BitmapFactory.Options paramAnonymousOptions)
     {
-      d.e("MicroMsg.JsApiChooseMessageFile", "data is null");
-      paramc.h(paramInt, j("fail:invalid data", null));
-      AppMethodBeat.o(131216);
-      return;
+      AppMethodBeat.i(139866);
+      paramAnonymousInputStream = BitmapFactory.decodeStream(paramAnonymousInputStream, null, paramAnonymousOptions);
+      AppMethodBeat.o(139866);
+      return paramAnonymousInputStream;
     }
-    Context localContext = paramc.getContext();
-    if ((localContext == null) || (!(localContext instanceof MMActivity)))
+    
+    public final Bitmap decodeFile(String paramAnonymousString, BitmapFactory.Options paramAnonymousOptions)
     {
-      d.e("MicroMsg.JsApiChooseMessageFile", "context is null");
-      paramc.h(paramInt, j("fail:internal error invalid android context", null));
-      AppMethodBeat.o(131216);
-      return;
+      AppMethodBeat.i(139865);
+      paramAnonymousString = BitmapFactory.decodeFile(paramAnonymousString, paramAnonymousOptions);
+      AppMethodBeat.o(139865);
+      return paramAnonymousString;
     }
-    d.i("MicroMsg.JsApiChooseMessageFile", "chooseMsgFile data:%s", new Object[] { paramJSONObject });
-    String str1 = paramJSONObject.optString("type", "all");
-    String str2 = paramJSONObject.optString("extension", "");
-    int i = paramJSONObject.optInt("count", 9);
-    ((com.tencent.mm.choosemsgfile.compat.a)g.E(com.tencent.mm.choosemsgfile.compat.a.class)).a((MMActivity)localContext, str1, i, str2, new e.1(this, paramc, paramInt));
-    AppMethodBeat.o(131216);
+    
+    public final Bitmap decodeStream(InputStream paramAnonymousInputStream)
+    {
+      AppMethodBeat.i(329378);
+      paramAnonymousInputStream = BitmapFactory.decodeStream(paramAnonymousInputStream);
+      AppMethodBeat.o(329378);
+      return paramAnonymousInputStream;
+    }
+  };
+  
+  public abstract Bitmap b(InputStream paramInputStream, BitmapFactory.Options paramOptions);
+  
+  public abstract Bitmap decodeFile(String paramString, BitmapFactory.Options paramOptions);
+  
+  public abstract Bitmap decodeStream(InputStream paramInputStream);
+  
+  public static final class a
+  {
+    public static e a(e parame)
+    {
+      e locale = parame;
+      if (parame == null) {
+        locale = e.sfn;
+      }
+      return locale;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.e
  * JD-Core Version:    0.7.0.1
  */

@@ -21,8 +21,8 @@ import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
+import hgy;
 import hgz;
-import hha;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +32,8 @@ public class MixedMsgLinearLayout
   public static final String a = "MixedMsgLinearLayout";
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
   public AnimationTextView.OnDoubleClick a;
+  private hgy jdField_a_of_type_Hgy = new hgy(this);
   private hgz jdField_a_of_type_Hgz = new hgz(this);
-  private hha jdField_a_of_type_Hha = new hha(this);
   private MotionEvent b;
   public AnimationTextView.OnDoubleClick b;
   
@@ -226,7 +226,7 @@ public class MixedMsgLinearLayout
       localObject1 = (View)localArrayList.get(i);
       detachViewFromParent((View)localObject1);
       ((AnimationTextView)localObject1).setText("");
-      this.jdField_a_of_type_Hha.a((AnimationTextView)localObject1);
+      this.jdField_a_of_type_Hgz.a((AnimationTextView)localObject1);
       i += 1;
     }
     j = paramList.size();
@@ -236,7 +236,7 @@ public class MixedMsgLinearLayout
       Object localObject2 = paramList.get(i);
       if ((localObject2 instanceof MessageForText))
       {
-        localObject2 = this.jdField_a_of_type_Hha.a();
+        localObject2 = this.jdField_a_of_type_Hgz.a();
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = a();
@@ -248,7 +248,7 @@ public class MixedMsgLinearLayout
         i += 1;
         break;
       }
-      localObject1 = this.jdField_a_of_type_Hgz.a();
+      localObject1 = this.jdField_a_of_type_Hgy.a();
       if (localObject1 != null) {
         break label359;
       }
@@ -281,7 +281,7 @@ public class MixedMsgLinearLayout
         {
           ((ChatThumbView)paramList).setImageDrawable(null);
           ((ChatThumbView)paramList).setURLDrawableDownListener(null);
-          this.jdField_a_of_type_Hgz.a((ChatThumbView)paramList);
+          this.jdField_a_of_type_Hgy.a((ChatThumbView)paramList);
         }
         i += 1;
       }

@@ -9,7 +9,7 @@ class WtloginHelper$A1SRC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WtloginHelper.A1SRC
  * JD-Core Version:    0.7.0.1
  */

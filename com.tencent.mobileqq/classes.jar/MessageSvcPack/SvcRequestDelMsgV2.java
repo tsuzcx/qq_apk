@@ -10,11 +10,11 @@ public final class SvcRequestDelMsgV2
 {
   static ArrayList<AccostMsg> cache_vAccostMsg;
   static ArrayList<SvcDelMsgInfo> cache_vDelInfos;
-  public byte cInst;
-  public byte cVerifyType;
-  public long lUin;
-  public ArrayList<AccostMsg> vAccostMsg;
-  public ArrayList<SvcDelMsgInfo> vDelInfos;
+  public byte cInst = 0;
+  public byte cVerifyType = 0;
+  public long lUin = 0L;
+  public ArrayList<AccostMsg> vAccostMsg = null;
+  public ArrayList<SvcDelMsgInfo> vDelInfos = null;
   
   public SvcRequestDelMsgV2() {}
   
@@ -60,7 +60,7 @@ public final class SvcRequestDelMsgV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestDelMsgV2
  * JD-Core Version:    0.7.0.1
  */

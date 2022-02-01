@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.ae;
-import android.support.v4.app.s;
+import android.support.v4.app.ag;
+import android.support.v4.app.t;
 import android.support.v4.b.a;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -23,14 +23,14 @@ public final class bo
   extends Fragment
   implements az
 {
-  private static WeakHashMap<FragmentActivity, WeakReference<bo>> OS = new WeakHashMap();
-  private Map<String, ay> OT = new a();
-  private int OU = 0;
-  private Bundle OV;
+  private static WeakHashMap<FragmentActivity, WeakReference<bo>> QH = new WeakHashMap();
+  private Map<String, ay> QI = new a();
+  private int QJ = 0;
+  private Bundle QK;
   
   public static bo a(FragmentActivity paramFragmentActivity)
   {
-    Object localObject = (WeakReference)OS.get(paramFragmentActivity);
+    Object localObject = (WeakReference)QH.get(paramFragmentActivity);
     if (localObject != null)
     {
       localObject = (bo)((WeakReference)localObject).get();
@@ -40,7 +40,7 @@ public final class bo
     }
     try
     {
-      bo localbo = (bo)paramFragmentActivity.R().c("SupportLifecycleFragmentImpl");
+      bo localbo = (bo)paramFragmentActivity.ah().b("SupportLifecycleFragmentImpl");
       if (localbo != null)
       {
         localObject = localbo;
@@ -49,9 +49,9 @@ public final class bo
       else
       {
         localObject = new bo();
-        paramFragmentActivity.R().Z().a((Fragment)localObject, "SupportLifecycleFragmentImpl").commitAllowingStateLoss();
+        paramFragmentActivity.ah().ao().a((Fragment)localObject, "SupportLifecycleFragmentImpl").commitAllowingStateLoss();
       }
-      OS.put(paramFragmentActivity, new WeakReference(localObject));
+      QH.put(paramFragmentActivity, new WeakReference(localObject));
       return localObject;
     }
     catch (ClassCastException paramFragmentActivity)
@@ -62,15 +62,15 @@ public final class bo
   
   public final <T extends ay> T a(String paramString, Class<T> paramClass)
   {
-    return (ay)paramClass.cast(this.OT.get(paramString));
+    return (ay)paramClass.cast(this.QI.get(paramString));
   }
   
   public final void a(final String paramString, final ay paramay)
   {
-    if (!this.OT.containsKey(paramString))
+    if (!this.QI.containsKey(paramString))
     {
-      this.OT.put(paramString, paramay);
-      if (this.OU > 0) {
+      this.QI.put(paramString, paramay);
+      if (this.QJ > 0) {
         new Handler(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
@@ -107,7 +107,7 @@ public final class bo
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
     super.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
-    Iterator localIterator = this.OT.values().iterator();
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       ((ay)localIterator.next()).dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
@@ -116,7 +116,7 @@ public final class bo
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    Iterator localIterator = this.OT.values().iterator();
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       ((ay)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -125,9 +125,9 @@ public final class bo
   public final void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.OU = 1;
-    this.OV = paramBundle;
-    Iterator localIterator = this.OT.entrySet().iterator();
+    this.QJ = 1;
+    this.QK = paramBundle;
+    Iterator localIterator = this.QI.entrySet().iterator();
     if (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
@@ -144,8 +144,8 @@ public final class bo
   public final void onDestroy()
   {
     super.onDestroy();
-    this.OU = 4;
-    Iterator localIterator = this.OT.values().iterator();
+    this.QJ = 4;
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       localIterator.next();
     }
@@ -158,7 +158,7 @@ public final class bo
     for (;;)
     {
       return;
-      Iterator localIterator = this.OT.entrySet().iterator();
+      Iterator localIterator = this.QI.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -172,8 +172,8 @@ public final class bo
   public final void onStart()
   {
     super.onStart();
-    this.OU = 2;
-    Iterator localIterator = this.OT.values().iterator();
+    this.QJ = 2;
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       ((ay)localIterator.next()).onStart();
     }
@@ -182,8 +182,8 @@ public final class bo
   public final void onStop()
   {
     super.onStop();
-    this.OU = 3;
-    Iterator localIterator = this.OT.values().iterator();
+    this.QJ = 3;
+    Iterator localIterator = this.QI.values().iterator();
     while (localIterator.hasNext()) {
       ((ay)localIterator.next()).onStop();
     }

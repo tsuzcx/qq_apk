@@ -1,33 +1,35 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ainf;
-import alud;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import aozx;
-import awhw;
-import azqs;
-import bdgc;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.permission.PermissionChecker;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PhoneLaunchActivity
   extends DialogBaseActivity
   implements View.OnClickListener
 {
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  public awhw a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  public ContactBindObserver a;
+  private Button b;
+  private boolean c = false;
+  private boolean d = false;
+  private boolean e = false;
+  private boolean f = false;
+  private boolean g = false;
   
   private void b()
   {
-    bdgc.a(2);
+    ContactUtils.d(2);
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     if (getIntent().getIntExtra("kSrouce", -1) == 8) {
       localIntent.putExtra("kSrouce", 8);
@@ -37,100 +39,117 @@ public class PhoneLaunchActivity
   
   public void a()
   {
-    PhoneLaunchActivity.1 local1 = new PhoneLaunchActivity.1(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new ainf(this));
-    aozx.a(this, this.app, local1, localDenyRunnable);
+    PermissionChecker.a(this, new PhoneLaunchActivity.1(this), new DenyRunnable(this, new PhoneLaunchActivity.2(this)));
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (paramInt1 == 1) {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 1)
+    {
       if (paramInt2 != 0)
       {
         setResult(paramInt2, paramIntent);
         finish();
       }
     }
-    while ((paramInt2 != 2) || (!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c())) {
-      return;
+    else if ((paramInt2 == 2) && (this.c) && (this.mPhoneContactService.isBindContactOk())) {
+      finish();
     }
-    finish();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
     boolean bool = getIntent().hasExtra("needAlert");
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("fromStopAndMatch", false);
-    this.b = getIntent().getBooleanExtra("fromCall", false);
-    this.c = getIntent().getBooleanExtra("fromPermiPriv", false);
-    this.d = getIntent().getBooleanExtra("fromAVCallInvite", false);
-    this.e = getIntent().getBooleanExtra("returnAndFinish", false);
+    this.c = getIntent().getBooleanExtra("fromStopAndMatch", false);
+    this.d = getIntent().getBooleanExtra("fromCall", false);
+    this.e = getIntent().getBooleanExtra("fromPermiPriv", false);
+    this.f = getIntent().getBooleanExtra("fromAVCallInvite", false);
+    this.g = getIntent().getBooleanExtra("returnAndFinish", false);
     if ((!bool) && (paramBundle == null))
     {
       finish();
       return false;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      if (getIntent().getStringExtra("leftViewText") == null) {
-        getIntent().putExtra("leftViewText", alud.a(2131708400));
-      }
-    }
-    for (;;)
+    if (!this.c)
     {
-      setContentView(2131559425);
-      setTitle(alud.a(2131708396));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371761));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      if (getIntent().getBooleanExtra("k_start_number", false)) {
-        b();
+      if (getIntent().getStringExtra("leftViewText") == null) {
+        getIntent().putExtra("leftViewText", HardCodeUtil.a(2131905820));
       }
-      return true;
-      getIntent().putExtra("leftViewText", alud.a(2131708402));
     }
+    else {
+      getIntent().putExtra("leftViewText", HardCodeUtil.a(2131905822));
+    }
+    setContentView(2131625570);
+    setTitle(HardCodeUtil.a(2131905816));
+    this.b = ((Button)findViewById(2131440033));
+    this.b.setOnClickListener(this);
+    if (getIntent().getBooleanExtra("k_start_number", false)) {
+      b();
+    }
+    return true;
   }
   
   public void finish()
   {
     super.finish();
-    if (!this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130771990, 2130772295);
+    if (!this.c) {
+      overridePendingTransition(2130772007, 2130772436);
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.b)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
-      if ((i == 1) || (i == 2) || (i == 3) || (i == 4)) {
-        b();
-      }
-      for (;;)
+      int i = this.mPhoneContactService.getSelfBindState();
+      if ((i != 1) && (i != 2) && (i != 3) && (i != 4))
       {
-        if (this.d) {
-          azqs.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
-        }
-        return;
         if (i == 5)
         {
-          paramView = new Intent(this, BindNumberFromPcActivity.class);
-          paramView.putExtra("key_is_first_activity", false);
-          startActivityForResult(paramView, 1);
+          Intent localIntent = new Intent(this, BindNumberFromPcActivity.class);
+          localIntent.putExtra("key_is_first_activity", false);
+          startActivityForResult(localIntent, 1);
         }
         else if (i == 7)
         {
-          this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+          this.b.setEnabled(false);
           a();
         }
         else
         {
-          a(alud.a(2131708398), alud.a(2131708397));
+          showConfirmFinish(HardCodeUtil.a(2131905818), HardCodeUtil.a(2131905817));
         }
       }
+      else {
+        b();
+      }
+      if (this.f) {
+        ReportController.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
+      }
     }
-    finish();
+    else
+    {
+      finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 

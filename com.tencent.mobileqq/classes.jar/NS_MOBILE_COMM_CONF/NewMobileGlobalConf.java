@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class NewMobileGlobalConf
   extends JceStruct
 {
-  public long version;
+  public long version = 0L;
   
   public NewMobileGlobalConf() {}
   
@@ -28,7 +28,7 @@ public final class NewMobileGlobalConf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM_CONF.NewMobileGlobalConf
  * JD-Core Version:    0.7.0.1
  */

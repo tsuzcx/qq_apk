@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public final class r
 {
-  public String kml = "";
-  public String kqi = "";
-  public int kqj = 0;
-  public ArrayList<String> kqk;
-  public boolean kql = false;
-  public boolean kqm = false;
+  public int wld = 0;
+  public String wsy = "";
+  public String wwH = "";
+  public ArrayList<String> wwI;
+  public boolean wwJ = false;
+  public boolean wwK = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.r
  * JD-Core Version:    0.7.0.1
  */

@@ -32,14 +32,16 @@ public final class DeviceProto$MsgFileKey
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 64 }, new String[] { "bytes_file_index", "bytes_file_md5", "str_file_name", "uint64_file_length", "uint32_appid", "uint32_instid", "uint64_src_uin", "uint32_uin_type" }, new Object[] { localByteStringMicro1, localByteStringMicro2, "", Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, MsgFileKey.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 64 }, new String[] { "bytes_file_index", "bytes_file_md5", "str_file_name", "uint64_file_length", "uint32_appid", "uint32_instid", "uint64_src_uin", "uint32_uin_type" }, new Object[] { localByteStringMicro1, localByteStringMicro2, "", localLong, localInteger, localInteger, localLong, localInteger }, MsgFileKey.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.file.DeviceProto.MsgFileKey
  * JD-Core Version:    0.7.0.1
  */

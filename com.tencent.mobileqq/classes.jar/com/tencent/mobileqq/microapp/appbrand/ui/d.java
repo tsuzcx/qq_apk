@@ -19,19 +19,18 @@ final class d
   
   public void a(b.c paramc)
   {
-    if (paramc == null) {}
-    a locala;
-    do
-    {
+    if (paramc == null) {
       return;
-      locala = this.a.a.a(paramc.a, paramc.b);
-    } while (locala == null);
-    locala.a(paramc.c, paramc.d, paramc.e);
+    }
+    a locala = this.a.a.a(paramc.a, paramc.b);
+    if (locala != null) {
+      locala.a(paramc.c, paramc.d, paramc.e);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.d
  * JD-Core Version:    0.7.0.1
  */

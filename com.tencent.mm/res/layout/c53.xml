@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/goz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/kzf" android:paddingBottom="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip">
+        <TextView android:textSize="@dimen/are" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/kzh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/arb" android:textColor="#7fffffff" android:ellipsize="end" android:id="@id/kze" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" />
+        <TextView android:textSize="@dimen/ard" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/kzg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:singleLine="true" android:drawableRight="@drawable/bk_" android:drawablePadding="4.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/f6j" android:paddingBottom="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip">
+        <ImageView android:id="@id/f6i" android:layout_width="120.0dip" android:layout_height="90.0dip" />
+        <TextView android:textSize="@dimen/arc" android:textColor="#7fffffff" android:ellipsize="end" android:id="@id/f6h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" />
+        <TextView android:textSize="@dimen/ard" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/f6k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:singleLine="true" android:drawableRight="@drawable/bk_" android:drawablePadding="4.0dip" />
+    </LinearLayout>
+    <ImageView android:id="@id/bv6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

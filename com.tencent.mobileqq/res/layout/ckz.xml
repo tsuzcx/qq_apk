@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/n23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/jtc" android:scaleType="centerCrop" />
+    <TextView android:textSize="@dimen/2e" android:textColor="@color/dt" android:id="@id/pyu" android:text="@string/za8" android:singleLine="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/8p" />
+    <com.tencent.luggage.scanner.scanner.ui.widget.ScannerFlashSwitcher android:id="@id/pyw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:id="@id/q0t" android:background="@drawable/jtb" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginRight="@dimen/2s" android:layout_marginBottom="@dimen/2t" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="@dimen/3b" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/jp2" app:iconColor="@color/dv" />
+    </LinearLayout>
+    <TextView android:textSize="28.0dip" android:textColor="@color/2d" android:id="@id/pyv" android:paddingBottom="@dimen/bq7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:shadowColor="@color/23" android:shadowRadius="10.0" android:layout_centerInParent="true" />
+</merge>

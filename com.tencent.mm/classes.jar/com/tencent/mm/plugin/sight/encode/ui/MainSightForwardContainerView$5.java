@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.sight.encode.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rd;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.autogen.a.xr;
+import com.tencent.mm.sdk.event.IListener;
 
-final class MainSightForwardContainerView$5
-  extends c<rd>
+class MainSightForwardContainerView$5
+  extends IListener<xr>
 {
-  MainSightForwardContainerView$5(MainSightForwardContainerView paramMainSightForwardContainerView)
+  MainSightForwardContainerView$5(MainSightForwardContainerView paramMainSightForwardContainerView, q paramq)
   {
-    AppMethodBeat.i(25039);
-    this.__eventId = rd.class.getName().hashCode();
-    AppMethodBeat.o(25039);
+    super(paramq);
+    AppMethodBeat.i(291926);
+    this.__eventId = xr.class.getName().hashCode();
+    AppMethodBeat.o(291926);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView.5
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class RemoteServiceProxy$3
   
   public void run()
   {
-    RemoteServiceProxy.access$100(this.this$0, this.a);
+    RemoteServiceProxy.access$100(this.this$0, this.val$sendMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.remote.RemoteServiceProxy.3
  * JD-Core Version:    0.7.0.1
  */

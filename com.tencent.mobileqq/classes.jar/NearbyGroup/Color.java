@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class Color
   extends JceStruct
 {
-  public long B;
-  public long G;
-  public long R;
+  public long B = 0L;
+  public long G = 0L;
+  public long R = 0L;
   
   public Color() {}
   
@@ -36,7 +36,7 @@ public final class Color
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.Color
  * JD-Core Version:    0.7.0.1
  */

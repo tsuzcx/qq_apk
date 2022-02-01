@@ -8,23 +8,27 @@ public class Vector3f
   
   public Vector3f(float paramFloat)
   {
-    this.points[0] = paramFloat;
-    this.points[1] = paramFloat;
-    this.points[2] = paramFloat;
+    float[] arrayOfFloat = this.points;
+    arrayOfFloat[0] = paramFloat;
+    arrayOfFloat[1] = paramFloat;
+    arrayOfFloat[2] = paramFloat;
   }
   
   public Vector3f(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.points[0] = paramFloat1;
-    this.points[1] = paramFloat2;
-    this.points[2] = paramFloat3;
+    float[] arrayOfFloat = this.points;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    arrayOfFloat[2] = paramFloat3;
   }
   
   public Vector3f(Vector3f paramVector3f)
   {
-    this.points[0] = paramVector3f.points[0];
-    this.points[1] = paramVector3f.points[1];
-    this.points[2] = paramVector3f.points[2];
+    float[] arrayOfFloat = this.points;
+    paramVector3f = paramVector3f.points;
+    arrayOfFloat[0] = paramVector3f[0];
+    arrayOfFloat[1] = paramVector3f[1];
+    arrayOfFloat[2] = paramVector3f[2];
   }
   
   public Vector3f(Vector4f paramVector4f)
@@ -45,37 +49,48 @@ public class Vector3f
   {
     float[] arrayOfFloat = this.points;
     arrayOfFloat[0] += paramFloat;
-    arrayOfFloat = this.points;
     arrayOfFloat[1] += paramFloat;
-    arrayOfFloat = this.points;
     arrayOfFloat[2] += paramFloat;
   }
   
   public void add(Vector3f paramVector3f)
   {
     float[] arrayOfFloat = this.points;
-    arrayOfFloat[0] += paramVector3f.points[0];
-    arrayOfFloat = this.points;
-    arrayOfFloat[1] += paramVector3f.points[1];
-    arrayOfFloat = this.points;
-    arrayOfFloat[2] += paramVector3f.points[2];
+    float f = arrayOfFloat[0];
+    paramVector3f = paramVector3f.points;
+    arrayOfFloat[0] = (f + paramVector3f[0]);
+    arrayOfFloat[1] += paramVector3f[1];
+    arrayOfFloat[2] += paramVector3f[2];
   }
   
   public void crossProduct(Vector3f paramVector3f1, Vector3f paramVector3f2)
   {
-    paramVector3f2.setX(this.points[1] * paramVector3f1.points[2] - this.points[2] * paramVector3f1.points[1]);
-    paramVector3f2.setY(this.points[2] * paramVector3f1.points[0] - this.points[0] * paramVector3f1.points[2]);
-    paramVector3f2.setZ(this.points[0] * paramVector3f1.points[1] - this.points[1] * paramVector3f1.points[0]);
+    float[] arrayOfFloat1 = this.points;
+    float f = arrayOfFloat1[1];
+    float[] arrayOfFloat2 = paramVector3f1.points;
+    paramVector3f2.setX(f * arrayOfFloat2[2] - arrayOfFloat1[2] * arrayOfFloat2[1]);
+    arrayOfFloat1 = this.points;
+    f = arrayOfFloat1[2];
+    arrayOfFloat2 = paramVector3f1.points;
+    paramVector3f2.setY(f * arrayOfFloat2[0] - arrayOfFloat1[0] * arrayOfFloat2[2]);
+    arrayOfFloat1 = this.points;
+    f = arrayOfFloat1[0];
+    paramVector3f1 = paramVector3f1.points;
+    paramVector3f2.setZ(f * paramVector3f1[1] - arrayOfFloat1[1] * paramVector3f1[0]);
   }
   
   public float dotProduct(Vector3f paramVector3f)
   {
-    return this.points[0] * paramVector3f.points[0] + this.points[1] * paramVector3f.points[1] + this.points[2] * paramVector3f.points[2];
+    float[] arrayOfFloat = this.points;
+    float f = arrayOfFloat[0];
+    paramVector3f = paramVector3f.points;
+    return f * paramVector3f[0] + arrayOfFloat[1] * paramVector3f[1] + arrayOfFloat[2] * paramVector3f[2];
   }
   
   public float getLength()
   {
-    return (float)Math.sqrt(this.points[0] * this.points[0] + this.points[1] * this.points[1] + this.points[2] * this.points[2]);
+    float[] arrayOfFloat = this.points;
+    return (float)Math.sqrt(arrayOfFloat[0] * arrayOfFloat[0] + arrayOfFloat[1] * arrayOfFloat[1] + arrayOfFloat[2] * arrayOfFloat[2]);
   }
   
   public float getX()
@@ -97,18 +112,24 @@ public class Vector3f
   {
     float[] arrayOfFloat = this.points;
     arrayOfFloat[0] *= paramFloat;
-    arrayOfFloat = this.points;
     arrayOfFloat[1] *= paramFloat;
-    arrayOfFloat = this.points;
     arrayOfFloat[2] *= paramFloat;
   }
   
   public void normalize()
   {
-    double d = Math.sqrt(this.points[0] * this.points[0] + this.points[1] * this.points[1] + this.points[2] * this.points[2]);
-    this.points[0] = ((float)(this.points[0] / d));
-    this.points[1] = ((float)(this.points[1] / d));
-    this.points[2] = ((float)(this.points[2] / d));
+    float[] arrayOfFloat = this.points;
+    double d1 = Math.sqrt(arrayOfFloat[0] * arrayOfFloat[0] + arrayOfFloat[1] * arrayOfFloat[1] + arrayOfFloat[2] * arrayOfFloat[2]);
+    arrayOfFloat = this.points;
+    double d2 = arrayOfFloat[0];
+    Double.isNaN(d2);
+    arrayOfFloat[0] = ((float)(d2 / d1));
+    d2 = arrayOfFloat[1];
+    Double.isNaN(d2);
+    arrayOfFloat[1] = ((float)(d2 / d1));
+    d2 = arrayOfFloat[2];
+    Double.isNaN(d2);
+    arrayOfFloat[2] = ((float)(d2 / d1));
   }
   
   public void set(Vector3f paramVector3f)
@@ -128,9 +149,10 @@ public class Vector3f
   
   public void setXYZ(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.points[0] = paramFloat1;
-    this.points[1] = paramFloat2;
-    this.points[2] = paramFloat3;
+    float[] arrayOfFloat = this.points;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    arrayOfFloat[2] = paramFloat3;
   }
   
   public void setY(float paramFloat)
@@ -146,11 +168,11 @@ public class Vector3f
   public void subtract(Vector3f paramVector3f)
   {
     float[] arrayOfFloat = this.points;
-    arrayOfFloat[0] -= paramVector3f.points[0];
-    arrayOfFloat = this.points;
-    arrayOfFloat[1] -= paramVector3f.points[1];
-    arrayOfFloat = this.points;
-    arrayOfFloat[2] -= paramVector3f.points[2];
+    float f = arrayOfFloat[0];
+    paramVector3f = paramVector3f.points;
+    arrayOfFloat[0] = (f - paramVector3f[0]);
+    arrayOfFloat[1] -= paramVector3f[1];
+    arrayOfFloat[2] -= paramVector3f[2];
   }
   
   public float[] toArray()
@@ -160,7 +182,14 @@ public class Vector3f
   
   public String toString()
   {
-    return "X:" + this.points[0] + " Y:" + this.points[1] + " Z:" + this.points[2];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("X:");
+    localStringBuilder.append(this.points[0]);
+    localStringBuilder.append(" Y:");
+    localStringBuilder.append(this.points[1]);
+    localStringBuilder.append(" Z:");
+    localStringBuilder.append(this.points[2]);
+    return localStringBuilder.toString();
   }
   
   public float x()
@@ -195,7 +224,7 @@ public class Vector3f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.Vector3f
  * JD-Core Version:    0.7.0.1
  */

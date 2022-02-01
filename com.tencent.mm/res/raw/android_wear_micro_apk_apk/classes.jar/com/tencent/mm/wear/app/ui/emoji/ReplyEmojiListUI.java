@@ -7,32 +7,32 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import com.tencent.mm.wear.app.d.f;
+import com.tencent.mm.wear.app.d.g;
 import com.tencent.mm.wear.app.ui.MMActivity;
 import com.tencent.mm.wear.app.ui.MMAvatarActivity;
 
 public class ReplyEmojiListUI
   extends MMAvatarActivity
 {
-  private AdapterView.OnItemClickListener aeI = new AdapterView.OnItemClickListener()
+  private AdapterView.OnItemClickListener aik = new AdapterView.OnItemClickListener()
   {
     public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
     {
       int i = ReplyEmojiListUI.a(ReplyEmojiListUI.this).getHeaderViewsCount();
-      if ((paramAnonymousInt == i) && (ReplyEmojiListUI.b(ReplyEmojiListUI.this).nn()))
+      if ((paramAnonymousInt == i) && (ReplyEmojiListUI.b(ReplyEmojiListUI.this).oa()))
       {
         paramAnonymousAdapterView = new Intent(ReplyEmojiListUI.this, HeartBeatEmojiUI.class);
-        ReplyEmojiListUI.this.e(paramAnonymousAdapterView);
+        ReplyEmojiListUI.this.g(paramAnonymousAdapterView);
         return;
       }
-      paramAnonymousAdapterView = ReplyEmojiListUI.b(ReplyEmojiListUI.this).bX(paramAnonymousInt - i);
+      paramAnonymousAdapterView = ReplyEmojiListUI.b(ReplyEmojiListUI.this).ct(paramAnonymousInt - i);
       paramAnonymousView = new Intent(ReplyEmojiListUI.this, DetailEmojiListUI.class);
-      paramAnonymousView.putExtra("key_product_id", paramAnonymousAdapterView.afs);
-      ReplyEmojiListUI.this.e(paramAnonymousView);
+      paramAnonymousView.putExtra("key_product_id", paramAnonymousAdapterView.aiU);
+      ReplyEmojiListUI.this.g(paramAnonymousView);
     }
   };
-  private ListView afT;
-  private d afU;
+  private ListView ajv;
+  private d ajw;
   
   public final int getLayoutId()
   {
@@ -50,8 +50,8 @@ public class ReplyEmojiListUI
       return;
       if (paramInt2 == -1)
       {
-        if (nd() > 0) {
-          f.i(this, nd());
+        if (nQ() > 0) {
+          g.i(this, nQ());
         }
         finish();
       }
@@ -61,19 +61,19 @@ public class ReplyEmojiListUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.afT = ((ListView)findViewById(2131558454));
+    this.ajv = ((ListView)findViewById(2131558455));
     if (!MMActivity.isRect())
     {
       paramBundle = getLayoutInflater().inflate(2130903050, null);
       View localView = getLayoutInflater().inflate(2130903049, null);
-      this.afT.addHeaderView(paramBundle);
-      this.afT.addFooterView(localView);
-      this.afT.setPadding(36, 0, 36, 0);
+      this.ajv.addHeaderView(paramBundle);
+      this.ajv.addFooterView(localView);
+      this.ajv.setPadding(36, 0, 36, 0);
     }
-    this.afU = new d(this);
-    this.afT.setAdapter(this.afU);
-    this.afT.setOnItemClickListener(this.aeI);
-    N(getUsername());
+    this.ajw = new d(this);
+    this.ajv.setAdapter(this.ajw);
+    this.ajv.setOnItemClickListener(this.aik);
+    U(getUsername());
   }
 }
 

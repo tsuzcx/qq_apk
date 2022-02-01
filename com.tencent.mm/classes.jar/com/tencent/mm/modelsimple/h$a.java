@@ -1,39 +1,39 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k;
+import com.tencent.mm.am.n;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.p.a;
-import com.tencent.mm.protocal.p.b;
+import com.tencent.mm.protocal.m.a;
+import com.tencent.mm.protocal.m.b;
 
 public final class h$a
-  extends k
+  extends n
 {
-  private final p.a fOK;
-  private final p.b fOL;
+  private final m.a oSf;
+  private final m.b oSg;
   
   public h$a()
   {
-    AppMethodBeat.i(16567);
-    this.fOK = new p.a();
-    this.fOL = new p.b();
-    AppMethodBeat.o(16567);
+    AppMethodBeat.i(20598);
+    this.oSf = new m.a();
+    this.oSg = new m.b();
+    AppMethodBeat.o(20598);
   }
   
   public final l.d getReqObjImp()
   {
-    return this.fOK;
+    return this.oSf;
   }
   
   public final l.e getRespObj()
   {
-    return this.fOL;
+    return this.oSg;
   }
   
   public final int getType()
   {
-    return 10;
+    return 0;
   }
   
   public final String getUri()
@@ -43,7 +43,7 @@ public final class h$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.h.a
  * JD-Core Version:    0.7.0.1
  */

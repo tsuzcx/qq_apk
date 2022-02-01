@@ -111,29 +111,25 @@ public class TPMediaComposition
   
   long getAVDuration()
   {
-    long l2;
-    if (this.mAVTracks != null)
+    Object localObject = this.mAVTracks;
+    long l1 = 0L;
+    long l2 = l1;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mAVTracks.iterator();
-      long l1 = 0L;
-      l2 = l1;
-      if (!localIterator.hasNext()) {
-        break label69;
+      localObject = ((List)localObject).iterator();
+      for (;;)
+      {
+        l2 = l1;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        ITPMediaTrack localITPMediaTrack = (ITPMediaTrack)((Iterator)localObject).next();
+        if (l1 < localITPMediaTrack.getTimelineDurationMs()) {
+          l1 = localITPMediaTrack.getTimelineDurationMs();
+        }
       }
-      ITPMediaTrack localITPMediaTrack = (ITPMediaTrack)localIterator.next();
-      if (l1 >= localITPMediaTrack.getTimelineDurationMs()) {
-        break label71;
-      }
-      l1 = localITPMediaTrack.getTimelineDurationMs();
     }
-    label69:
-    label71:
-    for (;;)
-    {
-      break;
-      l2 = 0L;
-      return l2;
-    }
+    return l2;
   }
   
   public List<ITPMediaTrack> getAllAVTracks()
@@ -171,29 +167,25 @@ public class TPMediaComposition
   
   long getAudioDuration()
   {
-    long l2;
-    if (this.mAudioTracks != null)
+    Object localObject = this.mAudioTracks;
+    long l1 = 0L;
+    long l2 = l1;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mAudioTracks.iterator();
-      long l1 = 0L;
-      l2 = l1;
-      if (!localIterator.hasNext()) {
-        break label69;
+      localObject = ((List)localObject).iterator();
+      for (;;)
+      {
+        l2 = l1;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        ITPMediaTrack localITPMediaTrack = (ITPMediaTrack)((Iterator)localObject).next();
+        if (l1 < localITPMediaTrack.getTimelineDurationMs()) {
+          l1 = localITPMediaTrack.getTimelineDurationMs();
+        }
       }
-      ITPMediaTrack localITPMediaTrack = (ITPMediaTrack)localIterator.next();
-      if (l1 >= localITPMediaTrack.getTimelineDurationMs()) {
-        break label71;
-      }
-      l1 = localITPMediaTrack.getTimelineDurationMs();
     }
-    label69:
-    label71:
-    for (;;)
-    {
-      break;
-      l2 = 0L;
-      return l2;
-    }
+    return l2;
   }
   
   public ITPMediaTrack getAudioTrack(int paramInt)
@@ -212,59 +204,52 @@ public class TPMediaComposition
   
   public long getDurationMs()
   {
-    long l2;
     if (!TPCommonUtils.isEmpty(this.mAVTracks)) {
-      l2 = getAVDuration();
+      return getAVDuration();
+    }
+    long l1 = getAudioDuration();
+    long l2 = getVideoDuration();
+    long l3;
+    if (l2 > l1) {
+      l3 = l2;
+    } else {
+      l3 = l1;
+    }
+    String str = TPMediaCompositionHelper.composition_duration_strategy;
+    int i = -1;
+    int j = str.hashCode();
+    if (j != -2046821033)
+    {
+      if (j != -491658008)
+      {
+        if ((j == -472621683) && (str.equals("base_video"))) {
+          i = 0;
+        }
+      }
+      else if (str.equals("base_audio")) {
+        i = 1;
+      }
+    }
+    else if (str.equals("base_longer")) {
+      i = 2;
     }
     long l4;
-    long l1;
-    label40:
-    do
+    if (i != 0)
     {
-      return l2;
-      l4 = getAudioDuration();
-      l1 = getVideoDuration();
-      long l3;
-      String str;
-      int i;
-      if (l1 > l4)
+      l4 = l1;
+      if (i != 1)
       {
-        l3 = l1;
-        str = TPMediaCompositionHelper.composition_duration_strategy;
-        i = -1;
-        switch (str.hashCode())
-        {
-        }
-      }
-      for (;;)
-      {
-        l2 = l1;
-        switch (i)
-        {
-        case 0: 
-        default: 
+        if (i != 2) {
           return l3;
-          l3 = l4;
-          break label40;
-          if (str.equals("base_video"))
-          {
-            i = 0;
-            continue;
-            if (str.equals("base_audio"))
-            {
-              i = 1;
-              continue;
-              if (str.equals("base_longer")) {
-                i = 2;
-              }
-            }
-          }
-          break;
         }
+        l4 = l1;
+        if (l2 <= l1) {}
       }
-      return l4;
-      l2 = l1;
-    } while (l1 > l4);
+    }
+    else
+    {
+      l4 = l2;
+    }
     return l4;
   }
   
@@ -289,29 +274,25 @@ public class TPMediaComposition
   
   long getVideoDuration()
   {
-    long l2;
-    if (this.mVideoTracks != null)
+    Object localObject = this.mVideoTracks;
+    long l1 = 0L;
+    long l2 = l1;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mVideoTracks.iterator();
-      long l1 = 0L;
-      l2 = l1;
-      if (!localIterator.hasNext()) {
-        break label69;
+      localObject = ((List)localObject).iterator();
+      for (;;)
+      {
+        l2 = l1;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        ITPMediaTrack localITPMediaTrack = (ITPMediaTrack)((Iterator)localObject).next();
+        if (l1 < localITPMediaTrack.getTimelineDurationMs()) {
+          l1 = localITPMediaTrack.getTimelineDurationMs();
+        }
       }
-      ITPMediaTrack localITPMediaTrack = (ITPMediaTrack)localIterator.next();
-      if (l1 >= localITPMediaTrack.getTimelineDurationMs()) {
-        break label71;
-      }
-      l1 = localITPMediaTrack.getTimelineDurationMs();
     }
-    label69:
-    label71:
-    for (;;)
-    {
-      break;
-      l2 = 0L;
-      return l2;
-    }
+    return l2;
   }
   
   public ITPMediaTrack getVideoTrack(int paramInt)
@@ -330,55 +311,68 @@ public class TPMediaComposition
   
   public void release()
   {
-    if (this.mVideoTracks != null)
+    List localList = this.mVideoTracks;
+    if (localList != null)
     {
-      this.mVideoTracks.clear();
+      localList.clear();
       this.mVideoTracks = null;
     }
-    if (this.mAudioTracks != null)
+    localList = this.mAudioTracks;
+    if (localList != null)
     {
-      this.mAudioTracks.clear();
+      localList.clear();
       this.mAudioTracks = null;
     }
-    if (this.mAVTracks != null)
+    localList = this.mAVTracks;
+    if (localList != null)
     {
-      this.mAVTracks.clear();
+      localList.clear();
       this.mAVTracks = null;
     }
   }
   
   public boolean removeAVTrack(ITPMediaTrack paramITPMediaTrack)
   {
-    if (paramITPMediaTrack == null) {
-      throw new IllegalArgumentException("remove audio track , track is null .");
+    if (paramITPMediaTrack != null) {
+      return this.mAVTracks.remove(paramITPMediaTrack);
     }
-    return this.mAVTracks.remove(paramITPMediaTrack);
+    throw new IllegalArgumentException("remove audio track , track is null .");
   }
   
   public boolean removeAudioTrack(ITPMediaTrack paramITPMediaTrack)
   {
-    if (paramITPMediaTrack == null) {
+    if (paramITPMediaTrack != null) {
       try
       {
-        throw new IllegalArgumentException("remove audio track , track is null .");
+        boolean bool = this.mAudioTracks.remove(paramITPMediaTrack);
+        return bool;
       }
-      finally {}
+      finally
+      {
+        break label35;
+      }
     }
-    boolean bool = this.mAudioTracks.remove(paramITPMediaTrack);
-    return bool;
+    throw new IllegalArgumentException("remove audio track , track is null .");
+    label35:
+    throw paramITPMediaTrack;
   }
   
   public boolean removeVideoTrack(ITPMediaTrack paramITPMediaTrack)
   {
-    if (paramITPMediaTrack == null) {
+    if (paramITPMediaTrack != null) {
       try
       {
-        throw new IllegalArgumentException("remove video track , track is null .");
+        boolean bool = this.mVideoTracks.remove(paramITPMediaTrack);
+        return bool;
       }
-      finally {}
+      finally
+      {
+        break label35;
+      }
     }
-    boolean bool = this.mVideoTracks.remove(paramITPMediaTrack);
-    return bool;
+    throw new IllegalArgumentException("remove video track , track is null .");
+    label35:
+    throw paramITPMediaTrack;
   }
   
   public void setAVTracks(List<ITPMediaTrack> paramList)
@@ -398,7 +392,7 @@ public class TPMediaComposition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.composition.TPMediaComposition
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import awpi;
-
-public class PersonalityLabelGalleryActivity$2$1
+class PersonalityLabelGalleryActivity$2$1
   implements Runnable
 {
-  public PersonalityLabelGalleryActivity$2$1(awpi paramawpi) {}
+  PersonalityLabelGalleryActivity$2$1(PersonalityLabelGalleryActivity.2 param2) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class PersonalityLabelGalleryActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

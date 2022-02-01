@@ -13,17 +13,17 @@ public final class cell_qboss_psv_adv
   static Map<String, String> cache_extendinfo;
   static s_picdata cache_float_picdata = new s_picdata();
   static s_picdata cache_picdata = new s_picdata();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public s_picdata backgd_picdata;
+  public s_picdata backgd_picdata = null;
   public String btnText = "";
-  public long countDownTime;
-  public Map<String, String> extendinfo;
-  public s_picdata float_picdata;
-  public int markType;
-  public int mediatype;
-  public s_picdata picdata;
-  public int psvAdvType;
+  public long countDownTime = 0L;
+  public Map<String, String> extendinfo = null;
+  public s_picdata float_picdata = null;
+  public int markType = 0;
+  public int mediatype = 0;
+  public s_picdata picdata = null;
+  public int psvAdvType = 0;
   public String summary = "";
   public String title = "";
   
@@ -73,39 +73,47 @@ public final class cell_qboss_psv_adv
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.mediatype, 0);
-    if (this.picdata != null) {
-      paramJceOutputStream.write(this.picdata, 1);
+    Object localObject = this.picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 2);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 3);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.countDownTime, 4);
-    if (this.backgd_picdata != null) {
-      paramJceOutputStream.write(this.backgd_picdata, 5);
+    localObject = this.backgd_picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.psvAdvType, 6);
     paramJceOutputStream.write(this.markType, 7);
-    if (this.btnText != null) {
-      paramJceOutputStream.write(this.btnText, 8);
+    localObject = this.btnText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.actiontype, 9);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 10);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 11);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
-    if (this.float_picdata != null) {
-      paramJceOutputStream.write(this.float_picdata, 12);
+    localObject = this.float_picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_qboss_psv_adv
  * JD-Core Version:    0.7.0.1
  */

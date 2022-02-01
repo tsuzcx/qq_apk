@@ -19,33 +19,45 @@ public class ExpectException
   {
     try
     {
-      this.next.evaluate();
-      i = 1;
+      try
+      {
+        this.next.evaluate();
+        i = 1;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (!this.expected.isAssignableFrom(localThrowable.getClass())) {
+          break label73;
+        }
+      }
+      int i = 0;
+      if (i == 0) {
+        return;
+      }
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("Expected exception: ");
+      localStringBuilder1.append(this.expected.getName());
+      throw new AssertionError(localStringBuilder1.toString());
     }
     catch (AssumptionViolatedException localAssumptionViolatedException)
     {
+      StringBuilder localStringBuilder1;
+      label73:
+      StringBuilder localStringBuilder2;
       throw localAssumptionViolatedException;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (!this.expected.isAssignableFrom(localThrowable.getClass()))
-        {
-          throw new Exception("Unexpected exception, expected<" + this.expected.getName() + "> but was<" + localThrowable.getClass().getName() + ">", localThrowable);
-          return;
-        }
-        int i = 0;
-      }
-    }
-    if (i != 0) {
-      throw new AssertionError("Expected exception: " + this.expected.getName());
-    }
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("Unexpected exception, expected<");
+    localStringBuilder2.append(this.expected.getName());
+    localStringBuilder2.append("> but was<");
+    localStringBuilder2.append(localStringBuilder1.getClass().getName());
+    localStringBuilder2.append(">");
+    throw new Exception(localStringBuilder2.toString(), localStringBuilder1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.statements.ExpectException
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,10 @@ public final class CommInteractive
 {
   static Map<Integer, String> cache_ext;
   static stOperaData cache_opData = new stOperaData();
-  public Map<Integer, String> ext;
-  public int iRet;
-  public int interactiveType;
-  public stOperaData opData;
+  public Map<Integer, String> ext = null;
+  public int iRet = 0;
+  public int interactiveType = 0;
+  public stOperaData opData = null;
   public String strErrToast = "";
   
   static
@@ -46,21 +46,24 @@ public final class CommInteractive
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iRet, 0);
-    if (this.strErrToast != null) {
-      paramJceOutputStream.write(this.strErrToast, 1);
+    Object localObject = this.strErrToast;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.interactiveType, 2);
-    if (this.opData != null) {
-      paramJceOutputStream.write(this.opData, 3);
+    localObject = this.opData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 4);
+    localObject = this.ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.CommInteractive
  * JD-Core Version:    0.7.0.1
  */

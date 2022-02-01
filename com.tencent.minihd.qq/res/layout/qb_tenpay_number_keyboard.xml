@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/qb_tenpay_keybg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/qb_tenpay_border_color" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <View android:layout_width="0.0px" android:layout_height="50.0dip" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_1" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="1" android:layout_weight="1.0" />
+        <View android:background="@color/qb_tenpay_border_color" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_2" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="2" android:layout_weight="1.0" />
+        <View android:background="@color/qb_tenpay_border_color" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_3" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="3" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:background="@color/qb_tenpay_border_color" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <View android:layout_width="0.0px" android:layout_height="50.0dip" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_4" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="4" android:layout_weight="1.0" />
+        <View android:background="@color/qb_tenpay_border_color" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_5" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="5" android:layout_weight="1.0" />
+        <View android:background="@color/qb_tenpay_border_color" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_6" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="6" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:background="@color/qb_tenpay_border_color" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <View android:layout_width="0.0px" android:layout_height="50.0dip" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_7" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="7" android:layout_weight="1.0" />
+        <View android:background="@color/qb_tenpay_border_color" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_8" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="8" android:layout_weight="1.0" />
+        <View android:background="@color/qb_tenpay_border_color" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_9" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="9" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:background="@color/qb_tenpay_border_color" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <View android:layout_width="0.0px" android:layout_height="50.0dip" />
+        <Button android:textSize="20.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_x" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <View android:background="@color/qb_tenpay_border_color" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+        <Button android:textSize="30.0sp" android:textColor="@color/qb_tenpay_black_color" android:id="@id/tenpay_keyboard_0" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="0" android:layout_weight="1.0" />
+        <View android:background="@color/qb_tenpay_border_color" android:layout_width="0.5dip" android:layout_height="fill_parent" />
+        <ImageButton android:id="@id/tenpay_keyboard_d" android:background="@drawable/qb_tenpay_keybtn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qb_tenpay_keyclose" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

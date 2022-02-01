@@ -9,23 +9,23 @@ import com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetStrokeStyleAction
 public final class h
   extends a<BaseDrawActionArg>
 {
-  private static h hfA;
+  private static h qUb;
   
   static
   {
-    AppMethodBeat.i(103646);
-    hfA = new h();
-    AppMethodBeat.o(103646);
+    AppMethodBeat.i(145329);
+    qUb = new h();
+    AppMethodBeat.o(145329);
   }
   
-  public static h ayf()
+  public static h ckh()
   {
-    return hfA;
+    return qUb;
   }
   
-  public final <T> T zC(String paramString)
+  public final <T> T WS(String paramString)
   {
-    AppMethodBeat.i(103645);
+    AppMethodBeat.i(145328);
     Object localObject = null;
     if ("linear".equalsIgnoreCase(paramString)) {
       localObject = new RealSetStrokeStyleActionLinearArg();
@@ -33,7 +33,7 @@ public final class h
     for (;;)
     {
       ((BaseDrawActionArg)localObject).method = paramString;
-      AppMethodBeat.o(103645);
+      AppMethodBeat.o(145328);
       return localObject;
       if ("radial".equalsIgnoreCase(paramString)) {
         localObject = new RealSetStrokeStyleActionRadialArg();
@@ -45,7 +45,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.h
  * JD-Core Version:    0.7.0.1
  */

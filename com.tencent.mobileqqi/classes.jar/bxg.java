@@ -1,19 +1,25 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ProfileCardUtil;
 
 public class bxg
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   public bxg(ChatActivity paramChatActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.dismissDialog(230);
-    ProfileCardUtil.a(this.a, "", this.a.a.a, this.a.b.getAccount(), true);
+    if (paramMotionEvent.getAction() == 0) {
+      this.a.findViewById(2131231207).setBackgroundResource(2130840096);
+    }
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1) {
+        this.a.findViewById(2131231207).setBackgroundResource(2130840095);
+      }
+    }
   }
 }
 

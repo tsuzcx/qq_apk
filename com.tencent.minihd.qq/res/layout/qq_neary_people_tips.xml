@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:scrollbars="@null" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip">
+            <TextView android:textSize="@dimen/font_size_middle" android:textStyle="bold" android:textColor="@color/skin_black" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nearby_dot" />
+            <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/skin_black" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/nearby_tips1" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="25.0dip">
+            <TextView android:textSize="@dimen/font_size_middle" android:textStyle="bold" android:textColor="@color/skin_black" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nearby_dot" />
+            <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/skin_black" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/nearby_tips2" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
+            <TextView android:textSize="@dimen/font_size_middle" android:textStyle="bold" android:textColor="@color/skin_black" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nearby_dot" />
+            <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/skin_black" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/nearby_tips3" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
+            <TextView android:textSize="@dimen/font_size_middle" android:textStyle="bold" android:textColor="@color/skin_black" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nearby_dot" />
+            <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/skin_black" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/nearby_tips4" />
+        </LinearLayout>
+        <Button android:id="@id/nearby_ok" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="@string/shortcut_tips_know" android:contentDescription="@null" style="@style/ButtonBlue" />
+        <View android:layout_width="1.0dip" android:layout_height="30.0dip" />
+    </LinearLayout>
+</ScrollView>

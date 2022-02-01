@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afbk;
-import afbl;
-import afbp;
 import android.graphics.Path;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -13,92 +10,109 @@ import java.util.List;
 class HalfAlgorithm$TransPathJob
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<afbp> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<afbl> jdField_a_of_type_JavaUtilList;
+  private List<PointSet> a;
+  private WeakReference<TransPathJobListener> b;
+  private int c;
   
-  public HalfAlgorithm$TransPathJob(int paramInt, List<afbl> paramList, afbp paramafbp)
+  public HalfAlgorithm$TransPathJob(int paramInt, List<PointSet> paramList, TransPathJobListener paramTransPathJobListener)
   {
-    this.jdField_a_of_type_Int = paramList;
-    this.jdField_a_of_type_JavaUtilList = paramafbp;
+    this.c = paramList;
+    this.a = paramTransPathJobListener;
     Object localObject;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
+    this.b = new WeakReference(localObject);
   }
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      localObject1 = this.b;
+      if ((localObject1 != null) && (((WeakReference)localObject1).get() != null))
       {
-        localObject = (afbp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null) {
-          ((afbp)localObject).a(this.jdField_a_of_type_Int, false, null, null);
-        }
-      }
-      return;
-    }
-    QLog.d("TransPathJob", 2, "TransPathJob begin:" + this.jdField_a_of_type_Int + " - " + System.currentTimeMillis());
-    Path localPath1 = new Path();
-    localPath1.reset();
-    ArrayList localArrayList1 = new ArrayList();
-    Path localPath2 = new Path();
-    ArrayList localArrayList2 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject = null;
-    afbl localafbl;
-    if (localIterator.hasNext())
-    {
-      localafbl = (afbl)localIterator.next();
-      if (localObject == null) {
-        break label488;
-      }
-      localafbl.b((afbl)localObject);
-      localObject = null;
-    }
-    label321:
-    label483:
-    label488:
-    for (;;)
-    {
-      if (HalfAlgorithm.a(this.this$0, localafbl.a.jdField_a_of_type_Float, localafbl.a.b, localafbl.a.c, localafbl.a.jdField_a_of_type_Long, localafbl.c.jdField_a_of_type_Float, localafbl.c.b, localafbl.b.jdField_a_of_type_Float, localafbl.b.b, localafbl.b.c, localafbl.b.jdField_a_of_type_Long, localPath2, localArrayList2)) {
-        if (localArrayList2.size() > 0)
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("TransPathJob begin:");
+        ((StringBuilder)localObject1).append(this.c);
+        ((StringBuilder)localObject1).append(" - ");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis());
+        localObject1 = ((StringBuilder)localObject1).toString();
+        String str = "TransPathJob";
+        QLog.d("TransPathJob", 2, (String)localObject1);
+        Path localPath2 = new Path();
+        localPath2.reset();
+        ArrayList localArrayList1 = new ArrayList();
+        Path localPath1 = new Path();
+        ArrayList localArrayList2 = new ArrayList();
+        Iterator localIterator = this.a.iterator();
+        localObject1 = null;
+        while (localIterator.hasNext())
         {
-          localPath1.addPath(localPath2);
-          HalfAlgorithm.a(this.this$0, localArrayList1, localArrayList2);
-          localPath2.reset();
-          localArrayList2.clear();
+          Object localObject2 = (PointSet)localIterator.next();
+          if (localObject1 != null)
+          {
+            ((PointSet)localObject2).b((PointSet)localObject1);
+            localObject1 = null;
+          }
+          if (HalfAlgorithm.a(this.this$0, ((PointSet)localObject2).a.a, ((PointSet)localObject2).a.b, ((PointSet)localObject2).a.c, ((PointSet)localObject2).a.d, ((PointSet)localObject2).c.a, ((PointSet)localObject2).c.b, ((PointSet)localObject2).b.a, ((PointSet)localObject2).b.b, ((PointSet)localObject2).b.c, ((PointSet)localObject2).b.d, localPath1, localArrayList2))
+          {
+            if (localArrayList2.size() > 0)
+            {
+              localPath2.addPath(localPath1);
+              HalfAlgorithm.a(this.this$0, localArrayList1, localArrayList2);
+            }
+            else
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("TransPathJob segment == 0:");
+              ((StringBuilder)localObject2).append(System.currentTimeMillis());
+              QLog.d(str, 2, ((StringBuilder)localObject2).toString());
+            }
+            localPath1.reset();
+            localArrayList2.clear();
+          }
+          else
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("TransPathJob no segment:");
+            ((StringBuilder)localObject1).append(System.currentTimeMillis());
+            QLog.d(str, 2, ((StringBuilder)localObject1).toString());
+            localObject1 = localObject2;
+          }
         }
-      }
-      for (;;)
-      {
-        break;
-        QLog.d("TransPathJob", 2, "TransPathJob segment == 0:" + System.currentTimeMillis());
-        break label321;
-        QLog.d("TransPathJob", 2, "TransPathJob no segment:" + System.currentTimeMillis());
-        localObject = localafbl;
-      }
-      localObject = (afbp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      int i;
-      if (localObject != null)
-      {
-        i = this.jdField_a_of_type_Int;
-        if (localArrayList1.size() <= 0) {
-          break label483;
+        localObject1 = (TransPathJobListener)this.b.get();
+        if (localObject1 != null)
+        {
+          int i = this.c;
+          boolean bool;
+          if (localArrayList1.size() > 0) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          ((TransPathJobListener)localObject1).a(i, bool, localPath2, localArrayList1);
         }
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        ((afbp)localObject).a(i, bool, localPath1, localArrayList1);
-        QLog.d("TransPathJob", 2, "TransPathJob end:" + this.jdField_a_of_type_Int + "-" + System.currentTimeMillis());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("TransPathJob end:");
+        ((StringBuilder)localObject1).append(this.c);
+        ((StringBuilder)localObject1).append("-");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis());
+        QLog.d(str, 2, ((StringBuilder)localObject1).toString());
         return;
+      }
+    }
+    localObject1 = this.b;
+    if (localObject1 != null)
+    {
+      localObject1 = (TransPathJobListener)((WeakReference)localObject1).get();
+      if (localObject1 != null) {
+        ((TransPathJobListener)localObject1).a(this.c, false, null, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.HalfAlgorithm.TransPathJob
  * JD-Core Version:    0.7.0.1
  */

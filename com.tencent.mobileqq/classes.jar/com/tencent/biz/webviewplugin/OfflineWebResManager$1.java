@@ -2,12 +2,11 @@ package com.tencent.biz.webviewplugin;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import zeq;
 
-public class OfflineWebResManager$1
+class OfflineWebResManager$1
   implements Runnable
 {
-  public OfflineWebResManager$1(zeq paramzeq, SharedPreferences paramSharedPreferences) {}
+  OfflineWebResManager$1(OfflineWebResManager paramOfflineWebResManager, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
@@ -17,7 +16,7 @@ public class OfflineWebResManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflineWebResManager.1
  * JD-Core Version:    0.7.0.1
  */

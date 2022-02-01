@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.concurrent.atomic.AtomicBoolean;
-import nbp;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
 
 class AfterSyncMsg$4
   implements Runnable
@@ -11,14 +11,14 @@ class AfterSyncMsg$4
   
   public void run()
   {
-    if (!nbp.a.get()) {
-      nbp.a(BaseApplicationImpl.getContext());
+    if (this.this$0.mAutomator.k.getApplication() != null) {
+      ZhituManager.a(this.this$0.mAutomator.k).a(this.this$0.mAutomator.k);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.AfterSyncMsg.4
  * JD-Core Version:    0.7.0.1
  */

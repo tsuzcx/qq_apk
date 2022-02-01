@@ -14,20 +14,21 @@ final class TdsReaderHelper$RunnableImpl
   
   public void run()
   {
-    switch (this.mJobType)
+    int i = this.mJobType;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      TdsReaderHelper.access$100();
+      if (i != 2) {
+        return;
+      }
+      TdsReaderHelper.access$200();
       return;
     }
-    TdsReaderHelper.access$200();
+    TdsReaderHelper.access$100();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.kwstudio.office.preview.TdsReaderHelper.RunnableImpl
  * JD-Core Version:    0.7.0.1
  */

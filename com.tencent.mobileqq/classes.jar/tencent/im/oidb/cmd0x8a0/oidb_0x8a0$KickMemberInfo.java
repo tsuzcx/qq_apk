@@ -19,13 +19,14 @@ public final class oidb_0x8a0$KickMemberInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "opt_uint32_operate", "opt_uint64_member_uin", "opt_uint32_flag", "opt_bytes_msg" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro }, KickMemberInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "opt_uint32_operate", "opt_uint64_member_uin", "opt_uint32_flag", "opt_bytes_msg" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, localByteStringMicro }, KickMemberInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a0.oidb_0x8a0.KickMemberInfo
  * JD-Core Version:    0.7.0.1
  */

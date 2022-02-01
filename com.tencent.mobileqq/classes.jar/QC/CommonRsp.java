@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class CommonRsp
   extends JceStruct
 {
-  public int err;
+  public int err = 0;
   public String msg = "";
-  public int ret;
+  public int ret = 0;
   
   public CommonRsp() {}
   
@@ -31,14 +31,15 @@ public final class CommonRsp
   {
     paramJceOutputStream.write(this.ret, 0);
     paramJceOutputStream.write(this.err, 1);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 2);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.CommonRsp
  * JD-Core Version:    0.7.0.1
  */

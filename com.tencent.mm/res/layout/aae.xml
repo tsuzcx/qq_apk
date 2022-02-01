@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/ahh" android:padding="15.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-</LinearLayout>
+<com.tencent.mm.plugin.finder.view.SimpleTouchableLayout android:id="@id/gq8" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderMediaBanner android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/eap" android:visibility="gone" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz" android:src="@raw/icons_filled_play" app:iconAlpha="0.5" app:iconColor="@color/az" />
+    </com.tencent.mm.plugin.finder.view.FinderMediaBanner>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/fo0" android:visibility="invisible" android:layout_width="@dimen/d9" android:layout_height="@dimen/d9" android:src="@raw/icon_filled_awesome" app:iconColor="@color/Red_90" />
+</com.tencent.mm.plugin.finder.view.SimpleTouchableLayout>

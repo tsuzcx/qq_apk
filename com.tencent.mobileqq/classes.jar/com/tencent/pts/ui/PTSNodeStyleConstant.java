@@ -29,12 +29,13 @@ public final class PTSNodeStyleConstant
   public static final String PADDING_RIGHT = "padding-right";
   public static final String PADDING_TOP = "padding-top";
   public static final String RIGHT = "right";
+  public static final String TEXT_ALIGN = "text-align";
   public static final String TOP = "top";
   public static final String WIDTH = "width";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.PTSNodeStyleConstant
  * JD-Core Version:    0.7.0.1
  */

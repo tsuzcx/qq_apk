@@ -1,20 +1,21 @@
 package com.tencent.pts.ui;
 
 import android.text.TextUtils;
+import com.tencent.pts.utils.PTSLog;
 import java.util.HashMap;
 import java.util.List;
 import org.json.JSONObject;
 
 public class PTSNodeInfo$Builder
 {
-  private PTSNodeAttribute attributes;
+  private PTSNodeAttribute attributes = new PTSNodeAttribute();
   private List<PTSNodeInfo> children;
   private String content;
-  private HashMap<String, String> eventInfo;
+  private HashMap<String, String> eventInfo = new HashMap();
   private boolean isRootNode;
   private String nodeType;
   private String parentID;
-  private PTSNodeStyle style;
+  private PTSNodeStyle style = new PTSNodeStyle();
   private String uniqueID;
   
   private void check(PTSNodeInfo paramPTSNodeInfo)
@@ -32,21 +33,42 @@ public class PTSNodeInfo$Builder
   
   public PTSNodeInfo build()
   {
-    if ((TextUtils.isEmpty(this.nodeType)) || (TextUtils.isEmpty(this.uniqueID))) {
-      throw new IllegalArgumentException("PTSNode info is wrong, there is no id or nodeType.");
+    if (TextUtils.isEmpty(this.nodeType))
+    {
+      PTSLog.e("PTSNodeInfo", "[build] PTSNodeInfo is not valid, nodeType is empty.");
+      if (!PTSLog.isDebug()) {
+        this.nodeType = "view";
+      } else {
+        throw new IllegalArgumentException("[build] PTSNodeInfo is not valid, nodeType is empty.");
+      }
     }
-    PTSNodeInfo localPTSNodeInfo = new PTSNodeInfo(null);
-    PTSNodeInfo.access$402(localPTSNodeInfo, this.nodeType);
-    PTSNodeInfo.access$502(localPTSNodeInfo, this.uniqueID);
-    PTSNodeInfo.access$602(localPTSNodeInfo, this.isRootNode);
-    PTSNodeInfo.access$702(localPTSNodeInfo, this.parentID);
-    PTSNodeInfo.access$802(localPTSNodeInfo, this.content);
-    PTSNodeInfo.access$002(localPTSNodeInfo, this.style);
-    PTSNodeInfo.access$102(localPTSNodeInfo, this.attributes);
-    PTSNodeInfo.access$902(localPTSNodeInfo, this.children);
-    PTSNodeInfo.access$202(localPTSNodeInfo, this.eventInfo);
-    check(localPTSNodeInfo);
-    return localPTSNodeInfo;
+    if (TextUtils.isEmpty(this.uniqueID))
+    {
+      PTSLog.e("PTSNodeInfo", "[build] PTSNodeInfo is not valid, id is empty.");
+      if (!PTSLog.isDebug())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("pts_uid_");
+        ((StringBuilder)localObject).append(System.currentTimeMillis());
+        this.uniqueID = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        throw new IllegalArgumentException("[build] PTSNodeInfo is not valid, id is empty.");
+      }
+    }
+    Object localObject = new PTSNodeInfo(null);
+    PTSNodeInfo.access$402((PTSNodeInfo)localObject, this.nodeType);
+    PTSNodeInfo.access$502((PTSNodeInfo)localObject, this.uniqueID);
+    PTSNodeInfo.access$602((PTSNodeInfo)localObject, this.isRootNode);
+    PTSNodeInfo.access$702((PTSNodeInfo)localObject, this.parentID);
+    PTSNodeInfo.access$802((PTSNodeInfo)localObject, this.content);
+    PTSNodeInfo.access$002((PTSNodeInfo)localObject, this.style);
+    PTSNodeInfo.access$102((PTSNodeInfo)localObject, this.attributes);
+    PTSNodeInfo.access$902((PTSNodeInfo)localObject, this.children);
+    PTSNodeInfo.access$202((PTSNodeInfo)localObject, this.eventInfo);
+    check((PTSNodeInfo)localObject);
+    return localObject;
   }
   
   public Builder withChildren(List<PTSNodeInfo> paramList)
@@ -117,7 +139,7 @@ public class PTSNodeInfo$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.PTSNodeInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

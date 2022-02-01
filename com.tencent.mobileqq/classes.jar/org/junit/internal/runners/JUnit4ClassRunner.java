@@ -57,8 +57,13 @@ public class JUnit4ClassRunner
         localIterator.remove();
       }
     }
-    if (this.testMethods.isEmpty()) {
-      throw new NoTestsRemainException();
+    if (!this.testMethods.isEmpty()) {
+      return;
+    }
+    paramFilter = new NoTestsRemainException();
+    for (;;)
+    {
+      throw paramFilter;
     }
   }
   
@@ -96,14 +101,14 @@ public class JUnit4ClassRunner
       new MethodRoadie(localObject, wrapMethod(paramMethod), paramRunNotifier, localDescription).run();
       return;
     }
-    catch (InvocationTargetException paramMethod)
-    {
-      testAborted(paramRunNotifier, localDescription, paramMethod.getCause());
-      return;
-    }
     catch (Exception paramMethod)
     {
       testAborted(paramRunNotifier, localDescription, paramMethod);
+      return;
+    }
+    catch (InvocationTargetException paramMethod)
+    {
+      testAborted(paramRunNotifier, localDescription, paramMethod.getCause());
     }
   }
   
@@ -154,7 +159,7 @@ public class JUnit4ClassRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.JUnit4ClassRunner
  * JD-Core Version:    0.7.0.1
  */

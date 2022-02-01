@@ -21,12 +21,11 @@ public final class AudioCapabilities
       this.supportedEncodings = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
       Arrays.sort(this.supportedEncodings);
     }
-    for (;;)
+    else
     {
-      this.maxChannelCount = paramInt;
-      return;
       this.supportedEncodings = new int[0];
     }
+    this.maxChannelCount = paramInt;
   }
   
   public static AudioCapabilities getCapabilities(Context paramContext)
@@ -37,24 +36,22 @@ public final class AudioCapabilities
   @SuppressLint({"InlinedApi"})
   static AudioCapabilities getCapabilities(Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) == 0)) {
-      return DEFAULT_AUDIO_CAPABILITIES;
+    if ((paramIntent != null) && (paramIntent.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) != 0)) {
+      return new AudioCapabilities(paramIntent.getIntArrayExtra("android.media.extra.ENCODINGS"), paramIntent.getIntExtra("android.media.extra.MAX_CHANNEL_COUNT", 0));
     }
-    return new AudioCapabilities(paramIntent.getIntArrayExtra("android.media.extra.ENCODINGS"), paramIntent.getIntExtra("android.media.extra.MAX_CHANNEL_COUNT", 0));
+    return DEFAULT_AUDIO_CAPABILITIES;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof AudioCapabilities)) {
-        return false;
-      }
-      paramObject = (AudioCapabilities)paramObject;
-    } while ((Arrays.equals(this.supportedEncodings, paramObject.supportedEncodings)) && (this.maxChannelCount == paramObject.maxChannelCount));
-    return false;
+    }
+    if (!(paramObject instanceof AudioCapabilities)) {
+      return false;
+    }
+    paramObject = (AudioCapabilities)paramObject;
+    return (Arrays.equals(this.supportedEncodings, paramObject.supportedEncodings)) && (this.maxChannelCount == paramObject.maxChannelCount);
   }
   
   public int getMaxChannelCount()
@@ -74,12 +71,18 @@ public final class AudioCapabilities
   
   public String toString()
   {
-    return "AudioCapabilities[maxChannelCount=" + this.maxChannelCount + ", supportedEncodings=" + Arrays.toString(this.supportedEncodings) + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioCapabilities[maxChannelCount=");
+    localStringBuilder.append(this.maxChannelCount);
+    localStringBuilder.append(", supportedEncodings=");
+    localStringBuilder.append(Arrays.toString(this.supportedEncodings));
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.AudioCapabilities
  * JD-Core Version:    0.7.0.1
  */

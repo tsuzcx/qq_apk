@@ -9,8 +9,8 @@ public final class UserDetailLocalInfo
 {
   static byte[] cache_SOSOUrl;
   static byte[] cache_cityId;
-  public byte[] SOSOUrl;
-  public byte[] cityId;
+  public byte[] SOSOUrl = null;
+  public byte[] cityId = null;
   public String strCity = "";
   public String strDistrict = "";
   public String strPremises = "";
@@ -62,17 +62,19 @@ public final class UserDetailLocalInfo
     paramJceOutputStream.write(this.strTown, 3);
     paramJceOutputStream.write(this.strRoad, 4);
     paramJceOutputStream.write(this.strPremises, 5);
-    if (this.SOSOUrl != null) {
-      paramJceOutputStream.write(this.SOSOUrl, 6);
+    byte[] arrayOfByte = this.SOSOUrl;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 6);
     }
-    if (this.cityId != null) {
-      paramJceOutputStream.write(this.cityId, 7);
+    arrayOfByte = this.cityId;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.UserDetailLocalInfo
  * JD-Core Version:    0.7.0.1
  */

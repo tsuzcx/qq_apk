@@ -1,19 +1,12 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
 public final class fyf
-  implements Runnable
+  implements Comparator
 {
-  public fyf(int paramInt) {}
-  
-  public void run()
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    QQToast localQQToast = new QQToast(BaseApplicationImpl.getContext());
-    localQQToast.a(2130837933);
-    localQQToast.c(3000);
-    localQQToast.b(this.a);
-    localQQToast.b(FMToastUtil.a());
+    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
   }
 }
 

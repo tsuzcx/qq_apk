@@ -9,8 +9,8 @@ public final class GetRandomHbIdiomRsp
   extends JceStruct
 {
   static ArrayList<String> cache_suggestIdioms = new ArrayList();
-  public long makeUin;
-  public ArrayList<String> suggestIdioms;
+  public long makeUin = 0L;
+  public ArrayList<String> suggestIdioms = null;
   
   static
   {
@@ -34,14 +34,15 @@ public final class GetRandomHbIdiomRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.makeUin, 0);
-    if (this.suggestIdioms != null) {
-      paramJceOutputStream.write(this.suggestIdioms, 1);
+    ArrayList localArrayList = this.suggestIdioms;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetRandomHbIdiomRsp
  * JD-Core Version:    0.7.0.1
  */

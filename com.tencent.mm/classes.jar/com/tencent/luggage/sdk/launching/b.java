@@ -4,11 +4,11 @@ import android.os.Parcelable;
 
 public abstract interface b<R extends Parcelable>
 {
-  public abstract void b(R paramR);
+  public abstract void onWXAppResult(R paramR);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.sdk.launching.b
  * JD-Core Version:    0.7.0.1
  */

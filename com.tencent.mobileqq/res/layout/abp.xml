@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout android:id="@id/kti" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mobileqq.kandian.base.view.widget.RoundAngleFrameLayout android:id="@id/kti" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup android:id="@id/krz" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:video_height_weight="0.562" tencent:video_width_weight="1.0" />
+    <com.tencent.mobileqq.kandian.base.view.widget.VideoViewGroup android:id="@id/krz" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:video_height_weight="0.562" tencent:video_width_weight="1.0" />
     <com.tencent.image.URLImageView android:layout_gravity="center|right|top" android:id="@id/eha" android:visibility="gone" android:layout_width="78.0dip" android:layout_height="24.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" />
-    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout android:id="@id/ct4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.image.URLImageView android:layout_gravity="center|right|top" android:id="@id/4n" android:visibility="gone" android:layout_width="45.0dip" android:layout_height="20.0dip" />
+    <RelativeLayout android:layout_gravity="bottom|center|left" android:id="@id/4i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="13.0dip">
+        <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/4j" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:lines="1" android:maxEms="5" />
+        <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/4h" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:lines="1" android:maxEms="15" android:layout_toRightOf="@id/4j" />
+    </RelativeLayout>
+    <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom|center|right" android:id="@id/4l" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="13.0dip" android:lines="1" />
+    <com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsGestureLayout android:id="@id/ct4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
     <RelativeLayout android:id="@id/enm" android:background="#66000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <LinearLayout android:orientation="horizontal" android:id="@id/cq5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
             <ImageView android:layout_gravity="center_vertical" android:id="@id/cq2" android:background="@drawable/dry" android:layout_width="wrap_content" android:layout_height="wrap_content" />
@@ -34,5 +40,9 @@
     <SeekBar android:layout_gravity="bottom" android:id="@id/fg5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:progressDrawable="@drawable/a1l" android:thumb="@color/ajr" />
     <ViewStub android:layout_gravity="top" android:id="@id/bp1" android:layout="@layout/abm" android:layout_width="fill_parent" android:layout_height="44.0dip" />
     <ViewStub android:id="@id/bp2" android:layout="@layout/abn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyPatchAdView android:id="@id/mk1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout>
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView android:id="@id/oxk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyVideoAdHighLightBar android:layout_gravity="bottom" android:id="@id/nvw" android:background="#ff00cafc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="34.0dip" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide android:id="@id/3n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdMiniGuide android:id="@id/4k" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/46" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mobileqq.kandian.base.view.widget.RoundAngleFrameLayout>

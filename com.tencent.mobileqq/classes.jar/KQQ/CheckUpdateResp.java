@@ -9,10 +9,10 @@ public final class CheckUpdateResp
   extends JceStruct
 {
   static ArrayList<RespItem> cache_vecResPkg;
-  public long dwSsoSeq;
+  public long dwSsoSeq = 0L;
   public boolean isEnd = true;
-  public byte result;
-  public ArrayList<RespItem> vecResPkg;
+  public byte result = 0;
+  public ArrayList<RespItem> vecResPkg = null;
   
   public CheckUpdateResp() {}
   
@@ -48,7 +48,7 @@ public final class CheckUpdateResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.CheckUpdateResp
  * JD-Core Version:    0.7.0.1
  */

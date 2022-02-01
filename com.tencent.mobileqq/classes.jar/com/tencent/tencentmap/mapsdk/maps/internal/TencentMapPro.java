@@ -8,7 +8,6 @@ import com.tencent.map.sdk.a.kw;
 import com.tencent.map.sdk.a.ln;
 import com.tencent.map.sdk.a.pn;
 import com.tencent.map.sdk.a.py;
-import com.tencent.map.sdk.basemap.interfaces.IMapRenderView;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdate;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap.AsyncOperateCallback;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
@@ -59,32 +58,30 @@ public final class TencentMapPro
   
   private void addSegmentsWithRouteName(List<hk> paramList, List<LatLng> paramList1)
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
-    localki.a.a(paramList, paramList1);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a != null) {
+      localki.a.a(paramList, paramList1);
+    }
   }
   
   private final void animateToNaviPosition(LatLng paramLatLng, float paramFloat1, float paramFloat2)
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
-    localki.a.a(paramLatLng, paramFloat1, paramFloat2);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a != null) {
+      localki.a.a(paramLatLng, paramFloat1, paramFloat2);
+    }
   }
   
   private final void animateToNaviPosition(LatLng paramLatLng, float paramFloat1, float paramFloat2, float paramFloat3)
@@ -111,46 +108,45 @@ public final class TencentMapPro
   
   private final void animateToNaviPosition2(LatLng paramLatLng, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean)
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
-    localki.a.a(paramLatLng, paramFloat1, paramFloat2, paramFloat3);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a != null) {
+      localki.a.a(paramLatLng, paramFloat1, paramFloat2, paramFloat3);
+    }
   }
   
   private float calNaviLevel(LatLngBounds paramLatLngBounds, float paramFloat, int paramInt, boolean paramBoolean)
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return 0.0F;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a == null) {
+      return 0.0F;
+    }
     return localki.a.a(paramLatLngBounds, paramFloat, paramInt, paramBoolean);
   }
   
   private float calNaviLevel2(LatLng paramLatLng1, LatLng paramLatLng2, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return 0.0F;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a == null) {
+      return 0.0F;
+    }
     return localki.a.a(paramLatLng1, paramLatLng2, paramFloat1, paramInt, paramBoolean);
   }
   
@@ -171,86 +167,84 @@ public final class TencentMapPro
   
   private CameraPosition calculateZoomToSpanLevelAsync(List<IOverlay> paramList, List<LatLng> paramList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, TencentMap.AsyncOperateCallback<CameraPosition> paramAsyncOperateCallback)
   {
-    if (this.mapDestroyed) {
+    if (this.mapDestroyed)
+    {
       if (paramAsyncOperateCallback != null) {
         paramAsyncOperateCallback.onOperateFinished(null);
       }
-    }
-    ki localki;
-    do
-    {
       return null;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a == null) {
+      return null;
+    }
     return localki.a.a(paramList, paramList1, paramInt1, paramInt2, paramInt3, paramInt4, paramAsyncOperateCallback);
   }
   
   private void clearRouteNameSegments()
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
-    localki.a.m();
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a != null) {
+      localki.a.m();
+    }
   }
   
   private boolean isNaviStateEnabled()
   {
-    if (this.glMapControl == null) {
+    ki localki = this.glMapControl;
+    if (localki == null) {
       return false;
     }
-    return this.glMapControl.b();
+    return localki.b();
   }
   
   private void setNavCenter(int paramInt1, int paramInt2)
   {
-    if (this.viewControl == null) {}
-    IMapRenderView localIMapRenderView;
-    do
-    {
+    Object localObject = this.viewControl;
+    if (localObject == null) {
       return;
-      localIMapRenderView = this.viewControl.a();
-    } while (!(localIMapRenderView instanceof py));
-    ((py)localIMapRenderView).getVectorMapDelegate().c(paramInt1, paramInt2);
+    }
+    localObject = ((ks)localObject).a();
+    if ((localObject instanceof py)) {
+      ((py)localObject).getVectorMapDelegate().c(paramInt1, paramInt2);
+    }
   }
   
   private void setNaviFixingProportion(float paramFloat1, float paramFloat2)
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
-    localki.a.a(paramFloat1, paramFloat2);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a != null) {
+      localki.a.a(paramFloat1, paramFloat2);
+    }
   }
   
   private void setNaviFixingProportion2D(float paramFloat1, float paramFloat2)
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
-    localki.a.b(paramFloat1, paramFloat2);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a != null) {
+      localki.a.b(paramFloat1, paramFloat2);
+    }
   }
   
   private void setNaviStateEnabled(boolean paramBoolean)
@@ -266,31 +260,30 @@ public final class TencentMapPro
   
   private void setOnCameraChangeListener(TencentMap.OnCameraChangeListener paramOnCameraChangeListener)
   {
-    if (this.mapDestroyed) {}
-    ki localki;
-    do
-    {
+    if (this.mapDestroyed) {
       return;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      localki = this.glMapControl;
-    } while (localki.a == null);
-    localki.a.b(paramOnCameraChangeListener);
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    ki localki = this.glMapControl;
+    if (localki.a != null) {
+      localki.a.b(paramOnCameraChangeListener);
+    }
   }
   
   public final void moveToNavPosition(CameraUpdate paramCameraUpdate, LatLng paramLatLng)
   {
-    if (this.mapDestroyed) {}
-    do
-    {
+    if (this.mapDestroyed) {
       return;
-      if (this.glMapControl == null) {
-        this.glMapControl = new ki(this.mapManager);
-      }
-      this.glMapControl.a(paramCameraUpdate);
-    } while (paramLatLng == null);
-    setNavCenter((int)(paramLatLng.latitude * 1000000.0D), (int)(paramLatLng.longitude * 1000000.0D));
+    }
+    if (this.glMapControl == null) {
+      this.glMapControl = new ki(this.mapManager);
+    }
+    this.glMapControl.a(paramCameraUpdate);
+    if (paramLatLng != null) {
+      setNavCenter((int)(paramLatLng.latitude * 1000000.0D), (int)(paramLatLng.longitude * 1000000.0D));
+    }
   }
   
   public final void onDestroy()
@@ -300,7 +293,7 @@ public final class TencentMapPro
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.internal.TencentMapPro
  * JD-Core Version:    0.7.0.1
  */

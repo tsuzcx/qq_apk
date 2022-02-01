@@ -5,12 +5,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.e.a;
 import android.view.View;
+import androidx.b.a;
+import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl;
 import com.google.android.gms.common.api.internal.LifecycleActivity;
 import com.google.android.gms.common.api.internal.ListenerHolder;
@@ -22,7 +21,6 @@ import com.google.android.gms.common.api.internal.zzp;
 import com.google.android.gms.common.internal.ClientSettings;
 import com.google.android.gms.common.internal.ClientSettings.OptionalApiSettings;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.signin.SignIn;
 import com.google.android.gms.signin.SignInClient;
 import com.google.android.gms.signin.SignInOptions;
@@ -38,16 +36,12 @@ import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
-import javax.annotation.concurrent.GuardedBy;
 
-@KeepForSdk
 public abstract class GoogleApiClient
 {
-  @KeepForSdk
   public static final String DEFAULT_ACCOUNT = "<<default account>>";
   public static final int SIGN_IN_MODE_OPTIONAL = 2;
   public static final int SIGN_IN_MODE_REQUIRED = 1;
-  @GuardedBy("sAllClients")
   private static final Set<GoogleApiClient> zzcu = Collections.newSetFromMap(new WeakHashMap());
   
   public static void dumpAll(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
@@ -68,7 +62,6 @@ public abstract class GoogleApiClient
     }
   }
   
-  @KeepForSdk
   public static Set<GoogleApiClient> getAllClients()
   {
     synchronized (zzcu)
@@ -95,19 +88,16 @@ public abstract class GoogleApiClient
   
   public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  @KeepForSdk
   public <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public <C extends Api.Client> C getClient(Api.AnyClientKey<C> paramAnyClientKey)
   {
     throw new UnsupportedOperationException();
@@ -115,19 +105,16 @@ public abstract class GoogleApiClient
   
   public abstract ConnectionResult getConnectionResult(Api<?> paramApi);
   
-  @KeepForSdk
   public Context getContext()
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public Looper getLooper()
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public boolean hasApi(Api<?> paramApi)
   {
     throw new UnsupportedOperationException();
@@ -143,13 +130,11 @@ public abstract class GoogleApiClient
   
   public abstract boolean isConnectionFailedListenerRegistered(OnConnectionFailedListener paramOnConnectionFailedListener);
   
-  @KeepForSdk
   public boolean maybeSignIn(SignInConnectionListener paramSignInConnectionListener)
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public void maybeSignOut()
   {
     throw new UnsupportedOperationException();
@@ -161,7 +146,6 @@ public abstract class GoogleApiClient
   
   public abstract void registerConnectionFailedListener(OnConnectionFailedListener paramOnConnectionFailedListener);
   
-  @KeepForSdk
   public <L> ListenerHolder<L> registerListener(L paramL)
   {
     throw new UnsupportedOperationException();
@@ -183,7 +167,6 @@ public abstract class GoogleApiClient
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public static final class Builder
   {
     private final Context mContext;
@@ -206,10 +189,9 @@ public abstract class GoogleApiClient
     private boolean zzdk;
     private Account zzs;
     
-    @KeepForSdk
     public Builder(Context paramContext)
     {
-      AppMethodBeat.i(60534);
+      AppMethodBeat.i(11026);
       this.zzcv = new HashSet();
       this.zzcw = new HashSet();
       this.zzdb = new a();
@@ -224,24 +206,23 @@ public abstract class GoogleApiClient
       this.zzcn = paramContext.getMainLooper();
       this.zzcz = paramContext.getPackageName();
       this.zzda = paramContext.getClass().getName();
-      AppMethodBeat.o(60534);
+      AppMethodBeat.o(11026);
     }
     
-    @KeepForSdk
     public Builder(Context paramContext, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
     {
       this(paramContext);
-      AppMethodBeat.i(60535);
+      AppMethodBeat.i(11027);
       Preconditions.checkNotNull(paramConnectionCallbacks, "Must provide a connected listener");
       this.zzdi.add(paramConnectionCallbacks);
       Preconditions.checkNotNull(paramOnConnectionFailedListener, "Must provide a connection failed listener");
       this.zzdj.add(paramOnConnectionFailedListener);
-      AppMethodBeat.o(60535);
+      AppMethodBeat.o(11027);
     }
     
     private final <O extends Api.ApiOptions> void zza(Api<O> paramApi, O paramO, Scope... paramVarArgs)
     {
-      AppMethodBeat.i(60552);
+      AppMethodBeat.i(11044);
       paramO = new HashSet(paramApi.zzj().getImpliedScopes(paramO));
       int j = paramVarArgs.length;
       int i = 0;
@@ -251,224 +232,221 @@ public abstract class GoogleApiClient
         i += 1;
       }
       this.zzdb.put(paramApi, new ClientSettings.OptionalApiSettings(paramO));
-      AppMethodBeat.o(60552);
+      AppMethodBeat.o(11044);
     }
     
     public final Builder addApi(Api<? extends Api.ApiOptions.NotRequiredOptions> paramApi)
     {
-      AppMethodBeat.i(60542);
+      AppMethodBeat.i(11034);
       Preconditions.checkNotNull(paramApi, "Api must not be null");
       this.zzdc.put(paramApi, null);
       paramApi = paramApi.zzj().getImpliedScopes(null);
       this.zzcw.addAll(paramApi);
       this.zzcv.addAll(paramApi);
-      AppMethodBeat.o(60542);
+      AppMethodBeat.o(11034);
       return this;
     }
     
     public final <O extends Api.ApiOptions.HasOptions> Builder addApi(Api<O> paramApi, O paramO)
     {
-      AppMethodBeat.i(60544);
+      AppMethodBeat.i(11036);
       Preconditions.checkNotNull(paramApi, "Api must not be null");
       Preconditions.checkNotNull(paramO, "Null options are not permitted for this Api");
       this.zzdc.put(paramApi, paramO);
       paramApi = paramApi.zzj().getImpliedScopes(paramO);
       this.zzcw.addAll(paramApi);
       this.zzcv.addAll(paramApi);
-      AppMethodBeat.o(60544);
+      AppMethodBeat.o(11036);
       return this;
     }
     
     public final <O extends Api.ApiOptions.HasOptions> Builder addApiIfAvailable(Api<O> paramApi, O paramO, Scope... paramVarArgs)
     {
-      AppMethodBeat.i(60545);
+      AppMethodBeat.i(11037);
       Preconditions.checkNotNull(paramApi, "Api must not be null");
       Preconditions.checkNotNull(paramO, "Null options are not permitted for this Api");
       this.zzdc.put(paramApi, paramO);
       zza(paramApi, paramO, paramVarArgs);
-      AppMethodBeat.o(60545);
+      AppMethodBeat.o(11037);
       return this;
     }
     
     public final Builder addApiIfAvailable(Api<? extends Api.ApiOptions.NotRequiredOptions> paramApi, Scope... paramVarArgs)
     {
-      AppMethodBeat.i(60543);
+      AppMethodBeat.i(11035);
       Preconditions.checkNotNull(paramApi, "Api must not be null");
       this.zzdc.put(paramApi, null);
       zza(paramApi, null, paramVarArgs);
-      AppMethodBeat.o(60543);
+      AppMethodBeat.o(11035);
       return this;
     }
     
     public final Builder addConnectionCallbacks(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
     {
-      AppMethodBeat.i(60537);
+      AppMethodBeat.i(11029);
       Preconditions.checkNotNull(paramConnectionCallbacks, "Listener must not be null");
       this.zzdi.add(paramConnectionCallbacks);
-      AppMethodBeat.o(60537);
+      AppMethodBeat.o(11029);
       return this;
     }
     
     public final Builder addOnConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
     {
-      AppMethodBeat.i(60538);
+      AppMethodBeat.i(11030);
       Preconditions.checkNotNull(paramOnConnectionFailedListener, "Listener must not be null");
       this.zzdj.add(paramOnConnectionFailedListener);
-      AppMethodBeat.o(60538);
+      AppMethodBeat.o(11030);
       return this;
     }
     
     public final Builder addScope(Scope paramScope)
     {
-      AppMethodBeat.i(60540);
+      AppMethodBeat.i(11032);
       Preconditions.checkNotNull(paramScope, "Scope must not be null");
       this.zzcv.add(paramScope);
-      AppMethodBeat.o(60540);
+      AppMethodBeat.o(11032);
       return this;
     }
     
-    @KeepForSdk
     public final Builder addScopeNames(String[] paramArrayOfString)
     {
-      AppMethodBeat.i(60541);
+      AppMethodBeat.i(11033);
       int i = 0;
       while (i < paramArrayOfString.length)
       {
         this.zzcv.add(new Scope(paramArrayOfString[i]));
         i += 1;
       }
-      AppMethodBeat.o(60541);
+      AppMethodBeat.o(11033);
       return this;
     }
     
     public final GoogleApiClient build()
     {
-      AppMethodBeat.i(60551);
+      AppMethodBeat.i(11043);
       boolean bool;
       ClientSettings localClientSettings;
+      Map localMap;
       a locala1;
       a locala2;
       ArrayList localArrayList;
+      Iterator localIterator;
       int i;
-      label85:
-      Api localApi;
-      Object localObject2;
-      label134:
-      Object localObject4;
       if (!this.zzdc.isEmpty())
       {
         bool = true;
         Preconditions.checkArgument(bool, "must call addApi() to add at least one API");
         localClientSettings = buildClientSettings();
         ??? = null;
-        Map localMap = localClientSettings.getOptionalApiSettings();
+        localMap = localClientSettings.getOptionalApiSettings();
         locala1 = new a();
         locala2 = new a();
         localArrayList = new ArrayList();
-        Iterator localIterator = this.zzdc.keySet().iterator();
+        localIterator = this.zzdc.keySet().iterator();
         i = 0;
-        if (!localIterator.hasNext()) {
-          break label342;
-        }
-        localApi = (Api)localIterator.next();
-        localObject2 = this.zzdc.get(localApi);
-        if (localMap.get(localApi) == null) {
-          break label323;
-        }
-        bool = true;
-        locala1.put(localApi, Boolean.valueOf(bool));
-        localObject4 = new zzp(localApi, bool);
-        localArrayList.add(localObject4);
-        Api.AbstractClientBuilder localAbstractClientBuilder = localApi.zzk();
-        localObject4 = localAbstractClientBuilder.buildClient(this.mContext, this.zzcn, localClientSettings, localObject2, (GoogleApiClient.ConnectionCallbacks)localObject4, (GoogleApiClient.OnConnectionFailedListener)localObject4);
-        locala2.put(localApi.getClientKey(), localObject4);
-        if (localAbstractClientBuilder.getPriority() != 1) {
-          break label600;
-        }
-        if (localObject2 == null) {
-          break label328;
-        }
-        i = 1;
       }
-      label323:
-      label328:
-      label336:
-      label342:
-      label600:
+      Object localObject2;
       for (;;)
       {
-        if (((Api.Client)localObject4).providesSignIn())
+        if (!localIterator.hasNext()) {
+          break label344;
+        }
+        Api localApi = (Api)localIterator.next();
+        localObject2 = this.zzdc.get(localApi);
+        label135:
+        Object localObject4;
+        if (localMap.get(localApi) != null)
         {
+          bool = true;
+          locala1.put(localApi, Boolean.valueOf(bool));
+          localObject4 = new zzp(localApi, bool);
+          localArrayList.add(localObject4);
+          Api.AbstractClientBuilder localAbstractClientBuilder = localApi.zzk();
+          localObject4 = localAbstractClientBuilder.buildClient(this.mContext, this.zzcn, localClientSettings, localObject2, (GoogleApiClient.ConnectionCallbacks)localObject4, (GoogleApiClient.OnConnectionFailedListener)localObject4);
+          locala2.put(localApi.getClientKey(), localObject4);
+          if (localAbstractClientBuilder.getPriority() != 1) {
+            break label605;
+          }
+          if (localObject2 == null) {
+            break label330;
+          }
+        }
+        label330:
+        for (i = 1;; i = 0)
+        {
+          if (!((Api.Client)localObject4).providesSignIn()) {
+            break label335;
+          }
           localObject2 = localApi;
           if (??? == null) {
-            break label336;
+            break label338;
           }
           localObject2 = localApi.getName();
           ??? = ((Api)???).getName();
           ??? = new IllegalStateException(String.valueOf(localObject2).length() + 21 + String.valueOf(???).length() + (String)localObject2 + " cannot be used with " + (String)???);
-          AppMethodBeat.o(60551);
+          AppMethodBeat.o(11043);
           throw ((Throwable)???);
           bool = false;
           break;
           bool = false;
-          break label134;
-          i = 0;
-          continue;
+          break label135;
         }
+        label335:
         localObject2 = ???;
+        label338:
         ??? = localObject2;
-        break label85;
-        if (??? != null)
+      }
+      label344:
+      if (??? != null)
+      {
+        if (i != 0)
         {
-          if (i != 0)
-          {
-            ??? = ((Api)???).getName();
-            ??? = new IllegalStateException(String.valueOf(???).length() + 82 + "With using " + (String)??? + ", GamesOptions can only be specified within GoogleSignInOptions.Builder");
-            AppMethodBeat.o(60551);
-            throw ((Throwable)???);
-          }
-          if (this.zzs != null) {
-            break label583;
-          }
-          bool = true;
+          ??? = ((Api)???).getName();
+          ??? = new IllegalStateException(String.valueOf(???).length() + 82 + "With using " + (String)??? + ", GamesOptions can only be specified within GoogleSignInOptions.Builder");
+          AppMethodBeat.o(11043);
+          throw ((Throwable)???);
         }
-        for (;;)
+        if (this.zzs != null) {
+          break label587;
+        }
+        bool = true;
+      }
+      for (;;)
+      {
+        Preconditions.checkState(bool, "Must not set an account in GoogleApiClient.Builder when using %s. Set account in GoogleSignInOptions.Builder instead", new Object[] { ((Api)???).getName() });
+        Preconditions.checkState(this.zzcv.equals(this.zzcw), "Must not set scopes in GoogleApiClient.Builder when using %s. Set account in GoogleSignInOptions.Builder instead.", new Object[] { ((Api)???).getName() });
+        i = zzav.zza(locala2.values(), true);
+        localObject2 = new zzav(this.mContext, new ReentrantLock(), this.zzcn, localClientSettings, this.zzdg, this.zzdh, locala1, this.zzdi, this.zzdj, locala2, this.zzde, i, localArrayList, false);
+        label587:
+        label605:
+        synchronized (GoogleApiClient.zzn())
         {
-          Preconditions.checkState(bool, "Must not set an account in GoogleApiClient.Builder when using %s. Set account in GoogleSignInOptions.Builder instead", new Object[] { ((Api)???).getName() });
-          Preconditions.checkState(this.zzcv.equals(this.zzcw), "Must not set scopes in GoogleApiClient.Builder when using %s. Set account in GoogleSignInOptions.Builder instead.", new Object[] { ((Api)???).getName() });
-          i = zzav.zza(locala2.values(), true);
-          localObject2 = new zzav(this.mContext, new ReentrantLock(), this.zzcn, localClientSettings, this.zzdg, this.zzdh, locala1, this.zzdi, this.zzdj, locala2, this.zzde, i, localArrayList, false);
-          synchronized (GoogleApiClient.zzn())
-          {
-            GoogleApiClient.zzn().add(localObject2);
-            if (this.zzde >= 0) {
-              zzi.zza(this.zzdd).zza(this.zzde, (GoogleApiClient)localObject2, this.zzdf);
-            }
-            AppMethodBeat.o(60551);
-            return localObject2;
-            bool = false;
+          GoogleApiClient.zzn().add(localObject2);
+          if (this.zzde >= 0) {
+            zzi.zza(this.zzdd).zza(this.zzde, (GoogleApiClient)localObject2, this.zzdf);
           }
+          AppMethodBeat.o(11043);
+          return localObject2;
+          bool = false;
         }
       }
     }
     
-    @KeepForSdk
-    @VisibleForTesting
     public final ClientSettings buildClientSettings()
     {
-      AppMethodBeat.i(60550);
+      AppMethodBeat.i(11042);
       Object localObject = SignInOptions.DEFAULT;
       if (this.zzdc.containsKey(SignIn.API)) {
         localObject = (SignInOptions)this.zzdc.get(SignIn.API);
       }
       localObject = new ClientSettings(this.zzs, this.zzcv, this.zzdb, this.zzcx, this.zzcy, this.zzcz, this.zzda, (SignInOptions)localObject);
-      AppMethodBeat.o(60550);
+      AppMethodBeat.o(11042);
       return localObject;
     }
     
     public final Builder enableAutoManage(FragmentActivity paramFragmentActivity, int paramInt, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
     {
-      AppMethodBeat.i(60548);
+      AppMethodBeat.i(210379);
       paramFragmentActivity = new LifecycleActivity(paramFragmentActivity);
       if (paramInt >= 0) {}
       for (boolean bool = true;; bool = false)
@@ -477,27 +455,27 @@ public abstract class GoogleApiClient
         this.zzde = paramInt;
         this.zzdf = paramOnConnectionFailedListener;
         this.zzdd = paramFragmentActivity;
-        AppMethodBeat.o(60548);
+        AppMethodBeat.o(210379);
         return this;
       }
     }
     
     public final Builder enableAutoManage(FragmentActivity paramFragmentActivity, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
     {
-      AppMethodBeat.i(60549);
+      AppMethodBeat.i(210380);
       paramFragmentActivity = enableAutoManage(paramFragmentActivity, 0, paramOnConnectionFailedListener);
-      AppMethodBeat.o(60549);
+      AppMethodBeat.o(210380);
       return paramFragmentActivity;
     }
     
     public final Builder setAccountName(String paramString)
     {
-      AppMethodBeat.i(60546);
+      AppMethodBeat.i(11038);
       if (paramString == null) {}
       for (paramString = null;; paramString = new Account(paramString, "com.google"))
       {
         this.zzs = paramString;
-        AppMethodBeat.o(60546);
+        AppMethodBeat.o(11038);
         return this;
       }
     }
@@ -510,27 +488,27 @@ public abstract class GoogleApiClient
     
     public final Builder setHandler(Handler paramHandler)
     {
-      AppMethodBeat.i(60536);
+      AppMethodBeat.i(11028);
       Preconditions.checkNotNull(paramHandler, "Handler must not be null");
       this.zzcn = paramHandler.getLooper();
-      AppMethodBeat.o(60536);
+      AppMethodBeat.o(11028);
       return this;
     }
     
     public final Builder setViewForPopups(View paramView)
     {
-      AppMethodBeat.i(60539);
+      AppMethodBeat.i(11031);
       Preconditions.checkNotNull(paramView, "View must not be null");
       this.zzcy = paramView;
-      AppMethodBeat.o(60539);
+      AppMethodBeat.o(11031);
       return this;
     }
     
     public final Builder useDefaultAccount()
     {
-      AppMethodBeat.i(60547);
+      AppMethodBeat.i(11039);
       Builder localBuilder = setAccountName("<<default account>>");
-      AppMethodBeat.o(60547);
+      AppMethodBeat.o(11039);
       return localBuilder;
     }
   }
@@ -552,7 +530,7 @@ public abstract class GoogleApiClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.GoogleApiClient
  * JD-Core Version:    0.7.0.1
  */

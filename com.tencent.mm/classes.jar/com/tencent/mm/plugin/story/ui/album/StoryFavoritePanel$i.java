@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import a.f.a.b;
-import a.f.b.k;
-import a.l;
 import com.tencent.mm.plugin.story.h.j;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "invoke", "com/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$updateCheckedStatus$2$2"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;"}, k=3, mv={1, 5, 1}, xi=48)
 final class StoryFavoritePanel$i
-  extends k
+  extends u
   implements b<j, Boolean>
 {
-  StoryFavoritePanel$i(StoryFavoritePanel paramStoryFavoritePanel, boolean paramBoolean, long paramLong)
+  StoryFavoritePanel$i(long paramLong)
   {
     super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryFavoritePanel.i
  * JD-Core Version:    0.7.0.1
  */

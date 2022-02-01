@@ -1,12 +1,10 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -14,139 +12,185 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.plugin.remittance.bankcard.a.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.a;
-import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.remittance.bankcard.b.l;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.ekh;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.wallet_core.model.r;
+import com.tencent.mm.wallet_core.model.r.a;
+import java.util.HashSet;
 
-@a(19)
+@com.tencent.mm.ui.base.a(19)
 public class BankRemitDetailUI
   extends BankRemitBaseUI
 {
-  private int gst;
-  private LinearLayout iCt;
+  private ImageView OdR;
+  private ImageView OdS;
+  private ImageView OdT;
+  private TextView OdU;
+  private TextView OdV;
+  private TextView OdW;
+  private TextView OdX;
+  private TextView OdY;
+  private TextView OdZ;
+  private View Oea;
+  private View Oeb;
+  private ViewGroup Oec;
+  private String Oed;
   private int mState;
-  private Button nJm;
-  private View qhA;
-  private View qhB;
-  private ViewGroup qhC;
-  private String qhD;
-  private ImageView qhr;
-  private ImageView qhs;
-  private ImageView qht;
-  private TextView qhu;
-  private TextView qhv;
-  private TextView qhw;
-  private TextView qhx;
-  private TextView qhy;
-  private TextView qhz;
+  private int pNJ;
+  private Button tHj;
+  private LinearLayout thn;
   
-  protected final void bHV()
+  protected final void fPx()
   {
-    AppMethodBeat.i(44601);
-    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131690709)));
+    AppMethodBeat.i(67515);
+    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(a.c.white)));
     Object localObject = getSupportActionBar().getCustomView();
     if (localObject != null)
     {
-      View localView = ((View)localObject).findViewById(2131821148);
+      View localView = ((View)localObject).findViewById(a.f.divider);
       if (localView != null) {
-        localView.setBackgroundColor(getResources().getColor(2131690161));
+        localView.setBackgroundColor(getResources().getColor(a.c.half_alpha_white));
       }
       localObject = ((View)localObject).findViewById(16908308);
       if ((localObject != null) && ((localObject instanceof TextView))) {
-        ((TextView)localObject).setTextColor(getResources().getColor(2131689763));
+        ((TextView)localObject).setTextColor(getResources().getColor(a.c.normal_text_color));
       }
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
       localObject = getWindow();
       ((Window)localObject).addFlags(-2147483648);
-      ((Window)localObject).setStatusBarColor(getResources().getColor(2131690709));
+      ((Window)localObject).setStatusBarColor(getResources().getColor(a.c.white));
     }
-    BankRemitBaseUI.ae(this);
+    BankRemitBaseUI.bk(this);
     getContentView().setFitsSystemWindows(true);
-    AppMethodBeat.o(44601);
+    AppMethodBeat.o(67515);
   }
   
   public int getLayoutId()
   {
-    return 2130968821;
+    return a.g.bank_remit_detail_ui;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(44600);
-    this.qhr = ((ImageView)findViewById(2131821685));
-    this.qhs = ((ImageView)findViewById(2131821689));
-    this.qht = ((ImageView)findViewById(2131821693));
-    this.qhu = ((TextView)findViewById(2131821686));
-    this.qhv = ((TextView)findViewById(2131821690));
-    this.qhw = ((TextView)findViewById(2131821694));
-    this.qhx = ((TextView)findViewById(2131821687));
-    this.qhy = ((TextView)findViewById(2131821691));
-    this.qhz = ((TextView)findViewById(2131821695));
-    this.qhA = findViewById(2131821682);
-    this.qhB = findViewById(2131821683);
-    this.iCt = ((LinearLayout)findViewById(2131821698));
-    this.qhC = ((ViewGroup)findViewById(2131821680));
-    if (this.gst == 1)
+    AppMethodBeat.i(67514);
+    this.OdR = ((ImageView)findViewById(a.f.brdu_state_iv_1));
+    this.OdS = ((ImageView)findViewById(a.f.brdu_state_iv_2));
+    this.OdT = ((ImageView)findViewById(a.f.brdu_state_iv_3));
+    this.OdU = ((TextView)findViewById(a.f.brdu_state_title_tv_1));
+    this.OdV = ((TextView)findViewById(a.f.brdu_state_title_tv_2));
+    this.OdW = ((TextView)findViewById(a.f.brdu_state_title_tv_3));
+    this.OdX = ((TextView)findViewById(a.f.brdu_state_desc_tv_1));
+    this.OdY = ((TextView)findViewById(a.f.brdu_state_desc_tv_2));
+    this.OdZ = ((TextView)findViewById(a.f.brdu_state_desc_tv_3));
+    this.Oea = findViewById(a.f.brdu_state_line_1);
+    this.Oeb = findViewById(a.f.brdu_state_line_2);
+    this.thn = ((LinearLayout)findViewById(a.f.brdu_content_layout));
+    this.Oec = ((ViewGroup)findViewById(a.f.brdu_root_layout));
+    if (this.pNJ == 1)
     {
-      findViewById(2131821700).setVisibility(8);
-      AppMethodBeat.o(44600);
+      findViewById(a.f.brdu_finish_layout).setVisibility(8);
+      AppMethodBeat.o(67514);
       return;
     }
-    this.nJm = ((Button)findViewById(2131821701));
-    this.nJm.setOnClickListener(new BankRemitDetailUI.2(this));
-    AppMethodBeat.o(44600);
+    this.tHj = ((Button)findViewById(a.f.brdu_finish_btn));
+    this.tHj.setOnClickListener(new BankRemitDetailUI.2(this));
+    AppMethodBeat.o(67514);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(44599);
+    AppMethodBeat.i(67513);
     super.onCreate(paramBundle);
     addSceneEndListener(1579);
-    this.qhD = getIntent().getStringExtra("key_transfer_bill_id");
-    this.gst = getIntent().getIntExtra("key_enter_scene", 0);
-    ab.i("MicroMsg.BankRemitDetailUI", "billId: %s, enterScene: %s", new Object[] { this.qhD, Integer.valueOf(this.gst) });
+    this.Oed = getIntent().getStringExtra("key_transfer_bill_id");
+    this.pNJ = getIntent().getIntExtra("key_enter_scene", 0);
+    Log.i("MicroMsg.BankRemitDetailUI", "billId: %s, enterScene: %s", new Object[] { this.Oed, Integer.valueOf(this.pNJ) });
     initView();
-    ab.i("MicroMsg.BankRemitDetailUI", "do query detail");
-    doSceneProgress(new l(this.qhD));
-    if (this.gst == 0)
+    Log.i("MicroMsg.BankRemitDetailUI", "do query detail");
+    doSceneProgress(new l(this.Oed));
+    if (this.pNJ == 0)
     {
       showHomeBtn(false);
       enableBackMenu(false);
-      setMMTitle(2131297491);
+      setMMTitle(a.i.bank_remit_detail_title_2);
     }
     for (;;)
     {
       setBackBtn(new BankRemitDetailUI.1(this));
-      AppMethodBeat.o(44599);
+      AppMethodBeat.o(67513);
       return;
       showHomeBtn(true);
       enableBackMenu(true);
-      setMMTitle(2131297490);
+      setMMTitle(a.i.bank_remit_detail_title_1);
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(44603);
+    AppMethodBeat.i(67517);
     super.onDestroy();
     removeSceneEndListener(1579);
-    AppMethodBeat.o(44603);
+    AppMethodBeat.o(67517);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
-    AppMethodBeat.i(44602);
-    if ((paramm instanceof l))
+    AppMethodBeat.i(67516);
+    if ((paramp instanceof l))
     {
-      paramString = (l)paramm;
-      paramString.a(new BankRemitDetailUI.5(this, paramString)).b(new BankRemitDetailUI.4(this, paramString)).c(new BankRemitDetailUI.3(this));
+      paramString = (l)paramp;
+      paramString.a(new r.a()
+      {
+        public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
+        {
+          AppMethodBeat.i(67512);
+          Log.i("MicroMsg.BankRemitDetailUI", "state: %s, amount: %s, fee: %s, account: %s", new Object[] { Integer.valueOf(paramString.Ocl.state), Integer.valueOf(paramString.Ocl.amount), Integer.valueOf(paramString.Ocl.abpt), paramString.Ocl.abpu });
+          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.Ocl.state);
+          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.Ocl.state, paramString.Ocl.abps);
+          BankRemitDetailUI.a(BankRemitDetailUI.this, paramString.Ocl);
+          BankRemitDetailUI.a(BankRemitDetailUI.this).setVisibility(0);
+          AppMethodBeat.o(67512);
+        }
+      }).b(new r.a()
+      {
+        public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
+        {
+          AppMethodBeat.i(67511);
+          Log.e("MicroMsg.BankRemitDetailUI", "detail reponse error: %s, %s", new Object[] { Integer.valueOf(paramString.Ocl.hAV), paramString.Ocl.wYI });
+          if (!Util.isNullOrNil(paramString.Ocl.wYI))
+          {
+            Toast.makeText(BankRemitDetailUI.this, paramString.Ocl.wYI, 1).show();
+            AppMethodBeat.o(67511);
+            return;
+          }
+          Toast.makeText(BankRemitDetailUI.this, a.i.bank_remit_detail_fetch_fail_text, 1).show();
+          AppMethodBeat.o(67511);
+        }
+      }).c(new r.a()
+      {
+        public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
+        {
+          AppMethodBeat.i(67510);
+          Log.e("MicroMsg.BankRemitDetailUI", "net error: %s", new Object[] { paramAnonymousp });
+          Toast.makeText(BankRemitDetailUI.this, a.i.bank_remit_detail_fetch_fail_text, 1).show();
+          AppMethodBeat.o(67510);
+        }
+      });
     }
-    AppMethodBeat.o(44602);
+    AppMethodBeat.o(67516);
     return true;
   }
   
@@ -154,6 +198,14 @@ public class BankRemitDetailUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(288762);
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(com.tencent.mm.plugin.remittance.bankcard.a.a.class);
+    AppMethodBeat.o(288762);
   }
 }
 

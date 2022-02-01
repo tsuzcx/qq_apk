@@ -1,66 +1,82 @@
 import common.qzone.component.cache.common.SoftHashMap;
-import java.util.AbstractSet;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.Map.Entry;
+import java.util.NoSuchElementException;
 
-public class hzh
-  extends AbstractSet
+public abstract class hzh
+  implements Iterator
 {
-  public hzh(SoftHashMap paramSoftHashMap) {}
+  int jdField_a_of_type_Int;
+  hze jdField_a_of_type_Hze = null;
+  Object jdField_a_of_type_JavaLangObject = null;
+  int jdField_b_of_type_Int = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+  hze jdField_b_of_type_Hze = null;
+  Object jdField_b_of_type_JavaLangObject = null;
   
-  public void clear()
+  hzh(SoftHashMap paramSoftHashMap)
   {
-    this.a.clear();
+    if (paramSoftHashMap.size() != 0) {}
+    for (int i = SoftHashMap.a(paramSoftHashMap).length;; i = 0)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+    }
   }
   
-  public boolean contains(Object paramObject)
+  protected hze a()
   {
-    if (!(paramObject instanceof Map.Entry)) {}
-    hzf localhzf;
-    do
+    if (SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap) != this.jdField_b_of_type_Int) {
+      throw new ConcurrentModificationException();
+    }
+    if ((this.jdField_a_of_type_JavaLangObject == null) && (!hasNext())) {
+      throw new NoSuchElementException();
+    }
+    this.jdField_b_of_type_Hze = this.jdField_a_of_type_Hze;
+    this.jdField_a_of_type_Hze = hze.a(this.jdField_a_of_type_Hze);
+    this.jdField_b_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_JavaLangObject = null;
+    return this.jdField_b_of_type_Hze;
+  }
+  
+  public boolean hasNext()
+  {
+    hze[] arrayOfhze = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+    while (this.jdField_a_of_type_JavaLangObject == null)
     {
-      return false;
-      paramObject = (Map.Entry)paramObject;
-      localhzf = SoftHashMap.a(this.a, paramObject.getKey());
-    } while ((localhzf == null) || (!localhzf.equals(paramObject)));
+      hze localhze = this.jdField_a_of_type_Hze;
+      int i = this.jdField_a_of_type_Int;
+      while ((localhze == null) && (i > 0))
+      {
+        i -= 1;
+        localhze = arrayOfhze[i];
+      }
+      this.jdField_a_of_type_Hze = localhze;
+      this.jdField_a_of_type_Int = i;
+      if (localhze == null)
+      {
+        this.jdField_b_of_type_JavaLangObject = null;
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangObject = localhze.get();
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        this.jdField_a_of_type_Hze = hze.a(this.jdField_a_of_type_Hze);
+      }
+    }
     return true;
   }
   
-  public Iterator iterator()
+  public void remove()
   {
-    return new hzg(this.a);
-  }
-  
-  public boolean remove(Object paramObject)
-  {
-    return SoftHashMap.b(this.a, paramObject) != null;
-  }
-  
-  public int size()
-  {
-    return this.a.size();
-  }
-  
-  public Object[] toArray()
-  {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new hzl((Map.Entry)localIterator.next()));
+    if (this.jdField_b_of_type_Hze == null) {
+      throw new IllegalStateException();
     }
-    return localArrayList.toArray();
-  }
-  
-  public Object[] toArray(Object[] paramArrayOfObject)
-  {
-    ArrayList localArrayList = new ArrayList(size());
-    Iterator localIterator = iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(new hzl((Map.Entry)localIterator.next()));
+    if (SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap) != this.jdField_b_of_type_Int) {
+      throw new ConcurrentModificationException();
     }
-    return localArrayList.toArray(paramArrayOfObject);
+    this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap.remove(this.jdField_b_of_type_JavaLangObject);
+    this.jdField_b_of_type_Int = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
+    this.jdField_b_of_type_Hze = null;
+    this.jdField_b_of_type_JavaLangObject = null;
   }
 }
 

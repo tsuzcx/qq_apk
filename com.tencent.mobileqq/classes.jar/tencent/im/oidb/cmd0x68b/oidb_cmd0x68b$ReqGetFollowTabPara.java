@@ -30,17 +30,19 @@ public final class oidb_cmd0x68b$ReqGetFollowTabPara
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 88, 96, 104, 114, 122, 128, 138, 146, 152, 162, 170, 178 }, new String[] { "uint64_channel_id", "uint64_begin_recommend_seq", "uint64_end_recommend_seq", "rpt_curr_article_list", "bytes_set_top_cookie", "bytes_device_id", "uint32_update_times", "rpt_inner_msg_list", "rpt_expose_topic_list", "uint32_enter_topic_reddot_time", "bytes_refresh_cookie", "bytes_last_feed_cookie", "bytes_red_dot_cookie" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null, null, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, localByteStringMicro5 }, ReqGetFollowTabPara.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 88, 96, 104, 114, 122, 128, 138, 146, 152, 162, 170, 178 }, new String[] { "uint64_channel_id", "uint64_begin_recommend_seq", "uint64_end_recommend_seq", "rpt_curr_article_list", "bytes_set_top_cookie", "bytes_device_id", "uint32_update_times", "rpt_inner_msg_list", "rpt_expose_topic_list", "uint32_enter_topic_reddot_time", "bytes_refresh_cookie", "bytes_last_feed_cookie", "bytes_red_dot_cookie" }, new Object[] { localLong, localLong, localLong, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, null, null, localInteger, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5 }, ReqGetFollowTabPara.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqGetFollowTabPara
  * JD-Core Version:    0.7.0.1
  */

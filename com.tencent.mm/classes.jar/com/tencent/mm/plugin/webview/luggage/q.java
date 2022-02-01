@@ -1,80 +1,28 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.app.Activity;
-import com.tencent.luggage.d.d;
-import com.tencent.luggage.d.f;
-import com.tencent.luggage.d.g;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bj;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.SwipeBackLayout;
-import java.util.LinkedList;
-import java.util.Set;
+import com.tencent.mm.br.c;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public class q
-  extends f
+public final class q
 {
-  private com.tencent.mm.plugin.webview.modeltools.a uSO;
-  
-  public q(Activity paramActivity)
+  public static void aJ(Context paramContext, Intent paramIntent)
   {
-    super(paramActivity);
-    AppMethodBeat.i(6225);
-    this.byN = com.tencent.mm.plugin.webview.luggage.d.a.class;
-    this.byQ.z(bj.bjM());
-    this.uSO = new com.tencent.mm.plugin.webview.modeltools.a();
-    com.tencent.luggage.g.e locale = this.byV.up();
-    paramActivity = new q.1(this, paramActivity);
-    locale.bFA.add(paramActivity);
-    AppMethodBeat.o(6225);
-  }
-  
-  private void dbv()
-  {
-    AppMethodBeat.i(6227);
-    if ((this.mContext instanceof MMActivity))
+    AppMethodBeat.i(78414);
+    if (Util.isNullOrNil(paramIntent.getStringExtra("rawUrl")))
     {
-      SwipeBackLayout localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
-      if (localSwipeBackLayout != null)
-      {
-        if (this.byV.um().size() <= 1)
-        {
-          localSwipeBackLayout.setEnableGesture(true);
-          AppMethodBeat.o(6227);
-          return;
-        }
-        localSwipeBackLayout.setEnableGesture(false);
-      }
+      AppMethodBeat.o(78414);
+      return;
     }
-    AppMethodBeat.o(6227);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(6226);
-    super.onResume();
-    dbv();
-    AppMethodBeat.o(6226);
-  }
-  
-  public final void uk()
-  {
-    AppMethodBeat.i(6228);
-    ((e)uf()).daR();
-    dbv();
-    AppMethodBeat.o(6228);
-  }
-  
-  public final void ul()
-  {
-    AppMethodBeat.i(6229);
-    dbv();
-    AppMethodBeat.o(6229);
+    c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramIntent);
+    AppMethodBeat.o(78414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.q
  * JD-Core Version:    0.7.0.1
  */

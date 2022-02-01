@@ -28,13 +28,14 @@ public final class cmd0x345$RspBody$SubCmd0x3RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40, 50, 56, 66, 74, 80, 90, 98 }, new String[] { "str_host", "uint32_port", "str_check_sum", "str_cookie", "uint32_costom_id", "str_ret_msg", "int32_ret_code", "str_suggest_file_name", "bytes_sha", "uint32_https_port", "str_https_domain", "str_dns" }, new Object[] { "", Integer.valueOf(80), "", "", Integer.valueOf(0), "", Integer.valueOf(0), "", localByteStringMicro, Integer.valueOf(443), "", "" }, SubCmd0x3RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40, 50, 56, 66, 74, 80, 90, 98 }, new String[] { "str_host", "uint32_port", "str_check_sum", "str_cookie", "uint32_costom_id", "str_ret_msg", "int32_ret_code", "str_suggest_file_name", "bytes_sha", "uint32_https_port", "str_https_domain", "str_dns" }, new Object[] { "", Integer.valueOf(80), "", "", localInteger, "", localInteger, "", localByteStringMicro, Integer.valueOf(443), "", "" }, SubCmd0x3RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.cmd0x345.cmd0x345.RspBody.SubCmd0x3RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bcyz;
-import bdoo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
 {
@@ -27,12 +27,12 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
   MiniAppDesktopAdapter$FriendsPkViewHolder$Item(MiniAppDesktopAdapter.FriendsPkViewHolder paramFriendsPkViewHolder, View paramView)
   {
     this.mContainer = paramView;
-    this.mIcon = ((ImageView)paramView.findViewById(2131370485));
-    this.mCrown = ((ImageView)paramView.findViewById(2131370486));
-    this.mName = ((TextView)paramView.findViewById(2131370488));
-    this.mRanking = ((TextView)paramView.findViewById(2131370489));
-    this.mScore = ((TextView)paramView.findViewById(2131370490));
-    this.mUnit = ((TextView)paramView.findViewById(2131370481));
+    this.mIcon = ((ImageView)paramView.findViewById(2131438458));
+    this.mCrown = ((ImageView)paramView.findViewById(2131438459));
+    this.mName = ((TextView)paramView.findViewById(2131438461));
+    this.mRanking = ((TextView)paramView.findViewById(2131438462));
+    this.mScore = ((TextView)paramView.findViewById(2131438463));
+    this.mUnit = ((TextView)paramView.findViewById(2131438454));
   }
   
   public void gone()
@@ -45,22 +45,30 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
     this.mContainer.setVisibility(0);
     try
     {
-      Object localObject = this.this$0.itemView.getResources().getDrawable(2130840085);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      int i = bdoo.a(30.0F);
-      localURLDrawableOptions.mRequestHeight = i;
-      localURLDrawableOptions.mRequestWidth = i;
-      localObject = URLDrawable.getDrawable(paramStRankingList.avatar.get(), localURLDrawableOptions);
-      ((URLDrawable)localObject).setTag(bcyz.a(bdoo.a(30.0F), bdoo.a(30.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(bcyz.o);
-      this.mIcon.setImageDrawable((Drawable)localObject);
+      Object localObject1 = this.this$0.itemView.getResources().getDrawable(2130841060);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
+      int i = ViewUtils.dip2px(30.0F);
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
+      localObject1 = URLDrawable.getDrawable(paramStRankingList.avatar.get(), (URLDrawable.URLDrawableOptions)localObject2);
+      ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.a(ViewUtils.dip2px(30.0F), ViewUtils.dip2px(30.0F)));
+      ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.o);
+      this.mIcon.setImageDrawable((Drawable)localObject1);
       label104:
       this.mName.setText(paramStRankingList.nick.get());
-      this.mScore.setText("" + paramStRankingList.score.get());
+      localObject1 = this.mScore;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(paramStRankingList.score.get());
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
       this.mUnit.setText(paramStRankingList.unit.get());
-      this.mRanking.setText(paramStRankingList.ranks.get() + "");
+      localObject1 = this.mRanking;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramStRankingList.ranks.get());
+      ((StringBuilder)localObject2).append("");
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -78,7 +86,7 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.FriendsPkViewHolder.Item
  * JD-Core Version:    0.7.0.1
  */

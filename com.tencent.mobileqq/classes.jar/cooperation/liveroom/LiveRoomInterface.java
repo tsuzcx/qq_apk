@@ -1,15 +1,16 @@
 package cooperation.liveroom;
 
 import android.os.Bundle;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 
 public class LiveRoomInterface
   extends PluginRuntime
 {
-  private awgg emFactoryQQ;
+  private EntityManagerFactory emFactoryQQ;
   public AppInterface mAppInterface;
   
   public String getModuleId()
@@ -17,23 +18,23 @@ public class LiveRoomInterface
     return "LiveRoomPlugin.apk";
   }
   
-  public awgg getQQEntityManagerFactory()
+  public EntityManagerFactory getQQEntityManagerFactory()
   {
     Object localObject1 = getAccount();
-    if (localObject1 == null) {
-      throw new IllegalStateException("Can not create a entity factory, the account is null.");
-    }
-    try
-    {
-      if (this.emFactoryQQ == null)
+    if (localObject1 != null) {
+      try
       {
-        localObject1 = new QQEntityManagerFactory((String)localObject1);
-        ((QQEntityManagerFactory)localObject1).verifyAuthentication();
-        this.emFactoryQQ = ((awgg)localObject1);
+        if (this.emFactoryQQ == null)
+        {
+          localObject1 = QQEntityManagerFactoryProxy.a((String)localObject1, super.getEntityManagerFactory());
+          ((QQEntityManagerFactory)localObject1).verifyAuthentication();
+          this.emFactoryQQ = ((EntityManagerFactory)localObject1);
+        }
+        return this.emFactoryQQ;
       }
-      return this.emFactoryQQ;
+      finally {}
     }
-    finally {}
+    throw new IllegalStateException("Can not create a entity factory, the account is null.");
   }
   
   public void onCreate(Bundle paramBundle)
@@ -43,7 +44,7 @@ public class LiveRoomInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomInterface
  * JD-Core Version:    0.7.0.1
  */

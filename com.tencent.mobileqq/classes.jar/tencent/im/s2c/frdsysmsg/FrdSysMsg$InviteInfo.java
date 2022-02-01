@@ -13,7 +13,7 @@ public final class FrdSysMsg$InviteInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.frdsysmsg.FrdSysMsg.InviteInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,23 @@
-import android.view.LayoutInflater;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
 import com.tencent.mobileqq.activity.selectmember.RenMaiQuanTeamListInnerFrame;
-import com.tencent.mobileqq.app.CircleManager;
 import com.tencent.mobileqq.data.CircleGroup;
-import java.util.ArrayList;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class eqo
-  extends BaseAdapter
+class eqo
+  implements View.OnClickListener
 {
-  private eqo(RenMaiQuanTeamListInnerFrame paramRenMaiQuanTeamListInnerFrame) {}
+  eqo(eqn parameqn, CircleGroup paramCircleGroup) {}
   
-  public int getCount()
+  public void onClick(View paramView)
   {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (CircleGroup)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = (CircleGroup)getItem(paramInt);
-    paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903972, RenMaiQuanTeamListInnerFrame.a(this.a), false);
-    ((ImageView)paramViewGroup.findViewById(2131230985)).setImageResource(this.a.jdField_a_of_type_ComTencentMobileqqAppCircleManager.a(paramView.groupId));
-    ((TextView)paramViewGroup.findViewById(2131232318)).setText(paramView.groupName);
-    paramViewGroup.setOnClickListener(new eqp(this, paramView));
-    return paramViewGroup;
+    paramView = new Bundle();
+    paramView.putInt("group_uin", this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupId);
+    paramView.putString("group_name", this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupName);
+    this.jdField_a_of_type_Eqn.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(7, paramView);
+    ReportController.b(this.jdField_a_of_type_Eqn.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Network_circle", "Mutichat_circle_grp", 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCircleGroup.groupId), "", "", "");
   }
 }
 

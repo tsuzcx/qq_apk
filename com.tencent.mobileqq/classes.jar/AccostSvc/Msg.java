@@ -9,15 +9,15 @@ public final class Msg
 {
   static int cache_eAccostType;
   static byte[] cache_strMsg;
-  public int eAccostType;
-  public int iMsgTime;
-  public long iPluginID;
-  public long lFromMID;
-  public long lToMID;
-  public short shMsgType;
-  public byte[] strMsg;
-  public long uMsgID;
-  public long uRandID;
+  public int eAccostType = 0;
+  public int iMsgTime = 0;
+  public long iPluginID = 0L;
+  public long lFromMID = 0L;
+  public long lToMID = 0L;
+  public short shMsgType = 0;
+  public byte[] strMsg = null;
+  public long uMsgID = 0L;
+  public long uRandID = 0L;
   
   public Msg() {}
   
@@ -67,7 +67,7 @@ public final class Msg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.Msg
  * JD-Core Version:    0.7.0.1
  */

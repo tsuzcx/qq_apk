@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.profile.view;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import awvm;
-import awvn;
-import azqs;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.widget.CirclePageIndicator;
 import java.util.List;
 
@@ -20,13 +18,13 @@ public class ProfileLabelPanel
   implements ViewPager.OnPageChangeListener
 {
   protected ViewPager a;
-  protected View a;
-  protected TextView a;
-  protected awvn a;
-  protected ProfileLabelPanelAdapter a;
-  protected CirclePageIndicator a;
-  protected List<ProfileLabelTypeInfo> a;
-  protected TextView b;
+  protected CirclePageIndicator b;
+  protected View c;
+  protected TextView d;
+  protected TextView e;
+  protected ProfileLabelPanelAdapter f;
+  protected List<ProfileLabelTypeInfo> g;
+  protected ProfileLabelPanel.LabelStatusManager h;
   
   public ProfileLabelPanel(Context paramContext)
   {
@@ -38,30 +36,30 @@ public class ProfileLabelPanel
     super(paramContext, paramAttributeSet);
   }
   
-  public ProfileLabelPanel(Context paramContext, awvn paramawvn, List<ProfileLabelTypeInfo> paramList, awvm paramawvm)
+  public ProfileLabelPanel(Context paramContext, ProfileLabelPanel.LabelStatusManager paramLabelStatusManager, List<ProfileLabelTypeInfo> paramList, ProfileLabelCallBack paramProfileLabelCallBack)
   {
     this(paramContext);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131561827, this);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Awvn = paramawvn;
-    a(paramContext, paramawvm);
+    this.c = LayoutInflater.from(paramContext).inflate(2131628448, this);
+    this.g = paramList;
+    this.h = paramLabelStatusManager;
+    a(paramContext, paramProfileLabelCallBack);
   }
   
-  protected void a(Context paramContext, awvm paramawvm)
+  protected void a(Context paramContext, ProfileLabelCallBack paramProfileLabelCallBack)
   {
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377405));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377408));
-    this.b.setText(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(0)).typeInfo);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(0)).typeName);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)this.jdField_a_of_type_AndroidViewView.findViewById(2131371546));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131379906));
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter = new ProfileLabelPanelAdapter(paramContext, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.a(paramawvm);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter.a(this.jdField_a_of_type_Awvn);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanelAdapter);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setOnPageChangeListener(this);
+    this.e = ((TextView)this.c.findViewById(2131446780));
+    this.d = ((TextView)this.c.findViewById(2131446783));
+    this.e.setText(((ProfileLabelTypeInfo)this.g.get(0)).typeInfo);
+    this.d.setText(((ProfileLabelTypeInfo)this.g.get(0)).typeName);
+    this.b = ((CirclePageIndicator)this.c.findViewById(2131439785));
+    this.a = ((ViewPager)this.c.findViewById(2131449793));
+    this.f = new ProfileLabelPanelAdapter(paramContext, this.g);
+    this.f.a(paramProfileLabelCallBack);
+    this.f.a(this.h);
+    this.a.setAdapter(this.f);
+    this.a.setCurrentItem(0);
+    this.b.setViewPager(this.a);
+    this.b.setOnPageChangeListener(this);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -70,15 +68,15 @@ public class ProfileLabelPanel
   
   public void onPageSelected(int paramInt)
   {
-    azqs.b(null, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "3", "", "", "");
-    ProfileLabelTypeInfo localProfileLabelTypeInfo = (ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    this.b.setText(localProfileLabelTypeInfo.typeInfo);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(localProfileLabelTypeInfo.typeName);
+    ReportController.b(null, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "3", "", "", "");
+    ProfileLabelTypeInfo localProfileLabelTypeInfo = (ProfileLabelTypeInfo)this.g.get(paramInt);
+    this.e.setText(localProfileLabelTypeInfo.typeInfo);
+    this.d.setText(localProfileLabelTypeInfo.typeName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileLabelPanel
  * JD-Core Version:    0.7.0.1
  */

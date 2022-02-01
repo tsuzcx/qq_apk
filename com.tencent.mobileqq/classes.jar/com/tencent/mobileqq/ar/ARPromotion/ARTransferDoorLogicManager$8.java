@@ -1,31 +1,30 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import alud;
-import amtj;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
-public class ARTransferDoorLogicManager$8
+class ARTransferDoorLogicManager$8
   implements Runnable
 {
-  public ARTransferDoorLogicManager$8(amtj paramamtj) {}
+  ARTransferDoorLogicManager$8(ARTransferDoorLogicManager paramARTransferDoorLogicManager) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView == null) {
+    if (this.this$0.i == null) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_Int == 2)
+    if (this.this$0.h == 2)
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.d(false);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.b(1);
+      this.this$0.i.e(false);
+      this.this$0.i.b(1);
       return;
     }
-    this.this$0.a(true, alud.a(2131701141));
+    this.this$0.a(true, HardCodeUtil.a(2131899002));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.8
  * JD-Core Version:    0.7.0.1
  */

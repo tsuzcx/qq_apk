@@ -3,7 +3,11 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.wallet_core.ui.i;
 
 final class WalletForgotPwdVerifyIdUI$2
   implements View.OnClickListener
@@ -12,14 +16,18 @@ final class WalletForgotPwdVerifyIdUI$2
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(46307);
-    e.m(this.tZw, "https://kf.qq.com/touch/scene_product.html?scene_id=kf3258", false);
-    AppMethodBeat.o(46307);
+    AppMethodBeat.i(69683);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdVerifyIdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    i.p(this.Vrd, "https://" + WeChatHosts.domainString(a.i.host_kf_qq_com) + "/touch/scene_product.html?scene_id=kf3258", false);
+    a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdVerifyIdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(69683);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletForgotPwdVerifyIdUI.2
  * JD-Core Version:    0.7.0.1
  */

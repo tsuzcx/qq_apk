@@ -59,12 +59,21 @@ class c
   
   void a(JSONObject paramJSONObject, Thread paramThread)
   {
+    String str;
     if (paramThread == null)
     {
       if (this.c != null)
       {
-        paramJSONObject.put("sr", this.c.widthPixels + "*" + this.c.heightPixels);
-        paramJSONObject.put("dpi", this.c.xdpi + "*" + this.c.ydpi);
+        paramThread = new StringBuilder();
+        paramThread.append(this.c.widthPixels);
+        paramThread.append("*");
+        paramThread.append(this.c.heightPixels);
+        paramJSONObject.put("sr", paramThread.toString());
+        paramThread = new StringBuilder();
+        paramThread.append(this.c.xdpi);
+        paramThread.append("*");
+        paramThread.append(this.c.ydpi);
+        paramJSONObject.put("dpi", paramThread.toString());
       }
       if (NetworkManager.getInstance(this.o).isWifi())
       {
@@ -76,41 +85,14 @@ class c
         }
       }
       paramThread = Util.getWifiTopN(this.o, 10);
-      if ((paramThread != null) && (paramThread.length() > 0)) {
-        Util.jsonPut(paramJSONObject, "wflist", paramThread.toString());
+      if ((paramThread == null) || (paramThread.length() <= 0)) {
+        break label396;
       }
+      str = paramThread.toString();
+      paramThread = "wflist";
     }
-    for (;;)
+    else
     {
-      Util.jsonPut(paramJSONObject, "pcn", StatCommonHelper.a(this.o));
-      Util.jsonPut(paramJSONObject, "osn", Build.VERSION.RELEASE);
-      Util.jsonPut(paramJSONObject, "av", this.a);
-      Util.jsonPut(paramJSONObject, "ch", this.h);
-      Util.jsonPut(paramJSONObject, "mf", this.f);
-      Util.jsonPut(paramJSONObject, "sv", this.b);
-      Util.jsonPut(paramJSONObject, "osd", Build.DISPLAY);
-      Util.jsonPut(paramJSONObject, "prod", Build.PRODUCT);
-      Util.jsonPut(paramJSONObject, "tags", Build.TAGS);
-      Util.jsonPut(paramJSONObject, "id", Build.ID);
-      Util.jsonPut(paramJSONObject, "fng", Build.FINGERPRINT);
-      Util.jsonPut(paramJSONObject, "lch", this.n);
-      Util.jsonPut(paramJSONObject, "ov", Integer.toString(this.d));
-      paramJSONObject.put("os", 1);
-      Util.jsonPut(paramJSONObject, "op", this.i);
-      Util.jsonPut(paramJSONObject, "lg", this.g);
-      Util.jsonPut(paramJSONObject, "md", this.e);
-      Util.jsonPut(paramJSONObject, "tz", this.j);
-      if (this.l != 0) {
-        paramJSONObject.put("jb", this.l);
-      }
-      Util.jsonPut(paramJSONObject, "sd", this.k);
-      Util.jsonPut(paramJSONObject, "apn", this.m);
-      Util.jsonPut(paramJSONObject, "cpu", this.q);
-      Util.jsonPut(paramJSONObject, "abi", Build.CPU_ABI);
-      Util.jsonPut(paramJSONObject, "abi2", Build.CPU_ABI2);
-      Util.jsonPut(paramJSONObject, "ram", this.r);
-      Util.jsonPut(paramJSONObject, "rom", this.s);
-      return;
       Util.jsonPut(paramJSONObject, "thn", paramThread.getName());
       Util.jsonPut(paramJSONObject, "qq", StatConfig.getQQ(this.o));
       Util.jsonPut(paramJSONObject, "cui", StatConfig.getCustomUserId(this.o));
@@ -123,13 +105,45 @@ class c
       if (af.a(this.o).b(this.o) != null) {
         paramJSONObject.put("ui", af.a(this.o).b(this.o).getImei());
       }
-      Util.jsonPut(paramJSONObject, "mid", StatConfig.getLocalMidOnly(this.o));
+      str = StatConfig.getLocalMidOnly(this.o);
+      paramThread = "mid";
     }
+    Util.jsonPut(paramJSONObject, paramThread, str);
+    label396:
+    Util.jsonPut(paramJSONObject, "pcn", StatCommonHelper.a(this.o));
+    Util.jsonPut(paramJSONObject, "osn", Build.VERSION.RELEASE);
+    Util.jsonPut(paramJSONObject, "av", this.a);
+    Util.jsonPut(paramJSONObject, "ch", this.h);
+    Util.jsonPut(paramJSONObject, "mf", this.f);
+    Util.jsonPut(paramJSONObject, "sv", this.b);
+    Util.jsonPut(paramJSONObject, "osd", Build.DISPLAY);
+    Util.jsonPut(paramJSONObject, "prod", Build.PRODUCT);
+    Util.jsonPut(paramJSONObject, "tags", Build.TAGS);
+    Util.jsonPut(paramJSONObject, "id", Build.ID);
+    Util.jsonPut(paramJSONObject, "fng", Build.FINGERPRINT);
+    Util.jsonPut(paramJSONObject, "lch", this.n);
+    Util.jsonPut(paramJSONObject, "ov", Integer.toString(this.d));
+    paramJSONObject.put("os", 1);
+    Util.jsonPut(paramJSONObject, "op", this.i);
+    Util.jsonPut(paramJSONObject, "lg", this.g);
+    Util.jsonPut(paramJSONObject, "md", this.e);
+    Util.jsonPut(paramJSONObject, "tz", this.j);
+    int i1 = this.l;
+    if (i1 != 0) {
+      paramJSONObject.put("jb", i1);
+    }
+    Util.jsonPut(paramJSONObject, "sd", this.k);
+    Util.jsonPut(paramJSONObject, "apn", this.m);
+    Util.jsonPut(paramJSONObject, "cpu", this.q);
+    Util.jsonPut(paramJSONObject, "abi", Build.CPU_ABI);
+    Util.jsonPut(paramJSONObject, "abi2", Build.CPU_ABI2);
+    Util.jsonPut(paramJSONObject, "ram", this.r);
+    Util.jsonPut(paramJSONObject, "rom", this.s);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.common.c
  * JD-Core Version:    0.7.0.1
  */

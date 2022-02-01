@@ -39,10 +39,10 @@ public class AVRoomMulti
   
   public int fillCustomData(AVRoomMulti.AVCustomData paramAVCustomData)
   {
-    if ((paramAVCustomData == null) || (paramAVCustomData.data == null)) {
-      return 1004;
+    if ((paramAVCustomData != null) && (paramAVCustomData.data != null)) {
+      return nativefillCustomData(paramAVCustomData.data, paramAVCustomData.isAutoPushed);
     }
-    return nativefillCustomData(paramAVCustomData.data, paramAVCustomData.isAutoPushed);
+    return 1004;
   }
   
   public AVQualityStats getAVQualityStats()
@@ -50,13 +50,17 @@ public class AVRoomMulti
     if (this.AVQualityStatsInstance == null) {
       this.AVQualityStatsInstance = new AVQualityStats();
     }
-    if ((this.AVQualityStatsInstance == null) || (this.AVQualityStatsInstance.videoEncodeInfo == null) || (this.AVQualityStatsInstance.videoDecodeInfo == null)) {
-      QLog.e("SdkJni", 0, "AVQualityStatsInstance is not right to create");
-    }
-    while (!getAVQualityStats(this.AVQualityStatsInstance, this.AVQualityStatsInstance.videoEncodeInfo, this.AVQualityStatsInstance.videoDecodeInfo, this.AVQualityStatsInstance.audioDecodeInfo)) {
+    AVQualityStats localAVQualityStats = this.AVQualityStatsInstance;
+    if ((localAVQualityStats != null) && (localAVQualityStats.videoEncodeInfo != null) && (this.AVQualityStatsInstance.videoDecodeInfo != null))
+    {
+      localAVQualityStats = this.AVQualityStatsInstance;
+      if (getAVQualityStats(localAVQualityStats, localAVQualityStats.videoEncodeInfo, this.AVQualityStatsInstance.videoDecodeInfo, this.AVQualityStatsInstance.audioDecodeInfo)) {
+        return this.AVQualityStatsInstance;
+      }
       return null;
     }
-    return this.AVQualityStatsInstance;
+    QLog.e("SdkJni", 0, "AVQualityStatsInstance is not right to create");
+    return null;
   }
   
   public native AVEndpoint getEndpointById(String paramString);
@@ -92,7 +96,7 @@ public class AVRoomMulti
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVRoomMulti
  * JD-Core Version:    0.7.0.1
  */

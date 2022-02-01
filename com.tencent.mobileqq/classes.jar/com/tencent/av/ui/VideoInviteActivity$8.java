@@ -7,12 +7,12 @@ class VideoInviteActivity$8
   
   public void run()
   {
-    this.this$0.g();
+    this.this$0.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteActivity.8
  * JD-Core Version:    0.7.0.1
  */

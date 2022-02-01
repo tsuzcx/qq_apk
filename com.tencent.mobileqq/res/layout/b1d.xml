@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/id2" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:id="@id/id2" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:id="@id/ecs" android:paddingTop="6.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray4_item" android:ellipsize="end" android:id="@id/kd8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginBottom="6.0dip" android:maxLines="1" android:includeFontPadding="false" />
             <com.tencent.widget.CustomImgView android:id="@id/dfx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="63.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />

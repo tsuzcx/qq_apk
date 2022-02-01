@@ -1,275 +1,206 @@
 package com.tencent.mm.media.e;
 
-import a.f.b.j;
-import a.l;
-import a.l.m;
-import android.media.MediaExtractor;
+import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
-import android.media.MediaMetadataRetriever;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.compatible.deviceinfo.aa;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "", "filePath", "", "(Ljava/lang/String;)V", "audioTrackForamt", "Landroid/media/MediaFormat;", "audioTrackIndex", "", "hasError", "", "isRelease", "mediaExtractor", "Landroid/media/MediaExtractor;", "sampleSize", "sampleTime", "", "selectVideo", "videoBitrate", "videoTrackFormat", "videoTrackIndex", "getAudioFormat", "getAudioMIME", "getAudioTrackIndex", "getBitrate", "getCurrentSampleSize", "getDuration", "getFile", "getFilePath", "getSampleTime", "getSampleTrackIndex", "getVideoFormat", "getVideoHeight", "getVideoMIME", "getVideoWidth", "isReleased", "isSelectVideo", "readNextSampleData", "byteBuffer", "Ljava/nio/ByteBuffer;", "release", "", "seek", "startTime", "selectAudio", "setBitrate", "bitrate", "toString", "Companion", "plugin-mediaeditor_release"})
-public final class a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/encoder/IAudioEncoder;", "", "mediaFormat", "Landroid/media/MediaFormat;", "frameEncodeCallback", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "format", "", "frameEncodeEndCallback", "Lkotlin/Function0;", "(Landroid/media/MediaFormat;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function0;)V", "dstMediaFormat", "getDstMediaFormat", "()Landroid/media/MediaFormat;", "setDstMediaFormat", "(Landroid/media/MediaFormat;)V", "encodeStartTick", "", "getEncodeStartTick", "()J", "setEncodeStartTick", "(J)V", "encoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "getEncoder", "()Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "setEncoder", "(Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;)V", "getFrameEncodeCallback", "()Lkotlin/jvm/functions/Function3;", "setFrameEncodeCallback", "(Lkotlin/jvm/functions/Function3;)V", "getFrameEncodeEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameEncodeEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "isEnd", "", "()Z", "setEnd", "(Z)V", "mMimeType", "", "getMMimeType", "()Ljava/lang/String;", "setMMimeType", "(Ljava/lang/String;)V", "stopLock", "Ljava/lang/Object;", "getStopLock", "()Ljava/lang/Object;", "totalEncodeTime", "getTotalEncodeTime", "setTotalEncodeTime", "finishEncode", "isIgnoreCodecConfig", "processEncodeBuffer", "buffer", "releaseEncoder", "startEncoder", "", "pts", "isLast", "stopEncoder", "Companion", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class a
 {
-  public static final a.a eUZ;
-  private int eUR;
-  public int eUS;
-  public MediaFormat eUT;
-  public MediaFormat eUU;
-  private boolean eUV;
-  private long eUW;
-  public boolean eUX;
-  public boolean eUY;
-  public final String filePath;
-  public final MediaExtractor mediaExtractor;
-  public int sampleSize;
-  private int videoBitrate;
+  public static final a.a nzp = new a.a((byte)0);
+  private final Object cBq;
+  private String mMimeType;
+  volatile boolean nxG;
+  private q<? super ByteBuffer, ? super MediaCodec.BufferInfo, ? super MediaFormat, ah> nzq;
+  private kotlin.g.a.a<ah> nzr;
+  aa nzs;
+  MediaFormat nzt;
+  long nzu;
+  private long nzv;
   
-  static
+  public a(MediaFormat paramMediaFormat, q<? super ByteBuffer, ? super MediaCodec.BufferInfo, ? super MediaFormat, ah> paramq, kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(12981);
-    eUZ = new a.a((byte)0);
-    AppMethodBeat.o(12981);
-  }
-  
-  public a(String paramString)
-  {
-    AppMethodBeat.i(12980);
-    this.filePath = paramString;
-    this.mediaExtractor = new MediaExtractor();
-    this.eUR = -1;
-    this.eUS = -1;
+    this.nzq = paramq;
+    this.nzr = parama;
+    this.cBq = new Object();
+    Log.i("MicroMsg.IAudioEncoder", "init audio encoder");
+    this.mMimeType = paramMediaFormat.getString("mime");
     for (;;)
     {
-      int i;
       try
       {
-        ab.b("MicroMsg.MediaExtractorWrapper", "filePath :" + this.filePath, new Object[0]);
-        this.mediaExtractor.setDataSource(this.filePath);
-        int j = this.mediaExtractor.getTrackCount();
-        ab.b("MicroMsg.MediaExtractorWrapper", "trackCount :".concat(String.valueOf(j)), new Object[0]);
-        i = 0;
-        if (i < j)
-        {
-          paramString = this.mediaExtractor.getTrackFormat(i);
-          String str = paramString.getString("mime");
-          j.p(str, "mime");
-          if (m.d((CharSequence)str, (CharSequence)"video"))
-          {
-            this.eUT = paramString;
-            this.eUR = i;
-          }
-          else if (m.d((CharSequence)str, (CharSequence)"audio"))
-          {
-            this.eUU = paramString;
-            this.eUS = i;
-          }
+        this.nzt = new MediaFormat();
+        this.nzt.setString("mime", "audio/mp4a-latm");
+        this.nzt.setInteger("aac-profile", 2);
+        this.nzt.setInteger("sample-rate", 44100);
+        if (!paramMediaFormat.containsKey("channel-count")) {
+          break label230;
         }
+        i = paramMediaFormat.getInteger("channel-count");
       }
-      catch (Exception paramString)
+      catch (Exception paramMediaFormat)
       {
-        ab.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)paramString, "", new Object[0]);
-        this.eUX = true;
-        AppMethodBeat.o(12980);
-        return;
+        throw new IllegalStateException("init encoder error");
       }
-      if (this.eUR >= 0)
-      {
-        this.mediaExtractor.selectTrack(this.eUR);
-        this.eUV = true;
-      }
-      paramString = new MediaMetadataRetriever();
-      paramString.setDataSource(this.filePath);
-      this.videoBitrate = Integer.parseInt(paramString.extractMetadata(20));
-      paramString.release();
-      ab.d("MicroMsg.MediaExtractorWrapper", "current info :" + toString());
-      AppMethodBeat.o(12980);
+      this.nzt.setInteger("channel-count", i);
+      this.nzt.setInteger("bitrate", paramMediaFormat.getInteger("bitrate"));
+      this.nzt.setInteger("max-input-size", i * 2048);
+      paramMediaFormat = aa.u("audio/mp4a-latm", false);
+      s.s(paramMediaFormat, "createEncoderByType(AAC_MIME_TYPE)");
+      this.nzs = paramMediaFormat;
+      this.nzs.a(this.nzt, null, 1);
+      Log.i("MicroMsg.IAudioEncoder", s.X("finish init audio encoder, dstMediaFormat:", this.nzt));
       return;
-      i += 1;
-    }
-  }
-  
-  public final void UT()
-  {
-    AppMethodBeat.i(12970);
-    try
-    {
-      if (this.eUS >= 0) {
-        this.mediaExtractor.unselectTrack(this.eUS);
+      label230:
+      while (i > 0) {
+        break;
       }
-      if (this.eUR >= 0)
-      {
-        this.eUV = true;
-        this.mediaExtractor.selectTrack(this.eUR);
-        this.sampleSize = 0;
-        AppMethodBeat.o(12970);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "selectVideo error", new Object[0]);
-      AppMethodBeat.o(12970);
-    }
-  }
-  
-  public final void UU()
-  {
-    AppMethodBeat.i(12971);
-    try
-    {
-      if (this.eUR >= 0) {
-        this.mediaExtractor.unselectTrack(this.eUR);
-      }
-      if (this.eUS >= 0)
-      {
-        this.eUV = false;
-        this.mediaExtractor.selectTrack(this.eUS);
-        this.sampleSize = 0;
-        AppMethodBeat.o(12971);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "selectAudio error", new Object[0]);
-      AppMethodBeat.o(12971);
-    }
-  }
-  
-  public final String UV()
-  {
-    AppMethodBeat.i(12972);
-    Object localObject = this.eUT;
-    if (localObject != null)
-    {
-      localObject = ((MediaFormat)localObject).getString("mime");
-      AppMethodBeat.o(12972);
-      return localObject;
-    }
-    AppMethodBeat.o(12972);
-    return null;
-  }
-  
-  public final String UW()
-  {
-    AppMethodBeat.i(12973);
-    Object localObject = this.eUU;
-    if (localObject != null)
-    {
-      localObject = ((MediaFormat)localObject).getString("mime");
-      AppMethodBeat.o(12973);
-      return localObject;
-    }
-    AppMethodBeat.o(12973);
-    return null;
-  }
-  
-  public final boolean g(ByteBuffer paramByteBuffer)
-  {
-    AppMethodBeat.i(12976);
-    j.q(paramByteBuffer, "byteBuffer");
-    try
-    {
-      if (this.eUY)
-      {
-        ab.e("MicroMsg.MediaExtractorWrapper", "readNextSampleData already release");
-        AppMethodBeat.o(12976);
-        return false;
-      }
-      this.sampleSize = this.mediaExtractor.readSampleData(paramByteBuffer, 0);
-      this.eUW = this.mediaExtractor.getSampleTime();
-      this.mediaExtractor.advance();
-      if (this.eUV) {}
-      for (int i = this.eUR; this.mediaExtractor.getSampleTrackIndex() != i; i = this.eUS)
-      {
-        AppMethodBeat.o(12976);
-        return false;
-      }
-      AppMethodBeat.o(12976);
-      return true;
-    }
-    catch (Exception paramByteBuffer)
-    {
-      ab.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)paramByteBuffer, "readNextSampleData", new Object[0]);
-      AppMethodBeat.o(12976);
-    }
-    return false;
-  }
-  
-  public final int getDuration()
-  {
-    int j = 0;
-    AppMethodBeat.i(12978);
-    MediaFormat localMediaFormat = this.eUT;
-    int i;
-    if (localMediaFormat != null)
-    {
-      i = (int)localMediaFormat.getLong("durationUs");
-      if (i > 0) {
-        break label63;
-      }
-      localMediaFormat = this.eUU;
       i = j;
-      if (localMediaFormat != null) {
-        i = (int)localMediaFormat.getLong("durationUs");
-      }
-    }
-    label63:
-    for (;;)
-    {
-      AppMethodBeat.o(12978);
-      return i;
-      i = 0;
-      break;
     }
   }
   
-  public final long getSampleTime()
+  public static boolean boY()
   {
-    AppMethodBeat.i(12974);
-    try
-    {
-      long l = this.eUW;
-      AppMethodBeat.o(12974);
-      return l;
+    return true;
+  }
+  
+  public abstract void b(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean);
+  
+  protected final Object boO()
+  {
+    return this.cBq;
+  }
+  
+  public final void boX()
+  {
+    bpa();
+  }
+  
+  public final void boZ()
+  {
+    bpa();
+  }
+  
+  /* Error */
+  protected final void bpa()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 130	com/tencent/mm/media/e/a:cBq	Ljava/lang/Object;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: getfield 222	com/tencent/mm/media/e/a:nxG	Z
+    //   13: ifne +39 -> 52
+    //   16: aload_0
+    //   17: iconst_1
+    //   18: putfield 222	com/tencent/mm/media/e/a:nxG	Z
+    //   21: ldc 132
+    //   23: ldc 223
+    //   25: invokestatic 140	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: aload_0
+    //   29: getfield 193	com/tencent/mm/media/e/a:nzs	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   32: invokevirtual 226	com/tencent/mm/compatible/deviceinfo/aa:stop	()V
+    //   35: aload_0
+    //   36: getfield 193	com/tencent/mm/media/e/a:nzs	Lcom/tencent/mm/compatible/deviceinfo/aa;
+    //   39: invokevirtual 229	com/tencent/mm/compatible/deviceinfo/aa:release	()V
+    //   42: aload_0
+    //   43: getfield 128	com/tencent/mm/media/e/a:nzr	Lkotlin/g/a/a;
+    //   46: invokeinterface 234 1 0
+    //   51: pop
+    //   52: ldc 132
+    //   54: ldc 236
+    //   56: aload_0
+    //   57: getfield 238	com/tencent/mm/media/e/a:nzv	J
+    //   60: invokestatic 244	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   63: invokestatic 203	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   66: invokestatic 140	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: getstatic 250	kotlin/ah:aiuX	Lkotlin/ah;
+    //   72: astore_2
+    //   73: aload_1
+    //   74: monitorexit
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: return
+    //   78: astore_2
+    //   79: aload_1
+    //   80: monitorexit
+    //   81: aload_2
+    //   82: athrow
+    //   83: astore_1
+    //   84: ldc 132
+    //   86: ldc 252
+    //   88: iconst_1
+    //   89: anewarray 4	java/lang/Object
+    //   92: dup
+    //   93: iconst_0
+    //   94: aload_1
+    //   95: invokevirtual 255	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   98: aastore
+    //   99: invokestatic 259	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   102: goto -27 -> 75
+    //   105: astore_1
+    //   106: aload_0
+    //   107: monitorexit
+    //   108: aload_1
+    //   109: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	110	0	this	a
+    //   83	12	1	localException	Exception
+    //   105	4	1	localObject2	Object
+    //   72	1	2	localah	ah
+    //   78	4	2	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   9	52	78	finally
+    //   52	73	78	finally
+    //   2	9	83	java/lang/Exception
+    //   73	75	83	java/lang/Exception
+    //   79	83	83	java/lang/Exception
+    //   2	9	105	finally
+    //   73	75	105	finally
+    //   79	83	105	finally
+    //   84	102	105	finally
+  }
+  
+  protected final void d(MediaFormat paramMediaFormat)
+  {
+    s.u(paramMediaFormat, "<set-?>");
+    this.nzt = paramMediaFormat;
+  }
+  
+  public final void f(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    s.u(paramBufferInfo, "bufferInfo");
+    if (paramByteBuffer == null) {
+      Log.e("MicroMsg.IAudioEncoder", "ERROR, retrieve encoderOutputBuffer is null!!");
     }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.MediaExtractorWrapper", (Throwable)localException, "getSampleTime error", new Object[0]);
-      AppMethodBeat.o(12974);
+    while (paramBufferInfo.size <= 0) {
+      return;
     }
-    return -1L;
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(12977);
-    this.mediaExtractor.release();
-    this.eUY = true;
-    AppMethodBeat.o(12977);
-  }
-  
-  public final void seek(long paramLong)
-  {
-    AppMethodBeat.i(12975);
-    this.mediaExtractor.seekTo(paramLong, 0);
-    AppMethodBeat.o(12975);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(12979);
-    String str = "MediaExtractorWrapper(filePath='" + this.filePath + "', mediaExtractor=" + this.mediaExtractor + ", videoTrackIndex=" + this.eUR + ", audioTrackIndex=" + this.eUS + ", videoTrackFormat=" + this.eUT + ", audioTrackForamt=" + this.eUU + ", videoBitrate=" + this.videoBitrate + ", selectVideo=" + this.eUV + ", sampleSize=" + this.sampleSize + ", hasError=" + this.eUX + ", isRelease=" + this.eUY + ')';
-    AppMethodBeat.o(12979);
-    return str;
+    Log.i("MicroMsg.IAudioEncoder", "encoder output buffer:" + paramBufferInfo.size + ", pts:" + paramBufferInfo.presentationTimeUs);
+    paramByteBuffer.position(paramBufferInfo.offset);
+    paramByteBuffer.limit(paramBufferInfo.offset + paramBufferInfo.size);
+    long l = Util.ticksToNow(this.nzu);
+    this.nzv += l;
+    Log.i("MicroMsg.IAudioEncoder", hashCode() + " encode frame used " + l);
+    this.nzq.invoke(paramByteBuffer, paramBufferInfo, this.nzt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.e.a
  * JD-Core Version:    0.7.0.1
  */

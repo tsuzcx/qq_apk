@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/m2f" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="@dimen/au0" android:layout_marginBottom="@dimen/b7u" android:minHeight="@dimen/au0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/text1Area" android:paddingRight="16.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="76.0dip" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:id="@android:id/text1" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <LinearLayout android:layout_gravity="right" android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/m8n" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iy6" android:singleLine="true" />
+            <ImageView android:layout_gravity="center_vertical" android:background="@drawable/h7m" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:contentDescription="@null" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:scaleType="fitXY" android:contentDescription="@null" style="@style/hp" />
+</RelativeLayout>

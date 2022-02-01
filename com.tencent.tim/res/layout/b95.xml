@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView android:layout_gravity="center" android:id="@id/dcw" android:background="@drawable/am8" android:layout_width="34.0dip" android:layout_height="34.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <View android:id="@id/dcx" android:background="@drawable/am8" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_centerInParent="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/juw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+</RelativeLayout>

@@ -6,13 +6,13 @@ import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.ArrayMap;
-import com.tencent.matrix.g.c;
+import com.tencent.matrix.e.c;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,16 +21,17 @@ import java.util.Set;
 
 public enum a
 {
-  private Set<com.tencent.matrix.b.a> bLQ = Collections.synchronizedSet(new HashSet());
-  public boolean bLR = false;
-  public String bLS = "default";
-  a bLT = new a((byte)0);
-  public String bLU;
-  boolean isInited = false;
+  public String eLA;
+  public boolean eLx = false;
+  public String eLy = "default";
+  a eLz = new a((byte)0);
+  Handler handler;
+  boolean isInit = false;
+  public final Set<com.tencent.matrix.b.a> listeners = new HashSet();
   
   private a() {}
   
-  public static String yC()
+  public static String avV()
   {
     l = System.currentTimeMillis();
     try
@@ -68,32 +69,36 @@ public enum a
     {
       for (;;)
       {
-        c.d("Matrix.AppActiveMatrixDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        c.d("Matrix.AppActiveDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       }
     }
     finally
     {
-      c.d("Matrix.AppActiveMatrixDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      c.d("Matrix.AppActiveDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     }
     return null;
   }
   
   public final void a(com.tencent.matrix.b.a parama)
   {
-    this.bLQ.add(parama);
+    synchronized (this.listeners)
+    {
+      this.listeners.add(parama);
+      return;
+    }
   }
   
-  public final void cw(String paramString)
+  public final void gf(String paramString)
   {
-    c.i("Matrix.AppActiveMatrixDelegate", "[setCurrentFragmentName] fragmentName:%s", new Object[] { paramString });
-    this.bLU = paramString;
+    c.i("Matrix.AppActiveDelegate", "[setCurrentFragmentName] fragmentName:%s", new Object[] { paramString });
+    this.eLA = paramString;
     StringBuilder localStringBuilder = new StringBuilder();
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "?";
     }
     localStringBuilder.append(str);
-    this.bLS = localStringBuilder.toString();
+    this.eLy = localStringBuilder.toString();
   }
   
   final class a
@@ -114,15 +119,13 @@ public enum a
     public final void onActivityStarted(Activity paramActivity)
     {
       a.a(a.this, paramActivity);
-      if (!a.a(a.this)) {
-        a.a(a.this, a.this.bLS);
-      }
+      a.a(a.this, a.this.eLy);
     }
     
     public final void onActivityStopped(Activity paramActivity)
     {
-      if (a.yC() == null) {
-        a.b(a.this, a.this.bLS);
+      if (a.avV() == null) {
+        a.b(a.this, a.this.eLy);
       }
     }
     
@@ -132,16 +135,16 @@ public enum a
     
     public final void onTrimMemory(int paramInt)
     {
-      c.i("Matrix.AppActiveMatrixDelegate", "[onTrimMemory] level:%s", new Object[] { Integer.valueOf(paramInt) });
-      if ((paramInt == 20) && (a.a(a.this))) {
-        a.b(a.this, a.b(a.this));
+      c.i("Matrix.AppActiveDelegate", "[onTrimMemory] level:%s", new Object[] { Integer.valueOf(paramInt) });
+      if ((paramInt == 20) && (a.b(a.this))) {
+        a.b(a.this, a.c(a.this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a
  * JD-Core Version:    0.7.0.1
  */

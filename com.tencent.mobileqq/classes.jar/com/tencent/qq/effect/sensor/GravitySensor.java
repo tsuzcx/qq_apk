@@ -44,13 +44,14 @@ public class GravitySensor
   
   public void destroy()
   {
-    if (this.mSensorManager == null)
+    SensorManager localSensorManager = this.mSensorManager;
+    if (localSensorManager == null)
     {
       Log.e("GravitySensor", "clear but mSensorManager is null.");
       return;
     }
     if (this.mSensor != null) {
-      this.mSensorManager.unregisterListener(this);
+      localSensorManager.unregisterListener(this);
     }
     this.mIsInitial = false;
     this.mGravitySensorListenerList.clear();
@@ -74,24 +75,24 @@ public class GravitySensor
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (this.mIsPause) {}
-    float f1;
-    float f2;
-    float f3;
-    do
-    {
+    if (this.mIsPause) {
       return;
-      f1 = Math.round(paramSensorEvent.values[0] * 10.0F);
-      f2 = Math.round(paramSensorEvent.values[1] * 10.0F);
-      f3 = Math.round(paramSensorEvent.values[2] * 10.0F);
-    } while ((this.mPreGravity[0] == f1) && (this.mPreGravity[1] == f2) && (this.mPreGravity[2] == f3));
-    this.mPreGravity[0] = f1;
-    this.mPreGravity[1] = f2;
-    this.mPreGravity[2] = f3;
-    Iterator localIterator = this.mGravitySensorListenerList.iterator();
-    while (localIterator.hasNext())
+    }
+    float f1 = Math.round(paramSensorEvent.values[0] * 10.0F);
+    float f2 = Math.round(paramSensorEvent.values[1] * 10.0F);
+    float f3 = Math.round(paramSensorEvent.values[2] * 10.0F);
+    Object localObject = this.mPreGravity;
+    if ((localObject[0] == f1) && (localObject[1] == f2) && (localObject[2] == f3)) {
+      return;
+    }
+    localObject = this.mPreGravity;
+    localObject[0] = f1;
+    localObject[1] = f2;
+    localObject[2] = f3;
+    localObject = this.mGravitySensorListenerList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      GravitySensor.GravitySensorListener localGravitySensorListener = (GravitySensor.GravitySensorListener)((WeakReference)localIterator.next()).get();
+      GravitySensor.GravitySensorListener localGravitySensorListener = (GravitySensor.GravitySensorListener)((WeakReference)((Iterator)localObject).next()).get();
       if (localGravitySensorListener != null) {
         localGravitySensorListener.updateGravityData(calibrateSensorData(paramSensorEvent), this.mIsReset);
       }
@@ -122,6 +123,10 @@ public class GravitySensor
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramGravitySensorListener;
+    }
   }
   
   public void resume()
@@ -132,7 +137,7 @@ public class GravitySensor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qq.effect.sensor.GravitySensor
  * JD-Core Version:    0.7.0.1
  */

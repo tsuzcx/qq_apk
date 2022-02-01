@@ -1,167 +1,97 @@
 package com.tencent.mm.plugin.emoji.e;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.b;
-import com.tencent.mm.plugin.emoji.ui.EmojiStoreDetailUI;
-import com.tencent.mm.plugin.emoji.ui.EmojiStoreTopicUI;
-import com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2SingleProductUI;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.emoji.c.d;
+import com.tencent.mm.protocal.protobuf.aoi;
+import com.tencent.mm.protocal.protobuf.god;
+import com.tencent.mm.protocal.protobuf.goe;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.bl;
 
-public final class m
+public class m
+  extends p
+  implements com.tencent.mm.network.m
 {
-  private static void a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  private int bHI;
+  private com.tencent.mm.am.h callback;
+  private int mScene;
+  private final c rr;
+  public String xOk;
+  
+  public m(String paramString, int paramInt)
   {
-    AppMethodBeat.i(52991);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("set_id", paramInt);
-    localIntent.putExtra("headurl", paramString4);
-    localIntent.putExtra("set_title", paramString1);
-    localIntent.putExtra("set_iconURL", paramString3);
-    localIntent.putExtra("set_desc", paramString2);
-    localIntent.setClass(paramContext, EmojiStoreV2SingleProductUI.class);
-    paramContext.startActivity(localIntent);
-    AppMethodBeat.o(52991);
+    this(paramString, paramInt, -1);
   }
   
-  private static void a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
+  public m(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(52992);
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramContext, EmojiStoreTopicUI.class);
-    localIntent.putExtra("topic_id", paramInt);
-    localIntent.putExtra("topic_name", paramString1);
-    localIntent.putExtra("topic_ad_url", paramString4);
-    localIntent.putExtra("topic_icon_url", paramString3);
-    localIntent.putExtra("topic_desc", paramString2);
-    if (paramBoolean) {
-      localIntent.putExtra("extra_scence", 15);
-    }
-    for (;;)
-    {
-      paramContext.startActivity(localIntent);
-      AppMethodBeat.o(52992);
-      return;
-      localIntent.putExtra("extra_scence", 3);
-    }
+    AppMethodBeat.i(108699);
+    this.xOk = paramString;
+    this.mScene = paramInt1;
+    this.bHI = paramInt2;
+    paramString = new c.a();
+    paramString.otE = new god();
+    paramString.otF = new goe();
+    paramString.uri = "/cgi-bin/micromsg-bin/getemotiondetail";
+    paramString.funcId = 412;
+    paramString.otG = 211;
+    paramString.respCmdId = 1000000211;
+    this.rr = paramString.bEF();
+    AppMethodBeat.o(108699);
   }
   
-  private static void a(Context paramContext, EmotionBannerSet paramEmotionBannerSet, int paramInt1, int paramInt2)
+  public final aoi dAD()
   {
-    AppMethodBeat.i(52989);
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramContext, EmojiStoreDetailUI.class);
-    localIntent.putExtra("extra_id", paramEmotionBannerSet.ProductID);
-    localIntent.putExtra("extra_name", paramEmotionBannerSet.Title);
-    localIntent.putExtra("extra_description", paramEmotionBannerSet.Desc);
-    localIntent.putExtra("preceding_scence", paramInt2);
-    localIntent.putExtra("call_by", 1);
-    localIntent.putExtra("download_entrance_scene", paramInt1);
-    localIntent.putExtra("check_clickflag", true);
-    paramContext.startActivity(localIntent);
-    AppMethodBeat.o(52989);
+    AppMethodBeat.i(108702);
+    new aoi();
+    aoi localaoi = ((goe)c.c.b(this.rr.otC)).akkU;
+    AppMethodBeat.o(108702);
+    return localaoi;
   }
   
-  public static void a(Context paramContext, EmotionBannerSet paramEmotionBannerSet, boolean paramBoolean)
+  public int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(52990);
-    if (paramEmotionBannerSet == null)
-    {
-      ab.i("MicroMsg.emoji.EmojiUINavigatorMgr", "banner is null. do nothing");
-      AppMethodBeat.o(52990);
-      return;
-    }
-    switch (paramEmotionBannerSet.SetType)
-    {
-    default: 
-      ab.i("MicroMsg.emoji.EmojiUINavigatorMgr", "Unkown type do nothing. SetType:%d", new Object[] { Integer.valueOf(paramEmotionBannerSet.SetType) });
-      AppMethodBeat.o(52990);
-      return;
-    case 0: 
-      ab.i("MicroMsg.emoji.EmojiUINavigatorMgr", "MM_EMOTION_BANNER_SET_NULL do nothing");
-      h.qsU.e(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(0) });
-      AppMethodBeat.o(52990);
-      return;
-    case 4: 
-      a(paramContext, paramEmotionBannerSet.ID, paramEmotionBannerSet.Title, paramEmotionBannerSet.Desc, paramEmotionBannerSet.IconUrl, paramEmotionBannerSet.SecondUrl);
-      h.qsU.e(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(1) });
-      AppMethodBeat.o(52990);
-      return;
-    case 3: 
-      a(paramContext, paramEmotionBannerSet.ID, paramEmotionBannerSet.Title, paramEmotionBannerSet.Desc, paramEmotionBannerSet.IconUrl, paramEmotionBannerSet.SecondUrl, paramBoolean);
-      h.qsU.e(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(2) });
-      AppMethodBeat.o(52990);
-      return;
-    case 2: 
-      s(paramContext, paramEmotionBannerSet.LocateUrl, paramEmotionBannerSet.Title);
-      h.qsU.e(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(3) });
-      AppMethodBeat.o(52990);
-      return;
-    }
-    if (paramBoolean) {
-      a(paramContext, paramEmotionBannerSet, 15, 8);
-    }
-    for (;;)
-    {
-      h.qsU.e(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(4) });
-      AppMethodBeat.o(52990);
-      return;
-      a(paramContext, paramEmotionBannerSet, 3, 5);
-    }
+    AppMethodBeat.i(108700);
+    Log.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ProductID:%s, Scene:%d, Version:%d", new Object[] { this.xOk, Integer.valueOf(this.mScene), Integer.valueOf(this.bHI) });
+    this.callback = paramh;
+    paramh = (god)c.b.b(this.rr.otB);
+    paramh.ProductID = this.xOk;
+    paramh.IJG = this.mScene;
+    paramh.crz = this.bHI;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(108700);
+    return i;
   }
   
-  public static void a(Context paramContext, EmotionSummary paramEmotionSummary, int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4)
+  public int getType()
   {
-    AppMethodBeat.i(52988);
-    Intent localIntent = new Intent();
-    localIntent.setClass(paramContext, EmojiStoreDetailUI.class);
-    if (paramEmotionSummary != null)
-    {
-      localIntent.putExtra("extra_id", paramEmotionSummary.ProductID);
-      localIntent.putExtra("extra_name", paramEmotionSummary.PackName);
-      localIntent.putExtra("extra_copyright", paramEmotionSummary.PackCopyright);
-      localIntent.putExtra("extra_coverurl", paramEmotionSummary.CoverUrl);
-      localIntent.putExtra("extra_description", paramEmotionSummary.PackDesc);
-      localIntent.putExtra("extra_price", paramEmotionSummary.PackPrice);
-      localIntent.putExtra("extra_type", paramEmotionSummary.PackType);
-      localIntent.putExtra("extra_flag", paramEmotionSummary.PackFlag);
-      localIntent.putExtra("preceding_scence", paramInt4);
-      localIntent.putExtra("call_by", 1);
-      localIntent.putExtra("check_clickflag", false);
-      localIntent.putExtra("download_entrance_scene", paramInt1);
-      if (paramInt2 != -1) {
-        localIntent.putExtra("extra_status", paramInt2);
-      }
-      if (paramInt3 != -1) {
-        localIntent.putExtra("extra_progress", -1);
-      }
-      if (!bo.isNullOrNil(paramString)) {
-        localIntent.putExtra("to_talker_name", paramString);
-      }
-    }
-    for (;;)
-    {
-      paramContext.startActivity(localIntent);
-      AppMethodBeat.o(52988);
-      return;
-      ab.i("MicroMsg.emoji.EmojiUINavigatorMgr", "get detail intent failed. summary is null.");
-    }
+    return 412;
   }
   
-  private static void s(Context paramContext, String paramString1, String paramString2)
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(52993);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", paramString1);
-    localIntent.putExtra("title", paramString2);
-    b.gmO.i(localIntent, paramContext);
-    AppMethodBeat.o(52993);
+    AppMethodBeat.i(108701);
+    Log.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
+    if ((paramInt2 != 0) && (paramInt3 != 0) && (paramInt3 != 5))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(108701);
+      return;
+    }
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      ((d)com.tencent.mm.kernel.h.az(d.class)).getEmojiStorageMgr().adjz.a(this.xOk, (goe)c.c.b(this.rr.otC), LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(108701);
   }
 }
 

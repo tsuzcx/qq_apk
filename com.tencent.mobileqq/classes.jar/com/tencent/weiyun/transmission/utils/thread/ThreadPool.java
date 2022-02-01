@@ -32,28 +32,18 @@ public class ThreadPool
     if (paramInt1 <= 0) {
       paramInt1 = 1;
     }
-    for (;;)
-    {
-      if (paramInt2 <= paramInt1) {
-        paramInt2 = paramInt1;
-      }
-      for (;;)
-      {
-        this.mExecutor = new ThreadPoolExecutor(paramInt1, paramInt2, 10L, TimeUnit.SECONDS, paramBlockingQueue, new PriorityThreadFactory(paramString, 10));
-        return;
-      }
+    if (paramInt2 <= paramInt1) {
+      paramInt2 = paramInt1;
     }
+    this.mExecutor = new ThreadPoolExecutor(paramInt1, paramInt2, 10L, TimeUnit.SECONDS, paramBlockingQueue, new PriorityThreadFactory(paramString, 10));
   }
   
   public ThreadPool(ThreadPoolExecutor paramThreadPoolExecutor)
   {
-    if (paramThreadPoolExecutor != null) {}
-    for (;;)
-    {
-      this.mExecutor = paramThreadPoolExecutor;
-      return;
+    if (paramThreadPoolExecutor == null) {
       paramThreadPoolExecutor = new ThreadPoolExecutor(2, 2, 10L, TimeUnit.SECONDS, new PriorityBlockingQueue(), new PriorityThreadFactory("thread_pool", 10));
     }
+    this.mExecutor = paramThreadPoolExecutor;
   }
   
   public void shutdown()
@@ -75,7 +65,7 @@ public class ThreadPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.utils.thread.ThreadPool
  * JD-Core Version:    0.7.0.1
  */

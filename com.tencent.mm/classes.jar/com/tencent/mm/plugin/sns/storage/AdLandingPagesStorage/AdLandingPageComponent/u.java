@@ -1,27 +1,21 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.p;
 
 public final class u
-  extends t
+  extends aa
 {
-  public LinkedList<t> rsS;
-  public int rsT;
-  
-  public u()
-  {
-    AppMethodBeat.i(36942);
-    this.rsS = new LinkedList();
-    this.rsT = 0;
-    AppMethodBeat.o(36942);
-  }
-  
-  public final List<t> cqF()
-  {
-    return this.rsS;
-  }
+  public boolean QKi;
+  @p(hkF=1)
+  public String QKj;
+  public boolean QKk;
+  public String QKl;
+  public boolean QKm;
+  public String bgColor;
+  public float dwJ;
+  public long fileSize;
+  public String md5;
+  public int nDl;
 }
 
 

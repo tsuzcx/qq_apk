@@ -13,10 +13,10 @@ import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.util.VersionUtils;
+import ibk;
 import ibl;
 import ibm;
 import ibn;
-import ibo;
 
 public class LocationDetailActivity
   extends PoiMapActivity
@@ -38,7 +38,7 @@ public class LocationDetailActivity
     if (this.a)
     {
       Animation localAnimation = AnimationUtils.loadAnimation(this, 2130968646);
-      localAnimation.setAnimationListener(new ibl(this));
+      localAnimation.setAnimationListener(new ibk(this));
       this.h.startAnimation(localAnimation);
       return;
     }
@@ -60,17 +60,17 @@ public class LocationDetailActivity
     this.u = localBundle.getString("loc");
     this.s = localBundle.getString("lat");
     this.t = localBundle.getString("lon");
-    TextView localTextView1 = (TextView)findViewById(2131231456);
+    TextView localTextView1 = (TextView)findViewById(2131231455);
     localTextView1.setText(2131560774);
-    localTextView1.setOnClickListener(new ibm(this));
-    ((TextView)findViewById(2131231376)).setText(2131560811);
-    TextView localTextView2 = (TextView)findViewById(2131231380);
+    localTextView1.setOnClickListener(new ibl(this));
+    ((TextView)findViewById(2131231375)).setText(2131560811);
+    TextView localTextView2 = (TextView)findViewById(2131231379);
     if (!localBundle.getBoolean("forNewFavorite", false))
     {
-      FavoriteActionSheet localFavoriteActionSheet = new FavoriteActionSheet(this, new ibo(this), 1, 7, null);
+      FavoriteActionSheet localFavoriteActionSheet = new FavoriteActionSheet(this, new ibn(this), 1, 7, null);
       localTextView1.setText(localBundle.getString("leftViewText"));
       localTextView2.setVisibility(8);
-      this.f = ((ImageView)findViewById(2131231461));
+      this.f = ((ImageView)findViewById(2131231460));
       this.f.setVisibility(0);
       this.f.setImageResource(2130837835);
       this.f.setContentDescription(getString(2131562926));
@@ -82,7 +82,7 @@ public class LocationDetailActivity
       return;
       localTextView1.setText(2131560958);
       localTextView2.setText(2131562463);
-      localTextView2.setOnClickListener(new ibn(this));
+      localTextView2.setOnClickListener(new ibm(this));
     }
   }
   
@@ -137,7 +137,7 @@ public class LocationDetailActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.h = ((TextView)findViewById(2131232682));
+    this.h = ((TextView)findViewById(2131232681));
     this.v = getIntent().getStringExtra("note");
     this.l = true;
     if (this.j != null) {

@@ -1,88 +1,129 @@
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.SystemUtil;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.HashMap;
 import java.util.HashSet;
 
-public class ggn
+class ggn
+  extends AsyncTask
 {
-  private static final int jdField_a_of_type_Int = 3;
-  private static final long jdField_a_of_type_Long = 60000L;
-  private static final String jdField_a_of_type_JavaLangString = "Q.richstatus.img";
-  private ggp jdField_a_of_type_Ggp;
-  private HashSet jdField_a_of_type_JavaUtilHashSet;
-  private volatile long b;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public ggn(ggp paramggp)
+  public ggn(ggm paramggm, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Ggp = paramggp;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public static File a()
+  private Bitmap a(File paramFile)
   {
-    if (SystemUtil.a()) {
-      return new File(AppConstants.an + "status_ic");
+    Bitmap localBitmap1 = null;
+    Bitmap localBitmap2 = null;
+    if (paramFile.exists()) {
+      localBitmap2 = localBitmap1;
     }
-    return null;
-  }
-  
-  private boolean a(String paramString, File paramFile)
-  {
-    int i = HttpDownloadUtil.a(null, paramString, paramFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.img", 2, "download " + paramString + "result " + i);
-    }
-    paramFile = StatisticCollector.a(BaseApplication.getContext());
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("result", String.valueOf(i));
-    localHashMap.put("url", paramString);
-    if (i == 0) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      paramFile.a("", "RichStatusIcon", bool, 0L, 0L, localHashMap, "");
-      if (i != 0) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public Bitmap a(String paramString)
-  {
-    return (Bitmap)BaseApplicationImpl.a.get(paramString);
-  }
-  
-  public Bitmap a(String paramString1, String paramString2, String paramString3)
-  {
-    Bitmap localBitmap = a(paramString1);
-    if (localBitmap == null)
-    {
-      if (this.jdField_a_of_type_JavaUtilHashSet == null) {
-        this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      }
-      if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString1))
+      localBitmap1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
+      localBitmap2 = localBitmap1;
+      if (localBitmap1 == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richstatus.img", 2, "decodeBitmap " + paramString1 + ", " + paramString2 + ", " + paramString3);
-        }
-        this.jdField_a_of_type_JavaUtilHashSet.add(paramString1);
-        new ggo(this, paramString1, paramString2, paramString3).execute((Void[])null);
+        localBitmap2 = localBitmap1;
+        paramFile.delete();
+        localBitmap2 = localBitmap1;
       }
+      return localBitmap2;
     }
-    return localBitmap;
+    catch (OutOfMemoryError paramFile) {}
+    return localBitmap2;
   }
   
-  public void a()
+  protected Bitmap a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    Object localObject1 = null;
+    paramVarArgs = null;
+    boolean bool2 = true;
+    Object localObject2 = ggm.a();
+    if (localObject2 != null)
+    {
+      localObject1 = new File((File)localObject2, this.jdField_a_of_type_JavaLangString);
+      boolean bool1 = bool2;
+      if (!((File)localObject1).exists())
+      {
+        if (!TextUtils.isEmpty(this.b))
+        {
+          localObject2 = a(new File((File)localObject2, this.b));
+          if (localObject2 != null) {
+            publishProgress(new Bitmap[] { localObject2 });
+          }
+        }
+        bool1 = bool2;
+        if (this.c != null)
+        {
+          if ((ggm.a(this.jdField_a_of_type_Ggm) > 3L) && (Math.abs(SystemClock.uptimeMillis() - ggm.a(this.jdField_a_of_type_Ggm)) > 60000L)) {
+            ggm.a(this.jdField_a_of_type_Ggm, 0L);
+          }
+          bool1 = bool2;
+          if (ggm.a(this.jdField_a_of_type_Ggm) < 3L) {
+            bool1 = ggm.a(this.jdField_a_of_type_Ggm, this.c, (File)localObject1);
+          }
+        }
+      }
+      if (bool1) {
+        paramVarArgs = a((File)localObject1);
+      }
+      if ((!bool1) || (paramVarArgs == null)) {
+        break label253;
+      }
+      ggm.a(this.jdField_a_of_type_Ggm, 0L);
+      localObject1 = paramVarArgs;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richstatus.img", 2, "decodeBitmap finish with " + localObject1 + ", " + ggm.a(this.jdField_a_of_type_Ggm));
+      }
+      return localObject1;
+      label253:
+      localObject1 = paramVarArgs;
+      if (!TextUtils.isEmpty(this.c))
+      {
+        localObject1 = paramVarArgs;
+        if (ggm.b(this.jdField_a_of_type_Ggm) == 3L)
+        {
+          ggm.a(this.jdField_a_of_type_Ggm, SystemClock.uptimeMillis());
+          localObject1 = paramVarArgs;
+        }
+      }
+    }
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      BaseApplicationImpl.a.put(this.jdField_a_of_type_JavaLangString, paramBitmap, (byte)0);
+    }
+    ggm.a(this.jdField_a_of_type_Ggm).remove(this.jdField_a_of_type_JavaLangString);
+    if (ggm.a(this.jdField_a_of_type_Ggm) != null) {
+      ggm.a(this.jdField_a_of_type_Ggm).a(this.jdField_a_of_type_JavaLangString, this.c, paramBitmap, 1);
+    }
+  }
+  
+  protected void a(Bitmap... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
+    BaseApplicationImpl.a.put(this.b, paramVarArgs, (byte)0);
+    if (ggm.a(this.jdField_a_of_type_Ggm) != null) {
+      ggm.a(this.jdField_a_of_type_Ggm).a(this.jdField_a_of_type_JavaLangString, this.c, paramVarArgs, 0);
+    }
   }
 }
 

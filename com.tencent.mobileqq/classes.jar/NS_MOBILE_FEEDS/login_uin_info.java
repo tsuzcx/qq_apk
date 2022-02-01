@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class login_uin_info
   extends JceStruct
 {
-  public int highFiveNotifyStatus;
+  public int highFiveNotifyStatus = 0;
   public String nickname = "";
   
   public login_uin_info() {}
@@ -26,15 +26,16 @@ public final class login_uin_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 0);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.highFiveNotifyStatus, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.login_uin_info
  * JD-Core Version:    0.7.0.1
  */

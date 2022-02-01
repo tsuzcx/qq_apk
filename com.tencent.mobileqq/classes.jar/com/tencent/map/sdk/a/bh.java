@@ -49,11 +49,23 @@ public final class bh
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("errorCode:").append(this.a).append(",errorInfo:").append(this.b).append(",httpStatus:").append(this.c).append(",headers:").append(this.e).append(",body:");
-    if (this.d != null) {}
-    for (Object localObject = Integer.valueOf(this.d.length);; localObject = "null") {
-      return localObject;
+    StringBuilder localStringBuilder = new StringBuilder("errorCode:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",errorInfo:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",httpStatus:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",headers:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",body:");
+    Object localObject = this.d;
+    if (localObject != null) {
+      localObject = Integer.valueOf(localObject.length);
+    } else {
+      localObject = "null";
     }
+    localStringBuilder.append(localObject);
+    return localStringBuilder.toString();
   }
 }
 

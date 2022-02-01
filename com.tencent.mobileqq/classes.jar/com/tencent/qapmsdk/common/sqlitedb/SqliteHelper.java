@@ -43,14 +43,17 @@ public class SqliteHelper
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      paramSQLiteDatabase.execSQL("Drop table if exists " + (String)localEntry.getKey());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Drop table if exists ");
+      localStringBuilder.append((String)localEntry.getKey());
+      paramSQLiteDatabase.execSQL(localStringBuilder.toString());
     }
     onCreate(paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.sqlitedb.SqliteHelper
  * JD-Core Version:    0.7.0.1
  */

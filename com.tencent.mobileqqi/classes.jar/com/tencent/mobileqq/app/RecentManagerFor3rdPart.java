@@ -26,7 +26,7 @@ public class RecentManagerFor3rdPart
     if (this.a != null)
     {
       bool1 = bool2;
-      if (this.a.d())
+      if (this.a.e())
       {
         bool1 = bool2;
         if (this.a.a().a().b(paramString, paramInt) != null) {
@@ -44,7 +44,7 @@ public class RecentManagerFor3rdPart
     if (this.a != null)
     {
       bool1 = bool2;
-      if (this.a.d())
+      if (this.a.e())
       {
         RecentUserProxy localRecentUserProxy = this.a.a().a();
         paramString = localRecentUserProxy.b(paramString, paramInt);
@@ -67,7 +67,7 @@ public class RecentManagerFor3rdPart
     if (this.a != null)
     {
       bool1 = bool2;
-      if (this.a.d())
+      if (this.a.e())
       {
         RecentUserProxy localRecentUserProxy = this.a.a().a();
         paramString = localRecentUserProxy.b(paramString, paramInt);
@@ -89,7 +89,7 @@ public class RecentManagerFor3rdPart
     if (TextUtils.isEmpty(paramString1)) {
       return false;
     }
-    if ((this.a != null) && (this.a.d()))
+    if ((this.a != null) && (this.a.e()))
     {
       RecentUserProxy localRecentUserProxy = this.a.a().a();
       RecentUser localRecentUser = localRecentUserProxy.a(paramString1, paramInt);
@@ -108,7 +108,7 @@ public class RecentManagerFor3rdPart
     if (TextUtils.isEmpty(paramString1)) {
       return false;
     }
-    if ((this.a != null) && (this.a.d()))
+    if ((this.a != null) && (this.a.e()))
     {
       RecentUserProxy localRecentUserProxy = this.a.a().a();
       RecentUser localRecentUser = localRecentUserProxy.a(paramString1, paramInt);
@@ -130,7 +130,7 @@ public class RecentManagerFor3rdPart
     if (this.a != null)
     {
       bool1 = bool2;
-      if (this.a.d())
+      if (this.a.e())
       {
         RecentUserProxy localRecentUserProxy = this.a.a().a();
         paramString = localRecentUserProxy.b(paramString, paramInt);

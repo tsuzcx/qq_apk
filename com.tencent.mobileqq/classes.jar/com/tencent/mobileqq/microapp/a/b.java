@@ -1,32 +1,28 @@
 package com.tencent.mobileqq.microapp.a;
 
-import java.util.concurrent.Callable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.StringUtil;
 
 final class b
-  implements Callable
+  extends BroadcastReceiver
 {
   b(a parama) {}
   
-  public Void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    synchronized (this.a)
-    {
-      if (a.a(this.a) == null) {
-        return null;
-      }
-      a.b(this.a);
-      if (a.c(this.a))
-      {
-        a.d(this.a);
-        a.a(this.a, 0);
-      }
-      return null;
+    if (StringUtil.isEmpty(paramIntent.getAction())) {
+      return;
+    }
+    if (a.a(this.a) != null) {
+      a.a(this.a).a(paramContext, paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.a.b
  * JD-Core Version:    0.7.0.1
  */

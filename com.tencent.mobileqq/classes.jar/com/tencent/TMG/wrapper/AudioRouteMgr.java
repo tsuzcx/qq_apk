@@ -6,7 +6,7 @@ import com.tencent.TMG.utils.QLog;
 
 public class AudioRouteMgr
 {
-  private static AudioRouteMgr s_instance = null;
+  private static AudioRouteMgr s_instance;
   private TraeAudioSession mAudioSession = null;
   private Context mContext = null;
   
@@ -22,15 +22,16 @@ public class AudioRouteMgr
   
   private void onOutputChanage(String paramString)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.w("AudioRoute", 0, " onOutputChanage:" + paramString);
-    }
-    if (paramString.equals("DEVICE_EARPHONE")) {}
-    for (;;)
+    if (bool)
     {
-      onAudioRouteChange(i);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" onOutputChanage:");
+      localStringBuilder.append(paramString);
+      QLog.w("AudioRoute", 0, localStringBuilder.toString());
+    }
+    if (!paramString.equals("DEVICE_EARPHONE")) {
       if (paramString.equals("DEVICE_SPEAKERPHONE")) {
         i = 1;
       } else if (paramString.equals("DEVICE_WIREDHEADSET")) {
@@ -41,6 +42,7 @@ public class AudioRouteMgr
         i = -1;
       }
     }
+    onAudioRouteChange(i);
   }
   
   public int setContext(Context paramContext)
@@ -64,7 +66,7 @@ public class AudioRouteMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.wrapper.AudioRouteMgr
  * JD-Core Version:    0.7.0.1
  */

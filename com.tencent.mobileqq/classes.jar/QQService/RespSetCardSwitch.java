@@ -8,7 +8,7 @@ public final class RespSetCardSwitch
   extends JceStruct
 {
   static RespHead cache_stHeader;
-  public RespHead stHeader;
+  public RespHead stHeader = null;
   public long uCloseNeighborVote = 2L;
   public long uCloseTimeGateVote = 2L;
   
@@ -40,7 +40,7 @@ public final class RespSetCardSwitch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespSetCardSwitch
  * JD-Core Version:    0.7.0.1
  */

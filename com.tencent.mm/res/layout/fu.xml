@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/gm" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:background="@color/gm" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/nh" android:textColor="@color/a6q" android:ellipsize="end" android:gravity="left" android:id="@id/a3g" android:background="@drawable/a58" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/m1" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
-            <LinearLayout android:background="@drawable/d9" android:focusable="true" android:focusableInTouchMode="true" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:dividerPadding="20.0dip" style="@style/w8">
-                <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/a3h" android:background="@null" android:minHeight="58.0dip" wallet:titleText="@string/a5b" wallet:infoIvRes="@raw/bank_remit_history" wallet:infoIvVisibility="ey" wallet:contentHint="@string/a5_" wallet:contentTextColor="@color/w_" wallet:encryptType="hn" style="@style/f9" />
-                <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/a3i" android:background="@null" android:minHeight="58.0dip" wallet:titleText="@string/a59" wallet:contentHint="@string/a58" style="@style/vd" />
-                <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/a3j" android:background="@drawable/d_" android:minHeight="58.0dip" wallet:layoutRes="@layout/ft" wallet:titleText="@string/a57" wallet:infoIvRes="@raw/bank_remit_arrow" wallet:contentHint="@string/a56" wallet:contentTextColor="@color/h6" style="@style/gy" />
-                <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/a3k" android:background="@drawable/d_" android:visibility="gone" android:minHeight="58.0dip" wallet:titleText="@string/a5c" wallet:infoIvRes="@raw/bank_remit_arrow" wallet:contentTextColor="@color/h6" style="@style/gy" />
-            </LinearLayout>
-            <Button android:id="@id/a3l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="28.0dip" android:layout_marginRight="15.0dip" android:text="@string/a55" style="@style/nq" />
-        </LinearLayout>
-    </ScrollView>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b1e" />
-</LinearLayout>
+<FrameLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="30.0dip" android:layout_height="18.0dip" android:src="@drawable/bo_" android:scaleType="fitCenter" />
+</FrameLayout>

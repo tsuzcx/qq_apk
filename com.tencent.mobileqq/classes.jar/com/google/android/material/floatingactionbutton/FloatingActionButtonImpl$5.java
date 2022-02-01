@@ -1,0 +1,21 @@
+package com.google.android.material.floatingactionbutton;
+
+import android.view.ViewTreeObserver.OnPreDrawListener;
+
+class FloatingActionButtonImpl$5
+  implements ViewTreeObserver.OnPreDrawListener
+{
+  FloatingActionButtonImpl$5(FloatingActionButtonImpl paramFloatingActionButtonImpl) {}
+  
+  public boolean onPreDraw()
+  {
+    this.a.t();
+    return true;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     com.google.android.material.floatingactionbutton.FloatingActionButtonImpl.5
+ * JD-Core Version:    0.7.0.1
+ */

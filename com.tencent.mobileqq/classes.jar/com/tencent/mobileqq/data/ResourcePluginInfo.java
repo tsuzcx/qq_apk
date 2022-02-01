@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awgf;
-import awhp;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import java.util.List;
 
 public class ResourcePluginInfo
-  extends awge
+  extends Entity
 {
-  @awhp
+  @notColumn
   public static final int MASK_FULL_CONFIG = 1;
   public static final int PLUGIN_TYPE_ABOUT = 32;
   public static final int PLUGIN_TYPE_LEBA = 64;
@@ -30,7 +30,7 @@ public class ResourcePluginInfo
   public String strGotoUrl;
   public String strNewPluginDesc;
   public String strNewPluginURL;
-  @awhs
+  @unique
   public String strPkgName;
   public String strResDesc;
   public String strResName;
@@ -39,92 +39,84 @@ public class ResourcePluginInfo
   public long uiCurVer;
   public long uiResId;
   
-  public static ResourcePluginInfo find(awgf paramawgf, String paramString)
+  public static ResourcePluginInfo find(EntityManager paramEntityManager, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramawgf != null)
-    {
-      localObject1 = localObject2;
-      if (paramString != null) {
-        localObject1 = (ResourcePluginInfo)paramawgf.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
-      }
+    if ((paramEntityManager != null) && (paramString != null)) {
+      return (ResourcePluginInfo)paramEntityManager.find(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
     }
-    return localObject1;
+    return null;
   }
   
-  public static List<ResourcePluginInfo> getAll(awgf paramawgf, int paramInt, boolean paramBoolean)
+  public static List<ResourcePluginInfo> getAll(EntityManager paramEntityManager, int paramInt, boolean paramBoolean)
   {
-    List localList = null;
-    if (paramawgf != null)
+    if (paramEntityManager != null)
     {
       if (paramBoolean) {
-        localList = paramawgf.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
+        return paramEntityManager.query(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
       }
+      return paramEntityManager.query(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
     }
-    else {
-      return localList;
-    }
-    return paramawgf.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
+    return null;
   }
   
-  public static void persistOrReplace(awgf paramawgf, ResourcePluginInfo paramResourcePluginInfo)
+  public static void persistOrReplace(EntityManager paramEntityManager, ResourcePluginInfo paramResourcePluginInfo)
   {
-    if ((paramawgf != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
+    if ((paramEntityManager != null) && (paramResourcePluginInfo != null))
     {
-      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramawgf.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
-      if (localResourcePluginInfo != null)
+      Object localObject = paramResourcePluginInfo.strPkgName;
+      if ((localObject != null) && (!((String)localObject).equals("")))
       {
-        localResourcePluginInfo.strResName = paramResourcePluginInfo.strResName;
-        localResourcePluginInfo.strResURL = paramResourcePluginInfo.strResURL;
-        localResourcePluginInfo.uiCurVer = paramResourcePluginInfo.uiCurVer;
-        localResourcePluginInfo.sLanType = paramResourcePluginInfo.sLanType;
-        localResourcePluginInfo.sResSubType = paramResourcePluginInfo.sResSubType;
-        localResourcePluginInfo.strGotoUrl = paramResourcePluginInfo.strGotoUrl;
-        localResourcePluginInfo.sPriority = paramResourcePluginInfo.sPriority;
-        localResourcePluginInfo.strResDesc = paramResourcePluginInfo.strResDesc;
-        localResourcePluginInfo.cCanChangeState = paramResourcePluginInfo.cCanChangeState;
-        localResourcePluginInfo.cDefaultState = paramResourcePluginInfo.cDefaultState;
-        if (paramResourcePluginInfo.cDefaultState != localResourcePluginInfo.cDefaultState) {
-          localResourcePluginInfo.cLocalState = paramResourcePluginInfo.cLocalState;
+        localObject = (ResourcePluginInfo)paramEntityManager.find(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
+        if (localObject != null)
+        {
+          ((ResourcePluginInfo)localObject).strResName = paramResourcePluginInfo.strResName;
+          ((ResourcePluginInfo)localObject).strResURL = paramResourcePluginInfo.strResURL;
+          ((ResourcePluginInfo)localObject).uiCurVer = paramResourcePluginInfo.uiCurVer;
+          ((ResourcePluginInfo)localObject).sLanType = paramResourcePluginInfo.sLanType;
+          ((ResourcePluginInfo)localObject).sResSubType = paramResourcePluginInfo.sResSubType;
+          ((ResourcePluginInfo)localObject).strGotoUrl = paramResourcePluginInfo.strGotoUrl;
+          ((ResourcePluginInfo)localObject).sPriority = paramResourcePluginInfo.sPriority;
+          ((ResourcePluginInfo)localObject).strResDesc = paramResourcePluginInfo.strResDesc;
+          ((ResourcePluginInfo)localObject).cCanChangeState = paramResourcePluginInfo.cCanChangeState;
+          ((ResourcePluginInfo)localObject).cDefaultState = paramResourcePluginInfo.cDefaultState;
+          if (paramResourcePluginInfo.cDefaultState != ((ResourcePluginInfo)localObject).cDefaultState) {
+            ((ResourcePluginInfo)localObject).cLocalState = paramResourcePluginInfo.cLocalState;
+          }
+          ((ResourcePluginInfo)localObject).isNew = paramResourcePluginInfo.isNew;
+          ((ResourcePluginInfo)localObject).uiResId = paramResourcePluginInfo.uiResId;
+          ((ResourcePluginInfo)localObject).iPluginType = paramResourcePluginInfo.iPluginType;
+          ((ResourcePluginInfo)localObject).strNewPluginDesc = paramResourcePluginInfo.strNewPluginDesc;
+          ((ResourcePluginInfo)localObject).strNewPluginURL = paramResourcePluginInfo.strNewPluginURL;
+          ((ResourcePluginInfo)localObject).pluginSetTips = paramResourcePluginInfo.pluginSetTips;
+          ((ResourcePluginInfo)localObject).lebaSearchResultType = paramResourcePluginInfo.lebaSearchResultType;
+          ((ResourcePluginInfo)localObject).flags = paramResourcePluginInfo.flags;
+          paramEntityManager.update((Entity)localObject);
+          return;
         }
-        localResourcePluginInfo.isNew = paramResourcePluginInfo.isNew;
-        localResourcePluginInfo.uiResId = paramResourcePluginInfo.uiResId;
-        localResourcePluginInfo.iPluginType = paramResourcePluginInfo.iPluginType;
-        localResourcePluginInfo.strNewPluginDesc = paramResourcePluginInfo.strNewPluginDesc;
-        localResourcePluginInfo.strNewPluginURL = paramResourcePluginInfo.strNewPluginURL;
-        localResourcePluginInfo.pluginSetTips = paramResourcePluginInfo.pluginSetTips;
-        localResourcePluginInfo.lebaSearchResultType = paramResourcePluginInfo.lebaSearchResultType;
-        localResourcePluginInfo.flags = paramResourcePluginInfo.flags;
-        paramawgf.a(localResourcePluginInfo);
+        paramEntityManager.persist(paramResourcePluginInfo);
       }
     }
-    else
-    {
-      return;
-    }
-    paramawgf.a(paramResourcePluginInfo);
   }
   
-  public static void remove(awgf paramawgf, String paramString)
+  public static void remove(EntityManager paramEntityManager, String paramString)
   {
-    if ((paramawgf != null) && (paramString != null))
+    if ((paramEntityManager != null) && (paramString != null))
     {
-      paramString = find(paramawgf, paramString);
+      paramString = find(paramEntityManager, paramString);
       if (paramString != null) {
-        paramawgf.b(paramString);
+        paramEntityManager.remove(paramString);
       }
     }
   }
   
   public void disableFlag(int paramInt)
   {
-    this.flags &= (paramInt ^ 0xFFFFFFFF);
+    this.flags = ((paramInt ^ 0xFFFFFFFF) & this.flags);
   }
   
   public void enableFlag(int paramInt)
   {
-    this.flags |= paramInt;
+    this.flags = (paramInt | this.flags);
   }
   
   public boolean isAllowFlag(int paramInt)
@@ -134,7 +126,37 @@ public class ResourcePluginInfo
   
   public String toString()
   {
-    return this.strPkgName + "|" + this.strResName + "|" + this.strResURL + "|" + this.uiCurVer + "|" + this.sLanType + "|" + this.strGotoUrl + "|" + this.sResSubType + "|" + this.sPriority + "|" + this.strResDesc + "|" + this.cDefaultState + "|" + this.cCanChangeState + "|" + this.uiResId + "|" + this.cLocalState + "|" + this.flags;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.strPkgName);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.strResName);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.strResURL);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.uiCurVer);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.sLanType);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.strGotoUrl);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.sResSubType);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.sPriority);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.strResDesc);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.cDefaultState);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.cCanChangeState);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.uiResId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.cLocalState);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.flags);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.isNew);
+    return localStringBuilder.toString();
   }
 }
 

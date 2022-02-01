@@ -1,62 +1,53 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.model.content.ContentModel;
 import com.tencent.mobileqq.dinifly.model.content.ShapeGroup;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 import java.util.ArrayList;
 import java.util.List;
 
 class ShapeGroupParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "hd", "it" });
+  
   static ShapeGroup parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    String str = null;
     ArrayList localArrayList = new ArrayList();
+    String str = null;
     boolean bool = false;
-    label14:
     while (paramJsonReader.hasNext())
     {
-      Object localObject = paramJsonReader.nextName();
-      int i = -1;
-      switch (((String)localObject).hashCode())
+      int i = paramJsonReader.selectName(NAMES);
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label14;
-          if (((String)localObject).equals("nm"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (((String)localObject).equals("hd"))
+            paramJsonReader.skipValue();
+          }
+          else
+          {
+            paramJsonReader.beginArray();
+            while (paramJsonReader.hasNext())
             {
-              i = 1;
-              continue;
-              if (((String)localObject).equals("it")) {
-                i = 2;
+              ContentModel localContentModel = ContentModelParser.parse(paramJsonReader, paramLottieComposition);
+              if (localContentModel != null) {
+                localArrayList.add(localContentModel);
               }
             }
+            paramJsonReader.endArray();
           }
-          break;
+        }
+        else {
+          bool = paramJsonReader.nextBoolean();
         }
       }
-      str = paramJsonReader.nextString();
-      continue;
-      bool = paramJsonReader.nextBoolean();
-      continue;
-      paramJsonReader.beginArray();
-      while (paramJsonReader.hasNext())
-      {
-        localObject = ContentModelParser.parse(paramJsonReader, paramLottieComposition);
-        if (localObject != null) {
-          localArrayList.add(localObject);
-        }
+      else {
+        str = paramJsonReader.nextString();
       }
-      paramJsonReader.endArray();
     }
     return new ShapeGroup(str, localArrayList, bool);
   }

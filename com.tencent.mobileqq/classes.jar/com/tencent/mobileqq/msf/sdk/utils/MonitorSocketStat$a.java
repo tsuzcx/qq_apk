@@ -22,20 +22,21 @@ class MonitorSocketStat$a
       }
       MonitorSocketStat.access$202(this.a, false);
       MonitorSocketStat.access$300(this.a);
-    }
-    while (!"android.intent.action.SCREEN_OFF".equals(this.b)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.MonitorSocket", 2, "screenOff");
+    if ("android.intent.action.SCREEN_OFF".equals(this.b))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.D.MonitorSocket", 2, "screenOff");
+      }
+      MonitorSocketStat.access$202(this.a, true);
+      MonitorSocketStat.access$300(this.a);
     }
-    MonitorSocketStat.access$202(this.a, true);
-    MonitorSocketStat.access$300(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat.a
  * JD-Core Version:    0.7.0.1
  */

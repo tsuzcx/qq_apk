@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#fff9f9f9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.open.appstore.component.CommonTitleBar android:id="@id/jnq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.smtt.sdk.WebView android:id="@id/webview" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jnq" />
+    <TextView android:gravity="center" android:id="@id/f78" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ci4" android:layout_below="@id/jnq" />
+    <View android:id="@id/jtt" android:background="@drawable/h94" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_below="@id/jnq" />
+</RelativeLayout>

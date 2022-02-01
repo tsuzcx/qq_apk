@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
 public abstract class SearchActionVerificationClientActivity
-  extends Activity
+  extends HellActivity
 {
-  protected final void onCreate(Bundle paramBundle)
+  public abstract Class<? extends SearchActionVerificationClientService> XO();
+  
+  public final void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = new Intent(this, rx());
+    paramBundle = new Intent(this, XO());
     paramBundle.putExtra("SearchActionVerificationClientExtraIntent", getIntent());
     startService(paramBundle);
     finish();
@@ -22,12 +25,10 @@ public abstract class SearchActionVerificationClientActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public abstract Class<? extends SearchActionVerificationClientService> rx();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.search.verification.client.SearchActionVerificationClientActivity
  * JD-Core Version:    0.7.0.1
  */

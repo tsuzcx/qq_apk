@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
 import android.os.SystemClock;
-import bece;
-import becm;
+import com.tencent.mobileqq.vip.lianghao.data.LiangHaoRsp;
 
-public class GetRegisterLiangHaoList$1
+class GetRegisterLiangHaoList$1
   implements Runnable
 {
-  public GetRegisterLiangHaoList$1(becm parambecm) {}
+  GetRegisterLiangHaoList$1(GetRegisterLiangHaoList paramGetRegisterLiangHaoList) {}
   
   public void run()
   {
-    becm.a(this.this$0, SystemClock.elapsedRealtime());
-    bece localbece = becm.a(this.this$0);
-    becm.a(this.this$0, localbece);
+    GetRegisterLiangHaoList.a(this.this$0, SystemClock.elapsedRealtime());
+    LiangHaoRsp localLiangHaoRsp = GetRegisterLiangHaoList.a(this.this$0);
+    GetRegisterLiangHaoList.a(this.this$0, localLiangHaoRsp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.GetRegisterLiangHaoList.1
  * JD-Core Version:    0.7.0.1
  */

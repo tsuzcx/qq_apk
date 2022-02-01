@@ -9,14 +9,14 @@ class SplashActivity$2
   
   public void run()
   {
-    if (ImmersiveUtils.a(this.this$0.getWindow())) {
+    if (ImmersiveUtils.correctStatusBarHeight(this.this$0.getWindow())) {
       this.this$0.recreate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SplashActivity.2
  * JD-Core Version:    0.7.0.1
  */

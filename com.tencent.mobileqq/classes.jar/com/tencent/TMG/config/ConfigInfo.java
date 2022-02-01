@@ -5,7 +5,7 @@ import com.tencent.TMG.utils.QLog;
 
 public class ConfigInfo
 {
-  private static ConfigInfo instance = null;
+  private static ConfigInfo instance;
   private Context m_context = null;
   
   public ConfigInfo()
@@ -45,14 +45,24 @@ public class ConfigInfo
     if (localObject != null)
     {
       String str = new String((byte[])localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("", 0, "GetSharpConfigPayloadFromFile payloadBufTmp: " + str);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("GetSharpConfigPayloadFromFile payloadBufTmp: ");
+        ((StringBuilder)localObject).append(str);
+        QLog.d("", 0, ((StringBuilder)localObject).toString());
       }
       int i = str.indexOf('|');
       localObject = str.substring(0, i);
       str = str.substring(i + 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("", 0, "GetSharpConfigPayloadFromFile version: " + (String)localObject + ". payload: " + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("GetSharpConfigPayloadFromFile version: ");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(". payload: ");
+        localStringBuilder.append(str);
+        QLog.d("", 0, localStringBuilder.toString());
       }
       return str;
     }
@@ -61,23 +71,32 @@ public class ConfigInfo
   
   public int GetSharpConfigVersionFromFile()
   {
-    int i = 0;
     Object localObject = Common.readFile(this.m_context, "SharpConfigPayload");
     if (localObject != null)
     {
       String str = new String((byte[])localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("", 0, "GetSharpConfigPayloadFromFile payloadBufTmp: " + str);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("GetSharpConfigPayloadFromFile payloadBufTmp: ");
+        ((StringBuilder)localObject).append(str);
+        QLog.d("", 0, ((StringBuilder)localObject).toString());
       }
-      i = str.indexOf('|');
+      int i = str.indexOf('|');
       localObject = str.substring(0, i);
       str = str.substring(i + 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("", 0, "GetSharpConfigPayloadFromFile version: " + (String)localObject + ". payload: " + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("GetSharpConfigPayloadFromFile version: ");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(". payload: ");
+        localStringBuilder.append(str);
+        QLog.d("", 0, localStringBuilder.toString());
       }
-      i = Integer.parseInt((String)localObject);
+      return Integer.parseInt((String)localObject);
     }
-    return i;
+    return 0;
   }
   
   public void WriteConfigInfoToFile(byte[] paramArrayOfByte) {}
@@ -89,7 +108,7 @@ public class ConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.config.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

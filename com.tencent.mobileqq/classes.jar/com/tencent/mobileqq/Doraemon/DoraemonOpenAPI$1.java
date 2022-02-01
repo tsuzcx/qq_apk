@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.Doraemon;
 
-import abxj;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper;
 
-public final class DoraemonOpenAPI$1
+final class DoraemonOpenAPI$1
   implements Runnable
 {
   public void run()
   {
-    abxj localabxj = abxj.a();
-    localabxj.a();
-    localabxj.b();
+    DefaultDoraemonAppInfoHelper localDefaultDoraemonAppInfoHelper = DefaultDoraemonAppInfoHelper.a();
+    localDefaultDoraemonAppInfoHelper.b();
+    localDefaultDoraemonAppInfoHelper.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.DoraemonOpenAPI.1
  * JD-Core Version:    0.7.0.1
  */

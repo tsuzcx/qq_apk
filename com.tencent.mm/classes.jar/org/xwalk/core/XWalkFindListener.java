@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public abstract class XWalkFindListener
 {
+  private static final String TAG = "XWalkFindListener";
   private Object bridge;
   private ArrayList<Object> constructorParams = new ArrayList();
   private ArrayList<Object> constructorTypes = new ArrayList();
@@ -25,23 +26,15 @@ public abstract class XWalkFindListener
     reflectionInit();
   }
   
-  protected Object getBridge()
+  private void reflectionInit()
   {
-    return this.bridge;
-  }
-  
-  public abstract void onFindResultReceived(int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  void reflectionInit()
-  {
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null) {
-      XWalkCoreWrapper.reserveReflectObject(this);
+    if (XWalkCoreWrapper.getInstance() == null) {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
     }
     for (;;)
     {
       return;
+      this.coreWrapper = XWalkCoreWrapper.getInstance();
       int j = this.constructorTypes.size();
       Object localObject1 = new Class[j + 1];
       int i = 0;
@@ -53,7 +46,7 @@ public abstract class XWalkFindListener
           localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
           this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
         }
-        label127:
+        label123:
         do
         {
           for (;;)
@@ -61,7 +54,7 @@ public abstract class XWalkFindListener
             i += 1;
             break;
             if (!(localObject2 instanceof Class)) {
-              break label127;
+              break label123;
             }
             localObject1[i] = ((Class)localObject2);
           }
@@ -80,13 +73,23 @@ public abstract class XWalkFindListener
           return;
         }
       }
-      catch (UnsupportedOperationException localUnsupportedOperationException) {}
+      catch (UnsupportedOperationException localUnsupportedOperationException)
+      {
+        Log.e("XWalkFindListener", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+      }
     }
   }
+  
+  protected Object getBridge()
+  {
+    return this.bridge;
+  }
+  
+  public abstract void onFindResultReceived(int paramInt1, int paramInt2, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkFindListener
  * JD-Core Version:    0.7.0.1
  */

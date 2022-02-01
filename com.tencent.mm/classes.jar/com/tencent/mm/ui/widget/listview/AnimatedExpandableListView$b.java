@@ -11,69 +11,69 @@ import java.util.List;
 final class AnimatedExpandableListView$b
   extends View
 {
-  List<View> AHJ;
-  private int AHK;
-  private int dividerHeight;
-  private Drawable gCg;
+  List<View> FaY;
+  private int agiq;
+  private int lCp;
+  private Drawable pYO;
   
   private AnimatedExpandableListView$b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(112712);
-    this.AHJ = new ArrayList();
-    AppMethodBeat.o(112712);
+    AppMethodBeat.i(159420);
+    this.FaY = new ArrayList();
+    AppMethodBeat.o(159420);
   }
   
   public final void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(112715);
+    AppMethodBeat.i(159423);
     paramCanvas.save();
-    if (this.gCg != null) {
-      this.gCg.setBounds(0, 0, this.AHK, this.dividerHeight);
+    if (this.pYO != null) {
+      this.pYO.setBounds(0, 0, this.agiq, this.lCp);
     }
-    int j = this.AHJ.size();
+    int j = this.FaY.size();
     int i = 0;
     while (i < j)
     {
-      View localView = (View)this.AHJ.get(i);
+      View localView = (View)this.FaY.get(i);
       localView.draw(paramCanvas);
       paramCanvas.translate(0.0F, localView.getMeasuredHeight());
-      if (this.gCg != null)
+      if (this.pYO != null)
       {
-        this.gCg.draw(paramCanvas);
-        paramCanvas.translate(0.0F, this.dividerHeight);
+        this.pYO.draw(paramCanvas);
+        paramCanvas.translate(0.0F, this.lCp);
       }
       i += 1;
     }
     paramCanvas.restore();
-    AppMethodBeat.o(112715);
+    AppMethodBeat.o(159423);
   }
   
-  public final void fw(View paramView)
+  public final void ml(View paramView)
   {
-    AppMethodBeat.i(112713);
+    AppMethodBeat.i(159421);
     paramView.layout(0, 0, getWidth(), getHeight());
-    this.AHJ.add(paramView);
-    AppMethodBeat.o(112713);
+    this.FaY.add(paramView);
+    AppMethodBeat.o(159421);
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(112714);
+    AppMethodBeat.i(159422);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    int j = this.AHJ.size();
+    int j = this.FaY.size();
     int i = 0;
     while (i < j)
     {
-      ((View)this.AHJ.get(i)).layout(paramInt1, paramInt2, paramInt3, paramInt4);
+      ((View)this.FaY.get(i)).layout(paramInt1, paramInt2, paramInt3, paramInt4);
       i += 1;
     }
-    AppMethodBeat.o(112714);
+    AppMethodBeat.o(159422);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.listview.AnimatedExpandableListView.b
  * JD-Core Version:    0.7.0.1
  */

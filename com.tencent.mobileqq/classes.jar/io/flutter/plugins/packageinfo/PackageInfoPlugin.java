@@ -6,7 +6,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build.VERSION;
-import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -46,7 +45,7 @@ public class PackageInfoPlugin
   
   public void onAttachedToEngine(FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
-    onAttachedToEngine(paramFlutterPluginBinding.getApplicationContext(), paramFlutterPluginBinding.getFlutterEngine().getDartExecutor());
+    onAttachedToEngine(paramFlutterPluginBinding.getApplicationContext(), paramFlutterPluginBinding.getBinaryMessenger());
   }
   
   public void onDetachedFromEngine(FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
@@ -83,7 +82,7 @@ public class PackageInfoPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugins.packageinfo.PackageInfoPlugin
  * JD-Core Version:    0.7.0.1
  */

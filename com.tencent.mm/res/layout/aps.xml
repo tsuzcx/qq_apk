@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/e3y" style="@style/ni">
-        <LinearLayout style="@style/l0">
-            <EditText android:id="@id/e3z" android:hint="@string/dqa" style="@style/ml" />
-            <View style="@style/nz" />
-            <TextView android:gravity="left" android:text="@string/dqb" style="@style/mm" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</RelativeLayout>

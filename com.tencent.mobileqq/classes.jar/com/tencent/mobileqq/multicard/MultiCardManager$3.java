@@ -1,49 +1,45 @@
 package com.tencent.mobileqq.multicard;
 
-import auno;
-import aunr;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
 
-public class MultiCardManager$3
+class MultiCardManager$3
   implements Runnable
 {
-  public MultiCardManager$3(auno paramauno, long paramLong, aunr paramaunr) {}
+  MultiCardManager$3(MultiCardManager paramMultiCardManager, long paramLong, MultiCardManager.GetGroupRecommendUinListsListener paramGetGroupRecommendUinListsListener) {}
   
   public void run()
   {
-    ArrayList localArrayList = auno.a(this.this$0, this.jdField_a_of_type_Long);
-    if (localArrayList != null) {}
-    for (;;)
-    {
-      synchronized (auno.a(this.this$0))
+    ArrayList localArrayList1 = MultiCardManager.a(this.this$0, this.a);
+    if (localArrayList1 != null) {
+      synchronized (MultiCardManager.b(this.this$0))
       {
-        auno.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList.clone());
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder().append("callbackWithNativeUinList ").append(this.jdField_a_of_type_Long).append(" ");
-          if (localArrayList != null)
-          {
-            ??? = localArrayList.toString();
-            QLog.d("MultiCardManager", 2, (String)???);
-          }
-        }
-        else
-        {
-          ThreadManager.getUIHandler().post(new MultiCardManager.3.1(this, localArrayList));
-          return;
-        }
+        MultiCardManager.b(this.this$0).put(Long.valueOf(this.a), (ArrayList)localArrayList1.clone());
       }
-      ??? = "null";
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("callbackWithNativeUinList ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(" ");
+      if (localArrayList2 != null) {
+        ??? = localArrayList2.toString();
+      } else {
+        ??? = "null";
+      }
+      localStringBuilder.append((String)???);
+      QLog.d("MultiCardManager", 2, localStringBuilder.toString());
+    }
+    ThreadManager.getUIHandler().post(new MultiCardManager.3.1(this, localArrayList2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.3
  * JD-Core Version:    0.7.0.1
  */

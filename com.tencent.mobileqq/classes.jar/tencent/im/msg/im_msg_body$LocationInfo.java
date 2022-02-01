@@ -17,13 +17,14 @@ public final class im_msg_body$LocationInfo
   
   static
   {
+    Double localDouble = Double.valueOf(0.0D);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 9, 17, 26 }, new String[] { "double_longitude", "double_latitude", "bytes_desc" }, new Object[] { Double.valueOf(0.0D), Double.valueOf(0.0D), localByteStringMicro }, LocationInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 9, 17, 26 }, new String[] { "double_longitude", "double_latitude", "bytes_desc" }, new Object[] { localDouble, localDouble, localByteStringMicro }, LocationInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.im_msg_body.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

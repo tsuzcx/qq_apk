@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import aepi;
 import android.content.Context;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.ViewCompat;
@@ -9,16 +8,17 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScrollLinearLayout
   extends LinearLayout
   implements NestedScrollingParent
 {
-  private int jdField_a_of_type_Int = aepi.a(80.0F, getResources());
-  private View jdField_a_of_type_AndroidViewView;
-  private OverScroller jdField_a_of_type_AndroidWidgetOverScroller;
+  private int a = AIOUtils.b(80.0F, getResources());
   private View b;
+  private View c;
+  private OverScroller d;
   
   public ScrollLinearLayout(Context paramContext)
   {
@@ -37,7 +37,7 @@ public class ScrollLinearLayout
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetOverScroller.fling(0, getScrollY(), 0, paramInt, 0, 0, 0, this.jdField_a_of_type_Int);
+    this.d.fling(0, getScrollY(), 0, paramInt, 0, 0, 0, this.a);
     invalidate();
   }
   
@@ -49,20 +49,22 @@ public class ScrollLinearLayout
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369661);
-    this.b = findViewById(2131366281);
-    this.jdField_a_of_type_AndroidWidgetOverScroller = new OverScroller(getContext());
+    this.c = findViewById(2131433082);
+    this.d = new OverScroller(getContext());
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.b == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
+    if (this.c != null)
+    {
+      if (this.b == null) {
+        return;
+      }
+      getChildAt(0).measure(paramInt1, View.MeasureSpec.makeMeasureSpec(0, 0));
+      this.c.getLayoutParams().height = getMeasuredHeight();
+      setMeasuredDimension(getMeasuredWidth(), this.b.getMeasuredHeight() + this.c.getMeasuredHeight());
     }
-    getChildAt(0).measure(paramInt1, View.MeasureSpec.makeMeasureSpec(0, 0));
-    this.b.getLayoutParams().height = getMeasuredHeight();
-    setMeasuredDimension(getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() + this.b.getMeasuredHeight());
   }
   
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -72,7 +74,7 @@ public class ScrollLinearLayout
   
   public boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2)
   {
-    if (getScrollY() >= this.jdField_a_of_type_Int) {
+    if (getScrollY() >= this.a) {
       return false;
     }
     a((int)paramFloat2);
@@ -81,24 +83,21 @@ public class ScrollLinearLayout
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    if ((paramInt2 > 0) && (getScrollY() < this.jdField_a_of_type_Int))
-    {
+    if ((paramInt2 > 0) && (getScrollY() < this.a)) {
       paramInt1 = 1;
-      if ((paramInt2 >= 0) || (getScrollY() <= 0) || (ViewCompat.canScrollVertically(paramView, -1))) {
-        break label65;
-      }
-    }
-    label65:
-    for (int i = 1;; i = 0)
-    {
-      if ((paramInt1 != 0) || (i != 0))
-      {
-        scrollBy(0, paramInt2);
-        paramArrayOfInt[1] = paramInt2;
-      }
-      return;
+    } else {
       paramInt1 = 0;
-      break;
+    }
+    int i;
+    if ((paramInt2 < 0) && (getScrollY() > 0) && (!ViewCompat.canScrollVertically(paramView, -1))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((paramInt1 != 0) || (i != 0))
+    {
+      scrollBy(0, paramInt2);
+      paramArrayOfInt[1] = paramInt2;
     }
   }
   
@@ -114,13 +113,25 @@ public class ScrollLinearLayout
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    QLog.e(getClass().getSimpleName(), 1, "view:" + paramView1 + "-- target:" + paramView2);
-    if ((paramInt & 0x2) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.e(getClass().getSimpleName(), 1, "result:" + bool);
-      return bool;
+    String str = getClass().getSimpleName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("view:");
+    localStringBuilder.append(paramView1);
+    localStringBuilder.append("-- target:");
+    localStringBuilder.append(paramView2);
+    QLog.e(str, 1, localStringBuilder.toString());
+    boolean bool;
+    if ((paramInt & 0x2) != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramView1 = getClass().getSimpleName();
+    paramView2 = new StringBuilder();
+    paramView2.append("result:");
+    paramView2.append(bool);
+    QLog.e(paramView1, 1, paramView2.toString());
+    return bool;
   }
   
   public void onStopNestedScroll(View paramView)
@@ -134,9 +145,10 @@ public class ScrollLinearLayout
     if (paramInt2 < 0) {
       i = 0;
     }
+    int j = this.a;
     paramInt2 = i;
-    if (i > this.jdField_a_of_type_Int) {
-      paramInt2 = this.jdField_a_of_type_Int;
+    if (i > j) {
+      paramInt2 = j;
     }
     if (paramInt2 != getScrollY()) {
       super.scrollTo(paramInt1, paramInt2);
@@ -145,7 +157,7 @@ public class ScrollLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.ScrollLinearLayout
  * JD-Core Version:    0.7.0.1
  */

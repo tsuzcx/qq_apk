@@ -8,21 +8,21 @@ final class FragmentManagerState
   implements Parcelable
 {
   public static final Parcelable.Creator<FragmentManagerState> CREATOR = new Parcelable.Creator() {};
-  int cp;
-  FragmentState[] dl;
-  int[] dm;
-  BackStackState[] dn;
-  int jdField_do = -1;
+  int dY;
+  FragmentState[] fa;
+  int[] fb;
+  BackStackState[] fc;
+  int fd = -1;
   
   public FragmentManagerState() {}
   
   public FragmentManagerState(Parcel paramParcel)
   {
-    this.dl = ((FragmentState[])paramParcel.createTypedArray(FragmentState.CREATOR));
-    this.dm = paramParcel.createIntArray();
-    this.dn = ((BackStackState[])paramParcel.createTypedArray(BackStackState.CREATOR));
-    this.jdField_do = paramParcel.readInt();
-    this.cp = paramParcel.readInt();
+    this.fa = ((FragmentState[])paramParcel.createTypedArray(FragmentState.CREATOR));
+    this.fb = paramParcel.createIntArray();
+    this.fc = ((BackStackState[])paramParcel.createTypedArray(BackStackState.CREATOR));
+    this.fd = paramParcel.readInt();
+    this.dY = paramParcel.readInt();
   }
   
   public final int describeContents()
@@ -32,11 +32,11 @@ final class FragmentManagerState
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeTypedArray(this.dl, paramInt);
-    paramParcel.writeIntArray(this.dm);
-    paramParcel.writeTypedArray(this.dn, paramInt);
-    paramParcel.writeInt(this.jdField_do);
-    paramParcel.writeInt(this.cp);
+    paramParcel.writeTypedArray(this.fa, paramInt);
+    paramParcel.writeIntArray(this.fb);
+    paramParcel.writeTypedArray(this.fc, paramInt);
+    paramParcel.writeInt(this.fd);
+    paramParcel.writeInt(this.dY);
   }
 }
 

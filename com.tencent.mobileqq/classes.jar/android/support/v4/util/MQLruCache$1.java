@@ -14,23 +14,25 @@ class MQLruCache$1
   
   protected void entryRemoved(boolean paramBoolean, K paramK, MQLruCache<K, O>.CacheItem paramMQLruCache1, MQLruCache<K, O>.CacheItem paramMQLruCache2)
   {
-    Object localObject = null;
     if ((paramBoolean) && (this.val$priority > 0))
     {
       MQLruCache.access$200(this.this$0)[this.val$priority].add(Pair.create(paramK, paramMQLruCache1));
-      if ((MQLruCache.access$100(this.this$0).size() > 0) && (MQLruCache.access$100(this.this$0).contains(paramK))) {
-        MQLruCache.access$100(this.this$0).remove(paramK);
-      }
-      return;
     }
-    if (paramMQLruCache1 != null) {}
-    for (paramMQLruCache1 = paramMQLruCache1.value;; paramMQLruCache1 = null)
+    else
     {
+      Object localObject = null;
+      if (paramMQLruCache1 != null) {
+        paramMQLruCache1 = paramMQLruCache1.value;
+      } else {
+        paramMQLruCache1 = null;
+      }
       if (paramMQLruCache2 != null) {
         localObject = paramMQLruCache2.value;
       }
       this.this$0.entryObjRemoved(paramBoolean, paramK, paramMQLruCache1, localObject);
-      break;
+    }
+    if ((MQLruCache.access$100(this.this$0).size() > 0) && (MQLruCache.access$100(this.this$0).contains(paramK))) {
+      MQLruCache.access$100(this.this$0).remove(paramK);
     }
   }
   

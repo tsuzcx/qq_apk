@@ -35,18 +35,19 @@ public final class FeedsProtocol$FeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 48, 58, 64, 74, 80, 90, 98, 106, 114, 122 }, new String[] { "id", "type", "user_info", "view_times", "room_img_url", "update_time", "content", "short_video_num", "jump_url", "is_new", "feed_id", "publish_info", "anchor_info", "feed_preload", "native_jump_url" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro2, Long.valueOf(0L), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, null, null, null, localByteStringMicro6 }, FeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 48, 58, 64, 74, 80, 90, 98, 106, 114, 122 }, new String[] { "id", "type", "user_info", "view_times", "room_img_url", "update_time", "content", "short_video_num", "jump_url", "is_new", "feed_id", "publish_info", "anchor_info", "feed_preload", "native_jump_url" }, new Object[] { localByteStringMicro1, localInteger, null, localInteger, localByteStringMicro2, Long.valueOf(0L), localByteStringMicro3, localInteger, localByteStringMicro4, localInteger, localByteStringMicro5, null, null, null, localByteStringMicro6 }, FeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

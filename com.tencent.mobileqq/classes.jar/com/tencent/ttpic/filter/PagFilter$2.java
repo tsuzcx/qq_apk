@@ -10,15 +10,16 @@ class PagFilter$2
   
   public void run()
   {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    PagFilter.access$102(this.this$0, arrayOfInt[0]);
-    PagFilter.access$202(this.this$0, new SurfaceTexture(PagFilter.access$100(this.this$0)));
+    Object localObject = new int[1];
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    PagFilter.access$102(this.this$0, localObject[0]);
+    localObject = this.this$0;
+    PagFilter.access$202((PagFilter)localObject, new SurfaceTexture(PagFilter.access$100((PagFilter)localObject)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.PagFilter.2
  * JD-Core Version:    0.7.0.1
  */

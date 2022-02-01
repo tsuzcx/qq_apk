@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/d7e" android:background="@drawable/uz" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="0.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/d7f" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/d7g" android:visibility="gone" android:layout_width="37.0dip" android:layout_height="37.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <RelativeLayout android:id="@id/d7h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ImageView android:id="@id/d7i" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="@dimen/ko" android:textColor="#ff666666" android:id="@id/d7j" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/d7i" android:layout_centerHorizontal="true" style="@style/ln" />
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/nh" android:textColor="#ff999999" android:id="@id/d7k" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/d7h" android:layout_centerHorizontal="true" style="@style/ln" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/v4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/jms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/db">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/deg" android:padding="@dimen/cp" android:layout_width="@dimen/d5" android:layout_height="@dimen/d_" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_outlined_back" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/jmu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dc4" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <ImageView android:id="@id/co8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:src="#ffebebeb" android:scaleType="fitXY" android:layout_alignParentTop="true" />
-    <ImageView android:id="@id/cph" android:layout_width="fill_parent" android:layout_height="0.5dip" android:src="#ffebebeb" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/d7l" android:visibility="gone" android:layout_width="0.5dip" android:layout_height="fill_parent" android:src="#ffebebeb" android:scaleType="fitXY" android:layout_above="@id/cph" android:layout_below="@id/co8" android:layout_alignParentLeft="true" />
-    <ImageView android:id="@id/d7m" android:layout_width="0.5dip" android:layout_height="fill_parent" android:src="#ffebebeb" android:scaleType="fitXY" android:layout_above="@id/cph" android:layout_below="@id/co8" android:layout_alignParentRight="true" android:layout_alignWithParentIfMissing="true" />
-</RelativeLayout>
+    <TextView android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/khu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:layout_marginRight="@dimen/cv" android:text="@string/dc3" />
+</LinearLayout>

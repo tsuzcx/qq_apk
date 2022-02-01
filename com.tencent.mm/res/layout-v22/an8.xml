@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/d4" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/t" android:textStyle="bold" android:textColor="@color/a7b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d0" android:text="@string/edy" />
+    <org.libpag.PAGView android:id="@id/et1" android:layout_width="@dimen/cl" android:layout_height="360.0dip" />
+</LinearLayout>

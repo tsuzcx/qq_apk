@@ -1,47 +1,66 @@
 package com.tencent.mobileqq.activity;
 
-import afcw;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.forward.MergeForwardRevokeHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class MultiForwardActivity
   extends ChatActivity
 {
-  public afcw a = new afcw();
+  public MergeForwardRevokeHelper a = new MergeForwardRevokeHelper();
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
     this.a.a(this);
     return bool;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    Object localObject = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-    if (localObject != null) {}
-    for (localObject = ((ChatFragment)localObject).a();; localObject = null)
-    {
-      if (localObject != null) {
-        ((BaseChatPie)localObject).H();
-      }
-      this.a.c(this);
-      super.doOnDestroy();
-      return;
+    Object localObject = getChatFragment();
+    if (localObject != null) {
+      localObject = ((ChatFragment)localObject).k();
+    } else {
+      localObject = null;
     }
+    if (localObject != null) {
+      ((BaseChatPie)localObject).K();
+    }
+    this.a.c(this);
+    super.doOnDestroy();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     this.a.b(this);
   }
   
-  public void doOnWindowFocusChanged(boolean paramBoolean) {}
+  protected void doOnWindowFocusChanged(boolean paramBoolean) {}
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MultiForwardActivity
  * JD-Core Version:    0.7.0.1
  */

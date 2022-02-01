@@ -1,52 +1,87 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.subscribe.widget.StatusView;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import tqb;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.tencent.biz.qcircleshadow.lib.variation.HostNetworkUtils;
+import com.tencent.biz.qqcircle.QCirclePluginConfig;
+import com.tencent.biz.qqcircle.utils.ImmersiveUtils;
+import com.tencent.biz.richframework.download.RFWDownloader;
+import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
+import com.tencent.biz.richframework.download.RFWDownloaderFactory;
+import com.tencent.biz.richframework.download.RFWMultiDownloadHelper;
+import com.tencent.biz.richframework.download.RFWMultiDownloadHelper.DownloadTask;
+import com.tencent.biz.richframework.part.IStatusViewProvider;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqcircle.helpers.QCircleSkinHelper;
+import cooperation.qqcircle.report.QCircleReportBean;
+import java.io.File;
 
 public class QCircleStatusView
-  extends StatusView
+  extends QCircleBaseWidgetView
+  implements View.OnClickListener, IStatusViewProvider
 {
-  private int jdField_a_of_type_Int = 16;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = Color.parseColor("#03081A");
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString = getResources().getString(2131701864);
+  private static RFWMultiDownloadHelper g = new RFWMultiDownloadHelper();
+  protected LinearLayout a;
+  protected ImageView b;
+  protected TextView c;
+  protected TextView d;
+  protected LinearLayout e;
+  protected LinearLayout f;
+  private RFWDownloader.RFWDownloadListener h;
+  private View.OnClickListener i;
+  private boolean j = false;
+  private QCircleReportBean k;
+  
+  static
+  {
+    g.addTask(new RFWMultiDownloadHelper.DownloadTask("https://qzonestyle.gtimg.cn/qzone/qzact/act/external/qzone-platform/wezone/2020-wezone-img/2020-empty-state/6-preload/img_preload_fullscreen_disconnect.png", QCirclePluginConfig.e()));
+    g.start();
+  }
   
   public QCircleStatusView(Context paramContext)
   {
-    super(paramContext);
+    this(paramContext, null);
   }
   
   public QCircleStatusView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    f();
   }
   
-  private void a(boolean paramBoolean)
+  private void b()
+  {
+    if (this.b != null)
+    {
+      TextView localTextView = this.c;
+      if (localTextView == null) {
+        return;
+      }
+      localTextView.setText(QCircleConfigHelper.U());
+      this.b.setImageDrawable(getContext().getResources().getDrawable(2130845168));
+      this.c.setTextColor(-1);
+    }
+  }
+  
+  private void f()
+  {
+    setClickable(true);
+    c();
+  }
+  
+  private void setVisible(boolean paramBoolean)
   {
     if ((!paramBoolean) && (getVisibility() == 0)) {
       setVisibility(8);
@@ -56,196 +91,188 @@ public class QCircleStatusView
     }
   }
   
-  private void g()
+  public void a()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(null);
-    }
-    for (;;)
-    {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
-      localMarginLayoutParams.topMargin = (-ImmersiveUtils.a(30.0F));
-      setLayoutParams(localMarginLayoutParams);
+    b(null);
+    e();
+  }
+  
+  protected void a(View paramView)
+  {
+    View.OnClickListener localOnClickListener = this.i;
+    if (localOnClickListener == null) {
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackground(null);
     }
+    localOnClickListener.onClick(paramView);
   }
   
-  public int a()
+  protected void a(ImageView paramImageView, String paramString)
   {
-    return 2131560534;
-  }
-  
-  public void a(Context paramContext, View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375961));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368770));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368830));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378773));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378702));
-    setHintImageFilePath(tqb.i + "qcircle_feed_error.png");
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(String paramString)
-  {
-    a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    setTextHint(paramString, paramInt1, paramInt2);
-    b();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    String str = d(paramString);
+    if (RFWDownloaderFactory.getDownloader(QCirclePluginConfig.e()).isFileDownLoading(paramString)) {
+      return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (new File(str).exists())
+    {
+      b(paramImageView, str);
+      return;
     }
-    a(true);
+    this.h = new QCircleStatusView.1(this, paramImageView);
+    RFWDownloaderFactory.getDownloader(QCirclePluginConfig.e()).download(paramString, this.h);
+  }
+  
+  public void a(String paramString) {}
+  
+  protected void b(ImageView paramImageView, String paramString)
+  {
+    if (paramImageView != null)
+    {
+      paramImageView.setVisibility(0);
+      getMainHandler().post(new QCircleStatusView.2(this, paramImageView, paramString));
+    }
   }
   
   public void b(String paramString)
   {
-    setHintImageFilePath(tqb.i + "qcircle_feed_empty.png");
-    a(paramString);
+    if ((HostNetworkUtils.isNetworkAvailable() ^ true))
+    {
+      paramString = d(QCircleSkinHelper.getInstance().getUrl("img_emptystate_disconnect"));
+      if (new File(paramString).exists())
+      {
+        this.f.setVisibility(8);
+        this.c.setVisibility(0);
+        this.c.setText(QCircleConfigHelper.U());
+        if (this.j) {
+          b();
+        } else {
+          b(this.b, paramString);
+        }
+      }
+      else if (this.j)
+      {
+        this.f.setVisibility(8);
+        this.c.setVisibility(0);
+        this.b.setVisibility(0);
+        b();
+      }
+      else
+      {
+        this.c.setVisibility(8);
+        this.b.setVisibility(8);
+        this.f.setVisibility(0);
+      }
+    }
+    else
+    {
+      this.f.setVisibility(8);
+      a(this.b, QCircleSkinHelper.getInstance().getUrl("img_emptystate_disconnect"));
+      this.c.setVisibility(0);
+      if (!TextUtils.isEmpty(paramString)) {
+        this.c.setText(paramString);
+      } else {
+        this.c.setText(QCircleConfigHelper.V());
+      }
+    }
+    d();
+    setVisible(true);
   }
+  
+  protected void bindData(Object paramObject, int paramInt) {}
   
   public void c()
   {
-    a(false);
+    setVisible(false);
   }
   
   public void c(String paramString)
   {
-    setHintImageFilePath(tqb.i + "qcircle_feed_error.png");
-    String str;
-    if (!NetworkUtils.isNetworkAvailable(BaseApplication.getContext()))
-    {
-      i = 1;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        if (i == 0) {
-          break label68;
-        }
-      }
-    }
-    label68:
-    for (int i = 2131694766;; i = 2131720478)
-    {
-      str = alud.a(i);
-      a(str);
-      return;
-      i = 0;
-      break;
-    }
+    b(paramString);
+    e();
   }
   
-  public void d()
+  protected String d(String paramString)
   {
-    setHintImageFilePath(tqb.i + "qcircle_feed_empty.png");
-    a(alud.a(2131698293));
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    g();
+    return RFWDownloaderFactory.getDownloader(QCirclePluginConfig.e()).getDefaultSavePath(paramString);
   }
   
-  public void d(String paramString)
+  protected void d()
   {
-    setHintImageFilePath(tqb.i + "qcircle_feed_error.png");
-    String str;
-    if (!NetworkUtils.isNetworkAvailable(BaseApplication.getContext()))
-    {
-      i = 1;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        if (i == 0) {
-          break label88;
-        }
-      }
-    }
-    label88:
-    for (int i = 2131694766;; i = 2131720478)
-    {
-      str = alud.a(i);
-      a(str);
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-      g();
-      return;
-      i = 0;
-      break;
-    }
+    this.d.setText(getContext().getString(2131895702));
+    this.d.setVisibility(0);
+    this.e.setVisibility(0);
   }
   
-  public void e(String paramString)
+  protected void e()
   {
-    if (this.jdField_b_of_type_AndroidWidgetImageView != null)
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {}
-    }
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130850260);
-      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130850260);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getFileDrawable(paramString, localURLDrawableOptions));
-      this.jdField_a_of_type_JavaLangString = paramString;
-      a(true);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
+    localMarginLayoutParams.topMargin = (-ImmersiveUtils.a(30.0F));
+    setLayoutParams(localMarginLayoutParams);
   }
   
-  public void setHintImageFilePath(String paramString)
+  public void e(String paramString) {}
+  
+  public int getLayoutId()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      ColorDrawable localColorDrawable = new ColorDrawable(getResources().getColor(2131166178));
-      localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
-      localURLDrawableOptions.mFailedDrawable = localColorDrawable;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getFileDrawable(paramString, localURLDrawableOptions));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return 2131626801;
   }
   
-  public void setTextHint(String paramString, float paramFloat, int paramInt)
+  protected String getLogTag()
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = this.jdField_b_of_type_JavaLangString;
+    return "QCircleStatusView";
+  }
+  
+  protected int getPageId()
+  {
+    return QCircleReportBean.getPageId(getLogTag(), this.k);
+  }
+  
+  public QCircleReportBean getReportBean()
+  {
+    return QCircleReportBean.getReportBean(getLogTag(), this.k);
+  }
+  
+  public View getStatusView()
+  {
+    return this;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131437401) {
+      a(paramView);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramFloat);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  protected void onInitView(Context paramContext, View paramView)
+  {
+    this.a = ((LinearLayout)paramView.findViewById(2131445015));
+    this.b = ((ImageView)paramView.findViewById(2131436489));
+    this.c = ((TextView)paramView.findViewById(2131436491));
+    this.e = ((LinearLayout)paramView.findViewById(2131437401));
+    this.d = ((TextView)paramView.findViewById(2131448252));
+    this.f = ((LinearLayout)paramView.findViewById(2131437490));
+    this.e.setOnClickListener(this);
+  }
+  
+  public void setForceBlackStyle(boolean paramBoolean)
+  {
+    this.j = paramBoolean;
+  }
+  
+  public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)
+  {
+    this.i = paramOnClickListener;
+  }
+  
+  public void setReportBean(QCircleReportBean paramQCircleReportBean)
+  {
+    super.setReportBean(paramQCircleReportBean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleStatusView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/info_card_header" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/info_card_default_loading_image" android:background="@drawable/qq_profilecard_photowall_bg_texture" android:layout_width="fill_parent" android:layout_height="@dimen/profile_qzone_cover_default" android:layout_marginBottom="@dimen/info_card_default_margin" android:src="@drawable/common_loading2" android:scaleType="center" />
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.ProfileCardMoreInfoView android:orientation="vertical" android:id="@id/info_card_more_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="@dimen/info_card_default_margin" />
+    <ImageView android:id="@id/fake_info_card_more" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:id="@id/info_card_placehodler" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

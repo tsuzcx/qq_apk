@@ -1,14 +1,14 @@
 package btmsdkobf;
 
 import android.content.Context;
+import com.tencent.token.avm;
 import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.TMSDKBaseContext;
-import tmsdk.common.tcc.b;
 
 public class bc
 {
-  static Context fp = null;
-  static AbsTMSBaseConfig fq = null;
+  static Context fp;
+  static AbsTMSBaseConfig fq;
   
   public static boolean checkLicence()
   {
@@ -17,7 +17,11 @@ public class bc
       boolean bool = bh.B().z();
       return bool;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label9:
+      break label9;
+    }
     return false;
   }
   
@@ -28,71 +32,54 @@ public class bc
   
   public static boolean init(Context paramContext, AbsTMSBaseConfig paramAbsTMSBaseConfig)
   {
-    boolean bool2 = false;
-    for (;;)
+    try
     {
-      boolean bool1;
-      try
+      StringBuilder localStringBuilder = new StringBuilder("init, aContext:[");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("]aTMSConfig:[");
+      localStringBuilder.append(paramAbsTMSBaseConfig);
+      localStringBuilder.append("]");
+      eg.e("TMSDKBaseContextInner", localStringBuilder.toString());
+      if ((paramContext != null) && (paramAbsTMSBaseConfig != null))
       {
-        eg.e("TMSDKBaseContextInner", "init, aContext:[" + paramContext + "]aTMSConfig:[" + paramAbsTMSBaseConfig + "]");
-        bool1 = bool2;
-        if (paramContext != null)
-        {
-          if (paramAbsTMSBaseConfig == null) {
-            bool1 = bool2;
-          }
-        }
-        else {
-          return bool1;
-        }
         fp = paramContext.getApplicationContext();
         fq = paramAbsTMSBaseConfig;
         if (!q())
         {
           eg.g("TMSDKBaseContextInner", "checkNoProguard false");
-          bool1 = bool2;
-          continue;
+          return false;
         }
-        if (fq.isJavaTCC()) {
-          break label122;
+        if ((!fq.isJavaTCC()) && (!avm.a()))
+        {
+          eg.g("TMSDKBaseContextInner", "loadLibraryIfNot false");
+          return false;
         }
-      }
-      finally {}
-      if (!b.cO())
-      {
-        eg.g("TMSDKBaseContextInner", "loadLibraryIfNot false");
-        bool1 = bool2;
-      }
-      else
-      {
-        label122:
         if ((fq.isCheckLicence()) && (!checkLicence()))
         {
           eg.g("TMSDKBaseContextInner", "checkLisence false");
-          bool1 = bool2;
+          return false;
         }
-        else
+        bx.ar().as();
+        bx.ar().at();
+        bn.M();
+        bj.F();
+        if (bq.Q().Y().booleanValue()) {
+          bq.Q().S();
+        }
+        if (m())
         {
-          bx.ar().as();
-          bx.ar().at();
-          bn.M();
-          bj.F();
-          if (bq.Q().Y().booleanValue()) {
-            bq.Q().S();
-          }
-          if (m())
-          {
-            bx.ar().au();
-            bx.ar().av();
-            bn.L();
-            TMSDKBaseContext.aroundWifiReport();
-            TMSDKBaseContext.wifiConnectRetReport();
-          }
-          eg.e("TMSDKBaseContextInner", "init, true");
-          bool1 = true;
+          bx.ar().au();
+          bx.ar().av();
+          bn.L();
+          TMSDKBaseContext.aroundWifiReport();
+          TMSDKBaseContext.wifiConnectRetReport();
         }
+        eg.e("TMSDKBaseContextInner", "init, true");
+        return true;
       }
+      return false;
     }
+    finally {}
   }
   
   public static boolean m()
@@ -102,8 +89,9 @@ public class bc
   
   public static Context n()
   {
-    if (fp != null) {
-      return fp.getApplicationContext();
+    Context localContext = fp;
+    if (localContext != null) {
+      return localContext.getApplicationContext();
     }
     eg.g("TMSDKBaseContextInner", "sContext == null");
     return null;
@@ -130,8 +118,10 @@ public class bc
     }
     catch (Throwable localThrowable)
     {
-      eg.g("TMSDKBaseContextInner", "is re proguard");
+      label21:
+      break label21;
     }
+    eg.g("TMSDKBaseContextInner", "is re proguard");
     return false;
   }
   

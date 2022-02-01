@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animation-list android:oneshot="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/b_1" />
-    <item android:state_focused="false" android:drawable="@drawable/b_2" />
-</selector>
+    <item android:duration="67" android:drawable="@drawable/bur" />
+    <item android:duration="67" android:drawable="@drawable/buz" />
+    <item android:duration="67" android:drawable="@drawable/bv8" />
+    <item android:duration="67" android:drawable="@drawable/bv9" />
+    <item android:duration="67" android:drawable="@drawable/bv_" />
+    <item android:duration="67" android:drawable="@drawable/bva" />
+    <item android:duration="67" android:drawable="@drawable/bus" />
+    <item android:duration="67" android:drawable="@drawable/but" />
+    <item android:duration="67" android:drawable="@drawable/buu" />
+    <item android:duration="67" android:drawable="@drawable/buv" />
+    <item android:duration="67" android:drawable="@drawable/buw" />
+    <item android:duration="67" android:drawable="@drawable/bux" />
+    <item android:duration="67" android:drawable="@drawable/buy" />
+    <item android:duration="67" android:drawable="@drawable/bv0" />
+    <item android:duration="67" android:drawable="@drawable/bv1" />
+    <item android:duration="67" android:drawable="@drawable/bv2" />
+    <item android:duration="67" android:drawable="@drawable/bv3" />
+    <item android:duration="67" android:drawable="@drawable/bv4" />
+    <item android:duration="67" android:drawable="@drawable/bv5" />
+    <item android:duration="67" android:drawable="@drawable/bv6" />
+    <item android:duration="67" android:drawable="@drawable/bv7" />
+</animation-list>

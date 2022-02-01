@@ -27,68 +27,52 @@ public class MTVBaseFilter
   
   private boolean checkReset(long paramLong)
   {
-    if (this.mPlayMode == 0) {
-      if (this.mLastTime == -1L)
+    int i = this.mPlayMode;
+    if (i == 0)
+    {
+      long l = this.mLastTime;
+      if (l == -1L)
       {
         this.mLastTime = paramLong;
-        if (paramLong != 0L) {}
+        return paramLong == 0L;
       }
-    }
-    label99:
-    do
-    {
-      return true;
-      return false;
-      if (paramLong - this.mLastTime > 0L) {
+      if (paramLong - l > 0L) {
         this.mPlayMode = 1;
+      } else if (paramLong - l < 0L) {
+        this.mPlayMode = 2;
+      } else {
+        this.mPlayMode = 0;
       }
-      for (;;)
+      if (this.mLastTime != 0L)
       {
-        if (this.mLastTime == 0L) {
-          break label99;
-        }
         this.mLastTime = paramLong;
-        if (this.mPlayMode != 0) {
-          break;
-        }
-        return false;
-        if (paramLong - this.mLastTime < 0L) {
-          this.mPlayMode = 2;
-        } else {
-          this.mPlayMode = 0;
-        }
+        return this.mPlayMode != 0;
       }
       this.mLastTime = paramLong;
       return false;
-      if (this.mPlayMode != 1) {
-        break label151;
-      }
-      if (paramLong >= this.mLastTime) {
-        break;
-      }
-      this.mLastTime = paramLong;
-      this.mPlayMode = 0;
-    } while (this.mLastTime == 0L);
-    return false;
-    this.mLastTime = paramLong;
-    for (;;)
-    {
-      return false;
-      label151:
-      if (this.mPlayMode == 2)
-      {
-        if (paramLong > this.mLastTime)
-        {
-          this.mLastTime = paramLong;
-          this.mPlayMode = 0;
-          if (this.mLastTime == 0L) {
-            break;
-          }
-          return false;
-        }
-        this.mLastTime = paramLong;
-      }
     }
+    if (i == 1)
+    {
+      if (paramLong < this.mLastTime)
+      {
+        this.mLastTime = paramLong;
+        this.mPlayMode = 0;
+        return this.mLastTime == 0L;
+      }
+      this.mLastTime = paramLong;
+      return false;
+    }
+    if (i == 2)
+    {
+      if (paramLong > this.mLastTime)
+      {
+        this.mLastTime = paramLong;
+        this.mPlayMode = 0;
+        return this.mLastTime == 0L;
+      }
+      this.mLastTime = paramLong;
+    }
+    return false;
   }
   
   public boolean checkRandomTime(RandomTime paramRandomTime, long paramLong1, long paramLong2, long paramLong3)
@@ -96,28 +80,31 @@ public class MTVBaseFilter
     if (paramRandomTime == null) {
       return false;
     }
-    long l = 1L;
+    long l;
     if (getPlayMode() == 2) {
       l = -1L;
+    } else {
+      l = 1L;
     }
     if (paramRandomTime.mStartPos < 0L)
     {
       paramRandomTime.mStartPos = (this.mRandom.nextLong(0L, paramLong3) * l + paramLong1);
       paramRandomTime.mEndPos = (l * paramLong2 + paramRandomTime.mStartPos);
-    }
-    for (;;)
-    {
       return false;
-      if (((l != 1L) || (paramRandomTime.mStartPos <= paramLong1)) && ((l != -1L) || (paramRandomTime.mStartPos >= paramLong1)))
-      {
-        if (((l == 1L) && (paramRandomTime.mEndPos > paramLong1)) || ((l == -1L) && (paramRandomTime.mEndPos < paramLong1))) {
-          return true;
-        }
-        if (paramRandomTime.isLoop()) {
-          paramRandomTime.reset();
-        }
+    }
+    if ((l != 1L) || (paramRandomTime.mStartPos <= paramLong1))
+    {
+      if ((l == -1L) && (paramRandomTime.mStartPos < paramLong1)) {
+        return false;
+      }
+      if (((l == 1L) && (paramRandomTime.mEndPos > paramLong1)) || ((l == -1L) && (paramRandomTime.mEndPos < paramLong1))) {
+        return true;
+      }
+      if (paramRandomTime.isLoop()) {
+        paramRandomTime.reset();
       }
     }
+    return false;
   }
   
   public boolean checkRandomTime(RandomTime paramRandomTime, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
@@ -128,28 +115,31 @@ public class MTVBaseFilter
     if (getPlayMode() == 0) {
       return false;
     }
-    long l = 1L;
+    long l;
     if (getPlayMode() == 2) {
       l = -1L;
+    } else {
+      l = 1L;
     }
     if (paramRandomTime.mStartPos < 0L)
     {
       paramRandomTime.mStartPos = (this.mRandom.nextLong(0L, paramLong4) * l + paramLong1);
-      paramRandomTime.mEndPos = (l * this.mRandom.nextLong(paramLong2, paramLong3) + paramRandomTime.mStartPos);
-    }
-    for (;;)
-    {
+      paramRandomTime.mEndPos = (this.mRandom.nextLong(paramLong2, paramLong3) * l + paramRandomTime.mStartPos);
       return false;
-      if (((l != 1L) || (paramRandomTime.mStartPos <= paramLong1)) && ((l != -1L) || (paramRandomTime.mStartPos >= paramLong1)))
-      {
-        if (((l == 1L) && (paramRandomTime.mEndPos > paramLong1)) || ((l == -1L) && (paramRandomTime.mEndPos < paramLong1))) {
-          return true;
-        }
-        if (paramRandomTime.isLoop()) {
-          paramRandomTime.reset();
-        }
+    }
+    if ((l != 1L) || (paramRandomTime.mStartPos <= paramLong1))
+    {
+      if ((l == -1L) && (paramRandomTime.mStartPos < paramLong1)) {
+        return false;
+      }
+      if (((l == 1L) && (paramRandomTime.mEndPos > paramLong1)) || ((l == -1L) && (paramRandomTime.mEndPos < paramLong1))) {
+        return true;
+      }
+      if (paramRandomTime.isLoop()) {
+        paramRandomTime.reset();
       }
     }
+    return false;
   }
   
   public int getHeight()
@@ -174,24 +164,39 @@ public class MTVBaseFilter
   
   public boolean onDraw(RenderBuffer paramRenderBuffer, int paramInt, long paramLong, float paramFloat, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    SLog.d("MTVBaseFilter", "onDraw, inTexID:" + paramInt + " currentMs:" + paramLong + " musicScale:" + paramFloat + " playMode:" + this.mPlayMode + " lastTime:" + this.mLastTime);
+    paramRenderBuffer = new StringBuilder();
+    paramRenderBuffer.append("onDraw, inTexID:");
+    paramRenderBuffer.append(paramInt);
+    paramRenderBuffer.append(" currentMs:");
+    paramRenderBuffer.append(paramLong);
+    paramRenderBuffer.append(" musicScale:");
+    paramRenderBuffer.append(paramFloat);
+    paramRenderBuffer.append(" playMode:");
+    paramRenderBuffer.append(this.mPlayMode);
+    paramRenderBuffer.append(" lastTime:");
+    paramRenderBuffer.append(this.mLastTime);
+    SLog.d("MTVBaseFilter", paramRenderBuffer.toString());
     return false;
   }
   
   public void onDrawFrame(int paramInt, RenderBuffer paramRenderBuffer, long paramLong, float paramFloat)
   {
+    Object localObject;
     if (checkReset(paramLong))
     {
-      SLog.d("MTVBaseFilter", "onDrawFrame, need reset:" + paramLong);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDrawFrame, need reset:");
+      ((StringBuilder)localObject).append(paramLong);
+      SLog.d("MTVBaseFilter", ((StringBuilder)localObject).toString());
       onReset(paramLong);
     }
-    if (this.mRevert) {}
-    for (float[] arrayOfFloat = this.mReversetexMatrix;; arrayOfFloat = null)
-    {
-      if (!onDraw(paramRenderBuffer, paramInt, paramLong, paramFloat, arrayOfFloat, null)) {
-        updateRendBuffer(paramRenderBuffer, paramInt);
-      }
-      return;
+    if (this.mRevert) {
+      localObject = this.mReversetexMatrix;
+    } else {
+      localObject = null;
+    }
+    if (!onDraw(paramRenderBuffer, paramInt, paramLong, paramFloat, (float[])localObject, null)) {
+      updateRendBuffer(paramRenderBuffer, paramInt);
     }
   }
   
@@ -217,23 +222,26 @@ public class MTVBaseFilter
   
   public boolean updateRendBuffer(RenderBuffer paramRenderBuffer, int paramInt)
   {
-    boolean bool1 = false;
+    boolean bool;
     if (paramInt >= 0)
     {
-      boolean bool2 = true;
-      bool1 = bool2;
+      bool = true;
       if (paramInt != paramRenderBuffer.getTexId())
       {
         paramRenderBuffer.setTexId(paramInt);
-        bool1 = bool2;
+        return true;
       }
     }
-    return bool1;
+    else
+    {
+      bool = false;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.MTVBaseFilter
  * JD-Core Version:    0.7.0.1
  */

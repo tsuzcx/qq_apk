@@ -6,24 +6,24 @@ import java.util.HashMap;
 
 public class SpellMap
 {
-  public static HashMap<String, String> gjV;
+  public static HashMap<String, String> pBs;
   
   static
   {
-    AppMethodBeat.i(58735);
-    gjV = new HashMap();
-    AppMethodBeat.o(58735);
+    AppMethodBeat.i(132985);
+    pBs = new HashMap();
+    AppMethodBeat.o(132985);
   }
   
   public static native String spellGetJni(int paramInt1, int paramInt2);
   
-  public static String u(char paramChar)
+  public static String v(char paramChar)
   {
-    AppMethodBeat.i(58733);
-    int j = v(paramChar);
+    AppMethodBeat.i(132983);
+    int j = w(paramChar);
     if (j < 65536)
     {
-      AppMethodBeat.o(58733);
+      AppMethodBeat.o(132983);
       return String.valueOf(paramChar);
     }
     int i = j >> 16;
@@ -33,7 +33,7 @@ public class SpellMap
     }
     while (str == null)
     {
-      AppMethodBeat.o(58733);
+      AppMethodBeat.o(132983);
       return null;
       if ((j < 63) || (j > 254)) {
         str = null;
@@ -44,20 +44,20 @@ public class SpellMap
     String[] arrayOfString = str.split(",");
     if ((arrayOfString == null) || (arrayOfString.length < 2))
     {
-      AppMethodBeat.o(58733);
+      AppMethodBeat.o(132983);
       return str;
     }
     String str = arrayOfString[0];
-    AppMethodBeat.o(58733);
+    AppMethodBeat.o(132983);
     return str;
   }
   
-  private static int v(char paramChar)
+  private static int w(char paramChar)
   {
-    AppMethodBeat.i(58734);
+    AppMethodBeat.i(132984);
     if (paramChar <= '')
     {
-      AppMethodBeat.o(58734);
+      AppMethodBeat.o(132984);
       return paramChar;
     }
     try
@@ -65,30 +65,30 @@ public class SpellMap
       byte[] arrayOfByte = String.valueOf(paramChar).getBytes("GBK");
       if ((arrayOfByte == null) || (arrayOfByte.length > 2) || (arrayOfByte.length <= 0))
       {
-        AppMethodBeat.o(58734);
+        AppMethodBeat.o(132984);
         return 0;
       }
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      AppMethodBeat.o(58734);
+      AppMethodBeat.o(132984);
       return 0;
     }
     int i;
     if (localUnsupportedEncodingException.length == 1)
     {
       i = localUnsupportedEncodingException[0];
-      AppMethodBeat.o(58734);
+      AppMethodBeat.o(132984);
       return i;
     }
     if (localUnsupportedEncodingException.length == 2)
     {
       i = localUnsupportedEncodingException[0];
       int j = localUnsupportedEncodingException[1];
-      AppMethodBeat.o(58734);
+      AppMethodBeat.o(132984);
       return (i + 256 << 16) + (j + 256);
     }
-    AppMethodBeat.o(58734);
+    AppMethodBeat.o(132984);
     return 0;
   }
 }

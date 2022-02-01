@@ -24,14 +24,15 @@ public final class cmd0x682$ChatInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 74 }, new String[] { "uint64_touin", "uint32_chatflag", "uint32_goldflag", "uint32_totalexpcount", "uint32_curexpcount", "uint32_totalFlag", "uint32_curdayFlag", "express_tips_msg", "express_msg" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, ChatInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 66, 74 }, new String[] { "uint64_touin", "uint32_chatflag", "uint32_goldflag", "uint32_totalexpcount", "uint32_curexpcount", "uint32_totalFlag", "uint32_curdayFlag", "express_tips_msg", "express_msg" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, ChatInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x682.ChatInfo
  * JD-Core Version:    0.7.0.1
  */

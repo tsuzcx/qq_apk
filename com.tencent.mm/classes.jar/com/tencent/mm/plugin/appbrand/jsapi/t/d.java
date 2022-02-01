@@ -1,29 +1,44 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiHideHomeButton;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wxa-app-jsapi_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends a
+  extends c<g>
 {
-  public static final int CTRL_INDEX = 34;
-  public static final String NAME = "pauseVoice";
+  @Deprecated
+  public static final int CTRL_INDEX = 684;
+  @Deprecated
+  public static final String NAME = "hideHomeButton";
+  private static final d.a snK;
   
-  protected final void a(c paramc, com.tencent.mm.plugin.appbrand.jsapi.c paramc1, JSONObject paramJSONObject, int paramInt)
+  static
   {
-    AppMethodBeat.i(145916);
-    paramc = paramc.aFY();
-    ab.i("MicroMsg.JsApiPausePlayVoice", "pause:%s", new Object[] { paramc });
-    if (paramc.isSuccess())
-    {
-      paramc1.h(paramInt, "ok");
-      AppMethodBeat.o(145916);
-      return;
+    AppMethodBeat.i(327738);
+    snK = new d.a((byte)0);
+    AppMethodBeat.o(327738);
+  }
+  
+  private static final void a(ad paramad, g paramg, int paramInt, d paramd)
+  {
+    AppMethodBeat.i(327734);
+    s.u(paramd, "this$0");
+    if (paramad.cEC() == null) {
+      paramad.cEY();
     }
-    ab.e("MicroMsg.JsApiPausePlayVoice", "pause fail %s", new Object[] { paramc });
-    paramc1.h(paramInt, "fail:" + paramc.errMsg);
-    AppMethodBeat.o(145916);
+    for (;;)
+    {
+      s.checkNotNull(paramg);
+      paramg.callback(paramInt, paramd.ZP("ok"));
+      AppMethodBeat.o(327734);
+      return;
+      paramad.cEZ();
+    }
   }
 }
 

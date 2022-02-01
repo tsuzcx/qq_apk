@@ -10,52 +10,70 @@ import java.nio.channels.FileLock;
 public class ShareFileLockHelper
   implements Closeable
 {
-  private final FileLock BvK;
+  public static final int LOCK_WAIT_EACH_TIME = 10;
+  public static final int MAX_LOCK_ATTEMPTS = 3;
+  private static final String TAG = "Tinker.FileLockHelper";
+  private final FileLock fileLock;
   private final FileOutputStream outputStream;
   
   private ShareFileLockHelper(File paramFile)
   {
     this.outputStream = new FileOutputStream(paramFile);
     Throwable localThrowable = null;
-    Object localObject1 = null;
+    Object localObject = null;
     int i = 0;
-    Object localObject2;
+    int j;
+    if (i < 3) {
+      j = i + 1;
+    }
     for (;;)
     {
-      localObject2 = localObject1;
-      int j;
-      if (i < 3)
+      for (;;)
       {
-        j = i + 1;
-        localObject2 = localObject1;
-      }
-      try
-      {
-        localObject1 = this.outputStream.getChannel().lock();
-        if (localObject1 != null) {}
-        for (i = 1; i != 0; i = 0)
+        try
         {
-          localObject2 = localObject1;
-          if (localObject2 != null) {
-            break label133;
+          FileLock localFileLock = this.outputStream.getChannel().lock();
+          localObject = localFileLock;
+          if (localObject != null)
+          {
+            i = 1;
+            if (i != 0)
+            {
+              if (localObject != null) {
+                continue;
+              }
+              throw new IOException("Tinker Exception:FileLockHelper lock file failed: " + paramFile.getAbsolutePath(), localThrowable);
+            }
           }
-          throw new IOException("Tinker Exception:FileLockHelper lock file failed: " + paramFile.getAbsolutePath(), localThrowable);
+          else
+          {
+            i = 0;
+            continue;
+          }
         }
-        localObject2 = localObject1;
-        Thread.sleep(10L);
-        i = j;
+        catch (Exception localException1)
+        {
+          ShareTinkerLog.e("Tinker.FileLockHelper", "getInfoLock Thread failed time:10", new Object[0]);
+          continue;
+          this.fileLock = localObject;
+          return;
+        }
+        try
+        {
+          Thread.sleep(10L);
+          i = j;
+        }
+        catch (Exception localException2)
+        {
+          ShareTinkerLog.e("Tinker.FileLockHelper", "getInfoLock Thread sleep exception", new Object[] { localException2 });
+          i = j;
+        }
       }
-      catch (Exception localException)
-      {
-        localObject1 = localObject2;
-        i = j;
-      }
+      break;
     }
-    label133:
-    this.BvK = localObject2;
   }
   
-  public static ShareFileLockHelper am(File paramFile)
+  public static ShareFileLockHelper getFileLock(File paramFile)
   {
     return new ShareFileLockHelper(paramFile);
   }
@@ -64,8 +82,8 @@ public class ShareFileLockHelper
   {
     try
     {
-      if (this.BvK != null) {
-        this.BvK.release();
+      if (this.fileLock != null) {
+        this.fileLock.release();
       }
       return;
     }
@@ -79,7 +97,7 @@ public class ShareFileLockHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareFileLockHelper
  * JD-Core Version:    0.7.0.1
  */

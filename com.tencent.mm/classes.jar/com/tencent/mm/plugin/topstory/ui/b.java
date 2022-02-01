@@ -5,9 +5,14 @@ public abstract interface b
 {
   public abstract com.tencent.mm.plugin.topstory.ui.home.d getWebViewMgr();
   
-  public abstract void setHaokanEventListener(b.a parama);
+  public abstract void setHaokanEventListener(a parama);
   
   public abstract void tryToCreateTopStoryWebView();
+  
+  public static abstract interface a
+  {
+    public abstract void bes(String paramString);
+  }
 }
 
 

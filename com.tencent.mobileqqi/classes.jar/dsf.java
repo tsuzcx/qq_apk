@@ -1,29 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class dsf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  dsf(dsd paramdsd, TroopMemberListActivity.ATroopMember paramATroopMember) {}
+  dsf(dse paramdse) {}
   
-  public void onClick(View paramView)
-  {
-    if (!this.jdField_a_of_type_Dsd.a.b) {
-      return;
-    }
-    if (!NetworkUtil.e(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_Dsd.a.a(this.jdField_a_of_type_Dsd.a.a, this.jdField_a_of_type_Dsd.a.getString(2131562452), this.jdField_a_of_type_Dsd.a.getString(2131562948));
-      return;
-    }
-    DialogUtil.a(this.jdField_a_of_type_Dsd.a, 230).setMessage(2131561973).setPositiveButton(2131562539, new dsh(this)).setNegativeButton(2131561746, new dsg(this)).show();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

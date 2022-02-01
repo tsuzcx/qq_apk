@@ -21,41 +21,44 @@ public class JSParam
     {
       this.type = 2;
       this.data = "";
-    }
-    do
-    {
       return;
-      this.data = paramObject;
-      if ((paramObject instanceof Integer))
-      {
-        this.type = 1;
-        this.data = new Double(((Integer)paramObject).intValue());
-        return;
-      }
-      if ((paramObject instanceof Double))
-      {
-        this.type = 1;
-        return;
-      }
-      if ((paramObject instanceof Float))
-      {
-        this.type = 1;
-        this.data = new Double(((Float)paramObject).intValue());
-        return;
-      }
-      if ((paramObject instanceof String))
-      {
-        this.type = 2;
-        return;
-      }
-    } while (!(paramObject instanceof Object));
-    this.type = 3;
+    }
+    this.data = paramObject;
+    if ((paramObject instanceof Integer))
+    {
+      this.type = 1;
+      this.data = new Double(((Integer)paramObject).intValue());
+      return;
+    }
+    if ((paramObject instanceof Double))
+    {
+      this.type = 1;
+      return;
+    }
+    if ((paramObject instanceof Float))
+    {
+      this.type = 1;
+      this.data = new Double(((Float)paramObject).intValue());
+      return;
+    }
+    if ((paramObject instanceof String))
+    {
+      this.type = 2;
+      return;
+    }
+    if ((paramObject instanceof Object)) {
+      this.type = 3;
+    }
   }
   
   public String dataToString()
   {
-    if ((this.type == 2) && (this.data != null)) {
-      return (String)this.data;
+    if (this.type == 2)
+    {
+      Object localObject = this.data;
+      if (localObject != null) {
+        return (String)localObject;
+      }
     }
     return "";
   }
@@ -72,7 +75,7 @@ public class JSParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.commons.JSParam
  * JD-Core Version:    0.7.0.1
  */

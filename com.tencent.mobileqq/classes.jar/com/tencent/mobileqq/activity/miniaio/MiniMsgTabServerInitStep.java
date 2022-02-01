@@ -1,36 +1,27 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import bhth;
 import com.tencent.commonsdk.util.notification.NotificationLimiterUtil;
 import com.tencent.mobileqq.app.automator.AsyncStep;
+import com.tencent.util.notification.NotificationLimiterImpl;
 
 public class MiniMsgTabServerInitStep
   extends AsyncStep
 {
-  public static boolean a;
-  private static String b;
+  public static boolean a = false;
+  private static String b = "MiniMsgTabServerInitStep";
   
-  static
-  {
-    jdField_b_of_type_JavaLangString = "MiniMsgTabServerInitStep";
-  }
-  
-  private void b()
+  private void a()
   {
     a = true;
-    NotificationLimiterUtil.setLimiter(new bhth());
+    NotificationLimiterUtil.setLimiter(new NotificationLimiterImpl());
   }
   
-  public int a()
+  protected int doStep()
   {
-    switch (this.jdField_b_of_type_Int)
-    {
+    if (this.mStepId == 108) {
+      a();
     }
-    for (;;)
-    {
-      return 7;
-      b();
-    }
+    return 7;
   }
 }
 

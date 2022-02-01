@@ -11,15 +11,15 @@ final class BindMContactIntroUI$22
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(13430);
-    BindMContactIntroUI.c(this.gtw);
-    AppMethodBeat.o(13430);
+    AppMethodBeat.i(109858);
+    this.pOL.bWj();
+    AppMethodBeat.o(109858);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI.22
  * JD-Core Version:    0.7.0.1
  */

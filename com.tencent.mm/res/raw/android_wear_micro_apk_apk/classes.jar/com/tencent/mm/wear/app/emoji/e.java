@@ -6,36 +6,36 @@ import com.tencent.mm.sdk.platformtools.q;
 
 public final class e
 {
-  static int abV = 0;
-  private static e abW;
+  static int afw = 0;
+  private static e afx;
   
   public static SpannableString a(Context paramContext, CharSequence paramCharSequence, int paramInt)
   {
     if ((paramCharSequence == null) || (q.D(paramCharSequence.toString()))) {
       return new SpannableString("");
     }
-    if (a.mw() == null) {
+    if (a.ni() == null) {
       return new SpannableString(paramCharSequence);
     }
     if ((paramCharSequence == null) || (q.D(paramCharSequence.toString()))) {
       return new SpannableString("");
     }
-    abV = com.tencent.mm.f.a.x(paramContext);
+    afw = com.tencent.mm.f.a.y(paramContext);
     if ((paramCharSequence instanceof SpannableString)) {}
     for (paramCharSequence = (SpannableString)paramCharSequence;; paramCharSequence = new SpannableString(paramCharSequence))
     {
-      paramCharSequence = a.mw().a(paramCharSequence, paramInt);
-      c.mA().a(paramContext, paramCharSequence, paramInt);
+      paramCharSequence = a.ni().a(paramCharSequence, paramInt);
+      c.nm().a(paramContext, paramCharSequence, paramInt);
       return paramCharSequence;
     }
   }
   
-  public static e mB()
+  public static e nn()
   {
-    if (abW == null) {
-      abW = new e();
+    if (afx == null) {
+      afx = new e();
     }
-    return abW;
+    return afx;
   }
 }
 

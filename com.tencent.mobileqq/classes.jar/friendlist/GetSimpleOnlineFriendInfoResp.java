@@ -10,13 +10,13 @@ public final class GetSimpleOnlineFriendInfoResp
 {
   static int cache_result;
   static ArrayList<SimpleOnlineFriendInfo> cache_vecFriendInfo;
-  public byte cShowPcIcon;
-  public short errorCode;
-  public byte intervalTimeMin;
-  public int result;
+  public byte cShowPcIcon = 0;
+  public short errorCode = 0;
+  public byte intervalTimeMin = 0;
+  public int result = 0;
   public short shClickInterval = 30;
-  public long uin;
-  public ArrayList<SimpleOnlineFriendInfo> vecFriendInfo;
+  public long uin = 0L;
+  public ArrayList<SimpleOnlineFriendInfo> vecFriendInfo = null;
   
   public GetSimpleOnlineFriendInfoResp() {}
   
@@ -61,7 +61,7 @@ public final class GetSimpleOnlineFriendInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetSimpleOnlineFriendInfoResp
  * JD-Core Version:    0.7.0.1
  */

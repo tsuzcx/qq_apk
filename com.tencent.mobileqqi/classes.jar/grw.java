@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.mobileqq.troop.activity.TroopBarCommentActivity;
 
 public class grw
   implements Runnable
 {
-  public grw(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public grw(TroopBarCommentActivity paramTroopBarCommentActivity) {}
   
   public void run()
   {
-    this.a.d = false;
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839370);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.getString(2131558490));
   }
 }
 

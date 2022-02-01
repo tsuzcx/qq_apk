@@ -46,12 +46,12 @@ public final class GravityCompat
     if (Build.VERSION.SDK_INT >= 17) {
       return Gravity.getAbsoluteGravity(paramInt1, paramInt2);
     }
-    return 0xFF7FFFFF & paramInt1;
+    return paramInt1 & 0xFF7FFFFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v4.view.GravityCompat
  * JD-Core Version:    0.7.0.1
  */

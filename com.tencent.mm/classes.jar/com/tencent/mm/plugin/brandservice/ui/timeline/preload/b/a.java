@@ -1,36 +1,46 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.sy;
-import com.tencent.mm.protocal.protobuf.sz;
-import com.tencent.mm.protocal.protobuf.ta;
-import java.util.LinkedList;
+import com.tencent.mm.autogen.b.ag;
+import com.tencent.mm.protocal.protobuf.gj;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class a
-  extends com.tencent.mm.ai.a<ta>
+  extends ag
 {
-  public a(LinkedList<sy> paramLinkedList, int paramInt, String paramString)
+  public static IAutoDBItem.MAutoDBInfo nVV;
+  
+  static
   {
-    AppMethodBeat.i(14407);
-    b.a locala = new b.a();
-    locala.funcId = 2731;
-    locala.uri = "/cgi-bin/mmbiz-bin/checktmplver";
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    sz localsz = new sz();
-    localsz.Scene = paramInt;
-    localsz.wuH = paramString;
-    localsz.wLw = paramLinkedList;
-    locala.fsX = localsz;
-    locala.fsY = new ta();
-    this.rr = locala.ado();
-    AppMethodBeat.o(14407);
+    AppMethodBeat.i(6187);
+    nVV = aJm();
+    AppMethodBeat.o(6187);
+  }
+  
+  public a() {}
+  
+  public a(gj paramgj)
+  {
+    this.field_url = paramgj.Url;
+    this.field_reportTime = paramgj.YIa;
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return nVV;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(6186);
+    String str = "BizAppMsgReportContext{field_appMsgReportContextId=" + this.field_appMsgReportContextId + ", field_url='" + this.field_url + '\'' + ", field_reportTime=" + this.field_reportTime + ", field_aScene=" + this.field_aScene + '}';
+    AppMethodBeat.o(6186);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.a
  * JD-Core Version:    0.7.0.1
  */

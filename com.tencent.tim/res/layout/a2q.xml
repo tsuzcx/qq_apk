@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/kkd" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/iff" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/b70" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/dgw" android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/e0q" android:scaleType="centerCrop" android:layout_alignTop="@id/iff" android:layout_alignRight="@id/iff" android:contentDescription="@string/dtx" />
+</RelativeLayout>

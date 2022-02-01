@@ -1,6 +1,4 @@
-import android.content.SharedPreferences;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 public class dke
   implements Runnable
@@ -9,9 +7,7 @@ public class dke
   
   public void run()
   {
-    if ((SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity) != null) && (SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity).getBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.a(), true))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b.b(this.jdField_a_of_type_Int + 1);
-    }
+    SplashActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, this.jdField_a_of_type_Int);
   }
 }
 

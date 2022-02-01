@@ -6,6 +6,7 @@ public class BaselibLoader$BaselibContent
 {
   public String miniappWebviewStr;
   public String pageFrameStr;
+  public String version;
   public String waConsoleJsStr;
   public String waRemoteDebugStr;
   public String waServiceJsStr;
@@ -34,7 +35,7 @@ public class BaselibLoader$BaselibContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent
  * JD-Core Version:    0.7.0.1
  */

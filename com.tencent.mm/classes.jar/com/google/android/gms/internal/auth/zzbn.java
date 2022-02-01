@@ -13,17 +13,17 @@ public final class zzbn
 {
   public final PendingResult<ProxyApi.ProxyResult> performProxyRequest(GoogleApiClient paramGoogleApiClient, ProxyRequest paramProxyRequest)
   {
-    AppMethodBeat.i(77107);
+    AppMethodBeat.i(10766);
     Preconditions.checkNotNull(paramGoogleApiClient);
     Preconditions.checkNotNull(paramProxyRequest);
     paramGoogleApiClient = paramGoogleApiClient.execute(new zzbo(this, paramGoogleApiClient, paramProxyRequest));
-    AppMethodBeat.o(77107);
+    AppMethodBeat.o(10766);
     return paramGoogleApiClient;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzbn
  * JD-Core Version:    0.7.0.1
  */

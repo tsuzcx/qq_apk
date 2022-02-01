@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/b8c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_alignParentTop="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <View android:id="@id/jls" android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentTop="true" />
+            <Button android:textSize="17.0dip" android:textColor="@color/ae4" android:id="@id/agd" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/q7j" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i9" />
+            <View android:id="@id/jlt" android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="212.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+        <com.tencent.mobileqq.troop.widget.WheelPickerLayout android:gravity="center" android:orientation="horizontal" android:id="@id/jwg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
+            <com.tencent.mobileqq.remind.widget.WheelView android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="10.0" />
+            <com.tencent.mobileqq.remind.widget.WheelView android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="3.0" />
+            <com.tencent.mobileqq.remind.widget.WheelView android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="3.0" />
+        </com.tencent.mobileqq.troop.widget.WheelPickerLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="212.0dip">
+            <View android:id="@id/e_x" android:background="#ffcdcdcd" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="89.0dip" />
+            <View android:id="@id/e_b" android:background="#ffcdcdcd" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="33.0dip" android:layout_below="@id/e_x" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

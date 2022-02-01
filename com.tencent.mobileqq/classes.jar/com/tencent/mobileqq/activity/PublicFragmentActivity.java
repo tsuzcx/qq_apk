@@ -1,43 +1,43 @@
 package com.tencent.mobileqq.activity;
 
-import adpn;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.util.ArrayMap;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import bjho;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseFragment;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QzonePluginProxyActivity;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 
+@Deprecated
 public class PublicFragmentActivity
-  extends FragmentActivity
+  extends BaseActivity
 {
+  private static ArrayMap<String, PublicFragmentActivity.IViewCreator> b = new ArrayMap();
   private PublicBaseFragment a;
+  private ClassLoader c = null;
   
   public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    adpn.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
-  }
-  
-  public static void a(Activity paramActivity, Class<? extends PublicBaseFragment> paramClass, int paramInt)
-  {
-    a(paramActivity, null, paramClass, paramInt);
+    PublicFragmentActivity.Launcher.a(paramActivity, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
   }
   
   public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    adpn.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
+    PublicFragmentActivity.Launcher.a(paramContext, paramIntent, PublicFragmentActivity.class, paramClass);
   }
   
   public static void a(Context paramContext, Class<? extends PublicBaseFragment> paramClass)
@@ -45,63 +45,71 @@ public class PublicFragmentActivity
     a(paramContext, null, paramClass);
   }
   
-  private static void a(Context paramContext, String paramString) {}
-  
   private void a(Bundle paramBundle)
   {
     Object localObject1 = paramBundle.getParcelable("android:support:fragments");
-    if (localObject1 != null) {
-      try
+    if (localObject1 != null) {}
+    try
+    {
+      Object localObject2 = Class.forName("androidx.fragment.app.FragmentManagerState");
+      paramBundle = Class.forName("androidx.fragment.app.FragmentState");
+      if (!((Class)localObject2).isInstance(localObject1)) {
+        break label188;
+      }
+      localObject2 = ((Class)localObject2).getDeclaredField("mActive");
+      if (!((Field)localObject2).isAccessible()) {
+        ((Field)localObject2).setAccessible(true);
+      }
+      if (!((Field)localObject2).getType().isArray()) {
+        break label188;
+      }
+      localObject1 = ((Field)localObject2).get(localObject1);
+      int j = Array.getLength(localObject1);
+      int i = 0;
+      while (i < j)
       {
-        Object localObject2 = Class.forName("android.support.v4.app.FragmentManagerState");
-        paramBundle = Class.forName("android.support.v4.app.FragmentState");
-        if (((Class)localObject2).isInstance(localObject1))
+        localObject2 = Array.get(localObject1, i);
+        if ((localObject2 != null) && (paramBundle.isInstance(localObject2)))
         {
-          localObject2 = ((Class)localObject2).getDeclaredField("mActive");
-          if (!((Field)localObject2).isAccessible()) {
-            ((Field)localObject2).setAccessible(true);
+          Field localField = paramBundle.getDeclaredField("mArguments");
+          if (!localField.isAccessible()) {
+            localField.setAccessible(true);
           }
-          if (((Field)localObject2).getType().isArray())
-          {
-            localObject1 = ((Field)localObject2).get(localObject1);
-            int j = Array.getLength(localObject1);
-            int i = 0;
-            while (i < j)
-            {
-              localObject2 = Array.get(localObject1, i);
-              if ((localObject2 != null) && (paramBundle.isInstance(localObject2)))
-              {
-                Field localField = paramBundle.getDeclaredField("mArguments");
-                if (!localField.isAccessible()) {
-                  localField.setAccessible(true);
-                }
-                localObject2 = localField.get(localObject2);
-                if ((localObject2 != null) && ((localObject2 instanceof Bundle))) {
-                  ((Bundle)localObject2).setClassLoader(getClass().getClassLoader());
-                }
-              }
-              i += 1;
-            }
+          localObject2 = localField.get(localObject2);
+          if ((localObject2 != null) && ((localObject2 instanceof Bundle))) {
+            ((Bundle)localObject2).setClassLoader(getClass().getClassLoader());
           }
         }
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.d("PublicFragmentActivity", 2, "Patch error");
+        i += 1;
       }
     }
+    catch (Exception paramBundle)
+    {
+      label180:
+      label188:
+      break label180;
+    }
+    QLog.d("PublicFragmentActivity", 2, "Patch error");
   }
   
-  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
+  public static void a(BaseFragment paramBaseFragment, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    adpn.a(paramFragment, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+    PublicFragmentActivity.Launcher.a(paramBaseFragment, paramIntent, PublicFragmentActivity.class, paramClass, paramInt);
+  }
+  
+  public static void a(BaseFragment paramBaseFragment, Class<? extends PublicBaseFragment> paramClass, int paramInt)
+  {
+    a(paramBaseFragment, null, paramClass, paramInt);
+  }
+  
+  public static void a(String paramString, PublicFragmentActivity.IViewCreator paramIViewCreator)
+  {
+    b.put(paramString, paramIViewCreator);
   }
   
   private PublicBaseFragment b()
   {
     Object localObject = getIntent().getStringExtra("public_fragment_class");
-    a(this, (String)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("PublicFragmentActivity", 2, new Object[] { "creating fragment ", localObject });
     }
@@ -113,7 +121,7 @@ public class PublicFragmentActivity
     }
     catch (Exception localException)
     {
-      com.tencent.common.app.BaseApplicationImpl.sPublicFragmentEscapedMsg = Log.getStackTraceString(localException);
+      CrashReportConstant.a = Log.getStackTraceString(localException);
       QLog.e("PublicFragmentActivity", 1, "create fragment error", localException);
     }
     return null;
@@ -126,23 +134,32 @@ public class PublicFragmentActivity
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.a != null) && (this.a.needDispatchTouchEvent()) && (this.a.dispatchTouchEvent(paramMotionEvent))) {
-      return true;
+    Object localObject = EventCollector.getInstance();
+    boolean bool = true;
+    ((EventCollector)localObject).onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    localObject = this.a;
+    if ((localObject == null) || (!((PublicBaseFragment)localObject).needDispatchTouchEvent()) || (!this.a.dispatchTouchEvent(paramMotionEvent))) {
+      bool = super.dispatchTouchEvent(paramMotionEvent);
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.a.onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.onActivityResult(paramInt1 & 0xFFFF, paramInt2, paramIntent);
+    }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.a = b();
-    if (this.a != null)
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null)
     {
-      this.mNeedStatusTrans = this.a.needStatusTrans();
+      this.mNeedStatusTrans = localPublicBaseFragment.needStatusTrans();
       this.mActNeedImmersive = this.a.needImmersive();
       this.a.initWindowStyleAndAnimation(this);
     }
@@ -154,81 +171,115 @@ public class PublicFragmentActivity
       a(paramBundle);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131558451);
+    setContentView(2131624037);
     if (this.a == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131366790, this.a);
-    paramBundle.commit();
+    paramBundle.replace(2131433667, this.a);
+    paramBundle.commitAllowingStateLoss();
+    this.a.initSideFling(this, this.mFlingHandler);
     return true;
   }
   
-  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  protected boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((this.a != null) && (this.a.doOnKeyDown(paramInt, paramKeyEvent))) {
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if ((localPublicBaseFragment != null) && (localPublicBaseFragment.doOnKeyDown(paramInt, paramKeyEvent))) {
       return true;
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    this.a.onNewIntent(paramIntent);
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.onNewIntent(paramIntent);
+    }
   }
   
   public void finish()
   {
-    if ((this.a == null) || (!this.a.overrideFinish())) {
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if ((localPublicBaseFragment == null) || (!localPublicBaseFragment.overrideFinish())) {
       superFinish();
     }
   }
   
   public String getCIOPageName()
   {
-    if (this.a != null) {
-      return this.a.getCIOPageName();
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      return localPublicBaseFragment.getCIOPageName();
     }
     return super.getCIOPageName();
   }
   
-  public boolean isSupportScreenShot()
+  public ClassLoader getClassLoader()
   {
-    return (this.a == null) || (this.a.isSupportScreenShot());
+    Object localObject = super.getClassLoader();
+    ClassLoader localClassLoader2 = this.c;
+    ClassLoader localClassLoader1 = localClassLoader2;
+    if (localClassLoader2 == null) {
+      localClassLoader1 = QzonePluginProxyActivity.getQZonePluginClassLoaderInUI();
+    }
+    if (localClassLoader1 != null)
+    {
+      this.c = localClassLoader1;
+      localObject = localClassLoader1;
+    }
+    return localObject;
   }
   
-  public boolean isWrapContent()
+  public boolean isSupportScreenShot()
   {
-    if (this.a != null) {
-      return this.a.isWrapContent();
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    return (localPublicBaseFragment == null) || (localPublicBaseFragment.isSupportScreenShot());
+  }
+  
+  protected boolean isWrapContent()
+  {
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      return localPublicBaseFragment.isWrapContent();
     }
     return super.isWrapContent();
   }
   
-  public void onAccountChanged()
+  protected void onAccountChanged()
   {
     super.onAccountChanged();
-    if (this.a != null) {
-      this.a.onAccountChanged();
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.onAccountChanged();
     }
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
-    if (this.a == null) {
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment == null) {
       return super.onBackEvent();
     }
-    return this.a.onBackEvent();
+    return localPublicBaseFragment.onBackEvent();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    if ("com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView".equals(paramString))
+    if (b.containsKey(paramString))
     {
-      View localView = bjho.a(paramContext, paramAttributeSet);
+      View localView = ((PublicFragmentActivity.IViewCreator)b.get(paramString)).a(paramString, paramContext, paramAttributeSet);
       if (localView != null) {
         return localView;
       }
@@ -239,36 +290,40 @@ public class PublicFragmentActivity
   public void onMultiWindowModeChanged(boolean paramBoolean)
   {
     super.onMultiWindowModeChanged(paramBoolean);
-    if (this.a != null) {
-      this.a.onMultiWindowModeChanged(paramBoolean);
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.onMultiWindowModeChanged(paramBoolean);
     }
   }
   
   public void onPostThemeChanged()
   {
     super.onPostThemeChanged();
-    if (this.a != null) {
-      this.a.onPostThemeChanged();
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.onPostThemeChanged();
     }
   }
   
   public void onPreThemeChanged()
   {
     super.onPreThemeChanged();
-    if (this.a != null) {
-      this.a.onPreThemeChanged();
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.onPreThemeChanged();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.a != null) {
-      this.a.onWindowFocusChanged(paramBoolean);
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.onWindowFocusChanged(paramBoolean);
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     super.requestWindowFeature(paramIntent);
     if (paramIntent.hasExtra("public_fragment_window_feature")) {
@@ -278,37 +333,49 @@ public class PublicFragmentActivity
   
   public void superFinish()
   {
-    if (this.a != null) {
-      this.a.beforeFinish();
+    PublicBaseFragment localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.beforeFinish();
     }
     super.finish();
-    if (this.a != null) {
-      this.a.onFinish();
+    localPublicBaseFragment = this.a;
+    if (localPublicBaseFragment != null) {
+      localPublicBaseFragment.onFinish();
     }
   }
   
   public String toString()
   {
-    String str2 = super.toString();
-    String str1;
-    if (this.a != null) {
-      str1 = str2 + "#" + this.a.getClass().getName() + "@" + Integer.toHexString(this.a.hashCode());
-    }
-    do
+    String str = super.toString();
+    if (this.a != null)
     {
-      do
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("#");
+      ((StringBuilder)localObject).append(this.a.getClass().getName());
+      ((StringBuilder)localObject).append("@");
+      ((StringBuilder)localObject).append(Integer.toHexString(this.a.hashCode()));
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = str;
+    if (getIntent() != null)
+    {
+      localObject = str;
+      if (getIntent().getStringExtra("public_fragment_class") != null)
       {
-        return str1;
-        str1 = str2;
-      } while (getIntent() == null);
-      str1 = str2;
-    } while (getIntent().getStringExtra("public_fragment_class") == null);
-    return str2 + "#" + getIntent().getStringExtra("public_fragment_class");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("#");
+        ((StringBuilder)localObject).append(getIntent().getStringExtra("public_fragment_class"));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

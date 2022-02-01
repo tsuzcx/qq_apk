@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stAuth
   extends JceStruct
 {
-  public int iAuthType;
+  public int iAuthType = 0;
   public String sAccessToken = "";
   public String sRefreshToken = "";
   public String sSessionKey = "";
@@ -46,26 +46,31 @@ public final class stAuth
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iAuthType, 0);
-    if (this.sUid != null) {
-      paramJceOutputStream.write(this.sUid, 1);
+    String str = this.sUid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.sSessionKey != null) {
-      paramJceOutputStream.write(this.sSessionKey, 2);
+    str = this.sSessionKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.sRefreshToken != null) {
-      paramJceOutputStream.write(this.sRefreshToken, 3);
+    str = this.sRefreshToken;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.sAccessToken != null) {
-      paramJceOutputStream.write(this.sAccessToken, 4);
+    str = this.sAccessToken;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.sThrAppid != null) {
-      paramJceOutputStream.write(this.sThrAppid, 5);
+    str = this.sThrAppid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_PUBLIC.stAuth
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:id="@id/gvd" android:tag="radio_on" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/radio_on" app:iconColor="@color/Brand_100"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

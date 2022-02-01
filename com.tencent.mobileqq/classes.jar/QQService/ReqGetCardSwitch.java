@@ -10,17 +10,7 @@ public final class ReqGetCardSwitch
   implements Cloneable
 {
   static ReqHead cache_stHeader;
-  public ReqHead stHeader;
-  
-  static
-  {
-    if (!ReqGetCardSwitch.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public ReqHead stHeader = null;
   
   public ReqGetCardSwitch() {}
   
@@ -31,18 +21,17 @@ public final class ReqGetCardSwitch
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean equals(Object paramObject)
@@ -92,7 +81,7 @@ public final class ReqGetCardSwitch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqGetCardSwitch
  * JD-Core Version:    0.7.0.1
  */

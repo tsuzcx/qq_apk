@@ -1,18 +1,23 @@
 package com.tencent.mm.plugin.auth.a;
 
-import com.tencent.mm.protocal.j.h;
-import com.tencent.mm.protocal.j.i;
-import com.tencent.mm.protocal.v.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.storage.aq;
 
-public abstract interface a
+public final class a
 {
-  public abstract void a(j.h paramh, j.i parami, boolean paramBoolean);
-  
-  public abstract void a(v.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2);
+  public static String cUx()
+  {
+    AppMethodBeat.i(262677);
+    String str = (String)h.baE().ban().d(2, null);
+    AppMethodBeat.o(262677);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.auth.a.a
  * JD-Core Version:    0.7.0.1
  */

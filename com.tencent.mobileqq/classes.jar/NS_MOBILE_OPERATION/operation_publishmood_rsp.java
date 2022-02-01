@@ -33,20 +33,23 @@ public final class operation_publishmood_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.verifyurl != null) {
-      paramJceOutputStream.write(this.verifyurl, 1);
+    String str = this.verifyurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.tid != null) {
-      paramJceOutputStream.write(this.tid, 2);
+    str = this.tid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 3);
+    str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_publishmood_rsp
  * JD-Core Version:    0.7.0.1
  */

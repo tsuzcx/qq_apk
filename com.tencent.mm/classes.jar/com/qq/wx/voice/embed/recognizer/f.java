@@ -12,26 +12,26 @@ final class f
   
   private static boolean a(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(123208);
+    AppMethodBeat.i(76753);
     boolean bool = new File(paramString2 + "/" + paramString1).exists();
-    AppMethodBeat.o(123208);
+    AppMethodBeat.o(76753);
     return bool;
   }
   
   private static boolean a(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(123206);
+    AppMethodBeat.i(76751);
     int i = 0;
     for (;;)
     {
       if (i >= paramArrayOfString.length)
       {
-        AppMethodBeat.o(123206);
+        AppMethodBeat.o(76751);
         return false;
       }
       if (paramString.compareTo(paramArrayOfString[i]) == 0)
       {
-        AppMethodBeat.o(123206);
+        AppMethodBeat.o(76751);
         return true;
       }
       i += 1;
@@ -128,7 +128,7 @@ final class f
   }
   
   /* Error */
-  private static void f(String paramString1, String paramString2, String paramString3)
+  private static void j(String paramString1, String paramString2, String paramString3)
   {
     // Byte code:
     //   0: ldc 123
@@ -353,22 +353,22 @@ final class f
     //   98	110	309	java/io/IOException
   }
   
-  public final int c(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public final int b(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(123204);
+    AppMethodBeat.i(76749);
     if (this.a)
     {
-      AppMethodBeat.o(123204);
+      AppMethodBeat.o(76749);
       return 0;
     }
     if (!a("libwxvoiceembed.so", paramString1))
     {
-      AppMethodBeat.o(123204);
+      AppMethodBeat.o(76749);
       return -201;
     }
     if (!a("libwxvoiceembed.bin", paramString1))
     {
-      AppMethodBeat.o(123204);
+      AppMethodBeat.o(76749);
       return -202;
     }
     paramContext = paramContext.getFilesDir().getAbsolutePath() + "/NamesSearch/";
@@ -377,27 +377,27 @@ final class f
       ((File)localObject).mkdirs();
     }
     if (!a("libwxvoiceembed.so", paramContext)) {
-      f("libwxvoiceembed.so", paramString1, paramContext);
+      j("libwxvoiceembed.so", paramString1, paramContext);
     }
     if (!a("libwxvoiceembed.bin", paramContext)) {
-      f("libwxvoiceembed.bin", paramString1, paramContext);
+      j("libwxvoiceembed.bin", paramString1, paramContext);
     }
     try
     {
       localObject = b("libwxvoiceembed.so", paramContext);
       String str = b("libwxvoiceembed.so", paramString1);
       if (((String)localObject).compareTo(str) != 0) {
-        f("libwxvoiceembed.so", paramString1, paramContext);
+        j("libwxvoiceembed.so", paramString1, paramContext);
       }
       if (!a((String)localObject, paramString2.split(";")))
       {
-        AppMethodBeat.o(123204);
+        AppMethodBeat.o(76749);
         return -203;
       }
     }
     catch (FileNotFoundException paramContext)
     {
-      AppMethodBeat.o(123204);
+      AppMethodBeat.o(76749);
       return -203;
     }
     try
@@ -405,41 +405,41 @@ final class f
       paramString2 = b("libwxvoiceembed.bin", paramContext);
       localObject = b("libwxvoiceembed.bin", paramString1);
       if (paramString2.compareTo((String)localObject) != 0) {
-        f("libwxvoiceembed.bin", paramString1, paramContext);
+        j("libwxvoiceembed.bin", paramString1, paramContext);
       }
       if (!a(paramString2, paramString3.split(";")))
       {
-        AppMethodBeat.o(123204);
+        AppMethodBeat.o(76749);
         return -204;
       }
     }
     catch (FileNotFoundException paramContext)
     {
-      AppMethodBeat.o(123204);
+      AppMethodBeat.o(76749);
       return -204;
     }
     this.b = paramContext;
     this.a = true;
-    AppMethodBeat.o(123204);
+    AppMethodBeat.o(76749);
     return 0;
   }
   
-  public final int e(String paramString1, String paramString2, String paramString3)
+  public final int i(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(123205);
+    AppMethodBeat.i(76750);
     if (this.a)
     {
-      AppMethodBeat.o(123205);
+      AppMethodBeat.o(76750);
       return 0;
     }
     if (!a("libwxvoiceembed.so", paramString1))
     {
-      AppMethodBeat.o(123205);
+      AppMethodBeat.o(76750);
       return -201;
     }
     if (!a("libwxvoiceembed.bin", paramString1))
     {
-      AppMethodBeat.o(123205);
+      AppMethodBeat.o(76750);
       return -202;
     }
     try
@@ -447,13 +447,13 @@ final class f
       String str = b("libwxvoiceembed.so", paramString1);
       if (!a(str, paramString2.split(";")))
       {
-        AppMethodBeat.o(123205);
+        AppMethodBeat.o(76750);
         return -203;
       }
     }
     catch (FileNotFoundException paramString1)
     {
-      AppMethodBeat.o(123205);
+      AppMethodBeat.o(76750);
       return -203;
     }
     try
@@ -461,18 +461,18 @@ final class f
       paramString2 = b("libwxvoiceembed.bin", paramString1);
       if (!a(paramString2, paramString3.split(";")))
       {
-        AppMethodBeat.o(123205);
+        AppMethodBeat.o(76750);
         return -204;
       }
     }
     catch (FileNotFoundException paramString1)
     {
-      AppMethodBeat.o(123205);
+      AppMethodBeat.o(76750);
       return -204;
     }
     this.b = paramString1;
     this.a = true;
-    AppMethodBeat.o(123205);
+    AppMethodBeat.o(76750);
     return 0;
   }
 }

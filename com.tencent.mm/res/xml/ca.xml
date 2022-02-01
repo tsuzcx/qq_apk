@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/e57" />
-    <CheckPreference android:title="@string/eaf" android:key="settings_half_year_not_chat" android:layout="@layout/afi" />
-    <CheckPreference android:title="@string/eai" android:key="settings_has_not_same_chatroom" android:layout="@layout/afi" />
-    <CheckPreference android:title="@string/eag" android:key="settings_half_year_not_response" android:layout="@layout/afi" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <TextButtonPreference android:title="@string/egn" android:key="settings_next_step" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceTitleCategory android:key="settings_auto_mul_terminal_sync_tip" android:title="@string/iqt" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_auto_mul_terminal_sync" android:title="@string/iqs" />
+    <PreferenceTitleCategory android:key="settings_take_photo_auto_save_tip" android:title="@string/j0p" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_photo" android:title="@string/j0o" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_video" android:title="@string/j0q" />
+    <PreferenceTitleCategory android:key="settings_sns_auto_play_tip" android:title="@string/iz2" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_sns_auto_play_switch" android:title="@string/iz1" />
+    <PreferenceTitleCategory android:key="settings_voip_audio_switch_mobile_net_tip" android:title="@string/j2_" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_audio_switch_mobile_net" android:title="@string/j28" />
 </PreferenceScreen>

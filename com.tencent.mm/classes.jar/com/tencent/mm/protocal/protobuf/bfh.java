@@ -1,94 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 
 public final class bfh
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String Username;
-  public double xuw;
-  public long xux;
+  public String YPy;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124327);
+    AppMethodBeat.i(258459);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Username == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Username");
-        AppMethodBeat.o(124327);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YPy != null) {
+        paramVarArgs.g(1, this.YPy);
       }
-      if (this.Username != null) {
-        paramVarArgs.e(1, this.Username);
+      if (this.title != null) {
+        paramVarArgs.g(2, this.title);
       }
-      paramVarArgs.f(2, this.xuw);
-      paramVarArgs.am(3, this.xux);
-      AppMethodBeat.o(124327);
+      AppMethodBeat.o(258459);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label353;
+      if (this.YPy == null) {
+        break label270;
       }
     }
-    label353:
-    for (paramInt = e.a.a.b.b.a.f(1, this.Username) + 0;; paramInt = 0)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.YPy) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.eW(2);
-      int j = e.a.a.b.b.a.p(3, this.xux);
-      AppMethodBeat.o(124327);
-      return paramInt + (i + 8) + j;
+      int i = paramInt;
+      if (this.title != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.title);
+      }
+      AppMethodBeat.o(258459);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.Username == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Username");
-          AppMethodBeat.o(124327);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(124327);
+        AppMethodBeat.o(258459);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bfh localbfh = (bfh)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(124327);
+          AppMethodBeat.o(258459);
           return -1;
         case 1: 
-          localbfh.Username = locala.CLY.readString();
-          AppMethodBeat.o(124327);
-          return 0;
-        case 2: 
-          localbfh.xuw = Double.longBitsToDouble(locala.CLY.emy());
-          AppMethodBeat.o(124327);
+          localbfh.YPy = locala.ajGk.readString();
+          AppMethodBeat.o(258459);
           return 0;
         }
-        localbfh.xux = locala.CLY.sm();
-        AppMethodBeat.o(124327);
+        localbfh.title = locala.ajGk.readString();
+        AppMethodBeat.o(258459);
         return 0;
       }
-      AppMethodBeat.o(124327);
+      AppMethodBeat.o(258459);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bfh
  * JD-Core Version:    0.7.0.1
  */

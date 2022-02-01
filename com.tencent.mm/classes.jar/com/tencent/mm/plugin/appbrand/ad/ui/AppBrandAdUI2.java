@@ -1,0 +1,19 @@
+package com.tencent.mm.plugin.appbrand.ad.ui;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public class AppBrandAdUI2
+  extends AppBrandAdUI
+{
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.ui.AppBrandAdUI2
+ * JD-Core Version:    0.7.0.1
+ */

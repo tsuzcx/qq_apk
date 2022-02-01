@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/icon" android:duplicateParentState="true" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="@dimen/bbm" android:layout_marginBottom="@dimen/bbm" android:contentDescription="@null" />
+    <com.google.android.material.internal.BaselineLayout android:layout_gravity="bottom|center" android:id="@id/oab" android:paddingBottom="@dimen/bbl" android:duplicateParentState="true" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/bbo" android:ellipsize="end" android:id="@id/q49" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+        <TextView android:textSize="@dimen/bbf" android:ellipsize="end" android:id="@id/oak" android:visibility="invisible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    </com.google.android.material.internal.BaselineLayout>
+</merge>

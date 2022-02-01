@@ -9,13 +9,13 @@ import java.util.List;
 final class XEditTextEx$PerformClick
   implements Runnable
 {
-  long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView;
+  long a;
+  View b;
   
   XEditTextEx$PerformClick(XEditTextEx paramXEditTextEx, View paramView, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramView;
+    this.a = paramLong;
   }
   
   public void run()
@@ -30,7 +30,7 @@ final class XEditTextEx$PerformClick
         {
           localObject = (View.OnClickListener)((WeakReference)localObject).get();
           if (localObject != null) {
-            ((View.OnClickListener)localObject).onClick(this.jdField_a_of_type_AndroidViewView);
+            ((View.OnClickListener)localObject).onClick(this.b);
           }
         }
       }
@@ -39,7 +39,7 @@ final class XEditTextEx$PerformClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.XEditTextEx.PerformClick
  * JD-Core Version:    0.7.0.1
  */

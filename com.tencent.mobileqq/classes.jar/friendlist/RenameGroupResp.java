@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class RenameGroupResp
   extends JceStruct
 {
-  public byte cLen;
-  public long dwSequence;
-  public long dwToUin;
+  public byte cLen = 0;
+  public long dwSequence = 0L;
+  public long dwToUin = 0L;
   public String sGroupName = "";
   
   public RenameGroupResp() {}
@@ -40,7 +40,7 @@ public final class RenameGroupResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.RenameGroupResp
  * JD-Core Version:    0.7.0.1
  */

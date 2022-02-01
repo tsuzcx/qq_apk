@@ -24,14 +24,15 @@ public final class cell_rank
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.rank != null) {
-      paramJceOutputStream.write(this.rank, 0);
+    s_rank locals_rank = this.rank;
+    if (locals_rank != null) {
+      paramJceOutputStream.write(locals_rank, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_rank
  * JD-Core Version:    0.7.0.1
  */

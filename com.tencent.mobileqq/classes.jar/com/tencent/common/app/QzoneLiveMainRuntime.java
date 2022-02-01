@@ -1,9 +1,10 @@
 package com.tencent.common.app;
 
 import android.os.Bundle;
-import bjdt;
-import bjpz;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzonePatchApi;
+import cooperation.qzone.QZoneHelper;
 import mqq.app.AppRuntime;
 
 public class QzoneLiveMainRuntime
@@ -22,24 +23,28 @@ public class QzoneLiveMainRuntime
     super.onCreate(paramBundle);
   }
   
-  public AppRuntime onGetSubRuntime(String paramString)
+  protected AppRuntime onGetSubRuntime(String paramString)
   {
-    AppRuntime localAppRuntime = null;
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "QzoneLiveMainRuntime.onGetSubRuntime() moduleId " + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QzoneLiveMainRuntime.onGetSubRuntime() moduleId ");
+      localStringBuilder.append(paramString);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
-    if (paramString.equals(bjpz.a())) {
-      localAppRuntime = bjdt.b(BaseApplicationImpl.getApplication());
+    if (paramString.equals(((IQzonePatchApi)QRoute.api(IQzonePatchApi.class)).getLoadQZoneLivePluginId())) {
+      return QZoneHelper.createQzoneLiveAppInterface(BaseApplicationImpl.getApplication());
     }
-    while (!paramString.equals("qzone_weishi_feeds_plugin.apk")) {
-      return localAppRuntime;
+    if (paramString.equals("qzone_weishi_feeds_plugin.apk")) {
+      return QZoneHelper.createWeishiFeedsAppInterface(BaseApplicationImpl.getApplication());
     }
-    return bjdt.d(BaseApplicationImpl.getApplication());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.QzoneLiveMainRuntime
  * JD-Core Version:    0.7.0.1
  */

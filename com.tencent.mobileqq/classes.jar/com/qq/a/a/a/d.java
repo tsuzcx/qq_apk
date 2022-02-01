@@ -18,12 +18,17 @@ public final class d
   
   public d(String paramString1, String paramString2, String paramString3)
   {
-    if (paramString2.length() != 43) {
-      throw new a(-40004);
+    if (paramString2.length() == 43)
+    {
+      this.c = paramString1;
+      this.d = paramString3;
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString2);
+      paramString1.append("=");
+      this.b = Base64.decode(paramString1.toString(), 0);
+      return;
     }
-    this.c = paramString1;
-    this.d = paramString3;
-    this.b = Base64.decode(paramString2 + "=", 0);
+    throw new a(-40004);
   }
   
   private static int a(byte[] paramArrayOfByte)
@@ -50,13 +55,13 @@ public final class d
     //   8: new 79	javax/crypto/spec/SecretKeySpec
     //   11: dup
     //   12: aload_0
-    //   13: getfield 65	com/qq/a/a/a/d:b	[B
+    //   13: getfield 59	com/qq/a/a/a/d:b	[B
     //   16: ldc 81
     //   18: invokespecial 84	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   21: new 86	javax/crypto/spec/IvParameterSpec
     //   24: dup
     //   25: aload_0
-    //   26: getfield 65	com/qq/a/a/a/d:b	[B
+    //   26: getfield 59	com/qq/a/a/a/d:b	[B
     //   29: iconst_0
     //   30: bipush 16
     //   32: invokestatic 92	java/util/Arrays:copyOfRange	([BII)[B
@@ -65,7 +70,7 @@ public final class d
     //   41: aload_3
     //   42: aload_1
     //   43: iconst_0
-    //   44: invokestatic 63	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   44: invokestatic 57	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   47: invokevirtual 103	javax/crypto/Cipher:doFinal	([B)[B
     //   50: astore_1
     //   51: aload_1
@@ -76,14 +81,14 @@ public final class d
     //   59: bipush 20
     //   61: invokestatic 92	java/util/Arrays:copyOfRange	([BII)[B
     //   64: invokestatic 109	com/qq/a/a/a/d:a	([B)I
-    //   67: istore_2
-    //   68: new 30	java/lang/String
-    //   71: dup
-    //   72: aload_3
-    //   73: bipush 20
-    //   75: iload_2
+    //   67: bipush 20
+    //   69: iadd
+    //   70: istore_2
+    //   71: new 30	java/lang/String
+    //   74: dup
+    //   75: aload_3
     //   76: bipush 20
-    //   78: iadd
+    //   78: iload_2
     //   79: invokestatic 92	java/util/Arrays:copyOfRange	([BII)[B
     //   82: getstatic 23	com/qq/a/a/a/d:a	Ljava/nio/charset/Charset;
     //   85: invokespecial 112	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
@@ -92,52 +97,50 @@ public final class d
     //   92: dup
     //   93: aload_3
     //   94: iload_2
-    //   95: bipush 20
-    //   97: iadd
-    //   98: aload_3
-    //   99: arraylength
-    //   100: invokestatic 92	java/util/Arrays:copyOfRange	([BII)[B
-    //   103: getstatic 23	com/qq/a/a/a/d:a	Ljava/nio/charset/Charset;
-    //   106: invokespecial 112	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
-    //   109: astore_3
-    //   110: aload_3
-    //   111: aload_0
-    //   112: getfield 44	com/qq/a/a/a/d:d	Ljava/lang/String;
-    //   115: invokevirtual 116	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   118: ifne +43 -> 161
-    //   121: new 36	com/qq/a/a/a/a
-    //   124: dup
-    //   125: ldc 117
-    //   127: invokespecial 40	com/qq/a/a/a/a:<init>	(I)V
-    //   130: athrow
-    //   131: astore_1
-    //   132: aload_1
-    //   133: invokevirtual 120	java/lang/Exception:printStackTrace	()V
-    //   136: new 36	com/qq/a/a/a/a
-    //   139: dup
-    //   140: ldc 121
-    //   142: invokespecial 40	com/qq/a/a/a/a:<init>	(I)V
-    //   145: athrow
-    //   146: astore_1
-    //   147: aload_1
-    //   148: invokevirtual 120	java/lang/Exception:printStackTrace	()V
-    //   151: new 36	com/qq/a/a/a/a
-    //   154: dup
-    //   155: ldc 122
-    //   157: invokespecial 40	com/qq/a/a/a/a:<init>	(I)V
-    //   160: athrow
-    //   161: aload_1
-    //   162: areturn
+    //   95: aload_3
+    //   96: arraylength
+    //   97: invokestatic 92	java/util/Arrays:copyOfRange	([BII)[B
+    //   100: getstatic 23	com/qq/a/a/a/d:a	Ljava/nio/charset/Charset;
+    //   103: invokespecial 112	java/lang/String:<init>	([BLjava/nio/charset/Charset;)V
+    //   106: astore_3
+    //   107: aload_3
+    //   108: aload_0
+    //   109: getfield 38	com/qq/a/a/a/d:d	Ljava/lang/String;
+    //   112: invokevirtual 116	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   115: ifeq +5 -> 120
+    //   118: aload_1
+    //   119: areturn
+    //   120: new 61	com/qq/a/a/a/a
+    //   123: dup
+    //   124: ldc 117
+    //   126: invokespecial 65	com/qq/a/a/a/a:<init>	(I)V
+    //   129: athrow
+    //   130: astore_1
+    //   131: aload_1
+    //   132: invokevirtual 120	java/lang/Exception:printStackTrace	()V
+    //   135: new 61	com/qq/a/a/a/a
+    //   138: dup
+    //   139: ldc 121
+    //   141: invokespecial 65	com/qq/a/a/a/a:<init>	(I)V
+    //   144: athrow
+    //   145: astore_1
+    //   146: aload_1
+    //   147: invokevirtual 120	java/lang/Exception:printStackTrace	()V
+    //   150: new 61	com/qq/a/a/a/a
+    //   153: dup
+    //   154: ldc 122
+    //   156: invokespecial 65	com/qq/a/a/a/a:<init>	(I)V
+    //   159: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	163	0	this	d
-    //   0	163	1	paramString	String
-    //   67	31	2	i	int
-    //   5	106	3	localObject	Object
+    //   0	160	0	this	d
+    //   0	160	1	paramString	String
+    //   70	25	2	i	int
+    //   5	103	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	51	131	java/lang/Exception
-    //   51	110	146	java/lang/Exception
+    //   51	107	130	java/lang/Exception
+    //   0	51	145	java/lang/Exception
   }
   
   private String a(String paramString1, String paramString2)
@@ -173,7 +176,11 @@ public final class d
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      throw new a(-40006);
+      paramString1 = new a(-40006);
+    }
+    for (;;)
+    {
+      throw paramString1;
     }
   }
   
@@ -184,7 +191,7 @@ public final class d
     int i = 0;
     while (i < 16)
     {
-      localStringBuffer.append("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".charAt(((Random)localObject).nextInt("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".length())));
+      localStringBuffer.append("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".charAt(((Random)localObject).nextInt(62)));
       i += 1;
     }
     localObject = a(localStringBuffer.toString(), paramString2);
@@ -198,15 +205,15 @@ public final class d
   public final String b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     paramString4 = b.a.c(paramString4);
-    if (!b.a(this.c, paramString2, paramString3, paramString4[1].toString()).equals(paramString1)) {
-      throw new a(-40001);
+    if (b.a(this.c, paramString2, paramString3, paramString4[1].toString()).equals(paramString1)) {
+      return a(paramString4[1].toString());
     }
-    return a(paramString4[1].toString());
+    throw new a(-40001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.a.a.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.listentogether;
 
-public class ListenTogetherManager$RunnableShowForKey
+class ListenTogetherManager$RunnableShowForKey
   implements Runnable
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  String a;
+  boolean b;
   
   ListenTogetherManager$RunnableShowForKey(ListenTogetherManager paramListenTogetherManager, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
-  public void a(String paramString)
+  void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void run()
   {
-    ListenTogetherManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    ListenTogetherManager.a(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey
  * JD-Core Version:    0.7.0.1
  */

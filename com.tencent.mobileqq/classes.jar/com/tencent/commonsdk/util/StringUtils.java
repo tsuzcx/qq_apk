@@ -5,15 +5,9 @@ import java.lang.reflect.Field;
 public class StringUtils
 {
   static volatile boolean reflactCharArrayResult = true;
-  static volatile boolean reflactDataResult;
+  static volatile boolean reflactDataResult = true;
   static Field sCountField;
-  static Field sValueField = null;
-  
-  static
-  {
-    sCountField = null;
-    reflactDataResult = true;
-  }
+  static Field sValueField;
   
   public static char[] getStringValue(StringBuilder paramStringBuilder)
   {
@@ -27,25 +21,19 @@ public class StringUtils
       paramStringBuilder = (char[])sValueField.get(paramStringBuilder);
       return paramStringBuilder;
     }
-    catch (NoSuchFieldException paramStringBuilder)
+    catch (IllegalAccessException paramStringBuilder)
     {
       paramStringBuilder.printStackTrace();
-      return null;
     }
     catch (IllegalArgumentException paramStringBuilder)
     {
-      for (;;)
-      {
-        paramStringBuilder.printStackTrace();
-      }
+      paramStringBuilder.printStackTrace();
     }
-    catch (IllegalAccessException paramStringBuilder)
+    catch (NoSuchFieldException paramStringBuilder)
     {
-      for (;;)
-      {
-        paramStringBuilder.printStackTrace();
-      }
+      paramStringBuilder.printStackTrace();
     }
+    return null;
   }
   
   public static String newStringWithData(char[] paramArrayOfChar)
@@ -70,26 +58,20 @@ public class StringUtils
         return str;
       }
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
+    catch (IllegalAccessException localIllegalAccessException)
     {
-      localNoSuchFieldException.printStackTrace();
-      reflactDataResult = false;
-      return new String(paramArrayOfChar);
+      localIllegalAccessException.printStackTrace();
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      for (;;)
-      {
-        localIllegalArgumentException.printStackTrace();
-      }
+      localIllegalArgumentException.printStackTrace();
     }
-    catch (IllegalAccessException localIllegalAccessException)
+    catch (NoSuchFieldException localNoSuchFieldException)
     {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
+      localNoSuchFieldException.printStackTrace();
     }
+    reflactDataResult = false;
+    return new String(paramArrayOfChar);
   }
   
   public static char[] reflactCharArray(String paramString)
@@ -107,31 +89,25 @@ public class StringUtils
         return paramString;
       }
     }
-    catch (NoSuchFieldException paramString)
+    catch (IllegalAccessException paramString)
     {
       paramString.printStackTrace();
-      reflactCharArrayResult = false;
-      return null;
     }
     catch (IllegalArgumentException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
-    catch (IllegalAccessException paramString)
+    catch (NoSuchFieldException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    reflactCharArrayResult = false;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.commonsdk.util.StringUtils
  * JD-Core Version:    0.7.0.1
  */

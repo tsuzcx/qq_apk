@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.appbrand.widget.actionbar;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.hellhoundlib.a.a;
 
 final class b$4
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  private long jbu = 0L;
+  b$4(b paramb, View.OnLongClickListener paramOnLongClickListener) {}
   
-  b$4(b paramb) {}
-  
-  public final void onClick(View paramView)
+  public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(141715);
-    if (System.currentTimeMillis() - this.jbu < 250L)
+    AppMethodBeat.i(324150);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+    if (this.uyO != null)
     {
-      paramView = b.b(this.jbs).iterator();
-      while (paramView.hasNext()) {
-        ((a)paramView.next()).aGp();
-      }
-      this.jbu = 0L;
+      boolean bool = this.uyO.onLongClick(paramView);
+      a.a(bool, this, "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(324150);
+      return bool;
     }
-    this.jbu = System.currentTimeMillis();
-    AppMethodBeat.o(141715);
+    a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+    AppMethodBeat.o(324150);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.b.4
  * JD-Core Version:    0.7.0.1
  */

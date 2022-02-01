@@ -1,52 +1,29 @@
 package com.tencent.mm.plugin.appbrand.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.n.c.c;
-import com.tencent.mm.plugin.appbrand.n.c.d;
-import com.tencent.mm.plugin.appbrand.n.c.e;
-import com.tencent.mm.plugin.appbrand.n.c.f;
-import com.tencent.mm.plugin.appbrand.n.c.g;
-import com.tencent.mm.plugin.appbrand.n.c.h;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.appbrand.v8.IJSRuntime;
+import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
+import com.tencent.mm.appbrand.v8.f;
 
 public final class b
+  extends c
 {
-  private static final Map<Integer, com.tencent.mm.plugin.appbrand.n.a.a> itY;
-  
-  static
+  public b(IJSRuntime.Config paramConfig)
   {
-    AppMethodBeat.i(102170);
-    itY = new HashMap();
-    a(new com.tencent.mm.plugin.appbrand.n.c.a());
-    a(new d());
-    a(new f());
-    a(new h());
-    a(new g());
-    a(new c());
-    a(new com.tencent.mm.plugin.appbrand.n.c.b());
-    a(new e());
-    AppMethodBeat.o(102170);
+    super(paramConfig);
   }
   
-  private static void a(com.tencent.mm.plugin.appbrand.n.a.a parama)
+  protected final IJSRuntime g(IJSRuntime.Config paramConfig)
   {
-    AppMethodBeat.i(102169);
-    itY.put(Integer.valueOf(parama.aIA()), parama);
-    AppMethodBeat.o(102169);
-  }
-  
-  public static com.tencent.mm.plugin.appbrand.n.a.a oY(int paramInt)
-  {
-    AppMethodBeat.i(102168);
-    com.tencent.mm.plugin.appbrand.n.a.a locala = (com.tencent.mm.plugin.appbrand.n.a.a)itY.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(102168);
-    return locala;
+    AppMethodBeat.i(144157);
+    paramConfig = f.d(paramConfig);
+    AppMethodBeat.o(144157);
+    return paramConfig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.n.b
  * JD-Core Version:    0.7.0.1
  */

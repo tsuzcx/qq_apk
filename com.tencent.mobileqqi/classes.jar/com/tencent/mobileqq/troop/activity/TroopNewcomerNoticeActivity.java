@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
+import gum;
 import gun;
-import guo;
 
 public class TroopNewcomerNoticeActivity
   extends QQBrowserActivity
@@ -29,15 +29,15 @@ public class TroopNewcomerNoticeActivity
   
   protected void e()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131231173);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131231172);
     if (this.b == null) {
       this.b = LayoutInflater.from(this).inflate(2130903462, null);
     }
-    this.b.findViewById(2131232663).setOnClickListener(this);
+    this.b.findViewById(2131232662).setOnClickListener(this);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
     localRelativeLayout.addView(this.b, localLayoutParams);
-    ((RelativeLayout.LayoutParams)findViewById(2131231180).getLayoutParams()).addRule(2, 2131232662);
+    ((RelativeLayout.LayoutParams)findViewById(2131231179).getLayoutParams()).addRule(2, 2131232661);
   }
   
   public void onClick(View paramView)
@@ -49,7 +49,7 @@ public class TroopNewcomerNoticeActivity
     }
     this.a = true;
     finish();
-    ThreadManager.b(new gun(this));
+    ThreadManager.b(new gum(this));
     ReportController.a(null, "P_CliOper", "Grp_bulletin", "", "AIOchat", "Clk_iknow", 0, 0, this.c, "", "", "");
   }
   
@@ -60,7 +60,7 @@ public class TroopNewcomerNoticeActivity
     a(false);
     try
     {
-      ((View)findViewById(2131231448).getParent()).setVisibility(8);
+      ((View)findViewById(2131231447).getParent()).setVisibility(8);
       this.c = getIntent().getStringExtra("troop_friend_uin");
       if (!TextUtils.isEmpty(this.c))
       {
@@ -81,7 +81,7 @@ public class TroopNewcomerNoticeActivity
   protected void onDestroy()
   {
     if (!this.a) {
-      ThreadManager.b(new guo(this));
+      ThreadManager.b(new gun(this));
     }
     super.onDestroy();
   }

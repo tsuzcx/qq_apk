@@ -5,33 +5,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.plugin.webview.stub.e.a;
+import com.tencent.mm.plugin.webview.stub.f;
+import com.tencent.mm.plugin.webview.stub.f.a;
 
 public class WebViewStubCallbackWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<WebViewStubCallbackWrapper> CREATOR;
+  public f WWL;
   public int id;
-  public e vdZ;
   
   static
   {
-    AppMethodBeat.i(7803);
-    CREATOR = new WebViewStubCallbackWrapper.1();
-    AppMethodBeat.o(7803);
+    AppMethodBeat.i(80038);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(80038);
   }
   
   private WebViewStubCallbackWrapper(IBinder paramIBinder)
   {
-    AppMethodBeat.i(7802);
-    this.vdZ = e.a.G(paramIBinder);
-    AppMethodBeat.o(7802);
+    AppMethodBeat.i(80037);
+    this.WWL = f.a.R(paramIBinder);
+    AppMethodBeat.o(80037);
   }
   
-  public WebViewStubCallbackWrapper(e parame, int paramInt)
+  public WebViewStubCallbackWrapper(f paramf, int paramInt)
   {
-    this.vdZ = parame;
+    this.WWL = paramf;
     this.id = paramInt;
   }
   
@@ -51,14 +51,14 @@ public class WebViewStubCallbackWrapper
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(7801);
-    paramParcel.writeStrongBinder(this.vdZ.asBinder());
-    AppMethodBeat.o(7801);
+    AppMethodBeat.i(80036);
+    paramParcel.writeStrongBinder(this.WWL.asBinder());
+    AppMethodBeat.o(80036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebViewStubCallbackWrapper
  * JD-Core Version:    0.7.0.1
  */

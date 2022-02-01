@@ -55,13 +55,13 @@ public class VKdRefresh
       int j = paramJSONObject.optInt("duration", 1200);
       int k = paramJSONObject.optInt("delay", 300);
       ViolaSDKManager.getInstance().postOnUiThreadDelay(new VKdRefresh.1(this, i, str), k);
-      ViolaSDKManager.getInstance().postOnUiThreadDelay(new VKdRefresh.2(this, paramString), j + k + 500);
+      ViolaSDKManager.getInstance().postOnUiThreadDelay(new VKdRefresh.2(this, paramString), k + j + 500);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VKdRefresh
  * JD-Core Version:    0.7.0.1
  */

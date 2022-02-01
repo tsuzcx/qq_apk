@@ -19,19 +19,23 @@ public abstract class g
     Object localObject2 = ByteBuffer.wrap((byte[])localObject1);
     ((ByteBuffer)localObject2).position(1);
     ((ByteBuffer)localObject2).putShort(s);
-    if ((localObject1 == null) || (localObject1.length == 0)) {
-      return null;
+    if ((localObject1 != null) && (localObject1.length != 0))
+    {
+      localObject2 = new ByteArrayOutputStream();
+      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream((OutputStream)localObject2);
+      localGZIPOutputStream.write((byte[])localObject1);
+      localGZIPOutputStream.close();
+      return b.a(((ByteArrayOutputStream)localObject2).toByteArray());
     }
-    localObject2 = new ByteArrayOutputStream();
-    GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream((OutputStream)localObject2);
-    localGZIPOutputStream.write((byte[])localObject1);
-    localGZIPOutputStream.close();
-    return b.a(((ByteArrayOutputStream)localObject2).toByteArray());
+    return null;
   }
   
   public String toString()
   {
-    return "Request [toString()=" + super.toString() + "]";
+    StringBuilder localStringBuilder = new StringBuilder("Request [toString()=");
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

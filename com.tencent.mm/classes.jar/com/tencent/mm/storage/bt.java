@@ -1,83 +1,112 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.messenger.foundation.a.a.f;
+import com.tencent.mm.plugin.messenger.foundation.a.a.f.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorageEvent;
 
-public class bt
-  extends ei
+public final class bt
+  extends MAutoStorage<bs>
+  implements f
 {
-  public static c.a info;
-  protected static Field[] yrK;
+  public static final String[] SQL_CREATE;
+  private final MStorageEvent<f.a, bs> acFL;
+  private ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(60234);
-    yrK = ei.getValidFields(bt.class);
-    c.a locala = new c.a();
-    locala.yrK = new Field[11];
-    locala.columns = new String[12];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "svrid";
-    locala.yrM.put("svrid", "LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "svrid";
-    locala.columns[1] = "status";
-    locala.yrM.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "type";
-    locala.yrM.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "scene";
-    locala.yrM.put("scene", "INTEGER");
-    localStringBuilder.append(" scene INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "createtime";
-    locala.yrM.put("createtime", "LONG");
-    localStringBuilder.append(" createtime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "talker";
-    locala.yrM.put("talker", "TEXT");
-    localStringBuilder.append(" talker TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "content";
-    locala.yrM.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "sayhiuser";
-    locala.yrM.put("sayhiuser", "TEXT");
-    localStringBuilder.append(" sayhiuser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "sayhicontent";
-    locala.yrM.put("sayhicontent", "TEXT");
-    localStringBuilder.append(" sayhicontent TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "imgpath";
-    locala.yrM.put("imgpath", "TEXT");
-    localStringBuilder.append(" imgpath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "isSend";
-    locala.yrM.put("isSend", "INTEGER");
-    localStringBuilder.append(" isSend INTEGER");
-    locala.columns[11] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(60234);
+    AppMethodBeat.i(248435);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(bs.info, "FriendUser") };
+    AppMethodBeat.o(248435);
   }
   
-  public c.a getDBInfo()
+  public bt(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return info;
+    super(paramISQLiteDatabase, bs.info, "FriendUser", null);
+    AppMethodBeat.i(248432);
+    this.acFL = new MStorageEvent() {};
+    this.db = paramISQLiteDatabase;
+    AppMethodBeat.o(248432);
+  }
+  
+  private void b(bs parambs)
+  {
+    AppMethodBeat.i(248429);
+    if (this.acFL.event(parambs)) {
+      this.acFL.doNotify();
+    }
+    AppMethodBeat.o(248429);
+  }
+  
+  public final void a(f.a parama)
+  {
+    AppMethodBeat.i(248437);
+    this.acFL.add(parama, null);
+    AppMethodBeat.o(248437);
+  }
+  
+  public final bs aLx(String paramString)
+  {
+    AppMethodBeat.i(248441);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(248441);
+      return null;
+    }
+    bs localbs = new bs();
+    paramString = this.db.query("FriendUser", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
+    if (paramString.moveToFirst()) {
+      localbs.convertFrom(paramString);
+    }
+    paramString.close();
+    AppMethodBeat.o(248441);
+    return localbs;
+  }
+  
+  public final void b(f.a parama)
+  {
+    AppMethodBeat.i(248439);
+    this.acFL.remove(parama);
+    AppMethodBeat.o(248439);
+  }
+  
+  public final int gbf()
+  {
+    AppMethodBeat.i(248442);
+    Object localObject = String.format("select count(rowid) from %s", new Object[] { "FriendUser" });
+    localObject = this.db.rawQuery((String)localObject, null);
+    if ((localObject != null) && (((Cursor)localObject).moveToFirst()))
+    {
+      int i = ((Cursor)localObject).getInt(0);
+      ((Cursor)localObject).close();
+      Log.i("MicroMsg.FriendUserStorage", "#recordCnts#, count:".concat(String.valueOf(i)));
+      AppMethodBeat.o(248442);
+      return i;
+    }
+    AppMethodBeat.o(248442);
+    return 0;
+  }
+  
+  public final int gbg()
+  {
+    AppMethodBeat.i(248443);
+    long l = System.currentTimeMillis();
+    int i = this.db.delete("FriendUser", "(modifyTime< ?)", new String[] { String.valueOf(l - 604800000L) });
+    if (i > 0) {
+      doNotify();
+    }
+    Log.i("MicroMsg.FriendUserStorage", "#Clear Records#, result:".concat(String.valueOf(i)));
+    AppMethodBeat.o(248443);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bt
  * JD-Core Version:    0.7.0.1
  */

@@ -22,12 +22,12 @@ public class WXTextObject
   
   public boolean checkArgs()
   {
-    if ((this.text == null) || (this.text.length() == 0) || (this.text.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
-      return false;
+    String str = this.text;
+    if ((str != null) && (str.length() != 0) && (this.text.length() <= 10240)) {
+      return true;
     }
-    return true;
+    Log.e("MicroMsg.SDK.WXTextObject", "checkArgs fail, text is invalid");
+    return false;
   }
   
   public void serialize(Bundle paramBundle)
@@ -47,7 +47,7 @@ public class WXTextObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXTextObject
  * JD-Core Version:    0.7.0.1
  */

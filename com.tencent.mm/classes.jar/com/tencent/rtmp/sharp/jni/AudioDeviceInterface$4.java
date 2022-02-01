@@ -9,7 +9,7 @@ final class AudioDeviceInterface$4
 {
   public final boolean accept(File paramFile)
   {
-    AppMethodBeat.i(146905);
+    AppMethodBeat.i(13910);
     paramFile = paramFile.getName();
     if (paramFile.startsWith("cpu"))
     {
@@ -18,21 +18,21 @@ final class AudioDeviceInterface$4
       {
         if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9'))
         {
-          AppMethodBeat.o(146905);
+          AppMethodBeat.o(13910);
           return false;
         }
         i += 1;
       }
-      AppMethodBeat.o(146905);
+      AppMethodBeat.o(13910);
       return true;
     }
-    AppMethodBeat.o(146905);
+    AppMethodBeat.o(13910);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.AudioDeviceInterface.4
  * JD-Core Version:    0.7.0.1
  */

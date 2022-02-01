@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.activity.bless;
 
-import aepi;
-import alud;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import arso;
-import awge;
-import awhs;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.File;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class BlessPtvModule
-  extends awge
+  extends Entity
 {
   public static final String DEFAULT_MODULE_ID = "0";
-  public static final String DEFAULT_MODULE_TITLE = alud.a(2131701542);
+  public static final String DEFAULT_MODULE_TITLE = HardCodeUtil.a(2131899405);
   public static final String DEFAULT_VIP_LEVEL = "0";
   public static String path;
   public int audioLength;
-  public boolean broken;
+  public boolean broken = false;
   public String data;
   private String defaultM4aPath;
-  public boolean downloaded;
-  @awhs
+  public boolean downloaded = false;
+  @unique
   public String id;
   public String shareTitle;
   public String title;
@@ -47,7 +47,14 @@ public class BlessPtvModule
   
   public String getLrcPath()
   {
-    return path + File.separator + this.id + File.separator + this.id + ".qrc";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(path);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(".qrc");
+    return localStringBuilder.toString();
   }
   
   public String getM4aPath()
@@ -55,48 +62,82 @@ public class BlessPtvModule
     if ("0".equals(this.id)) {
       return this.defaultM4aPath;
     }
-    return path + File.separator + this.id + File.separator + this.id + ".m4a";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(path);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(".m4a");
+    return localStringBuilder.toString();
   }
   
   public String getPicPath()
   {
-    return path + File.separator + this.id + File.separator + this.id + ".png";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(path);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(".png");
+    return localStringBuilder.toString();
   }
   
   public Drawable getPngDrawable(Activity paramActivity)
   {
     if ("0".equals(this.id)) {
-      return paramActivity.getResources().getDrawable(2130838615);
+      return paramActivity.getResources().getDrawable(2130838981);
     }
-    String str = path + File.separator + this.id + File.separator + this.id + ".png";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(path);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.id);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.id);
+    ((StringBuilder)localObject).append(".png");
+    localObject = ((StringBuilder)localObject).toString();
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      int i = aepi.a(56.0F, paramActivity.getResources());
+      int i = AIOUtils.b(56.0F, paramActivity.getResources());
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
-      paramActivity = URLDrawable.getDrawable(new File(str), localURLDrawableOptions);
+      paramActivity = URLDrawable.getDrawable(new File((String)localObject), localURLDrawableOptions);
       return paramActivity;
     }
-    catch (OutOfMemoryError paramActivity) {}
+    catch (OutOfMemoryError paramActivity)
+    {
+      label127:
+      break label127;
+    }
     return null;
   }
   
   public String getZipPath()
   {
-    return path + File.separator + this.id + File.separator + this.id + ".zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(path);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
   public boolean isComplete()
   {
     if (this.id == "0")
     {
-      if ((this.defaultM4aPath == null) || (!arso.a(this.defaultM4aPath))) {}
-    }
-    else {
-      while ((arso.a(getLrcPath())) && (arso.a(getM4aPath())) && (arso.a(getPicPath()))) {
+      String str = this.defaultM4aPath;
+      if ((str != null) && (FileUtil.d(str))) {
         return true;
       }
+    }
+    else if ((FileUtil.d(getLrcPath())) && (FileUtil.d(getM4aPath())) && (FileUtil.d(getPicPath())))
+    {
+      return true;
     }
     return false;
   }

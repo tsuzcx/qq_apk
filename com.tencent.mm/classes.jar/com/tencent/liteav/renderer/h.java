@@ -39,7 +39,7 @@ public class h
   
   public h(Boolean paramBoolean)
   {
-    AppMethodBeat.i(67242);
+    AppMethodBeat.i(16909);
     this.c = 0;
     this.d = 0;
     this.e = 0;
@@ -62,13 +62,13 @@ public class h
     this.q = ByteBuffer.allocateDirect(this.p.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.q.put(this.p).position(0);
     Matrix.setIdentityM(this.s, 0);
-    AppMethodBeat.o(67242);
+    AppMethodBeat.o(16909);
   }
   
   private int a(int paramInt, String paramString)
   {
     int i1 = 0;
-    AppMethodBeat.i(67249);
+    AppMethodBeat.i(16916);
     int i2 = GLES20.glCreateShader(paramInt);
     a("glCreateShader type=".concat(String.valueOf(paramInt)));
     GLES20.glShaderSource(i2, paramString);
@@ -83,7 +83,7 @@ public class h
     }
     for (paramInt = i1;; paramInt = i2)
     {
-      AppMethodBeat.o(67249);
+      AppMethodBeat.o(16916);
       return paramInt;
     }
   }
@@ -91,17 +91,17 @@ public class h
   private int a(String paramString1, String paramString2)
   {
     int i1 = 0;
-    AppMethodBeat.i(67250);
+    AppMethodBeat.i(16917);
     int i3 = a(35633, paramString1);
     if (i3 == 0)
     {
-      AppMethodBeat.o(67250);
+      AppMethodBeat.o(16917);
       return 0;
     }
     int i4 = a(35632, paramString2);
     if (i4 == 0)
     {
-      AppMethodBeat.o(67250);
+      AppMethodBeat.o(16917);
       return 0;
     }
     int i2 = GLES20.glCreateProgram();
@@ -124,7 +124,7 @@ public class h
     }
     for (;;)
     {
-      AppMethodBeat.o(67250);
+      AppMethodBeat.o(16917);
       return i1;
       i1 = i2;
     }
@@ -132,24 +132,24 @@ public class h
   
   private void a(String paramString)
   {
-    AppMethodBeat.i(67251);
-    int i1 = GLES20.glGetError();
-    if (i1 != 0)
+    AppMethodBeat.i(16918);
+    for (;;)
     {
+      int i1 = GLES20.glGetError();
+      if (i1 == 0) {
+        break;
+      }
       TXCLog.e("TXTweenFilter", paramString + ": glError " + i1);
-      paramString = new RuntimeException(paramString + ": glError " + i1);
-      AppMethodBeat.o(67251);
-      throw paramString;
     }
-    AppMethodBeat.o(67251);
+    AppMethodBeat.o(16918);
   }
   
   private void b(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(67241);
+    AppMethodBeat.i(16908);
     if ((this.d == 0) || (this.c == 0))
     {
-      AppMethodBeat.o(67241);
+      AppMethodBeat.o(16908);
       return;
     }
     int i2 = this.e;
@@ -164,13 +164,13 @@ public class h
     if (this.g == a)
     {
       if (i1 * f2 > this.d) {
-        break label241;
+        break label244;
       }
       Matrix.setIdentityM(this.k, 0);
       if (this.i)
       {
         if (this.h % 180 != 0) {
-          break label246;
+          break label249;
         }
         Matrix.scaleM(this.k, 0, -1.0F, 1.0F, 1.0F);
       }
@@ -180,28 +180,28 @@ public class h
       Matrix.scaleM(this.k, 0, i2 * f1 / this.c * 1.0F, i1 * f1 / this.d * 1.0F, 1.0F);
       Matrix.rotateM(this.k, 0, this.h, 0.0F, 0.0F, -1.0F);
       Matrix.multiplyMM(paramArrayOfFloat, 0, this.j, 0, this.k, 0);
-      AppMethodBeat.o(67241);
+      AppMethodBeat.o(16908);
       return;
       if (i1 * f2 > this.d) {
         break;
       }
-      label241:
+      label244:
       f1 = f2;
       break;
-      label246:
+      label249:
       Matrix.scaleM(this.k, 0, 1.0F, -1.0F, 1.0F);
     }
   }
   
   private void d()
   {
-    AppMethodBeat.i(67246);
+    AppMethodBeat.i(16913);
     if (!this.n)
     {
-      AppMethodBeat.o(67246);
+      AppMethodBeat.o(16913);
       return;
     }
-    TXCLog.d("TXTweenFilter", "reloadFrameBuffer. size = " + this.c + "*" + this.d);
+    TXCLog.i("TXTweenFilter", "reloadFrameBuffer. size = " + this.c + "*" + this.d);
     e();
     int[] arrayOfInt1 = new int[1];
     int[] arrayOfInt2 = new int[1];
@@ -223,12 +223,12 @@ public class h
     GLES20.glBindTexture(3553, 0);
     GLES20.glBindFramebuffer(36160, 0);
     this.n = false;
-    AppMethodBeat.o(67246);
+    AppMethodBeat.o(16913);
   }
   
   private void e()
   {
-    AppMethodBeat.i(67248);
+    AppMethodBeat.i(16915);
     if (this.v != -12345)
     {
       GLES20.glDeleteFramebuffers(1, new int[] { this.v }, 0);
@@ -239,7 +239,7 @@ public class h
       GLES20.glDeleteTextures(1, new int[] { this.u }, 0);
       this.u = -12345;
     }
-    AppMethodBeat.o(67248);
+    AppMethodBeat.o(16915);
   }
   
   public void a(int paramInt)
@@ -249,20 +249,25 @@ public class h
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67239);
+    AppMethodBeat.i(16906);
     if ((paramInt1 == this.c) && (paramInt2 == this.d))
     {
-      AppMethodBeat.o(67239);
+      AppMethodBeat.o(16906);
       return;
     }
-    TXCLog.d("TXTweenFilter", "Output resolution change: " + this.c + "*" + this.d + " -> " + paramInt1 + "*" + paramInt2);
+    TXCLog.i("TXTweenFilter", "Output resolution change: " + this.c + "*" + this.d + " -> " + paramInt1 + "*" + paramInt2);
     this.c = paramInt1;
     this.d = paramInt2;
     Matrix.orthoM(this.j, 0, -1.0F, 1.0F, -1.0F, 1.0F, -1.0F, 1.0F);
     this.l = 1.0F;
     this.m = 1.0F;
     this.n = true;
-    AppMethodBeat.o(67239);
+    AppMethodBeat.o(16906);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.i = paramBoolean;
   }
   
   public void a(float[] paramArrayOfFloat)
@@ -277,48 +282,47 @@ public class h
   
   public void b()
   {
-    AppMethodBeat.i(67245);
+    AppMethodBeat.i(16912);
     if (this.o) {}
-    RuntimeException localRuntimeException;
     for (this.t = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = uMVPMatrix * aPosition;\n  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n  gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n"); this.t == 0; this.t = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = uMVPMatrix * aPosition;\n  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "varying highp vec2 vTextureCoord;\n \nuniform sampler2D sTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(sTexture, vTextureCoord);\n}"))
     {
-      localRuntimeException = new RuntimeException("failed creating program");
-      AppMethodBeat.o(67245);
-      throw localRuntimeException;
+      TXCLog.e("TXTweenFilter", "failed creating program");
+      AppMethodBeat.o(16912);
+      return;
     }
     this.y = GLES20.glGetAttribLocation(this.t, "aPosition");
     a("glGetAttribLocation aPosition");
     if (this.y == -1)
     {
-      localRuntimeException = new RuntimeException("Could not get attrib location for aPosition");
-      AppMethodBeat.o(67245);
-      throw localRuntimeException;
+      TXCLog.e("TXTweenFilter", "Could not get attrib location for aPosition");
+      AppMethodBeat.o(16912);
+      return;
     }
     this.z = GLES20.glGetAttribLocation(this.t, "aTextureCoord");
     a("glGetAttribLocation aTextureCoord");
     if (this.z == -1)
     {
-      localRuntimeException = new RuntimeException("Could not get attrib location for aTextureCoord");
-      AppMethodBeat.o(67245);
-      throw localRuntimeException;
+      TXCLog.e("TXTweenFilter", "Could not get attrib location for aTextureCoord");
+      AppMethodBeat.o(16912);
+      return;
     }
     this.w = GLES20.glGetUniformLocation(this.t, "uMVPMatrix");
     a("glGetUniformLocation uMVPMatrix");
     if (this.w == -1)
     {
-      localRuntimeException = new RuntimeException("Could not get attrib location for uMVPMatrix");
-      AppMethodBeat.o(67245);
-      throw localRuntimeException;
+      TXCLog.e("TXTweenFilter", "Could not get attrib location for uMVPMatrix");
+      AppMethodBeat.o(16912);
+      return;
     }
     this.x = GLES20.glGetUniformLocation(this.t, "uSTMatrix");
     a("glGetUniformLocation uSTMatrix");
     if (this.x == -1)
     {
-      localRuntimeException = new RuntimeException("Could not get attrib location for uSTMatrix");
-      AppMethodBeat.o(67245);
-      throw localRuntimeException;
+      TXCLog.e("TXTweenFilter", "Could not get attrib location for uSTMatrix");
+      AppMethodBeat.o(16912);
+      return;
     }
-    AppMethodBeat.o(67245);
+    AppMethodBeat.o(16912);
   }
   
   public void b(int paramInt)
@@ -328,29 +332,29 @@ public class h
   
   public void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67240);
+    AppMethodBeat.i(16907);
     if ((paramInt1 == this.e) && (paramInt2 == this.f))
     {
-      AppMethodBeat.o(67240);
+      AppMethodBeat.o(16907);
       return;
     }
-    TXCLog.d("TXTweenFilter", "Input resolution change: " + this.e + "*" + this.f + " -> " + paramInt1 + "*" + paramInt2);
+    TXCLog.i("TXTweenFilter", "Input resolution change: " + this.e + "*" + this.f + " -> " + paramInt1 + "*" + paramInt2);
     this.e = paramInt1;
     this.f = paramInt2;
-    AppMethodBeat.o(67240);
+    AppMethodBeat.o(16907);
   }
   
   public void c()
   {
-    AppMethodBeat.i(67247);
+    AppMethodBeat.i(16914);
     GLES20.glDeleteProgram(this.t);
     e();
-    AppMethodBeat.o(67247);
+    AppMethodBeat.o(16914);
   }
   
   public void c(int paramInt)
   {
-    AppMethodBeat.i(67243);
+    AppMethodBeat.i(16910);
     GLES20.glViewport(0, 0, this.c, this.d);
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     GLES20.glClear(16640);
@@ -384,36 +388,36 @@ public class h
         break;
       }
       GLES20.glBindTexture(36197, 0);
-      AppMethodBeat.o(67243);
+      AppMethodBeat.o(16910);
       return;
       GLES20.glActiveTexture(33984);
       GLES20.glBindTexture(3553, paramInt);
     }
     GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(67243);
+    AppMethodBeat.o(16910);
   }
   
   public int d(int paramInt)
   {
-    AppMethodBeat.i(67244);
+    AppMethodBeat.i(16911);
     d();
     if (this.v == -12345)
     {
       TXCLog.d("TXTweenFilter", "invalid frame buffer id");
-      AppMethodBeat.o(67244);
+      AppMethodBeat.o(16911);
       return paramInt;
     }
     GLES20.glBindFramebuffer(36160, this.v);
     c(paramInt);
     GLES20.glBindFramebuffer(36160, 0);
     paramInt = this.u;
-    AppMethodBeat.o(67244);
+    AppMethodBeat.o(16911);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.renderer.h
  * JD-Core Version:    0.7.0.1
  */

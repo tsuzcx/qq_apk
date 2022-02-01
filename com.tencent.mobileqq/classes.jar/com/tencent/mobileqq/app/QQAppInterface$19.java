@@ -1,32 +1,28 @@
 package com.tencent.mobileqq.app;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 class QQAppInterface$19
   implements Runnable
 {
-  QQAppInterface$19(QQAppInterface paramQQAppInterface) {}
+  QQAppInterface$19(QQAppInterface paramQQAppInterface, StringBuilder paramStringBuilder) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.this$0.getApp()).edit();
-    localEditor.putString("LastScreenShotUri", "");
-    localEditor.commit();
-    this.this$0.n();
-    try
+    if (QLog.isColorLevel())
     {
-      QQAppInterface.i(this.this$0).unregisterReceiver(QQAppInterface.c(this.this$0));
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isCallTabShow needupdate,result=");
+      localStringBuilder.append(this.val$result);
+      QLog.i("QQAppInterface", 2, localStringBuilder.toString());
     }
-    catch (Exception localException) {}
+    SettingCloneUtil.writeValue(this.this$0.getApplication(), this.this$0.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", this.val$result.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.19
  * JD-Core Version:    0.7.0.1
  */

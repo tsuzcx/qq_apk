@@ -11,8 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bjnt;
-import bjum;
+import cooperation.qzone.util.PanoramaUtil;
 import cooperation.qzone.util.QZLog;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,95 +19,100 @@ import java.util.TimerTask;
 public class PanoramaLoadingBall
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = PanoramaLoadingLayout.jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bjnt(this, Looper.getMainLooper());
-  private PanoramaLoadingBackground jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = PanoramaLoadingLayout.jdField_b_of_type_Int;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
+  private static final float INCREASE_SPEED = 0.3F;
+  private static final int ROTATE_SPEED = 2;
+  public static final int START_DEGREE = 60;
+  private static final String TAG = "PanoramaLoadingBall";
+  private static final int TYPE_ANTI_CLOCK_WISE = 1;
+  private static final int TYPE_CLOCK_WISE = 0;
+  public static final int TYPE_HORIZONTAL = 0;
+  public static final int TYPE_VERTICAL = 1;
+  private Context context;
+  private float currentDegree;
+  private float finalDegree;
+  private Handler handler = new PanoramaLoadingBall.1(this, Looper.getMainLooper());
+  private int inCircleRadius;
+  private boolean isStop;
+  private Paint mPaint;
+  private int mViewHeight = PanoramaLoadingLayout.HEIGHT;
+  private int mViewWidth = PanoramaLoadingLayout.WIDTH;
+  private int midCircleRadius;
+  private int outCircleRadius;
+  private PanoramaLoadingBackground panoramaLoadingBackground;
+  private int rotateDirection;
+  private Timer timer;
+  private TimerTask timerTask;
+  private int type;
   
   public PanoramaLoadingBall(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public PanoramaLoadingBall(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private int a(int paramInt)
+  private void drawMidCircle(Canvas paramCanvas)
+  {
+    this.mPaint.setColor(-1);
+    this.mPaint.setStrokeWidth(3.0F);
+    this.mPaint.setStyle(Paint.Style.STROKE);
+    int i = this.mViewWidth;
+    paramCanvas.drawCircle(i / 2, i / 2, this.midCircleRadius, this.mPaint);
+  }
+  
+  private void init(Context paramContext)
+  {
+    this.context = paramContext;
+    this.mPaint = new Paint();
+    this.mPaint.setAntiAlias(true);
+    setPivotX(this.mViewWidth / 2 + 5);
+    setPivotY(this.mViewHeight / 2 - 5);
+  }
+  
+  private int measureHeight(int paramInt)
   {
     int i = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
-    if (i == 1073741824) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return paramInt;
+    if (i != 1073741824) {
       if (i == -2147483648) {
-        paramInt = Math.min(paramInt, this.jdField_a_of_type_Int);
+        paramInt = Math.min(paramInt, this.mViewHeight);
       } else {
-        paramInt = this.jdField_a_of_type_Int;
+        paramInt = this.mViewHeight;
       }
     }
+    this.mViewHeight = paramInt;
+    return paramInt;
   }
   
-  private void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    setPivotX(this.jdField_a_of_type_Int / 2 + 5);
-    setPivotY(this.jdField_b_of_type_Int / 2 - 5);
-  }
-  
-  private void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(3.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    paramCanvas.drawCircle(this.jdField_a_of_type_Int / 2, this.jdField_a_of_type_Int / 2, this.d, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private int b(int paramInt)
+  private int measureWidth(int paramInt)
   {
     int i = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
-    if (i == 1073741824) {}
-    for (;;)
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return paramInt;
+    if (i != 1073741824) {
       if (i == -2147483648) {
-        paramInt = Math.min(paramInt, this.jdField_b_of_type_Int);
+        paramInt = Math.min(paramInt, this.mViewWidth);
       } else {
-        paramInt = this.jdField_b_of_type_Int;
+        paramInt = this.mViewWidth;
       }
     }
+    this.mViewWidth = paramInt;
+    return paramInt;
   }
   
-  private void b()
+  private void startTimerTask()
   {
-    a();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new PanoramaLoadingBall.2(this);
+    stopTimer();
+    this.isStop = false;
+    this.timer = new Timer();
+    this.timerTask = new PanoramaLoadingBall.2(this);
     try
     {
-      this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 15L);
+      this.timer.schedule(this.timerTask, 0L, 15L);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
@@ -117,82 +121,76 @@ public class PanoramaLoadingBall
     }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-    }
-    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
-      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-    }
-  }
-  
-  public void a(float paramFloat, int paramInt, PanoramaLoadingBackground paramPanoramaLoadingBackground)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_b_of_type_Float = paramFloat;
-    this.f = paramInt;
-    this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground = paramPanoramaLoadingBackground;
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      if (paramInt != 0) {
-        break label42;
-      }
-      setRotationX(paramFloat);
-    }
-    for (;;)
-    {
-      b();
-      return;
-      label42:
-      setRotationY(paramFloat);
-    }
-  }
-  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.c = (this.jdField_a_of_type_Int / 2);
-    this.d = (this.c - this.c / 5);
-    this.e = (this.c - this.c * 2 / 5);
-    a(paramCanvas);
+    this.outCircleRadius = (this.mViewWidth / 2);
+    int i = this.outCircleRadius;
+    this.midCircleRadius = (i - i / 5);
+    this.inCircleRadius = (i - i * 2 / 5);
+    drawMidCircle(paramCanvas);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(a(paramInt1), b(paramInt2));
+    setMeasuredDimension(measureWidth(paramInt1), measureHeight(paramInt2));
   }
   
   public void setRotationX(float paramFloat)
   {
-    float f1 = 255.0F;
-    if (!bjum.a().c()) {
+    if (!PanoramaUtil.getInstance().isClosePanoramaRotation()) {
       super.setRotationX(paramFloat);
     }
-    paramFloat = paramFloat / this.jdField_a_of_type_Float * (255 - PanoramaLoadingBackground.jdField_a_of_type_Int) + PanoramaLoadingBackground.jdField_a_of_type_Int;
-    if (paramFloat > 255.0F) {
-      paramFloat = f1;
+    float f = paramFloat / this.finalDegree * (255 - PanoramaLoadingBackground.MIN_ALPHA) + PanoramaLoadingBackground.MIN_ALPHA;
+    paramFloat = f;
+    if (f > 255.0F) {
+      paramFloat = 255.0F;
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground != null) {
-        this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground.setContentAlpha((int)paramFloat);
-      }
-      return;
+    PanoramaLoadingBackground localPanoramaLoadingBackground = this.panoramaLoadingBackground;
+    if (localPanoramaLoadingBackground != null) {
+      localPanoramaLoadingBackground.setContentAlpha((int)paramFloat);
     }
   }
   
   public void setRotationY(float paramFloat)
   {
-    if (!bjum.a().c()) {
+    if (!PanoramaUtil.getInstance().isClosePanoramaRotation()) {
       super.setRotationY(paramFloat);
+    }
+  }
+  
+  public void startRotate(float paramFloat, int paramInt, PanoramaLoadingBackground paramPanoramaLoadingBackground)
+  {
+    this.finalDegree = paramFloat;
+    this.currentDegree = paramFloat;
+    this.type = paramInt;
+    this.panoramaLoadingBackground = paramPanoramaLoadingBackground;
+    if (Build.VERSION.SDK_INT >= 11) {
+      if (paramInt == 0) {
+        setRotationX(paramFloat);
+      } else {
+        setRotationY(paramFloat);
+      }
+    }
+    startTimerTask();
+  }
+  
+  public void stopTimer()
+  {
+    this.isStop = true;
+    Object localObject = this.timer;
+    if (localObject != null) {
+      ((Timer)localObject).cancel();
+    }
+    localObject = this.timerTask;
+    if (localObject != null) {
+      ((TimerTask)localObject).cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingBall
  * JD-Core Version:    0.7.0.1
  */

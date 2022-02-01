@@ -45,11 +45,13 @@ public final class a
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 1);
-    if (this.b != null) {
-      paramJceOutputStream.write(this.b, 2);
+    l locall = this.b;
+    if (locall != null) {
+      paramJceOutputStream.write(locall, 2);
     }
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 3);
+    locall = this.c;
+    if (locall != null) {
+      paramJceOutputStream.write(locall, 3);
     }
     paramJceOutputStream.write(this.d, 4);
     paramJceOutputStream.write(this.e, 5);
@@ -57,7 +59,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.serverconfig.a
  * JD-Core Version:    0.7.0.1
  */

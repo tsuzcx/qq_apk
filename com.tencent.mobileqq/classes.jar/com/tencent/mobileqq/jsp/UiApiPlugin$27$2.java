@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.jsp;
 
-import alud;
 import android.app.ProgressDialog;
-import atjo;
-import begz;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class UiApiPlugin$27$2
+class UiApiPlugin$27$2
   implements Runnable
 {
-  public UiApiPlugin$27$2(atjo paramatjo) {}
+  UiApiPlugin$27$2(UiApiPlugin.27 param27) {}
   
   public void run()
   {
-    this.a.a.b.dismiss();
-    QQToast.a(this.a.a.mRuntime.a().getApplication(), 1, alud.a(2131716240), 0).a();
+    this.a.b.B.dismiss();
+    QQToast.makeText(this.a.b.mRuntime.b().getApplication(), 1, HardCodeUtil.a(2131913100), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.27.2
  * JD-Core Version:    0.7.0.1
  */

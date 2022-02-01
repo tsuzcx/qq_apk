@@ -47,7 +47,7 @@ public final class AppDetailParam
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76031);
+    AppMethodBeat.i(102277);
     this.appId = paramJceInputStream.read(this.appId, 0, false);
     this.packageName = paramJceInputStream.readString(1, false);
     this.signatureMd5 = paramJceInputStream.readString(2, false);
@@ -63,12 +63,12 @@ public final class AppDetailParam
     this.verifyType = paramJceInputStream.read(this.verifyType, 12, false);
     this.authPlatform = paramJceInputStream.read(this.authPlatform, 13, false);
     this.verifyAppId = paramJceInputStream.readString(14, false);
-    AppMethodBeat.o(76031);
+    AppMethodBeat.o(102277);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76030);
+    AppMethodBeat.i(102276);
     paramJceOutputStream.write(this.appId, 0);
     if (this.packageName != null) {
       paramJceOutputStream.write(this.packageName, 1);
@@ -96,12 +96,12 @@ public final class AppDetailParam
     if (this.verifyAppId != null) {
       paramJceOutputStream.write(this.verifyAppId, 14);
     }
-    AppMethodBeat.o(76030);
+    AppMethodBeat.o(102276);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.AppDetailParam
  * JD-Core Version:    0.7.0.1
  */
